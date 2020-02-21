@@ -249,6 +249,7 @@ public class Class58
 	    byte[] is = arg1.getBytes();
 	    int i = is.length;
 	    RSString class1 = new RSString();
+	    class1.str = arg1;
 	    int i_5_ = 0;
 	    class1.aByteArray1692 = new byte[i];
 	    while ((i ^ 0xffffffff) < (i_5_ ^ 0xffffffff)) {

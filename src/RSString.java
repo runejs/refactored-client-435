@@ -71,7 +71,8 @@ public class RSString implements Interface1
     public static RSString aClass1_1716;
     public static RSString aClass1_1717;
     /*synthetic*/ public static Class aClass1718;
-    
+	public String str;
+
     public RSString method50(byte arg0, int arg1) {
 	try {
 	    anInt1658++;

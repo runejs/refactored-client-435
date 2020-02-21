@@ -176,7 +176,7 @@ public class Class40_Sub5_Sub17_Sub2 extends Class40_Sub5_Sub17
 	}
     }
     
-    public static void method772(int arg0, Color arg1, RSString arg2, int arg3) {
+    public static void drawLoadingText(int arg0, Color color, RSString rsString, int arg3) {
 	try {
 	    anInt3033++;
 	    try {
@@ -192,14 +192,14 @@ public class Class40_Sub5_Sub17_Sub2 extends Class40_Sub5_Sub17
 		    graphics.fillRect(0, 0, Class12.anInt390,
 				      Class40_Sub5_Sub10.anInt2605);
 		}
-		if (arg1 == null)
-		    arg1 = new Color(140, 17, 17);
+		if (color == null)
+		    color = new Color(140, 17, 17);
 		try {
 		    if (Class26.anImage624 == null)
 			Class26.anImage624
 			    = Class62.aCanvas1469.createImage(304, 34);
 		    Graphics graphics_13_ = Class26.anImage624.getGraphics();
-		    graphics_13_.setColor(arg1);
+		    graphics_13_.setColor(color);
 		    int i = -71 % ((arg3 - 8) / 54);
 		    graphics_13_.drawRect(0, 0, 303, 33);
 		    graphics_13_.fillRect(2, 2, arg0 * 3, 30);
@@ -209,12 +209,13 @@ public class Class40_Sub5_Sub17_Sub2 extends Class40_Sub5_Sub17
 					  30);
 		    graphics_13_.setFont(Class17.aFont461);
 		    graphics_13_.setColor(Color.white);
-		    arg2.method65((byte) -124,
+		    rsString.method65((byte) -124,
 				  ((304
-				    + -arg2.method73(-48,
+				    + -rsString.method73(-48,
 						     Class8.aFontMetrics295))
 				   / 2),
 				  22, graphics_13_);
+			System.out.println(rsString.str);
 		    graphics.drawImage(Class26.anImage624,
 				       -152 + Class12.anInt390 / 2,
 				       -18 + Class40_Sub5_Sub10.anInt2605 / 2,
@@ -222,7 +223,7 @@ public class Class40_Sub5_Sub17_Sub2 extends Class40_Sub5_Sub17
 		} catch (Exception exception) {
 		    int i = -152 + Class12.anInt390 / 2;
 		    int i_14_ = Class40_Sub5_Sub10.anInt2605 / 2 + -18;
-		    graphics.setColor(arg1);
+		    graphics.setColor(color);
 		    graphics.drawRect(i, i_14_, 303, 33);
 		    graphics.fillRect(2 + i, i_14_ - -2, 3 * arg0, 30);
 		    graphics.setColor(Color.black);
@@ -231,8 +232,8 @@ public class Class40_Sub5_Sub17_Sub2 extends Class40_Sub5_Sub17
 				      300 + -(3 * arg0), 30);
 		    graphics.setFont(Class17.aFont461);
 		    graphics.setColor(Color.white);
-		    arg2.method65((byte) -32,
-				  (-arg2.method73(-46, Class8.aFontMetrics295)
+		    rsString.method65((byte) -32,
+				  (-rsString.method73(-46, Class8.aFontMetrics295)
 				   + 304) / 2 + i,
 				  22 + i_14_, graphics);
 		}
@@ -242,8 +243,8 @@ public class Class40_Sub5_Sub17_Sub2 extends Class40_Sub5_Sub17
 	} catch (RuntimeException runtimeexception) {
 	    throw Class8.method216(runtimeexception,
 				   ("j.B(" + arg0 + ','
-				    + (arg1 != null ? "{...}" : "null") + ','
-				    + (arg2 != null ? "{...}" : "null") + ','
+				    + (color != null ? "{...}" : "null") + ','
+				    + (rsString != null ? "{...}" : "null") + ','
 				    + arg3 + ')'));
 	}
     }

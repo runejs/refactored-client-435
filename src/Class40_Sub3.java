@@ -97,7 +97,7 @@ public class Class40_Sub3 extends Node
 	    Class56.aClass6_Sub1_1323
 		= Class54.method957(12, true, false, (byte) 118, true);
 	    Class40_Sub5_Sub6.anInt2451 = 40;
-	    Class22_Sub2.aClass1_1898 = Class25.aClass1_589;
+	    Class22_Sub2.aClass1_1898 = Class25.STRING_CONNECTING_UPDATE_SERVER;
 	    Class67.anInt1607 = 20;
 	} else if (Class40_Sub5_Sub6.anInt2451 == 40) {
 	    int i = 0;

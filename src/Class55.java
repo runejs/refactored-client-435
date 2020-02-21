@@ -245,7 +245,7 @@ public class Class55
 	    Player.aClass1_3286
 		= Class40_Sub5_Sub10.aClass1_2611;
 	    Node.aClass1_973 = Class64.aClass1_1523;
-	    Class25.aClass1_589 = Class25.aClass1_613;
+	    Class25.STRING_CONNECTING_UPDATE_SERVER = Class25.aClass1_613;
 	    Player.aClass1_3256
 		= NPC.aClass1_3308;
 	    Class40_Sub5_Sub1.aClass1_2274 = Class49.aClass1_1149;

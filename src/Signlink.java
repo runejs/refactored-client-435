@@ -20,7 +20,7 @@ public class Signlink implements Runnable {
     public Class47[] aClass47Array723;
     public static Method aMethod724;
     public Class15 aClass15_725 = null;
-    public static String aString726;
+    public static String homeDirectory;
     public Runnable_Impl1 aRunnable_Impl1_727;
     public Class47 aClass47_728;
     public static Method aMethod729;
@@ -32,7 +32,6 @@ public class Signlink implements Runnable {
     public static String aString735;
     public Class47 aClass47_736;
     public static int anInt737 = 3;
-    public String aString738 = null;
     public static String aString739;
     public Applet anApplet740;
 
@@ -101,7 +100,7 @@ public class Signlink implements Runnable {
     public Class15 method388(boolean arg0, URL arg1) {
         try {
             if (arg0 != false)
-                method397(-42, 102, null);
+                method397(-42);
             return method389(124, 0, 4, 0, arg1);
         } catch (RuntimeException runtimeexception) {
             throw runtimeexception;
@@ -114,7 +113,7 @@ public class Signlink implements Runnable {
             Class15 class15 = new Class15();
             class15.anObject435 = arg4;
             if (arg0 < 100)
-                aString726 = null;
+                homeDirectory = null;
             class15.anInt432 = arg1;
             class15.anInt433 = arg2;
             synchronized (this) {
@@ -135,12 +134,12 @@ public class Signlink implements Runnable {
     public void method390(int arg0) {
         try {
             try {
-                File file = new File(aString738 + "uid.dat");
+                File file = new File(aString734 + "uid.dat");
                 if (!file.exists()
                         || (file.length() ^ 0xffffffffffffffffL) > -5L) {
                     DataOutputStream dataoutputstream
                             = (new DataOutputStream
-                            (new FileOutputStream(aString738 + "uid.dat")));
+                            (new FileOutputStream(aString734 + "uid.dat")));
                     dataoutputstream.writeInt((int) (9.9999999E7
                             * Math.random()));
                     dataoutputstream.close();
@@ -152,7 +151,7 @@ public class Signlink implements Runnable {
                 anInt722 = 116;
             try {
                 DataInputStream datainputstream
-                        = new DataInputStream(new FileInputStream(aString738
+                        = new DataInputStream(new FileInputStream(aString734
                         + "uid.dat"));
                 anInt722 = 1 + datainputstream.readInt();
                 datainputstream.close();
@@ -271,7 +270,7 @@ public class Signlink implements Runnable {
     public Class15 method395(int arg0, int arg1) {
         try {
             if (arg0 != 3)
-                method397(-29, 20, null);
+                method397(-29);
             return method389(125, arg1, 1, 0, null);
         } catch (RuntimeException runtimeexception) {
             throw runtimeexception;
@@ -288,37 +287,28 @@ public class Signlink implements Runnable {
         }
     }
 
-    public void method397(int arg0, int fileStoreId, String cacheFolder) {
+    public void method397(int arg0) {
         try {
-            if (fileStoreId < 32 || fileStoreId > 34)
-                fileStoreId = 32;
-            if (aString726 == null)
-                aString726 = "~/";
-            String fileStore = ".file_store_" + fileStoreId;
+            if (homeDirectory == null)
+                homeDirectory = "~/";
+            String fileStore = ".435cache";
             String[] cacheLocations = {
                     "c:/rsrcache/", "/rsrcache/", "c:/windows/",
                     "c:/winnt/", "d:/windows/", "d:/winnt/",
                     "e:/windows/", "e:/winnt/", "f:/windows/",
-                    "f:/winnt/", "c:/", aString726, "/tmp/", ""
+                    "f:/winnt/", "c:/", homeDirectory, "/tmp/", ""
             };
             if (arg0 != -3849)
-                method392(null, null, false);
-            for (int i = 0; (i ^ 0xffffffff) > (cacheLocations.length ^ 0xffffffff); i++) {
+                method392(null, null, false); // TODO: Does this even ever run?
+            for (String cacheLocation : cacheLocations) {
                 try {
-                    String directory = cacheLocations[i];
-                    if (directory.length() > 0) {
-                        File file = new File(directory);
+                    if (cacheLocation.length() > 0) {
+                        File file = new File(cacheLocation);
                         if (!file.exists())
                             continue;
                     }
-                    File file = new File(directory + fileStore);
+                    File file = new File(cacheLocation + fileStore);
                     if (file.exists() || file.mkdir()) {
-                        if (cacheFolder.length() > 0) {
-                            file = new File(file, cacheFolder);
-                            if (!file.exists() && !file.mkdir())
-                                continue;
-                        }
-                        aString738 = file.getParent() + "/";
                         aString734 = file.getPath() + "/";
                         return;
                     }
@@ -343,9 +333,9 @@ public class Signlink implements Runnable {
             try {
                 aString735 = System.getProperty("java.vendor");
                 aString739 = System.getProperty("java.version");
-                aString726 = System.getProperty("user.home");
-                if (aString726 != null)
-                    aString726 += "/";
+                homeDirectory = System.getProperty("user.home");
+                if (homeDirectory != null)
+                    homeDirectory += "/";
             } catch (Exception exception) {
                 /* empty */
             }
@@ -376,7 +366,7 @@ public class Signlink implements Runnable {
                 /* empty */
             }
             if (arg0) {
-                method397(-3849, fileStoreId, cacheFolder);
+                method397(-3849);
                 aClass47_736 = new Class47(new File(aString734
                         + "main_file_cache.dat2"),
                         "rw", 52428800L);

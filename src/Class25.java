@@ -8,13 +8,11 @@ public class Class25
 {
     public int anInt587;
     public int anInt588;
-    public static RSString aClass1_589;
+    public static RSString STRING_CONNECTING_UPDATE_SERVER = Class58.method978(-11538, "Connecting to update server");
     public static CRC32 aCRC32_590;
     public static RSString aClass1_591;
     public static int anInt592;
     public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_593;
-    public static RSString aClass1_594
-	= Class58.method978(-11538, "Connecting to update server");
     public int anInt595;
     public static int anInt596;
     public static int anInt597;
@@ -604,7 +602,6 @@ public class Class25
     
     public static void method348(int arg0) {
 	try {
-	    aClass1_594 = null;
 	    aClass40_Sub5_Sub14_Sub2_593 = null;
 	    aCRC32_590 = null;
 	    aClass1_610 = null;
@@ -615,9 +612,9 @@ public class Class25
 	    aClass1_591 = null;
 	    aClass40_Sub5_Sub14_Sub4Array603 = null;
 	    aClass6_Sub1_605 = null;
-	    aClass1_589 = null;
+	    STRING_CONNECTING_UPDATE_SERVER = null;
 	    if (arg0 != -6580)
-		aClass1_589 = null;
+		STRING_CONNECTING_UPDATE_SERVER = null;
 	    aClass1_615 = null;
 	    aClass1_609 = null;
 	    aClass15_607 = null;
@@ -628,7 +625,6 @@ public class Class25
     }
     
     static {
-	aClass1_589 = aClass1_594;
 	aClass1_606 = Class58.method978(-11538, "Add friend");
 	aClass1_591 = aClass1_606;
 	aCRC32_590 = new CRC32();

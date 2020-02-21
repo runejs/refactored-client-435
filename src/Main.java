@@ -1334,7 +1334,7 @@ public class Main extends RSApplet
 						 (byte) 33);
 	    }
 	    if (Class51.anInt1197 == 0)
-		Class40_Sub5_Sub17_Sub2.method772(Class67.anInt1607, null,
+		Class40_Sub5_Sub17_Sub2.drawLoadingText(Class67.anInt1607, null,
 						  Class22_Sub2.aClass1_1898,
 						  -86);
 	    else if ((Class51.anInt1197 ^ 0xffffffff) != -6) {
