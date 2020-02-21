@@ -34,8 +34,8 @@ public class Class10 {
     public int anInt334;
     public int anInt336;
     public int anInt337;
-    public Class40_Sub5_Sub17 aClass40_Sub5_Sub17_340;
-    public Class40_Sub5_Sub17 aClass40_Sub5_Sub17_341;
+    public Renderable aRenderable_340;
+    public Renderable aRenderable_341;
     public int anInt342;
     public int anInt347;
     public int anInt348 = 0;
@@ -61,14 +61,14 @@ public class Class10 {
 
     public static void method238(int arg0) {
         anInt335++;
-        if((Class3.anInt165 ^ 0xffffffff) != -1) {
+        if((CollisionMap.anInt165 ^ 0xffffffff) != -1) {
             RSFont class40_sub5_sub14_sub1 = Class53.aClass40_Sub5_Sub14_Sub1_1268;
             int i = 0;
             if(Class40_Sub5_Sub15.anInt2782 != 0)
                 i = 1;
             for(int i_0_ = 0; i_0_ < 100; i_0_++) {
                 if(Class40_Sub5_Sub17_Sub4.aClass1Array3160[i_0_] != null) {
-                    RSString class1 = Class40_Sub5_Sub17.aClass1Array2856[i_0_];
+                    RSString class1 = Renderable.aClass1Array2856[i_0_];
                     int i_1_ = 0;
                     int i_2_ = Class66.anIntArray1569[i_0_];
                     if(class1 != null && class1.method75((byte) 116, Class51.aClass1_1210)) {

@@ -1,8 +1,8 @@
-/* Class40_Sub5_Sub8 - Decompiled by JODE
+/* GameObjectDefinition - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
-public class Class40_Sub5_Sub8 extends SubNode {
+public class GameObjectDefinition extends SubNode {
     public static int anInt2498;
     public static int anInt2509;
     public static int anInt2514;
@@ -36,12 +36,12 @@ public class Class40_Sub5_Sub8 extends SubNode {
 
     public int anInt2499;
     public int anInt2500;
-    public boolean aBoolean2501;
+    public boolean solid;
     public int anInt2502;
     public int anInt2503;
     public int anInt2504;
     public int anInt2505;
-    public int anInt2506;
+    public int animationId;
     public int anInt2507;
     public RSString[] aClass1Array2508;
     public int[] anIntArray2510;
@@ -62,7 +62,7 @@ public class Class40_Sub5_Sub8 extends SubNode {
     public boolean aBoolean2528;
     public boolean aBoolean2530;
     public int anInt2533;
-    public int[] anIntArray2534;
+    public int[] childrenIds;
     public int anInt2536;
     public int anInt2537;
     public int anInt2538;
@@ -70,13 +70,13 @@ public class Class40_Sub5_Sub8 extends SubNode {
     public boolean aBoolean2541;
     public int anInt2542;
     public int anInt2544;
-    public int anInt2546;
+    public int hasActions;
     public boolean aBoolean2547;
     public int anInt2548;
     public RSString aClass1_2549;
     public boolean aBoolean2553;
 
-    public Class40_Sub5_Sub8() {
+    public GameObjectDefinition() {
         anInt2502 = 0;
         anInt2512 = 0;
         anInt2513 = -1;
@@ -87,11 +87,11 @@ public class Class40_Sub5_Sub8 extends SubNode {
         aBoolean2521 = false;
         aBoolean2530 = false;
         anInt2533 = -1;
-        anInt2506 = -1;
+        animationId = -1;
         anInt2505 = 16;
         aClass1Array2508 = new RSString[5];
         anInt2519 = 0;
-        aBoolean2501 = true;
+        solid = true;
         anInt2515 = 1;
         anInt2542 = 0;
         anInt2504 = 0;
@@ -107,7 +107,7 @@ public class Class40_Sub5_Sub8 extends SubNode {
         anInt2536 = -1;
         aBoolean2553 = false;
         anInt2548 = -1;
-        anInt2546 = -1;
+        hasActions = -1;
         anInt2527 = 0;
         anInt2517 = 128;
     }
@@ -182,7 +182,27 @@ public class Class40_Sub5_Sub8 extends SubNode {
         }
     }
 
-    public Model method600(int arg0, int arg1, int arg2, int arg3, int arg4, byte arg5, int arg6) {
+    public static GameObjectDefinition getDefinition(int arg0) {
+        GameObjectDefinition gameObjectDefinition = ((GameObjectDefinition) Class58.aClass9_1364.method231((long) arg0, (byte) 61));
+        Class40_Sub4.anInt2040++;
+        if(gameObjectDefinition != null)
+            return gameObjectDefinition;
+        byte[] is = Class40_Sub3.aClass6_2037.method172(arg0, 113, 6);
+        gameObjectDefinition = new GameObjectDefinition();
+        gameObjectDefinition.anInt2538 = arg0;
+        if(is != null)
+            gameObjectDefinition.method603(new Buffer(is), -122);
+        gameObjectDefinition.method605(true);
+        if(gameObjectDefinition.aBoolean2518) {
+            gameObjectDefinition.solid = false;
+            gameObjectDefinition.aBoolean2528 = false;
+        }
+        Class58.aClass9_1364.method230(-7208, (long) arg0, gameObjectDefinition);
+        return gameObjectDefinition;
+
+    }
+
+    public Model getGameObjectModel(int arg0, int arg1, int arg2, int arg3, int arg4, byte arg5, int arg6) {
         try {
             anInt2539++;
             long l;
@@ -221,15 +241,15 @@ public class Class40_Sub5_Sub8 extends SubNode {
     public boolean method601(byte arg0) {
         try {
             anInt2551++;
-            if(anIntArray2534 == null) {
+            if(childrenIds == null) {
                 return (anInt2513 ^ 0xffffffff) != 0 || anIntArray2523 != null;
             }
             if(arg0 != 125)
                 anInt2548 = -89;
-            for(int i = 0; i < anIntArray2534.length; i++) {
-                if((anIntArray2534[i] ^ 0xffffffff) != 0) {
-                    Class40_Sub5_Sub8 class40_sub5_sub8 = Class40_Sub4.method535(anIntArray2534[i], (byte) 123);
-                    if((class40_sub5_sub8.anInt2513 ^ 0xffffffff) != 0 || class40_sub5_sub8.anIntArray2523 != null)
+            for(int i = 0; i < childrenIds.length; i++) {
+                if((childrenIds[i] ^ 0xffffffff) != 0) {
+                    GameObjectDefinition gameObjectDefinition = getDefinition(childrenIds[i]);
+                    if((gameObjectDefinition.anInt2513 ^ 0xffffffff) != 0 || gameObjectDefinition.anIntArray2523 != null)
                         return true;
                 }
             }
@@ -252,17 +272,17 @@ public class Class40_Sub5_Sub8 extends SubNode {
     }
 
     public void method605(boolean arg0) {
-        if((anInt2546 ^ 0xffffffff) == 0) {
-            anInt2546 = 0;
+        if((hasActions ^ 0xffffffff) == 0) {
+            hasActions = 0;
             if(anIntArray2525 != null && (anIntArray2522 == null || (anIntArray2522[0] ^ 0xffffffff) == -11))
-                anInt2546 = 1;
+                hasActions = 1;
             for(int i = 0; (i ^ 0xffffffff) > -6; i++) {
                 if(aClass1Array2508[i] != null)
-                    anInt2546 = 1;
+                    hasActions = 1;
             }
         }
         if((anInt2533 ^ 0xffffffff) == 0)
-            anInt2533 = aBoolean2501 ? 1 : 0;
+            anInt2533 = solid ? 1 : 0;
         anInt2509++;
         if(arg0 != true)
             method603(null, -36);
@@ -463,11 +483,11 @@ public class Class40_Sub5_Sub8 extends SubNode {
                                                                             if((anInt2536 ^ 0xffffffff) == -65536)
                                                                                 anInt2536 = -1;
                                                                             int i = arg0.method468(false);
-                                                                            anIntArray2534 = new int[1 + i];
+                                                                            childrenIds = new int[1 + i];
                                                                             for(int i_20_ = 0; (i ^ 0xffffffff) <= (i_20_ ^ 0xffffffff); i_20_++) {
-                                                                                anIntArray2534[i_20_] = arg0.method469(65280);
-                                                                                if((anIntArray2534[i_20_] ^ 0xffffffff) == -65536)
-                                                                                    anIntArray2534[i_20_] = -1;
+                                                                                childrenIds[i_20_] = arg0.method469(65280);
+                                                                                if((childrenIds[i_20_] ^ 0xffffffff) == -65536)
+                                                                                    childrenIds[i_20_] = -1;
                                                                             }
                                                                         }
                                                                     } else
@@ -492,20 +512,20 @@ public class Class40_Sub5_Sub8 extends SubNode {
                                                 }
                                             }
                                         } else {
-                                            anInt2506 = arg0.method469(65280);
-                                            if((anInt2506 ^ 0xffffffff) == -65536)
-                                                anInt2506 = -1;
+                                            animationId = arg0.method469(65280);
+                                            if((animationId ^ 0xffffffff) == -65536)
+                                                animationId = -1;
                                         }
                                     } else
                                         aBoolean2521 = true;
                                 } else
                                     aBoolean2520 = true;
                             } else
-                                anInt2546 = arg0.method468(false);
+                                hasActions = arg0.method468(false);
                         } else
                             aBoolean2528 = false;
                     } else
-                        aBoolean2501 = false;
+                        solid = false;
                 } else
                     anInt2515 = arg0.method468(false);
             } else {
@@ -566,7 +586,7 @@ public class Class40_Sub5_Sub8 extends SubNode {
         }
     }
 
-    public Class40_Sub5_Sub8 method611(int arg0) {
+    public GameObjectDefinition method611(int arg0) {
         try {
             anInt2535++;
             int i = -1;
@@ -577,9 +597,9 @@ public class Class40_Sub5_Sub8 extends SubNode {
                     i = Class58.varbitmasks[anInt2536];
             } else
                 i = Class40_Sub5_Sub6.method585(anInt2548, 1369);
-            if(i < 0 || anIntArray2534.length <= i || anIntArray2534[i] == -1)
+            if(i < 0 || childrenIds.length <= i || childrenIds[i] == -1)
                 return null;
-            return Class40_Sub4.method535(anIntArray2534[i], (byte) 126);
+            return getDefinition(childrenIds[i]);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ia.K(" + arg0 + ')');
         }

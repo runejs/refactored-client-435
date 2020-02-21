@@ -41,13 +41,13 @@ public class Class37 {
                 return 0;
             int i_1_ = 0x7f & arg2;
             int i_2_ = arg1;
-            if(i_2_ < 3 && (Floor.aByteArrayArrayArray2323[1][i_0_][i] & 0x2) == 2)
+            if(i_2_ < 3 && (Floor.tile_flags[1][i_0_][i] & 0x2) == 2)
                 i_2_++;
-            int i_3_ = (((-i_1_ + 128) * (Class40_Sub6.anIntArrayArrayArray2099[i_2_][i_0_][i]) - -(i_1_ * (Class40_Sub6.anIntArrayArrayArray2099[i_2_][i_0_ - -1][i]))) >> -1503923001);
+            int i_3_ = (((-i_1_ + 128) * (Class40_Sub6.tile_height[i_2_][i_0_][i]) - -(i_1_ * (Class40_Sub6.tile_height[i_2_][i_0_ - -1][i]))) >> -1503923001);
             int i_4_ = arg3 & 0x7f;
             if(arg0 > -116)
                 method432((byte) -86);
-            int i_5_ = ((i_1_ * (Class40_Sub6.anIntArrayArrayArray2099[i_2_][1 + i_0_][1 + i]) + (Class40_Sub6.anIntArrayArrayArray2099[i_2_][i_0_][1 + i] * (128 + -i_1_))) >> -820366297);
+            int i_5_ = ((i_1_ * (Class40_Sub6.tile_height[i_2_][1 + i_0_][1 + i]) + (Class40_Sub6.tile_height[i_2_][i_0_][1 + i] * (128 + -i_1_))) >> -820366297);
             return (128 + -i_4_) * i_3_ - -(i_5_ * i_4_) >> 2117999111;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, ("n.C(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
@@ -153,7 +153,7 @@ public class Class37 {
                 int i_8_ = 464 + -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) / 32);
                 int i_9_ = Class58.anInt1373 + Class43.anInt1020 & 0x7ff;
                 Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.method724(25, 5, 146, 151, i, i_8_, i_9_, Class51.anInt1187 + 256, Landscape.anIntArray1186, Class34.anIntArray852);
-                for(int i_10_ = 0; Class40_Sub5_Sub17_Sub2.anInt3040 > i_10_; i_10_++) {
+                for(int i_10_ = 0; GameObject.anInt3040 > i_10_; i_10_++) {
                     i = 2 + (4 * Class40_Sub5_Sub17_Sub4.anIntArray3149[i_10_] + -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32));
                     i_8_ = (2 + 4 * Class45.anIntArray1083[i_10_] - ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) / 32));
                     Class40_Sub4.method533(i_8_, i, (Class62.aClass40_Sub5_Sub14_Sub4Array1466[i_10_]), (byte) 99);
@@ -168,7 +168,7 @@ public class Class37 {
                         }
                     }
                 }
-                for(int i_13_ = 0; Class40_Sub5_Sub8.anInt2558 > i_13_; i_13_++) {
+                for(int i_13_ = 0; GameObjectDefinition.anInt2558 > i_13_; i_13_++) {
                     NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_13_]]);
                     if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.method784(1)) {
                         NpcDefinition class40_sub5_sub5 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300);
@@ -264,7 +264,7 @@ public class Class37 {
         }
     }
 
-    public static void method437(int arg0, boolean arg1, int arg2, int arg3, int arg4, Class40_Sub5_Sub8 arg5) {
+    public static void method437(int arg0, boolean arg1, int arg2, int arg3, int arg4, GameObjectDefinition arg5) {
         anInt866++;
         Class40_Sub2 class40_sub2 = new Class40_Sub2();
         class40_sub2.anInt2000 = 128 * arg5.anInt2502;
@@ -285,8 +285,8 @@ public class Class37 {
         class40_sub2.anInt2007 = (i_17_ + arg0) * 128;
         class40_sub2.anInt2013 = (arg4 + i) * 128;
         class40_sub2.anInt1997 = arg5.anInt2513;
-        if(arg5.anIntArray2534 != null) {
-            class40_sub2.aClass40_Sub5_Sub8_2011 = arg5;
+        if(arg5.childrenIds != null) {
+            class40_sub2.aGameObjectDefinition_2011 = arg5;
             class40_sub2.method528(57);
         }
         Class40_Sub5_Sub1.aClass45_2268.method904(class40_sub2, -126);

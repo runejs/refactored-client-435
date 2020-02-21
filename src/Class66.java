@@ -384,7 +384,7 @@ public class Class66 {
             if(arg0 < 123)
                 method1030((byte) -24);
             for(Class40_Sub2 class40_sub2 = ((Class40_Sub2) Class40_Sub5_Sub1.aClass45_2268.method902((byte) -90)); class40_sub2 != null; class40_sub2 = (Class40_Sub2) Class40_Sub5_Sub1.aClass45_2268.method909(-4)) {
-                if(class40_sub2.aClass40_Sub5_Sub8_2011 != null)
+                if(class40_sub2.aGameObjectDefinition_2011 != null)
                     class40_sub2.method528(48);
             }
         } catch(RuntimeException runtimeexception) {

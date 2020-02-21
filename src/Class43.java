@@ -849,9 +849,9 @@ public class Class43 {
                         else if((Class40_Sub5_Sub11.anIntArray2626[Class5.anInt208]) != -1)
                             Class13.method243((byte) 89, 205, 743, 466, (Class40_Sub5_Sub11.anIntArray2626[Class5.anInt208]), 553, Class13.anInt420, Landscape.anInt1166, 1);
                     }
-                    if(Floor.anInt2328 != Class3.anInt163) {
+                    if(Floor.anInt2328 != CollisionMap.anInt163) {
                         ISAAC.aBoolean505 = true;
-                        Class3.anInt163 = Floor.anInt2328;
+                        CollisionMap.anInt163 = Floor.anInt2328;
                     }
                     Floor.anInt2328 = -1;
                     if(Class40_Sub5_Sub17_Sub3.anInt3065 != Class25.anInt614) {

@@ -5,7 +5,7 @@
 public class Class40_Sub6 extends Node {
     public static RSString aClass1_2097;
     public static Class64 aClass64_2098;
-    public static int[][][] anIntArrayArrayArray2099;
+    public static int[][][] tile_height;
     public static int anInt2100;
     public static RSString aClass1_2101;
     public static RSString aClass1_2103;
@@ -30,7 +30,7 @@ public class Class40_Sub6 extends Node {
         anInt2107 = 0;
         anIntArray2113 = new int[128];
         aClass1_2109 = Class58.method978("overlay_multiway");
-        anIntArrayArrayArray2099 = new int[4][105][105];
+        tile_height = new int[4][105][105];
         aClass1_2114 = Class58.method978("hitmarks");
         aClass1_2103 = (Class58.method978("No matching objects found)1 please shorten search"));
         aClass1_2097 = aClass1_2103;
@@ -99,7 +99,7 @@ public class Class40_Sub6 extends Node {
     public static void method837(byte arg0) {
         try {
             aClass1_2111 = null;
-            anIntArrayArrayArray2099 = null;
+            tile_height = null;
             aClass1_2114 = null;
             aClass1_2121 = null;
             aClass40_Sub5_Sub12_2116 = null;

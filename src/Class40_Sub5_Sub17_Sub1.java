@@ -4,7 +4,7 @@
 
 import java.awt.*;
 
-public class Class40_Sub5_Sub17_Sub1 extends Class40_Sub5_Sub17 {
+public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     public static int anInt2956;
     public static int anInt2959;
     public static RSString aClass1_2963 = Class58.method978("Feb");
@@ -141,29 +141,29 @@ public class Class40_Sub5_Sub17_Sub1 extends Class40_Sub5_Sub17 {
             anInt2959++;
             Cache.outgoingbuffer.initBitAccess(114);
             int i = Cache.outgoingbuffer.putBits(8, (byte) -65);
-            if((i ^ 0xffffffff) > (Class40_Sub5_Sub8.anInt2558 ^ 0xffffffff)) {
-                for(int i_0_ = i; i_0_ < Class40_Sub5_Sub8.anInt2558; i_0_++)
+            if((i ^ 0xffffffff) > (GameObjectDefinition.anInt2558 ^ 0xffffffff)) {
+                for(int i_0_ = i; i_0_ < GameObjectDefinition.anInt2558; i_0_++)
                     Class6.anIntArray225[Class17.anInt460++] = Class40_Sub3.anIntArray2016[i_0_];
             }
-            if((i ^ 0xffffffff) < (Class40_Sub5_Sub8.anInt2558 ^ 0xffffffff))
+            if((i ^ 0xffffffff) < (GameObjectDefinition.anInt2558 ^ 0xffffffff))
                 throw new RuntimeException("gnpov1");
-            Class40_Sub5_Sub8.anInt2558 = 0;
+            GameObjectDefinition.anInt2558 = 0;
             if(arg0 == false) {
                 for(int i_1_ = 0; i_1_ < i; i_1_++) {
                     int i_2_ = Class40_Sub3.anIntArray2016[i_1_];
                     NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_2_]);
                     int i_3_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
                     if(i_3_ == 0) {
-                        Class40_Sub3.anIntArray2016[Class40_Sub5_Sub8.anInt2558++] = i_2_;
+                        Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i_2_;
                         class40_sub5_sub17_sub4_sub2.anInt3134 = Node.anInt926;
                     } else {
                         int i_4_ = Cache.outgoingbuffer.putBits(2, (byte) -65);
                         if((i_4_ ^ 0xffffffff) == -1) {
-                            Class40_Sub3.anIntArray2016[Class40_Sub5_Sub8.anInt2558++] = i_2_;
+                            Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i_2_;
                             class40_sub5_sub17_sub4_sub2.anInt3134 = Node.anInt926;
                             Class24.anIntArray578[Class40_Sub5_Sub17_Sub4.anInt3153++] = i_2_;
                         } else if((i_4_ ^ 0xffffffff) == -2) {
-                            Class40_Sub3.anIntArray2016[Class40_Sub5_Sub8.anInt2558++] = i_2_;
+                            Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i_2_;
                             class40_sub5_sub17_sub4_sub2.anInt3134 = Node.anInt926;
                             int i_5_ = Cache.outgoingbuffer.putBits(3, (byte) -65);
                             class40_sub5_sub17_sub4_sub2.method782(i_5_, (byte) -96, false);
@@ -171,7 +171,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Class40_Sub5_Sub17 {
                             if(i_6_ == 1)
                                 Class24.anIntArray578[Class40_Sub5_Sub17_Sub4.anInt3153++] = i_2_;
                         } else if((i_4_ ^ 0xffffffff) == -3) {
-                            Class40_Sub3.anIntArray2016[Class40_Sub5_Sub8.anInt2558++] = i_2_;
+                            Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i_2_;
                             class40_sub5_sub17_sub4_sub2.anInt3134 = Node.anInt926;
                             int i_7_ = Cache.outgoingbuffer.putBits(3, (byte) -65);
                             class40_sub5_sub17_sub4_sub2.method782(i_7_, (byte) -96, true);
@@ -335,7 +335,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Class40_Sub5_Sub17 {
                 Class39.aClass68_908 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.anInt2950), (class40_sub5_sub14_sub4.anInt2951), arg0, -4875);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class53.aClass1_1266, (byte) 21, Class8.aClass1_305);
-                Class40_Sub5_Sub17_Sub2.aClass68_3045 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.anInt2950), (class40_sub5_sub14_sub4.anInt2951), arg0, -4875);
+                GameObject.aClass68_3045 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.anInt2950), (class40_sub5_sub14_sub4.anInt2951), arg0, -4875);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 class40_sub5_sub14_sub4 = Class66.method1028(arg2, Main.aClass1_1788, (byte) 21, Class8.aClass1_305);
                 Class40_Sub5_Sub17_Sub6.aClass68_3243 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.anInt2950), (class40_sub5_sub14_sub4.anInt2951), arg0, -4875);
@@ -360,8 +360,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Class40_Sub5_Sub17 {
                 Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105.method695();
                 Class53.aClass40_Sub5_Sub14_Sub2_1270 = RSApplet.aClass40_Sub5_Sub14_Sub2_1.method691();
                 Class53.aClass40_Sub5_Sub14_Sub2_1270.method695();
-                Class40_Sub5_Sub17.aClass40_Sub5_Sub14_Sub2_2860 = Class56.aClass40_Sub5_Sub14_Sub2_1315.method691();
-                Class40_Sub5_Sub17.aClass40_Sub5_Sub14_Sub2_2860.method696();
+                Renderable.aClass40_Sub5_Sub14_Sub2_2860 = Class56.aClass40_Sub5_Sub14_Sub2_1315.method691();
+                Renderable.aClass40_Sub5_Sub14_Sub2_2860.method696();
                 HashTable.aClass40_Sub5_Sub14_Sub2_549 = RSApplet.aClass40_Sub5_Sub14_Sub2_1.method691();
                 HashTable.aClass40_Sub5_Sub14_Sub2_549.method696();
                 Class38_Sub1.aClass40_Sub5_Sub14_Sub2_1919 = Class35.aClass40_Sub5_Sub14_Sub2_1744.method691();
@@ -427,7 +427,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Class40_Sub5_Sub17 {
                 if(i_23_ > 103) {
                     i_23_ = 103;
                 }
-                if(((Floor.aByteArrayArrayArray2323[Player.anInt3267][i_23_][i_22_]) & 0x4) != 0)
+                if(((Floor.tile_flags[Player.anInt3267][i_23_][i_22_]) & 0x4) != 0)
                     i = Player.anInt3267;
                 int i_24_ = ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) >> -1546085145);
                 int i_25_ = ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) >> -26166617);
@@ -454,7 +454,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Class40_Sub5_Sub17 {
                             i_22_ = 103;
                         }
                         i_29_ += i_28_;
-                        if(((Floor.aByteArrayArrayArray2323[Player.anInt3267][i_23_][i_22_]) & 0x4 ^ 0xffffffff) != -1)
+                        if(((Floor.tile_flags[Player.anInt3267][i_23_][i_22_]) & 0x4 ^ 0xffffffff) != -1)
                             i = Player.anInt3267;
                         if((i_29_ ^ 0xffffffff) <= -65537) {
                             if(i_23_ < i_24_)
@@ -462,7 +462,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Class40_Sub5_Sub17 {
                             else if((i_24_ ^ 0xffffffff) > (i_23_ ^ 0xffffffff))
                                 i_23_--;
                             i_29_ -= 65536;
-                            if(((0x4 & (Floor.aByteArrayArrayArray2323[Player.anInt3267][i_23_][i_22_])) ^ 0xffffffff) != -1)
+                            if(((0x4 & (Floor.tile_flags[Player.anInt3267][i_23_][i_22_])) ^ 0xffffffff) != -1)
                                 i = Player.anInt3267;
                         }
                     }
@@ -475,7 +475,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Class40_Sub5_Sub17 {
                                 i_23_--;
                         } else
                             i_23_++;
-                        if(((Floor.aByteArrayArrayArray2323[Player.anInt3267][i_23_][i_22_]) & 0x4 ^ 0xffffffff) != -1)
+                        if(((Floor.tile_flags[Player.anInt3267][i_23_][i_22_]) & 0x4 ^ 0xffffffff) != -1)
                             i = Player.anInt3267;
                         i_31_ += i_30_;
                         if(i_31_ >= 65536) {
@@ -484,7 +484,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Class40_Sub5_Sub17 {
                                 i_22_++;
                             else if(i_22_ > i_25_)
                                 i_22_--;
-                            if(((Floor.aByteArrayArrayArray2323[Player.anInt3267][i_23_][i_22_]) & 0x4 ^ 0xffffffff) != -1)
+                            if(((Floor.tile_flags[Player.anInt3267][i_23_][i_22_]) & 0x4 ^ 0xffffffff) != -1)
                                 i = Player.anInt3267;
                         }
                     }
@@ -492,7 +492,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Class40_Sub5_Sub17 {
             }
             if(arg0 > -101)
                 aClass6_Sub1_3000 = null;
-            if(((Floor.aByteArrayArrayArray2323[Player.anInt3267][(Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) >> -1782384953][(Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) >> -1953891737]) & 0x4) != 0)
+            if(((Floor.tile_flags[Player.anInt3267][(Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) >> -1782384953][(Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) >> -1953891737]) & 0x4) != 0)
                 i = Player.anInt3267;
             return i;
         } catch(RuntimeException runtimeexception) {
@@ -500,283 +500,280 @@ public class Class40_Sub5_Sub17_Sub1 extends Class40_Sub5_Sub17 {
         }
     }
 
-    public static void method767(int objectId, int type, int rotation, int plane, Class2 class2, int arg4, int localY, int localX, Class3 class3) {
-        try {
-            anInt3003++;
-            if(!Class46.aBoolean1112 || (0x2 & (Floor.aByteArrayArrayArray2323[0][localX][localY]) ^ 0xffffffff) != -1 || ((0x10 & (Floor.aByteArrayArrayArray2323[plane][localX][localY]) ^ 0xffffffff) == -1 && ((Class59.method986(plane, localY, 0, localX) ^ 0xffffffff) == (Class40_Sub6.anInt2120 ^ 0xffffffff)))) {
-                if(Class64.anInt1529 > plane)
-                    Class64.anInt1529 = plane;
-                int i = (Class40_Sub6.anIntArrayArrayArray2099[plane][localX + 1][localY - -1]);
-                int i_34_ = Class40_Sub6.anIntArrayArrayArray2099[plane][localX][localY];
-                int i_35_ = (Class40_Sub6.anIntArrayArrayArray2099[plane][localX + 1][localY]);
-                int i_36_ = (Class40_Sub6.anIntArrayArrayArray2099[plane][localX][localY - -1]);
-                int i_37_ = ((localY << -651535449) + localX - (-(objectId << -1747689618) - 1073741824));
-                int i_38_ = type + (rotation << 1510398950);
-                int i_39_ = i_36_ + (i + (i_35_ + i_34_)) >> 1956433666;
-                Class40_Sub5_Sub8 class40_sub5_sub8 = Class40_Sub4.method535(objectId, (byte) 127);
-                if(class40_sub5_sub8.anInt2533 == 1)
-                    i_38_ += 256;
-                if((class40_sub5_sub8.anInt2546 ^ 0xffffffff) == -1)
-                    i_37_ += -2147483648;
-                if(class40_sub5_sub8.method601((byte) 125))
-                    Class37.method437(localY, true, plane, rotation, localX, class40_sub5_sub8);
-                if((type ^ 0xffffffff) == -23) {
-                    if(!Class46.aBoolean1112 || (class40_sub5_sub8.anInt2546 ^ 0xffffffff) != -1 || class40_sub5_sub8.aBoolean2547) {
-                        Class40_Sub5_Sub17 class40_sub5_sub17;
-                        if(class40_sub5_sub8.anInt2506 == -1 && class40_sub5_sub8.anIntArray2534 == null)
-                            class40_sub5_sub17 = class40_sub5_sub8.method600(i, i_36_, rotation, i_34_, 22, (byte) 124, i_35_);
-                        else
-                            class40_sub5_sub17 = (new Class40_Sub5_Sub17_Sub2(objectId, 22, rotation, i_34_, i_35_, i, i_36_, class40_sub5_sub8.anInt2506, true));
-                        class2.method132(plane, localX, localY, i_39_, class40_sub5_sub17, i_37_, i_38_);
-                        if(class40_sub5_sub8.aBoolean2501 && class40_sub5_sub8.anInt2546 == 1 && class3 != null)
-                            class3.method151((byte) -28, localY, localX);
-                    }
-                } else if((type ^ 0xffffffff) == -11 || (type ^ 0xffffffff) == -12) {
-                    Class40_Sub5_Sub17 class40_sub5_sub17;
-                    if(class40_sub5_sub8.anInt2506 == -1 && class40_sub5_sub8.anIntArray2534 == null)
-                        class40_sub5_sub17 = class40_sub5_sub8.method600(i, i_36_, rotation, i_34_, 10, (byte) 124, i_35_);
+    public static void renderObject(int objectId, int type, int face, int plane, Scene scene, int arg4, int localY, int localX, CollisionMap collisionMap) {
+        anInt3003++;
+        if(!Class46.lowMemory || (0x2 & (Floor.tile_flags[0][localX][localY]) ^ 0xffffffff) != -1 || ((0x10 & (Floor.tile_flags[plane][localX][localY]) ^ 0xffffffff) == -1 && ((Class59.method986(plane, localY, 0, localX) ^ 0xffffffff) == (Class40_Sub6.anInt2120 ^ 0xffffffff)))) {
+            if(Class64.setZ > plane)
+                Class64.setZ = plane;
+            int vertexHeight = Class40_Sub6.tile_height[plane][localX][localY];
+            int vertexHeightRight = Class40_Sub6.tile_height[plane][localX + 1][localY];
+            int vertexHeightTopRight = Class40_Sub6.tile_height[plane][localX + 1][localY + 1];
+            int vertexHeightTop = Class40_Sub6.tile_height[plane][localX][localY + 1];
+            int vertexMix = vertexHeight + vertexHeightRight + vertexHeightTopRight + vertexHeightTop >> 2;
+            GameObjectDefinition definition = GameObjectDefinition.getDefinition(objectId);
+            int hash = localX + (localY << 7) + (objectId << 14) + 1073741824;
+            int objectConfig = (byte) ((face << 6) + type);
+            if(definition.anInt2533 == 1)
+                objectConfig += 256;
+            if((definition.hasActions ^ 0xffffffff) == -1)
+                hash += -2147483648;
+            if(definition.method601((byte) 125))
+                Class37.method437(localY, true, plane, face, localX, definition);
+            if(type == 22) {
+                if(!Class46.lowMemory || (definition.hasActions ^ 0xffffffff) != -1 || definition.aBoolean2547) {
+                    Renderable renderable;
+                    if(definition.animationId == -1 && definition.childrenIds == null)
+                        renderable = definition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 22, (byte) 124, vertexHeightRight);
                     else
-                        class40_sub5_sub17 = new Class40_Sub5_Sub17_Sub2(objectId, 10, rotation, i_34_, i_35_, i, i_36_, (class40_sub5_sub8.anInt2506), true);
-                    if(class40_sub5_sub17 != null) {
-                        int i_40_;
-                        int i_41_;
-                        if((rotation ^ 0xffffffff) != -2 && rotation != 3) {
-                            i_41_ = class40_sub5_sub8.anInt2503;
-                            i_40_ = class40_sub5_sub8.anInt2515;
-                        } else {
-                            i_40_ = class40_sub5_sub8.anInt2503;
-                            i_41_ = class40_sub5_sub8.anInt2515;
-                        }
-                        int i_42_ = 0;
-                        if((type ^ 0xffffffff) == -12)
-                            i_42_ += 256;
-                        if(class2.method137(plane, localX, localY, i_39_, i_41_, i_40_, class40_sub5_sub17, i_42_, i_37_, i_38_) && class40_sub5_sub8.aBoolean2541) {
-                            Model class40_sub5_sub17_sub5;
-                            if(class40_sub5_sub17 instanceof Model)
-                                class40_sub5_sub17_sub5 = ((Model) class40_sub5_sub17);
-                            else
-                                class40_sub5_sub17_sub5 = class40_sub5_sub8.method600(i, i_36_, rotation, i_34_, 10, (byte) 124, i_35_);
-                            if(class40_sub5_sub17_sub5 != null) {
-                                for(int i_43_ = 0; ((i_43_ ^ 0xffffffff) >= (i_41_ ^ 0xffffffff)); i_43_++) {
-                                    for(int i_44_ = 0; i_40_ >= i_44_; i_44_++) {
-                                        int i_45_ = (class40_sub5_sub17_sub5.method805() / 4);
-                                        if(i_45_ > 30)
-                                            i_45_ = 30;
-                                        if(i_45_ > (Class19.aByteArrayArrayArray492[plane][localX - -i_43_][localY - -i_44_]))
-                                            Class19.aByteArrayArrayArray492[plane][i_43_ + localX][localY + i_44_] = (byte) i_45_;
-                                    }
+                        renderable = new GameObject(objectId, 22, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, definition.animationId, true);
+                    scene.method132(plane, localX, localY, vertexMix, renderable, hash, objectConfig);
+                    if(definition.solid && definition.hasActions == 1 && collisionMap != null)
+                        collisionMap.markBlocked((byte) -28, localY, localX);
+                }
+            } else if(type == 10 || type == 11) {
+                Renderable renderable;
+                if(definition.animationId == -1 && definition.childrenIds == null)
+                    renderable = definition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 10, (byte) 124, vertexHeightRight);
+                else
+                    renderable = new GameObject(objectId, 10, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (definition.animationId), true);
+                if(renderable != null) {
+                    int i_40_;
+                    int i_41_;
+                    if((face ^ 0xffffffff) != -2 && face != 3) {
+                        i_41_ = definition.anInt2503;
+                        i_40_ = definition.anInt2515;
+                    } else {
+                        i_40_ = definition.anInt2503;
+                        i_41_ = definition.anInt2515;
+                    }
+                    int i_42_ = 0;
+                    if((type ^ 0xffffffff) == -12)
+                        i_42_ += 256;
+                    if(scene.method137(plane, localX, localY, vertexMix, i_41_, i_40_, renderable, i_42_, hash, objectConfig) && definition.aBoolean2541) {
+                        Model class40_sub5_sub17_sub5;
+                        if(renderable instanceof Model)
+                            class40_sub5_sub17_sub5 = ((Model) renderable);
+                        else
+                            class40_sub5_sub17_sub5 = definition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 10, (byte) 124, vertexHeightRight);
+                        if(class40_sub5_sub17_sub5 != null) {
+                            for(int i_43_ = 0; ((i_43_ ^ 0xffffffff) >= (i_41_ ^ 0xffffffff)); i_43_++) {
+                                for(int i_44_ = 0; i_40_ >= i_44_; i_44_++) {
+                                    int i_45_ = (class40_sub5_sub17_sub5.method805() / 4);
+                                    if(i_45_ > 30)
+                                        i_45_ = 30;
+                                    if(i_45_ > (Class19.aByteArrayArrayArray492[plane][localX + i_43_][localY + i_44_]))
+                                        Class19.aByteArrayArrayArray492[plane][i_43_ + localX][localY + i_44_] = (byte) i_45_;
                                 }
                             }
                         }
-                    }
-                    if(class40_sub5_sub8.aBoolean2501 && class3 != null)
-                        class3.method154(localX, class40_sub5_sub8.aBoolean2528, 120, class40_sub5_sub8.anInt2515, rotation, localY, class40_sub5_sub8.anInt2503);
-                } else if(type >= 12) {
-                    Class40_Sub5_Sub17 class40_sub5_sub17;
-                    if(class40_sub5_sub8.anInt2506 != -1 || class40_sub5_sub8.anIntArray2534 != null)
-                        class40_sub5_sub17 = new Class40_Sub5_Sub17_Sub2(objectId, type, rotation, i_34_, i_35_, i, i_36_, (class40_sub5_sub8.anInt2506), true);
-                    else
-                        class40_sub5_sub17 = class40_sub5_sub8.method600(i, i_36_, rotation, i_34_, type, (byte) 124, i_35_);
-                    class2.method137(plane, localX, localY, i_39_, 1, 1, class40_sub5_sub17, 0, i_37_, i_38_);
-                    if((type ^ 0xffffffff) <= -13 && (type ^ 0xffffffff) >= -18 && type != 13 && (plane ^ 0xffffffff) < -1)
-                        Class6.anIntArrayArrayArray262[plane][localX][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY]), 2340));
-                    if(class40_sub5_sub8.aBoolean2501 && class3 != null)
-                        class3.method154(localX, class40_sub5_sub8.aBoolean2528, 108, class40_sub5_sub8.anInt2515, rotation, localY, class40_sub5_sub8.anInt2503);
-                } else if(type == 0) {
-                    Class40_Sub5_Sub17 class40_sub5_sub17;
-                    if(class40_sub5_sub8.anInt2506 == -1 && class40_sub5_sub8.anIntArray2534 == null)
-                        class40_sub5_sub17 = class40_sub5_sub8.method600(i, i_36_, rotation, i_34_, 0, (byte) 124, i_35_);
-                    else
-                        class40_sub5_sub17 = new Class40_Sub5_Sub17_Sub2(objectId, 0, rotation, i_34_, i_35_, i, i_36_, (class40_sub5_sub8.anInt2506), true);
-                    class2.method94(plane, localX, localY, i_39_, class40_sub5_sub17, null, Class32.anIntArray761[rotation], 0, i_37_, i_38_);
-                    if((rotation ^ 0xffffffff) != -1) {
-                        if((rotation ^ 0xffffffff) == -2) {
-                            if(class40_sub5_sub8.aBoolean2541) {
-                                Class19.aByteArrayArrayArray492[plane][localX][localY - -1] = (byte) 50;
-                                Class19.aByteArrayArrayArray492[plane][localX - -1][1 + localY] = (byte) 50;
-                            }
-                            if(class40_sub5_sub8.aBoolean2521)
-                                Class6.anIntArrayArrayArray262[plane][localX][localY + 1] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY + 1]), 1170));
-                        } else if((rotation ^ 0xffffffff) != -3) {
-                            if(rotation == 3) {
-                                if(class40_sub5_sub8.aBoolean2541) {
-                                    Class19.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
-                                    Class19.aByteArrayArrayArray492[plane][localX + 1][localY] = (byte) 50;
-                                }
-                                if(class40_sub5_sub8.aBoolean2521)
-                                    Class6.anIntArrayArrayArray262[plane][localX][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY]), 1170));
-                            }
-                        } else {
-                            if(class40_sub5_sub8.aBoolean2541) {
-                                Class19.aByteArrayArrayArray492[plane][1 + localX][localY] = (byte) 50;
-                                Class19.aByteArrayArrayArray492[plane][localX - -1][1 + localY] = (byte) 50;
-                            }
-                            if(class40_sub5_sub8.aBoolean2521)
-                                Class6.anIntArrayArrayArray262[plane][localX - -1][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX - -1][localY]), 585));
-                        }
-                    } else {
-                        if(class40_sub5_sub8.aBoolean2541) {
-                            Class19.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
-                            Class19.aByteArrayArrayArray492[plane][localX][(localY - -1)] = (byte) 50;
-                        }
-                        if(class40_sub5_sub8.aBoolean2521)
-                            Class6.anIntArrayArrayArray262[plane][localX][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY]), 585));
-                    }
-                    if(class40_sub5_sub8.aBoolean2501 && class3 != null)
-                        class3.method150(localY, type, rotation, localX, class40_sub5_sub8.aBoolean2528, (byte) 95);
-                    if((class40_sub5_sub8.anInt2505 ^ 0xffffffff) != -17)
-                        class2.method115(plane, localX, localY, class40_sub5_sub8.anInt2505);
-                } else if((type ^ 0xffffffff) == -2) {
-                    Class40_Sub5_Sub17 class40_sub5_sub17;
-                    if(class40_sub5_sub8.anInt2506 == -1 && class40_sub5_sub8.anIntArray2534 == null)
-                        class40_sub5_sub17 = class40_sub5_sub8.method600(i, i_36_, rotation, i_34_, 1, (byte) 124, i_35_);
-                    else
-                        class40_sub5_sub17 = new Class40_Sub5_Sub17_Sub2(objectId, 1, rotation, i_34_, i_35_, i, i_36_, (class40_sub5_sub8.anInt2506), true);
-                    class2.method94(plane, localX, localY, i_39_, class40_sub5_sub17, null, Class40_Sub5_Sub15.anIntArray2788[rotation], 0, i_37_, i_38_);
-                    if(class40_sub5_sub8.aBoolean2541) {
-                        if(rotation == 0)
-                            Class19.aByteArrayArrayArray492[plane][localX][(localY - -1)] = (byte) 50;
-                        else if(rotation == 1)
-                            Class19.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
-                        else if((rotation ^ 0xffffffff) == -3)
-                            Class19.aByteArrayArrayArray492[plane][localX + 1][localY] = (byte) 50;
-                        else if(rotation == 3)
-                            Class19.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
-                    }
-                    if(class40_sub5_sub8.aBoolean2501 && class3 != null)
-                        class3.method150(localY, type, rotation, localX, class40_sub5_sub8.aBoolean2528, (byte) 95);
-                } else if((type ^ 0xffffffff) == -3) {
-                    int i_46_ = 0x3 & rotation + 1;
-                    Class40_Sub5_Sub17 class40_sub5_sub17;
-                    Class40_Sub5_Sub17 class40_sub5_sub17_47_;
-                    if(class40_sub5_sub8.anInt2506 == -1 && class40_sub5_sub8.anIntArray2534 == null) {
-                        class40_sub5_sub17 = class40_sub5_sub8.method600(i, i_36_, rotation + 4, i_34_, 2, (byte) 124, i_35_);
-                        class40_sub5_sub17_47_ = class40_sub5_sub8.method600(i, i_36_, i_46_, i_34_, 2, (byte) 124, i_35_);
-                    } else {
-                        class40_sub5_sub17 = new Class40_Sub5_Sub17_Sub2(objectId, 2, 4 + rotation, i_34_, i_35_, i, i_36_, (class40_sub5_sub8.anInt2506), true);
-                        class40_sub5_sub17_47_ = new Class40_Sub5_Sub17_Sub2(objectId, 2, i_46_, i_34_, i_35_, i, i_36_, (class40_sub5_sub8.anInt2506), true);
-                    }
-                    class2.method94(plane, localX, localY, i_39_, class40_sub5_sub17, class40_sub5_sub17_47_, Class32.anIntArray761[rotation], Class32.anIntArray761[i_46_], i_37_, i_38_);
-                    if(class40_sub5_sub8.aBoolean2521) {
-                        if((rotation ^ 0xffffffff) != -1) {
-                            if((rotation ^ 0xffffffff) == -2) {
-                                Class6.anIntArrayArrayArray262[plane][localX][1 + localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][1 + localY]), 1170));
-                                Class6.anIntArrayArrayArray262[plane][1 + localX][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][1 + localX][localY]), 585));
-                            } else if((rotation ^ 0xffffffff) == -3) {
-                                Class6.anIntArrayArrayArray262[plane][localX + 1][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX + 1][localY]), 585));
-                                Class6.anIntArrayArrayArray262[plane][localX][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY]), 1170));
-                            } else if(rotation == 3) {
-                                Class6.anIntArrayArrayArray262[plane][localX][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY]), 1170));
-                                Class6.anIntArrayArrayArray262[plane][localX][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY]), 585));
-                            }
-                        } else {
-                            Class6.anIntArrayArrayArray262[plane][localX][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY]), 585));
-                            Class6.anIntArrayArrayArray262[plane][localX][(localY - -1)] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY - -1]), 1170));
-                        }
-                    }
-                    if(class40_sub5_sub8.aBoolean2501 && class3 != null)
-                        class3.method150(localY, type, rotation, localX, class40_sub5_sub8.aBoolean2528, (byte) 95);
-                    if((class40_sub5_sub8.anInt2505 ^ 0xffffffff) != -17)
-                        class2.method115(plane, localX, localY, class40_sub5_sub8.anInt2505);
-                } else if((type ^ 0xffffffff) == -4) {
-                    Class40_Sub5_Sub17 class40_sub5_sub17;
-                    if(class40_sub5_sub8.anInt2506 != -1 || class40_sub5_sub8.anIntArray2534 != null)
-                        class40_sub5_sub17 = new Class40_Sub5_Sub17_Sub2(objectId, 3, rotation, i_34_, i_35_, i, i_36_, (class40_sub5_sub8.anInt2506), true);
-                    else
-                        class40_sub5_sub17 = class40_sub5_sub8.method600(i, i_36_, rotation, i_34_, 3, (byte) 124, i_35_);
-                    class2.method94(plane, localX, localY, i_39_, class40_sub5_sub17, null, Class40_Sub5_Sub15.anIntArray2788[rotation], 0, i_37_, i_38_);
-                    if(class40_sub5_sub8.aBoolean2541) {
-                        if((rotation ^ 0xffffffff) != -1) {
-                            if(rotation == 1)
-                                Class19.aByteArrayArrayArray492[plane][1 + localX][localY - -1] = (byte) 50;
-                            else if((rotation ^ 0xffffffff) == -3)
-                                Class19.aByteArrayArrayArray492[plane][localX - -1][localY] = (byte) 50;
-                            else if(rotation == 3)
-                                Class19.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
-                        } else
-                            Class19.aByteArrayArrayArray492[plane][localX][(localY + 1)] = (byte) 50;
-                    }
-                    if(class40_sub5_sub8.aBoolean2501 && class3 != null)
-                        class3.method150(localY, type, rotation, localX, class40_sub5_sub8.aBoolean2528, (byte) 95);
-                } else if((type ^ 0xffffffff) == -10) {
-                    Class40_Sub5_Sub17 class40_sub5_sub17;
-                    if(class40_sub5_sub8.anInt2506 == -1 && class40_sub5_sub8.anIntArray2534 == null)
-                        class40_sub5_sub17 = class40_sub5_sub8.method600(i, i_36_, rotation, i_34_, type, (byte) 124, i_35_);
-                    else
-                        class40_sub5_sub17 = new Class40_Sub5_Sub17_Sub2(objectId, type, rotation, i_34_, i_35_, i, i_36_, (class40_sub5_sub8.anInt2506), true);
-                    class2.method137(plane, localX, localY, i_39_, 1, 1, class40_sub5_sub17, 0, i_37_, i_38_);
-                    if(class40_sub5_sub8.aBoolean2501 && class3 != null)
-                        class3.method154(localX, class40_sub5_sub8.aBoolean2528, -36, class40_sub5_sub8.anInt2515, rotation, localY, class40_sub5_sub8.anInt2503);
-                } else {
-                    if(class40_sub5_sub8.aBoolean2530) {
-                        if(rotation == 1) {
-                            int i_48_ = i_36_;
-                            i_36_ = i;
-                            i = i_35_;
-                            i_35_ = i_34_;
-                            i_34_ = i_48_;
-                        } else if(rotation == 2) {
-                            int i_49_ = i_36_;
-                            i_36_ = i_35_;
-                            i_35_ = i_49_;
-                            i_49_ = i;
-                            i = i_34_;
-                            i_34_ = i_49_;
-                        } else if((rotation ^ 0xffffffff) == -4) {
-                            int i_50_ = i_36_;
-                            i_36_ = i_34_;
-                            i_34_ = i_35_;
-                            i_35_ = i;
-                            i = i_50_;
-                        }
-                    }
-                    if(type == 4) {
-                        Class40_Sub5_Sub17 class40_sub5_sub17;
-                        if(class40_sub5_sub8.anInt2506 == -1 && class40_sub5_sub8.anIntArray2534 == null)
-                            class40_sub5_sub17 = class40_sub5_sub8.method600(i, i_36_, 0, i_34_, 4, (byte) 124, i_35_);
-                        else
-                            class40_sub5_sub17 = (new Class40_Sub5_Sub17_Sub2(objectId, 4, 0, i_34_, i_35_, i, i_36_, class40_sub5_sub8.anInt2506, true));
-                        class2.method109(plane, localX, localY, i_39_, class40_sub5_sub17, Class32.anIntArray761[rotation], 512 * rotation, 0, 0, i_37_, i_38_);
-                    } else if((type ^ 0xffffffff) == -6) {
-                        int i_51_ = class2.method122(plane, localX, localY);
-                        int i_52_ = 16;
-                        if((i_51_ ^ 0xffffffff) < -1)
-                            i_52_ = (Class40_Sub4.method535((0x1fffedf2 & i_51_) >> 1054745038, (byte) 126).anInt2505);
-                        Class40_Sub5_Sub17 class40_sub5_sub17;
-                        if((class40_sub5_sub8.anInt2506 ^ 0xffffffff) == 0 && class40_sub5_sub8.anIntArray2534 == null)
-                            class40_sub5_sub17 = class40_sub5_sub8.method600(i, i_36_, 0, i_34_, 4, (byte) 124, i_35_);
-                        else
-                            class40_sub5_sub17 = (new Class40_Sub5_Sub17_Sub2(objectId, 4, 0, i_34_, i_35_, i, i_36_, class40_sub5_sub8.anInt2506, true));
-                        class2.method109(plane, localX, localY, i_39_, class40_sub5_sub17, Class32.anIntArray761[rotation], rotation * 512, i_52_ * Class27.anIntArray666[rotation], (Class68_Sub1.anIntArray2207[rotation] * i_52_), i_37_, i_38_);
-                    } else if(type == 6) {
-                        Class40_Sub5_Sub17 class40_sub5_sub17;
-                        if(class40_sub5_sub8.anInt2506 == -1 && class40_sub5_sub8.anIntArray2534 == null)
-                            class40_sub5_sub17 = class40_sub5_sub8.method600(i, i_36_, 0, i_34_, 4, (byte) 124, i_35_);
-                        else
-                            class40_sub5_sub17 = (new Class40_Sub5_Sub17_Sub2(objectId, 4, 0, i_34_, i_35_, i, i_36_, class40_sub5_sub8.anInt2506, true));
-                        class2.method109(plane, localX, localY, i_39_, class40_sub5_sub17, 256, rotation, 0, 0, i_37_, i_38_);
-                    } else if((type ^ 0xffffffff) == -8) {
-                        Class40_Sub5_Sub17 class40_sub5_sub17;
-                        if((class40_sub5_sub8.anInt2506 ^ 0xffffffff) == 0 && class40_sub5_sub8.anIntArray2534 == null)
-                            class40_sub5_sub17 = class40_sub5_sub8.method600(i, i_36_, 0, i_34_, 4, (byte) 124, i_35_);
-                        else
-                            class40_sub5_sub17 = (new Class40_Sub5_Sub17_Sub2(objectId, 4, 0, i_34_, i_35_, i, i_36_, class40_sub5_sub8.anInt2506, true));
-                        class2.method109(plane, localX, localY, i_39_, class40_sub5_sub17, 512, rotation, 0, 0, i_37_, i_38_);
-                    } else if(type == 8) {
-                        Class40_Sub5_Sub17 class40_sub5_sub17;
-                        if((class40_sub5_sub8.anInt2506 ^ 0xffffffff) == 0 && class40_sub5_sub8.anIntArray2534 == null)
-                            class40_sub5_sub17 = class40_sub5_sub8.method600(i, i_36_, 0, i_34_, 4, (byte) 124, i_35_);
-                        else
-                            class40_sub5_sub17 = (new Class40_Sub5_Sub17_Sub2(objectId, 4, 0, i_34_, i_35_, i, i_36_, class40_sub5_sub8.anInt2506, true));
-                        class2.method109(plane, localX, localY, i_39_, class40_sub5_sub17, 768, rotation, 0, 0, i_37_, i_38_);
-                    } else {
-                        int i_53_ = -104 / ((-72 - arg4) / 45);
                     }
                 }
+                if(definition.solid && collisionMap != null)
+                    collisionMap.method154(localX, definition.aBoolean2528, 120, definition.anInt2515, face, localY, definition.anInt2503);
+            } else if(type >= 12) {
+                Renderable renderable;
+                if(definition.animationId != -1 || definition.childrenIds != null)
+                    renderable = new GameObject(objectId, type, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (definition.animationId), true);
+                else
+                    renderable = definition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, type, (byte) 124, vertexHeightRight);
+                scene.method137(plane, localX, localY, vertexMix, 1, 1, renderable, 0, hash, objectConfig);
+                if((type ^ 0xffffffff) <= -13 && (type ^ 0xffffffff) >= -18 && type != 13 && (plane ^ 0xffffffff) < -1)
+                    Class6.anIntArrayArrayArray262[plane][localX][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY]), 2340));
+                if(definition.solid && collisionMap != null)
+                    collisionMap.method154(localX, definition.aBoolean2528, 108, definition.anInt2515, face, localY, definition.anInt2503);
+            } else if(type == 0) {
+                Renderable renderable;
+                if(definition.animationId == -1 && definition.childrenIds == null)
+                    renderable = definition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 0, (byte) 124, vertexHeightRight);
+                else
+                    renderable = new GameObject(objectId, 0, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (definition.animationId), true);
+                scene.method94(plane, localX, localY, vertexMix, renderable, null, Class32.anIntArray761[face], 0, hash, objectConfig);
+                if((face ^ 0xffffffff) != -1) {
+                    if((face ^ 0xffffffff) == -2) {
+                        if(definition.aBoolean2541) {
+                            Class19.aByteArrayArrayArray492[plane][localX][localY + 1] = (byte) 50;
+                            Class19.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
+                        }
+                        if(definition.aBoolean2521)
+                            Class6.anIntArrayArrayArray262[plane][localX][localY + 1] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY + 1]), 1170));
+                    } else if((face ^ 0xffffffff) != -3) {
+                        if(face == 3) {
+                            if(definition.aBoolean2541) {
+                                Class19.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
+                                Class19.aByteArrayArrayArray492[plane][localX + 1][localY] = (byte) 50;
+                            }
+                            if(definition.aBoolean2521)
+                                Class6.anIntArrayArrayArray262[plane][localX][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY]), 1170));
+                        }
+                    } else {
+                        if(definition.aBoolean2541) {
+                            Class19.aByteArrayArrayArray492[plane][1 + localX][localY] = (byte) 50;
+                            Class19.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
+                        }
+                        if(definition.aBoolean2521)
+                            Class6.anIntArrayArrayArray262[plane][localX + 1][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX + 1][localY]), 585));
+                    }
+                } else {
+                    if(definition.aBoolean2541) {
+                        Class19.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
+                        Class19.aByteArrayArrayArray492[plane][localX][(localY + 1)] = (byte) 50;
+                    }
+                    if(definition.aBoolean2521)
+                        Class6.anIntArrayArrayArray262[plane][localX][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY]), 585));
+                }
+                if(definition.solid && collisionMap != null)
+                    collisionMap.method150(localY, type, face, localX, definition.aBoolean2528, (byte) 95);
+                if((definition.anInt2505 ^ 0xffffffff) != -17)
+                    scene.method115(plane, localX, localY, definition.anInt2505);
+            } else if((type ^ 0xffffffff) == -2) {
+                Renderable renderable;
+                if(definition.animationId == -1 && definition.childrenIds == null)
+                    renderable = definition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 1, (byte) 124, vertexHeightRight);
+                else
+                    renderable = new GameObject(objectId, 1, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (definition.animationId), true);
+                scene.method94(plane, localX, localY, vertexMix, renderable, null, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash, objectConfig);
+                if(definition.aBoolean2541) {
+                    if(face == 0)
+                        Class19.aByteArrayArrayArray492[plane][localX][(localY + 1)] = (byte) 50;
+                    else if(face == 1)
+                        Class19.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
+                    else if((face ^ 0xffffffff) == -3)
+                        Class19.aByteArrayArrayArray492[plane][localX + 1][localY] = (byte) 50;
+                    else if(face == 3)
+                        Class19.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
+                }
+                if(definition.solid && collisionMap != null)
+                    collisionMap.method150(localY, type, face, localX, definition.aBoolean2528, (byte) 95);
+            } else if((type ^ 0xffffffff) == -3) {
+                int i_46_ = 0x3 & face + 1;
+                Renderable renderable;
+                Renderable renderable_47_;
+                if(definition.animationId == -1 && definition.childrenIds == null) {
+                    renderable = definition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face + 4, vertexHeight, 2, (byte) 124, vertexHeightRight);
+                    renderable_47_ = definition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, i_46_, vertexHeight, 2, (byte) 124, vertexHeightRight);
+                } else {
+                    renderable = new GameObject(objectId, 2, 4 + face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (definition.animationId), true);
+                    renderable_47_ = new GameObject(objectId, 2, i_46_, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (definition.animationId), true);
+                }
+                scene.method94(plane, localX, localY, vertexMix, renderable, renderable_47_, Class32.anIntArray761[face], Class32.anIntArray761[i_46_], hash, objectConfig);
+                if(definition.aBoolean2521) {
+                    if((face ^ 0xffffffff) != -1) {
+                        if((face ^ 0xffffffff) == -2) {
+                            Class6.anIntArrayArrayArray262[plane][localX][1 + localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][1 + localY]), 1170));
+                            Class6.anIntArrayArrayArray262[plane][1 + localX][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][1 + localX][localY]), 585));
+                        } else if((face ^ 0xffffffff) == -3) {
+                            Class6.anIntArrayArrayArray262[plane][localX + 1][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX + 1][localY]), 585));
+                            Class6.anIntArrayArrayArray262[plane][localX][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY]), 1170));
+                        } else if(face == 3) {
+                            Class6.anIntArrayArrayArray262[plane][localX][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY]), 1170));
+                            Class6.anIntArrayArrayArray262[plane][localX][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY]), 585));
+                        }
+                    } else {
+                        Class6.anIntArrayArrayArray262[plane][localX][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY]), 585));
+                        Class6.anIntArrayArrayArray262[plane][localX][(localY + 1)] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY + 1]), 1170));
+                    }
+                }
+                if(definition.solid && collisionMap != null)
+                    collisionMap.method150(localY, type, face, localX, definition.aBoolean2528, (byte) 95);
+                if((definition.anInt2505 ^ 0xffffffff) != -17)
+                    scene.method115(plane, localX, localY, definition.anInt2505);
+            } else if((type ^ 0xffffffff) == -4) {
+                Renderable renderable;
+                if(definition.animationId != -1 || definition.childrenIds != null)
+                    renderable = new GameObject(objectId, 3, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (definition.animationId), true);
+                else
+                    renderable = definition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 3, (byte) 124, vertexHeightRight);
+                scene.method94(plane, localX, localY, vertexMix, renderable, null, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash, objectConfig);
+                if(definition.aBoolean2541) {
+                    if((face ^ 0xffffffff) != -1) {
+                        if(face == 1)
+                            Class19.aByteArrayArrayArray492[plane][1 + localX][localY + 1] = (byte) 50;
+                        else if((face ^ 0xffffffff) == -3)
+                            Class19.aByteArrayArrayArray492[plane][localX + 1][localY] = (byte) 50;
+                        else if(face == 3)
+                            Class19.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
+                    } else
+                        Class19.aByteArrayArrayArray492[plane][localX][(localY + 1)] = (byte) 50;
+                }
+                if(definition.solid && collisionMap != null)
+                    collisionMap.method150(localY, type, face, localX, definition.aBoolean2528, (byte) 95);
+            } else if((type ^ 0xffffffff) == -10) {
+                Renderable renderable;
+                if(definition.animationId == -1 && definition.childrenIds == null)
+                    renderable = definition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, type, (byte) 124, vertexHeightRight);
+                else
+                    renderable = new GameObject(objectId, type, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (definition.animationId), true);
+                scene.method137(plane, localX, localY, vertexMix, 1, 1, renderable, 0, hash, objectConfig);
+                if(definition.solid && collisionMap != null)
+                    collisionMap.method154(localX, definition.aBoolean2528, -36, definition.anInt2515, face, localY, definition.anInt2503);
+            } else {
+                if(definition.aBoolean2530) {
+                    if(face == 1) {
+                        int i_48_ = vertexHeightTop;
+                        vertexHeightTop = vertexHeightTopRight;
+                        vertexHeightTopRight = vertexHeightRight;
+                        vertexHeightRight = vertexHeight;
+                        vertexHeight = i_48_;
+                    } else if(face == 2) {
+                        int i_49_ = vertexHeightTop;
+                        vertexHeightTop = vertexHeightRight;
+                        vertexHeightRight = i_49_;
+                        i_49_ = vertexHeightTopRight;
+                        vertexHeightTopRight = vertexHeight;
+                        vertexHeight = i_49_;
+                    } else if((face ^ 0xffffffff) == -4) {
+                        int i_50_ = vertexHeightTop;
+                        vertexHeightTop = vertexHeight;
+                        vertexHeight = vertexHeightRight;
+                        vertexHeightRight = vertexHeightTopRight;
+                        vertexHeightTopRight = i_50_;
+                    }
+                }
+                if(type == 4) {
+                    Renderable renderable;
+                    if(definition.animationId == -1 && definition.childrenIds == null)
+                        renderable = definition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, (byte) 124, vertexHeightRight);
+                    else
+                        renderable = (new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, definition.animationId, true));
+                    scene.method109(plane, localX, localY, vertexMix, renderable, Class32.anIntArray761[face], 512 * face, 0, 0, hash, objectConfig);
+                } else if((type ^ 0xffffffff) == -6) {
+                    int i_51_ = scene.method122(plane, localX, localY);
+                    int i_52_ = 16;
+                    if((i_51_ ^ 0xffffffff) < -1)
+                        i_52_ = (GameObjectDefinition.getDefinition((0x1fffedf2 & i_51_) >> 1054745038).anInt2505);
+                    Renderable renderable;
+                    if((definition.animationId ^ 0xffffffff) == 0 && definition.childrenIds == null)
+                        renderable = definition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, (byte) 124, vertexHeightRight);
+                    else
+                        renderable = (new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, definition.animationId, true));
+                    scene.method109(plane, localX, localY, vertexMix, renderable, Class32.anIntArray761[face], face * 512, i_52_ * Class27.anIntArray666[face], (Class68_Sub1.anIntArray2207[face] * i_52_), hash, objectConfig);
+                } else if(type == 6) {
+                    Renderable renderable;
+                    if(definition.animationId == -1 && definition.childrenIds == null)
+                        renderable = definition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, (byte) 124, vertexHeightRight);
+                    else
+                        renderable = (new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, definition.animationId, true));
+                    scene.method109(plane, localX, localY, vertexMix, renderable, 256, face, 0, 0, hash, objectConfig);
+                } else if((type ^ 0xffffffff) == -8) {
+                    Renderable renderable;
+                    if((definition.animationId ^ 0xffffffff) == 0 && definition.childrenIds == null)
+                        renderable = definition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, (byte) 124, vertexHeightRight);
+                    else
+                        renderable = (new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, definition.animationId, true));
+                    scene.method109(plane, localX, localY, vertexMix, renderable, 512, face, 0, 0, hash, objectConfig);
+                } else if(type == 8) {
+                    Renderable renderable;
+                    if((definition.animationId ^ 0xffffffff) == 0 && definition.childrenIds == null)
+                        renderable = definition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, (byte) 124, vertexHeightRight);
+                    else
+                        renderable = (new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, definition.animationId, true));
+                    scene.method109(plane, localX, localY, vertexMix, renderable, 768, face, 0, 0, hash, objectConfig);
+                } else {
+                    int i_53_ = -104 / ((-72 - arg4) / 45);
+                }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("d.D(" + rotation + ',' + (class3 != null ? "{...}" : "null") + ',' + localX + ',' + (class2 != null ? "{...}" : "null") + ',' + arg4 + ',' + type + ',' + objectId + ',' + localY + ',' + plane + ')'));
         }
+
     }
 
     public Model method756(int arg0) {
@@ -802,7 +799,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Class40_Sub5_Sub17 {
         if(arg0 >= 35) {
             aDouble2992 += (aDouble2996 * 0.5 * (double) arg1 * (double) arg1 + (double) arg1 * aDouble2972);
             aDouble2972 += (double) arg1 * aDouble2996;
-            anInt3013 = 0x7ff & (int) (Math.atan2(aDouble3011, aDouble3001) * 325.949) - -1024;
+            anInt3013 = 0x7ff & (int) (Math.atan2(aDouble3011, aDouble3001) * 325.949) + 1024;
             anInt2976 = 0x7ff & (int) (325.949 * Math.atan2(aDouble2972, aDouble2995));
             if(aClass40_Sub5_Sub7_3006 != null) {
                 anInt2973 += arg1;

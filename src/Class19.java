@@ -29,7 +29,7 @@ public class Class19 {
     public int anInt471 = 0;
     public int anInt472;
     public int anInt473;
-    public Class40_Sub5_Sub17 aClass40_Sub5_Sub17_474;
+    public Renderable aRenderable_474;
     public int anInt476;
     public int anInt477;
     public int anInt479;

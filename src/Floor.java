@@ -10,7 +10,7 @@ public class Floor extends SubNode {
     public static int anInt2318;
     public static int anInt2319 = 0;
     public static int anInt2321;
-    public static byte[][][] aByteArrayArrayArray2323;
+    public static byte[][][] tile_flags;
     public static int[] anIntArray2324;
     public static RSString aClass1_2325;
     public static int anInt2326;
@@ -35,7 +35,7 @@ public class Floor extends SubNode {
         aClass1_2327 = Class58.method978("-5berpr-Ufen Sie Ihr Mitteilungsfach)3");
         anInt2321 = 0;
         aClass1_2325 = aClass1_2314;
-        aByteArrayArrayArray2323 = new byte[4][104][104];
+        tile_flags = new byte[4][104][104];
         anInt2328 = -1;
         anIntArrayArrayArray2333 = new int[4][13][13];
         aLong2344 = 0L;
@@ -61,7 +61,7 @@ public class Floor extends SubNode {
     public static void method554(byte arg0) {
         try {
             aByteArrayArrayArray2335 = null;
-            aByteArrayArrayArray2323 = null;
+            tile_flags = null;
             anIntArrayArrayArray2333 = null;
             aClass1_2315 = null;
             aClass1_2314 = null;
@@ -110,7 +110,7 @@ public class Floor extends SubNode {
             anInt2316++;
             if((Class51.anInt1197 ^ 0xffffffff) != (arg0 ^ 0xffffffff)) {
                 if((Class51.anInt1197 ^ 0xffffffff) == -1)
-                    Class3.method144(12433);
+                    CollisionMap.method144(12433);
                 if(arg0 == 20 || arg0 == 40) {
                     Main.anInt1756 = 0;
                     anInt2321 = 0;
@@ -128,7 +128,7 @@ public class Floor extends SubNode {
                     Class37.anInt874 = 0;
                     PacketBuffer.anInt2231 = 1;
                     Class40_Sub5_Sub10.anInt2591 = 0;
-                    Class40_Sub5_Sub17_Sub2.anInt3048 = 1;
+                    GameObject.anInt3048 = 1;
                     Class68.anInt1634 = 0;
                 }
                 if((arg0 ^ 0xffffffff) == -1 || arg0 == 35) {

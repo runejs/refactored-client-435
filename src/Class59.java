@@ -50,8 +50,8 @@ public class Class59 {
         try {
             anInt1381++;
             int i = 70 / ((62 - arg0) / 55);
-            Class2.aBoolean88 = true;
-            Class46.aBoolean1112 = true;
+            Scene.aBoolean88 = true;
+            Class46.lowMemory = true;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "tc.E(" + arg0 + ')');
         }
@@ -120,9 +120,9 @@ public class Class59 {
             if(arg2 != 0)
                 method986(-73, 123, 115, 98);
             anInt1382++;
-            if(((Floor.aByteArrayArrayArray2323[arg0][arg3][arg1] & 0x8) ^ 0xffffffff) != -1)
+            if(((Floor.tile_flags[arg0][arg3][arg1] & 0x8) ^ 0xffffffff) != -1)
                 return 0;
-            if((arg0 ^ 0xffffffff) < -1 && ((Floor.aByteArrayArrayArray2323[1][arg3][arg1] & 0x2) ^ 0xffffffff) != -1)
+            if((arg0 ^ 0xffffffff) < -1 && ((Floor.tile_flags[1][arg3][arg1] & 0x2) ^ 0xffffffff) != -1)
                 return -1 + arg0;
             return arg0;
         } catch(RuntimeException runtimeexception) {

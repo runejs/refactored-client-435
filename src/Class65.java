@@ -73,7 +73,7 @@ public class Class65 {
             Class6.anIntArrayArrayArray262 = new int[4][105][105];
             if(arg0 != true)
                 aClass1_1530 = null;
-            Class64.anInt1529 = 99;
+            Class64.setZ = 99;
             Class19.aByteArrayArrayArray492 = new byte[4][105][105];
             Class25.anIntArray612 = new int[104];
             Class67.anIntArray1579 = new int[104];

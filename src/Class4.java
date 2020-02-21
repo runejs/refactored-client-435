@@ -53,10 +53,10 @@ public class Class4 {
             int i_0_ = arg3 / arg2;
             int i_1_ = arg2 - 1 & arg3;
             int i_2_ = arg0 / arg2;
-            int i_3_ = Class3.method157(arg1 + -15177, i_2_, i_0_);
-            int i_4_ = Class3.method157(arg1 ^ arg1, 1 + i_2_, i_0_);
-            int i_5_ = Class3.method157(0, i_2_, 1 + i_0_);
-            int i_6_ = Class3.method157(0, 1 + i_2_, 1 + i_0_);
+            int i_3_ = CollisionMap.method157(arg1 + -15177, i_2_, i_0_);
+            int i_4_ = CollisionMap.method157(arg1 ^ arg1, 1 + i_2_, i_0_);
+            int i_5_ = CollisionMap.method157(0, i_2_, 1 + i_0_);
+            int i_6_ = CollisionMap.method157(0, 1 + i_2_, 1 + i_0_);
             int i_7_ = RSApplet.method32(i_3_, arg2, i_4_, true, i);
             int i_8_ = RSApplet.method32(i_5_, arg2, i_6_, true, i);
             return RSApplet.method32(i_7_, arg2, i_8_, true, i_1_);

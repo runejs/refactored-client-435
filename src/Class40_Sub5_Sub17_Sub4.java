@@ -4,7 +4,7 @@
 
 import java.math.BigInteger;
 
-public abstract class Class40_Sub5_Sub17_Sub4 extends Class40_Sub5_Sub17 {
+public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
     public static int anInt3076;
     public static int anInt3084;
     public static int anInt3085;
@@ -156,9 +156,9 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Class40_Sub5_Sub17 {
     public static void method781(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
         if(arg0 == 1850) {
             anInt3084++;
-            int i = NPC.aClass2_3301.method122(arg1, arg2, arg5);
+            int i = NPC.aScene_3301.method122(arg1, arg2, arg5);
             if(i != 0) {
-                int i_0_ = NPC.aClass2_3301.method141(arg1, arg2, arg5, i);
+                int i_0_ = NPC.aScene_3301.method141(arg1, arg2, arg5, i);
                 int i_1_ = 0x1f & i_0_;
                 int i_2_ = 0x3 & i_0_ >> -1705964506;
                 int i_3_ = arg3;
@@ -167,13 +167,13 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Class40_Sub5_Sub17 {
                 int i_4_ = 4 * (-arg5 + 103) * 512 + (24624 - -(4 * arg2));
                 int i_5_ = i >> -1766000082 & 0x7fff;
                 int[] is = (Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.anIntArray2955);
-                Class40_Sub5_Sub8 class40_sub5_sub8 = Class40_Sub4.method535(i_5_, (byte) 126);
-                if(class40_sub5_sub8.anInt2537 != -1) {
-                    IndexedColorSprite class40_sub5_sub14_sub2 = (Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[class40_sub5_sub8.anInt2537]);
+                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_5_);
+                if(gameObjectDefinition.anInt2537 != -1) {
+                    IndexedColorSprite class40_sub5_sub14_sub2 = (Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.anInt2537]);
                     if(class40_sub5_sub14_sub2 != null) {
-                        int i_6_ = ((-class40_sub5_sub14_sub2.anInt2921 + class40_sub5_sub8.anInt2503 * 4) / 2);
-                        int i_7_ = ((class40_sub5_sub8.anInt2515 * 4 + -class40_sub5_sub14_sub2.anInt2926) / 2);
-                        class40_sub5_sub14_sub2.method692(48 - -(4 * arg2) - -i_6_, i_7_ + (48 - -((104 + -arg5 - class40_sub5_sub8.anInt2515) * 4)));
+                        int i_6_ = ((-class40_sub5_sub14_sub2.anInt2921 + gameObjectDefinition.anInt2503 * 4) / 2);
+                        int i_7_ = ((gameObjectDefinition.anInt2515 * 4 + -class40_sub5_sub14_sub2.anInt2926) / 2);
+                        class40_sub5_sub14_sub2.method692(48 - -(4 * arg2) - -i_6_, i_7_ + (48 - -((104 + -arg5 - gameObjectDefinition.anInt2515) * 4)));
                     }
                 } else {
                     if(i_1_ == 0 || (i_1_ ^ 0xffffffff) == -3) {
@@ -241,19 +241,19 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Class40_Sub5_Sub17 {
                     }
                 }
             }
-            i = NPC.aClass2_3301.method110(arg1, arg2, arg5);
+            i = NPC.aScene_3301.method110(arg1, arg2, arg5);
             if(i != 0) {
-                int i_8_ = NPC.aClass2_3301.method141(arg1, arg2, arg5, i);
+                int i_8_ = NPC.aScene_3301.method141(arg1, arg2, arg5, i);
                 int i_9_ = 0x7fff & i >> 1891879118;
                 int i_10_ = (i_8_ & 0xf4) >> -474347930;
-                Class40_Sub5_Sub8 class40_sub5_sub8 = Class40_Sub4.method535(i_9_, (byte) 124);
+                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_9_);
                 int i_11_ = i_8_ & 0x1f;
-                if(class40_sub5_sub8.anInt2537 != -1) {
-                    IndexedColorSprite class40_sub5_sub14_sub2 = (Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[class40_sub5_sub8.anInt2537]);
+                if(gameObjectDefinition.anInt2537 != -1) {
+                    IndexedColorSprite class40_sub5_sub14_sub2 = (Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.anInt2537]);
                     if(class40_sub5_sub14_sub2 != null) {
-                        int i_12_ = ((-class40_sub5_sub14_sub2.anInt2926 + class40_sub5_sub8.anInt2515 * 4) / 2);
-                        int i_13_ = ((class40_sub5_sub8.anInt2503 * 4 + -class40_sub5_sub14_sub2.anInt2921) / 2);
-                        class40_sub5_sub14_sub2.method692(i_13_ + arg2 * 4 + 48, 48 - (-(4 * (-arg5 + (104 + -class40_sub5_sub8.anInt2515))) + -i_12_));
+                        int i_12_ = ((-class40_sub5_sub14_sub2.anInt2926 + gameObjectDefinition.anInt2515 * 4) / 2);
+                        int i_13_ = ((gameObjectDefinition.anInt2503 * 4 + -class40_sub5_sub14_sub2.anInt2921) / 2);
+                        class40_sub5_sub14_sub2.method692(i_13_ + arg2 * 4 + 48, 48 - (-(4 * (-arg5 + (104 + -gameObjectDefinition.anInt2515))) + -i_12_));
                     }
                 } else if((i_11_ ^ 0xffffffff) == -10) {
                     int[] is = (Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.anIntArray2955);
@@ -274,16 +274,16 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Class40_Sub5_Sub17 {
                     }
                 }
             }
-            i = NPC.aClass2_3301.method93(arg1, arg2, arg5);
+            i = NPC.aScene_3301.method93(arg1, arg2, arg5);
             if((i ^ 0xffffffff) != -1) {
                 int i_16_ = (i & 0x1fffd9fb) >> 1370061614;
-                Class40_Sub5_Sub8 class40_sub5_sub8 = Class40_Sub4.method535(i_16_, (byte) 123);
-                if((class40_sub5_sub8.anInt2537 ^ 0xffffffff) != 0) {
-                    IndexedColorSprite class40_sub5_sub14_sub2 = (Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[class40_sub5_sub8.anInt2537]);
+                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_16_);
+                if((gameObjectDefinition.anInt2537 ^ 0xffffffff) != 0) {
+                    IndexedColorSprite class40_sub5_sub14_sub2 = (Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.anInt2537]);
                     if(class40_sub5_sub14_sub2 != null) {
-                        int i_17_ = ((-class40_sub5_sub14_sub2.anInt2921 + class40_sub5_sub8.anInt2503 * 4) / 2);
-                        int i_18_ = ((-class40_sub5_sub14_sub2.anInt2926 + 4 * class40_sub5_sub8.anInt2515) / 2);
-                        class40_sub5_sub14_sub2.method692(4 * arg2 + 48 + i_17_, i_18_ + ((104 - (arg5 - -class40_sub5_sub8.anInt2515)) * 4) + 48);
+                        int i_17_ = ((-class40_sub5_sub14_sub2.anInt2921 + gameObjectDefinition.anInt2503 * 4) / 2);
+                        int i_18_ = ((-class40_sub5_sub14_sub2.anInt2926 + 4 * gameObjectDefinition.anInt2515) / 2);
+                        class40_sub5_sub14_sub2.method692(4 * arg2 + 48 + i_17_, i_18_ + ((104 - (arg5 - -gameObjectDefinition.anInt2515)) * 4) + 48);
                     }
                 }
             }
@@ -366,10 +366,10 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Class40_Sub5_Sub17 {
     public static void method789(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
         try {
             anInt3147++;
-            if((Class51.anInt1202 ^ 0xffffffff) != (arg3 ^ 0xffffffff) || arg2 != Class17.anInt448 || ((arg5 ^ 0xffffffff) != (Class40_Sub6.anInt2120 ^ 0xffffffff) && Class46.aBoolean1112)) {
+            if((Class51.anInt1202 ^ 0xffffffff) != (arg3 ^ 0xffffffff) || arg2 != Class17.anInt448 || ((arg5 ^ 0xffffffff) != (Class40_Sub6.anInt2120 ^ 0xffffffff) && Class46.lowMemory)) {
                 Class40_Sub6.anInt2120 = arg5;
                 Class51.anInt1202 = arg3;
-                if(!Class46.aBoolean1112)
+                if(!Class46.lowMemory)
                     Class40_Sub6.anInt2120 = 0;
                 Class17.anInt448 = arg2;
                 Floor.method559(25, 88);

@@ -84,7 +84,7 @@ public class Class40_Sub5_Sub9 extends SubNode {
                         Class59.aLongArray1397[(Class40_Sub5_Sub17_Sub3.anInt3060)] = arg0;
                         Class40_Sub7.anIntArray2131[(Class40_Sub5_Sub17_Sub3.anInt3060)] = 0;
                         Class40_Sub5_Sub17_Sub3.anInt3060++;
-                        Class3.anInt139++;
+                        CollisionMap.anInt139++;
                         ISAAC.aBoolean505 = true;
                         Class32.packetBuffer.putPacket(11453, 114);
                         Class32.packetBuffer.putLong(arg0, false);

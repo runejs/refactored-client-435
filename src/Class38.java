@@ -63,7 +63,7 @@ public abstract class Class38 {
             anInt891++;
             if(ISAAC.aBoolean512) {
                 Class51.anIntArray1198 = null;
-                Class40_Sub5_Sub17_Sub2.aClass68_3042 = null;
+                GameObject.aClass68_3042 = null;
                 Class68.aClass68_1631 = null;
                 Class51.aClass68_1206 = null;
                 Landscape.anIntArray1168 = null;
@@ -71,10 +71,10 @@ public abstract class Class38 {
                 Class59.aClass40_Sub5_Sub14_Sub2_1387 = null;
                 Class61.anIntArray1445 = null;
                 Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775 = null;
-                Class40_Sub5_Sub17.anIntArray2865 = null;
+                Renderable.anIntArray2865 = null;
                 Class8.aClass68_298 = null;
                 Class39.aClass68_907 = null;
-                Class40_Sub5_Sub8.aClass68_2524 = null;
+                GameObjectDefinition.aClass68_2524 = null;
                 Class39.aClass40_Sub5_Sub14_Sub4_918 = null;
                 Class22.aClass40_Sub5_Sub14_Sub2Array535 = null;
                 Class40_Sub5_Sub17_Sub6.anIntArray3248 = null;

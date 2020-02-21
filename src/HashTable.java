@@ -62,7 +62,7 @@ public class HashTable {
             if(class40_sub5_sub13 == null) {
                 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class37.aClass23_869.method331(l, 6120));
                 if(class40_sub5_sub13 == null) {
-                    class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class40_Sub5_Sub8.aClass23_2545.method331(l, 6120));
+                    class40_sub5_sub13 = ((Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.method331(l, 6120));
                     if(class40_sub5_sub13 != null) {
                         if(arg0) {
                             class40_sub5_sub13.method539(0);
@@ -82,7 +82,7 @@ public class HashTable {
                         class40_sub5_sub13.aClass6_Sub1_2754 = arg1;
                         if(!arg0) {
                             Class19.aClass27_485.method352(126, class40_sub5_sub13);
-                            Class40_Sub5_Sub8.aClass23_2545.put(class40_sub5_sub13, (byte) 109, l);
+                            GameObjectDefinition.aClass23_2545.put(class40_sub5_sub13, (byte) 109, l);
                             anInt554++;
                         } else {
                             Class51.aClass23_1194.put(class40_sub5_sub13, (byte) 54, l);
@@ -113,7 +113,7 @@ public class HashTable {
     public static void method332(int arg0) {
         try {
             anInt570++;
-            synchronized(Class3.anObject162) {
+            synchronized(CollisionMap.anObject162) {
                 if((Buffer.anInt1987 ^ 0xffffffff) == -1)
                     ISAAC.aClass31_521.method394(5, 0, new Class44());
                 Buffer.anInt1987 = arg0;
@@ -158,7 +158,7 @@ public class HashTable {
                                     class40_sub5_sub17_sub1.method766(Node.anInt926, 0, (class40_sub5_sub17_sub4_sub1.anInt3089), ((Class37.method430((byte) -127, class40_sub5_sub17_sub1.anInt2981, (class40_sub5_sub17_sub4_sub1.anInt3098), (class40_sub5_sub17_sub4_sub1.anInt3089))) - class40_sub5_sub17_sub1.anInt2960), (class40_sub5_sub17_sub4_sub1.anInt3098));
                             }
                             class40_sub5_sub17_sub1.method765(51, Class5.anInt199);
-                            NPC.aClass2_3301.method134(Player.anInt3267, (int) class40_sub5_sub17_sub1.aDouble2980, (int) class40_sub5_sub17_sub1.aDouble2993, (int) class40_sub5_sub17_sub1.aDouble2992, 60, class40_sub5_sub17_sub1, class40_sub5_sub17_sub1.anInt3013, -1, false);
+                            NPC.aScene_3301.method134(Player.anInt3267, (int) class40_sub5_sub17_sub1.aDouble2980, (int) class40_sub5_sub17_sub1.aDouble2993, (int) class40_sub5_sub17_sub1.aDouble2992, 60, class40_sub5_sub17_sub1, class40_sub5_sub17_sub1.anInt3013, -1, false);
                         }
                     } else
                         class40_sub5_sub17_sub1.method457(-1);

@@ -111,22 +111,22 @@ public class MapDecompressor {
      * @param type     what kind, floor, wall, etc. (list coming soon, I have one, just too lazy ;))
      */
     public static void spawnObject(int objectId, int x, int y, int z, int rotation, int type) {
-        final Class3[] groundData = Landscape.aClass3Array1167;
+        final CollisionMap[] groundData = Landscape.aCollisionMapArray1167;
         int localX = x - Class40_Sub5_Sub2.anInt2307;
         int localY = y - Class26.anInt635; // ??? is this correct?
         int plane = z;
         if(localX > -1 && localY > -1) {
-            if((Floor.aByteArrayArrayArray2323[1][localY][localX] & 2) == 2) {
+            if((Floor.tile_flags[1][localY][localX] & 2) == 2) {
                 plane--;
             }
         }
 
-        Class3 class20 = null;
+        CollisionMap class20 = null;
         if(plane >= 0) {
             class20 = groundData[plane];
         }
         if(~localY < -1 && ~localX < -1 && ~localY > -104 && ~localX > -104) {
-            Class40_Sub5_Sub17_Sub1.method767(objectId, type, rotation, z, NPC.aClass2_3301, -18, localY, localX, class20);
+            Class40_Sub5_Sub17_Sub1.renderObject(objectId, type, rotation, z, NPC.aScene_3301, -18, localY, localX, class20);
         }
     }
 

@@ -162,7 +162,7 @@ public class Class22_Sub1 extends Class22 {
                 }
             }
             int i = 18 % ((-46 - arg0) / 58);
-            for(int i_7_ = 0; i_7_ < Class40_Sub5_Sub8.anInt2558; i_7_++) {
+            for(int i_7_ = 0; i_7_ < GameObjectDefinition.anInt2558; i_7_++) {
                 int i_8_ = Class40_Sub3.anIntArray2016[i_7_];
                 NPC class40_sub5_sub17_sub4_sub2 = Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_8_];
                 if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.anInt3078 > 0) {

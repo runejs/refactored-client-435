@@ -60,14 +60,14 @@ public class Class38_Sub1 extends Class38 {
 
     public static void method445(int arg0) {
         anInt1908++;
-        if((Class3.anInt165 ^ 0xffffffff) != -1) {
+        if((CollisionMap.anInt165 ^ 0xffffffff) != -1) {
             int i = 0;
             if(Class40_Sub5_Sub15.anInt2782 != 0)
                 i = 1;
             for(int i_1_ = 0; i_1_ < 100; i_1_++) {
                 if(Class40_Sub5_Sub17_Sub4.aClass1Array3160[i_1_] != null) {
                     int i_2_ = Class66.anIntArray1569[i_1_];
-                    RSString class1 = Class40_Sub5_Sub17.aClass1Array2856[i_1_];
+                    RSString class1 = Renderable.aClass1Array2856[i_1_];
                     if(class1 != null && class1.method75((byte) 116, Class51.aClass1_1210))
                         class1 = class1.method50((byte) 95, 5);
                     if(class1 != null && class1.method75((byte) 116, Class40_Sub5_Sub12.aClass1_2729))
@@ -83,7 +83,7 @@ public class Class38_Sub1 extends Class38 {
                                 Class60.anInt1400++;
                                 if((Class19.anInt493 ^ 0xffffffff) <= -2) {
                                     Floor.method558(0, Class22_Sub1.aClass1_1865, 0, -501, 0, 2028, (Class40_Sub5_Sub17_Sub6.method832(-97, new RSString[]{Class26.aClass1_620, class1})));
-                                    Class3.anInt158++;
+                                    CollisionMap.anInt158++;
                                 }
                                 Floor.method558(0, Class38.aClass1_885, 0, -501, 0, 2051, (Class40_Sub5_Sub17_Sub6.method832(arg0 ^ 0x2613, new RSString[]{Class26.aClass1_620, class1})));
                                 Floor.method558(0, Class25.aClass1_591, 0, arg0 ^ ~0x27d3, 0, 2045, (Class40_Sub5_Sub17_Sub6.method832(arg0 ^ ~0x2660, new RSString[]{Class26.aClass1_620, class1})));
@@ -216,7 +216,7 @@ public class Class38_Sub1 extends Class38 {
                 return false;
             Class10.anIntArray351[i++] = arg9;
             int i_12_ = Class24.anIntArray581.length;
-            int[][] is = (Landscape.aClass3Array1167[Player.anInt3267].anIntArrayArray150);
+            int[][] is = (Landscape.aCollisionMapArray1167[Player.anInt3267].anIntArrayArray150);
             while((i ^ 0xffffffff) != (i_10_ ^ 0xffffffff)) {
                 i_9_ = Class10.anIntArray351[i_10_];
                 i_11_ = Class24.anIntArray581[i_10_];
@@ -226,8 +226,8 @@ public class Class38_Sub1 extends Class38 {
                     break;
                 }
                 if(arg5 != 0) {
-                    if(arg5 >= 5 && (arg5 ^ 0xffffffff) != -11 || !(Landscape.aClass3Array1167[Player.anInt3267].method155(i_11_, false, arg5 + -1, arg10, i_9_, arg7, arg3))) {
-                        if(arg5 < 10 && (Landscape.aClass3Array1167[Player.anInt3267].method158(arg10, arg7, i_9_, arg3, i_11_, (byte) 122, -1 + arg5))) {
+                    if(arg5 >= 5 && (arg5 ^ 0xffffffff) != -11 || !(Landscape.aCollisionMapArray1167[Player.anInt3267].method155(i_11_, false, arg5 + -1, arg10, i_9_, arg7, arg3))) {
+                        if(arg5 < 10 && (Landscape.aCollisionMapArray1167[Player.anInt3267].method158(arg10, arg7, i_9_, arg3, i_11_, (byte) 122, -1 + arg5))) {
                             bool = true;
                             break;
                         }
@@ -236,7 +236,7 @@ public class Class38_Sub1 extends Class38 {
                         break;
                     }
                 }
-                if(arg0 != 0 && (arg8 ^ 0xffffffff) != -1 && (Landscape.aClass3Array1167[Player.anInt3267].method153(-24, arg8, arg3, arg0, arg10, arg1, i_9_, i_11_))) {
+                if(arg0 != 0 && (arg8 ^ 0xffffffff) != -1 && (Landscape.aCollisionMapArray1167[Player.anInt3267].method153(-24, arg8, arg3, arg0, arg10, arg1, i_9_, i_11_))) {
                     bool = true;
                     break;
                 }

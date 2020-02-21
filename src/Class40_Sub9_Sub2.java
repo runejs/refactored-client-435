@@ -172,7 +172,7 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
     public static Class40_Sub9_Sub2 method864(Class40_Sub12_Sub1 arg0, int arg1, int arg2) {
         if(arg0.aByteArray2889 == null || arg0.aByteArray2889.length == 0)
             return null;
-        return new Class40_Sub9_Sub2(arg0, (int) ((long) arg0.anInt2892 * 256L * (long) arg1 / (long) (100 * Class3.anInt141)), arg2);
+        return new Class40_Sub9_Sub2(arg0, (int) ((long) arg0.anInt2892 * 256L * (long) arg1 / (long) (100 * CollisionMap.anInt141)), arg2);
     }
 
     public static int method865(int arg0, int arg1, byte[] arg2, int[] arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, Class40_Sub9_Sub2 arg10, int arg11, int arg12) {

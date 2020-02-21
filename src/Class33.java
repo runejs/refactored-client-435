@@ -79,7 +79,7 @@ public class Class33 {
             anInt782++;
             Class32.anInt770 = 0;
             if(arg0 == -28) {
-                for(int i = -1; Class60.anInt1407 - -Class40_Sub5_Sub8.anInt2558 > i; i++) {
+                for(int i = -1; Class60.anInt1407 - -GameObjectDefinition.anInt2558 > i; i++) {
                     Class40_Sub5_Sub17_Sub4 class40_sub5_sub17_sub4;
                     if((i ^ 0xffffffff) == 0)
                         class40_sub5_sub17_sub4 = (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760);

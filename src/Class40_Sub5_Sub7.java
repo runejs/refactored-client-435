@@ -73,7 +73,7 @@ public class Class40_Sub5_Sub7 extends SubNode {
         }
     }
 
-    public static void method592(Class3[] arg0, int arg1, byte[] arg2, int arg3, int arg4, int arg5, int arg6) {
+    public static void method592(CollisionMap[] arg0, int arg1, byte[] arg2, int arg3, int arg4, int arg5, int arg6) {
         try {
             anInt2492++;
             for(int i = 0; i < 4; i++) {
@@ -104,7 +104,7 @@ public class Class40_Sub5_Sub7 extends SubNode {
             int i = 0x7fff & arg1 >> 559212398;
             if(arg2 > -9)
                 method596(-4, -74, (byte) -44, -62);
-            int i_14_ = (NPC.aClass2_3301.method141(Player.anInt3267, arg0, arg3, arg1));
+            int i_14_ = (NPC.aScene_3301.method141(Player.anInt3267, arg0, arg3, arg1));
             if(i_14_ == -1)
                 return false;
             int i_15_ = 0x3 & i_14_ >> -1327198362;
@@ -112,18 +112,18 @@ public class Class40_Sub5_Sub7 extends SubNode {
             if(i_16_ != 10 && i_16_ != 11 && i_16_ != 22)
                 Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), arg0, (byte) 98, 1 + i_16_, true, i_15_, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), arg3, 2);
             else {
-                Class40_Sub5_Sub8 class40_sub5_sub8 = Class40_Sub4.method535(i, (byte) 127);
-                int i_17_ = class40_sub5_sub8.anInt2512;
+                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
+                int i_17_ = gameObjectDefinition.anInt2512;
                 if(i_15_ != 0)
                     i_17_ = (i_17_ >> 4 + -i_15_) + (0xf & i_17_ << i_15_);
                 int i_18_;
                 int i_19_;
                 if(i_15_ == 0 || (i_15_ ^ 0xffffffff) == -3) {
-                    i_19_ = class40_sub5_sub8.anInt2515;
-                    i_18_ = class40_sub5_sub8.anInt2503;
+                    i_19_ = gameObjectDefinition.anInt2515;
+                    i_18_ = gameObjectDefinition.anInt2503;
                 } else {
-                    i_18_ = class40_sub5_sub8.anInt2515;
-                    i_19_ = class40_sub5_sub8.anInt2503;
+                    i_18_ = gameObjectDefinition.anInt2515;
+                    i_19_ = gameObjectDefinition.anInt2503;
                 }
                 Class38_Sub1.method448(i_18_, i_17_, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), arg0, (byte) 94, 0, true, 0, i_19_, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), arg3, 2);
             }

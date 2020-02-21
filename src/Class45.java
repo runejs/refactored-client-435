@@ -100,7 +100,7 @@ public class Class45 {
             if(class1.method59(-3136) > 8)
                 class1 = (Class40_Sub5_Sub17_Sub6.method832(-69, (new RSString[]{Landscape.aClass1_1162, class1.method68(0, 0, -8 + class1.method59(-3136)), Class40_Sub5_Sub9.aClass1_2577, Class52.aClass1_1213, class1, Class51.aClass1_1199})));
             else if(class1.method59(-3136) > 4)
-                class1 = (Class40_Sub5_Sub17_Sub6.method832(-115, (new RSString[]{Class40_Sub5_Sub17.aClass1_2862, class1.method68(0, 0, class1.method59(-3136) + -4), Class40_Sub5_Sub10.aClass1_2593, Class52.aClass1_1213, class1, Class51.aClass1_1199})));
+                class1 = (Class40_Sub5_Sub17_Sub6.method832(-115, (new RSString[]{Renderable.aClass1_2862, class1.method68(0, 0, class1.method59(-3136) + -4), Class40_Sub5_Sub10.aClass1_2593, Class52.aClass1_1213, class1, Class51.aClass1_1199})));
             return Class40_Sub5_Sub17_Sub6.method832(127, (new RSString[]{Class48.aClass1_1123, class1}));
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "pb.I(" + arg0 + ',' + arg1 + ')');
@@ -133,7 +133,7 @@ public class Class45 {
     public static void method910(int arg0) {
         anInt1065++;
         if(arg0 == -32322) {
-            if(Class46.aBoolean1112 && (Class40_Sub6.anInt2120 != Player.anInt3267))
+            if(Class46.lowMemory && (Class40_Sub6.anInt2120 != Player.anInt3267))
                 Class40_Sub5_Sub17_Sub4.method789((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), -1000, Class17.anInt448, Class51.anInt1202, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), Player.anInt3267);
             else if(Buffer.anInt1985 != Player.anInt3267) {
                 Buffer.anInt1985 = Player.anInt3267;

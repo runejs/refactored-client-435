@@ -1,8 +1,8 @@
-/* Class40_Sub5_Sub17 - Decompiled by JODE
+/* Renderable - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
-public abstract class Class40_Sub5_Sub17 extends SubNode {
+public abstract class Renderable extends SubNode {
     public static int anInt2855;
     public static RSString[] aClass1Array2856;
     public static Class6_Sub1 aClass6_Sub1_2857;

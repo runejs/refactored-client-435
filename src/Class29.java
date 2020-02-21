@@ -29,7 +29,7 @@ public class Class29 {
             anInt669++;
             if((arg1 ^ 0xffffffff) == -1 && (arg2 ^ 0xffffffff) == (ItemDefinition.anInt2850 ^ 0xffffffff))
                 return true;
-            if((arg1 ^ 0xffffffff) == -2 && (Class3.anInt163 ^ 0xffffffff) == (arg2 ^ 0xffffffff))
+            if((arg1 ^ 0xffffffff) == -2 && (CollisionMap.anInt163 ^ 0xffffffff) == (arg2 ^ 0xffffffff))
                 return true;
             if(((arg1 ^ 0xffffffff) == -3 || (arg1 ^ 0xffffffff) == -4) && Class55.anInt1296 == arg2)
                 return true;

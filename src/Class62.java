@@ -82,7 +82,7 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
                         int i_2_ = (Class59.anIntArray1393[-1 + NpcDefinition.anInt2394]);
                         Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_2_, (byte) -58);
                         if(class40_sub5_sub12.aBoolean2703 || class40_sub5_sub12.aBoolean2723) {
-                            Class40_Sub5_Sub17.anInt2869 = Class57.anInt1338;
+                            Renderable.anInt2869 = Class57.anInt1338;
                             Class40_Sub5_Sub15.aBoolean2784 = false;
                             Class40_Sub4.anInt2049 = 2;
                             Class48.anInt1127 = i_2_;
@@ -119,7 +119,7 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
                         i_4_ -= 357;
                         i_3_ -= 17;
                     }
-                    if((-10 + Class19.anInt475 ^ 0xffffffff) < (i_3_ ^ 0xffffffff) || 10 + Class46.anInt1086 + Class19.anInt475 < i_3_ || (i_4_ ^ 0xffffffff) > (Main.anInt1758 + -10 ^ 0xffffffff) || ((i_4_ ^ 0xffffffff) < (Main.anInt1758 - -Class3.anInt168 - -10 ^ 0xffffffff))) {
+                    if((-10 + Class19.anInt475 ^ 0xffffffff) < (i_3_ ^ 0xffffffff) || 10 + Class46.anInt1086 + Class19.anInt475 < i_3_ || (i_4_ ^ 0xffffffff) > (Main.anInt1758 + -10 ^ 0xffffffff) || ((i_4_ ^ 0xffffffff) < (Main.anInt1758 - -CollisionMap.anInt168 - -10 ^ 0xffffffff))) {
                         if((Class40_Sub5_Sub17_Sub1.anInt2983 ^ 0xffffffff) == -2)
                             ISAAC.aBoolean505 = true;
                         Class4.aBoolean173 = false;
@@ -179,7 +179,7 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
 
     public synchronized void mouseEntered(MouseEvent arg0) {
         anInt1461++;
-        if(Class40_Sub5_Sub17_Sub2.aClass62_3019 != null) {
+        if(GameObject.aClass62_3019 != null) {
             Class45.anInt1073 = 0;
             Class12.anInt389 = arg0.getX();
             Cache.anInt322 = arg0.getY();
@@ -188,7 +188,7 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
 
     public synchronized void mouseExited(MouseEvent arg0) {
         anInt1451++;
-        if(Class40_Sub5_Sub17_Sub2.aClass62_3019 != null) {
+        if(GameObject.aClass62_3019 != null) {
             Class45.anInt1073 = 0;
             Class12.anInt389 = -1;
             Cache.anInt322 = -1;
@@ -197,7 +197,7 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
 
     public synchronized void focusLost(FocusEvent arg0) {
         try {
-            if(Class40_Sub5_Sub17_Sub2.aClass62_3019 != null)
+            if(GameObject.aClass62_3019 != null)
                 Cache.anInt320 = 0;
             anInt1459++;
         } catch(RuntimeException runtimeexception) {
@@ -207,7 +207,7 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
 
     public synchronized void mouseDragged(MouseEvent arg0) {
         try {
-            if(Class40_Sub5_Sub17_Sub2.aClass62_3019 != null) {
+            if(GameObject.aClass62_3019 != null) {
                 Class45.anInt1073 = 0;
                 Class12.anInt389 = arg0.getX();
                 Cache.anInt322 = arg0.getY();
@@ -228,7 +228,7 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
 
     public synchronized void mousePressed(MouseEvent arg0) {
         try {
-            if(Class40_Sub5_Sub17_Sub2.aClass62_3019 != null) {
+            if(GameObject.aClass62_3019 != null) {
                 Class45.anInt1073 = 0;
                 Class55.anInt1295 = arg0.getX();
                 Class40_Sub5_Sub11.anInt2625 = arg0.getY();
@@ -257,7 +257,7 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
 
     public synchronized void mouseMoved(MouseEvent arg0) {
         anInt1449++;
-        if(Class40_Sub5_Sub17_Sub2.aClass62_3019 != null) {
+        if(GameObject.aClass62_3019 != null) {
             Class45.anInt1073 = 0;
             Class12.anInt389 = arg0.getX();
             Cache.anInt322 = arg0.getY();
@@ -266,7 +266,7 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
 
     public synchronized void mouseReleased(MouseEvent arg0) {
         anInt1462++;
-        if(Class40_Sub5_Sub17_Sub2.aClass62_3019 != null) {
+        if(GameObject.aClass62_3019 != null) {
             Class45.anInt1073 = 0;
             Cache.anInt320 = 0;
         }

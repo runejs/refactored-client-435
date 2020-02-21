@@ -291,9 +291,9 @@ public class Class13 {
         try {
             if(arg0 != true)
                 method244(-58, 116, -89, 98);
-            if(Class40_Sub5_Sub17_Sub2.aClass62_3019 != null) {
-                synchronized(Class40_Sub5_Sub17_Sub2.aClass62_3019) {
-                    Class40_Sub5_Sub17_Sub2.aClass62_3019 = null;
+            if(GameObject.aClass62_3019 != null) {
+                synchronized(GameObject.aClass62_3019) {
+                    GameObject.aClass62_3019 = null;
                 }
             }
             anInt416++;

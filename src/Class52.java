@@ -125,52 +125,52 @@ public class Class52 {
         if(arg5 != 103)
             anInt1214 = -81;
         if(arg2 >= 1 && (arg0 ^ 0xffffffff) <= -2 && (arg2 ^ 0xffffffff) >= -103 && (arg0 ^ 0xffffffff) >= -103) {
-            if(!Class46.aBoolean1112 || Player.anInt3267 == arg7) {
+            if(!Class46.lowMemory || Player.anInt3267 == arg7) {
                 int i = -1;
                 int i_0_ = 0;
                 boolean bool = false;
                 boolean bool_1_ = false;
                 if((arg6 ^ 0xffffffff) == -1)
-                    i_0_ = NPC.aClass2_3301.method122(arg7, arg2, arg0);
+                    i_0_ = NPC.aScene_3301.method122(arg7, arg2, arg0);
                 if((arg6 ^ 0xffffffff) == -2)
-                    i_0_ = NPC.aClass2_3301.method91(arg7, arg2, arg0);
+                    i_0_ = NPC.aScene_3301.method91(arg7, arg2, arg0);
                 if((arg6 ^ 0xffffffff) == -3)
-                    i_0_ = NPC.aClass2_3301.method110(arg7, arg2, arg0);
+                    i_0_ = NPC.aScene_3301.method110(arg7, arg2, arg0);
                 if((arg6 ^ 0xffffffff) == -4)
-                    i_0_ = NPC.aClass2_3301.method93(arg7, arg2, arg0);
+                    i_0_ = NPC.aScene_3301.method93(arg7, arg2, arg0);
                 if((i_0_ ^ 0xffffffff) != -1) {
                     i = (i_0_ & 0x1ffff138) >> -587100850;
-                    int i_2_ = NPC.aClass2_3301.method141(arg7, arg2, arg0, i_0_);
+                    int i_2_ = NPC.aScene_3301.method141(arg7, arg2, arg0, i_0_);
                     int i_3_ = i_2_ >> -993918554 & 0x3;
                     int i_4_ = 0x1f & i_2_;
                     if((arg6 ^ 0xffffffff) == -1) {
-                        NPC.aClass2_3301.method124(arg7, arg2, arg0);
-                        Class40_Sub5_Sub8 class40_sub5_sub8 = Class40_Sub4.method535(i, (byte) 124);
-                        if(class40_sub5_sub8.aBoolean2501)
-                            Landscape.aClass3Array1167[arg7].method148(-4, arg2, i_3_, class40_sub5_sub8.aBoolean2528, arg0, i_4_);
+                        NPC.aScene_3301.method124(arg7, arg2, arg0);
+                        GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
+                        if(gameObjectDefinition.solid)
+                            Landscape.aCollisionMapArray1167[arg7].method148(-4, arg2, i_3_, gameObjectDefinition.aBoolean2528, arg0, i_4_);
                     }
                     if(arg6 == 1)
-                        NPC.aClass2_3301.method127(arg7, arg2, arg0);
+                        NPC.aScene_3301.method127(arg7, arg2, arg0);
                     if(arg6 == 2) {
-                        NPC.aClass2_3301.method135(arg7, arg2, arg0);
-                        Class40_Sub5_Sub8 class40_sub5_sub8 = Class40_Sub4.method535(i, (byte) 122);
-                        if(((arg2 - -class40_sub5_sub8.anInt2503 ^ 0xffffffff) < -104) || arg0 + class40_sub5_sub8.anInt2503 > 103 || arg2 + class40_sub5_sub8.anInt2515 > 103 || (class40_sub5_sub8.anInt2515 + arg0 ^ 0xffffffff) < -104)
+                        NPC.aScene_3301.method135(arg7, arg2, arg0);
+                        GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
+                        if(((arg2 - -gameObjectDefinition.anInt2503 ^ 0xffffffff) < -104) || arg0 + gameObjectDefinition.anInt2503 > 103 || arg2 + gameObjectDefinition.anInt2515 > 103 || (gameObjectDefinition.anInt2515 + arg0 ^ 0xffffffff) < -104)
                             return;
-                        if(class40_sub5_sub8.aBoolean2501)
-                            Landscape.aClass3Array1167[arg7].method149(class40_sub5_sub8.aBoolean2528, arg0, arg2, i_3_, class40_sub5_sub8.anInt2503, (byte) -55, class40_sub5_sub8.anInt2515);
+                        if(gameObjectDefinition.solid)
+                            Landscape.aCollisionMapArray1167[arg7].method149(gameObjectDefinition.aBoolean2528, arg0, arg2, i_3_, gameObjectDefinition.anInt2503, (byte) -55, gameObjectDefinition.anInt2515);
                     }
                     if((arg6 ^ 0xffffffff) == -4) {
-                        NPC.aClass2_3301.method131(arg7, arg2, arg0);
-                        Class40_Sub5_Sub8 class40_sub5_sub8 = Class40_Sub4.method535(i, (byte) 125);
-                        if(class40_sub5_sub8.aBoolean2501 && class40_sub5_sub8.anInt2546 == 1)
-                            Landscape.aClass3Array1167[arg7].method145(arg0, arg5 + 28124, arg2);
+                        NPC.aScene_3301.method131(arg7, arg2, arg0);
+                        GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
+                        if(gameObjectDefinition.solid && gameObjectDefinition.hasActions == 1)
+                            Landscape.aCollisionMapArray1167[arg7].method145(arg0, arg5 + 28124, arg2);
                     }
                 }
                 if(arg1 >= 0) {
                     int i_5_ = arg7;
-                    if(i_5_ < 3 && ((Floor.aByteArrayArrayArray2323[1][arg2][arg0]) & 0x2) == 2)
+                    if(i_5_ < 3 && ((Floor.tile_flags[1][arg2][arg0]) & 0x2) == 2)
                         i_5_++;
-                    Class40_Sub5_Sub1.method543(Landscape.aClass3Array1167[arg7], arg1, i_5_, arg7, arg3, (NPC.aClass2_3301), -22078, arg4, arg0, arg2);
+                    Class40_Sub5_Sub1.method543(Landscape.aCollisionMapArray1167[arg7], arg1, i_5_, arg7, arg3, (NPC.aScene_3301), -22078, arg4, arg0, arg2);
                 }
             }
         }
@@ -197,11 +197,11 @@ public class Class52 {
 
     public static void method947(int arg0) {
         try {
-            synchronized(Class3.anObject162) {
+            synchronized(CollisionMap.anObject162) {
                 if((Buffer.anInt1987 ^ 0xffffffff) != arg0) {
                     Buffer.anInt1987 = 1;
                     try {
-                        Class3.anObject162.wait();
+                        CollisionMap.anObject162.wait();
                     } catch(InterruptedException interruptedexception) {
                         /* empty */
                     }

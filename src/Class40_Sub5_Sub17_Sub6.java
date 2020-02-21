@@ -2,7 +2,7 @@
  * Visit http://jode.sourceforge.net/
  */
 
-public class Class40_Sub5_Sub17_Sub6 extends Class40_Sub5_Sub17 {
+public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     public static int anInt3232;
     public static int anInt3234;
     public static RSFont aClass40_Sub5_Sub14_Sub1_3236;
@@ -109,13 +109,13 @@ public class Class40_Sub5_Sub17_Sub6 extends Class40_Sub5_Sub17 {
                     class40_sub5_sub17_sub4_sub1.aBoolean3287 = false;
                     int i_2_ = class40_sub5_sub17_sub4_sub1.anInt3098 >> 1455652391;
                     int i_3_ = class40_sub5_sub17_sub4_sub1.anInt3089 >> -130081305;
-                    if(((Class46.aBoolean1112 && (Class60.anInt1407 ^ 0xffffffff) < -51) || (Class60.anInt1407 ^ 0xffffffff) < -201) && !arg1 && ((class40_sub5_sub17_sub4_sub1.anInt3126 ^ 0xffffffff) == (class40_sub5_sub17_sub4_sub1.anInt3077 ^ 0xffffffff)))
+                    if(((Class46.lowMemory && (Class60.anInt1407 ^ 0xffffffff) < -51) || (Class60.anInt1407 ^ 0xffffffff) < -201) && !arg1 && ((class40_sub5_sub17_sub4_sub1.anInt3126 ^ 0xffffffff) == (class40_sub5_sub17_sub4_sub1.anInt3077 ^ 0xffffffff)))
                         class40_sub5_sub17_sub4_sub1.aBoolean3287 = true;
                     if(i_2_ >= 0 && (i_2_ ^ 0xffffffff) > -105 && i_3_ >= 0 && i_3_ < 104) {
                         if((class40_sub5_sub17_sub4_sub1.aClass40_Sub5_Sub17_Sub5_3265) != null && ((class40_sub5_sub17_sub4_sub1.anInt3283 ^ 0xffffffff) >= (Node.anInt926 ^ 0xffffffff)) && (Node.anInt926 < class40_sub5_sub17_sub4_sub1.anInt3274)) {
                             class40_sub5_sub17_sub4_sub1.aBoolean3287 = false;
                             class40_sub5_sub17_sub4_sub1.anInt3276 = (Class37.method430((byte) -117, Player.anInt3267, class40_sub5_sub17_sub4_sub1.anInt3098, class40_sub5_sub17_sub4_sub1.anInt3089));
-                            NPC.aClass2_3301.method112(Player.anInt3267, class40_sub5_sub17_sub4_sub1.anInt3098, class40_sub5_sub17_sub4_sub1.anInt3089, class40_sub5_sub17_sub4_sub1.anInt3276, 60, class40_sub5_sub17_sub4_sub1, class40_sub5_sub17_sub4_sub1.anInt3118, i_1_, class40_sub5_sub17_sub4_sub1.anInt3258, class40_sub5_sub17_sub4_sub1.anInt3281, class40_sub5_sub17_sub4_sub1.anInt3262, class40_sub5_sub17_sub4_sub1.anInt3289);
+                            NPC.aScene_3301.method112(Player.anInt3267, class40_sub5_sub17_sub4_sub1.anInt3098, class40_sub5_sub17_sub4_sub1.anInt3089, class40_sub5_sub17_sub4_sub1.anInt3276, 60, class40_sub5_sub17_sub4_sub1, class40_sub5_sub17_sub4_sub1.anInt3118, i_1_, class40_sub5_sub17_sub4_sub1.anInt3258, class40_sub5_sub17_sub4_sub1.anInt3281, class40_sub5_sub17_sub4_sub1.anInt3262, class40_sub5_sub17_sub4_sub1.anInt3289);
                         } else {
                             if((0x7f & class40_sub5_sub17_sub4_sub1.anInt3098 ^ 0xffffffff) == -65 && ((class40_sub5_sub17_sub4_sub1.anInt3089 & 0x7f) ^ 0xffffffff) == -65) {
                                 if(Class40_Sub5_Sub11.anInt2628 == Class61.anIntArrayArray1435[i_2_][i_3_])
@@ -123,7 +123,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Class40_Sub5_Sub17 {
                                 Class61.anIntArrayArray1435[i_2_][i_3_] = Class40_Sub5_Sub11.anInt2628;
                             }
                             class40_sub5_sub17_sub4_sub1.anInt3276 = (Class37.method430((byte) -120, Player.anInt3267, class40_sub5_sub17_sub4_sub1.anInt3098, class40_sub5_sub17_sub4_sub1.anInt3089));
-                            NPC.aClass2_3301.method134(Player.anInt3267, class40_sub5_sub17_sub4_sub1.anInt3098, class40_sub5_sub17_sub4_sub1.anInt3089, class40_sub5_sub17_sub4_sub1.anInt3276, 60, class40_sub5_sub17_sub4_sub1, class40_sub5_sub17_sub4_sub1.anInt3118, i_1_, class40_sub5_sub17_sub4_sub1.aBoolean3105);
+                            NPC.aScene_3301.method134(Player.anInt3267, class40_sub5_sub17_sub4_sub1.anInt3098, class40_sub5_sub17_sub4_sub1.anInt3089, class40_sub5_sub17_sub4_sub1.anInt3276, 60, class40_sub5_sub17_sub4_sub1, class40_sub5_sub17_sub4_sub1.anInt3118, i_1_, class40_sub5_sub17_sub4_sub1.aBoolean3105);
                         }
                     }
                 }

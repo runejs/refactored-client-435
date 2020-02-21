@@ -114,8 +114,8 @@ public class Class27 {
         Model.anInt3229 = Class13.anInt420 + -4;
         Model.anInt3220 = 0;
         Rasterizer.method663();
-        NPC.aClass2_3301.method97(Class12.anInt388, Class32.anInt769, Class40_Sub5_Sub6.anInt2443, Class26.anInt627, Class68_Sub1.anInt2210, i);
-        NPC.aClass2_3301.method104();
+        NPC.aScene_3301.method97(Class12.anInt388, Class32.anInt769, Class40_Sub5_Sub6.anInt2443, Class26.anInt627, Class68_Sub1.anInt2210, i);
+        NPC.aScene_3301.method104();
         Class33.method404((byte) -28);
         Class38_Sub1.method450((byte) -67);
         ((Class35) R3D.anInterface3_2939).method425((byte) 6, Class5.anInt199);
@@ -460,7 +460,7 @@ public class Class27 {
                 ISAAC.aBoolean505 = true;
             } else {
                 if((i_11_ ^ 0xffffffff) == -16) {
-                    Class40_Sub5_Sub17_Sub2.anInt3020++;
+                    GameObject.anInt3020++;
                     boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), i, (byte) 102, 0, false, 0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), i_10_, 2));
                     if(!bool)
                         bool = (Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), i, (byte) 117, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), i_10_, 2));
@@ -758,9 +758,9 @@ public class Class27 {
                         aClass40_Sub5_Sub14_Sub4Array649 = null;
                     if((i_11_ ^ 0xffffffff) == -8) {
                         if(Class4.aBoolean173)
-                            NPC.aClass2_3301.method120(-4 + i, -4 + i_10_);
+                            NPC.aScene_3301.method120(-4 + i, -4 + i_10_);
                         else
-                            NPC.aClass2_3301.method120(Class57.anInt1338 - 4, -4 + RSString.anInt1668);
+                            NPC.aScene_3301.method120(Class57.anInt1338 - 4, -4 + RSString.anInt1668);
                     }
                     if(i_11_ == 1006) {
                         Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_10_, (byte) -111);
@@ -818,7 +818,7 @@ public class Class27 {
                         Class52.anInt1233 = i;
                     }
                     if((i_11_ ^ 0xffffffff) == -12) {
-                        Class40_Sub5_Sub8.anInt2550++;
+                        GameObjectDefinition.anInt2550++;
                         Class32.packetBuffer.putPacket(11453, 29);
                         Class32.packetBuffer.method487(i_10_, (byte) 116);
                         Class32.packetBuffer.method493(i, -128);
@@ -1146,7 +1146,7 @@ public class Class27 {
             if(Class4.aBoolean173 && Class40_Sub5_Sub17_Sub1.anInt2983 == 1)
                 ISAAC.aBoolean505 = true;
             if(Class29.anInt673 != -1) {
-                boolean bool = Class40_Sub5_Sub17.method754(29378, Class29.anInt673);
+                boolean bool = Renderable.method754(29378, Class29.anInt673);
                 if(bool)
                     ISAAC.aBoolean505 = true;
             }
@@ -1159,7 +1159,7 @@ public class Class27 {
                 Class43.method892(-29);
             }
             if((Class43.anInt1028 ^ 0xffffffff) == 0) {
-                Class12.aClass40_Sub5_Sub12_383.anInt2731 = -77 + (-Class40_Sub5_Sub8.anInt2557 + Class62.anInt1472);
+                Class12.aClass40_Sub5_Sub12_383.anInt2731 = -77 + (-GameObjectDefinition.anInt2557 + Class62.anInt1472);
                 if(Class13.anInt420 > 448 && (Class13.anInt420 ^ 0xffffffff) > -561 && (Landscape.anInt1166 ^ 0xffffffff) < -333)
                     Class5.method168(77, Landscape.anInt1166 + -357, -17 + Class13.anInt420, Class62.anInt1472, (byte) 114, Class12.aClass40_Sub5_Sub12_383, 463, -1, 0);
                 int i = (Class62.anInt1472 - 77 - Class12.aClass40_Sub5_Sub12_383.anInt2731);
@@ -1167,8 +1167,8 @@ public class Class27 {
                     i = 0;
                 if(i > Class62.anInt1472 + -77)
                     i = -77 + Class62.anInt1472;
-                if(i != Class40_Sub5_Sub8.anInt2557) {
-                    Class40_Sub5_Sub8.anInt2557 = i;
+                if(i != GameObjectDefinition.anInt2557) {
+                    GameObjectDefinition.anInt2557 = i;
                     Class52.aBoolean1221 = true;
                 }
             }
@@ -1189,7 +1189,7 @@ public class Class27 {
             }
             if(arg0 == -20197) {
                 if(Class43.anInt1028 != -1) {
-                    boolean bool = Class40_Sub5_Sub17.method754(29378, Class43.anInt1028);
+                    boolean bool = Renderable.method754(29378, Class43.anInt1028);
                     if(bool)
                         Class52.aBoolean1221 = true;
                 }

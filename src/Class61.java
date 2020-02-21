@@ -168,13 +168,13 @@ public class Class61 {
                     if(i_1_ >= 0 && (i_1_ ^ 0xffffffff) > -105 && i_0_ >= 0 && (i_0_ ^ 0xffffffff) > -105) {
                         Class19.aByteArrayArrayArray492[0][i_1_][i_0_] = (byte) 127;
                         if(arg4 == i_1_ && i_1_ > 0)
-                            Class40_Sub6.anIntArrayArrayArray2099[0][i_1_][i_0_] = (Class40_Sub6.anIntArrayArrayArray2099[0][-1 + i_1_][i_0_]);
+                            Class40_Sub6.tile_height[0][i_1_][i_0_] = (Class40_Sub6.tile_height[0][-1 + i_1_][i_0_]);
                         if(arg4 + arg3 == i_1_ && (i_1_ ^ 0xffffffff) > -104)
-                            Class40_Sub6.anIntArrayArrayArray2099[0][i_1_][i_0_] = (Class40_Sub6.anIntArrayArrayArray2099[0][i_1_ - -1][i_0_]);
+                            Class40_Sub6.tile_height[0][i_1_][i_0_] = (Class40_Sub6.tile_height[0][i_1_ - -1][i_0_]);
                         if((arg0 ^ 0xffffffff) == (i_0_ ^ 0xffffffff) && i_0_ > 0)
-                            Class40_Sub6.anIntArrayArrayArray2099[0][i_1_][i_0_] = (Class40_Sub6.anIntArrayArrayArray2099[0][i_1_][i_0_ + -1]);
+                            Class40_Sub6.tile_height[0][i_1_][i_0_] = (Class40_Sub6.tile_height[0][i_1_][i_0_ + -1]);
                         if(i_0_ == arg0 + arg2 && (i_0_ ^ 0xffffffff) > -104)
-                            Class40_Sub6.anIntArrayArrayArray2099[0][i_1_][i_0_] = (Class40_Sub6.anIntArrayArrayArray2099[0][i_1_][1 + i_0_]);
+                            Class40_Sub6.tile_height[0][i_1_][i_0_] = (Class40_Sub6.tile_height[0][i_1_][1 + i_0_]);
                     }
                 }
             }
@@ -194,7 +194,7 @@ public class Class61 {
                             if(class40_sub5_sub17_sub6.aBoolean3237)
                                 class40_sub5_sub17_sub6.method457(-1);
                             else
-                                NPC.aClass2_3301.method134(class40_sub5_sub17_sub6.anInt3239, class40_sub5_sub17_sub6.anInt3244, class40_sub5_sub17_sub6.anInt3235, class40_sub5_sub17_sub6.anInt3231, 60, class40_sub5_sub17_sub6, 0, -1, false);
+                                NPC.aScene_3301.method134(class40_sub5_sub17_sub6.anInt3239, class40_sub5_sub17_sub6.anInt3244, class40_sub5_sub17_sub6.anInt3235, class40_sub5_sub17_sub6.anInt3231, 60, class40_sub5_sub17_sub6, 0, -1, false);
                         }
                     } else
                         class40_sub5_sub17_sub6.method457(-1);

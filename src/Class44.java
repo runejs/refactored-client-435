@@ -50,11 +50,11 @@ public class Class44 implements Runnable {
             }
             for(int i = 99; (i ^ 0xffffffff) < -1; i--) {
                 Class66.anIntArray1569[i] = Class66.anIntArray1569[i + -1];
-                Class40_Sub5_Sub17.aClass1Array2856[i] = Class40_Sub5_Sub17.aClass1Array2856[-1 + i];
+                Renderable.aClass1Array2856[i] = Renderable.aClass1Array2856[-1 + i];
                 Class40_Sub5_Sub17_Sub4.aClass1Array3160[i] = Class40_Sub5_Sub17_Sub4.aClass1Array3160[-1 + i];
             }
             Class66.anIntArray1569[0] = arg1;
-            Class40_Sub5_Sub17.aClass1Array2856[0] = arg3;
+            Renderable.aClass1Array2856[0] = arg3;
             if(arg0 >= 60)
                 Class40_Sub5_Sub17_Sub4.aClass1Array3160[0] = arg2;
         } catch(RuntimeException runtimeexception) {
@@ -219,10 +219,10 @@ public class Class44 implements Runnable {
                     }
                     if(class40_sub6 == null) {
                         Class43.method890(100L, 113);
-                        synchronized(Class3.anObject162) {
+                        synchronized(CollisionMap.anObject162) {
                             if((Buffer.anInt1987 ^ 0xffffffff) >= -2) {
                                 Buffer.anInt1987 = 0;
-                                Class3.anObject162.notifyAll();
+                                CollisionMap.anObject162.notifyAll();
                                 break;
                             }
                             Buffer.anInt1987--;
@@ -241,10 +241,10 @@ public class Class44 implements Runnable {
                                 class40_sub6.method457(-1);
                             }
                         }
-                        synchronized(Class3.anObject162) {
+                        synchronized(CollisionMap.anObject162) {
                             if((Buffer.anInt1987 ^ 0xffffffff) >= -2) {
                                 Buffer.anInt1987 = 0;
-                                Class3.anObject162.notifyAll();
+                                CollisionMap.anObject162.notifyAll();
                                 break;
                             }
                             Buffer.anInt1987 = 600;

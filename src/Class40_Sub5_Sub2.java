@@ -156,7 +156,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 }
                 if(Cache.outgoingbuffer.offset == 8) {
                     Cache.outgoingbuffer.offset = 0;
-                    Class40_Sub5_Sub17.aLong2858 = Cache.outgoingbuffer.method498(1362367312);
+                    Renderable.aLong2858 = Cache.outgoingbuffer.method498(1362367312);
                     Class40_Sub3.anInt2032 = 5;
                 }
             }
@@ -164,8 +164,8 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 int[] seeds = new int[4];
                 seeds[0] = (int) (Math.random() * 9.9999999E7);
                 seeds[1] = (int) (Math.random() * 9.9999999E7);
-                seeds[2] = (int) (Class40_Sub5_Sub17.aLong2858 >> 357599968);
-                seeds[3] = (int) Class40_Sub5_Sub17.aLong2858;
+                seeds[2] = (int) (Renderable.aLong2858 >> 357599968);
+                seeds[3] = (int) Renderable.aLong2858;
                 Class32.packetBuffer.offset = 0;
                 Class32.packetBuffer.put(10, (byte) -128);
                 Class32.packetBuffer.putInt(63, seeds[0]);
@@ -183,13 +183,13 @@ public class Class40_Sub5_Sub2 extends SubNode {
                     Class61.packetBuffer.put(16, (byte) -128);
                 Class61.packetBuffer.put(57 - -Class32.packetBuffer.offset, (byte) -128);
                 Class61.packetBuffer.putInt(60, 435);
-                Class61.packetBuffer.put(Class46.aBoolean1112 ? 1 : 0, (byte) -128);
+                Class61.packetBuffer.put(Class46.lowMemory ? 1 : 0, (byte) -128);
                 Class61.packetBuffer.putInt(85, Class25.aClass6_Sub1_605.anInt216);
                 Class61.packetBuffer.putInt(95, Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000.anInt216);
                 Class61.packetBuffer.putInt(100, (Class40_Sub5_Sub10.aClass6_Sub1_2609.anInt216));
                 Class61.packetBuffer.putInt(75, Class65.aClass6_Sub1_1533.anInt216);
                 Class61.packetBuffer.putInt(92, Class40_Sub5_Sub17_Sub4.aClass6_Sub1_3157.anInt216);
-                Class61.packetBuffer.putInt(42, (Class40_Sub5_Sub17.aClass6_Sub1_2857.anInt216));
+                Class61.packetBuffer.putInt(42, (Renderable.aClass6_Sub1_2857.anInt216));
                 Class61.packetBuffer.putInt(108, Class55.aClass6_Sub1_1286.anInt216);
                 Class61.packetBuffer.putInt(108, (Class40_Sub5_Sub9.aClass6_Sub1_2571.anInt216));
                 Class61.packetBuffer.putInt(49, (NpcDefinition.aClass6_Sub1_2377.anInt216));
@@ -265,7 +265,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
                         if(Floor.anInt2321 < 1) {
                             Floor.anInt2321++;
                             if(Floor.anInt2340 == Class10.anInt350)
-                                Class10.anInt350 = Class3.anInt172;
+                                Class10.anInt350 = CollisionMap.anInt172;
                             else
                                 Class10.anInt350 = Floor.anInt2340;
                             Class40_Sub3.anInt2032 = 0;
@@ -277,7 +277,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
         } catch(IOException ioexception) {
             if((Floor.anInt2321 ^ 0xffffffff) > -2) {
                 if((Floor.anInt2340 ^ 0xffffffff) == (Class10.anInt350 ^ 0xffffffff))
-                    Class10.anInt350 = Class3.anInt172;
+                    Class10.anInt350 = CollisionMap.anInt172;
                 else
                     Class10.anInt350 = Floor.anInt2340;
                 Floor.anInt2321++;

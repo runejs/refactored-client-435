@@ -107,23 +107,23 @@ public class Node {
             aClass1_972 = null;
         for(int i = 0; (i ^ 0xffffffff) > -9; i++) {
             for(int i_0_ = 0; (i_0_ ^ 0xffffffff) > -9; i_0_++)
-                Class40_Sub6.anIntArrayArrayArray2099[arg1][arg3 - -i][arg0 - -i_0_] = 0;
+                Class40_Sub6.tile_height[arg1][arg3 - -i][arg0 - -i_0_] = 0;
         }
         anInt935++;
         if((arg3 ^ 0xffffffff) < -1) {
             for(int i = 1; (i ^ 0xffffffff) > -9; i++)
-                Class40_Sub6.anIntArrayArrayArray2099[arg1][arg3][arg0 - -i] = (Class40_Sub6.anIntArrayArrayArray2099[arg1][-1 + arg3][i + arg0]);
+                Class40_Sub6.tile_height[arg1][arg3][arg0 - -i] = (Class40_Sub6.tile_height[arg1][-1 + arg3][i + arg0]);
         }
         if((arg0 ^ 0xffffffff) < -1) {
             for(int i = 1; i < 8; i++)
-                Class40_Sub6.anIntArrayArrayArray2099[arg1][i + arg3][arg0] = (Class40_Sub6.anIntArrayArrayArray2099[arg1][i + arg3][-1 + arg0]);
+                Class40_Sub6.tile_height[arg1][i + arg3][arg0] = (Class40_Sub6.tile_height[arg1][i + arg3][-1 + arg0]);
         }
-        if((arg3 ^ 0xffffffff) < -1 && (Class40_Sub6.anIntArrayArrayArray2099[arg1][-1 + arg3][arg0] != 0))
-            Class40_Sub6.anIntArrayArrayArray2099[arg1][arg3][arg0] = Class40_Sub6.anIntArrayArrayArray2099[arg1][arg3 - 1][arg0];
-        else if(arg0 > 0 && ((Class40_Sub6.anIntArrayArrayArray2099[arg1][arg3][arg0 - 1]) ^ 0xffffffff) != -1)
-            Class40_Sub6.anIntArrayArrayArray2099[arg1][arg3][arg0] = Class40_Sub6.anIntArrayArrayArray2099[arg1][arg3][-1 + arg0];
-        else if((arg3 ^ 0xffffffff) < -1 && (arg0 ^ 0xffffffff) < -1 && ((Class40_Sub6.anIntArrayArrayArray2099[arg1][arg3 + -1][-1 + arg0]) ^ 0xffffffff) != -1)
-            Class40_Sub6.anIntArrayArrayArray2099[arg1][arg3][arg0] = (Class40_Sub6.anIntArrayArrayArray2099[arg1][-1 + arg3][arg0 - 1]);
+        if((arg3 ^ 0xffffffff) < -1 && (Class40_Sub6.tile_height[arg1][-1 + arg3][arg0] != 0))
+            Class40_Sub6.tile_height[arg1][arg3][arg0] = Class40_Sub6.tile_height[arg1][arg3 - 1][arg0];
+        else if(arg0 > 0 && ((Class40_Sub6.tile_height[arg1][arg3][arg0 - 1]) ^ 0xffffffff) != -1)
+            Class40_Sub6.tile_height[arg1][arg3][arg0] = Class40_Sub6.tile_height[arg1][arg3][-1 + arg0];
+        else if((arg3 ^ 0xffffffff) < -1 && (arg0 ^ 0xffffffff) < -1 && ((Class40_Sub6.tile_height[arg1][arg3 + -1][-1 + arg0]) ^ 0xffffffff) != -1)
+            Class40_Sub6.tile_height[arg1][arg3][arg0] = (Class40_Sub6.tile_height[arg1][-1 + arg3][arg0 - 1]);
     }
 
     public static void method456(int arg0, byte arg1) {
@@ -199,10 +199,10 @@ public class Node {
             if(arg2 < 83)
                 method459(125, 22, (byte) 101);
             anInt971++;
-            Class40_Sub5_Sub8 class40_sub5_sub8 = Class40_Sub4.method535(arg1, (byte) 127);
+            GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(arg1);
             if((arg0 ^ 0xffffffff) <= -6 && (arg0 ^ 0xffffffff) >= -9)
                 arg0 = 4;
-            return class40_sub5_sub8.method610(arg0, 7533);
+            return gameObjectDefinition.method610(arg0, 7533);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, ("nd.SA(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
         }

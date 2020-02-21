@@ -73,14 +73,14 @@ public class Class48 {
     public static void method922(int arg0, int arg1, Buffer arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
         anInt1139++;
         if(arg0 >= 0 && (arg0 ^ 0xffffffff) > -105 && (arg4 ^ 0xffffffff) <= -1 && (arg4 ^ 0xffffffff) > -105) {
-            Floor.aByteArrayArrayArray2323[arg7][arg0][arg4] = (byte) 0;
+            Floor.tile_flags[arg7][arg0][arg4] = (byte) 0;
             for(; ; ) {
                 int i = arg2.method468(false);
                 if((i ^ 0xffffffff) == -1) {
                     if(arg7 == 0)
-                        Class40_Sub6.anIntArrayArrayArray2099[0][arg0][arg4] = -Class42.method888(arg6 + (arg0 + 932731), (byte) -45, arg5 + 556238 + arg4) * 8;
+                        Class40_Sub6.tile_height[0][arg0][arg4] = -Class42.method888(arg6 + (arg0 + 932731), (byte) -45, arg5 + 556238 + arg4) * 8;
                     else
-                        Class40_Sub6.anIntArrayArrayArray2099[arg7][arg0][arg4] = -240 + (Class40_Sub6.anIntArrayArrayArray2099[arg7 + -1][arg0][arg4]);
+                        Class40_Sub6.tile_height[arg7][arg0][arg4] = -240 + (Class40_Sub6.tile_height[arg7 + -1][arg0][arg4]);
                     break;
                 }
                 if(i == 1) {
@@ -88,9 +88,9 @@ public class Class48 {
                     if(i_0_ == 1)
                         i_0_ = 0;
                     if((arg7 ^ 0xffffffff) != -1)
-                        Class40_Sub6.anIntArrayArrayArray2099[arg7][arg0][arg4] = (Class40_Sub6.anIntArrayArrayArray2099[-1 + arg7][arg0][arg4]) + -(8 * i_0_);
+                        Class40_Sub6.tile_height[arg7][arg0][arg4] = (Class40_Sub6.tile_height[-1 + arg7][arg0][arg4]) + -(8 * i_0_);
                     else
-                        Class40_Sub6.anIntArrayArrayArray2099[0][arg0][arg4] = 8 * -i_0_;
+                        Class40_Sub6.tile_height[0][arg0][arg4] = 8 * -i_0_;
                     break;
                 }
                 if(i <= 49) {
@@ -98,7 +98,7 @@ public class Class48 {
                     Floor.aByteArrayArrayArray2335[arg7][arg0][arg4] = (byte) ((i + -2) / 4);
                     Class35.aByteArrayArrayArray1745[arg7][arg0][arg4] = (byte) Class66.method1021(arg1 + -2 + i, 3);
                 } else if(i <= 81)
-                    Floor.aByteArrayArrayArray2323[arg7][arg0][arg4] = (byte) (-49 + i);
+                    Floor.tile_flags[arg7][arg0][arg4] = (byte) (-49 + i);
                 else
                     Class42.aByteArrayArrayArray993[arg7][arg0][arg4] = (byte) (-81 + i);
             }
@@ -238,7 +238,7 @@ public class Class48 {
                                                         }
                                                         if(class40_sub5_sub12.aBoolean2655) {
                                                             Floor.method558((class40_sub5_sub16.anInt2852), (Main.aClass1_1763), (class40_sub5_sub12.anInt2689), -501, i_4_, 19, (Class40_Sub5_Sub17_Sub6.method832(58, (new RSString[]{(Class46.aClass1_1114), (class40_sub5_sub16.aClass1_2796)}))));
-                                                            Class40_Sub5_Sub17_Sub2.anInt3028++;
+                                                            GameObject.anInt3028++;
                                                         }
                                                         if((class40_sub5_sub12.aBoolean2727) && (class1s != null)) {
                                                             for(int i_11_ = 2; i_11_ >= 0; i_11_--) {
@@ -359,12 +359,12 @@ public class Class48 {
                 Class40_Sub6.aClass64_2098 = null;
             }
             RSCanvas.method46(0);
-            NPC.aClass2_3301.method98();
+            NPC.aScene_3301.method98();
             int i = 0;
             if(arg0 != -7225)
                 aClass40_Sub1_1132 = null;
             for(/**/; i < 4; i++)
-                Landscape.aClass3Array1167[i].method146(arg0 + 16784441);
+                Landscape.aCollisionMapArray1167[i].method146(arg0 + 16784441);
             System.gc();
             Class33.method405(arg0 ^ ~0x5e71, 10);
             Class35.anInt1733 = 0;

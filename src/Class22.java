@@ -62,10 +62,10 @@ public abstract class Class22 {
             for(int i_1_ = 1; (i_1_ ^ 0xffffffff) > -104; i_1_++) {
                 int i_2_ = 24628 - -((-(512 * i_1_) + 52736) * 4);
                 for(int i_3_ = 1; (i_3_ ^ 0xffffffff) > -104; i_3_++) {
-                    if((0x18 & (Floor.aByteArrayArrayArray2323[arg1][i_3_][i_1_])) == 0)
-                        NPC.aClass2_3301.method96(is, i_2_, 512, arg1, i_3_, i_1_);
-                    if((arg1 ^ 0xffffffff) > -4 && ((Floor.aByteArrayArrayArray2323[1 + arg1][i_3_][i_1_]) & 0x8 ^ 0xffffffff) != -1)
-                        NPC.aClass2_3301.method96(is, i_2_, 512, 1 + arg1, i_3_, i_1_);
+                    if((0x18 & (Floor.tile_flags[arg1][i_3_][i_1_])) == 0)
+                        NPC.aScene_3301.method96(is, i_2_, 512, arg1, i_3_, i_1_);
+                    if((arg1 ^ 0xffffffff) > -4 && ((Floor.tile_flags[1 + arg1][i_3_][i_1_]) & 0x8 ^ 0xffffffff) != -1)
+                        NPC.aScene_3301.method96(is, i_2_, 512, 1 + arg1, i_3_, i_1_);
                     i_2_ += 4;
                 }
             }
@@ -74,26 +74,26 @@ public abstract class Class22 {
             int i_5_ = -10 + ((int) (20.0 * Math.random()) + 238) << 2143047344;
             for(int i_6_ = 1; i_6_ < 103; i_6_++) {
                 for(int i_7_ = 1; i_7_ < 103; i_7_++) {
-                    if(((Floor.aByteArrayArrayArray2323[arg1][i_7_][i_6_]) & 0x18 ^ 0xffffffff) == -1)
+                    if(((Floor.tile_flags[arg1][i_7_][i_6_]) & 0x18 ^ 0xffffffff) == -1)
                         Class40_Sub5_Sub17_Sub4.method781(1850, arg1, i_7_, i_4_, i_5_, i_6_);
-                    if((arg1 ^ 0xffffffff) > -4 && (0x8 & (Floor.aByteArrayArrayArray2323[1 + arg1][i_7_][i_6_]) ^ 0xffffffff) != -1)
+                    if((arg1 ^ 0xffffffff) > -4 && (0x8 & (Floor.tile_flags[1 + arg1][i_7_][i_6_]) ^ 0xffffffff) != -1)
                         Class40_Sub5_Sub17_Sub4.method781(1850, 1 + arg1, i_7_, i_4_, i_5_, i_6_);
                 }
             }
-            Class40_Sub5_Sub17_Sub2.anInt3040 = 0;
+            GameObject.anInt3040 = 0;
             if(arg0 < 24)
                 aClass40_Sub1Array534 = null;
             for(int i_8_ = 0; i_8_ < 104; i_8_++) {
                 for(int i_9_ = 0; i_9_ < 104; i_9_++) {
-                    int i_10_ = (NPC.aClass2_3301.method93(Player.anInt3267, i_8_, i_9_));
+                    int i_10_ = (NPC.aScene_3301.method93(Player.anInt3267, i_8_, i_9_));
                     if(i_10_ != 0) {
                         i_10_ = 0x7fff & i_10_ >> -1684965490;
-                        int i_11_ = (Class40_Sub4.method535(i_10_, (byte) 127).anInt2511);
+                        int i_11_ = (GameObjectDefinition.getDefinition(i_10_).anInt2511);
                         if(i_11_ >= 0) {
                             int i_12_ = i_9_;
                             int i_13_ = i_8_;
                             if((i_11_ ^ 0xffffffff) != -23 && i_11_ != 29 && (i_11_ ^ 0xffffffff) != -35 && (i_11_ ^ 0xffffffff) != -37 && (i_11_ ^ 0xffffffff) != -47 && (i_11_ ^ 0xffffffff) != -48 && i_11_ != 48) {
-                                int[][] is_14_ = (Landscape.aClass3Array1167[Player.anInt3267].anIntArrayArray150);
+                                int[][] is_14_ = (Landscape.aCollisionMapArray1167[Player.anInt3267].anIntArrayArray150);
                                 for(int i_15_ = 0; (i_15_ ^ 0xffffffff) > -11; i_15_++) {
                                     int i_16_ = (int) (Math.random() * 4.0);
                                     if(i_16_ == 0 && (i_13_ ^ 0xffffffff) < -1 && i_13_ > -3 + i_8_ && ((is_14_[-1 + i_13_][i_12_] & 0x1280108) ^ 0xffffffff) == -1)
@@ -106,10 +106,10 @@ public abstract class Class22 {
                                         i_12_++;
                                 }
                             }
-                            Class62.aClass40_Sub5_Sub14_Sub4Array1466[Class40_Sub5_Sub17_Sub2.anInt3040] = (Class8.aClass40_Sub5_Sub14_Sub4Array296[i_11_]);
-                            Class40_Sub5_Sub17_Sub4.anIntArray3149[Class40_Sub5_Sub17_Sub2.anInt3040] = i_13_;
-                            Class45.anIntArray1083[(Class40_Sub5_Sub17_Sub2.anInt3040)] = i_12_;
-                            Class40_Sub5_Sub17_Sub2.anInt3040++;
+                            Class62.aClass40_Sub5_Sub14_Sub4Array1466[GameObject.anInt3040] = (Class8.aClass40_Sub5_Sub14_Sub4Array296[i_11_]);
+                            Class40_Sub5_Sub17_Sub4.anIntArray3149[GameObject.anInt3040] = i_13_;
+                            Class45.anIntArray1083[(GameObject.anInt3040)] = i_12_;
+                            GameObject.anInt3040++;
                         }
                     }
                 }
@@ -193,7 +193,7 @@ public abstract class Class22 {
                             R3D.method711(0.6);
                             ((Class35) R3D.anInterface3_2939).method424(arg0 ^ ~0x6a, 0.6);
                         }
-                        Class40_Sub5_Sub17_Sub2.method774((byte) -96);
+                        GameObject.method774((byte) -96);
                         Class40_Sub5_Sub11.aBoolean2631 = true;
                     }
                     if(i == 3) {
@@ -238,7 +238,7 @@ public abstract class Class22 {
                     }
                     if(i == 8) {
                         Class52.aBoolean1221 = true;
-                        Class3.anInt165 = i_21_;
+                        CollisionMap.anInt165 = i_21_;
                     }
                     if((i ^ 0xffffffff) == -5) {
                         if(i_21_ == 0)

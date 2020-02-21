@@ -1,8 +1,8 @@
-/* Class3 - Decompiled by JODE
+/* CollisionMap - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
-public class Class3 {
+public class CollisionMap {
     public static int anInt137;
     public static int anInt138;
     public static int anInt139;
@@ -49,7 +49,7 @@ public class Class3 {
     public int anInt151;
     public int anInt153;
 
-    public Class3(int arg0, int arg1) {
+    public CollisionMap(int arg0, int arg1) {
         try {
             anInt145 = arg1;
             anInt151 = 0;
@@ -731,7 +731,7 @@ public class Class3 {
                     return true;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -129) {
-                    Class40_Sub5_Sub17_Sub2.method768(89);
+                    GameObject.method768(89);
                     Class57.packetid = -1;
                     return true;
                 }
@@ -1494,7 +1494,7 @@ public class Class3 {
         }
     }
 
-    public void method151(byte arg0, int arg1, int arg2) {
+    public void markBlocked(byte arg0, int arg1, int arg2) {
         try {
             arg1 -= anInt151;
             anInt147++;

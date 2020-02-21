@@ -64,7 +64,7 @@ public class Class32 {
                 int i_0_ = Class19.anInt475;
                 if((i ^ 0xffffffff) < -191)
                     i = 190;
-                int i_1_ = Class3.anInt168;
+                int i_1_ = CollisionMap.anInt168;
                 int i_2_ = Main.anInt1758;
                 if((i_0_ ^ 0xffffffff) > -1)
                     i_0_ = 0;
@@ -109,7 +109,7 @@ public class Class32 {
     public static void method399(int arg0, int arg1, int arg2) {
         anInt744++;
         long l = (long) ((arg0 << -713372176) - -arg2);
-        Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class40_Sub5_Sub8.aClass23_2545.method331(l, 6120));
+        Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.method331(l, 6120));
         if(class40_sub5_sub13 != null) {
             Class19.aClass27_485.method367(true, class40_sub5_sub13);
             if(arg1 <= 11)

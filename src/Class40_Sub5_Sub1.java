@@ -49,114 +49,114 @@ public class Class40_Sub5_Sub1 extends SubNode {
         }
     }
 
-    public static void method543(Class3 arg0, int arg1, int arg2, int arg3, int arg4, Class2 arg5, int arg6, int arg7, int arg8, int arg9) {
+    public static void method543(CollisionMap arg0, int arg1, int arg2, int arg3, int arg4, Scene arg5, int arg6, int arg7, int arg8, int arg9) {
         try {
             anInt2261++;
-            int i = Class40_Sub6.anIntArrayArrayArray2099[arg2][arg9][arg8];
-            int i_0_ = Class40_Sub6.anIntArrayArrayArray2099[arg2][1 + arg9][arg8];
-            int i_1_ = Class40_Sub6.anIntArrayArrayArray2099[arg2][arg9][1 + arg8];
-            int i_2_ = (Class40_Sub6.anIntArrayArrayArray2099[arg2][arg9 + 1][arg8 - -1]);
-            Class40_Sub5_Sub8 class40_sub5_sub8 = Class40_Sub4.method535(arg1, (byte) 125);
+            int i = Class40_Sub6.tile_height[arg2][arg9][arg8];
+            int i_0_ = Class40_Sub6.tile_height[arg2][1 + arg9][arg8];
+            int i_1_ = Class40_Sub6.tile_height[arg2][arg9][1 + arg8];
+            int i_2_ = (Class40_Sub6.tile_height[arg2][arg9 + 1][arg8 - -1]);
+            GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(arg1);
             int i_3_ = i_2_ + i_0_ + (i + i_1_) >> 466559714;
             int i_4_ = (arg7 << 195627366) + arg4;
             int i_5_ = arg9 - (-(arg8 << -1503664185) - (arg1 << -1015388722) - 1073741824);
-            if(class40_sub5_sub8.anInt2546 == 0)
+            if(gameObjectDefinition.hasActions == 0)
                 i_5_ += -2147483648;
-            if((class40_sub5_sub8.anInt2533 ^ 0xffffffff) == -2)
+            if((gameObjectDefinition.anInt2533 ^ 0xffffffff) == -2)
                 i_4_ += 256;
             if((arg4 ^ 0xffffffff) == -23) {
-                Class40_Sub5_Sub17 class40_sub5_sub17;
-                if((class40_sub5_sub8.anInt2506 ^ 0xffffffff) != 0 || class40_sub5_sub8.anIntArray2534 != null)
-                    class40_sub5_sub17 = new Class40_Sub5_Sub17_Sub2(arg1, 22, arg7, i, i_0_, i_2_, i_1_, (class40_sub5_sub8.anInt2506), true);
+                Renderable renderable;
+                if((gameObjectDefinition.animationId ^ 0xffffffff) != 0 || gameObjectDefinition.childrenIds != null)
+                    renderable = new GameObject(arg1, 22, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
                 else
-                    class40_sub5_sub17 = class40_sub5_sub8.method600(i_2_, i_1_, arg7, i, 22, (byte) 124, i_0_);
-                arg5.method132(arg3, arg9, arg8, i_3_, class40_sub5_sub17, i_5_, i_4_);
-                if(class40_sub5_sub8.aBoolean2501 && class40_sub5_sub8.anInt2546 == 1)
-                    arg0.method151((byte) -28, arg8, arg9);
+                    renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, 22, (byte) 124, i_0_);
+                arg5.method132(arg3, arg9, arg8, i_3_, renderable, i_5_, i_4_);
+                if(gameObjectDefinition.solid && gameObjectDefinition.hasActions == 1)
+                    arg0.markBlocked((byte) -28, arg8, arg9);
             } else if((arg4 ^ 0xffffffff) == -11 || (arg4 ^ 0xffffffff) == -12) {
-                Class40_Sub5_Sub17 class40_sub5_sub17;
-                if((class40_sub5_sub8.anInt2506 ^ 0xffffffff) != 0 || class40_sub5_sub8.anIntArray2534 != null)
-                    class40_sub5_sub17 = new Class40_Sub5_Sub17_Sub2(arg1, 10, arg7, i, i_0_, i_2_, i_1_, (class40_sub5_sub8.anInt2506), true);
+                Renderable renderable;
+                if((gameObjectDefinition.animationId ^ 0xffffffff) != 0 || gameObjectDefinition.childrenIds != null)
+                    renderable = new GameObject(arg1, 10, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
                 else
-                    class40_sub5_sub17 = class40_sub5_sub8.method600(i_2_, i_1_, arg7, i, 10, (byte) 124, i_0_);
-                if(class40_sub5_sub17 != null) {
+                    renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, 10, (byte) 124, i_0_);
+                if(renderable != null) {
                     int i_6_;
                     int i_7_;
                     if(arg7 != 1 && arg7 != 3) {
-                        i_7_ = class40_sub5_sub8.anInt2503;
-                        i_6_ = class40_sub5_sub8.anInt2515;
+                        i_7_ = gameObjectDefinition.anInt2503;
+                        i_6_ = gameObjectDefinition.anInt2515;
                     } else {
-                        i_6_ = class40_sub5_sub8.anInt2503;
-                        i_7_ = class40_sub5_sub8.anInt2515;
+                        i_6_ = gameObjectDefinition.anInt2503;
+                        i_7_ = gameObjectDefinition.anInt2515;
                     }
                     int i_8_ = 0;
                     if((arg4 ^ 0xffffffff) == -12)
                         i_8_ += 256;
-                    arg5.method137(arg3, arg9, arg8, i_3_, i_7_, i_6_, class40_sub5_sub17, i_8_, i_5_, i_4_);
+                    arg5.method137(arg3, arg9, arg8, i_3_, i_7_, i_6_, renderable, i_8_, i_5_, i_4_);
                 }
-                if(class40_sub5_sub8.aBoolean2501)
-                    arg0.method154(arg9, class40_sub5_sub8.aBoolean2528, arg6 ^ ~0x5644, class40_sub5_sub8.anInt2515, arg7, arg8, class40_sub5_sub8.anInt2503);
+                if(gameObjectDefinition.solid)
+                    arg0.method154(arg9, gameObjectDefinition.aBoolean2528, arg6 ^ ~0x5644, gameObjectDefinition.anInt2515, arg7, arg8, gameObjectDefinition.anInt2503);
             } else if((arg4 ^ 0xffffffff) <= -13) {
-                Class40_Sub5_Sub17 class40_sub5_sub17;
-                if((class40_sub5_sub8.anInt2506 ^ 0xffffffff) != 0 || class40_sub5_sub8.anIntArray2534 != null)
-                    class40_sub5_sub17 = new Class40_Sub5_Sub17_Sub2(arg1, arg4, arg7, i, i_0_, i_2_, i_1_, (class40_sub5_sub8.anInt2506), true);
+                Renderable renderable;
+                if((gameObjectDefinition.animationId ^ 0xffffffff) != 0 || gameObjectDefinition.childrenIds != null)
+                    renderable = new GameObject(arg1, arg4, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
                 else
-                    class40_sub5_sub17 = class40_sub5_sub8.method600(i_2_, i_1_, arg7, i, arg4, (byte) 124, i_0_);
-                arg5.method137(arg3, arg9, arg8, i_3_, 1, 1, class40_sub5_sub17, 0, i_5_, i_4_);
-                if(class40_sub5_sub8.aBoolean2501)
-                    arg0.method154(arg9, class40_sub5_sub8.aBoolean2528, arg6 ^ ~0x5648, class40_sub5_sub8.anInt2515, arg7, arg8, class40_sub5_sub8.anInt2503);
+                    renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, arg4, (byte) 124, i_0_);
+                arg5.method137(arg3, arg9, arg8, i_3_, 1, 1, renderable, 0, i_5_, i_4_);
+                if(gameObjectDefinition.solid)
+                    arg0.method154(arg9, gameObjectDefinition.aBoolean2528, arg6 ^ ~0x5648, gameObjectDefinition.anInt2515, arg7, arg8, gameObjectDefinition.anInt2503);
             } else if(arg4 == 0) {
-                Class40_Sub5_Sub17 class40_sub5_sub17;
-                if(class40_sub5_sub8.anInt2506 != -1 || class40_sub5_sub8.anIntArray2534 != null)
-                    class40_sub5_sub17 = new Class40_Sub5_Sub17_Sub2(arg1, 0, arg7, i, i_0_, i_2_, i_1_, (class40_sub5_sub8.anInt2506), true);
+                Renderable renderable;
+                if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.childrenIds != null)
+                    renderable = new GameObject(arg1, 0, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
                 else
-                    class40_sub5_sub17 = class40_sub5_sub8.method600(i_2_, i_1_, arg7, i, 0, (byte) 124, i_0_);
-                arg5.method94(arg3, arg9, arg8, i_3_, class40_sub5_sub17, null, Class32.anIntArray761[arg7], 0, i_5_, i_4_);
-                if(class40_sub5_sub8.aBoolean2501)
-                    arg0.method150(arg8, arg4, arg7, arg9, class40_sub5_sub8.aBoolean2528, (byte) 95);
+                    renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, 0, (byte) 124, i_0_);
+                arg5.method94(arg3, arg9, arg8, i_3_, renderable, null, Class32.anIntArray761[arg7], 0, i_5_, i_4_);
+                if(gameObjectDefinition.solid)
+                    arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.aBoolean2528, (byte) 95);
             } else if((arg4 ^ 0xffffffff) == -2) {
-                Class40_Sub5_Sub17 class40_sub5_sub17;
-                if(class40_sub5_sub8.anInt2506 == -1 && class40_sub5_sub8.anIntArray2534 == null)
-                    class40_sub5_sub17 = class40_sub5_sub8.method600(i_2_, i_1_, arg7, i, 1, (byte) 124, i_0_);
+                Renderable renderable;
+                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childrenIds == null)
+                    renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, 1, (byte) 124, i_0_);
                 else
-                    class40_sub5_sub17 = new Class40_Sub5_Sub17_Sub2(arg1, 1, arg7, i, i_0_, i_2_, i_1_, (class40_sub5_sub8.anInt2506), true);
-                arg5.method94(arg3, arg9, arg8, i_3_, class40_sub5_sub17, null, Class40_Sub5_Sub15.anIntArray2788[arg7], 0, i_5_, i_4_);
-                if(class40_sub5_sub8.aBoolean2501)
-                    arg0.method150(arg8, arg4, arg7, arg9, class40_sub5_sub8.aBoolean2528, (byte) 95);
+                    renderable = new GameObject(arg1, 1, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
+                arg5.method94(arg3, arg9, arg8, i_3_, renderable, null, Class40_Sub5_Sub15.anIntArray2788[arg7], 0, i_5_, i_4_);
+                if(gameObjectDefinition.solid)
+                    arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.aBoolean2528, (byte) 95);
             } else if(arg4 == 2) {
                 int i_9_ = arg7 - -1 & 0x3;
-                Class40_Sub5_Sub17 class40_sub5_sub17;
-                Class40_Sub5_Sub17 class40_sub5_sub17_10_;
-                if((class40_sub5_sub8.anInt2506 ^ 0xffffffff) != 0 || class40_sub5_sub8.anIntArray2534 != null) {
-                    class40_sub5_sub17 = new Class40_Sub5_Sub17_Sub2(arg1, 2, 4 + arg7, i, i_0_, i_2_, i_1_, (class40_sub5_sub8.anInt2506), true);
-                    class40_sub5_sub17_10_ = new Class40_Sub5_Sub17_Sub2(arg1, 2, i_9_, i, i_0_, i_2_, i_1_, (class40_sub5_sub8.anInt2506), true);
+                Renderable renderable;
+                Renderable renderable_10_;
+                if((gameObjectDefinition.animationId ^ 0xffffffff) != 0 || gameObjectDefinition.childrenIds != null) {
+                    renderable = new GameObject(arg1, 2, 4 + arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
+                    renderable_10_ = new GameObject(arg1, 2, i_9_, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
                 } else {
-                    class40_sub5_sub17 = class40_sub5_sub8.method600(i_2_, i_1_, arg7 + 4, i, 2, (byte) 124, i_0_);
-                    class40_sub5_sub17_10_ = class40_sub5_sub8.method600(i_2_, i_1_, i_9_, i, 2, (byte) 124, i_0_);
+                    renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7 + 4, i, 2, (byte) 124, i_0_);
+                    renderable_10_ = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, i_9_, i, 2, (byte) 124, i_0_);
                 }
-                arg5.method94(arg3, arg9, arg8, i_3_, class40_sub5_sub17, class40_sub5_sub17_10_, Class32.anIntArray761[arg7], Class32.anIntArray761[i_9_], i_5_, i_4_);
-                if(class40_sub5_sub8.aBoolean2501)
-                    arg0.method150(arg8, arg4, arg7, arg9, class40_sub5_sub8.aBoolean2528, (byte) 95);
+                arg5.method94(arg3, arg9, arg8, i_3_, renderable, renderable_10_, Class32.anIntArray761[arg7], Class32.anIntArray761[i_9_], i_5_, i_4_);
+                if(gameObjectDefinition.solid)
+                    arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.aBoolean2528, (byte) 95);
             } else if(arg4 == 3) {
-                Class40_Sub5_Sub17 class40_sub5_sub17;
-                if((class40_sub5_sub8.anInt2506 ^ 0xffffffff) != 0 || class40_sub5_sub8.anIntArray2534 != null)
-                    class40_sub5_sub17 = new Class40_Sub5_Sub17_Sub2(arg1, 3, arg7, i, i_0_, i_2_, i_1_, (class40_sub5_sub8.anInt2506), true);
+                Renderable renderable;
+                if((gameObjectDefinition.animationId ^ 0xffffffff) != 0 || gameObjectDefinition.childrenIds != null)
+                    renderable = new GameObject(arg1, 3, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
                 else
-                    class40_sub5_sub17 = class40_sub5_sub8.method600(i_2_, i_1_, arg7, i, 3, (byte) 124, i_0_);
-                arg5.method94(arg3, arg9, arg8, i_3_, class40_sub5_sub17, null, Class40_Sub5_Sub15.anIntArray2788[arg7], 0, i_5_, i_4_);
-                if(class40_sub5_sub8.aBoolean2501)
-                    arg0.method150(arg8, arg4, arg7, arg9, class40_sub5_sub8.aBoolean2528, (byte) 95);
+                    renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, 3, (byte) 124, i_0_);
+                arg5.method94(arg3, arg9, arg8, i_3_, renderable, null, Class40_Sub5_Sub15.anIntArray2788[arg7], 0, i_5_, i_4_);
+                if(gameObjectDefinition.solid)
+                    arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.aBoolean2528, (byte) 95);
             } else if((arg4 ^ 0xffffffff) == -10) {
-                Class40_Sub5_Sub17 class40_sub5_sub17;
-                if((class40_sub5_sub8.anInt2506 ^ 0xffffffff) != 0 || class40_sub5_sub8.anIntArray2534 != null)
-                    class40_sub5_sub17 = new Class40_Sub5_Sub17_Sub2(arg1, arg4, arg7, i, i_0_, i_2_, i_1_, (class40_sub5_sub8.anInt2506), true);
+                Renderable renderable;
+                if((gameObjectDefinition.animationId ^ 0xffffffff) != 0 || gameObjectDefinition.childrenIds != null)
+                    renderable = new GameObject(arg1, arg4, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
                 else
-                    class40_sub5_sub17 = class40_sub5_sub8.method600(i_2_, i_1_, arg7, i, arg4, (byte) 124, i_0_);
-                arg5.method137(arg3, arg9, arg8, i_3_, 1, 1, class40_sub5_sub17, 0, i_5_, i_4_);
-                if(class40_sub5_sub8.aBoolean2501)
-                    arg0.method154(arg9, class40_sub5_sub8.aBoolean2528, -117, class40_sub5_sub8.anInt2515, arg7, arg8, class40_sub5_sub8.anInt2503);
+                    renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, arg4, (byte) 124, i_0_);
+                arg5.method137(arg3, arg9, arg8, i_3_, 1, 1, renderable, 0, i_5_, i_4_);
+                if(gameObjectDefinition.solid)
+                    arg0.method154(arg9, gameObjectDefinition.aBoolean2528, -117, gameObjectDefinition.anInt2515, arg7, arg8, gameObjectDefinition.anInt2503);
             } else {
-                if(class40_sub5_sub8.aBoolean2530) {
+                if(gameObjectDefinition.aBoolean2530) {
                     if((arg7 ^ 0xffffffff) != -2) {
                         if((arg7 ^ 0xffffffff) != -3) {
                             if((arg7 ^ 0xffffffff) == -4) {
@@ -183,45 +183,45 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     }
                 }
                 if(arg4 == 4) {
-                    Class40_Sub5_Sub17 class40_sub5_sub17;
-                    if((class40_sub5_sub8.anInt2506 ^ 0xffffffff) != 0 || class40_sub5_sub8.anIntArray2534 != null)
-                        class40_sub5_sub17 = new Class40_Sub5_Sub17_Sub2(arg1, 4, 0, i, i_0_, i_2_, i_1_, (class40_sub5_sub8.anInt2506), true);
+                    Renderable renderable;
+                    if((gameObjectDefinition.animationId ^ 0xffffffff) != 0 || gameObjectDefinition.childrenIds != null)
+                        renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
                     else
-                        class40_sub5_sub17 = class40_sub5_sub8.method600(i_2_, i_1_, 0, i, 4, (byte) 124, i_0_);
-                    arg5.method109(arg3, arg9, arg8, i_3_, class40_sub5_sub17, Class32.anIntArray761[arg7], 512 * arg7, 0, 0, i_5_, i_4_);
+                        renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, (byte) 124, i_0_);
+                    arg5.method109(arg3, arg9, arg8, i_3_, renderable, Class32.anIntArray761[arg7], 512 * arg7, 0, 0, i_5_, i_4_);
                 } else if(arg4 == 5) {
                     int i_14_ = 16;
                     int i_15_ = arg5.method122(arg3, arg9, arg8);
                     if(i_15_ > 0)
-                        i_14_ = (Class40_Sub4.method535(i_15_ >> -1535148562 & 0x7fff, (byte) 127).anInt2505);
-                    Class40_Sub5_Sub17 class40_sub5_sub17;
-                    if(class40_sub5_sub8.anInt2506 == -1 && class40_sub5_sub8.anIntArray2534 == null)
-                        class40_sub5_sub17 = class40_sub5_sub8.method600(i_2_, i_1_, 0, i, 4, (byte) 124, i_0_);
+                        i_14_ = (GameObjectDefinition.getDefinition(i_15_ >> -1535148562 & 0x7fff).anInt2505);
+                    Renderable renderable;
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childrenIds == null)
+                        renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, (byte) 124, i_0_);
                     else
-                        class40_sub5_sub17 = new Class40_Sub5_Sub17_Sub2(arg1, 4, 0, i, i_0_, i_2_, i_1_, (class40_sub5_sub8.anInt2506), true);
-                    arg5.method109(arg3, arg9, arg8, i_3_, class40_sub5_sub17, Class32.anIntArray761[arg7], 512 * arg7, Class27.anIntArray666[arg7] * i_14_, Class68_Sub1.anIntArray2207[arg7] * i_14_, i_5_, i_4_);
+                        renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
+                    arg5.method109(arg3, arg9, arg8, i_3_, renderable, Class32.anIntArray761[arg7], 512 * arg7, Class27.anIntArray666[arg7] * i_14_, Class68_Sub1.anIntArray2207[arg7] * i_14_, i_5_, i_4_);
                 } else if(arg6 == -22078) {
                     if(arg4 == 6) {
-                        Class40_Sub5_Sub17 class40_sub5_sub17;
-                        if((class40_sub5_sub8.anInt2506 ^ 0xffffffff) != 0 || class40_sub5_sub8.anIntArray2534 != null)
-                            class40_sub5_sub17 = (new Class40_Sub5_Sub17_Sub2(arg1, 4, 0, i, i_0_, i_2_, i_1_, class40_sub5_sub8.anInt2506, true));
+                        Renderable renderable;
+                        if((gameObjectDefinition.animationId ^ 0xffffffff) != 0 || gameObjectDefinition.childrenIds != null)
+                            renderable = (new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true));
                         else
-                            class40_sub5_sub17 = class40_sub5_sub8.method600(i_2_, i_1_, 0, i, 4, (byte) 124, i_0_);
-                        arg5.method109(arg3, arg9, arg8, i_3_, class40_sub5_sub17, 256, arg7, 0, 0, i_5_, i_4_);
+                            renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, (byte) 124, i_0_);
+                        arg5.method109(arg3, arg9, arg8, i_3_, renderable, 256, arg7, 0, 0, i_5_, i_4_);
                     } else if((arg4 ^ 0xffffffff) == -8) {
-                        Class40_Sub5_Sub17 class40_sub5_sub17;
-                        if((class40_sub5_sub8.anInt2506 ^ 0xffffffff) == 0 && class40_sub5_sub8.anIntArray2534 == null)
-                            class40_sub5_sub17 = class40_sub5_sub8.method600(i_2_, i_1_, 0, i, 4, (byte) 124, i_0_);
+                        Renderable renderable;
+                        if((gameObjectDefinition.animationId ^ 0xffffffff) == 0 && gameObjectDefinition.childrenIds == null)
+                            renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, (byte) 124, i_0_);
                         else
-                            class40_sub5_sub17 = (new Class40_Sub5_Sub17_Sub2(arg1, 4, 0, i, i_0_, i_2_, i_1_, class40_sub5_sub8.anInt2506, true));
-                        arg5.method109(arg3, arg9, arg8, i_3_, class40_sub5_sub17, 512, arg7, 0, 0, i_5_, i_4_);
+                            renderable = (new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true));
+                        arg5.method109(arg3, arg9, arg8, i_3_, renderable, 512, arg7, 0, 0, i_5_, i_4_);
                     } else if((arg4 ^ 0xffffffff) == -9) {
-                        Class40_Sub5_Sub17 class40_sub5_sub17;
-                        if(class40_sub5_sub8.anInt2506 != -1 || class40_sub5_sub8.anIntArray2534 != null)
-                            class40_sub5_sub17 = (new Class40_Sub5_Sub17_Sub2(arg1, 4, 0, i, i_0_, i_2_, i_1_, class40_sub5_sub8.anInt2506, true));
+                        Renderable renderable;
+                        if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.childrenIds != null)
+                            renderable = (new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true));
                         else
-                            class40_sub5_sub17 = class40_sub5_sub8.method600(i_2_, i_1_, 0, i, 4, (byte) 124, i_0_);
-                        arg5.method109(arg3, arg9, arg8, i_3_, class40_sub5_sub17, 768, arg7, 0, 0, i_5_, i_4_);
+                            renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, (byte) 124, i_0_);
+                        arg5.method109(arg3, arg9, arg8, i_3_, renderable, 768, arg7, 0, 0, i_5_, i_4_);
                     }
                 }
             }
@@ -299,7 +299,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 } else {
                     for(int i = 4; (i ^ 0xffffffff) <= -1; i--) {
                         if(Main.aClass1Array1778[i] != null) {
-                            Class3.anInt156++;
+                            CollisionMap.anInt156++;
                             int i_16_ = 0;
                             int i_17_ = 0;
                             if(Main.aClass1Array1778[i].method63(Class38_Sub1.aClass1_1917, true)) {
@@ -347,7 +347,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
             if(arg0 != 256)
                 anInt2280 = 44;
             int i = Class37.method430((byte) -120, Player.anInt3267, Class12.anInt388, Class40_Sub5_Sub6.anInt2443);
-            if(i + -Class32.anInt769 < 800 && ((Floor.aByteArrayArrayArray2323[Player.anInt3267][Class12.anInt388 >> -1116963737][Class40_Sub5_Sub6.anInt2443 >> -161392185]) & 0x4) != 0)
+            if(i + -Class32.anInt769 < 800 && ((Floor.tile_flags[Player.anInt3267][Class12.anInt388 >> -1116963737][Class40_Sub5_Sub6.anInt2443 >> -161392185]) & 0x4) != 0)
                 return Player.anInt3267;
             return 3;
         } catch(RuntimeException runtimeexception) {

@@ -67,9 +67,9 @@ public class Class60 {
     }
 
     public static void method989(boolean arg0) {
-        if(Class3.aClass8_166 != null) {
-            Class3.aClass8_166.method213();
-            Class3.aClass8_166 = null;
+        if(CollisionMap.aClass8_166 != null) {
+            CollisionMap.aClass8_166.method213();
+            CollisionMap.aClass8_166 = null;
         }
         anInt1410++;
         if(arg0 != true)
@@ -88,7 +88,7 @@ public class Class60 {
         int i_3_ = NpcDefinition.anInt2394 * 15 - -21;
         if((Class57.anInt1338 ^ 0xffffffff) < -5 && (RSString.anInt1668 ^ 0xffffffff) < -5 && (Class57.anInt1338 ^ 0xffffffff) > -517 && (RSString.anInt1668 ^ 0xffffffff) > -339) {
             Class40_Sub5_Sub17_Sub1.anInt2983 = 0;
-            Class3.anInt168 = NpcDefinition.anInt2394 * 15 - -22;
+            CollisionMap.anInt168 = NpcDefinition.anInt2394 * 15 - -22;
             Class4.aBoolean173 = true;
             int i_4_ = -(i / 2) + -4 + Class57.anInt1338;
             Class46.anInt1086 = i;
@@ -106,7 +106,7 @@ public class Class60 {
         }
         if(arg0 == 11451) {
             if((Class57.anInt1338 ^ 0xffffffff) < -554 && (RSString.anInt1668 ^ 0xffffffff) < -206 && (Class57.anInt1338 ^ 0xffffffff) > -744 && RSString.anInt1668 < 466) {
-                Class3.anInt168 = 22 + 15 * NpcDefinition.anInt2394;
+                CollisionMap.anInt168 = 22 + 15 * NpcDefinition.anInt2394;
                 Class40_Sub5_Sub17_Sub1.anInt2983 = 1;
                 int i_6_ = -205 + RSString.anInt1668;
                 int i_7_ = -(i / 2) + (-553 + Class57.anInt1338);
@@ -127,7 +127,7 @@ public class Class60 {
             if((Class57.anInt1338 ^ 0xffffffff) < -18 && RSString.anInt1668 > 357 && Class57.anInt1338 < 496 && RSString.anInt1668 < 453) {
                 Class46.anInt1086 = i;
                 Class40_Sub5_Sub17_Sub1.anInt2983 = 2;
-                Class3.anInt168 = NpcDefinition.anInt2394 * 15 + 22;
+                CollisionMap.anInt168 = NpcDefinition.anInt2394 * 15 + 22;
                 int i_8_ = RSString.anInt1668 + -357;
                 if((i_8_ ^ 0xffffffff) <= -1) {
                     if((i_3_ + i_8_ ^ 0xffffffff) < -97)
@@ -165,7 +165,7 @@ public class Class60 {
             while((arg1 ^ 0xffffffffffffffffL) != -1L) {
                 long l_10_ = arg1;
                 arg1 /= 37L;
-                is[--i] = Class3.aByteArray169[(int) (-(arg1 * 37L) + l_10_)];
+                is[--i] = CollisionMap.aByteArray169[(int) (-(arg1 * 37L) + l_10_)];
             }
             RSString class1 = new RSString();
             class1.aByteArray1692 = is;

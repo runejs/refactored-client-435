@@ -67,7 +67,7 @@ public class Class17 {
                 if(class40_sub5_sub13 == null)
                     break;
                 Class19.aClass27_485.method367(true, class40_sub5_sub13);
-                Class40_Sub5_Sub8.aClass23_2545.put(class40_sub5_sub13, (byte) -121, (class40_sub5_sub13.key));
+                GameObjectDefinition.aClass23_2545.put(class40_sub5_sub13, (byte) -121, (class40_sub5_sub13.key));
                 Class42.anInt1006--;
                 HashTable.anInt554++;
             }
@@ -124,7 +124,7 @@ public class Class17 {
                     }
                     for(int i = 0; Class40_Sub5_Sub17_Sub3.anInt3060 > i; i++) {
                         if((arg1 ^ 0xffffffffffffffffL) == (Class59.aLongArray1397[i] ^ 0xffffffffffffffffL)) {
-                            Class44.method895(112, 0, (Class40_Sub5_Sub17_Sub6.method832(-100, (new RSString[]{Class44.aClass1_1032, class1, (Class40_Sub5_Sub17.aClass1_2864)}))), Class66.aClass1_1567);
+                            Class44.method895(112, 0, (Class40_Sub5_Sub17_Sub6.method832(-100, (new RSString[]{Class44.aClass1_1032, class1, (Renderable.aClass1_2864)}))), Class66.aClass1_1567);
                             return;
                         }
                     }

@@ -210,12 +210,12 @@ public class Class40_Sub5_Sub12 extends SubNode {
         anInt2662++;
         synchronized(Class59.aClass54_1392) {
             Class59.anInt1389 = Class52.anInt1214;
-            if(Class40_Sub5_Sub8.anInt2543 < 0) {
+            if(GameObjectDefinition.anInt2543 < 0) {
                 for(int i = 0; (i ^ 0xffffffff) > -113; i++)
                     Class40_Sub5_Sub17_Sub3.aBooleanArray3056[i] = false;
-                Class40_Sub5_Sub8.anInt2543 = Class40_Sub13.anInt2183;
+                GameObjectDefinition.anInt2543 = Class40_Sub13.anInt2183;
             } else {
-                while((Class40_Sub13.anInt2183 ^ 0xffffffff) != (Class40_Sub5_Sub8.anInt2543 ^ 0xffffffff)) {
+                while((Class40_Sub13.anInt2183 ^ 0xffffffff) != (GameObjectDefinition.anInt2543 ^ 0xffffffff)) {
                     int i = RSString.anIntArray1706[Class40_Sub13.anInt2183];
                     Class40_Sub13.anInt2183 = 0x7f & Class40_Sub13.anInt2183 - -1;
                     if((i ^ 0xffffffff) > -1)
@@ -479,7 +479,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
                 if((anInt2714 ^ 0xffffffff) == -6)
                     aClass1_2676 = RSRuntimeException.aClass1_1649;
                 if(anInt2714 == 6)
-                    aClass1_2676 = Class3.aClass1_167;
+                    aClass1_2676 = CollisionMap.aClass1_167;
             }
         }
     }

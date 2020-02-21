@@ -114,7 +114,7 @@ public class ItemDefinition extends SubNode {
                 Landscape.aClass68_1185.method1044(arg0 ^ arg0, 0, graphics, 4);
                 Class40_Sub5_Sub1.aClass68_2275.method1044(arg0 + -205, 0, graphics, 357);
                 Class39.aClass68_908.method1044(0, 722, graphics, 4);
-                Class40_Sub5_Sub17_Sub2.aClass68_3045.method1044(arg0 + -205, 743, graphics, 205);
+                GameObject.aClass68_3045.method1044(arg0 + -205, 743, graphics, 205);
                 Class40_Sub5_Sub17_Sub6.aClass68_3243.method1044(0, 0, graphics, 0);
                 Class40_Sub7.aClass68_2123.method1044(0, 516, graphics, 4);
                 Class61.aClass68_1441.method1044(0, 516, graphics, 205);
@@ -182,7 +182,7 @@ public class ItemDefinition extends SubNode {
         if(arg0 != true)
             method749(true, -38);
         anInt2843++;
-        for(Class40_Sub5_Sub17.anInt2866 += arg1; ((Class3.anInt141 ^ 0xffffffff) >= (Class40_Sub5_Sub17.anInt2866 ^ 0xffffffff)); Class40_Sub5_Sub17.anInt2866 -= Class3.anInt141)
+        for(Renderable.anInt2866 += arg1; ((CollisionMap.anInt141 ^ 0xffffffff) >= (Renderable.anInt2866 ^ 0xffffffff)); Renderable.anInt2866 -= CollisionMap.anInt141)
             SubNode.anInt2081 -= SubNode.anInt2081 >> -1244591038;
         SubNode.anInt2081 -= 1000 * arg1;
         if((SubNode.anInt2081 ^ 0xffffffff) > -1)
@@ -191,7 +191,7 @@ public class ItemDefinition extends SubNode {
 
     public static void method749(boolean arg0, int arg1) {
         try {
-            for(int i = 0; Class40_Sub5_Sub8.anInt2558 > i; i++) {
+            for(int i = 0; GameObjectDefinition.anInt2558 > i; i++) {
                 NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i]]);
                 int i_15_ = (536870912 + (Class40_Sub3.anIntArray2016[i] << 1399377262));
                 if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.method784(1) && !arg0 != (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.aBoolean2397) && class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.method571(-1)) {
@@ -205,7 +205,7 @@ public class ItemDefinition extends SubNode {
                         }
                         if(!class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.aBoolean2372)
                             i_15_ += -2147483648;
-                        NPC.aClass2_3301.method134(Player.anInt3267, class40_sub5_sub17_sub4_sub2.anInt3098, class40_sub5_sub17_sub4_sub2.anInt3089, (Class37.method430((byte) -126, Player.anInt3267, (class40_sub5_sub17_sub4_sub2.anInt3098 + ((-1 + class40_sub5_sub17_sub4_sub2.anInt3096) * 64)), (class40_sub5_sub17_sub4_sub2.anInt3096 * 64 + (-64 + (class40_sub5_sub17_sub4_sub2.anInt3089))))), -64 + (class40_sub5_sub17_sub4_sub2.anInt3096 * 64 + 60), class40_sub5_sub17_sub4_sub2, class40_sub5_sub17_sub4_sub2.anInt3118, i_15_, class40_sub5_sub17_sub4_sub2.aBoolean3105);
+                        NPC.aScene_3301.method134(Player.anInt3267, class40_sub5_sub17_sub4_sub2.anInt3098, class40_sub5_sub17_sub4_sub2.anInt3089, (Class37.method430((byte) -126, Player.anInt3267, (class40_sub5_sub17_sub4_sub2.anInt3098 + ((-1 + class40_sub5_sub17_sub4_sub2.anInt3096) * 64)), (class40_sub5_sub17_sub4_sub2.anInt3096 * 64 + (-64 + (class40_sub5_sub17_sub4_sub2.anInt3089))))), -64 + (class40_sub5_sub17_sub4_sub2.anInt3096 * 64 + 60), class40_sub5_sub17_sub4_sub2, class40_sub5_sub17_sub4_sub2.anInt3118, i_15_, class40_sub5_sub17_sub4_sub2.aBoolean3105);
                     }
                 }
             }

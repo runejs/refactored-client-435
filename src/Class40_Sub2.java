@@ -31,7 +31,7 @@ public class Class40_Sub2 extends Node {
     public int[] anIntArray2005;
     public int anInt2007;
     public Class40_Sub9_Sub2 aClass40_Sub9_Sub2_2010;
-    public Class40_Sub5_Sub8 aClass40_Sub5_Sub8_2011;
+    public GameObjectDefinition aGameObjectDefinition_2011;
     public int anInt2012;
     public int anInt2013;
     public int anInt2014;
@@ -151,7 +151,7 @@ public class Class40_Sub2 extends Node {
             if(arg3) {
                 if((arg2[arg0] ^ 0xffffffff) != 0) {
                     if(arg0 == 7)
-                        Class40_Sub5_Sub17.aClass40_Sub5_Sub14_Sub2_2860.method692(42, 0);
+                        Renderable.aClass40_Sub5_Sub14_Sub2_2860.method692(42, 0);
                     if(arg0 == 8)
                         HashTable.aClass40_Sub5_Sub14_Sub2_549.method692(74, 0);
                     if((arg0 ^ 0xffffffff) == -10)
@@ -193,19 +193,19 @@ public class Class40_Sub2 extends Node {
     public void method528(int arg0) {
         int i = anInt1997;
         int i_5_ = 37 % ((arg0 - -55) / 54);
-        Class40_Sub5_Sub8 class40_sub5_sub8 = aClass40_Sub5_Sub8_2011.method611(-20);
-        if(class40_sub5_sub8 == null) {
+        GameObjectDefinition gameObjectDefinition = aGameObjectDefinition_2011.method611(-20);
+        if(gameObjectDefinition == null) {
             anInt2000 = 0;
             anInt2012 = 0;
             anInt2002 = 0;
             anIntArray2005 = null;
             anInt1997 = -1;
         } else {
-            anInt2000 = 128 * class40_sub5_sub8.anInt2502;
-            anInt2012 = class40_sub5_sub8.anInt2499;
-            anInt2002 = class40_sub5_sub8.anInt2542;
-            anInt1997 = class40_sub5_sub8.anInt2513;
-            anIntArray2005 = class40_sub5_sub8.anIntArray2523;
+            anInt2000 = 128 * gameObjectDefinition.anInt2502;
+            anInt2012 = gameObjectDefinition.anInt2499;
+            anInt2002 = gameObjectDefinition.anInt2542;
+            anInt1997 = gameObjectDefinition.anInt2513;
+            anIntArray2005 = gameObjectDefinition.anIntArray2523;
         }
         anInt2004++;
         if(i != anInt1997 && aClass40_Sub9_Sub2_2001 != null) {

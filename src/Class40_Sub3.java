@@ -53,9 +53,9 @@ public class Class40_Sub3 extends Node {
     public static void method530(int arg0) {
         anInt2029++;
         if(Class40_Sub5_Sub6.anInt2451 == 0) {
-            NPC.aClass2_3301 = new Class2(4, 104, 104, Class40_Sub6.anIntArrayArrayArray2099);
+            NPC.aScene_3301 = new Scene(4, 104, 104, Class40_Sub6.tile_height);
             for(int i = 0; (i ^ 0xffffffff) > -5; i++)
-                Landscape.aClass3Array1167[i] = new Class3(104, 104);
+                Landscape.aCollisionMapArray1167[i] = new CollisionMap(104, 104);
             Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765 = new DirectColorSprite(512, 512);
             Class67.anInt1607 = 5;
             Class40_Sub5_Sub6.anInt2451 = 20;
@@ -68,7 +68,7 @@ public class Class40_Sub3 extends Node {
                 int i_2_ = R3D.sinetable[i_0_];
                 is[i] = i_2_ * i_1_ >> 969069872;
             }
-            Class2.method95(is, 500, 800, 512, 334);
+            Scene.method95(is, 500, 800, 512, 334);
             Class67.anInt1607 = 10;
             Class22_Sub2.currentLoadingText = RSCanvas.aClass1_63;
             Class40_Sub5_Sub6.anInt2451 = 30;
@@ -78,7 +78,7 @@ public class Class40_Sub3 extends Node {
             Class40_Sub5_Sub10.aClass6_Sub1_2609 = Class54.method957(2, true, true, (byte) 119, false);
             Class65.aClass6_Sub1_1533 = Class54.method957(3, true, false, (byte) 119, true);
             Class40_Sub5_Sub17_Sub4.aClass6_Sub1_3157 = Class54.method957(4, true, false, (byte) 119, true);
-            Class40_Sub5_Sub17.aClass6_Sub1_2857 = Class54.method957(5, true, true, (byte) 123, true);
+            Renderable.aClass6_Sub1_2857 = Class54.method957(5, true, true, (byte) 123, true);
             Class55.aClass6_Sub1_1286 = Class54.method957(6, false, true, (byte) 117, true);
             Class40_Sub5_Sub9.aClass6_Sub1_2571 = Class54.method957(7, true, false, (byte) 124, true);
             NpcDefinition.aClass6_Sub1_2377 = Class54.method957(8, true, false, (byte) 127, true);
@@ -96,7 +96,7 @@ public class Class40_Sub3 extends Node {
             i += 5 * Class40_Sub5_Sub10.aClass6_Sub1_2609.method197(100) / 100;
             i += 5 * Class65.aClass6_Sub1_1533.method197(100) / 100;
             i += (5 * Class40_Sub5_Sub17_Sub4.aClass6_Sub1_3157.method197(100) / 100);
-            i += (5 * Class40_Sub5_Sub17.aClass6_Sub1_2857.method197(arg0) / 100);
+            i += (5 * Renderable.aClass6_Sub1_2857.method197(arg0) / 100);
             i += Class55.aClass6_Sub1_1286.method197(100) * 5 / 100;
             i += 40 * Class40_Sub5_Sub9.aClass6_Sub1_2571.method197(100) / 100;
             i += NpcDefinition.aClass6_Sub1_2377.method197(100) * 5 / 100;
@@ -114,9 +114,9 @@ public class Class40_Sub3 extends Node {
                 Class67.anInt1607 = 30;
             }
         } else if(Class40_Sub5_Sub6.anInt2451 == 45) {
-            Class38_Sub1.method446(ISAAC.aClass31_521, 0, !Class46.aBoolean1112, (byte) 30);
+            Class38_Sub1.method446(ISAAC.aClass31_521, 0, !Class46.lowMemory, (byte) 30);
             Class49.aClass40_Sub9_Sub1_1152 = Class62.method1003(ISAAC.aClass31_521, Class62.aCanvas1469, arg0 ^ 0x74be);
-            Class55.aClass48_1289 = new Class48(22050, Class3.anInt141);
+            Class55.aClass48_1289 = new Class48(22050, CollisionMap.anInt141);
             Class40_Sub5_Sub6.anInt2451 = 50;
             Class22_Sub2.currentLoadingText = Class46.aClass1_1105;
             Class67.anInt1607 = 35;
@@ -162,7 +162,7 @@ public class Class40_Sub3 extends Node {
                 Class38.method441(Class40_Sub5_Sub10.aClass6_Sub1_2609, -76);
                 Class40_Sub5_Sub9.method616((Class40_Sub5_Sub10.aClass6_Sub1_2609), (byte) 85);
                 Class58.method977(3, Class40_Sub5_Sub10.aClass6_Sub1_2609, Class40_Sub5_Sub9.aClass6_Sub1_2571);
-                Class58.method980(28987, Class40_Sub5_Sub9.aClass6_Sub1_2571, Class46.aBoolean1112, Class40_Sub5_Sub10.aClass6_Sub1_2609);
+                Class58.method980(28987, Class40_Sub5_Sub9.aClass6_Sub1_2571, Class46.lowMemory, Class40_Sub5_Sub10.aClass6_Sub1_2609);
                 Class27.method357(Class40_Sub5_Sub9.aClass6_Sub1_2571, arg0 ^ ~0x2a85, Class40_Sub5_Sub10.aClass6_Sub1_2609);
                 Class42.method885(Class40_Sub5_Sub10.aClass6_Sub1_2609, Class22.aBoolean541, Class40_Sub5_Sub9.aClass6_Sub1_2571, -313);
                 Cache.method236(false, Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000, Class40_Sub5_Sub10.aClass6_Sub1_2609, Class25.aClass6_Sub1_605);
@@ -189,7 +189,7 @@ public class Class40_Sub3 extends Node {
             else
                 Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301 = Class40_Sub5_Sub2.method550((NpcDefinition.aClass6_Sub1_2377), (byte) -66, Class29.aClass1_671, Class66.aClass1_1567);
             if(Class8.aClass40_Sub5_Sub14_Sub4Array296 == null)
-                Class8.aClass40_Sub5_Sub14_Sub4Array296 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, (Class40_Sub5_Sub17_Sub2.aClass1_3047), Class66.aClass1_1567);
+                Class8.aClass40_Sub5_Sub14_Sub4Array296 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, (GameObject.aClass1_3047), Class66.aClass1_1567);
             else
                 i++;
             if(Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4Array2474 != null)
@@ -255,7 +255,7 @@ public class Class40_Sub3 extends Node {
                 Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(97, new RSString[]{Class27.aClass1_668, HashTable.method334(i * 100 / i_9_, -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 80;
             } else {
-                Class22_Sub2.currentLoadingText = Class40_Sub5_Sub17_Sub2.aClass1_3038;
+                Class22_Sub2.currentLoadingText = GameObject.aClass1_3038;
                 Class40_Sub5_Sub6.anInt2451 = 90;
                 Class67.anInt1607 = 80;
             }
@@ -264,7 +264,7 @@ public class Class40_Sub3 extends Node {
                 Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(85, new RSString[]{Class40_Sub5_Sub2.aClass1_2294, HashTable.method334(Class32.aClass6_Sub1_773.method202(false), -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 90;
             } else {
-                Class35 class35 = new Class35(Class32.aClass6_Sub1_773, NpcDefinition.aClass6_Sub1_2377, 20, 0.8, !Class46.aBoolean1112 ? 128 : 64);
+                Class35 class35 = new Class35(Class32.aClass6_Sub1_773, NpcDefinition.aClass6_Sub1_2377, 20, 0.8, !Class46.lowMemory ? 128 : 64);
                 R3D.method703(class35);
                 R3D.method711(0.8);
                 Class40_Sub5_Sub6.anInt2451 = 110;

@@ -53,17 +53,17 @@ public class RSRuntimeException extends RuntimeException {
     public static void method1054(byte arg0) {
         try {
             anInt1643++;
-            if(Class3.aClass8_166 != null) {
+            if(CollisionMap.aClass8_166 != null) {
                 long l = Class51.method937(1);
                 if((l ^ 0xffffffffffffffffL) < (Class8.aLong288 ^ 0xffffffffffffffffL)) {
-                    Class3.aClass8_166.method212(l);
+                    CollisionMap.aClass8_166.method212(l);
                     int i = (int) (-Class8.aLong288 + l);
                     Class8.aLong288 = l;
                     synchronized(aClass1654 != null ? aClass1654 : (aClass1654 = method1058("Class8"))) {
                         if(arg0 <= 81)
                             method1054((byte) -96);
-                        SubNode.anInt2081 += Class3.anInt141 * i;
-                        int i_0_ = ((-(2000 * Class3.anInt141) + SubNode.anInt2081) / 1000);
+                        SubNode.anInt2081 += CollisionMap.anInt141 * i;
+                        int i_0_ = ((-(2000 * CollisionMap.anInt141) + SubNode.anInt2081) / 1000);
                         if((i_0_ ^ 0xffffffff) < -1) {
                             if(Class25.aClass40_Sub9_608 != null)
                                 Class25.aClass40_Sub9_608.method843(i_0_);
@@ -97,11 +97,11 @@ public class RSRuntimeException extends RuntimeException {
 
     public static void method1056(Component arg0, byte arg1) {
         try {
-            arg0.addMouseListener(Class40_Sub5_Sub17_Sub2.aClass62_3019);
+            arg0.addMouseListener(GameObject.aClass62_3019);
             int i = -23 / ((-32 - arg1) / 47);
             anInt1650++;
-            arg0.addMouseMotionListener(Class40_Sub5_Sub17_Sub2.aClass62_3019);
-            arg0.addFocusListener(Class40_Sub5_Sub17_Sub2.aClass62_3019);
+            arg0.addMouseMotionListener(GameObject.aClass62_3019);
+            arg0.addFocusListener(GameObject.aClass62_3019);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, ("ha.D(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
         }

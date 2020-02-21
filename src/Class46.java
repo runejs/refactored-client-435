@@ -25,7 +25,7 @@ public class Class46 {
     public static RSString aClass1_1109;
     public static int anInt1110;
     public static RSString aClass1_1111;
-    public static boolean aBoolean1112;
+    public static boolean lowMemory;
     public static RSString aClass1_1113;
     public static RSString aClass1_1114;
     public static RSString aClass1_1115;
@@ -44,7 +44,7 @@ public class Class46 {
         aClass1_1105 = aClass1_1093;
         aClass1_1109 = Class58.method978("Ihr Spielkonto wurde deaktiviert)3");
         aClass9_1102 = new Cache(500);
-        aBoolean1112 = false;
+        lowMemory = false;
         anInt1110 = 0;
         aClass1_1113 = Class58.method978("mapback");
         aClass1_1114 = Class58.method978("@lre@");

@@ -49,7 +49,7 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
 
     public void method221(long arg0) {
         if(aLong1821 != 0L) {
-            for(/**/; aLong1832 < arg0; aLong1832 += (long) (256000 / Class3.anInt141))
+            for(/**/; aLong1832 < arg0; aLong1832 += (long) (256000 / CollisionMap.anInt141))
                 Class8.method217(256, (byte) 58);
             if(arg0 < aLong1821)
                 return;
@@ -63,7 +63,7 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
             aLong1821 = 0L;
         }
         while(aLong1832 < arg0) {
-            aLong1832 += (long) (250880 / Class3.anInt141);
+            aLong1832 += (long) (250880 / CollisionMap.anInt141);
             int i;
             try {
                 i = method224();

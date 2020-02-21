@@ -58,7 +58,7 @@ public class Class8 {
 
     public Class8(int arg0) {
         try {
-            Class3.anInt141 = arg0;
+            CollisionMap.anInt141 = arg0;
             aLong288 = Class51.method937(1);
         } catch(RuntimeException runtimeexception) {
             throw method216(runtimeexception, "ca.<init>(" + arg0 + ')');
@@ -67,7 +67,7 @@ public class Class8 {
 
     public static void method209(int arg0) {
         try {
-            for(int i = 0; (Class40_Sub5_Sub8.anInt2558 ^ 0xffffffff) < (i ^ 0xffffffff); i++) {
+            for(int i = 0; (GameObjectDefinition.anInt2558 ^ 0xffffffff) < (i ^ 0xffffffff); i++) {
                 int i_0_ = Class40_Sub3.anIntArray2016[i];
                 NPC class40_sub5_sub17_sub4_sub2 = Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_];
                 if(class40_sub5_sub17_sub4_sub2 != null)
@@ -82,11 +82,11 @@ public class Class8 {
 
     public static void method210(int arg0) {
         try {
-            Class46.aBoolean1112 = false;
+            Class46.lowMemory = false;
             if(arg0 != 0)
                 method209(-4);
             anInt276++;
-            Class2.aBoolean88 = false;
+            Scene.aBoolean88 = false;
         } catch(RuntimeException runtimeexception) {
             throw method216(runtimeexception, "ca.H(" + arg0 + ')');
         }

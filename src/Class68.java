@@ -53,20 +53,20 @@ public abstract class Class68 {
             try {
                 Class8_Sub1 class8_sub1 = ((Class8_Sub1) Class.forName("Class8_Sub1_Sub2").newInstance());
                 class8_sub1.method222(arg2, 2048);
-                Class3.aClass8_166 = class8_sub1;
+                CollisionMap.aClass8_166 = class8_sub1;
             } catch(Throwable throwable) {
                 try {
-                    Class3.aClass8_166 = new Class8_Sub1_Sub1(arg2, arg0);
+                    CollisionMap.aClass8_166 = new Class8_Sub1_Sub1(arg2, arg0);
                 } catch(Throwable throwable_0_) {
                     if(arg1 <= Signlink.aString735.toLowerCase().indexOf("microsoft")) {
                         try {
-                            Class3.aClass8_166 = new Class8_Sub2();
+                            CollisionMap.aClass8_166 = new Class8_Sub2();
                             return;
                         } catch(Throwable throwable_1_) {
                             /* empty */
                         }
                     }
-                    Class3.aClass8_166 = new Class8(8000);
+                    CollisionMap.aClass8_166 = new Class8(8000);
                 }
             }
         } catch(RuntimeException runtimeexception) {

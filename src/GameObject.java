@@ -1,10 +1,10 @@
-/* Class40_Sub5_Sub17_Sub2 - Decompiled by JODE
+/* GameObject - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
 import java.awt.*;
 
-public class Class40_Sub5_Sub17_Sub2 extends Class40_Sub5_Sub17 {
+public class GameObject extends Renderable {
     public static int anInt3017;
     public static Class62 aClass62_3019 = new Class62();
     public static int anInt3020;
@@ -53,7 +53,7 @@ public class Class40_Sub5_Sub17_Sub2 extends Class40_Sub5_Sub17 {
     public Class40_Sub5_Sub7 aClass40_Sub5_Sub7_3034;
     public int anInt3035;
 
-    public Class40_Sub5_Sub17_Sub2(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, boolean arg8) {
+    public GameObject(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, boolean arg8) {
         anInt3029 = arg3;
         anInt3035 = arg0;
         anInt3027 = arg6;
@@ -90,9 +90,9 @@ public class Class40_Sub5_Sub17_Sub2 extends Class40_Sub5_Sub17 {
                 }
                 if((Class40_Sub5_Sub12.packetsize ^ 0xffffffff) != (Cache.outgoingbuffer.offset ^ 0xffffffff))
                     throw new RuntimeException("gnp1 pos:" + (Cache.outgoingbuffer.offset) + " psize:" + Class40_Sub5_Sub12.packetsize);
-                for(int i = 0; Class40_Sub5_Sub8.anInt2558 > i; i++) {
+                for(int i = 0; GameObjectDefinition.anInt2558 > i; i++) {
                     if((Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i]]) == null)
-                        throw new RuntimeException("gnp2 pos:" + i + " size:" + (Class40_Sub5_Sub8.anInt2558));
+                        throw new RuntimeException("gnp2 pos:" + i + " size:" + (GameObjectDefinition.anInt2558));
                 }
             }
         } catch(RuntimeException runtimeexception) {
@@ -133,7 +133,7 @@ public class Class40_Sub5_Sub17_Sub2 extends Class40_Sub5_Sub17 {
         }
     }
 
-    public static void method771(int arg0, Class2 arg1, Class3[] arg2, byte[] arg3, int arg4, byte arg5) {
+    public static void method771(int arg0, Scene arg1, CollisionMap[] arg2, byte[] arg3, int arg4, byte arg5) {
         try {
             if(arg5 >= -76)
                 method771(-120, null, null, null, -1, (byte) -104);
@@ -160,13 +160,13 @@ public class Class40_Sub5_Sub17_Sub2 extends Class40_Sub5_Sub17 {
                     int i_10_ = i_5_ + arg0;
                     int i_11_ = i_4_ - -arg4;
                     if(i_10_ > 0 && i_11_ > 0 && (i_10_ ^ 0xffffffff) > -104 && (i_11_ ^ 0xffffffff) > -104) {
-                        Class3 class3 = null;
+                        CollisionMap collisionMap = null;
                         int i_12_ = i_6_;
-                        if(((Floor.aByteArrayArrayArray2323[1][i_10_][i_11_]) & 0x2) == 2)
+                        if(((Floor.tile_flags[1][i_10_][i_11_]) & 0x2) == 2)
                             i_12_--;
                         if((i_12_ ^ 0xffffffff) <= -1)
-                            class3 = arg2[i_12_];
-                        Class40_Sub5_Sub17_Sub1.method767(i, i_8_, i_9_, i_6_, arg1, -18, i_11_, i_10_, class3);
+                            collisionMap = arg2[i_12_];
+                        Class40_Sub5_Sub17_Sub1.renderObject(i, i_8_, i_9_, i_6_, arg1, -18, i_11_, i_10_, collisionMap);
                     }
                 }
             }
@@ -302,13 +302,13 @@ public class Class40_Sub5_Sub17_Sub2 extends Class40_Sub5_Sub17 {
                 anInt3024 = -i + Node.anInt926;
             }
             anInt3031++;
-            Class40_Sub5_Sub8 class40_sub5_sub8 = Class40_Sub4.method535(anInt3035, (byte) 123);
+            GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(anInt3035);
             int i = 83 % ((41 - arg0) / 47);
-            if(class40_sub5_sub8.anIntArray2534 != null)
-                class40_sub5_sub8 = class40_sub5_sub8.method611(-20);
-            if(class40_sub5_sub8 == null)
+            if(gameObjectDefinition.childrenIds != null)
+                gameObjectDefinition = gameObjectDefinition.method611(-20);
+            if(gameObjectDefinition == null)
                 return null;
-            return class40_sub5_sub8.method607(anInt3029, 103, anInt3030, anInt3026, anInt3021, anInt3018, aClass40_Sub5_Sub7_3034, anInt3027, anInt3016);
+            return gameObjectDefinition.method607(anInt3029, 103, anInt3030, anInt3026, anInt3021, anInt3018, aClass40_Sub5_Sub7_3034, anInt3027, anInt3016);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "j.UA(" + arg0 + ')');
         }

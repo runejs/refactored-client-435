@@ -9,7 +9,7 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
     public static RSString aClass1_3297;
     public static boolean aBoolean3298;
     public static int anInt3299;
-    public static Class2 aClass2_3301;
+    public static Scene aScene_3301;
     public static RSString aClass1_3302 = Class58.method978("Sichtbare Karte vorbereitet)3");
     public static int anInt3303;
     public static int[] anIntArray3304;
@@ -69,7 +69,7 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
             Class59.method982(2578);
         } else {
             for(int i = 0; (i ^ 0xffffffff) > -101; i++) {
-                if(!Class3.parsePackets(false))
+                if(!CollisionMap.parsePackets(false))
                     break;
             }
             if((Class51.anInt1197 ^ 0xffffffff) == -31 || (Class51.anInt1197 ^ 0xffffffff) == -36) {
@@ -113,14 +113,14 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
                                 i_6_ = 524287;
                                 i_4_ = -1;
                             }
-                            if(((i_5_ ^ 0xffffffff) == (PacketBuffer.anInt2256 ^ 0xffffffff)) && i_4_ == Class40_Sub5_Sub8.anInt2559) {
+                            if(((i_5_ ^ 0xffffffff) == (PacketBuffer.anInt2256 ^ 0xffffffff)) && i_4_ == GameObjectDefinition.anInt2559) {
                                 if(Class22_Sub2.anInt1888 < 2047)
                                     Class22_Sub2.anInt1888++;
                             } else {
                                 int i_7_ = i_5_ - PacketBuffer.anInt2256;
                                 PacketBuffer.anInt2256 = i_5_;
-                                int i_8_ = i_4_ - Class40_Sub5_Sub8.anInt2559;
-                                Class40_Sub5_Sub8.anInt2559 = i_4_;
+                                int i_8_ = i_4_ - GameObjectDefinition.anInt2559;
+                                GameObjectDefinition.anInt2559 = i_4_;
                                 if(Class22_Sub2.anInt1888 < 8 && i_7_ >= -32 && (i_7_ ^ 0xffffffff) >= -32 && (i_8_ ^ 0xffffffff) <= 31 && i_8_ <= 31) {
                                     i_7_ += 32;
                                     i_8_ += 32;
@@ -148,10 +148,10 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
                 }
                 if(Class62.anInt1470 != 0) {
                     Class40_Sub5_Sub4.anInt2363++;
-                    long l = ((Class40_Sub5_Sub8.aLong2561 - Class51.aLong1203) / 50L);
+                    long l = ((GameObjectDefinition.aLong2561 - Class51.aLong1203) / 50L);
                     int i = Class57.anInt1338;
                     int i_10_ = RSString.anInt1668;
-                    Class51.aLong1203 = Class40_Sub5_Sub8.aLong2561;
+                    Class51.aLong1203 = GameObjectDefinition.aLong2561;
                     if(i >= 0) {
                         if(i > 764)
                             i = 764;
@@ -225,7 +225,7 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
                         Class5.anInt199++;
                         if((Class40_Sub4.anInt2049 ^ 0xffffffff) != -1) {
                             Buffer.anInt1978++;
-                            if(((Class13.anInt420 ^ 0xffffffff) < (Class40_Sub5_Sub17.anInt2869 - -5 ^ 0xffffffff)) || ((Class40_Sub5_Sub17.anInt2869 + -5 ^ 0xffffffff) < (Class13.anInt420 ^ 0xffffffff)) || ((ItemDefinition.anInt2798 - -5 ^ 0xffffffff) > (Landscape.anInt1166 ^ 0xffffffff)) || (ItemDefinition.anInt2798 - 5 > Landscape.anInt1166))
+                            if(((Class13.anInt420 ^ 0xffffffff) < (Renderable.anInt2869 - -5 ^ 0xffffffff)) || ((Renderable.anInt2869 + -5 ^ 0xffffffff) < (Class13.anInt420 ^ 0xffffffff)) || ((ItemDefinition.anInt2798 - -5 ^ 0xffffffff) > (Landscape.anInt1166 ^ 0xffffffff)) || (ItemDefinition.anInt2798 - 5 > Landscape.anInt1166))
                                 Class40_Sub5_Sub15.aBoolean2784 = true;
                             if((Class40_Sub5_Sub2.anInt2302 ^ 0xffffffff) == -1) {
                                 if((Class40_Sub4.anInt2049 ^ 0xffffffff) == -4)
@@ -286,9 +286,9 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
                                 Class62.anInt1470 = 0;
                             }
                         }
-                        if((Class2.anInt78 ^ 0xffffffff) != 0) {
-                            int i = Class2.anInt78;
-                            int i_18_ = Class2.anInt81;
+                        if((Scene.anInt78 ^ 0xffffffff) != 0) {
+                            int i = Scene.anInt78;
+                            int i_18_ = Scene.anInt81;
                             boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), i, (byte) 119, 0, true, 0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), i_18_, 0));
                             if(bool) {
                                 Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
@@ -296,7 +296,7 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
                                 Class40_Sub11.anInt2163 = Class57.anInt1338;
                                 Class45.anInt1075 = 1;
                             }
-                            Class2.anInt78 = -1;
+                            Scene.anInt78 = -1;
                         }
                         if((Class62.anInt1470 ^ 0xffffffff) == -2 && RSApplet.aClass1_8 != null) {
                             Class62.anInt1470 = 0;
@@ -436,7 +436,7 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
         aClass1_3308 = null;
         anIntArray3312 = null;
         aClass1_3302 = null;
-        aClass2_3301 = null;
+        aScene_3301 = null;
         aClass1_3309 = null;
         if(arg0 != 210)
             aClass1_3307 = null;

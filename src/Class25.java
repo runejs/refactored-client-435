@@ -44,7 +44,7 @@ public class Class25 {
     public int anInt587;
     public int anInt588;
     public int anInt595;
-    public Class40_Sub5_Sub17 aClass40_Sub5_Sub17_600;
+    public Renderable aRenderable_600;
     public int anInt601;
     public int anInt602;
 
@@ -109,8 +109,8 @@ public class Class25 {
                                 ISAAC.anIntArray528[i_8_] = i_17_;
                                 int i_19_ = i_17_ & 0xff;
                                 int i_20_ = (0xffbe & i_17_) >> 1856827112;
-                                Class45.anIntArray1071[i_8_] = (Class40_Sub5_Sub17.aClass6_Sub1_2857.method183(RSApplet.method27(arg1, 5688), (Class40_Sub5_Sub17_Sub6.method832(85, (new RSString[]{Class45.aClass1_1085, (HashTable.method334(i_20_, RSApplet.method27(arg1, -5689))), Class8.aClass1_303, HashTable.method334(i_19_, -1)})))));
-                                Class13.anIntArray421[i_8_] = (Class40_Sub5_Sub17.aClass6_Sub1_2857.method183(0, (Class40_Sub5_Sub17_Sub6.method832(118, (new RSString[]{HashTable.aClass1_553, HashTable.method334(i_20_, -1), Class8.aClass1_303, HashTable.method334(i_19_, -1)})))));
+                                Class45.anIntArray1071[i_8_] = (Renderable.aClass6_Sub1_2857.method183(RSApplet.method27(arg1, 5688), (Class40_Sub5_Sub17_Sub6.method832(85, (new RSString[]{Class45.aClass1_1085, (HashTable.method334(i_20_, RSApplet.method27(arg1, -5689))), Class8.aClass1_303, HashTable.method334(i_19_, -1)})))));
+                                Class13.anIntArray421[i_8_] = (Renderable.aClass6_Sub1_2857.method183(0, (Class40_Sub5_Sub17_Sub6.method832(118, (new RSString[]{HashTable.aClass1_553, HashTable.method334(i_20_, -1), Class8.aClass1_303, HashTable.method334(i_19_, -1)})))));
                                 i_8_++;
                             }
                         }
@@ -146,8 +146,8 @@ public class Class25 {
                     int i_30_ = i_29_ + (i_28_ << 13360776);
                     if(!bool || (i_29_ != 49 && (i_29_ ^ 0xffffffff) != -150 && (i_29_ ^ 0xffffffff) != -148 && (i_28_ ^ 0xffffffff) != -51 && (i_28_ != 49 || (i_29_ ^ 0xffffffff) != -48))) {
                         ISAAC.anIntArray528[i_25_] = i_30_;
-                        Class45.anIntArray1071[i_25_] = (Class40_Sub5_Sub17.aClass6_Sub1_2857.method183(0, (Class40_Sub5_Sub17_Sub6.method832(RSApplet.method27(arg1, -5655), new RSString[]{Class45.aClass1_1085, HashTable.method334(i_28_, -1), Class8.aClass1_303, HashTable.method334(i_29_, -1)}))));
-                        Class13.anIntArray421[i_25_] = (Class40_Sub5_Sub17.aClass6_Sub1_2857.method183(0, (Class40_Sub5_Sub17_Sub6.method832(-84, (new RSString[]{HashTable.aClass1_553, HashTable.method334(i_28_, -1), Class8.aClass1_303, HashTable.method334(i_29_, (RSApplet.method27(arg1, -5689)))})))));
+                        Class45.anIntArray1071[i_25_] = (Renderable.aClass6_Sub1_2857.method183(0, (Class40_Sub5_Sub17_Sub6.method832(RSApplet.method27(arg1, -5655), new RSString[]{Class45.aClass1_1085, HashTable.method334(i_28_, -1), Class8.aClass1_303, HashTable.method334(i_29_, -1)}))));
+                        Class13.anIntArray421[i_25_] = (Renderable.aClass6_Sub1_2857.method183(0, (Class40_Sub5_Sub17_Sub6.method832(-84, (new RSString[]{HashTable.aClass1_553, HashTable.method334(i_28_, -1), Class8.aClass1_303, HashTable.method334(i_29_, (RSApplet.method27(arg1, -5689)))})))));
                         i_25_++;
                     }
                 }
@@ -170,7 +170,7 @@ public class Class25 {
                 Landscape.anIntArray1186 = null;
                 Class17.aClass68_462 = null;
                 RSCanvas.aClass68_59 = null;
-                Class40_Sub5_Sub17_Sub2.aClass68_3045 = null;
+                GameObject.aClass68_3045 = null;
                 Class57.aClass40_Sub5_Sub14_Sub2_1346 = null;
                 aClass40_Sub5_Sub14_Sub2_593 = null;
                 Class53.aClass40_Sub5_Sub14_Sub2_1270 = null;
@@ -200,7 +200,7 @@ public class Class25 {
                     Class61.aClass68_1441 = null;
                     Class35.aClass40_Sub5_Sub14_Sub2_1744 = null;
                     HashTable.aClass40_Sub5_Sub14_Sub2_549 = null;
-                    Class40_Sub5_Sub17.aClass40_Sub5_Sub14_Sub2_2860 = null;
+                    Renderable.aClass40_Sub5_Sub14_Sub2_2860 = null;
                     Class24.anIntArray577 = null;
                     Class30.aClass68_714 = null;
                     Class40_Sub5_Sub17_Sub6.aClass68_3243 = null;

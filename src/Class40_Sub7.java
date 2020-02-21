@@ -71,10 +71,10 @@ public class Class40_Sub7 extends Node {
                         int i_8_ = i_7_ - -arg2;
                         int i_9_ = i_5_ - -arg3;
                         if((i_8_ ^ 0xffffffff) < -1 && i_9_ > 0 && i_8_ < 103 && (i_9_ ^ 0xffffffff) > -104) {
-                            Class40_Sub5_Sub8 class40_sub5_sub8 = Class40_Sub4.method535(i, (byte) 127);
-                            if((i_6_ ^ 0xffffffff) != -23 || !Class46.aBoolean1112 || ((class40_sub5_sub8.anInt2546 ^ 0xffffffff) != -1) || class40_sub5_sub8.aBoolean2547) {
+                            GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
+                            if((i_6_ ^ 0xffffffff) != -23 || !Class46.lowMemory || ((gameObjectDefinition.hasActions ^ 0xffffffff) != -1) || gameObjectDefinition.aBoolean2547) {
                                 bool_2_ = true;
-                                if(!class40_sub5_sub8.method612((byte) 8)) {
+                                if(!gameObjectDefinition.method612((byte) 8)) {
                                     bool = false;
                                     Class40_Sub5_Sub10.anInt2591++;
                                 }

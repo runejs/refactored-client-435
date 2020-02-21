@@ -206,7 +206,7 @@ public class Class42 {
                     bool = true;
                 }
                 NPC class40_sub5_sub17_sub4_sub2 = Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i];
-                Class40_Sub3.anIntArray2016[Class40_Sub5_Sub8.anInt2558++] = i;
+                Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i;
                 class40_sub5_sub17_sub4_sub2.anInt3134 = Node.anInt926;
                 int i_3_ = (Class40_Sub5_Sub17_Sub1.anIntArray2987[Cache.outgoingbuffer.putBits(3, (byte) -65)]);
                 if(bool)

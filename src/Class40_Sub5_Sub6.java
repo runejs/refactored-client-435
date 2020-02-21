@@ -299,7 +299,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                             for(int i = 0; i < 4; i++) {
                                                 for(int i_9_ = 1; ((i_9_ ^ 0xffffffff) > -104); i_9_++) {
                                                     for(int i_10_ = 1; i_10_ < 103; i_10_++)
-                                                        Landscape.aClass3Array1167[i].anIntArrayArray150[i_9_][i_10_] = 0;
+                                                        Landscape.aCollisionMapArray1167[i].anIntArrayArray150[i_9_][i_10_] = 0;
                                                 }
                                             }
                                         }
@@ -403,7 +403,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                         Class32.packetBuffer.putPacket(11453, 248);
                                         Class32.packetBuffer.put(-1 + Class66.aClass1_1556.method59(-3136), (byte) -128);
                                         Class32.packetBuffer.method505(Class66.aClass1_1556.method50((byte) 95, 2), (byte) 122);
-                                        Class3.anInt149++;
+                                        CollisionMap.anInt149++;
                                     }
                                     Class52.aBoolean1221 = true;
                                     Class66.aClass1_1556 = Class66.aClass1_1567;
@@ -488,7 +488,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
             if(arg0 == -1) {
                 anInt2454++;
                 int i = Class19.anInt475;
-                int i_13_ = Class3.anInt168;
+                int i_13_ = CollisionMap.anInt168;
                 int i_14_ = Main.anInt1758;
                 int i_15_ = Class46.anInt1086;
                 int i_16_ = 6116423;

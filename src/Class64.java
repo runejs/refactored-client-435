@@ -28,13 +28,13 @@ public class Class64 implements Runnable {
     public static int anInt1525;
     public static RSString aClass1_1526 = aClass1_1500;
     public static int anInt1527;
-    public static int anInt1529;
+    public static int setZ;
 
     static {
         aClass1_1523 = Class58.method978("");
         aClass1_1524 = Class58.method978("Menge eingeben:");
         aClass1_1517 = Class58.method978("redstone3");
-        anInt1529 = 99;
+        setZ = 99;
     }
 
     public InputStream anInputStream1503;
@@ -117,17 +117,17 @@ public class Class64 implements Runnable {
                 int i_6_ = (i_2_ & 0x1fffcccc) >> 2127666126;
                 if(i != i_2_) {
                     i = i_2_;
-                    if(i_5_ == 2 && (NPC.aClass2_3301.method141(Player.anInt3267, i_3_, i_4_, i_2_)) >= 0) {
-                        Class40_Sub5_Sub8 class40_sub5_sub8 = Class40_Sub4.method535(i_6_, (byte) 126);
-                        if(class40_sub5_sub8.anIntArray2534 != null)
-                            class40_sub5_sub8 = class40_sub5_sub8.method611(-20);
-                        if(class40_sub5_sub8 == null)
+                    if(i_5_ == 2 && (NPC.aScene_3301.method141(Player.anInt3267, i_3_, i_4_, i_2_)) >= 0) {
+                        GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_6_);
+                        if(gameObjectDefinition.childrenIds != null)
+                            gameObjectDefinition = gameObjectDefinition.method611(-20);
+                        if(gameObjectDefinition == null)
                             continue;
                         if((Class8.anInt301 ^ 0xffffffff) == -2) {
-                            Floor.method558(i_2_, Main.aClass1_1763, i_4_, -501, i_3_, 5, (Class40_Sub5_Sub17_Sub6.method832(106, (new RSString[]{(NPC.aClass1_3295), Class40_Sub5_Sub1.aClass1_2277, class40_sub5_sub8.aClass1_2549}))));
+                            Floor.method558(i_2_, Main.aClass1_1763, i_4_, -501, i_3_, 5, (Class40_Sub5_Sub17_Sub6.method832(106, (new RSString[]{(NPC.aClass1_3295), Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.aClass1_2549}))));
                             Class44.anInt1045++;
                         } else if(Main.anInt1773 != 1) {
-                            RSString[] class1s = class40_sub5_sub8.aClass1Array2508;
+                            RSString[] class1s = gameObjectDefinition.aClass1Array2508;
                             if(Class60.aBoolean1402)
                                 class1s = Class56.method968(class1s, arg0);
                             Class29.anInt675++;
@@ -146,20 +146,20 @@ public class Class64 implements Runnable {
                                             i_8_ = 27;
                                         if((i_7_ ^ 0xffffffff) == -5)
                                             i_8_ = 1002;
-                                        Floor.method558(i_2_, class1s[i_7_], i_4_, -501, i_3_, i_8_, (Class40_Sub5_Sub17_Sub6.method832(-91, (new RSString[]{(Class40_Sub5_Sub17.aClass1_2862), (class40_sub5_sub8.aClass1_2549)}))));
+                                        Floor.method558(i_2_, class1s[i_7_], i_4_, -501, i_3_, i_8_, (Class40_Sub5_Sub17_Sub6.method832(-91, (new RSString[]{(Renderable.aClass1_2862), (gameObjectDefinition.aClass1_2549)}))));
                                     }
                                 }
                             }
-                            Floor.method558(class40_sub5_sub8.anInt2538 << 2045308238, Class40_Sub5_Sub15.aClass1_2774, i_4_, -501, i_3_, 1004, (Class40_Sub5_Sub17_Sub6.method832(113, (new RSString[]{Class40_Sub5_Sub17.aClass1_2862, class40_sub5_sub8.aClass1_2549}))));
+                            Floor.method558(gameObjectDefinition.anInt2538 << 2045308238, Class40_Sub5_Sub15.aClass1_2774, i_4_, -501, i_3_, 1004, (Class40_Sub5_Sub17_Sub6.method832(113, (new RSString[]{Renderable.aClass1_2862, gameObjectDefinition.aClass1_2549}))));
                         } else if((ItemDefinition.anInt2815 & 0x4) == 4) {
-                            Class40_Sub5_Sub17.anInt2863++;
-                            Floor.method558(i_2_, Class38_Sub1.aClass1_1918, i_4_, -501, i_3_, 32, (Class40_Sub5_Sub17_Sub6.method832(111, (new RSString[]{Class25.aClass1_611, Class40_Sub5_Sub1.aClass1_2277, class40_sub5_sub8.aClass1_2549}))));
+                            Renderable.anInt2863++;
+                            Floor.method558(i_2_, Class38_Sub1.aClass1_1918, i_4_, -501, i_3_, 32, (Class40_Sub5_Sub17_Sub6.method832(111, (new RSString[]{Class25.aClass1_611, Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.aClass1_2549}))));
                         }
                     }
                     if(i_5_ == 1) {
                         NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_6_]);
                         if(((class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2374) ^ 0xffffffff) == -2 && ((class40_sub5_sub17_sub4_sub2.anInt3098 & 0x7f) == 64) && ((0x7f & class40_sub5_sub17_sub4_sub2.anInt3089) == 64)) {
-                            for(int i_9_ = 0; ((Class40_Sub5_Sub8.anInt2558 ^ 0xffffffff) < (i_9_ ^ 0xffffffff)); i_9_++) {
+                            for(int i_9_ = 0; ((GameObjectDefinition.anInt2558 ^ 0xffffffff) < (i_9_ ^ 0xffffffff)); i_9_++) {
                                 NPC class40_sub5_sub17_sub4_sub2_10_ = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_9_]]);
                                 if(class40_sub5_sub17_sub4_sub2_10_ != null && (class40_sub5_sub17_sub4_sub2_10_ != class40_sub5_sub17_sub4_sub2) && ((class40_sub5_sub17_sub4_sub2_10_.aClass40_Sub5_Sub5_3300.anInt2374) ^ 0xffffffff) == -2 && ((class40_sub5_sub17_sub4_sub2.anInt3098 ^ 0xffffffff) == ((class40_sub5_sub17_sub4_sub2_10_.anInt3098) ^ 0xffffffff)) && ((class40_sub5_sub17_sub4_sub2_10_.anInt3089) == (class40_sub5_sub17_sub4_sub2.anInt3089)))
                                     Class66.method1025(0, i_3_, i_4_, Class40_Sub3.anIntArray2016[i_9_], (class40_sub5_sub17_sub4_sub2_10_.aClass40_Sub5_Sub5_3300));
@@ -175,7 +175,7 @@ public class Class64 implements Runnable {
                     if(i_5_ == 0) {
                         Player class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_6_]);
                         if((0x7f & class40_sub5_sub17_sub4_sub1.anInt3098 ^ 0xffffffff) == -65 && (0x7f & class40_sub5_sub17_sub4_sub1.anInt3089 ^ 0xffffffff) == -65) {
-                            for(int i_12_ = 0; ((i_12_ ^ 0xffffffff) > (Class40_Sub5_Sub8.anInt2558 ^ 0xffffffff)); i_12_++) {
+                            for(int i_12_ = 0; ((i_12_ ^ 0xffffffff) > (GameObjectDefinition.anInt2558 ^ 0xffffffff)); i_12_++) {
                                 NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_12_]]);
                                 if(class40_sub5_sub17_sub4_sub2 != null && ((class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2374) == 1) && ((class40_sub5_sub17_sub4_sub1.anInt3098 ^ 0xffffffff) == ((class40_sub5_sub17_sub4_sub2.anInt3098) ^ 0xffffffff)) && (class40_sub5_sub17_sub4_sub2.anInt3089 == (class40_sub5_sub17_sub4_sub1.anInt3089)))
                                     Class66.method1025(0, i_3_, i_4_, Class40_Sub3.anIntArray2016[i_12_], (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300));
@@ -240,7 +240,7 @@ public class Class64 implements Runnable {
 
     public static void method1015(int arg0) {
         try {
-            synchronized(Class40_Sub5_Sub17_Sub2.aClass62_3019) {
+            synchronized(GameObject.aClass62_3019) {
                 Class40_Sub5_Sub2.anInt2302 = Cache.anInt320;
                 Class13.anInt420 = Class12.anInt389;
                 if(arg0 != -656)
@@ -249,7 +249,7 @@ public class Class64 implements Runnable {
                 Class62.anInt1470 = Class40_Sub5_Sub17_Sub4.anInt3143;
                 Class57.anInt1338 = Class55.anInt1295;
                 RSString.anInt1668 = Class40_Sub5_Sub11.anInt2625;
-                Class40_Sub5_Sub8.aLong2561 = Floor.aLong2344;
+                GameObjectDefinition.aLong2561 = Floor.aLong2344;
                 Class40_Sub5_Sub17_Sub4.anInt3143 = 0;
             }
             anInt1527++;

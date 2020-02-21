@@ -135,7 +135,7 @@ public class Class55 {
     public static void method962(int arg0) {
         try {
             Class39.aClass1_917 = Node.aClass1_933;
-            Class40_Sub4.aClass1_2057 = Class40_Sub5_Sub17.aClass1_2871;
+            Class40_Sub4.aClass1_2057 = Renderable.aClass1_2871;
             Main.aClass1_1781 = Class37.aClass1_880;
             RSString.aClass1_1717 = Class12.aClass1_398;
             Class34.aClass1_817 = Class35.aClass1_1743;
@@ -161,7 +161,7 @@ public class Class55 {
             Class37.aClass1_873 = Class33.aClass1_779;
             Node.aClass1_959 = Class53.aClass1_1265;
             Class40_Sub5_Sub2.aClass1_2294 = Class67.aClass1_1612;
-            Class46.aClass1_1117 = Class40_Sub5_Sub8.aClass1_2560;
+            Class46.aClass1_1117 = GameObjectDefinition.aClass1_2560;
             Cache.aClass1_323 = Floor.aClass1_2327;
             Class62.aClass1_1465 = Class39.aClass1_898;
             Class53.aClass1_1251 = HashTable.aClass1_563;
@@ -173,7 +173,7 @@ public class Class55 {
             Class13.aClass1_417 = Class40_Sub5_Sub10.aClass1_2614;
             Class10.aClass1_344 = Class52.aClass1_1238;
             Class12.aClass1_399 = Class60.aClass1_1409;
-            Class40_Sub5_Sub6.aClass1_2458 = Class40_Sub5_Sub17_Sub2.aClass1_3046;
+            Class40_Sub5_Sub6.aClass1_2458 = GameObject.aClass1_3046;
             Class40_Sub5_Sub17_Sub4.aClass1_3138 = RSApplet.aClass1_14;
             Class57.aClass1_1343 = ISAAC.aClass1_527;
             Node.aClass1_953 = Class64.aClass1_1523;
@@ -192,7 +192,7 @@ public class Class55 {
             Landscape.aClass1_1181 = Class66.aClass1_1549;
             Class40_Sub7.aClass1_2125 = Class67.aClass1_1591;
             Class40_Sub5_Sub9.aClass1_2577 = Class48.aClass1_1137;
-            Class40_Sub5_Sub17.aClass1_2864 = Class6_Sub1.aClass1_1816;
+            Renderable.aClass1_2864 = Class6_Sub1.aClass1_1816;
             Class68_Sub1.aClass1_2209 = RSString.aClass1_1702;
             NpcDefinition.aClass1_2384 = Class53.aClass1_1269;
             Class22.aClass1_532 = Class57.aClass1_1340;
@@ -219,7 +219,7 @@ public class Class55 {
             Main.aClass1_1763 = Class22_Sub2.aClass1_1889;
             Buffer.aClass1_1983 = Floor.aClass1_2315;
             Landscape.aClass1_1173 = Class64.aClass1_1502;
-            Class40_Sub4.aClass1_2053 = Class40_Sub5_Sub17.aClass1_2871;
+            Class40_Sub4.aClass1_2053 = Renderable.aClass1_2871;
             Class40_Sub5_Sub2.aClass1_2286 = Class39.aClass1_914;
             Class40_Sub4.aClass1_2050 = Class37.aClass1_860;
             Node.aClass1_969 = Class64.aClass1_1523;
@@ -278,9 +278,9 @@ public class Class55 {
             Class33.aClass1_799 = NPC.aClass1_3307;
             Class4.aClass1_180 = Class34.aClass1_804;
             Class40_Sub5_Sub15.aClass1_2786 = Class6_Sub1.aClass1_1801;
-            Class40_Sub5_Sub17_Sub2.aClass1_3039 = Class8.aClass1_293;
+            GameObject.aClass1_3039 = Class8.aClass1_293;
             Class40_Sub5_Sub17_Sub1.aClass1_3009 = Main.aClass1_1777;
-            Class40_Sub5_Sub17_Sub2.aClass1_3038 = Class39.aClass1_911;
+            GameObject.aClass1_3038 = Class39.aClass1_911;
             Class17.aClass1_452 = RSRuntimeException.aClass1_1644;
             Class42.aClass1_988 = Class40_Sub13.aClass1_2186;
             Class58.aClass1_1354 = Player.aClass1_3269;
@@ -302,16 +302,16 @@ public class Class55 {
                 Class46.aClass1_1090 = Class43.aClass1_1026;
                 NpcDefinition.aClass1_2401 = RSApplet.aClass1_21;
                 Node.aClass1_967 = Class10.aClass1_343;
-                Class65.aClass1_1538 = Class40_Sub5_Sub17_Sub2.aClass1_3043;
+                Class65.aClass1_1538 = GameObject.aClass1_3043;
                 NpcDefinition.aClass1_2392 = Class40_Sub4.aClass1_2044;
                 Class46.aClass1_1097 = Class22_Sub1.aClass1_1849;
                 Class40_Sub6.aClass1_2097 = Class40_Sub5_Sub7.aClass1_2481;
                 Class67.aClass1_1585 = Class61.aClass1_1426;
                 RSString.aClass1_1703 = Class12.aClass1_385;
                 Class46.aClass1_1088 = Class26.aClass1_633;
-                Class45.aClass1_1076 = Class40_Sub5_Sub8.aClass1_2556;
+                Class45.aClass1_1076 = GameObjectDefinition.aClass1_2556;
                 Class34.aClass1_829 = RSApplet.aClass1_25;
-                Class3.aClass1_167 = Class26.aClass1_629;
+                CollisionMap.aClass1_167 = Class26.aClass1_629;
                 Landscape.aClass1_1178 = Class6.aClass1_259;
                 Class61.aClass1_1432 = Class44.aClass1_1034;
                 Node.aClass1_941 = Class64.aClass1_1523;
@@ -328,7 +328,7 @@ public class Class55 {
                 Class44.aClass1_1038 = Class45.aClass1_1059;
                 Class40_Sub5_Sub17_Sub3.aClass1_3050 = Class56.aClass1_1316;
                 Class40_Sub6.aClass1_2111 = Class46.aClass1_1116;
-                Class39.aClass1_919 = Class40_Sub5_Sub17_Sub2.aClass1_3037;
+                Class39.aClass1_919 = GameObject.aClass1_3037;
                 Class12.aClass1_397 = Player.aClass1_3290;
                 Landscape.aClass1_1180 = Class40_Sub2.aClass1_2008;
                 Class22.aClass1_542 = Class48.aClass1_1137;
@@ -337,7 +337,7 @@ public class Class55 {
                 aClass1_1298 = Class40_Sub5_Sub17_Sub3.aClass1_3055;
                 Class40_Sub5_Sub17_Sub4.aClass1_3124 = Class45.aClass1_1084;
                 Class60.aClass1_1416 = Class40_Sub5_Sub12.aClass1_2716;
-                Class42.aClass1_1000 = Class3.aClass1_164;
+                Class42.aClass1_1000 = CollisionMap.aClass1_164;
                 ISAAC.aClass1_526 = Class13.aClass1_422;
                 Node.aClass1_963 = Class45.aClass1_1078;
                 Class40_Sub5_Sub17_Sub3.aClass1_3069 = ISAAC.aClass1_517;
@@ -394,9 +394,9 @@ public class Class55 {
         try {
             if(arg0 == 32) {
                 anInt1306++;
-                arg1.removeMouseListener(Class40_Sub5_Sub17_Sub2.aClass62_3019);
-                arg1.removeMouseMotionListener(Class40_Sub5_Sub17_Sub2.aClass62_3019);
-                arg1.removeFocusListener(Class40_Sub5_Sub17_Sub2.aClass62_3019);
+                arg1.removeMouseListener(GameObject.aClass62_3019);
+                arg1.removeMouseMotionListener(GameObject.aClass62_3019);
+                arg1.removeFocusListener(GameObject.aClass62_3019);
             }
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, ("s.H(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));

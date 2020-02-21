@@ -2,7 +2,7 @@
  * Visit http://jode.sourceforge.net/
  */
 
-public class Model extends Class40_Sub5_Sub17 {
+public class Model extends Renderable {
     public static Model aClass40_Sub5_Sub17_Sub5_3170 = new Model();
     public static int[] anIntArray3192 = new int[1];
     public static Model aClass40_Sub5_Sub17_Sub5_3195 = new Model();

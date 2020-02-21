@@ -79,7 +79,7 @@ public class Class24 {
         }
     }
 
-    public static void method341(int arg0, Class2 arg1, int arg2, int arg3, int arg4, int arg5, byte[] arg6, int arg7, Class3[] arg8, int arg9, int arg10) {
+    public static void method341(int arg0, Scene arg1, int arg2, int arg3, int arg4, int arg5, byte[] arg6, int arg7, CollisionMap[] arg8, int arg9, int arg10) {
         do {
             try {
                 anInt579++;
@@ -103,17 +103,17 @@ public class Class24 {
                         int i_7_ = i_1_ & 0x3f;
                         int i_8_ = i_5_ & 0x3;
                         if(i_3_ == arg5 && (arg0 ^ 0xffffffff) >= (i_4_ ^ 0xffffffff) && (i_4_ ^ 0xffffffff) > (8 + arg0 ^ 0xffffffff) && (arg9 ^ 0xffffffff) >= (i_7_ ^ 0xffffffff) && (arg9 + 8 ^ 0xffffffff) < (i_7_ ^ 0xffffffff)) {
-                            Class40_Sub5_Sub8 class40_sub5_sub8 = Class40_Sub4.method535(i, (byte) 125);
-                            int i_9_ = (Main.method42(arg2 ^ 0x1, i_8_, class40_sub5_sub8.anInt2503, i_4_ & 0x7, class40_sub5_sub8.anInt2515, arg4, 0x7 & i_7_) + arg10);
-                            int i_10_ = ((Class40_Sub5_Sub4.method564(i_7_ & 0x7, class40_sub5_sub8.anInt2515, i_4_ & 0x7, class40_sub5_sub8.anInt2503, arg4, i_8_, (byte) -123)) + arg7);
+                            GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
+                            int i_9_ = (Main.method42(arg2 ^ 0x1, i_8_, gameObjectDefinition.anInt2503, i_4_ & 0x7, gameObjectDefinition.anInt2515, arg4, 0x7 & i_7_) + arg10);
+                            int i_10_ = ((Class40_Sub5_Sub4.method564(i_7_ & 0x7, gameObjectDefinition.anInt2515, i_4_ & 0x7, gameObjectDefinition.anInt2503, arg4, i_8_, (byte) -123)) + arg7);
                             if((i_9_ ^ 0xffffffff) < -1 && (i_10_ ^ 0xffffffff) < -1 && i_9_ < 103 && i_10_ < 103) {
-                                Class3 class3 = null;
+                                CollisionMap collisionMap = null;
                                 int i_11_ = arg3;
-                                if(((Floor.aByteArrayArrayArray2323[1][i_9_][i_10_]) & 0x2) == 2)
+                                if(((Floor.tile_flags[1][i_9_][i_10_]) & 0x2) == 2)
                                     i_11_--;
                                 if((i_11_ ^ 0xffffffff) <= -1)
-                                    class3 = arg8[i_11_];
-                                Class40_Sub5_Sub17_Sub1.method767(i, i_6_, (i_8_ + arg4 & 0x3), arg3, arg1, -127, i_10_, i_9_, class3);
+                                    collisionMap = arg8[i_11_];
+                                Class40_Sub5_Sub17_Sub1.renderObject(i, i_6_, (i_8_ + arg4 & 0x3), arg3, arg1, -127, i_10_, i_9_, collisionMap);
                             }
                         }
                     }

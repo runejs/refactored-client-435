@@ -41,11 +41,11 @@ public class Class58 {
         varbitmasks = new int[2000];
     }
 
-    public Class40_Sub5_Sub17 aClass40_Sub5_Sub17_1353;
+    public Renderable aRenderable_1353;
     public int anInt1355;
     public int anInt1361;
-    public Class40_Sub5_Sub17 aClass40_Sub5_Sub17_1362;
-    public Class40_Sub5_Sub17 aClass40_Sub5_Sub17_1363;
+    public Renderable aRenderable_1362;
+    public Renderable aRenderable_1363;
     public int anInt1366;
     public int anInt1371;
     public int anInt1372;
@@ -243,8 +243,8 @@ public class Class58 {
                                     for(int i_8_ = 0; (i_8_ ^ 0xffffffff) > -101; i_8_++) {
                                         if((Class40_Sub5_Sub17_Sub4.aClass1Array3160[i_8_]) != null) {
                                             int i_9_ = Class66.anIntArray1569[i_8_];
-                                            RSString class1 = (Class40_Sub5_Sub17.aClass1Array2856[i_8_]);
-                                            int i_10_ = (Class40_Sub5_Sub8.anInt2557 + 70 + -(i * 14));
+                                            RSString class1 = (Renderable.aClass1Array2856[i_8_]);
+                                            int i_10_ = (GameObjectDefinition.anInt2557 + 70 + -(i * 14));
                                             int i_11_ = 0;
                                             if(class1 != null && (class1.method75((byte) 116, Class51.aClass1_1210))) {
                                                 class1 = (class1.method50((byte) 95, 5));
@@ -276,7 +276,7 @@ public class Class58 {
                                                 }
                                                 i++;
                                             }
-                                            if(((i_9_ ^ 0xffffffff) == -4 || i_9_ == 7) && Class3.anInt165 == 0 && ((i_9_ ^ 0xffffffff) == -8 || Class4.anInt185 == 0 || ((Class4.anInt185 ^ 0xffffffff) == -2 && (Class40_Sub2.method523(class1, -32624))))) {
+                                            if(((i_9_ ^ 0xffffffff) == -4 || i_9_ == 7) && CollisionMap.anInt165 == 0 && ((i_9_ ^ 0xffffffff) == -8 || Class4.anInt185 == 0 || ((Class4.anInt185 ^ 0xffffffff) == -2 && (Class40_Sub2.method523(class1, -32624))))) {
                                                 i++;
                                                 if((i_10_ ^ 0xffffffff) < -1 && i_10_ < 110) {
                                                     int i_13_ = 4;
@@ -301,12 +301,12 @@ public class Class58 {
                                                 if(i_10_ > 0 && i_10_ < 110)
                                                     class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub17_Sub6.method832(-65, (new RSString[]{class1, (Class48.aClass1_1123), (Class40_Sub5_Sub17_Sub4.aClass1Array3160[i_8_])}))), 4, i_10_, 8388736);
                                             }
-                                            if(i_9_ == 5 && (Class3.anInt165 ^ 0xffffffff) == -1 && Class4.anInt185 < 2) {
+                                            if(i_9_ == 5 && (CollisionMap.anInt165 ^ 0xffffffff) == -1 && Class4.anInt185 < 2) {
                                                 if(i_10_ > 0 && i_10_ < 110)
                                                     class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub17_Sub4.aClass1Array3160[i_8_]), 4, i_10_, 8388608);
                                                 i++;
                                             }
-                                            if(i_9_ == 6 && (Class3.anInt165 ^ 0xffffffff) == -1 && Class4.anInt185 < 2) {
+                                            if(i_9_ == 6 && (CollisionMap.anInt165 ^ 0xffffffff) == -1 && Class4.anInt185 < 2) {
                                                 if(i_10_ > 0 && ((i_10_ ^ 0xffffffff) > -111)) {
                                                     class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub17_Sub6.method832(-108, (new RSString[]{(Class40_Sub5_Sub1.aClass1_2274), (Class48.aClass1_1123), class1, (Class43.aClass1_1027)}))), 4, i_10_, 0);
                                                     class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub17_Sub4.aClass1Array3160[i_8_]), (class40_sub5_sub14_sub1.method685(Class40_Sub5_Sub17_Sub6.method832(-98, (new RSString[]{(Class40_Sub5_Sub1.aClass1_2274), (Class48.aClass1_1123), class1})))) + 12, i_10_, 8388608);
@@ -324,7 +324,7 @@ public class Class58 {
                                     Class62.anInt1472 = 7 + i * 14;
                                     if(Class62.anInt1472 < 78)
                                         Class62.anInt1472 = 78;
-                                    Class27.method355(0, (-(Class40_Sub5_Sub8.anInt2557) + Class62.anInt1472 - 77), Class62.anInt1472, 463, 77, 0);
+                                    Class27.method355(0, (-(GameObjectDefinition.anInt2557) + Class62.anInt1472 - 77), Class62.anInt1472, 463, 77, 0);
                                     RSString class1;
                                     if(((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760) != null) && (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.aClass1_3278) != null)
                                         class1 = (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.aClass1_3278);
@@ -345,7 +345,7 @@ public class Class58 {
                         }
                     } else {
                         if(Class66.aClass1_1543 != Class66.aClass1_1542) {
-                            Class40_Sub5_Sub17_Sub2.method773((byte) -96, Class66.aClass1_1543);
+                            GameObject.method773((byte) -96, Class66.aClass1_1543);
                             Class66.aClass1_1542 = Class66.aClass1_1543;
                         }
                         RSFont class40_sub5_sub14_sub1 = Class53.aClass40_Sub5_Sub14_Sub1_1268;

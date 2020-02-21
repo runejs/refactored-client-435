@@ -109,7 +109,7 @@ public class Class40_Sub4 extends Node {
                     arg2 = (Class40_Sub5_Sub17_Sub6.method832(-43, (new RSString[]{arg2.method68(0, 0, i), (Class40_Sub11.method872(999999999, Class66.method1029(4, false, arg1))), arg2.method50((byte) 95, i - -2)})));
                 }
                 for(; ; ) {
-                    int i = arg2.method60(Class40_Sub5_Sub8.aClass1_2526, arg0 ^ 0x34);
+                    int i = arg2.method60(GameObjectDefinition.aClass1_2526, arg0 ^ 0x34);
                     if((i ^ 0xffffffff) == 0)
                         break;
                     RSString class1 = Class66.aClass1_1567;
@@ -143,7 +143,7 @@ public class Class40_Sub4 extends Node {
                     int i_3_ = i_2_ * arg1 + arg0 * i_1_ >> -78503568;
                     int i_4_ = -(arg1 * i_1_) + i_2_ * arg0 >> -1568937360;
                     if(arg3 < 22)
-                        method535(18, (byte) 75);
+                        GameObjectDefinition.getDefinition(18);
                     if((i_0_ ^ 0xffffffff) < -2501)
                         arg2.method725(Class34.aClass40_Sub5_Sub14_Sub2_855, 98 + i_3_ + -(arg2.anInt2954 / 2), -(arg2.anInt2952 / 2) + (-i_4_ + 79));
                     else
@@ -172,31 +172,6 @@ public class Class40_Sub4 extends Node {
             aClass40_Sub5_Sub14_Sub4_2043 = null;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "fa.E(" + arg0 + ')');
-        }
-    }
-
-    public static Class40_Sub5_Sub8 method535(int arg0, byte arg1) {
-        try {
-            Class40_Sub5_Sub8 class40_sub5_sub8 = ((Class40_Sub5_Sub8) Class58.aClass9_1364.method231((long) arg0, (byte) 61));
-            anInt2040++;
-            if(class40_sub5_sub8 != null)
-                return class40_sub5_sub8;
-            byte[] is = Class40_Sub3.aClass6_2037.method172(arg0, 113, 6);
-            class40_sub5_sub8 = new Class40_Sub5_Sub8();
-            class40_sub5_sub8.anInt2538 = arg0;
-            if(is != null)
-                class40_sub5_sub8.method603(new Buffer(is), -122);
-            class40_sub5_sub8.method605(true);
-            if(class40_sub5_sub8.aBoolean2518) {
-                class40_sub5_sub8.aBoolean2501 = false;
-                class40_sub5_sub8.aBoolean2528 = false;
-            }
-            Class58.aClass9_1364.method230(-7208, (long) arg0, class40_sub5_sub8);
-            if(arg1 <= 121)
-                method533(51, -29, null, (byte) -100);
-            return class40_sub5_sub8;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "fa.C(" + arg0 + ',' + arg1 + ')');
         }
     }
 

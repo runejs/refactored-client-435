@@ -88,7 +88,7 @@ public class Class40_Sub5_Sub10 extends SubNode {
             Class40_Sub5_Sub1 class40_sub5_sub1 = ((Class40_Sub5_Sub1) Class17.aClass9_449.method231(l, (byte) 72));
             if(class40_sub5_sub1 != null)
                 return class40_sub5_sub1;
-            byte[] is = (Class56.aClass6_Sub1_1323.method170(Class40_Sub5_Sub17_Sub2.aClass1_3044, (Class40_Sub5_Sub17_Sub6.method832(53, new RSString[]{HashTable.method334(arg1, -1), SubNode.aClass1_2084, HashTable.method334(arg0, -1)})), 1));
+            byte[] is = (Class56.aClass6_Sub1_1323.method170(GameObject.aClass1_3044, (Class40_Sub5_Sub17_Sub6.method832(53, new RSString[]{HashTable.method334(arg1, -1), SubNode.aClass1_2084, HashTable.method334(arg0, -1)})), 1));
             if(arg2 <= 4)
                 return null;
             Buffer class40_sub1 = new Buffer(is);

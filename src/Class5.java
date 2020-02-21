@@ -42,7 +42,7 @@ public class Class5 {
         aClass1_204 = aClass1_202;
     }
 
-    public static void method162(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, byte[] arg8, Class3[] arg9) {
+    public static void method162(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, byte[] arg8, CollisionMap[] arg9) {
         try {
             if(arg1 != 13941)
                 method162(53, -59, 8, -121, -68, -3, -42, -91, null, null);
@@ -90,10 +90,10 @@ public class Class5 {
 
     public static void method164(int arg0) {
         try {
-            Class40_Sub5_Sub17.method754(arg0 + 29378, NpcDefinition.anInt2433);
+            Renderable.method754(arg0 + 29378, NpcDefinition.anInt2433);
             anInt205++;
             if(arg0 != (Class40_Sub5_Sub9.anInt2562 ^ 0xffffffff))
-                Class40_Sub5_Sub17.method754(arg0 + 29378, Class40_Sub5_Sub9.anInt2562);
+                Renderable.method754(arg0 + 29378, Class40_Sub5_Sub9.anInt2562);
             anInt199 = 0;
             Class68_Sub1.aClass68_2213.method1046((byte) 90);
             Player.anIntArray3284 = R3D.method708(Player.anIntArray3284);

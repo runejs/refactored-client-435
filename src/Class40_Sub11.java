@@ -44,12 +44,12 @@ public class Class40_Sub11 extends Node {
             for(int i_0_ = 0; i_0_ < 100; i_0_++) {
                 if(Class40_Sub5_Sub17_Sub4.aClass1Array3160[i_0_] != null) {
                     int i_1_ = Class66.anIntArray1569[i_0_];
-                    int i_2_ = 4 + Class40_Sub5_Sub8.anInt2557 + -(i * 14) + 70;
+                    int i_2_ = 4 + GameObjectDefinition.anInt2557 + -(i * 14) + 70;
                     if(i_2_ < -20)
                         break;
                     if(i_1_ == 0)
                         i++;
-                    RSString class1 = Class40_Sub5_Sub17.aClass1Array2856[i_0_];
+                    RSString class1 = Renderable.aClass1Array2856[i_0_];
                     if(class1 != null && class1.method75((byte) 116, Class51.aClass1_1210))
                         class1 = class1.method50((byte) 95, 5);
                     if(class1 != null && class1.method75((byte) 116, Class40_Sub5_Sub12.aClass1_2729))
@@ -59,7 +59,7 @@ public class Class40_Sub11 extends Node {
                             Class40_Sub5_Sub6.anInt2453++;
                             if((Class19.anInt493 ^ 0xffffffff) <= -2) {
                                 Floor.method558(0, Class22_Sub1.aClass1_1865, 0, -501, 0, 28, (Class40_Sub5_Sub17_Sub6.method832(arg2 ^ ~0x18, new RSString[]{Class26.aClass1_620, class1})));
-                                Class3.anInt158++;
+                                CollisionMap.anInt158++;
                             }
                             Floor.method558(0, Class38.aClass1_885, 0, -501, 0, 51, (Class40_Sub5_Sub17_Sub6.method832(-82, new RSString[]{Class26.aClass1_620, class1})));
                             Floor.method558(0, Class25.aClass1_591, 0, -501, 0, 45, (Class40_Sub5_Sub17_Sub6.method832(-40, new RSString[]{Class26.aClass1_620, class1})));
@@ -67,12 +67,12 @@ public class Class40_Sub11 extends Node {
                         }
                         i++;
                     }
-                    if(((i_1_ ^ 0xffffffff) == -4 || (i_1_ ^ 0xffffffff) == -8) && (Class3.anInt165 ^ 0xffffffff) == -1 && ((i_1_ ^ 0xffffffff) == -8 || (Class4.anInt185 ^ 0xffffffff) == -1 || (Class4.anInt185 == 1 && Class40_Sub2.method523(class1, -32624)))) {
+                    if(((i_1_ ^ 0xffffffff) == -4 || (i_1_ ^ 0xffffffff) == -8) && (CollisionMap.anInt165 ^ 0xffffffff) == -1 && ((i_1_ ^ 0xffffffff) == -8 || (Class4.anInt185 ^ 0xffffffff) == -1 || (Class4.anInt185 == 1 && Class40_Sub2.method523(class1, -32624)))) {
                         i++;
                         if(arg1 > -14 + i_2_ && (arg1 ^ 0xffffffff) >= (i_2_ ^ 0xffffffff)) {
                             Class40_Sub5_Sub6.anInt2453++;
                             if((Class19.anInt493 ^ 0xffffffff) <= -2) {
-                                Class3.anInt158++;
+                                CollisionMap.anInt158++;
                                 Floor.method558(0, Class22_Sub1.aClass1_1865, 0, -501, 0, 28, (Class40_Sub5_Sub17_Sub6.method832(arg2 + 60, new RSString[]{Class26.aClass1_620, class1})));
                             }
                             Floor.method558(0, Class38.aClass1_885, 0, -501, 0, 51, (Class40_Sub5_Sub17_Sub6.method832(arg2 ^ ~0x4c, new RSString[]{Class26.aClass1_620, class1})));
@@ -82,16 +82,16 @@ public class Class40_Sub11 extends Node {
                     }
                     if((i_1_ ^ 0xffffffff) == -5 && ((ItemDefinition.anInt2797 ^ 0xffffffff) == -1 || (((ItemDefinition.anInt2797 ^ 0xffffffff) == -2) && Class40_Sub2.method523(class1, -32624)))) {
                         if(arg1 > -14 + i_2_ && (arg1 ^ 0xffffffff) >= (i_2_ ^ 0xffffffff)) {
-                            Class40_Sub5_Sub17.anInt2867++;
+                            Renderable.anInt2867++;
                             Floor.method558(0, Class51.aClass1_1208, 0, arg2 ^ ~0x1d9, 0, 26, (Class40_Sub5_Sub17_Sub6.method832(-41, new RSString[]{Class26.aClass1_620, class1})));
                         }
                         i++;
                     }
-                    if(((i_1_ ^ 0xffffffff) == -6 || i_1_ == 6) && Class3.anInt165 == 0 && (Class4.anInt185 ^ 0xffffffff) > -3)
+                    if(((i_1_ ^ 0xffffffff) == -6 || i_1_ == 6) && CollisionMap.anInt165 == 0 && (Class4.anInt185 ^ 0xffffffff) > -3)
                         i++;
                     if(i_1_ == 8 && (ItemDefinition.anInt2797 == 0 || (((ItemDefinition.anInt2797 ^ 0xffffffff) == -2) && Class40_Sub2.method523(class1, -32624)))) {
                         if((i_2_ + -14 ^ 0xffffffff) > (arg1 ^ 0xffffffff) && (arg1 ^ 0xffffffff) >= (i_2_ ^ 0xffffffff)) {
-                            Floor.method558(0, Class40_Sub5_Sub17_Sub2.aClass1_3039, 0, -501, 0, 46, (Class40_Sub5_Sub17_Sub6.method832(arg2 + -108, new RSString[]{Class26.aClass1_620, class1})));
+                            Floor.method558(0, GameObject.aClass1_3039, 0, -501, 0, 46, (Class40_Sub5_Sub17_Sub6.method832(arg2 + -108, new RSString[]{Class26.aClass1_620, class1})));
                             Class40_Sub5_Sub17_Sub4.anInt3133++;
                         }
                         i++;

@@ -63,11 +63,11 @@ public class Class54 implements KeyListener, FocusListener {
         if(arg0 == -15454) {
             anInt1276++;
             if(Class58.anInt1376 != -1) {
-                Class40_Sub5_Sub17.method754(29378, Class58.anInt1376);
+                Renderable.method754(29378, Class58.anInt1376);
                 Class40_Sub5_Sub6.method583(0, Class58.anInt1376, 334, (byte) -5, 0, 4, 512);
             }
             if((Class66.anInt1560 ^ 0xffffffff) != 0) {
-                Class40_Sub5_Sub17.method754(29378, Class66.anInt1560);
+                Renderable.method754(29378, Class66.anInt1560);
                 Class40_Sub5_Sub6.method583(0, Class66.anInt1560, 334, (byte) -5, 0, 0, 512);
             }
             RSString.method71(arg0 ^ 0x3c7b);
@@ -84,18 +84,18 @@ public class Class54 implements KeyListener, FocusListener {
                 int i = 20;
                 int i_0_ = 507;
                 int i_1_ = 16776960;
-                if(Class52.anInt1219 < 30 && Class46.aBoolean1112)
+                if(Class52.anInt1219 < 30 && Class46.lowMemory)
                     i_1_ = 16711680;
-                if((Class52.anInt1219 ^ 0xffffffff) > -21 && !Class46.aBoolean1112)
+                if((Class52.anInt1219 ^ 0xffffffff) > -21 && !Class46.lowMemory)
                     i_1_ = 16711680;
                 Class53.aClass40_Sub5_Sub14_Sub1_1268.method687((Class40_Sub5_Sub17_Sub6.method832(-88, new RSString[]{Class61.aClass1_1446, HashTable.method334(Class52.anInt1219, -1)})), i_0_, i, i_1_);
                 i_1_ = 16776960;
                 i += 15;
                 Runtime runtime = Runtime.getRuntime();
                 int i_2_ = (int) ((runtime.totalMemory() + -runtime.freeMemory()) / 1024L);
-                if(i_2_ > 32768 && Class46.aBoolean1112)
+                if(i_2_ > 32768 && Class46.lowMemory)
                     i_1_ = 16711680;
-                if((i_2_ ^ 0xffffffff) < -65537 && !Class46.aBoolean1112)
+                if((i_2_ ^ 0xffffffff) < -65537 && !Class46.lowMemory)
                     i_1_ = 16711680;
                 Class53.aClass40_Sub5_Sub14_Sub1_1268.method687((Class40_Sub5_Sub17_Sub6.method832(81, new RSString[]{Class40_Sub7.aClass1_2129, HashTable.method334(i_2_, arg0 ^ 0x3c5d), RSCanvas.aClass1_68})), i_0_, i, i_1_);
                 i += 15;
@@ -222,7 +222,7 @@ public class Class54 implements KeyListener, FocusListener {
     public synchronized void focusLost(FocusEvent arg0) {
         anInt1274++;
         if(Class59.aClass54_1392 != null)
-            Class40_Sub5_Sub8.anInt2543 = -1;
+            GameObjectDefinition.anInt2543 = -1;
     }
 
     public synchronized void keyPressed(KeyEvent arg0) {
@@ -242,11 +242,11 @@ public class Class54 implements KeyListener, FocusListener {
                     i_4_ = -1;
                 else
                     i_4_ = Class51.method938(107, arg0);
-                if(Class40_Sub5_Sub8.anInt2543 >= 0 && (i ^ 0xffffffff) <= -1) {
-                    RSString.anIntArray1706[Class40_Sub5_Sub8.anInt2543] = i;
-                    Class40_Sub5_Sub8.anInt2543 = 0x7f & Class40_Sub5_Sub8.anInt2543 - -1;
-                    if(Class40_Sub5_Sub8.anInt2543 == Class40_Sub13.anInt2183)
-                        Class40_Sub5_Sub8.anInt2543 = -1;
+                if(GameObjectDefinition.anInt2543 >= 0 && (i ^ 0xffffffff) <= -1) {
+                    RSString.anIntArray1706[GameObjectDefinition.anInt2543] = i;
+                    GameObjectDefinition.anInt2543 = 0x7f & GameObjectDefinition.anInt2543 - -1;
+                    if(GameObjectDefinition.anInt2543 == Class40_Sub13.anInt2183)
+                        GameObjectDefinition.anInt2543 = -1;
                 }
                 if((i ^ 0xffffffff) <= -1 || (i_4_ ^ 0xffffffff) <= -1) {
                     int i_5_ = 0x7f & 1 + Class40_Sub5_Sub10.anInt2598;
@@ -272,11 +272,11 @@ public class Class54 implements KeyListener, FocusListener {
                     i = -1;
                 else
                     i = ~0x80 & Class66.anIntArray1564[i];
-                if((Class40_Sub5_Sub8.anInt2543 ^ 0xffffffff) <= -1 && i >= 0) {
-                    RSString.anIntArray1706[Class40_Sub5_Sub8.anInt2543] = i ^ 0xffffffff;
-                    Class40_Sub5_Sub8.anInt2543 = 0x7f & 1 + Class40_Sub5_Sub8.anInt2543;
-                    if(Class40_Sub13.anInt2183 == Class40_Sub5_Sub8.anInt2543)
-                        Class40_Sub5_Sub8.anInt2543 = -1;
+                if((GameObjectDefinition.anInt2543 ^ 0xffffffff) <= -1 && i >= 0) {
+                    RSString.anIntArray1706[GameObjectDefinition.anInt2543] = i ^ 0xffffffff;
+                    GameObjectDefinition.anInt2543 = 0x7f & 1 + GameObjectDefinition.anInt2543;
+                    if(Class40_Sub13.anInt2183 == GameObjectDefinition.anInt2543)
+                        GameObjectDefinition.anInt2543 = -1;
                 }
             }
             anInt1280++;

@@ -56,17 +56,17 @@ public class Class39 implements Runnable {
             int i_0_ = -1;
             int i_1_ = 0;
             if(arg0.anInt2027 == 0)
-                i = (NPC.aClass2_3301.method122(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
+                i = (NPC.aScene_3301.method122(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
             int i_2_ = 0;
             if((arg0.anInt2027 ^ 0xffffffff) == -2)
-                i = (NPC.aClass2_3301.method91(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
+                i = (NPC.aScene_3301.method91(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
             if(arg0.anInt2027 == 2)
-                i = (NPC.aClass2_3301.method110(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
+                i = (NPC.aScene_3301.method110(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
             if(arg0.anInt2027 == 3)
-                i = (NPC.aClass2_3301.method93(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
+                i = (NPC.aScene_3301.method93(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
             if(arg1 == 19813) {
                 if((i ^ 0xffffffff) != -1) {
-                    int i_3_ = (NPC.aClass2_3301.method141(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038, i));
+                    int i_3_ = (NPC.aScene_3301.method141(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038, i));
                     i_0_ = (0x1fffe692 & i) >> 1746750286;
                     i_2_ = (i_3_ & 0xde) >> 114415910;
                     i_1_ = i_3_ & 0x1f;
