@@ -253,7 +253,6 @@ public class Class40_Sub5_Sub17_Sub2 extends Class40_Sub5_Sub17 {
                                     Class8.aFontMetrics295))
                                     / 2),
                             22, graphics_13_);
-                    System.out.println(rsString.str);
                     graphics.drawImage(Class26.anImage624,
                             -152 + Class12.width / 2,
                             -18 + Class40_Sub5_Sub10.height / 2,
