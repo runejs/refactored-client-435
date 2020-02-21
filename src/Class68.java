@@ -31,8 +31,7 @@ public abstract class Class68 {
     static {
         aClass9_1615 = new Cache(64);
         anInt1630 = 0;
-        aClass1_1633
-                = Class58.method978(" is already on your ignore list");
+        aClass1_1633 = Class58.method978(" is already on your ignore list");
         anInt1634 = 0;
         anInt1637 = 0;
         aClass1_1636 = Class58.method978("Loaded title screen");
@@ -52,33 +51,26 @@ public abstract class Class68 {
         try {
             anInt1620++;
             try {
-                Class8_Sub1 class8_sub1
-                        = ((Class8_Sub1)
-                        Class.forName("Class8_Sub1_Sub2").newInstance());
+                Class8_Sub1 class8_sub1 = ((Class8_Sub1) Class.forName("Class8_Sub1_Sub2").newInstance());
                 class8_sub1.method222(arg2, 2048);
                 Class3.aClass8_166 = class8_sub1;
-            } catch (Throwable throwable) {
+            } catch(Throwable throwable) {
                 try {
                     Class3.aClass8_166 = new Class8_Sub1_Sub1(arg2, arg0);
-                } catch (Throwable throwable_0_) {
-                    if (arg1 <= Signlink.aString735.toLowerCase()
-                            .indexOf("microsoft")) {
+                } catch(Throwable throwable_0_) {
+                    if(arg1 <= Signlink.aString735.toLowerCase().indexOf("microsoft")) {
                         try {
                             Class3.aClass8_166 = new Class8_Sub2();
                             return;
-                        } catch (Throwable throwable_1_) {
+                        } catch(Throwable throwable_1_) {
                             /* empty */
                         }
                     }
                     Class3.aClass8_166 = new Class8(8000);
                 }
             }
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("wc.I(" + (arg0 != null ? "{...}" : "null")
-                            + ',' + arg1 + ','
-                            + (arg2 != null ? "{...}" : "null")
-                            + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("wc.I(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ')'));
         }
     }
 
@@ -96,7 +88,7 @@ public abstract class Class68 {
             aClass1_1635 = null;
             aClass1_1628 = null;
             aClass1_1633 = null;
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "wc.J(" + arg0 + ')');
         }
     }
@@ -104,48 +96,35 @@ public abstract class Class68 {
     public static boolean method1043(int arg0, int arg1) {
         try {
             anInt1627++;
-            if (aBooleanArray1629[arg0])
+            if(aBooleanArray1629[arg0])
                 return true;
-            if (!Class40_Sub5_Sub4.aClass6_2349.method186(123, arg0))
+            if(!Class40_Sub5_Sub4.aClass6_2349.method186(123, arg0))
                 return false;
             int i = 51 / ((63 - arg1) / 63);
-            int i_4_
-                    = Class40_Sub5_Sub4.aClass6_2349.method190(arg0, (byte) 71);
-            if (i_4_ == 0) {
+            int i_4_ = Class40_Sub5_Sub4.aClass6_2349.method190(arg0, (byte) 71);
+            if(i_4_ == 0) {
                 aBooleanArray1629[arg0] = true;
                 return true;
             }
-            if (Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0] == null)
-                Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0]
-                        = new Class40_Sub5_Sub12[i_4_];
-            for (int i_5_ = 0; (i_5_ ^ 0xffffffff) > (i_4_ ^ 0xffffffff);
-                 i_5_++) {
-                if (Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0][i_5_]
-                        == null) {
-                    byte[] is
-                            = Class40_Sub5_Sub4.aClass6_2349.method172(i_5_, 119,
-                            arg0);
-                    if (is != null) {
-                        Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0][i_5_]
-                                = new Class40_Sub5_Sub12();
-                        Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0]
-                                [i_5_].anInt2689
-                                = (arg0 << 692667152) - -i_5_;
-                        if ((is[0] ^ 0xffffffff) == 0)
-                            Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0]
-                                    [i_5_]
-                                    .method644((byte) 73, new Buffer(is));
+            if(Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0] == null)
+                Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0] = new Class40_Sub5_Sub12[i_4_];
+            for(int i_5_ = 0; (i_5_ ^ 0xffffffff) > (i_4_ ^ 0xffffffff); i_5_++) {
+                if(Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0][i_5_] == null) {
+                    byte[] is = Class40_Sub5_Sub4.aClass6_2349.method172(i_5_, 119, arg0);
+                    if(is != null) {
+                        Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0][i_5_] = new Class40_Sub5_Sub12();
+                        Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0][i_5_].anInt2689 = (arg0 << 692667152) - -i_5_;
+                        if((is[0] ^ 0xffffffff) == 0)
+                            Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0][i_5_].method644((byte) 73, new Buffer(is));
                         else
-                            Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0]
-                                    [i_5_].method637(new Buffer(is), -73);
+                            Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0][i_5_].method637(new Buffer(is), -73);
                     }
                 }
             }
             aBooleanArray1629[arg0] = true;
             return true;
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    "wc.M(" + arg0 + ',' + arg1 + ')');
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, "wc.M(" + arg0 + ',' + arg1 + ')');
         }
     }
 
@@ -154,41 +133,35 @@ public abstract class Class68 {
             anInt1626++;
             int i = arg0 >> 144471440;
             int i_8_ = 0xffff & arg0;
-            if (Class59.aClass40_Sub5_Sub12ArrayArray1390[i] == null
-                    || (Class59.aClass40_Sub5_Sub12ArrayArray1390[i][i_8_]
-                    == null)) {
+            if(Class59.aClass40_Sub5_Sub12ArrayArray1390[i] == null || (Class59.aClass40_Sub5_Sub12ArrayArray1390[i][i_8_] == null)) {
                 boolean bool = method1043(i, 127);
-                if (!bool)
+                if(!bool)
                     return null;
             }
-            if (arg1 >= -54)
+            if(arg1 >= -54)
                 method1042(-90);
             return Class59.aClass40_Sub5_Sub12ArrayArray1390[i][i_8_];
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    "wc.K(" + arg0 + ',' + arg1 + ')');
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, "wc.K(" + arg0 + ',' + arg1 + ')');
         }
     }
 
-    public abstract void method1041(int i, int i_2_, Component component,
-                                    int i_3_);
+    public abstract void method1041(int i, int i_2_, Component component, int i_3_);
 
-    public abstract void method1044(int i, int i_6_, Graphics graphics,
-                                    int i_7_);
+    public abstract void method1044(int i, int i_6_, Graphics graphics, int i_7_);
 
     public void method1046(byte arg0) {
         do {
             try {
-                Rasterizer.method669(anIntArray1621, anInt1619,
-                        anInt1617);
+                Rasterizer.method669(anIntArray1621, anInt1619, anInt1617);
                 anInt1624++;
-                if (arg0 == 90)
+                if(arg0 == 90)
                     break;
                 method1046((byte) 12);
-            } catch (RuntimeException runtimeexception) {
+            } catch(RuntimeException runtimeexception) {
                 throw Class8.method216(runtimeexception, "wc.L(" + arg0 + ')');
             }
             break;
-        } while (false);
+        } while(false);
     }
 }

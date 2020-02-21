@@ -30,13 +30,9 @@ public class Floor extends SubNode {
     public static int anInt2348;
 
     static {
-        aClass1_2315
-                = (Class58.method978
-                ("Zu viele Anmelde)2Versuche von Ihrer Adresse"));
+        aClass1_2315 = (Class58.method978("Zu viele Anmelde)2Versuche von Ihrer Adresse"));
         aClass1_2314 = Class58.method978("Malformed login packet)3");
-        aClass1_2327
-                = Class58.method978(
-                "-5berpr-Ufen Sie Ihr Mitteilungsfach)3");
+        aClass1_2327 = Class58.method978("-5berpr-Ufen Sie Ihr Mitteilungsfach)3");
         anInt2321 = 0;
         aClass1_2325 = aClass1_2314;
         aByteArrayArrayArray2323 = new byte[4][104][104];
@@ -73,7 +69,7 @@ public class Floor extends SubNode {
             aClass1_2325 = null;
             anIntArray2324 = null;
             int i = -25 % ((arg0 - 68) / 49);
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "fc.E(" + arg0 + ')');
         }
     }
@@ -81,30 +77,21 @@ public class Floor extends SubNode {
     public static void method557(int arg0, int arg1) {
         try {
             Class42.method886(0, 0, false, null, arg0);
-            if (arg1 != 17098)
+            if(arg1 != 17098)
                 method557(-14, 72);
             anInt2329++;
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    "fc.I(" + arg0 + ',' + arg1 + ')');
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, "fc.I(" + arg0 + ',' + arg1 + ')');
         }
     }
 
-    public static void method558(int arg0, RSString arg1, int arg2, int arg3,
-                                 int arg4, int arg5, RSString arg6) {
+    public static void method558(int arg0, RSString arg1, int arg2, int arg3, int arg4, int arg5, RSString arg6) {
         try {
-            if ((NpcDefinition.anInt2394 ^ 0xffffffff) > arg3) {
-                if ((arg6.method59(-3136) ^ 0xffffffff) >= -1)
-                    Landscape.aClass1Array1184[NpcDefinition.anInt2394]
-                            = arg1;
+            if((NpcDefinition.anInt2394 ^ 0xffffffff) > arg3) {
+                if((arg6.method59(-3136) ^ 0xffffffff) >= -1)
+                    Landscape.aClass1Array1184[NpcDefinition.anInt2394] = arg1;
                 else
-                    Landscape.aClass1Array1184[NpcDefinition.anInt2394]
-                            = Class40_Sub5_Sub17_Sub6.method832(-77,
-                            (new RSString[]
-                                    {arg1,
-                                            (Class46
-                                                    .aClass1_1117),
-                                            arg6}));
+                    Landscape.aClass1Array1184[NpcDefinition.anInt2394] = Class40_Sub5_Sub17_Sub6.method832(-77, (new RSString[]{arg1, (Class46.aClass1_1117), arg6}));
                 Class38.anIntArray884[NpcDefinition.anInt2394] = arg5;
                 Class33.anIntArray791[NpcDefinition.anInt2394] = arg0;
                 Class19.anIntArray483[NpcDefinition.anInt2394] = arg4;
@@ -112,14 +99,8 @@ public class Floor extends SubNode {
                 NpcDefinition.anInt2394++;
             }
             anInt2339++;
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("fc.G(" + arg0 + ','
-                            + (arg1 != null ? "{...}" : "null") + ','
-                            + arg2 + ',' + arg3 + ',' + arg4 + ','
-                            + arg5 + ','
-                            + (arg6 != null ? "{...}" : "null")
-                            + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("fc.G(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + (arg6 != null ? "{...}" : "null") + ')'));
         }
     }
 
@@ -127,72 +108,58 @@ public class Floor extends SubNode {
         try {
             int i = -26 % (-arg1 / 44);
             anInt2316++;
-            if ((Class51.anInt1197 ^ 0xffffffff) != (arg0 ^ 0xffffffff)) {
-                if ((Class51.anInt1197 ^ 0xffffffff) == -1)
+            if((Class51.anInt1197 ^ 0xffffffff) != (arg0 ^ 0xffffffff)) {
+                if((Class51.anInt1197 ^ 0xffffffff) == -1)
                     Class3.method144(12433);
-                if (arg0 == 20 || arg0 == 40) {
+                if(arg0 == 20 || arg0 == 40) {
                     Main.anInt1756 = 0;
                     anInt2321 = 0;
                     Class40_Sub3.anInt2032 = 0;
                 }
-                if ((arg0 ^ 0xffffffff) != -21 && (arg0 ^ 0xffffffff) != -41
-                        && Class30.aClass64_717 != null) {
+                if((arg0 ^ 0xffffffff) != -21 && (arg0 ^ 0xffffffff) != -41 && Class30.aClass64_717 != null) {
                     Class30.aClass64_717.method1009(-106);
                     Class30.aClass64_717 = null;
                 }
-                if (Class51.anInt1197 == 25 || Class51.anInt1197 == 40) {
+                if(Class51.anInt1197 == 25 || Class51.anInt1197 == 40) {
                     Class65.method1018((byte) 123);
                     Rasterizer.method663();
                 }
-                if (Class51.anInt1197 == 25) {
+                if(Class51.anInt1197 == 25) {
                     Class37.anInt874 = 0;
                     PacketBuffer.anInt2231 = 1;
                     Class40_Sub5_Sub10.anInt2591 = 0;
                     Class40_Sub5_Sub17_Sub2.anInt3048 = 1;
                     Class68.anInt1634 = 0;
                 }
-                if ((arg0 ^ 0xffffffff) == -1 || arg0 == 35) {
+                if((arg0 ^ 0xffffffff) == -1 || arg0 == 35) {
                     Class25.method344(-40);
                     Class38.method440((byte) -73);
-                    if (Class68_Sub1.aClass68_2213 == null)
-                        Class68_Sub1.aClass68_2213
-                                = Class40_Sub5_Sub13.method649(503, 765,
-                                Class62.aCanvas1469,
-                                -4875);
+                    if(Class68_Sub1.aClass68_2213 == null)
+                        Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649(503, 765, Class62.aCanvas1469, -4875);
                 }
-                if ((arg0 ^ 0xffffffff) == -6 || arg0 == 10 || arg0 == 20) {
+                if((arg0 ^ 0xffffffff) == -6 || arg0 == 10 || arg0 == 20) {
                     Class68_Sub1.aClass68_2213 = null;
                     Class25.method344(-69);
-                    Class40_Sub5_Sub17_Sub3.method779(Class62.aCanvas1469,
-                            true,
-                            (RSCanvas
-                                    .aClass6_Sub1_48),
-                            (NpcDefinition
-                                    .aClass6_Sub1_2377));
+                    Class40_Sub5_Sub17_Sub3.method779(Class62.aCanvas1469, true, (RSCanvas.aClass6_Sub1_48), (NpcDefinition.aClass6_Sub1_2377));
                 }
-                if (arg0 == 25 || arg0 == 30 || (arg0 ^ 0xffffffff) == -41) {
+                if(arg0 == 25 || arg0 == 30 || (arg0 ^ 0xffffffff) == -41) {
                     Class68_Sub1.aClass68_2213 = null;
                     Class38.method440((byte) -98);
-                    Class40_Sub5_Sub17_Sub1.method763(Class62.aCanvas1469,
-                            (byte) -128,
-                            (NpcDefinition
-                                    .aClass6_Sub1_2377));
+                    Class40_Sub5_Sub17_Sub1.method763(Class62.aCanvas1469, (byte) -128, (NpcDefinition.aClass6_Sub1_2377));
                 }
                 Class51.anInt1197 = arg0;
                 Class40_Sub5_Sub11.aBoolean2631 = true;
             }
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    "fc.H(" + arg0 + ',' + arg1 + ')');
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, "fc.H(" + arg0 + ',' + arg1 + ')');
         }
     }
 
-    public static void method560(int arg0, DirectColorSprite arg1,
-                                 int arg2, int arg3) {
+    public static void method560(int arg0, DirectColorSprite arg1, int arg2, int arg3) {
         try {
             anInt2326++;
             int i = arg0 * arg0 - -(arg3 * arg3);
-            if ((i ^ 0xffffffff) < -4226 && i < 90000) {
+            if((i ^ 0xffffffff) < -4226 && i < 90000) {
                 int i_0_ = 0x7ff & Class58.anInt1373 + Class43.anInt1020;
                 int i_1_ = Model.anIntArray3215[i_0_];
                 int i_2_ = Model.anIntArray3217[i_0_];
@@ -203,41 +170,33 @@ public class Floor extends SubNode {
                 double d = Math.atan2((double) i_4_, (double) i_3_);
                 int i_5_ = (int) (Math.sin(d) * 63.0);
                 int i_6_ = (int) (57.0 * Math.cos(d));
-                Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub4_2285.method729
-                        (-10 + (94 + (i_5_ - -4)), 83 + -i_6_ + -20, 20, 20, 15,
-                                15, d, 256);
+                Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub4_2285.method729(-10 + (94 + (i_5_ - -4)), 83 + -i_6_ + -20, 20, 20, 15, 15, d, 256);
             } else
                 Class40_Sub4.method533(arg3, arg0, arg1, (byte) 66);
             int i_7_ = -95 / ((arg2 - -37) / 32);
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("fc.F(" + arg0 + ','
-                            + (arg1 != null ? "{...}" : "null") + ','
-                            + arg2 + ',' + arg3 + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("fc.F(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ')'));
         }
     }
 
     public void method553(byte arg0, int arg1, Buffer arg2) {
         try {
-            for (; ; ) {
+            for(; ; ) {
                 int i = arg2.method468(false);
-                if ((i ^ 0xffffffff) == -1)
+                if((i ^ 0xffffffff) == -1)
                     break;
                 method556(arg1, arg2, i, (byte) -117);
             }
-            if (arg0 < 1)
+            if(arg0 < 1)
                 aClass1_2325 = null;
             anInt2348++;
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("fc.C(" + arg0 + ',' + arg1 + ','
-                            + (arg2 != null ? "{...}" : "null")
-                            + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("fc.C(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ')'));
         }
     }
 
     public void method555(byte arg0) {
-        if ((anInt2336 ^ 0xffffffff) != 0) {
+        if((anInt2336 ^ 0xffffffff) != 0) {
             method561(anInt2336, 121);
             anInt2330 = anInt2320;
             anInt2346 = anInt2337;
@@ -245,30 +204,27 @@ public class Floor extends SubNode {
         }
         method561(anInt2345, 126);
         anInt2317++;
-        if (arg0 != 64)
+        if(arg0 != 64)
             method559(39, 9);
     }
 
     public void method556(int arg0, Buffer arg1, int arg2, byte arg3) {
         try {
-            if (arg3 != -117)
+            if(arg3 != -117)
                 method556(-71, null, 83, (byte) -117);
             anInt2341++;
-            if ((arg2 ^ 0xffffffff) == -2)
+            if((arg2 ^ 0xffffffff) == -2)
                 anInt2345 = arg1.getTri(true);
-            else if (arg2 != 2) {
-                if ((arg2 ^ 0xffffffff) != -6) {
-                    if ((arg2 ^ 0xffffffff) == -8)
+            else if(arg2 != 2) {
+                if((arg2 ^ 0xffffffff) != -6) {
+                    if((arg2 ^ 0xffffffff) == -8)
                         anInt2336 = arg1.getTri(true);
                 } else
                     aBoolean2338 = false;
             } else
                 anInt2322 = arg1.method468(false);
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("fc.B(" + arg0 + ','
-                            + (arg1 != null ? "{...}" : "null") + ','
-                            + arg2 + ',' + arg3 + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("fc.B(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ')'));
         }
     }
 
@@ -279,27 +235,27 @@ public class Floor extends SubNode {
         double d_8_ = (double) ((0xff2d & arg0) >> -42632536) / 256.0;
         double d_9_ = (double) (0xff & arg0) / 256.0;
         double d_10_ = d;
-        if (d_8_ < d_10_)
+        if(d_8_ < d_10_)
             d_10_ = d_8_;
-        if (d_10_ > d_9_)
+        if(d_10_ > d_9_)
             d_10_ = d_9_;
         double d_11_ = d;
-        if (d_8_ > d_11_)
+        if(d_8_ > d_11_)
             d_11_ = d_8_;
         double d_12_ = 0.0;
         double d_13_ = 0.0;
-        if (d_9_ > d_11_)
+        if(d_9_ > d_11_)
             d_11_ = d_9_;
         double d_14_ = (d_11_ + d_10_) / 2.0;
-        if (d_10_ != d_11_) {
-            if (d_14_ < 0.5)
+        if(d_10_ != d_11_) {
+            if(d_14_ < 0.5)
                 d_13_ = (d_11_ - d_10_) / (d_11_ + d_10_);
-            if (d_14_ >= 0.5)
+            if(d_14_ >= 0.5)
                 d_13_ = (-d_10_ + d_11_) / (-d_10_ + (2.0 - d_11_));
-            if (d_11_ != d) {
-                if (d_8_ == d_11_)
+            if(d_11_ != d) {
+                if(d_8_ == d_11_)
                     d_12_ = 2.0 + (d_9_ - d) / (d_11_ - d_10_);
-                else if (d_11_ == d_9_)
+                else if(d_11_ == d_9_)
                     d_12_ = (-d_8_ + d) / (-d_10_ + d_11_) + 4.0;
             } else
                 d_12_ = (d_8_ - d_9_) / (d_11_ - d_10_);
@@ -308,13 +264,13 @@ public class Floor extends SubNode {
         anInt2332 = (int) (d_12_ * 256.0);
         anInt2320 = (int) (256.0 * d_14_);
         anInt2337 = (int) (d_13_ * 256.0);
-        if ((anInt2337 ^ 0xffffffff) > -1)
+        if((anInt2337 ^ 0xffffffff) > -1)
             anInt2337 = 0;
-        else if ((anInt2337 ^ 0xffffffff) < -256)
+        else if((anInt2337 ^ 0xffffffff) < -256)
             anInt2337 = 255;
-        if ((anInt2320 ^ 0xffffffff) > -1)
+        if((anInt2320 ^ 0xffffffff) > -1)
             anInt2320 = 0;
-        else if (anInt2320 > 255)
+        else if(anInt2320 > 255)
             anInt2320 = 255;
     }
 }

@@ -41,22 +41,20 @@ public class Class7 {
         anInt264 = arg0.method468(false);
         anIntArray265 = new int[anInt264];
         anIntArray269 = new int[anInt264];
-        for (int i = 0; i < anInt264; i++) {
+        for(int i = 0; i < anInt264; i++) {
             anIntArray265[i] = arg0.method469(65280);
             anIntArray269[i] = arg0.method469(65280);
         }
     }
 
     public int method208(int arg0) {
-        if (anInt270 >= anInt272) {
+        if(anInt270 >= anInt272) {
             anInt274 = anIntArray269[anInt273++] << 15;
-            if (anInt273 >= anInt264)
+            if(anInt273 >= anInt264)
                 anInt273 = anInt264 - 1;
-            anInt272 = (int) ((double) anIntArray265[anInt273] / 65536.0
-                    * (double) arg0);
-            if (anInt272 > anInt270)
-                anInt271 = (((anIntArray269[anInt273] << 15) - anInt274)
-                        / (anInt272 - anInt270));
+            anInt272 = (int) ((double) anIntArray265[anInt273] / 65536.0 * (double) arg0);
+            if(anInt272 > anInt270)
+                anInt271 = (((anIntArray269[anInt273] << 15) - anInt274) / (anInt272 - anInt270));
         }
         anInt274 += anInt271;
         anInt270++;

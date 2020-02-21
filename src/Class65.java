@@ -10,8 +10,7 @@ public class Class65 {
     public static int anInt1532;
     public static Class6_Sub1 aClass6_Sub1_1533;
     public static int anInt1534;
-    public static RSString aClass1_1535
-            = Class58.method978("Please reload this page)3");
+    public static RSString aClass1_1535 = Class58.method978("Please reload this page)3");
     public static RSString aClass1_1536 = Class58.method978(" x ");
     public static int anInt1537;
     public static RSString aClass1_1538 = aClass1_1535;
@@ -27,11 +26,11 @@ public class Class65 {
             aCRC32_1531 = null;
             aClass1_1530 = null;
             aClass1_1538 = null;
-            if (arg0 >= -10)
+            if(arg0 >= -10)
                 anInt1537 = 31;
             aClass1_1536 = null;
             aClass1_1535 = null;
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "w.D(" + arg0 + ')');
         }
     }
@@ -41,9 +40,8 @@ public class Class65 {
             int i = -125 % ((arg0 - 2) / 56);
             anInt1539++;
             Class40_Sub5_Sub4.aClass68_2350.method1046((byte) 90);
-            Class24.anIntArray577
-                    = R3D.method708(Class24.anIntArray577);
-        } catch (RuntimeException runtimeexception) {
+            Class24.anIntArray577 = R3D.method708(Class24.anIntArray577);
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "w.C(" + arg0 + ')');
         }
     }
@@ -51,10 +49,10 @@ public class Class65 {
     public static void method1019(int arg0) {
         try {
             anInt1534++;
-            if (Class5.aClass22_189 != null) {
+            if(Class5.aClass22_189 != null) {
                 Class22.method308(arg0 + -191);
-                if (arg0 == 104) {
-                    if (RSCanvas.anInt54 > 0) {
+                if(arg0 == 104) {
+                    if(RSCanvas.anInt54 > 0) {
                         Class5.aClass22_189.method301(256, 0);
                         RSCanvas.anInt54 = 0;
                     }
@@ -62,7 +60,7 @@ public class Class65 {
                     Class5.aClass22_189 = null;
                 }
             }
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "w.A(" + arg0 + ')');
         }
     }
@@ -73,7 +71,7 @@ public class Class65 {
             Floor.aByteArrayArrayArray2335 = new byte[4][104][104];
             anInt1532++;
             Class6.anIntArrayArrayArray262 = new int[4][105][105];
-            if (arg0 != true)
+            if(arg0 != true)
                 aClass1_1530 = null;
             Class64.anInt1529 = 99;
             Class19.aByteArrayArrayArray492 = new byte[4][105][105];
@@ -85,7 +83,7 @@ public class Class65 {
             Class40_Sub5_Sub17_Sub6.anIntArray3250 = new int[104];
             Class35.aByteArrayArrayArray1745 = new byte[4][104][104];
             Class42.aByteArrayArrayArray993 = new byte[4][104][104];
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "w.B(" + arg0 + ')');
         }
     }

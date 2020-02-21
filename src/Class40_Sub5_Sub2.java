@@ -30,9 +30,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
     public static RSString aClass1_2311;
 
     static {
-        aClass1_2292
-                = (Class58.method978
-                ("Verbindung konnte nicht hergestellt werden)3"));
+        aClass1_2292 = (Class58.method978("Verbindung konnte nicht hergestellt werden)3"));
         aClass1_2299 = Class58.method978("Loaded input handler");
         aClass1_2291 = Class58.method978("W-=hlen Sie eine Option");
         anInt2302 = 0;
@@ -66,7 +64,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
 
     public static void method548(int arg0) {
         try {
-            if (arg0 != -3254)
+            if(arg0 != -3254)
                 method548(-111);
             aClass1_2291 = null;
             aClass67_2298 = null;
@@ -83,35 +81,29 @@ public class Class40_Sub5_Sub2 extends SubNode {
             aClass1_2303 = null;
             aClass1_2296 = null;
             aClass1_2292 = null;
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ec.F(" + arg0 + ')');
         }
     }
 
-    public static IndexedColorSprite[] method550
-            (Class6 arg0, byte arg1, RSString arg2, RSString arg3) {
+    public static IndexedColorSprite[] method550(Class6 arg0, byte arg1, RSString arg2, RSString arg3) {
         try {
             anInt2282++;
             int i = arg0.method183(0, arg2);
-            if (arg1 > -53)
+            if(arg1 > -53)
                 aClass1_2283 = null;
             int i_1_ = arg0.method179(-118, i, arg3);
             return Class24.method337(7729, arg0, i_1_, i);
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("ec.B(" + (arg0 != null ? "{...}" : "null")
-                            + ',' + arg1 + ','
-                            + (arg2 != null ? "{...}" : "null") + ','
-                            + (arg3 != null ? "{...}" : "null")
-                            + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("ec.B(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + (arg3 != null ? "{...}" : "null") + ')'));
         }
     }
 
     public static void method552(boolean arg0) {
         anInt2284++;
         try {
-            if (Class40_Sub3.anInt2032 == 0) {
-                if (Class40_Sub6.aClass64_2098 != null) {
+            if(Class40_Sub3.anInt2032 == 0) {
+                if(Class40_Sub6.aClass64_2098 != null) {
                     Class40_Sub6.aClass64_2098.method1009(63);
                     Class40_Sub6.aClass64_2098 = null;
                 }
@@ -120,26 +112,21 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 Main.anInt1756 = 0;
                 Class25.aClass15_607 = null;
             }
-            if (Class40_Sub3.anInt2032 == 1) {
-                if (Class25.aClass15_607 == null)
-                    Class25.aClass15_607
-                            = ISAAC.aClass31_521.method395(3, Class10.anInt350);
-                if (Class25.aClass15_607.anInt434 == 2)
+            if(Class40_Sub3.anInt2032 == 1) {
+                if(Class25.aClass15_607 == null)
+                    Class25.aClass15_607 = ISAAC.aClass31_521.method395(3, Class10.anInt350);
+                if(Class25.aClass15_607.anInt434 == 2)
                     throw new IOException();
-                if ((Class25.aClass15_607.anInt434 ^ 0xffffffff) == -2) {
-                    Class40_Sub6.aClass64_2098
-                            = new Class64(((Socket)
-                            Class25.aClass15_607.anObject437),
-                            ISAAC.aClass31_521);
+                if((Class25.aClass15_607.anInt434 ^ 0xffffffff) == -2) {
+                    Class40_Sub6.aClass64_2098 = new Class64(((Socket) Class25.aClass15_607.anObject437), ISAAC.aClass31_521);
                     Class40_Sub3.anInt2032 = 2;
                     Class25.aClass15_607 = null;
                 }
             }
-            if (arg0 != true)
+            if(arg0 != true)
                 aClass1_2297 = null;
-            if ((Class40_Sub3.anInt2032 ^ 0xffffffff) == -3) {
-                long l = (Class34.aLong853
-                        = Class22_Sub2.username.method58((byte) 93));
+            if((Class40_Sub3.anInt2032 ^ 0xffffffff) == -3) {
+                long l = (Class34.aLong853 = Class22_Sub2.username.method58((byte) 93));
                 Class32.packetBuffer.offset = 0;
                 Class32.packetBuffer.put(14, (byte) -128);
                 int i = (int) (0x1fL & l >> 383714384);
@@ -148,37 +135,32 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 Class40_Sub3.anInt2032 = 3;
                 Cache.outgoingbuffer.offset = 0;
             }
-            if ((Class40_Sub3.anInt2032 ^ 0xffffffff) == -4) {
+            if((Class40_Sub3.anInt2032 ^ 0xffffffff) == -4) {
                 int i = Class40_Sub6.aClass64_2098.method1016(52);
-                if ((i ^ 0xffffffff) != -1) {
+                if((i ^ 0xffffffff) != -1) {
                     Class27.method366(5, i);
                     return;
                 }
                 Cache.outgoingbuffer.offset = 0;
                 Class40_Sub3.anInt2032 = 4;
             }
-            if ((Class40_Sub3.anInt2032 ^ 0xffffffff) == -5) {
-                if (Cache.outgoingbuffer.offset < 8) {
+            if((Class40_Sub3.anInt2032 ^ 0xffffffff) == -5) {
+                if(Cache.outgoingbuffer.offset < 8) {
                     int i = Class40_Sub6.aClass64_2098.method1014(-127);
-                    if ((i ^ 0xffffffff)
-                            < (-Cache.outgoingbuffer.offset + 8
-                            ^ 0xffffffff))
+                    if((i ^ 0xffffffff) < (-Cache.outgoingbuffer.offset + 8 ^ 0xffffffff))
                         i = -Cache.outgoingbuffer.offset + 8;
-                    if (i > 0) {
-                        Class40_Sub6.aClass64_2098.method1008
-                                (Cache.outgoingbuffer.offset, i, -128,
-                                        Cache.outgoingbuffer.payload);
+                    if(i > 0) {
+                        Class40_Sub6.aClass64_2098.method1008(Cache.outgoingbuffer.offset, i, -128, Cache.outgoingbuffer.payload);
                         Cache.outgoingbuffer.offset += i;
                     }
                 }
-                if (Cache.outgoingbuffer.offset == 8) {
+                if(Cache.outgoingbuffer.offset == 8) {
                     Cache.outgoingbuffer.offset = 0;
-                    Class40_Sub5_Sub17.aLong2858
-                            = Cache.outgoingbuffer.method498(1362367312);
+                    Class40_Sub5_Sub17.aLong2858 = Cache.outgoingbuffer.method498(1362367312);
                     Class40_Sub3.anInt2032 = 5;
                 }
             }
-            if (Class40_Sub3.anInt2032 == 5) {
+            if(Class40_Sub3.anInt2032 == 5) {
                 int[] seeds = new int[4];
                 seeds[0] = (int) (Math.random() * 9.9999999E7);
                 seeds[1] = (int) (Math.random() * 9.9999999E7);
@@ -195,72 +177,43 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 Class32.packetBuffer.method505(Class22_Sub2.password, (byte) -3);
                 Class32.packetBuffer.applyRSA(Class40_Sub5_Sub17_Sub4.rsaModulus, PacketBuffer.rsaKey, 19280);
                 Class61.packetBuffer.offset = 0;
-                if (Class51.anInt1197 == 40)
+                if(Class51.anInt1197 == 40)
                     Class61.packetBuffer.put(18, (byte) -128);
                 else
                     Class61.packetBuffer.put(16, (byte) -128);
                 Class61.packetBuffer.put(57 - -Class32.packetBuffer.offset, (byte) -128);
                 Class61.packetBuffer.putInt(60, 435);
-                Class61.packetBuffer
-                        .put(Class46.aBoolean1112 ? 1 : 0, (byte) -128);
-                Class61.packetBuffer
-                        .putInt(85, Class25.aClass6_Sub1_605.anInt216);
-                Class61.packetBuffer.putInt
-                        (95, Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000.anInt216);
-                Class61.packetBuffer.putInt(100,
-                        (Class40_Sub5_Sub10
-                                .aClass6_Sub1_2609
-                                .anInt216));
-                Class61.packetBuffer
-                        .putInt(75, Class65.aClass6_Sub1_1533.anInt216);
-                Class61.packetBuffer.putInt
-                        (92, Class40_Sub5_Sub17_Sub4.aClass6_Sub1_3157.anInt216);
-                Class61.packetBuffer.putInt(42,
-                        (Class40_Sub5_Sub17
-                                .aClass6_Sub1_2857
-                                .anInt216));
-                Class61.packetBuffer
-                        .putInt(108, Class55.aClass6_Sub1_1286.anInt216);
-                Class61.packetBuffer.putInt(108,
-                        (Class40_Sub5_Sub9
-                                .aClass6_Sub1_2571
-                                .anInt216));
-                Class61.packetBuffer.putInt(49,
-                        (NpcDefinition
-                                .aClass6_Sub1_2377
-                                .anInt216));
-                Class61.packetBuffer
-                        .putInt(61, Class32.aClass6_Sub1_773.anInt216);
-                Class61.packetBuffer
-                        .putInt(80, RSCanvas.aClass6_Sub1_48.anInt216);
-                Class61.packetBuffer
-                        .putInt(61, Class46.aClass6_Sub1_1104.anInt216);
-                Class61.packetBuffer
-                        .putInt(101, Class56.aClass6_Sub1_1323.anInt216);
-                Class61.packetBuffer.method475
-                        (Class32.packetBuffer.offset,
-                                Class32.packetBuffer.payload, 0, 8636);
-                Class40_Sub6.aClass64_2098.method1010
-                        (Class61.packetBuffer.offset, (byte) -19, 0,
-                                Class61.packetBuffer.payload);
+                Class61.packetBuffer.put(Class46.aBoolean1112 ? 1 : 0, (byte) -128);
+                Class61.packetBuffer.putInt(85, Class25.aClass6_Sub1_605.anInt216);
+                Class61.packetBuffer.putInt(95, Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000.anInt216);
+                Class61.packetBuffer.putInt(100, (Class40_Sub5_Sub10.aClass6_Sub1_2609.anInt216));
+                Class61.packetBuffer.putInt(75, Class65.aClass6_Sub1_1533.anInt216);
+                Class61.packetBuffer.putInt(92, Class40_Sub5_Sub17_Sub4.aClass6_Sub1_3157.anInt216);
+                Class61.packetBuffer.putInt(42, (Class40_Sub5_Sub17.aClass6_Sub1_2857.anInt216));
+                Class61.packetBuffer.putInt(108, Class55.aClass6_Sub1_1286.anInt216);
+                Class61.packetBuffer.putInt(108, (Class40_Sub5_Sub9.aClass6_Sub1_2571.anInt216));
+                Class61.packetBuffer.putInt(49, (NpcDefinition.aClass6_Sub1_2377.anInt216));
+                Class61.packetBuffer.putInt(61, Class32.aClass6_Sub1_773.anInt216);
+                Class61.packetBuffer.putInt(80, RSCanvas.aClass6_Sub1_48.anInt216);
+                Class61.packetBuffer.putInt(61, Class46.aClass6_Sub1_1104.anInt216);
+                Class61.packetBuffer.putInt(101, Class56.aClass6_Sub1_1323.anInt216);
+                Class61.packetBuffer.method475(Class32.packetBuffer.offset, Class32.packetBuffer.payload, 0, 8636);
+                Class40_Sub6.aClass64_2098.method1010(Class61.packetBuffer.offset, (byte) -19, 0, Class61.packetBuffer.payload);
                 Class32.packetBuffer.initEncryption(-1, seeds);
-                for (int i = 0; i < 4; i++)
+                for(int i = 0; i < 4; i++)
                     seeds[i] += 50;
                 Cache.outgoingbuffer.initEncryption(-1, seeds);
                 Class40_Sub3.anInt2032 = 6;
             }
-            if (Class40_Sub3.anInt2032 == 6
-                    && Class40_Sub6.aClass64_2098.method1014(-126) > 0) {
+            if(Class40_Sub3.anInt2032 == 6 && Class40_Sub6.aClass64_2098.method1014(-126) > 0) {
                 int i = Class40_Sub6.aClass64_2098.method1016(63);
-                if (i != 21 || Class51.anInt1197 != 20) {
-                    if (i != 2) {
-                        if ((i ^ 0xffffffff) == -16
-                                && (Class51.anInt1197 ^ 0xffffffff) == -41) {
+                if(i != 21 || Class51.anInt1197 != 20) {
+                    if(i != 2) {
+                        if((i ^ 0xffffffff) == -16 && (Class51.anInt1197 ^ 0xffffffff) == -41) {
                             Class37.method434(0);
                             return;
                         }
-                        if (i == 23 && (Floor.anInt2321
-                                ^ 0xffffffff) > -2) {
+                        if(i == 23 && (Floor.anInt2321 ^ 0xffffffff) > -2) {
                             Floor.anInt2321++;
                             Class40_Sub3.anInt2032 = 0;
                         } else {
@@ -272,43 +225,24 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 } else
                     Class40_Sub3.anInt2032 = 7;
             }
-            if (Class40_Sub3.anInt2032 == 7
-                    && ((Class40_Sub6.aClass64_2098.method1014(-128) ^ 0xffffffff)
-                    < -1)) {
-                Class33.anInt784
-                        = 180 + Class40_Sub6.aClass64_2098.method1016(85) * 60;
+            if(Class40_Sub3.anInt2032 == 7 && ((Class40_Sub6.aClass64_2098.method1014(-128) ^ 0xffffffff) < -1)) {
+                Class33.anInt784 = 180 + Class40_Sub6.aClass64_2098.method1016(85) * 60;
                 Class40_Sub3.anInt2032 = 8;
             }
-            if (Class40_Sub3.anInt2032 == 8) {
+            if(Class40_Sub3.anInt2032 == 8) {
                 Main.anInt1756 = 0;
-                Class33.method411((Class40_Sub5_Sub17_Sub6.method832
-                                (-83,
-                                        (new RSString[]
-                                                {HashTable.method334(Class33.anInt784 / 60,
-                                                        -1),
-                                                        Class38.aClass1_883}))),
-                        Class8.aClass1_294, RSCanvas.aClass1_67,
-                        (byte) -82);
-                if ((--Class33.anInt784 ^ 0xffffffff) >= -1)
+                Class33.method411((Class40_Sub5_Sub17_Sub6.method832(-83, (new RSString[]{HashTable.method334(Class33.anInt784 / 60, -1), Class38.aClass1_883}))), Class8.aClass1_294, RSCanvas.aClass1_67, (byte) -82);
+                if((--Class33.anInt784 ^ 0xffffffff) >= -1)
                     Class40_Sub3.anInt2032 = 0;
             } else {
-                if (Class40_Sub3.anInt2032 == 9
-                        && Class40_Sub6.aClass64_2098.method1014(-121) >= 8) {
-                    Class19.anInt493
-                            = Class40_Sub6.aClass64_2098.method1016(99);
-                    Class22.aBoolean544
-                            = (Class40_Sub6.aClass64_2098.method1016(38)
-                            ^ 0xffffffff) == -2;
-                    Class30.anInt708
-                            = Class40_Sub6.aClass64_2098.method1016(86);
+                if(Class40_Sub3.anInt2032 == 9 && Class40_Sub6.aClass64_2098.method1014(-121) >= 8) {
+                    Class19.anInt493 = Class40_Sub6.aClass64_2098.method1016(99);
+                    Class22.aBoolean544 = (Class40_Sub6.aClass64_2098.method1016(38) ^ 0xffffffff) == -2;
+                    Class30.anInt708 = Class40_Sub6.aClass64_2098.method1016(86);
                     Class30.anInt708 <<= 8;
-                    Class30.anInt708
-                            += Class40_Sub6.aClass64_2098.method1016(16);
-                    Class44.anInt1049
-                            = Class40_Sub6.aClass64_2098.method1016(37);
-                    Class40_Sub6.aClass64_2098.method1008
-                            (0, 1, -127,
-                                    Cache.outgoingbuffer.payload);
+                    Class30.anInt708 += Class40_Sub6.aClass64_2098.method1016(16);
+                    Class44.anInt1049 = Class40_Sub6.aClass64_2098.method1016(37);
+                    Class40_Sub6.aClass64_2098.method1008(0, 1, -127, Cache.outgoingbuffer.payload);
                     Cache.outgoingbuffer.offset = 0;
                     Class57.packetid = Cache.outgoingbuffer.getPacket((byte) 49);
                     Class40_Sub6.aClass64_2098.method1008(0, 2, -127, Cache.outgoingbuffer.payload);
@@ -316,14 +250,10 @@ public class Class40_Sub5_Sub2 extends SubNode {
                     Class40_Sub5_Sub12.packetsize = Cache.outgoingbuffer.method469(65280);
                     Class40_Sub3.anInt2032 = 10;
                 }
-                if ((Class40_Sub3.anInt2032 ^ 0xffffffff) == -11) {
-                    if ((Class40_Sub6.aClass64_2098.method1014(-124)
-                            ^ 0xffffffff)
-                            <= (Class40_Sub5_Sub12.packetsize ^ 0xffffffff)) {
+                if((Class40_Sub3.anInt2032 ^ 0xffffffff) == -11) {
+                    if((Class40_Sub6.aClass64_2098.method1014(-124) ^ 0xffffffff) <= (Class40_Sub5_Sub12.packetsize ^ 0xffffffff)) {
                         Cache.outgoingbuffer.offset = 0;
-                        Class40_Sub6.aClass64_2098.method1008
-                                (0, Class40_Sub5_Sub12.packetsize, -128,
-                                        Cache.outgoingbuffer.payload);
+                        Class40_Sub6.aClass64_2098.method1008(0, Class40_Sub5_Sub12.packetsize, -128, Cache.outgoingbuffer.payload);
                         Main.method44(0);
                         Class51.anInt1202 = -1;
                         Class25.method343(false, 5688);
@@ -331,11 +261,10 @@ public class Class40_Sub5_Sub2 extends SubNode {
                     }
                 } else {
                     Main.anInt1756++;
-                    if ((Main.anInt1756 ^ 0xffffffff) < -2001) {
-                        if (Floor.anInt2321 < 1) {
+                    if((Main.anInt1756 ^ 0xffffffff) < -2001) {
+                        if(Floor.anInt2321 < 1) {
                             Floor.anInt2321++;
-                            if (Floor.anInt2340
-                                    == Class10.anInt350)
+                            if(Floor.anInt2340 == Class10.anInt350)
                                 Class10.anInt350 = Class3.anInt172;
                             else
                                 Class10.anInt350 = Floor.anInt2340;
@@ -345,10 +274,9 @@ public class Class40_Sub5_Sub2 extends SubNode {
                     }
                 }
             }
-        } catch (IOException ioexception) {
-            if ((Floor.anInt2321 ^ 0xffffffff) > -2) {
-                if ((Floor.anInt2340 ^ 0xffffffff)
-                        == (Class10.anInt350 ^ 0xffffffff))
+        } catch(IOException ioexception) {
+            if((Floor.anInt2321 ^ 0xffffffff) > -2) {
+                if((Floor.anInt2340 ^ 0xffffffff) == (Class10.anInt350 ^ 0xffffffff))
                     Class10.anInt350 = Class3.anInt172;
                 else
                     Class10.anInt350 = Floor.anInt2340;
@@ -361,24 +289,21 @@ public class Class40_Sub5_Sub2 extends SubNode {
 
     public void method547(int arg0, byte arg1, Buffer arg2) {
         try {
-            if (arg1 > -100)
+            if(arg1 > -100)
                 anInt2308 = -55;
-            if ((arg0 ^ 0xffffffff) == -2)
+            if((arg0 ^ 0xffffffff) == -2)
                 anInt2293 = arg2.method469(65280);
-            else if (arg0 == 2)
+            else if(arg0 == 2)
                 anInt2287 = arg2.method469(65280);
-            else if (arg0 != 4) {
-                if ((arg0 ^ 0xffffffff) != -6) {
-                    if ((arg0 ^ 0xffffffff) != -7) {
-                        if (arg0 != 7) {
-                            if (arg0 != 8) {
-                                if (arg0 >= 40 && arg0 < 50)
-                                    anIntArray2309[-40 + arg0]
-                                            = arg2.method469(65280);
-                                else if (arg0 >= 50
-                                        && (arg0 ^ 0xffffffff) > -61)
-                                    anIntArray2312[-50 + arg0]
-                                            = arg2.method469(65280);
+            else if(arg0 != 4) {
+                if((arg0 ^ 0xffffffff) != -6) {
+                    if((arg0 ^ 0xffffffff) != -7) {
+                        if(arg0 != 7) {
+                            if(arg0 != 8) {
+                                if(arg0 >= 40 && arg0 < 50)
+                                    anIntArray2309[-40 + arg0] = arg2.method469(65280);
+                                else if(arg0 >= 50 && (arg0 ^ 0xffffffff) > -61)
+                                    anIntArray2312[-50 + arg0] = arg2.method469(65280);
                             } else
                                 anInt2295 = arg2.method468(false);
                         } else
@@ -390,86 +315,67 @@ public class Class40_Sub5_Sub2 extends SubNode {
             } else
                 anInt2305 = arg2.method469(65280);
             anInt2304++;
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("ec.D(" + arg0 + ',' + arg1 + ','
-                            + (arg2 != null ? "{...}" : "null")
-                            + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("ec.D(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ')'));
         }
     }
 
     public Model method549(int arg0, int arg1) {
         try {
             anInt2288++;
-            Model class40_sub5_sub17_sub5
-                    = ((Model)
-                    Class34.aClass9_851.method231((long) anInt2310, (byte) 50));
-            if (class40_sub5_sub17_sub5 == null) {
-                class40_sub5_sub17_sub5
-                        = Model.method830((Class40_Sub5_Sub9
-                                .aClass6_2582),
-                        anInt2293, 0);
-                if (class40_sub5_sub17_sub5 == null)
+            Model class40_sub5_sub17_sub5 = ((Model) Class34.aClass9_851.method231((long) anInt2310, (byte) 50));
+            if(class40_sub5_sub17_sub5 == null) {
+                class40_sub5_sub17_sub5 = Model.method830((Class40_Sub5_Sub9.aClass6_2582), anInt2293, 0);
+                if(class40_sub5_sub17_sub5 == null)
                     return null;
-                for (int i = 0; (i ^ 0xffffffff) > -7; i++) {
-                    if ((anIntArray2309[0] ^ 0xffffffff) != -1)
-                        class40_sub5_sub17_sub5.method803(anIntArray2309[i],
-                                anIntArray2312[i]);
+                for(int i = 0; (i ^ 0xffffffff) > -7; i++) {
+                    if((anIntArray2309[0] ^ 0xffffffff) != -1)
+                        class40_sub5_sub17_sub5.method803(anIntArray2309[i], anIntArray2312[i]);
                 }
                 class40_sub5_sub17_sub5.method810();
-                class40_sub5_sub17_sub5.method802(64 - -anInt2300,
-                        anInt2295 + 850, -30, -50,
-                        -30, true);
-                Class34.aClass9_851.method230(-7208, (long) anInt2310,
-                        class40_sub5_sub17_sub5);
+                class40_sub5_sub17_sub5.method802(64 - -anInt2300, anInt2295 + 850, -30, -50, -30, true);
+                Class34.aClass9_851.method230(-7208, (long) anInt2310, class40_sub5_sub17_sub5);
             }
             Model class40_sub5_sub17_sub5_0_;
-            if (anInt2287 != -1 && (arg0 ^ 0xffffffff) != 0)
-                class40_sub5_sub17_sub5_0_
-                        = (Class68_Sub1.method1050(anInt2287, 2).method597
-                        ((byte) -87, class40_sub5_sub17_sub5, arg0));
+            if(anInt2287 != -1 && (arg0 ^ 0xffffffff) != 0)
+                class40_sub5_sub17_sub5_0_ = (Class68_Sub1.method1050(anInt2287, 2).method597((byte) -87, class40_sub5_sub17_sub5, arg0));
             else
-                class40_sub5_sub17_sub5_0_
-                        = class40_sub5_sub17_sub5.method806(true);
-            if (arg1 != 2)
+                class40_sub5_sub17_sub5_0_ = class40_sub5_sub17_sub5.method806(true);
+            if(arg1 != 2)
                 return null;
-            if (anInt2305 != 128 || anInt2313 != 128)
-                class40_sub5_sub17_sub5_0_.method821(anInt2305, anInt2313,
-                        anInt2305);
-            if (anInt2308 != 0) {
-                if (anInt2308 == 90)
+            if(anInt2305 != 128 || anInt2313 != 128)
+                class40_sub5_sub17_sub5_0_.method821(anInt2305, anInt2313, anInt2305);
+            if(anInt2308 != 0) {
+                if(anInt2308 == 90)
                     class40_sub5_sub17_sub5_0_.method813();
-                if (anInt2308 == 180) {
+                if(anInt2308 == 180) {
                     class40_sub5_sub17_sub5_0_.method813();
                     class40_sub5_sub17_sub5_0_.method813();
                 }
-                if ((anInt2308 ^ 0xffffffff) == -271) {
+                if((anInt2308 ^ 0xffffffff) == -271) {
                     class40_sub5_sub17_sub5_0_.method813();
                     class40_sub5_sub17_sub5_0_.method813();
                     class40_sub5_sub17_sub5_0_.method813();
                 }
             }
             return class40_sub5_sub17_sub5_0_;
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    "ec.A(" + arg0 + ',' + arg1 + ')');
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, "ec.A(" + arg0 + ',' + arg1 + ')');
         }
     }
 
     public void method551(Buffer arg0, byte arg1) {
         try {
             anInt2289++;
-            for (; ; ) {
+            for(; ; ) {
                 int i = arg0.method468(false);
-                if (i == 0)
+                if(i == 0)
                     break;
                 method547(i, (byte) -107, arg0);
             }
             int i = -3 / ((-30 - arg1) / 53);
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("ec.C(" + (arg0 != null ? "{...}" : "null")
-                            + ',' + arg1 + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("ec.C(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
         }
     }
 }

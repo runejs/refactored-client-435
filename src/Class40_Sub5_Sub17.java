@@ -23,8 +23,7 @@ public abstract class Class40_Sub5_Sub17 extends SubNode {
     static {
         aClass1Array2856 = new RSString[100];
         anInt2869 = 0;
-        aClass1_2870
-                = Class58.method978(" from your friend list first");
+        aClass1_2870 = Class58.method978(" from your friend list first");
         aClass1_2864 = aClass1_2870;
         aClass1_2871 = Class58.method978("Bitte versuchen Sie)1");
     }
@@ -34,74 +33,51 @@ public abstract class Class40_Sub5_Sub17 extends SubNode {
     public static boolean method754(int arg0, int arg1) {
         try {
             anInt2859++;
-            if (!Class68.method1043(arg1, 127))
+            if(!Class68.method1043(arg1, 127))
                 return false;
-            Class40_Sub5_Sub12[] class40_sub5_sub12s
-                    = Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1];
-            if (arg0 != 29378)
+            Class40_Sub5_Sub12[] class40_sub5_sub12s = Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1];
+            if(arg0 != 29378)
                 anInt2866 = 125;
             boolean bool = false;
-            for (int i = 0; class40_sub5_sub12s.length > i; i++) {
+            for(int i = 0; class40_sub5_sub12s.length > i; i++) {
                 Class40_Sub5_Sub12 class40_sub5_sub12 = class40_sub5_sub12s[i];
-                if (class40_sub5_sub12 != null
-                        && class40_sub5_sub12.anInt2683 == 6) {
-                    if ((class40_sub5_sub12.anInt2659 ^ 0xffffffff) != 0
-                            || class40_sub5_sub12.anInt2653 != -1) {
-                        boolean bool_0_
-                                = ItemDefinition.method746(false,
-                                class40_sub5_sub12);
+                if(class40_sub5_sub12 != null && class40_sub5_sub12.anInt2683 == 6) {
+                    if((class40_sub5_sub12.anInt2659 ^ 0xffffffff) != 0 || class40_sub5_sub12.anInt2653 != -1) {
+                        boolean bool_0_ = ItemDefinition.method746(false, class40_sub5_sub12);
                         int i_1_;
-                        if (bool_0_)
+                        if(bool_0_)
                             i_1_ = class40_sub5_sub12.anInt2653;
                         else
                             i_1_ = class40_sub5_sub12.anInt2659;
-                        if ((i_1_ ^ 0xffffffff) != 0) {
-                            Class40_Sub5_Sub7 class40_sub5_sub7
-                                    = Class68_Sub1.method1050(i_1_, 2);
+                        if((i_1_ ^ 0xffffffff) != 0) {
+                            Class40_Sub5_Sub7 class40_sub5_sub7 = Class68_Sub1.method1050(i_1_, 2);
                             class40_sub5_sub12.anInt2660 += Class5.anInt199;
-                            while ((class40_sub5_sub7.anIntArray2466
-                                    [class40_sub5_sub12.anInt2654])
-                                    < class40_sub5_sub12.anInt2660) {
+                            while((class40_sub5_sub7.anIntArray2466[class40_sub5_sub12.anInt2654]) < class40_sub5_sub12.anInt2660) {
                                 bool = true;
-                                class40_sub5_sub12.anInt2660
-                                        -= (class40_sub5_sub7.anIntArray2466
-                                        [class40_sub5_sub12.anInt2654]);
+                                class40_sub5_sub12.anInt2660 -= (class40_sub5_sub7.anIntArray2466[class40_sub5_sub12.anInt2654]);
                                 class40_sub5_sub12.anInt2654++;
-                                if ((class40_sub5_sub12.anInt2654 ^ 0xffffffff)
-                                        <= (class40_sub5_sub7.anIntArray2485.length
-                                        ^ 0xffffffff)) {
-                                    class40_sub5_sub12.anInt2654
-                                            -= class40_sub5_sub7.anInt2497;
-                                    if ((class40_sub5_sub12.anInt2654
-                                            ^ 0xffffffff) > -1
-                                            || ((class40_sub5_sub12.anInt2654
-                                            ^ 0xffffffff)
-                                            <= ((class40_sub5_sub7
-                                            .anIntArray2485).length
-                                            ^ 0xffffffff)))
+                                if((class40_sub5_sub12.anInt2654 ^ 0xffffffff) <= (class40_sub5_sub7.anIntArray2485.length ^ 0xffffffff)) {
+                                    class40_sub5_sub12.anInt2654 -= class40_sub5_sub7.anInt2497;
+                                    if((class40_sub5_sub12.anInt2654 ^ 0xffffffff) > -1 || ((class40_sub5_sub12.anInt2654 ^ 0xffffffff) <= ((class40_sub5_sub7.anIntArray2485).length ^ 0xffffffff)))
                                         class40_sub5_sub12.anInt2654 = 0;
                                 }
                             }
                         }
                     }
-                    if (class40_sub5_sub12.anInt2722 != 0) {
+                    if(class40_sub5_sub12.anInt2722 != 0) {
                         bool = true;
                         int i_2_ = class40_sub5_sub12.anInt2722 >> -1999002640;
-                        int i_3_ = (class40_sub5_sub12.anInt2722 << 1943281072
-                                >> -1142238960);
+                        int i_3_ = (class40_sub5_sub12.anInt2722 << 1943281072 >> -1142238960);
                         i_2_ *= Class5.anInt199;
-                        class40_sub5_sub12.anInt2690
-                                = 0x7ff & i_2_ + class40_sub5_sub12.anInt2690;
+                        class40_sub5_sub12.anInt2690 = 0x7ff & i_2_ + class40_sub5_sub12.anInt2690;
                         i_3_ *= Class5.anInt199;
-                        class40_sub5_sub12.anInt2657
-                                = 0x7ff & class40_sub5_sub12.anInt2657 - -i_3_;
+                        class40_sub5_sub12.anInt2657 = 0x7ff & class40_sub5_sub12.anInt2657 - -i_3_;
                     }
                 }
             }
             return bool;
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    "vb.EB(" + arg0 + ',' + arg1 + ')');
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, "vb.EB(" + arg0 + ',' + arg1 + ')');
         }
     }
 
@@ -109,7 +85,7 @@ public abstract class Class40_Sub5_Sub17 extends SubNode {
         try {
             aClass1_2871 = null;
             aClass1Array2856 = null;
-            if (arg0 > -112)
+            if(arg0 > -112)
                 method757((byte) 59);
             aClass40_Sub5_Sub14_Sub2_2860 = null;
             aClass6_Sub1_2857 = null;
@@ -117,19 +93,17 @@ public abstract class Class40_Sub5_Sub17 extends SubNode {
             anIntArray2865 = null;
             aClass1_2862 = null;
             aClass1_2864 = null;
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "vb.DB(" + arg0 + ')');
         }
     }
 
-    public void method755(int arg0, int arg1, int arg2, int arg3, int arg4,
-                          int arg5, int arg6, int arg7, int arg8) {
+    public void method755(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
         anInt2868++;
         Model class40_sub5_sub17_sub5 = method756(-38);
-        if (class40_sub5_sub17_sub5 != null) {
+        if(class40_sub5_sub17_sub5 != null) {
             anInt2861 = class40_sub5_sub17_sub5.anInt2861;
-            class40_sub5_sub17_sub5.method755(arg0, arg1, arg2, arg3, arg4,
-                    arg5, arg6, arg7, arg8);
+            class40_sub5_sub17_sub5.method755(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
         }
     }
 
@@ -138,7 +112,7 @@ public abstract class Class40_Sub5_Sub17 extends SubNode {
             int i = 87 / ((arg0 - 41) / 47);
             anInt2855++;
             return null;
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "vb.UA(" + arg0 + ')');
         }
     }

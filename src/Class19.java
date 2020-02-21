@@ -12,8 +12,7 @@ public class Class19 {
     public static Class27 aClass27_485 = new Class27();
     public static int anInt487 = 0;
     public static Class6 aClass6_488;
-    public static RSString aClass1_489
-            = Class58.method978("Public chat");
+    public static RSString aClass1_489 = Class58.method978("Public chat");
     public static boolean aBoolean490 = false;
     public static byte[][][] aByteArrayArrayArray492;
     public static int anInt493 = 0;
@@ -44,25 +43,21 @@ public class Class19 {
         anInt469 = 0;
     }
 
-    public static RSString method279(byte[] arg0, boolean arg1, int arg2,
-                                     int arg3) {
+    public static RSString method279(byte[] arg0, boolean arg1, int arg2, int arg3) {
         try {
             anInt467++;
             RSString class1 = new RSString();
             class1.anInt1680 = 0;
             class1.aByteArray1692 = new byte[arg3];
-            if (arg1 != true)
+            if(arg1 != true)
                 aClass1_495 = null;
-            for (int i = arg2; arg3 + arg2 > i; i++) {
-                if ((arg0[i] ^ 0xffffffff) != -1)
+            for(int i = arg2; arg3 + arg2 > i; i++) {
+                if((arg0[i] ^ 0xffffffff) != -1)
                     class1.aByteArray1692[class1.anInt1680++] = arg0[i];
             }
             return class1;
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("g.B(" + (arg0 != null ? "{...}" : "null")
-                            + ',' + arg1 + ',' + arg2 + ',' + arg3
-                            + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("g.B(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
         }
     }
 
@@ -76,11 +71,11 @@ public class Class19 {
             aByteArrayArrayArray492 = null;
             aClass9_470 = null;
             aClass1_478 = null;
-            if (arg0 != true)
+            if(arg0 != true)
                 method280(false);
             anIntArray483 = null;
             aClass6_488 = null;
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "g.A(" + arg0 + ')');
         }
     }

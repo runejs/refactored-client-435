@@ -17,13 +17,13 @@ public class MapDecompressor {
     public static Map<Integer, byte[]> mapBuffer = new HashMap<Integer, byte[]>();
 
     public static byte[] grabMap(int id) throws IOException {
-        if (mapIndices == null)
+        if(mapIndices == null)
             loadIndex2();
-        if (mapBuffer.get(id) == null) {
+        if(mapBuffer.get(id) == null) {
             RandomAccessFile raf_cache = new RandomAccessFile("./data/maps/MAP_CACHE.dat", "rw");
             RandomAccessFile raf_index = new RandomAccessFile("./data/maps/MAP_CACHE.idx", "rw");
             int pos = getIndexPosition(id);
-            if (pos == -1)
+            if(pos == -1)
                 return null;
             raf_index.seek(pos * 12);
             raf_cache.seek(raf_index.readInt());
@@ -39,14 +39,14 @@ public class MapDecompressor {
     public static void loadIndex2() throws IOException {
         mapIndices = new ArrayList<Integer>();
         DataInputStream dis = new DataInputStream(new FileInputStream("./data/maps/MAP_CACHE.idx2"));
-        for (int i = 0; i < (int) new File("./data/maps/MAP_CACHE.idx2").length() / 2; i++)
+        for(int i = 0; i < (int) new File("./data/maps/MAP_CACHE.idx2").length() / 2; i++)
             mapIndices.add((int) dis.readShort());
     }
 
     public static int getIndexPosition(int id) throws IOException {
-        if (mapIndices.contains(id))
-            for (int i = 0; i < mapIndices.size(); i++)
-                if (mapIndices.get(i) == id)
+        if(mapIndices.contains(id))
+            for(int i = 0; i < mapIndices.size(); i++)
+                if(mapIndices.get(i) == id)
                     return i;
         return -1;
     }
@@ -63,17 +63,17 @@ public class MapDecompressor {
     public static void objectLoader(String file) {
         try {
             RandomAccessFile in = new RandomAccessFile(file, "r");
-//			RandomAccessFile out = new RandomAccessFile(Signlink.findCacheDirectory()+ "maps/test.cmap", "rw");
+            //			RandomAccessFile out = new RandomAccessFile(Signlink.findCacheDirectory()+ "maps/test.cmap", "rw");
             int totalObjects = in.readInt();
-//			out.writeInt(totalObjects);
-            for (int index = 0; index < totalObjects; index++) {
-//				String data = in.readUTF();
-//				int objectId = Integer.parseInt(data.substring(data.indexOf("i:")+3, data.indexOf("x")-1));
-//				int x = Integer.parseInt(data.substring(data.indexOf("x:")+3, data.indexOf("y")-1));
-//				int y = Integer.parseInt(data.substring(data.indexOf("y:")+3, data.indexOf("z")-1));
-//				int objectPlane = Integer.parseInt(data.substring(data.indexOf("z:")+3, data.indexOf("d")-1));
-//				int direction = Integer.parseInt(data.substring(data.indexOf("d:")+3, data.indexOf("t")-1));
-//				int type = Integer.parseInt(data.substring(data.indexOf("t:")+3));
+            //			out.writeInt(totalObjects);
+            for(int index = 0; index < totalObjects; index++) {
+                //				String data = in.readUTF();
+                //				int objectId = Integer.parseInt(data.substring(data.indexOf("i:")+3, data.indexOf("x")-1));
+                //				int x = Integer.parseInt(data.substring(data.indexOf("x:")+3, data.indexOf("y")-1));
+                //				int y = Integer.parseInt(data.substring(data.indexOf("y:")+3, data.indexOf("z")-1));
+                //				int objectPlane = Integer.parseInt(data.substring(data.indexOf("z:")+3, data.indexOf("d")-1));
+                //				int direction = Integer.parseInt(data.substring(data.indexOf("d:")+3, data.indexOf("t")-1));
+                //				int type = Integer.parseInt(data.substring(data.indexOf("t:")+3));
 
                 int objectId = in.readShort();
                 int x = in.readShort();
@@ -83,18 +83,18 @@ public class MapDecompressor {
                 int type = in.read();
 
 
-                if (objectId != -1) {
-//					out.writeShort(objectId);
-//					out.writeShort(x);
-//					out.writeShort(y);
-//					out.write(objectPlane);
-//					out.write(direction);
-//					out.write(type);
+                if(objectId != -1) {
+                    //					out.writeShort(objectId);
+                    //					out.writeShort(x);
+                    //					out.writeShort(y);
+                    //					out.write(objectPlane);
+                    //					out.write(direction);
+                    //					out.write(type);
                     spawnObject(objectId, x, y, objectPlane, direction, type);
                     //System.out.println("objectLoader second method called.");
                 }
             }
-        } catch (Exception e) {
+        } catch(Exception e) {
         }
 
     }
@@ -115,17 +115,17 @@ public class MapDecompressor {
         int localX = x - Class40_Sub5_Sub2.anInt2307;
         int localY = y - Class26.anInt635; // ??? is this correct?
         int plane = z;
-        if (localX > -1 && localY > -1) {
-            if ((Floor.aByteArrayArrayArray2323[1][localY][localX] & 2) == 2) {
+        if(localX > -1 && localY > -1) {
+            if((Floor.aByteArrayArrayArray2323[1][localY][localX] & 2) == 2) {
                 plane--;
             }
         }
 
         Class3 class20 = null;
-        if (plane >= 0) {
+        if(plane >= 0) {
             class20 = groundData[plane];
         }
-        if (~localY < -1 && ~localX < -1 && ~localY > -104 && ~localX > -104) {
+        if(~localY < -1 && ~localX < -1 && ~localY > -104 && ~localX > -104) {
             Class40_Sub5_Sub17_Sub1.method767(objectId, type, rotation, z, NPC.aClass2_3301, -18, localY, localX, class20);
         }
     }

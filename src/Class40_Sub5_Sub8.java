@@ -20,8 +20,7 @@ public class Class40_Sub5_Sub8 extends SubNode {
     public static int anInt2552;
     public static int anInt2554;
     public static int anInt2555;
-    public static RSString aClass1_2556
-            = Class58.method978("blaugr-Un:");
+    public static RSString aClass1_2556 = Class58.method978("blaugr-Un:");
     public static int anInt2557;
     public static int anInt2558;
     public static int anInt2559 = 0;
@@ -113,41 +112,28 @@ public class Class40_Sub5_Sub8 extends SubNode {
         anInt2517 = 128;
     }
 
-    public static void method602(Class6_Sub1 arg0, int arg1, Class56 arg2,
-                                 byte arg3) {
+    public static void method602(Class6_Sub1 arg0, int arg1, Class56 arg2, byte arg3) {
         try {
             anInt2529++;
             byte[] is = null;
-            synchronized (RSCanvas.aClass45_53) {
-                for (Class40_Sub6 class40_sub6
-                     = ((Class40_Sub6)
-                        RSCanvas.aClass45_53.method902((byte) -90));
-                     class40_sub6 != null;
-                     class40_sub6 = ((Class40_Sub6)
-                             RSCanvas.aClass45_53.method909(-4))) {
-                    if (((class40_sub6.key ^ 0xffffffffffffffffL)
-                            == ((long) arg1 ^ 0xffffffffffffffffL))
-                            && arg2 == class40_sub6.aClass56_2117
-                            && (class40_sub6.anInt2112 ^ 0xffffffff) == -1) {
+            synchronized(RSCanvas.aClass45_53) {
+                for(Class40_Sub6 class40_sub6 = ((Class40_Sub6) RSCanvas.aClass45_53.method902((byte) -90)); class40_sub6 != null; class40_sub6 = ((Class40_Sub6) RSCanvas.aClass45_53.method909(-4))) {
+                    if(((class40_sub6.key ^ 0xffffffffffffffffL) == ((long) arg1 ^ 0xffffffffffffffffL)) && arg2 == class40_sub6.aClass56_2117 && (class40_sub6.anInt2112 ^ 0xffffffff) == -1) {
                         is = class40_sub6.aByteArray2102;
                         break;
                     }
                 }
             }
-            if (is != null)
+            if(is != null)
                 arg0.method198((byte) -115, true, is, arg1, arg2);
             else {
-                if (arg3 > -91)
+                if(arg3 > -91)
                     anInt2557 = -20;
                 byte[] is_6_ = arg2.method969(arg1, (byte) 103);
                 arg0.method198((byte) -115, true, is_6_, arg1, arg2);
             }
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("ia.J(" + (arg0 != null ? "{...}" : "null")
-                            + ',' + arg1 + ','
-                            + (arg2 != null ? "{...}" : "null") + ','
-                            + arg3 + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("ia.J(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ')'));
         }
     }
 
@@ -157,37 +143,25 @@ public class Class40_Sub5_Sub8 extends SubNode {
             aClass1_2556 = null;
             aClass1_2560 = null;
             aClass1_2526 = null;
-            if (arg0 != true)
+            if(arg0 != true)
                 aClass1_2560 = null;
             aClass68_2524 = null;
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ia.D(" + arg0 + ')');
         }
     }
 
-    public static void method609(int arg0, boolean arg1, int arg2, int arg3,
-                                 int arg4, int arg5, int arg6, int arg7,
-                                 int arg8, int arg9) {
+    public static void method609(int arg0, boolean arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
         try {
             Class40_Sub3 class40_sub3 = null;
             anInt2552++;
-            for (Class40_Sub3 class40_sub3_24_
-                 = ((Class40_Sub3)
-                    Class45.aClass45_1064.method902((byte) -90));
-                 class40_sub3_24_ != null;
-                 class40_sub3_24_
-                         = (Class40_Sub3) Class45.aClass45_1064.method909(-4)) {
-                if (class40_sub3_24_.anInt2018 == arg5
-                        && arg2 == class40_sub3_24_.anInt2039
-                        && (arg6 ^ 0xffffffff) == (class40_sub3_24_.anInt2038
-                        ^ 0xffffffff)
-                        && (arg7 ^ 0xffffffff) == (class40_sub3_24_.anInt2027
-                        ^ 0xffffffff)) {
+            for(Class40_Sub3 class40_sub3_24_ = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3_24_ != null; class40_sub3_24_ = (Class40_Sub3) Class45.aClass45_1064.method909(-4)) {
+                if(class40_sub3_24_.anInt2018 == arg5 && arg2 == class40_sub3_24_.anInt2039 && (arg6 ^ 0xffffffff) == (class40_sub3_24_.anInt2038 ^ 0xffffffff) && (arg7 ^ 0xffffffff) == (class40_sub3_24_.anInt2027 ^ 0xffffffff)) {
                     class40_sub3 = class40_sub3_24_;
                     break;
                 }
             }
-            if (class40_sub3 == null) {
+            if(class40_sub3 == null) {
                 class40_sub3 = new Class40_Sub3();
                 class40_sub3.anInt2039 = arg2;
                 class40_sub3.anInt2027 = arg7;
@@ -199,51 +173,37 @@ public class Class40_Sub5_Sub8 extends SubNode {
             class40_sub3.anInt2017 = arg0;
             class40_sub3.anInt2031 = arg4;
             class40_sub3.anInt2033 = arg9;
-            if (arg1 != true)
+            if(arg1 != true)
                 method602(null, 77, null, (byte) -89);
             class40_sub3.anInt2035 = arg3;
             class40_sub3.anInt2030 = arg8;
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("ia.L(" + arg0 + ',' + arg1 + ',' + arg2
-                            + ',' + arg3 + ',' + arg4 + ',' + arg5
-                            + ',' + arg6 + ',' + arg7 + ',' + arg8
-                            + ',' + arg9 + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("ia.L(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ',' + arg7 + ',' + arg8 + ',' + arg9 + ')'));
         }
     }
 
-    public Model method600(int arg0, int arg1, int arg2,
-                           int arg3, int arg4, byte arg5,
-                           int arg6) {
+    public Model method600(int arg0, int arg1, int arg2, int arg3, int arg4, byte arg5, int arg6) {
         try {
             anInt2539++;
             long l;
-            if (anIntArray2522 == null)
+            if(anIntArray2522 == null)
                 l = (long) ((anInt2538 << 1723242090) - -arg2);
             else
-                l = (long) (arg2 + ((anInt2538 << -855239862)
-                        + (arg4 << 399635491)));
-            if (arg5 != 124)
+                l = (long) (arg2 + ((anInt2538 << -855239862) + (arg4 << 399635491)));
+            if(arg5 != 124)
                 aClass1Array2508 = null;
-            Model class40_sub5_sub17_sub5
-                    = ((Model)
-                    Class19.aClass9_470.method231(l, (byte) 87));
-            if (class40_sub5_sub17_sub5 == null) {
-                class40_sub5_sub17_sub5
-                        = method606(!aBoolean2520, (byte) -61, false, arg2, arg4);
-                if (class40_sub5_sub17_sub5 == null)
+            Model class40_sub5_sub17_sub5 = ((Model) Class19.aClass9_470.method231(l, (byte) 87));
+            if(class40_sub5_sub17_sub5 == null) {
+                class40_sub5_sub17_sub5 = method606(!aBoolean2520, (byte) -61, false, arg2, arg4);
+                if(class40_sub5_sub17_sub5 == null)
                     return null;
-                Class19.aClass9_470.method230(-7208, l,
-                        class40_sub5_sub17_sub5);
+                Class19.aClass9_470.method230(-7208, l, class40_sub5_sub17_sub5);
             }
-            if (aBoolean2530 || aBoolean2520)
-                class40_sub5_sub17_sub5
-                        = new Model(class40_sub5_sub17_sub5,
-                        aBoolean2530, aBoolean2520);
-            if (aBoolean2530) {
+            if(aBoolean2530 || aBoolean2520)
+                class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5, aBoolean2530, aBoolean2520);
+            if(aBoolean2530) {
                 int i = (arg0 + arg6 + (arg3 + arg1)) / 4;
-                for (int i_0_ = 0; class40_sub5_sub17_sub5.anInt3167 > i_0_;
-                     i_0_++) {
+                for(int i_0_ = 0; class40_sub5_sub17_sub5.anInt3167 > i_0_; i_0_++) {
                     int i_1_ = class40_sub5_sub17_sub5.anIntArray3188[i_0_];
                     int i_2_ = class40_sub5_sub17_sub5.anIntArray3162[i_0_];
                     int i_3_ = arg3 - -((64 + i_1_) * (arg6 + -arg3) / 128);
@@ -253,396 +213,287 @@ public class Class40_Sub5_Sub8 extends SubNode {
                 }
             }
             return class40_sub5_sub17_sub5;
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("ia.C(" + arg0 + ',' + arg1 + ',' + arg2
-                            + ',' + arg3 + ',' + arg4 + ',' + arg5
-                            + ',' + arg6 + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("ia.C(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ')'));
         }
     }
 
     public boolean method601(byte arg0) {
         try {
             anInt2551++;
-            if (anIntArray2534 == null) {
+            if(anIntArray2534 == null) {
                 return (anInt2513 ^ 0xffffffff) != 0 || anIntArray2523 != null;
             }
-            if (arg0 != 125)
+            if(arg0 != 125)
                 anInt2548 = -89;
-            for (int i = 0; i < anIntArray2534.length; i++) {
-                if ((anIntArray2534[i] ^ 0xffffffff) != 0) {
-                    Class40_Sub5_Sub8 class40_sub5_sub8
-                            = Class40_Sub4.method535(anIntArray2534[i],
-                            (byte) 123);
-                    if ((class40_sub5_sub8.anInt2513 ^ 0xffffffff) != 0
-                            || class40_sub5_sub8.anIntArray2523 != null)
+            for(int i = 0; i < anIntArray2534.length; i++) {
+                if((anIntArray2534[i] ^ 0xffffffff) != 0) {
+                    Class40_Sub5_Sub8 class40_sub5_sub8 = Class40_Sub4.method535(anIntArray2534[i], (byte) 123);
+                    if((class40_sub5_sub8.anInt2513 ^ 0xffffffff) != 0 || class40_sub5_sub8.anIntArray2523 != null)
                         return true;
                 }
             }
             return false;
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ia.F(" + arg0 + ')');
         }
     }
 
     public void method603(Buffer arg0, int arg1) {
         anInt2554++;
-        for (; ; ) {
+        for(; ; ) {
             int i = arg0.method468(false);
-            if ((i ^ 0xffffffff) == -1)
+            if((i ^ 0xffffffff) == -1)
                 break;
             method608(arg0, -1663, i);
         }
-        if (arg1 > -46)
+        if(arg1 > -46)
             anInt2505 = -102;
     }
 
     public void method605(boolean arg0) {
-        if ((anInt2546 ^ 0xffffffff) == 0) {
+        if((anInt2546 ^ 0xffffffff) == 0) {
             anInt2546 = 0;
-            if (anIntArray2525 != null
-                    && (anIntArray2522 == null
-                    || (anIntArray2522[0] ^ 0xffffffff) == -11))
+            if(anIntArray2525 != null && (anIntArray2522 == null || (anIntArray2522[0] ^ 0xffffffff) == -11))
                 anInt2546 = 1;
-            for (int i = 0; (i ^ 0xffffffff) > -6; i++) {
-                if (aClass1Array2508[i] != null)
+            for(int i = 0; (i ^ 0xffffffff) > -6; i++) {
+                if(aClass1Array2508[i] != null)
                     anInt2546 = 1;
             }
         }
-        if ((anInt2533 ^ 0xffffffff) == 0)
+        if((anInt2533 ^ 0xffffffff) == 0)
             anInt2533 = aBoolean2501 ? 1 : 0;
         anInt2509++;
-        if (arg0 != true)
+        if(arg0 != true)
             method603(null, -36);
     }
 
-    public Model method606
-            (boolean arg0, byte arg1, boolean arg2, int arg3, int arg4) {
+    public Model method606(boolean arg0, byte arg1, boolean arg2, int arg3, int arg4) {
         try {
             anInt2498++;
             Model class40_sub5_sub17_sub5 = null;
-            if (anIntArray2522 == null) {
-                if (arg4 != 10)
+            if(anIntArray2522 == null) {
+                if(arg4 != 10)
                     return null;
-                if (anIntArray2525 == null)
+                if(anIntArray2525 == null)
                     return null;
                 boolean bool = arg3 > 3 ^ aBoolean2553;
                 int i = anIntArray2525.length;
-                for (int i_7_ = 0; i > i_7_; i_7_++) {
+                for(int i_7_ = 0; i > i_7_; i_7_++) {
                     int i_8_ = anIntArray2525[i_7_];
-                    if (bool)
+                    if(bool)
                         i_8_ += 65536;
-                    class40_sub5_sub17_sub5
-                            = ((Model)
-                            Class46.aClass9_1102.method231((long) i_8_,
-                                    (byte) 122));
-                    if (class40_sub5_sub17_sub5 == null) {
-                        class40_sub5_sub17_sub5
-                                = (Model.method830
-                                (RSString.aClass6_1705, i_8_ & 0xffff, 0));
-                        if (class40_sub5_sub17_sub5 == null)
+                    class40_sub5_sub17_sub5 = ((Model) Class46.aClass9_1102.method231((long) i_8_, (byte) 122));
+                    if(class40_sub5_sub17_sub5 == null) {
+                        class40_sub5_sub17_sub5 = (Model.method830(RSString.aClass6_1705, i_8_ & 0xffff, 0));
+                        if(class40_sub5_sub17_sub5 == null)
                             return null;
-                        if (bool)
+                        if(bool)
                             class40_sub5_sub17_sub5.method818();
-                        Class46.aClass9_1102.method230
-                                (-7208, (long) i_8_, class40_sub5_sub17_sub5);
+                        Class46.aClass9_1102.method230(-7208, (long) i_8_, class40_sub5_sub17_sub5);
                     }
-                    if (i > 1)
-                        Class40_Sub5_Sub13
-                                .aClass40_Sub5_Sub17_Sub5Array2762[i_7_]
-                                = class40_sub5_sub17_sub5;
+                    if(i > 1)
+                        Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub5Array2762[i_7_] = class40_sub5_sub17_sub5;
                 }
-                if ((i ^ 0xffffffff) < -2)
-                    class40_sub5_sub17_sub5
-                            = (new Model
-                            ((Class40_Sub5_Sub13
-                                    .aClass40_Sub5_Sub17_Sub5Array2762),
-                                    i));
+                if((i ^ 0xffffffff) < -2)
+                    class40_sub5_sub17_sub5 = (new Model((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub5Array2762), i));
             } else {
                 int i = -1;
-                for (int i_9_ = 0; ((anIntArray2522.length ^ 0xffffffff)
-                        < (i_9_ ^ 0xffffffff)); i_9_++) {
-                    if (arg4 == anIntArray2522[i_9_]) {
+                for(int i_9_ = 0; ((anIntArray2522.length ^ 0xffffffff) < (i_9_ ^ 0xffffffff)); i_9_++) {
+                    if(arg4 == anIntArray2522[i_9_]) {
                         i = i_9_;
                         break;
                     }
                 }
-                if (i == -1)
+                if(i == -1)
                     return null;
                 int i_10_ = anIntArray2525[i];
                 boolean bool = aBoolean2553 ^ arg3 > 3;
-                if (bool)
+                if(bool)
                     i_10_ += 65536;
-                class40_sub5_sub17_sub5
-                        = ((Model)
-                        Class46.aClass9_1102.method231((long) i_10_,
-                                (byte) 48));
-                if (class40_sub5_sub17_sub5 == null) {
-                    class40_sub5_sub17_sub5
-                            = Model.method830((RSString
-                                    .aClass6_1705),
-                            0xffff & i_10_, 0);
-                    if (class40_sub5_sub17_sub5 == null)
+                class40_sub5_sub17_sub5 = ((Model) Class46.aClass9_1102.method231((long) i_10_, (byte) 48));
+                if(class40_sub5_sub17_sub5 == null) {
+                    class40_sub5_sub17_sub5 = Model.method830((RSString.aClass6_1705), 0xffff & i_10_, 0);
+                    if(class40_sub5_sub17_sub5 == null)
                         return null;
-                    if (bool)
+                    if(bool)
                         class40_sub5_sub17_sub5.method818();
-                    Class46.aClass9_1102.method230(-7208, (long) i_10_,
-                            class40_sub5_sub17_sub5);
+                    Class46.aClass9_1102.method230(-7208, (long) i_10_, class40_sub5_sub17_sub5);
                 }
             }
             boolean bool;
             bool = anInt2507 != 128 || anInt2540 != 128 || anInt2517 != 128;
             boolean bool_11_;
-            bool_11_ = (anInt2500 ^ 0xffffffff) != -1 || anInt2519 != 0
-                    || anInt2504 != 0;
-            Model class40_sub5_sub17_sub5_12_
-                    = new Model(class40_sub5_sub17_sub5,
-                    arg3 == 0 && !bool && !bool_11_,
-                    anIntArray2516 == null, true);
+            bool_11_ = (anInt2500 ^ 0xffffffff) != -1 || anInt2519 != 0 || anInt2504 != 0;
+            Model class40_sub5_sub17_sub5_12_ = new Model(class40_sub5_sub17_sub5, arg3 == 0 && !bool && !bool_11_, anIntArray2516 == null, true);
             arg3 &= 0x3;
-            if ((arg3 ^ 0xffffffff) != -2) {
-                if ((arg3 ^ 0xffffffff) != -3) {
-                    if (arg3 == 3)
+            if((arg3 ^ 0xffffffff) != -2) {
+                if((arg3 ^ 0xffffffff) != -3) {
+                    if(arg3 == 3)
                         class40_sub5_sub17_sub5_12_.method824();
                 } else
                     class40_sub5_sub17_sub5_12_.method819();
             } else
                 class40_sub5_sub17_sub5_12_.method813();
-            if (anIntArray2516 != null) {
-                for (int i = 0; i < anIntArray2516.length; i++)
-                    class40_sub5_sub17_sub5_12_.method803(anIntArray2516[i],
-                            anIntArray2510[i]);
+            if(anIntArray2516 != null) {
+                for(int i = 0; i < anIntArray2516.length; i++)
+                    class40_sub5_sub17_sub5_12_.method803(anIntArray2516[i], anIntArray2510[i]);
             }
             int i = -128 % ((53 - arg1) / 35);
-            if (bool)
-                class40_sub5_sub17_sub5_12_.method821(anInt2507, anInt2540,
-                        anInt2517);
-            if (bool_11_)
-                class40_sub5_sub17_sub5_12_.method828(anInt2500, anInt2519,
-                        anInt2504);
-            if (arg2)
+            if(bool)
+                class40_sub5_sub17_sub5_12_.method821(anInt2507, anInt2540, anInt2517);
+            if(bool_11_)
+                class40_sub5_sub17_sub5_12_.method828(anInt2500, anInt2519, anInt2504);
+            if(arg2)
                 class40_sub5_sub17_sub5_12_.method810();
-            class40_sub5_sub17_sub5_12_.method802(anInt2527 + 64,
-                    768 - -(anInt2544 * 5), -50,
-                    -10, -50, arg0);
+            class40_sub5_sub17_sub5_12_.method802(anInt2527 + 64, 768 - -(anInt2544 * 5), -50, -10, -50, arg0);
             return class40_sub5_sub17_sub5_12_;
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("ia.E(" + arg0 + ',' + arg1 + ',' + arg2
-                            + ',' + arg3 + ',' + arg4 + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("ia.E(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ')'));
         }
     }
 
-    public Model method607
-            (int arg0, int arg1, int arg2, int arg3, int arg4, int arg5,
-             Class40_Sub5_Sub7 arg6, int arg7, int arg8) {
+    public Model method607(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, Class40_Sub5_Sub7 arg6, int arg7, int arg8) {
         try {
             anInt2531++;
             long l;
-            if (anIntArray2522 == null)
+            if(anIntArray2522 == null)
                 l = (long) (arg5 + (anInt2538 << 554173066));
             else
-                l = (long) (arg5 + ((anInt2538 << 1528233034)
-                        + (arg4 << 272341539)));
-            Model class40_sub5_sub17_sub5
-                    = ((Model)
-                    Class49.aClass9_1145.method231(l, (byte) 70));
-            if (class40_sub5_sub17_sub5 == null) {
-                class40_sub5_sub17_sub5
-                        = method606(true, (byte) -25, true, arg5, arg4);
-                if (class40_sub5_sub17_sub5 == null)
+                l = (long) (arg5 + ((anInt2538 << 1528233034) + (arg4 << 272341539)));
+            Model class40_sub5_sub17_sub5 = ((Model) Class49.aClass9_1145.method231(l, (byte) 70));
+            if(class40_sub5_sub17_sub5 == null) {
+                class40_sub5_sub17_sub5 = method606(true, (byte) -25, true, arg5, arg4);
+                if(class40_sub5_sub17_sub5 == null)
                     return null;
-                Class49.aClass9_1145.method230(-7208, l,
-                        class40_sub5_sub17_sub5);
+                Class49.aClass9_1145.method230(-7208, l, class40_sub5_sub17_sub5);
             }
-            if (arg6 == null && !aBoolean2530)
+            if(arg6 == null && !aBoolean2530)
                 return class40_sub5_sub17_sub5;
-            if (arg6 != null)
-                class40_sub5_sub17_sub5
-                        = arg6.method593(arg3, false, class40_sub5_sub17_sub5,
-                        arg5);
+            if(arg6 != null)
+                class40_sub5_sub17_sub5 = arg6.method593(arg3, false, class40_sub5_sub17_sub5, arg5);
             else
-                class40_sub5_sub17_sub5
-                        = class40_sub5_sub17_sub5.method817(true);
-            if (arg1 < 54)
+                class40_sub5_sub17_sub5 = class40_sub5_sub17_sub5.method817(true);
+            if(arg1 < 54)
                 return null;
-            if (aBoolean2530) {
+            if(aBoolean2530) {
                 int i = (arg2 + arg0 - (-arg8 + -arg7)) / 4;
-                for (int i_13_ = 0;
-                     ((i_13_ ^ 0xffffffff)
-                             > (class40_sub5_sub17_sub5.anInt3167 ^ 0xffffffff));
-                     i_13_++) {
+                for(int i_13_ = 0; ((i_13_ ^ 0xffffffff) > (class40_sub5_sub17_sub5.anInt3167 ^ 0xffffffff)); i_13_++) {
                     int i_14_ = class40_sub5_sub17_sub5.anIntArray3162[i_13_];
                     int i_15_ = class40_sub5_sub17_sub5.anIntArray3188[i_13_];
                     int i_16_ = arg0 + (64 + i_15_) * (arg2 - arg0) / 128;
                     int i_17_ = arg7 + (64 + i_15_) * (arg8 + -arg7) / 128;
                     int i_18_ = i_16_ + (i_14_ - -64) * (-i_16_ + i_17_) / 128;
-                    class40_sub5_sub17_sub5.anIntArray3187[i_13_]
-                            += -i + i_18_;
+                    class40_sub5_sub17_sub5.anIntArray3187[i_13_] += -i + i_18_;
                 }
             }
             return class40_sub5_sub17_sub5;
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("ia.M(" + arg0 + ',' + arg1 + ',' + arg2
-                            + ',' + arg3 + ',' + arg4 + ',' + arg5
-                            + ',' + (arg6 != null ? "{...}" : "null")
-                            + ',' + arg7 + ',' + arg8 + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("ia.M(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + (arg6 != null ? "{...}" : "null") + ',' + arg7 + ',' + arg8 + ')'));
         }
     }
 
     public void method608(Buffer arg0, int arg1, int arg2) {
-        if ((arg2 ^ 0xffffffff) != -2) {
-            if (arg2 == 2)
+        if((arg2 ^ 0xffffffff) != -2) {
+            if(arg2 == 2)
                 aClass1_2549 = arg0.getRSString(-10721);
-            else if (arg2 != 5) {
-                if ((arg2 ^ 0xffffffff) == -15)
+            else if(arg2 != 5) {
+                if((arg2 ^ 0xffffffff) == -15)
                     anInt2503 = arg0.method468(false);
-                else if ((arg2 ^ 0xffffffff) != -16) {
-                    if (arg2 != 17) {
-                        if (arg2 != 18) {
-                            if ((arg2 ^ 0xffffffff) != -20) {
-                                if (arg2 == 21)
+                else if((arg2 ^ 0xffffffff) != -16) {
+                    if(arg2 != 17) {
+                        if(arg2 != 18) {
+                            if((arg2 ^ 0xffffffff) != -20) {
+                                if(arg2 == 21)
                                     aBoolean2530 = true;
-                                else if (arg2 != 22) {
-                                    if ((arg2 ^ 0xffffffff) != -24) {
-                                        if (arg2 != 24) {
-                                            if ((arg2 ^ 0xffffffff) == -29)
-                                                anInt2505
-                                                        = arg0.method468(false);
-                                            else if ((arg2 ^ 0xffffffff)
-                                                    == -30)
+                                else if(arg2 != 22) {
+                                    if((arg2 ^ 0xffffffff) != -24) {
+                                        if(arg2 != 24) {
+                                            if((arg2 ^ 0xffffffff) == -29)
+                                                anInt2505 = arg0.method468(false);
+                                            else if((arg2 ^ 0xffffffff) == -30)
                                                 anInt2527 = arg0.get(84);
-                                            else if ((arg2 ^ 0xffffffff)
-                                                    == -40)
-                                                anInt2544
-                                                        = 5 * arg0.get(103);
-                                            else if ((arg2 ^ 0xffffffff) <= -31
-                                                    && arg2 < 35) {
-                                                aClass1Array2508[arg2 - 30]
-                                                        = arg0.getRSString(-10721);
-                                                if (aClass1Array2508
-                                                        [arg2 + -30].method63
-                                                        (Class59.aClass1_1396,
-                                                                true))
-                                                    aClass1Array2508[(arg2
-                                                            + -30)]
-                                                            = null;
-                                            } else if (arg2 != 40) {
-                                                if ((arg2 ^ 0xffffffff) == -61)
-                                                    anInt2511 = (arg0.method469
-                                                            (65280));
-                                                else if ((arg2 ^ 0xffffffff)
-                                                        == -63)
+                                            else if((arg2 ^ 0xffffffff) == -40)
+                                                anInt2544 = 5 * arg0.get(103);
+                                            else if((arg2 ^ 0xffffffff) <= -31 && arg2 < 35) {
+                                                aClass1Array2508[arg2 - 30] = arg0.getRSString(-10721);
+                                                if(aClass1Array2508[arg2 + -30].method63(Class59.aClass1_1396, true))
+                                                    aClass1Array2508[(arg2 + -30)] = null;
+                                            } else if(arg2 != 40) {
+                                                if((arg2 ^ 0xffffffff) == -61)
+                                                    anInt2511 = (arg0.method469(65280));
+                                                else if((arg2 ^ 0xffffffff) == -63)
                                                     aBoolean2553 = true;
-                                                else if (arg2 != 64) {
-                                                    if ((arg2 ^ 0xffffffff)
-                                                            == -66)
-                                                        anInt2507
-                                                                = (arg0.method469
-                                                                (65280));
-                                                    else if ((arg2
-                                                            ^ 0xffffffff)
-                                                            == -67)
-                                                        anInt2540
-                                                                = (arg0.method469
-                                                                (arg1
-                                                                        ^ ~0xf97e));
-                                                    else if (arg2 != 67) {
-                                                        if (arg2 != 68) {
-                                                            if ((arg2
-                                                                    ^ 0xffffffff)
-                                                                    != -70) {
-                                                                if (arg2 == 70)
-                                                                    anInt2500
-                                                                            = (arg0.method463
-                                                                            ((byte) -126));
-                                                                else if ((arg2
-                                                                        ^ 0xffffffff)
-                                                                        == -72)
-                                                                    anInt2519
-                                                                            = (arg0.method463
-                                                                            ((byte) -116));
-                                                                else if (arg2
-                                                                        == 72)
-                                                                    anInt2504
-                                                                            = (arg0.method463
-                                                                            ((byte) -106));
-                                                                else if (arg2
-                                                                        != 73) {
-                                                                    if ((arg2
-                                                                            ^ 0xffffffff)
-                                                                            != -75) {
-                                                                        if (arg2
-                                                                                == 75)
+                                                else if(arg2 != 64) {
+                                                    if((arg2 ^ 0xffffffff) == -66)
+                                                        anInt2507 = (arg0.method469(65280));
+                                                    else if((arg2 ^ 0xffffffff) == -67)
+                                                        anInt2540 = (arg0.method469(arg1 ^ ~0xf97e));
+                                                    else if(arg2 != 67) {
+                                                        if(arg2 != 68) {
+                                                            if((arg2 ^ 0xffffffff) != -70) {
+                                                                if(arg2 == 70)
+                                                                    anInt2500 = (arg0.method463((byte) -126));
+                                                                else if((arg2 ^ 0xffffffff) == -72)
+                                                                    anInt2519 = (arg0.method463((byte) -116));
+                                                                else if(arg2 == 72)
+                                                                    anInt2504 = (arg0.method463((byte) -106));
+                                                                else if(arg2 != 73) {
+                                                                    if((arg2 ^ 0xffffffff) != -75) {
+                                                                        if(arg2 == 75)
                                                                             anInt2533 = arg0.method468(false);
-                                                                        else if (arg2 != 77) {
-                                                                            if (arg2 == 78) {
+                                                                        else if(arg2 != 77) {
+                                                                            if(arg2 == 78) {
                                                                                 anInt2513 = arg0.method469(65280);
                                                                                 anInt2502 = arg0.method468(false);
-                                                                            } else if ((arg2 ^ 0xffffffff) == -80) {
+                                                                            } else if((arg2 ^ 0xffffffff) == -80) {
                                                                                 anInt2499 = arg0.method469(65280);
                                                                                 anInt2542 = arg0.method469(65280);
                                                                                 anInt2502 = arg0.method468(false);
                                                                                 int i = arg0.method468(false);
                                                                                 anIntArray2523 = new int[i];
-                                                                                for (int i_19_ = 0; i > i_19_; i_19_++)
+                                                                                for(int i_19_ = 0; i > i_19_; i_19_++)
                                                                                     anIntArray2523[i_19_] = arg0.method469(65280);
                                                                             }
                                                                         } else {
                                                                             anInt2548 = arg0.method469(arg1 + 66943);
-                                                                            if (anInt2548 == 65535)
+                                                                            if(anInt2548 == 65535)
                                                                                 anInt2548 = -1;
                                                                             anInt2536 = arg0.method469(65280);
-                                                                            if ((anInt2536 ^ 0xffffffff) == -65536)
+                                                                            if((anInt2536 ^ 0xffffffff) == -65536)
                                                                                 anInt2536 = -1;
                                                                             int i = arg0.method468(false);
                                                                             anIntArray2534 = new int[1 + i];
-                                                                            for (int i_20_ = 0; (i ^ 0xffffffff) <= (i_20_ ^ 0xffffffff); i_20_++) {
+                                                                            for(int i_20_ = 0; (i ^ 0xffffffff) <= (i_20_ ^ 0xffffffff); i_20_++) {
                                                                                 anIntArray2534[i_20_] = arg0.method469(65280);
-                                                                                if ((anIntArray2534[i_20_] ^ 0xffffffff) == -65536)
+                                                                                if((anIntArray2534[i_20_] ^ 0xffffffff) == -65536)
                                                                                     anIntArray2534[i_20_] = -1;
                                                                             }
                                                                         }
                                                                     } else
-                                                                        aBoolean2518
-                                                                                = true;
+                                                                        aBoolean2518 = true;
                                                                 } else
-                                                                    aBoolean2547
-                                                                            = true;
+                                                                    aBoolean2547 = true;
                                                             } else
-                                                                anInt2512
-                                                                        = (arg0.method468
-                                                                        (false));
+                                                                anInt2512 = (arg0.method468(false));
                                                         } else
-                                                            anInt2537
-                                                                    = (arg0.method469
-                                                                    (arg1
-                                                                            + 66943));
+                                                            anInt2537 = (arg0.method469(arg1 + 66943));
                                                     } else
-                                                        anInt2517
-                                                                = (arg0.method469
-                                                                (65280));
+                                                        anInt2517 = (arg0.method469(65280));
                                                 } else
                                                     aBoolean2541 = false;
                                             } else {
                                                 int i = arg0.method468(false);
                                                 anIntArray2516 = new int[i];
                                                 anIntArray2510 = new int[i];
-                                                for (int i_21_ = 0; i_21_ < i;
-                                                     i_21_++) {
-                                                    anIntArray2516[i_21_]
-                                                            = (arg0.method469
-                                                            (65280));
-                                                    anIntArray2510[i_21_]
-                                                            = (arg0.method469
-                                                            (65280));
+                                                for(int i_21_ = 0; i_21_ < i; i_21_++) {
+                                                    anIntArray2516[i_21_] = (arg0.method469(65280));
+                                                    anIntArray2510[i_21_] = (arg0.method469(65280));
                                                 }
                                             }
                                         } else {
                                             anInt2506 = arg0.method469(65280);
-                                            if ((anInt2506 ^ 0xffffffff)
-                                                    == -65536)
+                                            if((anInt2506 ^ 0xffffffff) == -65536)
                                                 anInt2506 = -1;
                                         }
                                     } else
@@ -659,27 +510,26 @@ public class Class40_Sub5_Sub8 extends SubNode {
                     anInt2515 = arg0.method468(false);
             } else {
                 int i = arg0.method468(false);
-                if (i > 0) {
-                    if (anIntArray2525 != null && !Class35.aBoolean1734)
+                if(i > 0) {
+                    if(anIntArray2525 != null && !Class35.aBoolean1734)
                         arg0.offset += 2 * i;
                     else {
                         anIntArray2522 = null;
                         anIntArray2525 = new int[i];
-                        for (int i_22_ = 0;
-                             (i ^ 0xffffffff) < (i_22_ ^ 0xffffffff); i_22_++)
+                        for(int i_22_ = 0; (i ^ 0xffffffff) < (i_22_ ^ 0xffffffff); i_22_++)
                             anIntArray2525[i_22_] = arg0.method469(65280);
                     }
                 }
             }
         } else {
             int i = arg0.method468(false);
-            if (i > 0) {
-                if (anIntArray2525 != null && !Class35.aBoolean1734)
+            if(i > 0) {
+                if(anIntArray2525 != null && !Class35.aBoolean1734)
                     arg0.offset += i * 3;
                 else {
                     anIntArray2522 = new int[i];
                     anIntArray2525 = new int[i];
-                    for (int i_23_ = 0; i > i_23_; i_23_++) {
+                    for(int i_23_ = 0; i > i_23_; i_23_++) {
                         anIntArray2525[i_23_] = arg0.method469(65280);
                         anIntArray2522[i_23_] = arg0.method468(false);
                     }
@@ -687,41 +537,32 @@ public class Class40_Sub5_Sub8 extends SubNode {
             }
         }
         anInt2555++;
-        if (arg1 != -1663)
+        if(arg1 != -1663)
             method601((byte) -112);
     }
 
     public boolean method610(int arg0, int arg1) {
         try {
-            if (arg1 != 7533)
+            if(arg1 != 7533)
                 anInt2543 = -28;
             anInt2532++;
-            if (anIntArray2522 != null) {
-                for (int i = 0;
-                     (i ^ 0xffffffff) > (anIntArray2522.length ^ 0xffffffff);
-                     i++) {
-                    if ((arg0 ^ 0xffffffff)
-                            == (anIntArray2522[i] ^ 0xffffffff))
-                        return RSString.aClass6_1705.method173((anIntArray2525[i]
-                                        & 0xffff),
-                                (byte) -10, 0);
+            if(anIntArray2522 != null) {
+                for(int i = 0; (i ^ 0xffffffff) > (anIntArray2522.length ^ 0xffffffff); i++) {
+                    if((arg0 ^ 0xffffffff) == (anIntArray2522[i] ^ 0xffffffff))
+                        return RSString.aClass6_1705.method173((anIntArray2525[i] & 0xffff), (byte) -10, 0);
                 }
                 return true;
             }
-            if (anIntArray2525 == null)
+            if(anIntArray2525 == null)
                 return true;
-            if ((arg0 ^ 0xffffffff) != -11)
+            if((arg0 ^ 0xffffffff) != -11)
                 return true;
             boolean bool = true;
-            for (int i = 0;
-                 (i ^ 0xffffffff) > (anIntArray2525.length ^ 0xffffffff); i++)
-                bool &= RSString.aClass6_1705.method173((0xffff
-                                & anIntArray2525[i]),
-                        (byte) -10, 0);
+            for(int i = 0; (i ^ 0xffffffff) > (anIntArray2525.length ^ 0xffffffff); i++)
+                bool &= RSString.aClass6_1705.method173((0xffff & anIntArray2525[i]), (byte) -10, 0);
             return bool;
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    "ia.A(" + arg0 + ',' + arg1 + ')');
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, "ia.A(" + arg0 + ',' + arg1 + ')');
         }
     }
 
@@ -729,17 +570,17 @@ public class Class40_Sub5_Sub8 extends SubNode {
         try {
             anInt2535++;
             int i = -1;
-            if (arg0 != -20)
+            if(arg0 != -20)
                 method606(true, (byte) -93, false, 40, -55);
-            if (anInt2548 == -1) {
-                if (anInt2536 != -1)
+            if(anInt2548 == -1) {
+                if(anInt2536 != -1)
                     i = Class58.varbitmasks[anInt2536];
             } else
                 i = Class40_Sub5_Sub6.method585(anInt2548, 1369);
-            if (i < 0 || anIntArray2534.length <= i || anIntArray2534[i] == -1)
+            if(i < 0 || anIntArray2534.length <= i || anIntArray2534[i] == -1)
                 return null;
             return Class40_Sub4.method535(anIntArray2534[i], (byte) 126);
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ia.K(" + arg0 + ')');
         }
     }
@@ -747,17 +588,14 @@ public class Class40_Sub5_Sub8 extends SubNode {
     public boolean method612(byte arg0) {
         try {
             anInt2514++;
-            if (anIntArray2525 == null)
+            if(anIntArray2525 == null)
                 return true;
             boolean bool = true;
-            for (int i = 0;
-                 (i ^ 0xffffffff) > (anIntArray2525.length ^ 0xffffffff); i++)
-                bool &= RSString.aClass6_1705.method173((0xffff
-                                & anIntArray2525[i]),
-                        (byte) -10, 0);
+            for(int i = 0; (i ^ 0xffffffff) > (anIntArray2525.length ^ 0xffffffff); i++)
+                bool &= RSString.aClass6_1705.method173((0xffff & anIntArray2525[i]), (byte) -10, 0);
             int i = -67 % ((-65 - arg0) / 50);
             return bool;
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ia.B(" + arg0 + ')');
         }
     }

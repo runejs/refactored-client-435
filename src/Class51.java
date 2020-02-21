@@ -33,8 +33,7 @@ public class Class51 {
     static {
         anInt1197 = 0;
         anInt1205 = -1;
-        aClass1_1201
-                = Class58.method978("Enter name of player to add to list");
+        aClass1_1201 = Class58.method978("Enter name of player to add to list");
         aClass1_1200 = aClass1_1201;
         aClass1_1207 = Class58.method978("Accept trade");
         aClass1_1208 = aClass1_1207;
@@ -48,14 +47,14 @@ public class Class51 {
     public static synchronized long method937(int arg0) {
         try {
             anInt1192++;
-            if (arg0 != 1)
+            if(arg0 != 1)
                 aClass68_1206 = null;
             long l = System.currentTimeMillis();
-            if (Class62.aLong1456 > l)
+            if(Class62.aLong1456 > l)
                 Class62.aLong1467 += Class62.aLong1456 + -l;
             Class62.aLong1456 = l;
             return l + Class62.aLong1467;
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ra.E(" + arg0 + ')');
         }
     }
@@ -63,17 +62,14 @@ public class Class51 {
     public static int method938(int arg0, KeyEvent arg1) {
         try {
             anInt1188++;
-            if (arg0 <= 86)
+            if(arg0 <= 86)
                 method940(-15, null, false, null);
             int i = arg1.getKeyChar();
-            if (i <= 0 || (i ^ 0xffffffff) <= -257)
+            if(i <= 0 || (i ^ 0xffffffff) <= -257)
                 i = -1;
             return i;
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("ra.D(" + arg0 + ','
-                            + (arg1 != null ? "{...}" : "null")
-                            + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("ra.D(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
         }
     }
 
@@ -92,26 +88,21 @@ public class Class51 {
             aClass1_1199 = null;
             int i = -41 / ((arg0 - 53) / 57);
             aClass1_1209 = null;
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ra.A(" + arg0 + ')');
         }
     }
 
-    public static void method940(int arg0, RSString arg1, boolean arg2,
-                                 RSString arg3) {
+    public static void method940(int arg0, RSString arg1, boolean arg2, RSString arg3) {
         try {
-            if (Class40_Sub5_Sub11.aBoolean2631) {
+            if(Class40_Sub5_Sub11.aBoolean2631) {
                 Class40_Sub5_Sub11.aBoolean2631 = false;
                 ItemDefinition.method742(205);
                 Class45.method908((byte) 114);
                 Class55.method964(40);
                 NpcDefinition.method574(4);
-                Class52.method943(ItemDefinition.anInt2797, -118,
-                        Class53.aClass40_Sub5_Sub14_Sub1_1268,
-                        Class4.anInt185, Class35.anInt1737);
-                Class40_Sub2.method527(Class5.anInt208, arg0 + 4,
-                        Class40_Sub5_Sub11.anIntArray2626,
-                        Class29.anInt673 == -1, -1);
+                Class52.method943(ItemDefinition.anInt2797, -118, Class53.aClass40_Sub5_Sub14_Sub1_1268, Class4.anInt185, Class35.anInt1737);
+                Class40_Sub2.method527(Class5.anInt208, arg0 + 4, Class40_Sub5_Sub11.anIntArray2626, Class29.anInt673 == -1, -1);
                 Class38.aBoolean893 = true;
                 Class40_Sub3.aBoolean2026 = true;
                 Class6.aBoolean260 = true;
@@ -119,56 +110,42 @@ public class Class51 {
             int i = 151;
             Class65.method1018((byte) -83);
             i -= 3;
-            Class53.aClass40_Sub5_Sub14_Sub1_1268.method686(arg1, 257, i,
-                    arg0);
-            Class53.aClass40_Sub5_Sub14_Sub1_1268.method686(arg1, 256, i + -1,
-                    16777215);
-            if (arg3 != null) {
+            Class53.aClass40_Sub5_Sub14_Sub1_1268.method686(arg1, 257, i, arg0);
+            Class53.aClass40_Sub5_Sub14_Sub1_1268.method686(arg1, 256, i + -1, 16777215);
+            if(arg3 != null) {
                 i += 15;
-                if (arg2) {
-                    int i_0_ = 4 + Class53.aClass40_Sub5_Sub14_Sub1_1268
-                            .method685(arg3);
-                    Rasterizer.method656(257 - i_0_ / 2, -11 + i, i_0_,
-                            11, 0);
+                if(arg2) {
+                    int i_0_ = 4 + Class53.aClass40_Sub5_Sub14_Sub1_1268.method685(arg3);
+                    Rasterizer.method656(257 - i_0_ / 2, -11 + i, i_0_, 11, 0);
                 }
-                Class53.aClass40_Sub5_Sub14_Sub1_1268.method686(arg3, 257, i,
-                        0);
-                Class53.aClass40_Sub5_Sub14_Sub1_1268
-                        .method686(arg3, 256, i - 1, 16777215);
+                Class53.aClass40_Sub5_Sub14_Sub1_1268.method686(arg3, 257, i, 0);
+                Class53.aClass40_Sub5_Sub14_Sub1_1268.method686(arg3, 256, i - 1, 16777215);
             }
             anInt1193++;
             Player.method792(arg0 + 107);
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("ra.B(" + arg0 + ','
-                            + (arg1 != null ? "{...}" : "null") + ','
-                            + arg2 + ','
-                            + (arg3 != null ? "{...}" : "null")
-                            + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("ra.B(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + (arg3 != null ? "{...}" : "null") + ')'));
         }
     }
 
     public static void method941(byte arg0) {
         try {
             Class6.aClass9_229.method235((byte) 50);
-            if (arg0 == -93)
+            if(arg0 == -93)
                 anInt1191++;
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ra.C(" + arg0 + ')');
         }
     }
 
     public static void method942(int arg0, int arg1) {
         anInt1190++;
-        if ((arg1 ^ 0xffffffff) == 0 && Class35.anInt1733 == 0)
+        if((arg1 ^ 0xffffffff) == 0 && Class35.anInt1733 == 0)
             Class33.method402(false);
-        else if (arg1 != -1 && arg1 != Class62.anInt1457
-                && (RSCanvas.anInt60 ^ 0xffffffff) != -1
-                && Class35.anInt1733 == 0)
-            Class33.method403(RSCanvas.anInt60, true, 10, arg1,
-                    Class55.aClass6_Sub1_1286, 0, 0, false);
+        else if(arg1 != -1 && arg1 != Class62.anInt1457 && (RSCanvas.anInt60 ^ 0xffffffff) != -1 && Class35.anInt1733 == 0)
+            Class33.method403(RSCanvas.anInt60, true, 10, arg1, Class55.aClass6_Sub1_1286, 0, 0, false);
         Class62.anInt1457 = arg1;
-        if (arg0 != 257)
+        if(arg0 != 257)
             aClass1_1199 = null;
     }
 }

@@ -3,9 +3,8 @@ import java.applet.Applet;
 public final class JSObject {
 
     static {
-        String liveConnectLibrary = System
-                .getProperty("netscape.jsj.dll", null);
-        if (liveConnectLibrary != null) {
+        String liveConnectLibrary = System.getProperty("netscape.jsj.dll", null);
+        if(liveConnectLibrary != null) {
             System.loadLibrary(liveConnectLibrary);
             initClass();
         }

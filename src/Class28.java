@@ -5,13 +5,12 @@
 import java.applet.Applet;
 
 public class Class28 {
-    public static Object method369(Applet arg0, String arg1, int arg2)
-            throws Throwable {
+    public static Object method369(Applet arg0, String arg1, int arg2) throws Throwable {
         try {
-            if (arg2 != -28497)
+            if(arg2 != -28497)
                 return null;
             return JSObject.getWindow(arg0).eval(arg1);
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw runtimeexception;
         }
     }

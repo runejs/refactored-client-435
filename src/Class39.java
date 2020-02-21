@@ -3,11 +3,8 @@
  */
 
 public class Class39 implements Runnable {
-    public static RSString aClass1_898
-            = Class58.method978(
-            " steht bereits auf Ihrer Freunde)2Liste(Q");
-    public static RSString aClass1_899
-            = Class58.method978("Benutzen Sie bitte eine andere Welt)3");
+    public static RSString aClass1_898 = Class58.method978(" steht bereits auf Ihrer Freunde)2Liste(Q");
+    public static RSString aClass1_899 = Class58.method978("Benutzen Sie bitte eine andere Welt)3");
     public static RSString aClass1_900 = Class58.method978("Ok");
     public static int anInt901;
     public static int anInt902;
@@ -18,8 +15,7 @@ public class Class39 implements Runnable {
     public static Class68 aClass68_908;
     public static int anInt909;
     public static RSString aClass1_910;
-    public static RSString aClass1_911
-            = Class58.method978("Spiel)2Fenster geladen)3");
+    public static RSString aClass1_911 = Class58.method978("Spiel)2Fenster geladen)3");
     public static int anInt912;
     public static RSString aClass1_914;
     public static RSString aClass1_915;
@@ -29,8 +25,7 @@ public class Class39 implements Runnable {
     public static RSString aClass1_919;
 
     static {
-        aClass1_910
-                = Class58.method978(" from your ignore list first");
+        aClass1_910 = Class58.method978(" from your ignore list first");
         anInt909 = 0;
         aClass1_914 = Class58.method978("Stufe)2");
         aBoolean906 = false;
@@ -60,25 +55,18 @@ public class Class39 implements Runnable {
             anInt902++;
             int i_0_ = -1;
             int i_1_ = 0;
-            if (arg0.anInt2027 == 0)
-                i = (NPC.aClass2_3301.method122
-                        (arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
+            if(arg0.anInt2027 == 0)
+                i = (NPC.aClass2_3301.method122(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
             int i_2_ = 0;
-            if ((arg0.anInt2027 ^ 0xffffffff) == -2)
-                i = (NPC.aClass2_3301.method91
-                        (arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
-            if (arg0.anInt2027 == 2)
-                i = (NPC.aClass2_3301.method110
-                        (arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
-            if (arg0.anInt2027 == 3)
-                i = (NPC.aClass2_3301.method93
-                        (arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
-            if (arg1 == 19813) {
-                if ((i ^ 0xffffffff) != -1) {
-                    int i_3_
-                            = (NPC.aClass2_3301.method141
-                            (arg0.anInt2018, arg0.anInt2039, arg0.anInt2038,
-                                    i));
+            if((arg0.anInt2027 ^ 0xffffffff) == -2)
+                i = (NPC.aClass2_3301.method91(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
+            if(arg0.anInt2027 == 2)
+                i = (NPC.aClass2_3301.method110(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
+            if(arg0.anInt2027 == 3)
+                i = (NPC.aClass2_3301.method93(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
+            if(arg1 == 19813) {
+                if((i ^ 0xffffffff) != -1) {
+                    int i_3_ = (NPC.aClass2_3301.method141(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038, i));
                     i_0_ = (0x1fffe692 & i) >> 1746750286;
                     i_2_ = (i_3_ & 0xde) >> 114415910;
                     i_1_ = i_3_ & 0x1f;
@@ -87,10 +75,8 @@ public class Class39 implements Runnable {
                 arg0.anInt2028 = i_0_;
                 arg0.anInt2036 = i_1_;
             }
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("nc.A(" + (arg0 != null ? "{...}" : "null")
-                            + ',' + arg1 + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("nc.A(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
         }
     }
 
@@ -99,29 +85,24 @@ public class Class39 implements Runnable {
             RSCanvas.anInt54 = 20;
             anInt916++;
             try {
-                Class5.aClass22_189
-                        = ((Class22)
-                        Class.forName("Class22_Sub2_Sub1").newInstance()); // Java Midi Based
+                Class5.aClass22_189 = ((Class22) Class.forName("Class22_Sub2_Sub1").newInstance()); // Java Midi Based
                 return true;
-            } catch (Throwable throwable) {
+            } catch(Throwable throwable) {
                 Runnable_Impl1 runnable_impl1 = arg0.method391(1048576);
-                if (runnable_impl1 != null) {
-                    Class5.aClass22_189
-                            = new Class22_Sub2_Sub2(arg0, runnable_impl1); // ???
+                if(runnable_impl1 != null) {
+                    Class5.aClass22_189 = new Class22_Sub2_Sub2(arg0, runnable_impl1); // ???
                     return true;
                 }
-                if (arg1 < 6)
+                if(arg1 < 6)
                     aClass1_911 = null;
-                if (arg2) {
+                if(arg2) {
                     Class5.aClass22_189 = new Class22_Sub1(arg0); // JS based
                     return true;
                 }
                 return false;
             }
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("nc.C(" + (arg0 != null ? "{...}" : "null")
-                            + ',' + arg1 + ',' + arg2 + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("nc.C(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ')'));
         }
     }
 
@@ -132,7 +113,7 @@ public class Class39 implements Runnable {
             aClass1_899 = null;
             aClass1_917 = null;
             aClass1_911 = null;
-            if (arg0 > -69)
+            if(arg0 > -69)
                 method451(null, 36);
             aClass40_Sub5_Sub14_Sub4_918 = null;
             aClass1_904 = null;
@@ -142,7 +123,7 @@ public class Class39 implements Runnable {
             aClass68_908 = null;
             aClass1_910 = null;
             aClass1_915 = null;
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "nc.B(" + arg0 + ')');
         }
     }
@@ -150,9 +131,9 @@ public class Class39 implements Runnable {
     public void run() {
         try {
             anInt903++;
-            while (aBoolean913) {
-                synchronized (anObject905) {
-                    if (anInt921 < 500) {
+            while(aBoolean913) {
+                synchronized(anObject905) {
+                    if(anInt921 < 500) {
                         anIntArray922[anInt921] = Class13.anInt420;
                         anIntArray920[anInt921] = Landscape.anInt1166;
                         anInt921++;
@@ -160,7 +141,7 @@ public class Class39 implements Runnable {
                 }
                 Class43.method890(50L, 44);
             }
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "nc.run(" + ')');
         }
     }

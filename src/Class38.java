@@ -40,7 +40,7 @@ public abstract class Class38 {
         try {
             aClass1_882 = null;
             aClass1_895 = null;
-            if (arg0 <= 120)
+            if(arg0 <= 120)
                 aClass1_883 = null;
             aClass1_890 = null;
             aClass1_881 = null;
@@ -53,7 +53,7 @@ public abstract class Class38 {
             aClass68_887 = null;
             aClass1_886 = null;
             aClass1_888 = null;
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "na.J(" + arg0 + ')');
         }
     }
@@ -61,7 +61,7 @@ public abstract class Class38 {
     public static void method440(byte arg0) {
         try {
             anInt891++;
-            if (ISAAC.aBoolean512) {
+            if(ISAAC.aBoolean512) {
                 Class51.anIntArray1198 = null;
                 Class40_Sub5_Sub17_Sub2.aClass68_3042 = null;
                 Class68.aClass68_1631 = null;
@@ -82,7 +82,7 @@ public abstract class Class38 {
                 Class40_Sub4.aClass40_Sub5_Sub14_Sub4_2043 = null;
                 Class4.anIntArray178 = null;
                 Class54.aClass68_1285 = null;
-                if (arg0 <= -65) {
+                if(arg0 <= -65) {
                     Class17.aClass68_463 = null;
                     Class42.anIntArray1013 = null;
                     Class33.method405(16969, 10);
@@ -90,7 +90,7 @@ public abstract class Class38 {
                     ISAAC.aBoolean512 = false;
                 }
             }
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "na.K(" + arg0 + ')');
         }
     }
@@ -100,10 +100,8 @@ public abstract class Class38 {
             anInt897++;
             int i = -109 / ((arg1 - -14) / 32);
             Class40_Sub5_Sub17_Sub4.aClass6_3144 = arg0;
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("na.L(" + (arg0 != null ? "{...}" : "null")
-                            + ',' + arg1 + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("na.L(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
         }
     }
 

@@ -13,8 +13,7 @@ public class Class57 {
     public static int packetid;
     public static int anInt1338;
     public static RSString aClass1_1339;
-    public static RSString aClass1_1340
-            = Class58.method978("Ihr Spielkonto wird bereits benutzt)3");
+    public static RSString aClass1_1340 = Class58.method978("Ihr Spielkonto wird bereits benutzt)3");
     public static RSString aClass1_1341;
     public static int anInt1342;
     public static RSString aClass1_1343;
@@ -28,8 +27,7 @@ public class Class57 {
         anInt1338 = 0;
         aClass1_1341 = Class58.method978("This world is full)3");
         aClass1_1339 = aClass1_1341;
-        aClass1_1336
-                = Class58.method978("To create a new account you need to");
+        aClass1_1336 = Class58.method978("To create a new account you need to");
         packetid = 0;
         anIntArrayArray1335 = new int[104][104];
         aClass1_1344 = Class58.method978("flash3:");
@@ -58,25 +56,22 @@ public class Class57 {
             aClass1_1341 = null;
             aClass1_1333 = null;
             int i = -39 % ((70 - arg0) / 56);
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "sd.B(" + arg0 + ')');
         }
     }
 
     public static void method975(int arg0, byte arg1, int arg2) {
         try {
-            if (arg1 == 110) {
-                if ((RSCanvas.anInt60 ^ 0xffffffff) != -1 && arg2 != -1) {
-                    Class33.method414(false, 1, arg2, RSCanvas.anInt60, 0,
-                            Class46.aClass6_Sub1_1104, arg1 ^ ~0x6e);
+            if(arg1 == 110) {
+                if((RSCanvas.anInt60 ^ 0xffffffff) != -1 && arg2 != -1) {
+                    Class33.method414(false, 1, arg2, RSCanvas.anInt60, 0, Class46.aClass6_Sub1_1104, arg1 ^ ~0x6e);
                     Class35.anInt1733 = arg0;
                 }
                 anInt1330++;
             }
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("sd.A(" + arg0 + ',' + arg1 + ',' + arg2
-                            + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("sd.A(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
         }
     }
 }

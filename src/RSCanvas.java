@@ -35,8 +35,7 @@ public class RSCanvas extends Canvas {
         aClass45_53 = new Class45();
         anInt60 = 255;
         anInt65 = 127;
-        aClass1_69 = Class58.method978(
-                "Your profile will be transferred in:");
+        aClass1_69 = Class58.method978("Your profile will be transferred in:");
         aClass1_67 = aClass1_69;
         aClass1_70 = Class58.method978("Prepared visibility map");
         aClass1_68 = Class58.method978("k");
@@ -48,17 +47,15 @@ public class RSCanvas extends Canvas {
     public RSCanvas(Component arg0) {
         try {
             aComponent49 = arg0;
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    "kb.<init>(" + (arg0 != null ? "{...}"
-                            : "null") + ')');
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, "kb.<init>(" + (arg0 != null ? "{...}" : "null") + ')');
         }
     }
 
     public static void method45(byte arg0) {
         RSString.aClass68_1665.method1046((byte) 90);
         anInt50++;
-        if (arg0 > -12)
+        if(arg0 > -12)
             method47((byte) 69);
     }
 
@@ -77,8 +74,7 @@ public class RSCanvas extends Canvas {
             Class5.method167(1023);
             Class51.method941((byte) -93);
             Class40_Sub5_Sub17_Sub4.method783(109);
-            ((Class35) R3D.anInterface3_2939)
-                    .method422(arg0);
+            ((Class35) R3D.anInterface3_2939).method422(arg0);
             Class17.aClass9_449.method235((byte) 96);
             Class25.aClass6_Sub1_605.method191(1120);
             Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000.method191(1120);
@@ -92,7 +88,7 @@ public class RSCanvas extends Canvas {
             aClass6_Sub1_48.method191(arg0 + 1120);
             Class46.aClass6_Sub1_1104.method191(1120);
             Class56.aClass6_Sub1_1323.method191(1120);
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "kb.B(" + arg0 + ')');
         }
     }
@@ -100,7 +96,7 @@ public class RSCanvas extends Canvas {
     public static void method47(byte arg0) {
         try {
             aClass1_68 = null;
-            if (arg0 != -46)
+            if(arg0 != -46)
                 method45((byte) -3);
             aClass1_70 = null;
             aByteArrayArray47 = null;
@@ -116,7 +112,7 @@ public class RSCanvas extends Canvas {
             anIntArray66 = null;
             aClass1_67 = null;
             aClass68_59 = null;
-        } catch (RuntimeException runtimeexception) {
+        } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "kb.A(" + arg0 + ')');
         }
     }
@@ -125,10 +121,8 @@ public class RSCanvas extends Canvas {
         try {
             anInt56++;
             aComponent49.paint(arg0);
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    "kb.paint(" + (arg0 != null ? "{...}"
-                            : "null") + ')');
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, "kb.paint(" + (arg0 != null ? "{...}" : "null") + ')');
         }
     }
 
@@ -136,10 +130,8 @@ public class RSCanvas extends Canvas {
         try {
             anInt52++;
             aComponent49.update(arg0);
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    "kb.update(" + (arg0 != null ? "{...}"
-                            : "null") + ')');
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, "kb.update(" + (arg0 != null ? "{...}" : "null") + ')');
         }
     }
 }

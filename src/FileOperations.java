@@ -24,7 +24,7 @@ public class FileOperations {
             datainputstream.close();
             TotalRead++;
             return abyte0;
-        } catch (Exception exception) {
+        } catch(Exception exception) {
             System.out.println((new StringBuilder()).append("Read Error: ").append(s).toString());
         }
         return null;
@@ -38,7 +38,7 @@ public class FileOperations {
             fileoutputstream.close();
             TotalWrite++;
             CompleteWrite++;
-        } catch (Throwable throwable) {
+        } catch(Throwable throwable) {
             System.out.println((new StringBuilder()).append("Write Error: ").append(s).toString());
         }
     }

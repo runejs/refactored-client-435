@@ -35,42 +35,35 @@ public class Class26 {
         anInt617 = 0;
         aClass1_619 = aClass1_623;
         aClass1_630 = Class58.method978("Untersuchen");
-        aClass1_633
-                = (Class58.method978
-                (
-                        "Moderator)2Option: Spieler f-Ur 48 Stunden stumm schalten: <OFF>"));
+        aClass1_633 = (Class58.method978("Moderator)2Option: Spieler f-Ur 48 Stunden stumm schalten: <OFF>"));
         aClass1_634 = aClass1_621;
         aClass1_629 = Class58.method978("Weiter");
     }
 
-    public static Class method349(byte arg0, String arg1)
-            throws ClassNotFoundException {
+    public static Class method349(byte arg0, String arg1) throws ClassNotFoundException {
         try {
             anInt626++;
-            if (arg1.equals("B"))
+            if(arg1.equals("B"))
                 return Byte.TYPE;
-            if (arg1.equals("I"))
+            if(arg1.equals("I"))
                 return Integer.TYPE;
-            if (arg1.equals("S"))
+            if(arg1.equals("S"))
                 return Short.TYPE;
-            if (arg1.equals("J"))
+            if(arg1.equals("J"))
                 return Long.TYPE;
-            if (arg1.equals("Z"))
+            if(arg1.equals("Z"))
                 return Boolean.TYPE;
-            if (arg1.equals("F"))
+            if(arg1.equals("F"))
                 return Float.TYPE;
-            if (arg1.equals("D"))
+            if(arg1.equals("D"))
                 return Double.TYPE;
-            if (arg0 != 91)
+            if(arg0 != 91)
                 method350(-66);
-            if (arg1.equals("C"))
+            if(arg1.equals("C"))
                 return Character.TYPE;
             return Class.forName(arg1);
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("ie.B(" + arg0 + ','
-                            + (arg1 != null ? "{...}" : "null")
-                            + ')'));
+        } catch(RuntimeException runtimeexception) {
+            throw Class8.method216(runtimeexception, ("ie.B(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
         }
     }
 
@@ -86,7 +79,7 @@ public class Class26 {
         aClass6_632 = null;
         aClass1_619 = null;
         aClass1_623 = null;
-        if (arg0 != 0)
+        if(arg0 != 0)
             method350(15);
     }
 }
