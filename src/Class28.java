@@ -1,18 +1,18 @@
 /* Class28 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
+
 import java.applet.Applet;
 
-public class Class28
-{
+public class Class28 {
     public static Object method369(Applet arg0, String arg1, int arg2)
-	throws Throwable {
-	try {
-	    if (arg2 != -28497)
-		return null;
-	    return JSObject.getWindow(arg0).eval(arg1);
-	} catch (RuntimeException runtimeexception) {
-	    throw runtimeexception;
-	}
+            throws Throwable {
+        try {
+            if (arg2 != -28497)
+                return null;
+            return JSObject.getWindow(arg0).eval(arg1);
+        } catch (RuntimeException runtimeexception) {
+            throw runtimeexception;
+        }
     }
 }

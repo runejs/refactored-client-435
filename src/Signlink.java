@@ -3,37 +3,102 @@
  */
 
 import java.applet.Applet;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
 
 public class Signlink implements Runnable {
+    public static Method aMethod724;
+    public static String homeDirectory;
+    public static Method aMethod729;
+    public static String aString735;
+    public static int anInt737 = 3;
+    public static String aString739;
     public boolean aBoolean721;
     public int anInt722 = 0;
     public Class47[] aClass47Array723;
-    public static Method aMethod724;
     public Class15 aClass15_725 = null;
-    public static String homeDirectory;
     public Runnable_Impl1 aRunnable_Impl1_727;
     public Class47 aClass47_728;
-    public static Method aMethod729;
     public InetAddress anInetAddress730;
     public Class15 aClass15_731 = null;
     public Interface2 anInterface2_732;
     public Thread aThread733;
     public String aString734 = null;
-    public static String aString735;
     public Class47 aClass47_736;
-    public static int anInt737 = 3;
-    public static String aString739;
     public Applet anApplet740;
+
+    public Signlink(boolean arg0, Applet arg1, InetAddress inetAddress, int fileStoreId, String cacheFolder, int cacheIndexes) throws IOException {
+        aClass47_728 = null;
+        aClass47_736 = null;
+        anApplet740 = null;
+        try {
+            anApplet740 = arg1;
+            anInetAddress730 = inetAddress;
+            aString739 = "1.1";
+            aString735 = "Unknown";
+            try {
+                aString735 = System.getProperty("java.vendor");
+                aString739 = System.getProperty("java.version");
+                homeDirectory = System.getProperty("user.home");
+                if (homeDirectory != null)
+                    homeDirectory += "/";
+            } catch (Exception exception) {
+                /* empty */
+            }
+            try {
+                if (arg1 == null)
+                    aMethod729 = (Class.forName("java.awt.Component")
+                            .getDeclaredMethod
+                                    ("setFocusTraversalKeysEnabled",
+                                            Boolean.TYPE));
+                else
+                    aMethod729 = (arg1.getClass().getMethod
+                            ("setFocusTraversalKeysEnabled",
+                                    Boolean.TYPE));
+            } catch (Exception exception) {
+                /* empty */
+            }
+            try {
+                if (arg1 != null)
+                    aMethod724 = arg1.getClass().getMethod("setFocusCycleRoot",
+                            Boolean.TYPE);
+                else
+                    aMethod724 = (Class.forName("java.awt.Container")
+                            .getDeclaredMethod
+                                    ("setFocusCycleRoot",
+                                            Boolean.TYPE));
+            } catch (Exception exception) {
+                /* empty */
+            }
+            if (arg0) {
+                method397(-3849);
+                aClass47_736 = new Class47(new File(aString734
+                        + "main_file_cache.dat2"),
+                        "rw", 52428800L);
+                aClass47Array723 = new Class47[cacheIndexes];
+                for (int i = 0; (cacheIndexes ^ 0xffffffff) < (i ^ 0xffffffff); i++)
+                    aClass47Array723[i]
+                            = new Class47(new File(aString734
+                            + "main_file_cache.idx" + i),
+                            "rw", 1048576L);
+                aClass47_728
+                        = new Class47(new File(aString734
+                        + "main_file_cache.idx255"),
+                        "rw", 1048576L);
+                method390(6);
+            }
+            aBoolean721 = false;
+            aThread733 = new Thread(this);
+            aThread733.setPriority(10);
+            aThread733.setDaemon(true);
+            aThread733.start();
+        } catch (RuntimeException runtimeexception) {
+            throw runtimeexception;
+        }
+    }
 
     public void method385(int arg0) {
         synchronized (this) {
@@ -316,77 +381,6 @@ public class Signlink implements Runnable {
                 }
             }
             throw new RuntimeException();
-        } catch (RuntimeException runtimeexception) {
-            throw runtimeexception;
-        }
-    }
-
-    public Signlink(boolean arg0, Applet arg1, InetAddress inetAddress, int fileStoreId, String cacheFolder, int cacheIndexes) throws IOException {
-        aClass47_728 = null;
-        aClass47_736 = null;
-        anApplet740 = null;
-        try {
-            anApplet740 = arg1;
-            anInetAddress730 = inetAddress;
-            aString739 = "1.1";
-            aString735 = "Unknown";
-            try {
-                aString735 = System.getProperty("java.vendor");
-                aString739 = System.getProperty("java.version");
-                homeDirectory = System.getProperty("user.home");
-                if (homeDirectory != null)
-                    homeDirectory += "/";
-            } catch (Exception exception) {
-                /* empty */
-            }
-            try {
-                if (arg1 == null)
-                    aMethod729 = (Class.forName("java.awt.Component")
-                            .getDeclaredMethod
-                                    ("setFocusTraversalKeysEnabled",
-                                            new Class[]{Boolean.TYPE}));
-                else
-                    aMethod729 = (arg1.getClass().getMethod
-                            ("setFocusTraversalKeysEnabled",
-                                    new Class[]{Boolean.TYPE}));
-            } catch (Exception exception) {
-                /* empty */
-            }
-            try {
-                if (arg1 != null)
-                    aMethod724 = arg1.getClass().getMethod("setFocusCycleRoot",
-                            (new Class[]
-                                    {Boolean.TYPE}));
-                else
-                    aMethod724 = (Class.forName("java.awt.Container")
-                            .getDeclaredMethod
-                                    ("setFocusCycleRoot",
-                                            new Class[]{Boolean.TYPE}));
-            } catch (Exception exception) {
-                /* empty */
-            }
-            if (arg0) {
-                method397(-3849);
-                aClass47_736 = new Class47(new File(aString734
-                        + "main_file_cache.dat2"),
-                        "rw", 52428800L);
-                aClass47Array723 = new Class47[cacheIndexes];
-                for (int i = 0; (cacheIndexes ^ 0xffffffff) < (i ^ 0xffffffff); i++)
-                    aClass47Array723[i]
-                            = new Class47(new File(aString734
-                            + "main_file_cache.idx" + i),
-                            "rw", 1048576L);
-                aClass47_728
-                        = new Class47(new File(aString734
-                        + "main_file_cache.idx255"),
-                        "rw", 1048576L);
-                method390(6);
-            }
-            aBoolean721 = false;
-            aThread733 = new Thread(this);
-            aThread733.setPriority(10);
-            aThread733.setDaemon(true);
-            aThread733.start();
         } catch (RuntimeException runtimeexception) {
             throw runtimeexception;
         }

@@ -2,54 +2,53 @@ import java.applet.Applet;
 
 public final class JSObject {
 
-	static {
-		String liveConnectLibrary = System
-				.getProperty("netscape.jsj.dll", null);
-		if (liveConnectLibrary != null) {
-			System.loadLibrary(liveConnectLibrary);
-			initClass();
-		}
-	}
+    static {
+        String liveConnectLibrary = System
+                .getProperty("netscape.jsj.dll", null);
+        if (liveConnectLibrary != null) {
+            System.loadLibrary(liveConnectLibrary);
+            initClass();
+        }
+    }
 
-	public static native JSObject getWindow(Applet applet);
+    @SuppressWarnings("unused")
+    private int internal;
+    @SuppressWarnings("unused")
+    private long long_internal;
 
-	private static native void initClass();
+    private JSObject(int jsobj_addr) {
+        internal = jsobj_addr;
+    }
 
-	@SuppressWarnings("unused")
-	private int internal;
+    private JSObject(long jsobj_addr) {
+        long_internal = jsobj_addr;
+    }
 
-	@SuppressWarnings("unused")
-	private long long_internal;
+    public static native JSObject getWindow(Applet applet);
 
-	private JSObject(int jsobj_addr) {
-		internal = jsobj_addr;
-	}
+    private static native void initClass();
 
-	private JSObject(long jsobj_addr) {
-		long_internal = jsobj_addr;
-	}
+    public native Object call(String methodName, Object[] args);
 
-	public native Object call(String methodName, Object args[]);
+    @Override
+    public native boolean equals(Object obj);
 
-	@Override
-	public native boolean equals(Object obj);
+    public native Object eval(String s);
 
-	public native Object eval(String s);
+    @Override
+    protected native void finalize();
 
-	@Override
-	protected native void finalize();
+    public native Object getMember(String name);
 
-	public native Object getMember(String name);
+    public native Object getSlot(int index);
 
-	public native Object getSlot(int index);
+    public native void removeMember(String name);
 
-	public native void removeMember(String name);
+    public native void setMember(String name, Object value);
 
-	public native void setMember(String name, Object value);
+    public native void setSlot(int index, Object value);
 
-	public native void setSlot(int index, Object value);
-
-	@Override
-	public native String toString();
+    @Override
+    public native String toString();
 
 }

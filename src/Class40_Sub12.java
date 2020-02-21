@@ -2,7 +2,6 @@
  * Visit http://jode.sourceforge.net/
  */
 
-public abstract class Class40_Sub12 extends Node
-{
+public abstract class Class40_Sub12 extends Node {
     public int anInt2167;
 }

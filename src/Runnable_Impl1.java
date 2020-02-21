@@ -2,17 +2,16 @@
  * Visit http://jode.sourceforge.net/
  */
 
-public interface Runnable_Impl1 extends Runnable
-{
-    public void method1(byte i);
-    
-    public void method2(int[] is, int i);
-    
-    public void method3(int i);
-    
-    public void method4(int i);
-    
-    public int method5(int i);
-    
-    public void method6(int i);
+public interface Runnable_Impl1 extends Runnable {
+    void method1(byte i);
+
+    void method2(int[] is, int i);
+
+    void method3(int i);
+
+    void method4(int i);
+
+    int method5(int i);
+
+    void method6(int i);
 }
