@@ -8,7 +8,7 @@ public class Class30 {
     public static RSString aClass1_682;
     public static int[] anIntArray684;
     public static int[] anIntArray685;
-    public static RSString aClass1_686 = Class58.method978(-11538, "*6n");
+    public static RSString aClass1_686 = Class58.method978("*6n");
     public static boolean aBoolean687;
     public static int[] anIntArray688;
     public static int anInt689;
@@ -39,9 +39,9 @@ public class Class30 {
     public static Class64 aClass64_717;
 
     static {
-        aClass1_699 = Class58.method978(-11538, "Trade)4compete");
+        aClass1_699 = Class58.method978("Trade)4compete");
         aClass1_701 = aClass1_699;
-        aClass1_710 = Class58.method978(-11538, "Off");
+        aClass1_710 = Class58.method978("Off");
         anInt709 = 50;
         anIntArray712 = new int[anInt709];
         anIntArray684 = new int[anInt709];
@@ -49,12 +49,12 @@ public class Class30 {
         anIntArray715 = new int[anInt709];
         aClass1_682 = aClass1_710;
         anIntArray688 = new int[anInt709];
-        aClass1_698 = Class58.method978(-11538, "(U(Y");
+        aClass1_698 = Class58.method978("(U(Y");
         anIntArray695 = new int[anInt709];
         anInt708 = -1;
         anIntArray685 = new int[anInt709];
         aClass1Array697 = new RSString[anInt709];
-        aClass1_716 = Class58.method978(-11538, "scape main");
+        aClass1_716 = Class58.method978("scape main");
     }
 
     public boolean aBoolean683;

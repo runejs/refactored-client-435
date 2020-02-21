@@ -27,10 +27,10 @@ public class HashTable {
     static {
         aClass1_563
                 = (Class58.method978
-                (-11538, "und die Schaltfl-=che (WSpielkonto erstellen(W am"));
-        aClass1_558 = Class58.method978(-11538, "Ung-Ultige Session)2ID)3");
-        aClass1_553 = Class58.method978(-11538, "l");
-        aClass1_569 = Class58.method978(-11538, " (X");
+                ("und die Schaltfl-=che (WSpielkonto erstellen(W am"));
+        aClass1_558 = Class58.method978("Ung-Ultige Session)2ID)3");
+        aClass1_553 = Class58.method978("l");
+        aClass1_569 = Class58.method978(" (X");
         anInt573 = -1;
     }
 
@@ -317,29 +317,24 @@ public class HashTable {
         }
     }
 
-    public Node method333(int arg0) {
-        try {
-            anInt556++;
-            if (aClass40_566 == null)
-                return null;
-            int i = -52 / (arg0 / 62);
-            for (Node class40
-                 = nodes[(int) (aLong550
-                    & (long) (-1 + size))];
-                 class40 != aClass40_566;
-                 aClass40_566 = aClass40_566.aClass40_950) {
-                if ((aClass40_566.key ^ 0xffffffffffffffffL)
-                        == (aLong550 ^ 0xffffffffffffffffL)) {
-                    Node class40_1_ = aClass40_566;
-                    aClass40_566 = aClass40_566.aClass40_950;
-                    return class40_1_;
-                }
-            }
-            aClass40_566 = null;
+    public Node method333() {
+        anInt556++;
+        if (aClass40_566 == null)
             return null;
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "i.G(" + arg0 + ')');
+        for (Node class40
+             = nodes[(int) (aLong550
+                & (long) (-1 + size))];
+             class40 != aClass40_566;
+             aClass40_566 = aClass40_566.aClass40_950) {
+            if ((aClass40_566.key ^ 0xffffffffffffffffL)
+                    == (aLong550 ^ 0xffffffffffffffffL)) {
+                Node class40_1_ = aClass40_566;
+                aClass40_566 = aClass40_566.aClass40_950;
+                return class40_1_;
+            }
         }
+        aClass40_566 = null;
+        return null;
     }
 
     public Node method336(byte arg0) {

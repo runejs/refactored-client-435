@@ -10,7 +10,7 @@ public class SubNode extends Node {
     public static int[] anIntArray2086;
     public static int anInt2088;
     public static int anInt2089;
-    public static RSString aClass1_2090 = Class58.method978(-11538, "(U5");
+    public static RSString aClass1_2090 = Class58.method978("(U5");
     public static Class68 aClass68_2091;
     public static int anInt2092;
     public static RSString aClass1_2093;
@@ -20,9 +20,9 @@ public class SubNode extends Node {
 
     static {
         aBoolean2083 = false;
-        aClass1_2084 = Class58.method978(-11538, ")1");
-        aClass1_2093 = Class58.method978(-11538, "redstone1");
-        aClass1_2095 = Class58.method978(-11538, "Fallen lassen");
+        aClass1_2084 = Class58.method978(")1");
+        aClass1_2093 = Class58.method978("redstone1");
+        aClass1_2095 = Class58.method978("Fallen lassen");
     }
 
     public SubNode aClass40_Sub5_2082;

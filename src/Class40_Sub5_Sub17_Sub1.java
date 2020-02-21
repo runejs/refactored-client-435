@@ -7,12 +7,12 @@ import java.awt.*;
 public class Class40_Sub5_Sub17_Sub1 extends Class40_Sub5_Sub17 {
     public static int anInt2956;
     public static int anInt2959;
-    public static RSString aClass1_2963 = Class58.method978(-11538, "Feb");
+    public static RSString aClass1_2963 = Class58.method978("Feb");
     public static RSString[] aClass1Array2964;
     public static RSString aClass1_2965;
     public static RSString aClass1_2966;
     public static RSString aClass1_2967;
-    public static RSString aClass1_2969 = Class58.method978(-11538, "Aug");
+    public static RSString aClass1_2969 = Class58.method978("Aug");
     public static int anInt2970;
     public static boolean[] aBooleanArray2975;
     public static RSString aClass1_2977;
@@ -42,25 +42,25 @@ public class Class40_Sub5_Sub17_Sub1 extends Class40_Sub5_Sub17 {
     public static RSString aClass1_3015;
 
     static {
-        aClass1_2967 = Class58.method978(-11538, "Dec");
+        aClass1_2967 = Class58.method978("Dec");
         aBooleanArray2975 = new boolean[5];
-        aClass1_2990 = Class58.method978(-11538, "Mar");
-        aClass1_2977 = Class58.method978(-11538, "Regeln versto-8en hat)3");
+        aClass1_2990 = Class58.method978("Mar");
+        aClass1_2977 = Class58.method978("Regeln versto-8en hat)3");
         anInt2999 = 0;
-        aClass1_2998 = Class58.method978(-11538, "May");
-        aClass1_3002 = Class58.method978(-11538, "Loading wordpack )2 ");
-        aClass1_2985 = Class58.method978(-11538, "Jun");
-        aClass1_2965 = Class58.method978(-11538, "Oct");
-        aClass1_2991 = Class58.method978(-11538, "Jul");
-        aClass1_3010 = Class58.method978(-11538, "Connecting to server)3)3)3");
+        aClass1_2998 = Class58.method978("May");
+        aClass1_3002 = Class58.method978("Loading wordpack )2 ");
+        aClass1_2985 = Class58.method978("Jun");
+        aClass1_2965 = Class58.method978("Oct");
+        aClass1_2991 = Class58.method978("Jul");
+        aClass1_3010 = Class58.method978("Connecting to server)3)3)3");
         aClass1_3009 = aClass1_3010;
         anIntArray2987
                 = new int[]{768, 1024, 1280, 512, 1536, 256, 0, 1792};
-        aClass1_3012 = Class58.method978(-11538, "Jan");
-        aClass1_2966 = Class58.method978(-11538, "Sep");
-        aClass1_2988 = Class58.method978(-11538, "Nov");
+        aClass1_3012 = Class58.method978("Jan");
+        aClass1_2966 = Class58.method978("Sep");
+        aClass1_2988 = Class58.method978("Nov");
         aClass1_3014 = aClass1_3002;
-        aClass1_3015 = Class58.method978(-11538, "Apr");
+        aClass1_3015 = Class58.method978("Apr");
         aClass1Array2964
                 = new RSString[]{aClass1_3012, aClass1_2963, aClass1_2990,
                 aClass1_3015, aClass1_2998, aClass1_2985,

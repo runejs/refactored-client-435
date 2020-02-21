@@ -66,19 +66,19 @@ public class RSString implements Interface1 {
     public static RSString aClass1_1717;
     /*synthetic*/ public static Class aClass1718;
     public static RSString aClass1_1691
-            = Class58.method978(-11538, "Private chat");
+            = Class58.method978("Private chat");
 
     static {
         anInt1690 = 0;
-        aClass1_1677 = Class58.method978(-11538, "scrollbar");
-        aClass1_1699 = Class58.method978(-11538, "purple:");
+        aClass1_1677 = Class58.method978("scrollbar");
+        aClass1_1699 = Class58.method978("purple:");
         aClass1_1703 = aClass1_1691;
         aClass1_1702
-                = Class58.method978(-11538, "Der Anmelde)2Server ist offline)3");
-        aClass1_1716 = Class58.method978(-11538, "chatback");
+                = Class58.method978("Der Anmelde)2Server ist offline)3");
+        aClass1_1716 = Class58.method978("chatback");
         anInt1711 = 50;
         aClass1_1717 = aClass1_1699;
-        aClass1_1713 = Class58.method978(-11538, "Diese Welt ist voll)3");
+        aClass1_1713 = Class58.method978("Diese Welt ist voll)3");
         anIntArray1706 = new int[128];
     }
 
@@ -481,52 +481,33 @@ public class RSString implements Interface1 {
         }
     }
 
-    public void method65(byte arg0, int arg1, int arg2, Graphics arg3) {
-        try {
-            String string;
-            string
-                    = new String(aByteArray1692, 0, anInt1680, StandardCharsets.ISO_8859_1);
-            anInt1660++;
-            arg3.drawString(string, arg1, arg2);
-            int i = -3 % ((-81 - arg0) / 41);
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("a.G(" + arg0 + ',' + arg1 + ',' + arg2
-                            + ',' + (arg3 != null ? "{...}" : "null")
-                            + ')'));
-        }
+    public void method65(int arg1, int arg2, Graphics arg3) {
+        String string;
+        string
+                = new String(aByteArray1692, 0, anInt1680, StandardCharsets.ISO_8859_1);
+        anInt1660++;
+        arg3.drawString(string, arg1, arg2);
     }
 
-    public RSString method66(int arg0) {
-        try {
-            long l = method86(1544463557);
-            anInt1681++;
-            synchronized (aClass1718 != null ? aClass1718
-                    : (aClass1718 = method90("RSString"))) {
-                if (Class34.aClass23_805 != null) {
-                    for (Class40_Sub7 class40_sub7
-                         = ((Class40_Sub7)
-                            Class34.aClass23_805.method331(l, 6120));
-                         class40_sub7 != null;
-                         class40_sub7
-                                 = (Class40_Sub7) Class34.aClass23_805
-                                 .method333(arg0 ^ 0x2c11)) {
-                        if (method54(class40_sub7.aClass1_2124, 122))
-                            return class40_sub7.aClass1_2124;
-                    }
-                } else
-                    Class34.aClass23_805 = new HashTable(4096);
-                Class40_Sub7 class40_sub7 = new Class40_Sub7();
-                if (arg0 != 11370)
-                    aClass68_1665 = null;
-                aBoolean1675 = false;
-                class40_sub7.aClass1_2124 = this;
-                Class34.aClass23_805.put(class40_sub7, (byte) -117, l);
-            }
-            return this;
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.JA(" + arg0 + ')');
+    public RSString method66() {
+        long l = method86(1544463557);
+        anInt1681++;
+        synchronized (aClass1718 != null ? aClass1718
+                : (aClass1718 = method90("RSString"))) {
+            if (Class34.aClass23_805 != null) {
+                for (Class40_Sub7 class40_sub7 = ((Class40_Sub7) Class34.aClass23_805.method331(l, 6120)); class40_sub7 != null; class40_sub7 = (Class40_Sub7) Class34.aClass23_805.method333()) {
+                    if (method54(class40_sub7.aClass1_2124, 122))
+                        return class40_sub7.aClass1_2124;
+                }
+            } else
+                Class34.aClass23_805 = new HashTable(4096);
+            Class40_Sub7 class40_sub7 = new Class40_Sub7();
+            aBoolean1675 = false;
+            class40_sub7.aClass1_2124 = this;
+            Class34.aClass23_805.put(class40_sub7, (byte) -117, l);
         }
+        return this;
+
     }
 
     public int hashCode() {

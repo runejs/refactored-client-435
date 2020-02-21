@@ -34,19 +34,19 @@ public class Class40_Sub5_Sub10 extends SubNode {
     static {
         aBoolean2597 = false;
         aClass1_2592
-                = Class58.method978(-11538, "Anmelde)2Zeitlimit -Uberschritten)3");
-        aClass1_2611 = Class58.method978(-11538, "Bitte versuchen Sie es in ");
+                = Class58.method978("Anmelde)2Zeitlimit -Uberschritten)3");
+        aClass1_2611 = Class58.method978("Bitte versuchen Sie es in ");
         anIntArray2602 = new int[50];
         anInt2591 = 0;
-        aClass1_2595 = Class58.method978(-11538, "K");
+        aClass1_2595 = Class58.method978("K");
         aClass1_2593 = aClass1_2595;
-        aClass1_2588 = Class58.method978(-11538, "backvmid2");
+        aClass1_2588 = Class58.method978("backvmid2");
         aClass1_2587 = aClass1_2595;
         aClass45_2604 = new Class45();
         aClass1_2614
-                = Class58.method978(-11538, "Wen m-Ochten Sie entfernen?");
+                = Class58.method978("Wen m-Ochten Sie entfernen?");
         anInt2613 = 0;
-        aClass1_2616 = Class58.method978(-11538, "Bad session id)3");
+        aClass1_2616 = Class58.method978("Bad session id)3");
         aClass1_2615 = aClass1_2616;
     }
 

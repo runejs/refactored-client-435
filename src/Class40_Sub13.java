@@ -6,12 +6,12 @@ public class Class40_Sub13 extends Node {
     public static int anInt2169;
     public static int anInt2170;
     public static RSString aClass1_2172
-            = Class58.method978(-11538, "Service unavailable)3");
+            = Class58.method978("Service unavailable)3");
     public static int anInt2173;
     public static RSString aClass1_2174;
     public static RSString aClass1_2176;
     public static boolean aBoolean2177;
-    public static RSString aClass1_2179 = Class58.method978(-11538, "cross");
+    public static RSString aClass1_2179 = Class58.method978("cross");
     public static int anInt2180;
     public static RSString aClass1_2181;
     public static int anInt2182;
@@ -26,20 +26,20 @@ public class Class40_Sub13 extends Node {
     static {
         aBoolean2177 = false;
         aClass1_2181
-                = Class58.method978(-11538, "Musik)2Engine vorbereitet)3");
+                = Class58.method978("Musik)2Engine vorbereitet)3");
         aClass1_2176
                 = (Class58.method978
-                (-11538,
+                (
                         "Bitte warten Sie )2 es wird versucht)1 die Verbindung wiederherzustellen)3"));
         anInt2183 = 0;
-        aClass1_2185 = Class58.method978(-11538, "Titelbild geladen)3");
-        aClass1_2174 = Class58.method978(-11538, "rot:");
+        aClass1_2185 = Class58.method978("Titelbild geladen)3");
+        aClass1_2174 = Class58.method978("rot:");
         aClass1_2187
                 = (Class58.method978
-                (-11538,
+                (
                         "You need a members account to login to this world)3"));
         aClass1_2188 = aClass1_2187;
-        aClass1_2186 = Class58.method978(-11538, " hat sich eingeloggt)3");
+        aClass1_2186 = Class58.method978(" hat sich eingeloggt)3");
         aClass1_2189 = aClass1_2172;
     }
 

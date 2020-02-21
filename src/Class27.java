@@ -5,13 +5,13 @@
 public class Class27 {
     public static int anInt636;
     public static RSString aClass1_637
-            = Class58.method978(-11538, "Loading game screen )2 ");
+            = Class58.method978("Loading game screen )2 ");
     public static RSString aClass1_638;
     public static int anInt639;
     public static int anInt640;
     public static int anInt641;
     public static int anInt642;
-    public static RSString aClass1_643 = Class58.method978(-11538, ")2");
+    public static RSString aClass1_643 = Class58.method978(")2");
     public static int anInt644;
     public static int anInt645;
     public static int anInt646;
@@ -21,7 +21,7 @@ public class Class27 {
     public static int anInt650;
     public static int anInt651;
     public static RSString aClass1_652;
-    public static RSString aClass1_653 = Class58.method978(-11538, "Offline");
+    public static RSString aClass1_653 = Class58.method978("Offline");
     public static Class6 aClass6_654;
     public static int anInt655;
     public static int anInt656;
@@ -38,16 +38,16 @@ public class Class27 {
     public static RSString aClass1_668;
 
     static {
-        aClass1_638 = Class58.method978(-11538, "invback");
+        aClass1_638 = Class58.method978("invback");
         aClass1_652
-                = Class58.method978(-11538, "und loggen sich dann erneut ein)3");
+                = Class58.method978("und loggen sich dann erneut ein)3");
         aClass1_647
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "sich mit einer anderen Welt zu verbinden)3");
         anInt658 = 0;
         aClass1_664 = aClass1_653;
         anIntArray666 = new int[]{1, 0, -1, 0};
-        takeString = Class58.method978(-11538, "Take");
+        takeString = Class58.method978("Take");
         takeStringInstance = takeString;
         aClass1_668 = aClass1_637;
     }

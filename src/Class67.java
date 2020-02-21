@@ -21,7 +21,7 @@ public class Class67 {
     public static int[] anIntArray1588 = new int[1000];
     public static RSString aClass1_1590;
     public static RSString aClass1_1591
-            = Class58.method978(-11538, "Update)2Liste geladen)3");
+            = Class58.method978("Update)2Liste geladen)3");
     public static int anInt1594;
     public static int anInt1597;
     public static RSString aClass1_1598;
@@ -39,22 +39,22 @@ public class Class67 {
     public static long[] aLongArray1614;
 
     static {
-        aClass1_1580 = Class58.method978(-11538, "p12_full");
+        aClass1_1580 = Class58.method978("p12_full");
         aBoolean1575 = false;
         anInt1607 = 10;
-        aClass1_1605 = Class58.method978(-11538, "Loading )2 please wait)3");
+        aClass1_1605 = Class58.method978("Loading )2 please wait)3");
         anInt1586 = -1;
         aClass1_1585 = aClass1_1605;
-        aClass1_1609 = Class58.method978(-11538, "gleiten:");
-        aClass1_1590 = Class58.method978(-11538, "Create a free account");
-        aClass1_1610 = Class58.method978(-11538, "(U3");
+        aClass1_1609 = Class58.method978("gleiten:");
+        aClass1_1590 = Class58.method978("Create a free account");
+        aClass1_1610 = Class58.method978("(U3");
         aClass1_1598 = aClass1_1590;
         aClass9_1582 = new Cache(20);
         aClass9_1611 = new Cache(50);
         aLongArray1614 = new long[32];
         aClass1_1613
-                = Class58.method978(-11538, "60 Sekunden noch einmal)3)3)3");
-        aClass1_1612 = Class58.method978(-11538, "Lade Texturen )2 ");
+                = Class58.method978("60 Sekunden noch einmal)3)3)3");
+        aClass1_1612 = Class58.method978("Lade Texturen )2 ");
     }
 
     public long aLong1578;

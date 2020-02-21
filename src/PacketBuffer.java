@@ -38,19 +38,19 @@ public class PacketBuffer extends Buffer {
     static {
         anInt2231 = 1;
         aLong2241 = 0L;
-        aClass1_2245 = Class58.method978(-11538, "Aus");
+        aClass1_2245 = Class58.method978("Aus");
         aClass36Array2238 = new Class36[50];
         anInt2248 = 0;
-        aClass1_2254 = Class58.method978(-11538, "Please wait)3)3)3");
+        aClass1_2254 = Class58.method978("Please wait)3)3)3");
         aClass1_2240 = aClass1_2254;
         rsaKey
                 = (new BigInteger
                 ("65537"));
         aBoolean2255 = false;
         aClass1_2260
-                = Class58.method978(-11538, "da dieser Computer gegen unsere ");
+                = Class58.method978("da dieser Computer gegen unsere ");
         aClass1_2259
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "oder benutzen Sie eine andere Welt)3");
         anInt2256 = 0;
     }

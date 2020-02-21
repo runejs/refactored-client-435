@@ -27,7 +27,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
     public static int anInt11;
     public static int anInt12;
     public static int anInt13;
-    public static RSString aClass1_14 = Class58.method978(-11538, "Anmelde)2Limit -Uberschritten)3");
+    public static RSString aClass1_14 = Class58.method978("Anmelde)2Limit -Uberschritten)3");
     public static int anInt15;
     public static int anInt16;
     public static int anInt17;
@@ -62,11 +62,11 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
     static {
         anIntArray2 = new int[5];
-        aClass1_35 = (Class58.method978(-11538, "Die Adresse dieses Computers wurde gesperrt)1"));
-        aClass1_21 = Class58.method978(-11538, "Bitte warten Sie eine Minute");
-        aClass1_34 = Class58.method978(-11538, "null");
-        aClass1_25 = Class58.method978(-11538, "Hier klicken)1 um fortzufahren)3)3)3");
-        aClass1_28 = Class58.method978(-11538, "null");
+        aClass1_35 = (Class58.method978("Die Adresse dieses Computers wurde gesperrt)1"));
+        aClass1_21 = Class58.method978("Bitte warten Sie eine Minute");
+        aClass1_34 = Class58.method978("null");
+        aClass1_25 = Class58.method978("Hier klicken)1 um fortzufahren)3)3)3");
+        aClass1_28 = Class58.method978("null");
     }
 
     public boolean aBoolean43 = false;

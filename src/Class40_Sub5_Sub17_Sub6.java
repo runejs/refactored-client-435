@@ -18,7 +18,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Class40_Sub5_Sub17 {
     public static int anInt3241;
     public static Class68 aClass68_3243;
     public static RSString aClass1_3245
-            = Class58.method978(-11538,
+            = Class58.method978(
             "Sie haben gerade eine andere Welt verlassen)3");
     public static RSFont aClass40_Sub5_Sub14_Sub1_3246;
     public static RSString aClass1_3247;
@@ -27,11 +27,11 @@ public class Class40_Sub5_Sub17_Sub6 extends Class40_Sub5_Sub17 {
     public static int anInt3251;
     public static int anInt3252;
     public static int[] anIntArray3253;
-    public static RSString aClass1_3254 = Class58.method978(-11538, "redstone2");
+    public static RSString aClass1_3254 = Class58.method978("redstone2");
     public static int[] anIntArray3255;
 
     static {
-        aClass1_3247 = Class58.method978(-11538, "Die Verbindung konnte");
+        aClass1_3247 = Class58.method978("Die Verbindung konnte");
     }
 
     public int anInt3230;

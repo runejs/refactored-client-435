@@ -6,7 +6,7 @@ public class Class40_Sub5_Sub4 extends SubNode {
     public static Class6 aClass6_2349;
     public static Class68 aClass68_2350;
     public static RSString aClass1_2351;
-    public static RSString aClass1_2352 = Class58.method978(-11538, "Login");
+    public static RSString aClass1_2352 = Class58.method978("Login");
     public static int anInt2353;
     public static RSString aClass1_2354;
     public static int anInt2355;
@@ -21,7 +21,7 @@ public class Class40_Sub5_Sub4 extends SubNode {
     public static int anInt2365;
     public static int anInt2366;
     public static RSString aClass1_2367
-            = Class58.method978(-11538,
+            = Class58.method978(
             "Please subscribe)1 or use a different world)3");
     public static int anInt2369;
     public static int anInt2371;
@@ -37,7 +37,7 @@ public class Class40_Sub5_Sub4 extends SubNode {
         aClass1_2351 = aClass1_2352;
         anInt2366 = 0;
         aClass1_2354
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "Unerwartete Antwort vom Anmelde)2Server");
     }
 

@@ -26,7 +26,7 @@ public class Class3 {
     public static Object anObject162 = new Object();
     public static int anInt163;
     public static RSString aClass1_164
-            = Class58.method978(-11538, "Konfig geladen)3");
+            = Class58.method978("Konfig geladen)3");
     public static int anInt165 = 0;
     public static Class8 aClass8_166;
     public static RSString aClass1_167;
@@ -43,9 +43,9 @@ public class Class3 {
                 107, 108, 109, 110, 111, 112, 113, 114, 115, 116,
                 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52,
                 53, 54, 55, 56, 57};
-        aClass1_171 = Class58.method978(-11538, "Continue");
+        aClass1_171 = Class58.method978("Continue");
         aClass1_167 = aClass1_171;
-        aClass1_170 = Class58.method978(-11538, "(X");
+        aClass1_170 = Class58.method978("(X");
     }
 
     public int anInt140;

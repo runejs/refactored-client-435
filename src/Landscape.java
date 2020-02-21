@@ -40,27 +40,27 @@ public class Landscape {
     public static int[] anIntArray1186;
 
     static {
-        aClass1_1163 = Class58.method978(-11538, "glow1:");
-        aClass1_1158 = Class58.method978(-11538, "Enter amount:");
-        aClass1_1160 = Class58.method978(-11538, "Passwort: ");
+        aClass1_1163 = Class58.method978("glow1:");
+        aClass1_1158 = Class58.method978("Enter amount:");
+        aClass1_1160 = Class58.method978("Passwort: ");
         aClass1_1174 = aClass1_1158;
-        aClass1_1162 = Class58.method978(-11538, "@gre@");
-        aClass1_1176 = Class58.method978(-11538, "Loaded wordpack");
+        aClass1_1162 = Class58.method978("@gre@");
+        aClass1_1176 = Class58.method978("Loaded wordpack");
         aClass3Array1167 = new Class3[4];
         aClass1_1173 = aClass1_1176;
         anIntArrayArray1175 = new int[104][104];
         anInt1170 = 0;
         aClass1_1172
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "You are standing in a members)2only area)3");
         aClass1_1178 = aClass1_1172;
         aClass1_1161
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "Bitte wenden Sie sich an den Kundendienst)3");
-        aClass1_1183 = Class58.method978(-11538, "");
+        aClass1_1183 = Class58.method978("");
         anInt1171 = 0;
         aClass1_1169
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "Your ignore list is full)3 Max of 100 hit");
         aClass1_1181 = aClass1_1163;
         aClass1_1180 = aClass1_1169;

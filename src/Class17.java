@@ -10,7 +10,7 @@ public class Class17 {
     public static int anInt448;
     public static Cache aClass9_449;
     public static RSString aClass1_450
-            = Class58.method978(-11538, "Loading sprites )2 ");
+            = Class58.method978("Loading sprites )2 ");
     public static RSString aClass1_451;
     public static RSString aClass1_452 = aClass1_450;
     public static int anInt453;
@@ -18,7 +18,7 @@ public class Class17 {
     public static RSString aClass1_455;
     public static int[] anIntArray456;
     public static RSString aClass1_457
-            = Class58.method978(-11538, "Willkommen auf RuneScape");
+            = Class58.method978("Willkommen auf RuneScape");
     public static int anInt458;
     public static int anInt459;
     public static int anInt460;
@@ -31,11 +31,11 @@ public class Class17 {
 
     static {
         aClass1_451
-                = Class58.method978(-11538, "as it was used to break our rules)3");
+                = Class58.method978("as it was used to break our rules)3");
         aClass1_455 = aClass1_451;
         aClass9_449 = new Cache(128);
         anInt464 = 0;
-        aClass1_465 = Class58.method978(-11538, ":0");
+        aClass1_465 = Class58.method978(":0");
         anInt460 = 0;
         anIntArray466 = new int[256];
     }

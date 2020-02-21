@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.zip.CRC32;
 
 public class Class25 {
-    public static RSString STRING_CONNECTING_UPDATE_SERVER = Class58.method978(-11538, "Connecting to update server");
+    public static RSString STRING_CONNECTING_UPDATE_SERVER = Class58.method978("Connecting to update server");
     public static CRC32 aCRC32_590;
     public static RSString aClass1_591;
     public static int anInt592;
@@ -30,16 +30,16 @@ public class Class25 {
     public static RSString aClass1_615;
 
     static {
-        aClass1_606 = Class58.method978(-11538, "Add friend");
+        aClass1_606 = Class58.method978("Add friend");
         aClass1_591 = aClass1_606;
         aCRC32_590 = new CRC32();
-        aClass1_609 = Class58.method978(-11538, "blinken2:");
-        aClass1_610 = Class58.method978(-11538, "@red@");
+        aClass1_609 = Class58.method978("blinken2:");
+        aClass1_610 = Class58.method978("@red@");
         aClass1_611 = null;
         aClass1_613
-                = Class58.method978(-11538, "Verbindung mit Update)2Server)3)3)3");
+                = Class58.method978("Verbindung mit Update)2Server)3)3)3");
         anInt614 = -1;
-        aClass1_615 = Class58.method978(-11538, "huffman");
+        aClass1_615 = Class58.method978("huffman");
     }
 
     public int anInt587;

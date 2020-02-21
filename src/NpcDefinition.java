@@ -11,7 +11,7 @@ public class NpcDefinition extends SubNode {
     public static int anInt2379;
     public static RSString aClass1_2380;
     public static RSString aClass1_2383
-            = Class58.method978(-11538, "Please wait 1 minute and try again)3");
+            = Class58.method978("Please wait 1 minute and try again)3");
     public static RSString aClass1_2384;
     public static int[] anIntArray2386;
     public static RSString aClass1_2388;
@@ -44,19 +44,19 @@ public class NpcDefinition extends SubNode {
     static {
         aClass1_2380
                 = (Class58.method978
-                (-11538, "Moderator option: Mute player for 48 hours: <ON>"));
-        aClass1_2399 = Class58.method978(-11538, "Loaded fonts");
+                ("Moderator option: Mute player for 48 hours: <ON>"));
+        aClass1_2399 = Class58.method978("Loaded fonts");
         aClass1_2401 = aClass1_2383;
         aClass1_2384 = aClass1_2380;
         anInt2394 = 0;
         anInt2404 = 0;
         aClass1_2410 = aClass1_2383;
         aClass1_2392 = aClass1_2399;
-        aClass1_2408 = Class58.method978(-11538, "Unexpected server response");
+        aClass1_2408 = Class58.method978("Unexpected server response");
         aByteArray2416 = new byte[520];
-        aClass1_2417 = Class58.method978(-11538, "Versteckt");
-        aClass1_2423 = Class58.method978(-11538, "(X100(U(Y");
-        aClass1_2388 = Class58.method978(-11538, "Checking for updates )2 ");
+        aClass1_2417 = Class58.method978("Versteckt");
+        aClass1_2423 = Class58.method978("(X100(U(Y");
+        aClass1_2388 = Class58.method978("Checking for updates )2 ");
         aClass1_2396 = aClass1_2388;
         anInt2433 = -1;
         aClass1_2432 = aClass1_2408;

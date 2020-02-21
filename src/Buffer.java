@@ -72,11 +72,11 @@ public class Buffer extends Node {
     static {
         anIntArray1984 = new int[2000];
         anInt1987 = 0;
-        aClass1_1990 = Class58.method978(-11538, "Ausw-=hlen");
+        aClass1_1990 = Class58.method978("Ausw-=hlen");
         anInt1982 = 0;
         aClass1_1988
                 = (Class58.method978
-                (-11538, "Too many incorrect logins from your address)3"));
+                ("Too many incorrect logins from your address)3"));
         aClass1_1983 = aClass1_1988;
     }
 

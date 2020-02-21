@@ -5,7 +5,7 @@
 public class Class33 {
     public static int anInt775;
     public static int anInt776;
-    public static RSString aClass1_777 = Class58.method978(-11538, "Cabbage");
+    public static RSString aClass1_777 = Class58.method978("Cabbage");
     public static Cache aClass9_778;
     public static RSString aClass1_779;
     public static int anInt780;
@@ -30,19 +30,19 @@ public class Class33 {
     public static RSString aClass1_799;
 
     static {
-        aClass1_786 = Class58.method978(-11538, "::");
+        aClass1_786 = Class58.method978("::");
         aClass1_779
                 = (Class58.method978
-                (-11538,
+                (
                         "Bitte schlie-8en Sie die momentan ge-Offnete Benutzeroberfl-=che)1 bevor Sie die (WRegelversto-8 melden(W Option benutzen"));
         anInt784 = 0;
-        aClass1_796 = Class58.method978(-11538, "Loading config )2 ");
+        aClass1_796 = Class58.method978("Loading config )2 ");
         aClass1_797
-                = Class58.method978(-11538, "Spiel)2Engine wird gestartet)3)3)3");
-        aClass1_795 = Class58.method978(-11538, ")1");
+                = Class58.method978("Spiel)2Engine wird gestartet)3)3)3");
+        aClass1_795 = Class58.method978(")1");
         aClass1_783 = aClass1_796;
         aClass9_778 = new Cache(64);
-        aClass1_798 = Class58.method978(-11538, "No response from server)3");
+        aClass1_798 = Class58.method978("No response from server)3");
         aClass1_799 = aClass1_798;
     }
 

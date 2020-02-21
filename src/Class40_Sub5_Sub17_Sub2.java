@@ -21,7 +21,7 @@ public class Class40_Sub5_Sub17_Sub2 extends Class40_Sub5_Sub17 {
     public static RSString aClass1_3039;
     public static int anInt3040;
     public static RSString aClass1_3041
-            = Class58.method978(-11538, "Loaded gamescreen");
+            = Class58.method978("Loaded gamescreen");
     public static Class68 aClass68_3042;
     public static RSString aClass1_3043;
     public static RSString aClass1_3044;
@@ -32,16 +32,16 @@ public class Class40_Sub5_Sub17_Sub2 extends Class40_Sub5_Sub17 {
 
     static {
         anInt3040 = 0;
-        aClass1_3036 = Class58.method978(-11538, "Accept challenge");
-        aClass1_3037 = Class58.method978(-11538, "Okay");
+        aClass1_3036 = Class58.method978("Accept challenge");
+        aClass1_3037 = Class58.method978("Okay");
         aClass1_3038 = aClass1_3041;
-        aClass1_3047 = Class58.method978(-11538, "mapfunction");
+        aClass1_3047 = Class58.method978("mapfunction");
         aClass1_3043
-                = Class58.method978(-11538, "Bitte laden Sie die Seite neu)3");
-        aClass1_3046 = Class58.method978(-11538, "Absender:");
+                = Class58.method978("Bitte laden Sie die Seite neu)3");
+        aClass1_3046 = Class58.method978("Absender:");
         aClass1_3039 = aClass1_3036;
         anInt3048 = 1;
-        aClass1_3044 = Class58.method978(-11538, "");
+        aClass1_3044 = Class58.method978("");
     }
 
     public int anInt3016;
@@ -247,7 +247,7 @@ public class Class40_Sub5_Sub17_Sub2 extends Class40_Sub5_Sub17 {
                             30);
                     graphics_13_.setFont(Class17.aFont461);
                     graphics_13_.setColor(Color.white);
-                    rsString.method65((byte) -124,
+                    rsString.method65(
                             ((304
                                     + -rsString.method73(-48,
                                     Class8.aFontMetrics295))
@@ -270,7 +270,7 @@ public class Class40_Sub5_Sub17_Sub2 extends Class40_Sub5_Sub17 {
                             300 + -(3 * arg0), 30);
                     graphics.setFont(Class17.aFont461);
                     graphics.setColor(Color.white);
-                    rsString.method65((byte) -32,
+                    rsString.method65(
                             (-rsString.method73(-46, Class8.aFontMetrics295)
                                     + 304) / 2 + i,
                             22 + i_14_, graphics);

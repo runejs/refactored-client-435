@@ -12,10 +12,10 @@ public class Class40_Sub11 extends Node {
     public static RSString[] aClass1Array2153 = new RSString[1000];
     public static int anInt2158 = 0;
     public static RSString aClass1_2161
-            = Class58.method978(-11538, "headicons_pk");
+            = Class58.method978("headicons_pk");
     public static Class6 aClass6_2162;
     public static int anInt2163 = 0;
-    public static RSString aClass1_2164 = Class58.method978(-11538, "::fpsoff");
+    public static RSString aClass1_2164 = Class58.method978("::fpsoff");
     public int[] anIntArray2154;
     public int[] anIntArray2155;
     public Class15[] aClass15Array2156;

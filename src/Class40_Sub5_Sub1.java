@@ -15,13 +15,13 @@ public class Class40_Sub5_Sub1 extends SubNode {
     public static RSString aClass1_2277;
     public static int anInt2278;
     public static RSString aClass1_2279
-            = Class58.method978(-11538, "Lade Ignorieren)2Liste)3)3)3");
+            = Class58.method978("Lade Ignorieren)2Liste)3)3)3");
     public static int anInt2280;
     public static int anInt2281;
 
     static {
-        aClass1_2277 = Class58.method978(-11538, " )2> @cya@");
-        aClass1_2273 = Class58.method978(-11538, "To");
+        aClass1_2277 = Class58.method978(" )2> @cya@");
+        aClass1_2273 = Class58.method978("To");
         aClass1_2274 = aClass1_2273;
         anInt2280 = 0;
         anInt2278 = 0;

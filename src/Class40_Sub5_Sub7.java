@@ -10,14 +10,14 @@ public class Class40_Sub5_Sub7 extends SubNode {
     public static int anInt2469;
     public static int anInt2471;
     public static RSString aClass1_2472
-            = Class58.method978(-11538, ":tradereq:");
+            = Class58.method978(":tradereq:");
     public static DirectColorSprite[] aClass40_Sub5_Sub14_Sub4Array2474;
     public static RSString aClass1_2475;
     public static int anInt2478;
     public static int anInt2480;
     public static RSString aClass1_2481
             = (Class58.method978
-            (-11538,
+            (
                     "Gegenstand konnte nicht gefunden werden)1 verk-Urzen Sie den Suchbegriff)3"));
     public static DirectColorSprite aClass40_Sub5_Sub14_Sub4_2482;
     public static Class6 aClass6_2484;
@@ -31,10 +31,10 @@ public class Class40_Sub5_Sub7 extends SubNode {
 
     static {
         anInt2480 = 0;
-        aClass1_2488 = Class58.method978(-11538, "titlebox");
+        aClass1_2488 = Class58.method978("titlebox");
         aClass1_2475
-                = Class58.method978(-11538, "Bitte versuchen Sie es erneut)3");
-        aClass1_2487 = Class58.method978(-11538, "sch-Utteln:");
+                = Class58.method978("Bitte versuchen Sie es erneut)3");
+        aClass1_2487 = Class58.method978("sch-Utteln:");
     }
 
     public int[] anIntArray2466;

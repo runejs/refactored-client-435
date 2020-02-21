@@ -17,7 +17,7 @@ public class Class24 {
     public static int anInt586;
 
     static {
-        aClass1_575 = Class58.method978(-11538, "Freund hinzuf-Ugen");
+        aClass1_575 = Class58.method978("Freund hinzuf-Ugen");
         aClass6_Sub1Array580 = new Class6_Sub1[256];
         anIntArray581 = new int[4000];
         INCOMINGPACKETSIZES

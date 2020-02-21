@@ -10,13 +10,13 @@ public class ISAAC {
     public static int anInt504;
     public static boolean aBoolean505 = false;
     public static RSString aClass1_506
-            = Class58.method978(-11538, "titlebutton");
+            = Class58.method978("titlebutton");
     public static int anInt507;
     public static int anInt509 = 0;
     public static Cache aClass9_510 = new Cache(64);
     public static boolean aBoolean512;
     public static int anInt514;
-    public static RSString aClass1_515 = Class58.method978(-11538, ": ");
+    public static RSString aClass1_515 = Class58.method978(": ");
     public static Cache aClass9_516;
     public static RSString aClass1_517;
     public static RSString aClass1_518;
@@ -33,18 +33,18 @@ public class ISAAC {
     public static RSString aClass1_529;
 
     static {
-        aClass1_517 = Class58.method978(-11538, "Gegenstand f-Ur Mitglieder");
+        aClass1_517 = Class58.method978("Gegenstand f-Ur Mitglieder");
         anInt522 = -1;
         aClass1_518
-                = Class58.method978(-11538, "Invalid username or password)3");
+                = Class58.method978("Invalid username or password)3");
         aClass1_526 = aClass1_518;
-        aClass1_527 = Class58.method978(-11538, "blinken3:");
+        aClass1_527 = Class58.method978("blinken3:");
         aClass1_523
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "oberen Rand der Webseite ausw-=hlen)3");
         aClass9_516 = new Cache(64);
         aClass1_529
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "Begeben Sie sich in ein freies Gebiet)1 um");
     }
 

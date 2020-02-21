@@ -5,14 +5,14 @@
 import java.util.zip.CRC32;
 
 public class Class65 {
-    public static RSString aClass1_1530 = Class58.method978(-11538, "Abbrechen");
+    public static RSString aClass1_1530 = Class58.method978("Abbrechen");
     public static CRC32 aCRC32_1531 = new CRC32();
     public static int anInt1532;
     public static Class6_Sub1 aClass6_Sub1_1533;
     public static int anInt1534;
     public static RSString aClass1_1535
-            = Class58.method978(-11538, "Please reload this page)3");
-    public static RSString aClass1_1536 = Class58.method978(-11538, " x ");
+            = Class58.method978("Please reload this page)3");
+    public static RSString aClass1_1536 = Class58.method978(" x ");
     public static int anInt1537;
     public static RSString aClass1_1538 = aClass1_1535;
     public static int anInt1539;

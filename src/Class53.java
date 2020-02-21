@@ -5,7 +5,7 @@
 import java.awt.*;
 
 public class Class53 {
-    public static RSString aClass1_1243 = Class58.method978(-11538, "@whi@ )4 ");
+    public static RSString aClass1_1243 = Class58.method978("@whi@ )4 ");
     public static int anInt1245;
     public static RSString aClass1_1246;
     public static Cache aClass9_1247;
@@ -28,24 +28,24 @@ public class Class53 {
     public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_1270;
 
     static {
-        aClass1_1246 = Class58.method978(-11538, " hat sich ausgeloggt)3");
+        aClass1_1246 = Class58.method978(" hat sich ausgeloggt)3");
         aClass1_1260
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "go back to the main RuneScape webpage");
-        aClass1_1263 = Class58.method978(-11538, "nicht hergestellt werden)3");
+        aClass1_1263 = Class58.method978("nicht hergestellt werden)3");
         aClass1_1255
-                = Class58.method978(-11538, "and choose the (Wcreate account(W");
+                = Class58.method978("and choose the (Wcreate account(W");
         aClass1_1259 = aClass1_1260;
         aClass1_1251 = aClass1_1255;
         aClass9_1247 = new Cache(64);
         aClass9_1264 = new Cache(50);
-        aClass1_1266 = Class58.method978(-11538, "backright2");
+        aClass1_1266 = Class58.method978("backright2");
         aLongArray1267 = new long[100];
         aClass1_1265
-                = Class58.method978(-11538, "auf einer freien Welt zu spielen)3");
+                = Class58.method978("auf einer freien Welt zu spielen)3");
         aClass1_1269
                 = (Class58.method978
-                (-11538,
+                (
                         "Moderator)2Option: Spieler f-Ur 48 Stunden stumm schalten: <ON>"));
     }
 
@@ -597,7 +597,7 @@ public class Class53 {
                             (-(Class67.anInt1607 * 3)
                                     + 300),
                             30, 0);
-                    arg1.method686(Class22_Sub2.aClass1_1898, 180, -i + 105,
+                    arg1.method686(Class22_Sub2.currentLoadingText, 180, -i + 105,
                             16777215);
                 }
                 if ((Class51.anInt1197 ^ 0xffffffff) == -21) {

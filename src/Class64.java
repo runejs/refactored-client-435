@@ -10,12 +10,12 @@ import java.net.Socket;
 
 public class Class64 implements Runnable {
     public static RSString aClass1_1500
-            = Class58.method978(-11538, "Your account has been disabled)3");
+            = Class58.method978("Your account has been disabled)3");
     public static int anInt1501;
     public static RSString aClass1_1502
-            = Class58.method978(-11538, "Wordpack geladen)3");
+            = Class58.method978("Wordpack geladen)3");
     public static RSString aClass1_1505
-            = Class58.method978(-11538, "Handel akzeptieren");
+            = Class58.method978("Handel akzeptieren");
     public static int anInt1506;
     public static int anInt1507;
     public static int anInt1511 = -1;
@@ -34,9 +34,9 @@ public class Class64 implements Runnable {
     public static int anInt1529;
 
     static {
-        aClass1_1523 = Class58.method978(-11538, "");
-        aClass1_1524 = Class58.method978(-11538, "Menge eingeben:");
-        aClass1_1517 = Class58.method978(-11538, "redstone3");
+        aClass1_1523 = Class58.method978("");
+        aClass1_1524 = Class58.method978("Menge eingeben:");
+        aClass1_1517 = Class58.method978("redstone3");
         anInt1529 = 99;
     }
 

@@ -13,9 +13,9 @@ public class Class55 {
     public static int anInt1290;
     public static RSString aClass1_1291;
     public static RSString aClass1_1292
-            = Class58.method978(-11538, "bevor Sie den Vorgang wiederholen)3");
+            = Class58.method978("bevor Sie den Vorgang wiederholen)3");
     public static int anInt1293;
-    public static RSString aClass1_1294 = Class58.method978(-11538, "slide:");
+    public static RSString aClass1_1294 = Class58.method978("slide:");
     public static volatile int anInt1295;
     public static int anInt1296;
     public static int anInt1297;
@@ -33,10 +33,10 @@ public class Class55 {
 
     static {
         anInt1295 = 0;
-        aClass1_1300 = Class58.method978(-11538, "(U4");
+        aClass1_1300 = Class58.method978("(U4");
         aClass1_1291 = aClass1_1294;
         aClass1_1301
-                = Class58.method978(-11538, "Invalid loginserver requested)3");
+                = Class58.method978("Invalid loginserver requested)3");
         anInt1296 = -1;
         aClass1_1298 = aClass1_1301;
         anInt1304 = 0;

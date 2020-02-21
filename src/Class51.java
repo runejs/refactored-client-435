@@ -17,7 +17,7 @@ public class Class51 {
     public static RSString aClass1_1196;
     public static int anInt1197;
     public static int[] anIntArray1198;
-    public static RSString aClass1_1199 = Class58.method978(-11538, "(Y");
+    public static RSString aClass1_1199 = Class58.method978("(Y");
     public static RSString aClass1_1200;
     public static RSString aClass1_1201;
     public static int anInt1202;
@@ -34,13 +34,13 @@ public class Class51 {
         anInt1197 = 0;
         anInt1205 = -1;
         aClass1_1201
-                = Class58.method978(-11538, "Enter name of player to add to list");
+                = Class58.method978("Enter name of player to add to list");
         aClass1_1200 = aClass1_1201;
-        aClass1_1207 = Class58.method978(-11538, "Accept trade");
+        aClass1_1207 = Class58.method978("Accept trade");
         aClass1_1208 = aClass1_1207;
         anInt1195 = 0;
-        aClass1_1209 = Class58.method978(-11538, "glow3:");
-        aClass1_1210 = Class58.method978(-11538, "@cr1@");
+        aClass1_1209 = Class58.method978("glow3:");
+        aClass1_1210 = Class58.method978("@cr1@");
         aLong1203 = 0L;
         aClass1_1196 = aClass1_1209;
     }

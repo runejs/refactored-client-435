@@ -4,11 +4,11 @@
 
 public class Class39 implements Runnable {
     public static RSString aClass1_898
-            = Class58.method978(-11538,
+            = Class58.method978(
             " steht bereits auf Ihrer Freunde)2Liste(Q");
     public static RSString aClass1_899
-            = Class58.method978(-11538, "Benutzen Sie bitte eine andere Welt)3");
-    public static RSString aClass1_900 = Class58.method978(-11538, "Ok");
+            = Class58.method978("Benutzen Sie bitte eine andere Welt)3");
+    public static RSString aClass1_900 = Class58.method978("Ok");
     public static int anInt901;
     public static int anInt902;
     public static int anInt903;
@@ -19,7 +19,7 @@ public class Class39 implements Runnable {
     public static int anInt909;
     public static RSString aClass1_910;
     public static RSString aClass1_911
-            = Class58.method978(-11538, "Spiel)2Fenster geladen)3");
+            = Class58.method978("Spiel)2Fenster geladen)3");
     public static int anInt912;
     public static RSString aClass1_914;
     public static RSString aClass1_915;
@@ -30,14 +30,14 @@ public class Class39 implements Runnable {
 
     static {
         aClass1_910
-                = Class58.method978(-11538, " from your ignore list first");
+                = Class58.method978(" from your ignore list first");
         anInt909 = 0;
-        aClass1_914 = Class58.method978(-11538, "Stufe)2");
+        aClass1_914 = Class58.method978("Stufe)2");
         aBoolean906 = false;
         aClass1_917 = aClass1_910;
         anInt912 = 20;
         aClass1_919 = aClass1_900;
-        aClass1_915 = Class58.method978(-11538, " more options");
+        aClass1_915 = Class58.method978(" more options");
         aClass1_904 = aClass1_915;
     }
 

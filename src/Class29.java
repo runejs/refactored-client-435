@@ -4,11 +4,11 @@
 
 public class Class29 {
     public static int anInt669;
-    public static RSString aClass1_670 = Class58.method978(-11538, "@or3@");
-    public static RSString aClass1_671 = Class58.method978(-11538, "mapscene");
+    public static RSString aClass1_670 = Class58.method978("@or3@");
+    public static RSString aClass1_671 = Class58.method978("mapscene");
     public static int anInt672;
     public static int anInt673 = -1;
-    public static RSString aClass1_674 = Class58.method978(-11538, " x");
+    public static RSString aClass1_674 = Class58.method978(" x");
     public static int anInt675;
     public static Class64 aClass64_676;
     public static int anInt677;

@@ -22,8 +22,8 @@ public class Class32 {
     static {
         packetBuffer = new PacketBuffer(5000);
         anInt770 = 0;
-        aClass1_772 = Class58.method978(-11538, "title)3jpg");
-        aClass1_766 = Class58.method978(-11538, "Ignorieren");
+        aClass1_772 = Class58.method978("title)3jpg");
+        aClass1_766 = Class58.method978("Ignorieren");
         anIntArray774 = new int[]{12800, 12800, 12800, 12800, 12800, 12800,
                 12800, 12800, 12800, 12800, 12800, 12800,
                 12800, 12800, 12800, 12800};

@@ -9,13 +9,13 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Class40_Sub5_Sub17 {
     public static int anInt3084;
     public static int anInt3085;
     public static RSString aClass1_3092
-            = Class58.method978(-11538, "Loaded textures");
+            = Class58.method978("Loaded textures");
     public static int anInt3103;
     public static int anInt3106;
     public static int anInt3108;
     public static int[] anIntArray3111;
     public static RSString aClass1_3114
-            = Class58.method978(-11538, "Login limit exceeded)3");
+            = Class58.method978("Login limit exceeded)3");
     public static BigInteger rsaModulus;
     public static int anInt3121;
     public static RSString aClass1_3124 = aClass1_3092;
@@ -48,13 +48,13 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Class40_Sub5_Sub17 {
         aClass40_Sub5_Sub17_Sub4_Sub1Array3156
                 = new Player[2048];
         anInt3153 = 0;
-        aClass1_3154 = Class58.method978(-11538, "Lade Schrifts-=tze )2 ");
+        aClass1_3154 = Class58.method978("Lade Schrifts-=tze )2 ");
         aClass1_3155
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "Please wait )2 attempting to reestablish");
         aClass1_3159 = aClass1_3155;
         anIntArray3149 = new int[1000];
-        aClass1_3158 = Class58.method978(-11538, "Registrierter Benutzer");
+        aClass1_3158 = Class58.method978("Registrierter Benutzer");
         aClass1Array3160 = new RSString[100];
     }
 

@@ -4,7 +4,7 @@
 
 public class Class40_Sub5_Sub9 extends SubNode {
     public static int anInt2562;
-    public static RSString aClass1_2564 = Class58.method978(-11538, "Welt");
+    public static RSString aClass1_2564 = Class58.method978("Welt");
     public static RSString aClass1_2566;
     public static DirectColorSprite[] aClass40_Sub5_Sub14_Sub4Array2567;
     public static int anInt2569;
@@ -24,9 +24,9 @@ public class Class40_Sub5_Sub9 extends SubNode {
 
     static {
         anInt2562 = -1;
-        aClass1_2570 = Class58.method978(-11538, "flash2:");
+        aClass1_2570 = Class58.method978("flash2:");
         aClass1_2566 = aClass1_2570;
-        aClass1_2583 = Class58.method978(-11538, " million");
+        aClass1_2583 = Class58.method978(" million");
         aClass1_2577 = aClass1_2583;
     }
 

@@ -7,7 +7,7 @@ public class Class40_Sub5_Sub8 extends SubNode {
     public static int anInt2509;
     public static int anInt2514;
     public static Class68 aClass68_2524;
-    public static RSString aClass1_2526 = Class58.method978(-11538, "(Udns");
+    public static RSString aClass1_2526 = Class58.method978("(Udns");
     public static int anInt2529;
     public static int anInt2531;
     public static int anInt2532;
@@ -21,7 +21,7 @@ public class Class40_Sub5_Sub8 extends SubNode {
     public static int anInt2554;
     public static int anInt2555;
     public static RSString aClass1_2556
-            = Class58.method978(-11538, "blaugr-Un:");
+            = Class58.method978("blaugr-Un:");
     public static int anInt2557;
     public static int anInt2558;
     public static int anInt2559 = 0;
@@ -30,7 +30,7 @@ public class Class40_Sub5_Sub8 extends SubNode {
 
     static {
         anInt2557 = 0;
-        aClass1_2560 = Class58.method978(-11538, ": ");
+        aClass1_2560 = Class58.method978(": ");
         aLong2561 = 0L;
         anInt2558 = 0;
     }

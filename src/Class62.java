@@ -40,13 +40,13 @@ public class Class62
         anInt1450 = -1;
         aClass9_1455 = new Cache(50);
         aClass1_1464
-                = Class58.method978(-11538, " is already on your friend list");
+                = Class58.method978(" is already on your friend list");
         aClass1_1465 = aClass1_1464;
         aClass40_Sub5_Sub14_Sub4Array1466 = new DirectColorSprite[1000];
-        aClass1_1463 = Class58.method978(-11538, "wave2:");
+        aClass1_1463 = Class58.method978("wave2:");
         anInt1470 = 0;
         anInt1472 = 78;
-        aClass1_1471 = Class58.method978(-11538, "Lade Titelbild )2 ");
+        aClass1_1471 = Class58.method978("Lade Titelbild )2 ");
         aClass1_1474 = aClass1_1463;
     }
 

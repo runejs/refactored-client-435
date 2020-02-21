@@ -22,10 +22,10 @@ public class Class40_Sub5_Sub11 extends SubNode {
     static {
         anIntArray2626 = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
                 -1, -1, -1, -1, -1};
-        aClass1_2630 = Class58.method978(-11538, "Hide");
+        aClass1_2630 = Class58.method978("Hide");
         aClass1_2623
-                = Class58.method978(-11538, "button near the top of that page)3");
-        aClass1_2627 = Class58.method978(-11538, "yellow:");
+                = Class58.method978("button near the top of that page)3");
+        aClass1_2627 = Class58.method978("yellow:");
         aClass1_2620 = aClass1_2627;
         aBoolean2631 = true;
         aClass1_2622 = aClass1_2630;

@@ -13,12 +13,12 @@ public class Class8 {
     public static Calendar aCalendar279;
     public static int anInt280;
     public static int anInt282;
-    public static RSString aClass1_281 = Class58.method978(-11538, "backright1");
+    public static RSString aClass1_281 = Class58.method978("backright1");
     public static int anInt283;
     public static Class6 aClass6_284;
     public static int anInt285;
     public static RSString aClass1_286
-            = Class58.method978(-11538, "Unexpected loginserver response)3");
+            = Class58.method978("Unexpected loginserver response)3");
     public static int anInt287;
     public static long aLong288;
     public static int anInt289;
@@ -42,21 +42,21 @@ public class Class8 {
     static {
         aClass1_278 = aClass1_286;
         aCalendar279 = Calendar.getInstance();
-        aClass1_299 = Class58.method978(-11538, "runes");
+        aClass1_299 = Class58.method978("runes");
         anInt290 = 0;
         aByte302 = (byte) 0;
-        aClass1_303 = Class58.method978(-11538, "_");
+        aClass1_303 = Class58.method978("_");
         anInt292 = 0;
-        aClass1_293 = Class58.method978(-11538, "Duell akzeptieren");
-        aClass1_300 = Class58.method978(-11538, "welle2:");
+        aClass1_293 = Class58.method978("Duell akzeptieren");
+        aClass1_300 = Class58.method978("welle2:");
         anIntArray297 = new int[5];
         aClass1_291
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "You have only just left another world)3");
         aClass1_294 = aClass1_291;
         anInt301 = 0;
-        aClass1_305 = Class58.method978(-11538, "");
-        aClass1_304 = Class58.method978(-11538, "backhmid2");
+        aClass1_305 = Class58.method978("");
+        aClass1_304 = Class58.method978("backhmid2");
     }
 
     public Class8(int arg0) {

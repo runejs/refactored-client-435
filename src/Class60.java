@@ -12,7 +12,7 @@ public class Class60 {
     public static int anInt1406;
     public static int anInt1407;
     public static RSString aClass1_1408
-            = Class58.method978(-11538, "auf der Hautpseite)3");
+            = Class58.method978("auf der Hautpseite)3");
     public static RSString aClass1_1409;
     public static int anInt1410;
     public static RSString aClass1_1411;
@@ -25,11 +25,11 @@ public class Class60 {
     public static int anInt1418;
 
     static {
-        aClass1_1401 = Class58.method978(-11538, ",Zffentlicher Chat");
+        aClass1_1401 = Class58.method978(",Zffentlicher Chat");
         aClass1_1411
-                = Class58.method978(-11538, "Error loading your profile)3");
+                = Class58.method978("Error loading your profile)3");
         aClass1_1409
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "Wen m-Ochten Sie von der Liste entfernen?");
         anInt1407 = 0;
         aClass1_1416 = aClass1_1411;

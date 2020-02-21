@@ -13,7 +13,7 @@ public class Class45 {
     public static DirectColorSprite aClass40_Sub5_Sub14_Sub4_1057;
     public static int anInt1058;
     public static RSString aClass1_1059
-            = Class58.method978(-11538, "Bitte entfernen Sie ");
+            = Class58.method978("Bitte entfernen Sie ");
     public static int anInt1060;
     public static int anInt1061;
     public static int anInt1062;
@@ -43,19 +43,19 @@ public class Class45 {
     static {
         anInt1073 = 0;
         aClass45_1064 = new Class45();
-        aClass1_1077 = Class58.method978(-11538, "(U2");
-        aClass1_1080 = Class58.method978(-11538, "cyan:");
+        aClass1_1077 = Class58.method978("(U2");
+        aClass1_1080 = Class58.method978("cyan:");
         aClass1_1076 = aClass1_1080;
         aClass1_1078
                 = (Class58.method978
-                (-11538,
+                (
                         "(WSpielkonto wiederherstellen(W Option auf der Hauptseite)3"));
         aClass1_1079
-                = Class58.method978(-11538, "Name des Gegenstands eingeben:");
+                = Class58.method978("Name des Gegenstands eingeben:");
         aClass40_Sub1_1081 = new Buffer(8);
         anIntArray1083 = new int[1000];
-        aClass1_1084 = Class58.method978(-11538, "Texturen geladen)3");
-        aClass1_1085 = Class58.method978(-11538, "m");
+        aClass1_1084 = Class58.method978("Texturen geladen)3");
+        aClass1_1085 = Class58.method978("m");
         aClass30_1082 = new Class30();
     }
 

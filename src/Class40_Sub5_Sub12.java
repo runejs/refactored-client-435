@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 public class Class40_Sub5_Sub12 extends SubNode {
     public static int anInt2634;
     public static int anInt2635;
-    public static RSString aClass1_2637 = Class58.method978(-11538, "glow2:");
+    public static RSString aClass1_2637 = Class58.method978("glow2:");
     public static int anInt2638;
     public static int anInt2646;
     public static int anInt2652;
@@ -25,7 +25,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public static int anInt2700;
     public static int anInt2705;
     public static RSString aClass1_2706
-            = Class58.method978(-11538, "Choose Option");
+            = Class58.method978("Choose Option");
     public static RSString aClass1_2716;
     public static int anInt2717;
     public static int anInt2724;
@@ -37,17 +37,17 @@ public class Class40_Sub5_Sub12 extends SubNode {
 
     static {
         aClass1_2678
-                = Class58.method978(-11538, "Enter name of friend to add to list");
-        aClass1_2729 = Class58.method978(-11538, "@cr2@");
+                = Class58.method978("Enter name of friend to add to list");
+        aClass1_2729 = Class58.method978("@cr2@");
         aClass1_2684 = aClass1_2706;
-        aClass1_2691 = Class58.method978(-11538, "::errortest");
+        aClass1_2691 = Class58.method978("::errortest");
         aClass1_2716
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "Fehler beim Laden Ihres Charakter)2Profils");
         aClass1_2671 = aClass1_2637;
         packetsize = 0;
         aClass1_2740 = aClass1_2678;
-        aClass1_2686 = Class58.method978(-11538, "Starting game engine)3)3)3");
+        aClass1_2686 = Class58.method978("Starting game engine)3)3)3");
         aClass1_2674 = aClass1_2686;
     }
 

@@ -12,7 +12,7 @@ public class Class61 {
     public static RSString aClass1_1427;
     public static RSString aClass1_1428;
     public static RSString aClass1_1429
-            = Class58.method978(-11538, "wishes to duel with you)3");
+            = Class58.method978("wishes to duel with you)3");
     public static int anInt1431;
     public static RSString aClass1_1432;
     public static int anInt1434;
@@ -30,24 +30,24 @@ public class Class61 {
     public static RSString aClass1_1446;
 
     static {
-        aClass1_1425 = Class58.method978(-11538, "Username: ");
-        aClass1_1427 = Class58.method978(-11538, "mapedge");
+        aClass1_1425 = Class58.method978("Username: ");
+        aClass1_1427 = Class58.method978("mapedge");
         aClass1_1422 = aClass1_1425;
         anIntArrayArray1435 = new int[104][104];
-        aClass1_1438 = Class58.method978(-11538, "System update in: ");
+        aClass1_1438 = Class58.method978("System update in: ");
         aClass1_1439
                 = (Class58.method978
-                (-11538, "To play on this world move to a free area first"));
+                ("To play on this world move to a free area first"));
         aClass1_1426
-                = Class58.method978(-11538, "Ladevorgang )2 bitte warten Sie)3");
-        aClass1_1440 = Class58.method978(-11538, "backleft1");
+                = Class58.method978("Ladevorgang )2 bitte warten Sie)3");
+        aClass1_1440 = Class58.method978("backleft1");
         aClass1_1432 = aClass1_1438;
         aClass1_1428 = aClass1_1429;
-        aClass1_1437 = Class58.method978(-11538, "null");
+        aClass1_1437 = Class58.method978("null");
         aBoolean1444 = false;
         aClass1_1421 = aClass1_1439;
         packetBuffer = new PacketBuffer(5000);
-        aClass1_1446 = Class58.method978(-11538, "Fps:");
+        aClass1_1446 = Class58.method978("Fps:");
     }
 
     public Class40_Sub5_Sub1 aClass40_Sub5_Sub1_1419;

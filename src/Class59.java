@@ -18,8 +18,8 @@ public class Class59 {
     public static RSString aClass1_1391;
     public static Class54 aClass54_1392;
     public static int[] anIntArray1393;
-    public static RSString aClass1_1394 = Class58.method978(-11538, "Hidden");
-    public static RSString aClass1_1395 = Class58.method978(-11538, "backbase1");
+    public static RSString aClass1_1394 = Class58.method978("Hidden");
+    public static RSString aClass1_1395 = Class58.method978("backbase1");
     public static RSString aClass1_1396;
     public static long[] aLongArray1397;
     public static int[] anIntArray1398;
@@ -29,7 +29,7 @@ public class Class59 {
         anIntArray1393 = new int[500];
         aClass1_1391
                 = (Class58.method978
-                (-11538,
+                (
                         "Your friendlist is full)3 Max of 100 for free users)1 and 200 for members"));
         aClass1_1396 = aClass1_1394;
         aClass1_1399 = aClass1_1391;

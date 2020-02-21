@@ -12,7 +12,7 @@ public class Class40_Sub4 extends Node {
     public static RSString aClass1_2044;
     public static int anInt2045;
     public static RSString aClass1_2046
-            = Class58.method978(-11538, "Verbindung mit Freunde)2Server)3)3)3");
+            = Class58.method978("Verbindung mit Freunde)2Server)3)3)3");
     public static RSString aClass1_2047;
     public static int[] anIntArray2048;
     public static int anInt2049;
@@ -26,11 +26,11 @@ public class Class40_Sub4 extends Node {
     public static RSString aClass1_2057;
 
     static {
-        aClass1_2044 = Class58.method978(-11538, "Schrifts-=tze geladen)3");
+        aClass1_2044 = Class58.method978("Schrifts-=tze geladen)3");
         aClass1_2051
-                = Class58.method978(-11538, "m-Ochte sich mit Ihnen duellieren)3");
+                = Class58.method978("m-Ochte sich mit Ihnen duellieren)3");
         aClass1_2055
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "Please try using a different world)3");
         aClass1_2050 = aClass1_2055;
         aClass1_2047 = aClass1_2055;

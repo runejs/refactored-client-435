@@ -7,7 +7,7 @@ import java.awt.*;
 public class Class35 implements Interface3 {
     public static int anInt1719;
     public static RSString aClass1_1720
-            = Class58.method978(-11538, "Enter object name");
+            = Class58.method978("Enter object name");
     public static int anInt1721;
     public static int anInt1722;
     public static int anInt1723;
@@ -37,7 +37,7 @@ public class Class35 implements Interface3 {
 
     static {
         aClass1_1726
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "Wen m-Ochten Sie der Liste hinzuf-Ugen?");
         anInt1733 = 0;
         anIntArray1738 = new int[]{9104, 10275, 7595, 3610, 7975, 8526, 918,
@@ -45,14 +45,14 @@ public class Class35 implements Interface3 {
                 16565, 34991, 25486};
         aBoolean1734 = false;
         anInt1737 = 0;
-        aClass1_1731 = Class58.method978(-11538, "Handel)4Duell");
+        aClass1_1731 = Class58.method978("Handel)4Duell");
         anInt1728 = 0;
-        aClass1_1725 = Class58.method978(-11538, "null");
+        aClass1_1725 = Class58.method978("null");
         aBoolean1735 = true;
         aClass1_1747 = aClass1_1720;
-        aClass1_1736 = Class58.method978(-11538, "Enter message to send to ");
+        aClass1_1736 = Class58.method978("Enter message to send to ");
         aClass1_1743
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "und haben es deaktiviert)3 Benutzen Sie die");
         aClass1_1746 = aClass1_1736;
     }

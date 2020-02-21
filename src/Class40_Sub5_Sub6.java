@@ -33,31 +33,24 @@ public class Class40_Sub5_Sub6 extends SubNode {
     public static RSString aClass1_2457;
     public static RSString aClass1_2458;
     public static RSString aClass1_2459;
-    public static RSString aClass1_2460;
+    public static RSString aClass1_2460  = Class58.method978("RuneScape has been updated(Q");
     public static RSString aClass1_2461;
     public static RSString aClass1_2462;
-    public static RSString aClass1_2463;
 
     static {
-        aClass1_2434 = Class58.method978(-11538, ":duelreq:");
-        aClass1_2447 = Class58.method978(-11538, "@yel@*V");
-        aClass1_2440 = Class58.method978(-11538, "Enter name:");
+        aClass1_2434 = Class58.method978(":duelreq:");
+        aClass1_2447 = Class58.method978("@yel@*V");
+        aClass1_2440 = Class58.method978("Enter name:");
         aClass1_2446 = aClass1_2440;
-        aClass1_2442 = Class58.method978(-11538, "scroll:");
+        aClass1_2442 = Class58.method978("scroll:");
         aClass1_2438 = aClass1_2442;
         anInt2452 = 0;
         anInt2451 = 0;
         aClass9_2439 = new Cache(64);
-        aClass1_2457
-                = (Class58.method978
-                (-11538, " steht bereits auf Ihrer Ignorieren)2Liste(Q"));
-        aClass1_2459 = Class58.method978(-11538, "From");
+        aClass1_2457 = (Class58.method978(" steht bereits auf Ihrer Ignorieren)2Liste(Q"));
+        aClass1_2459 = Class58.method978("From");
         aClass1_2458 = aClass1_2459;
-        aClass1_2461
-                = Class58.method978(-11538, "Error connecting to server)3");
-        aClass1_2463
-                = Class58.method978(-11538, "RuneScape has been updated(Q");
-        aClass1_2460 = aClass1_2463;
+        aClass1_2461 = Class58.method978("Error connecting to server)3");
         aClass1_2462 = aClass1_2461;
     }
 
@@ -78,7 +71,6 @@ public class Class40_Sub5_Sub6 extends SubNode {
         aClass1_2446 = null;
         aClass1_2434 = null;
         aClass1_2459 = null;
-        aClass1_2463 = null;
         aClass1_2447 = null;
         aClass1_2438 = null;
         aClass67Array2436 = null;

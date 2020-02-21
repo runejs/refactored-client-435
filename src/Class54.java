@@ -9,7 +9,7 @@ import java.awt.event.KeyListener;
 
 public class Class54 implements KeyListener, FocusListener {
     public static RSString aClass1_1271
-            = Class58.method978(-11538, "Benutzername: ");
+            = Class58.method978("Benutzername: ");
     public static int anInt1272;
     public static int anInt1273;
     public static int anInt1274;
@@ -36,8 +36,8 @@ public class Class54 implements KeyListener, FocusListener {
             }
             anIntArray1282[i] = i_6_;
         }
-        aClass1_1283 = Class58.method978(-11538, "@yel@");
-        aClass1_1284 = Class58.method978(-11538, "compass");
+        aClass1_1283 = Class58.method978("@yel@");
+        aClass1_1284 = Class58.method978("compass");
     }
 
     public static void method953(byte arg0) {

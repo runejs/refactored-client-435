@@ -8,7 +8,7 @@ public class Class13 {
     public static int worldid;
     public static int[] anIntArray403 = new int[25];
     public static RSString aClass1_404
-            = Class58.method978(-11538,
+            = Class58.method978(
             "Enter name of friend to delete from list");
     public static RSString aClass1_405;
     public static Cache aClass9_406;
@@ -32,15 +32,15 @@ public class Class13 {
     static {
         worldid = 1;
         aClass1_411
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "Unerwartete Antwort vom Anmelde)2Server)3");
         aBooleanArray414 = new boolean[5];
         aClass1_417 = aClass1_404;
-        aClass1_412 = Class58.method978(-11538, "Loading friend list");
+        aClass1_412 = Class58.method978("Loading friend list");
         aClass1_405 = aClass1_412;
         aClass9_406 = new Cache(64);
         anInt419 = 2;
-        aClass1_422 = Class58.method978(-11538, "oder ung-Ultiges Passwort)3");
+        aClass1_422 = Class58.method978("oder ung-Ultiges Passwort)3");
         anInt420 = 0;
     }
 

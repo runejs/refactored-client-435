@@ -12,7 +12,7 @@ public class Class43 {
     public static int anInt1018;
     public static RSString aClass1_1019;
     public static int anInt1020 = 0;
-    public static RSString aClass1_1021 = Class58.method978(-11538, "flash1:");
+    public static RSString aClass1_1021 = Class58.method978("flash1:");
     public static Class45 aClass45_1022;
     public static int anInt1023;
     public static RSString aClass1_1024;
@@ -24,11 +24,11 @@ public class Class43 {
     static {
         aClass1_1019 = aClass1_1021;
         aClass45_1022 = new Class45();
-        aClass1_1024 = Class58.method978(-11538, "backleft2");
-        aClass1_1027 = Class58.method978(-11538, ":");
+        aClass1_1024 = Class58.method978("backleft2");
+        aClass1_1027 = Class58.method978(":");
         anInt1025 = 0;
         anInt1028 = -1;
-        aClass1_1026 = Class58.method978(-11538, "Schlie-8en");
+        aClass1_1026 = Class58.method978("Schlie-8en");
     }
 
     public static void method890(long arg0, int arg1) {

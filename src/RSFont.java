@@ -11,7 +11,7 @@ public class RSFont extends Rasterizer {
     public static RSString aClass1_2896;
     public static RSString[] aClass1Array2897 = new RSString[100];
     public static RSString aClass1_2898;
-    public static RSString aClass1_2899 = Class58.method978(-11538, "dbl");
+    public static RSString aClass1_2899 = Class58.method978("dbl");
     public static RSString aClass1_2900;
     public static RSString aClass1_2901;
     public static RSString aClass1_2903;
@@ -26,23 +26,23 @@ public class RSFont extends Rasterizer {
     public static RSString aClass1_2917;
 
     static {
-        aClass1_2894 = Class58.method978(-11538, "or1");
-        aClass1_2896 = Class58.method978(-11538, "mag");
-        aClass1_2903 = Class58.method978(-11538, "red");
-        aClass1_2893 = Class58.method978(-11538, "cya");
-        aClass1_2905 = Class58.method978(-11538, "or2");
-        aClass1_2900 = Class58.method978(-11538, "gr1");
-        aClass1_2906 = Class58.method978(-11538, "bla");
-        aClass1_2895 = Class58.method978(-11538, "blu");
-        aClass1_2912 = Class58.method978(-11538, "lre");
-        aClass1_2913 = Class58.method978(-11538, "dre");
-        aClass1_2901 = Class58.method978(-11538, "gr2");
-        aClass1_2908 = Class58.method978(-11538, "str");
-        aClass1_2904 = Class58.method978(-11538, "gre");
-        aClass1_2909 = Class58.method978(-11538, "or3");
-        aClass1_2917 = Class58.method978(-11538, "yel");
-        aClass1_2916 = Class58.method978(-11538, "gr3");
-        aClass1_2898 = Class58.method978(-11538, "whi");
+        aClass1_2894 = Class58.method978("or1");
+        aClass1_2896 = Class58.method978("mag");
+        aClass1_2903 = Class58.method978("red");
+        aClass1_2893 = Class58.method978("cya");
+        aClass1_2905 = Class58.method978("or2");
+        aClass1_2900 = Class58.method978("gr1");
+        aClass1_2906 = Class58.method978("bla");
+        aClass1_2895 = Class58.method978("blu");
+        aClass1_2912 = Class58.method978("lre");
+        aClass1_2913 = Class58.method978("dre");
+        aClass1_2901 = Class58.method978("gr2");
+        aClass1_2908 = Class58.method978("str");
+        aClass1_2904 = Class58.method978("gre");
+        aClass1_2909 = Class58.method978("or3");
+        aClass1_2917 = Class58.method978("yel");
+        aClass1_2916 = Class58.method978("gr3");
+        aClass1_2898 = Class58.method978("whi");
     }
 
     public Random aRandom2902;

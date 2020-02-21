@@ -36,12 +36,12 @@ public class Class66 {
     public static int anInt1573;
 
     static {
-        aClass1_1544 = Class58.method978(-11538, "Side panel redrawn");
-        aClass1_1549 = Class58.method978(-11538, "leuchten1:");
+        aClass1_1544 = Class58.method978("Side panel redrawn");
+        aClass1_1549 = Class58.method978("leuchten1:");
         anInt1548 = -1;
         anInt1559 = 7759444;
-        aClass1_1554 = Class58.method978(-11538, "Connecting to friendserver");
-        aClass1_1555 = Class58.method978(-11538, "Remove");
+        aClass1_1554 = Class58.method978("Connecting to friendserver");
+        aClass1_1555 = Class58.method978("Remove");
         anInt1560 = -1;
         anIntArray1564
                 = (new int[]
@@ -80,12 +80,12 @@ public class Class66 {
                         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
                         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
                         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1});
-        aClass1_1558 = Class58.method978(-11538, "leuchten2:");
+        aClass1_1558 = Class58.method978("leuchten2:");
         aClass1_1572 = aClass1_1555;
         anIntArray1569 = new int[100];
-        aClass1_1567 = Class58.method978(-11538, "");
+        aClass1_1567 = Class58.method978("");
         aClass1_1556 = aClass1_1567;
-        aClass1_1546 = Class58.method978(-11538, "Icons redrawn");
+        aClass1_1546 = Class58.method978("Icons redrawn");
         aClass1_1563 = aClass1_1567;
         aClass1_1550 = aClass1_1567;
         aClass1_1543 = aClass1_1567;

@@ -14,7 +14,7 @@ public class Class68_Sub1 extends Class68
     public static int anInt2195;
     public static int anInt2196;
     public static RSString aClass1_2198
-            = Class58.method978(-11538, "Name eingeben:");
+            = Class58.method978("Name eingeben:");
     public static int[] anIntArray2199 = new int[32];
     public static int anInt2200;
     public static int anInt2201;
@@ -38,7 +38,7 @@ public class Class68_Sub1 extends Class68
             i += i;
         }
         anInt2211 = 2;
-        aClass1_2212 = Class58.method978(-11538, "Login server offline)3");
+        aClass1_2212 = Class58.method978("Login server offline)3");
         aClass1_2209 = aClass1_2212;
     }
 

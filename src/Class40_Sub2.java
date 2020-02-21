@@ -8,7 +8,7 @@ public class Class40_Sub2 extends Node {
     public static RSString aClass1_1991;
     public static int anInt1992;
     public static RSString aClass1_1995
-            = Class58.method978(-11538, "Lade Spiel)2Fenster )2 ");
+            = Class58.method978("Lade Spiel)2Fenster )2 ");
     public static int anInt1996 = 0;
     public static int anInt1998;
     public static int anInt1999;
@@ -19,10 +19,10 @@ public class Class40_Sub2 extends Node {
 
     static {
         aClass1_1991
-                = Class58.method978(-11538, "Ung-Ultiges Anmelde)2Paket)3");
+                = Class58.method978("Ung-Ultiges Anmelde)2Paket)3");
         aClass1_2008
                 = (Class58.method978
-                (-11538,
+                (
                         "Ihre Ignorieren)2Liste ist voll)1 Sie k-Onnen nur 100 Spieler darauf eintragen)3"));
     }
 

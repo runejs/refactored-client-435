@@ -12,10 +12,10 @@ public class Player extends Class40_Sub5_Sub17_Sub4 {
     public static int anInt3264;
     public static int anInt3267;
     public static RSString aClass1_3269
-            = Class58.method978(-11538, "Mitteilung");
+            = Class58.method978("Mitteilung");
     public static byte[] aByteArray3270;
     public static RSString aClass1_3275
-            = Class58.method978(-11538, "Bitte starten Sie eine Mitgliedschaft");
+            = Class58.method978("Bitte starten Sie eine Mitgliedschaft");
     public static int anInt3277;
     public static int anInt3279;
     public static int anInt3280;
@@ -31,12 +31,12 @@ public class Player extends Class40_Sub5_Sub17_Sub4 {
         anInt3264 = 0;
         anInt3288 = 0;
         aClass1_3290
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "Spieler kann nicht gefunden werden: ");
-        aClass1_3259 = Class58.method978(-11538, "Try again in 60 secs)3)3)3");
-        aClass1_3293 = Class58.method978(-11538, "green:");
+        aClass1_3259 = Class58.method978("Try again in 60 secs)3)3)3");
+        aClass1_3293 = Class58.method978("green:");
         aClass1_3285
-                = Class58.method978(-11538, "Keine Antwort vom Anmelde)2Server)3");
+                = Class58.method978("Keine Antwort vom Anmelde)2Server)3");
         aClass1_3256 = aClass1_3293;
         aClass1_3286 = aClass1_3259;
     }

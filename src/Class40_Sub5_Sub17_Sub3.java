@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class Class40_Sub5_Sub17_Sub3 extends Class40_Sub5_Sub17 {
     public static RSString aClass1_3049
-            = Class58.method978(-11538, "Could not complete login)3");
+            = Class58.method978("Could not complete login)3");
     public static RSString aClass1_3050;
     public static int[] anIntArray3051 = new int[25];
     public static int anInt3052;
@@ -14,7 +14,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Class40_Sub5_Sub17 {
     public static RSString aClass1_3054;
     public static RSString aClass1_3055
             = (Class58.method978
-            (-11538, "Ung-Ultige Verbindung mit einem Anmelde)2Server)3"));
+            ("Ung-Ultige Verbindung mit einem Anmelde)2Server)3"));
     public static boolean[] aBooleanArray3056 = new boolean[112];
     public static int anInt3057;
     public static RSString aClass1_3059;
@@ -31,21 +31,21 @@ public class Class40_Sub5_Sub17_Sub3 extends Class40_Sub5_Sub17 {
     public static RSString aClass1_3071;
 
     static {
-        aClass1_3054 = Class58.method978(-11538, "Members object");
+        aClass1_3054 = Class58.method978("Members object");
         aClass1_3059
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "Too many connections from your address)3");
         anInt3060 = 0;
         aClass1_3050 = aClass1_3059;
         anInt3065 = -1;
         aClass1_3062
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "Lade Eingabe)2Steuerungsprogramm)3)3)3");
-        aClass1_3068 = Class58.method978(-11538, " )2> @whi@");
+        aClass1_3068 = Class58.method978(" )2> @whi@");
         aClass1_3066 = aClass1_3049;
         aClass1_3069 = aClass1_3054;
         aClass1_3071
-                = Class58.method978(-11538, "Wen m-Ochten Sie hinzuf-Ugen?");
+                = Class58.method978("Wen m-Ochten Sie hinzuf-Ugen?");
     }
 
     public int anInt3058;

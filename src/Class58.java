@@ -15,7 +15,7 @@ public class Class58 {
     public static int anInt1360;
     public static Cache aClass9_1364;
     public static int anInt1367;
-    public static RSString aClass1_1365 = method978(-11538, "Message");
+    public static RSString aClass1_1365 = method978("Message");
     public static int anInt1368;
     public static int anInt1369;
     public static byte[][] aByteArrayArray1370;
@@ -31,12 +31,12 @@ public class Class58 {
         aBoolean1349 = false;
         aClass1_1354 = aClass1_1365;
         anIntArray1358 = new int[5];
-        aClass1_1359 = method978(-11538, "::clientdrop");
+        aClass1_1359 = method978("::clientdrop");
         aClass9_1364 = new Cache(64);
-        aClass1_1374 = method978(-11538, "backvmid1");
+        aClass1_1374 = method978("backvmid1");
         anInt1373 = 0;
         anInt1376 = -1;
-        aClass1_1378 = method978(-11538, "Chat panel redrawn");
+        aClass1_1378 = method978("Chat panel redrawn");
         aByteArrayArray1377 = new byte[1000][];
         varbitmasks = new int[2000];
     }
@@ -255,39 +255,30 @@ public class Class58 {
         }
     }
 
-    public static RSString method978(int arg0, String arg1) {
-        try {
-            if (arg0 != -11538)
-                method978(45, null);
-            anInt1367++;
-            byte[] is = arg1.getBytes();
-            int i = is.length;
-            RSString class1 = new RSString();
-            class1.str = arg1;
-            int i_5_ = 0;
-            class1.aByteArray1692 = new byte[i];
-            while ((i ^ 0xffffffff) < (i_5_ ^ 0xffffffff)) {
-                int i_6_ = 0xff & is[i_5_++];
-                if (i_6_ > 45 || i_6_ < 40) {
-                    if (i_6_ != 0)
-                        class1.aByteArray1692[class1.anInt1680++]
-                                = (byte) i_6_;
-                } else {
-                    if ((i_5_ ^ 0xffffffff) <= (i ^ 0xffffffff))
-                        break;
-                    int i_7_ = 0xff & is[i_5_++];
+    public static RSString method978(String arg1) { // TODO: CreateString?
+        anInt1367++;
+        byte[] is = arg1.getBytes();
+        int i = is.length;
+        RSString class1 = new RSString();
+        class1.str = arg1;
+        int i_5_ = 0;
+        class1.aByteArray1692 = new byte[i];
+        while (i > i_5_) {
+            int i_6_ = 0xff & is[i_5_++];
+            if (i_6_ > 45 || i_6_ < 40) {
+                if (i_6_ != 0)
                     class1.aByteArray1692[class1.anInt1680++]
-                            = (byte) (i_7_ + -48 + 43 * (-40 + i_6_));
-                }
+                            = (byte) i_6_;
+            } else {
+                if ((i_5_ ^ 0xffffffff) <= (i ^ 0xffffffff))
+                    break;
+                int i_7_ = 0xff & is[i_5_++];
+                class1.aByteArray1692[class1.anInt1680++]
+                        = (byte) (i_7_ + -48 + 43 * (-40 + i_6_));
             }
-            class1.method77((byte) -73);
-            return class1.method66(arg0 ^ ~0x17b);
-        } catch (RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception,
-                    ("se.F(" + arg0 + ','
-                            + (arg1 != null ? "{...}" : "null")
-                            + ')'));
         }
+        class1.method77((byte) -73);
+        return class1.method66();
     }
 
     public static void method979(boolean arg0) {

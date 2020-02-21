@@ -9,7 +9,7 @@ public class Class38_Sub1 extends Class38 {
     public static int anInt1904;
     public static RSString aClass1_1905;
     public static RSString aClass1_1906
-            = Class58.method978(-11538, " has logged out)3");
+            = Class58.method978(" has logged out)3");
     public static int anInt1907;
     public static int anInt1908;
     public static int[] anIntArray1909 = new int[99];
@@ -37,10 +37,10 @@ public class Class38_Sub1 extends Class38 {
         }
         anIntArray1916 = new int[50];
         aClass1_1918 = null;
-        aClass1_1924 = Class58.method978(-11538, "Attack");
-        aClass1_1920 = Class58.method978(-11538, "Loaded sprites");
+        aClass1_1924 = Class58.method978("Attack");
+        aClass1_1920 = Class58.method978("Loaded sprites");
         aClass1_1917 = aClass1_1924;
-        aClass1_1921 = Class58.method978(-11538, "b12_full");
+        aClass1_1921 = Class58.method978("b12_full");
         anInt1923 = 0;
         aClass1_1922 = aClass1_1920;
     }

@@ -28,19 +28,19 @@ public class Class26 {
 
     static {
         aBoolean618 = false;
-        aClass1_621 = Class58.method978(-11538, "World");
-        aClass1_623 = Class58.method978(-11538, "skill)2");
-        aClass1_620 = Class58.method978(-11538, "@whi@");
-        aClass1_631 = Class58.method978(-11538, "gelb:");
+        aClass1_621 = Class58.method978("World");
+        aClass1_623 = Class58.method978("skill)2");
+        aClass1_620 = Class58.method978("@whi@");
+        aClass1_631 = Class58.method978("gelb:");
         anInt617 = 0;
         aClass1_619 = aClass1_623;
-        aClass1_630 = Class58.method978(-11538, "Untersuchen");
+        aClass1_630 = Class58.method978("Untersuchen");
         aClass1_633
                 = (Class58.method978
-                (-11538,
+                (
                         "Moderator)2Option: Spieler f-Ur 48 Stunden stumm schalten: <OFF>"));
         aClass1_634 = aClass1_621;
-        aClass1_629 = Class58.method978(-11538, "Weiter");
+        aClass1_629 = Class58.method978("Weiter");
     }
 
     public static Class method349(byte arg0, String arg1)

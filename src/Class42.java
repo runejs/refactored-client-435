@@ -18,7 +18,7 @@ public class Class42 {
     public static RSString aClass1_1001;
     public static RSString aClass1_1002;
     public static RSString aClass1_1003
-            = Class58.method978(-11538, "Lade Konfiguration )2 ");
+            = Class58.method978("Lade Konfiguration )2 ");
     public static int anInt1004;
     public static RSString aClass1_1005;
     public static int anInt1006;
@@ -31,22 +31,22 @@ public class Class42 {
     public static int[] anIntArray1013;
 
     static {
-        aClass1_995 = Class58.method978(-11538, " has logged in)3");
+        aClass1_995 = Class58.method978(" has logged in)3");
         aClass1_989
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "We suspect someone knows your password)3");
         aClass1_1001 = aClass1_989;
-        aClass1_1005 = Class58.method978(-11538, "Loaded config");
+        aClass1_1005 = Class58.method978("Loaded config");
         aClass1_1000 = aClass1_1005;
         aClass1_988 = aClass1_995;
         anInt1008 = 0;
         anInt1006 = 0;
-        aClass1_990 = Class58.method978(-11538, "Unable to connect)3");
+        aClass1_990 = Class58.method978("Unable to connect)3");
         aClass1_1002 = aClass1_990;
         aClass1_997 = aClass1_990;
         aClass9_998 = new Cache(100);
         anInt1010 = 2;
-        aClass1_1012 = Class58.method978(-11538, "Existing user");
+        aClass1_1012 = Class58.method978("Existing user");
         aClass1_1011 = aClass1_1012;
     }
 

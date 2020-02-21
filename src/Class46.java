@@ -9,7 +9,7 @@ public class Class46 {
     public static RSString aClass1_1090;
     public static int anInt1091;
     public static RSString aClass1_1093
-            = Class58.method978(-11538, "Prepared sound engine");
+            = Class58.method978("Prepared sound engine");
     public static RSString aClass1_1095;
     public static int anInt1096;
     public static RSString aClass1_1097;
@@ -34,29 +34,29 @@ public class Class46 {
     public static RSString aClass1_1117;
 
     static {
-        aClass1_1089 = Class58.method978(-11538, "wave:");
+        aClass1_1089 = Class58.method978("wave:");
         aClass1_1095
                 = (Class58.method978
-                (-11538, "Moderator option: Mute player for 48 hours: <OFF>"));
+                ("Moderator option: Mute player for 48 hours: <OFF>"));
         aClass1_1097 = aClass1_1089;
-        aClass1_1098 = Class58.method978(-11538, "Loading fonts )2 ");
+        aClass1_1098 = Class58.method978("Loading fonts )2 ");
         aClass1_1099 = aClass1_1098;
-        aClass1_1100 = Class58.method978(-11538, "Close");
+        aClass1_1100 = Class58.method978("Close");
         aClass1_1088 = aClass1_1095;
         aClass1_1090 = aClass1_1100;
         aClass1_1105 = aClass1_1093;
         aClass1_1109
-                = Class58.method978(-11538, "Ihr Spielkonto wurde deaktiviert)3");
+                = Class58.method978("Ihr Spielkonto wurde deaktiviert)3");
         aClass9_1102 = new Cache(500);
         aBoolean1112 = false;
         anInt1110 = 0;
-        aClass1_1113 = Class58.method978(-11538, "mapback");
-        aClass1_1114 = Class58.method978(-11538, "@lre@");
-        aClass1_1111 = Class58.method978(-11538, " ");
-        aClass1_1115 = Class58.method978(-11538, "Lade Freunde)2Liste)3)3)3");
+        aClass1_1113 = Class58.method978("mapback");
+        aClass1_1114 = Class58.method978("@lre@");
+        aClass1_1111 = Class58.method978(" ");
+        aClass1_1115 = Class58.method978("Lade Freunde)2Liste)3)3)3");
         aClass1_1116
                 = (Class58.method978
-                (-11538, "Benutzen Sie die (WPasswort -=ndern(W Option"));
+                ("Benutzen Sie die (WPasswort -=ndern(W Option"));
         aClass1_1117 = aClass1_1111;
     }
 

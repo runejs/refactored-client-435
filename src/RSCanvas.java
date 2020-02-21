@@ -12,7 +12,7 @@ public class RSCanvas extends Canvas {
     public static int anInt52;
     public static Class45 aClass45_53;
     public static int anInt54;
-    public static RSString aClass1_55 = Class58.method978(-11538, "shake:");
+    public static RSString aClass1_55 = Class58.method978("shake:");
     public static int anInt56;
     public static int anInt57;
     public static int anInt58;
@@ -35,11 +35,11 @@ public class RSCanvas extends Canvas {
         aClass45_53 = new Class45();
         anInt60 = 255;
         anInt65 = 127;
-        aClass1_69 = Class58.method978(-11538,
+        aClass1_69 = Class58.method978(
                 "Your profile will be transferred in:");
         aClass1_67 = aClass1_69;
-        aClass1_70 = Class58.method978(-11538, "Prepared visibility map");
-        aClass1_68 = Class58.method978(-11538, "k");
+        aClass1_70 = Class58.method978("Prepared visibility map");
+        aClass1_68 = Class58.method978("k");
         aClass1_63 = aClass1_70;
     }
 

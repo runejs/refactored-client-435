@@ -32,10 +32,10 @@ public class Floor extends SubNode {
     static {
         aClass1_2315
                 = (Class58.method978
-                (-11538, "Zu viele Anmelde)2Versuche von Ihrer Adresse"));
-        aClass1_2314 = Class58.method978(-11538, "Malformed login packet)3");
+                ("Zu viele Anmelde)2Versuche von Ihrer Adresse"));
+        aClass1_2314 = Class58.method978("Malformed login packet)3");
         aClass1_2327
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "-5berpr-Ufen Sie Ihr Mitteilungsfach)3");
         anInt2321 = 0;
         aClass1_2325 = aClass1_2314;

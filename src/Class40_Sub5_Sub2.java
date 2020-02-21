@@ -13,11 +13,11 @@ public class Class40_Sub5_Sub2 extends SubNode {
     public static RSString aClass1_2286;
     public static int anInt2288;
     public static int anInt2289;
-    public static RSString aClass1_2290 = Class58.method978(-11538, "::noclip");
+    public static RSString aClass1_2290 = Class58.method978("::noclip");
     public static RSString aClass1_2291;
     public static RSString aClass1_2292;
     public static RSString aClass1_2294;
-    public static RSString aClass1_2296 = Class58.method978(-11538, "Nehmen");
+    public static RSString aClass1_2296 = Class58.method978("Nehmen");
     public static RSString aClass1_2297;
     public static Class67 aClass67_2298;
     public static RSString aClass1_2299;
@@ -32,15 +32,15 @@ public class Class40_Sub5_Sub2 extends SubNode {
     static {
         aClass1_2292
                 = (Class58.method978
-                (-11538, "Verbindung konnte nicht hergestellt werden)3"));
-        aClass1_2299 = Class58.method978(-11538, "Loaded input handler");
-        aClass1_2291 = Class58.method978(-11538, "W-=hlen Sie eine Option");
+                ("Verbindung konnte nicht hergestellt werden)3"));
+        aClass1_2299 = Class58.method978("Loaded input handler");
+        aClass1_2291 = Class58.method978("W-=hlen Sie eine Option");
         anInt2302 = 0;
-        aClass1_2306 = Class58.method978(-11538, " )2> @yel@");
-        aClass1_2283 = Class58.method978(-11538, "Loading textures )2 ");
-        aClass1_2303 = Class58.method978(-11538, "level)2");
+        aClass1_2306 = Class58.method978(" )2> @yel@");
+        aClass1_2283 = Class58.method978("Loading textures )2 ");
+        aClass1_2303 = Class58.method978("level)2");
         aClass1_2286 = aClass1_2303;
-        aClass1_2311 = Class58.method978(-11538, "leuchten3:");
+        aClass1_2311 = Class58.method978("leuchten3:");
         aClass1_2297 = aClass1_2299;
         aClass1_2294 = aClass1_2283;
     }

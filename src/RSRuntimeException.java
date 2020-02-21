@@ -12,7 +12,7 @@ public class RSRuntimeException extends RuntimeException {
     public static int anInt1645;
     public static int anInt1646;
     public static RSString aClass1_1647
-            = Class58.method978(-11538, "Regelversto-8 melden");
+            = Class58.method978("Regelversto-8 melden");
     public static RSString aClass1_1648;
     public static RSString aClass1_1649;
     public static int anInt1650;
@@ -20,9 +20,9 @@ public class RSRuntimeException extends RuntimeException {
     /*synthetic*/ public static Class aClass1654;
 
     static {
-        aClass1_1644 = Class58.method978(-11538, "Lade Sprites )2 ");
+        aClass1_1644 = Class58.method978("Lade Sprites )2 ");
         anInt1651 = 0;
-        aClass1_1648 = Class58.method978(-11538, "Select");
+        aClass1_1648 = Class58.method978("Select");
         aClass1_1649 = aClass1_1648;
     }
 

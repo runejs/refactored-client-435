@@ -31,14 +31,14 @@ public class Class5 {
     static {
         anIntArray191 = new int[100];
         anInt200 = 127;
-        aClass1_196 = Class58.method978(-11538, "backvmid3");
-        aClass1_202 = Class58.method978(-11538, "red:");
-        aClass1_203 = Class58.method978(-11538, "mapmarker");
+        aClass1_196 = Class58.method978("backvmid3");
+        aClass1_202 = Class58.method978("red:");
+        aClass1_203 = Class58.method978("mapmarker");
         anInt208 = 3;
         anInt199 = 0;
-        aClass1_206 = Class58.method978(-11538, " )2> @lre@");
+        aClass1_206 = Class58.method978(" )2> @lre@");
         aClass1_210
-                = Class58.method978(-11538, "Please contact customer support)3");
+                = Class58.method978("Please contact customer support)3");
         aClass1_193 = aClass1_210;
         aClass1_204 = aClass1_202;
     }

@@ -5,7 +5,7 @@
 public class Class37 {
     public static int anInt859;
     public static RSString aClass1_860
-            = Class58.method978(-11538, "Bitte benutzen Sie eine andere Welt)3");
+            = Class58.method978("Bitte benutzen Sie eine andere Welt)3");
     public static int anInt861;
     public static int anInt862;
     public static int anInt863;
@@ -13,28 +13,28 @@ public class Class37 {
     public static int anInt865;
     public static int anInt866;
     public static RSString aClass1_867
-            = Class58.method978(-11538, "Ein kostenloses Spielkonto erstellen)3");
+            = Class58.method978("Ein kostenloses Spielkonto erstellen)3");
     public static int anInt868;
     public static HashTable aClass23_869 = new HashTable(32);
     public static int anInt870;
     public static boolean aBoolean871 = false;
     public static RSString aClass1_872
-            = Class58.method978(-11538, "Ihre Nachricht an: ");
+            = Class58.method978("Ihre Nachricht an: ");
     public static RSString aClass1_873;
     public static int anInt874;
     public static RSString aClass1_875;
     public static int anInt876 = 0;
-    public static RSString aClass1_877 = Class58.method978(-11538, "@gr1@");
+    public static RSString aClass1_877 = Class58.method978("@gr1@");
     public static DirectColorSprite[] aClass40_Sub5_Sub14_Sub4Array878;
-    public static RSString aClass1_879 = Class58.method978(-11538, "weiss:");
+    public static RSString aClass1_879 = Class58.method978("weiss:");
     public static RSString aClass1_880
-            = Class58.method978(-11538,
+            = Class58.method978(
             "Wir vermuten ihr Spielkonto wurde gestohlen");
 
     static {
         aClass1_875
                 = (Class58.method978
-                (-11538,
+                (
                         "Please close the interface you have open before using (Wreport abuse(W"));
         aClass1_873 = aClass1_875;
         anInt874 = 0;

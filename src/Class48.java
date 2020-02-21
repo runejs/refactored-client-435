@@ -10,7 +10,7 @@ public class Class48 {
     public static int anInt1126;
     public static int anInt1127;
     public static RSString aClass1_1129
-            = Class58.method978(-11538,
+            = Class58.method978(
             "RuneScape is loading )2 please wait)3)3)3");
     public static int anInt1130;
     public static Buffer aClass40_Sub1_1132;
@@ -27,11 +27,11 @@ public class Class48 {
         anInt1127 = 0;
         aClass1_1122 = aClass1_1129;
         anInt1126 = 0;
-        aClass1_1125 = Class58.method978(-11538, "Loading title screen )2 ");
-        aClass1_1137 = Class58.method978(-11538, "M");
+        aClass1_1125 = Class58.method978("Loading title screen )2 ");
+        aClass1_1137 = Class58.method978("M");
         aClass1_1124 = aClass1_1125;
         anInt1138 = -1;
-        aClass1_1123 = Class58.method978(-11538, " ");
+        aClass1_1123 = Class58.method978(" ");
     }
 
     public int[][] anIntArrayArray1128;

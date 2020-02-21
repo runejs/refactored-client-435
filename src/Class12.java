@@ -6,7 +6,7 @@ public class Class12 {
     public static int anInt380;
     public static RSString aClass1_381;
     public static RSString aClass1_382
-            = Class58.method978(-11538, "Benutzeroberfl-=che geladen)3");
+            = Class58.method978("Benutzeroberfl-=che geladen)3");
     public static Class40_Sub5_Sub12 aClass40_Sub5_Sub12_383;
     public static RSString aClass1_384;
     public static RSString aClass1_385;
@@ -27,24 +27,24 @@ public class Class12 {
 
     static {
         anInt380 = 0;
-        aClass1_386 = Class58.method978(-11538, "Sprites geladen)3");
-        aClass1_392 = Class58.method978(-11538, ":  ");
+        aClass1_386 = Class58.method978("Sprites geladen)3");
+        aClass1_392 = Class58.method978(":  ");
         aClass1_384
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "Enter name of player to delete from list");
-        aClass1_391 = Class58.method978(-11538, "Classic");
-        aClass1_385 = Class58.method978(-11538, "Privater Chat");
-        aClass1_393 = Class58.method978(-11538, "Unable to find ");
+        aClass1_391 = Class58.method978("Classic");
+        aClass1_385 = Class58.method978("Privater Chat");
+        aClass1_393 = Class58.method978("Unable to find ");
         aClass1_396
-                = Class58.method978(-11538,
+                = Class58.method978(
                 "zur-Uck auf die RuneScape)2Webseite gehen");
         aClass1_395
-                = Class58.method978(-11538, "Lade Benutzeroberfl-=che )2 ");
+                = Class58.method978("Lade Benutzeroberfl-=che )2 ");
         aClass1_399 = aClass1_384;
         anInt389 = -1;
-        aClass1_381 = Class58.method978(-11538, "und Ihr Passwort ein)3");
+        aClass1_381 = Class58.method978("und Ihr Passwort ein)3");
         aClass1_397 = aClass1_393;
-        aClass1_398 = Class58.method978(-11538, "lila:");
+        aClass1_398 = Class58.method978("lila:");
     }
 
     public static void method240(byte arg0) {

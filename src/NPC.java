@@ -10,8 +10,7 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
     public static boolean aBoolean3298;
     public static int anInt3299;
     public static Class2 aClass2_3301;
-    public static RSString aClass1_3302
-            = Class58.method978(-11538, "Sichtbare Karte vorbereitet)3");
+    public static RSString aClass1_3302 = Class58.method978("Sichtbare Karte vorbereitet)3");
     public static int anInt3303;
     public static int[] anIntArray3304;
     public static RSString aClass1_3305;
@@ -28,14 +27,14 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
     static {
         aClass1_3295 = null;
         anInt3294 = 0;
-        aClass1_3308 = Class58.method978(-11538, "gr-Un:");
-        aClass1_3309 = Class58.method978(-11538, "Hierhin gehen");
+        aClass1_3308 = Class58.method978("gr-Un:");
+        aClass1_3309 = Class58.method978("Hierhin gehen");
         anIntArray3304 = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2,
                 2, 2, 2, 2, 2, 2, 2, 2, 3};
-        aClass1_3307 = Class58.method978(-11538, "Keine Antwort vom Server)3");
-        aClass1_3297 = Class58.method978(-11538, "On");
+        aClass1_3307 = Class58.method978("Keine Antwort vom Server)3");
+        aClass1_3297 = Class58.method978("On");
         aClass1_3311 = aClass1_3297;
-        aClass1_3314 = Class58.method978(-11538, "Connection lost");
+        aClass1_3314 = Class58.method978("Connection lost");
         aClass1_3305 = aClass1_3314;
     }
 

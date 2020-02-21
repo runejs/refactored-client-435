@@ -28,12 +28,12 @@ public class Class44 implements Runnable {
 
     static {
         anInt1040 = 256;
-        aClass1_1034 = Class58.method978(-11538, "System)2Update in: ");
-        aClass1_1041 = Class58.method978(-11538, "(U");
+        aClass1_1034 = Class58.method978("System)2Update in: ");
+        aClass1_1041 = Class58.method978("(U");
         modewhat = 0;
         anInt1049 = 0;
-        aClass1_1043 = Class58.method978(-11538, "null");
-        aClass1_1033 = Class58.method978(-11538, "Please remove ");
+        aClass1_1043 = Class58.method978("null");
+        aClass1_1033 = Class58.method978("Please remove ");
         aClass1_1032 = aClass1_1033;
         aClass1_1038 = aClass1_1033;
         anInt1048 = -1;

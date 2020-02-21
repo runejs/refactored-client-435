@@ -10,7 +10,7 @@ public abstract class Class22 {
     public static IndexedColorSprite[] aClass40_Sub5_Sub14_Sub2Array535;
     public static int anInt536;
     public static int anInt537;
-    public static RSString aClass1_538 = Class58.method978(-11538, "Angreifen");
+    public static RSString aClass1_538 = Class58.method978("Angreifen");
     public static int anInt539;
     public static int anInt540;
     public static boolean aBoolean541;
@@ -25,13 +25,13 @@ public abstract class Class22 {
     static {
         anInt537 = 0;
         aClass40_Sub1Array534 = new Buffer[2048];
-        aClass1_533 = Class58.method978(-11538, "M");
+        aClass1_533 = Class58.method978("M");
         aClass1_542 = aClass1_533;
         aBoolean541 = false;
         aBoolean544 = false;
         anInt547 = 0;
         aClass1_546
-                = Class58.method978(-11538, "Your account is already logged in)3");
+                = Class58.method978("Your account is already logged in)3");
         aClass1_532 = aClass1_546;
         aBooleanArray548
                 = new boolean[]{true, true, true, true, true, true, true, true,

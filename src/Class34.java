@@ -7,7 +7,7 @@ public class Class34 {
     public static int anInt803;
     public static HashTable aClass23_805;
     public static RSString aClass1_804
-            = Class58.method978(-11538, "m-Ochte mit Ihnen handeln)3");
+            = Class58.method978("m-Ochte mit Ihnen handeln)3");
     public static int anInt806;
     public static int anInt807;
     public static int anInt813;
@@ -15,7 +15,7 @@ public class Class34 {
     public static RSString aClass1_817;
     public static int anInt821;
     public static RSString aClass1_826
-            = Class58.method978(-11538, "Click to continue");
+            = Class58.method978("Click to continue");
     public static RSString aClass1_829 = aClass1_826;
     public static int anInt836;
     public static int anInt838;
@@ -34,10 +34,10 @@ public class Class34 {
         anInt813 = 0;
         aClass1_844
                 = (Class58.method978
-                (-11538, "Press (Wrecover a locked account(W on front page)3"));
+                ("Press (Wrecover a locked account(W on front page)3"));
         aClass1_817 = aClass1_844;
         aClass23_841 = new HashTable(4096);
-        aClass1_850 = Class58.method978(-11538, "Suche nach Updates )2 ");
+        aClass1_850 = Class58.method978("Suche nach Updates )2 ");
         anInt848 = 0;
         aClass9_851 = new Cache(30);
         anInt854 = -1;

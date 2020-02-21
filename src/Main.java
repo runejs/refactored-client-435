@@ -10,17 +10,17 @@ public class Main extends RSApplet {
     public static int anInt1755;
     public static int anInt1756;
     public static RSString aClass1_1757
-            = Class58.method978(-11538, "RS Rebirth wurde aktualisiert(Q");
+            = Class58.method978("RS Rebirth wurde aktualisiert(Q");
     public static int anInt1758;
     public static int anInt1759;
     public static int anInt1760;
     public static RSString aClass1_1761;
-    public static RSString aClass1_1762 = Class58.method978(-11538, "logo");
+    public static RSString aClass1_1762 = Class58.method978("logo");
     public static RSString aClass1_1763;
     public static int anInt1764;
     public static int anInt1765;
     public static int anInt1766;
-    public static RSString aClass1_1767 = Class58.method978(-11538, "Use");
+    public static RSString aClass1_1767 = Class58.method978("Use");
     public static int anInt1768;
     public static int anInt1769;
     public static int anInt1770;
@@ -50,18 +50,18 @@ public class Main extends RSApplet {
         anInt1764 = 0;
         aClass1_1775
                 = (Class58.method978
-                (-11538, "Account locked as we suspect it has been stolen)3"));
+                ("Account locked as we suspect it has been stolen)3"));
         anInt1756 = 0;
-        aClass1_1777 = Class58.method978(-11538, "Verbinde mit Server)3)3)3");
+        aClass1_1777 = Class58.method978("Verbinde mit Server)3)3)3");
         aClass1_1781 = aClass1_1775;
         anInt1769 = -1;
         anInt1766 = 1;
         anInt1773 = 0;
-        aClass1_1783 = Class58.method978(-11538, "Welcome to RS Rebirth");
+        aClass1_1783 = Class58.method978("Welcome to RS Rebirth");
         aClass1_1761 = aClass1_1783;
         aClass1Array1778 = new RSString[5];
         aClass1_1763 = aClass1_1767;
-        aClass1_1788 = Class58.method978(-11538, "backtop1");
+        aClass1_1788 = Class58.method978("backtop1");
     }
 
     public static boolean method36(int arg0, int arg1, int arg2, int arg3,
@@ -2402,7 +2402,7 @@ public class Main extends RSApplet {
         }
     }
 
-    public void method34(int arg0) {
+    public void method34(int arg0) { // TODO: Might be Startup
         try {
             anInt1787++;
             if (Class67.aBoolean1575) {
@@ -2415,7 +2415,7 @@ public class Main extends RSApplet {
             }
             if (Class51.anInt1197 == 0)
                 Class40_Sub5_Sub17_Sub2.drawLoadingText(Class67.anInt1607, null,
-                        Class22_Sub2.aClass1_1898,
+                        Class22_Sub2.currentLoadingText,
                         -86);
             else if ((Class51.anInt1197 ^ 0xffffffff) != -6) {
                 if (Class51.anInt1197 != 10) {

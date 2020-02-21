@@ -8,7 +8,7 @@ public class Class4 {
     public static int anInt175;
     public static RSString aClass1_176;
     public static RSString aClass1_177
-            = Class58.method978(-11538, "::hiddenbuttontest");
+            = Class58.method978("::hiddenbuttontest");
     public static int[] anIntArray178;
     public static RSApplet anApplet_Sub1_179;
     public static RSString aClass1_180;
@@ -24,9 +24,9 @@ public class Class4 {
     static {
         aBoolean173 = false;
         anInt175 = 0;
-        aClass1_181 = Class58.method978(-11538, "Einloggen");
-        aClass1_183 = Class58.method978(-11538, "mapdots");
-        aClass1_176 = Class58.method978(-11538, "wishes to trade with you)3");
+        aClass1_181 = Class58.method978("Einloggen");
+        aClass1_183 = Class58.method978("mapdots");
+        aClass1_176 = Class58.method978("wishes to trade with you)3");
         anInt182 = 0;
         aClass1_180 = aClass1_176;
         anApplet_Sub1_179 = null;

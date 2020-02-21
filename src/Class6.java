@@ -37,9 +37,9 @@ public abstract class Class6 {
     public static int anInt251;
     public static int anInt253;
     public static int anInt255;
-    public static RSString aClass1_256 = Class58.method978(-11538, "backbase2");
+    public static RSString aClass1_256 = Class58.method978("backbase2");
     public static RSString aClass1_257
-            = Class58.method978(-11538, "Please try again)3");
+            = Class58.method978("Please try again)3");
     public static RSString aClass1_258 = aClass1_257;
     public static RSString aClass1_259;
     public static boolean aBoolean260 = false;
@@ -49,7 +49,7 @@ public abstract class Class6 {
     static {
         aClass1_259
                 = (Class58.method978
-                (-11538, "Sie befinden sich in einem Mitglieder)2Gebiet(Q"));
+                ("Sie befinden sich in einem Mitglieder)2Gebiet(Q"));
     }
 
     public byte[][] aByteArrayArray212;

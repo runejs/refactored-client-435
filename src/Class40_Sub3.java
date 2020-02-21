@@ -18,7 +18,7 @@ public class Class40_Sub3 extends Node {
     public static Class6 aClass6_2037;
 
     static {
-        aClass1_2015 = Class58.method978(-11538, "::fpson");
+        aClass1_2015 = Class58.method978("::fpson");
         anIntArray2023 = new int[50];
         anInt2032 = 0;
     }
@@ -62,7 +62,7 @@ public class Class40_Sub3 extends Node {
                     = new DirectColorSprite(512, 512);
             Class67.anInt1607 = 5;
             Class40_Sub5_Sub6.anInt2451 = 20;
-            Class22_Sub2.aClass1_1898 = Class40_Sub5_Sub12.aClass1_2674;
+            Class22_Sub2.currentLoadingText = Class40_Sub5_Sub12.aClass1_2674;
         } else if ((Class40_Sub5_Sub6.anInt2451 ^ 0xffffffff) == -21) {
             int[] is = new int[9];
             for (int i = 0; (i ^ 0xffffffff) > -10; i++) {
@@ -73,7 +73,7 @@ public class Class40_Sub3 extends Node {
             }
             Class2.method95(is, 500, 800, 512, 334);
             Class67.anInt1607 = 10;
-            Class22_Sub2.aClass1_1898 = RSCanvas.aClass1_63;
+            Class22_Sub2.currentLoadingText = RSCanvas.aClass1_63;
             Class40_Sub5_Sub6.anInt2451 = 30;
         } else if (Class40_Sub5_Sub6.anInt2451 == 30) {
             Class25.aClass6_Sub1_605
@@ -103,7 +103,7 @@ public class Class40_Sub3 extends Node {
             Class56.aClass6_Sub1_1323
                     = Class54.method957(12, true, false, (byte) 118, true);
             Class40_Sub5_Sub6.anInt2451 = 40;
-            Class22_Sub2.aClass1_1898 = Class25.STRING_CONNECTING_UPDATE_SERVER;
+            Class22_Sub2.currentLoadingText = Class25.STRING_CONNECTING_UPDATE_SERVER;
             Class67.anInt1607 = 20;
         } else if (Class40_Sub5_Sub6.anInt2451 == 40) {
             int i = 0;
@@ -125,7 +125,7 @@ public class Class40_Sub3 extends Node {
             i += 5 * Class56.aClass6_Sub1_1323.method197(100) / 100;
             if (i != 100) {
                 if ((i ^ 0xffffffff) != -1)
-                    Class22_Sub2.aClass1_1898
+                    Class22_Sub2.currentLoadingText
                             = (Class40_Sub5_Sub17_Sub6.method832
                             (arg0 + -42,
                                     new RSString[]{NpcDefinition.aClass1_2396,
@@ -134,7 +134,7 @@ public class Class40_Sub3 extends Node {
                 Class67.anInt1607 = 30;
             } else {
                 Class40_Sub5_Sub6.anInt2451 = 45;
-                Class22_Sub2.aClass1_1898 = Class40_Sub7.aClass1_2125;
+                Class22_Sub2.currentLoadingText = Class40_Sub7.aClass1_2125;
                 Class67.anInt1607 = 30;
             }
         } else if (Class40_Sub5_Sub6.anInt2451 == 45) {
@@ -145,7 +145,7 @@ public class Class40_Sub3 extends Node {
                     arg0 ^ 0x74be);
             Class55.aClass48_1289 = new Class48(22050, Class3.anInt141);
             Class40_Sub5_Sub6.anInt2451 = 50;
-            Class22_Sub2.aClass1_1898 = Class46.aClass1_1105;
+            Class22_Sub2.currentLoadingText = Class46.aClass1_1105;
             Class67.anInt1607 = 35;
         } else if ((Class40_Sub5_Sub6.anInt2451 ^ 0xffffffff) == -51) {
             int i = 0;
@@ -171,7 +171,7 @@ public class Class40_Sub3 extends Node {
                         255, Class66.aClass1_1567,
                         Class38_Sub1.aClass1_1921);
             if (i < 3) {
-                Class22_Sub2.aClass1_1898
+                Class22_Sub2.currentLoadingText
                         = (Class40_Sub5_Sub17_Sub6.method832
                         (59, new RSString[]{Class46.aClass1_1099,
                                 HashTable.method334(i * 100 / 3, -1),
@@ -180,7 +180,7 @@ public class Class40_Sub3 extends Node {
             } else {
                 Class40_Sub5_Sub6.anInt2451 = 60;
                 Class67.anInt1607 = 40;
-                Class22_Sub2.aClass1_1898 = NpcDefinition.aClass1_2392;
+                Class22_Sub2.currentLoadingText = NpcDefinition.aClass1_2392;
             }
         } else if (Class40_Sub5_Sub6.anInt2451 == 60) {
             int i = Class60.method988(RSCanvas.aClass6_Sub1_48,
@@ -188,7 +188,7 @@ public class Class40_Sub3 extends Node {
                     arg0 ^ ~0x14);
             int i_3_ = ISAAC.method288((byte) 119);
             if (i < i_3_) {
-                Class22_Sub2.aClass1_1898
+                Class22_Sub2.currentLoadingText
                         = (Class40_Sub5_Sub17_Sub6.method832
                         (arg0 ^ 0x35,
                                 new RSString[]{Class48.aClass1_1124,
@@ -196,14 +196,14 @@ public class Class40_Sub3 extends Node {
                                         Class44.aClass1_1041}));
                 Class67.anInt1607 = 50;
             } else {
-                Class22_Sub2.aClass1_1898 = Class68.aClass1_1638;
+                Class22_Sub2.currentLoadingText = Class68.aClass1_1638;
                 Class67.anInt1607 = 50;
                 Floor.method559(5, 80);
                 Class40_Sub5_Sub6.anInt2451 = 70;
             }
         } else if (Class40_Sub5_Sub6.anInt2451 == 70) {
             if (!Class40_Sub5_Sub10.aClass6_Sub1_2609.method185((byte) 98)) {
-                Class22_Sub2.aClass1_1898
+                Class22_Sub2.currentLoadingText
                         = (Class40_Sub5_Sub17_Sub6.method832
                         (107,
                                 new RSString[]{Class33.aClass1_783,
@@ -247,7 +247,7 @@ public class Class40_Sub3 extends Node {
                         (byte) 90);
                 Class40_Sub5_Sub6.anInt2451 = 80;
                 Class67.anInt1607 = 60;
-                Class22_Sub2.aClass1_1898 = Class42.aClass1_1000;
+                Class22_Sub2.currentLoadingText = Class42.aClass1_1000;
             }
         } else if (Class40_Sub5_Sub6.anInt2451 == 80) {
             int i = 0;
@@ -366,7 +366,7 @@ public class Class40_Sub3 extends Node {
                         Class38.aClass1_881,
                         Class66.aClass1_1567);
             if ((i ^ 0xffffffff) > -15) {
-                Class22_Sub2.aClass1_1898
+                Class22_Sub2.currentLoadingText
                         = (Class40_Sub5_Sub17_Sub6.method832
                         (arg0 + -139,
                                 new RSString[]{Class17.aClass1_452,
@@ -386,7 +386,7 @@ public class Class40_Sub3 extends Node {
                             .method717(i_6_ + i_4_, i_5_ - -i_6_, i_7_ - -i_6_);
                 Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[0]
                         .method697(i_4_ - -i_6_, i_5_ + i_6_, i_6_ + i_7_);
-                Class22_Sub2.aClass1_1898 = Class38_Sub1.aClass1_1922;
+                Class22_Sub2.currentLoadingText = Class38_Sub1.aClass1_1922;
                 Class67.anInt1607 = 70;
                 Class40_Sub5_Sub6.anInt2451 = 85;
             }
@@ -395,7 +395,7 @@ public class Class40_Sub3 extends Node {
                     (byte) -59);
             int i_9_ = NpcDefinition.method576(false);
             if (i < i_9_) {
-                Class22_Sub2.aClass1_1898
+                Class22_Sub2.currentLoadingText
                         = (Class40_Sub5_Sub17_Sub6.method832
                         (97,
                                 new RSString[]{Class27.aClass1_668,
@@ -403,14 +403,14 @@ public class Class40_Sub3 extends Node {
                                         Class44.aClass1_1041}));
                 Class67.anInt1607 = 80;
             } else {
-                Class22_Sub2.aClass1_1898
+                Class22_Sub2.currentLoadingText
                         = Class40_Sub5_Sub17_Sub2.aClass1_3038;
                 Class40_Sub5_Sub6.anInt2451 = 90;
                 Class67.anInt1607 = 80;
             }
         } else if (Class40_Sub5_Sub6.anInt2451 == 90) {
             if (!Class32.aClass6_Sub1_773.method185((byte) 62)) {
-                Class22_Sub2.aClass1_1898
+                Class22_Sub2.currentLoadingText
                         = (Class40_Sub5_Sub17_Sub6.method832
                         (85,
                                 new RSString[]{Class40_Sub5_Sub2.aClass1_2294,
@@ -429,20 +429,20 @@ public class Class40_Sub3 extends Node {
                 R3D.method711(0.8);
                 Class40_Sub5_Sub6.anInt2451 = 110;
                 Class67.anInt1607 = 90;
-                Class22_Sub2.aClass1_1898
+                Class22_Sub2.currentLoadingText
                         = Class40_Sub5_Sub17_Sub4.aClass1_3124;
             }
         } else if ((Class40_Sub5_Sub6.anInt2451 ^ 0xffffffff) == -111) {
             Class12.aClass39_387 = new Class39();
             ISAAC.aClass31_521.method394(10, 0, Class12.aClass39_387);
-            Class22_Sub2.aClass1_1898 = Class40_Sub5_Sub2.aClass1_2297;
+            Class22_Sub2.currentLoadingText = Class40_Sub5_Sub2.aClass1_2297;
             Class40_Sub5_Sub6.anInt2451 = 120;
             Class67.anInt1607 = 94;
         } else if ((Class40_Sub5_Sub6.anInt2451 ^ 0xffffffff) == -121) {
             if (!RSCanvas.aClass6_Sub1_48.method194(Class25.aClass1_615,
                     Class66.aClass1_1567,
                     -1234)) {
-                Class22_Sub2.aClass1_1898
+                Class22_Sub2.currentLoadingText
                         = (Class40_Sub5_Sub17_Sub6.method832
                         (75,
                                 new RSString[]{Class40_Sub5_Sub17_Sub1.aClass1_3014,
@@ -455,12 +455,12 @@ public class Class40_Sub3 extends Node {
                                 arg0 + -99));
                 Class40_Sub5_Sub17_Sub3.method778(true, class66);
                 Class40_Sub5_Sub6.anInt2451 = 130;
-                Class22_Sub2.aClass1_1898 = Landscape.aClass1_1173;
+                Class22_Sub2.currentLoadingText = Landscape.aClass1_1173;
                 Class67.anInt1607 = 96;
             }
         } else if (Class40_Sub5_Sub6.anInt2451 == 130) {
             if (!Class65.aClass6_Sub1_1533.method185((byte) 66)) {
-                Class22_Sub2.aClass1_1898
+                Class22_Sub2.currentLoadingText
                         = (Class40_Sub5_Sub17_Sub6.method832
                         (-98,
                                 (new RSString[]
@@ -471,7 +471,7 @@ public class Class40_Sub3 extends Node {
                                                 Class44.aClass1_1041})));
                 Class67.anInt1607 = 100;
             } else if (!Class56.aClass6_Sub1_1323.method185((byte) 69)) {
-                Class22_Sub2.aClass1_1898
+                Class22_Sub2.currentLoadingText
                         = (Class40_Sub5_Sub17_Sub6.method832
                         (94,
                                 (new RSString[]
@@ -482,7 +482,7 @@ public class Class40_Sub3 extends Node {
                                                 Class44.aClass1_1041})));
                 Class67.anInt1607 = 100;
             } else {
-                Class22_Sub2.aClass1_1898 = Class22_Sub1.aClass1_1858;
+                Class22_Sub2.currentLoadingText = Class22_Sub1.aClass1_1858;
                 Class40_Sub5_Sub6.anInt2451 = 140;
                 Class67.anInt1607 = 100;
             }

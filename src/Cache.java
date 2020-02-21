@@ -8,7 +8,7 @@ public class Cache {
     public static int anInt308;
     public static int anInt310;
     public static int anInt311;
-    public static RSString dropString = Class58.method978(-11538, "Drop");
+    public static RSString dropString = Class58.method978("Drop");
     public static RSString dropStringInstance = dropString;
     public static PacketBuffer outgoingbuffer = new PacketBuffer(5000);
     public static int anInt315;
@@ -19,23 +19,23 @@ public class Cache {
     public static int anInt324 = 0;
     public static RSString aClass1_325;
     public static Cache aClass9_326;
-    public static RSString aClass1_327 = Class58.method978(-11538, "@or1@");
+    public static RSString aClass1_327 = Class58.method978("@or1@");
     public static RSString aClass1_328;
     public static Class6 aClass6_329;
     public static boolean aBoolean330;
     public static RSString aClass1_331;
-    public static RSString aClass1_332 = Class58.method978(-11538, "Classic");
+    public static RSString aClass1_332 = Class58.method978("Classic");
     public static RSString aClass1_333;
 
     static {
         aClass1_331
                 = (Class58.method978
-                (-11538, "RuneScape wird geladen )2 bitte warten)3)3)3"));
+                ("RuneScape wird geladen )2 bitte warten)3)3)3"));
         aBoolean330 = false;
-        aClass1_325 = Class58.method978(-11538, "Ung-Ultiger Benutzername");
+        aClass1_325 = Class58.method978("Ung-Ultiger Benutzername");
         aClass1_328
                 = (Class58.method978
-                (-11538, "Please check your message)2centre for details)3"));
+                ("Please check your message)2centre for details)3"));
         aClass1_323 = aClass1_328;
         aClass1_333 = aClass1_332;
         anInt322 = -1;

@@ -14,7 +14,7 @@ public class Class57 {
     public static int anInt1338;
     public static RSString aClass1_1339;
     public static RSString aClass1_1340
-            = Class58.method978(-11538, "Ihr Spielkonto wird bereits benutzt)3");
+            = Class58.method978("Ihr Spielkonto wird bereits benutzt)3");
     public static RSString aClass1_1341;
     public static int anInt1342;
     public static RSString aClass1_1343;
@@ -26,18 +26,18 @@ public class Class57 {
 
     static {
         anInt1338 = 0;
-        aClass1_1341 = Class58.method978(-11538, "This world is full)3");
+        aClass1_1341 = Class58.method978("This world is full)3");
         aClass1_1339 = aClass1_1341;
         aClass1_1336
-                = Class58.method978(-11538, "To create a new account you need to");
+                = Class58.method978("To create a new account you need to");
         packetid = 0;
         anIntArrayArray1335 = new int[104][104];
-        aClass1_1344 = Class58.method978(-11538, "flash3:");
+        aClass1_1344 = Class58.method978("flash3:");
         anInt1342 = 0;
         aClass1_1343 = aClass1_1344;
         aClass1_1333 = aClass1_1336;
         aClass45_1332 = new Class45();
-        aClass1_1348 = Class58.method978(-11538, "0(U");
+        aClass1_1348 = Class58.method978("0(U");
     }
 
     public static void method974(int arg0) {
