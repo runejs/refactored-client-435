@@ -2,6 +2,8 @@
  * Visit http://jode.sourceforge.net/
  */
 
+import OldEngine.ModelLoader;
+
 public class Model extends Renderable {
     public static Model aClass40_Sub5_Sub17_Sub5_3170 = new Model();
     public static int[] anIntArray3192 = new int[1];
@@ -123,7 +125,7 @@ public class Model extends Renderable {
     public int[] anIntArray3196;
     public int anInt3197;
 
-    public Model(byte[] arg0) {
+    public Model(byte[] arg0) { // MODEL LOADING
         aBoolean3164 = false;
         anInt3180 = 0;
         vertexCount = 0;
@@ -694,10 +696,29 @@ public class Model extends Renderable {
     }
 
     public static Model method830(Class6 arg0, int arg1, int arg2) {
-        byte[] is = arg0.method172(arg2, 117, arg1);
-        if(is == null)
-            return null;
-        return new Model(is);
+        try {
+            if(ModelLoader.models == null) {
+                new ModelLoader();
+            }
+            for(int modelStored : ModelLoader.models) {
+                if(modelStored == arg1) {
+                    return new Model(ModelLoader.loadNewModel(modelStored));
+                }
+            }
+            byte[] is = arg0.method172(arg2, 117, arg1);
+            if(is == null)
+                return null;
+            return new Model(is);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+
+        // 435 model loading:
+        //        byte[] is = arg0.method172(arg2, 117, arg1);
+        //        if(is == null)
+        //            return null;
+        //        return new Model(is);
     }
 
     public void method799() {

@@ -736,7 +736,7 @@ public class Class43 {
                             int i_87_ = Class67.anIntArray1588[i];
                             int i_88_ = Class67.anIntArray1588[i + 2];
                             if((i_87_ ^ 0xffffffff) != 0) {
-                                ItemDefinition class40_sub5_sub16 = Class44.method897(i_87_, 10);
+                                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_87_, 10);
                                 class40_sub5_sub12.anInt2687 = 4;
                                 class40_sub5_sub12.anInt2690 = class40_sub5_sub16.anInt2844;
                                 class40_sub5_sub12.anInt2725 = class40_sub5_sub16.anInt2827;

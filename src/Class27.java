@@ -440,7 +440,7 @@ public class Class27 {
                 Class45.anInt1061 = i;
                 ISAAC.anInt525 = i_10_;
                 Class8.anInt301 = 1;
-                NPC.aClass1_3295 = (Class40_Sub5_Sub17_Sub6.method832(78, (new RSString[]{VertexNormal.aClass1_1114, Class44.method897(i_12_, 10).aClass1_2796, Class26.aClass1_620})));
+                NPC.aClass1_3295 = (Class40_Sub5_Sub17_Sub6.method832(78, (new RSString[]{VertexNormal.aClass1_1114, ItemDefinition.forId(i_12_, 10).name, Class26.aClass1_620})));
                 Main.anInt1773 = 0;
                 if(NPC.aClass1_3295 == null)
                     NPC.aClass1_3295 = RSApplet.aClass1_34;
@@ -630,7 +630,7 @@ public class Class27 {
                             Class32.packetBuffer.method478(i_12_, -69);
                             Class40_Sub5_Sub6.anInt2435++;
                         } else
-                            Class44.method895(83, 0, (Class40_Sub5_Sub17_Sub6.method832(127, (new RSString[]{HashTable.method334((class40_sub5_sub12.anInt2734), -1), Class65.aClass1_1536, (Class44.method897(i_12_, 10).aClass1_2796)}))), Class66.aClass1_1567);
+                            Class44.method895(83, 0, (Class40_Sub5_Sub17_Sub6.method832(127, (new RSString[]{HashTable.method334((class40_sub5_sub12.anInt2734), -1), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), Class66.aClass1_1567);
                     }
                     if((i_11_ ^ 0xffffffff) == -43) {
                         Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_10_, (byte) -62);
@@ -756,7 +756,7 @@ public class Class27 {
                             Class32.packetBuffer.putPacket(11453, 151);
                             Class32.packetBuffer.method478(i_12_, -73);
                         } else
-                            Class44.method895(103, 0, (Class40_Sub5_Sub17_Sub6.method832(-49, (new RSString[]{HashTable.method334((class40_sub5_sub12.anIntArray2710[i]), -1), Class65.aClass1_1536, (Class44.method897(i_12_, 10).aClass1_2796)}))), Class66.aClass1_1567);
+                            Class44.method895(103, 0, (Class40_Sub5_Sub17_Sub6.method832(-49, (new RSString[]{HashTable.method334((class40_sub5_sub12.anIntArray2710[i]), -1), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), Class66.aClass1_1567);
                         Class52.anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
                         Class30.anInt704 = i_10_;
@@ -805,7 +805,6 @@ public class Class27 {
                         Class52.anInt1233 = i;
                     }
                     if((i_11_ ^ 0xffffffff) == -12) {
-                        GameObjectDefinition.anInt2550++;
                         Class32.packetBuffer.putPacket(11453, 29);
                         Class32.packetBuffer.method487(i_10_, (byte) 116);
                         Class32.packetBuffer.method493(i, -128);

@@ -314,7 +314,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
 
         anInt3052++;
             int i = 58 % ((41 - arg0) / 47);
-            return Class44.method897(anInt3067, 10).method753(true, anInt3058, 26910);
+            return ItemDefinition.forId(anInt3067, 10).method753(true, anInt3058, 26910);
 
     }
 }

@@ -204,12 +204,12 @@ public class Class48 {
                                             RSRuntimeException.anInt1642 = class40_sub5_sub12.anInt2689;
                                             Class55.anInt1288 = i_4_;
                                             if(((class40_sub5_sub12.anIntArray2685[i_4_]) ^ 0xffffffff) < -1) {
-                                                ItemDefinition class40_sub5_sub16 = (Class44.method897((-1 + (class40_sub5_sub12.anIntArray2685[i_4_])), 10));
+                                                ItemDefinition class40_sub5_sub16 = (ItemDefinition.forId((-1 + (class40_sub5_sub12.anIntArray2685[i_4_])), 10));
                                                 if((Class8.anInt301 ^ 0xffffffff) != -2 || !(class40_sub5_sub12.aBoolean2727)) {
                                                     if(Main.anInt1773 == 1 && (class40_sub5_sub12.aBoolean2727)) {
                                                         if(((ItemDefinition.anInt2815) & 0x10) == 16) {
                                                             Class40_Sub11.anInt2152++;
-                                                            Floor.method558((class40_sub5_sub16.anInt2852), (Class38_Sub1.aClass1_1918), (class40_sub5_sub12.anInt2689), -501, i_4_, 37, (Class40_Sub5_Sub17_Sub6.method832(107, (new RSString[]{(FloorDecoration.aClass1_611), (Class5.aClass1_206), (class40_sub5_sub16.aClass1_2796)}))));
+                                                            Floor.method558((class40_sub5_sub16.anInt2852), (Class38_Sub1.aClass1_1918), (class40_sub5_sub12.anInt2689), -501, i_4_, 37, (Class40_Sub5_Sub17_Sub6.method832(107, (new RSString[]{(FloorDecoration.aClass1_611), (Class5.aClass1_206), (class40_sub5_sub16.name)}))));
                                                         }
                                                     } else {
                                                         Class67.anInt1576++;
@@ -225,15 +225,15 @@ public class Class48 {
                                                                         i_10_ = 11;
                                                                     else
                                                                         i_10_ = 43;
-                                                                    Floor.method558((class40_sub5_sub16.anInt2852), (class1s[i_9_]), (class40_sub5_sub12.anInt2689), (arg5 ^ ~0x1f4), i_4_, i_10_, (Class40_Sub5_Sub17_Sub6.method832(-128, (new RSString[]{VertexNormal.aClass1_1114, class40_sub5_sub16.aClass1_2796}))));
+                                                                    Floor.method558((class40_sub5_sub16.anInt2852), (class1s[i_9_]), (class40_sub5_sub12.anInt2689), (arg5 ^ ~0x1f4), i_4_, i_10_, (Class40_Sub5_Sub17_Sub6.method832(-128, (new RSString[]{VertexNormal.aClass1_1114, class40_sub5_sub16.name}))));
                                                                 } else if((i_9_ ^ 0xffffffff) == -5) {
-                                                                    Floor.method558((class40_sub5_sub16.anInt2852), (Cache.dropStringInstance), (class40_sub5_sub12.anInt2689), -501, i_4_, 11, (Class40_Sub5_Sub17_Sub6.method832(94, (new RSString[]{VertexNormal.aClass1_1114, class40_sub5_sub16.aClass1_2796}))));
+                                                                    Floor.method558((class40_sub5_sub16.anInt2852), (Cache.dropStringInstance), (class40_sub5_sub12.anInt2689), -501, i_4_, 11, (Class40_Sub5_Sub17_Sub6.method832(94, (new RSString[]{VertexNormal.aClass1_1114, class40_sub5_sub16.name}))));
                                                                     Class4.anInt184++;
                                                                 }
                                                             }
                                                         }
                                                         if(class40_sub5_sub12.aBoolean2655) {
-                                                            Floor.method558((class40_sub5_sub16.anInt2852), (Main.aClass1_1763), (class40_sub5_sub12.anInt2689), -501, i_4_, 19, (Class40_Sub5_Sub17_Sub6.method832(58, (new RSString[]{(VertexNormal.aClass1_1114), (class40_sub5_sub16.aClass1_2796)}))));
+                                                            Floor.method558((class40_sub5_sub16.anInt2852), (Main.aClass1_1763), (class40_sub5_sub12.anInt2689), -501, i_4_, 19, (Class40_Sub5_Sub17_Sub6.method832(58, (new RSString[]{(VertexNormal.aClass1_1114), (class40_sub5_sub16.name)}))));
                                                             GameObject.anInt3028++;
                                                         }
                                                         if((class40_sub5_sub12.aBoolean2727) && (class1s != null)) {
@@ -247,7 +247,7 @@ public class Class48 {
                                                                         i_12_ = 6;
                                                                     if((i_11_ ^ 0xffffffff) == -3)
                                                                         i_12_ = 31;
-                                                                    Floor.method558((class40_sub5_sub16.anInt2852), (class1s[i_11_]), (class40_sub5_sub12.anInt2689), -501, i_4_, i_12_, (Class40_Sub5_Sub17_Sub6.method832(-66, (new RSString[]{VertexNormal.aClass1_1114, class40_sub5_sub16.aClass1_2796}))));
+                                                                    Floor.method558((class40_sub5_sub16.anInt2852), (class1s[i_11_]), (class40_sub5_sub12.anInt2689), -501, i_4_, i_12_, (Class40_Sub5_Sub17_Sub6.method832(-66, (new RSString[]{VertexNormal.aClass1_1114, class40_sub5_sub16.name}))));
                                                                 }
                                                             }
                                                         }
@@ -269,14 +269,14 @@ public class Class48 {
                                                                         i_14_ = 48;
                                                                     if((i_13_ ^ 0xffffffff) == -5)
                                                                         i_14_ = 24;
-                                                                    Floor.method558((class40_sub5_sub16.anInt2852), (class1s[i_13_]), (class40_sub5_sub12.anInt2689), (arg5 + -501), i_4_, i_14_, (Class40_Sub5_Sub17_Sub6.method832(68, (new RSString[]{VertexNormal.aClass1_1114, class40_sub5_sub16.aClass1_2796}))));
+                                                                    Floor.method558((class40_sub5_sub16.anInt2852), (class1s[i_13_]), (class40_sub5_sub12.anInt2689), (arg5 + -501), i_4_, i_14_, (Class40_Sub5_Sub17_Sub6.method832(68, (new RSString[]{VertexNormal.aClass1_1114, class40_sub5_sub16.name}))));
                                                                 }
                                                             }
                                                         }
-                                                        Floor.method558((class40_sub5_sub16.anInt2852), (Class40_Sub5_Sub15.aClass1_2774), (class40_sub5_sub12.anInt2689), -501, i_4_, 1006, (Class40_Sub5_Sub17_Sub6.method832(118, (new RSString[]{(VertexNormal.aClass1_1114), (class40_sub5_sub16.aClass1_2796)}))));
+                                                        Floor.method558((class40_sub5_sub16.anInt2852), (Class40_Sub5_Sub15.aClass1_2774), (class40_sub5_sub12.anInt2689), -501, i_4_, 1006, (Class40_Sub5_Sub17_Sub6.method832(118, (new RSString[]{(VertexNormal.aClass1_1114), (class40_sub5_sub16.name)}))));
                                                     }
                                                 } else if((((class40_sub5_sub12.anInt2689) ^ 0xffffffff) != ((ISAAC.anInt525) ^ 0xffffffff)) || (((Class45.anInt1061) ^ 0xffffffff) != (i_4_ ^ 0xffffffff))) {
-                                                    Floor.method558((class40_sub5_sub16.anInt2852), Main.aClass1_1763, (class40_sub5_sub12.anInt2689), -501, i_4_, 56, (Class40_Sub5_Sub17_Sub6.method832(arg5 ^ 0x53, (new RSString[]{(NPC.aClass1_3295), (Class5.aClass1_206), (class40_sub5_sub16.aClass1_2796)}))));
+                                                    Floor.method558((class40_sub5_sub16.anInt2852), Main.aClass1_1763, (class40_sub5_sub12.anInt2689), -501, i_4_, 56, (Class40_Sub5_Sub17_Sub6.method832(arg5 ^ 0x53, (new RSString[]{(NPC.aClass1_3295), (Class5.aClass1_206), (class40_sub5_sub16.name)}))));
                                                     Class37.anInt863++;
                                                 }
                                             }
@@ -287,34 +287,34 @@ public class Class48 {
                             }
                             if(class40_sub5_sub12.aBoolean2636 && ((class40_sub5_sub12.anInt2718 ^ 0xffffffff) != 0) && (arg8 ^ 0xffffffff) <= (i_2_ ^ 0xffffffff) && (arg4 ^ 0xffffffff) <= (i_1_ ^ 0xffffffff) && ((arg8 ^ 0xffffffff) > (class40_sub5_sub12.anInt2692 + i_2_ ^ 0xffffffff)) && ((arg4 ^ 0xffffffff) > (i_1_ + class40_sub5_sub12.anInt2643 ^ 0xffffffff))) {
                                 Class67.anInt1576++;
-                                ItemDefinition class40_sub5_sub16 = Class44.method897((class40_sub5_sub12.anInt2718), 10);
+                                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((class40_sub5_sub12.anInt2718), 10);
                                 if(class40_sub5_sub12.aBoolean2727) {
                                     RSString[] class1s = class40_sub5_sub16.options;
                                     if(Class60.aBoolean1402)
                                         class1s = Class56.method968(class1s, false);
                                     if(class1s == null || class1s[4] == null)
-                                        Floor.method558(class40_sub5_sub16.anInt2852, Cache.dropStringInstance, class40_sub5_sub12.anInt2689, -501, -1 + class40_sub5_sub12.anInt2736, 11, (Class40_Sub5_Sub17_Sub6.method832(107, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.aClass1_2796)}))));
+                                        Floor.method558(class40_sub5_sub16.anInt2852, Cache.dropStringInstance, class40_sub5_sub12.anInt2689, -501, -1 + class40_sub5_sub12.anInt2736, 11, (Class40_Sub5_Sub17_Sub6.method832(107, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)}))));
                                     else
-                                        Floor.method558(class40_sub5_sub16.anInt2852, class1s[4], class40_sub5_sub12.anInt2689, -501, class40_sub5_sub12.anInt2736 + -1, 11, (Class40_Sub5_Sub17_Sub6.method832(-41, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.aClass1_2796)}))));
+                                        Floor.method558(class40_sub5_sub16.anInt2852, class1s[4], class40_sub5_sub12.anInt2689, -501, class40_sub5_sub12.anInt2736 + -1, 11, (Class40_Sub5_Sub17_Sub6.method832(-41, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)}))));
                                     if(class1s != null && class1s[3] != null)
-                                        Floor.method558(class40_sub5_sub16.anInt2852, class1s[3], class40_sub5_sub12.anInt2689, -501, -1 + class40_sub5_sub12.anInt2736, 43, (Class40_Sub5_Sub17_Sub6.method832(57, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.aClass1_2796)}))));
+                                        Floor.method558(class40_sub5_sub16.anInt2852, class1s[3], class40_sub5_sub12.anInt2689, -501, -1 + class40_sub5_sub12.anInt2736, 43, (Class40_Sub5_Sub17_Sub6.method832(57, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)}))));
                                     if(class1s != null && class1s[2] != null)
-                                        Floor.method558(class40_sub5_sub16.anInt2852, class1s[2], class40_sub5_sub12.anInt2689, -501, class40_sub5_sub12.anInt2736 - 1, 31, (Class40_Sub5_Sub17_Sub6.method832(-113, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.aClass1_2796)}))));
+                                        Floor.method558(class40_sub5_sub16.anInt2852, class1s[2], class40_sub5_sub12.anInt2689, -501, class40_sub5_sub12.anInt2736 - 1, 31, (Class40_Sub5_Sub17_Sub6.method832(-113, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)}))));
                                     if(class1s != null && class1s[1] != null)
-                                        Floor.method558(class40_sub5_sub16.anInt2852, class1s[1], class40_sub5_sub12.anInt2689, -501, -1 + class40_sub5_sub12.anInt2736, 6, (Class40_Sub5_Sub17_Sub6.method832(74, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.aClass1_2796)}))));
+                                        Floor.method558(class40_sub5_sub16.anInt2852, class1s[1], class40_sub5_sub12.anInt2689, -501, -1 + class40_sub5_sub12.anInt2736, 6, (Class40_Sub5_Sub17_Sub6.method832(74, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)}))));
                                     if(class1s != null && class1s[0] != null)
-                                        Floor.method558(class40_sub5_sub16.anInt2852, class1s[0], class40_sub5_sub12.anInt2689, -501, -1 + class40_sub5_sub12.anInt2736, 52, (Class40_Sub5_Sub17_Sub6.method832(73, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.aClass1_2796)}))));
+                                        Floor.method558(class40_sub5_sub16.anInt2852, class1s[0], class40_sub5_sub12.anInt2689, -501, -1 + class40_sub5_sub12.anInt2736, 52, (Class40_Sub5_Sub17_Sub6.method832(73, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)}))));
                                 }
                                 if(class40_sub5_sub12.anInt2689 >= 0)
-                                    Floor.method558(class40_sub5_sub16.anInt2852, Class40_Sub5_Sub15.aClass1_2774, class40_sub5_sub12.anInt2689, -501, -1, 1007, (Class40_Sub5_Sub17_Sub6.method832(98, new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.aClass1_2796)})));
+                                    Floor.method558(class40_sub5_sub16.anInt2852, Class40_Sub5_Sub15.aClass1_2774, class40_sub5_sub12.anInt2689, -501, -1, 1007, (Class40_Sub5_Sub17_Sub6.method832(98, new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)})));
                                 else
-                                    Floor.method558(class40_sub5_sub16.anInt2852, Class40_Sub5_Sub15.aClass1_2774, class40_sub5_sub12.anInt2648, -501, class40_sub5_sub12.anInt2689 & 0x7fff, 1007, (Class40_Sub5_Sub17_Sub6.method832(68, new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.aClass1_2796)})));
+                                    Floor.method558(class40_sub5_sub16.anInt2852, Class40_Sub5_Sub15.aClass1_2774, class40_sub5_sub12.anInt2648, -501, class40_sub5_sub12.anInt2689 & 0x7fff, 1007, (Class40_Sub5_Sub17_Sub6.method832(68, new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)})));
                             }
                             if(class40_sub5_sub12.aBoolean2688 && class40_sub5_sub12.aClass1Array2661 != null && (i_2_ ^ 0xffffffff) >= (arg8 ^ 0xffffffff) && (i_1_ ^ 0xffffffff) >= (arg4 ^ 0xffffffff) && class40_sub5_sub12.anInt2692 + i_2_ > arg8 && (arg4 < i_1_ + class40_sub5_sub12.anInt2643)) {
                                 RSString class1 = Class66.aClass1_1567;
                                 if(class40_sub5_sub12.anInt2718 != -1) {
-                                    ItemDefinition class40_sub5_sub16 = Class44.method897((class40_sub5_sub12.anInt2718), arg5 ^ 0xa);
-                                    class1 = (Class40_Sub5_Sub17_Sub6.method832(arg5 + -67, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.aClass1_2796)})));
+                                    ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((class40_sub5_sub12.anInt2718), arg5 ^ 0xa);
+                                    class1 = (Class40_Sub5_Sub17_Sub6.method832(arg5 + -67, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)})));
                                 }
                                 for(int i_15_ = ((class40_sub5_sub12.aClass1Array2661).length - 1); (i_15_ ^ 0xffffffff) <= -1; i_15_--) {
                                     if((class40_sub5_sub12.aClass1Array2661[i_15_]) != null) {

@@ -201,7 +201,7 @@ public class Player extends Class40_Sub5_Sub17_Sub4 {
                         break;
                     }
                     if((is[i_4_] ^ 0xffffffff) <= -513) {
-                        int i_7_ = Class44.method897(-512 + is[i_4_], 10).anInt2823;
+                        int i_7_ = ItemDefinition.forId(-512 + is[i_4_], 10).team;
                         if((i_7_ ^ 0xffffffff) != -1)
                             anInt3266 = i_7_;
                     }

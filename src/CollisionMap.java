@@ -937,7 +937,7 @@ public class CollisionMap {
                             class40_sub5_sub12.anInt2687 = 0;
                             return true;
                         }
-                        ItemDefinition class40_sub5_sub16 = Class44.method897(i_86_, 10);
+                        ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_86_, 10);
                         class40_sub5_sub12.anInt2690 = class40_sub5_sub16.anInt2844;
                         class40_sub5_sub12.anInt2673 = i_86_;
                         class40_sub5_sub12.anInt2687 = 4;

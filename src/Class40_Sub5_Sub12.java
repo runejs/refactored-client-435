@@ -665,7 +665,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
                     class40_sub5_sub17_sub5.method802(64, 768, -50, -10, -50, true);
                 }
                 if((i ^ 0xffffffff) == -5) {
-                    ItemDefinition class40_sub5_sub16 = Class44.method897(i_11_, 10);
+                    ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_11_, 10);
                     class40_sub5_sub17_sub5 = class40_sub5_sub16.method753(false, 10, 26910);
                     if(class40_sub5_sub17_sub5 == null) {
                         Class40_Sub13.aBoolean2177 = true;

@@ -173,7 +173,7 @@ public class Class30 {
                     int i_1_ = is[i];
                     if((i_1_ ^ 0xffffffff) <= -257 && i_1_ < 512 && !Buffer.method501((byte) -94, -256 + i_1_).method623(true))
                         bool = true;
-                    if(i_1_ >= 512 && !Class44.method897(i_1_ + -512, 10).method739(aBoolean683, (byte) 127))
+                    if(i_1_ >= 512 && !ItemDefinition.forId(i_1_ + -512, 10).method739(aBoolean683, (byte) 127))
                         bool = true;
                 }
                 if(bool) {
@@ -193,7 +193,7 @@ public class Class30 {
                                 class40_sub5_sub17_sub5s[i++] = class40_sub5_sub17_sub5_4_;
                         }
                         if((i_3_ ^ 0xffffffff) <= -513) {
-                            Model class40_sub5_sub17_sub5_5_ = Class44.method897(i_3_ - 512, 10).method740(aBoolean683, -32);
+                            Model class40_sub5_sub17_sub5_5_ = ItemDefinition.forId(i_3_ - 512, 10).method740(aBoolean683, -32);
                             if(class40_sub5_sub17_sub5_5_ != null)
                                 class40_sub5_sub17_sub5s[i++] = class40_sub5_sub17_sub5_5_;
                         }
@@ -269,7 +269,7 @@ public class Class30 {
                 int i_11_ = anIntArray692[i];
                 if(i_11_ >= 256 && (i_11_ ^ 0xffffffff) > -513 && !Buffer.method501((byte) -94, i_11_ - 256).method624(false))
                     bool = true;
-                if((i_11_ ^ 0xffffffff) <= -513 && !Class44.method897(-512 + i_11_, 10).method738((byte) 44, aBoolean683))
+                if((i_11_ ^ 0xffffffff) <= -513 && !ItemDefinition.forId(-512 + i_11_, 10).method738((byte) 44, aBoolean683))
                     bool = true;
             }
             if(arg0 <= 20)
@@ -286,7 +286,7 @@ public class Class30 {
                         class40_sub5_sub17_sub5s[i++] = class40_sub5_sub17_sub5;
                 }
                 if((i_13_ ^ 0xffffffff) <= -513) {
-                    Model class40_sub5_sub17_sub5 = Class44.method897(i_13_ - 512, 10).method747(aBoolean683, (byte) 25);
+                    Model class40_sub5_sub17_sub5 = ItemDefinition.forId(i_13_ - 512, 10).method747(aBoolean683, (byte) 25);
                     if(class40_sub5_sub17_sub5 != null)
                         class40_sub5_sub17_sub5s[i++] = class40_sub5_sub17_sub5;
                 }

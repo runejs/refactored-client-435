@@ -29,7 +29,7 @@ public class Class40_Sub5_Sub10 extends SubNode {
     public static RSString aClass1_2614;
     public static RSString aClass1_2615;
     public static RSString aClass1_2616;
-    public static boolean aBoolean2617;
+    public static boolean membersServer;
 
     static {
         aBoolean2597 = false;

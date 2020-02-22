@@ -20,7 +20,6 @@ public class Class44 implements Runnable {
     public static RSString aClass1_1043;
     public static int anInt1044;
     public static int anInt1045;
-    public static int anInt1046;
     public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_1047;
     public static int anInt1048;
     public static int anInt1049;
@@ -73,31 +72,6 @@ public class Class44 implements Runnable {
                 anIntArrayArray1030 = null;
                 aClass1_1043 = null;
             }
-
-    }
-
-    public static ItemDefinition method897(int arg0, int arg1) {
-
-        anInt1046++;
-            ItemDefinition class40_sub5_sub16 = ((ItemDefinition) ISAAC.aClass9_516.method231((long) arg0, (byte) 100));
-            if(class40_sub5_sub16 != null)
-                return class40_sub5_sub16;
-            byte[] is = Class26.aClass6_632.method172(arg0, 112, arg1);
-            class40_sub5_sub16 = new ItemDefinition();
-            class40_sub5_sub16.anInt2852 = arg0;
-            if(is != null)
-                class40_sub5_sub16.readValues(new Buffer(is), -1);
-            class40_sub5_sub16.method741(29216);
-            if((class40_sub5_sub16.anInt2807 ^ 0xffffffff) != 0)
-                class40_sub5_sub16.itemToNote(method897(class40_sub5_sub16.anInt2807, 10), method897(class40_sub5_sub16.anInt2812, 10));
-            if(!Class40_Sub5_Sub10.aBoolean2617 && class40_sub5_sub16.aBoolean2849) {
-                class40_sub5_sub16.options = null;
-                class40_sub5_sub16.anInt2823 = 0;
-                class40_sub5_sub16.groundOptions = null;
-                class40_sub5_sub16.aClass1_2796 = Class40_Sub5_Sub17_Sub3.aClass1_3069;
-            }
-            ISAAC.aClass9_516.method230(arg1 + -7218, (long) arg0, class40_sub5_sub16);
-            return class40_sub5_sub16;
 
     }
 

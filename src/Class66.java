@@ -288,7 +288,7 @@ public class Class66 {
                         i_19_ += is[i_14_++];
                         Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_19_, (byte) -70);
                         int i_20_ = is[i_14_++];
-                        if(i_20_ != -1 && (!Class44.method897(i_20_, 10).aBoolean2849 || Class22.aBoolean541)) {
+                        if(i_20_ != -1 && (!ItemDefinition.forId(i_20_, 10).members || Class22.aBoolean541)) {
                             for(int i_21_ = 0; ((i_21_ ^ 0xffffffff) > (class40_sub5_sub12.anIntArray2685.length ^ 0xffffffff)); i_21_++) {
                                 if(1 + i_20_ == (class40_sub5_sub12.anIntArray2685[i_21_]))
                                     i_16_ += (class40_sub5_sub12.anIntArray2710[i_21_]);
@@ -314,7 +314,7 @@ public class Class66 {
                         i_23_ += is[i_14_++];
                         Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_23_, (byte) -118);
                         int i_24_ = is[i_14_++];
-                        if((i_24_ ^ 0xffffffff) != 0 && (!Class44.method897(i_24_, 10).aBoolean2849 || Class22.aBoolean541)) {
+                        if((i_24_ ^ 0xffffffff) != 0 && (!ItemDefinition.forId(i_24_, 10).members || Class22.aBoolean541)) {
                             for(int i_25_ = 0; (class40_sub5_sub12.anIntArray2685.length > i_25_); i_25_++) {
                                 if(i_24_ + 1 == (class40_sub5_sub12.anIntArray2685[i_25_])) {
                                     i_16_ = 999999999;

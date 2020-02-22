@@ -70,7 +70,7 @@ public class Class40_Sub13 extends Node {
                 if(class40_sub5_sub14_sub4 != null)
                     return class40_sub5_sub14_sub4;
             }
-            ItemDefinition class40_sub5_sub16 = Class44.method897(arg2, 10);
+            ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(arg2, 10);
             if(class40_sub5_sub16.anIntArray2831 == null)
                 arg1 = -1;
             if((arg1 ^ 0xffffffff) < -2) {
@@ -80,13 +80,13 @@ public class Class40_Sub13 extends Node {
                         i = class40_sub5_sub16.anIntArray2831[i_0_];
                 }
                 if(i != -1)
-                    class40_sub5_sub16 = Class44.method897(i, 10);
+                    class40_sub5_sub16 = ItemDefinition.forId(i, 10);
             }
             Model class40_sub5_sub17_sub5 = class40_sub5_sub16.method753(true, 1, 26910);
             if(class40_sub5_sub17_sub5 == null)
                 return null;
             DirectColorSprite class40_sub5_sub14_sub4 = null;
-            if(class40_sub5_sub16.anInt2807 != -1) {
+            if(class40_sub5_sub16.noteTemplateId != -1) {
                 class40_sub5_sub14_sub4 = method876(-56, 10, class40_sub5_sub16.anInt2812, -1);
                 if(class40_sub5_sub14_sub4 == null)
                     return null;
@@ -155,7 +155,7 @@ public class Class40_Sub13 extends Node {
                     }
                 }
             }
-            if(class40_sub5_sub16.anInt2807 != -1) {
+            if(class40_sub5_sub16.noteTemplateId != -1) {
                 int i_17_ = class40_sub5_sub14_sub4.anInt2952;
                 int i_18_ = class40_sub5_sub14_sub4.anInt2954;
                 class40_sub5_sub14_sub4.anInt2952 = 32;
@@ -266,7 +266,7 @@ public class Class40_Sub13 extends Node {
                 int i = -99999999;
                 Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3 = null;
                 for(Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3_32_ = ((Class40_Sub5_Sub17_Sub3) class45.method902((byte) -90)); class40_sub5_sub17_sub3_32_ != null; class40_sub5_sub17_sub3_32_ = (Class40_Sub5_Sub17_Sub3) class45.method909(-4)) {
-                    ItemDefinition class40_sub5_sub16 = Class44.method897((class40_sub5_sub17_sub3_32_.anInt3067), 10);
+                    ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((class40_sub5_sub17_sub3_32_.anInt3067), 10);
                     int i_33_ = class40_sub5_sub16.anInt2828;
                     if(class40_sub5_sub16.anInt2795 == 1)
                         i_33_ *= class40_sub5_sub17_sub3_32_.anInt3058 + 1;

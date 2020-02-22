@@ -240,9 +240,9 @@ public class GameObject extends Renderable {
                 int i_17_ = 0;
                 while_12_:
                 for(/**/; Class27.anInt661 > i_17_; i_17_++) {
-                    ItemDefinition class40_sub5_sub16 = Class44.method897(i_17_, 10);
-                    if((class40_sub5_sub16.anInt2807 ^ 0xffffffff) == 0 && class40_sub5_sub16.aClass1_2796 != null) {
-                        RSString class1_18_ = class40_sub5_sub16.aClass1_2796.method79(arg0 + -32);
+                    ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_17_, 10);
+                    if((class40_sub5_sub16.noteTemplateId ^ 0xffffffff) == 0 && class40_sub5_sub16.name != null) {
+                        RSString class1_18_ = class40_sub5_sub16.name.method79(arg0 + -32);
                         for(int i_19_ = 0; i_19_ < i; i_19_++) {
                             if(class1_18_.method60(class1s[i_19_], 32) == -1)
                                 continue while_12_;

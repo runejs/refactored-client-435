@@ -3,35 +3,16 @@
  */
 
 public class GameObjectDefinition extends SubNode {
-    public static int anInt2498;
-    public static int anInt2509;
-    public static int anInt2514;
     public static Class68 aClass68_2524;
     public static RSString aClass1_2526 = Class58.method978("(Udns");
-    public static int anInt2529;
-    public static int anInt2531;
-    public static int anInt2532;
-    public static int anInt2535;
     public static int anInt2543 = 0;
     public static HashTable aClass23_2545 = new HashTable(4096);
-    public static int anInt2550;
-    public static int anInt2551;
-    public static int anInt2552;
-    public static int anInt2554;
-    public static int anInt2555;
     public static RSString aClass1_2556 = Class58.method978("blaugr-Un:");
-    public static int anInt2557;
-    public static int anInt2558;
+    public static int anInt2557 = 0;
+    public static int anInt2558 = 0;
     public static int anInt2559 = 0;
-    public static RSString aClass1_2560;
-    public static long aLong2561;
-
-    static {
-        anInt2557 = 0;
-        aClass1_2560 = Class58.method978(": ");
-        aLong2561 = 0L;
-        anInt2558 = 0;
-    }
+    public static RSString aClass1_2560 = Class58.method978(": ");
+    public static long aLong2561 = 0L;
 
     public int anInt2499;
     public int anInt2500;
@@ -113,65 +94,63 @@ public class GameObjectDefinition extends SubNode {
 
     public static void method602(Class6_Sub1 arg0, int arg1, Class56 arg2, byte arg3) {
 
-        anInt2529++;
-            byte[] is = null;
-            synchronized(RSCanvas.aClass45_53) {
-                for(Class40_Sub6 class40_sub6 = ((Class40_Sub6) RSCanvas.aClass45_53.method902((byte) -90)); class40_sub6 != null; class40_sub6 = ((Class40_Sub6) RSCanvas.aClass45_53.method909(-4))) {
-                    if(((class40_sub6.key ^ 0xffffffffffffffffL) == ((long) arg1 ^ 0xffffffffffffffffL)) && arg2 == class40_sub6.aClass56_2117 && (class40_sub6.anInt2112 ^ 0xffffffff) == -1) {
-                        is = class40_sub6.aByteArray2102;
-                        break;
-                    }
+        byte[] is = null;
+        synchronized(RSCanvas.aClass45_53) {
+            for(Class40_Sub6 class40_sub6 = ((Class40_Sub6) RSCanvas.aClass45_53.method902((byte) -90)); class40_sub6 != null; class40_sub6 = ((Class40_Sub6) RSCanvas.aClass45_53.method909(-4))) {
+                if(((class40_sub6.key ^ 0xffffffffffffffffL) == ((long) arg1 ^ 0xffffffffffffffffL)) && arg2 == class40_sub6.aClass56_2117 && (class40_sub6.anInt2112 ^ 0xffffffff) == -1) {
+                    is = class40_sub6.aByteArray2102;
+                    break;
                 }
             }
-            if(is != null)
-                arg0.method198((byte) -115, true, is, arg1, arg2);
-            else {
-                if(arg3 > -91)
-                    anInt2557 = -20;
-                byte[] is_6_ = arg2.method969(arg1, (byte) 103);
-                arg0.method198((byte) -115, true, is_6_, arg1, arg2);
-            }
+        }
+        if(is != null)
+            arg0.method198((byte) -115, true, is, arg1, arg2);
+        else {
+            if(arg3 > -91)
+                anInt2557 = -20;
+            byte[] is_6_ = arg2.method969(arg1, (byte) 103);
+            arg0.method198((byte) -115, true, is_6_, arg1, arg2);
+        }
 
     }
 
     public static void method604(boolean arg0) {
 
         aClass23_2545 = null;
-            aClass1_2556 = null;
+        aClass1_2556 = null;
+        aClass1_2560 = null;
+        aClass1_2526 = null;
+        if(arg0 != true)
             aClass1_2560 = null;
-            aClass1_2526 = null;
-            if(arg0 != true)
-                aClass1_2560 = null;
-            aClass68_2524 = null;
+        aClass68_2524 = null;
 
     }
 
     public static void method609(int arg0, boolean arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
 
         Class40_Sub3 class40_sub3 = null;
-            anInt2552++;
-            for(Class40_Sub3 class40_sub3_24_ = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3_24_ != null; class40_sub3_24_ = (Class40_Sub3) Class45.aClass45_1064.method909(-4)) {
-                if(class40_sub3_24_.anInt2018 == arg5 && arg2 == class40_sub3_24_.anInt2039 && (arg6 ^ 0xffffffff) == (class40_sub3_24_.anInt2038 ^ 0xffffffff) && (arg7 ^ 0xffffffff) == (class40_sub3_24_.anInt2027 ^ 0xffffffff)) {
-                    class40_sub3 = class40_sub3_24_;
-                    break;
-                }
+        for(Class40_Sub3 class40_sub3_24_ = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3_24_ != null; class40_sub3_24_ = (Class40_Sub3) Class45.aClass45_1064.method909(-4)) {
+            if(class40_sub3_24_.anInt2018 == arg5 && arg2 == class40_sub3_24_.anInt2039 && (arg6 ^ 0xffffffff) == (class40_sub3_24_.anInt2038 ^ 0xffffffff) && (arg7 ^ 0xffffffff) == (class40_sub3_24_.anInt2027 ^ 0xffffffff)) {
+                class40_sub3 = class40_sub3_24_;
+                break;
             }
-            if(class40_sub3 == null) {
-                class40_sub3 = new Class40_Sub3();
-                class40_sub3.anInt2039 = arg2;
-                class40_sub3.anInt2027 = arg7;
-                class40_sub3.anInt2018 = arg5;
-                class40_sub3.anInt2038 = arg6;
-                Class39.method451(class40_sub3, 19813);
-                Class45.aClass45_1064.method904(class40_sub3, 97);
-            }
-            class40_sub3.anInt2017 = arg0;
-            class40_sub3.anInt2031 = arg4;
-            class40_sub3.anInt2033 = arg9;
-            if(arg1 != true)
-                method602(null, 77, null, (byte) -89);
-            class40_sub3.anInt2035 = arg3;
-            class40_sub3.anInt2030 = arg8;
+        }
+        if(class40_sub3 == null) {
+            class40_sub3 = new Class40_Sub3();
+            class40_sub3.anInt2039 = arg2;
+            class40_sub3.anInt2027 = arg7;
+            class40_sub3.anInt2018 = arg5;
+            class40_sub3.anInt2038 = arg6;
+            Class39.method451(class40_sub3, 19813);
+            Class45.aClass45_1064.method904(class40_sub3, 97);
+        }
+        class40_sub3.anInt2017 = arg0;
+        class40_sub3.anInt2031 = arg4;
+        class40_sub3.anInt2033 = arg9;
+        if(arg1 != true)
+            method602(null, 77, null, (byte) -89);
+        class40_sub3.anInt2035 = arg3;
+        class40_sub3.anInt2030 = arg8;
 
     }
 
@@ -229,25 +208,23 @@ public class GameObjectDefinition extends SubNode {
 
     public boolean method601(byte arg0) {
 
-        anInt2551++;
-            if(childrenIds == null) {
-                return (anInt2513 ^ 0xffffffff) != 0 || anIntArray2523 != null;
+        if(childrenIds == null) {
+            return (anInt2513 ^ 0xffffffff) != 0 || anIntArray2523 != null;
+        }
+        if(arg0 != 125)
+            anInt2548 = -89;
+        for(int i = 0; i < childrenIds.length; i++) {
+            if((childrenIds[i] ^ 0xffffffff) != 0) {
+                GameObjectDefinition gameObjectDefinition = getDefinition(childrenIds[i]);
+                if((gameObjectDefinition.anInt2513 ^ 0xffffffff) != 0 || gameObjectDefinition.anIntArray2523 != null)
+                    return true;
             }
-            if(arg0 != 125)
-                anInt2548 = -89;
-            for(int i = 0; i < childrenIds.length; i++) {
-                if((childrenIds[i] ^ 0xffffffff) != 0) {
-                    GameObjectDefinition gameObjectDefinition = getDefinition(childrenIds[i]);
-                    if((gameObjectDefinition.anInt2513 ^ 0xffffffff) != 0 || gameObjectDefinition.anIntArray2523 != null)
-                        return true;
-                }
-            }
-            return false;
+        }
+        return false;
 
     }
 
     public void method603(Buffer arg0, int arg1) {
-        anInt2554++;
         for(; ; ) {
             int i = arg0.method468(false);
             if((i ^ 0xffffffff) == -1)
@@ -270,129 +247,126 @@ public class GameObjectDefinition extends SubNode {
         }
         if((anInt2533 ^ 0xffffffff) == 0)
             anInt2533 = solid ? 1 : 0;
-        anInt2509++;
         if(arg0 != true)
             method603(null, -36);
     }
 
     public Model method606(boolean arg0, byte arg1, boolean arg2, int arg3, int arg4) {
 
-        anInt2498++;
-            Model class40_sub5_sub17_sub5 = null;
-            if(anIntArray2522 == null) {
-                if(arg4 != 10)
-                    return null;
-                if(anIntArray2525 == null)
-                    return null;
-                boolean bool = arg3 > 3 ^ aBoolean2553;
-                int i = anIntArray2525.length;
-                for(int i_7_ = 0; i > i_7_; i_7_++) {
-                    int i_8_ = anIntArray2525[i_7_];
-                    if(bool)
-                        i_8_ += 65536;
-                    class40_sub5_sub17_sub5 = ((Model) VertexNormal.aClass9_1102.method231((long) i_8_, (byte) 122));
-                    if(class40_sub5_sub17_sub5 == null) {
-                        class40_sub5_sub17_sub5 = (Model.method830(RSString.aClass6_1705, i_8_ & 0xffff, 0));
-                        if(class40_sub5_sub17_sub5 == null)
-                            return null;
-                        if(bool)
-                            class40_sub5_sub17_sub5.method818();
-                        VertexNormal.aClass9_1102.method230(-7208, (long) i_8_, class40_sub5_sub17_sub5);
-                    }
-                    if(i > 1)
-                        Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub5Array2762[i_7_] = class40_sub5_sub17_sub5;
-                }
-                if((i ^ 0xffffffff) < -2)
-                    class40_sub5_sub17_sub5 = (new Model((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub5Array2762), i));
-            } else {
-                int i = -1;
-                for(int i_9_ = 0; ((anIntArray2522.length ^ 0xffffffff) < (i_9_ ^ 0xffffffff)); i_9_++) {
-                    if(arg4 == anIntArray2522[i_9_]) {
-                        i = i_9_;
-                        break;
-                    }
-                }
-                if(i == -1)
-                    return null;
-                int i_10_ = anIntArray2525[i];
-                boolean bool = aBoolean2553 ^ arg3 > 3;
+        Model class40_sub5_sub17_sub5 = null;
+        if(anIntArray2522 == null) {
+            if(arg4 != 10)
+                return null;
+            if(anIntArray2525 == null)
+                return null;
+            boolean bool = arg3 > 3 ^ aBoolean2553;
+            int i = anIntArray2525.length;
+            for(int i_7_ = 0; i > i_7_; i_7_++) {
+                int i_8_ = anIntArray2525[i_7_];
                 if(bool)
-                    i_10_ += 65536;
-                class40_sub5_sub17_sub5 = ((Model) VertexNormal.aClass9_1102.method231((long) i_10_, (byte) 48));
+                    i_8_ += 65536;
+                class40_sub5_sub17_sub5 = ((Model) VertexNormal.aClass9_1102.method231((long) i_8_, (byte) 122));
                 if(class40_sub5_sub17_sub5 == null) {
-                    class40_sub5_sub17_sub5 = Model.method830((RSString.aClass6_1705), 0xffff & i_10_, 0);
+                    class40_sub5_sub17_sub5 = (Model.method830(RSString.aClass6_1705, i_8_ & 0xffff, 0));
                     if(class40_sub5_sub17_sub5 == null)
                         return null;
                     if(bool)
                         class40_sub5_sub17_sub5.method818();
-                    VertexNormal.aClass9_1102.method230(-7208, (long) i_10_, class40_sub5_sub17_sub5);
+                    VertexNormal.aClass9_1102.method230(-7208, (long) i_8_, class40_sub5_sub17_sub5);
+                }
+                if(i > 1)
+                    Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub5Array2762[i_7_] = class40_sub5_sub17_sub5;
+            }
+            if((i ^ 0xffffffff) < -2)
+                class40_sub5_sub17_sub5 = (new Model((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub5Array2762), i));
+        } else {
+            int i = -1;
+            for(int i_9_ = 0; ((anIntArray2522.length ^ 0xffffffff) < (i_9_ ^ 0xffffffff)); i_9_++) {
+                if(arg4 == anIntArray2522[i_9_]) {
+                    i = i_9_;
+                    break;
                 }
             }
-            boolean bool;
-            bool = anInt2507 != 128 || anInt2540 != 128 || anInt2517 != 128;
-            boolean bool_11_;
-            bool_11_ = (anInt2500 ^ 0xffffffff) != -1 || anInt2519 != 0 || anInt2504 != 0;
-            Model class40_sub5_sub17_sub5_12_ = new Model(class40_sub5_sub17_sub5, arg3 == 0 && !bool && !bool_11_, anIntArray2516 == null, true);
-            arg3 &= 0x3;
-            if((arg3 ^ 0xffffffff) != -2) {
-                if((arg3 ^ 0xffffffff) != -3) {
-                    if(arg3 == 3)
-                        class40_sub5_sub17_sub5_12_.method824();
-                } else
-                    class40_sub5_sub17_sub5_12_.method819();
-            } else
-                class40_sub5_sub17_sub5_12_.method813();
-            if(anIntArray2516 != null) {
-                for(int i = 0; i < anIntArray2516.length; i++)
-                    class40_sub5_sub17_sub5_12_.method803(anIntArray2516[i], anIntArray2510[i]);
-            }
-            int i = -128 % ((53 - arg1) / 35);
+            if(i == -1)
+                return null;
+            int i_10_ = anIntArray2525[i];
+            boolean bool = aBoolean2553 ^ arg3 > 3;
             if(bool)
-                class40_sub5_sub17_sub5_12_.method821(anInt2507, anInt2540, anInt2517);
-            if(bool_11_)
-                class40_sub5_sub17_sub5_12_.method828(anInt2500, anInt2519, anInt2504);
-            if(arg2)
-                class40_sub5_sub17_sub5_12_.method810();
-            class40_sub5_sub17_sub5_12_.method802(anInt2527 + 64, 768 + (anInt2544 * 5), -50, -10, -50, arg0);
-            return class40_sub5_sub17_sub5_12_;
+                i_10_ += 65536;
+            class40_sub5_sub17_sub5 = ((Model) VertexNormal.aClass9_1102.method231((long) i_10_, (byte) 48));
+            if(class40_sub5_sub17_sub5 == null) {
+                class40_sub5_sub17_sub5 = Model.method830((RSString.aClass6_1705), 0xffff & i_10_, 0);
+                if(class40_sub5_sub17_sub5 == null)
+                    return null;
+                if(bool)
+                    class40_sub5_sub17_sub5.method818();
+                VertexNormal.aClass9_1102.method230(-7208, (long) i_10_, class40_sub5_sub17_sub5);
+            }
+        }
+        boolean bool;
+        bool = anInt2507 != 128 || anInt2540 != 128 || anInt2517 != 128;
+        boolean bool_11_;
+        bool_11_ = (anInt2500 ^ 0xffffffff) != -1 || anInt2519 != 0 || anInt2504 != 0;
+        Model class40_sub5_sub17_sub5_12_ = new Model(class40_sub5_sub17_sub5, arg3 == 0 && !bool && !bool_11_, anIntArray2516 == null, true);
+        arg3 &= 0x3;
+        if((arg3 ^ 0xffffffff) != -2) {
+            if((arg3 ^ 0xffffffff) != -3) {
+                if(arg3 == 3)
+                    class40_sub5_sub17_sub5_12_.method824();
+            } else
+                class40_sub5_sub17_sub5_12_.method819();
+        } else
+            class40_sub5_sub17_sub5_12_.method813();
+        if(anIntArray2516 != null) {
+            for(int i = 0; i < anIntArray2516.length; i++)
+                class40_sub5_sub17_sub5_12_.method803(anIntArray2516[i], anIntArray2510[i]);
+        }
+        int i = -128 % ((53 - arg1) / 35);
+        if(bool)
+            class40_sub5_sub17_sub5_12_.method821(anInt2507, anInt2540, anInt2517);
+        if(bool_11_)
+            class40_sub5_sub17_sub5_12_.method828(anInt2500, anInt2519, anInt2504);
+        if(arg2)
+            class40_sub5_sub17_sub5_12_.method810();
+        class40_sub5_sub17_sub5_12_.method802(anInt2527 + 64, 768 + (anInt2544 * 5), -50, -10, -50, arg0);
+        return class40_sub5_sub17_sub5_12_;
 
     }
 
     public Model method607(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, Class40_Sub5_Sub7 arg6, int arg7, int arg8) {
 
-        anInt2531++;
-            long l;
-            if(anIntArray2522 == null)
-                l = (long) (arg5 + (anInt2538 << 554173066));
-            else
-                l = (long) (arg5 + ((anInt2538 << 1528233034) + (arg4 << 272341539)));
-            Model class40_sub5_sub17_sub5 = ((Model) Class49.aClass9_1145.method231(l, (byte) 70));
-            if(class40_sub5_sub17_sub5 == null) {
-                class40_sub5_sub17_sub5 = method606(true, (byte) -25, true, arg5, arg4);
-                if(class40_sub5_sub17_sub5 == null)
-                    return null;
-                Class49.aClass9_1145.method230(-7208, l, class40_sub5_sub17_sub5);
-            }
-            if(arg6 == null && !adjustToTerrain)
-                return class40_sub5_sub17_sub5;
-            if(arg6 != null)
-                class40_sub5_sub17_sub5 = arg6.method593(arg3, false, class40_sub5_sub17_sub5, arg5);
-            else
-                class40_sub5_sub17_sub5 = class40_sub5_sub17_sub5.method817(true);
-            if(arg1 < 54)
+        long l;
+        if(anIntArray2522 == null)
+            l = (long) (arg5 + (anInt2538 << 554173066));
+        else
+            l = (long) (arg5 + ((anInt2538 << 1528233034) + (arg4 << 272341539)));
+        Model class40_sub5_sub17_sub5 = ((Model) Class49.aClass9_1145.method231(l, (byte) 70));
+        if(class40_sub5_sub17_sub5 == null) {
+            class40_sub5_sub17_sub5 = method606(true, (byte) -25, true, arg5, arg4);
+            if(class40_sub5_sub17_sub5 == null)
                 return null;
-            if(adjustToTerrain) {
-                int i = (arg2 + arg0 - (-arg8 + -arg7)) / 4;
-                for(int i_13_ = 0; ((i_13_ ^ 0xffffffff) > (class40_sub5_sub17_sub5.vertexCount ^ 0xffffffff)); i_13_++) {
-                    int i_14_ = class40_sub5_sub17_sub5.verticesZ[i_13_];
-                    int i_15_ = class40_sub5_sub17_sub5.verticesX[i_13_];
-                    int i_16_ = arg0 + (64 + i_15_) * (arg2 - arg0) / 128;
-                    int i_17_ = arg7 + (64 + i_15_) * (arg8 + -arg7) / 128;
-                    int i_18_ = i_16_ + (i_14_ + 64) * (-i_16_ + i_17_) / 128;
-                    class40_sub5_sub17_sub5.verticesY[i_13_] += -i + i_18_;
-                }
-            }
+            Class49.aClass9_1145.method230(-7208, l, class40_sub5_sub17_sub5);
+        }
+        if(arg6 == null && !adjustToTerrain)
             return class40_sub5_sub17_sub5;
+        if(arg6 != null)
+            class40_sub5_sub17_sub5 = arg6.method593(arg3, false, class40_sub5_sub17_sub5, arg5);
+        else
+            class40_sub5_sub17_sub5 = class40_sub5_sub17_sub5.method817(true);
+        if(arg1 < 54)
+            return null;
+        if(adjustToTerrain) {
+            int i = (arg2 + arg0 - (-arg8 + -arg7)) / 4;
+            for(int i_13_ = 0; ((i_13_ ^ 0xffffffff) > (class40_sub5_sub17_sub5.vertexCount ^ 0xffffffff)); i_13_++) {
+                int i_14_ = class40_sub5_sub17_sub5.verticesZ[i_13_];
+                int i_15_ = class40_sub5_sub17_sub5.verticesX[i_13_];
+                int i_16_ = arg0 + (64 + i_15_) * (arg2 - arg0) / 128;
+                int i_17_ = arg7 + (64 + i_15_) * (arg8 + -arg7) / 128;
+                int i_18_ = i_16_ + (i_14_ + 64) * (-i_16_ + i_17_) / 128;
+                class40_sub5_sub17_sub5.verticesY[i_13_] += -i + i_18_;
+            }
+        }
+        return class40_sub5_sub17_sub5;
 
     }
 
@@ -539,7 +513,6 @@ public class GameObjectDefinition extends SubNode {
                 }
             }
         }
-        anInt2555++;
         if(arg1 != -1663)
             method601((byte) -112);
     }
@@ -547,53 +520,50 @@ public class GameObjectDefinition extends SubNode {
     public boolean method610(int arg0, int arg1) {
 
         if(arg1 != 7533)
-                anInt2543 = -28;
-            anInt2532++;
-            if(anIntArray2522 != null) {
-                for(int i = 0; anIntArray2522.length > i; i++) {
-                    if((arg0 ^ 0xffffffff) == (anIntArray2522[i] ^ 0xffffffff))
-                        return RSString.aClass6_1705.method173((anIntArray2525[i] & 0xffff), (byte) -10, 0);
-                }
-                return true;
+            anInt2543 = -28;
+        if(anIntArray2522 != null) {
+            for(int i = 0; anIntArray2522.length > i; i++) {
+                if((arg0 ^ 0xffffffff) == (anIntArray2522[i] ^ 0xffffffff))
+                    return RSString.aClass6_1705.method173((anIntArray2525[i] & 0xffff), (byte) -10, 0);
             }
-            if(anIntArray2525 == null)
-                return true;
-            if((arg0 ^ 0xffffffff) != -11)
-                return true;
-            boolean bool = true;
+            return true;
+        }
+        if(anIntArray2525 == null)
+            return true;
+        if((arg0 ^ 0xffffffff) != -11)
+            return true;
+        boolean bool = true;
         for(int i = 0; anIntArray2525.length > i; i++)
-                bool &= RSString.aClass6_1705.method173((0xffff & anIntArray2525[i]), (byte) -10, 0);
-            return bool;
+            bool &= RSString.aClass6_1705.method173((0xffff & anIntArray2525[i]), (byte) -10, 0);
+        return bool;
 
     }
 
     public GameObjectDefinition method611(int arg0) {
 
-        anInt2535++;
-            int i = -1;
-            if(arg0 != -20)
-                method606(true, (byte) -93, false, 40, -55);
-            if(anInt2548 == -1) {
-                if(anInt2536 != -1)
-                    i = Class58.varbitmasks[anInt2536];
-            } else
-                i = Class40_Sub5_Sub6.method585(anInt2548, 1369);
-            if(i < 0 || childrenIds.length <= i || childrenIds[i] == -1)
-                return null;
-            return getDefinition(childrenIds[i]);
+        int i = -1;
+        if(arg0 != -20)
+            method606(true, (byte) -93, false, 40, -55);
+        if(anInt2548 == -1) {
+            if(anInt2536 != -1)
+                i = Class58.varbitmasks[anInt2536];
+        } else
+            i = Class40_Sub5_Sub6.method585(anInt2548, 1369);
+        if(i < 0 || childrenIds.length <= i || childrenIds[i] == -1)
+            return null;
+        return getDefinition(childrenIds[i]);
 
     }
 
     public boolean method612(byte arg0) {
 
-        anInt2514++;
-            if(anIntArray2525 == null)
-                return true;
-            boolean bool = true;
+        if(anIntArray2525 == null)
+            return true;
+        boolean bool = true;
         for(int i = 0; anIntArray2525.length > i; i++)
-                bool &= RSString.aClass6_1705.method173((0xffff & anIntArray2525[i]), (byte) -10, 0);
-            int i = -67 % ((-65 - arg0) / 50);
-            return bool;
+            bool &= RSString.aClass6_1705.method173((0xffff & anIntArray2525[i]), (byte) -10, 0);
+        int i = -67 % ((-65 - arg0) / 50);
+        return bool;
 
     }
 }
