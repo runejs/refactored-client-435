@@ -68,7 +68,7 @@ public class Class53 {
             int i_3_ = i_2_ >> -652194334;
             int i_4_ = 0x3 & i_2_;
             int i_5_ = Npc.anIntArray3304[i_3_];
-            int i_6_ = Cache.outgoingbuffer.method504(false);
+            int i_6_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
             if(i_1_ >= 0 && (i_0_ ^ 0xffffffff) <= -1 && (i_1_ ^ 0xffffffff) > -104 && (i_0_ ^ 0xffffffff) > -104) {
                 int i_7_ = (Class40_Sub6.tile_height[Player.anInt3267][i_1_][i_0_]);
                 int i_8_ = (Class40_Sub6.tile_height[Player.anInt3267][i_1_ + 1][i_0_]);
@@ -180,10 +180,10 @@ public class Class53 {
                     GameObjectDefinition.method609(-1, true, i_38_, i_40_, -1, (Player.anInt3267), i_37_, i_42_, i_41_, 0);
             } else {
                 if((Class57.packetid ^ 0xffffffff) == -230) {
-                    int i = Cache.outgoingbuffer.method495(-82);
+                    int i = Cache.outgoingbuffer.getNegativeOffsetByte();
                     int i_43_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
-                    int i_44_ = Cache.outgoingbuffer.get();
-                    int i_45_ = Cache.outgoingbuffer.get();
+                    int i_44_ = Cache.outgoingbuffer.getByte();
+                    int i_45_ = Cache.outgoingbuffer.getByte();
                     int i_46_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                     int i_47_ = i_46_ & 0x3;
                     int i_48_ = i_46_ >> -638771838;
@@ -193,8 +193,8 @@ public class Class53 {
                     int i_52_ = Class40_Sub6.anInt2119 + (i_50_ >> 680780804 & 0x7);
                     int i_53_ = Cache.outgoingbuffer.getUnsignedShortBE();
                     int i_54_ = Cache.outgoingbuffer.getInvertedByte();
-                    int i_55_ = Cache.outgoingbuffer.method490((byte) -70);
-                    int i_56_ = Cache.outgoingbuffer.method504(false);
+                    int i_55_ = Cache.outgoingbuffer.getUnsignedShortLE();
+                    int i_56_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
                     Player class40_sub5_sub17_sub4_sub1;
                     if(i_43_ != Class30.anInt708)
                         class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_43_]);
@@ -261,8 +261,8 @@ public class Class53 {
                     int i = Cache.outgoingbuffer.getUnsignedByte();
                     int i_68_ = (i & 0x7) + Floor.anInt2318;
                     int i_69_ = Class40_Sub6.anInt2119 + (0x7 & i >> 80153604);
-                    int i_70_ = (i_69_ + Cache.outgoingbuffer.get());
-                    int i_71_ = (i_68_ + Cache.outgoingbuffer.get());
+                    int i_70_ = (i_69_ + Cache.outgoingbuffer.getByte());
+                    int i_71_ = (i_68_ + Cache.outgoingbuffer.getByte());
                     int i_72_ = Cache.outgoingbuffer.getShortBE();
                     int i_73_ = Cache.outgoingbuffer.getUnsignedShortBE();
                     int i_74_ = Cache.outgoingbuffer.getUnsignedByte() * 4;
@@ -284,8 +284,8 @@ public class Class53 {
                     if(arg0 >= -110)
                         method952(32);
                     if((Class57.packetid ^ 0xffffffff) == -20) {
-                        int i = Cache.outgoingbuffer.method504(false);
-                        int i_80_ = Cache.outgoingbuffer.method504(false);
+                        int i = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
+                        int i_80_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
                         int i_81_ = Cache.outgoingbuffer.getUnsignedShortBE();
                         int i_82_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                         int i_83_ = (((0x71 & i_82_) >> 581076772) + Class40_Sub6.anInt2119);
@@ -300,7 +300,7 @@ public class Class53 {
                             Class40_Sub13.method880((byte) -80, i_84_, i_83_);
                         }
                     } else if(Class57.packetid == 175) {
-                        int i = Cache.outgoingbuffer.method490((byte) -70);
+                        int i = Cache.outgoingbuffer.getUnsignedShortLE();
                         int i_85_ = Cache.outgoingbuffer.getUnsignedShortBE();
                         int i_86_ = Cache.outgoingbuffer.getUnsignedByte();
                         int i_87_ = Floor.anInt2318 + (i_86_ & 0x7);

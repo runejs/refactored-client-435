@@ -91,7 +91,7 @@ public class Class40_Sub5_Sub10 extends SubNode {
             Buffer class40_sub1 = new Buffer(is);
             class40_sub5_sub1 = new Class40_Sub5_Sub1();
         class40_sub1.currentPosition = class40_sub1.buffer.length + -12;
-        int i = class40_sub1.readInt();
+        int i = class40_sub1.getIntBE();
             int i_0_ = 0;
         class40_sub5_sub1.anInt2271 = class40_sub1.getUnsignedShortBE();
         class40_sub5_sub1.anInt2267 = class40_sub1.getUnsignedShortBE();
@@ -107,7 +107,7 @@ public class Class40_Sub5_Sub10 extends SubNode {
                     if(i_1_ >= 100 || i_1_ == 21 || (i_1_ ^ 0xffffffff) == -39 || i_1_ == 39)
                         class40_sub5_sub1.anIntArray2262[i_0_] = class40_sub1.getUnsignedByte();
                     else
-                        class40_sub5_sub1.anIntArray2262[i_0_] = class40_sub1.readInt();
+                        class40_sub5_sub1.anIntArray2262[i_0_] = class40_sub1.getIntBE();
                 } else
                     class40_sub5_sub1.aClass1Array2270[i_0_] = class40_sub1.getRSString();
                 class40_sub5_sub1.anIntArray2272[i_0_++] = i_1_;

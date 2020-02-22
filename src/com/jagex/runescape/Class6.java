@@ -146,7 +146,7 @@ public abstract class Class6 {
         class40_sub1.currentPosition = arg0.length - (7 + (Class40_Sub5_Sub9.anInt2581 * 8 + (-3 + i * 3)));
         Buffer.anIntArray1972 = new int[i];
         for(int i_38_ = 1; (i ^ 0xffffffff) < (i_38_ ^ 0xffffffff); i_38_++) {
-            Buffer.anIntArray1972[i_38_] = class40_sub1.getTri(true);
+            Buffer.anIntArray1972[i_38_] = class40_sub1.getMediumBE();
             if(Buffer.anIntArray1972[i_38_] == 0)
                 Buffer.anIntArray1972[i_38_] = 1;
         }
@@ -162,12 +162,12 @@ public abstract class Class6 {
                 if((i_43_ ^ 0xffffffff) == -2) {
                     for(int i_44_ = 0; (i_41_ ^ 0xffffffff) < (i_44_ ^ 0xffffffff); i_44_++) {
                         for(int i_45_ = 0; i_40_ > i_45_; i_45_++)
-                            is[i_41_ * i_45_ + i_44_] = class40_sub1.get();
+                            is[i_41_ * i_45_ + i_44_] = class40_sub1.getByte();
                     }
                 }
             } else {
                 for(int i_46_ = 0; (i_42_ ^ 0xffffffff) < (i_46_ ^ 0xffffffff); i_46_++)
-                    is[i_46_] = class40_sub1.get();
+                    is[i_46_] = class40_sub1.getByte();
             }
         }
     }
@@ -293,13 +293,13 @@ public abstract class Class6 {
             if((i_2_ ^ 0xffffffff) != -1) {
                 anIntArray239 = new int[i_3_ + 1];
                 for(int i_5_ = 0; (anInt221 ^ 0xffffffff) < (i_5_ ^ 0xffffffff); i_5_++)
-                    anIntArray239[anIntArray227[i_5_]] = class40_sub1.readInt();
+                    anIntArray239[anIntArray227[i_5_]] = class40_sub1.getIntBE();
                 aClass42_254 = new Class42(anIntArray239);
             }
             for(int i_6_ = 0; i_6_ < anInt221; i_6_++)
-                anIntArray252[anIntArray227[i_6_]] = class40_sub1.readInt();
+                anIntArray252[anIntArray227[i_6_]] = class40_sub1.getIntBE();
             for(int i_7_ = 0; i_7_ < anInt221; i_7_++)
-                anIntArray224[anIntArray227[i_7_]] = class40_sub1.readInt();
+                anIntArray224[anIntArray227[i_7_]] = class40_sub1.getIntBE();
             for(int i_8_ = 0; (anInt221 ^ 0xffffffff) < (i_8_ ^ 0xffffffff); i_8_++)
                 anIntArray261[anIntArray227[i_8_]] = class40_sub1.getUnsignedShortBE();
             for(int i_9_ = 0; (i_9_ ^ 0xffffffff) > (anInt221 ^ 0xffffffff); i_9_++) {
@@ -323,7 +323,7 @@ public abstract class Class6 {
                     int i_17_ = anIntArray261[i_16_];
                     anIntArrayArray236[i_16_] = new int[aByteArrayArrayArray249[i_16_].length];
                     for(int i_18_ = 0; i_17_ > i_18_; i_18_++)
-                        anIntArrayArray236[i_16_][(anIntArrayArray243[i_16_][i_18_])] = class40_sub1.readInt();
+                        anIntArrayArray236[i_16_][(anIntArrayArray243[i_16_][i_18_])] = class40_sub1.getIntBE();
                     aClass42Array217[i_16_] = new Class42(anIntArrayArray236[i_16_]);
                 }
             }
@@ -362,7 +362,7 @@ public abstract class Class6 {
             is_21_ = new byte[aByteArrayArray212[arg0].length];
             Class18.method278(aByteArrayArray212[arg0], 0, is_21_, 0, is_21_.length);
             Buffer class40_sub1 = new Buffer(is_21_);
-            class40_sub1.method483(arg2, false, class40_sub1.buffer.length, 5);
+            class40_sub1.method483(arg2, class40_sub1.buffer.length, 5);
         }
         byte[] is_22_;
         is_22_ = Landscape.method931(is_21_, arg1 + -20815);
@@ -378,7 +378,7 @@ public abstract class Class6 {
             for(int i_26_ = 0; (i_24_ ^ 0xffffffff) < (i_26_ ^ 0xffffffff); i_26_++) {
                 int i_27_ = 0;
                 for(int i_28_ = 0; (i_28_ ^ 0xffffffff) > (i ^ 0xffffffff); i_28_++) {
-                    i_27_ += class40_sub1.readInt();
+                    i_27_ += class40_sub1.getIntBE();
                     is_25_[i_28_] += i_27_;
                 }
             }
@@ -392,7 +392,7 @@ public abstract class Class6 {
             for(int i_31_ = 0; (i_24_ ^ 0xffffffff) < (i_31_ ^ 0xffffffff); i_31_++) {
                 int i_32_ = 0;
                 for(int i_33_ = 0; i_33_ < i; i_33_++) {
-                    i_32_ += class40_sub1.readInt();
+                    i_32_ += class40_sub1.getIntBE();
                     Class18.method278(is_22_, i_30_, is[is_19_[i_33_]], is_25_[i_33_], i_32_);
                     is_25_[i_33_] += i_32_;
                     i_30_ += i_32_;
@@ -457,9 +457,7 @@ public abstract class Class6 {
         return false;
     }
 
-    public byte[] method187(int arg0, byte arg1) {
-        if(arg1 >= -74)
-            method173(-8, (byte) 107, 12);
+    public byte[] method187(int arg0) {
         anInt263++;
         if(aByteArrayArrayArray249.length == 1)
             return method172(arg0, 115, 0);

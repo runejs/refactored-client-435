@@ -383,14 +383,14 @@ public class Class40_Sub5_Sub12 extends SubNode {
                 if((i_6_ ^ 0xffffffff) == -2) {
                     anIntArray2699[i_5_] = arg0.getShortBE();
                     anIntArray2708[i_5_] = arg0.getShortBE();
-                    anIntArray2704[i_5_] = arg0.readInt();
+                    anIntArray2704[i_5_] = arg0.getIntBE();
                 } else
                     anIntArray2704[i_5_] = -1;
             }
             aClass1Array2698 = new RSString[5];
             for(int i_7_ = 0; i_7_ < 5; i_7_++) {
                 aClass1Array2698[i_7_] = arg0.getRSString();
-                if(aClass1Array2698[i_7_].method59(-3136) == 0)
+                if(aClass1Array2698[i_7_].method59() == 0)
                     aClass1Array2698[i_7_] = null;
             }
         }
@@ -408,15 +408,15 @@ public class Class40_Sub5_Sub12 extends SubNode {
             aClass1_2640 = arg0.getRSString();
         }
         if(anInt2683 == 1 || (anInt2683 ^ 0xffffffff) == -4 || (anInt2683 ^ 0xffffffff) == -5)
-            anInt2647 = arg0.readInt();
+            anInt2647 = arg0.getIntBE();
         if((anInt2683 ^ 0xffffffff) == -4 || (anInt2683 ^ 0xffffffff) == -5) {
-            anInt2726 = arg0.readInt();
-            anInt2719 = arg0.readInt();
-            anInt2663 = arg0.readInt();
+            anInt2726 = arg0.getIntBE();
+            anInt2719 = arg0.getIntBE();
+            anInt2663 = arg0.getIntBE();
         }
         if((anInt2683 ^ 0xffffffff) == -6) {
-            anInt2744 = arg0.readInt();
-            anInt2670 = arg0.readInt();
+            anInt2744 = arg0.getIntBE();
+            anInt2670 = arg0.getIntBE();
         }
         if((anInt2683 ^ 0xffffffff) == -7) {
             anInt2687 = 1;
@@ -443,14 +443,14 @@ public class Class40_Sub5_Sub12 extends SubNode {
             anInt2733 = arg0.getUnsignedByte();
             anInt2642 = arg0.getUnsignedShortBE();
             aBoolean2665 = arg0.getUnsignedByte() == 1;
-            anInt2647 = arg0.readInt();
+            anInt2647 = arg0.getIntBE();
             anInt2749 = arg0.getShortBE();
             anInt2667 = arg0.getShortBE();
             aBoolean2727 = (arg0.getUnsignedByte() ^ 0xffffffff) == -2;
             aClass1Array2698 = new RSString[5];
             for(int i_8_ = 0; i_8_ < 5; i_8_++) {
                 aClass1Array2698[i_8_] = arg0.getRSString();
-                if((aClass1Array2698[i_8_].method59(-3136) ^ 0xffffffff) == -1)
+                if((aClass1Array2698[i_8_].method59() ^ 0xffffffff) == -1)
                     aClass1Array2698[i_8_] = null;
             }
         }
@@ -463,7 +463,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
         }
         if((anInt2714 ^ 0xffffffff) == -2 || (anInt2714 ^ 0xffffffff) == -5 || (anInt2714 ^ 0xffffffff) == -6 || (anInt2714 ^ 0xffffffff) == -7) {
             aClass1_2676 = arg0.getRSString();
-            if((aClass1_2676.method59(-3136) ^ 0xffffffff) == -1) {
+            if((aClass1_2676.method59() ^ 0xffffffff) == -1) {
                 if((anInt2714 ^ 0xffffffff) == -2)
                     aClass1_2676 = Class39.aClass1_919;
                 if((anInt2714 ^ 0xffffffff) == -5)
@@ -548,7 +548,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
             anInt2731 = arg1.getUnsignedShortBE();
         }
         if((anInt2683 ^ 0xffffffff) == -6) {
-            anInt2744 = arg1.readInt();
+            anInt2744 = arg1.getIntBE();
             anInt2751 = arg1.getUnsignedShortBE();
             aBoolean2641 = (arg1.getUnsignedByte() ^ 0xffffffff) == -2;
             anInt2745 = arg1.getUnsignedByte();
@@ -576,16 +576,16 @@ public class Class40_Sub5_Sub12 extends SubNode {
             anInt2733 = arg1.getUnsignedByte();
             anInt2715 = arg1.getUnsignedByte();
             aBoolean2665 = arg1.getUnsignedByte() == 1;
-            anInt2647 = arg1.readInt();
+            anInt2647 = arg1.getIntBE();
         }
         if((anInt2683 ^ 0xffffffff) == -4) {
-            anInt2647 = arg1.readInt();
+            anInt2647 = arg1.getIntBE();
             aBoolean2645 = (arg1.getUnsignedByte() ^ 0xffffffff) == -2;
             anInt2745 = arg1.getUnsignedByte();
         }
         if(anInt2683 == 9) {
             arg1.getUnsignedByte();
-            anInt2647 = arg1.readInt();
+            anInt2647 = arg1.getIntBE();
         }
         if(aBoolean2688) {
             anObjectArray2677 = FloorDecoration.method345((byte) 89, arg1);

@@ -131,7 +131,7 @@ public class Npc extends Actor {
                                     Class32.packetBuffer.putMediumBE((i_6_ + 8388608 + (Class22_Sub2.anInt1888 << 1170876883)));
                                     Class22_Sub2.anInt1888 = 0;
                                 } else {
-                                    Class32.packetBuffer.putInt(40, ((Class22_Sub2.anInt1888 << 811733811) + -1073741824 + i_6_));
+                                    Class32.packetBuffer.putIntBE(((Class22_Sub2.anInt1888 << 811733811) + -1073741824 + i_6_));
                                     Class22_Sub2.anInt1888 = 0;
                                 }
                             }
@@ -171,7 +171,7 @@ public class Npc extends Actor {
                     int i_12_ = (int) l;
                     Class32.packetBuffer.putPacket(11453, 234);
                     int i_13_ = i_10_ * 765 + i;
-                    Class32.packetBuffer.method494(((i_11_ << -1245872941) + ((i_12_ << 651937044) + i_13_)), 93);
+                    Class32.packetBuffer.putIntLE(((i_11_ << -1245872941) + ((i_12_ << 651937044) + i_13_)));
                 }
                 if(Class19.anInt487 > 0)
                     Class19.anInt487--;
@@ -277,10 +277,10 @@ public class Npc extends Actor {
                                             class40_sub5_sub12.anIntArray2710[i_17_] = 0;
                                         }
                                         Class32.packetBuffer.putPacket(11453, 83);
-                                        Class32.packetBuffer.method489(128, i);
-                                        Class32.packetBuffer.method493(Class58.anInt1352, -128);
+                                        Class32.packetBuffer.putDualByte(i, 128);
+                                        Class32.packetBuffer.putCustomNegativeOffsetShortBE(Class58.anInt1352, -128);
                                         Class32.packetBuffer.putOffsetShortLE(Class55.anInt1288);
-                                        Class32.packetBuffer.method503(-2030879560, Class48.anInt1127);
+                                        Class32.packetBuffer.putIntME2(Class48.anInt1127);
                                     }
                                 }
                                 RSRuntimeException.anInt1651 = 10;

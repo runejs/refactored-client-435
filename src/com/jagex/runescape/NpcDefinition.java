@@ -202,7 +202,7 @@ public class NpcDefinition extends SubNode {
             Class40_Sub11 class40_sub11 = new Class40_Sub11();
         class40_sub11.anInt2160 = arg2.getUnsignedByte();
             anInt2424++;
-        class40_sub11.anInt2166 = arg2.readInt();
+        class40_sub11.anInt2166 = arg2.getIntBE();
             class40_sub11.anIntArray2154 = new int[class40_sub11.anInt2160];
             int i = 123 / ((-34 - arg1) / 43);
             class40_sub11.aClass15Array2157 = new Class15[class40_sub11.anInt2160];
@@ -224,9 +224,9 @@ public class NpcDefinition extends SubNode {
                             byte[][] is = new byte[i_9_][];
                             if(i_7_ == 3) {
                                 for(int i_11_ = 0; ((i_11_ ^ 0xffffffff) > (i_9_ ^ 0xffffffff)); i_11_++) {
-                                    int i_12_ = arg2.readInt();
+                                    int i_12_ = arg2.getIntBE();
                                     is[i_11_] = new byte[i_12_];
-                                    arg2.method497(is[i_11_], 0, i_12_, (byte) 45);
+                                    arg2.getBytes(i_12_, 0, is[i_11_]);
                                 }
                             }
                             class40_sub11.anIntArray2154[i_6_] = i_7_;
@@ -241,7 +241,7 @@ public class NpcDefinition extends SubNode {
                         String string = new String(arg2.getRSString().method80(0));
                         String string_15_ = new String(arg2.getRSString().method80(0));
                         if((i_7_ ^ 0xffffffff) == -2)
-                            i_14_ = arg2.readInt();
+                            i_14_ = arg2.getIntBE();
                         class40_sub11.anIntArray2154[i_6_] = i_7_;
                         class40_sub11.anIntArray2165[i_6_] = i_14_;
                         class40_sub11.aClass15Array2157[i_6_] = arg0.method392(Class26.method349((byte) 91, string), string_15_, true);
@@ -386,7 +386,7 @@ public class NpcDefinition extends SubNode {
                                             if(arg0 != 99) {
                                                 if(arg0 != 100) {
                                                     if(arg0 == 101)
-                                                        anInt2409 = (arg2.get()) * 5;
+                                                        anInt2409 = (arg2.getByte()) * 5;
                                                     else if((arg0 ^ 0xffffffff) == -103)
                                                         anInt2381 = (arg2.getUnsignedShortBE());
                                                     else if(arg0 == 103)
@@ -410,7 +410,7 @@ public class NpcDefinition extends SubNode {
                                                         }
                                                     }
                                                 } else
-                                                    anInt2387 = arg2.get();
+                                                    anInt2387 = arg2.getByte();
                                             } else
                                                 aBoolean2397 = true;
                                         } else

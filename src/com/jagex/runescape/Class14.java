@@ -44,7 +44,7 @@ public class Class14 {
     }
 
     public void method254(int arg0) {
-        int i = aClass40_Sub1_423.method500(68);
+        int i = aClass40_Sub1_423.method500();
         anIntArray427[arg0] += i;
     }
 
@@ -65,8 +65,8 @@ public class Class14 {
         anIntArray426 = new int[i];
         int i_3_ = 0;
         while(i_3_ < i) {
-            int i_4_ = aClass40_Sub1_423.readInt();
-            int i_5_ = aClass40_Sub1_423.readInt();
+            int i_4_ = aClass40_Sub1_423.getIntBE();
+            int i_5_ = aClass40_Sub1_423.getIntBE();
             if(i_4_ == 1297379947) {
                 anIntArray426[i_3_] = aClass40_Sub1_423.currentPosition;
                 i_3_++;
@@ -111,7 +111,7 @@ public class Class14 {
         } else
             i = anIntArray428[arg0];
         if(i == 240 || i == 247) {
-            int i_7_ = aClass40_Sub1_423.method500(63);
+            int i_7_ = aClass40_Sub1_423.method500();
             if(i == 247 && i_7_ > 0) {
                 int i_8_ = ((aClass40_Sub1_423.buffer[aClass40_Sub1_423.currentPosition]) & 0xff);
                 if(i_8_ >= 241 && i_8_ <= 243 || i_8_ == 246 || i_8_ == 248 || i_8_ >= 250 && i_8_ <= 252 || i_8_ == 254) {
@@ -129,13 +129,13 @@ public class Class14 {
     public int method262(int arg0, int arg1) {
         if(arg1 == 255) {
             int i = aClass40_Sub1_423.getUnsignedByte();
-            int i_9_ = aClass40_Sub1_423.method500(88);
+            int i_9_ = aClass40_Sub1_423.method500();
             if(i == 47) {
                 aClass40_Sub1_423.currentPosition += i_9_;
                 return 1;
             }
             if(i == 81) {
-                int i_10_ = aClass40_Sub1_423.getTri(true);
+                int i_10_ = aClass40_Sub1_423.getMediumBE();
                 i_9_ -= 3;
                 int i_11_ = anIntArray427[arg0];
                 aLong424 += (long) i_11_ * (long) (anInt430 - i_10_);

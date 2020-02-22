@@ -78,13 +78,13 @@ public class Class24 {
                 Buffer class40_sub1 = new Buffer(arg6);
                 int i = -1;
                 for(; ; ) {
-                    int i_0_ = class40_sub1.method502((byte) 126);
+                    int i_0_ = class40_sub1.getSmart();
                     if((i_0_ ^ 0xffffffff) == -1)
                         break;
                     int i_1_ = 0;
                     i += i_0_;
                     for(; ; ) {
-                        int i_2_ = class40_sub1.method502((byte) -76);
+                        int i_2_ = class40_sub1.getSmart();
                         if((i_2_ ^ 0xffffffff) == -1)
                             break;
                         i_1_ += -1 + i_2_;

@@ -67,7 +67,7 @@ public class FloorDecoration {
         Class58.aBoolean1349 = arg0;
         if(Class58.aBoolean1349) {
             int i = Cache.outgoingbuffer.getUnsignedShortBE();
-            int i_0_ = Cache.outgoingbuffer.method504(false);
+            int i_0_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
             int i_1_ = Cache.outgoingbuffer.getUnsignedShortBE();
             int i_2_ = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
             int i_3_ = Cache.outgoingbuffer.getUnsignedShortBE();
@@ -88,7 +88,7 @@ public class FloorDecoration {
             Class44.anIntArrayArray1030 = new int[i_8_][4];
             for(int i_9_ = 0; i_8_ > i_9_; i_9_++) {
                 for(int i_10_ = 0; i_10_ < 4; i_10_++)
-                    Class44.anIntArrayArray1030[i_9_][i_10_] = Cache.outgoingbuffer.method507(-64);
+                    Class44.anIntArrayArray1030[i_9_][i_10_] = Cache.outgoingbuffer.getIntME2();
             }
             Class45.anIntArray1071 = new int[i_8_];
             RSString.aByteArrayArray1715 = new byte[i_8_][];
@@ -125,15 +125,15 @@ public class FloorDecoration {
             Actor.method789(i_0_, arg1 + -6688, i_3_, i_1_, i, i_2_);
         } else {
             int i = Cache.outgoingbuffer.getUnsignedShortBE();
-            int i_21_ = Cache.outgoingbuffer.method490((byte) -70);
+            int i_21_ = Cache.outgoingbuffer.getUnsignedShortLE();
             int i_22_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
-            int i_23_ = Cache.outgoingbuffer.method504(false);
+            int i_23_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
             int i_24_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
             int i_25_ = ((Class40_Sub5_Sub12.packetsize - Cache.outgoingbuffer.currentPosition) / 16);
             Class44.anIntArrayArray1030 = new int[i_25_][4];
             for(int i_26_ = 0; (i_25_ ^ 0xffffffff) < (i_26_ ^ 0xffffffff); i_26_++) {
                 for(int i_27_ = 0; i_27_ < 4; i_27_++)
-                    Class44.anIntArrayArray1030[i_26_][i_27_] = Cache.outgoingbuffer.getIntME();
+                    Class44.anIntArrayArray1030[i_26_][i_27_] = Cache.outgoingbuffer.getIntME1();
             }
             ISAAC.anIntArray528 = new int[i_25_];
             RSString.aByteArrayArray1715 = new byte[i_25_][];
@@ -225,7 +225,7 @@ public class FloorDecoration {
             for(int i_31_ = 0; i_31_ < i; i_31_++) {
                 int i_32_ = arg1.getUnsignedByte();
                 if(i_32_ == 0)
-                    objects[i_31_] = new Integer(arg1.readInt());
+                    objects[i_31_] = new Integer(arg1.getIntBE());
                 else if(i_32_ == 1)
                     objects[i_31_] = arg1.getRSString();
             }
@@ -332,7 +332,7 @@ public class FloorDecoration {
                                     Class6_Sub1 class6_sub1 = Class24.aClass6_Sub1Array580[i_40_];
                                     if(class6_sub1 != null) {
                                         Class48.aClass40_Sub1_1132.currentPosition = 4 * i_40_ + 5;
-                                        int i_41_ = Class48.aClass40_Sub1_1132.readInt();
+                                        int i_41_ = Class48.aClass40_Sub1_1132.getIntBE();
                                         class6_sub1.method200(i_41_, 99);
                                     }
                                 }
@@ -367,7 +367,7 @@ public class FloorDecoration {
                             int i_44_ = Class45.aClass40_Sub1_1081.getUnsignedByte();
                             int i_45_ = Class45.aClass40_Sub1_1081.getUnsignedShortBE();
                             int i_46_ = Class45.aClass40_Sub1_1081.getUnsignedByte();
-                            int i_47_ = Class45.aClass40_Sub1_1081.readInt();
+                            int i_47_ = Class45.aClass40_Sub1_1081.getIntBE();
                             long l_48_ = (long) ((i_44_ << 58201072) + i_45_);
                             Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class37.aClass23_869.method331(l_48_, 6120));
                             Npc.aBoolean3298 = true;
@@ -381,7 +381,7 @@ public class FloorDecoration {
                             int i_49_ = i_46_ == 0 ? 5 : 9;
                             Class40_Sub5_Sub13.aClass40_Sub1_2752 = new Buffer((PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758) + i_49_ + i_47_);
                             Class40_Sub5_Sub13.aClass40_Sub1_2752.putByte(i_46_);
-                            Class40_Sub5_Sub13.aClass40_Sub1_2752.putInt(77, i_47_);
+                            Class40_Sub5_Sub13.aClass40_Sub1_2752.putIntBE(i_47_);
                             Landscape.anInt1157 = 8;
                             Class45.aClass40_Sub1_1081.currentPosition = 0;
                         } else if(Landscape.anInt1157 == 0) {

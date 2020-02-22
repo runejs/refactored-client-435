@@ -38,7 +38,7 @@ public class EntryTable extends Node {
         }
         anIntArray2145 = new int[i];
         for(int i_33_ = 0; i_33_ < i; i_33_++)
-            anIntArray2145[i_33_] = arg0.readInt();
+            anIntArray2145[i_33_] = arg0.getIntBE();
         anInt2136 = arg0.getUnsignedByte();
         anInt2142 = arg0.getUnsignedByte();
         anIntArray2139 = null;

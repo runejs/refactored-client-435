@@ -71,10 +71,10 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
         }
         if((arg2 & 0x10 ^ 0xffffffff) != -1) {
             arg0.anInt3148 = Cache.outgoingbuffer.getUnsignedShortBE();
-            arg0.anInt3100 = Cache.outgoingbuffer.method490((byte) -70);
+            arg0.anInt3100 = Cache.outgoingbuffer.getUnsignedShortLE();
         }
         if((arg2 & 0x1 ^ 0xffffffff) != -1) {
-            int i = Cache.outgoingbuffer.method490((byte) -70);
+            int i = Cache.outgoingbuffer.getUnsignedShortLE();
             if(i == 65535)
                 i = -1;
             int i_1_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
@@ -99,7 +99,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             arg0.anInt3099 = Cache.outgoingbuffer.getUnsignedByte();
             arg0.anInt3127 = Cache.outgoingbuffer.getUnsignedByte();
             arg0.anInt3112 = (Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE() + Node.anInt926);
-            arg0.anInt3107 = (Cache.outgoingbuffer.method504(false) + Node.anInt926);
+            arg0.anInt3107 = (Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE() + Node.anInt926);
             arg0.anInt3073 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
             arg0.method790(0);
         }
@@ -142,13 +142,13 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             int i = Cache.outgoingbuffer.getUnsignedByte();
             byte[] is = new byte[i];
             Buffer buffer = new Buffer(is);
-            Cache.outgoingbuffer.method497(is, 0, i, (byte) 45);
+            Cache.outgoingbuffer.getBytes(i, 0, is);
             Class22.aClass40_Sub1Array534[arg3] = buffer;
             arg0.method791((byte) -85, buffer);
         }
         if((arg2 & 0x200) != 0) {
-            arg0.anInt3091 = Cache.outgoingbuffer.method490((byte) -70);
-            int i = Cache.outgoingbuffer.getIntME();
+            arg0.anInt3091 = Cache.outgoingbuffer.getUnsignedShortLE();
+            int i = Cache.outgoingbuffer.getIntME1();
             arg0.anInt3129 = 0;
             arg0.anInt3093 = Node.anInt926 + (i & 0xffff);
             if((arg0.anInt3091 ^ 0xffffffff) == -65536)
@@ -227,7 +227,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
                 aClass1_2209 = null;
             anInt2205++;
             int i = arg2.currentPosition;
-        arg2.method509(arg1.length, 32768);
+        arg2.putSmart(arg1.length);
         arg2.currentPosition += (Class40_Sub5_Sub10.aClass66_2590.method1026(-18678, 0, arg2.currentPosition, arg1.length, arg1.chars, arg2.buffer));
             return -i + arg2.currentPosition;
 

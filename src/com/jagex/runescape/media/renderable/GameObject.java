@@ -104,7 +104,7 @@ public class GameObject extends Renderable {
     public static IndexedImage method769(int arg0, Class6 arg1, int arg2) {
 
         anInt3032++;
-            if(!Buffer.method472(arg0 ^ ~0x69, arg1, arg2))
+        if(!Buffer.method472(arg1, arg2))
                 return null;
             return SubNode.method538(0);
 
@@ -133,13 +133,13 @@ public class GameObject extends Renderable {
         anInt3022++;
         int object_id = -1;
         for(; ; ) {
-            int delta_id = buffer.method502((byte) 52);
+            int delta_id = buffer.getSmart();
             if(delta_id == 0)
                 break;
             int pos = 0;
             object_id += delta_id;
             for(; ; ) {
-                int delta_pos = buffer.method502((byte) 62);
+                int delta_pos = buffer.getSmart();
                 if(delta_pos == 0)
                     break;
                 pos += -1 + delta_pos;
@@ -218,7 +218,7 @@ public class GameObject extends Renderable {
     public static void method773(byte arg0, RSString arg1) {
 
         anInt3017++;
-            if(arg1 == null || arg1.method59(-3136) == 0)
+        if(arg1 == null || arg1.method59() == 0)
                 VertexNormal.anInt1110 = 0;
             else {
                 RSString class1 = arg1;
@@ -230,12 +230,12 @@ public class GameObject extends Renderable {
                     int i_15_ = class1.method57((byte) -5, 32);
                     if(i_15_ == -1) {
                         class1 = class1.method89(false);
-                        if((class1.method59(arg0 ^ 0xc60) ^ 0xffffffff) < -1)
+                        if((class1.method59() ^ 0xffffffff) < -1)
                             class1s[i++] = class1.method79(RSApplet.method27(arg0, 32));
                         break;
                     }
                     RSString class1_16_ = class1.method68(0, i_15_).method89(false);
-                    if((class1_16_.method59(-3136) ^ 0xffffffff) < -1)
+                    if((class1_16_.method59() ^ 0xffffffff) < -1)
                         class1s[i++] = class1_16_.method79(arg0 + -32);
                     class1 = class1.substring(1 + i_15_);
                 }

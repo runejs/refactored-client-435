@@ -177,7 +177,7 @@ public class TypeFace extends Rasterizer {
             if(arg4 < anInt2920 + anInt2919 + arg9 && arg4 < arg9 + arg9)
                 bool = false;
             int i_7_ = 0;
-            int i_8_ = arg0.method59(-3136);
+            int i_8_ = arg0.method59();
             for(int i_9_ = 0; i_9_ < i_8_; i_9_++) {
                 int i_10_ = arg0.method55(i_9_, false);
                 if(i_10_ == 64 && i_9_ + 4 < i_8_ && arg0.method55(i_9_ + 4, false) == 64) {
@@ -186,8 +186,8 @@ public class TypeFace extends Rasterizer {
                     i_9_ += 4;
                 } else if(i_10_ == 92 && i_9_ + 1 < i_8_ && arg0.method55(i_9_ + 1, false) == 110) {
                     class1_6_ = null;
-                    aClass1Array2897[i_7_++] = class1.method68(i_3_, class1.method59(-3136)).method89(false);
-                    i_3_ = class1.method59(-3136);
+                    aClass1Array2897[i_7_++] = class1.method68(i_3_, class1.method59()).method89(false);
+                    i_3_ = class1.method59();
                     i = 0;
                     i_4_ = -1;
                     i_9_++;
@@ -195,7 +195,7 @@ public class TypeFace extends Rasterizer {
                     class1.method78(-62, i_10_);
                     i += method689(i_10_);
                     if(i_10_ == 32 || i_10_ == 45) {
-                        i_4_ = class1.method59(-3136);
+                        i_4_ = class1.method59();
                         i_5_ = i;
                     }
                     if(bool && i > arg3 && i_4_ >= 0) {
@@ -210,8 +210,8 @@ public class TypeFace extends Rasterizer {
                     }
                 }
             }
-            if(class1.method59(-3136) > i_3_)
-                aClass1Array2897[i_7_++] = class1.method68(i_3_, class1.method59(-3136)).method89(false);
+            if(class1.method59() > i_3_)
+                aClass1Array2897[i_7_++] = class1.method68(i_3_, class1.method59()).method89(false);
             if(arg8 == 3 && i_7_ == 1)
                 arg8 = 1;
             int i_11_;
@@ -277,7 +277,7 @@ public class TypeFace extends Rasterizer {
         if(arg0 != null) {
             arg1 -= getStringWidth(arg0) / 2;
             arg2 -= characterDefaultHeight;
-            for(int i = 0; i < arg0.method59(-3136); i++) {
+            for(int i = 0; i < arg0.method59(); i++) {
                 int i_17_ = arg0.chars[i] & 0xff;
                 if(i_17_ != 32)
                     drawCharacterLegacy(characterPixels[i_17_], arg1 + (int) (Math.sin((double) i / 5.0 + (double) arg4 / 5.0) * 5.0), (arg2 + characterYOffsets[i_17_] + (int) (Math.sin((double) i / 3.0 + (double) arg4 / 5.0) * 5.0)), characterScreenWidths[i_17_], anIntArray2915[i_17_], arg3);
@@ -297,7 +297,7 @@ public class TypeFace extends Rasterizer {
                 d = 0.0;
             arg1 -= getStringWidth(arg0) / 2;
             arg2 -= characterDefaultHeight;
-            for(int i = 0; i < arg0.method59(-3136); i++) {
+            for(int i = 0; i < arg0.method59(); i++) {
                 int i_18_ = arg0.chars[i] & 0xff;
                 if(i_18_ != 32)
                     drawCharacterLegacy(characterPixels[i_18_], arg1, (arg2 + characterYOffsets[i_18_] + (int) (Math.sin((double) i / 1.5 + (double) arg4) * d)), characterScreenWidths[i_18_], anIntArray2915[i_18_], arg3);
@@ -342,7 +342,7 @@ public class TypeFace extends Rasterizer {
     public void method680(RSString arg0, int arg1, int arg2, int arg3, boolean arg4, int arg5) {
         arg0 = arg0.method89(false);
         int i = 0;
-        for(int i_25_ = 0; i_25_ < arg0.method59(-3136); i_25_++) {
+        for(int i_25_ = 0; i_25_ < arg0.method59(); i_25_++) {
             if(arg0.method55(i_25_, false) == 32)
                 i++;
         }

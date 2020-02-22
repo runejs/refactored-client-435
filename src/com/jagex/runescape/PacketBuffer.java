@@ -126,8 +126,8 @@ public class PacketBuffer extends Buffer {
                 anInt2230++;
                 Class32.packetBuffer.putPacket(11453, 132);
                 ISAAC.anInt499++;
-                Class32.packetBuffer.method503(-2030879560, arg1);
-                Class32.packetBuffer.method486(14912, arg0);
+                Class32.packetBuffer.putIntME2(arg1);
+                Class32.packetBuffer.putShortLE(arg0);
             }
     }
 

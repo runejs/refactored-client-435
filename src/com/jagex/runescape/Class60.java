@@ -232,7 +232,7 @@ public class Class60 {
                     }
                     while(Class34.method416((byte) -104)) {
                         boolean bool = false;
-                        for(int i_19_ = 0; ((i_19_ ^ 0xffffffff) > (Class22_Sub2.aClass1_1893.method59(-3136) ^ 0xffffffff)); i_19_++) {
+                        for(int i_19_ = 0; ((i_19_ ^ 0xffffffff) > (Class22_Sub2.aClass1_1893.method59() ^ 0xffffffff)); i_19_++) {
                             if((Class59.anInt1388 ^ 0xffffffff) == (Class22_Sub2.aClass1_1893.method55(i_19_, false) ^ 0xffffffff)) {
                                 bool = true;
                                 break;
@@ -240,19 +240,19 @@ public class Class60 {
                         }
                         if((Node.anInt947 ^ 0xffffffff) != -1) {
                             if(Node.anInt947 == 1) {
-                                if(ItemDefinition.anInt2854 == 85 && (Class22_Sub2.password.method59(-3136) ^ 0xffffffff) < -1)
-                                    Class22_Sub2.password = (Class22_Sub2.password.method68(0, Class22_Sub2.password.method59(-3136) + -1));
+                                if(ItemDefinition.anInt2854 == 85 && (Class22_Sub2.password.method59() ^ 0xffffffff) < -1)
+                                    Class22_Sub2.password = (Class22_Sub2.password.method68(0, Class22_Sub2.password.method59() + -1));
                                 if((ItemDefinition.anInt2854 ^ 0xffffffff) == -85 || ItemDefinition.anInt2854 == 80)
                                     Node.anInt947 = 0;
-                                if(bool && (Class22_Sub2.password.method59(-3136) ^ 0xffffffff) > -21)
+                                if(bool && (Class22_Sub2.password.method59() ^ 0xffffffff) > -21)
                                     Class22_Sub2.password = Class22_Sub2.password.method70(Class59.anInt1388, 0);
                             }
                         } else {
-                            if(((ItemDefinition.anInt2854 ^ 0xffffffff) == -86) && (Class22_Sub2.username.method59(-3136) > 0))
-                                Class22_Sub2.username = (Class22_Sub2.username.method68(0, -1 + Class22_Sub2.username.method59(-3136)));
+                            if(((ItemDefinition.anInt2854 ^ 0xffffffff) == -86) && (Class22_Sub2.username.method59() > 0))
+                                Class22_Sub2.username = (Class22_Sub2.username.method68(0, -1 + Class22_Sub2.username.method59()));
                             if(ItemDefinition.anInt2854 == 84 || ((ItemDefinition.anInt2854 ^ 0xffffffff) == -81))
                                 Node.anInt947 = 1;
-                            if(bool && (Class22_Sub2.username.method59(-3136) ^ 0xffffffff) > -13)
+                            if(bool && (Class22_Sub2.username.method59() ^ 0xffffffff) > -13)
                                 Class22_Sub2.username = Class22_Sub2.username.method70(Class59.anInt1388, 0);
                         }
                     }

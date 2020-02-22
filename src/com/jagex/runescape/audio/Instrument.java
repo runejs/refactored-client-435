@@ -90,15 +90,15 @@ public class Instrument {
             gating_attack_env.decode(buffer);
         }
         for(int i_0_ = 0; i_0_ < 10; i_0_++) {
-            int i_1_ = buffer.method502((byte) 104);
+            int i_1_ = buffer.getSmart();
             if(i_1_ == 0)
                 break;
             oscill_vol[i_0_] = i_1_;
-            oscill_pitch_delta[i_0_] = buffer.getSmart();
-            oscill_delay[i_0_] = buffer.method502((byte) -77);
+            oscill_pitch_delta[i_0_] = buffer.getUnsignedSmart();
+            oscill_delay[i_0_] = buffer.getSmart();
         }
-        delay_time = buffer.method502((byte) 118);
-        delay_feedback = buffer.method502((byte) -104);
+        delay_time = buffer.getSmart();
+        delay_feedback = buffer.getSmart();
         duration = buffer.getUnsignedShortBE();
         begin = buffer.getUnsignedShortBE();
         filter = new Filter();

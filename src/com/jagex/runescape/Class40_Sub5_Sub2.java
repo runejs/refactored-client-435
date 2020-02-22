@@ -157,7 +157,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 }
                 if(Cache.outgoingbuffer.currentPosition == 8) {
                     Cache.outgoingbuffer.currentPosition = 0;
-                    Renderable.aLong2858 = Cache.outgoingbuffer.method498(1362367312);
+                    Renderable.aLong2858 = Cache.outgoingbuffer.getLongBE();
                     Class40_Sub3.anInt2032 = 5;
                 }
             }
@@ -169,13 +169,13 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 seeds[3] = (int) Renderable.aLong2858;
                 Class32.packetBuffer.currentPosition = 0;
                 Class32.packetBuffer.putByte(10);
-                Class32.packetBuffer.putInt(63, seeds[0]);
-                Class32.packetBuffer.putInt(113, seeds[1]);
-                Class32.packetBuffer.putInt(113, seeds[2]);
-                Class32.packetBuffer.putInt(91, seeds[3]);
-                Class32.packetBuffer.putInt(63, ISAAC.aClass31_521.anInt722);
+                Class32.packetBuffer.putIntBE(seeds[0]);
+                Class32.packetBuffer.putIntBE(seeds[1]);
+                Class32.packetBuffer.putIntBE(seeds[2]);
+                Class32.packetBuffer.putIntBE(seeds[3]);
+                Class32.packetBuffer.putIntBE(ISAAC.aClass31_521.anInt722);
                 Class32.packetBuffer.putLongBE(Class22_Sub2.username.method58((byte) 97));
-                Class32.packetBuffer.method505(Class22_Sub2.password, (byte) -3);
+                Class32.packetBuffer.method505(Class22_Sub2.password);
                 Class32.packetBuffer.applyRSA(Actor.rsaModulus, PacketBuffer.rsaKey);
                 Class61.packetBuffer.currentPosition = 0;
                 if(Class51.anInt1197 == 40)
@@ -183,22 +183,22 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 else
                     Class61.packetBuffer.putByte(16);
                 Class61.packetBuffer.putByte(57 + Class32.packetBuffer.currentPosition);
-                Class61.packetBuffer.putInt(60, 435);
+                Class61.packetBuffer.putIntBE(435);
                 Class61.packetBuffer.putByte(VertexNormal.lowMemory ? 1 : 0);
-                Class61.packetBuffer.putInt(85, FloorDecoration.aClass6_Sub1_605.anInt216);
-                Class61.packetBuffer.putInt(95, Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000.anInt216);
-                Class61.packetBuffer.putInt(100, (Class40_Sub5_Sub10.aClass6_Sub1_2609.anInt216));
-                Class61.packetBuffer.putInt(75, Class65.aClass6_Sub1_1533.anInt216);
-                Class61.packetBuffer.putInt(92, Actor.aClass6_Sub1_3157.anInt216);
-                Class61.packetBuffer.putInt(42, (Renderable.aClass6_Sub1_2857.anInt216));
-                Class61.packetBuffer.putInt(108, Class55.aClass6_Sub1_1286.anInt216);
-                Class61.packetBuffer.putInt(108, (Class40_Sub5_Sub9.aClass6_Sub1_2571.anInt216));
-                Class61.packetBuffer.putInt(49, (NpcDefinition.aClass6_Sub1_2377.anInt216));
-                Class61.packetBuffer.putInt(61, Class32.aClass6_Sub1_773.anInt216);
-                Class61.packetBuffer.putInt(80, RSCanvas.aClass6_Sub1_48.anInt216);
-                Class61.packetBuffer.putInt(61, VertexNormal.aClass6_Sub1_1104.anInt216);
-                Class61.packetBuffer.putInt(101, Class56.aClass6_Sub1_1323.anInt216);
-                Class61.packetBuffer.putBytes(Class32.packetBuffer.currentPosition, Class32.packetBuffer.buffer, 0);
+                Class61.packetBuffer.putIntBE(FloorDecoration.aClass6_Sub1_605.anInt216);
+                Class61.packetBuffer.putIntBE(Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000.anInt216);
+                Class61.packetBuffer.putIntBE((Class40_Sub5_Sub10.aClass6_Sub1_2609.anInt216));
+                Class61.packetBuffer.putIntBE(Class65.aClass6_Sub1_1533.anInt216);
+                Class61.packetBuffer.putIntBE(Actor.aClass6_Sub1_3157.anInt216);
+                Class61.packetBuffer.putIntBE((Renderable.aClass6_Sub1_2857.anInt216));
+                Class61.packetBuffer.putIntBE(Class55.aClass6_Sub1_1286.anInt216);
+                Class61.packetBuffer.putIntBE((Class40_Sub5_Sub9.aClass6_Sub1_2571.anInt216));
+                Class61.packetBuffer.putIntBE((NpcDefinition.aClass6_Sub1_2377.anInt216));
+                Class61.packetBuffer.putIntBE(Class32.aClass6_Sub1_773.anInt216);
+                Class61.packetBuffer.putIntBE(RSCanvas.aClass6_Sub1_48.anInt216);
+                Class61.packetBuffer.putIntBE(VertexNormal.aClass6_Sub1_1104.anInt216);
+                Class61.packetBuffer.putIntBE(Class56.aClass6_Sub1_1323.anInt216);
+                Class61.packetBuffer.putBytes(0, Class32.packetBuffer.currentPosition, Class32.packetBuffer.buffer);
                 Class40_Sub6.aClass64_2098.method1010(Class61.packetBuffer.currentPosition, (byte) -19, 0, Class61.packetBuffer.buffer);
                 Class32.packetBuffer.initEncryption(-1, seeds);
                 for(int i = 0; i < 4; i++)

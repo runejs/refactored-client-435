@@ -130,7 +130,7 @@ public abstract class Class22 {
             if(arg1 != -1)
                 aBooleanArray548 = null;
             RSString class1 = new RSString();
-            class1.length = arg0.method502((byte) -81);
+            class1.length = arg0.getSmart();
             if(class1.length > arg2)
                 class1.length = arg2;
             class1.chars = new byte[class1.length];

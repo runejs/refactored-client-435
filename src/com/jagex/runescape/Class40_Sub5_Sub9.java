@@ -194,6 +194,6 @@ public class Class40_Sub5_Sub9 extends SubNode {
             method621(73);
         anInt2578++;
         if((arg1 ^ 0xffffffff) == -2)
-            anInt2579 = arg2.getTri(true);
+            anInt2579 = arg2.getMediumBE();
     }
 }
