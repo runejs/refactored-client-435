@@ -242,7 +242,7 @@ public class Class66 {
 
     }
 
-    public static DirectColorSprite method1028(Class6 arg0, RSString arg1, byte arg2, RSString arg3) {
+    public static ImageRGB method1028(Class6 arg0, RSString arg1, byte arg2, RSString arg3) {
 
         anInt1553++;
             int i = arg0.method183(0, arg1);

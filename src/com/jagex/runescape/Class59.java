@@ -11,7 +11,7 @@ public class Class59 {
     public static int anInt1384;
     public static Buffer aClass40_Sub1_1385 = new Buffer(new byte[5000]);
     public static int anInt1386;
-    public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_1387;
+    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1387;
     public static int anInt1388;
     public static int anInt1389 = 0;
     public static Class40_Sub5_Sub12[][] aClass40_Sub5_Sub12ArrayArray1390;

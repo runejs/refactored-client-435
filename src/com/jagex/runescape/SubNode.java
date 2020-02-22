@@ -30,9 +30,9 @@ public class SubNode extends Node {
     public SubNode aClass40_Sub5_2082;
     public SubNode aClass40_Sub5_2087;
 
-    public static IndexedColorSprite method538(int arg0) {
+    public static IndexedImage method538(int arg0) {
         anInt2088++;
-        IndexedColorSprite class40_sub5_sub14_sub2 = new IndexedColorSprite();
+        IndexedImage class40_sub5_sub14_sub2 = new IndexedImage();
         class40_sub5_sub14_sub2.anInt2923 = ItemDefinition.anInt2846;
         class40_sub5_sub14_sub2.anInt2924 = RSApplet.anInt31;
         class40_sub5_sub14_sub2.anInt2928 = Class57.anIntArray1347[0];
@@ -40,7 +40,7 @@ public class SubNode extends Node {
         class40_sub5_sub14_sub2.anInt2921 = Class17.anIntArray456[0];
         class40_sub5_sub14_sub2.anInt2926 = Npc.anIntArray3312[0];
         class40_sub5_sub14_sub2.anIntArray2922 = Buffer.anIntArray1972;
-        class40_sub5_sub14_sub2.aByteArray2925 = Class58.aByteArrayArray1370[arg0];
+        class40_sub5_sub14_sub2.imgPixels = Class58.aByteArrayArray1370[arg0];
         NpcDefinition.method569(true);
         return class40_sub5_sub14_sub2;
     }

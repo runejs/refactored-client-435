@@ -39,15 +39,15 @@ public class Class49 {
             anInt1144++;
             int i_3_ = arg6;
             if(arg5 != (i_2_ ^ 0xffffffff)) {
-                int i_4_ = Model.anIntArray3217[i_2_];
-                int i_5_ = Model.anIntArray3215[i_2_];
+                int i_4_ = Model.COSINE[i_2_];
+                int i_5_ = Model.SINE[i_2_];
                 int i_6_ = i_1_ * i_4_ + -(i_5_ * i_3_) >> 530951344;
                 i_3_ = i_4_ * i_3_ + i_5_ * i_1_ >> -1614421968;
                 i_1_ = i_6_;
             }
             if(i_0_ != 0) {
-                int i_7_ = Model.anIntArray3217[i_0_];
-                int i_8_ = Model.anIntArray3215[i_0_];
+                int i_7_ = Model.COSINE[i_0_];
+                int i_8_ = Model.SINE[i_0_];
                 int i_9_ = i_7_ * i + i_3_ * i_8_ >> -435436048;
                 i_3_ = -(i * i_8_) + i_3_ * i_7_ >> -2076141520;
                 i = i_9_;

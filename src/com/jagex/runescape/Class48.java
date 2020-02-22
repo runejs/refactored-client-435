@@ -335,7 +335,7 @@ public class Class48 {
 
     }
 
-    public static DirectColorSprite method927(int arg0, Class6 arg1, boolean arg2, int arg3) {
+    public static ImageRGB method927(int arg0, Class6 arg1, boolean arg2, int arg3) {
 
         anInt1134++;
             if(!Class52.method948(arg0, arg3, arg1, -3844))

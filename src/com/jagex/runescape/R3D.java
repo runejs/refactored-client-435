@@ -150,23 +150,23 @@ public class R3D extends Rasterizer {
                             arg1 -= arg0;
                             arg0 = anIntArray2938[arg0];
                             while(--arg1 >= 0) {
-                                method701(Rasterizer.anIntArray2766, is, 0, 0, arg0, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, is, 0, 0, arg0, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg5 += i_13_;
                                 arg3 += i_9_;
                                 arg8 += i_14_;
                                 arg6 += i_10_;
-                                arg0 += Rasterizer.anInt2768;
+                                arg0 += Rasterizer.width;
                                 i += i_2_;
                                 i_3_ += i_5_;
                                 i_6_ += i_8_;
                             }
                             while(--arg2 >= 0) {
-                                method701(Rasterizer.anIntArray2766, is, 0, 0, arg0, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, is, 0, 0, arg0, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg5 += i_13_;
                                 arg4 += i_11_;
                                 arg8 += i_14_;
                                 arg7 += i_12_;
-                                arg0 += Rasterizer.anInt2768;
+                                arg0 += Rasterizer.width;
                                 i += i_2_;
                                 i_3_ += i_5_;
                                 i_6_ += i_8_;
@@ -176,23 +176,23 @@ public class R3D extends Rasterizer {
                             arg1 -= arg0;
                             arg0 = anIntArray2938[arg0];
                             while(--arg1 >= 0) {
-                                method701(Rasterizer.anIntArray2766, is, 0, 0, arg0, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, is, 0, 0, arg0, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg5 += i_13_;
                                 arg3 += i_9_;
                                 arg8 += i_14_;
                                 arg6 += i_10_;
-                                arg0 += Rasterizer.anInt2768;
+                                arg0 += Rasterizer.width;
                                 i += i_2_;
                                 i_3_ += i_5_;
                                 i_6_ += i_8_;
                             }
                             while(--arg2 >= 0) {
-                                method701(Rasterizer.anIntArray2766, is, 0, 0, arg0, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, is, 0, 0, arg0, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg5 += i_13_;
                                 arg4 += i_11_;
                                 arg8 += i_14_;
                                 arg7 += i_12_;
-                                arg0 += Rasterizer.anInt2768;
+                                arg0 += Rasterizer.width;
                                 i += i_2_;
                                 i_3_ += i_5_;
                                 i_6_ += i_8_;
@@ -224,23 +224,23 @@ public class R3D extends Rasterizer {
                             arg2 -= arg0;
                             arg0 = anIntArray2938[arg0];
                             while(--arg2 >= 0) {
-                                method701(Rasterizer.anIntArray2766, is, 0, 0, arg0, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, is, 0, 0, arg0, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg4 += i_13_;
                                 arg3 += i_9_;
                                 arg7 += i_14_;
                                 arg6 += i_10_;
-                                arg0 += Rasterizer.anInt2768;
+                                arg0 += Rasterizer.width;
                                 i += i_2_;
                                 i_3_ += i_5_;
                                 i_6_ += i_8_;
                             }
                             while(--arg1 >= 0) {
-                                method701(Rasterizer.anIntArray2766, is, 0, 0, arg0, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, is, 0, 0, arg0, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg5 += i_11_;
                                 arg3 += i_9_;
                                 arg8 += i_12_;
                                 arg6 += i_10_;
-                                arg0 += Rasterizer.anInt2768;
+                                arg0 += Rasterizer.width;
                                 i += i_2_;
                                 i_3_ += i_5_;
                                 i_6_ += i_8_;
@@ -250,23 +250,23 @@ public class R3D extends Rasterizer {
                             arg2 -= arg0;
                             arg0 = anIntArray2938[arg0];
                             while(--arg2 >= 0) {
-                                method701(Rasterizer.anIntArray2766, is, 0, 0, arg0, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, is, 0, 0, arg0, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg4 += i_13_;
                                 arg3 += i_9_;
                                 arg7 += i_14_;
                                 arg6 += i_10_;
-                                arg0 += Rasterizer.anInt2768;
+                                arg0 += Rasterizer.width;
                                 i += i_2_;
                                 i_3_ += i_5_;
                                 i_6_ += i_8_;
                             }
                             while(--arg1 >= 0) {
-                                method701(Rasterizer.anIntArray2766, is, 0, 0, arg0, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, is, 0, 0, arg0, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg5 += i_11_;
                                 arg3 += i_9_;
                                 arg8 += i_12_;
                                 arg6 += i_10_;
-                                arg0 += Rasterizer.anInt2768;
+                                arg0 += Rasterizer.width;
                                 i += i_2_;
                                 i_3_ += i_5_;
                                 i_6_ += i_8_;
@@ -306,23 +306,23 @@ public class R3D extends Rasterizer {
                             arg2 -= arg1;
                             arg1 = anIntArray2938[arg1];
                             while(--arg2 >= 0) {
-                                method701(Rasterizer.anIntArray2766, is, 0, 0, arg1, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, is, 0, 0, arg1, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg3 += i_9_;
                                 arg4 += i_11_;
                                 arg6 += i_10_;
                                 arg7 += i_12_;
-                                arg1 += Rasterizer.anInt2768;
+                                arg1 += Rasterizer.width;
                                 i += i_2_;
                                 i_3_ += i_5_;
                                 i_6_ += i_8_;
                             }
                             while(--arg0 >= 0) {
-                                method701(Rasterizer.anIntArray2766, is, 0, 0, arg1, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, is, 0, 0, arg1, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg3 += i_9_;
                                 arg5 += i_13_;
                                 arg6 += i_10_;
                                 arg8 += i_14_;
-                                arg1 += Rasterizer.anInt2768;
+                                arg1 += Rasterizer.width;
                                 i += i_2_;
                                 i_3_ += i_5_;
                                 i_6_ += i_8_;
@@ -332,23 +332,23 @@ public class R3D extends Rasterizer {
                             arg2 -= arg1;
                             arg1 = anIntArray2938[arg1];
                             while(--arg2 >= 0) {
-                                method701(Rasterizer.anIntArray2766, is, 0, 0, arg1, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, is, 0, 0, arg1, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg3 += i_9_;
                                 arg4 += i_11_;
                                 arg6 += i_10_;
                                 arg7 += i_12_;
-                                arg1 += Rasterizer.anInt2768;
+                                arg1 += Rasterizer.width;
                                 i += i_2_;
                                 i_3_ += i_5_;
                                 i_6_ += i_8_;
                             }
                             while(--arg0 >= 0) {
-                                method701(Rasterizer.anIntArray2766, is, 0, 0, arg1, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, is, 0, 0, arg1, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg3 += i_9_;
                                 arg5 += i_13_;
                                 arg6 += i_10_;
                                 arg8 += i_14_;
-                                arg1 += Rasterizer.anInt2768;
+                                arg1 += Rasterizer.width;
                                 i += i_2_;
                                 i_3_ += i_5_;
                                 i_6_ += i_8_;
@@ -380,23 +380,23 @@ public class R3D extends Rasterizer {
                             arg0 -= arg1;
                             arg1 = anIntArray2938[arg1];
                             while(--arg0 >= 0) {
-                                method701(Rasterizer.anIntArray2766, is, 0, 0, arg1, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, is, 0, 0, arg1, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg5 += i_9_;
                                 arg4 += i_11_;
                                 arg8 += i_10_;
                                 arg7 += i_12_;
-                                arg1 += Rasterizer.anInt2768;
+                                arg1 += Rasterizer.width;
                                 i += i_2_;
                                 i_3_ += i_5_;
                                 i_6_ += i_8_;
                             }
                             while(--arg2 >= 0) {
-                                method701(Rasterizer.anIntArray2766, is, 0, 0, arg1, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, is, 0, 0, arg1, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg3 += i_13_;
                                 arg4 += i_11_;
                                 arg6 += i_14_;
                                 arg7 += i_12_;
-                                arg1 += Rasterizer.anInt2768;
+                                arg1 += Rasterizer.width;
                                 i += i_2_;
                                 i_3_ += i_5_;
                                 i_6_ += i_8_;
@@ -406,23 +406,23 @@ public class R3D extends Rasterizer {
                             arg0 -= arg1;
                             arg1 = anIntArray2938[arg1];
                             while(--arg0 >= 0) {
-                                method701(Rasterizer.anIntArray2766, is, 0, 0, arg1, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, is, 0, 0, arg1, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg5 += i_9_;
                                 arg4 += i_11_;
                                 arg8 += i_10_;
                                 arg7 += i_12_;
-                                arg1 += Rasterizer.anInt2768;
+                                arg1 += Rasterizer.width;
                                 i += i_2_;
                                 i_3_ += i_5_;
                                 i_6_ += i_8_;
                             }
                             while(--arg2 >= 0) {
-                                method701(Rasterizer.anIntArray2766, is, 0, 0, arg1, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, is, 0, 0, arg1, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg3 += i_13_;
                                 arg4 += i_11_;
                                 arg6 += i_14_;
                                 arg7 += i_12_;
-                                arg1 += Rasterizer.anInt2768;
+                                arg1 += Rasterizer.width;
                                 i += i_2_;
                                 i_3_ += i_5_;
                                 i_6_ += i_8_;
@@ -461,23 +461,23 @@ public class R3D extends Rasterizer {
                         arg0 -= arg2;
                         arg2 = anIntArray2938[arg2];
                         while(--arg0 >= 0) {
-                            method701(Rasterizer.anIntArray2766, is, 0, 0, arg2, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                            method701(Rasterizer.pixels, is, 0, 0, arg2, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                             arg4 += i_11_;
                             arg5 += i_13_;
                             arg7 += i_12_;
                             arg8 += i_14_;
-                            arg2 += Rasterizer.anInt2768;
+                            arg2 += Rasterizer.width;
                             i += i_2_;
                             i_3_ += i_5_;
                             i_6_ += i_8_;
                         }
                         while(--arg1 >= 0) {
-                            method701(Rasterizer.anIntArray2766, is, 0, 0, arg2, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                            method701(Rasterizer.pixels, is, 0, 0, arg2, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                             arg4 += i_11_;
                             arg3 += i_9_;
                             arg7 += i_12_;
                             arg6 += i_10_;
-                            arg2 += Rasterizer.anInt2768;
+                            arg2 += Rasterizer.width;
                             i += i_2_;
                             i_3_ += i_5_;
                             i_6_ += i_8_;
@@ -487,23 +487,23 @@ public class R3D extends Rasterizer {
                         arg0 -= arg2;
                         arg2 = anIntArray2938[arg2];
                         while(--arg0 >= 0) {
-                            method701(Rasterizer.anIntArray2766, is, 0, 0, arg2, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                            method701(Rasterizer.pixels, is, 0, 0, arg2, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                             arg4 += i_11_;
                             arg5 += i_13_;
                             arg7 += i_12_;
                             arg8 += i_14_;
-                            arg2 += Rasterizer.anInt2768;
+                            arg2 += Rasterizer.width;
                             i += i_2_;
                             i_3_ += i_5_;
                             i_6_ += i_8_;
                         }
                         while(--arg1 >= 0) {
-                            method701(Rasterizer.anIntArray2766, is, 0, 0, arg2, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                            method701(Rasterizer.pixels, is, 0, 0, arg2, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                             arg4 += i_11_;
                             arg3 += i_9_;
                             arg7 += i_12_;
                             arg6 += i_10_;
-                            arg2 += Rasterizer.anInt2768;
+                            arg2 += Rasterizer.width;
                             i += i_2_;
                             i_3_ += i_5_;
                             i_6_ += i_8_;
@@ -535,23 +535,23 @@ public class R3D extends Rasterizer {
                         arg1 -= arg2;
                         arg2 = anIntArray2938[arg2];
                         while(--arg1 >= 0) {
-                            method701(Rasterizer.anIntArray2766, is, 0, 0, arg2, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                            method701(Rasterizer.pixels, is, 0, 0, arg2, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                             arg3 += i_11_;
                             arg5 += i_13_;
                             arg6 += i_12_;
                             arg8 += i_14_;
-                            arg2 += Rasterizer.anInt2768;
+                            arg2 += Rasterizer.width;
                             i += i_2_;
                             i_3_ += i_5_;
                             i_6_ += i_8_;
                         }
                         while(--arg0 >= 0) {
-                            method701(Rasterizer.anIntArray2766, is, 0, 0, arg2, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                            method701(Rasterizer.pixels, is, 0, 0, arg2, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                             arg4 += i_9_;
                             arg5 += i_13_;
                             arg7 += i_10_;
                             arg8 += i_14_;
-                            arg2 += Rasterizer.anInt2768;
+                            arg2 += Rasterizer.width;
                             i += i_2_;
                             i_3_ += i_5_;
                             i_6_ += i_8_;
@@ -561,23 +561,23 @@ public class R3D extends Rasterizer {
                         arg1 -= arg2;
                         arg2 = anIntArray2938[arg2];
                         while(--arg1 >= 0) {
-                            method701(Rasterizer.anIntArray2766, is, 0, 0, arg2, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                            method701(Rasterizer.pixels, is, 0, 0, arg2, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                             arg3 += i_11_;
                             arg5 += i_13_;
                             arg6 += i_12_;
                             arg8 += i_14_;
-                            arg2 += Rasterizer.anInt2768;
+                            arg2 += Rasterizer.width;
                             i += i_2_;
                             i_3_ += i_5_;
                             i_6_ += i_8_;
                         }
                         while(--arg0 >= 0) {
-                            method701(Rasterizer.anIntArray2766, is, 0, 0, arg2, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                            method701(Rasterizer.pixels, is, 0, 0, arg2, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                             arg4 += i_9_;
                             arg5 += i_13_;
                             arg7 += i_10_;
                             arg8 += i_14_;
-                            arg2 += Rasterizer.anInt2768;
+                            arg2 += Rasterizer.width;
                             i += i_2_;
                             i_3_ += i_5_;
                             i_6_ += i_8_;
@@ -597,7 +597,7 @@ public class R3D extends Rasterizer {
                 i++;
             anIntArray2938 = new int[i];
             for(int i_21_ = 0; i_21_ < i; i_21_++)
-                anIntArray2938[i_21_] = (arg1 + i_21_) * Rasterizer.anInt2768 + arg0;
+                anIntArray2938[i_21_] = (arg1 + i_21_) * Rasterizer.width + arg0;
         } else
             anIntArray2938 = arg4;
         method702();
@@ -1109,40 +1109,40 @@ public class R3D extends Rasterizer {
                         arg1 -= arg0;
                         arg0 = anIntArray2938[arg0];
                         while(--arg1 >= 0) {
-                            method705(Rasterizer.anIntArray2766, arg0, 0, 0, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
+                            method705(Rasterizer.pixels, arg0, 0, 0, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
                             arg5 += i_48_;
                             arg3 += i;
                             arg8 += i_49_;
                             arg6 += i_45_;
-                            arg0 += Rasterizer.anInt2768;
+                            arg0 += Rasterizer.width;
                         }
                         while(--arg2 >= 0) {
-                            method705(Rasterizer.anIntArray2766, arg0, 0, 0, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
+                            method705(Rasterizer.pixels, arg0, 0, 0, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
                             arg5 += i_48_;
                             arg4 += i_46_;
                             arg8 += i_49_;
                             arg7 += i_47_;
-                            arg0 += Rasterizer.anInt2768;
+                            arg0 += Rasterizer.width;
                         }
                     } else {
                         arg2 -= arg1;
                         arg1 -= arg0;
                         arg0 = anIntArray2938[arg0];
                         while(--arg1 >= 0) {
-                            method705(Rasterizer.anIntArray2766, arg0, 0, 0, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
+                            method705(Rasterizer.pixels, arg0, 0, 0, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
                             arg5 += i_48_;
                             arg3 += i;
                             arg8 += i_49_;
                             arg6 += i_45_;
-                            arg0 += Rasterizer.anInt2768;
+                            arg0 += Rasterizer.width;
                         }
                         while(--arg2 >= 0) {
-                            method705(Rasterizer.anIntArray2766, arg0, 0, 0, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
+                            method705(Rasterizer.pixels, arg0, 0, 0, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
                             arg5 += i_48_;
                             arg4 += i_46_;
                             arg8 += i_49_;
                             arg7 += i_47_;
-                            arg0 += Rasterizer.anInt2768;
+                            arg0 += Rasterizer.width;
                         }
                     }
                 } else {
@@ -1167,40 +1167,40 @@ public class R3D extends Rasterizer {
                         arg2 -= arg0;
                         arg0 = anIntArray2938[arg0];
                         while(--arg2 >= 0) {
-                            method705(Rasterizer.anIntArray2766, arg0, 0, 0, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
+                            method705(Rasterizer.pixels, arg0, 0, 0, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
                             arg4 += i_48_;
                             arg3 += i;
                             arg7 += i_49_;
                             arg6 += i_45_;
-                            arg0 += Rasterizer.anInt2768;
+                            arg0 += Rasterizer.width;
                         }
                         while(--arg1 >= 0) {
-                            method705(Rasterizer.anIntArray2766, arg0, 0, 0, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
+                            method705(Rasterizer.pixels, arg0, 0, 0, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
                             arg5 += i_46_;
                             arg3 += i;
                             arg8 += i_47_;
                             arg6 += i_45_;
-                            arg0 += Rasterizer.anInt2768;
+                            arg0 += Rasterizer.width;
                         }
                     } else {
                         arg1 -= arg2;
                         arg2 -= arg0;
                         arg0 = anIntArray2938[arg0];
                         while(--arg2 >= 0) {
-                            method705(Rasterizer.anIntArray2766, arg0, 0, 0, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
+                            method705(Rasterizer.pixels, arg0, 0, 0, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
                             arg4 += i_48_;
                             arg3 += i;
                             arg7 += i_49_;
                             arg6 += i_45_;
-                            arg0 += Rasterizer.anInt2768;
+                            arg0 += Rasterizer.width;
                         }
                         while(--arg1 >= 0) {
-                            method705(Rasterizer.anIntArray2766, arg0, 0, 0, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
+                            method705(Rasterizer.pixels, arg0, 0, 0, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
                             arg5 += i_46_;
                             arg3 += i;
                             arg8 += i_47_;
                             arg6 += i_45_;
-                            arg0 += Rasterizer.anInt2768;
+                            arg0 += Rasterizer.width;
                         }
                     }
                 }
@@ -1233,40 +1233,40 @@ public class R3D extends Rasterizer {
                         arg2 -= arg1;
                         arg1 = anIntArray2938[arg1];
                         while(--arg2 >= 0) {
-                            method705(Rasterizer.anIntArray2766, arg1, 0, 0, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
+                            method705(Rasterizer.pixels, arg1, 0, 0, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
                             arg3 += i;
                             arg4 += i_46_;
                             arg6 += i_45_;
                             arg7 += i_47_;
-                            arg1 += Rasterizer.anInt2768;
+                            arg1 += Rasterizer.width;
                         }
                         while(--arg0 >= 0) {
-                            method705(Rasterizer.anIntArray2766, arg1, 0, 0, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
+                            method705(Rasterizer.pixels, arg1, 0, 0, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
                             arg3 += i;
                             arg5 += i_48_;
                             arg6 += i_45_;
                             arg8 += i_49_;
-                            arg1 += Rasterizer.anInt2768;
+                            arg1 += Rasterizer.width;
                         }
                     } else {
                         arg0 -= arg2;
                         arg2 -= arg1;
                         arg1 = anIntArray2938[arg1];
                         while(--arg2 >= 0) {
-                            method705(Rasterizer.anIntArray2766, arg1, 0, 0, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
+                            method705(Rasterizer.pixels, arg1, 0, 0, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
                             arg3 += i;
                             arg4 += i_46_;
                             arg6 += i_45_;
                             arg7 += i_47_;
-                            arg1 += Rasterizer.anInt2768;
+                            arg1 += Rasterizer.width;
                         }
                         while(--arg0 >= 0) {
-                            method705(Rasterizer.anIntArray2766, arg1, 0, 0, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
+                            method705(Rasterizer.pixels, arg1, 0, 0, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
                             arg3 += i;
                             arg5 += i_48_;
                             arg6 += i_45_;
                             arg8 += i_49_;
-                            arg1 += Rasterizer.anInt2768;
+                            arg1 += Rasterizer.width;
                         }
                     }
                 } else {
@@ -1291,40 +1291,40 @@ public class R3D extends Rasterizer {
                         arg0 -= arg1;
                         arg1 = anIntArray2938[arg1];
                         while(--arg0 >= 0) {
-                            method705(Rasterizer.anIntArray2766, arg1, 0, 0, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
+                            method705(Rasterizer.pixels, arg1, 0, 0, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
                             arg5 += i;
                             arg4 += i_46_;
                             arg8 += i_45_;
                             arg7 += i_47_;
-                            arg1 += Rasterizer.anInt2768;
+                            arg1 += Rasterizer.width;
                         }
                         while(--arg2 >= 0) {
-                            method705(Rasterizer.anIntArray2766, arg1, 0, 0, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
+                            method705(Rasterizer.pixels, arg1, 0, 0, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
                             arg3 += i_48_;
                             arg4 += i_46_;
                             arg6 += i_49_;
                             arg7 += i_47_;
-                            arg1 += Rasterizer.anInt2768;
+                            arg1 += Rasterizer.width;
                         }
                     } else {
                         arg2 -= arg0;
                         arg0 -= arg1;
                         arg1 = anIntArray2938[arg1];
                         while(--arg0 >= 0) {
-                            method705(Rasterizer.anIntArray2766, arg1, 0, 0, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
+                            method705(Rasterizer.pixels, arg1, 0, 0, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
                             arg5 += i;
                             arg4 += i_46_;
                             arg8 += i_45_;
                             arg7 += i_47_;
-                            arg1 += Rasterizer.anInt2768;
+                            arg1 += Rasterizer.width;
                         }
                         while(--arg2 >= 0) {
-                            method705(Rasterizer.anIntArray2766, arg1, 0, 0, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
+                            method705(Rasterizer.pixels, arg1, 0, 0, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
                             arg3 += i_48_;
                             arg4 += i_46_;
                             arg6 += i_49_;
                             arg7 += i_47_;
-                            arg1 += Rasterizer.anInt2768;
+                            arg1 += Rasterizer.width;
                         }
                     }
                 }
@@ -1356,40 +1356,40 @@ public class R3D extends Rasterizer {
                     arg0 -= arg2;
                     arg2 = anIntArray2938[arg2];
                     while(--arg0 >= 0) {
-                        method705(Rasterizer.anIntArray2766, arg2, 0, 0, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
+                        method705(Rasterizer.pixels, arg2, 0, 0, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
                         arg4 += i_46_;
                         arg5 += i_48_;
                         arg7 += i_47_;
                         arg8 += i_49_;
-                        arg2 += Rasterizer.anInt2768;
+                        arg2 += Rasterizer.width;
                     }
                     while(--arg1 >= 0) {
-                        method705(Rasterizer.anIntArray2766, arg2, 0, 0, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
+                        method705(Rasterizer.pixels, arg2, 0, 0, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
                         arg4 += i_46_;
                         arg3 += i;
                         arg7 += i_47_;
                         arg6 += i_45_;
-                        arg2 += Rasterizer.anInt2768;
+                        arg2 += Rasterizer.width;
                     }
                 } else {
                     arg1 -= arg0;
                     arg0 -= arg2;
                     arg2 = anIntArray2938[arg2];
                     while(--arg0 >= 0) {
-                        method705(Rasterizer.anIntArray2766, arg2, 0, 0, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
+                        method705(Rasterizer.pixels, arg2, 0, 0, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
                         arg4 += i_46_;
                         arg5 += i_48_;
                         arg7 += i_47_;
                         arg8 += i_49_;
-                        arg2 += Rasterizer.anInt2768;
+                        arg2 += Rasterizer.width;
                     }
                     while(--arg1 >= 0) {
-                        method705(Rasterizer.anIntArray2766, arg2, 0, 0, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
+                        method705(Rasterizer.pixels, arg2, 0, 0, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
                         arg4 += i_46_;
                         arg3 += i;
                         arg7 += i_47_;
                         arg6 += i_45_;
-                        arg2 += Rasterizer.anInt2768;
+                        arg2 += Rasterizer.width;
                     }
                 }
             } else {
@@ -1414,40 +1414,40 @@ public class R3D extends Rasterizer {
                     arg1 -= arg2;
                     arg2 = anIntArray2938[arg2];
                     while(--arg1 >= 0) {
-                        method705(Rasterizer.anIntArray2766, arg2, 0, 0, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
+                        method705(Rasterizer.pixels, arg2, 0, 0, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
                         arg3 += i_46_;
                         arg5 += i_48_;
                         arg6 += i_47_;
                         arg8 += i_49_;
-                        arg2 += Rasterizer.anInt2768;
+                        arg2 += Rasterizer.width;
                     }
                     while(--arg0 >= 0) {
-                        method705(Rasterizer.anIntArray2766, arg2, 0, 0, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
+                        method705(Rasterizer.pixels, arg2, 0, 0, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
                         arg4 += i;
                         arg5 += i_48_;
                         arg7 += i_45_;
                         arg8 += i_49_;
-                        arg2 += Rasterizer.anInt2768;
+                        arg2 += Rasterizer.width;
                     }
                 } else {
                     arg0 -= arg1;
                     arg1 -= arg2;
                     arg2 = anIntArray2938[arg2];
                     while(--arg1 >= 0) {
-                        method705(Rasterizer.anIntArray2766, arg2, 0, 0, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
+                        method705(Rasterizer.pixels, arg2, 0, 0, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
                         arg3 += i_46_;
                         arg5 += i_48_;
                         arg6 += i_47_;
                         arg8 += i_49_;
-                        arg2 += Rasterizer.anInt2768;
+                        arg2 += Rasterizer.width;
                     }
                     while(--arg0 >= 0) {
-                        method705(Rasterizer.anIntArray2766, arg2, 0, 0, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
+                        method705(Rasterizer.pixels, arg2, 0, 0, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
                         arg4 += i;
                         arg5 += i_48_;
                         arg7 += i_45_;
                         arg8 += i_49_;
-                        arg2 += Rasterizer.anInt2768;
+                        arg2 += Rasterizer.width;
                     }
                 }
             }
@@ -1468,7 +1468,7 @@ public class R3D extends Rasterizer {
     }
 
     public static int[] method708(int[] arg0) {
-        return method700(Rasterizer.anInt2771, Rasterizer.anInt2767, Rasterizer.anInt2772, Rasterizer.anInt2770, arg0);
+        return method700(Rasterizer.viewport_left, Rasterizer.viewport_top, Rasterizer.viewport_right, Rasterizer.viewport_bottom, arg0);
     }
 
     public static int method709(int arg0, int arg1) {
@@ -1482,8 +1482,8 @@ public class R3D extends Rasterizer {
 
     public static void method710(int arg0, int arg1) {
         int i = anIntArray2938[0];
-        int i_54_ = i / Rasterizer.anInt2768;
-        int i_55_ = i - i_54_ * Rasterizer.anInt2768;
+        int i_54_ = i / Rasterizer.width;
+        int i_55_ = i - i_54_ * Rasterizer.width;
         anInt2937 = arg0 - i_55_;
         anInt2931 = arg1 - i_54_;
         anInt2942 = -anInt2937;
@@ -1529,32 +1529,32 @@ public class R3D extends Rasterizer {
                         arg1 -= arg0;
                         arg0 = anIntArray2938[arg0];
                         while(--arg1 >= 0) {
-                            method698(Rasterizer.anIntArray2766, arg0, arg6, 0, arg5 >> 16, arg3 >> 16);
+                            method698(Rasterizer.pixels, arg0, arg6, 0, arg5 >> 16, arg3 >> 16);
                             arg5 += i_57_;
                             arg3 += i;
-                            arg0 += Rasterizer.anInt2768;
+                            arg0 += Rasterizer.width;
                         }
                         while(--arg2 >= 0) {
-                            method698(Rasterizer.anIntArray2766, arg0, arg6, 0, arg5 >> 16, arg4 >> 16);
+                            method698(Rasterizer.pixels, arg0, arg6, 0, arg5 >> 16, arg4 >> 16);
                             arg5 += i_57_;
                             arg4 += i_56_;
-                            arg0 += Rasterizer.anInt2768;
+                            arg0 += Rasterizer.width;
                         }
                     } else {
                         arg2 -= arg1;
                         arg1 -= arg0;
                         arg0 = anIntArray2938[arg0];
                         while(--arg1 >= 0) {
-                            method698(Rasterizer.anIntArray2766, arg0, arg6, 0, arg3 >> 16, arg5 >> 16);
+                            method698(Rasterizer.pixels, arg0, arg6, 0, arg3 >> 16, arg5 >> 16);
                             arg5 += i_57_;
                             arg3 += i;
-                            arg0 += Rasterizer.anInt2768;
+                            arg0 += Rasterizer.width;
                         }
                         while(--arg2 >= 0) {
-                            method698(Rasterizer.anIntArray2766, arg0, arg6, 0, arg4 >> 16, arg5 >> 16);
+                            method698(Rasterizer.pixels, arg0, arg6, 0, arg4 >> 16, arg5 >> 16);
                             arg5 += i_57_;
                             arg4 += i_56_;
-                            arg0 += Rasterizer.anInt2768;
+                            arg0 += Rasterizer.width;
                         }
                     }
                 } else {
@@ -1574,32 +1574,32 @@ public class R3D extends Rasterizer {
                         arg2 -= arg0;
                         arg0 = anIntArray2938[arg0];
                         while(--arg2 >= 0) {
-                            method698(Rasterizer.anIntArray2766, arg0, arg6, 0, arg4 >> 16, arg3 >> 16);
+                            method698(Rasterizer.pixels, arg0, arg6, 0, arg4 >> 16, arg3 >> 16);
                             arg4 += i_57_;
                             arg3 += i;
-                            arg0 += Rasterizer.anInt2768;
+                            arg0 += Rasterizer.width;
                         }
                         while(--arg1 >= 0) {
-                            method698(Rasterizer.anIntArray2766, arg0, arg6, 0, arg5 >> 16, arg3 >> 16);
+                            method698(Rasterizer.pixels, arg0, arg6, 0, arg5 >> 16, arg3 >> 16);
                             arg5 += i_56_;
                             arg3 += i;
-                            arg0 += Rasterizer.anInt2768;
+                            arg0 += Rasterizer.width;
                         }
                     } else {
                         arg1 -= arg2;
                         arg2 -= arg0;
                         arg0 = anIntArray2938[arg0];
                         while(--arg2 >= 0) {
-                            method698(Rasterizer.anIntArray2766, arg0, arg6, 0, arg3 >> 16, arg4 >> 16);
+                            method698(Rasterizer.pixels, arg0, arg6, 0, arg3 >> 16, arg4 >> 16);
                             arg4 += i_57_;
                             arg3 += i;
-                            arg0 += Rasterizer.anInt2768;
+                            arg0 += Rasterizer.width;
                         }
                         while(--arg1 >= 0) {
-                            method698(Rasterizer.anIntArray2766, arg0, arg6, 0, arg3 >> 16, arg5 >> 16);
+                            method698(Rasterizer.pixels, arg0, arg6, 0, arg3 >> 16, arg5 >> 16);
                             arg5 += i_56_;
                             arg3 += i;
-                            arg0 += Rasterizer.anInt2768;
+                            arg0 += Rasterizer.width;
                         }
                     }
                 }
@@ -1627,32 +1627,32 @@ public class R3D extends Rasterizer {
                         arg2 -= arg1;
                         arg1 = anIntArray2938[arg1];
                         while(--arg2 >= 0) {
-                            method698(Rasterizer.anIntArray2766, arg1, arg6, 0, arg3 >> 16, arg4 >> 16);
+                            method698(Rasterizer.pixels, arg1, arg6, 0, arg3 >> 16, arg4 >> 16);
                             arg3 += i;
                             arg4 += i_56_;
-                            arg1 += Rasterizer.anInt2768;
+                            arg1 += Rasterizer.width;
                         }
                         while(--arg0 >= 0) {
-                            method698(Rasterizer.anIntArray2766, arg1, arg6, 0, arg3 >> 16, arg5 >> 16);
+                            method698(Rasterizer.pixels, arg1, arg6, 0, arg3 >> 16, arg5 >> 16);
                             arg3 += i;
                             arg5 += i_57_;
-                            arg1 += Rasterizer.anInt2768;
+                            arg1 += Rasterizer.width;
                         }
                     } else {
                         arg0 -= arg2;
                         arg2 -= arg1;
                         arg1 = anIntArray2938[arg1];
                         while(--arg2 >= 0) {
-                            method698(Rasterizer.anIntArray2766, arg1, arg6, 0, arg4 >> 16, arg3 >> 16);
+                            method698(Rasterizer.pixels, arg1, arg6, 0, arg4 >> 16, arg3 >> 16);
                             arg3 += i;
                             arg4 += i_56_;
-                            arg1 += Rasterizer.anInt2768;
+                            arg1 += Rasterizer.width;
                         }
                         while(--arg0 >= 0) {
-                            method698(Rasterizer.anIntArray2766, arg1, arg6, 0, arg5 >> 16, arg3 >> 16);
+                            method698(Rasterizer.pixels, arg1, arg6, 0, arg5 >> 16, arg3 >> 16);
                             arg3 += i;
                             arg5 += i_57_;
-                            arg1 += Rasterizer.anInt2768;
+                            arg1 += Rasterizer.width;
                         }
                     }
                 } else {
@@ -1672,32 +1672,32 @@ public class R3D extends Rasterizer {
                         arg0 -= arg1;
                         arg1 = anIntArray2938[arg1];
                         while(--arg0 >= 0) {
-                            method698(Rasterizer.anIntArray2766, arg1, arg6, 0, arg5 >> 16, arg4 >> 16);
+                            method698(Rasterizer.pixels, arg1, arg6, 0, arg5 >> 16, arg4 >> 16);
                             arg5 += i;
                             arg4 += i_56_;
-                            arg1 += Rasterizer.anInt2768;
+                            arg1 += Rasterizer.width;
                         }
                         while(--arg2 >= 0) {
-                            method698(Rasterizer.anIntArray2766, arg1, arg6, 0, arg3 >> 16, arg4 >> 16);
+                            method698(Rasterizer.pixels, arg1, arg6, 0, arg3 >> 16, arg4 >> 16);
                             arg3 += i_57_;
                             arg4 += i_56_;
-                            arg1 += Rasterizer.anInt2768;
+                            arg1 += Rasterizer.width;
                         }
                     } else {
                         arg2 -= arg0;
                         arg0 -= arg1;
                         arg1 = anIntArray2938[arg1];
                         while(--arg0 >= 0) {
-                            method698(Rasterizer.anIntArray2766, arg1, arg6, 0, arg4 >> 16, arg5 >> 16);
+                            method698(Rasterizer.pixels, arg1, arg6, 0, arg4 >> 16, arg5 >> 16);
                             arg5 += i;
                             arg4 += i_56_;
-                            arg1 += Rasterizer.anInt2768;
+                            arg1 += Rasterizer.width;
                         }
                         while(--arg2 >= 0) {
-                            method698(Rasterizer.anIntArray2766, arg1, arg6, 0, arg4 >> 16, arg3 >> 16);
+                            method698(Rasterizer.pixels, arg1, arg6, 0, arg4 >> 16, arg3 >> 16);
                             arg3 += i_57_;
                             arg4 += i_56_;
-                            arg1 += Rasterizer.anInt2768;
+                            arg1 += Rasterizer.width;
                         }
                     }
                 }
@@ -1724,32 +1724,32 @@ public class R3D extends Rasterizer {
                     arg0 -= arg2;
                     arg2 = anIntArray2938[arg2];
                     while(--arg0 >= 0) {
-                        method698(Rasterizer.anIntArray2766, arg2, arg6, 0, arg4 >> 16, arg5 >> 16);
+                        method698(Rasterizer.pixels, arg2, arg6, 0, arg4 >> 16, arg5 >> 16);
                         arg4 += i_56_;
                         arg5 += i_57_;
-                        arg2 += Rasterizer.anInt2768;
+                        arg2 += Rasterizer.width;
                     }
                     while(--arg1 >= 0) {
-                        method698(Rasterizer.anIntArray2766, arg2, arg6, 0, arg4 >> 16, arg3 >> 16);
+                        method698(Rasterizer.pixels, arg2, arg6, 0, arg4 >> 16, arg3 >> 16);
                         arg4 += i_56_;
                         arg3 += i;
-                        arg2 += Rasterizer.anInt2768;
+                        arg2 += Rasterizer.width;
                     }
                 } else {
                     arg1 -= arg0;
                     arg0 -= arg2;
                     arg2 = anIntArray2938[arg2];
                     while(--arg0 >= 0) {
-                        method698(Rasterizer.anIntArray2766, arg2, arg6, 0, arg5 >> 16, arg4 >> 16);
+                        method698(Rasterizer.pixels, arg2, arg6, 0, arg5 >> 16, arg4 >> 16);
                         arg4 += i_56_;
                         arg5 += i_57_;
-                        arg2 += Rasterizer.anInt2768;
+                        arg2 += Rasterizer.width;
                     }
                     while(--arg1 >= 0) {
-                        method698(Rasterizer.anIntArray2766, arg2, arg6, 0, arg3 >> 16, arg4 >> 16);
+                        method698(Rasterizer.pixels, arg2, arg6, 0, arg3 >> 16, arg4 >> 16);
                         arg4 += i_56_;
                         arg3 += i;
-                        arg2 += Rasterizer.anInt2768;
+                        arg2 += Rasterizer.width;
                     }
                 }
             } else {
@@ -1769,32 +1769,32 @@ public class R3D extends Rasterizer {
                     arg1 -= arg2;
                     arg2 = anIntArray2938[arg2];
                     while(--arg1 >= 0) {
-                        method698(Rasterizer.anIntArray2766, arg2, arg6, 0, arg3 >> 16, arg5 >> 16);
+                        method698(Rasterizer.pixels, arg2, arg6, 0, arg3 >> 16, arg5 >> 16);
                         arg3 += i_56_;
                         arg5 += i_57_;
-                        arg2 += Rasterizer.anInt2768;
+                        arg2 += Rasterizer.width;
                     }
                     while(--arg0 >= 0) {
-                        method698(Rasterizer.anIntArray2766, arg2, arg6, 0, arg4 >> 16, arg5 >> 16);
+                        method698(Rasterizer.pixels, arg2, arg6, 0, arg4 >> 16, arg5 >> 16);
                         arg4 += i;
                         arg5 += i_57_;
-                        arg2 += Rasterizer.anInt2768;
+                        arg2 += Rasterizer.width;
                     }
                 } else {
                     arg0 -= arg1;
                     arg1 -= arg2;
                     arg2 = anIntArray2938[arg2];
                     while(--arg1 >= 0) {
-                        method698(Rasterizer.anIntArray2766, arg2, arg6, 0, arg5 >> 16, arg3 >> 16);
+                        method698(Rasterizer.pixels, arg2, arg6, 0, arg5 >> 16, arg3 >> 16);
                         arg3 += i_56_;
                         arg5 += i_57_;
-                        arg2 += Rasterizer.anInt2768;
+                        arg2 += Rasterizer.width;
                     }
                     while(--arg0 >= 0) {
-                        method698(Rasterizer.anIntArray2766, arg2, arg6, 0, arg5 >> 16, arg4 >> 16);
+                        method698(Rasterizer.pixels, arg2, arg6, 0, arg5 >> 16, arg4 >> 16);
                         arg4 += i;
                         arg5 += i_57_;
-                        arg2 += Rasterizer.anInt2768;
+                        arg2 += Rasterizer.width;
                     }
                 }
             }

@@ -12,7 +12,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
     public static int anInt2282;
     public static RSString aClass1_2283;
     public static int anInt2284;
-    public static DirectColorSprite aClass40_Sub5_Sub14_Sub4_2285;
+    public static ImageRGB minimapEdge;
     public static RSString aClass1_2286;
     public static int anInt2288;
     public static int anInt2289;
@@ -24,7 +24,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
     public static RSString aClass1_2297;
     public static Class67 aClass67_2298;
     public static RSString aClass1_2299;
-    public static IndexedColorSprite[] aClass40_Sub5_Sub14_Sub2Array2301;
+    public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2301;
     public static int anInt2302;
     public static RSString aClass1_2303;
     public static int anInt2304;
@@ -74,7 +74,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
             aClass1_2297 = null;
             aClass1_2283 = null;
             aClass40_Sub5_Sub14_Sub2Array2301 = null;
-            aClass40_Sub5_Sub14_Sub4_2285 = null;
+        minimapEdge = null;
             aClass1_2299 = null;
             aClass1_2306 = null;
             aClass1_2294 = null;
@@ -87,7 +87,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
 
     }
 
-    public static IndexedColorSprite[] method550(Class6 arg0, byte arg1, RSString arg2, RSString arg3) {
+    public static IndexedImage[] method550(Class6 arg0, byte arg1, RSString arg2, RSString arg3) {
 
         anInt2282++;
             int i = arg0.method183(0, arg2);

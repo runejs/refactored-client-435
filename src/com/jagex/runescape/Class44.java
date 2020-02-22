@@ -22,7 +22,7 @@ public class Class44 implements Runnable {
     public static RSString aClass1_1043;
     public static int anInt1044;
     public static int anInt1045;
-    public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_1047;
+    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1047;
     public static int anInt1048;
     public static int anInt1049;
     public static int anInt1050;

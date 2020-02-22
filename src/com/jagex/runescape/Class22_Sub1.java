@@ -119,11 +119,11 @@ public class Class22_Sub1 extends Class22 {
                 int i = Class37.method430((byte) -122, Player.anInt3267, arg2, arg1) + -arg0;
                 arg1 -= Class40_Sub5_Sub6.anInt2443;
                 i -= Class32.anInt769;
-                int i_1_ = Model.anIntArray3217[Class26.anInt627];
-                int i_2_ = Model.anIntArray3215[Class26.anInt627];
+                int i_1_ = Model.COSINE[Class26.anInt627];
+                int i_2_ = Model.SINE[Class26.anInt627];
                 arg2 -= Class12.anInt388;
-                int i_3_ = (Model.anIntArray3215[Class68_Sub1.anInt2210]);
-                int i_4_ = (Model.anIntArray3217[Class68_Sub1.anInt2210]);
+                int i_3_ = (Model.SINE[Class68_Sub1.anInt2210]);
+                int i_4_ = (Model.COSINE[Class68_Sub1.anInt2210]);
                 int i_5_ = arg1 * i_3_ + arg2 * i_4_ >> -1348635568;
                 arg1 = i_4_ * arg1 - arg2 * i_3_ >> 1869723344;
                 if(arg3 != 4976905)

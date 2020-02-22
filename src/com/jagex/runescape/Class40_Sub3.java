@@ -9,7 +9,7 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 public class Class40_Sub3 extends Node {
     public static RSString aClass1_2015;
     public static int[] anIntArray2016 = new int[32768];
-    public static DirectColorSprite[] aClass40_Sub5_Sub14_Sub4Array2019;
+    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2019;
     public static int anInt2020;
     public static int anInt2021 = 0;
     public static int anInt2022;
@@ -58,7 +58,7 @@ public class Class40_Sub3 extends Node {
             Npc.aScene_3301 = new Scene(4, 104, 104, Class40_Sub6.tile_height);
             for(int i = 0; (i ^ 0xffffffff) > -5; i++)
                 Landscape.aCollisionMapArray1167[i] = new CollisionMap(104, 104);
-            Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765 = new DirectColorSprite(512, 512);
+            Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765 = new ImageRGB(512, 512);
             Class67.anInt1607 = 5;
             Class40_Sub5_Sub6.anInt2451 = 20;
             Class22_Sub2.currentLoadingText = Class40_Sub5_Sub12.aClass1_2674;
@@ -182,8 +182,8 @@ public class Class40_Sub3 extends Node {
                 i++;
             else
                 Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4_2482 = Class66.method1028(NpcDefinition.aClass6_Sub1_2377, Class54.aClass1_1284, (byte) 21, Class66.aClass1_1567);
-            if(Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub4_2285 == null)
-                Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub4_2285 = Class66.method1028(NpcDefinition.aClass6_Sub1_2377, Class61.aClass1_1427, (byte) 21, Class66.aClass1_1567);
+            if(Class40_Sub5_Sub2.minimapEdge == null)
+                Class40_Sub5_Sub2.minimapEdge = Class66.method1028(NpcDefinition.aClass6_Sub1_2377, Class61.aClass1_1427, (byte) 21, Class66.aClass1_1567);
             else
                 i++;
             if(Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301 != null)
@@ -238,7 +238,7 @@ public class Class40_Sub3 extends Node {
                 Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(arg0 + -139, new RSString[]{Class17.aClass1_452, HashTable.method334(100 * i / 14, -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 70;
             } else {
-                Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub4_2285.method726();
+                Class40_Sub5_Sub2.minimapEdge.method726();
                 int i_4_ = (int) (Math.random() * 21.0) - 10;
                 int i_5_ = (int) (21.0 * Math.random()) - 10;
                 int i_6_ = (int) (41.0 * Math.random()) - 20;

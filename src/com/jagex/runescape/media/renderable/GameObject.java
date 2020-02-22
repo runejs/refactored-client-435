@@ -100,7 +100,7 @@ public class GameObject extends Renderable {
 
     }
 
-    public static IndexedColorSprite method769(int arg0, Class6 arg1, int arg2) {
+    public static IndexedImage method769(int arg0, Class6 arg1, int arg2) {
 
         anInt3032++;
             if(!Buffer.method472(arg0 ^ ~0x69, arg1, arg2))

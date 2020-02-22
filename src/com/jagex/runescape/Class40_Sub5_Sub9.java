@@ -7,7 +7,7 @@ public class Class40_Sub5_Sub9 extends SubNode {
     public static int anInt2562;
     public static RSString aClass1_2564 = Class58.method978("Welt");
     public static RSString aClass1_2566;
-    public static DirectColorSprite[] aClass40_Sub5_Sub14_Sub4Array2567;
+    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2567;
     public static int anInt2569;
     public static RSString aClass1_2570;
     public static Class6_Sub1 aClass6_Sub1_2571;

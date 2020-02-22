@@ -5,8 +5,8 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 public class Class40_Sub5_Sub15 extends SubNode {
     public static RSString aClass1_2773 = (Class58.method978("Um ein neues Spielkonto zu erstellen)1 m-Ussen Sie"));
     public static RSString aClass1_2774;
-    public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_2775;
-    public static IndexedColorSprite[] aClass40_Sub5_Sub14_Sub2Array2776;
+    public static IndexedImage aClass40_Sub5_Sub14_Sub2_2775;
+    public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2776;
     public static int[] anIntArray2777 = {8, 11, 4, 6, 9, 7, 10};
     public static int anInt2778;
     public static Class6 aClass6_2779;

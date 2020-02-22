@@ -63,111 +63,110 @@ public class Floor extends SubNode {
     public static void method554(byte arg0) {
 
         aByteArrayArrayArray2335 = null;
-            tile_flags = null;
-            anIntArrayArrayArray2333 = null;
-            aClass1_2315 = null;
-            aClass1_2314 = null;
-            aClass1_2327 = null;
-            aClass1_2325 = null;
-            anIntArray2324 = null;
-            int i = -25 % ((arg0 - 68) / 49);
+        tile_flags = null;
+        anIntArrayArrayArray2333 = null;
+        aClass1_2315 = null;
+        aClass1_2314 = null;
+        aClass1_2327 = null;
+        aClass1_2325 = null;
+        anIntArray2324 = null;
+        int i = -25 % ((arg0 - 68) / 49);
 
     }
 
     public static void method557(int arg0, int arg1) {
 
         Class42.method886(0, 0, false, null, arg0);
-            if(arg1 != 17098)
-                method557(-14, 72);
-            anInt2329++;
+        if(arg1 != 17098)
+            method557(-14, 72);
+        anInt2329++;
 
     }
 
     public static void method558(int arg0, RSString arg1, int arg2, int arg3, int arg4, int arg5, RSString arg6) {
 
         if((NpcDefinition.anInt2394 ^ 0xffffffff) > arg3) {
-                if((arg6.method59(-3136) ^ 0xffffffff) >= -1)
-                    Landscape.aClass1Array1184[NpcDefinition.anInt2394] = arg1;
-                else
-                    Landscape.aClass1Array1184[NpcDefinition.anInt2394] = Class40_Sub5_Sub17_Sub6.method832(-77, (new RSString[]{arg1, (VertexNormal.aClass1_1117), arg6}));
-                Class38.anIntArray884[NpcDefinition.anInt2394] = arg5;
-                Class33.anIntArray791[NpcDefinition.anInt2394] = arg0;
-                Class19.anIntArray483[NpcDefinition.anInt2394] = arg4;
-                Class59.anIntArray1393[NpcDefinition.anInt2394] = arg2;
-                NpcDefinition.anInt2394++;
-            }
-            anInt2339++;
+            if((arg6.method59(-3136) ^ 0xffffffff) >= -1)
+                Landscape.aClass1Array1184[NpcDefinition.anInt2394] = arg1;
+            else
+                Landscape.aClass1Array1184[NpcDefinition.anInt2394] = Class40_Sub5_Sub17_Sub6.method832(-77, (new RSString[]{arg1, (VertexNormal.aClass1_1117), arg6}));
+            Class38.anIntArray884[NpcDefinition.anInt2394] = arg5;
+            Class33.anIntArray791[NpcDefinition.anInt2394] = arg0;
+            Class19.anIntArray483[NpcDefinition.anInt2394] = arg4;
+            Class59.anIntArray1393[NpcDefinition.anInt2394] = arg2;
+            NpcDefinition.anInt2394++;
+        }
+        anInt2339++;
 
     }
 
     public static void method559(int arg0, int arg1) {
 
         int i = -26 % (-arg1 / 44);
-            anInt2316++;
+        anInt2316++;
         if(arg0 != Class51.anInt1197) {
-                if((Class51.anInt1197 ^ 0xffffffff) == -1)
-                    CollisionMap.method144(12433);
-                if(arg0 == 20 || arg0 == 40) {
-                    Main.anInt1756 = 0;
-                    anInt2321 = 0;
-                    Class40_Sub3.anInt2032 = 0;
-                }
-                if((arg0 ^ 0xffffffff) != -21 && (arg0 ^ 0xffffffff) != -41 && Class30.aClass64_717 != null) {
-                    Class30.aClass64_717.method1009(-106);
-                    Class30.aClass64_717 = null;
-                }
-                if(Class51.anInt1197 == 25 || Class51.anInt1197 == 40) {
-                    Class65.method1018((byte) 123);
-                    Rasterizer.method663();
-                }
-                if(Class51.anInt1197 == 25) {
-                    Class37.anInt874 = 0;
-                    PacketBuffer.anInt2231 = 1;
-                    Class40_Sub5_Sub10.anInt2591 = 0;
-                    GameObject.anInt3048 = 1;
-                    Class68.anInt1634 = 0;
-                }
-                if((arg0 ^ 0xffffffff) == -1 || arg0 == 35) {
-                    FloorDecoration.method344(-40);
-                    Class38.method440((byte) -73);
-                    if(Class68_Sub1.aClass68_2213 == null)
-                        Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649(503, 765, Class62.aCanvas1469, -4875);
-                }
-                if((arg0 ^ 0xffffffff) == -6 || arg0 == 10 || arg0 == 20) {
-                    Class68_Sub1.aClass68_2213 = null;
-                    FloorDecoration.method344(-69);
-                    Class40_Sub5_Sub17_Sub3.method779(Class62.aCanvas1469, true, (RSCanvas.aClass6_Sub1_48), (NpcDefinition.aClass6_Sub1_2377));
-                }
-                if(arg0 == 25 || arg0 == 30 || (arg0 ^ 0xffffffff) == -41) {
-                    Class68_Sub1.aClass68_2213 = null;
-                    Class38.method440((byte) -98);
-                    Class40_Sub5_Sub17_Sub1.method763(Class62.aCanvas1469, (byte) -128, (NpcDefinition.aClass6_Sub1_2377));
-                }
-                Class51.anInt1197 = arg0;
-                Class40_Sub5_Sub11.aBoolean2631 = true;
+            if((Class51.anInt1197 ^ 0xffffffff) == -1)
+                CollisionMap.method144(12433);
+            if(arg0 == 20 || arg0 == 40) {
+                Main.anInt1756 = 0;
+                anInt2321 = 0;
+                Class40_Sub3.anInt2032 = 0;
             }
+            if((arg0 ^ 0xffffffff) != -21 && (arg0 ^ 0xffffffff) != -41 && Class30.aClass64_717 != null) {
+                Class30.aClass64_717.method1009(-106);
+                Class30.aClass64_717 = null;
+            }
+            if(Class51.anInt1197 == 25 || Class51.anInt1197 == 40) {
+                Class65.method1018((byte) 123);
+                Rasterizer.method663();
+            }
+            if(Class51.anInt1197 == 25) {
+                Class37.anInt874 = 0;
+                PacketBuffer.anInt2231 = 1;
+                Class40_Sub5_Sub10.anInt2591 = 0;
+                GameObject.anInt3048 = 1;
+                Class68.anInt1634 = 0;
+            }
+            if((arg0 ^ 0xffffffff) == -1 || arg0 == 35) {
+                FloorDecoration.method344(-40);
+                Class38.method440((byte) -73);
+                if(Class68_Sub1.aClass68_2213 == null)
+                    Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649(503, 765, Class62.aCanvas1469, -4875);
+            }
+            if((arg0 ^ 0xffffffff) == -6 || arg0 == 10 || arg0 == 20) {
+                Class68_Sub1.aClass68_2213 = null;
+                FloorDecoration.method344(-69);
+                Class40_Sub5_Sub17_Sub3.method779(Class62.aCanvas1469, true, (RSCanvas.aClass6_Sub1_48), (NpcDefinition.aClass6_Sub1_2377));
+            }
+            if(arg0 == 25 || arg0 == 30 || (arg0 ^ 0xffffffff) == -41) {
+                Class68_Sub1.aClass68_2213 = null;
+                Class38.method440((byte) -98);
+                Class40_Sub5_Sub17_Sub1.method763(Class62.aCanvas1469, (byte) -128, (NpcDefinition.aClass6_Sub1_2377));
+            }
+            Class51.anInt1197 = arg0;
+            Class40_Sub5_Sub11.aBoolean2631 = true;
+        }
 
     }
 
-    public static void method560(int arg0, DirectColorSprite arg1, int arg2, int arg3) {
+    public static void drawMinimapMark(ImageRGB sprite, int mapX, int mapY) {
 
-        anInt2326++;
-            int i = arg0 * arg0 + (arg3 * arg3);
-            if((i ^ 0xffffffff) < -4226 && i < 90000) {
-                int i_0_ = 0x7ff & Class58.anInt1373 + Class43.anInt1020;
-                int i_1_ = Model.anIntArray3215[i_0_];
-                int i_2_ = Model.anIntArray3217[i_0_];
-                i_1_ = i_1_ * 256 / (256 + Class51.anInt1187);
-                i_2_ = i_2_ * 256 / (Class51.anInt1187 + 256);
-                int i_3_ = i_2_ * arg3 - i_1_ * arg0 >> 1028840464;
-                int i_4_ = arg0 * i_2_ + arg3 * i_1_ >> -619294640;
-                double d = Math.atan2((double) i_4_, (double) i_3_);
-                int i_5_ = (int) (Math.sin(d) * 63.0);
-                int i_6_ = (int) (57.0 * Math.cos(d));
-                Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub4_2285.method729(-10 + (94 + (i_5_ + 4)), 83 + -i_6_ + -20, 20, 20, 15, 15, d, 256);
-            } else
-                SceneTile.method533(arg3, arg0, arg1, (byte) 66);
-            int i_7_ = -95 / ((arg2 + 37) / 32);
+        int len = mapX * mapX + (mapY * mapY);
+        if(len > 4225 && len < 90000) {
+            int theta = 0x7ff & Class58.cameraHorizontal + Class43.cameraYawOffset;
+            int sine = Model.SINE[theta];
+            int cosine = Model.COSINE[theta];
+            sine = (sine * 256) / (Class51.mapZoomOffset + 256);
+            cosine = (cosine * 256) / (Class51.mapZoomOffset + 256);
+            int y = cosine * mapY - sine * mapX >> 16;
+            int x = mapX * cosine + mapY * sine >> 16;
+            double angle = Math.atan2((double) x, (double) y);
+            int drawX = (int) (Math.sin(angle) * 63.0);
+            int drawY = (int) (57.0 * Math.cos(angle));
+            Class40_Sub5_Sub2.minimapEdge.drawRotated(-10 + (94 + (drawX + 4)), 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
+        } else {
+            SceneTile.drawOnMinimap(mapY, mapX, sprite);
+        }
 
     }
 
@@ -175,13 +174,13 @@ public class Floor extends SubNode {
 
         for(; ; ) {
             int i = arg2.getUnsignedByte();
-                if((i ^ 0xffffffff) == -1)
-                    break;
-                method556(arg1, arg2, i, (byte) -117);
-            }
-            if(arg0 < 1)
-                aClass1_2325 = null;
-            anInt2348++;
+            if((i ^ 0xffffffff) == -1)
+                break;
+            method556(arg1, arg2, i, (byte) -117);
+        }
+        if(arg0 < 1)
+            aClass1_2325 = null;
+        anInt2348++;
 
     }
 
@@ -201,18 +200,18 @@ public class Floor extends SubNode {
     public void method556(int arg0, Buffer arg1, int arg2, byte arg3) {
 
         if(arg3 != -117)
-                method556(-71, null, 83, (byte) -117);
-            anInt2341++;
-            if((arg2 ^ 0xffffffff) == -2)
-                anInt2345 = arg1.getTri(true);
-            else if(arg2 != 2) {
-                if((arg2 ^ 0xffffffff) != -6) {
-                    if((arg2 ^ 0xffffffff) == -8)
-                        anInt2336 = arg1.getTri(true);
-                } else
-                    aBoolean2338 = false;
+            method556(-71, null, 83, (byte) -117);
+        anInt2341++;
+        if((arg2 ^ 0xffffffff) == -2)
+            anInt2345 = arg1.getTri(true);
+        else if(arg2 != 2) {
+            if((arg2 ^ 0xffffffff) != -6) {
+                if((arg2 ^ 0xffffffff) == -8)
+                    anInt2336 = arg1.getTri(true);
             } else
-                anInt2322 = arg1.getUnsignedByte();
+                aBoolean2338 = false;
+        } else
+            anInt2322 = arg1.getUnsignedByte();
 
     }
 

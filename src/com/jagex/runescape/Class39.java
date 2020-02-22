@@ -22,7 +22,7 @@ public class Class39 implements Runnable {
     public static RSString aClass1_915;
     public static int anInt916;
     public static RSString aClass1_917;
-    public static DirectColorSprite aClass40_Sub5_Sub14_Sub4_918;
+    public static ImageRGB aClass40_Sub5_Sub14_Sub4_918;
     public static RSString aClass1_919;
 
     static {

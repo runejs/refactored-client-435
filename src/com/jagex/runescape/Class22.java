@@ -11,7 +11,7 @@ public abstract class Class22 {
     public static RSString aClass1_532;
     public static RSString aClass1_533;
     public static Buffer[] aClass40_Sub1Array534;
-    public static IndexedColorSprite[] aClass40_Sub5_Sub14_Sub2Array535;
+    public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array535;
     public static int anInt536;
     public static int anInt537;
     public static RSString aClass1_538 = Class58.method978("Angreifen");
@@ -55,7 +55,7 @@ public abstract class Class22 {
 
     public static void method299(byte arg0, int arg1) {
         anInt543++;
-        int[] is = (Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.anIntArray2955);
+        int[] is = (Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.pixels);
         int i = is.length;
         for(int i_0_ = 0; i > i_0_; i_0_++)
             is[i_0_] = 0;

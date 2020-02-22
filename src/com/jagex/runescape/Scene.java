@@ -123,10 +123,10 @@ public class Scene {
         boolean[][][][] bools = new boolean[9][32][53][53];
         for(int i = 128; i <= 384; i += 32) {
             for(int i_2_ = 0; i_2_ < 2048; i_2_ += 64) {
-                anInt82 = Model.anIntArray3215[i];
-                anInt110 = Model.anIntArray3217[i];
-                anInt104 = Model.anIntArray3215[i_2_];
-                anInt99 = Model.anIntArray3217[i_2_];
+                anInt82 = Model.SINE[i];
+                anInt110 = Model.COSINE[i];
+                anInt104 = Model.SINE[i_2_];
+                anInt99 = Model.COSINE[i_2_];
                 int i_3_ = (i - 128) / 32;
                 int i_4_ = i_2_ / 64;
                 for(int i_5_ = -26; i_5_ <= 26; i_5_++) {
@@ -350,10 +350,10 @@ public class Scene {
         else if(arg2 >= anInt116 * 128)
             arg2 = anInt116 * 128 - 1;
         anInt86++;
-        anInt82 = Model.anIntArray3215[arg3];
-        anInt110 = Model.anIntArray3217[arg3];
-        anInt104 = Model.anIntArray3215[arg4];
-        anInt99 = Model.anIntArray3217[arg4];
+        anInt82 = Model.SINE[arg3];
+        anInt110 = Model.COSINE[arg3];
+        anInt104 = Model.SINE[arg4];
+        anInt99 = Model.COSINE[arg4];
         aBooleanArrayArray133 = aBooleanArrayArrayArrayArray134[(arg3 - 128) / 32][arg4 / 64];
         anInt76 = arg0;
         anInt89 = arg1;

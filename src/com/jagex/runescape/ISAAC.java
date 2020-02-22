@@ -26,7 +26,7 @@ public class ISAAC {
     public static Signlink aClass31_521;
     public static int anInt522;
     public static RSString aClass1_523;
-    public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_524;
+    public static IndexedImage aClass40_Sub5_Sub14_Sub2_524;
     public static int anInt525;
     public static RSString aClass1_526;
     public static RSString aClass1_527;

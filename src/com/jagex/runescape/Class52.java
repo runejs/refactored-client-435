@@ -106,7 +106,7 @@ public class Class52 {
 
     }
 
-    public static DirectColorSprite[] method944(byte arg0, int arg1, Class6 arg2, int arg3) {
+    public static ImageRGB[] method944(byte arg0, int arg1, Class6 arg2, int arg3) {
 
         anInt1237++;
             if(!method948(arg3, arg1, arg2, -3844))

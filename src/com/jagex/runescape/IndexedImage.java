@@ -1,24 +1,24 @@
 package com.jagex.runescape;
 
-public class IndexedColorSprite extends Rasterizer {
+public class IndexedImage extends Rasterizer {
     public int anInt2921;
     public int[] anIntArray2922;
     public int anInt2923;
     public int anInt2924;
-    public byte[] aByteArray2925;
+    public byte[] imgPixels;
     public int anInt2926;
     public int anInt2927;
     public int anInt2928;
 
-    public IndexedColorSprite() {
+    public IndexedImage() {
         /* empty */
     }
 
-    public IndexedColorSprite(int arg0, int arg1, int arg2) {
+    public IndexedImage(int arg0, int arg1, int arg2) {
         anInt2923 = anInt2921 = arg0;
         anInt2924 = anInt2926 = arg1;
         anInt2928 = anInt2927 = 0;
-        aByteArray2925 = new byte[arg0 * arg1];
+        imgPixels = new byte[arg0 * arg1];
         anIntArray2922 = new int[arg2];
     }
 
@@ -60,15 +60,15 @@ public class IndexedColorSprite extends Rasterizer {
         }
     }
 
-    public IndexedColorSprite method691() {
-        IndexedColorSprite class40_sub5_sub14_sub2 = new IndexedColorSprite(anInt2921, anInt2926, anIntArray2922.length);
+    public IndexedImage method691() {
+        IndexedImage class40_sub5_sub14_sub2 = new IndexedImage(anInt2921, anInt2926, anIntArray2922.length);
         class40_sub5_sub14_sub2.anInt2923 = anInt2923;
         class40_sub5_sub14_sub2.anInt2924 = anInt2924;
         class40_sub5_sub14_sub2.anInt2928 = anInt2928;
         class40_sub5_sub14_sub2.anInt2927 = anInt2927;
-        int i = aByteArray2925.length;
+        int i = imgPixels.length;
         for(int i_0_ = 0; i_0_ < i; i_0_++)
-            class40_sub5_sub14_sub2.aByteArray2925[i_0_] = aByteArray2925[i_0_];
+            class40_sub5_sub14_sub2.imgPixels[i_0_] = imgPixels[i_0_];
         i = anIntArray2922.length;
         for(int i_1_ = 0; i_1_ < i; i_1_++)
             class40_sub5_sub14_sub2.anIntArray2922[i_1_] = anIntArray2922[i_1_];
@@ -78,38 +78,38 @@ public class IndexedColorSprite extends Rasterizer {
     public void method692(int arg0, int arg1) {
         arg0 += anInt2928;
         arg1 += anInt2927;
-        int i = arg0 + arg1 * Rasterizer.anInt2768;
+        int i = arg0 + arg1 * Rasterizer.width;
         int i_2_ = 0;
         int i_3_ = anInt2926;
         int i_4_ = anInt2921;
-        int i_5_ = Rasterizer.anInt2768 - i_4_;
+        int i_5_ = Rasterizer.width - i_4_;
         int i_6_ = 0;
-        if(arg1 < Rasterizer.anInt2767) {
-            int i_7_ = Rasterizer.anInt2767 - arg1;
+        if(arg1 < Rasterizer.viewport_top) {
+            int i_7_ = Rasterizer.viewport_top - arg1;
             i_3_ -= i_7_;
-            arg1 = Rasterizer.anInt2767;
+            arg1 = Rasterizer.viewport_top;
             i_2_ += i_7_ * i_4_;
-            i += i_7_ * Rasterizer.anInt2768;
+            i += i_7_ * Rasterizer.width;
         }
-        if(arg1 + i_3_ > Rasterizer.anInt2770)
-            i_3_ -= arg1 + i_3_ - Rasterizer.anInt2770;
-        if(arg0 < Rasterizer.anInt2771) {
-            int i_8_ = Rasterizer.anInt2771 - arg0;
+        if(arg1 + i_3_ > Rasterizer.viewport_bottom)
+            i_3_ -= arg1 + i_3_ - Rasterizer.viewport_bottom;
+        if(arg0 < Rasterizer.viewport_left) {
+            int i_8_ = Rasterizer.viewport_left - arg0;
             i_4_ -= i_8_;
-            arg0 = Rasterizer.anInt2771;
+            arg0 = Rasterizer.viewport_left;
             i_2_ += i_8_;
             i += i_8_;
             i_6_ += i_8_;
             i_5_ += i_8_;
         }
-        if(arg0 + i_4_ > Rasterizer.anInt2772) {
-            int i_9_ = arg0 + i_4_ - Rasterizer.anInt2772;
+        if(arg0 + i_4_ > Rasterizer.viewport_right) {
+            int i_9_ = arg0 + i_4_ - Rasterizer.viewport_right;
             i_4_ -= i_9_;
             i_6_ += i_9_;
             i_5_ += i_9_;
         }
         if(i_4_ > 0 && i_3_ > 0)
-            method693(Rasterizer.anIntArray2766, aByteArray2925, anIntArray2922, i_2_, i, i_4_, i_3_, i_5_, i_6_);
+            method693(Rasterizer.pixels, imgPixels, anIntArray2922, i_2_, i, i_4_, i_3_, i_5_, i_6_);
     }
 
     public void method694() {
@@ -118,9 +118,9 @@ public class IndexedColorSprite extends Rasterizer {
             int i = 0;
             for(int i_15_ = 0; i_15_ < anInt2926; i_15_++) {
                 for(int i_16_ = 0; i_16_ < anInt2921; i_16_++)
-                    is[i_16_ + anInt2928 + (i_15_ + anInt2927) * anInt2923] = aByteArray2925[i++];
+                    is[i_16_ + anInt2928 + (i_15_ + anInt2927) * anInt2923] = imgPixels[i++];
             }
-            aByteArray2925 = is;
+            imgPixels = is;
             anInt2921 = anInt2923;
             anInt2926 = anInt2924;
             anInt2928 = 0;
@@ -133,9 +133,9 @@ public class IndexedColorSprite extends Rasterizer {
         int i = 0;
         for(int i_17_ = 0; i_17_ < anInt2926; i_17_++) {
             for(int i_18_ = anInt2921 - 1; i_18_ >= 0; i_18_--)
-                is[i++] = aByteArray2925[i_18_ + i_17_ * anInt2921];
+                is[i++] = imgPixels[i_18_ + i_17_ * anInt2921];
         }
-        aByteArray2925 = is;
+        imgPixels = is;
         anInt2928 = anInt2923 - anInt2921 - anInt2928;
     }
 
@@ -144,9 +144,9 @@ public class IndexedColorSprite extends Rasterizer {
         int i = 0;
         for(int i_19_ = anInt2926 - 1; i_19_ >= 0; i_19_--) {
             for(int i_20_ = 0; i_20_ < anInt2921; i_20_++)
-                is[i++] = aByteArray2925[i_20_ + i_19_ * anInt2921];
+                is[i++] = imgPixels[i_20_ + i_19_ * anInt2921];
         }
-        aByteArray2925 = is;
+        imgPixels = is;
         anInt2927 = anInt2924 - anInt2926 - anInt2927;
     }
 

@@ -19,7 +19,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
     public static int anInt2201;
     public static int anInt2202;
     public static int anInt2203;
-    public static DirectColorSprite[] aClass40_Sub5_Sub14_Sub4Array2204;
+    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2204;
     public static int anInt2205;
     public static int anInt2206;
     public static int[] anIntArray2207 = {0, -1, 0, 1};

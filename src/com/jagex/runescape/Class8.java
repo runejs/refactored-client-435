@@ -28,7 +28,7 @@ public class Class8 {
     public static RSString aClass1_293;
     public static RSString aClass1_294;
     public static FontMetrics aFontMetrics295;
-    public static DirectColorSprite[] aClass40_Sub5_Sub14_Sub4Array296;
+    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array296;
     public static int[] anIntArray297;
     public static Class68 aClass68_298;
     public static RSString aClass1_299;

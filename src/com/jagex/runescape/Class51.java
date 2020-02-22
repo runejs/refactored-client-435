@@ -5,7 +5,7 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import java.awt.event.KeyEvent;
 
 public class Class51 {
-    public static int anInt1187 = 0;
+    public static int mapZoomOffset = 0;
     public static int anInt1188;
     public static int anInt1189;
     public static int anInt1190;

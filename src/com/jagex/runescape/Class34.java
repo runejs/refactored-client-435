@@ -28,7 +28,7 @@ public class Class34 {
     public static int[] anIntArray852;
     public static long aLong853;
     public static int anInt854;
-    public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_855;
+    public static IndexedImage mapBack;
 
     static {
         anInt813 = 0;
@@ -149,7 +149,7 @@ public class Class34 {
             anIntArray852 = null;
             aClass23_805 = null;
             aClass1_850 = null;
-            aClass40_Sub5_Sub14_Sub2_855 = null;
+        mapBack = null;
 
     }
 

@@ -5,7 +5,7 @@ public class Class56 {
     public static int anInt1311;
     public static int anInt1312;
     public static RSString aClass1_1314;
-    public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_1315;
+    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1315;
     public static RSString aClass1_1316 = Class58.method978("Zu viele Verbindungen von Ihrer Adresse)3");
     public static int anInt1317;
     public static int anInt1318;
@@ -17,7 +17,7 @@ public class Class56 {
     public static int anInt1326;
     public static int anInt1327;
     public static int anInt1328;
-    public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_1329;
+    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1329;
 
     static {
         aClass1_1314 = Class58.method978(" weitere Optionen");

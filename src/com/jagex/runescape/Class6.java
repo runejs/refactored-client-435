@@ -12,7 +12,7 @@ public abstract class Class6 {
     public static int anInt211;
     public static int anInt213;
     public static int anInt214;
-    public static IndexedColorSprite[] aClass40_Sub5_Sub14_Sub2Array215;
+    public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array215;
     public static int anInt218;
     public static long aLong219 = 0L;
     public static int anInt222;

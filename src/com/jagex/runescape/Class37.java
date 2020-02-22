@@ -26,7 +26,7 @@ public class Class37 {
     public static RSString aClass1_875;
     public static int anInt876 = 0;
     public static RSString aClass1_877 = Class58.method978("@gr1@");
-    public static DirectColorSprite[] aClass40_Sub5_Sub14_Sub4Array878;
+    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array878;
     public static RSString aClass1_879 = Class58.method978("weiss:");
     public static RSString aClass1_880 = Class58.method978("Wir vermuten ihr Spielkonto wurde gestohlen");
 
@@ -133,24 +133,24 @@ public class Class37 {
         RSCanvas.method45((byte) -106);
         anInt864++;
         if(Class27.anInt658 == 2) {
-            int[] is = Rasterizer.anIntArray2766;
-            byte[] is_6_ = Class34.aClass40_Sub5_Sub14_Sub2_855.aByteArray2925;
+            int[] is = Rasterizer.pixels;
+            byte[] is_6_ = Class34.mapBack.imgPixels;
             int i = is_6_.length;
             for(int i_7_ = 0; i > i_7_; i_7_++) {
                 if((is_6_[i_7_] ^ 0xffffffff) == -1)
                     is[i_7_] = 0;
             }
-            Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, Class58.anInt1373, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
+            Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, Class58.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
             NpcDefinition.method574(4);
         } else {
             int i = 48 + ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32);
             int i_8_ = 464 + -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) / 32);
-            int i_9_ = Class58.anInt1373 + Class43.anInt1020 & 0x7ff;
-            Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.method724(25, 5, 146, 151, i, i_8_, i_9_, Class51.anInt1187 + 256, Landscape.anIntArray1186, Class34.anIntArray852);
+            int i_9_ = Class58.cameraHorizontal + Class43.cameraYawOffset & 0x7ff;
+            Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.method724(25, 5, 146, 151, i, i_8_, i_9_, Class51.mapZoomOffset + 256, Landscape.anIntArray1186, Class34.anIntArray852);
             for(int i_10_ = 0; GameObject.anInt3040 > i_10_; i_10_++) {
                 i = 2 + (4 * Actor.anIntArray3149[i_10_] + -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32));
                 i_8_ = (2 + 4 * Class45.anIntArray1083[i_10_] - ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) / 32));
-                SceneTile.method533(i_8_, i, (Class62.aClass40_Sub5_Sub14_Sub4Array1466[i_10_]), (byte) 99);
+                SceneTile.drawOnMinimap(i_8_, i, (Class62.aClass40_Sub5_Sub14_Sub4Array1466[i_10_]));
             }
             for(int i_11_ = 0; (i_11_ ^ 0xffffffff) > -105; i_11_++) {
                 for(int i_12_ = 0; i_12_ < 104; i_12_++) {
@@ -158,7 +158,7 @@ public class Class37 {
                     if(class45 != null) {
                         i_8_ = -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) / 32) + 2 + i_12_ * 4;
                         i = -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32) + 2 + i_11_ * 4;
-                        SceneTile.method533(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[0], (byte) 70);
+                        SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[0]);
                     }
                 }
             }
@@ -171,7 +171,7 @@ public class Class37 {
                     if(class40_sub5_sub5 != null && class40_sub5_sub5.aBoolean2430 && class40_sub5_sub5.aBoolean2372) {
                         i = (-((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32) + (class40_sub5_sub17_sub4_sub2.anInt3098 / 32));
                         i_8_ = (class40_sub5_sub17_sub4_sub2.anInt3089 / 32 + -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) / 32));
-                        SceneTile.method533(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[1], (byte) 75);
+                        SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[1]);
                     }
                 }
             }
@@ -192,11 +192,11 @@ public class Class37 {
                     if(((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3266) != 0) && (class40_sub5_sub17_sub4_sub1.anInt3266 ^ 0xffffffff) != -1 && (((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3266) ^ 0xffffffff) == (class40_sub5_sub17_sub4_sub1.anInt3266 ^ 0xffffffff)))
                         bool_16_ = true;
                     if(bool)
-                        SceneTile.method533(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[3], (byte) 46);
+                        SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[3]);
                     else if(bool_16_)
-                        SceneTile.method533(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[4], (byte) 57);
+                        SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[4]);
                     else
-                        SceneTile.method533(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[2], (byte) 80);
+                        SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[2]);
                 }
             }
             if((Player.anInt3288 ^ 0xffffffff) != -1 && (Node.anInt926 % 20 ^ 0xffffffff) > -11) {
@@ -205,30 +205,30 @@ public class Class37 {
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         i = (-((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32) + (class40_sub5_sub17_sub4_sub2.anInt3098 / 32));
                         i_8_ = (class40_sub5_sub17_sub4_sub2.anInt3089 / 32 - (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) / 32);
-                        Floor.method560(i, (Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1]), -74, i_8_);
+                        Floor.drawMinimapMark((Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1]), i, i_8_);
                     }
                 }
                 if((Player.anInt3288 ^ 0xffffffff) == -3) {
                     i_8_ = (-((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) / 32) + 2 + 4 * (-Class26.anInt635 + Class4.anInt175));
                     i = (4 * (Class68.anInt1637 - Class40_Sub5_Sub2.anInt2307) - (-2 + ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32)));
-                    Floor.method560(i, Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], 75, i_8_);
+                    Floor.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], i, i_8_);
                 }
                 if(Player.anInt3288 == 10 && (Class68.anInt1623 ^ 0xffffffff) <= -1 && ((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156).length ^ 0xffffffff) < (Class68.anInt1623 ^ 0xffffffff)) {
                     Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class68.anInt1623]);
                     if(class40_sub5_sub17_sub4_sub1 != null) {
                         i_8_ = (-((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) / 32) + (class40_sub5_sub17_sub4_sub1.anInt3089 / 32));
                         i = (class40_sub5_sub17_sub4_sub1.anInt3098 / 32 - (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32);
-                        Floor.method560(i, (Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1]), 51, i_8_);
+                        Floor.drawMinimapMark((Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1]), i, i_8_);
                     }
                 }
             }
             if((Class40_Sub5_Sub4.anInt2366 ^ 0xffffffff) != -1) {
                 i = (2 + Class40_Sub5_Sub4.anInt2366 * 4 + -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32));
                 i_8_ = 2 + (4 * Class55.anInt1304 + -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) / 32));
-                SceneTile.method533(i_8_, i, (Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[0]), (byte) 83);
+                SceneTile.drawOnMinimap(i_8_, i, (Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[0]));
             }
             Rasterizer.method656(97, 78, 3, 3, 16777215);
-            Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, Class58.anInt1373, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
+            Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, Class58.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
             if(arg0 == true)
                 NpcDefinition.method574(4);
         }

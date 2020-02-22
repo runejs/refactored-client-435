@@ -22,7 +22,7 @@ public class Class27 {
     public static int anInt646;
     public static RSString aClass1_647;
     public static int anInt648;
-    public static DirectColorSprite[] aClass40_Sub5_Sub14_Sub4Array649;
+    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array649;
     public static int anInt650;
     public static int anInt651;
     public static RSString aClass1_652;
@@ -76,7 +76,7 @@ public class Class27 {
             int i = Class65.anInt1537;
             if(Class40_Sub6.anInt2107 / 256 > i)
                 i = Class40_Sub6.anInt2107 / 256;
-            int i_0_ = 0x7ff & Class58.anInt1373 + Class57.anInt1342;
+            int i_0_ = 0x7ff & Class58.cameraHorizontal + Class57.anInt1342;
             if(Class40_Sub5_Sub17_Sub1.aBooleanArray2975[4] && 128 + RSApplet.anIntArray2[4] > i)
                 i = 128 + RSApplet.anIntArray2[4];
             Class49.method929(i, Class40_Sub5_Sub6.anInt2437, -50 + (Class37.method430((byte) -123, Player.anInt3267, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098), (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089))), i_0_, Class34.anInt849, -1, 3 * i + 600);
@@ -1008,7 +1008,7 @@ public class Class27 {
         }
     }
 
-    public static IndexedColorSprite method359(RSString arg0, RSString arg1, Class6 arg2, byte arg3) {
+    public static IndexedImage method359(RSString arg0, RSString arg1, Class6 arg2, byte arg3) {
 
         anInt645++;
             if(arg3 != -64)
@@ -1086,7 +1086,7 @@ public class Class27 {
 
     }
 
-    public static IndexedColorSprite method363(Class6 arg0, byte arg1, int arg2, int arg3) {
+    public static IndexedImage method363(Class6 arg0, byte arg1, int arg2, int arg3) {
 
         int i = 106 % ((arg1 - 66) / 53);
             anInt655++;
@@ -1144,14 +1144,14 @@ public class Class27 {
                 Class43.method892(-29);
             }
             if((Class43.anInt1028 ^ 0xffffffff) == 0) {
-                Class12.aClass40_Sub5_Sub12_383.anInt2731 = -77 + (-GameObjectDefinition.anInt2557 + Class62.anInt1472);
+                Class12.aClass40_Sub5_Sub12_383.anInt2731 = -77 + (-GameObjectDefinition.anInt2557 + Class62.chatboxScrollMax);
                 if(Class13.anInt420 > 448 && (Class13.anInt420 ^ 0xffffffff) > -561 && (Landscape.anInt1166 ^ 0xffffffff) < -333)
-                    Class5.method168(77, Landscape.anInt1166 + -357, -17 + Class13.anInt420, Class62.anInt1472, (byte) 114, Class12.aClass40_Sub5_Sub12_383, 463, -1, 0);
-                int i = (Class62.anInt1472 - 77 - Class12.aClass40_Sub5_Sub12_383.anInt2731);
+                    Class5.method168(77, Landscape.anInt1166 + -357, -17 + Class13.anInt420, Class62.chatboxScrollMax, (byte) 114, Class12.aClass40_Sub5_Sub12_383, 463, -1, 0);
+                int i = (Class62.chatboxScrollMax - 77 - Class12.aClass40_Sub5_Sub12_383.anInt2731);
                 if(i < 0)
                     i = 0;
-                if(i > Class62.anInt1472 + -77)
-                    i = -77 + Class62.anInt1472;
+                if(i > Class62.chatboxScrollMax + -77)
+                    i = -77 + Class62.chatboxScrollMax;
                 if(i != GameObjectDefinition.anInt2557) {
                     GameObjectDefinition.anInt2557 = i;
                     Class52.aBoolean1221 = true;

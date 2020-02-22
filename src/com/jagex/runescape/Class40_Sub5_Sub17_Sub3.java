@@ -75,7 +75,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             else
                 Class60.anInt1415 /= 2;
             int i_1_ = Class34.anInt849 >> 736593415;
-            Class58.anInt1373 = Class10.anInt349 / 2 + Class58.anInt1373 & 0x7ff;
+        Class58.cameraHorizontal = Class10.anInt349 / 2 + Class58.cameraHorizontal & 0x7ff;
             int i_2_ = Class40_Sub5_Sub6.anInt2437 >> -470684185;
             Class65.anInt1537 += Class60.anInt1415 / 2;
             int i_3_ = 0;
@@ -120,11 +120,11 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                 if((i ^ 0xffffffff) <= -1 && (i_10_ ^ 0xffffffff) <= -1 && i < 146 && i_10_ < 151) {
                     i_10_ -= 75;
                     i -= 73;
-                    int i_11_ = 0x7ff & Class43.anInt1020 + Class58.anInt1373;
+                    int i_11_ = 0x7ff & Class43.cameraYawOffset + Class58.cameraHorizontal;
                     int i_12_ = R3D.sinetable[i_11_];
                     int i_13_ = R3D.cosinetable[i_11_];
-                    i_13_ = (Class51.anInt1187 + 256) * i_13_ >> 1818182472;
-                    i_12_ = (Class51.anInt1187 + 256) * i_12_ >> -413658424;
+                    i_13_ = (Class51.mapZoomOffset + 256) * i_13_ >> 1818182472;
+                    i_12_ = (Class51.mapZoomOffset + 256) * i_12_ >> -413658424;
                     int i_14_ = i_10_ * i_12_ + (i * i_13_) >> 843700395;
                     int i_15_ = i_13_ * i_10_ - i * i_12_ >> -1318258005;
                     int i_16_ = ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) + i_14_ >> -2121665369);
@@ -133,10 +133,10 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                     if(bool) {
                         Class32.packetBuffer.put(i, (byte) -128);
                         Class32.packetBuffer.put(i_10_, (byte) -128);
-                        Class32.packetBuffer.method474(Class58.anInt1373, -126);
+                        Class32.packetBuffer.method474(Class58.cameraHorizontal, -126);
                         Class32.packetBuffer.put(57, (byte) -128);
-                        Class32.packetBuffer.put(Class43.anInt1020, (byte) -128);
-                        Class32.packetBuffer.put(Class51.anInt1187, (byte) -128);
+                        Class32.packetBuffer.put(Class43.cameraYawOffset, (byte) -128);
+                        Class32.packetBuffer.put(Class51.mapZoomOffset, (byte) -128);
                         Class32.packetBuffer.put(89, (byte) -128);
                         Class32.packetBuffer.method474((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098), 120);
                         Class32.packetBuffer.method474((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089), -125);
@@ -190,7 +190,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                 Class68.aClass68_1631 = Class40_Sub5_Sub13.method649(94, 75, arg0, -4875);
                 Rasterizer.method663();
                 byte[] is = arg2.method170(Class22_Sub2.aClass1_1886, Class32.aClass1_772, 1);
-                DirectColorSprite class40_sub5_sub14_sub4 = new DirectColorSprite(is, arg0);
+                ImageRGB class40_sub5_sub14_sub4 = new ImageRGB(is, arg0);
                 Class8.aClass68_298.method1046((byte) 90);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 GameObject.aClass68_3042.method1046((byte) 90);
@@ -209,12 +209,12 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                 class40_sub5_sub14_sub4.method727(-128, -171);
                 Class68.aClass68_1631.method1046((byte) 90);
                 class40_sub5_sub14_sub4.method727(-562, -171);
-                int[] is_18_ = new int[class40_sub5_sub14_sub4.anInt2951];
-                for(int i = 0; i < class40_sub5_sub14_sub4.anInt2950; i++) {
-                    for(int i_19_ = 0; ((i_19_ ^ 0xffffffff) > (class40_sub5_sub14_sub4.anInt2951 ^ 0xffffffff)); i_19_++)
-                        is_18_[i_19_] = (class40_sub5_sub14_sub4.anIntArray2955[(i * class40_sub5_sub14_sub4.anInt2951 + class40_sub5_sub14_sub4.anInt2951 + -i_19_ - 1)]);
-                    for(int i_20_ = 0; ((i_20_ ^ 0xffffffff) > (class40_sub5_sub14_sub4.anInt2951 ^ 0xffffffff)); i_20_++)
-                        class40_sub5_sub14_sub4.anIntArray2955[i_20_ + class40_sub5_sub14_sub4.anInt2951 * i] = is_18_[i_20_];
+                int[] is_18_ = new int[class40_sub5_sub14_sub4.image_width];
+                for(int i = 0; i < class40_sub5_sub14_sub4.image_heighteight; i++) {
+                    for(int i_19_ = 0; ((i_19_ ^ 0xffffffff) > (class40_sub5_sub14_sub4.image_width ^ 0xffffffff)); i_19_++)
+                        is_18_[i_19_] = (class40_sub5_sub14_sub4.pixels[(i * class40_sub5_sub14_sub4.image_width + class40_sub5_sub14_sub4.image_width + -i_19_ - 1)]);
+                    for(int i_20_ = 0; ((i_20_ ^ 0xffffffff) > (class40_sub5_sub14_sub4.image_width ^ 0xffffffff)); i_20_++)
+                        class40_sub5_sub14_sub4.pixels[i_20_ + class40_sub5_sub14_sub4.image_width * i] = is_18_[i_20_];
                 }
                 Class8.aClass68_298.method1046((byte) 90);
                 class40_sub5_sub14_sub4.method727(382, 0);
@@ -236,16 +236,16 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                 class40_sub5_sub14_sub4.method727(-180, -171);
                 class40_sub5_sub14_sub4 = Class66.method1028(arg3, Main.aClass1_1762, (byte) 21, Class22_Sub2.aClass1_1886);
                 Class39.aClass68_907.method1046((byte) 90);
-                class40_sub5_sub14_sub4.method721(-128 + (382 + -(class40_sub5_sub14_sub4.anInt2951 / 2)), 18);
+                class40_sub5_sub14_sub4.drawImage(-128 + (382 + -(class40_sub5_sub14_sub4.image_width / 2)), 18);
                 Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775 = Class27.method359(Class40_Sub5_Sub7.aClass1_2488, Class22_Sub2.aClass1_1886, arg3, (byte) -64);
                 Class59.aClass40_Sub5_Sub14_Sub2_1387 = Class27.method359(ISAAC.aClass1_506, Class22_Sub2.aClass1_1886, arg3, (byte) -64);
                 Class22.aClass40_Sub5_Sub14_Sub2Array535 = Class40_Sub5_Sub2.method550(arg3, (byte) -114, Class8.aClass1_299, Class22_Sub2.aClass1_1886);
-                Class39.aClass40_Sub5_Sub14_Sub4_918 = new DirectColorSprite(128, 265);
-                SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = new DirectColorSprite(128, 265);
+                Class39.aClass40_Sub5_Sub14_Sub4_918 = new ImageRGB(128, 265);
+                SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = new ImageRGB(128, 265);
                 for(int i = 0; i < 33920; i++)
-                    Class39.aClass40_Sub5_Sub14_Sub4_918.anIntArray2955[i] = Class8.aClass68_298.anIntArray1621[i];
+                    Class39.aClass40_Sub5_Sub14_Sub4_918.pixels[i] = Class8.aClass68_298.anIntArray1621[i];
                 for(int i = 0; (i ^ 0xffffffff) > -33921; i++)
-                    SceneTile.aClass40_Sub5_Sub14_Sub4_2043.anIntArray2955[i] = (GameObject.aClass68_3042.anIntArray1621[i]);
+                    SceneTile.aClass40_Sub5_Sub14_Sub4_2043.pixels[i] = (GameObject.aClass68_3042.anIntArray1621[i]);
                 Class51.anIntArray1198 = new int[256];
                 for(int i = 0; i < 64; i++)
                     Class51.anIntArray1198[i] = i * 262144;

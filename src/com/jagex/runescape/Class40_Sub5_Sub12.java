@@ -474,7 +474,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
         }
     }
 
-    public DirectColorSprite method638(byte arg0, int arg1) {
+    public ImageRGB method638(byte arg0, int arg1) {
 
         anInt2675++;
             Class40_Sub13.aBoolean2177 = false;
@@ -484,7 +484,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
             if((i ^ 0xffffffff) == 0)
                 return null;
             int i_9_ = 124 % ((-15 - arg0) / 34);
-            DirectColorSprite class40_sub5_sub14_sub4 = ((DirectColorSprite) Cache.aClass9_326.method231((long) i, (byte) 121));
+        ImageRGB class40_sub5_sub14_sub4 = ((ImageRGB) Cache.aClass9_326.method231((long) i, (byte) 121));
             if(class40_sub5_sub14_sub4 != null)
                 return class40_sub5_sub14_sub4;
             class40_sub5_sub14_sub4 = Class48.method927(0, Class40_Sub5_Sub15.aClass6_2779, true, i);
@@ -496,7 +496,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
 
     }
 
-    public DirectColorSprite method643(int arg0, boolean arg1) {
+    public ImageRGB method643(int arg0, boolean arg1) {
 
         Class40_Sub13.aBoolean2177 = false;
             anInt2666++;
@@ -507,7 +507,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
                 i = anInt2744;
             if((i ^ 0xffffffff) == 0)
                 return null;
-            DirectColorSprite class40_sub5_sub14_sub4 = ((DirectColorSprite) Cache.aClass9_326.method231((long) i, (byte) 103));
+        ImageRGB class40_sub5_sub14_sub4 = ((ImageRGB) Cache.aClass9_326.method231((long) i, (byte) 103));
             if(arg0 != 127)
                 aBoolean2636 = false;
             if(class40_sub5_sub14_sub4 != null)

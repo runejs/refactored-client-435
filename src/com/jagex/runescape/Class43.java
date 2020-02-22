@@ -9,7 +9,7 @@ public class Class43 {
     public static int anInt1017;
     public static int anInt1018;
     public static RSString aClass1_1019;
-    public static int anInt1020 = 0;
+    public static int cameraYawOffset = 0;
     public static RSString aClass1_1021 = Class58.method978("flash1:");
     public static Class45 aClass45_1022;
     public static int anInt1023;
@@ -60,7 +60,7 @@ public class Class43 {
                 int i_4_ = 0;
                 int i_5_ = 0;
                 if(arg5 != false)
-                    anInt1020 = -119;
+                    cameraYawOffset = -119;
                 for(int i_6_ = 1; i_6_ < arg0.length; i_6_++) {
                     if(!(arg0[i_6_] instanceof Integer)) {
                         if(arg0[i_6_] instanceof RSString)
@@ -786,7 +786,7 @@ public class Class43 {
                     Class40_Sub5_Sub6.method588(-1);
             }
             if(arg0 >= -22)
-                anInt1020 = 80;
+                cameraYawOffset = 80;
             Class55.method964(40);
 
     }

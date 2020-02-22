@@ -7,7 +7,7 @@ public class Class40_Sub6 extends Node {
     public static int anInt2100;
     public static RSString aClass1_2101;
     public static RSString aClass1_2103;
-    public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_2105;
+    public static IndexedImage aClass40_Sub5_Sub14_Sub2_2105;
     public static int[] anIntArray2106 = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
     public static int anInt2107;
     public static int anInt2108;

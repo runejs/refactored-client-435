@@ -6,7 +6,7 @@ import java.math.BigInteger;
 
 public class Buffer extends Node {
     public static Cache aClass9_1933 = new Cache(100);
-    public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_1959;
+    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1959;
     public static int[] anIntArray1972;
     public static int anInt1976 = 0;
     public static int anInt1978 = 0;

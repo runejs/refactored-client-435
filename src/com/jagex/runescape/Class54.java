@@ -56,9 +56,9 @@ public class Class54 implements KeyListener, FocusListener {
     public static void method954(int arg0) {
         Class10.method238(4);
         if(Class45.anInt1075 == 1)
-            Class37.aClass40_Sub5_Sub14_Sub4Array878[Floor.anInt2319 / 100].method721(-4 + Class40_Sub11.anInt2163 + -8, -8 + (Class40_Sub5_Sub1.anInt2276 - 4));
+            Class37.aClass40_Sub5_Sub14_Sub4Array878[Floor.anInt2319 / 100].drawImage(-4 + Class40_Sub11.anInt2163 + -8, -8 + (Class40_Sub5_Sub1.anInt2276 - 4));
         if((Class45.anInt1075 ^ 0xffffffff) == -3)
-            Class37.aClass40_Sub5_Sub14_Sub4Array878[4 + Floor.anInt2319 / 100].method721(-8 + Class40_Sub11.anInt2163 - 4, -4 + Class40_Sub5_Sub1.anInt2276 - 8);
+            Class37.aClass40_Sub5_Sub14_Sub4Array878[4 + Floor.anInt2319 / 100].drawImage(-8 + Class40_Sub11.anInt2163 - 4, -4 + Class40_Sub5_Sub1.anInt2276 - 8);
         if(arg0 == -15454) {
             anInt1276++;
             if(Class58.anInt1376 != -1) {
@@ -78,7 +78,7 @@ public class Class54 implements KeyListener, FocusListener {
                 SceneTile.method537(4);
             }
             if(Class40_Sub6.anInt2118 == 1)
-                Class45.aClass40_Sub5_Sub14_Sub4_1057.method721(472, 296);
+                Class45.aClass40_Sub5_Sub14_Sub4_1057.drawImage(472, 296);
             if(Class19.aBoolean496) {
                 int i = 20;
                 int i_0_ = 507;

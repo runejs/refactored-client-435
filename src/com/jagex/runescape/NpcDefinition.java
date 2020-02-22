@@ -177,22 +177,22 @@ public class NpcDefinition extends SubNode {
             return 19;
     }
 
-    public static DirectColorSprite method578(int arg0) {
+    public static ImageRGB method578(int arg0) {
             anInt2379++;
-            DirectColorSprite class40_sub5_sub14_sub4 = new DirectColorSprite();
-            class40_sub5_sub14_sub4.anInt2954 = ItemDefinition.anInt2846;
-            class40_sub5_sub14_sub4.anInt2952 = RSApplet.anInt31;
-            class40_sub5_sub14_sub4.anInt2953 = Class57.anIntArray1347[0];
-        class40_sub5_sub14_sub4.anInt2949 = Actor.anIntArray3111[0];
+        ImageRGB class40_sub5_sub14_sub4 = new ImageRGB();
+        class40_sub5_sub14_sub4.maxWidth = ItemDefinition.anInt2846;
+        class40_sub5_sub14_sub4.maxHeight = RSApplet.anInt31;
+        class40_sub5_sub14_sub4.offsetX = Class57.anIntArray1347[0];
+        class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[0];
             if(arg0 > -85)
                 method578(79);
-            class40_sub5_sub14_sub4.anInt2951 = Class17.anIntArray456[0];
-        class40_sub5_sub14_sub4.anInt2950 = Npc.anIntArray3312[0];
+        class40_sub5_sub14_sub4.image_width = Class17.anIntArray456[0];
+        class40_sub5_sub14_sub4.image_heighteight = Npc.anIntArray3312[0];
             byte[] is = Class58.aByteArrayArray1370[0];
-            int i = (class40_sub5_sub14_sub4.anInt2951 * class40_sub5_sub14_sub4.anInt2950);
-            class40_sub5_sub14_sub4.anIntArray2955 = new int[i];
+        int i = (class40_sub5_sub14_sub4.image_width * class40_sub5_sub14_sub4.image_heighteight);
+        class40_sub5_sub14_sub4.pixels = new int[i];
             for(int i_5_ = 0; i_5_ < i; i_5_++)
-                class40_sub5_sub14_sub4.anIntArray2955[i_5_] = (Buffer.anIntArray1972[Class66.method1021(255, is[i_5_])]);
+                class40_sub5_sub14_sub4.pixels[i_5_] = (Buffer.anIntArray1972[Class66.method1021(255, is[i_5_])]);
             method569(true);
             return class40_sub5_sub14_sub4;
     }

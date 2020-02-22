@@ -17,7 +17,7 @@ public class Class57 {
     public static RSString aClass1_1343;
     public static RSString aClass1_1344;
     public static Class64 aClass64_1345;
-    public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_1346;
+    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1346;
     public static int[] anIntArray1347;
     public static RSString aClass1_1348;
 

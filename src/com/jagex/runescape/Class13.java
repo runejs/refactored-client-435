@@ -23,7 +23,7 @@ public class Class13 {
     public static int anInt415;
     public static int anInt416;
     public static RSString aClass1_417;
-    public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_418;
+    public static IndexedImage aClass40_Sub5_Sub14_Sub2_418;
     public static int anInt419;
     public static int anInt420;
     public static int[] anIntArray421;

@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class Class40_Sub5_Sub13 extends SubNode {
     public static Buffer aClass40_Sub1_2752;
-    public static IndexedColorSprite[] aClass40_Sub5_Sub14_Sub2Array2753;
+    public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2753;
     public static int anInt2755;
     public static int anInt2756;
     public static long[] aLongArray2757 = new long[100];
@@ -17,7 +17,7 @@ public class Class40_Sub5_Sub13 extends SubNode {
     public static int anInt2761;
     public static Model[] aClass40_Sub5_Sub17_Sub5Array2762 = new Model[4];
     public static int[] anIntArray2764 = new int[128];
-    public static DirectColorSprite aClass40_Sub5_Sub14_Sub4_2765;
+    public static ImageRGB aClass40_Sub5_Sub14_Sub4_2765;
     public Class6_Sub1 aClass6_Sub1_2754;
     public byte aByte2758;
     public int anInt2763;

@@ -169,10 +169,10 @@ public abstract class Actor extends Renderable {
                     i_3_ = arg4;
                 int i_4_ = 4 * (-arg5 + 103) * 512 + (24624 + (4 * arg2));
                 int i_5_ = i >> -1766000082 & 0x7fff;
-                int[] is = (Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.anIntArray2955);
+                int[] is = (Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.pixels);
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_5_);
                 if(gameObjectDefinition.anInt2537 != -1) {
-                    IndexedColorSprite class40_sub5_sub14_sub2 = (Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.anInt2537]);
+                    IndexedImage class40_sub5_sub14_sub2 = (Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.anInt2537]);
                     if(class40_sub5_sub14_sub2 != null) {
                         int i_6_ = ((-class40_sub5_sub14_sub2.anInt2921 + gameObjectDefinition.anInt2503 * 4) / 2);
                         int i_7_ = ((gameObjectDefinition.anInt2515 * 4 + -class40_sub5_sub14_sub2.anInt2926) / 2);
@@ -252,14 +252,14 @@ public abstract class Actor extends Renderable {
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_9_);
                 int i_11_ = i_8_ & 0x1f;
                 if(gameObjectDefinition.anInt2537 != -1) {
-                    IndexedColorSprite class40_sub5_sub14_sub2 = (Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.anInt2537]);
+                    IndexedImage class40_sub5_sub14_sub2 = (Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.anInt2537]);
                     if(class40_sub5_sub14_sub2 != null) {
                         int i_12_ = ((-class40_sub5_sub14_sub2.anInt2926 + gameObjectDefinition.anInt2515 * 4) / 2);
                         int i_13_ = ((gameObjectDefinition.anInt2503 * 4 + -class40_sub5_sub14_sub2.anInt2921) / 2);
                         class40_sub5_sub14_sub2.method692(i_13_ + arg2 * 4 + 48, 48 - (-(4 * (-arg5 + (104 + -gameObjectDefinition.anInt2515))) + -i_12_));
                     }
                 } else if((i_11_ ^ 0xffffffff) == -10) {
-                    int[] is = (Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.anIntArray2955);
+                    int[] is = (Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.pixels);
                     int i_14_ = 15658734;
                     if((i ^ 0xffffffff) < -1)
                         i_14_ = 15597568;
@@ -282,7 +282,7 @@ public abstract class Actor extends Renderable {
                 int i_16_ = (i & 0x1fffd9fb) >> 1370061614;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_16_);
                 if((gameObjectDefinition.anInt2537 ^ 0xffffffff) != 0) {
-                    IndexedColorSprite class40_sub5_sub14_sub2 = (Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.anInt2537]);
+                    IndexedImage class40_sub5_sub14_sub2 = (Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.anInt2537]);
                     if(class40_sub5_sub14_sub2 != null) {
                         int i_17_ = ((-class40_sub5_sub14_sub2.anInt2921 + gameObjectDefinition.anInt2503 * 4) / 2);
                         int i_18_ = ((-class40_sub5_sub14_sub2.anInt2926 + 4 * gameObjectDefinition.anInt2515) / 2);

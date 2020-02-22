@@ -29,13 +29,13 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
     public static RSString aClass1_1463;
     public static RSString aClass1_1464;
     public static RSString aClass1_1465;
-    public static DirectColorSprite[] aClass40_Sub5_Sub14_Sub4Array1466;
+    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array1466;
     public static long aLong1467;
     public static int anInt1468;
     public static Canvas aCanvas1469;
     public static int anInt1470;
     public static RSString aClass1_1471;
-    public static int anInt1472;
+    public static int chatboxScrollMax;
     public static byte[][][] aByteArrayArrayArray1473;
     public static RSString aClass1_1474;
 
@@ -44,10 +44,10 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
         aClass9_1455 = new Cache(50);
         aClass1_1464 = Class58.method978(" is already on your friend list");
         aClass1_1465 = aClass1_1464;
-        aClass40_Sub5_Sub14_Sub4Array1466 = new DirectColorSprite[1000];
+        aClass40_Sub5_Sub14_Sub4Array1466 = new ImageRGB[1000];
         aClass1_1463 = Class58.method978("wave2:");
         anInt1470 = 0;
-        anInt1472 = 78;
+        chatboxScrollMax = 78;
         aClass1_1471 = Class58.method978("Lade Titelbild )2 ");
         aClass1_1474 = aClass1_1463;
     }

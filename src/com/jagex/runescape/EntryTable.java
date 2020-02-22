@@ -111,9 +111,9 @@ public class EntryTable extends Node {
         int i = arg1 * arg1;
         anIntArray2139 = new int[i * 4];
         for(int i_12_ = 0; i_12_ < anIntArray2144.length; i_12_++) {
-            IndexedColorSprite class40_sub5_sub14_sub2 = GameObject.method769(2, arg2, anIntArray2144[i_12_]);
+            IndexedImage class40_sub5_sub14_sub2 = GameObject.method769(2, arg2, anIntArray2144[i_12_]);
             class40_sub5_sub14_sub2.method694();
-            byte[] is = class40_sub5_sub14_sub2.aByteArray2925;
+            byte[] is = class40_sub5_sub14_sub2.imgPixels;
             int[] is_13_ = class40_sub5_sub14_sub2.anIntArray2922;
             int i_14_ = anIntArray2145[i_12_];
             if((i_14_ & ~0xffffff) == 50331648) {

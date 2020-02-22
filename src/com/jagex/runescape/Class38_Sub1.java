@@ -20,7 +20,7 @@ public class Class38_Sub1 extends Class38 {
     public static int[] anIntArray1916;
     public static RSString aClass1_1917;
     public static RSString aClass1_1918;
-    public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_1919;
+    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1919;
     public static RSString aClass1_1920;
     public static RSString aClass1_1921;
     public static RSString aClass1_1922;
@@ -416,7 +416,7 @@ public class Class38_Sub1 extends Class38 {
                 method445(-128);
             Class22_Sub1.method312(2 * NpcDefinition.anInt2404, (Class35.anInt1730 + (-Class26.anInt635 + Class4.anInt175 << -977811321)), ((Class68.anInt1637 + -Class40_Sub5_Sub2.anInt2307) << 1068913575) + Landscape.anInt1170, 4976905);
             if(ISAAC.anInt522 > -1 && Node.anInt926 % 20 < 10)
-                Class40_Sub5_Sub9.aClass40_Sub5_Sub14_Sub4Array2567[0].method721(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
+                Class40_Sub5_Sub9.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
         }
     }
 

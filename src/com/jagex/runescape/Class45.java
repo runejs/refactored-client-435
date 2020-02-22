@@ -13,7 +13,7 @@ public class Class45 {
     public static int anInt1053;
     public static int anInt1054;
     public static int anInt1055;
-    public static DirectColorSprite aClass40_Sub5_Sub14_Sub4_1057;
+    public static ImageRGB aClass40_Sub5_Sub14_Sub4_1057;
     public static int anInt1058;
     public static RSString aClass1_1059 = Class58.method978("Bitte entfernen Sie ");
     public static int anInt1060;

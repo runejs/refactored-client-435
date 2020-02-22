@@ -28,7 +28,7 @@ public class Class35 implements Interface3 {
     public static int anInt1741;
     public static int anInt1742;
     public static RSString aClass1_1743;
-    public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_1744;
+    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1744;
     public static byte[][][] aByteArrayArrayArray1745;
     public static RSString aClass1_1746;
     public static RSString aClass1_1747;

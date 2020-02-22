@@ -50,12 +50,12 @@ public abstract class Class22_Sub2 extends Class22 {
         currentLoadingText = aClass1_1886;
     }
 
-    public static IndexedColorSprite[] method315(int arg0) {
+    public static IndexedImage[] method315(int arg0) {
 
         anInt1897++;
-            IndexedColorSprite[] class40_sub5_sub14_sub2s = new IndexedColorSprite[Class40_Sub5_Sub9.anInt2581];
+        IndexedImage[] class40_sub5_sub14_sub2s = new IndexedImage[Class40_Sub5_Sub9.anInt2581];
             for(int i = arg0; Class40_Sub5_Sub9.anInt2581 > i; i++) {
-                IndexedColorSprite class40_sub5_sub14_sub2 = (class40_sub5_sub14_sub2s[i] = new IndexedColorSprite());
+                IndexedImage class40_sub5_sub14_sub2 = (class40_sub5_sub14_sub2s[i] = new IndexedImage());
                 class40_sub5_sub14_sub2.anInt2923 = ItemDefinition.anInt2846;
                 class40_sub5_sub14_sub2.anInt2924 = RSApplet.anInt31;
                 class40_sub5_sub14_sub2.anInt2928 = Class57.anIntArray1347[i];
@@ -63,7 +63,7 @@ public abstract class Class22_Sub2 extends Class22 {
                 class40_sub5_sub14_sub2.anInt2921 = Class17.anIntArray456[i];
                 class40_sub5_sub14_sub2.anInt2926 = Npc.anIntArray3312[i];
                 class40_sub5_sub14_sub2.anIntArray2922 = Buffer.anIntArray1972;
-                class40_sub5_sub14_sub2.aByteArray2925 = Class58.aByteArrayArray1370[i];
+                class40_sub5_sub14_sub2.imgPixels = Class58.aByteArrayArray1370[i];
             }
             NpcDefinition.method569(true);
             return class40_sub5_sub14_sub2s;
@@ -83,25 +83,25 @@ public abstract class Class22_Sub2 extends Class22 {
         } while(false);
     }
 
-    public static DirectColorSprite[] method319(byte arg0) {
+    public static ImageRGB[] method319(byte arg0) {
 
         anInt1882++;
-            DirectColorSprite[] class40_sub5_sub14_sub4s = new DirectColorSprite[Class40_Sub5_Sub9.anInt2581];
+        ImageRGB[] class40_sub5_sub14_sub4s = new ImageRGB[Class40_Sub5_Sub9.anInt2581];
             if(arg0 != -62)
                 return null;
             for(int i = 0; (i ^ 0xffffffff) > (Class40_Sub5_Sub9.anInt2581 ^ 0xffffffff); i++) {
-                DirectColorSprite class40_sub5_sub14_sub4 = (class40_sub5_sub14_sub4s[i] = new DirectColorSprite());
-                class40_sub5_sub14_sub4.anInt2954 = ItemDefinition.anInt2846;
-                class40_sub5_sub14_sub4.anInt2952 = RSApplet.anInt31;
-                class40_sub5_sub14_sub4.anInt2953 = Class57.anIntArray1347[i];
-                class40_sub5_sub14_sub4.anInt2949 = Actor.anIntArray3111[i];
-                class40_sub5_sub14_sub4.anInt2951 = Class17.anIntArray456[i];
-                class40_sub5_sub14_sub4.anInt2950 = Npc.anIntArray3312[i];
+                ImageRGB class40_sub5_sub14_sub4 = (class40_sub5_sub14_sub4s[i] = new ImageRGB());
+                class40_sub5_sub14_sub4.maxWidth = ItemDefinition.anInt2846;
+                class40_sub5_sub14_sub4.maxHeight = RSApplet.anInt31;
+                class40_sub5_sub14_sub4.offsetX = Class57.anIntArray1347[i];
+                class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[i];
+                class40_sub5_sub14_sub4.image_width = Class17.anIntArray456[i];
+                class40_sub5_sub14_sub4.image_heighteight = Npc.anIntArray3312[i];
                 byte[] is = Class58.aByteArrayArray1370[i];
-                int i_4_ = (class40_sub5_sub14_sub4.anInt2950 * class40_sub5_sub14_sub4.anInt2951);
-                class40_sub5_sub14_sub4.anIntArray2955 = new int[i_4_];
+                int i_4_ = (class40_sub5_sub14_sub4.image_heighteight * class40_sub5_sub14_sub4.image_width);
+                class40_sub5_sub14_sub4.pixels = new int[i_4_];
                 for(int i_5_ = 0; (i_5_ ^ 0xffffffff) > (i_4_ ^ 0xffffffff); i_5_++)
-                    class40_sub5_sub14_sub4.anIntArray2955[i_5_] = (Buffer.anIntArray1972[Class66.method1021(255, is[i_5_])]);
+                    class40_sub5_sub14_sub4.pixels[i_5_] = (Buffer.anIntArray1972[Class66.method1021(255, is[i_5_])]);
             }
             NpcDefinition.method569(true);
             return class40_sub5_sub14_sub4s;

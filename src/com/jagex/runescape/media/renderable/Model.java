@@ -25,9 +25,9 @@ public class Model extends Renderable {
     public static int[] anIntArray3212;
     public static int anInt3213;
     public static int[] anIntArray3214;
-    public static int[] anIntArray3215;
+    public static int[] SINE;
     public static int[] anIntArray3216;
-    public static int[] anIntArray3217;
+    public static int[] COSINE;
     public static int anInt3218;
     public static int[] anIntArray3219;
     public static int anInt3220;
@@ -60,12 +60,12 @@ public class Model extends Renderable {
         anIntArray3222 = new int[10];
         anIntArray3219 = new int[2000];
         anIntArray3223 = new int[4096];
-        anIntArray3215 = R3D.sinetable;
+        SINE = R3D.sinetable;
         anIntArray3225 = new int[4096];
         anInt3220 = 0;
         anIntArray3227 = new int[10];
         anIntArray3221 = new int[12];
-        anIntArray3217 = R3D.cosinetable;
+        COSINE = R3D.cosinetable;
         aBooleanArray3224 = new boolean[4096];
         anIntArray3228 = R3D.anIntArray2929;
         anInt3229 = 0;
@@ -671,8 +671,8 @@ public class Model extends Renderable {
         anIntArray3205 = null;
         anIntArray3222 = null;
         anIntArray3211 = null;
-        anIntArray3215 = null;
-        anIntArray3217 = null;
+        SINE = null;
+        COSINE = null;
         anIntArray3202 = null;
         anIntArray3228 = null;
         anIntArray3199 = null;
@@ -804,8 +804,8 @@ public class Model extends Renderable {
                             int i_24_ = 0;
                             int i_25_ = 0;
                             if(arg0 != 0) {
-                                i_24_ = anIntArray3215[arg0];
-                                i_25_ = anIntArray3217[arg0];
+                                i_24_ = SINE[arg0];
+                                i_25_ = COSINE[arg0];
                             }
                             for(int i_26_ = 0; i_26_ < vertexCount; i_26_++) {
                                 int i_27_ = verticesX[i_26_];
@@ -856,14 +856,14 @@ public class Model extends Renderable {
             method827();
         int i = R3D.anInt2937;
         int i_32_ = R3D.anInt2931;
-        int i_33_ = anIntArray3215[arg0];
-        int i_34_ = anIntArray3217[arg0];
-        int i_35_ = anIntArray3215[arg1];
-        int i_36_ = anIntArray3217[arg1];
-        int i_37_ = anIntArray3215[arg2];
-        int i_38_ = anIntArray3217[arg2];
-        int i_39_ = anIntArray3215[arg3];
-        int i_40_ = anIntArray3217[arg3];
+        int i_33_ = SINE[arg0];
+        int i_34_ = COSINE[arg0];
+        int i_35_ = SINE[arg1];
+        int i_36_ = COSINE[arg1];
+        int i_37_ = SINE[arg2];
+        int i_38_ = COSINE[arg2];
+        int i_39_ = SINE[arg3];
+        int i_40_ = COSINE[arg3];
         int i_41_ = arg5 * i_39_ + arg6 * i_40_ >> 16;
         for(int i_42_ = 0; i_42_ < vertexCount; i_42_++) {
             int i_43_ = verticesX[i_42_];
@@ -989,8 +989,8 @@ public class Model extends Renderable {
     public void method804(int arg0) {
         verticesNormal = null;
         anInt3169 = 0;
-        int i = anIntArray3215[arg0];
-        int i_69_ = anIntArray3217[arg0];
+        int i = SINE[arg0];
+        int i_69_ = COSINE[arg0];
         for(int i_70_ = 0; i_70_ < vertexCount; i_70_++) {
             int i_71_ = (verticesY[i_70_] * i_69_ - verticesZ[i_70_] * i >> 16);
             verticesZ[i_70_] = (verticesY[i_70_] * i + verticesZ[i_70_] * i_69_ >> 16);
@@ -1201,22 +1201,22 @@ public class Model extends Renderable {
                         int i_110_ = (arg3 & 0xff) * 8;
                         int i_111_ = (arg4 & 0xff) * 8;
                         if(i_111_ != 0) {
-                            int i_112_ = anIntArray3215[i_111_];
-                            int i_113_ = anIntArray3217[i_111_];
+                            int i_112_ = SINE[i_111_];
+                            int i_113_ = COSINE[i_111_];
                             int i_114_ = ((verticesY[i_108_] * i_112_ + verticesX[i_108_] * i_113_) >> 16);
                             verticesY[i_108_] = (verticesY[i_108_] * i_113_ - verticesX[i_108_] * i_112_) >> 16;
                             verticesX[i_108_] = i_114_;
                         }
                         if(i_109_ != 0) {
-                            int i_115_ = anIntArray3215[i_109_];
-                            int i_116_ = anIntArray3217[i_109_];
+                            int i_115_ = SINE[i_109_];
+                            int i_116_ = COSINE[i_109_];
                             int i_117_ = ((verticesY[i_108_] * i_116_ - verticesZ[i_108_] * i_115_) >> 16);
                             verticesZ[i_108_] = (verticesY[i_108_] * i_115_ + verticesZ[i_108_] * i_116_) >> 16;
                             verticesY[i_108_] = i_117_;
                         }
                         if(i_110_ != 0) {
-                            int i_118_ = anIntArray3215[i_110_];
-                            int i_119_ = anIntArray3217[i_110_];
+                            int i_118_ = SINE[i_110_];
+                            int i_119_ = COSINE[i_110_];
                             int i_120_ = ((verticesZ[i_108_] * i_118_ + verticesX[i_108_] * i_119_) >> 16);
                             verticesZ[i_108_] = (verticesZ[i_108_] * i_119_ - verticesX[i_108_] * i_118_) >> 16;
                             verticesX[i_108_] = i_120_;
@@ -1269,14 +1269,14 @@ public class Model extends Renderable {
             method827();
         int i = R3D.anInt2937;
         int i_129_ = R3D.anInt2931;
-        int i_130_ = anIntArray3215[arg0];
-        int i_131_ = anIntArray3217[arg0];
-        int i_132_ = anIntArray3215[arg1];
-        int i_133_ = anIntArray3217[arg1];
-        int i_134_ = anIntArray3215[arg2];
-        int i_135_ = anIntArray3217[arg2];
-        int i_136_ = anIntArray3215[arg3];
-        int i_137_ = anIntArray3217[arg3];
+        int i_130_ = SINE[arg0];
+        int i_131_ = COSINE[arg0];
+        int i_132_ = SINE[arg1];
+        int i_133_ = COSINE[arg1];
+        int i_134_ = SINE[arg2];
+        int i_135_ = COSINE[arg2];
+        int i_136_ = SINE[arg3];
+        int i_137_ = COSINE[arg3];
         int i_138_ = arg5 * i_136_ + arg6 * i_137_ >> 16;
         for(int i_139_ = 0; i_139_ < vertexCount; i_139_++) {
             int i_140_ = verticesX[i_139_];

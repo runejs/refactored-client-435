@@ -21,7 +21,7 @@ public class Class58 {
     public static int anInt1368;
     public static int anInt1369;
     public static byte[][] aByteArrayArray1370;
-    public static int anInt1373;
+    public static int cameraHorizontal;
     public static RSString aClass1_1374;
     public static Class6 aClass6_1375;
     public static int anInt1376;
@@ -36,7 +36,7 @@ public class Class58 {
         aClass1_1359 = method978("::clientdrop");
         aClass9_1364 = new Cache(64);
         aClass1_1374 = method978("backvmid1");
-        anInt1373 = 0;
+        cameraHorizontal = 0;
         anInt1376 = -1;
         aClass1_1378 = method978("Chat panel redrawn");
         aByteArrayArray1377 = new byte[1000][];
@@ -237,14 +237,14 @@ public class Class58 {
                                     if(!bool)
                                         Class52.aBoolean1221 = true;
                                 } else {
-                                    int i = 0;
+                                    int line = 0;
                                     RSFont class40_sub5_sub14_sub1 = (Class53.aClass40_Sub5_Sub14_Sub1_1268);
                                     Rasterizer.method655(0, 0, 463, 77);
                                     for(int i_8_ = 0; (i_8_ ^ 0xffffffff) > -101; i_8_++) {
                                         if((Actor.aClass1Array3160[i_8_]) != null) {
                                             int i_9_ = Class66.anIntArray1569[i_8_];
                                             RSString class1 = (Renderable.aClass1Array2856[i_8_]);
-                                            int i_10_ = (GameObjectDefinition.anInt2557 + 70 + -(i * 14));
+                                            int i_10_ = (GameObjectDefinition.anInt2557 + 70 + -(line * 14));
                                             int i_11_ = 0;
                                             if(class1 != null && (class1.method75((byte) 116, Class51.aClass1_1210))) {
                                                 class1 = (class1.method50((byte) 95, 5));
@@ -255,7 +255,7 @@ public class Class58 {
                                                 i_11_ = 2;
                                             }
                                             if(i_9_ == 0) {
-                                                i++;
+                                                line++;
                                                 if(i_10_ > 0 && ((i_10_ ^ 0xffffffff) > -111))
                                                     class40_sub5_sub14_sub1.method690((Actor.aClass1Array3160[i_8_]), 4, i_10_, 0);
                                             }
@@ -274,10 +274,10 @@ public class Class58 {
                                                     i_12_ += (8 + (class40_sub5_sub14_sub1.method685(class1)));
                                                     class40_sub5_sub14_sub1.method690((Actor.aClass1Array3160[i_8_]), i_12_, i_10_, 255);
                                                 }
-                                                i++;
+                                                line++;
                                             }
                                             if(((i_9_ ^ 0xffffffff) == -4 || i_9_ == 7) && CollisionMap.anInt165 == 0 && ((i_9_ ^ 0xffffffff) == -8 || Class4.anInt185 == 0 || ((Class4.anInt185 ^ 0xffffffff) == -2 && (Class40_Sub2.method523(class1, -32624))))) {
-                                                i++;
+                                                line++;
                                                 if((i_10_ ^ 0xffffffff) < -1 && i_10_ < 110) {
                                                     int i_13_ = 4;
                                                     class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub6.aClass1_2458), i_13_, i_10_, 0);
@@ -297,34 +297,34 @@ public class Class58 {
                                                 }
                                             }
                                             if(i_9_ == 4 && ((ItemDefinition.anInt2797) == 0 || (((ItemDefinition.anInt2797) ^ 0xffffffff) == -2 && (Class40_Sub2.method523(class1, -32624))))) {
-                                                i++;
+                                                line++;
                                                 if(i_10_ > 0 && i_10_ < 110)
                                                     class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub17_Sub6.method832(-65, (new RSString[]{class1, (Class48.aClass1_1123), (Actor.aClass1Array3160[i_8_])}))), 4, i_10_, 8388736);
                                             }
                                             if(i_9_ == 5 && (CollisionMap.anInt165 ^ 0xffffffff) == -1 && Class4.anInt185 < 2) {
                                                 if(i_10_ > 0 && i_10_ < 110)
                                                     class40_sub5_sub14_sub1.method690((Actor.aClass1Array3160[i_8_]), 4, i_10_, 8388608);
-                                                i++;
+                                                line++;
                                             }
                                             if(i_9_ == 6 && (CollisionMap.anInt165 ^ 0xffffffff) == -1 && Class4.anInt185 < 2) {
                                                 if(i_10_ > 0 && ((i_10_ ^ 0xffffffff) > -111)) {
                                                     class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub17_Sub6.method832(-108, (new RSString[]{(Class40_Sub5_Sub1.aClass1_2274), (Class48.aClass1_1123), class1, (Class43.aClass1_1027)}))), 4, i_10_, 0);
                                                     class40_sub5_sub14_sub1.method690((Actor.aClass1Array3160[i_8_]), (class40_sub5_sub14_sub1.method685(Class40_Sub5_Sub17_Sub6.method832(-98, (new RSString[]{(Class40_Sub5_Sub1.aClass1_2274), (Class48.aClass1_1123), class1})))) + 12, i_10_, 8388608);
                                                 }
-                                                i++;
+                                                line++;
                                             }
                                             if(i_9_ == 8 && ((ItemDefinition.anInt2797) == 0 || (((ItemDefinition.anInt2797) ^ 0xffffffff) == -2 && (Class40_Sub2.method523(class1, -32624))))) {
-                                                i++;
+                                                line++;
                                                 if(i_10_ > 0 && ((i_10_ ^ 0xffffffff) > -111))
                                                     class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub17_Sub6.method832(-105, (new RSString[]{class1, (Class48.aClass1_1123), (Actor.aClass1Array3160[i_8_])}))), 4, i_10_, 8270336);
                                             }
                                         }
                                     }
                                     Rasterizer.method662();
-                                    Class62.anInt1472 = 7 + i * 14;
-                                    if(Class62.anInt1472 < 78)
-                                        Class62.anInt1472 = 78;
-                                    Class27.method355(0, (-(GameObjectDefinition.anInt2557) + Class62.anInt1472 - 77), Class62.anInt1472, 463, 77, 0);
+                                    Class62.chatboxScrollMax = line * 14 + 7;
+                                    if(Class62.chatboxScrollMax < 78)
+                                        Class62.chatboxScrollMax = 78;
+                                    Class27.method355(0, (-(GameObjectDefinition.anInt2557) + Class62.chatboxScrollMax - 77), Class62.chatboxScrollMax, 463, 77, 0);
                                     RSString class1;
                                     if(((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760) != null) && (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.aClass1_3278) != null)
                                         class1 = (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.aClass1_3278);

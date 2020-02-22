@@ -6,7 +6,7 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 public class HashTable {
-    public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_549;
+    public static IndexedImage aClass40_Sub5_Sub14_Sub2_549;
     public static int anInt551;
     public static int anInt552;
     public static RSString aClass1_553;

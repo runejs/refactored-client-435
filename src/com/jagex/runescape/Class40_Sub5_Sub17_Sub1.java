@@ -300,7 +300,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             if(!SubNode.aBoolean2083) {
                 FloorDecoration.aClass40_Sub5_Sub14_Sub2_593 = Class27.method359(Class27.aClass1_638, Class8.aClass1_305, arg2, (byte) -64);
                 Class44.aClass40_Sub5_Sub14_Sub2_1047 = Class27.method359(RSString.aClass1_1716, Class8.aClass1_305, arg2, (byte) -64);
-                Class34.aClass40_Sub5_Sub14_Sub2_855 = Class27.method359(VertexNormal.aClass1_1113, Class8.aClass1_305, arg2, (byte) -64);
+                Class34.mapBack = Class27.method359(VertexNormal.aClass1_1113, Class8.aClass1_305, arg2, (byte) -64);
                 Class57.aClass40_Sub5_Sub14_Sub2_1346 = Class27.method359(Class59.aClass1_1395, Class8.aClass1_305, arg2, (byte) -64);
                 Class56.aClass40_Sub5_Sub14_Sub2_1329 = Class27.method359(Class6.aClass1_256, Class8.aClass1_305, arg2, (byte) -64);
                 Buffer.aClass40_Sub5_Sub14_Sub2_1959 = Class27.method359(Class10.aClass1_338, Class8.aClass1_305, arg2, (byte) -64);
@@ -308,7 +308,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 Class44.aClass40_Sub5_Sub14_Sub2_1047.method692(0, 0);
                 RSString.aClass68_1665 = Class40_Sub5_Sub13.method649(156, 172, arg0, -4875);
                 Rasterizer.method663();
-                Class34.aClass40_Sub5_Sub14_Sub2_855.method692(0, 0);
+                Class34.mapBack.method692(0, 0);
                 SubNode.aClass68_2091 = Class40_Sub5_Sub13.method649(261, 190, arg0, -4875);
                 FloorDecoration.aClass40_Sub5_Sub14_Sub2_593.method692(0, 0);
                 Class40_Sub5_Sub4.aClass68_2350 = Class40_Sub5_Sub13.method649(334, 512, arg0, -4875);
@@ -316,32 +316,32 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 Class66.aClass68_1541 = Class40_Sub5_Sub13.method649(50, 496, arg0, -4875);
                 RSCanvas.aClass68_59 = Class40_Sub5_Sub13.method649(37, 269, arg0, -4875);
                 Class19.aClass68_482 = Class40_Sub5_Sub13.method649(45, 249, arg0, -4875);
-                DirectColorSprite class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class61.aClass1_1440, (byte) 21, Class8.aClass1_305);
-                Landscape.aClass68_1185 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.anInt2950), (class40_sub5_sub14_sub4.anInt2951), arg0, -4875);
+                ImageRGB class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class61.aClass1_1440, (byte) 21, Class8.aClass1_305);
+                Landscape.aClass68_1185 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_heighteight), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class43.aClass1_1024, (byte) 21, Class8.aClass1_305);
-                Class40_Sub5_Sub1.aClass68_2275 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.anInt2950), (class40_sub5_sub14_sub4.anInt2951), arg0, -4875);
+                Class40_Sub5_Sub1.aClass68_2275 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_heighteight), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class8.aClass1_281, (byte) 21, Class8.aClass1_305);
-                Class39.aClass68_908 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.anInt2950), (class40_sub5_sub14_sub4.anInt2951), arg0, -4875);
+                Class39.aClass68_908 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_heighteight), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class53.aClass1_1266, (byte) 21, Class8.aClass1_305);
-                GameObject.aClass68_3045 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.anInt2950), (class40_sub5_sub14_sub4.anInt2951), arg0, -4875);
+                GameObject.aClass68_3045 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_heighteight), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 class40_sub5_sub14_sub4 = Class66.method1028(arg2, Main.aClass1_1788, (byte) 21, Class8.aClass1_305);
-                Class40_Sub5_Sub17_Sub6.aClass68_3243 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.anInt2950), (class40_sub5_sub14_sub4.anInt2951), arg0, -4875);
+                Class40_Sub5_Sub17_Sub6.aClass68_3243 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_heighteight), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class58.aClass1_1374, (byte) 21, Class8.aClass1_305);
-                Class40_Sub7.aClass68_2123 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.anInt2950), (class40_sub5_sub14_sub4.anInt2951), arg0, -4875);
+                Class40_Sub7.aClass68_2123 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_heighteight), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class40_Sub5_Sub10.aClass1_2588, (byte) 21, Class8.aClass1_305);
-                Class61.aClass68_1441 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.anInt2950), (class40_sub5_sub14_sub4.anInt2951), arg0, -4875);
+                Class61.aClass68_1441 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_heighteight), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class5.aClass1_196, (byte) 21, Class8.aClass1_305);
-                Class30.aClass68_714 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.anInt2950), (class40_sub5_sub14_sub4.anInt2951), arg0, -4875);
+                Class30.aClass68_714 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_heighteight), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class8.aClass1_304, (byte) 21, Class8.aClass1_305);
-                Class17.aClass68_462 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.anInt2950), (class40_sub5_sub14_sub4.anInt2951), arg0, -4875);
+                Class17.aClass68_462 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_heighteight), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
                 int i = -80 % ((arg1 - 9) / 40);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 Class56.aClass40_Sub5_Sub14_Sub2_1315 = Class27.method359(SubNode.aClass1_2093, Class8.aClass1_305, arg2, (byte) -64);
@@ -372,7 +372,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     int i_15_ = 0;
                     int i_16_ = 999;
                     for(int i_17_ = 0; i_17_ < 34; i_17_++) {
-                        if(((Class34.aClass40_Sub5_Sub14_Sub2_855.aByteArray2925[(Class34.aClass40_Sub5_Sub14_Sub2_855.anInt2921 * i_14_) + i_17_]) ^ 0xffffffff) == -1) {
+                        if(((Class34.mapBack.imgPixels[(Class34.mapBack.anInt2921 * i_14_) + i_17_]) ^ 0xffffffff) == -1) {
                             if((i_16_ ^ 0xffffffff) == -1000)
                                 i_16_ = i_17_;
                         } else if(i_16_ != 999) {
@@ -387,7 +387,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     int i_19_ = 0;
                     int i_20_ = 999;
                     for(int i_21_ = 25; i_21_ < 172; i_21_++) {
-                        if((Class34.aClass40_Sub5_Sub14_Sub2_855.aByteArray2925[i_21_ + (Class34.aClass40_Sub5_Sub14_Sub2_855.anInt2921) * i_18_]) != 0 || i_21_ <= 34 && (i_18_ ^ 0xffffffff) >= -35) {
+                        if((Class34.mapBack.imgPixels[i_21_ + (Class34.mapBack.anInt2921) * i_18_]) != 0 || i_21_ <= 34 && (i_18_ ^ 0xffffffff) >= -35) {
                             if((i_20_ ^ 0xffffffff) != -1000) {
                                 i_19_ = i_21_;
                                 break;

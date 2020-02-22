@@ -14,12 +14,12 @@ public class FloorDecoration {
     public static CRC32 aCRC32_590;
     public static RSString aClass1_591;
     public static int anInt592;
-    public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_593;
+    public static IndexedImage aClass40_Sub5_Sub14_Sub2_593;
     public static int anInt596;
     public static int anInt597;
     public static int anInt598;
     public static int anInt599;
-    public static DirectColorSprite[] aClass40_Sub5_Sub14_Sub4Array603;
+    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
     public static int anInt604;
     public static Class6_Sub1 aClass6_Sub1_605;
     public static RSString aClass1_606;
@@ -168,7 +168,7 @@ public class FloorDecoration {
                 Class5.anIntArray198 = null;
                 SubNode.aBoolean2083 = false;
                 RSCanvas.anIntArray66 = null;
-                Class34.aClass40_Sub5_Sub14_Sub2_855 = null;
+                Class34.mapBack = null;
                 Landscape.anIntArray1186 = null;
                 Class17.aClass68_462 = null;
                 RSCanvas.aClass68_59 = null;

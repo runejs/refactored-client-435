@@ -30,7 +30,7 @@ public class Class53 {
     public static long[] aLongArray1267;
     public static RSFont aClass40_Sub5_Sub14_Sub1_1268;
     public static RSString aClass1_1269;
-    public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_1270;
+    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1270;
 
     static {
         aClass1_1246 = Class58.method978(" hat sich ausgeloggt)3");

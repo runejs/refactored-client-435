@@ -16,7 +16,7 @@ import java.net.InetAddress;
 import java.net.URL;
 
 public abstract class RSApplet extends Applet implements Runnable, FocusListener, WindowListener {
-    public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_1;
+    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1;
     public static int[] anIntArray2;
     public static int anInt3;
     public static long[] aLongArray4 = new long[32];

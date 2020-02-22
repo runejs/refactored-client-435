@@ -182,7 +182,7 @@ public class Npc extends Actor {
                     Class19.anInt487 = 20;
                     HashTable.aBoolean565 = false;
                     Class32.packetBuffer.putPacket(11453, 58);
-                    Class32.packetBuffer.method474(Class58.anInt1373, -126);
+                    Class32.packetBuffer.method474(Class58.cameraHorizontal, -126);
                     Class32.packetBuffer.method474(Class65.anInt1537, -121);
                 }
                 if(HashTable.aBoolean571 != false && !Class35.aBoolean1735 == true) {
@@ -379,29 +379,29 @@ public class Npc extends Actor {
                         if(Player.anInt3264 > 500) {
                             int i_23_ = (int) (Math.random() * 8.0);
                             if((0x1 & i_23_ ^ 0xffffffff) == -2)
-                                Class43.anInt1020 += Class13.anInt419;
+                                Class43.cameraYawOffset += Class13.anInt419;
                             if((0x2 & i_23_ ^ 0xffffffff) == -3)
-                                Class51.anInt1187 += Main.anInt1766;
+                                Class51.mapZoomOffset += Main.anInt1766;
                             Player.anInt3264 = 0;
                         }
                         if(Class48.anInt1126 > 55)
                             Class68_Sub1.anInt2211 = -2;
                         if((Buffer.anInt1976 ^ 0xffffffff) > 49)
                             Class42.anInt1010 = 2;
-                        if((Class43.anInt1020 ^ 0xffffffff) > 59)
+                        if((Class43.cameraYawOffset ^ 0xffffffff) > 59)
                             Class13.anInt419 = 2;
                         Class22.anInt537++;
                         if((Buffer.anInt1976 ^ 0xffffffff) < -51)
                             Class42.anInt1010 = -2;
-                        if((Class43.anInt1020 ^ 0xffffffff) < -61)
+                        if((Class43.cameraYawOffset ^ 0xffffffff) < -61)
                             Class13.anInt419 = -2;
                         if(Class57.anInt1342 < -40)
                             Class5.anInt195 = 1;
                         if((Class57.anInt1342 ^ 0xffffffff) < -41)
                             Class5.anInt195 = -1;
-                        if(Class51.anInt1187 < -20)
+                        if(Class51.mapZoomOffset < -20)
                             Main.anInt1766 = 1;
-                        if(Class51.anInt1187 > 10)
+                        if(Class51.mapZoomOffset > 10)
                             Main.anInt1766 = -1;
                         if((Class22.anInt537 ^ 0xffffffff) < -51) {
                             Class32.packetBuffer.putPacket(11453, 13);

@@ -322,36 +322,36 @@ public class RSFont extends Rasterizer {
     }
 
     public void method679(byte[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
-        int i = arg1 + arg2 * Rasterizer.anInt2768;
-        int i_19_ = Rasterizer.anInt2768 - arg3;
+        int i = arg1 + arg2 * Rasterizer.width;
+        int i_19_ = Rasterizer.width - arg3;
         int i_20_ = 0;
         int i_21_ = 0;
-        if(arg2 < Rasterizer.anInt2767) {
-            int i_22_ = Rasterizer.anInt2767 - arg2;
+        if(arg2 < Rasterizer.viewport_top) {
+            int i_22_ = Rasterizer.viewport_top - arg2;
             arg4 -= i_22_;
-            arg2 = Rasterizer.anInt2767;
+            arg2 = Rasterizer.viewport_top;
             i_21_ += i_22_ * arg3;
-            i += i_22_ * Rasterizer.anInt2768;
+            i += i_22_ * Rasterizer.width;
         }
-        if(arg2 + arg4 > Rasterizer.anInt2770)
-            arg4 -= arg2 + arg4 - Rasterizer.anInt2770;
-        if(arg1 < Rasterizer.anInt2771) {
-            int i_23_ = Rasterizer.anInt2771 - arg1;
+        if(arg2 + arg4 > Rasterizer.viewport_bottom)
+            arg4 -= arg2 + arg4 - Rasterizer.viewport_bottom;
+        if(arg1 < Rasterizer.viewport_left) {
+            int i_23_ = Rasterizer.viewport_left - arg1;
             arg3 -= i_23_;
-            arg1 = Rasterizer.anInt2771;
+            arg1 = Rasterizer.viewport_left;
             i_21_ += i_23_;
             i += i_23_;
             i_20_ += i_23_;
             i_19_ += i_23_;
         }
-        if(arg1 + arg3 > Rasterizer.anInt2772) {
-            int i_24_ = arg1 + arg3 - Rasterizer.anInt2772;
+        if(arg1 + arg3 > Rasterizer.viewport_right) {
+            int i_24_ = arg1 + arg3 - Rasterizer.viewport_right;
             arg3 -= i_24_;
             i_20_ += i_24_;
             i_19_ += i_24_;
         }
         if(arg3 > 0 && arg4 > 0)
-            method674(Rasterizer.anIntArray2766, arg0, arg5, i_21_, i, arg3, arg4, i_19_, i_20_, arg6);
+            method674(Rasterizer.pixels, arg0, arg5, i_21_, i, arg3, arg4, i_19_, i_20_, arg6);
     }
 
     public void method680(RSString arg0, int arg1, int arg2, int arg3, boolean arg4, int arg5) {
@@ -409,36 +409,36 @@ public class RSFont extends Rasterizer {
     }
 
     public void method682(byte[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        int i = arg1 + arg2 * Rasterizer.anInt2768;
-        int i_33_ = Rasterizer.anInt2768 - arg3;
+        int i = arg1 + arg2 * Rasterizer.width;
+        int i_33_ = Rasterizer.width - arg3;
         int i_34_ = 0;
         int i_35_ = 0;
-        if(arg2 < Rasterizer.anInt2767) {
-            int i_36_ = Rasterizer.anInt2767 - arg2;
+        if(arg2 < Rasterizer.viewport_top) {
+            int i_36_ = Rasterizer.viewport_top - arg2;
             arg4 -= i_36_;
-            arg2 = Rasterizer.anInt2767;
+            arg2 = Rasterizer.viewport_top;
             i_35_ += i_36_ * arg3;
-            i += i_36_ * Rasterizer.anInt2768;
+            i += i_36_ * Rasterizer.width;
         }
-        if(arg2 + arg4 > Rasterizer.anInt2770)
-            arg4 -= arg2 + arg4 - Rasterizer.anInt2770;
-        if(arg1 < Rasterizer.anInt2771) {
-            int i_37_ = Rasterizer.anInt2771 - arg1;
+        if(arg2 + arg4 > Rasterizer.viewport_bottom)
+            arg4 -= arg2 + arg4 - Rasterizer.viewport_bottom;
+        if(arg1 < Rasterizer.viewport_left) {
+            int i_37_ = Rasterizer.viewport_left - arg1;
             arg3 -= i_37_;
-            arg1 = Rasterizer.anInt2771;
+            arg1 = Rasterizer.viewport_left;
             i_35_ += i_37_;
             i += i_37_;
             i_34_ += i_37_;
             i_33_ += i_37_;
         }
-        if(arg1 + arg3 > Rasterizer.anInt2772) {
-            int i_38_ = arg1 + arg3 - Rasterizer.anInt2772;
+        if(arg1 + arg3 > Rasterizer.viewport_right) {
+            int i_38_ = arg1 + arg3 - Rasterizer.viewport_right;
             arg3 -= i_38_;
             i_34_ += i_38_;
             i_33_ += i_38_;
         }
         if(arg3 > 0 && arg4 > 0)
-            method671(Rasterizer.anIntArray2766, arg0, arg5, i_35_, i, arg3, arg4, i_33_, i_34_);
+            method671(Rasterizer.pixels, arg0, arg5, i_35_, i, arg3, arg4, i_33_, i_34_);
     }
 
     public void method683(RSString arg0, int arg1, int arg2, int arg3, boolean arg4) {
