@@ -50,7 +50,7 @@ public class Player extends Actor {
     public int anInt3273;
     public int anInt3274;
     public int anInt3276;
-    public RSString aClass1_3278;
+    public RSString playerName;
     public int anInt3281;
     public Class30 aClass30_3282;
     public int anInt3283;
@@ -238,7 +238,7 @@ public class Player extends Actor {
         anInt3082 = arg1.getUnsignedShortBE();
             if(anInt3082 == 65535)
                 anInt3082 = -1;
-            aClass1_3278 = Class60.method991(-127, arg1.method498(1362367312)).method85(-4305);
+        playerName = Class60.method991(-127, arg1.method498(1362367312)).method85(-4305);
         anInt3260 = arg1.getUnsignedByte();
         anInt3257 = arg1.getUnsignedShortBE();
             if(aClass30_3282 == null)

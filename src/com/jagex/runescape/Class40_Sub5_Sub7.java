@@ -109,7 +109,7 @@ public class Class40_Sub5_Sub7 extends SubNode {
             int i_15_ = 0x3 & i_14_ >> -1327198362;
             int i_16_ = 0x1f & i_14_;
             if(i_16_ != 10 && i_16_ != 11 && i_16_ != 22)
-                Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), arg0, (byte) 98, 1 + i_16_, true, i_15_, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), arg3, 2);
+                Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), arg0, (byte) 98, 1 + i_16_, true, i_15_, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), arg3, 2);
             else {
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                 int i_17_ = gameObjectDefinition.anInt2512;
@@ -124,7 +124,7 @@ public class Class40_Sub5_Sub7 extends SubNode {
                     i_18_ = gameObjectDefinition.anInt2515;
                     i_19_ = gameObjectDefinition.anInt2503;
                 }
-                Class38_Sub1.method448(i_18_, i_17_, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), arg0, (byte) 94, 0, true, 0, i_19_, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), arg3, 2);
+                Class38_Sub1.method448(i_18_, i_17_, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), arg0, (byte) 94, 0, true, 0, i_19_, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), arg3, 2);
             }
             Class40_Sub11.anInt2163 = Class57.anInt1338;
             Class45.anInt1075 = 2;

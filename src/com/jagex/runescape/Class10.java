@@ -63,29 +63,29 @@ public class Class10 {
     public static void method238(int arg0) {
         anInt335++;
         if((CollisionMap.anInt165 ^ 0xffffffff) != -1) {
-            RSFont class40_sub5_sub14_sub1 = Class53.aClass40_Sub5_Sub14_Sub1_1268;
+            TypeFace class40_sub5_sub14_sub1 = Class53.aClass40_Sub5_Sub14_Sub1_1268;
             int i = 0;
             if(Class40_Sub5_Sub15.anInt2782 != 0)
                 i = 1;
             for(int i_0_ = 0; i_0_ < 100; i_0_++) {
-                if(Actor.aClass1Array3160[i_0_] != null) {
-                    RSString class1 = Renderable.aClass1Array2856[i_0_];
+                if(Actor.chatMessages[i_0_] != null) {
+                    RSString class1 = Renderable.chatPlayerNames[i_0_];
                     int i_1_ = 0;
-                    int i_2_ = Class66.anIntArray1569[i_0_];
-                    if(class1 != null && class1.method75((byte) 116, Class51.aClass1_1210)) {
-                        class1 = class1.method50((byte) 95, 5);
+                    int i_2_ = Class66.chatTypes[i_0_];
+                    if(class1 != null && class1.startsWith((byte) 116, Class51.whiteCrown)) {
+                        class1 = class1.substring(5);
                         i_1_ = 1;
                     }
-                    if(class1 != null && class1.method75((byte) 116, Class40_Sub5_Sub12.aClass1_2729)) {
-                        class1 = class1.method50((byte) 95, 5);
+                    if(class1 != null && class1.startsWith((byte) 116, Class40_Sub5_Sub12.goldCrown)) {
+                        class1 = class1.substring(5);
                         i_1_ = 2;
                     }
                     if(((i_2_ ^ 0xffffffff) == -4 || i_2_ == 7) && (i_2_ == 7 || Class4.anInt185 == 0 || ((Class4.anInt185 ^ 0xffffffff) == -2 && Class40_Sub2.method523(class1, -32624)))) {
                         int i_3_ = 329 - 13 * i;
                         int i_4_ = 4;
                         i++;
-                        class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub6.aClass1_2458), i_4_, i_3_, 0);
-                        class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub6.aClass1_2458), i_4_, -1 + i_3_, 65535);
+                        class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub6.aClass1_2458), i_4_, i_3_, 0);
+                        class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub6.aClass1_2458), i_4_, -1 + i_3_, 65535);
                         i_4_ += class40_sub5_sub14_sub1.method685(Class40_Sub5_Sub6.aClass1_2458);
                         i_4_ += class40_sub5_sub14_sub1.method689(32);
                         if((i_1_ ^ 0xffffffff) == -2) {
@@ -96,24 +96,24 @@ public class Class10 {
                             Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub2Array2753[1].method692(i_4_, -12 + i_3_);
                             i_4_ += 14;
                         }
-                        class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub17_Sub6.method832(-44, new RSString[]{class1, ISAAC.aClass1_515, (Actor.aClass1Array3160[i_0_])})), i_4_, i_3_, 0);
-                        class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub17_Sub6.method832(56, new RSString[]{class1, ISAAC.aClass1_515, (Actor.aClass1Array3160[i_0_])})), i_4_, -1 + i_3_, 65535);
+                        class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub17_Sub6.method832(-44, new RSString[]{class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), i_4_, i_3_, 0);
+                        class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub17_Sub6.method832(56, new RSString[]{class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), i_4_, -1 + i_3_, 65535);
                         if(i >= 5)
                             return;
                     }
                     if(i_2_ == 5 && Class4.anInt185 < 2) {
                         int i_5_ = -(i * 13) + 329;
                         i++;
-                        class40_sub5_sub14_sub1.method690(Actor.aClass1Array3160[i_0_], 4, i_5_, 0);
-                        class40_sub5_sub14_sub1.method690(Actor.aClass1Array3160[i_0_], 4, i_5_ - 1, 65535);
+                        class40_sub5_sub14_sub1.drawString(Actor.chatMessages[i_0_], 4, i_5_, 0);
+                        class40_sub5_sub14_sub1.drawString(Actor.chatMessages[i_0_], 4, i_5_ - 1, 65535);
                         if((i ^ 0xffffffff) <= -6)
                             return;
                     }
                     if((i_2_ ^ 0xffffffff) == -7 && Class4.anInt185 < 2) {
                         int i_6_ = -(13 * i) + 329;
                         i++;
-                        class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub17_Sub6.method832(-58, new RSString[]{Class40_Sub5_Sub1.aClass1_2274, Class48.aClass1_1123, class1, ISAAC.aClass1_515, (Actor.aClass1Array3160[i_0_])})), 4, i_6_, 0);
-                        class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub17_Sub6.method832(-81, new RSString[]{Class40_Sub5_Sub1.aClass1_2274, Class48.aClass1_1123, class1, ISAAC.aClass1_515, (Actor.aClass1Array3160[i_0_])})), 4, i_6_ + -1, 65535);
+                        class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub17_Sub6.method832(-58, new RSString[]{Class40_Sub5_Sub1.aClass1_2274, Class48.aClass1_1123, class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), 4, i_6_, 0);
+                        class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub17_Sub6.method832(-81, new RSString[]{Class40_Sub5_Sub1.aClass1_2274, Class48.aClass1_1123, class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), 4, i_6_ + -1, 65535);
                         if((i ^ 0xffffffff) <= -6)
                             return;
                     }

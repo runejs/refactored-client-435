@@ -93,8 +93,8 @@ public class Class4 {
                         int i_11_ = 128 * (Class38_Sub1.anIntArray1916[i] & 0xff);
                         int i_12_ = (0xff & Class38_Sub1.anIntArray1916[i] >> 854878096);
                         int i_13_ = ((Class38_Sub1.anIntArray1916[i] & 0xffb8) >> 1161269672);
-                        int i_14_ = (i_13_ * 128 + 64 + -(Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089));
-                        int i_15_ = (i_12_ * 128 + (64 - (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098)));
+                        int i_14_ = (i_13_ * 128 + 64 + -(Class40_Sub5_Sub13.localPlayer.anInt3089));
+                        int i_15_ = (i_12_ * 128 + (64 - (Class40_Sub5_Sub13.localPlayer.anInt3098)));
                         if(i_15_ < 0)
                             i_15_ = -i_15_;
                         if((i_14_ ^ 0xffffffff) > -1)

@@ -76,7 +76,7 @@ public class Class40_Sub5_Sub9 extends SubNode {
                             return;
                         }
                     }
-                    if(!class1.method54((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.aClass1_3278), 122)) {
+                    if(!class1.method54((Class40_Sub5_Sub13.localPlayer.playerName), 122)) {
                         Class40_Sub11.aClass1Array2147[(Class40_Sub5_Sub17_Sub3.anInt3060)] = class1;
                         Class59.aLongArray1397[(Class40_Sub5_Sub17_Sub3.anInt3060)] = arg0;
                         Class40_Sub7.anIntArray2131[(Class40_Sub5_Sub17_Sub3.anInt3060)] = 0;

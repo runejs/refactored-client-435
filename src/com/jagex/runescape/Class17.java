@@ -122,7 +122,7 @@ public class Class17 {
                             return;
                         }
                     }
-                    if(!class1.method54((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.aClass1_3278), 122)) {
+                    if(!class1.method54((Class40_Sub5_Sub13.localPlayer.playerName), 122)) {
                         Class40_Sub11.anInt2150++;
                         if(arg0 != 24686)
                             aClass68_462 = null;

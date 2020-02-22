@@ -80,7 +80,7 @@ public class Class33 {
                 for(int i = -1; Class60.anInt1407 + GameObjectDefinition.anInt2558 > i; i++) {
                     Actor actor;
                     if((i ^ 0xffffffff) == 0)
-                        actor = (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760);
+                        actor = (Class40_Sub5_Sub13.localPlayer);
                     else if(i < Class60.anInt1407)
                         actor = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i]]);
                     else
@@ -127,7 +127,7 @@ public class Class33 {
                                     Class40_Sub5_Sub9.aClass40_Sub5_Sub14_Sub4Array2567[1].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
                             }
                         }
-                        if(actor.aClass1_3090 != null && (i >= Class60.anInt1407 || (Class35.anInt1737 ^ 0xffffffff) == -1 || Class35.anInt1737 == 3 || ((Class35.anInt1737 ^ 0xffffffff) == -2 && (Class40_Sub2.method523((((Player) actor).aClass1_3278), arg0 ^ 0x7f74))))) {
+                        if(actor.aClass1_3090 != null && (i >= Class60.anInt1407 || (Class35.anInt1737 ^ 0xffffffff) == -1 || Class35.anInt1737 == 3 || ((Class35.anInt1737 ^ 0xffffffff) == -2 && (Class40_Sub2.method523((((Player) actor).playerName), arg0 ^ 0x7f74))))) {
                             FloorDecoration.method342(88, (actor.anInt3117), actor);
                             if((ISAAC.anInt522 ^ 0xffffffff) < 0 && Class30.anInt709 > Class32.anInt770) {
                                 Class30.anIntArray680[Class32.anInt770] = ((Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method685(actor.aClass1_3090)) / 2);
@@ -254,15 +254,15 @@ public class Class33 {
                         if(Class30.anIntArray695[i] == 4) {
                             int i_12_ = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method685(class1);
                             int i_13_ = ((i_12_ + 100) * (150 + -Class30.anIntArray684[i]) / 150);
-                            Rasterizer.method655((ISAAC.anInt522 + -50), 0, 50 + ISAAC.anInt522, 334);
-                            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method690(class1, -i_13_ + ISAAC.anInt522 + 50, Class44.anInt1048 + 1, 0);
-                            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method690(class1, 50 + ISAAC.anInt522 + -i_13_, Class44.anInt1048, i_8_);
-                            Rasterizer.method662();
+                            Rasterizer.setCoordinates((ISAAC.anInt522 + -50), 0, 334, 50 + ISAAC.anInt522);
+                            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawString(class1, -i_13_ + ISAAC.anInt522 + 50, Class44.anInt1048 + 1, 0);
+                            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawString(class1, 50 + ISAAC.anInt522 + -i_13_, Class44.anInt1048, i_8_);
+                            Rasterizer.resetCoordinates();
                         }
                         if((Class30.anIntArray695[i] ^ 0xffffffff) == -6) {
                             int i_14_ = 0;
                             int i_15_ = 150 + -Class30.anIntArray684[i];
-                            Rasterizer.method655(0, -1 + (-(Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.anInt2910) + Class44.anInt1048), 512, 5 + Class44.anInt1048);
+                            Rasterizer.setCoordinates(0, -1 + (-(Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.anInt2910) + Class44.anInt1048), 5 + Class44.anInt1048, 512);
                             if((i_15_ ^ 0xffffffff) <= -26) {
                                 if((i_15_ ^ 0xffffffff) < -126)
                                     i_14_ = i_15_ + -125;
@@ -270,7 +270,7 @@ public class Class33 {
                                 i_14_ = i_15_ + -25;
                             Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(class1, ISAAC.anInt522, i_14_ + (Class44.anInt1048 + 1), 0);
                             Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(class1, ISAAC.anInt522, i_14_ + Class44.anInt1048, i_8_);
-                            Rasterizer.method662();
+                            Rasterizer.resetCoordinates();
                         }
                     }
                 }

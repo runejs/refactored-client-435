@@ -290,7 +290,7 @@ public class Npc extends Actor {
                         if((Scene.anInt78 ^ 0xffffffff) != 0) {
                             int i = Scene.anInt78;
                             int i_18_ = Scene.anInt81;
-                            boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), i, (byte) 119, 0, true, 0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), i_18_, 0));
+                            boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), i, (byte) 119, 0, true, 0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), i_18_, 0));
                             if(bool) {
                                 Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                                 Floor.anInt2319 = 0;

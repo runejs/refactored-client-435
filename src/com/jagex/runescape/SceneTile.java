@@ -80,31 +80,31 @@ public class SceneTile extends Node {
                 int i = arg2.method60(Class38.aClass1_890, 32);
                 if(i == -1)
                     break;
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832(-37, (new RSString[]{arg2.method68(0, 0, i), (Class40_Sub11.method872(999999999, Class66.method1029(0, false, arg1))), arg2.method50((byte) 95, 2 + i)})));
+                arg2 = (Class40_Sub5_Sub17_Sub6.method832(-37, (new RSString[]{arg2.method68(0, i), (Class40_Sub11.method872(999999999, Class66.method1029(0, false, arg1))), arg2.substring(2 + i)})));
             }
             for(; ; ) {
                 int i = arg2.method60(Class45.aClass1_1077, 32);
                 if((i ^ 0xffffffff) == 0)
                     break;
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832(72, (new RSString[]{arg2.method68(0, 0, i), (Class40_Sub11.method872(999999999, Class66.method1029(1, false, arg1))), arg2.method50((byte) 95, i + 2)})));
+                arg2 = (Class40_Sub5_Sub17_Sub6.method832(72, (new RSString[]{arg2.method68(0, i), (Class40_Sub11.method872(999999999, Class66.method1029(1, false, arg1))), arg2.substring(i + 2)})));
             }
             for(; ; ) {
                 int i = arg2.method60(Class67.aClass1_1610, 32);
                 if((i ^ 0xffffffff) == 0)
                     break;
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832(-121, (new RSString[]{arg2.method68(arg0 ^ 0x14, 0, i), (Class40_Sub11.method872(999999999, Class66.method1029(2, false, arg1))), arg2.method50((byte) 95, 2 + i)})));
+                arg2 = (Class40_Sub5_Sub17_Sub6.method832(-121, (new RSString[]{arg2.method68(0, i), (Class40_Sub11.method872(999999999, Class66.method1029(2, false, arg1))), arg2.substring(2 + i)})));
             }
             for(; ; ) {
                 int i = arg2.method60(Class55.aClass1_1300, 32);
                 if(i == -1)
                     break;
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832(125, (new RSString[]{arg2.method68(0, 0, i), (Class40_Sub11.method872(arg0 ^ 0x3b9ac9eb, Class66.method1029(3, false, arg1))), arg2.method50((byte) 95, i + 2)})));
+                arg2 = (Class40_Sub5_Sub17_Sub6.method832(125, (new RSString[]{arg2.method68(0, i), (Class40_Sub11.method872(arg0 ^ 0x3b9ac9eb, Class66.method1029(3, false, arg1))), arg2.substring(i + 2)})));
             }
             for(; ; ) {
                 int i = arg2.method60(SubNode.aClass1_2090, 32);
                 if(i == -1)
                     break;
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832(-43, (new RSString[]{arg2.method68(0, 0, i), (Class40_Sub11.method872(999999999, Class66.method1029(4, false, arg1))), arg2.method50((byte) 95, i + 2)})));
+                arg2 = (Class40_Sub5_Sub17_Sub6.method832(-43, (new RSString[]{arg2.method68(0, i), (Class40_Sub11.method872(999999999, Class66.method1029(4, false, arg1))), arg2.substring(i + 2)})));
             }
             for(; ; ) {
                 int i = arg2.method60(GameObjectDefinition.aClass1_2526, arg0 ^ 0x34);
@@ -118,7 +118,7 @@ public class SceneTile extends Node {
                         class1 = Class19.method279(is, true, 0, is.length);
                     }
                 }
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832(124, new RSString[]{arg2.method68(0, 0, i), class1, arg2.method50((byte) 95, i + 4)}));
+                arg2 = (Class40_Sub5_Sub17_Sub6.method832(124, new RSString[]{arg2.method68(0, i), class1, arg2.substring(i + 4)}));
             }
         }
         return arg2;

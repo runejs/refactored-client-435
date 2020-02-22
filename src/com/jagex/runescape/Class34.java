@@ -184,7 +184,7 @@ public class Class34 {
                 int i_5_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
                 if((i_5_ ^ 0xffffffff) == -2)
                     Class24.anIntArray578[Actor.anInt3153++] = i_0_;
-                class40_sub5_sub17_sub4_sub1.method787(i_2_ + (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), -7717, (i_4_ ^ 0xffffffff) == -2, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]) + i_1_);
+                class40_sub5_sub17_sub4_sub1.method787(i_2_ + (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), -7717, (i_4_ ^ 0xffffffff) == -2, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]) + i_1_);
             }
             Cache.outgoingbuffer.finishBitAccess((byte) -110);
 

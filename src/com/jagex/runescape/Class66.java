@@ -29,7 +29,7 @@ public class Class66 {
     public static int anInt1566;
     public static RSString aClass1_1567;
     public static int anInt1568;
-    public static int[] anIntArray1569;
+    public static int[] chatTypes;
     public static int anInt1570;
     public static int anInt1571;
     public static RSString aClass1_1572;
@@ -46,7 +46,7 @@ public class Class66 {
         anIntArray1564 = (new int[]{-1, -1, -1, -1, -1, -1, -1, -1, 85, 80, 84, -1, 91, -1, -1, -1, 81, 82, 86, -1, -1, -1, -1, -1, -1, -1, -1, 0, -1, -1, -1, -1, 83, 104, 105, 103, 102, 96, 98, 97, 99, -1, -1, -1, -1, -1, -1, -1, 25, 16, 17, 18, 19, 20, 21, 22, 23, 24, -1, -1, -1, -1, -1, -1, -1, 48, 68, 66, 50, 34, 51, 52, 53, 39, 54, 55, 56, 70, 69, 40, 41, 32, 35, 49, 36, 38, 67, 33, 65, 37, 64, -1, -1, -1, -1, -1, 228, 231, 227, 233, 224, 219, 225, 230, 226, 232, 89, 87, -1, 88, 229, 90, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, -1, -1, -1, 101, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1});
         aClass1_1558 = Class58.method978("leuchten2:");
         aClass1_1572 = aClass1_1555;
-        anIntArray1569 = new int[100];
+        chatTypes = new int[100];
         aClass1_1567 = Class58.method978("");
         aClass1_1556 = aClass1_1567;
         aClass1_1546 = Class58.method978("Icons redrawn");
@@ -139,7 +139,7 @@ public class Class66 {
             aClass1_1544 = null;
             aClass1_1542 = null;
             aClass1_1543 = null;
-            anIntArray1569 = null;
+        chatTypes = null;
             aClass1_1546 = null;
             aClass1_1554 = null;
             aClass1_1550 = null;
@@ -171,7 +171,7 @@ public class Class66 {
                 if(arg4 != null && arg4.aBoolean2372) {
                     RSString class1 = arg4.aClass1_2402;
                     if(arg4.anInt2393 != arg0)
-                        class1 = (Class40_Sub5_Sub17_Sub6.method832(-47, (new RSString[]{class1, (SceneTile.method536((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3260), arg4.anInt2393, arg0 + -99)), HashTable.aClass1_569, Class40_Sub5_Sub2.aClass1_2286, HashTable.method334(arg4.anInt2393, -1), Class51.aClass1_1199})));
+                        class1 = (Class40_Sub5_Sub17_Sub6.method832(-47, (new RSString[]{class1, (SceneTile.method536((Class40_Sub5_Sub13.localPlayer.anInt3260), arg4.anInt2393, arg0 + -99)), HashTable.aClass1_569, Class40_Sub5_Sub2.aClass1_2286, HashTable.method334(arg4.anInt2393, -1), Class51.aClass1_1199})));
                     if((Class8.anInt301 ^ 0xffffffff) == -2) {
                         Node.anInt927++;
                         Floor.method558(arg3, Main.aClass1_1763, arg2, -501, arg1, 49, (Class40_Sub5_Sub17_Sub6.method832(-124, (new RSString[]{Npc.aClass1_3295, Class40_Sub5_Sub2.aClass1_2306, class1}))));
@@ -209,7 +209,7 @@ public class Class66 {
                                 if(class1s[i] != null && class1s[i].method63((Class38_Sub1.aClass1_1917), true)) {
                                     Class55.anInt1297++;
                                     int i_4_ = 0;
-                                    if(((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3260) ^ 0xffffffff) > (arg4.anInt2393 ^ 0xffffffff))
+                                    if(((Class40_Sub5_Sub13.localPlayer.anInt3260) ^ 0xffffffff) > (arg4.anInt2393 ^ 0xffffffff))
                                         i_4_ = 2000;
                                     int i_5_ = 0;
                                     if((i ^ 0xffffffff) == -1)
@@ -248,7 +248,7 @@ public class Class66 {
             int i = arg0.method183(0, arg1);
             int i_13_ = arg0.method179(arg2 ^ ~0x6f, i, arg3);
             if(arg2 != 21)
-                anIntArray1569 = null;
+                chatTypes = null;
             return Class48.method927(i_13_, arg0, true, i);
 
     }
@@ -302,7 +302,7 @@ public class Class66 {
                     if((i_18_ ^ 0xffffffff) == -8)
                         i_16_ = (100 * Class58.varbitmasks[is[i_14_++]] / 46875);
                     if((i_18_ ^ 0xffffffff) == -9)
-                        i_16_ = (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3260);
+                        i_16_ = (Class40_Sub5_Sub13.localPlayer.anInt3260);
                     if(i_18_ == 9) {
                         for(int i_22_ = 0; i_22_ < 25; i_22_++) {
                             if(Class22.aBooleanArray548[i_22_])
@@ -337,9 +337,9 @@ public class Class66 {
                         i_16_ = Class40_Sub5_Sub6.method585(i_28_, 1369);
                     }
                     if((i_18_ ^ 0xffffffff) == -19)
-                        i_16_ = ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) >> -949277977) + Class40_Sub5_Sub2.anInt2307;
+                        i_16_ = ((Class40_Sub5_Sub13.localPlayer.anInt3098) >> -949277977) + Class40_Sub5_Sub2.anInt2307;
                     if(i_18_ == 19)
-                        i_16_ = ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) >> 745230119) + Class26.anInt635;
+                        i_16_ = ((Class40_Sub5_Sub13.localPlayer.anInt3089) >> 745230119) + Class26.anInt635;
                     if((i_18_ ^ 0xffffffff) == -21)
                         i_16_ = is[i_14_++];
                     if((i_17_ ^ 0xffffffff) != -1)

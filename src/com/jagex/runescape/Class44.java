@@ -50,14 +50,14 @@ public class Class44 implements Runnable {
                 RSApplet.aClass1_8 = arg2;
             }
             for(int i = 99; (i ^ 0xffffffff) < -1; i--) {
-                Class66.anIntArray1569[i] = Class66.anIntArray1569[i + -1];
-                Renderable.aClass1Array2856[i] = Renderable.aClass1Array2856[-1 + i];
-                Actor.aClass1Array3160[i] = Actor.aClass1Array3160[-1 + i];
+                Class66.chatTypes[i] = Class66.chatTypes[i + -1];
+                Renderable.chatPlayerNames[i] = Renderable.chatPlayerNames[-1 + i];
+                Actor.chatMessages[i] = Actor.chatMessages[-1 + i];
             }
-            Class66.anIntArray1569[0] = arg1;
-            Renderable.aClass1Array2856[0] = arg3;
+        Class66.chatTypes[0] = arg1;
+        Renderable.chatPlayerNames[0] = arg3;
             if(arg0 >= 60)
-                Actor.aClass1Array3160[0] = arg2;
+                Actor.chatMessages[0] = arg2;
 
     }
 

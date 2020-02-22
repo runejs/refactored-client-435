@@ -28,7 +28,7 @@ public class Class53 {
     public static RSString aClass1_1265;
     public static RSString aClass1_1266;
     public static long[] aLongArray1267;
-    public static RSFont aClass40_Sub5_Sub14_Sub1_1268;
+    public static TypeFace aClass40_Sub5_Sub14_Sub1_1268;
     public static RSString aClass1_1269;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1270;
 
@@ -124,7 +124,7 @@ public class Class53 {
                 int i_25_ = Cache.outgoingbuffer.getUnsignedByte();
                 if(i_20_ >= 0 && i_19_ >= 0 && i_20_ < 104 && i_19_ < 104) {
                     int i_26_ = 1 + i_23_;
-                    if(((i_20_ + -i_26_ ^ 0xffffffff) >= ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]) ^ 0xffffffff)) && ((i_20_ + i_26_ ^ 0xffffffff) <= ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]) ^ 0xffffffff)) && (i_19_ - i_26_ <= (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0])) && (i_19_ + i_26_ >= (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0])) && RSCanvas.anInt65 != 0 && i_24_ > 0 && PacketBuffer.anInt2248 < 50) {
+                    if(((i_20_ + -i_26_ ^ 0xffffffff) >= ((Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]) ^ 0xffffffff)) && ((i_20_ + i_26_ ^ 0xffffffff) <= ((Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]) ^ 0xffffffff)) && (i_19_ - i_26_ <= (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0])) && (i_19_ + i_26_ >= (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0])) && RSCanvas.anInt65 != 0 && i_24_ > 0 && PacketBuffer.anInt2248 < 50) {
                         Class40_Sub5_Sub10.anIntArray2602[(PacketBuffer.anInt2248)] = i_21_;
                         ItemDefinition.anIntArray2814[(PacketBuffer.anInt2248)] = i_24_;
                         Class40_Sub3.anIntArray2023[(PacketBuffer.anInt2248)] = i_25_;
@@ -197,7 +197,7 @@ public class Class53 {
                     if(i_43_ != Class30.anInt708)
                         class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_43_]);
                     else
-                        class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760);
+                        class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub13.localPlayer);
                     if(class40_sub5_sub17_sub4_sub1 != null) {
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_55_);
                         int i_57_ = (Class40_Sub6.tile_height[Player.anInt3267][i_52_][i_51_]);
@@ -332,7 +332,7 @@ public class Class53 {
             aClass9_1247 = null;
     }
 
-    public static void method951(int arg0, RSFont arg1, RSFont arg2) {
+    public static void method951(int arg0, TypeFace arg1, TypeFace arg2) {
         do {
                 Class38.aClass68_887.method1046((byte) 90);
                 anInt1245++;

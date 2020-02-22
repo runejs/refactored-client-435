@@ -603,7 +603,7 @@ public class Class43 {
                                                     i_1_ -= 2;
                                                     RSString class1 = (Class40_Sub11.aClass1Array2153[i_1_]);
                                                     RSString class1_82_ = (Class40_Sub11.aClass1Array2153[i_1_ + 1]);
-                                                    if((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.aClass30_3282) == null || !(Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.aClass30_3282.aBoolean683))
+                                                    if((Class40_Sub5_Sub13.localPlayer.aClass30_3282) == null || !(Class40_Sub5_Sub13.localPlayer.aClass30_3282.aBoolean683))
                                                         Class40_Sub11.aClass1Array2153[i_1_++] = class1;
                                                     else
                                                         Class40_Sub11.aClass1Array2153[i_1_++] = class1_82_;
@@ -624,7 +624,7 @@ public class Class43 {
                                             if(i_3_ != 3101)
                                                 break;
                                             i -= 2;
-                                            NpcDefinition.method570(Class67.anIntArray1588[i], (Class67.anIntArray1588[i + 1]), (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760), -1);
+                                            NpcDefinition.method570(Class67.anIntArray1588[i], (Class67.anIntArray1588[i + 1]), (Class40_Sub5_Sub13.localPlayer), -1);
                                         }
                                     }
                                 } else {
@@ -750,7 +750,7 @@ public class Class43 {
                             class40_sub5_sub12.anInt2673 = Class67.anIntArray1588[--i];
                         } else if(i_3_ == 1202) {
                             class40_sub5_sub12.anInt2687 = 3;
-                            class40_sub5_sub12.anInt2673 = Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.aClass30_3282.method374(-20874);
+                            class40_sub5_sub12.anInt2673 = Class40_Sub5_Sub13.localPlayer.aClass30_3282.method374(-20874);
                         } else {
                             if(i_3_ != 1203)
                                 break;

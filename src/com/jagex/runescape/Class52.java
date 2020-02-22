@@ -67,7 +67,7 @@ public class Class52 {
 
     }
 
-    public static void method943(int arg0, int arg1, RSFont arg2, int arg3, int arg4) {
+    public static void method943(int arg0, int arg1, TypeFace arg2, int arg3, int arg4) {
 
         Class66.aClass68_1541.method1046((byte) 90);
             anInt1224++;

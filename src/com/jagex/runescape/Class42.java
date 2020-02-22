@@ -222,7 +222,7 @@ public class Class42 {
             if(class40_sub5_sub17_sub4_sub2.anInt3113 == 0)
                 class40_sub5_sub17_sub4_sub2.anInt3118 = 0;
             class40_sub5_sub17_sub4_sub2.anInt3075 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2418);
-            class40_sub5_sub17_sub4_sub2.method787((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]) + i_5_, -7717, (i_7_ ^ 0xffffffff) == -2, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]) + i_4_);
+            class40_sub5_sub17_sub4_sub2.method787((Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]) + i_5_, -7717, (i_7_ ^ 0xffffffff) == -2, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]) + i_4_);
         }
         Cache.outgoingbuffer.finishBitAccess((byte) -110);
 

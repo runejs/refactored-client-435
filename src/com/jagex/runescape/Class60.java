@@ -34,10 +34,10 @@ public class Class60 {
         anInt1415 = 0;
     }
 
-    public static RSFont method987(int arg0) {
+    public static TypeFace method987(int arg0) {
 
         anInt1414++;
-        RSFont class40_sub5_sub14_sub1 = new RSFont((Actor.anIntArray3111), Class17.anIntArray456, (Npc.anIntArray3312), Buffer.anIntArray1972, Class58.aByteArrayArray1370);
+        TypeFace class40_sub5_sub14_sub1 = new TypeFace((Actor.anIntArray3111), Class17.anIntArray456, (Npc.anIntArray3312), Buffer.anIntArray1972, Class58.aByteArrayArray1370);
             NpcDefinition.method569(true);
             if(arg0 < 4)
                 return null;
@@ -240,7 +240,7 @@ public class Class60 {
                         if((Node.anInt947 ^ 0xffffffff) != -1) {
                             if(Node.anInt947 == 1) {
                                 if(ItemDefinition.anInt2854 == 85 && (Class22_Sub2.password.method59(-3136) ^ 0xffffffff) < -1)
-                                    Class22_Sub2.password = (Class22_Sub2.password.method68(0, 0, Class22_Sub2.password.method59(-3136) + -1));
+                                    Class22_Sub2.password = (Class22_Sub2.password.method68(0, Class22_Sub2.password.method59(-3136) + -1));
                                 if((ItemDefinition.anInt2854 ^ 0xffffffff) == -85 || ItemDefinition.anInt2854 == 80)
                                     Node.anInt947 = 0;
                                 if(bool && (Class22_Sub2.password.method59(-3136) ^ 0xffffffff) > -21)
@@ -248,7 +248,7 @@ public class Class60 {
                             }
                         } else {
                             if(((ItemDefinition.anInt2854 ^ 0xffffffff) == -86) && (Class22_Sub2.username.method59(-3136) > 0))
-                                Class22_Sub2.username = (Class22_Sub2.username.method68(0, 0, -1 + Class22_Sub2.username.method59(-3136)));
+                                Class22_Sub2.username = (Class22_Sub2.username.method68(0, -1 + Class22_Sub2.username.method59(-3136)));
                             if(ItemDefinition.anInt2854 == 84 || ((ItemDefinition.anInt2854 ^ 0xffffffff) == -81))
                                 Node.anInt947 = 1;
                             if(bool && (Class22_Sub2.username.method59(-3136) ^ 0xffffffff) > -13)

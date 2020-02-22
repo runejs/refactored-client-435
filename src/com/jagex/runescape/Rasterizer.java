@@ -23,19 +23,19 @@ public class Rasterizer extends SubNode {
         }
     }
 
-    public static void method655(int arg0, int arg1, int arg2, int arg3) {
+    public static void setCoordinates(int arg0, int arg1, int height, int width) {
         if(arg0 < 0)
             arg0 = 0;
         if(arg1 < 0)
             arg1 = 0;
-        if(arg2 > width)
-            arg2 = width;
-        if(arg3 > anInt2769)
-            arg3 = anInt2769;
+        if(width > width)
+            width = width;
+        if(height > anInt2769)
+            height = anInt2769;
         viewport_left = arg0;
         viewport_top = arg1;
-        viewport_right = arg2;
-        viewport_bottom = arg3;
+        viewport_right = width;
+        viewport_bottom = height;
     }
 
     public static void method656(int arg0, int arg1, int arg2, int arg3, int arg4) {
@@ -135,7 +135,7 @@ public class Rasterizer extends SubNode {
         arg0[3] = viewport_bottom;
     }
 
-    public static void method662() {
+    public static void resetCoordinates() {
         viewport_left = 0;
         viewport_top = 0;
         viewport_right = width;
@@ -280,6 +280,6 @@ public class Rasterizer extends SubNode {
         pixels = arg0;
         width = arg1;
         anInt2769 = arg2;
-        method655(0, 0, arg1, arg2);
+        setCoordinates(0, 0, arg2, arg1);
     }
 }

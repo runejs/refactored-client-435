@@ -233,10 +233,10 @@ public class GameObject extends Renderable {
                             class1s[i++] = class1.method79(RSApplet.method27(arg0, 32));
                         break;
                     }
-                    RSString class1_16_ = class1.method68(0, 0, i_15_).method89(false);
+                    RSString class1_16_ = class1.method68(0, i_15_).method89(false);
                     if((class1_16_.method59(-3136) ^ 0xffffffff) < -1)
                         class1s[i++] = class1_16_.method79(arg0 + -32);
-                    class1 = class1.method50((byte) 95, 1 + i_15_);
+                    class1 = class1.substring(1 + i_15_);
                 }
                 VertexNormal.anInt1110 = 0;
                 int i_17_ = 0;

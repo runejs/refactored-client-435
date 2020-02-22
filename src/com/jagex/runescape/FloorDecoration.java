@@ -405,7 +405,7 @@ public class FloorDecoration {
 
     }
 
-    public static RSFont method347(Class6 arg0, int arg1, RSString arg2, RSString arg3) {
+    public static TypeFace method347(Class6 arg0, int arg1, RSString arg2, RSString arg3) {
 
         anInt599++;
             int i = arg0.method183(0, arg3);

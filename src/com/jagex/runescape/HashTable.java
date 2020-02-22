@@ -146,7 +146,7 @@ public class HashTable {
                                 if(i != Class30.anInt708)
                                     class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i]);
                                 else
-                                    class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760);
+                                    class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub13.localPlayer);
                                 if(class40_sub5_sub17_sub4_sub1 != null && (class40_sub5_sub17_sub4_sub1.anInt3098 >= 0) && (class40_sub5_sub17_sub4_sub1.anInt3098 < 13312) && (class40_sub5_sub17_sub4_sub1.anInt3089 >= 0) && (class40_sub5_sub17_sub4_sub1.anInt3089 < 13312))
                                     class40_sub5_sub17_sub1.method766(Node.anInt926, 0, (class40_sub5_sub17_sub4_sub1.anInt3089), ((Class37.method430((byte) -127, class40_sub5_sub17_sub1.anInt2981, (class40_sub5_sub17_sub4_sub1.anInt3098), (class40_sub5_sub17_sub4_sub1.anInt3089))) - class40_sub5_sub17_sub1.anInt2960), (class40_sub5_sub17_sub4_sub1.anInt3098));
                             }

@@ -4,7 +4,7 @@ import com.jagex.runescape.*;
 
 public abstract class Renderable extends SubNode {
     public static int anInt2855;
-    public static RSString[] aClass1Array2856;
+    public static RSString[] chatPlayerNames;
     public static Class6_Sub1 aClass6_Sub1_2857;
     public static long aLong2858 = 0L;
     public static int anInt2859;
@@ -21,7 +21,7 @@ public abstract class Renderable extends SubNode {
     public static RSString aClass1_2871;
 
     static {
-        aClass1Array2856 = new RSString[100];
+        chatPlayerNames = new RSString[100];
         anInt2869 = 0;
         aClass1_2870 = Class58.method978(" from your friend list first");
         aClass1_2864 = aClass1_2870;
@@ -82,7 +82,7 @@ public abstract class Renderable extends SubNode {
     public static void method757(byte arg0) {
 
         aClass1_2871 = null;
-            aClass1Array2856 = null;
+        chatPlayerNames = null;
             if(arg0 > -112)
                 method757((byte) 59);
             aClass40_Sub5_Sub14_Sub2_2860 = null;

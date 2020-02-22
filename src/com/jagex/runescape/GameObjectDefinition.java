@@ -9,7 +9,7 @@ public class GameObjectDefinition extends SubNode {
     public static int anInt2543 = 0;
     public static HashTable aClass23_2545 = new HashTable(4096);
     public static RSString aClass1_2556 = Class58.method978("blaugr-Un:");
-    public static int anInt2557 = 0;
+    public static int chatboxScroll = 0;
     public static int anInt2558 = 0;
     public static int anInt2559 = 0;
     public static RSString aClass1_2560 = Class58.method978(": ");
@@ -108,7 +108,7 @@ public class GameObjectDefinition extends SubNode {
             arg0.method198((byte) -115, true, is, arg1, arg2);
         else {
             if(arg3 > -91)
-                anInt2557 = -20;
+                chatboxScroll = -20;
             byte[] is_6_ = arg2.method969(arg1, (byte) 103);
             arg0.method198((byte) -115, true, is_6_, arg1, arg2);
         }

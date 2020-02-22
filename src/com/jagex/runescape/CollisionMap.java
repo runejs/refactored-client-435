@@ -293,7 +293,7 @@ public class CollisionMap {
                             if(!class1.method87(81, Node.aClass1_948))
                                 Class44.method895(72, 0, class1, Class66.aClass1_1567);
                             else {
-                                RSString class1_27_ = (class1.method68(0, 0, class1.method60(Class43.aClass1_1027, 32)));
+                                RSString class1_27_ = (class1.method68(0, class1.method60(Class43.aClass1_1027, 32)));
                                 long l = class1_27_.method58((byte) 121);
                                 boolean bool = false;
                                 for(int i_28_ = 0; i_28_ < Class42.anInt1008; i_28_++) {
@@ -303,12 +303,12 @@ public class CollisionMap {
                                     }
                                 }
                                 if(!bool && (Class4.anInt182 ^ 0xffffffff) == -1) {
-                                    RSString class1_29_ = (class1.method68(0, (1 + class1.method60((Class43.aClass1_1027), 32)), -9 + class1.method59(-3136)));
+                                    RSString class1_29_ = (class1.method68((1 + class1.method60((Class43.aClass1_1027), 32)), -9 + class1.method59(-3136)));
                                     Class44.method895(122, 8, class1_29_, class1_27_);
                                 }
                             }
                         } else {
-                            RSString class1_30_ = (class1.method68(0, 0, class1.method60(Class43.aClass1_1027, 32)));
+                            RSString class1_30_ = (class1.method68(0, class1.method60(Class43.aClass1_1027, 32)));
                             long l = class1_30_.method58((byte) 120);
                             boolean bool = false;
                             for(int i_31_ = 0; ((Class42.anInt1008 ^ 0xffffffff) < (i_31_ ^ 0xffffffff)); i_31_++) {
@@ -321,7 +321,7 @@ public class CollisionMap {
                                 Class44.method895(120, 8, Class61.aClass1_1428, class1_30_);
                         }
                     } else {
-                        RSString class1_32_ = class1.method68(0, 0, class1.method60((Class43.aClass1_1027), 32));
+                        RSString class1_32_ = class1.method68(0, class1.method60((Class43.aClass1_1027), 32));
                         long l = class1_32_.method58((byte) 98);
                         boolean bool = false;
                         for(int i_33_ = 0; i_33_ < Class42.anInt1008; i_33_++) {
@@ -381,7 +381,7 @@ public class CollisionMap {
                     int i_41_ = Cache.outgoingbuffer.method476(255);
                     int i_42_ = Cache.outgoingbuffer.method471((byte) 114);
                     Player.anInt3267 = i_40_ >> 2097688801;
-                    Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.method787(i_42_, -7717, (i_40_ & 0x1) == 1, i_41_);
+                    Class40_Sub5_Sub13.localPlayer.method787(i_42_, -7717, (i_40_ & 0x1) == 1, i_41_);
                     Class57.packetid = -1;
                     return true;
                 }
@@ -908,7 +908,7 @@ public class CollisionMap {
                     int i_83_ = Cache.outgoingbuffer.method485((byte) -48);
                     Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_83_, (byte) -107);
                     class40_sub5_sub12.anInt2687 = 3;
-                    class40_sub5_sub12.anInt2673 = Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.aClass30_3282.method374(-20874);
+                    class40_sub5_sub12.anInt2673 = Class40_Sub5_Sub13.localPlayer.aClass30_3282.method374(-20874);
                     Class57.packetid = -1;
                     return true;
                 }
@@ -980,9 +980,9 @@ public class CollisionMap {
                         Class40_Sub3.anInt2021 = (1 + Class40_Sub3.anInt2021) % 100;
                         RSString class1 = Class54.method956(67, Cache.outgoingbuffer).method53(-16315);
                         if((i_90_ ^ 0xffffffff) == -3 || (i_90_ ^ 0xffffffff) == -4)
-                            Class44.method895(99, 7, class1, (Class40_Sub5_Sub17_Sub6.method832(88, (new RSString[]{(Class40_Sub5_Sub12.aClass1_2729), Class60.method991(-73, l).method85(-4305)}))));
+                            Class44.method895(99, 7, class1, (Class40_Sub5_Sub17_Sub6.method832(88, (new RSString[]{(Class40_Sub5_Sub12.goldCrown), Class60.method991(-73, l).method85(-4305)}))));
                         else if(i_90_ == 1)
-                            Class44.method895(97, 7, class1, (Class40_Sub5_Sub17_Sub6.method832(126, (new RSString[]{Class51.aClass1_1210, Class60.method991(-46, l).method85(-4305)}))));
+                            Class44.method895(97, 7, class1, (Class40_Sub5_Sub17_Sub6.method832(126, (new RSString[]{Class51.whiteCrown, Class60.method991(-46, l).method85(-4305)}))));
                         else
                             Class44.method895(72, 3, class1, Class60.method991(-55, l).method85(-4305));
                     }
@@ -1134,7 +1134,7 @@ public class CollisionMap {
             } catch(java.io.IOException ioexception) {
                 Class59.method982(2578);
             } catch(Exception exception) {
-                String string = ("T2 - " + Class57.packetid + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + Class40_Sub5_Sub12.packetsize + "," + (Class40_Sub5_Sub2.anInt2307 + (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0])) + "," + ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]) + Class26.anInt635) + " - ");
+                String string = ("T2 - " + Class57.packetid + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + Class40_Sub5_Sub12.packetsize + "," + (Class40_Sub5_Sub2.anInt2307 + (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0])) + "," + ((Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]) + Class26.anInt635) + " - ");
                 for(int i = 0; (((Class40_Sub5_Sub12.packetsize ^ 0xffffffff) < (i ^ 0xffffffff)) && (i ^ 0xffffffff) > -51); i++)
                     string += (Cache.outgoingbuffer.buffer[i] + ",");
                 Class6.method169(string, (byte) -120, exception);

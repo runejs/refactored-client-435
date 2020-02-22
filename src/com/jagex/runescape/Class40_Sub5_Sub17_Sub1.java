@@ -187,7 +187,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
 
     }
 
-    public static RSFont method760(int arg0, byte arg1, Class6 arg2, int arg3) {
+    public static TypeFace method760(int arg0, byte arg1, Class6 arg2, int arg3) {
 
         anInt2978++;
             int i = -104 / ((-22 - arg1) / 53);
@@ -418,8 +418,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 }
                 if(((Floor.tile_flags[Player.anInt3267][i_23_][i_22_]) & 0x4) != 0)
                     i = Player.anInt3267;
-                int i_24_ = ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) >> -1546085145);
-                int i_25_ = ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) >> -26166617);
+                int i_24_ = ((Class40_Sub5_Sub13.localPlayer.anInt3098) >> -1546085145);
+                int i_25_ = ((Class40_Sub5_Sub13.localPlayer.anInt3089) >> -26166617);
                 int i_26_;
                 if(i_24_ <= i_23_)
                     i_26_ = -i_24_ + i_23_;
@@ -481,7 +481,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             }
             if(arg0 > -101)
                 aClass6_Sub1_3000 = null;
-            if(((Floor.tile_flags[Player.anInt3267][(Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) >> -1782384953][(Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) >> -1953891737]) & 0x4) != 0)
+        if(((Floor.tile_flags[Player.anInt3267][(Class40_Sub5_Sub13.localPlayer.anInt3098) >> -1782384953][(Class40_Sub5_Sub13.localPlayer.anInt3089) >> -1953891737]) & 0x4) != 0)
                 i = Player.anInt3267;
             return i;
 

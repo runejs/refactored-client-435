@@ -28,7 +28,7 @@ public class Class51 {
     public static RSString aClass1_1207;
     public static RSString aClass1_1208;
     public static RSString aClass1_1209;
-    public static RSString aClass1_1210;
+    public static RSString whiteCrown;
 
     static {
         anInt1197 = 0;
@@ -39,7 +39,7 @@ public class Class51 {
         aClass1_1208 = aClass1_1207;
         anInt1195 = 0;
         aClass1_1209 = Class58.method978("glow3:");
-        aClass1_1210 = Class58.method978("@cr1@");
+        whiteCrown = Class58.method978("@cr1@");
         aLong1203 = 0L;
         aClass1_1196 = aClass1_1209;
     }
@@ -74,7 +74,7 @@ public class Class51 {
         aClass1_1207 = null;
             aClass1_1200 = null;
             aClass1_1196 = null;
-            aClass1_1210 = null;
+        whiteCrown = null;
             aClass1_1201 = null;
             aClass1_1208 = null;
             anIntArray1198 = null;

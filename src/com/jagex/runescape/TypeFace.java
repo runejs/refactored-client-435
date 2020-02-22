@@ -2,7 +2,7 @@ package com.jagex.runescape;
 
 import java.util.Random;
 
-public class RSFont extends Rasterizer {
+public class TypeFace extends Rasterizer {
     public static RSString aClass1_2893;
     public static RSString aClass1_2894;
     public static RSString aClass1_2895;
@@ -53,7 +53,7 @@ public class RSFont extends Rasterizer {
     public int anInt2919;
     public int anInt2920;
 
-    public RSFont(int[] arg0, int[] arg1, int[] arg2, int[] arg3, byte[][] arg4) {
+    public TypeFace(int[] arg0, int[] arg1, int[] arg2, int[] arg3, byte[][] arg4) {
         anInt2910 = 0;
         aRandom2902 = new Random();
         aBoolean2918 = false;
@@ -196,12 +196,12 @@ public class RSFont extends Rasterizer {
             for(int i_9_ = 0; i_9_ < i_8_; i_9_++) {
                 int i_10_ = arg0.method55(i_9_, false);
                 if(i_10_ == 64 && i_9_ + 4 < i_8_ && arg0.method55(i_9_ + 4, false) == 64) {
-                    class1_6_ = arg0.method68(0, i_9_, i_9_ + 5);
+                    class1_6_ = arg0.method68(i_9_, i_9_ + 5);
                     class1.method72(class1_6_, (byte) -87);
                     i_9_ += 4;
                 } else if(i_10_ == 92 && i_9_ + 1 < i_8_ && arg0.method55(i_9_ + 1, false) == 110) {
                     class1_6_ = null;
-                    aClass1Array2897[i_7_++] = class1.method68(0, i_3_, class1.method59(-3136)).method89(false);
+                    aClass1Array2897[i_7_++] = class1.method68(i_3_, class1.method59(-3136)).method89(false);
                     i_3_ = class1.method59(-3136);
                     i = 0;
                     i_4_ = -1;
@@ -214,7 +214,7 @@ public class RSFont extends Rasterizer {
                         i_5_ = i;
                     }
                     if(bool && i > arg3 && i_4_ >= 0) {
-                        aClass1Array2897[i_7_++] = class1.method68(0, i_3_, i_4_).method89(false);
+                        aClass1Array2897[i_7_++] = class1.method68(i_3_, i_4_).method89(false);
                         i_3_ = i_4_;
                         i_4_ = -1;
                         i -= i_5_;
@@ -226,7 +226,7 @@ public class RSFont extends Rasterizer {
                 }
             }
             if(class1.method59(-3136) > i_3_)
-                aClass1Array2897[i_7_++] = class1.method68(0, i_3_, class1.method59(-3136)).method89(false);
+                aClass1Array2897[i_7_++] = class1.method68(i_3_, class1.method59(-3136)).method89(false);
             if(arg8 == 3 && i_7_ == 1)
                 arg8 = 1;
             int i_11_;
@@ -371,7 +371,7 @@ public class RSFont extends Rasterizer {
             arg2 -= anInt2910;
             for(int i_29_ = 0; i_29_ < arg0.anInt1680; i_29_++) {
                 if(arg0.aByteArray1692[i_29_] == 64 && i_29_ + 4 < arg0.anInt1680 && arg0.aByteArray1692[i_29_ + 4] == 64) {
-                    int i_30_ = method670(arg0.method68(0, i_29_ + 1, i_29_ + 4));
+                    int i_30_ = method670(arg0.method68(i_29_ + 1, i_29_ + 4));
                     if(i_30_ != -1)
                         arg3 = i_30_;
                     i_29_ += 4;
@@ -448,7 +448,7 @@ public class RSFont extends Rasterizer {
             arg2 -= anInt2910;
             for(int i_39_ = 0; i_39_ < arg0.anInt1680; i_39_++) {
                 if(arg0.aByteArray1692[i_39_] == 64 && i_39_ + 4 < arg0.anInt1680 && arg0.aByteArray1692[i_39_ + 4] == 64) {
-                    int i_40_ = method670(arg0.method68(0, i_39_ + 1, i_39_ + 4));
+                    int i_40_ = method670(arg0.method68(i_39_ + 1, i_39_ + 4));
                     if(i_40_ != -1)
                         arg3 = i_40_;
                     i_39_ += 4;
@@ -474,7 +474,7 @@ public class RSFont extends Rasterizer {
             arg2 -= anInt2910;
             for(int i_42_ = 0; i_42_ < arg0.anInt1680; i_42_++) {
                 if(arg0.aByteArray1692[i_42_] == 64 && i_42_ + 4 < arg0.anInt1680 && arg0.aByteArray1692[i_42_ + 4] == 64) {
-                    int i_43_ = method670(arg0.method68(0, i_42_ + 1, i_42_ + 4));
+                    int i_43_ = method670(arg0.method68(i_42_ + 1, i_42_ + 4));
                     if(i_43_ != -1)
                         arg3 = i_43_;
                     i_42_ += 4;
@@ -503,11 +503,11 @@ public class RSFont extends Rasterizer {
     }
 
     public void method686(RSString arg0, int arg1, int arg2, int arg3) {
-        method690(arg0, arg1 - method685(arg0) / 2, arg2, arg3);
+        drawString(arg0, arg1 - method685(arg0) / 2, arg2, arg3);
     }
 
     public void method687(RSString arg0, int arg1, int arg2, int arg3) {
-        method690(arg0, arg1 - method685(arg0), arg2, arg3);
+        drawString(arg0, arg1 - method685(arg0), arg2, arg3);
     }
 
     public void method688(RSString arg0, int arg1, int arg2, int arg3, boolean arg4) {
@@ -518,14 +518,14 @@ public class RSFont extends Rasterizer {
         return anIntArray2907[arg0 & 0xff];
     }
 
-    public void method690(RSString arg0, int arg1, int arg2, int arg3) {
-        if(arg0 != null) {
-            arg2 -= anInt2910;
-            for(int i = 0; i < arg0.anInt1680; i++) {
-                int i_46_ = arg0.aByteArray1692[i] & 0xff;
+    public void drawString(RSString str, int x, int y, int colour) {
+        if(str != null) {
+            y -= anInt2910;
+            for(int i = 0; i < str.anInt1680; i++) {
+                int i_46_ = str.aByteArray1692[i] & 0xff;
                 if(i_46_ != 32)
-                    method682(aByteArrayArray2914[i_46_], arg1, arg2 + anIntArray2911[i_46_], anIntArray2907[i_46_], anIntArray2915[i_46_], arg3);
-                arg1 += anIntArray2907[i_46_];
+                    method682(aByteArrayArray2914[i_46_], x, y + anIntArray2911[i_46_], anIntArray2907[i_46_], anIntArray2915[i_46_], colour);
+                x += anIntArray2907[i_46_];
             }
         }
     }

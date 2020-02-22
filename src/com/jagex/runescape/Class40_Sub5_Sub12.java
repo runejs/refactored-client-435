@@ -30,7 +30,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public static RSString aClass1_2716;
     public static int anInt2717;
     public static int anInt2724;
-    public static RSString aClass1_2729;
+    public static RSString goldCrown;
     public static int anInt2735;
     public static int anInt2739;
     public static RSString aClass1_2740;
@@ -38,7 +38,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
 
     static {
         aClass1_2678 = Class58.method978("Enter name of friend to add to list");
-        aClass1_2729 = Class58.method978("@cr2@");
+        goldCrown = Class58.method978("@cr2@");
         aClass1_2684 = aClass1_2706;
         aClass1_2691 = Class58.method978("::errortest");
         aClass1_2716 = Class58.method978("Fehler beim Laden Ihres Charakter)2Profils");
@@ -250,7 +250,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
             aClass1_2706 = null;
             aClass1_2686 = null;
             aClass1_2691 = null;
-            aClass1_2729 = null;
+        goldCrown = null;
             aClass1_2637 = null;
             aClass1_2674 = null;
             aClass1_2740 = null;
@@ -684,13 +684,13 @@ public class Class40_Sub5_Sub12 extends SubNode {
 
     }
 
-    public RSFont method647(byte arg0) {
+    public TypeFace method647(byte arg0) {
 
         Class40_Sub13.aBoolean2177 = false;
             anInt2735++;
             if((anInt2642 ^ 0xffffffff) == -65536)
                 return null;
-            RSFont class40_sub5_sub14_sub1 = ((RSFont) Class67.aClass9_1582.method231((long) anInt2642, (byte) 67));
+        TypeFace class40_sub5_sub14_sub1 = ((TypeFace) Class67.aClass9_1582.method231((long) anInt2642, (byte) 67));
             if(arg0 != 34)
                 return null;
             if(class40_sub5_sub14_sub1 != null)

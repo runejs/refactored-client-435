@@ -39,7 +39,7 @@ public abstract class Actor extends Renderable {
     public static Class6_Sub1 aClass6_Sub1_3157;
     public static RSString aClass1_3158;
     public static RSString aClass1_3159;
-    public static RSString[] aClass1Array3160;
+    public static RSString[] chatMessages;
 
     static {
         rsaModulus = (new BigInteger("119568088839203297999728368933573315070738693395974011872885408638642676871679245723887367232256427712869170521351089799352546294030059890127723509653145359924771433131004387212857375068629466435244653901851504845054452735390701003613803443469723435116497545687393297329052988014281948392136928774011011998343"));
@@ -51,7 +51,7 @@ public abstract class Actor extends Renderable {
         aClass1_3159 = aClass1_3155;
         anIntArray3149 = new int[1000];
         aClass1_3158 = Class58.method978("Registrierter Benutzer");
-        aClass1Array3160 = new RSString[100];
+        chatMessages = new RSString[100];
     }
 
     public boolean[] aBooleanArray3072;
@@ -313,15 +313,15 @@ public abstract class Actor extends Renderable {
                 Class24.anIntArray578[anInt3153++] = 2047;
             else if((i_21_ ^ 0xffffffff) == -2) {
                 int i_22_ = Cache.outgoingbuffer.putBits(3, (byte) -65);
-                Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.method782(i_22_, (byte) -96, false);
+                Class40_Sub5_Sub13.localPlayer.method782(i_22_, (byte) -96, false);
                 int i_23_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
                 if((i_23_ ^ 0xffffffff) == -2)
                     Class24.anIntArray578[anInt3153++] = 2047;
             } else if(i_21_ == 2) {
                 int i_24_ = Cache.outgoingbuffer.putBits(3, (byte) -65);
-                Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.method782(i_24_, (byte) -96, true);
+                Class40_Sub5_Sub13.localPlayer.method782(i_24_, (byte) -96, true);
                 int i_25_ = Cache.outgoingbuffer.putBits(3, (byte) -65);
-                Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.method782(i_25_, (byte) -96, true);
+                Class40_Sub5_Sub13.localPlayer.method782(i_25_, (byte) -96, true);
                 int i_26_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
                 if((i_26_ ^ 0xffffffff) == -2)
                     Class24.anIntArray578[anInt3153++] = 2047;
@@ -333,7 +333,7 @@ public abstract class Actor extends Renderable {
                     Class24.anIntArray578[anInt3153++] = 2047;
                 int i_29_ = Cache.outgoingbuffer.putBits(7, (byte) -65);
                 int i_30_ = Cache.outgoingbuffer.putBits(7, (byte) -65);
-                Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.method787(i_30_, -7717, (i_27_ ^ 0xffffffff) == -2, i_29_);
+                Class40_Sub5_Sub13.localPlayer.method787(i_30_, -7717, (i_27_ ^ 0xffffffff) == -2, i_29_);
             } else if(arg0 != true)
                 method781(-5, -11, -11, 113, 49, 123);
         }
@@ -347,7 +347,7 @@ public abstract class Actor extends Renderable {
             aClass1_3154 = null;
             aClass1_3138 = null;
             aClass1_3114 = null;
-            aClass1Array3160 = null;
+        chatMessages = null;
             aClass40_Sub5_Sub17_Sub4_Sub1Array3156 = null;
             aClass6_3150 = null;
             aClass1_3155 = null;
@@ -407,7 +407,7 @@ public abstract class Actor extends Renderable {
                 }
                 Player.anInt3267 = arg5;
                 int i_40_ = 0;
-                Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.method787(arg4, -7717, false, arg0);
+            Class40_Sub5_Sub13.localPlayer.method787(arg4, -7717, false, arg0);
                 int i_41_ = 104;
                 int i_42_ = 1;
                 if((i_34_ ^ 0xffffffff) > -1) {

@@ -50,10 +50,10 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
     public static void method775(boolean arg0) {
 
         anInt3064++;
-            int i = ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) + Class48.anInt1126);
+        int i = ((Class40_Sub5_Sub13.localPlayer.anInt3089) + Class48.anInt1126);
             if(arg0 != false)
                 method778(true, null);
-            int i_0_ = (Buffer.anInt1976 + (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098));
+        int i_0_ = (Buffer.anInt1976 + (Class40_Sub5_Sub13.localPlayer.anInt3098));
             if((Class40_Sub5_Sub6.anInt2437 - i_0_ ^ 0xffffffff) > 499 || -i_0_ + Class40_Sub5_Sub6.anInt2437 > 500 || Class34.anInt849 + -i < -500 || -i + Class34.anInt849 > 500) {
                 Class34.anInt849 = i;
                 Class40_Sub5_Sub6.anInt2437 = i_0_;
@@ -127,9 +127,9 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                     i_12_ = (Class51.mapZoomOffset + 256) * i_12_ >> -413658424;
                     int i_14_ = i_10_ * i_12_ + (i * i_13_) >> 843700395;
                     int i_15_ = i_13_ * i_10_ - i * i_12_ >> -1318258005;
-                    int i_16_ = ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) + i_14_ >> -2121665369);
-                    int i_17_ = (-i_15_ + (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) >> -208961177);
-                    boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), i_16_, (byte) 125, 0, true, 0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), i_17_, 1));
+                    int i_16_ = ((Class40_Sub5_Sub13.localPlayer.anInt3098) + i_14_ >> -2121665369);
+                    int i_17_ = (-i_15_ + (Class40_Sub5_Sub13.localPlayer.anInt3089) >> -208961177);
+                    boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), i_16_, (byte) 125, 0, true, 0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), i_17_, 1));
                     if(bool) {
                         Class32.packetBuffer.put(i, (byte) -128);
                         Class32.packetBuffer.put(i_10_, (byte) -128);
@@ -138,8 +138,8 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                         Class32.packetBuffer.put(Class43.cameraYawOffset, (byte) -128);
                         Class32.packetBuffer.put(Class51.mapZoomOffset, (byte) -128);
                         Class32.packetBuffer.put(89, (byte) -128);
-                        Class32.packetBuffer.method474((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098), 120);
-                        Class32.packetBuffer.method474((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089), -125);
+                        Class32.packetBuffer.method474((Class40_Sub5_Sub13.localPlayer.anInt3098), 120);
+                        Class32.packetBuffer.method474((Class40_Sub5_Sub13.localPlayer.anInt3089), -125);
                         Class32.packetBuffer.put(Class40_Sub5_Sub15.anInt2778, (byte) -128);
                         Class32.packetBuffer.put(63, (byte) -128);
                     }

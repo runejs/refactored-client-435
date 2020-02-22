@@ -64,7 +64,7 @@ public class Class40_Sub2 extends Node {
             }
             if(arg1 != -32624)
                 aClass1_1991 = null;
-            return arg0.method63((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.aClass1_3278), true);
+        return arg0.method63((Class40_Sub5_Sub13.localPlayer.playerName), true);
 
     }
 

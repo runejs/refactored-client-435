@@ -107,8 +107,8 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             int i_3_ = Cache.outgoingbuffer.method476(255);
             int i_4_ = Cache.outgoingbuffer.method471((byte) 117);
             int i_5_ = Cache.outgoingbuffer.currentPosition;
-            if(arg0.aClass1_3278 != null && arg0.aClass30_3282 != null) {
-                long l = arg0.aClass1_3278.method58((byte) 101);
+            if(arg0.playerName != null && arg0.aClass30_3282 != null) {
+                long l = arg0.playerName.method58((byte) 101);
                 boolean bool = false;
                 if(i_3_ <= 1) {
                     for(int i_6_ = 0; i_6_ < Class42.anInt1008; i_6_++) {
@@ -128,11 +128,11 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
                     arg0.anInt3123 = i & 0xff;
                     arg0.anInt3102 = i >> 8;
                     if((i_3_ ^ 0xffffffff) == -3 || (i_3_ ^ 0xffffffff) == -4)
-                        Class44.method895(68, 1, class1, (Class40_Sub5_Sub17_Sub6.method832(75, (new RSString[]{Class40_Sub5_Sub12.aClass1_2729, arg0.aClass1_3278}))));
+                        Class44.method895(68, 1, class1, (Class40_Sub5_Sub17_Sub6.method832(75, (new RSString[]{Class40_Sub5_Sub12.goldCrown, arg0.playerName}))));
                     else if((i_3_ ^ 0xffffffff) == -2)
-                        Class44.method895(123, 1, class1, (Class40_Sub5_Sub17_Sub6.method832(-79, (new RSString[]{Class51.aClass1_1210, arg0.aClass1_3278}))));
+                        Class44.method895(123, 1, class1, (Class40_Sub5_Sub17_Sub6.method832(-79, (new RSString[]{Class51.whiteCrown, arg0.playerName}))));
                     else
-                        Class44.method895(127, 2, class1, arg0.aClass1_3278);
+                        Class44.method895(127, 2, class1, arg0.playerName);
                 }
             }
             Cache.outgoingbuffer.currentPosition = i_4_ + i_5_;
@@ -160,11 +160,11 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
         if((0x80 & arg2 ^ 0xffffffff) != -1) {
             arg0.aClass1_3090 = Cache.outgoingbuffer.getRSString(-10721);
             if(arg0.aClass1_3090.method55(0, false) != 126) {
-                if(arg0 == Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760)
-                    Class44.method895(99, 2, arg0.aClass1_3090, arg0.aClass1_3278);
+                if(arg0 == Class40_Sub5_Sub13.localPlayer)
+                    Class44.method895(99, 2, arg0.aClass1_3090, arg0.playerName);
             } else {
-                arg0.aClass1_3090 = arg0.aClass1_3090.method50((byte) 95, 1);
-                Class44.method895(120, 2, arg0.aClass1_3090, arg0.aClass1_3278);
+                arg0.aClass1_3090 = arg0.aClass1_3090.substring(1);
+                Class44.method895(120, 2, arg0.aClass1_3090, arg0.playerName);
             }
             arg0.anInt3078 = 150;
             arg0.anInt3102 = 0;

@@ -42,20 +42,20 @@ public class Class40_Sub11 extends Node {
                 anInt2158 = 53;
             int i = 0;
             for(int i_0_ = 0; i_0_ < 100; i_0_++) {
-                if(Actor.aClass1Array3160[i_0_] != null) {
-                    int i_1_ = Class66.anIntArray1569[i_0_];
-                    int i_2_ = 4 + GameObjectDefinition.anInt2557 + -(i * 14) + 70;
+                if(Actor.chatMessages[i_0_] != null) {
+                    int i_1_ = Class66.chatTypes[i_0_];
+                    int i_2_ = 4 + GameObjectDefinition.chatboxScroll + -(i * 14) + 70;
                     if(i_2_ < -20)
                         break;
                     if(i_1_ == 0)
                         i++;
-                    RSString class1 = Renderable.aClass1Array2856[i_0_];
-                    if(class1 != null && class1.method75((byte) 116, Class51.aClass1_1210))
-                        class1 = class1.method50((byte) 95, 5);
-                    if(class1 != null && class1.method75((byte) 116, Class40_Sub5_Sub12.aClass1_2729))
-                        class1 = class1.method50((byte) 95, 5);
+                    RSString class1 = Renderable.chatPlayerNames[i_0_];
+                    if(class1 != null && class1.startsWith((byte) 116, Class51.whiteCrown))
+                        class1 = class1.substring(5);
+                    if(class1 != null && class1.startsWith((byte) 116, Class40_Sub5_Sub12.goldCrown))
+                        class1 = class1.substring(5);
                     if((i_1_ == 1 || i_1_ == 2) && ((i_1_ ^ 0xffffffff) == -2 || Class35.anInt1737 == 0 || (Class35.anInt1737 == 1 && Class40_Sub2.method523(class1, -32624)))) {
-                        if(arg1 > i_2_ - 14 && arg1 <= i_2_ && !(class1.method54((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.aClass1_3278), 122))) {
+                        if(arg1 > i_2_ - 14 && arg1 <= i_2_ && !(class1.method54((Class40_Sub5_Sub13.localPlayer.playerName), 122))) {
                             Class40_Sub5_Sub6.anInt2453++;
                             if((Class19.anInt493 ^ 0xffffffff) <= -2) {
                                 Floor.method558(0, Class22_Sub1.aClass1_1865, 0, -501, 0, 28, (Class40_Sub5_Sub17_Sub6.method832(arg2 ^ ~0x18, new RSString[]{Class26.aClass1_620, class1})));

@@ -79,7 +79,7 @@ public class Class27 {
             int i_0_ = 0x7ff & Class58.cameraHorizontal + Class57.anInt1342;
             if(Class40_Sub5_Sub17_Sub1.aBooleanArray2975[4] && 128 + RSApplet.anIntArray2[4] > i)
                 i = 128 + RSApplet.anIntArray2[4];
-            Class49.method929(i, Class40_Sub5_Sub6.anInt2437, -50 + (Class37.method430((byte) -123, Player.anInt3267, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098), (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089))), i_0_, Class34.anInt849, -1, 3 * i + 600);
+            Class49.method929(i, Class40_Sub5_Sub6.anInt2437, -50 + (Class37.method430((byte) -123, Player.anInt3267, (Class40_Sub5_Sub13.localPlayer.anInt3098), (Class40_Sub5_Sub13.localPlayer.anInt3089))), i_0_, Class34.anInt849, -1, 3 * i + 600);
         }
         int i;
         if(!Class39.aBoolean906)
@@ -138,7 +138,7 @@ public class Class27 {
         Class26.anInt627 = i_4_;
         Class32.anInt769 = i_3_;
         if(arg0 >= -98)
-            method355(-36, 10, 23, 0, 3, -27);
+            drawScrollBar(-36, 10, 23, 0, 3, -27);
     }
 
     public static void method354(byte arg0) {
@@ -167,7 +167,7 @@ public class Class27 {
 
     }
 
-    public static void method355(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public static void drawScrollBar(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 
         int i = (-32 + arg4) * arg4 / arg2;
             Class6.aClass40_Sub5_Sub14_Sub2Array215[arg0].method692(arg3, arg5);
@@ -252,10 +252,10 @@ public class Class27 {
                     Class40_Sub5_Sub17_Sub1.anInt2999 = 3;
             }
             if(i_11_ == 38) {
-                boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), i, (byte) 105, 0, false, 0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), i_10_, 2));
+                boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), i, (byte) 105, 0, false, 0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), i_10_, 2));
                 Class68.anInt1622++;
                 if(!bool)
-                    bool = (Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), i, (byte) 92, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), i_10_, 2));
+                    bool = (Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), i, (byte) 92, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), i_10_, 2));
                 Floor.anInt2319 = 0;
                 Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                 Class40_Sub11.anInt2163 = Class57.anInt1338;
@@ -286,7 +286,7 @@ public class Class27 {
                 Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     Class40_Sub5_Sub4.anInt2355++;
-                    Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), class40_sub5_sub17_sub4_sub1.anIntArray3088[0], (byte) 112, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), class40_sub5_sub17_sub4_sub1.anIntArray3135[0], 2);
+                    Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), class40_sub5_sub17_sub4_sub1.anIntArray3088[0], (byte) 112, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), class40_sub5_sub17_sub4_sub1.anIntArray3135[0], 2);
                     Class40_Sub11.anInt2163 = Class57.anInt1338;
                     Floor.anInt2319 = 0;
                     Class45.anInt1075 = 2;
@@ -300,14 +300,14 @@ public class Class27 {
                 RSString class1 = Landscape.aClass1Array1184[arg1];
                 int i_13_ = class1.method60(Class26.aClass1_620, 32);
                 if((i_13_ ^ 0xffffffff) != 0) {
-                    class1 = class1.method50((byte) 95, i_13_ + 5).method89(false);
+                    class1 = class1.substring(i_13_ + 5).method89(false);
                     RSString class1_14_ = class1.method62(57).method85(-4305);
                     boolean bool = false;
                     for(int i_15_ = 0; i_15_ < Class60.anInt1407; i_15_++) {
                         Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_15_]]);
-                        if(class40_sub5_sub17_sub4_sub1 != null && (class40_sub5_sub17_sub4_sub1.aClass1_3278 != null) && class40_sub5_sub17_sub4_sub1.aClass1_3278.method63(class1_14_, true)) {
+                        if(class40_sub5_sub17_sub4_sub1 != null && (class40_sub5_sub17_sub4_sub1.playerName != null) && class40_sub5_sub17_sub4_sub1.playerName.method63(class1_14_, true)) {
                             bool = true;
-                            Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3088[0]), (byte) 114, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3135[0]), 2);
+                            Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3088[0]), (byte) 114, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3135[0]), 2);
                             if(i_11_ == 26) {
                                 Class32.packetBuffer.putPacket(11453, 96);
                                 Class32.packetBuffer.method493(Class57.anIntArray1334[i_15_], -128);
@@ -386,7 +386,7 @@ public class Class27 {
             if(i_11_ == 10) {
                 Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
                 if(class40_sub5_sub17_sub4_sub1 != null) {
-                    Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), class40_sub5_sub17_sub4_sub1.anIntArray3088[0], (byte) 109, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), class40_sub5_sub17_sub4_sub1.anIntArray3135[0], 2);
+                    Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), class40_sub5_sub17_sub4_sub1.anIntArray3088[0], (byte) 109, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), class40_sub5_sub17_sub4_sub1.anIntArray3135[0], 2);
                     Class40_Sub11.anInt2163 = Class57.anInt1338;
                     Class52.anInt1227++;
                     Class45.anInt1075 = 2;
@@ -400,7 +400,7 @@ public class Class27 {
                 Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     Class29.anInt677++;
-                    Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), class40_sub5_sub17_sub4_sub1.anIntArray3088[0], (byte) 92, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), class40_sub5_sub17_sub4_sub1.anIntArray3135[0], 2);
+                    Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), class40_sub5_sub17_sub4_sub1.anIntArray3088[0], (byte) 92, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), class40_sub5_sub17_sub4_sub1.anIntArray3135[0], 2);
                     Floor.anInt2319 = 0;
                     Class45.anInt1075 = 2;
                     Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
@@ -428,7 +428,7 @@ public class Class27 {
             if(i_11_ == 22) {
                 Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
                 if(class40_sub5_sub17_sub4_sub1 != null) {
-                    Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), class40_sub5_sub17_sub4_sub1.anIntArray3088[0], (byte) 94, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), class40_sub5_sub17_sub4_sub1.anIntArray3135[0], 2);
+                    Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), class40_sub5_sub17_sub4_sub1.anIntArray3088[0], (byte) 94, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), class40_sub5_sub17_sub4_sub1.anIntArray3135[0], 2);
                     Class40_Sub11.anInt2163 = Class57.anInt1338;
                     Class40_Sub5_Sub6.anInt2448++;
                     Class45.anInt1075 = 2;
@@ -454,9 +454,9 @@ public class Class27 {
             } else {
                 if((i_11_ ^ 0xffffffff) == -16) {
                     GameObject.anInt3020++;
-                    boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), i, (byte) 102, 0, false, 0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), i_10_, 2));
+                    boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), i, (byte) 102, 0, false, 0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), i_10_, 2));
                     if(!bool)
-                        bool = (Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), i, (byte) 117, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), i_10_, 2));
+                        bool = (Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), i, (byte) 117, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), i_10_, 2));
                     Floor.anInt2319 = 0;
                     Class45.anInt1075 = 2;
                     Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
@@ -498,7 +498,7 @@ public class Class27 {
                     RSString class1 = Landscape.aClass1Array1184[arg1];
                     int i_18_ = class1.method60(Class26.aClass1_620, 32);
                     if((i_18_ ^ 0xffffffff) != 0) {
-                        long l = class1.method50((byte) 95, 5 + i_18_).method89(false).method58((byte) 107);
+                        long l = class1.substring(5 + i_18_).method89(false).method58((byte) 107);
                         int i_19_ = -1;
                         for(int i_20_ = 0; i_20_ < Class40_Sub5_Sub17_Sub3.anInt3060; i_20_++) {
                             if((l ^ 0xffffffffffffffffL) == (Class59.aLongArray1397[i_20_] ^ 0xffffffffffffffffL)) {
@@ -538,7 +538,7 @@ public class Class27 {
                     Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Class40_Sub13.anInt2180++;
-                        Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), class40_sub5_sub17_sub4_sub2.anIntArray3088[0], (byte) 107, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), class40_sub5_sub17_sub4_sub2.anIntArray3135[0], 2);
+                        Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), class40_sub5_sub17_sub4_sub2.anIntArray3088[0], (byte) 107, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), class40_sub5_sub17_sub4_sub2.anIntArray3135[0], 2);
                         Floor.anInt2319 = 0;
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
                         Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
@@ -550,7 +550,7 @@ public class Class27 {
                 if((i_11_ ^ 0xffffffff) == -50) {
                     Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
-                        Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), class40_sub5_sub17_sub4_sub2.anIntArray3088[0], (byte) 112, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), class40_sub5_sub17_sub4_sub2.anIntArray3135[0], 2);
+                        Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), class40_sub5_sub17_sub4_sub2.anIntArray3088[0], (byte) 112, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), class40_sub5_sub17_sub4_sub2.anIntArray3135[0], 2);
                         Class35.anInt1719++;
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
                         Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
@@ -585,7 +585,7 @@ public class Class27 {
                     Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Class45.anInt1060++;
-                        Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), class40_sub5_sub17_sub4_sub2.anIntArray3088[0], (byte) 126, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), class40_sub5_sub17_sub4_sub2.anIntArray3135[0], 2);
+                        Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), class40_sub5_sub17_sub4_sub2.anIntArray3088[0], (byte) 126, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), class40_sub5_sub17_sub4_sub2.anIntArray3135[0], 2);
                         Floor.anInt2319 = 0;
                         Class45.anInt1075 = 2;
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
@@ -667,7 +667,7 @@ public class Class27 {
                     if(i_11_ == 12) {
                         Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                         if(class40_sub5_sub17_sub4_sub2 != null) {
-                            Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3088[0]), (byte) 113, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3135[0]), 2);
+                            Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3088[0]), (byte) 113, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3135[0]), 2);
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
                             Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                             Class40_Sub5_Sub4.anInt2369++;
@@ -679,9 +679,9 @@ public class Class27 {
                     }
                     if(i_11_ == 2) {
                         Class40_Sub5_Sub17_Sub3.anInt3061++;
-                        boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), i, (byte) 108, 0, false, 0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), i_10_, 2));
+                        boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), i, (byte) 108, 0, false, 0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), i_10_, 2));
                         if(!bool)
-                            bool = (Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), i, (byte) 114, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), i_10_, 2));
+                            bool = (Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), i, (byte) 114, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), i_10_, 2));
                         Class45.anInt1075 = 2;
                         Floor.anInt2319 = 0;
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
@@ -692,9 +692,9 @@ public class Class27 {
                         Class32.packetBuffer.method474(i_12_, 13);
                     }
                     if((i_11_ ^ 0xffffffff) == -4) {
-                        boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), i, (byte) 117, 0, false, 0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), i_10_, 2));
+                        boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), i, (byte) 117, 0, false, 0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), i_10_, 2));
                         if(!bool)
-                            bool = (Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), i, (byte) 100, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), i_10_, 2));
+                            bool = (Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), i, (byte) 100, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), i_10_, 2));
                         Floor.anInt2319 = 0;
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
                         Class6_Sub1.anInt1792++;
@@ -709,7 +709,7 @@ public class Class27 {
                         Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Class40_Sub5_Sub1.anInt2269++;
-                            Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3088[0]), (byte) 112, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3135[0]), 2);
+                            Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3088[0]), (byte) 112, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3135[0]), 2);
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
                             Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                             Floor.anInt2319 = 0;
@@ -723,7 +723,7 @@ public class Class27 {
                         RSString class1 = Landscape.aClass1Array1184[arg1];
                         int i_21_ = class1.method60(Class26.aClass1_620, 32);
                         if(i_21_ != -1) {
-                            long l = class1.method50((byte) 95, i_21_ + 5).method89(false).method58((byte) 96);
+                            long l = class1.substring(i_21_ + 5).method89(false).method58((byte) 96);
                             if(i_11_ == 45)
                                 Class40_Sub5_Sub9.method617(l, (byte) -104);
                             if((i_11_ ^ 0xffffffff) == -52)
@@ -738,7 +738,7 @@ public class Class27 {
                         Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
                         if(class40_sub5_sub17_sub4_sub1 != null) {
                             Class51.anInt1189++;
-                            Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3088[0]), (byte) 94, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3135[0]), 2);
+                            Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3088[0]), (byte) 94, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3135[0]), 2);
                             Class45.anInt1075 = 2;
                             Floor.anInt2319 = 0;
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
@@ -826,7 +826,7 @@ public class Class27 {
                     if(i_11_ == 41) {
                         Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
                         if(class40_sub5_sub17_sub4_sub1 != null) {
-                            Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3088[0]), (byte) 117, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3135[0]), 2);
+                            Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3088[0]), (byte) 117, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3135[0]), 2);
                             Class45.anInt1075 = 2;
                             Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
@@ -845,7 +845,7 @@ public class Class27 {
                             else {
                                 PacketBuffer.method516(95);
                                 if((Class34.anInt854 ^ 0xffffffff) != 0) {
-                                    Class66.aClass1_1550 = class1.method50((byte) 95, i_22_ + 5).method89(false);
+                                    Class66.aClass1_1550 = class1.substring(i_22_ + 5).method89(false);
                                     Class66.anInt1548 = Class66.anInt1560 = Class34.anInt854;
                                     Class67.aBoolean1601 = false;
                                 }
@@ -853,10 +853,10 @@ public class Class27 {
                         }
                     }
                     if(i_11_ == 8) {
-                        boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), i, (byte) 119, 0, false, 0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), i_10_, 2));
+                        boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), i, (byte) 119, 0, false, 0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), i_10_, 2));
                         Class26.anInt625++;
                         if(!bool)
-                            bool = (Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), i, (byte) 118, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), i_10_, 2));
+                            bool = (Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), i, (byte) 118, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), i_10_, 2));
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
                         Floor.anInt2319 = 0;
                         Class45.anInt1075 = 2;
@@ -889,9 +889,9 @@ public class Class27 {
                     }
                     if((i_11_ ^ 0xffffffff) == -37) {
                         PacketBuffer.anInt2243++;
-                        boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), i, (byte) 126, 0, false, 0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), i_10_, 2));
+                        boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), i, (byte) 126, 0, false, 0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), i_10_, 2));
                         if(!bool)
-                            bool = (Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), i, (byte) 105, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), i_10_, 2));
+                            bool = (Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), i, (byte) 105, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), i_10_, 2));
                         Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                         Class45.anInt1075 = 2;
                         Floor.anInt2319 = 0;
@@ -905,7 +905,7 @@ public class Class27 {
                         Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
                         if(class40_sub5_sub17_sub4_sub1 != null) {
                             Landscape.anInt1164++;
-                            Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3088[0]), (byte) 97, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3135[0]), 2);
+                            Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3088[0]), (byte) 97, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3135[0]), 2);
                             Floor.anInt2319 = 0;
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
                             Class45.anInt1075 = 2;
@@ -940,7 +940,7 @@ public class Class27 {
                     if(i_11_ == 20) {
                         Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                         if(class40_sub5_sub17_sub4_sub2 != null) {
-                            Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3088[0]), (byte) 122, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3135[0]), 2);
+                            Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3088[0]), (byte) 122, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3135[0]), 2);
                             Class45.anInt1075 = 2;
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
                             Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
@@ -952,9 +952,9 @@ public class Class27 {
                     }
                     if((i_11_ ^ 0xffffffff) == -48) {
                         Class40_Sub5_Sub7.anInt2478++;
-                        boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), i, (byte) 120, 0, false, 0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), i_10_, 2));
+                        boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), i, (byte) 120, 0, false, 0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), i_10_, 2));
                         if(!bool)
-                            bool = (Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), i, (byte) 103, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), i_10_, 2));
+                            bool = (Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), i, (byte) 103, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), i_10_, 2));
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
                         Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                         Floor.anInt2319 = 0;
@@ -986,7 +986,7 @@ public class Class27 {
                         Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Class40_Sub11.anInt2148++;
-                            Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3088[0]), (byte) 98, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3135[0]), 2);
+                            Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3088[0]), (byte) 98, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3135[0]), 2);
                             Class45.anInt1075 = 2;
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
                             Floor.anInt2319 = 0;
@@ -1023,7 +1023,7 @@ public class Class27 {
         anInt659++;
         if(Class68.method1043(arg4, arg0 + 2)) {
             if(arg0 != 125)
-                method355(-24, -60, 59, -118, 65, 12);
+                drawScrollBar(-24, -60, 59, -118, 65, 12);
             RSApplet.method20(arg5, arg3, 0, arg2, arg6, -1, 1, (Class59.aClass40_Sub5_Sub12ArrayArray1390[arg4]), arg1, 0);
             if(Class10.aClass40_Sub5_Sub12_353 != null) {
                 Class40_Sub5_Sub12 class40_sub5_sub12 = Class10.aClass40_Sub5_Sub12_353;
@@ -1144,7 +1144,7 @@ public class Class27 {
                 Class43.method892(-29);
             }
             if((Class43.anInt1028 ^ 0xffffffff) == 0) {
-                Class12.aClass40_Sub5_Sub12_383.anInt2731 = -77 + (-GameObjectDefinition.anInt2557 + Class62.chatboxScrollMax);
+                Class12.aClass40_Sub5_Sub12_383.anInt2731 = -77 + (-GameObjectDefinition.chatboxScroll + Class62.chatboxScrollMax);
                 if(Class13.anInt420 > 448 && (Class13.anInt420 ^ 0xffffffff) > -561 && (Landscape.anInt1166 ^ 0xffffffff) < -333)
                     Class5.method168(77, Landscape.anInt1166 + -357, -17 + Class13.anInt420, Class62.chatboxScrollMax, (byte) 114, Class12.aClass40_Sub5_Sub12_383, 463, -1, 0);
                 int i = (Class62.chatboxScrollMax - 77 - Class12.aClass40_Sub5_Sub12_383.anInt2731);
@@ -1152,8 +1152,8 @@ public class Class27 {
                     i = 0;
                 if(i > Class62.chatboxScrollMax + -77)
                     i = -77 + Class62.chatboxScrollMax;
-                if(i != GameObjectDefinition.anInt2557) {
-                    GameObjectDefinition.anInt2557 = i;
+                if(i != GameObjectDefinition.chatboxScroll) {
+                    GameObjectDefinition.chatboxScroll = i;
                     Class52.aBoolean1221 = true;
                 }
             }
@@ -1209,7 +1209,7 @@ public class Class27 {
                     Cache.aBoolean330 = false;
                     Class52.method943(ItemDefinition.anInt2797, arg0 ^ 0x4e81, Class53.aClass40_Sub5_Sub14_Sub1_1268, Class4.anInt185, Class35.anInt1737);
                 }
-                Landscape.method934((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098), -118, Player.anInt3267, Class5.anInt199, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089));
+                Landscape.method934((Class40_Sub5_Sub13.localPlayer.anInt3098), -118, Player.anInt3267, Class5.anInt199, (Class40_Sub5_Sub13.localPlayer.anInt3089));
                 Class5.anInt199 = 0;
             }
 
