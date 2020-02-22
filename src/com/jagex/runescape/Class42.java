@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -104,7 +105,7 @@ public class Class42 {
 
     public static void method885(Class6 arg0, boolean arg1, Class6 arg2, int arg3) {
 
-        Class40_Sub5_Sub10.membersServer = arg1;
+        IdentityKit.membersServer = arg1;
         anInt999++;
         if(arg3 != -313)
             aClass1_1012 = null;

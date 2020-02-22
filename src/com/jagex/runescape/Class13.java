@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -83,7 +84,7 @@ public class Class13 {
             for(; ; ) {
                 Class40_Sub6 class40_sub6;
                 synchronized(RSCanvas.aClass45_53) {
-                    class40_sub6 = ((Class40_Sub6) Class40_Sub5_Sub10.aClass45_2604.method913(25447));
+                    class40_sub6 = ((Class40_Sub6) IdentityKit.aClass45_2604.method913(25447));
                 }
                 if(class40_sub6 == null)
                     break;

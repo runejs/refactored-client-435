@@ -1,6 +1,7 @@
 package com.jagex.runescape.io;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
 
 import java.math.BigInteger;
@@ -54,18 +55,18 @@ public class Buffer extends Node {
     }
 
     // ???
-    public static Class40_Sub5_Sub10 method501(int arg1) {
-        Class40_Sub5_Sub10 class40_sub5_sub10 = ((Class40_Sub5_Sub10) Class68.aClass9_1615.method231((long) arg1, (byte) 107));
-        if(class40_sub5_sub10 != null) {
-            return class40_sub5_sub10;
+    public static IdentityKit method501(int arg1) {
+        IdentityKit identityKit = ((IdentityKit) Class68.aClass9_1615.method231((long) arg1, (byte) 107));
+        if(identityKit != null) {
+            return identityKit;
         }
         byte[] is = Class49.aClass6_1150.method172(arg1, 114, 3);
-        class40_sub5_sub10 = new Class40_Sub5_Sub10();
+        identityKit = new IdentityKit();
         if(is != null) {
-            class40_sub5_sub10.method622((byte) 58, new Buffer(is));
+            identityKit.readValues(new Buffer(is));
         }
-        Class68.aClass9_1615.method230(-7208, (long) arg1, class40_sub5_sub10);
-        return class40_sub5_sub10;
+        Class68.aClass9_1615.method230(-7208, (long) arg1, identityKit);
+        return identityKit;
 
     }
 

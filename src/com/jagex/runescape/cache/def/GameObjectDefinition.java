@@ -240,10 +240,10 @@ public class GameObjectDefinition extends SubNode {
     public void readValues(Buffer gameObjectDefinitionBuffer) {
         for(; ; ) {
             int opcode = gameObjectDefinitionBuffer.getUnsignedByte();
-            if((opcode ^ 0xffffffff) == -1) {
+            if(opcode == 0) {
                 break;
             }
-            readValue(gameObjectDefinitionBuffer, -1663, opcode);
+            readValue(gameObjectDefinitionBuffer, opcode);
         }
     }
 
@@ -409,7 +409,7 @@ public class GameObjectDefinition extends SubNode {
 
     }
 
-    public void readValue(Buffer buffer, int arg1, int opcode) {
+    public void readValue(Buffer buffer, int opcode) {
         if(opcode == 1) {
             int length = buffer.getUnsignedByte();
             if(length > 0) {
@@ -537,9 +537,6 @@ public class GameObjectDefinition extends SubNode {
                 anIntArray2523[index] = buffer.getUnsignedShortBE();
             }
         }
-        if(arg1 != -1663) {
-            method601((byte) -112);
-        }
     }
 
     public boolean method610(int arg0, int arg1) {
@@ -550,7 +547,7 @@ public class GameObjectDefinition extends SubNode {
         if(objectTypes != null) {
             for(int i = 0; objectTypes.length > i; i++) {
                 if((arg0 ^ 0xffffffff) == (objectTypes[i] ^ 0xffffffff)) {
-                    return RSString.aClass6_1705.method173((objectModels[i] & 0xffff), (byte) -10, 0);
+                    return RSString.aClass6_1705.loaded((objectModels[i] & 0xffff), 0);
                 }
             }
             return true;
@@ -563,7 +560,7 @@ public class GameObjectDefinition extends SubNode {
         }
         boolean bool = true;
         for(int i = 0; objectModels.length > i; i++) {
-            bool &= RSString.aClass6_1705.method173((0xffff & objectModels[i]), (byte) -10, 0);
+            bool &= RSString.aClass6_1705.loaded((0xffff & objectModels[i]), 0);
         }
         return bool;
 
@@ -596,7 +593,7 @@ public class GameObjectDefinition extends SubNode {
         }
         boolean bool = true;
         for(int i = 0; objectModels.length > i; i++) {
-            bool &= RSString.aClass6_1705.method173((0xffff & objectModels[i]), (byte) -10, 0);
+            bool &= RSString.aClass6_1705.loaded((0xffff & objectModels[i]), 0);
         }
         int i = -67 % ((-65 - arg0) / 50);
         return bool;

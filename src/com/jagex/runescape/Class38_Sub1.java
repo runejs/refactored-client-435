@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -124,74 +125,74 @@ public class Class38_Sub1 extends Class38 {
         anInt1899++;
         if(Class62.anInt1470 == 1) {
             if(Class57.anInt1338 >= 539 && (Class57.anInt1338 ^ 0xffffffff) >= -574 && RSString.anInt1668 >= 169 && RSString.anInt1668 < 205 && (Class40_Sub5_Sub11.anIntArray2626[0] ^ 0xffffffff) != 0) {
-                Class40_Sub5_Sub10.aBoolean2597 = true;
+                IdentityKit.aBoolean2597 = true;
                 ISAAC.aBoolean505 = true;
                 Class5.anInt208 = 0;
             }
             if(Class57.anInt1338 >= 569 && (Class57.anInt1338 ^ 0xffffffff) >= -600 && (RSString.anInt1668 ^ 0xffffffff) <= -169 && (RSString.anInt1668 ^ 0xffffffff) > -206 && (Class40_Sub5_Sub11.anIntArray2626[1] ^ 0xffffffff) != 0) {
                 Class5.anInt208 = 1;
                 ISAAC.aBoolean505 = true;
-                Class40_Sub5_Sub10.aBoolean2597 = true;
+                IdentityKit.aBoolean2597 = true;
             }
             if(Class57.anInt1338 >= 597 && Class57.anInt1338 <= 627 && RSString.anInt1668 >= 168 && (RSString.anInt1668 ^ 0xffffffff) > -206 && Class40_Sub5_Sub11.anIntArray2626[2] != -1) {
-                Class40_Sub5_Sub10.aBoolean2597 = true;
+                IdentityKit.aBoolean2597 = true;
                 Class5.anInt208 = 2;
                 ISAAC.aBoolean505 = true;
             }
             if(Class57.anInt1338 >= 625 && (Class57.anInt1338 ^ 0xffffffff) >= -670 && (RSString.anInt1668 ^ 0xffffffff) <= -169 && (RSString.anInt1668 ^ 0xffffffff) > -204 && (Class40_Sub5_Sub11.anIntArray2626[3] ^ 0xffffffff) != 0) {
-                Class40_Sub5_Sub10.aBoolean2597 = true;
+                IdentityKit.aBoolean2597 = true;
                 ISAAC.aBoolean505 = true;
                 Class5.anInt208 = 3;
             }
             if((Class57.anInt1338 ^ 0xffffffff) <= -667 && Class57.anInt1338 <= 696 && RSString.anInt1668 >= 168 && (RSString.anInt1668 ^ 0xffffffff) > -206 && Class40_Sub5_Sub11.anIntArray2626[4] != -1) {
                 Class5.anInt208 = 4;
                 ISAAC.aBoolean505 = true;
-                Class40_Sub5_Sub10.aBoolean2597 = true;
+                IdentityKit.aBoolean2597 = true;
             }
             if(Class57.anInt1338 >= 694 && Class57.anInt1338 <= 724 && (RSString.anInt1668 ^ 0xffffffff) <= -169 && RSString.anInt1668 < 205 && (Class40_Sub5_Sub11.anIntArray2626[5] ^ 0xffffffff) != 0) {
-                Class40_Sub5_Sub10.aBoolean2597 = true;
+                IdentityKit.aBoolean2597 = true;
                 ISAAC.aBoolean505 = true;
                 Class5.anInt208 = 5;
             }
             if(Class57.anInt1338 >= 722 && (Class57.anInt1338 ^ 0xffffffff) >= -757 && (RSString.anInt1668 ^ 0xffffffff) <= -170 && (RSString.anInt1668 ^ 0xffffffff) > -206 && Class40_Sub5_Sub11.anIntArray2626[6] != -1) {
                 ISAAC.aBoolean505 = true;
                 Class5.anInt208 = 6;
-                Class40_Sub5_Sub10.aBoolean2597 = true;
+                IdentityKit.aBoolean2597 = true;
             }
             if(Class57.anInt1338 >= 540 && (Class57.anInt1338 ^ 0xffffffff) >= -575 && RSString.anInt1668 >= 466 && RSString.anInt1668 < 502 && (Class40_Sub5_Sub11.anIntArray2626[7] ^ 0xffffffff) != 0) {
                 Class5.anInt208 = 7;
-                Class40_Sub5_Sub10.aBoolean2597 = true;
+                IdentityKit.aBoolean2597 = true;
                 ISAAC.aBoolean505 = true;
             }
             if((Class57.anInt1338 ^ 0xffffffff) <= -573 && Class57.anInt1338 <= 602 && (RSString.anInt1668 ^ 0xffffffff) <= -467 && RSString.anInt1668 < 503 && (Class40_Sub5_Sub11.anIntArray2626[8] ^ 0xffffffff) != 0) {
                 ISAAC.aBoolean505 = true;
-                Class40_Sub5_Sub10.aBoolean2597 = true;
+                IdentityKit.aBoolean2597 = true;
                 Class5.anInt208 = 8;
             }
             if((Class57.anInt1338 ^ 0xffffffff) <= -600 && Class57.anInt1338 <= 629 && (RSString.anInt1668 ^ 0xffffffff) <= -467 && RSString.anInt1668 < 503 && (Class40_Sub5_Sub11.anIntArray2626[9] ^ 0xffffffff) != 0) {
-                Class40_Sub5_Sub10.aBoolean2597 = true;
+                IdentityKit.aBoolean2597 = true;
                 Class5.anInt208 = 9;
                 ISAAC.aBoolean505 = true;
             }
             if((Class57.anInt1338 ^ 0xffffffff) <= -628 && (Class57.anInt1338 ^ 0xffffffff) >= -672 && (RSString.anInt1668 ^ 0xffffffff) <= -468 && (RSString.anInt1668 ^ 0xffffffff) > -503 && Class40_Sub5_Sub11.anIntArray2626[10] != -1) {
                 Class5.anInt208 = 10;
-                Class40_Sub5_Sub10.aBoolean2597 = true;
+                IdentityKit.aBoolean2597 = true;
                 ISAAC.aBoolean505 = true;
             }
             if((Class57.anInt1338 ^ 0xffffffff) <= -670 && Class57.anInt1338 <= 699 && (RSString.anInt1668 ^ 0xffffffff) <= -467 && RSString.anInt1668 < 503 && Class40_Sub5_Sub11.anIntArray2626[11] != -1) {
                 Class5.anInt208 = 11;
                 ISAAC.aBoolean505 = true;
-                Class40_Sub5_Sub10.aBoolean2597 = true;
+                IdentityKit.aBoolean2597 = true;
             }
             if((Class57.anInt1338 ^ 0xffffffff) <= -697 && (Class57.anInt1338 ^ 0xffffffff) >= -727 && (RSString.anInt1668 ^ 0xffffffff) <= -467 && (RSString.anInt1668 ^ 0xffffffff) > -504 && Class40_Sub5_Sub11.anIntArray2626[12] != -1) {
                 ISAAC.aBoolean505 = true;
-                Class40_Sub5_Sub10.aBoolean2597 = true;
+                IdentityKit.aBoolean2597 = true;
                 Class5.anInt208 = 12;
             }
             if(Class57.anInt1338 >= 724 && Class57.anInt1338 <= 758 && (RSString.anInt1668 ^ 0xffffffff) <= -467 && RSString.anInt1668 < 502 && Class40_Sub5_Sub11.anIntArray2626[13] != -1) {
                 Class5.anInt208 = 13;
                 ISAAC.aBoolean505 = true;
-                Class40_Sub5_Sub10.aBoolean2597 = true;
+                IdentityKit.aBoolean2597 = true;
             }
         }
     }

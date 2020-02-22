@@ -312,7 +312,7 @@ public class NpcDefinition extends SubNode {
         if(class40_sub5_sub17_sub5 == null) {
             boolean bool = false;
             for(int i = 0; i < models.length; i++) {
-                if(!Class67.aClass6_1577.method173(models[i], (byte) -10, 0)) {
+                if(!Class67.aClass6_1577.loaded(models[i], 0)) {
                     bool = true;
                 }
             }
@@ -482,7 +482,7 @@ public class NpcDefinition extends SubNode {
         }
         boolean bool = false;
         for(int i = 0; i < models_2.length; i++) {
-            if(!Class67.aClass6_1577.method173(models_2[i], (byte) -10, 0)) {
+            if(!Class67.aClass6_1577.loaded(models_2[i], 0)) {
                 bool = true;
             }
         }

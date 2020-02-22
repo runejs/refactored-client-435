@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
@@ -337,7 +338,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class58.aClass1_1374, (byte) 21, Class8.aClass1_305);
                 Class40_Sub7.aClass68_2123 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_height), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
                 class40_sub5_sub14_sub4.method727(0, 0);
-                class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class40_Sub5_Sub10.aClass1_2588, (byte) 21, Class8.aClass1_305);
+                class40_sub5_sub14_sub4 = Class66.method1028(arg2, IdentityKit.aClass1_2588, (byte) 21, Class8.aClass1_305);
                 Class61.aClass68_1441 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_height), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class5.aClass1_196, (byte) 21, Class8.aClass1_305);

@@ -7,6 +7,7 @@ import java.util.zip.GZIPInputStream;
 
 import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -68,13 +69,11 @@ public class Landscape {
         aClass1Array1184 = new RSString[500];
     }
 
-    public static byte[] method931(byte[] arg0, int arg1) {
+    public static byte[] method931(byte[] arg0) {
 
         Buffer class40_sub1 = new Buffer(arg0);
             anInt1159++;
         int i = class40_sub1.getUnsignedByte();
-            if(arg1 != 9)
-                method933(14);
         int i_0_ = class40_sub1.getIntBE();
             if(i_0_ < 0 || (Class51.anInt1195 != 0 && (Class51.anInt1195 ^ 0xffffffff) > (i_0_ ^ 0xffffffff)))
                 throw new RuntimeException();
@@ -151,7 +150,7 @@ public class Landscape {
                 Class68.anInt1634 = 1;
             else {
                 bool = true;
-                Class40_Sub5_Sub10.anInt2591 = 0;
+                IdentityKit.anInt2591 = 0;
                 for(int i = 0; RSString.aByteArrayArray1715.length > i; i++) {
                     byte[] is = Class52.aByteArrayArray1217[i];
                     if(is != null) {

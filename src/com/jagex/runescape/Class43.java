@@ -2,6 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 
 import java.util.Date;
 
@@ -51,7 +52,7 @@ public class Class43 {
 
         anInt1015++;
             int i = 0;
-            Class40_Sub5_Sub1 class40_sub5_sub1 = Class40_Sub5_Sub10.method626(((Integer) arg0[0]).intValue(), 76, 27);
+        Class40_Sub5_Sub1 class40_sub5_sub1 = IdentityKit.method626(((Integer) arg0[0]).intValue(), 76, 27);
             int[] is = class40_sub5_sub1.anIntArray2262;
             int[] is_0_ = class40_sub5_sub1.anIntArray2272;
             int i_1_ = 0;
@@ -184,7 +185,7 @@ public class Class43 {
                         if((i_3_ ^ 0xffffffff) == -38) {
                             int i_12_ = is[i_2_];
                             i_1_ -= i_12_;
-                            RSString class1 = (Class40_Sub5_Sub10.method627(63, i_12_, i_1_, Class40_Sub11.aClass1Array2153));
+                            RSString class1 = (IdentityKit.method627(63, i_12_, i_1_, Class40_Sub11.aClass1Array2153));
                             Class40_Sub11.aClass1Array2153[i_1_++] = class1;
                             continue;
                         }
@@ -198,7 +199,7 @@ public class Class43 {
                         }
                         if(i_3_ == 40) {
                             int i_13_ = is[i_2_];
-                            Class40_Sub5_Sub1 class40_sub5_sub1_14_ = Class40_Sub5_Sub10.method626(i_13_, 73, 65);
+                            Class40_Sub5_Sub1 class40_sub5_sub1_14_ = IdentityKit.method626(i_13_, 73, 65);
                             int[] is_15_ = new int[class40_sub5_sub1_14_.anInt2271];
                             RSString[] class1s = new RSString[class40_sub5_sub1_14_.anInt2267];
                             for(int i_16_ = 0; ((class40_sub5_sub1_14_.anInt2263 ^ 0xffffffff) < (i_16_ ^ 0xffffffff)); i_16_++)

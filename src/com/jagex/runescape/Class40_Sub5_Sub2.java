@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
@@ -188,7 +189,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 Class61.packetBuffer.putByte(VertexNormal.lowMemory ? 1 : 0);
                 Class61.packetBuffer.putIntBE(FloorDecoration.aClass6_Sub1_605.anInt216);
                 Class61.packetBuffer.putIntBE(Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000.anInt216);
-                Class61.packetBuffer.putIntBE((Class40_Sub5_Sub10.aClass6_Sub1_2609.anInt216));
+                Class61.packetBuffer.putIntBE((IdentityKit.aClass6_Sub1_2609.anInt216));
                 Class61.packetBuffer.putIntBE(Class65.aClass6_Sub1_1533.anInt216);
                 Class61.packetBuffer.putIntBE(Actor.aClass6_Sub1_3157.anInt216);
                 Class61.packetBuffer.putIntBE((Renderable.aClass6_Sub1_2857.anInt216));

@@ -75,16 +75,14 @@ public class Class6_Sub1 extends Class6 {
 
     }
 
-    public void method196(boolean arg0, boolean arg1, int arg2, boolean arg3, byte[] arg4) {
-        if(arg1 != false)
-            anInt1819 = -117;
+    public void method196(boolean arg0, int arg2, boolean arg3, byte[] arg4) {
         anInt1815++;
         if(arg0) {
             if(aBoolean1800)
                 throw new RuntimeException();
             if(aClass56_1802 != null)
                 RSRuntimeException.method1055(arg4, (byte) -54, aClass56_1802, anInt1807);
-            this.method178(-21071, arg4);
+            this.method178(arg4);
             method199(-124);
         } else {
             arg4[arg4.length - 2] = (byte) (anIntArray224[arg2] >> -1152670104);
@@ -133,7 +131,7 @@ public class Class6_Sub1 extends Class6 {
                                 anInt1810, (byte) -121);
                         break;
                     }*/
-                    this.method178(-21071, arg2);
+                    this.method178(arg2);
                     method199(-112);
                 } else {
                     if(!arg1 && anInt1797 == arg3)

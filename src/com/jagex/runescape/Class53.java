@@ -2,6 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -129,7 +130,7 @@ public class Class53 {
                 if(i_20_ >= 0 && i_19_ >= 0 && i_20_ < 104 && i_19_ < 104) {
                     int i_26_ = 1 + i_23_;
                     if(((i_20_ + -i_26_ ^ 0xffffffff) >= ((Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]) ^ 0xffffffff)) && ((i_20_ + i_26_ ^ 0xffffffff) <= ((Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]) ^ 0xffffffff)) && (i_19_ - i_26_ <= (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0])) && (i_19_ + i_26_ >= (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0])) && RSCanvas.anInt65 != 0 && i_24_ > 0 && PacketBuffer.anInt2248 < 50) {
-                        Class40_Sub5_Sub10.anIntArray2602[(PacketBuffer.anInt2248)] = i_21_;
+                        IdentityKit.anIntArray2602[(PacketBuffer.anInt2248)] = i_21_;
                         ItemDefinition.anIntArray2814[(PacketBuffer.anInt2248)] = i_24_;
                         Class40_Sub3.anIntArray2023[(PacketBuffer.anInt2248)] = i_25_;
                         PacketBuffer.effects[(PacketBuffer.anInt2248)] = null;
@@ -324,7 +325,7 @@ public class Class53 {
 
     public static void method950(int arg0, byte arg1, int arg2, int arg3) {
         if((Class5.anInt200 ^ 0xffffffff) != -1 && (arg2 ^ 0xffffffff) != -1 && PacketBuffer.anInt2248 < 50) {
-            Class40_Sub5_Sub10.anIntArray2602[PacketBuffer.anInt2248] = arg0;
+            IdentityKit.anIntArray2602[PacketBuffer.anInt2248] = arg0;
             ItemDefinition.anIntArray2814[PacketBuffer.anInt2248] = arg2;
             Class40_Sub3.anIntArray2023[PacketBuffer.anInt2248] = arg3;
             PacketBuffer.effects[PacketBuffer.anInt2248] = null;

@@ -3,6 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
@@ -627,7 +628,7 @@ public class Class27 {
                     Class60.anInt1417 = i_10_;
                     FloorDecoration.aClass1_611 = (Class40_Sub5_Sub17_Sub6.method832(-80, new RSString[]{Landscape.aClass1_1162, class40_sub5_sub12.aClass1_2709, Class26.aClass1_620}));
                     if((ItemDefinition.anInt2815 ^ 0xffffffff) == -17) {
-                        Class40_Sub5_Sub10.aBoolean2597 = true;
+                        IdentityKit.aBoolean2597 = true;
                         Class5.anInt208 = 3;
                         ISAAC.aBoolean505 = true;
                     }
@@ -1127,7 +1128,7 @@ public class Class27 {
             if(Class40_Sub5_Sub11.aBoolean2631) {
                 Class40_Sub5_Sub11.aBoolean2631 = false;
                 ItemDefinition.method742(arg0 ^ ~0x4e29);
-                Class40_Sub5_Sub10.aBoolean2597 = true;
+                IdentityKit.aBoolean2597 = true;
                 Class52.aBoolean1221 = true;
                 ISAAC.aBoolean505 = true;
                 Cache.aBoolean330 = true;
@@ -1197,15 +1198,15 @@ public class Class27 {
                 }
                 Class37.method435(true);
                 if(Class51.anInt1205 != -1)
-                    Class40_Sub5_Sub10.aBoolean2597 = true;
-                if(Class40_Sub5_Sub10.aBoolean2597) {
+                    IdentityKit.aBoolean2597 = true;
+                if(IdentityKit.aBoolean2597) {
                     if(Class51.anInt1205 != -1 && Class51.anInt1205 == Class5.anInt208) {
                         Class51.anInt1205 = -1;
                         Class32.packetBuffer.putPacket(arg0 ^ ~0x6259, 44);
                         Class56.anInt1311++;
                         Class32.packetBuffer.putByte(Class5.anInt208);
                     }
-                    Class40_Sub5_Sub10.aBoolean2597 = false;
+                    IdentityKit.aBoolean2597 = false;
                     Class40_Sub3.aBoolean2026 = true;
                     Class40_Sub2.method527(Class5.anInt208, 4, Class40_Sub5_Sub11.anIntArray2626, ((Class29.anInt673 ^ 0xffffffff) == 0), ((Node.anInt926 % 20 ^ 0xffffffff) <= -11 ? Class51.anInt1205 : -1));
                 }
@@ -1242,7 +1243,7 @@ public class Class27 {
                     if((arg1 ^ 0xffffffff) == -10)
                         Class33.method411(Node.aClass1_942, Actor.aClass1_3138, Class40_Sub5_Sub17_Sub3.aClass1_3050, (byte) 104);
                     else if(arg1 == 10)
-                        Class33.method411(Node.aClass1_952, Class42.aClass1_1002, Class40_Sub5_Sub10.aClass1_2615, (byte) 87);
+                        Class33.method411(Node.aClass1_952, Class42.aClass1_1002, IdentityKit.aClass1_2615, (byte) 87);
                     else if((arg1 ^ 0xffffffff) == -12)
                         Class33.method411(Node.aClass1_943, Class42.aClass1_1001, Class40_Sub6.aClass1_2111, (byte) 110);
                     else if((arg1 ^ 0xffffffff) == -13)

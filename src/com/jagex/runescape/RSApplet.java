@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -276,7 +277,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     }
                 }
                 setCanvas((byte) 121);
-                Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649((Class40_Sub5_Sub10.height), Class12.width, Class62.aCanvas1469, -4875);
+                Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649((IdentityKit.height), Class12.width, Class62.aCanvas1469, -4875);
                 method31(true);
                 Class32.aClass38_768 = Class56.method972((byte) 47);
                 Class32.aClass38_768.method443(-10115);
@@ -414,7 +415,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     if(Signlink.aString739 == null || !Signlink.aString739.startsWith("1.5") || -Class4.aLong174 + Class51.method937(1) <= 1000L)
                         break;
                     Rectangle rectangle = arg0.getClipBounds();
-                    if(rectangle == null || (rectangle.width >= Class12.width && ((rectangle.height ^ 0xffffffff) <= (Class40_Sub5_Sub10.height ^ 0xffffffff))))
+                    if(rectangle == null || (rectangle.width >= Class12.width && ((rectangle.height ^ 0xffffffff) <= (IdentityKit.height ^ 0xffffffff))))
                         Class67.aBoolean1575 = true;
                 }
 
@@ -463,7 +464,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     }
                     Class12.width = height;
                     Class39.anInt901 = clientVersion;
-                    Class40_Sub5_Sub10.height = width;
+                    IdentityKit.height = width;
                     Class4.anApplet_Sub1_179 = this;
                     if(ISAAC.aClass31_521 == null)
                         Actor.aClass31_3152 = ISAAC.aClass31_521 = (new Signlink(false, this, InetAddress.getByName(getCodeBase().getHost()), fileStoreId, null, 0));
@@ -501,7 +502,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 if(Node.anInt938++ > 50) {
                     Node.anInt938 -= 50;
                     Class40_Sub5_Sub11.aBoolean2631 = true;
-                    Class62.aCanvas1469.setSize(Class12.width, Class40_Sub5_Sub10.height);
+                    Class62.aCanvas1469.setSize(Class12.width, IdentityKit.height);
                     Class62.aCanvas1469.setVisible(true);
                     if(Class35.aFrame1732 == null)
                         Class62.aCanvas1469.setLocation(0, 0);
@@ -554,7 +555,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 Class39.anInt901 = clientVersion;
                 Class12.width = width;
                 Class4.anApplet_Sub1_179 = this;
-                Class40_Sub5_Sub10.height = height;
+            IdentityKit.height = height;
                 Class35.aFrame1732 = new Frame();
                 Class35.aFrame1732.setTitle("Jagex");
                 Class35.aFrame1732.setResizable(false);
@@ -629,7 +630,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             }
             Class62.aCanvas1469 = new RSCanvas(this);
             container.add(Class62.aCanvas1469);
-            Class62.aCanvas1469.setSize(Class12.width, Class40_Sub5_Sub10.height);
+        Class62.aCanvas1469.setSize(Class12.width, IdentityKit.height);
             Class62.aCanvas1469.setVisible(true);
             if(Class35.aFrame1732 != null) {
                 Insets insets = Class35.aFrame1732.getInsets();

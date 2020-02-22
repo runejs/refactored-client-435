@@ -2,6 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -455,7 +456,7 @@ public class CollisionMap {
                         Class40_Sub5_Sub15.anInt2780 = 0;
                     }
                     ISAAC.aBoolean505 = true;
-                    Class40_Sub5_Sub10.aBoolean2597 = true;
+                    IdentityKit.aBoolean2597 = true;
                     Class57.packetid = -1;
                     return true;
                 }
@@ -495,7 +496,7 @@ public class CollisionMap {
                     Class42.method883((byte) -127, i_55_);
                     if(Class29.anInt673 != -1) {
                         Class55.method958(Class29.anInt673, -14222);
-                        Class40_Sub5_Sub10.aBoolean2597 = true;
+                        IdentityKit.aBoolean2597 = true;
                         Class29.anInt673 = -1;
                         ISAAC.aBoolean505 = true;
                     }
@@ -594,7 +595,7 @@ public class CollisionMap {
                     if(Class29.anInt673 != -1) {
                         Class55.method958(Class29.anInt673, -14222);
                         ISAAC.aBoolean505 = true;
-                        Class40_Sub5_Sub10.aBoolean2597 = true;
+                        IdentityKit.aBoolean2597 = true;
                         Class29.anInt673 = -1;
                     }
                     if((Class43.anInt1028 ^ 0xffffffff) != 0) {
@@ -628,7 +629,7 @@ public class CollisionMap {
                     Class42.method883((byte) -119, i_59_);
                     if((Class29.anInt673 ^ 0xffffffff) != 0) {
                         Class55.method958(Class29.anInt673, -14222);
-                        Class40_Sub5_Sub10.aBoolean2597 = true;
+                        IdentityKit.aBoolean2597 = true;
                         Class29.anInt673 = -1;
                         ISAAC.aBoolean505 = true;
                     }
@@ -770,7 +771,7 @@ public class CollisionMap {
                         Class55.method958(Class29.anInt673, -14222);
                         Class29.anInt673 = i_68_;
                     }
-                    Class40_Sub5_Sub10.aBoolean2597 = true;
+                    IdentityKit.aBoolean2597 = true;
                     if(Class40_Sub5_Sub15.anInt2780 != 0) {
                         Class52.aBoolean1221 = true;
                         Class40_Sub5_Sub15.anInt2780 = 0;
@@ -819,7 +820,7 @@ public class CollisionMap {
                 }
                 if(Class57.packetid == 6) {
                     Class5.anInt208 = Cache.outgoingbuffer.getUnsignedByte();
-                    Class40_Sub5_Sub10.aBoolean2597 = true;
+                    IdentityKit.aBoolean2597 = true;
                     ISAAC.aBoolean505 = true;
                     Class57.packetid = -1;
                     return true;
@@ -1012,7 +1013,7 @@ public class CollisionMap {
                         Class55.method958((Class40_Sub5_Sub11.anIntArray2626[i_97_]), -14222);
                         Class40_Sub5_Sub11.anIntArray2626[i_97_] = i_96_;
                     }
-                    Class40_Sub5_Sub10.aBoolean2597 = true;
+                    IdentityKit.aBoolean2597 = true;
                     Class57.packetid = -1;
                     ISAAC.aBoolean505 = true;
                     return true;

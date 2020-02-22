@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -229,7 +230,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             anInt2205++;
             int i = arg2.currentPosition;
         arg2.putSmart(arg1.length);
-        arg2.currentPosition += (Class40_Sub5_Sub10.aClass66_2590.method1026(-18678, 0, arg2.currentPosition, arg1.length, arg1.chars, arg2.buffer));
+        arg2.currentPosition += (IdentityKit.aClass66_2590.method1026(-18678, 0, arg2.currentPosition, arg1.length, arg1.chars, arg2.buffer));
             return -i + arg2.currentPosition;
 
     }

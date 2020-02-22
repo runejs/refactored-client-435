@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -80,7 +81,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
             anInt3251++;
             if((arg1.length ^ 0xffffffff) > -3)
                 throw new IllegalArgumentException();
-            return Class40_Sub5_Sub10.method627(120, arg1.length, 0, arg1);
+        return IdentityKit.method627(120, arg1.length, 0, arg1);
 
     }
 

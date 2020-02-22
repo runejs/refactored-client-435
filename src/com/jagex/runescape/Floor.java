@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -125,7 +126,7 @@ public class Floor extends SubNode {
             if(Class51.anInt1197 == 25) {
                 Class37.anInt874 = 0;
                 PacketBuffer.anInt2231 = 1;
-                Class40_Sub5_Sub10.anInt2591 = 0;
+                IdentityKit.anInt2591 = 0;
                 GameObject.anInt3048 = 1;
                 Class68.anInt1634 = 0;
             }

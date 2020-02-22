@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
 
 public class Class40_Sub6 extends Node {
@@ -85,14 +86,14 @@ public class Class40_Sub6 extends Node {
         Class17.anIntArray466[i - arg0] = (int) (16.0 * Math.sin((double) Node.anInt926 / 14.0) + 14.0 * Math.sin((double) Node.anInt926 / 15.0) + 12.0 * Math.sin((double) Node.anInt926 / 16.0));
         if((Class40_Sub5_Sub6.anInt2452 ^ 0xffffffff) < -1)
             Class40_Sub5_Sub6.anInt2452 -= 4;
-        if(Class40_Sub5_Sub10.anInt2613 > 0)
-            Class40_Sub5_Sub10.anInt2613 -= 4;
-        if(Class40_Sub5_Sub6.anInt2452 == 0 && Class40_Sub5_Sub10.anInt2613 == 0) {
+        if(IdentityKit.anInt2613 > 0)
+            IdentityKit.anInt2613 -= 4;
+        if(Class40_Sub5_Sub6.anInt2452 == 0 && IdentityKit.anInt2613 == 0) {
             int i_15_ = (int) (2000.0 * Math.random());
             if(i_15_ == 0)
                 Class40_Sub5_Sub6.anInt2452 = 1024;
             if(i_15_ == 1)
-                Class40_Sub5_Sub10.anInt2613 = 1024;
+                IdentityKit.anInt2613 = 1024;
         }
     }
 

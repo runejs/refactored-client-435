@@ -4,6 +4,7 @@ import java.math.BigInteger;
 
 import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.io.Buffer;
 
 public class PacketBuffer extends Buffer {
@@ -92,7 +93,7 @@ public class PacketBuffer extends Buffer {
         if(Class29.anInt673 != -1) {
             Class55.method958(Class29.anInt673, -14222);
             Class6_Sub1.anInt1819 = -1;
-            Class40_Sub5_Sub10.aBoolean2597 = true;
+            IdentityKit.aBoolean2597 = true;
             ISAAC.aBoolean505 = true;
             Class29.anInt673 = -1;
         }

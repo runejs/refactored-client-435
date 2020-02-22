@@ -1,6 +1,7 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;
@@ -220,7 +221,7 @@ public class ItemDefinition extends SubNode {
         if(definition.noteTemplateId != -1) {
             definition.itemToNote(forId(definition.noteTemplateId, 10), forId(definition.notedId, 10));
         }
-        if(!Class40_Sub5_Sub10.membersServer && definition.members) {
+        if(!IdentityKit.membersServer && definition.members) {
             definition.inventoryOptions = null;
             definition.teamIndex = 0;
             definition.groundOptions = null;
@@ -245,10 +246,10 @@ public class ItemDefinition extends SubNode {
             return true;
         }
         boolean bool = true;
-        if(!Class8.aClass6_284.method173(i, (byte) -10, 0)) {
+        if(!Class8.aClass6_284.loaded(i, 0)) {
             bool = false;
         }
-        if(i_0_ != -1 && !Class8.aClass6_284.method173(i_0_, (byte) -10, 0)) {
+        if(i_0_ != -1 && !Class8.aClass6_284.loaded(i_0_, 0)) {
             bool = false;
         }
         return bool;
@@ -271,13 +272,13 @@ public class ItemDefinition extends SubNode {
         if(arg1 <= 126) {
             return false;
         }
-        if(!Class8.aClass6_284.method173(i, (byte) -10, 0)) {
+        if(!Class8.aClass6_284.loaded(i, 0)) {
             bool = false;
         }
-        if(i_1_ != -1 && !Class8.aClass6_284.method173(i_1_, (byte) -10, 0)) {
+        if(i_1_ != -1 && !Class8.aClass6_284.loaded(i_1_, 0)) {
             bool = false;
         }
-        if(i_2_ != -1 && !Class8.aClass6_284.method173(i_2_, (byte) -10, 0)) {
+        if(i_2_ != -1 && !Class8.aClass6_284.loaded(i_2_, 0)) {
             bool = false;
         }
         return bool;
@@ -470,7 +471,7 @@ public class ItemDefinition extends SubNode {
     public void readValues(Buffer itemDefinitionBuffer) {
         for(; ; ) {
             int opcode = itemDefinitionBuffer.getUnsignedByte();
-            if((opcode ^ 0xffffffff) == -1) {
+            if(opcode == 0) {
                 break;
             }
             readValue(opcode, itemDefinitionBuffer);

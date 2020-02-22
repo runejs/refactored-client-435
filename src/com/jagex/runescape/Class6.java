@@ -214,12 +214,10 @@ public abstract class Class6 {
         return method176(arg2, arg0, null, 20582);
     }
 
-    public boolean method173(int arg0, byte arg1, int arg2) {
+    public boolean loaded(int arg0, int arg2) {
         anInt234++;
         if((arg0 ^ 0xffffffff) > -1 || (arg0 >= aByteArrayArrayArray249.length) || aByteArrayArrayArray249[arg0] == null || (arg2 ^ 0xffffffff) > -1 || arg2 >= aByteArrayArrayArray249[arg0].length)
             return false;
-        if(arg1 != -10)
-            method183(-98, null);
         if(aByteArrayArrayArray249[arg0][arg2] != null)
             return true;
         if(aByteArrayArray212[arg0] != null)
@@ -242,15 +240,13 @@ public abstract class Class6 {
 
     public byte[] method176(int arg0, int arg1, int[] arg2, int arg3) {
         anInt246++;
-        if(arg3 != 20582)
-            return null;
         if(arg0 < 0 || (arg0 >= aByteArrayArrayArray249.length) || aByteArrayArrayArray249[arg0] == null || arg1 < 0 || arg1 >= aByteArrayArrayArray249[arg0].length)
             return null;
         if(aByteArrayArrayArray249[arg0][arg1] == null) {
-            boolean bool = method181(arg0, 20824, arg2);
+            boolean bool = method181(arg0, arg2);
             if(!bool) {
                 method177(33, arg0);
-                bool = method181(arg0, arg3 + 242, arg2);
+                bool = method181(arg0, arg2);
                 if(!bool)
                     return null;
             }
@@ -263,13 +259,13 @@ public abstract class Class6 {
 
     public void method177(int arg0, int arg1) {
         if(arg0 < 1)
-            method181(22, -64, null);
+            method181(22, null);
         anInt240++;
     }
 
-    public void method178(int arg0, byte[] arg1) {
+    public void method178(byte[] arg1) {
         anInt216 = Class40_Sub2.method525(arg1, arg1.length, (byte) -68);
-        Buffer class40_sub1 = new Buffer(Landscape.method931(arg1, 9));
+        Buffer class40_sub1 = new Buffer(Landscape.method931(arg1));
         int i = class40_sub1.getUnsignedByte();
         anInt238++;
         if((i ^ 0xffffffff) == -6) {
@@ -277,8 +273,6 @@ public abstract class Class6 {
             int i_2_ = class40_sub1.getUnsignedByte();
             anInt221 = class40_sub1.getUnsignedShortBE();
             anIntArray227 = new int[anInt221];
-            if(arg0 != -21071)
-                method173(-78, (byte) 73, -64);
             int i_3_ = -1;
             for(int i_4_ = 0; anInt221 > i_4_; i_4_++) {
                 anIntArray227[i_4_] = i_1_ += class40_sub1.getUnsignedShortBE();
@@ -338,7 +332,7 @@ public abstract class Class6 {
         return aClass42Array217[arg1].method882(arg2.method76((byte) 41), -70);
     }
 
-    public boolean method181(int arg0, int arg1, int[] arg2) {
+    public boolean method181(int arg0, int[] arg2) {
         anInt222++;
         if(aByteArrayArray212[arg0] == null)
             return false;
@@ -352,8 +346,6 @@ public abstract class Class6 {
                 break;
             }
         }
-        if(arg1 != 20824)
-            aClass9_229 = null;
         if(bool)
             return true;
         byte[] is_21_;
@@ -366,7 +358,7 @@ public abstract class Class6 {
             class40_sub1.method483(arg2, class40_sub1.buffer.length, 5);
         }
         byte[] is_22_;
-        is_22_ = Landscape.method931(is_21_, arg1 + -20815);
+        is_22_ = Landscape.method931(is_21_);
         if(aBoolean233)
             aByteArrayArray212[arg0] = null;
         if(i > 1) {
@@ -409,10 +401,10 @@ public abstract class Class6 {
         if(arg2 < 0 || (arg2 >= aByteArrayArrayArray249.length) || aByteArrayArrayArray249[arg2] == null || arg0 < 0 || aByteArrayArrayArray249[arg2].length <= arg0)
             return null;
         if(aByteArrayArrayArray249[arg2][arg0] == null) {
-            boolean bool = method181(arg2, 20824, null);
+            boolean bool = method181(arg2, null);
             if(!bool) {
                 method177(45, arg2);
-                bool = method181(arg2, 20824, null);
+                bool = method181(arg2, null);
                 if(!bool)
                     return null;
             }
@@ -512,7 +504,8 @@ public abstract class Class6 {
         arg1 = arg1.method79(-128);
         int i = aClass42_254.method882(arg0.method76((byte) 41), -66);
         int i_49_ = aClass42Array217[i].method882(arg1.method76((byte) 41), arg2 ^ 0x483);
-        return method173(i, (byte) -10, i_49_);
+        System.out.println("Loaded: " + i_49_);
+        return loaded(i, i_49_);
     }
 
     public void method195(int arg0, RSString arg1) {

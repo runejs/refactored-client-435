@@ -2,6 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
@@ -230,7 +231,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
                         Class40_Sub5_Sub17_Sub3.aBooleanArray3056[i] = true;
                 }
             }
-            Class52.anInt1214 = Class40_Sub5_Sub10.anInt2598;
+            Class52.anInt1214 = IdentityKit.anInt2598;
         }
         if(arg0 <= 121)
             aClass1_2674 = null;
@@ -300,7 +301,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
             if(arg0 < 100000)
                 return HashTable.method334(arg0, -1);
             if((arg0 ^ 0xffffffff) > -10000001)
-                return (Class40_Sub5_Sub17_Sub6.method832(110, new RSString[]{HashTable.method334(arg0 / 1000, -1), Class40_Sub5_Sub10.aClass1_2587}));
+                return (Class40_Sub5_Sub17_Sub6.method832(110, new RSString[]{HashTable.method334(arg0 / 1000, -1), IdentityKit.aClass1_2587}));
             return (Class40_Sub5_Sub17_Sub6.method832(-84, new RSString[]{HashTable.method334(arg0 / 1000000, arg1 ^ 0x63), Class22.aClass1_542}));
 
     }

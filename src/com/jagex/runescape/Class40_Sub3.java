@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -79,7 +80,7 @@ public class Class40_Sub3 extends Node {
         } else if(Class40_Sub5_Sub6.anInt2451 == 30) {
             FloorDecoration.aClass6_Sub1_605 = Class54.method957(0, true, false, (byte) 127, true);
             Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000 = Class54.method957(1, true, false, (byte) 125, true);
-            Class40_Sub5_Sub10.aClass6_Sub1_2609 = Class54.method957(2, true, true, (byte) 119, false);
+            IdentityKit.aClass6_Sub1_2609 = Class54.method957(2, true, true, (byte) 119, false);
             Class65.aClass6_Sub1_1533 = Class54.method957(3, true, false, (byte) 119, true);
             Actor.aClass6_Sub1_3157 = Class54.method957(4, true, false, (byte) 119, true);
             Renderable.aClass6_Sub1_2857 = Class54.method957(5, true, true, (byte) 123, true);
@@ -97,7 +98,7 @@ public class Class40_Sub3 extends Node {
             int i = 0;
             i += FloorDecoration.aClass6_Sub1_605.method197(100) * 5 / 100;
             i += (5 * Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000.method197(100) / 100);
-            i += 5 * Class40_Sub5_Sub10.aClass6_Sub1_2609.method197(100) / 100;
+            i += 5 * IdentityKit.aClass6_Sub1_2609.method197(100) / 100;
             i += 5 * Class65.aClass6_Sub1_1533.method197(100) / 100;
             i += (5 * Actor.aClass6_Sub1_3157.method197(100) / 100);
             i += (5 * Renderable.aClass6_Sub1_2857.method197(arg0) / 100);
@@ -159,20 +160,20 @@ public class Class40_Sub3 extends Node {
                 Class40_Sub5_Sub6.anInt2451 = 70;
             }
         } else if(Class40_Sub5_Sub6.anInt2451 == 70) {
-            if(!Class40_Sub5_Sub10.aClass6_Sub1_2609.method185((byte) 98)) {
-                Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(107, new RSString[]{Class33.aClass1_783, HashTable.method334(Class40_Sub5_Sub10.aClass6_Sub1_2609.method202(false), -1), Class44.aClass1_1041}));
+            if(!IdentityKit.aClass6_Sub1_2609.method185((byte) 98)) {
+                Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(107, new RSString[]{Class33.aClass1_783, HashTable.method334(IdentityKit.aClass6_Sub1_2609.method202(false), -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 60;
             } else {
-                Class38.method441(Class40_Sub5_Sub10.aClass6_Sub1_2609, -76);
-                Class40_Sub5_Sub9.method616((Class40_Sub5_Sub10.aClass6_Sub1_2609), (byte) 85);
-                Class58.method977(3, Class40_Sub5_Sub10.aClass6_Sub1_2609, Class40_Sub5_Sub9.aClass6_Sub1_2571);
-                Class58.method980(28987, Class40_Sub5_Sub9.aClass6_Sub1_2571, VertexNormal.lowMemory, Class40_Sub5_Sub10.aClass6_Sub1_2609);
-                Class27.method357(Class40_Sub5_Sub9.aClass6_Sub1_2571, arg0 ^ ~0x2a85, Class40_Sub5_Sub10.aClass6_Sub1_2609);
-                Class42.method885(Class40_Sub5_Sub10.aClass6_Sub1_2609, Class22.aBoolean541, Class40_Sub5_Sub9.aClass6_Sub1_2571, -313);
-                Cache.method236(false, Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000, Class40_Sub5_Sub10.aClass6_Sub1_2609, FloorDecoration.aClass6_Sub1_605);
-                Class55.method966(arg0 ^ 0x38, Class40_Sub5_Sub9.aClass6_Sub1_2571, Class40_Sub5_Sub10.aClass6_Sub1_2609);
-                Landscape.method936(-17552, Class40_Sub5_Sub10.aClass6_Sub1_2609);
-                Main.method43(Class40_Sub5_Sub10.aClass6_Sub1_2609, true);
+                Class38.method441(IdentityKit.aClass6_Sub1_2609, -76);
+                Class40_Sub5_Sub9.method616((IdentityKit.aClass6_Sub1_2609), (byte) 85);
+                Class58.method977(3, IdentityKit.aClass6_Sub1_2609, Class40_Sub5_Sub9.aClass6_Sub1_2571);
+                Class58.method980(28987, Class40_Sub5_Sub9.aClass6_Sub1_2571, VertexNormal.lowMemory, IdentityKit.aClass6_Sub1_2609);
+                Class27.method357(Class40_Sub5_Sub9.aClass6_Sub1_2571, arg0 ^ ~0x2a85, IdentityKit.aClass6_Sub1_2609);
+                Class42.method885(IdentityKit.aClass6_Sub1_2609, Class22.aBoolean541, Class40_Sub5_Sub9.aClass6_Sub1_2571, -313);
+                Cache.method236(false, Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000, IdentityKit.aClass6_Sub1_2609, FloorDecoration.aClass6_Sub1_605);
+                Class55.method966(arg0 ^ 0x38, Class40_Sub5_Sub9.aClass6_Sub1_2571, IdentityKit.aClass6_Sub1_2609);
+                Landscape.method936(-17552, IdentityKit.aClass6_Sub1_2609);
+                Main.method43(IdentityKit.aClass6_Sub1_2609, true);
                 Class40_Sub5_Sub17_Sub1.method758(Class65.aClass6_Sub1_1533, (NpcDefinition.aClass6_Sub1_2377), (Class40_Sub5_Sub9.aClass6_Sub1_2571), (byte) 90);
                 Class40_Sub5_Sub6.anInt2451 = 80;
                 Class67.anInt1607 = 60;
@@ -321,8 +322,8 @@ public class Class40_Sub3 extends Node {
         byte[] is = Actor.aClass6_3150.method172(arg1, 127, 1);
             class40_sub5_sub9 = new Class40_Sub5_Sub9();
             if(is != null)
-                class40_sub5_sub9.method618((byte) 127, arg1, new Buffer(is));
-            class40_sub5_sub9.method615(true);
+                class40_sub5_sub9.readValues(new Buffer(is));
+        class40_sub5_sub9.method615();
             if(arg0 >= -39)
                 aClass1_2015 = null;
             Class53.aClass9_1247.method230(-7208, (long) arg1, class40_sub5_sub9);

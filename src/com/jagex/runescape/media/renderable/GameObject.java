@@ -3,6 +3,7 @@ package com.jagex.runescape.media.renderable;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -179,7 +180,7 @@ public class GameObject extends Renderable {
                 if(Class40_Sub5_Sub11.aBoolean2631) {
                     Class40_Sub5_Sub11.aBoolean2631 = false;
                     graphics.setColor(Color.black);
-                    graphics.fillRect(0, 0, Class12.width, Class40_Sub5_Sub10.height);
+                    graphics.fillRect(0, 0, Class12.width, IdentityKit.height);
                 }
                 if(color == null)
                     color = new Color(140, 17, 17);
@@ -197,10 +198,10 @@ public class GameObject extends Renderable {
                     graphics_13_.setFont(Class17.aFont461);
                     graphics_13_.setColor(Color.white);
                     rsString.method65(((304 + -rsString.method73(-48, Class8.aFontMetrics295)) / 2), 22, graphics_13_);
-                    graphics.drawImage(Class26.anImage624, -152 + Class12.width / 2, -18 + Class40_Sub5_Sub10.height / 2, null);
+                    graphics.drawImage(Class26.anImage624, -152 + Class12.width / 2, -18 + IdentityKit.height / 2, null);
                 } catch(Exception exception) {
                     int i = -152 + Class12.width / 2;
-                    int i_14_ = Class40_Sub5_Sub10.height / 2 + -18;
+                    int i_14_ = IdentityKit.height / 2 + -18;
                     graphics.setColor(color);
                     graphics.drawRect(i, i_14_, 303, 33);
                     graphics.fillRect(2 + i, i_14_ + 2, 3 * arg0, 30);

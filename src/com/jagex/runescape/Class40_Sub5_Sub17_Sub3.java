@@ -2,6 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -164,7 +165,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
     }
 
     public static void method778(boolean arg0, Class66 arg1) {
-        Class40_Sub5_Sub10.aClass66_2590 = arg1;
+        IdentityKit.aClass66_2590 = arg1;
         anInt3063++;
         if(arg0 != true)
             method775(true);

@@ -326,7 +326,7 @@ public class FloorDecoration {
 				}*/
                                 Class40_Sub5_Sub1.anInt2278 = 0;
                                 Class34.anInt813 = 0;
-                                PacketBuffer.aClass40_Sub5_Sub13_2250.aClass6_Sub1_2754.method196(((PacketBuffer.aClass40_Sub5_Sub13_2250.key) & 0xff0000L) == 16711680L, false, (int) ((PacketBuffer.aClass40_Sub5_Sub13_2250.key) & 0xffffL), Npc.aBoolean3298, (Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer));
+                                PacketBuffer.aClass40_Sub5_Sub13_2250.aClass6_Sub1_2754.method196(((PacketBuffer.aClass40_Sub5_Sub13_2250.key) & 0xff0000L) == 16711680L, (int) ((PacketBuffer.aClass40_Sub5_Sub13_2250.key) & 0xffffL), Npc.aBoolean3298, (Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer));
                             } else {
                                 Class48.aClass40_Sub1_1132 = Class40_Sub5_Sub13.aClass40_Sub1_2752;
                                 for(int i_40_ = 0; i_40_ < 256; i_40_++) {

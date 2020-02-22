@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -174,7 +175,7 @@ public class Class30 {
                 boolean bool = false;
                 for(int i = 0; i < 12; i++) {
                     int i_1_ = is[i];
-                    if((i_1_ ^ 0xffffffff) <= -257 && i_1_ < 512 && !Buffer.method501(-256 + i_1_).method623(true))
+                    if((i_1_ ^ 0xffffffff) <= -257 && i_1_ < 512 && !Buffer.method501(-256 + i_1_).isBodyModelCached())
                         bool = true;
                     if(i_1_ >= 512 && !ItemDefinition.forId(i_1_ + -512, 10).method739(aBoolean683, (byte) 127))
                         bool = true;
@@ -312,8 +313,8 @@ public class Class30 {
                 arg0 = new int[12];
                 for(int i = 0; i < 7; i++) {
                     for(int i_15_ = 0; PacketBuffer.anInt2257 > i_15_; i_15_++) {
-                        Class40_Sub5_Sub10 class40_sub5_sub10 = Buffer.method501(i_15_);
-                        if(class40_sub5_sub10 != null && !class40_sub5_sub10.aBoolean2606 && ((i + (!arg1 ? 0 : 7) ^ 0xffffffff) == (class40_sub5_sub10.anInt2599 ^ 0xffffffff))) {
+                        IdentityKit identityKit = Buffer.method501(i_15_);
+                        if(identityKit != null && !identityKit.widgetDisplayed && ((i + (!arg1 ? 0 : 7) ^ 0xffffffff) == (identityKit.partId ^ 0xffffffff))) {
                             arg0[Class40_Sub5_Sub15.anIntArray2777[i]] = i_15_ + 256;
                             break;
                         }
@@ -338,7 +339,7 @@ public class Class30 {
                 if(i != 0) {
                     i -= 256;
                     if(arg2 > 3) {
-                        Class40_Sub5_Sub10 class40_sub5_sub10;
+                        IdentityKit identityKit;
                         do {
                             if(arg1) {
                                 i++;
@@ -346,8 +347,8 @@ public class Class30 {
                                     i = 0;
                             } else if((--i ^ 0xffffffff) > -1)
                                 i = -1 + PacketBuffer.anInt2257;
-                            class40_sub5_sub10 = Buffer.method501(i);
-                        } while(class40_sub5_sub10 == null || class40_sub5_sub10.aBoolean2606 || (class40_sub5_sub10.anInt2599 != arg0 + (!aBoolean683 ? 0 : 7)));
+                            identityKit = Buffer.method501(i);
+                        } while(identityKit == null || identityKit.widgetDisplayed || (identityKit.partId != arg0 + (!aBoolean683 ? 0 : 7)));
                         anIntArray692[Class40_Sub5_Sub15.anIntArray2777[arg0]] = i + 256;
                         method378(117);
                     }

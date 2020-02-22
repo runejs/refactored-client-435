@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
 
@@ -155,7 +156,7 @@ public class Class54 implements KeyListener, FocusListener {
                 i++;
             if(arg0.method194(Class58.aClass1_1374, Class8.aClass1_305, arg1 ^ 0x4eb))
                 i++;
-            if(arg0.method194(Class40_Sub5_Sub10.aClass1_2588, Class8.aClass1_305, -1234))
+        if(arg0.method194(IdentityKit.aClass1_2588, Class8.aClass1_305, -1234))
                 i++;
             if(arg1 != -59)
                 aClass1_1271 = null;
@@ -239,11 +240,11 @@ public class Class54 implements KeyListener, FocusListener {
                         GameObjectDefinition.anInt2543 = -1;
                 }
                 if((i ^ 0xffffffff) <= -1 || (i_4_ ^ 0xffffffff) <= -1) {
-                    int i_5_ = 0x7f & 1 + Class40_Sub5_Sub10.anInt2598;
+                    int i_5_ = 0x7f & 1 + IdentityKit.anInt2598;
                     if(Class59.anInt1389 != i_5_) {
-                        Class40_Sub6.anIntArray2113[(Class40_Sub5_Sub10.anInt2598)] = i;
-                        Class40_Sub5_Sub13.anIntArray2764[(Class40_Sub5_Sub10.anInt2598)] = i_4_;
-                        Class40_Sub5_Sub10.anInt2598 = i_5_;
+                        Class40_Sub6.anIntArray2113[(IdentityKit.anInt2598)] = i;
+                        Class40_Sub5_Sub13.anIntArray2764[(IdentityKit.anInt2598)] = i_4_;
+                        IdentityKit.anInt2598 = i_5_;
                     }
                 }
             }

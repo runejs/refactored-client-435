@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.io.Buffer;
 
 public class Class40_Sub7 extends Node {
@@ -75,7 +76,7 @@ public class Class40_Sub7 extends Node {
                                 bool_2_ = true;
                                 if(!gameObjectDefinition.method612((byte) 8)) {
                                     bool = false;
-                                    Class40_Sub5_Sub10.anInt2591++;
+                                    IdentityKit.anInt2591++;
                                 }
                             }
                         }
