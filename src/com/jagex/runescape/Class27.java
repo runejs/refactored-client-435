@@ -68,10 +68,10 @@ public class Class27 {
     public static void method353(byte arg0) {
         Class40_Sub5_Sub11.anInt2628++;
         Class40_Sub5_Sub17_Sub6.method833(0, true);
-        ItemDefinition.method749(true, -15537);
+        ItemDefinition.method749(true);
         anInt639++;
         Class40_Sub5_Sub17_Sub6.method833(0, false);
-        ItemDefinition.method749(false, -15537);
+        ItemDefinition.method749(false);
         HashTable.method335((byte) 61);
         Class61.method1000(true);
         if(!Class39.aBoolean906) {

@@ -76,13 +76,13 @@ public class Class40_Sub13 extends Node {
                     return class40_sub5_sub14_sub4;
             }
             ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(arg2, 10);
-            if(class40_sub5_sub16.anIntArray2831 == null)
+        if(class40_sub5_sub16.stackableIds == null)
                 arg1 = -1;
             if((arg1 ^ 0xffffffff) < -2) {
                 int i = -1;
                 for(int i_0_ = 0; (i_0_ ^ 0xffffffff) > -11; i_0_++) {
-                    if(arg1 >= class40_sub5_sub16.anIntArray2834[i_0_] && class40_sub5_sub16.anIntArray2834[i_0_] != 0)
-                        i = class40_sub5_sub16.anIntArray2831[i_0_];
+                    if(arg1 >= class40_sub5_sub16.stackableAmounts[i_0_] && class40_sub5_sub16.stackableAmounts[i_0_] != 0)
+                        i = class40_sub5_sub16.stackableIds[i_0_];
                 }
                 if(i != -1)
                     class40_sub5_sub16 = ItemDefinition.forId(i, 10);
@@ -92,7 +92,7 @@ public class Class40_Sub13 extends Node {
                 return null;
         ImageRGB class40_sub5_sub14_sub4 = null;
             if(class40_sub5_sub16.noteTemplateId != -1) {
-                class40_sub5_sub14_sub4 = method876(-56, 10, class40_sub5_sub16.anInt2812, -1);
+                class40_sub5_sub14_sub4 = method876(-56, 10, class40_sub5_sub16.notedId, -1);
                 if(class40_sub5_sub14_sub4 == null)
                     return null;
             }
@@ -111,16 +111,16 @@ public class Class40_Sub13 extends Node {
         Rasterizer.method669(class40_sub5_sub14_sub4_10_.pixels, 32, 32);
             Class40_Sub5_Sub17_Sub6.anIntArray3253 = R3D.method708(Class40_Sub5_Sub17_Sub6.anIntArray3253);
             Rasterizer.method656(0, 0, 32, 32, 0);
-            int i_11_ = class40_sub5_sub16.anInt2817;
+        int i_11_ = class40_sub5_sub16.modelZoom;
             if((arg3 ^ 0xffffffff) == 0)
                 i_11_ *= 1.5;
             if(arg3 > 0)
                 i_11_ *= 1.04;
             R3D.aBoolean2944 = false;
-            int i_12_ = ((R3D.sinetable[class40_sub5_sub16.anInt2844]) * i_11_ >> -1598852880);
-            int i_13_ = (i_11_ * (R3D.cosinetable[class40_sub5_sub16.anInt2844]) >> -2129368336);
+        int i_12_ = ((R3D.sinetable[class40_sub5_sub16.modelRotation1]) * i_11_ >> -1598852880);
+        int i_13_ = (i_11_ * (R3D.cosinetable[class40_sub5_sub16.modelRotation1]) >> -2129368336);
             class40_sub5_sub17_sub5.method799();
-            class40_sub5_sub17_sub5.method812(0, class40_sub5_sub16.anInt2830, class40_sub5_sub16.anInt2827, class40_sub5_sub16.anInt2844, class40_sub5_sub16.anInt2806, (class40_sub5_sub16.anInt2810 + class40_sub5_sub17_sub5.anInt2861 / 2 + i_12_), i_13_ + class40_sub5_sub16.anInt2810);
+        class40_sub5_sub17_sub5.method812(0, class40_sub5_sub16.modelRotation2, class40_sub5_sub16.anInt2827, class40_sub5_sub16.modelRotation1, class40_sub5_sub16.modelOffset1, (class40_sub5_sub16.modelOffset2 + class40_sub5_sub17_sub5.anInt2861 / 2 + i_12_), i_13_ + class40_sub5_sub16.modelOffset2);
             for(int i_14_ = 31; i_14_ >= 0; i_14_--) {
                 for(i_13_ = 31; i_13_ >= 0; i_13_--) {
                     if(((class40_sub5_sub14_sub4_10_.pixels[i_14_ + 32 * i_13_]) ^ 0xffffffff) == -1) {
@@ -178,7 +178,7 @@ public class Class40_Sub13 extends Node {
             R3D.anInt2945 = i_9_;
             R3D.method702();
             R3D.aBoolean2944 = true;
-            if((class40_sub5_sub16.anInt2795 ^ 0xffffffff) == -2)
+        if((class40_sub5_sub16.stackable ^ 0xffffffff) == -2)
                 class40_sub5_sub14_sub4_10_.maxWidth = 33;
             else
                 class40_sub5_sub14_sub4_10_.maxWidth = 32;
@@ -272,8 +272,8 @@ public class Class40_Sub13 extends Node {
                 Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3 = null;
                 for(Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3_32_ = ((Class40_Sub5_Sub17_Sub3) class45.method902((byte) -90)); class40_sub5_sub17_sub3_32_ != null; class40_sub5_sub17_sub3_32_ = (Class40_Sub5_Sub17_Sub3) class45.method909(-4)) {
                     ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((class40_sub5_sub17_sub3_32_.anInt3067), 10);
-                    int i_33_ = class40_sub5_sub16.anInt2828;
-                    if(class40_sub5_sub16.anInt2795 == 1)
+                    int i_33_ = class40_sub5_sub16.value;
+                    if(class40_sub5_sub16.stackable == 1)
                         i_33_ *= class40_sub5_sub17_sub3_32_.anInt3058 + 1;
                     if((i_33_ ^ 0xffffffff) < (i ^ 0xffffffff)) {
                         i = i_33_;

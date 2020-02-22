@@ -736,12 +736,12 @@ public class Class43 {
                             if((i_87_ ^ 0xffffffff) != 0) {
                                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_87_, 10);
                                 class40_sub5_sub12.anInt2687 = 4;
-                                class40_sub5_sub12.anInt2690 = class40_sub5_sub16.anInt2844;
+                                class40_sub5_sub12.anInt2690 = class40_sub5_sub16.modelRotation1;
                                 class40_sub5_sub12.anInt2725 = class40_sub5_sub16.anInt2827;
-                                class40_sub5_sub12.anInt2728 = (100 * class40_sub5_sub16.anInt2817 / i_88_);
-                                class40_sub5_sub12.anInt2657 = class40_sub5_sub16.anInt2830;
-                                class40_sub5_sub12.anInt2679 = class40_sub5_sub16.anInt2810;
-                                class40_sub5_sub12.anInt2737 = class40_sub5_sub16.anInt2806;
+                                class40_sub5_sub12.anInt2728 = (100 * class40_sub5_sub16.modelZoom / i_88_);
+                                class40_sub5_sub12.anInt2657 = class40_sub5_sub16.modelRotation2;
+                                class40_sub5_sub12.anInt2679 = class40_sub5_sub16.modelOffset2;
+                                class40_sub5_sub12.anInt2737 = class40_sub5_sub16.modelOffset1;
                                 class40_sub5_sub12.anInt2673 = i_87_;
                             } else
                                 class40_sub5_sub12.anInt2687 = 0;

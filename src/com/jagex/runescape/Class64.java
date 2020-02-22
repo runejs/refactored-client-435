@@ -196,7 +196,7 @@ public class Class64 implements Runnable {
                                     Class44.anInt1036++;
                                     Floor.method558(class40_sub5_sub17_sub3.anInt3067, Main.aClass1_1763, i_4_, -501, i_3_, 47, (Class40_Sub5_Sub17_Sub6.method832(115, (new RSString[]{(Npc.aClass1_3295), Class5.aClass1_206, (class40_sub5_sub16.name)}))));
                                 } else if((Main.anInt1773 ^ 0xffffffff) != -2) {
-                                    RSString[] class1s = class40_sub5_sub16.groundActions;
+                                    RSString[] class1s = class40_sub5_sub16.groundOptions;
                                     Class56.anInt1319++;
                                     if(Class60.aBoolean1402)
                                         class1s = Class56.method968(class1s, arg0);
