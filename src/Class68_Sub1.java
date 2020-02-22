@@ -119,7 +119,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
                 }
                 if(!bool && Class4.anInt182 == 0) {
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
-                    Cache.outgoingbuffer.putBytes128((byte) -80, 0, Class59.aClass40_Sub1_1385.buffer, i_4_);
+                    Cache.outgoingbuffer.putBytes128(0, Class59.aClass40_Sub1_1385.buffer, i_4_);
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
                     RSString class1 = Class54.method956(124, Class59.aClass40_Sub1_1385).method53(-16315);
                     arg0.aClass1_3090 = class1.method89(false);

@@ -182,8 +182,8 @@ public class Player extends Class40_Sub5_Sub17_Sub4 {
         anInt3292++;
             arg1.currentPosition = 0;
             int i = arg1.method468(false);
-            anInt3268 = arg1.get(118);
-            anInt3273 = arg1.get(89);
+        anInt3268 = arg1.get();
+        anInt3273 = arg1.get();
             int i_3_ = -1;
             anInt3266 = 0;
             int[] is = new int[12];

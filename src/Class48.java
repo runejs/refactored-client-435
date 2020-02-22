@@ -92,7 +92,7 @@ public class Class48 {
                     break;
                 }
                 if(i <= 49) {
-                    Class62.aByteArrayArrayArray1473[arg7][arg0][arg4] = arg2.get(105);
+                    Class62.aByteArrayArrayArray1473[arg7][arg0][arg4] = arg2.get();
                     Floor.aByteArrayArrayArray2335[arg7][arg0][arg4] = (byte) ((i + -2) / 4);
                     Class35.aByteArrayArrayArray1745[arg7][arg0][arg4] = (byte) Class66.method1021(arg1 + -2 + i, 3);
                 } else if(i <= 81)

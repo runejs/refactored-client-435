@@ -175,8 +175,8 @@ public class Class53 {
                 if((Class57.packetid ^ 0xffffffff) == -230) {
                     int i = Cache.outgoingbuffer.method495(-82);
                     int i_43_ = Cache.outgoingbuffer.method461((byte) 75);
-                    int i_44_ = Cache.outgoingbuffer.get(124);
-                    int i_45_ = Cache.outgoingbuffer.get(109);
+                    int i_44_ = Cache.outgoingbuffer.get();
+                    int i_45_ = Cache.outgoingbuffer.get();
                     int i_46_ = Cache.outgoingbuffer.method476(255);
                     int i_47_ = i_46_ & 0x3;
                     int i_48_ = i_46_ >> -638771838;
@@ -254,9 +254,9 @@ public class Class53 {
                     int i = Cache.outgoingbuffer.method468(false);
                     int i_68_ = (i & 0x7) + Floor.anInt2318;
                     int i_69_ = Class40_Sub6.anInt2119 + (0x7 & i >> 80153604);
-                    int i_70_ = (i_69_ + Cache.outgoingbuffer.get(100));
-                    int i_71_ = (i_68_ + Cache.outgoingbuffer.get(124));
-                    int i_72_ = Cache.outgoingbuffer.method463((byte) -109);
+                    int i_70_ = (i_69_ + Cache.outgoingbuffer.get());
+                    int i_71_ = (i_68_ + Cache.outgoingbuffer.get());
+                    int i_72_ = Cache.outgoingbuffer.getShortUNKNOWN();
                     int i_73_ = Cache.outgoingbuffer.method469(65280);
                     int i_74_ = Cache.outgoingbuffer.method468(false) * 4;
                     int i_75_ = 4 * Cache.outgoingbuffer.method468(false);

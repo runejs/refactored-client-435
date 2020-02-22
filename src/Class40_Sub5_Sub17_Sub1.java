@@ -481,7 +481,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
 
     }
 
-    public static void renderObject(int objectId, int localX, int localY, int plane, int face, int type, Scene scene, CollisionMap collisionMap) {
+    public static void addObject(int objectId, int localX, int localY, int plane, int face, int type, Scene scene, CollisionMap collisionMap) {
         if(!VertexNormal.lowMemory || (0x2 & (Floor.tile_flags[0][localX][localY]) ^ 0xffffffff) != -1 || ((0x10 & (Floor.tile_flags[plane][localX][localY]) ^ 0xffffffff) == -1 && ((Class59.getVisibilityPlaneFor(plane, localY, 0, localX) ^ 0xffffffff) == (Class40_Sub6.onBuildTimePlane ^ 0xffffffff)))) {
             if(Class64.setZ > plane)
                 Class64.setZ = plane;

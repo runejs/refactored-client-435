@@ -158,12 +158,12 @@ public abstract class Class6 {
                 if((i_43_ ^ 0xffffffff) == -2) {
                     for(int i_44_ = 0; (i_41_ ^ 0xffffffff) < (i_44_ ^ 0xffffffff); i_44_++) {
                         for(int i_45_ = 0; i_40_ > i_45_; i_45_++)
-                            is[i_41_ * i_45_ + i_44_] = class40_sub1.get(94);
+                            is[i_41_ * i_45_ + i_44_] = class40_sub1.get();
                     }
                 }
             } else {
                 for(int i_46_ = 0; (i_42_ ^ 0xffffffff) < (i_46_ ^ 0xffffffff); i_46_++)
-                    is[i_46_] = class40_sub1.get(109);
+                    is[i_46_] = class40_sub1.get();
             }
         }
     }

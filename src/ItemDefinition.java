@@ -403,12 +403,12 @@ public class ItemDefinition extends SubNode {
                                                         if(arg0 != 111) {
                                                             if(arg0 != 112) {
                                                                 if(arg0 == 113)
-                                                                    anInt2825 = (arg2.get(123));
+                                                                    anInt2825 = (arg2.get());
                                                                 else if((arg0 ^ 0xffffffff) != -115) {
                                                                     if(arg0 == 115)
                                                                         anInt2823 = arg2.method468(false);
                                                                 } else
-                                                                    anInt2840 = ((arg2.get(96)) * 5);
+                                                                    anInt2840 = ((arg2.get()) * 5);
                                                             } else
                                                                 anInt2833 = (arg2.method469(65280));
                                                         } else

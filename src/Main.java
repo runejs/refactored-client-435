@@ -1290,7 +1290,6 @@ public class Main extends RSApplet {
             Class55.anInt1290 = 0;
             Class52.anInt1212 = 0;
             Class27.anInt657 = 0;
-            Buffer.anInt1970 = 0;
             Class40_Sub5_Sub17_Sub1.anInt3005 = 0;
             RSApplet.anInt42 = 0;
             SceneTile.anInt2040 = 0;

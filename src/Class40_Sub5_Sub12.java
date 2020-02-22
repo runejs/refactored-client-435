@@ -321,8 +321,8 @@ public class Class40_Sub5_Sub12 extends SubNode {
         anInt2639 = arg0.method469(65280);
         if(arg1 >= -35)
             aBoolean2723 = true;
-        anInt2649 = anInt2656 = arg0.method463((byte) -128);
-        anInt2743 = anInt2696 = arg0.method463((byte) -63);
+        anInt2649 = anInt2656 = arg0.getShortUNKNOWN();
+        anInt2743 = anInt2696 = arg0.getShortUNKNOWN();
         anInt2692 = arg0.method469(65280);
         anInt2643 = arg0.method469(65280);
         anInt2745 = arg0.method468(false);
@@ -377,8 +377,8 @@ public class Class40_Sub5_Sub12 extends SubNode {
             for(int i_5_ = 0; i_5_ < 20; i_5_++) {
                 int i_6_ = arg0.method468(false);
                 if((i_6_ ^ 0xffffffff) == -2) {
-                    anIntArray2699[i_5_] = arg0.method463((byte) -97);
-                    anIntArray2708[i_5_] = arg0.method463((byte) -85);
+                    anIntArray2699[i_5_] = arg0.getShortUNKNOWN();
+                    anIntArray2708[i_5_] = arg0.getShortUNKNOWN();
                     anIntArray2704[i_5_] = arg0.method491(-4750);
                 } else
                     anIntArray2704[i_5_] = -1;
@@ -440,8 +440,8 @@ public class Class40_Sub5_Sub12 extends SubNode {
             anInt2642 = arg0.method469(65280);
             aBoolean2665 = arg0.method468(false) == 1;
             anInt2647 = arg0.method491(-4750);
-            anInt2749 = arg0.method463((byte) -72);
-            anInt2667 = arg0.method463((byte) -122);
+            anInt2749 = arg0.getShortUNKNOWN();
+            anInt2667 = arg0.getShortUNKNOWN();
             aBoolean2727 = (arg0.method468(false) ^ 0xffffffff) == -2;
             aClass1Array2698 = new RSString[5];
             for(int i_8_ = 0; i_8_ < 5; i_8_++) {
@@ -526,12 +526,12 @@ public class Class40_Sub5_Sub12 extends SubNode {
         anInt2639 = arg1.method469(65280);
         if(arg0 < 58)
             method642(null, -90);
-        anInt2649 = anInt2656 = arg1.method463((byte) -122);
+        anInt2649 = anInt2656 = arg1.getShortUNKNOWN();
         anInt2638++;
-        anInt2743 = anInt2696 = arg1.method463((byte) -61);
+        anInt2743 = anInt2696 = arg1.getShortUNKNOWN();
         anInt2692 = arg1.method469(65280);
         if(anInt2683 == 9)
-            anInt2643 = arg1.method463((byte) -124);
+            anInt2643 = arg1.getShortUNKNOWN();
         else
             anInt2643 = arg1.method469(65280);
         anInt2648 = arg1.method469(65280);
@@ -554,8 +554,8 @@ public class Class40_Sub5_Sub12 extends SubNode {
             anInt2673 = arg1.method469(65280);
             if((anInt2673 ^ 0xffffffff) == -65536)
                 anInt2673 = -1;
-            anInt2737 = arg1.method463((byte) -127);
-            anInt2679 = arg1.method463((byte) -120);
+            anInt2737 = arg1.getShortUNKNOWN();
+            anInt2679 = arg1.getShortUNKNOWN();
             anInt2690 = arg1.method469(65280);
             anInt2657 = arg1.method469(65280);
             anInt2725 = arg1.method469(65280);

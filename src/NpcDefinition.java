@@ -380,7 +380,7 @@ public class NpcDefinition extends SubNode {
                                             if(arg0 != 99) {
                                                 if(arg0 != 100) {
                                                     if(arg0 == 101)
-                                                        anInt2409 = (arg2.get(75)) * 5;
+                                                        anInt2409 = (arg2.get()) * 5;
                                                     else if((arg0 ^ 0xffffffff) == -103)
                                                         anInt2381 = (arg2.method469(65280));
                                                     else if(arg0 == 103)
@@ -404,7 +404,7 @@ public class NpcDefinition extends SubNode {
                                                         }
                                                     }
                                                 } else
-                                                    anInt2387 = arg2.get(116);
+                                                    anInt2387 = arg2.get();
                                             } else
                                                 aBoolean2397 = true;
                                         } else

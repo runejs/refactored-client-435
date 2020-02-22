@@ -387,7 +387,7 @@ public class CollisionMap {
                     return false;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -25) {
-                    int i_43_ = Cache.outgoingbuffer.method463((byte) -118);
+                    int i_43_ = Cache.outgoingbuffer.getShortUNKNOWN();
                     int i_44_ = Cache.outgoingbuffer.method491(-4750);
                     Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_44_, (byte) -82);
                     if(((class40_sub5_sub12.anInt2659 ^ 0xffffffff) != (i_43_ ^ 0xffffffff)) || (i_43_ ^ 0xffffffff) == 0) {
@@ -821,7 +821,7 @@ public class CollisionMap {
                 if((Class57.packetid ^ 0xffffffff) == -172) {
                     if(Class5.anInt208 == 12)
                         ISAAC.aBoolean505 = true;
-                    Class52.anInt1222 = Cache.outgoingbuffer.method463((byte) -108);
+                    Class52.anInt1222 = Cache.outgoingbuffer.getShortUNKNOWN();
                     Class57.packetid = -1;
                     return true;
                 }

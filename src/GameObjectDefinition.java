@@ -415,9 +415,9 @@ public class GameObjectDefinition extends SubNode {
                                             if((arg2 ^ 0xffffffff) == -29)
                                                 anInt2505 = arg0.method468(false);
                                             else if((arg2 ^ 0xffffffff) == -30)
-                                                anInt2527 = arg0.get(84);
+                                                anInt2527 = arg0.get();
                                             else if((arg2 ^ 0xffffffff) == -40)
-                                                anInt2544 = 5 * arg0.get(103);
+                                                anInt2544 = 5 * arg0.get();
                                             else if((arg2 ^ 0xffffffff) <= -31 && arg2 < 35) {
                                                 aClass1Array2508[arg2 - 30] = arg0.getRSString(-10721);
                                                 if(aClass1Array2508[arg2 + -30].method63(Class59.aClass1_1396, true))
@@ -436,11 +436,11 @@ public class GameObjectDefinition extends SubNode {
                                                         if(arg2 != 68) {
                                                             if((arg2 ^ 0xffffffff) != -70) {
                                                                 if(arg2 == 70)
-                                                                    anInt2500 = (arg0.method463((byte) -126));
+                                                                    anInt2500 = (arg0.getShortUNKNOWN());
                                                                 else if((arg2 ^ 0xffffffff) == -72)
-                                                                    anInt2519 = (arg0.method463((byte) -116));
+                                                                    anInt2519 = (arg0.getShortUNKNOWN());
                                                                 else if(arg2 == 72)
-                                                                    anInt2504 = (arg0.method463((byte) -106));
+                                                                    anInt2504 = (arg0.getShortUNKNOWN());
                                                                 else if(arg2 != 73) {
                                                                     if((arg2 ^ 0xffffffff) != -75) {
                                                                         if(arg2 == 75)
