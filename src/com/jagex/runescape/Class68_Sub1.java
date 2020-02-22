@@ -227,8 +227,8 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
                 aClass1_2209 = null;
             anInt2205++;
             int i = arg2.currentPosition;
-            arg2.method509(arg1.anInt1680, 32768);
-            arg2.currentPosition += (Class40_Sub5_Sub10.aClass66_2590.method1026(-18678, 0, arg2.currentPosition, arg1.anInt1680, arg1.aByteArray1692, arg2.buffer));
+        arg2.method509(arg1.length, 32768);
+        arg2.currentPosition += (Class40_Sub5_Sub10.aClass66_2590.method1026(-18678, 0, arg2.currentPosition, arg1.length, arg1.chars, arg2.buffer));
             return -i + arg2.currentPosition;
 
     }

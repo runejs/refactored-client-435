@@ -78,7 +78,7 @@ public class Class38_Sub1 extends Class38 {
                         int i_3_ = 329 + -(13 * i);
                         i++;
                         if((Class13.anInt420 ^ 0xffffffff) < -5 && ((i_3_ + -10 ^ 0xffffffff) > (Landscape.anInt1166 + -4 ^ 0xffffffff)) && ((-4 + Landscape.anInt1166 ^ 0xffffffff) >= (i_3_ + 3 ^ 0xffffffff))) {
-                            int i_4_ = 25 + (Class53.aClass40_Sub5_Sub14_Sub1_1268.method685(Class40_Sub5_Sub17_Sub6.method832(arg0 + -9666, (new RSString[]{Class40_Sub5_Sub6.aClass1_2458, Class12.aClass1_392, class1, (Actor.chatMessages[i_1_])}))));
+                            int i_4_ = 25 + (Class53.aClass40_Sub5_Sub14_Sub1_1268.getStringWidth(Class40_Sub5_Sub17_Sub6.method832(arg0 + -9666, (new RSString[]{Class40_Sub5_Sub6.aClass1_2458, Class12.aClass1_392, class1, (Actor.chatMessages[i_1_])}))));
                             if(i_4_ > 450)
                                 i_4_ = 450;
                             if(Class13.anInt420 < 4 + i_4_) {

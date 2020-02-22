@@ -161,8 +161,8 @@ public class PacketBuffer extends Buffer {
                 is[-1 + (i_3_ - i_4_)] = (byte) (48 + i_5_);
             }
             RSString class1 = new RSString();
-            class1.aByteArray1692 = is;
-            class1.anInt1680 = i_3_;
+        class1.chars = is;
+        class1.length = i_3_;
             return class1;
     }
 

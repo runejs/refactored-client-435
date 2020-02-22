@@ -55,7 +55,7 @@ public class Class40_Sub11 extends Node {
                     if(class1 != null && class1.startsWith((byte) 116, Class40_Sub5_Sub12.goldCrown))
                         class1 = class1.substring(5);
                     if((i_1_ == 1 || i_1_ == 2) && ((i_1_ ^ 0xffffffff) == -2 || Class35.publicChatMode == 0 || (Class35.publicChatMode == 1 && Class40_Sub2.hasFriend(class1, -32624)))) {
-                        if(arg1 > i_2_ - 14 && arg1 <= i_2_ && !(class1.method54((Class40_Sub5_Sub13.localPlayer.playerName), 122))) {
+                        if(arg1 > i_2_ - 14 && arg1 <= i_2_ && !(class1.equals((Class40_Sub5_Sub13.localPlayer.playerName)))) {
                             Class40_Sub5_Sub6.anInt2453++;
                             if((Class19.anInt493 ^ 0xffffffff) <= -2) {
                                 Floor.method558(0, Class22_Sub1.aClass1_1865, 0, -501, 0, 28, (Class40_Sub5_Sub17_Sub6.method832(arg2 ^ ~0x18, new RSString[]{Class26.aClass1_620, class1})));

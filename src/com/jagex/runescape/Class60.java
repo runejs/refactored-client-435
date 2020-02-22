@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -76,7 +77,7 @@ public class Class60 {
 
     public static void method990(int arg0) {
         anInt1405++;
-        int i = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method685(Class40_Sub5_Sub12.aClass1_2684);
+        int i = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getStringWidth(Class40_Sub5_Sub12.aClass1_2684);
         for(int i_1_ = 0; i_1_ < NpcDefinition.anInt2394; i_1_++) {
             int i_2_ = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method681(Landscape.aClass1Array1184[i_1_]);
             if((i ^ 0xffffffff) > (i_2_ ^ 0xffffffff))
@@ -166,8 +167,8 @@ public class Class60 {
                 is[--i] = CollisionMap.aByteArray169[(int) (-(arg1 * 37L) + l_10_)];
             }
             RSString class1 = new RSString();
-            class1.aByteArray1692 = is;
-            class1.anInt1680 = is.length;
+        class1.chars = is;
+        class1.length = is.length;
             return class1;
 
     }

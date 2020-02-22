@@ -47,13 +47,13 @@ public class Class19 {
 
         anInt467++;
             RSString class1 = new RSString();
-            class1.anInt1680 = 0;
-            class1.aByteArray1692 = new byte[arg3];
+        class1.length = 0;
+        class1.chars = new byte[arg3];
             if(arg1 != true)
                 aClass1_495 = null;
             for(int i = arg2; arg3 + arg2 > i; i++) {
                 if((arg0[i] ^ 0xffffffff) != -1)
-                    class1.aByteArray1692[class1.anInt1680++] = arg0[i];
+                    class1.chars[class1.length++] = arg0[i];
             }
             return class1;
 
