@@ -96,8 +96,8 @@ public class Class24 {
                         int i_8_ = i_5_ & 0x3;
                         if(i_3_ == arg5 && (arg0 ^ 0xffffffff) >= (i_4_ ^ 0xffffffff) && (i_4_ ^ 0xffffffff) > (8 + arg0 ^ 0xffffffff) && (arg9 ^ 0xffffffff) >= (i_7_ ^ 0xffffffff) && (arg9 + 8 ^ 0xffffffff) < (i_7_ ^ 0xffffffff)) {
                             GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
-                            int i_9_ = (Main.method42(arg2 ^ 0x1, i_8_, gameObjectDefinition.anInt2503, i_4_ & 0x7, gameObjectDefinition.anInt2515, arg4, 0x7 & i_7_) + arg10);
-                            int i_10_ = ((Class40_Sub5_Sub4.method564(i_7_ & 0x7, gameObjectDefinition.anInt2515, i_4_ & 0x7, gameObjectDefinition.anInt2503, arg4, i_8_, (byte) -123)) + arg7);
+                            int i_9_ = (Main.method42(arg2 ^ 0x1, i_8_, gameObjectDefinition.sizeX, i_4_ & 0x7, gameObjectDefinition.sizeY, arg4, 0x7 & i_7_) + arg10);
+                            int i_10_ = ((Class40_Sub5_Sub4.method564(i_7_ & 0x7, gameObjectDefinition.sizeY, i_4_ & 0x7, gameObjectDefinition.sizeX, arg4, i_8_, (byte) -123)) + arg7);
                             if((i_9_ ^ 0xffffffff) < -1 && (i_10_ ^ 0xffffffff) < -1 && i_9_ < 103 && i_10_ < 103) {
                                 CollisionMap collisionMap = null;
                                 int i_11_ = arg3;

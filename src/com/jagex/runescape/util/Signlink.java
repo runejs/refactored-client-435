@@ -21,7 +21,7 @@ public class Signlink implements Runnable {
     public static String aString739;
     public boolean aBoolean721;
     public int anInt722 = 0;
-    public Class47[] aClass47Array723;
+    public Class47[] cacheIndex;
     public Class15 aClass15_725 = null;
     public Runnable_Impl1 aRunnable_Impl1_727;
     public Class47 aClass47_728;
@@ -30,12 +30,12 @@ public class Signlink implements Runnable {
     public Interface2 anInterface2_732;
     public Thread aThread733;
     public String aString734 = null;
-    public Class47 aClass47_736;
+    public Class47 cacheData;
     public Applet anApplet740;
 
     public Signlink(boolean arg0, Applet arg1, InetAddress inetAddress, int fileStoreId, String cacheFolder, int cacheIndexes) throws IOException {
         aClass47_728 = null;
-        aClass47_736 = null;
+        cacheData = null;
         anApplet740 = null;
         anApplet740 = arg1;
         anInetAddress730 = inetAddress;
@@ -68,10 +68,10 @@ public class Signlink implements Runnable {
         }
         if(arg0) {
             method397(-3849);
-            aClass47_736 = new Class47(new File(aString734 + "main_file_cache.dat2"), "rw", 52428800L);
-            aClass47Array723 = new Class47[cacheIndexes];
+            cacheData = new Class47(new File(aString734 + "main_file_cache.dat2"), "rw", 52428800L);
+            cacheIndex = new Class47[cacheIndexes];
             for(int i = 0; i < cacheIndexes; i++)
-                aClass47Array723[i] = new Class47(new File(aString734 + "main_file_cache.idx" + i), "rw", 1048576L);
+                cacheIndex[i] = new Class47(new File(aString734 + "main_file_cache.idx" + i), "rw", 1048576L);
             aClass47_728 = new Class47(new File(aString734 + "main_file_cache.idx255"), "rw", 1048576L);
             method390(6);
         }
@@ -97,9 +97,9 @@ public class Signlink implements Runnable {
         }
         if(aRunnable_Impl1_727 != null)
             aRunnable_Impl1_727.method1((byte) -102);
-        if(aClass47_736 != null) {
+        if(cacheData != null) {
             try {
-                aClass47_736.method917(1);
+                cacheData.method917(1);
             } catch(IOException ioexception) {
                 /* empty */
             }
@@ -111,11 +111,11 @@ public class Signlink implements Runnable {
                 /* empty */
             }
         }
-        if(aClass47Array723 != null) {
-            for(int i = 0; i < aClass47Array723.length; i++) {
-                if(aClass47Array723[i] != null) {
+        if(cacheIndex != null) {
+            for(int i = 0; i < cacheIndex.length; i++) {
+                if(cacheIndex[i] != null) {
                     try {
-                        aClass47Array723[i].method917(arg0 ^ 0x1);
+                        cacheIndex[i].method917(arg0 ^ 0x1);
                     } catch(IOException ioexception) {
                         /* empty */
                     }

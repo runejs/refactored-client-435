@@ -342,7 +342,7 @@ public class RSString implements Interface1 {
 
     }
 
-    public boolean method63(RSString arg0, boolean arg1) {
+    public boolean equalsIgnoreCase(RSString arg0, boolean arg1) {
 
         anInt1712++;
         if(arg1 != true)

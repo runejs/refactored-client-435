@@ -264,19 +264,19 @@ public class Class37 {
         class40_sub2.anInt2002 = arg5.anInt2542;
         class40_sub2.anIntArray2005 = arg5.anIntArray2523;
         class40_sub2.anInt2012 = arg5.anInt2499;
-        int i = arg5.anInt2503;
-        int i_17_ = arg5.anInt2515;
+        int i = arg5.sizeX;
+        int i_17_ = arg5.sizeY;
         class40_sub2.anInt1993 = arg2;
         class40_sub2.anInt1994 = arg4 * 128;
         if(arg3 == 1 || arg3 == 3) {
-            i = arg5.anInt2515;
-            i_17_ = arg5.anInt2503;
+            i = arg5.sizeY;
+            i_17_ = arg5.sizeX;
         }
         class40_sub2.anInt2003 = 128 * arg0;
         class40_sub2.anInt2007 = (i_17_ + arg0) * 128;
         class40_sub2.anInt2013 = (arg4 + i) * 128;
         class40_sub2.anInt1997 = arg5.anInt2513;
-        if(arg5.childrenIds != null) {
+        if(arg5.configChangeDest != null) {
             class40_sub2.aGameObjectDefinition_2011 = arg5;
             class40_sub2.method528(57);
         }

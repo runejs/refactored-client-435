@@ -480,7 +480,7 @@ public class CollisionMap {
                     int i_53_ = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
                     int i_54_ = Cache.outgoingbuffer.getUnsignedByte();
                     if(i_54_ >= 1 && (i_54_ ^ 0xffffffff) >= -6) {
-                        if(class1.method63(RSApplet.aClass1_34, !arg0))
+                        if(class1.equalsIgnoreCase(RSApplet.aClass1_34, !arg0))
                             class1 = null;
                         Main.aClass1Array1778[i_54_ + -1] = class1;
                         Class13.aBooleanArray414[i_54_ + -1] = (i_53_ ^ 0xffffffff) == -1;

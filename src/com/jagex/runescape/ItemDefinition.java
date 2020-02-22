@@ -398,7 +398,7 @@ public class ItemDefinition extends SubNode {
                                             anInt2819 = arg2.getUnsignedShortBE();
                                         else if((arg0 ^ 0xffffffff) <= -31 && ((arg0 ^ 0xffffffff) > -36)) {
                                             groundActions[-30 + arg0] = arg2.getRSString();
-                                            if(groundActions[arg0 + -30].method63(Class59.aClass1_1396, true))
+                                            if(groundActions[arg0 + -30].equalsIgnoreCase(Class59.string_Hidden, true))
                                                 groundActions[arg0 + -30] = null;
                                         } else if(arg0 >= 35 && ((arg0 ^ 0xffffffff) > -41))
                                             options[arg0 + -35] = arg2.getRSString();

@@ -1859,15 +1859,15 @@ public class Main extends RSApplet {
         RSRuntimeException.method1056(Class62.aCanvas1469, (byte) 70);
         RSCanvas.anInt57 = Signlink.anInt737;
         try {
-            if(ISAAC.aClass31_521.aClass47_736 != null) {
-                Class40_Sub5_Sub2.aClass67_2298 = new Class67(ISAAC.aClass31_521.aClass47_736, 5200, 0);
+            if(ISAAC.aClass31_521.cacheData != null) {
+                Class40_Sub5_Sub2.aClass67_2298 = new Class67(ISAAC.aClass31_521.cacheData, 5200, 0);
                 for(int i = 0; i < 13; i++)
-                    Class40_Sub5_Sub6.aClass67Array2436[i] = new Class67((ISAAC.aClass31_521.aClass47Array723[i]), 6000, 0);
+                    Class40_Sub5_Sub6.aClass67Array2436[i] = new Class67((ISAAC.aClass31_521.cacheIndex[i]), 6000, 0);
                 Class30.aClass67_693 = new Class67(ISAAC.aClass31_521.aClass47_728, 6000, 0);
                 Class40_Sub5_Sub4.aClass56_2356 = new Class56(255, Class40_Sub5_Sub2.aClass67_2298, Class30.aClass67_693, 500000);
-                ISAAC.aClass31_521.aClass47Array723 = null;
+                ISAAC.aClass31_521.cacheIndex = null;
                 ISAAC.aClass31_521.aClass47_728 = null;
-                ISAAC.aClass31_521.aClass47_736 = null;
+                ISAAC.aClass31_521.cacheData = null;
             }
         } catch(java.io.IOException ioexception) {
             Class40_Sub5_Sub4.aClass56_2356 = null;
