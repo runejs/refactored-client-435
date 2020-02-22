@@ -1,6 +1,6 @@
 package com.jagex.runescape.audio;
 
-import com.jagex.runescape.Buffer;
+import com.jagex.runescape.io.Buffer;
 
 public class Filter {
     public static float _inv_unity;
@@ -28,20 +28,20 @@ public class Filter {
         num_pairs[0] = i >> 4;
         num_pairs[1] = i & 0xf;
         if(i != 0) {
-            unity[0] = buffer.readShort();
-            unity[1] = buffer.readShort();
+            unity[0] = buffer.getUnsignedShortBE();
+            unity[1] = buffer.getUnsignedShortBE();
             int i_0_ = buffer.getUnsignedByte();
             for(int i_1_ = 0; i_1_ < 2; i_1_++) {
                 for(int i_2_ = 0; i_2_ < num_pairs[i_1_]; i_2_++) {
-                    pair_phase[i_1_][0][i_2_] = buffer.readShort();
-                    pair_mag[i_1_][0][i_2_] = buffer.readShort();
+                    pair_phase[i_1_][0][i_2_] = buffer.getUnsignedShortBE();
+                    pair_mag[i_1_][0][i_2_] = buffer.getUnsignedShortBE();
                 }
             }
             for(int i_3_ = 0; i_3_ < 2; i_3_++) {
                 for(int i_4_ = 0; i_4_ < num_pairs[i_3_]; i_4_++) {
                     if((i_0_ & 1 << i_3_ * 4 << i_4_) != 0) {
-                        pair_phase[i_3_][1][i_4_] = buffer.readShort();
-                        pair_mag[i_3_][1][i_4_] = buffer.readShort();
+                        pair_phase[i_3_][1][i_4_] = buffer.getUnsignedShortBE();
+                        pair_mag[i_3_][1][i_4_] = buffer.getUnsignedShortBE();
                     } else {
                         pair_phase[i_3_][1][i_4_] = pair_phase[i_3_][0][i_4_];
                         pair_mag[i_3_][1][i_4_] = pair_mag[i_3_][0][i_4_];

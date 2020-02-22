@@ -4,6 +4,8 @@ package com.jagex.runescape;/*
  * @ Author: Zee best
  */
 
+import com.jagex.runescape.media.renderable.actor.Npc;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -64,7 +66,7 @@ public class MapDecompressor {
         try {
 
             RandomAccessFile in = new RandomAccessFile(file, "r");
-            //			RandomAccessFile out = new RandomAccessFile(com.jagex.runescape.Signlink.findCacheDirectory()+ "maps/test.cmap", "rw");
+            //			RandomAccessFile out = new RandomAccessFile(com.jagex.runescape.util.Signlink.findCacheDirectory()+ "maps/test.cmap", "rw");
             int totalObjects = in.readInt();
             //			out.writeInt(totalObjects);
             for(int index = 0; index < totalObjects; index++) {
@@ -127,7 +129,7 @@ public class MapDecompressor {
             class20 = groundData[plane];
         }
         if(~localY < -1 && ~localX < -1 && ~localY > -104 && ~localX > -104) {
-            Class40_Sub5_Sub17_Sub1.addObject(objectId, localX, localY, z, rotation, type, NPC.aScene_3301, class20);
+            Class40_Sub5_Sub17_Sub1.addObject(objectId, localX, localY, z, rotation, type, Npc.aScene_3301, class20);
         }
     }
 

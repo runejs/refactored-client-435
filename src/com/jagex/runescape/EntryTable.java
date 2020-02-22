@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.GameObject;
+
 public class EntryTable extends Node {
     public static int[] anIntArray2141;
     public int anInt2136;
@@ -14,14 +17,14 @@ public class EntryTable extends Node {
     public boolean aBoolean2146 = false;
 
     public EntryTable(Buffer arg0) {
-        anInt2137 = arg0.readShort();
+        anInt2137 = arg0.getUnsignedShortBE();
         aBoolean2143 = arg0.getUnsignedByte() == 1;
         int i = arg0.getUnsignedByte();
         if(i < 1 || i > 4)
             throw new RuntimeException();
         anIntArray2144 = new int[i];
         for(int i_30_ = 0; i_30_ < i; i_30_++)
-            anIntArray2144[i_30_] = arg0.readShort();
+            anIntArray2144[i_30_] = arg0.getUnsignedShortBE();
         if(i > 1) {
             anIntArray2140 = new int[i - 1];
             for(int i_31_ = 0; i_31_ < i - 1; i_31_++)

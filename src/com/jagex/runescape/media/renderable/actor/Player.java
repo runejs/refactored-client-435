@@ -1,8 +1,12 @@
-package com.jagex.runescape;
+package com.jagex.runescape.media.renderable.actor;
+
+import com.jagex.runescape.*;
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.Model;
 
 import java.awt.*;
 
-public class Player extends Class40_Sub5_Sub17_Sub4 {
+public class Player extends Actor {
     public static RSString aClass1_3256;
     public static RSString aClass1_3259;
     public static int anInt3261;
@@ -195,7 +199,7 @@ public class Player extends Class40_Sub5_Sub17_Sub4 {
                     int i_6_ = arg1.getUnsignedByte();
                     is[i_4_] = (i_5_ << 292869864) + i_6_;
                     if((i_4_ ^ 0xffffffff) == -1 && is[0] == 65535) {
-                        i_3_ = arg1.readShort();
+                        i_3_ = arg1.getUnsignedShortBE();
                         break;
                     }
                     if((is[i_4_] ^ 0xffffffff) <= -513) {
@@ -212,31 +216,31 @@ public class Player extends Class40_Sub5_Sub17_Sub4 {
                     i_10_ = 0;
                 is_8_[i_9_] = i_10_;
             }
-        anInt3126 = arg1.readShort();
+        anInt3126 = arg1.getUnsignedShortBE();
             if((anInt3126 ^ 0xffffffff) == -65536)
                 anInt3126 = -1;
-        anInt3145 = arg1.readShort();
+        anInt3145 = arg1.getUnsignedShortBE();
             if(anInt3145 == 65535)
                 anInt3145 = -1;
             anInt3083 = anInt3145;
-        anInt3131 = arg1.readShort();
+        anInt3131 = arg1.getUnsignedShortBE();
             if((anInt3131 ^ 0xffffffff) == -65536)
                 anInt3131 = -1;
-        anInt3079 = arg1.readShort();
+        anInt3079 = arg1.getUnsignedShortBE();
             if(anInt3079 == 65535)
                 anInt3079 = -1;
-        anInt3075 = arg1.readShort();
+        anInt3075 = arg1.getUnsignedShortBE();
             if(anInt3075 == 65535)
                 anInt3075 = -1;
-        anInt3132 = arg1.readShort();
+        anInt3132 = arg1.getUnsignedShortBE();
             if((anInt3132 ^ 0xffffffff) == -65536)
                 anInt3132 = -1;
-        anInt3082 = arg1.readShort();
+        anInt3082 = arg1.getUnsignedShortBE();
             if(anInt3082 == 65535)
                 anInt3082 = -1;
             aClass1_3278 = Class60.method991(-127, arg1.method498(1362367312)).method85(-4305);
         anInt3260 = arg1.getUnsignedByte();
-        anInt3257 = arg1.readShort();
+        anInt3257 = arg1.getUnsignedShortBE();
             if(aClass30_3282 == null)
                 aClass30_3282 = new Class30();
             aClass30_3282.method380(is, i == 1, 7, is_8_, i_3_);

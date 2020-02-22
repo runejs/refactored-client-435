@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.actor.Npc;
+
 public class Class66 {
     public static Class68 aClass68_1541;
     public static RSString aClass1_1542;
@@ -172,7 +174,7 @@ public class Class66 {
                         class1 = (Class40_Sub5_Sub17_Sub6.method832(-47, (new RSString[]{class1, (SceneTile.method536((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3260), arg4.anInt2393, arg0 + -99)), HashTable.aClass1_569, Class40_Sub5_Sub2.aClass1_2286, HashTable.method334(arg4.anInt2393, -1), Class51.aClass1_1199})));
                     if((Class8.anInt301 ^ 0xffffffff) == -2) {
                         Node.anInt927++;
-                        Floor.method558(arg3, Main.aClass1_1763, arg2, -501, arg1, 49, (Class40_Sub5_Sub17_Sub6.method832(-124, (new RSString[]{NPC.aClass1_3295, Class40_Sub5_Sub2.aClass1_2306, class1}))));
+                        Floor.method558(arg3, Main.aClass1_1763, arg2, -501, arg1, 49, (Class40_Sub5_Sub17_Sub6.method832(-124, (new RSString[]{Npc.aClass1_3295, Class40_Sub5_Sub2.aClass1_2306, class1}))));
                     } else if(Main.anInt1773 == 1) {
                         if((0x2 & ItemDefinition.anInt2815 ^ 0xffffffff) == -3) {
                             Floor.method558(arg3, Class38_Sub1.aClass1_1918, arg2, arg0 + -501, arg1, 21, (Class40_Sub5_Sub17_Sub6.method832(arg0 + 73, (new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub2.aClass1_2306, class1}))));

@@ -1,5 +1,13 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 import java.awt.*;
 
 public class Class40_Sub5_Sub17_Sub1 extends Renderable {
@@ -142,7 +150,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             if(arg0 == false) {
                 for(int i_1_ = 0; i_1_ < i; i_1_++) {
                     int i_2_ = Class40_Sub3.anIntArray2016[i_1_];
-                    NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_2_]);
+                    Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_2_]);
                     int i_3_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
                     if(i_3_ == 0) {
                         Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i_2_;
@@ -152,7 +160,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         if((i_4_ ^ 0xffffffff) == -1) {
                             Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i_2_;
                             class40_sub5_sub17_sub4_sub2.anInt3134 = Node.anInt926;
-                            Class24.anIntArray578[Class40_Sub5_Sub17_Sub4.anInt3153++] = i_2_;
+                            Class24.anIntArray578[Actor.anInt3153++] = i_2_;
                         } else if((i_4_ ^ 0xffffffff) == -2) {
                             Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i_2_;
                             class40_sub5_sub17_sub4_sub2.anInt3134 = Node.anInt926;
@@ -160,7 +168,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                             class40_sub5_sub17_sub4_sub2.method782(i_5_, (byte) -96, false);
                             int i_6_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
                             if(i_6_ == 1)
-                                Class24.anIntArray578[Class40_Sub5_Sub17_Sub4.anInt3153++] = i_2_;
+                                Class24.anIntArray578[Actor.anInt3153++] = i_2_;
                         } else if((i_4_ ^ 0xffffffff) == -3) {
                             Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i_2_;
                             class40_sub5_sub17_sub4_sub2.anInt3134 = Node.anInt926;
@@ -170,7 +178,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                             class40_sub5_sub17_sub4_sub2.method782(i_8_, (byte) -96, true);
                             int i_9_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
                             if(i_9_ == 1)
-                                Class24.anIntArray578[Class40_Sub5_Sub17_Sub4.anInt3153++] = i_2_;
+                                Class24.anIntArray578[Actor.anInt3153++] = i_2_;
                         } else if(i_4_ == 3)
                             Class6.anIntArray225[Class17.anInt460++] = i_2_;
                     }
@@ -216,12 +224,12 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
 
     }
 
-    public static void method762(int arg0, Class40_Sub5_Sub17_Sub4 arg1) {
+    public static void method762(int arg0, Actor arg1) {
 
         anInt3008++;
             if(arg0 != (arg1.anInt3113 ^ 0xffffffff)) {
                 if(arg1.anInt3137 != -1 && (arg1.anInt3137 ^ 0xffffffff) > -32769) {
-                    NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[arg1.anInt3137]);
+                    Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[arg1.anInt3137]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         int i = (-class40_sub5_sub17_sub4_sub2.anInt3089 + arg1.anInt3089);
                         int i_10_ = (-class40_sub5_sub17_sub4_sub2.anInt3098 + arg1.anInt3098);
@@ -233,7 +241,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     int i = -32768 + arg1.anInt3137;
                     if(i == Class30.anInt708)
                         i = 2047;
-                    Player class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i]);
+                    Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i]);
                     if(class40_sub5_sub17_sub4_sub1 != null) {
                         int i_11_ = (arg1.anInt3098 - class40_sub5_sub17_sub4_sub1.anInt3098);
                         int i_12_ = (-class40_sub5_sub17_sub4_sub1.anInt3089 + arg1.anInt3089);

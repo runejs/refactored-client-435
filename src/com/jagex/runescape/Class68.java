@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.util.Signlink;
+
 import java.awt.*;
 
 public abstract class Class68 {

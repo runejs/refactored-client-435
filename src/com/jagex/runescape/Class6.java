@@ -1,5 +1,10 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.util.Signlink;
+
 import java.io.DataInputStream;
 import java.net.URL;
 
@@ -87,7 +92,7 @@ public abstract class Class6 {
                     method189(true);
                 string = string.replace('&', '_');
                 string = string.replace('#', '_');
-                Class15 class15 = (Class40_Sub5_Sub17_Sub4.aClass31_3152.method388(false, new URL(Class40_Sub5_Sub17_Sub4.aClass31_3152.anApplet740.getCodeBase(), ("clienterror.ws?c=" + Class39.anInt901 + "&u=" + Class34.aLong853 + "&v1=" + Signlink.aString735 + "&v2=" + Signlink.aString739 + "&e=" + string))));
+                Class15 class15 = (Actor.aClass31_3152.method388(false, new URL(Actor.aClass31_3152.anApplet740.getCodeBase(), ("clienterror.ws?c=" + Class39.anInt901 + "&u=" + Class34.aLong853 + "&v1=" + Signlink.aString735 + "&v2=" + Signlink.aString739 + "&e=" + string))));
                 while((class15.anInt434 ^ 0xffffffff) == -1)
                     Class43.method890(1L, -74);
                 if((class15.anInt434 ^ 0xffffffff) != -2)
@@ -119,24 +124,24 @@ public abstract class Class6 {
         anInt247++;
         Buffer class40_sub1 = new Buffer(arg0);
         class40_sub1.currentPosition = -2 + arg0.length;
-        Class40_Sub5_Sub9.anInt2581 = class40_sub1.readShort();
-        Class40_Sub5_Sub17_Sub4.anIntArray3111 = new int[Class40_Sub5_Sub9.anInt2581];
+        Class40_Sub5_Sub9.anInt2581 = class40_sub1.getUnsignedShortBE();
+        Actor.anIntArray3111 = new int[Class40_Sub5_Sub9.anInt2581];
         Class58.aByteArrayArray1370 = new byte[Class40_Sub5_Sub9.anInt2581][];
         Class17.anIntArray456 = new int[Class40_Sub5_Sub9.anInt2581];
-        NPC.anIntArray3312 = new int[Class40_Sub5_Sub9.anInt2581];
+        Npc.anIntArray3312 = new int[Class40_Sub5_Sub9.anInt2581];
         Class57.anIntArray1347 = new int[Class40_Sub5_Sub9.anInt2581];
         class40_sub1.currentPosition = arg0.length + -7 + -(Class40_Sub5_Sub9.anInt2581 * 8);
-        ItemDefinition.anInt2846 = class40_sub1.readShort();
-        RSApplet.anInt31 = class40_sub1.readShort();
+        ItemDefinition.anInt2846 = class40_sub1.getUnsignedShortBE();
+        RSApplet.anInt31 = class40_sub1.getUnsignedShortBE();
         int i = 1 + (class40_sub1.getUnsignedByte() & 0xff);
         for(int i_34_ = 0; ((i_34_ ^ 0xffffffff) > (Class40_Sub5_Sub9.anInt2581 ^ 0xffffffff)); i_34_++)
-            Class57.anIntArray1347[i_34_] = class40_sub1.readShort();
+            Class57.anIntArray1347[i_34_] = class40_sub1.getUnsignedShortBE();
         for(int i_35_ = arg1; i_35_ < Class40_Sub5_Sub9.anInt2581; i_35_++)
-            Class40_Sub5_Sub17_Sub4.anIntArray3111[i_35_] = class40_sub1.readShort();
+            Actor.anIntArray3111[i_35_] = class40_sub1.getUnsignedShortBE();
         for(int i_36_ = 0; i_36_ < Class40_Sub5_Sub9.anInt2581; i_36_++)
-            Class17.anIntArray456[i_36_] = class40_sub1.readShort();
+            Class17.anIntArray456[i_36_] = class40_sub1.getUnsignedShortBE();
         for(int i_37_ = 0; Class40_Sub5_Sub9.anInt2581 > i_37_; i_37_++)
-            NPC.anIntArray3312[i_37_] = class40_sub1.readShort();
+            Npc.anIntArray3312[i_37_] = class40_sub1.getUnsignedShortBE();
         class40_sub1.currentPosition = arg0.length - (7 + (Class40_Sub5_Sub9.anInt2581 * 8 + (-3 + i * 3)));
         Buffer.anIntArray1972 = new int[i];
         for(int i_38_ = 1; (i ^ 0xffffffff) < (i_38_ ^ 0xffffffff); i_38_++) {
@@ -146,7 +151,7 @@ public abstract class Class6 {
         }
         class40_sub1.currentPosition = 0;
         for(int i_39_ = 0; Class40_Sub5_Sub9.anInt2581 > i_39_; i_39_++) {
-            int i_40_ = NPC.anIntArray3312[i_39_];
+            int i_40_ = Npc.anIntArray3312[i_39_];
             int i_41_ = Class17.anIntArray456[i_39_];
             int i_42_ = i_40_ * i_41_;
             byte[] is = new byte[i_42_];
@@ -268,13 +273,13 @@ public abstract class Class6 {
         if((i ^ 0xffffffff) == -6) {
             int i_1_ = 0;
             int i_2_ = class40_sub1.getUnsignedByte();
-            anInt221 = class40_sub1.readShort();
+            anInt221 = class40_sub1.getUnsignedShortBE();
             anIntArray227 = new int[anInt221];
             if(arg0 != -21071)
                 method173(-78, (byte) 73, -64);
             int i_3_ = -1;
             for(int i_4_ = 0; anInt221 > i_4_; i_4_++) {
-                anIntArray227[i_4_] = i_1_ += class40_sub1.readShort();
+                anIntArray227[i_4_] = i_1_ += class40_sub1.getUnsignedShortBE();
                 if((anIntArray227[i_4_] ^ 0xffffffff) < (i_3_ ^ 0xffffffff))
                     i_3_ = anIntArray227[i_4_];
             }
@@ -295,7 +300,7 @@ public abstract class Class6 {
             for(int i_7_ = 0; i_7_ < anInt221; i_7_++)
                 anIntArray224[anIntArray227[i_7_]] = class40_sub1.readInt();
             for(int i_8_ = 0; (anInt221 ^ 0xffffffff) < (i_8_ ^ 0xffffffff); i_8_++)
-                anIntArray261[anIntArray227[i_8_]] = class40_sub1.readShort();
+                anIntArray261[anIntArray227[i_8_]] = class40_sub1.getUnsignedShortBE();
             for(int i_9_ = 0; (i_9_ ^ 0xffffffff) > (anInt221 ^ 0xffffffff); i_9_++) {
                 i_1_ = 0;
                 int i_10_ = anIntArray227[i_9_];
@@ -303,7 +308,7 @@ public abstract class Class6 {
                 int i_12_ = anIntArray261[i_10_];
                 anIntArrayArray243[i_10_] = new int[i_12_];
                 for(int i_13_ = 0; i_12_ > i_13_; i_13_++) {
-                    int i_14_ = (anIntArrayArray243[i_10_][i_13_] = i_1_ += (class40_sub1.readShort()));
+                    int i_14_ = (anIntArrayArray243[i_10_][i_13_] = i_1_ += (class40_sub1.getUnsignedShortBE()));
                     if(i_14_ > i_11_)
                         i_11_ = i_14_;
                 }

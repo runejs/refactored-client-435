@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+
 import java.awt.*;
 
 public class Class35 implements Interface3 {

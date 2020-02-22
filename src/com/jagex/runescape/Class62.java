@@ -1,5 +1,11 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.util.Signlink;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -222,10 +228,10 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
                 Class40_Sub5_Sub11.anInt2625 = arg0.getY();
                 Floor.aLong2344 = Class51.method937(1);
                 if(!arg0.isMetaDown()) {
-                    Class40_Sub5_Sub17_Sub4.anInt3143 = 1;
+                    Actor.anInt3143 = 1;
                     Cache.anInt320 = 1;
                 } else {
-                    Class40_Sub5_Sub17_Sub4.anInt3143 = 2;
+                    Actor.anInt3143 = 2;
                     Cache.anInt320 = 2;
                 }
             }

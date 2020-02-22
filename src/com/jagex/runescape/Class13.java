@@ -1,5 +1,9 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+
 public class Class13 {
     public static int anInt400;
     public static int anInt401;
@@ -38,7 +42,7 @@ public class Class13 {
         anInt420 = 0;
     }
 
-    public static void method241(Class40_Sub5_Sub17_Sub4 arg0, int arg1, byte arg2) {
+    public static void method241(Actor arg0, int arg1, byte arg2) {
         anInt400++;
         if((arg0.anInt3098 ^ 0xffffffff) > -129 || arg0.anInt3089 < 128 || arg0.anInt3098 >= 13184 || (arg0.anInt3089 ^ 0xffffffff) <= -13185) {
             arg0.anInt3141 = -1;
@@ -114,9 +118,9 @@ public class Class13 {
     }
 
     public static void method245(int arg0) {
-        for(int i = 0; i < Class40_Sub5_Sub17_Sub4.anInt3153; i++) {
+        for(int i = 0; i < Actor.anInt3153; i++) {
             int i_1_ = Class24.anIntArray578[i];
-            NPC class40_sub5_sub17_sub4_sub2 = Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_1_];
+            Npc class40_sub5_sub17_sub4_sub2 = Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_1_];
             int i_2_ = Cache.outgoingbuffer.getUnsignedByte();
             if((0x1 & i_2_ ^ 0xffffffff) != -1) {
                 int i_3_ = Cache.outgoingbuffer.method476(255);

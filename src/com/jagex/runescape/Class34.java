@@ -1,5 +1,9 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 public class Class34 {
     public static int anInt800;
     public static int anInt803;
@@ -158,14 +162,14 @@ public class Class34 {
                 if((i_0_ ^ 0xffffffff) == -2048)
                     break;
                 boolean bool = false;
-                if((Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_]) == null) {
-                    Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_] = new Player();
+                if((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_]) == null) {
+                    Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_] = new Player();
                     if(Class22.aClass40_Sub1Array534[i_0_] != null)
-                        Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_].method791((byte) -114, Class22.aClass40_Sub1Array534[i_0_]);
+                        Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_].method791((byte) -114, Class22.aClass40_Sub1Array534[i_0_]);
                     bool = true;
                 }
                 Class57.anIntArray1334[Class60.anInt1407++] = i_0_;
-                Player class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_]);
+                Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_]);
                 class40_sub5_sub17_sub4_sub1.anInt3134 = Node.anInt926;
                 int i_1_ = Cache.outgoingbuffer.putBits(5, (byte) -65);
                 int i_2_ = Cache.outgoingbuffer.putBits(5, (byte) -65);
@@ -179,7 +183,7 @@ public class Class34 {
                 int i_4_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
                 int i_5_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
                 if((i_5_ ^ 0xffffffff) == -2)
-                    Class24.anIntArray578[Class40_Sub5_Sub17_Sub4.anInt3153++] = i_0_;
+                    Class24.anIntArray578[Actor.anInt3153++] = i_0_;
                 class40_sub5_sub17_sub4_sub1.method787(i_2_ + (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), -7717, (i_4_ ^ 0xffffffff) == -2, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]) + i_1_);
             }
             Cache.outgoingbuffer.finishBitAccess((byte) -110);

@@ -1,5 +1,9 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+
 public abstract class Class22_Sub2 extends Class22 {
     public static RSString password;
     public static RSString aClass1_1875 = Class58.method978("Please use a different world)3");
@@ -55,9 +59,9 @@ public abstract class Class22_Sub2 extends Class22 {
                 class40_sub5_sub14_sub2.anInt2923 = ItemDefinition.anInt2846;
                 class40_sub5_sub14_sub2.anInt2924 = RSApplet.anInt31;
                 class40_sub5_sub14_sub2.anInt2928 = Class57.anIntArray1347[i];
-                class40_sub5_sub14_sub2.anInt2927 = Class40_Sub5_Sub17_Sub4.anIntArray3111[i];
+                class40_sub5_sub14_sub2.anInt2927 = Actor.anIntArray3111[i];
                 class40_sub5_sub14_sub2.anInt2921 = Class17.anIntArray456[i];
-                class40_sub5_sub14_sub2.anInt2926 = NPC.anIntArray3312[i];
+                class40_sub5_sub14_sub2.anInt2926 = Npc.anIntArray3312[i];
                 class40_sub5_sub14_sub2.anIntArray2922 = Buffer.anIntArray1972;
                 class40_sub5_sub14_sub2.aByteArray2925 = Class58.aByteArrayArray1370[i];
             }
@@ -90,9 +94,9 @@ public abstract class Class22_Sub2 extends Class22 {
                 class40_sub5_sub14_sub4.anInt2954 = ItemDefinition.anInt2846;
                 class40_sub5_sub14_sub4.anInt2952 = RSApplet.anInt31;
                 class40_sub5_sub14_sub4.anInt2953 = Class57.anIntArray1347[i];
-                class40_sub5_sub14_sub4.anInt2949 = Class40_Sub5_Sub17_Sub4.anIntArray3111[i];
+                class40_sub5_sub14_sub4.anInt2949 = Actor.anIntArray3111[i];
                 class40_sub5_sub14_sub4.anInt2951 = Class17.anIntArray456[i];
-                class40_sub5_sub14_sub4.anInt2950 = NPC.anIntArray3312[i];
+                class40_sub5_sub14_sub4.anInt2950 = Npc.anIntArray3312[i];
                 byte[] is = Class58.aByteArrayArray1370[i];
                 int i_4_ = (class40_sub5_sub14_sub4.anInt2950 * class40_sub5_sub14_sub4.anInt2951);
                 class40_sub5_sub14_sub4.anIntArray2955 = new int[i_4_];

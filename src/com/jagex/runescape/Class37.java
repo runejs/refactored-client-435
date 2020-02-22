@@ -1,5 +1,11 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 public class Class37 {
     public static int anInt859;
     public static RSString aClass1_860 = Class58.method978("Bitte benutzen Sie eine andere Welt)3");
@@ -110,9 +116,9 @@ public class Class37 {
         Class27.anInt658 = 0;
         Class40_Sub5_Sub15.anInt2782 = 0;
         Cache.outgoingbuffer.currentPosition = arg0;
-        for(int i = 0; ((Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156).length > i); i++) {
-            if((Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i]) != null)
-                Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i].anInt3137 = -1;
+        for(int i = 0; ((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156).length > i); i++) {
+            if((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i]) != null)
+                Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i].anInt3137 = -1;
         }
         for(int i = 0; ((Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813.length ^ 0xffffffff) < (i ^ 0xffffffff)); i++) {
             if(Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i] != null)
@@ -142,7 +148,7 @@ public class Class37 {
             int i_9_ = Class58.anInt1373 + Class43.anInt1020 & 0x7ff;
             Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.method724(25, 5, 146, 151, i, i_8_, i_9_, Class51.anInt1187 + 256, Landscape.anIntArray1186, Class34.anIntArray852);
             for(int i_10_ = 0; GameObject.anInt3040 > i_10_; i_10_++) {
-                i = 2 + (4 * Class40_Sub5_Sub17_Sub4.anIntArray3149[i_10_] + -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32));
+                i = 2 + (4 * Actor.anIntArray3149[i_10_] + -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32));
                 i_8_ = (2 + 4 * Class45.anIntArray1083[i_10_] - ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) / 32));
                 SceneTile.method533(i_8_, i, (Class62.aClass40_Sub5_Sub14_Sub4Array1466[i_10_]), (byte) 99);
             }
@@ -157,7 +163,7 @@ public class Class37 {
                 }
             }
             for(int i_13_ = 0; GameObjectDefinition.anInt2558 > i_13_; i_13_++) {
-                NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_13_]]);
+                Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_13_]]);
                 if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.method784(1)) {
                     NpcDefinition class40_sub5_sub5 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300);
                     if(class40_sub5_sub5.anIntArray2426 != null)
@@ -170,7 +176,7 @@ public class Class37 {
                 }
             }
             for(int i_14_ = 0; (Class60.anInt1407 ^ 0xffffffff) < (i_14_ ^ 0xffffffff); i_14_++) {
-                Player class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_14_]]);
+                Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_14_]]);
                 if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.method784(1)) {
                     i = (class40_sub5_sub17_sub4_sub1.anInt3098 / 32 + -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32));
                     i_8_ = (-((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) / 32) + class40_sub5_sub17_sub4_sub1.anInt3089 / 32);
@@ -195,7 +201,7 @@ public class Class37 {
             }
             if((Player.anInt3288 ^ 0xffffffff) != -1 && (Node.anInt926 % 20 ^ 0xffffffff) > -11) {
                 if(Player.anInt3288 == 1 && (Class66.anInt1545 ^ 0xffffffff) <= -1 && ((Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813).length > Class66.anInt1545)) {
-                    NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class66.anInt1545]);
+                    Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class66.anInt1545]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         i = (-((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32) + (class40_sub5_sub17_sub4_sub2.anInt3098 / 32));
                         i_8_ = (class40_sub5_sub17_sub4_sub2.anInt3089 / 32 - (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) / 32);
@@ -207,8 +213,8 @@ public class Class37 {
                     i = (4 * (Class68.anInt1637 - Class40_Sub5_Sub2.anInt2307) - (-2 + ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32)));
                     Floor.method560(i, Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], 75, i_8_);
                 }
-                if(Player.anInt3288 == 10 && (Class68.anInt1623 ^ 0xffffffff) <= -1 && ((Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156).length ^ 0xffffffff) < (Class68.anInt1623 ^ 0xffffffff)) {
-                    Player class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class68.anInt1623]);
+                if(Player.anInt3288 == 10 && (Class68.anInt1623 ^ 0xffffffff) <= -1 && ((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156).length ^ 0xffffffff) < (Class68.anInt1623 ^ 0xffffffff)) {
+                    Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class68.anInt1623]);
                     if(class40_sub5_sub17_sub4_sub1 != null) {
                         i_8_ = (-((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) / 32) + (class40_sub5_sub17_sub4_sub1.anInt3089 / 32));
                         i = (class40_sub5_sub17_sub4_sub1.anInt3098 / 32 - (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32);

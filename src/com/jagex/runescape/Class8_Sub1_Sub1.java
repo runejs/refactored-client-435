@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.util.Signlink;
+
 import java.awt.*;
 
 public class Class8_Sub1_Sub1 extends Class8_Sub1 {

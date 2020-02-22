@@ -1,5 +1,10 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 import java.awt.*;
 
 public class Class45 {
@@ -124,7 +129,7 @@ public class Class45 {
         anInt1065++;
         if(arg0 == -32322) {
             if(VertexNormal.lowMemory && (Class40_Sub6.onBuildTimePlane != Player.anInt3267))
-                Class40_Sub5_Sub17_Sub4.method789((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), -1000, Class17.anInt448, Class51.anInt1202, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), Player.anInt3267);
+                Actor.method789((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), -1000, Class17.anInt448, Class51.anInt1202, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), Player.anInt3267);
             else if(Buffer.anInt1985 != Player.anInt3267) {
                 Buffer.anInt1985 = Player.anInt3267;
                 Class22.method299((byte) 53, Player.anInt3267);

@@ -1,6 +1,11 @@
-package com.jagex.runescape;
+package com.jagex.runescape.media.renderable.actor;
 
-public class NPC extends Class40_Sub5_Sub17_Sub4 {
+import com.jagex.runescape.*;
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.media.renderable.Renderable;
+
+public class Npc extends Actor {
     public static int anInt3294;
     public static RSString aClass1_3295;
     public static int anInt3296;
@@ -444,7 +449,7 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
             Floor floor = ((Floor) Class33.aClass9_778.method231((long) arg0, (byte) 63));
             if(floor != null)
                 return floor;
-            byte[] is = Class40_Sub5_Sub17_Sub4.aClass6_3144.method172(arg0, 118, arg1);
+        byte[] is = Actor.aClass6_3144.method172(arg0, 118, arg1);
             floor = new Floor();
             if(is != null)
                 floor.method553((byte) 65, arg0, new Buffer(is));

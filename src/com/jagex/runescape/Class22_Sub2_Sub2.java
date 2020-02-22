@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.util.Signlink;
+
 public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
     public static Runnable_Impl1 aRunnable_Impl1_2223;
     public static boolean aBoolean2224;

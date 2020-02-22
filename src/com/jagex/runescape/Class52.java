@@ -1,5 +1,9 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 import java.awt.*;
 
 public class Class52 {
@@ -70,7 +74,7 @@ public class Class52 {
             Class57.aClass40_Sub5_Sub14_Sub2_1346.method692(0, 0);
             arg2.method688(Class19.aClass1_495, 55, 28, 16777215, true);
             if((arg4 ^ 0xffffffff) == -1)
-                arg2.method688(NPC.aClass1_3311, 55, 41, 65280, true);
+                arg2.method688(Npc.aClass1_3311, 55, 41, 65280, true);
             if(arg4 == 1)
                 arg2.method688(Class40_Sub5_Sub15.aClass1_2786, 55, 41, 16776960, true);
             if(arg4 == 2)
@@ -79,14 +83,14 @@ public class Class52 {
                 arg2.method688(Class40_Sub5_Sub11.aClass1_2622, 55, 41, 65535, true);
             arg2.method688(RSString.aClass1_1703, 184, 28, 16777215, true);
             if((arg3 ^ 0xffffffff) == -1)
-                arg2.method688(NPC.aClass1_3311, 184, 41, 65280, true);
+                arg2.method688(Npc.aClass1_3311, 184, 41, 65280, true);
             if(arg3 == 1)
                 arg2.method688(Class40_Sub5_Sub15.aClass1_2786, 184, 41, 16776960, true);
             if(arg3 == 2)
                 arg2.method688(Class30.aClass1_682, 184, 41, 16711680, true);
             arg2.method688(Class30.aClass1_701, 324, 28, 16777215, true);
             if((arg0 ^ 0xffffffff) == -1)
-                arg2.method688(NPC.aClass1_3311, 324, 41, 65280, true);
+                arg2.method688(Npc.aClass1_3311, 324, 41, 65280, true);
             if(arg0 == 1)
                 arg2.method688(Class40_Sub5_Sub15.aClass1_2786, 324, 41, 16776960, true);
             if((arg0 ^ 0xffffffff) == -3)
@@ -123,28 +127,28 @@ public class Class52 {
                 boolean bool = false;
                 boolean bool_1_ = false;
                 if((arg6 ^ 0xffffffff) == -1)
-                    i_0_ = NPC.aScene_3301.method122(arg7, arg2, arg0);
+                    i_0_ = Npc.aScene_3301.method122(arg7, arg2, arg0);
                 if((arg6 ^ 0xffffffff) == -2)
-                    i_0_ = NPC.aScene_3301.method91(arg7, arg2, arg0);
+                    i_0_ = Npc.aScene_3301.method91(arg7, arg2, arg0);
                 if((arg6 ^ 0xffffffff) == -3)
-                    i_0_ = NPC.aScene_3301.method110(arg7, arg2, arg0);
+                    i_0_ = Npc.aScene_3301.method110(arg7, arg2, arg0);
                 if((arg6 ^ 0xffffffff) == -4)
-                    i_0_ = NPC.aScene_3301.method93(arg7, arg2, arg0);
+                    i_0_ = Npc.aScene_3301.method93(arg7, arg2, arg0);
                 if((i_0_ ^ 0xffffffff) != -1) {
                     i = (i_0_ & 0x1ffff138) >> -587100850;
-                    int i_2_ = NPC.aScene_3301.method141(arg7, arg2, arg0, i_0_);
+                    int i_2_ = Npc.aScene_3301.method141(arg7, arg2, arg0, i_0_);
                     int i_3_ = i_2_ >> -993918554 & 0x3;
                     int i_4_ = 0x1f & i_2_;
                     if((arg6 ^ 0xffffffff) == -1) {
-                        NPC.aScene_3301.method124(arg7, arg2, arg0);
+                        Npc.aScene_3301.method124(arg7, arg2, arg0);
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                         if(gameObjectDefinition.solid)
                             Landscape.aCollisionMapArray1167[arg7].method148(-4, arg2, i_3_, gameObjectDefinition.aBoolean2528, arg0, i_4_);
                     }
                     if(arg6 == 1)
-                        NPC.aScene_3301.method127(arg7, arg2, arg0);
+                        Npc.aScene_3301.method127(arg7, arg2, arg0);
                     if(arg6 == 2) {
-                        NPC.aScene_3301.method135(arg7, arg2, arg0);
+                        Npc.aScene_3301.method135(arg7, arg2, arg0);
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                         if(((arg2 + gameObjectDefinition.anInt2503 ^ 0xffffffff) < -104) || arg0 + gameObjectDefinition.anInt2503 > 103 || arg2 + gameObjectDefinition.anInt2515 > 103 || (gameObjectDefinition.anInt2515 + arg0 ^ 0xffffffff) < -104)
                             return;
@@ -152,7 +156,7 @@ public class Class52 {
                             Landscape.aCollisionMapArray1167[arg7].method149(gameObjectDefinition.aBoolean2528, arg0, arg2, i_3_, gameObjectDefinition.anInt2503, (byte) -55, gameObjectDefinition.anInt2515);
                     }
                     if((arg6 ^ 0xffffffff) == -4) {
-                        NPC.aScene_3301.method131(arg7, arg2, arg0);
+                        Npc.aScene_3301.method131(arg7, arg2, arg0);
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                         if(gameObjectDefinition.solid && gameObjectDefinition.hasActions == 1)
                             Landscape.aCollisionMapArray1167[arg7].method145(arg0, arg5 + 28124, arg2);
@@ -162,7 +166,7 @@ public class Class52 {
                     int i_5_ = arg7;
                     if(i_5_ < 3 && ((Floor.tile_flags[1][arg2][arg0]) & 0x2) == 2)
                         i_5_++;
-                    Class40_Sub5_Sub1.method543(Landscape.aCollisionMapArray1167[arg7], arg1, i_5_, arg7, arg3, (NPC.aScene_3301), -22078, arg4, arg0, arg2);
+                    Class40_Sub5_Sub1.method543(Landscape.aCollisionMapArray1167[arg7], arg1, i_5_, arg7, arg3, (Npc.aScene_3301), -22078, arg4, arg0, arg2);
                 }
             }
         }

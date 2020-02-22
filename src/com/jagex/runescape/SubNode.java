@@ -1,5 +1,9 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+
 public class SubNode extends Node {
     public static int anInt2081;
     public static boolean aBoolean2083;
@@ -32,9 +36,9 @@ public class SubNode extends Node {
         class40_sub5_sub14_sub2.anInt2923 = ItemDefinition.anInt2846;
         class40_sub5_sub14_sub2.anInt2924 = RSApplet.anInt31;
         class40_sub5_sub14_sub2.anInt2928 = Class57.anIntArray1347[0];
-        class40_sub5_sub14_sub2.anInt2927 = Class40_Sub5_Sub17_Sub4.anIntArray3111[0];
+        class40_sub5_sub14_sub2.anInt2927 = Actor.anIntArray3111[0];
         class40_sub5_sub14_sub2.anInt2921 = Class17.anIntArray456[0];
-        class40_sub5_sub14_sub2.anInt2926 = NPC.anIntArray3312[0];
+        class40_sub5_sub14_sub2.anInt2926 = Npc.anIntArray3312[0];
         class40_sub5_sub14_sub2.anIntArray2922 = Buffer.anIntArray1972;
         class40_sub5_sub14_sub2.aByteArray2925 = Class58.aByteArrayArray1370[arg0];
         NpcDefinition.method569(true);

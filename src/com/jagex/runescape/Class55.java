@@ -1,5 +1,12 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 import java.awt.*;
 import java.io.*;
 
@@ -129,7 +136,7 @@ public class Class55 {
         Main.aClass1_1781 = Class37.aClass1_880;
         RSString.aClass1_1717 = Class12.aClass1_398;
         Class34.aClass1_817 = Class35.aClass1_1743;
-        Class40_Sub5_Sub17_Sub4.aClass1_3159 = Class40_Sub13.aClass1_2176;
+        Actor.aClass1_3159 = Class40_Sub13.aClass1_2176;
         Class5.aClass1_204 = Class40_Sub13.aClass1_2174;
         Class57.aClass1_1333 = Class40_Sub5_Sub15.aClass1_2773;
         Class35.aClass1_1746 = Class37.aClass1_872;
@@ -164,15 +171,15 @@ public class Class55 {
         Class10.aClass1_344 = Class52.aClass1_1238;
         Class12.aClass1_399 = Class60.aClass1_1409;
         Class40_Sub5_Sub6.aClass1_2458 = GameObject.aClass1_3046;
-        Class40_Sub5_Sub17_Sub4.aClass1_3138 = RSApplet.aClass1_14;
+        Actor.aClass1_3138 = RSApplet.aClass1_14;
         Class57.aClass1_1343 = ISAAC.aClass1_527;
         Node.aClass1_953 = Class64.aClass1_1523;
         Node.aClass1_942 = Class64.aClass1_1523;
-        Class22_Sub2.aClass1_1876 = NPC.aClass1_3309;
+        Class22_Sub2.aClass1_1876 = Npc.aClass1_3309;
         Node.aClass1_952 = Class64.aClass1_1523;
         Class40_Sub5_Sub15.aClass1_2774 = Class26.aClass1_630;
         Node.aClass1_954 = Class64.aClass1_1523;
-        NPC.aClass1_3311 = Class49.aClass1_1146;
+        Npc.aClass1_3311 = Class49.aClass1_1146;
         Class68.aClass1_1628 = Class40_Sub5_Sub6.aClass1_2457;
         Class13.aClass1_405 = VertexNormal.aClass1_1115;
         Class40_Sub5_Sub10.aClass1_2587 = Class22_Sub1.aClass1_1838;
@@ -187,7 +194,7 @@ public class Class55 {
         NpcDefinition.aClass1_2384 = Class53.aClass1_1269;
         Class22.aClass1_532 = Class57.aClass1_1340;
         Class67.aClass1_1598 = Class37.aClass1_867;
-        NPC.aClass1_3305 = Class22_Sub1.aClass1_1871;
+        Npc.aClass1_3305 = Class22_Sub1.aClass1_1871;
         FloorDecoration.aClass1_591 = Class24.aClass1_575;
         Node.aClass1_940 = Class37.aClass1_879;
         Class40_Sub5_Sub2.aClass1_2297 = Class40_Sub5_Sub17_Sub3.aClass1_3062;
@@ -215,12 +222,12 @@ public class Class55 {
         Node.aClass1_969 = Class64.aClass1_1523;
         Node.aClass1_934 = Class64.aClass1_1523;
         Class40_Sub5_Sub6.aClass1_2460 = Main.aClass1_1757;
-        VertexNormal.aClass1_1099 = Class40_Sub5_Sub17_Sub4.aClass1_3154;
+        VertexNormal.aClass1_1099 = Actor.aClass1_3154;
         Class40_Sub5_Sub10.aClass1_2593 = Class22_Sub1.aClass1_1838;
         Player.aClass1_3286 = Class40_Sub5_Sub10.aClass1_2611;
         Node.aClass1_973 = Class64.aClass1_1523;
         FloorDecoration.STRING_CONNECTING_UPDATE_SERVER = FloorDecoration.aClass1_613;
-        Player.aClass1_3256 = NPC.aClass1_3308;
+        Player.aClass1_3256 = Npc.aClass1_3308;
         Class40_Sub5_Sub1.aClass1_2274 = Class49.aClass1_1149;
         Class8.aClass1_278 = Class13.aClass1_411;
         Class52.aClass1_1218 = Class40_Sub5_Sub10.aClass1_2592;
@@ -251,7 +258,7 @@ public class Class55 {
         Class40_Sub5_Sub6.aClass1_2438 = Node.aClass1_965;
         Class38.aClass1_882 = Player.aClass1_3285;
         Class40_Sub7.aClass1_2132 = Class12.aClass1_395;
-        RSCanvas.aClass1_63 = NPC.aClass1_3302;
+        RSCanvas.aClass1_63 = Npc.aClass1_3302;
         Class57.aClass1_1339 = RSString.aClass1_1713;
         Landscape.aClass1_1174 = Class64.aClass1_1524;
         Class38.aClass1_883 = Class40_Sub5_Sub15.aClass1_2781;
@@ -265,7 +272,7 @@ public class Class55 {
         Class48.aClass1_1124 = Class62.aClass1_1471;
         Class5.aClass1_193 = Landscape.aClass1_1161;
         Class49.aClass1_1148 = Class40_Sub5_Sub1.aClass1_2279;
-        Class33.aClass1_799 = NPC.aClass1_3307;
+        Class33.aClass1_799 = Npc.aClass1_3307;
         Class4.aClass1_180 = Class34.aClass1_804;
         Class40_Sub5_Sub15.aClass1_2786 = Class6_Sub1.aClass1_1801;
         GameObject.aClass1_3039 = Class8.aClass1_293;
@@ -284,7 +291,7 @@ public class Class55 {
         PacketBuffer.aClass1_2240 = Class49.aClass1_1153;
         anInt1302++;
         VertexNormal.aClass1_1105 = Class40_Sub13.aClass1_2181;
-        Class42.aClass1_1011 = Class40_Sub5_Sub17_Sub4.aClass1_3158;
+        Class42.aClass1_1011 = Actor.aClass1_3158;
         Class22_Sub1.aClass1_1870 = Class49.aClass1_1143;
         Class62.aClass1_1474 = Class8.aClass1_300;
         if(arg0 == 18782) {
@@ -325,7 +332,7 @@ public class Class55 {
             Class17.aClass1_455 = PacketBuffer.aClass1_2260;
             Node.aClass1_924 = aClass1_1292;
             aClass1_1298 = Class40_Sub5_Sub17_Sub3.aClass1_3055;
-            Class40_Sub5_Sub17_Sub4.aClass1_3124 = Class45.aClass1_1084;
+            Actor.aClass1_3124 = Class45.aClass1_1084;
             Class60.aClass1_1416 = Class40_Sub5_Sub12.aClass1_2716;
             Class42.aClass1_1000 = CollisionMap.aClass1_164;
             ISAAC.aClass1_526 = Class13.aClass1_422;

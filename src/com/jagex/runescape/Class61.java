@@ -1,5 +1,9 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.util.Signlink;
+
 public class Class61 {
     public static RSString aClass1_1421;
     public static RSString aClass1_1422;
@@ -182,7 +186,7 @@ public class Class61 {
                             if(class40_sub5_sub17_sub6.aBoolean3237)
                                 class40_sub5_sub17_sub6.method457(-1);
                             else
-                                NPC.aScene_3301.method134(class40_sub5_sub17_sub6.anInt3239, class40_sub5_sub17_sub6.anInt3244, class40_sub5_sub17_sub6.anInt3235, class40_sub5_sub17_sub6.anInt3231, 60, class40_sub5_sub17_sub6, 0, -1, false);
+                                Npc.aScene_3301.method134(class40_sub5_sub17_sub6.anInt3239, class40_sub5_sub17_sub6.anInt3244, class40_sub5_sub17_sub6.anInt3235, class40_sub5_sub17_sub6.anInt3231, 60, class40_sub5_sub17_sub6, 0, -1, false);
                         }
                     } else
                         class40_sub5_sub17_sub6.method457(-1);

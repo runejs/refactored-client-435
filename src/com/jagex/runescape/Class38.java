@@ -1,5 +1,9 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Actor;
+
 public abstract class Class38 {
     public static RSString aClass1_881;
     public static RSString aClass1_882;
@@ -93,7 +97,7 @@ public abstract class Class38 {
 
         anInt897++;
             int i = -109 / ((arg1 + 14) / 32);
-            Class40_Sub5_Sub17_Sub4.aClass6_3144 = arg0;
+        Actor.aClass6_3144 = arg0;
 
     }
 

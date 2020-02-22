@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.Renderable;
+
 public class Class19 {
     public static int anInt467;
     public static Cache aClass9_470 = new Cache(10);

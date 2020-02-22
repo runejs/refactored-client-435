@@ -1,5 +1,9 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Actor;
+
 public class Class40_Sub11 extends Node {
     public static RSString[] aClass1Array2147 = new RSString[200];
     public static int anInt2148;
@@ -38,7 +42,7 @@ public class Class40_Sub11 extends Node {
                 anInt2158 = 53;
             int i = 0;
             for(int i_0_ = 0; i_0_ < 100; i_0_++) {
-                if(Class40_Sub5_Sub17_Sub4.aClass1Array3160[i_0_] != null) {
+                if(Actor.aClass1Array3160[i_0_] != null) {
                     int i_1_ = Class66.anIntArray1569[i_0_];
                     int i_2_ = 4 + GameObjectDefinition.anInt2557 + -(i * 14) + 70;
                     if(i_2_ < -20)
@@ -88,7 +92,7 @@ public class Class40_Sub11 extends Node {
                     if(i_1_ == 8 && (ItemDefinition.anInt2797 == 0 || (((ItemDefinition.anInt2797 ^ 0xffffffff) == -2) && Class40_Sub2.method523(class1, -32624)))) {
                         if((i_2_ + -14 ^ 0xffffffff) > (arg1 ^ 0xffffffff) && (arg1 ^ 0xffffffff) >= (i_2_ ^ 0xffffffff)) {
                             Floor.method558(0, GameObject.aClass1_3039, 0, -501, 0, 46, (Class40_Sub5_Sub17_Sub6.method832(arg2 + -108, new RSString[]{Class26.aClass1_620, class1})));
-                            Class40_Sub5_Sub17_Sub4.anInt3133++;
+                            Actor.anInt3133++;
                         }
                         i++;
                     }

@@ -1,4 +1,9 @@
-package com.jagex.runescape;
+package com.jagex.runescape.util;
+
+import com.jagex.runescape.Class15;
+import com.jagex.runescape.Class47;
+import com.jagex.runescape.Interface2;
+import com.jagex.runescape.Runnable_Impl1;
 
 import java.applet.Applet;
 import java.io.*;

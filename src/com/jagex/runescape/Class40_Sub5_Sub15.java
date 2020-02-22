@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.actor.Actor;
+
 public class Class40_Sub5_Sub15 extends SubNode {
     public static RSString aClass1_2773 = (Class58.method978("Um ein neues Spielkonto zu erstellen)1 m-Ussen Sie"));
     public static RSString aClass1_2774;
@@ -104,7 +106,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
 
     }
 
-    public static void method736(boolean arg0, Class40_Sub5_Sub17_Sub4 arg1) {
+    public static void method736(boolean arg0, Actor arg1) {
         anInt2789++;
         arg1.aBoolean3105 = false;
         if((arg1.anInt3077 ^ 0xffffffff) != 0) {

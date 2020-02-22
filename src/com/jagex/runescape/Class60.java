@@ -1,5 +1,9 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+
 public class Class60 {
     public static int anInt1400;
     public static RSString aClass1_1401;
@@ -33,7 +37,7 @@ public class Class60 {
     public static RSFont method987(int arg0) {
 
         anInt1414++;
-            RSFont class40_sub5_sub14_sub1 = new RSFont((Class40_Sub5_Sub17_Sub4.anIntArray3111), Class17.anIntArray456, (NPC.anIntArray3312), Buffer.anIntArray1972, Class58.aByteArrayArray1370);
+        RSFont class40_sub5_sub14_sub1 = new RSFont((Actor.anIntArray3111), Class17.anIntArray456, (Npc.anIntArray3312), Buffer.anIntArray1972, Class58.aByteArrayArray1370);
             NpcDefinition.method569(true);
             if(arg0 < 4)
                 return null;

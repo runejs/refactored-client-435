@@ -1,5 +1,10 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.util.Signlink;
+
 public class Class38_Sub1 extends Class38 {
     public static int anInt1899;
     public static int anInt1901;
@@ -61,7 +66,7 @@ public class Class38_Sub1 extends Class38 {
             if(Class40_Sub5_Sub15.anInt2782 != 0)
                 i = 1;
             for(int i_1_ = 0; i_1_ < 100; i_1_++) {
-                if(Class40_Sub5_Sub17_Sub4.aClass1Array3160[i_1_] != null) {
+                if(Actor.aClass1Array3160[i_1_] != null) {
                     int i_2_ = Class66.anIntArray1569[i_1_];
                     RSString class1 = Renderable.aClass1Array2856[i_1_];
                     if(class1 != null && class1.method75((byte) 116, Class51.aClass1_1210))
@@ -72,7 +77,7 @@ public class Class38_Sub1 extends Class38 {
                         int i_3_ = 329 + -(13 * i);
                         i++;
                         if((Class13.anInt420 ^ 0xffffffff) < -5 && ((i_3_ + -10 ^ 0xffffffff) > (Landscape.anInt1166 + -4 ^ 0xffffffff)) && ((-4 + Landscape.anInt1166 ^ 0xffffffff) >= (i_3_ + 3 ^ 0xffffffff))) {
-                            int i_4_ = 25 + (Class53.aClass40_Sub5_Sub14_Sub1_1268.method685(Class40_Sub5_Sub17_Sub6.method832(arg0 + -9666, (new RSString[]{Class40_Sub5_Sub6.aClass1_2458, Class12.aClass1_392, class1, (Class40_Sub5_Sub17_Sub4.aClass1Array3160[i_1_])}))));
+                            int i_4_ = 25 + (Class53.aClass40_Sub5_Sub14_Sub1_1268.method685(Class40_Sub5_Sub17_Sub6.method832(arg0 + -9666, (new RSString[]{Class40_Sub5_Sub6.aClass1_2458, Class12.aClass1_392, class1, (Actor.aClass1Array3160[i_1_])}))));
                             if(i_4_ > 450)
                                 i_4_ = 450;
                             if(Class13.anInt420 < 4 + i_4_) {

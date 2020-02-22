@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Actor;
+
 import java.awt.*;
 
 public class RSCanvas extends Canvas {
@@ -69,13 +72,13 @@ public class RSCanvas extends Canvas {
             Class45.method907(-99);
             Class5.method167(1023);
             Class51.method941((byte) -93);
-            Class40_Sub5_Sub17_Sub4.method783(109);
+        Actor.method783(109);
             ((Class35) R3D.anInterface3_2939).method422(arg0);
             Class17.aClass9_449.method235((byte) 96);
             FloorDecoration.aClass6_Sub1_605.method191(1120);
             Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000.method191(1120);
             Class65.aClass6_Sub1_1533.method191(arg0 + 1120);
-            Class40_Sub5_Sub17_Sub4.aClass6_Sub1_3157.method191(1120);
+        Actor.aClass6_Sub1_3157.method191(1120);
             Renderable.aClass6_Sub1_2857.method191(1120);
             Class55.aClass6_Sub1_1286.method191(1120);
             Class40_Sub5_Sub9.aClass6_Sub1_2571.method191(1120);

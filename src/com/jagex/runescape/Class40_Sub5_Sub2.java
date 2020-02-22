@@ -1,5 +1,10 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Actor;
+
 import java.io.IOException;
 import java.net.Socket;
 
@@ -169,7 +174,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 Class32.packetBuffer.putInt(63, ISAAC.aClass31_521.anInt722);
                 Class32.packetBuffer.putLong(Class22_Sub2.username.method58((byte) 97), false);
                 Class32.packetBuffer.method505(Class22_Sub2.password, (byte) -3);
-                Class32.packetBuffer.applyRSA(Class40_Sub5_Sub17_Sub4.rsaModulus, PacketBuffer.rsaKey, 19280);
+                Class32.packetBuffer.applyRSA(Actor.rsaModulus, PacketBuffer.rsaKey, 19280);
                 Class61.packetBuffer.currentPosition = 0;
                 if(Class51.anInt1197 == 40)
                     Class61.packetBuffer.put(18, (byte) -128);
@@ -182,7 +187,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 Class61.packetBuffer.putInt(95, Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000.anInt216);
                 Class61.packetBuffer.putInt(100, (Class40_Sub5_Sub10.aClass6_Sub1_2609.anInt216));
                 Class61.packetBuffer.putInt(75, Class65.aClass6_Sub1_1533.anInt216);
-                Class61.packetBuffer.putInt(92, Class40_Sub5_Sub17_Sub4.aClass6_Sub1_3157.anInt216);
+                Class61.packetBuffer.putInt(92, Actor.aClass6_Sub1_3157.anInt216);
                 Class61.packetBuffer.putInt(42, (Renderable.aClass6_Sub1_2857.anInt216));
                 Class61.packetBuffer.putInt(108, Class55.aClass6_Sub1_1286.anInt216);
                 Class61.packetBuffer.putInt(108, (Class40_Sub5_Sub9.aClass6_Sub1_2571.anInt216));
@@ -241,7 +246,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
                     Class57.packetid = Cache.outgoingbuffer.getPacket((byte) 49);
                     Class40_Sub6.aClass64_2098.method1008(0, 2, -127, Cache.outgoingbuffer.buffer);
                     Cache.outgoingbuffer.currentPosition = 0;
-                    Class40_Sub5_Sub12.packetsize = Cache.outgoingbuffer.readShort();
+                    Class40_Sub5_Sub12.packetsize = Cache.outgoingbuffer.getUnsignedShortBE();
                     Class40_Sub3.anInt2032 = 10;
                 }
                 if((Class40_Sub3.anInt2032 ^ 0xffffffff) == -11) {
@@ -286,28 +291,28 @@ public class Class40_Sub5_Sub2 extends SubNode {
         if(arg1 > -100)
                 anInt2308 = -55;
             if((arg0 ^ 0xffffffff) == -2)
-                anInt2293 = arg2.readShort();
+                anInt2293 = arg2.getUnsignedShortBE();
             else if(arg0 == 2)
-                anInt2287 = arg2.readShort();
+                anInt2287 = arg2.getUnsignedShortBE();
             else if(arg0 != 4) {
                 if((arg0 ^ 0xffffffff) != -6) {
                     if((arg0 ^ 0xffffffff) != -7) {
                         if(arg0 != 7) {
                             if(arg0 != 8) {
                                 if(arg0 >= 40 && arg0 < 50)
-                                    anIntArray2309[-40 + arg0] = arg2.readShort();
+                                    anIntArray2309[-40 + arg0] = arg2.getUnsignedShortBE();
                                 else if(arg0 >= 50 && (arg0 ^ 0xffffffff) > -61)
-                                    anIntArray2312[-50 + arg0] = arg2.readShort();
+                                    anIntArray2312[-50 + arg0] = arg2.getUnsignedShortBE();
                             } else
                                 anInt2295 = arg2.getUnsignedByte();
                         } else
                             anInt2300 = arg2.getUnsignedByte();
                     } else
-                        anInt2308 = arg2.readShort();
+                        anInt2308 = arg2.getUnsignedShortBE();
                 } else
-                    anInt2313 = arg2.readShort();
+                    anInt2313 = arg2.getUnsignedShortBE();
             } else
-                anInt2305 = arg2.readShort();
+                anInt2305 = arg2.getUnsignedShortBE();
             anInt2304++;
 
     }
@@ -317,7 +322,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
         anInt2288++;
             Model class40_sub5_sub17_sub5 = ((Model) Class34.aClass9_851.method231((long) anInt2310, (byte) 50));
             if(class40_sub5_sub17_sub5 == null) {
-                class40_sub5_sub17_sub5 = Model.method830((Class40_Sub5_Sub9.aClass6_2582), anInt2293, 0);
+                class40_sub5_sub17_sub5 = Model.getModel((Class40_Sub5_Sub9.aClass6_2582), anInt2293, 0);
                 if(class40_sub5_sub17_sub5 == null)
                     return null;
                 for(int i = 0; (i ^ 0xffffffff) > -7; i++) {

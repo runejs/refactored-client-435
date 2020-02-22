@@ -1,6 +1,6 @@
 package com.jagex.runescape.audio;
 
-import com.jagex.runescape.Buffer;
+import com.jagex.runescape.io.Buffer;
 
 import java.util.Random;
 
@@ -94,13 +94,13 @@ public class Instrument {
             if(i_1_ == 0)
                 break;
             oscill_vol[i_0_] = i_1_;
-            oscill_pitch_delta[i_0_] = buffer.method482((byte) 46);
+            oscill_pitch_delta[i_0_] = buffer.getSignedSmart();
             oscill_delay[i_0_] = buffer.method502((byte) -77);
         }
         delay_time = buffer.method502((byte) 118);
         delay_feedback = buffer.method502((byte) -104);
-        duration = buffer.readShort();
-        begin = buffer.readShort();
+        duration = buffer.getUnsignedShortBE();
+        begin = buffer.getUnsignedShortBE();
         filter = new Filter();
         filter_env = new Envelope();
         filter.decode(buffer, filter_env);

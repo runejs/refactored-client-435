@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.Model;
+
 public class Class49 {
     public static int anInt1142;
     public static RSString aClass1_1143;

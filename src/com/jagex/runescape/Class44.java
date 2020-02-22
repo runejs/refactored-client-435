@@ -1,5 +1,9 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Actor;
+
 public class Class44 implements Runnable {
     public static int anInt1029;
     public static int[][] anIntArrayArray1030;
@@ -48,12 +52,12 @@ public class Class44 implements Runnable {
             for(int i = 99; (i ^ 0xffffffff) < -1; i--) {
                 Class66.anIntArray1569[i] = Class66.anIntArray1569[i + -1];
                 Renderable.aClass1Array2856[i] = Renderable.aClass1Array2856[-1 + i];
-                Class40_Sub5_Sub17_Sub4.aClass1Array3160[i] = Class40_Sub5_Sub17_Sub4.aClass1Array3160[-1 + i];
+                Actor.aClass1Array3160[i] = Actor.aClass1Array3160[-1 + i];
             }
             Class66.anIntArray1569[0] = arg1;
             Renderable.aClass1Array2856[0] = arg3;
             if(arg0 >= 60)
-                Class40_Sub5_Sub17_Sub4.aClass1Array3160[0] = arg2;
+                Actor.aClass1Array3160[0] = arg2;
 
     }
 
@@ -73,7 +77,7 @@ public class Class44 implements Runnable {
 
     }
 
-    public static void method898(int arg0, Class40_Sub5_Sub17_Sub4 arg1) {
+    public static void method898(int arg0, Actor arg1) {
         anInt1037++;
         arg1.anInt3077 = arg1.anInt3126;
         if((arg1.anInt3109 ^ 0xffffffff) == -1)

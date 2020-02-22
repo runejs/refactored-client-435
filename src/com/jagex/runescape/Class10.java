@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Actor;
+
 public class Class10 {
     public static int anInt335;
     public static RSString aClass1_338 = Class58.method978("backhmid1");
@@ -65,7 +68,7 @@ public class Class10 {
             if(Class40_Sub5_Sub15.anInt2782 != 0)
                 i = 1;
             for(int i_0_ = 0; i_0_ < 100; i_0_++) {
-                if(Class40_Sub5_Sub17_Sub4.aClass1Array3160[i_0_] != null) {
+                if(Actor.aClass1Array3160[i_0_] != null) {
                     RSString class1 = Renderable.aClass1Array2856[i_0_];
                     int i_1_ = 0;
                     int i_2_ = Class66.anIntArray1569[i_0_];
@@ -93,24 +96,24 @@ public class Class10 {
                             Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub2Array2753[1].method692(i_4_, -12 + i_3_);
                             i_4_ += 14;
                         }
-                        class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub17_Sub6.method832(-44, new RSString[]{class1, ISAAC.aClass1_515, (Class40_Sub5_Sub17_Sub4.aClass1Array3160[i_0_])})), i_4_, i_3_, 0);
-                        class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub17_Sub6.method832(56, new RSString[]{class1, ISAAC.aClass1_515, (Class40_Sub5_Sub17_Sub4.aClass1Array3160[i_0_])})), i_4_, -1 + i_3_, 65535);
+                        class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub17_Sub6.method832(-44, new RSString[]{class1, ISAAC.aClass1_515, (Actor.aClass1Array3160[i_0_])})), i_4_, i_3_, 0);
+                        class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub17_Sub6.method832(56, new RSString[]{class1, ISAAC.aClass1_515, (Actor.aClass1Array3160[i_0_])})), i_4_, -1 + i_3_, 65535);
                         if(i >= 5)
                             return;
                     }
                     if(i_2_ == 5 && Class4.anInt185 < 2) {
                         int i_5_ = -(i * 13) + 329;
                         i++;
-                        class40_sub5_sub14_sub1.method690(Class40_Sub5_Sub17_Sub4.aClass1Array3160[i_0_], 4, i_5_, 0);
-                        class40_sub5_sub14_sub1.method690(Class40_Sub5_Sub17_Sub4.aClass1Array3160[i_0_], 4, i_5_ - 1, 65535);
+                        class40_sub5_sub14_sub1.method690(Actor.aClass1Array3160[i_0_], 4, i_5_, 0);
+                        class40_sub5_sub14_sub1.method690(Actor.aClass1Array3160[i_0_], 4, i_5_ - 1, 65535);
                         if((i ^ 0xffffffff) <= -6)
                             return;
                     }
                     if((i_2_ ^ 0xffffffff) == -7 && Class4.anInt185 < 2) {
                         int i_6_ = -(13 * i) + 329;
                         i++;
-                        class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub17_Sub6.method832(-58, new RSString[]{Class40_Sub5_Sub1.aClass1_2274, Class48.aClass1_1123, class1, ISAAC.aClass1_515, (Class40_Sub5_Sub17_Sub4.aClass1Array3160[i_0_])})), 4, i_6_, 0);
-                        class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub17_Sub6.method832(-81, new RSString[]{Class40_Sub5_Sub1.aClass1_2274, Class48.aClass1_1123, class1, ISAAC.aClass1_515, (Class40_Sub5_Sub17_Sub4.aClass1Array3160[i_0_])})), 4, i_6_ + -1, 65535);
+                        class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub17_Sub6.method832(-58, new RSString[]{Class40_Sub5_Sub1.aClass1_2274, Class48.aClass1_1123, class1, ISAAC.aClass1_515, (Actor.aClass1Array3160[i_0_])})), 4, i_6_, 0);
+                        class40_sub5_sub14_sub1.method690((Class40_Sub5_Sub17_Sub6.method832(-81, new RSString[]{Class40_Sub5_Sub1.aClass1_2274, Class48.aClass1_1123, class1, ISAAC.aClass1_515, (Actor.aClass1Array3160[i_0_])})), 4, i_6_ + -1, 65535);
                         if((i ^ 0xffffffff) <= -6)
                             return;
                     }

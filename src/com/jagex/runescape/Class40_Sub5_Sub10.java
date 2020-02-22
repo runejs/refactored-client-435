@@ -1,5 +1,9 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Model;
+
 public class Class40_Sub5_Sub10 extends SubNode {
     public static int anInt2585;
     public static RSString aClass1_2587;
@@ -89,16 +93,16 @@ public class Class40_Sub5_Sub10 extends SubNode {
         class40_sub1.currentPosition = class40_sub1.buffer.length + -12;
         int i = class40_sub1.readInt();
             int i_0_ = 0;
-        class40_sub5_sub1.anInt2271 = class40_sub1.readShort();
-        class40_sub5_sub1.anInt2267 = class40_sub1.readShort();
-        class40_sub5_sub1.anInt2263 = class40_sub1.readShort();
-        class40_sub5_sub1.anInt2266 = class40_sub1.readShort();
+        class40_sub5_sub1.anInt2271 = class40_sub1.getUnsignedShortBE();
+        class40_sub5_sub1.anInt2267 = class40_sub1.getUnsignedShortBE();
+        class40_sub5_sub1.anInt2263 = class40_sub1.getUnsignedShortBE();
+        class40_sub5_sub1.anInt2266 = class40_sub1.getUnsignedShortBE();
             class40_sub5_sub1.aClass1Array2270 = new RSString[i];
             class40_sub5_sub1.anIntArray2262 = new int[i];
         class40_sub1.currentPosition = 0;
             class40_sub5_sub1.anIntArray2272 = new int[i];
         while(class40_sub1.currentPosition < -12 + class40_sub1.buffer.length) {
-            int i_1_ = class40_sub1.readShort();
+            int i_1_ = class40_sub1.getUnsignedShortBE();
                 if(i_1_ != 3) {
                     if(i_1_ >= 100 || i_1_ == 21 || (i_1_ ^ 0xffffffff) == -39 || i_1_ == 39)
                         class40_sub5_sub1.anIntArray2262[i_0_] = class40_sub1.getUnsignedByte();
@@ -179,18 +183,18 @@ public class Class40_Sub5_Sub10 extends SubNode {
                     if(arg1 != 3) {
                         if(arg1 < 40 || arg1 >= 50) {
                             if(arg1 >= 50 && (arg1 ^ 0xffffffff) > -61)
-                                anIntArray2594[-50 + arg1] = arg0.readShort();
+                                anIntArray2594[-50 + arg1] = arg0.getUnsignedShortBE();
                             else if(arg1 >= 60 && arg1 < 70)
-                                anIntArray2610[-60 + arg1] = arg0.readShort();
+                                anIntArray2610[-60 + arg1] = arg0.getUnsignedShortBE();
                         } else
-                            anIntArray2586[arg1 + -40] = arg0.readShort();
+                            anIntArray2586[arg1 + -40] = arg0.getUnsignedShortBE();
                     } else
                         aBoolean2606 = true;
                 } else {
                     int i = arg0.getUnsignedByte();
                     anIntArray2600 = new int[i];
                     for(int i_6_ = 0; (i ^ 0xffffffff) < (i_6_ ^ 0xffffffff); i_6_++)
-                        anIntArray2600[i_6_] = arg0.readShort();
+                        anIntArray2600[i_6_] = arg0.getUnsignedShortBE();
                 }
             } else
                 anInt2599 = arg0.getUnsignedByte();
@@ -205,7 +209,7 @@ public class Class40_Sub5_Sub10 extends SubNode {
                 return null;
             for(int i_7_ = 0; (i_7_ ^ 0xffffffff) > -6; i_7_++) {
                 if(anIntArray2610[i_7_] != -1)
-                    class40_sub5_sub17_sub5s[i++] = Model.method830((Class27.aClass6_654), (anIntArray2610[i_7_]), 0);
+                    class40_sub5_sub17_sub5s[i++] = Model.getModel((Class27.aClass6_654), (anIntArray2610[i_7_]), 0);
             }
             Model class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, i);
             for(int i_8_ = 0; i_8_ < 6; i_8_++) {
@@ -222,7 +226,7 @@ public class Class40_Sub5_Sub10 extends SubNode {
                 return null;
             Model[] class40_sub5_sub17_sub5s = new Model[anIntArray2600.length];
             for(int i = 0; i < anIntArray2600.length; i++)
-                class40_sub5_sub17_sub5s[i] = Model.method830(Class27.aClass6_654, anIntArray2600[i], 0);
+                class40_sub5_sub17_sub5s[i] = Model.getModel(Class27.aClass6_654, anIntArray2600[i], 0);
             Model class40_sub5_sub17_sub5;
             if(class40_sub5_sub17_sub5s.length != 1)
                 class40_sub5_sub17_sub5 = (new Model(class40_sub5_sub17_sub5s, class40_sub5_sub17_sub5s.length));

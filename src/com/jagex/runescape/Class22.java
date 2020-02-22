@@ -1,5 +1,11 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 public abstract class Class22 {
     public static int anInt531;
     public static RSString aClass1_532;
@@ -57,9 +63,9 @@ public abstract class Class22 {
             int i_2_ = 24628 + ((-(512 * i_1_) + 52736) * 4);
             for(int i_3_ = 1; (i_3_ ^ 0xffffffff) > -104; i_3_++) {
                 if((0x18 & (Floor.tile_flags[arg1][i_3_][i_1_])) == 0)
-                    NPC.aScene_3301.method96(is, i_2_, 512, arg1, i_3_, i_1_);
+                    Npc.aScene_3301.method96(is, i_2_, 512, arg1, i_3_, i_1_);
                 if((arg1 ^ 0xffffffff) > -4 && ((Floor.tile_flags[1 + arg1][i_3_][i_1_]) & 0x8 ^ 0xffffffff) != -1)
-                    NPC.aScene_3301.method96(is, i_2_, 512, 1 + arg1, i_3_, i_1_);
+                    Npc.aScene_3301.method96(is, i_2_, 512, 1 + arg1, i_3_, i_1_);
                 i_2_ += 4;
             }
         }
@@ -69,9 +75,9 @@ public abstract class Class22 {
         for(int i_6_ = 1; i_6_ < 103; i_6_++) {
             for(int i_7_ = 1; i_7_ < 103; i_7_++) {
                 if(((Floor.tile_flags[arg1][i_7_][i_6_]) & 0x18 ^ 0xffffffff) == -1)
-                    Class40_Sub5_Sub17_Sub4.method781(1850, arg1, i_7_, i_4_, i_5_, i_6_);
+                    Actor.method781(1850, arg1, i_7_, i_4_, i_5_, i_6_);
                 if((arg1 ^ 0xffffffff) > -4 && (0x8 & (Floor.tile_flags[1 + arg1][i_7_][i_6_]) ^ 0xffffffff) != -1)
-                    Class40_Sub5_Sub17_Sub4.method781(1850, 1 + arg1, i_7_, i_4_, i_5_, i_6_);
+                    Actor.method781(1850, 1 + arg1, i_7_, i_4_, i_5_, i_6_);
             }
         }
         GameObject.anInt3040 = 0;
@@ -79,7 +85,7 @@ public abstract class Class22 {
             aClass40_Sub1Array534 = null;
         for(int i_8_ = 0; i_8_ < 104; i_8_++) {
             for(int i_9_ = 0; i_9_ < 104; i_9_++) {
-                int i_10_ = (NPC.aScene_3301.method93(Player.anInt3267, i_8_, i_9_));
+                int i_10_ = (Npc.aScene_3301.method93(Player.anInt3267, i_8_, i_9_));
                 if(i_10_ != 0) {
                     i_10_ = 0x7fff & i_10_ >> -1684965490;
                     int i_11_ = (GameObjectDefinition.getDefinition(i_10_).anInt2511);
@@ -101,7 +107,7 @@ public abstract class Class22 {
                             }
                         }
                         Class62.aClass40_Sub5_Sub14_Sub4Array1466[GameObject.anInt3040] = (Class8.aClass40_Sub5_Sub14_Sub4Array296[i_11_]);
-                        Class40_Sub5_Sub17_Sub4.anIntArray3149[GameObject.anInt3040] = i_13_;
+                        Actor.anIntArray3149[GameObject.anInt3040] = i_13_;
                         Class45.anIntArray1083[(GameObject.anInt3040)] = i_12_;
                         GameObject.anInt3040++;
                     }
@@ -146,7 +152,7 @@ public abstract class Class22 {
             Class40_Sub5_Sub7.anInt2480 = Node.anInt926;
             Class66.method1030((byte) 127);
             anInt531++;
-            int i = (NPC.method795((byte) -70, arg1).anInt2633);
+            int i = (Npc.method795((byte) -70, arg1).anInt2633);
             if(i != 0) {
                 int i_21_ = Class58.varbitmasks[arg1];
                 if((i ^ 0xffffffff) == -2) {

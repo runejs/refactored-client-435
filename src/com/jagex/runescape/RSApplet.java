@@ -1,5 +1,9 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.util.Signlink;
+
 import java.applet.Applet;
 import java.applet.AppletContext;
 import java.awt.*;
@@ -195,7 +199,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
     public static void providesignlink(Signlink arg0) {
 
-        Class40_Sub5_Sub17_Sub4.aClass31_3152 = ISAAC.aClass31_521 = arg0;
+        Actor.aClass31_3152 = ISAAC.aClass31_521 = arg0;
             anInt30++;
 
     }
@@ -423,7 +427,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             if(Class4.anApplet_Sub1_179 == this && !PacketBuffer.aBoolean2255) {
                 Class6.aLong219 = Class51.method937(1);
                 Class43.method890(5000L, -123);
-                Class40_Sub5_Sub17_Sub4.aClass31_3152 = null;
+                Actor.aClass31_3152 = null;
                 method17(121);
             }
 
@@ -461,7 +465,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     Class40_Sub5_Sub10.height = width;
                     Class4.anApplet_Sub1_179 = this;
                     if(ISAAC.aClass31_521 == null)
-                        Class40_Sub5_Sub17_Sub4.aClass31_3152 = ISAAC.aClass31_521 = (new Signlink(false, this, InetAddress.getByName(getCodeBase().getHost()), fileStoreId, null, 0));
+                        Actor.aClass31_3152 = ISAAC.aClass31_521 = (new Signlink(false, this, InetAddress.getByName(getCodeBase().getHost()), fileStoreId, null, 0));
                     ISAAC.aClass31_521.method394(1, 0, this);
                 } catch(Exception exception) {
                     Class6.method169(null, (byte) -126, exception);
@@ -558,7 +562,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 Class35.aFrame1732.toFront();
                 Insets insets = Class35.aFrame1732.getInsets();
                 Class35.aFrame1732.setSize(insets.right + (width + insets.left), insets.bottom + insets.top + height);
-                Class40_Sub5_Sub17_Sub4.aClass31_3152 = ISAAC.aClass31_521 = new Signlink(true, null, inetAddress, fileStoreId, cacheFolder, cacheIndexes);
+            Actor.aClass31_3152 = ISAAC.aClass31_521 = new Signlink(true, null, inetAddress, fileStoreId, cacheFolder, cacheIndexes);
                 ISAAC.aClass31_521.method394(1, 0, this);
             } catch(Exception exception) {
                 Class6.method169(null, (byte) -127, exception);

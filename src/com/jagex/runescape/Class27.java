@@ -1,5 +1,13 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 public class Class27 {
     public static int anInt636;
     public static RSString aClass1_637 = Class58.method978("Loading game screen )2 ");
@@ -110,8 +118,8 @@ public class Class27 {
         Model.anInt3229 = Class13.anInt420 + -4;
         Model.anInt3220 = 0;
         Rasterizer.method663();
-        NPC.aScene_3301.method97(Class12.anInt388, Class32.anInt769, Class40_Sub5_Sub6.anInt2443, Class26.anInt627, Class68_Sub1.anInt2210, i);
-        NPC.aScene_3301.method104();
+        Npc.aScene_3301.method97(Class12.anInt388, Class32.anInt769, Class40_Sub5_Sub6.anInt2443, Class26.anInt627, Class68_Sub1.anInt2210, i);
+        Npc.aScene_3301.method104();
         Class33.method404((byte) -28);
         Class38_Sub1.method450((byte) -67);
         ((Class35) R3D.anInterface3_2939).method425((byte) 6, Class5.anInt199);
@@ -136,16 +144,16 @@ public class Class27 {
     public static void method354(byte arg0) {
 
         anInt644++;
-            Class40_Sub5_Sub17_Sub4.anInt3153 = 0;
+        Actor.anInt3153 = 0;
             Class17.anInt460 = 0;
-            Class40_Sub5_Sub17_Sub4.method786(true);
+        Actor.method786(true);
             Class29.method373((byte) -5);
             Class34.method419((byte) 108);
             Class40_Sub5_Sub11.method633(-1);
             for(int i = 0; Class17.anInt460 > i; i++) {
                 int i_8_ = Class6.anIntArray225[i];
-                if(((Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_8_].anInt3134) ^ 0xffffffff) != (Node.anInt926 ^ 0xffffffff))
-                    Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_8_] = null;
+                if(((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_8_].anInt3134) ^ 0xffffffff) != (Node.anInt926 ^ 0xffffffff))
+                    Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_8_] = null;
             }
             if((Cache.outgoingbuffer.currentPosition ^ 0xffffffff) != (Class40_Sub5_Sub12.packetsize ^ 0xffffffff))
                 throw new RuntimeException("gpp1 pos:" + (Cache.outgoingbuffer.currentPosition) + " psize:" + Class40_Sub5_Sub12.packetsize);
@@ -153,7 +161,7 @@ public class Class27 {
             if(arg0 < 50)
                 aClass6_654 = null;
             for(/**/; Class60.anInt1407 > i; i++) {
-                if((Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i]]) == null)
+                if((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i]]) == null)
                     throw new RuntimeException("gpp2 pos:" + i + " size:" + Class60.anInt1407);
             }
 
@@ -275,7 +283,7 @@ public class Class27 {
                 Class32.packetBuffer.method486(14912, Class26.anInt635 + i_10_);
             }
             if(i_11_ == 1) {
-                Player class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
+                Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     Class40_Sub5_Sub4.anInt2355++;
                     Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), class40_sub5_sub17_sub4_sub1.anIntArray3088[0], (byte) 112, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), class40_sub5_sub17_sub4_sub1.anIntArray3135[0], 2);
@@ -296,7 +304,7 @@ public class Class27 {
                     RSString class1_14_ = class1.method62(57).method85(-4305);
                     boolean bool = false;
                     for(int i_15_ = 0; i_15_ < Class60.anInt1407; i_15_++) {
-                        Player class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_15_]]);
+                        Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_15_]]);
                         if(class40_sub5_sub17_sub4_sub1 != null && (class40_sub5_sub17_sub4_sub1.aClass1_3278 != null) && class40_sub5_sub17_sub4_sub1.aClass1_3278.method63(class1_14_, true)) {
                             bool = true;
                             Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3088[0]), (byte) 114, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3135[0]), 2);
@@ -376,7 +384,7 @@ public class Class27 {
                     Class40_Sub5_Sub17_Sub1.anInt2999 = 3;
             }
             if(i_11_ == 10) {
-                Player class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
+                Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), class40_sub5_sub17_sub4_sub1.anIntArray3088[0], (byte) 109, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), class40_sub5_sub17_sub4_sub1.anIntArray3135[0], 2);
                     Class40_Sub11.anInt2163 = Class57.anInt1338;
@@ -389,7 +397,7 @@ public class Class27 {
                 }
             }
             if((i_11_ ^ 0xffffffff) == -15) {
-                Player class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
+                Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     Class29.anInt677++;
                     Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), class40_sub5_sub17_sub4_sub1.anIntArray3088[0], (byte) 92, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), class40_sub5_sub17_sub4_sub1.anIntArray3135[0], 2);
@@ -406,7 +414,7 @@ public class Class27 {
                 Class45.anInt1075 = 2;
                 Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                 Floor.anInt2319 = 0;
-                NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
+                Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                 if(class40_sub5_sub17_sub4_sub2 != null) {
                     NpcDefinition class40_sub5_sub5 = class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300;
                     if(class40_sub5_sub5.anIntArray2426 != null)
@@ -418,7 +426,7 @@ public class Class27 {
                 }
             }
             if(i_11_ == 22) {
-                Player class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
+                Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), class40_sub5_sub17_sub4_sub1.anIntArray3088[0], (byte) 94, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), class40_sub5_sub17_sub4_sub1.anIntArray3135[0], 2);
                     Class40_Sub11.anInt2163 = Class57.anInt1338;
@@ -438,10 +446,10 @@ public class Class27 {
                 Class45.anInt1061 = i;
                 ISAAC.anInt525 = i_10_;
                 Class8.anInt301 = 1;
-                NPC.aClass1_3295 = (Class40_Sub5_Sub17_Sub6.method832(78, (new RSString[]{VertexNormal.aClass1_1114, ItemDefinition.forId(i_12_, 10).name, Class26.aClass1_620})));
+                Npc.aClass1_3295 = (Class40_Sub5_Sub17_Sub6.method832(78, (new RSString[]{VertexNormal.aClass1_1114, ItemDefinition.forId(i_12_, 10).name, Class26.aClass1_620})));
                 Main.anInt1773 = 0;
-                if(NPC.aClass1_3295 == null)
-                    NPC.aClass1_3295 = RSApplet.aClass1_34;
+                if(Npc.aClass1_3295 == null)
+                    Npc.aClass1_3295 = RSApplet.aClass1_34;
                 ISAAC.aBoolean505 = true;
             } else {
                 if((i_11_ ^ 0xffffffff) == -16) {
@@ -483,7 +491,7 @@ public class Class27 {
                         Class40_Sub5_Sub17_Sub1.anInt2999 = 1;
                     if(Class43.anInt1028 == i_10_ >> 1821500048)
                         Class40_Sub5_Sub17_Sub1.anInt2999 = 3;
-                    NPC.anInt3310++;
+                    Npc.anInt3310++;
                     RSRuntimeException.anInt1651 = 0;
                 }
                 if(i_11_ == 18) {
@@ -527,7 +535,7 @@ public class Class27 {
                     Class32.packetBuffer.method478(i + Class40_Sub5_Sub2.anInt2307, -48);
                 }
                 if((i_11_ ^ 0xffffffff) == -31) {
-                    NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
+                    Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Class40_Sub13.anInt2180++;
                         Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), class40_sub5_sub17_sub4_sub2.anIntArray3088[0], (byte) 107, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), class40_sub5_sub17_sub4_sub2.anIntArray3135[0], 2);
@@ -540,7 +548,7 @@ public class Class27 {
                     }
                 }
                 if((i_11_ ^ 0xffffffff) == -50) {
-                    NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
+                    Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), class40_sub5_sub17_sub4_sub2.anIntArray3088[0], (byte) 112, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), class40_sub5_sub17_sub4_sub2.anIntArray3135[0], 2);
                         Class35.anInt1719++;
@@ -574,7 +582,7 @@ public class Class27 {
                     Class32.packetBuffer.method478(i + Class40_Sub5_Sub2.anInt2307, -26);
                 }
                 if(i_11_ == 34) {
-                    NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
+                    Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Class45.anInt1060++;
                         Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), class40_sub5_sub17_sub4_sub2.anIntArray3088[0], (byte) 126, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), class40_sub5_sub17_sub4_sub2.anIntArray3135[0], 2);
@@ -657,7 +665,7 @@ public class Class27 {
                             Class40_Sub5_Sub17_Sub1.anInt2999 = 3;
                     }
                     if(i_11_ == 12) {
-                        NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
+                        Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3088[0]), (byte) 113, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3135[0]), 2);
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
@@ -698,7 +706,7 @@ public class Class27 {
                         Class32.packetBuffer.method486(14912, i + Class40_Sub5_Sub2.anInt2307);
                     }
                     if((i_11_ ^ 0xffffffff) == -22) {
-                        NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
+                        Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Class40_Sub5_Sub1.anInt2269++;
                             Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3088[0]), (byte) 112, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3135[0]), 2);
@@ -727,7 +735,7 @@ public class Class27 {
                         }
                     }
                     if((i_11_ ^ 0xffffffff) == -45) {
-                        Player class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
+                        Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
                         if(class40_sub5_sub17_sub4_sub1 != null) {
                             Class51.anInt1189++;
                             Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3088[0]), (byte) 94, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3135[0]), 2);
@@ -743,9 +751,9 @@ public class Class27 {
                         aClass40_Sub5_Sub14_Sub4Array649 = null;
                     if((i_11_ ^ 0xffffffff) == -8) {
                         if(Class4.aBoolean173)
-                            NPC.aScene_3301.method120(-4 + i, -4 + i_10_);
+                            Npc.aScene_3301.method120(-4 + i, -4 + i_10_);
                         else
-                            NPC.aScene_3301.method120(Class57.anInt1338 - 4, -4 + RSString.anInt1668);
+                            Npc.aScene_3301.method120(Class57.anInt1338 - 4, -4 + RSString.anInt1668);
                     }
                     if(i_11_ == 1006) {
                         Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_10_, (byte) -111);
@@ -816,7 +824,7 @@ public class Class27 {
                         RSRuntimeException.anInt1651 = 0;
                     }
                     if(i_11_ == 41) {
-                        Player class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
+                        Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
                         if(class40_sub5_sub17_sub4_sub1 != null) {
                             Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3088[0]), (byte) 117, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3135[0]), 2);
                             Class45.anInt1075 = 2;
@@ -894,7 +902,7 @@ public class Class27 {
                         Class32.packetBuffer.method493(i_10_ + Class26.anInt635, -128);
                     }
                     if(i_11_ == 39) {
-                        Player class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
+                        Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
                         if(class40_sub5_sub17_sub4_sub1 != null) {
                             Landscape.anInt1164++;
                             Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3088[0]), (byte) 97, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3135[0]), 2);
@@ -930,7 +938,7 @@ public class Class27 {
                         Class32.packetBuffer.method478(i + Class40_Sub5_Sub2.anInt2307, -128);
                     }
                     if(i_11_ == 20) {
-                        NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
+                        Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3088[0]), (byte) 122, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3135[0]), 2);
                             Class45.anInt1075 = 2;
@@ -975,7 +983,7 @@ public class Class27 {
                             Class40_Sub5_Sub17_Sub1.anInt2999 = 3;
                     }
                     if(i_11_ == 4) {
-                        NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
+                        Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Class40_Sub11.anInt2148++;
                             Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3088[0]), (byte) 98, 0, false, 0, 1, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3135[0]), 2);
@@ -1227,7 +1235,7 @@ public class Class27 {
                     Class33.method411(Node.aClass1_953, Class57.aClass1_1339, Class22_Sub2.aClass1_1891, (byte) 105);
                 else if(arg1 != 8) {
                     if((arg1 ^ 0xffffffff) == -10)
-                        Class33.method411(Node.aClass1_942, Class40_Sub5_Sub17_Sub4.aClass1_3138, Class40_Sub5_Sub17_Sub3.aClass1_3050, (byte) 104);
+                        Class33.method411(Node.aClass1_942, Actor.aClass1_3138, Class40_Sub5_Sub17_Sub3.aClass1_3050, (byte) 104);
                     else if(arg1 == 10)
                         Class33.method411(Node.aClass1_952, Class42.aClass1_1002, Class40_Sub5_Sub10.aClass1_2615, (byte) 87);
                     else if((arg1 ^ 0xffffffff) == -12)

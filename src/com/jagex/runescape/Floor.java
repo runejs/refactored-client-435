@@ -1,5 +1,9 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Model;
+
 public class Floor extends SubNode {
     public static RSString aClass1_2314;
     public static RSString aClass1_2315;

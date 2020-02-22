@@ -1,5 +1,12 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.util.Signlink;
+
 import java.awt.*;
 
 public class NpcDefinition extends SubNode {
@@ -118,9 +125,9 @@ public class NpcDefinition extends SubNode {
     public static void method569(boolean arg0) {
             Class17.anIntArray456 = null;
             Class58.aByteArrayArray1370 = null;
-            NPC.anIntArray3312 = null;
+        Npc.anIntArray3312 = null;
             if(arg0 == true) {
-                Class40_Sub5_Sub17_Sub4.anIntArray3111 = null;
+                Actor.anIntArray3111 = null;
                 Buffer.anIntArray1972 = null;
                 Class57.anIntArray1347 = null;
                 anInt2403++;
@@ -176,11 +183,11 @@ public class NpcDefinition extends SubNode {
             class40_sub5_sub14_sub4.anInt2954 = ItemDefinition.anInt2846;
             class40_sub5_sub14_sub4.anInt2952 = RSApplet.anInt31;
             class40_sub5_sub14_sub4.anInt2953 = Class57.anIntArray1347[0];
-            class40_sub5_sub14_sub4.anInt2949 = Class40_Sub5_Sub17_Sub4.anIntArray3111[0];
+        class40_sub5_sub14_sub4.anInt2949 = Actor.anIntArray3111[0];
             if(arg0 > -85)
                 method578(79);
             class40_sub5_sub14_sub4.anInt2951 = Class17.anIntArray456[0];
-            class40_sub5_sub14_sub4.anInt2950 = NPC.anIntArray3312[0];
+        class40_sub5_sub14_sub4.anInt2950 = Npc.anIntArray3312[0];
             byte[] is = Class58.aByteArrayArray1370[0];
             int i = (class40_sub5_sub14_sub4.anInt2951 * class40_sub5_sub14_sub4.anInt2950);
             class40_sub5_sub14_sub4.anIntArray2955 = new int[i];
@@ -298,7 +305,7 @@ public class NpcDefinition extends SubNode {
                     return null;
                 Model[] class40_sub5_sub17_sub5s = new Model[anIntArray2405.length];
                 for(int i = 0; anIntArray2405.length > i; i++)
-                    class40_sub5_sub17_sub5s[i] = Model.method830((Class67.aClass6_1577), anIntArray2405[i], 0);
+                    class40_sub5_sub17_sub5s[i] = Model.getModel((Class67.aClass6_1577), anIntArray2405[i], 0);
                 if(class40_sub5_sub17_sub5s.length == 1)
                     class40_sub5_sub17_sub5 = class40_sub5_sub17_sub5s[0];
                 else
@@ -347,18 +354,18 @@ public class NpcDefinition extends SubNode {
                     int i = arg2.getUnsignedByte();
                     anIntArray2405 = new int[i];
                     for(int i_1_ = 0; (i_1_ ^ 0xffffffff) > (i ^ 0xffffffff); i_1_++)
-                        anIntArray2405[i_1_] = arg2.readShort();
+                        anIntArray2405[i_1_] = arg2.getUnsignedShortBE();
                 } else if(arg0 == 2)
                     aClass1_2402 = arg2.getRSString(arg1 ^ ~0xae5);
                 else if(arg0 != 12) {
                     if((arg0 ^ 0xffffffff) == -14)
-                        anInt2382 = arg2.readShort();
+                        anInt2382 = arg2.getUnsignedShortBE();
                     else if((arg0 ^ 0xffffffff) == -15)
-                        anInt2425 = arg2.readShort();
+                        anInt2425 = arg2.getUnsignedShortBE();
                     else if((arg0 ^ 0xffffffff) == -16)
-                        anInt2421 = arg2.readShort();
+                        anInt2421 = arg2.getUnsignedShortBE();
                     else if(arg0 == 16)
-                        anInt2389 = arg2.readShort();
+                        anInt2389 = arg2.getUnsignedShortBE();
                     else if(arg0 != 17) {
                         if((arg0 ^ 0xffffffff) > -31 || (arg0 ^ 0xffffffff) <= -36) {
                             if((arg0 ^ 0xffffffff) == -41) {
@@ -366,13 +373,13 @@ public class NpcDefinition extends SubNode {
                                 anIntArray2395 = new int[i];
                                 anIntArray2428 = new int[i];
                                 for(int i_2_ = 0; i_2_ < i; i_2_++) {
-                                    anIntArray2428[i_2_] = arg2.readShort();
-                                    anIntArray2395[i_2_] = arg2.readShort();
+                                    anIntArray2428[i_2_] = arg2.getUnsignedShortBE();
+                                    anIntArray2395[i_2_] = arg2.getUnsignedShortBE();
                                 }
                             } else if((arg0 ^ 0xffffffff) != -61) {
                                 if(arg0 != 93) {
                                     if((arg0 ^ 0xffffffff) == -96)
-                                        anInt2393 = arg2.readShort();
+                                        anInt2393 = arg2.getUnsignedShortBE();
                                     else if((arg0 ^ 0xffffffff) != -98) {
                                         if(arg0 != 98) {
                                             if(arg0 != 99) {
@@ -380,23 +387,23 @@ public class NpcDefinition extends SubNode {
                                                     if(arg0 == 101)
                                                         anInt2409 = (arg2.get()) * 5;
                                                     else if((arg0 ^ 0xffffffff) == -103)
-                                                        anInt2381 = (arg2.readShort());
+                                                        anInt2381 = (arg2.getUnsignedShortBE());
                                                     else if(arg0 == 103)
-                                                        anInt2391 = (arg2.readShort());
+                                                        anInt2391 = (arg2.getUnsignedShortBE());
                                                     else if((arg0 ^ 0xffffffff) != -107) {
                                                         if(arg0 == 107)
                                                             aBoolean2372 = false;
                                                     } else {
-                                                        anInt2411 = (arg2.readShort());
+                                                        anInt2411 = (arg2.getUnsignedShortBE());
                                                         if(anInt2411 == 65535)
                                                             anInt2411 = -1;
-                                                        anInt2385 = (arg2.readShort());
+                                                        anInt2385 = (arg2.getUnsignedShortBE());
                                                         if(anInt2385 == 65535)
                                                             anInt2385 = -1;
                                                         int i = (arg2.getUnsignedByte());
                                                         anIntArray2426 = new int[i + 1];
                                                         for(int i_3_ = 0; i >= i_3_; i_3_++) {
-                                                            anIntArray2426[i_3_] = (arg2.readShort());
+                                                            anIntArray2426[i_3_] = (arg2.getUnsignedShortBE());
                                                             if(((anIntArray2426[i_3_]) ^ 0xffffffff) == -65536)
                                                                 anIntArray2426[i_3_] = -1;
                                                         }
@@ -406,16 +413,16 @@ public class NpcDefinition extends SubNode {
                                             } else
                                                 aBoolean2397 = true;
                                         } else
-                                            anInt2415 = arg2.readShort();
+                                            anInt2415 = arg2.getUnsignedShortBE();
                                     } else
-                                        anInt2407 = arg2.readShort();
+                                        anInt2407 = arg2.getUnsignedShortBE();
                                 } else
                                     aBoolean2430 = false;
                             } else {
                                 int i = arg2.getUnsignedByte();
                                 anIntArray2375 = new int[i];
                                 for(int i_4_ = 0; i > i_4_; i_4_++)
-                                    anIntArray2375[i_4_] = arg2.readShort();
+                                    anIntArray2375[i_4_] = arg2.getUnsignedShortBE();
                             }
                         } else {
                             aClass1Array2376[arg0 - 30] = arg2.getRSString(-10721);
@@ -423,10 +430,10 @@ public class NpcDefinition extends SubNode {
                                 aClass1Array2376[-30 + arg0] = null;
                         }
                     } else {
-                        anInt2425 = arg2.readShort();
-                        anInt2406 = arg2.readShort();
-                        anInt2418 = arg2.readShort();
-                        anInt2413 = arg2.readShort();
+                        anInt2425 = arg2.getUnsignedShortBE();
+                        anInt2406 = arg2.getUnsignedShortBE();
+                        anInt2418 = arg2.getUnsignedShortBE();
+                        anInt2413 = arg2.getUnsignedShortBE();
                     }
                 } else
                     anInt2374 = arg2.getUnsignedByte();
@@ -471,7 +478,7 @@ public class NpcDefinition extends SubNode {
                 return null;
             Model[] class40_sub5_sub17_sub5s = new Model[anIntArray2375.length];
             for(int i = 0; i < anIntArray2375.length; i++)
-                class40_sub5_sub17_sub5s[i] = Model.method830(Class67.aClass6_1577, anIntArray2375[i], 0);
+                class40_sub5_sub17_sub5s[i] = Model.getModel(Class67.aClass6_1577, anIntArray2375[i], 0);
             Model class40_sub5_sub17_sub5;
             if(class40_sub5_sub17_sub5s.length != 1)
                 class40_sub5_sub17_sub5 = (new Model(class40_sub5_sub17_sub5s, class40_sub5_sub17_sub5s.length));

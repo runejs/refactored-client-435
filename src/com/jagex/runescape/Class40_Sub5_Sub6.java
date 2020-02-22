@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.actor.Player;
+
 import java.io.ByteArrayInputStream;
 import java.io.ObjectInputStream;
 import java.lang.reflect.Field;

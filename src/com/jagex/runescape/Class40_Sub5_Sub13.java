@@ -1,5 +1,9 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 import java.awt.*;
 
 public class Class40_Sub5_Sub13 extends SubNode {

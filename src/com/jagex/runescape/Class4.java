@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.audio.Effect;
+import com.jagex.runescape.media.renderable.actor.Actor;
 
 public class Class4 {
     public static boolean aBoolean173;
@@ -80,7 +81,7 @@ public class Class4 {
             } else {
                 Effect effect = PacketBuffer.effects[i];
                 if(effect == null) {
-                    effect = Effect.method429((Class40_Sub5_Sub17_Sub4.aClass6_Sub1_3157), (Class40_Sub5_Sub10.anIntArray2602[i]), 0);
+                    effect = Effect.method429((Actor.aClass6_Sub1_3157), (Class40_Sub5_Sub10.anIntArray2602[i]), 0);
                     if(effect == null)
                         continue;
                     Class40_Sub3.anIntArray2023[i] += effect.method427();

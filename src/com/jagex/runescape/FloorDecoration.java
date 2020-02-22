@@ -1,5 +1,11 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+
 import java.io.IOException;
 import java.util.zip.CRC32;
 
@@ -46,7 +52,7 @@ public class FloorDecoration {
     public int y;
     public int z;
 
-    public static void method342(int arg0, int arg1, Class40_Sub5_Sub17_Sub4 arg2) {
+    public static void method342(int arg0, int arg1, Actor arg2) {
 
         Class22_Sub1.method312(arg1, arg2.anInt3089, arg2.anInt3098, 4976905);
             int i = -63 % ((41 - arg0) / 41);
@@ -57,11 +63,11 @@ public class FloorDecoration {
     public static void method343(boolean arg0, int arg1) {
         Class58.aBoolean1349 = arg0;
         if(Class58.aBoolean1349) {
-            int i = Cache.outgoingbuffer.readShort();
+            int i = Cache.outgoingbuffer.getUnsignedShortBE();
             int i_0_ = Cache.outgoingbuffer.method504(false);
-            int i_1_ = Cache.outgoingbuffer.readShort();
+            int i_1_ = Cache.outgoingbuffer.getUnsignedShortBE();
             int i_2_ = Cache.outgoingbuffer.method480((byte) -70);
-            int i_3_ = Cache.outgoingbuffer.readShort();
+            int i_3_ = Cache.outgoingbuffer.getUnsignedShortBE();
             Cache.outgoingbuffer.initBitAccess(arg1 ^ 0x1625);
             for(int i_4_ = 0; (i_4_ ^ 0xffffffff) > -5; i_4_++) {
                 for(int i_5_ = 0; i_5_ < 13; i_5_++) {
@@ -113,9 +119,9 @@ public class FloorDecoration {
                     }
                 }
             }
-            Class40_Sub5_Sub17_Sub4.method789(i_0_, arg1 + -6688, i_3_, i_1_, i, i_2_);
+            Actor.method789(i_0_, arg1 + -6688, i_3_, i_1_, i, i_2_);
         } else {
-            int i = Cache.outgoingbuffer.readShort();
+            int i = Cache.outgoingbuffer.getUnsignedShortBE();
             int i_21_ = Cache.outgoingbuffer.method490((byte) -70);
             int i_22_ = Cache.outgoingbuffer.method461((byte) 110);
             int i_23_ = Cache.outgoingbuffer.method504(false);
@@ -148,7 +154,7 @@ public class FloorDecoration {
                     }
                 }
             }
-            Class40_Sub5_Sub17_Sub4.method789(i_22_, -1000, i_23_, i_21_, i, i_24_);
+            Actor.method789(i_22_, -1000, i_23_, i_21_, i, i_24_);
         }
         anInt596++;
         if(arg1 != 5688)
@@ -316,7 +322,7 @@ public class FloorDecoration {
 				}*/
                                 Class40_Sub5_Sub1.anInt2278 = 0;
                                 Class34.anInt813 = 0;
-                                PacketBuffer.aClass40_Sub5_Sub13_2250.aClass6_Sub1_2754.method196(((PacketBuffer.aClass40_Sub5_Sub13_2250.key) & 0xff0000L) == 16711680L, false, (int) ((PacketBuffer.aClass40_Sub5_Sub13_2250.key) & 0xffffL), NPC.aBoolean3298, (Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer));
+                                PacketBuffer.aClass40_Sub5_Sub13_2250.aClass6_Sub1_2754.method196(((PacketBuffer.aClass40_Sub5_Sub13_2250.key) & 0xff0000L) == 16711680L, false, (int) ((PacketBuffer.aClass40_Sub5_Sub13_2250.key) & 0xffffL), Npc.aBoolean3298, (Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer));
                             } else {
                                 Class48.aClass40_Sub1_1132 = Class40_Sub5_Sub13.aClass40_Sub1_2752;
                                 for(int i_40_ = 0; i_40_ < 256; i_40_++) {
@@ -332,7 +338,7 @@ public class FloorDecoration {
                             PacketBuffer.aClass40_Sub5_Sub13_2250 = null;
                             Class40_Sub5_Sub13.aClass40_Sub1_2752 = null;
                             Landscape.anInt1157 = 0;
-                            if(!NPC.aBoolean3298)
+                            if(!Npc.aBoolean3298)
                                 Class42.anInt1006--;
                             else
                                 Class17.anInt464--;
@@ -356,15 +362,15 @@ public class FloorDecoration {
                         if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null) {
                             Class45.aClass40_Sub1_1081.currentPosition = 0;
                             int i_44_ = Class45.aClass40_Sub1_1081.getUnsignedByte();
-                            int i_45_ = Class45.aClass40_Sub1_1081.readShort();
+                            int i_45_ = Class45.aClass40_Sub1_1081.getUnsignedShortBE();
                             int i_46_ = Class45.aClass40_Sub1_1081.getUnsignedByte();
                             int i_47_ = Class45.aClass40_Sub1_1081.readInt();
                             long l_48_ = (long) ((i_44_ << 58201072) + i_45_);
                             Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class37.aClass23_869.method331(l_48_, 6120));
-                            NPC.aBoolean3298 = true;
+                            Npc.aBoolean3298 = true;
                             if(class40_sub5_sub13 == null) {
                                 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class34.aClass23_841.method331(l_48_, 6120));
-                                NPC.aBoolean3298 = false;
+                                Npc.aBoolean3298 = false;
                             }
                             if(class40_sub5_sub13 == null)
                                 throw new IOException();

@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+
 public class Class40_Sub7 extends Node {
     public static int anInt2122;
     public static Class68 aClass68_2123;

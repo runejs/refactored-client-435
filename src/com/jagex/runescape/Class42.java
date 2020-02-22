@@ -1,5 +1,10 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 public class Class42 {
     public static RSString aClass1_988;
     public static RSString aClass1_989;
@@ -186,10 +191,10 @@ public class Class42 {
                 break;
             boolean bool = false;
             if(Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i] == null) {
-                Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i] = new NPC();
+                Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i] = new Npc();
                 bool = true;
             }
-            NPC class40_sub5_sub17_sub4_sub2 = Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i];
+            Npc class40_sub5_sub17_sub4_sub2 = Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i];
             Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i;
             class40_sub5_sub17_sub4_sub2.anInt3134 = Node.anInt926;
             int i_3_ = (Class40_Sub5_Sub17_Sub1.anIntArray2987[Cache.outgoingbuffer.putBits(3, (byte) -65)]);
@@ -203,7 +208,7 @@ public class Class42 {
             if((i_5_ ^ 0xffffffff) < -16)
                 i_5_ -= 32;
             if((i_6_ ^ 0xffffffff) == -2)
-                Class24.anIntArray578[Class40_Sub5_Sub17_Sub4.anInt3153++] = i;
+                Class24.anIntArray578[Actor.anInt3153++] = i;
             int i_7_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
             class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300 = Landscape.method932((byte) -121, Cache.outgoingbuffer.putBits(13, (byte) -65));
             class40_sub5_sub17_sub4_sub2.anInt3132 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2413);

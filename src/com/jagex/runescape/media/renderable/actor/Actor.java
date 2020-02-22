@@ -1,8 +1,13 @@
-package com.jagex.runescape;
+package com.jagex.runescape.media.renderable.actor;
+
+import com.jagex.runescape.*;
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.util.Signlink;
 
 import java.math.BigInteger;
 
-public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
+public abstract class Actor extends Renderable {
     public static int anInt3076;
     public static int anInt3084;
     public static int anInt3085;
@@ -107,7 +112,7 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
     public int anInt3145;
     public int anInt3148;
 
-    public Class40_Sub5_Sub17_Sub4() {
+    public Actor() {
         anInt3083 = -1;
         anInt3100 = 0;
         anInt3082 = -1;
@@ -154,9 +159,9 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
     public static void method781(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
         if(arg0 == 1850) {
             anInt3084++;
-            int i = NPC.aScene_3301.method122(arg1, arg2, arg5);
+            int i = Npc.aScene_3301.method122(arg1, arg2, arg5);
             if(i != 0) {
-                int i_0_ = NPC.aScene_3301.method141(arg1, arg2, arg5, i);
+                int i_0_ = Npc.aScene_3301.method141(arg1, arg2, arg5, i);
                 int i_1_ = 0x1f & i_0_;
                 int i_2_ = 0x3 & i_0_ >> -1705964506;
                 int i_3_ = arg3;
@@ -239,9 +244,9 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
                     }
                 }
             }
-            i = NPC.aScene_3301.method110(arg1, arg2, arg5);
+            i = Npc.aScene_3301.method110(arg1, arg2, arg5);
             if(i != 0) {
-                int i_8_ = NPC.aScene_3301.method141(arg1, arg2, arg5, i);
+                int i_8_ = Npc.aScene_3301.method141(arg1, arg2, arg5, i);
                 int i_9_ = 0x7fff & i >> 1891879118;
                 int i_10_ = (i_8_ & 0xf4) >> -474347930;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_9_);
@@ -272,7 +277,7 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
                     }
                 }
             }
-            i = NPC.aScene_3301.method93(arg1, arg2, arg5);
+            i = Npc.aScene_3301.method93(arg1, arg2, arg5);
             if((i ^ 0xffffffff) != -1) {
                 int i_16_ = (i & 0x1fffd9fb) >> 1370061614;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_16_);
@@ -379,7 +384,7 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
                 int i_35_ = Class26.anInt635 + -i;
                 i = Class26.anInt635;
                 for(int i_36_ = 0; (i_36_ ^ 0xffffffff) > -32769; i_36_++) {
-                    NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_36_]);
+                    Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_36_]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         for(int i_37_ = 0; i_37_ < 10; i_37_++) {
                             class40_sub5_sub17_sub4_sub2.anIntArray3088[i_37_] -= i_34_;

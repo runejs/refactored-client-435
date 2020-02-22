@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+
 public class Class14 {
     public static byte[] aByteArray429 = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     public Buffer aClass40_Sub1_423 = new Buffer(null);
@@ -57,8 +59,8 @@ public class Class14 {
     public void method256(byte[] arg0) {
         aClass40_Sub1_423.buffer = arg0;
         aClass40_Sub1_423.currentPosition = 10;
-        int i = aClass40_Sub1_423.readShort();
-        anInt431 = aClass40_Sub1_423.readShort();
+        int i = aClass40_Sub1_423.getUnsignedShortBE();
+        anInt431 = aClass40_Sub1_423.getUnsignedShortBE();
         anInt430 = 500000;
         anIntArray426 = new int[i];
         int i_3_ = 0;

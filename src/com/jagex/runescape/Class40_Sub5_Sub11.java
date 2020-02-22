@@ -1,5 +1,9 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 public class Class40_Sub5_Sub11 extends SubNode {
     public static int anInt2618;
     public static int anInt2619;
@@ -31,7 +35,7 @@ public class Class40_Sub5_Sub11 extends SubNode {
 
     public int anInt2633 = 0;
 
-    public static void method631(Class40_Sub5_Sub17_Sub4 arg0, boolean arg1) {
+    public static void method631(Actor arg0, boolean arg1) {
 
         if(arg1 != false)
                 method633(-48);
@@ -70,9 +74,9 @@ public class Class40_Sub5_Sub11 extends SubNode {
     public static void method633(int arg0) {
 
         if(arg0 == -1) {
-                for(int i = 0; i < Class40_Sub5_Sub17_Sub4.anInt3153; i++) {
+            for(int i = 0; i < Actor.anInt3153; i++) {
                     int i_2_ = Class24.anIntArray578[i];
-                    Player class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_2_]);
+                Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_2_]);
                     int i_3_ = Cache.outgoingbuffer.getUnsignedByte();
                     if((i_3_ & 0x2) != 0)
                         i_3_ += (Cache.outgoingbuffer.getUnsignedByte() << 1874166152);
@@ -100,7 +104,7 @@ public class Class40_Sub5_Sub11 extends SubNode {
         if(arg1 != 512)
                 method631(null, true);
             if((arg0 ^ 0xffffffff) == -6)
-                anInt2633 = arg2.readShort();
+                anInt2633 = arg2.getUnsignedShortBE();
             anInt2618++;
 
     }

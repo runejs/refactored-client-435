@@ -1,5 +1,10 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 public class Class40_Sub13 extends Node {
     public static int anInt2169;
     public static int anInt2170;
@@ -259,7 +264,7 @@ public class Class40_Sub13 extends Node {
         anInt2173++;
             Class45 class45 = (Class10.aClass45ArrayArrayArray357[Player.anInt3267][arg2][arg1]);
             if(class45 == null)
-                NPC.aScene_3301.method125(Player.anInt3267, arg2, arg1);
+                Npc.aScene_3301.method125(Player.anInt3267, arg2, arg1);
             else {
                 int i = -99999999;
                 Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3 = null;
@@ -274,7 +279,7 @@ public class Class40_Sub13 extends Node {
                     }
                 }
                 if(class40_sub5_sub17_sub3 == null)
-                    NPC.aScene_3301.method125(Player.anInt3267, arg2, arg1);
+                    Npc.aScene_3301.method125(Player.anInt3267, arg2, arg1);
                 else {
                     if(arg0 != -80)
                         aClass1_2187 = null;
@@ -290,7 +295,7 @@ public class Class40_Sub13 extends Node {
                         }
                     }
                     int i_37_ = 1610612736 + (arg1 << 512988999) + arg2;
-                    NPC.aScene_3301.method139(Player.anInt3267, arg2, arg1, Class37.method430((byte) -126, (Player.anInt3267), 64 + 128 * arg2, 64 + 128 * arg1), class40_sub5_sub17_sub3, i_37_, class40_sub5_sub17_sub3_35_, class40_sub5_sub17_sub3_34_);
+                    Npc.aScene_3301.method139(Player.anInt3267, arg2, arg1, Class37.method430((byte) -126, (Player.anInt3267), 64 + 128 * arg2, 64 + 128 * arg1), class40_sub5_sub17_sub3, i_37_, class40_sub5_sub17_sub3_35_, class40_sub5_sub17_sub3_34_);
                 }
             }
 

@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.actor.Actor;
+
 public class Class40_Sub5_Sub9 extends SubNode {
     public static int anInt2562;
     public static RSString aClass1_2564 = Class58.method978("Welt");
@@ -47,7 +50,7 @@ public class Class40_Sub5_Sub9 extends SubNode {
 
         anInt2580++;
             if(arg1 == 85)
-                Class40_Sub5_Sub17_Sub4.aClass6_3150 = arg0;
+                Actor.aClass6_3150 = arg0;
 
     }
 

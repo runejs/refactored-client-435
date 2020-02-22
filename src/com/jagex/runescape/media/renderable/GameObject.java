@@ -1,4 +1,8 @@
-package com.jagex.runescape;
+package com.jagex.runescape.media.renderable;
+
+import com.jagex.runescape.*;
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.actor.Actor;
 
 import java.awt.*;
 
@@ -74,7 +78,7 @@ public class GameObject extends Renderable {
 
         Class17.anInt460 = 0;
             anInt3023++;
-            Class40_Sub5_Sub17_Sub4.anInt3153 = 0;
+        Actor.anInt3153 = 0;
             Class40_Sub5_Sub17_Sub1.method759(false);
             Class42.method889(48);
             Class13.method245(3799);

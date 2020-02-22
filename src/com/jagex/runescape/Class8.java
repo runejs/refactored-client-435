@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.actor.Npc;
+
 import java.awt.*;
 import java.util.Calendar;
 
@@ -63,7 +66,7 @@ public class Class8 {
     public static void method209(int arg0) {
         for(int i = 0; i < GameObjectDefinition.anInt2558; i++) {
             int i_0_ = Class40_Sub3.anIntArray2016[i];
-            NPC class40_sub5_sub17_sub4_sub2 = Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_];
+            Npc class40_sub5_sub17_sub4_sub2 = Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_];
             if(class40_sub5_sub17_sub4_sub2 != null)
                 Class13.method241(class40_sub5_sub17_sub4_sub2, (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2374), (byte) 107);
         }

@@ -1,5 +1,10 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 public class HashTable {
     public static IndexedColorSprite aClass40_Sub5_Sub14_Sub2_549;
     public static int anInt551;
@@ -131,7 +136,7 @@ public class HashTable {
                     if((Player.anInt3267 == class40_sub5_sub17_sub1.anInt2981) && (Node.anInt926 <= class40_sub5_sub17_sub1.anInt2971)) {
                         if(class40_sub5_sub17_sub1.anInt2974 <= Node.anInt926) {
                             if((class40_sub5_sub17_sub1.anInt2961 ^ 0xffffffff) < -1) {
-                                NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[-1 + (class40_sub5_sub17_sub1.anInt2961)]);
+                                Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[-1 + (class40_sub5_sub17_sub1.anInt2961)]);
                                 if(class40_sub5_sub17_sub4_sub2 != null && (class40_sub5_sub17_sub4_sub2.anInt3098 ^ 0xffffffff) <= -1 && (class40_sub5_sub17_sub4_sub2.anInt3098 < 13312) && (class40_sub5_sub17_sub4_sub2.anInt3089 >= 0) && (class40_sub5_sub17_sub4_sub2.anInt3089 < 13312))
                                     class40_sub5_sub17_sub1.method766(Node.anInt926, arg0 + -61, (class40_sub5_sub17_sub4_sub2.anInt3089), ((Class37.method430((byte) -127, class40_sub5_sub17_sub1.anInt2981, (class40_sub5_sub17_sub4_sub2.anInt3098), (class40_sub5_sub17_sub4_sub2.anInt3089))) - class40_sub5_sub17_sub1.anInt2960), (class40_sub5_sub17_sub4_sub2.anInt3098));
                             }
@@ -139,14 +144,14 @@ public class HashTable {
                                 int i = -1 + -class40_sub5_sub17_sub1.anInt2961;
                                 Player class40_sub5_sub17_sub4_sub1;
                                 if(i != Class30.anInt708)
-                                    class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i]);
+                                    class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i]);
                                 else
                                     class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760);
                                 if(class40_sub5_sub17_sub4_sub1 != null && (class40_sub5_sub17_sub4_sub1.anInt3098 >= 0) && (class40_sub5_sub17_sub4_sub1.anInt3098 < 13312) && (class40_sub5_sub17_sub4_sub1.anInt3089 >= 0) && (class40_sub5_sub17_sub4_sub1.anInt3089 < 13312))
                                     class40_sub5_sub17_sub1.method766(Node.anInt926, 0, (class40_sub5_sub17_sub4_sub1.anInt3089), ((Class37.method430((byte) -127, class40_sub5_sub17_sub1.anInt2981, (class40_sub5_sub17_sub4_sub1.anInt3098), (class40_sub5_sub17_sub4_sub1.anInt3089))) - class40_sub5_sub17_sub1.anInt2960), (class40_sub5_sub17_sub4_sub1.anInt3098));
                             }
                             class40_sub5_sub17_sub1.method765(51, Class5.anInt199);
-                            NPC.aScene_3301.method134(Player.anInt3267, (int) class40_sub5_sub17_sub1.aDouble2980, (int) class40_sub5_sub17_sub1.aDouble2993, (int) class40_sub5_sub17_sub1.aDouble2992, 60, class40_sub5_sub17_sub1, class40_sub5_sub17_sub1.anInt3013, -1, false);
+                            Npc.aScene_3301.method134(Player.anInt3267, (int) class40_sub5_sub17_sub1.aDouble2980, (int) class40_sub5_sub17_sub1.aDouble2993, (int) class40_sub5_sub17_sub1.aDouble2992, 60, class40_sub5_sub17_sub1, class40_sub5_sub17_sub1.anInt3013, -1, false);
                         }
                     } else
                         class40_sub5_sub17_sub1.method457(-1);

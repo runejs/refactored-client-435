@@ -1,5 +1,13 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.util.Signlink;
+
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -108,14 +116,14 @@ public class Class64 implements Runnable {
                 int i_6_ = (i_2_ & 0x1fffcccc) >> 2127666126;
                 if(i != i_2_) {
                     i = i_2_;
-                    if(i_5_ == 2 && (NPC.aScene_3301.method141(Player.anInt3267, i_3_, i_4_, i_2_)) >= 0) {
+                    if(i_5_ == 2 && (Npc.aScene_3301.method141(Player.anInt3267, i_3_, i_4_, i_2_)) >= 0) {
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_6_);
                         if(gameObjectDefinition.childrenIds != null)
                             gameObjectDefinition = gameObjectDefinition.method611(-20);
                         if(gameObjectDefinition == null)
                             continue;
                         if((Class8.anInt301 ^ 0xffffffff) == -2) {
-                            Floor.method558(i_2_, Main.aClass1_1763, i_4_, -501, i_3_, 5, (Class40_Sub5_Sub17_Sub6.method832(106, (new RSString[]{(NPC.aClass1_3295), Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.aClass1_2549}))));
+                            Floor.method558(i_2_, Main.aClass1_1763, i_4_, -501, i_3_, 5, (Class40_Sub5_Sub17_Sub6.method832(106, (new RSString[]{(Npc.aClass1_3295), Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.aClass1_2549}))));
                             Class44.anInt1045++;
                         } else if(Main.anInt1773 != 1) {
                             RSString[] class1s = gameObjectDefinition.aClass1Array2508;
@@ -148,15 +156,15 @@ public class Class64 implements Runnable {
                         }
                     }
                     if(i_5_ == 1) {
-                        NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_6_]);
+                        Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_6_]);
                         if(((class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2374) ^ 0xffffffff) == -2 && ((class40_sub5_sub17_sub4_sub2.anInt3098 & 0x7f) == 64) && ((0x7f & class40_sub5_sub17_sub4_sub2.anInt3089) == 64)) {
                             for(int i_9_ = 0; ((GameObjectDefinition.anInt2558 ^ 0xffffffff) < (i_9_ ^ 0xffffffff)); i_9_++) {
-                                NPC class40_sub5_sub17_sub4_sub2_10_ = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_9_]]);
+                                Npc class40_sub5_sub17_sub4_sub2_10_ = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_9_]]);
                                 if(class40_sub5_sub17_sub4_sub2_10_ != null && (class40_sub5_sub17_sub4_sub2_10_ != class40_sub5_sub17_sub4_sub2) && ((class40_sub5_sub17_sub4_sub2_10_.aClass40_Sub5_Sub5_3300.anInt2374) ^ 0xffffffff) == -2 && ((class40_sub5_sub17_sub4_sub2.anInt3098 ^ 0xffffffff) == ((class40_sub5_sub17_sub4_sub2_10_.anInt3098) ^ 0xffffffff)) && ((class40_sub5_sub17_sub4_sub2_10_.anInt3089) == (class40_sub5_sub17_sub4_sub2.anInt3089)))
                                     Class66.method1025(0, i_3_, i_4_, Class40_Sub3.anIntArray2016[i_9_], (class40_sub5_sub17_sub4_sub2_10_.aClass40_Sub5_Sub5_3300));
                             }
                             for(int i_11_ = 0; i_11_ < Class60.anInt1407; i_11_++) {
-                                Player class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_11_]]);
+                                Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_11_]]);
                                 if(class40_sub5_sub17_sub4_sub1 != null && (class40_sub5_sub17_sub4_sub2.anInt3098 == (class40_sub5_sub17_sub4_sub1.anInt3098)) && ((class40_sub5_sub17_sub4_sub2.anInt3089 ^ 0xffffffff) == ((class40_sub5_sub17_sub4_sub1.anInt3089) ^ 0xffffffff)))
                                     Class40_Sub5_Sub1.method545(i_4_, false, i_3_, class40_sub5_sub17_sub4_sub1, Class57.anIntArray1334[i_11_]);
                             }
@@ -164,15 +172,15 @@ public class Class64 implements Runnable {
                         Class66.method1025(0, i_3_, i_4_, i_6_, (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300));
                     }
                     if(i_5_ == 0) {
-                        Player class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_6_]);
+                        Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_6_]);
                         if((0x7f & class40_sub5_sub17_sub4_sub1.anInt3098 ^ 0xffffffff) == -65 && (0x7f & class40_sub5_sub17_sub4_sub1.anInt3089 ^ 0xffffffff) == -65) {
                             for(int i_12_ = 0; ((i_12_ ^ 0xffffffff) > (GameObjectDefinition.anInt2558 ^ 0xffffffff)); i_12_++) {
-                                NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_12_]]);
+                                Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_12_]]);
                                 if(class40_sub5_sub17_sub4_sub2 != null && ((class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2374) == 1) && ((class40_sub5_sub17_sub4_sub1.anInt3098 ^ 0xffffffff) == ((class40_sub5_sub17_sub4_sub2.anInt3098) ^ 0xffffffff)) && (class40_sub5_sub17_sub4_sub2.anInt3089 == (class40_sub5_sub17_sub4_sub1.anInt3089)))
                                     Class66.method1025(0, i_3_, i_4_, Class40_Sub3.anIntArray2016[i_12_], (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300));
                             }
                             for(int i_13_ = 0; ((i_13_ ^ 0xffffffff) > (Class60.anInt1407 ^ 0xffffffff)); i_13_++) {
-                                Player class40_sub5_sub17_sub4_sub1_14_ = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_13_]]);
+                                Player class40_sub5_sub17_sub4_sub1_14_ = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_13_]]);
                                 if(class40_sub5_sub17_sub4_sub1_14_ != null && (class40_sub5_sub17_sub4_sub1_14_ != class40_sub5_sub17_sub4_sub1) && (((class40_sub5_sub17_sub4_sub1_14_.anInt3098) ^ 0xffffffff) == ((class40_sub5_sub17_sub4_sub1.anInt3098) ^ 0xffffffff)) && (((class40_sub5_sub17_sub4_sub1_14_.anInt3089) ^ 0xffffffff) == ((class40_sub5_sub17_sub4_sub1.anInt3089) ^ 0xffffffff)))
                                     Class40_Sub5_Sub1.method545(i_4_, arg0, i_3_, class40_sub5_sub17_sub4_sub1_14_, Class57.anIntArray1334[i_13_]);
                             }
@@ -186,7 +194,7 @@ public class Class64 implements Runnable {
                                 ItemDefinition class40_sub5_sub16 = (ItemDefinition.forId(class40_sub5_sub17_sub3.anInt3067, 10));
                                 if(Class8.anInt301 == 1) {
                                     Class44.anInt1036++;
-                                    Floor.method558(class40_sub5_sub17_sub3.anInt3067, Main.aClass1_1763, i_4_, -501, i_3_, 47, (Class40_Sub5_Sub17_Sub6.method832(115, (new RSString[]{(NPC.aClass1_3295), Class5.aClass1_206, (class40_sub5_sub16.name)}))));
+                                    Floor.method558(class40_sub5_sub17_sub3.anInt3067, Main.aClass1_1763, i_4_, -501, i_3_, 47, (Class40_Sub5_Sub17_Sub6.method832(115, (new RSString[]{(Npc.aClass1_3295), Class5.aClass1_206, (class40_sub5_sub16.name)}))));
                                 } else if((Main.anInt1773 ^ 0xffffffff) != -2) {
                                     RSString[] class1s = class40_sub5_sub16.groundActions;
                                     Class56.anInt1319++;
@@ -235,11 +243,11 @@ public class Class64 implements Runnable {
                 if(arg0 != -656)
                     aClass1_1524 = null;
                 Landscape.anInt1166 = Cache.anInt322;
-                Class62.anInt1470 = Class40_Sub5_Sub17_Sub4.anInt3143;
+            Class62.anInt1470 = Actor.anInt3143;
                 Class57.anInt1338 = Class55.anInt1295;
                 RSString.anInt1668 = Class40_Sub5_Sub11.anInt2625;
                 GameObjectDefinition.aLong2561 = Floor.aLong2344;
-                Class40_Sub5_Sub17_Sub4.anInt3143 = 0;
+            Actor.anInt3143 = 0;
             }
             anInt1527++;
 

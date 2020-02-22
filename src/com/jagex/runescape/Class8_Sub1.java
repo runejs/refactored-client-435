@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.util.Signlink;
+
 public abstract class Class8_Sub1 extends Class8 implements Runnable {
     public static int[] anIntArray1829 = new int[256];
     public boolean aBoolean1820;

@@ -1,5 +1,11 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     public static int anInt3232;
     public static int anInt3234;
@@ -94,7 +100,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                     class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760);
                 } else {
                     i_1_ = Class57.anIntArray1334[i_0_] << -377206898;
-                    class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_0_]]);
+                    class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_0_]]);
                 }
                 if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.method784(1)) {
                     class40_sub5_sub17_sub4_sub1.aBoolean3287 = false;
@@ -106,7 +112,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                         if((class40_sub5_sub17_sub4_sub1.aClass40_Sub5_Sub17_Sub5_3265) != null && ((class40_sub5_sub17_sub4_sub1.anInt3283 ^ 0xffffffff) >= (Node.anInt926 ^ 0xffffffff)) && (Node.anInt926 < class40_sub5_sub17_sub4_sub1.anInt3274)) {
                             class40_sub5_sub17_sub4_sub1.aBoolean3287 = false;
                             class40_sub5_sub17_sub4_sub1.anInt3276 = (Class37.method430((byte) -117, Player.anInt3267, class40_sub5_sub17_sub4_sub1.anInt3098, class40_sub5_sub17_sub4_sub1.anInt3089));
-                            NPC.aScene_3301.method112(Player.anInt3267, class40_sub5_sub17_sub4_sub1.anInt3098, class40_sub5_sub17_sub4_sub1.anInt3089, class40_sub5_sub17_sub4_sub1.anInt3276, 60, class40_sub5_sub17_sub4_sub1, class40_sub5_sub17_sub4_sub1.anInt3118, i_1_, class40_sub5_sub17_sub4_sub1.anInt3258, class40_sub5_sub17_sub4_sub1.anInt3281, class40_sub5_sub17_sub4_sub1.anInt3262, class40_sub5_sub17_sub4_sub1.anInt3289);
+                            Npc.aScene_3301.method112(Player.anInt3267, class40_sub5_sub17_sub4_sub1.anInt3098, class40_sub5_sub17_sub4_sub1.anInt3089, class40_sub5_sub17_sub4_sub1.anInt3276, 60, class40_sub5_sub17_sub4_sub1, class40_sub5_sub17_sub4_sub1.anInt3118, i_1_, class40_sub5_sub17_sub4_sub1.anInt3258, class40_sub5_sub17_sub4_sub1.anInt3281, class40_sub5_sub17_sub4_sub1.anInt3262, class40_sub5_sub17_sub4_sub1.anInt3289);
                         } else {
                             if((0x7f & class40_sub5_sub17_sub4_sub1.anInt3098 ^ 0xffffffff) == -65 && ((class40_sub5_sub17_sub4_sub1.anInt3089 & 0x7f) ^ 0xffffffff) == -65) {
                                 if(Class40_Sub5_Sub11.anInt2628 == Class61.anIntArrayArray1435[i_2_][i_3_])
@@ -114,7 +120,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                                 Class61.anIntArrayArray1435[i_2_][i_3_] = Class40_Sub5_Sub11.anInt2628;
                             }
                             class40_sub5_sub17_sub4_sub1.anInt3276 = (Class37.method430((byte) -120, Player.anInt3267, class40_sub5_sub17_sub4_sub1.anInt3098, class40_sub5_sub17_sub4_sub1.anInt3089));
-                            NPC.aScene_3301.method134(Player.anInt3267, class40_sub5_sub17_sub4_sub1.anInt3098, class40_sub5_sub17_sub4_sub1.anInt3089, class40_sub5_sub17_sub4_sub1.anInt3276, 60, class40_sub5_sub17_sub4_sub1, class40_sub5_sub17_sub4_sub1.anInt3118, i_1_, class40_sub5_sub17_sub4_sub1.aBoolean3105);
+                            Npc.aScene_3301.method134(Player.anInt3267, class40_sub5_sub17_sub4_sub1.anInt3098, class40_sub5_sub17_sub4_sub1.anInt3089, class40_sub5_sub17_sub4_sub1.anInt3276, 60, class40_sub5_sub17_sub4_sub1, class40_sub5_sub17_sub4_sub1.anInt3118, i_1_, class40_sub5_sub17_sub4_sub1.aBoolean3105);
                         }
                     }
                 }

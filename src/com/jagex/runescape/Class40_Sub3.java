@@ -1,5 +1,11 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+
 public class Class40_Sub3 extends Node {
     public static RSString aClass1_2015;
     public static int[] anIntArray2016 = new int[32768];
@@ -49,7 +55,7 @@ public class Class40_Sub3 extends Node {
     public static void method530(int arg0) {
         anInt2029++;
         if(Class40_Sub5_Sub6.anInt2451 == 0) {
-            NPC.aScene_3301 = new Scene(4, 104, 104, Class40_Sub6.tile_height);
+            Npc.aScene_3301 = new Scene(4, 104, 104, Class40_Sub6.tile_height);
             for(int i = 0; (i ^ 0xffffffff) > -5; i++)
                 Landscape.aCollisionMapArray1167[i] = new CollisionMap(104, 104);
             Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765 = new DirectColorSprite(512, 512);
@@ -73,7 +79,7 @@ public class Class40_Sub3 extends Node {
             Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000 = Class54.method957(1, true, false, (byte) 125, true);
             Class40_Sub5_Sub10.aClass6_Sub1_2609 = Class54.method957(2, true, true, (byte) 119, false);
             Class65.aClass6_Sub1_1533 = Class54.method957(3, true, false, (byte) 119, true);
-            Class40_Sub5_Sub17_Sub4.aClass6_Sub1_3157 = Class54.method957(4, true, false, (byte) 119, true);
+            Actor.aClass6_Sub1_3157 = Class54.method957(4, true, false, (byte) 119, true);
             Renderable.aClass6_Sub1_2857 = Class54.method957(5, true, true, (byte) 123, true);
             Class55.aClass6_Sub1_1286 = Class54.method957(6, false, true, (byte) 117, true);
             Class40_Sub5_Sub9.aClass6_Sub1_2571 = Class54.method957(7, true, false, (byte) 124, true);
@@ -91,7 +97,7 @@ public class Class40_Sub3 extends Node {
             i += (5 * Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000.method197(100) / 100);
             i += 5 * Class40_Sub5_Sub10.aClass6_Sub1_2609.method197(100) / 100;
             i += 5 * Class65.aClass6_Sub1_1533.method197(100) / 100;
-            i += (5 * Class40_Sub5_Sub17_Sub4.aClass6_Sub1_3157.method197(100) / 100);
+            i += (5 * Actor.aClass6_Sub1_3157.method197(100) / 100);
             i += (5 * Renderable.aClass6_Sub1_2857.method197(arg0) / 100);
             i += Class55.aClass6_Sub1_1286.method197(100) * 5 / 100;
             i += 40 * Class40_Sub5_Sub9.aClass6_Sub1_2571.method197(100) / 100;
@@ -265,7 +271,7 @@ public class Class40_Sub3 extends Node {
                 R3D.method711(0.8);
                 Class40_Sub5_Sub6.anInt2451 = 110;
                 Class67.anInt1607 = 90;
-                Class22_Sub2.currentLoadingText = Class40_Sub5_Sub17_Sub4.aClass1_3124;
+                Class22_Sub2.currentLoadingText = Actor.aClass1_3124;
             }
         } else if((Class40_Sub5_Sub6.anInt2451 ^ 0xffffffff) == -111) {
             Class12.aClass39_387 = new Class39();
@@ -310,7 +316,7 @@ public class Class40_Sub3 extends Node {
             anInt2022++;
             if(class40_sub5_sub9 != null)
                 return class40_sub5_sub9;
-            byte[] is = Class40_Sub5_Sub17_Sub4.aClass6_3150.method172(arg1, 127, 1);
+        byte[] is = Actor.aClass6_3150.method172(arg1, 127, 1);
             class40_sub5_sub9 = new Class40_Sub5_Sub9();
             if(is != null)
                 class40_sub5_sub9.method618((byte) 127, arg1, new Buffer(is));

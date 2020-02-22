@@ -1,5 +1,9 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.util.Signlink;
+
 public class ISAAC {
     public static int anInt499;
     public static int anInt500;
@@ -73,16 +77,16 @@ public class ISAAC {
                 }
             }
             Class40_Sub5_Sub15.anInt2791 += (int) (5.0 * Math.random()) + -2;
-            Class40_Sub5_Sub17_Sub4.anInt3151 += -2 + (int) (5.0 * Math.random());
+        Actor.anInt3151 += -2 + (int) (5.0 * Math.random());
             anInt504++;
             if((Class40_Sub5_Sub15.anInt2791 ^ 0xffffffff) > 7)
                 Class40_Sub5_Sub15.anInt2791 = -8;
             if(Class40_Sub5_Sub15.anInt2791 > 8)
                 Class40_Sub5_Sub15.anInt2791 = 8;
-            if((Class40_Sub5_Sub17_Sub4.anInt3151 ^ 0xffffffff) > 15)
-                Class40_Sub5_Sub17_Sub4.anInt3151 = -16;
-            if((Class40_Sub5_Sub17_Sub4.anInt3151 ^ 0xffffffff) < -17)
-                Class40_Sub5_Sub17_Sub4.anInt3151 = 16;
+        if((Actor.anInt3151 ^ 0xffffffff) > 15)
+            Actor.anInt3151 = -16;
+        if((Actor.anInt3151 ^ 0xffffffff) < -17)
+            Actor.anInt3151 = 16;
             for(int i = 0; i < 4; i++) {
                 byte[][] is = Class19.aByteArrayArrayArray492[i];
                 int i_3_ = (int) Math.sqrt(5100.0);
@@ -178,7 +182,7 @@ public class ISAAC {
                                         int i_43_ = i_23_ / i_25_;
                                         int i_44_ = i_24_ / i_25_;
                                         i_39_ = Class13.method244(i_43_, i_44_, arg1 + -27260, i_42_);
-                                        i_44_ += (Class40_Sub5_Sub17_Sub4.anInt3151);
+                                        i_44_ += (Actor.anInt3151);
                                         i_42_ = i_42_ + (Class40_Sub5_Sub15.anInt2791) & 0xff;
                                         if(i_44_ >= 0) {
                                             if(i_44_ > 255)
@@ -191,7 +195,7 @@ public class ISAAC {
                                         boolean bool = true;
                                         if(i_30_ == 0 && ((Floor.aByteArrayArrayArray2335[i][i_16_][i_27_]) ^ 0xffffffff) != -1)
                                             bool = false;
-                                        if(i_31_ > 0 && !(NPC.loadFloor(-1 + i_31_, arg1 + -27320).aBoolean2338))
+                                        if(i_31_ > 0 && !(Npc.loadFloor(-1 + i_31_, arg1 + -27320).aBoolean2338))
                                             bool = false;
                                         if(bool && ((i_33_ ^ 0xffffffff) == (i_32_ ^ 0xffffffff)) && i_34_ == i_32_ && ((i_35_ ^ 0xffffffff) == (i_32_ ^ 0xffffffff)))
                                             Class6.anIntArrayArrayArray262[i][i_16_][i_27_] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[i][i_16_][i_27_]), 2340));
@@ -202,7 +206,7 @@ public class ISAAC {
                                     if(i_31_ != 0) {
                                         int i_46_ = 1 + (Floor.aByteArrayArrayArray2335[i][i_16_][i_27_]);
                                         byte i_47_ = (Class35.aByteArrayArrayArray1745[i][i_16_][i_27_]);
-                                        Floor class40_sub5_sub3 = NPC.loadFloor(-1 + i_31_, 4);
+                                        Floor class40_sub5_sub3 = Npc.loadFloor(-1 + i_31_, 4);
                                         int i_48_ = class40_sub5_sub3.anInt2322;
                                         int i_49_;
                                         int i_50_;
@@ -212,7 +216,7 @@ public class ISAAC {
                                         } else if(class40_sub5_sub3.anInt2345 != 16711935) {
                                             i_49_ = (Class13.method244((class40_sub5_sub3.anInt2337), (class40_sub5_sub3.anInt2320), -120, (class40_sub5_sub3.anInt2332)));
                                             int i_51_ = (Class40_Sub5_Sub15.anInt2791 + (class40_sub5_sub3.anInt2332)) & 0xff;
-                                            int i_52_ = ((Class40_Sub5_Sub17_Sub4.anInt3151) + (class40_sub5_sub3.anInt2320));
+                                            int i_52_ = ((Actor.anInt3151) + (class40_sub5_sub3.anInt2320));
                                             if((i_52_ ^ 0xffffffff) > -1)
                                                 i_52_ = 0;
                                             else if((i_52_ ^ 0xffffffff) < -256)
@@ -228,7 +232,7 @@ public class ISAAC {
                                             i_53_ = (R3D.anIntArray2932[Class34.method420(i_50_, 96, true)]);
                                         if(class40_sub5_sub3.anInt2336 != -1) {
                                             int i_54_ = 0xff & ((Class40_Sub5_Sub15.anInt2791) + (class40_sub5_sub3.anInt2334));
-                                            int i_55_ = (class40_sub5_sub3.anInt2330 + (Class40_Sub5_Sub17_Sub4.anInt3151));
+                                            int i_55_ = (class40_sub5_sub3.anInt2330 + (Actor.anInt3151));
                                             if((i_55_ ^ 0xffffffff) <= -1) {
                                                 if(i_55_ > 255)
                                                     i_55_ = 255;

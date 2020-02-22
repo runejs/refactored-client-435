@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.util.Signlink;
+
 public class Class39 implements Runnable {
     public static RSString aClass1_898 = Class58.method978(" steht bereits auf Ihrer Freunde)2Liste(Q");
     public static RSString aClass1_899 = Class58.method978("Benutzen Sie bitte eine andere Welt)3");
@@ -54,17 +57,17 @@ public class Class39 implements Runnable {
             int i_0_ = -1;
             int i_1_ = 0;
             if(arg0.anInt2027 == 0)
-                i = (NPC.aScene_3301.method122(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
+                i = (Npc.aScene_3301.method122(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
             int i_2_ = 0;
             if((arg0.anInt2027 ^ 0xffffffff) == -2)
-                i = (NPC.aScene_3301.method91(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
+                i = (Npc.aScene_3301.method91(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
             if(arg0.anInt2027 == 2)
-                i = (NPC.aScene_3301.method110(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
+                i = (Npc.aScene_3301.method110(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
             if(arg0.anInt2027 == 3)
-                i = (NPC.aScene_3301.method93(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
+                i = (Npc.aScene_3301.method93(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
             if(arg1 == 19813) {
                 if((i ^ 0xffffffff) != -1) {
-                    int i_3_ = (NPC.aScene_3301.method141(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038, i));
+                    int i_3_ = (Npc.aScene_3301.method141(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038, i));
                     i_0_ = (0x1fffe692 & i) >> 1746750286;
                     i_2_ = (i_3_ & 0xde) >> 114415910;
                     i_1_ = i_3_ & 0x1f;

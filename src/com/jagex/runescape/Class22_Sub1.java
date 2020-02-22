@@ -1,5 +1,11 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.util.Signlink;
+
 import java.awt.*;
 
 public class Class22_Sub1 extends Class22 {
@@ -146,7 +152,7 @@ public class Class22_Sub1 extends Class22 {
                     i_6_ = 2047;
                 else
                     i_6_ = Class57.anIntArray1334[i];
-                Player class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_6_]);
+                Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_6_]);
                 if(class40_sub5_sub17_sub4_sub1 != null && ((class40_sub5_sub17_sub4_sub1.anInt3078 ^ 0xffffffff) < -1)) {
                     class40_sub5_sub17_sub4_sub1.anInt3078--;
                     if((class40_sub5_sub17_sub4_sub1.anInt3078 ^ 0xffffffff) == -1)
@@ -156,7 +162,7 @@ public class Class22_Sub1 extends Class22 {
             int i = 18 % ((-46 - arg0) / 58);
             for(int i_7_ = 0; i_7_ < GameObjectDefinition.anInt2558; i_7_++) {
                 int i_8_ = Class40_Sub3.anIntArray2016[i_7_];
-                NPC class40_sub5_sub17_sub4_sub2 = Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_8_];
+                Npc class40_sub5_sub17_sub4_sub2 = Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_8_];
                 if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.anInt3078 > 0) {
                     class40_sub5_sub17_sub4_sub2.anInt3078--;
                     if((class40_sub5_sub17_sub4_sub2.anInt3078 ^ 0xffffffff) == -1)

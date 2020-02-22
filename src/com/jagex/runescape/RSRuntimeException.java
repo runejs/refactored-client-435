@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.GameObject;
+
 import java.awt.*;
 
 public class RSRuntimeException extends RuntimeException {

@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 public class Class29 {
     public static int anInt669;
     public static RSString aClass1_670 = Class58.method978("@or3@");
@@ -59,7 +62,7 @@ public class Class29 {
                 method370(45);
             for(int i_1_ = 0; (i ^ 0xffffffff) < (i_1_ ^ 0xffffffff); i_1_++) {
                 int i_2_ = Class57.anIntArray1334[i_1_];
-                Player class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_2_]);
+                Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_2_]);
                 int i_3_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
                 if(i_3_ == 0) {
                     Class57.anIntArray1334[Class60.anInt1407++] = i_2_;
@@ -69,7 +72,7 @@ public class Class29 {
                     if((i_4_ ^ 0xffffffff) == -1) {
                         Class57.anIntArray1334[Class60.anInt1407++] = i_2_;
                         class40_sub5_sub17_sub4_sub1.anInt3134 = Node.anInt926;
-                        Class24.anIntArray578[Class40_Sub5_Sub17_Sub4.anInt3153++] = i_2_;
+                        Class24.anIntArray578[Actor.anInt3153++] = i_2_;
                     } else if((i_4_ ^ 0xffffffff) == -2) {
                         Class57.anIntArray1334[Class60.anInt1407++] = i_2_;
                         class40_sub5_sub17_sub4_sub1.anInt3134 = Node.anInt926;
@@ -77,7 +80,7 @@ public class Class29 {
                         class40_sub5_sub17_sub4_sub1.method782(i_5_, (byte) -96, false);
                         int i_6_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
                         if(i_6_ == 1)
-                            Class24.anIntArray578[Class40_Sub5_Sub17_Sub4.anInt3153++] = i_2_;
+                            Class24.anIntArray578[Actor.anInt3153++] = i_2_;
                     } else if(i_4_ == 2) {
                         Class57.anIntArray1334[Class60.anInt1407++] = i_2_;
                         class40_sub5_sub17_sub4_sub1.anInt3134 = Node.anInt926;
@@ -87,7 +90,7 @@ public class Class29 {
                         class40_sub5_sub17_sub4_sub1.method782(i_8_, (byte) -96, true);
                         int i_9_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
                         if(i_9_ == 1)
-                            Class24.anIntArray578[Class40_Sub5_Sub17_Sub4.anInt3153++] = i_2_;
+                            Class24.anIntArray578[Actor.anInt3153++] = i_2_;
                     } else if((i_4_ ^ 0xffffffff) == -4)
                         Class6.anIntArray225[Class17.anInt460++] = i_2_;
                 }

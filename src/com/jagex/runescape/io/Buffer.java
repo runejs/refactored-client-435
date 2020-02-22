@@ -1,4 +1,6 @@
-package com.jagex.runescape;
+package com.jagex.runescape.io;
+
+import com.jagex.runescape.*;
 
 import java.math.BigInteger;
 
@@ -85,7 +87,7 @@ public class Buffer extends Node {
 
     public int method461(byte arg0) {
         if(arg0 < 56) {
-            method482((byte) -114);
+            getSignedSmart();
         }
         currentPosition += 2;
         return ((buffer[-2 + currentPosition] << 8 & 0xff00) + (0xff & buffer[currentPosition + -1] - 128));
@@ -153,7 +155,7 @@ public class Buffer extends Node {
         return 0xff & buffer[currentPosition++];
     }
 
-    public int readShort() {
+    public int getUnsignedShortBE() {
         currentPosition += 2;
         return (((0xff & buffer[currentPosition + -2]) << 8) + (buffer[currentPosition + -1] & 0xff));
     }
@@ -246,11 +248,10 @@ public class Buffer extends Node {
         buffer[currentPosition++] = (byte) (int) arg0;
     }
 
-    public int method482(byte arg0) {
-        int i = buffer[currentPosition] & 0xff;
-        int i_2_ = -86 % ((-29 - arg0) / 63);
-        if(i >= 128) {
-            return -49152 + readShort();
+    public int getSignedSmart() {
+        int peek = buffer[currentPosition] & 0xff;
+        if(peek >= 128) {
+            return -49152 + getUnsignedShortBE();
         }
         return getUnsignedByte() + -64;
     }
@@ -414,7 +415,7 @@ public class Buffer extends Node {
         int i = buffer[currentPosition] & 0xff;
         int i_12_ = 100 / ((arg0 + 39) / 32);
         if((i ^ 0xffffffff) <= -129) {
-            return readShort() + -32768;
+            return getUnsignedShortBE() + -32768;
         }
         return getUnsignedByte();
     }

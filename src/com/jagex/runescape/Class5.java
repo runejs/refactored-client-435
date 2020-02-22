@@ -1,5 +1,10 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 import java.awt.*;
 
 public class Class5 {
@@ -291,13 +296,13 @@ public class Class5 {
             anInt190++;
             Class61.aBoolean1444 = false;
         if(arg2 >= arg6 && arg2 < arg6 + 16 && arg1 >= arg8 && 16 + arg8 > arg1) {
-                arg5.anInt2731 -= NPC.anInt3294 * 4;
+            arg5.anInt2731 -= Npc.anInt3294 * 4;
                 if(arg7 == 1)
                     ISAAC.aBoolean505 = true;
                 if(arg7 == 2 || (arg7 ^ 0xffffffff) == -4)
                     Class52.aBoolean1221 = true;
         } else if(arg6 > arg2 || (arg6 + 16 ^ 0xffffffff) >= (arg2 ^ 0xffffffff) || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
-                if(-Landscape.anInt1171 + arg6 <= arg2 && (arg2 ^ 0xffffffff) > (16 + (arg6 + Landscape.anInt1171) ^ 0xffffffff) && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && NPC.anInt3294 > 0) {
+            if(-Landscape.anInt1171 + arg6 <= arg2 && (arg2 ^ 0xffffffff) > (16 + (arg6 + Landscape.anInt1171) ^ 0xffffffff) && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && Npc.anInt3294 > 0) {
                     Class61.aBoolean1444 = true;
                     int i = (-32 + arg0) * arg0 / arg3;
                     if(arg7 == 2 || (arg7 ^ 0xffffffff) == -4)
@@ -311,7 +316,7 @@ public class Class5 {
                     arg5.anInt2731 = (arg3 + -arg0) * i_18_ / i_17_;
                 }
             } else {
-                arg5.anInt2731 += 4 * NPC.anInt3294;
+            arg5.anInt2731 += 4 * Npc.anInt3294;
                 if(arg7 == 2 || (arg7 ^ 0xffffffff) == -4)
                     Class52.aBoolean1221 = true;
                 if(arg7 == 1)

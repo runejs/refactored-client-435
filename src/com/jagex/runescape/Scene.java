@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.media.renderable.Renderable;
+
 public class Scene {
     public static int anInt76;
     public static int anInt77;
@@ -1342,11 +1345,11 @@ public class Scene {
         }
         if(i >= 3 && arg5) {
             for(int i_170_ = 0; i_170_ < arg0.triangleCount; i_170_++) {
-                if(anIntArray127[arg0.anIntArray3182[i_170_]] == anInt126 && anIntArray127[arg0.anIntArray3196[i_170_]] == anInt126 && anIntArray127[arg0.anIntArray3165[i_170_]] == anInt126)
+                if(anIntArray127[arg0.trianglePointsX[i_170_]] == anInt126 && anIntArray127[arg0.trianglePointsY[i_170_]] == anInt126 && anIntArray127[arg0.trianglePointsZ[i_170_]] == anInt126)
                     arg0.triangleDrawType[i_170_] = -1;
             }
             for(int i_171_ = 0; i_171_ < arg1.triangleCount; i_171_++) {
-                if(anIntArray123[arg1.anIntArray3182[i_171_]] == anInt126 && anIntArray123[arg1.anIntArray3196[i_171_]] == anInt126 && anIntArray123[arg1.anIntArray3165[i_171_]] == anInt126)
+                if(anIntArray123[arg1.trianglePointsX[i_171_]] == anInt126 && anIntArray123[arg1.trianglePointsY[i_171_]] == anInt126 && anIntArray123[arg1.trianglePointsZ[i_171_]] == anInt126)
                     arg1.triangleDrawType[i_171_] = -1;
             }
         }

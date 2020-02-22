@@ -1,5 +1,10 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 import java.awt.*;
 
 public class Class17 {
@@ -138,7 +143,7 @@ public class Class17 {
                     i_0_ = 2047;
                 else
                     i_0_ = Class57.anIntArray1334[i];
-                Player class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_]);
+                Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_]);
                 if(class40_sub5_sub17_sub4_sub1 != null)
                     Class13.method241(class40_sub5_sub17_sub4_sub1, 1, (byte) 107);
             }

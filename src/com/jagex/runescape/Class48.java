@@ -1,5 +1,10 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+
 public class Class48 {
     public static RSString aClass1_1122;
     public static RSString aClass1_1123;
@@ -178,7 +183,7 @@ public class Class48 {
                             }
                             if(((class40_sub5_sub12.anInt2714 ^ 0xffffffff) == -5) && arg8 >= i_2_ && i_1_ <= arg4 && arg8 < class40_sub5_sub12.anInt2692 + i_2_ && (class40_sub5_sub12.anInt2643 + i_1_ ^ 0xffffffff) < (arg4 ^ 0xffffffff)) {
                                 Floor.method558(0, class40_sub5_sub12.aClass1_2676, class40_sub5_sub12.anInt2689, -501, 0, 23, Class66.aClass1_1567);
-                                Class40_Sub5_Sub17_Sub4.anInt3128++;
+                                Actor.anInt3128++;
                             }
                             if(class40_sub5_sub12.anInt2714 == 5 && (i_2_ ^ 0xffffffff) >= (arg8 ^ 0xffffffff) && i_1_ <= arg4 && arg8 < i_2_ + class40_sub5_sub12.anInt2692 && (i_1_ + class40_sub5_sub12.anInt2643 ^ 0xffffffff) < (arg4 ^ 0xffffffff)) {
                                 Class10.anInt345++;
@@ -255,7 +260,7 @@ public class Class48 {
                                                         if(class1s != null) {
                                                             for(int i_13_ = 4; i_13_ >= 0; i_13_--) {
                                                                 if((class1s[i_13_]) != null) {
-                                                                    Class40_Sub5_Sub17_Sub4.anInt3146++;
+                                                                    Actor.anInt3146++;
                                                                     int i_14_ = 0;
                                                                     if((i_13_ ^ 0xffffffff) == -1)
                                                                         i_14_ = 53;
@@ -274,7 +279,7 @@ public class Class48 {
                                                         Floor.method558((class40_sub5_sub16.anInt2852), (Class40_Sub5_Sub15.aClass1_2774), (class40_sub5_sub12.anInt2689), -501, i_4_, 1006, (Class40_Sub5_Sub17_Sub6.method832(118, (new RSString[]{(VertexNormal.aClass1_1114), (class40_sub5_sub16.name)}))));
                                                     }
                                                 } else if((((class40_sub5_sub12.anInt2689) ^ 0xffffffff) != ((ISAAC.anInt525) ^ 0xffffffff)) || (((Class45.anInt1061) ^ 0xffffffff) != (i_4_ ^ 0xffffffff))) {
-                                                    Floor.method558((class40_sub5_sub16.anInt2852), Main.aClass1_1763, (class40_sub5_sub12.anInt2689), -501, i_4_, 56, (Class40_Sub5_Sub17_Sub6.method832(arg5 ^ 0x53, (new RSString[]{(NPC.aClass1_3295), (Class5.aClass1_206), (class40_sub5_sub16.name)}))));
+                                                    Floor.method558((class40_sub5_sub16.anInt2852), Main.aClass1_1763, (class40_sub5_sub12.anInt2689), -501, i_4_, 56, (Class40_Sub5_Sub17_Sub6.method832(arg5 ^ 0x53, (new RSString[]{(Npc.aClass1_3295), (Class5.aClass1_206), (class40_sub5_sub16.name)}))));
                                                     Class37.anInt863++;
                                                 }
                                             }
@@ -349,7 +354,7 @@ public class Class48 {
                 Class40_Sub6.aClass64_2098 = null;
             }
             RSCanvas.method46(0);
-            NPC.aScene_3301.method98();
+        Npc.aScene_3301.method98();
             int i = 0;
             if(arg0 != -7225)
                 aClass40_Sub1_1132 = null;

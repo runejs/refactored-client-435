@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 public class Class59 {
     public static int anInt1380;
     public static int anInt1381;

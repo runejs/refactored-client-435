@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.actor.Player;
+
 import java.awt.event.KeyEvent;
 
 public class Class51 {

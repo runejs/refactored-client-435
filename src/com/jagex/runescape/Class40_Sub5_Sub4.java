@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 public class Class40_Sub5_Sub4 extends SubNode {
     public static Class6 aClass6_2349;
     public static Class68 aClass68_2350;
@@ -119,7 +122,7 @@ public class Class40_Sub5_Sub4 extends SubNode {
     public void method563(Buffer arg0, int arg1, int arg2) {
         anInt2360++;
         if((arg2 ^ 0xffffffff) == -2) {
-            anInt2358 = arg0.readShort();
+            anInt2358 = arg0.getUnsignedShortBE();
             anInt2368 = arg0.getUnsignedByte();
             anInt2370 = arg0.getUnsignedByte();
         }

@@ -1,5 +1,9 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.media.renderable.actor.Actor;
+
 public class Class30 {
     public static int[] anIntArray680;
     public static int anInt681;
@@ -87,7 +91,7 @@ public class Class30 {
 
     }
 
-    public static void method381(int arg0, Class40_Sub5_Sub17_Sub4 arg1) {
+    public static void method381(int arg0, Actor arg1) {
 
         if(arg0 != 22378)
                 method376(90);

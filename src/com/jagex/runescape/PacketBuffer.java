@@ -3,6 +3,7 @@ package com.jagex.runescape;
 import java.math.BigInteger;
 
 import com.jagex.runescape.audio.Effect;
+import com.jagex.runescape.io.Buffer;
 
 public class PacketBuffer extends Buffer {
     public static int anInt2230;

@@ -1,5 +1,12 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 import java.awt.*;
 
 public class Class53 {
@@ -58,7 +65,7 @@ public class Class53 {
             int i_2_ = Cache.outgoingbuffer.method476(255);
             int i_3_ = i_2_ >> -652194334;
             int i_4_ = 0x3 & i_2_;
-            int i_5_ = NPC.anIntArray3304[i_3_];
+            int i_5_ = Npc.anIntArray3304[i_3_];
             int i_6_ = Cache.outgoingbuffer.method504(false);
             if(i_1_ >= 0 && (i_0_ ^ 0xffffffff) <= -1 && (i_1_ ^ 0xffffffff) > -104 && (i_0_ ^ 0xffffffff) > -104) {
                 int i_7_ = (Class40_Sub6.tile_height[Player.anInt3267][i_1_][i_0_]);
@@ -66,7 +73,7 @@ public class Class53 {
                 int i_9_ = (Class40_Sub6.tile_height[Player.anInt3267][1 + i_1_][1 + i_0_]);
                 int i_10_ = (Class40_Sub6.tile_height[Player.anInt3267][i_1_][i_0_ + 1]);
                 if(i_5_ == 0) {
-                    Class10 class10 = (NPC.aScene_3301.method126(Player.anInt3267, i_1_, i_0_));
+                    Class10 class10 = (Npc.aScene_3301.method126(Player.anInt3267, i_1_, i_0_));
                     if(class10 != null) {
                         int i_11_ = 0x7fff & class10.anInt336 >> -1209540466;
                         if((i_3_ ^ 0xffffffff) == -3) {
@@ -77,19 +84,19 @@ public class Class53 {
                     }
                 }
                 if((i_5_ ^ 0xffffffff) == -2) {
-                    Class53 class53 = (NPC.aScene_3301.method100(Player.anInt3267, i_1_, i_0_));
+                    Class53 class53 = (Npc.aScene_3301.method100(Player.anInt3267, i_1_, i_0_));
                     if(class53 != null)
                         class53.aRenderable_1249 = (new GameObject((0x1fffe268 & class53.anInt1262) >> 1659488974, 4, 0, i_7_, i_8_, i_9_, i_10_, i_6_, false));
                 }
                 if((i_5_ ^ 0xffffffff) == -3) {
-                    Class19 class19 = (NPC.aScene_3301.method107(Player.anInt3267, i_1_, i_0_));
+                    Class19 class19 = (Npc.aScene_3301.method107(Player.anInt3267, i_1_, i_0_));
                     if(i_3_ == 11)
                         i_3_ = 10;
                     if(class19 != null)
                         class19.aRenderable_474 = new GameObject(((class19.anInt469 >> 1500845102) & 0x7fff), i_3_, i_4_, i_7_, i_8_, i_9_, i_10_, i_6_, false);
                 }
                 if(i_5_ == 3) {
-                    FloorDecoration floorDecoration = (NPC.aScene_3301.getFloorDecoration(Player.anInt3267, i_1_, i_0_));
+                    FloorDecoration floorDecoration = (Npc.aScene_3301.getFloorDecoration(Player.anInt3267, i_1_, i_0_));
                     if(floorDecoration != null)
                         floorDecoration.renderable = new GameObject((0x7fff & (floorDecoration.hash >> 379531822)), 22, i_4_, i_7_, i_8_, i_9_, i_10_, i_6_, false);
                 }
@@ -98,8 +105,8 @@ public class Class53 {
             int i = Cache.outgoingbuffer.method471((byte) 124);
             int i_12_ = i & 0x3;
             int i_13_ = i >> -236247198;
-            int i_14_ = NPC.anIntArray3304[i_13_];
-            int i_15_ = Cache.outgoingbuffer.readShort();
+            int i_14_ = Npc.anIntArray3304[i_13_];
+            int i_15_ = Cache.outgoingbuffer.getUnsignedShortBE();
             int i_16_ = Cache.outgoingbuffer.method476(255);
             int i_17_ = (0x7 & i_16_) + Floor.anInt2318;
             int i_18_ = Class40_Sub6.anInt2119 + ((i_16_ & 0x75) >> -1606893820);
@@ -110,7 +117,7 @@ public class Class53 {
                 int i = Cache.outgoingbuffer.getUnsignedByte();
                 int i_19_ = (i & 0x7) + Floor.anInt2318;
                 int i_20_ = (0x7 & i >> -1724498300) + Class40_Sub6.anInt2119;
-                int i_21_ = Cache.outgoingbuffer.readShort();
+                int i_21_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 int i_22_ = Cache.outgoingbuffer.getUnsignedByte();
                 int i_23_ = i_22_ >> 1586546372 & 0xf;
                 int i_24_ = 0x7 & i_22_;
@@ -131,9 +138,9 @@ public class Class53 {
                 int i = Cache.outgoingbuffer.getUnsignedByte();
                 int i_27_ = ((0x78 & i) >> -680156572) + Class40_Sub6.anInt2119;
                 int i_28_ = Floor.anInt2318 + (0x7 & i);
-                int i_29_ = Cache.outgoingbuffer.readShort();
+                int i_29_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 int i_30_ = Cache.outgoingbuffer.getUnsignedByte();
-                int i_31_ = Cache.outgoingbuffer.readShort();
+                int i_31_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 if((i_27_ ^ 0xffffffff) <= -1 && (i_28_ ^ 0xffffffff) <= -1 && (i_27_ ^ 0xffffffff) > -105 && i_28_ < 104) {
                     i_28_ = 128 * i_28_ + 64;
                     i_27_ = i_27_ * 128 + 64;
@@ -144,9 +151,9 @@ public class Class53 {
                 int i = Cache.outgoingbuffer.getUnsignedByte();
                 int i_32_ = Class40_Sub6.anInt2119 + ((0x75 & i) >> 1144596612);
                 int i_33_ = (i & 0x7) + Floor.anInt2318;
-                int i_34_ = Cache.outgoingbuffer.readShort();
-                int i_35_ = Cache.outgoingbuffer.readShort();
-                int i_36_ = Cache.outgoingbuffer.readShort();
+                int i_34_ = Cache.outgoingbuffer.getUnsignedShortBE();
+                int i_35_ = Cache.outgoingbuffer.getUnsignedShortBE();
+                int i_36_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 if((i_32_ ^ 0xffffffff) <= -1 && (i_33_ ^ 0xffffffff) <= -1 && i_32_ < 104 && i_33_ < 104) {
                     Class45 class45 = (Class10.aClass45ArrayArrayArray357[Player.anInt3267][i_32_][i_33_]);
                     if(class45 != null) {
@@ -166,7 +173,7 @@ public class Class53 {
                 int i_39_ = Cache.outgoingbuffer.method471((byte) 122);
                 int i_40_ = i_39_ & 0x3;
                 int i_41_ = i_39_ >> -1232238654;
-                int i_42_ = NPC.anIntArray3304[i_41_];
+                int i_42_ = Npc.anIntArray3304[i_41_];
                 if((i_38_ ^ 0xffffffff) <= -1 && (i_37_ ^ 0xffffffff) <= -1 && (i_38_ ^ 0xffffffff) > -105 && i_37_ < 104)
                     GameObjectDefinition.method609(-1, true, i_38_, i_40_, -1, (Player.anInt3267), i_37_, i_42_, i_41_, 0);
             } else {
@@ -178,17 +185,17 @@ public class Class53 {
                     int i_46_ = Cache.outgoingbuffer.method476(255);
                     int i_47_ = i_46_ & 0x3;
                     int i_48_ = i_46_ >> -638771838;
-                    int i_49_ = NPC.anIntArray3304[i_48_];
+                    int i_49_ = Npc.anIntArray3304[i_48_];
                     int i_50_ = Cache.outgoingbuffer.method480((byte) -70);
                     int i_51_ = (i_50_ & 0x7) + Floor.anInt2318;
                     int i_52_ = Class40_Sub6.anInt2119 + (i_50_ >> 680780804 & 0x7);
-                    int i_53_ = Cache.outgoingbuffer.readShort();
+                    int i_53_ = Cache.outgoingbuffer.getUnsignedShortBE();
                     int i_54_ = Cache.outgoingbuffer.method467((byte) 19);
                     int i_55_ = Cache.outgoingbuffer.method490((byte) -70);
                     int i_56_ = Cache.outgoingbuffer.method504(false);
                     Player class40_sub5_sub17_sub4_sub1;
                     if(i_43_ != Class30.anInt708)
-                        class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_43_]);
+                        class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_43_]);
                     else
                         class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760);
                     if(class40_sub5_sub17_sub4_sub1 != null) {
@@ -255,11 +262,11 @@ public class Class53 {
                     int i_70_ = (i_69_ + Cache.outgoingbuffer.get());
                     int i_71_ = (i_68_ + Cache.outgoingbuffer.get());
                     int i_72_ = Cache.outgoingbuffer.getShortUNKNOWN();
-                    int i_73_ = Cache.outgoingbuffer.readShort();
+                    int i_73_ = Cache.outgoingbuffer.getUnsignedShortBE();
                     int i_74_ = Cache.outgoingbuffer.getUnsignedByte() * 4;
                     int i_75_ = 4 * Cache.outgoingbuffer.getUnsignedByte();
-                    int i_76_ = Cache.outgoingbuffer.readShort();
-                    int i_77_ = Cache.outgoingbuffer.readShort();
+                    int i_76_ = Cache.outgoingbuffer.getUnsignedShortBE();
+                    int i_77_ = Cache.outgoingbuffer.getUnsignedShortBE();
                     int i_78_ = Cache.outgoingbuffer.getUnsignedByte();
                     int i_79_ = Cache.outgoingbuffer.getUnsignedByte();
                     if(i_69_ >= 0 && i_68_ >= 0 && (i_69_ ^ 0xffffffff) > -105 && i_68_ < 104 && (i_70_ ^ 0xffffffff) <= -1 && i_71_ >= 0 && i_70_ < 104 && (i_71_ ^ 0xffffffff) > -105 && (i_73_ ^ 0xffffffff) != -65536) {
@@ -277,7 +284,7 @@ public class Class53 {
                     if((Class57.packetid ^ 0xffffffff) == -20) {
                         int i = Cache.outgoingbuffer.method504(false);
                         int i_80_ = Cache.outgoingbuffer.method504(false);
-                        int i_81_ = Cache.outgoingbuffer.readShort();
+                        int i_81_ = Cache.outgoingbuffer.getUnsignedShortBE();
                         int i_82_ = Cache.outgoingbuffer.method476(255);
                         int i_83_ = (((0x71 & i_82_) >> 581076772) + Class40_Sub6.anInt2119);
                         int i_84_ = (0x7 & i_82_) + Floor.anInt2318;
@@ -292,7 +299,7 @@ public class Class53 {
                         }
                     } else if(Class57.packetid == 175) {
                         int i = Cache.outgoingbuffer.method490((byte) -70);
-                        int i_85_ = Cache.outgoingbuffer.readShort();
+                        int i_85_ = Cache.outgoingbuffer.getUnsignedShortBE();
                         int i_86_ = Cache.outgoingbuffer.getUnsignedByte();
                         int i_87_ = Floor.anInt2318 + (i_86_ & 0x7);
                         int i_88_ = (Class40_Sub6.anInt2119 + ((0x7a & i_86_) >> 1241757604));

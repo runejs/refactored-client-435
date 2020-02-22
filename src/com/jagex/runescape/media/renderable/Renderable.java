@@ -1,4 +1,6 @@
-package com.jagex.runescape;
+package com.jagex.runescape.media.renderable;
+
+import com.jagex.runescape.*;
 
 public abstract class Renderable extends SubNode {
     public static int anInt2855;

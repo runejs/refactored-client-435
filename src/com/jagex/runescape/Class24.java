@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+
 public class Class24 {
     public static RSString aClass1_575;
     public static int anInt576;

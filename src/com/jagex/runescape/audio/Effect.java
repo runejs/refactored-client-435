@@ -1,6 +1,6 @@
 package com.jagex.runescape.audio;
 
-import com.jagex.runescape.Buffer;
+import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.Class40_Sub12_Sub1;
 import com.jagex.runescape.Class6;
 
@@ -19,8 +19,8 @@ public class Effect {
                 instruments[i].decode(arg0);
             }
         }
-        loop_begin = arg0.readShort();
-        loop_end = arg0.readShort();
+        loop_begin = arg0.getUnsignedShortBE();
+        loop_end = arg0.getUnsignedShortBE();
     }
 
     public Effect() {

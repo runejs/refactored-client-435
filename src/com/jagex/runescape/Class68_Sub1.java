@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 import java.awt.*;
 import java.awt.image.*;
 
@@ -38,7 +41,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
         aClass1_2209 = aClass1_2212;
     }
 
-    public ColorModel aColorModel2194;
+    public ColorModel colorModel;
     public ImageConsumer anImageConsumer2197;
 
     public static void method1047(int arg0) {
@@ -66,7 +69,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             arg0.anInt3101 = Cache.outgoingbuffer.method476(255);
         }
         if((arg2 & 0x10 ^ 0xffffffff) != -1) {
-            arg0.anInt3148 = Cache.outgoingbuffer.readShort();
+            arg0.anInt3148 = Cache.outgoingbuffer.getUnsignedShortBE();
             arg0.anInt3100 = Cache.outgoingbuffer.method490((byte) -70);
         }
         if((arg2 & 0x1 ^ 0xffffffff) != -1) {
@@ -100,7 +103,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             arg0.method790(0);
         }
         if((0x8 & arg2 ^ 0xffffffff) != -1) {
-            int i = Cache.outgoingbuffer.readShort();
+            int i = Cache.outgoingbuffer.getUnsignedShortBE();
             int i_3_ = Cache.outgoingbuffer.method476(255);
             int i_4_ = Cache.outgoingbuffer.method471((byte) 117);
             int i_5_ = Cache.outgoingbuffer.currentPosition;
@@ -241,7 +244,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
         anInt2191++;
             if(anImageConsumer2197 != null) {
                 int i = -99 / ((7 - arg0) / 62);
-                anImageConsumer2197.setPixels(0, 0, anInt1619, anInt1617, aColorModel2194, anIntArray1621, 0, anInt1619);
+                anImageConsumer2197.setPixels(0, 0, anInt1619, anInt1617, colorModel, anIntArray1621, 0, anInt1619);
                 anImageConsumer2197.imageComplete(2);
             }
 
@@ -284,7 +287,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             arg0.setDimensions(anInt1619, anInt1617);
             anInt2203++;
             arg0.setProperties(null);
-            arg0.setColorModel(aColorModel2194);
+        arg0.setColorModel(colorModel);
             arg0.setHints(14);
 
     }
@@ -295,7 +298,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             anInt1619 = arg1;
             anInt2206++;
             anInt1617 = arg3;
-            aColorModel2194 = new DirectColorModel(32, 16711680, 65280, 255);
+        colorModel = new DirectColorModel(32, 16711680, 65280, 255);
             anImage1625 = arg2.createImage(this);
             method1048((byte) -100);
             arg2.prepareImage(anImage1625, this);

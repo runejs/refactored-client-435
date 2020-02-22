@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+
 public class Class41 {
     public static int[] anIntArray977 = new int[500];
     public static int[] anIntArray978 = new int[500];
@@ -47,15 +49,15 @@ public class Class41 {
                 if(aClass40_Sub13_983.anIntArray2178[i_3_] == 3)
                     i_6_ = 128;
                 if((i_4_ & 0x1) != 0)
-                    anIntArray979[i_2_] = class40_sub1_0_.method482((byte) -116);
+                    anIntArray979[i_2_] = class40_sub1_0_.getSignedSmart();
                 else
                     anIntArray979[i_2_] = i_6_;
                 if((i_4_ & 0x2) != 0)
-                    anIntArray977[i_2_] = class40_sub1_0_.method482((byte) 114);
+                    anIntArray977[i_2_] = class40_sub1_0_.getSignedSmart();
                 else
                     anIntArray977[i_2_] = i_6_;
                 if((i_4_ & 0x4) != 0)
-                    anIntArray980[i_2_] = class40_sub1_0_.method482((byte) 113);
+                    anIntArray980[i_2_] = class40_sub1_0_.getSignedSmart();
                 else
                     anIntArray980[i_2_] = i_6_;
                 i_1_ = i_3_;

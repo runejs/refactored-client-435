@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.Model;
+
 public class GameObjectDefinition extends SubNode {
     public static Class68 aClass68_2524;
     public static RSString aClass1_2526 = Class58.method978("(Udns");
@@ -265,7 +268,7 @@ public class GameObjectDefinition extends SubNode {
                     i_8_ += 65536;
                 class40_sub5_sub17_sub5 = ((Model) VertexNormal.aClass9_1102.method231((long) i_8_, (byte) 122));
                 if(class40_sub5_sub17_sub5 == null) {
-                    class40_sub5_sub17_sub5 = (Model.method830(RSString.aClass6_1705, i_8_ & 0xffff, 0));
+                    class40_sub5_sub17_sub5 = (Model.getModel(RSString.aClass6_1705, i_8_ & 0xffff, 0));
                     if(class40_sub5_sub17_sub5 == null)
                         return null;
                     if(bool)
@@ -293,7 +296,7 @@ public class GameObjectDefinition extends SubNode {
                 i_10_ += 65536;
             class40_sub5_sub17_sub5 = ((Model) VertexNormal.aClass9_1102.method231((long) i_10_, (byte) 48));
             if(class40_sub5_sub17_sub5 == null) {
-                class40_sub5_sub17_sub5 = Model.method830((RSString.aClass6_1705), 0xffff & i_10_, 0);
+                class40_sub5_sub17_sub5 = Model.getModel((RSString.aClass6_1705), 0xffff & i_10_, 0);
                 if(class40_sub5_sub17_sub5 == null)
                     return null;
                 if(bool)
@@ -396,14 +399,14 @@ public class GameObjectDefinition extends SubNode {
                                                     aClass1Array2508[(arg2 + -30)] = null;
                                             } else if(arg2 != 40) {
                                                 if((arg2 ^ 0xffffffff) == -61)
-                                                    anInt2511 = (arg0.readShort());
+                                                    anInt2511 = (arg0.getUnsignedShortBE());
                                                 else if((arg2 ^ 0xffffffff) == -63)
                                                     aBoolean2553 = true;
                                                 else if(arg2 != 64) {
                                                     if((arg2 ^ 0xffffffff) == -66)
-                                                        anInt2507 = (arg0.readShort());
+                                                        anInt2507 = (arg0.getUnsignedShortBE());
                                                     else if((arg2 ^ 0xffffffff) == -67)
-                                                        anInt2540 = (arg0.readShort());
+                                                        anInt2540 = (arg0.getUnsignedShortBE());
                                                     else if(arg2 != 67) {
                                                         if(arg2 != 68) {
                                                             if((arg2 ^ 0xffffffff) != -70) {
@@ -419,28 +422,28 @@ public class GameObjectDefinition extends SubNode {
                                                                             anInt2533 = arg0.getUnsignedByte();
                                                                         else if(arg2 != 77) {
                                                                             if(arg2 == 78) {
-                                                                                anInt2513 = arg0.readShort();
+                                                                                anInt2513 = arg0.getUnsignedShortBE();
                                                                                 anInt2502 = arg0.getUnsignedByte();
                                                                             } else if((arg2 ^ 0xffffffff) == -80) {
-                                                                                anInt2499 = arg0.readShort();
-                                                                                anInt2542 = arg0.readShort();
+                                                                                anInt2499 = arg0.getUnsignedShortBE();
+                                                                                anInt2542 = arg0.getUnsignedShortBE();
                                                                                 anInt2502 = arg0.getUnsignedByte();
                                                                                 int i = arg0.getUnsignedByte();
                                                                                 anIntArray2523 = new int[i];
                                                                                 for(int i_19_ = 0; i > i_19_; i_19_++)
-                                                                                    anIntArray2523[i_19_] = arg0.readShort();
+                                                                                    anIntArray2523[i_19_] = arg0.getUnsignedShortBE();
                                                                             }
                                                                         } else {
-                                                                            anInt2548 = arg0.readShort();
+                                                                            anInt2548 = arg0.getUnsignedShortBE();
                                                                             if(anInt2548 == 65535)
                                                                                 anInt2548 = -1;
-                                                                            anInt2536 = arg0.readShort();
+                                                                            anInt2536 = arg0.getUnsignedShortBE();
                                                                             if((anInt2536 ^ 0xffffffff) == -65536)
                                                                                 anInt2536 = -1;
                                                                             int i = arg0.getUnsignedByte();
                                                                             childrenIds = new int[1 + i];
                                                                             for(int i_20_ = 0; (i ^ 0xffffffff) <= (i_20_ ^ 0xffffffff); i_20_++) {
-                                                                                childrenIds[i_20_] = arg0.readShort();
+                                                                                childrenIds[i_20_] = arg0.getUnsignedShortBE();
                                                                                 if((childrenIds[i_20_] ^ 0xffffffff) == -65536)
                                                                                     childrenIds[i_20_] = -1;
                                                                             }
@@ -452,9 +455,9 @@ public class GameObjectDefinition extends SubNode {
                                                             } else
                                                                 anInt2512 = (arg0.getUnsignedByte());
                                                         } else
-                                                            anInt2537 = (arg0.readShort());
+                                                            anInt2537 = (arg0.getUnsignedShortBE());
                                                     } else
-                                                        anInt2517 = (arg0.readShort());
+                                                        anInt2517 = (arg0.getUnsignedShortBE());
                                                 } else
                                                     aBoolean2541 = false;
                                             } else {
@@ -462,12 +465,12 @@ public class GameObjectDefinition extends SubNode {
                                                 anIntArray2516 = new int[i];
                                                 anIntArray2510 = new int[i];
                                                 for(int i_21_ = 0; i_21_ < i; i_21_++) {
-                                                    anIntArray2516[i_21_] = (arg0.readShort());
-                                                    anIntArray2510[i_21_] = (arg0.readShort());
+                                                    anIntArray2516[i_21_] = (arg0.getUnsignedShortBE());
+                                                    anIntArray2510[i_21_] = (arg0.getUnsignedShortBE());
                                                 }
                                             }
                                         } else {
-                                            animationId = arg0.readShort();
+                                            animationId = arg0.getUnsignedShortBE();
                                             if((animationId ^ 0xffffffff) == -65536)
                                                 animationId = -1;
                                         }
@@ -492,7 +495,7 @@ public class GameObjectDefinition extends SubNode {
                         anIntArray2522 = null;
                         anIntArray2525 = new int[i];
                         for(int i_22_ = 0; (i ^ 0xffffffff) < (i_22_ ^ 0xffffffff); i_22_++)
-                            anIntArray2525[i_22_] = arg0.readShort();
+                            anIntArray2525[i_22_] = arg0.getUnsignedShortBE();
                     }
                 }
             }
@@ -505,7 +508,7 @@ public class GameObjectDefinition extends SubNode {
                     anIntArray2522 = new int[i];
                     anIntArray2525 = new int[i];
                     for(int i_23_ = 0; i > i_23_; i_23_++) {
-                        anIntArray2525[i_23_] = arg0.readShort();
+                        anIntArray2525[i_23_] = arg0.getUnsignedShortBE();
                         anIntArray2522[i_23_] = arg0.getUnsignedByte();
                     }
                 }

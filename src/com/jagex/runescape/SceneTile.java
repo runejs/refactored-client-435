@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.media.renderable.actor.Npc;
+
 import java.nio.charset.StandardCharsets;
 
 public class SceneTile extends Node {
@@ -196,7 +199,7 @@ public class SceneTile extends Node {
             if(NpcDefinition.anInt2394 >= 2 || (Class8.anInt301 ^ 0xffffffff) != -1 || (Main.anInt1773 ^ 0xffffffff) != -1) {
                 RSString class1;
                 if(Class8.anInt301 == 1 && (NpcDefinition.anInt2394 ^ 0xffffffff) > -3)
-                    class1 = (Class40_Sub5_Sub17_Sub6.method832(-74, (new RSString[]{Main.aClass1_1763, VertexNormal.aClass1_1117, NPC.aClass1_3295, Class38.aClass1_894})));
+                    class1 = (Class40_Sub5_Sub17_Sub6.method832(-74, (new RSString[]{Main.aClass1_1763, VertexNormal.aClass1_1117, Npc.aClass1_3295, Class38.aClass1_894})));
                 else if(Main.anInt1773 != 1 || NpcDefinition.anInt2394 >= 2)
                     class1 = (Landscape.aClass1Array1184[-1 + NpcDefinition.anInt2394]);
                 else

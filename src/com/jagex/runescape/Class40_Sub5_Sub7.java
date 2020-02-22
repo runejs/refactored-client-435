@@ -1,5 +1,10 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 public class Class40_Sub5_Sub7 extends SubNode {
     public static int anInt2464;
     public static int anInt2465;
@@ -98,7 +103,7 @@ public class Class40_Sub5_Sub7 extends SubNode {
             int i = 0x7fff & arg1 >> 559212398;
             if(arg2 > -9)
                 method596(-4, -74, (byte) -44, -62);
-            int i_14_ = (NPC.aScene_3301.method141(Player.anInt3267, arg0, arg3, arg1));
+        int i_14_ = (Npc.aScene_3301.method141(Player.anInt3267, arg0, arg3, arg1));
             if(i_14_ == -1)
                 return false;
             int i_15_ = 0x3 & i_14_ >> -1327198362;
@@ -223,14 +228,14 @@ public class Class40_Sub5_Sub7 extends SubNode {
                 int i_5_ = arg2.getUnsignedByte();
                 anIntArray2466 = new int[i_5_];
                 for(int i_6_ = 0; (i_5_ ^ 0xffffffff) < (i_6_ ^ 0xffffffff); i_6_++)
-                    anIntArray2466[i_6_] = arg2.readShort();
+                    anIntArray2466[i_6_] = arg2.getUnsignedShortBE();
                 anIntArray2485 = new int[i_5_];
                 for(int i_7_ = 0; (i_5_ ^ 0xffffffff) < (i_7_ ^ 0xffffffff); i_7_++)
-                    anIntArray2485[i_7_] = arg2.readShort();
+                    anIntArray2485[i_7_] = arg2.getUnsignedShortBE();
                 for(int i_8_ = 0; (i_8_ ^ 0xffffffff) > (i_5_ ^ 0xffffffff); i_8_++)
-                    anIntArray2485[i_8_] = ((arg2.readShort() << -1678933328) + anIntArray2485[i_8_]);
+                    anIntArray2485[i_8_] = ((arg2.getUnsignedShortBE() << -1678933328) + anIntArray2485[i_8_]);
             } else if((arg1 ^ 0xffffffff) == -3)
-                anInt2497 = arg2.readShort();
+                anInt2497 = arg2.getUnsignedShortBE();
             else if(arg1 != 3) {
                 if((arg1 ^ 0xffffffff) != -5) {
                     if((arg1 ^ 0xffffffff) == -6)
@@ -248,16 +253,16 @@ public class Class40_Sub5_Sub7 extends SubNode {
                                     int i_9_ = arg2.getUnsignedByte();
                                     anIntArray2479 = new int[i_9_];
                                     for(int i_10_ = 0; ((i_10_ ^ 0xffffffff) > (i_9_ ^ 0xffffffff)); i_10_++)
-                                        anIntArray2479[i_10_] = arg2.readShort();
+                                        anIntArray2479[i_10_] = arg2.getUnsignedShortBE();
                                     for(int i_11_ = 0; ((i_9_ ^ 0xffffffff) < (i_11_ ^ 0xffffffff)); i_11_++)
-                                        anIntArray2479[i_11_] = ((arg2.readShort() << -416587984) + anIntArray2479[i_11_]);
+                                        anIntArray2479[i_11_] = ((arg2.getUnsignedShortBE() << -416587984) + anIntArray2479[i_11_]);
                                 }
                             } else
                                 anInt2476 = arg2.getUnsignedByte();
                         } else
-                            anInt2489 = arg2.readShort();
+                            anInt2489 = arg2.getUnsignedShortBE();
                     } else
-                        anInt2477 = arg2.readShort();
+                        anInt2477 = arg2.getUnsignedShortBE();
                 } else
                     aBoolean2496 = true;
             } else {

@@ -6,6 +6,12 @@ import java.io.IOException;
 import java.util.zip.GZIPInputStream;
 
 import com.jagex.runescape.audio.Effect;
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Landscape {
     public static int anInt1157 = 0;
@@ -163,7 +169,7 @@ public class Landscape {
                     if(Class68.anInt1634 != 0)
                         Class51.method940(0, Class67.aClass1_1585, true, NpcDefinition.aClass1_2423);
                     RSCanvas.method46(0);
-                    NPC.aScene_3301.method98();
+                    Npc.aScene_3301.method98();
                     System.gc();
                     for(int i = 0; (i ^ 0xffffffff) > -5; i++)
                         aCollisionMapArray1167[i].method146(16777216);
@@ -209,7 +215,7 @@ public class Landscape {
                             if(is != null) {
                                 int i_13_ = (-Class40_Sub5_Sub2.anInt2307 + (ISAAC.anIntArray528[i_12_] >> 961254632) * 64);
                                 int i_14_ = (64 * (0xff & ISAAC.anIntArray528[i_12_]) - Class26.anInt635);
-                                GameObject.loadObjectBlock(i_13_, NPC.aScene_3301, aCollisionMapArray1167, is, i_14_);
+                                GameObject.loadObjectBlock(i_13_, Npc.aScene_3301, aCollisionMapArray1167, is, i_14_);
                             }
                         }
                     }
@@ -258,7 +264,7 @@ public class Landscape {
                                         int i_37_ = ((i_34_ / 8 << 1879532360) + (i_36_ / 8));
                                         for(int i_38_ = 0; (i_38_ < ISAAC.anIntArray528.length); i_38_++) {
                                             if(i_37_ == (ISAAC.anIntArray528[i_38_]) && (Class52.aByteArrayArray1217[i_38_]) != null) {
-                                                Class24.method341(8 * (i_34_ & 0x7), (NPC.aScene_3301), 0, i_29_, i_35_, i_33_, (Class52.aByteArrayArray1217[i_38_]), 8 * i_31_, aCollisionMapArray1167, 8 * (i_36_ & 0x7), i_30_ * 8);
+                                                Class24.method341(8 * (i_34_ & 0x7), (Npc.aScene_3301), 0, i_29_, i_35_, i_33_, (Class52.aByteArrayArray1217[i_38_]), 8 * i_31_, aCollisionMapArray1167, 8 * (i_36_ & 0x7), i_30_ * 8);
                                                 break;
                                             }
                                         }
@@ -269,7 +275,7 @@ public class Landscape {
                     }
                     Class27.method364((byte) -34, true);
                     RSCanvas.method46(0);
-                    ISAAC.method281((NPC.aScene_3301), 27324, aCollisionMapArray1167);
+                    ISAAC.method281((Npc.aScene_3301), 27324, aCollisionMapArray1167);
                     Class27.method364((byte) -34, true);
                     int i_39_ = Class64.setZ;
                     if(Player.anInt3267 < i_39_)
@@ -277,9 +283,9 @@ public class Landscape {
                     if(i_39_ < -1 + Player.anInt3267)
                         i_39_ = -1 + Player.anInt3267;
                     if(!VertexNormal.lowMemory)
-                        NPC.aScene_3301.method136(0);
+                        Npc.aScene_3301.method136(0);
                     else
-                        NPC.aScene_3301.method136(Class64.setZ);
+                        Npc.aScene_3301.method136(Class64.setZ);
                     for(int i_40_ = 0; (i_40_ ^ 0xffffffff) > -105; i_40_++) {
                         for(int i_41_ = 0; i_41_ < 104; i_41_++)
                             Class40_Sub13.method880((byte) -80, i_41_, i_40_);
@@ -349,7 +355,7 @@ public class Landscape {
                         int i_49_ = ((-i_48_ + class40_sub2.anInt2000) * RSCanvas.anInt65 / class40_sub2.anInt2000);
                         if(class40_sub2.aClass40_Sub9_Sub2_2001 == null) {
                             if(class40_sub2.anInt1997 >= 0) {
-                                Effect effect = (Effect.method429((Class40_Sub5_Sub17_Sub4.aClass6_Sub1_3157), class40_sub2.anInt1997, 0));
+                                Effect effect = (Effect.method429((Actor.aClass6_Sub1_3157), class40_sub2.anInt1997, 0));
                                 if(effect != null) {
                                     Class40_Sub12_Sub1 class40_sub12_sub1 = (effect.method428().method875(Class55.aClass48_1289));
                                     Class40_Sub9_Sub2 class40_sub9_sub2 = (Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_49_));
@@ -363,7 +369,7 @@ public class Landscape {
                         if(class40_sub2.aClass40_Sub9_Sub2_2010 == null) {
                             if(class40_sub2.anIntArray2005 != null && (class40_sub2.anInt2014 -= arg3) <= 0) {
                                 int i_50_ = (int) ((double) (class40_sub2.anIntArray2005).length * Math.random());
-                                Effect effect = (Effect.method429((Class40_Sub5_Sub17_Sub4.aClass6_Sub1_3157), class40_sub2.anIntArray2005[i_50_], 0));
+                                Effect effect = (Effect.method429((Actor.aClass6_Sub1_3157), class40_sub2.anIntArray2005[i_50_], 0));
                                 if(effect != null) {
                                     Class40_Sub12_Sub1 class40_sub12_sub1 = (effect.method428().method875(Class55.aClass48_1289));
                                     Class40_Sub9_Sub2 class40_sub9_sub2 = (Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_49_));

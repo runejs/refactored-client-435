@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.actor.Npc;
+
 public class Class6_Sub1 extends Class6 {
     public static int anInt1792;
     public static int anInt1793;
@@ -14,7 +16,7 @@ public class Class6_Sub1 extends Class6 {
     public static int anInt1806;
     public static int anInt1808;
     public static int anInt1809;
-    public static NPC[] aClass40_Sub5_Sub17_Sub4_Sub2Array1813;
+    public static Npc[] aClass40_Sub5_Sub17_Sub4_Sub2Array1813;
     public static RSString aClass1_1814;
     public static int anInt1815;
     public static RSString aClass1_1816;
@@ -28,7 +30,7 @@ public class Class6_Sub1 extends Class6 {
         aClass1_1799 = Class58.method978("Offline");
         aClass1_1816 = Class58.method978(" zuerst von Ihrer Freunde)2Liste(Q");
         anInt1819 = -1;
-        aClass40_Sub5_Sub17_Sub4_Sub2Array1813 = new NPC[32768];
+        aClass40_Sub5_Sub17_Sub4_Sub2Array1813 = new Npc[32768];
     }
 
     public volatile boolean[] aBooleanArray1796;

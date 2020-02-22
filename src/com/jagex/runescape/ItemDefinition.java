@@ -1,5 +1,12 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 import java.awt.*;
 
 public class ItemDefinition extends SubNode {
@@ -184,7 +191,7 @@ public class ItemDefinition extends SubNode {
     public static void method749(boolean arg0, int arg1) {
 
         for(int i = 0; GameObjectDefinition.anInt2558 > i; i++) {
-            NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i]]);
+            Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i]]);
             int i_15_ = (536870912 + (Class40_Sub3.anIntArray2016[i] << 1399377262));
             if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.method784(1) && !arg0 != (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.aBoolean2397) && class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.method571(-1)) {
                 int i_16_ = (class40_sub5_sub17_sub4_sub2.anInt3098 >> -1699335129);
@@ -197,7 +204,7 @@ public class ItemDefinition extends SubNode {
                     }
                     if(!class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.aBoolean2372)
                         i_15_ += -2147483648;
-                    NPC.aScene_3301.method134(Player.anInt3267, class40_sub5_sub17_sub4_sub2.anInt3098, class40_sub5_sub17_sub4_sub2.anInt3089, (Class37.method430((byte) -126, Player.anInt3267, (class40_sub5_sub17_sub4_sub2.anInt3098 + ((-1 + class40_sub5_sub17_sub4_sub2.anInt3096) * 64)), (class40_sub5_sub17_sub4_sub2.anInt3096 * 64 + (-64 + (class40_sub5_sub17_sub4_sub2.anInt3089))))), -64 + (class40_sub5_sub17_sub4_sub2.anInt3096 * 64 + 60), class40_sub5_sub17_sub4_sub2, class40_sub5_sub17_sub4_sub2.anInt3118, i_15_, class40_sub5_sub17_sub4_sub2.aBoolean3105);
+                    Npc.aScene_3301.method134(Player.anInt3267, class40_sub5_sub17_sub4_sub2.anInt3098, class40_sub5_sub17_sub4_sub2.anInt3089, (Class37.method430((byte) -126, Player.anInt3267, (class40_sub5_sub17_sub4_sub2.anInt3098 + ((-1 + class40_sub5_sub17_sub4_sub2.anInt3096) * 64)), (class40_sub5_sub17_sub4_sub2.anInt3096 * 64 + (-64 + (class40_sub5_sub17_sub4_sub2.anInt3089))))), -64 + (class40_sub5_sub17_sub4_sub2.anInt3096 * 64 + 60), class40_sub5_sub17_sub4_sub2, class40_sub5_sub17_sub4_sub2.anInt3118, i_15_, class40_sub5_sub17_sub4_sub2.aBoolean3105);
                 }
             }
         }
@@ -291,14 +298,14 @@ public class ItemDefinition extends SubNode {
         }
         if(i == -1)
             return null;
-        Model class40_sub5_sub17_sub5 = Model.method830(Class8.aClass6_284, i, 0);
+        Model class40_sub5_sub17_sub5 = Model.getModel(Class8.aClass6_284, i, 0);
         if(i_3_ != -1) {
-            Model class40_sub5_sub17_sub5_6_ = Model.method830(Class8.aClass6_284, i_3_, 0);
+            Model class40_sub5_sub17_sub5_6_ = Model.getModel(Class8.aClass6_284, i_3_, 0);
             if(i_5_ == -1) {
                 Model[] class40_sub5_sub17_sub5s = {class40_sub5_sub17_sub5, class40_sub5_sub17_sub5_6_};
                 class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, 2);
             } else {
-                Model class40_sub5_sub17_sub5_7_ = Model.method830(Class8.aClass6_284, i_5_, 0);
+                Model class40_sub5_sub17_sub5_7_ = Model.getModel(Class8.aClass6_284, i_5_, 0);
                 Model[] class40_sub5_sub17_sub5s = {class40_sub5_sub17_sub5, class40_sub5_sub17_sub5_6_, class40_sub5_sub17_sub5_7_};
                 class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, 3);
             }
@@ -353,9 +360,9 @@ public class ItemDefinition extends SubNode {
         }
         if(i == -1)
             return null;
-        Model class40_sub5_sub17_sub5 = Model.method830(Class8.aClass6_284, i, 0);
+        Model class40_sub5_sub17_sub5 = Model.getModel(Class8.aClass6_284, i, 0);
         if(i_12_ != -1) {
-            Model class40_sub5_sub17_sub5_13_ = Model.method830(Class8.aClass6_284, i_12_, 0);
+            Model class40_sub5_sub17_sub5_13_ = Model.getModel(Class8.aClass6_284, i_12_, 0);
             Model[] class40_sub5_sub17_sub5s = {class40_sub5_sub17_sub5, class40_sub5_sub17_sub5_13_};
             class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, 2);
         }
@@ -369,12 +376,12 @@ public class ItemDefinition extends SubNode {
 
     public void readValue(int arg0, int arg1, Buffer arg2) {
         if(arg0 == 1)
-            anInt2805 = arg2.readShort();
+            anInt2805 = arg2.getUnsignedShortBE();
         else if((arg0 ^ 0xffffffff) == -3)
             name = arg2.getRSString(-10721);
         else if((arg0 ^ 0xffffffff) != -5) {
             if((arg0 ^ 0xffffffff) == -6)
-                anInt2844 = arg2.readShort();
+                anInt2844 = arg2.getUnsignedShortBE();
             else if((arg0 ^ 0xffffffff) != -7) {
                 if(arg0 != 7) {
                     if(arg0 != 8) {
@@ -385,10 +392,10 @@ public class ItemDefinition extends SubNode {
                                 else if((arg0 ^ 0xffffffff) != -24) {
                                     if(arg0 != 24) {
                                         if((arg0 ^ 0xffffffff) == -26) {
-                                            anInt2848 = arg2.readShort();
+                                            anInt2848 = arg2.getUnsignedShortBE();
                                             anInt2829 = arg2.getUnsignedByte();
                                         } else if((arg0 ^ 0xffffffff) == -27)
-                                            anInt2819 = arg2.readShort();
+                                            anInt2819 = arg2.getUnsignedShortBE();
                                         else if((arg0 ^ 0xffffffff) <= -31 && ((arg0 ^ 0xffffffff) > -36)) {
                                             groundActions[-30 + arg0] = arg2.getRSString(-10721);
                                             if(groundActions[arg0 + -30].method63(Class59.aClass1_1396, true))
@@ -397,28 +404,28 @@ public class ItemDefinition extends SubNode {
                                             options[arg0 + -35] = arg2.getRSString(-10721);
                                         else if(arg0 != 40) {
                                             if((arg0 ^ 0xffffffff) == -79)
-                                                anInt2824 = arg2.readShort();
+                                                anInt2824 = arg2.getUnsignedShortBE();
                                             else if((arg0 ^ 0xffffffff) == -80)
-                                                anInt2845 = arg2.readShort();
+                                                anInt2845 = arg2.getUnsignedShortBE();
                                             else if((arg0 ^ 0xffffffff) == -91)
-                                                anInt2800 = arg2.readShort();
+                                                anInt2800 = arg2.getUnsignedShortBE();
                                             else if((arg0 ^ 0xffffffff) == -92)
-                                                anInt2851 = arg2.readShort();
+                                                anInt2851 = arg2.getUnsignedShortBE();
                                             else if((arg0 ^ 0xffffffff) == -93)
-                                                anInt2841 = arg2.readShort();
+                                                anInt2841 = arg2.getUnsignedShortBE();
                                             else if((arg0 ^ 0xffffffff) != -94) {
                                                 if(arg0 == 95)
-                                                    anInt2827 = (arg2.readShort());
+                                                    anInt2827 = (arg2.getUnsignedShortBE());
                                                 else if((arg0 ^ 0xffffffff) == -98)
-                                                    anInt2812 = (arg2.readShort());
+                                                    anInt2812 = (arg2.getUnsignedShortBE());
                                                 else if((arg0 ^ 0xffffffff) != -99) {
                                                     if(arg0 >= 100 && ((arg0 ^ 0xffffffff) > -111)) {
                                                         if(anIntArray2831 == null) {
                                                             anIntArray2834 = new int[10];
                                                             anIntArray2831 = new int[10];
                                                         }
-                                                        anIntArray2831[-100 + arg0] = (arg2.readShort());
-                                                        anIntArray2834[-100 + arg0] = (arg2.readShort());
+                                                        anIntArray2831[-100 + arg0] = (arg2.getUnsignedShortBE());
+                                                        anIntArray2834[-100 + arg0] = (arg2.getUnsignedShortBE());
                                                     } else if((arg0 ^ 0xffffffff) != -111) {
                                                         if(arg0 != 111) {
                                                             if(arg0 != 112) {
@@ -430,28 +437,28 @@ public class ItemDefinition extends SubNode {
                                                                 } else
                                                                     anInt2840 = ((arg2.get()) * 5);
                                                             } else
-                                                                anInt2833 = (arg2.readShort());
+                                                                anInt2833 = (arg2.getUnsignedShortBE());
                                                         } else
-                                                            anInt2853 = (arg2.readShort());
+                                                            anInt2853 = (arg2.getUnsignedShortBE());
                                                     } else
-                                                        anInt2813 = (arg2.readShort());
+                                                        anInt2813 = (arg2.getUnsignedShortBE());
                                                 } else
-                                                    noteTemplateId = (arg2.readShort());
+                                                    noteTemplateId = (arg2.getUnsignedShortBE());
                                             } else
-                                                anInt2822 = arg2.readShort();
+                                                anInt2822 = arg2.getUnsignedShortBE();
                                         } else {
                                             int i = arg2.getUnsignedByte();
                                             anIntArray2816 = new int[i];
                                             anIntArray2803 = new int[i];
                                             for(int i_18_ = 0; ((i_18_ ^ 0xffffffff) > (i ^ 0xffffffff)); i_18_++) {
-                                                anIntArray2803[i_18_] = arg2.readShort();
-                                                anIntArray2816[i_18_] = arg2.readShort();
+                                                anIntArray2803[i_18_] = arg2.getUnsignedShortBE();
+                                                anIntArray2816[i_18_] = arg2.getUnsignedShortBE();
                                             }
                                         }
                                     } else
-                                        anInt2820 = arg2.readShort();
+                                        anInt2820 = arg2.getUnsignedShortBE();
                                 } else {
-                                    anInt2836 = arg2.readShort();
+                                    anInt2836 = arg2.getUnsignedShortBE();
                                     anInt2818 = arg2.getUnsignedByte();
                                 }
                             } else
@@ -459,19 +466,19 @@ public class ItemDefinition extends SubNode {
                         } else
                             anInt2795 = 1;
                     } else {
-                        anInt2810 = arg2.readShort();
+                        anInt2810 = arg2.getUnsignedShortBE();
                         if(anInt2810 > 32767)
                             anInt2810 -= 65536;
                     }
                 } else {
-                    anInt2806 = arg2.readShort();
+                    anInt2806 = arg2.getUnsignedShortBE();
                     if((anInt2806 ^ 0xffffffff) < -32768)
                         anInt2806 -= 65536;
                 }
             } else
-                anInt2830 = arg2.readShort();
+                anInt2830 = arg2.getUnsignedShortBE();
         } else
-            anInt2817 = arg2.readShort();
+            anInt2817 = arg2.getUnsignedShortBE();
         anInt2802++;
         if(arg1 != -93)
             anInt2841 = -84;
@@ -529,7 +536,7 @@ public class ItemDefinition extends SubNode {
             if(class40_sub5_sub17_sub5 != null)
                 return class40_sub5_sub17_sub5;
         }
-        Model class40_sub5_sub17_sub5 = Model.method830(Class8.aClass6_284, anInt2805, 0);
+        Model class40_sub5_sub17_sub5 = Model.getModel(Class8.aClass6_284, anInt2805, 0);
         if(class40_sub5_sub17_sub5 == null)
             return null;
         if((anInt2813 ^ 0xffffffff) != -129 || anInt2853 != 128 || anInt2833 != 128)

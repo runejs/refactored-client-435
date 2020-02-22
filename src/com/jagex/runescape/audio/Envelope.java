@@ -1,6 +1,6 @@
 package com.jagex.runescape.audio;
 
-import com.jagex.runescape.Buffer;
+import com.jagex.runescape.io.Buffer;
 
 public class Envelope {
     public int num_phases = 2;
@@ -42,8 +42,8 @@ public class Envelope {
         phase_dur = new int[num_phases];
         phase_peak = new int[num_phases];
         for(int i = 0; i < num_phases; i++) {
-            phase_dur[i] = buffer.readShort();
-            phase_peak[i] = buffer.readShort();
+            phase_dur[i] = buffer.getUnsignedShortBE();
+            phase_peak[i] = buffer.getUnsignedShortBE();
         }
     }
 

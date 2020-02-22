@@ -1,5 +1,10 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+
 public class Class40_Sub5_Sub1 extends SubNode {
     public static int anInt2261;
     public static int anInt2264;
@@ -284,7 +289,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     class1 = (Class40_Sub5_Sub17_Sub6.method832(-60, (new RSString[]{arg3.aClass1_3278, HashTable.aClass1_569, Class26.aClass1_619, HashTable.method334(arg3.anInt3257, -1), Class51.aClass1_1199})));
                 if((Class8.anInt301 ^ 0xffffffff) == -2) {
                     Node.anInt928++;
-                    Floor.method558(arg4, Main.aClass1_1763, arg0, -501, arg2, 22, (Class40_Sub5_Sub17_Sub6.method832(55, (new RSString[]{NPC.aClass1_3295, Class40_Sub5_Sub17_Sub3.aClass1_3068, class1}))));
+                    Floor.method558(arg4, Main.aClass1_1763, arg0, -501, arg2, 22, (Class40_Sub5_Sub17_Sub6.method832(55, (new RSString[]{Npc.aClass1_3295, Class40_Sub5_Sub17_Sub3.aClass1_3068, class1}))));
                 } else if(Main.anInt1773 == 1) {
                     if((ItemDefinition.anInt2815 & 0x8) == 8) {
                         Floor.method558(arg4, Class38_Sub1.aClass1_1918, arg0, -501, arg2, 1, (Class40_Sub5_Sub17_Sub6.method832(124, (new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub17_Sub3.aClass1_3068, class1}))));
