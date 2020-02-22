@@ -76,7 +76,7 @@ public class Class54 implements KeyListener, FocusListener {
                     Class40_Sub5_Sub6.method588(-1);
             } else {
                 Class43.method894(false);
-                Class40_Sub4.method537(4);
+                SceneTile.method537(4);
             }
             if(Class40_Sub6.anInt2118 == 1)
                 Class45.aClass40_Sub5_Sub14_Sub4_1057.method721(472, 296);
@@ -84,18 +84,18 @@ public class Class54 implements KeyListener, FocusListener {
                 int i = 20;
                 int i_0_ = 507;
                 int i_1_ = 16776960;
-                if(Class52.anInt1219 < 30 && Class46.lowMemory)
+                if(Class52.anInt1219 < 30 && VertexNormal.lowMemory)
                     i_1_ = 16711680;
-                if((Class52.anInt1219 ^ 0xffffffff) > -21 && !Class46.lowMemory)
+                if((Class52.anInt1219 ^ 0xffffffff) > -21 && !VertexNormal.lowMemory)
                     i_1_ = 16711680;
                 Class53.aClass40_Sub5_Sub14_Sub1_1268.method687((Class40_Sub5_Sub17_Sub6.method832(-88, new RSString[]{Class61.aClass1_1446, HashTable.method334(Class52.anInt1219, -1)})), i_0_, i, i_1_);
                 i_1_ = 16776960;
                 i += 15;
                 Runtime runtime = Runtime.getRuntime();
                 int i_2_ = (int) ((runtime.totalMemory() + -runtime.freeMemory()) / 1024L);
-                if(i_2_ > 32768 && Class46.lowMemory)
+                if(i_2_ > 32768 && VertexNormal.lowMemory)
                     i_1_ = 16711680;
-                if((i_2_ ^ 0xffffffff) < -65537 && !Class46.lowMemory)
+                if((i_2_ ^ 0xffffffff) < -65537 && !VertexNormal.lowMemory)
                     i_1_ = 16711680;
                 Class53.aClass40_Sub5_Sub14_Sub1_1268.method687((Class40_Sub5_Sub17_Sub6.method832(81, new RSString[]{Class40_Sub7.aClass1_2129, HashTable.method334(i_2_, arg0 ^ 0x3c5d), RSCanvas.aClass1_68})), i_0_, i, i_1_);
                 i += 15;
@@ -135,7 +135,7 @@ public class Class54 implements KeyListener, FocusListener {
                 i++;
             if(arg0.method194(RSString.aClass1_1716, Class8.aClass1_305, arg1 + -1175))
                 i++;
-            if(arg0.method194(Class46.aClass1_1113, Class8.aClass1_305, -1234))
+            if(arg0.method194(VertexNormal.aClass1_1113, Class8.aClass1_305, -1234))
                 i++;
             if(arg0.method194(Class59.aClass1_1395, Class8.aClass1_305, -1234))
                 i++;
@@ -244,7 +244,7 @@ public class Class54 implements KeyListener, FocusListener {
                     i_4_ = Class51.method938(107, arg0);
                 if(GameObjectDefinition.anInt2543 >= 0 && (i ^ 0xffffffff) <= -1) {
                     RSString.anIntArray1706[GameObjectDefinition.anInt2543] = i;
-                    GameObjectDefinition.anInt2543 = 0x7f & GameObjectDefinition.anInt2543 - -1;
+                    GameObjectDefinition.anInt2543 = 0x7f & GameObjectDefinition.anInt2543 + 1;
                     if(GameObjectDefinition.anInt2543 == Class40_Sub13.anInt2183)
                         GameObjectDefinition.anInt2543 = -1;
                 }

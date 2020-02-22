@@ -128,7 +128,7 @@ public class Class40_Sub5_Sub10 extends SubNode {
             int i = 0;
             int i_2_ = 6 / ((arg0 - 6) / 52);
             for(int i_3_ = 0; i_3_ < arg1; i_3_++) {
-                if(arg3[arg2 - -i_3_] == null)
+                if(arg3[arg2 + i_3_] == null)
                     arg3[i_3_ + arg2] = RSApplet.aClass1_28;
                 i += arg3[i_3_ + arg2].anInt1680;
             }

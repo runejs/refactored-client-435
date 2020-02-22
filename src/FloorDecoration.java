@@ -1,11 +1,11 @@
-/* Class25 - Decompiled by JODE
+/* FloorDecoration - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
 import java.io.IOException;
 import java.util.zip.CRC32;
 
-public class Class25 {
+public class FloorDecoration {
     public static RSString STRING_CONNECTING_UPDATE_SERVER = Class58.method978("Connecting to update server");
     public static CRC32 aCRC32_590;
     public static RSString aClass1_591;
@@ -41,12 +41,12 @@ public class Class25 {
         aClass1_615 = Class58.method978("huffman");
     }
 
-    public int anInt587;
-    public int anInt588;
-    public int anInt595;
-    public Renderable aRenderable_600;
-    public int anInt601;
-    public int anInt602;
+    public int config;
+    public int hash;
+    public int x;
+    public Renderable renderable;
+    public int y;
+    public int z;
 
     public static void method342(int arg0, int arg1, Class40_Sub5_Sub17_Sub4 arg2) {
         try {
@@ -330,7 +330,7 @@ public class Class25 {
                                 for(int i_40_ = 0; i_40_ < 256; i_40_++) {
                                     Class6_Sub1 class6_sub1 = Class24.aClass6_Sub1Array580[i_40_];
                                     if(class6_sub1 != null) {
-                                        Class48.aClass40_Sub1_1132.offset = 4 * i_40_ - -5;
+                                        Class48.aClass40_Sub1_1132.offset = 4 * i_40_ + 5;
                                         int i_41_ = Class48.aClass40_Sub1_1132.method491(-4750);
                                         class6_sub1.method200(i_41_, 99);
                                     }
@@ -367,7 +367,7 @@ public class Class25 {
                             int i_45_ = Class45.aClass40_Sub1_1081.method469(65280);
                             int i_46_ = Class45.aClass40_Sub1_1081.method468(false);
                             int i_47_ = Class45.aClass40_Sub1_1081.method491(arg0 ^ ~0x12bd);
-                            long l_48_ = (long) ((i_44_ << 58201072) - -i_45_);
+                            long l_48_ = (long) ((i_44_ << 58201072) + i_45_);
                             Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class37.aClass23_869.method331(l_48_, 6120));
                             NPC.aBoolean3298 = true;
                             if(class40_sub5_sub13 == null) {

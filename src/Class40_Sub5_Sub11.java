@@ -37,7 +37,7 @@ public class Class40_Sub5_Sub11 extends SubNode {
         try {
             if(arg1 != false)
                 method633(-48);
-            int i = arg0.anInt3125 * 128 - -(64 * arg0.anInt3096);
+            int i = arg0.anInt3125 * 128 + (64 * arg0.anInt3096);
             int i_0_ = arg0.anInt3112 + -Node.anInt926;
             if(arg0.anInt3073 == 0)
                 arg0.anInt3080 = 1024;

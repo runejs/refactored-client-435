@@ -60,7 +60,7 @@ public abstract class Class22 {
             for(int i_0_ = 0; i > i_0_; i_0_++)
                 is[i_0_] = 0;
             for(int i_1_ = 1; (i_1_ ^ 0xffffffff) > -104; i_1_++) {
-                int i_2_ = 24628 - -((-(512 * i_1_) + 52736) * 4);
+                int i_2_ = 24628 + ((-(512 * i_1_) + 52736) * 4);
                 for(int i_3_ = 1; (i_3_ ^ 0xffffffff) > -104; i_3_++) {
                     if((0x18 & (Floor.tile_flags[arg1][i_3_][i_1_])) == 0)
                         NPC.aScene_3301.method96(is, i_2_, 512, arg1, i_3_, i_1_);
@@ -70,7 +70,7 @@ public abstract class Class22 {
                 }
             }
             Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.method723();
-            int i_4_ = ((-10 + (int) (Math.random() * 20.0) + 238 << -838501336) + (228 - -(int) (Math.random() * 20.0) << 1375075344) + (238 - -(int) (20.0 * Math.random())) + -10);
+            int i_4_ = ((-10 + (int) (Math.random() * 20.0) + 238 << -838501336) + (228 + (int) (Math.random() * 20.0) << 1375075344) + (238 + (int) (20.0 * Math.random())) + -10);
             int i_5_ = -10 + ((int) (20.0 * Math.random()) + 238) << 2143047344;
             for(int i_6_ = 1; i_6_ < 103; i_6_++) {
                 for(int i_7_ = 1; i_7_ < 103; i_7_++) {
@@ -98,7 +98,7 @@ public abstract class Class22 {
                                     int i_16_ = (int) (Math.random() * 4.0);
                                     if(i_16_ == 0 && (i_13_ ^ 0xffffffff) < -1 && i_13_ > -3 + i_8_ && ((is_14_[-1 + i_13_][i_12_] & 0x1280108) ^ 0xffffffff) == -1)
                                         i_13_--;
-                                    if((i_16_ ^ 0xffffffff) == -2 && i_13_ < 103 && i_13_ < i_8_ + 3 && (is_14_[i_13_ - -1][i_12_] & 0x1280180) == 0)
+                                    if((i_16_ ^ 0xffffffff) == -2 && i_13_ < 103 && i_13_ < i_8_ + 3 && (is_14_[i_13_ + 1][i_12_] & 0x1280180) == 0)
                                         i_13_++;
                                     if((i_16_ ^ 0xffffffff) == -3 && i_12_ > 0 && i_12_ > -3 + i_9_ && ((is_14_[i_13_][i_12_ - 1] & 0x1280102) ^ 0xffffffff) == -1)
                                         i_12_--;

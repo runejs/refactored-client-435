@@ -68,7 +68,7 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
 
     public static void method1002(int arg0) {
         anInt1460++;
-        if((Class40_Sub4.anInt2049 ^ 0xffffffff) == -1) {
+        if((SceneTile.anInt2049 ^ 0xffffffff) == -1) {
             if(arg0 > -60)
                 anInt1470 = -90;
             int i = anInt1470;
@@ -84,14 +84,14 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
                         if(class40_sub5_sub12.aBoolean2703 || class40_sub5_sub12.aBoolean2723) {
                             Renderable.anInt2869 = Class57.anInt1338;
                             Class40_Sub5_Sub15.aBoolean2784 = false;
-                            Class40_Sub4.anInt2049 = 2;
+                            SceneTile.anInt2049 = 2;
                             Class48.anInt1127 = i_2_;
                             ItemDefinition.anInt2798 = RSString.anInt1668;
                             Class58.anInt1352 = i_1_;
                             if((Class66.anInt1560 ^ 0xffffffff) == (i_2_ >> 799918864 ^ 0xffffffff))
-                                Class40_Sub4.anInt2049 = 1;
+                                SceneTile.anInt2049 = 1;
                             if((i_2_ >> 1441108912 ^ 0xffffffff) == (Class43.anInt1028 ^ 0xffffffff))
-                                Class40_Sub4.anInt2049 = 3;
+                                SceneTile.anInt2049 = 3;
                             Buffer.anInt1978 = 0;
                             return;
                         }
@@ -119,7 +119,7 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
                         i_4_ -= 357;
                         i_3_ -= 17;
                     }
-                    if((-10 + Class19.anInt475 ^ 0xffffffff) < (i_3_ ^ 0xffffffff) || 10 + Class46.anInt1086 + Class19.anInt475 < i_3_ || (i_4_ ^ 0xffffffff) > (Main.anInt1758 + -10 ^ 0xffffffff) || ((i_4_ ^ 0xffffffff) < (Main.anInt1758 - -CollisionMap.anInt168 - -10 ^ 0xffffffff))) {
+                    if((-10 + Class19.anInt475 ^ 0xffffffff) < (i_3_ ^ 0xffffffff) || 10 + VertexNormal.anInt1086 + Class19.anInt475 < i_3_ || (i_4_ ^ 0xffffffff) > (Main.anInt1758 + -10 ^ 0xffffffff) || ((i_4_ ^ 0xffffffff) < (Main.anInt1758 + CollisionMap.anInt168 + 10 ^ 0xffffffff))) {
                         if((Class40_Sub5_Sub17_Sub1.anInt2983 ^ 0xffffffff) == -2)
                             ISAAC.aBoolean505 = true;
                         Class4.aBoolean173 = false;
@@ -130,7 +130,7 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
                 if((i ^ 0xffffffff) == -2) {
                     int i_5_ = Class19.anInt475;
                     int i_6_ = Main.anInt1758;
-                    int i_7_ = Class46.anInt1086;
+                    int i_7_ = VertexNormal.anInt1086;
                     int i_8_ = Class57.anInt1338;
                     int i_9_ = -1;
                     int i_10_ = RSString.anInt1668;

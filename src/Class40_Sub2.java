@@ -192,7 +192,7 @@ public class Class40_Sub2 extends Node {
 
     public void method528(int arg0) {
         int i = anInt1997;
-        int i_5_ = 37 % ((arg0 - -55) / 54);
+        int i_5_ = 37 % ((arg0 + 55) / 54);
         GameObjectDefinition gameObjectDefinition = aGameObjectDefinition_2011.method611(-20);
         if(gameObjectDefinition == null) {
             anInt2000 = 0;

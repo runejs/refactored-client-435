@@ -38,10 +38,10 @@ public class Class40_Sub5_Sub9 extends SubNode {
 
     public static int method614(byte arg0, int arg1, int arg2, int arg3) {
         try {
-            int i = 114 % ((arg0 - -28) / 59);
+            int i = 114 % ((arg0 + 28) / 59);
             anInt2572++;
             int i_7_ = 256 + -arg3;
-            return (((arg3 * (0xff00 & arg2) + i_7_ * (0xff00 & arg1) & 0xff0000) + (~0xff00ff & (0xff00ff & arg1) * i_7_ - -(arg3 * (0xff00ff & arg2)))) >> -794214296);
+            return (((arg3 * (0xff00 & arg2) + i_7_ * (0xff00 & arg1) & 0xff0000) + (~0xff00ff & (0xff00ff & arg1) * i_7_ + (arg3 * (0xff00ff & arg2)))) >> -794214296);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, ("md.G(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
         }

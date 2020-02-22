@@ -65,7 +65,7 @@ public class Class57 {
         try {
             if(arg1 == 110) {
                 if((RSCanvas.anInt60 ^ 0xffffffff) != -1 && arg2 != -1) {
-                    Class33.method414(false, 1, arg2, RSCanvas.anInt60, 0, Class46.aClass6_Sub1_1104, arg1 ^ ~0x6e);
+                    Class33.method414(false, 1, arg2, RSCanvas.anInt60, 0, VertexNormal.aClass6_Sub1_1104, arg1 ^ ~0x6e);
                     Class35.anInt1733 = arg0;
                 }
                 anInt1330++;

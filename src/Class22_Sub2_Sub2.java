@@ -26,7 +26,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
     }
 
     public static void method325(byte arg0) {
-        int i = 16 % ((arg0 - -32) / 60);
+        int i = 16 % ((arg0 + 32) / 60);
         if(anInt2229 > 0) {
             aRunnable_Impl1_2223.method2(anIntArray2227, anInt2229);
             anInt2229 = 0;

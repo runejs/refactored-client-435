@@ -217,7 +217,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
             } else {
                 while((Class40_Sub13.anInt2183 ^ 0xffffffff) != (GameObjectDefinition.anInt2543 ^ 0xffffffff)) {
                     int i = RSString.anIntArray1706[Class40_Sub13.anInt2183];
-                    Class40_Sub13.anInt2183 = 0x7f & Class40_Sub13.anInt2183 - -1;
+                    Class40_Sub13.anInt2183 = 0x7f & Class40_Sub13.anInt2183 + 1;
                     if((i ^ 0xffffffff) > -1)
                         Class40_Sub5_Sub17_Sub3.aBooleanArray3056[i ^ 0xffffffff] = false;
                     else
@@ -284,7 +284,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
         try {
             Class58.aClass9_1364.method235((byte) 118);
             anInt2739++;
-            Class46.aClass9_1102.method235((byte) -42);
+            VertexNormal.aClass9_1102.method235((byte) -42);
             if(arg0 != -37)
                 aClass1_2637 = null;
             Class19.aClass9_470.method235((byte) 103);
@@ -600,20 +600,20 @@ public class Class40_Sub5_Sub12 extends SubNode {
             anInt2647 = arg1.method491(-4750);
         }
         if(aBoolean2688) {
-            anObjectArray2677 = Class25.method345((byte) 89, arg1);
-            anObjectArray2681 = Class25.method345((byte) 89, arg1);
-            anObjectArray2644 = Class25.method345((byte) 89, arg1);
-            anObjectArray2707 = Class25.method345((byte) 89, arg1);
-            anObjectArray2658 = Class25.method345((byte) 89, arg1);
-            anObjectArray2672 = Class25.method345((byte) 89, arg1);
-            anObjectArray2669 = Class25.method345((byte) 89, arg1);
-            Class25.method345((byte) 89, arg1);
-            anObjectArray2650 = Class25.method345((byte) 89, arg1);
-            anObjectArray2712 = Class25.method345((byte) 89, arg1);
-            Class25.method345((byte) 89, arg1);
-            anObjectArray2695 = Class25.method345((byte) 89, arg1);
-            anObjectArray2747 = Class25.method345((byte) 89, arg1);
-            anObjectArray2680 = Class25.method345((byte) 89, arg1);
+            anObjectArray2677 = FloorDecoration.method345((byte) 89, arg1);
+            anObjectArray2681 = FloorDecoration.method345((byte) 89, arg1);
+            anObjectArray2644 = FloorDecoration.method345((byte) 89, arg1);
+            anObjectArray2707 = FloorDecoration.method345((byte) 89, arg1);
+            anObjectArray2658 = FloorDecoration.method345((byte) 89, arg1);
+            anObjectArray2672 = FloorDecoration.method345((byte) 89, arg1);
+            anObjectArray2669 = FloorDecoration.method345((byte) 89, arg1);
+            FloorDecoration.method345((byte) 89, arg1);
+            anObjectArray2650 = FloorDecoration.method345((byte) 89, arg1);
+            anObjectArray2712 = FloorDecoration.method345((byte) 89, arg1);
+            FloorDecoration.method345((byte) 89, arg1);
+            anObjectArray2695 = FloorDecoration.method345((byte) 89, arg1);
+            anObjectArray2747 = FloorDecoration.method345((byte) 89, arg1);
+            anObjectArray2680 = FloorDecoration.method345((byte) 89, arg1);
             aBoolean2727 = arg1.method468(false) == 1;
             anInt2736 = arg1.method469(65280);
             aBoolean2694 = arg1.method468(false) == 1;

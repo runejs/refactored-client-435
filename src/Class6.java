@@ -332,14 +332,14 @@ public abstract class Class6 {
                 if((anIntArray227[i_4_] ^ 0xffffffff) < (i_3_ ^ 0xffffffff))
                     i_3_ = anIntArray227[i_4_];
             }
-            anIntArrayArray243 = new int[i_3_ - -1][];
+            anIntArrayArray243 = new int[i_3_ + 1][];
             anIntArray224 = new int[1 + i_3_];
-            anIntArray252 = new int[i_3_ - -1];
+            anIntArray252 = new int[i_3_ + 1];
             aByteArrayArrayArray249 = new byte[1 + i_3_][][];
             anIntArray261 = new int[1 + i_3_];
             aByteArrayArray212 = new byte[i_3_ + 1][];
             if((i_2_ ^ 0xffffffff) != -1) {
-                anIntArray239 = new int[i_3_ - -1];
+                anIntArray239 = new int[i_3_ + 1];
                 for(int i_5_ = 0; (anInt221 ^ 0xffffffff) < (i_5_ ^ 0xffffffff); i_5_++)
                     anIntArray239[anIntArray227[i_5_]] = class40_sub1.method491(-4750);
                 aClass42_254 = new Class42(anIntArray239);
@@ -361,7 +361,7 @@ public abstract class Class6 {
                     if(i_14_ > i_11_)
                         i_11_ = i_14_;
                 }
-                aByteArrayArrayArray249[i_10_] = new byte[i_11_ - -1][];
+                aByteArrayArrayArray249[i_10_] = new byte[i_11_ + 1][];
             }
             if(i_2_ != 0) {
                 aClass42Array217 = new Class42[i_3_ + 1];

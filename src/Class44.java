@@ -125,7 +125,7 @@ public class Class44 implements Runnable {
                 }
             }
             int i = arg1.anInt3098;
-            int i_0_ = (arg1.anIntArray3088[-1 + arg1.anInt3109] * 128 - -(64 * arg1.anInt3096));
+            int i_0_ = (arg1.anIntArray3088[-1 + arg1.anInt3109] * 128 + (64 * arg1.anInt3096));
             int i_1_ = arg1.anInt3089;
             int i_2_ = (64 * arg1.anInt3096 + arg1.anIntArray3135[arg1.anInt3109 + -1] * 128);
             if(-i + i_0_ > 256 || (-i + i_0_ ^ 0xffffffff) > 255 || -i_1_ + i_2_ > 256 || i_2_ + -i_1_ < -256) {

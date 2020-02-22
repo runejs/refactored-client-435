@@ -95,10 +95,10 @@ public class Class56 {
     public static void method973(int arg0) {
         try {
             Class67.anIntArray1579 = null;
-            Class40_Sub4.anIntArray2048 = null;
+            SceneTile.anIntArray2048 = null;
             if(arg0 >= -57)
                 aClass1_1314 = null;
-            Class25.anIntArray612 = null;
+            FloorDecoration.anIntArray612 = null;
             Class6.anIntArrayArrayArray262 = null;
             Class40_Sub5_Sub7.anIntArrayArray2490 = null;
             Class35.aByteArrayArrayArray1745 = null;
@@ -134,7 +134,7 @@ public class Class56 {
                     aClass67_1313.method1031(0, (long) (6 * arg0));
                     aClass67_1313.method1035(0, (byte) -49, 6, NpcDefinition.aByteArray2416);
                     int i_0_ = ((0xff00 & (NpcDefinition.aByteArray2416[4] << 2112382504)) + ((0xff & NpcDefinition.aByteArray2416[3]) << -1692209456) + (0xff & NpcDefinition.aByteArray2416[5]));
-                    int i_1_ = ((0xff & NpcDefinition.aByteArray2416[2]) + (((NpcDefinition.aByteArray2416[0] & 0xff) << 2016836816) - -((0xff & NpcDefinition.aByteArray2416[1]) << 1439956072)));
+                    int i_1_ = ((0xff & NpcDefinition.aByteArray2416[2]) + (((NpcDefinition.aByteArray2416[0] & 0xff) << 2016836816) + ((0xff & NpcDefinition.aByteArray2416[1]) << 1439956072)));
                     if(i_1_ < 0 || (i_1_ ^ 0xffffffff) < (anInt1321 ^ 0xffffffff))
                         return null;
                     if(i_0_ <= 0 || (((long) i_0_ ^ 0xffffffffffffffffL) < (aClass67_1309.method1032(0) / 520L ^ 0xffffffffffffffffL)))
@@ -152,7 +152,7 @@ public class Class56 {
                         aClass67_1309.method1035(0, (byte) -14, 8 + i_4_, (NpcDefinition.aByteArray2416));
                         int i_5_ = ((0xff00 & (NpcDefinition.aByteArray2416[0] << -1509655160)) + (0xff & NpcDefinition.aByteArray2416[1]));
                         int i_6_ = ((NpcDefinition.aByteArray2416[6] & 0xff) + ((0xff & NpcDefinition.aByteArray2416[5]) << -109515864) + ((0xff & NpcDefinition.aByteArray2416[4]) << -873067312));
-                        int i_7_ = ((0xff00 & (NpcDefinition.aByteArray2416[2] << 52160136)) - -(0xff & NpcDefinition.aByteArray2416[3]));
+                        int i_7_ = ((0xff00 & (NpcDefinition.aByteArray2416[2] << 52160136)) + (0xff & NpcDefinition.aByteArray2416[3]));
                         int i_8_ = 0xff & NpcDefinition.aByteArray2416[7];
                         if((i_5_ ^ 0xffffffff) != (arg0 ^ 0xffffffff) || (i_7_ ^ 0xffffffff) != (i_3_ ^ 0xffffffff) || (i_8_ ^ 0xffffffff) != (anInt1324 ^ 0xffffffff))
                             return null;
@@ -186,7 +186,7 @@ public class Class56 {
                             return false;
                         aClass67_1313.method1031(0, (long) (arg3 * 6));
                         aClass67_1313.method1035(0, (byte) -111, 6, (NpcDefinition.aByteArray2416));
-                        i = ((NpcDefinition.aByteArray2416[5] & 0xff) + (((NpcDefinition.aByteArray2416[3] & 0xff) << 244380432) - -((NpcDefinition.aByteArray2416[4] & 0xff) << -1843041752)));
+                        i = ((NpcDefinition.aByteArray2416[5] & 0xff) + (((NpcDefinition.aByteArray2416[3] & 0xff) << 244380432) + ((NpcDefinition.aByteArray2416[4] & 0xff) << -1843041752)));
                         if((i ^ 0xffffffff) >= -1 || (((long) i ^ 0xffffffffffffffffL) < (aClass67_1309.method1032(0) / 520L ^ 0xffffffffffffffffL)))
                             return false;
                     } else {
@@ -214,7 +214,7 @@ public class Class56 {
                             } catch(java.io.EOFException eofexception) {
                                 break;
                             }
-                            i_13_ = ((NpcDefinition.aByteArray2416[6] & 0xff) + (((NpcDefinition.aByteArray2416[4] << 809811568) & 0xff0000) - -(0xff00 & (NpcDefinition.aByteArray2416[5]) << -83110776)));
+                            i_13_ = ((NpcDefinition.aByteArray2416[6] & 0xff) + (((NpcDefinition.aByteArray2416[4] << 809811568) & 0xff0000) + (0xff00 & (NpcDefinition.aByteArray2416[5]) << -83110776)));
                             i_12_ = ((NpcDefinition.aByteArray2416[1] & 0xff) + ((NpcDefinition.aByteArray2416[0] << 1593639048) & 0xff00));
                             int i_14_ = NpcDefinition.aByteArray2416[7] & 0xff;
                             int i_15_ = ((NpcDefinition.aByteArray2416[3] & 0xff) + ((0xff & NpcDefinition.aByteArray2416[2]) << -1878865912));

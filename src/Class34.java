@@ -92,10 +92,10 @@ public class Class34 {
     public static int method415(byte arg0, int arg1, int arg2) {
         try {
             anInt815++;
-            long l = (long) ((arg1 << 1451454800) - -arg2);
+            long l = (long) ((arg1 << 1451454800) + arg2);
             if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null || PacketBuffer.aClass40_Sub5_Sub13_2250.key != l)
                 return 0;
-            int i = 34 % ((arg0 - -46) / 45);
+            int i = 34 % ((arg0 + 46) / 45);
             return 1 + (Class40_Sub5_Sub13.aClass40_Sub1_2752.offset * 99 / ((Class40_Sub5_Sub13.aClass40_Sub1_2752.payload).length + -(PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758)));
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, ("mb.E(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
@@ -112,7 +112,7 @@ public class Class34 {
                 Class59.anInt1388 = Class40_Sub5_Sub13.anIntArray2764[Class59.anInt1389];
                 if(arg0 > -21)
                     aClass1_829 = null;
-                Class59.anInt1389 = Class59.anInt1389 - -1 & 0x7f;
+                Class59.anInt1389 = Class59.anInt1389 + 1 & 0x7f;
                 return true;
             }
         } catch(RuntimeException runtimeexception) {
@@ -218,7 +218,7 @@ public class Class34 {
                 arg1 = 2;
             else if(arg1 > 126)
                 arg1 = 126;
-            return (0xff80 & arg0) - -arg1;
+            return (0xff80 & arg0) + arg1;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, ("mb.F(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
         }

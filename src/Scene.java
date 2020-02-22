@@ -81,7 +81,7 @@ public class Scene {
         anIntArray132 = new int[]{0, 4, 4, 8, 0, 0, 8, 0, 0};
     }
 
-    public Class40_Sub4[][][] aClass40_Sub4ArrayArrayArray75;
+    public SceneTile[][][] tileArray;
     public int[][][] anIntArrayArrayArray83;
     public int anInt92;
     public Class19[] aClass19Array93 = new Class19[5000];
@@ -106,7 +106,7 @@ public class Scene {
         anInt115 = arg0;
         anInt97 = arg1;
         anInt116 = arg2;
-        aClass40_Sub4ArrayArrayArray75 = new Class40_Sub4[arg0][arg1][arg2];
+        tileArray = new SceneTile[arg0][arg1][arg2];
         anIntArrayArrayArray83 = new int[arg0][arg1 + 1][arg2 + 1];
         anIntArrayArrayArray105 = arg3;
         method98();
@@ -236,36 +236,36 @@ public class Scene {
     }
 
     public int method91(int arg0, int arg1, int arg2) {
-        Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2];
-        if(class40_sub4 == null || class40_sub4.aClass53_2079 == null)
+        SceneTile sceneTile = tileArray[arg0][arg1][arg2];
+        if(sceneTile == null || sceneTile.aClass53_2079 == null)
             return 0;
-        return class40_sub4.aClass53_2079.anInt1262;
+        return sceneTile.aClass53_2079.anInt1262;
     }
 
     public void method92(int arg0, int arg1) {
-        Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[0][arg0][arg1];
+        SceneTile sceneTile = tileArray[0][arg0][arg1];
         for(int i = 0; i < 3; i++) {
-            Class40_Sub4 class40_sub4_0_ = (aClass40_Sub4ArrayArrayArray75[i][arg0][arg1] = aClass40_Sub4ArrayArrayArray75[i + 1][arg0][arg1]);
-            if(class40_sub4_0_ != null) {
-                class40_sub4_0_.anInt2066--;
-                for(int i_1_ = 0; i_1_ < class40_sub4_0_.anInt2080; i_1_++) {
-                    Class19 class19 = class40_sub4_0_.aClass19Array2065[i_1_];
+            SceneTile sceneTile_0_ = (tileArray[i][arg0][arg1] = tileArray[i + 1][arg0][arg1]);
+            if(sceneTile_0_ != null) {
+                sceneTile_0_.anInt2066--;
+                for(int i_1_ = 0; i_1_ < sceneTile_0_.anInt2080; i_1_++) {
+                    Class19 class19 = sceneTile_0_.aClass19Array2065[i_1_];
                     if((class19.anInt469 >> 29 & 0x3) == 2 && class19.anInt473 == arg0 && class19.anInt481 == arg1)
                         class19.anInt468--;
                 }
             }
         }
-        if(aClass40_Sub4ArrayArrayArray75[0][arg0][arg1] == null)
-            aClass40_Sub4ArrayArrayArray75[0][arg0][arg1] = new Class40_Sub4(0, arg0, arg1);
-        aClass40_Sub4ArrayArrayArray75[0][arg0][arg1].aClass40_Sub4_2058 = class40_sub4;
-        aClass40_Sub4ArrayArrayArray75[3][arg0][arg1] = null;
+        if(tileArray[0][arg0][arg1] == null)
+            tileArray[0][arg0][arg1] = new SceneTile(0, arg0, arg1);
+        tileArray[0][arg0][arg1].aSceneTile_2058 = sceneTile;
+        tileArray[3][arg0][arg1] = null;
     }
 
     public int method93(int arg0, int arg1, int arg2) {
-        Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2];
-        if(class40_sub4 == null || class40_sub4.aClass25_2075 == null)
+        SceneTile sceneTile = tileArray[arg0][arg1][arg2];
+        if(sceneTile == null || sceneTile.floorDecoration == null)
             return 0;
-        return class40_sub4.aClass25_2075.anInt588;
+        return sceneTile.floorDecoration.hash;
     }
 
     public void method94(int arg0, int arg1, int arg2, int arg3, Renderable arg4, Renderable arg5, int arg6, int arg7, int arg8, int arg9) {
@@ -281,17 +281,17 @@ public class Scene {
             class10.anInt337 = arg6;
             class10.anInt347 = arg7;
             for(int i = arg0; i >= 0; i--) {
-                if(aClass40_Sub4ArrayArrayArray75[i][arg1][arg2] == null)
-                    aClass40_Sub4ArrayArrayArray75[i][arg1][arg2] = new Class40_Sub4(i, arg1, arg2);
+                if(tileArray[i][arg1][arg2] == null)
+                    tileArray[i][arg1][arg2] = new SceneTile(i, arg1, arg2);
             }
-            aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2].aClass10_2072 = class10;
+            tileArray[arg0][arg1][arg2].aClass10_2072 = class10;
         }
     }
 
     public void method96(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg3][arg4][arg5];
-        if(class40_sub4 != null) {
-            Class52 class52 = class40_sub4.aClass52_2070;
+        SceneTile sceneTile = tileArray[arg3][arg4][arg5];
+        if(sceneTile != null) {
+            Class52 class52 = sceneTile.aClass52_2070;
             if(class52 != null) {
                 int i = class52.anInt1226;
                 if(i != 0) {
@@ -304,7 +304,7 @@ public class Scene {
                     }
                 }
             } else {
-                Class11 class11 = class40_sub4.aClass11_2068;
+                Class11 class11 = sceneTile.aClass11_2068;
                 if(class11 != null) {
                     int i = class11.anInt373;
                     int i_16_ = class11.anInt364;
@@ -375,19 +375,19 @@ public class Scene {
         method123();
         anInt109 = 0;
         for(int i = anInt103; i < anInt115; i++) {
-            Class40_Sub4[][] class40_sub4s = aClass40_Sub4ArrayArrayArray75[i];
+            SceneTile[][] sceneTiles = tileArray[i];
             for(int i_23_ = anInt95; i_23_ < anInt84; i_23_++) {
                 for(int i_24_ = anInt87; i_24_ < anInt111; i_24_++) {
-                    Class40_Sub4 class40_sub4 = class40_sub4s[i_23_][i_24_];
-                    if(class40_sub4 != null) {
-                        if(class40_sub4.anInt2063 > arg5 || (!(aBooleanArrayArray133[i_23_ - anInt79 + 25][i_24_ - anInt100 + 25]) && (anIntArrayArrayArray105[i][i_23_][i_24_] - arg1) < 2000)) {
-                            class40_sub4.aBoolean2071 = false;
-                            class40_sub4.aBoolean2077 = false;
-                            class40_sub4.anInt2067 = 0;
+                    SceneTile sceneTile = sceneTiles[i_23_][i_24_];
+                    if(sceneTile != null) {
+                        if(sceneTile.anInt2063 > arg5 || (!(aBooleanArrayArray133[i_23_ - anInt79 + 25][i_24_ - anInt100 + 25]) && (anIntArrayArrayArray105[i][i_23_][i_24_] - arg1) < 2000)) {
+                            sceneTile.aBoolean2071 = false;
+                            sceneTile.aBoolean2077 = false;
+                            sceneTile.anInt2067 = 0;
                         } else {
-                            class40_sub4.aBoolean2071 = true;
-                            class40_sub4.aBoolean2077 = true;
-                            class40_sub4.aBoolean2062 = class40_sub4.anInt2080 > 0;
+                            sceneTile.aBoolean2071 = true;
+                            sceneTile.aBoolean2077 = true;
+                            sceneTile.aBoolean2062 = sceneTile.anInt2080 > 0;
                             anInt109++;
                         }
                     }
@@ -395,7 +395,7 @@ public class Scene {
             }
         }
         for(int i = anInt103; i < anInt115; i++) {
-            Class40_Sub4[][] class40_sub4s = aClass40_Sub4ArrayArrayArray75[i];
+            SceneTile[][] sceneTiles = tileArray[i];
             for(int i_25_ = -25; i_25_ <= 0; i_25_++) {
                 int i_26_ = anInt79 + i_25_;
                 int i_27_ = anInt79 - i_25_;
@@ -405,26 +405,26 @@ public class Scene {
                         int i_30_ = anInt100 - i_28_;
                         if(i_26_ >= anInt95) {
                             if(i_29_ >= anInt87) {
-                                Class40_Sub4 class40_sub4 = class40_sub4s[i_26_][i_29_];
-                                if(class40_sub4 != null && class40_sub4.aBoolean2071)
-                                    method106(class40_sub4, true);
+                                SceneTile sceneTile = sceneTiles[i_26_][i_29_];
+                                if(sceneTile != null && sceneTile.aBoolean2071)
+                                    method106(sceneTile, true);
                             }
                             if(i_30_ < anInt111) {
-                                Class40_Sub4 class40_sub4 = class40_sub4s[i_26_][i_30_];
-                                if(class40_sub4 != null && class40_sub4.aBoolean2071)
-                                    method106(class40_sub4, true);
+                                SceneTile sceneTile = sceneTiles[i_26_][i_30_];
+                                if(sceneTile != null && sceneTile.aBoolean2071)
+                                    method106(sceneTile, true);
                             }
                         }
                         if(i_27_ < anInt84) {
                             if(i_29_ >= anInt87) {
-                                Class40_Sub4 class40_sub4 = class40_sub4s[i_27_][i_29_];
-                                if(class40_sub4 != null && class40_sub4.aBoolean2071)
-                                    method106(class40_sub4, true);
+                                SceneTile sceneTile = sceneTiles[i_27_][i_29_];
+                                if(sceneTile != null && sceneTile.aBoolean2071)
+                                    method106(sceneTile, true);
                             }
                             if(i_30_ < anInt111) {
-                                Class40_Sub4 class40_sub4 = class40_sub4s[i_27_][i_30_];
-                                if(class40_sub4 != null && class40_sub4.aBoolean2071)
-                                    method106(class40_sub4, true);
+                                SceneTile sceneTile = sceneTiles[i_27_][i_30_];
+                                if(sceneTile != null && sceneTile.aBoolean2071)
+                                    method106(sceneTile, true);
                             }
                         }
                         if(anInt109 == 0) {
@@ -436,7 +436,7 @@ public class Scene {
             }
         }
         for(int i = anInt103; i < anInt115; i++) {
-            Class40_Sub4[][] class40_sub4s = aClass40_Sub4ArrayArrayArray75[i];
+            SceneTile[][] sceneTiles = tileArray[i];
             for(int i_31_ = -25; i_31_ <= 0; i_31_++) {
                 int i_32_ = anInt79 + i_31_;
                 int i_33_ = anInt79 - i_31_;
@@ -446,26 +446,26 @@ public class Scene {
                         int i_36_ = anInt100 - i_34_;
                         if(i_32_ >= anInt95) {
                             if(i_35_ >= anInt87) {
-                                Class40_Sub4 class40_sub4 = class40_sub4s[i_32_][i_35_];
-                                if(class40_sub4 != null && class40_sub4.aBoolean2071)
-                                    method106(class40_sub4, false);
+                                SceneTile sceneTile = sceneTiles[i_32_][i_35_];
+                                if(sceneTile != null && sceneTile.aBoolean2071)
+                                    method106(sceneTile, false);
                             }
                             if(i_36_ < anInt111) {
-                                Class40_Sub4 class40_sub4 = class40_sub4s[i_32_][i_36_];
-                                if(class40_sub4 != null && class40_sub4.aBoolean2071)
-                                    method106(class40_sub4, false);
+                                SceneTile sceneTile = sceneTiles[i_32_][i_36_];
+                                if(sceneTile != null && sceneTile.aBoolean2071)
+                                    method106(sceneTile, false);
                             }
                         }
                         if(i_33_ < anInt84) {
                             if(i_35_ >= anInt87) {
-                                Class40_Sub4 class40_sub4 = class40_sub4s[i_33_][i_35_];
-                                if(class40_sub4 != null && class40_sub4.aBoolean2071)
-                                    method106(class40_sub4, false);
+                                SceneTile sceneTile = sceneTiles[i_33_][i_35_];
+                                if(sceneTile != null && sceneTile.aBoolean2071)
+                                    method106(sceneTile, false);
                             }
                             if(i_36_ < anInt111) {
-                                Class40_Sub4 class40_sub4 = class40_sub4s[i_33_][i_36_];
-                                if(class40_sub4 != null && class40_sub4.aBoolean2071)
-                                    method106(class40_sub4, false);
+                                SceneTile sceneTile = sceneTiles[i_33_][i_36_];
+                                if(sceneTile != null && sceneTile.aBoolean2071)
+                                    method106(sceneTile, false);
                             }
                         }
                         if(anInt109 == 0) {
@@ -483,7 +483,7 @@ public class Scene {
         for(int i = 0; i < anInt115; i++) {
             for(int i_37_ = 0; i_37_ < anInt97; i_37_++) {
                 for(int i_38_ = 0; i_38_ < anInt116; i_38_++)
-                    aClass40_Sub4ArrayArrayArray75[i][i_37_][i_38_] = null;
+                    tileArray[i][i_37_][i_38_] = null;
             }
         }
         for(int i = 0; i < anInt90; i++) {
@@ -502,32 +502,32 @@ public class Scene {
         if(arg3 == 0) {
             Class52 class52 = new Class52(arg10, arg11, arg12, arg13, -1, arg18, false);
             for(int i = arg0; i >= 0; i--) {
-                if(aClass40_Sub4ArrayArrayArray75[i][arg1][arg2] == null)
-                    aClass40_Sub4ArrayArrayArray75[i][arg1][arg2] = new Class40_Sub4(i, arg1, arg2);
+                if(tileArray[i][arg1][arg2] == null)
+                    tileArray[i][arg1][arg2] = new SceneTile(i, arg1, arg2);
             }
-            aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2].aClass52_2070 = class52;
+            tileArray[arg0][arg1][arg2].aClass52_2070 = class52;
         } else if(arg3 == 1) {
             Class52 class52 = new Class52(arg14, arg15, arg16, arg17, arg5, arg19, arg6 == arg7 && arg6 == arg8 && arg6 == arg9);
             for(int i = arg0; i >= 0; i--) {
-                if(aClass40_Sub4ArrayArrayArray75[i][arg1][arg2] == null)
-                    aClass40_Sub4ArrayArrayArray75[i][arg1][arg2] = new Class40_Sub4(i, arg1, arg2);
+                if(tileArray[i][arg1][arg2] == null)
+                    tileArray[i][arg1][arg2] = new SceneTile(i, arg1, arg2);
             }
-            aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2].aClass52_2070 = class52;
+            tileArray[arg0][arg1][arg2].aClass52_2070 = class52;
         } else {
             Class11 class11 = new Class11(arg3, arg4, arg5, arg1, arg2, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16, arg17, arg18, arg19);
             for(int i = arg0; i >= 0; i--) {
-                if(aClass40_Sub4ArrayArrayArray75[i][arg1][arg2] == null)
-                    aClass40_Sub4ArrayArrayArray75[i][arg1][arg2] = new Class40_Sub4(i, arg1, arg2);
+                if(tileArray[i][arg1][arg2] == null)
+                    tileArray[i][arg1][arg2] = new SceneTile(i, arg1, arg2);
             }
-            aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2].aClass11_2068 = class11;
+            tileArray[arg0][arg1][arg2].aClass11_2068 = class11;
         }
     }
 
     public Class53 method100(int arg0, int arg1, int arg2) {
-        Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2];
-        if(class40_sub4 == null)
+        SceneTile sceneTile = tileArray[arg0][arg1][arg2];
+        if(sceneTile == null)
             return null;
-        return class40_sub4.aClass53_2079;
+        return sceneTile.aClass53_2079;
     }
 
     public boolean method101(int arg0, int arg1, int arg2) {
@@ -712,99 +712,99 @@ public class Scene {
     public void method105(Class19 arg0) {
         for(int i = arg0.anInt473; i <= arg0.anInt484; i++) {
             for(int i_72_ = arg0.anInt481; i_72_ <= arg0.anInt477; i_72_++) {
-                Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg0.anInt468][i][i_72_];
-                if(class40_sub4 != null) {
-                    for(int i_73_ = 0; i_73_ < class40_sub4.anInt2080; i_73_++) {
-                        if(class40_sub4.aClass19Array2065[i_73_] == arg0) {
-                            class40_sub4.anInt2080--;
-                            for(int i_74_ = i_73_; i_74_ < class40_sub4.anInt2080; i_74_++) {
-                                class40_sub4.aClass19Array2065[i_74_] = (class40_sub4.aClass19Array2065[i_74_ + 1]);
-                                class40_sub4.anIntArray2074[i_74_] = class40_sub4.anIntArray2074[i_74_ + 1];
+                SceneTile sceneTile = tileArray[arg0.anInt468][i][i_72_];
+                if(sceneTile != null) {
+                    for(int i_73_ = 0; i_73_ < sceneTile.anInt2080; i_73_++) {
+                        if(sceneTile.aClass19Array2065[i_73_] == arg0) {
+                            sceneTile.anInt2080--;
+                            for(int i_74_ = i_73_; i_74_ < sceneTile.anInt2080; i_74_++) {
+                                sceneTile.aClass19Array2065[i_74_] = (sceneTile.aClass19Array2065[i_74_ + 1]);
+                                sceneTile.anIntArray2074[i_74_] = sceneTile.anIntArray2074[i_74_ + 1];
                             }
-                            class40_sub4.aClass19Array2065[(class40_sub4.anInt2080)] = null;
+                            sceneTile.aClass19Array2065[(sceneTile.anInt2080)] = null;
                             break;
                         }
                     }
-                    class40_sub4.anInt2073 = 0;
-                    for(int i_75_ = 0; i_75_ < class40_sub4.anInt2080; i_75_++)
-                        class40_sub4.anInt2073 |= class40_sub4.anIntArray2074[i_75_];
+                    sceneTile.anInt2073 = 0;
+                    for(int i_75_ = 0; i_75_ < sceneTile.anInt2080; i_75_++)
+                        sceneTile.anInt2073 |= sceneTile.anIntArray2074[i_75_];
                 }
             }
         }
     }
 
-    public void method106(Class40_Sub4 arg0, boolean arg1) {
+    public void method106(SceneTile arg0, boolean arg1) {
         aClass45_108.method904(arg0, -69);
         for(; ; ) {
-            Class40_Sub4 class40_sub4 = (Class40_Sub4) aClass45_108.method913(25447);
-            if(class40_sub4 == null)
+            SceneTile sceneTile = (SceneTile) aClass45_108.method913(25447);
+            if(sceneTile == null)
                 break;
-            if(class40_sub4.aBoolean2077) {
-                int i = class40_sub4.anInt2061;
-                int i_76_ = class40_sub4.anInt2078;
-                int i_77_ = class40_sub4.anInt2066;
-                int i_78_ = class40_sub4.anInt2069;
-                Class40_Sub4[][] class40_sub4s = aClass40_Sub4ArrayArrayArray75[i_77_];
-                if(class40_sub4.aBoolean2071) {
+            if(sceneTile.aBoolean2077) {
+                int i = sceneTile.anInt2061;
+                int i_76_ = sceneTile.anInt2078;
+                int i_77_ = sceneTile.anInt2066;
+                int i_78_ = sceneTile.anInt2069;
+                SceneTile[][] sceneTiles = tileArray[i_77_];
+                if(sceneTile.aBoolean2071) {
                     if(arg1) {
                         if(i_77_ > 0) {
-                            Class40_Sub4 class40_sub4_79_ = (aClass40_Sub4ArrayArrayArray75[i_77_ - 1][i][i_76_]);
-                            if(class40_sub4_79_ != null && class40_sub4_79_.aBoolean2077)
+                            SceneTile sceneTile_79_ = (tileArray[i_77_ - 1][i][i_76_]);
+                            if(sceneTile_79_ != null && sceneTile_79_.aBoolean2077)
                                 continue;
                         }
                         if(i <= anInt79 && i > anInt95) {
-                            Class40_Sub4 class40_sub4_80_ = class40_sub4s[i - 1][i_76_];
-                            if(class40_sub4_80_ != null && class40_sub4_80_.aBoolean2077 && (class40_sub4_80_.aBoolean2071 || (class40_sub4.anInt2073 & 0x1) == 0))
+                            SceneTile sceneTile_80_ = sceneTiles[i - 1][i_76_];
+                            if(sceneTile_80_ != null && sceneTile_80_.aBoolean2077 && (sceneTile_80_.aBoolean2071 || (sceneTile.anInt2073 & 0x1) == 0))
                                 continue;
                         }
                         if(i >= anInt79 && i < anInt84 - 1) {
-                            Class40_Sub4 class40_sub4_81_ = class40_sub4s[i + 1][i_76_];
-                            if(class40_sub4_81_ != null && class40_sub4_81_.aBoolean2077 && (class40_sub4_81_.aBoolean2071 || (class40_sub4.anInt2073 & 0x4) == 0))
+                            SceneTile sceneTile_81_ = sceneTiles[i + 1][i_76_];
+                            if(sceneTile_81_ != null && sceneTile_81_.aBoolean2077 && (sceneTile_81_.aBoolean2071 || (sceneTile.anInt2073 & 0x4) == 0))
                                 continue;
                         }
                         if(i_76_ <= anInt100 && i_76_ > anInt87) {
-                            Class40_Sub4 class40_sub4_82_ = class40_sub4s[i][i_76_ - 1];
-                            if(class40_sub4_82_ != null && class40_sub4_82_.aBoolean2077 && (class40_sub4_82_.aBoolean2071 || (class40_sub4.anInt2073 & 0x8) == 0))
+                            SceneTile sceneTile_82_ = sceneTiles[i][i_76_ - 1];
+                            if(sceneTile_82_ != null && sceneTile_82_.aBoolean2077 && (sceneTile_82_.aBoolean2071 || (sceneTile.anInt2073 & 0x8) == 0))
                                 continue;
                         }
                         if(i_76_ >= anInt100 && i_76_ < anInt111 - 1) {
-                            Class40_Sub4 class40_sub4_83_ = class40_sub4s[i][i_76_ + 1];
-                            if(class40_sub4_83_ != null && class40_sub4_83_.aBoolean2077 && (class40_sub4_83_.aBoolean2071 || (class40_sub4.anInt2073 & 0x2) == 0))
+                            SceneTile sceneTile_83_ = sceneTiles[i][i_76_ + 1];
+                            if(sceneTile_83_ != null && sceneTile_83_.aBoolean2077 && (sceneTile_83_.aBoolean2071 || (sceneTile.anInt2073 & 0x2) == 0))
                                 continue;
                         }
                     } else
                         arg1 = true;
-                    class40_sub4.aBoolean2071 = false;
-                    if(class40_sub4.aClass40_Sub4_2058 != null) {
-                        Class40_Sub4 class40_sub4_84_ = class40_sub4.aClass40_Sub4_2058;
-                        if(class40_sub4_84_.aClass52_2070 != null) {
+                    sceneTile.aBoolean2071 = false;
+                    if(sceneTile.aSceneTile_2058 != null) {
+                        SceneTile sceneTile_84_ = sceneTile.aSceneTile_2058;
+                        if(sceneTile_84_.aClass52_2070 != null) {
                             if(!method101(0, i, i_76_))
-                                method128(class40_sub4_84_.aClass52_2070, 0, anInt82, anInt110, anInt104, anInt99, i, i_76_);
-                        } else if(class40_sub4_84_.aClass11_2068 != null && !method101(0, i, i_76_))
-                            method138(class40_sub4_84_.aClass11_2068, anInt82, anInt110, anInt104, anInt99, i, i_76_);
-                        Class10 class10 = class40_sub4_84_.aClass10_2072;
+                                method128(sceneTile_84_.aClass52_2070, 0, anInt82, anInt110, anInt104, anInt99, i, i_76_);
+                        } else if(sceneTile_84_.aClass11_2068 != null && !method101(0, i, i_76_))
+                            method138(sceneTile_84_.aClass11_2068, anInt82, anInt110, anInt104, anInt99, i, i_76_);
+                        Class10 class10 = sceneTile_84_.aClass10_2072;
                         if(class10 != null)
                             class10.aRenderable_341.method755(0, anInt82, anInt110, anInt104, anInt99, class10.anInt334 - anInt76, class10.anInt342 - anInt89, class10.anInt355 - anInt98, class10.anInt336);
-                        for(int i_85_ = 0; i_85_ < class40_sub4_84_.anInt2080; i_85_++) {
-                            Class19 class19 = class40_sub4_84_.aClass19Array2065[i_85_];
+                        for(int i_85_ = 0; i_85_ < sceneTile_84_.anInt2080; i_85_++) {
+                            Class19 class19 = sceneTile_84_.aClass19Array2065[i_85_];
                             if(class19 != null)
                                 class19.aRenderable_474.method755(class19.anInt480, anInt82, anInt110, anInt104, anInt99, class19.anInt476 - anInt76, class19.anInt479 - anInt89, class19.anInt472 - anInt98, class19.anInt469);
                         }
                     }
                     boolean bool = false;
-                    if(class40_sub4.aClass52_2070 != null) {
+                    if(sceneTile.aClass52_2070 != null) {
                         if(!method101(i_78_, i, i_76_)) {
                             bool = true;
-                            method128(class40_sub4.aClass52_2070, i_78_, anInt82, anInt110, anInt104, anInt99, i, i_76_);
+                            method128(sceneTile.aClass52_2070, i_78_, anInt82, anInt110, anInt104, anInt99, i, i_76_);
                         }
-                    } else if(class40_sub4.aClass11_2068 != null && !method101(i_78_, i, i_76_)) {
+                    } else if(sceneTile.aClass11_2068 != null && !method101(i_78_, i, i_76_)) {
                         bool = true;
-                        method138(class40_sub4.aClass11_2068, anInt82, anInt110, anInt104, anInt99, i, i_76_);
+                        method138(sceneTile.aClass11_2068, anInt82, anInt110, anInt104, anInt99, i, i_76_);
                     }
                     int i_86_ = 0;
                     int i_87_ = 0;
-                    Class10 class10 = class40_sub4.aClass10_2072;
-                    Class53 class53 = class40_sub4.aClass53_2079;
+                    Class10 class10 = sceneTile.aClass10_2072;
+                    Class53 class53 = sceneTile.aClass53_2079;
                     if(class10 != null || class53 != null) {
                         if(anInt79 == i)
                             i_86_++;
@@ -815,29 +815,29 @@ public class Scene {
                         else if(anInt100 > i_76_)
                             i_86_ += 6;
                         i_87_ = anIntArray120[i_86_];
-                        class40_sub4.anInt2064 = anIntArray130[i_86_];
+                        sceneTile.anInt2064 = anIntArray130[i_86_];
                     }
                     if(class10 != null) {
                         if((class10.anInt337 & anIntArray117[i_86_]) != 0) {
                             if(class10.anInt337 == 16) {
-                                class40_sub4.anInt2067 = 3;
-                                class40_sub4.anInt2076 = anIntArray119[i_86_];
-                                class40_sub4.anInt2059 = 3 - class40_sub4.anInt2076;
+                                sceneTile.anInt2067 = 3;
+                                sceneTile.anInt2076 = anIntArray119[i_86_];
+                                sceneTile.anInt2059 = 3 - sceneTile.anInt2076;
                             } else if(class10.anInt337 == 32) {
-                                class40_sub4.anInt2067 = 6;
-                                class40_sub4.anInt2076 = anIntArray125[i_86_];
-                                class40_sub4.anInt2059 = 6 - class40_sub4.anInt2076;
+                                sceneTile.anInt2067 = 6;
+                                sceneTile.anInt2076 = anIntArray125[i_86_];
+                                sceneTile.anInt2059 = 6 - sceneTile.anInt2076;
                             } else if(class10.anInt337 == 64) {
-                                class40_sub4.anInt2067 = 12;
-                                class40_sub4.anInt2076 = anIntArray132[i_86_];
-                                class40_sub4.anInt2059 = 12 - class40_sub4.anInt2076;
+                                sceneTile.anInt2067 = 12;
+                                sceneTile.anInt2076 = anIntArray132[i_86_];
+                                sceneTile.anInt2059 = 12 - sceneTile.anInt2076;
                             } else {
-                                class40_sub4.anInt2067 = 9;
-                                class40_sub4.anInt2076 = anIntArray131[i_86_];
-                                class40_sub4.anInt2059 = 9 - class40_sub4.anInt2076;
+                                sceneTile.anInt2067 = 9;
+                                sceneTile.anInt2076 = anIntArray131[i_86_];
+                                sceneTile.anInt2059 = 9 - sceneTile.anInt2076;
                             }
                         } else
-                            class40_sub4.anInt2067 = 0;
+                            sceneTile.anInt2067 = 0;
                         if((class10.anInt337 & i_87_) != 0 && !method102(i_78_, i, i_76_, class10.anInt337))
                             class10.aRenderable_341.method755(0, anInt82, anInt110, anInt104, anInt99, class10.anInt334 - anInt76, class10.anInt342 - anInt89, class10.anInt355 - anInt98, class10.anInt336);
                         if((class10.anInt347 & i_87_) != 0 && !method102(i_78_, i, i_76_, class10.anInt347))
@@ -874,10 +874,10 @@ public class Scene {
                         }
                     }
                     if(bool) {
-                        Class25 class25 = class40_sub4.aClass25_2075;
-                        if(class25 != null)
-                            class25.aRenderable_600.method755(0, anInt82, anInt110, anInt104, anInt99, class25.anInt595 - anInt76, class25.anInt602 - anInt89, class25.anInt601 - anInt98, class25.anInt588);
-                        Class58 class58 = class40_sub4.aClass58_2060;
+                        FloorDecoration floorDecoration = sceneTile.floorDecoration;
+                        if(floorDecoration != null)
+                            floorDecoration.renderable.method755(0, anInt82, anInt110, anInt104, anInt99, floorDecoration.x - anInt76, floorDecoration.z - anInt89, floorDecoration.y - anInt98, floorDecoration.hash);
+                        Class58 class58 = sceneTile.aClass58_2060;
                         if(class58 != null && class58.anInt1371 == 0) {
                             if(class58.aRenderable_1362 != null)
                                 class58.aRenderable_1362.method755(0, anInt82, anInt110, anInt104, anInt99, class58.anInt1372 - anInt76, class58.anInt1361 - anInt89, class58.anInt1355 - anInt98, class58.anInt1366);
@@ -887,62 +887,62 @@ public class Scene {
                                 class58.aRenderable_1353.method755(0, anInt82, anInt110, anInt104, anInt99, class58.anInt1372 - anInt76, class58.anInt1361 - anInt89, class58.anInt1355 - anInt98, class58.anInt1366);
                         }
                     }
-                    int i_98_ = class40_sub4.anInt2073;
+                    int i_98_ = sceneTile.anInt2073;
                     if(i_98_ != 0) {
                         if(i < anInt79 && (i_98_ & 0x4) != 0) {
-                            Class40_Sub4 class40_sub4_99_ = class40_sub4s[i + 1][i_76_];
-                            if(class40_sub4_99_ != null && class40_sub4_99_.aBoolean2077)
-                                aClass45_108.method904(class40_sub4_99_, -115);
+                            SceneTile sceneTile_99_ = sceneTiles[i + 1][i_76_];
+                            if(sceneTile_99_ != null && sceneTile_99_.aBoolean2077)
+                                aClass45_108.method904(sceneTile_99_, -115);
                         }
                         if(i_76_ < anInt100 && (i_98_ & 0x2) != 0) {
-                            Class40_Sub4 class40_sub4_100_ = class40_sub4s[i][i_76_ + 1];
-                            if(class40_sub4_100_ != null && class40_sub4_100_.aBoolean2077)
-                                aClass45_108.method904(class40_sub4_100_, 127);
+                            SceneTile sceneTile_100_ = sceneTiles[i][i_76_ + 1];
+                            if(sceneTile_100_ != null && sceneTile_100_.aBoolean2077)
+                                aClass45_108.method904(sceneTile_100_, 127);
                         }
                         if(i > anInt79 && (i_98_ & 0x1) != 0) {
-                            Class40_Sub4 class40_sub4_101_ = class40_sub4s[i - 1][i_76_];
-                            if(class40_sub4_101_ != null && class40_sub4_101_.aBoolean2077)
-                                aClass45_108.method904(class40_sub4_101_, -106);
+                            SceneTile sceneTile_101_ = sceneTiles[i - 1][i_76_];
+                            if(sceneTile_101_ != null && sceneTile_101_.aBoolean2077)
+                                aClass45_108.method904(sceneTile_101_, -106);
                         }
                         if(i_76_ > anInt100 && (i_98_ & 0x8) != 0) {
-                            Class40_Sub4 class40_sub4_102_ = class40_sub4s[i][i_76_ - 1];
-                            if(class40_sub4_102_ != null && class40_sub4_102_.aBoolean2077)
-                                aClass45_108.method904(class40_sub4_102_, -81);
+                            SceneTile sceneTile_102_ = sceneTiles[i][i_76_ - 1];
+                            if(sceneTile_102_ != null && sceneTile_102_.aBoolean2077)
+                                aClass45_108.method904(sceneTile_102_, -81);
                         }
                     }
                 }
-                if(class40_sub4.anInt2067 != 0) {
+                if(sceneTile.anInt2067 != 0) {
                     boolean bool = true;
-                    for(int i_103_ = 0; i_103_ < class40_sub4.anInt2080; i_103_++) {
-                        if((class40_sub4.aClass19Array2065[i_103_].anInt486 != anInt86) && ((class40_sub4.anIntArray2074[i_103_] & class40_sub4.anInt2067) == class40_sub4.anInt2076)) {
+                    for(int i_103_ = 0; i_103_ < sceneTile.anInt2080; i_103_++) {
+                        if((sceneTile.aClass19Array2065[i_103_].anInt486 != anInt86) && ((sceneTile.anIntArray2074[i_103_] & sceneTile.anInt2067) == sceneTile.anInt2076)) {
                             bool = false;
                             break;
                         }
                     }
                     if(bool) {
-                        Class10 class10 = class40_sub4.aClass10_2072;
+                        Class10 class10 = sceneTile.aClass10_2072;
                         if(!method102(i_78_, i, i_76_, class10.anInt337))
                             class10.aRenderable_341.method755(0, anInt82, anInt110, anInt104, anInt99, class10.anInt334 - anInt76, class10.anInt342 - anInt89, class10.anInt355 - anInt98, class10.anInt336);
-                        class40_sub4.anInt2067 = 0;
+                        sceneTile.anInt2067 = 0;
                     }
                 }
-                if(class40_sub4.aBoolean2062) {
+                if(sceneTile.aBoolean2062) {
                     try {
-                        int i_104_ = class40_sub4.anInt2080;
-                        class40_sub4.aBoolean2062 = false;
+                        int i_104_ = sceneTile.anInt2080;
+                        sceneTile.aBoolean2062 = false;
                         int i_105_ = 0;
                         while_2_:
                         for(int i_106_ = 0; i_106_ < i_104_; i_106_++) {
-                            Class19 class19 = class40_sub4.aClass19Array2065[i_106_];
+                            Class19 class19 = sceneTile.aClass19Array2065[i_106_];
                             if(class19.anInt486 != anInt86) {
                                 for(int i_107_ = class19.anInt473; i_107_ <= class19.anInt484; i_107_++) {
                                     for(int i_108_ = class19.anInt481; i_108_ <= class19.anInt477; i_108_++) {
-                                        Class40_Sub4 class40_sub4_109_ = class40_sub4s[i_107_][i_108_];
-                                        if(class40_sub4_109_.aBoolean2071) {
-                                            class40_sub4.aBoolean2062 = true;
+                                        SceneTile sceneTile_109_ = sceneTiles[i_107_][i_108_];
+                                        if(sceneTile_109_.aBoolean2071) {
+                                            sceneTile.aBoolean2062 = true;
                                             continue while_2_;
                                         }
-                                        if(class40_sub4_109_.anInt2067 != 0) {
+                                        if(sceneTile_109_.anInt2067 != 0) {
                                             int i_110_ = 0;
                                             if(i_107_ > class19.anInt473)
                                                 i_110_++;
@@ -952,8 +952,8 @@ public class Scene {
                                                 i_110_ += 8;
                                             if(i_108_ < class19.anInt477)
                                                 i_110_ += 2;
-                                            if((i_110_ & class40_sub4_109_.anInt2067) == class40_sub4.anInt2059) {
-                                                class40_sub4.aBoolean2062 = true;
+                                            if((i_110_ & sceneTile_109_.anInt2067) == sceneTile.anInt2059) {
+                                                sceneTile.aBoolean2062 = true;
                                                 continue while_2_;
                                             }
                                         }
@@ -999,45 +999,45 @@ public class Scene {
                                 class19.aRenderable_474.method755(class19.anInt480, anInt82, anInt110, anInt104, anInt99, class19.anInt476 - anInt76, class19.anInt479 - anInt89, class19.anInt472 - anInt98, class19.anInt469);
                             for(int i_122_ = class19.anInt473; i_122_ <= class19.anInt484; i_122_++) {
                                 for(int i_123_ = class19.anInt481; i_123_ <= class19.anInt477; i_123_++) {
-                                    Class40_Sub4 class40_sub4_124_ = class40_sub4s[i_122_][i_123_];
-                                    if(class40_sub4_124_.anInt2067 != 0)
-                                        aClass45_108.method904(class40_sub4_124_, 108);
-                                    else if((i_122_ != i || i_123_ != i_76_) && class40_sub4_124_.aBoolean2077)
-                                        aClass45_108.method904(class40_sub4_124_, 92);
+                                    SceneTile sceneTile_124_ = sceneTiles[i_122_][i_123_];
+                                    if(sceneTile_124_.anInt2067 != 0)
+                                        aClass45_108.method904(sceneTile_124_, 108);
+                                    else if((i_122_ != i || i_123_ != i_76_) && sceneTile_124_.aBoolean2077)
+                                        aClass45_108.method904(sceneTile_124_, 92);
                                 }
                             }
                         }
-                        if(class40_sub4.aBoolean2062)
+                        if(sceneTile.aBoolean2062)
                             continue;
                     } catch(Exception exception) {
-                        class40_sub4.aBoolean2062 = false;
+                        sceneTile.aBoolean2062 = false;
                     }
                 }
-                if(class40_sub4.aBoolean2077) {
-                    if(class40_sub4.anInt2067 == 0) {
+                if(sceneTile.aBoolean2077) {
+                    if(sceneTile.anInt2067 == 0) {
                         if(i <= anInt79 && i > anInt95) {
-                            Class40_Sub4 class40_sub4_125_ = class40_sub4s[i - 1][i_76_];
-                            if(class40_sub4_125_ != null && class40_sub4_125_.aBoolean2077)
+                            SceneTile sceneTile_125_ = sceneTiles[i - 1][i_76_];
+                            if(sceneTile_125_ != null && sceneTile_125_.aBoolean2077)
                                 continue;
                         }
                         if(i >= anInt79 && i < anInt84 - 1) {
-                            Class40_Sub4 class40_sub4_126_ = class40_sub4s[i + 1][i_76_];
-                            if(class40_sub4_126_ != null && class40_sub4_126_.aBoolean2077)
+                            SceneTile sceneTile_126_ = sceneTiles[i + 1][i_76_];
+                            if(sceneTile_126_ != null && sceneTile_126_.aBoolean2077)
                                 continue;
                         }
                         if(i_76_ <= anInt100 && i_76_ > anInt87) {
-                            Class40_Sub4 class40_sub4_127_ = class40_sub4s[i][i_76_ - 1];
-                            if(class40_sub4_127_ != null && class40_sub4_127_.aBoolean2077)
+                            SceneTile sceneTile_127_ = sceneTiles[i][i_76_ - 1];
+                            if(sceneTile_127_ != null && sceneTile_127_.aBoolean2077)
                                 continue;
                         }
                         if(i_76_ >= anInt100 && i_76_ < anInt111 - 1) {
-                            Class40_Sub4 class40_sub4_128_ = class40_sub4s[i][i_76_ + 1];
-                            if(class40_sub4_128_ != null && class40_sub4_128_.aBoolean2077)
+                            SceneTile sceneTile_128_ = sceneTiles[i][i_76_ + 1];
+                            if(sceneTile_128_ != null && sceneTile_128_.aBoolean2077)
                                 continue;
                         }
-                        class40_sub4.aBoolean2077 = false;
+                        sceneTile.aBoolean2077 = false;
                         anInt109--;
-                        Class58 class58 = class40_sub4.aClass58_2060;
+                        Class58 class58 = sceneTile.aClass58_2060;
                         if(class58 != null && class58.anInt1371 != 0) {
                             if(class58.aRenderable_1362 != null)
                                 class58.aRenderable_1362.method755(0, anInt82, anInt110, anInt104, anInt99, class58.anInt1372 - anInt76, (class58.anInt1361 - anInt89 - class58.anInt1371), class58.anInt1355 - anInt98, class58.anInt1366);
@@ -1046,10 +1046,10 @@ public class Scene {
                             if(class58.aRenderable_1353 != null)
                                 class58.aRenderable_1353.method755(0, anInt82, anInt110, anInt104, anInt99, class58.anInt1372 - anInt76, (class58.anInt1361 - anInt89 - class58.anInt1371), class58.anInt1355 - anInt98, class58.anInt1366);
                         }
-                        if(class40_sub4.anInt2064 != 0) {
-                            Class53 class53 = class40_sub4.aClass53_2079;
+                        if(sceneTile.anInt2064 != 0) {
+                            Class53 class53 = sceneTile.aClass53_2079;
                             if(class53 != null && !method111(i_78_, i, i_76_, (class53.aRenderable_1249.anInt2861))) {
-                                if((class53.anInt1242 & class40_sub4.anInt2064) != 0)
+                                if((class53.anInt1242 & sceneTile.anInt2064) != 0)
                                     class53.aRenderable_1249.method755(class53.anInt1252, anInt82, anInt110, anInt104, anInt99, class53.anInt1261 - anInt76, class53.anInt1244 - anInt89, class53.anInt1254 - anInt98, class53.anInt1262);
                                 else if((class53.anInt1242 & 0x300) != 0) {
                                     int i_129_ = class53.anInt1261 - anInt76;
@@ -1078,38 +1078,38 @@ public class Scene {
                                     }
                                 }
                             }
-                            Class10 class10 = class40_sub4.aClass10_2072;
+                            Class10 class10 = sceneTile.aClass10_2072;
                             if(class10 != null) {
-                                if((class10.anInt347 & class40_sub4.anInt2064) != 0 && !method102(i_78_, i, i_76_, class10.anInt347))
+                                if((class10.anInt347 & sceneTile.anInt2064) != 0 && !method102(i_78_, i, i_76_, class10.anInt347))
                                     class10.aRenderable_340.method755(0, anInt82, anInt110, anInt104, anInt99, class10.anInt334 - anInt76, class10.anInt342 - anInt89, class10.anInt355 - anInt98, class10.anInt336);
-                                if((class10.anInt337 & class40_sub4.anInt2064) != 0 && !method102(i_78_, i, i_76_, class10.anInt337))
+                                if((class10.anInt337 & sceneTile.anInt2064) != 0 && !method102(i_78_, i, i_76_, class10.anInt337))
                                     class10.aRenderable_341.method755(0, anInt82, anInt110, anInt104, anInt99, class10.anInt334 - anInt76, class10.anInt342 - anInt89, class10.anInt355 - anInt98, class10.anInt336);
                             }
                         }
                         if(i_77_ < anInt115 - 1) {
-                            Class40_Sub4 class40_sub4_139_ = (aClass40_Sub4ArrayArrayArray75[i_77_ + 1][i][i_76_]);
-                            if(class40_sub4_139_ != null && class40_sub4_139_.aBoolean2077)
-                                aClass45_108.method904(class40_sub4_139_, -88);
+                            SceneTile sceneTile_139_ = (tileArray[i_77_ + 1][i][i_76_]);
+                            if(sceneTile_139_ != null && sceneTile_139_.aBoolean2077)
+                                aClass45_108.method904(sceneTile_139_, -88);
                         }
                         if(i < anInt79) {
-                            Class40_Sub4 class40_sub4_140_ = class40_sub4s[i + 1][i_76_];
-                            if(class40_sub4_140_ != null && class40_sub4_140_.aBoolean2077)
-                                aClass45_108.method904(class40_sub4_140_, 63);
+                            SceneTile sceneTile_140_ = sceneTiles[i + 1][i_76_];
+                            if(sceneTile_140_ != null && sceneTile_140_.aBoolean2077)
+                                aClass45_108.method904(sceneTile_140_, 63);
                         }
                         if(i_76_ < anInt100) {
-                            Class40_Sub4 class40_sub4_141_ = class40_sub4s[i][i_76_ + 1];
-                            if(class40_sub4_141_ != null && class40_sub4_141_.aBoolean2077)
-                                aClass45_108.method904(class40_sub4_141_, -81);
+                            SceneTile sceneTile_141_ = sceneTiles[i][i_76_ + 1];
+                            if(sceneTile_141_ != null && sceneTile_141_.aBoolean2077)
+                                aClass45_108.method904(sceneTile_141_, -81);
                         }
                         if(i > anInt79) {
-                            Class40_Sub4 class40_sub4_142_ = class40_sub4s[i - 1][i_76_];
-                            if(class40_sub4_142_ != null && class40_sub4_142_.aBoolean2077)
-                                aClass45_108.method904(class40_sub4_142_, 89);
+                            SceneTile sceneTile_142_ = sceneTiles[i - 1][i_76_];
+                            if(sceneTile_142_ != null && sceneTile_142_.aBoolean2077)
+                                aClass45_108.method904(sceneTile_142_, 89);
                         }
                         if(i_76_ > anInt100) {
-                            Class40_Sub4 class40_sub4_143_ = class40_sub4s[i][i_76_ - 1];
-                            if(class40_sub4_143_ != null && class40_sub4_143_.aBoolean2077)
-                                aClass45_108.method904(class40_sub4_143_, -125);
+                            SceneTile sceneTile_143_ = sceneTiles[i][i_76_ - 1];
+                            if(sceneTile_143_ != null && sceneTile_143_.aBoolean2077)
+                                aClass45_108.method904(sceneTile_143_, -125);
                         }
                     }
                 }
@@ -1118,11 +1118,11 @@ public class Scene {
     }
 
     public Class19 method107(int arg0, int arg1, int arg2) {
-        Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2];
-        if(class40_sub4 == null)
+        SceneTile sceneTile = tileArray[arg0][arg1][arg2];
+        if(sceneTile == null)
             return null;
-        for(int i = 0; i < class40_sub4.anInt2080; i++) {
-            Class19 class19 = class40_sub4.aClass19Array2065[i];
+        for(int i = 0; i < sceneTile.anInt2080; i++) {
+            Class19 class19 = sceneTile.aClass19Array2065[i];
             if((class19.anInt469 >> 29 & 0x3) == 2 && class19.anInt473 == arg1 && class19.anInt481 == arg2)
                 return class19;
         }
@@ -1141,19 +1141,19 @@ public class Scene {
             class53.anInt1242 = arg5;
             class53.anInt1252 = arg6;
             for(int i = arg0; i >= 0; i--) {
-                if(aClass40_Sub4ArrayArrayArray75[i][arg1][arg2] == null)
-                    aClass40_Sub4ArrayArrayArray75[i][arg1][arg2] = new Class40_Sub4(i, arg1, arg2);
+                if(tileArray[i][arg1][arg2] == null)
+                    tileArray[i][arg1][arg2] = new SceneTile(i, arg1, arg2);
             }
-            aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2].aClass53_2079 = class53;
+            tileArray[arg0][arg1][arg2].aClass53_2079 = class53;
         }
     }
 
     public int method110(int arg0, int arg1, int arg2) {
-        Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2];
-        if(class40_sub4 == null)
+        SceneTile sceneTile = tileArray[arg0][arg1][arg2];
+        if(sceneTile == null)
             return 0;
-        for(int i = 0; i < class40_sub4.anInt2080; i++) {
-            Class19 class19 = class40_sub4.aClass19Array2065[i];
+        for(int i = 0; i < sceneTile.anInt2080; i++) {
+            Class19 class19 = sceneTile.aClass19Array2065[i];
             if((class19.anInt469 >> 29 & 0x3) == 2 && class19.anInt473 == arg1 && class19.anInt481 == arg2)
                 return class19.anInt469;
         }
@@ -1175,9 +1175,9 @@ public class Scene {
     }
 
     public void method115(int arg0, int arg1, int arg2, int arg3) {
-        Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2];
-        if(class40_sub4 != null) {
-            Class53 class53 = class40_sub4.aClass53_2079;
+        SceneTile sceneTile = tileArray[arg0][arg1][arg2];
+        if(sceneTile != null) {
+            Class53 class53 = sceneTile.aClass53_2079;
             if(class53 != null) {
                 int i = arg1 * 128 + 64;
                 int i_150_ = arg2 * 128 + 64;
@@ -1189,34 +1189,34 @@ public class Scene {
 
     public void method117(Model arg0, int arg1, int arg2, int arg3) {
         if(arg2 < anInt97) {
-            Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg1][arg2 + 1][arg3];
-            if(class40_sub4 != null && class40_sub4.aClass25_2075 != null && (class40_sub4.aClass25_2075.aRenderable_600 instanceof Model)) {
-                Model class40_sub5_sub17_sub5 = ((Model) class40_sub4.aClass25_2075.aRenderable_600);
-                if(class40_sub5_sub17_sub5.aClass46Array3174 != null)
+            SceneTile sceneTile = tileArray[arg1][arg2 + 1][arg3];
+            if(sceneTile != null && sceneTile.floorDecoration != null && (sceneTile.floorDecoration.renderable instanceof Model)) {
+                Model class40_sub5_sub17_sub5 = ((Model) sceneTile.floorDecoration.renderable);
+                if(class40_sub5_sub17_sub5.verticesNormal != null)
                     method121(arg0, class40_sub5_sub17_sub5, 128, 0, 0, true);
             }
         }
         if(arg3 < anInt97) {
-            Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg1][arg2][arg3 + 1];
-            if(class40_sub4 != null && class40_sub4.aClass25_2075 != null && (class40_sub4.aClass25_2075.aRenderable_600 instanceof Model)) {
-                Model class40_sub5_sub17_sub5 = ((Model) class40_sub4.aClass25_2075.aRenderable_600);
-                if(class40_sub5_sub17_sub5.aClass46Array3174 != null)
+            SceneTile sceneTile = tileArray[arg1][arg2][arg3 + 1];
+            if(sceneTile != null && sceneTile.floorDecoration != null && (sceneTile.floorDecoration.renderable instanceof Model)) {
+                Model class40_sub5_sub17_sub5 = ((Model) sceneTile.floorDecoration.renderable);
+                if(class40_sub5_sub17_sub5.verticesNormal != null)
                     method121(arg0, class40_sub5_sub17_sub5, 0, 0, 128, true);
             }
         }
         if(arg2 < anInt97 && arg3 < anInt116) {
-            Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg1][arg2 + 1][arg3 + 1];
-            if(class40_sub4 != null && class40_sub4.aClass25_2075 != null && (class40_sub4.aClass25_2075.aRenderable_600 instanceof Model)) {
-                Model class40_sub5_sub17_sub5 = ((Model) class40_sub4.aClass25_2075.aRenderable_600);
-                if(class40_sub5_sub17_sub5.aClass46Array3174 != null)
+            SceneTile sceneTile = tileArray[arg1][arg2 + 1][arg3 + 1];
+            if(sceneTile != null && sceneTile.floorDecoration != null && (sceneTile.floorDecoration.renderable instanceof Model)) {
+                Model class40_sub5_sub17_sub5 = ((Model) sceneTile.floorDecoration.renderable);
+                if(class40_sub5_sub17_sub5.verticesNormal != null)
                     method121(arg0, class40_sub5_sub17_sub5, 128, 0, 128, true);
             }
         }
         if(arg2 < anInt97 && arg3 > 0) {
-            Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg1][arg2 + 1][arg3 - 1];
-            if(class40_sub4 != null && class40_sub4.aClass25_2075 != null && (class40_sub4.aClass25_2075.aRenderable_600 instanceof Model)) {
-                Model class40_sub5_sub17_sub5 = ((Model) class40_sub4.aClass25_2075.aRenderable_600);
-                if(class40_sub5_sub17_sub5.aClass46Array3174 != null)
+            SceneTile sceneTile = tileArray[arg1][arg2 + 1][arg3 - 1];
+            if(sceneTile != null && sceneTile.floorDecoration != null && (sceneTile.floorDecoration.renderable instanceof Model)) {
+                Model class40_sub5_sub17_sub5 = ((Model) sceneTile.floorDecoration.renderable);
+                if(class40_sub5_sub17_sub5.verticesNormal != null)
                     method121(arg0, class40_sub5_sub17_sub5, 128, 0, -128, true);
             }
         }
@@ -1226,16 +1226,16 @@ public class Scene {
         for(int i = 0; i < anInt115; i++) {
             for(int i_151_ = 0; i_151_ < anInt97; i_151_++) {
                 for(int i_152_ = 0; i_152_ < anInt116; i_152_++) {
-                    Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[i][i_151_][i_152_];
-                    if(class40_sub4 != null) {
-                        Class10 class10 = class40_sub4.aClass10_2072;
+                    SceneTile sceneTile = tileArray[i][i_151_][i_152_];
+                    if(sceneTile != null) {
+                        Class10 class10 = sceneTile.aClass10_2072;
                         if(class10 != null && (class10.aRenderable_341 instanceof Model)) {
                             Model class40_sub5_sub17_sub5 = ((Model) class10.aRenderable_341);
-                            if(class40_sub5_sub17_sub5.aClass46Array3174 != null) {
+                            if(class40_sub5_sub17_sub5.verticesNormal != null) {
                                 method129(class40_sub5_sub17_sub5, i, i_151_, i_152_, 1, 1);
                                 if(class10.aRenderable_340 instanceof Model) {
                                     Model class40_sub5_sub17_sub5_153_ = ((Model) class10.aRenderable_340);
-                                    if((class40_sub5_sub17_sub5_153_.aClass46Array3174) != null) {
+                                    if((class40_sub5_sub17_sub5_153_.verticesNormal) != null) {
                                         method129(class40_sub5_sub17_sub5_153_, i, i_151_, i_152_, 1, 1);
                                         method121(class40_sub5_sub17_sub5, class40_sub5_sub17_sub5_153_, 0, 0, 0, false);
                                         class40_sub5_sub17_sub5_153_.method826(arg0, arg1, arg2);
@@ -1244,20 +1244,20 @@ public class Scene {
                                 class40_sub5_sub17_sub5.method826(arg0, arg1, arg2);
                             }
                         }
-                        for(int i_154_ = 0; i_154_ < class40_sub4.anInt2080; i_154_++) {
-                            Class19 class19 = class40_sub4.aClass19Array2065[i_154_];
+                        for(int i_154_ = 0; i_154_ < sceneTile.anInt2080; i_154_++) {
+                            Class19 class19 = sceneTile.aClass19Array2065[i_154_];
                             if(class19 != null && (class19.aRenderable_474 instanceof Model)) {
                                 Model class40_sub5_sub17_sub5 = ((Model) class19.aRenderable_474);
-                                if(class40_sub5_sub17_sub5.aClass46Array3174 != null) {
+                                if(class40_sub5_sub17_sub5.verticesNormal != null) {
                                     method129(class40_sub5_sub17_sub5, i, i_151_, i_152_, (class19.anInt484 - class19.anInt473 + 1), (class19.anInt477 - class19.anInt481 + 1));
                                     class40_sub5_sub17_sub5.method826(arg0, arg1, arg2);
                                 }
                             }
                         }
-                        Class25 class25 = class40_sub4.aClass25_2075;
-                        if(class25 != null && (class25.aRenderable_600 instanceof Model)) {
-                            Model class40_sub5_sub17_sub5 = ((Model) class25.aRenderable_600);
-                            if(class40_sub5_sub17_sub5.aClass46Array3174 != null) {
+                        FloorDecoration floorDecoration = sceneTile.floorDecoration;
+                        if(floorDecoration != null && (floorDecoration.renderable instanceof Model)) {
+                            Model class40_sub5_sub17_sub5 = ((Model) floorDecoration.renderable);
+                            if(class40_sub5_sub17_sub5.verticesNormal != null) {
                                 method117(class40_sub5_sub17_sub5, i, i_151_, i_152_);
                                 class40_sub5_sub17_sub5.method826(arg0, arg1, arg2);
                             }
@@ -1308,30 +1308,30 @@ public class Scene {
         arg1.method822();
         anInt126++;
         int i = 0;
-        int[] is = arg1.anIntArray3188;
-        int i_161_ = arg1.anInt3167;
-        for(int i_162_ = 0; i_162_ < arg0.anInt3167; i_162_++) {
-            Class46 class46 = arg0.aClass46Array3174[i_162_];
-            Class46 class46_163_ = arg0.aClass46Array3172[i_162_];
-            if(class46_163_.anInt1108 != 0) {
-                int i_164_ = arg0.anIntArray3187[i_162_] - arg3;
+        int[] is = arg1.verticesX;
+        int i_161_ = arg1.vertexCount;
+        for(int i_162_ = 0; i_162_ < arg0.vertexCount; i_162_++) {
+            VertexNormal class46 = arg0.verticesNormal[i_162_];
+            VertexNormal class46_163_ = arg0.vertexNormalOffset[i_162_];
+            if(class46_163_.magnitude != 0) {
+                int i_164_ = arg0.verticesY[i_162_] - arg3;
                 if(i_164_ <= arg1.anInt3175) {
-                    int i_165_ = arg0.anIntArray3188[i_162_] - arg2;
+                    int i_165_ = arg0.verticesX[i_162_] - arg2;
                     if(i_165_ >= arg1.anInt3171 && i_165_ <= arg1.anInt3163) {
-                        int i_166_ = arg0.anIntArray3162[i_162_] - arg4;
+                        int i_166_ = arg0.verticesZ[i_162_] - arg4;
                         if(i_166_ >= arg1.anInt3177 && i_166_ <= arg1.anInt3189) {
                             for(int i_167_ = 0; i_167_ < i_161_; i_167_++) {
-                                Class46 class46_168_ = arg1.aClass46Array3174[i_167_];
-                                Class46 class46_169_ = arg1.aClass46Array3172[i_167_];
-                                if(i_165_ == is[i_167_] && i_166_ == arg1.anIntArray3162[i_167_] && i_164_ == arg1.anIntArray3187[i_167_] && class46_169_.anInt1108 != 0) {
-                                    class46.anInt1092 += class46_169_.anInt1092;
-                                    class46.anInt1087 += class46_169_.anInt1087;
-                                    class46.anInt1094 += class46_169_.anInt1094;
-                                    class46.anInt1108 += class46_169_.anInt1108;
-                                    class46_168_.anInt1092 += class46_163_.anInt1092;
-                                    class46_168_.anInt1087 += class46_163_.anInt1087;
-                                    class46_168_.anInt1094 += class46_163_.anInt1094;
-                                    class46_168_.anInt1108 += class46_163_.anInt1108;
+                                VertexNormal class46_168_ = arg1.verticesNormal[i_167_];
+                                VertexNormal class46_169_ = arg1.vertexNormalOffset[i_167_];
+                                if(i_165_ == is[i_167_] && i_166_ == arg1.verticesZ[i_167_] && i_164_ == arg1.verticesY[i_167_] && class46_169_.magnitude != 0) {
+                                    class46.x += class46_169_.x;
+                                    class46.y += class46_169_.y;
+                                    class46.z += class46_169_.z;
+                                    class46.magnitude += class46_169_.magnitude;
+                                    class46_168_.x += class46_163_.x;
+                                    class46_168_.y += class46_163_.y;
+                                    class46_168_.z += class46_163_.z;
+                                    class46_168_.magnitude += class46_163_.magnitude;
                                     i++;
                                     anIntArray127[i_162_] = anInt126;
                                     anIntArray123[i_167_] = anInt126;
@@ -1343,22 +1343,22 @@ public class Scene {
             }
         }
         if(i >= 3 && arg5) {
-            for(int i_170_ = 0; i_170_ < arg0.anInt3168; i_170_++) {
+            for(int i_170_ = 0; i_170_ < arg0.triangleCount; i_170_++) {
                 if(anIntArray127[arg0.anIntArray3182[i_170_]] == anInt126 && anIntArray127[arg0.anIntArray3196[i_170_]] == anInt126 && anIntArray127[arg0.anIntArray3165[i_170_]] == anInt126)
-                    arg0.anIntArray3178[i_170_] = -1;
+                    arg0.triangleDrawType[i_170_] = -1;
             }
-            for(int i_171_ = 0; i_171_ < arg1.anInt3168; i_171_++) {
+            for(int i_171_ = 0; i_171_ < arg1.triangleCount; i_171_++) {
                 if(anIntArray123[arg1.anIntArray3182[i_171_]] == anInt126 && anIntArray123[arg1.anIntArray3196[i_171_]] == anInt126 && anIntArray123[arg1.anIntArray3165[i_171_]] == anInt126)
-                    arg1.anIntArray3178[i_171_] = -1;
+                    arg1.triangleDrawType[i_171_] = -1;
             }
         }
     }
 
     public int method122(int arg0, int arg1, int arg2) {
-        Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2];
-        if(class40_sub4 == null || class40_sub4.aClass10_2072 == null)
+        SceneTile sceneTile = tileArray[arg0][arg1][arg2];
+        if(sceneTile == null || sceneTile.aClass10_2072 == null)
             return 0;
-        return class40_sub4.aClass10_2072.anInt336;
+        return sceneTile.aClass10_2072.anInt336;
     }
 
     public void method123() {
@@ -1474,28 +1474,28 @@ public class Scene {
     }
 
     public void method124(int arg0, int arg1, int arg2) {
-        Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2];
-        if(class40_sub4 != null)
-            class40_sub4.aClass10_2072 = null;
+        SceneTile sceneTile = tileArray[arg0][arg1][arg2];
+        if(sceneTile != null)
+            sceneTile.aClass10_2072 = null;
     }
 
     public void method125(int arg0, int arg1, int arg2) {
-        Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2];
-        if(class40_sub4 != null)
-            class40_sub4.aClass58_2060 = null;
+        SceneTile sceneTile = tileArray[arg0][arg1][arg2];
+        if(sceneTile != null)
+            sceneTile.aClass58_2060 = null;
     }
 
     public Class10 method126(int arg0, int arg1, int arg2) {
-        Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2];
-        if(class40_sub4 == null)
+        SceneTile sceneTile = tileArray[arg0][arg1][arg2];
+        if(sceneTile == null)
             return null;
-        return class40_sub4.aClass10_2072;
+        return sceneTile.aClass10_2072;
     }
 
     public void method127(int arg0, int arg1, int arg2) {
-        Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2];
-        if(class40_sub4 != null)
-            class40_sub4.aClass53_2079 = null;
+        SceneTile sceneTile = tileArray[arg0][arg1][arg2];
+        if(sceneTile != null)
+            sceneTile.aClass53_2079 = null;
     }
 
     public void method128(Class52 arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
@@ -1601,27 +1601,27 @@ public class Scene {
                     if(i_214_ >= 0 && i_214_ < anInt97) {
                         for(int i_215_ = i_211_; i_215_ <= i_212_; i_215_++) {
                             if(i_215_ >= 0 && i_215_ < anInt116 && (!bool || i_214_ >= i_210_ || i_215_ >= i_212_ || i_215_ < arg3 && i_214_ != arg2)) {
-                                Class40_Sub4 class40_sub4 = (aClass40_Sub4ArrayArrayArray75[i_213_][i_214_][i_215_]);
-                                if(class40_sub4 != null) {
+                                SceneTile sceneTile = (tileArray[i_213_][i_214_][i_215_]);
+                                if(sceneTile != null) {
                                     int i_216_ = (((anIntArrayArrayArray105[i_213_][i_214_][i_215_]) + (anIntArrayArrayArray105[i_213_][i_214_ + 1][i_215_]) + (anIntArrayArrayArray105[i_213_][i_214_][i_215_ + 1]) + (anIntArrayArrayArray105[i_213_][i_214_ + 1][i_215_ + 1])) / 4 - ((anIntArrayArrayArray105[arg1][arg2][arg3]) + (anIntArrayArrayArray105[arg1][arg2 + 1][arg3]) + (anIntArrayArrayArray105[arg1][arg2][arg3 + 1]) + (anIntArrayArrayArray105[arg1][arg2 + 1][arg3 + 1])) / 4);
-                                    Class10 class10 = class40_sub4.aClass10_2072;
+                                    Class10 class10 = sceneTile.aClass10_2072;
                                     if(class10 != null) {
                                         if(class10.aRenderable_341 instanceof Model) {
                                             Model class40_sub5_sub17_sub5 = ((Model) (class10.aRenderable_341));
-                                            if((class40_sub5_sub17_sub5.aClass46Array3174) != null)
+                                            if((class40_sub5_sub17_sub5.verticesNormal) != null)
                                                 method121(arg0, class40_sub5_sub17_sub5, ((i_214_ - arg2) * 128 + (1 - arg4) * 64), i_216_, ((i_215_ - arg3) * 128 + (1 - arg5) * 64), bool);
                                         }
                                         if(class10.aRenderable_340 instanceof Model) {
                                             Model class40_sub5_sub17_sub5 = ((Model) (class10.aRenderable_340));
-                                            if((class40_sub5_sub17_sub5.aClass46Array3174) != null)
+                                            if((class40_sub5_sub17_sub5.verticesNormal) != null)
                                                 method121(arg0, class40_sub5_sub17_sub5, ((i_214_ - arg2) * 128 + (1 - arg4) * 64), i_216_, ((i_215_ - arg3) * 128 + (1 - arg5) * 64), bool);
                                         }
                                     }
-                                    for(int i_217_ = 0; i_217_ < class40_sub4.anInt2080; i_217_++) {
-                                        Class19 class19 = (class40_sub4.aClass19Array2065[i_217_]);
+                                    for(int i_217_ = 0; i_217_ < sceneTile.anInt2080; i_217_++) {
+                                        Class19 class19 = (sceneTile.aClass19Array2065[i_217_]);
                                         if(class19 != null && (class19.aRenderable_474 instanceof Model)) {
                                             Model class40_sub5_sub17_sub5 = ((Model) (class19.aRenderable_474));
-                                            if((class40_sub5_sub17_sub5.aClass46Array3174) != null) {
+                                            if((class40_sub5_sub17_sub5.verticesNormal) != null) {
                                                 int i_218_ = (class19.anInt484 - class19.anInt473 + 1);
                                                 int i_219_ = (class19.anInt477 - class19.anInt481 + 1);
                                                 method121(arg0, class40_sub5_sub17_sub5, ((class19.anInt473 - arg2) * 128 + (i_218_ - arg4) * 64), i_216_, ((class19.anInt481 - arg3) * 128 + (i_219_ - arg5) * 64), bool);
@@ -1640,37 +1640,38 @@ public class Scene {
     }
 
     public void method130(int arg0, int arg1, int arg2, int arg3) {
-        Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2];
-        if(class40_sub4 != null)
-            aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2].anInt2063 = arg3;
+        SceneTile sceneTile = tileArray[arg0][arg1][arg2];
+        if(sceneTile != null)
+            tileArray[arg0][arg1][arg2].anInt2063 = arg3;
     }
 
-    public void method131(int arg0, int arg1, int arg2) {
-        Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2];
-        if(class40_sub4 != null)
-            class40_sub4.aClass25_2075 = null;
+    public void method131(int level, int x, int y) {
+        SceneTile sceneTile = tileArray[level][x][y];
+        if(sceneTile != null)
+            sceneTile.floorDecoration = null;
     }
 
-    public void method132(int arg0, int arg1, int arg2, int arg3, Renderable arg4, int arg5, int arg6) {
-        if(arg4 != null) {
-            Class25 class25 = new Class25();
-            class25.aRenderable_600 = arg4;
-            class25.anInt595 = arg1 * 128 + 64;
-            class25.anInt601 = arg2 * 128 + 64;
-            class25.anInt602 = arg3;
-            class25.anInt588 = arg5;
-            class25.anInt587 = arg6;
-            if(aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2] == null)
-                aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2] = new Class40_Sub4(arg0, arg1, arg2);
-            aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2].aClass25_2075 = class25;
+    public void addGroundDecoration(int x, int y, int z, int drawHeight, int hash, Renderable renderable, int config) {
+        if(renderable != null) {
+            FloorDecoration floorDecoration = new FloorDecoration();
+            floorDecoration.renderable = renderable;
+            floorDecoration.x = x * 128 + 64;
+            floorDecoration.y = y * 128 + 64;
+            floorDecoration.z = drawHeight;
+            floorDecoration.hash = hash;
+            floorDecoration.config = config;
+            if(tileArray[z][x][y] == null)
+                tileArray[z][x][y] = new SceneTile(z, x, y);
+            tileArray[z][x][y].floorDecoration = floorDecoration;
         }
     }
 
-    public Class25 method133(int arg0, int arg1, int arg2) {
-        Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2];
-        if(class40_sub4 == null || class40_sub4.aClass25_2075 == null)
+    public FloorDecoration getFloorDecoration(int level, int x, int y) {
+        SceneTile sceneTile = tileArray[level][x][y];
+        if(sceneTile == null || sceneTile.floorDecoration == null) {
             return null;
-        return class40_sub4.aClass25_2075;
+        }
+        return sceneTile.floorDecoration;
     }
 
     public boolean method134(int arg0, int arg1, int arg2, int arg3, int arg4, Renderable arg5, int arg6, int arg7, boolean arg8) {
@@ -1698,10 +1699,10 @@ public class Scene {
     }
 
     public void method135(int arg0, int arg1, int arg2) {
-        Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2];
-        if(class40_sub4 != null) {
-            for(int i = 0; i < class40_sub4.anInt2080; i++) {
-                Class19 class19 = class40_sub4.aClass19Array2065[i];
+        SceneTile sceneTile = tileArray[arg0][arg1][arg2];
+        if(sceneTile != null) {
+            for(int i = 0; i < sceneTile.anInt2080; i++) {
+                Class19 class19 = sceneTile.aClass19Array2065[i];
                 if((class19.anInt469 >> 29 & 0x3) == 2 && class19.anInt473 == arg1 && class19.anInt481 == arg2) {
                     method105(class19);
                     break;
@@ -1714,8 +1715,8 @@ public class Scene {
         anInt103 = arg0;
         for(int i = 0; i < anInt97; i++) {
             for(int i_223_ = 0; i_223_ < anInt116; i_223_++) {
-                if(aClass40_Sub4ArrayArrayArray75[arg0][i][i_223_] == null)
-                    aClass40_Sub4ArrayArrayArray75[arg0][i][i_223_] = new Class40_Sub4(arg0, i, i_223_);
+                if(tileArray[arg0][i][i_223_] == null)
+                    tileArray[arg0][i][i_223_] = new SceneTile(arg0, i, i_223_);
             }
         }
     }
@@ -1794,11 +1795,11 @@ public class Scene {
         class58.aRenderable_1362 = arg6;
         class58.aRenderable_1363 = arg7;
         int i = 0;
-        Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2];
-        if(class40_sub4 != null) {
-            for(int i_241_ = 0; i_241_ < class40_sub4.anInt2080; i_241_++) {
-                if(((class40_sub4.aClass19Array2065[i_241_].anInt471 & 0x100) == 256) && ((class40_sub4.aClass19Array2065[i_241_].aRenderable_474) instanceof Model)) {
-                    Model class40_sub5_sub17_sub5 = ((Model) (class40_sub4.aClass19Array2065[i_241_].aRenderable_474));
+        SceneTile sceneTile = tileArray[arg0][arg1][arg2];
+        if(sceneTile != null) {
+            for(int i_241_ = 0; i_241_ < sceneTile.anInt2080; i_241_++) {
+                if(((sceneTile.aClass19Array2065[i_241_].anInt471 & 0x100) == 256) && ((sceneTile.aClass19Array2065[i_241_].aRenderable_474) instanceof Model)) {
+                    Model class40_sub5_sub17_sub5 = ((Model) (sceneTile.aClass19Array2065[i_241_].aRenderable_474));
                     class40_sub5_sub17_sub5.method799();
                     if(class40_sub5_sub17_sub5.anInt2861 > i)
                         i = class40_sub5_sub17_sub5.anInt2861;
@@ -1806,9 +1807,9 @@ public class Scene {
             }
         }
         class58.anInt1371 = i;
-        if(aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2] == null)
-            aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2] = new Class40_Sub4(arg0, arg1, arg2);
-        aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2].aClass58_2060 = class58;
+        if(tileArray[arg0][arg1][arg2] == null)
+            tileArray[arg0][arg1][arg2] = new SceneTile(arg0, arg1, arg2);
+        tileArray[arg0][arg1][arg2].aClass58_2060 = class58;
     }
 
     public boolean method140(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, Renderable arg8, int arg9, boolean arg10, int arg11, int arg12) {
@@ -1816,8 +1817,8 @@ public class Scene {
             for(int i_242_ = arg2; i_242_ < arg2 + arg4; i_242_++) {
                 if(i < 0 || i_242_ < 0 || i >= anInt97 || i_242_ >= anInt116)
                     return false;
-                Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg0][i][i_242_];
-                if(class40_sub4 != null && class40_sub4.anInt2080 >= 5)
+                SceneTile sceneTile = tileArray[arg0][i][i_242_];
+                if(sceneTile != null && sceneTile.anInt2080 >= 5)
                     return false;
             }
         }
@@ -1846,14 +1847,14 @@ public class Scene {
                 if(i_243_ < arg2 + arg4 - 1)
                     i_244_ += 2;
                 for(int i_245_ = arg0; i_245_ >= 0; i_245_--) {
-                    if(aClass40_Sub4ArrayArrayArray75[i_245_][i][i_243_] == null)
-                        aClass40_Sub4ArrayArrayArray75[i_245_][i][i_243_] = new Class40_Sub4(i_245_, i, i_243_);
+                    if(tileArray[i_245_][i][i_243_] == null)
+                        tileArray[i_245_][i][i_243_] = new SceneTile(i_245_, i, i_243_);
                 }
-                Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg0][i][i_243_];
-                class40_sub4.aClass19Array2065[class40_sub4.anInt2080] = class19;
-                class40_sub4.anIntArray2074[class40_sub4.anInt2080] = i_244_;
-                class40_sub4.anInt2073 |= i_244_;
-                class40_sub4.anInt2080++;
+                SceneTile sceneTile = tileArray[arg0][i][i_243_];
+                sceneTile.aClass19Array2065[sceneTile.anInt2080] = class19;
+                sceneTile.anIntArray2074[sceneTile.anInt2080] = i_244_;
+                sceneTile.anInt2073 |= i_244_;
+                sceneTile.anInt2080++;
             }
         }
         if(arg10)
@@ -1862,18 +1863,18 @@ public class Scene {
     }
 
     public int method141(int arg0, int arg1, int arg2, int arg3) {
-        Class40_Sub4 class40_sub4 = aClass40_Sub4ArrayArrayArray75[arg0][arg1][arg2];
-        if(class40_sub4 == null)
+        SceneTile sceneTile = tileArray[arg0][arg1][arg2];
+        if(sceneTile == null)
             return -1;
-        if(class40_sub4.aClass10_2072 != null && class40_sub4.aClass10_2072.anInt336 == arg3)
-            return class40_sub4.aClass10_2072.anInt348 & 0xff;
-        if(class40_sub4.aClass53_2079 != null && class40_sub4.aClass53_2079.anInt1262 == arg3)
-            return class40_sub4.aClass53_2079.anInt1253 & 0xff;
-        if(class40_sub4.aClass25_2075 != null && class40_sub4.aClass25_2075.anInt588 == arg3)
-            return class40_sub4.aClass25_2075.anInt587 & 0xff;
-        for(int i = 0; i < class40_sub4.anInt2080; i++) {
-            if(class40_sub4.aClass19Array2065[i].anInt469 == arg3)
-                return class40_sub4.aClass19Array2065[i].anInt471 & 0xff;
+        if(sceneTile.aClass10_2072 != null && sceneTile.aClass10_2072.anInt336 == arg3)
+            return sceneTile.aClass10_2072.anInt348 & 0xff;
+        if(sceneTile.aClass53_2079 != null && sceneTile.aClass53_2079.anInt1262 == arg3)
+            return sceneTile.aClass53_2079.anInt1253 & 0xff;
+        if(sceneTile.floorDecoration != null && sceneTile.floorDecoration.hash == arg3)
+            return sceneTile.floorDecoration.config & 0xff;
+        for(int i = 0; i < sceneTile.anInt2080; i++) {
+            if(sceneTile.aClass19Array2065[i].anInt469 == arg3)
+                return sceneTile.aClass19Array2065[i].anInt471 & 0xff;
         }
         return -1;
     }

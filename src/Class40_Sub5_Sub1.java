@@ -55,7 +55,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
             int i = Class40_Sub6.tile_height[arg2][arg9][arg8];
             int i_0_ = Class40_Sub6.tile_height[arg2][1 + arg9][arg8];
             int i_1_ = Class40_Sub6.tile_height[arg2][arg9][1 + arg8];
-            int i_2_ = (Class40_Sub6.tile_height[arg2][arg9 + 1][arg8 - -1]);
+            int i_2_ = (Class40_Sub6.tile_height[arg2][arg9 + 1][arg8 + 1]);
             GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(arg1);
             int i_3_ = i_2_ + i_0_ + (i + i_1_) >> 466559714;
             int i_4_ = (arg7 << 195627366) + arg4;
@@ -70,7 +70,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     renderable = new GameObject(arg1, 22, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
                 else
                     renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, 22, (byte) 124, i_0_);
-                arg5.method132(arg3, arg9, arg8, i_3_, renderable, i_5_, i_4_);
+                arg5.addGroundDecoration(arg9, arg8, arg3, i_3_, i_5_, renderable, i_4_);
                 if(gameObjectDefinition.solid && gameObjectDefinition.hasActions == 1)
                     arg0.markBlocked((byte) -28, arg8, arg9);
             } else if((arg4 ^ 0xffffffff) == -11 || (arg4 ^ 0xffffffff) == -12) {
@@ -124,7 +124,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 if(gameObjectDefinition.solid)
                     arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.aBoolean2528, (byte) 95);
             } else if(arg4 == 2) {
-                int i_9_ = arg7 - -1 & 0x3;
+                int i_9_ = arg7 + 1 & 0x3;
                 Renderable renderable;
                 Renderable renderable_10_;
                 if((gameObjectDefinition.animationId ^ 0xffffffff) != 0 || gameObjectDefinition.childrenIds != null) {
@@ -156,7 +156,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 if(gameObjectDefinition.solid)
                     arg0.method154(arg9, gameObjectDefinition.aBoolean2528, -117, gameObjectDefinition.anInt2515, arg7, arg8, gameObjectDefinition.anInt2503);
             } else {
-                if(gameObjectDefinition.aBoolean2530) {
+                if(gameObjectDefinition.adjustToTerrain) {
                     if((arg7 ^ 0xffffffff) != -2) {
                         if((arg7 ^ 0xffffffff) != -3) {
                             if((arg7 ^ 0xffffffff) == -4) {
@@ -247,7 +247,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
             }
             if(Class57.anInt1338 >= 135 && (Class57.anInt1338 ^ 0xffffffff) >= -236 && (RSString.anInt1668 ^ 0xffffffff) <= -468 && (RSString.anInt1668 ^ 0xffffffff) >= -500) {
                 Class52.aBoolean1221 = true;
-                Class4.anInt185 = (Class4.anInt185 - -1) % 3;
+                Class4.anInt185 = (Class4.anInt185 + 1) % 3;
                 Cache.aBoolean330 = true;
                 Class34.anInt821++;
                 Class32.packetBuffer.putPacket(arg0 ^ ~0x2c88, 32);
@@ -256,7 +256,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 Class32.packetBuffer.put(ItemDefinition.anInt2797, (byte) -128);
             }
             if((Class57.anInt1338 ^ 0xffffffff) <= -274 && Class57.anInt1338 <= 373 && RSString.anInt1668 >= 467 && RSString.anInt1668 <= 499) {
-                ItemDefinition.anInt2797 = (ItemDefinition.anInt2797 - -1) % 3;
+                ItemDefinition.anInt2797 = (ItemDefinition.anInt2797 + 1) % 3;
                 Cache.aBoolean330 = true;
                 Class52.aBoolean1221 = true;
                 Class32.packetBuffer.putPacket(11453, 32);
@@ -285,7 +285,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
             if(Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760 != arg3 && NpcDefinition.anInt2394 < 400) {
                 RSString class1;
                 if(arg3.anInt3257 == 0)
-                    class1 = (Class40_Sub5_Sub17_Sub6.method832(82, (new RSString[]{arg3.aClass1_3278, (Class40_Sub4.method536((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3260), arg3.anInt3260, -122)), HashTable.aClass1_569, Class40_Sub5_Sub2.aClass1_2286, HashTable.method334(arg3.anInt3260, -1), Class51.aClass1_1199})));
+                    class1 = (Class40_Sub5_Sub17_Sub6.method832(82, (new RSString[]{arg3.aClass1_3278, (SceneTile.method536((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3260), arg3.anInt3260, -122)), HashTable.aClass1_569, Class40_Sub5_Sub2.aClass1_2286, HashTable.method334(arg3.anInt3260, -1), Class51.aClass1_1199})));
                 else
                     class1 = (Class40_Sub5_Sub17_Sub6.method832(-60, (new RSString[]{arg3.aClass1_3278, HashTable.aClass1_569, Class26.aClass1_619, HashTable.method334(arg3.anInt3257, -1), Class51.aClass1_1199})));
                 if((Class8.anInt301 ^ 0xffffffff) == -2) {
@@ -293,7 +293,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     Floor.method558(arg4, Main.aClass1_1763, arg0, -501, arg2, 22, (Class40_Sub5_Sub17_Sub6.method832(55, (new RSString[]{NPC.aClass1_3295, Class40_Sub5_Sub17_Sub3.aClass1_3068, class1}))));
                 } else if(Main.anInt1773 == 1) {
                     if((ItemDefinition.anInt2815 & 0x8) == 8) {
-                        Floor.method558(arg4, Class38_Sub1.aClass1_1918, arg0, -501, arg2, 1, (Class40_Sub5_Sub17_Sub6.method832(124, (new RSString[]{Class25.aClass1_611, Class40_Sub5_Sub17_Sub3.aClass1_3068, class1}))));
+                        Floor.method558(arg4, Class38_Sub1.aClass1_1918, arg0, -501, arg2, 1, (Class40_Sub5_Sub17_Sub6.method832(124, (new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub17_Sub3.aClass1_3068, class1}))));
                         Class22_Sub1.anInt1850++;
                     }
                 } else {
@@ -330,7 +330,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 if(arg1 == false) {
                     for(int i = 0; i < NpcDefinition.anInt2394; i++) {
                         if((Class38.anIntArray884[i] ^ 0xffffffff) == -8) {
-                            Landscape.aClass1Array1184[i] = (Class40_Sub5_Sub17_Sub6.method832(-78, new RSString[]{Class22_Sub2.aClass1_1876, Class46.aClass1_1117, Class26.aClass1_620, class1}));
+                            Landscape.aClass1Array1184[i] = (Class40_Sub5_Sub17_Sub6.method832(-78, new RSString[]{Class22_Sub2.aClass1_1876, VertexNormal.aClass1_1117, Class26.aClass1_620, class1}));
                             break;
                         }
                     }

@@ -65,8 +65,8 @@ public class RSRuntimeException extends RuntimeException {
                         SubNode.anInt2081 += CollisionMap.anInt141 * i;
                         int i_0_ = ((-(2000 * CollisionMap.anInt141) + SubNode.anInt2081) / 1000);
                         if((i_0_ ^ 0xffffffff) < -1) {
-                            if(Class25.aClass40_Sub9_608 != null)
-                                Class25.aClass40_Sub9_608.method843(i_0_);
+                            if(FloorDecoration.aClass40_Sub9_608 != null)
+                                FloorDecoration.aClass40_Sub9_608.method843(i_0_);
                             SubNode.anInt2081 -= i_0_ * 1000;
                         }
                     }

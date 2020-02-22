@@ -62,7 +62,7 @@ public class Class40_Sub11 extends Node {
                                 CollisionMap.anInt158++;
                             }
                             Floor.method558(0, Class38.aClass1_885, 0, -501, 0, 51, (Class40_Sub5_Sub17_Sub6.method832(-82, new RSString[]{Class26.aClass1_620, class1})));
-                            Floor.method558(0, Class25.aClass1_591, 0, -501, 0, 45, (Class40_Sub5_Sub17_Sub6.method832(-40, new RSString[]{Class26.aClass1_620, class1})));
+                            Floor.method558(0, FloorDecoration.aClass1_591, 0, -501, 0, 45, (Class40_Sub5_Sub17_Sub6.method832(-40, new RSString[]{Class26.aClass1_620, class1})));
                             Class60.anInt1400++;
                         }
                         i++;
@@ -76,7 +76,7 @@ public class Class40_Sub11 extends Node {
                                 Floor.method558(0, Class22_Sub1.aClass1_1865, 0, -501, 0, 28, (Class40_Sub5_Sub17_Sub6.method832(arg2 + 60, new RSString[]{Class26.aClass1_620, class1})));
                             }
                             Floor.method558(0, Class38.aClass1_885, 0, -501, 0, 51, (Class40_Sub5_Sub17_Sub6.method832(arg2 ^ ~0x4c, new RSString[]{Class26.aClass1_620, class1})));
-                            Floor.method558(0, Class25.aClass1_591, 0, -501, 0, 45, (Class40_Sub5_Sub17_Sub6.method832(arg2 ^ ~0x48, new RSString[]{Class26.aClass1_620, class1})));
+                            Floor.method558(0, FloorDecoration.aClass1_591, 0, -501, 0, 45, (Class40_Sub5_Sub17_Sub6.method832(arg2 ^ ~0x48, new RSString[]{Class26.aClass1_620, class1})));
                             Class60.anInt1400++;
                         }
                     }

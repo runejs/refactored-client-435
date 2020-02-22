@@ -102,7 +102,7 @@ public class Class58 {
                     else
                         arg1.aClass1_2668 = (Class40_Sub5_Sub17_Sub6.method832(-111, (new RSString[]{Landscape.aClass1_1162, Cache.aClass1_333, HashTable.method334(-5000 + (Class40_Sub7.anIntArray2131[i]), -1)})));
                 } else
-                    arg1.aClass1_2668 = (Class40_Sub5_Sub17_Sub6.method832(104, new RSString[]{Class25.aClass1_610, Class27.aClass1_664}));
+                    arg1.aClass1_2668 = (Class40_Sub5_Sub17_Sub6.method832(104, new RSString[]{FloorDecoration.aClass1_610, Class27.aClass1_664}));
                 arg1.anInt2714 = 1;
             }
         } else {
@@ -137,7 +137,7 @@ public class Class58 {
             } else if((i ^ 0xffffffff) == -504) {
                 arg1.anInt2720 = 15 * Class42.anInt1008 + 20;
                 if((arg1.anInt2643 ^ 0xffffffff) <= (arg1.anInt2720 ^ 0xffffffff))
-                    arg1.anInt2720 = arg1.anInt2643 - -1;
+                    arg1.anInt2720 = arg1.anInt2643 + 1;
             } else if(i == 324) {
                 if((Class64.anInt1511 ^ 0xffffffff) == 0) {
                     Class64.anInt1511 = arg1.anInt2744;
@@ -172,7 +172,7 @@ public class Class58 {
                 if((Class19.anInt493 ^ 0xffffffff) <= -2) {
                     if(!Class67.aBoolean1601) {
                         arg1.anInt2647 = 16777215;
-                        arg1.aClass1_2668 = Class46.aClass1_1088;
+                        arg1.aClass1_2668 = VertexNormal.aClass1_1088;
                     } else {
                         arg1.anInt2647 = 16711680;
                         arg1.aClass1_2668 = NpcDefinition.aClass1_2384;
@@ -350,16 +350,16 @@ public class Class58 {
                         }
                         RSFont class40_sub5_sub14_sub1 = Class53.aClass40_Sub5_Sub14_Sub1_1268;
                         Rasterizer.method655(0, 0, 463, 77);
-                        for(int i = 0; ((Class46.anInt1110 ^ 0xffffffff) < (i ^ 0xffffffff)); i++) {
+                        for(int i = 0; ((VertexNormal.anInt1110 ^ 0xffffffff) < (i ^ 0xffffffff)); i++) {
                             int i_14_ = i * 14 + (18 - Class26.anInt617);
                             if((i_14_ ^ 0xffffffff) < -1 && (i_14_ ^ 0xffffffff) > -111)
                                 class40_sub5_sub14_sub1.method686(Class22_Sub1.aClass1Array1844[i], 239, i_14_, 0);
                         }
                         Rasterizer.method662();
-                        if((Class46.anInt1110 ^ 0xffffffff) < -6)
-                            Class27.method355(0, Class26.anInt617, 7 + 14 * Class46.anInt1110, 463, 77, 0);
+                        if((VertexNormal.anInt1110 ^ 0xffffffff) < -6)
+                            Class27.method355(0, Class26.anInt617, 7 + 14 * VertexNormal.anInt1110, 463, 77, 0);
                         if(Class66.aClass1_1543.method59(-3136) != 0) {
-                            if((Class46.anInt1110 ^ 0xffffffff) == -1)
+                            if((VertexNormal.anInt1110 ^ 0xffffffff) == -1)
                                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class40_Sub6.aClass1_2097, 239, 40, 0);
                         } else
                             Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class35.aClass1_1747, 239, 40, 255);

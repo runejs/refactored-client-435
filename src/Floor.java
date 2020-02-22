@@ -91,7 +91,7 @@ public class Floor extends SubNode {
                 if((arg6.method59(-3136) ^ 0xffffffff) >= -1)
                     Landscape.aClass1Array1184[NpcDefinition.anInt2394] = arg1;
                 else
-                    Landscape.aClass1Array1184[NpcDefinition.anInt2394] = Class40_Sub5_Sub17_Sub6.method832(-77, (new RSString[]{arg1, (Class46.aClass1_1117), arg6}));
+                    Landscape.aClass1Array1184[NpcDefinition.anInt2394] = Class40_Sub5_Sub17_Sub6.method832(-77, (new RSString[]{arg1, (VertexNormal.aClass1_1117), arg6}));
                 Class38.anIntArray884[NpcDefinition.anInt2394] = arg5;
                 Class33.anIntArray791[NpcDefinition.anInt2394] = arg0;
                 Class19.anIntArray483[NpcDefinition.anInt2394] = arg4;
@@ -132,14 +132,14 @@ public class Floor extends SubNode {
                     Class68.anInt1634 = 0;
                 }
                 if((arg0 ^ 0xffffffff) == -1 || arg0 == 35) {
-                    Class25.method344(-40);
+                    FloorDecoration.method344(-40);
                     Class38.method440((byte) -73);
                     if(Class68_Sub1.aClass68_2213 == null)
                         Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649(503, 765, Class62.aCanvas1469, -4875);
                 }
                 if((arg0 ^ 0xffffffff) == -6 || arg0 == 10 || arg0 == 20) {
                     Class68_Sub1.aClass68_2213 = null;
-                    Class25.method344(-69);
+                    FloorDecoration.method344(-69);
                     Class40_Sub5_Sub17_Sub3.method779(Class62.aCanvas1469, true, (RSCanvas.aClass6_Sub1_48), (NpcDefinition.aClass6_Sub1_2377));
                 }
                 if(arg0 == 25 || arg0 == 30 || (arg0 ^ 0xffffffff) == -41) {
@@ -158,7 +158,7 @@ public class Floor extends SubNode {
     public static void method560(int arg0, DirectColorSprite arg1, int arg2, int arg3) {
         try {
             anInt2326++;
-            int i = arg0 * arg0 - -(arg3 * arg3);
+            int i = arg0 * arg0 + (arg3 * arg3);
             if((i ^ 0xffffffff) < -4226 && i < 90000) {
                 int i_0_ = 0x7ff & Class58.anInt1373 + Class43.anInt1020;
                 int i_1_ = Model.anIntArray3215[i_0_];
@@ -170,10 +170,10 @@ public class Floor extends SubNode {
                 double d = Math.atan2((double) i_4_, (double) i_3_);
                 int i_5_ = (int) (Math.sin(d) * 63.0);
                 int i_6_ = (int) (57.0 * Math.cos(d));
-                Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub4_2285.method729(-10 + (94 + (i_5_ - -4)), 83 + -i_6_ + -20, 20, 20, 15, 15, d, 256);
+                Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub4_2285.method729(-10 + (94 + (i_5_ + 4)), 83 + -i_6_ + -20, 20, 20, 15, 15, d, 256);
             } else
-                Class40_Sub4.method533(arg3, arg0, arg1, (byte) 66);
-            int i_7_ = -95 / ((arg2 - -37) / 32);
+                SceneTile.method533(arg3, arg0, arg1, (byte) 66);
+            int i_7_ = -95 / ((arg2 + 37) / 32);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, ("fc.F(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ')'));
         }

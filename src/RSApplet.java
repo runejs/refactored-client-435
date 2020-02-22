@@ -135,7 +135,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     int i_4_ = arg0 >= i_2_ ? arg0 : i_2_;
                     if(!class40_sub5_sub12.aBoolean2694)
                         i_1_ -= arg2;
-                    int i_5_ = i_1_ - -class40_sub5_sub12.anInt2692;
+                    int i_5_ = i_1_ + class40_sub5_sub12.anInt2692;
                     int i_6_ = arg4 < i_1_ ? i_1_ : arg4;
                     int i_7_ = arg1 > i_3_ ? i_3_ : arg1;
                     int i_8_ = i_5_ < arg8 ? i_5_ : arg8;
@@ -232,7 +232,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                         ISAAC.aBoolean505 = true;
                         for(int i_13_ = i; i_13_ < Class40_Sub5_Sub17_Sub3.anInt3060; i_13_++) {
                             Class40_Sub11.aClass1Array2147[i_13_] = Class40_Sub11.aClass1Array2147[1 + i_13_];
-                            Class40_Sub7.anIntArray2131[i_13_] = Class40_Sub7.anIntArray2131[i_13_ - -1];
+                            Class40_Sub7.anIntArray2131[i_13_] = Class40_Sub7.anIntArray2131[i_13_ + 1];
                             Class59.aLongArray1397[i_13_] = Class59.aLongArray1397[1 + i_13_];
                         }
                         Class32.packetBuffer.putPacket(11453, 255);
@@ -352,7 +352,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
         try {
             anInt22++;
             if(this == Class4.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255)
-                Class6.aLong219 = Class51.method937(1) - -4000L;
+                Class6.aLong219 = Class51.method937(1) + 4000L;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "RSApplet.stop(" + ')');
         }
@@ -540,7 +540,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     int i = (int) (-l_11_ + l);
                     Class52.anInt1219 = ((i >> -17114751) + 32000) / i;
                 }
-                Class30.anInt681 = Class30.anInt681 - -1 & 0x1f;
+                Class30.anInt681 = Class30.anInt681 + 1 & 0x1f;
                 if(Node.anInt938++ > 50) {
                     Node.anInt938 -= 50;
                     Class40_Sub5_Sub11.aBoolean2631 = true;
@@ -583,7 +583,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     /* empty */
                 }
                 Class67.aLongArray1614[Class62.anInt1468] = l;
-                Class62.anInt1468 = 0x1f & Class62.anInt1468 - -1;
+                Class62.anInt1468 = 0x1f & Class62.anInt1468 + 1;
                 synchronized(this) {
                     HashTable.aBoolean571 = Class52.aBoolean1215;
                 }
@@ -612,7 +612,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 Class35.aFrame1732.setVisible(true);
                 Class35.aFrame1732.toFront();
                 Insets insets = Class35.aFrame1732.getInsets();
-                Class35.aFrame1732.setSize(insets.right + (width - -insets.left), insets.bottom + insets.top + height);
+                Class35.aFrame1732.setSize(insets.right + (width + insets.left), insets.bottom + insets.top + height);
                 Class40_Sub5_Sub17_Sub4.aClass31_3152 = ISAAC.aClass31_521 = new Signlink(true, null, inetAddress, fileStoreId, cacheFolder, cacheIndexes);
                 ISAAC.aClass31_521.method394(1, 0, this);
             } catch(Exception exception) {

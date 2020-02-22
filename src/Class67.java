@@ -173,9 +173,9 @@ public class Class67 {
                 long l_0_ = -1L;
                 if(aLong1578 >= aLong1596 && aLong1578 < (long) anInt1589 + aLong1596)
                     l_0_ = aLong1578;
-                else if(((aLong1596 ^ 0xffffffffffffffffL) <= (aLong1578 ^ 0xffffffffffffffffL)) && aLong1596 < aLong1578 - -(long) arg2)
+                else if(((aLong1596 ^ 0xffffffffffffffffL) <= (aLong1578 ^ 0xffffffffffffffffL)) && aLong1596 < aLong1578 + (long) arg2)
                     l_0_ = aLong1596;
-                if(aLong1596 < aLong1578 - -(long) arg2 && (((long) arg2 + aLong1578 ^ 0xffffffffffffffffL) >= (aLong1596 - -(long) anInt1589 ^ 0xffffffffffffffffL)))
+                if(aLong1596 < aLong1578 + (long) arg2 && (((long) arg2 + aLong1578 ^ 0xffffffffffffffffL) >= (aLong1596 + (long) anInt1589 ^ 0xffffffffffffffffL)))
                     l = (long) arg2 + aLong1578;
                 else if(aLong1596 + (long) anInt1589 > aLong1578 && (((long) anInt1589 + aLong1596 ^ 0xffffffffffffffffL) >= ((long) arg2 + aLong1578 ^ 0xffffffffffffffffL)))
                     l = (long) anInt1589 + aLong1596;
@@ -201,7 +201,7 @@ public class Class67 {
     public void method1035(int arg0, byte arg1, int arg2, byte[] arg3) throws IOException {
         anInt1599++;
         try {
-            if((arg0 - -arg2 ^ 0xffffffff) < (arg3.length ^ 0xffffffff))
+            if((arg0 + arg2 ^ 0xffffffff) < (arg3.length ^ 0xffffffff))
                 throw new ArrayIndexOutOfBoundsException(arg2 + (arg0 - arg3.length));
             if((aLong1593 ^ 0xffffffffffffffffL) != 0L && (aLong1578 ^ 0xffffffffffffffffL) <= (aLong1593 ^ 0xffffffffffffffffL) && (long) arg2 + aLong1578 <= (long) anInt1595 + aLong1593) {
                 Class18.method278(aByteArray1592, (int) (aLong1578 - aLong1593), arg3, arg0, arg2);
@@ -212,7 +212,7 @@ public class Class67 {
             long l = aLong1578;
             int i_2_ = arg0;
             if((aLong1596 ^ 0xffffffffffffffffL) >= (aLong1578 ^ 0xffffffffffffffffL) && (long) anInt1589 + aLong1596 > aLong1578) {
-                int i_3_ = (int) ((long) anInt1589 + (-aLong1578 - -aLong1596));
+                int i_3_ = (int) ((long) anInt1589 + (-aLong1578 + aLong1596));
                 if((i_3_ ^ 0xffffffff) < (arg2 ^ 0xffffffff))
                     i_3_ = arg2;
                 Class18.method278(aByteArray1583, (int) (-aLong1596 + aLong1578), arg3, arg0, i_3_);
@@ -256,13 +256,13 @@ public class Class67 {
                     }
                 }
                 long l_7_ = -1L;
-                if(((aLong1593 - -(long) anInt1595 ^ 0xffffffffffffffffL) < (l ^ 0xffffffffffffffffL)) && (((long) i + l ^ 0xffffffffffffffffL) <= (aLong1593 + (long) anInt1595 ^ 0xffffffffffffffffL)))
+                if(((aLong1593 + (long) anInt1595 ^ 0xffffffffffffffffL) < (l ^ 0xffffffffffffffffL)) && (((long) i + l ^ 0xffffffffffffffffL) <= (aLong1593 + (long) anInt1595 ^ 0xffffffffffffffffL)))
                     l_7_ = (long) anInt1595 + aLong1593;
-                else if(l - -(long) i > aLong1593 && (((long) anInt1595 + aLong1593 ^ 0xffffffffffffffffL) <= (l - -(long) i ^ 0xffffffffffffffffL)))
+                else if(l + (long) i > aLong1593 && (((long) anInt1595 + aLong1593 ^ 0xffffffffffffffffL) <= (l + (long) i ^ 0xffffffffffffffffL)))
                     l_7_ = (long) i + l;
                 long l_8_ = -1L;
                 if((l ^ 0xffffffffffffffffL) < (aLong1593 ^ 0xffffffffffffffffL) || (((long) i + l ^ 0xffffffffffffffffL) >= (aLong1593 ^ 0xffffffffffffffffL))) {
-                    if(aLong1593 <= l && (aLong1593 - -(long) anInt1595 ^ 0xffffffffffffffffL) < (l ^ 0xffffffffffffffffL))
+                    if(aLong1593 <= l && (aLong1593 + (long) anInt1595 ^ 0xffffffffffffffffL) < (l ^ 0xffffffffffffffffL))
                         l_8_ = l;
                 } else
                     l_8_ = aLong1593;
@@ -333,14 +333,14 @@ public class Class67 {
                 if((aLong1604 ^ 0xffffffffffffffffL) > (aLong1600 ^ 0xffffffffffffffffL))
                     aLong1604 = aLong1600;
                 long l = -1L;
-                if(aLong1596 > aLong1593 || ((aLong1593 ^ 0xffffffffffffffffL) <= (aLong1596 - -(long) anInt1589 ^ 0xffffffffffffffffL))) {
+                if(aLong1596 > aLong1593 || ((aLong1593 ^ 0xffffffffffffffffL) <= (aLong1596 + (long) anInt1589 ^ 0xffffffffffffffffL))) {
                     if(aLong1593 <= aLong1596 && aLong1593 + (long) anInt1595 > aLong1596)
                         l = aLong1596;
                 } else
                     l = aLong1593;
                 long l_10_ = -1L;
-                if((long) anInt1595 + aLong1593 <= aLong1596 || ((long) anInt1589 + aLong1596 < aLong1593 - -(long) anInt1595)) {
-                    if((((long) anInt1589 + aLong1596 ^ 0xffffffffffffffffL) < (aLong1593 ^ 0xffffffffffffffffL)) && (((long) anInt1595 + aLong1593 ^ 0xffffffffffffffffL) <= (aLong1596 - -(long) anInt1589 ^ 0xffffffffffffffffL)))
+                if((long) anInt1595 + aLong1593 <= aLong1596 || ((long) anInt1589 + aLong1596 < aLong1593 + (long) anInt1595)) {
+                    if((((long) anInt1589 + aLong1596 ^ 0xffffffffffffffffL) < (aLong1593 ^ 0xffffffffffffffffL)) && (((long) anInt1595 + aLong1593 ^ 0xffffffffffffffffL) <= (aLong1596 + (long) anInt1589 ^ 0xffffffffffffffffL)))
                         l_10_ = (long) anInt1589 + aLong1596;
                 } else
                     l_10_ = aLong1593 + (long) anInt1595;

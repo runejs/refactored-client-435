@@ -151,7 +151,7 @@ public class CollisionMap {
                     while(!bool) {
                         bool = true;
                         for(int i_3_ = 0; Class40_Sub5_Sub17_Sub3.anInt3060 - 1 > i_3_; i_3_++) {
-                            if((((Class40_Sub7.anIntArray2131[i_3_] ^ 0xffffffff) != (Class13.worldid ^ 0xffffffff)) && ((Class13.worldid ^ 0xffffffff) == (Class40_Sub7.anIntArray2131[1 + i_3_] ^ 0xffffffff))) || ((Class40_Sub7.anIntArray2131[i_3_] ^ 0xffffffff) == -1 && (Class40_Sub7.anIntArray2131[i_3_ - -1] ^ 0xffffffff) != -1)) {
+                            if((((Class40_Sub7.anIntArray2131[i_3_] ^ 0xffffffff) != (Class13.worldid ^ 0xffffffff)) && ((Class13.worldid ^ 0xffffffff) == (Class40_Sub7.anIntArray2131[1 + i_3_] ^ 0xffffffff))) || ((Class40_Sub7.anIntArray2131[i_3_] ^ 0xffffffff) == -1 && (Class40_Sub7.anIntArray2131[i_3_ + 1] ^ 0xffffffff) != -1)) {
                                 bool = false;
                                 int i_4_ = Class40_Sub7.anIntArray2131[i_3_];
                                 Class40_Sub7.anIntArray2131[i_3_] = Class40_Sub7.anIntArray2131[i_3_ + 1];
@@ -182,7 +182,7 @@ public class CollisionMap {
                     return true;
                 }
                 if(Class57.packetid == 23) {
-                    Class25.method343(true, 5688);
+                    FloorDecoration.method343(true, 5688);
                     Class57.packetid = -1;
                     return true;
                 }
@@ -469,7 +469,7 @@ public class CollisionMap {
                         }
                     }
                     for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = (Class40_Sub3) Class45.aClass45_1064.method909(-4)) {
-                        if(class40_sub3.anInt2039 >= Class40_Sub6.anInt2119 && (Class40_Sub6.anInt2119 + 8 > class40_sub3.anInt2039) && (class40_sub3.anInt2038 >= Floor.anInt2318) && (Floor.anInt2318 - -8 > class40_sub3.anInt2038) && (Player.anInt3267 == class40_sub3.anInt2018))
+                        if(class40_sub3.anInt2039 >= Class40_Sub6.anInt2119 && (Class40_Sub6.anInt2119 + 8 > class40_sub3.anInt2039) && (class40_sub3.anInt2038 >= Floor.anInt2318) && (Floor.anInt2318 + 8 > class40_sub3.anInt2038) && (Player.anInt3267 == class40_sub3.anInt2018))
                             class40_sub3.anInt2031 = 0;
                     }
                     Class57.packetid = -1;
@@ -786,8 +786,8 @@ public class CollisionMap {
                     Class60.anInt1413 = Cache.outgoingbuffer.method468(arg0);
                     Class22_Sub1.anInt1856 = Cache.outgoingbuffer.method468(false);
                     if((Class22_Sub1.anInt1856 ^ 0xffffffff) <= -101) {
-                        int i_69_ = 128 * HashTable.anInt564 - -64;
-                        int i_70_ = 128 * Class40_Sub5_Sub9.anInt2576 - -64;
+                        int i_69_ = 128 * HashTable.anInt564 + 64;
+                        int i_70_ = 128 * Class40_Sub5_Sub9.anInt2576 + 64;
                         int i_71_ = (Class37.method430((byte) -120, (Player.anInt3267), i_69_, i_70_) - Class38.anInt892);
                         int i_72_ = i_69_ + -Class12.anInt388;
                         int i_73_ = i_70_ + -Class40_Sub5_Sub6.anInt2443;
@@ -960,7 +960,7 @@ public class CollisionMap {
                     long l_89_ = (long) Cache.outgoingbuffer.getTri(true);
                     int i_90_ = Cache.outgoingbuffer.method468(false);
                     boolean bool = false;
-                    long l_91_ = (l_88_ << 2124835616) - -l_89_;
+                    long l_91_ = (l_88_ << 2124835616) + l_89_;
                     for(int i_92_ = 0; i_92_ < 100; i_92_++) {
                         if(l_91_ == Class40_Sub5_Sub13.aLongArray2757[i_92_]) {
                             bool = true;
@@ -1037,7 +1037,7 @@ public class CollisionMap {
                     Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_102_, (byte) -86);
                     class40_sub5_sub12.anInt2656 = class40_sub5_sub12.anInt2649 + i_104_;
                     Class57.packetid = -1;
-                    class40_sub5_sub12.anInt2696 = class40_sub5_sub12.anInt2743 - -i_103_;
+                    class40_sub5_sub12.anInt2696 = class40_sub5_sub12.anInt2743 + i_103_;
                     return true;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -73) {
@@ -1095,7 +1095,7 @@ public class CollisionMap {
                     return true;
                 }
                 if(Class57.packetid == 166) {
-                    Class25.method343(false, 5688);
+                    FloorDecoration.method343(false, 5688);
                     Class57.packetid = -1;
                     return true;
                 }
@@ -1165,10 +1165,10 @@ public class CollisionMap {
     public static int method157(int arg0, int arg1, int arg2) {
         try {
             anInt137++;
-            int i = (Class42.method884(-1 + arg1, -1 + arg2, 37821) - -Class42.method884(1 + arg1, arg2 - 1, 37821) - -Class42.method884(-1 + arg1, 1 + arg2, 37821) + Class42.method884(1 + arg1, arg2 - -1, 37821));
+            int i = (Class42.method884(-1 + arg1, -1 + arg2, 37821) + Class42.method884(1 + arg1, arg2 - 1, 37821) + Class42.method884(-1 + arg1, 1 + arg2, 37821) + Class42.method884(1 + arg1, arg2 + 1, 37821));
             if(arg0 != 0)
                 return 56;
-            int i_126_ = (Class42.method884(arg1 - 1, arg2, 37821) - -Class42.method884(arg1 + 1, arg2, 37821) - (-Class42.method884(arg1, arg2 - 1, 37821) + -Class42.method884(arg1, 1 + arg2, 37821)));
+            int i_126_ = (Class42.method884(arg1 - 1, arg2, 37821) + Class42.method884(arg1 + 1, arg2, 37821) - (-Class42.method884(arg1, arg2 - 1, 37821) + -Class42.method884(arg1, 1 + arg2, 37821)));
             int i_127_ = Class42.method884(arg1, arg2, 37821);
             return i / 16 - (-(i_126_ / 8) - i_127_ / 4);
         } catch(RuntimeException runtimeexception) {
@@ -1245,7 +1245,7 @@ public class CollisionMap {
         if(arg5 == 1 || (arg5 ^ 0xffffffff) == -4) {
             if(arg2 == 0) {
                 method156(arg4, 1, arg1, (byte) 124);
-                method156(arg4 - -1, 16, -1 + arg1, (byte) 124);
+                method156(arg4 + 1, 16, -1 + arg1, (byte) 124);
             }
             if((arg2 ^ 0xffffffff) == -2) {
                 method156(arg4, 4, arg1, (byte) 124);
@@ -1253,7 +1253,7 @@ public class CollisionMap {
             }
             if((arg2 ^ 0xffffffff) == -3) {
                 method156(arg4, 16, arg1, (byte) 124);
-                method156(-1 + arg4, 1, arg1 - -1, (byte) 124);
+                method156(-1 + arg4, 1, arg1 + 1, (byte) 124);
             }
             if((arg2 ^ 0xffffffff) == -4) {
                 method156(arg4, 64, arg1, (byte) 124);
@@ -1264,7 +1264,7 @@ public class CollisionMap {
             if((arg2 ^ 0xffffffff) == -1) {
                 method156(arg4, 130, arg1, (byte) 124);
                 method156(arg4, 8, -1 + arg1, (byte) 124);
-                method156(arg4 - -1, 32, arg1, (byte) 124);
+                method156(arg4 + 1, 32, arg1, (byte) 124);
             }
             if(arg2 == 1) {
                 method156(arg4, 10, arg1, (byte) 124);
@@ -1273,7 +1273,7 @@ public class CollisionMap {
             }
             if(arg2 == 2) {
                 method156(arg4, 40, arg1, (byte) 124);
-                method156(arg4, 128, arg1 - -1, (byte) 124);
+                method156(arg4, 128, arg1 + 1, (byte) 124);
                 method156(-1 + arg4, 2, arg1, (byte) 124);
             }
             if((arg2 ^ 0xffffffff) == -4) {
@@ -1304,7 +1304,7 @@ public class CollisionMap {
             if((arg5 ^ 0xffffffff) == -2 || arg5 == 3) {
                 if((arg2 ^ 0xffffffff) == -1) {
                     method156(arg4, 512, arg1, (byte) 124);
-                    method156(arg4 - -1, 8192, arg1 + -1, (byte) 124);
+                    method156(arg4 + 1, 8192, arg1 + -1, (byte) 124);
                 }
                 if((arg2 ^ 0xffffffff) == -2) {
                     method156(arg4, 2048, arg1, (byte) 124);
@@ -1327,7 +1327,7 @@ public class CollisionMap {
                 }
                 if((arg2 ^ 0xffffffff) == -2) {
                     method156(arg4, 5120, arg1, (byte) 124);
-                    method156(arg4 - -1, 16384, arg1, (byte) 124);
+                    method156(arg4 + 1, 16384, arg1, (byte) 124);
                     method156(arg4, 65536, 1 + arg1, (byte) 124);
                 }
                 if(arg2 == 2) {
@@ -1395,7 +1395,7 @@ public class CollisionMap {
         if((arg1 ^ 0xffffffff) == -2 || arg1 == 3) {
             if(arg2 == 0) {
                 method143(true, arg3, arg0, 1);
-                method143(true, -1 + arg3, arg0 - -1, 16);
+                method143(true, -1 + arg3, arg0 + 1, 16);
             }
             if(arg2 == 1) {
                 method143(true, arg3, arg0, 4);
@@ -1458,7 +1458,7 @@ public class CollisionMap {
                 }
                 if((arg2 ^ 0xffffffff) == -2) {
                     method143(true, arg3, arg0, 2048);
-                    method143(true, arg3 - -1, arg0 - -1, 32768);
+                    method143(true, arg3 + 1, arg0 + 1, 32768);
                 }
                 if((arg2 ^ 0xffffffff) == -3) {
                     method143(true, arg3, arg0, 8192);
@@ -1477,7 +1477,7 @@ public class CollisionMap {
                 }
                 if(arg2 == 1) {
                     method143(true, arg3, arg0, 5120);
-                    method143(true, arg3, arg0 - -1, 16384);
+                    method143(true, arg3, arg0 + 1, 16384);
                     method143(true, 1 + arg3, arg0, 65536);
                 }
                 if(arg2 == 2) {
@@ -1512,8 +1512,8 @@ public class CollisionMap {
             anInt154++;
             if(arg0 > -3)
                 method153(67, -89, 45, -123, -39, -109, -38, -78);
-            int i = arg2 - -arg3 + -1;
-            int i_121_ = -1 + arg4 - -arg1;
+            int i = arg2 + arg3 + -1;
+            int i_121_ = -1 + arg4 + arg1;
             if((arg7 ^ 0xffffffff) <= (arg2 ^ 0xffffffff) && (arg7 ^ 0xffffffff) >= (i ^ 0xffffffff) && (arg6 ^ 0xffffffff) <= (arg4 ^ 0xffffffff) && i_121_ >= arg6)
                 return true;
             if((arg7 ^ 0xffffffff) == (arg2 + -1 ^ 0xffffffff) && (arg6 ^ 0xffffffff) <= (arg4 ^ 0xffffffff) && (i_121_ ^ 0xffffffff) <= (arg6 ^ 0xffffffff) && (anIntArrayArray150[-anInt140 + arg7][-anInt151 + arg6] & 0x8) == 0 && (arg5 & 0x8 ^ 0xffffffff) == -1)
@@ -1542,7 +1542,7 @@ public class CollisionMap {
             int i_123_ = 256;
             if(arg1)
                 i_123_ += 131072;
-            for(int i_124_ = arg0; i_124_ < arg0 - -arg6; i_124_++) {
+            for(int i_124_ = arg0; i_124_ < arg0 + arg6; i_124_++) {
                 if((i_124_ ^ 0xffffffff) <= -1 && i_124_ < anInt153) {
                     for(int i_125_ = arg5; (i_125_ ^ 0xffffffff) > (arg3 + arg5 ^ 0xffffffff); i_125_++) {
                         if((i_125_ ^ 0xffffffff) <= -1 && i_125_ < anInt145)
@@ -1593,7 +1593,7 @@ public class CollisionMap {
                 } else {
                     if(arg6 + -1 == arg0 && (arg3 ^ 0xffffffff) == (arg4 ^ 0xffffffff))
                         return true;
-                    if((arg0 ^ 0xffffffff) == (arg6 ^ 0xffffffff) && (arg3 - -1 ^ 0xffffffff) == (arg4 ^ 0xffffffff) && (anIntArrayArray150[arg0][arg4] & 0x1280120 ^ 0xffffffff) == -1)
+                    if((arg0 ^ 0xffffffff) == (arg6 ^ 0xffffffff) && (arg3 + 1 ^ 0xffffffff) == (arg4 ^ 0xffffffff) && (anIntArrayArray150[arg0][arg4] & 0x1280120 ^ 0xffffffff) == -1)
                         return true;
                     if(arg6 == arg0 && (arg4 ^ 0xffffffff) == (-1 + arg3 ^ 0xffffffff) && (0x1280102 & anIntArrayArray150[arg0][arg4]) == 0)
                         return true;
@@ -1608,7 +1608,7 @@ public class CollisionMap {
                                     return true;
                                 if(arg0 == arg6 && ((arg3 + 1 ^ 0xffffffff) == (arg4 ^ 0xffffffff)) && (0x1280120 & anIntArrayArray150[arg0][arg4]) == 0)
                                     return true;
-                                if((arg6 - -1 ^ 0xffffffff) == (arg0 ^ 0xffffffff) && arg3 == arg4 && (0x1280180 & anIntArrayArray150[arg0][arg4]) == 0)
+                                if((arg6 + 1 ^ 0xffffffff) == (arg0 ^ 0xffffffff) && arg3 == arg4 && (0x1280180 & anIntArrayArray150[arg0][arg4]) == 0)
                                     return true;
                                 if((arg0 ^ 0xffffffff) == (arg6 ^ 0xffffffff) && arg3 + -1 == arg4)
                                     return true;
@@ -1616,7 +1616,7 @@ public class CollisionMap {
                         } else {
                             if((arg0 ^ 0xffffffff) == (arg6 + -1 ^ 0xffffffff) && (arg3 ^ 0xffffffff) == (arg4 ^ 0xffffffff) && (anIntArrayArray150[arg0][arg4] & 0x1280108) == 0)
                                 return true;
-                            if(arg6 == arg0 && arg3 - -1 == arg4 && (0x1280120 & anIntArrayArray150[arg0][arg4]) == 0)
+                            if(arg6 == arg0 && arg3 + 1 == arg4 && (0x1280120 & anIntArrayArray150[arg0][arg4]) == 0)
                                 return true;
                             if(1 + arg6 == arg0 && (arg4 ^ 0xffffffff) == (arg3 ^ 0xffffffff))
                                 return true;
@@ -1636,9 +1636,9 @@ public class CollisionMap {
                 } else {
                     if(arg0 == -1 + arg6 && (arg3 ^ 0xffffffff) == (arg4 ^ 0xffffffff))
                         return true;
-                    if((arg6 ^ 0xffffffff) == (arg0 ^ 0xffffffff) && arg4 == arg3 - -1)
+                    if((arg6 ^ 0xffffffff) == (arg0 ^ 0xffffffff) && arg4 == arg3 + 1)
                         return true;
-                    if(arg0 == arg6 - -1 && arg3 == arg4 && (anIntArrayArray150[arg0][arg4] & 0x1280180 ^ 0xffffffff) == -1)
+                    if(arg0 == arg6 + 1 && arg3 == arg4 && (anIntArrayArray150[arg0][arg4] & 0x1280180 ^ 0xffffffff) == -1)
                         return true;
                     if(arg6 == arg0 && (arg3 - 1 ^ 0xffffffff) == (arg4 ^ 0xffffffff) && (0x1280102 & anIntArrayArray150[arg0][arg4]) == 0)
                         return true;
@@ -1682,7 +1682,7 @@ public class CollisionMap {
             arg0 -= anInt151;
             if((arg6 ^ 0xffffffff) == -7 || (arg6 ^ 0xffffffff) == -8) {
                 if(arg6 == 7)
-                    arg1 = arg1 - -2 & 0x3;
+                    arg1 = arg1 + 2 & 0x3;
                 if((arg1 ^ 0xffffffff) == -1) {
                     if((arg4 ^ 0xffffffff) == (1 + arg3 ^ 0xffffffff) && (arg0 ^ 0xffffffff) == (arg2 ^ 0xffffffff) && (anIntArrayArray150[arg4][arg2] & 0x80) == 0)
                         return true;
@@ -1695,7 +1695,7 @@ public class CollisionMap {
                         if(arg4 == arg3 && arg2 == 1 + arg0 && (0x20 & anIntArrayArray150[arg4][arg2]) == 0)
                             return true;
                     } else if((arg1 ^ 0xffffffff) == -4) {
-                        if(arg3 - -1 == arg4 && arg0 == arg2 && (anIntArrayArray150[arg4][arg2] & 0x80) == 0)
+                        if(arg3 + 1 == arg4 && arg0 == arg2 && (anIntArrayArray150[arg4][arg2] & 0x80) == 0)
                             return true;
                         if((arg3 ^ 0xffffffff) == (arg4 ^ 0xffffffff) && (arg0 + 1 ^ 0xffffffff) == (arg2 ^ 0xffffffff) && (0x20 & anIntArrayArray150[arg4][arg2] ^ 0xffffffff) == -1)
                             return true;

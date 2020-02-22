@@ -86,7 +86,7 @@ public class Class38_Sub1 extends Class38 {
                                     CollisionMap.anInt158++;
                                 }
                                 Floor.method558(0, Class38.aClass1_885, 0, -501, 0, 2051, (Class40_Sub5_Sub17_Sub6.method832(arg0 ^ 0x2613, new RSString[]{Class26.aClass1_620, class1})));
-                                Floor.method558(0, Class25.aClass1_591, 0, arg0 ^ ~0x27d3, 0, 2045, (Class40_Sub5_Sub17_Sub6.method832(arg0 ^ ~0x2660, new RSString[]{Class26.aClass1_620, class1})));
+                                Floor.method558(0, FloorDecoration.aClass1_591, 0, arg0 ^ ~0x27d3, 0, 2045, (Class40_Sub5_Sub17_Sub6.method832(arg0 ^ ~0x2660, new RSString[]{Class26.aClass1_620, class1})));
                                 Class40_Sub5_Sub6.anInt2453++;
                             }
                         }
@@ -248,24 +248,24 @@ public class Class38_Sub1 extends Class38 {
                     Class57.anIntArrayArray1335[-1 + i_11_][i_9_] = 2;
                     Landscape.anIntArrayArray1175[i_11_ - 1][i_9_] = i_13_;
                 }
-                if((i_11_ ^ 0xffffffff) > -104 && (Class57.anIntArrayArray1335[i_11_ - -1][i_9_] ^ 0xffffffff) == -1 && (is[1 + i_11_][i_9_] & 0x1280180) == 0) {
+                if((i_11_ ^ 0xffffffff) > -104 && (Class57.anIntArrayArray1335[i_11_ + 1][i_9_] ^ 0xffffffff) == -1 && (is[1 + i_11_][i_9_] & 0x1280180) == 0) {
                     Class24.anIntArray581[i] = i_11_ + 1;
                     Class10.anIntArray351[i] = i_9_;
                     i = (i + 1) % i_12_;
                     Class57.anIntArrayArray1335[i_11_ + 1][i_9_] = 8;
-                    Landscape.anIntArrayArray1175[i_11_ - -1][i_9_] = i_13_;
+                    Landscape.anIntArrayArray1175[i_11_ + 1][i_9_] = i_13_;
                 }
                 if(i_9_ > 0 && (Class57.anIntArrayArray1335[i_11_][i_9_ - 1] ^ 0xffffffff) == -1 && (is[i_11_][-1 + i_9_] & 0x1280102) == 0) {
                     Class24.anIntArray581[i] = i_11_;
                     Class10.anIntArray351[i] = -1 + i_9_;
                     Class57.anIntArrayArray1335[i_11_][-1 + i_9_] = 1;
-                    i = (i - -1) % i_12_;
+                    i = (i + 1) % i_12_;
                     Landscape.anIntArrayArray1175[i_11_][i_9_ - 1] = i_13_;
                 }
-                if((i_9_ ^ 0xffffffff) > -104 && (Class57.anIntArrayArray1335[i_11_][i_9_ - -1] ^ 0xffffffff) == -1 && (is[i_11_][i_9_ - -1] & 0x1280120 ^ 0xffffffff) == -1) {
+                if((i_9_ ^ 0xffffffff) > -104 && (Class57.anIntArrayArray1335[i_11_][i_9_ + 1] ^ 0xffffffff) == -1 && (is[i_11_][i_9_ + 1] & 0x1280120 ^ 0xffffffff) == -1) {
                     Class24.anIntArray581[i] = i_11_;
                     Class10.anIntArray351[i] = 1 + i_9_;
-                    Class57.anIntArrayArray1335[i_11_][i_9_ - -1] = 4;
+                    Class57.anIntArrayArray1335[i_11_][i_9_ + 1] = 4;
                     Landscape.anIntArrayArray1175[i_11_][1 + i_9_] = i_13_;
                     i = (i + 1) % i_12_;
                 }
@@ -276,23 +276,23 @@ public class Class38_Sub1 extends Class38 {
                     Class57.anIntArrayArray1335[i_11_ + -1][-1 + i_9_] = 3;
                     Landscape.anIntArrayArray1175[-1 + i_11_][i_9_ + -1] = i_13_;
                 }
-                if((i_11_ ^ 0xffffffff) > -104 && i_9_ > 0 && Class57.anIntArrayArray1335[i_11_ - -1][-1 + i_9_] == 0 && ((is[1 + i_11_][-1 + i_9_] & 0x1280183 ^ 0xffffffff) == -1) && (is[i_11_ - -1][i_9_] & 0x1280180) == 0 && (0x1280102 & is[i_11_][-1 + i_9_] ^ 0xffffffff) == -1) {
+                if((i_11_ ^ 0xffffffff) > -104 && i_9_ > 0 && Class57.anIntArrayArray1335[i_11_ + 1][-1 + i_9_] == 0 && ((is[1 + i_11_][-1 + i_9_] & 0x1280183 ^ 0xffffffff) == -1) && (is[i_11_ + 1][i_9_] & 0x1280180) == 0 && (0x1280102 & is[i_11_][-1 + i_9_] ^ 0xffffffff) == -1) {
                     Class24.anIntArray581[i] = 1 + i_11_;
                     Class10.anIntArray351[i] = i_9_ - 1;
                     i = (i + 1) % i_12_;
                     Class57.anIntArrayArray1335[1 + i_11_][-1 + i_9_] = 9;
-                    Landscape.anIntArrayArray1175[i_11_ - -1][-1 + i_9_] = i_13_;
+                    Landscape.anIntArrayArray1175[i_11_ + 1][-1 + i_9_] = i_13_;
                 }
-                if(i_11_ > 0 && i_9_ < 103 && (Class57.anIntArrayArray1335[i_11_ + -1][i_9_ - -1] ^ 0xffffffff) == -1 && ((0x1280138 & is[-1 + i_11_][1 + i_9_] ^ 0xffffffff) == -1) && (0x1280108 & is[i_11_ - 1][i_9_] ^ 0xffffffff) == -1 && (is[i_11_][i_9_ - -1] & 0x1280120) == 0) {
+                if(i_11_ > 0 && i_9_ < 103 && (Class57.anIntArrayArray1335[i_11_ + -1][i_9_ + 1] ^ 0xffffffff) == -1 && ((0x1280138 & is[-1 + i_11_][1 + i_9_] ^ 0xffffffff) == -1) && (0x1280108 & is[i_11_ - 1][i_9_] ^ 0xffffffff) == -1 && (is[i_11_][i_9_ + 1] & 0x1280120) == 0) {
                     Class24.anIntArray581[i] = -1 + i_11_;
                     Class10.anIntArray351[i] = 1 + i_9_;
                     Class57.anIntArrayArray1335[i_11_ - 1][1 + i_9_] = 6;
-                    Landscape.anIntArrayArray1175[-1 + i_11_][i_9_ - -1] = i_13_;
+                    Landscape.anIntArrayArray1175[-1 + i_11_][i_9_ + 1] = i_13_;
                     i = (1 + i) % i_12_;
                 }
-                if(i_11_ < 103 && i_9_ < 103 && (Class57.anIntArrayArray1335[1 + i_11_][1 + i_9_] ^ 0xffffffff) == -1 && (0x12801e0 & is[i_11_ - -1][i_9_ - -1]) == 0 && (0x1280180 & is[1 + i_11_][i_9_]) == 0 && (is[i_11_][1 + i_9_] & 0x1280120 ^ 0xffffffff) == -1) {
+                if(i_11_ < 103 && i_9_ < 103 && (Class57.anIntArrayArray1335[1 + i_11_][1 + i_9_] ^ 0xffffffff) == -1 && (0x12801e0 & is[i_11_ + 1][i_9_ + 1]) == 0 && (0x1280180 & is[1 + i_11_][i_9_]) == 0 && (is[i_11_][1 + i_9_] & 0x1280120 ^ 0xffffffff) == -1) {
                     Class24.anIntArray581[i] = 1 + i_11_;
-                    Class10.anIntArray351[i] = i_9_ - -1;
+                    Class10.anIntArray351[i] = i_9_ + 1;
                     i = (i + 1) % i_12_;
                     Class57.anIntArrayArray1335[1 + i_11_][1 + i_9_] = 12;
                     Landscape.anIntArrayArray1175[1 + i_11_][1 + i_9_] = i_13_;
@@ -305,19 +305,19 @@ public class Class38_Sub1 extends Class38 {
                 int i_14_ = 1000;
                 int i_15_ = 10;
                 int i_16_ = 100;
-                for(int i_17_ = arg3 + -i_15_; arg3 - -i_15_ >= i_17_; i_17_++) {
+                for(int i_17_ = arg3 + -i_15_; arg3 + i_15_ >= i_17_; i_17_++) {
                     for(int i_18_ = -i_15_ + arg10; (arg10 + i_15_ ^ 0xffffffff) <= (i_18_ ^ 0xffffffff); i_18_++) {
                         if((i_17_ ^ 0xffffffff) <= -1 && (i_18_ ^ 0xffffffff) <= -1 && i_17_ < 104 && i_18_ < 104 && (Landscape.anIntArrayArray1175[i_17_][i_18_] < 100)) {
                             int i_19_ = 0;
                             int i_20_ = 0;
                             if(i_18_ < arg10)
                                 i_19_ = arg10 - i_18_;
-                            else if(i_18_ > arg10 - (-arg8 - -1))
-                                i_19_ = i_18_ + -arg8 + -arg10 - -1;
+                            else if(i_18_ > arg10 - (-arg8 + 1))
+                                i_19_ = i_18_ + -arg8 + -arg10 + 1;
                             if(i_17_ < arg3)
                                 i_20_ = -i_17_ + arg3;
                             else if(-1 + arg0 + arg3 < i_17_)
-                                i_20_ = i_17_ + (-arg0 + -arg3 - -1);
+                                i_20_ = i_17_ + (-arg0 + -arg3 + 1);
                             int i_21_ = i_19_ * i_19_ + i_20_ * i_20_;
                             if(i_14_ > i_21_ || ((i_14_ ^ 0xffffffff) == (i_21_ ^ 0xffffffff) && (((Landscape.anIntArrayArray1175[i_17_][i_18_]) ^ 0xffffffff) > (i_16_ ^ 0xffffffff)))) {
                                 i_9_ = i_18_;
@@ -370,14 +370,14 @@ public class Class38_Sub1 extends Class38 {
                 if(arg11 == 1) {
                     Class32.packetBuffer.putPacket(11453, 236);
                     SubNode.anInt2096++;
-                    Class32.packetBuffer.put(14 + i_12_ + i_12_ - -3, (byte) -128);
+                    Class32.packetBuffer.put(14 + i_12_ + i_12_ + 3, (byte) -128);
                 }
                 if(arg11 == 2) {
-                    Class46.anInt1106++;
+                    VertexNormal.anInt1106++;
                     Class32.packetBuffer.putPacket(11453, 89);
-                    Class32.packetBuffer.put(3 + (i_12_ - -i_12_), (byte) -128);
+                    Class32.packetBuffer.put(3 + (i_12_ + i_12_), (byte) -128);
                 }
-                Class32.packetBuffer.method486(14912, i_24_ - -Class26.anInt635);
+                Class32.packetBuffer.method486(14912, i_24_ + Class26.anInt635);
                 Class32.packetBuffer.method496(255, Class40_Sub5_Sub17_Sub3.aBooleanArray3056[82] ? 1 : 0);
                 Class32.packetBuffer.method486(14912, Class40_Sub5_Sub2.anInt2307 + i_25_);
                 Class40_Sub5_Sub4.anInt2366 = Class24.anIntArray581[0];
@@ -419,7 +419,7 @@ public class Class38_Sub1 extends Class38 {
         if(Player.anInt3288 == 2) {
             if(arg0 >= -28)
                 method445(-128);
-            Class22_Sub1.method312(2 * NpcDefinition.anInt2404, (Class35.anInt1730 + (-Class26.anInt635 + Class4.anInt175 << -977811321)), ((Class68.anInt1637 + -Class40_Sub5_Sub2.anInt2307) << 1068913575) - -Landscape.anInt1170, 4976905);
+            Class22_Sub1.method312(2 * NpcDefinition.anInt2404, (Class35.anInt1730 + (-Class26.anInt635 + Class4.anInt175 << -977811321)), ((Class68.anInt1637 + -Class40_Sub5_Sub2.anInt2307) << 1068913575) + Landscape.anInt1170, 4976905);
             if(ISAAC.anInt522 > -1 && Node.anInt926 % 20 < 10)
                 Class40_Sub5_Sub9.aClass40_Sub5_Sub14_Sub4Array2567[0].method721(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
         }
@@ -428,7 +428,7 @@ public class Class38_Sub1 extends Class38 {
     public void method444(int arg0) {
         try {
             anInt1911++;
-            int i = 36 / ((arg0 - -76) / 48);
+            int i = 36 / ((arg0 + 76) / 48);
             for(int i_0_ = 0; i_0_ < 10; i_0_++)
                 aLongArray1910[i_0_] = 0L;
         } catch(RuntimeException runtimeexception) {

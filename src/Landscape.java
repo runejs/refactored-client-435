@@ -213,7 +213,7 @@ public class Landscape {
                             if(is != null) {
                                 int i_13_ = (-Class40_Sub5_Sub2.anInt2307 + (ISAAC.anIntArray528[i_12_] >> 961254632) * 64);
                                 int i_14_ = (64 * (0xff & ISAAC.anIntArray528[i_12_]) - Class26.anInt635);
-                                GameObject.method771(i_13_, NPC.aScene_3301, aCollisionMapArray1167, is, i_14_, (byte) -115);
+                                GameObject.loadObjectBlock(i_13_, NPC.aScene_3301, aCollisionMapArray1167, is, i_14_);
                             }
                         }
                     }
@@ -228,7 +228,7 @@ public class Landscape {
                                         int i_21_ = (i_18_ & 0xffd2c2) >> 1409268174;
                                         int i_22_ = i_18_ >> 887936792 & 0x3;
                                         int i_23_ = (i_18_ & 0x3ffb) >> 561664195;
-                                        int i_24_ = ((i_21_ / 8 << -954331000) - -(i_23_ / 8));
+                                        int i_24_ = ((i_21_ / 8 << -954331000) + (i_23_ / 8));
                                         for(int i_25_ = 0; (i_25_ < ISAAC.anIntArray528.length); i_25_++) {
                                             if(((i_24_ ^ 0xffffffff) == ((ISAAC.anIntArray528[i_25_]) ^ 0xffffffff)) && (RSString.aByteArrayArray1715[i_25_]) != null) {
                                                 Class5.method162(i_17_ * 8, 13941, 8 * (i_21_ & 0x7), i_22_, i_15_, i_16_ * 8, (0x7 & i_23_) * 8, i_20_, (RSString.aByteArrayArray1715[i_25_]), aCollisionMapArray1167);
@@ -259,7 +259,7 @@ public class Landscape {
                                         int i_34_ = 0x3ff & i_32_ >> 1081885454;
                                         int i_35_ = i_32_ >> -2102494207 & 0x3;
                                         int i_36_ = i_32_ >> 2088702243 & 0x7ff;
-                                        int i_37_ = ((i_34_ / 8 << 1879532360) - -(i_36_ / 8));
+                                        int i_37_ = ((i_34_ / 8 << 1879532360) + (i_36_ / 8));
                                         for(int i_38_ = 0; (i_38_ < ISAAC.anIntArray528.length); i_38_++) {
                                             if(i_37_ == (ISAAC.anIntArray528[i_38_]) && (Class52.aByteArrayArray1217[i_38_]) != null) {
                                                 Class24.method341(8 * (i_34_ & 0x7), (NPC.aScene_3301), 0, i_29_, i_35_, i_33_, (Class52.aByteArrayArray1217[i_38_]), 8 * i_31_, aCollisionMapArray1167, 8 * (i_36_ & 0x7), i_30_ * 8);
@@ -280,7 +280,7 @@ public class Landscape {
                         i_39_ = Player.anInt3267;
                     if(i_39_ < -1 + Player.anInt3267)
                         i_39_ = -1 + Player.anInt3267;
-                    if(!Class46.lowMemory)
+                    if(!VertexNormal.lowMemory)
                         NPC.aScene_3301.method136(0);
                     else
                         NPC.aScene_3301.method136(Class64.setZ);
@@ -289,7 +289,7 @@ public class Landscape {
                             Class40_Sub13.method880((byte) -80, i_41_, i_40_);
                     }
                     ISAAC.method285((byte) 118);
-                    Class46.aClass9_1102.method235((byte) -43);
+                    VertexNormal.aClass9_1102.method235((byte) -43);
                     if(Class35.aFrame1732 != null) {
                         Class62.anInt1452++;
                         Class32.packetBuffer.putPacket(11453, 121);
@@ -299,9 +299,9 @@ public class Landscape {
                         int i_42_ = (-6 + Class51.anInt1202) / 8;
                         int i_43_ = (Class17.anInt448 - 6) / 8;
                         int i_44_ = (6 + Class17.anInt448) / 8;
-                        int i_45_ = (Class51.anInt1202 - -6) / 8;
+                        int i_45_ = (Class51.anInt1202 + 6) / 8;
                         for(int i_46_ = -1 + i_42_; i_46_ <= 1 + i_45_; i_46_++) {
-                            for(int i_47_ = -1 + i_43_; i_47_ <= i_44_ - -1; i_47_++) {
+                            for(int i_47_ = -1 + i_43_; i_47_ <= i_44_ + 1; i_47_++) {
                                 if(i_42_ > i_46_ || (i_46_ ^ 0xffffffff) < (i_45_ ^ 0xffffffff) || i_47_ < i_43_ || (i_47_ ^ 0xffffffff) < (i_44_ ^ 0xffffffff)) {
                                     Renderable.aClass6_Sub1_2857.method195(0, (Class40_Sub5_Sub17_Sub6.method832(74, (new RSString[]{Class45.aClass1_1085, HashTable.method334(i_46_, -1), Class8.aClass1_303, HashTable.method334(i_47_, -1)}))));
                                     Renderable.aClass6_Sub1_2857.method195(0, (Class40_Sub5_Sub17_Sub6.method832(-102, (new RSString[]{HashTable.aClass1_553, HashTable.method334(i_46_, -1), Class8.aClass1_303, HashTable.method334(i_47_, -1)}))));
@@ -326,7 +326,7 @@ public class Landscape {
     public static void method934(int arg0, int arg1, int arg2, int arg3, int arg4) {
         try {
             anInt1165++;
-            int i = 63 % ((arg1 - -53) / 57);
+            int i = 63 % ((arg1 + 53) / 57);
             for(Class40_Sub2 class40_sub2 = ((Class40_Sub2) Class40_Sub5_Sub1.aClass45_2268.method902((byte) -90)); class40_sub2 != null; class40_sub2 = (Class40_Sub2) Class40_Sub5_Sub1.aClass45_2268.method909(-4)) {
                 if(class40_sub2.anInt1997 != -1 || class40_sub2.anIntArray2005 != null) {
                     int i_48_ = 0;
@@ -375,7 +375,7 @@ public class Landscape {
                                     Class40_Sub9_Sub2 class40_sub9_sub2 = (Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_49_));
                                     class40_sub9_sub2.method860(0);
                                     Class49.aClass40_Sub9_Sub1_1152.method846(class40_sub9_sub2);
-                                    class40_sub2.anInt2014 = (class40_sub2.anInt2012 - -(int) ((double) (-(class40_sub2.anInt2012) + (class40_sub2.anInt2002)) * Math.random()));
+                                    class40_sub2.anInt2014 = (class40_sub2.anInt2012 + (int) ((double) (-(class40_sub2.anInt2012) + (class40_sub2.anInt2002)) * Math.random()));
                                     class40_sub2.aClass40_Sub9_Sub2_2010 = class40_sub9_sub2;
                                 }
                             }

@@ -365,9 +365,9 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                             i_11_ = 1;
                                         }
                                         class1 = Class66.aClass1_1556.method79(-128);
-                                        if(class1.method75((byte) 116, (Class46.aClass1_1097))) {
+                                        if(class1.method75((byte) 116, (VertexNormal.aClass1_1097))) {
                                             i = 1;
-                                            Class66.aClass1_1556 = (Class66.aClass1_1556.method50((byte) 95, (Class46.aClass1_1097.method59(arg0 + -3138))));
+                                            Class66.aClass1_1556 = (Class66.aClass1_1556.method50((byte) 95, (VertexNormal.aClass1_1097.method59(arg0 + -3138))));
                                         } else if(class1.method75((byte) 116, Class62.aClass1_1474)) {
                                             i = 2;
                                             Class66.aClass1_1556 = (Class66.aClass1_1556.method50((byte) 95, Class62.aClass1_1474.method59(-3136)));
@@ -490,12 +490,12 @@ public class Class40_Sub5_Sub6 extends SubNode {
                 int i = Class19.anInt475;
                 int i_13_ = CollisionMap.anInt168;
                 int i_14_ = Main.anInt1758;
-                int i_15_ = Class46.anInt1086;
+                int i_15_ = VertexNormal.anInt1086;
                 int i_16_ = 6116423;
                 Rasterizer.method656(i, i_14_, i_15_, i_13_, i_16_);
                 Rasterizer.method656(1 + i, 1 + i_14_, -2 + i_15_, 16, 0);
-                Rasterizer.method665(i - -1, 18 + i_14_, -2 + i_15_, -19 + i_13_, 0);
-                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method690(Class40_Sub5_Sub12.aClass1_2684, i - -3, 14 + i_14_, i_16_);
+                Rasterizer.method665(i + 1, 18 + i_14_, -2 + i_15_, -19 + i_13_, 0);
+                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method690(Class40_Sub5_Sub12.aClass1_2684, i + 3, 14 + i_14_, i_16_);
                 int i_17_ = Class13.anInt420;
                 int i_18_ = Landscape.anInt1166;
                 if(Class40_Sub5_Sub17_Sub1.anInt2983 == 0) {
@@ -511,9 +511,9 @@ public class Class40_Sub5_Sub6 extends SubNode {
                     i_17_ -= 17;
                 }
                 for(int i_19_ = 0; i_19_ < NpcDefinition.anInt2394; i_19_++) {
-                    int i_20_ = (15 * (-i_19_ + NpcDefinition.anInt2394 + -1) + i_14_ - -31);
+                    int i_20_ = (15 * (-i_19_ + NpcDefinition.anInt2394 + -1) + i_14_ + 31);
                     int i_21_ = 16777215;
-                    if((i_17_ ^ 0xffffffff) < (i ^ 0xffffffff) && i - -i_15_ > i_17_ && (i_18_ ^ 0xffffffff) < (-13 + i_20_ ^ 0xffffffff) && (i_20_ - -3 ^ 0xffffffff) < (i_18_ ^ 0xffffffff))
+                    if((i_17_ ^ 0xffffffff) < (i ^ 0xffffffff) && i + i_15_ > i_17_ && (i_18_ ^ 0xffffffff) < (-13 + i_20_ ^ 0xffffffff) && (i_20_ + 3 ^ 0xffffffff) < (i_18_ ^ 0xffffffff))
                         i_21_ = 16776960;
                     Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method683(Landscape.aClass1Array1184[i_19_], i + 3, i_20_, i_21_, true);
                 }

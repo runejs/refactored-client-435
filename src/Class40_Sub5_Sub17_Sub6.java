@@ -109,7 +109,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                     class40_sub5_sub17_sub4_sub1.aBoolean3287 = false;
                     int i_2_ = class40_sub5_sub17_sub4_sub1.anInt3098 >> 1455652391;
                     int i_3_ = class40_sub5_sub17_sub4_sub1.anInt3089 >> -130081305;
-                    if(((Class46.lowMemory && (Class60.anInt1407 ^ 0xffffffff) < -51) || (Class60.anInt1407 ^ 0xffffffff) < -201) && !arg1 && ((class40_sub5_sub17_sub4_sub1.anInt3126 ^ 0xffffffff) == (class40_sub5_sub17_sub4_sub1.anInt3077 ^ 0xffffffff)))
+                    if(((VertexNormal.lowMemory && (Class60.anInt1407 ^ 0xffffffff) < -51) || (Class60.anInt1407 ^ 0xffffffff) < -201) && !arg1 && ((class40_sub5_sub17_sub4_sub1.anInt3126 ^ 0xffffffff) == (class40_sub5_sub17_sub4_sub1.anInt3077 ^ 0xffffffff)))
                         class40_sub5_sub17_sub4_sub1.aBoolean3287 = true;
                     if(i_2_ >= 0 && (i_2_ ^ 0xffffffff) > -105 && i_3_ >= 0 && i_3_ < 104) {
                         if((class40_sub5_sub17_sub4_sub1.aClass40_Sub5_Sub17_Sub5_3265) != null && ((class40_sub5_sub17_sub4_sub1.anInt3283 ^ 0xffffffff) >= (Node.anInt926 ^ 0xffffffff)) && (Node.anInt926 < class40_sub5_sub17_sub4_sub1.anInt3274)) {

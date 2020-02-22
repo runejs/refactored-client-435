@@ -113,7 +113,7 @@ public abstract class Class68 {
                     byte[] is = Class40_Sub5_Sub4.aClass6_2349.method172(i_5_, 119, arg0);
                     if(is != null) {
                         Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0][i_5_] = new Class40_Sub5_Sub12();
-                        Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0][i_5_].anInt2689 = (arg0 << 692667152) - -i_5_;
+                        Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0][i_5_].anInt2689 = (arg0 << 692667152) + i_5_;
                         if((is[0] ^ 0xffffffff) == 0)
                             Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0][i_5_].method644((byte) 73, new Buffer(is));
                         else

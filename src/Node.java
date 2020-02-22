@@ -107,12 +107,12 @@ public class Node {
             aClass1_972 = null;
         for(int i = 0; (i ^ 0xffffffff) > -9; i++) {
             for(int i_0_ = 0; (i_0_ ^ 0xffffffff) > -9; i_0_++)
-                Class40_Sub6.tile_height[arg1][arg3 - -i][arg0 - -i_0_] = 0;
+                Class40_Sub6.tile_height[arg1][arg3 + i][arg0 + i_0_] = 0;
         }
         anInt935++;
         if((arg3 ^ 0xffffffff) < -1) {
             for(int i = 1; (i ^ 0xffffffff) > -9; i++)
-                Class40_Sub6.tile_height[arg1][arg3][arg0 - -i] = (Class40_Sub6.tile_height[arg1][-1 + arg3][i + arg0]);
+                Class40_Sub6.tile_height[arg1][arg3][arg0 + i] = (Class40_Sub6.tile_height[arg1][-1 + arg3][i + arg0]);
         }
         if((arg0 ^ 0xffffffff) < -1) {
             for(int i = 1; i < 8; i++)

@@ -127,7 +127,7 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
                                     Class32.packetBuffer.method474((i_8_ + (i_7_ << -1041963898) + (Class22_Sub2.anInt1888 << 164403180)), -126);
                                     Class22_Sub2.anInt1888 = 0;
                                 } else if(Class22_Sub2.anInt1888 < 8) {
-                                    Class32.packetBuffer.putTri((i_6_ + 8388608 - -(Class22_Sub2.anInt1888 << 1170876883)), 13723);
+                                    Class32.packetBuffer.putTri((i_6_ + 8388608 + (Class22_Sub2.anInt1888 << 1170876883)), 13723);
                                     Class22_Sub2.anInt1888 = 0;
                                 } else {
                                     Class32.packetBuffer.putInt(40, ((Class22_Sub2.anInt1888 << 811733811) + -1073741824 + i_6_));
@@ -169,8 +169,8 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
                         l = 4095L;
                     int i_12_ = (int) l;
                     Class32.packetBuffer.putPacket(11453, 234);
-                    int i_13_ = i_10_ * 765 - -i;
-                    Class32.packetBuffer.method494(((i_11_ << -1245872941) + ((i_12_ << 651937044) - -i_13_)), 93);
+                    int i_13_ = i_10_ * 765 + i;
+                    Class32.packetBuffer.method494(((i_11_ << -1245872941) + ((i_12_ << 651937044) + i_13_)), 93);
                 }
                 if(Class19.anInt487 > 0)
                     Class19.anInt487--;
@@ -223,16 +223,16 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
                             }
                         }
                         Class5.anInt199++;
-                        if((Class40_Sub4.anInt2049 ^ 0xffffffff) != -1) {
+                        if((SceneTile.anInt2049 ^ 0xffffffff) != -1) {
                             Buffer.anInt1978++;
-                            if(((Class13.anInt420 ^ 0xffffffff) < (Renderable.anInt2869 - -5 ^ 0xffffffff)) || ((Renderable.anInt2869 + -5 ^ 0xffffffff) < (Class13.anInt420 ^ 0xffffffff)) || ((ItemDefinition.anInt2798 - -5 ^ 0xffffffff) > (Landscape.anInt1166 ^ 0xffffffff)) || (ItemDefinition.anInt2798 - 5 > Landscape.anInt1166))
+                            if(((Class13.anInt420 ^ 0xffffffff) < (Renderable.anInt2869 + 5 ^ 0xffffffff)) || ((Renderable.anInt2869 + -5 ^ 0xffffffff) < (Class13.anInt420 ^ 0xffffffff)) || ((ItemDefinition.anInt2798 + 5 ^ 0xffffffff) > (Landscape.anInt1166 ^ 0xffffffff)) || (ItemDefinition.anInt2798 - 5 > Landscape.anInt1166))
                                 Class40_Sub5_Sub15.aBoolean2784 = true;
                             if((Class40_Sub5_Sub2.anInt2302 ^ 0xffffffff) == -1) {
-                                if((Class40_Sub4.anInt2049 ^ 0xffffffff) == -4)
+                                if((SceneTile.anInt2049 ^ 0xffffffff) == -4)
                                     Class52.aBoolean1221 = true;
-                                if((Class40_Sub4.anInt2049 ^ 0xffffffff) == -3)
+                                if((SceneTile.anInt2049 ^ 0xffffffff) == -3)
                                     ISAAC.aBoolean505 = true;
-                                Class40_Sub4.anInt2049 = 0;
+                                SceneTile.anInt2049 = 0;
                                 if(!Class40_Sub5_Sub15.aBoolean2784 || Buffer.anInt1978 < 5) {
                                     if(((Class68.anInt1630 ^ 0xffffffff) == -2 || (Class33.method409((byte) 63, (NpcDefinition.anInt2394 - 1)))) && NpcDefinition.anInt2394 > 2)
                                         Class60.method990(11451);
@@ -333,13 +333,13 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
                             Class27.method360((byte) 125, 496, i ^ 0xffffffff, 453, Class43.anInt1028, 357, 17);
                         else if(Class48.anInt1138 != -1)
                             Class27.method360((byte) 125, 496, i ^ 0xffffffff, 453, Class48.anInt1138, 357, 17);
-                        if((Class67.anInt1586 ^ 0xffffffff) != 0 || (Class25.anInt614 ^ 0xffffffff) != 0 || HashTable.anInt573 != -1) {
+                        if((Class67.anInt1586 ^ 0xffffffff) != 0 || (FloorDecoration.anInt614 ^ 0xffffffff) != 0 || HashTable.anInt573 != -1) {
                             if(RSString.anInt1711 > Class53.anInt1257) {
                                 Class53.anInt1257++;
                                 if((Class53.anInt1257 ^ 0xffffffff) == (RSString.anInt1711 ^ 0xffffffff)) {
                                     if(Class67.anInt1586 != -1)
                                         Class52.aBoolean1221 = true;
-                                    if(Class25.anInt614 != -1)
+                                    if(FloorDecoration.anInt614 != -1)
                                         ISAAC.aBoolean505 = true;
                                 }
                             }

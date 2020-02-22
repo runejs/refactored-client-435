@@ -84,7 +84,7 @@ public class Class61 {
             if(arg0 != 19655)
                 aClass1_1432 = null;
             SubNode.aClass68_2091.method1046((byte) 90);
-            Class25.aClass40_Sub5_Sub14_Sub2_593.method692(0, 0);
+            FloorDecoration.aClass40_Sub5_Sub14_Sub2_593.method692(0, 0);
             NpcDefinition.anIntArray2386 = R3D.method708(NpcDefinition.anIntArray2386);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ua.A(" + arg0 + ')');
@@ -170,7 +170,7 @@ public class Class61 {
                         if(arg4 == i_1_ && i_1_ > 0)
                             Class40_Sub6.tile_height[0][i_1_][i_0_] = (Class40_Sub6.tile_height[0][-1 + i_1_][i_0_]);
                         if(arg4 + arg3 == i_1_ && (i_1_ ^ 0xffffffff) > -104)
-                            Class40_Sub6.tile_height[0][i_1_][i_0_] = (Class40_Sub6.tile_height[0][i_1_ - -1][i_0_]);
+                            Class40_Sub6.tile_height[0][i_1_][i_0_] = (Class40_Sub6.tile_height[0][i_1_ + 1][i_0_]);
                         if((arg0 ^ 0xffffffff) == (i_0_ ^ 0xffffffff) && i_0_ > 0)
                             Class40_Sub6.tile_height[0][i_1_][i_0_] = (Class40_Sub6.tile_height[0][i_1_][i_0_ + -1]);
                         if(i_0_ == arg0 + arg2 && (i_0_ ^ 0xffffffff) > -104)

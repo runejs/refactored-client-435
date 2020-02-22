@@ -123,7 +123,7 @@ public class Class40_Sub13 extends Node {
                     if(((class40_sub5_sub14_sub4_10_.anIntArray2955[i_14_ + 32 * i_13_]) ^ 0xffffffff) == -1) {
                         if((i_14_ ^ 0xffffffff) < -1 && (class40_sub5_sub14_sub4_10_.anIntArray2955[i_13_ * 32 + (-1 + i_14_)]) > 1)
                             class40_sub5_sub14_sub4_10_.anIntArray2955[i_13_ * 32 + i_14_] = 1;
-                        else if((i_13_ ^ 0xffffffff) < -1 && (class40_sub5_sub14_sub4_10_.anIntArray2955[i_14_ - -((i_13_ + -1) * 32)]) > 1)
+                        else if((i_13_ ^ 0xffffffff) < -1 && (class40_sub5_sub14_sub4_10_.anIntArray2955[i_14_ + ((i_13_ + -1) * 32)]) > 1)
                             class40_sub5_sub14_sub4_10_.anIntArray2955[i_13_ * 32 + i_14_] = 1;
                         else if((i_14_ ^ 0xffffffff) > -32 && (class40_sub5_sub14_sub4_10_.anIntArray2955[i_13_ * 32 + i_14_ + 1]) > 1)
                             class40_sub5_sub14_sub4_10_.anIntArray2955[i_14_ + i_13_ * 32] = 1;
@@ -135,17 +135,17 @@ public class Class40_Sub13 extends Node {
             if((arg3 ^ 0xffffffff) < -1) {
                 for(int i_15_ = 31; i_15_ >= 0; i_15_--) {
                     for(i_13_ = 31; i_13_ >= 0; i_13_--) {
-                        if(((class40_sub5_sub14_sub4_10_.anIntArray2955[i_15_ - -(i_13_ * 32)]) ^ 0xffffffff) == -1) {
+                        if(((class40_sub5_sub14_sub4_10_.anIntArray2955[i_15_ + (i_13_ * 32)]) ^ 0xffffffff) == -1) {
                             if(i_15_ > 0 && ((class40_sub5_sub14_sub4_10_.anIntArray2955[32 * i_13_ + (-1 + i_15_)]) ^ 0xffffffff) == -2)
                                 class40_sub5_sub14_sub4_10_.anIntArray2955[i_15_ + i_13_ * 32] = arg3;
-                            else if(i_13_ <= 0 || ((class40_sub5_sub14_sub4_10_.anIntArray2955[i_15_ - -((i_13_ + -1) * 32)]) ^ 0xffffffff) != -2) {
-                                if((i_15_ ^ 0xffffffff) <= -32 || ((class40_sub5_sub14_sub4_10_.anIntArray2955[1 + i_15_ - -(i_13_ * 32)]) ^ 0xffffffff) != -2) {
+                            else if(i_13_ <= 0 || ((class40_sub5_sub14_sub4_10_.anIntArray2955[i_15_ + ((i_13_ + -1) * 32)]) ^ 0xffffffff) != -2) {
+                                if((i_15_ ^ 0xffffffff) <= -32 || ((class40_sub5_sub14_sub4_10_.anIntArray2955[1 + i_15_ + (i_13_ * 32)]) ^ 0xffffffff) != -2) {
                                     if((i_13_ ^ 0xffffffff) > -32 && ((class40_sub5_sub14_sub4_10_.anIntArray2955[i_15_ + (32 + 32 * i_13_)]) ^ 0xffffffff) == -2)
                                         class40_sub5_sub14_sub4_10_.anIntArray2955[i_13_ * 32 + i_15_] = arg3;
                                 } else
-                                    class40_sub5_sub14_sub4_10_.anIntArray2955[i_15_ - -(i_13_ * 32)] = arg3;
+                                    class40_sub5_sub14_sub4_10_.anIntArray2955[i_15_ + (i_13_ * 32)] = arg3;
                             } else
-                                class40_sub5_sub14_sub4_10_.anIntArray2955[i_15_ - -(i_13_ * 32)] = arg3;
+                                class40_sub5_sub14_sub4_10_.anIntArray2955[i_15_ + (i_13_ * 32)] = arg3;
                         }
                     }
                 }
@@ -242,7 +242,7 @@ public class Class40_Sub13 extends Node {
             for(int i_23_ = 1; (-1 + i_19_ ^ 0xffffffff) < (i_23_ ^ 0xffffffff); i_23_++) {
                 for(int i_24_ = 1; i_24_ < 127; i_24_++) {
                     int i_25_ = (i_23_ << 2116521895) + i_24_;
-                    Class61.anIntArray1445[i_25_] = (Landscape.anIntArray1168[i_25_ - 128] + Landscape.anIntArray1168[i_25_ + -1] + (Landscape.anIntArray1168[i_25_ - -1] - -Landscape.anIntArray1168[128 + i_25_])) / 4;
+                    Class61.anIntArray1445[i_25_] = (Landscape.anIntArray1168[i_25_ - 128] + Landscape.anIntArray1168[i_25_ + -1] + (Landscape.anIntArray1168[i_25_ + 1] + Landscape.anIntArray1168[128 + i_25_])) / 4;
                 }
             }
             int[] is = Landscape.anIntArray1168;
@@ -255,7 +255,7 @@ public class Class40_Sub13 extends Node {
                 for(int i_28_ = 0; (i_28_ ^ 0xffffffff) > (arg1.anInt2921 ^ 0xffffffff); i_28_++) {
                     if((arg1.aByteArray2925[i_26_++] ^ 0xffffffff) != -1) {
                         int i_29_ = arg1.anInt2927 + i_27_ + 16;
-                        int i_30_ = arg1.anInt2928 + (i_28_ - -16);
+                        int i_30_ = arg1.anInt2928 + (i_28_ + 16);
                         int i_31_ = i_30_ + (i_29_ << 692888135);
                         Landscape.anIntArray1168[i_31_] = 0;
                     }

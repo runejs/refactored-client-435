@@ -105,7 +105,7 @@ public class Class64 implements Runnable {
             if(arg0 != false)
                 method1013(false);
             if((Class8.anInt301 ^ 0xffffffff) == -1 && Main.anInt1773 == 0) {
-                Class46.anInt1091++;
+                VertexNormal.anInt1091++;
                 Floor.method558(0, Class22_Sub2.aClass1_1876, Landscape.anInt1166, -501, Class13.anInt420, 7, Class66.aClass1_1567);
             }
             int i_1_ = 0;
@@ -153,7 +153,7 @@ public class Class64 implements Runnable {
                             Floor.method558(gameObjectDefinition.anInt2538 << 2045308238, Class40_Sub5_Sub15.aClass1_2774, i_4_, -501, i_3_, 1004, (Class40_Sub5_Sub17_Sub6.method832(113, (new RSString[]{Renderable.aClass1_2862, gameObjectDefinition.aClass1_2549}))));
                         } else if((ItemDefinition.anInt2815 & 0x4) == 4) {
                             Renderable.anInt2863++;
-                            Floor.method558(i_2_, Class38_Sub1.aClass1_1918, i_4_, -501, i_3_, 32, (Class40_Sub5_Sub17_Sub6.method832(111, (new RSString[]{Class25.aClass1_611, Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.aClass1_2549}))));
+                            Floor.method558(i_2_, Class38_Sub1.aClass1_1918, i_4_, -501, i_3_, 32, (Class40_Sub5_Sub17_Sub6.method832(111, (new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.aClass1_2549}))));
                         }
                     }
                     if(i_5_ == 1) {
@@ -205,7 +205,7 @@ public class Class64 implements Runnable {
                                         if(class1s == null || class1s[i_15_] == null) {
                                             if(i_15_ == 2) {
                                                 Class10.anInt339++;
-                                                Floor.method558((class40_sub5_sub17_sub3.anInt3067), Class27.takeStringInstance, i_4_, -501, i_3_, 3, (Class40_Sub5_Sub17_Sub6.method832(123, (new RSString[]{Class46.aClass1_1114, (class40_sub5_sub16.aClass1_2796)}))));
+                                                Floor.method558((class40_sub5_sub17_sub3.anInt3067), Class27.takeStringInstance, i_4_, -501, i_3_, 3, (Class40_Sub5_Sub17_Sub6.method832(123, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.aClass1_2796)}))));
                                             }
                                         } else {
                                             Floor.anInt2331++;
@@ -220,12 +220,12 @@ public class Class64 implements Runnable {
                                                 i_16_ = 8;
                                             if(i_15_ == 4)
                                                 i_16_ = 36;
-                                            Floor.method558((class40_sub5_sub17_sub3.anInt3067), class1s[i_15_], i_4_, -501, i_3_, i_16_, (Class40_Sub5_Sub17_Sub6.method832(-97, (new RSString[]{Class46.aClass1_1114, (class40_sub5_sub16.aClass1_2796)}))));
+                                            Floor.method558((class40_sub5_sub17_sub3.anInt3067), class1s[i_15_], i_4_, -501, i_3_, i_16_, (Class40_Sub5_Sub17_Sub6.method832(-97, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.aClass1_2796)}))));
                                         }
                                     }
-                                    Floor.method558(class40_sub5_sub17_sub3.anInt3067, Class40_Sub5_Sub15.aClass1_2774, i_4_, -501, i_3_, 1003, (Class40_Sub5_Sub17_Sub6.method832(89, new RSString[]{Class46.aClass1_1114, (class40_sub5_sub16.aClass1_2796)})));
+                                    Floor.method558(class40_sub5_sub17_sub3.anInt3067, Class40_Sub5_Sub15.aClass1_2774, i_4_, -501, i_3_, 1003, (Class40_Sub5_Sub17_Sub6.method832(89, new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.aClass1_2796)})));
                                 } else if((0x1 & ItemDefinition.anInt2815) == 1) {
-                                    Floor.method558(class40_sub5_sub17_sub3.anInt3067, Class38_Sub1.aClass1_1918, i_4_, -501, i_3_, 15, (Class40_Sub5_Sub17_Sub6.method832(-67, new RSString[]{Class25.aClass1_611, Class5.aClass1_206, (class40_sub5_sub16.aClass1_2796)})));
+                                    Floor.method558(class40_sub5_sub17_sub3.anInt3067, Class38_Sub1.aClass1_1918, i_4_, -501, i_3_, 15, (Class40_Sub5_Sub17_Sub6.method832(-67, new RSString[]{FloorDecoration.aClass1_611, Class5.aClass1_206, (class40_sub5_sub16.aClass1_2796)})));
                                     Class58.anInt1368++;
                                 }
                             }

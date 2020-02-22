@@ -1,10 +1,10 @@
-/* Class40_Sub4 - Decompiled by JODE
+/* SceneTile - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
 import java.nio.charset.StandardCharsets;
 
-public class Class40_Sub4 extends Node {
+public class SceneTile extends Node {
     public static int anInt2040;
     public static int anInt2041;
     public static RSString aClass1_2042;
@@ -37,7 +37,7 @@ public class Class40_Sub4 extends Node {
         aClass1_2054 = aClass1_2055;
     }
 
-    public Class40_Sub4 aClass40_Sub4_2058;
+    public SceneTile aSceneTile_2058;
     public int anInt2059;
     public Class58 aClass58_2060;
     public int anInt2061;
@@ -54,14 +54,14 @@ public class Class40_Sub4 extends Node {
     public Class10 aClass10_2072;
     public int anInt2073;
     public int[] anIntArray2074 = new int[5];
-    public Class25 aClass25_2075;
+    public FloorDecoration floorDecoration;
     public int anInt2076;
     public boolean aBoolean2077;
     public int anInt2078;
     public Class53 aClass53_2079;
     public int anInt2080;
 
-    public Class40_Sub4(int arg0, int arg1, int arg2) {
+    public SceneTile(int arg0, int arg1, int arg2) {
         anInt2073 = 0;
         try {
             anInt2061 = arg1;
@@ -106,7 +106,7 @@ public class Class40_Sub4 extends Node {
                     int i = arg2.method60(SubNode.aClass1_2090, 32);
                     if(i == -1)
                         break;
-                    arg2 = (Class40_Sub5_Sub17_Sub6.method832(-43, (new RSString[]{arg2.method68(0, 0, i), (Class40_Sub11.method872(999999999, Class66.method1029(4, false, arg1))), arg2.method50((byte) 95, i - -2)})));
+                    arg2 = (Class40_Sub5_Sub17_Sub6.method832(-43, (new RSString[]{arg2.method68(0, 0, i), (Class40_Sub11.method872(999999999, Class66.method1029(4, false, arg1))), arg2.method50((byte) 95, i + 2)})));
                 }
                 for(; ; ) {
                     int i = arg2.method60(GameObjectDefinition.aClass1_2526, arg0 ^ 0x34);
@@ -182,7 +182,7 @@ public class Class40_Sub4 extends Node {
                 return null;
             int i = -arg1 + arg0;
             if((i ^ 0xffffffff) > 8)
-                return Class25.aClass1_610;
+                return FloorDecoration.aClass1_610;
             if((i ^ 0xffffffff) > 5)
                 return Class29.aClass1_670;
             if(i < -3)
@@ -209,11 +209,11 @@ public class Class40_Sub4 extends Node {
             if(NpcDefinition.anInt2394 >= 2 || (Class8.anInt301 ^ 0xffffffff) != -1 || (Main.anInt1773 ^ 0xffffffff) != -1) {
                 RSString class1;
                 if(Class8.anInt301 == 1 && (NpcDefinition.anInt2394 ^ 0xffffffff) > -3)
-                    class1 = (Class40_Sub5_Sub17_Sub6.method832(-74, (new RSString[]{Main.aClass1_1763, Class46.aClass1_1117, NPC.aClass1_3295, Class38.aClass1_894})));
+                    class1 = (Class40_Sub5_Sub17_Sub6.method832(-74, (new RSString[]{Main.aClass1_1763, VertexNormal.aClass1_1117, NPC.aClass1_3295, Class38.aClass1_894})));
                 else if(Main.anInt1773 != 1 || NpcDefinition.anInt2394 >= 2)
                     class1 = (Landscape.aClass1Array1184[-1 + NpcDefinition.anInt2394]);
                 else
-                    class1 = (Class40_Sub5_Sub17_Sub6.method832(-57, new RSString[]{Class38_Sub1.aClass1_1918, Class46.aClass1_1117, Class25.aClass1_611, Class38.aClass1_894}));
+                    class1 = (Class40_Sub5_Sub17_Sub6.method832(-57, new RSString[]{Class38_Sub1.aClass1_1918, VertexNormal.aClass1_1117, FloorDecoration.aClass1_611, Class38.aClass1_894}));
                 if((NpcDefinition.anInt2394 ^ 0xffffffff) < -3)
                     class1 = (Class40_Sub5_Sub17_Sub6.method832(56, new RSString[]{class1, Class53.aClass1_1243, HashTable.method334((NpcDefinition.anInt2394) + -2, -1), Class39.aClass1_904}));
                 if(arg0 == 4)

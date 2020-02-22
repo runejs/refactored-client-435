@@ -12,7 +12,6 @@ public class GameObjectDefinition extends SubNode {
     public static int anInt2531;
     public static int anInt2532;
     public static int anInt2535;
-    public static int anInt2539;
     public static int anInt2543 = 0;
     public static HashTable aClass23_2545 = new HashTable(4096);
     public static int anInt2550;
@@ -53,14 +52,14 @@ public class GameObjectDefinition extends SubNode {
     public int anInt2517;
     public boolean aBoolean2518;
     public int anInt2519;
-    public boolean aBoolean2520;
+    public boolean nonFlatShading;
     public boolean aBoolean2521;
     public int[] anIntArray2522;
     public int[] anIntArray2523;
     public int[] anIntArray2525;
     public int anInt2527;
     public boolean aBoolean2528;
-    public boolean aBoolean2530;
+    public boolean adjustToTerrain;
     public int anInt2533;
     public int[] childrenIds;
     public int anInt2536;
@@ -71,7 +70,7 @@ public class GameObjectDefinition extends SubNode {
     public int anInt2542;
     public int anInt2544;
     public int hasActions;
-    public boolean aBoolean2547;
+    public boolean unknown;
     public int anInt2548;
     public RSString aClass1_2549;
     public boolean aBoolean2553;
@@ -85,7 +84,7 @@ public class GameObjectDefinition extends SubNode {
         anInt2507 = 128;
         aBoolean2518 = false;
         aBoolean2521 = false;
-        aBoolean2530 = false;
+        adjustToTerrain = false;
         anInt2533 = -1;
         animationId = -1;
         anInt2505 = 16;
@@ -95,11 +94,11 @@ public class GameObjectDefinition extends SubNode {
         anInt2515 = 1;
         anInt2542 = 0;
         anInt2504 = 0;
-        aBoolean2520 = false;
+        nonFlatShading = false;
         anInt2537 = -1;
         aBoolean2528 = true;
         anInt2503 = 1;
-        aBoolean2547 = false;
+        unknown = false;
         anInt2540 = 128;
         aClass1_2549 = Class44.aClass1_1043;
         aBoolean2541 = true;
@@ -184,7 +183,7 @@ public class GameObjectDefinition extends SubNode {
 
     public static GameObjectDefinition getDefinition(int arg0) {
         GameObjectDefinition gameObjectDefinition = ((GameObjectDefinition) Class58.aClass9_1364.method231((long) arg0, (byte) 61));
-        Class40_Sub4.anInt2040++;
+        SceneTile.anInt2040++;
         if(gameObjectDefinition != null)
             return gameObjectDefinition;
         byte[] is = Class40_Sub3.aClass6_2037.method172(arg0, 113, 6);
@@ -203,39 +202,35 @@ public class GameObjectDefinition extends SubNode {
     }
 
     public Model getGameObjectModel(int arg0, int arg1, int arg2, int arg3, int arg4, byte arg5, int arg6) {
-        try {
-            anInt2539++;
-            long l;
-            if(anIntArray2522 == null)
-                l = (long) ((anInt2538 << 1723242090) - -arg2);
-            else
-                l = (long) (arg2 + ((anInt2538 << -855239862) + (arg4 << 399635491)));
-            if(arg5 != 124)
-                aClass1Array2508 = null;
-            Model class40_sub5_sub17_sub5 = ((Model) Class19.aClass9_470.method231(l, (byte) 87));
-            if(class40_sub5_sub17_sub5 == null) {
-                class40_sub5_sub17_sub5 = method606(!aBoolean2520, (byte) -61, false, arg2, arg4);
-                if(class40_sub5_sub17_sub5 == null)
-                    return null;
-                Class19.aClass9_470.method230(-7208, l, class40_sub5_sub17_sub5);
-            }
-            if(aBoolean2530 || aBoolean2520)
-                class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5, aBoolean2530, aBoolean2520);
-            if(aBoolean2530) {
-                int i = (arg0 + arg6 + (arg3 + arg1)) / 4;
-                for(int i_0_ = 0; class40_sub5_sub17_sub5.anInt3167 > i_0_; i_0_++) {
-                    int i_1_ = class40_sub5_sub17_sub5.anIntArray3188[i_0_];
-                    int i_2_ = class40_sub5_sub17_sub5.anIntArray3162[i_0_];
-                    int i_3_ = arg3 - -((64 + i_1_) * (arg6 + -arg3) / 128);
-                    int i_4_ = arg1 - -((64 + i_1_) * (-arg1 + arg0) / 128);
-                    int i_5_ = i_3_ + (i_2_ - -64) * (-i_3_ + i_4_) / 128;
-                    class40_sub5_sub17_sub5.anIntArray3187[i_0_] += i_5_ + -i;
-                }
-            }
-            return class40_sub5_sub17_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ia.C(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ')'));
+        long l;
+        if(anIntArray2522 == null)
+            l = (long) ((anInt2538 << 1723242090) + arg2);
+        else
+            l = (long) (arg2 + ((anInt2538 << -855239862) + (arg4 << 399635491)));
+        if(arg5 != 124)
+            aClass1Array2508 = null;
+        Model model = ((Model) Class19.aClass9_470.method231(l, (byte) 87));
+        if(model == null) {
+            model = method606(!nonFlatShading, (byte) -61, false, arg2, arg4);
+            if(model == null)
+                return null;
+            Class19.aClass9_470.method230(-7208, l, model);
         }
+        if(adjustToTerrain || nonFlatShading)
+            model = new Model(adjustToTerrain, nonFlatShading, model);
+        if(adjustToTerrain) {
+            int i = (arg0 + arg6 + (arg3 + arg1)) / 4;
+            for(int i_0_ = 0; model.vertexCount > i_0_; i_0_++) {
+                int i_1_ = model.verticesX[i_0_];
+                int i_2_ = model.verticesZ[i_0_];
+                int i_3_ = arg3 + ((64 + i_1_) * (arg6 + -arg3) / 128);
+                int i_4_ = arg1 + ((64 + i_1_) * (-arg1 + arg0) / 128);
+                int i_5_ = i_3_ + (i_2_ + 64) * (-i_3_ + i_4_) / 128;
+                model.verticesY[i_0_] += i_5_ + -i;
+            }
+        }
+        return model;
+
     }
 
     public boolean method601(byte arg0) {
@@ -303,14 +298,14 @@ public class GameObjectDefinition extends SubNode {
                     int i_8_ = anIntArray2525[i_7_];
                     if(bool)
                         i_8_ += 65536;
-                    class40_sub5_sub17_sub5 = ((Model) Class46.aClass9_1102.method231((long) i_8_, (byte) 122));
+                    class40_sub5_sub17_sub5 = ((Model) VertexNormal.aClass9_1102.method231((long) i_8_, (byte) 122));
                     if(class40_sub5_sub17_sub5 == null) {
                         class40_sub5_sub17_sub5 = (Model.method830(RSString.aClass6_1705, i_8_ & 0xffff, 0));
                         if(class40_sub5_sub17_sub5 == null)
                             return null;
                         if(bool)
                             class40_sub5_sub17_sub5.method818();
-                        Class46.aClass9_1102.method230(-7208, (long) i_8_, class40_sub5_sub17_sub5);
+                        VertexNormal.aClass9_1102.method230(-7208, (long) i_8_, class40_sub5_sub17_sub5);
                     }
                     if(i > 1)
                         Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub5Array2762[i_7_] = class40_sub5_sub17_sub5;
@@ -331,14 +326,14 @@ public class GameObjectDefinition extends SubNode {
                 boolean bool = aBoolean2553 ^ arg3 > 3;
                 if(bool)
                     i_10_ += 65536;
-                class40_sub5_sub17_sub5 = ((Model) Class46.aClass9_1102.method231((long) i_10_, (byte) 48));
+                class40_sub5_sub17_sub5 = ((Model) VertexNormal.aClass9_1102.method231((long) i_10_, (byte) 48));
                 if(class40_sub5_sub17_sub5 == null) {
                     class40_sub5_sub17_sub5 = Model.method830((RSString.aClass6_1705), 0xffff & i_10_, 0);
                     if(class40_sub5_sub17_sub5 == null)
                         return null;
                     if(bool)
                         class40_sub5_sub17_sub5.method818();
-                    Class46.aClass9_1102.method230(-7208, (long) i_10_, class40_sub5_sub17_sub5);
+                    VertexNormal.aClass9_1102.method230(-7208, (long) i_10_, class40_sub5_sub17_sub5);
                 }
             }
             boolean bool;
@@ -366,7 +361,7 @@ public class GameObjectDefinition extends SubNode {
                 class40_sub5_sub17_sub5_12_.method828(anInt2500, anInt2519, anInt2504);
             if(arg2)
                 class40_sub5_sub17_sub5_12_.method810();
-            class40_sub5_sub17_sub5_12_.method802(anInt2527 + 64, 768 - -(anInt2544 * 5), -50, -10, -50, arg0);
+            class40_sub5_sub17_sub5_12_.method802(anInt2527 + 64, 768 + (anInt2544 * 5), -50, -10, -50, arg0);
             return class40_sub5_sub17_sub5_12_;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, ("ia.E(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ')'));
@@ -388,7 +383,7 @@ public class GameObjectDefinition extends SubNode {
                     return null;
                 Class49.aClass9_1145.method230(-7208, l, class40_sub5_sub17_sub5);
             }
-            if(arg6 == null && !aBoolean2530)
+            if(arg6 == null && !adjustToTerrain)
                 return class40_sub5_sub17_sub5;
             if(arg6 != null)
                 class40_sub5_sub17_sub5 = arg6.method593(arg3, false, class40_sub5_sub17_sub5, arg5);
@@ -396,15 +391,15 @@ public class GameObjectDefinition extends SubNode {
                 class40_sub5_sub17_sub5 = class40_sub5_sub17_sub5.method817(true);
             if(arg1 < 54)
                 return null;
-            if(aBoolean2530) {
+            if(adjustToTerrain) {
                 int i = (arg2 + arg0 - (-arg8 + -arg7)) / 4;
-                for(int i_13_ = 0; ((i_13_ ^ 0xffffffff) > (class40_sub5_sub17_sub5.anInt3167 ^ 0xffffffff)); i_13_++) {
-                    int i_14_ = class40_sub5_sub17_sub5.anIntArray3162[i_13_];
-                    int i_15_ = class40_sub5_sub17_sub5.anIntArray3188[i_13_];
+                for(int i_13_ = 0; ((i_13_ ^ 0xffffffff) > (class40_sub5_sub17_sub5.vertexCount ^ 0xffffffff)); i_13_++) {
+                    int i_14_ = class40_sub5_sub17_sub5.verticesZ[i_13_];
+                    int i_15_ = class40_sub5_sub17_sub5.verticesX[i_13_];
                     int i_16_ = arg0 + (64 + i_15_) * (arg2 - arg0) / 128;
                     int i_17_ = arg7 + (64 + i_15_) * (arg8 + -arg7) / 128;
-                    int i_18_ = i_16_ + (i_14_ - -64) * (-i_16_ + i_17_) / 128;
-                    class40_sub5_sub17_sub5.anIntArray3187[i_13_] += -i + i_18_;
+                    int i_18_ = i_16_ + (i_14_ + 64) * (-i_16_ + i_17_) / 128;
+                    class40_sub5_sub17_sub5.verticesY[i_13_] += -i + i_18_;
                 }
             }
             return class40_sub5_sub17_sub5;
@@ -425,7 +420,7 @@ public class GameObjectDefinition extends SubNode {
                         if(arg2 != 18) {
                             if((arg2 ^ 0xffffffff) != -20) {
                                 if(arg2 == 21)
-                                    aBoolean2530 = true;
+                                    adjustToTerrain = true;
                                 else if(arg2 != 22) {
                                     if((arg2 ^ 0xffffffff) != -24) {
                                         if(arg2 != 24) {
@@ -493,7 +488,7 @@ public class GameObjectDefinition extends SubNode {
                                                                     } else
                                                                         aBoolean2518 = true;
                                                                 } else
-                                                                    aBoolean2547 = true;
+                                                                    unknown = true;
                                                             } else
                                                                 anInt2512 = (arg0.method468(false));
                                                         } else
@@ -519,7 +514,7 @@ public class GameObjectDefinition extends SubNode {
                                     } else
                                         aBoolean2521 = true;
                                 } else
-                                    aBoolean2520 = true;
+                                    nonFlatShading = true;
                             } else
                                 hasActions = arg0.method468(false);
                         } else

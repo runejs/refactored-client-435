@@ -157,7 +157,7 @@ public abstract class Class22_Sub2 extends Class22 {
                     for(int i = 0; i < 16; i++) {
                         int i_2_ = method323(i);
                         method314(176 + i, 7, i_2_ >> -997186041, arg2);
-                        method314(176 - -i, 39, i_2_ & 0x7f, arg2);
+                        method314(176 + i, 39, i_2_ & 0x7f, arg2);
                     }
                 }
                 anInt1884++;
@@ -181,7 +181,7 @@ public abstract class Class22_Sub2 extends Class22 {
                 username = null;
             for(int i = 0; i < 16; i++) {
                 int i_3_ = method323(i);
-                method314(176 - -i, 7, i_3_ >> -144095193, arg1);
+                method314(176 + i, 7, i_3_ >> -144095193, arg1);
                 method314(176 + i, 39, 0x7f & i_3_, arg1);
             }
         } catch(RuntimeException runtimeexception) {
@@ -196,7 +196,7 @@ public abstract class Class22_Sub2 extends Class22 {
                 Class38.anIntArray889[i] = 0;
                 for(int i_7_ = 0; i_7_ < 16; i_7_++) {
                     if((i_6_ & 1 << i_7_) != 0)
-                        method314(144 - -i_7_, i, 0, arg1);
+                        method314(144 + i_7_, i, 0, arg1);
                 }
             }
             for(int i = 0; (i ^ 0xffffffff) > -17; i++)

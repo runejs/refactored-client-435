@@ -94,7 +94,7 @@ public class Class66 {
                     } else
                         i_34_ = is[-1 + i_31_];
                     is[i_31_] = i_34_;
-                    for(int i_38_ = i_31_ - -1; i_38_ <= 32; i_38_++) {
+                    for(int i_38_ = i_31_ + 1; i_38_ <= 32; i_38_++) {
                         if(i_33_ == is[i_38_])
                             is[i_38_] = i_34_;
                     }
@@ -116,7 +116,7 @@ public class Class66 {
                         i_41_ >>>= 1;
                     }
                     if((i_39_ ^ 0xffffffff) <= (i_29_ ^ 0xffffffff))
-                        i_29_ = i_39_ - -1;
+                        i_29_ = i_39_ + 1;
                     anIntArray1540[i_39_] = i_30_ ^ 0xffffffff;
                 }
             }
@@ -179,13 +179,13 @@ public class Class66 {
                 if(arg4 != null && arg4.aBoolean2372) {
                     RSString class1 = arg4.aClass1_2402;
                     if(arg4.anInt2393 != arg0)
-                        class1 = (Class40_Sub5_Sub17_Sub6.method832(-47, (new RSString[]{class1, (Class40_Sub4.method536((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3260), arg4.anInt2393, arg0 + -99)), HashTable.aClass1_569, Class40_Sub5_Sub2.aClass1_2286, HashTable.method334(arg4.anInt2393, -1), Class51.aClass1_1199})));
+                        class1 = (Class40_Sub5_Sub17_Sub6.method832(-47, (new RSString[]{class1, (SceneTile.method536((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3260), arg4.anInt2393, arg0 + -99)), HashTable.aClass1_569, Class40_Sub5_Sub2.aClass1_2286, HashTable.method334(arg4.anInt2393, -1), Class51.aClass1_1199})));
                     if((Class8.anInt301 ^ 0xffffffff) == -2) {
                         Node.anInt927++;
                         Floor.method558(arg3, Main.aClass1_1763, arg2, -501, arg1, 49, (Class40_Sub5_Sub17_Sub6.method832(-124, (new RSString[]{NPC.aClass1_3295, Class40_Sub5_Sub2.aClass1_2306, class1}))));
                     } else if(Main.anInt1773 == 1) {
                         if((0x2 & ItemDefinition.anInt2815 ^ 0xffffffff) == -3) {
-                            Floor.method558(arg3, Class38_Sub1.aClass1_1918, arg2, arg0 + -501, arg1, 21, (Class40_Sub5_Sub17_Sub6.method832(arg0 + 73, (new RSString[]{Class25.aClass1_611, Class40_Sub5_Sub2.aClass1_2306, class1}))));
+                            Floor.method558(arg3, Class38_Sub1.aClass1_1918, arg2, arg0 + -501, arg1, 21, (Class40_Sub5_Sub17_Sub6.method832(arg0 + 73, (new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub2.aClass1_2306, class1}))));
                             Class58.anInt1356++;
                         }
                     } else {
@@ -509,7 +509,7 @@ public class Class66 {
                 int i_11_ = 0x7 & i_6_;
                 i_6_ += i_9_;
                 i &= -i_11_ >> -1953839681;
-                int i_12_ = i_10_ - -(i_9_ + (i_11_ - 1) >> -559081565);
+                int i_12_ = i_10_ + (i_9_ + (i_11_ - 1) >> -559081565);
                 i_11_ += 24;
                 arg5[i_10_] = (byte) (i = Class40_Sub5_Sub9.method619(i, i_8_ >>> i_11_));
                 if(i_10_ < i_12_) {

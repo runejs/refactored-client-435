@@ -76,7 +76,7 @@ public class RSCanvas extends Canvas {
             Class40_Sub5_Sub17_Sub4.method783(109);
             ((Class35) R3D.anInterface3_2939).method422(arg0);
             Class17.aClass9_449.method235((byte) 96);
-            Class25.aClass6_Sub1_605.method191(1120);
+            FloorDecoration.aClass6_Sub1_605.method191(1120);
             Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000.method191(1120);
             Class65.aClass6_Sub1_1533.method191(arg0 + 1120);
             Class40_Sub5_Sub17_Sub4.aClass6_Sub1_3157.method191(1120);
@@ -86,7 +86,7 @@ public class RSCanvas extends Canvas {
             NpcDefinition.aClass6_Sub1_2377.method191(arg0 ^ 0x460);
             Class32.aClass6_Sub1_773.method191(1120);
             aClass6_Sub1_48.method191(arg0 + 1120);
-            Class46.aClass6_Sub1_1104.method191(1120);
+            VertexNormal.aClass6_Sub1_1104.method191(1120);
             Class56.aClass6_Sub1_1323.method191(1120);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "kb.B(" + arg0 + ')');

@@ -51,8 +51,8 @@ public class Class32 {
         try {
             RSString class1 = null;
             for(int i = 0; NpcDefinition.anInt2394 > i; i++) {
-                if((Landscape.aClass1Array1184[i].method60(Class46.aClass1_1114, 32) ^ 0xffffffff) != 0) {
-                    class1 = (Landscape.aClass1Array1184[i].method50((byte) 95, Landscape.aClass1Array1184[i].method60(Class46.aClass1_1114, 32)));
+                if((Landscape.aClass1Array1184[i].method60(VertexNormal.aClass1_1114, 32) ^ 0xffffffff) != 0) {
+                    class1 = (Landscape.aClass1Array1184[i].method50((byte) 95, Landscape.aClass1Array1184[i].method60(VertexNormal.aClass1_1114, 32)));
                     break;
                 }
             }
@@ -60,7 +60,7 @@ public class Class32 {
             if(class1 == null)
                 Class40_Sub5_Sub6.method588(-1);
             else {
-                int i = Class46.anInt1086;
+                int i = VertexNormal.anInt1086;
                 int i_0_ = Class19.anInt475;
                 if((i ^ 0xffffffff) < -191)
                     i = 190;
@@ -70,7 +70,7 @@ public class Class32 {
                     i_0_ = 0;
                 int i_3_ = 6116423;
                 Rasterizer.method656(i_0_, i_2_, i, i_1_, i_3_);
-                Rasterizer.method656(i_0_ - -1, i_2_ - -1, arg0 + i, 16, 0);
+                Rasterizer.method656(i_0_ + 1, i_2_ + 1, arg0 + i, 16, 0);
                 Rasterizer.method665(i_0_ + 1, 18 + i_2_, -2 + i, i_1_ + -19, 0);
                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method683(class1, 3 + i_0_, 14 + i_2_, i_3_, false);
                 int i_4_ = Class13.anInt420;
@@ -93,8 +93,8 @@ public class Class32 {
                     int i_9_ = 16777215;
                     if(class1_8_.method87(arg0 + 112, class1)) {
                         class1_8_ = class1_8_.method68(0, 0, (class1_8_.method59(-3136) - class1.method59(arg0 + -3134)));
-                        if(class1_8_.method87(arg0 ^ ~0x6f, Class46.aClass1_1117))
-                            class1_8_ = (class1_8_.method68(0, 0, (class1_8_.method59(-3136) + -Class46.aClass1_1117.method59(-3136))));
+                        if(class1_8_.method87(arg0 ^ ~0x6f, VertexNormal.aClass1_1117))
+                            class1_8_ = (class1_8_.method68(0, 0, (class1_8_.method59(-3136) + -VertexNormal.aClass1_1117.method59(-3136))));
                     }
                     if((i_0_ ^ 0xffffffff) > (i_4_ ^ 0xffffffff) && (i_4_ ^ 0xffffffff) > (i_0_ + i ^ 0xffffffff) && -13 + i_7_ < i_5_ && 3 + i_7_ > i_5_)
                         i_9_ = 16776960;
@@ -108,7 +108,7 @@ public class Class32 {
 
     public static void method399(int arg0, int arg1, int arg2) {
         anInt744++;
-        long l = (long) ((arg0 << -713372176) - -arg2);
+        long l = (long) ((arg0 << -713372176) + arg2);
         Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.method331(l, 6120));
         if(class40_sub5_sub13 != null) {
             Class19.aClass27_485.method367(true, class40_sub5_sub13);

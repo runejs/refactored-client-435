@@ -79,7 +79,7 @@ public abstract class Class38 {
                 Class22.aClass40_Sub5_Sub14_Sub2Array535 = null;
                 Class40_Sub5_Sub17_Sub6.anIntArray3248 = null;
                 aClass68_887 = null;
-                Class40_Sub4.aClass40_Sub5_Sub14_Sub4_2043 = null;
+                SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = null;
                 Class4.anIntArray178 = null;
                 Class54.aClass68_1285 = null;
                 if(arg0 <= -65) {
@@ -98,7 +98,7 @@ public abstract class Class38 {
     public static void method441(Class6 arg0, int arg1) {
         try {
             anInt897++;
-            int i = -109 / ((arg1 - -14) / 32);
+            int i = -109 / ((arg1 + 14) / 32);
             Class40_Sub5_Sub17_Sub4.aClass6_3144 = arg0;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, ("na.L(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));

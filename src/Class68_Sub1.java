@@ -96,8 +96,8 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             arg0.anInt3081 = Cache.outgoingbuffer.method480((byte) -70);
             arg0.anInt3099 = Cache.outgoingbuffer.method468(false);
             arg0.anInt3127 = Cache.outgoingbuffer.method468(false);
-            arg0.anInt3112 = (Cache.outgoingbuffer.method461((byte) 124) - -Node.anInt926);
-            arg0.anInt3107 = (Cache.outgoingbuffer.method504(false) - -Node.anInt926);
+            arg0.anInt3112 = (Cache.outgoingbuffer.method461((byte) 124) + Node.anInt926);
+            arg0.anInt3107 = (Cache.outgoingbuffer.method504(false) + Node.anInt926);
             arg0.anInt3073 = Cache.outgoingbuffer.method476(255);
             arg0.method790(0);
         }

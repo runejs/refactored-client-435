@@ -56,7 +56,7 @@ public class Class13 {
             arg0.anInt3107 = 0;
             arg0.anInt3112 = 0;
             arg0.anInt3141 = -1;
-            arg0.anInt3098 = arg0.anIntArray3088[0] * 128 - -(arg0.anInt3096 * 64);
+            arg0.anInt3098 = arg0.anIntArray3088[0] * 128 + (arg0.anInt3096 * 64);
             arg0.anInt3089 = 64 * arg0.anInt3096 + arg0.anIntArray3135[0] * 128;
             arg0.method790(0);
         }
@@ -128,7 +128,7 @@ public class Class13 {
                 int i_3_ = Cache.outgoingbuffer.method476(255);
                 int i_4_ = Cache.outgoingbuffer.method480((byte) -70);
                 class40_sub5_sub17_sub4_sub2.method785(i_4_, Node.anInt926, i_3_, -121);
-                class40_sub5_sub17_sub4_sub2.anInt3139 = Node.anInt926 - -300;
+                class40_sub5_sub17_sub4_sub2.anInt3139 = Node.anInt926 + 300;
                 class40_sub5_sub17_sub4_sub2.anInt3130 = Cache.outgoingbuffer.method476(255);
                 class40_sub5_sub17_sub4_sub2.anInt3101 = Cache.outgoingbuffer.method468(false);
             }

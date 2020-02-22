@@ -102,8 +102,6 @@ public class GameObject extends Renderable {
 
     public static IndexedColorSprite method769(int arg0, Class6 arg1, int arg2) {
         try {
-            if(arg0 != 2)
-                method771(-42, null, null, null, -3, (byte) -48);
             anInt3032++;
             if(!Buffer.method472(arg0 ^ ~0x69, arg1, arg2))
                 return null;
@@ -119,7 +117,7 @@ public class GameObject extends Renderable {
             aClass1_3047 = null;
             aClass68_3042 = null;
             aClass1_3046 = null;
-            int i = 17 % ((arg0 - -10) / 62);
+            int i = 17 % ((arg0 + 10) / 62);
             aClass1_3041 = null;
             aClass1_3044 = null;
             aClass68_3045 = null;
@@ -133,46 +131,41 @@ public class GameObject extends Renderable {
         }
     }
 
-    public static void method771(int arg0, Scene arg1, CollisionMap[] arg2, byte[] arg3, int arg4, byte arg5) {
-        try {
-            if(arg5 >= -76)
-                method771(-120, null, null, null, -1, (byte) -104);
-            Buffer class40_sub1 = new Buffer(arg3);
-            anInt3022++;
-            int i = -1;
+    public static void loadObjectBlock(int block_x, Scene scene, CollisionMap[] collisionMaps, byte[] block_data, int block_z) {
+        Buffer buffer = new Buffer(block_data);
+        anInt3022++;
+        int object_id = -1;
+        for(; ; ) {
+            int delta_id = buffer.method502((byte) 52);
+            if(delta_id == 0)
+                break;
+            int pos = 0;
+            object_id += delta_id;
             for(; ; ) {
-                int i_1_ = class40_sub1.method502((byte) 52);
-                if((i_1_ ^ 0xffffffff) == -1)
+                int delta_pos = buffer.method502((byte) 62);
+                if(delta_pos == 0)
                     break;
-                int i_2_ = 0;
-                i += i_1_;
-                for(; ; ) {
-                    int i_3_ = class40_sub1.method502((byte) 62);
-                    if((i_3_ ^ 0xffffffff) == -1)
-                        break;
-                    i_2_ += -1 + i_3_;
-                    int i_4_ = 0x3f & i_2_;
-                    int i_5_ = (i_2_ & 0xfc3) >> 586500870;
-                    int i_6_ = i_2_ >> 1983594540;
-                    int i_7_ = class40_sub1.method468(false);
-                    int i_8_ = i_7_ >> 1990285058;
-                    int i_9_ = 0x3 & i_7_;
-                    int i_10_ = i_5_ + arg0;
-                    int i_11_ = i_4_ - -arg4;
-                    if(i_10_ > 0 && i_11_ > 0 && (i_10_ ^ 0xffffffff) > -104 && (i_11_ ^ 0xffffffff) > -104) {
-                        CollisionMap collisionMap = null;
-                        int i_12_ = i_6_;
-                        if(((Floor.tile_flags[1][i_10_][i_11_]) & 0x2) == 2)
-                            i_12_--;
-                        if((i_12_ ^ 0xffffffff) <= -1)
-                            collisionMap = arg2[i_12_];
-                        Class40_Sub5_Sub17_Sub1.renderObject(i, i_10_, i_11_, i_6_, i_9_, i_8_, arg1, collisionMap);
-                    }
+                pos += -1 + delta_pos;
+                int tile_z = pos & 0x3f;
+                int tile_x = pos >> 6 & 0x3f;
+                int tile_y = pos >> 12;
+                int object_info = buffer.method468(false);
+                int object_type = object_info >> 2;
+                int object_orientation = 0x3 & object_info;
+                int object_x = tile_x + block_x;
+                int object_z = tile_z + block_z;
+                if(object_x > 0 && object_z > 0 && object_x < 103 && object_z < 103) {
+                    CollisionMap collisionMap = null;
+                    int logic_y = tile_y;
+                    if((Floor.tile_flags[1][object_x][object_z] & 2) == 2)
+                        logic_y--;
+                    if(logic_y >= 0)
+                        collisionMap = collisionMaps[logic_y];
+                    Class40_Sub5_Sub17_Sub1.renderObject(object_id, object_x, object_z, tile_y, object_orientation, object_type, scene, collisionMap);
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("j.D(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + (arg2 != null ? "{...}" : "null") + ',' + (arg3 != null ? "{...}" : "null") + ',' + arg4 + ',' + arg5 + ')'));
         }
+
     }
 
     public static void drawLoadingText(int arg0, Color color, RSString rsString, int arg3) {
@@ -201,7 +194,7 @@ public class GameObject extends Renderable {
                     graphics_13_.fillRect(2, 2, arg0 * 3, 30);
                     graphics_13_.setColor(Color.black);
                     graphics_13_.drawRect(1, 1, 301, 31);
-                    graphics_13_.fillRect(2 - -(3 * arg0), 2, 300 - 3 * arg0, 30);
+                    graphics_13_.fillRect(2 + (3 * arg0), 2, 300 - 3 * arg0, 30);
                     graphics_13_.setFont(Class17.aFont461);
                     graphics_13_.setColor(Color.white);
                     rsString.method65(((304 + -rsString.method73(-48, Class8.aFontMetrics295)) / 2), 22, graphics_13_);
@@ -211,7 +204,7 @@ public class GameObject extends Renderable {
                     int i_14_ = Class40_Sub5_Sub10.height / 2 + -18;
                     graphics.setColor(color);
                     graphics.drawRect(i, i_14_, 303, 33);
-                    graphics.fillRect(2 + i, i_14_ - -2, 3 * arg0, 30);
+                    graphics.fillRect(2 + i, i_14_ + 2, 3 * arg0, 30);
                     graphics.setColor(Color.black);
                     graphics.drawRect(i + 1, 1 + i_14_, 301, 31);
                     graphics.fillRect(arg0 * 3 + 2 + i, 2 + i_14_, 300 + -(3 * arg0), 30);
@@ -231,7 +224,7 @@ public class GameObject extends Renderable {
         try {
             anInt3017++;
             if(arg1 == null || arg1.method59(-3136) == 0)
-                Class46.anInt1110 = 0;
+                VertexNormal.anInt1110 = 0;
             else {
                 RSString class1 = arg1;
                 RSString[] class1s = new RSString[100];
@@ -251,7 +244,7 @@ public class GameObject extends Renderable {
                         class1s[i++] = class1_16_.method79(arg0 + -32);
                     class1 = class1.method50((byte) 95, 1 + i_15_);
                 }
-                Class46.anInt1110 = 0;
+                VertexNormal.anInt1110 = 0;
                 int i_17_ = 0;
                 while_12_:
                 for(/**/; Class27.anInt661 > i_17_; i_17_++) {
@@ -262,10 +255,10 @@ public class GameObject extends Renderable {
                             if(class1_18_.method60(class1s[i_19_], 32) == -1)
                                 continue while_12_;
                         }
-                        Class22_Sub1.aClass1Array1844[Class46.anInt1110] = class1_18_;
-                        Class5.anIntArray191[Class46.anInt1110] = i_17_;
-                        Class46.anInt1110++;
-                        if((Class46.anInt1110 ^ 0xffffffff) <= (Class22_Sub1.aClass1Array1844.length ^ 0xffffffff))
+                        Class22_Sub1.aClass1Array1844[VertexNormal.anInt1110] = class1_18_;
+                        Class5.anIntArray191[VertexNormal.anInt1110] = i_17_;
+                        VertexNormal.anInt1110++;
+                        if((VertexNormal.anInt1110 ^ 0xffffffff) <= (Class22_Sub1.aClass1Array1844.length ^ 0xffffffff))
                             break;
                     }
                 }

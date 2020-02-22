@@ -135,7 +135,7 @@ public class Class55 {
     public static void method962(int arg0) {
         try {
             Class39.aClass1_917 = Node.aClass1_933;
-            Class40_Sub4.aClass1_2057 = Renderable.aClass1_2871;
+            SceneTile.aClass1_2057 = Renderable.aClass1_2871;
             Main.aClass1_1781 = Class37.aClass1_880;
             RSString.aClass1_1717 = Class12.aClass1_398;
             Class34.aClass1_817 = Class35.aClass1_1743;
@@ -144,7 +144,7 @@ public class Class55 {
             Class57.aClass1_1333 = Class40_Sub5_Sub15.aClass1_2773;
             Class35.aClass1_1746 = Class37.aClass1_872;
             Class51.aClass1_1196 = Class40_Sub5_Sub2.aClass1_2311;
-            Class64.aClass1_1526 = Class46.aClass1_1109;
+            Class64.aClass1_1526 = VertexNormal.aClass1_1109;
             Node.aClass1_929 = Class27.aClass1_652;
             Class40_Sub5_Sub11.aClass1_2622 = NpcDefinition.aClass1_2417;
             Class40_Sub5_Sub17_Sub3.aClass1_3066 = Class40_Sub5_Sub17_Sub6.aClass1_3247;
@@ -153,7 +153,7 @@ public class Class55 {
             Node.aClass1_966 = Class67.aClass1_1613;
             Class19.aClass1_495 = Class60.aClass1_1401;
             NpcDefinition.aClass1_2396 = Class34.aClass1_850;
-            Class40_Sub4.aClass1_2054 = Class37.aClass1_860;
+            SceneTile.aClass1_2054 = Class37.aClass1_860;
             Node.aClass1_958 = Class64.aClass1_1523;
             RSCanvas.aClass1_51 = Class40_Sub5_Sub7.aClass1_2487;
             aClass1_1291 = Class67.aClass1_1609;
@@ -161,7 +161,7 @@ public class Class55 {
             Class37.aClass1_873 = Class33.aClass1_779;
             Node.aClass1_959 = Class53.aClass1_1265;
             Class40_Sub5_Sub2.aClass1_2294 = Class67.aClass1_1612;
-            Class46.aClass1_1117 = GameObjectDefinition.aClass1_2560;
+            VertexNormal.aClass1_1117 = GameObjectDefinition.aClass1_2560;
             Cache.aClass1_323 = Floor.aClass1_2327;
             Class62.aClass1_1465 = Class39.aClass1_898;
             Class53.aClass1_1251 = HashTable.aClass1_563;
@@ -169,7 +169,7 @@ public class Class55 {
             Node.aClass1_946 = Class64.aClass1_1523;
             Class52.aClass1_1223 = Class10.aClass1_352;
             Floor.aClass1_2325 = Class40_Sub2.aClass1_1991;
-            Class40_Sub4.aClass1_2047 = Class37.aClass1_860;
+            SceneTile.aClass1_2047 = Class37.aClass1_860;
             Class13.aClass1_417 = Class40_Sub5_Sub10.aClass1_2614;
             Class10.aClass1_344 = Class52.aClass1_1238;
             Class12.aClass1_399 = Class60.aClass1_1409;
@@ -184,7 +184,7 @@ public class Class55 {
             Node.aClass1_954 = Class64.aClass1_1523;
             NPC.aClass1_3311 = Class49.aClass1_1146;
             Class68.aClass1_1628 = Class40_Sub5_Sub6.aClass1_2457;
-            Class13.aClass1_405 = Class46.aClass1_1115;
+            Class13.aClass1_405 = VertexNormal.aClass1_1115;
             Class40_Sub5_Sub10.aClass1_2587 = Class22_Sub1.aClass1_1838;
             Class40_Sub5_Sub11.aClass1_2620 = Class26.aClass1_631;
             Class27.aClass1_664 = Class6_Sub1.aClass1_1799;
@@ -198,7 +198,7 @@ public class Class55 {
             Class22.aClass1_532 = Class57.aClass1_1340;
             Class67.aClass1_1598 = Class37.aClass1_867;
             NPC.aClass1_3305 = Class22_Sub1.aClass1_1871;
-            Class25.aClass1_591 = Class24.aClass1_575;
+            FloorDecoration.aClass1_591 = Class24.aClass1_575;
             Node.aClass1_940 = Class37.aClass1_879;
             Class40_Sub5_Sub2.aClass1_2297 = Class40_Sub5_Sub17_Sub3.aClass1_3062;
             Class38_Sub1.aClass1_1917 = Class22.aClass1_538;
@@ -219,17 +219,17 @@ public class Class55 {
             Main.aClass1_1763 = Class22_Sub2.aClass1_1889;
             Buffer.aClass1_1983 = Floor.aClass1_2315;
             Landscape.aClass1_1173 = Class64.aClass1_1502;
-            Class40_Sub4.aClass1_2053 = Renderable.aClass1_2871;
+            SceneTile.aClass1_2053 = Renderable.aClass1_2871;
             Class40_Sub5_Sub2.aClass1_2286 = Class39.aClass1_914;
-            Class40_Sub4.aClass1_2050 = Class37.aClass1_860;
+            SceneTile.aClass1_2050 = Class37.aClass1_860;
             Node.aClass1_969 = Class64.aClass1_1523;
             Node.aClass1_934 = Class64.aClass1_1523;
             Class40_Sub5_Sub6.aClass1_2460 = Main.aClass1_1757;
-            Class46.aClass1_1099 = Class40_Sub5_Sub17_Sub4.aClass1_3154;
+            VertexNormal.aClass1_1099 = Class40_Sub5_Sub17_Sub4.aClass1_3154;
             Class40_Sub5_Sub10.aClass1_2593 = Class22_Sub1.aClass1_1838;
             Player.aClass1_3286 = Class40_Sub5_Sub10.aClass1_2611;
             Node.aClass1_973 = Class64.aClass1_1523;
-            Class25.STRING_CONNECTING_UPDATE_SERVER = Class25.aClass1_613;
+            FloorDecoration.STRING_CONNECTING_UPDATE_SERVER = FloorDecoration.aClass1_613;
             Player.aClass1_3256 = NPC.aClass1_3308;
             Class40_Sub5_Sub1.aClass1_2274 = Class49.aClass1_1149;
             Class8.aClass1_278 = Class13.aClass1_411;
@@ -251,10 +251,10 @@ public class Class55 {
             Class27.aClass1_668 = Class40_Sub2.aClass1_1995;
             NpcDefinition.aClass1_2432 = Class40_Sub5_Sub4.aClass1_2354;
             Class40_Sub5_Sub11.aClass1_2629 = ISAAC.aClass1_523;
-            Class40_Sub4.aClass1_2042 = Class53.aClass1_1263;
+            SceneTile.aClass1_2042 = Class53.aClass1_1263;
             Node.aClass1_974 = Cache.aClass1_325;
             Class22_Sub2.aClass1_1891 = Class39.aClass1_899;
-            Class66.aClass1_1552 = Class40_Sub4.aClass1_2046;
+            Class66.aClass1_1552 = SceneTile.aClass1_2046;
             Node.aClass1_976 = Class64.aClass1_1523;
             Node.aClass1_943 = Class60.aClass1_1408;
             Node.aClass1_930 = Class64.aClass1_1523;
@@ -285,30 +285,30 @@ public class Class55 {
             Class42.aClass1_988 = Class40_Sub13.aClass1_2186;
             Class58.aClass1_1354 = Player.aClass1_3269;
             Class22_Sub1.aClass1_1865 = RSRuntimeException.aClass1_1647;
-            Class61.aClass1_1428 = Class40_Sub4.aClass1_2051;
+            Class61.aClass1_1428 = SceneTile.aClass1_2051;
             Class40_Sub5_Sub12.aClass1_2674 = Class33.aClass1_797;
             Class30.aClass1_682 = PacketBuffer.aClass1_2245;
             NpcDefinition.aClass1_2410 = RSApplet.aClass1_21;
-            Class40_Sub5_Sub9.aClass1_2566 = Class25.aClass1_609;
+            Class40_Sub5_Sub9.aClass1_2566 = FloorDecoration.aClass1_609;
             Node.aClass1_944 = Class64.aClass1_1523;
             PacketBuffer.aClass1_2240 = Class49.aClass1_1153;
             anInt1302++;
-            Class46.aClass1_1105 = Class40_Sub13.aClass1_2181;
+            VertexNormal.aClass1_1105 = Class40_Sub13.aClass1_2181;
             Class42.aClass1_1011 = Class40_Sub5_Sub17_Sub4.aClass1_3158;
             Class22_Sub1.aClass1_1870 = Class49.aClass1_1143;
             Class62.aClass1_1474 = Class8.aClass1_300;
             if(arg0 == 18782) {
                 Node.aClass1_937 = Class64.aClass1_1523;
-                Class46.aClass1_1090 = Class43.aClass1_1026;
+                VertexNormal.aClass1_1090 = Class43.aClass1_1026;
                 NpcDefinition.aClass1_2401 = RSApplet.aClass1_21;
                 Node.aClass1_967 = Class10.aClass1_343;
                 Class65.aClass1_1538 = GameObject.aClass1_3043;
-                NpcDefinition.aClass1_2392 = Class40_Sub4.aClass1_2044;
-                Class46.aClass1_1097 = Class22_Sub1.aClass1_1849;
+                NpcDefinition.aClass1_2392 = SceneTile.aClass1_2044;
+                VertexNormal.aClass1_1097 = Class22_Sub1.aClass1_1849;
                 Class40_Sub6.aClass1_2097 = Class40_Sub5_Sub7.aClass1_2481;
                 Class67.aClass1_1585 = Class61.aClass1_1426;
                 RSString.aClass1_1703 = Class12.aClass1_385;
-                Class46.aClass1_1088 = Class26.aClass1_633;
+                VertexNormal.aClass1_1088 = Class26.aClass1_633;
                 Class45.aClass1_1076 = GameObjectDefinition.aClass1_2556;
                 Class34.aClass1_829 = RSApplet.aClass1_25;
                 CollisionMap.aClass1_167 = Class26.aClass1_629;
@@ -327,7 +327,7 @@ public class Class55 {
                 Class38_Sub1.aClass1_1922 = Class12.aClass1_386;
                 Class44.aClass1_1038 = Class45.aClass1_1059;
                 Class40_Sub5_Sub17_Sub3.aClass1_3050 = Class56.aClass1_1316;
-                Class40_Sub6.aClass1_2111 = Class46.aClass1_1116;
+                Class40_Sub6.aClass1_2111 = VertexNormal.aClass1_1116;
                 Class39.aClass1_919 = GameObject.aClass1_3037;
                 Class12.aClass1_397 = Player.aClass1_3290;
                 Landscape.aClass1_1180 = Class40_Sub2.aClass1_2008;

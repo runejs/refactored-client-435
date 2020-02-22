@@ -89,7 +89,7 @@ public class Class27 {
         int i_5_ = Class40_Sub5_Sub6.anInt2443;
         for(int i_6_ = 0; i_6_ < 5; i_6_++) {
             if(Class40_Sub5_Sub17_Sub1.aBooleanArray2975[i_6_]) {
-                int i_7_ = (int) (((double) (Class8.anIntArray297[i_6_] * 2 - -1) * Math.random()) - (double) Class8.anIntArray297[i_6_] + (Math.sin((double) (Class22_Sub1.anIntArray1846[i_6_]) * ((double) (Class58.anIntArray1358[i_6_]) / 100.0)) * (double) RSApplet.anIntArray2[i_6_]));
+                int i_7_ = (int) (((double) (Class8.anIntArray297[i_6_] * 2 + 1) * Math.random()) - (double) Class8.anIntArray297[i_6_] + (Math.sin((double) (Class22_Sub1.anIntArray1846[i_6_]) * ((double) (Class58.anIntArray1358[i_6_]) / 100.0)) * (double) RSApplet.anIntArray2[i_6_]));
                 if(i_6_ == 1)
                     Class32.anInt769 += i_7_;
                 if((i_6_ ^ 0xffffffff) == -1) {
@@ -169,21 +169,21 @@ public class Class27 {
         try {
             int i = (-32 + arg4) * arg4 / arg2;
             Class6.aClass40_Sub5_Sub14_Sub2Array215[arg0].method692(arg3, arg5);
-            Class6.aClass40_Sub5_Sub14_Sub2Array215[1].method692(arg3, arg5 - (-arg4 - -16));
+            Class6.aClass40_Sub5_Sub14_Sub2Array215[1].method692(arg3, arg5 - (-arg4 + 16));
             anInt657++;
-            Rasterizer.method656(arg3, arg5 - -16, 16, arg4 + -32, Class55.anInt1299);
+            Rasterizer.method656(arg3, arg5 + 16, 16, arg4 + -32, Class55.anInt1299);
             if((i ^ 0xffffffff) > -9)
                 i = 8;
             int i_9_ = (-32 + arg4 - i) * arg1 / (-arg4 + arg2);
             Rasterizer.method656(arg3, 16 + arg5 + i_9_, 16, i, Cache.anInt321);
-            Rasterizer.method668(arg3, 16 + arg5 - -i_9_, i, Class66.anInt1559);
+            Rasterizer.method668(arg3, 16 + arg5 + i_9_, i, Class66.anInt1559);
             Rasterizer.method668(1 + arg3, i_9_ + arg5 + 16, i, Class66.anInt1559);
-            Rasterizer.method659(arg3, i_9_ + arg5 - -16, 16, Class66.anInt1559);
+            Rasterizer.method659(arg3, i_9_ + arg5 + 16, 16, Class66.anInt1559);
             Rasterizer.method659(arg3, 17 + (arg5 + i_9_), 16, Class66.anInt1559);
-            Rasterizer.method668(arg3 - -15, arg5 - -16 - -i_9_, i, Class56.anInt1318);
-            Rasterizer.method668(arg3 - -14, i_9_ + 17 + arg5, i - 1, Class56.anInt1318);
+            Rasterizer.method668(arg3 + 15, arg5 + 16 + i_9_, i, Class56.anInt1318);
+            Rasterizer.method668(arg3 + 14, i_9_ + 17 + arg5, i - 1, Class56.anInt1318);
             Rasterizer.method659(arg3, i + (i_9_ + (15 + arg5)), 16, Class56.anInt1318);
-            Rasterizer.method659(arg3 + 1, 14 + (arg5 - -i_9_ + i), 15, Class56.anInt1318);
+            Rasterizer.method659(arg3 + 1, 14 + (arg5 + i_9_ + i), 15, Class56.anInt1318);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, ("kc.N(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ')'));
         }
@@ -266,7 +266,7 @@ public class Class27 {
                 Class40_Sub11.anInt2163 = Class57.anInt1338;
                 Class45.anInt1075 = 2;
                 Class32.packetBuffer.putPacket(11453, 190);
-                Class32.packetBuffer.method478(i - -Class40_Sub5_Sub2.anInt2307, -114);
+                Class32.packetBuffer.method478(i + Class40_Sub5_Sub2.anInt2307, -114);
                 Class32.packetBuffer.method474(i_12_, -128);
                 Class32.packetBuffer.method474(i_10_ + Class26.anInt635, -122);
             }
@@ -305,7 +305,7 @@ public class Class27 {
                 RSString class1 = Landscape.aClass1Array1184[arg1];
                 int i_13_ = class1.method60(Class26.aClass1_620, 32);
                 if((i_13_ ^ 0xffffffff) != 0) {
-                    class1 = class1.method50((byte) 95, i_13_ - -5).method89(false);
+                    class1 = class1.method50((byte) 95, i_13_ + 5).method89(false);
                     RSString class1_14_ = class1.method62(57).method85(-4305);
                     boolean bool = false;
                     for(int i_15_ = 0; i_15_ < Class60.anInt1407; i_15_++) {
@@ -453,7 +453,7 @@ public class Class27 {
                 Class45.anInt1061 = i;
                 ISAAC.anInt525 = i_10_;
                 Class8.anInt301 = 1;
-                NPC.aClass1_3295 = (Class40_Sub5_Sub17_Sub6.method832(78, (new RSString[]{Class46.aClass1_1114, Class44.method897(i_12_, 10).aClass1_2796, Class26.aClass1_620})));
+                NPC.aClass1_3295 = (Class40_Sub5_Sub17_Sub6.method832(78, (new RSString[]{VertexNormal.aClass1_1114, Class44.method897(i_12_, 10).aClass1_2796, Class26.aClass1_620})));
                 Main.anInt1773 = 0;
                 if(NPC.aClass1_3295 == null)
                     NPC.aClass1_3295 = RSApplet.aClass1_34;
@@ -538,7 +538,7 @@ public class Class27 {
                     SubNode.anInt2089++;
                     Class32.packetBuffer.putPacket(11453, 62);
                     Class32.packetBuffer.method474((0x1fffd05d & i_12_) >> 913078094, 39);
-                    Class32.packetBuffer.method486(14912, i_10_ - -Class26.anInt635);
+                    Class32.packetBuffer.method486(14912, i_10_ + Class26.anInt635);
                     Class32.packetBuffer.method478(i + Class40_Sub5_Sub2.anInt2307, -48);
                 }
                 if((i_11_ ^ 0xffffffff) == -31) {
@@ -627,7 +627,7 @@ public class Class27 {
                     ItemDefinition.anInt2815 = class40_sub5_sub12.anInt2702;
                     Class8.anInt301 = 0;
                     Class60.anInt1417 = i_10_;
-                    Class25.aClass1_611 = (Class40_Sub5_Sub17_Sub6.method832(-80, new RSString[]{Landscape.aClass1_1162, class40_sub5_sub12.aClass1_2709, Class26.aClass1_620}));
+                    FloorDecoration.aClass1_611 = (Class40_Sub5_Sub17_Sub6.method832(-80, new RSString[]{Landscape.aClass1_1162, class40_sub5_sub12.aClass1_2709, Class26.aClass1_620}));
                     if((ItemDefinition.anInt2815 ^ 0xffffffff) == -17) {
                         Class40_Sub5_Sub10.aBoolean2597 = true;
                         Class5.anInt208 = 3;
@@ -694,7 +694,7 @@ public class Class27 {
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
                         Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                         Class32.packetBuffer.putPacket(11453, 244);
-                        Class32.packetBuffer.method486(14912, i - -Class40_Sub5_Sub2.anInt2307);
+                        Class32.packetBuffer.method486(14912, i + Class40_Sub5_Sub2.anInt2307);
                         Class32.packetBuffer.method493(Class26.anInt635 + i_10_, -128);
                         Class32.packetBuffer.method474(i_12_, 13);
                     }
@@ -783,9 +783,9 @@ public class Class27 {
                         Class40_Sub5_Sub7.method596(i, i_12_, (byte) -104, i_10_);
                         NpcDefinition.anInt2390++;
                         Class32.packetBuffer.putPacket(11453, 183);
-                        Class32.packetBuffer.method493(i_10_ - -Class26.anInt635, -128);
+                        Class32.packetBuffer.method493(i_10_ + Class26.anInt635, -128);
                         Class32.packetBuffer.method474(i_12_ >> -2049660850 & 0x7fff, -126);
-                        Class32.packetBuffer.method493(i - -Class40_Sub5_Sub2.anInt2307, -128);
+                        Class32.packetBuffer.method493(i + Class40_Sub5_Sub2.anInt2307, -128);
                     }
                     if(i_11_ == 50)
                         Class33.method406(i, i_12_, i_10_, -121);
@@ -797,13 +797,13 @@ public class Class27 {
                     if(i_11_ == 32 && Class40_Sub5_Sub7.method596(i, i_12_, (byte) -27, i_10_)) {
                         Class32.packetBuffer.putPacket(11453, 225);
                         Class32.packetBuffer.method474(i_12_ >> -158279986 & 0x7fff, 74);
-                        Class32.packetBuffer.method478(i_10_ - -Class26.anInt635, -61);
+                        Class32.packetBuffer.method478(i_10_ + Class26.anInt635, -61);
                         Buffer.anInt1948++;
                         Class32.packetBuffer.method487(Class60.anInt1417, (byte) 118);
                         Class32.packetBuffer.method486(14912, i + Class40_Sub5_Sub2.anInt2307);
                     }
                     if(i_11_ == 25) {
-                        Class46.anInt1107++;
+                        VertexNormal.anInt1107++;
                         Class32.packetBuffer.putPacket(11453, 228);
                         Class32.packetBuffer.method486(14912, i_12_);
                         Class32.packetBuffer.method494(i_10_, 100);
@@ -854,7 +854,7 @@ public class Class27 {
                             else {
                                 PacketBuffer.method516(95);
                                 if((Class34.anInt854 ^ 0xffffffff) != 0) {
-                                    Class66.aClass1_1550 = class1.method50((byte) 95, i_22_ - -5).method89(false);
+                                    Class66.aClass1_1550 = class1.method50((byte) 95, i_22_ + 5).method89(false);
                                     Class66.anInt1548 = Class66.anInt1560 = Class34.anInt854;
                                     Class67.aBoolean1601 = false;
                                 }
@@ -872,7 +872,7 @@ public class Class27 {
                         Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                         Class32.packetBuffer.putPacket(11453, 65);
                         Class32.packetBuffer.method493(i_12_, -128);
-                        Class32.packetBuffer.method493(i_10_ - -Class26.anInt635, -128);
+                        Class32.packetBuffer.method493(i_10_ + Class26.anInt635, -128);
                         Class32.packetBuffer.method486(14912, Class40_Sub5_Sub2.anInt2307 + i);
                     }
                     if(i_11_ == 9)
@@ -1075,7 +1075,7 @@ public class Class27 {
                 if(class40_sub5_sub12_27_ != null && (arg4 ^ 0xffffffff) == (class40_sub5_sub12_27_.anInt2648 ^ 0xffffffff)) {
                     int i_28_ = arg3 + class40_sub5_sub12_27_.anInt2696;
                     int i_29_ = arg5 + class40_sub5_sub12_27_.anInt2656;
-                    if(i_29_ <= arg6 && i_28_ <= arg1 && (i_29_ + class40_sub5_sub12_27_.anInt2692 ^ 0xffffffff) < (arg6 ^ 0xffffffff) && ((arg1 ^ 0xffffffff) > (i_28_ - -class40_sub5_sub12_27_.anInt2643 ^ 0xffffffff)) && !class40_sub5_sub12_27_.aBoolean2750) {
+                    if(i_29_ <= arg6 && i_28_ <= arg1 && (i_29_ + class40_sub5_sub12_27_.anInt2692 ^ 0xffffffff) < (arg6 ^ 0xffffffff) && ((arg1 ^ 0xffffffff) > (i_28_ + class40_sub5_sub12_27_.anInt2643 ^ 0xffffffff)) && !class40_sub5_sub12_27_.aBoolean2750) {
                         if(class40_sub5_sub12_27_.anInt2689 < 0 && arg2 || class40_sub5_sub12_27_.anInt2689 >= 0 && !arg2)
                             class40_sub5_sub12 = class40_sub5_sub12_27_;
                         if((class40_sub5_sub12_27_.anInt2683 ^ 0xffffffff) == -1) {
@@ -1152,7 +1152,7 @@ public class Class27 {
             }
             if((Class40_Sub5_Sub17_Sub1.anInt2999 ^ 0xffffffff) == -3)
                 ISAAC.aBoolean505 = true;
-            if(Class40_Sub4.anInt2049 == 2)
+            if(SceneTile.anInt2049 == 2)
                 ISAAC.aBoolean505 = true;
             if(ISAAC.aBoolean505) {
                 ISAAC.aBoolean505 = false;
@@ -1174,7 +1174,7 @@ public class Class27 {
             }
             if((Class43.anInt1028 ^ 0xffffffff) == 0 && Class40_Sub5_Sub15.anInt2780 == 3) {
                 Class12.aClass40_Sub5_Sub12_383.anInt2731 = Class26.anInt617;
-                int i = 14 * Class46.anInt1110 - -7;
+                int i = 14 * VertexNormal.anInt1110 + 7;
                 if((Class13.anInt420 ^ 0xffffffff) < -449 && (Class13.anInt420 ^ 0xffffffff) > -561 && Landscape.anInt1166 > 332)
                     Class5.method168(77, Landscape.anInt1166 - 357, -17 + Class13.anInt420, i, (byte) -128, Class12.aClass40_Sub5_Sub12_383, 463, -1, 0);
                 int i_32_ = Class12.aClass40_Sub5_Sub12_383.anInt2731;
@@ -1195,7 +1195,7 @@ public class Class27 {
                 }
                 if(Class40_Sub5_Sub17_Sub1.anInt2999 == 3)
                     Class52.aBoolean1221 = true;
-                if((Class40_Sub4.anInt2049 ^ 0xffffffff) == -4)
+                if((SceneTile.anInt2049 ^ 0xffffffff) == -4)
                     Class52.aBoolean1221 = true;
                 if(RSApplet.aClass1_8 != null)
                     Class52.aBoolean1221 = true;
@@ -1236,11 +1236,11 @@ public class Class27 {
         try {
             anInt651++;
             if(arg1 == -3)
-                Class33.method411(Node.aClass1_956, Class52.aClass1_1218, Class40_Sub4.aClass1_2057, (byte) -121);
+                Class33.method411(Node.aClass1_956, Class52.aClass1_1218, SceneTile.aClass1_2057, (byte) -121);
             else if((arg1 ^ 0xffffffff) == 1)
                 Class33.method411(Node.aClass1_934, Node.aClass1_969, Class40_Sub5_Sub6.aClass1_2462, (byte) 93);
             else if(arg1 == -1)
-                Class33.method411(Node.aClass1_949, Class33.aClass1_799, Class40_Sub4.aClass1_2053, (byte) 115);
+                Class33.method411(Node.aClass1_949, Class33.aClass1_799, SceneTile.aClass1_2053, (byte) 115);
             else if((arg1 ^ 0xffffffff) == -4)
                 Class33.method411(Node.aClass1_941, Node.aClass1_974, ISAAC.aClass1_526, (byte) -65);
             else if(arg1 == 4)
@@ -1260,24 +1260,24 @@ public class Class27 {
                     else if((arg1 ^ 0xffffffff) == -13)
                         Class33.method411(Node.aClass1_931, Class40_Sub13.aClass1_2188, Class40_Sub5_Sub4.aClass1_2357, (byte) 115);
                     else if((arg1 ^ 0xffffffff) == -14)
-                        Class33.method411(Node.aClass1_972, Class40_Sub5_Sub17_Sub3.aClass1_3066, Class40_Sub4.aClass1_2042, (byte) -53);
+                        Class33.method411(Node.aClass1_972, Class40_Sub5_Sub17_Sub3.aClass1_3066, SceneTile.aClass1_2042, (byte) -53);
                     else if(arg1 != 14) {
                         if((arg1 ^ 0xffffffff) != -17) {
                             if((arg1 ^ 0xffffffff) != -18) {
                                 if((arg1 ^ 0xffffffff) != -19) {
                                     if((arg1 ^ 0xffffffff) == -21)
-                                        Class33.method411(Node.aClass1_944, Class55.aClass1_1298, (Class40_Sub4.aClass1_2047), (byte) 126);
+                                        Class33.method411(Node.aClass1_944, Class55.aClass1_1298, (SceneTile.aClass1_2047), (byte) 126);
                                     else if((arg1 ^ 0xffffffff) == -23)
                                         Class33.method411(Node.aClass1_955, (Floor.aClass1_2325), Class6.aClass1_258, (byte) -123);
                                     else if(arg1 == 23)
                                         Class33.method411(Node.aClass1_957, Class38.aClass1_882, (NpcDefinition.aClass1_2410), (byte) -128);
                                     else if((arg1 ^ 0xffffffff) != -25) {
                                         if(arg1 == 25)
-                                            Class33.method411(Node.aClass1_973, Class8.aClass1_278, Class40_Sub4.aClass1_2050, (byte) -84);
+                                            Class33.method411(Node.aClass1_973, Class8.aClass1_278, SceneTile.aClass1_2050, (byte) -84);
                                         else if(arg1 == 26)
                                             Class33.method411(Node.aClass1_960, Class22_Sub1.aClass1_1851, Class17.aClass1_455, (byte) 103);
                                         else if(arg1 != 27)
-                                            Class33.method411(Node.aClass1_946, (NpcDefinition.aClass1_2432), Class40_Sub4.aClass1_2054, (byte) 123);
+                                            Class33.method411(Node.aClass1_946, (NpcDefinition.aClass1_2432), SceneTile.aClass1_2054, (byte) 123);
                                         else
                                             Class33.method411(Node.aClass1_945, Node.aClass1_925, Class40_Sub13.aClass1_2189, (byte) 103);
                                     } else

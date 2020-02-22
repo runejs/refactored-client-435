@@ -79,7 +79,7 @@ public class Class40_Sub5_Sub7 extends SubNode {
             for(int i = 0; i < 4; i++) {
                 for(int i_1_ = 0; (i_1_ ^ 0xffffffff) > -65; i_1_++) {
                     for(int i_2_ = 0; (i_2_ ^ 0xffffffff) > -65; i_2_++) {
-                        if((arg4 - -i_1_ ^ 0xffffffff) < -1 && (i_1_ + arg4 ^ 0xffffffff) > -104 && arg5 + i_2_ > 0 && i_2_ + arg5 < 103)
+                        if((arg4 + i_1_ ^ 0xffffffff) < -1 && (i_1_ + arg4 ^ 0xffffffff) > -104 && arg5 + i_2_ > 0 && i_2_ + arg5 < 103)
                             arg0[i].anIntArrayArray150[i_1_ + arg4][(i_2_ + arg5)] = Class66.method1021((arg0[i].anIntArrayArray150[i_1_ + arg4][i_2_ + arg5]), -16777217);
                     }
                 }
@@ -89,7 +89,7 @@ public class Class40_Sub5_Sub7 extends SubNode {
                 for(int i = 0; i < 4; i++) {
                     for(int i_3_ = 0; i_3_ < 64; i_3_++) {
                         for(int i_4_ = 0; (i_4_ ^ 0xffffffff) > -65; i_4_++)
-                            Class48.method922(i_3_ - -arg4, 0, class40_sub1, -99, i_4_ + arg5, arg6, arg1, i);
+                            Class48.method922(i_3_ + arg4, 0, class40_sub1, -99, i_4_ + arg5, arg6, arg1, i);
                     }
                 }
             }
@@ -231,7 +231,7 @@ public class Class40_Sub5_Sub7 extends SubNode {
 
     public void method595(int arg0, int arg1, Buffer arg2) {
         try {
-            int i = 3 / ((arg0 - -12) / 51);
+            int i = 3 / ((arg0 + 12) / 51);
             anInt2465++;
             if(arg1 == 1) {
                 int i_5_ = arg2.method468(false);

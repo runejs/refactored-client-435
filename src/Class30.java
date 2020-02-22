@@ -95,10 +95,10 @@ public class Class30 {
         try {
             if(arg0 != 22378)
                 method376(90);
-            if((arg1.anInt3107 ^ 0xffffffff) == (Node.anInt926 ^ 0xffffffff) || (arg1.anInt3141 ^ 0xffffffff) == 0 || (arg1.anInt3122 ^ 0xffffffff) != -1 || arg1.anInt3115 - -1 > (Class68_Sub1.method1050(arg1.anInt3141, 2).anIntArray2466[arg1.anInt3104])) {
+            if((arg1.anInt3107 ^ 0xffffffff) == (Node.anInt926 ^ 0xffffffff) || (arg1.anInt3141 ^ 0xffffffff) == 0 || (arg1.anInt3122 ^ 0xffffffff) != -1 || arg1.anInt3115 + 1 > (Class68_Sub1.method1050(arg1.anInt3141, 2).anIntArray2466[arg1.anInt3104])) {
                 int i = -arg1.anInt3112 + arg1.anInt3107;
                 int i_16_ = -arg1.anInt3112 + Node.anInt926;
-                int i_17_ = arg1.anInt3125 * 128 - -(64 * arg1.anInt3096);
+                int i_17_ = arg1.anInt3125 * 128 + (64 * arg1.anInt3096);
                 int i_18_ = arg1.anInt3096 * 64 + 128 * arg1.anInt3081;
                 int i_19_ = arg1.anInt3096 * 64 + 128 * arg1.anInt3099;
                 int i_20_ = 128 * arg1.anInt3127 + arg1.anInt3096 * 64;
@@ -128,7 +128,7 @@ public class Class30 {
                 return 109;
             if((anInt696 ^ 0xffffffff) != 0)
                 return (Landscape.method932((byte) -105, anInt696).anInt2427 + 305419896);
-            return (anIntArray692[1] + (anIntArray692[11] << -991626235) + ((anIntArray713[4] << -1350296556) + ((anIntArray713[0] << 1525506553) - -(anIntArray692[0] << 1592541583)) - -(anIntArray692[8] << 307187338)));
+            return (anIntArray692[1] + (anIntArray692[11] << -991626235) + ((anIntArray713[4] << -1350296556) + ((anIntArray713[0] << 1525506553) + (anIntArray692[0] << 1592541583)) + (anIntArray692[8] << 307187338)));
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "la.K(" + arg0 + ')');
         }
@@ -323,7 +323,7 @@ public class Class30 {
                     for(int i_15_ = 0; PacketBuffer.anInt2257 > i_15_; i_15_++) {
                         Class40_Sub5_Sub10 class40_sub5_sub10 = Buffer.method501((byte) -94, i_15_);
                         if(class40_sub5_sub10 != null && !class40_sub5_sub10.aBoolean2606 && ((i + (!arg1 ? 0 : 7) ^ 0xffffffff) == (class40_sub5_sub10.anInt2599 ^ 0xffffffff))) {
-                            arg0[Class40_Sub5_Sub15.anIntArray2777[i]] = i_15_ - -256;
+                            arg0[Class40_Sub5_Sub15.anIntArray2777[i]] = i_15_ + 256;
                             break;
                         }
                     }
@@ -358,8 +358,8 @@ public class Class30 {
                             } else if((--i ^ 0xffffffff) > -1)
                                 i = -1 + PacketBuffer.anInt2257;
                             class40_sub5_sub10 = Buffer.method501((byte) -94, i);
-                        } while(class40_sub5_sub10 == null || class40_sub5_sub10.aBoolean2606 || (class40_sub5_sub10.anInt2599 != arg0 - -(!aBoolean683 ? 0 : 7)));
-                        anIntArray692[Class40_Sub5_Sub15.anIntArray2777[arg0]] = i - -256;
+                        } while(class40_sub5_sub10 == null || class40_sub5_sub10.aBoolean2606 || (class40_sub5_sub10.anInt2599 != arg0 + (!aBoolean683 ? 0 : 7)));
+                        anIntArray692[Class40_Sub5_Sub15.anIntArray2777[arg0]] = i + 256;
                         method378(117);
                     }
                 }

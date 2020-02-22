@@ -156,7 +156,7 @@ public class Class6_Sub1 extends Class6 {
                     Class65.aCRC32_1531.reset();
                     Class65.aCRC32_1531.update(arg2, 0, arg2.length - 2);
                     int i = (int) Class65.aCRC32_1531.getValue();
-                    int i_0_ = (((arg2[-2 + arg2.length] & 0xff) << 900515176) - -(0xff & arg2[arg2.length + -1]));
+                    int i_0_ = (((arg2[-2 + arg2.length] & 0xff) << 900515176) + (0xff & arg2[arg2.length + -1]));
                     if(i != anIntArray252[arg3] || ((anIntArray224[arg3] ^ 0xffffffff) != (i_0_ ^ 0xffffffff))) {
                         aBooleanArray1796[arg3] = false;
                         if(aBoolean1811 || arg1)

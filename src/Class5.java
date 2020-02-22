@@ -58,7 +58,7 @@ public class Class5 {
                 for(int i_1_ = 0; (i_1_ ^ 0xffffffff) > -65; i_1_++) {
                     for(int i_2_ = 0; (i_2_ ^ 0xffffffff) > -65; i_2_++) {
                         if((arg3 ^ 0xffffffff) == (i ^ 0xffffffff) && i_1_ >= arg2 && 8 + arg2 > i_1_ && i_2_ >= arg6 && 8 + arg6 > i_2_)
-                            Class48.method922(arg5 + Class24.method338(arg7, false, i_1_ & 0x7, i_2_ & 0x7), arg7, class40_sub1, arg1 ^ ~0x363e, arg0 - -Class33.method410(i_1_ & 0x7, 0x7 & i_2_, arg7, false), 0, 0, arg4);
+                            Class48.method922(arg5 + Class24.method338(arg7, false, i_1_ & 0x7, i_2_ & 0x7), arg7, class40_sub1, arg1 ^ ~0x363e, arg0 + Class33.method410(i_1_ & 0x7, 0x7 & i_2_, arg7, false), 0, 0, arg4);
                         else
                             Class48.method922(-1, 0, class40_sub1, -116, -1, 0, 0, 0);
                     }
@@ -103,7 +103,7 @@ public class Class5 {
                 Class40_Sub5_Sub6.method583(0, Class40_Sub5_Sub9.anInt2562, 503, (byte) -5, 0, 0, 765);
             if(!Class4.aBoolean173) {
                 Class43.method894(false);
-                Class40_Sub4.method537(4);
+                SceneTile.method537(4);
             } else
                 Class40_Sub5_Sub6.method588(-1);
             try {
@@ -134,13 +134,13 @@ public class Class5 {
                 Class32.anInt769 = i_4_;
         }
         if((Class12.anInt388 ^ 0xffffffff) < (i_3_ ^ 0xffffffff)) {
-            Class12.anInt388 -= Class4.anInt188 - -(Class59.anInt1386 * (Class12.anInt388 + -i_3_) / 1000);
+            Class12.anInt388 -= Class4.anInt188 + (Class59.anInt1386 * (Class12.anInt388 + -i_3_) / 1000);
             if(i_3_ > Class12.anInt388) {
                 Class12.anInt388 = i_3_;
             }
         }
         if((Class40_Sub5_Sub6.anInt2443 ^ 0xffffffff) > (i ^ 0xffffffff)) {
-            Class40_Sub5_Sub6.anInt2443 += Class4.anInt188 - -(Class59.anInt1386 * (-Class40_Sub5_Sub6.anInt2443 + i) / 1000);
+            Class40_Sub5_Sub6.anInt2443 += Class4.anInt188 + (Class59.anInt1386 * (-Class40_Sub5_Sub6.anInt2443 + i) / 1000);
             if((Class40_Sub5_Sub6.anInt2443 ^ 0xffffffff) < (i ^ 0xffffffff))
                 Class40_Sub5_Sub6.anInt2443 = i;
         }
@@ -155,12 +155,12 @@ public class Class5 {
             if(Class40_Sub5_Sub6.anInt2443 < i)
                 Class40_Sub5_Sub6.anInt2443 = i;
         }
-        i = Class40_Sub5_Sub9.anInt2576 * 128 - -64;
+        i = Class40_Sub5_Sub9.anInt2576 * 128 + 64;
         i_4_ = Class37.method430((byte) -125, Player.anInt3267, i_3_, i) - Class38.anInt892;
         int i_5_ = -Class32.anInt769 + i_4_;
         int i_6_ = i - Class40_Sub5_Sub6.anInt2443;
         int i_7_ = i_3_ - Class12.anInt388;
-        int i_8_ = (int) Math.sqrt((double) (i_7_ * i_7_ - -(i_6_ * i_6_)));
+        int i_8_ = (int) Math.sqrt((double) (i_7_ * i_7_ + (i_6_ * i_6_)));
         int i_9_ = 0x7ff & (int) (Math.atan2((double) i_5_, (double) i_8_) * 325.949);
         if(i_9_ < 128)
             i_9_ = 128;
@@ -178,7 +178,7 @@ public class Class5 {
         }
         if(arg0 > 0) {
             if(i_11_ < 0) {
-                Class68_Sub1.anInt2210 -= Class60.anInt1413 - -(Class22_Sub1.anInt1856 * -i_11_ / 1000);
+                Class68_Sub1.anInt2210 -= Class60.anInt1413 + (Class22_Sub1.anInt1856 * -i_11_ / 1000);
                 Class68_Sub1.anInt2210 &= 0x7ff;
             }
             if(i_9_ > Class26.anInt627) {
@@ -271,7 +271,7 @@ public class Class5 {
                 PacketBuffer.method516(123);
                 if((Class66.aClass1_1550.method59(arg0 ^ ~0xc67) ^ 0xffffffff) < -1) {
                     Class32.packetBuffer.putPacket(11453, 202);
-                    Class46.anInt1096++;
+                    VertexNormal.anInt1096++;
                     Class32.packetBuffer.putLong(Class66.aClass1_1550.method58((byte) 102), false);
                     Class32.packetBuffer.put(-601 + i, (byte) -128);
                     Class32.packetBuffer.put(Class67.aBoolean1601 ? 1 : 0, (byte) -128);
@@ -308,8 +308,8 @@ public class Class5 {
                     ISAAC.aBoolean505 = true;
                 if(arg7 == 2 || (arg7 ^ 0xffffffff) == -4)
                     Class52.aBoolean1221 = true;
-            } else if((arg2 ^ 0xffffffff) > (arg6 ^ 0xffffffff) || (arg6 - -16 ^ 0xffffffff) >= (arg2 ^ 0xffffffff) || arg1 < arg8 - -arg0 + -16 || arg1 >= arg8 - -arg0) {
-                if(-Landscape.anInt1171 + arg6 <= arg2 && (arg2 ^ 0xffffffff) > (16 + (arg6 + Landscape.anInt1171) ^ 0xffffffff) && arg8 - -16 <= arg1 && arg1 < -16 + arg8 + arg0 && NPC.anInt3294 > 0) {
+            } else if((arg2 ^ 0xffffffff) > (arg6 ^ 0xffffffff) || (arg6 + 16 ^ 0xffffffff) >= (arg2 ^ 0xffffffff) || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
+                if(-Landscape.anInt1171 + arg6 <= arg2 && (arg2 ^ 0xffffffff) > (16 + (arg6 + Landscape.anInt1171) ^ 0xffffffff) && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && NPC.anInt3294 > 0) {
                     Class61.aBoolean1444 = true;
                     int i = (-32 + arg0) * arg0 / arg3;
                     if(arg7 == 2 || (arg7 ^ 0xffffffff) == -4)
@@ -329,7 +329,7 @@ public class Class5 {
                 if(arg7 == 1)
                     ISAAC.aBoolean505 = true;
             }
-            int i = -61 / ((arg4 - -67) / 59);
+            int i = -61 / ((arg4 + 67) / 59);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, ("bb.G(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + (arg5 != null ? "{...}" : "null") + ',' + arg6 + ',' + arg7 + ',' + arg8 + ')'));
         }

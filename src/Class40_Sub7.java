@@ -68,11 +68,11 @@ public class Class40_Sub7 extends Node {
                         int i_5_ = i_1_ & 0x3f;
                         int i_6_ = class40_sub1.method468(false) >> -314035070;
                         int i_7_ = 0x3f & i_1_ >> -1291824762;
-                        int i_8_ = i_7_ - -arg2;
-                        int i_9_ = i_5_ - -arg3;
+                        int i_8_ = i_7_ + arg2;
+                        int i_9_ = i_5_ + arg3;
                         if((i_8_ ^ 0xffffffff) < -1 && i_9_ > 0 && i_8_ < 103 && (i_9_ ^ 0xffffffff) > -104) {
                             GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
-                            if((i_6_ ^ 0xffffffff) != -23 || !Class46.lowMemory || ((gameObjectDefinition.hasActions ^ 0xffffffff) != -1) || gameObjectDefinition.aBoolean2547) {
+                            if((i_6_ ^ 0xffffffff) != -23 || !VertexNormal.lowMemory || ((gameObjectDefinition.hasActions ^ 0xffffffff) != -1) || gameObjectDefinition.unknown) {
                                 bool_2_ = true;
                                 if(!gameObjectDefinition.method612((byte) 8)) {
                                     bool = false;

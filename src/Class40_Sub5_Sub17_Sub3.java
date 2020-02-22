@@ -123,9 +123,9 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                     int i_13_ = R3D.cosinetable[i_11_];
                     i_13_ = (Class51.anInt1187 + 256) * i_13_ >> 1818182472;
                     i_12_ = (Class51.anInt1187 + 256) * i_12_ >> -413658424;
-                    int i_14_ = i_10_ * i_12_ - -(i * i_13_) >> 843700395;
+                    int i_14_ = i_10_ * i_12_ + (i * i_13_) >> 843700395;
                     int i_15_ = i_13_ * i_10_ - i * i_12_ >> -1318258005;
-                    int i_16_ = ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) - -i_14_ >> -2121665369);
+                    int i_16_ = ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) + i_14_ >> -2121665369);
                     int i_17_ = (-i_15_ + (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) >> -208961177);
                     boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), i_16_, (byte) 125, 0, true, 0, 0, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), i_17_, 1));
                     if(bool) {
@@ -241,18 +241,18 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                 Class59.aClass40_Sub5_Sub14_Sub2_1387 = Class27.method359(ISAAC.aClass1_506, Class22_Sub2.aClass1_1886, arg3, (byte) -64);
                 Class22.aClass40_Sub5_Sub14_Sub2Array535 = Class40_Sub5_Sub2.method550(arg3, (byte) -114, Class8.aClass1_299, Class22_Sub2.aClass1_1886);
                 Class39.aClass40_Sub5_Sub14_Sub4_918 = new DirectColorSprite(128, 265);
-                Class40_Sub4.aClass40_Sub5_Sub14_Sub4_2043 = new DirectColorSprite(128, 265);
+                SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = new DirectColorSprite(128, 265);
                 for(int i = 0; i < 33920; i++)
                     Class39.aClass40_Sub5_Sub14_Sub4_918.anIntArray2955[i] = Class8.aClass68_298.anIntArray1621[i];
                 for(int i = 0; (i ^ 0xffffffff) > -33921; i++)
-                    Class40_Sub4.aClass40_Sub5_Sub14_Sub4_2043.anIntArray2955[i] = (GameObject.aClass68_3042.anIntArray1621[i]);
+                    SceneTile.aClass40_Sub5_Sub14_Sub4_2043.anIntArray2955[i] = (GameObject.aClass68_3042.anIntArray1621[i]);
                 Class51.anIntArray1198 = new int[256];
                 for(int i = 0; i < 64; i++)
                     Class51.anIntArray1198[i] = i * 262144;
                 for(int i = 0; i < 64; i++)
                     Class51.anIntArray1198[64 + i] = 1024 * i + 16711680;
                 for(int i = 0; i < 64; i++)
-                    Class51.anIntArray1198[128 + i] = 16776960 - -(i * 4);
+                    Class51.anIntArray1198[128 + i] = 16776960 + (i * 4);
                 for(int i = 0; (i ^ 0xffffffff) > -65; i++)
                     Class51.anIntArray1198[i + 192] = 16777215;
                 Renderable.anIntArray2865 = new int[256];
@@ -265,12 +265,12 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                 if(arg1 != true)
                     method779(null, false, null, null);
                 for(int i = 0; i < 64; i++)
-                    Renderable.anIntArray2865[i - -192] = 16777215;
+                    Renderable.anIntArray2865[i + 192] = 16777215;
                 Class40_Sub5_Sub17_Sub6.anIntArray3248 = new int[256];
                 for(int i = 0; (i ^ 0xffffffff) > -65; i++)
                     Class40_Sub5_Sub17_Sub6.anIntArray3248[i] = i * 4;
                 for(int i = 0; (i ^ 0xffffffff) > -65; i++)
-                    Class40_Sub5_Sub17_Sub6.anIntArray3248[64 + i] = 255 - -(i * 262144);
+                    Class40_Sub5_Sub17_Sub6.anIntArray3248[64 + i] = 255 + (i * 262144);
                 for(int i = 0; i < 64; i++)
                     Class40_Sub5_Sub17_Sub6.anIntArray3248[128 + i] = i * 1024 + 16711935;
                 for(int i = 0; (i ^ 0xffffffff) > -65; i++)
@@ -284,7 +284,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                 Class22_Sub2.username = Class22_Sub2.aClass1_1886;
                 Class4.anIntArray178 = new int[32768];
                 Class26.anInt622 = 0;
-                if(RSCanvas.anInt60 != 0 && !Class46.lowMemory)
+                if(RSCanvas.anInt60 != 0 && !VertexNormal.lowMemory)
                     Class33.method412(false, Class55.aClass6_Sub1_1286, 0, (byte) 66, Class30.aClass1_716, 10, Class22_Sub2.aClass1_1886, RSCanvas.anInt60);
                 else
                     Class33.method405(16969, 10);

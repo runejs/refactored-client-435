@@ -110,17 +110,17 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 Class37.aBoolean871 = false;
                 Class40_Sub3.anInt2032 = 1;
                 Main.anInt1756 = 0;
-                Class25.aClass15_607 = null;
+                FloorDecoration.aClass15_607 = null;
             }
             if(Class40_Sub3.anInt2032 == 1) {
-                if(Class25.aClass15_607 == null)
-                    Class25.aClass15_607 = ISAAC.aClass31_521.method395(3, Class10.anInt350);
-                if(Class25.aClass15_607.anInt434 == 2)
+                if(FloorDecoration.aClass15_607 == null)
+                    FloorDecoration.aClass15_607 = ISAAC.aClass31_521.method395(3, Class10.anInt350);
+                if(FloorDecoration.aClass15_607.anInt434 == 2)
                     throw new IOException();
-                if((Class25.aClass15_607.anInt434 ^ 0xffffffff) == -2) {
-                    Class40_Sub6.aClass64_2098 = new Class64(((Socket) Class25.aClass15_607.anObject437), ISAAC.aClass31_521);
+                if((FloorDecoration.aClass15_607.anInt434 ^ 0xffffffff) == -2) {
+                    Class40_Sub6.aClass64_2098 = new Class64(((Socket) FloorDecoration.aClass15_607.anObject437), ISAAC.aClass31_521);
                     Class40_Sub3.anInt2032 = 2;
-                    Class25.aClass15_607 = null;
+                    FloorDecoration.aClass15_607 = null;
                 }
             }
             if(arg0 != true)
@@ -181,10 +181,10 @@ public class Class40_Sub5_Sub2 extends SubNode {
                     Class61.packetBuffer.put(18, (byte) -128);
                 else
                     Class61.packetBuffer.put(16, (byte) -128);
-                Class61.packetBuffer.put(57 - -Class32.packetBuffer.offset, (byte) -128);
+                Class61.packetBuffer.put(57 + Class32.packetBuffer.offset, (byte) -128);
                 Class61.packetBuffer.putInt(60, 435);
-                Class61.packetBuffer.put(Class46.lowMemory ? 1 : 0, (byte) -128);
-                Class61.packetBuffer.putInt(85, Class25.aClass6_Sub1_605.anInt216);
+                Class61.packetBuffer.put(VertexNormal.lowMemory ? 1 : 0, (byte) -128);
+                Class61.packetBuffer.putInt(85, FloorDecoration.aClass6_Sub1_605.anInt216);
                 Class61.packetBuffer.putInt(95, Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000.anInt216);
                 Class61.packetBuffer.putInt(100, (Class40_Sub5_Sub10.aClass6_Sub1_2609.anInt216));
                 Class61.packetBuffer.putInt(75, Class65.aClass6_Sub1_1533.anInt216);
@@ -195,7 +195,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 Class61.packetBuffer.putInt(49, (NpcDefinition.aClass6_Sub1_2377.anInt216));
                 Class61.packetBuffer.putInt(61, Class32.aClass6_Sub1_773.anInt216);
                 Class61.packetBuffer.putInt(80, RSCanvas.aClass6_Sub1_48.anInt216);
-                Class61.packetBuffer.putInt(61, Class46.aClass6_Sub1_1104.anInt216);
+                Class61.packetBuffer.putInt(61, VertexNormal.aClass6_Sub1_1104.anInt216);
                 Class61.packetBuffer.putInt(101, Class56.aClass6_Sub1_1323.anInt216);
                 Class61.packetBuffer.method475(Class32.packetBuffer.offset, Class32.packetBuffer.payload, 0, 8636);
                 Class40_Sub6.aClass64_2098.method1010(Class61.packetBuffer.offset, (byte) -19, 0, Class61.packetBuffer.payload);
@@ -256,7 +256,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
                         Class40_Sub6.aClass64_2098.method1008(0, Class40_Sub5_Sub12.packetsize, -128, Cache.outgoingbuffer.payload);
                         Main.method44(0);
                         Class51.anInt1202 = -1;
-                        Class25.method343(false, 5688);
+                        FloorDecoration.method343(false, 5688);
                         Class57.packetid = -1;
                     }
                 } else {
@@ -333,7 +333,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
                         class40_sub5_sub17_sub5.method803(anIntArray2309[i], anIntArray2312[i]);
                 }
                 class40_sub5_sub17_sub5.method810();
-                class40_sub5_sub17_sub5.method802(64 - -anInt2300, anInt2295 + 850, -30, -50, -30, true);
+                class40_sub5_sub17_sub5.method802(64 + anInt2300, anInt2295 + 850, -30, -50, -30, true);
                 Class34.aClass9_851.method230(-7208, (long) anInt2310, class40_sub5_sub17_sub5);
             }
             Model class40_sub5_sub17_sub5_0_;

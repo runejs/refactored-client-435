@@ -73,7 +73,7 @@ public class Class40_Sub3 extends Node {
             Class22_Sub2.currentLoadingText = RSCanvas.aClass1_63;
             Class40_Sub5_Sub6.anInt2451 = 30;
         } else if(Class40_Sub5_Sub6.anInt2451 == 30) {
-            Class25.aClass6_Sub1_605 = Class54.method957(0, true, false, (byte) 127, true);
+            FloorDecoration.aClass6_Sub1_605 = Class54.method957(0, true, false, (byte) 127, true);
             Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000 = Class54.method957(1, true, false, (byte) 125, true);
             Class40_Sub5_Sub10.aClass6_Sub1_2609 = Class54.method957(2, true, true, (byte) 119, false);
             Class65.aClass6_Sub1_1533 = Class54.method957(3, true, false, (byte) 119, true);
@@ -84,14 +84,14 @@ public class Class40_Sub3 extends Node {
             NpcDefinition.aClass6_Sub1_2377 = Class54.method957(8, true, false, (byte) 127, true);
             Class32.aClass6_Sub1_773 = Class54.method957(9, true, false, (byte) 127, true);
             RSCanvas.aClass6_Sub1_48 = Class54.method957(10, true, false, (byte) 125, true);
-            Class46.aClass6_Sub1_1104 = Class54.method957(11, true, false, (byte) 120, true);
+            VertexNormal.aClass6_Sub1_1104 = Class54.method957(11, true, false, (byte) 120, true);
             Class56.aClass6_Sub1_1323 = Class54.method957(12, true, false, (byte) 118, true);
             Class40_Sub5_Sub6.anInt2451 = 40;
-            Class22_Sub2.currentLoadingText = Class25.STRING_CONNECTING_UPDATE_SERVER;
+            Class22_Sub2.currentLoadingText = FloorDecoration.STRING_CONNECTING_UPDATE_SERVER;
             Class67.anInt1607 = 20;
         } else if(Class40_Sub5_Sub6.anInt2451 == 40) {
             int i = 0;
-            i += Class25.aClass6_Sub1_605.method197(100) * 5 / 100;
+            i += FloorDecoration.aClass6_Sub1_605.method197(100) * 5 / 100;
             i += (5 * Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000.method197(100) / 100);
             i += 5 * Class40_Sub5_Sub10.aClass6_Sub1_2609.method197(100) / 100;
             i += 5 * Class65.aClass6_Sub1_1533.method197(100) / 100;
@@ -102,7 +102,7 @@ public class Class40_Sub3 extends Node {
             i += NpcDefinition.aClass6_Sub1_2377.method197(100) * 5 / 100;
             i += Class32.aClass6_Sub1_773.method197(arg0) * 5 / 100;
             i += 5 * RSCanvas.aClass6_Sub1_48.method197(100) / 100;
-            i += 5 * Class46.aClass6_Sub1_1104.method197(100) / 100;
+            i += 5 * VertexNormal.aClass6_Sub1_1104.method197(100) / 100;
             i += 5 * Class56.aClass6_Sub1_1323.method197(100) / 100;
             if(i != 100) {
                 if((i ^ 0xffffffff) != -1)
@@ -114,28 +114,28 @@ public class Class40_Sub3 extends Node {
                 Class67.anInt1607 = 30;
             }
         } else if(Class40_Sub5_Sub6.anInt2451 == 45) {
-            Class38_Sub1.method446(ISAAC.aClass31_521, 0, !Class46.lowMemory, (byte) 30);
+            Class38_Sub1.method446(ISAAC.aClass31_521, 0, !VertexNormal.lowMemory, (byte) 30);
             Class49.aClass40_Sub9_Sub1_1152 = Class62.method1003(ISAAC.aClass31_521, Class62.aCanvas1469, arg0 ^ 0x74be);
             Class55.aClass48_1289 = new Class48(22050, CollisionMap.anInt141);
             Class40_Sub5_Sub6.anInt2451 = 50;
-            Class22_Sub2.currentLoadingText = Class46.aClass1_1105;
+            Class22_Sub2.currentLoadingText = VertexNormal.aClass1_1105;
             Class67.anInt1607 = 35;
         } else if((Class40_Sub5_Sub6.anInt2451 ^ 0xffffffff) == -51) {
             int i = 0;
             if(Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236 != null)
                 i++;
             else
-                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236 = Class25.method347(NpcDefinition.aClass6_Sub1_2377, arg0 + 155, Class66.aClass1_1567, Class40_Sub6.aClass1_2101);
+                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236 = FloorDecoration.method347(NpcDefinition.aClass6_Sub1_2377, arg0 + 155, Class66.aClass1_1567, Class40_Sub6.aClass1_2101);
             if(Class53.aClass40_Sub5_Sub14_Sub1_1268 != null)
                 i++;
             else
-                Class53.aClass40_Sub5_Sub14_Sub1_1268 = Class25.method347(NpcDefinition.aClass6_Sub1_2377, 255, Class66.aClass1_1567, Class67.aClass1_1580);
+                Class53.aClass40_Sub5_Sub14_Sub1_1268 = FloorDecoration.method347(NpcDefinition.aClass6_Sub1_2377, 255, Class66.aClass1_1567, Class67.aClass1_1580);
             if(Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246 != null)
                 i++;
             else
-                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246 = Class25.method347(NpcDefinition.aClass6_Sub1_2377, 255, Class66.aClass1_1567, Class38_Sub1.aClass1_1921);
+                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246 = FloorDecoration.method347(NpcDefinition.aClass6_Sub1_2377, 255, Class66.aClass1_1567, Class38_Sub1.aClass1_1921);
             if(i < 3) {
-                Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(59, new RSString[]{Class46.aClass1_1099, HashTable.method334(i * 100 / 3, -1), Class44.aClass1_1041}));
+                Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(59, new RSString[]{VertexNormal.aClass1_1099, HashTable.method334(i * 100 / 3, -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 40;
             } else {
                 Class40_Sub5_Sub6.anInt2451 = 60;
@@ -162,10 +162,10 @@ public class Class40_Sub3 extends Node {
                 Class38.method441(Class40_Sub5_Sub10.aClass6_Sub1_2609, -76);
                 Class40_Sub5_Sub9.method616((Class40_Sub5_Sub10.aClass6_Sub1_2609), (byte) 85);
                 Class58.method977(3, Class40_Sub5_Sub10.aClass6_Sub1_2609, Class40_Sub5_Sub9.aClass6_Sub1_2571);
-                Class58.method980(28987, Class40_Sub5_Sub9.aClass6_Sub1_2571, Class46.lowMemory, Class40_Sub5_Sub10.aClass6_Sub1_2609);
+                Class58.method980(28987, Class40_Sub5_Sub9.aClass6_Sub1_2571, VertexNormal.lowMemory, Class40_Sub5_Sub10.aClass6_Sub1_2609);
                 Class27.method357(Class40_Sub5_Sub9.aClass6_Sub1_2571, arg0 ^ ~0x2a85, Class40_Sub5_Sub10.aClass6_Sub1_2609);
                 Class42.method885(Class40_Sub5_Sub10.aClass6_Sub1_2609, Class22.aBoolean541, Class40_Sub5_Sub9.aClass6_Sub1_2571, -313);
-                Cache.method236(false, Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000, Class40_Sub5_Sub10.aClass6_Sub1_2609, Class25.aClass6_Sub1_605);
+                Cache.method236(false, Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000, Class40_Sub5_Sub10.aClass6_Sub1_2609, FloorDecoration.aClass6_Sub1_605);
                 Class55.method966(arg0 ^ 0x38, Class40_Sub5_Sub9.aClass6_Sub1_2571, Class40_Sub5_Sub10.aClass6_Sub1_2609);
                 Landscape.method936(-17552, Class40_Sub5_Sub10.aClass6_Sub1_2609);
                 Main.method43(Class40_Sub5_Sub10.aClass6_Sub1_2609, true);
@@ -196,8 +196,8 @@ public class Class40_Sub3 extends Node {
                 i++;
             else
                 Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4Array2474 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class40_Sub6.aClass1_2114, Class66.aClass1_1567);
-            if(Class25.aClass40_Sub5_Sub14_Sub4Array603 == null)
-                Class25.aClass40_Sub5_Sub14_Sub4Array603 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class40_Sub11.aClass1_2161, Class66.aClass1_1567);
+            if(FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 == null)
+                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class40_Sub11.aClass1_2161, Class66.aClass1_1567);
             else
                 i++;
             if(Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 != null)
@@ -242,8 +242,8 @@ public class Class40_Sub3 extends Node {
                 int i_6_ = (int) (41.0 * Math.random()) - 20;
                 int i_7_ = -10 + (int) (21.0 * Math.random());
                 for(int i_8_ = 0; Class8.aClass40_Sub5_Sub14_Sub4Array296.length > i_8_; i_8_++)
-                    Class8.aClass40_Sub5_Sub14_Sub4Array296[i_8_].method717(i_6_ + i_4_, i_5_ - -i_6_, i_7_ - -i_6_);
-                Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[0].method697(i_4_ - -i_6_, i_5_ + i_6_, i_6_ + i_7_);
+                    Class8.aClass40_Sub5_Sub14_Sub4Array296[i_8_].method717(i_6_ + i_4_, i_5_ + i_6_, i_7_ + i_6_);
+                Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[0].method697(i_4_ + i_6_, i_5_ + i_6_, i_6_ + i_7_);
                 Class22_Sub2.currentLoadingText = Class38_Sub1.aClass1_1922;
                 Class67.anInt1607 = 70;
                 Class40_Sub5_Sub6.anInt2451 = 85;
@@ -264,7 +264,7 @@ public class Class40_Sub3 extends Node {
                 Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(85, new RSString[]{Class40_Sub5_Sub2.aClass1_2294, HashTable.method334(Class32.aClass6_Sub1_773.method202(false), -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 90;
             } else {
-                Class35 class35 = new Class35(Class32.aClass6_Sub1_773, NpcDefinition.aClass6_Sub1_2377, 20, 0.8, !Class46.lowMemory ? 128 : 64);
+                Class35 class35 = new Class35(Class32.aClass6_Sub1_773, NpcDefinition.aClass6_Sub1_2377, 20, 0.8, !VertexNormal.lowMemory ? 128 : 64);
                 R3D.method703(class35);
                 R3D.method711(0.8);
                 Class40_Sub5_Sub6.anInt2451 = 110;
@@ -278,11 +278,11 @@ public class Class40_Sub3 extends Node {
             Class40_Sub5_Sub6.anInt2451 = 120;
             Class67.anInt1607 = 94;
         } else if((Class40_Sub5_Sub6.anInt2451 ^ 0xffffffff) == -121) {
-            if(!RSCanvas.aClass6_Sub1_48.method194(Class25.aClass1_615, Class66.aClass1_1567, -1234)) {
+            if(!RSCanvas.aClass6_Sub1_48.method194(FloorDecoration.aClass1_615, Class66.aClass1_1567, -1234)) {
                 Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(75, new RSString[]{Class40_Sub5_Sub17_Sub1.aClass1_3014, Class57.aClass1_1348}));
                 Class67.anInt1607 = 96;
             } else {
-                Class66 class66 = new Class66(RSCanvas.aClass6_Sub1_48.method170(Class66.aClass1_1567, Class25.aClass1_615, arg0 + -99));
+                Class66 class66 = new Class66(RSCanvas.aClass6_Sub1_48.method170(Class66.aClass1_1567, FloorDecoration.aClass1_615, arg0 + -99));
                 Class40_Sub5_Sub17_Sub3.method778(true, class66);
                 Class40_Sub5_Sub6.anInt2451 = 130;
                 Class22_Sub2.currentLoadingText = Landscape.aClass1_1173;

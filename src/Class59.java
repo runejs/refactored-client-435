@@ -51,7 +51,7 @@ public class Class59 {
             anInt1381++;
             int i = 70 / ((62 - arg0) / 55);
             Scene.aBoolean88 = true;
-            Class46.lowMemory = true;
+            VertexNormal.lowMemory = true;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "tc.E(" + arg0 + ')');
         }
@@ -98,7 +98,7 @@ public class Class59 {
     public static void method985(byte arg0) {
         try {
             aClass40_Sub1_1385 = null;
-            int i = 84 / ((arg0 - -74) / 47);
+            int i = 84 / ((arg0 + 74) / 47);
             aClass40_Sub5_Sub12ArrayArray1390 = null;
             anIntArray1398 = null;
             aClass1_1394 = null;

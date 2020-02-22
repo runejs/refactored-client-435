@@ -192,7 +192,7 @@ public class HashTable {
             arg0.aClass40_968 = class40.aClass40_968;
             arg0.aClass40_968.aClass40_950 = arg0;
             arg0.aClass40_950.aClass40_968 = arg0;
-            int i = -96 / ((arg1 - -54) / 54);
+            int i = -96 / ((arg1 + 54) / 54);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, ("i.A(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ')'));
         }

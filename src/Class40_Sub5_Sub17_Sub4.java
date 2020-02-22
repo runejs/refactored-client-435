@@ -164,7 +164,7 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
                 int i_3_ = arg3;
                 if((i ^ 0xffffffff) < -1)
                     i_3_ = arg4;
-                int i_4_ = 4 * (-arg5 + 103) * 512 + (24624 - -(4 * arg2));
+                int i_4_ = 4 * (-arg5 + 103) * 512 + (24624 + (4 * arg2));
                 int i_5_ = i >> -1766000082 & 0x7fff;
                 int[] is = (Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.anIntArray2955);
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_5_);
@@ -173,7 +173,7 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
                     if(class40_sub5_sub14_sub2 != null) {
                         int i_6_ = ((-class40_sub5_sub14_sub2.anInt2921 + gameObjectDefinition.anInt2503 * 4) / 2);
                         int i_7_ = ((gameObjectDefinition.anInt2515 * 4 + -class40_sub5_sub14_sub2.anInt2926) / 2);
-                        class40_sub5_sub14_sub2.method692(48 - -(4 * arg2) - -i_6_, i_7_ + (48 - -((104 + -arg5 - gameObjectDefinition.anInt2515) * 4)));
+                        class40_sub5_sub14_sub2.method692(48 + (4 * arg2) + i_6_, i_7_ + (48 + ((104 + -arg5 - gameObjectDefinition.anInt2515) * 4)));
                     }
                 } else {
                     if(i_1_ == 0 || (i_1_ ^ 0xffffffff) == -3) {
@@ -186,16 +186,16 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
                             is[i_4_] = i_3_;
                             is[i_4_ + 1] = i_3_;
                             is[2 + i_4_] = i_3_;
-                            is[i_4_ - -3] = i_3_;
+                            is[i_4_ + 3] = i_3_;
                         } else if((i_2_ ^ 0xffffffff) == -3) {
                             is[3 + i_4_] = i_3_;
-                            is[3 + (i_4_ - -512)] = i_3_;
-                            is[1024 + i_4_ - -3] = i_3_;
+                            is[3 + (i_4_ + 512)] = i_3_;
+                            is[1024 + i_4_ + 3] = i_3_;
                             is[i_4_ + 1539] = i_3_;
                         } else if(i_2_ == 3) {
                             is[i_4_ + 1536] = i_3_;
-                            is[1536 + (i_4_ - -1)] = i_3_;
-                            is[1536 + i_4_ - -2] = i_3_;
+                            is[1536 + (i_4_ + 1)] = i_3_;
+                            is[1536 + i_4_ + 2] = i_3_;
                             is[3 + i_4_ + 1536] = i_3_;
                         }
                     }
@@ -204,11 +204,11 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
                             if((i_2_ ^ 0xffffffff) != -2) {
                                 if((i_2_ ^ 0xffffffff) != -3) {
                                     if((i_2_ ^ 0xffffffff) == -4)
-                                        is[i_4_ - -1536] = i_3_;
+                                        is[i_4_ + 1536] = i_3_;
                                 } else
-                                    is[3 + i_4_ - -1536] = i_3_;
+                                    is[3 + i_4_ + 1536] = i_3_;
                             } else
-                                is[i_4_ - -3] = i_3_;
+                                is[i_4_ + 3] = i_3_;
                         } else
                             is[i_4_] = i_3_;
                     }
@@ -229,13 +229,13 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
                             } else {
                                 is[i_4_] = i_3_;
                                 is[1 + i_4_] = i_3_;
-                                is[i_4_ - -2] = i_3_;
+                                is[i_4_ + 2] = i_3_;
                                 is[3 + i_4_] = i_3_;
                             }
                         } else {
                             is[i_4_] = i_3_;
                             is[512 + i_4_] = i_3_;
-                            is[i_4_ - -1024] = i_3_;
+                            is[i_4_ + 1024] = i_3_;
                             is[1536 + i_4_] = i_3_;
                         }
                     }
@@ -264,8 +264,8 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
                     if((i_10_ ^ 0xffffffff) != -1 && (i_10_ ^ 0xffffffff) != -3) {
                         is[i_15_] = i_14_;
                         is[513 + i_15_] = i_14_;
-                        is[2 + (i_15_ - -1024)] = i_14_;
-                        is[1536 + i_15_ - -3] = i_14_;
+                        is[2 + (i_15_ + 1024)] = i_14_;
+                        is[1536 + i_15_ + 3] = i_14_;
                     } else {
                         is[1536 + i_15_] = i_14_;
                         is[1024 + (i_15_ + 1)] = i_14_;
@@ -283,7 +283,7 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
                     if(class40_sub5_sub14_sub2 != null) {
                         int i_17_ = ((-class40_sub5_sub14_sub2.anInt2921 + gameObjectDefinition.anInt2503 * 4) / 2);
                         int i_18_ = ((-class40_sub5_sub14_sub2.anInt2926 + 4 * gameObjectDefinition.anInt2515) / 2);
-                        class40_sub5_sub14_sub2.method692(4 * arg2 + 48 + i_17_, i_18_ + ((104 - (arg5 - -gameObjectDefinition.anInt2515)) * 4) + 48);
+                        class40_sub5_sub14_sub2.method692(4 * arg2 + 48 + i_17_, i_18_ + ((104 - (arg5 + gameObjectDefinition.anInt2515)) * 4) + 48);
                     }
                 }
             }
@@ -366,10 +366,10 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
     public static void method789(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
         try {
             anInt3147++;
-            if((Class51.anInt1202 ^ 0xffffffff) != (arg3 ^ 0xffffffff) || arg2 != Class17.anInt448 || ((arg5 ^ 0xffffffff) != (Class40_Sub6.onBuildTimePlane ^ 0xffffffff) && Class46.lowMemory)) {
+            if((Class51.anInt1202 ^ 0xffffffff) != (arg3 ^ 0xffffffff) || arg2 != Class17.anInt448 || ((arg5 ^ 0xffffffff) != (Class40_Sub6.onBuildTimePlane ^ 0xffffffff) && VertexNormal.lowMemory)) {
                 Class40_Sub6.onBuildTimePlane = arg5;
                 Class51.anInt1202 = arg3;
-                if(!Class46.lowMemory)
+                if(!VertexNormal.lowMemory)
                     Class40_Sub6.onBuildTimePlane = 0;
                 Class17.anInt448 = arg2;
                 Floor.method559(25, 88);

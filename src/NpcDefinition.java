@@ -336,7 +336,7 @@ public class NpcDefinition extends SubNode {
                         class40_sub5_sub17_sub5.method803(anIntArray2428[i], anIntArray2395[i]);
                 }
                 class40_sub5_sub17_sub5.method810();
-                class40_sub5_sub17_sub5.method802(anInt2387 + 64, 850 - -anInt2409, -30, -50, -30, true);
+                class40_sub5_sub17_sub5.method802(anInt2387 + 64, 850 + anInt2409, -30, -50, -30, true);
                 Class67.aClass9_1611.method230(-7208, (long) anInt2427, class40_sub5_sub17_sub5);
             }
             Model class40_sub5_sub17_sub5_0_;

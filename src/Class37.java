@@ -43,12 +43,12 @@ public class Class37 {
             int i_2_ = arg1;
             if(i_2_ < 3 && (Floor.tile_flags[1][i_0_][i] & 0x2) == 2)
                 i_2_++;
-            int i_3_ = (((-i_1_ + 128) * (Class40_Sub6.tile_height[i_2_][i_0_][i]) - -(i_1_ * (Class40_Sub6.tile_height[i_2_][i_0_ - -1][i]))) >> -1503923001);
+            int i_3_ = (((-i_1_ + 128) * (Class40_Sub6.tile_height[i_2_][i_0_][i]) + (i_1_ * (Class40_Sub6.tile_height[i_2_][i_0_ + 1][i]))) >> -1503923001);
             int i_4_ = arg3 & 0x7f;
             if(arg0 > -116)
                 method432((byte) -86);
             int i_5_ = ((i_1_ * (Class40_Sub6.tile_height[i_2_][1 + i_0_][1 + i]) + (Class40_Sub6.tile_height[i_2_][i_0_][1 + i] * (128 + -i_1_))) >> -820366297);
-            return (128 + -i_4_) * i_3_ - -(i_5_ * i_4_) >> 2117999111;
+            return (128 + -i_4_) * i_3_ + (i_5_ * i_4_) >> 2117999111;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, ("n.C(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
         }
@@ -149,14 +149,14 @@ public class Class37 {
                 Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, Class58.anInt1373, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
                 NpcDefinition.method574(4);
             } else {
-                int i = 48 - -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32);
+                int i = 48 + ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32);
                 int i_8_ = 464 + -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) / 32);
                 int i_9_ = Class58.anInt1373 + Class43.anInt1020 & 0x7ff;
                 Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.method724(25, 5, 146, 151, i, i_8_, i_9_, Class51.anInt1187 + 256, Landscape.anIntArray1186, Class34.anIntArray852);
                 for(int i_10_ = 0; GameObject.anInt3040 > i_10_; i_10_++) {
                     i = 2 + (4 * Class40_Sub5_Sub17_Sub4.anIntArray3149[i_10_] + -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32));
                     i_8_ = (2 + 4 * Class45.anIntArray1083[i_10_] - ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) / 32));
-                    Class40_Sub4.method533(i_8_, i, (Class62.aClass40_Sub5_Sub14_Sub4Array1466[i_10_]), (byte) 99);
+                    SceneTile.method533(i_8_, i, (Class62.aClass40_Sub5_Sub14_Sub4Array1466[i_10_]), (byte) 99);
                 }
                 for(int i_11_ = 0; (i_11_ ^ 0xffffffff) > -105; i_11_++) {
                     for(int i_12_ = 0; i_12_ < 104; i_12_++) {
@@ -164,7 +164,7 @@ public class Class37 {
                         if(class45 != null) {
                             i_8_ = -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) / 32) + 2 + i_12_ * 4;
                             i = -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32) + 2 + i_11_ * 4;
-                            Class40_Sub4.method533(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[0], (byte) 70);
+                            SceneTile.method533(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[0], (byte) 70);
                         }
                     }
                 }
@@ -177,7 +177,7 @@ public class Class37 {
                         if(class40_sub5_sub5 != null && class40_sub5_sub5.aBoolean2430 && class40_sub5_sub5.aBoolean2372) {
                             i = (-((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32) + (class40_sub5_sub17_sub4_sub2.anInt3098 / 32));
                             i_8_ = (class40_sub5_sub17_sub4_sub2.anInt3089 / 32 + -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) / 32));
-                            Class40_Sub4.method533(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[1], (byte) 75);
+                            SceneTile.method533(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[1], (byte) 75);
                         }
                     }
                 }
@@ -198,11 +198,11 @@ public class Class37 {
                         if(((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3266) != 0) && (class40_sub5_sub17_sub4_sub1.anInt3266 ^ 0xffffffff) != -1 && (((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3266) ^ 0xffffffff) == (class40_sub5_sub17_sub4_sub1.anInt3266 ^ 0xffffffff)))
                             bool_16_ = true;
                         if(bool)
-                            Class40_Sub4.method533(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[3], (byte) 46);
+                            SceneTile.method533(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[3], (byte) 46);
                         else if(bool_16_)
-                            Class40_Sub4.method533(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[4], (byte) 57);
+                            SceneTile.method533(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[4], (byte) 57);
                         else
-                            Class40_Sub4.method533(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[2], (byte) 80);
+                            SceneTile.method533(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[2], (byte) 80);
                     }
                 }
                 if((Player.anInt3288 ^ 0xffffffff) != -1 && (Node.anInt926 % 20 ^ 0xffffffff) > -11) {
@@ -216,7 +216,7 @@ public class Class37 {
                     }
                     if((Player.anInt3288 ^ 0xffffffff) == -3) {
                         i_8_ = (-((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) / 32) + 2 + 4 * (-Class26.anInt635 + Class4.anInt175));
-                        i = (4 * (Class68.anInt1637 - Class40_Sub5_Sub2.anInt2307) - (-2 - -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32)));
+                        i = (4 * (Class68.anInt1637 - Class40_Sub5_Sub2.anInt2307) - (-2 + ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32)));
                         Floor.method560(i, Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], 75, i_8_);
                     }
                     if(Player.anInt3288 == 10 && (Class68.anInt1623 ^ 0xffffffff) <= -1 && ((Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156).length ^ 0xffffffff) < (Class68.anInt1623 ^ 0xffffffff)) {
@@ -231,7 +231,7 @@ public class Class37 {
                 if((Class40_Sub5_Sub4.anInt2366 ^ 0xffffffff) != -1) {
                     i = (2 + Class40_Sub5_Sub4.anInt2366 * 4 + -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) / 32));
                     i_8_ = 2 + (4 * Class55.anInt1304 + -((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) / 32));
-                    Class40_Sub4.method533(i_8_, i, (Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[0]), (byte) 83);
+                    SceneTile.method533(i_8_, i, (Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[0]), (byte) 83);
                 }
                 Rasterizer.method656(97, 78, 3, 3, 16777215);
                 Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, Class58.anInt1373, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
@@ -299,7 +299,7 @@ public class Class37 {
             anInt859++;
             if((arg0 ^ 0xffffffff) == -1 && (HashTable.anInt573 ^ 0xffffffff) == (arg1 ^ 0xffffffff))
                 return true;
-            if(arg0 == 1 && (arg1 ^ 0xffffffff) == (Class25.anInt614 ^ 0xffffffff))
+            if(arg0 == 1 && (arg1 ^ 0xffffffff) == (FloorDecoration.anInt614 ^ 0xffffffff))
                 return true;
             if(((arg0 ^ 0xffffffff) == -3 || (arg0 ^ 0xffffffff) == -4) && (arg1 ^ 0xffffffff) == (Class67.anInt1586 ^ 0xffffffff))
                 return true;

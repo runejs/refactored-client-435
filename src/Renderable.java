@@ -71,7 +71,7 @@ public abstract class Renderable extends SubNode {
                         i_2_ *= Class5.anInt199;
                         class40_sub5_sub12.anInt2690 = 0x7ff & i_2_ + class40_sub5_sub12.anInt2690;
                         i_3_ *= Class5.anInt199;
-                        class40_sub5_sub12.anInt2657 = 0x7ff & class40_sub5_sub12.anInt2657 - -i_3_;
+                        class40_sub5_sub12.anInt2657 = 0x7ff & class40_sub5_sub12.anInt2657 + i_3_;
                     }
                 }
             }

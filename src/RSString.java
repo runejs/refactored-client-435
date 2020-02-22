@@ -110,7 +110,7 @@ public class RSString implements Interface1 {
     public static void method71(int arg0) {
         try {
             Class4.anInt182 = 0;
-            int i = (((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) >> 2067257703) - -Class40_Sub5_Sub2.anInt2307);
+            int i = (((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) >> 2067257703) + Class40_Sub5_Sub2.anInt2307);
             int i_10_ = (Class26.anInt635 + ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) >> 1064414503));
             if((i ^ 0xffffffff) <= -3054 && i <= 3156 && i_10_ >= 3056 && i_10_ <= 3136)
                 Class4.anInt182 = 1;
@@ -130,7 +130,7 @@ public class RSString implements Interface1 {
             anInt1686++;
             if(arg3 >= -98)
                 method83((byte) -1);
-            long l = ((long) (arg0 + 37 * arg2 & 0xffff) + ((long) arg4 << -1686849184) - -(long) (arg2 << -1491383504));
+            long l = ((long) (arg0 + 37 * arg2 & 0xffff) + ((long) arg4 << -1686849184) + (long) (arg2 << -1491383504));
             if(aClass9_1684 != null) {
                 Class40_Sub5_Sub6 class40_sub5_sub6 = (Class40_Sub5_Sub6) aClass9_1684.method231(l, (byte) 85);
                 if(class40_sub5_sub6 != null)
@@ -311,7 +311,7 @@ public class RSString implements Interface1 {
                 else if(i_1_ >= 97 && i_1_ <= 122)
                     l += (long) (1 + (i_1_ + -97));
                 else if(i_1_ >= 48 && i_1_ <= 57)
-                    l += (long) (27 - (-i_1_ - -48));
+                    l += (long) (27 - (-i_1_ + 48));
             }
             for(/**/; ((l % 37L ^ 0xffffffffffffffffL) == -1L && (l ^ 0xffffffffffffffffL) != -1L); l /= 37L) {
                 /* empty */
@@ -548,7 +548,7 @@ public class RSString implements Interface1 {
                 aByteArray1692 = is;
             }
             Class18.method278(arg0.aByteArray1692, 0, aByteArray1692, arg2, arg0.anInt1680);
-            if(anInt1680 < arg2 - -arg0.anInt1680)
+            if(anInt1680 < arg2 + arg0.anInt1680)
                 anInt1680 = arg0.anInt1680 + arg2;
             return this;
         } catch(RuntimeException runtimeexception) {
@@ -562,8 +562,8 @@ public class RSString implements Interface1 {
             if(arg0 <= arg1 || arg0 > 255)
                 throw new IllegalArgumentException("invalid char");
             RSString class1 = new RSString();
-            class1.aByteArray1692 = new byte[anInt1680 - -1];
-            class1.anInt1680 = anInt1680 - -1;
+            class1.aByteArray1692 = new byte[anInt1680 + 1];
+            class1.anInt1680 = anInt1680 + 1;
             Class18.method278(aByteArray1692, 0, class1.aByteArray1692, 0, anInt1680);
             class1.aByteArray1692[anInt1680] = (byte) arg0;
             return class1;
@@ -587,7 +587,7 @@ public class RSString implements Interface1 {
             if(!aBoolean1675)
                 throw new IllegalArgumentException();
             anInt1696 = 0;
-            if((anInt1680 - -arg0.anInt1680 ^ 0xffffffff) < (aByteArray1692.length ^ 0xffffffff)) {
+            if((anInt1680 + arg0.anInt1680 ^ 0xffffffff) < (aByteArray1692.length ^ 0xffffffff)) {
                 int i;
                 for(i = 1; (i ^ 0xffffffff) > (anInt1680 + arg0.anInt1680 ^ 0xffffffff); i += i) {
                     /* empty */
@@ -764,7 +764,7 @@ public class RSString implements Interface1 {
             while(i_17_ < arg0.anInt1680) {
                 for(int i_21_ = i_18_; i_17_ >= i_21_; i_21_++) {
                     if((-i_21_ + i_17_ + arg0.anInt1680 ^ 0xffffffff) >= (is[i_21_ + -1] ^ 0xffffffff))
-                        is[i_21_ + -1] = -i_21_ + arg0.anInt1680 - -i_17_;
+                        is[i_21_ + -1] = -i_21_ + arg0.anInt1680 + i_17_;
                 }
                 i_18_ = 1 + i_17_;
                 i_17_ = -is_14_[-1 + i] + (i + i_17_);
@@ -864,7 +864,7 @@ public class RSString implements Interface1 {
             if(arg0 != 1544463557)
                 aByteArrayArray1715 = null;
             for(int i = 0; (i ^ 0xffffffff) > (anInt1680 ^ 0xffffffff); i++)
-                l = -l + (l << 1544463557) - -(long) (0xff & aByteArray1692[i]);
+                l = -l + (l << 1544463557) + (long) (0xff & aByteArray1692[i]);
             return l;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "a.KA(" + arg0 + ')');

@@ -55,8 +55,8 @@ public class Class42 {
             for(i = 1; (((arg0.length >> -2026619711) + arg0.length ^ 0xffffffff) <= (i ^ 0xffffffff)); i <<= 1) {
                 /* empty */
             }
-            anIntArray996 = new int[i - -i];
-            for(int i_8_ = 0; (i - -i ^ 0xffffffff) < (i_8_ ^ 0xffffffff); i_8_++)
+            anIntArray996 = new int[i + i];
+            for(int i_8_ = 0; (i + i ^ 0xffffffff) < (i_8_ ^ 0xffffffff); i_8_++)
                 anIntArray996[i_8_] = -1;
             for(int i_9_ = 0; (arg0.length ^ 0xffffffff) < (i_9_ ^ 0xffffffff); i_9_++) {
                 int i_10_;
@@ -83,7 +83,7 @@ public class Class42 {
                         class40_sub5_sub12.anInt2654 = 0;
                     }
                 }
-                int i = 40 % ((arg0 - -57) / 54);
+                int i = 40 % ((arg0 + 57) / 54);
             }
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "oa.A(" + arg0 + ',' + arg1 + ')');
@@ -97,7 +97,7 @@ public class Class42 {
             anInt994++;
             int i = 57 * arg1 + arg0;
             i ^= i << 636261773;
-            int i_2_ = 1376312589 + (i * i * 15731 - -789221) * i & 0x7fffffff;
+            int i_2_ = 1376312589 + (i * i * 15731 + 789221) * i & 0x7fffffff;
             return i_2_ >> -754459309 & 0xff;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, ("oa.D(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
@@ -175,7 +175,7 @@ public class Class42 {
 
     public static int method888(int arg0, byte arg1, int arg2) {
         try {
-            int i = (-128 + Class4.method160(arg0 - -45365, 15177, 4, 91923 + arg2) - (-(Class4.method160(arg0 - -10294, 15177, 2, 37821 + arg2) - 128 >> -463135775) + -(-128 + Class4.method160(arg0, 15177, 1, arg2) >> 252161186)));
+            int i = (-128 + Class4.method160(arg0 + 45365, 15177, 4, 91923 + arg2) - (-(Class4.method160(arg0 + 10294, 15177, 2, 37821 + arg2) - 128 >> -463135775) + -(-128 + Class4.method160(arg0, 15177, 1, arg2) >> 252161186)));
             i = 35 + (int) (0.3 * (double) i);
             if(arg1 != -45)
                 return -24;
@@ -233,7 +233,7 @@ public class Class42 {
                 if(class40_sub5_sub17_sub4_sub2.anInt3113 == 0)
                     class40_sub5_sub17_sub4_sub2.anInt3118 = 0;
                 class40_sub5_sub17_sub4_sub2.anInt3075 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2418);
-                class40_sub5_sub17_sub4_sub2.method787((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]) + i_5_, -7717, (i_7_ ^ 0xffffffff) == -2, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]) - -i_4_);
+                class40_sub5_sub17_sub4_sub2.method787((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]) + i_5_, -7717, (i_7_ ^ 0xffffffff) == -2, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]) + i_4_);
             }
             Cache.outgoingbuffer.finishBitAccess((byte) -110);
         } catch(RuntimeException runtimeexception) {

@@ -1,8 +1,8 @@
-/* Class46 - Decompiled by JODE
+/* VertexNormal - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
-public class Class46 {
+public class VertexNormal {
     public static int anInt1086;
     public static RSString aClass1_1088;
     public static RSString aClass1_1089;
@@ -54,10 +54,10 @@ public class Class46 {
         aClass1_1117 = aClass1_1111;
     }
 
-    public int anInt1087;
-    public int anInt1092;
-    public int anInt1094;
-    public int anInt1108;
+    public int y;
+    public int x;
+    public int z;
+    public int magnitude;
 
     public static void method914(int arg0) {
         try {

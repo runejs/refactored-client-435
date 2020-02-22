@@ -73,7 +73,7 @@ public class Class8 {
                 if(class40_sub5_sub17_sub4_sub2 != null)
                     Class13.method241(class40_sub5_sub17_sub4_sub2, (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2374), (byte) 107);
             }
-            int i = -30 % ((arg0 - -8) / 34);
+            int i = -30 % ((arg0 + 8) / 34);
             anInt287++;
         } catch(RuntimeException runtimeexception) {
             throw method216(runtimeexception, "ca.B(" + arg0 + ')');
@@ -82,7 +82,7 @@ public class Class8 {
 
     public static void method210(int arg0) {
         try {
-            Class46.lowMemory = false;
+            VertexNormal.lowMemory = false;
             if(arg0 != 0)
                 method209(-4);
             anInt276++;
@@ -146,8 +146,8 @@ public class Class8 {
         arg1 += 7;
         while(i < arg1)
             arg0[i++] = 0;
-        if(Class25.aClass40_Sub9_608 != null)
-            Class25.aClass40_Sub9_608.method844(arg0, 0, arg1);
+        if(FloorDecoration.aClass40_Sub9_608 != null)
+            FloorDecoration.aClass40_Sub9_608.method844(arg0, 0, arg1);
         ItemDefinition.method748(true, arg1);
     }
 
@@ -168,8 +168,8 @@ public class Class8 {
 
     public static synchronized void method217(int arg0, byte arg1) {
         try {
-            if(Class25.aClass40_Sub9_608 != null)
-                Class25.aClass40_Sub9_608.method843(arg0);
+            if(FloorDecoration.aClass40_Sub9_608 != null)
+                FloorDecoration.aClass40_Sub9_608.method843(arg0);
             anInt285++;
             if(arg1 > 28)
                 ItemDefinition.method748(true, arg0);
@@ -179,7 +179,7 @@ public class Class8 {
     }
 
     public static synchronized void method218(Class40_Sub9 arg0, int arg1) {
-        Class25.aClass40_Sub9_608 = arg0;
+        FloorDecoration.aClass40_Sub9_608 = arg0;
         anInt283++;
         if(arg1 >= -113)
             method216(null, null);
