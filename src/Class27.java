@@ -365,7 +365,6 @@ public class Class27 {
             }
             if(i_11_ == 52) {
                 Class32.packetBuffer.putPacket(11453, 240);
-                Main.anInt1759++;
                 Class32.packetBuffer.method478(i, -29);
                 Class32.packetBuffer.method486(14912, i_12_);
                 Class32.packetBuffer.method503(-2030879560, i_10_);
@@ -417,7 +416,6 @@ public class Class27 {
                     if(class40_sub5_sub5 != null) {
                         Class32.packetBuffer.putPacket(11453, 247);
                         Class32.packetBuffer.method478(class40_sub5_sub5.anInt2427, -26);
-                        Main.anInt1784++;
                     }
                 }
             }
