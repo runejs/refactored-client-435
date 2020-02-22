@@ -19,7 +19,6 @@ public class ItemDefinition extends SubNode {
     public static int anInt2811;
     public static int[] anIntArray2814;
     public static int anInt2815;
-    public static int anInt2821;
     public static int anInt2826;
     public static int anInt2832;
     public static int anInt2835;
@@ -468,7 +467,6 @@ public class ItemDefinition extends SubNode {
     }
 
     public void readValues(Buffer itemDefinitionBuffer) {
-        anInt2821++;
         for(; ; ) {
             int opcode = itemDefinitionBuffer.getUnsignedByte();
             if((opcode ^ 0xffffffff) == -1) {

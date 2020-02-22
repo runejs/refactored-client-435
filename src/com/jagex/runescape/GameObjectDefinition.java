@@ -168,7 +168,7 @@ public class GameObjectDefinition extends SubNode {
         gameObjectDefinition = new GameObjectDefinition();
         gameObjectDefinition.anInt2538 = arg0;
         if(is != null) {
-            gameObjectDefinition.method603(new Buffer(is), -122);
+            gameObjectDefinition.readValues(new Buffer(is));
         }
         gameObjectDefinition.method605(true);
         if(gameObjectDefinition.isSolid) {
@@ -236,13 +236,13 @@ public class GameObjectDefinition extends SubNode {
 
     }
 
-    public void method603(Buffer buffer, int arg1) {
+    public void readValues(Buffer gameObjectDefinitionBuffer) {
         for(; ; ) {
-            int i = buffer.getUnsignedByte();
-            if((i ^ 0xffffffff) == -1) {
+            int opcode = gameObjectDefinitionBuffer.getUnsignedByte();
+            if((opcode ^ 0xffffffff) == -1) {
                 break;
             }
-            decode(buffer, -1663, i);
+            readValue(gameObjectDefinitionBuffer, -1663, opcode);
         }
     }
 
@@ -262,7 +262,7 @@ public class GameObjectDefinition extends SubNode {
             anInt2533 = solid ? 1 : 0;
         }
         if(arg0 != true) {
-            method603(null, -36);
+            readValues(null);
         }
     }
 
@@ -408,7 +408,7 @@ public class GameObjectDefinition extends SubNode {
 
     }
 
-    public void decode(Buffer buffer, int arg1, int opcode) {
+    public void readValue(Buffer buffer, int arg1, int opcode) {
         if(opcode == 1) {
             int length = buffer.getUnsignedByte();
             if(length > 0) {

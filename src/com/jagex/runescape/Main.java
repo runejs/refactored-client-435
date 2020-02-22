@@ -1022,7 +1022,6 @@ public class Main extends RSApplet {
         Player.anInt3277 = 0;
         Node.anInt935 = 0;
         HashTable.anInt570 = 0;
-        ItemDefinition.anInt2821 = 0;
         RSString.anInt1698 = 0;
         Class37.anInt868 = 0;
         Class33.anInt781 = 0;
