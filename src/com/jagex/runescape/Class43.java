@@ -664,7 +664,7 @@ public class Class43 {
                                 class40_sub5_sub12 = (!bool ? Class22_Sub2.aClass40_Sub5_Sub12_1887 : (Class40_Sub6.aClass40_Sub5_Sub12_2116));
                             if((i_3_ ^ 0xffffffff) <= -1301 && i_3_ <= 1309 || i_3_ >= 1314 && i_3_ <= 1317) {
                                 RSString class1 = Class40_Sub11.aClass1Array2153[--i_1_];
-                                Object[] objects = new Object[class1.method59(-3136) + 1];
+                                Object[] objects = new Object[class1.method59() + 1];
                                 for(int i_84_ = objects.length - 1; (i_84_ ^ 0xffffffff) <= -2; i_84_--) {
                                     if(class1.method55(-1 + i_84_, arg5) != 115)
                                         objects[i_84_] = new Integer(Class67.anIntArray1588[--i]);

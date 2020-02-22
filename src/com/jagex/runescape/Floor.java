@@ -86,7 +86,7 @@ public class Floor extends SubNode {
     public static void method558(int arg0, RSString arg1, int arg2, int arg3, int arg4, int arg5, RSString arg6) {
 
         if((NpcDefinition.anInt2394 ^ 0xffffffff) > arg3) {
-            if((arg6.method59(-3136) ^ 0xffffffff) >= -1)
+            if((arg6.method59() ^ 0xffffffff) >= -1)
                 Landscape.aClass1Array1184[NpcDefinition.anInt2394] = arg1;
             else
                 Landscape.aClass1Array1184[NpcDefinition.anInt2394] = Class40_Sub5_Sub17_Sub6.method832(-77, (new RSString[]{arg1, (VertexNormal.aClass1_1117), arg6}));
@@ -203,11 +203,11 @@ public class Floor extends SubNode {
             method556(-71, null, 83, (byte) -117);
         anInt2341++;
         if((arg2 ^ 0xffffffff) == -2)
-            anInt2345 = arg1.getTri(true);
+            anInt2345 = arg1.getMediumBE();
         else if(arg2 != 2) {
             if((arg2 ^ 0xffffffff) != -6) {
                 if((arg2 ^ 0xffffffff) == -8)
-                    anInt2336 = arg1.getTri(true);
+                    anInt2336 = arg1.getMediumBE();
             } else
                 aBoolean2338 = false;
         } else

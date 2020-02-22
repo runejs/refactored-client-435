@@ -46,7 +46,7 @@ public class Class40_Sub7 extends Node {
             if(arg0 > -40)
                 return false;
             for(; ; ) {
-                int i_0_ = class40_sub1.method502((byte) -94);
+                int i_0_ = class40_sub1.getSmart();
                 if(i_0_ == 0)
                     break;
                 i += i_0_;
@@ -54,12 +54,12 @@ public class Class40_Sub7 extends Node {
                 boolean bool_2_ = false;
                 for(; ; ) {
                     if(bool_2_) {
-                        int i_3_ = class40_sub1.method502((byte) -84);
+                        int i_3_ = class40_sub1.getSmart();
                         if(i_3_ == 0)
                             break;
                         class40_sub1.getUnsignedByte();
                     } else {
-                        int i_4_ = class40_sub1.method502((byte) -114);
+                        int i_4_ = class40_sub1.getSmart();
                         if((i_4_ ^ 0xffffffff) == -1)
                             break;
                         i_1_ += i_4_ + -1;

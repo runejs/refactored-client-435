@@ -184,8 +184,8 @@ public class Player extends Actor {
         anInt3292++;
             arg1.currentPosition = 0;
         int i = arg1.getUnsignedByte();
-        anInt3268 = arg1.get();
-        anInt3273 = arg1.get();
+        anInt3268 = arg1.getByte();
+        anInt3273 = arg1.getByte();
             int i_3_ = -1;
             anInt3266 = 0;
             int[] is = new int[12];
@@ -238,7 +238,7 @@ public class Player extends Actor {
         anInt3082 = arg1.getUnsignedShortBE();
             if(anInt3082 == 65535)
                 anInt3082 = -1;
-        playerName = Class60.method991(-127, arg1.method498(1362367312)).method85(-4305);
+        playerName = Class60.method991(-127, arg1.getLongBE()).method85(-4305);
         anInt3260 = arg1.getUnsignedByte();
         anInt3257 = arg1.getUnsignedShortBE();
             if(aClass30_3282 == null)

@@ -430,12 +430,12 @@ public class ItemDefinition extends SubNode {
                                                         if(arg0 != 111) {
                                                             if(arg0 != 112) {
                                                                 if(arg0 == 113)
-                                                                    anInt2825 = (arg2.get());
+                                                                    anInt2825 = (arg2.getByte());
                                                                 else if((arg0 ^ 0xffffffff) != -115) {
                                                                     if(arg0 == 115)
                                                                         team = arg2.getUnsignedByte();
                                                                 } else
-                                                                    anInt2840 = ((arg2.get()) * 5);
+                                                                    anInt2840 = ((arg2.getByte()) * 5);
                                                             } else
                                                                 anInt2833 = (arg2.getUnsignedShortBE());
                                                         } else
@@ -462,7 +462,7 @@ public class ItemDefinition extends SubNode {
                                     anInt2818 = arg2.getUnsignedByte();
                                 }
                             } else
-                                anInt2828 = arg2.readInt();
+                                anInt2828 = arg2.getIntBE();
                         } else
                             anInt2795 = 1;
                     } else {
