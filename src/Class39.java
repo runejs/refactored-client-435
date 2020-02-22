@@ -50,8 +50,8 @@ public class Class39 implements Runnable {
     }
 
     public static void method451(Class40_Sub3 arg0, int arg1) {
-        try {
-            int i = 0;
+
+        int i = 0;
             anInt902++;
             int i_0_ = -1;
             int i_1_ = 0;
@@ -75,14 +75,12 @@ public class Class39 implements Runnable {
                 arg0.anInt2028 = i_0_;
                 arg0.anInt2036 = i_1_;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("nc.A(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
-        }
+
     }
 
     public static boolean method452(Signlink arg0, byte arg1, boolean arg2) {
-        try {
-            RSCanvas.anInt54 = 20;
+
+        RSCanvas.anInt54 = 20;
             anInt916++;
             try {
                 Class5.aClass22_189 = ((Class22) Class.forName("Class22_Sub2_Sub1").newInstance()); // Java Midi Based
@@ -101,14 +99,12 @@ public class Class39 implements Runnable {
                 }
                 return false;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("nc.C(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public static void method453(byte arg0) {
-        try {
-            aClass1_900 = null;
+
+        aClass1_900 = null;
             aClass68_907 = null;
             aClass1_899 = null;
             aClass1_917 = null;
@@ -123,14 +119,12 @@ public class Class39 implements Runnable {
             aClass68_908 = null;
             aClass1_910 = null;
             aClass1_915 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "nc.B(" + arg0 + ')');
-        }
+
     }
 
     public void run() {
-        try {
-            anInt903++;
+
+        anInt903++;
             while(aBoolean913) {
                 synchronized(anObject905) {
                     if(anInt921 < 500) {
@@ -141,8 +135,6 @@ public class Class39 implements Runnable {
                 }
                 Class43.method890(50L, 44);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "nc.run(" + ')');
-        }
+
     }
 }

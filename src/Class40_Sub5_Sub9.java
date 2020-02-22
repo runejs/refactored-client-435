@@ -37,29 +37,25 @@ public class Class40_Sub5_Sub9 extends SubNode {
     public int anInt2579 = 0;
 
     public static int method614(byte arg0, int arg1, int arg2, int arg3) {
-        try {
-            int i = 114 % ((arg0 + 28) / 59);
+
+        int i = 114 % ((arg0 + 28) / 59);
             anInt2572++;
             int i_7_ = 256 + -arg3;
             return (((arg3 * (0xff00 & arg2) + i_7_ * (0xff00 & arg1) & 0xff0000) + (~0xff00ff & (0xff00ff & arg1) * i_7_ + (arg3 * (0xff00ff & arg2)))) >> -794214296);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("md.G(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method616(Class6 arg0, byte arg1) {
-        try {
-            anInt2580++;
+
+        anInt2580++;
             if(arg1 == 85)
                 Class40_Sub5_Sub17_Sub4.aClass6_3150 = arg0;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("md.I(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
-        }
+
     }
 
     public static void method617(long arg0, byte arg1) {
-        try {
-            anInt2569++;
+
+        anInt2569++;
             if(arg0 != 0L) {
                 if((Class40_Sub5_Sub17_Sub3.anInt3060 >= 100 && (Class44.anInt1049 ^ 0xffffffff) != -2) || ((Class40_Sub5_Sub17_Sub3.anInt3060 ^ 0xffffffff) <= -201))
                     Class44.method895(94, 0, Class59.aClass1_1399, Class66.aClass1_1567);
@@ -91,22 +87,18 @@ public class Class40_Sub5_Sub9 extends SubNode {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "md.B(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static int method619(int arg0, int arg1) {
-        try {
-            return arg0 | arg1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "md.H(" + arg0 + ',' + arg1 + ')');
-        }
+
+        return arg0 | arg1;
+
     }
 
     public static void method621(int arg0) {
-        try {
-            aClass1_2583 = null;
+
+        aClass1_2583 = null;
             if(arg0 == 0) {
                 aClass1_2566 = null;
                 aClass40_Sub5_Sub14_Sub4Array2567 = null;
@@ -116,14 +108,12 @@ public class Class40_Sub5_Sub9 extends SubNode {
                 aClass1_2570 = null;
                 aClass6_Sub1_2571 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "md.C(" + arg0 + ')');
-        }
+
     }
 
     public void updateTextureBrightness(int arg0, byte arg1) {
-        try {
-            anInt2584++;
+
+        anInt2584++;
             double d = (double) (arg0 >> 1980839856 & 0xff) / 256.0;
             double d_0_ = (double) (arg0 & 0xff) / 256.0;
             double d_1_ = (double) ((arg0 & 0xff68) >> -99983128) / 256.0;
@@ -175,9 +165,7 @@ public class Class40_Sub5_Sub9 extends SubNode {
                     anInt2574 = 255;
             } else
                 anInt2574 = 0;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "md.A(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public void method615(boolean arg0) {

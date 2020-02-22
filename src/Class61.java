@@ -52,8 +52,8 @@ public class Class61 {
     public int anInt1433 = -1;
 
     public static void method995(byte arg0, int arg1) {
-        try {
-            anInt1436++;
+
+        anInt1436++;
             if(arg1 != -1 && Class68.aBooleanArray1629[arg1]) {
                 Class40_Sub5_Sub4.aClass6_2349.method171(1, arg1);
                 if(arg0 < 31)
@@ -73,27 +73,23 @@ public class Class61 {
                     Class68.aBooleanArray1629[arg1] = false;
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ua.B(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method996(int arg0) {
-        try {
-            anInt1443++;
+
+        anInt1443++;
             if(arg0 != 19655)
                 aClass1_1432 = null;
             SubNode.aClass68_2091.method1046((byte) 90);
             FloorDecoration.aClass40_Sub5_Sub14_Sub2_593.method692(0, 0);
             NpcDefinition.anIntArray2386 = R3D.method708(NpcDefinition.anIntArray2386);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ua.A(" + arg0 + ')');
-        }
+
     }
 
     public static void method997(int arg0) {
-        try {
-            anInt1424++;
+
+        anInt1424++;
             if(arg0 != 47)
                 method999(-42, (byte) 12, 92, 18, -72);
             if(Signlink.aString735.toLowerCase().indexOf("microsoft") != -1) {
@@ -128,14 +124,12 @@ public class Class61 {
                     Class66.anIntArray1564[222] = 59;
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ua.C(" + arg0 + ')');
-        }
+
     }
 
     public static void method998(int arg0) {
-        try {
-            anIntArrayArray1435 = null;
+
+        anIntArrayArray1435 = null;
             aClass1_1446 = null;
             anIntArray1445 = null;
             aClass68_1441 = null;
@@ -154,14 +148,12 @@ public class Class61 {
             aClass1_1428 = null;
             aClass1_1440 = null;
             aClass1_1427 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ua.F(" + arg0 + ')');
-        }
+
     }
 
     public static void method999(int arg0, byte arg1, int arg2, int arg3, int arg4) {
-        try {
-            anInt1434++;
+
+        anInt1434++;
             int i = -112 / ((50 - arg1) / 53);
             for(int i_0_ = arg0; (i_0_ ^ 0xffffffff) >= (arg0 + arg2 ^ 0xffffffff); i_0_++) {
                 for(int i_1_ = arg4; (arg3 + arg4 ^ 0xffffffff) <= (i_1_ ^ 0xffffffff); i_1_++) {
@@ -178,14 +170,12 @@ public class Class61 {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ua.E(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ')'));
-        }
+
     }
 
     public static void method1000(boolean arg0) {
-        try {
-            if(arg0 == true) {
+
+        if(arg0 == true) {
                 anInt1431++;
                 for(Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = ((Class40_Sub5_Sub17_Sub6) Class57.aClass45_1332.method902((byte) -90)); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = ((Class40_Sub5_Sub17_Sub6) Class57.aClass45_1332.method909(-4))) {
                     if(((class40_sub5_sub17_sub6.anInt3239 ^ 0xffffffff) == (Player.anInt3267 ^ 0xffffffff)) && !class40_sub5_sub17_sub6.aBoolean3237) {
@@ -200,8 +190,6 @@ public class Class61 {
                         class40_sub5_sub17_sub6.method457(-1);
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ua.D(" + arg0 + ')');
-        }
+
     }
 }

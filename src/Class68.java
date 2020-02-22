@@ -48,8 +48,8 @@ public abstract class Class68 {
     public Image anImage1625;
 
     public static void method1040(Component arg0, int arg1, Signlink arg2) {
-        try {
-            anInt1620++;
+
+        anInt1620++;
             try {
                 Class8_Sub1 class8_sub1 = ((Class8_Sub1) Class.forName("Class8_Sub1_Sub2").newInstance());
                 class8_sub1.method222(arg2, 2048);
@@ -69,14 +69,12 @@ public abstract class Class68 {
                     CollisionMap.aClass8_166 = new Class8(8000);
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("wc.I(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method1042(int arg0) {
-        try {
-            int i = -77 % ((arg0 - 74) / 46);
+
+        int i = -77 % ((arg0 - 74) / 46);
             aClass1_1638 = null;
             aClass1_1639 = null;
             aBooleanArray1629 = null;
@@ -88,14 +86,12 @@ public abstract class Class68 {
             aClass1_1635 = null;
             aClass1_1628 = null;
             aClass1_1633 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "wc.J(" + arg0 + ')');
-        }
+
     }
 
     public static boolean method1043(int arg0, int arg1) {
-        try {
-            anInt1627++;
+
+        anInt1627++;
             if(aBooleanArray1629[arg0])
                 return true;
             if(!Class40_Sub5_Sub4.aClass6_2349.method186(123, arg0))
@@ -123,14 +119,12 @@ public abstract class Class68 {
             }
             aBooleanArray1629[arg0] = true;
             return true;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "wc.M(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static Class40_Sub5_Sub12 method1045(int arg0, byte arg1) {
-        try {
-            anInt1626++;
+
+        anInt1626++;
             int i = arg0 >> 144471440;
             int i_8_ = 0xffff & arg0;
             if(Class59.aClass40_Sub5_Sub12ArrayArray1390[i] == null || (Class59.aClass40_Sub5_Sub12ArrayArray1390[i][i_8_] == null)) {
@@ -141,9 +135,7 @@ public abstract class Class68 {
             if(arg1 >= -54)
                 method1042(-90);
             return Class59.aClass40_Sub5_Sub12ArrayArray1390[i][i_8_];
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "wc.K(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public abstract void method1041(int i, int i_2_, Component component, int i_3_);
@@ -152,15 +144,12 @@ public abstract class Class68 {
 
     public void method1046(byte arg0) {
         do {
-            try {
                 Rasterizer.method669(anIntArray1621, anInt1619, anInt1617);
                 anInt1624++;
                 if(arg0 == 90)
                     break;
                 method1046((byte) 12);
-            } catch(RuntimeException runtimeexception) {
-                throw Class8.method216(runtimeexception, "wc.L(" + arg0 + ')');
-            }
+
             break;
         } while(false);
     }

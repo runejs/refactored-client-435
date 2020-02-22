@@ -41,19 +41,17 @@ public class Class55 {
     }
 
     public static void method958(int arg0, int arg1) {
-        try {
-            if(arg1 != -14222)
+
+        if(arg1 != -14222)
                 aClass6_Sub1_1286 = null;
             anInt1308++;
             Class61.method995((byte) 85, arg0);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "s.I(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static String method959(int arg0, Throwable arg1) throws IOException {
-        try {
-            anInt1303++;
+
+        anInt1303++;
             String string;
             if(arg1 instanceof RSRuntimeException) {
                 RSRuntimeException runtimeexception_sub1 = (RSRuntimeException) arg1;
@@ -93,14 +91,12 @@ public class Class55 {
             }
             string += "| " + string_1_;
             return string;
-        } catch(RuntimeException runtimeexception) {
-            throw runtimeexception;
-        }
+
     }
 
     public static Class40_Sub5_Sub15 method960(byte arg0, int arg1) {
-        try {
-            anInt1305++;
+
+        anInt1305++;
             Class40_Sub5_Sub15 class40_sub5_sub15 = ((Class40_Sub5_Sub15) Class42.aClass9_998.method231((long) arg1, (byte) 101));
             if(class40_sub5_sub15 != null)
                 return class40_sub5_sub15;
@@ -110,14 +106,12 @@ public class Class55 {
             if(arg0 != -99)
                 method961(34);
             return class40_sub5_sub15;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "s.B(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method961(int arg0) {
-        try {
-            aClass1_1292 = null;
+
+        aClass1_1292 = null;
             aClass1_1294 = null;
             aClass1_1300 = null;
             aClass1_1291 = null;
@@ -127,14 +121,12 @@ public class Class55 {
             if(arg0 != 1)
                 method964(120);
             aClass1_1298 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "s.C(" + arg0 + ')');
-        }
+
     }
 
     public static void method962(int arg0) {
-        try {
-            Class39.aClass1_917 = Node.aClass1_933;
+
+        Class39.aClass1_917 = Node.aClass1_933;
             SceneTile.aClass1_2057 = Renderable.aClass1_2871;
             Main.aClass1_1781 = Class37.aClass1_880;
             RSString.aClass1_1717 = Class12.aClass1_398;
@@ -348,14 +340,12 @@ public class Class55 {
                 Class8.aClass1_294 = Class40_Sub5_Sub17_Sub6.aClass1_3245;
                 Node.aClass1_964 = Class64.aClass1_1523;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "s.G(" + arg0 + ')');
-        }
+
     }
 
     public static int method963(int arg0, byte arg1, int arg2) {
-        try {
-            if(arg0 > arg2) {
+
+        if(arg0 > arg2) {
                 int i = arg2;
                 arg2 = arg0;
                 arg0 = i;
@@ -369,14 +359,12 @@ public class Class55 {
                 arg2 = arg0;
             }
             return arg2;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("s.D(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public static void method964(int arg0) {
+
         try {
-            try {
                 Graphics graphics = Class62.aCanvas1469.getGraphics();
                 SubNode.aClass68_2091.method1044(0, 553, graphics, 205);
             } catch(Exception exception) {
@@ -385,32 +373,26 @@ public class Class55 {
             if(arg0 != 40)
                 anInt1296 = 7;
             anInt1287++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "s.A(" + arg0 + ')');
-        }
+
     }
 
     public static void method965(int arg0, Component arg1) {
-        try {
-            if(arg0 == 32) {
+
+        if(arg0 == 32) {
                 anInt1306++;
                 arg1.removeMouseListener(GameObject.aClass62_3019);
                 arg1.removeMouseMotionListener(GameObject.aClass62_3019);
                 arg1.removeFocusListener(GameObject.aClass62_3019);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("s.H(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method966(int arg0, Class6 arg1, Class6 arg2) {
-        try {
-            Class40_Sub5_Sub9.aClass6_2582 = arg1;
+
+        Class40_Sub5_Sub9.aClass6_2582 = arg1;
             anInt1307++;
             int i = -87 / ((-20 - arg0) / 56);
             Class19.aClass6_488 = arg2;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("s.F(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + (arg2 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 }

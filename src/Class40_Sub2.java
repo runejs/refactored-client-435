@@ -37,8 +37,8 @@ public class Class40_Sub2 extends Node {
     public int anInt2014;
 
     public static void method522(int arg0, int arg1, byte arg2) {
-        try {
-            anInt2006++;
+
+        anInt2006++;
             Class40_Sub5_Sub4 class40_sub5_sub4 = Class34.method417(0, arg1);
             int i = class40_sub5_sub4.anInt2368;
             int i_0_ = class40_sub5_sub4.anInt2358;
@@ -49,14 +49,12 @@ public class Class40_Sub2 extends Node {
                 arg0 = 0;
             i_3_ <<= i;
             Class58.varbitmasks[i_0_] = (Class40_Sub5_Sub9.method619(Class66.method1021(Class58.varbitmasks[i_0_], i_3_ ^ 0xffffffff), Class66.method1021(i_3_, arg0 << i)));
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("be.B(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public static boolean method523(RSString arg0, int arg1) {
-        try {
-            anInt1992++;
+
+        anInt1992++;
             if(arg0 == null)
                 return false;
             for(int i = 0; i < Class40_Sub5_Sub17_Sub3.anInt3060; i++) {
@@ -66,50 +64,42 @@ public class Class40_Sub2 extends Node {
             if(arg1 != -32624)
                 aClass1_1991 = null;
             return arg0.method63((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.aClass1_3278), true);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("be.F(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
-        }
+
     }
 
     public static void method524(int arg0) {
-        try {
-            aClass1_1995 = null;
+
+        aClass1_1995 = null;
             aClass1_2008 = null;
             if(arg0 != -9019)
                 method523(null, -100);
             aClass1_1991 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "be.A(" + arg0 + ')');
-        }
+
     }
 
     public static int method525(byte[] arg0, int arg1, byte arg2) {
-        try {
-            anInt2009++;
+
+        anInt2009++;
             if(arg2 != -68)
                 return -56;
             return Class67.method1034(true, 0, arg1, arg0);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("be.D(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public static DirectColorSprite[] method526(Class6 arg0, int arg1, RSString arg2, RSString arg3) {
-        try {
-            anInt1998++;
+
+        anInt1998++;
             if(arg1 != 0)
                 aClass1_2008 = null;
             int i = arg0.method183(0, arg2);
             int i_4_ = arg0.method179(arg1 ^ ~0x68, i, arg3);
             return Class52.method944((byte) -3, i, arg0, i_4_);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("be.G(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + (arg3 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method527(int arg0, int arg1, int[] arg2, boolean arg3, int arg4) {
-        try {
-            Class19.aClass68_482.method1046((byte) 90);
+
+        Class19.aClass68_482.method1046((byte) 90);
             anInt1999++;
             Buffer.aClass40_Sub5_Sub14_Sub2_1959.method692(0, 0);
             if(arg3) {
@@ -185,9 +175,7 @@ public class Class40_Sub2 extends Node {
             } catch(Exception exception) {
                 Class62.aCanvas1469.repaint();
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("be.E(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ',' + arg4 + ')'));
-        }
+
     }
 
     public void method528(int arg0) {

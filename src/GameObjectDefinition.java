@@ -112,8 +112,8 @@ public class GameObjectDefinition extends SubNode {
     }
 
     public static void method602(Class6_Sub1 arg0, int arg1, Class56 arg2, byte arg3) {
-        try {
-            anInt2529++;
+
+        anInt2529++;
             byte[] is = null;
             synchronized(RSCanvas.aClass45_53) {
                 for(Class40_Sub6 class40_sub6 = ((Class40_Sub6) RSCanvas.aClass45_53.method902((byte) -90)); class40_sub6 != null; class40_sub6 = ((Class40_Sub6) RSCanvas.aClass45_53.method909(-4))) {
@@ -131,28 +131,24 @@ public class GameObjectDefinition extends SubNode {
                 byte[] is_6_ = arg2.method969(arg1, (byte) 103);
                 arg0.method198((byte) -115, true, is_6_, arg1, arg2);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ia.J(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method604(boolean arg0) {
-        try {
-            aClass23_2545 = null;
+
+        aClass23_2545 = null;
             aClass1_2556 = null;
             aClass1_2560 = null;
             aClass1_2526 = null;
             if(arg0 != true)
                 aClass1_2560 = null;
             aClass68_2524 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ia.D(" + arg0 + ')');
-        }
+
     }
 
     public static void method609(int arg0, boolean arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
-        try {
-            Class40_Sub3 class40_sub3 = null;
+
+        Class40_Sub3 class40_sub3 = null;
             anInt2552++;
             for(Class40_Sub3 class40_sub3_24_ = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3_24_ != null; class40_sub3_24_ = (Class40_Sub3) Class45.aClass45_1064.method909(-4)) {
                 if(class40_sub3_24_.anInt2018 == arg5 && arg2 == class40_sub3_24_.anInt2039 && (arg6 ^ 0xffffffff) == (class40_sub3_24_.anInt2038 ^ 0xffffffff) && (arg7 ^ 0xffffffff) == (class40_sub3_24_.anInt2027 ^ 0xffffffff)) {
@@ -176,9 +172,7 @@ public class GameObjectDefinition extends SubNode {
                 method602(null, 77, null, (byte) -89);
             class40_sub3.anInt2035 = arg3;
             class40_sub3.anInt2030 = arg8;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ia.L(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ',' + arg7 + ',' + arg8 + ',' + arg9 + ')'));
-        }
+
     }
 
     public static GameObjectDefinition getDefinition(int arg0) {
@@ -234,8 +228,8 @@ public class GameObjectDefinition extends SubNode {
     }
 
     public boolean method601(byte arg0) {
-        try {
-            anInt2551++;
+
+        anInt2551++;
             if(childrenIds == null) {
                 return (anInt2513 ^ 0xffffffff) != 0 || anIntArray2523 != null;
             }
@@ -249,9 +243,7 @@ public class GameObjectDefinition extends SubNode {
                 }
             }
             return false;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ia.F(" + arg0 + ')');
-        }
+
     }
 
     public void method603(Buffer arg0, int arg1) {
@@ -284,8 +276,8 @@ public class GameObjectDefinition extends SubNode {
     }
 
     public Model method606(boolean arg0, byte arg1, boolean arg2, int arg3, int arg4) {
-        try {
-            anInt2498++;
+
+        anInt2498++;
             Model class40_sub5_sub17_sub5 = null;
             if(anIntArray2522 == null) {
                 if(arg4 != 10)
@@ -363,14 +355,12 @@ public class GameObjectDefinition extends SubNode {
                 class40_sub5_sub17_sub5_12_.method810();
             class40_sub5_sub17_sub5_12_.method802(anInt2527 + 64, 768 + (anInt2544 * 5), -50, -10, -50, arg0);
             return class40_sub5_sub17_sub5_12_;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ia.E(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ')'));
-        }
+
     }
 
     public Model method607(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, Class40_Sub5_Sub7 arg6, int arg7, int arg8) {
-        try {
-            anInt2531++;
+
+        anInt2531++;
             long l;
             if(anIntArray2522 == null)
                 l = (long) (arg5 + (anInt2538 << 554173066));
@@ -403,9 +393,7 @@ public class GameObjectDefinition extends SubNode {
                 }
             }
             return class40_sub5_sub17_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ia.M(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + (arg6 != null ? "{...}" : "null") + ',' + arg7 + ',' + arg8 + ')'));
-        }
+
     }
 
     public void method608(Buffer arg0, int arg1, int arg2) {
@@ -557,8 +545,8 @@ public class GameObjectDefinition extends SubNode {
     }
 
     public boolean method610(int arg0, int arg1) {
-        try {
-            if(arg1 != 7533)
+
+        if(arg1 != 7533)
                 anInt2543 = -28;
             anInt2532++;
             if(anIntArray2522 != null) {
@@ -576,14 +564,12 @@ public class GameObjectDefinition extends SubNode {
             for(int i = 0; (i ^ 0xffffffff) > (anIntArray2525.length ^ 0xffffffff); i++)
                 bool &= RSString.aClass6_1705.method173((0xffff & anIntArray2525[i]), (byte) -10, 0);
             return bool;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ia.A(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public GameObjectDefinition method611(int arg0) {
-        try {
-            anInt2535++;
+
+        anInt2535++;
             int i = -1;
             if(arg0 != -20)
                 method606(true, (byte) -93, false, 40, -55);
@@ -595,14 +581,12 @@ public class GameObjectDefinition extends SubNode {
             if(i < 0 || childrenIds.length <= i || childrenIds[i] == -1)
                 return null;
             return getDefinition(childrenIds[i]);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ia.K(" + arg0 + ')');
-        }
+
     }
 
     public boolean method612(byte arg0) {
-        try {
-            anInt2514++;
+
+        anInt2514++;
             if(anIntArray2525 == null)
                 return true;
             boolean bool = true;
@@ -610,8 +594,6 @@ public class GameObjectDefinition extends SubNode {
                 bool &= RSString.aClass6_1705.method173((0xffff & anIntArray2525[i]), (byte) -10, 0);
             int i = -67 % ((-65 - arg0) / 50);
             return bool;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ia.B(" + arg0 + ')');
-        }
+
     }
 }

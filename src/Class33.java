@@ -43,21 +43,19 @@ public class Class33 {
     }
 
     public static synchronized void method402(boolean arg0) {
-        try {
-            anInt775++;
+
+        anInt775++;
             if(Class24.method340(-122)) {
                 Class22.method308(-110);
                 Class26.aBoolean618 = arg0;
                 Class22_Sub1.aClass6_1855 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "m.C(" + arg0 + ')');
-        }
+
     }
 
     public static synchronized void method403(int arg0, boolean arg1, int arg2, int arg3, Class6 arg4, int arg5, int arg6, boolean arg7) {
-        try {
-            anInt788++;
+
+        anInt788++;
             if(Class24.method340(5)) {
                 Main.aBoolean1790 = arg7;
                 Class6.anInt255 = arg2;
@@ -69,14 +67,12 @@ public class Class33 {
                 Class40_Sub6.anInt2110 = arg6;
                 Class8.anInt289 = arg3;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("m.E(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + (arg4 != null ? "{...}" : "null") + ',' + arg5 + ',' + arg6 + ',' + arg7 + ')'));
-        }
+
     }
 
     public static void method404(byte arg0) {
-        try {
-            anInt782++;
+
+        anInt782++;
             Class32.anInt770 = 0;
             if(arg0 == -28) {
                 for(int i = -1; Class60.anInt1407 + GameObjectDefinition.anInt2558 > i; i++) {
@@ -277,9 +273,7 @@ public class Class33 {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "m.G(" + arg0 + ')');
-        }
+
     }
 
     public static synchronized void method405(int arg0, int arg1) {
@@ -360,19 +354,17 @@ public class Class33 {
     }
 
     public static synchronized void method407(boolean arg0) {
-        try {
-            if(arg0 != false)
+
+        if(arg0 != false)
                 aClass1_795 = null;
             Class65.method1019(104);
             anInt789++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "m.B(" + arg0 + ')');
-        }
+
     }
 
     public static void method408(int arg0) {
-        try {
-            aClass1_779 = null;
+
+        aClass1_779 = null;
             aClass1_799 = null;
             aClass1_786 = null;
             anIntArray791 = null;
@@ -385,14 +377,12 @@ public class Class33 {
                 aClass1_783 = null;
                 aClass1_798 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "m.M(" + arg0 + ')');
-        }
+
     }
 
     public static boolean method409(byte arg0, int arg1) {
-        try {
-            anInt776++;
+
+        anInt776++;
             if(arg0 <= 23)
                 method402(true);
             if((arg1 ^ 0xffffffff) > -1)
@@ -401,14 +391,12 @@ public class Class33 {
             if(i >= 2000)
                 i -= 2000;
             return i == 45;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "m.J(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static int method410(int arg0, int arg1, int arg2, boolean arg3) {
-        try {
-            arg2 &= 0x3;
+
+        arg2 &= 0x3;
             if(arg3 != false)
                 return -80;
             anInt780++;
@@ -419,26 +407,22 @@ public class Class33 {
             if(arg2 == 2)
                 return -arg1 + 7;
             return arg0;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("m.D(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method411(RSString arg0, RSString arg1, RSString arg2, byte arg3) {
-        try {
-            anInt787++;
+
+        anInt787++;
             int i = -74 / ((29 - arg3) / 57);
             Class22_Sub2.aClass1_1881 = arg0;
             Class22_Sub2.aClass1_1896 = arg2;
             Class22_Sub2.aClass1_1879 = arg1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("m.A(" + (arg0 != null ? "{...}" : "null") + ',' + (arg1 != null ? "{...}" : "null") + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ')'));
-        }
+
     }
 
     public static synchronized void method412(boolean arg0, Class6 arg1, int arg2, byte arg3, RSString arg4, int arg5, RSString arg6, int arg7) {
-        try {
-            anInt781++;
+
+        anInt781++;
             if(Class24.method340(70)) {
                 if(arg3 != 66)
                     method412(false, null, 120, (byte) -44, null, 71, null, -13);
@@ -446,9 +430,7 @@ public class Class33 {
                 int i_16_ = arg1.method179(arg3 + -176, i, arg6);
                 method403(arg7, true, arg5, i, arg1, i_16_, arg2, arg0);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("m.K(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ',' + (arg4 != null ? "{...}" : "null") + ',' + arg5 + ',' + (arg6 != null ? "{...}" : "null") + ',' + arg7 + ')'));
-        }
+
     }
 
     public static synchronized void method413(byte arg0) {
@@ -475,8 +457,8 @@ public class Class33 {
     }
 
     public static synchronized void method414(boolean arg0, int arg1, int arg2, int arg3, int arg4, Class6 arg5, int arg6) {
-        try {
-            anInt792++;
+
+        anInt792++;
             if(Class24.method340(arg6 ^ ~0xf)) {
                 Class26.aBoolean618 = true;
                 Class6_Sub1.anInt1806 = arg6;
@@ -488,8 +470,6 @@ public class Class33 {
                 Class22_Sub1.aClass6_1855 = arg5;
                 Class8.anInt289 = arg2;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("m.L(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + (arg5 != null ? "{...}" : "null") + ',' + arg6 + ')'));
-        }
+
     }
 }

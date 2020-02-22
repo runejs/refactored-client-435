@@ -47,19 +47,17 @@ public class Class59 {
     }
 
     public static void method983(int arg0) {
-        try {
-            anInt1381++;
+
+        anInt1381++;
             int i = 70 / ((62 - arg0) / 55);
             Scene.aBoolean88 = true;
             VertexNormal.lowMemory = true;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "tc.E(" + arg0 + ')');
-        }
+
     }
 
     public static void method984(int arg0) {
-        try {
-            if(arg0 == 0) {
+
+        if(arg0 == 0) {
                 anInt1380++;
                 if(Class5.aClass22_189 != null) {
                     if((Class62.anInt1450 ^ 0xffffffff) <= -1) {
@@ -90,14 +88,12 @@ public class Class59 {
                     Class5.aClass22_189.method302(0);
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "tc.A(" + arg0 + ')');
-        }
+
     }
 
     public static void method985(byte arg0) {
-        try {
-            aClass40_Sub1_1385 = null;
+
+        aClass40_Sub1_1385 = null;
             int i = 84 / ((arg0 + 74) / 47);
             aClass40_Sub5_Sub12ArrayArray1390 = null;
             anIntArray1398 = null;
@@ -110,14 +106,12 @@ public class Class59 {
             aClass1_1391 = null;
             aClass1_1396 = null;
             anIntArray1393 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "tc.B(" + arg0 + ')');
-        }
+
     }
 
     public static int getVisibilityPlaneFor(int arg0, int arg1, int arg2, int arg3) {
-        try {
-            if(arg2 != 0)
+
+        if(arg2 != 0)
                 getVisibilityPlaneFor(-73, 123, 115, 98);
             anInt1382++;
             if(((Floor.tile_flags[arg0][arg3][arg1] & 0x8) ^ 0xffffffff) != -1)
@@ -125,8 +119,6 @@ public class Class59 {
             if((arg0 ^ 0xffffffff) < -1 && ((Floor.tile_flags[1][arg3][arg1] & 0x2) ^ 0xffffffff) != -1)
                 return -1 + arg0;
             return arg0;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("tc.D(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 }

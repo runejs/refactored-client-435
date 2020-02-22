@@ -25,8 +25,8 @@ public class Class29 {
     }
 
     public static boolean method371(int arg0, int arg1, int arg2) {
-        try {
-            anInt669++;
+
+        anInt669++;
             if((arg1 ^ 0xffffffff) == -1 && (arg2 ^ 0xffffffff) == (ItemDefinition.anInt2850 ^ 0xffffffff))
                 return true;
             if((arg1 ^ 0xffffffff) == -2 && (CollisionMap.anInt163 ^ 0xffffffff) == (arg2 ^ 0xffffffff))
@@ -34,25 +34,21 @@ public class Class29 {
             if(((arg1 ^ 0xffffffff) == -3 || (arg1 ^ 0xffffffff) == -4) && Class55.anInt1296 == arg2)
                 return true;
             return arg0 != 8247;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("l.A(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public static int method372(int arg0, int arg1) {
-        try {
-            anInt672++;
+
+        anInt672++;
             if(arg0 <= 92)
                 method372(4, 3);
             return (int) (0.5 + (Math.log(0.00390625 * (double) arg1) * 868.5889638065036));
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "l.C(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method373(byte arg0) {
-        try {
-            anInt679++;
+
+        anInt679++;
             int i = Cache.outgoingbuffer.putBits(8, (byte) -65);
             if((Class60.anInt1407 ^ 0xffffffff) < (i ^ 0xffffffff)) {
                 for(int i_0_ = i; Class60.anInt1407 > i_0_; i_0_++)
@@ -98,8 +94,6 @@ public class Class29 {
                         Class6.anIntArray225[Class17.anInt460++] = i_2_;
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "l.B(" + arg0 + ')');
-        }
+
     }
 }

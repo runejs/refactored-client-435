@@ -59,8 +59,8 @@ public class Floor extends SubNode {
     }
 
     public static void method554(byte arg0) {
-        try {
-            aByteArrayArrayArray2335 = null;
+
+        aByteArrayArrayArray2335 = null;
             tile_flags = null;
             anIntArrayArrayArray2333 = null;
             aClass1_2315 = null;
@@ -69,25 +69,21 @@ public class Floor extends SubNode {
             aClass1_2325 = null;
             anIntArray2324 = null;
             int i = -25 % ((arg0 - 68) / 49);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "fc.E(" + arg0 + ')');
-        }
+
     }
 
     public static void method557(int arg0, int arg1) {
-        try {
-            Class42.method886(0, 0, false, null, arg0);
+
+        Class42.method886(0, 0, false, null, arg0);
             if(arg1 != 17098)
                 method557(-14, 72);
             anInt2329++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "fc.I(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method558(int arg0, RSString arg1, int arg2, int arg3, int arg4, int arg5, RSString arg6) {
-        try {
-            if((NpcDefinition.anInt2394 ^ 0xffffffff) > arg3) {
+
+        if((NpcDefinition.anInt2394 ^ 0xffffffff) > arg3) {
                 if((arg6.method59(-3136) ^ 0xffffffff) >= -1)
                     Landscape.aClass1Array1184[NpcDefinition.anInt2394] = arg1;
                 else
@@ -99,14 +95,12 @@ public class Floor extends SubNode {
                 NpcDefinition.anInt2394++;
             }
             anInt2339++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("fc.G(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + (arg6 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method559(int arg0, int arg1) {
-        try {
-            int i = -26 % (-arg1 / 44);
+
+        int i = -26 % (-arg1 / 44);
             anInt2316++;
             if((Class51.anInt1197 ^ 0xffffffff) != (arg0 ^ 0xffffffff)) {
                 if((Class51.anInt1197 ^ 0xffffffff) == -1)
@@ -150,14 +144,12 @@ public class Floor extends SubNode {
                 Class51.anInt1197 = arg0;
                 Class40_Sub5_Sub11.aBoolean2631 = true;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "fc.H(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method560(int arg0, DirectColorSprite arg1, int arg2, int arg3) {
-        try {
-            anInt2326++;
+
+        anInt2326++;
             int i = arg0 * arg0 + (arg3 * arg3);
             if((i ^ 0xffffffff) < -4226 && i < 90000) {
                 int i_0_ = 0x7ff & Class58.anInt1373 + Class43.anInt1020;
@@ -174,14 +166,12 @@ public class Floor extends SubNode {
             } else
                 SceneTile.method533(arg3, arg0, arg1, (byte) 66);
             int i_7_ = -95 / ((arg2 + 37) / 32);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("fc.F(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 
     public void method553(byte arg0, int arg1, Buffer arg2) {
-        try {
-            for(; ; ) {
+
+        for(; ; ) {
                 int i = arg2.method468(false);
                 if((i ^ 0xffffffff) == -1)
                     break;
@@ -190,9 +180,7 @@ public class Floor extends SubNode {
             if(arg0 < 1)
                 aClass1_2325 = null;
             anInt2348++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("fc.C(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public void method555(byte arg0) {
@@ -209,8 +197,8 @@ public class Floor extends SubNode {
     }
 
     public void method556(int arg0, Buffer arg1, int arg2, byte arg3) {
-        try {
-            if(arg3 != -117)
+
+        if(arg3 != -117)
                 method556(-71, null, 83, (byte) -117);
             anInt2341++;
             if((arg2 ^ 0xffffffff) == -2)
@@ -223,9 +211,7 @@ public class Floor extends SubNode {
                     aBoolean2338 = false;
             } else
                 anInt2322 = arg1.method468(false);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("fc.B(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 
     public void method561(int arg0, int arg1) {

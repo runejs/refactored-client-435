@@ -44,20 +44,17 @@ public class Class6_Sub1 extends Class6 {
 
     public Class6_Sub1(Class56 arg0, Class56 arg1, int arg2, boolean arg3, boolean arg4, boolean arg5) {
         super(arg3, arg4);
-        try {
             aClass56_1812 = arg0;
             aBoolean1811 = arg5;
             aClass56_1802 = arg1;
             anInt1807 = arg2;
             Main.method37(this, (byte) 98, anInt1807);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("u.<init>(" + (arg0 != null ? "{...}" : "null") + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ')'));
-        }
+
     }
 
     public static void method203(int arg0) {
-        try {
-            aClass1_1799 = null;
+
+        aClass1_1799 = null;
             aClass40_Sub5_Sub17_Sub4_Sub2Array1813 = null;
             aClass1_1801 = null;
             if(arg0 != 99)
@@ -65,20 +62,16 @@ public class Class6_Sub1 extends Class6 {
             aClass1_1798 = null;
             aClass1_1816 = null;
             aClass1_1814 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "u.GA(" + arg0 + ')');
-        }
+
     }
 
     public static RSString method204(int arg0, int arg1) {
-        try {
-            anInt1804++;
+
+        anInt1804++;
             if(arg1 != 255)
                 method203(83);
             return (Class40_Sub5_Sub17_Sub6.method832(-110, (new RSString[]{HashTable.method334(0xff & arg0 >> 682571800, -1), Node.aClass1_975, HashTable.method334((arg0 & 0xffca88) >> 521687376, -1), Node.aClass1_975, HashTable.method334((0xfff8 & arg0) >> 1853669096, -1), Node.aClass1_975, HashTable.method334(0xff & arg0, -1)})));
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "u.EA(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public void method196(boolean arg0, boolean arg1, int arg2, boolean arg3, byte[] arg4) {
@@ -105,8 +98,8 @@ public class Class6_Sub1 extends Class6 {
     }
 
     public int method197(int arg0) {
-        try {
-            anInt1808++;
+
+        anInt1808++;
             if(aBoolean1800)
                 return 100;
             if(aByteArrayArray212 != null)
@@ -117,14 +110,11 @@ public class Class6_Sub1 extends Class6 {
             if((i ^ 0xffffffff) <= -101)
                 i = 99;
             return i;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "u.KA(" + arg0 + ')');
-        }
+
     }
 
     public void method198(byte arg0, boolean arg1, byte[] arg2, int arg3, Class56 arg4) {
         do {
-            try {
                 anInt1794++;
                 if(aClass56_1802 == arg4) {
                     if(aBoolean1800)
@@ -170,9 +160,7 @@ public class Class6_Sub1 extends Class6 {
                 if(arg0 == -115)
                     break;
                 method197(-55);
-            } catch(RuntimeException runtimeexception) {
-                throw Class8.method216(runtimeexception, ("u.IA(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ',' + (arg4 != null ? "{...}" : "null") + ')'));
-            }
+
             break;
         } while(false);
     }
@@ -216,8 +204,8 @@ public class Class6_Sub1 extends Class6 {
     }
 
     public void method200(int arg0, int arg1) {
-        try {
-            if(arg1 >= 41) {
+
+        if(arg1 >= 41) {
                 anInt1818++;
                 anInt1810 = arg0;
                 if(aClass56_1802 == null)
@@ -225,28 +213,24 @@ public class Class6_Sub1 extends Class6 {
                 else
                     GameObjectDefinition.method602(this, anInt1807, aClass56_1802, (byte) -124);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "u.FA(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public int method201(int arg0, int arg1) {
-        try {
-            anInt1795++;
+
+        anInt1795++;
             int i = 124 / ((-6 - arg1) / 34);
             if(aByteArrayArray212[arg0] != null)
                 return 100;
             if(aBooleanArray1796[arg0])
                 return 100;
             return Class34.method415((byte) 88, anInt1807, arg0);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "u.MA(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public int method202(boolean arg0) {
-        try {
-            int i = 0;
+
+        int i = 0;
             anInt1803++;
             int i_3_ = 0;
             for(int i_4_ = 0; (i_4_ ^ 0xffffffff) > (aByteArrayArray212.length ^ 0xffffffff); i_4_++) {
@@ -261,8 +245,6 @@ public class Class6_Sub1 extends Class6 {
                 return 100;
             int i_5_ = i_3_ * 100 / i;
             return i_5_;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "u.LA(" + arg0 + ')');
-        }
+
     }
 }

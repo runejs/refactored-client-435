@@ -73,8 +73,8 @@ public class Class13 {
     }
 
     public static void method242(byte arg0) {
-        try {
-            anInt410++;
+
+        anInt410++;
             if(arg0 > -88)
                 method247(null, (byte) 34);
             for(; ; ) {
@@ -86,9 +86,7 @@ public class Class13 {
                     break;
                 class40_sub6.aClass6_Sub1_2104.method198((byte) -115, false, class40_sub6.aByteArray2102, (int) class40_sub6.key, class40_sub6.aClass56_2117);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "de.H(" + arg0 + ')');
-        }
+
     }
 
     public static void method243(byte arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
@@ -101,8 +99,8 @@ public class Class13 {
     }
 
     public static int method244(int arg0, int arg1, int arg2, int arg3) {
-        try {
-            int i = 69 % ((-65 - arg2) / 53);
+
+        int i = 69 % ((-65 - arg2) / 53);
             anInt413++;
             if((arg1 ^ 0xffffffff) < -180)
                 arg0 /= 2;
@@ -114,9 +112,7 @@ public class Class13 {
                 arg0 /= 2;
             int i_0_ = arg1 / 2 + ((arg0 / 32 << 906471527) + (arg3 / 4 << 1215235370));
             return i_0_;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("de.I(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method245(int arg0) {
@@ -208,8 +204,8 @@ public class Class13 {
     }
 
     public static synchronized byte[] method246(int arg0, int arg1) {
-        try {
-            anInt408++;
+
+        anInt408++;
             if(arg1 == 100 && Class10.anInt356 > 0) {
                 byte[] is = Class58.aByteArrayArray1377[--Class10.anInt356];
                 Class58.aByteArrayArray1377[Class10.anInt356] = null;
@@ -228,14 +224,12 @@ public class Class13 {
                 return is;
             }
             return new byte[arg1];
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "de.G(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static int[] method247(Class40_Sub5_Sub12 arg0, byte arg1) {
-        try {
-            if(arg1 <= 74)
+
+        if(arg1 <= 74)
                 anInt419 = -37;
             int i;
             if(arg0.anInt2689 < 0)
@@ -262,14 +256,12 @@ public class Class13 {
             is[0] = i_11_;
             is[1] = i_12_;
             return is;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("de.D(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
-        }
+
     }
 
     public static void method248(int arg0) {
-        try {
-            anIntArray421 = null;
+
+        anIntArray421 = null;
             aClass1_422 = null;
             aClass1_404 = null;
             aClass40_Sub5_Sub14_Sub2_418 = null;
@@ -282,14 +274,12 @@ public class Class13 {
             if(arg0 != 65535)
                 method244(11, 13, 49, 49);
             aClass1_412 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "de.F(" + arg0 + ')');
-        }
+
     }
 
     public static void method249(boolean arg0) {
-        try {
-            if(arg0 != true)
+
+        if(arg0 != true)
                 method244(-58, 116, -89, 98);
             if(GameObject.aClass62_3019 != null) {
                 synchronized(GameObject.aClass62_3019) {
@@ -297,8 +287,6 @@ public class Class13 {
                 }
             }
             anInt416++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "de.C(" + arg0 + ')');
-        }
+
     }
 }

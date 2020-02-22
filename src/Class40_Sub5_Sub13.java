@@ -21,8 +21,8 @@ public class Class40_Sub5_Sub13 extends SubNode {
     public int anInt2763;
 
     public static Class68 method649(int arg0, int arg1, Component arg2, int arg3) {
-        try {
-            anInt2756++;
+
+        anInt2756++;
             if(arg3 != -4875)
                 aClass40_Sub5_Sub14_Sub4_2765 = null;
             try {
@@ -35,19 +35,15 @@ public class Class40_Sub5_Sub13 extends SubNode {
                 class68_sub1.method1041(44, arg1, arg2, arg0);
                 return class68_sub1;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("rb.D(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method650(boolean arg0, int arg1) {
-        try {
-            Class45.anInt1073 = arg1;
+
+        Class45.anInt1073 = arg1;
             if(arg0 == true)
                 anInt2759++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "rb.E(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method651(int arg0, int arg1) {
@@ -66,8 +62,8 @@ public class Class40_Sub5_Sub13 extends SubNode {
     }
 
     public static void method652(byte arg0) {
-        try {
-            anInt2761++;
+
+        anInt2761++;
             int i = 72 / ((arg0 - 64) / 52);
             for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = (Class40_Sub3) Class45.aClass45_1064.method909(-4)) {
                 if(class40_sub3.anInt2031 > 0)
@@ -90,14 +86,12 @@ public class Class40_Sub5_Sub13 extends SubNode {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "rb.A(" + arg0 + ')');
-        }
+
     }
 
     public static void method653(int arg0) {
-        try {
-            anIntArray2764 = null;
+
+        anIntArray2764 = null;
             aClass40_Sub1_2752 = null;
             aClass40_Sub5_Sub17_Sub4_Sub1_2760 = null;
             aClass40_Sub5_Sub17_Sub5Array2762 = null;
@@ -106,8 +100,6 @@ public class Class40_Sub5_Sub13 extends SubNode {
                 aClass40_Sub5_Sub14_Sub4_2765 = null;
             aLongArray2757 = null;
             aClass40_Sub5_Sub14_Sub2Array2753 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "rb.C(" + arg0 + ')');
-        }
+
     }
 }

@@ -97,8 +97,8 @@ public class Class40_Sub6 extends Node {
     }
 
     public static void method837(byte arg0) {
-        try {
-            aClass1_2111 = null;
+
+        aClass1_2111 = null;
             tile_height = null;
             aClass1_2114 = null;
             aClass1_2121 = null;
@@ -113,14 +113,12 @@ public class Class40_Sub6 extends Node {
             if(arg0 < 23)
                 method838(-95, -33L);
             anIntArray2113 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "jc.C(" + arg0 + ')');
-        }
+
     }
 
     public static void method838(int arg0, long arg1) {
-        try {
-            anInt2100++;
+
+        anInt2100++;
             if((arg1 ^ 0xffffffffffffffffL) != -1L) {
                 for(int i = arg0; (Class42.anInt1008 ^ 0xffffffff) < (i ^ 0xffffffff); i++) {
                     if(Class53.aLongArray1267[i] == arg1) {
@@ -135,8 +133,6 @@ public class Class40_Sub6 extends Node {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "jc.A(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 }

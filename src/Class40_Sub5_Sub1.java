@@ -35,8 +35,8 @@ public class Class40_Sub5_Sub1 extends SubNode {
     public int[] anIntArray2272;
 
     public static void method542(int arg0) {
-        try {
-            aClass1_2279 = null;
+
+        aClass1_2279 = null;
             aClass1_2277 = null;
             aClass1_2273 = null;
             if(arg0 == -27934) {
@@ -44,14 +44,12 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 aClass68_2275 = null;
                 aClass45_2268 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "cc.A(" + arg0 + ')');
-        }
+
     }
 
     public static void method543(CollisionMap arg0, int arg1, int arg2, int arg3, int arg4, Scene arg5, int arg6, int arg7, int arg8, int arg9) {
-        try {
-            anInt2261++;
+
+        anInt2261++;
             int i = Class40_Sub6.tile_height[arg2][arg9][arg8];
             int i_0_ = Class40_Sub6.tile_height[arg2][1 + arg9][arg8];
             int i_1_ = Class40_Sub6.tile_height[arg2][arg9][1 + arg8];
@@ -225,9 +223,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("cc.C(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + (arg5 != null ? "{...}" : "null") + ',' + arg6 + ',' + arg7 + ',' + arg8 + ',' + arg9 + ')'));
-        }
+
     }
 
     public static void method544(byte arg0) {
@@ -280,8 +276,8 @@ public class Class40_Sub5_Sub1 extends SubNode {
     }
 
     public static void method545(int arg0, boolean arg1, int arg2, Player arg3, int arg4) {
-        try {
-            anInt2265++;
+
+        anInt2265++;
             if(Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760 != arg3 && NpcDefinition.anInt2394 < 400) {
                 RSString class1;
                 if(arg3.anInt3257 == 0)
@@ -336,22 +332,18 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("cc.D(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + (arg3 != null ? "{...}" : "null") + ',' + arg4 + ')'));
-        }
+
     }
 
     public static int method546(int arg0) {
-        try {
-            anInt2264++;
+
+        anInt2264++;
             if(arg0 != 256)
                 anInt2280 = 44;
             int i = Class37.method430((byte) -120, Player.anInt3267, Class12.anInt388, Class40_Sub5_Sub6.anInt2443);
             if(i + -Class32.anInt769 < 800 && ((Floor.tile_flags[Player.anInt3267][Class12.anInt388 >> -1116963737][Class40_Sub5_Sub6.anInt2443 >> -161392185]) & 0x4) != 0)
                 return Player.anInt3267;
             return 3;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "cc.B(" + arg0 + ')');
-        }
+
     }
 }

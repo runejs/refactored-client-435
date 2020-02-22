@@ -63,8 +63,8 @@ public class Class40_Sub5_Sub2 extends SubNode {
     }
 
     public static void method548(int arg0) {
-        try {
-            if(arg0 != -3254)
+
+        if(arg0 != -3254)
                 method548(-111);
             aClass1_2291 = null;
             aClass67_2298 = null;
@@ -81,22 +81,18 @@ public class Class40_Sub5_Sub2 extends SubNode {
             aClass1_2303 = null;
             aClass1_2296 = null;
             aClass1_2292 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ec.F(" + arg0 + ')');
-        }
+
     }
 
     public static IndexedColorSprite[] method550(Class6 arg0, byte arg1, RSString arg2, RSString arg3) {
-        try {
-            anInt2282++;
+
+        anInt2282++;
             int i = arg0.method183(0, arg2);
             if(arg1 > -53)
                 aClass1_2283 = null;
             int i_1_ = arg0.method179(-118, i, arg3);
             return Class24.method337(7729, arg0, i_1_, i);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ec.B(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + (arg3 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method552(boolean arg0) {
@@ -288,8 +284,8 @@ public class Class40_Sub5_Sub2 extends SubNode {
     }
 
     public void method547(int arg0, byte arg1, Buffer arg2) {
-        try {
-            if(arg1 > -100)
+
+        if(arg1 > -100)
                 anInt2308 = -55;
             if((arg0 ^ 0xffffffff) == -2)
                 anInt2293 = arg2.method469(65280);
@@ -315,14 +311,12 @@ public class Class40_Sub5_Sub2 extends SubNode {
             } else
                 anInt2305 = arg2.method469(65280);
             anInt2304++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ec.D(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public Model method549(int arg0, int arg1) {
-        try {
-            anInt2288++;
+
+        anInt2288++;
             Model class40_sub5_sub17_sub5 = ((Model) Class34.aClass9_851.method231((long) anInt2310, (byte) 50));
             if(class40_sub5_sub17_sub5 == null) {
                 class40_sub5_sub17_sub5 = Model.method830((Class40_Sub5_Sub9.aClass6_2582), anInt2293, 0);
@@ -359,14 +353,12 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 }
             }
             return class40_sub5_sub17_sub5_0_;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ec.A(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public void method551(Buffer arg0, byte arg1) {
-        try {
-            anInt2289++;
+
+        anInt2289++;
             for(; ; ) {
                 int i = arg0.method468(false);
                 if(i == 0)
@@ -374,8 +366,6 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 method547(i, (byte) -107, arg0);
             }
             int i = -3 / ((-30 - arg1) / 53);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ec.C(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
-        }
+
     }
 }

@@ -62,8 +62,8 @@ public class Landscape {
     }
 
     public static byte[] method931(byte[] arg0, int arg1) {
-        try {
-            Buffer class40_sub1 = new Buffer(arg0);
+
+        Buffer class40_sub1 = new Buffer(arg0);
             anInt1159++;
             int i = class40_sub1.method468(false);
             if(arg1 != 9)
@@ -96,14 +96,12 @@ public class Landscape {
             byte[] is = new byte[i_0_];
             class40_sub1.method497(is, 0, i_0_, (byte) 45);
             return is;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("r.E(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
-        }
+
     }
 
     public static NpcDefinition method932(byte arg0, int arg1) {
-        try {
-            anInt1182++;
+
+        anInt1182++;
             if(arg0 >= -95)
                 aClass1_1160 = null;
             NpcDefinition class40_sub5_sub5 = ((NpcDefinition) ISAAC.aClass9_510.method231((long) arg1, (byte) 119));
@@ -117,14 +115,12 @@ public class Landscape {
             class40_sub5_sub5.method579((byte) -77);
             ISAAC.aClass9_510.method230(-7208, (long) arg1, class40_sub5_sub5);
             return class40_sub5_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "r.A(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method933(int arg0) {
-        try {
-            anInt1179++;
+
+        anInt1179++;
             Class27.method364((byte) -34, false);
             Class37.anInt874 = 0;
             boolean bool = true;
@@ -318,14 +314,12 @@ public class Landscape {
                     RSRuntimeException.method1057(126);
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "r.D(" + arg0 + ')');
-        }
+
     }
 
     public static void method934(int arg0, int arg1, int arg2, int arg3, int arg4) {
-        try {
-            anInt1165++;
+
+        anInt1165++;
             int i = 63 % ((arg1 + 53) / 57);
             for(Class40_Sub2 class40_sub2 = ((Class40_Sub2) Class40_Sub5_Sub1.aClass45_2268.method902((byte) -90)); class40_sub2 != null; class40_sub2 = (Class40_Sub2) Class40_Sub5_Sub1.aClass45_2268.method909(-4)) {
                 if(class40_sub2.anInt1997 != -1 || class40_sub2.anIntArray2005 != null) {
@@ -387,14 +381,12 @@ public class Landscape {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("r.F(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ')'));
-        }
+
     }
 
     public static void method935(int arg0) {
-        try {
-            anIntArrayArray1175 = null;
+
+        anIntArrayArray1175 = null;
             aClass1_1163 = null;
             aClass1_1160 = null;
             aClass1_1158 = null;
@@ -416,19 +408,15 @@ public class Landscape {
             aClass1Array1184 = null;
             aClass1_1169 = null;
             aClass1_1174 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "r.C(" + arg0 + ')');
-        }
+
     }
 
     public static void method936(int arg0, Class6 arg1) {
-        try {
-            if(arg0 != -17552)
+
+        if(arg0 != -17552)
                 method932((byte) -94, 97);
             anInt1177++;
             RSCanvas.aClass6_61 = arg1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("r.B(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 }

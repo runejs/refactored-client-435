@@ -89,8 +89,8 @@ public class Class40_Sub5_Sub6 extends SubNode {
     }
 
     public static void putHackCheckPacket(int arg0, int arg1, PacketBuffer arg2) {
-        try {
-            if(arg0 == -12) {
+
+        if(arg0 == -12) {
                 anInt2444++;
                 for(; ; ) {
                     Class40_Sub11 class40_sub11 = ((Class40_Sub11) Class54.aClass45_1278.method902((byte) -90));
@@ -199,14 +199,12 @@ public class Class40_Sub5_Sub6 extends SubNode {
                     class40_sub11.method457(-1);
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("hd.B(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static int method585(int arg0, int arg1) {
-        try {
-            Class40_Sub5_Sub4 class40_sub5_sub4 = Class34.method417(0, arg0);
+
+        Class40_Sub5_Sub4 class40_sub5_sub4 = Class34.method417(0, arg0);
             if(arg1 != 1369)
                 return 27;
             anInt2456++;
@@ -215,9 +213,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
             int i_7_ = class40_sub5_sub4.anInt2368;
             int i_8_ = Class68_Sub1.anIntArray2199[i - i_7_];
             return Class58.varbitmasks[i_6_] >> i_7_ & i_8_;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "hd.D(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method586(int arg0) {
@@ -229,8 +225,8 @@ public class Class40_Sub5_Sub6 extends SubNode {
     }
 
     public static void method587(int arg0) {
-        try {
-            anInt2445++;
+
+        anInt2445++;
             if(arg0 == 2) {
                 while(Class34.method416((byte) -125)) {
                     if(Class66.anInt1560 != -1 && ((Class66.anInt1560 ^ 0xffffffff) == (Class66.anInt1548 ^ 0xffffffff))) {
@@ -470,14 +466,12 @@ public class Class40_Sub5_Sub6 extends SubNode {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "hd.A(" + arg0 + ')');
-        }
+
     }
 
     public static void method588(int arg0) {
-        try {
-            if(arg0 == -1) {
+
+        if(arg0 == -1) {
                 anInt2454++;
                 int i = Class19.anInt475;
                 int i_13_ = CollisionMap.anInt168;
@@ -510,8 +504,6 @@ public class Class40_Sub5_Sub6 extends SubNode {
                     Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method683(Landscape.aClass1Array1184[i_19_], i + 3, i_20_, i_21_, true);
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "hd.G(" + arg0 + ')');
-        }
+
     }
 }

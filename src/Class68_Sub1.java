@@ -172,8 +172,8 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
     }
 
     public static Class40_Sub5_Sub7 method1050(int arg0, int arg1) {
-        try {
-            anInt2208++;
+
+        anInt2208++;
             Class40_Sub5_Sub7 class40_sub5_sub7 = ((Class40_Sub5_Sub7) Class40_Sub5_Sub6.aClass9_2439.method231((long) arg0, (byte) 47));
             if(arg1 != 2)
                 anInt2211 = -106;
@@ -186,14 +186,12 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             class40_sub5_sub7.method591((byte) 37);
             Class40_Sub5_Sub6.aClass9_2439.method230(arg1 + -7210, (long) arg0, class40_sub5_sub7);
             return class40_sub5_sub7;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ac.F(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static boolean method1051(int arg0, Class40_Sub5_Sub12 arg1) {
-        try {
-            if(arg0 != 300)
+
+        if(arg0 != 300)
                 return false;
             anInt2201++;
             int i = arg1.anInt2639;
@@ -218,102 +216,84 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
                 return true;
             }
             return false;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ac.D(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static int method1052(int arg0, RSString arg1, Buffer arg2) {
-        try {
-            if(arg0 < 24)
+
+        if(arg0 < 24)
                 aClass1_2209 = null;
             anInt2205++;
             int i = arg2.currentPosition;
             arg2.method509(arg1.anInt1680, 32768);
             arg2.currentPosition += (Class40_Sub5_Sub10.aClass66_2590.method1026(-18678, 0, arg2.currentPosition, arg1.anInt1680, arg1.aByteArray1692, arg2.buffer));
             return -i + arg2.currentPosition;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ac.C(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + (arg2 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public synchronized boolean isConsumer(ImageConsumer arg0) {
-        try {
-            anInt2196++;
+
+        anInt2196++;
             return anImageConsumer2197 == arg0;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ac.isConsumer(" + (arg0 != null ? "{...}" : "null") + ')');
-        }
+
     }
 
     public synchronized void method1048(byte arg0) {
-        try {
-            anInt2191++;
+
+        anInt2191++;
             if(anImageConsumer2197 != null) {
                 int i = -99 / ((7 - arg0) / 62);
                 anImageConsumer2197.setPixels(0, 0, anInt1619, anInt1617, aColorModel2194, anIntArray1621, 0, anInt1619);
                 anImageConsumer2197.imageComplete(2);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ac.G(" + arg0 + ')');
-        }
+
     }
 
     public void method1044(int arg0, int arg1, Graphics arg2, int arg3) {
-        try {
-            if(arg0 != 0)
+
+        if(arg0 != 0)
                 anIntArray2199 = null;
             anInt2202++;
             method1048((byte) -65);
             arg2.drawImage(anImage1625, arg1, arg3, this);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ac.E(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ')'));
-        }
+
     }
 
     public synchronized void removeConsumer(ImageConsumer arg0) {
-        try {
-            if(arg0 == anImageConsumer2197)
+
+        if(arg0 == anImageConsumer2197)
                 anImageConsumer2197 = null;
             anInt2193++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ac.removeConsumer(" + (arg0 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public void requestTopDownLeftRightResend(ImageConsumer arg0) {
-        try {
-            anInt2195++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ac.requestTopDownLeftRightResend(" + (arg0 != null ? "{...}" : "null") + ')'));
-        }
+
+        anInt2195++;
+
     }
 
     public boolean imageUpdate(Image arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        try {
-            anInt2190++;
+
+        anInt2190++;
             return true;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ac.imageUpdate(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ')'));
-        }
+
     }
 
     public synchronized void addConsumer(ImageConsumer arg0) {
-        try {
-            anImageConsumer2197 = arg0;
+
+        anImageConsumer2197 = arg0;
             arg0.setDimensions(anInt1619, anInt1617);
             anInt2203++;
             arg0.setProperties(null);
             arg0.setColorModel(aColorModel2194);
             arg0.setHints(14);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ac.addConsumer(" + (arg0 != null ? "{...}" : "null") + ')');
-        }
+
     }
 
     public void method1041(int arg0, int arg1, Component arg2, int arg3) {
-        try {
-            anIntArray1621 = new int[1 + arg1 * arg3];
+
+        anIntArray1621 = new int[1 + arg1 * arg3];
             anInt1619 = arg1;
             anInt2206++;
             anInt1617 = arg3;
@@ -328,17 +308,13 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             method1048((byte) -81);
             arg2.prepareImage(anImage1625, this);
             this.method1046((byte) 90);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ac.A(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ')'));
-        }
+
     }
 
     public void startProduction(ImageConsumer arg0) {
-        try {
-            addConsumer(arg0);
+
+        addConsumer(arg0);
             anInt2192++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ac.startProduction(" + (arg0 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 }

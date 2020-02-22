@@ -23,8 +23,8 @@ public class Class40_Sub7 extends Node {
     public RSString aClass1_2124;
 
     public static void method839(int arg0) {
-        try {
-            aClass68_2123 = null;
+
+        aClass68_2123 = null;
             aClass1_2132 = null;
             anIntArray2131 = null;
             aClass1_2128 = null;
@@ -34,14 +34,12 @@ public class Class40_Sub7 extends Node {
                 aClass1_2130 = null;
                 aClass1_2125 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ma.A(" + arg0 + ')');
-        }
+
     }
 
     public static boolean method840(byte arg0, byte[] arg1, int arg2, int arg3) {
-        try {
-            anInt2126++;
+
+        anInt2126++;
             boolean bool = true;
             Buffer class40_sub1 = new Buffer(arg1);
             int i = -1;
@@ -84,8 +82,6 @@ public class Class40_Sub7 extends Node {
                 }
             }
             return bool;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ma.B(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 }

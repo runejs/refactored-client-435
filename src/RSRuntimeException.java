@@ -29,30 +29,26 @@ public class RSRuntimeException extends RuntimeException {
     public String aString1653;
 
     public RSRuntimeException(Throwable arg0, String arg1) {
-        try {
+
             aString1653 = arg1;
             aThrowable1652 = arg0;
-        } catch(RuntimeException runtimeexception) {
-            throw runtimeexception;
-        }
+
     }
 
     public static void method1053(int arg0) {
-        try {
+
             aClass1_1648 = null;
             aClass1_1644 = null;
             aClass1_1647 = null;
             if(arg0 >= -39)
                 anInt1642 = 95;
             aClass1_1649 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw runtimeexception;
-        }
+
     }
 
     public static void method1054(byte arg0) {
-        try {
-            anInt1643++;
+
+        anInt1643++;
             if(CollisionMap.aClass8_166 != null) {
                 long l = Class51.method937(1);
                 if((l ^ 0xffffffffffffffffL) < (Class8.aLong288 ^ 0xffffffffffffffffL)) {
@@ -72,14 +68,12 @@ public class RSRuntimeException extends RuntimeException {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ha.C(" + arg0 + ')');
-        }
+
     }
 
     public static void method1055(byte[] arg0, byte arg1, Class56 arg2, int arg3) {
-        try {
-            int i = 0 / ((arg1 - 17) / 35);
+
+        int i = 0 / ((arg1 - 17) / 35);
             anInt1646++;
             Class40_Sub6 class40_sub6 = new Class40_Sub6();
             class40_sub6.key = (long) arg3;
@@ -90,26 +84,22 @@ public class RSRuntimeException extends RuntimeException {
                 RSCanvas.aClass45_53.method904(class40_sub6, -82);
             }
             HashTable.method332(600);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ha.A(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method1056(Component arg0, byte arg1) {
-        try {
-            arg0.addMouseListener(GameObject.aClass62_3019);
+
+        arg0.addMouseListener(GameObject.aClass62_3019);
             int i = -23 / ((-32 - arg1) / 47);
             anInt1650++;
             arg0.addMouseMotionListener(GameObject.aClass62_3019);
             arg0.addFocusListener(GameObject.aClass62_3019);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ha.D(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
-        }
+
     }
 
     public static void method1057(int arg0) {
-        try {
-            Class32.aClass38_768.method444(10);
+
+        Class32.aClass38_768.method444(10);
             for(int i = 0; i < 32; i++)
                 RSApplet.aLongArray4[i] = 0L;
             for(int i = 0; i < 32; i++)
@@ -118,9 +108,7 @@ public class RSRuntimeException extends RuntimeException {
                 anInt1642 = -3;
             anInt1645++;
             Class40_Sub3.anInt2020 = 0;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ha.B(" + arg0 + ')');
-        }
+
     }
 
     /*synthetic*/

@@ -66,11 +66,9 @@ public class Class22_Sub1 extends Class22 {
     public Signlink aClass31_1872;
 
     public Class22_Sub1(Signlink arg0) {
-        try {
-            aClass31_1872 = arg0;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ga.<init>(" + (arg0 != null ? "{...}" : "null") + ')');
-        }
+
+        aClass31_1872 = arg0;
+
     }
 
     public static void method310(int arg0) {
@@ -99,19 +97,17 @@ public class Class22_Sub1 extends Class22 {
     }
 
     public static void method311(byte arg0, Component arg1) {
-        try {
-            anInt1854++;
+
+        anInt1854++;
             arg1.removeKeyListener(Class59.aClass54_1392);
             arg1.removeFocusListener(Class59.aClass54_1392);
             int i = -46 % ((75 - arg0) / 35);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ga.P(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method312(int arg0, int arg1, int arg2, int arg3) {
-        try {
-            anInt1859++;
+
+        anInt1859++;
             if((arg2 ^ 0xffffffff) > -129 || (arg1 ^ 0xffffffff) > -129 || arg2 > 13056 || arg1 > 13056) {
                 Class44.anInt1048 = -1;
                 ISAAC.anInt522 = -1;
@@ -140,14 +136,12 @@ public class Class22_Sub1 extends Class22 {
                     Class44.anInt1048 = (i << 4976905) / arg1 + 167;
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ga.N(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method313(int arg0) {
-        try {
-            anInt1842++;
+
+        anInt1842++;
             for(int i = -1; Class60.anInt1407 > i; i++) {
                 int i_6_;
                 if((i ^ 0xffffffff) == 0)
@@ -171,24 +165,20 @@ public class Class22_Sub1 extends Class22 {
                         class40_sub5_sub17_sub4_sub2.aClass1_3090 = null;
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ga.O(" + arg0 + ')');
-        }
+
     }
 
     public void method301(int arg0, int arg1) {
-        try {
-            if(arg1 != 0)
+
+        if(arg1 != 0)
                 aClass1_1848 = null;
             anInt1862++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ga.K(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public void method303(byte arg0) {
-        try {
-            anInt1839++;
+
+        anInt1839++;
             if(aBoolean1835) {
                 try {
                     Class28.method369(aClass31_1872.anApplet740, "midibox.src=\"c:/silence.mid\";", arg0 ^ 0x6f0f);
@@ -199,9 +189,7 @@ public class Class22_Sub1 extends Class22 {
             }
             if(arg0 == -96)
                 aClass15_1836 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ga.H(" + arg0 + ')');
-        }
+
     }
 
     public void method302(int arg0) {
@@ -262,8 +250,8 @@ public class Class22_Sub1 extends Class22 {
     }
 
     public void method300(byte[] arg0, boolean arg1, int arg2, int arg3) {
-        try {
-            aClass15_1836 = aClass31_1872.method396(86);
+
+        aClass15_1836 = aClass31_1872.method396(86);
             anInt1843++;
             if(arg2 == -15910 && aClass15_1836 != null) {
                 if((arg3 ^ 0xffffffff) == -1)
@@ -272,8 +260,6 @@ public class Class22_Sub1 extends Class22 {
                 aByteArray1866 = arg0;
                 aBoolean1852 = arg1;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ga.B(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 }

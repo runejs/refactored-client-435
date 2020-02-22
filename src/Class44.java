@@ -40,8 +40,8 @@ public class Class44 implements Runnable {
     }
 
     public static void method895(int arg0, int arg1, RSString arg2, RSString arg3) {
-        try {
-            anInt1029++;
+
+        anInt1029++;
             if(Class43.anInt1028 == -1)
                 Class52.aBoolean1221 = true;
             if(arg1 == 0 && (Class48.anInt1138 ^ 0xffffffff) != 0) {
@@ -57,14 +57,12 @@ public class Class44 implements Runnable {
             Renderable.aClass1Array2856[0] = arg3;
             if(arg0 >= 60)
                 Class40_Sub5_Sub17_Sub4.aClass1Array3160[0] = arg2;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("oe.B(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + (arg3 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method896(int arg0) {
-        try {
-            aClass1_1034 = null;
+
+        aClass1_1034 = null;
             aClass40_Sub5_Sub14_Sub2_1047 = null;
             aClass1_1033 = null;
             aByteArrayArray1039 = null;
@@ -75,14 +73,12 @@ public class Class44 implements Runnable {
                 anIntArrayArray1030 = null;
                 aClass1_1043 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "oe.A(" + arg0 + ')');
-        }
+
     }
 
     public static ItemDefinition method897(int arg0, int arg1) {
-        try {
-            anInt1046++;
+
+        anInt1046++;
             ItemDefinition class40_sub5_sub16 = ((ItemDefinition) ISAAC.aClass9_516.method231((long) arg0, (byte) 100));
             if(class40_sub5_sub16 != null)
                 return class40_sub5_sub16;
@@ -102,9 +98,7 @@ public class Class44 implements Runnable {
             }
             ISAAC.aClass9_516.method230(arg1 + -7218, (long) arg0, class40_sub5_sub16);
             return class40_sub5_sub16;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "oe.D(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method898(int arg0, Class40_Sub5_Sub17_Sub4 arg1) {
@@ -209,8 +203,8 @@ public class Class44 implements Runnable {
     }
 
     public void run() {
-        try {
-            anInt1031++;
+
+        anInt1031++;
             try {
                 for(; ; ) {
                     Class40_Sub6 class40_sub6;
@@ -254,8 +248,6 @@ public class Class44 implements Runnable {
             } catch(Exception exception) {
                 Class6.method169(null, (byte) -127, exception);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "oe.run(" + ')');
-        }
+
     }
 }

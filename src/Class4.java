@@ -33,22 +33,20 @@ public class Class4 {
     }
 
     public static void method159(byte arg0) {
-        try {
-            aClass1_177 = null;
+
+        aClass1_177 = null;
             aClass1_180 = null;
             int i = 18 % ((arg0 - 8) / 59);
             aClass1_183 = null;
             anIntArray178 = null;
             aClass1_176 = null;
             aClass1_181 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ae.A(" + arg0 + ')');
-        }
+
     }
 
     public static int method160(int arg0, int arg1, int arg2, int arg3) {
-        try {
-            anInt186++;
+
+        anInt186++;
             int i = arg0 & -1 + arg2;
             int i_0_ = arg3 / arg2;
             int i_1_ = arg2 - 1 & arg3;
@@ -60,9 +58,7 @@ public class Class4 {
             int i_7_ = RSApplet.method32(i_3_, arg2, i_4_, true, i);
             int i_8_ = RSApplet.method32(i_5_, arg2, i_6_, true, i);
             return RSApplet.method32(i_7_, arg2, i_8_, true, i_1_);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ae.B(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method161(int arg0) {

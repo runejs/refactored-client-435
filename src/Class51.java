@@ -45,8 +45,8 @@ public class Class51 {
     }
 
     public static synchronized long method937(int arg0) {
-        try {
-            anInt1192++;
+
+        anInt1192++;
             if(arg0 != 1)
                 aClass68_1206 = null;
             long l = System.currentTimeMillis();
@@ -54,28 +54,24 @@ public class Class51 {
                 Class62.aLong1467 += Class62.aLong1456 + -l;
             Class62.aLong1456 = l;
             return l + Class62.aLong1467;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ra.E(" + arg0 + ')');
-        }
+
     }
 
     public static int method938(int arg0, KeyEvent arg1) {
-        try {
-            anInt1188++;
+
+        anInt1188++;
             if(arg0 <= 86)
                 method940(-15, null, false, null);
             int i = arg1.getKeyChar();
             if(i <= 0 || (i ^ 0xffffffff) <= -257)
                 i = -1;
             return i;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ra.D(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method939(int arg0) {
-        try {
-            aClass1_1207 = null;
+
+        aClass1_1207 = null;
             aClass1_1200 = null;
             aClass1_1196 = null;
             aClass1_1210 = null;
@@ -88,14 +84,12 @@ public class Class51 {
             aClass1_1199 = null;
             int i = -41 / ((arg0 - 53) / 57);
             aClass1_1209 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ra.A(" + arg0 + ')');
-        }
+
     }
 
     public static void method940(int arg0, RSString arg1, boolean arg2, RSString arg3) {
-        try {
-            if(Class40_Sub5_Sub11.aBoolean2631) {
+
+        if(Class40_Sub5_Sub11.aBoolean2631) {
                 Class40_Sub5_Sub11.aBoolean2631 = false;
                 ItemDefinition.method742(205);
                 Class45.method908((byte) 114);
@@ -123,19 +117,15 @@ public class Class51 {
             }
             anInt1193++;
             Player.method792(arg0 + 107);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ra.B(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + (arg3 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method941(byte arg0) {
-        try {
-            Class6.aClass9_229.method235((byte) 50);
+
+        Class6.aClass9_229.method235((byte) 50);
             if(arg0 == -93)
                 anInt1191++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ra.C(" + arg0 + ')');
-        }
+
     }
 
     public static void method942(int arg0, int arg1) {

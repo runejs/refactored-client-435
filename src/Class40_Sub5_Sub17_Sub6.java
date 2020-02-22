@@ -38,7 +38,6 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     public Class40_Sub5_Sub17_Sub6(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
         aBoolean3237 = false;
         anInt3233 = 0;
-        try {
             anInt3235 = arg3;
             anInt3244 = arg2;
             anInt3230 = arg5 + arg6;
@@ -51,14 +50,12 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                 aClass40_Sub5_Sub7_3242 = Class68_Sub1.method1050(i, 2);
             } else
                 aBoolean3237 = true;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("tb.<init>(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ')'));
-        }
+
     }
 
     public static int method831(int arg0, int arg1, byte arg2) {
-        try {
-            anInt3252++;
+
+        anInt3252++;
             if(arg0 == -1)
                 return 12345678;
             if(arg2 != 73)
@@ -69,26 +66,22 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
             else if(arg1 > 126)
                 arg1 = 126;
             return arg1 + (arg0 & 0xff80);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("tb.C(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public static RSString method832(int arg0, RSString[] arg1) {
-        try {
-            int i = 58 % ((7 - arg0) / 44);
+
+        int i = 58 % ((7 - arg0) / 44);
             anInt3251++;
             if((arg1.length ^ 0xffffffff) > -3)
                 throw new IllegalArgumentException();
             return Class40_Sub5_Sub10.method627(120, arg1.length, 0, arg1);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("tb.A(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method833(int arg0, boolean arg1) {
-        try {
-            anInt3241++;
+
+        anInt3241++;
             if(((Class40_Sub5_Sub4.anInt2366 ^ 0xffffffff) == ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) >> 1533110887 ^ 0xffffffff)) && ((Class55.anInt1304 ^ 0xffffffff) == ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) >> -425626553 ^ 0xffffffff)))
                 Class40_Sub5_Sub4.anInt2366 = 0;
             int i = Class60.anInt1407;
@@ -128,14 +121,12 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "tb.E(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method835(byte arg0) {
-        try {
-            aClass1_3247 = null;
+
+        aClass1_3247 = null;
             aClass68_3243 = null;
             anIntArray3250 = null;
             anIntArrayArray3238 = null;
@@ -148,14 +139,12 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
             anIntArray3248 = null;
             anIntArray3255 = null;
             aClass40_Sub5_Sub14_Sub1_3236 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "tb.B(" + arg0 + ')');
-        }
+
     }
 
     public Model method756(int arg0) {
-        try {
-            anInt3234++;
+
+        anInt3234++;
             Class40_Sub5_Sub2 class40_sub5_sub2 = Class37.method431(anInt3249, 13);
             int i = -110 / ((arg0 - 41) / 47);
             Model class40_sub5_sub17_sub5;
@@ -166,14 +155,12 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
             if(class40_sub5_sub17_sub5 == null)
                 return null;
             return class40_sub5_sub17_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "tb.UA(" + arg0 + ')');
-        }
+
     }
 
     public void method834(int arg0, int arg1) {
-        try {
-            anInt3232++;
+
+        anInt3232++;
             if(arg0 != 8076)
                 method834(106, 6);
             if(!aBoolean3237) {
@@ -187,8 +174,6 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "tb.D(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 }

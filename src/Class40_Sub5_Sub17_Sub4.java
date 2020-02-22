@@ -291,15 +291,13 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
     }
 
     public static void method783(int arg0) {
-        try {
-            anInt3085++;
+
+        anInt3085++;
             Cache.aClass9_326.method235((byte) -126);
             int i = 12 / ((-12 - arg0) / 50);
             Class53.aClass9_1264.method235((byte) -96);
             Class67.aClass9_1582.method235((byte) 34);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "nb.G(" + arg0 + ')');
-        }
+
     }
 
     public static void method786(boolean arg0) {
@@ -339,8 +337,8 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
     }
 
     public static void method788(int arg0) {
-        try {
-            aClass1_3158 = null;
+
+        aClass1_3158 = null;
             aClass6_Sub1_3157 = null;
             aClass1_3092 = null;
             aClass1_3154 = null;
@@ -358,14 +356,12 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
             anIntArray3149 = null;
             rsaModulus = null;
             aClass1_3159 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "nb.I(" + arg0 + ')');
-        }
+
     }
 
     public static void method789(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        try {
-            anInt3147++;
+
+        anInt3147++;
             if((Class51.anInt1202 ^ 0xffffffff) != (arg3 ^ 0xffffffff) || arg2 != Class17.anInt448 || ((arg5 ^ 0xffffffff) != (Class40_Sub6.onBuildTimePlane ^ 0xffffffff) && VertexNormal.lowMemory)) {
                 Class40_Sub6.onBuildTimePlane = arg5;
                 Class51.anInt1202 = arg3;
@@ -452,14 +448,12 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
                 Class57.aClass45_1332.method906(0);
                 Class43.aClass45_1022.method906(0);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("nb.H(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ')'));
-        }
+
     }
 
     public void method782(int arg0, byte arg1, boolean arg2) {
-        try {
-            anInt3103++;
+
+        anInt3103++;
             int i = anIntArray3088[0];
             int i_19_ = anIntArray3135[0];
             if(arg0 == 0) {
@@ -500,20 +494,16 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
             anIntArray3088[0] = i;
             anIntArray3135[0] = i_19_;
             aBooleanArray3072[0] = arg2;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("nb.A(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public boolean method784(int arg0) {
-        try {
-            anInt3108++;
+
+        anInt3108++;
             if(arg0 != 1)
                 method783(-80);
             return false;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "nb.CB(" + arg0 + ')');
-        }
+
     }
 
     public void method785(int arg0, int arg1, int arg2, int arg3) {
@@ -531,8 +521,8 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
     }
 
     public void method787(int arg0, int arg1, boolean arg2, int arg3) {
-        try {
-            if((anInt3141 ^ 0xffffffff) != 0 && Class68_Sub1.method1050(anInt3141, 2).anInt2476 == 1)
+
+        if((anInt3141 ^ 0xffffffff) != 0 && Class68_Sub1.method1050(anInt3141, 2).anInt2476 == 1)
                 anInt3141 = -1;
             anInt3076++;
             if(!arg2) {
@@ -561,18 +551,14 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
             anIntArray3135[0] = arg0;
             anInt3098 = anInt3096 * 64 + anIntArray3088[0] * 128;
             anInt3089 = anInt3096 * 64 + anIntArray3135[0] * 128;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("nb.E(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 
     public void method790(int arg0) {
-        try {
-            anInt3106++;
+
+        anInt3106++;
             anInt3094 = arg0;
             anInt3109 = 0;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "nb.D(" + arg0 + ')');
-        }
+
     }
 }

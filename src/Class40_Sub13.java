@@ -41,8 +41,8 @@ public class Class40_Sub13 extends Node {
     public int[] anIntArray2178;
 
     public Class40_Sub13(int arg0, byte[] arg1) {
-        try {
-            anInt2175 = arg0;
+
+        anInt2175 = arg0;
             Buffer class40_sub1 = new Buffer(arg1);
             anInt2171 = class40_sub1.method468(false);
             anIntArrayArray2168 = new int[anInt2171][];
@@ -55,14 +55,12 @@ public class Class40_Sub13 extends Node {
                 for(int i_38_ = 0; anIntArrayArray2168[i].length > i_38_; i_38_++)
                     anIntArrayArray2168[i][i_38_] = class40_sub1.method468(false);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("va.<init>(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static DirectColorSprite method876(int arg0, int arg1, int arg2, int arg3) {
-        try {
-            anInt2182++;
+
+        anInt2182++;
             if(arg3 == 0) {
                 DirectColorSprite class40_sub5_sub14_sub4 = ((DirectColorSprite) Buffer.aClass9_1933.method231((long) arg2, (byte) 56));
                 if(class40_sub5_sub14_sub4 != null && class40_sub5_sub14_sub4.anInt2952 != arg1 && (class40_sub5_sub14_sub4.anInt2952 ^ 0xffffffff) != 0) {
@@ -181,14 +179,12 @@ public class Class40_Sub13 extends Node {
                 class40_sub5_sub14_sub4_10_.anInt2954 = 32;
             class40_sub5_sub14_sub4_10_.anInt2952 = arg1;
             return class40_sub5_sub14_sub4_10_;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("va.B(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method877(int arg0) {
-        try {
-            aClass1_2188 = null;
+
+        aClass1_2188 = null;
             aClass1_2181 = null;
             aClass1_2179 = null;
             aClass1_2186 = null;
@@ -200,14 +196,12 @@ public class Class40_Sub13 extends Node {
                 aClass1_2189 = null;
                 aClass1_2187 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "va.E(" + arg0 + ')');
-        }
+
     }
 
     public static Class40_Sub5_Sub12 method878(int arg0, Class40_Sub5_Sub12 arg1) {
-        try {
-            anInt2169++;
+
+        anInt2169++;
             int i;
             if((arg1.anInt2689 ^ 0xffffffff) > -1)
                 i = arg1.anInt2648 >> -1744237840;
@@ -221,9 +215,7 @@ public class Class40_Sub13 extends Node {
                 return (Class59.aClass40_Sub5_Sub12ArrayArray1390[i][0xffff & arg1.anInt2738]);
             Class40_Sub5_Sub12 class40_sub5_sub12 = (Class59.aClass40_Sub5_Sub12ArrayArray1390[i][(0x7fff99d9 & arg1.anInt2738) >> -88908881]);
             return (class40_sub5_sub12.aClass40_Sub5_Sub12Array2713[arg1.anInt2738 & 0x7fff]);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("va.D(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method879(int arg0, IndexedColorSprite arg1) {
@@ -265,8 +257,8 @@ public class Class40_Sub13 extends Node {
     }
 
     public static void method880(byte arg0, int arg1, int arg2) {
-        try {
-            anInt2173++;
+
+        anInt2173++;
             Class45 class45 = (Class10.aClass45ArrayArrayArray357[Player.anInt3267][arg2][arg1]);
             if(class45 == null)
                 NPC.aScene_3301.method125(Player.anInt3267, arg2, arg1);
@@ -303,8 +295,6 @@ public class Class40_Sub13 extends Node {
                     NPC.aScene_3301.method139(Player.anInt3267, arg2, arg1, Class37.method430((byte) -126, (Player.anInt3267), 64 + 128 * arg2, 64 + 128 * arg1), class40_sub5_sub17_sub3, i_37_, class40_sub5_sub17_sub3_35_, class40_sub5_sub17_sub3_34_);
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("va.A(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 }

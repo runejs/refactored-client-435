@@ -44,8 +44,8 @@ public class Class19 {
     }
 
     public static RSString method279(byte[] arg0, boolean arg1, int arg2, int arg3) {
-        try {
-            anInt467++;
+
+        anInt467++;
             RSString class1 = new RSString();
             class1.anInt1680 = 0;
             class1.aByteArray1692 = new byte[arg3];
@@ -56,14 +56,12 @@ public class Class19 {
                     class1.aByteArray1692[class1.anInt1680++] = arg0[i];
             }
             return class1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("g.B(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method280(boolean arg0) {
-        try {
-            aClass1_495 = null;
+
+        aClass1_495 = null;
             aClass1_494 = null;
             aClass68_482 = null;
             aClass1_489 = null;
@@ -75,8 +73,6 @@ public class Class19 {
                 method280(false);
             anIntArray483 = null;
             aClass6_488 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "g.A(" + arg0 + ')');
-        }
+
     }
 }

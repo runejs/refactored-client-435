@@ -90,21 +90,19 @@ public class Class34 {
     }
 
     public static int method415(byte arg0, int arg1, int arg2) {
-        try {
-            anInt815++;
+
+        anInt815++;
             long l = (long) ((arg1 << 1451454800) + arg2);
             if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null || PacketBuffer.aClass40_Sub5_Sub13_2250.key != l)
                 return 0;
             int i = 34 % ((arg0 + 46) / 45);
             return 1 + (Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition * 99 / ((Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer).length + -(PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758)));
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("mb.E(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public static boolean method416(byte arg0) {
-        try {
-            anInt836++;
+
+        anInt836++;
             synchronized(Class59.aClass54_1392) {
                 if((Class52.anInt1214 ^ 0xffffffff) == (Class59.anInt1389 ^ 0xffffffff))
                     return false;
@@ -115,14 +113,12 @@ public class Class34 {
                 Class59.anInt1389 = Class59.anInt1389 + 1 & 0x7f;
                 return true;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "mb.D(" + arg0 + ')');
-        }
+
     }
 
     public static Class40_Sub5_Sub4 method417(int arg0, int arg1) {
-        try {
-            anInt800++;
+
+        anInt800++;
             if(arg0 != 0)
                 return null;
             Class40_Sub5_Sub4 class40_sub5_sub4 = ((Class40_Sub5_Sub4) Class57.aClass9_1331.method231((long) arg1, (byte) 111));
@@ -134,14 +130,12 @@ public class Class34 {
                 class40_sub5_sub4.method562(0, new Buffer(is));
             Class57.aClass9_1331.method230(-7208, (long) arg1, class40_sub5_sub4);
             return class40_sub5_sub4;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "mb.A(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method418(int arg0) {
-        try {
-            aClass1_826 = null;
+
+        aClass1_826 = null;
             if(arg0 != 7679)
                 method420(-90, 8, false);
             aClass1_817 = null;
@@ -154,14 +148,12 @@ public class Class34 {
             aClass23_805 = null;
             aClass1_850 = null;
             aClass40_Sub5_Sub14_Sub2_855 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "mb.B(" + arg0 + ')');
-        }
+
     }
 
     public static void method419(byte arg0) {
-        try {
-            int i = -2 / ((-31 - arg0) / 57);
+
+        int i = -2 / ((-31 - arg0) / 57);
             anInt807++;
             while((Cache.outgoingbuffer.method510(125, Class40_Sub5_Sub12.packetsize) ^ 0xffffffff) <= -12) {
                 int i_0_ = Cache.outgoingbuffer.putBits(11, (byte) -65);
@@ -193,14 +185,12 @@ public class Class34 {
                 class40_sub5_sub17_sub4_sub1.method787(i_2_ + (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), -7717, (i_4_ ^ 0xffffffff) == -2, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]) + i_1_);
             }
             Cache.outgoingbuffer.finishBitAccess((byte) -110);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "mb.C(" + arg0 + ')');
-        }
+
     }
 
     public static int method420(int arg0, int arg1, boolean arg2) {
-        try {
-            anInt806++;
+
+        anInt806++;
             if(arg0 == -2)
                 return 12345678;
             if(arg0 == -1) {
@@ -219,8 +209,6 @@ public class Class34 {
             else if(arg1 > 126)
                 arg1 = 126;
             return (0xff80 & arg0) + arg1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("mb.F(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 }

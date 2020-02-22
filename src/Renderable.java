@@ -31,8 +31,8 @@ public abstract class Renderable extends SubNode {
     public int anInt2861 = 1000;
 
     public static boolean method754(int arg0, int arg1) {
-        try {
-            anInt2859++;
+
+        anInt2859++;
             if(!Class68.method1043(arg1, 127))
                 return false;
             Class40_Sub5_Sub12[] class40_sub5_sub12s = Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1];
@@ -76,14 +76,12 @@ public abstract class Renderable extends SubNode {
                 }
             }
             return bool;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "vb.EB(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method757(byte arg0) {
-        try {
-            aClass1_2871 = null;
+
+        aClass1_2871 = null;
             aClass1Array2856 = null;
             if(arg0 > -112)
                 method757((byte) 59);
@@ -93,9 +91,7 @@ public abstract class Renderable extends SubNode {
             anIntArray2865 = null;
             aClass1_2862 = null;
             aClass1_2864 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "vb.DB(" + arg0 + ')');
-        }
+
     }
 
     public void method755(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
@@ -108,12 +104,10 @@ public abstract class Renderable extends SubNode {
     }
 
     public Model method756(int arg0) {
-        try {
-            int i = 87 / ((arg0 - 41) / 47);
+
+        int i = 87 / ((arg0 - 41) / 47);
             anInt2855++;
             return null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "vb.UA(" + arg0 + ')');
-        }
+
     }
 }

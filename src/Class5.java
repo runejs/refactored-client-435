@@ -43,8 +43,8 @@ public class Class5 {
     }
 
     public static void method162(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, byte[] arg8, CollisionMap[] arg9) {
-        try {
-            if(arg1 != 13941)
+
+        if(arg1 != 13941)
                 method162(53, -59, 8, -121, -68, -3, -42, -91, null, null);
             for(int i = 0; (i ^ 0xffffffff) > -9; i++) {
                 for(int i_0_ = 0; (i_0_ ^ 0xffffffff) > -9; i_0_++) {
@@ -64,14 +64,12 @@ public class Class5 {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("bb.A(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ',' + arg7 + ',' + (arg8 != null ? "{...}" : "null") + ',' + (arg9 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method163(byte arg0) {
-        try {
-            aClass1_196 = null;
+
+        aClass1_196 = null;
             if(arg0 == -94) {
                 aClass1_204 = null;
                 aClass1_202 = null;
@@ -83,14 +81,12 @@ public class Class5 {
                 aClass1_210 = null;
                 anIntArray198 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "bb.B(" + arg0 + ')');
-        }
+
     }
 
     public static void method164(int arg0) {
-        try {
-            Renderable.method754(arg0 + 29378, NpcDefinition.anInt2433);
+
+        Renderable.method754(arg0 + 29378, NpcDefinition.anInt2433);
             anInt205++;
             if(arg0 != (Class40_Sub5_Sub9.anInt2562 ^ 0xffffffff))
                 Renderable.method754(arg0 + 29378, Class40_Sub5_Sub9.anInt2562);
@@ -112,9 +108,7 @@ public class Class5 {
             } catch(Exception exception) {
                 Class62.aCanvas1469.repaint();
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "bb.D(" + arg0 + ')');
-        }
+
     }
 
     public static void method165(int arg0) {
@@ -202,8 +196,8 @@ public class Class5 {
     }
 
     public static boolean method166(byte arg0, Class40_Sub5_Sub12 arg1) {
-        try {
-            anInt192++;
+
+        anInt192++;
             int i = arg1.anInt2639;
             if(Class12.anInt380 == 2) {
                 if((i ^ 0xffffffff) == -202) {
@@ -278,25 +272,21 @@ public class Class5 {
                 }
             }
             return false;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("bb.F(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method167(int arg0) {
-        try {
-            if(arg0 != 1023)
+
+        if(arg0 != 1023)
                 method164(89);
             Class13.aClass9_406.method235((byte) -56);
             anInt207++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "bb.E(" + arg0 + ')');
-        }
+
     }
 
     public static void method168(int arg0, int arg1, int arg2, int arg3, byte arg4, Class40_Sub5_Sub12 arg5, int arg6, int arg7, int arg8) {
-        try {
-            if(Class61.aBoolean1444)
+
+        if(Class61.aBoolean1444)
                 Landscape.anInt1171 = 32;
             else
                 Landscape.anInt1171 = 0;
@@ -330,8 +320,6 @@ public class Class5 {
                     ISAAC.aBoolean505 = true;
             }
             int i = -61 / ((arg4 + 67) / 59);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("bb.G(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + (arg5 != null ? "{...}" : "null") + ',' + arg6 + ',' + arg7 + ',' + arg8 + ')'));
-        }
+
     }
 }

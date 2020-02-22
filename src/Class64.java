@@ -51,21 +51,18 @@ public class Class64 implements Runnable {
     public Class64(Socket arg0, Signlink arg1) throws IOException {
         aBoolean1513 = false;
         aBoolean1510 = false;
-        try {
             aClass31_1515 = arg1;
             aSocket1508 = arg0;
             aSocket1508.setSoTimeout(30000);
             aSocket1508.setTcpNoDelay(true);
             anInputStream1503 = aSocket1508.getInputStream();
             anOutputStream1528 = aSocket1508.getOutputStream();
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("vc.<init>(" + (arg0 != null ? "{...}" : "null") + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method1011(boolean arg0) {
-        try {
-            aClass1_1505 = null;
+
+        aClass1_1505 = null;
             aClass1_1526 = null;
             if(arg0 != true)
                 aClass1_1502 = null;
@@ -75,14 +72,12 @@ public class Class64 implements Runnable {
             aClass1_1524 = null;
             aClass1_1500 = null;
             aClass1_1517 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "vc.H(" + arg0 + ')');
-        }
+
     }
 
     public static void method1012(int arg0, int arg1) {
-        try {
-            anInt1518++;
+
+        anInt1518++;
             if(Class68.method1043(arg0, 126)) {
                 Class40_Sub5_Sub12[] class40_sub5_sub12s = Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0];
                 if(arg1 != 2)
@@ -93,14 +88,12 @@ public class Class64 implements Runnable {
                         Class43.method891(class40_sub5_sub12.anObjectArray2677, 0, 0, class40_sub5_sub12, 0, false);
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "vc.D(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method1013(boolean arg0) {
-        try {
-            anInt1514++;
+
+        anInt1514++;
             int i = -1;
             if(arg0 != false)
                 method1013(false);
@@ -233,14 +226,12 @@ public class Class64 implements Runnable {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "vc.G(" + arg0 + ')');
-        }
+
     }
 
     public static void method1015(int arg0) {
-        try {
-            synchronized(GameObject.aClass62_3019) {
+
+        synchronized(GameObject.aClass62_3019) {
                 Class40_Sub5_Sub2.anInt2302 = Cache.anInt320;
                 Class13.anInt420 = Class12.anInt389;
                 if(arg0 != -656)
@@ -253,14 +244,12 @@ public class Class64 implements Runnable {
                 Class40_Sub5_Sub17_Sub4.anInt3143 = 0;
             }
             anInt1527++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "vc.F(" + arg0 + ')');
-        }
+
     }
 
     public void method1008(int arg0, int arg1, int arg2, byte[] arg3) throws IOException {
-        try {
-            anInt1522++;
+
+        anInt1522++;
             if(!aBoolean1513 && arg2 < -126) {
                 while((arg1 ^ 0xffffffff) < -1) {
                     int i = anInputStream1503.read(arg3, arg0, arg1);
@@ -270,14 +259,12 @@ public class Class64 implements Runnable {
                     arg0 += i;
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("vc.C(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + (arg3 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public void method1009(int arg0) {
-        try {
-            int i = 27 / ((-54 - arg0) / 32);
+
+        int i = 27 / ((-54 - arg0) / 32);
             anInt1516++;
             if(!aBoolean1513) {
                 synchronized(this) {
@@ -297,14 +284,12 @@ public class Class64 implements Runnable {
                 }
                 aClass15_1512 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "vc.B(" + arg0 + ')');
-        }
+
     }
 
     public void method1010(int arg0, byte arg1, int arg2, byte[] arg3) throws IOException {
-        try {
-            anInt1525++;
+
+        anInt1525++;
             if(!aBoolean1513) {
                 if(aBoolean1510) {
                     aBoolean1510 = false;
@@ -326,23 +311,19 @@ public class Class64 implements Runnable {
                         run();
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("vc.I(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + (arg3 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public void finalize() {
-        try {
-            method1009(-4);
+
+        method1009(-4);
             anInt1501++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "vc.finalize(" + ')');
-        }
+
     }
 
     public void run() {
-        try {
-            anInt1519++;
+
+        anInt1519++;
             try {
                 for(; ; ) {
                     int i;
@@ -392,34 +373,28 @@ public class Class64 implements Runnable {
             } catch(Exception exception) {
                 Class6.method169(null, (byte) -122, exception);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "vc.run(" + ')');
-        }
+
     }
 
     public int method1014(int arg0) throws IOException {
-        try {
-            anInt1507++;
+
+        anInt1507++;
             if(arg0 >= -120)
                 aClass31_1515 = null;
             if(aBoolean1513)
                 return 0;
             return anInputStream1503.available();
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "vc.E(" + arg0 + ')');
-        }
+
     }
 
     public int method1016(int arg0) throws IOException {
-        try {
-            if(arg0 < 14)
+
+        if(arg0 < 14)
                 aClass1_1524 = null;
             anInt1506++;
             if(aBoolean1513)
                 return 0;
             return anInputStream1503.read();
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "vc.A(" + arg0 + ')');
-        }
+
     }
 }

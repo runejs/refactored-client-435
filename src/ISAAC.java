@@ -50,20 +50,18 @@ public class ISAAC {
     public int anInt513;
 
     public ISAAC(int[] arg0) {
-        try {
-            anIntArray511 = new int[256];
+
+        anIntArray511 = new int[256];
             anIntArray508 = new int[256];
             for(int i = 0; arg0.length > i; i++)
                 anIntArray508[i] = arg0[i];
             method287(true);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "gb.<init>(" + (arg0 != null ? "{...}" : "null") + ')');
-        }
+
     }
 
     public static void method281(Scene arg0, int arg1, CollisionMap[] arg2) {
-        try {
-            for(int i = 0; (i ^ 0xffffffff) > -5; i++) {
+
+        for(int i = 0; (i ^ 0xffffffff) > -5; i++) {
                 for(int i_0_ = 0; (i_0_ ^ 0xffffffff) > -105; i_0_++) {
                     for(int i_1_ = 0; i_1_ < 104; i_1_++) {
                         if((0x1 & (Floor.tile_flags[i][i_0_][i_1_])) == 1) {
@@ -395,14 +393,12 @@ public class ISAAC {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("gb.A(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method282(boolean arg0) {
-        try {
-            aClass1_529 = null;
+
+        aClass1_529 = null;
             aClass1_515 = null;
             aClass1_518 = null;
             aClass1_526 = null;
@@ -417,28 +413,24 @@ public class ISAAC {
                 anIntArray528 = null;
                 aClass1_517 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "gb.B(" + arg0 + ')');
-        }
+
     }
 
     public static void method283(long arg0, int arg1) {
+
         try {
-            try {
                 int i = -93 / ((-50 - arg1) / 45);
                 Thread.sleep(arg0);
             } catch(InterruptedException interruptedexception) {
                 /* empty */
             }
             anInt507++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "gb.C(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method285(byte arg0) {
-        try {
-            anInt514++;
+
+        anInt514++;
             if(arg0 != 118)
                 aBoolean519 = true;
             for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = (Class40_Sub3) Class45.aClass45_1064.method909(-4)) {
@@ -449,25 +441,21 @@ public class ISAAC {
                     Class39.method451(class40_sub3, 19813);
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "gb.G(" + arg0 + ')');
-        }
+
     }
 
     public static int method288(byte arg0) {
-        try {
-            if(arg0 < 117)
+
+        if(arg0 < 117)
                 method288((byte) 125);
             anInt500++;
             return 5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "gb.F(" + arg0 + ')');
-        }
+
     }
 
     public void method284(byte arg0) {
-        try {
-            anInt513 += ++anInt502;
+
+        anInt513 += ++anInt502;
             anInt501++;
             int i = -29 % ((arg0 + 18) / 58);
             for(int i_98_ = 0; (i_98_ ^ 0xffffffff) > -257; i_98_++) {
@@ -486,14 +474,12 @@ public class ISAAC {
                 anIntArray511[i_98_] = i_100_ = anIntArray511[(Class66.method1021(i_99_, 1020) >> 107120354)] + (anInt498 + anInt513);
                 anIntArray508[i_98_] = anInt513 = (i_99_ + anIntArray511[Class66.method1021((i_100_ >> -488567000 >> -1522276318), 255)]);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "gb.D(" + arg0 + ')');
-        }
+
     }
 
     public int method286(int arg0) {
-        try {
-            anInt520++;
+
+        anInt520++;
             if(arg0 > -54)
                 return -67;
             if(anInt497-- == 0) {
@@ -501,14 +487,12 @@ public class ISAAC {
                 anInt497 = 255;
             }
             return anIntArray508[anInt497];
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "gb.E(" + arg0 + ')');
-        }
+
     }
 
     public void method287(boolean arg0) {
-        try {
-            anInt503++;
+
+        anInt503++;
             int i_101_;
             int i_102_;
             int i_103_;
@@ -632,8 +616,6 @@ public class ISAAC {
             }
             method284((byte) -90);
             anInt497 = 256;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "gb.H(" + arg0 + ')');
-        }
+
     }
 }

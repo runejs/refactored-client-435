@@ -51,11 +51,9 @@ public class Class38_Sub1 extends Class38 {
     public int anInt1915;
 
     public Class38_Sub1() {
-        try {
-            method443(-10115);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "k.<init>(" + ')');
-        }
+
+        method443(-10115);
+
     }
 
     public static void method445(int arg0) {
@@ -103,8 +101,8 @@ public class Class38_Sub1 extends Class38 {
     }
 
     public static boolean method446(Signlink arg0, int arg1, boolean arg2, byte arg3) {
-        try {
-            anInt1913++;
+
+        anInt1913++;
             if(arg3 != 30)
                 method448(47, -7, 96, -97, (byte) -6, -111, true, -110, 57, -36, -84, -42);
             if(!Class39.method452(arg0, (byte) 121, arg2))
@@ -112,9 +110,7 @@ public class Class38_Sub1 extends Class38 {
             if((arg1 ^ 0xffffffff) < -1)
                 RSString.aClass9_1684 = new Cache(arg1);
             return true;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("k.A(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method447(byte arg0) {
@@ -196,8 +192,8 @@ public class Class38_Sub1 extends Class38 {
     }
 
     public static boolean method448(int arg0, int arg1, int arg2, int arg3, byte arg4, int arg5, boolean arg6, int arg7, int arg8, int arg9, int arg10, int arg11) {
-        try {
-            anInt1902++;
+
+        anInt1902++;
             for(int i = 0; (i ^ 0xffffffff) > -105; i++) {
                 for(int i_8_ = 0; i_8_ < 104; i_8_++) {
                     Class57.anIntArrayArray1335[i][i_8_] = 0;
@@ -390,14 +386,12 @@ public class Class38_Sub1 extends Class38 {
                 return true;
             }
             return (arg11 ^ 0xffffffff) != -2;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("k.G(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ',' + arg7 + ',' + arg8 + ',' + arg9 + ',' + arg10 + ',' + arg11 + ')'));
-        }
+
     }
 
     public static void method449(int arg0) {
-        try {
-            aClass1_1906 = null;
+
+        aClass1_1906 = null;
             anIntArray1916 = null;
             aClass1_1920 = null;
             aClass1_1918 = null;
@@ -409,9 +403,7 @@ public class Class38_Sub1 extends Class38 {
             aClass1_1924 = null;
             if(arg0 == -22783)
                 aClass1_1921 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "k.D(" + arg0 + ')');
-        }
+
     }
 
     public static void method450(byte arg0) {
@@ -426,14 +418,12 @@ public class Class38_Sub1 extends Class38 {
     }
 
     public void method444(int arg0) {
-        try {
-            anInt1911++;
+
+        anInt1911++;
             int i = 36 / ((arg0 + 76) / 48);
             for(int i_0_ = 0; i_0_ < 10; i_0_++)
                 aLongArray1910[i_0_] = 0L;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "k.F(" + arg0 + ')');
-        }
+
     }
 
     public void method443(int arg0) {
@@ -449,8 +439,8 @@ public class Class38_Sub1 extends Class38 {
     }
 
     public int method442(int arg0, int arg1, int arg2) {
-        try {
-            anInt1901++;
+
+        anInt1901++;
             int i = anInt1912;
             anInt1912 = 1;
             int i_5_ = anInt1915;
@@ -489,8 +479,6 @@ public class Class38_Sub1 extends Class38 {
                 i_7_++;
             anInt1903 &= 0xff;
             return i_7_;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("k.C(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 }

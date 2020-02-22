@@ -73,7 +73,6 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
     public static void method18(boolean arg0) {
         do {
-            try {
                 aClass1_35 = null;
                 aClass1_8 = null;
                 aClass1_34 = null;
@@ -87,16 +86,14 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 if(arg0 == false)
                     break;
                 aLongArray4 = null;
-            } catch(RuntimeException runtimeexception) {
-                throw Class8.method216(runtimeexception, "RSApplet.C(" + arg0 + ')');
-            }
+
             break;
         } while(false);
     }
 
     public static void method19(boolean arg0, int arg1) {
-        try {
-            if(arg1 != 24041)
+
+        if(arg1 != 24041)
                 aClass1_28 = null;
             anInt38++;
             if(Class57.aClass64_1345 != null) {
@@ -115,14 +112,12 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     Class40_Sub5_Sub1.anInt2278++;
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "RSApplet.E(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method20(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, Class40_Sub5_Sub12[] arg7, int arg8, int arg9) {
-        try {
-            if(arg6 != 1)
+
+        if(arg6 != 1)
                 providesignlink(null);
             for(int i = 0; (arg7.length ^ 0xffffffff) < (i ^ 0xffffffff); i++) {
                 Class40_Sub5_Sub12 class40_sub5_sub12 = arg7[i];
@@ -197,31 +192,25 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 }
             }
             anInt44++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("RSApplet.H(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ',' + (arg7 != null ? "{...}" : "null") + ',' + arg8 + ',' + arg9 + ')'));
-        }
+
     }
 
     public static void providesignlink(Signlink arg0) {
-        try {
-            Class40_Sub5_Sub17_Sub4.aClass31_3152 = ISAAC.aClass31_521 = arg0;
+
+        Class40_Sub5_Sub17_Sub4.aClass31_3152 = ISAAC.aClass31_521 = arg0;
             anInt30++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("RSApplet.providesignlink(" + (arg0 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static int method27(int arg0, int arg1) {
-        try {
-            return arg0 ^ arg1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "RSApplet.D(" + arg0 + ',' + arg1 + ')');
-        }
+
+        return arg0 ^ arg1;
+
     }
 
     public static void method28(long arg0, int arg1) {
-        try {
-            anInt13++;
+
+        anInt13++;
             if((arg0 ^ 0xffffffffffffffffL) != -1L) {
                 int i = 0;
                 int i_12_ = -18 % ((arg1 - 69) / 44);
@@ -241,26 +230,22 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "RSApplet.L(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static int method32(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
-        try {
-            anInt39++;
+
+        anInt39++;
             if(arg3 != true)
                 return -109;
             int i = (65536 + -(R3D.cosinetable[1024 * arg4 / arg1]) >> 1712636353);
             return (((65536 + -i) * arg0 >> 523531120) + (arg2 * i >> 1426525808));
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("RSApplet.method32(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ')'));
-        }
+
     }
 
     public void run() {
-        try {
-            anInt19++;
+
+        anInt19++;
             try {
                 if(Signlink.aString735 != null) {
                     String string = Signlink.aString735.toLowerCase();
@@ -303,16 +288,14 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 openErrorPage((byte) 62, "crash");
             }
             method17(118);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "RSApplet.run(" + ')');
-        }
+
     }
 
     public abstract void method16(int i);
 
     public synchronized void method17(int arg0) {
-        try {
-            anInt27++;
+
+        anInt27++;
             if(!PacketBuffer.aBoolean2255) {
                 if(arg0 <= 86)
                     aClass1_14 = null;
@@ -343,26 +326,22 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 }
                 method16(28065);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "RSApplet.F(" + arg0 + ')');
-        }
+
     }
 
     public void stop() {
-        try {
-            anInt22++;
+
+        anInt22++;
             if(this == Class4.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255)
                 Class6.aLong219 = Class51.method937(1) + 4000L;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "RSApplet.stop(" + ')');
-        }
+
     }
 
     public abstract void init();
 
     public boolean verifyHost(int arg0) {
-        try {
-            anInt37++;
+
+        anInt37++;
             String string = getDocumentBase().getHost().toLowerCase();
             if(arg0 != 31)
                 return false;
@@ -377,22 +356,17 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 return true;
             openErrorPage((byte) 113, "invalidhost");
             return false;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "RSApplet.R(" + arg0 + ')');
-        }
+
     }
 
     public void windowOpened(WindowEvent arg0) {
-        try {
-            anInt15++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "RSApplet.windowOpened(" + (arg0 != null ? "{...}" : "null") + ')');
-        }
+
+        anInt15++;
+
     }
 
     public void openErrorPage(byte arg0, String gameError) {
         do {
-            try {
                 anInt5++;
                 if(!aBoolean43) {
                     aBoolean43 = true;
@@ -405,39 +379,32 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                         break;
                     displayClientFrame((byte) 96, 68, 28, 85, -56);
                 }
-            } catch(RuntimeException runtimeexception) {
-                throw Class8.method216(runtimeexception, ("RSApplet.openErrorPage(" + arg0 + ',' + (gameError != null ? "{...}" : "null") + ')'));
-            }
+
             break;
         } while(false);
     }
 
     public void start() {
-        try {
-            anInt33++;
+
+        anInt33++;
             if(this == Class4.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255)
                 Class6.aLong219 = 0L;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "RSApplet.start(" + ')');
-        }
+
     }
 
     public abstract void method23(int i);
 
     public void focusLost(FocusEvent arg0) {
-        try {
-            Class52.aBoolean1215 = false;
+
+        Class52.aBoolean1215 = false;
             anInt3++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "RSApplet.focusLost(" + (arg0 != null ? "{...}" : "null") + ')');
-        }
+
     }
 
     public abstract void method24(int i);
 
     public synchronized void paint(Graphics arg0) {
         do {
-            try {
                 anInt36++;
                 if(this == Class4.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255) {
                     Class40_Sub5_Sub11.aBoolean2631 = true;
@@ -447,53 +414,44 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     if(rectangle == null || ((Class12.width ^ 0xffffffff) >= (rectangle.width ^ 0xffffffff) && ((rectangle.height ^ 0xffffffff) <= (Class40_Sub5_Sub10.height ^ 0xffffffff))))
                         Class67.aBoolean1575 = true;
                 }
-            } catch(RuntimeException runtimeexception) {
-                throw Class8.method216(runtimeexception, "RSApplet.paint(" + (arg0 != null ? "{...}" : "null") + ')');
-            }
+
             break;
         } while(false);
     }
 
     public void destroy() {
-        try {
-            anInt42++;
+
+        anInt42++;
             if(Class4.anApplet_Sub1_179 == this && !PacketBuffer.aBoolean2255) {
                 Class6.aLong219 = Class51.method937(1);
                 Class43.method890(5000L, -123);
                 Class40_Sub5_Sub17_Sub4.aClass31_3152 = null;
                 method17(121);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "RSApplet.destroy(" + ')');
-        }
+
     }
 
     public void focusGained(FocusEvent arg0) {
-        try {
-            Class52.aBoolean1215 = true;
+
+        Class52.aBoolean1215 = true;
             Class40_Sub5_Sub11.aBoolean2631 = true;
             anInt11++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "RSApplet.focusGained(" + (arg0 != null ? "{...}" : "null") + ')');
-        }
+
     }
 
     public URL getDocumentBase() {
-        try {
-            anInt6++;
+
+        anInt6++;
             if(Class35.aFrame1732 != null)
                 return null;
             if(ISAAC.aClass31_521 != null && this != ISAAC.aClass31_521.anApplet740)
                 return ISAAC.aClass31_521.anApplet740.getDocumentBase();
             return super.getDocumentBase();
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "RSApplet.getDocumentBase(" + ')');
-        }
+
     }
 
     public void displayClientFrame(byte arg0, int clientVersion, int width, int height, int fileStoreId) {
         do {
-            try {
                 anInt12++;
                 try {
                     if(Class4.anApplet_Sub1_179 != null) {
@@ -514,24 +472,20 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 if(arg0 == 120)
                     break;
                 windowActivated(null);
-            } catch(RuntimeException runtimeexception) {
-                throw Class8.method216(runtimeexception, ("RSApplet.displayClientFrame(" + arg0 + ',' + clientVersion + ',' + width + ',' + height + ',' + fileStoreId + ')'));
-            }
+
             break;
         } while(false);
     }
 
     public void windowIconified(WindowEvent arg0) {
-        try {
-            anInt23++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("RSApplet.windowIconified(" + (arg0 != null ? "{...}" : "null") + ')'));
-        }
+
+        anInt23++;
+
     }
 
     public void method26(byte arg0) {
-        try {
-            anInt16++;
+
+        anInt16++;
             if(arg0 == 88) {
                 long l = Class51.method937(1);
                 long l_11_ = aLongArray4[Class30.anInt681];
@@ -555,27 +509,22 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 }
                 method34(arg0 + -210);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "RSApplet.B(" + arg0 + ')');
-        }
+
     }
 
     public AppletContext getAppletContext() {
-        try {
-            anInt24++;
+
+        anInt24++;
             if(Class35.aFrame1732 != null)
                 return null;
             if(ISAAC.aClass31_521 != null && ISAAC.aClass31_521.anApplet740 != this)
                 return ISAAC.aClass31_521.anApplet740.getAppletContext();
             return super.getAppletContext();
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "RSApplet.getAppletContext(" + ')');
-        }
+
     }
 
     public void method29(boolean arg0) {
         do {
-            try {
                 anInt10++;
                 long l = Class51.method937(1);
                 long l_14_ = Class67.aLongArray1614[Class62.anInt1468];
@@ -591,16 +540,14 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 if(arg0 == true)
                     break;
                 windowIconified(null);
-            } catch(RuntimeException runtimeexception) {
-                throw Class8.method216(runtimeexception, "RSApplet.method29(" + arg0 + ')');
-            }
+
             break;
         } while(false);
     }
 
     public void openClientApplet(String cacheFolder, int cacheIndexes, int height, int fileStoreId, InetAddress inetAddress, int clientVersion, int width) {
+
         try {
-            try {
                 Class39.anInt901 = clientVersion;
                 Class12.width = width;
                 Class4.anApplet_Sub1_179 = this;
@@ -619,68 +566,55 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 Class6.method169(null, (byte) -127, exception);
             }
             anInt17++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("RSApplet.openClientApplet(" + (cacheFolder != null ? "{...}" : "null") + ',' + cacheIndexes + ',' + height + ',' + fileStoreId + ',' + (inetAddress != null ? "{...}" : "null") + ',' + clientVersion + ',' + width + ')'));
-        }
+
     }
 
     public URL getCodeBase() {
-        try {
-            anInt40++;
+
+        anInt40++;
             if(Class35.aFrame1732 != null)
                 return null;
             if(ISAAC.aClass31_521 != null && ISAAC.aClass31_521.anApplet740 != this)
                 return ISAAC.aClass31_521.anApplet740.getCodeBase();
             return super.getCodeBase();
-        } catch(RuntimeException runtimeexception) {
-            throw runtimeexception;
-        }
     }
 
     public abstract void method31(boolean bool);
 
     public void update(Graphics graphics) {
-        try {
-            anInt41++;
+
+        anInt41++;
             paint(graphics);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "RSApplet.update(" + (graphics != null ? "{...}" : "null") + ')');
-        }
+
     }
 
     public void windowClosing(WindowEvent windowEvent) {
-        try {
-            destroy();
+
+        destroy();
             anInt9++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("RSApplet.windowClosing(" + (windowEvent != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public String getParameter(String parameter) {
-        try {
-            anInt26++;
+
+        anInt26++;
             if(Class35.aFrame1732 != null)
                 return null;
             if(ISAAC.aClass31_521 != null && this != ISAAC.aClass31_521.anApplet740)
                 return ISAAC.aClass31_521.anApplet740.getParameter(parameter);
             return super.getParameter(parameter);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "RSApplet.getParameter(" + (parameter != null ? "{...}" : "null") + ')');
-        }
+
     }
 
     public void windowDeactivated(WindowEvent windowEvent) {
-        try {
-            anInt29++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("RSApplet.windowDeactivated(" + (windowEvent != null ? "{...}" : "null") + ')'));
-        }
+
+        anInt29++;
+
     }
 
     public synchronized void setCanvas(byte arg0) {
-        try {
-            anInt18++;
+
+        anInt18++;
             Container container;
             if(Class35.aFrame1732 != null)
                 container = Class35.aFrame1732;
@@ -706,34 +640,26 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             Class40_Sub5_Sub11.aBoolean2631 = true;
             Class67.aBoolean1575 = false;
             Class4.aLong174 = Class51.method937(1);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "RSApplet.setCanvas(" + arg0 + ')');
-        }
+
     }
 
     public abstract void method34(int i);
 
     public void windowDeiconified(WindowEvent windowEvent) {
-        try {
-            anInt20++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("RSApplet.windowDeiconified(" + (windowEvent != null ? "{...}" : "null") + ')'));
-        }
+
+        anInt20++;
+
     }
 
     public void windowClosed(WindowEvent windowEvent) {
-        try {
-            anInt32++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "RSApplet.windowClosed(" + (windowEvent != null ? "{...}" : "null") + ')');
-        }
+
+        anInt32++;
+
     }
 
     public void windowActivated(WindowEvent windowEvent) {
-        try {
-            anInt7++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("RSApplet.windowActivated(" + (windowEvent != null ? "{...}" : "null") + ')'));
-        }
+
+        anInt7++;
+
     }
 }

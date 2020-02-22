@@ -37,8 +37,8 @@ public class Class40_Sub5_Sub4 extends SubNode {
     public int anInt2370;
 
     public static int method564(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, byte arg6) {
-        try {
-            arg4 &= 0x3;
+
+        arg4 &= 0x3;
             anInt2371++;
             if((arg5 & 0x1) == 1) {
                 int i = arg3;
@@ -54,14 +54,12 @@ public class Class40_Sub5_Sub4 extends SubNode {
             if((arg4 ^ 0xffffffff) == -3)
                 return -arg1 + 1 + (-arg0 + 7);
             return arg2;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("fd.D(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ')'));
-        }
+
     }
 
     public static void method565(int arg0) {
-        try {
-            aClass1_2351 = null;
+
+        aClass1_2351 = null;
             if(arg0 <= -120) {
                 aClass6_2364 = null;
                 aClass68_2350 = null;
@@ -73,14 +71,12 @@ public class Class40_Sub5_Sub4 extends SubNode {
                 aClass1_2367 = null;
                 aClass1_2352 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "fd.A(" + arg0 + ')');
-        }
+
     }
 
     public static void method566(int arg0, boolean arg1, int arg2, byte[] arg3, int arg4) {
-        try {
-            anInt2365++;
+
+        anInt2365++;
             if(arg4 != -27520)
                 method565(49);
             if(Class5.aClass22_189 != null) {
@@ -107,9 +103,7 @@ public class Class40_Sub5_Sub4 extends SubNode {
                     Player.aByteArray3270 = arg3;
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("fd.B(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + (arg3 != null ? "{...}" : "null") + ',' + arg4 + ')'));
-        }
+
     }
 
     public void method562(int arg0, Buffer arg1) {

@@ -62,8 +62,8 @@ public class Main extends RSApplet {
     }
 
     public static boolean method36(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, Class40_Sub5_Sub12[] arg8, boolean arg9) {
-        try {
-            Rasterizer.method655(arg2, arg1, arg6, arg5);
+
+        Rasterizer.method655(arg2, arg1, arg6, arg5);
             boolean bool = arg9;
             for(int i = 0; (i ^ 0xffffffff) > (arg8.length ^ 0xffffffff); i++) {
                 Class40_Sub5_Sub12 class40_sub5_sub12 = arg8[i];
@@ -478,14 +478,12 @@ public class Main extends RSApplet {
             }
             anInt1776++;
             return bool;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("client.U(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ',' + arg7 + ',' + (arg8 != null ? "{...}" : "null") + ',' + arg9 + ')'));
-        }
+
     }
 
     public static void method37(Class6_Sub1 arg0, byte arg1, int arg2) {
-        try {
-            anInt1754++;
+
+        anInt1754++;
             if(arg1 != 98)
                 aClass1_1777 = null;
             if(Class48.aClass40_Sub1_1132 != null) {
@@ -496,14 +494,12 @@ public class Main extends RSApplet {
                 HashTable.method327(true, null, 255, 255, (byte) 0, 0, (byte) 90);
                 Class24.aClass6_Sub1Array580[arg2] = arg0;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("client.AA(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public static void method38(int arg0) {
-        try {
-            anInt1785++;
+
+        anInt1785++;
             if((Class40_Sub5_Sub6.anInt2452 ^ 0xffffffff) >= -1) {
                 if(Class40_Sub5_Sub10.anInt2613 > 0) {
                     for(int i = 0; i < 256; i++) {
@@ -575,14 +571,12 @@ public class Main extends RSApplet {
                 i_62_ += 128 - (i_74_ + i_73_);
                 i_61_ += -i_74_ + 128;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "client.FA(" + arg0 + ')');
-        }
+
     }
 
     public static void main(String[] arg0) {
-        try {
-            anInt1768++;
+
+        anInt1768++;
             try {
                 if((arg0.length ^ 0xffffffff) != -7)
                     Class37.method432((byte) 37);
@@ -632,14 +626,12 @@ public class Main extends RSApplet {
             } catch(Exception exception) {
                 Class6.method169(null, (byte) -128, exception);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "client.main(" + (arg0 != null ? "{...}" : "null") + ')');
-        }
+
     }
 
     public static void method41(boolean arg0) {
-        try {
-            aClass1_1762 = null;
+
+        aClass1_1762 = null;
             aClass1_1781 = null;
             aClass1Array1778 = null;
             aClass1_1763 = null;
@@ -652,14 +644,12 @@ public class Main extends RSApplet {
                 method36(-124, 5, -72, 123, 30, -52, 55, 27, null, false);
             aClass1_1761 = null;
             aClass1_1757 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "client.BA(" + arg0 + ')');
-        }
+
     }
 
     public static int method42(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
-        try {
-            arg5 &= 0x3;
+
+        arg5 &= 0x3;
             anInt1779++;
             if((arg0 & arg1 ^ 0xffffffff) == -2) {
                 int i = arg2;
@@ -673,26 +663,22 @@ public class Main extends RSApplet {
             if((arg5 ^ 0xffffffff) == -3)
                 return 7 - (arg3 + arg2) + 1;
             return 7 + (-arg6 + 1) + -arg4;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("client.DA(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ')'));
-        }
+
     }
 
     public static void method43(Class6 arg0, boolean arg1) {
-        try {
-            if(arg1 == true) {
+
+        if(arg1 == true) {
                 anInt1755++;
                 Class64.aClass6_1521 = arg0;
                 Class59.anInt1383 = Class64.aClass6_1521.method190(16, (byte) 24);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("client.EA(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
-        }
+
     }
 
     public static void method44(int arg0) {
-        try {
-            Class51.aLong1203 = 0L;
+
+        Class51.aLong1203 = 0L;
             Class12.aClass39_387.anInt921 = 0;
             Class22_Sub2.anInt1888 = 0;
             anInt1760++;
@@ -1618,9 +1604,7 @@ public class Main extends RSApplet {
                 Class13.aBooleanArray414[i] = false;
             }
             ISAAC.aBoolean519 = true;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "client.V(" + arg0 + ')');
-        }
+
     }
 
     public void method35(int arg0, int arg1) {
@@ -1705,7 +1689,6 @@ public class Main extends RSApplet {
     }
 
     public void method34(int arg0) { // TODO: Might be Startup
-        try {
             anInt1787++;
             if(Class67.aBoolean1575) {
                 Class22_Sub1.method311((byte) -80, Class62.aCanvas1469);
@@ -1748,9 +1731,7 @@ public class Main extends RSApplet {
                 Class53.method951(-19010, (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246), (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236));
             NPC.anInt3294 = 0;
             int i = -22 / ((arg0 - 6) / 50);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "client.S(" + arg0 + ')');
-        }
+
     }
 
     public void method40(int arg0) {
@@ -1865,8 +1846,8 @@ public class Main extends RSApplet {
     }
 
     public void init() {
-        try {
-            anInt1765++;
+
+        anInt1765++;
             if(this.verifyHost(31)) {
                 Class13.worldid = Integer.parseInt(this.getParameter("worldid"));
                 Class44.modewhat = Integer.parseInt(this.getParameter("modewhat"));
@@ -1885,14 +1866,12 @@ public class Main extends RSApplet {
                 }
                 this.displayClientFrame((byte) 120, 435, 503, 765, Class44.modewhat + 32);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "client.init(" + ')');
-        }
+
     }
 
     public void method16(int arg0) {
-        try {
-            anInt1770++;
+
+        anInt1770++;
             method41(false);
             RSString.method83((byte) 121);
             RSApplet.method18(false);
@@ -2003,14 +1982,12 @@ public class Main extends RSApplet {
             Class22_Sub2.method320(39);
             Class14.method266();
             Class22_Sub1.method310(77);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "client.I(" + arg0 + ')');
-        }
+
     }
 
     public void method31(boolean arg0) {
-        try {
-            CollisionMap.anInt172 = Class44.modewhere == 0 ? 443 : 50000 + Class13.worldid;
+
+        CollisionMap.anInt172 = Class44.modewhere == 0 ? 443 : 50000 + Class13.worldid;
             Floor.anInt2340 = ((Class44.modewhere ^ 0xffffffff) != -1 ? Class13.worldid + 40000 : 43594);
             anInt1782++;
             if(arg0 != true)
@@ -2039,8 +2016,6 @@ public class Main extends RSApplet {
             if((Class44.modewhere ^ 0xffffffff) != -1)
                 Class19.aBoolean496 = true;
             Class12.aClass40_Sub5_Sub12_383 = new Class40_Sub5_Sub12();
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "client.M(" + arg0 + ')');
-        }
+
     }
 }

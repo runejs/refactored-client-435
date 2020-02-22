@@ -50,33 +50,29 @@ public class CollisionMap {
     public int anInt153;
 
     public CollisionMap(int arg0, int arg1) {
-        try {
-            anInt145 = arg1;
+
+        anInt145 = arg1;
             anInt151 = 0;
             anInt140 = 0;
             anInt153 = arg0;
             anIntArrayArray150 = new int[anInt153][anInt145];
             method146(16777216);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ad.<init>(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method144(int arg0) {
-        try {
-            Class8.aFontMetrics295 = null;
+
+        Class8.aFontMetrics295 = null;
             anInt152++;
             Class17.aFont461 = null;
             if(arg0 == 12433)
                 Class26.anImage624 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ad.P(" + arg0 + ')');
-        }
+
     }
 
     public static boolean parsePackets(boolean arg0) {
-        try {
-            anInt159++;
+
+        anInt159++;
             if(Class40_Sub6.aClass64_2098 == null)
                 return false;
             try {
@@ -1141,14 +1137,12 @@ public class CollisionMap {
                 Class48.method928(-7225);
             }
             return true;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ad.I(" + arg0 + ')');
-        }
+
     }
 
     public static void method152(int arg0) {
-        try {
-            aByteArray169 = null;
+
+        aByteArray169 = null;
             anObject162 = null;
             aClass1_167 = null;
             if(arg0 == -19156) {
@@ -1157,52 +1151,44 @@ public class CollisionMap {
                 aClass1_171 = null;
                 aClass8_166 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ad.B(" + arg0 + ')');
-        }
+
     }
 
     public static int method157(int arg0, int arg1, int arg2) {
-        try {
-            anInt137++;
+
+        anInt137++;
             int i = (Class42.method884(-1 + arg1, -1 + arg2, 37821) + Class42.method884(1 + arg1, arg2 - 1, 37821) + Class42.method884(-1 + arg1, 1 + arg2, 37821) + Class42.method884(1 + arg1, arg2 + 1, 37821));
             if(arg0 != 0)
                 return 56;
             int i_126_ = (Class42.method884(arg1 - 1, arg2, 37821) + Class42.method884(arg1 + 1, arg2, 37821) - (-Class42.method884(arg1, arg2 - 1, 37821) + -Class42.method884(arg1, 1 + arg2, 37821)));
             int i_127_ = Class42.method884(arg1, arg2, 37821);
             return i / 16 - (-(i_126_ / 8) - i_127_ / 4);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ad.A(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public void method143(boolean arg0, int arg1, int arg2, int arg3) {
-        try {
-            anInt160++;
+
+        anInt160++;
             if(arg0 != true)
                 anIntArrayArray150 = null;
             anIntArrayArray150[arg1][arg2] = Class40_Sub5_Sub9.method619(anIntArrayArray150[arg1][arg2], arg3);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ad.L(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 
     public void method145(int arg0, int arg1, int arg2) {
-        try {
-            arg0 -= anInt151;
+
+        arg0 -= anInt151;
             if(arg1 == 28227) {
                 arg2 -= anInt140;
                 anIntArrayArray150[arg2][arg0] = Class66.method1021(anIntArrayArray150[arg2][arg0], 14680063);
                 anInt144++;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ad.E(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public void method146(int arg0) {
-        try {
-            anInt143++;
+
+        anInt143++;
             if(arg0 == 16777216) {
                 for(int i = 0; anInt153 > i; i++) {
                     for(int i_0_ = 0; (anInt145 ^ 0xffffffff) < (i_0_ ^ 0xffffffff); i_0_++) {
@@ -1213,9 +1199,7 @@ public class CollisionMap {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ad.C(" + arg0 + ')');
-        }
+
     }
 
     public void method148(int arg0, int arg1, int arg2, boolean arg3, int arg4, int arg5) {
@@ -1495,21 +1479,19 @@ public class CollisionMap {
     }
 
     public void markBlocked(byte arg0, int arg1, int arg2) {
-        try {
-            arg1 -= anInt151;
+
+        arg1 -= anInt151;
             anInt147++;
             arg2 -= anInt140;
             if(arg0 != -28)
                 anInt153 = -24;
             anIntArrayArray150[arg2][arg1] = Class40_Sub5_Sub9.method619(anIntArrayArray150[arg2][arg1], 2097152);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ad.N(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public boolean method153(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
-        try {
-            anInt154++;
+
+        anInt154++;
             if(arg0 > -3)
                 method153(67, -89, 45, -123, -39, -109, -38, -78);
             int i = arg2 + arg3 + -1;
@@ -1523,14 +1505,12 @@ public class CollisionMap {
             if((arg6 ^ 0xffffffff) == (arg4 - 1 ^ 0xffffffff) && (arg7 ^ 0xffffffff) <= (arg2 ^ 0xffffffff) && (arg7 ^ 0xffffffff) >= (i ^ 0xffffffff) && (anIntArrayArray150[arg7 - anInt140][arg6 - anInt151] & 0x2 ^ 0xffffffff) == -1 && (arg5 & 0x4) == 0)
                 return true;
             return (1 + i_121_ ^ 0xffffffff) == (arg6 ^ 0xffffffff) && (arg2 ^ 0xffffffff) >= (arg7 ^ 0xffffffff) && (i ^ 0xffffffff) <= (arg7 ^ 0xffffffff) && (anIntArrayArray150[-anInt140 + arg7][arg6 - anInt151] & 0x20) == 0 && (0x1 & arg5 ^ 0xffffffff) == -1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ad.K(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ',' + arg7 + ')'));
-        }
+
     }
 
     public void method154(int arg0, boolean arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
-        try {
-            arg5 -= anInt151;
+
+        arg5 -= anInt151;
             anInt148++;
             int i = 62 % ((arg2 - 5) / 40);
             if((arg4 ^ 0xffffffff) == -2 || arg4 == 3) {
@@ -1550,14 +1530,12 @@ public class CollisionMap {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ad.O(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ')'));
-        }
+
     }
 
     public boolean method155(int arg0, boolean arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
-        try {
-            anInt146++;
+
+        anInt146++;
             if(arg6 == arg0 && (arg4 ^ 0xffffffff) == (arg3 ^ 0xffffffff))
                 return true;
             if(arg1 != false)
@@ -1654,25 +1632,21 @@ public class CollisionMap {
                 return 1 + arg6 == arg0 && arg3 == arg4 && ((anIntArrayArray150[arg0][arg4] & 0x80 ^ 0xffffffff) == -1);
             }
             return false;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ad.D(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ')'));
-        }
+
     }
 
     public void method156(int arg0, int arg1, int arg2, byte arg3) {
-        try {
-            if(arg3 == 124) {
+
+        if(arg3 == 124) {
                 anIntArrayArray150[arg2][arg0] = Class66.method1021(anIntArrayArray150[arg2][arg0], -arg1 + 16777215);
                 anInt138++;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ad.M(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 
     public boolean method158(int arg0, int arg1, int arg2, int arg3, int arg4, byte arg5, int arg6) {
-        try {
-            anInt142++;
+
+        anInt142++;
             if(arg3 == arg4 && arg2 == arg0)
                 return true;
             arg2 -= anInt151;
@@ -1717,8 +1691,6 @@ public class CollisionMap {
                 return (arg4 ^ 0xffffffff) == (1 + arg3 ^ 0xffffffff) && (arg0 ^ 0xffffffff) == (arg2 ^ 0xffffffff) && ((0x80 & anIntArrayArray150[arg4][arg2] ^ 0xffffffff) == -1);
             }
             return false;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ad.H(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ')'));
-        }
+
     }
 }

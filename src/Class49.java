@@ -31,8 +31,8 @@ public class Class49 {
     }
 
     public static void method929(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
-        try {
-            int i = 0;
+
+        int i = 0;
             int i_0_ = 0x7ff & -arg3 + 2048;
             int i_1_ = 0;
             int i_2_ = 2048 - arg0 & 0x7ff;
@@ -57,14 +57,12 @@ public class Class49 {
             Class12.anInt388 = -i + arg1;
             Class26.anInt627 = arg0;
             Class40_Sub5_Sub6.anInt2443 = arg4 + -i_3_;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("qc.B(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ')'));
-        }
+
     }
 
     public static void method930(int arg0) {
-        try {
-            aClass1_1153 = null;
+
+        aClass1_1153 = null;
             aClass9_1145 = null;
             aClass40_Sub9_Sub1_1152 = null;
             aClass1_1155 = null;
@@ -76,8 +74,6 @@ public class Class49 {
                 aClass1_1156 = null;
                 aClass6_1150 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "qc.A(" + arg0 + ')');
-        }
+
     }
 }

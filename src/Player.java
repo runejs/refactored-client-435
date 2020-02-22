@@ -66,8 +66,8 @@ public class Player extends Class40_Sub5_Sub17_Sub4 {
     }
 
     public static void method792(int arg0) {
+
         try {
-            try {
                 if(arg0 < 106)
                     return;
                 Graphics graphics = Class62.aCanvas1469.getGraphics();
@@ -76,14 +76,12 @@ public class Player extends Class40_Sub5_Sub17_Sub4 {
                 Class62.aCanvas1469.repaint();
             }
             anInt3263++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "aa.L(" + arg0 + ')');
-        }
+
     }
 
     public static boolean method793(byte arg0, int arg1) {
-        try {
-            anInt3279++;
+
+        anInt3279++;
             if((arg1 ^ 0xffffffff) > -33)
                 return false;
             if(arg1 == 127)
@@ -91,14 +89,12 @@ public class Player extends Class40_Sub5_Sub17_Sub4 {
             if(arg0 < 118)
                 aByteArray3270 = null;
             return (arg1 ^ 0xffffffff) > -130 || arg1 > 159;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "aa.K(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method794(boolean arg0) {
-        try {
-            aClass1_3275 = null;
+
+        aClass1_3275 = null;
             aClass1_3269 = null;
             aByteArray3270 = null;
             aClass1_3285 = null;
@@ -110,14 +106,12 @@ public class Player extends Class40_Sub5_Sub17_Sub4 {
                 aClass1_3290 = null;
                 aClass1_3256 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "aa.J(" + arg0 + ')');
-        }
+
     }
 
     public Model method756(int arg0) {
-        try {
-            anInt3261++;
+
+        anInt3261++;
             if(aClass30_3282 == null)
                 return null;
             int i = 71 % ((41 - arg0) / 47);
@@ -171,25 +165,21 @@ public class Player extends Class40_Sub5_Sub17_Sub4 {
             }
             class40_sub5_sub17_sub5.aBoolean3164 = true;
             return class40_sub5_sub17_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "aa.UA(" + arg0 + ')');
-        }
+
     }
 
     public boolean method784(int arg0) {
-        try {
-            anInt3277++;
+
+        anInt3277++;
             if(arg0 != 1)
                 method792(-71);
             return aClass30_3282 != null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "aa.CB(" + arg0 + ')');
-        }
+
     }
 
     public void method791(byte arg0, Buffer arg1) {
-        try {
-            anInt3292++;
+
+        anInt3292++;
             arg1.currentPosition = 0;
             int i = arg1.method468(false);
             anInt3268 = arg1.get(118);
@@ -252,8 +242,6 @@ public class Player extends Class40_Sub5_Sub17_Sub4 {
             if(aClass30_3282 == null)
                 aClass30_3282 = new Class30();
             aClass30_3282.method380(is, i == 1, 7, is_8_, i_3_);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("aa.M(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 }

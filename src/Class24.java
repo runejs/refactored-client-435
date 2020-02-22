@@ -24,21 +24,19 @@ public class Class24 {
     }
 
     public static IndexedColorSprite[] method337(int arg0, Class6 arg1, int arg2, int arg3) {
-        try {
-            anInt582++;
+
+        anInt582++;
             if(!Class52.method948(arg2, arg3, arg1, arg0 ^ ~0x1132))
                 return null;
             if(arg0 != 7729)
                 INCOMINGPACKETSIZES = null;
             return Class22_Sub2.method315(arg0 ^ 0x1e31);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ib.D(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 
     public static int method338(int arg0, boolean arg1, int arg2, int arg3) {
-        try {
-            arg0 &= 0x3;
+
+        arg0 &= 0x3;
             if(arg1 != false)
                 return 68;
             anInt585++;
@@ -49,14 +47,12 @@ public class Class24 {
             if(arg0 == 2)
                 return -arg2 + 7;
             return 7 + -arg3;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ib.A(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method339(byte arg0) {
-        try {
-            anIntArray577 = null;
+
+        anIntArray577 = null;
             INCOMINGPACKETSIZES = null;
             anIntArray578 = null;
             aClass6_Sub1Array580 = null;
@@ -64,24 +60,19 @@ public class Class24 {
                 aClass6_Sub1Array580 = null;
             anIntArray581 = null;
             aClass1_575 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ib.C(" + arg0 + ')');
-        }
+
     }
 
     public static boolean method340(int arg0) {
-        try {
-            int i = -98 % ((-50 - arg0) / 51);
+
+        int i = -98 % ((-50 - arg0) / 51);
             anInt584++;
             return Class5.aClass22_189 != null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ib.E(" + arg0 + ')');
-        }
+
     }
 
     public static void method341(int arg0, Scene arg1, int arg2, int arg3, int arg4, int arg5, byte[] arg6, int arg7, CollisionMap[] arg8, int arg9, int arg10) {
         do {
-            try {
                 anInt579++;
                 Buffer class40_sub1 = new Buffer(arg6);
                 int i = -1;
@@ -121,9 +112,7 @@ public class Class24 {
                 if(arg2 == 0)
                     break;
                 aClass6_Sub1Array580 = null;
-            } catch(RuntimeException runtimeexception) {
-                throw Class8.method216(runtimeexception, ("ib.B(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + (arg6 != null ? "{...}" : "null") + ',' + arg7 + ',' + (arg8 != null ? "{...}" : "null") + ',' + arg9 + ',' + arg10 + ')'));
-            }
+
             break;
         } while(false);
     }

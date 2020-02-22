@@ -56,8 +56,8 @@ public class Class40_Sub5_Sub7 extends SubNode {
     }
 
     public static void method589(int arg0) {
-        try {
-            aClass1_2488 = null;
+
+        aClass1_2488 = null;
             aClass6_2484 = null;
             aClass1_2475 = null;
             aClass40_Sub5_Sub14_Sub4_2482 = null;
@@ -68,14 +68,12 @@ public class Class40_Sub5_Sub7 extends SubNode {
             aClass1_2481 = null;
             aClass1_2487 = null;
             anIntArrayArray2490 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "he.H(" + arg0 + ')');
-        }
+
     }
 
     public static void method592(CollisionMap[] arg0, int arg1, byte[] arg2, int arg3, int arg4, int arg5, int arg6) {
-        try {
-            anInt2492++;
+
+        anInt2492++;
             for(int i = 0; i < 4; i++) {
                 for(int i_1_ = 0; (i_1_ ^ 0xffffffff) > -65; i_1_++) {
                     for(int i_2_ = 0; (i_2_ ^ 0xffffffff) > -65; i_2_++) {
@@ -93,14 +91,12 @@ public class Class40_Sub5_Sub7 extends SubNode {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("he.G(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ')'));
-        }
+
     }
 
     public static boolean method596(int arg0, int arg1, byte arg2, int arg3) {
-        try {
-            anInt2486++;
+
+        anInt2486++;
             int i = 0x7fff & arg1 >> 559212398;
             if(arg2 > -9)
                 method596(-4, -74, (byte) -44, -62);
@@ -132,14 +128,12 @@ public class Class40_Sub5_Sub7 extends SubNode {
             Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
             Floor.anInt2319 = 0;
             return true;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("he.F(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 
     public Model method590(Model arg0, Class40_Sub5_Sub7 arg1, int arg2, int arg3, byte arg4) {
-        try {
-            arg2 = anIntArray2485[arg2];
+
+        arg2 = anIntArray2485[arg2];
             anInt2469++;
             Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, arg2 >> 1563712080);
             arg2 &= 0xffff;
@@ -158,14 +152,12 @@ public class Class40_Sub5_Sub7 extends SubNode {
             Model class40_sub5_sub17_sub5 = arg0.method817(!class40_sub5_sub15.method737(arg2, 122) & !class40_sub5_sub15_0_.method737(arg3, 123));
             class40_sub5_sub17_sub5.method809(class40_sub5_sub15, arg2, class40_sub5_sub15_0_, arg3, anIntArray2473);
             return class40_sub5_sub17_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("he.I(" + (arg0 != null ? "{...}" : "null") + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ',' + arg4 + ')'));
-        }
+
     }
 
     public void method591(byte arg0) {
-        try {
-            if(anInt2476 == -1) {
+
+        if(anInt2476 == -1) {
                 if(anIntArray2473 == null)
                     anInt2476 = 0;
                 else
@@ -179,14 +171,12 @@ public class Class40_Sub5_Sub7 extends SubNode {
                     anInt2470 = 2;
             }
             anInt2491++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "he.A(" + arg0 + ')');
-        }
+
     }
 
     public Model method593(int arg0, boolean arg1, Model arg2, int arg3) {
-        try {
-            anInt2468++;
+
+        anInt2468++;
             arg0 = anIntArray2485[arg0];
             Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, arg0 >> 1269230160);
             if(arg1 != false)
@@ -212,9 +202,7 @@ public class Class40_Sub5_Sub7 extends SubNode {
             } else
                 class40_sub5_sub17_sub5.method813();
             return class40_sub5_sub17_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("he.E(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ')'));
-        }
+
     }
 
     public void method594(int arg0, Buffer arg1) {
@@ -230,8 +218,8 @@ public class Class40_Sub5_Sub7 extends SubNode {
     }
 
     public void method595(int arg0, int arg1, Buffer arg2) {
-        try {
-            int i = 3 / ((arg0 + 12) / 51);
+
+        int i = 3 / ((arg0 + 12) / 51);
             anInt2465++;
             if(arg1 == 1) {
                 int i_5_ = arg2.method468(false);
@@ -281,14 +269,12 @@ public class Class40_Sub5_Sub7 extends SubNode {
                     anIntArray2473[i_13_] = arg2.method468(false);
                 anIntArray2473[i_12_] = 9999999;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("he.D(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public Model method597(byte arg0, Model arg1, int arg2) {
-        try {
-            arg2 = anIntArray2485[arg2];
+
+        arg2 = anIntArray2485[arg2];
             anInt2467++;
             Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, arg2 >> 1539434320);
             arg2 &= 0xffff;
@@ -299,14 +285,12 @@ public class Class40_Sub5_Sub7 extends SubNode {
             Model class40_sub5_sub17_sub5 = arg1.method806(!class40_sub5_sub15.method737(arg2, 124));
             class40_sub5_sub17_sub5.method825(class40_sub5_sub15, arg2);
             return class40_sub5_sub17_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("he.J(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ')'));
-        }
+
     }
 
     public Model method598(int arg0, Model arg1, boolean arg2) {
-        try {
-            anInt2493++;
+
+        anInt2493++;
             int i = anIntArray2485[arg0];
             Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, i >> 189349456);
             i &= 0xffff;
@@ -330,14 +314,12 @@ public class Class40_Sub5_Sub7 extends SubNode {
             class40_sub5_sub17_sub5.method825(class40_sub5_sub15, i);
             class40_sub5_sub17_sub5.method825(class40_sub5_sub15_20_, i_21_);
             return class40_sub5_sub17_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("he.B(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ')'));
-        }
+
     }
 
     public Model method599(int arg0, Model arg1, boolean arg2) {
-        try {
-            if(arg2 != false)
+
+        if(arg2 != false)
                 method591((byte) -78);
             arg0 = anIntArray2485[arg0];
             anInt2471++;
@@ -348,8 +330,6 @@ public class Class40_Sub5_Sub7 extends SubNode {
             Model class40_sub5_sub17_sub5 = arg1.method817(!class40_sub5_sub15.method737(arg0, 126));
             class40_sub5_sub17_sub5.method825(class40_sub5_sub15, arg0);
             return class40_sub5_sub17_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("he.K(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ')'));
-        }
+
     }
 }

@@ -70,20 +70,17 @@ public class Class67 {
     public Class67(Class47 arg0, int arg1, int arg2) throws IOException {
         aLong1593 = -1L;
         aLong1596 = -1L;
-        try {
             aClass47_1603 = arg0;
             aLong1602 = aLong1604 = arg0.method919(87);
             aByteArray1592 = new byte[arg2];
             aByteArray1583 = new byte[arg1];
             aLong1578 = 0L;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("wb.<init>(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public static int method1034(boolean arg0, int arg1, int arg2, byte[] arg3) {
-        try {
-            anInt1584++;
+
+        anInt1584++;
             int i = -1;
             if(arg0 != true)
                 return 39;
@@ -91,14 +88,12 @@ public class Class67 {
                 i = (Class54.anIntArray1282[0xff & (i ^ arg3[i_1_])] ^ i >>> -1341612408);
             i ^= 0xffffffff;
             return i;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("wb.G(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + (arg3 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method1037(boolean arg0) {
-        try {
-            anIntArray1579 = null;
+
+        anIntArray1579 = null;
             aClass1_1598 = null;
             aLongArray1614 = null;
             aClass1_1612 = null;
@@ -116,30 +111,24 @@ public class Class67 {
             aClass1_1585 = null;
             aClass1_1609 = null;
             aClass6_1577 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "wb.H(" + arg0 + ')');
-        }
+
     }
 
     public void method1031(int arg0, long arg1) {
-        try {
-            anInt1587++;
+
+        anInt1587++;
             if(arg0 == 0 && (arg1 ^ 0xffffffffffffffffL) <= -1L)
                 aLong1578 = arg1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "wb.C(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public long method1032(int arg0) {
-        try {
-            if(arg0 != 0)
+
+        if(arg0 != 0)
                 return -105L;
             anInt1581++;
             return aLong1602;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "wb.D(" + arg0 + ')');
-        }
+
     }
 
     public void method1033(int arg0, int arg1, int arg2, byte[] arg3) throws IOException {
@@ -286,20 +275,18 @@ public class Class67 {
     }
 
     public void method1036(int arg0) throws IOException {
-        try {
-            anInt1574++;
+
+        anInt1574++;
             if(arg0 == 841617512) {
                 method1039(arg0 ^ ~0x322a1068);
                 aClass47_1603.method917(arg0 + -841617511);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "wb.A(" + arg0 + ')');
-        }
+
     }
 
     public void method1038(byte arg0) throws IOException {
-        try {
-            anInt1608++;
+
+        anInt1608++;
             if(arg0 == 50) {
                 anInt1589 = 0;
                 if((aLong1600 ^ 0xffffffffffffffffL) != (aLong1578 ^ 0xffffffffffffffffL)) {
@@ -315,9 +302,7 @@ public class Class67 {
                     aLong1600 += (long) i;
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "wb.B(" + arg0 + ')');
-        }
+
     }
 
     public void method1039(int arg0) throws IOException {

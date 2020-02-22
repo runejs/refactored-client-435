@@ -40,22 +40,20 @@ public class HashTable {
     public Node aClass40_574;
 
     public HashTable(int arg0) {
-        try {
-            size = arg0;
+
+        size = arg0;
             nodes = new Node[arg0];
             for(int i = 0; (i ^ 0xffffffff) > (arg0 ^ 0xffffffff); i++) {
                 Node class40 = nodes[i] = new Node();
                 class40.aClass40_950 = class40;
                 class40.aClass40_968 = class40;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "i.<init>(" + arg0 + ')');
-        }
+
     }
 
     public static void method327(boolean arg0, Class6_Sub1 arg1, int arg2, int arg3, byte arg4, int arg5, byte arg6) {
-        try {
-            int i = 14 % ((arg6 - 5) / 62);
+
+        int i = 14 % ((arg6 - 5) / 62);
             long l = (long) (arg3 + (arg2 << -1726391664));
             Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class51.aClass23_1194.method331(l, 6120));
             anInt561++;
@@ -91,52 +89,44 @@ public class HashTable {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("i.C(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ')'));
-        }
+
     }
 
     public static void method328(boolean arg0) {
-        try {
-            aClass40_Sub5_Sub14_Sub2_549 = null;
+
+        aClass40_Sub5_Sub14_Sub2_549 = null;
             aClass1_553 = null;
             aClass1_558 = null;
             if(arg0 != false)
                 aClass1_569 = null;
             aClass1_563 = null;
             aClass1_569 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "i.E(" + arg0 + ')');
-        }
+
     }
 
     public static void method332(int arg0) {
-        try {
-            anInt570++;
+
+        anInt570++;
             synchronized(CollisionMap.anObject162) {
                 if((Buffer.anInt1987 ^ 0xffffffff) == -1)
                     ISAAC.aClass31_521.method394(5, 0, new Class44());
                 Buffer.anInt1987 = arg0;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "i.D(" + arg0 + ')');
-        }
+
     }
 
     public static RSString method334(int arg0, int arg1) {
-        try {
-            if(arg1 != -1)
+
+        if(arg1 != -1)
                 return null;
             anInt559++;
             return PacketBuffer.method521(false, (byte) 8, 10, arg0);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "i.I(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method335(byte arg0) {
-        try {
-            anInt555++;
+
+        anInt555++;
             Class40_Sub5_Sub17_Sub1 class40_sub5_sub17_sub1 = ((Class40_Sub5_Sub17_Sub1) Class43.aClass45_1022.method902((byte) -90));
             if(arg0 == 61) {
                 for(/**/; class40_sub5_sub17_sub1 != null; class40_sub5_sub17_sub1 = ((Class40_Sub5_Sub17_Sub1) Class43.aClass45_1022.method909(arg0 + -65))) {
@@ -164,26 +154,22 @@ public class HashTable {
                         class40_sub5_sub17_sub1.method457(-1);
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "i.J(" + arg0 + ')');
-        }
+
     }
 
     public Node method329(boolean arg0) {
-        try {
-            anInt572 = 0;
+
+        anInt572 = 0;
             anInt552++;
             if(arg0 != false)
                 return null;
             return method336((byte) -38);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "i.H(" + arg0 + ')');
-        }
+
     }
 
     public void put(Node arg0, byte arg1, long arg2) {
-        try {
-            anInt560++;
+
+        anInt560++;
             if(arg0.aClass40_968 != null)
                 arg0.method457(-1);
             Node class40 = nodes[(int) ((long) (-1 + size) & arg2)];
@@ -193,14 +179,12 @@ public class HashTable {
             arg0.aClass40_968.aClass40_950 = arg0;
             arg0.aClass40_950.aClass40_968 = arg0;
             int i = -96 / ((arg1 + 54) / 54);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("i.A(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public Node method331(long arg0, int arg1) {
-        try {
-            aLong550 = arg0;
+
+        aLong550 = arg0;
             if(arg1 != 6120)
                 return null;
             anInt568++;
@@ -214,9 +198,7 @@ public class HashTable {
             }
             aClass40_566 = null;
             return null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "i.B(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public Node method333() {
@@ -235,8 +217,8 @@ public class HashTable {
     }
 
     public Node method336(byte arg0) {
-        try {
-            anInt551++;
+
+        anInt551++;
             if(arg0 > -26)
                 aClass40_566 = null;
             if((anInt572 ^ 0xffffffff) < -1 && aClass40_574 != nodes[anInt572 - 1]) {
@@ -252,8 +234,6 @@ public class HashTable {
                 }
             }
             return null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "i.F(" + arg0 + ')');
-        }
+
     }
 }

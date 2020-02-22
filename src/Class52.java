@@ -54,22 +54,20 @@ public class Class52 {
     public int anInt1235;
 
     public Class52(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6) {
-        try {
-            anInt1231 = arg0;
+
+        anInt1231 = arg0;
             aBoolean1229 = arg6;
             anInt1225 = arg1;
             anInt1235 = arg2;
             anInt1220 = arg4;
             anInt1232 = arg3;
             anInt1226 = arg5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("rc.<init>(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ')'));
-        }
+
     }
 
     public static void method943(int arg0, int arg1, RSFont arg2, int arg3, int arg4) {
-        try {
-            Class66.aClass68_1541.method1046((byte) 90);
+
+        Class66.aClass68_1541.method1046((byte) 90);
             anInt1224++;
             Class57.aClass40_Sub5_Sub14_Sub2_1346.method692(0, 0);
             arg2.method688(Class19.aClass1_495, 55, 28, 16777215, true);
@@ -103,21 +101,17 @@ public class Class52 {
             } catch(Exception exception) {
                 Class62.aCanvas1469.repaint();
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("rc.A(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ',' + arg4 + ')'));
-        }
+
     }
 
     public static DirectColorSprite[] method944(byte arg0, int arg1, Class6 arg2, int arg3) {
-        try {
-            anInt1237++;
+
+        anInt1237++;
             if(!method948(arg3, arg1, arg2, -3844))
                 return null;
             int i = -59 % ((-60 - arg0) / 34);
             return Class22_Sub2.method319((byte) -62);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("rc.F(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method945(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
@@ -177,8 +171,8 @@ public class Class52 {
     }
 
     public static void method946(boolean arg0) {
-        try {
-            aClass1_1213 = null;
+
+        aClass1_1213 = null;
             aClass1_1241 = null;
             aClass1_1228 = null;
             if(arg0 == false) {
@@ -190,14 +184,12 @@ public class Class52 {
                 aClass1_1216 = null;
                 aClass1_1230 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "rc.C(" + arg0 + ')');
-        }
+
     }
 
     public static void method947(int arg0) {
-        try {
-            synchronized(CollisionMap.anObject162) {
+
+        synchronized(CollisionMap.anObject162) {
                 if((Buffer.anInt1987 ^ 0xffffffff) != arg0) {
                     Buffer.anInt1987 = 1;
                     try {
@@ -208,14 +200,12 @@ public class Class52 {
                 }
             }
             anInt1212++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "rc.E(" + arg0 + ')');
-        }
+
     }
 
     public static boolean method948(int arg0, int arg1, Class6 arg2, int arg3) {
-        try {
-            if(arg3 != -3844)
+
+        if(arg3 != -3844)
                 method948(14, -28, null, -69);
             byte[] is = arg2.method172(arg0, 117, arg1);
             anInt1239++;
@@ -223,8 +213,6 @@ public class Class52 {
                 return false;
             Class6.method184(is, 0);
             return true;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("rc.B(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ')'));
-        }
+
     }
 }

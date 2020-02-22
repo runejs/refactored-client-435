@@ -108,8 +108,8 @@ public class ItemDefinition extends SubNode {
     }
 
     public static void method742(int arg0) {
+
         try {
-            try {
                 Graphics graphics = Class62.aCanvas1469.getGraphics();
                 Landscape.aClass68_1185.method1044(arg0 ^ arg0, 0, graphics, 4);
                 Class40_Sub5_Sub1.aClass68_2275.method1044(arg0 + -205, 0, graphics, 357);
@@ -124,9 +124,7 @@ public class ItemDefinition extends SubNode {
                 Class62.aCanvas1469.repaint();
             }
             anInt2808++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ta.L(" + arg0 + ')');
-        }
+
     }
 
     public static void method744(byte arg0) {
@@ -141,18 +139,16 @@ public class ItemDefinition extends SubNode {
     }
 
     public static void method745(int arg0) {
-        try {
-            if(arg0 != 64)
+
+        if(arg0 != 64)
                 anInt2846 = -72;
             anIntArray2814 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ta.E(" + arg0 + ')');
-        }
+
     }
 
     public static boolean method746(boolean arg0, Class40_Sub5_Sub12 arg1) {
-        try {
-            if(arg0 != false)
+
+        if(arg0 != false)
                 anIntArray2814 = null;
             anInt2838++;
             if(arg1.anIntArray2742 == null)
@@ -173,9 +169,7 @@ public class ItemDefinition extends SubNode {
                     return false;
             }
             return true;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ta.K(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method748(boolean arg0, int arg1) {
@@ -190,8 +184,8 @@ public class ItemDefinition extends SubNode {
     }
 
     public static void method749(boolean arg0, int arg1) {
-        try {
-            for(int i = 0; GameObjectDefinition.anInt2558 > i; i++) {
+
+        for(int i = 0; GameObjectDefinition.anInt2558 > i; i++) {
                 NPC class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i]]);
                 int i_15_ = (536870912 + (Class40_Sub3.anIntArray2016[i] << 1399377262));
                 if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.method784(1) && !arg0 != (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.aBoolean2397) && class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.method571(-1)) {
@@ -212,14 +206,12 @@ public class ItemDefinition extends SubNode {
             if(arg1 != -15537)
                 method744((byte) -33);
             anInt2811++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ta.F(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public boolean method738(byte arg0, boolean arg1) {
-        try {
-            anInt2832++;
+
+        anInt2832++;
             if(arg0 != 44)
                 options = null;
             int i = anInt2800;
@@ -236,14 +228,12 @@ public class ItemDefinition extends SubNode {
             if(i_0_ != -1 && !Class8.aClass6_284.method173(i_0_, (byte) -10, 0))
                 bool = false;
             return bool;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ta.B(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public boolean method739(boolean arg0, byte arg1) {
-        try {
-            anInt2826++;
+
+        anInt2826++;
             int i = anInt2836;
             int i_1_ = anInt2820;
             int i_2_ = anInt2824;
@@ -264,14 +254,12 @@ public class ItemDefinition extends SubNode {
             if(i_2_ != -1 && !Class8.aClass6_284.method173(i_2_, (byte) -10, 0))
                 bool = false;
             return bool;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ta.D(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public Model method740(boolean arg0, int arg1) {
-        try {
-            anInt2837++;
+
+        anInt2837++;
             int i = anInt2836;
             int i_3_ = anInt2820;
             int i_4_ = 11 / ((arg1 - 35) / 56);
@@ -304,23 +292,19 @@ public class ItemDefinition extends SubNode {
                     class40_sub5_sub17_sub5.method803(anIntArray2803[i_8_], anIntArray2816[i_8_]);
             }
             return class40_sub5_sub17_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ta.O(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public void method741(int arg0) {
-        try {
-            if(arg0 == 29216)
+
+        if(arg0 == 29216)
                 anInt2801++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ta.N(" + arg0 + ')');
-        }
+
     }
 
     public ItemDefinition method743(byte arg0, int arg1) {
-        try {
-            anInt2809++;
+
+        anInt2809++;
             if(anIntArray2831 != null && (arg1 ^ 0xffffffff) < -2) {
                 int i = -1;
                 for(int i_9_ = 0; (i_9_ ^ 0xffffffff) > -11; i_9_++) {
@@ -333,14 +317,12 @@ public class ItemDefinition extends SubNode {
             if(arg0 != -37)
                 return null;
             return this;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ta.H(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public Model method747(boolean arg0, byte arg1) {
-        try {
-            int i = anInt2800;
+
+        int i = anInt2800;
             int i_12_ = anInt2841;
             if(arg1 != 25)
                 return null;
@@ -362,9 +344,7 @@ public class ItemDefinition extends SubNode {
                     class40_sub5_sub17_sub5.method803(anIntArray2803[i_14_], anIntArray2816[i_14_]);
             }
             return class40_sub5_sub17_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ta.C(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public void readValue(int arg0, int arg1, Buffer arg2) {
@@ -478,8 +458,8 @@ public class ItemDefinition extends SubNode {
     }
 
     public void readValues(Buffer arg0, int arg1) {
-        try {
-            anInt2821++;
+
+        anInt2821++;
             if(arg1 != -1)
                 anInt2817 = 23;
             for(; ; ) {
@@ -488,14 +468,12 @@ public class ItemDefinition extends SubNode {
                     break;
                 readValue(i, arg1 ^ 0x5c, arg0);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ta.P(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
-        }
+
     }
 
     public void itemToNote(ItemDefinition noteTemplate, ItemDefinition note) {
-        try {
-            anInt2844 = noteTemplate.anInt2844;
+
+        anInt2844 = noteTemplate.anInt2844;
             anInt2806 = noteTemplate.anInt2806;
             anInt2827 = noteTemplate.anInt2827;
             aClass1_2796 = note.aClass1_2796;
@@ -509,14 +487,12 @@ public class ItemDefinition extends SubNode {
             anInt2830 = noteTemplate.anInt2830;
             anInt2810 = noteTemplate.anInt2810;
             anInt2805 = noteTemplate.anInt2805;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ItemDefinition.itemToNote(" + (noteTemplate != null ? "{...}" : "null") + (note != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public Model method753(boolean arg0, int arg1, int arg2) {
-        try {
-            if(arg2 != 26910)
+
+        if(arg2 != 26910)
                 anIntArray2814 = null;
             anInt2842++;
             if(anIntArray2831 != null && arg1 > 1) {
@@ -548,8 +524,6 @@ public class ItemDefinition extends SubNode {
                 Class62.aClass9_1455.method230(-7208, (long) anInt2852, class40_sub5_sub17_sub5);
             }
             return class40_sub5_sub17_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ta.J(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 }

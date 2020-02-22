@@ -37,17 +37,15 @@ public class Class40_Sub3 extends Node {
     public int anInt2039;
 
     public static void method529(int arg0) {
-        try {
-            if(arg0 != -10)
+
+        if(arg0 != -10)
                 aClass1_2015 = null;
             anIntArray2023 = null;
             aClass6_2037 = null;
             anIntArray2016 = null;
             aClass1_2015 = null;
             aClass40_Sub5_Sub14_Sub4Array2019 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "dc.B(" + arg0 + ')');
-        }
+
     }
 
     public static void method530(int arg0) {
@@ -309,8 +307,8 @@ public class Class40_Sub3 extends Node {
     }
 
     public static Class40_Sub5_Sub9 method531(byte arg0, int arg1) {
-        try {
-            Class40_Sub5_Sub9 class40_sub5_sub9 = ((Class40_Sub5_Sub9) Class53.aClass9_1247.method231((long) arg1, (byte) 43));
+
+        Class40_Sub5_Sub9 class40_sub5_sub9 = ((Class40_Sub5_Sub9) Class53.aClass9_1247.method231((long) arg1, (byte) 43));
             anInt2022++;
             if(class40_sub5_sub9 != null)
                 return class40_sub5_sub9;
@@ -323,8 +321,6 @@ public class Class40_Sub3 extends Node {
                 aClass1_2015 = null;
             Class53.aClass9_1247.method230(-7208, (long) arg1, class40_sub5_sub9);
             return class40_sub5_sub9;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "dc.C(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 }

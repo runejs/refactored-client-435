@@ -231,18 +231,16 @@ public class Class40_Sub5_Sub12 extends SubNode {
     }
 
     public static void method640(byte arg0) {
-        try {
-            Class68.aClass9_1615.method235((byte) 49);
+
+        Class68.aClass9_1615.method235((byte) 49);
             if(arg0 < -11)
                 anInt2652++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "qd.K(" + arg0 + ')');
-        }
+
     }
 
     public static void method641(int arg0) {
-        try {
-            aClass1_2716 = null;
+
+        aClass1_2716 = null;
             aClass1_2671 = null;
             aClass1_2678 = null;
             if(arg0 > -88)
@@ -255,14 +253,12 @@ public class Class40_Sub5_Sub12 extends SubNode {
             aClass1_2674 = null;
             aClass1_2740 = null;
             aClass1_2684 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "qd.D(" + arg0 + ')');
-        }
+
     }
 
     public static void method642(Component arg0, int arg1) {
-        try {
-            if(arg1 != -10)
+
+        if(arg1 != -10)
                 method639(-106);
             Method method = Signlink.aMethod729;
             if(method != null) {
@@ -275,28 +271,24 @@ public class Class40_Sub5_Sub12 extends SubNode {
             arg0.addKeyListener(Class59.aClass54_1392);
             arg0.addFocusListener(Class59.aClass54_1392);
             anInt2697++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("qd.M(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
-        }
+
     }
 
     public static void method645(byte arg0) {
-        try {
-            Class58.aClass9_1364.method235((byte) 118);
+
+        Class58.aClass9_1364.method235((byte) 118);
             anInt2739++;
             VertexNormal.aClass9_1102.method235((byte) -42);
             if(arg0 != -37)
                 aClass1_2637 = null;
             Class19.aClass9_470.method235((byte) 103);
             Class49.aClass9_1145.method235((byte) 97);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "qd.L(" + arg0 + ')');
-        }
+
     }
 
     public static RSString method648(int arg0, byte arg1) {
-        try {
-            anInt2724++;
+
+        anInt2724++;
             if(arg1 != -100)
                 return null;
             if(arg0 < 100000)
@@ -304,14 +296,12 @@ public class Class40_Sub5_Sub12 extends SubNode {
             if((arg0 ^ 0xffffffff) > -10000001)
                 return (Class40_Sub5_Sub17_Sub6.method832(110, new RSString[]{HashTable.method334(arg0 / 1000, -1), Class40_Sub5_Sub10.aClass1_2587}));
             return (Class40_Sub5_Sub17_Sub6.method832(-84, new RSString[]{HashTable.method334(arg0 / 1000000, arg1 ^ 0x63), Class22.aClass1_542}));
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "qd.C(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public void method636(int arg0, boolean arg1, int arg2) {
-        try {
-            anInt2646++;
+
+        anInt2646++;
             int i = anIntArray2685[arg2];
             anIntArray2685[arg2] = anIntArray2685[arg0];
             anIntArray2685[arg0] = i;
@@ -320,9 +310,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
             if(arg1 != false)
                 anIntArrayArray2748 = null;
             anIntArray2710[arg0] = i;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("qd.B(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public void method637(Buffer arg0, int arg1) {
@@ -485,8 +473,8 @@ public class Class40_Sub5_Sub12 extends SubNode {
     }
 
     public DirectColorSprite method638(byte arg0, int arg1) {
-        try {
-            anInt2675++;
+
+        anInt2675++;
             Class40_Sub13.aBoolean2177 = false;
             if((arg1 ^ 0xffffffff) > -1 || anIntArray2704.length <= arg1)
                 return null;
@@ -503,14 +491,12 @@ public class Class40_Sub5_Sub12 extends SubNode {
             else
                 Class40_Sub13.aBoolean2177 = true;
             return class40_sub5_sub14_sub4;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "qd.E(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public DirectColorSprite method643(int arg0, boolean arg1) {
-        try {
-            Class40_Sub13.aBoolean2177 = false;
+
+        Class40_Sub13.aBoolean2177 = false;
             anInt2666++;
             int i;
             if(arg1)
@@ -530,9 +516,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
             else
                 Cache.aClass9_326.method230(-7208, (long) i, class40_sub5_sub14_sub4);
             return class40_sub5_sub14_sub4;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "qd.I(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public void method644(byte arg0, Buffer arg1) {
@@ -631,8 +615,8 @@ public class Class40_Sub5_Sub12 extends SubNode {
     }
 
     public Model method646(byte arg0, Class40_Sub5_Sub7 arg1, int arg2, boolean arg3, Class30 arg4) {
-        try {
-            Class40_Sub13.aBoolean2177 = false;
+
+        Class40_Sub13.aBoolean2177 = false;
             anInt2705++;
             int i;
             int i_11_;
@@ -695,14 +679,12 @@ public class Class40_Sub5_Sub12 extends SubNode {
             if(arg1 != null)
                 class40_sub5_sub17_sub5 = arg1.method598(arg2, class40_sub5_sub17_sub5, true);
             return class40_sub5_sub17_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("qd.F(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ',' + (arg4 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public RSFont method647(byte arg0) {
-        try {
-            Class40_Sub13.aBoolean2177 = false;
+
+        Class40_Sub13.aBoolean2177 = false;
             anInt2735++;
             if((anInt2642 ^ 0xffffffff) == -65536)
                 return null;
@@ -717,8 +699,6 @@ public class Class40_Sub5_Sub12 extends SubNode {
             else
                 Class67.aClass9_1582.method230(-7208, (long) anInt2642, class40_sub5_sub14_sub1);
             return class40_sub5_sub14_sub1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "qd.J(" + arg0 + ')');
-        }
+
     }
 }

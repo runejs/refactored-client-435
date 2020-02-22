@@ -51,12 +51,10 @@ public class Class27 {
     public SubNode aClass40_Sub5_660 = new SubNode();
 
     public Class27() {
-        try {
-            aClass40_Sub5_660.aClass40_Sub5_2087 = aClass40_Sub5_660;
+
+        aClass40_Sub5_660.aClass40_Sub5_2087 = aClass40_Sub5_660;
             aClass40_Sub5_660.aClass40_Sub5_2082 = aClass40_Sub5_660;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "kc.<init>(" + ')');
-        }
+
     }
 
     public static void method353(byte arg0) {
@@ -138,8 +136,8 @@ public class Class27 {
     }
 
     public static void method354(byte arg0) {
-        try {
-            anInt644++;
+
+        anInt644++;
             Class40_Sub5_Sub17_Sub4.anInt3153 = 0;
             Class17.anInt460 = 0;
             Class40_Sub5_Sub17_Sub4.method786(true);
@@ -160,14 +158,12 @@ public class Class27 {
                 if((Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i]]) == null)
                     throw new RuntimeException("gpp2 pos:" + i + " size:" + Class60.anInt1407);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "kc.J(" + arg0 + ')');
-        }
+
     }
 
     public static void method355(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        try {
-            int i = (-32 + arg4) * arg4 / arg2;
+
+        int i = (-32 + arg4) * arg4 / arg2;
             Class6.aClass40_Sub5_Sub14_Sub2Array215[arg0].method692(arg3, arg5);
             Class6.aClass40_Sub5_Sub14_Sub2Array215[1].method692(arg3, arg5 - (-arg4 + 16));
             anInt657++;
@@ -184,14 +180,12 @@ public class Class27 {
             Rasterizer.method668(arg3 + 14, i_9_ + 17 + arg5, i - 1, Class56.anInt1318);
             Rasterizer.method659(arg3, i + (i_9_ + (15 + arg5)), 16, Class56.anInt1318);
             Rasterizer.method659(arg3 + 1, 14 + (arg5 + i_9_ + i), 15, Class56.anInt1318);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("kc.N(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ')'));
-        }
+
     }
 
     public static void method356(int arg0) {
-        try {
-            aClass1_647 = null;
+
+        aClass1_647 = null;
             if(arg0 == -333) {
                 aClass40_Sub5_Sub14_Sub4Array649 = null;
                 takeString = null;
@@ -206,23 +200,18 @@ public class Class27 {
                 aClass1_643 = null;
                 aClass1_637 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "kc.F(" + arg0 + ')');
-        }
+
     }
 
     public static void method357(Class6 arg0, int arg1, Class6 arg2) {
         do {
-            try {
                 Class58.aClass6_1375 = arg2;
                 anInt650++;
                 Class67.aClass6_1577 = arg0;
                 if(arg1 == -10978)
                     break;
                 method365(-3);
-            } catch(RuntimeException runtimeexception) {
-                throw Class8.method216(runtimeexception, ("kc.R(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ')'));
-            }
+
             break;
         } while(false);
     }
@@ -1018,16 +1007,14 @@ public class Class27 {
     }
 
     public static IndexedColorSprite method359(RSString arg0, RSString arg1, Class6 arg2, byte arg3) {
-        try {
-            anInt645++;
+
+        anInt645++;
             if(arg3 != -64)
                 aClass1_652 = null;
             int i = arg2.method183(0, arg0);
             int i_23_ = arg2.method179(arg3 ^ ~0x7e, i, arg1);
             return method363(arg2, (byte) -42, i_23_, i);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("kc.C(" + (arg0 != null ? "{...}" : "null") + ',' + (arg1 != null ? "{...}" : "null") + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method360(byte arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
@@ -1065,8 +1052,8 @@ public class Class27 {
     }
 
     public static Class40_Sub5_Sub12 method361(Class40_Sub5_Sub12[] arg0, int arg1, boolean arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
-        try {
-            anInt640++;
+
+        anInt640++;
             if(arg0 == null)
                 return null;
             Class40_Sub5_Sub12 class40_sub5_sub12 = null;
@@ -1094,21 +1081,17 @@ public class Class27 {
             if(arg7 != 398)
                 takeStringInstance = null;
             return class40_sub5_sub12;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("kc.M(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ',' + arg7 + ')'));
-        }
+
     }
 
     public static IndexedColorSprite method363(Class6 arg0, byte arg1, int arg2, int arg3) {
-        try {
-            int i = 106 % ((arg1 - 66) / 53);
+
+        int i = 106 % ((arg1 - 66) / 53);
             anInt655++;
             if(!Class52.method948(arg2, arg3, arg0, -3844))
                 return null;
             return SubNode.method538(0);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("kc.A(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method364(byte arg0, boolean arg1) {
@@ -1132,8 +1115,8 @@ public class Class27 {
     }
 
     public static void method365(int arg0) {
-        try {
-            anInt646++;
+
+        anInt646++;
             if(Class40_Sub5_Sub11.aBoolean2631) {
                 Class40_Sub5_Sub11.aBoolean2631 = false;
                 ItemDefinition.method742(arg0 ^ ~0x4e29);
@@ -1227,14 +1210,12 @@ public class Class27 {
                 Landscape.method934((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098), -118, Player.anInt3267, Class5.anInt199, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089));
                 Class5.anInt199 = 0;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "kc.Q(" + arg0 + ')');
-        }
+
     }
 
     public static void method366(int arg0, int arg1) {
-        try {
-            anInt651++;
+
+        anInt651++;
             if(arg1 == -3)
                 Class33.method411(Node.aClass1_956, Class52.aClass1_1218, SceneTile.aClass1_2057, (byte) -121);
             else if((arg1 ^ 0xffffffff) == 1)
@@ -1297,14 +1278,12 @@ public class Class27 {
             if(arg0 != 5)
                 aClass1_637 = null;
             Floor.method559(10, -83);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "kc.B(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static int method368(byte arg0, boolean arg1, boolean arg2) {
-        try {
-            anInt642++;
+
+        anInt642++;
             int i = 0;
             if(arg2)
                 i += Class17.anInt464 + Class68.anInt1618;
@@ -1313,14 +1292,12 @@ public class Class27 {
             if(arg1)
                 i += Class42.anInt1006 + HashTable.anInt554;
             return i;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("kc.P(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public SubNode method351(int arg0) {
-        try {
-            if(arg0 != 536857847)
+
+        if(arg0 != 536857847)
                 aClass1_637 = null;
             anInt656++;
             SubNode class40_sub5 = aClass40_Sub5_660.aClass40_Sub5_2082;
@@ -1328,9 +1305,7 @@ public class Class27 {
                 return null;
             class40_sub5.method539(arg0 ^ 0x1fffccf7);
             return class40_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "kc.H(" + arg0 + ')');
-        }
+
     }
 
     public void method352(int arg0, SubNode arg1) {
@@ -1346,22 +1321,20 @@ public class Class27 {
     }
 
     public SubNode method362(int arg0) {
-        try {
-            if(arg0 >= -73)
+
+        if(arg0 >= -73)
                 aClass1_638 = null;
             anInt636++;
             SubNode class40_sub5 = aClass40_Sub5_660.aClass40_Sub5_2082;
             if(class40_sub5 == aClass40_Sub5_660)
                 return null;
             return class40_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "kc.G(" + arg0 + ')');
-        }
+
     }
 
     public void method367(boolean arg0, SubNode arg1) {
-        try {
-            if(arg1.aClass40_Sub5_2087 != null)
+
+        if(arg1.aClass40_Sub5_2087 != null)
                 arg1.method539(0);
             anInt648++;
             arg1.aClass40_Sub5_2082 = aClass40_Sub5_660.aClass40_Sub5_2082;
@@ -1370,8 +1343,6 @@ public class Class27 {
             if(arg0 != true)
                 method360((byte) -126, -26, -36, -4, -38, 92, -45);
             arg1.aClass40_Sub5_2082.aClass40_Sub5_2087 = arg1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("kc.E(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 }

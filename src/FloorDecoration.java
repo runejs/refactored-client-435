@@ -49,13 +49,11 @@ public class FloorDecoration {
     public int z;
 
     public static void method342(int arg0, int arg1, Class40_Sub5_Sub17_Sub4 arg2) {
-        try {
-            Class22_Sub1.method312(arg1, arg2.anInt3089, arg2.anInt3098, 4976905);
+
+        Class22_Sub1.method312(arg1, arg2.anInt3089, arg2.anInt3098, 4976905);
             int i = -63 % ((41 - arg0) / 41);
             anInt598++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("id.B(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method343(boolean arg0, int arg1) {
@@ -160,8 +158,8 @@ public class FloorDecoration {
     }
 
     public static void method344(int arg0) {
-        try {
-            anInt592++;
+
+        anInt592++;
             if(SubNode.aBoolean2083) {
                 Class5.anIntArray198 = null;
                 SubNode.aBoolean2083 = false;
@@ -207,14 +205,12 @@ public class FloorDecoration {
                     Class44.aClass40_Sub5_Sub14_Sub2_1047 = null;
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "id.C(" + arg0 + ')');
-        }
+
     }
 
     public static Object[] method345(byte arg0, Buffer arg1) {
-        try {
-            int i = arg1.method468(false);
+
+        int i = arg1.method468(false);
             anInt604++;
             if((i ^ 0xffffffff) == -1)
                 return null;
@@ -229,14 +225,12 @@ public class FloorDecoration {
             if(arg0 != 89)
                 aClass40_Sub9_608 = null;
             return objects;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("id.E(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static boolean method346(byte arg0) {
-        try {
-            anInt597++;
+
+        anInt597++;
             long l = Class51.method937(1);
             int i = (int) (l - Class45.aLong1051);
             Class45.aLong1051 = l;
@@ -404,27 +398,23 @@ public class FloorDecoration {
                 Class57.aClass64_1345 = null;
                 return false;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "id.D(" + arg0 + ')');
-        }
+
     }
 
     public static RSFont method347(Class6 arg0, int arg1, RSString arg2, RSString arg3) {
-        try {
-            anInt599++;
+
+        anInt599++;
             int i = arg0.method183(0, arg3);
             if(arg1 != 255)
                 aClass1_591 = null;
             int i_50_ = arg0.method179(arg1 ^ 0xe3, i, arg2);
             return Class40_Sub5_Sub17_Sub1.method760(i_50_, (byte) -124, arg0, i);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("id.G(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + (arg3 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method348(int arg0) {
-        try {
-            aClass40_Sub5_Sub14_Sub2_593 = null;
+
+        aClass40_Sub5_Sub14_Sub2_593 = null;
             aCRC32_590 = null;
             aClass1_610 = null;
             aClass1_611 = null;
@@ -441,8 +431,6 @@ public class FloorDecoration {
             aClass1_609 = null;
             aClass15_607 = null;
             aClass40_Sub9_608 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "id.F(" + arg0 + ')');
-        }
+
     }
 }

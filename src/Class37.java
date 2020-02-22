@@ -33,8 +33,8 @@ public class Class37 {
     }
 
     public static int method430(byte arg0, int arg1, int arg2, int arg3) {
-        try {
-            anInt865++;
+
+        anInt865++;
             int i = arg3 >> 430067431;
             int i_0_ = arg2 >> -141886201;
             if((i_0_ ^ 0xffffffff) > -1 || (i ^ 0xffffffff) > -1 || (i_0_ ^ 0xffffffff) < -104 || i > 103)
@@ -49,14 +49,12 @@ public class Class37 {
                 method432((byte) -86);
             int i_5_ = ((i_1_ * (Class40_Sub6.tile_height[i_2_][1 + i_0_][1 + i]) + (Class40_Sub6.tile_height[i_2_][i_0_][1 + i] * (128 + -i_1_))) >> -820366297);
             return (128 + -i_4_) * i_3_ + (i_5_ * i_4_) >> 2117999111;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("n.C(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 
     public static Class40_Sub5_Sub2 method431(int arg0, int arg1) {
-        try {
-            if(arg1 != 13)
+
+        if(arg1 != 13)
                 method436(-34);
             anInt861++;
             Class40_Sub5_Sub2 class40_sub5_sub2 = ((Class40_Sub5_Sub2) Class43.aClass9_1014.method231((long) arg0, (byte) 59));
@@ -69,25 +67,21 @@ public class Class37 {
                 class40_sub5_sub2.method551(new Buffer(is), (byte) 61);
             Class43.aClass9_1014.method230(-7208, (long) arg0, class40_sub5_sub2);
             return class40_sub5_sub2;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "n.D(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method432(byte arg0) {
-        try {
-            System.out.println("Usage: worldid, [live/office/local], [live/rc/wip], [lowmem/highmem], [free/members], [english/german]");
+
+        System.out.println("Usage: worldid, [live/office/local], [live/rc/wip], [lowmem/highmem], [free/members], [english/german]");
             System.exit(1);
             if(arg0 > 0)
                 anInt870++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "n.A(" + arg0 + ')');
-        }
+
     }
 
     public static void method433(int arg0) {
-        try {
-            aClass1_872 = null;
+
+        aClass1_872 = null;
             aClass23_869 = null;
             aClass1_875 = null;
             aClass1_860 = null;
@@ -99,14 +93,12 @@ public class Class37 {
                 aClass1_867 = null;
                 aClass1_877 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "n.G(" + arg0 + ')');
-        }
+
     }
 
     public static void method434(int arg0) {
-        try {
-            Class4.aBoolean173 = false;
+
+        Class4.aBoolean173 = false;
             Class57.packetid = -1;
             NpcDefinition.anInt2394 = 0;
             Class40_Sub5_Sub12.packetsize = 0;
@@ -129,14 +121,12 @@ public class Class37 {
                     Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i].anInt3137 = -1;
             }
             Floor.method559(30, -88);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "n.I(" + arg0 + ')');
-        }
+
     }
 
     public static void method435(boolean arg0) {
-        try {
-            RSCanvas.method45((byte) -106);
+
+        RSCanvas.method45((byte) -106);
             anInt864++;
             if(Class27.anInt658 == 2) {
                 int[] is = Rasterizer.anIntArray2766;
@@ -238,14 +228,12 @@ public class Class37 {
                 if(arg0 == true)
                     NpcDefinition.method574(4);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "n.E(" + arg0 + ')');
-        }
+
     }
 
     public static void method436(int arg0) {
-        try {
-            anInt862++;
+
+        anInt862++;
             if(arg0 < 95)
                 method436(25);
             for(Class40_Sub2 class40_sub2 = ((Class40_Sub2) Class40_Sub5_Sub1.aClass45_2268.method902((byte) -90)); class40_sub2 != null; class40_sub2 = (Class40_Sub2) Class40_Sub5_Sub1.aClass45_2268.method909(-4)) {
@@ -259,9 +247,7 @@ public class Class37 {
                 }
             }
             Class40_Sub5_Sub1.aClass45_2268.method906(0);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "n.H(" + arg0 + ')');
-        }
+
     }
 
     public static void method437(int arg0, boolean arg1, int arg2, int arg3, int arg4, GameObjectDefinition arg5) {
@@ -295,8 +281,8 @@ public class Class37 {
     }
 
     public static boolean method438(int arg0, int arg1, byte arg2) {
-        try {
-            anInt859++;
+
+        anInt859++;
             if((arg0 ^ 0xffffffff) == -1 && (HashTable.anInt573 ^ 0xffffffff) == (arg1 ^ 0xffffffff))
                 return true;
             if(arg0 == 1 && (arg1 ^ 0xffffffff) == (FloorDecoration.anInt614 ^ 0xffffffff))
@@ -306,8 +292,6 @@ public class Class37 {
             if(arg2 != 52)
                 aClass1_860 = null;
             return false;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("n.B(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 }

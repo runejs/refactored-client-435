@@ -41,8 +41,8 @@ public class Class26 {
     }
 
     public static Class method349(byte arg0, String arg1) throws ClassNotFoundException {
-        try {
-            anInt626++;
+
+        anInt626++;
             if(arg1.equals("B"))
                 return Byte.TYPE;
             if(arg1.equals("I"))
@@ -62,9 +62,7 @@ public class Class26 {
             if(arg1.equals("C"))
                 return Character.TYPE;
             return Class.forName(arg1);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ie.B(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method350(int arg0) {

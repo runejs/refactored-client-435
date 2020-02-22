@@ -49,8 +49,8 @@ public abstract class Class22_Sub2 extends Class22 {
     }
 
     public static IndexedColorSprite[] method315(int arg0) {
-        try {
-            anInt1897++;
+
+        anInt1897++;
             IndexedColorSprite[] class40_sub5_sub14_sub2s = new IndexedColorSprite[Class40_Sub5_Sub9.anInt2581];
             for(int i = arg0; Class40_Sub5_Sub9.anInt2581 > i; i++) {
                 IndexedColorSprite class40_sub5_sub14_sub2 = (class40_sub5_sub14_sub2s[i] = new IndexedColorSprite());
@@ -65,30 +65,25 @@ public abstract class Class22_Sub2 extends Class22 {
             }
             NpcDefinition.method569(true);
             return class40_sub5_sub14_sub2s;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "uc.Q(" + arg0 + ')');
-        }
+
     }
 
     public static void method316(int arg0) {
         do {
-            try {
                 Class43.aClass9_1014.method235((byte) -104);
                 anInt1880++;
                 Class34.aClass9_851.method235((byte) -113);
                 if(arg0 == -11965)
                     break;
                 method323(-25);
-            } catch(RuntimeException runtimeexception) {
-                throw Class8.method216(runtimeexception, "uc.AA(" + arg0 + ')');
-            }
+
             break;
         } while(false);
     }
 
     public static DirectColorSprite[] method319(byte arg0) {
-        try {
-            anInt1882++;
+
+        anInt1882++;
             DirectColorSprite[] class40_sub5_sub14_sub4s = new DirectColorSprite[Class40_Sub5_Sub9.anInt2581];
             if(arg0 != -62)
                 return null;
@@ -108,14 +103,12 @@ public abstract class Class22_Sub2 extends Class22 {
             }
             NpcDefinition.method569(true);
             return class40_sub5_sub14_sub4s;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "uc.S(" + arg0 + ')');
-        }
+
     }
 
     public static void method320(int arg0) {
-        try {
-            aClass1_1877 = null;
+
+        aClass1_1877 = null;
             aClass1_1885 = null;
             currentLoadingText = null;
             aClass1_1886 = null;
@@ -135,9 +128,7 @@ public abstract class Class22_Sub2 extends Class22 {
             password = null;
             aClass1_1883 = null;
             aClass1_1895 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "uc.T(" + arg0 + ')');
-        }
+
     }
 
     public static int method323(int arg0) {
@@ -150,7 +141,6 @@ public abstract class Class22_Sub2 extends Class22 {
 
     public void method317(int arg0, int arg1, long arg2, int arg3) {
         do {
-            try {
                 arg0 = (int) ((double) arg0 * Math.pow(0.1, (double) arg1 * 5.0E-4) + 0.5);
                 if((Class44.anInt1040 ^ 0xffffffff) != (arg0 ^ 0xffffffff)) {
                     Class44.anInt1040 = arg0;
@@ -164,16 +154,14 @@ public abstract class Class22_Sub2 extends Class22 {
                 if(arg3 == 0)
                     break;
                 method318(95, 122L, 123);
-            } catch(RuntimeException runtimeexception) {
-                throw Class8.method216(runtimeexception, ("uc.V(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
-            }
+
             break;
         } while(false);
     }
 
     public void method318(int arg0, long arg1, int arg2) {
-        try {
-            anInt1894++;
+
+        anInt1894++;
             Class44.anInt1040 = arg2;
             for(int i = 0; i < 16; i++)
                 Class32.anIntArray774[i] = 12800;
@@ -184,14 +172,12 @@ public abstract class Class22_Sub2 extends Class22 {
                 method314(176 + i, 7, i_3_ >> -144095193, arg1);
                 method314(176 + i, 39, 0x7f & i_3_, arg1);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("uc.R(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public void method321(byte arg0, long arg1) {
-        try {
-            for(int i = 0; (i ^ 0xffffffff) > -129; i++) {
+
+        for(int i = 0; (i ^ 0xffffffff) > -129; i++) {
                 int i_6_ = Class38.anIntArray889[i];
                 Class38.anIntArray889[i] = 0;
                 for(int i_7_ = 0; i_7_ < 16; i_7_++) {
@@ -214,9 +200,7 @@ public abstract class Class22_Sub2 extends Class22 {
                 method314(176 + i, 32, 0, arg1);
             for(int i = 0; (i ^ 0xffffffff) > -17; i++)
                 method314(i + 192, 0, 0, arg1);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "uc.BA(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public boolean method322(int arg0, int arg1, int arg2, long arg3) {

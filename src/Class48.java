@@ -37,8 +37,8 @@ public class Class48 {
     public int anInt1133;
 
     public Class48(int arg0, int arg1) {
-        try {
-            int i = Class55.method963(arg1, (byte) -62, arg0);
+
+        int i = Class55.method963(arg1, (byte) -62, arg0);
             arg0 /= i;
             anInt1131 = arg0;
             arg1 /= i;
@@ -65,9 +65,7 @@ public class Class48 {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "qb.<init>(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method922(int arg0, int arg1, Buffer arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
@@ -120,8 +118,8 @@ public class Class48 {
     }
 
     public static void method924(byte arg0) {
-        try {
-            aClass1_1137 = null;
+
+        aClass1_1137 = null;
             aClass40_Sub1_1132 = null;
             aClass1_1123 = null;
             int i = -6 % ((-6 - arg0) / 49);
@@ -129,14 +127,12 @@ public class Class48 {
             aClass1_1122 = null;
             aClass1_1124 = null;
             aClass1_1125 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "qb.A(" + arg0 + ')');
-        }
+
     }
 
     public static void method925(int arg0, Class40_Sub5_Sub12[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11) {
-        try {
-            anInt1141++;
+
+        anInt1141++;
             if(arg2 <= arg8 && arg4 >= arg9 && (arg8 ^ 0xffffffff) > (arg11 ^ 0xffffffff) && (arg4 ^ 0xffffffff) > (arg0 ^ 0xffffffff)) {
                 for(int i = arg5; arg1.length > i; i++) {
                     Class40_Sub5_Sub12 class40_sub5_sub12 = arg1[i];
@@ -333,27 +329,23 @@ public class Class48 {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("qb.F(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ',' + arg7 + ',' + arg8 + ',' + arg9 + ',' + arg10 + ',' + arg11 + ')'));
-        }
+
     }
 
     public static DirectColorSprite method927(int arg0, Class6 arg1, boolean arg2, int arg3) {
-        try {
-            anInt1134++;
+
+        anInt1134++;
             if(!Class52.method948(arg0, arg3, arg1, -3844))
                 return null;
             if(arg2 != true)
                 method922(3, -92, null, -95, -119, -82, -28, -32);
             return NpcDefinition.method578(-120);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("qb.D(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method928(int arg0) {
-        try {
-            anInt1130++;
+
+        anInt1130++;
             if(Class40_Sub6.aClass64_2098 != null) {
                 Class40_Sub6.aClass64_2098.method1009(75);
                 Class40_Sub6.aClass64_2098 = null;
@@ -371,40 +363,34 @@ public class Class48 {
             Class62.anInt1457 = -1;
             Class37.method436(arg0 + 7352);
             Floor.method559(10, -76);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "qb.H(" + arg0 + ')');
-        }
+
     }
 
     public int method921(int arg0, int arg1) {
-        try {
-            if(anIntArrayArray1128 != null)
+
+        if(anIntArrayArray1128 != null)
                 arg0 = 7 + anInt1133 * arg0 / anInt1131;
             if(arg1 != 54)
                 return 55;
             anInt1135++;
             return arg0;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "qb.G(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public int method923(int arg0, int arg1) {
-        try {
-            if(arg1 != 4)
+
+        if(arg1 != 4)
                 return -128;
             anInt1140++;
             if(anIntArrayArray1128 != null)
                 arg0 = anInt1133 * arg0 / anInt1131;
             return arg0;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "qb.C(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public byte[] method926(byte[] arg0, boolean arg1) {
-        try {
-            anInt1136++;
+
+        anInt1136++;
             if(anIntArrayArray1128 != null) {
                 int i = 14 + arg0.length * anInt1133 / anInt1131;
                 int i_16_ = 0;
@@ -435,8 +421,6 @@ public class Class48 {
             if(arg1 != false)
                 method927(-84, null, true, -86);
             return arg0;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("qb.E(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
-        }
+
     }
 }

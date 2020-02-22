@@ -61,7 +61,6 @@ public class Class35 implements Interface3 {
     public Class35(Class6 arg0, Class6 arg1, int arg2, double arg3, int arg4) {
         anInt1748 = 128;
         anInt1753 = 0;
-        try {
             anInt1752 = arg2;
             aClass6_1749 = arg1;
             aDouble1750 = arg3;
@@ -74,14 +73,12 @@ public class Class35 implements Interface3 {
                 Buffer class40_sub1 = new Buffer(arg0.method172(is[i_4_], 120, 0));
                 aClass40_Sub10Array1740[is[i_4_]] = new EntryTable(class40_sub1);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("mc.<init>(" + (arg0 != null ? "{...}" : "null") + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ',' + arg4 + ')'));
-        }
+
     }
 
     public static Class40_Sub5_Sub15 method421(Class6 arg0, byte arg1, int arg2, Class6 arg3, boolean arg4) {
-        try {
-            if(arg1 < 40)
+
+        if(arg1 < 40)
                 return null;
             anInt1739++;
             boolean bool = true;
@@ -108,14 +105,12 @@ public class Class35 implements Interface3 {
             } catch(Exception exception) {
                 return null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("mc.I(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ',' + (arg3 != null ? "{...}" : "null") + ',' + arg4 + ')'));
-        }
+
     }
 
     public static void method423(byte arg0) {
-        try {
-            if(arg0 <= -18) {
+
+        if(arg0 <= -18) {
                 aClass1_1720 = null;
                 aByteArrayArrayArray1745 = null;
                 aClass1_1725 = null;
@@ -129,28 +124,24 @@ public class Class35 implements Interface3 {
                 aClass1_1726 = null;
                 aClass1_1731 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "mc.F(" + arg0 + ')');
-        }
+
     }
 
     public void method422(int arg0) {
-        try {
-            anInt1723++;
+
+        anInt1723++;
             for(int i = arg0; ((aClass40_Sub10Array1740.length ^ 0xffffffff) < (i ^ 0xffffffff)); i++) {
                 if(aClass40_Sub10Array1740[i] != null)
                     aClass40_Sub10Array1740[i].method870();
             }
             aClass45_1727 = new Class45();
             anInt1753 = anInt1752;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "mc.D(" + arg0 + ')');
-        }
+
     }
 
     public int[] method12(int arg0, int arg1) {
-        try {
-            anInt1742++;
+
+        anInt1742++;
             EntryTable class40_sub10 = aClass40_Sub10Array1740[arg1];
             int i = -68 / ((-75 - arg0) / 33);
             if(class40_sub10 != null) {
@@ -172,50 +163,42 @@ public class Class35 implements Interface3 {
                 }
             }
             return null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "mc.A(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public int method14(boolean arg0, int arg1) {
-        try {
-            anInt1724++;
+
+        anInt1724++;
             if(arg0 != true)
                 return 115;
             if(aClass40_Sub10Array1740[arg1] != null)
                 return aClass40_Sub10Array1740[arg1].anInt2137;
             return 0;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "mc.H(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public boolean method13(byte arg0, int arg1) {
-        try {
-            anInt1729++;
+
+        anInt1729++;
             if(arg0 > -99)
                 return true;
             return aClass40_Sub10Array1740[arg1].aBoolean2143;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "mc.E(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public void method424(int arg0, double arg1) {
-        try {
-            anInt1722++;
+
+        anInt1722++;
             if(arg0 < 68)
                 aClass1_1731 = null;
             aDouble1750 = arg1;
             method422(0);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "mc.B(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public void method425(byte arg0, int arg1) {
-        try {
-            anInt1751++;
+
+        anInt1751++;
             int i = 0;
             if(arg0 == 6) {
                 for(/**/; (i ^ 0xffffffff) > (aClass40_Sub10Array1740.length ^ 0xffffffff); i++) {
@@ -226,19 +209,15 @@ public class Class35 implements Interface3 {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "mc.C(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public boolean method15(int arg0, byte arg1) {
-        try {
-            anInt1721++;
+
+        anInt1721++;
             if(arg1 != -90)
                 return false;
             return anInt1748 == 64;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "mc.G(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 }

@@ -45,11 +45,9 @@ public class RSCanvas extends Canvas {
     public Component aComponent49;
 
     public RSCanvas(Component arg0) {
-        try {
-            aComponent49 = arg0;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "kb.<init>(" + (arg0 != null ? "{...}" : "null") + ')');
-        }
+
+        aComponent49 = arg0;
+
     }
 
     public static void method45(byte arg0) {
@@ -60,8 +58,8 @@ public class RSCanvas extends Canvas {
     }
 
     public static void method46(int arg0) {
-        try {
-            Cache.method233(true);
+
+        Cache.method233(true);
             Class6.method189(false);
             anInt58++;
             Class40_Sub5_Sub12.method640((byte) -90);
@@ -88,14 +86,12 @@ public class RSCanvas extends Canvas {
             aClass6_Sub1_48.method191(arg0 + 1120);
             VertexNormal.aClass6_Sub1_1104.method191(1120);
             Class56.aClass6_Sub1_1323.method191(1120);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "kb.B(" + arg0 + ')');
-        }
+
     }
 
     public static void method47(byte arg0) {
-        try {
-            aClass1_68 = null;
+
+        aClass1_68 = null;
             if(arg0 != -46)
                 method45((byte) -3);
             aClass1_70 = null;
@@ -112,26 +108,20 @@ public class RSCanvas extends Canvas {
             anIntArray66 = null;
             aClass1_67 = null;
             aClass68_59 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "kb.A(" + arg0 + ')');
-        }
+
     }
 
     public void paint(Graphics arg0) {
-        try {
-            anInt56++;
+
+        anInt56++;
             aComponent49.paint(arg0);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "kb.paint(" + (arg0 != null ? "{...}" : "null") + ')');
-        }
+
     }
 
     public void update(Graphics arg0) {
-        try {
-            anInt52++;
+
+        anInt52++;
             aComponent49.update(arg0);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "kb.update(" + (arg0 != null ? "{...}" : "null") + ')');
-        }
+
     }
 }

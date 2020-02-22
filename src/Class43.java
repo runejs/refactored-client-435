@@ -32,8 +32,8 @@ public class Class43 {
     }
 
     public static void method890(long arg0, int arg1) {
-        try {
-            anInt1023++;
+
+        anInt1023++;
             if(arg0 > 0L) {
                 int i = 81 / ((arg1 + 20) / 42);
                 if(arg0 % 10L != 0L)
@@ -43,14 +43,12 @@ public class Class43 {
                     ISAAC.method283(1L, -110);
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ob.B(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method891(Object[] arg0, int arg1, int arg2, Class40_Sub5_Sub12 arg3, int arg4, boolean arg5) {
-        try {
-            anInt1015++;
+
+        anInt1015++;
             int i = 0;
             Class40_Sub5_Sub1 class40_sub5_sub1 = Class40_Sub5_Sub10.method626(((Integer) arg0[0]).intValue(), 76, 27);
             int[] is = class40_sub5_sub1.anIntArray2262;
@@ -766,14 +764,12 @@ public class Class43 {
             } catch(Exception exception) {
                 /* empty */
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("ob.E(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ',' + (arg3 != null ? "{...}" : "null") + ',' + arg4 + ',' + arg5 + ')'));
-        }
+
     }
 
     public static void method892(int arg0) {
-        try {
-            anInt1017++;
+
+        anInt1017++;
             Class38.aBoolean893 = true;
             Class61.method996(19655);
             if((Class29.anInt673 ^ 0xffffffff) != 0) {
@@ -794,14 +790,12 @@ public class Class43 {
             if(arg0 >= -22)
                 anInt1020 = 80;
             Class55.method964(40);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ob.C(" + arg0 + ')');
-        }
+
     }
 
     public static void method893(byte arg0) {
-        try {
-            if(arg0 <= 104)
+
+        if(arg0 <= 104)
                 aClass1_1024 = null;
             aClass9_1014 = null;
             aClass1_1026 = null;
@@ -810,14 +804,12 @@ public class Class43 {
             aClass1_1024 = null;
             aClass1_1019 = null;
             aClass1_1027 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ob.D(" + arg0 + ')');
-        }
+
     }
 
     public static void method894(boolean arg0) {
-        try {
-            anInt1018++;
+
+        anInt1018++;
             if((SceneTile.anInt2049 ^ 0xffffffff) == -1) {
                 Landscape.aClass1Array1184[0] = Class68.aClass1_1635;
                 Class38.anIntArray884[0] = 1005;
@@ -902,8 +894,6 @@ public class Class43 {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ob.A(" + arg0 + ')');
-        }
+
     }
 }

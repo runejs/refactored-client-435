@@ -73,8 +73,8 @@ public class GameObject extends Renderable {
     }
 
     public static void method768(int arg0) {
-        try {
-            Class17.anInt460 = 0;
+
+        Class17.anInt460 = 0;
             anInt3023++;
             Class40_Sub5_Sub17_Sub4.anInt3153 = 0;
             Class40_Sub5_Sub17_Sub1.method759(false);
@@ -95,25 +95,21 @@ public class GameObject extends Renderable {
                         throw new RuntimeException("gnp2 pos:" + i + " size:" + (GameObjectDefinition.anInt2558));
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "j.A(" + arg0 + ')');
-        }
+
     }
 
     public static IndexedColorSprite method769(int arg0, Class6 arg1, int arg2) {
-        try {
-            anInt3032++;
+
+        anInt3032++;
             if(!Buffer.method472(arg0 ^ ~0x69, arg1, arg2))
                 return null;
             return SubNode.method538(0);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("j.F(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ')'));
-        }
+
     }
 
     public static void method770(byte arg0) {
-        try {
-            aClass1_3037 = null;
+
+        aClass1_3037 = null;
             aClass1_3047 = null;
             aClass68_3042 = null;
             aClass1_3046 = null;
@@ -126,9 +122,7 @@ public class GameObject extends Renderable {
             aClass1_3036 = null;
             aClass1_3039 = null;
             aClass1_3043 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "j.E(" + arg0 + ')');
-        }
+
     }
 
     public static void loadObjectBlock(int block_x, Scene scene, CollisionMap[] collisionMaps, byte[] block_data, int block_z) {
@@ -169,8 +163,8 @@ public class GameObject extends Renderable {
     }
 
     public static void drawLoadingText(int arg0, Color color, RSString rsString, int arg3) {
-        try {
-            anInt3033++;
+
+        anInt3033++;
             try {
                 Graphics graphics = Class62.aCanvas1469.getGraphics();
                 if(Class17.aFont461 == null) {
@@ -215,14 +209,12 @@ public class GameObject extends Renderable {
             } catch(Exception exception) {
                 Class62.aCanvas1469.repaint();
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("j.B(" + arg0 + ',' + (color != null ? "{...}" : "null") + ',' + (rsString != null ? "{...}" : "null") + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method773(byte arg0, RSString arg1) {
-        try {
-            anInt3017++;
+
+        anInt3017++;
             if(arg1 == null || arg1.method59(-3136) == 0)
                 VertexNormal.anInt1110 = 0;
             else {
@@ -263,9 +255,7 @@ public class GameObject extends Renderable {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("j.C(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method774(byte arg0) {
@@ -276,8 +266,8 @@ public class GameObject extends Renderable {
     }
 
     public Model method756(int arg0) {
-        try {
-            if(aClass40_Sub5_Sub7_3034 != null) {
+
+        if(aClass40_Sub5_Sub7_3034 != null) {
                 int i = -anInt3024 + Node.anInt926;
                 if(i > 100 && (aClass40_Sub5_Sub7_3034.anInt2497 ^ 0xffffffff) < -1)
                     i = 100;
@@ -302,8 +292,6 @@ public class GameObject extends Renderable {
             if(gameObjectDefinition == null)
                 return null;
             return gameObjectDefinition.method607(anInt3029, 103, anInt3030, anInt3026, anInt3021, anInt3018, aClass40_Sub5_Sub7_3034, anInt3027, anInt3016);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "j.UA(" + arg0 + ')');
-        }
+
     }
 }

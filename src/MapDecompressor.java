@@ -62,6 +62,7 @@ public class MapDecompressor {
 
     public static void objectLoader(String file) {
         try {
+
             RandomAccessFile in = new RandomAccessFile(file, "r");
             //			RandomAccessFile out = new RandomAccessFile(Signlink.findCacheDirectory()+ "maps/test.cmap", "rw");
             int totalObjects = in.readInt();

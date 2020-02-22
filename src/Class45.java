@@ -58,17 +58,15 @@ public class Class45 {
     public Node aClass40_1068;
 
     public Class45() {
-        try {
-            aClass40_1056.aClass40_968 = aClass40_1056;
+
+        aClass40_1056.aClass40_968 = aClass40_1056;
             aClass40_1056.aClass40_950 = aClass40_1056;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "pb.<init>(" + ')');
-        }
+
     }
 
     public static void method900(int arg0) {
-        try {
-            aClass1_1080 = null;
+
+        aClass1_1080 = null;
             anIntArray1083 = null;
             aClass45_1064 = null;
             aClass30_1082 = null;
@@ -84,14 +82,12 @@ public class Class45 {
             aClass1_1076 = null;
             aClass1_1059 = null;
             aClass1_1078 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "pb.E(" + arg0 + ')');
-        }
+
     }
 
     public static RSString method903(int arg0, byte arg1) {
-        try {
-            if(arg1 >= -13)
+
+        if(arg1 >= -13)
                 return null;
             anInt1069++;
             RSString class1 = HashTable.method334(arg0, -1);
@@ -102,9 +98,7 @@ public class Class45 {
             else if(class1.method59(-3136) > 4)
                 class1 = (Class40_Sub5_Sub17_Sub6.method832(-115, (new RSString[]{Renderable.aClass1_2862, class1.method68(0, 0, class1.method59(-3136) + -4), Class40_Sub5_Sub10.aClass1_2593, Class52.aClass1_1213, class1, Class51.aClass1_1199})));
             return Class40_Sub5_Sub17_Sub6.method832(127, (new RSString[]{Class48.aClass1_1123, class1}));
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "pb.I(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method907(int arg0) {
@@ -115,8 +109,8 @@ public class Class45 {
     }
 
     public static void method908(byte arg0) {
+
         try {
-            try {
                 Graphics graphics = Class62.aCanvas1469.getGraphics();
                 if(arg0 <= 83)
                     method908((byte) 19);
@@ -125,9 +119,7 @@ public class Class45 {
                 Class62.aCanvas1469.repaint();
             }
             anInt1054++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "pb.J(" + arg0 + ')');
-        }
+
     }
 
     public static void method910(int arg0) {
@@ -143,22 +135,20 @@ public class Class45 {
     }
 
     public Node method899(byte arg0) {
-        try {
-            anInt1067++;
+
+        anInt1067++;
             int i = -68 / ((28 - arg0) / 50);
             Node class40 = aClass40_1056.aClass40_968;
             if(class40 == aClass40_1056)
                 return null;
             class40.method457(-1);
             return class40;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "pb.L(" + arg0 + ')');
-        }
+
     }
 
     public Node method901(byte arg0) {
-        try {
-            anInt1070++;
+
+        anInt1070++;
             Node class40 = aClass40_1056.aClass40_968;
             if(class40 == aClass40_1056) {
                 aClass40_1068 = null;
@@ -168,14 +158,12 @@ public class Class45 {
             if(arg0 > -53)
                 return null;
             return class40;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "pb.B(" + arg0 + ')');
-        }
+
     }
 
     public Node method902(byte arg0) {
-        try {
-            if(arg0 != -90)
+
+        if(arg0 != -90)
                 method901((byte) 0);
             anInt1058++;
             Node class40 = aClass40_1056.aClass40_950;
@@ -185,14 +173,12 @@ public class Class45 {
             }
             aClass40_1068 = class40.aClass40_950;
             return class40;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "pb.N(" + arg0 + ')');
-        }
+
     }
 
     public void method904(Node arg0, int arg1) {
-        try {
-            anInt1062++;
+
+        anInt1062++;
             if(arg0.aClass40_968 != null)
                 arg0.method457(-1);
             arg0.aClass40_968 = aClass40_1056.aClass40_968;
@@ -200,14 +186,12 @@ public class Class45 {
             arg0.aClass40_950 = aClass40_1056;
             arg0.aClass40_968.aClass40_950 = arg0;
             arg0.aClass40_950.aClass40_968 = arg0;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("pb.M(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
-        }
+
     }
 
     public void method905(int arg0, Node arg1) {
-        try {
-            if(arg1.aClass40_968 != null)
+
+        if(arg1.aClass40_968 != null)
                 arg1.method457(-1);
             if(arg0 != 0)
                 method911(-96, null, null);
@@ -216,14 +200,12 @@ public class Class45 {
             arg1.aClass40_968 = aClass40_1056;
             arg1.aClass40_968.aClass40_950 = arg1;
             arg1.aClass40_950.aClass40_968 = arg1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("pb.G(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public void method906(int arg0) {
-        try {
-            if(arg0 != 0)
+
+        if(arg0 != 0)
                 method903(-33, (byte) -75);
             anInt1063++;
             for(; ; ) {
@@ -232,14 +214,12 @@ public class Class45 {
                     break;
                 class40.method457(arg0 ^ 0xffffffff);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "pb.H(" + arg0 + ')');
-        }
+
     }
 
     public Node method909(int arg0) {
-        try {
-            anInt1053++;
+
+        anInt1053++;
             Node class40 = aClass40_1068;
             if(aClass40_1056 == class40) {
                 aClass40_1068 = null;
@@ -249,14 +229,12 @@ public class Class45 {
                 method910(109);
             aClass40_1068 = class40.aClass40_950;
             return class40;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "pb.F(" + arg0 + ')');
-        }
+
     }
 
     public void method911(int arg0, Node arg1, Node arg2) {
-        try {
-            anInt1052++;
+
+        anInt1052++;
             if(arg2.aClass40_968 != null)
                 arg2.method457(-1);
             if(arg0 == -31793) {
@@ -265,14 +243,12 @@ public class Class45 {
                 arg2.aClass40_968.aClass40_950 = arg2;
                 arg2.aClass40_950.aClass40_968 = arg2;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("pb.O(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + (arg2 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public Node method912(int arg0) {
-        try {
-            if(arg0 != 4)
+
+        if(arg0 != 4)
                 return null;
             anInt1074++;
             Node class40 = aClass40_1068;
@@ -282,14 +258,12 @@ public class Class45 {
             }
             aClass40_1068 = class40.aClass40_968;
             return class40;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "pb.D(" + arg0 + ')');
-        }
+
     }
 
     public Node method913(int arg0) {
-        try {
-            anInt1055++;
+
+        anInt1055++;
             if(arg0 != 25447)
                 method902((byte) -115);
             Node class40 = aClass40_1056.aClass40_950;
@@ -297,8 +271,6 @@ public class Class45 {
                 return null;
             class40.method457(arg0 + -25448);
             return class40;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "pb.C(" + arg0 + ')');
-        }
+
     }
 }

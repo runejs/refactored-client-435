@@ -184,16 +184,14 @@ public class Class58 {
     }
 
     public static void method977(int arg0, Class6 arg1, Class6 arg2) {
-        try {
-            Class27.aClass6_654 = arg2;
+
+        Class27.aClass6_654 = arg2;
             if(arg0 == 3) {
                 anInt1360++;
                 Class49.aClass6_1150 = arg1;
                 PacketBuffer.anInt2257 = Class49.aClass6_1150.method190(3, (byte) 8);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("se.A(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + (arg2 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static RSString method978(String arg1) { // TODO: CreateString?
@@ -221,8 +219,8 @@ public class Class58 {
     }
 
     public static void method979(boolean arg0) {
-        try {
-            Class6.aBoolean260 = arg0;
+
+        Class6.aBoolean260 = arg0;
             Class22.method305((byte) 124);
             if(!Class19.aBoolean490) {
                 if((Class40_Sub5_Sub15.anInt2780 ^ 0xffffffff) != -2) {
@@ -378,26 +376,22 @@ public class Class58 {
             if(Class4.aBoolean173 && (Class40_Sub5_Sub17_Sub1.anInt2983 ^ 0xffffffff) == -3)
                 Class40_Sub5_Sub6.method588(-1);
             Class45.method908((byte) 122);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "se.B(" + arg0 + ')');
-        }
+
     }
 
     public static void method980(int arg0, Class6 arg1, boolean arg2, Class6 arg3) {
-        try {
-            Class40_Sub3.aClass6_2037 = arg3;
+
+        Class40_Sub3.aClass6_2037 = arg3;
             Class35.aBoolean1734 = arg2;
             anInt1351++;
             if(arg0 == 28987)
                 RSString.aClass6_1705 = arg1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("se.C(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + (arg3 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method981(byte arg0) {
-        try {
-            aClass1_1354 = null;
+
+        aClass1_1354 = null;
             varbitmasks = null;
             aByteArrayArray1377 = null;
             aClass1_1365 = null;
@@ -410,8 +404,6 @@ public class Class58 {
                 aClass1_1359 = null;
                 aClass6_1375 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "se.D(" + arg0 + ')');
-        }
+
     }
 }

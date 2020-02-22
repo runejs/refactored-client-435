@@ -25,19 +25,17 @@ public class Class40_Sub11 extends Node {
     public int anInt2166;
 
     public static RSString method872(int arg0, int arg1) {
-        try {
-            anInt2149++;
+
+        anInt2149++;
             if(arg0 > arg1)
                 return HashTable.method334(arg1, -1);
             return Class19.aClass1_478;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "te.B(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method873(int arg0, int arg1, int arg2) {
-        try {
-            anInt2151++;
+
+        anInt2151++;
             if(arg2 != 45)
                 anInt2158 = 53;
             int i = 0;
@@ -98,22 +96,18 @@ public class Class40_Sub11 extends Node {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("te.C(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public static void method874(byte arg0) {
-        try {
-            aClass1Array2153 = null;
+
+        aClass1Array2153 = null;
             aClass6_2162 = null;
             aClass1_2164 = null;
             if(arg0 != 101)
                 method873(-62, -35, -55);
             aClass1_2161 = null;
             aClass1Array2147 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "te.A(" + arg0 + ')');
-        }
+
     }
 }

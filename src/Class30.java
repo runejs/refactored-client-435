@@ -65,8 +65,8 @@ public class Class30 {
     public long aLong719;
 
     public static void method376(int arg0) {
-        try {
-            anIntArray712 = null;
+
+        anIntArray712 = null;
             anIntArray688 = null;
             aClass64_717 = null;
             if(arg0 != 13429)
@@ -86,14 +86,12 @@ public class Class30 {
             aClass1_682 = null;
             aClass1_698 = null;
             aClass1_716 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "la.H(" + arg0 + ')');
-        }
+
     }
 
     public static void method381(int arg0, Class40_Sub5_Sub17_Sub4 arg1) {
-        try {
-            if(arg0 != 22378)
+
+        if(arg0 != 22378)
                 method376(90);
             if((arg1.anInt3107 ^ 0xffffffff) == (Node.anInt926 ^ 0xffffffff) || (arg1.anInt3141 ^ 0xffffffff) == 0 || (arg1.anInt3122 ^ 0xffffffff) != -1 || arg1.anInt3115 + 1 > (Class68_Sub1.method1050(arg1.anInt3141, 2).anIntArray2466[arg1.anInt3104])) {
                 int i = -arg1.anInt3112 + arg1.anInt3107;
@@ -116,27 +114,23 @@ public class Class30 {
             if(arg1.anInt3073 == 3)
                 arg1.anInt3080 = 512;
             arg1.anInt3118 = arg1.anInt3080;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("la.J(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public int method374(int arg0) {
-        try {
-            anInt702++;
+
+        anInt702++;
             if(arg0 != -20874)
                 return 109;
             if((anInt696 ^ 0xffffffff) != 0)
                 return (Landscape.method932((byte) -105, anInt696).anInt2427 + 305419896);
             return (anIntArray692[1] + (anIntArray692[11] << -991626235) + ((anIntArray713[4] << -1350296556) + ((anIntArray713[0] << 1525506553) + (anIntArray692[0] << 1592541583)) + (anIntArray692[8] << 307187338)));
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "la.K(" + arg0 + ')');
-        }
+
     }
 
     public void method375(int arg0, Buffer arg1) {
-        try {
-            arg1.put(aBoolean683 ? 1 : 0, (byte) -128);
+
+        arg1.put(aBoolean683 ? 1 : 0, (byte) -128);
             anInt706++;
             for(int i = arg0; i < 7; i++) {
                 int i_0_ = anIntArray692[Class40_Sub5_Sub15.anIntArray2777[i]];
@@ -147,14 +141,12 @@ public class Class30 {
             }
             for(int i = 0; (i ^ 0xffffffff) > -6; i++)
                 arg1.put(anIntArray713[i], (byte) -128);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("la.B(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public Model method377(Class40_Sub5_Sub7 arg0, Class40_Sub5_Sub7 arg1, int arg2, int arg3, byte arg4) {
-        try {
-            anInt694++;
+
+        anInt694++;
             if((anInt696 ^ 0xffffffff) != 0)
                 return Landscape.method932((byte) -101, anInt696).method568((byte) -50, arg0, arg1, arg2, arg3);
             long l = aLong718;
@@ -232,9 +224,7 @@ public class Class30 {
             } else
                 return class40_sub5_sub17_sub5;
             return class40_sub5_sub17_sub5_7_;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("la.F(" + (arg0 != null ? "{...}" : "null") + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ',' + arg4 + ')'));
-        }
+
     }
 
     public void method378(int arg0) {
@@ -270,8 +260,8 @@ public class Class30 {
     }
 
     public Model method379(int arg0) {
-        try {
-            anInt689++;
+
+        anInt689++;
             if(anInt696 != -1)
                 return Landscape.method932((byte) -117, anInt696).method575((byte) 111);
             boolean bool = false;
@@ -310,14 +300,12 @@ public class Class30 {
                 }
             }
             return class40_sub5_sub17_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "la.D(" + arg0 + ')');
-        }
+
     }
 
     public void method380(int[] arg0, boolean arg1, int arg2, int[] arg3, int arg4) {
-        try {
-            if(arg0 == null) {
+
+        if(arg0 == null) {
                 arg0 = new int[12];
                 for(int i = 0; i < 7; i++) {
                     for(int i_15_ = 0; PacketBuffer.anInt2257 > i_15_; i_15_++) {
@@ -336,14 +324,12 @@ public class Class30 {
             anInt691++;
             if(arg2 == 7)
                 method378(97);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("la.C(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ',' + (arg3 != null ? "{...}" : "null") + ',' + arg4 + ')'));
-        }
+
     }
 
     public void method382(int arg0, boolean arg1, int arg2) {
-        try {
-            anInt711++;
+
+        anInt711++;
             if(arg0 != 1 || !aBoolean683) {
                 int i = anIntArray692[Class40_Sub5_Sub15.anIntArray2777[arg0]];
                 if(i != 0) {
@@ -364,27 +350,23 @@ public class Class30 {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("la.I(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public void method383(boolean arg0, byte arg1) {
-        try {
-            anInt705++;
+
+        anInt705++;
             if(!aBoolean683 != !arg0) {
                 if(arg1 != -110)
                     method382(57, false, 67);
                 method380(null, arg0, 7, anIntArray713, -1);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "la.E(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public void method384(int arg0, boolean arg1, int arg2) {
-        try {
-            int i = -67 % ((-30 - arg0) / 56);
+
+        int i = -67 % ((-30 - arg0) / 56);
             anInt703++;
             int i_21_ = anIntArray713[arg2];
             if(!arg1) {
@@ -394,8 +376,6 @@ public class Class30 {
                 i_21_ = 0;
             anIntArray713[arg2] = i_21_;
             method378(119);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("la.A(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 }

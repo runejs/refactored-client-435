@@ -48,8 +48,8 @@ public class Class32 {
     public int anInt764;
 
     public static void method398(int arg0) {
-        try {
-            RSString class1 = null;
+
+        RSString class1 = null;
             for(int i = 0; NpcDefinition.anInt2394 > i; i++) {
                 if((Landscape.aClass1Array1184[i].method60(VertexNormal.aClass1_1114, 32) ^ 0xffffffff) != 0) {
                     class1 = (Landscape.aClass1Array1184[i].method50((byte) 95, Landscape.aClass1Array1184[i].method60(VertexNormal.aClass1_1114, 32)));
@@ -101,9 +101,7 @@ public class Class32 {
                     Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method683(class1_8_, 3 + i_0_, i_7_, i_9_, true);
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ld.C(" + arg0 + ')');
-        }
+
     }
 
     public static void method399(int arg0, int arg1, int arg2) {
@@ -118,19 +116,17 @@ public class Class32 {
     }
 
     public static int method400(int arg0) {
-        try {
-            if(arg0 != -1)
+
+        if(arg0 != -1)
                 packetBuffer = null;
             anInt753++;
             return Class45.anInt1073++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ld.B(" + arg0 + ')');
-        }
+
     }
 
     public static void method401(int arg0) {
-        try {
-            anIntArray774 = null;
+
+        anIntArray774 = null;
             aClass38_768 = null;
             aClass1_766 = null;
             aClass1_772 = null;
@@ -138,8 +134,6 @@ public class Class32 {
             packetBuffer = null;
             if(arg0 >= 29)
                 aClass6_Sub1_773 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "ld.D(" + arg0 + ')');
-        }
+
     }
 }

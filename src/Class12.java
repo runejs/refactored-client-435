@@ -42,8 +42,8 @@ public class Class12 {
     }
 
     public static void method240(byte arg0) {
-        try {
-            if(arg0 > -31)
+
+        if(arg0 > -31)
                 method240((byte) -27);
             aClass1_391 = null;
             aClass1_386 = null;
@@ -61,8 +61,6 @@ public class Class12 {
             aClass1_393 = null;
             aClass1_392 = null;
             aClass1_397 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "dd.A(" + arg0 + ')');
-        }
+
     }
 }

@@ -40,8 +40,8 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
     public NpcDefinition aClass40_Sub5_Sub5_3300;
 
     public static Class40_Sub5_Sub11 method795(byte arg0, int arg1) {
-        try {
-            anInt3303++;
+
+        anInt3303++;
             Class40_Sub5_Sub11 class40_sub5_sub11 = ((Class40_Sub5_Sub11) Class13.aClass9_406.method231((long) arg1, (byte) 98));
             if(arg0 >= -66)
                 aClass1_3295 = null;
@@ -53,9 +53,7 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
                 class40_sub5_sub11.method634(new Buffer(is), 0);
             Class13.aClass9_406.method230(-7208, (long) arg1, class40_sub5_sub11);
             return class40_sub5_sub11;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "vd.AB(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method796(byte arg0) {
@@ -443,8 +441,8 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
     }
 
     public static Floor loadFloor(int arg0, int arg1) {
-        try {
-            anInt3296++;
+
+        anInt3296++;
             Floor floor = ((Floor) Class33.aClass9_778.method231((long) arg0, (byte) 63));
             if(floor != null)
                 return floor;
@@ -455,14 +453,12 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
             floor.method555((byte) 64);
             Class33.aClass9_778.method230(-7208, (long) arg0, floor);
             return floor;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "vd.WA(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public Model method756(int arg0) {
-        try {
-            anInt3313++;
+
+        anInt3313++;
             if(aClass40_Sub5_Sub5_3300 == null)
                 return null;
             int i = 25 % ((41 - arg0) / 47);
@@ -484,19 +480,15 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
             if((aClass40_Sub5_Sub5_3300.anInt2374 ^ 0xffffffff) == -2)
                 class40_sub5_sub17_sub5.aBoolean3164 = true;
             return class40_sub5_sub17_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "vd.UA(" + arg0 + ')');
-        }
+
     }
 
     public boolean method784(int arg0) {
-        try {
-            anInt3299++;
+
+        anInt3299++;
             if(aClass40_Sub5_Sub5_3300 == null)
                 return false;
             return arg0 == 1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "vd.CB(" + arg0 + ')');
-        }
+
     }
 }

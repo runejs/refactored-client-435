@@ -40,8 +40,8 @@ public class Class54 implements KeyListener, FocusListener {
     }
 
     public static void method953(byte arg0) {
-        try {
-            if(arg0 > -32)
+
+        if(arg0 > -32)
                 method957(75, false, false, (byte) 125, true);
             aClass1_1271 = null;
             aClass1_1283 = null;
@@ -49,9 +49,7 @@ public class Class54 implements KeyListener, FocusListener {
             aClass45_1278 = null;
             anIntArray1282 = null;
             aClass1_1284 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "re.A(" + arg0 + ')');
-        }
+
     }
 
     public static void method954(int arg0) {
@@ -128,8 +126,8 @@ public class Class54 implements KeyListener, FocusListener {
     }
 
     public static int method955(Class6 arg0, byte arg1) {
-        try {
-            anInt1277++;
+
+        anInt1277++;
             int i = 0;
             if(arg0.method194(Class27.aClass1_638, Class8.aClass1_305, -1234))
                 i++;
@@ -172,51 +170,41 @@ public class Class54 implements KeyListener, FocusListener {
             if(arg0.method194(Class40_Sub5_Sub15.aClass1_2787, Class8.aClass1_305, -1234))
                 i++;
             return i;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("re.D(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
-        }
+
     }
 
     public static RSString method956(int arg0, Buffer arg1) {
-        try {
-            if(arg0 < 62)
+
+        if(arg0 < 62)
                 aClass45_1278 = null;
             anInt1279++;
             return Class22.method307(arg1, -1, 32767);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("re.B(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static Class6_Sub1 method957(int arg0, boolean arg1, boolean arg2, byte arg3, boolean arg4) {
-        try {
-            anInt1272++;
+
+        anInt1272++;
             Class56 class56 = null;
             if(Class40_Sub5_Sub2.aClass67_2298 != null)
                 class56 = new Class56(arg0, Class40_Sub5_Sub2.aClass67_2298, Class40_Sub5_Sub6.aClass67Array2436[arg0], 1000000);
             if(arg3 < 116)
                 method955(null, (byte) -86);
             return new Class6_Sub1(class56, Class40_Sub5_Sub4.aClass56_2356, arg0, arg2, arg4, arg1);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("re.E(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ')'));
-        }
+
     }
 
     public void keyTyped(KeyEvent arg0) {
-        try {
-            arg0.consume();
+
+        arg0.consume();
             anInt1275++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "re.keyTyped(" + (arg0 != null ? "{...}" : "null") + ')');
-        }
+
     }
 
     public void focusGained(FocusEvent arg0) {
-        try {
-            anInt1281++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "re.focusGained(" + (arg0 != null ? "{...}" : "null") + ')');
-        }
+
+        anInt1281++;
+
     }
 
     public synchronized void focusLost(FocusEvent arg0) {
@@ -226,8 +214,8 @@ public class Class54 implements KeyListener, FocusListener {
     }
 
     public synchronized void keyPressed(KeyEvent arg0) {
-        try {
-            anInt1273++;
+
+        anInt1273++;
             if(Class59.aClass54_1392 != null) {
                 Class49.anInt1147 = 0;
                 int i = arg0.getKeyCode();
@@ -258,14 +246,12 @@ public class Class54 implements KeyListener, FocusListener {
                 }
             }
             arg0.consume();
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "re.keyPressed(" + (arg0 != null ? "{...}" : "null") + ')');
-        }
+
     }
 
     public synchronized void keyReleased(KeyEvent arg0) {
-        try {
-            if(Class59.aClass54_1392 != null) {
+
+        if(Class59.aClass54_1392 != null) {
                 Class49.anInt1147 = 0;
                 int i = arg0.getKeyCode();
                 if(i < 0 || Class66.anIntArray1564.length <= i)
@@ -281,8 +267,6 @@ public class Class54 implements KeyListener, FocusListener {
             }
             anInt1280++;
             arg0.consume();
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "re.keyReleased(" + (arg0 != null ? "{...}" : "null") + ')');
-        }
+
     }
 }

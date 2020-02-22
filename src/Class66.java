@@ -63,8 +63,8 @@ public class Class66 {
     public byte[] aByteArray1557;
 
     public Class66(byte[] arg0) {
-        try {
-            int i = arg0.length;
+
+        int i = arg0.length;
             aByteArray1557 = arg0;
             anIntArray1551 = new int[i];
             int[] is = new int[33];
@@ -120,22 +120,18 @@ public class Class66 {
                     anIntArray1540[i_39_] = i_30_ ^ 0xffffffff;
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "wa.<init>(" + (arg0 != null ? "{...}" : "null") + ')');
-        }
+
     }
 
     public static int method1021(int arg0, int arg1) {
-        try {
-            return arg0 & arg1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "wa.D(" + arg0 + ',' + arg1 + ')');
-        }
+
+        return arg0 & arg1;
+
     }
 
     public static void method1022(int arg0) {
-        try {
-            aClass1_1565 = null;
+
+        aClass1_1565 = null;
             aClass68_1541 = null;
             aClass1_1558 = null;
             aClass1_1555 = null;
@@ -154,25 +150,21 @@ public class Class66 {
             int i = -11 / ((-68 - arg0) / 55);
             aClass1_1567 = null;
             aClass1_1556 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "wa.A(" + arg0 + ')');
-        }
+
     }
 
     public static RSString method1024(boolean arg0, byte arg1, int arg2) {
-        try {
-            if(arg1 > -30)
+
+        if(arg1 > -30)
                 aClass1_1552 = null;
             anInt1570++;
             return PacketBuffer.method521(arg0, (byte) 8, 10, arg2);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("wa.B(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public static void method1025(int arg0, int arg1, int arg2, int arg3, NpcDefinition arg4) {
-        try {
-            anInt1571++;
+
+        anInt1571++;
             if((NpcDefinition.anInt2394 ^ 0xffffffff) > -401) {
                 if(arg4.anIntArray2426 != null)
                     arg4 = arg4.method577(-1);
@@ -238,38 +230,32 @@ public class Class66 {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("wa.H(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + (arg4 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static boolean method1027(int arg0, int arg1) {
-        try {
-            anInt1566++;
+
+        anInt1566++;
             if(arg1 != -58)
                 method1022(68);
             return (arg0 ^ 0xffffffff) <= -49 && (arg0 ^ 0xffffffff) >= -58;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "wa.E(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static DirectColorSprite method1028(Class6 arg0, RSString arg1, byte arg2, RSString arg3) {
-        try {
-            anInt1553++;
+
+        anInt1553++;
             int i = arg0.method183(0, arg1);
             int i_13_ = arg0.method179(arg2 ^ ~0x6f, i, arg3);
             if(arg2 != 21)
                 anIntArray1569 = null;
             return Class48.method927(i_13_, arg0, true, i);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("wa.I(" + (arg0 != null ? "{...}" : "null") + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + (arg3 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static int method1029(int arg0, boolean arg1, Class40_Sub5_Sub12 arg2) {
-        try {
-            anInt1547++;
+
+        anInt1547++;
             if(arg2.anIntArrayArray2748 == null || ((arg2.anIntArrayArray2748.length ^ 0xffffffff) >= (arg0 ^ 0xffffffff)))
                 return -2;
             try {
@@ -373,28 +359,24 @@ public class Class66 {
             } catch(Exception exception) {
                 return -1;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("wa.F(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method1030(byte arg0) {
-        try {
-            anInt1573++;
+
+        anInt1573++;
             if(arg0 < 123)
                 method1030((byte) -24);
             for(Class40_Sub2 class40_sub2 = ((Class40_Sub2) Class40_Sub5_Sub1.aClass45_2268.method902((byte) -90)); class40_sub2 != null; class40_sub2 = (Class40_Sub2) Class40_Sub5_Sub1.aClass45_2268.method909(-4)) {
                 if(class40_sub2.aGameObjectDefinition_2011 != null)
                     class40_sub2.method528(48);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "wa.G(" + arg0 + ')');
-        }
+
     }
 
     public int method1023(byte[] arg0, int arg1, int arg2, byte[] arg3, int arg4, int arg5) {
-        try {
-            anInt1568++;
+
+        anInt1568++;
             if(arg1 == 0)
                 return 0;
             arg1 += arg2;
@@ -488,14 +470,12 @@ public class Class66 {
             if(arg5 != -1)
                 aClass1_1542 = null;
             return -arg4 + (i_0_ + 1);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("wa.C(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ',' + (arg3 != null ? "{...}" : "null") + ',' + arg4 + ',' + arg5 + ')'));
-        }
+
     }
 
     public int method1026(int arg0, int arg1, int arg2, int arg3, byte[] arg4, byte[] arg5) {
-        try {
-            anInt1561++;
+
+        anInt1561++;
             arg3 += arg1;
             int i = 0;
             int i_6_ = arg2 << -2048728797;
@@ -536,8 +516,6 @@ public class Class66 {
             if(arg0 != -18678)
                 method1027(-98, -28);
             return (7 + i_6_ >> -262344669) - arg2;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("wa.J(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + (arg4 != null ? "{...}" : "null") + ',' + (arg5 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 }

@@ -63,18 +63,15 @@ public class SceneTile extends Node {
 
     public SceneTile(int arg0, int arg1, int arg2) {
         anInt2073 = 0;
-        try {
             anInt2061 = arg1;
             anInt2069 = anInt2066 = arg0;
             anInt2078 = arg2;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("fa.<init>(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public static RSString method532(byte arg0, Class40_Sub5_Sub12 arg1, RSString arg2) {
-        try {
-            anInt2045++;
+
+        anInt2045++;
             if(arg0 != 20)
                 aClass1_2047 = null;
             if(arg2.method60(Class44.aClass1_1041, arg0 + 12) != -1) {
@@ -124,14 +121,12 @@ public class SceneTile extends Node {
                 }
             }
             return arg2;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("fa.B(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + (arg2 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method533(int arg0, int arg1, DirectColorSprite arg2, byte arg3) {
-        try {
-            anInt2052++;
+
+        anInt2052++;
             if(arg2 != null) {
                 int i = 0x7ff & Class43.anInt1020 + Class58.anInt1373;
                 int i_0_ = arg0 * arg0 + arg1 * arg1;
@@ -150,14 +145,12 @@ public class SceneTile extends Node {
                         arg2.method721(4 + -(arg2.anInt2954 / 2) + (i_3_ + 94), -4 + (-i_4_ + (83 + -(arg2.anInt2952 / 2))));
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("fa.A(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method534(int arg0) {
-        try {
-            aClass1_2042 = null;
+
+        aClass1_2042 = null;
             aClass1_2055 = null;
             aClass1_2050 = null;
             aClass1_2047 = null;
@@ -170,14 +163,12 @@ public class SceneTile extends Node {
             aClass1_2054 = null;
             aClass1_2046 = null;
             aClass40_Sub5_Sub14_Sub4_2043 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "fa.E(" + arg0 + ')');
-        }
+
     }
 
     public static RSString method536(int arg0, int arg1, int arg2) {
-        try {
-            anInt2056++;
+
+        anInt2056++;
             if(arg2 >= -16)
                 return null;
             int i = -arg1 + arg0;
@@ -198,14 +189,12 @@ public class SceneTile extends Node {
             if((i ^ 0xffffffff) < -1)
                 return Class37.aClass1_877;
             return Class54.aClass1_1283;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("fa.F(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public static void method537(int arg0) {
-        try {
-            anInt2041++;
+
+        anInt2041++;
             if(NpcDefinition.anInt2394 >= 2 || (Class8.anInt301 ^ 0xffffffff) != -1 || (Main.anInt1773 ^ 0xffffffff) != -1) {
                 RSString class1;
                 if(Class8.anInt301 == 1 && (NpcDefinition.anInt2394 ^ 0xffffffff) > -3)
@@ -219,8 +208,6 @@ public class SceneTile extends Node {
                 if(arg0 == 4)
                     Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method684(class1, 4, 15, 16777215, true, Node.anInt926 / 1000);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "fa.D(" + arg0 + ')');
-        }
+
     }
 }

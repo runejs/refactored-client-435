@@ -35,19 +35,16 @@ public class Class56 {
     public Class56(int arg0, Class67 arg1, Class67 arg2, int arg3) {
         aClass67_1309 = null;
         anInt1321 = 65000;
-        try {
             anInt1321 = arg3;
             aClass67_1313 = arg2;
             aClass67_1309 = arg1;
             anInt1324 = arg0;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("sa.<init>(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method967(int arg0) {
-        try {
-            aClass1_1314 = null;
+
+        aClass1_1314 = null;
             aClass61Array1320 = null;
             aClass40_Sub5_Sub14_Sub2_1315 = null;
             aClass6_Sub1_1323 = null;
@@ -55,14 +52,12 @@ public class Class56 {
                 method967(97);
             aClass1_1316 = null;
             aClass40_Sub5_Sub14_Sub2_1329 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "sa.F(" + arg0 + ')');
-        }
+
     }
 
     public static RSString[] method968(RSString[] arg0, boolean arg1) {
-        try {
-            if(arg1 != false)
+
+        if(arg1 != false)
                 method972((byte) -104);
             RSString[] class1s = new RSString[5];
             anInt1317++;
@@ -72,14 +67,12 @@ public class Class56 {
                     class1s[i] = Class40_Sub5_Sub17_Sub6.method832(117, (new RSString[]{class1s[i], arg0[i]}));
             }
             return class1s;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("sa.E(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
-        }
+
     }
 
     public static Class38 method972(byte arg0) {
-        try {
-            if(arg0 != 47)
+
+        if(arg0 != 47)
                 method968(null, true);
             anInt1310++;
             try {
@@ -87,14 +80,12 @@ public class Class56 {
             } catch(Throwable throwable) {
                 return new Class38_Sub1();
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "sa.B(" + arg0 + ')');
-        }
+
     }
 
     public static void method973(int arg0) {
-        try {
-            Class67.anIntArray1579 = null;
+
+        Class67.anIntArray1579 = null;
             SceneTile.anIntArray2048 = null;
             if(arg0 >= -57)
                 aClass1_1314 = null;
@@ -109,23 +100,19 @@ public class Class56 {
             anInt1312++;
             Class42.aByteArrayArrayArray993 = null;
             Class40_Sub5_Sub17_Sub6.anIntArray3250 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "sa.D(" + arg0 + ')');
-        }
+
     }
 
     public String toString() {
-        try {
-            anInt1326++;
+
+        anInt1326++;
             return "Cache:" + anInt1324;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "sa.toString(" + ')');
-        }
+
     }
 
     public byte[] method969(int arg0, byte arg1) {
-        try {
-            anInt1322++;
+
+        anInt1322++;
             int i = -83 / ((-49 - arg1) / 47);
             synchronized(aClass67_1309) {
                 try {
@@ -168,14 +155,12 @@ public class Class56 {
                     return null;
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "sa.G(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public boolean method970(byte[] arg0, int arg1, boolean arg2, int arg3, byte arg4) {
-        try {
-            anInt1325++;
+
+        anInt1325++;
             synchronized(aClass67_1309) {
                 try {
                     if(arg4 >= -80)
@@ -255,14 +240,12 @@ public class Class56 {
                     return false;
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("sa.C(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ')'));
-        }
+
     }
 
     public boolean method971(byte[] arg0, int arg1, int arg2, int arg3) {
-        try {
-            anInt1328++;
+
+        anInt1328++;
             synchronized(aClass67_1309) {
                 if(arg2 < 0 || arg2 > anInt1321)
                     throw new IllegalArgumentException();
@@ -273,8 +256,6 @@ public class Class56 {
                     bool = method970(arg0, arg2, false, arg3, (byte) -114);
                 return bool;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("sa.A(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 }

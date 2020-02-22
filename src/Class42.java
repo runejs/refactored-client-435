@@ -50,8 +50,8 @@ public class Class42 {
     public int[] anIntArray996;
 
     public Class42(int[] arg0) {
-        try {
-            int i;
+
+        int i;
             for(i = 1; (((arg0.length >> -2026619711) + arg0.length ^ 0xffffffff) <= (i ^ 0xffffffff)); i <<= 1) {
                 /* empty */
             }
@@ -66,14 +66,12 @@ public class Class42 {
                 anIntArray996[i_10_ + i_10_] = arg0[i_9_];
                 anIntArray996[1 + i_10_ + i_10_] = i_9_;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "oa.<init>(" + (arg0 != null ? "{...}" : "null") + ')');
-        }
+
     }
 
     public static void method883(byte arg0, int arg1) {
-        try {
-            anInt991++;
+
+        anInt991++;
             if(Class68.method1043(arg1, -7)) {
                 Class40_Sub5_Sub12[] class40_sub5_sub12s = Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1];
                 for(int i = 0; class40_sub5_sub12s.length > i; i++) {
@@ -85,42 +83,36 @@ public class Class42 {
                 }
                 int i = 40 % ((arg0 + 57) / 54);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "oa.A(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static int method884(int arg0, int arg1, int arg2) {
-        try {
-            if(arg2 != 37821)
+
+        if(arg2 != 37821)
                 method887((byte) -6);
             anInt994++;
             int i = 57 * arg1 + arg0;
             i ^= i << 636261773;
             int i_2_ = 1376312589 + (i * i * 15731 + 789221) * i & 0x7fffffff;
             return i_2_ >> -754459309 & 0xff;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("oa.D(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public static void method885(Class6 arg0, boolean arg1, Class6 arg2, int arg3) {
-        try {
-            Class40_Sub5_Sub10.aBoolean2617 = arg1;
+
+        Class40_Sub5_Sub10.aBoolean2617 = arg1;
             anInt999++;
             if(arg3 != -313)
                 aClass1_1012 = null;
             Class8.aClass6_284 = arg2;
             Class26.aClass6_632 = arg0;
             Class27.anInt661 = Class26.aClass6_632.method190(10, (byte) 109);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("oa.B(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method886(int arg0, int arg1, boolean arg2, byte[] arg3, int arg4) {
-        try {
-            anInt1007++;
+
+        anInt1007++;
             if(arg0 == 0 && Class5.aClass22_189 != null) {
                 if((Class62.anInt1450 ^ 0xffffffff) > -1) {
                     if(RSCanvas.anInt54 != 0) {
@@ -144,14 +136,12 @@ public class Class42 {
                     Class30.aBoolean687 = arg2;
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("oa.G(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + (arg3 != null ? "{...}" : "null") + ',' + arg4 + ')'));
-        }
+
     }
 
     public static void method887(byte arg0) {
-        try {
-            aClass1_988 = null;
+
+        aClass1_988 = null;
             aClass1_1003 = null;
             aClass1_1001 = null;
             aClass1_989 = null;
@@ -168,14 +158,12 @@ public class Class42 {
             aClass1_1011 = null;
             aClass1_1002 = null;
             aClass1_1000 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "oa.C(" + arg0 + ')');
-        }
+
     }
 
     public static int method888(int arg0, byte arg1, int arg2) {
-        try {
-            int i = (-128 + Class4.method160(arg0 + 45365, 15177, 4, 91923 + arg2) - (-(Class4.method160(arg0 + 10294, 15177, 2, 37821 + arg2) - 128 >> -463135775) + -(-128 + Class4.method160(arg0, 15177, 1, arg2) >> 252161186)));
+
+        int i = (-128 + Class4.method160(arg0 + 45365, 15177, 4, 91923 + arg2) - (-(Class4.method160(arg0 + 10294, 15177, 2, 37821 + arg2) - 128 >> -463135775) + -(-128 + Class4.method160(arg0, 15177, 1, arg2) >> 252161186)));
             i = 35 + (int) (0.3 * (double) i);
             if(arg1 != -45)
                 return -24;
@@ -186,14 +174,12 @@ public class Class42 {
             } else
                 i = 10;
             return i;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("oa.H(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public static void method889(int arg0) {
-        try {
-            anInt1009++;
+
+        anInt1009++;
             if(arg0 < 3)
                 method883((byte) 24, 79);
             while(Cache.outgoingbuffer.method510(121, Class40_Sub5_Sub12.packetsize) >= 27) {
@@ -236,14 +222,12 @@ public class Class42 {
                 class40_sub5_sub17_sub4_sub2.method787((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]) + i_5_, -7717, (i_7_ ^ 0xffffffff) == -2, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]) + i_4_);
             }
             Cache.outgoingbuffer.finishBitAccess((byte) -110);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "oa.F(" + arg0 + ')');
-        }
+
     }
 
     public int method882(int arg0, int arg1) {
-        try {
-            if(arg1 > -56)
+
+        if(arg1 > -56)
                 return 76;
             anInt992++;
             int i = -2 + anIntArray996.length;
@@ -256,8 +240,6 @@ public class Class42 {
                     return -1;
                 i_0_ = i_0_ + 2 & i;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "oa.E(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 }

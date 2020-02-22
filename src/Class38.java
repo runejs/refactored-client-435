@@ -37,8 +37,8 @@ public abstract class Class38 {
     }
 
     public static void method439(byte arg0) {
-        try {
-            aClass1_882 = null;
+
+        aClass1_882 = null;
             aClass1_895 = null;
             if(arg0 <= 120)
                 aClass1_883 = null;
@@ -53,14 +53,12 @@ public abstract class Class38 {
             aClass68_887 = null;
             aClass1_886 = null;
             aClass1_888 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "na.J(" + arg0 + ')');
-        }
+
     }
 
     public static void method440(byte arg0) {
-        try {
-            anInt891++;
+
+        anInt891++;
             if(ISAAC.aBoolean512) {
                 Class51.anIntArray1198 = null;
                 GameObject.aClass68_3042 = null;
@@ -90,19 +88,15 @@ public abstract class Class38 {
                     ISAAC.aBoolean512 = false;
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "na.K(" + arg0 + ')');
-        }
+
     }
 
     public static void method441(Class6 arg0, int arg1) {
-        try {
-            anInt897++;
+
+        anInt897++;
             int i = -109 / ((arg1 + 14) / 32);
             Class40_Sub5_Sub17_Sub4.aClass6_3144 = arg0;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("na.L(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
-        }
+
     }
 
     public abstract int method442(int i, int i_0_, int i_1_);

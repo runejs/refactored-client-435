@@ -138,8 +138,8 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
     public abstract void method223() throws Exception;
 
     public void run() {
-        try {
-            for(; ; ) {
+
+        for(; ; ) {
                 synchronized(this) {
                     if(aBoolean1820) {
                         if(aLong1821 == 0L)
@@ -151,9 +151,6 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
                 }
                 Class43.method890(5L, -86);
             }
-        } catch(Exception exception) {
-            Class6.method169(null, (byte) -123, exception);
-        }
     }
 
     public abstract int method224() throws Exception;

@@ -108,7 +108,7 @@ public class RSString implements Interface1 {
     }
 
     public static void method71(int arg0) {
-        try {
+
             Class4.anInt182 = 0;
             int i = (((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3098) >> 2067257703) + Class40_Sub5_Sub2.anInt2307);
             int i_10_ = (Class26.anInt635 + ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) >> 1064414503));
@@ -120,14 +120,12 @@ public class RSString implements Interface1 {
             if((Class4.anInt182 ^ 0xffffffff) == -2 && (i ^ 0xffffffff) <= -3140 && i <= 3199 && i_10_ >= 3008 && (i_10_ ^ 0xffffffff) >= -3063)
                 Class4.anInt182 = 0;
             int i_11_ = 74 / ((arg0 - 42) / 38);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.GA(" + arg0 + ')');
-        }
+
     }
 
     public static byte[] method74(int arg0, Class6 arg1, int arg2, int arg3, int arg4) {
-        try {
-            anInt1686++;
+
+        anInt1686++;
             if(arg3 >= -98)
                 method83((byte) -1);
             long l = ((long) (arg0 + 37 * arg2 & 0xffff) + ((long) arg4 << -1686849184) + (long) (arg2 << -1491383504));
@@ -142,14 +140,12 @@ public class RSString implements Interface1 {
             if(aClass9_1684 != null)
                 aClass9_1684.method230(-7208, l, new Class40_Sub5_Sub6(is));
             return is;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("a.O(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ',' + arg4 + ')'));
-        }
+
     }
 
     public static void method83(byte arg0) {
-        try {
-            aClass9_1684 = null;
+
+        aClass9_1684 = null;
             aClass1_1713 = null;
             aByteArrayArray1715 = null;
             aClass1_1677 = null;
@@ -164,9 +160,7 @@ public class RSString implements Interface1 {
             aClass1_1691 = null;
             aClass1_1703 = null;
             anIntArray1706 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.K(" + arg0 + ')');
-        }
+
     }
 
     /*synthetic*/
@@ -179,42 +173,36 @@ public class RSString implements Interface1 {
     }
 
     public RSString method50(byte arg0, int arg1) {
-        try {
-            anInt1658++;
+
+        anInt1658++;
             if(arg0 != 95)
                 anInt1690 = 126;
             return method68(arg0 + -95, arg1, anInt1680);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.PA(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public int method51(int arg0, int arg1, byte[] arg2, int arg3, int arg4) {
-        try {
-            Class18.method278(aByteArray1692, arg0, arg2, arg3, arg1 - arg0);
+
+        Class18.method278(aByteArray1692, arg0, arg2, arg3, arg1 - arg0);
             if(arg4 != -40)
                 method78(68, -2);
             anInt1674++;
             return -arg0 + arg1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("a.I(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ',' + arg4 + ')'));
-        }
+
     }
 
     public int method52(byte arg0) {
-        try {
-            anInt1695++;
+
+        anInt1695++;
             if(arg0 != -34)
                 aClass1_1691 = null;
             return method88(false, 10);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.T(" + arg0 + ')');
-        }
+
     }
 
     public RSString method53(int arg0) {
-        try {
-            anInt1662++;
+
+        anInt1662++;
             RSString class1 = new RSString();
             class1.anInt1680 = anInt1680;
             class1.aByteArray1692 = new byte[anInt1680];
@@ -237,14 +225,12 @@ public class RSString implements Interface1 {
                     bool = true;
             }
             return class1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.V(" + arg0 + ')');
-        }
+
     }
 
     public boolean method54(RSString arg0, int arg1) {
-        try {
-            anInt1707++;
+
+        anInt1707++;
             if(arg0 == null)
                 return false;
             if((anInt1680 ^ 0xffffffff) != (arg0.anInt1680 ^ 0xffffffff))
@@ -270,36 +256,30 @@ public class RSString implements Interface1 {
                     return false;
             }
             return true;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("a.MA(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
-        }
+
     }
 
     public int method55(int arg0, boolean arg1) {
-        try {
-            anInt1667++;
+
+        anInt1667++;
             if(arg1 != false)
                 method80(-9);
             return 0xff & aByteArray1692[arg0];
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.OA(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public int method57(byte arg0, int arg1) {
-        try {
-            anInt1700++;
+
+        anInt1700++;
             if(arg0 != -5)
                 return -56;
             return method64(0, arg1, true);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.LA(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public long method58(byte arg0) {
-        try {
-            anInt1678++;
+
+        anInt1678++;
             long l = 0L;
             for(int i = 0; (anInt1680 ^ 0xffffffff) < (i ^ 0xffffffff); i++) {
                 if((i ^ 0xffffffff) <= -13)
@@ -319,36 +299,30 @@ public class RSString implements Interface1 {
             if(arg0 < 88)
                 method89(true);
             return l;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.P(" + arg0 + ')');
-        }
+
     }
 
     public int method59(int arg0) {
-        try {
-            if(arg0 != -3136)
+
+        if(arg0 != -3136)
                 return -11;
             anInt1693++;
             return anInt1680;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.J(" + arg0 + ')');
-        }
+
     }
 
     public int method60(RSString arg0, int arg1) {
-        try {
-            if(arg1 != 32)
+
+        if(arg1 != 32)
                 return 110;
             anInt1657++;
             return method81(arg0, 0, true);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("a.H(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
-        }
+
     }
 
     public RSString method61(boolean arg0) {
-        try {
-            RSString class1 = new RSString();
+
+        RSString class1 = new RSString();
             anInt1710++;
             class1.anInt1680 = anInt1680;
             class1.aByteArray1692 = new byte[anInt1680];
@@ -358,14 +332,12 @@ public class RSString implements Interface1 {
             for(/**/; (anInt1680 ^ 0xffffffff) < (i ^ 0xffffffff); i++)
                 class1.aByteArray1692[i] = (byte) 42;
             return class1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.C(" + arg0 + ')');
-        }
+
     }
 
     public RSString method62(int arg0) {
-        try {
-            anInt1676++;
+
+        anInt1676++;
             RSString class1 = new RSString();
             if(arg0 != 57)
                 method75((byte) 100, null);
@@ -385,14 +357,12 @@ public class RSString implements Interface1 {
                     break;
             }
             return class1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.EA(" + arg0 + ')');
-        }
+
     }
 
     public boolean method63(RSString arg0, boolean arg1) {
-        try {
-            anInt1712++;
+
+        anInt1712++;
             if(arg1 != true)
                 aClass1_1713 = null;
             if(arg0 == null)
@@ -410,14 +380,12 @@ public class RSString implements Interface1 {
                     return false;
             }
             return true;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("a.DA(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
-        }
+
     }
 
     public int method64(int arg0, int arg1, boolean arg2) {
-        try {
-            anInt1689++;
+
+        anInt1689++;
             byte i = (byte) arg1;
             for(int i_5_ = arg0; i_5_ < anInt1680; i_5_++) {
                 if((i ^ 0xffffffff) == (aByteArray1692[i_5_] ^ 0xffffffff))
@@ -426,9 +394,7 @@ public class RSString implements Interface1 {
             if(arg2 != true)
                 aClass1_1703 = null;
             return -1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("a.AA(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public void method65(int arg1, int arg2, Graphics arg3) {
@@ -459,17 +425,15 @@ public class RSString implements Interface1 {
     }
 
     public int hashCode() {
-        try {
-            anInt1669++;
+
+        anInt1669++;
             return method76((byte) 41);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.hashCode(" + ')');
-        }
+
     }
 
     public boolean method67(int arg0, int arg1) {
-        try {
-            if((arg1 ^ 0xffffffff) > -2 || arg1 > 36)
+
+        if((arg1 ^ 0xffffffff) > -2 || arg1 > 36)
                 arg1 = 10;
             if(arg0 != 90)
                 method64(112, 37, true);
@@ -508,14 +472,12 @@ public class RSString implements Interface1 {
                 bool_6_ = true;
             }
             return bool_6_;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.QA(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public RSString method68(int arg0, int arg1, int arg2) {
-        try {
-            anInt1683++;
+
+        anInt1683++;
             if(arg0 != 0)
                 return null;
             RSString class1 = new RSString();
@@ -523,14 +485,12 @@ public class RSString implements Interface1 {
             class1.anInt1680 = -arg1 + arg2;
             Class18.method278(aByteArray1692, arg1, class1.aByteArray1692, 0, class1.anInt1680);
             return class1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("a.R(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public RSString method69(RSString arg0, int arg1, int arg2) {
-        try {
-            anInt1663++;
+
+        anInt1663++;
             if(!aBoolean1675)
                 throw new IllegalArgumentException();
             if(arg1 != 16039)
@@ -551,14 +511,12 @@ public class RSString implements Interface1 {
             if(anInt1680 < arg2 + arg0.anInt1680)
                 anInt1680 = arg0.anInt1680 + arg2;
             return this;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("a.D(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public RSString method70(int arg0, int arg1) {
-        try {
-            anInt1701++;
+
+        anInt1701++;
             if(arg0 <= arg1 || arg0 > 255)
                 throw new IllegalArgumentException("invalid char");
             RSString class1 = new RSString();
@@ -567,23 +525,19 @@ public class RSString implements Interface1 {
             Class18.method278(aByteArray1692, 0, class1.aByteArray1692, 0, anInt1680);
             class1.aByteArray1692[anInt1680] = (byte) arg0;
             return class1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.HA(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public boolean equals(Object arg0) {
-        try {
-            anInt1666++;
+
+        anInt1666++;
             throw new RuntimeException();
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.equals(" + (arg0 != null ? "{...}" : "null") + ')');
-        }
+
     }
 
     public RSString method72(RSString arg0, byte arg1) {
-        try {
-            anInt1685++;
+
+        anInt1685++;
             if(!aBoolean1675)
                 throw new IllegalArgumentException();
             anInt1696 = 0;
@@ -601,27 +555,23 @@ public class RSString implements Interface1 {
             if(arg1 != -87)
                 return null;
             return this;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("a.Q(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
-        }
+
     }
 
     public int method73(int arg0, FontMetrics arg1) {
-        try {
-            String string;
+
+        String string;
             string = new String(aByteArray1692, 0, anInt1680, StandardCharsets.ISO_8859_1);
             if(arg0 > -6)
                 return 68;
             anInt1664++;
             return arg1.stringWidth(string);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("a.NA(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public boolean method75(byte arg0, RSString arg1) {
-        try {
-            anInt1709++;
+
+        anInt1709++;
             if(arg1.anInt1680 > anInt1680)
                 return false;
             if(arg0 != 116)
@@ -631,28 +581,24 @@ public class RSString implements Interface1 {
                     return false;
             }
             return true;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("a.FA(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public int method76(byte arg0) {
-        try {
-            if(arg0 != 41)
+
+        if(arg0 != 41)
                 aClass6_1705 = null;
             anInt1671++;
             int i = 0;
             for(int i_12_ = 0; anInt1680 > i_12_; i_12_++)
                 i = (0xff & aByteArray1692[i_12_]) + -i + (i << -361727451);
             return i;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.B(" + arg0 + ')');
-        }
+
     }
 
     public RSString method77(byte arg0) {
-        try {
-            anInt1708++;
+
+        anInt1708++;
             if(!aBoolean1675)
                 throw new IllegalArgumentException();
             anInt1696 = 0;
@@ -663,14 +609,12 @@ public class RSString implements Interface1 {
                 aByteArray1692 = is;
             }
             return this;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.E(" + arg0 + ')');
-        }
+
     }
 
     public RSString method78(int arg0, int arg1) {
-        try {
-            anInt1714++;
+
+        anInt1714++;
             if((arg1 ^ 0xffffffff) >= -1 || arg1 > 255)
                 throw new IllegalArgumentException("invalid char");
             if(!aBoolean1675)
@@ -689,14 +633,12 @@ public class RSString implements Interface1 {
             if(arg0 > -21)
                 return null;
             return this;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.N(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public RSString method79(int arg0) {
-        try {
-            anInt1661++;
+
+        anInt1661++;
             RSString class1 = new RSString();
             class1.anInt1680 = anInt1680;
             class1.aByteArray1692 = new byte[anInt1680];
@@ -709,27 +651,23 @@ public class RSString implements Interface1 {
             if(arg0 >= -127)
                 aClass1_1691 = null;
             return class1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.U(" + arg0 + ')');
-        }
+
     }
 
     public byte[] method80(int arg0) {
-        try {
-            if(arg0 != 0)
+
+        if(arg0 != 0)
                 method69(null, -108, -121);
             byte[] is = new byte[anInt1680];
             Class18.method278(aByteArray1692, 0, is, 0, anInt1680);
             anInt1688++;
             return is;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.L(" + arg0 + ')');
-        }
+
     }
 
     public int method81(RSString arg0, int arg1, boolean arg2) {
-        try {
-            anInt1682++;
+
+        anInt1682++;
             int[] is = new int[arg0.anInt1680];
             int[] is_14_ = new int[arg0.anInt1680];
             int[] is_15_ = new int[256];
@@ -778,34 +716,28 @@ public class RSString implements Interface1 {
                     return 1 + i_23_;
             }
             return -1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("a.M(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ')'));
-        }
+
     }
 
     public boolean method82(int arg0) {
-        try {
-            if(arg0 < 101)
+
+        if(arg0 < 101)
                 anInt1668 = 12;
             anInt1697++;
             return method67(90, 10);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.IA(" + arg0 + ')');
-        }
+
     }
 
     public String toString() {
-        try {
-            anInt1672++;
+
+        anInt1672++;
             throw new RuntimeException();
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.toString(" + ')');
-        }
+
     }
 
     public int method84(RSString arg0, byte arg1) {
-        try {
-            int i;
+
+        int i;
             if(arg0.anInt1680 >= anInt1680)
                 i = anInt1680;
             else
@@ -824,14 +756,12 @@ public class RSString implements Interface1 {
             if((arg0.anInt1680 ^ 0xffffffff) > (anInt1680 ^ 0xffffffff))
                 return 1;
             return 0;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("a.CA(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')'));
-        }
+
     }
 
     public RSString method85(int arg0) {
-        try {
-            anInt1656++;
+
+        anInt1656++;
             boolean bool = true;
             RSString class1 = new RSString();
             class1.anInt1680 = anInt1680;
@@ -852,28 +782,24 @@ public class RSString implements Interface1 {
                 }
             }
             return class1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.BA(" + arg0 + ')');
-        }
+
     }
 
     public long method86(int arg0) {
-        try {
-            anInt1694++;
+
+        anInt1694++;
             long l = 0L;
             if(arg0 != 1544463557)
                 aByteArrayArray1715 = null;
             for(int i = 0; (i ^ 0xffffffff) > (anInt1680 ^ 0xffffffff); i++)
                 l = -l + (l << 1544463557) + (long) (0xff & aByteArray1692[i]);
             return l;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.KA(" + arg0 + ')');
-        }
+
     }
 
     public boolean method87(int arg0, RSString arg1) {
-        try {
-            anInt1655++;
+
+        anInt1655++;
             if((arg1.anInt1680 ^ 0xffffffff) < (anInt1680 ^ 0xffffffff))
                 return false;
             if(arg0 <= 62)
@@ -884,14 +810,12 @@ public class RSString implements Interface1 {
                     return false;
             }
             return true;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("a.A(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public int method88(boolean arg0, int arg1) {
-        try {
-            if((arg1 ^ 0xffffffff) > -2 || arg1 > 36)
+
+        if((arg1 ^ 0xffffffff) > -2 || arg1 > 36)
                 arg1 = 10;
             boolean bool = false;
             anInt1670++;
@@ -929,14 +853,12 @@ public class RSString implements Interface1 {
             if(!bool)
                 throw new NumberFormatException();
             return i;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.F(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public RSString method89(boolean arg0) {
-        try {
-            anInt1659++;
+
+        anInt1659++;
             int i = 0;
             int i_31_ = anInt1680;
             for(/**/; ((i ^ 0xffffffff) > (anInt1680 ^ 0xffffffff) && (aByteArray1692[i] >= 0 && aByteArray1692[i] <= 32 || (0xff & aByteArray1692[i]) == 160)); i++) {
@@ -955,8 +877,6 @@ public class RSString implements Interface1 {
             for(int i_32_ = 0; (class1.anInt1680 ^ 0xffffffff) < (i_32_ ^ 0xffffffff); i_32_++)
                 class1.aByteArray1692[i_32_] = aByteArray1692[i + i_32_];
             return class1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "a.S(" + arg0 + ')');
-        }
+
     }
 }

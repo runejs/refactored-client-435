@@ -329,7 +329,6 @@ public class Class53 {
 
     public static void method951(int arg0, RSFont arg1, RSFont arg2) {
         do {
-            try {
                 Class38.aClass68_887.method1046((byte) 90);
                 anInt1245++;
                 if((Class51.anInt1197 ^ 0xffffffff) == -1 || Class51.anInt1197 == 5) {
@@ -430,15 +429,13 @@ public class Class53 {
                     Class62.aCanvas1469.repaint();
                 }
                 break;
-            } catch(RuntimeException runtimeexception) {
-                throw Class8.method216(runtimeexception, ("rd.C(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + (arg2 != null ? "{...}" : "null") + ')'));
-            }
+
         } while(false);
     }
 
     public static void method952(int arg0) {
-        try {
-            aClass40_Sub5_Sub14_Sub2_1270 = null;
+
+        aClass40_Sub5_Sub14_Sub2_1270 = null;
             aClass40_Sub5_Sub14_Sub1_1268 = null;
             aClass9_1247 = null;
             aClass1_1243 = null;
@@ -455,8 +452,6 @@ public class Class53 {
             aLongArray1267 = null;
             aClass1_1263 = null;
             aClass1_1260 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "rd.D(" + arg0 + ')');
-        }
+
     }
 }

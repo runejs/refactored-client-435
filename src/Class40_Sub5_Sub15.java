@@ -43,8 +43,8 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public Class41[] aClass41Array2794;
 
     public Class40_Sub5_Sub15(Class6 arg0, Class6 arg1, int arg2, boolean arg3) {
-        try {
-            Class45 class45 = new Class45();
+
+        Class45 class45 = new Class45();
             int i = arg0.method190(arg2, (byte) 16);
             aClass41Array2794 = new Class41[i];
             int[] is = arg0.method192(arg2, true);
@@ -69,14 +69,12 @@ public class Class40_Sub5_Sub15 extends SubNode {
                 }
                 aClass41Array2794[is[i_0_]] = new Class41(is_1_, class40_sub13);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("t.<init>(" + (arg0 != null ? "{...}" : "null") + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ',' + arg3 + ')'));
-        }
+
     }
 
     public static void method734(int arg0) {
-        try {
-            aClass1_2792 = null;
+
+        aClass1_2792 = null;
             aClass40_Sub5_Sub14_Sub2_2775 = null;
             aClass1_2790 = null;
             aClass40_Sub5_Sub14_Sub2Array2776 = null;
@@ -90,14 +88,12 @@ public class Class40_Sub5_Sub15 extends SubNode {
             aClass1_2786 = null;
             aClass1_2781 = null;
             aClass1_2774 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "t.A(" + arg0 + ')');
-        }
+
     }
 
     public static boolean method735(byte arg0, int arg1) {
-        try {
-            anInt2783++;
+
+        anInt2783++;
             if(arg1 >= 97 && arg1 <= 122)
                 return true;
             if((arg1 ^ 0xffffffff) <= -66 && arg1 <= 90)
@@ -107,9 +103,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
             if(arg0 != -37)
                 method734(31);
             return false;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "t.B(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method736(boolean arg0, Class40_Sub5_Sub17_Sub4 arg1) {
@@ -186,12 +180,10 @@ public class Class40_Sub5_Sub15 extends SubNode {
     }
 
     public boolean method737(int arg0, int arg1) {
-        try {
-            int i = 104 % ((58 - arg1) / 61);
+
+        int i = 104 % ((58 - arg1) / 61);
             anInt2785++;
             return aClass41Array2794[arg0].aBoolean985;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "t.C(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 }

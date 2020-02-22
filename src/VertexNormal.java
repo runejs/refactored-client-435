@@ -60,8 +60,8 @@ public class VertexNormal {
     public int magnitude;
 
     public static void method914(int arg0) {
-        try {
-            aClass1_1115 = null;
+
+        aClass1_1115 = null;
             aClass1_1114 = null;
             aClass1_1109 = null;
             aClass1_1117 = null;
@@ -81,8 +81,6 @@ public class VertexNormal {
             aClass6_Sub1_1104 = null;
             int i = 49 / ((arg0 - 2) / 50);
             aClass1_1111 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "pc.A(" + arg0 + ')');
-        }
+
     }
 }

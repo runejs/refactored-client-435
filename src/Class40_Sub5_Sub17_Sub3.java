@@ -44,8 +44,8 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
     public int anInt3067;
 
     public static void method775(boolean arg0) {
-        try {
-            anInt3064++;
+
+        anInt3064++;
             int i = ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anInt3089) + Class48.anInt1126);
             if(arg0 != false)
                 method778(true, null);
@@ -102,9 +102,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                     Class40_Sub6.anInt2107 += (-Class40_Sub6.anInt2107 + i_9_) / 80;
             } else
                 Class40_Sub6.anInt2107 += (-Class40_Sub6.anInt2107 + i_9_) / 24;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "je.D(" + arg0 + ')');
-        }
+
     }
 
     public static void method776(byte arg0) {
@@ -147,17 +145,15 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
     }
 
     public static RSString method777(int arg0, int arg1) {
-        try {
-            anInt3070++;
+
+        anInt3070++;
             RSString class1 = new RSString();
             class1.aByteArray1692 = new byte[arg1];
             if(arg0 != -18596)
                 anInt3065 = 36;
             class1.anInt1680 = 0;
             return class1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "je.A(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method778(boolean arg0, Class66 arg1) {
@@ -168,8 +164,8 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
     }
 
     public static void method779(Component arg0, boolean arg1, Class6 arg2, Class6 arg3) {
-        try {
-            anInt3057++;
+
+        anInt3057++;
             if(!ISAAC.aBoolean512) {
                 Class8.aClass68_298 = Class40_Sub5_Sub13.method649(265, 128, arg0, -4875);
                 Rasterizer.method663();
@@ -292,14 +288,12 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                 Class40_Sub5_Sub11.aBoolean2631 = true;
                 ISAAC.aBoolean512 = true;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("je.F(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + (arg3 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public static void method780(int arg0) {
-        try {
-            if(arg0 != 24399)
+
+        if(arg0 != 24399)
                 method779(null, false, null, null);
             aBooleanArray3056 = null;
             aClass1_3054 = null;
@@ -313,18 +307,14 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             aClass1_3055 = null;
             aClass1_3049 = null;
             aClass1_3071 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "je.B(" + arg0 + ')');
-        }
+
     }
 
     public Model method756(int arg0) {
-        try {
-            anInt3052++;
+
+        anInt3052++;
             int i = 58 % ((41 - arg0) / 47);
             return Class44.method897(anInt3067, 10).method753(true, anInt3058, 26910);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "je.UA(" + arg0 + ')');
-        }
+
     }
 }

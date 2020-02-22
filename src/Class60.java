@@ -33,21 +33,19 @@ public class Class60 {
     }
 
     public static RSFont method987(int arg0) {
-        try {
-            anInt1414++;
+
+        anInt1414++;
             RSFont class40_sub5_sub14_sub1 = new RSFont((Class40_Sub5_Sub17_Sub4.anIntArray3111), Class17.anIntArray456, (NPC.anIntArray3312), Buffer.anIntArray1972, Class58.aByteArrayArray1370);
             NpcDefinition.method569(true);
             if(arg0 < 4)
                 return null;
             return class40_sub5_sub14_sub1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "td.B(" + arg0 + ')');
-        }
+
     }
 
     public static int method988(Class6 arg0, Class6 arg1, int arg2) {
-        try {
-            anInt1412++;
+
+        anInt1412++;
             int i = 0;
             if(arg0.method194(Class32.aClass1_772, Class22_Sub2.aClass1_1886, -1234))
                 i++;
@@ -61,9 +59,7 @@ public class Class60 {
                 i++;
             int i_0_ = 84 % ((11 - arg2) / 47);
             return i;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("td.C(" + (arg0 != null ? "{...}" : "null") + ',' + (arg1 != null ? "{...}" : "null") + ',' + arg2 + ')'));
-        }
+
     }
 
     public static void method989(boolean arg0) {
@@ -147,8 +143,8 @@ public class Class60 {
     }
 
     public static RSString method991(int arg0, long arg1) {
-        try {
-            anInt1403++;
+
+        anInt1403++;
             if(arg1 <= 0L || (arg1 ^ 0xffffffffffffffffL) <= -6582952005840035282L)
                 return null;
             if((arg1 % 37L ^ 0xffffffffffffffffL) == -1L)
@@ -171,9 +167,7 @@ public class Class60 {
             class1.aByteArray1692 = is;
             class1.anInt1680 = is.length;
             return class1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "td.A(" + arg0 + ',' + arg1 + ')');
-        }
+
     }
 
     public static void method992(int arg0) {
@@ -270,16 +264,14 @@ public class Class60 {
     }
 
     public static void method994(boolean arg0) {
-        try {
-            aClass1_1401 = null;
+
+        aClass1_1401 = null;
             aClass1_1408 = null;
             aClass1_1409 = null;
             if(arg0 != false)
                 aClass1_1408 = null;
             aClass1_1411 = null;
             aClass1_1416 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "td.F(" + arg0 + ')');
-        }
+
     }
 }
