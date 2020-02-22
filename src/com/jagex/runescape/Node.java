@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.GameObjectDefinition;
+
 public class Node {
     public static RSString aClass1_923;
     public static RSString aClass1_924;

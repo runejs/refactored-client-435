@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.def.NpcDefinition;
+
 import java.util.Date;
 
 public class Class43 {

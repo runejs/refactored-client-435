@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
@@ -145,7 +146,7 @@ public class Class52 {
                         Npc.aScene_3301.method124(arg7, arg2, arg0);
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                         if(gameObjectDefinition.solid)
-                            Landscape.aCollisionMapArray1167[arg7].method148(-4, arg2, i_3_, gameObjectDefinition.aBoolean2528, arg0, i_4_);
+                            Landscape.aCollisionMapArray1167[arg7].method148(-4, arg2, i_3_, gameObjectDefinition.walkable, arg0, i_4_);
                     }
                     if(arg6 == 1)
                         Npc.aScene_3301.method127(arg7, arg2, arg0);
@@ -155,7 +156,7 @@ public class Class52 {
                         if(((arg2 + gameObjectDefinition.sizeX ^ 0xffffffff) < -104) || arg0 + gameObjectDefinition.sizeX > 103 || arg2 + gameObjectDefinition.sizeY > 103 || (gameObjectDefinition.sizeY + arg0 ^ 0xffffffff) < -104)
                             return;
                         if(gameObjectDefinition.solid)
-                            Landscape.aCollisionMapArray1167[arg7].method149(gameObjectDefinition.aBoolean2528, arg0, arg2, i_3_, gameObjectDefinition.sizeX, (byte) -55, gameObjectDefinition.sizeY);
+                            Landscape.aCollisionMapArray1167[arg7].method149(gameObjectDefinition.walkable, arg0, arg2, i_3_, gameObjectDefinition.sizeX, (byte) -55, gameObjectDefinition.sizeY);
                     }
                     if((arg6 ^ 0xffffffff) == -4) {
                         Npc.aScene_3301.method131(arg7, arg2, arg0);

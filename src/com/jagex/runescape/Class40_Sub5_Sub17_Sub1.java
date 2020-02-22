@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
@@ -537,7 +538,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     int i_42_ = 0;
                     if((type ^ 0xffffffff) == -12)
                         i_42_ += 256;
-                    if(scene.method137(plane, localX, localY, vertexMix, i_41_, i_40_, renderable, i_42_, hash, objectConfig) && gameObjectDefinition.aBoolean2541) {
+                    if(scene.method137(plane, localX, localY, vertexMix, i_41_, i_40_, renderable, i_42_, hash, objectConfig) && gameObjectDefinition.castsShadow) {
                         Model class40_sub5_sub17_sub5;
                         if(renderable instanceof Model)
                             class40_sub5_sub17_sub5 = ((Model) renderable);
@@ -557,7 +558,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     }
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)
-                    collisionMap.method154(localX, gameObjectDefinition.aBoolean2528, 120, gameObjectDefinition.sizeY, face, localY, gameObjectDefinition.sizeX);
+                    collisionMap.method154(localX, gameObjectDefinition.walkable, 120, gameObjectDefinition.sizeY, face, localY, gameObjectDefinition.sizeX);
             } else if(type >= 12) {
                 Renderable renderable;
                 if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
@@ -568,7 +569,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 if((type ^ 0xffffffff) <= -13 && (type ^ 0xffffffff) >= -18 && type != 13 && (plane ^ 0xffffffff) < -1)
                     Class6.anIntArrayArrayArray262[plane][localX][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY]), 2340));
                 if(gameObjectDefinition.solid && collisionMap != null)
-                    collisionMap.method154(localX, gameObjectDefinition.aBoolean2528, 108, gameObjectDefinition.sizeY, face, localY, gameObjectDefinition.sizeX);
+                    collisionMap.method154(localX, gameObjectDefinition.walkable, 108, gameObjectDefinition.sizeY, face, localY, gameObjectDefinition.sizeX);
             } else if(type == 0) {
                 Renderable renderable;
                 if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
@@ -578,41 +579,41 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 scene.method94(plane, localX, localY, vertexMix, renderable, null, Class32.anIntArray761[face], 0, hash, objectConfig);
                 if((face ^ 0xffffffff) != -1) {
                     if((face ^ 0xffffffff) == -2) {
-                        if(gameObjectDefinition.aBoolean2541) {
+                        if(gameObjectDefinition.castsShadow) {
                             Class19.aByteArrayArrayArray492[plane][localX][localY + 1] = (byte) 50;
                             Class19.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
                         }
-                        if(gameObjectDefinition.aBoolean2521)
+                        if(gameObjectDefinition.wall)
                             Class6.anIntArrayArrayArray262[plane][localX][localY + 1] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY + 1]), 1170));
                     } else if((face ^ 0xffffffff) != -3) {
                         if(face == 3) {
-                            if(gameObjectDefinition.aBoolean2541) {
+                            if(gameObjectDefinition.castsShadow) {
                                 Class19.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
                                 Class19.aByteArrayArrayArray492[plane][localX + 1][localY] = (byte) 50;
                             }
-                            if(gameObjectDefinition.aBoolean2521)
+                            if(gameObjectDefinition.wall)
                                 Class6.anIntArrayArrayArray262[plane][localX][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY]), 1170));
                         }
                     } else {
-                        if(gameObjectDefinition.aBoolean2541) {
+                        if(gameObjectDefinition.castsShadow) {
                             Class19.aByteArrayArrayArray492[plane][1 + localX][localY] = (byte) 50;
                             Class19.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
                         }
-                        if(gameObjectDefinition.aBoolean2521)
+                        if(gameObjectDefinition.wall)
                             Class6.anIntArrayArrayArray262[plane][localX + 1][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX + 1][localY]), 585));
                     }
                 } else {
-                    if(gameObjectDefinition.aBoolean2541) {
+                    if(gameObjectDefinition.castsShadow) {
                         Class19.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
                         Class19.aByteArrayArrayArray492[plane][localX][(localY + 1)] = (byte) 50;
                     }
-                    if(gameObjectDefinition.aBoolean2521)
+                    if(gameObjectDefinition.wall)
                         Class6.anIntArrayArrayArray262[plane][localX][localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][localY]), 585));
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)
-                    collisionMap.method150(localY, type, face, localX, gameObjectDefinition.aBoolean2528, (byte) 95);
-                if((gameObjectDefinition.anInt2505 ^ 0xffffffff) != -17)
-                    scene.method115(plane, localX, localY, gameObjectDefinition.anInt2505);
+                    collisionMap.method150(localY, type, face, localX, gameObjectDefinition.walkable, (byte) 95);
+                if((gameObjectDefinition.offsetAmplifier ^ 0xffffffff) != -17)
+                    scene.method115(plane, localX, localY, gameObjectDefinition.offsetAmplifier);
             } else if((type ^ 0xffffffff) == -2) {
                 Renderable renderable;
                 if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
@@ -620,7 +621,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 else
                     renderable = new GameObject(objectId, 1, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (gameObjectDefinition.animationId), true);
                 scene.method94(plane, localX, localY, vertexMix, renderable, null, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash, objectConfig);
-                if(gameObjectDefinition.aBoolean2541) {
+                if(gameObjectDefinition.castsShadow) {
                     if(face == 0)
                         Class19.aByteArrayArrayArray492[plane][localX][(localY + 1)] = (byte) 50;
                     else if(face == 1)
@@ -631,7 +632,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         Class19.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)
-                    collisionMap.method150(localY, type, face, localX, gameObjectDefinition.aBoolean2528, (byte) 95);
+                    collisionMap.method150(localY, type, face, localX, gameObjectDefinition.walkable, (byte) 95);
             } else if((type ^ 0xffffffff) == -3) {
                 int i_46_ = 0x3 & face + 1;
                 Renderable renderable;
@@ -644,7 +645,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     renderable_47_ = new GameObject(objectId, 2, i_46_, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (gameObjectDefinition.animationId), true);
                 }
                 scene.method94(plane, localX, localY, vertexMix, renderable, renderable_47_, Class32.anIntArray761[face], Class32.anIntArray761[i_46_], hash, objectConfig);
-                if(gameObjectDefinition.aBoolean2521) {
+                if(gameObjectDefinition.wall) {
                     if((face ^ 0xffffffff) != -1) {
                         if((face ^ 0xffffffff) == -2) {
                             Class6.anIntArrayArrayArray262[plane][localX][1 + localY] = (Class40_Sub5_Sub9.method619((Class6.anIntArrayArrayArray262[plane][localX][1 + localY]), 1170));
@@ -662,9 +663,9 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     }
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)
-                    collisionMap.method150(localY, type, face, localX, gameObjectDefinition.aBoolean2528, (byte) 95);
-                if((gameObjectDefinition.anInt2505 ^ 0xffffffff) != -17)
-                    scene.method115(plane, localX, localY, gameObjectDefinition.anInt2505);
+                    collisionMap.method150(localY, type, face, localX, gameObjectDefinition.walkable, (byte) 95);
+                if((gameObjectDefinition.offsetAmplifier ^ 0xffffffff) != -17)
+                    scene.method115(plane, localX, localY, gameObjectDefinition.offsetAmplifier);
             } else if((type ^ 0xffffffff) == -4) {
                 Renderable renderable;
                 if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
@@ -672,7 +673,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 else
                     renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 3, (byte) 124, vertexHeightRight);
                 scene.method94(plane, localX, localY, vertexMix, renderable, null, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash, objectConfig);
-                if(gameObjectDefinition.aBoolean2541) {
+                if(gameObjectDefinition.castsShadow) {
                     if((face ^ 0xffffffff) != -1) {
                         if(face == 1)
                             Class19.aByteArrayArrayArray492[plane][1 + localX][localY + 1] = (byte) 50;
@@ -684,7 +685,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         Class19.aByteArrayArrayArray492[plane][localX][(localY + 1)] = (byte) 50;
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)
-                    collisionMap.method150(localY, type, face, localX, gameObjectDefinition.aBoolean2528, (byte) 95);
+                    collisionMap.method150(localY, type, face, localX, gameObjectDefinition.walkable, (byte) 95);
             } else if((type ^ 0xffffffff) == -10) {
                 Renderable renderable;
                 if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
@@ -693,7 +694,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     renderable = new GameObject(objectId, type, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (gameObjectDefinition.animationId), true);
                 scene.method137(plane, localX, localY, vertexMix, 1, 1, renderable, 0, hash, objectConfig);
                 if(gameObjectDefinition.solid && collisionMap != null)
-                    collisionMap.method154(localX, gameObjectDefinition.aBoolean2528, -36, gameObjectDefinition.sizeY, face, localY, gameObjectDefinition.sizeX);
+                    collisionMap.method154(localX, gameObjectDefinition.walkable, -36, gameObjectDefinition.sizeY, face, localY, gameObjectDefinition.sizeX);
             } else {
                 if(gameObjectDefinition.adjustToTerrain) {
                     if(face == 1) {
@@ -728,7 +729,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     int i_51_ = scene.method122(plane, localX, localY);
                     int i_52_ = 16;
                     if((i_51_ ^ 0xffffffff) < -1)
-                        i_52_ = (GameObjectDefinition.getDefinition((0x1fffedf2 & i_51_) >> 1054745038).anInt2505);
+                        i_52_ = (GameObjectDefinition.getDefinition((0x1fffedf2 & i_51_) >> 1054745038).offsetAmplifier);
                     Renderable renderable;
                     if((gameObjectDefinition.animationId ^ 0xffffffff) == 0 && gameObjectDefinition.configChangeDest == null)
                         renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, (byte) 124, vertexHeightRight);

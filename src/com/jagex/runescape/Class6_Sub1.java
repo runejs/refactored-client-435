@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.media.renderable.actor.Npc;
 
 public class Class6_Sub1 extends Class6 {

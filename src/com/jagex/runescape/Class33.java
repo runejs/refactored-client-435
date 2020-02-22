@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.NpcDefinition;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -88,7 +90,7 @@ public class Class33 {
                     if(actor != null && actor.method784(1)) {
                         if(actor instanceof Npc) {
                             NpcDefinition class40_sub5_sub5 = (((Npc) actor).aClass40_Sub5_Sub5_3300);
-                            if(class40_sub5_sub5.anIntArray2426 != null)
+                            if(class40_sub5_sub5.childrenIds != null)
                                 class40_sub5_sub5 = class40_sub5_sub5.method577(arg0 + 27);
                             if(class40_sub5_sub5 == null)
                                 continue;

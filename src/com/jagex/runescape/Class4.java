@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.audio.Effect;
+import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.media.renderable.actor.Actor;
 
 public class Class4 {

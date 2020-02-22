@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
@@ -676,7 +678,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
                         return null;
                     }
                     class40_sub5_sub17_sub5.method810();
-                    class40_sub5_sub17_sub5.method802(64 + (class40_sub5_sub16.anInt2825), 768 + (class40_sub5_sub16.anInt2840), -50, -10, -50, true);
+                    class40_sub5_sub17_sub5.method802(64 + (class40_sub5_sub16.ambience), 768 + (class40_sub5_sub16.diffusion), -50, -10, -50, true);
                 }
                 Class53.aClass9_1264.method230(-7208, (long) ((i << -557905040) + i_11_), class40_sub5_sub17_sub5);
             }

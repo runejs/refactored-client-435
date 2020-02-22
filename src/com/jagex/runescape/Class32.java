@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.NpcDefinition;
+
 public class Class32 {
     public static int anInt744;
     public static PacketBuffer packetBuffer;

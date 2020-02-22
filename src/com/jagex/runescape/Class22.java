@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -89,7 +90,7 @@ public abstract class Class22 {
                 int i_10_ = (Npc.aScene_3301.method93(Player.anInt3267, i_8_, i_9_));
                 if(i_10_ != 0) {
                     i_10_ = 0x7fff & i_10_ >> -1684965490;
-                    int i_11_ = (GameObjectDefinition.getDefinition(i_10_).anInt2511);
+                    int i_11_ = (GameObjectDefinition.getDefinition(i_10_).icon);
                     if(i_11_ >= 0) {
                         int i_12_ = i_9_;
                         int i_13_ = i_8_;

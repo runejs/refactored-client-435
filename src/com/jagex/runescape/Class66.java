@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.def.NpcDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.media.renderable.actor.Npc;
 
@@ -167,7 +169,7 @@ public class Class66 {
 
         anInt1571++;
             if((NpcDefinition.anInt2394 ^ 0xffffffff) > -401) {
-                if(arg4.anIntArray2426 != null)
+                if(arg4.childrenIds != null)
                     arg4 = arg4.method577(-1);
                 if(arg4 != null && arg4.isClickable) {
                     RSString class1 = arg4.name;

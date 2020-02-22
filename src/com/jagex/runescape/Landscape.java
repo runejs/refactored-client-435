@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.zip.GZIPInputStream;
 
 import com.jagex.runescape.audio.Effect;
+import com.jagex.runescape.cache.def.NpcDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;

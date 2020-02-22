@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.NpcDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 
 public class Class56 {

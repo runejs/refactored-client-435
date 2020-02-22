@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.def.NpcDefinition;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -96,7 +99,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     arg5.method137(arg3, arg9, arg8, i_3_, i_7_, i_6_, renderable, i_8_, i_5_, i_4_);
                 }
                 if(gameObjectDefinition.solid)
-                    arg0.method154(arg9, gameObjectDefinition.aBoolean2528, arg6 ^ ~0x5644, gameObjectDefinition.sizeY, arg7, arg8, gameObjectDefinition.sizeX);
+                    arg0.method154(arg9, gameObjectDefinition.walkable, arg6 ^ ~0x5644, gameObjectDefinition.sizeY, arg7, arg8, gameObjectDefinition.sizeX);
             } else if((arg4 ^ 0xffffffff) <= -13) {
                 Renderable renderable;
                 if((gameObjectDefinition.animationId ^ 0xffffffff) != 0 || gameObjectDefinition.configChangeDest != null)
@@ -105,7 +108,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, arg4, (byte) 124, i_0_);
                 arg5.method137(arg3, arg9, arg8, i_3_, 1, 1, renderable, 0, i_5_, i_4_);
                 if(gameObjectDefinition.solid)
-                    arg0.method154(arg9, gameObjectDefinition.aBoolean2528, arg6 ^ ~0x5648, gameObjectDefinition.sizeY, arg7, arg8, gameObjectDefinition.sizeX);
+                    arg0.method154(arg9, gameObjectDefinition.walkable, arg6 ^ ~0x5648, gameObjectDefinition.sizeY, arg7, arg8, gameObjectDefinition.sizeX);
             } else if(arg4 == 0) {
                 Renderable renderable;
                 if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
@@ -114,7 +117,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, 0, (byte) 124, i_0_);
                 arg5.method94(arg3, arg9, arg8, i_3_, renderable, null, Class32.anIntArray761[arg7], 0, i_5_, i_4_);
                 if(gameObjectDefinition.solid)
-                    arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.aBoolean2528, (byte) 95);
+                    arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.walkable, (byte) 95);
             } else if((arg4 ^ 0xffffffff) == -2) {
                 Renderable renderable;
                 if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
@@ -123,7 +126,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     renderable = new GameObject(arg1, 1, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
                 arg5.method94(arg3, arg9, arg8, i_3_, renderable, null, Class40_Sub5_Sub15.anIntArray2788[arg7], 0, i_5_, i_4_);
                 if(gameObjectDefinition.solid)
-                    arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.aBoolean2528, (byte) 95);
+                    arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.walkable, (byte) 95);
             } else if(arg4 == 2) {
                 int i_9_ = arg7 + 1 & 0x3;
                 Renderable renderable;
@@ -137,7 +140,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 }
                 arg5.method94(arg3, arg9, arg8, i_3_, renderable, renderable_10_, Class32.anIntArray761[arg7], Class32.anIntArray761[i_9_], i_5_, i_4_);
                 if(gameObjectDefinition.solid)
-                    arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.aBoolean2528, (byte) 95);
+                    arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.walkable, (byte) 95);
             } else if(arg4 == 3) {
                 Renderable renderable;
                 if((gameObjectDefinition.animationId ^ 0xffffffff) != 0 || gameObjectDefinition.configChangeDest != null)
@@ -146,7 +149,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, 3, (byte) 124, i_0_);
                 arg5.method94(arg3, arg9, arg8, i_3_, renderable, null, Class40_Sub5_Sub15.anIntArray2788[arg7], 0, i_5_, i_4_);
                 if(gameObjectDefinition.solid)
-                    arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.aBoolean2528, (byte) 95);
+                    arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.walkable, (byte) 95);
             } else if((arg4 ^ 0xffffffff) == -10) {
                 Renderable renderable;
                 if((gameObjectDefinition.animationId ^ 0xffffffff) != 0 || gameObjectDefinition.configChangeDest != null)
@@ -155,7 +158,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, arg4, (byte) 124, i_0_);
                 arg5.method137(arg3, arg9, arg8, i_3_, 1, 1, renderable, 0, i_5_, i_4_);
                 if(gameObjectDefinition.solid)
-                    arg0.method154(arg9, gameObjectDefinition.aBoolean2528, -117, gameObjectDefinition.sizeY, arg7, arg8, gameObjectDefinition.sizeX);
+                    arg0.method154(arg9, gameObjectDefinition.walkable, -117, gameObjectDefinition.sizeY, arg7, arg8, gameObjectDefinition.sizeX);
             } else {
                 if(gameObjectDefinition.adjustToTerrain) {
                     if((arg7 ^ 0xffffffff) != -2) {
@@ -194,7 +197,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     int i_14_ = 16;
                     int i_15_ = arg5.method122(arg3, arg9, arg8);
                     if(i_15_ > 0)
-                        i_14_ = (GameObjectDefinition.getDefinition(i_15_ >> -1535148562 & 0x7fff).anInt2505);
+                        i_14_ = (GameObjectDefinition.getDefinition(i_15_ >> -1535148562 & 0x7fff).offsetAmplifier);
                     Renderable renderable;
                     if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
                         renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, (byte) 124, i_0_);

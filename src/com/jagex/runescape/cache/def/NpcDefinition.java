@@ -1,5 +1,6 @@
-package com.jagex.runescape;
+package com.jagex.runescape.cache.def;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
@@ -71,10 +72,10 @@ public class NpcDefinition extends SubNode {
     public RSString[] options = new RSString[5];
     public int headIcon;
     public int stanceAnimation = -1;
-    public int anInt2385;
+    public int settingId;
     public int ambient;
     public int anInt2389;
-    public int anInt2391;
+    public int degreesToTurn;
     public int combatLevel;
     public int[] recolorToFind;
     public boolean hasRenderPriority;
@@ -83,30 +84,30 @@ public class NpcDefinition extends SubNode {
     public int rotate180Animation;
     public int resizeX;
     public int contrast;
-    public int anInt2411;
+    public int varBitId;
     public int rotate90LeftAnimation;
     public int resizeY;
     public int rotate90RightAnimation;
     public int anInt2421;
     public int walkAnimation;
-    public int[] anIntArray2426;
+    public int[] childrenIds;
     public int anInt2427;
     public int[] recolorToReplace;
     public boolean renderOnMinimap;
 
     public NpcDefinition() {
         headIcon = -1;
-        anInt2391 = 32;
+        degreesToTurn = 32;
         ambient = 0;
         rotate180Animation = -1;
-        anInt2385 = -1;
+        settingId = -1;
         contrast = 0;
         resizeX = 128;
         hasRenderPriority = false;
         combatLevel = -1;
         anInt2389 = -1;
         rotate90LeftAnimation = -1;
-        anInt2411 = -1;
+        varBitId = -1;
         resizeY = 128;
         walkAnimation = -1;
         anInt2421 = -1;
@@ -298,9 +299,9 @@ public class NpcDefinition extends SubNode {
 
         anInt2412++;
         if(arg0 != -50) {
-            anInt2391 = 31;
+            degreesToTurn = 31;
         }
-        if(anIntArray2426 != null) {
+        if(childrenIds != null) {
             NpcDefinition class40_sub5_sub5 = method577(arg0 ^ 0x31);
             if(class40_sub5_sub5 == null) {
                 return null;
@@ -356,16 +357,16 @@ public class NpcDefinition extends SubNode {
     public boolean method571(int arg0) {
 
         anInt2378++;
-        if(anIntArray2426 == null) {
+        if(childrenIds == null) {
             return true;
         }
         int i = arg0;
-        if(anInt2411 != -1) {
-            i = Class40_Sub5_Sub6.method585(anInt2411, 1369);
-        } else if((anInt2385 ^ 0xffffffff) != 0) {
-            i = Class58.varbitmasks[anInt2385];
+        if(varBitId != -1) {
+            i = Class40_Sub5_Sub6.method585(varBitId, 1369);
+        } else if((settingId ^ 0xffffffff) != 0) {
+            i = Class58.varbitmasks[settingId];
         }
-        return i >= 0 && anIntArray2426.length > i && (anIntArray2426[i] ^ 0xffffffff) != 0;
+        return i >= 0 && childrenIds.length > i && (childrenIds[i] ^ 0xffffffff) != 0;
 
     }
 
@@ -429,22 +430,22 @@ public class NpcDefinition extends SubNode {
         } else if(opcode == 102) {
             headIcon = (buffer.getUnsignedShortBE());
         } else if(opcode == 103) {
-            anInt2391 = (buffer.getUnsignedShortBE());
+            degreesToTurn = (buffer.getUnsignedShortBE());
         } else if(opcode == 106) {
-            anInt2411 = (buffer.getUnsignedShortBE());
-            if(anInt2411 == 65535) {
-                anInt2411 = -1;
+            varBitId = (buffer.getUnsignedShortBE());
+            if(varBitId == 65535) {
+                varBitId = -1;
             }
-            anInt2385 = (buffer.getUnsignedShortBE());
-            if(anInt2385 == 65535) {
-                anInt2385 = -1;
+            settingId = (buffer.getUnsignedShortBE());
+            if(settingId == 65535) {
+                settingId = -1;
             }
-            int i = (buffer.getUnsignedByte());
-            anIntArray2426 = new int[i + 1];
-            for(int idx = 0; i >= idx; idx++) {
-                anIntArray2426[idx] = (buffer.getUnsignedShortBE());
-                if(anIntArray2426[idx] == 0xFFFF) {
-                    anIntArray2426[idx] = -1;
+            int childrenCount = (buffer.getUnsignedByte());
+            childrenIds = new int[childrenCount + 1];
+            for(int idx = 0; childrenCount >= idx; idx++) {
+                childrenIds[idx] = (buffer.getUnsignedShortBE());
+                if(childrenIds[idx] == 0xFFFF) {
+                    childrenIds[idx] = -1;
                 }
             }
         } else if(opcode == 107) {
@@ -469,7 +470,7 @@ public class NpcDefinition extends SubNode {
     public Model method575(byte arg0) {
 
         anInt2419++;
-        if(anIntArray2426 != null) {
+        if(childrenIds != null) {
             NpcDefinition class40_sub5_sub5 = method577(-1);
             if(class40_sub5_sub5 == null) {
                 return null;
@@ -514,15 +515,15 @@ public class NpcDefinition extends SubNode {
 
         int i = arg0;
         anInt2398++;
-        if(anInt2411 != -1) {
-            i = Class40_Sub5_Sub6.method585(anInt2411, 1369);
-        } else if(anInt2385 != -1) {
-            i = Class58.varbitmasks[anInt2385];
+        if(varBitId != -1) {
+            i = Class40_Sub5_Sub6.method585(varBitId, 1369);
+        } else if(settingId != -1) {
+            i = Class58.varbitmasks[settingId];
         }
-        if((i ^ 0xffffffff) > -1 || anIntArray2426.length <= i || (anIntArray2426[i] ^ 0xffffffff) == 0) {
+        if((i ^ 0xffffffff) > -1 || childrenIds.length <= i || (childrenIds[i] ^ 0xffffffff) == 0) {
             return null;
         }
-        return Landscape.method932((byte) -114, anIntArray2426[i]);
+        return Landscape.method932((byte) -114, childrenIds[i]);
 
     }
 

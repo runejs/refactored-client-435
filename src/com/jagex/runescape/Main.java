@@ -5,6 +5,9 @@ import java.net.Socket;
 
 import com.jagex.runescape.audio.Filter;
 import com.jagex.runescape.audio.Instrument;
+import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.def.NpcDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
