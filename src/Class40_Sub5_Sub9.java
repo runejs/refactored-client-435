@@ -69,7 +69,7 @@ public class Class40_Sub5_Sub9 extends SubNode {
                             return;
                         }
                     }
-                    for(int i = 0; (i ^ 0xffffffff) > (Class42.anInt1008 ^ 0xffffffff); i++) {
+                    for(int i = 0; Class42.anInt1008 > i; i++) {
                         if((arg0 ^ 0xffffffffffffffffL) == (Class53.aLongArray1267[i] ^ 0xffffffffffffffffL)) {
                             Class44.method895(126, 0, (Class40_Sub5_Sub17_Sub6.method832(75, (new RSString[]{Class44.aClass1_1038, class1, Class39.aClass1_917}))), Class66.aClass1_1567);
                             return;

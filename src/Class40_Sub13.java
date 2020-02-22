@@ -49,7 +49,7 @@ public class Class40_Sub13 extends Node {
             anIntArray2178 = new int[anInt2171];
             for(int i = 0; i < anInt2171; i++)
                 anIntArray2178[i] = class40_sub1.method468(false);
-            for(int i = 0; (i ^ 0xffffffff) > (anInt2171 ^ 0xffffffff); i++)
+        for(int i = 0; anInt2171 > i; i++)
                 anIntArrayArray2168[i] = new int[class40_sub1.method468(false)];
             for(int i = 0; i < anInt2171; i++) {
                 for(int i_38_ = 0; anIntArrayArray2168[i].length > i_38_; i_38_++)

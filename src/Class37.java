@@ -283,11 +283,11 @@ public class Class37 {
     public static boolean method438(int arg0, int arg1, byte arg2) {
 
         anInt859++;
-            if((arg0 ^ 0xffffffff) == -1 && (HashTable.anInt573 ^ 0xffffffff) == (arg1 ^ 0xffffffff))
+        if((arg0 ^ 0xffffffff) == -1 && arg1 == HashTable.anInt573)
                 return true;
-            if(arg0 == 1 && (arg1 ^ 0xffffffff) == (FloorDecoration.anInt614 ^ 0xffffffff))
+        if(arg0 == 1 && FloorDecoration.anInt614 == arg1)
                 return true;
-            if(((arg0 ^ 0xffffffff) == -3 || (arg0 ^ 0xffffffff) == -4) && (arg1 ^ 0xffffffff) == (Class67.anInt1586 ^ 0xffffffff))
+        if(((arg0 ^ 0xffffffff) == -3 || (arg0 ^ 0xffffffff) == -4) && Class67.anInt1586 == arg1)
                 return true;
             if(arg2 != 52)
                 aClass1_860 = null;

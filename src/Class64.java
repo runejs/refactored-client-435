@@ -298,7 +298,7 @@ public class Class64 implements Runnable {
                 if(aByteArray1504 == null)
                     aByteArray1504 = new byte[5000];
                 synchronized(this) {
-                    for(int i = 0; (arg0 ^ 0xffffffff) < (i ^ 0xffffffff); i++) {
+                    for(int i = 0; i < arg0; i++) {
                         aByteArray1504[anInt1509] = arg3[arg2 + i];
                         anInt1509 = (1 + anInt1509) % 5000;
                         if(anInt1509 == (4900 + anInt1520) % 5000)
@@ -338,7 +338,7 @@ public class Class64 implements Runnable {
                                 /* empty */
                             }
                         }
-                        if((anInt1520 ^ 0xffffffff) >= (anInt1509 ^ 0xffffffff))
+                        if(anInt1509 >= anInt1520)
                             i = anInt1509 - anInt1520;
                         else
                             i = -anInt1520 + 5000;
@@ -352,7 +352,7 @@ public class Class64 implements Runnable {
                         }
                         anInt1520 = (i + anInt1520) % 5000;
                         try {
-                            if((anInt1509 ^ 0xffffffff) == (anInt1520 ^ 0xffffffff))
+                            if(anInt1520 == anInt1509)
                                 anOutputStream1528.flush();
                         } catch(IOException ioexception) {
                             aBoolean1510 = true;

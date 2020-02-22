@@ -256,7 +256,7 @@ public class Class66 {
     public static int method1029(int arg0, boolean arg1, Class40_Sub5_Sub12 arg2) {
 
         anInt1547++;
-            if(arg2.anIntArrayArray2748 == null || ((arg2.anIntArrayArray2748.length ^ 0xffffffff) >= (arg0 ^ 0xffffffff)))
+        if(arg2.anIntArrayArray2748 == null || (arg0 >= arg2.anIntArrayArray2748.length))
                 return -2;
             try {
                 int[] is = arg2.anIntArrayArray2748[arg0];
@@ -391,7 +391,7 @@ public class Class66 {
                 int i_2_;
                 if((i_2_ = anIntArray1540[i]) < 0) {
                     arg3[arg2++] = (byte) (i_2_ ^ 0xffffffff);
-                    if((arg2 ^ 0xffffffff) <= (arg1 ^ 0xffffffff))
+                    if(arg1 <= arg2)
                         break;
                     i = 0;
                 }
@@ -401,7 +401,7 @@ public class Class66 {
                     i++;
                 if(((i_2_ = anIntArray1540[i]) ^ 0xffffffff) > -1) {
                     arg3[arg2++] = (byte) (i_2_ ^ 0xffffffff);
-                    if((arg1 ^ 0xffffffff) >= (arg2 ^ 0xffffffff))
+                    if(arg2 >= arg1)
                         break;
                     i = 0;
                 }
@@ -411,7 +411,7 @@ public class Class66 {
                     i = anIntArray1540[i];
                 if(((i_2_ = anIntArray1540[i]) ^ 0xffffffff) > -1) {
                     arg3[arg2++] = (byte) (i_2_ ^ 0xffffffff);
-                    if((arg2 ^ 0xffffffff) <= (arg1 ^ 0xffffffff))
+                    if(arg1 <= arg2)
                         break;
                     i = 0;
                 }
@@ -421,7 +421,7 @@ public class Class66 {
                     i++;
                 if((i_2_ = anIntArray1540[i]) < 0) {
                     arg3[arg2++] = (byte) (i_2_ ^ 0xffffffff);
-                    if((arg2 ^ 0xffffffff) <= (arg1 ^ 0xffffffff))
+                    if(arg1 <= arg2)
                         break;
                     i = 0;
                 }
@@ -431,7 +431,7 @@ public class Class66 {
                     i++;
                 if((i_2_ = anIntArray1540[i]) < 0) {
                     arg3[arg2++] = (byte) (i_2_ ^ 0xffffffff);
-                    if((arg1 ^ 0xffffffff) >= (arg2 ^ 0xffffffff))
+                    if(arg2 >= arg1)
                         break;
                     i = 0;
                 }

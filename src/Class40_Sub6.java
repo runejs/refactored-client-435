@@ -120,7 +120,7 @@ public class Class40_Sub6 extends Node {
 
         anInt2100++;
             if((arg1 ^ 0xffffffffffffffffL) != -1L) {
-                for(int i = arg0; (Class42.anInt1008 ^ 0xffffffff) < (i ^ 0xffffffff); i++) {
+                for(int i = arg0; i < Class42.anInt1008; i++) {
                     if(Class53.aLongArray1267[i] == arg1) {
                         ISAAC.aBoolean505 = true;
                         Main.anInt1772++;

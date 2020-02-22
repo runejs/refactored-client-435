@@ -211,7 +211,7 @@ public abstract class Class6 {
 
     public boolean method173(int arg0, byte arg1, int arg2) {
         anInt234++;
-        if((arg0 ^ 0xffffffff) > -1 || ((aByteArrayArrayArray249.length ^ 0xffffffff) >= (arg0 ^ 0xffffffff)) || aByteArrayArrayArray249[arg0] == null || (arg2 ^ 0xffffffff) > -1 || arg2 >= aByteArrayArrayArray249[arg0].length)
+        if((arg0 ^ 0xffffffff) > -1 || (arg0 >= aByteArrayArrayArray249.length) || aByteArrayArrayArray249[arg0] == null || (arg2 ^ 0xffffffff) > -1 || arg2 >= aByteArrayArrayArray249[arg0].length)
             return false;
         if(arg1 != -10)
             method183(-98, null);
@@ -239,7 +239,7 @@ public abstract class Class6 {
         anInt246++;
         if(arg3 != 20582)
             return null;
-        if(arg0 < 0 || ((aByteArrayArrayArray249.length ^ 0xffffffff) >= (arg0 ^ 0xffffffff)) || aByteArrayArrayArray249[arg0] == null || arg1 < 0 || arg1 >= aByteArrayArrayArray249[arg0].length)
+        if(arg0 < 0 || (arg0 >= aByteArrayArrayArray249.length) || aByteArrayArrayArray249[arg0] == null || arg1 < 0 || arg1 >= aByteArrayArrayArray249[arg0].length)
             return null;
         if(aByteArrayArrayArray249[arg0][arg1] == null) {
             boolean bool = method181(arg0, 20824, arg2);
@@ -401,7 +401,7 @@ public abstract class Class6 {
 
     public byte[] method182(int arg0, int arg1, int arg2) {
         anInt226++;
-        if(arg2 < 0 || ((aByteArrayArrayArray249.length ^ 0xffffffff) >= (arg2 ^ 0xffffffff)) || aByteArrayArrayArray249[arg2] == null || arg0 < 0 || aByteArrayArrayArray249[arg2].length <= arg0)
+        if(arg2 < 0 || (arg2 >= aByteArrayArrayArray249.length) || aByteArrayArrayArray249[arg2] == null || arg0 < 0 || aByteArrayArrayArray249[arg2].length <= arg0)
             return null;
         if(aByteArrayArrayArray249[arg2][arg0] == null) {
             boolean bool = method181(arg2, 20824, null);
@@ -430,7 +430,7 @@ public abstract class Class6 {
         boolean bool = true;
         if(arg0 < 11)
             return true;
-        for(int i = 0; (anIntArray227.length ^ 0xffffffff) < (i ^ 0xffffffff); i++) {
+        for(int i = 0; i < anIntArray227.length; i++) {
             int i_47_ = anIntArray227[i];
             if(aByteArrayArray212[i_47_] == null) {
                 method177(59, i_47_);

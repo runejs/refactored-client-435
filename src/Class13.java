@@ -60,7 +60,7 @@ public class Class13 {
             arg0.anInt3089 = 64 * arg0.anInt3096 + arg0.anIntArray3135[0] * 128;
             arg0.method790(0);
         }
-        if((Node.anInt926 ^ 0xffffffff) > (arg0.anInt3112 ^ 0xffffffff))
+        if(arg0.anInt3112 > Node.anInt926)
             Class40_Sub5_Sub11.method631(arg0, false);
         else if(arg0.anInt3107 < Node.anInt926)
             Class44.method898(255, arg0);

@@ -126,7 +126,7 @@ public abstract class Class22 {
                 aBooleanArray548 = null;
             RSString class1 = new RSString();
             class1.anInt1680 = arg0.method502((byte) -81);
-            if((arg2 ^ 0xffffffff) > (class1.anInt1680 ^ 0xffffffff))
+            if(class1.anInt1680 > arg2)
                 class1.anInt1680 = arg2;
             class1.aByteArray1692 = new byte[class1.anInt1680];
             arg0.currentPosition += (Class40_Sub5_Sub10.aClass66_2590.method1023(arg0.buffer, class1.anInt1680, 0, class1.aByteArray1692, arg0.currentPosition, -1));

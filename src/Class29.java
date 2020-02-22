@@ -27,9 +27,9 @@ public class Class29 {
     public static boolean method371(int arg0, int arg1, int arg2) {
 
         anInt669++;
-            if((arg1 ^ 0xffffffff) == -1 && (arg2 ^ 0xffffffff) == (ItemDefinition.anInt2850 ^ 0xffffffff))
+        if((arg1 ^ 0xffffffff) == -1 && ItemDefinition.anInt2850 == arg2)
                 return true;
-            if((arg1 ^ 0xffffffff) == -2 && (CollisionMap.anInt163 ^ 0xffffffff) == (arg2 ^ 0xffffffff))
+        if((arg1 ^ 0xffffffff) == -2 && arg2 == CollisionMap.anInt163)
                 return true;
             if(((arg1 ^ 0xffffffff) == -3 || (arg1 ^ 0xffffffff) == -4) && Class55.anInt1296 == arg2)
                 return true;
@@ -50,11 +50,11 @@ public class Class29 {
 
         anInt679++;
             int i = Cache.outgoingbuffer.putBits(8, (byte) -65);
-            if((Class60.anInt1407 ^ 0xffffffff) < (i ^ 0xffffffff)) {
+        if(i < Class60.anInt1407) {
                 for(int i_0_ = i; Class60.anInt1407 > i_0_; i_0_++)
                     Class6.anIntArray225[Class17.anInt460++] = Class57.anIntArray1334[i_0_];
             }
-            if((i ^ 0xffffffff) < (Class60.anInt1407 ^ 0xffffffff))
+        if(Class60.anInt1407 < i)
                 throw new RuntimeException("gppov1");
             Class60.anInt1407 = 0;
             if(arg0 != -5)

@@ -300,7 +300,7 @@ public class Class40_Sub5_Sub7 extends SubNode {
                 method594(98, null);
             Class40_Sub5_Sub15 class40_sub5_sub15_20_ = null;
             int i_21_ = 0;
-            if(anIntArray2479 != null && (anIntArray2479.length ^ 0xffffffff) < (arg0 ^ 0xffffffff)) {
+        if(anIntArray2479 != null && arg0 < anIntArray2479.length) {
                 i_21_ = anIntArray2479[arg0];
                 class40_sub5_sub15_20_ = Class55.method960((byte) -99, i_21_ >> -878340016);
                 i_21_ &= 0xffff;

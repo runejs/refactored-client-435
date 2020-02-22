@@ -119,7 +119,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
         if(arg6 != 1)
                 providesignlink(null);
-            for(int i = 0; (arg7.length ^ 0xffffffff) < (i ^ 0xffffffff); i++) {
+        for(int i = 0; i < arg7.length; i++) {
                 Class40_Sub5_Sub12 class40_sub5_sub12 = arg7[i];
                 if(class40_sub5_sub12 != null && (class40_sub5_sub12.anInt2683 == 0 || class40_sub5_sub12.aBoolean2688) && class40_sub5_sub12 != null && arg5 == class40_sub5_sub12.anInt2648 && (!class40_sub5_sub12.aBoolean2750 || PacketBuffer.aBoolean2236)) {
                     int i_1_ = arg4 + class40_sub5_sub12.anInt2656;
@@ -411,7 +411,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     if(Signlink.aString739 == null || !Signlink.aString739.startsWith("1.5") || -Class4.aLong174 + Class51.method937(1) <= 1000L)
                         break;
                     Rectangle rectangle = arg0.getClipBounds();
-                    if(rectangle == null || ((Class12.width ^ 0xffffffff) >= (rectangle.width ^ 0xffffffff) && ((rectangle.height ^ 0xffffffff) <= (Class40_Sub5_Sub10.height ^ 0xffffffff))))
+                    if(rectangle == null || (rectangle.width >= Class12.width && ((rectangle.height ^ 0xffffffff) <= (Class40_Sub5_Sub10.height ^ 0xffffffff))))
                         Class67.aBoolean1575 = true;
                 }
 

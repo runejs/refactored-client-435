@@ -239,7 +239,7 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
                                 } else {
                                     RSRuntimeException.anInt1642 = -1;
                                     Class43.method894(false);
-                                    if(((Class48.anInt1127 ^ 0xffffffff) == (RSRuntimeException.anInt1642 ^ 0xffffffff)) && (Class55.anInt1288 != Class58.anInt1352)) {
+                                    if((RSRuntimeException.anInt1642 == Class48.anInt1127) && (Class55.anInt1288 != Class58.anInt1352)) {
                                         Class66.anInt1562++;
                                         Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045((Class48.anInt1127), (byte) -95);
                                         int i = 0;
@@ -334,7 +334,7 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
                         if((Class67.anInt1586 ^ 0xffffffff) != 0 || (FloorDecoration.anInt614 ^ 0xffffffff) != 0 || HashTable.anInt573 != -1) {
                             if(RSString.anInt1711 > Class53.anInt1257) {
                                 Class53.anInt1257++;
-                                if((Class53.anInt1257 ^ 0xffffffff) == (RSString.anInt1711 ^ 0xffffffff)) {
+                                if(RSString.anInt1711 == Class53.anInt1257) {
                                     if(Class67.anInt1586 != -1)
                                         Class52.aBoolean1221 = true;
                                     if(FloorDecoration.anInt614 != -1)

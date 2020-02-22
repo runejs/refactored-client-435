@@ -160,7 +160,7 @@ public class ISAAC {
                                 i_22_ -= (Class40_Sub5_Sub17_Sub6.anIntArray3250[i_29_]);
                             }
                             if(i_27_ >= 1 && i_27_ < 103 && (!VertexNormal.lowMemory || (0x2 & (Floor.tile_flags[0][i_16_][i_27_]) ^ 0xffffffff) != -1 || ((0x10 & (Floor.tile_flags[i][i_16_][i_27_]) ^ 0xffffffff) == -1 && ((Class59.getVisibilityPlaneFor(i, i_27_, 0, i_16_) ^ 0xffffffff) == (Class40_Sub6.onBuildTimePlane ^ 0xffffffff))))) {
-                                if((i ^ 0xffffffff) > (Class64.setZ ^ 0xffffffff))
+                                if(Class64.setZ > i)
                                     Class64.setZ = i;
                                 int i_30_ = ((Class42.aByteArrayArrayArray993[i][i_16_][i_27_]) & 0xff);
                                 int i_31_ = ((Class62.aByteArrayArrayArray1473[i][i_16_][i_27_]) & 0xff);

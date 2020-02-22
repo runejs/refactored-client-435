@@ -127,7 +127,7 @@ public class Class6_Sub1 extends Class6 {
                     Class65.aCRC32_1531.reset();
                     Class65.aCRC32_1531.update(arg2, 0, arg2.length);
                     int i = (int) Class65.aCRC32_1531.getValue();
-                    if((anInt1810 ^ 0xffffffff) != (i ^ 0xffffffff)) {
+                    if(i != anInt1810) {
                         HashTable.method327(true, this, 255, anInt1807, (byte) 0,
                                 anInt1810, (byte) -121);
                         break;
@@ -135,7 +135,7 @@ public class Class6_Sub1 extends Class6 {
                     this.method178(-21071, arg2);
                     method199(-112);
                 } else {
-                    if(!arg1 && (arg3 ^ 0xffffffff) == (anInt1797 ^ 0xffffffff))
+                    if(!arg1 && anInt1797 == arg3)
                         aBoolean1800 = true;
                     if(arg2 == null || (arg2.length ^ 0xffffffff) >= -3) {
                         aBooleanArray1796[arg3] = false;

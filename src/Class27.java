@@ -1057,7 +1057,7 @@ public class Class27 {
             if(arg0 == null)
                 return null;
             Class40_Sub5_Sub12 class40_sub5_sub12 = null;
-            for(int i = 0; (i ^ 0xffffffff) > (arg0.length ^ 0xffffffff); i++) {
+        for(int i = 0; arg0.length > i; i++) {
                 Class40_Sub5_Sub12 class40_sub5_sub12_27_ = arg0[i];
                 if(class40_sub5_sub12_27_ != null && (arg4 ^ 0xffffffff) == (class40_sub5_sub12_27_.anInt2648 ^ 0xffffffff)) {
                     int i_28_ = arg3 + class40_sub5_sub12_27_.anInt2696;
@@ -1192,7 +1192,7 @@ public class Class27 {
                 if(Class51.anInt1205 != -1)
                     Class40_Sub5_Sub10.aBoolean2597 = true;
                 if(Class40_Sub5_Sub10.aBoolean2597) {
-                    if(Class51.anInt1205 != -1 && (Class5.anInt208 ^ 0xffffffff) == (Class51.anInt1205 ^ 0xffffffff)) {
+                    if(Class51.anInt1205 != -1 && Class51.anInt1205 == Class5.anInt208) {
                         Class51.anInt1205 = -1;
                         Class32.packetBuffer.putPacket(arg0 ^ ~0x6259, 44);
                         Class56.anInt1311++;

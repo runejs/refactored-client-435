@@ -104,7 +104,7 @@ public class Class34 {
 
         anInt836++;
             synchronized(Class59.aClass54_1392) {
-                if((Class52.anInt1214 ^ 0xffffffff) == (Class59.anInt1389 ^ 0xffffffff))
+                if(Class59.anInt1389 == Class52.anInt1214)
                     return false;
                 ItemDefinition.anInt2854 = Class40_Sub6.anIntArray2113[Class59.anInt1389];
                 Class59.anInt1388 = Class40_Sub5_Sub13.anIntArray2764[Class59.anInt1389];

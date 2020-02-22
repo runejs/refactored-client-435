@@ -136,7 +136,7 @@ public class Class58 {
                 }
             } else if((i ^ 0xffffffff) == -504) {
                 arg1.anInt2720 = 15 * Class42.anInt1008 + 20;
-                if((arg1.anInt2643 ^ 0xffffffff) <= (arg1.anInt2720 ^ 0xffffffff))
+                if(arg1.anInt2720 <= arg1.anInt2643)
                     arg1.anInt2720 = arg1.anInt2643 + 1;
             } else if(i == 324) {
                 if((Class64.anInt1511 ^ 0xffffffff) == 0) {
@@ -348,7 +348,7 @@ public class Class58 {
                         }
                         RSFont class40_sub5_sub14_sub1 = Class53.aClass40_Sub5_Sub14_Sub1_1268;
                         Rasterizer.method655(0, 0, 463, 77);
-                        for(int i = 0; ((VertexNormal.anInt1110 ^ 0xffffffff) < (i ^ 0xffffffff)); i++) {
+                        for(int i = 0; (i < VertexNormal.anInt1110); i++) {
                             int i_14_ = i * 14 + (18 - Class26.anInt617);
                             if((i_14_ ^ 0xffffffff) < -1 && (i_14_ ^ 0xffffffff) > -111)
                                 class40_sub5_sub14_sub1.method686(Class22_Sub1.aClass1Array1844[i], 239, i_14_, 0);

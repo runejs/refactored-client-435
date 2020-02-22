@@ -133,7 +133,7 @@ public class Class48 {
     public static void method925(int arg0, Class40_Sub5_Sub12[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11) {
 
         anInt1141++;
-            if(arg2 <= arg8 && arg4 >= arg9 && (arg8 ^ 0xffffffff) > (arg11 ^ 0xffffffff) && (arg4 ^ 0xffffffff) > (arg0 ^ 0xffffffff)) {
+        if(arg2 <= arg8 && arg4 >= arg9 && arg11 > arg8 && arg0 > arg4) {
                 for(int i = arg5; arg1.length > i; i++) {
                     Class40_Sub5_Sub12 class40_sub5_sub12 = arg1[i];
                     if(class40_sub5_sub12 != null && arg6 == class40_sub5_sub12.anInt2648) {

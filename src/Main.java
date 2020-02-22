@@ -65,7 +65,7 @@ public class Main extends RSApplet {
 
         Rasterizer.method655(arg2, arg1, arg6, arg5);
             boolean bool = arg9;
-            for(int i = 0; (i ^ 0xffffffff) > (arg8.length ^ 0xffffffff); i++) {
+        for(int i = 0; arg8.length > i; i++) {
                 Class40_Sub5_Sub12 class40_sub5_sub12 = arg8[i];
                 if(class40_sub5_sub12 != null && class40_sub5_sub12.anInt2648 == arg4) {
                     if(class40_sub5_sub12.anInt2639 > 0)
@@ -419,7 +419,7 @@ public class Main extends RSApplet {
                                         }
                                     }
                                 }
-                                if(class40_sub5_sub12.anInt2683 == 8 && Class37.method438(arg0, i, (byte) 52) && ((Class53.anInt1257 ^ 0xffffffff) == (RSString.anInt1711 ^ 0xffffffff))) {
+                                if(class40_sub5_sub12.anInt2683 == 8 && Class37.method438(arg0, i, (byte) 52) && (RSString.anInt1711 == Class53.anInt1257)) {
                                     int i_50_ = 0;
                                     int i_51_ = 0;
                                     RSFont class40_sub5_sub14_sub1 = (Class53.aClass40_Sub5_Sub14_Sub1_1268);

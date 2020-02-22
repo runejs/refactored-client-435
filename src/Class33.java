@@ -79,7 +79,7 @@ public class Class33 {
                     Class40_Sub5_Sub17_Sub4 class40_sub5_sub17_sub4;
                     if((i ^ 0xffffffff) == 0)
                         class40_sub5_sub17_sub4 = (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760);
-                    else if((Class60.anInt1407 ^ 0xffffffff) < (i ^ 0xffffffff))
+                    else if(i < Class60.anInt1407)
                         class40_sub5_sub17_sub4 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i]]);
                     else
                         class40_sub5_sub17_sub4 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[(Class40_Sub3.anIntArray2016[i + -Class60.anInt1407])]);
@@ -91,7 +91,7 @@ public class Class33 {
                             if(class40_sub5_sub5 == null)
                                 continue;
                         }
-                        if((i ^ 0xffffffff) <= (Class60.anInt1407 ^ 0xffffffff)) {
+                        if(Class60.anInt1407 <= i) {
                             NpcDefinition class40_sub5_sub5 = (((NPC) class40_sub5_sub17_sub4).aClass40_Sub5_Sub5_3300);
                             if(((class40_sub5_sub5.anInt2381 ^ 0xffffffff) <= -1) && (class40_sub5_sub5.anInt2381 < (Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204).length)) {
                                 FloorDecoration.method342(-127, (class40_sub5_sub17_sub4.anInt3117) + 15, class40_sub5_sub17_sub4);

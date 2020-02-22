@@ -176,7 +176,7 @@ public class ItemDefinition extends SubNode {
         if(arg0 != true)
             method749(true, -38);
         anInt2843++;
-        for(Renderable.anInt2866 += arg1; ((CollisionMap.anInt141 ^ 0xffffffff) >= (Renderable.anInt2866 ^ 0xffffffff)); Renderable.anInt2866 -= CollisionMap.anInt141)
+        for(Renderable.anInt2866 += arg1; (Renderable.anInt2866 >= CollisionMap.anInt141); Renderable.anInt2866 -= CollisionMap.anInt141)
             SubNode.anInt2081 -= SubNode.anInt2081 >> -1244591038;
         SubNode.anInt2081 -= 1000 * arg1;
         if((SubNode.anInt2081 ^ 0xffffffff) > -1)

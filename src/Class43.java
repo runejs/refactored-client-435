@@ -107,7 +107,7 @@ public class Class43 {
                         }
                         if((i_3_ ^ 0xffffffff) == -8) {
                             i -= 2;
-                            if((Class67.anIntArray1588[i] ^ 0xffffffff) != (Class67.anIntArray1588[1 + i] ^ 0xffffffff))
+                            if(Class67.anIntArray1588[i] != Class67.anIntArray1588[1 + i])
                                 i_2_ += is[i_2_];
                             continue;
                         }
@@ -861,7 +861,7 @@ public class Class43 {
                         } else
                             Class13.method243((byte) 89, 357, 496, 453, anInt1028, 17, Class13.anInt420, Landscape.anInt1166, 2);
                     }
-                    if(((anInt1028 ^ 0xffffffff) != 0 || (Class48.anInt1138 ^ 0xffffffff) != 0) && ((Floor.anInt2328 ^ 0xffffffff) != (Class55.anInt1296 ^ 0xffffffff))) {
+                    if(((anInt1028 ^ 0xffffffff) != 0 || (Class48.anInt1138 ^ 0xffffffff) != 0) && (Class55.anInt1296 != Floor.anInt2328)) {
                         Class52.aBoolean1221 = true;
                         Class55.anInt1296 = Floor.anInt2328;
                     }

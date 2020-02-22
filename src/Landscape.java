@@ -124,7 +124,7 @@ public class Landscape {
             Class27.method364((byte) -34, false);
             Class37.anInt874 = 0;
             boolean bool = true;
-            for(int i = 0; ((RSString.aByteArrayArray1715.length ^ 0xffffffff) < (i ^ 0xffffffff)); i++) {
+        for(int i = 0; (i < RSString.aByteArrayArray1715.length); i++) {
                 if(Class45.anIntArray1071[i] != -1 && RSString.aByteArrayArray1715[i] == null) {
                     RSString.aByteArrayArray1715[i] = Renderable.aClass6_Sub1_2857.method172(0, 122, Class45.anIntArray1071[i]);
                     if(RSString.aByteArrayArray1715[i] == null) {

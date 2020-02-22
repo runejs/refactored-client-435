@@ -107,7 +107,7 @@ public class Class17 {
                     Class44.method895(arg0 ^ 0x603f, 0, Landscape.aClass1_1180, Class66.aClass1_1567);
                 else {
                     RSString class1 = Class60.method991(arg0 ^ ~0x6004, arg1).method85(-4305);
-                    for(int i = 0; (Class42.anInt1008 ^ 0xffffffff) < (i ^ 0xffffffff); i++) {
+                    for(int i = 0; i < Class42.anInt1008; i++) {
                         if((Class53.aLongArray1267[i] ^ 0xffffffffffffffffL) == (arg1 ^ 0xffffffffffffffffL)) {
                             Class44.method895(114, 0, (Class40_Sub5_Sub17_Sub6.method832(arg0 ^ ~0x604a, (new RSString[]{class1, Class68.aClass1_1628}))), Class66.aClass1_1567);
                             return;

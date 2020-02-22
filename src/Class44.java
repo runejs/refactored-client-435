@@ -182,7 +182,7 @@ public class Class44 implements Runnable {
                     if((arg1.anInt3089 ^ 0xffffffff) > (i_2_ ^ 0xffffffff))
                         arg1.anInt3089 = i_2_;
                 }
-                if((i_4_ ^ 0xffffffff) <= -9 && (arg1.anInt3131 ^ 0xffffffff) == (arg1.anInt3077 ^ 0xffffffff) && arg1.anInt3082 != -1)
+                if((i_4_ ^ 0xffffffff) <= -9 && arg1.anInt3077 == arg1.anInt3131 && arg1.anInt3082 != -1)
                     arg1.anInt3077 = arg1.anInt3082;
                 if(i < i_0_) {
                     arg1.anInt3098 += i_4_;

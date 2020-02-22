@@ -131,9 +131,9 @@ public class Player extends Class40_Sub5_Sub17_Sub4 {
                 }
             }
             if(!aBoolean3287 && aClass40_Sub5_Sub17_Sub5_3265 != null) {
-                if((Node.anInt926 ^ 0xffffffff) <= (anInt3274 ^ 0xffffffff))
+                if(anInt3274 <= Node.anInt926)
                     aClass40_Sub5_Sub17_Sub5_3265 = null;
-                if(anInt3283 <= Node.anInt926 && (anInt3274 ^ 0xffffffff) < (Node.anInt926 ^ 0xffffffff)) {
+                if(anInt3283 <= Node.anInt926 && Node.anInt926 < anInt3274) {
                     Model class40_sub5_sub17_sub5_2_ = aClass40_Sub5_Sub17_Sub5_3265;
                     class40_sub5_sub17_sub5_2_.method828(-anInt3098 + anInt3271, -anInt3276 + anInt3272, anInt3291 + -anInt3089);
                     if(anInt3080 != 512) {

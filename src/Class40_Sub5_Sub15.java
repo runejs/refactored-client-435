@@ -125,7 +125,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
                 }
             }
         }
-        if(arg1.anInt3091 != -1 && (arg1.anInt3093 ^ 0xffffffff) >= (Node.anInt926 ^ 0xffffffff)) {
+        if(arg1.anInt3091 != -1 && Node.anInt926 >= arg1.anInt3093) {
             if((arg1.anInt3140 ^ 0xffffffff) > -1)
                 arg1.anInt3140 = 0;
             int i = Class37.method431(arg1.anInt3091, 13).anInt2287;
@@ -149,7 +149,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
         if(arg0 == true) {
             if(arg1.anInt3141 != -1 && arg1.anInt3122 <= 1) {
                 Class40_Sub5_Sub7 class40_sub5_sub7 = Class68_Sub1.method1050(arg1.anInt3141, 2);
-                if(class40_sub5_sub7.anInt2470 == 1 && (arg1.anInt3094 ^ 0xffffffff) < -1 && arg1.anInt3112 <= Node.anInt926 && (arg1.anInt3107 ^ 0xffffffff) > (Node.anInt926 ^ 0xffffffff)) {
+                if(class40_sub5_sub7.anInt2470 == 1 && (arg1.anInt3094 ^ 0xffffffff) < -1 && arg1.anInt3112 <= Node.anInt926 && Node.anInt926 > arg1.anInt3107) {
                     arg1.anInt3122 = 1;
                     return;
                 }

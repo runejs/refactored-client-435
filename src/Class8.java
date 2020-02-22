@@ -63,7 +63,7 @@ public class Class8 {
     }
 
     public static void method209(int arg0) {
-        for(int i = 0; (GameObjectDefinition.anInt2558 ^ 0xffffffff) < (i ^ 0xffffffff); i++) {
+        for(int i = 0; i < GameObjectDefinition.anInt2558; i++) {
             int i_0_ = Class40_Sub3.anIntArray2016[i];
             NPC class40_sub5_sub17_sub4_sub2 = Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_];
             if(class40_sub5_sub17_sub4_sub2 != null)

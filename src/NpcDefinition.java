@@ -132,7 +132,7 @@ public class NpcDefinition extends SubNode {
     public static void method570(int arg0, int arg1, Player arg2, int arg3) {
             anInt2431++;
             if(arg3 == -1) {
-                if((arg0 ^ 0xffffffff) == (arg2.anInt3141 ^ 0xffffffff) && arg0 != -1) {
+                if(arg2.anInt3141 == arg0 && arg0 != -1) {
                     int i = Class68_Sub1.method1050(arg0, 2).anInt2483;
                     if(i == 1) {
                         arg2.anInt3104 = 0;
@@ -299,14 +299,14 @@ public class NpcDefinition extends SubNode {
                 if(bool)
                     return null;
                 Model[] class40_sub5_sub17_sub5s = new Model[anIntArray2405.length];
-                for(int i = 0; (i ^ 0xffffffff) > (anIntArray2405.length ^ 0xffffffff); i++)
+                for(int i = 0; anIntArray2405.length > i; i++)
                     class40_sub5_sub17_sub5s[i] = Model.method830((Class67.aClass6_1577), anIntArray2405[i], 0);
                 if(class40_sub5_sub17_sub5s.length == 1)
                     class40_sub5_sub17_sub5 = class40_sub5_sub17_sub5s[0];
                 else
                     class40_sub5_sub17_sub5 = (new Model(class40_sub5_sub17_sub5s, class40_sub5_sub17_sub5s.length));
                 if(anIntArray2428 != null) {
-                    for(int i = 0; ((anIntArray2428.length ^ 0xffffffff) < (i ^ 0xffffffff)); i++)
+                    for(int i = 0; (i < anIntArray2428.length); i++)
                         class40_sub5_sub17_sub5.method803(anIntArray2428[i], anIntArray2395[i]);
                 }
                 class40_sub5_sub17_sub5.method810();
@@ -480,7 +480,7 @@ public class NpcDefinition extends SubNode {
             else
                 class40_sub5_sub17_sub5 = class40_sub5_sub17_sub5s[0];
             if(anIntArray2428 != null) {
-                for(int i = 0; (anIntArray2428.length ^ 0xffffffff) < (i ^ 0xffffffff); i++)
+                for(int i = 0; i < anIntArray2428.length; i++)
                     class40_sub5_sub17_sub5.method803(anIntArray2428[i], anIntArray2395[i]);
             }
             return class40_sub5_sub17_sub5;
@@ -495,7 +495,7 @@ public class NpcDefinition extends SubNode {
                 i = Class40_Sub5_Sub6.method585(anInt2411, 1369);
             else if(anInt2385 != -1)
                 i = Class58.varbitmasks[anInt2385];
-            if((i ^ 0xffffffff) > -1 || (i ^ 0xffffffff) <= (anIntArray2426.length ^ 0xffffffff) || (anIntArray2426[i] ^ 0xffffffff) == 0)
+        if((i ^ 0xffffffff) > -1 || anIntArray2426.length <= i || (anIntArray2426[i] ^ 0xffffffff) == 0)
                 return null;
             return Landscape.method932((byte) -114, anIntArray2426[i]);
 

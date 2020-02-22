@@ -229,7 +229,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
         anInt2445++;
             if(arg0 == 2) {
                 while(Class34.method416((byte) -125)) {
-                    if(Class66.anInt1560 != -1 && ((Class66.anInt1560 ^ 0xffffffff) == (Class66.anInt1548 ^ 0xffffffff))) {
+                    if(Class66.anInt1560 != -1 && (Class66.anInt1548 == Class66.anInt1560)) {
                         if((ItemDefinition.anInt2854 ^ 0xffffffff) == -86 && (Class66.aClass1_1550.method59(arg0 ^ ~0xc3d) > 0))
                             Class66.aClass1_1550 = (Class66.aClass1_1550.method68(0, 0, -1 + Class66.aClass1_1550.method59(-3136)));
                         if((Class40_Sub5_Sub15.method735((byte) -37, Class59.anInt1388) || Class59.anInt1388 == 32) && Class66.aClass1_1550.method59(-3136) < 12)
@@ -276,7 +276,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                     Class52.aBoolean1221 = true;
                                 }
                                 if(ItemDefinition.anInt2854 == 84 && (Class66.aClass1_1556.method59(-3136) > 0)) {
-                                    if(Class19.anInt493 == 2) {
+                                    if(true) {
                                         if(Class66.aClass1_1556.method54(Class58.aClass1_1359, arg0 + 120))
                                             Class59.method982(2578);
                                         if(Class66.aClass1_1556.method54(Class40_Sub3.aClass1_2015, 122))

@@ -83,7 +83,7 @@ public class Class35 implements Interface3 {
             anInt1739++;
             boolean bool = true;
             int[] is = arg0.method192(arg2, true);
-            for(int i = 0; (i ^ 0xffffffff) > (is.length ^ 0xffffffff); i++) {
+        for(int i = 0; is.length > i; i++) {
                 byte[] is_0_ = arg0.method182(is[i], -114, arg2);
                 if(is_0_ == null)
                     bool = false;

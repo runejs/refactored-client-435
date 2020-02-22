@@ -142,7 +142,7 @@ public abstract class Class22_Sub2 extends Class22 {
     public void method317(int arg0, int arg1, long arg2, int arg3) {
         do {
                 arg0 = (int) ((double) arg0 * Math.pow(0.1, (double) arg1 * 5.0E-4) + 0.5);
-                if((Class44.anInt1040 ^ 0xffffffff) != (arg0 ^ 0xffffffff)) {
+            if(arg0 != Class44.anInt1040) {
                     Class44.anInt1040 = arg0;
                     for(int i = 0; i < 16; i++) {
                         int i_2_ = method323(i);

@@ -67,7 +67,7 @@ public class Signlink implements Runnable {
             method397(-3849);
             aClass47_736 = new Class47(new File(aString734 + "main_file_cache.dat2"), "rw", 52428800L);
             aClass47Array723 = new Class47[cacheIndexes];
-            for(int i = 0; (cacheIndexes ^ 0xffffffff) < (i ^ 0xffffffff); i++)
+            for(int i = 0; i < cacheIndexes; i++)
                 aClass47Array723[i] = new Class47(new File(aString734 + "main_file_cache.idx" + i), "rw", 1048576L);
             aClass47_728 = new Class47(new File(aString734 + "main_file_cache.idx255"), "rw", 1048576L);
             method390(6);

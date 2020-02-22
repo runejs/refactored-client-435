@@ -93,7 +93,7 @@ public class Class30 {
 
         if(arg0 != 22378)
                 method376(90);
-            if((arg1.anInt3107 ^ 0xffffffff) == (Node.anInt926 ^ 0xffffffff) || (arg1.anInt3141 ^ 0xffffffff) == 0 || (arg1.anInt3122 ^ 0xffffffff) != -1 || arg1.anInt3115 + 1 > (Class68_Sub1.method1050(arg1.anInt3141, 2).anIntArray2466[arg1.anInt3104])) {
+        if(Node.anInt926 == arg1.anInt3107 || (arg1.anInt3141 ^ 0xffffffff) == 0 || (arg1.anInt3122 ^ 0xffffffff) != -1 || arg1.anInt3115 + 1 > (Class68_Sub1.method1050(arg1.anInt3141, 2).anIntArray2466[arg1.anInt3104])) {
                 int i = -arg1.anInt3112 + arg1.anInt3107;
                 int i_16_ = -arg1.anInt3112 + Node.anInt926;
                 int i_17_ = arg1.anInt3125 * 128 + (64 * arg1.anInt3096);
@@ -339,7 +339,7 @@ public class Class30 {
                         do {
                             if(arg1) {
                                 i++;
-                                if((PacketBuffer.anInt2257 ^ 0xffffffff) >= (i ^ 0xffffffff))
+                                if(i >= PacketBuffer.anInt2257)
                                     i = 0;
                             } else if((--i ^ 0xffffffff) > -1)
                                 i = -1 + PacketBuffer.anInt2257;

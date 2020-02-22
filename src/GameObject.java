@@ -81,7 +81,7 @@ public class GameObject extends Renderable {
             Class42.method889(48);
             Class13.method245(3799);
             if(arg0 > 75) {
-                for(int i = 0; (Class17.anInt460 ^ 0xffffffff) < (i ^ 0xffffffff); i++) {
+                for(int i = 0; i < Class17.anInt460; i++) {
                     int i_0_ = Class6.anIntArray225[i];
                     if(Node.anInt926 != (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_].anInt3134)) {
                         Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_].aClass40_Sub5_Sub5_3300 = null;

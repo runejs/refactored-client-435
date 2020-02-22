@@ -43,7 +43,7 @@ public class HashTable {
 
         size = arg0;
             nodes = new Node[arg0];
-            for(int i = 0; (i ^ 0xffffffff) > (arg0 ^ 0xffffffff); i++) {
+        for(int i = 0; arg0 > i; i++) {
                 Node class40 = nodes[i] = new Node();
                 class40.aClass40_950 = class40;
                 class40.aClass40_968 = class40;
@@ -140,7 +140,7 @@ public class HashTable {
                             if((class40_sub5_sub17_sub1.anInt2961 ^ 0xffffffff) > -1) {
                                 int i = -1 + -class40_sub5_sub17_sub1.anInt2961;
                                 Player class40_sub5_sub17_sub4_sub1;
-                                if((Class30.anInt708 ^ 0xffffffff) != (i ^ 0xffffffff))
+                                if(i != Class30.anInt708)
                                     class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i]);
                                 else
                                     class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760);

@@ -233,7 +233,7 @@ public class RSString implements Interface1 {
         anInt1707++;
             if(arg0 == null)
                 return false;
-            if((anInt1680 ^ 0xffffffff) != (arg0.anInt1680 ^ 0xffffffff))
+        if(arg0.anInt1680 != anInt1680)
                 return false;
             if(arg1 != 122)
                 anInt1690 = -114;
@@ -251,7 +251,7 @@ public class RSString implements Interface1 {
                 if(arg0.anInt1696 != anInt1696)
                     return false;
             }
-            for(int i = 0; (i ^ 0xffffffff) > (anInt1680 ^ 0xffffffff); i++) {
+        for(int i = 0; anInt1680 > i; i++) {
                 if(aByteArray1692[i] != arg0.aByteArray1692[i])
                     return false;
             }
@@ -281,7 +281,7 @@ public class RSString implements Interface1 {
 
         anInt1678++;
             long l = 0L;
-            for(int i = 0; (anInt1680 ^ 0xffffffff) < (i ^ 0xffffffff); i++) {
+        for(int i = 0; i < anInt1680; i++) {
                 if((i ^ 0xffffffff) <= -13)
                     break;
                 l *= 37L;
@@ -329,7 +329,7 @@ public class RSString implements Interface1 {
             int i = 0;
             if(arg0 != false)
                 aClass1_1713 = null;
-            for(/**/; (anInt1680 ^ 0xffffffff) < (i ^ 0xffffffff); i++)
+        for(/**/; i < anInt1680; i++)
                 class1.aByteArray1692[i] = (byte) 42;
             return class1;
 
@@ -369,7 +369,7 @@ public class RSString implements Interface1 {
                 return false;
             if(arg0.anInt1680 != anInt1680)
                 return false;
-            for(int i = 0; (i ^ 0xffffffff) > (anInt1680 ^ 0xffffffff); i++) {
+        for(int i = 0; anInt1680 > i; i++) {
                 byte i_3_ = arg0.aByteArray1692[i];
                 byte i_4_ = aByteArray1692[i];
                 if((i_3_ ^ 0xffffffff) <= -66 && i_3_ <= 90 || ((i_3_ ^ 0xffffffff) <= 63 && (i_3_ ^ 0xffffffff) >= 33 && i_3_ != -41))
@@ -620,7 +620,7 @@ public class RSString implements Interface1 {
             if(!aBoolean1675)
                 throw new IllegalArgumentException();
             anInt1696 = 0;
-            if((aByteArray1692.length ^ 0xffffffff) == (anInt1680 ^ 0xffffffff)) {
+        if(anInt1680 == aByteArray1692.length) {
                 int i;
                 for(i = 1; i <= anInt1680; i += i) {
                     /* empty */
@@ -642,7 +642,7 @@ public class RSString implements Interface1 {
             RSString class1 = new RSString();
             class1.anInt1680 = anInt1680;
             class1.aByteArray1692 = new byte[anInt1680];
-            for(int i = 0; (i ^ 0xffffffff) > (anInt1680 ^ 0xffffffff); i++) {
+        for(int i = 0; anInt1680 > i; i++) {
                 byte i_13_ = aByteArray1692[i];
                 if((i_13_ ^ 0xffffffff) <= -66 && i_13_ <= 90 || (i_13_ >= -64 && (i_13_ ^ 0xffffffff) >= 33 && i_13_ != -41))
                     i_13_ += 32;
@@ -675,14 +675,14 @@ public class RSString implements Interface1 {
                 is_15_[i] = arg0.anInt1680;
             if(arg2 != true)
                 aClass1_1691 = null;
-            for(int i = 1; (arg0.anInt1680 ^ 0xffffffff) <= (i ^ 0xffffffff); i++) {
+        for(int i = 1; i <= arg0.anInt1680; i++) {
                 is[-1 + i] = (arg0.anInt1680 << 828194177) - i;
                 is_15_[Class66.method1021(arg0.aByteArray1692[-1 + i], 255)] = arg0.anInt1680 - i;
             }
             int i = 1 + arg0.anInt1680;
             for(int i_16_ = arg0.anInt1680; i_16_ > 0; i_16_--) {
                 is_14_[i_16_ - 1] = i;
-                for(/**/; ((arg0.anInt1680 ^ 0xffffffff) <= (i ^ 0xffffffff) && (arg0.aByteArray1692[i - 1] != arg0.aByteArray1692[-1 + i_16_])); i = is_14_[-1 + i]) {
+                for(/**/; (i <= arg0.anInt1680 && (arg0.aByteArray1692[i - 1] != arg0.aByteArray1692[-1 + i_16_])); i = is_14_[-1 + i]) {
                     if((-i_16_ + arg0.anInt1680 ^ 0xffffffff) >= (is[i - 1] ^ 0xffffffff))
                         is[i - 1] = -i_16_ + arg0.anInt1680;
                 }
@@ -751,9 +751,9 @@ public class RSString implements Interface1 {
             }
             if(arg1 < 75)
                 method78(8, -101);
-            if((anInt1680 ^ 0xffffffff) > (arg0.anInt1680 ^ 0xffffffff))
+        if(arg0.anInt1680 > anInt1680)
                 return -1;
-            if((arg0.anInt1680 ^ 0xffffffff) > (anInt1680 ^ 0xffffffff))
+        if(anInt1680 > arg0.anInt1680)
                 return 1;
             return 0;
 
@@ -768,7 +768,7 @@ public class RSString implements Interface1 {
             class1.aByteArray1692 = new byte[anInt1680];
             if(arg0 != -4305)
                 anIntArray1706 = null;
-            for(int i = 0; (anInt1680 ^ 0xffffffff) < (i ^ 0xffffffff); i++) {
+        for(int i = 0; i < anInt1680; i++) {
                 byte i_25_ = aByteArray1692[i];
                 if((i_25_ ^ 0xffffffff) == -96) {
                     class1.aByteArray1692[i] = (byte) 32;
@@ -791,7 +791,7 @@ public class RSString implements Interface1 {
             long l = 0L;
             if(arg0 != 1544463557)
                 aByteArrayArray1715 = null;
-            for(int i = 0; (i ^ 0xffffffff) > (anInt1680 ^ 0xffffffff); i++)
+        for(int i = 0; anInt1680 > i; i++)
                 l = -l + (l << 1544463557) + (long) (0xff & aByteArray1692[i]);
             return l;
 
@@ -800,7 +800,7 @@ public class RSString implements Interface1 {
     public boolean method87(int arg0, RSString arg1) {
 
         anInt1655++;
-            if((arg1.anInt1680 ^ 0xffffffff) < (anInt1680 ^ 0xffffffff))
+        if(anInt1680 < arg1.anInt1680)
                 return false;
             if(arg0 <= 62)
                 method82(-116);
@@ -861,7 +861,7 @@ public class RSString implements Interface1 {
         anInt1659++;
             int i = 0;
             int i_31_ = anInt1680;
-            for(/**/; ((i ^ 0xffffffff) > (anInt1680 ^ 0xffffffff) && (aByteArray1692[i] >= 0 && aByteArray1692[i] <= 32 || (0xff & aByteArray1692[i]) == 160)); i++) {
+        for(/**/; (anInt1680 > i && (aByteArray1692[i] >= 0 && aByteArray1692[i] <= 32 || (0xff & aByteArray1692[i]) == 160)); i++) {
                 /* empty */
             }
             if(arg0 != false)

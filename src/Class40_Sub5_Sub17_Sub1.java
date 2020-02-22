@@ -134,11 +134,11 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         anInt2959++;
             Cache.outgoingbuffer.initBitAccess(114);
             int i = Cache.outgoingbuffer.putBits(8, (byte) -65);
-            if((i ^ 0xffffffff) > (GameObjectDefinition.anInt2558 ^ 0xffffffff)) {
+        if(GameObjectDefinition.anInt2558 > i) {
                 for(int i_0_ = i; i_0_ < GameObjectDefinition.anInt2558; i_0_++)
                     Class6.anIntArray225[Class17.anInt460++] = Class40_Sub3.anIntArray2016[i_0_];
             }
-            if((i ^ 0xffffffff) < (GameObjectDefinition.anInt2558 ^ 0xffffffff))
+        if(GameObjectDefinition.anInt2558 < i)
                 throw new RuntimeException("gnpov1");
             GameObjectDefinition.anInt2558 = 0;
             if(arg0 == false) {
@@ -233,7 +233,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 }
                 if((arg1.anInt3137 ^ 0xffffffff) <= -32769) {
                     int i = -32768 + arg1.anInt3137;
-                    if((Class30.anInt708 ^ 0xffffffff) == (i ^ 0xffffffff))
+                    if(i == Class30.anInt708)
                         i = 2047;
                     Player class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i]);
                     if(class40_sub5_sub17_sub4_sub1 != null) {
@@ -261,7 +261,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                             bool = false;
                             arg1.anInt3118 = arg1.anInt3080;
                         }
-                        if((arg1.anInt3077 ^ 0xffffffff) == (arg1.anInt3126 ^ 0xffffffff) && ((arg1.anInt3097 ^ 0xffffffff) < -26 || bool)) {
+                        if(arg1.anInt3126 == arg1.anInt3077 && ((arg1.anInt3097 ^ 0xffffffff) < -26 || bool)) {
                             if(arg1.anInt3145 != -1)
                                 arg1.anInt3077 = arg1.anInt3145;
                             else

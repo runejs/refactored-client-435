@@ -153,7 +153,7 @@ public class Class40_Sub5_Sub10 extends SubNode {
             if(anIntArray2600 == null)
                 return true;
             boolean bool = arg0;
-            for(int i = 0; (i ^ 0xffffffff) > (anIntArray2600.length ^ 0xffffffff); i++) {
+        for(int i = 0; anIntArray2600.length > i; i++) {
                 if(!Class27.aClass6_654.method173(anIntArray2600[i], (byte) -10, 0))
                     bool = false;
             }

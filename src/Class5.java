@@ -57,7 +57,7 @@ public class Class5 {
             for(int i = 0; i < 4; i++) {
                 for(int i_1_ = 0; (i_1_ ^ 0xffffffff) > -65; i_1_++) {
                     for(int i_2_ = 0; (i_2_ ^ 0xffffffff) > -65; i_2_++) {
-                        if((arg3 ^ 0xffffffff) == (i ^ 0xffffffff) && i_1_ >= arg2 && 8 + arg2 > i_1_ && i_2_ >= arg6 && 8 + arg6 > i_2_)
+                        if(i == arg3 && i_1_ >= arg2 && 8 + arg2 > i_1_ && i_2_ >= arg6 && 8 + arg6 > i_2_)
                             Class48.method922(arg5 + Class24.method338(arg7, false, i_1_ & 0x7, i_2_ & 0x7), arg7, class40_sub1, arg1 ^ ~0x363e, arg0 + Class33.method410(i_1_ & 0x7, 0x7 & i_2_, arg7, false), 0, 0, arg4);
                         else
                             Class48.method922(-1, 0, class40_sub1, -116, -1, 0, 0, 0);
@@ -292,13 +292,13 @@ public class Class5 {
                 Landscape.anInt1171 = 0;
             anInt190++;
             Class61.aBoolean1444 = false;
-            if((arg6 ^ 0xffffffff) >= (arg2 ^ 0xffffffff) && arg2 < arg6 + 16 && arg1 >= arg8 && 16 + arg8 > arg1) {
+        if(arg2 >= arg6 && arg2 < arg6 + 16 && arg1 >= arg8 && 16 + arg8 > arg1) {
                 arg5.anInt2731 -= NPC.anInt3294 * 4;
                 if(arg7 == 1)
                     ISAAC.aBoolean505 = true;
                 if(arg7 == 2 || (arg7 ^ 0xffffffff) == -4)
                     Class52.aBoolean1221 = true;
-            } else if((arg2 ^ 0xffffffff) > (arg6 ^ 0xffffffff) || (arg6 + 16 ^ 0xffffffff) >= (arg2 ^ 0xffffffff) || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
+        } else if(arg6 > arg2 || (arg6 + 16 ^ 0xffffffff) >= (arg2 ^ 0xffffffff) || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
                 if(-Landscape.anInt1171 + arg6 <= arg2 && (arg2 ^ 0xffffffff) > (16 + (arg6 + Landscape.anInt1171) ^ 0xffffffff) && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && NPC.anInt3294 > 0) {
                     Class61.aBoolean1444 = true;
                     int i = (-32 + arg0) * arg0 / arg3;

@@ -459,7 +459,7 @@ public class Class38_Sub1 extends Class38 {
                 anInt1915 = 256;
                 anInt1912 = (int) ((long) arg0 - (aLong1914 - aLongArray1910[anInt1900]) / 10L);
             }
-            if((anInt1912 ^ 0xffffffff) < (arg0 ^ 0xffffffff))
+        if(arg0 < anInt1912)
                 anInt1912 = arg0;
             aLongArray1910[anInt1900] = aLong1914;
             anInt1900 = (anInt1900 + 1) % 10;

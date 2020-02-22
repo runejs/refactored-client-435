@@ -102,7 +102,7 @@ public class Floor extends SubNode {
 
         int i = -26 % (-arg1 / 44);
             anInt2316++;
-            if((Class51.anInt1197 ^ 0xffffffff) != (arg0 ^ 0xffffffff)) {
+        if(arg0 != Class51.anInt1197) {
                 if((Class51.anInt1197 ^ 0xffffffff) == -1)
                     CollisionMap.method144(12433);
                 if(arg0 == 20 || arg0 == 40) {

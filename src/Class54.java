@@ -219,7 +219,7 @@ public class Class54 implements KeyListener, FocusListener {
             if(Class59.aClass54_1392 != null) {
                 Class49.anInt1147 = 0;
                 int i = arg0.getKeyCode();
-                if((i ^ 0xffffffff) <= -1 && (i ^ 0xffffffff) > (Class66.anIntArray1564.length ^ 0xffffffff)) {
+                if((i ^ 0xffffffff) <= -1 && Class66.anIntArray1564.length > i) {
                     i = Class66.anIntArray1564[i];
                     if((0x80 & i ^ 0xffffffff) != -1)
                         i = -1;

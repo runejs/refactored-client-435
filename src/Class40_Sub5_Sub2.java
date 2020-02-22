@@ -272,7 +272,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
             }
         } catch(IOException ioexception) {
             if((Floor.anInt2321 ^ 0xffffffff) > -2) {
-                if((Floor.anInt2340 ^ 0xffffffff) == (Class10.anInt350 ^ 0xffffffff))
+                if(Class10.anInt350 == Floor.anInt2340)
                     Class10.anInt350 = CollisionMap.anInt172;
                 else
                     Class10.anInt350 = Floor.anInt2340;

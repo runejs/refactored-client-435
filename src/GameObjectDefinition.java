@@ -550,7 +550,7 @@ public class GameObjectDefinition extends SubNode {
                 anInt2543 = -28;
             anInt2532++;
             if(anIntArray2522 != null) {
-                for(int i = 0; (i ^ 0xffffffff) > (anIntArray2522.length ^ 0xffffffff); i++) {
+                for(int i = 0; anIntArray2522.length > i; i++) {
                     if((arg0 ^ 0xffffffff) == (anIntArray2522[i] ^ 0xffffffff))
                         return RSString.aClass6_1705.method173((anIntArray2525[i] & 0xffff), (byte) -10, 0);
                 }
@@ -561,7 +561,7 @@ public class GameObjectDefinition extends SubNode {
             if((arg0 ^ 0xffffffff) != -11)
                 return true;
             boolean bool = true;
-            for(int i = 0; (i ^ 0xffffffff) > (anIntArray2525.length ^ 0xffffffff); i++)
+        for(int i = 0; anIntArray2525.length > i; i++)
                 bool &= RSString.aClass6_1705.method173((0xffff & anIntArray2525[i]), (byte) -10, 0);
             return bool;
 
@@ -590,7 +590,7 @@ public class GameObjectDefinition extends SubNode {
             if(anIntArray2525 == null)
                 return true;
             boolean bool = true;
-            for(int i = 0; (i ^ 0xffffffff) > (anIntArray2525.length ^ 0xffffffff); i++)
+        for(int i = 0; anIntArray2525.length > i; i++)
                 bool &= RSString.aClass6_1705.method173((0xffff & anIntArray2525[i]), (byte) -10, 0);
             int i = -67 % ((-65 - arg0) / 50);
             return bool;

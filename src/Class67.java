@@ -149,7 +149,7 @@ public class Class67 {
                 arg0 += i;
                 method1039(-1);
             }
-            if((aByteArray1592.length ^ 0xffffffff) > (arg2 ^ 0xffffffff)) {
+            if(arg2 > aByteArray1592.length) {
                 if((aLong1578 ^ 0xffffffffffffffffL) != (aLong1600 ^ 0xffffffffffffffffL)) {
                     aClass47_1603.method916(true, aLong1578);
                     aLong1600 = aLong1578;
@@ -295,7 +295,7 @@ public class Class67 {
                 }
                 aLong1596 = aLong1578;
                 int i;
-                for(/**/; ((aByteArray1583.length ^ 0xffffffff) < (anInt1589 ^ 0xffffffff)); anInt1589 += i) {
+                for(/**/; (anInt1589 < aByteArray1583.length); anInt1589 += i) {
                     i = aClass47_1603.method920(anInt1589, (aByteArray1583.length - anInt1589), aByteArray1583, -110);
                     if((i ^ 0xffffffff) == 0)
                         break;

@@ -362,7 +362,7 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
     public static void method789(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 
         anInt3147++;
-            if((Class51.anInt1202 ^ 0xffffffff) != (arg3 ^ 0xffffffff) || arg2 != Class17.anInt448 || ((arg5 ^ 0xffffffff) != (Class40_Sub6.onBuildTimePlane ^ 0xffffffff) && VertexNormal.lowMemory)) {
+        if(arg3 != Class51.anInt1202 || arg2 != Class17.anInt448 || ((arg5 ^ 0xffffffff) != (Class40_Sub6.onBuildTimePlane ^ 0xffffffff) && VertexNormal.lowMemory)) {
                 Class40_Sub6.onBuildTimePlane = arg5;
                 Class51.anInt1202 = arg3;
                 if(!VertexNormal.lowMemory)
