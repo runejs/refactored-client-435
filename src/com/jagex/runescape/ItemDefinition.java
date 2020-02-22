@@ -222,8 +222,8 @@ public class ItemDefinition extends SubNode {
         definition = new ItemDefinition();
         definition.anInt2852 = arg0;
         if(is != null)
-            definition.readValues(new Buffer(is), -1);
-        definition.method741(29216);
+            definition.readValues(new Buffer(is));
+        definition.method741();
         if(definition.noteTemplateId != -1)
             definition.itemToNote(forId(definition.noteTemplateId, 10), forId(definition.anInt2812, 10));
         if(!Class40_Sub5_Sub10.membersServer && definition.members) {
@@ -285,7 +285,6 @@ public class ItemDefinition extends SubNode {
     }
 
     public Model method740(boolean arg0, int arg1) {
-
         anInt2837++;
         int i = anInt2836;
         int i_3_ = anInt2820;
@@ -322,15 +321,11 @@ public class ItemDefinition extends SubNode {
 
     }
 
-    public void method741(int arg0) {
-
-        if(arg0 == 29216)
-            anInt2801++;
-
+    public void method741() {
+        anInt2801++;
     }
 
-    public ItemDefinition method743(byte arg0, int arg1) {
-
+    public ItemDefinition method743(int arg1) {
         anInt2809++;
         if(anIntArray2831 != null && (arg1 ^ 0xffffffff) < -2) {
             int i = -1;
@@ -341,14 +336,11 @@ public class ItemDefinition extends SubNode {
             if((i ^ 0xffffffff) != 0)
                 return forId(i, 10);
         }
-        if(arg0 != -37)
-            return null;
         return this;
 
     }
 
     public Model method747(boolean arg0, byte arg1) {
-
         int i = anInt2800;
         int i_12_ = anInt2841;
         if(arg1 != 25)
@@ -360,146 +352,139 @@ public class ItemDefinition extends SubNode {
         }
         if(i == -1)
             return null;
-        Model class40_sub5_sub17_sub5 = Model.getModel(Class8.aClass6_284, i, 0);
+        Model model1 = Model.getModel(Class8.aClass6_284, i, 0);
         if(i_12_ != -1) {
-            Model class40_sub5_sub17_sub5_13_ = Model.getModel(Class8.aClass6_284, i_12_, 0);
-            Model[] class40_sub5_sub17_sub5s = {class40_sub5_sub17_sub5, class40_sub5_sub17_sub5_13_};
-            class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, 2);
+            Model model2 = Model.getModel(Class8.aClass6_284, i_12_, 0);
+            Model[] models = {model1, model2};
+            model1 = new Model(models, 2);
         }
         if(anIntArray2803 != null) {
-            for(int i_14_ = 0; ((anIntArray2803.length ^ 0xffffffff) < (i_14_ ^ 0xffffffff)); i_14_++)
-                class40_sub5_sub17_sub5.method803(anIntArray2803[i_14_], anIntArray2816[i_14_]);
+            for(int j = 0; ((anIntArray2803.length ^ 0xffffffff) < (j ^ 0xffffffff)); j++)
+                model1.method803(anIntArray2803[j], anIntArray2816[j]);
         }
-        return class40_sub5_sub17_sub5;
+        return model1;
 
     }
 
-    public void readValue(int arg0, int arg1, Buffer arg2) {
-        if(arg0 == 1)
-            anInt2805 = arg2.getUnsignedShortBE();
-        else if((arg0 ^ 0xffffffff) == -3)
-            name = arg2.getRSString();
-        else if((arg0 ^ 0xffffffff) != -5) {
-            if((arg0 ^ 0xffffffff) == -6)
-                anInt2844 = arg2.getUnsignedShortBE();
-            else if((arg0 ^ 0xffffffff) != -7) {
-                if(arg0 != 7) {
-                    if(arg0 != 8) {
-                        if((arg0 ^ 0xffffffff) != -12) {
-                            if(arg0 != 12) {
-                                if((arg0 ^ 0xffffffff) == -17)
+    public void readValue(int opcode, Buffer buffer) {
+        if(opcode == 1)
+            anInt2805 = buffer.getUnsignedShortBE();
+        else if((opcode ^ 0xffffffff) == -3)
+            name = buffer.getRSString();
+        else if((opcode ^ 0xffffffff) != -5) {
+            if((opcode ^ 0xffffffff) == -6)
+                anInt2844 = buffer.getUnsignedShortBE();
+            else if((opcode ^ 0xffffffff) != -7) {
+                if(opcode != 7) {
+                    if(opcode != 8) {
+                        if((opcode ^ 0xffffffff) != -12) {
+                            if(opcode != 12) {
+                                if((opcode ^ 0xffffffff) == -17)
                                     members = true;
-                                else if((arg0 ^ 0xffffffff) != -24) {
-                                    if(arg0 != 24) {
-                                        if((arg0 ^ 0xffffffff) == -26) {
-                                            anInt2848 = arg2.getUnsignedShortBE();
-                                            anInt2829 = arg2.getUnsignedByte();
-                                        } else if((arg0 ^ 0xffffffff) == -27)
-                                            anInt2819 = arg2.getUnsignedShortBE();
-                                        else if((arg0 ^ 0xffffffff) <= -31 && ((arg0 ^ 0xffffffff) > -36)) {
-                                            groundActions[-30 + arg0] = arg2.getRSString();
-                                            if(groundActions[arg0 + -30].method63(Class59.aClass1_1396, true))
-                                                groundActions[arg0 + -30] = null;
-                                        } else if(arg0 >= 35 && ((arg0 ^ 0xffffffff) > -41))
-                                            options[arg0 + -35] = arg2.getRSString();
-                                        else if(arg0 != 40) {
-                                            if((arg0 ^ 0xffffffff) == -79)
-                                                anInt2824 = arg2.getUnsignedShortBE();
-                                            else if((arg0 ^ 0xffffffff) == -80)
-                                                anInt2845 = arg2.getUnsignedShortBE();
-                                            else if((arg0 ^ 0xffffffff) == -91)
-                                                anInt2800 = arg2.getUnsignedShortBE();
-                                            else if((arg0 ^ 0xffffffff) == -92)
-                                                anInt2851 = arg2.getUnsignedShortBE();
-                                            else if((arg0 ^ 0xffffffff) == -93)
-                                                anInt2841 = arg2.getUnsignedShortBE();
-                                            else if((arg0 ^ 0xffffffff) != -94) {
-                                                if(arg0 == 95)
-                                                    anInt2827 = (arg2.getUnsignedShortBE());
-                                                else if((arg0 ^ 0xffffffff) == -98)
-                                                    anInt2812 = (arg2.getUnsignedShortBE());
-                                                else if((arg0 ^ 0xffffffff) != -99) {
-                                                    if(arg0 >= 100 && ((arg0 ^ 0xffffffff) > -111)) {
+                                else if((opcode ^ 0xffffffff) != -24) {
+                                    if(opcode != 24) {
+                                        if((opcode ^ 0xffffffff) == -26) {
+                                            anInt2848 = buffer.getUnsignedShortBE();
+                                            anInt2829 = buffer.getUnsignedByte();
+                                        } else if((opcode ^ 0xffffffff) == -27)
+                                            anInt2819 = buffer.getUnsignedShortBE();
+                                        else if((opcode ^ 0xffffffff) <= -31 && ((opcode ^ 0xffffffff) > -36)) {
+                                            groundActions[-30 + opcode] = buffer.getRSString();
+                                            if(groundActions[opcode + -30].method63(Class59.aClass1_1396, true))
+                                                groundActions[opcode + -30] = null;
+                                        } else if(opcode >= 35 && ((opcode ^ 0xffffffff) > -41))
+                                            options[opcode + -35] = buffer.getRSString();
+                                        else if(opcode != 40) {
+                                            if((opcode ^ 0xffffffff) == -79)
+                                                anInt2824 = buffer.getUnsignedShortBE();
+                                            else if((opcode ^ 0xffffffff) == -80)
+                                                anInt2845 = buffer.getUnsignedShortBE();
+                                            else if((opcode ^ 0xffffffff) == -91)
+                                                anInt2800 = buffer.getUnsignedShortBE();
+                                            else if((opcode ^ 0xffffffff) == -92)
+                                                anInt2851 = buffer.getUnsignedShortBE();
+                                            else if((opcode ^ 0xffffffff) == -93)
+                                                anInt2841 = buffer.getUnsignedShortBE();
+                                            else if((opcode ^ 0xffffffff) != -94) {
+                                                if(opcode == 95)
+                                                    anInt2827 = (buffer.getUnsignedShortBE());
+                                                else if((opcode ^ 0xffffffff) == -98)
+                                                    anInt2812 = (buffer.getUnsignedShortBE());
+                                                else if((opcode ^ 0xffffffff) != -99) {
+                                                    if(opcode >= 100 && ((opcode ^ 0xffffffff) > -111)) {
                                                         if(anIntArray2831 == null) {
                                                             anIntArray2834 = new int[10];
                                                             anIntArray2831 = new int[10];
                                                         }
-                                                        anIntArray2831[-100 + arg0] = (arg2.getUnsignedShortBE());
-                                                        anIntArray2834[-100 + arg0] = (arg2.getUnsignedShortBE());
-                                                    } else if((arg0 ^ 0xffffffff) != -111) {
-                                                        if(arg0 != 111) {
-                                                            if(arg0 != 112) {
-                                                                if(arg0 == 113)
-                                                                    anInt2825 = (arg2.getByte());
-                                                                else if((arg0 ^ 0xffffffff) != -115) {
-                                                                    if(arg0 == 115)
-                                                                        team = arg2.getUnsignedByte();
+                                                        anIntArray2831[-100 + opcode] = (buffer.getUnsignedShortBE());
+                                                        anIntArray2834[-100 + opcode] = (buffer.getUnsignedShortBE());
+                                                    } else if((opcode ^ 0xffffffff) != -111) {
+                                                        if(opcode != 111) {
+                                                            if(opcode != 112) {
+                                                                if(opcode == 113)
+                                                                    anInt2825 = (buffer.getByte());
+                                                                else if((opcode ^ 0xffffffff) != -115) {
+                                                                    if(opcode == 115)
+                                                                        team = buffer.getUnsignedByte();
                                                                 } else
-                                                                    anInt2840 = ((arg2.getByte()) * 5);
+                                                                    anInt2840 = ((buffer.getByte()) * 5);
                                                             } else
-                                                                anInt2833 = (arg2.getUnsignedShortBE());
+                                                                anInt2833 = (buffer.getUnsignedShortBE());
                                                         } else
-                                                            anInt2853 = (arg2.getUnsignedShortBE());
+                                                            anInt2853 = (buffer.getUnsignedShortBE());
                                                     } else
-                                                        anInt2813 = (arg2.getUnsignedShortBE());
+                                                        anInt2813 = (buffer.getUnsignedShortBE());
                                                 } else
-                                                    noteTemplateId = (arg2.getUnsignedShortBE());
+                                                    noteTemplateId = (buffer.getUnsignedShortBE());
                                             } else
-                                                anInt2822 = arg2.getUnsignedShortBE();
+                                                anInt2822 = buffer.getUnsignedShortBE();
                                         } else {
-                                            int i = arg2.getUnsignedByte();
+                                            int i = buffer.getUnsignedByte();
                                             anIntArray2816 = new int[i];
                                             anIntArray2803 = new int[i];
                                             for(int i_18_ = 0; ((i_18_ ^ 0xffffffff) > (i ^ 0xffffffff)); i_18_++) {
-                                                anIntArray2803[i_18_] = arg2.getUnsignedShortBE();
-                                                anIntArray2816[i_18_] = arg2.getUnsignedShortBE();
+                                                anIntArray2803[i_18_] = buffer.getUnsignedShortBE();
+                                                anIntArray2816[i_18_] = buffer.getUnsignedShortBE();
                                             }
                                         }
                                     } else
-                                        anInt2820 = arg2.getUnsignedShortBE();
+                                        anInt2820 = buffer.getUnsignedShortBE();
                                 } else {
-                                    anInt2836 = arg2.getUnsignedShortBE();
-                                    anInt2818 = arg2.getUnsignedByte();
+                                    anInt2836 = buffer.getUnsignedShortBE();
+                                    anInt2818 = buffer.getUnsignedByte();
                                 }
                             } else
-                                anInt2828 = arg2.getIntBE();
+                                anInt2828 = buffer.getIntBE();
                         } else
                             anInt2795 = 1;
                     } else {
-                        anInt2810 = arg2.getUnsignedShortBE();
+                        anInt2810 = buffer.getUnsignedShortBE();
                         if(anInt2810 > 32767)
                             anInt2810 -= 65536;
                     }
                 } else {
-                    anInt2806 = arg2.getUnsignedShortBE();
+                    anInt2806 = buffer.getUnsignedShortBE();
                     if((anInt2806 ^ 0xffffffff) < -32768)
                         anInt2806 -= 65536;
                 }
             } else
-                anInt2830 = arg2.getUnsignedShortBE();
+                anInt2830 = buffer.getUnsignedShortBE();
         } else
-            anInt2817 = arg2.getUnsignedShortBE();
+            anInt2817 = buffer.getUnsignedShortBE();
         anInt2802++;
-        if(arg1 != -93)
-            anInt2841 = -84;
     }
 
-    public void readValues(Buffer arg0, int arg1) {
-
+    public void readValues(Buffer itemDefinitionBuffer) {
         anInt2821++;
-        if(arg1 != -1)
-            anInt2817 = 23;
         for(; ; ) {
-            int i = arg0.getUnsignedByte();
-            if((i ^ 0xffffffff) == -1)
+            int opcode = itemDefinitionBuffer.getUnsignedByte();
+            if((opcode ^ 0xffffffff) == -1)
                 break;
-            readValue(i, arg1 ^ 0x5c, arg0);
+            readValue(opcode, itemDefinitionBuffer);
         }
-
     }
 
     public void itemToNote(ItemDefinition noteTemplate, ItemDefinition note) {
-
         anInt2844 = noteTemplate.anInt2844;
         anInt2806 = noteTemplate.anInt2806;
         anInt2827 = noteTemplate.anInt2827;
@@ -514,11 +499,9 @@ public class ItemDefinition extends SubNode {
         anInt2830 = noteTemplate.anInt2830;
         anInt2810 = noteTemplate.anInt2810;
         anInt2805 = noteTemplate.anInt2805;
-
     }
 
     public Model method753(boolean arg0, int arg1, int arg2) {
-
         if(arg2 != 26910)
             anIntArray2814 = null;
         anInt2842++;
@@ -532,25 +515,25 @@ public class ItemDefinition extends SubNode {
                 return forId(i, 10).method753(arg0, 1, 26910);
         }
         if(arg0) {
-            Model class40_sub5_sub17_sub5 = ((Model) Class62.aClass9_1455.method231((long) anInt2852, (byte) 87));
-            if(class40_sub5_sub17_sub5 != null)
-                return class40_sub5_sub17_sub5;
+            Model model = ((Model) Class62.aClass9_1455.method231((long) anInt2852, (byte) 87));
+            if(model != null)
+                return model;
         }
-        Model class40_sub5_sub17_sub5 = Model.getModel(Class8.aClass6_284, anInt2805, 0);
-        if(class40_sub5_sub17_sub5 == null)
+        Model model = Model.getModel(Class8.aClass6_284, anInt2805, 0);
+        if(model == null)
             return null;
         if((anInt2813 ^ 0xffffffff) != -129 || anInt2853 != 128 || anInt2833 != 128)
-            class40_sub5_sub17_sub5.method821(anInt2813, anInt2853, anInt2833);
+            model.method821(anInt2813, anInt2853, anInt2833);
         if(anIntArray2803 != null) {
             for(int i = 0; i < anIntArray2803.length; i++)
-                class40_sub5_sub17_sub5.method803(anIntArray2803[i], anIntArray2816[i]);
+                model.method803(anIntArray2803[i], anIntArray2816[i]);
         }
         if(arg0) {
-            class40_sub5_sub17_sub5.method802(anInt2825 + 64, 768 + anInt2840, -50, -10, -50, true);
-            class40_sub5_sub17_sub5.aBoolean3164 = true;
-            Class62.aClass9_1455.method230(-7208, (long) anInt2852, class40_sub5_sub17_sub5);
+            model.method802(anInt2825 + 64, 768 + anInt2840, -50, -10, -50, true);
+            model.aBoolean3164 = true;
+            Class62.aClass9_1455.method230(-7208, (long) anInt2852, model);
         }
-        return class40_sub5_sub17_sub5;
+        return model;
 
     }
 }

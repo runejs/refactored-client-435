@@ -342,7 +342,7 @@ public class Main extends RSApplet {
                             if((class40_sub5_sub12.anInt2718 ^ 0xffffffff) != 0) {
                                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((class40_sub5_sub12.anInt2718), 10);
                                 if(class40_sub5_sub16 != null) {
-                                    class40_sub5_sub16 = (class40_sub5_sub16.method743((byte) -37, class40_sub5_sub12.anInt2734));
+                                    class40_sub5_sub16 = (class40_sub5_sub16.method743(class40_sub5_sub12.anInt2734));
                                     class40_sub5_sub17_sub5 = class40_sub5_sub16.method753(true, 1, 26910);
                                     i_38_ = class40_sub5_sub16.anInt2827;
                                     i_39_ = class40_sub5_sub16.anInt2810;
