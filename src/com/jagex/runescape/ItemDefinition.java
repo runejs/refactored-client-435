@@ -145,33 +145,40 @@ public class ItemDefinition extends SubNode {
 
     public static boolean method746(Class40_Sub5_Sub12 arg1) {
         anInt2838++;
-        if(arg1.anIntArray2742 == null)
+        if(arg1.anIntArray2742 == null) {
             return false;
+        }
         for(int i = 0; arg1.anIntArray2742.length > i; i++) {
             int i_10_ = Class66.method1029(i, false, arg1);
             int i_11_ = arg1.anIntArray2693[i];
             if((arg1.anIntArray2742[i] ^ 0xffffffff) == -3) {
-                if((i_11_ ^ 0xffffffff) >= (i_10_ ^ 0xffffffff))
+                if((i_11_ ^ 0xffffffff) >= (i_10_ ^ 0xffffffff)) {
                     return false;
+                }
             } else if((arg1.anIntArray2742[i] ^ 0xffffffff) == -4) {
-                if((i_11_ ^ 0xffffffff) <= (i_10_ ^ 0xffffffff))
+                if((i_11_ ^ 0xffffffff) <= (i_10_ ^ 0xffffffff)) {
                     return false;
+                }
             } else if((arg1.anIntArray2742[i] ^ 0xffffffff) == -5) {
-                if(i_11_ == i_10_)
+                if(i_11_ == i_10_) {
                     return false;
-            } else if((i_11_ ^ 0xffffffff) != (i_10_ ^ 0xffffffff))
+                }
+            } else if((i_11_ ^ 0xffffffff) != (i_10_ ^ 0xffffffff)) {
                 return false;
+            }
         }
         return true;
     }
 
     public static void method748(int arg1) {
         anInt2843++;
-        for(Renderable.anInt2866 += arg1; (Renderable.anInt2866 >= CollisionMap.anInt141); Renderable.anInt2866 -= CollisionMap.anInt141)
+        for(Renderable.anInt2866 += arg1; (Renderable.anInt2866 >= CollisionMap.anInt141); Renderable.anInt2866 -= CollisionMap.anInt141) {
             SubNode.anInt2081 -= SubNode.anInt2081 >> -1244591038;
+        }
         SubNode.anInt2081 -= 1000 * arg1;
-        if((SubNode.anInt2081 ^ 0xffffffff) > -1)
+        if((SubNode.anInt2081 ^ 0xffffffff) > -1) {
             SubNode.anInt2081 = 0;
+        }
     }
 
     public static void method749(boolean arg0) {
@@ -183,12 +190,14 @@ public class ItemDefinition extends SubNode {
                 int i_17_ = npc.anInt3089 >> 698755175;
                 if((i_16_ ^ 0xffffffff) <= -1 && (i_16_ ^ 0xffffffff) > -105 && (i_17_ ^ 0xffffffff) <= -1 && i_17_ < 104) {
                     if((npc.anInt3096 ^ 0xffffffff) == -2 && (npc.anInt3098 & 0x7f ^ 0xffffffff) == -65 && ((npc.anInt3089 & 0x7f) == 64)) {
-                        if((Class40_Sub5_Sub11.anInt2628 ^ 0xffffffff) == (Class61.anIntArrayArray1435[i_16_][i_17_] ^ 0xffffffff))
+                        if((Class40_Sub5_Sub11.anInt2628 ^ 0xffffffff) == (Class61.anIntArrayArray1435[i_16_][i_17_] ^ 0xffffffff)) {
                             continue;
+                        }
                         Class61.anIntArrayArray1435[i_16_][i_17_] = Class40_Sub5_Sub11.anInt2628;
                     }
-                    if(!npc.aClass40_Sub5_Sub5_3300.aBoolean2372)
+                    if(!npc.aClass40_Sub5_Sub5_3300.aBoolean2372) {
                         i_15_ += -2147483648;
+                    }
                     Npc.aScene_3301.method134(Player.anInt3267, npc.anInt3098, npc.anInt3089, (Class37.method430((byte) -126, Player.anInt3267, (npc.anInt3098 + ((-1 + npc.anInt3096) * 64)), (npc.anInt3096 * 64 + (-64 + (npc.anInt3089))))), -64 + (npc.anInt3096 * 64 + 60), npc, npc.anInt3118, i_15_, npc.aBoolean3105);
                 }
             }
@@ -198,16 +207,19 @@ public class ItemDefinition extends SubNode {
 
     public static ItemDefinition forId(int arg0, int arg1) {
         ItemDefinition definition = ((ItemDefinition) ISAAC.aClass9_516.method231((long) arg0, (byte) 100));
-        if(definition != null)
+        if(definition != null) {
             return definition;
+        }
         byte[] is = Class26.aClass6_632.method172(arg0, 112, arg1);
         definition = new ItemDefinition();
         definition.anInt2852 = arg0;
-        if(is != null)
+        if(is != null) {
             definition.readValues(new Buffer(is));
+        }
         definition.method741();
-        if(definition.noteTemplateId != -1)
+        if(definition.noteTemplateId != -1) {
             definition.itemToNote(forId(definition.noteTemplateId, 10), forId(definition.notedId, 10));
+        }
         if(!Class40_Sub5_Sub10.membersServer && definition.members) {
             definition.inventoryOptions = null;
             definition.teamIndex = 0;
@@ -220,21 +232,25 @@ public class ItemDefinition extends SubNode {
 
     public boolean method738(byte arg0, boolean arg1) {
         anInt2832++;
-        if(arg0 != 44)
+        if(arg0 != 44) {
             inventoryOptions = null;
+        }
         int i = anInt2800;
         int i_0_ = anInt2841;
         if(arg1) {
             i_0_ = anInt2822;
             i = anInt2851;
         }
-        if(i == -1)
+        if(i == -1) {
             return true;
+        }
         boolean bool = true;
-        if(!Class8.aClass6_284.method173(i, (byte) -10, 0))
+        if(!Class8.aClass6_284.method173(i, (byte) -10, 0)) {
             bool = false;
-        if(i_0_ != -1 && !Class8.aClass6_284.method173(i_0_, (byte) -10, 0))
+        }
+        if(i_0_ != -1 && !Class8.aClass6_284.method173(i_0_, (byte) -10, 0)) {
             bool = false;
+        }
         return bool;
     }
 
@@ -248,17 +264,22 @@ public class ItemDefinition extends SubNode {
             i_1_ = femaleWearModel2;
             i = anInt2848;
         }
-        if((i ^ 0xffffffff) == 0)
+        if((i ^ 0xffffffff) == 0) {
             return true;
+        }
         boolean bool = true;
-        if(arg1 <= 126)
+        if(arg1 <= 126) {
             return false;
-        if(!Class8.aClass6_284.method173(i, (byte) -10, 0))
+        }
+        if(!Class8.aClass6_284.method173(i, (byte) -10, 0)) {
             bool = false;
-        if(i_1_ != -1 && !Class8.aClass6_284.method173(i_1_, (byte) -10, 0))
+        }
+        if(i_1_ != -1 && !Class8.aClass6_284.method173(i_1_, (byte) -10, 0)) {
             bool = false;
-        if(i_2_ != -1 && !Class8.aClass6_284.method173(i_2_, (byte) -10, 0))
+        }
+        if(i_2_ != -1 && !Class8.aClass6_284.method173(i_2_, (byte) -10, 0)) {
             bool = false;
+        }
         return bool;
     }
 
@@ -273,8 +294,9 @@ public class ItemDefinition extends SubNode {
             i_3_ = femaleWearModel2;
             i_5_ = colorEquip2;
         }
-        if(i == -1)
+        if(i == -1) {
             return null;
+        }
         Model model1 = Model.getModel(Class8.aClass6_284, i, 0);
         if(i_3_ != -1) {
             Model model2 = Model.getModel(Class8.aClass6_284, i_3_, 0);
@@ -287,13 +309,16 @@ public class ItemDefinition extends SubNode {
                 model1 = new Model(models, 3);
             }
         }
-        if(!arg0 && (anInt2818 ^ 0xffffffff) != -1)
+        if(!arg0 && (anInt2818 ^ 0xffffffff) != -1) {
             model1.method828(0, anInt2818, 0);
-        if(arg0 && anInt2829 != 0)
+        }
+        if(arg0 && anInt2829 != 0) {
             model1.method828(0, anInt2829, 0);
+        }
         if(modifiedModelColors != null) {
-            for(int i_8_ = 0; ((modifiedModelColors.length ^ 0xffffffff) < (i_8_ ^ 0xffffffff)); i_8_++)
+            for(int i_8_ = 0; ((modifiedModelColors.length ^ 0xffffffff) < (i_8_ ^ 0xffffffff)); i_8_++) {
                 model1.method803(modifiedModelColors[i_8_], originalModelColors[i_8_]);
+            }
         }
         return model1;
 
@@ -308,11 +333,13 @@ public class ItemDefinition extends SubNode {
         if(stackableIds != null && (arg1 ^ 0xffffffff) < -2) {
             int i = -1;
             for(int i_9_ = 0; (i_9_ ^ 0xffffffff) > -11; i_9_++) {
-                if((arg1 ^ 0xffffffff) <= (stackableAmounts[i_9_] ^ 0xffffffff) && (stackableAmounts[i_9_] ^ 0xffffffff) != -1)
+                if((arg1 ^ 0xffffffff) <= (stackableAmounts[i_9_] ^ 0xffffffff) && (stackableAmounts[i_9_] ^ 0xffffffff) != -1) {
                     i = stackableIds[i_9_];
+                }
             }
-            if((i ^ 0xffffffff) != 0)
+            if((i ^ 0xffffffff) != 0) {
                 return forId(i, 10);
+            }
         }
         return this;
 
@@ -321,15 +348,17 @@ public class ItemDefinition extends SubNode {
     public Model method747(boolean arg0, byte arg1) {
         int i = anInt2800;
         int i_12_ = anInt2841;
-        if(arg1 != 25)
+        if(arg1 != 25) {
             return null;
+        }
         anInt2847++;
         if(arg0) {
             i = anInt2851;
             i_12_ = anInt2822;
         }
-        if(i == -1)
+        if(i == -1) {
             return null;
+        }
         Model model1 = Model.getModel(Class8.aClass6_284, i, 0);
         if(i_12_ != -1) {
             Model model2 = Model.getModel(Class8.aClass6_284, i_12_, 0);
@@ -337,118 +366,104 @@ public class ItemDefinition extends SubNode {
             model1 = new Model(models, 2);
         }
         if(modifiedModelColors != null) {
-            for(int j = 0; ((modifiedModelColors.length ^ 0xffffffff) < (j ^ 0xffffffff)); j++)
+            for(int j = 0; ((modifiedModelColors.length ^ 0xffffffff) < (j ^ 0xffffffff)); j++) {
                 model1.method803(modifiedModelColors[j], originalModelColors[j]);
+            }
         }
         return model1;
 
     }
 
     public void readValue(int opcode, Buffer buffer) {
-        if(opcode == 1)
+        if(opcode == 1) {
             inventoryModelId = buffer.getUnsignedShortBE();
-        else if((opcode ^ 0xffffffff) == -3)
+        } else if(opcode == 2) {
             name = buffer.getRSString();
-        else if((opcode ^ 0xffffffff) != -5) {
-            if((opcode ^ 0xffffffff) == -6)
-                modelRotation1 = buffer.getUnsignedShortBE();
-            else if((opcode ^ 0xffffffff) != -7) {
-                if(opcode != 7) {
-                    if(opcode != 8) {
-                        if((opcode ^ 0xffffffff) != -12) {
-                            if(opcode != 12) {
-                                if((opcode ^ 0xffffffff) == -17)
-                                    members = true;
-                                else if((opcode ^ 0xffffffff) != -24) {
-                                    if(opcode != 24) {
-                                        if((opcode ^ 0xffffffff) == -26) {
-                                            anInt2848 = buffer.getUnsignedShortBE();
-                                            anInt2829 = buffer.getUnsignedByte();
-                                        } else if((opcode ^ 0xffffffff) == -27)
-                                            femaleWearModel2 = buffer.getUnsignedShortBE();
-                                        else if((opcode ^ 0xffffffff) <= -31 && ((opcode ^ 0xffffffff) > -36)) {
-                                            groundOptions[-30 + opcode] = buffer.getRSString();
-                                            if(groundOptions[opcode + -30].equalsIgnoreCase(Class59.string_Hidden, true))
-                                                groundOptions[opcode + -30] = null;
-                                        } else if(opcode >= 35 && ((opcode ^ 0xffffffff) > -41))
-                                            inventoryOptions[opcode + -35] = buffer.getRSString();
-                                        else if(opcode != 40) {
-                                            if((opcode ^ 0xffffffff) == -79)
-                                                colorEquip1 = buffer.getUnsignedShortBE();
-                                            else if((opcode ^ 0xffffffff) == -80)
-                                                colorEquip2 = buffer.getUnsignedShortBE();
-                                            else if((opcode ^ 0xffffffff) == -91)
-                                                anInt2800 = buffer.getUnsignedShortBE();
-                                            else if((opcode ^ 0xffffffff) == -92)
-                                                anInt2851 = buffer.getUnsignedShortBE();
-                                            else if((opcode ^ 0xffffffff) == -93)
-                                                anInt2841 = buffer.getUnsignedShortBE();
-                                            else if((opcode ^ 0xffffffff) != -94) {
-                                                if(opcode == 95)
-                                                    anInt2827 = (buffer.getUnsignedShortBE());
-                                                else if((opcode ^ 0xffffffff) == -98)
-                                                    notedId = (buffer.getUnsignedShortBE());
-                                                else if((opcode ^ 0xffffffff) != -99) {
-                                                    if(opcode >= 100 && ((opcode ^ 0xffffffff) > -111)) {
-                                                        if(stackableIds == null) {
-                                                            stackableAmounts = new int[10];
-                                                            stackableIds = new int[10];
-                                                        }
-                                                        stackableIds[-100 + opcode] = (buffer.getUnsignedShortBE());
-                                                        stackableAmounts[-100 + opcode] = (buffer.getUnsignedShortBE());
-                                                    } else if((opcode ^ 0xffffffff) != -111) {
-                                                        if(opcode != 111) {
-                                                            if(opcode != 112) {
-                                                                if(opcode == 113)
-                                                                    anInt2825 = (buffer.getByte());
-                                                                else if((opcode ^ 0xffffffff) != -115) {
-                                                                    if(opcode == 115)
-                                                                        teamIndex = buffer.getUnsignedByte();
-                                                                } else
-                                                                    anInt2840 = ((buffer.getByte()) * 5);
-                                                            } else
-                                                                anInt2833 = (buffer.getUnsignedShortBE());
-                                                        } else
-                                                            anInt2853 = (buffer.getUnsignedShortBE());
-                                                    } else
-                                                        anInt2813 = (buffer.getUnsignedShortBE());
-                                                } else
-                                                    noteTemplateId = (buffer.getUnsignedShortBE());
-                                            } else
-                                                anInt2822 = buffer.getUnsignedShortBE();
-                                        } else {
-                                            int colorCount = buffer.getUnsignedByte();
-                                            originalModelColors = new int[colorCount];
-                                            modifiedModelColors = new int[colorCount];
-                                            for(int colorIndex = 0; ((colorIndex ^ 0xffffffff) > (colorCount ^ 0xffffffff)); colorIndex++) {
-                                                modifiedModelColors[colorIndex] = buffer.getUnsignedShortBE();
-                                                originalModelColors[colorIndex] = buffer.getUnsignedShortBE();
-                                            }
-                                        }
-                                    } else
-                                        femaleWearModel1 = buffer.getUnsignedShortBE();
-                                } else {
-                                    anInt2836 = buffer.getUnsignedShortBE();
-                                    anInt2818 = buffer.getUnsignedByte();
-                                }
-                            } else
-                                value = buffer.getIntBE();
-                        } else
-                            stackable = 1;
-                    } else {
-                        modelOffset2 = buffer.getUnsignedShortBE();
-                        if(modelOffset2 > 32767)
-                            modelOffset2 -= 65536;
-                    }
-                } else {
-                    modelOffset1 = buffer.getUnsignedShortBE();
-                    if((modelOffset1 ^ 0xffffffff) < -32768)
-                        modelOffset1 -= 65536;
-                }
-            } else
-                modelRotation2 = buffer.getUnsignedShortBE();
-        } else
+        } else if(opcode == 4) {
             modelZoom = buffer.getUnsignedShortBE();
+        } else if(opcode == 5) {
+            modelRotation1 = buffer.getUnsignedShortBE();
+        } else if(opcode == 6) {
+            modelRotation2 = buffer.getUnsignedShortBE();
+        } else if(opcode == 7) {
+            modelOffset1 = buffer.getUnsignedShortBE();
+            if(modelOffset1 > 32767) {
+                modelOffset1 -= 65536;
+            }
+        } else if(opcode == 8) {
+            modelOffset2 = buffer.getUnsignedShortBE();
+            if(modelOffset2 > 32767) {
+                modelOffset2 -= 65536;
+            }
+        } else if(opcode == 11) {
+            stackable = 1;
+        } else if(opcode == 12) {
+            value = buffer.getIntBE();
+        } else if(opcode == 16) {
+            members = true;
+        } else if(opcode == 23) {
+            anInt2836 = buffer.getUnsignedShortBE();
+            anInt2818 = buffer.getUnsignedByte();
+        } else if(opcode == 24) {
+            femaleWearModel1 = buffer.getUnsignedShortBE();
+        } else if(opcode == 25) {
+            anInt2848 = buffer.getUnsignedShortBE();
+            anInt2829 = buffer.getUnsignedByte();
+        } else if(opcode == 26) {
+            femaleWearModel2 = buffer.getUnsignedShortBE();
+        } else if(opcode >= 30 && opcode < 35) {
+            groundOptions[-30 + opcode] = buffer.getRSString();
+            if(groundOptions[opcode + -30].equalsIgnoreCase(Class59.string_Hidden, true)) {
+                groundOptions[opcode + -30] = null;
+            }
+        } else if(opcode >= 35 && opcode < 40) {
+            inventoryOptions[opcode + -35] = buffer.getRSString();
+        } else if(opcode == 40) {
+            int colorCount = buffer.getUnsignedByte();
+            originalModelColors = new int[colorCount];
+            modifiedModelColors = new int[colorCount];
+            for(int colorIndex = 0; colorIndex < colorCount; colorIndex++) {
+                modifiedModelColors[colorIndex] = buffer.getUnsignedShortBE();
+                originalModelColors[colorIndex] = buffer.getUnsignedShortBE();
+            }
+        } else if(opcode == 78) {
+            colorEquip1 = buffer.getUnsignedShortBE();
+        } else if(opcode == 79) {
+            colorEquip2 = buffer.getUnsignedShortBE();
+        } else if(opcode == 90) {
+            anInt2800 = buffer.getUnsignedShortBE();
+        } else if(opcode == 91) {
+            anInt2851 = buffer.getUnsignedShortBE();
+        } else if(opcode == 92) {
+            anInt2841 = buffer.getUnsignedShortBE();
+        } else if(opcode == 93) {
+            anInt2822 = buffer.getUnsignedShortBE();
+        } else if(opcode == 95) {
+            anInt2827 = (buffer.getUnsignedShortBE());
+        } else if(opcode == 97) {
+            notedId = (buffer.getUnsignedShortBE());
+        } else if(opcode == 98) {
+            noteTemplateId = (buffer.getUnsignedShortBE());
+        } else if(opcode >= 100 && opcode < 110) {
+            if(stackableIds == null) {
+                stackableAmounts = new int[10];
+                stackableIds = new int[10];
+            }
+            stackableIds[-100 + opcode] = (buffer.getUnsignedShortBE());
+            stackableAmounts[-100 + opcode] = (buffer.getUnsignedShortBE());
+        } else if(opcode == 110) {
+            anInt2813 = (buffer.getUnsignedShortBE());
+        } else if(opcode == 111) {
+            anInt2853 = (buffer.getUnsignedShortBE());
+        } else if(opcode == 112) {
+            anInt2833 = (buffer.getUnsignedShortBE());
+        } else if(opcode == 113) {
+            anInt2825 = (buffer.getByte());
+        } else if(opcode == 114) {
+            anInt2840 = ((buffer.getByte()) * 5);
+        } else if(opcode == 115) {
+            teamIndex = buffer.getUnsignedByte();
+        }
         anInt2802++;
     }
 
@@ -456,8 +471,9 @@ public class ItemDefinition extends SubNode {
         anInt2821++;
         for(; ; ) {
             int opcode = itemDefinitionBuffer.getUnsignedByte();
-            if((opcode ^ 0xffffffff) == -1)
+            if((opcode ^ 0xffffffff) == -1) {
                 break;
+            }
             readValue(opcode, itemDefinitionBuffer);
         }
     }
@@ -480,31 +496,38 @@ public class ItemDefinition extends SubNode {
     }
 
     public Model method753(boolean arg0, int arg1, int arg2) {
-        if(arg2 != 26910)
+        if(arg2 != 26910) {
             anIntArray2814 = null;
+        }
         anInt2842++;
         if(stackableIds != null && arg1 > 1) {
             int i = -1;
             for(int i_19_ = 0; (i_19_ ^ 0xffffffff) > -11; i_19_++) {
-                if(arg1 >= stackableAmounts[i_19_] && (stackableAmounts[i_19_] ^ 0xffffffff) != -1)
+                if(arg1 >= stackableAmounts[i_19_] && (stackableAmounts[i_19_] ^ 0xffffffff) != -1) {
                     i = stackableIds[i_19_];
+                }
             }
-            if(i != -1)
+            if(i != -1) {
                 return forId(i, 10).method753(arg0, 1, 26910);
+            }
         }
         if(arg0) {
             Model model = ((Model) Class62.aClass9_1455.method231((long) anInt2852, (byte) 87));
-            if(model != null)
+            if(model != null) {
                 return model;
+            }
         }
         Model model = Model.getModel(Class8.aClass6_284, inventoryModelId, 0);
-        if(model == null)
+        if(model == null) {
             return null;
-        if((anInt2813 ^ 0xffffffff) != -129 || anInt2853 != 128 || anInt2833 != 128)
+        }
+        if((anInt2813 ^ 0xffffffff) != -129 || anInt2853 != 128 || anInt2833 != 128) {
             model.method821(anInt2813, anInt2853, anInt2833);
+        }
         if(modifiedModelColors != null) {
-            for(int i = 0; i < modifiedModelColors.length; i++)
+            for(int i = 0; i < modifiedModelColors.length; i++) {
                 model.method803(modifiedModelColors[i], originalModelColors[i]);
+            }
         }
         if(arg0) {
             model.method802(anInt2825 + 64, 768 + anInt2840, -50, -10, -50, true);
