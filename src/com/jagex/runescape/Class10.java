@@ -80,7 +80,7 @@ public class Class10 {
                         class1 = class1.substring(5);
                         i_1_ = 2;
                     }
-                    if(((i_2_ ^ 0xffffffff) == -4 || i_2_ == 7) && (i_2_ == 7 || Class4.anInt185 == 0 || ((Class4.anInt185 ^ 0xffffffff) == -2 && Class40_Sub2.method523(class1, -32624)))) {
+                    if(((i_2_ ^ 0xffffffff) == -4 || i_2_ == 7) && (i_2_ == 7 || Class4.anInt185 == 0 || ((Class4.anInt185 ^ 0xffffffff) == -2 && Class40_Sub2.hasFriend(class1, -32624)))) {
                         int i_3_ = 329 - 13 * i;
                         int i_4_ = 4;
                         i++;
@@ -89,11 +89,11 @@ public class Class10 {
                         i_4_ += class40_sub5_sub14_sub1.method685(Class40_Sub5_Sub6.aClass1_2458);
                         i_4_ += class40_sub5_sub14_sub1.method689(32);
                         if((i_1_ ^ 0xffffffff) == -2) {
-                            Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub2Array2753[0].method692(i_4_, i_3_ - 12);
+                            Class40_Sub5_Sub13.moderatorIcon[0].drawImage(i_4_, i_3_ - 12);
                             i_4_ += 14;
                         }
                         if((i_1_ ^ 0xffffffff) == -3) {
-                            Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub2Array2753[1].method692(i_4_, -12 + i_3_);
+                            Class40_Sub5_Sub13.moderatorIcon[1].drawImage(i_4_, -12 + i_3_);
                             i_4_ += 14;
                         }
                         class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub17_Sub6.method832(-44, new RSString[]{class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), i_4_, i_3_, 0);

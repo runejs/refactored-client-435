@@ -71,7 +71,7 @@ public class Class52 {
 
         Class66.aClass68_1541.method1046((byte) 90);
             anInt1224++;
-            Class57.aClass40_Sub5_Sub14_Sub2_1346.method692(0, 0);
+        Class57.aClass40_Sub5_Sub14_Sub2_1346.drawImage(0, 0);
             arg2.method688(Class19.aClass1_495, 55, 28, 16777215, true);
             if((arg4 ^ 0xffffffff) == -1)
                 arg2.method688(Npc.aClass1_3311, 55, 41, 65280, true);

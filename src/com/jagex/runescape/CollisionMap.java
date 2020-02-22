@@ -698,7 +698,7 @@ public class CollisionMap {
                     return true;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -197) {
-                    Class35.anInt1737 = Cache.outgoingbuffer.getUnsignedByte();
+                    Class35.publicChatMode = Cache.outgoingbuffer.getUnsignedByte();
                     Class4.anInt185 = Cache.outgoingbuffer.getUnsignedByte();
                     ItemDefinition.anInt2797 = Cache.outgoingbuffer.getUnsignedByte();
                     Class52.aBoolean1221 = true;

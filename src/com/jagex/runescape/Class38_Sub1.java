@@ -73,7 +73,7 @@ public class Class38_Sub1 extends Class38 {
                         class1 = class1.substring(5);
                     if(class1 != null && class1.startsWith((byte) 116, Class40_Sub5_Sub12.goldCrown))
                         class1 = class1.substring(5);
-                    if((i_2_ == 3 || (i_2_ ^ 0xffffffff) == -8) && ((i_2_ ^ 0xffffffff) == -8 || (Class4.anInt185 ^ 0xffffffff) == -1 || ((Class4.anInt185 ^ 0xffffffff) == -2 && Class40_Sub2.method523(class1, arg0 + -42391)))) {
+                    if((i_2_ == 3 || (i_2_ ^ 0xffffffff) == -8) && ((i_2_ ^ 0xffffffff) == -8 || (Class4.anInt185 ^ 0xffffffff) == -1 || ((Class4.anInt185 ^ 0xffffffff) == -2 && Class40_Sub2.hasFriend(class1, arg0 + -42391)))) {
                         int i_3_ = 329 + -(13 * i);
                         i++;
                         if((Class13.anInt420 ^ 0xffffffff) < -5 && ((i_3_ + -10 ^ 0xffffffff) > (Landscape.anInt1166 + -4 ^ 0xffffffff)) && ((-4 + Landscape.anInt1166 ^ 0xffffffff) >= (i_3_ + 3 ^ 0xffffffff))) {

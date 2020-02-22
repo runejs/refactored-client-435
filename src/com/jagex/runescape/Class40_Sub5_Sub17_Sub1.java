@@ -305,12 +305,12 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 Class56.aClass40_Sub5_Sub14_Sub2_1329 = Class27.method359(Class6.aClass1_256, Class8.aClass1_305, arg2, (byte) -64);
                 Buffer.aClass40_Sub5_Sub14_Sub2_1959 = Class27.method359(Class10.aClass1_338, Class8.aClass1_305, arg2, (byte) -64);
                 RSCanvas.aClass68_64 = Class40_Sub5_Sub13.method649(96, 479, arg0, -4875);
-                Class44.aClass40_Sub5_Sub14_Sub2_1047.method692(0, 0);
+                Class44.aClass40_Sub5_Sub14_Sub2_1047.drawImage(0, 0);
                 RSString.aClass68_1665 = Class40_Sub5_Sub13.method649(156, 172, arg0, -4875);
                 Rasterizer.method663();
-                Class34.mapBack.method692(0, 0);
+                Class34.mapBack.drawImage(0, 0);
                 SubNode.aClass68_2091 = Class40_Sub5_Sub13.method649(261, 190, arg0, -4875);
-                FloorDecoration.aClass40_Sub5_Sub14_Sub2_593.method692(0, 0);
+                FloorDecoration.aClass40_Sub5_Sub14_Sub2_593.drawImage(0, 0);
                 Class40_Sub5_Sub4.aClass68_2350 = Class40_Sub5_Sub13.method649(334, 512, arg0, -4875);
                 Rasterizer.method663();
                 Class66.aClass68_1541 = Class40_Sub5_Sub13.method649(50, 496, arg0, -4875);

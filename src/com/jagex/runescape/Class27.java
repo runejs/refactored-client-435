@@ -170,8 +170,8 @@ public class Class27 {
     public static void drawScrollBar(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 
         int i = (-32 + arg4) * arg4 / arg2;
-            Class6.aClass40_Sub5_Sub14_Sub2Array215[arg0].method692(arg3, arg5);
-            Class6.aClass40_Sub5_Sub14_Sub2Array215[1].method692(arg3, arg5 - (-arg4 + 16));
+        Class6.aClass40_Sub5_Sub14_Sub2Array215[arg0].drawImage(arg3, arg5);
+        Class6.aClass40_Sub5_Sub14_Sub2Array215[1].drawImage(arg3, arg5 - (-arg4 + 16));
             anInt657++;
             Rasterizer.method656(arg3, arg5 + 16, 16, arg4 + -32, Class55.anInt1299);
             if((i ^ 0xffffffff) > -9)
@@ -1207,7 +1207,7 @@ public class Class27 {
                 if(Cache.aBoolean330) {
                     Class40_Sub3.aBoolean2026 = true;
                     Cache.aBoolean330 = false;
-                    Class52.method943(ItemDefinition.anInt2797, arg0 ^ 0x4e81, Class53.aClass40_Sub5_Sub14_Sub1_1268, Class4.anInt185, Class35.anInt1737);
+                    Class52.method943(ItemDefinition.anInt2797, arg0 ^ 0x4e81, Class53.aClass40_Sub5_Sub14_Sub1_1268, Class4.anInt185, Class35.publicChatMode);
                 }
                 Landscape.method934((Class40_Sub5_Sub13.localPlayer.anInt3098), -118, Player.anInt3267, Class5.anInt199, (Class40_Sub5_Sub13.localPlayer.anInt3089));
                 Class5.anInt199 = 0;

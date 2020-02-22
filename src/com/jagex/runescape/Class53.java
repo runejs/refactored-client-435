@@ -348,7 +348,7 @@ public class Class53 {
                 }
                 if((Class51.anInt1197 ^ 0xffffffff) == -21) {
                     int i = 40;
-                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775.method692(0, 0);
+                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775.drawImage(0, 0);
                     arg1.method688(Class22_Sub2.aClass1_1879, 180, i, 16776960, true);
                     i += 15;
                     arg1.method688(Class22_Sub2.aClass1_1896, 180, i, 16776960, true);
@@ -362,7 +362,7 @@ public class Class53 {
                     i += 15;
                 }
                 if((Class51.anInt1197 ^ 0xffffffff) == -11) {
-                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775.method692(0, 0);
+                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775.drawImage(0, 0);
                     if(Class26.anInt622 != 0) {
                         if(Class26.anInt622 == 2) {
                             int i = 40;
@@ -378,11 +378,11 @@ public class Class53 {
                             arg1.method683((Class40_Sub5_Sub17_Sub6.method832(-113, (new RSString[]{Class61.aClass1_1422, Class22_Sub2.username, ((Node.anInt926 % 40 < 20 & Node.anInt947 == 0) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.aClass1_1886))}))), 90, i, 16777215, true);
                             i += 15;
                             arg1.method683((Class40_Sub5_Sub17_Sub6.method832(arg0 + 18924, (new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false), (((Node.anInt926 % 40 ^ 0xffffffff) > -21 & (Node.anInt947 ^ 0xffffffff) == -2) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.aClass1_1886))}))), 92, i, 16777215, true);
-                            Class59.aClass40_Sub5_Sub14_Sub2_1387.method692(-73 + i_90_, i_91_ + -20);
+                            Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
                             i += 15;
                             arg1.method688(Class40_Sub5_Sub4.aClass1_2351, i_90_, i_91_ + 5, 16777215, true);
                             i_90_ = 260;
-                            Class59.aClass40_Sub5_Sub14_Sub2_1387.method692(-73 + i_90_, i_91_ + -20);
+                            Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
                             arg1.method688(Class68.aClass1_1635, i_90_, 5 + i_91_, 16777215, true);
                         } else if((Class26.anInt622 ^ 0xffffffff) == -4) {
                             arg1.method688(Class67.aClass1_1598, 180, 40, 16776960, true);
@@ -396,7 +396,7 @@ public class Class53 {
                             arg1.method688(aClass1_1251, 180, i_93_, 16777215, true);
                             i_93_ += 15;
                             arg1.method688(Class40_Sub5_Sub11.aClass1_2629, 180, i_93_, 16777215, true);
-                            Class59.aClass40_Sub5_Sub14_Sub2_1387.method692(-73 + i, i_92_ - 20);
+                            Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i, i_92_ - 20);
                             arg1.method688(Class68.aClass1_1635, i, 5 + i_92_, 16777215, true);
                             i_93_ += 15;
                         }
@@ -406,10 +406,10 @@ public class Class53 {
                         arg1.method688(Main.aClass1_1761, 180, i, 16776960, true);
                         i += 30;
                         int i_95_ = 120;
-                        Class59.aClass40_Sub5_Sub14_Sub2_1387.method692(i_94_ - 73, i_95_ - 20);
+                        Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(i_94_ - 73, i_95_ - 20);
                         arg1.method672(Class52.aClass1_1223, i_94_ + -73, -20 + i_95_, 144, 40, 16777215, true, 1, 1, 0);
                         i_94_ = 260;
-                        Class59.aClass40_Sub5_Sub14_Sub2_1387.method692(i_94_ - 73, i_95_ + -20);
+                        Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(i_94_ - 73, i_95_ + -20);
                         arg1.method672(Class42.aClass1_1011, -73 + i_94_, -20 + i_95_, 144, 40, 16777215, true, 1, 1, 0);
                     }
                 }

@@ -127,7 +127,7 @@ public class Class33 {
                                     Class40_Sub5_Sub9.aClass40_Sub5_Sub14_Sub4Array2567[1].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
                             }
                         }
-                        if(actor.aClass1_3090 != null && (i >= Class60.anInt1407 || (Class35.anInt1737 ^ 0xffffffff) == -1 || Class35.anInt1737 == 3 || ((Class35.anInt1737 ^ 0xffffffff) == -2 && (Class40_Sub2.method523((((Player) actor).playerName), arg0 ^ 0x7f74))))) {
+                        if(actor.aClass1_3090 != null && (i >= Class60.anInt1407 || (Class35.publicChatMode ^ 0xffffffff) == -1 || Class35.publicChatMode == 3 || ((Class35.publicChatMode ^ 0xffffffff) == -2 && (Class40_Sub2.hasFriend((((Player) actor).playerName), arg0 ^ 0x7f74))))) {
                             FloorDecoration.method342(88, (actor.anInt3117), actor);
                             if((ISAAC.anInt522 ^ 0xffffffff) < 0 && Class30.anInt709 > Class32.anInt770) {
                                 Class30.anIntArray680[Class32.anInt770] = ((Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method685(actor.aClass1_3090)) / 2);

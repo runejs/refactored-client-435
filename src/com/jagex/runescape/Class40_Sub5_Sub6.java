@@ -377,12 +377,12 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                         Class32.packetBuffer.put(i, (byte) -128);
                                         Class68_Sub1.method1052(65, Class66.aClass1_1556, Class32.packetBuffer);
                                         Class32.packetBuffer.finishVarByte((Class32.packetBuffer.currentPosition) + -i_12_, (byte) 16);
-                                        if((Class35.anInt1737 ^ 0xffffffff) == -3) {
+                                        if((Class35.publicChatMode ^ 0xffffffff) == -3) {
                                             Class34.anInt821++;
                                             Cache.aBoolean330 = true;
-                                            Class35.anInt1737 = 3;
+                                            Class35.publicChatMode = 3;
                                             Class32.packetBuffer.putPacket(11453, 32);
-                                            Class32.packetBuffer.put(Class35.anInt1737, (byte) -128);
+                                            Class32.packetBuffer.put(Class35.publicChatMode, (byte) -128);
                                             Class32.packetBuffer.put(Class4.anInt185, (byte) -128);
                                             Class32.packetBuffer.put(ItemDefinition.anInt2797, (byte) -128);
                                         }
@@ -448,7 +448,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                     Cache.aBoolean330 = true;
                                     Class34.anInt821++;
                                     Class32.packetBuffer.putPacket(11453, 32);
-                                    Class32.packetBuffer.put(Class35.anInt1737, (byte) -128);
+                                    Class32.packetBuffer.put(Class35.publicChatMode, (byte) -128);
                                     Class32.packetBuffer.put(Class4.anInt185, (byte) -128);
                                     Class32.packetBuffer.put(ItemDefinition.anInt2797, (byte) -128);
                                 }

@@ -236,11 +236,11 @@ public class Class40_Sub5_Sub1 extends SubNode {
         if((Class62.anInt1470 ^ 0xffffffff) == -2) {
             if(Class57.anInt1338 >= 6 && Class57.anInt1338 <= 106 && RSString.anInt1668 >= 467 && (RSString.anInt1668 ^ 0xffffffff) >= -500) {
                 Cache.aBoolean330 = true;
-                Class35.anInt1737 = (1 + Class35.anInt1737) % 4;
+                Class35.publicChatMode = (1 + Class35.publicChatMode) % 4;
                 Class52.aBoolean1221 = true;
                 Class32.packetBuffer.putPacket(11453, 32);
                 Class34.anInt821++;
-                Class32.packetBuffer.put(Class35.anInt1737, (byte) -128);
+                Class32.packetBuffer.put(Class35.publicChatMode, (byte) -128);
                 Class32.packetBuffer.put(Class4.anInt185, (byte) -128);
                 Class32.packetBuffer.put(ItemDefinition.anInt2797, (byte) -128);
             }
@@ -250,7 +250,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 Cache.aBoolean330 = true;
                 Class34.anInt821++;
                 Class32.packetBuffer.putPacket(arg0 ^ ~0x2c88, 32);
-                Class32.packetBuffer.put(Class35.anInt1737, (byte) -128);
+                Class32.packetBuffer.put(Class35.publicChatMode, (byte) -128);
                 Class32.packetBuffer.put(Class4.anInt185, (byte) -128);
                 Class32.packetBuffer.put(ItemDefinition.anInt2797, (byte) -128);
             }
@@ -260,7 +260,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 Class52.aBoolean1221 = true;
                 Class32.packetBuffer.putPacket(11453, 32);
                 Class34.anInt821++;
-                Class32.packetBuffer.put(Class35.anInt1737, (byte) -128);
+                Class32.packetBuffer.put(Class35.publicChatMode, (byte) -128);
                 Class32.packetBuffer.put(Class4.anInt185, (byte) -128);
                 Class32.packetBuffer.put(ItemDefinition.anInt2797, (byte) -128);
             }

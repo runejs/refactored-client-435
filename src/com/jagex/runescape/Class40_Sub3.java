@@ -230,10 +230,10 @@ public class Class40_Sub3 extends Node {
                 Class6.aClass40_Sub5_Sub14_Sub2Array215 = Class40_Sub5_Sub2.method550((NpcDefinition.aClass6_Sub1_2377), (byte) -125, RSString.aClass1_1677, Class66.aClass1_1567);
             else
                 i++;
-            if(Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub2Array2753 != null)
+            if(Class40_Sub5_Sub13.moderatorIcon != null)
                 i++;
             else
-                Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub2Array2753 = Class40_Sub5_Sub2.method550((NpcDefinition.aClass6_Sub1_2377), (byte) -55, Class38.aClass1_881, Class66.aClass1_1567);
+                Class40_Sub5_Sub13.moderatorIcon = Class40_Sub5_Sub2.method550((NpcDefinition.aClass6_Sub1_2377), (byte) -55, Class38.aClass1_881, Class66.aClass1_1567);
             if((i ^ 0xffffffff) > -15) {
                 Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(arg0 + -139, new RSString[]{Class17.aClass1_452, HashTable.method334(100 * i / 14, -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 70;

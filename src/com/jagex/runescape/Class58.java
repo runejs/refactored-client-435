@@ -259,24 +259,24 @@ public class Class58 {
                                                 if(y > 0 && ((y ^ 0xffffffff) > -111))
                                                     typeFace.drawString((Actor.chatMessages[i_8_]), 4, y, 0);
                                             }
-                                            if(((type ^ 0xffffffff) == -2 || type == 2) && (type == 1 || Class35.anInt1737 == 0 || ((Class35.anInt1737 ^ 0xffffffff) == -2 && (Class40_Sub2.method523(name, -32624))))) {
-                                                if((y ^ 0xffffffff) < -1 && ((y ^ 0xffffffff) > -111)) {
-                                                    int i_12_ = 4;
+                                            if((type == 1 || type == 2) && (type == 1 || Class35.publicChatMode == 0 || Class35.publicChatMode == 1 && (Class40_Sub2.hasFriend(name, -32624)))) {
+                                                if(y > 0 && y < 110) {
+                                                    int x = 4;
                                                     if(privelege == 1) {
-                                                        Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub2Array2753[0].method692(i_12_, y + -12);
-                                                        i_12_ += 14;
+                                                        Class40_Sub5_Sub13.moderatorIcon[0].drawImage(x, y + -12);
+                                                        x += 14;
                                                     }
                                                     if(privelege == 2) {
-                                                        Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub2Array2753[1].method692(i_12_, y - 12);
-                                                        i_12_ += 14;
+                                                        Class40_Sub5_Sub13.moderatorIcon[1].drawImage(x, y - 12);
+                                                        x += 14;
                                                     }
-                                                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(53, (new RSString[]{name, (Class43.aClass1_1027)}))), i_12_, y, 0);
-                                                    i_12_ += (8 + (typeFace.method685(name)));
-                                                    typeFace.drawString((Actor.chatMessages[i_8_]), i_12_, y, 255);
+                                                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(53, (new RSString[]{name, (Class43.aClass1_1027)}))), x, y, 0);
+                                                    x += (8 + (typeFace.method685(name)));
+                                                    typeFace.drawString((Actor.chatMessages[i_8_]), x, y, 255);
                                                 }
                                                 line++;
                                             }
-                                            if(((type ^ 0xffffffff) == -4 || type == 7) && CollisionMap.anInt165 == 0 && ((type ^ 0xffffffff) == -8 || Class4.anInt185 == 0 || ((Class4.anInt185 ^ 0xffffffff) == -2 && (Class40_Sub2.method523(name, -32624))))) {
+                                            if(((type ^ 0xffffffff) == -4 || type == 7) && CollisionMap.anInt165 == 0 && ((type ^ 0xffffffff) == -8 || Class4.anInt185 == 0 || ((Class4.anInt185 ^ 0xffffffff) == -2 && (Class40_Sub2.hasFriend(name, -32624))))) {
                                                 line++;
                                                 if((y ^ 0xffffffff) < -1 && y < 110) {
                                                     int i_13_ = 4;
@@ -284,11 +284,11 @@ public class Class58 {
                                                     i_13_ += (typeFace.method685(Class40_Sub5_Sub6.aClass1_2458));
                                                     i_13_ += typeFace.method689(32);
                                                     if(privelege == 1) {
-                                                        Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub2Array2753[0].method692(i_13_, y + -12);
+                                                        Class40_Sub5_Sub13.moderatorIcon[0].drawImage(i_13_, y + -12);
                                                         i_13_ += 14;
                                                     }
                                                     if((privelege ^ 0xffffffff) == -3) {
-                                                        Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub2Array2753[1].method692(i_13_, y - 12);
+                                                        Class40_Sub5_Sub13.moderatorIcon[1].drawImage(i_13_, y - 12);
                                                         i_13_ += 14;
                                                     }
                                                     typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(103, (new RSString[]{name, (Class43.aClass1_1027)}))), i_13_, y, 0);
@@ -296,7 +296,7 @@ public class Class58 {
                                                     typeFace.drawString((Actor.chatMessages[i_8_]), i_13_, y, 8388608);
                                                 }
                                             }
-                                            if(type == 4 && ((ItemDefinition.anInt2797) == 0 || (((ItemDefinition.anInt2797) ^ 0xffffffff) == -2 && (Class40_Sub2.method523(name, -32624))))) {
+                                            if(type == 4 && ((ItemDefinition.anInt2797) == 0 || (((ItemDefinition.anInt2797) ^ 0xffffffff) == -2 && (Class40_Sub2.hasFriend(name, -32624))))) {
                                                 line++;
                                                 if(y > 0 && y < 110)
                                                     typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(-65, (new RSString[]{name, (Class48.aClass1_1123), (Actor.chatMessages[i_8_])}))), 4, y, 8388736);
@@ -313,7 +313,7 @@ public class Class58 {
                                                 }
                                                 line++;
                                             }
-                                            if(type == 8 && ((ItemDefinition.anInt2797) == 0 || (((ItemDefinition.anInt2797) ^ 0xffffffff) == -2 && (Class40_Sub2.method523(name, -32624))))) {
+                                            if(type == 8 && ((ItemDefinition.anInt2797) == 0 || (((ItemDefinition.anInt2797) ^ 0xffffffff) == -2 && (Class40_Sub2.hasFriend(name, -32624))))) {
                                                 line++;
                                                 if(y > 0 && ((y ^ 0xffffffff) > -111))
                                                     typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(-105, (new RSString[]{name, (Class48.aClass1_1123), (Actor.chatMessages[i_8_])}))), 4, y, 8270336);

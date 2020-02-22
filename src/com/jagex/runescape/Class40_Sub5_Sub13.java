@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class Class40_Sub5_Sub13 extends SubNode {
     public static Buffer aClass40_Sub1_2752;
-    public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2753;
+    public static IndexedImage[] moderatorIcon;
     public static int anInt2755;
     public static int anInt2756;
     public static long[] aLongArray2757 = new long[100];
@@ -101,7 +101,7 @@ public class Class40_Sub5_Sub13 extends SubNode {
             if(arg0 != -1)
                 aClass40_Sub5_Sub14_Sub4_2765 = null;
             aLongArray2757 = null;
-            aClass40_Sub5_Sub14_Sub2Array2753 = null;
+        moderatorIcon = null;
 
     }
 }

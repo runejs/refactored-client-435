@@ -22,7 +22,7 @@ public class Class35 implements Interface3 {
     public static boolean aBoolean1734;
     public static boolean aBoolean1735;
     public static RSString aClass1_1736;
-    public static int anInt1737;
+    public static int publicChatMode;
     public static int[] anIntArray1738;
     public static int anInt1739;
     public static int anInt1741;
@@ -39,7 +39,7 @@ public class Class35 implements Interface3 {
         anInt1733 = 0;
         anIntArray1738 = new int[]{9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145, 58654, 5027, 1457, 16565, 34991, 25486};
         aBoolean1734 = false;
-        anInt1737 = 0;
+        publicChatMode = 0;
         aClass1_1731 = Class58.method978("Handel)4Duell");
         anInt1728 = 0;
         aClass1_1725 = Class58.method978("null");

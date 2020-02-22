@@ -118,7 +118,7 @@ public abstract class Class22 {
 
     public static void method305(byte arg0) {
         RSCanvas.aClass68_64.method1046((byte) 90);
-        Class44.aClass40_Sub5_Sub14_Sub2_1047.method692(0, 0);
+        Class44.aClass40_Sub5_Sub14_Sub2_1047.drawImage(0, 0);
         anInt539++;
         Class5.anIntArray198 = R3D.method708(Class5.anIntArray198);
     }

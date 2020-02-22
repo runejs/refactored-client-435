@@ -75,35 +75,35 @@ public class IndexedImage extends Rasterizer {
         return class40_sub5_sub14_sub2;
     }
 
-    public void method692(int arg0, int arg1) {
-        arg0 += anInt2928;
-        arg1 += anInt2927;
-        int i = arg0 + arg1 * Rasterizer.width;
+    public void drawImage(int x, int y) {
+        x += anInt2928;
+        y += anInt2927;
+        int i = x + y * Rasterizer.width;
         int i_2_ = 0;
         int i_3_ = anInt2926;
         int i_4_ = anInt2921;
         int i_5_ = Rasterizer.width - i_4_;
         int i_6_ = 0;
-        if(arg1 < Rasterizer.viewport_top) {
-            int i_7_ = Rasterizer.viewport_top - arg1;
+        if(y < Rasterizer.viewport_top) {
+            int i_7_ = Rasterizer.viewport_top - y;
             i_3_ -= i_7_;
-            arg1 = Rasterizer.viewport_top;
+            y = Rasterizer.viewport_top;
             i_2_ += i_7_ * i_4_;
             i += i_7_ * Rasterizer.width;
         }
-        if(arg1 + i_3_ > Rasterizer.viewport_bottom)
-            i_3_ -= arg1 + i_3_ - Rasterizer.viewport_bottom;
-        if(arg0 < Rasterizer.viewport_left) {
-            int i_8_ = Rasterizer.viewport_left - arg0;
+        if(y + i_3_ > Rasterizer.viewport_bottom)
+            i_3_ -= y + i_3_ - Rasterizer.viewport_bottom;
+        if(x < Rasterizer.viewport_left) {
+            int i_8_ = Rasterizer.viewport_left - x;
             i_4_ -= i_8_;
-            arg0 = Rasterizer.viewport_left;
+            x = Rasterizer.viewport_left;
             i_2_ += i_8_;
             i += i_8_;
             i_6_ += i_8_;
             i_5_ += i_8_;
         }
-        if(arg0 + i_4_ > Rasterizer.viewport_right) {
-            int i_9_ = arg0 + i_4_ - Rasterizer.viewport_right;
+        if(x + i_4_ > Rasterizer.viewport_right) {
+            int i_9_ = x + i_4_ - Rasterizer.viewport_right;
             i_4_ -= i_9_;
             i_6_ += i_9_;
             i_5_ += i_9_;

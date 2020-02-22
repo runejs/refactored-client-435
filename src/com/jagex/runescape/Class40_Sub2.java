@@ -53,7 +53,7 @@ public class Class40_Sub2 extends Node {
 
     }
 
-    public static boolean method523(RSString arg0, int arg1) {
+    public static boolean hasFriend(RSString arg0, int arg1) {
 
         anInt1992++;
             if(arg0 == null)
@@ -73,7 +73,7 @@ public class Class40_Sub2 extends Node {
         aClass1_1995 = null;
             aClass1_2008 = null;
             if(arg0 != -9019)
-                method523(null, -100);
+                hasFriend(null, -100);
             aClass1_1991 = null;
 
     }
@@ -102,72 +102,72 @@ public class Class40_Sub2 extends Node {
 
         Class19.aClass68_482.method1046((byte) 90);
             anInt1999++;
-            Buffer.aClass40_Sub5_Sub14_Sub2_1959.method692(0, 0);
+        Buffer.aClass40_Sub5_Sub14_Sub2_1959.drawImage(0, 0);
             if(arg3) {
                 if(arg2[arg0] != -1) {
                     if(arg0 == 0)
-                        Class56.aClass40_Sub5_Sub14_Sub2_1315.method692(22, 10);
+                        Class56.aClass40_Sub5_Sub14_Sub2_1315.drawImage(22, 10);
                     if(arg0 == 1)
-                        RSApplet.aClass40_Sub5_Sub14_Sub2_1.method692(54, 8);
+                        RSApplet.aClass40_Sub5_Sub14_Sub2_1.drawImage(54, 8);
                     if(arg0 == 2)
-                        RSApplet.aClass40_Sub5_Sub14_Sub2_1.method692(82, 8);
+                        RSApplet.aClass40_Sub5_Sub14_Sub2_1.drawImage(82, 8);
                     if(arg0 == 3)
-                        Class35.aClass40_Sub5_Sub14_Sub2_1744.method692(110, 8);
+                        Class35.aClass40_Sub5_Sub14_Sub2_1744.drawImage(110, 8);
                     if(arg0 == 4)
-                        Class53.aClass40_Sub5_Sub14_Sub2_1270.method692(153, 8);
+                        Class53.aClass40_Sub5_Sub14_Sub2_1270.drawImage(153, 8);
                     if((arg0 ^ 0xffffffff) == -6)
-                        Class53.aClass40_Sub5_Sub14_Sub2_1270.method692(181, 8);
+                        Class53.aClass40_Sub5_Sub14_Sub2_1270.drawImage(181, 8);
                     if((arg0 ^ 0xffffffff) == -7)
-                        Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105.method692(209, 9);
+                        Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105.drawImage(209, 9);
                 }
                 if(arg2[0] != -1 && arg4 != 0)
-                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[0].method692(29, 13);
+                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[0].drawImage(29, 13);
                 if(arg2[1] != -1 && (arg4 ^ 0xffffffff) != -2)
-                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[1].method692(53, 11);
+                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[1].drawImage(53, 11);
                 if((arg2[2] ^ 0xffffffff) != 0 && arg4 != 2)
-                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[2].method692(82, 11);
+                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[2].drawImage(82, 11);
                 if((arg2[3] ^ 0xffffffff) != 0 && (arg4 ^ 0xffffffff) != -4)
-                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[3].method692(115, 12);
+                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[3].drawImage(115, 12);
                 if((arg2[4] ^ 0xffffffff) != 0 && arg4 != 4)
-                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[4].method692(153, 13);
+                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[4].drawImage(153, 13);
                 if(arg2[5] != -1 && (arg4 ^ 0xffffffff) != -6)
-                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[5].method692(180, 11);
+                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[5].drawImage(180, 11);
                 if(arg2[6] != -1 && arg4 != 6)
-                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[6].method692(208, 13);
+                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[6].drawImage(208, 13);
             }
             RSCanvas.aClass68_59.method1046((byte) 90);
-            Class56.aClass40_Sub5_Sub14_Sub2_1329.method692(0, 0);
+        Class56.aClass40_Sub5_Sub14_Sub2_1329.drawImage(0, 0);
             if(arg1 != 4)
-                method523(null, -128);
+                hasFriend(null, -128);
             if(arg3) {
                 if((arg2[arg0] ^ 0xffffffff) != 0) {
                     if(arg0 == 7)
-                        Renderable.aClass40_Sub5_Sub14_Sub2_2860.method692(42, 0);
+                        Renderable.aClass40_Sub5_Sub14_Sub2_2860.drawImage(42, 0);
                     if(arg0 == 8)
-                        HashTable.aClass40_Sub5_Sub14_Sub2_549.method692(74, 0);
+                        HashTable.aClass40_Sub5_Sub14_Sub2_549.drawImage(74, 0);
                     if((arg0 ^ 0xffffffff) == -10)
-                        HashTable.aClass40_Sub5_Sub14_Sub2_549.method692(102, 0);
+                        HashTable.aClass40_Sub5_Sub14_Sub2_549.drawImage(102, 0);
                     if((arg0 ^ 0xffffffff) == -11)
-                        Class38_Sub1.aClass40_Sub5_Sub14_Sub2_1919.method692(130, 1);
+                        Class38_Sub1.aClass40_Sub5_Sub14_Sub2_1919.drawImage(130, 1);
                     if(arg0 == 11)
-                        Class13.aClass40_Sub5_Sub14_Sub2_418.method692(173, 0);
+                        Class13.aClass40_Sub5_Sub14_Sub2_418.drawImage(173, 0);
                     if(arg0 == 12)
-                        Class13.aClass40_Sub5_Sub14_Sub2_418.method692(201, 0);
+                        Class13.aClass40_Sub5_Sub14_Sub2_418.drawImage(201, 0);
                     if(arg0 == 13)
-                        ISAAC.aClass40_Sub5_Sub14_Sub2_524.method692(229, 0);
+                        ISAAC.aClass40_Sub5_Sub14_Sub2_524.drawImage(229, 0);
                 }
                 if((arg2[8] ^ 0xffffffff) != 0 && arg4 != 8)
-                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[7].method692(74, 2);
+                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[7].drawImage(74, 2);
                 if(arg2[9] != -1 && arg4 != 9)
-                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[8].method692(102, 3);
+                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[8].drawImage(102, 3);
                 if((arg2[10] ^ 0xffffffff) != 0 && (arg4 ^ 0xffffffff) != -11)
-                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[9].method692(137, 4);
+                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[9].drawImage(137, 4);
                 if((arg2[11] ^ 0xffffffff) != 0 && (arg4 ^ 0xffffffff) != -12)
-                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[10].method692(174, 2);
+                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[10].drawImage(174, 2);
                 if((arg2[12] ^ 0xffffffff) != 0 && (arg4 ^ 0xffffffff) != -13)
-                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[11].method692(201, 2);
+                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[11].drawImage(201, 2);
                 if(arg2[13] != -1 && (arg4 ^ 0xffffffff) != -14)
-                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[12].method692(226, 2);
+                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[12].drawImage(226, 2);
             }
             try {
                 Graphics graphics = Class62.aCanvas1469.getGraphics();

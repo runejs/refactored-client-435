@@ -84,7 +84,7 @@ public class Class61 {
             if(arg0 != 19655)
                 aClass1_1432 = null;
             SubNode.aClass68_2091.method1046((byte) 90);
-            FloorDecoration.aClass40_Sub5_Sub14_Sub2_593.method692(0, 0);
+        FloorDecoration.aClass40_Sub5_Sub14_Sub2_593.drawImage(0, 0);
             NpcDefinition.anIntArray2386 = R3D.method708(NpcDefinition.anIntArray2386);
 
     }
