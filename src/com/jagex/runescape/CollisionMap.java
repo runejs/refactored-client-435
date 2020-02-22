@@ -188,7 +188,7 @@ public class CollisionMap {
                 }
                 if((Class57.packetid ^ 0xffffffff) == -223) {
                     int i_8_ = Cache.outgoingbuffer.method492(128);
-                    int i_9_ = Cache.outgoingbuffer.method461((byte) 119);
+                    int i_9_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
                     Buffer.anIntArray1984[i_9_] = i_8_;
                     if((i_8_ ^ 0xffffffff) != (Class58.varbitmasks[i_9_] ^ 0xffffffff)) {
                         Class58.varbitmasks[i_9_] = i_8_;
@@ -202,7 +202,7 @@ public class CollisionMap {
                 }
                 if((Class57.packetid ^ 0xffffffff) == -116) {
                     boolean bool = ((Cache.outgoingbuffer.getUnsignedByte() ^ 0xffffffff) == -2);
-                    int i_10_ = Cache.outgoingbuffer.method470(-123);
+                    int i_10_ = Cache.outgoingbuffer.getIntME();
                     Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_10_, (byte) -92);
                     class40_sub5_sub12.aBoolean2750 = bool;
                     Class57.packetid = -1;
@@ -229,10 +229,10 @@ public class CollisionMap {
                     }
                     int i_15_ = Cache.outgoingbuffer.getUnsignedShortBE();
                     for(int i_16_ = 0; (i_15_ ^ 0xffffffff) < (i_16_ ^ 0xffffffff); i_16_++) {
-                        int i_17_ = Cache.outgoingbuffer.method476(255);
+                        int i_17_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                         if((i_17_ ^ 0xffffffff) == -256)
                             i_17_ = Cache.outgoingbuffer.readInt();
-                        int i_18_ = Cache.outgoingbuffer.method461((byte) 58);
+                        int i_18_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
                         if(!class40_sub5_sub12.aBoolean2636) {
                             if(class40_sub5_sub12.anIntArray2685.length > i_16_) {
                                 class40_sub5_sub12.anIntArray2685[i_16_] = i_18_;
@@ -254,7 +254,7 @@ public class CollisionMap {
                 }
                 if((Class57.packetid ^ 0xffffffff) == -251) {
                     int i_21_ = Cache.outgoingbuffer.method490((byte) -70);
-                    int i_22_ = Cache.outgoingbuffer.method470(-121);
+                    int i_22_ = Cache.outgoingbuffer.getIntME();
                     Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_22_, (byte) -87);
                     class40_sub5_sub12.anInt2673 = i_21_;
                     class40_sub5_sub12.anInt2687 = 1;
@@ -287,7 +287,7 @@ public class CollisionMap {
                     return true;
                 }
                 if(Class57.packetid == 82) {
-                    RSString class1 = Cache.outgoingbuffer.getRSString(-10721);
+                    RSString class1 = Cache.outgoingbuffer.getRSString();
                     if(!class1.method87(103, Class40_Sub5_Sub7.aClass1_2472)) {
                         if(!class1.method87(104, Class40_Sub5_Sub6.aClass1_2434)) {
                             if(!class1.method87(81, Node.aClass1_948))
@@ -338,7 +338,7 @@ public class CollisionMap {
                 }
                 if(Class57.packetid == 182) {
                     int i_34_ = Cache.outgoingbuffer.getUnsignedShortBE();
-                    int i_35_ = Cache.outgoingbuffer.method485((byte) -48);
+                    int i_35_ = Cache.outgoingbuffer.method485();
                     Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_35_, (byte) -61);
                     Class57.packetid = -1;
                     if(class40_sub5_sub12 != null && (class40_sub5_sub12.anInt2683 ^ 0xffffffff) == -1) {
@@ -351,7 +351,7 @@ public class CollisionMap {
                     return true;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -175) {
-                    int i_36_ = Cache.outgoingbuffer.method470(-128);
+                    int i_36_ = Cache.outgoingbuffer.getIntME();
                     Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_36_, (byte) -115);
                     if(class40_sub5_sub12.aBoolean2636) {
                         Class40_Sub5_Sub12[] class40_sub5_sub12s = (Class59.aClass40_Sub5_Sub12ArrayArray1390[i_36_ >> -1339248816]);
@@ -377,9 +377,9 @@ public class CollisionMap {
                     return true;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -130) {
-                    int i_40_ = Cache.outgoingbuffer.method471((byte) 31);
-                    int i_41_ = Cache.outgoingbuffer.method476(255);
-                    int i_42_ = Cache.outgoingbuffer.method471((byte) 114);
+                    int i_40_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
+                    int i_41_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
+                    int i_42_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
                     Player.anInt3267 = i_40_ >> 2097688801;
                     Class40_Sub5_Sub13.localPlayer.method787(i_42_, -7717, (i_40_ & 0x1) == 1, i_41_);
                     Class57.packetid = -1;
@@ -391,7 +391,7 @@ public class CollisionMap {
                     return false;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -25) {
-                    int i_43_ = Cache.outgoingbuffer.getShortUNKNOWN();
+                    int i_43_ = Cache.outgoingbuffer.getShortBE();
                     int i_44_ = Cache.outgoingbuffer.readInt();
                     Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_44_, (byte) -82);
                     if(((class40_sub5_sub12.anInt2659 ^ 0xffffffff) != (i_43_ ^ 0xffffffff)) || (i_43_ ^ 0xffffffff) == 0) {
@@ -403,7 +403,7 @@ public class CollisionMap {
                     return true;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -57) {
-                    int i_45_ = Cache.outgoingbuffer.method460(-23843);
+                    int i_45_ = Cache.outgoingbuffer.getNegativeOffsetShortBE();
                     if((i_45_ ^ 0xffffffff) <= -1)
                         Class42.method883((byte) -121, i_45_);
                     if((Class58.anInt1376 ^ 0xffffffff) != (i_45_ ^ 0xffffffff)) {
@@ -416,7 +416,7 @@ public class CollisionMap {
                 if((Class57.packetid ^ 0xffffffff) == -118) {
                     int i_46_ = Cache.outgoingbuffer.getUnsignedShortBE();
                     int i_47_ = Cache.outgoingbuffer.method504(false);
-                    int i_48_ = Cache.outgoingbuffer.method485((byte) -48);
+                    int i_48_ = Cache.outgoingbuffer.method485();
                     Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_48_, (byte) -100);
                     Class57.packetid = -1;
                     class40_sub5_sub12.anInt2722 = i_47_ + (i_46_ << -1109526864);
@@ -459,7 +459,7 @@ public class CollisionMap {
                 }
                 if((Class57.packetid ^ 0xffffffff) == -65) {
                     Floor.anInt2318 = Cache.outgoingbuffer.getUnsignedByte();
-                    Class40_Sub6.anInt2119 = Cache.outgoingbuffer.method476(255);
+                    Class40_Sub6.anInt2119 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                     for(int i_51_ = Class40_Sub6.anInt2119; ((i_51_ ^ 0xffffffff) > (8 + Class40_Sub6.anInt2119 ^ 0xffffffff)); i_51_++) {
                         for(int i_52_ = Floor.anInt2318; ((8 + Floor.anInt2318 ^ 0xffffffff) < (i_52_ ^ 0xffffffff)); i_52_++) {
                             if((Class10.aClass45ArrayArrayArray357[Player.anInt3267][i_51_][i_52_]) != null) {
@@ -476,8 +476,8 @@ public class CollisionMap {
                     return true;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -224) {
-                    RSString class1 = Cache.outgoingbuffer.getRSString(-10721);
-                    int i_53_ = Cache.outgoingbuffer.method480((byte) -70);
+                    RSString class1 = Cache.outgoingbuffer.getRSString();
+                    int i_53_ = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
                     int i_54_ = Cache.outgoingbuffer.getUnsignedByte();
                     if(i_54_ >= 1 && (i_54_ ^ 0xffffffff) >= -6) {
                         if(class1.method63(RSApplet.aClass1_34, !arg0))
@@ -547,7 +547,7 @@ public class CollisionMap {
                     return true;
                 }
                 if(Class57.packetid == 185) {
-                    int i_56_ = Cache.outgoingbuffer.method460(-23843);
+                    int i_56_ = Cache.outgoingbuffer.getNegativeOffsetShortBE();
                     if(Class48.anInt1138 != i_56_) {
                         Class55.method958(Class48.anInt1138, -14222);
                         Class48.anInt1138 = i_56_;
@@ -557,7 +557,7 @@ public class CollisionMap {
                     return true;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -196) {
-                    int i_57_ = Cache.outgoingbuffer.method461((byte) 96);
+                    int i_57_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
                     int i_58_ = Cache.outgoingbuffer.getUnsignedShortBE();
                     Class42.method883((byte) -120, i_58_);
                     if(i_57_ != -1)
@@ -622,7 +622,7 @@ public class CollisionMap {
                     return true;
                 }
                 if(Class57.packetid == 208) {
-                    int i_59_ = Cache.outgoingbuffer.method461((byte) 94);
+                    int i_59_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
                     Class42.method883((byte) -119, i_59_);
                     if((Class29.anInt673 ^ 0xffffffff) != 0) {
                         Class55.method958(Class29.anInt673, -14222);
@@ -662,7 +662,7 @@ public class CollisionMap {
                 }
                 if((Class57.packetid ^ 0xffffffff) == -41) {
                     int i_61_ = Cache.outgoingbuffer.getTri(true);
-                    int i_62_ = Cache.outgoingbuffer.method461((byte) 58);
+                    int i_62_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
                     if(i_62_ == 65535)
                         i_62_ = -1;
                     Class57.method975(i_61_, (byte) 110, i_62_);
@@ -670,13 +670,13 @@ public class CollisionMap {
                     return true;
                 }
                 if(Class57.packetid == 254) {
-                    Floor.anInt2318 = Cache.outgoingbuffer.method480((byte) -70);
-                    Class40_Sub6.anInt2119 = Cache.outgoingbuffer.method471((byte) -67);
+                    Floor.anInt2318 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
+                    Class40_Sub6.anInt2119 = Cache.outgoingbuffer.getUnsignedInvertedByte();
                     Class57.packetid = -1;
                     return true;
                 }
                 if(Class57.packetid == 88) {
-                    Class51.anInt1205 = Cache.outgoingbuffer.method476(255);
+                    Class51.anInt1205 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                     if(Class5.anInt208 == Class51.anInt1205) {
                         if(Class51.anInt1205 != 3)
                             Class5.anInt208 = 3;
@@ -688,8 +688,8 @@ public class CollisionMap {
                     return true;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -64) {
-                    Class40_Sub6.anInt2119 = Cache.outgoingbuffer.method471((byte) -87);
-                    Floor.anInt2318 = Cache.outgoingbuffer.method480((byte) -70);
+                    Class40_Sub6.anInt2119 = Cache.outgoingbuffer.getUnsignedInvertedByte();
+                    Floor.anInt2318 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
                     while(Cache.outgoingbuffer.currentPosition < Class40_Sub5_Sub12.packetsize) {
                         Class57.packetid = Cache.outgoingbuffer.getUnsignedByte();
                         Class53.method949((byte) -125);
@@ -717,7 +717,7 @@ public class CollisionMap {
                     return true;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -3) {
-                    int i_63_ = Cache.outgoingbuffer.method470(-121);
+                    int i_63_ = Cache.outgoingbuffer.getIntME();
                     int i_64_ = Cache.outgoingbuffer.getUnsignedShortBE();
                     Buffer.anIntArray1984[i_64_] = i_63_;
                     if(i_63_ != Class58.varbitmasks[i_64_]) {
@@ -807,7 +807,7 @@ public class CollisionMap {
                     int i_76_ = Cache.outgoingbuffer.getUnsignedShortBE();
                     int i_77_ = Cache.outgoingbuffer.method490((byte) -70);
                     int i_78_ = Cache.outgoingbuffer.getUnsignedShortBE();
-                    int i_79_ = Cache.outgoingbuffer.method485((byte) -48);
+                    int i_79_ = Cache.outgoingbuffer.method485();
                     Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_79_, (byte) -86);
                     Class57.packetid = -1;
                     class40_sub5_sub12.anInt2657 = i_76_;
@@ -825,7 +825,7 @@ public class CollisionMap {
                 if((Class57.packetid ^ 0xffffffff) == -172) {
                     if(Class5.anInt208 == 12)
                         ISAAC.aBoolean505 = true;
-                    Class52.anInt1222 = Cache.outgoingbuffer.getShortUNKNOWN();
+                    Class52.anInt1222 = Cache.outgoingbuffer.getShortBE();
                     Class57.packetid = -1;
                     return true;
                 }
@@ -850,7 +850,7 @@ public class CollisionMap {
                 }
                 if(Class57.packetid == 160) {
                     int i_81_ = Cache.outgoingbuffer.method490((byte) -70);
-                    int i_82_ = Cache.outgoingbuffer.method485((byte) -48);
+                    int i_82_ = Cache.outgoingbuffer.method485();
                     Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_82_, (byte) -67);
                     class40_sub5_sub12.anInt2687 = 2;
                     Class57.packetid = -1;
@@ -905,7 +905,7 @@ public class CollisionMap {
                     return true;
                 }
                 if(Class57.packetid == 210) {
-                    int i_83_ = Cache.outgoingbuffer.method485((byte) -48);
+                    int i_83_ = Cache.outgoingbuffer.method485();
                     Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_83_, (byte) -107);
                     class40_sub5_sub12.anInt2687 = 3;
                     class40_sub5_sub12.anInt2673 = Class40_Sub5_Sub13.localPlayer.aClass30_3282.method374(-20874);
@@ -913,8 +913,8 @@ public class CollisionMap {
                     return true;
                 }
                 if(Class57.packetid == 110) {
-                    int i_84_ = Cache.outgoingbuffer.method485((byte) -48);
-                    RSString class1 = Cache.outgoingbuffer.getRSString(-10721);
+                    int i_84_ = Cache.outgoingbuffer.method485();
+                    RSString class1 = Cache.outgoingbuffer.getRSString();
                     Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_84_, (byte) -73);
                     class40_sub5_sub12.aClass1_2668 = class1;
                     if(Class40_Sub5_Sub11.anIntArray2626[Class5.anInt208] == i_84_ >> -1297036176)
@@ -931,7 +931,7 @@ public class CollisionMap {
                 if((Class57.packetid ^ 0xffffffff) == -121) {
                     int i_85_ = Cache.outgoingbuffer.getUnsignedShortBE();
                     int i_86_ = Cache.outgoingbuffer.method490((byte) -70);
-                    int i_87_ = Cache.outgoingbuffer.method485((byte) -48);
+                    int i_87_ = Cache.outgoingbuffer.method485();
                     if((i_86_ ^ 0xffffffff) == -65536)
                         i_86_ = -1;
                     Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_87_, (byte) -102);
@@ -1017,9 +1017,9 @@ public class CollisionMap {
                 }
                 if((Class57.packetid ^ 0xffffffff) == -35) {
                     ISAAC.aBoolean505 = true;
-                    int i_98_ = Cache.outgoingbuffer.method476(255);
+                    int i_98_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                     int i_99_ = Cache.outgoingbuffer.getUnsignedByte();
-                    int i_100_ = Cache.outgoingbuffer.method470(-115);
+                    int i_100_ = Cache.outgoingbuffer.getIntME();
                     Class40_Sub5_Sub17_Sub3.anIntArray3051[i_99_] = i_100_;
                     Class13.anIntArray403[i_99_] = i_98_;
                     Class10.anIntArray354[i_99_] = 1;
@@ -1032,8 +1032,8 @@ public class CollisionMap {
                 }
                 if((Class57.packetid ^ 0xffffffff) == -4) {
                     int i_102_ = Cache.outgoingbuffer.readInt();
-                    int i_103_ = Cache.outgoingbuffer.method484((byte) 94);
-                    int i_104_ = Cache.outgoingbuffer.method484((byte) 123);
+                    int i_103_ = Cache.outgoingbuffer.getNegativeOffsetShortLE();
+                    int i_104_ = Cache.outgoingbuffer.getNegativeOffsetShortLE();
                     Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_102_, (byte) -86);
                     class40_sub5_sub12.anInt2656 = class40_sub5_sub12.anInt2649 + i_104_;
                     Class57.packetid = -1;
@@ -1100,8 +1100,8 @@ public class CollisionMap {
                     return true;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -232) {
-                    int i_113_ = Cache.outgoingbuffer.method461((byte) 108);
-                    int i_114_ = Cache.outgoingbuffer.method485((byte) -48);
+                    int i_113_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
+                    int i_114_ = Cache.outgoingbuffer.method485();
                     int i_115_ = i_113_ >> -1304618998 & 0x1f;
                     int i_116_ = 0x1f & i_113_ >> -1608786267;
                     Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_114_, (byte) -103);

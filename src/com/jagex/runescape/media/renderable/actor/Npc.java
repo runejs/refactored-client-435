@@ -91,7 +91,7 @@ public class Npc extends Actor {
                         Class26.anInt616++;
                         int i = 0;
                         Class32.packetBuffer.putPacket(11453, 210);
-                        Class32.packetBuffer.put(0, (byte) -128);
+                        Class32.packetBuffer.putByte(0);
                         int i_2_ = Class32.packetBuffer.currentPosition;
                         for(int i_3_ = 0; i_3_ < Class12.aClass39_387.anInt921; i_3_++) {
                             if((-i_2_ + Class32.packetBuffer.currentPosition) >= 240)
@@ -125,10 +125,10 @@ public class Npc extends Actor {
                                 if(Class22_Sub2.anInt1888 < 8 && i_7_ >= -32 && (i_7_ ^ 0xffffffff) >= -32 && (i_8_ ^ 0xffffffff) <= 31 && i_8_ <= 31) {
                                     i_7_ += 32;
                                     i_8_ += 32;
-                                    Class32.packetBuffer.method474((i_8_ + (i_7_ << -1041963898) + (Class22_Sub2.anInt1888 << 164403180)), -126);
+                                    Class32.packetBuffer.putShortBE((i_8_ + (i_7_ << -1041963898) + (Class22_Sub2.anInt1888 << 164403180)));
                                     Class22_Sub2.anInt1888 = 0;
                                 } else if(Class22_Sub2.anInt1888 < 8) {
-                                    Class32.packetBuffer.putTri((i_6_ + 8388608 + (Class22_Sub2.anInt1888 << 1170876883)), 13723);
+                                    Class32.packetBuffer.putMediumBE((i_6_ + 8388608 + (Class22_Sub2.anInt1888 << 1170876883)));
                                     Class22_Sub2.anInt1888 = 0;
                                 } else {
                                     Class32.packetBuffer.putInt(40, ((Class22_Sub2.anInt1888 << 811733811) + -1073741824 + i_6_));
@@ -136,7 +136,7 @@ public class Npc extends Actor {
                                 }
                             }
                         }
-                        Class32.packetBuffer.finishVarByte(Class32.packetBuffer.currentPosition + -i_2_, (byte) 16);
+                        Class32.packetBuffer.finishVarByte(Class32.packetBuffer.currentPosition + -i_2_);
                         if(i < Class12.aClass39_387.anInt921) {
                             Class12.aClass39_387.anInt921 -= i;
                             for(int i_9_ = 0; ((Class12.aClass39_387.anInt921 ^ 0xffffffff) < (i_9_ ^ 0xffffffff)); i_9_++) {
@@ -182,20 +182,20 @@ public class Npc extends Actor {
                     Class19.anInt487 = 20;
                     HashTable.aBoolean565 = false;
                     Class32.packetBuffer.putPacket(11453, 58);
-                    Class32.packetBuffer.method474(Class58.cameraHorizontal, -126);
-                    Class32.packetBuffer.method474(Class65.anInt1537, -121);
+                    Class32.packetBuffer.putShortBE(Class58.cameraHorizontal);
+                    Class32.packetBuffer.putShortBE(Class65.anInt1537);
                 }
                 if(HashTable.aBoolean571 != false && !Class35.aBoolean1735 == true) {
                     Class60.anInt1406++;
                     Class35.aBoolean1735 = true;
                     Class32.packetBuffer.putPacket(11453, 160);
-                    Class32.packetBuffer.put(1, (byte) -128);
+                    Class32.packetBuffer.putByte(1);
                 }
                 if(!HashTable.aBoolean571 != false && Class35.aBoolean1735 == true) {
                     Class35.aBoolean1735 = false;
                     Class60.anInt1406++;
                     Class32.packetBuffer.putPacket(11453, 160);
-                    Class32.packetBuffer.put(0, (byte) -128);
+                    Class32.packetBuffer.putByte(0);
                 }
                 Class45.method910(-32322);
                 if(Class51.anInt1197 == 30 || (Class51.anInt1197 ^ 0xffffffff) == -36) {
@@ -279,7 +279,7 @@ public class Npc extends Actor {
                                         Class32.packetBuffer.putPacket(11453, 83);
                                         Class32.packetBuffer.method489(128, i);
                                         Class32.packetBuffer.method493(Class58.anInt1352, -128);
-                                        Class32.packetBuffer.method478(Class55.anInt1288, -20);
+                                        Class32.packetBuffer.putOffsetShortLE(Class55.anInt1288);
                                         Class32.packetBuffer.method503(-2030879560, Class48.anInt1127);
                                     }
                                 }

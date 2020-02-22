@@ -240,8 +240,8 @@ public class Class27 {
                 Class32.packetBuffer.putPacket(11453, 21);
                 Class32.packetBuffer.method494(Class60.anInt1417, 71);
                 Class32.packetBuffer.method503(-2030879560, i_10_);
-                Class32.packetBuffer.method474(i_12_, -126);
-                Class32.packetBuffer.method474(i, -121);
+                Class32.packetBuffer.putShortBE(i_12_);
+                Class32.packetBuffer.putShortBE(i);
                 Class40_Sub5_Sub17_Sub1.anInt2999 = 2;
                 Class52.anInt1233 = i;
                 RSRuntimeException.anInt1651 = 0;
@@ -261,9 +261,9 @@ public class Class27 {
                 Class40_Sub11.anInt2163 = Class57.anInt1338;
                 Class45.anInt1075 = 2;
                 Class32.packetBuffer.putPacket(11453, 190);
-                Class32.packetBuffer.method478(i + Class40_Sub5_Sub2.anInt2307, -114);
-                Class32.packetBuffer.method474(i_12_, -128);
-                Class32.packetBuffer.method474(i_10_ + Class26.anInt635, -122);
+                Class32.packetBuffer.putOffsetShortLE(i + Class40_Sub5_Sub2.anInt2307);
+                Class32.packetBuffer.putShortBE(i_12_);
+                Class32.packetBuffer.putShortBE(i_10_ + Class26.anInt635);
             }
             if(i_11_ == 1004) {
                 Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
@@ -371,7 +371,7 @@ public class Class27 {
             }
             if(i_11_ == 52) {
                 Class32.packetBuffer.putPacket(11453, 240);
-                Class32.packetBuffer.method478(i, -29);
+                Class32.packetBuffer.putOffsetShortLE(i);
                 Class32.packetBuffer.method486(14912, i_12_);
                 Class32.packetBuffer.method503(-2030879560, i_10_);
                 Class52.anInt1233 = i;
@@ -421,7 +421,7 @@ public class Class27 {
                         class40_sub5_sub5 = class40_sub5_sub5.method577(-1);
                     if(class40_sub5_sub5 != null) {
                         Class32.packetBuffer.putPacket(11453, 247);
-                        Class32.packetBuffer.method478(class40_sub5_sub5.anInt2427, -26);
+                        Class32.packetBuffer.putOffsetShortLE(class40_sub5_sub5.anInt2427);
                     }
                 }
             }
@@ -435,10 +435,10 @@ public class Class27 {
                     Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                     Floor.anInt2319 = 0;
                     Class32.packetBuffer.putPacket(11453, 110);
-                    Class32.packetBuffer.method478(i_12_, -70);
+                    Class32.packetBuffer.putOffsetShortLE(i_12_);
                     Class32.packetBuffer.method487(ISAAC.anInt525, (byte) 115);
-                    Class32.packetBuffer.method474(Class49.anInt1154, 18);
-                    Class32.packetBuffer.method474(Class45.anInt1061, -127);
+                    Class32.packetBuffer.putShortBE(Class49.anInt1154);
+                    Class32.packetBuffer.putShortBE(Class45.anInt1061);
                 }
             }
             if(i_11_ == 19) {
@@ -465,7 +465,7 @@ public class Class27 {
                     Class32.packetBuffer.method486(14912, i_12_);
                     Class32.packetBuffer.method493(Class40_Sub5_Sub2.anInt2307 + i, -128);
                     Class32.packetBuffer.method487(Class60.anInt1417, (byte) 108);
-                    Class32.packetBuffer.method474(Class26.anInt635 + i_10_, 124);
+                    Class32.packetBuffer.putShortBE(Class26.anInt635 + i_10_);
                 }
                 if(i_11_ == 23) {
                     Class61.anInt1442++;
@@ -524,15 +524,15 @@ public class Class27 {
                     Class40_Sub5_Sub6.anInt2435++;
                     Class40_Sub11.anInt2163 = Class57.anInt1338;
                     Class32.packetBuffer.putPacket(11453, 151);
-                    Class32.packetBuffer.method478(i_12_, -48);
+                    Class32.packetBuffer.putOffsetShortLE(i_12_);
                 }
                 if((i_11_ ^ 0xffffffff) == -1003) {
                     Class40_Sub5_Sub7.method596(i, i_12_, (byte) -11, i_10_);
                     SubNode.anInt2089++;
                     Class32.packetBuffer.putPacket(11453, 62);
-                    Class32.packetBuffer.method474((0x1fffd05d & i_12_) >> 913078094, 39);
+                    Class32.packetBuffer.putShortBE((0x1fffd05d & i_12_) >> 913078094);
                     Class32.packetBuffer.method486(14912, i_10_ + Class26.anInt635);
-                    Class32.packetBuffer.method478(i + Class40_Sub5_Sub2.anInt2307, -48);
+                    Class32.packetBuffer.putOffsetShortLE(i + Class40_Sub5_Sub2.anInt2307);
                 }
                 if((i_11_ ^ 0xffffffff) == -31) {
                     Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
@@ -544,7 +544,7 @@ public class Class27 {
                         Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                         Class45.anInt1075 = 2;
                         Class32.packetBuffer.putPacket(11453, 57);
-                        Class32.packetBuffer.method474(i_12_, 89);
+                        Class32.packetBuffer.putShortBE(i_12_);
                     }
                 }
                 if((i_11_ ^ 0xffffffff) == -50) {
@@ -559,27 +559,27 @@ public class Class27 {
                         Class32.packetBuffer.putPacket(11453, 208);
                         Class32.packetBuffer.method493(i_12_, -128);
                         Class32.packetBuffer.method493(Class49.anInt1154, -128);
-                        Class32.packetBuffer.method478(Class45.anInt1061, -109);
+                        Class32.packetBuffer.putOffsetShortLE(Class45.anInt1061);
                         Class32.packetBuffer.putInt(113, ISAAC.anInt525);
                     }
                 }
                 if(i_11_ == 29) {
                     Class40_Sub5_Sub7.method596(i, i_12_, (byte) -77, i_10_);
                     Class32.packetBuffer.putPacket(11453, 164);
-                    Class32.packetBuffer.method478(Class40_Sub5_Sub2.anInt2307 + i, -86);
+                    Class32.packetBuffer.putOffsetShortLE(Class40_Sub5_Sub2.anInt2307 + i);
                     Class40_Sub5_Sub6.anInt2455++;
-                    Class32.packetBuffer.method478(Class26.anInt635 + i_10_, -59);
-                    Class32.packetBuffer.method478(i_12_ >> -1057884498 & 0x7fff, -62);
+                    Class32.packetBuffer.putOffsetShortLE(Class26.anInt635 + i_10_);
+                    Class32.packetBuffer.putOffsetShortLE(i_12_ >> -1057884498 & 0x7fff);
                 }
                 if((i_11_ ^ 0xffffffff) == -6 && Class40_Sub5_Sub7.method596(i, i_12_, (byte) -104, i_10_)) {
                     SubNode.anInt2085++;
                     Class32.packetBuffer.putPacket(11453, 24);
-                    Class32.packetBuffer.method478(i_10_ + Class26.anInt635, -81);
+                    Class32.packetBuffer.putOffsetShortLE(i_10_ + Class26.anInt635);
                     Class32.packetBuffer.method493(Class49.anInt1154, -128);
                     Class32.packetBuffer.method486(14912, (i_12_ & 0x1fffccf7) >> -2090608882);
-                    Class32.packetBuffer.method478(Class45.anInt1061, -58);
+                    Class32.packetBuffer.putOffsetShortLE(Class45.anInt1061);
                     Class32.packetBuffer.method487(ISAAC.anInt525, (byte) 115);
-                    Class32.packetBuffer.method478(i + Class40_Sub5_Sub2.anInt2307, -26);
+                    Class32.packetBuffer.putOffsetShortLE(i + Class40_Sub5_Sub2.anInt2307);
                 }
                 if(i_11_ == 34) {
                     Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
@@ -596,9 +596,9 @@ public class Class27 {
                 }
                 if(i_11_ == 56) {
                     Class32.packetBuffer.putPacket(11453, 40);
-                    Class32.packetBuffer.method478(i_12_, -52);
+                    Class32.packetBuffer.putOffsetShortLE(i_12_);
                     Class34.anInt803++;
-                    Class32.packetBuffer.method478(i, -112);
+                    Class32.packetBuffer.putOffsetShortLE(i);
                     Class32.packetBuffer.method494(i_10_, 121);
                     Class32.packetBuffer.method494(ISAAC.anInt525, 73);
                     Class32.packetBuffer.method486(14912, Class49.anInt1154);
@@ -633,7 +633,7 @@ public class Class27 {
                             class40_sub5_sub12 = (class40_sub5_sub12.aClass40_Sub5_Sub12Array2713[i]);
                         if(class40_sub5_sub12 == null || class40_sub5_sub12.anInt2734 < 100000) {
                             Class32.packetBuffer.putPacket(11453, 151);
-                            Class32.packetBuffer.method478(i_12_, -69);
+                            Class32.packetBuffer.putOffsetShortLE(i_12_);
                             Class40_Sub5_Sub6.anInt2435++;
                         } else
                             Class44.method895(83, 0, (Class40_Sub5_Sub17_Sub6.method832(127, (new RSString[]{HashTable.method334((class40_sub5_sub12.anInt2734), -1), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), Class66.aClass1_1567);
@@ -652,8 +652,8 @@ public class Class27 {
                     if(i_11_ == 31) {
                         Class32.packetBuffer.putPacket(11453, 163);
                         Class52.anInt1236++;
-                        Class32.packetBuffer.method478(i, -96);
-                        Class32.packetBuffer.method478(i_12_, -42);
+                        Class32.packetBuffer.putOffsetShortLE(i);
+                        Class32.packetBuffer.putOffsetShortLE(i_12_);
                         Class32.packetBuffer.putInt(89, i_10_);
                         Class52.anInt1233 = i;
                         Class40_Sub5_Sub17_Sub1.anInt2999 = 2;
@@ -674,7 +674,7 @@ public class Class27 {
                             Floor.anInt2319 = 0;
                             Class45.anInt1075 = 2;
                             Class32.packetBuffer.putPacket(11453, 63);
-                            Class32.packetBuffer.method478(i_12_, -18);
+                            Class32.packetBuffer.putOffsetShortLE(i_12_);
                         }
                     }
                     if(i_11_ == 2) {
@@ -689,7 +689,7 @@ public class Class27 {
                         Class32.packetBuffer.putPacket(11453, 244);
                         Class32.packetBuffer.method486(14912, i + Class40_Sub5_Sub2.anInt2307);
                         Class32.packetBuffer.method493(Class26.anInt635 + i_10_, -128);
-                        Class32.packetBuffer.method474(i_12_, 13);
+                        Class32.packetBuffer.putShortBE(i_12_);
                     }
                     if((i_11_ ^ 0xffffffff) == -4) {
                         boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), i, (byte) 117, 0, false, 0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), i_10_, 2));
@@ -715,7 +715,7 @@ public class Class27 {
                             Floor.anInt2319 = 0;
                             Class45.anInt1075 = 2;
                             Class32.packetBuffer.putPacket(11453, 253);
-                            Class32.packetBuffer.method474(i_12_, -128);
+                            Class32.packetBuffer.putShortBE(i_12_);
                             Class32.packetBuffer.method487(Class60.anInt1417, (byte) 96);
                         }
                     }
@@ -744,7 +744,7 @@ public class Class27 {
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
                             Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                             Class32.packetBuffer.putPacket(11453, 220);
-                            Class32.packetBuffer.method474(i_12_, -121);
+                            Class32.packetBuffer.putShortBE(i_12_);
                         }
                     }
                     if(arg0 < 51)
@@ -760,7 +760,7 @@ public class Class27 {
                         if(class40_sub5_sub12 == null || (class40_sub5_sub12.anIntArray2710[i] ^ 0xffffffff) > -100001) {
                             Class40_Sub5_Sub6.anInt2435++;
                             Class32.packetBuffer.putPacket(11453, 151);
-                            Class32.packetBuffer.method478(i_12_, -73);
+                            Class32.packetBuffer.putOffsetShortLE(i_12_);
                         } else
                             Class44.method895(103, 0, (Class40_Sub5_Sub17_Sub6.method832(-49, (new RSString[]{HashTable.method334((class40_sub5_sub12.anIntArray2710[i]), -1), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), Class66.aClass1_1567);
                         Class52.anInt1233 = i;
@@ -777,7 +777,7 @@ public class Class27 {
                         NpcDefinition.anInt2390++;
                         Class32.packetBuffer.putPacket(11453, 183);
                         Class32.packetBuffer.method493(i_10_ + Class26.anInt635, -128);
-                        Class32.packetBuffer.method474(i_12_ >> -2049660850 & 0x7fff, -126);
+                        Class32.packetBuffer.putShortBE(i_12_ >> -2049660850 & 0x7fff);
                         Class32.packetBuffer.method493(i + Class40_Sub5_Sub2.anInt2307, -128);
                     }
                     if(i_11_ == 50)
@@ -789,8 +789,8 @@ public class Class27 {
                     }
                     if(i_11_ == 32 && Class40_Sub5_Sub7.method596(i, i_12_, (byte) -27, i_10_)) {
                         Class32.packetBuffer.putPacket(11453, 225);
-                        Class32.packetBuffer.method474(i_12_ >> 14 & 0x7fff, 74);
-                        Class32.packetBuffer.method478(i_10_ + Class26.anInt635, -61);
+                        Class32.packetBuffer.putShortBE(i_12_ >> 14 & 0x7fff);
+                        Class32.packetBuffer.putOffsetShortLE(i_10_ + Class26.anInt635);
                         Class32.packetBuffer.method487(Class60.anInt1417, (byte) 118);
                         Class32.packetBuffer.method486(14912, i + Class40_Sub5_Sub2.anInt2307);
                     }
@@ -832,7 +832,7 @@ public class Class27 {
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
                             Floor.anInt2319 = 0;
                             Class32.packetBuffer.putPacket(11453, 187);
-                            Class32.packetBuffer.method478(i_12_, -72);
+                            Class32.packetBuffer.putOffsetShortLE(i_12_);
                             Class43.anInt1016++;
                         }
                     }
@@ -875,9 +875,9 @@ public class Class27 {
                     if((i_11_ ^ 0xffffffff) == -44) {
                         Class32.packetBuffer.putPacket(11453, 98);
                         Class24.anInt576++;
-                        Class32.packetBuffer.method474(i, -123);
+                        Class32.packetBuffer.putShortBE(i);
                         Class32.packetBuffer.method487(i_10_, (byte) 103);
-                        Class32.packetBuffer.method474(i_12_, 100);
+                        Class32.packetBuffer.putShortBE(i_12_);
                         RSRuntimeException.anInt1651 = 0;
                         Class40_Sub5_Sub17_Sub1.anInt2999 = 2;
                         if(Class66.anInt1560 == i_10_ >> -147758768)
@@ -897,7 +897,7 @@ public class Class27 {
                         Floor.anInt2319 = 0;
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
                         Class32.packetBuffer.putPacket(11453, 27);
-                        Class32.packetBuffer.method474(Class40_Sub5_Sub2.anInt2307 + i, -124);
+                        Class32.packetBuffer.putShortBE(Class40_Sub5_Sub2.anInt2307 + i);
                         Class32.packetBuffer.method493(i_12_, -128);
                         Class32.packetBuffer.method493(i_10_ + Class26.anInt635, -128);
                     }
@@ -917,9 +917,9 @@ public class Class27 {
                     if((i_11_ ^ 0xffffffff) == -25) {
                         Class53.anInt1250++;
                         Class32.packetBuffer.putPacket(11453, 124);
-                        Class32.packetBuffer.method474(i, -123);
+                        Class32.packetBuffer.putShortBE(i);
                         Class32.packetBuffer.method494(i_10_, 81);
-                        Class32.packetBuffer.method474(i_12_, -126);
+                        Class32.packetBuffer.putShortBE(i_12_);
                         Class30.anInt704 = i_10_;
                         RSRuntimeException.anInt1651 = 0;
                         Class52.anInt1233 = i;
@@ -935,7 +935,7 @@ public class Class27 {
                         Class32.packetBuffer.putPacket(11453, 30);
                         Class32.packetBuffer.method493(0x7fff & i_12_ >> 1412014030, -128);
                         Class32.packetBuffer.method493(Class26.anInt635 + i_10_, -128);
-                        Class32.packetBuffer.method478(i + Class40_Sub5_Sub2.anInt2307, -128);
+                        Class32.packetBuffer.putOffsetShortLE(i + Class40_Sub5_Sub2.anInt2307);
                     }
                     if(i_11_ == 20) {
                         Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
@@ -961,7 +961,7 @@ public class Class27 {
                         Class45.anInt1075 = 2;
                         Class32.packetBuffer.putPacket(11453, 172);
                         Class32.packetBuffer.method493(i + Class40_Sub5_Sub2.anInt2307, -128);
-                        Class32.packetBuffer.method474(Class45.anInt1061, -128);
+                        Class32.packetBuffer.putShortBE(Class45.anInt1061);
                         Class32.packetBuffer.method493(i_12_, -128);
                         Class32.packetBuffer.method503(-2030879560, ISAAC.anInt525);
                         Class32.packetBuffer.method486(14912, Class26.anInt635 + i_10_);
@@ -970,8 +970,8 @@ public class Class27 {
                     if(i_11_ == 6) {
                         Class32.packetBuffer.putPacket(11453, 102);
                         Class32.packetBuffer.method494(i_10_, 112);
-                        Class32.packetBuffer.method478(i, -46);
-                        Class32.packetBuffer.method474(i_12_, 24);
+                        Class32.packetBuffer.putOffsetShortLE(i);
+                        Class32.packetBuffer.putShortBE(i_12_);
                         Class40_Sub3.anInt2034++;
                         Class52.anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
@@ -1198,7 +1198,7 @@ public class Class27 {
                         Class51.anInt1205 = -1;
                         Class32.packetBuffer.putPacket(arg0 ^ ~0x6259, 44);
                         Class56.anInt1311++;
-                        Class32.packetBuffer.put(Class5.anInt208, (byte) -128);
+                        Class32.packetBuffer.putByte(Class5.anInt208);
                     }
                     Class40_Sub5_Sub10.aBoolean2597 = false;
                     Class40_Sub3.aBoolean2026 = true;

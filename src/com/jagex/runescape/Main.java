@@ -1639,7 +1639,7 @@ public class Main extends RSApplet {
                         if((Class8.anInt290 ^ 0xffffffff) == -3) {
                             Class29.aClass64_676 = new Class64((Socket) (Class68.aClass15_1632.anObject437), ISAAC.aClass31_521);
                             Buffer class40_sub1 = new Buffer(5);
-                            class40_sub1.put(15, (byte) -128);
+                            class40_sub1.putByte(15);
                             class40_sub1.putInt(56, 435);
                             Class29.aClass64_676.method1010(5, (byte) -19, 0, (class40_sub1.buffer));
                             Class8.anInt290++;

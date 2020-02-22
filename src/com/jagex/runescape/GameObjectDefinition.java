@@ -374,7 +374,7 @@ public class GameObjectDefinition extends SubNode {
     public void method608(Buffer arg0, int arg1, int arg2) {
         if((arg2 ^ 0xffffffff) != -2) {
             if(arg2 == 2)
-                aClass1_2549 = arg0.getRSString(-10721);
+                aClass1_2549 = arg0.getRSString();
             else if(arg2 != 5) {
                 if((arg2 ^ 0xffffffff) == -15)
                     anInt2503 = arg0.getUnsignedByte();
@@ -394,7 +394,7 @@ public class GameObjectDefinition extends SubNode {
                                             else if((arg2 ^ 0xffffffff) == -40)
                                                 anInt2544 = 5 * arg0.get();
                                             else if((arg2 ^ 0xffffffff) <= -31 && arg2 < 35) {
-                                                aClass1Array2508[arg2 - 30] = arg0.getRSString(-10721);
+                                                aClass1Array2508[arg2 - 30] = arg0.getRSString();
                                                 if(aClass1Array2508[arg2 + -30].method63(Class59.aClass1_1396, true))
                                                     aClass1Array2508[(arg2 + -30)] = null;
                                             } else if(arg2 != 40) {
@@ -411,11 +411,11 @@ public class GameObjectDefinition extends SubNode {
                                                         if(arg2 != 68) {
                                                             if((arg2 ^ 0xffffffff) != -70) {
                                                                 if(arg2 == 70)
-                                                                    anInt2500 = (arg0.getShortUNKNOWN());
+                                                                    anInt2500 = (arg0.getShortBE());
                                                                 else if((arg2 ^ 0xffffffff) == -72)
-                                                                    anInt2519 = (arg0.getShortUNKNOWN());
+                                                                    anInt2519 = (arg0.getShortBE());
                                                                 else if(arg2 == 72)
-                                                                    anInt2504 = (arg0.getShortUNKNOWN());
+                                                                    anInt2504 = (arg0.getShortBE());
                                                                 else if(arg2 != 73) {
                                                                     if((arg2 ^ 0xffffffff) != -75) {
                                                                         if(arg2 == 75)

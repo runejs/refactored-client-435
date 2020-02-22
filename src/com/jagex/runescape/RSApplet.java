@@ -101,8 +101,8 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             if(Class57.aClass64_1345 != null) {
                 try {
                     Buffer class40_sub1 = new Buffer(4);
-                    class40_sub1.put(arg0 ? 2 : 3, (byte) -128);
-                    class40_sub1.putTri(0, 13723);
+                    class40_sub1.putByte(arg0 ? 2 : 3);
+                    class40_sub1.putMediumBE(0);
                     Class57.aClass64_1345.method1010(4, (byte) -19, 0, (class40_sub1.buffer));
                 } catch(java.io.IOException ioexception) {
                     try {
@@ -227,7 +227,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                             Class59.aLongArray1397[i_13_] = Class59.aLongArray1397[1 + i_13_];
                         }
                         Class32.packetBuffer.putPacket(11453, 255);
-                        Class32.packetBuffer.putLong(arg0, false);
+                        Class32.packetBuffer.putLongBE(arg0);
                         break;
                     }
                 }

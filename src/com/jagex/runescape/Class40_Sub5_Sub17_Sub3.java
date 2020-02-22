@@ -131,17 +131,17 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                     int i_17_ = (-i_15_ + (Class40_Sub5_Sub13.localPlayer.anInt3089) >> -208961177);
                     boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), i_16_, (byte) 125, 0, true, 0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), i_17_, 1));
                     if(bool) {
-                        Class32.packetBuffer.put(i, (byte) -128);
-                        Class32.packetBuffer.put(i_10_, (byte) -128);
-                        Class32.packetBuffer.method474(Class58.cameraHorizontal, -126);
-                        Class32.packetBuffer.put(57, (byte) -128);
-                        Class32.packetBuffer.put(Class43.cameraYawOffset, (byte) -128);
-                        Class32.packetBuffer.put(Class51.mapZoomOffset, (byte) -128);
-                        Class32.packetBuffer.put(89, (byte) -128);
-                        Class32.packetBuffer.method474((Class40_Sub5_Sub13.localPlayer.anInt3098), 120);
-                        Class32.packetBuffer.method474((Class40_Sub5_Sub13.localPlayer.anInt3089), -125);
-                        Class32.packetBuffer.put(Class40_Sub5_Sub15.anInt2778, (byte) -128);
-                        Class32.packetBuffer.put(63, (byte) -128);
+                        Class32.packetBuffer.putByte(i);
+                        Class32.packetBuffer.putByte(i_10_);
+                        Class32.packetBuffer.putShortBE(Class58.cameraHorizontal);
+                        Class32.packetBuffer.putByte(57);
+                        Class32.packetBuffer.putByte(Class43.cameraYawOffset);
+                        Class32.packetBuffer.putByte(Class51.mapZoomOffset);
+                        Class32.packetBuffer.putByte(89);
+                        Class32.packetBuffer.putShortBE((Class40_Sub5_Sub13.localPlayer.anInt3098));
+                        Class32.packetBuffer.putShortBE((Class40_Sub5_Sub13.localPlayer.anInt3089));
+                        Class32.packetBuffer.putByte(Class40_Sub5_Sub15.anInt2778);
+                        Class32.packetBuffer.putByte(63);
                     }
                 }
             }

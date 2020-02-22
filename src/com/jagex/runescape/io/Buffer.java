@@ -72,82 +72,62 @@ public class Buffer extends Node {
 
     }
 
-    public int method460(int arg0) {
+    public int getNegativeOffsetShortBE() {
         currentPosition += 2;
-        int i = ((buffer[-1 + currentPosition] + -128 & 0xff) + (0xff00 & buffer[-2 + currentPosition] << 8));
+        int i = ((buffer[currentPosition - 2] & 0xff) << 8) + (buffer[currentPosition - 1] - 128 & 0xff);
         if(i > 32767) {
             i -= 65536;
-        }
-        if(arg0 != -23843) {
-            anInt1978 = -67;
         }
         return i;
 
     }
 
-    public int method461(byte arg0) {
-        if(arg0 < 56) {
-            getSignedSmart();
-        }
+    public int getUnsignedNegativeOffsetShortBE() {
         currentPosition += 2;
-        return ((buffer[-2 + currentPosition] << 8 & 0xff00) + (0xff & buffer[currentPosition + -1] - 128));
-
+        return ((buffer[currentPosition - 2] & 0xff) << 8) + (buffer[currentPosition - 1] - 128 & 0xff);
     }
 
-    public void putBytes128(int arg1, byte[] arg2, int arg3) {
+    public void putNegativeOffsetBytes(int arg1, byte[] arg2, int arg3) {
         for(int i = arg1; i < arg3 + arg1; i++) {
             arg2[i] = (byte) (buffer[currentPosition++] - 128);
         }
-
     }
 
-    public int getShortUNKNOWN() {
+    public int getShortBE() {
         currentPosition += 2;
-        int i = ((0xff00 & buffer[currentPosition - 2] << 8) + (buffer[currentPosition - 1] & 0xff));
+        int i = ((buffer[currentPosition - 2] & 0xff) << 8) + (buffer[currentPosition - 1] & 0xff);
         if(i > 0x7fff) {
             i -= 0x10000;
         }
         return i;
-
     }
 
-    public RSString getRSString(int arg0) {
+    public RSString getRSString() {
         int i = currentPosition;
-        if(arg0 != -10721) {
-            method483(null, true, -57, 63);
-        }
         while(buffer[currentPosition++] != 0) {
             /* empty */
         }
         return Class19.method279(buffer, true, i, -1 + currentPosition + -i);
     }
 
-    public void put(int arg0, byte arg1) {
-        if(arg1 == -128) {
-            buffer[currentPosition++] = (byte) arg0;
-        }
+    public void putByte(int value) {
+        buffer[currentPosition++] = (byte) value;
     }
 
-    public void applyRSA(BigInteger modulus, BigInteger key, int arg2) {
+    public void applyRSA(BigInteger modulus, BigInteger key) {
         int i = currentPosition;
         currentPosition = 0;
-        byte[] is = new byte[i];
-        method497(is, 0, i, (byte) 45);
-        BigInteger biginteger = new BigInteger(is);
-        BigInteger biginteger_0_ = biginteger.modPow(key, modulus);
-        System.out.println("RSA");
-        byte[] is_1_ = biginteger_0_.toByteArray();
+        byte[] bytes = new byte[i];
+        method497(bytes, 0, i, (byte) 45);
+        BigInteger data = new BigInteger(bytes);
+        BigInteger rsaData = data.modPow(key, modulus);
+        byte[] rsaBytes = rsaData.toByteArray();
         currentPosition = 0;
-        if(arg2 == 19280) {
-            put(is_1_.length, (byte) -128);
-            method475(is_1_.length, is_1_, 0, 8636);
-        }
+        putByte(rsaBytes.length);
+        putBytes(rsaBytes.length, rsaBytes, 0);
     }
 
-    public byte method467(byte arg0) {
-        if(arg0 < 9) {
-            getRSString(-30);
-        }
+    public byte getInvertedByte() {
         return (byte) -buffer[currentPosition++];
     }
 
@@ -157,90 +137,66 @@ public class Buffer extends Node {
 
     public int getUnsignedShortBE() {
         currentPosition += 2;
-        return (((0xff & buffer[currentPosition + -2]) << 8) + (buffer[currentPosition + -1] & 0xff));
+        return (((0xff & buffer[currentPosition - 2]) << 8) + (buffer[currentPosition - 1] & 0xff));
     }
 
-    public int method470(int arg0) {
-        if(arg0 >= -114) {
-            buffer = null;
-        }
+    public int getIntME() {
         currentPosition += 4;
-        return ((0xff00 & buffer[currentPosition + -1] << 8) + ((buffer[-4 + currentPosition] << 16 & 0xff0000) + ((buffer[-3 + currentPosition] & 0xff) << 24)) + (buffer[currentPosition + -2] & 0xff));
+        return ((0xff00 & buffer[currentPosition - 1] << 8) +
+                ((buffer[currentPosition - 4] << 16 & 0xff0000) +
+                ((buffer[currentPosition - 3] & 0xff) << 24)) +
+                (buffer[currentPosition - 2] & 0xff));
     }
 
-    public int method471(byte arg0) {
-        int i = 41 / ((78 - arg0) / 36);
+    public int getUnsignedInvertedByte() {
         return 0xff & -buffer[currentPosition++];
     }
 
-    public int method473(int arg0, int arg1) {
-        int i = Class67.method1034(true, arg1, currentPosition, buffer);
+    // ???
+    public int method473(int value) {
+        int i = Class67.method1034(true, value, currentPosition, buffer);
         putInt(127, i);
-        if(arg0 <= 14) {
-            anIntArray1972 = null;
-        }
         return i;
     }
 
-    public void method474(int arg0, int arg1) {
-        int i = -63 / ((-60 - arg1) / 61);
-        buffer[currentPosition++] = (byte) (arg0 >> 8);
-        buffer[currentPosition++] = (byte) arg0;
+    public void putShortBE(int value) {
+        buffer[currentPosition++] = (byte) (value >> 8);
+        buffer[currentPosition++] = (byte) value;
     }
 
-    public void method475(int arg0, byte[] arg1, int arg2, int arg3) {
-        if(arg3 == 8636) {
-            for(int i = arg2; arg2 + arg0 > i; i++) {
-                buffer[currentPosition++] = arg1[i];
-            }
+    public void putBytes(int arg0, byte[] arg1, int arg2) {
+        for(int i = arg2; arg2 + arg0 > i; i++) {
+            buffer[currentPosition++] = arg1[i];
         }
     }
 
-    public int method476(int arg0) {
-        if(arg0 != 255) {
-            putTri(-16, 96);
-        }
+    public int getUnsignedNegativeOffsetByte() {
         return 0xff & buffer[currentPosition++] - 128;
     }
 
-    public void putTri(int arg0, int arg1) {
-        if(arg1 != 13723) {
-            currentPosition = -49;
-        }
-        buffer[currentPosition++] = (byte) (arg0 >> 16);
-        buffer[currentPosition++] = (byte) (arg0 >> 8);
-        buffer[currentPosition++] = (byte) arg0;
+    public void putMediumBE(int value) {
+        buffer[currentPosition++] = (byte) (value >> 16);
+        buffer[currentPosition++] = (byte) (value >> 8);
+        buffer[currentPosition++] = (byte) value;
     }
 
-    public void method478(int arg0, int arg1) {
-        if(arg1 > -17) {
-            anInt1985 = -53;
-        }
-        buffer[currentPosition++] = (byte) (128 + arg0);
-        buffer[currentPosition++] = (byte) (arg0 >> 8);
+    public void putOffsetShortLE(int value) {
+        buffer[currentPosition++] = (byte) (128 + value);
+        buffer[currentPosition++] = (byte) (value >> 8);
     }
 
-    public void finishVarByte(int arg0, byte arg1) {
-        if(arg1 != 16) {
-            anIntArray1984 = null;
-        }
-        buffer[-1 + (currentPosition + -arg0)] = (byte) arg0;
+    public void finishVarByte(int value) {
+        buffer[-1 + (currentPosition + -value)] = (byte) value;
     }
 
-    public int method480(byte arg0) {
-        if(arg0 != -70) {
-            return -26;
-        }
+    public int putUnsignedPreNegativeOffsetByte() {
         return 0xff & 128 - buffer[currentPosition++];
     }
 
-    public void putLong(long arg0, boolean arg1) {
+    public void putLongBE(long arg0) {
         buffer[currentPosition++] = (byte) (int) (arg0 >> 56);
         buffer[currentPosition++] = (byte) (int) (arg0 >> 48);
         buffer[currentPosition++] = (byte) (int) (arg0 >> 40);
-        if(arg1 != false) {
-            method500(79);
-        }
         buffer[currentPosition++] = (byte) (int) (arg0 >> 32);
         buffer[currentPosition++] = (byte) (int) (arg0 >> 24);
         buffer[currentPosition++] = (byte) (int) (arg0 >> 16);
@@ -248,7 +204,7 @@ public class Buffer extends Node {
         buffer[currentPosition++] = (byte) (int) arg0;
     }
 
-    public int getSignedSmart() {
+    public int getSmart() {
         int peek = buffer[currentPosition] & 0xff;
         if(peek >= 128) {
             return -49152 + getUnsignedShortBE();
@@ -256,6 +212,7 @@ public class Buffer extends Node {
         return getUnsignedByte() + -64;
     }
 
+    // Bit usage?
     public void method483(int[] arg0, boolean arg1, int arg2, int arg3) {
         int i = (-arg3 + arg2) / 8;
         int i_3_ = currentPosition;
@@ -282,23 +239,17 @@ public class Buffer extends Node {
         currentPosition = i_3_;
     }
 
-    public int method484(byte arg0) {
+    public int getNegativeOffsetShortLE() {
         currentPosition += 2;
-        if(arg0 < 82) {
-            return -115;
-        }
-        int i = ((0xff & -128 + buffer[currentPosition + -2]) + (0xff00 & buffer[-1 + currentPosition] << 8));
+        int i = ((0xff & -128 + buffer[currentPosition - 2]) + (0xff00 & buffer[currentPosition - 1] << 8));
         if(i > 32767) {
             i -= 65536;
         }
         return i;
     }
 
-    public int method485(byte arg0) {
+    public int method485() {
         currentPosition += 4;
-        if(arg0 != -48) {
-            method502((byte) 24);
-        }
         return ((buffer[currentPosition - 3] << 8 & 0xff00) + (((0xff & buffer[-1 + currentPosition]) << 24) + (0xff0000 & buffer[-2 + currentPosition] << 16)) + (buffer[currentPosition - 4] & 0xff));
     }
 
@@ -315,7 +266,7 @@ public class Buffer extends Node {
         buffer[currentPosition++] = (byte) (arg0 >> 24);
         buffer[currentPosition++] = (byte) arg0;
         if(arg1 <= 84) {
-            method470(44);
+            getIntME();
         }
         buffer[currentPosition++] = (byte) (arg0 >> 8);
     }
@@ -363,7 +314,7 @@ public class Buffer extends Node {
         buffer[currentPosition++] = (byte) (arg0 >> 16);
         buffer[currentPosition++] = (byte) (arg0 >> 24);
         if(arg1 < 69) {
-            put(34, (byte) -50);
+            putByte(34);
         }
     }
 
@@ -386,7 +337,7 @@ public class Buffer extends Node {
             arg0[i] = buffer[currentPosition++];
         }
         if(arg3 != 45) {
-            method485((byte) -119);
+            method485();
         }
     }
 
@@ -433,7 +384,7 @@ public class Buffer extends Node {
     public int method504(boolean arg0) {
         currentPosition += 2;
         if(arg0 != false) {
-            method474(40, 44);
+            putShortBE(40);
         }
         return ((0xff & buffer[currentPosition + -2] - 128) + (0xff00 & buffer[currentPosition + -1] << 8));
     }
@@ -468,9 +419,9 @@ public class Buffer extends Node {
             aClass40_Sub5_Sub14_Sub2_1959 = null;
         }
         if((arg0 ^ 0xffffffff) <= -1 && arg0 < 128) {
-            put(arg0, (byte) -128);
+            putByte(arg0);
         } else if(arg0 >= 0 && arg0 < 32768) {
-            method474(32768 + arg0, arg1 ^ 0x807d);
+            putShortBE(32768 + arg0);
         } else {
             throw new IllegalArgumentException();
         }

@@ -125,7 +125,7 @@ public class Class40_Sub6 extends Node {
                         for(int i_16_ = i; Class42.anInt1008 > i_16_; i_16_++)
                             Class53.aLongArray1267[i_16_] = Class53.aLongArray1267[1 + i_16_];
                         Class32.packetBuffer.putPacket(11453, 28);
-                        Class32.packetBuffer.putLong(arg1, false);
+                        Class32.packetBuffer.putLongBE(arg1);
                         break;
                     }
                 }

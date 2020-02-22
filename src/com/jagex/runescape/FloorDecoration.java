@@ -66,7 +66,7 @@ public class FloorDecoration {
             int i = Cache.outgoingbuffer.getUnsignedShortBE();
             int i_0_ = Cache.outgoingbuffer.method504(false);
             int i_1_ = Cache.outgoingbuffer.getUnsignedShortBE();
-            int i_2_ = Cache.outgoingbuffer.method480((byte) -70);
+            int i_2_ = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
             int i_3_ = Cache.outgoingbuffer.getUnsignedShortBE();
             Cache.outgoingbuffer.initBitAccess(arg1 ^ 0x1625);
             for(int i_4_ = 0; (i_4_ ^ 0xffffffff) > -5; i_4_++) {
@@ -123,14 +123,14 @@ public class FloorDecoration {
         } else {
             int i = Cache.outgoingbuffer.getUnsignedShortBE();
             int i_21_ = Cache.outgoingbuffer.method490((byte) -70);
-            int i_22_ = Cache.outgoingbuffer.method461((byte) 110);
+            int i_22_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
             int i_23_ = Cache.outgoingbuffer.method504(false);
-            int i_24_ = Cache.outgoingbuffer.method471((byte) -69);
+            int i_24_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
             int i_25_ = ((Class40_Sub5_Sub12.packetsize - Cache.outgoingbuffer.currentPosition) / 16);
             Class44.anIntArrayArray1030 = new int[i_25_][4];
             for(int i_26_ = 0; (i_25_ ^ 0xffffffff) < (i_26_ ^ 0xffffffff); i_26_++) {
                 for(int i_27_ = 0; i_27_ < 4; i_27_++)
-                    Class44.anIntArrayArray1030[i_26_][i_27_] = Cache.outgoingbuffer.method470(-128);
+                    Class44.anIntArrayArray1030[i_26_][i_27_] = Cache.outgoingbuffer.getIntME();
             }
             ISAAC.anIntArray528 = new int[i_25_];
             RSString.aByteArrayArray1715 = new byte[i_25_][];
@@ -224,7 +224,7 @@ public class FloorDecoration {
                 if(i_32_ == 0)
                     objects[i_31_] = new Integer(arg1.readInt());
                 else if(i_32_ == 1)
-                    objects[i_31_] = arg1.getRSString(-10721);
+                    objects[i_31_] = arg1.getRSString();
             }
             if(arg0 != 89)
                 aClass40_Sub9_608 = null;
@@ -255,8 +255,8 @@ public class FloorDecoration {
                         break;
                     Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class51.aClass23_1194.method329(false));
                     Buffer class40_sub1 = new Buffer(4);
-                    class40_sub1.put(1, (byte) -128);
-                    class40_sub1.putTri((int) class40_sub5_sub13.key, 13723);
+                    class40_sub1.putByte(1);
+                    class40_sub1.putMediumBE((int) class40_sub5_sub13.key);
                     Class57.aClass64_1345.method1010(4, (byte) -19, 0, (class40_sub1.buffer));
                     Class37.aClass23_869.put(class40_sub5_sub13, (byte) -115, (class40_sub5_sub13.key));
                     Class68.anInt1618--;
@@ -264,8 +264,8 @@ public class FloorDecoration {
                 for(/**/; Class42.anInt1006 < 20 && HashTable.anInt554 > 0; HashTable.anInt554--) {
                     Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class19.aClass27_485.method362(-113));
                     Buffer class40_sub1 = new Buffer(4);
-                    class40_sub1.put(0, (byte) -128);
-                    class40_sub1.putTri((int) class40_sub5_sub13.key, arg0 + 13675);
+                    class40_sub1.putByte(0);
+                    class40_sub1.putMediumBE((int) class40_sub5_sub13.key);
                     Class57.aClass64_1345.method1010(4, (byte) -19, 0, (class40_sub1.buffer));
                     class40_sub5_sub13.method539(0);
                     Class34.aClass23_841.put(class40_sub5_sub13, (byte) -122, (class40_sub5_sub13.key));
@@ -377,7 +377,7 @@ public class FloorDecoration {
                             PacketBuffer.aClass40_Sub5_Sub13_2250 = class40_sub5_sub13;
                             int i_49_ = i_46_ == 0 ? 5 : 9;
                             Class40_Sub5_Sub13.aClass40_Sub1_2752 = new Buffer((PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758) + i_49_ + i_47_);
-                            Class40_Sub5_Sub13.aClass40_Sub1_2752.put(i_46_, (byte) -128);
+                            Class40_Sub5_Sub13.aClass40_Sub1_2752.putByte(i_46_);
                             Class40_Sub5_Sub13.aClass40_Sub1_2752.putInt(77, i_47_);
                             Landscape.anInt1157 = 8;
                             Class45.aClass40_Sub1_1081.currentPosition = 0;
