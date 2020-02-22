@@ -123,11 +123,11 @@ public class Class13 {
             Npc class40_sub5_sub17_sub4_sub2 = Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_1_];
             int i_2_ = Cache.outgoingbuffer.getUnsignedByte();
             if((0x1 & i_2_ ^ 0xffffffff) != -1) {
-                int i_3_ = Cache.outgoingbuffer.method476(255);
-                int i_4_ = Cache.outgoingbuffer.method480((byte) -70);
+                int i_3_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
+                int i_4_ = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
                 class40_sub5_sub17_sub4_sub2.method785(i_4_, Node.anInt926, i_3_, -121);
                 class40_sub5_sub17_sub4_sub2.anInt3139 = Node.anInt926 + 300;
-                class40_sub5_sub17_sub4_sub2.anInt3130 = Cache.outgoingbuffer.method476(255);
+                class40_sub5_sub17_sub4_sub2.anInt3130 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                 class40_sub5_sub17_sub4_sub2.anInt3101 = Cache.outgoingbuffer.getUnsignedByte();
             }
             if((0x20 & i_2_) != 0) {
@@ -143,24 +143,24 @@ public class Class13 {
                     class40_sub5_sub17_sub4_sub2.anInt3091 = -1;
             }
             if((i_2_ & 0x4 ^ 0xffffffff) != -1) {
-                class40_sub5_sub17_sub4_sub2.anInt3137 = Cache.outgoingbuffer.method461((byte) 101);
+                class40_sub5_sub17_sub4_sub2.anInt3137 = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
                 if((class40_sub5_sub17_sub4_sub2.anInt3137 ^ 0xffffffff) == -65536)
                     class40_sub5_sub17_sub4_sub2.anInt3137 = -1;
             }
             if((0x2 & i_2_) != 0) {
-                int i_6_ = Cache.outgoingbuffer.method476(255);
+                int i_6_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                 int i_7_ = Cache.outgoingbuffer.getUnsignedByte();
                 class40_sub5_sub17_sub4_sub2.method785(i_7_, Node.anInt926, i_6_, -119);
                 class40_sub5_sub17_sub4_sub2.anInt3139 = Node.anInt926 + 300;
-                class40_sub5_sub17_sub4_sub2.anInt3130 = Cache.outgoingbuffer.method480((byte) -70);
-                class40_sub5_sub17_sub4_sub2.anInt3101 = Cache.outgoingbuffer.method480((byte) -70);
+                class40_sub5_sub17_sub4_sub2.anInt3130 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
+                class40_sub5_sub17_sub4_sub2.anInt3101 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
             }
             if((0x40 & i_2_ ^ 0xffffffff) != -1) {
-                class40_sub5_sub17_sub4_sub2.aClass1_3090 = Cache.outgoingbuffer.getRSString(arg0 + -14520);
+                class40_sub5_sub17_sub4_sub2.aClass1_3090 = Cache.outgoingbuffer.getRSString();
                 class40_sub5_sub17_sub4_sub2.anInt3078 = 100;
             }
             if((i_2_ & 0x80) != 0) {
-                class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300 = Landscape.method932((byte) -122, Cache.outgoingbuffer.method461((byte) 87));
+                class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300 = Landscape.method932((byte) -122, Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE());
                 class40_sub5_sub17_sub4_sub2.anInt3083 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2389);
                 class40_sub5_sub17_sub4_sub2.anInt3113 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2391);
                 class40_sub5_sub17_sub4_sub2.anInt3075 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2418);
@@ -172,14 +172,14 @@ public class Class13 {
                 class40_sub5_sub17_sub4_sub2.anInt3079 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2406);
             }
             if((i_2_ & 0x8) != 0) {
-                class40_sub5_sub17_sub4_sub2.anInt3148 = Cache.outgoingbuffer.method461((byte) 101);
+                class40_sub5_sub17_sub4_sub2.anInt3148 = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
                 class40_sub5_sub17_sub4_sub2.anInt3100 = Cache.outgoingbuffer.method490((byte) -70);
             }
             if((0x10 & i_2_ ^ 0xffffffff) != -1) {
-                int i_8_ = Cache.outgoingbuffer.method461((byte) 80);
+                int i_8_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
                 if(i_8_ == 65535)
                     i_8_ = -1;
-                int i_9_ = Cache.outgoingbuffer.method471((byte) -102);
+                int i_9_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
                 if(i_8_ == class40_sub5_sub17_sub4_sub2.anInt3141 && i_8_ != -1) {
                     int i_10_ = Class68_Sub1.method1050(i_8_, 2).anInt2483;
                     if(i_10_ == 1) {

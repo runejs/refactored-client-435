@@ -269,9 +269,9 @@ public class Class5 {
                 if((Class66.aClass1_1550.method59(arg0 ^ ~0xc67) ^ 0xffffffff) < -1) {
                     Class32.packetBuffer.putPacket(11453, 202);
                     VertexNormal.anInt1096++;
-                    Class32.packetBuffer.putLong(Class66.aClass1_1550.method58((byte) 102), false);
-                    Class32.packetBuffer.put(-601 + i, (byte) -128);
-                    Class32.packetBuffer.put(Class67.aBoolean1601 ? 1 : 0, (byte) -128);
+                    Class32.packetBuffer.putLongBE(Class66.aClass1_1550.method58((byte) 102));
+                    Class32.packetBuffer.putByte(-601 + i);
+                    Class32.packetBuffer.putByte(Class67.aBoolean1601 ? 1 : 0);
                 }
             }
             return false;

@@ -84,7 +84,7 @@ public class Class40_Sub5_Sub9 extends SubNode {
                         CollisionMap.anInt139++;
                         ISAAC.aBoolean505 = true;
                         Class32.packetBuffer.putPacket(11453, 114);
-                        Class32.packetBuffer.putLong(arg0, false);
+                        Class32.packetBuffer.putLongBE(arg0);
                     }
                 }
             }

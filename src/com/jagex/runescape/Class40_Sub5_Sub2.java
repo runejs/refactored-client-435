@@ -127,9 +127,9 @@ public class Class40_Sub5_Sub2 extends SubNode {
             if((Class40_Sub3.anInt2032 ^ 0xffffffff) == -3) {
                 long l = (Class34.aLong853 = Class22_Sub2.username.method58((byte) 93));
                 Class32.packetBuffer.currentPosition = 0;
-                Class32.packetBuffer.put(14, (byte) -128);
+                Class32.packetBuffer.putByte(14);
                 int i = (int) (0x1fL & l >> 383714384);
-                Class32.packetBuffer.put(i, (byte) -128);
+                Class32.packetBuffer.putByte(i);
                 Class40_Sub6.aClass64_2098.method1010(2, (byte) -19, 0, (Class32.packetBuffer.buffer));
                 Class40_Sub3.anInt2032 = 3;
                 Cache.outgoingbuffer.currentPosition = 0;
@@ -166,23 +166,23 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 seeds[2] = (int) (Renderable.aLong2858 >> 357599968);
                 seeds[3] = (int) Renderable.aLong2858;
                 Class32.packetBuffer.currentPosition = 0;
-                Class32.packetBuffer.put(10, (byte) -128);
+                Class32.packetBuffer.putByte(10);
                 Class32.packetBuffer.putInt(63, seeds[0]);
                 Class32.packetBuffer.putInt(113, seeds[1]);
                 Class32.packetBuffer.putInt(113, seeds[2]);
                 Class32.packetBuffer.putInt(91, seeds[3]);
                 Class32.packetBuffer.putInt(63, ISAAC.aClass31_521.anInt722);
-                Class32.packetBuffer.putLong(Class22_Sub2.username.method58((byte) 97), false);
+                Class32.packetBuffer.putLongBE(Class22_Sub2.username.method58((byte) 97));
                 Class32.packetBuffer.method505(Class22_Sub2.password, (byte) -3);
-                Class32.packetBuffer.applyRSA(Actor.rsaModulus, PacketBuffer.rsaKey, 19280);
+                Class32.packetBuffer.applyRSA(Actor.rsaModulus, PacketBuffer.rsaKey);
                 Class61.packetBuffer.currentPosition = 0;
                 if(Class51.anInt1197 == 40)
-                    Class61.packetBuffer.put(18, (byte) -128);
+                    Class61.packetBuffer.putByte(18);
                 else
-                    Class61.packetBuffer.put(16, (byte) -128);
-                Class61.packetBuffer.put(57 + Class32.packetBuffer.currentPosition, (byte) -128);
+                    Class61.packetBuffer.putByte(16);
+                Class61.packetBuffer.putByte(57 + Class32.packetBuffer.currentPosition);
                 Class61.packetBuffer.putInt(60, 435);
-                Class61.packetBuffer.put(VertexNormal.lowMemory ? 1 : 0, (byte) -128);
+                Class61.packetBuffer.putByte(VertexNormal.lowMemory ? 1 : 0);
                 Class61.packetBuffer.putInt(85, FloorDecoration.aClass6_Sub1_605.anInt216);
                 Class61.packetBuffer.putInt(95, Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000.anInt216);
                 Class61.packetBuffer.putInt(100, (Class40_Sub5_Sub10.aClass6_Sub1_2609.anInt216));
@@ -196,7 +196,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 Class61.packetBuffer.putInt(80, RSCanvas.aClass6_Sub1_48.anInt216);
                 Class61.packetBuffer.putInt(61, VertexNormal.aClass6_Sub1_1104.anInt216);
                 Class61.packetBuffer.putInt(101, Class56.aClass6_Sub1_1323.anInt216);
-                Class61.packetBuffer.method475(Class32.packetBuffer.currentPosition, Class32.packetBuffer.buffer, 0, 8636);
+                Class61.packetBuffer.putBytes(Class32.packetBuffer.currentPosition, Class32.packetBuffer.buffer, 0);
                 Class40_Sub6.aClass64_2098.method1010(Class61.packetBuffer.currentPosition, (byte) -19, 0, Class61.packetBuffer.buffer);
                 Class32.packetBuffer.initEncryption(-1, seeds);
                 for(int i = 0; i < 4; i++)

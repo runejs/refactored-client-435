@@ -94,7 +94,7 @@ public class Instrument {
             if(i_1_ == 0)
                 break;
             oscill_vol[i_0_] = i_1_;
-            oscill_pitch_delta[i_0_] = buffer.getSignedSmart();
+            oscill_pitch_delta[i_0_] = buffer.getSmart();
             oscill_delay[i_0_] = buffer.method502((byte) -77);
         }
         delay_time = buffer.method502((byte) 118);

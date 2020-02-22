@@ -109,7 +109,7 @@ public class Class40_Sub5_Sub10 extends SubNode {
                     else
                         class40_sub5_sub1.anIntArray2262[i_0_] = class40_sub1.readInt();
                 } else
-                    class40_sub5_sub1.aClass1Array2270[i_0_] = class40_sub1.getRSString(-10721);
+                    class40_sub5_sub1.aClass1Array2270[i_0_] = class40_sub1.getRSString();
                 class40_sub5_sub1.anIntArray2272[i_0_++] = i_1_;
             }
             Class17.aClass9_449.method230(-7208, l, class40_sub5_sub1);

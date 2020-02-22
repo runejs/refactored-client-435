@@ -364,17 +364,17 @@ public class Class38_Sub1 extends Class38 {
                 if((arg11 ^ 0xffffffff) == -1) {
                     Class34.anInt838++;
                     Class32.packetBuffer.putPacket(11453, 73);
-                    Class32.packetBuffer.put(3 + (i_12_ + i_12_), (byte) -128);
+                    Class32.packetBuffer.putByte(3 + (i_12_ + i_12_));
                 }
                 if(arg11 == 1) {
                     Class32.packetBuffer.putPacket(11453, 236);
                     SubNode.anInt2096++;
-                    Class32.packetBuffer.put(14 + i_12_ + i_12_ + 3, (byte) -128);
+                    Class32.packetBuffer.putByte(14 + i_12_ + i_12_ + 3);
                 }
                 if(arg11 == 2) {
                     VertexNormal.anInt1106++;
                     Class32.packetBuffer.putPacket(11453, 89);
-                    Class32.packetBuffer.put(3 + (i_12_ + i_12_), (byte) -128);
+                    Class32.packetBuffer.putByte(3 + (i_12_ + i_12_));
                 }
                 Class32.packetBuffer.method486(14912, i_24_ + Class26.anInt635);
                 Class32.packetBuffer.method496(255, Class40_Sub5_Sub17_Sub3.aBooleanArray3056[82] ? 1 : 0);

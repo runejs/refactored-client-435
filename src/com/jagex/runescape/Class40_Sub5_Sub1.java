@@ -240,9 +240,9 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 Class52.aBoolean1221 = true;
                 Class32.packetBuffer.putPacket(11453, 32);
                 Class34.anInt821++;
-                Class32.packetBuffer.put(Class35.publicChatMode, (byte) -128);
-                Class32.packetBuffer.put(Class4.anInt185, (byte) -128);
-                Class32.packetBuffer.put(ItemDefinition.anInt2797, (byte) -128);
+                Class32.packetBuffer.putByte(Class35.publicChatMode);
+                Class32.packetBuffer.putByte(Class4.anInt185);
+                Class32.packetBuffer.putByte(ItemDefinition.anInt2797);
             }
             if(Class57.anInt1338 >= 135 && (Class57.anInt1338 ^ 0xffffffff) >= -236 && (RSString.anInt1668 ^ 0xffffffff) <= -468 && (RSString.anInt1668 ^ 0xffffffff) >= -500) {
                 Class52.aBoolean1221 = true;
@@ -250,9 +250,9 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 Cache.aBoolean330 = true;
                 Class34.anInt821++;
                 Class32.packetBuffer.putPacket(arg0 ^ ~0x2c88, 32);
-                Class32.packetBuffer.put(Class35.publicChatMode, (byte) -128);
-                Class32.packetBuffer.put(Class4.anInt185, (byte) -128);
-                Class32.packetBuffer.put(ItemDefinition.anInt2797, (byte) -128);
+                Class32.packetBuffer.putByte(Class35.publicChatMode);
+                Class32.packetBuffer.putByte(Class4.anInt185);
+                Class32.packetBuffer.putByte(ItemDefinition.anInt2797);
             }
             if((Class57.anInt1338 ^ 0xffffffff) <= -274 && Class57.anInt1338 <= 373 && RSString.anInt1668 >= 467 && RSString.anInt1668 <= 499) {
                 ItemDefinition.anInt2797 = (ItemDefinition.anInt2797 + 1) % 3;
@@ -260,9 +260,9 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 Class52.aBoolean1221 = true;
                 Class32.packetBuffer.putPacket(11453, 32);
                 Class34.anInt821++;
-                Class32.packetBuffer.put(Class35.publicChatMode, (byte) -128);
-                Class32.packetBuffer.put(Class4.anInt185, (byte) -128);
-                Class32.packetBuffer.put(ItemDefinition.anInt2797, (byte) -128);
+                Class32.packetBuffer.putByte(Class35.publicChatMode);
+                Class32.packetBuffer.putByte(Class4.anInt185);
+                Class32.packetBuffer.putByte(ItemDefinition.anInt2797);
             }
             if(Class57.anInt1338 >= 412 && Class57.anInt1338 <= 512 && (RSString.anInt1668 ^ 0xffffffff) <= -468 && (RSString.anInt1668 ^ 0xffffffff) >= -500) {
                 if(Class66.anInt1560 == -1) {

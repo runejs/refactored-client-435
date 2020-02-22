@@ -76,9 +76,9 @@ public class Class17 {
             if((Class8.aByte302 ^ 0xffffffff) != -1) {
                 try {
                     Buffer class40_sub1 = new Buffer(4);
-                    class40_sub1.put(4, (byte) -128);
-                    class40_sub1.put(Class8.aByte302, (byte) -128);
-                    class40_sub1.method474(0, -128);
+                    class40_sub1.putByte(4);
+                    class40_sub1.putByte(Class8.aByte302);
+                    class40_sub1.putShortBE(0);
                     Class57.aClass64_1345.method1010(4, (byte) -19, 0, (class40_sub1.buffer));
                 } catch(java.io.IOException ioexception) {
                     try {
@@ -129,7 +129,7 @@ public class Class17 {
                         Class53.aLongArray1267[Class42.anInt1008++] = arg1;
                         ISAAC.aBoolean505 = true;
                         Class32.packetBuffer.putPacket(arg0 + -13233, 251);
-                        Class32.packetBuffer.putLong(arg1, false);
+                        Class32.packetBuffer.putLongBE(arg1);
                     }
                 }
             }

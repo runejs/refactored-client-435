@@ -132,17 +132,17 @@ public class Class30 {
 
     public void method375(int arg0, Buffer arg1) {
 
-        arg1.put(aBoolean683 ? 1 : 0, (byte) -128);
+        arg1.putByte(aBoolean683 ? 1 : 0);
             anInt706++;
             for(int i = arg0; i < 7; i++) {
                 int i_0_ = anIntArray692[Class40_Sub5_Sub15.anIntArray2777[i]];
                 if((i_0_ ^ 0xffffffff) != -1)
-                    arg1.put(-256 + i_0_, (byte) -128);
+                    arg1.putByte(-256 + i_0_);
                 else
-                    arg1.put(-1, (byte) -128);
+                    arg1.putByte(-1);
             }
             for(int i = 0; (i ^ 0xffffffff) > -6; i++)
-                arg1.put(anIntArray713[i], (byte) -128);
+                arg1.putByte(anIntArray713[i]);
 
     }
 

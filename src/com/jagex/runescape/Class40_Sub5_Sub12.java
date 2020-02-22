@@ -323,8 +323,8 @@ public class Class40_Sub5_Sub12 extends SubNode {
         anInt2639 = arg0.getUnsignedShortBE();
         if(arg1 >= -35)
             aBoolean2723 = true;
-        anInt2649 = anInt2656 = arg0.getShortUNKNOWN();
-        anInt2743 = anInt2696 = arg0.getShortUNKNOWN();
+        anInt2649 = anInt2656 = arg0.getShortBE();
+        anInt2743 = anInt2696 = arg0.getShortBE();
         anInt2692 = arg0.getUnsignedShortBE();
         anInt2643 = arg0.getUnsignedShortBE();
         anInt2745 = arg0.getUnsignedByte();
@@ -379,15 +379,15 @@ public class Class40_Sub5_Sub12 extends SubNode {
             for(int i_5_ = 0; i_5_ < 20; i_5_++) {
                 int i_6_ = arg0.getUnsignedByte();
                 if((i_6_ ^ 0xffffffff) == -2) {
-                    anIntArray2699[i_5_] = arg0.getShortUNKNOWN();
-                    anIntArray2708[i_5_] = arg0.getShortUNKNOWN();
+                    anIntArray2699[i_5_] = arg0.getShortBE();
+                    anIntArray2708[i_5_] = arg0.getShortBE();
                     anIntArray2704[i_5_] = arg0.readInt();
                 } else
                     anIntArray2704[i_5_] = -1;
             }
             aClass1Array2698 = new RSString[5];
             for(int i_7_ = 0; i_7_ < 5; i_7_++) {
-                aClass1Array2698[i_7_] = arg0.getRSString(-10721);
+                aClass1Array2698[i_7_] = arg0.getRSString();
                 if(aClass1Array2698[i_7_].method59(-3136) == 0)
                     aClass1Array2698[i_7_] = null;
             }
@@ -402,8 +402,8 @@ public class Class40_Sub5_Sub12 extends SubNode {
             aBoolean2665 = (arg0.getUnsignedByte() ^ 0xffffffff) == -2;
         }
         if((anInt2683 ^ 0xffffffff) == -5) {
-            aClass1_2668 = arg0.getRSString(-10721);
-            aClass1_2640 = arg0.getRSString(-10721);
+            aClass1_2668 = arg0.getRSString();
+            aClass1_2640 = arg0.getRSString();
         }
         if(anInt2683 == 1 || (anInt2683 ^ 0xffffffff) == -4 || (anInt2683 ^ 0xffffffff) == -5)
             anInt2647 = arg0.readInt();
@@ -442,25 +442,25 @@ public class Class40_Sub5_Sub12 extends SubNode {
             anInt2642 = arg0.getUnsignedShortBE();
             aBoolean2665 = arg0.getUnsignedByte() == 1;
             anInt2647 = arg0.readInt();
-            anInt2749 = arg0.getShortUNKNOWN();
-            anInt2667 = arg0.getShortUNKNOWN();
+            anInt2749 = arg0.getShortBE();
+            anInt2667 = arg0.getShortBE();
             aBoolean2727 = (arg0.getUnsignedByte() ^ 0xffffffff) == -2;
             aClass1Array2698 = new RSString[5];
             for(int i_8_ = 0; i_8_ < 5; i_8_++) {
-                aClass1Array2698[i_8_] = arg0.getRSString(-10721);
+                aClass1Array2698[i_8_] = arg0.getRSString();
                 if((aClass1Array2698[i_8_].method59(-3136) ^ 0xffffffff) == -1)
                     aClass1Array2698[i_8_] = null;
             }
         }
         if((anInt2683 ^ 0xffffffff) == -9)
-            aClass1_2668 = arg0.getRSString(-10721);
+            aClass1_2668 = arg0.getRSString();
         if((anInt2714 ^ 0xffffffff) == -3 || anInt2683 == 2) {
-            aClass1_2664 = arg0.getRSString(-10721);
-            aClass1_2709 = arg0.getRSString(-10721);
+            aClass1_2664 = arg0.getRSString();
+            aClass1_2709 = arg0.getRSString();
             anInt2702 = arg0.getUnsignedShortBE();
         }
         if((anInt2714 ^ 0xffffffff) == -2 || (anInt2714 ^ 0xffffffff) == -5 || (anInt2714 ^ 0xffffffff) == -6 || (anInt2714 ^ 0xffffffff) == -7) {
-            aClass1_2676 = arg0.getRSString(-10721);
+            aClass1_2676 = arg0.getRSString();
             if((aClass1_2676.method59(-3136) ^ 0xffffffff) == -1) {
                 if((anInt2714 ^ 0xffffffff) == -2)
                     aClass1_2676 = Class39.aClass1_919;
@@ -528,12 +528,12 @@ public class Class40_Sub5_Sub12 extends SubNode {
         anInt2639 = arg1.getUnsignedShortBE();
         if(arg0 < 58)
             method642(null, -90);
-        anInt2649 = anInt2656 = arg1.getShortUNKNOWN();
+        anInt2649 = anInt2656 = arg1.getShortBE();
         anInt2638++;
-        anInt2743 = anInt2696 = arg1.getShortUNKNOWN();
+        anInt2743 = anInt2696 = arg1.getShortBE();
         anInt2692 = arg1.getUnsignedShortBE();
         if(anInt2683 == 9)
-            anInt2643 = arg1.getShortUNKNOWN();
+            anInt2643 = arg1.getShortBE();
         else
             anInt2643 = arg1.getUnsignedShortBE();
         anInt2648 = arg1.getUnsignedShortBE();
@@ -556,8 +556,8 @@ public class Class40_Sub5_Sub12 extends SubNode {
             anInt2673 = arg1.getUnsignedShortBE();
             if((anInt2673 ^ 0xffffffff) == -65536)
                 anInt2673 = -1;
-            anInt2737 = arg1.getShortUNKNOWN();
-            anInt2679 = arg1.getShortUNKNOWN();
+            anInt2737 = arg1.getShortBE();
+            anInt2679 = arg1.getShortBE();
             anInt2690 = arg1.getUnsignedShortBE();
             anInt2657 = arg1.getUnsignedShortBE();
             anInt2725 = arg1.getUnsignedShortBE();
@@ -569,7 +569,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
         }
         if(anInt2683 == 4) {
             anInt2642 = arg1.getUnsignedShortBE();
-            aClass1_2668 = arg1.getRSString(-10721);
+            aClass1_2668 = arg1.getRSString();
             anInt2732 = arg1.getUnsignedByte();
             anInt2733 = arg1.getUnsignedByte();
             anInt2715 = arg1.getUnsignedByte();
@@ -608,7 +608,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
             if(i > 0) {
                 aClass1Array2661 = new RSString[i];
                 for(int i_10_ = 0; (i_10_ ^ 0xffffffff) > (i ^ 0xffffffff); i_10_++)
-                    aClass1Array2661[i_10_] = arg1.getRSString(-10721);
+                    aClass1Array2661[i_10_] = arg1.getRSString();
             }
             anInt2738 = arg1.getUnsignedShortBE();
             if((anInt2738 ^ 0xffffffff) == -65536)

@@ -378,7 +378,7 @@ public class ItemDefinition extends SubNode {
         if(arg0 == 1)
             anInt2805 = arg2.getUnsignedShortBE();
         else if((arg0 ^ 0xffffffff) == -3)
-            name = arg2.getRSString(-10721);
+            name = arg2.getRSString();
         else if((arg0 ^ 0xffffffff) != -5) {
             if((arg0 ^ 0xffffffff) == -6)
                 anInt2844 = arg2.getUnsignedShortBE();
@@ -397,11 +397,11 @@ public class ItemDefinition extends SubNode {
                                         } else if((arg0 ^ 0xffffffff) == -27)
                                             anInt2819 = arg2.getUnsignedShortBE();
                                         else if((arg0 ^ 0xffffffff) <= -31 && ((arg0 ^ 0xffffffff) > -36)) {
-                                            groundActions[-30 + arg0] = arg2.getRSString(-10721);
+                                            groundActions[-30 + arg0] = arg2.getRSString();
                                             if(groundActions[arg0 + -30].method63(Class59.aClass1_1396, true))
                                                 groundActions[arg0 + -30] = null;
                                         } else if(arg0 >= 35 && ((arg0 ^ 0xffffffff) > -41))
-                                            options[arg0 + -35] = arg2.getRSString(-10721);
+                                            options[arg0 + -35] = arg2.getRSString();
                                         else if(arg0 != 40) {
                                             if((arg0 ^ 0xffffffff) == -79)
                                                 anInt2824 = arg2.getUnsignedShortBE();

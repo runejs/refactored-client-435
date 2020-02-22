@@ -214,12 +214,12 @@ public class NpcDefinition extends SubNode {
                     int i_7_ = arg2.getUnsignedByte();
                     if(i_7_ != 0 && i_7_ != 1 && (i_7_ ^ 0xffffffff) != -3) {
                         if(i_7_ == 3 || (i_7_ ^ 0xffffffff) == -5) {
-                            String string = new String(arg2.getRSString(-10721).method80(0));
-                            String string_8_ = new String(arg2.getRSString(-10721).method80(0));
+                            String string = new String(arg2.getRSString().method80(0));
+                            String string_8_ = new String(arg2.getRSString().method80(0));
                             int i_9_ = arg2.getUnsignedByte();
                             String[] strings = new String[i_9_];
                             for(int i_10_ = 0; i_9_ > i_10_; i_10_++)
-                                strings[i_10_] = new String(arg2.getRSString(-10721).method80(0));
+                                strings[i_10_] = new String(arg2.getRSString().method80(0));
                             byte[][] is = new byte[i_9_][];
                             if(i_7_ == 3) {
                                 for(int i_11_ = 0; ((i_11_ ^ 0xffffffff) > (i_9_ ^ 0xffffffff)); i_11_++) {
@@ -237,8 +237,8 @@ public class NpcDefinition extends SubNode {
                         }
                     } else {
                         int i_14_ = 0;
-                        String string = new String(arg2.getRSString(-10721).method80(0));
-                        String string_15_ = new String(arg2.getRSString(-10721).method80(0));
+                        String string = new String(arg2.getRSString().method80(0));
+                        String string_15_ = new String(arg2.getRSString().method80(0));
                         if((i_7_ ^ 0xffffffff) == -2)
                             i_14_ = arg2.readInt();
                         class40_sub11.anIntArray2154[i_6_] = i_7_;
@@ -356,7 +356,7 @@ public class NpcDefinition extends SubNode {
                     for(int i_1_ = 0; (i_1_ ^ 0xffffffff) > (i ^ 0xffffffff); i_1_++)
                         anIntArray2405[i_1_] = arg2.getUnsignedShortBE();
                 } else if(arg0 == 2)
-                    aClass1_2402 = arg2.getRSString(arg1 ^ ~0xae5);
+                    aClass1_2402 = arg2.getRSString();
                 else if(arg0 != 12) {
                     if((arg0 ^ 0xffffffff) == -14)
                         anInt2382 = arg2.getUnsignedShortBE();
@@ -425,7 +425,7 @@ public class NpcDefinition extends SubNode {
                                     anIntArray2375[i_4_] = arg2.getUnsignedShortBE();
                             }
                         } else {
-                            aClass1Array2376[arg0 - 30] = arg2.getRSString(-10721);
+                            aClass1Array2376[arg0 - 30] = arg2.getRSString();
                             if(aClass1Array2376[arg0 - 30].method63(Class59.aClass1_1396, true))
                                 aClass1Array2376[-30 + arg0] = null;
                         }

@@ -61,12 +61,12 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             method1049(null, (byte) 8, -14, 82);
         anInt2200++;
         if((0x100 & arg2) != 0) {
-            int i = Cache.outgoingbuffer.method480((byte) -70);
-            int i_0_ = Cache.outgoingbuffer.method476(255);
+            int i = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
+            int i_0_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
             arg0.method785(i_0_, Node.anInt926, i, -122);
             arg0.anInt3139 = 300 + Node.anInt926;
-            arg0.anInt3130 = Cache.outgoingbuffer.method480((byte) -70);
-            arg0.anInt3101 = Cache.outgoingbuffer.method476(255);
+            arg0.anInt3130 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
+            arg0.anInt3101 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
         }
         if((arg2 & 0x10 ^ 0xffffffff) != -1) {
             arg0.anInt3148 = Cache.outgoingbuffer.getUnsignedShortBE();
@@ -76,36 +76,36 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             int i = Cache.outgoingbuffer.method490((byte) -70);
             if(i == 65535)
                 i = -1;
-            int i_1_ = Cache.outgoingbuffer.method471((byte) -17);
+            int i_1_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
             NpcDefinition.method570(i, i_1_, arg0, -1);
         }
         if((arg2 & 0x4) != 0) {
-            arg0.anInt3137 = Cache.outgoingbuffer.method461((byte) 75);
+            arg0.anInt3137 = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
             if((arg0.anInt3137 ^ 0xffffffff) == -65536)
                 arg0.anInt3137 = -1;
         }
         if((0x40 & arg2) != 0) {
             int i = Cache.outgoingbuffer.getUnsignedByte();
-            int i_2_ = Cache.outgoingbuffer.method476(255);
+            int i_2_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
             arg0.method785(i_2_, Node.anInt926, i, -123);
             arg0.anInt3139 = 300 + Node.anInt926;
-            arg0.anInt3130 = Cache.outgoingbuffer.method476(255);
-            arg0.anInt3101 = Cache.outgoingbuffer.method476(255);
+            arg0.anInt3130 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
+            arg0.anInt3101 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
         }
         if((arg2 & 0x400) != 0) {
-            arg0.anInt3125 = Cache.outgoingbuffer.method480((byte) -70);
-            arg0.anInt3081 = Cache.outgoingbuffer.method480((byte) -70);
+            arg0.anInt3125 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
+            arg0.anInt3081 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
             arg0.anInt3099 = Cache.outgoingbuffer.getUnsignedByte();
             arg0.anInt3127 = Cache.outgoingbuffer.getUnsignedByte();
-            arg0.anInt3112 = (Cache.outgoingbuffer.method461((byte) 124) + Node.anInt926);
+            arg0.anInt3112 = (Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE() + Node.anInt926);
             arg0.anInt3107 = (Cache.outgoingbuffer.method504(false) + Node.anInt926);
-            arg0.anInt3073 = Cache.outgoingbuffer.method476(255);
+            arg0.anInt3073 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
             arg0.method790(0);
         }
         if((0x8 & arg2 ^ 0xffffffff) != -1) {
             int i = Cache.outgoingbuffer.getUnsignedShortBE();
-            int i_3_ = Cache.outgoingbuffer.method476(255);
-            int i_4_ = Cache.outgoingbuffer.method471((byte) 117);
+            int i_3_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
+            int i_4_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
             int i_5_ = Cache.outgoingbuffer.currentPosition;
             if(arg0.playerName != null && arg0.aClass30_3282 != null) {
                 long l = arg0.playerName.method58((byte) 101);
@@ -120,7 +120,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
                 }
                 if(!bool && Class4.anInt182 == 0) {
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
-                    Cache.outgoingbuffer.putBytes128(0, Class59.aClass40_Sub1_1385.buffer, i_4_);
+                    Cache.outgoingbuffer.putNegativeOffsetBytes(0, Class59.aClass40_Sub1_1385.buffer, i_4_);
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
                     RSString class1 = Class54.method956(124, Class59.aClass40_Sub1_1385).method53(-16315);
                     arg0.aClass1_3090 = class1.method89(false);
@@ -147,7 +147,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
         }
         if((arg2 & 0x200) != 0) {
             arg0.anInt3091 = Cache.outgoingbuffer.method490((byte) -70);
-            int i = Cache.outgoingbuffer.method470(-117);
+            int i = Cache.outgoingbuffer.getIntME();
             arg0.anInt3129 = 0;
             arg0.anInt3093 = Node.anInt926 + (i & 0xffff);
             if((arg0.anInt3091 ^ 0xffffffff) == -65536)
@@ -158,7 +158,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
                 arg0.anInt3140 = -1;
         }
         if((0x80 & arg2 ^ 0xffffffff) != -1) {
-            arg0.aClass1_3090 = Cache.outgoingbuffer.getRSString(-10721);
+            arg0.aClass1_3090 = Cache.outgoingbuffer.getRSString();
             if(arg0.aClass1_3090.method55(0, false) != 126) {
                 if(arg0 == Class40_Sub5_Sub13.localPlayer)
                     Class44.method895(99, 2, arg0.aClass1_3090, arg0.playerName);
