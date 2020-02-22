@@ -86,7 +86,7 @@ public class Class64 implements Runnable {
     public static void method1012(int arg0, int arg1) {
 
         anInt1518++;
-            if(Class68.method1043(arg0, 126)) {
+        if(Class68.method1043(arg0)) {
                 Class40_Sub5_Sub12[] class40_sub5_sub12s = Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0];
                 if(arg1 != 2)
                     method1013(true);
@@ -107,7 +107,7 @@ public class Class64 implements Runnable {
                 method1013(false);
             if((Class8.anInt301 ^ 0xffffffff) == -1 && Main.anInt1773 == 0) {
                 VertexNormal.anInt1091++;
-                Floor.method558(0, Class22_Sub2.aClass1_1876, Landscape.anInt1166, -501, Class13.anInt420, 7, Class66.aClass1_1567);
+                Floor.method558(0, Class22_Sub2.aClass1_1876, Landscape.mouseY, -501, Class13.mouseX, 7, Class66.aClass1_1567);
             }
             int i_1_ = 0;
             for(/**/; ((Model.anInt3220 ^ 0xffffffff) < (i_1_ ^ 0xffffffff)); i_1_++) {
@@ -241,10 +241,10 @@ public class Class64 implements Runnable {
 
         synchronized(GameObject.aClass62_3019) {
                 Class40_Sub5_Sub2.anInt2302 = Cache.anInt320;
-                Class13.anInt420 = Class12.anInt389;
+            Class13.mouseX = Class12.anInt389;
                 if(arg0 != -656)
                     aClass1_1524 = null;
-                Landscape.anInt1166 = Cache.anInt322;
+            Landscape.mouseY = Cache.anInt322;
             Class62.anInt1470 = Actor.anInt3143;
                 Class57.anInt1338 = Class55.anInt1295;
                 RSString.anInt1668 = Class40_Sub5_Sub11.anInt2625;

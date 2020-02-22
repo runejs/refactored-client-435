@@ -133,7 +133,7 @@ public class CollisionMap {
                         if(l == Class59.aLongArray1397[i_2_]) {
                             if(i_1_ != Class40_Sub7.anIntArray2131[i_2_]) {
                                 Class40_Sub7.anIntArray2131[i_2_] = i_1_;
-                                ISAAC.aBoolean505 = true;
+                                ISAAC.redrawTabArea = true;
                                 if((i_1_ ^ 0xffffffff) < -1)
                                     Class44.method895(127, 5, (Class40_Sub5_Sub17_Sub6.method832(124, (new RSString[]{class1, (Class42.aClass1_988)}))), Class66.aClass1_1567);
                                 if((i_1_ ^ 0xffffffff) == -1)
@@ -149,7 +149,7 @@ public class CollisionMap {
                         Class40_Sub11.aClass1Array2147[(Class40_Sub5_Sub17_Sub3.anInt3060)] = class1;
                         Class40_Sub7.anIntArray2131[(Class40_Sub5_Sub17_Sub3.anInt3060)] = i_1_;
                         Class40_Sub5_Sub17_Sub3.anInt3060++;
-                        ISAAC.aBoolean505 = true;
+                        ISAAC.redrawTabArea = true;
                     }
                     while(!bool) {
                         bool = true;
@@ -165,7 +165,7 @@ public class CollisionMap {
                                 long l_6_ = Class59.aLongArray1397[i_3_];
                                 Class59.aLongArray1397[i_3_] = Class59.aLongArray1397[i_3_ + 1];
                                 Class59.aLongArray1397[1 + i_3_] = l_6_;
-                                ISAAC.aBoolean505 = true;
+                                ISAAC.redrawTabArea = true;
                             }
                         }
                     }
@@ -196,9 +196,9 @@ public class CollisionMap {
                     if((i_8_ ^ 0xffffffff) != (Class58.varbitmasks[i_9_] ^ 0xffffffff)) {
                         Class58.varbitmasks[i_9_] = i_8_;
                         Class22.method309(-1, i_9_);
-                        ISAAC.aBoolean505 = true;
+                        ISAAC.redrawTabArea = true;
                         if((Class48.anInt1138 ^ 0xffffffff) != 0)
-                            Class52.aBoolean1221 = true;
+                            Class52.redrawChatbox = true;
                     }
                     Class57.packetid = -1;
                     return true;
@@ -212,7 +212,7 @@ public class CollisionMap {
                     return true;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -13) {
-                    ISAAC.aBoolean505 = true;
+                    ISAAC.redrawTabArea = true;
                     int i_11_ = Cache.outgoingbuffer.getIntBE();
                     Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_11_, (byte) -128);
                     if(!class40_sub5_sub12.aBoolean2636) {
@@ -296,7 +296,7 @@ public class CollisionMap {
                             if(!class1.method87(81, Node.aClass1_948))
                                 Class44.method895(72, 0, class1, Class66.aClass1_1567);
                             else {
-                                RSString class1_27_ = (class1.method68(0, class1.method60(Class43.aClass1_1027, 32)));
+                                RSString class1_27_ = (class1.substring(0, class1.method60(Class43.aClass1_1027)));
                                 long l = class1_27_.method58((byte) 121);
                                 boolean bool = false;
                                 for(int i_28_ = 0; i_28_ < Class42.anInt1008; i_28_++) {
@@ -306,12 +306,12 @@ public class CollisionMap {
                                     }
                                 }
                                 if(!bool && (Class4.anInt182 ^ 0xffffffff) == -1) {
-                                    RSString class1_29_ = (class1.method68((1 + class1.method60((Class43.aClass1_1027), 32)), -9 + class1.method59()));
+                                    RSString class1_29_ = (class1.substring((1 + class1.method60((Class43.aClass1_1027))), -9 + class1.length()));
                                     Class44.method895(122, 8, class1_29_, class1_27_);
                                 }
                             }
                         } else {
-                            RSString class1_30_ = (class1.method68(0, class1.method60(Class43.aClass1_1027, 32)));
+                            RSString class1_30_ = (class1.substring(0, class1.method60(Class43.aClass1_1027)));
                             long l = class1_30_.method58((byte) 120);
                             boolean bool = false;
                             for(int i_31_ = 0; ((Class42.anInt1008 ^ 0xffffffff) < (i_31_ ^ 0xffffffff)); i_31_++) {
@@ -324,7 +324,7 @@ public class CollisionMap {
                                 Class44.method895(120, 8, Class61.aClass1_1428, class1_30_);
                         }
                     } else {
-                        RSString class1_32_ = class1.method68(0, class1.method60((Class43.aClass1_1027), 32));
+                        RSString class1_32_ = class1.substring(0, class1.method60((Class43.aClass1_1027)));
                         long l = class1_32_.method58((byte) 98);
                         boolean bool = false;
                         for(int i_33_ = 0; i_33_ < Class42.anInt1008; i_33_++) {
@@ -349,7 +349,7 @@ public class CollisionMap {
                             i_34_ = 0;
                         if((-class40_sub5_sub12.anInt2643 + class40_sub5_sub12.anInt2720) < i_34_)
                             i_34_ = (-class40_sub5_sub12.anInt2643 + class40_sub5_sub12.anInt2720);
-                        class40_sub5_sub12.anInt2731 = i_34_;
+                        class40_sub5_sub12.scrollPosition = i_34_;
                     }
                     return true;
                 }
@@ -428,10 +428,10 @@ public class CollisionMap {
                 if(Class57.packetid == 84) {
                     int i_49_ = Cache.outgoingbuffer.getUnsignedShortBE();
                     int i_50_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
-                    if(Class43.anInt1028 != -1) {
-                        Class55.method958(Class43.anInt1028, -14222);
-                        Class52.aBoolean1221 = true;
-                        Class43.anInt1028 = -1;
+                    if(Class43.openChatboxWidgetId != -1) {
+                        Class55.method958(Class43.openChatboxWidgetId, -14222);
+                        Class52.redrawChatbox = true;
+                        Class43.openChatboxWidgetId = -1;
                     }
                     if(NpcDefinition.anInt2433 != -1) {
                         Class55.method958(NpcDefinition.anInt2433, -14222);
@@ -451,11 +451,11 @@ public class CollisionMap {
                         Class29.anInt673 = i_49_;
                     }
                     Class6_Sub1.anInt1819 = -1;
-                    if(Class40_Sub5_Sub15.anInt2780 != 0) {
-                        Class52.aBoolean1221 = true;
-                        Class40_Sub5_Sub15.anInt2780 = 0;
+                    if(Class40_Sub5_Sub15.inputType != 0) {
+                        Class52.redrawChatbox = true;
+                        Class40_Sub5_Sub15.inputType = 0;
                     }
-                    ISAAC.aBoolean505 = true;
+                    ISAAC.redrawTabArea = true;
                     IdentityKit.aBoolean2597 = true;
                     Class57.packetid = -1;
                     return true;
@@ -498,12 +498,12 @@ public class CollisionMap {
                         Class55.method958(Class29.anInt673, -14222);
                         IdentityKit.aBoolean2597 = true;
                         Class29.anInt673 = -1;
-                        ISAAC.aBoolean505 = true;
+                        ISAAC.redrawTabArea = true;
                     }
-                    if((Class43.anInt1028 ^ 0xffffffff) != 0) {
-                        Class55.method958(Class43.anInt1028, -14222);
-                        Class52.aBoolean1221 = true;
-                        Class43.anInt1028 = -1;
+                    if((Class43.openChatboxWidgetId ^ 0xffffffff) != 0) {
+                        Class55.method958(Class43.openChatboxWidgetId, -14222);
+                        Class52.redrawChatbox = true;
+                        Class43.openChatboxWidgetId = -1;
                     }
                     if((NpcDefinition.anInt2433 ^ 0xffffffff) != 0) {
                         Class55.method958(NpcDefinition.anInt2433, -14222);
@@ -519,17 +519,17 @@ public class CollisionMap {
                         Class66.anInt1560 = i_55_;
                     }
                     Class6_Sub1.anInt1819 = -1;
-                    if(Class40_Sub5_Sub15.anInt2780 != 0) {
-                        Class52.aBoolean1221 = true;
-                        Class40_Sub5_Sub15.anInt2780 = 0;
+                    if(Class40_Sub5_Sub15.inputType != 0) {
+                        Class52.redrawChatbox = true;
+                        Class40_Sub5_Sub15.inputType = 0;
                     }
                     Class64.method1012(Class66.anInt1560, 2);
                     Class57.packetid = -1;
                     return true;
                 }
                 if(Class57.packetid == 18) {
-                    if((Class5.anInt208 ^ 0xffffffff) == -13)
-                        ISAAC.aBoolean505 = true;
+                    if((Class5.currentTabId ^ 0xffffffff) == -13)
+                        ISAAC.redrawTabArea = true;
                     Class40_Sub11.anInt2158 = Cache.outgoingbuffer.getUnsignedByte();
                     Class57.packetid = -1;
                     return true;
@@ -556,7 +556,7 @@ public class CollisionMap {
                         Class48.anInt1138 = i_56_;
                     }
                     Class57.packetid = -1;
-                    Class52.aBoolean1221 = true;
+                    Class52.redrawChatbox = true;
                     return true;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -196) {
@@ -573,9 +573,9 @@ public class CollisionMap {
                         Class55.method958(Class29.anInt673, -14222);
                         Class29.anInt673 = -1;
                     }
-                    if(Class43.anInt1028 != -1) {
-                        Class55.method958(Class43.anInt1028, -14222);
-                        Class43.anInt1028 = -1;
+                    if(Class43.openChatboxWidgetId != -1) {
+                        Class55.method958(Class43.openChatboxWidgetId, -14222);
+                        Class43.openChatboxWidgetId = -1;
                     }
                     if((NpcDefinition.anInt2433 ^ 0xffffffff) != (i_58_ ^ 0xffffffff)) {
                         Class55.method958(NpcDefinition.anInt2433, -14222);
@@ -587,21 +587,21 @@ public class CollisionMap {
                         Class40_Sub5_Sub9.anInt2562 = i_57_;
                     }
                     Class6_Sub1.anInt1819 = -1;
-                    Class40_Sub5_Sub15.anInt2780 = 0;
+                    Class40_Sub5_Sub15.inputType = 0;
                     Class57.packetid = -1;
                     return true;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -181) {
                     if(Class29.anInt673 != -1) {
                         Class55.method958(Class29.anInt673, -14222);
-                        ISAAC.aBoolean505 = true;
+                        ISAAC.redrawTabArea = true;
                         IdentityKit.aBoolean2597 = true;
                         Class29.anInt673 = -1;
                     }
-                    if((Class43.anInt1028 ^ 0xffffffff) != 0) {
-                        Class55.method958(Class43.anInt1028, -14222);
-                        Class52.aBoolean1221 = true;
-                        Class43.anInt1028 = -1;
+                    if((Class43.openChatboxWidgetId ^ 0xffffffff) != 0) {
+                        Class55.method958(Class43.openChatboxWidgetId, -14222);
+                        Class52.redrawChatbox = true;
+                        Class43.openChatboxWidgetId = -1;
                     }
                     if((NpcDefinition.anInt2433 ^ 0xffffffff) != 0) {
                         Class55.method958(NpcDefinition.anInt2433, -14222);
@@ -618,9 +618,9 @@ public class CollisionMap {
                     }
                     Class57.packetid = -1;
                     Class6_Sub1.anInt1819 = -1;
-                    if(Class40_Sub5_Sub15.anInt2780 != 0) {
-                        Class52.aBoolean1221 = true;
-                        Class40_Sub5_Sub15.anInt2780 = 0;
+                    if(Class40_Sub5_Sub15.inputType != 0) {
+                        Class52.redrawChatbox = true;
+                        Class40_Sub5_Sub15.inputType = 0;
                     }
                     return true;
                 }
@@ -631,7 +631,7 @@ public class CollisionMap {
                         Class55.method958(Class29.anInt673, -14222);
                         IdentityKit.aBoolean2597 = true;
                         Class29.anInt673 = -1;
-                        ISAAC.aBoolean505 = true;
+                        ISAAC.redrawTabArea = true;
                     }
                     if(NpcDefinition.anInt2433 != -1) {
                         Class55.method958(NpcDefinition.anInt2433, -14222);
@@ -646,11 +646,11 @@ public class CollisionMap {
                         Class55.method958(Class66.anInt1560, -14222);
                         Class66.anInt1560 = -1;
                     }
-                    if(Class43.anInt1028 != i_59_) {
-                        Class55.method958(Class43.anInt1028, -14222);
-                        Class43.anInt1028 = i_59_;
+                    if(Class43.openChatboxWidgetId != i_59_) {
+                        Class55.method958(Class43.openChatboxWidgetId, -14222);
+                        Class43.openChatboxWidgetId = i_59_;
                     }
-                    Class52.aBoolean1221 = true;
+                    Class52.redrawChatbox = true;
                     Class57.packetid = -1;
                     Class6_Sub1.anInt1819 = -1;
                     return true;
@@ -680,12 +680,12 @@ public class CollisionMap {
                 }
                 if(Class57.packetid == 88) {
                     Class51.anInt1205 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-                    if(Class5.anInt208 == Class51.anInt1205) {
+                    if(Class5.currentTabId == Class51.anInt1205) {
                         if(Class51.anInt1205 != 3)
-                            Class5.anInt208 = 3;
+                            Class5.currentTabId = 3;
                         else
-                            Class5.anInt208 = 1;
-                        ISAAC.aBoolean505 = true;
+                            Class5.currentTabId = 1;
+                        ISAAC.redrawTabArea = true;
                     }
                     Class57.packetid = -1;
                     return true;
@@ -704,7 +704,7 @@ public class CollisionMap {
                     Class35.publicChatMode = Cache.outgoingbuffer.getUnsignedByte();
                     Class4.anInt185 = Cache.outgoingbuffer.getUnsignedByte();
                     ItemDefinition.anInt2797 = Cache.outgoingbuffer.getUnsignedByte();
-                    Class52.aBoolean1221 = true;
+                    Class52.redrawChatbox = true;
                     Cache.aBoolean330 = true;
                     Class57.packetid = -1;
                     return true;
@@ -727,8 +727,8 @@ public class CollisionMap {
                         Class58.varbitmasks[i_64_] = i_63_;
                         Class22.method309(-1, i_64_);
                         if((Class48.anInt1138 ^ 0xffffffff) != 0)
-                            Class52.aBoolean1221 = true;
-                        ISAAC.aBoolean505 = true;
+                            Class52.redrawChatbox = true;
+                        ISAAC.redrawTabArea = true;
                     }
                     Class57.packetid = -1;
                     return true;
@@ -749,10 +749,10 @@ public class CollisionMap {
                 if((Class57.packetid ^ 0xffffffff) == -238) {
                     int i_68_ = Cache.outgoingbuffer.getUnsignedShortBE();
                     Class42.method883((byte) 107, i_68_);
-                    if(Class43.anInt1028 != -1) {
-                        Class55.method958(Class43.anInt1028, -14222);
-                        Class43.anInt1028 = -1;
-                        Class52.aBoolean1221 = true;
+                    if(Class43.openChatboxWidgetId != -1) {
+                        Class55.method958(Class43.openChatboxWidgetId, -14222);
+                        Class43.openChatboxWidgetId = -1;
+                        Class52.redrawChatbox = true;
                     }
                     if((NpcDefinition.anInt2433 ^ 0xffffffff) != 0) {
                         Class55.method958(NpcDefinition.anInt2433, -14222);
@@ -772,13 +772,13 @@ public class CollisionMap {
                         Class29.anInt673 = i_68_;
                     }
                     IdentityKit.aBoolean2597 = true;
-                    if(Class40_Sub5_Sub15.anInt2780 != 0) {
-                        Class52.aBoolean1221 = true;
-                        Class40_Sub5_Sub15.anInt2780 = 0;
+                    if(Class40_Sub5_Sub15.inputType != 0) {
+                        Class52.redrawChatbox = true;
+                        Class40_Sub5_Sub15.inputType = 0;
                     }
                     Class6_Sub1.anInt1819 = -1;
                     Class57.packetid = -1;
-                    ISAAC.aBoolean505 = true;
+                    ISAAC.redrawTabArea = true;
                     return true;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -235) {
@@ -819,15 +819,15 @@ public class CollisionMap {
                     return true;
                 }
                 if(Class57.packetid == 6) {
-                    Class5.anInt208 = Cache.outgoingbuffer.getUnsignedByte();
+                    Class5.currentTabId = Cache.outgoingbuffer.getUnsignedByte();
                     IdentityKit.aBoolean2597 = true;
-                    ISAAC.aBoolean505 = true;
+                    ISAAC.redrawTabArea = true;
                     Class57.packetid = -1;
                     return true;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -172) {
-                    if(Class5.anInt208 == 12)
-                        ISAAC.aBoolean505 = true;
+                    if(Class5.currentTabId == 12)
+                        ISAAC.redrawTabArea = true;
                     Class52.anInt1222 = Cache.outgoingbuffer.getShortBE();
                     Class57.packetid = -1;
                     return true;
@@ -846,8 +846,8 @@ public class CollisionMap {
                         }
                     }
                     if(Class48.anInt1138 != -1)
-                        Class52.aBoolean1221 = true;
-                    ISAAC.aBoolean505 = true;
+                        Class52.redrawChatbox = true;
+                    ISAAC.redrawTabArea = true;
                     Class57.packetid = -1;
                     return true;
                 }
@@ -861,14 +861,14 @@ public class CollisionMap {
                     return true;
                 }
                 if(Class57.packetid == 132) {
-                    if((Class43.anInt1028 ^ 0xffffffff) != 0) {
-                        Class55.method958(Class43.anInt1028, -14222);
-                        Class43.anInt1028 = -1;
+                    if((Class43.openChatboxWidgetId ^ 0xffffffff) != 0) {
+                        Class55.method958(Class43.openChatboxWidgetId, -14222);
+                        Class43.openChatboxWidgetId = -1;
                     }
                     Class57.packetid = -1;
                     Class66.aClass1_1543 = Class66.aClass1_1567;
-                    Class40_Sub5_Sub15.anInt2780 = 1;
-                    Class52.aBoolean1221 = true;
+                    Class40_Sub5_Sub15.inputType = 1;
+                    Class52.redrawChatbox = true;
                     Class19.aBoolean490 = false;
                     return true;
                 }
@@ -920,14 +920,14 @@ public class CollisionMap {
                     RSString class1 = Cache.outgoingbuffer.getRSString();
                     Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_84_, (byte) -73);
                     class40_sub5_sub12.aClass1_2668 = class1;
-                    if(Class40_Sub5_Sub11.anIntArray2626[Class5.anInt208] == i_84_ >> -1297036176)
-                        ISAAC.aBoolean505 = true;
+                    if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] == i_84_ >> -1297036176)
+                        ISAAC.redrawTabArea = true;
                     Class57.packetid = -1;
                     return true;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -71) {
                     Class12.anInt380 = Cache.outgoingbuffer.getUnsignedByte();
-                    ISAAC.aBoolean505 = true;
+                    ISAAC.redrawTabArea = true;
                     Class57.packetid = -1;
                     return true;
                 }
@@ -1009,17 +1009,17 @@ public class CollisionMap {
                     int i_97_ = Cache.outgoingbuffer.getUnsignedByte();
                     if(i_96_ == 65535)
                         i_96_ = -1;
-                    if(i_96_ != Class40_Sub5_Sub11.anIntArray2626[i_97_]) {
-                        Class55.method958((Class40_Sub5_Sub11.anIntArray2626[i_97_]), -14222);
-                        Class40_Sub5_Sub11.anIntArray2626[i_97_] = i_96_;
+                    if(i_96_ != Class40_Sub5_Sub11.tabWidgetIds[i_97_]) {
+                        Class55.method958((Class40_Sub5_Sub11.tabWidgetIds[i_97_]), -14222);
+                        Class40_Sub5_Sub11.tabWidgetIds[i_97_] = i_96_;
                     }
                     IdentityKit.aBoolean2597 = true;
                     Class57.packetid = -1;
-                    ISAAC.aBoolean505 = true;
+                    ISAAC.redrawTabArea = true;
                     return true;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -35) {
-                    ISAAC.aBoolean505 = true;
+                    ISAAC.redrawTabArea = true;
                     int i_98_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                     int i_99_ = Cache.outgoingbuffer.getUnsignedByte();
                     int i_100_ = Cache.outgoingbuffer.getIntME1();
@@ -1048,7 +1048,7 @@ public class CollisionMap {
                         if(Buffer.anIntArray1984[i_105_] != Class58.varbitmasks[i_105_]) {
                             Class58.varbitmasks[i_105_] = Buffer.anIntArray1984[i_105_];
                             Class22.method309(-1, i_105_);
-                            ISAAC.aBoolean505 = true;
+                            ISAAC.redrawTabArea = true;
                         }
                     }
                     Class57.packetid = -1;
@@ -1066,7 +1066,7 @@ public class CollisionMap {
                     return true;
                 }
                 if((Class57.packetid ^ 0xffffffff) == -215) {
-                    ISAAC.aBoolean505 = true;
+                    ISAAC.redrawTabArea = true;
                     int i_107_ = Cache.outgoingbuffer.getIntBE();
                     Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_107_, (byte) -112);
                     while(Class40_Sub5_Sub12.packetsize > Cache.outgoingbuffer.currentPosition) {
@@ -1121,13 +1121,13 @@ public class CollisionMap {
                     return true;
                 }
                 if(Class57.packetid == 124) {
-                    if(Class43.anInt1028 != -1) {
-                        Class55.method958(Class43.anInt1028, -14222);
-                        Class43.anInt1028 = -1;
+                    if(Class43.openChatboxWidgetId != -1) {
+                        Class55.method958(Class43.openChatboxWidgetId, -14222);
+                        Class43.openChatboxWidgetId = -1;
                     }
-                    Class52.aBoolean1221 = true;
+                    Class52.redrawChatbox = true;
                     Class66.aClass1_1543 = Class66.aClass1_1567;
-                    Class40_Sub5_Sub15.anInt2780 = 2;
+                    Class40_Sub5_Sub15.inputType = 2;
                     Class57.packetid = -1;
                     Class19.aBoolean490 = false;
                     return true;
@@ -1135,7 +1135,7 @@ public class CollisionMap {
                 Class6.method169(("T1 - " + Class57.packetid + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + Class40_Sub5_Sub12.packetsize), (byte) -121, null);
                 Class48.method928(-7225);
             } catch(java.io.IOException ioexception) {
-                Class59.method982(2578);
+                Class59.dropClient(2578);
             } catch(Exception exception) {
                 String string = ("T2 - " + Class57.packetid + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + Class40_Sub5_Sub12.packetsize + "," + (Class40_Sub5_Sub2.anInt2307 + (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0])) + "," + ((Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]) + Class26.anInt635) + " - ");
                 for(int i = 0; (((Class40_Sub5_Sub12.packetsize ^ 0xffffffff) < (i ^ 0xffffffff)) && (i ^ 0xffffffff) > -51); i++)

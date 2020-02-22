@@ -6,78 +6,22 @@ import java.awt.*;
 import java.nio.charset.StandardCharsets;
 
 public class RSString implements Interface1 {
-    public static int anInt1655;
-    public static int anInt1656;
-    public static int anInt1657;
-    public static int anInt1658;
-    public static int anInt1659;
-    public static int anInt1660;
-    public static int anInt1661;
-    public static int anInt1662;
-    public static int anInt1663;
-    public static int anInt1664;
     public static Class68 aClass68_1665;
-    public static int anInt1666;
-    public static int anInt1667;
     public static int anInt1668 = 0;
-    public static int anInt1669;
-    public static int anInt1670;
-    public static int anInt1671;
-    public static int anInt1672;
-    public static int anInt1673;
-    public static int anInt1674;
-    public static int anInt1676;
-    public static RSString aClass1_1677;
-    public static int anInt1678;
-    public static int anInt1679;
-    public static int anInt1681;
-    public static int anInt1682;
-    public static int anInt1683;
+    public static RSString aClass1_1677 = Class58.method978("scrollbar");
     public static Cache aClass9_1684;
-    public static int anInt1685;
-    public static int anInt1686;
-    public static int anInt1687;
-    public static int anInt1688;
-    public static int anInt1689;
-    public static int anInt1690;
-    public static int anInt1693;
-    public static int anInt1694;
-    public static int anInt1695;
-    public static int anInt1697;
-    public static int anInt1698;
-    public static RSString aClass1_1699;
-    public static int anInt1700;
-    public static int anInt1701;
-    public static RSString aClass1_1702;
-    public static RSString aClass1_1703;
-    public static int anInt1704;
+    public static int anInt1690 = 0;
+    public static RSString aClass1_1699 = Class58.method978("purple:");
+    public static RSString aClass1_1702 = Class58.method978("Der Anmelde)2Server ist offline)3");
+    public static RSString aClass1_1703 = Class58.method978("Private chat");
     public static Class6 aClass6_1705;
-    public static int[] anIntArray1706;
-    public static int anInt1708;
-    public static int anInt1709;
-    public static int anInt1710;
-    public static int anInt1711;
-    public static int anInt1712;
-    public static RSString aClass1_1713;
-    public static int anInt1714;
+    public static int[] anIntArray1706 = new int[128];
+    public static int anInt1711 = 50;
+    public static RSString aClass1_1713 = Class58.method978("Diese Welt ist voll)3");
     public static byte[][] aByteArrayArray1715;
-    public static RSString aClass1_1716;
-    public static RSString aClass1_1717;
+    public static RSString aClass1_1716 = Class58.method978("chatback");
+    public static RSString aClass1_1717 = aClass1_1699;
     /*synthetic*/ public static Class aClass1718;
-    public static RSString aClass1_1691 = Class58.method978("Private chat");
-
-    static {
-        anInt1690 = 0;
-        aClass1_1677 = Class58.method978("scrollbar");
-        aClass1_1699 = Class58.method978("purple:");
-        aClass1_1703 = aClass1_1691;
-        aClass1_1702 = Class58.method978("Der Anmelde)2Server ist offline)3");
-        aClass1_1716 = Class58.method978("chatback");
-        anInt1711 = 50;
-        aClass1_1717 = aClass1_1699;
-        aClass1_1713 = Class58.method978("Diese Welt ist voll)3");
-        anIntArray1706 = new int[128];
-    }
 
     public boolean aBoolean1675 = true;
     public int length;
@@ -86,7 +30,6 @@ public class RSString implements Interface1 {
     public String str;
 
     public static void method56(int arg0, boolean arg1, byte[] arg2, int arg3) {
-        anInt1679++;
         if(arg0 == 2037 && Class5.aClass22_189 != null) {
             if(Class62.anInt1450 >= 0) {
                 Class5.aClass22_189.method303((byte) -96);
@@ -107,24 +50,19 @@ public class RSString implements Interface1 {
     }
 
     public static void method71(int arg0) {
-
         Class4.anInt182 = 0;
         int i = (((Class40_Sub5_Sub13.localPlayer.anInt3098) >> 2067257703) + Class40_Sub5_Sub2.anInt2307);
         int i_10_ = (Class26.anInt635 + ((Class40_Sub5_Sub13.localPlayer.anInt3089) >> 1064414503));
         if((i ^ 0xffffffff) <= -3054 && i <= 3156 && i_10_ >= 3056 && i_10_ <= 3136)
             Class4.anInt182 = 1;
-        anInt1698++;
         if(i >= 3072 && (i ^ 0xffffffff) >= -3119 && (i_10_ ^ 0xffffffff) <= -9493 && (i_10_ ^ 0xffffffff) >= -9536)
             Class4.anInt182 = 1;
         if((Class4.anInt182 ^ 0xffffffff) == -2 && (i ^ 0xffffffff) <= -3140 && i <= 3199 && i_10_ >= 3008 && (i_10_ ^ 0xffffffff) >= -3063)
             Class4.anInt182 = 0;
         int i_11_ = 74 / ((arg0 - 42) / 38);
-
     }
 
     public static byte[] method74(int arg0, Class6 arg1, int arg2, int arg3, int arg4) {
-
-        anInt1686++;
         if(arg3 >= -98)
             method83((byte) -1);
         long l = ((long) (arg0 + 37 * arg2 & 0xffff) + ((long) arg4 << -1686849184) + (long) (arg2 << -1491383504));
@@ -139,11 +77,9 @@ public class RSString implements Interface1 {
         if(aClass9_1684 != null)
             aClass9_1684.method230(-7208, l, new Class40_Sub5_Sub6(is));
         return is;
-
     }
 
     public static void method83(byte arg0) {
-
         aClass9_1684 = null;
         aClass1_1713 = null;
         aByteArrayArray1715 = null;
@@ -156,10 +92,8 @@ public class RSString implements Interface1 {
         aClass68_1665 = null;
         aClass1_1699 = null;
         aClass1_1716 = null;
-        aClass1_1691 = null;
         aClass1_1703 = null;
         anIntArray1706 = null;
-
     }
 
     /*synthetic*/
@@ -172,28 +106,19 @@ public class RSString implements Interface1 {
     }
 
     public RSString substring(int arg1) {
-        return method68(arg1, length);
+        return substring(arg1, length);
     }
 
     public int method51(int arg0, int arg1, byte[] arg2, int arg3) {
         Class18.method278(chars, arg0, arg2, arg3, arg1 - arg0);
-        anInt1674++;
         return -arg0 + arg1;
-
     }
 
-    public int method52(byte arg0) {
-
-        anInt1695++;
-        if(arg0 != -34)
-            aClass1_1691 = null;
+    public int method52() {
         return method88(false, 10);
-
     }
 
     public RSString method53(int arg0) {
-
-        anInt1662++;
         RSString class1 = new RSString();
         class1.length = length;
         class1.chars = new byte[length];
@@ -216,7 +141,6 @@ public class RSString implements Interface1 {
                 bool = true;
         }
         return class1;
-
     }
 
     public boolean equals(RSString str) {
@@ -226,12 +150,12 @@ public class RSString implements Interface1 {
             return false;
         if(!aBoolean1675 || !str.aBoolean1675) {
             if((anInt1696 ^ 0xffffffff) == -1) {
-                anInt1696 = method76((byte) 41);
+                anInt1696 = method76();
                 if((anInt1696 ^ 0xffffffff) == -1)
                     anInt1696 = 1;
             }
             if((str.anInt1696 ^ 0xffffffff) == -1) {
-                str.anInt1696 = str.method76((byte) 41);
+                str.anInt1696 = str.method76();
                 if(str.anInt1696 == 0)
                     str.anInt1696 = 1;
             }
@@ -246,26 +170,18 @@ public class RSString implements Interface1 {
     }
 
     public int method55(int arg0, boolean arg1) {
-
-        anInt1667++;
         if(arg1 != false)
             method80(-9);
         return 0xff & chars[arg0];
-
     }
 
     public int method57(byte arg0, int arg1) {
-
-        anInt1700++;
         if(arg0 != -5)
             return -56;
         return method64(0, arg1, true);
-
     }
 
     public long method58(byte arg0) {
-
-        anInt1678++;
         long l = 0L;
         for(int i = 0; i < length; i++) {
             if((i ^ 0xffffffff) <= -13)
@@ -285,27 +201,18 @@ public class RSString implements Interface1 {
         if(arg0 < 88)
             method89(true);
         return l;
-
     }
 
-    public int method59() {
-        anInt1693++;
+    public int length() {
         return length;
     }
 
-    public int method60(RSString arg0, int arg1) {
-
-        if(arg1 != 32)
-            return 110;
-        anInt1657++;
+    public int method60(RSString arg0) {
         return method81(arg0, 0, true);
-
     }
 
     public RSString method61(boolean arg0) {
-
         RSString class1 = new RSString();
-        anInt1710++;
         class1.length = length;
         class1.chars = new byte[length];
         int i = 0;
@@ -314,15 +221,12 @@ public class RSString implements Interface1 {
         for(/**/; i < length; i++)
             class1.chars[i] = (byte) 42;
         return class1;
-
     }
 
     public RSString method62(int arg0) {
-
-        anInt1676++;
         RSString class1 = new RSString();
         if(arg0 != 57)
-            startsWith((byte) 100, null);
+            startsWith(null);
         class1.length = 0;
         int i = 0;
         class1.chars = new byte[12];
@@ -339,12 +243,9 @@ public class RSString implements Interface1 {
                 break;
         }
         return class1;
-
     }
 
     public boolean equalsIgnoreCase(RSString arg0, boolean arg1) {
-
-        anInt1712++;
         if(arg1 != true)
             aClass1_1713 = null;
         if(arg0 == null)
@@ -362,12 +263,9 @@ public class RSString implements Interface1 {
                 return false;
         }
         return true;
-
     }
 
     public int method64(int arg0, int arg1, boolean arg2) {
-
-        anInt1689++;
         byte i = (byte) arg1;
         for(int i_5_ = arg0; i_5_ < length; i_5_++) {
             if((i ^ 0xffffffff) == (chars[i_5_] ^ 0xffffffff))
@@ -376,19 +274,16 @@ public class RSString implements Interface1 {
         if(arg2 != true)
             aClass1_1703 = null;
         return -1;
-
     }
 
     public void method65(int arg1, int arg2, Graphics arg3) {
         String string;
         string = new String(chars, 0, length, StandardCharsets.ISO_8859_1);
-        anInt1660++;
         arg3.drawString(string, arg1, arg2);
     }
 
     public RSString method66() {
         long l = method86(1544463557);
-        anInt1681++;
         synchronized(aClass1718 != null ? aClass1718 : (aClass1718 = method90("com.jagex.runescape.RSString"))) {
             if(Class34.aClass23_805 != null) {
                 for(Class40_Sub7 class40_sub7 = ((Class40_Sub7) Class34.aClass23_805.method331(l, 6120)); class40_sub7 != null; class40_sub7 = (Class40_Sub7) Class34.aClass23_805.method333()) {
@@ -403,24 +298,18 @@ public class RSString implements Interface1 {
             Class34.aClass23_805.put(class40_sub7, (byte) -117, l);
         }
         return this;
-
     }
 
     public int hashCode() {
-
-        anInt1669++;
-        return method76((byte) 41);
-
+        return method76();
     }
 
     public boolean method67(int arg0, int arg1) {
-
         if((arg1 ^ 0xffffffff) > -2 || arg1 > 36)
             arg1 = 10;
         if(arg0 != 90)
             method64(112, 37, true);
         boolean bool = false;
-        anInt1704++;
         boolean bool_6_ = false;
         int i = 0;
         for(int i_7_ = 0; length > i_7_; i_7_++) {
@@ -454,10 +343,9 @@ public class RSString implements Interface1 {
             bool_6_ = true;
         }
         return bool_6_;
-
     }
 
-    public RSString method68(int arg1, int arg2) {
+    public RSString substring(int arg1, int arg2) {
         RSString class1 = new RSString();
         class1.chars = new byte[-arg1 + arg2];
         class1.length = -arg1 + arg2;
@@ -466,8 +354,6 @@ public class RSString implements Interface1 {
     }
 
     public RSString method69(RSString arg0, int arg1, int arg2) {
-
-        anInt1663++;
         if(!aBoolean1675)
             throw new IllegalArgumentException();
         if(arg1 != 16039)
@@ -488,12 +374,9 @@ public class RSString implements Interface1 {
         if(length < arg2 + arg0.length)
             length = arg0.length + arg2;
         return this;
-
     }
 
     public RSString method70(int arg0, int arg1) {
-
-        anInt1701++;
         if(arg0 <= arg1 || arg0 > 255)
             throw new IllegalArgumentException("invalid char");
         RSString class1 = new RSString();
@@ -502,19 +385,9 @@ public class RSString implements Interface1 {
         Class18.method278(chars, 0, class1.chars, 0, length);
         class1.chars[length] = (byte) arg0;
         return class1;
-
-    }
-
-    public boolean equals(Object arg0) {
-
-        anInt1666++;
-        throw new RuntimeException();
-
     }
 
     public RSString method72(RSString arg0, byte arg1) {
-
-        anInt1685++;
         if(!aBoolean1675)
             throw new IllegalArgumentException();
         anInt1696 = 0;
@@ -532,50 +405,32 @@ public class RSString implements Interface1 {
         if(arg1 != -87)
             return null;
         return this;
-
     }
 
-    public int method73(int arg0, FontMetrics arg1) {
-
+    public int method73(FontMetrics arg1) {
         String string;
         string = new String(chars, 0, length, StandardCharsets.ISO_8859_1);
-        if(arg0 > -6)
-            return 68;
-        anInt1664++;
         return arg1.stringWidth(string);
-
     }
 
-    public boolean startsWith(byte arg0, RSString arg1) {
-
-        anInt1709++;
-        if(arg1.length > length)
+    public boolean startsWith(RSString string) {
+        if(string.length > length)
             return false;
-        if(arg0 != 116)
-            return false;
-        for(int i = 0; arg1.length > i; i++) {
-            if((chars[i] ^ 0xffffffff) != (arg1.chars[i] ^ 0xffffffff))
+        for(int i = 0; string.length > i; i++) {
+            if(chars[i] != string.chars[i])
                 return false;
         }
         return true;
-
     }
 
-    public int method76(byte arg0) {
-
-        if(arg0 != 41)
-            aClass6_1705 = null;
-        anInt1671++;
+    public int method76() {
         int i = 0;
         for(int i_12_ = 0; length > i_12_; i_12_++)
             i = (0xff & chars[i_12_]) + -i + (i << -361727451);
         return i;
-
     }
 
     public RSString method77(byte arg0) {
-
-        anInt1708++;
         if(!aBoolean1675)
             throw new IllegalArgumentException();
         anInt1696 = 0;
@@ -586,12 +441,9 @@ public class RSString implements Interface1 {
             chars = is;
         }
         return this;
-
     }
 
     public RSString method78(int arg0, int arg1) {
-
-        anInt1714++;
         if((arg1 ^ 0xffffffff) >= -1 || arg1 > 255)
             throw new IllegalArgumentException("invalid char");
         if(!aBoolean1675)
@@ -610,12 +462,9 @@ public class RSString implements Interface1 {
         if(arg0 > -21)
             return null;
         return this;
-
     }
 
-    public RSString method79(int arg0) {
-
-        anInt1661++;
+    public RSString method79() {
         RSString class1 = new RSString();
         class1.length = length;
         class1.chars = new byte[length];
@@ -625,33 +474,23 @@ public class RSString implements Interface1 {
                 i_13_ += 32;
             class1.chars[i] = i_13_;
         }
-        if(arg0 >= -127)
-            aClass1_1691 = null;
         return class1;
-
     }
 
     public byte[] method80(int arg0) {
-
         if(arg0 != 0)
             method69(null, -108, -121);
         byte[] is = new byte[length];
         Class18.method278(chars, 0, is, 0, length);
-        anInt1688++;
         return is;
-
     }
 
     public int method81(RSString arg0, int arg1, boolean arg2) {
-
-        anInt1682++;
         int[] is = new int[arg0.length];
         int[] is_14_ = new int[arg0.length];
         int[] is_15_ = new int[256];
         for(int i = 0; (i ^ 0xffffffff) > (is_15_.length ^ 0xffffffff); i++)
             is_15_[i] = arg0.length;
-        if(arg2 != true)
-            aClass1_1691 = null;
         for(int i = 1; i <= arg0.length; i++) {
             is[-1 + i] = (arg0.length << 828194177) - i;
             is_15_[Class66.method1021(arg0.chars[-1 + i], 255)] = arg0.length - i;
@@ -693,33 +532,24 @@ public class RSString implements Interface1 {
                 return 1 + i_23_;
         }
         return -1;
-
     }
 
     public boolean method82(int arg0) {
-
         if(arg0 < 101)
             anInt1668 = 12;
-        anInt1697++;
         return method67(90, 10);
-
     }
 
     public String toString() {
-
-        anInt1672++;
-        throw new RuntimeException();
-
+        return this.str;
     }
 
     public int method84(RSString arg0, byte arg1) {
-
         int i;
         if(arg0.length >= length)
             i = length;
         else
             i = arg0.length;
-        anInt1687++;
         for(int i_24_ = 0; (i ^ 0xffffffff) < (i_24_ ^ 0xffffffff); i_24_++) {
             if((arg0.chars[i_24_] ^ 0xffffffff) < (chars[i_24_] ^ 0xffffffff))
                 return -1;
@@ -733,12 +563,9 @@ public class RSString implements Interface1 {
         if(length > arg0.length)
             return 1;
         return 0;
-
     }
 
     public RSString method85(int arg0) {
-
-        anInt1656++;
         boolean bool = true;
         RSString class1 = new RSString();
         class1.length = length;
@@ -759,24 +586,18 @@ public class RSString implements Interface1 {
             }
         }
         return class1;
-
     }
 
     public long method86(int arg0) {
-
-        anInt1694++;
         long l = 0L;
         if(arg0 != 1544463557)
             aByteArrayArray1715 = null;
         for(int i = 0; length > i; i++)
             l = -l + (l << 1544463557) + (long) (0xff & chars[i]);
         return l;
-
     }
 
     public boolean method87(int arg0, RSString arg1) {
-
-        anInt1655++;
         if(length < arg1.length)
             return false;
         if(arg0 <= 62)
@@ -787,15 +608,12 @@ public class RSString implements Interface1 {
                 return false;
         }
         return true;
-
     }
 
     public int method88(boolean arg0, int arg1) {
-
         if((arg1 ^ 0xffffffff) > -2 || arg1 > 36)
             arg1 = 10;
         boolean bool = false;
-        anInt1670++;
         boolean bool_27_ = arg0;
         int i = 0;
         for(int i_28_ = 0; i_28_ < length; i_28_++) {
@@ -830,21 +648,18 @@ public class RSString implements Interface1 {
         if(!bool)
             throw new NumberFormatException();
         return i;
-
     }
 
     public RSString method89(boolean arg0) {
-
-        anInt1659++;
         int i = 0;
         int i_31_ = length;
-        for(/**/; (length > i && (chars[i] >= 0 && chars[i] <= 32 || (0xff & chars[i]) == 160)); i++) {
-            /* empty */
+        while((length > i && (chars[i] >= 0 && chars[i] <= 32 || (0xff & chars[i]) == 160))) {
+            i++;
         }
         if(arg0 != false)
             aClass1_1717 = null;
-        for(/**/; ((i_31_ ^ 0xffffffff) < (i ^ 0xffffffff) && ((chars[i_31_ + -1] >= 0 && chars[-1 + i_31_] <= 32) || (chars[i_31_ + -1] & 0xff ^ 0xffffffff) == -161)); i_31_--) {
-            /* empty */
+        while(((i_31_ ^ 0xffffffff) < (i ^ 0xffffffff) && ((chars[i_31_ + -1] >= 0 && chars[-1 + i_31_] <= 32) || (chars[i_31_ + -1] & 0xff ^ 0xffffffff) == -161))) {
+            i_31_--;
         }
         if(i == 0 && (i_31_ ^ 0xffffffff) == (length ^ 0xffffffff))
             return this;
@@ -854,6 +669,5 @@ public class RSString implements Interface1 {
         for(int i_32_ = 0; (class1.length ^ 0xffffffff) < (i_32_ ^ 0xffffffff); i_32_++)
             class1.chars[i_32_] = chars[i + i_32_];
         return class1;
-
     }
 }

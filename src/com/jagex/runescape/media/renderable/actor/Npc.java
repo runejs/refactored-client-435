@@ -70,7 +70,7 @@ public class Npc extends Actor {
             Class32.anInt771--;
         if(Class37.aBoolean871) {
             Class37.aBoolean871 = false;
-            Class59.method982(2578);
+            Class59.dropClient(2578);
         } else {
             for(int i = 0; (i ^ 0xffffffff) > -101; i++) {
                 if(!CollisionMap.parsePackets(false))
@@ -206,7 +206,7 @@ public class Npc extends Actor {
                     Class4.method161(128);
                     Class35.anInt1728++;
                     if(Class35.anInt1728 > 750)
-                        Class59.method982(2578);
+                        Class59.dropClient(2578);
                     else {
                         Class17.method276(-1);
                         Class8.method209(69);
@@ -216,27 +216,27 @@ public class Npc extends Actor {
                             if((Floor.anInt2319 ^ 0xffffffff) <= -401)
                                 Class45.anInt1075 = 0;
                         }
-                        if(Class40_Sub5_Sub17_Sub1.anInt2999 != 0) {
+                        if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType != 0) {
                             RSRuntimeException.anInt1651++;
                             if((RSRuntimeException.anInt1651 ^ 0xffffffff) <= -16) {
-                                if(Class40_Sub5_Sub17_Sub1.anInt2999 == 2)
-                                    ISAAC.aBoolean505 = true;
-                                if(Class40_Sub5_Sub17_Sub1.anInt2999 == 3)
-                                    Class52.aBoolean1221 = true;
-                                Class40_Sub5_Sub17_Sub1.anInt2999 = 0;
+                                if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 2)
+                                    ISAAC.redrawTabArea = true;
+                                if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 3)
+                                    Class52.redrawChatbox = true;
+                                Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 0;
                             }
                         }
                         Class5.anInt199++;
-                        if((SceneTile.anInt2049 ^ 0xffffffff) != -1) {
+                        if((SceneTile.activeInterfaceType ^ 0xffffffff) != -1) {
                             Buffer.anInt1978++;
-                            if(((Class13.anInt420 ^ 0xffffffff) < (Renderable.anInt2869 + 5 ^ 0xffffffff)) || ((Renderable.anInt2869 + -5 ^ 0xffffffff) < (Class13.anInt420 ^ 0xffffffff)) || ((ItemDefinition.anInt2798 + 5 ^ 0xffffffff) > (Landscape.anInt1166 ^ 0xffffffff)) || (ItemDefinition.anInt2798 - 5 > Landscape.anInt1166))
+                            if(((Class13.mouseX ^ 0xffffffff) < (Renderable.anInt2869 + 5 ^ 0xffffffff)) || ((Renderable.anInt2869 + -5 ^ 0xffffffff) < (Class13.mouseX ^ 0xffffffff)) || ((ItemDefinition.anInt2798 + 5 ^ 0xffffffff) > (Landscape.mouseY ^ 0xffffffff)) || (ItemDefinition.anInt2798 - 5 > Landscape.mouseY))
                                 Class40_Sub5_Sub15.aBoolean2784 = true;
                             if((Class40_Sub5_Sub2.anInt2302 ^ 0xffffffff) == -1) {
-                                if((SceneTile.anInt2049 ^ 0xffffffff) == -4)
-                                    Class52.aBoolean1221 = true;
-                                if((SceneTile.anInt2049 ^ 0xffffffff) == -3)
-                                    ISAAC.aBoolean505 = true;
-                                SceneTile.anInt2049 = 0;
+                                if((SceneTile.activeInterfaceType ^ 0xffffffff) == -4)
+                                    Class52.redrawChatbox = true;
+                                if((SceneTile.activeInterfaceType ^ 0xffffffff) == -3)
+                                    ISAAC.redrawTabArea = true;
+                                SceneTile.activeInterfaceType = 0;
                                 if(!Class40_Sub5_Sub15.aBoolean2784 || Buffer.anInt1978 < 5) {
                                     if(((Class68.anInt1630 ^ 0xffffffff) == -2 || (Class33.method409((byte) 63, (NpcDefinition.anInt2394 - 1)))) && NpcDefinition.anInt2394 > 2)
                                         Class60.method990(11451);
@@ -304,7 +304,7 @@ public class Npc extends Actor {
                         }
                         if((Class62.anInt1470 ^ 0xffffffff) == -2 && RSApplet.aClass1_8 != null) {
                             Class62.anInt1470 = 0;
-                            Class52.aBoolean1221 = true;
+                            Class52.redrawChatbox = true;
                             RSApplet.aClass1_8 = null;
                         }
                         Class62.method1002(-77);
@@ -319,22 +319,22 @@ public class Npc extends Actor {
                         if(Class66.anInt1560 != -1)
                             Class27.method360((byte) 125, 516, i, 338, Class66.anInt1560, 4, 4);
                         if(Class29.anInt673 == -1) {
-                            if(((Class40_Sub5_Sub11.anIntArray2626[Class5.anInt208]) ^ 0xffffffff) != 0)
-                                Class27.method360((byte) 125, 743, i, 466, (Class40_Sub5_Sub11.anIntArray2626[Class5.anInt208]), 205, 553);
+                            if(((Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]) ^ 0xffffffff) != 0)
+                                Class27.method360((byte) 125, 743, i, 466, (Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]), 205, 553);
                         } else
                             Class27.method360((byte) 125, 743, i, 466, Class29.anInt673, 205, 553);
-                        if((Class43.anInt1028 ^ 0xffffffff) != 0)
-                            Class27.method360((byte) 125, 496, i, 453, Class43.anInt1028, 357, 17);
+                        if((Class43.openChatboxWidgetId ^ 0xffffffff) != 0)
+                            Class27.method360((byte) 125, 496, i, 453, Class43.openChatboxWidgetId, 357, 17);
                         else if((Class48.anInt1138 ^ 0xffffffff) != 0)
                             Class27.method360((byte) 125, 496, i, 453, Class48.anInt1138, 357, 17);
                         if((Class66.anInt1560 ^ 0xffffffff) != 0)
                             Class27.method360((byte) 125, 516, i ^ 0xffffffff, 338, Class66.anInt1560, 4, 4);
                         if(Class29.anInt673 != -1)
                             Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, Class29.anInt673, 205, 553);
-                        else if((Class40_Sub5_Sub11.anIntArray2626[Class5.anInt208]) != -1)
-                            Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, (Class40_Sub5_Sub11.anIntArray2626[Class5.anInt208]), 205, 553);
-                        if(Class43.anInt1028 != -1)
-                            Class27.method360((byte) 125, 496, i ^ 0xffffffff, 453, Class43.anInt1028, 357, 17);
+                        else if((Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]) != -1)
+                            Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, (Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]), 205, 553);
+                        if(Class43.openChatboxWidgetId != -1)
+                            Class27.method360((byte) 125, 496, i ^ 0xffffffff, 453, Class43.openChatboxWidgetId, 357, 17);
                         else if(Class48.anInt1138 != -1)
                             Class27.method360((byte) 125, 496, i ^ 0xffffffff, 453, Class48.anInt1138, 357, 17);
                         if((Class67.anInt1586 ^ 0xffffffff) != 0 || (FloorDecoration.anInt614 ^ 0xffffffff) != 0 || HashTable.anInt573 != -1) {
@@ -342,9 +342,9 @@ public class Npc extends Actor {
                                 Class53.anInt1257++;
                                 if(RSString.anInt1711 == Class53.anInt1257) {
                                     if(Class67.anInt1586 != -1)
-                                        Class52.aBoolean1221 = true;
+                                        Class52.redrawChatbox = true;
                                     if(FloorDecoration.anInt614 != -1)
-                                        ISAAC.aBoolean505 = true;
+                                        ISAAC.redrawTabArea = true;
                                 }
                             }
                         } else if((Class53.anInt1257 ^ 0xffffffff) < -1)
@@ -358,7 +358,6 @@ public class Npc extends Actor {
                         int i_20_ = Class32.method400(-1);
                         int i_21_ = Class17.method274(true);
                         if(i_20_ > 4500 && i_21_ > 4500) {
-                            RSString.anInt1673++;
                             Class32.anInt771 = 250;
                             Class40_Sub5_Sub13.method650(true, 4000);
                             Class32.packetBuffer.putPacket(11453, 216);
@@ -418,7 +417,7 @@ public class Npc extends Actor {
                                 Class22.anInt537 = 0;
                                 Class32.packetBuffer.currentPosition = 0;
                             } catch(java.io.IOException ioexception) {
-                                Class59.method982(2578);
+                                Class59.dropClient(2578);
                                 break;
                             }
                             break;

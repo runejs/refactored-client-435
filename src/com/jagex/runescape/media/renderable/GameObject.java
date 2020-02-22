@@ -197,7 +197,7 @@ public class GameObject extends Renderable {
                     graphics_13_.fillRect(2 + (3 * arg0), 2, 300 - 3 * arg0, 30);
                     graphics_13_.setFont(Class17.aFont461);
                     graphics_13_.setColor(Color.white);
-                    rsString.method65(((304 + -rsString.method73(-48, Class8.aFontMetrics295)) / 2), 22, graphics_13_);
+                    rsString.method65(((304 + -rsString.method73(Class8.aFontMetrics295)) / 2), 22, graphics_13_);
                     graphics.drawImage(Class26.anImage624, -152 + Class12.width / 2, -18 + IdentityKit.height / 2, null);
                 } catch(Exception exception) {
                     int i = -152 + Class12.width / 2;
@@ -210,7 +210,7 @@ public class GameObject extends Renderable {
                     graphics.fillRect(arg0 * 3 + 2 + i, 2 + i_14_, 300 + -(3 * arg0), 30);
                     graphics.setFont(Class17.aFont461);
                     graphics.setColor(Color.white);
-                    rsString.method65((-rsString.method73(-46, Class8.aFontMetrics295) + 304) / 2 + i, 22 + i_14_, graphics);
+                    rsString.method65((-rsString.method73(Class8.aFontMetrics295) + 304) / 2 + i, 22 + i_14_, graphics);
                 }
             } catch(Exception exception) {
                 Class62.aCanvas1469.repaint();
@@ -221,8 +221,8 @@ public class GameObject extends Renderable {
     public static void method773(byte arg0, RSString arg1) {
 
         anInt3017++;
-        if(arg1 == null || arg1.method59() == 0)
-                VertexNormal.anInt1110 = 0;
+        if(arg1 == null || arg1.length() == 0)
+            VertexNormal.itemSearchResultCount = 0;
             else {
                 RSString class1 = arg1;
                 RSString[] class1s = new RSString[100];
@@ -233,30 +233,30 @@ public class GameObject extends Renderable {
                     int i_15_ = class1.method57((byte) -5, 32);
                     if(i_15_ == -1) {
                         class1 = class1.method89(false);
-                        if((class1.method59() ^ 0xffffffff) < -1)
-                            class1s[i++] = class1.method79(RSApplet.method27(arg0, 32));
+                        if((class1.length() ^ 0xffffffff) < -1)
+                            class1s[i++] = class1.method79();
                         break;
                     }
-                    RSString class1_16_ = class1.method68(0, i_15_).method89(false);
-                    if((class1_16_.method59() ^ 0xffffffff) < -1)
-                        class1s[i++] = class1_16_.method79(arg0 + -32);
+                    RSString class1_16_ = class1.substring(0, i_15_).method89(false);
+                    if((class1_16_.length() ^ 0xffffffff) < -1)
+                        class1s[i++] = class1_16_.method79();
                     class1 = class1.substring(1 + i_15_);
                 }
-                VertexNormal.anInt1110 = 0;
+            VertexNormal.itemSearchResultCount = 0;
                 int i_17_ = 0;
                 while_12_:
                 for(/**/; Class27.anInt661 > i_17_; i_17_++) {
                     ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_17_, 10);
                     if((class40_sub5_sub16.noteTemplateId ^ 0xffffffff) == 0 && class40_sub5_sub16.name != null) {
-                        RSString class1_18_ = class40_sub5_sub16.name.method79(arg0 + -32);
+                        RSString class1_18_ = class40_sub5_sub16.name.method79();
                         for(int i_19_ = 0; i_19_ < i; i_19_++) {
-                            if(class1_18_.method60(class1s[i_19_], 32) == -1)
+                            if(class1_18_.method60(class1s[i_19_]) == -1)
                                 continue while_12_;
                         }
-                        Class22_Sub1.aClass1Array1844[VertexNormal.anInt1110] = class1_18_;
-                        Class5.anIntArray191[VertexNormal.anInt1110] = i_17_;
-                        VertexNormal.anInt1110++;
-                        if((VertexNormal.anInt1110 ^ 0xffffffff) <= (Class22_Sub1.aClass1Array1844.length ^ 0xffffffff))
+                        Class22_Sub1.aClass1Array1844[VertexNormal.itemSearchResultCount] = class1_18_;
+                        Class5.anIntArray191[VertexNormal.itemSearchResultCount] = i_17_;
+                        VertexNormal.itemSearchResultCount++;
+                        if((VertexNormal.itemSearchResultCount ^ 0xffffffff) <= (Class22_Sub1.aClass1Array1844.length ^ 0xffffffff))
                             break;
                     }
                 }

@@ -123,7 +123,7 @@ public class Class40_Sub6 extends Node {
             if((arg1 ^ 0xffffffffffffffffL) != -1L) {
                 for(int i = arg0; i < Class42.anInt1008; i++) {
                     if(Class53.aLongArray1267[i] == arg1) {
-                        ISAAC.aBoolean505 = true;
+                        ISAAC.redrawTabArea = true;
                         Class42.anInt1008--;
                         for(int i_16_ = i; Class42.anInt1008 > i_16_; i_16_++)
                             Class53.aLongArray1267[i_16_] = Class53.aLongArray1267[1 + i_16_];

@@ -213,7 +213,7 @@ public class Class40_Sub13 extends Node {
                 i = arg1.anInt2648 >> -1744237840;
             else
                 i = arg1.anInt2689 >> -462467952;
-            if(!Class68.method1043(i, 126))
+        if(!Class68.method1043(i))
                 return null;
             if(arg0 != -1598852880)
                 method876(44, -123, -88, 35);

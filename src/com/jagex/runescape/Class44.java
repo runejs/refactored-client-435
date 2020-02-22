@@ -45,8 +45,8 @@ public class Class44 implements Runnable {
     public static void method895(int arg0, int arg1, RSString arg2, RSString arg3) {
 
         anInt1029++;
-            if(Class43.anInt1028 == -1)
-                Class52.aBoolean1221 = true;
+        if(Class43.openChatboxWidgetId == -1)
+            Class52.redrawChatbox = true;
             if(arg1 == 0 && (Class48.anInt1138 ^ 0xffffffff) != 0) {
                 Class62.anInt1470 = 0;
                 RSApplet.aClass1_8 = arg2;

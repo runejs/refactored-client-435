@@ -4,7 +4,7 @@ public class Class12 {
     public static int anInt380;
     public static RSString aClass1_381;
     public static RSString aClass1_382 = Class58.method978("Benutzeroberfl-=che geladen)3");
-    public static Class40_Sub5_Sub12 aClass40_Sub5_Sub12_383;
+    public static Class40_Sub5_Sub12 chatboxInterface;
     public static RSString aClass1_384;
     public static RSString aClass1_385;
     public static RSString aClass1_386;
@@ -46,7 +46,7 @@ public class Class12 {
             aClass1_391 = null;
             aClass1_386 = null;
             aClass15_394 = null;
-            aClass40_Sub5_Sub12_383 = null;
+        chatboxInterface = null;
             aClass1_382 = null;
             aClass1_398 = null;
             aClass1_385 = null;

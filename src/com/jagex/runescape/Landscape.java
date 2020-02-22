@@ -25,7 +25,7 @@ public class Landscape {
     public static RSString aClass1_1163;
     public static int anInt1164;
     public static int anInt1165;
-    public static int anInt1166 = 0;
+    public static int mouseY = 0;
     public static CollisionMap[] aCollisionMapArray1167;
     public static int[] anIntArray1168;
     public static RSString aClass1_1169;

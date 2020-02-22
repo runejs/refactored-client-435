@@ -361,7 +361,7 @@ public class Buffer extends Node {
 
     // ??? set buffer offset to string length???
     public void method505(RSString value) {
-        currentPosition += value.method51(0, value.method59(), buffer, currentPosition);
+        currentPosition += value.method51(0, value.length(), buffer, currentPosition);
         buffer[currentPosition++] = (byte) 0;
     }
 

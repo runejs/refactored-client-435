@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Class26 {
     public static int anInt616;
-    public static int anInt617;
+    public static int itemSearchScroll;
     public static boolean aBoolean618;
     public static RSString aClass1_619;
     public static RSString aClass1_620;
@@ -30,7 +30,7 @@ public class Class26 {
         aClass1_623 = Class58.method978("skill)2");
         aClass1_620 = Class58.method978("@whi@");
         aClass1_631 = Class58.method978("gelb:");
-        anInt617 = 0;
+        itemSearchScroll = 0;
         aClass1_619 = aClass1_623;
         aClass1_630 = Class58.method978("Untersuchen");
         aClass1_633 = (Class58.method978("Moderator)2Option: Spieler f-Ur 48 Stunden stumm schalten: <OFF>"));

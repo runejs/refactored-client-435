@@ -380,9 +380,9 @@ public class Class53 {
                             arg1.method688(Class22_Sub2.aClass1_1881, 180, i, 16776960, true);
                             i += 15;
                             i += 10;
-                            arg1.method683((Class40_Sub5_Sub17_Sub6.method832(-113, (new RSString[]{Class61.aClass1_1422, Class22_Sub2.username, ((Node.anInt926 % 40 < 20 & Node.anInt947 == 0) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.aClass1_1886))}))), 90, i, 16777215, true);
+                            arg1.method683((Class40_Sub5_Sub17_Sub6.method832(-113, (new RSString[]{Class61.aClass1_1422, Class22_Sub2.username, ((Node.anInt926 % 40 < 20 & Node.anInt947 == 0) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 90, i, 16777215, true);
                             i += 15;
-                            arg1.method683((Class40_Sub5_Sub17_Sub6.method832(arg0 + 18924, (new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false), (((Node.anInt926 % 40 ^ 0xffffffff) > -21 & (Node.anInt947 ^ 0xffffffff) == -2) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.aClass1_1886))}))), 92, i, 16777215, true);
+                            arg1.method683((Class40_Sub5_Sub17_Sub6.method832(arg0 + 18924, (new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false), (((Node.anInt926 % 40 ^ 0xffffffff) > -21 & (Node.anInt947 ^ 0xffffffff) == -2) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 92, i, 16777215, true);
                             Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
                             i += 15;
                             arg1.method688(Class40_Sub5_Sub4.aClass1_2351, i_90_, i_91_ + 5, 16777215, true);

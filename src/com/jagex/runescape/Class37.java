@@ -105,7 +105,7 @@ public class Class37 {
 
     public static void method434(int arg0) {
 
-        Class4.aBoolean173 = false;
+        Class4.menuOpen = false;
         Class57.packetid = -1;
         NpcDefinition.anInt2394 = 0;
         Class40_Sub5_Sub12.packetsize = 0;

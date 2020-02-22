@@ -240,7 +240,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
             if(Class57.anInt1338 >= 6 && Class57.anInt1338 <= 106 && RSString.anInt1668 >= 467 && (RSString.anInt1668 ^ 0xffffffff) >= -500) {
                 Cache.aBoolean330 = true;
                 Class35.publicChatMode = (1 + Class35.publicChatMode) % 4;
-                Class52.aBoolean1221 = true;
+                Class52.redrawChatbox = true;
                 Class32.packetBuffer.putPacket(11453, 32);
                 Class34.anInt821++;
                 Class32.packetBuffer.putByte(Class35.publicChatMode);
@@ -248,7 +248,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 Class32.packetBuffer.putByte(ItemDefinition.anInt2797);
             }
             if(Class57.anInt1338 >= 135 && (Class57.anInt1338 ^ 0xffffffff) >= -236 && (RSString.anInt1668 ^ 0xffffffff) <= -468 && (RSString.anInt1668 ^ 0xffffffff) >= -500) {
-                Class52.aBoolean1221 = true;
+                Class52.redrawChatbox = true;
                 Class4.anInt185 = (Class4.anInt185 + 1) % 3;
                 Cache.aBoolean330 = true;
                 Class34.anInt821++;
@@ -260,7 +260,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
             if((Class57.anInt1338 ^ 0xffffffff) <= -274 && Class57.anInt1338 <= 373 && RSString.anInt1668 >= 467 && RSString.anInt1668 <= 499) {
                 ItemDefinition.anInt2797 = (ItemDefinition.anInt2797 + 1) % 3;
                 Cache.aBoolean330 = true;
-                Class52.aBoolean1221 = true;
+                Class52.redrawChatbox = true;
                 Class32.packetBuffer.putPacket(11453, 32);
                 Class34.anInt821++;
                 Class32.packetBuffer.putByte(Class35.publicChatMode);

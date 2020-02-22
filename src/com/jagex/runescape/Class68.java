@@ -90,14 +90,13 @@ public abstract class Class68 {
 
     }
 
-    public static boolean method1043(int arg0, int arg1) {
+    public static boolean method1043(int arg0) {
 
         anInt1627++;
             if(aBooleanArray1629[arg0])
                 return true;
             if(!Class40_Sub5_Sub4.aClass6_2349.method186(123, arg0))
                 return false;
-            int i = 51 / ((63 - arg1) / 63);
             int i_4_ = Class40_Sub5_Sub4.aClass6_2349.method190(arg0, (byte) 71);
             if(i_4_ == 0) {
                 aBooleanArray1629[arg0] = true;
@@ -114,7 +113,7 @@ public abstract class Class68 {
                         if((is[0] ^ 0xffffffff) == 0)
                             Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0][i_5_].method644((byte) 73, new Buffer(is));
                         else
-                            Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0][i_5_].method637(new Buffer(is), -73);
+                            Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0][i_5_].method637(new Buffer(is));
                     }
                 }
             }
@@ -129,7 +128,7 @@ public abstract class Class68 {
             int i = arg0 >> 144471440;
             int i_8_ = 0xffff & arg0;
             if(Class59.aClass40_Sub5_Sub12ArrayArray1390[i] == null || (Class59.aClass40_Sub5_Sub12ArrayArray1390[i][i_8_] == null)) {
-                boolean bool = method1043(i, 127);
+                boolean bool = method1043(i);
                 if(!bool)
                     return null;
             }

@@ -130,8 +130,8 @@ public class Class39 implements Runnable {
             while(aBoolean913) {
                 synchronized(anObject905) {
                     if(anInt921 < 500) {
-                        anIntArray922[anInt921] = Class13.anInt420;
-                        anIntArray920[anInt921] = Landscape.anInt1166;
+                        anIntArray922[anInt921] = Class13.mouseX;
+                        anIntArray920[anInt921] = Landscape.mouseY;
                         anInt921++;
                     }
                 }

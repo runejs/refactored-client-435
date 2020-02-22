@@ -18,7 +18,7 @@ public class Class40_Sub11 extends Node {
     public static RSString aClass1_2161 = Class58.method978("headicons_pk");
     public static Class6 aClass6_2162;
     public static int anInt2163 = 0;
-    public static RSString aClass1_2164 = Class58.method978("::fpsoff");
+    public static RSString cmd_fpsoff = Class58.method978("::fpsoff");
     public int[] anIntArray2154;
     public int[] anIntArray2155;
     public Class15[] aClass15Array2156;
@@ -52,9 +52,9 @@ public class Class40_Sub11 extends Node {
                     if(i_1_ == 0)
                         i++;
                     RSString class1 = Renderable.chatPlayerNames[i_0_];
-                    if(class1 != null && class1.startsWith((byte) 116, Class51.whiteCrown))
+                    if(class1 != null && class1.startsWith(Class51.whiteCrown))
                         class1 = class1.substring(5);
-                    if(class1 != null && class1.startsWith((byte) 116, Class40_Sub5_Sub12.goldCrown))
+                    if(class1 != null && class1.startsWith(Class40_Sub5_Sub12.goldCrown))
                         class1 = class1.substring(5);
                     if((i_1_ == 1 || i_1_ == 2) && ((i_1_ ^ 0xffffffff) == -2 || Class35.publicChatMode == 0 || (Class35.publicChatMode == 1 && Class40_Sub2.hasFriend(class1, -32624)))) {
                         if(arg1 > i_2_ - 14 && arg1 <= i_2_ && !(class1.equals((Class40_Sub5_Sub13.localPlayer.playerName)))) {
@@ -107,7 +107,7 @@ public class Class40_Sub11 extends Node {
 
         aClass1Array2153 = null;
             aClass6_2162 = null;
-            aClass1_2164 = null;
+        cmd_fpsoff = null;
             if(arg0 != 101)
                 method873(-62, -35, -55);
             aClass1_2161 = null;

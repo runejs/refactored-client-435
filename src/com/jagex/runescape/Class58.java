@@ -17,7 +17,7 @@ public class Class58 {
     public static int anInt1356;
     public static int anInt1357;
     public static int[] anIntArray1358;
-    public static RSString aClass1_1359;
+    public static RSString cmd_clientdrop;
     public static int anInt1360;
     public static Cache aClass9_1364;
     public static int anInt1367;
@@ -37,7 +37,7 @@ public class Class58 {
         aBoolean1349 = false;
         aClass1_1354 = aClass1_1365;
         anIntArray1358 = new int[5];
-        aClass1_1359 = method978("::clientdrop");
+        cmd_clientdrop = method978("::clientdrop");
         aClass9_1364 = new Cache(64);
         aClass1_1374 = method978("backvmid1");
         cameraHorizontal = 0;
@@ -229,17 +229,17 @@ public class Class58 {
         Class6.aBoolean260 = arg0;
             Class22.method305((byte) 124);
             if(!Class19.aBoolean490) {
-                if((Class40_Sub5_Sub15.anInt2780 ^ 0xffffffff) != -2) {
-                    if((Class40_Sub5_Sub15.anInt2780 ^ 0xffffffff) == -3) {
+                if((Class40_Sub5_Sub15.inputType ^ 0xffffffff) != -2) {
+                    if((Class40_Sub5_Sub15.inputType ^ 0xffffffff) == -3) {
                         Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class40_Sub5_Sub6.aClass1_2446, 239, 40, 0);
                         Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686((Class40_Sub5_Sub17_Sub6.method832(-50, new RSString[]{Class66.aClass1_1543, Class19.aClass1_478})), 239, 60, 128);
-                    } else if(Class40_Sub5_Sub15.anInt2780 != 3) {
+                    } else if(Class40_Sub5_Sub15.inputType != 3) {
                         if(RSApplet.aClass1_8 == null) {
-                            if(Class43.anInt1028 == -1) {
+                            if(Class43.openChatboxWidgetId == -1) {
                                 if((Class48.anInt1138 ^ 0xffffffff) != 0) {
-                                    boolean bool = (Class40_Sub5_Sub6.method583(0, Class48.anInt1138, 96, (byte) -5, 0, 3, 479));
+                                    boolean bool = (Class40_Sub5_Sub6.drawInterface(0, Class48.anInt1138, 96, (byte) -5, 0, 3, 479));
                                     if(!bool)
-                                        Class52.aBoolean1221 = true;
+                                        Class52.redrawChatbox = true;
                                 } else {
                                     int line = 0;
                                     TypeFace typeFace = (Class53.aClass40_Sub5_Sub14_Sub1_1268);
@@ -250,11 +250,11 @@ public class Class58 {
                                             RSString name = (Renderable.chatPlayerNames[i_8_]);
                                             int y = (GameObjectDefinition.chatboxScroll + 70 + -(line * 14));
                                             int privelege = 0;
-                                            if(name != null && (name.startsWith((byte) 116, Class51.whiteCrown))) {
+                                            if(name != null && (name.startsWith(Class51.whiteCrown))) {
                                                 name = (name.substring(5));
                                                 privelege = 1;
                                             }
-                                            if(name != null && (name.startsWith((byte) 116, (Class40_Sub5_Sub12.goldCrown)))) {
+                                            if(name != null && (name.startsWith((Class40_Sub5_Sub12.goldCrown)))) {
                                                 name = (name.substring(5));
                                                 privelege = 2;
                                             }
@@ -335,13 +335,13 @@ public class Class58 {
                                     else
                                         name = Class22_Sub2.username;
                                     typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(-62, (new RSString[]{name, Class43.aClass1_1027}))), 4, 90, 0);
-                                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(71, (new RSString[]{Class66.aClass1_1556, Class19.aClass1_478}))), ((typeFace.getStringWidth(Class40_Sub5_Sub17_Sub6.method832(-99, (new RSString[]{name, ISAAC.aClass1_515})))) + 6), 90, 255);
+                                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(71, (new RSString[]{Class66.chatboxInput, Class19.aClass1_478}))), ((typeFace.getStringWidth(Class40_Sub5_Sub17_Sub6.method832(-99, (new RSString[]{name, ISAAC.aClass1_515})))) + 6), 90, 255);
                                     Rasterizer.method659(0, 77, 479, 0);
                                 }
                             } else {
-                                boolean bool = Class40_Sub5_Sub6.method583(0, (Class43.anInt1028), 96, (byte) -5, 0, 2, 479);
+                                boolean bool = Class40_Sub5_Sub6.drawInterface(0, (Class43.openChatboxWidgetId), 96, (byte) -5, 0, 2, 479);
                                 if(!bool)
-                                    Class52.aBoolean1221 = true;
+                                    Class52.redrawChatbox = true;
                             }
                         } else {
                             Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(RSApplet.aClass1_8, 239, 40, 0);
@@ -354,16 +354,16 @@ public class Class58 {
                         }
                         TypeFace class40_sub5_sub14_sub1 = Class53.aClass40_Sub5_Sub14_Sub1_1268;
                         Rasterizer.setCoordinates(0, 0, 77, 463);
-                        for(int i = 0; (i < VertexNormal.anInt1110); i++) {
-                            int i_14_ = i * 14 + (18 - Class26.anInt617);
+                        for(int i = 0; (i < VertexNormal.itemSearchResultCount); i++) {
+                            int i_14_ = i * 14 + (18 - Class26.itemSearchScroll);
                             if((i_14_ ^ 0xffffffff) < -1 && (i_14_ ^ 0xffffffff) > -111)
                                 class40_sub5_sub14_sub1.method686(Class22_Sub1.aClass1Array1844[i], 239, i_14_, 0);
                         }
                         Rasterizer.resetCoordinates();
-                        if((VertexNormal.anInt1110 ^ 0xffffffff) < -6)
-                            Class27.drawScrollBar(0, Class26.anInt617, 7 + 14 * VertexNormal.anInt1110, 463, 77, 0);
-                        if(Class66.aClass1_1543.method59() != 0) {
-                            if((VertexNormal.anInt1110 ^ 0xffffffff) == -1)
+                        if((VertexNormal.itemSearchResultCount ^ 0xffffffff) < -6)
+                            Class27.drawScrollBar(0, Class26.itemSearchScroll, 7 + 14 * VertexNormal.itemSearchResultCount, 463, 77, 0);
+                        if(Class66.aClass1_1543.length() != 0) {
+                            if((VertexNormal.itemSearchResultCount ^ 0xffffffff) == -1)
                                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class40_Sub6.aClass1_2097, 239, 40, 0);
                         } else
                             Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class35.aClass1_1747, 239, 40, 255);
@@ -379,7 +379,7 @@ public class Class58 {
                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class40_Sub5_Sub17_Sub6.method832(-117, (new RSString[]{Class66.aClass1_1565, (Class19.aClass1_478)})), 239, 60, 128);
             }
             anInt1357++;
-            if(Class4.aBoolean173 && (Class40_Sub5_Sub17_Sub1.anInt2983 ^ 0xffffffff) == -3)
+        if(Class4.menuOpen && (Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -3)
                 Class40_Sub5_Sub6.method588(-1);
             Class45.method908((byte) 122);
 
@@ -407,7 +407,7 @@ public class Class58 {
             if(arg0 == -120) {
                 aByteArrayArray1370 = null;
                 aClass1_1378 = null;
-                aClass1_1359 = null;
+                cmd_clientdrop = null;
                 aClass6_1375 = null;
             }
 

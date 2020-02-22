@@ -10,26 +10,19 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 
 public class Class40_Sub3 extends Node {
-    public static RSString aClass1_2015;
+    public static RSString cmd_fpson = Class58.method978("::fpson");
     public static int[] anIntArray2016 = new int[32768];
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2019;
     public static int anInt2020;
     public static int anInt2021 = 0;
     public static int anInt2022;
-    public static int[] anIntArray2023;
+    public static int[] anIntArray2023 = new int[50];
     public static int anInt2024 = 1;
     public static boolean aBoolean2026 = false;
     public static int anInt2029;
-    public static int anInt2032;
+    public static int anInt2032 = 0;
     public static int anInt2034;
     public static Class6 aClass6_2037;
-
-    static {
-        aClass1_2015 = Class58.method978("::fpson");
-        anIntArray2023 = new int[50];
-        anInt2032 = 0;
-    }
-
     public int anInt2017;
     public int anInt2018;
     public int anInt2025;
@@ -46,11 +39,11 @@ public class Class40_Sub3 extends Node {
     public static void method529(int arg0) {
 
         if(arg0 != -10)
-                aClass1_2015 = null;
+            cmd_fpson = null;
             anIntArray2023 = null;
             aClass6_2037 = null;
             anIntArray2016 = null;
-            aClass1_2015 = null;
+        cmd_fpson = null;
             aClass40_Sub5_Sub14_Sub4Array2019 = null;
 
     }
@@ -325,7 +318,7 @@ public class Class40_Sub3 extends Node {
                 class40_sub5_sub9.readValues(new Buffer(is));
         class40_sub5_sub9.method615();
             if(arg0 >= -39)
-                aClass1_2015 = null;
+                cmd_fpson = null;
             Class53.aClass9_1247.method230(-7208, (long) arg1, class40_sub5_sub9);
             return class40_sub5_sub9;
 

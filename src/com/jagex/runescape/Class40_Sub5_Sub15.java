@@ -11,7 +11,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public static int[] anIntArray2777 = {8, 11, 4, 6, 9, 7, 10};
     public static int anInt2778;
     public static Class6 aClass6_2779;
-    public static int anInt2780;
+    public static int inputType;
     public static RSString aClass1_2781 = Class58.method978(" Sekunde(Xn(Y -Ubertragen)3");
     public static int anInt2782;
     public static int anInt2783;
@@ -27,7 +27,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public static RSString aClass1_2793;
 
     static {
-        anInt2780 = 0;
+        inputType = 0;
         anInt2782 = 0;
         anInt2778 = 0;
         anIntArray2788 = new int[]{16, 32, 64, 128};

@@ -190,11 +190,11 @@ public abstract class Class6 {
     public byte[] method170(RSString arg0, RSString arg1, int arg2) {
         if(arg2 != 1)
             method186(-26, 53);
-        arg1 = arg1.method79(arg2 ^ ~0x7e);
+        arg1 = arg1.method79();
         anInt231++;
-        arg0 = arg0.method79(-128);
-        int i = aClass42_254.method882(arg1.method76((byte) 41), arg2 + -126);
-        int i_0_ = aClass42Array217[i].method882(arg0.method76((byte) 41), -112);
+        arg0 = arg0.method79();
+        int i = aClass42_254.method882(arg1.method76(), arg2 + -126);
+        int i_0_ = aClass42Array217[i].method882(arg0.method76(), -112);
         return method172(i_0_, 114, i);
     }
 
@@ -327,9 +327,9 @@ public abstract class Class6 {
 
     public int method179(int arg0, int arg1, RSString arg2) {
         int i = 107 % ((-47 - arg0) / 56);
-        arg2 = arg2.method79(-128);
+        arg2 = arg2.method79();
         anInt214++;
-        return aClass42Array217[arg1].method882(arg2.method76((byte) 41), -70);
+        return aClass42Array217[arg1].method882(arg2.method76(), -70);
     }
 
     public boolean method181(int arg0, int[] arg2) {
@@ -418,8 +418,8 @@ public abstract class Class6 {
         if(arg0 != 0)
             method183(58, null);
         anInt237++;
-        arg1 = arg1.method79(arg0 ^ ~0x7f);
-        return aClass42_254.method882(arg1.method76((byte) 41), arg0 + -80);
+        arg1 = arg1.method79();
+        return aClass42_254.method882(arg1.method76(), arg0 + -80);
     }
 
     public boolean method185(byte arg0) {
@@ -500,17 +500,17 @@ public abstract class Class6 {
         anInt251++;
         if(arg2 != -1234)
             anIntArray261 = null;
-        arg0 = arg0.method79(-128);
-        arg1 = arg1.method79(-128);
-        int i = aClass42_254.method882(arg0.method76((byte) 41), -66);
-        int i_49_ = aClass42Array217[i].method882(arg1.method76((byte) 41), arg2 ^ 0x483);
+        arg0 = arg0.method79();
+        arg1 = arg1.method79();
+        int i = aClass42_254.method882(arg0.method76(), -66);
+        int i_49_ = aClass42Array217[i].method882(arg1.method76(), arg2 ^ 0x483);
         System.out.println("Loaded: " + i_49_);
         return loaded(i, i_49_);
     }
 
     public void method195(int arg0, RSString arg1) {
-        arg1 = arg1.method79(-128);
-        int i = aClass42_254.method882(arg1.method76((byte) 41), -69);
+        arg1 = arg1.method79();
+        int i = aClass42_254.method882(arg1.method76(), -69);
         anInt223++;
         if(arg0 == 0 && (i ^ 0xffffffff) <= -1)
             method174(i, (byte) 2);

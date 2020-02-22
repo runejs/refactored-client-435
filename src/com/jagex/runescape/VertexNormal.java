@@ -21,7 +21,7 @@ public class VertexNormal {
     public static int anInt1106;
     public static int anInt1107;
     public static RSString aClass1_1109;
-    public static int anInt1110;
+    public static int itemSearchResultCount;
     public static RSString aClass1_1111;
     public static boolean lowMemory;
     public static RSString aClass1_1113;
@@ -43,7 +43,7 @@ public class VertexNormal {
         aClass1_1109 = Class58.method978("Ihr Spielkonto wurde deaktiviert)3");
         aClass9_1102 = new Cache(500);
         lowMemory = false;
-        anInt1110 = 0;
+        itemSearchResultCount = 0;
         aClass1_1113 = Class58.method978("mapback");
         aClass1_1114 = Class58.method978("@lre@");
         aClass1_1111 = Class58.method978(" ");

@@ -28,7 +28,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     public static RSString aClass1_2977;
     public static int anInt2978;
     public static int anInt2979;
-    public static int anInt2983;
+    public static int menuScreenArea;
     public static RSString aClass1_2985;
     public static int anInt2986;
     public static int[] anIntArray2987;
@@ -37,7 +37,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     public static RSString aClass1_2991;
     public static int anInt2994;
     public static RSString aClass1_2998;
-    public static int anInt2999;
+    public static int atInventoryInterfaceType;
     public static Class6_Sub1 aClass6_Sub1_3000;
     public static RSString aClass1_3002;
     public static int anInt3004;
@@ -55,7 +55,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         aBooleanArray2975 = new boolean[5];
         aClass1_2990 = Class58.method978("Mar");
         aClass1_2977 = Class58.method978("Regeln versto-8en hat)3");
-        anInt2999 = 0;
+        atInventoryInterfaceType = 0;
         aClass1_2998 = Class58.method978("May");
         aClass1_3002 = Class58.method978("Loading wordpack )2 ");
         aClass1_2985 = Class58.method978("Jun");

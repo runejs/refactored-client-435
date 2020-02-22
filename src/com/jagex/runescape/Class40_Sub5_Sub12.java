@@ -27,7 +27,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public static RSString aClass1_2678;
     public static RSString aClass1_2684;
     public static RSString aClass1_2686;
-    public static RSString aClass1_2691;
+    public static RSString cmd_errortest;
     public static int anInt2697;
     public static int anInt2700;
     public static int anInt2705;
@@ -45,7 +45,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
         aClass1_2678 = Class58.method978("Enter name of friend to add to list");
         goldCrown = Class58.method978("@cr2@");
         aClass1_2684 = aClass1_2706;
-        aClass1_2691 = Class58.method978("::errortest");
+        cmd_errortest = Class58.method978("::errortest");
         aClass1_2716 = Class58.method978("Fehler beim Laden Ihres Charakter)2Profils");
         aClass1_2671 = aClass1_2637;
         packetsize = 0;
@@ -128,7 +128,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public boolean aBoolean2727;
     public int anInt2728;
     public boolean aBoolean2730;
-    public int anInt2731;
+    public int scrollPosition;
     public int anInt2732;
     public int anInt2733;
     public int anInt2734;
@@ -205,7 +205,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
         aBoolean2750 = false;
         anInt2726 = 0;
         anInt2720 = 0;
-        anInt2731 = 0;
+        scrollPosition = 0;
         anInt2736 = 0;
         anInt2718 = -1;
         anInt2749 = 0;
@@ -254,7 +254,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
                 method648(85, (byte) 24);
             aClass1_2706 = null;
             aClass1_2686 = null;
-            aClass1_2691 = null;
+        cmd_errortest = null;
         goldCrown = null;
             aClass1_2637 = null;
             aClass1_2674 = null;
@@ -320,14 +320,12 @@ public class Class40_Sub5_Sub12 extends SubNode {
 
     }
 
-    public void method637(Buffer arg0, int arg1) {
+    public void method637(Buffer arg0) {
         anInt2717++;
         aBoolean2636 = false;
         anInt2683 = arg0.getUnsignedByte();
         anInt2714 = arg0.getUnsignedByte();
         anInt2639 = arg0.getUnsignedShortBE();
-        if(arg1 >= -35)
-            aBoolean2723 = true;
         anInt2649 = anInt2656 = arg0.getShortBE();
         anInt2743 = anInt2696 = arg0.getShortBE();
         anInt2692 = arg0.getUnsignedShortBE();
@@ -393,7 +391,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
             aClass1Array2698 = new RSString[5];
             for(int i_7_ = 0; i_7_ < 5; i_7_++) {
                 aClass1Array2698[i_7_] = arg0.getRSString();
-                if(aClass1Array2698[i_7_].method59() == 0)
+                if(aClass1Array2698[i_7_].length() == 0)
                     aClass1Array2698[i_7_] = null;
             }
         }
@@ -453,7 +451,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
             aClass1Array2698 = new RSString[5];
             for(int i_8_ = 0; i_8_ < 5; i_8_++) {
                 aClass1Array2698[i_8_] = arg0.getRSString();
-                if((aClass1Array2698[i_8_].method59() ^ 0xffffffff) == -1)
+                if((aClass1Array2698[i_8_].length() ^ 0xffffffff) == -1)
                     aClass1Array2698[i_8_] = null;
             }
         }
@@ -466,7 +464,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
         }
         if((anInt2714 ^ 0xffffffff) == -2 || (anInt2714 ^ 0xffffffff) == -5 || (anInt2714 ^ 0xffffffff) == -6 || (anInt2714 ^ 0xffffffff) == -7) {
             aClass1_2676 = arg0.getRSString();
-            if((aClass1_2676.method59() ^ 0xffffffff) == -1) {
+            if((aClass1_2676.length() ^ 0xffffffff) == -1) {
                 if((anInt2714 ^ 0xffffffff) == -2)
                     aClass1_2676 = Class39.aClass1_919;
                 if((anInt2714 ^ 0xffffffff) == -5)
@@ -548,7 +546,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
         aBoolean2688 = (arg1.getUnsignedByte() ^ 0xffffffff) == -2;
         if(anInt2683 == 0) {
             anInt2746 = arg1.getUnsignedShortBE();
-            anInt2731 = arg1.getUnsignedShortBE();
+            scrollPosition = arg1.getUnsignedShortBE();
         }
         if((anInt2683 ^ 0xffffffff) == -6) {
             anInt2744 = arg1.getIntBE();

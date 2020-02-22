@@ -27,7 +27,7 @@ public class Class13 {
     public static RSString aClass1_417;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_418;
     public static int anInt419;
-    public static int anInt420;
+    public static int mouseX;
     public static int[] anIntArray421;
     public static RSString aClass1_422;
 
@@ -41,7 +41,7 @@ public class Class13 {
         aClass9_406 = new Cache(64);
         anInt419 = 2;
         aClass1_422 = Class58.method978("oder ung-Ultiges Passwort)3");
-        anInt420 = 0;
+        mouseX = 0;
     }
 
     public static void method241(Actor arg0, int arg1, byte arg2) {
@@ -95,7 +95,7 @@ public class Class13 {
 
     public static void method243(byte arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
         anInt407++;
-        if(Class68.method1043(arg4, arg0 + 37)) {
+        if(Class68.method1043(arg4)) {
             Class48.method925(arg3, Class59.aClass40_Sub5_Sub12ArrayArray1390[arg4], arg5, 0, arg7, 0, -1, arg8, arg6, arg1, 0, arg2);
             if(arg0 != 89)
                 aClass1_405 = null;
@@ -239,7 +239,7 @@ public class Class13 {
             else
                 i = arg0.anInt2689 >> -1265498640;
             anInt401++;
-            if(!Class68.method1043(i, -44))
+        if(!Class68.method1043(i))
                 return null;
             int i_11_ = arg0.anInt2656;
             int i_12_ = arg0.anInt2696;
@@ -252,7 +252,7 @@ public class Class13 {
                 i_12_ += class40_sub5_sub12.anInt2696;
                 i_13_ = class40_sub5_sub12.anInt2648;
                 if(!arg0.aBoolean2694)
-                    i_12_ -= class40_sub5_sub12.anInt2731;
+                    i_12_ -= class40_sub5_sub12.scrollPosition;
             }
             int[] is = new int[2];
             is[0] = i_11_;

@@ -18,7 +18,7 @@ public class Class19 {
     public static int anInt493 = 0;
     public static RSString aClass1_494;
     public static RSString aClass1_495 = aClass1_489;
-    public static boolean aBoolean496 = false;
+    public static boolean showFps = false;
 
     static {
         aClass1_494 = Class58.method978("@gr3@");

@@ -11,7 +11,7 @@ public class ISAAC {
     public static int anInt501;
     public static int anInt503;
     public static int anInt504;
-    public static boolean aBoolean505 = false;
+    public static boolean redrawTabArea = false;
     public static RSString aClass1_506 = Class58.method978("titlebutton");
     public static int anInt507;
     public static int anInt509 = 0;

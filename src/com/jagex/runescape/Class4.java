@@ -6,11 +6,11 @@ import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.media.renderable.actor.Actor;
 
 public class Class4 {
-    public static boolean aBoolean173;
+    public static boolean menuOpen;
     public static volatile long aLong174 = 0L;
     public static int anInt175;
     public static RSString aClass1_176;
-    public static RSString aClass1_177 = Class58.method978("::hiddenbuttontest");
+    public static RSString cmd_hiddenbuttontest = Class58.method978("::hiddenbuttontest");
     public static int[] anIntArray178;
     public static RSApplet anApplet_Sub1_179;
     public static RSString aClass1_180;
@@ -24,7 +24,7 @@ public class Class4 {
     public static int anInt188;
 
     static {
-        aBoolean173 = false;
+        menuOpen = false;
         anInt175 = 0;
         aClass1_181 = Class58.method978("Einloggen");
         aClass1_183 = Class58.method978("mapdots");
@@ -37,7 +37,7 @@ public class Class4 {
 
     public static void method159(byte arg0) {
 
-        aClass1_177 = null;
+        cmd_hiddenbuttontest = null;
             aClass1_180 = null;
             int i = 18 % ((arg0 - 8) / 59);
             aClass1_183 = null;
@@ -67,7 +67,7 @@ public class Class4 {
     public static void method161(int arg0) {
         anInt187++;
         if(arg0 != 128)
-            aBoolean173 = false;
+            menuOpen = false;
         for(int i = 0; i < PacketBuffer.anInt2248; i++) {
             Class40_Sub3.anIntArray2023[i]--;
             if(Class40_Sub3.anIntArray2023[i] < -10) {

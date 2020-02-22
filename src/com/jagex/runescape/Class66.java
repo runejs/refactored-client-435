@@ -20,7 +20,7 @@ public class Class66 {
     public static int anInt1553;
     public static RSString aClass1_1554;
     public static RSString aClass1_1555;
-    public static RSString aClass1_1556;
+    public static RSString chatboxInput;
     public static RSString aClass1_1558;
     public static int anInt1559;
     public static int anInt1560;
@@ -51,7 +51,7 @@ public class Class66 {
         aClass1_1572 = aClass1_1555;
         chatTypes = new int[100];
         aClass1_1567 = Class58.method978("");
-        aClass1_1556 = aClass1_1567;
+        chatboxInput = aClass1_1567;
         aClass1_1546 = Class58.method978("Icons redrawn");
         aClass1_1563 = aClass1_1567;
         aClass1_1550 = aClass1_1567;
@@ -152,7 +152,7 @@ public class Class66 {
             anIntArray1564 = null;
             int i = -11 / ((-68 - arg0) / 55);
             aClass1_1567 = null;
-            aClass1_1556 = null;
+        chatboxInput = null;
 
     }
 

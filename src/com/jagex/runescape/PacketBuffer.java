@@ -94,16 +94,16 @@ public class PacketBuffer extends Buffer {
             Class55.method958(Class29.anInt673, -14222);
             Class6_Sub1.anInt1819 = -1;
             IdentityKit.aBoolean2597 = true;
-            ISAAC.aBoolean505 = true;
+            ISAAC.redrawTabArea = true;
             Class29.anInt673 = -1;
         }
         Class40_Sub13.anInt2184++;
         anInt2233++;
-        if(Class43.anInt1028 != -1) {
-            Class55.method958(Class43.anInt1028, -14222);
+        if(Class43.openChatboxWidgetId != -1) {
+            Class55.method958(Class43.openChatboxWidgetId, -14222);
             Class6_Sub1.anInt1819 = -1;
-            Class52.aBoolean1221 = true;
-            Class43.anInt1028 = -1;
+            Class52.redrawChatbox = true;
+            Class43.openChatboxWidgetId = -1;
         }
         if((NpcDefinition.anInt2433 ^ 0xffffffff) != 0) {
             Class55.method958(NpcDefinition.anInt2433, -14222);

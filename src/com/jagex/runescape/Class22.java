@@ -219,7 +219,7 @@ public abstract class Class22 {
                         RSCanvas.anInt65 = 0;
                 }
                 if(i == 8) {
-                    Class52.aBoolean1221 = true;
+                    Class52.redrawChatbox = true;
                     CollisionMap.anInt165 = i_21_;
                 }
                 if((i ^ 0xffffffff) == -5) {

@@ -33,7 +33,7 @@ public class Class59 {
         aClass54_1392 = new Class54();
     }
 
-    public static void method982(int arg0) {
+    public static void dropClient(int arg0) {
         anInt1384++;
         if(Class32.anInt771 > 0)
             Class48.method928(-7225);

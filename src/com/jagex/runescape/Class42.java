@@ -77,7 +77,7 @@ public class Class42 {
     public static void method883(byte arg0, int arg1) {
 
         anInt991++;
-        if(Class68.method1043(arg1, -7)) {
+        if(Class68.method1043(arg1)) {
             Class40_Sub5_Sub12[] class40_sub5_sub12s = Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1];
             for(int i = 0; class40_sub5_sub12s.length > i; i++) {
                 Class40_Sub5_Sub12 class40_sub5_sub12 = class40_sub5_sub12s[i];

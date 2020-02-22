@@ -9,50 +9,31 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 
 public abstract class Class22_Sub2 extends Class22 {
-    public static RSString password;
+    public static RSString string_blank = Class58.method978("");
+    public static RSString password = string_blank;
     public static RSString aClass1_1875 = Class58.method978("Please use a different world)3");
-    public static RSString aClass1_1876;
-    public static RSString aClass1_1877;
+    public static RSString aClass1_1876 = Class58.method978("Walk here");
+    public static RSString aClass1_1877 = Class58.method978("");
     public static RSString aClass1_1878 = Class58.method978("@yel@*V");
-    public static RSString aClass1_1879;
+    public static RSString aClass1_1879 = string_blank;
     public static int anInt1880;
-    public static RSString aClass1_1881;
+    public static RSString aClass1_1881 = string_blank;
     public static int anInt1882;
-    public static RSString aClass1_1883;
+    public static RSString aClass1_1883 = Class58.method978("Fehler bei der Verbindung zum Server)3");
     public static int anInt1884;
-    public static RSString aClass1_1885;
-    public static RSString aClass1_1886;
+    public static RSString aClass1_1885 = (Class58.method978("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789(Q(R+R(T(U^(V(Z(X(Y)2_=)0[*U]*W;:(W@(S*X)1<)3>)4?*6*V "));
     public static Class40_Sub5_Sub12 aClass40_Sub5_Sub12_1887;
-    public static int anInt1888;
-    public static RSString aClass1_1889;
-    public static RSString username;
-    public static RSString aClass1_1891;
+    public static int anInt1888 = 0;
+    public static RSString aClass1_1889 = Class58.method978("Benutzen");
+    public static RSString username = string_blank;
+    public static RSString aClass1_1891 = aClass1_1875;
     public static int anInt1892;
-    public static RSString aClass1_1893;
+    public static RSString aClass1_1893 = aClass1_1885;
     public static int anInt1894;
-    public static RSString aClass1_1895;
-    public static RSString aClass1_1896;
+    public static RSString aClass1_1896 = string_blank;
     public static int anInt1897;
-    public static RSString currentLoadingText;
+    public static RSString currentLoadingText = string_blank;
 
-    static {
-        aClass1_1877 = Class58.method978("");
-        aClass1_1886 = Class58.method978("");
-        aClass1_1889 = Class58.method978("Benutzen");
-        aClass1_1883 = Class58.method978("Fehler bei der Verbindung zum Server)3");
-        username = aClass1_1886;
-        aClass1_1881 = aClass1_1886;
-        aClass1_1879 = aClass1_1886;
-        anInt1888 = 0;
-        password = aClass1_1886;
-        aClass1_1885 = (Class58.method978("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789(Q(R+R(T(U^(V(Z(X(Y)2_=)0[*U]*W;:(W@(S*X)1<)3>)4?*6*V "));
-        aClass1_1891 = aClass1_1875;
-        aClass1_1893 = aClass1_1885;
-        aClass1_1895 = Class58.method978("Walk here");
-        aClass1_1876 = aClass1_1895;
-        aClass1_1896 = aClass1_1886;
-        currentLoadingText = aClass1_1886;
-    }
 
     public static IndexedImage[] method315(int arg0) {
 
@@ -117,7 +98,7 @@ public abstract class Class22_Sub2 extends Class22 {
         aClass1_1877 = null;
             aClass1_1885 = null;
             currentLoadingText = null;
-            aClass1_1886 = null;
+        string_blank = null;
             aClass1_1881 = null;
             aClass40_Sub5_Sub12_1887 = null;
             aClass1_1879 = null;
@@ -133,7 +114,6 @@ public abstract class Class22_Sub2 extends Class22 {
             aClass1_1896 = null;
             password = null;
             aClass1_1883 = null;
-            aClass1_1895 = null;
 
     }
 

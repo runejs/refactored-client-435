@@ -20,7 +20,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
     public static RSString aClass1_2286;
     public static int anInt2288;
     public static int anInt2289;
-    public static RSString aClass1_2290 = Class58.method978("::noclip");
+    public static RSString cmd_noclip = Class58.method978("::noclip");
     public static RSString aClass1_2291;
     public static RSString aClass1_2292;
     public static RSString aClass1_2294;
@@ -83,7 +83,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
             aClass1_2306 = null;
             aClass1_2294 = null;
             aClass1_2311 = null;
-            aClass1_2290 = null;
+        cmd_noclip = null;
             aClass1_2286 = null;
             aClass1_2303 = null;
             aClass1_2296 = null;

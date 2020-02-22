@@ -155,11 +155,11 @@ public class Class48 {
                         }
                         if(class40_sub5_sub12.anInt2683 == 0) {
                             if(!class40_sub5_sub12.aBoolean2750 || Class29.method371(8247, arg7, i) || PacketBuffer.aBoolean2236) {
-                                method925(i_1_ + class40_sub5_sub12.anInt2643, arg1, i_2_, class40_sub5_sub12.anInt2731, arg4, arg5, i, arg7, arg8, i_1_, class40_sub5_sub12.anInt2746, (i_2_ + class40_sub5_sub12.anInt2692));
+                                method925(i_1_ + class40_sub5_sub12.anInt2643, arg1, i_2_, class40_sub5_sub12.scrollPosition, arg4, arg5, i, arg7, arg8, i_1_, class40_sub5_sub12.anInt2746, (i_2_ + class40_sub5_sub12.anInt2692));
                                 if((class40_sub5_sub12.aClass40_Sub5_Sub12Array2713) != null)
-                                    method925(i_1_ + class40_sub5_sub12.anInt2643, (class40_sub5_sub12.aClass40_Sub5_Sub12Array2713), i_2_, class40_sub5_sub12.anInt2731, arg4, 0, class40_sub5_sub12.anInt2689, arg7, arg8, i_1_, class40_sub5_sub12.anInt2746, class40_sub5_sub12.anInt2692 + i_2_);
+                                    method925(i_1_ + class40_sub5_sub12.anInt2643, (class40_sub5_sub12.aClass40_Sub5_Sub12Array2713), i_2_, class40_sub5_sub12.scrollPosition, arg4, 0, class40_sub5_sub12.anInt2689, arg7, arg8, i_1_, class40_sub5_sub12.anInt2746, class40_sub5_sub12.anInt2692 + i_2_);
                                 if((class40_sub5_sub12.anInt2643 ^ 0xffffffff) > (class40_sub5_sub12.anInt2720 ^ 0xffffffff))
-                                    Class5.method168(class40_sub5_sub12.anInt2643, arg4, arg8, class40_sub5_sub12.anInt2720, (byte) 69, class40_sub5_sub12, class40_sub5_sub12.anInt2692 + i_2_, arg7, i_1_);
+                                    Class5.scrollInterface(class40_sub5_sub12.anInt2643, arg4, arg8, class40_sub5_sub12.anInt2720, (byte) 69, class40_sub5_sub12, class40_sub5_sub12.anInt2692 + i_2_, arg7, i_1_);
                             }
                         } else {
                             if(class40_sub5_sub12.anInt2714 == 1 && (i_2_ ^ 0xffffffff) >= (arg8 ^ 0xffffffff) && (i_1_ ^ 0xffffffff) >= (arg4 ^ 0xffffffff) && (class40_sub5_sub12.anInt2692 + i_2_ ^ 0xffffffff) < (arg8 ^ 0xffffffff) && (class40_sub5_sub12.anInt2643 + i_1_ ^ 0xffffffff) < (arg4 ^ 0xffffffff)) {

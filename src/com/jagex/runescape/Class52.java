@@ -19,7 +19,7 @@ public class Class52 {
     public static byte[][] aByteArrayArray1217;
     public static RSString aClass1_1218;
     public static int anInt1219;
-    public static boolean aBoolean1221 = false;
+    public static boolean redrawChatbox = false;
     public static int anInt1222;
     public static RSString aClass1_1223;
     public static int anInt1224;

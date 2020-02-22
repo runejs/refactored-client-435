@@ -139,21 +139,21 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     int i_7_ = arg1 > i_3_ ? i_3_ : arg1;
                     int i_8_ = i_5_ < arg8 ? i_5_ : arg8;
                     if(class40_sub5_sub12.anInt2683 == 0) {
-                        method20(i_4_, i_7_, class40_sub5_sub12.anInt2746, arg3, i_6_, i, 1, arg7, i_8_, class40_sub5_sub12.anInt2731);
+                        method20(i_4_, i_7_, class40_sub5_sub12.anInt2746, arg3, i_6_, i, 1, arg7, i_8_, class40_sub5_sub12.scrollPosition);
                         if(class40_sub5_sub12.aClass40_Sub5_Sub12Array2713 != null)
-                            method20(i_4_, i_7_, class40_sub5_sub12.anInt2746, arg3, i_6_, class40_sub5_sub12.anInt2689, 1, (class40_sub5_sub12.aClass40_Sub5_Sub12Array2713), i_8_, class40_sub5_sub12.anInt2731);
+                            method20(i_4_, i_7_, class40_sub5_sub12.anInt2746, arg3, i_6_, class40_sub5_sub12.anInt2689, 1, (class40_sub5_sub12.aClass40_Sub5_Sub12Array2713), i_8_, class40_sub5_sub12.scrollPosition);
                     }
                     if(class40_sub5_sub12.aBoolean2688) {
                         boolean bool;
-                        bool = (Class13.anInt420 ^ 0xffffffff) <= (i_6_ ^ 0xffffffff) && (i_4_ ^ 0xffffffff) >= (Landscape.anInt1166 ^ 0xffffffff) && i_8_ > Class13.anInt420 && (i_7_ ^ 0xffffffff) < (Landscape.anInt1166 ^ 0xffffffff);
+                        bool = (Class13.mouseX ^ 0xffffffff) <= (i_6_ ^ 0xffffffff) && (i_4_ ^ 0xffffffff) >= (Landscape.mouseY ^ 0xffffffff) && i_8_ > Class13.mouseX && (i_7_ ^ 0xffffffff) < (Landscape.mouseY ^ 0xffffffff);
                         boolean bool_9_ = false;
                         if(Class40_Sub5_Sub2.anInt2302 == 1 && bool)
                             bool_9_ = true;
                         boolean bool_10_ = false;
                         if((class40_sub5_sub12.anInt2738 ^ 0xffffffff) != 0 && bool_9_ && Class10.aClass40_Sub5_Sub12_353 == null) {
-                            Class40_Sub2.anInt1996 = Class13.anInt420;
+                            Class40_Sub2.anInt1996 = Class13.mouseX;
                             Class10.aClass40_Sub5_Sub12_353 = class40_sub5_sub12;
-                            Class40_Sub5_Sub11.anInt2621 = Landscape.anInt1166;
+                            Class40_Sub5_Sub11.anInt2621 = Landscape.mouseY;
                         }
                         if(Class62.anInt1470 == 1 && (i_6_ ^ 0xffffffff) >= (Class57.anInt1338 ^ 0xffffffff) && ((RSString.anInt1668 ^ 0xffffffff) <= (i_4_ ^ 0xffffffff)) && Class57.anInt1338 < i_8_ && RSString.anInt1668 < i_7_)
                             bool_10_ = true;
@@ -168,25 +168,25 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                                 Class43.method891((class40_sub5_sub12.anObjectArray2681), 0, RSString.anInt1668 + -i_2_, class40_sub5_sub12, Class57.anInt1338 - i_1_, false);
                         }
                         if(class40_sub5_sub12.aBoolean2730 && bool_9_ && (arg3 & 0x4 ^ 0xffffffff) != -1 && class40_sub5_sub12.anObjectArray2747 != null)
-                            Class43.method891((class40_sub5_sub12.anObjectArray2747), 0, -i_2_ + Landscape.anInt1166, class40_sub5_sub12, -i_1_ + Class13.anInt420, false);
+                            Class43.method891((class40_sub5_sub12.anObjectArray2747), 0, -i_2_ + Landscape.mouseY, class40_sub5_sub12, -i_1_ + Class13.mouseX, false);
                         if(class40_sub5_sub12.aBoolean2730 && !bool_9_ && (0x2 & arg3 ^ 0xffffffff) != -1) {
                             class40_sub5_sub12.aBoolean2730 = false;
                             if(class40_sub5_sub12.anObjectArray2707 != null)
-                                Class43.method891((class40_sub5_sub12.anObjectArray2707), 0, Landscape.anInt1166 - i_2_, class40_sub5_sub12, Class13.anInt420 - i_1_, false);
+                                Class43.method891((class40_sub5_sub12.anObjectArray2707), 0, Landscape.mouseY - i_2_, class40_sub5_sub12, Class13.mouseX - i_1_, false);
                         }
                         if(bool_9_ && (arg3 & 0x8 ^ 0xffffffff) != -1 && class40_sub5_sub12.anObjectArray2644 != null)
-                            Class43.method891((class40_sub5_sub12.anObjectArray2644), 0, -i_2_ + Landscape.anInt1166, class40_sub5_sub12, -i_1_ + Class13.anInt420, false);
+                            Class43.method891((class40_sub5_sub12.anObjectArray2644), 0, -i_2_ + Landscape.mouseY, class40_sub5_sub12, -i_1_ + Class13.mouseX, false);
                         if(!class40_sub5_sub12.aBoolean2682 && bool && (0x10 & arg3) != 0) {
                             class40_sub5_sub12.aBoolean2682 = true;
                             if(class40_sub5_sub12.anObjectArray2658 != null)
-                                Class43.method891((class40_sub5_sub12.anObjectArray2658), 0, Landscape.anInt1166 - i_2_, class40_sub5_sub12, Class13.anInt420 - i_1_, false);
+                                Class43.method891((class40_sub5_sub12.anObjectArray2658), 0, Landscape.mouseY - i_2_, class40_sub5_sub12, Class13.mouseX - i_1_, false);
                         }
                         if(class40_sub5_sub12.aBoolean2682 && bool && (0x40 & arg3) != 0 && class40_sub5_sub12.anObjectArray2680 != null)
-                            Class43.method891((class40_sub5_sub12.anObjectArray2680), 0, -i_2_ + Landscape.anInt1166, class40_sub5_sub12, -i_1_ + Class13.anInt420, false);
+                            Class43.method891((class40_sub5_sub12.anObjectArray2680), 0, -i_2_ + Landscape.mouseY, class40_sub5_sub12, -i_1_ + Class13.mouseX, false);
                         if(class40_sub5_sub12.aBoolean2682 && !bool && (arg3 & 0x20) != 0) {
                             class40_sub5_sub12.aBoolean2682 = false;
                             if(class40_sub5_sub12.anObjectArray2672 != null)
-                                Class43.method891((class40_sub5_sub12.anObjectArray2672), 0, -i_2_ + Landscape.anInt1166, class40_sub5_sub12, -i_1_ + Class13.anInt420, false);
+                                Class43.method891((class40_sub5_sub12.anObjectArray2672), 0, -i_2_ + Landscape.mouseY, class40_sub5_sub12, -i_1_ + Class13.mouseX, false);
                         }
                         if(class40_sub5_sub12.anObjectArray2712 != null && (arg3 & 0x80) != 0)
                             Class43.method891((class40_sub5_sub12.anObjectArray2712), 0, 0, class40_sub5_sub12, 0, false);
@@ -222,7 +222,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     if(Class59.aLongArray1397[i] == arg0) {
                         Class53.anInt1258++;
                         Class40_Sub5_Sub17_Sub3.anInt3060--;
-                        ISAAC.aBoolean505 = true;
+                        ISAAC.redrawTabArea = true;
                         for(int i_13_ = i; i_13_ < Class40_Sub5_Sub17_Sub3.anInt3060; i_13_++) {
                             Class40_Sub11.aClass1Array2147[i_13_] = Class40_Sub11.aClass1Array2147[1 + i_13_];
                             Class40_Sub7.anIntArray2131[i_13_] = Class40_Sub7.anIntArray2131[i_13_ + 1];

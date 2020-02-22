@@ -128,7 +128,7 @@ public class Class17 {
                         if(arg0 != 24686)
                             aClass68_462 = null;
                         Class53.aLongArray1267[Class42.anInt1008++] = arg1;
-                        ISAAC.aBoolean505 = true;
+                        ISAAC.redrawTabArea = true;
                         Class32.packetBuffer.putPacket(arg0 + -13233, 251);
                         Class32.packetBuffer.putLongBE(arg1);
                     }

@@ -52,8 +52,8 @@ public class Class32 {
 
         RSString class1 = null;
             for(int i = 0; NpcDefinition.anInt2394 > i; i++) {
-                if((Landscape.aClass1Array1184[i].method60(VertexNormal.aClass1_1114, 32) ^ 0xffffffff) != 0) {
-                    class1 = (Landscape.aClass1Array1184[i].substring(Landscape.aClass1Array1184[i].method60(VertexNormal.aClass1_1114, 32)));
+                if((Landscape.aClass1Array1184[i].method60(VertexNormal.aClass1_1114) ^ 0xffffffff) != 0) {
+                    class1 = (Landscape.aClass1Array1184[i].substring(Landscape.aClass1Array1184[i].method60(VertexNormal.aClass1_1114)));
                     break;
                 }
             }
@@ -74,17 +74,17 @@ public class Class32 {
                 Rasterizer.method656(i_0_ + 1, i_2_ + 1, arg0 + i, 16, 0);
                 Rasterizer.method665(i_0_ + 1, 18 + i_2_, -2 + i, i_1_ + -19, 0);
                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method683(class1, 3 + i_0_, 14 + i_2_, i_3_, false);
-                int i_4_ = Class13.anInt420;
-                int i_5_ = Landscape.anInt1166;
-                if((Class40_Sub5_Sub17_Sub1.anInt2983 ^ 0xffffffff) == -1) {
+                int i_4_ = Class13.mouseX;
+                int i_5_ = Landscape.mouseY;
+                if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -1) {
                     i_4_ -= 4;
                     i_5_ -= 4;
                 }
-                if((Class40_Sub5_Sub17_Sub1.anInt2983 ^ 0xffffffff) == -2) {
+                if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -2) {
                     i_4_ -= 553;
                     i_5_ -= 205;
                 }
-                if(Class40_Sub5_Sub17_Sub1.anInt2983 == 2) {
+                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
                     i_5_ -= 357;
                     i_4_ -= 17;
                 }
@@ -93,9 +93,9 @@ public class Class32 {
                     RSString class1_8_ = Landscape.aClass1Array1184[i_6_];
                     int i_9_ = 16777215;
                     if(class1_8_.method87(arg0 + 112, class1)) {
-                        class1_8_ = class1_8_.method68(0, (class1_8_.method59() - class1.method59()));
+                        class1_8_ = class1_8_.substring(0, (class1_8_.length() - class1.length()));
                         if(class1_8_.method87(arg0 ^ ~0x6f, VertexNormal.aClass1_1117))
-                            class1_8_ = (class1_8_.method68(0, (class1_8_.method59() + -VertexNormal.aClass1_1117.method59())));
+                            class1_8_ = (class1_8_.substring(0, (class1_8_.length() + -VertexNormal.aClass1_1117.length())));
                     }
                     if((i_0_ ^ 0xffffffff) > (i_4_ ^ 0xffffffff) && (i_4_ ^ 0xffffffff) > (i_0_ + i ^ 0xffffffff) && -13 + i_7_ < i_5_ && 3 + i_7_ > i_5_)
                         i_9_ = 16776960;

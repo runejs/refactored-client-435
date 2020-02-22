@@ -28,7 +28,7 @@ public class Class5 {
     public static int anInt205;
     public static RSString aClass1_206;
     public static int anInt207;
-    public static int anInt208;
+    public static int currentTabId;
     public static int anInt209;
     public static RSString aClass1_210;
 
@@ -38,7 +38,7 @@ public class Class5 {
         aClass1_196 = Class58.method978("backvmid3");
         aClass1_202 = Class58.method978("red:");
         aClass1_203 = Class58.method978("mapmarker");
-        anInt208 = 3;
+        currentTabId = 3;
         anInt199 = 0;
         aClass1_206 = Class58.method978(" )2> @lre@");
         aClass1_210 = Class58.method978("Please contact customer support)3");
@@ -98,10 +98,10 @@ public class Class5 {
             Class68_Sub1.aClass68_2213.method1046((byte) 90);
             Player.anIntArray3284 = R3D.method708(Player.anIntArray3284);
             Rasterizer.method663();
-            Class40_Sub5_Sub6.method583(0, NpcDefinition.anInt2433, 503, (byte) -5, 0, 0, 765);
+        Class40_Sub5_Sub6.drawInterface(0, NpcDefinition.anInt2433, 503, (byte) -5, 0, 0, 765);
             if(Class40_Sub5_Sub9.anInt2562 != -1)
-                Class40_Sub5_Sub6.method583(0, Class40_Sub5_Sub9.anInt2562, 503, (byte) -5, 0, 0, 765);
-            if(!Class4.aBoolean173) {
+                Class40_Sub5_Sub6.drawInterface(0, Class40_Sub5_Sub9.anInt2562, 503, (byte) -5, 0, 0, 765);
+        if(!Class4.menuOpen) {
                 Class43.method894(false);
                 SceneTile.method537(4);
             } else
@@ -208,15 +208,15 @@ public class Class5 {
                     Class37.anInt876 = 1;
                     Class66.aClass1_1563 = Class40_Sub5_Sub12.aClass1_2740;
                     Class19.aBoolean490 = true;
-                    Class40_Sub5_Sub15.anInt2780 = 0;
+                    Class40_Sub5_Sub15.inputType = 0;
                     Class66.aClass1_1565 = Class66.aClass1_1567;
-                    Class52.aBoolean1221 = true;
+                    Class52.redrawChatbox = true;
                 }
                 if(i == 202) {
                     Class37.anInt876 = 2;
                     Class66.aClass1_1563 = Class13.aClass1_417;
-                    Class52.aBoolean1221 = true;
-                    Class40_Sub5_Sub15.anInt2780 = 0;
+                    Class52.redrawChatbox = true;
+                    Class40_Sub5_Sub15.inputType = 0;
                     Class19.aBoolean490 = true;
                     Class66.aClass1_1565 = Class66.aClass1_1567;
                 }
@@ -226,16 +226,16 @@ public class Class5 {
                 return true;
             }
             if((i ^ 0xffffffff) == -502) {
-                Class40_Sub5_Sub15.anInt2780 = 0;
+                Class40_Sub5_Sub15.inputType = 0;
                 Class37.anInt876 = 4;
-                Class52.aBoolean1221 = true;
+                Class52.redrawChatbox = true;
                 Class66.aClass1_1563 = Class51.aClass1_1200;
                 Class66.aClass1_1565 = Class66.aClass1_1567;
                 Class19.aBoolean490 = true;
             }
             if(i == 502) {
-                Class52.aBoolean1221 = true;
-                Class40_Sub5_Sub15.anInt2780 = 0;
+                Class52.redrawChatbox = true;
+                Class40_Sub5_Sub15.inputType = 0;
                 Class37.anInt876 = 5;
                 Class19.aBoolean490 = true;
                 Class66.aClass1_1565 = Class66.aClass1_1567;
@@ -267,7 +267,7 @@ public class Class5 {
                 Class67.aBoolean1601 = !Class67.aBoolean1601;
             if((i ^ 0xffffffff) <= -602 && (i ^ 0xffffffff) >= -614) {
                 PacketBuffer.method516(123);
-                if((Class66.aClass1_1550.method59() ^ 0xffffffff) < -1) {
+                if((Class66.aClass1_1550.length() ^ 0xffffffff) < -1) {
                     Class32.packetBuffer.putPacket(11453, 202);
                     VertexNormal.anInt1096++;
                     Class32.packetBuffer.putLongBE(Class66.aClass1_1550.method58((byte) 102));
@@ -288,7 +288,7 @@ public class Class5 {
 
     }
 
-    public static void method168(int arg0, int arg1, int arg2, int arg3, byte arg4, Class40_Sub5_Sub12 arg5, int arg6, int arg7, int arg8) {
+    public static void scrollInterface(int arg0, int arg1, int arg2, int arg3, byte arg4, Class40_Sub5_Sub12 arg5, int arg6, int arg7, int arg8) {
 
         if(Class61.aBoolean1444)
                 Landscape.anInt1171 = 32;
@@ -297,31 +297,31 @@ public class Class5 {
             anInt190++;
             Class61.aBoolean1444 = false;
         if(arg2 >= arg6 && arg2 < arg6 + 16 && arg1 >= arg8 && 16 + arg8 > arg1) {
-            arg5.anInt2731 -= Npc.anInt3294 * 4;
+            arg5.scrollPosition -= Npc.anInt3294 * 4;
                 if(arg7 == 1)
-                    ISAAC.aBoolean505 = true;
+                    ISAAC.redrawTabArea = true;
                 if(arg7 == 2 || (arg7 ^ 0xffffffff) == -4)
-                    Class52.aBoolean1221 = true;
+                    Class52.redrawChatbox = true;
         } else if(arg6 > arg2 || (arg6 + 16 ^ 0xffffffff) >= (arg2 ^ 0xffffffff) || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
             if(-Landscape.anInt1171 + arg6 <= arg2 && (arg2 ^ 0xffffffff) > (16 + (arg6 + Landscape.anInt1171) ^ 0xffffffff) && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && Npc.anInt3294 > 0) {
                     Class61.aBoolean1444 = true;
                     int i = (-32 + arg0) * arg0 / arg3;
                     if(arg7 == 2 || (arg7 ^ 0xffffffff) == -4)
-                        Class52.aBoolean1221 = true;
+                        Class52.redrawChatbox = true;
                     if(arg7 == 1)
-                        ISAAC.aBoolean505 = true;
+                        ISAAC.redrawTabArea = true;
                     if((i ^ 0xffffffff) > -9)
                         i = 8;
                     int i_17_ = -i + (arg0 + -32);
                     int i_18_ = -(i / 2) + (-arg8 + arg1) + -16;
-                    arg5.anInt2731 = (arg3 + -arg0) * i_18_ / i_17_;
+                arg5.scrollPosition = (arg3 + -arg0) * i_18_ / i_17_;
                 }
             } else {
-            arg5.anInt2731 += 4 * Npc.anInt3294;
+            arg5.scrollPosition += 4 * Npc.anInt3294;
                 if(arg7 == 2 || (arg7 ^ 0xffffffff) == -4)
-                    Class52.aBoolean1221 = true;
+                    Class52.redrawChatbox = true;
                 if(arg7 == 1)
-                    ISAAC.aBoolean505 = true;
+                    ISAAC.redrawTabArea = true;
             }
             int i = -61 / ((arg4 + 67) / 59);
 

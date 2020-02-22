@@ -35,7 +35,7 @@ public abstract class Renderable extends SubNode {
     public static boolean method754(int arg0, int arg1) {
 
         anInt2859++;
-            if(!Class68.method1043(arg1, 127))
+        if(!Class68.method1043(arg1))
                 return false;
             Class40_Sub5_Sub12[] class40_sub5_sub12s = Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1];
             if(arg0 != 29378)
