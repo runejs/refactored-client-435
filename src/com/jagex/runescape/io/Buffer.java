@@ -1,6 +1,7 @@
 package com.jagex.runescape.io;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.media.IndexedImage;
 
 import java.math.BigInteger;
 

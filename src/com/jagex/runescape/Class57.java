@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.media.IndexedImage;
+
 public class Class57 {
     public static int anInt1330;
     public static Cache aClass9_1331 = new Cache(64);

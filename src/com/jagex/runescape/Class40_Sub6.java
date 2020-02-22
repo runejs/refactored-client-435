@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.media.IndexedImage;
+
 public class Class40_Sub6 extends Node {
     public static RSString aClass1_2097;
     public static Class64 aClass64_2098;
