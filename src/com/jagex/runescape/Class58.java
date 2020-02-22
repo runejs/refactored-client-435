@@ -358,7 +358,7 @@ public class Class58 {
                         Rasterizer.resetCoordinates();
                         if((VertexNormal.anInt1110 ^ 0xffffffff) < -6)
                             Class27.drawScrollBar(0, Class26.anInt617, 7 + 14 * VertexNormal.anInt1110, 463, 77, 0);
-                        if(Class66.aClass1_1543.method59(-3136) != 0) {
+                        if(Class66.aClass1_1543.method59() != 0) {
                             if((VertexNormal.anInt1110 ^ 0xffffffff) == -1)
                                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class40_Sub6.aClass1_2097, 239, 40, 0);
                         } else

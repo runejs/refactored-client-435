@@ -90,9 +90,9 @@ public class Class32 {
                     RSString class1_8_ = Landscape.aClass1Array1184[i_6_];
                     int i_9_ = 16777215;
                     if(class1_8_.method87(arg0 + 112, class1)) {
-                        class1_8_ = class1_8_.method68(0, (class1_8_.method59(-3136) - class1.method59(arg0 + -3134)));
+                        class1_8_ = class1_8_.method68(0, (class1_8_.method59() - class1.method59()));
                         if(class1_8_.method87(arg0 ^ ~0x6f, VertexNormal.aClass1_1117))
-                            class1_8_ = (class1_8_.method68(0, (class1_8_.method59(-3136) + -VertexNormal.aClass1_1117.method59(-3136))));
+                            class1_8_ = (class1_8_.method68(0, (class1_8_.method59() + -VertexNormal.aClass1_1117.method59())));
                     }
                     if((i_0_ ^ 0xffffffff) > (i_4_ ^ 0xffffffff) && (i_4_ ^ 0xffffffff) > (i_0_ + i ^ 0xffffffff) && -13 + i_7_ < i_5_ && 3 + i_7_ > i_5_)
                         i_9_ = 16776960;

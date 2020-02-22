@@ -173,7 +173,7 @@ public class Class30 {
                 boolean bool = false;
                 for(int i = 0; i < 12; i++) {
                     int i_1_ = is[i];
-                    if((i_1_ ^ 0xffffffff) <= -257 && i_1_ < 512 && !Buffer.method501((byte) -94, -256 + i_1_).method623(true))
+                    if((i_1_ ^ 0xffffffff) <= -257 && i_1_ < 512 && !Buffer.method501(-256 + i_1_).method623(true))
                         bool = true;
                     if(i_1_ >= 512 && !ItemDefinition.forId(i_1_ + -512, 10).method739(aBoolean683, (byte) 127))
                         bool = true;
@@ -190,7 +190,7 @@ public class Class30 {
                     for(int i_2_ = 0; i_2_ < 12; i_2_++) {
                         int i_3_ = is[i_2_];
                         if(i_3_ >= 256 && (i_3_ ^ 0xffffffff) > -513) {
-                            Model class40_sub5_sub17_sub5_4_ = Buffer.method501((byte) -94, i_3_ + -256).method630(false);
+                            Model class40_sub5_sub17_sub5_4_ = Buffer.method501(i_3_ + -256).method630(false);
                             if(class40_sub5_sub17_sub5_4_ != null)
                                 class40_sub5_sub17_sub5s[i++] = class40_sub5_sub17_sub5_4_;
                         }
@@ -269,7 +269,7 @@ public class Class30 {
             boolean bool = false;
             for(int i = 0; i < 12; i++) {
                 int i_11_ = anIntArray692[i];
-                if(i_11_ >= 256 && (i_11_ ^ 0xffffffff) > -513 && !Buffer.method501((byte) -94, i_11_ - 256).method624(false))
+                if(i_11_ >= 256 && (i_11_ ^ 0xffffffff) > -513 && !Buffer.method501(i_11_ - 256).method624(false))
                     bool = true;
                 if((i_11_ ^ 0xffffffff) <= -513 && !ItemDefinition.forId(-512 + i_11_, 10).method738((byte) 44, aBoolean683))
                     bool = true;
@@ -283,7 +283,7 @@ public class Class30 {
             for(int i_12_ = 0; (i_12_ ^ 0xffffffff) > -13; i_12_++) {
                 int i_13_ = anIntArray692[i_12_];
                 if(i_13_ >= 256 && i_13_ < 512) {
-                    Model class40_sub5_sub17_sub5 = Buffer.method501((byte) -94, -256 + i_13_).method629((byte) -100);
+                    Model class40_sub5_sub17_sub5 = Buffer.method501(-256 + i_13_).method629((byte) -100);
                     if(class40_sub5_sub17_sub5 != null)
                         class40_sub5_sub17_sub5s[i++] = class40_sub5_sub17_sub5;
                 }
@@ -311,7 +311,7 @@ public class Class30 {
                 arg0 = new int[12];
                 for(int i = 0; i < 7; i++) {
                     for(int i_15_ = 0; PacketBuffer.anInt2257 > i_15_; i_15_++) {
-                        Class40_Sub5_Sub10 class40_sub5_sub10 = Buffer.method501((byte) -94, i_15_);
+                        Class40_Sub5_Sub10 class40_sub5_sub10 = Buffer.method501(i_15_);
                         if(class40_sub5_sub10 != null && !class40_sub5_sub10.aBoolean2606 && ((i + (!arg1 ? 0 : 7) ^ 0xffffffff) == (class40_sub5_sub10.anInt2599 ^ 0xffffffff))) {
                             arg0[Class40_Sub5_Sub15.anIntArray2777[i]] = i_15_ + 256;
                             break;
@@ -345,7 +345,7 @@ public class Class30 {
                                     i = 0;
                             } else if((--i ^ 0xffffffff) > -1)
                                 i = -1 + PacketBuffer.anInt2257;
-                            class40_sub5_sub10 = Buffer.method501((byte) -94, i);
+                            class40_sub5_sub10 = Buffer.method501(i);
                         } while(class40_sub5_sub10 == null || class40_sub5_sub10.aBoolean2606 || (class40_sub5_sub10.anInt2599 != arg0 + (!aBoolean683 ? 0 : 7)));
                         anIntArray692[Class40_Sub5_Sub15.anIntArray2777[arg0]] = i + 256;
                         method378(117);

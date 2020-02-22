@@ -131,8 +131,8 @@ public class Class13 {
                 class40_sub5_sub17_sub4_sub2.anInt3101 = Cache.outgoingbuffer.getUnsignedByte();
             }
             if((0x20 & i_2_) != 0) {
-                class40_sub5_sub17_sub4_sub2.anInt3091 = Cache.outgoingbuffer.method504(false);
-                int i_5_ = Cache.outgoingbuffer.readInt();
+                class40_sub5_sub17_sub4_sub2.anInt3091 = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
+                int i_5_ = Cache.outgoingbuffer.getIntBE();
                 class40_sub5_sub17_sub4_sub2.anInt3129 = 0;
                 class40_sub5_sub17_sub4_sub2.anInt3093 = Node.anInt926 + (0xffff & i_5_);
                 class40_sub5_sub17_sub4_sub2.anInt3110 = i_5_ >> -1206933168;
@@ -173,7 +173,7 @@ public class Class13 {
             }
             if((i_2_ & 0x8) != 0) {
                 class40_sub5_sub17_sub4_sub2.anInt3148 = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
-                class40_sub5_sub17_sub4_sub2.anInt3100 = Cache.outgoingbuffer.method490((byte) -70);
+                class40_sub5_sub17_sub4_sub2.anInt3100 = Cache.outgoingbuffer.getUnsignedShortLE();
             }
             if((0x10 & i_2_ ^ 0xffffffff) != -1) {
                 int i_8_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
@@ -205,7 +205,7 @@ public class Class13 {
             worldid = -59;
     }
 
-    public static synchronized byte[] method246(int arg0, int arg1) {
+    public static synchronized byte[] method246(int arg1) {
 
         anInt408++;
             if(arg1 == 100 && Class10.anInt356 > 0) {
@@ -218,8 +218,6 @@ public class Class13 {
                 Class44.aByteArrayArray1039[Main.anInt1764] = null;
                 return is;
             }
-            if(arg0 != -21955)
-                return null;
             if((arg1 ^ 0xffffffff) == -30001 && Class40_Sub5_Sub4.anInt2359 > 0) {
                 byte[] is = (RSCanvas.aByteArrayArray47[--Class40_Sub5_Sub4.anInt2359]);
                 RSCanvas.aByteArrayArray47[Class40_Sub5_Sub4.anInt2359] = null;

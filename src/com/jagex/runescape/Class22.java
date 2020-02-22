@@ -129,7 +129,7 @@ public abstract class Class22 {
             if(arg1 != -1)
                 aBooleanArray548 = null;
             RSString class1 = new RSString();
-            class1.anInt1680 = arg0.method502((byte) -81);
+            class1.anInt1680 = arg0.getSmart();
             if(class1.anInt1680 > arg2)
                 class1.anInt1680 = arg2;
             class1.aByteArray1692 = new byte[class1.anInt1680];

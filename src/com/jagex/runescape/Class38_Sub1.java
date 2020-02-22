@@ -376,15 +376,15 @@ public class Class38_Sub1 extends Class38 {
                     Class32.packetBuffer.putPacket(11453, 89);
                     Class32.packetBuffer.putByte(3 + (i_12_ + i_12_));
                 }
-                Class32.packetBuffer.method486(14912, i_24_ + Class26.anInt635);
-                Class32.packetBuffer.method496(255, Class40_Sub5_Sub17_Sub3.aBooleanArray3056[82] ? 1 : 0);
-                Class32.packetBuffer.method486(14912, Class40_Sub5_Sub2.anInt2307 + i_25_);
+                Class32.packetBuffer.putShortLE(i_24_ + Class26.anInt635);
+                Class32.packetBuffer.putInvertedByte(Class40_Sub5_Sub17_Sub3.aBooleanArray3056[82] ? 1 : 0);
+                Class32.packetBuffer.putShortLE(Class40_Sub5_Sub2.anInt2307 + i_25_);
                 Class40_Sub5_Sub4.anInt2366 = Class24.anIntArray581[0];
                 Class55.anInt1304 = Class10.anIntArray351[0];
                 for(int i_26_ = 1; i_12_ > i_26_; i_26_++) {
                     i_10_--;
-                    Class32.packetBuffer.method489(128, Class24.anIntArray581[i_10_] - i_25_);
-                    Class32.packetBuffer.method496(255, -i_24_ + Class10.anIntArray351[i_10_]);
+                    Class32.packetBuffer.putDualByte(Class24.anIntArray581[i_10_] - i_25_, 128);
+                    Class32.packetBuffer.putInvertedByte(-i_24_ + Class10.anIntArray351[i_10_]);
                 }
                 return true;
             }

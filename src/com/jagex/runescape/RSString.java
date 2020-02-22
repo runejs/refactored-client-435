@@ -176,11 +176,8 @@ public class RSString implements Interface1 {
         return method68(arg1, anInt1680);
     }
 
-    public int method51(int arg0, int arg1, byte[] arg2, int arg3, int arg4) {
-
+    public int method51(int arg0, int arg1, byte[] arg2, int arg3) {
         Class18.method278(aByteArray1692, arg0, arg2, arg3, arg1 - arg0);
-        if(arg4 != -40)
-            method78(68, -2);
         anInt1674++;
         return -arg0 + arg1;
 
@@ -297,13 +294,9 @@ public class RSString implements Interface1 {
 
     }
 
-    public int method59(int arg0) {
-
-        if(arg0 != -3136)
-            return -11;
+    public int method59() {
         anInt1693++;
         return anInt1680;
-
     }
 
     public int method60(RSString arg0, int arg1) {

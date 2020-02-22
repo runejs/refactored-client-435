@@ -74,11 +74,11 @@ public class Landscape {
         int i = class40_sub1.getUnsignedByte();
             if(arg1 != 9)
                 method933(14);
-        int i_0_ = class40_sub1.readInt();
+        int i_0_ = class40_sub1.getIntBE();
             if(i_0_ < 0 || (Class51.anInt1195 != 0 && (Class51.anInt1195 ^ 0xffffffff) > (i_0_ ^ 0xffffffff)))
                 throw new RuntimeException();
             if((i ^ 0xffffffff) != -1) {
-                int i_1_ = class40_sub1.readInt();
+                int i_1_ = class40_sub1.getIntBE();
                 if(i_1_ < 0 || ((Class51.anInt1195 ^ 0xffffffff) != -1 && (i_1_ ^ 0xffffffff) < (Class51.anInt1195 ^ 0xffffffff))) {
                     return new byte[100];
                     //throw new RuntimeException();
@@ -100,7 +100,7 @@ public class Landscape {
                 return is;
             }
             byte[] is = new byte[i_0_];
-            class40_sub1.method497(is, 0, i_0_, (byte) 45);
+            class40_sub1.getBytes(i_0_, 0, is);
             return is;
 
     }
@@ -295,7 +295,7 @@ public class Landscape {
                     if(Class35.aFrame1732 != null) {
                         Class62.anInt1452++;
                         Class32.packetBuffer.putPacket(11453, 121);
-                        Class32.packetBuffer.putInt(40, 1057001181);
+                        Class32.packetBuffer.putIntBE(1057001181);
                     }
                     if(!Class58.aBoolean1349) {
                         int i_42_ = (-6 + Class51.anInt1202) / 8;

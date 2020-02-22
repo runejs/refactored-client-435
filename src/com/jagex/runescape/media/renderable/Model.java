@@ -227,13 +227,13 @@ public class Model extends Renderable {
             int flag = vertexDirectionOffsetBuffer.getUnsignedByte();
             int i_289_ = 0;
             if((flag & 0x1) != 0)
-                i_289_ = xDataOffsetBuffer.getSmart();
+                i_289_ = xDataOffsetBuffer.getUnsignedSmart();
             int i_290_ = 0;
             if((flag & 0x2) != 0)
-                i_290_ = yDataOffsetBuffer.getSmart();
+                i_290_ = yDataOffsetBuffer.getUnsignedSmart();
             int currentOffsetZ = 0;
             if((flag & 0x4) != 0)
-                currentOffsetZ = zDataOffsetBuffer.getSmart();
+                currentOffsetZ = zDataOffsetBuffer.getUnsignedSmart();
             verticesX[i_287_] = baseOffsetX + i_289_;
             verticesY[i_287_] = baseOffsetY + i_290_;
             verticesZ[i_287_] = baseOffsetZ + currentOffsetZ;
@@ -268,11 +268,11 @@ public class Model extends Renderable {
         for(int triangle = 0; triangle < triangleCount; triangle++) {
             int type = xDataOffsetBuffer.getUnsignedByte();
             if(type == 1) {
-                trianglePointOffsetX = vertexDirectionOffsetBuffer.getSmart() + offset;
+                trianglePointOffsetX = vertexDirectionOffsetBuffer.getUnsignedSmart() + offset;
                 offset = trianglePointOffsetX;
-                trianglePointOffsetY = vertexDirectionOffsetBuffer.getSmart() + offset;
+                trianglePointOffsetY = vertexDirectionOffsetBuffer.getUnsignedSmart() + offset;
                 offset = trianglePointOffsetY;
-                trianglePointOffsetZ = vertexDirectionOffsetBuffer.getSmart() + offset;
+                trianglePointOffsetZ = vertexDirectionOffsetBuffer.getUnsignedSmart() + offset;
                 offset = trianglePointOffsetZ;
                 trianglePointsX[triangle] = trianglePointOffsetX;
                 trianglePointsY[triangle] = trianglePointOffsetY;
@@ -280,7 +280,7 @@ public class Model extends Renderable {
             }
             if(type == 2) {
                 trianglePointOffsetY = trianglePointOffsetZ;
-                trianglePointOffsetZ = vertexDirectionOffsetBuffer.getSmart() + offset;
+                trianglePointOffsetZ = vertexDirectionOffsetBuffer.getUnsignedSmart() + offset;
                 offset = trianglePointOffsetZ;
                 trianglePointsX[triangle] = trianglePointOffsetX;
                 trianglePointsY[triangle] = trianglePointOffsetY;
@@ -288,7 +288,7 @@ public class Model extends Renderable {
             }
             if(type == 3) {
                 trianglePointOffsetX = trianglePointOffsetZ;
-                trianglePointOffsetZ = vertexDirectionOffsetBuffer.getSmart() + offset;
+                trianglePointOffsetZ = vertexDirectionOffsetBuffer.getUnsignedSmart() + offset;
                 offset = trianglePointOffsetZ;
                 trianglePointsX[triangle] = trianglePointOffsetX;
                 trianglePointsY[triangle] = trianglePointOffsetY;
@@ -298,7 +298,7 @@ public class Model extends Renderable {
                 int oldTrianglePointOffsetX = trianglePointOffsetX;
                 trianglePointOffsetX = trianglePointOffsetY;
                 trianglePointOffsetY = oldTrianglePointOffsetX;
-                trianglePointOffsetZ = vertexDirectionOffsetBuffer.getSmart() + offset;
+                trianglePointOffsetZ = vertexDirectionOffsetBuffer.getUnsignedSmart() + offset;
                 offset = trianglePointOffsetZ;
                 trianglePointsX[triangle] = trianglePointOffsetX;
                 trianglePointsY[triangle] = trianglePointOffsetY;

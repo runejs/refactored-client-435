@@ -32,8 +32,8 @@ public class Envelope {
 
     public void decode(Buffer buffer) {
         form = buffer.getUnsignedByte();
-        start = buffer.readInt();
-        end = buffer.readInt();
+        start = buffer.getIntBE();
+        end = buffer.getIntBE();
         decode_shape(buffer);
     }
 

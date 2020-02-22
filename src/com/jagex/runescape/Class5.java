@@ -266,7 +266,7 @@ public class Class5 {
                 Class67.aBoolean1601 = !Class67.aBoolean1601;
             if((i ^ 0xffffffff) <= -602 && (i ^ 0xffffffff) >= -614) {
                 PacketBuffer.method516(123);
-                if((Class66.aClass1_1550.method59(arg0 ^ ~0xc67) ^ 0xffffffff) < -1) {
+                if((Class66.aClass1_1550.method59() ^ 0xffffffff) < -1) {
                     Class32.packetBuffer.putPacket(11453, 202);
                     VertexNormal.anInt1096++;
                     Class32.packetBuffer.putLongBE(Class66.aClass1_1550.method58((byte) 102));

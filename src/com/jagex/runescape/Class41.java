@@ -49,15 +49,15 @@ public class Class41 {
                 if(aClass40_Sub13_983.anIntArray2178[i_3_] == 3)
                     i_6_ = 128;
                 if((i_4_ & 0x1) != 0)
-                    anIntArray979[i_2_] = class40_sub1_0_.getSmart();
+                    anIntArray979[i_2_] = class40_sub1_0_.getUnsignedSmart();
                 else
                     anIntArray979[i_2_] = i_6_;
                 if((i_4_ & 0x2) != 0)
-                    anIntArray977[i_2_] = class40_sub1_0_.getSmart();
+                    anIntArray977[i_2_] = class40_sub1_0_.getUnsignedSmart();
                 else
                     anIntArray977[i_2_] = i_6_;
                 if((i_4_ & 0x4) != 0)
-                    anIntArray980[i_2_] = class40_sub1_0_.getSmart();
+                    anIntArray980[i_2_] = class40_sub1_0_.getUnsignedSmart();
                 else
                     anIntArray980[i_2_] = i_6_;
                 i_1_ = i_3_;

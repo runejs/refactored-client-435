@@ -204,7 +204,7 @@ public class Main extends RSApplet {
                                     i_21_ = class40_sub5_sub12.anInt2726;
                                     if(Class29.method371(8247, arg0, i) && (class40_sub5_sub12.anInt2663 ^ 0xffffffff) != -1)
                                         i_21_ = class40_sub5_sub12.anInt2663;
-                                    if(class40_sub5_sub12.aClass1_2640.method59(-3136) > 0)
+                                    if(class40_sub5_sub12.aClass1_2640.method59() > 0)
                                         class1 = (class40_sub5_sub12.aClass1_2640);
                                 } else {
                                     i_21_ = class40_sub5_sub12.anInt2647;
@@ -405,7 +405,7 @@ public class Main extends RSApplet {
                                 TypeFace class40_sub5_sub14_sub1 = (Class53.aClass40_Sub5_Sub14_Sub1_1268);
                                 RSString class1 = class40_sub5_sub12.aClass1_2668;
                                 class1 = (SceneTile.method532((byte) 20, class40_sub5_sub12, class1));
-                                while(class1.method59(-3136) > 0) {
+                                while(class1.method59() > 0) {
                                     int i_52_ = class1.method60((Class30.aClass1_686), 32);
                                     RSString class1_53_;
                                     if(i_52_ != -1) {
@@ -435,7 +435,7 @@ public class Main extends RSApplet {
                                 class1 = class40_sub5_sub12.aClass1_2668;
                                 int i_57_ = (2 + (i_55_ + (class40_sub5_sub14_sub1.anInt2910)));
                                 class1 = (SceneTile.method532((byte) 20, class40_sub5_sub12, class1));
-                                while((class1.method59(-3136) ^ 0xffffffff) < -1) {
+                                while((class1.method59() ^ 0xffffffff) < -1) {
                                     int i_58_ = class1.method60((Class30.aClass1_686), 32);
                                     RSString class1_59_;
                                     if(i_58_ == -1) {
@@ -464,7 +464,7 @@ public class Main extends RSApplet {
             aClass1_1777 = null;
         if(Class48.aClass40_Sub1_1132 != null) {
             Class48.aClass40_Sub1_1132.currentPosition = 5 + arg2 * 4;
-            int i = Class48.aClass40_Sub1_1132.readInt();
+            int i = Class48.aClass40_Sub1_1132.getIntBE();
             arg0.method200(i, 99);
         } else {
             HashTable.method327(true, null, 255, 255, (byte) 0, 0, (byte) 90);
@@ -1640,7 +1640,7 @@ public class Main extends RSApplet {
                             Class29.aClass64_676 = new Class64((Socket) (Class68.aClass15_1632.anObject437), ISAAC.aClass31_521);
                             Buffer class40_sub1 = new Buffer(5);
                             class40_sub1.putByte(15);
-                            class40_sub1.putInt(56, 435);
+                            class40_sub1.putIntBE(435);
                             Class29.aClass64_676.method1010(5, (byte) -19, 0, (class40_sub1.buffer));
                             Class8.anInt290++;
                             Class22_Sub1.aLong1841 = Class51.method937(1);
@@ -1741,7 +1741,7 @@ public class Main extends RSApplet {
         Class38.method439((byte) 123);
         Class68.method1042(arg0 + -28063);
         Class39.method453((byte) -74);
-        Buffer.method499(true);
+        Buffer.method499();
         Class64.method1011(true);
         Class6_Sub1.method203(arg0 ^ 0x6dc2);
         Class67.method1037(false);

@@ -390,9 +390,9 @@ public class GameObjectDefinition extends SubNode {
                                             if((arg2 ^ 0xffffffff) == -29)
                                                 anInt2505 = arg0.getUnsignedByte();
                                             else if((arg2 ^ 0xffffffff) == -30)
-                                                anInt2527 = arg0.get();
+                                                anInt2527 = arg0.getByte();
                                             else if((arg2 ^ 0xffffffff) == -40)
-                                                anInt2544 = 5 * arg0.get();
+                                                anInt2544 = 5 * arg0.getByte();
                                             else if((arg2 ^ 0xffffffff) <= -31 && arg2 < 35) {
                                                 aClass1Array2508[arg2 - 30] = arg0.getRSString();
                                                 if(aClass1Array2508[arg2 + -30].method63(Class59.aClass1_1396, true))
