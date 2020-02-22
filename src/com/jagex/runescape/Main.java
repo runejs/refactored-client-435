@@ -176,7 +176,7 @@ public class Main extends RSApplet {
                             }
                         } else if(class40_sub5_sub12.anInt2683 == 3) {
                             int i_20_;
-                            if(ItemDefinition.method746(false, class40_sub5_sub12)) {
+                            if(ItemDefinition.method746(class40_sub5_sub12)) {
                                 i_20_ = class40_sub5_sub12.anInt2726;
                                 if(Class29.method371(8247, arg0, i) && (class40_sub5_sub12.anInt2663 ^ 0xffffffff) != -1)
                                     i_20_ = class40_sub5_sub12.anInt2663;
@@ -202,7 +202,7 @@ public class Main extends RSApplet {
                             } else {
                                 RSString class1 = class40_sub5_sub12.aClass1_2668;
                                 int i_21_;
-                                if(ItemDefinition.method746(false, class40_sub5_sub12)) {
+                                if(ItemDefinition.method746(class40_sub5_sub12)) {
                                     i_21_ = class40_sub5_sub12.anInt2726;
                                     if(Class29.method371(8247, arg0, i) && (class40_sub5_sub12.anInt2663 ^ 0xffffffff) != -1)
                                         i_21_ = class40_sub5_sub12.anInt2663;
@@ -218,7 +218,7 @@ public class Main extends RSApplet {
                                     class1 = class40_sub5_sub16.name;
                                     if(class1 == null)
                                         class1 = RSApplet.aClass1_34;
-                                    if(class40_sub5_sub16.anInt2795 == 1 || (class40_sub5_sub12.anInt2734 ^ 0xffffffff) != -2)
+                                    if(class40_sub5_sub16.stackable == 1 || (class40_sub5_sub12.anInt2734 ^ 0xffffffff) != -2)
                                         class1 = (Class40_Sub5_Sub17_Sub6.method832(-40, (new RSString[]{class1, Class29.aClass1_674, (Class45.method903((class40_sub5_sub12.anInt2734), (byte) -109))})));
                                 }
                                 if(class40_sub5_sub12.anInt2714 == 6 && ((class40_sub5_sub12.anInt2689 ^ 0xffffffff) == (Class6_Sub1.anInt1819 ^ 0xffffffff))) {
@@ -236,7 +236,7 @@ public class Main extends RSApplet {
                             }
                         } else if(class40_sub5_sub12.anInt2683 == 5) {
                             if(!class40_sub5_sub12.aBoolean2636) {
-                                ImageRGB class40_sub5_sub14_sub4 = (class40_sub5_sub12.method643(127, (ItemDefinition.method746(false, class40_sub5_sub12))));
+                                ImageRGB class40_sub5_sub14_sub4 = (class40_sub5_sub12.method643(127, (ItemDefinition.method746(class40_sub5_sub12))));
                                 if(class40_sub5_sub14_sub4 != null)
                                     class40_sub5_sub14_sub4.drawImage(i_0_, i_1_);
                                 else if(Class40_Sub13.aBoolean2177)
@@ -312,7 +312,7 @@ public class Main extends RSApplet {
                                 }
                             }
                         } else if((class40_sub5_sub12.anInt2683 ^ 0xffffffff) == -7) {
-                            boolean bool_35_ = (ItemDefinition.method746(false, class40_sub5_sub12));
+                            boolean bool_35_ = (ItemDefinition.method746(class40_sub5_sub12));
                             Object object = null;
                             int i_36_;
                             if(!bool_35_)
@@ -344,14 +344,14 @@ public class Main extends RSApplet {
                             if((class40_sub5_sub12.anInt2718 ^ 0xffffffff) != 0) {
                                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((class40_sub5_sub12.anInt2718), 10);
                                 if(class40_sub5_sub16 != null) {
-                                    class40_sub5_sub16 = (class40_sub5_sub16.method743((byte) -37, class40_sub5_sub12.anInt2734));
+                                    class40_sub5_sub16 = (class40_sub5_sub16.method743(class40_sub5_sub12.anInt2734));
                                     class40_sub5_sub17_sub5 = class40_sub5_sub16.method753(true, 1, 26910);
                                     i_38_ = class40_sub5_sub16.anInt2827;
-                                    i_39_ = class40_sub5_sub16.anInt2810;
-                                    i_41_ = class40_sub5_sub16.anInt2806;
-                                    i_37_ = class40_sub5_sub16.anInt2844;
-                                    i_42_ = class40_sub5_sub16.anInt2817;
-                                    i_40_ = class40_sub5_sub16.anInt2830;
+                                    i_39_ = class40_sub5_sub16.modelOffset2;
+                                    i_41_ = class40_sub5_sub16.modelOffset1;
+                                    i_37_ = class40_sub5_sub16.modelRotation1;
+                                    i_42_ = class40_sub5_sub16.modelZoom;
+                                    i_40_ = class40_sub5_sub16.modelRotation2;
                                     if(class40_sub5_sub12.anInt2692 > 0)
                                         i_42_ = (32 * i_42_ / (class40_sub5_sub12.anInt2692));
                                 }
@@ -386,7 +386,7 @@ public class Main extends RSApplet {
                                             RSString class1 = (class40_sub5_sub16.name);
                                             if(class1 == null)
                                                 class1 = (RSApplet.aClass1_34);
-                                            if((class40_sub5_sub16.anInt2795) == 1 || ((class40_sub5_sub12.anIntArray2710[i_45_]) ^ 0xffffffff) != -2)
+                                            if((class40_sub5_sub16.stackable) == 1 || ((class40_sub5_sub12.anIntArray2710[i_45_]) ^ 0xffffffff) != -2)
                                                 class1 = (Class40_Sub5_Sub17_Sub6.method832(101, (new RSString[]{class1, (Class29.aClass1_674), (Class45.method903((class40_sub5_sub12.anIntArray2710[i_45_]), (byte) -105))})));
                                             int i_48_ = ((i_47_ * ((class40_sub5_sub12.anInt2749) + 115)) + i_0_);
                                             int i_49_ = ((i_46_ * ((class40_sub5_sub12.anInt2667) + 12)) + i_1_);
@@ -1686,7 +1686,7 @@ public class Main extends RSApplet {
             Class40_Sub6.aClass64_2098.method1009(-100);
             Class40_Sub6.aClass64_2098 = null;
         }
-        ItemDefinition.method744((byte) -80);
+        ItemDefinition.method744();
         Class13.method249(true);
         Class33.method407(false);
         Class60.method989(true);
@@ -1802,7 +1802,7 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub9.method621(arg0 ^ 0x6da1);
         Class40_Sub5_Sub10.method625(0);
         GameObjectDefinition.method604(true);
-        ItemDefinition.method745(64);
+        ItemDefinition.method745();
         Class40_Sub5_Sub15.method734(76);
         Class40_Sub5_Sub2.method548(-3254);
         Class40_Sub5_Sub4.method565(-124);

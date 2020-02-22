@@ -135,7 +135,7 @@ public class Class8 {
             arg0[i++] = 0;
         if(FloorDecoration.aClass40_Sub9_608 != null)
             FloorDecoration.aClass40_Sub9_608.method844(arg0, 0, arg1);
-        ItemDefinition.method748(true, arg1);
+        ItemDefinition.method748(arg1);
     }
 
 
@@ -144,7 +144,7 @@ public class Class8 {
             FloorDecoration.aClass40_Sub9_608.method843(arg0);
         anInt285++;
         if(arg1 > 28)
-            ItemDefinition.method748(true, arg0);
+            ItemDefinition.method748(arg0);
     }
 
     public static synchronized void method218(Class40_Sub9 arg0, int arg1) {
