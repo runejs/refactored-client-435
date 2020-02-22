@@ -290,7 +290,7 @@ public class GameObject extends Renderable {
             anInt3031++;
             GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(anInt3035);
             int i = 83 % ((41 - arg0) / 47);
-            if(gameObjectDefinition.childrenIds != null)
+        if(gameObjectDefinition.configChangeDest != null)
                 gameObjectDefinition = gameObjectDefinition.method611(-20);
             if(gameObjectDefinition == null)
                 return null;

@@ -220,13 +220,13 @@ public class Class53 {
                             }
                             GameObjectDefinition.method609(-1, true, i_52_, 0, 1 + i_56_, Player.anInt3267, i_51_, i_49_, 0, 1 + i_53_);
                             class40_sub5_sub17_sub4_sub1.anInt3274 = i_56_ + Node.anInt926;
-                            int i_63_ = gameObjectDefinition.anInt2503;
+                            int i_63_ = gameObjectDefinition.sizeX;
                             class40_sub5_sub17_sub4_sub1.aClass40_Sub5_Sub17_Sub5_3265 = class40_sub5_sub17_sub5;
                             class40_sub5_sub17_sub4_sub1.anInt3283 = i_53_ + Node.anInt926;
-                            int i_64_ = gameObjectDefinition.anInt2515;
+                            int i_64_ = gameObjectDefinition.sizeY;
                             if((i_47_ ^ 0xffffffff) == -2 || i_47_ == 3) {
-                                i_64_ = gameObjectDefinition.anInt2503;
-                                i_63_ = gameObjectDefinition.anInt2515;
+                                i_64_ = gameObjectDefinition.sizeX;
+                                i_63_ = gameObjectDefinition.sizeY;
                             }
                             class40_sub5_sub17_sub4_sub1.anInt3271 = i_52_ * 128 + 64 * i_63_;
                             class40_sub5_sub17_sub4_sub1.anInt3291 = i_51_ * 128 + (64 * i_64_);

@@ -152,10 +152,10 @@ public class Class52 {
                     if(arg6 == 2) {
                         Npc.aScene_3301.method135(arg7, arg2, arg0);
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
-                        if(((arg2 + gameObjectDefinition.anInt2503 ^ 0xffffffff) < -104) || arg0 + gameObjectDefinition.anInt2503 > 103 || arg2 + gameObjectDefinition.anInt2515 > 103 || (gameObjectDefinition.anInt2515 + arg0 ^ 0xffffffff) < -104)
+                        if(((arg2 + gameObjectDefinition.sizeX ^ 0xffffffff) < -104) || arg0 + gameObjectDefinition.sizeX > 103 || arg2 + gameObjectDefinition.sizeY > 103 || (gameObjectDefinition.sizeY + arg0 ^ 0xffffffff) < -104)
                             return;
                         if(gameObjectDefinition.solid)
-                            Landscape.aCollisionMapArray1167[arg7].method149(gameObjectDefinition.aBoolean2528, arg0, arg2, i_3_, gameObjectDefinition.anInt2503, (byte) -55, gameObjectDefinition.anInt2515);
+                            Landscape.aCollisionMapArray1167[arg7].method149(gameObjectDefinition.aBoolean2528, arg0, arg2, i_3_, gameObjectDefinition.sizeX, (byte) -55, gameObjectDefinition.sizeY);
                     }
                     if((arg6 ^ 0xffffffff) == -4) {
                         Npc.aScene_3301.method131(arg7, arg2, arg0);

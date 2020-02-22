@@ -60,12 +60,12 @@ public class Class40_Sub2 extends Node {
             if(arg0 == null)
                 return false;
             for(int i = 0; i < Class40_Sub5_Sub17_Sub3.anInt3060; i++) {
-                if(arg0.method63(Class40_Sub11.aClass1Array2147[i], true))
+                if(arg0.equalsIgnoreCase(Class40_Sub11.aClass1Array2147[i], true))
                     return true;
             }
             if(arg1 != -32624)
                 aClass1_1991 = null;
-        return arg0.method63((Class40_Sub5_Sub13.localPlayer.playerName), true);
+        return arg0.equalsIgnoreCase((Class40_Sub5_Sub13.localPlayer.playerName), true);
 
     }
 

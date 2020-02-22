@@ -427,7 +427,7 @@ public class NpcDefinition extends SubNode {
                             }
                         } else {
                             aClass1Array2376[arg0 - 30] = arg2.getRSString();
-                            if(aClass1Array2376[arg0 - 30].method63(Class59.aClass1_1396, true))
+                            if(aClass1Array2376[arg0 - 30].equalsIgnoreCase(Class59.string_Hidden, true))
                                 aClass1Array2376[-30 + arg0] = null;
                         }
                     } else {

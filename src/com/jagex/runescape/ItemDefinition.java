@@ -368,7 +368,7 @@ public class ItemDefinition extends SubNode {
                                             femaleWearModel2 = buffer.getUnsignedShortBE();
                                         else if((opcode ^ 0xffffffff) <= -31 && ((opcode ^ 0xffffffff) > -36)) {
                                             groundOptions[-30 + opcode] = buffer.getRSString();
-                                            if(groundOptions[opcode + -30].method63(Class59.aClass1_1396, true))
+                                            if(groundOptions[opcode + -30].equalsIgnoreCase(Class59.string_Hidden, true))
                                                 groundOptions[opcode + -30] = null;
                                         } else if(opcode >= 35 && ((opcode ^ 0xffffffff) > -41))
                                             inventoryOptions[opcode + -35] = buffer.getRSString();

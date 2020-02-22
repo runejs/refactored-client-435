@@ -307,7 +307,7 @@ public class Class27 {
                     boolean bool = false;
                     for(int i_15_ = 0; i_15_ < Class60.anInt1407; i_15_++) {
                         Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_15_]]);
-                        if(class40_sub5_sub17_sub4_sub1 != null && (class40_sub5_sub17_sub4_sub1.playerName != null) && class40_sub5_sub17_sub4_sub1.playerName.method63(class1_14_, true)) {
+                        if(class40_sub5_sub17_sub4_sub1 != null && (class40_sub5_sub17_sub4_sub1.playerName != null) && class40_sub5_sub17_sub4_sub1.playerName.equalsIgnoreCase(class1_14_, true)) {
                             bool = true;
                             Class38_Sub1.method448(1, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3088[0]), (byte) 114, 0, false, 0, 1, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3135[0]), 2);
                             if(i_11_ == 26) {

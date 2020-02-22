@@ -145,7 +145,7 @@ public class Class55 {
         Node.aClass1_929 = Class27.aClass1_652;
         Class40_Sub5_Sub11.aClass1_2622 = NpcDefinition.aClass1_2417;
         Class40_Sub5_Sub17_Sub3.aClass1_3066 = Class40_Sub5_Sub17_Sub6.aClass1_3247;
-        Class59.aClass1_1396 = NpcDefinition.aClass1_2417;
+        Class59.string_Hidden = NpcDefinition.aClass1_2417;
         Class68.aClass1_1635 = Class65.aClass1_1530;
         Node.aClass1_966 = Class67.aClass1_1613;
         Class19.aClass1_495 = Class60.aClass1_1401;

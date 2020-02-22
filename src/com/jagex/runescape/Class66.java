@@ -188,7 +188,7 @@ public class Class66 {
                             class1s = Class56.method968(class1s, false);
                         if(class1s != null) {
                             for(int i = 4; (i ^ 0xffffffff) <= -1; i--) {
-                                if(class1s[i] != null && !class1s[i].method63((Class38_Sub1.aClass1_1917), true)) {
+                                if(class1s[i] != null && !class1s[i].equalsIgnoreCase((Class38_Sub1.aClass1_1917), true)) {
                                     Class17.anInt453++;
                                     int i_3_ = 0;
                                     if((i ^ 0xffffffff) == -1)
@@ -207,7 +207,7 @@ public class Class66 {
                         }
                         if(class1s != null) {
                             for(int i = 4; i >= 0; i--) {
-                                if(class1s[i] != null && class1s[i].method63((Class38_Sub1.aClass1_1917), true)) {
+                                if(class1s[i] != null && class1s[i].equalsIgnoreCase((Class38_Sub1.aClass1_1917), true)) {
                                     Class55.anInt1297++;
                                     int i_4_ = 0;
                                     if(((Class40_Sub5_Sub13.localPlayer.anInt3260) ^ 0xffffffff) > (arg4.anInt2393 ^ 0xffffffff))

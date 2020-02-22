@@ -76,7 +76,7 @@ public class Class40_Sub13 extends Node {
                     return class40_sub5_sub14_sub4;
             }
             ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(arg2, 10);
-            if(class40_sub5_sub16.stackableIds == null)
+        if(class40_sub5_sub16.stackableIds == null)
                 arg1 = -1;
             if((arg1 ^ 0xffffffff) < -2) {
                 int i = -1;
@@ -111,16 +111,16 @@ public class Class40_Sub13 extends Node {
         Rasterizer.method669(class40_sub5_sub14_sub4_10_.pixels, 32, 32);
             Class40_Sub5_Sub17_Sub6.anIntArray3253 = R3D.method708(Class40_Sub5_Sub17_Sub6.anIntArray3253);
             Rasterizer.method656(0, 0, 32, 32, 0);
-            int i_11_ = class40_sub5_sub16.modelZoom;
+        int i_11_ = class40_sub5_sub16.modelZoom;
             if((arg3 ^ 0xffffffff) == 0)
                 i_11_ *= 1.5;
             if(arg3 > 0)
                 i_11_ *= 1.04;
             R3D.aBoolean2944 = false;
-            int i_12_ = ((R3D.sinetable[class40_sub5_sub16.modelRotation1]) * i_11_ >> -1598852880);
-            int i_13_ = (i_11_ * (R3D.cosinetable[class40_sub5_sub16.modelRotation1]) >> -2129368336);
+        int i_12_ = ((R3D.sinetable[class40_sub5_sub16.modelRotation1]) * i_11_ >> -1598852880);
+        int i_13_ = (i_11_ * (R3D.cosinetable[class40_sub5_sub16.modelRotation1]) >> -2129368336);
             class40_sub5_sub17_sub5.method799();
-            class40_sub5_sub17_sub5.method812(0, class40_sub5_sub16.modelRotation2, class40_sub5_sub16.anInt2827, class40_sub5_sub16.modelRotation1, class40_sub5_sub16.modelOffset1, (class40_sub5_sub16.modelOffset2 + class40_sub5_sub17_sub5.anInt2861 / 2 + i_12_), i_13_ + class40_sub5_sub16.modelOffset2);
+        class40_sub5_sub17_sub5.method812(0, class40_sub5_sub16.modelRotation2, class40_sub5_sub16.anInt2827, class40_sub5_sub16.modelRotation1, class40_sub5_sub16.modelOffset1, (class40_sub5_sub16.modelOffset2 + class40_sub5_sub17_sub5.anInt2861 / 2 + i_12_), i_13_ + class40_sub5_sub16.modelOffset2);
             for(int i_14_ = 31; i_14_ >= 0; i_14_--) {
                 for(i_13_ = 31; i_13_ >= 0; i_13_--) {
                     if(((class40_sub5_sub14_sub4_10_.pixels[i_14_ + 32 * i_13_]) ^ 0xffffffff) == -1) {
@@ -178,7 +178,7 @@ public class Class40_Sub13 extends Node {
             R3D.anInt2945 = i_9_;
             R3D.method702();
             R3D.aBoolean2944 = true;
-            if((class40_sub5_sub16.stackable ^ 0xffffffff) == -2)
+        if((class40_sub5_sub16.stackable ^ 0xffffffff) == -2)
                 class40_sub5_sub14_sub4_10_.maxWidth = 33;
             else
                 class40_sub5_sub14_sub4_10_.maxWidth = 32;

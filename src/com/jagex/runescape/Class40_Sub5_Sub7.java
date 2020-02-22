@@ -119,11 +119,11 @@ public class Class40_Sub5_Sub7 extends SubNode {
                 int i_18_;
                 int i_19_;
                 if(i_15_ == 0 || (i_15_ ^ 0xffffffff) == -3) {
-                    i_19_ = gameObjectDefinition.anInt2515;
-                    i_18_ = gameObjectDefinition.anInt2503;
+                    i_19_ = gameObjectDefinition.sizeY;
+                    i_18_ = gameObjectDefinition.sizeX;
                 } else {
-                    i_18_ = gameObjectDefinition.anInt2515;
-                    i_19_ = gameObjectDefinition.anInt2503;
+                    i_18_ = gameObjectDefinition.sizeY;
+                    i_19_ = gameObjectDefinition.sizeX;
                 }
                 Class38_Sub1.method448(i_18_, i_17_, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), arg0, (byte) 94, 0, true, 0, i_19_, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), arg3, 2);
             }
