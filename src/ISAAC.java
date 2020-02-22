@@ -161,7 +161,7 @@ public class ISAAC {
                                 i_26_ -= Class67.anIntArray1579[i_29_];
                                 i_22_ -= (Class40_Sub5_Sub17_Sub6.anIntArray3250[i_29_]);
                             }
-                            if(i_27_ >= 1 && i_27_ < 103 && (!Class46.lowMemory || (0x2 & (Floor.tile_flags[0][i_16_][i_27_]) ^ 0xffffffff) != -1 || ((0x10 & (Floor.tile_flags[i][i_16_][i_27_]) ^ 0xffffffff) == -1 && ((Class59.method986(i, i_27_, 0, i_16_) ^ 0xffffffff) == (Class40_Sub6.anInt2120 ^ 0xffffffff))))) {
+                            if(i_27_ >= 1 && i_27_ < 103 && (!Class46.lowMemory || (0x2 & (Floor.tile_flags[0][i_16_][i_27_]) ^ 0xffffffff) != -1 || ((0x10 & (Floor.tile_flags[i][i_16_][i_27_]) ^ 0xffffffff) == -1 && ((Class59.getVisibilityPlaneFor(i, i_27_, 0, i_16_) ^ 0xffffffff) == (Class40_Sub6.onBuildTimePlane ^ 0xffffffff))))) {
                                 if((i ^ 0xffffffff) > (Class64.setZ ^ 0xffffffff))
                                     Class64.setZ = i;
                                 int i_30_ = ((Class42.aByteArrayArrayArray993[i][i_16_][i_27_]) & 0xff);
@@ -251,7 +251,7 @@ public class ISAAC {
                 }
                 for(int i_56_ = 1; i_56_ < 103; i_56_++) {
                     for(int i_57_ = 1; i_57_ < 103; i_57_++)
-                        arg0.method130(i, i_57_, i_56_, Class59.method986(i, i_56_, 0, i_57_));
+                        arg0.method130(i, i_57_, i_56_, Class59.getVisibilityPlaneFor(i, i_56_, 0, i_57_));
                 }
                 Class42.aByteArrayArrayArray993[i] = null;
                 Class62.aByteArrayArrayArray1473[i] = null;

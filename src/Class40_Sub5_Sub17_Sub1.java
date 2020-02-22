@@ -30,7 +30,6 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     public static int anInt2999;
     public static Class6_Sub1 aClass6_Sub1_3000;
     public static RSString aClass1_3002;
-    public static int anInt3003;
     public static int anInt3004;
     public static int anInt3005;
     public static int anInt3007;
@@ -500,9 +499,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         }
     }
 
-    public static void renderObject(int objectId, int type, int face, int plane, Scene scene, int arg4, int localY, int localX, CollisionMap collisionMap) {
-        anInt3003++;
-        if(!Class46.lowMemory || (0x2 & (Floor.tile_flags[0][localX][localY]) ^ 0xffffffff) != -1 || ((0x10 & (Floor.tile_flags[plane][localX][localY]) ^ 0xffffffff) == -1 && ((Class59.method986(plane, localY, 0, localX) ^ 0xffffffff) == (Class40_Sub6.anInt2120 ^ 0xffffffff)))) {
+    public static void renderObject(int objectId, int localX, int localY, int plane, int face, int type, Scene scene, CollisionMap collisionMap) {
+        if(!Class46.lowMemory || (0x2 & (Floor.tile_flags[0][localX][localY]) ^ 0xffffffff) != -1 || ((0x10 & (Floor.tile_flags[plane][localX][localY]) ^ 0xffffffff) == -1 && ((Class59.getVisibilityPlaneFor(plane, localY, 0, localX) ^ 0xffffffff) == (Class40_Sub6.onBuildTimePlane ^ 0xffffffff)))) {
             if(Class64.setZ > plane)
                 Class64.setZ = plane;
             int vertexHeight = Class40_Sub6.tile_height[plane][localX][localY];
@@ -768,8 +766,6 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     else
                         renderable = (new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, definition.animationId, true));
                     scene.method109(plane, localX, localY, vertexMix, renderable, 768, face, 0, 0, hash, objectConfig);
-                } else {
-                    int i_53_ = -104 / ((-72 - arg4) / 45);
                 }
             }
         }

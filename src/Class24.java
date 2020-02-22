@@ -113,7 +113,7 @@ public class Class24 {
                                     i_11_--;
                                 if((i_11_ ^ 0xffffffff) <= -1)
                                     collisionMap = arg8[i_11_];
-                                Class40_Sub5_Sub17_Sub1.renderObject(i, i_6_, (i_8_ + arg4 & 0x3), arg3, arg1, -127, i_10_, i_9_, collisionMap);
+                                Class40_Sub5_Sub17_Sub1.renderObject(i, i_9_, i_10_, arg3, (i_8_ + arg4 & 0x3), i_6_, arg1, collisionMap);
                             }
                         }
                     }

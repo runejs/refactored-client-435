@@ -115,10 +115,10 @@ public class Class59 {
         }
     }
 
-    public static int method986(int arg0, int arg1, int arg2, int arg3) {
+    public static int getVisibilityPlaneFor(int arg0, int arg1, int arg2, int arg3) {
         try {
             if(arg2 != 0)
-                method986(-73, 123, 115, 98);
+                getVisibilityPlaneFor(-73, 123, 115, 98);
             anInt1382++;
             if(((Floor.tile_flags[arg0][arg3][arg1] & 0x8) ^ 0xffffffff) != -1)
                 return 0;

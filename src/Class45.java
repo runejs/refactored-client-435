@@ -133,7 +133,7 @@ public class Class45 {
     public static void method910(int arg0) {
         anInt1065++;
         if(arg0 == -32322) {
-            if(Class46.lowMemory && (Class40_Sub6.anInt2120 != Player.anInt3267))
+            if(Class46.lowMemory && (Class40_Sub6.onBuildTimePlane != Player.anInt3267))
                 Class40_Sub5_Sub17_Sub4.method789((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0]), -1000, Class17.anInt448, Class51.anInt1202, (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]), Player.anInt3267);
             else if(Buffer.anInt1985 != Player.anInt3267) {
                 Buffer.anInt1985 = Player.anInt3267;

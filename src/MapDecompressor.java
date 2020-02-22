@@ -126,7 +126,7 @@ public class MapDecompressor {
             class20 = groundData[plane];
         }
         if(~localY < -1 && ~localX < -1 && ~localY > -104 && ~localX > -104) {
-            Class40_Sub5_Sub17_Sub1.renderObject(objectId, type, rotation, z, NPC.aScene_3301, -18, localY, localX, class20);
+            Class40_Sub5_Sub17_Sub1.renderObject(objectId, localX, localY, z, rotation, type, NPC.aScene_3301, class20);
         }
     }
 

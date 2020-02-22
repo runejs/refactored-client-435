@@ -366,11 +366,11 @@ public abstract class Class40_Sub5_Sub17_Sub4 extends Renderable {
     public static void method789(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
         try {
             anInt3147++;
-            if((Class51.anInt1202 ^ 0xffffffff) != (arg3 ^ 0xffffffff) || arg2 != Class17.anInt448 || ((arg5 ^ 0xffffffff) != (Class40_Sub6.anInt2120 ^ 0xffffffff) && Class46.lowMemory)) {
-                Class40_Sub6.anInt2120 = arg5;
+            if((Class51.anInt1202 ^ 0xffffffff) != (arg3 ^ 0xffffffff) || arg2 != Class17.anInt448 || ((arg5 ^ 0xffffffff) != (Class40_Sub6.onBuildTimePlane ^ 0xffffffff) && Class46.lowMemory)) {
+                Class40_Sub6.onBuildTimePlane = arg5;
                 Class51.anInt1202 = arg3;
                 if(!Class46.lowMemory)
-                    Class40_Sub6.anInt2120 = 0;
+                    Class40_Sub6.onBuildTimePlane = 0;
                 Class17.anInt448 = arg2;
                 Floor.method559(25, 88);
                 Class51.method940(0, Class67.aClass1_1585, false, null);

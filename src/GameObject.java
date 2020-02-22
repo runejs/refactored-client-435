@@ -166,7 +166,7 @@ public class GameObject extends Renderable {
                             i_12_--;
                         if((i_12_ ^ 0xffffffff) <= -1)
                             collisionMap = arg2[i_12_];
-                        Class40_Sub5_Sub17_Sub1.renderObject(i, i_8_, i_9_, i_6_, arg1, -18, i_11_, i_10_, collisionMap);
+                        Class40_Sub5_Sub17_Sub1.renderObject(i, i_10_, i_11_, i_6_, i_9_, i_8_, arg1, collisionMap);
                     }
                 }
             }

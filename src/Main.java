@@ -954,7 +954,6 @@ public class Main extends RSApplet {
             Class67.anInt1587 = 0;
             Class40_Sub5_Sub12.anInt2739 = 0;
             Class68.anInt1622 = 0;
-            Class40_Sub5_Sub17_Sub1.anInt3003 = 0;
             Class62.anInt1459 = 0;
             GameObjectDefinition.anInt2529 = 0;
             RSApplet.anInt32 = 0;

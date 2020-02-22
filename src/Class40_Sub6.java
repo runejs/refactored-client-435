@@ -22,7 +22,7 @@ public class Class40_Sub6 extends Node {
     public static Class40_Sub5_Sub12 aClass40_Sub5_Sub12_2116;
     public static int anInt2118;
     public static int anInt2119;
-    public static int anInt2120;
+    public static int onBuildTimePlane;
     public static RSString aClass1_2121;
 
     static {
@@ -35,7 +35,7 @@ public class Class40_Sub6 extends Node {
         aClass1_2103 = (Class58.method978("No matching objects found)1 please shorten search"));
         aClass1_2097 = aClass1_2103;
         anInt2118 = 0;
-        anInt2120 = 0;
+        onBuildTimePlane = 0;
         aClass1_2121 = (Class58.method978("Press (Wchange your password(W on front page)3"));
         aClass1_2111 = aClass1_2121;
     }
