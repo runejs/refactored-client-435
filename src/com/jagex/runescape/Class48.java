@@ -217,7 +217,7 @@ public class Class48 {
                                                         }
                                                     } else {
                                                         Class67.anInt1576++;
-                                                        RSString[] class1s = (class40_sub5_sub16.options);
+                                                        RSString[] class1s = (class40_sub5_sub16.inventoryOptions);
                                                         if(Class60.aBoolean1402)
                                                             class1s = (Class56.method968(class1s, false));
                                                         if(class40_sub5_sub12.aBoolean2727) {
@@ -293,7 +293,7 @@ public class Class48 {
                                 Class67.anInt1576++;
                                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((class40_sub5_sub12.anInt2718), 10);
                                 if(class40_sub5_sub12.aBoolean2727) {
-                                    RSString[] class1s = class40_sub5_sub16.options;
+                                    RSString[] class1s = class40_sub5_sub16.inventoryOptions;
                                     if(Class60.aBoolean1402)
                                         class1s = Class56.method968(class1s, false);
                                     if(class1s == null || class1s[4] == null)

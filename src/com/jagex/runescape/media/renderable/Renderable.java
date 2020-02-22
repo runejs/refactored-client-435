@@ -44,7 +44,7 @@ public abstract class Renderable extends SubNode {
                 Class40_Sub5_Sub12 class40_sub5_sub12 = class40_sub5_sub12s[i];
                 if(class40_sub5_sub12 != null && class40_sub5_sub12.anInt2683 == 6) {
                     if((class40_sub5_sub12.anInt2659 ^ 0xffffffff) != 0 || class40_sub5_sub12.anInt2653 != -1) {
-                        boolean bool_0_ = ItemDefinition.method746(false, class40_sub5_sub12);
+                        boolean bool_0_ = ItemDefinition.method746(class40_sub5_sub12);
                         int i_1_;
                         if(bool_0_)
                             i_1_ = class40_sub5_sub12.anInt2653;

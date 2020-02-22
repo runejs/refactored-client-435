@@ -203,7 +203,7 @@ public class Player extends Actor {
                         break;
                     }
                     if((is[i_4_] ^ 0xffffffff) <= -513) {
-                        int i_7_ = ItemDefinition.forId(-512 + is[i_4_], 10).team;
+                        int i_7_ = ItemDefinition.forId(-512 + is[i_4_], 10).teamIndex;
                         if((i_7_ ^ 0xffffffff) != -1)
                             anInt3266 = i_7_;
                     }

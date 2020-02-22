@@ -942,11 +942,11 @@ public class CollisionMap {
                             return true;
                         }
                         ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_86_, 10);
-                        class40_sub5_sub12.anInt2690 = class40_sub5_sub16.anInt2844;
+                        class40_sub5_sub12.anInt2690 = class40_sub5_sub16.modelRotation1;
                         class40_sub5_sub12.anInt2673 = i_86_;
                         class40_sub5_sub12.anInt2687 = 4;
-                        class40_sub5_sub12.anInt2728 = 100 * class40_sub5_sub16.anInt2817 / i_85_;
-                        class40_sub5_sub12.anInt2657 = class40_sub5_sub16.anInt2830;
+                        class40_sub5_sub12.anInt2728 = 100 * class40_sub5_sub16.modelZoom / i_85_;
+                        class40_sub5_sub12.anInt2657 = class40_sub5_sub16.modelRotation2;
                     } else {
                         class40_sub5_sub12.anInt2734 = 1;
                         class40_sub5_sub12.anInt2718 = i_86_;
