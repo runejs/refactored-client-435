@@ -184,7 +184,7 @@ public class ItemDefinition extends SubNode {
         for(int i = 0; GameObjectDefinition.anInt2558 > i; i++) {
             Npc npc = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i]]);
             int i_15_ = (536870912 + (Class40_Sub3.anIntArray2016[i] << 1399377262));
-            if(npc != null && npc.method784(1) && !arg0 != (npc.aClass40_Sub5_Sub5_3300.aBoolean2397) && npc.aClass40_Sub5_Sub5_3300.method571(-1)) {
+            if(npc != null && npc.method784(1) && !arg0 != (npc.aClass40_Sub5_Sub5_3300.hasRenderPriority) && npc.aClass40_Sub5_Sub5_3300.method571(-1)) {
                 int i_16_ = (npc.anInt3098 >> -1699335129);
                 int i_17_ = npc.anInt3089 >> 698755175;
                 if((i_16_ ^ 0xffffffff) <= -1 && (i_16_ ^ 0xffffffff) > -105 && (i_17_ ^ 0xffffffff) <= -1 && i_17_ < 104) {
@@ -194,7 +194,7 @@ public class ItemDefinition extends SubNode {
                         }
                         Class61.anIntArrayArray1435[i_16_][i_17_] = Class40_Sub5_Sub11.anInt2628;
                     }
-                    if(!npc.aClass40_Sub5_Sub5_3300.aBoolean2372) {
+                    if(!npc.aClass40_Sub5_Sub5_3300.isClickable) {
                         i_15_ += -2147483648;
                     }
                     Npc.aScene_3301.method134(Player.anInt3267, npc.anInt3098, npc.anInt3089, (Class37.method430((byte) -126, Player.anInt3267, (npc.anInt3098 + ((-1 + npc.anInt3096) * 64)), (npc.anInt3096 * 64 + (-64 + (npc.anInt3089))))), -64 + (npc.anInt3096 * 64 + 60), npc, npc.anInt3118, i_15_, npc.aBoolean3105);

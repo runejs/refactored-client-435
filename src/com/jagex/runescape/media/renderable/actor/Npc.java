@@ -480,7 +480,7 @@ public class Npc extends Actor {
                     class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, 2, true);
                 }
             }
-            if((aClass40_Sub5_Sub5_3300.anInt2374 ^ 0xffffffff) == -2)
+        if((aClass40_Sub5_Sub5_3300.tileSpacesOccupied ^ 0xffffffff) == -2)
                 class40_sub5_sub17_sub5.aBoolean3164 = true;
             return class40_sub5_sub17_sub5;
 

@@ -95,10 +95,10 @@ public class Class33 {
                         }
                         if(Class60.anInt1407 <= i) {
                             NpcDefinition class40_sub5_sub5 = (((Npc) actor).aClass40_Sub5_Sub5_3300);
-                            if(((class40_sub5_sub5.anInt2381 ^ 0xffffffff) <= -1) && (class40_sub5_sub5.anInt2381 < (Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204).length)) {
+                            if(((class40_sub5_sub5.headIcon ^ 0xffffffff) <= -1) && (class40_sub5_sub5.headIcon < (Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204).length)) {
                                 FloorDecoration.method342(-127, (actor.anInt3117) + 15, actor);
                                 if(ISAAC.anInt522 > -1)
-                                    Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204[class40_sub5_sub5.anInt2381].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -30);
+                                    Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204[class40_sub5_sub5.headIcon].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -30);
                             }
                             if((Player.anInt3288 ^ 0xffffffff) == -2 && (((Class40_Sub3.anIntArray2016[-Class60.anInt1407 + i]) ^ 0xffffffff) == (Class66.anInt1545 ^ 0xffffffff)) && Node.anInt926 % 20 < 10) {
                                 FloorDecoration.method342(107, 15 + (actor.anInt3117), actor);

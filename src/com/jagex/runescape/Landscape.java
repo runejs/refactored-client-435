@@ -117,7 +117,7 @@ public class Landscape {
             class40_sub5_sub5 = new NpcDefinition();
             class40_sub5_sub5.anInt2427 = arg1;
             if(is != null)
-                class40_sub5_sub5.method573(true, new Buffer(is));
+                class40_sub5_sub5.readValues(new Buffer(is));
             class40_sub5_sub5.method579((byte) -77);
             ISAAC.aClass9_510.method230(-7208, (long) arg1, class40_sub5_sub5);
             return class40_sub5_sub5;

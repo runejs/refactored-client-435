@@ -169,7 +169,7 @@ public class Class37 {
                     NpcDefinition class40_sub5_sub5 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300);
                     if(class40_sub5_sub5.anIntArray2426 != null)
                         class40_sub5_sub5 = class40_sub5_sub5.method577(-1);
-                    if(class40_sub5_sub5 != null && class40_sub5_sub5.aBoolean2430 && class40_sub5_sub5.aBoolean2372) {
+                    if(class40_sub5_sub5 != null && class40_sub5_sub5.renderOnMinimap && class40_sub5_sub5.isClickable) {
                         i = (-((Class40_Sub5_Sub13.localPlayer.anInt3098) / 32) + (class40_sub5_sub17_sub4_sub2.anInt3098 / 32));
                         i_8_ = (class40_sub5_sub17_sub4_sub2.anInt3089 / 32 + -((Class40_Sub5_Sub13.localPlayer.anInt3089) / 32));
                         SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[1]);
