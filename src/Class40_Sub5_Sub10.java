@@ -93,7 +93,7 @@ public class Class40_Sub5_Sub10 extends SubNode {
                 return null;
             Buffer class40_sub1 = new Buffer(is);
             class40_sub5_sub1 = new Class40_Sub5_Sub1();
-            class40_sub1.offset = class40_sub1.payload.length + -12;
+            class40_sub1.offset = class40_sub1.buffer.length + -12;
             int i = class40_sub1.method491(-4750);
             int i_0_ = 0;
             class40_sub5_sub1.anInt2271 = class40_sub1.method469(65280);
@@ -104,7 +104,7 @@ public class Class40_Sub5_Sub10 extends SubNode {
             class40_sub5_sub1.anIntArray2262 = new int[i];
             class40_sub1.offset = 0;
             class40_sub5_sub1.anIntArray2272 = new int[i];
-            while(class40_sub1.offset < -12 + class40_sub1.payload.length) {
+            while(class40_sub1.offset < -12 + class40_sub1.buffer.length) {
                 int i_1_ = class40_sub1.method469(65280);
                 if(i_1_ != 3) {
                     if(i_1_ >= 100 || i_1_ == 21 || (i_1_ ^ 0xffffffff) == -39 || i_1_ == 39)

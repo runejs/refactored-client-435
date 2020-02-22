@@ -259,7 +259,7 @@ public class FloorDecoration {
                     Buffer class40_sub1 = new Buffer(4);
                     class40_sub1.put(1, (byte) -128);
                     class40_sub1.putTri((int) class40_sub5_sub13.key, 13723);
-                    Class57.aClass64_1345.method1010(4, (byte) -19, 0, (class40_sub1.payload));
+                    Class57.aClass64_1345.method1010(4, (byte) -19, 0, (class40_sub1.buffer));
                     Class37.aClass23_869.put(class40_sub5_sub13, (byte) -115, (class40_sub5_sub13.key));
                     Class68.anInt1618--;
                 }
@@ -268,7 +268,7 @@ public class FloorDecoration {
                     Buffer class40_sub1 = new Buffer(4);
                     class40_sub1.put(0, (byte) -128);
                     class40_sub1.putTri((int) class40_sub5_sub13.key, arg0 + 13675);
-                    Class57.aClass64_1345.method1010(4, (byte) -19, 0, (class40_sub1.payload));
+                    Class57.aClass64_1345.method1010(4, (byte) -19, 0, (class40_sub1.buffer));
                     class40_sub5_sub13.method539(0);
                     Class34.aClass23_841.put(class40_sub5_sub13, (byte) -122, (class40_sub5_sub13.key));
                     Class42.anInt1006++;
@@ -286,16 +286,16 @@ public class FloorDecoration {
                     else if((Landscape.anInt1157 ^ 0xffffffff) == -1)
                         i_35_ = 1;
                     if(i_35_ <= 0) {
-                        int i_36_ = ((Class40_Sub5_Sub13.aClass40_Sub1_2752.payload).length + -(PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758));
+                        int i_36_ = ((Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer).length + -(PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758));
                         int i_37_ = -Landscape.anInt1157 + 512;
                         if(((-Class40_Sub5_Sub13.aClass40_Sub1_2752.offset + i_36_) ^ 0xffffffff) > (i_37_ ^ 0xffffffff))
                             i_37_ = i_36_ - (Class40_Sub5_Sub13.aClass40_Sub1_2752.offset);
                         if(i_37_ > i_34_)
                             i_37_ = i_34_;
-                        Class57.aClass64_1345.method1008((Class40_Sub5_Sub13.aClass40_Sub1_2752.offset), i_37_, -127, (Class40_Sub5_Sub13.aClass40_Sub1_2752.payload));
+                        Class57.aClass64_1345.method1008((Class40_Sub5_Sub13.aClass40_Sub1_2752.offset), i_37_, -127, (Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer));
                         if((Class8.aByte302 ^ 0xffffffff) != -1) {
                             for(int i_38_ = 0; (i_37_ ^ 0xffffffff) < (i_38_ ^ 0xffffffff); i_38_++)
-                                Class40_Sub5_Sub13.aClass40_Sub1_2752.payload[(Class40_Sub5_Sub13.aClass40_Sub1_2752.offset) + i_38_] = (byte) (RSApplet.method27((Class40_Sub5_Sub13.aClass40_Sub1_2752.payload[(Class40_Sub5_Sub13.aClass40_Sub1_2752.offset) + i_38_]), Class8.aByte302));
+                                Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[(Class40_Sub5_Sub13.aClass40_Sub1_2752.offset) + i_38_] = (byte) (RSApplet.method27((Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[(Class40_Sub5_Sub13.aClass40_Sub1_2752.offset) + i_38_]), Class8.aByte302));
                         }
                         Class40_Sub5_Sub13.aClass40_Sub1_2752.offset += i_37_;
                         Landscape.anInt1157 += i_37_;
@@ -304,7 +304,7 @@ public class FloorDecoration {
 				/*aCRC32_590.reset();
 				aCRC32_590.update((Class40_Sub5_Sub13
 						   .aClass40_Sub1_2752
-						   .payload),
+						   .buffer),
 						  0, i_36_);*/
 				/*int i_39_ = (int) aCRC32_590.getValue();
 				if (((PacketBuffer
@@ -324,7 +324,7 @@ public class FloorDecoration {
 				}*/
                                 Class40_Sub5_Sub1.anInt2278 = 0;
                                 Class34.anInt813 = 0;
-                                PacketBuffer.aClass40_Sub5_Sub13_2250.aClass6_Sub1_2754.method196(((PacketBuffer.aClass40_Sub5_Sub13_2250.key) & 0xff0000L) == 16711680L, false, (int) ((PacketBuffer.aClass40_Sub5_Sub13_2250.key) & 0xffffL), NPC.aBoolean3298, (Class40_Sub5_Sub13.aClass40_Sub1_2752.payload));
+                                PacketBuffer.aClass40_Sub5_Sub13_2250.aClass6_Sub1_2754.method196(((PacketBuffer.aClass40_Sub5_Sub13_2250.key) & 0xff0000L) == 16711680L, false, (int) ((PacketBuffer.aClass40_Sub5_Sub13_2250.key) & 0xffffL), NPC.aBoolean3298, (Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer));
                             } else {
                                 Class48.aClass40_Sub1_1132 = Class40_Sub5_Sub13.aClass40_Sub1_2752;
                                 for(int i_40_ = 0; i_40_ < 256; i_40_++) {
@@ -353,10 +353,10 @@ public class FloorDecoration {
                         int i_42_ = -Class45.aClass40_Sub1_1081.offset + i_35_;
                         if(i_42_ > i_34_)
                             i_42_ = i_34_;
-                        Class57.aClass64_1345.method1008(Class45.aClass40_Sub1_1081.offset, i_42_, -128, Class45.aClass40_Sub1_1081.payload);
+                        Class57.aClass64_1345.method1008(Class45.aClass40_Sub1_1081.offset, i_42_, -128, Class45.aClass40_Sub1_1081.buffer);
                         if((Class8.aByte302 ^ 0xffffffff) != -1) {
                             for(int i_43_ = 0; i_42_ > i_43_; i_43_++)
-                                Class45.aClass40_Sub1_1081.payload[(Class45.aClass40_Sub1_1081.offset + i_43_)] = (byte) (RSApplet.method27((Class45.aClass40_Sub1_1081.payload[(Class45.aClass40_Sub1_1081.offset) + i_43_]), Class8.aByte302));
+                                Class45.aClass40_Sub1_1081.buffer[(Class45.aClass40_Sub1_1081.offset + i_43_)] = (byte) (RSApplet.method27((Class45.aClass40_Sub1_1081.buffer[(Class45.aClass40_Sub1_1081.offset) + i_43_]), Class8.aByte302));
                         }
                         Class45.aClass40_Sub1_1081.offset += i_42_;
                         if((i_35_ ^ 0xffffffff) < (Class45.aClass40_Sub1_1081.offset ^ 0xffffffff))
@@ -384,7 +384,7 @@ public class FloorDecoration {
                             Landscape.anInt1157 = 8;
                             Class45.aClass40_Sub1_1081.offset = 0;
                         } else if(Landscape.anInt1157 == 0) {
-                            if((Class45.aClass40_Sub1_1081.payload[0] ^ 0xffffffff) != 0)
+                            if((Class45.aClass40_Sub1_1081.buffer[0] ^ 0xffffffff) != 0)
                                 PacketBuffer.aClass40_Sub5_Sub13_2250 = null;
                             else {
                                 Class45.aClass40_Sub1_1081.offset = 0;

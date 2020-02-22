@@ -208,7 +208,7 @@ public class PacketBuffer extends Buffer {
             if(arg0 != 49)
                 aClass1_2260 = null;
             anInt2232++;
-            return 0xff & (payload[offset++]/* + -encryption.method286(-101)*/);
+            return 0xff & (buffer[offset++]/* + -encryption.method286(-101)*/);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "fe.TB(" + arg0 + ')');
         }
@@ -224,13 +224,13 @@ public class PacketBuffer extends Buffer {
             int i_1_ = 8 - (0x7 & bitoffset);
             bitoffset += arg0;
             for(/**/; i_1_ < arg0; i_1_ = 8) {
-                i_0_ += (Class40_Sub5_Sub4.anIntArray2361[i_1_] & payload[i++]) << -i_1_ + arg0;
+                i_0_ += (Class40_Sub5_Sub4.anIntArray2361[i_1_] & buffer[i++]) << -i_1_ + arg0;
                 arg0 -= i_1_;
             }
             if((i_1_ ^ 0xffffffff) != (arg0 ^ 0xffffffff))
-                i_0_ += (Class40_Sub5_Sub4.anIntArray2361[arg0] & payload[i] >> -arg0 + i_1_);
+                i_0_ += (Class40_Sub5_Sub4.anIntArray2361[arg0] & buffer[i] >> -arg0 + i_1_);
             else
-                i_0_ += (payload[i] & Class40_Sub5_Sub4.anIntArray2361[i_1_]);
+                i_0_ += (buffer[i] & Class40_Sub5_Sub4.anIntArray2361[i_1_]);
             return i_0_;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "fe.RB(" + arg0 + ',' + arg1 + ')');
@@ -242,7 +242,7 @@ public class PacketBuffer extends Buffer {
             if(arg0 != 11453)
                 method513(62, null, null, (byte) -105);
             anInt2253++;
-            payload[offset++] = //(byte) (encryption.method286(RSApplet.method27(arg0, -11500)) + arg1);
+            buffer[offset++] = //(byte) (encryption.method286(RSApplet.method27(arg0, -11500)) + arg1);
                     (byte) arg1;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "fe.UB(" + arg0 + ',' + arg1 + ')');

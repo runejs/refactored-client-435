@@ -119,7 +119,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
                 }
                 if(!bool && Class4.anInt182 == 0) {
                     Class59.aClass40_Sub1_1385.offset = 0;
-                    Cache.outgoingbuffer.putBytes128((byte) -80, 0, Class59.aClass40_Sub1_1385.payload, i_4_);
+                    Cache.outgoingbuffer.putBytes128((byte) -80, 0, Class59.aClass40_Sub1_1385.buffer, i_4_);
                     Class59.aClass40_Sub1_1385.offset = 0;
                     RSString class1 = Class54.method956(124, Class59.aClass40_Sub1_1385).method53(-16315);
                     arg0.aClass1_3090 = class1.method89(false);
@@ -230,7 +230,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             anInt2205++;
             int i = arg2.offset;
             arg2.method509(arg1.anInt1680, 32768);
-            arg2.offset += (Class40_Sub5_Sub10.aClass66_2590.method1026(-18678, 0, arg2.offset, arg1.anInt1680, arg1.aByteArray1692, arg2.payload));
+            arg2.offset += (Class40_Sub5_Sub10.aClass66_2590.method1026(-18678, 0, arg2.offset, arg1.anInt1680, arg1.aByteArray1692, arg2.buffer));
             return -i + arg2.offset;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, ("ac.C(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + (arg2 != null ? "{...}" : "null") + ')'));

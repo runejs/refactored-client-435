@@ -96,7 +96,7 @@ public class Class34 {
             if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null || PacketBuffer.aClass40_Sub5_Sub13_2250.key != l)
                 return 0;
             int i = 34 % ((arg0 + 46) / 45);
-            return 1 + (Class40_Sub5_Sub13.aClass40_Sub1_2752.offset * 99 / ((Class40_Sub5_Sub13.aClass40_Sub1_2752.payload).length + -(PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758)));
+            return 1 + (Class40_Sub5_Sub13.aClass40_Sub1_2752.offset * 99 / ((Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer).length + -(PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758)));
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, ("mb.E(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
         }

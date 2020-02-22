@@ -104,7 +104,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     Buffer class40_sub1 = new Buffer(4);
                     class40_sub1.put(arg0 ? 2 : 3, (byte) -128);
                     class40_sub1.putTri(0, 13723);
-                    Class57.aClass64_1345.method1010(4, (byte) -19, 0, (class40_sub1.payload));
+                    Class57.aClass64_1345.method1010(4, (byte) -19, 0, (class40_sub1.buffer));
                 } catch(java.io.IOException ioexception) {
                     try {
                         Class57.aClass64_1345.method1009(-18);

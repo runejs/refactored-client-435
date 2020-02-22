@@ -77,7 +77,7 @@ public class Class17 {
                     class40_sub1.put(4, (byte) -128);
                     class40_sub1.put(Class8.aByte302, (byte) -128);
                     class40_sub1.method474(0, -128);
-                    Class57.aClass64_1345.method1010(4, (byte) -19, 0, (class40_sub1.payload));
+                    Class57.aClass64_1345.method1010(4, (byte) -19, 0, (class40_sub1.buffer));
                 } catch(java.io.IOException ioexception) {
                     try {
                         Class57.aClass64_1345.method1009(-123);

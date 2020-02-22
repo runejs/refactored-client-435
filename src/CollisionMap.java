@@ -84,7 +84,7 @@ public class CollisionMap {
                 if((i ^ 0xffffffff) == -1)
                     return false;
                 if(Class57.packetid == -1) {
-                    Class40_Sub6.aClass64_2098.method1008(0, 1, -127, Cache.outgoingbuffer.payload);
+                    Class40_Sub6.aClass64_2098.method1008(0, 1, -127, Cache.outgoingbuffer.buffer);
                     Cache.outgoingbuffer.offset = 0;
                     i--;
                     Class57.packetid = Cache.outgoingbuffer.getPacket((byte) 49);
@@ -93,8 +93,8 @@ public class CollisionMap {
                 System.out.println("packet received: " + Class57.packetid);
                 if((Class40_Sub5_Sub12.packetsize ^ 0xffffffff) == 0) {
                     if((i ^ 0xffffffff) < -1) {
-                        Class40_Sub6.aClass64_2098.method1008(0, 1, -127, Cache.outgoingbuffer.payload);
-                        Class40_Sub5_Sub12.packetsize = (Cache.outgoingbuffer.payload[0] & 0xff);
+                        Class40_Sub6.aClass64_2098.method1008(0, 1, -127, Cache.outgoingbuffer.buffer);
+                        Class40_Sub5_Sub12.packetsize = (Cache.outgoingbuffer.buffer[0] & 0xff);
                         i--;
                     } else
                         return false;
@@ -103,14 +103,14 @@ public class CollisionMap {
                     if(i <= 1)
                         return false;
                     i -= 2;
-                    Class40_Sub6.aClass64_2098.method1008(0, 2, -127, Cache.outgoingbuffer.payload);
+                    Class40_Sub6.aClass64_2098.method1008(0, 2, -127, Cache.outgoingbuffer.buffer);
                     Cache.outgoingbuffer.offset = 0;
                     Class40_Sub5_Sub12.packetsize = Cache.outgoingbuffer.method469(65280);
                 }
                 if((Class40_Sub5_Sub12.packetsize ^ 0xffffffff) < (i ^ 0xffffffff))
                     return false;
                 Cache.outgoingbuffer.offset = 0;
-                Class40_Sub6.aClass64_2098.method1008(0, Class40_Sub5_Sub12.packetsize, -128, Cache.outgoingbuffer.payload);
+                Class40_Sub6.aClass64_2098.method1008(0, Class40_Sub5_Sub12.packetsize, -128, Cache.outgoingbuffer.buffer);
                 Class49.anInt1151 = Cache.anInt324;
                 Class35.anInt1728 = 0;
                 Cache.anInt324 = RSString.anInt1690;
@@ -1136,7 +1136,7 @@ public class CollisionMap {
             } catch(Exception exception) {
                 String string = ("T2 - " + Class57.packetid + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + Class40_Sub5_Sub12.packetsize + "," + (Class40_Sub5_Sub2.anInt2307 + (Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3088[0])) + "," + ((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub4_Sub1_2760.anIntArray3135[0]) + Class26.anInt635) + " - ");
                 for(int i = 0; (((Class40_Sub5_Sub12.packetsize ^ 0xffffffff) < (i ^ 0xffffffff)) && (i ^ 0xffffffff) > -51); i++)
-                    string += (Cache.outgoingbuffer.payload[i] + ",");
+                    string += (Cache.outgoingbuffer.buffer[i] + ",");
                 Class6.method169(string, (byte) -120, exception);
                 Class48.method928(-7225);
             }

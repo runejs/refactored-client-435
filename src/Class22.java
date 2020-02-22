@@ -147,7 +147,7 @@ public abstract class Class22 {
                 if((arg2 ^ 0xffffffff) > (class1.anInt1680 ^ 0xffffffff))
                     class1.anInt1680 = arg2;
                 class1.aByteArray1692 = new byte[class1.anInt1680];
-                arg0.offset += (Class40_Sub5_Sub10.aClass66_2590.method1023(arg0.payload, class1.anInt1680, 0, class1.aByteArray1692, arg0.offset, -1));
+                arg0.offset += (Class40_Sub5_Sub10.aClass66_2590.method1023(arg0.buffer, class1.anInt1680, 0, class1.aByteArray1692, arg0.offset, -1));
                 return class1;
             } catch(Exception exception) {
                 return Class33.aClass1_777;

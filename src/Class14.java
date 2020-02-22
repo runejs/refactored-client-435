@@ -49,7 +49,7 @@ public class Class14 {
     }
 
     public void method255() {
-        aClass40_Sub1_423.payload = null;
+        aClass40_Sub1_423.buffer = null;
         anIntArray426 = null;
         anIntArray425 = null;
         anIntArray427 = null;
@@ -57,7 +57,7 @@ public class Class14 {
     }
 
     public void method256(byte[] arg0) {
-        aClass40_Sub1_423.payload = arg0;
+        aClass40_Sub1_423.buffer = arg0;
         aClass40_Sub1_423.offset = 10;
         int i = aClass40_Sub1_423.method469(65280);
         anInt431 = aClass40_Sub1_423.method469(65280);
@@ -79,7 +79,7 @@ public class Class14 {
     }
 
     public boolean method257() {
-        return aClass40_Sub1_423.payload != null;
+        return aClass40_Sub1_423.buffer != null;
     }
 
     public boolean method258() {
@@ -103,7 +103,7 @@ public class Class14 {
     }
 
     public int method261(int arg0) {
-        int i = aClass40_Sub1_423.payload[aClass40_Sub1_423.offset];
+        int i = aClass40_Sub1_423.buffer[aClass40_Sub1_423.offset];
         if(i < 0) {
             i &= 0xff;
             anIntArray428[arg0] = i;
@@ -113,7 +113,7 @@ public class Class14 {
         if(i == 240 || i == 247) {
             int i_7_ = aClass40_Sub1_423.method500(63);
             if(i == 247 && i_7_ > 0) {
-                int i_8_ = ((aClass40_Sub1_423.payload[aClass40_Sub1_423.offset]) & 0xff);
+                int i_8_ = ((aClass40_Sub1_423.buffer[aClass40_Sub1_423.offset]) & 0xff);
                 if(i_8_ >= 241 && i_8_ <= 243 || i_8_ == 246 || i_8_ == 248 || i_8_ >= 250 && i_8_ <= 252 || i_8_ == 254) {
                     aClass40_Sub1_423.offset++;
                     anIntArray428[arg0] = i_8_;

@@ -415,7 +415,7 @@ public abstract class Class6 {
                 is_21_ = new byte[aByteArrayArray212[arg0].length];
                 Class18.method278(aByteArrayArray212[arg0], 0, is_21_, 0, is_21_.length);
                 Buffer class40_sub1 = new Buffer(is_21_);
-                class40_sub1.method483(arg2, false, class40_sub1.payload.length, 5);
+                class40_sub1.method483(arg2, false, class40_sub1.buffer.length, 5);
             }
             byte[] is_22_;
             try {

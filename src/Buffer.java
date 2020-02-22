@@ -79,11 +79,11 @@ public class Buffer extends Node {
     }
 
     public int offset;
-    public byte[] payload;
+    public byte[] buffer;
 
     public Buffer(int arg0) {
         try {
-            payload = Class13.method246(-21955, arg0);
+            buffer = Class13.method246(-21955, arg0);
             offset = 0;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.<init>(" + arg0 + ')');
@@ -93,7 +93,7 @@ public class Buffer extends Node {
     public Buffer(byte[] arg0) {
         try {
             offset = 0;
-            payload = arg0;
+            buffer = arg0;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.<init>(" + (arg0 != null ? "{...}" : "null") + ')');
         }
@@ -152,7 +152,7 @@ public class Buffer extends Node {
     public int method460(int arg0) {
         try {
             offset += 2;
-            int i = ((payload[-1 + offset] + -128 & 0xff) + (0xff00 & payload[-2 + offset] << 815900680));
+            int i = ((buffer[-1 + offset] + -128 & 0xff) + (0xff00 & buffer[-2 + offset] << 815900680));
             if(i > 32767)
                 i -= 65536;
             anInt1975++;
@@ -170,7 +170,7 @@ public class Buffer extends Node {
             if(arg0 < 56)
                 method482((byte) -114);
             offset += 2;
-            return ((payload[-2 + offset] << 1603608168 & 0xff00) + (0xff & payload[offset + -1] - 128));
+            return ((buffer[-2 + offset] << 1603608168 & 0xff00) + (0xff & buffer[offset + -1] - 128));
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.R(" + arg0 + ')');
         }
@@ -183,7 +183,7 @@ public class Buffer extends Node {
             if(arg0 != -80)
                 method504(true);
             for(/**/; i < arg3 + arg1; i++)
-                arg2[i] = (byte) (payload[offset++] + -128);
+                arg2[i] = (byte) (buffer[offset++] + -128);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, ("ba.FA(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ')'));
         }
@@ -195,7 +195,7 @@ public class Buffer extends Node {
                 offset = -110;
             anInt1970++;
             offset += 2;
-            int i = ((0xff00 & payload[offset + -2] << -1506761304) + (payload[offset - 1] & 0xff));
+            int i = ((0xff00 & buffer[offset + -2] << -1506761304) + (buffer[offset - 1] & 0xff));
             if((i ^ 0xffffffff) < -32768)
                 i -= 65536;
             return i;
@@ -210,10 +210,10 @@ public class Buffer extends Node {
             int i = offset;
             if(arg0 != -10721)
                 method483(null, true, -57, 63);
-            while(payload[offset++] != 0) {
+            while(buffer[offset++] != 0) {
                 /* empty */
             }
-            return Class19.method279(payload, true, i, -1 + offset + -i);
+            return Class19.method279(buffer, true, i, -1 + offset + -i);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.M(" + arg0 + ')');
         }
@@ -223,7 +223,7 @@ public class Buffer extends Node {
         try {
             if(arg1 == -128) {
                 anInt1961++;
-                payload[offset++] = (byte) arg0;
+                buffer[offset++] = (byte) arg0;
             }
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.JB(" + arg0 + ',' + arg1 + ')');
@@ -256,7 +256,7 @@ public class Buffer extends Node {
             if(arg0 < 9)
                 getRSString(-30);
             anInt1931++;
-            return (byte) -payload[offset++];
+            return (byte) -buffer[offset++];
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.DB(" + arg0 + ')');
         }
@@ -267,7 +267,7 @@ public class Buffer extends Node {
             if(arg0 != false)
                 return 118;
             anInt1932++;
-            return 0xff & payload[offset++];
+            return 0xff & buffer[offset++];
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.N(" + arg0 + ')');
         }
@@ -279,7 +279,7 @@ public class Buffer extends Node {
             offset += 2;
             if(arg0 != 65280)
                 return 7;
-            return (((0xff & payload[offset + -2]) << 21603400) + (payload[offset + -1] & 0xff));
+            return (((0xff & buffer[offset + -2]) << 21603400) + (buffer[offset + -1] & 0xff));
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.A(" + arg0 + ')');
         }
@@ -288,10 +288,10 @@ public class Buffer extends Node {
     public int method470(int arg0) {
         try {
             if(arg0 >= -114)
-                payload = null;
+                buffer = null;
             offset += 4;
             anInt1954++;
-            return ((0xff00 & payload[offset + -1] << 608837736) + ((payload[-4 + offset] << -1100116464 & 0xff0000) + ((payload[-3 + offset] & 0xff) << 1673380440)) + (payload[offset + -2] & 0xff));
+            return ((0xff00 & buffer[offset + -1] << 608837736) + ((buffer[-4 + offset] << -1100116464 & 0xff0000) + ((buffer[-3 + offset] & 0xff) << 1673380440)) + (buffer[offset + -2] & 0xff));
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.O(" + arg0 + ')');
         }
@@ -301,7 +301,7 @@ public class Buffer extends Node {
         try {
             int i = 41 / ((78 - arg0) / 36);
             anInt1938++;
-            return 0xff & -payload[offset++];
+            return 0xff & -buffer[offset++];
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.BB(" + arg0 + ')');
         }
@@ -310,7 +310,7 @@ public class Buffer extends Node {
     public int method473(int arg0, int arg1) {
         try {
             anInt1927++;
-            int i = Class67.method1034(true, arg1, offset, payload);
+            int i = Class67.method1034(true, arg1, offset, buffer);
             putInt(127, i);
             if(arg0 <= 14)
                 anIntArray1972 = null;
@@ -324,8 +324,8 @@ public class Buffer extends Node {
         try {
             anInt1958++;
             int i = -63 / ((-60 - arg1) / 61);
-            payload[offset++] = (byte) (arg0 >> 1391556904);
-            payload[offset++] = (byte) arg0;
+            buffer[offset++] = (byte) (arg0 >> 1391556904);
+            buffer[offset++] = (byte) arg0;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.EB(" + arg0 + ',' + arg1 + ')');
         }
@@ -335,7 +335,7 @@ public class Buffer extends Node {
         try {
             if(arg3 == 8636) {
                 for(int i = arg2; arg2 + arg0 > i; i++)
-                    payload[offset++] = arg1[i];
+                    buffer[offset++] = arg1[i];
                 anInt1977++;
             }
         } catch(RuntimeException runtimeexception) {
@@ -348,7 +348,7 @@ public class Buffer extends Node {
             anInt1940++;
             if(arg0 != 255)
                 putTri(-16, 96);
-            return 0xff & payload[offset++] - 128;
+            return 0xff & buffer[offset++] - 128;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.U(" + arg0 + ')');
         }
@@ -359,9 +359,9 @@ public class Buffer extends Node {
             if(arg1 != 13723)
                 offset = -49;
             anInt1945++;
-            payload[offset++] = (byte) (arg0 >> 600646704);
-            payload[offset++] = (byte) (arg0 >> 530884104);
-            payload[offset++] = (byte) arg0;
+            buffer[offset++] = (byte) (arg0 >> 600646704);
+            buffer[offset++] = (byte) (arg0 >> 530884104);
+            buffer[offset++] = (byte) arg0;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.CB(" + arg0 + ',' + arg1 + ')');
         }
@@ -372,8 +372,8 @@ public class Buffer extends Node {
             if(arg1 > -17)
                 anInt1985 = -53;
             anInt1950++;
-            payload[offset++] = (byte) (128 + arg0);
-            payload[offset++] = (byte) (arg0 >> -1619921976);
+            buffer[offset++] = (byte) (128 + arg0);
+            buffer[offset++] = (byte) (arg0 >> -1619921976);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.LA(" + arg0 + ',' + arg1 + ')');
         }
@@ -383,7 +383,7 @@ public class Buffer extends Node {
         try {
             if(arg1 != 16)
                 anIntArray1984 = null;
-            payload[-1 + (offset + -arg0)] = (byte) arg0;
+            buffer[-1 + (offset + -arg0)] = (byte) arg0;
             anInt1979++;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.C(" + arg0 + ',' + arg1 + ')');
@@ -395,7 +395,7 @@ public class Buffer extends Node {
             anInt1944++;
             if(arg0 != -70)
                 return -26;
-            return 0xff & 128 - payload[offset++];
+            return 0xff & 128 - buffer[offset++];
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.K(" + arg0 + ')');
         }
@@ -404,16 +404,16 @@ public class Buffer extends Node {
     public void putLong(long arg0, boolean arg1) {
         try {
             anInt1962++;
-            payload[offset++] = (byte) (int) (arg0 >> 1191147448);
-            payload[offset++] = (byte) (int) (arg0 >> -1885799824);
-            payload[offset++] = (byte) (int) (arg0 >> -1645205400);
+            buffer[offset++] = (byte) (int) (arg0 >> 1191147448);
+            buffer[offset++] = (byte) (int) (arg0 >> -1885799824);
+            buffer[offset++] = (byte) (int) (arg0 >> -1645205400);
             if(arg1 != false)
                 method500(79);
-            payload[offset++] = (byte) (int) (arg0 >> -1767579936);
-            payload[offset++] = (byte) (int) (arg0 >> 784183768);
-            payload[offset++] = (byte) (int) (arg0 >> 1398515728);
-            payload[offset++] = (byte) (int) (arg0 >> 2029251720);
-            payload[offset++] = (byte) (int) arg0;
+            buffer[offset++] = (byte) (int) (arg0 >> -1767579936);
+            buffer[offset++] = (byte) (int) (arg0 >> 784183768);
+            buffer[offset++] = (byte) (int) (arg0 >> 1398515728);
+            buffer[offset++] = (byte) (int) (arg0 >> 2029251720);
+            buffer[offset++] = (byte) (int) arg0;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.WA(" + arg0 + ',' + arg1 + ')');
         }
@@ -421,7 +421,7 @@ public class Buffer extends Node {
 
     public int method482(byte arg0) {
         try {
-            int i = payload[offset] & 0xff;
+            int i = buffer[offset] & 0xff;
             anInt1935++;
             int i_2_ = -86 % ((-29 - arg0) / 63);
             if(i >= 128)
@@ -468,7 +468,7 @@ public class Buffer extends Node {
             if(arg0 < 82)
                 return -115;
             anInt1929++;
-            int i = ((0xff & -128 + payload[offset + -2]) + (0xff00 & payload[-1 + offset] << 676702312));
+            int i = ((0xff & -128 + buffer[offset + -2]) + (0xff00 & buffer[-1 + offset] << 676702312));
             if(i > 32767)
                 i -= 65536;
             return i;
@@ -483,7 +483,7 @@ public class Buffer extends Node {
             if(arg0 != -48)
                 method502((byte) 24);
             anInt1973++;
-            return ((payload[offset - 3] << 491618920 & 0xff00) + (((0xff & payload[-1 + offset]) << -690933064) + (0xff0000 & payload[-2 + offset] << 1151920912)) + (payload[offset - 4] & 0xff));
+            return ((buffer[offset - 3] << 491618920 & 0xff00) + (((0xff & buffer[-1 + offset]) << -690933064) + (0xff0000 & buffer[-2 + offset] << 1151920912)) + (buffer[offset - 4] & 0xff));
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.BA(" + arg0 + ')');
         }
@@ -492,10 +492,10 @@ public class Buffer extends Node {
     public void method486(int arg0, int arg1) {
         try {
             anInt1942++;
-            payload[offset++] = (byte) arg1;
+            buffer[offset++] = (byte) arg1;
             if(arg0 != 14912)
                 method496(73, 82);
-            payload[offset++] = (byte) (arg1 >> -1300162104);
+            buffer[offset++] = (byte) (arg1 >> -1300162104);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.MA(" + arg0 + ',' + arg1 + ')');
         }
@@ -504,12 +504,12 @@ public class Buffer extends Node {
     public void method487(int arg0, byte arg1) {
         try {
             anInt1980++;
-            payload[offset++] = (byte) (arg0 >> 1890701136);
-            payload[offset++] = (byte) (arg0 >> 1350143384);
-            payload[offset++] = (byte) arg0;
+            buffer[offset++] = (byte) (arg0 >> 1890701136);
+            buffer[offset++] = (byte) (arg0 >> 1350143384);
+            buffer[offset++] = (byte) arg0;
             if(arg1 <= 84)
                 method470(44);
-            payload[offset++] = (byte) (arg0 >> -1913919160);
+            buffer[offset++] = (byte) (arg0 >> -1913919160);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.V(" + arg0 + ',' + arg1 + ')');
         }
@@ -521,7 +521,7 @@ public class Buffer extends Node {
                 anInt1976 = -89;
             anInt1936++;
             offset += 3;
-            return (((payload[-3 + offset] & 0xff) << 1362367312) + ((payload[-2 + offset] & 0xff) << -1723151192) + (0xff & payload[offset + -1]));
+            return (((buffer[-3 + offset] & 0xff) << 1362367312) + ((buffer[-2 + offset] & 0xff) << -1723151192) + (0xff & buffer[offset + -1]));
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.W(" + arg0 + ')');
         }
@@ -530,7 +530,7 @@ public class Buffer extends Node {
     public void method489(int arg0, int arg1) {
         try {
             anInt1946++;
-            payload[offset++] = (byte) (arg1 + arg0);
+            buffer[offset++] = (byte) (arg1 + arg0);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.VA(" + arg0 + ',' + arg1 + ')');
         }
@@ -542,7 +542,7 @@ public class Buffer extends Node {
             if(arg0 != -70)
                 anInt1976 = 28;
             offset += 2;
-            return ((0xff00 & payload[offset - 1] << 1865467432) + (0xff & payload[-2 + offset]));
+            return ((0xff00 & buffer[offset - 1] << 1865467432) + (0xff & buffer[-2 + offset]));
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.F(" + arg0 + ')');
         }
@@ -554,7 +554,7 @@ public class Buffer extends Node {
             if(arg0 != -4750)
                 method480((byte) 26);
             anInt1966++;
-            return ((0xff & payload[-1 + offset]) + (payload[-2 + offset] << 2134755528 & 0xff00) + (payload[-3 + offset] << -50289552 & 0xff0000) + (~0xffffff & payload[-4 + offset] << -2030879560));
+            return ((0xff & buffer[-1 + offset]) + (buffer[-2 + offset] << 2134755528 & 0xff00) + (buffer[-3 + offset] << -50289552 & 0xff0000) + (~0xffffff & buffer[-4 + offset] << -2030879560));
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.AB(" + arg0 + ')');
         }
@@ -565,7 +565,7 @@ public class Buffer extends Node {
             if(arg0 != 128)
                 method492(-79);
             anInt1928++;
-            return (byte) (-payload[offset++] + 128);
+            return (byte) (-buffer[offset++] + 128);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.CA(" + arg0 + ')');
         }
@@ -574,19 +574,19 @@ public class Buffer extends Node {
     public void method493(int arg0, int arg1) {
         try {
             anInt1934++;
-            payload[offset++] = (byte) (arg0 >> -74775704);
-            payload[offset++] = (byte) (arg0 + -arg1);
+            buffer[offset++] = (byte) (arg0 >> -74775704);
+            buffer[offset++] = (byte) (arg0 + -arg1);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.G(" + arg0 + ',' + arg1 + ')');
         }
     }
 
     public void method494(int arg0, int arg1) {
-        payload[offset++] = (byte) arg0;
+        buffer[offset++] = (byte) arg0;
         anInt1986++;
-        payload[offset++] = (byte) (arg0 >> 283040840);
-        payload[offset++] = (byte) (arg0 >> 1472658608);
-        payload[offset++] = (byte) (arg0 >> -694657128);
+        buffer[offset++] = (byte) (arg0 >> 283040840);
+        buffer[offset++] = (byte) (arg0 >> 1472658608);
+        buffer[offset++] = (byte) (arg0 >> -694657128);
         if(arg1 < 69)
             put(34, (byte) -50);
     }
@@ -596,7 +596,7 @@ public class Buffer extends Node {
             if(arg0 >= -39)
                 anIntArray1984 = null;
             anInt1969++;
-            return (byte) (payload[offset++] - 128);
+            return (byte) (buffer[offset++] - 128);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.L(" + arg0 + ')');
         }
@@ -607,7 +607,7 @@ public class Buffer extends Node {
             if(arg0 != 255)
                 anInt1976 = 21;
             anInt1953++;
-            payload[offset++] = (byte) -arg1;
+            buffer[offset++] = (byte) -arg1;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.B(" + arg0 + ',' + arg1 + ')');
         }
@@ -616,7 +616,7 @@ public class Buffer extends Node {
     public void method497(byte[] arg0, int arg1, int arg2, byte arg3) {
         anInt1960++;
         for(int i = arg1; arg2 + arg1 > i; i++)
-            arg0[i] = payload[offset++];
+            arg0[i] = buffer[offset++];
         if(arg3 != 45)
             method485((byte) -119);
     }
@@ -639,9 +639,9 @@ public class Buffer extends Node {
             anInt1957++;
             if(arg0 < 28)
                 anInt1982 = -107;
-            int i = payload[offset++];
+            int i = buffer[offset++];
             int i_11_ = 0;
-            for(/**/; i < 0; i = payload[offset++])
+            for(/**/; i < 0; i = buffer[offset++])
                 i_11_ = (0x7f & i | i_11_) << -1305190585;
             return i | i_11_;
         } catch(RuntimeException runtimeexception) {
@@ -651,7 +651,7 @@ public class Buffer extends Node {
 
     public int method502(byte arg0) {
         try {
-            int i = payload[offset] & 0xff;
+            int i = buffer[offset] & 0xff;
             int i_12_ = 100 / ((arg0 + 39) / 32);
             anInt1968++;
             if((i ^ 0xffffffff) <= -129)
@@ -664,13 +664,13 @@ public class Buffer extends Node {
 
     public void method503(int arg0, int arg1) {
         try {
-            payload[offset++] = (byte) (arg1 >> 1096534376);
+            buffer[offset++] = (byte) (arg1 >> 1096534376);
             anInt1971++;
-            payload[offset++] = (byte) arg1;
+            buffer[offset++] = (byte) arg1;
             if(arg0 != -2030879560)
                 method486(1, -84);
-            payload[offset++] = (byte) (arg1 >> -1109429416);
-            payload[offset++] = (byte) (arg1 >> -858003088);
+            buffer[offset++] = (byte) (arg1 >> -1109429416);
+            buffer[offset++] = (byte) (arg1 >> -858003088);
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.E(" + arg0 + ',' + arg1 + ')');
         }
@@ -682,7 +682,7 @@ public class Buffer extends Node {
             if(arg0 != false)
                 method474(40, 44);
             anInt1930++;
-            return ((0xff & payload[offset + -2] - 128) + (0xff00 & payload[offset + -1] << -1456241976));
+            return ((0xff & buffer[offset + -2] - 128) + (0xff00 & buffer[offset + -1] << -1456241976));
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.H(" + arg0 + ')');
         }
@@ -691,19 +691,19 @@ public class Buffer extends Node {
     public void method505(RSString arg0, byte arg1) {
         try {
             int i = -97 / ((38 - arg1) / 37);
-            offset += arg0.method51(0, arg0.method59(-3136), payload, offset, -40);
+            offset += arg0.method51(0, arg0.method59(-3136), buffer, offset, -40);
             anInt1941++;
-            payload[offset++] = (byte) 0;
+            buffer[offset++] = (byte) 0;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.IB(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ')');
         }
     }
 
     public void putInt(int arg0, int arg1) {
-        payload[offset++] = (byte) (arg1 >> -334148232);
-        payload[offset++] = (byte) (arg1 >> -353432240);
-        payload[offset++] = (byte) (arg1 >> -226274136);
-        payload[offset++] = (byte) arg1;
+        buffer[offset++] = (byte) (arg1 >> -334148232);
+        buffer[offset++] = (byte) (arg1 >> -353432240);
+        buffer[offset++] = (byte) (arg1 >> -226274136);
+        buffer[offset++] = (byte) arg1;
     }
 
     public int method507(int arg0) {
@@ -712,7 +712,7 @@ public class Buffer extends Node {
                 return -71;
             offset += 4;
             anInt1952++;
-            return ((payload[-4 + offset] << -1937025720 & 0xff00) + ((~0xffffff & payload[offset + -2] << -771603592) + (payload[offset + -1] << 1234363952 & 0xff0000) + (payload[-3 + offset] & 0xff)));
+            return ((buffer[-4 + offset] << -1937025720 & 0xff00) + ((~0xffffff & buffer[offset + -2] << -771603592) + (buffer[offset + -1] << 1234363952 & 0xff0000) + (buffer[-3 + offset] & 0xff)));
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.NA(" + arg0 + ')');
         }
@@ -721,7 +721,7 @@ public class Buffer extends Node {
     public byte get(int arg0) {
         try {
             anInt1951++;
-            return payload[offset++];
+            return buffer[offset++];
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, "ba.I(" + arg0 + ')');
         }

@@ -410,7 +410,7 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
                             try {
                                 if(Class40_Sub6.aClass64_2098 == null || (Class32.packetBuffer.offset) <= 0)
                                     break;
-                                Class40_Sub6.aClass64_2098.method1010(Class32.packetBuffer.offset, (byte) -19, 0, (Class32.packetBuffer.payload));
+                                Class40_Sub6.aClass64_2098.method1010(Class32.packetBuffer.offset, (byte) -19, 0, (Class32.packetBuffer.buffer));
                                 Class22.anInt537 = 0;
                                 Class32.packetBuffer.offset = 0;
                             } catch(java.io.IOException ioexception) {
