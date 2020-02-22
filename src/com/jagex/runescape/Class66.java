@@ -169,10 +169,10 @@ public class Class66 {
             if((NpcDefinition.anInt2394 ^ 0xffffffff) > -401) {
                 if(arg4.anIntArray2426 != null)
                     arg4 = arg4.method577(-1);
-                if(arg4 != null && arg4.aBoolean2372) {
-                    RSString class1 = arg4.aClass1_2402;
-                    if(arg4.anInt2393 != arg0)
-                        class1 = (Class40_Sub5_Sub17_Sub6.method832(-47, (new RSString[]{class1, (SceneTile.method536((Class40_Sub5_Sub13.localPlayer.anInt3260), arg4.anInt2393, arg0 + -99)), HashTable.aClass1_569, Class40_Sub5_Sub2.aClass1_2286, HashTable.method334(arg4.anInt2393, -1), Class51.aClass1_1199})));
+                if(arg4 != null && arg4.isClickable) {
+                    RSString class1 = arg4.name;
+                    if(arg4.combatLevel != arg0)
+                        class1 = (Class40_Sub5_Sub17_Sub6.method832(-47, (new RSString[]{class1, (SceneTile.method536((Class40_Sub5_Sub13.localPlayer.anInt3260), arg4.combatLevel, arg0 + -99)), HashTable.aClass1_569, Class40_Sub5_Sub2.aClass1_2286, HashTable.method334(arg4.combatLevel, -1), Class51.aClass1_1199})));
                     if((Class8.anInt301 ^ 0xffffffff) == -2) {
                         Node.anInt927++;
                         Floor.method558(arg3, Main.aClass1_1763, arg2, -501, arg1, 49, (Class40_Sub5_Sub17_Sub6.method832(-124, (new RSString[]{Npc.aClass1_3295, Class40_Sub5_Sub2.aClass1_2306, class1}))));
@@ -182,7 +182,7 @@ public class Class66 {
                             Class58.anInt1356++;
                         }
                     } else {
-                        RSString[] class1s = arg4.aClass1Array2376;
+                        RSString[] class1s = arg4.options;
                         Class52.anInt1240++;
                         if(Class60.aBoolean1402)
                             class1s = Class56.method968(class1s, false);
@@ -210,7 +210,7 @@ public class Class66 {
                                 if(class1s[i] != null && class1s[i].equalsIgnoreCase((Class38_Sub1.aClass1_1917), true)) {
                                     Class55.anInt1297++;
                                     int i_4_ = 0;
-                                    if(((Class40_Sub5_Sub13.localPlayer.anInt3260) ^ 0xffffffff) > (arg4.anInt2393 ^ 0xffffffff))
+                                    if(((Class40_Sub5_Sub13.localPlayer.anInt3260) ^ 0xffffffff) > (arg4.combatLevel ^ 0xffffffff))
                                         i_4_ = 2000;
                                     int i_5_ = 0;
                                     if((i ^ 0xffffffff) == -1)

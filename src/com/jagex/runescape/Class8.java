@@ -69,7 +69,7 @@ public class Class8 {
             int i_0_ = Class40_Sub3.anIntArray2016[i];
             Npc class40_sub5_sub17_sub4_sub2 = Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_];
             if(class40_sub5_sub17_sub4_sub2 != null)
-                Class13.method241(class40_sub5_sub17_sub4_sub2, (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2374), (byte) 107);
+                Class13.method241(class40_sub5_sub17_sub4_sub2, (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.tileSpacesOccupied), (byte) 107);
         }
         int i = -30 % ((arg0 + 8) / 34);
         anInt287++;
