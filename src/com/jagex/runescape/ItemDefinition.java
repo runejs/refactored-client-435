@@ -298,27 +298,27 @@ public class ItemDefinition extends SubNode {
         }
         if(i == -1)
             return null;
-        Model class40_sub5_sub17_sub5 = Model.getModel(Class8.aClass6_284, i, 0);
+        Model model1 = Model.getModel(Class8.aClass6_284, i, 0);
         if(i_3_ != -1) {
-            Model class40_sub5_sub17_sub5_6_ = Model.getModel(Class8.aClass6_284, i_3_, 0);
+            Model model2 = Model.getModel(Class8.aClass6_284, i_3_, 0);
             if(i_5_ == -1) {
-                Model[] class40_sub5_sub17_sub5s = {class40_sub5_sub17_sub5, class40_sub5_sub17_sub5_6_};
-                class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, 2);
+                Model[] models = {model1, model2};
+                model1 = new Model(models, 2);
             } else {
-                Model class40_sub5_sub17_sub5_7_ = Model.getModel(Class8.aClass6_284, i_5_, 0);
-                Model[] class40_sub5_sub17_sub5s = {class40_sub5_sub17_sub5, class40_sub5_sub17_sub5_6_, class40_sub5_sub17_sub5_7_};
-                class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, 3);
+                Model model3 = Model.getModel(Class8.aClass6_284, i_5_, 0);
+                Model[] models = {model1, model2, model3};
+                model1 = new Model(models, 3);
             }
         }
         if(!arg0 && (anInt2818 ^ 0xffffffff) != -1)
-            class40_sub5_sub17_sub5.method828(0, anInt2818, 0);
+            model1.method828(0, anInt2818, 0);
         if(arg0 && anInt2829 != 0)
-            class40_sub5_sub17_sub5.method828(0, anInt2829, 0);
+            model1.method828(0, anInt2829, 0);
         if(anIntArray2803 != null) {
             for(int i_8_ = 0; ((anIntArray2803.length ^ 0xffffffff) < (i_8_ ^ 0xffffffff)); i_8_++)
-                class40_sub5_sub17_sub5.method803(anIntArray2803[i_8_], anIntArray2816[i_8_]);
+                model1.method803(anIntArray2803[i_8_], anIntArray2816[i_8_]);
         }
-        return class40_sub5_sub17_sub5;
+        return model1;
 
     }
 
