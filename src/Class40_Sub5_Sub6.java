@@ -246,7 +246,6 @@ public class Class40_Sub5_Sub6 extends SubNode {
                             }
                             if(ItemDefinition.anInt2854 == 84) {
                                 if(Class66.aClass1_1543.method59(-3136) > 0) {
-                                    Buffer.anInt1937++;
                                     int i = 0;
                                     if(Class66.aClass1_1543.method82(arg0 + 105))
                                         i = Class66.aClass1_1543.method52((byte) -34);

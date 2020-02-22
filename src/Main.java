@@ -649,11 +649,9 @@ public class Main extends RSApplet {
         Class60.anInt1418 = 0;
         Class40_Sub5_Sub12.anInt2700 = 0;
         RSApplet.anInt18 = 0;
-        Buffer.anInt1935 = 0;
         Class6.anInt244 = 0;
         ItemDefinition.anInt2809 = 0;
         NPC.anInt3313 = 0;
-        Buffer.anInt1958 = 0;
         Floor.anInt2348 = 0;
         Class4.anInt184 = 0;
         Class61.anInt1424 = 0;
@@ -679,7 +677,6 @@ public class Main extends RSApplet {
         HashTable.anInt555 = 0;
         Cache.anInt308 = 0;
         Class43.anInt1018 = 0;
-        Buffer.anInt1986 = 0;
         RSApplet.anInt33 = 0;
         Class45.anInt1067 = 0;
         Class13.anInt400 = 0;
@@ -718,14 +715,12 @@ public class Main extends RSApplet {
         Class10.anInt339 = 0;
         Class48.anInt1134 = 0;
         Class32.anInt765 = 0;
-        Buffer.anInt1956 = 0;
         Class62.anInt1448 = 0;
         RSString.anInt1661 = 0;
         SceneTile.anInt2041 = 0;
         Class52.anInt1227 = 0;
         RSRuntimeException.anInt1643 = 0;
         RSString.anInt1683 = 0;
-        Buffer.anInt1926 = 0;
         RSRuntimeException.anInt1650 = 0;
         Class67.anInt1584 = 0;
         Class67.anInt1606 = 0;
@@ -734,7 +729,6 @@ public class Main extends RSApplet {
         Class57.anInt1330 = 0;
         FloorDecoration.anInt599 = 0;
         Class40_Sub5_Sub1.anInt2281 = 0;
-        Buffer.anInt1927 = 0;
         RSString.anInt1671 = 0;
         Class29.anInt677 = 0;
         Class62.anInt1454 = 0;
@@ -742,12 +736,10 @@ public class Main extends RSApplet {
         Class40_Sub6.anInt2115 = 0;
         RSApplet.anInt36 = 0;
         Class27.anInt650 = 0;
-        Buffer.anInt1929 = 0;
         Class5.anInt205 = 0;
         FloorDecoration.anInt596 = 0;
         RSString.anInt1693 = 0;
         Class33.anInt788 = 0;
-        Buffer.anInt1943 = 0;
         Class40_Sub11.anInt2152 = 0;
         Class37.anInt859 = 0;
         Class40_Sub5_Sub17_Sub4.anInt3128 = 0;
@@ -777,7 +769,6 @@ public class Main extends RSApplet {
         Class6.anInt246 = 0;
         Class27.anInt645 = 0;
         Class40_Sub5_Sub17_Sub1.anInt2986 = 0;
-        Buffer.anInt1932 = 0;
         Class53.anInt1248 = 0;
         CollisionMap.anInt159 = 0;
         Class67.anInt1599 = 0;
@@ -797,7 +788,6 @@ public class Main extends RSApplet {
         Class30.anInt691 = 0;
         Class65.anInt1532 = 0;
         Class6_Sub1.anInt1808 = 0;
-        Buffer.anInt1960 = 0;
         PacketBuffer.anInt2251 = 0;
         Class40_Sub11.anInt2150 = 0;
         Class40_Sub5_Sub17_Sub1.anInt2979 = 0;
@@ -847,7 +837,6 @@ public class Main extends RSApplet {
         PacketBuffer.anInt2243 = 0;
         RSString.anInt1656 = 0;
         Class30.anInt694 = 0;
-        Buffer.anInt1941 = 0;
         CollisionMap.anInt147 = 0;
         Node.anInt927 = 0;
         Class27.anInt656 = 0;
@@ -856,7 +845,6 @@ public class Main extends RSApplet {
         Class27.anInt642 = 0;
         Class67.anInt1594 = 0;
         Class30.anInt690 = 0;
-        Buffer.anInt1955 = 0;
         Class40_Sub5_Sub17_Sub4.anInt3108 = 0;
         CollisionMap.anInt138 = 0;
         Floor.anInt2316 = 0;
@@ -885,13 +873,10 @@ public class Main extends RSApplet {
         Class62.anInt1459 = 0;
         RSApplet.anInt32 = 0;
         GameObject.anInt3020 = 0;
-        Buffer.anInt1962 = 0;
         Class65.anInt1534 = 0;
         Class10.anInt345 = 0;
         Class27.anInt640 = 0;
         Class22_Sub2.anInt1880 = 0;
-        Buffer.anInt1951 = 0;
-        Buffer.anInt1930 = 0;
         Class58.anInt1368 = 0;
         Class38_Sub1.anInt1902 = 0;
         FloorDecoration.anInt592 = 0;
@@ -930,12 +915,9 @@ public class Main extends RSApplet {
         NpcDefinition.anInt2379 = 0;
         NpcDefinition.anInt2420 = 0;
         Class6.anInt226 = 0;
-        Buffer.anInt1974 = 0;
         Class68_Sub1.anInt2203 = 0;
         ItemDefinition.anInt2843 = 0;
-        Buffer.anInt1975 = 0;
         GameObject.anInt3017 = 0;
-        Buffer.anInt1948 = 0;
         Class40_Sub5_Sub7.anInt2478 = 0;
         Class38_Sub1.anInt1908 = 0;
         Class6.anInt247 = 0;
@@ -959,10 +941,8 @@ public class Main extends RSApplet {
         CollisionMap.anInt146 = 0;
         Class58.anInt1356 = 0;
         Class40_Sub13.anInt2180 = 0;
-        Buffer.anInt1969 = 0;
         Class40_Sub5_Sub12.anInt2634 = 0;
         Class32.anInt754 = 0;
-        Buffer.anInt1989 = 0;
         Class40_Sub5_Sub17_Sub4.anInt3147 = 0;
         Class40_Sub5_Sub17_Sub4.anInt3076 = 0;
         Class55.anInt1307 = 0;
@@ -970,7 +950,6 @@ public class Main extends RSApplet {
         Class52.anInt1239 = 0;
         NPC.anInt3303 = 0;
         RSCanvas.anInt56 = 0;
-        Buffer.anInt1952 = 0;
         Class49.anInt1142 = 0;
         Class61.anInt1442 = 0;
         Class37.anInt862 = 0;
@@ -987,7 +966,6 @@ public class Main extends RSApplet {
         Class55.anInt1303 = 0;
         Renderable.anInt2867 = 0;
         Class22_Sub2.anInt1897 = 0;
-        Buffer.anInt1957 = 0;
         ISAAC.anInt520 = 0;
         Class40_Sub5_Sub17_Sub1.anInt2994 = 0;
         Class40_Sub2.anInt1999 = 0;
@@ -1004,9 +982,7 @@ public class Main extends RSApplet {
         CollisionMap.anInt156 = 0;
         HashTable.anInt561 = 0;
         Class40_Sub5_Sub10.anInt2612 = 0;
-        Buffer.anInt1931 = 0;
         Class62.anInt1447 = 0;
-        Buffer.anInt1980 = 0;
         Class66.anInt1573 = 0;
         Class40_Sub5_Sub12.anInt2735 = 0;
         Class62.anInt1452 = 0;
@@ -1049,16 +1025,12 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub9.anInt2584 = 0;
         Class44.anInt1036 = 0;
         Class54.anInt1275 = 0;
-        Buffer.anInt1937 = 0;
         Class27.anInt639 = 0;
-        Buffer.anInt1977 = 0;
         Class44.anInt1044 = 0;
-        Buffer.anInt1940 = 0;
         Class43.anInt1016 = 0;
         Class40_Sub5_Sub17_Sub1.anInt2959 = 0;
         Class40_Sub5_Sub6.anInt2455 = 0;
         HashTable.anInt557 = 0;
-        Buffer.anInt1936 = 0;
         RSApplet.anInt19 = 0;
         NpcDefinition.anInt2429 = 0;
         Class40_Sub5_Sub17_Sub1.anInt2956 = 0;
@@ -1071,7 +1043,6 @@ public class Main extends RSApplet {
         RSString.anInt1667 = 0;
         Class4.anInt187 = 0;
         Class22.anInt531 = 0;
-        Buffer.anInt1934 = 0;
         Class6.anInt211 = 0;
         Class45.anInt1066 = 0;
         RSString.anInt1662 = 0;
@@ -1087,7 +1058,6 @@ public class Main extends RSApplet {
         Class68_Sub1.anInt2202 = 0;
         Class8.anInt287 = 0;
         Class45.anInt1058 = 0;
-        Buffer.anInt1981 = 0;
         HashTable.anInt559 = 0;
         Class40_Sub2.anInt1992 = 0;
         Class37.anInt863 = 0;
@@ -1106,7 +1076,6 @@ public class Main extends RSApplet {
         RSApplet.anInt16 = 0;
         Class55.anInt1308 = 0;
         Class27.anInt636 = 0;
-        Buffer.anInt1968 = 0;
         Class30.anInt689 = 0;
         RSApplet.anInt30 = 0;
         Class68_Sub1.anInt2200 = 0;
@@ -1141,13 +1110,11 @@ public class Main extends RSApplet {
         Class33.anInt775 = 0;
         Class68_Sub1.anInt2208 = 0;
         Class34.anInt821 = 0;
-        Buffer.anInt1928 = 0;
         NpcDefinition.anInt2403 = 0;
         Cache.anInt307 = 0;
         Class45.anInt1069 = 0;
         Class40_Sub5_Sub9.anInt2569 = 0;
         RSApplet.anInt26 = 0;
-        Buffer.anInt1946 = 0;
         Class40_Sub5_Sub13.anInt2759 = 0;
         Class22.anInt540 = 0;
         Class6.anInt234 = 0;
@@ -1164,7 +1131,6 @@ public class Main extends RSApplet {
         Class33.anInt776 = 0;
         RSApplet.anInt13 = 0;
         Class27.anInt641 = 0;
-        Buffer.anInt1944 = 0;
         Class13.anInt408 = 0;
         Class17.anInt446 = 0;
         Class40_Sub5_Sub17_Sub4.anInt3084 = 0;
@@ -1187,7 +1153,6 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub17_Sub1.anInt2970 = 0;
         Class17.anInt458 = 0;
         SubNode.anInt2089 = 0;
-        Buffer.anInt1967 = 0;
         Class29.anInt675 = 0;
         CollisionMap.anInt155 = 0;
         PacketBuffer.anInt2252 = 0;
@@ -1212,7 +1177,6 @@ public class Main extends RSApplet {
         Class44.anInt1037 = 0;
         SubNode.anInt2094 = 0;
         Class33.anInt789 = 0;
-        Buffer.anInt1954 = 0;
         Class8.anInt280 = 0;
         Class55.anInt1290 = 0;
         Class52.anInt1212 = 0;
@@ -1235,23 +1199,19 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub2.anInt2304 = 0;
         RSApplet.anInt39 = 0;
         Class40_Sub5_Sub13.anInt2761 = 0;
-        Buffer.anInt1973 = 0;
         Class60.anInt1406 = 0;
         Class22_Sub1.anInt1837 = 0;
         Class6.anInt222 = 0;
         CollisionMap.anInt148 = 0;
-        Buffer.anInt1949 = 0;
         Class64.anInt1518 = 0;
         Class24.anInt582 = 0;
         Class64.anInt1519 = 0;
         Landscape.anInt1165 = 0;
         SceneTile.anInt2052 = 0;
-        Buffer.anInt1953 = 0;
         Class68_Sub1.anInt2196 = 0;
         Class33.anInt792 = 0;
         Class40_Sub5_Sub7.anInt2469 = 0;
         RSApplet.anInt20 = 0;
-        Buffer.anInt1939 = 0;
         PacketBuffer.anInt2230 = 0;
         Class40_Sub5_Sub17_Sub6.anInt3234 = 0;
         Class40_Sub5_Sub17_Sub3.anInt3070 = 0;
@@ -1264,7 +1224,6 @@ public class Main extends RSApplet {
         Class65.anInt1539 = 0;
         Class35.anInt1739 = 0;
         Player.anInt3263 = 0;
-        Buffer.anInt1966 = 0;
         Class53.anInt1245 = 0;
         Class68_Sub1.anInt2201 = 0;
         Class6.anInt237 = 0;
@@ -1283,9 +1242,7 @@ public class Main extends RSApplet {
         ItemDefinition.anInt2801 = 0;
         RSApplet.anInt24 = 0;
         RSApplet.anInt37 = 0;
-        Buffer.anInt1979 = 0;
         Class61.anInt1434 = 0;
-        Buffer.anInt1965 = 0;
         FloorDecoration.anInt604 = 0;
         Class40_Sub5_Sub17_Sub1.anInt2978 = 0;
         Landscape.anInt1164 = 0;
@@ -1295,7 +1252,6 @@ public class Main extends RSApplet {
         Class38.anInt897 = 0;
         Class43.anInt1015 = 0;
         Class6_Sub1.anInt1805 = 0;
-        Buffer.anInt1945 = 0;
         CollisionMap.anInt137 = 0;
         RSString.anInt1687 = 0;
         Class66.anInt1570 = 0;
@@ -1304,7 +1260,6 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub4.anInt2353 = 0;
         Class48.anInt1141 = 0;
         ItemDefinition.anInt2832 = 0;
-        Buffer.anInt1942 = 0;
         Class40_Sub5_Sub17_Sub4.anInt3085 = 0;
         Class40_Sub5_Sub12.anInt2666 = 0;
         Class40_Sub5_Sub13.anInt2755 = 0;
@@ -1332,7 +1287,6 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub17_Sub6.anInt3252 = 0;
         Class26.anInt626 = 0;
         Class34.anInt807 = 0;
-        Buffer.anInt1963 = 0;
         Class37.anInt861 = 0;
         GameObject.anInt3022 = 0;
         Class34.anInt803 = 0;
@@ -1351,9 +1305,7 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub15.anInt2785 = 0;
         Class45.anInt1065 = 0;
         Class37.anInt865 = 0;
-        Buffer.anInt1950 = 0;
         Player.anInt3280 = 0;
-        Buffer.anInt1971 = 0;
         Class42.anInt1009 = 0;
         Class40_Sub5_Sub17_Sub3.anInt3057 = 0;
         RSString.anInt1689 = 0;
@@ -1410,7 +1362,6 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub9.anInt2572 = 0;
         GameObject.anInt3025 = 0;
         Player.anInt3279 = 0;
-        Buffer.anInt1961 = 0;
         Class6_Sub1.anInt1803 = 0;
         Class51.anInt1190 = 0;
         Class5.anInt197 = 0;
@@ -1418,7 +1369,6 @@ public class Main extends RSApplet {
         CollisionMap.anInt149 = 0;
         Class56.anInt1311 = 0;
         ISAAC.anInt501 = 0;
-        Buffer.anInt1938 = 0;
         Class40_Sub5_Sub7.anInt2491 = 0;
         ItemDefinition.anInt2811 = 0;
         SceneTile.anInt2045 = 0;

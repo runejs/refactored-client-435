@@ -783,9 +783,8 @@ public class Class27 {
                     }
                     if(i_11_ == 32 && Class40_Sub5_Sub7.method596(i, i_12_, (byte) -27, i_10_)) {
                         Class32.packetBuffer.putPacket(11453, 225);
-                        Class32.packetBuffer.method474(i_12_ >> -158279986 & 0x7fff, 74);
+                        Class32.packetBuffer.method474(i_12_ >> 14 & 0x7fff, 74);
                         Class32.packetBuffer.method478(i_10_ + Class26.anInt635, -61);
-                        Buffer.anInt1948++;
                         Class32.packetBuffer.method487(Class60.anInt1417, (byte) 118);
                         Class32.packetBuffer.method486(14912, i + Class40_Sub5_Sub2.anInt2307);
                     }
