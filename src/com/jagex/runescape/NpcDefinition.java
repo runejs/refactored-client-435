@@ -187,9 +187,9 @@ public class NpcDefinition extends SubNode {
             if(arg0 > -85)
                 method578(79);
         class40_sub5_sub14_sub4.image_width = Class17.anIntArray456[0];
-        class40_sub5_sub14_sub4.image_heighteight = Npc.anIntArray3312[0];
+        class40_sub5_sub14_sub4.image_height = Npc.anIntArray3312[0];
             byte[] is = Class58.aByteArrayArray1370[0];
-        int i = (class40_sub5_sub14_sub4.image_width * class40_sub5_sub14_sub4.image_heighteight);
+        int i = (class40_sub5_sub14_sub4.image_width * class40_sub5_sub14_sub4.image_height);
         class40_sub5_sub14_sub4.pixels = new int[i];
             for(int i_5_ = 0; i_5_ < i; i_5_++)
                 class40_sub5_sub14_sub4.pixels[i_5_] = (Buffer.anIntArray1972[Class66.method1021(255, is[i_5_])]);

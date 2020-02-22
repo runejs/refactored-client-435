@@ -210,7 +210,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                 Class68.aClass68_1631.method1046((byte) 90);
                 class40_sub5_sub14_sub4.method727(-562, -171);
                 int[] is_18_ = new int[class40_sub5_sub14_sub4.image_width];
-                for(int i = 0; i < class40_sub5_sub14_sub4.image_heighteight; i++) {
+                for(int i = 0; i < class40_sub5_sub14_sub4.image_height; i++) {
                     for(int i_19_ = 0; ((i_19_ ^ 0xffffffff) > (class40_sub5_sub14_sub4.image_width ^ 0xffffffff)); i_19_++)
                         is_18_[i_19_] = (class40_sub5_sub14_sub4.pixels[(i * class40_sub5_sub14_sub4.image_width + class40_sub5_sub14_sub4.image_width + -i_19_ - 1)]);
                     for(int i_20_ = 0; ((i_20_ ^ 0xffffffff) > (class40_sub5_sub14_sub4.image_width ^ 0xffffffff)); i_20_++)

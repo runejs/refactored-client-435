@@ -246,11 +246,11 @@ public class Class40_Sub13 extends Node {
         }
         if(arg1 != null) {
             int i_26_ = 0;
-            for(int i_27_ = 0; arg1.anInt2926 > i_27_; i_27_++) {
-                for(int i_28_ = 0; (i_28_ ^ 0xffffffff) > (arg1.anInt2921 ^ 0xffffffff); i_28_++) {
+            for(int i_27_ = 0; arg1.imgHeight > i_27_; i_27_++) {
+                for(int i_28_ = 0; (i_28_ ^ 0xffffffff) > (arg1.imgWidth ^ 0xffffffff); i_28_++) {
                     if((arg1.imgPixels[i_26_++] ^ 0xffffffff) != -1) {
-                        int i_29_ = arg1.anInt2927 + i_27_ + 16;
-                        int i_30_ = arg1.anInt2928 + (i_28_ + 16);
+                        int i_29_ = arg1.yDrawOffset + i_27_ + 16;
+                        int i_30_ = arg1.xDrawOffset + (i_28_ + 16);
                         int i_31_ = i_30_ + (i_29_ << 692888135);
                         Landscape.anIntArray1168[i_31_] = 0;
                     }

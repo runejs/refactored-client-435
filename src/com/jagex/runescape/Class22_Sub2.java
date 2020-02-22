@@ -56,13 +56,13 @@ public abstract class Class22_Sub2 extends Class22 {
         IndexedImage[] class40_sub5_sub14_sub2s = new IndexedImage[Class40_Sub5_Sub9.anInt2581];
             for(int i = arg0; Class40_Sub5_Sub9.anInt2581 > i; i++) {
                 IndexedImage class40_sub5_sub14_sub2 = (class40_sub5_sub14_sub2s[i] = new IndexedImage());
-                class40_sub5_sub14_sub2.anInt2923 = ItemDefinition.anInt2846;
-                class40_sub5_sub14_sub2.anInt2924 = RSApplet.anInt31;
-                class40_sub5_sub14_sub2.anInt2928 = Class57.anIntArray1347[i];
-                class40_sub5_sub14_sub2.anInt2927 = Actor.anIntArray3111[i];
-                class40_sub5_sub14_sub2.anInt2921 = Class17.anIntArray456[i];
-                class40_sub5_sub14_sub2.anInt2926 = Npc.anIntArray3312[i];
-                class40_sub5_sub14_sub2.anIntArray2922 = Buffer.anIntArray1972;
+                class40_sub5_sub14_sub2.maxWidth = ItemDefinition.anInt2846;
+                class40_sub5_sub14_sub2.maxHeight = RSApplet.anInt31;
+                class40_sub5_sub14_sub2.xDrawOffset = Class57.anIntArray1347[i];
+                class40_sub5_sub14_sub2.yDrawOffset = Actor.anIntArray3111[i];
+                class40_sub5_sub14_sub2.imgWidth = Class17.anIntArray456[i];
+                class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[i];
+                class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
                 class40_sub5_sub14_sub2.imgPixels = Class58.aByteArrayArray1370[i];
             }
             NpcDefinition.method569(true);
@@ -96,9 +96,9 @@ public abstract class Class22_Sub2 extends Class22 {
                 class40_sub5_sub14_sub4.offsetX = Class57.anIntArray1347[i];
                 class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[i];
                 class40_sub5_sub14_sub4.image_width = Class17.anIntArray456[i];
-                class40_sub5_sub14_sub4.image_heighteight = Npc.anIntArray3312[i];
+                class40_sub5_sub14_sub4.image_height = Npc.anIntArray3312[i];
                 byte[] is = Class58.aByteArrayArray1370[i];
-                int i_4_ = (class40_sub5_sub14_sub4.image_heighteight * class40_sub5_sub14_sub4.image_width);
+                int i_4_ = (class40_sub5_sub14_sub4.image_height * class40_sub5_sub14_sub4.image_width);
                 class40_sub5_sub14_sub4.pixels = new int[i_4_];
                 for(int i_5_ = 0; (i_5_ ^ 0xffffffff) > (i_4_ ^ 0xffffffff); i_5_++)
                     class40_sub5_sub14_sub4.pixels[i_5_] = (Buffer.anIntArray1972[Class66.method1021(255, is[i_5_])]);

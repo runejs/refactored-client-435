@@ -253,7 +253,7 @@ public class Main extends RSApplet {
                                     class40_sub5_sub14_sub4.maxWidth = 32;
                                 }
                                 if(class40_sub5_sub14_sub4 != null) {
-                                    int i_24_ = (class40_sub5_sub14_sub4.image_heighteight);
+                                    int i_24_ = (class40_sub5_sub14_sub4.image_height);
                                     int i_25_ = (class40_sub5_sub14_sub4.image_width);
                                     if(!class40_sub5_sub12.aBoolean2641) {
                                         int i_26_ = 4096 * (class40_sub5_sub12.anInt2692) / i_25_;

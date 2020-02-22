@@ -317,52 +317,52 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 RSCanvas.aClass68_59 = Class40_Sub5_Sub13.method649(37, 269, arg0, -4875);
                 Class19.aClass68_482 = Class40_Sub5_Sub13.method649(45, 249, arg0, -4875);
                 ImageRGB class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class61.aClass1_1440, (byte) 21, Class8.aClass1_305);
-                Landscape.aClass68_1185 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_heighteight), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
+                Landscape.aClass68_1185 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_height), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class43.aClass1_1024, (byte) 21, Class8.aClass1_305);
-                Class40_Sub5_Sub1.aClass68_2275 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_heighteight), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
+                Class40_Sub5_Sub1.aClass68_2275 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_height), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class8.aClass1_281, (byte) 21, Class8.aClass1_305);
-                Class39.aClass68_908 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_heighteight), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
+                Class39.aClass68_908 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_height), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class53.aClass1_1266, (byte) 21, Class8.aClass1_305);
-                GameObject.aClass68_3045 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_heighteight), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
+                GameObject.aClass68_3045 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_height), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 class40_sub5_sub14_sub4 = Class66.method1028(arg2, Main.aClass1_1788, (byte) 21, Class8.aClass1_305);
-                Class40_Sub5_Sub17_Sub6.aClass68_3243 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_heighteight), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
+                Class40_Sub5_Sub17_Sub6.aClass68_3243 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_height), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class58.aClass1_1374, (byte) 21, Class8.aClass1_305);
-                Class40_Sub7.aClass68_2123 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_heighteight), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
+                Class40_Sub7.aClass68_2123 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_height), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class40_Sub5_Sub10.aClass1_2588, (byte) 21, Class8.aClass1_305);
-                Class61.aClass68_1441 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_heighteight), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
+                Class61.aClass68_1441 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_height), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class5.aClass1_196, (byte) 21, Class8.aClass1_305);
-                Class30.aClass68_714 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_heighteight), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
+                Class30.aClass68_714 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_height), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 class40_sub5_sub14_sub4 = Class66.method1028(arg2, Class8.aClass1_304, (byte) 21, Class8.aClass1_305);
-                Class17.aClass68_462 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_heighteight), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
+                Class17.aClass68_462 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_height), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
                 int i = -80 % ((arg1 - 9) / 40);
                 class40_sub5_sub14_sub4.method727(0, 0);
                 Class56.aClass40_Sub5_Sub14_Sub2_1315 = Class27.method359(SubNode.aClass1_2093, Class8.aClass1_305, arg2, (byte) -64);
                 RSApplet.aClass40_Sub5_Sub14_Sub2_1 = Class27.method359(Class40_Sub5_Sub17_Sub6.aClass1_3254, Class8.aClass1_305, arg2, (byte) -64);
                 Class35.aClass40_Sub5_Sub14_Sub2_1744 = Class27.method359(Class64.aClass1_1517, Class8.aClass1_305, arg2, (byte) -64);
                 Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105 = Class56.aClass40_Sub5_Sub14_Sub2_1315.method691();
-                Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105.method695();
+                Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105.flipHorizontal();
                 Class53.aClass40_Sub5_Sub14_Sub2_1270 = RSApplet.aClass40_Sub5_Sub14_Sub2_1.method691();
-                Class53.aClass40_Sub5_Sub14_Sub2_1270.method695();
+                Class53.aClass40_Sub5_Sub14_Sub2_1270.flipHorizontal();
                 Renderable.aClass40_Sub5_Sub14_Sub2_2860 = Class56.aClass40_Sub5_Sub14_Sub2_1315.method691();
-                Renderable.aClass40_Sub5_Sub14_Sub2_2860.method696();
+                Renderable.aClass40_Sub5_Sub14_Sub2_2860.flipVertical();
                 HashTable.aClass40_Sub5_Sub14_Sub2_549 = RSApplet.aClass40_Sub5_Sub14_Sub2_1.method691();
-                HashTable.aClass40_Sub5_Sub14_Sub2_549.method696();
+                HashTable.aClass40_Sub5_Sub14_Sub2_549.flipVertical();
                 Class38_Sub1.aClass40_Sub5_Sub14_Sub2_1919 = Class35.aClass40_Sub5_Sub14_Sub2_1744.method691();
-                Class38_Sub1.aClass40_Sub5_Sub14_Sub2_1919.method696();
+                Class38_Sub1.aClass40_Sub5_Sub14_Sub2_1919.flipVertical();
                 ISAAC.aClass40_Sub5_Sub14_Sub2_524 = Class56.aClass40_Sub5_Sub14_Sub2_1315.method691();
-                ISAAC.aClass40_Sub5_Sub14_Sub2_524.method695();
-                ISAAC.aClass40_Sub5_Sub14_Sub2_524.method696();
+                ISAAC.aClass40_Sub5_Sub14_Sub2_524.flipHorizontal();
+                ISAAC.aClass40_Sub5_Sub14_Sub2_524.flipVertical();
                 Class13.aClass40_Sub5_Sub14_Sub2_418 = RSApplet.aClass40_Sub5_Sub14_Sub2_1.method691();
-                Class13.aClass40_Sub5_Sub14_Sub2_418.method695();
-                Class13.aClass40_Sub5_Sub14_Sub2_418.method696();
+                Class13.aClass40_Sub5_Sub14_Sub2_418.flipHorizontal();
+                Class13.aClass40_Sub5_Sub14_Sub2_418.flipVertical();
                 Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776 = Class40_Sub5_Sub2.method550(arg2, (byte) -78, (Class40_Sub5_Sub15.aClass1_2787), Class8.aClass1_305);
                 Landscape.anIntArray1186 = new int[151];
                 RSCanvas.anIntArray66 = new int[33];
@@ -372,7 +372,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     int i_15_ = 0;
                     int i_16_ = 999;
                     for(int i_17_ = 0; i_17_ < 34; i_17_++) {
-                        if(((Class34.mapBack.imgPixels[(Class34.mapBack.anInt2921 * i_14_) + i_17_]) ^ 0xffffffff) == -1) {
+                        if(((Class34.mapBack.imgPixels[(Class34.mapBack.imgWidth * i_14_) + i_17_]) ^ 0xffffffff) == -1) {
                             if((i_16_ ^ 0xffffffff) == -1000)
                                 i_16_ = i_17_;
                         } else if(i_16_ != 999) {
@@ -387,7 +387,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     int i_19_ = 0;
                     int i_20_ = 999;
                     for(int i_21_ = 25; i_21_ < 172; i_21_++) {
-                        if((Class34.mapBack.imgPixels[i_21_ + (Class34.mapBack.anInt2921) * i_18_]) != 0 || i_21_ <= 34 && (i_18_ ^ 0xffffffff) >= -35) {
+                        if((Class34.mapBack.imgPixels[i_21_ + (Class34.mapBack.imgWidth) * i_18_]) != 0 || i_21_ <= 34 && (i_18_ ^ 0xffffffff) >= -35) {
                             if((i_20_ ^ 0xffffffff) != -1000) {
                                 i_19_ = i_21_;
                                 break;

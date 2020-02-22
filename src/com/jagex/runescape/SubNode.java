@@ -33,13 +33,13 @@ public class SubNode extends Node {
     public static IndexedImage method538(int arg0) {
         anInt2088++;
         IndexedImage class40_sub5_sub14_sub2 = new IndexedImage();
-        class40_sub5_sub14_sub2.anInt2923 = ItemDefinition.anInt2846;
-        class40_sub5_sub14_sub2.anInt2924 = RSApplet.anInt31;
-        class40_sub5_sub14_sub2.anInt2928 = Class57.anIntArray1347[0];
-        class40_sub5_sub14_sub2.anInt2927 = Actor.anIntArray3111[0];
-        class40_sub5_sub14_sub2.anInt2921 = Class17.anIntArray456[0];
-        class40_sub5_sub14_sub2.anInt2926 = Npc.anIntArray3312[0];
-        class40_sub5_sub14_sub2.anIntArray2922 = Buffer.anIntArray1972;
+        class40_sub5_sub14_sub2.maxWidth = ItemDefinition.anInt2846;
+        class40_sub5_sub14_sub2.maxHeight = RSApplet.anInt31;
+        class40_sub5_sub14_sub2.xDrawOffset = Class57.anIntArray1347[0];
+        class40_sub5_sub14_sub2.yDrawOffset = Actor.anIntArray3111[0];
+        class40_sub5_sub14_sub2.imgWidth = Class17.anIntArray456[0];
+        class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[0];
+        class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
         class40_sub5_sub14_sub2.imgPixels = Class58.aByteArrayArray1370[arg0];
         NpcDefinition.method569(true);
         return class40_sub5_sub14_sub2;

@@ -174,8 +174,8 @@ public abstract class Actor extends Renderable {
                 if(gameObjectDefinition.anInt2537 != -1) {
                     IndexedImage class40_sub5_sub14_sub2 = (Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.anInt2537]);
                     if(class40_sub5_sub14_sub2 != null) {
-                        int i_6_ = ((-class40_sub5_sub14_sub2.anInt2921 + gameObjectDefinition.anInt2503 * 4) / 2);
-                        int i_7_ = ((gameObjectDefinition.anInt2515 * 4 + -class40_sub5_sub14_sub2.anInt2926) / 2);
+                        int i_6_ = ((-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.anInt2503 * 4) / 2);
+                        int i_7_ = ((gameObjectDefinition.anInt2515 * 4 + -class40_sub5_sub14_sub2.imgHeight) / 2);
                         class40_sub5_sub14_sub2.drawImage(48 + (4 * arg2) + i_6_, i_7_ + (48 + ((104 + -arg5 - gameObjectDefinition.anInt2515) * 4)));
                     }
                 } else {
@@ -254,8 +254,8 @@ public abstract class Actor extends Renderable {
                 if(gameObjectDefinition.anInt2537 != -1) {
                     IndexedImage class40_sub5_sub14_sub2 = (Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.anInt2537]);
                     if(class40_sub5_sub14_sub2 != null) {
-                        int i_12_ = ((-class40_sub5_sub14_sub2.anInt2926 + gameObjectDefinition.anInt2515 * 4) / 2);
-                        int i_13_ = ((gameObjectDefinition.anInt2503 * 4 + -class40_sub5_sub14_sub2.anInt2921) / 2);
+                        int i_12_ = ((-class40_sub5_sub14_sub2.imgHeight + gameObjectDefinition.anInt2515 * 4) / 2);
+                        int i_13_ = ((gameObjectDefinition.anInt2503 * 4 + -class40_sub5_sub14_sub2.imgWidth) / 2);
                         class40_sub5_sub14_sub2.drawImage(i_13_ + arg2 * 4 + 48, 48 - (-(4 * (-arg5 + (104 + -gameObjectDefinition.anInt2515))) + -i_12_));
                     }
                 } else if((i_11_ ^ 0xffffffff) == -10) {
@@ -284,8 +284,8 @@ public abstract class Actor extends Renderable {
                 if((gameObjectDefinition.anInt2537 ^ 0xffffffff) != 0) {
                     IndexedImage class40_sub5_sub14_sub2 = (Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.anInt2537]);
                     if(class40_sub5_sub14_sub2 != null) {
-                        int i_17_ = ((-class40_sub5_sub14_sub2.anInt2921 + gameObjectDefinition.anInt2503 * 4) / 2);
-                        int i_18_ = ((-class40_sub5_sub14_sub2.anInt2926 + 4 * gameObjectDefinition.anInt2515) / 2);
+                        int i_17_ = ((-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.anInt2503 * 4) / 2);
+                        int i_18_ = ((-class40_sub5_sub14_sub2.imgHeight + 4 * gameObjectDefinition.anInt2515) / 2);
                         class40_sub5_sub14_sub2.drawImage(4 * arg2 + 48 + i_17_, i_18_ + ((104 - (arg5 + gameObjectDefinition.anInt2515)) * 4) + 48);
                     }
                 }

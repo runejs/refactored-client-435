@@ -238,14 +238,14 @@ public class Class40_Sub3 extends Node {
                 Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(arg0 + -139, new RSString[]{Class17.aClass1_452, HashTable.method334(100 * i / 14, -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 70;
             } else {
-                Class40_Sub5_Sub2.minimapEdge.method726();
+                Class40_Sub5_Sub2.minimapEdge.trim();
                 int i_4_ = (int) (Math.random() * 21.0) - 10;
                 int i_5_ = (int) (21.0 * Math.random()) - 10;
                 int i_6_ = (int) (41.0 * Math.random()) - 20;
                 int i_7_ = -10 + (int) (21.0 * Math.random());
                 for(int i_8_ = 0; Class8.aClass40_Sub5_Sub14_Sub4Array296.length > i_8_; i_8_++)
                     Class8.aClass40_Sub5_Sub14_Sub4Array296[i_8_].method717(i_6_ + i_4_, i_5_ + i_6_, i_7_ + i_6_);
-                Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[0].method697(i_4_ + i_6_, i_5_ + i_6_, i_6_ + i_7_);
+                Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[0].mixPalette(i_4_ + i_6_, i_5_ + i_6_, i_6_ + i_7_);
                 Class22_Sub2.currentLoadingText = Class38_Sub1.aClass1_1922;
                 Class67.anInt1607 = 70;
                 Class40_Sub5_Sub6.anInt2451 = 85;

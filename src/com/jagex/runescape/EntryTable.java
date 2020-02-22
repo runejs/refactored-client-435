@@ -112,9 +112,9 @@ public class EntryTable extends Node {
         anIntArray2139 = new int[i * 4];
         for(int i_12_ = 0; i_12_ < anIntArray2144.length; i_12_++) {
             IndexedImage class40_sub5_sub14_sub2 = GameObject.method769(2, arg2, anIntArray2144[i_12_]);
-            class40_sub5_sub14_sub2.method694();
+            class40_sub5_sub14_sub2.resizeToLibSize();
             byte[] is = class40_sub5_sub14_sub2.imgPixels;
-            int[] is_13_ = class40_sub5_sub14_sub2.anIntArray2922;
+            int[] is_13_ = class40_sub5_sub14_sub2.palette;
             int i_14_ = anIntArray2145[i_12_];
             if((i_14_ & ~0xffffff) == 50331648) {
                 int i_15_ = i_14_ & 0xff00ff;
@@ -135,16 +135,16 @@ public class EntryTable extends Node {
             else
                 i_20_ = anIntArray2140[i_12_ - 1];
             if(i_20_ == 0) {
-                if(class40_sub5_sub14_sub2.anInt2921 == arg1) {
+                if(class40_sub5_sub14_sub2.imgWidth == arg1) {
                     for(int i_21_ = 0; i_21_ < i; i_21_++)
                         anIntArray2139[i_21_] = is_13_[is[i_21_] & 0xff];
-                } else if(class40_sub5_sub14_sub2.anInt2921 == 64 && arg1 == 128) {
+                } else if(class40_sub5_sub14_sub2.imgWidth == 64 && arg1 == 128) {
                     int i_22_ = 0;
                     for(int i_23_ = 0; i_23_ < arg1; i_23_++) {
                         for(int i_24_ = 0; i_24_ < arg1; i_24_++)
                             anIntArray2139[i_22_++] = is_13_[(is[(i_24_ >> 1) + (i_23_ >> 1 << 6)] & 0xff)];
                     }
-                } else if(class40_sub5_sub14_sub2.anInt2921 == 128 && arg1 == 64) {
+                } else if(class40_sub5_sub14_sub2.imgWidth == 128 && arg1 == 64) {
                     int i_25_ = 0;
                     for(int i_26_ = 0; i_26_ < arg1; i_26_++) {
                         for(int i_27_ = 0; i_27_ < arg1; i_27_++)
