@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;

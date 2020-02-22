@@ -1,6 +1,7 @@
 package com.jagex.runescape.media.renderable;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 
@@ -103,7 +104,7 @@ public class GameObject extends Renderable {
     public static IndexedImage method769(int arg0, Class6 arg1, int arg2) {
 
         anInt3032++;
-            if(!Buffer.method472(arg1, arg2))
+        if(!Buffer.method472(arg1, arg2))
                 return null;
             return SubNode.method538(0);
 
@@ -217,7 +218,7 @@ public class GameObject extends Renderable {
     public static void method773(byte arg0, RSString arg1) {
 
         anInt3017++;
-            if(arg1 == null || arg1.method59() == 0)
+        if(arg1 == null || arg1.method59() == 0)
                 VertexNormal.anInt1110 = 0;
             else {
                 RSString class1 = arg1;

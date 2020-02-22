@@ -276,13 +276,13 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                 }
                                 if(ItemDefinition.anInt2854 == 84 && (Class66.aClass1_1556.method59() > 0)) {
                                     if(true) {
-                                        if(Class66.aClass1_1556.method54(Class58.aClass1_1359, arg0 + 120))
+                                        if(Class66.aClass1_1556.equals(Class58.aClass1_1359))
                                             Class59.method982(2578);
-                                        if(Class66.aClass1_1556.method54(Class40_Sub3.aClass1_2015, 122))
+                                        if(Class66.aClass1_1556.equals(Class40_Sub3.aClass1_2015))
                                             Class19.aBoolean496 = true;
-                                        if(Class66.aClass1_1556.method54(Class40_Sub11.aClass1_2164, 122))
+                                        if(Class66.aClass1_1556.equals(Class40_Sub11.aClass1_2164))
                                             Class19.aBoolean496 = false;
-                                        if(Class66.aClass1_1556.method54(Class40_Sub5_Sub2.aClass1_2290, arg0 ^ 0x78)) {
+                                        if(Class66.aClass1_1556.equals(Class40_Sub5_Sub2.aClass1_2290)) {
                                             for(int i = 0; i < 4; i++) {
                                                 for(int i_9_ = 1; ((i_9_ ^ 0xffffffff) > -104); i_9_++) {
                                                     for(int i_10_ = 1; i_10_ < 103; i_10_++)
@@ -290,9 +290,9 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                                 }
                                             }
                                         }
-                                        if((Class66.aClass1_1556.method54(Class40_Sub5_Sub12.aClass1_2691, 122)) && (Class44.modewhere ^ 0xffffffff) == -3)
+                                        if((Class66.aClass1_1556.equals(Class40_Sub5_Sub12.aClass1_2691)) && (Class44.modewhere ^ 0xffffffff) == -3)
                                             throw new RuntimeException();
-                                        if(Class66.aClass1_1556.method54(Class4.aClass1_177, 122))
+                                        if(Class66.aClass1_1556.equals(Class4.aClass1_177))
                                             PacketBuffer.aBoolean2236 = true;
                                     }
                                     if(!Class66.aClass1_1556.startsWith((byte) 116, Class33.aClass1_786)) {

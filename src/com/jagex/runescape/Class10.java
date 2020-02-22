@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 
@@ -86,7 +87,7 @@ public class Class10 {
                         i++;
                         class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub6.aClass1_2458), i_4_, i_3_, 0);
                         class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub6.aClass1_2458), i_4_, -1 + i_3_, 65535);
-                        i_4_ += class40_sub5_sub14_sub1.method685(Class40_Sub5_Sub6.aClass1_2458);
+                        i_4_ += class40_sub5_sub14_sub1.getStringWidth(Class40_Sub5_Sub6.aClass1_2458);
                         i_4_ += class40_sub5_sub14_sub1.method689(32);
                         if((i_1_ ^ 0xffffffff) == -2) {
                             Class40_Sub5_Sub13.moderatorIcon[0].drawImage(i_4_, i_3_ - 12);

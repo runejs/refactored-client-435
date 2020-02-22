@@ -1,6 +1,7 @@
 package com.jagex.runescape.io;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.media.IndexedImage;
 
 import java.math.BigInteger;
 
@@ -145,10 +146,7 @@ public class Buffer extends Node {
 
     public int getIntME2() {
         currentPosition += 4;
-        return ((buffer[currentPosition - 4] << 8 & 0xff00) +
-                ((~0xffffff & buffer[currentPosition - 2] << 24) +
-                        (buffer[currentPosition - 1] << 16 & 0xff0000) +
-                        (buffer[currentPosition - 3] & 0xff)));
+        return ((buffer[currentPosition - 4] << 8 & 0xff00) + ((~0xffffff & buffer[currentPosition - 2] << 24) + (buffer[currentPosition - 1] << 16 & 0xff0000) + (buffer[currentPosition - 3] & 0xff)));
     }
 
     public void putIntME1(int value) {
@@ -288,16 +286,12 @@ public class Buffer extends Node {
 
     public int getUnsignedNegativeOffsetShortLE() {
         currentPosition += 2;
-        return ((0xff & buffer[currentPosition - 2] - 128) +
-                (0xff00 & buffer[currentPosition - 1] << 8));
+        return ((0xff & buffer[currentPosition - 2] - 128) + (0xff00 & buffer[currentPosition - 1] << 8));
     }
 
     public int getIntLE() {
         currentPosition += 4;
-        return ((buffer[currentPosition - 3] << 8 & 0xff00) +
-                (((0xff & buffer[currentPosition - 1]) << 24) +
-                (0xff0000 & buffer[currentPosition - 2] << 16)) +
-                (buffer[currentPosition - 4] & 0xff));
+        return ((buffer[currentPosition - 3] << 8 & 0xff00) + (((0xff & buffer[currentPosition - 1]) << 24) + (0xff0000 & buffer[currentPosition - 2] << 16)) + (buffer[currentPosition - 4] & 0xff));
     }
 
     public void putShortLE(int value) {
@@ -307,9 +301,7 @@ public class Buffer extends Node {
 
     public int getMediumBE() {
         currentPosition += 3;
-        return (((buffer[currentPosition - 3] & 0xff) << 16) +
-                ((buffer[currentPosition - 2] & 0xff) << 8) +
-                (0xff & buffer[currentPosition - 1]));
+        return (((buffer[currentPosition - 3] & 0xff) << 16) + ((buffer[currentPosition - 2] & 0xff) << 8) + (0xff & buffer[currentPosition - 1]));
     }
 
     public void putDualByte(int value1, int value2) {
@@ -318,16 +310,12 @@ public class Buffer extends Node {
 
     public int getUnsignedShortLE() {
         currentPosition += 2;
-        return ((0xff00 & buffer[currentPosition - 1] << 8) +
-                (0xff & buffer[currentPosition - 2]));
+        return ((0xff00 & buffer[currentPosition - 1] << 8) + (0xff & buffer[currentPosition - 2]));
     }
 
     public int getIntBE() {
         currentPosition += 4;
-        return ((0xff & buffer[currentPosition - 1]) +
-                (buffer[currentPosition - 2] << 8 & 0xff00) +
-                (buffer[currentPosition - 3] << 16 & 0xff0000) +
-                (~0xffffff & buffer[currentPosition - 4] << 24));
+        return ((0xff & buffer[currentPosition - 1]) + (buffer[currentPosition - 2] << 8 & 0xff00) + (buffer[currentPosition - 3] << 16 & 0xff0000) + (~0xffffff & buffer[currentPosition - 4] << 24));
     }
 
     public byte getOffsetInvertedByte() {

@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;
@@ -152,10 +153,10 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
 
         anInt3070++;
             RSString class1 = new RSString();
-            class1.aByteArray1692 = new byte[arg1];
+        class1.chars = new byte[arg1];
             if(arg0 != -18596)
                 anInt3065 = 36;
-            class1.anInt1680 = 0;
+        class1.length = 0;
             return class1;
 
     }

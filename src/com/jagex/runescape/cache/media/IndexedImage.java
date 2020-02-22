@@ -1,4 +1,6 @@
-package com.jagex.runescape;
+package com.jagex.runescape.cache.media;
+
+import com.jagex.runescape.Rasterizer;
 
 public class IndexedImage extends Rasterizer {
     public int imgWidth;

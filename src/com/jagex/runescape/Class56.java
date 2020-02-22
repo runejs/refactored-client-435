@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.media.IndexedImage;
+
 public class Class56 {
     public static int anInt1310;
     public static int anInt1311;

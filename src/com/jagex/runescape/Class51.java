@@ -109,7 +109,7 @@ public class Class51 {
             if(arg3 != null) {
                 i += 15;
                 if(arg2) {
-                    int i_0_ = 4 + Class53.aClass40_Sub5_Sub14_Sub1_1268.method685(arg3);
+                    int i_0_ = 4 + Class53.aClass40_Sub5_Sub14_Sub1_1268.getStringWidth(arg3);
                     Rasterizer.method656(257 - i_0_ / 2, -11 + i, i_0_, 11, 0);
                 }
                 Class53.aClass40_Sub5_Sub14_Sub1_1268.method686(arg3, 257, i, 0);

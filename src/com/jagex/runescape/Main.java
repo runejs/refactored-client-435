@@ -5,6 +5,8 @@ import java.net.Socket;
 
 import com.jagex.runescape.audio.Filter;
 import com.jagex.runescape.audio.Instrument;
+import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;
@@ -416,7 +418,7 @@ public class Main extends RSApplet {
                                         class1 = Class66.aClass1_1567;
                                     }
                                     int i_54_ = class40_sub5_sub14_sub1.method681(class1_53_);
-                                    i_51_ += (class40_sub5_sub14_sub1.anInt2910) + 1;
+                                    i_51_ += (class40_sub5_sub14_sub1.characterDefaultHeight) + 1;
                                     if((i_50_ ^ 0xffffffff) > (i_54_ ^ 0xffffffff))
                                         i_50_ = i_54_;
                                 }
@@ -433,7 +435,7 @@ public class Main extends RSApplet {
                                 Rasterizer.method656(i_56_, i_55_, i_50_, i_51_, 16777120);
                                 Rasterizer.method665(i_56_, i_55_, i_50_, i_51_, 0);
                                 class1 = class40_sub5_sub12.aClass1_2668;
-                                int i_57_ = (2 + (i_55_ + (class40_sub5_sub14_sub1.anInt2910)));
+                                int i_57_ = (2 + (i_55_ + (class40_sub5_sub14_sub1.characterDefaultHeight)));
                                 class1 = (SceneTile.method532((byte) 20, class40_sub5_sub12, class1));
                                 while((class1.method59() ^ 0xffffffff) < -1) {
                                     int i_58_ = class1.method60((Class30.aClass1_686), 32);
@@ -446,7 +448,7 @@ public class Main extends RSApplet {
                                         class1 = class1.substring(i_58_ + 2);
                                     }
                                     class40_sub5_sub14_sub1.method683(class1_59_, i_56_ + 3, i_57_, 0, false);
-                                    i_57_ += 1 + (class40_sub5_sub14_sub1.anInt2910);
+                                    i_57_ += 1 + (class40_sub5_sub14_sub1.characterDefaultHeight);
                                 }
                             }
                             if((class40_sub5_sub12.anInt2683 ^ 0xffffffff) == -10)
@@ -810,7 +812,6 @@ public class Main extends RSApplet {
         ItemDefinition.anInt2835 = 0;
         Class60.anInt1405 = 0;
         Class22_Sub1.anInt1840 = 0;
-        RSString.anInt1707 = 0;
         Class40_Sub5_Sub9.anInt2578 = 0;
         Class40_Sub5_Sub11.anInt2619 = 0;
         Class27.anInt663 = 0;

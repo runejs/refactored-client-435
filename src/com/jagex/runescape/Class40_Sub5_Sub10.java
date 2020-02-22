@@ -123,18 +123,18 @@ public class Class40_Sub5_Sub10 extends SubNode {
             for(int i_3_ = 0; i_3_ < arg1; i_3_++) {
                 if(arg3[arg2 + i_3_] == null)
                     arg3[i_3_ + arg2] = RSApplet.aClass1_28;
-                i += arg3[i_3_ + arg2].anInt1680;
+                i += arg3[i_3_ + arg2].length;
             }
             byte[] is = new byte[i];
             int i_4_ = 0;
             for(int i_5_ = 0; i_5_ < arg1; i_5_++) {
                 RSString class1 = arg3[arg2 + i_5_];
-                Class18.method278(class1.aByteArray1692, 0, is, i_4_, class1.anInt1680);
-                i_4_ += class1.anInt1680;
+                Class18.method278(class1.chars, 0, is, i_4_, class1.length);
+                i_4_ += class1.length;
             }
             RSString class1 = new RSString();
-            class1.anInt1680 = i;
-            class1.aByteArray1692 = is;
+        class1.length = i;
+        class1.chars = is;
             return class1;
     }
 

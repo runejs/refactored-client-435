@@ -130,8 +130,8 @@ public class Class33 {
                         if(actor.aClass1_3090 != null && (i >= Class60.anInt1407 || (Class35.publicChatMode ^ 0xffffffff) == -1 || Class35.publicChatMode == 3 || ((Class35.publicChatMode ^ 0xffffffff) == -2 && (Class40_Sub2.hasFriend((((Player) actor).playerName), arg0 ^ 0x7f74))))) {
                             FloorDecoration.method342(88, (actor.anInt3117), actor);
                             if((ISAAC.anInt522 ^ 0xffffffff) < 0 && Class30.anInt709 > Class32.anInt770) {
-                                Class30.anIntArray680[Class32.anInt770] = ((Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method685(actor.aClass1_3090)) / 2);
-                                Class30.anIntArray688[Class32.anInt770] = (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.anInt2910);
+                                Class30.anIntArray680[Class32.anInt770] = ((Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getStringWidth(actor.aClass1_3090)) / 2);
+                                Class30.anIntArray688[Class32.anInt770] = (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.characterDefaultHeight);
                                 Class30.anIntArray715[Class32.anInt770] = ISAAC.anInt522;
                                 Class30.anIntArray685[Class32.anInt770] = Class44.anInt1048;
                                 Class30.anIntArray712[Class32.anInt770] = actor.anInt3102;
@@ -252,7 +252,7 @@ public class Class33 {
                             Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method678(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628, -Class30.anIntArray684[i] + 150);
                         }
                         if(Class30.anIntArray695[i] == 4) {
-                            int i_12_ = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method685(class1);
+                            int i_12_ = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getStringWidth(class1);
                             int i_13_ = ((i_12_ + 100) * (150 + -Class30.anIntArray684[i]) / 150);
                             Rasterizer.setCoordinates((ISAAC.anInt522 + -50), 0, 334, 50 + ISAAC.anInt522);
                             Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawString(class1, -i_13_ + ISAAC.anInt522 + 50, Class44.anInt1048 + 1, 0);
@@ -262,7 +262,7 @@ public class Class33 {
                         if((Class30.anIntArray695[i] ^ 0xffffffff) == -6) {
                             int i_14_ = 0;
                             int i_15_ = 150 + -Class30.anIntArray684[i];
-                            Rasterizer.setCoordinates(0, -1 + (-(Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.anInt2910) + Class44.anInt1048), 5 + Class44.anInt1048, 512);
+                            Rasterizer.setCoordinates(0, -1 + (-(Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.characterDefaultHeight) + Class44.anInt1048), 5 + Class44.anInt1048, 512);
                             if((i_15_ ^ 0xffffffff) <= -26) {
                                 if((i_15_ ^ 0xffffffff) < -126)
                                     i_14_ = i_15_ + -125;
