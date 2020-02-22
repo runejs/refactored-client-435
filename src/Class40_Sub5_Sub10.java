@@ -60,7 +60,6 @@ public class Class40_Sub5_Sub10 extends SubNode {
     }
 
     public static void method625(int arg0) {
-        try {
             aClass1_2595 = null;
             aClass1_2615 = null;
             aClass1_2611 = null;
@@ -76,13 +75,9 @@ public class Class40_Sub5_Sub10 extends SubNode {
             aClass45_2604 = null;
             anIntArray2602 = null;
             aClass1_2593 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "pe.F(" + arg0 + ')');
-        }
     }
 
     public static Class40_Sub5_Sub1 method626(int arg0, int arg1, int arg2) {
-        try {
             long l = (long) (arg0 + (arg1 << -637173104));
             anInt2612++;
             Class40_Sub5_Sub1 class40_sub5_sub1 = ((Class40_Sub5_Sub1) Class17.aClass9_449.method231(l, (byte) 72));
@@ -93,7 +88,7 @@ public class Class40_Sub5_Sub10 extends SubNode {
                 return null;
             Buffer class40_sub1 = new Buffer(is);
             class40_sub5_sub1 = new Class40_Sub5_Sub1();
-            class40_sub1.offset = class40_sub1.buffer.length + -12;
+        class40_sub1.currentPosition = class40_sub1.buffer.length + -12;
             int i = class40_sub1.method491(-4750);
             int i_0_ = 0;
             class40_sub5_sub1.anInt2271 = class40_sub1.method469(65280);
@@ -102,9 +97,9 @@ public class Class40_Sub5_Sub10 extends SubNode {
             class40_sub5_sub1.anInt2266 = class40_sub1.method469(65280);
             class40_sub5_sub1.aClass1Array2270 = new RSString[i];
             class40_sub5_sub1.anIntArray2262 = new int[i];
-            class40_sub1.offset = 0;
+        class40_sub1.currentPosition = 0;
             class40_sub5_sub1.anIntArray2272 = new int[i];
-            while(class40_sub1.offset < -12 + class40_sub1.buffer.length) {
+        while(class40_sub1.currentPosition < -12 + class40_sub1.buffer.length) {
                 int i_1_ = class40_sub1.method469(65280);
                 if(i_1_ != 3) {
                     if(i_1_ >= 100 || i_1_ == 21 || (i_1_ ^ 0xffffffff) == -39 || i_1_ == 39)
@@ -117,13 +112,9 @@ public class Class40_Sub5_Sub10 extends SubNode {
             }
             Class17.aClass9_449.method230(-7208, l, class40_sub5_sub1);
             return class40_sub5_sub1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("pe.E(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
     }
 
     public static RSString method627(int arg0, int arg1, int arg2, RSString[] arg3) {
-        try {
             anInt2608++;
             int i = 0;
             int i_2_ = 6 / ((arg0 - 6) / 52);
@@ -143,9 +134,6 @@ public class Class40_Sub5_Sub10 extends SubNode {
             class1.anInt1680 = i;
             class1.aByteArray1692 = is;
             return class1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("pe.A(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + (arg3 != null ? "{...}" : "null") + ')'));
-        }
     }
 
     public void method622(byte arg0, Buffer arg1) {
@@ -161,7 +149,6 @@ public class Class40_Sub5_Sub10 extends SubNode {
     }
 
     public boolean method623(boolean arg0) {
-        try {
             anInt2601++;
             if(anIntArray2600 == null)
                 return true;
@@ -171,13 +158,9 @@ public class Class40_Sub5_Sub10 extends SubNode {
                     bool = false;
             }
             return bool;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "pe.I(" + arg0 + ')');
-        }
     }
 
     public boolean method624(boolean arg0) {
-        try {
             boolean bool = true;
             anInt2603++;
             int i = 0;
@@ -188,13 +171,9 @@ public class Class40_Sub5_Sub10 extends SubNode {
                     bool = false;
             }
             return bool;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "pe.D(" + arg0 + ')');
-        }
     }
 
     public void method628(Buffer arg0, int arg1, int arg2) {
-        try {
             if(arg2 != 1399)
                 method626(-122, -98, -44);
             if((arg1 ^ 0xffffffff) != -2) {
@@ -218,13 +197,9 @@ public class Class40_Sub5_Sub10 extends SubNode {
             } else
                 anInt2599 = arg0.method468(false);
             anInt2589++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("pe.B(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ')'));
-        }
     }
 
     public Model method629(byte arg0) {
-        try {
             anInt2607++;
             Model[] class40_sub5_sub17_sub5s = new Model[5];
             int i = 0;
@@ -241,13 +216,9 @@ public class Class40_Sub5_Sub10 extends SubNode {
                 class40_sub5_sub17_sub5.method803(anIntArray2586[i_8_], anIntArray2594[i_8_]);
             }
             return class40_sub5_sub17_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "pe.G(" + arg0 + ')');
-        }
     }
 
     public Model method630(boolean arg0) {
-        try {
             anInt2585++;
             if(anIntArray2600 == null)
                 return null;
@@ -267,8 +238,5 @@ public class Class40_Sub5_Sub10 extends SubNode {
                 class40_sub5_sub17_sub5.method803(anIntArray2586[i], anIntArray2594[i]);
             }
             return class40_sub5_sub17_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "pe.C(" + arg0 + ')');
-        }
     }
 }

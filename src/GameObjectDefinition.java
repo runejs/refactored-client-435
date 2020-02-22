@@ -527,7 +527,7 @@ public class GameObjectDefinition extends SubNode {
                 int i = arg0.method468(false);
                 if(i > 0) {
                     if(anIntArray2525 != null && !Class35.aBoolean1734)
-                        arg0.offset += 2 * i;
+                        arg0.currentPosition += 2 * i;
                     else {
                         anIntArray2522 = null;
                         anIntArray2525 = new int[i];
@@ -540,7 +540,7 @@ public class GameObjectDefinition extends SubNode {
             int i = arg0.method468(false);
             if(i > 0) {
                 if(anIntArray2525 != null && !Class35.aBoolean1734)
-                    arg0.offset += i * 3;
+                    arg0.currentPosition += i * 3;
                 else {
                     anIntArray2522 = new int[i];
                     anIntArray2525 = new int[i];

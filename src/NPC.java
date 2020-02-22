@@ -91,9 +91,9 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
                         int i = 0;
                         Class32.packetBuffer.putPacket(11453, 210);
                         Class32.packetBuffer.put(0, (byte) -128);
-                        int i_2_ = Class32.packetBuffer.offset;
+                        int i_2_ = Class32.packetBuffer.currentPosition;
                         for(int i_3_ = 0; i_3_ < Class12.aClass39_387.anInt921; i_3_++) {
-                            if((-i_2_ + Class32.packetBuffer.offset) >= 240)
+                            if((-i_2_ + Class32.packetBuffer.currentPosition) >= 240)
                                 break;
                             i++;
                             int i_4_ = Class12.aClass39_387.anIntArray920[i_3_];
@@ -135,7 +135,7 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
                                 }
                             }
                         }
-                        Class32.packetBuffer.finishVarByte(Class32.packetBuffer.offset + -i_2_, (byte) 16);
+                        Class32.packetBuffer.finishVarByte(Class32.packetBuffer.currentPosition + -i_2_, (byte) 16);
                         if(i < Class12.aClass39_387.anInt921) {
                             Class12.aClass39_387.anInt921 -= i;
                             for(int i_9_ = 0; ((Class12.aClass39_387.anInt921 ^ 0xffffffff) < (i_9_ ^ 0xffffffff)); i_9_++) {
@@ -408,11 +408,11 @@ public class NPC extends Class40_Sub5_Sub17_Sub4 {
                         }
                         do {
                             try {
-                                if(Class40_Sub6.aClass64_2098 == null || (Class32.packetBuffer.offset) <= 0)
+                                if(Class40_Sub6.aClass64_2098 == null || (Class32.packetBuffer.currentPosition) <= 0)
                                     break;
-                                Class40_Sub6.aClass64_2098.method1010(Class32.packetBuffer.offset, (byte) -19, 0, (Class32.packetBuffer.buffer));
+                                Class40_Sub6.aClass64_2098.method1010(Class32.packetBuffer.currentPosition, (byte) -19, 0, (Class32.packetBuffer.buffer));
                                 Class22.anInt537 = 0;
-                                Class32.packetBuffer.offset = 0;
+                                Class32.packetBuffer.currentPosition = 0;
                             } catch(java.io.IOException ioexception) {
                                 Class59.method982(2578);
                                 break;

@@ -190,7 +190,7 @@ public class Player extends Class40_Sub5_Sub17_Sub4 {
     public void method791(byte arg0, Buffer arg1) {
         try {
             anInt3292++;
-            arg1.offset = 0;
+            arg1.currentPosition = 0;
             int i = arg1.method468(false);
             anInt3268 = arg1.get(118);
             anInt3273 = arg1.get(89);

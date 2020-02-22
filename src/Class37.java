@@ -110,7 +110,7 @@ public class Class37 {
             Class57.packetid = -1;
             NpcDefinition.anInt2394 = 0;
             Class40_Sub5_Sub12.packetsize = 0;
-            Class32.packetBuffer.offset = 0;
+            Class32.packetBuffer.currentPosition = 0;
             RSString.anInt1690 = -1;
             Cache.anInt324 = -1;
             Class35.anInt1728 = 0;
@@ -119,7 +119,7 @@ public class Class37 {
             anInt868++;
             Class27.anInt658 = 0;
             Class40_Sub5_Sub15.anInt2782 = 0;
-            Cache.outgoingbuffer.offset = arg0;
+            Cache.outgoingbuffer.currentPosition = arg0;
             for(int i = 0; ((Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156).length > i); i++) {
                 if((Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i]) != null)
                     Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i].anInt3137 = -1;

@@ -12,7 +12,7 @@ public class Class36 {
         for(int i = 0; i < 10; i++) {
             int i_10_ = arg0.method468(false);
             if(i_10_ != 0) {
-                arg0.offset--;
+                arg0.currentPosition--;
                 aClass63Array856[i] = new Class63();
                 aClass63Array856[i].method1004(arg0);
             }

@@ -57,77 +57,62 @@ public class Class8 {
     }
 
     public Class8(int arg0) {
-        try {
-            CollisionMap.anInt141 = arg0;
-            aLong288 = Class51.method937(1);
-        } catch(RuntimeException runtimeexception) {
-            throw method216(runtimeexception, "ca.<init>(" + arg0 + ')');
-        }
+        CollisionMap.anInt141 = arg0;
+        aLong288 = Class51.method937(1);
+
     }
 
     public static void method209(int arg0) {
-        try {
-            for(int i = 0; (GameObjectDefinition.anInt2558 ^ 0xffffffff) < (i ^ 0xffffffff); i++) {
-                int i_0_ = Class40_Sub3.anIntArray2016[i];
-                NPC class40_sub5_sub17_sub4_sub2 = Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_];
-                if(class40_sub5_sub17_sub4_sub2 != null)
-                    Class13.method241(class40_sub5_sub17_sub4_sub2, (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2374), (byte) 107);
-            }
-            int i = -30 % ((arg0 + 8) / 34);
-            anInt287++;
-        } catch(RuntimeException runtimeexception) {
-            throw method216(runtimeexception, "ca.B(" + arg0 + ')');
+        for(int i = 0; (GameObjectDefinition.anInt2558 ^ 0xffffffff) < (i ^ 0xffffffff); i++) {
+            int i_0_ = Class40_Sub3.anIntArray2016[i];
+            NPC class40_sub5_sub17_sub4_sub2 = Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_];
+            if(class40_sub5_sub17_sub4_sub2 != null)
+                Class13.method241(class40_sub5_sub17_sub4_sub2, (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2374), (byte) 107);
         }
+        int i = -30 % ((arg0 + 8) / 34);
+        anInt287++;
+
     }
 
     public static void method210(int arg0) {
-        try {
-            VertexNormal.lowMemory = false;
-            if(arg0 != 0)
-                method209(-4);
-            anInt276++;
-            Scene.aBoolean88 = false;
-        } catch(RuntimeException runtimeexception) {
-            throw method216(runtimeexception, "ca.H(" + arg0 + ')');
-        }
+        VertexNormal.lowMemory = false;
+        if(arg0 != 0)
+            method209(-4);
+        anInt276++;
+        Scene.aBoolean88 = false;
+
     }
 
     public static void method211(byte arg0) {
-        try {
-            anInt280++;
-            ISAAC.aClass9_516.method235((byte) 78);
-            Class62.aClass9_1455.method235((byte) 36);
-            if(arg0 != 60)
-                method217(17, (byte) -110);
-            Buffer.aClass9_1933.method235((byte) 72);
-        } catch(RuntimeException runtimeexception) {
-            throw method216(runtimeexception, "ca.F(" + arg0 + ')');
-        }
+        anInt280++;
+        ISAAC.aClass9_516.method235((byte) 78);
+        Class62.aClass9_1455.method235((byte) 36);
+        if(arg0 != 60)
+            method217(17, (byte) -110);
+        Buffer.aClass9_1933.method235((byte) 72);
+
     }
 
     public static void method214(int arg0) {
-        try {
-            aClass1_286 = null;
-            aClass1_278 = null;
-            anIntArray297 = null;
-            aFontMetrics295 = null;
-            int i = 53 % ((51 - arg0) / 40);
-            aClass1_305 = null;
-            aClass6_284 = null;
-            aClass1_291 = null;
-            aClass1_303 = null;
-            aCalendar279 = null;
-            aClass1_299 = null;
-            aClass68_298 = null;
-            aClass1_304 = null;
-            aClass40_Sub5_Sub14_Sub4Array296 = null;
-            aClass1_300 = null;
-            aClass1_293 = null;
-            aClass1_294 = null;
-            aClass1_281 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw method216(runtimeexception, "ca.E(" + arg0 + ')');
-        }
+        aClass1_286 = null;
+        aClass1_278 = null;
+        anIntArray297 = null;
+        aFontMetrics295 = null;
+        int i = 53 % ((51 - arg0) / 40);
+        aClass1_305 = null;
+        aClass6_284 = null;
+        aClass1_291 = null;
+        aClass1_303 = null;
+        aCalendar279 = null;
+        aClass1_299 = null;
+        aClass68_298 = null;
+        aClass1_304 = null;
+        aClass40_Sub5_Sub14_Sub4Array296 = null;
+        aClass1_300 = null;
+        aClass1_293 = null;
+        aClass1_294 = null;
+        aClass1_281 = null;
+
     }
 
     public static synchronized void method215(int[] arg0, int arg1) {
@@ -151,53 +136,27 @@ public class Class8 {
         ItemDefinition.method748(true, arg1);
     }
 
-    public static RSRuntimeException method216(Throwable arg0, String arg1) {
-        try {
-            anInt282++;
-            RSRuntimeException runtimeexception_sub1;
-            if(arg0 instanceof RSRuntimeException) {
-                runtimeexception_sub1 = (RSRuntimeException) arg0;
-                runtimeexception_sub1.aString1653 += ' ' + arg1;
-            } else
-                runtimeexception_sub1 = new RSRuntimeException(arg0, arg1);
-            return runtimeexception_sub1;
-        } catch(RuntimeException runtimeexception) {
-            throw runtimeexception;
-        }
-    }
 
     public static synchronized void method217(int arg0, byte arg1) {
-        try {
-            if(FloorDecoration.aClass40_Sub9_608 != null)
-                FloorDecoration.aClass40_Sub9_608.method843(arg0);
-            anInt285++;
-            if(arg1 > 28)
-                ItemDefinition.method748(true, arg0);
-        } catch(RuntimeException runtimeexception) {
-            throw method216(runtimeexception, "ca.C(" + arg0 + ',' + arg1 + ')');
-        }
+        if(FloorDecoration.aClass40_Sub9_608 != null)
+            FloorDecoration.aClass40_Sub9_608.method843(arg0);
+        anInt285++;
+        if(arg1 > 28)
+            ItemDefinition.method748(true, arg0);
     }
 
     public static synchronized void method218(Class40_Sub9 arg0, int arg1) {
         FloorDecoration.aClass40_Sub9_608 = arg0;
         anInt283++;
-        if(arg1 >= -113)
-            method216(null, null);
     }
 
     public void method212(long arg0) {
-        try {
-            anInt277++;
-        } catch(RuntimeException runtimeexception) {
-            throw method216(runtimeexception, "ca.I(" + arg0 + ')');
-        }
+        anInt277++;
+
     }
 
     public void method213() {
-        try {
-            anInt275++;
-        } catch(RuntimeException runtimeexception) {
-            throw method216(runtimeexception, "ca.J(" + ')');
-        }
+        anInt275++;
+
     }
 }

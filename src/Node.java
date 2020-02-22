@@ -127,113 +127,94 @@ public class Node {
     }
 
     public static void method456(int arg0, byte arg1) {
-        try {
-            anInt961++;
-            if(arg1 < 79)
-                aClass1_965 = null;
-            if(Class24.method340(61)) {
-                if(Class26.aBoolean618)
-                    Floor.anInt2342 = arg0;
-                else
-                    Class40_Sub5_Sub13.method651(22741, arg0);
-            }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "nd.PA(" + arg0 + ',' + arg1 + ')');
+        anInt961++;
+        if(arg1 < 79)
+            aClass1_965 = null;
+        if(Class24.method340(61)) {
+            if(Class26.aBoolean618)
+                Floor.anInt2342 = arg0;
+            else
+                Class40_Sub5_Sub13.method651(22741, arg0);
         }
     }
 
     public static void method458(byte arg0) {
-        try {
-            aClass1_952 = null;
-            aClass1_939 = null;
-            aClass1_964 = null;
-            aClass1_965 = null;
-            aClass1_940 = null;
-            aClass1_973 = null;
-            aClass1_924 = null;
-            aClass1_934 = null;
-            aClass1_967 = null;
-            aClass1_954 = null;
-            aClass1_972 = null;
-            aClass1_976 = null;
-            aClass1_944 = null;
-            aClass1_959 = null;
-            aClass1_943 = null;
-            aClass1_933 = null;
-            aClass1_975 = null;
-            aClass1_949 = null;
-            aClass1_951 = null;
-            aClass1_974 = null;
-            aClass1_963 = null;
-            aClass1_942 = null;
-            aClass1_946 = null;
-            if(arg0 <= 60)
-                method459(69, 126, (byte) 94);
-            aClass1_929 = null;
-            aClass1_955 = null;
-            aClass1_931 = null;
-            aClass1_941 = null;
-            aClass1_945 = null;
-            aClass1_930 = null;
-            aClass1_956 = null;
-            aClass1_948 = null;
-            aClass1_966 = null;
-            aClass1_960 = null;
-            aClass1_969 = null;
-            aClass1_932 = null;
-            aClass1_923 = null;
-            aClass1_953 = null;
-            aClass1_957 = null;
-            aClass1_937 = null;
-            aClass1_925 = null;
-            aClass1_958 = null;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "nd.TA(" + arg0 + ')');
-        }
+        aClass1_952 = null;
+        aClass1_939 = null;
+        aClass1_964 = null;
+        aClass1_965 = null;
+        aClass1_940 = null;
+        aClass1_973 = null;
+        aClass1_924 = null;
+        aClass1_934 = null;
+        aClass1_967 = null;
+        aClass1_954 = null;
+        aClass1_972 = null;
+        aClass1_976 = null;
+        aClass1_944 = null;
+        aClass1_959 = null;
+        aClass1_943 = null;
+        aClass1_933 = null;
+        aClass1_975 = null;
+        aClass1_949 = null;
+        aClass1_951 = null;
+        aClass1_974 = null;
+        aClass1_963 = null;
+        aClass1_942 = null;
+        aClass1_946 = null;
+        if(arg0 <= 60)
+            method459(69, 126, (byte) 94);
+        aClass1_929 = null;
+        aClass1_955 = null;
+        aClass1_931 = null;
+        aClass1_941 = null;
+        aClass1_945 = null;
+        aClass1_930 = null;
+        aClass1_956 = null;
+        aClass1_948 = null;
+        aClass1_966 = null;
+        aClass1_960 = null;
+        aClass1_969 = null;
+        aClass1_932 = null;
+        aClass1_923 = null;
+        aClass1_953 = null;
+        aClass1_957 = null;
+        aClass1_937 = null;
+        aClass1_925 = null;
+        aClass1_958 = null;
     }
 
     public static boolean method459(int arg0, int arg1, byte arg2) {
-        try {
-            if((arg0 ^ 0xffffffff) == -12)
-                arg0 = 10;
-            if(arg2 < 83)
-                method459(125, 22, (byte) 101);
-            anInt971++;
-            GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(arg1);
-            if((arg0 ^ 0xffffffff) <= -6 && (arg0 ^ 0xffffffff) >= -9)
-                arg0 = 4;
-            return gameObjectDefinition.method610(arg0, 7533);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("nd.SA(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
+        if((arg0 ^ 0xffffffff) == -12)
+            arg0 = 10;
+        if(arg2 < 83)
+            method459(125, 22, (byte) 101);
+        anInt971++;
+        GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(arg1);
+        if((arg0 ^ 0xffffffff) <= -6 && (arg0 ^ 0xffffffff) >= -9)
+            arg0 = 4;
+        return gameObjectDefinition.method610(arg0, 7533);
     }
 
     public boolean method454(boolean arg0) {
-        try {
-            anInt962++;
-            if(aClass40_968 == null)
-                return false;
-            if(arg0 != false)
-                method458((byte) -21);
-            return true;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "nd.QA(" + arg0 + ')');
-        }
+        anInt962++;
+        if(aClass40_968 == null)
+            return false;
+        if(arg0 != false)
+            method458((byte) -21);
+        return true;
     }
 
     public void method457(int arg0) {
-        try {
-            anInt970++;
-            if(aClass40_968 != null) {
-                aClass40_968.aClass40_950 = aClass40_950;
-                if(arg0 == -1) {
-                    aClass40_950.aClass40_968 = aClass40_968;
-                    aClass40_968 = null;
-                    aClass40_950 = null;
-                }
+        anInt970++;
+        if(aClass40_968 != null) {
+            aClass40_968.aClass40_950 = aClass40_950;
+            if(arg0 == -1) {
+                aClass40_950.aClass40_968 = aClass40_968;
+                aClass40_968 = null;
+                aClass40_950 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "nd.OA(" + arg0 + ')');
         }
+
     }
 }

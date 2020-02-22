@@ -38,7 +38,6 @@ public class Class17 {
     }
 
     public static void method273(Class64 arg0, int arg1, boolean arg2) {
-        try {
             anInt458++;
             if(Class57.aClass64_1345 != null) {
                 try {
@@ -50,7 +49,7 @@ public class Class17 {
             }
             Class57.aClass64_1345 = arg0;
             RSApplet.method19(arg2, 24041);
-            Class45.aClass40_Sub1_1081.offset = 0;
+        Class45.aClass40_Sub1_1081.currentPosition = 0;
             Class40_Sub5_Sub13.aClass40_Sub1_2752 = null;
             Landscape.anInt1157 = 0;
             PacketBuffer.aClass40_Sub5_Sub13_2250 = null;
@@ -92,24 +91,16 @@ public class Class17 {
                 method273(null, 92, true);
             Class22.anInt547 = 0;
             Class45.aLong1051 = Class51.method937(1);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("f.E(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + arg2 + ')'));
-        }
     }
 
     public static int method274(boolean arg0) {
-        try {
             if(arg0 != true)
                 aClass68_463 = null;
             anInt447++;
             return Class49.anInt1147++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "f.A(" + arg0 + ')');
-        }
     }
 
     public static void method275(int arg0, long arg1) {
-        try {
             anInt454++;
             if(arg1 != 0L) {
                 if(Class42.anInt1008 >= 100)
@@ -139,13 +130,9 @@ public class Class17 {
                     }
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "f.B(" + arg0 + ',' + arg1 + ')');
-        }
     }
 
     public static void method276(int arg0) {
-        try {
             anInt459++;
             for(int i = arg0; Class60.anInt1407 > i; i++) {
                 int i_0_;
@@ -157,13 +144,9 @@ public class Class17 {
                 if(class40_sub5_sub17_sub4_sub1 != null)
                     Class13.method241(class40_sub5_sub17_sub4_sub1, 1, (byte) 107);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "f.C(" + arg0 + ')');
-        }
     }
 
     public static void method277(byte arg0) {
-        try {
             aClass1_450 = null;
             aClass68_462 = null;
             aClass9_449 = null;
@@ -178,8 +161,5 @@ public class Class17 {
                 aFont461 = null;
                 anIntArray466 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "f.D(" + arg0 + ')');
-        }
     }
 }

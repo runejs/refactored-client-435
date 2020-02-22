@@ -151,8 +151,8 @@ public class Class27 {
                 if(((Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_8_].anInt3134) ^ 0xffffffff) != (Node.anInt926 ^ 0xffffffff))
                     Class40_Sub5_Sub17_Sub4.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_8_] = null;
             }
-            if((Cache.outgoingbuffer.offset ^ 0xffffffff) != (Class40_Sub5_Sub12.packetsize ^ 0xffffffff))
-                throw new RuntimeException("gpp1 pos:" + (Cache.outgoingbuffer.offset) + " psize:" + Class40_Sub5_Sub12.packetsize);
+            if((Cache.outgoingbuffer.currentPosition ^ 0xffffffff) != (Class40_Sub5_Sub12.packetsize ^ 0xffffffff))
+                throw new RuntimeException("gpp1 pos:" + (Cache.outgoingbuffer.currentPosition) + " psize:" + Class40_Sub5_Sub12.packetsize);
             int i = 0;
             if(arg0 < 50)
                 aClass6_654 = null;
@@ -1121,8 +1121,8 @@ public class Class27 {
             if(!Class37.aBoolean871 && Class40_Sub6.aClass64_2098 != null) {
                 Class32.packetBuffer.putPacket(arg0 + 11487, 13);
                 try {
-                    Class40_Sub6.aClass64_2098.method1010(Class32.packetBuffer.offset, (byte) -19, 0, Class32.packetBuffer.buffer);
-                    Class32.packetBuffer.offset = 0;
+                    Class40_Sub6.aClass64_2098.method1010(Class32.packetBuffer.currentPosition, (byte) -19, 0, Class32.packetBuffer.buffer);
+                    Class32.packetBuffer.currentPosition = 0;
                 } catch(java.io.IOException ioexception) {
                     Class37.aBoolean871 = true;
                 }

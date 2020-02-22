@@ -489,7 +489,7 @@ public class Main extends RSApplet {
             if(arg1 != 98)
                 aClass1_1777 = null;
             if(Class48.aClass40_Sub1_1132 != null) {
-                Class48.aClass40_Sub1_1132.offset = 5 + arg2 * 4;
+                Class48.aClass40_Sub1_1132.currentPosition = 5 + arg2 * 4;
                 int i = Class48.aClass40_Sub1_1132.method491(-4750);
                 arg0.method200(i, 99);
             } else {
@@ -1549,10 +1549,10 @@ public class Main extends RSApplet {
             Class40_Sub5_Sub15.anInt2782 = 0;
             Class35.anInt1728 = 0;
             Player.anInt3288 = 0;
-            Class32.packetBuffer.offset = 0;
+            Class32.packetBuffer.currentPosition = 0;
             Class32.anInt771 = 0;
             Class49.anInt1151 = -1;
-            Cache.outgoingbuffer.offset = 0;
+            Cache.outgoingbuffer.currentPosition = 0;
             NpcDefinition.anInt2394 = 0;
             Class40_Sub5_Sub13.method650(true, 0);
             for(int i = 0; (i ^ 0xffffffff) > -101; i++)

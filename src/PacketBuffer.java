@@ -58,7 +58,6 @@ public class PacketBuffer extends Buffer {
     }
 
     public static void method513(int arg0, Class6_Sub1 arg1, Class56 arg2, byte arg3) {
-        try {
             Class40_Sub6 class40_sub6 = new Class40_Sub6();
             anInt2252++;
             class40_sub6.anInt2112 = 1;
@@ -71,13 +70,9 @@ public class PacketBuffer extends Buffer {
                 RSCanvas.aClass45_53.method904(class40_sub6, -72);
             }
             HashTable.method332(600);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("fe.KB(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ')'));
-        }
     }
 
     public static void method514(int arg0) {
-        try {
             aClass40_Sub5_Sub13_2250 = null;
             aClass1_2260 = null;
             aClass1_2254 = null;
@@ -88,9 +83,6 @@ public class PacketBuffer extends Buffer {
                 aClass1_2240 = null;
                 aClass1_2259 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "fe.NB(" + arg0 + ')');
-        }
     }
 
     public static void method516(int arg0) {
@@ -129,7 +121,6 @@ public class PacketBuffer extends Buffer {
     }
 
     public static void method517(int arg0, int arg1, int arg2) {
-        try {
             if(arg2 == -9225) {
                 anInt2230++;
                 Class32.packetBuffer.putPacket(11453, 132);
@@ -137,13 +128,9 @@ public class PacketBuffer extends Buffer {
                 Class32.packetBuffer.method503(-2030879560, arg1);
                 Class32.packetBuffer.method486(14912, arg0);
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("fe.PB(" + arg0 + ',' + arg1 + ',' + arg2 + ')'));
-        }
     }
 
     public static RSString method521(boolean arg0, byte arg1, int arg2, int arg3) {
-        try {
             if(arg2 < 1 || arg2 > 36)
                 arg2 = 10;
             int i = 1;
@@ -176,46 +163,30 @@ public class PacketBuffer extends Buffer {
             class1.aByteArray1692 = is;
             class1.anInt1680 = i_3_;
             return class1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("fe.OB(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ')'));
-        }
     }
 
     public int method510(int arg0, int arg1) {
-        try {
             if(arg0 <= 118)
                 return 75;
             anInt2237++;
             return 8 * arg1 - bitoffset;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "fe.MB(" + arg0 + ',' + arg1 + ')');
-        }
     }
 
     public void finishBitAccess(byte arg0) {
-        try {
             if(arg0 != -110)
                 bitoffset = -12;
-            offset = (7 + bitoffset) / 8;
+        currentPosition = (7 + bitoffset) / 8;
             anInt2249++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "fe.QB(" + arg0 + ')');
-        }
     }
 
     public int getPacket(byte arg0) {
-        try {
             if(arg0 != 49)
                 aClass1_2260 = null;
             anInt2232++;
-            return 0xff & (buffer[offset++]/* + -encryption.method286(-101)*/);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "fe.TB(" + arg0 + ')');
-        }
+        return 0xff & (buffer[currentPosition++]/* + -encryption.method286(-101)*/);
     }
 
     public int putBits(int arg0, byte arg1) {
-        try {
             anInt2234++;
             int i = bitoffset >> -921091357;
             if(arg1 != -65)
@@ -232,21 +203,14 @@ public class PacketBuffer extends Buffer {
             else
                 i_0_ += (buffer[i] & Class40_Sub5_Sub4.anIntArray2361[i_1_]);
             return i_0_;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "fe.RB(" + arg0 + ',' + arg1 + ')');
-        }
     }
 
     public void putPacket(int arg0, int arg1) {
-        try {
             if(arg0 != 11453)
                 method513(62, null, null, (byte) -105);
             anInt2253++;
-            buffer[offset++] = //(byte) (encryption.method286(RSApplet.method27(arg0, -11500)) + arg1);
+        buffer[currentPosition++] = //(byte) (encryption.method286(RSApplet.method27(arg0, -11500)) + arg1);
                     (byte) arg1;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "fe.UB(" + arg0 + ',' + arg1 + ')');
-        }
     }
 
     public void initEncryption(int arg0, int[] arg1) {
@@ -258,7 +222,7 @@ public class PacketBuffer extends Buffer {
 
     public void initBitAccess(int arg0) {
         anInt2235++;
-        bitoffset = offset * 8;
+        bitoffset = currentPosition * 8;
         if(arg0 <= 21)
             encryption = null;
     }

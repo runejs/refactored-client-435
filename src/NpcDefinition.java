@@ -118,7 +118,6 @@ public class NpcDefinition extends SubNode {
     }
 
     public static void method569(boolean arg0) {
-        try {
             Class17.anIntArray456 = null;
             Class58.aByteArrayArray1370 = null;
             NPC.anIntArray3312 = null;
@@ -128,13 +127,9 @@ public class NpcDefinition extends SubNode {
                 Class57.anIntArray1347 = null;
                 anInt2403++;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "h.L(" + arg0 + ')');
-        }
     }
 
     public static void method570(int arg0, int arg1, Player arg2, int arg3) {
-        try {
             anInt2431++;
             if(arg3 == -1) {
                 if((arg0 ^ 0xffffffff) == (arg2.anInt3141 ^ 0xffffffff) && arg0 != -1) {
@@ -156,13 +151,9 @@ public class NpcDefinition extends SubNode {
                     arg2.anInt3141 = arg0;
                 }
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("h.E(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ')'));
-        }
     }
 
     public static void method574(int arg0) {
-        try {
             if(arg0 != 4)
                 method576(true);
             try {
@@ -172,24 +163,16 @@ public class NpcDefinition extends SubNode {
                 Class62.aCanvas1469.repaint();
             }
             anInt2429++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "h.D(" + arg0 + ')');
-        }
     }
 
     public static int method576(boolean arg0) {
-        try {
             if(arg0 != false)
                 aClass1_2432 = null;
             anInt2422++;
             return 19;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "h.O(" + arg0 + ')');
-        }
     }
 
     public static DirectColorSprite method578(int arg0) {
-        try {
             anInt2379++;
             DirectColorSprite class40_sub5_sub14_sub4 = new DirectColorSprite();
             class40_sub5_sub14_sub4.anInt2954 = ItemDefinition.anInt2846;
@@ -207,13 +190,9 @@ public class NpcDefinition extends SubNode {
                 class40_sub5_sub14_sub4.anIntArray2955[i_5_] = (Buffer.anIntArray1972[Class66.method1021(255, is[i_5_])]);
             method569(true);
             return class40_sub5_sub14_sub4;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "h.K(" + arg0 + ')');
-        }
     }
 
     public static void method580(Signlink arg0, byte arg1, Buffer arg2, int arg3) {
-        try {
             Class40_Sub11 class40_sub11 = new Class40_Sub11();
             class40_sub11.anInt2160 = arg2.method468(false);
             anInt2424++;
@@ -274,14 +253,11 @@ public class NpcDefinition extends SubNode {
                 }
             }
             Class54.aClass45_1278.method904(class40_sub11, 92);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("h.G(" + (arg0 != null ? "{...}" : "null") + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ')'));
-        }
     }
 
     public static void method581(int arg0) {
-        try {
-            anIntArray2386 = null;
+
+        anIntArray2386 = null;
             aClass6_Sub1_2377 = null;
             aClass1_2388 = null;
             aClass1_2399 = null;
@@ -299,14 +275,12 @@ public class NpcDefinition extends SubNode {
                 aClass1_2408 = null;
                 aClass1_2384 = null;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "h.N(" + arg0 + ')');
-        }
+
     }
 
     public Model method568(byte arg0, Class40_Sub5_Sub7 arg1, Class40_Sub5_Sub7 arg2, int arg3, int arg4) {
-        try {
-            anInt2412++;
+
+        anInt2412++;
             if(arg0 != -50)
                 anInt2391 = 31;
             if(anIntArray2426 != null) {
@@ -351,14 +325,12 @@ public class NpcDefinition extends SubNode {
             if((anInt2407 ^ 0xffffffff) != -129 || anInt2415 != 128)
                 class40_sub5_sub17_sub5_0_.method821(anInt2407, anInt2415, anInt2407);
             return class40_sub5_sub17_sub5_0_;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("h.C(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + (arg2 != null ? "{...}" : "null") + ',' + arg3 + ',' + arg4 + ')'));
-        }
+
     }
 
     public boolean method571(int arg0) {
-        try {
-            anInt2378++;
+
+        anInt2378++;
             if(anIntArray2426 == null)
                 return true;
             int i = arg0;
@@ -367,14 +339,12 @@ public class NpcDefinition extends SubNode {
             else if((anInt2385 ^ 0xffffffff) != 0)
                 i = Class58.varbitmasks[anInt2385];
             return i >= 0 && anIntArray2426.length > i && (anIntArray2426[i] ^ 0xffffffff) != 0;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "h.I(" + arg0 + ')');
-        }
+
     }
 
     public void method572(int arg0, int arg1, Buffer arg2) {
-        try {
-            if(arg1 == 8965) {
+
+        if(arg1 == 8965) {
                 if((arg0 ^ 0xffffffff) == -2) {
                     int i = arg2.method468(false);
                     anIntArray2405 = new int[i];
@@ -464,14 +434,12 @@ public class NpcDefinition extends SubNode {
                     anInt2374 = arg2.method468(false);
                 anInt2414++;
             }
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("h.A(" + arg0 + ',' + arg1 + ',' + (arg2 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public void method573(boolean arg0, Buffer arg1) {
-        try {
-            for(; ; ) {
+
+        for(; ; ) {
                 int i = arg1.method468(!arg0);
                 if(i == 0)
                     break;
@@ -480,14 +448,12 @@ public class NpcDefinition extends SubNode {
             if(arg0 != true)
                 method575((byte) 43);
             anInt2420++;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("h.H(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ')'));
-        }
+
     }
 
     public Model method575(byte arg0) {
-        try {
-            anInt2419++;
+
+        anInt2419++;
             if(anIntArray2426 != null) {
                 NpcDefinition class40_sub5_sub5 = method577(-1);
                 if(class40_sub5_sub5 == null)
@@ -518,14 +484,12 @@ public class NpcDefinition extends SubNode {
                     class40_sub5_sub17_sub5.method803(anIntArray2428[i], anIntArray2395[i]);
             }
             return class40_sub5_sub17_sub5;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "h.M(" + arg0 + ')');
-        }
+
     }
 
     public NpcDefinition method577(int arg0) {
-        try {
-            int i = arg0;
+
+        int i = arg0;
             anInt2398++;
             if(anInt2411 != -1)
                 i = Class40_Sub5_Sub6.method585(anInt2411, 1369);
@@ -534,17 +498,13 @@ public class NpcDefinition extends SubNode {
             if((i ^ 0xffffffff) > -1 || (i ^ 0xffffffff) <= (anIntArray2426.length ^ 0xffffffff) || (anIntArray2426[i] ^ 0xffffffff) == 0)
                 return null;
             return Landscape.method932((byte) -114, anIntArray2426[i]);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "h.J(" + arg0 + ')');
-        }
+
     }
 
     public void method579(byte arg0) {
-        try {
-            anInt2373++;
+
+        anInt2373++;
             int i = -82 % ((arg0 - 15) / 41);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "h.F(" + arg0 + ')');
-        }
+
     }
 }

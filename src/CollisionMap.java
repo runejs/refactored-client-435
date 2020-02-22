@@ -85,7 +85,7 @@ public class CollisionMap {
                     return false;
                 if(Class57.packetid == -1) {
                     Class40_Sub6.aClass64_2098.method1008(0, 1, -127, Cache.outgoingbuffer.buffer);
-                    Cache.outgoingbuffer.offset = 0;
+                    Cache.outgoingbuffer.currentPosition = 0;
                     i--;
                     Class57.packetid = Cache.outgoingbuffer.getPacket((byte) 49);
                     Class40_Sub5_Sub12.packetsize = Class24.INCOMINGPACKETSIZES[Class57.packetid];
@@ -104,12 +104,12 @@ public class CollisionMap {
                         return false;
                     i -= 2;
                     Class40_Sub6.aClass64_2098.method1008(0, 2, -127, Cache.outgoingbuffer.buffer);
-                    Cache.outgoingbuffer.offset = 0;
+                    Cache.outgoingbuffer.currentPosition = 0;
                     Class40_Sub5_Sub12.packetsize = Cache.outgoingbuffer.method469(65280);
                 }
                 if((Class40_Sub5_Sub12.packetsize ^ 0xffffffff) < (i ^ 0xffffffff))
                     return false;
-                Cache.outgoingbuffer.offset = 0;
+                Cache.outgoingbuffer.currentPosition = 0;
                 Class40_Sub6.aClass64_2098.method1008(0, Class40_Sub5_Sub12.packetsize, -128, Cache.outgoingbuffer.buffer);
                 Class49.anInt1151 = Cache.anInt324;
                 Class35.anInt1728 = 0;
@@ -690,7 +690,7 @@ public class CollisionMap {
                 if((Class57.packetid ^ 0xffffffff) == -64) {
                     Class40_Sub6.anInt2119 = Cache.outgoingbuffer.method471((byte) -87);
                     Floor.anInt2318 = Cache.outgoingbuffer.method480((byte) -70);
-                    while(Cache.outgoingbuffer.offset < Class40_Sub5_Sub12.packetsize) {
+                    while(Cache.outgoingbuffer.currentPosition < Class40_Sub5_Sub12.packetsize) {
                         Class57.packetid = Cache.outgoingbuffer.method468(false);
                         Class53.method949((byte) -125);
                     }
@@ -1066,7 +1066,7 @@ public class CollisionMap {
                     ISAAC.aBoolean505 = true;
                     int i_107_ = Cache.outgoingbuffer.method491(-4750);
                     Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_107_, (byte) -112);
-                    while(Class40_Sub5_Sub12.packetsize > Cache.outgoingbuffer.offset) {
+                    while(Class40_Sub5_Sub12.packetsize > Cache.outgoingbuffer.currentPosition) {
                         int i_108_ = Cache.outgoingbuffer.method502((byte) -102);
                         int i_109_ = Cache.outgoingbuffer.method469(65280);
                         int i_110_ = 0;

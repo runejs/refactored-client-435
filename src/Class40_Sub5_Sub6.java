@@ -57,11 +57,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
     public byte[] aByteArray2441;
 
     public Class40_Sub5_Sub6(byte[] arg0) {
-        try {
             aByteArray2441 = arg0;
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, "hd.<init>(" + (arg0 != null ? "{...}" : "null") + ')');
-        }
     }
 
     public static void method582(boolean arg0) {
@@ -84,16 +80,12 @@ public class Class40_Sub5_Sub6 extends SubNode {
     }
 
     public static boolean method583(int arg0, int arg1, int arg2, byte arg3, int arg4, int arg5, int arg6) {
-        try {
             anInt2450++;
             if(!Class68.method1043(arg1, 127))
                 return false;
             if(arg3 != -5)
                 return true;
             return Main.method36(arg5, arg0, arg4, 0, -1, arg2, arg6, 0, (Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1]), true);
-        } catch(RuntimeException runtimeexception) {
-            throw Class8.method216(runtimeexception, ("hd.E(" + arg0 + ',' + arg1 + ',' + arg2 + ',' + arg3 + ',' + arg4 + ',' + arg5 + ',' + arg6 + ')'));
-        }
     }
 
     public static void putHackCheckPacket(int arg0, int arg1, PacketBuffer arg2) {
@@ -123,7 +115,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         break;
                     arg2.putPacket(11453, arg1);
                     arg2.put(0, (byte) -128);
-                    int i = arg2.offset;
+                    int i = arg2.currentPosition;
                     arg2.putInt(123, class40_sub11.anInt2166);
                     for(int i_0_ = 0; class40_sub11.anInt2160 > i_0_; i_0_++) {
                         if((class40_sub11.anIntArray2155[i_0_] ^ 0xffffffff) != -1)
@@ -203,7 +195,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         }
                     }
                     arg2.method473(81, i);
-                    arg2.finishVarByte(-i + arg2.offset, (byte) 16);
+                    arg2.finishVarByte(-i + arg2.currentPosition, (byte) 16);
                     class40_sub11.method457(-1);
                 }
             }
@@ -385,11 +377,11 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                         }
                                         Class32.packetBuffer.putPacket(11453, 75);
                                         Class32.packetBuffer.put(0, (byte) -128);
-                                        int i_12_ = (Class32.packetBuffer.offset);
+                                        int i_12_ = (Class32.packetBuffer.currentPosition);
                                         Class32.packetBuffer.put(i_11_, (byte) -128);
                                         Class32.packetBuffer.put(i, (byte) -128);
                                         Class68_Sub1.method1052(65, Class66.aClass1_1556, Class32.packetBuffer);
-                                        Class32.packetBuffer.finishVarByte((Class32.packetBuffer.offset) + -i_12_, (byte) 16);
+                                        Class32.packetBuffer.finishVarByte((Class32.packetBuffer.currentPosition) + -i_12_, (byte) 16);
                                         if((Class35.anInt1737 ^ 0xffffffff) == -3) {
                                             Class34.anInt821++;
                                             Cache.aBoolean330 = true;
@@ -452,10 +444,10 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                 Class44.anInt1044++;
                                 Class32.packetBuffer.putPacket(11453, 207);
                                 Class32.packetBuffer.put(0, (byte) -128);
-                                int i = Class32.packetBuffer.offset;
+                                int i = Class32.packetBuffer.currentPosition;
                                 Class32.packetBuffer.putLong(PacketBuffer.aLong2241, false);
                                 Class68_Sub1.method1052(119, Class66.aClass1_1565, Class32.packetBuffer);
-                                Class32.packetBuffer.finishVarByte(-i + (Class32.packetBuffer.offset), (byte) 16);
+                                Class32.packetBuffer.finishVarByte(-i + (Class32.packetBuffer.currentPosition), (byte) 16);
                                 if(Class4.anInt185 == 2) {
                                     Class4.anInt185 = 1;
                                     Cache.aBoolean330 = true;

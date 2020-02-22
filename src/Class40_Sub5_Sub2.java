@@ -127,13 +127,13 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 aClass1_2297 = null;
             if((Class40_Sub3.anInt2032 ^ 0xffffffff) == -3) {
                 long l = (Class34.aLong853 = Class22_Sub2.username.method58((byte) 93));
-                Class32.packetBuffer.offset = 0;
+                Class32.packetBuffer.currentPosition = 0;
                 Class32.packetBuffer.put(14, (byte) -128);
                 int i = (int) (0x1fL & l >> 383714384);
                 Class32.packetBuffer.put(i, (byte) -128);
                 Class40_Sub6.aClass64_2098.method1010(2, (byte) -19, 0, (Class32.packetBuffer.buffer));
                 Class40_Sub3.anInt2032 = 3;
-                Cache.outgoingbuffer.offset = 0;
+                Cache.outgoingbuffer.currentPosition = 0;
             }
             if((Class40_Sub3.anInt2032 ^ 0xffffffff) == -4) {
                 int i = Class40_Sub6.aClass64_2098.method1016(52);
@@ -141,21 +141,21 @@ public class Class40_Sub5_Sub2 extends SubNode {
                     Class27.method366(5, i);
                     return;
                 }
-                Cache.outgoingbuffer.offset = 0;
+                Cache.outgoingbuffer.currentPosition = 0;
                 Class40_Sub3.anInt2032 = 4;
             }
             if((Class40_Sub3.anInt2032 ^ 0xffffffff) == -5) {
-                if(Cache.outgoingbuffer.offset < 8) {
+                if(Cache.outgoingbuffer.currentPosition < 8) {
                     int i = Class40_Sub6.aClass64_2098.method1014(-127);
-                    if((i ^ 0xffffffff) < (-Cache.outgoingbuffer.offset + 8 ^ 0xffffffff))
-                        i = -Cache.outgoingbuffer.offset + 8;
+                    if((i ^ 0xffffffff) < (-Cache.outgoingbuffer.currentPosition + 8 ^ 0xffffffff))
+                        i = -Cache.outgoingbuffer.currentPosition + 8;
                     if(i > 0) {
-                        Class40_Sub6.aClass64_2098.method1008(Cache.outgoingbuffer.offset, i, -128, Cache.outgoingbuffer.buffer);
-                        Cache.outgoingbuffer.offset += i;
+                        Class40_Sub6.aClass64_2098.method1008(Cache.outgoingbuffer.currentPosition, i, -128, Cache.outgoingbuffer.buffer);
+                        Cache.outgoingbuffer.currentPosition += i;
                     }
                 }
-                if(Cache.outgoingbuffer.offset == 8) {
-                    Cache.outgoingbuffer.offset = 0;
+                if(Cache.outgoingbuffer.currentPosition == 8) {
+                    Cache.outgoingbuffer.currentPosition = 0;
                     Renderable.aLong2858 = Cache.outgoingbuffer.method498(1362367312);
                     Class40_Sub3.anInt2032 = 5;
                 }
@@ -166,7 +166,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 seeds[1] = (int) (Math.random() * 9.9999999E7);
                 seeds[2] = (int) (Renderable.aLong2858 >> 357599968);
                 seeds[3] = (int) Renderable.aLong2858;
-                Class32.packetBuffer.offset = 0;
+                Class32.packetBuffer.currentPosition = 0;
                 Class32.packetBuffer.put(10, (byte) -128);
                 Class32.packetBuffer.putInt(63, seeds[0]);
                 Class32.packetBuffer.putInt(113, seeds[1]);
@@ -176,12 +176,12 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 Class32.packetBuffer.putLong(Class22_Sub2.username.method58((byte) 97), false);
                 Class32.packetBuffer.method505(Class22_Sub2.password, (byte) -3);
                 Class32.packetBuffer.applyRSA(Class40_Sub5_Sub17_Sub4.rsaModulus, PacketBuffer.rsaKey, 19280);
-                Class61.packetBuffer.offset = 0;
+                Class61.packetBuffer.currentPosition = 0;
                 if(Class51.anInt1197 == 40)
                     Class61.packetBuffer.put(18, (byte) -128);
                 else
                     Class61.packetBuffer.put(16, (byte) -128);
-                Class61.packetBuffer.put(57 + Class32.packetBuffer.offset, (byte) -128);
+                Class61.packetBuffer.put(57 + Class32.packetBuffer.currentPosition, (byte) -128);
                 Class61.packetBuffer.putInt(60, 435);
                 Class61.packetBuffer.put(VertexNormal.lowMemory ? 1 : 0, (byte) -128);
                 Class61.packetBuffer.putInt(85, FloorDecoration.aClass6_Sub1_605.anInt216);
@@ -197,8 +197,8 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 Class61.packetBuffer.putInt(80, RSCanvas.aClass6_Sub1_48.anInt216);
                 Class61.packetBuffer.putInt(61, VertexNormal.aClass6_Sub1_1104.anInt216);
                 Class61.packetBuffer.putInt(101, Class56.aClass6_Sub1_1323.anInt216);
-                Class61.packetBuffer.method475(Class32.packetBuffer.offset, Class32.packetBuffer.buffer, 0, 8636);
-                Class40_Sub6.aClass64_2098.method1010(Class61.packetBuffer.offset, (byte) -19, 0, Class61.packetBuffer.buffer);
+                Class61.packetBuffer.method475(Class32.packetBuffer.currentPosition, Class32.packetBuffer.buffer, 0, 8636);
+                Class40_Sub6.aClass64_2098.method1010(Class61.packetBuffer.currentPosition, (byte) -19, 0, Class61.packetBuffer.buffer);
                 Class32.packetBuffer.initEncryption(-1, seeds);
                 for(int i = 0; i < 4; i++)
                     seeds[i] += 50;
@@ -243,16 +243,16 @@ public class Class40_Sub5_Sub2 extends SubNode {
                     Class30.anInt708 += Class40_Sub6.aClass64_2098.method1016(16);
                     Class44.anInt1049 = Class40_Sub6.aClass64_2098.method1016(37);
                     Class40_Sub6.aClass64_2098.method1008(0, 1, -127, Cache.outgoingbuffer.buffer);
-                    Cache.outgoingbuffer.offset = 0;
+                    Cache.outgoingbuffer.currentPosition = 0;
                     Class57.packetid = Cache.outgoingbuffer.getPacket((byte) 49);
                     Class40_Sub6.aClass64_2098.method1008(0, 2, -127, Cache.outgoingbuffer.buffer);
-                    Cache.outgoingbuffer.offset = 0;
+                    Cache.outgoingbuffer.currentPosition = 0;
                     Class40_Sub5_Sub12.packetsize = Cache.outgoingbuffer.method469(65280);
                     Class40_Sub3.anInt2032 = 10;
                 }
                 if((Class40_Sub3.anInt2032 ^ 0xffffffff) == -11) {
                     if((Class40_Sub6.aClass64_2098.method1014(-124) ^ 0xffffffff) <= (Class40_Sub5_Sub12.packetsize ^ 0xffffffff)) {
-                        Cache.outgoingbuffer.offset = 0;
+                        Cache.outgoingbuffer.currentPosition = 0;
                         Class40_Sub6.aClass64_2098.method1008(0, Class40_Sub5_Sub12.packetsize, -128, Cache.outgoingbuffer.buffer);
                         Main.method44(0);
                         Class51.anInt1202 = -1;

@@ -133,7 +133,7 @@ public class Model extends Renderable {
         Buffer class40_sub1_256_ = new Buffer(arg0);
         Buffer class40_sub1_257_ = new Buffer(arg0);
         Buffer class40_sub1_258_ = new Buffer(arg0);
-        class40_sub1.offset = arg0.length - 18;
+        class40_sub1.currentPosition = arg0.length - 18;
         int i = class40_sub1.method469(65280);
         int i_259_ = class40_sub1.method469(65280);
         int i_260_ = class40_sub1.method468(false);
@@ -213,11 +213,11 @@ public class Model extends Renderable {
         if(i_274_ >= 0)
             anIntArray3166 = new int[i_259_];
         anIntArray3191 = new int[i_259_];
-        class40_sub1.offset = i_271_;
-        class40_sub1_255_.offset = i_281_;
-        class40_sub1_256_.offset = i_282_;
-        class40_sub1_257_.offset = i_283_;
-        class40_sub1_258_.offset = i_276_;
+        class40_sub1.currentPosition = i_271_;
+        class40_sub1_255_.currentPosition = i_281_;
+        class40_sub1_256_.currentPosition = i_282_;
+        class40_sub1_257_.currentPosition = i_283_;
+        class40_sub1_258_.currentPosition = i_276_;
         int i_284_ = 0;
         int i_285_ = 0;
         int i_286_ = 0;
@@ -241,11 +241,11 @@ public class Model extends Renderable {
             if(anIntArray3173 != null)
                 anIntArray3173[i_287_] = class40_sub1_258_.method468(false);
         }
-        class40_sub1.offset = i_279_;
-        class40_sub1_255_.offset = i_275_;
-        class40_sub1_256_.offset = i_273_;
-        class40_sub1_257_.offset = i_277_;
-        class40_sub1_258_.offset = i_274_;
+        class40_sub1.currentPosition = i_279_;
+        class40_sub1_255_.currentPosition = i_275_;
+        class40_sub1_256_.currentPosition = i_273_;
+        class40_sub1_257_.currentPosition = i_277_;
+        class40_sub1_258_.currentPosition = i_274_;
         for(int i_292_ = 0; i_292_ < i_259_; i_292_++) {
             anIntArray3191[i_292_] = class40_sub1.method469(65280);
             if(triangleDrawType != null)
@@ -257,8 +257,8 @@ public class Model extends Renderable {
             if(anIntArray3166 != null)
                 anIntArray3166[i_292_] = class40_sub1_258_.method468(false);
         }
-        class40_sub1.offset = i_278_;
-        class40_sub1_255_.offset = i_272_;
+        class40_sub1.currentPosition = i_278_;
+        class40_sub1_255_.currentPosition = i_272_;
         int i_293_ = 0;
         int i_294_ = 0;
         int i_295_ = 0;
@@ -303,7 +303,7 @@ public class Model extends Renderable {
                 anIntArray3165[i_297_] = i_295_;
             }
         }
-        class40_sub1.offset = i_280_;
+        class40_sub1.currentPosition = i_280_;
         for(int i_300_ = 0; i_300_ < i_260_; i_300_++) {
             anIntArray3179[i_300_] = class40_sub1.method469(65280);
             anIntArray3190[i_300_] = class40_sub1.method469(65280);

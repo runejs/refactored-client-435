@@ -58,7 +58,7 @@ public class Class14 {
 
     public void method256(byte[] arg0) {
         aClass40_Sub1_423.buffer = arg0;
-        aClass40_Sub1_423.offset = 10;
+        aClass40_Sub1_423.currentPosition = 10;
         int i = aClass40_Sub1_423.method469(65280);
         anInt431 = aClass40_Sub1_423.method469(65280);
         anInt430 = 500000;
@@ -68,10 +68,10 @@ public class Class14 {
             int i_4_ = aClass40_Sub1_423.method491(-4750);
             int i_5_ = aClass40_Sub1_423.method491(-4750);
             if(i_4_ == 1297379947) {
-                anIntArray426[i_3_] = aClass40_Sub1_423.offset;
+                anIntArray426[i_3_] = aClass40_Sub1_423.currentPosition;
                 i_3_++;
             }
-            aClass40_Sub1_423.offset += i_5_;
+            aClass40_Sub1_423.currentPosition += i_5_;
         }
         anIntArray425 = anIntArray426.clone();
         anIntArray427 = new int[i];
@@ -83,7 +83,7 @@ public class Class14 {
     }
 
     public boolean method258() {
-        return aClass40_Sub1_423.offset < 0;
+        return aClass40_Sub1_423.currentPosition < 0;
     }
 
     public void method259(long arg0) {
@@ -92,35 +92,35 @@ public class Class14 {
         for(int i_6_ = 0; i_6_ < i; i_6_++) {
             anIntArray427[i_6_] = 0;
             anIntArray428[i_6_] = 0;
-            aClass40_Sub1_423.offset = anIntArray426[i_6_];
+            aClass40_Sub1_423.currentPosition = anIntArray426[i_6_];
             method254(i_6_);
-            anIntArray425[i_6_] = aClass40_Sub1_423.offset;
+            anIntArray425[i_6_] = aClass40_Sub1_423.currentPosition;
         }
     }
 
     public void method260(int arg0) {
-        anIntArray425[arg0] = aClass40_Sub1_423.offset;
+        anIntArray425[arg0] = aClass40_Sub1_423.currentPosition;
     }
 
     public int method261(int arg0) {
-        int i = aClass40_Sub1_423.buffer[aClass40_Sub1_423.offset];
+        int i = aClass40_Sub1_423.buffer[aClass40_Sub1_423.currentPosition];
         if(i < 0) {
             i &= 0xff;
             anIntArray428[arg0] = i;
-            aClass40_Sub1_423.offset++;
+            aClass40_Sub1_423.currentPosition++;
         } else
             i = anIntArray428[arg0];
         if(i == 240 || i == 247) {
             int i_7_ = aClass40_Sub1_423.method500(63);
             if(i == 247 && i_7_ > 0) {
-                int i_8_ = ((aClass40_Sub1_423.buffer[aClass40_Sub1_423.offset]) & 0xff);
+                int i_8_ = ((aClass40_Sub1_423.buffer[aClass40_Sub1_423.currentPosition]) & 0xff);
                 if(i_8_ >= 241 && i_8_ <= 243 || i_8_ == 246 || i_8_ == 248 || i_8_ >= 250 && i_8_ <= 252 || i_8_ == 254) {
-                    aClass40_Sub1_423.offset++;
+                    aClass40_Sub1_423.currentPosition++;
                     anIntArray428[arg0] = i_8_;
                     return method262(arg0, i_8_);
                 }
             }
-            aClass40_Sub1_423.offset += i_7_;
+            aClass40_Sub1_423.currentPosition += i_7_;
             return 0;
         }
         return method262(arg0, i);
@@ -131,7 +131,7 @@ public class Class14 {
             int i = aClass40_Sub1_423.method468(false);
             int i_9_ = aClass40_Sub1_423.method500(88);
             if(i == 47) {
-                aClass40_Sub1_423.offset += i_9_;
+                aClass40_Sub1_423.currentPosition += i_9_;
                 return 1;
             }
             if(i == 81) {
@@ -140,10 +140,10 @@ public class Class14 {
                 int i_11_ = anIntArray427[arg0];
                 aLong424 += (long) i_11_ * (long) (anInt430 - i_10_);
                 anInt430 = i_10_;
-                aClass40_Sub1_423.offset += i_9_;
+                aClass40_Sub1_423.currentPosition += i_9_;
                 return 2;
             }
-            aClass40_Sub1_423.offset += i_9_;
+            aClass40_Sub1_423.currentPosition += i_9_;
             return 3;
         }
         byte i = aByteArray429[arg1 - 128];
@@ -165,10 +165,10 @@ public class Class14 {
     }
 
     public void method264() {
-        aClass40_Sub1_423.offset = -1;
+        aClass40_Sub1_423.currentPosition = -1;
     }
 
     public void method265(int arg0) {
-        aClass40_Sub1_423.offset = anIntArray425[arg0];
+        aClass40_Sub1_423.currentPosition = anIntArray425[arg0];
     }
 }

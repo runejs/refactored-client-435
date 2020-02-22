@@ -24,11 +24,11 @@ public class Class41 {
         aClass40_Sub13_983 = arg1;
         Buffer class40_sub1 = new Buffer(arg0);
         Buffer class40_sub1_0_ = new Buffer(arg0);
-        class40_sub1.offset = 2;
+        class40_sub1.currentPosition = 2;
         int i = class40_sub1.method468(false);
         int i_1_ = -1;
         int i_2_ = 0;
-        class40_sub1_0_.offset = class40_sub1.offset + i;
+        class40_sub1_0_.currentPosition = class40_sub1.currentPosition + i;
         for(int i_3_ = 0; i_3_ < i; i_3_++) {
             int i_4_ = class40_sub1.method468(false);
             if(i_4_ > 0) {
@@ -66,7 +66,7 @@ public class Class41 {
                     aBoolean985 = true;
             }
         }
-        if(class40_sub1_0_.offset != arg0.length)
+        if(class40_sub1_0_.currentPosition != arg0.length)
             throw new RuntimeException();
         anInt981 = i_2_;
         anIntArray984 = new int[i_2_];

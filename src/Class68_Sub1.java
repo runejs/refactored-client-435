@@ -105,7 +105,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             int i = Cache.outgoingbuffer.method469(65280);
             int i_3_ = Cache.outgoingbuffer.method476(255);
             int i_4_ = Cache.outgoingbuffer.method471((byte) 117);
-            int i_5_ = Cache.outgoingbuffer.offset;
+            int i_5_ = Cache.outgoingbuffer.currentPosition;
             if(arg0.aClass1_3278 != null && arg0.aClass30_3282 != null) {
                 long l = arg0.aClass1_3278.method58((byte) 101);
                 boolean bool = false;
@@ -118,9 +118,9 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
                     }
                 }
                 if(!bool && Class4.anInt182 == 0) {
-                    Class59.aClass40_Sub1_1385.offset = 0;
+                    Class59.aClass40_Sub1_1385.currentPosition = 0;
                     Cache.outgoingbuffer.putBytes128((byte) -80, 0, Class59.aClass40_Sub1_1385.buffer, i_4_);
-                    Class59.aClass40_Sub1_1385.offset = 0;
+                    Class59.aClass40_Sub1_1385.currentPosition = 0;
                     RSString class1 = Class54.method956(124, Class59.aClass40_Sub1_1385).method53(-16315);
                     arg0.aClass1_3090 = class1.method89(false);
                     arg0.anInt3078 = 150;
@@ -134,7 +134,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
                         Class44.method895(127, 2, class1, arg0.aClass1_3278);
                 }
             }
-            Cache.outgoingbuffer.offset = i_4_ + i_5_;
+            Cache.outgoingbuffer.currentPosition = i_4_ + i_5_;
         }
         if((0x20 & arg2) != 0) {
             int i = Cache.outgoingbuffer.method468(false);
@@ -228,10 +228,10 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             if(arg0 < 24)
                 aClass1_2209 = null;
             anInt2205++;
-            int i = arg2.offset;
+            int i = arg2.currentPosition;
             arg2.method509(arg1.anInt1680, 32768);
-            arg2.offset += (Class40_Sub5_Sub10.aClass66_2590.method1026(-18678, 0, arg2.offset, arg1.anInt1680, arg1.aByteArray1692, arg2.buffer));
-            return -i + arg2.offset;
+            arg2.currentPosition += (Class40_Sub5_Sub10.aClass66_2590.method1026(-18678, 0, arg2.currentPosition, arg1.anInt1680, arg1.aByteArray1692, arg2.buffer));
+            return -i + arg2.currentPosition;
         } catch(RuntimeException runtimeexception) {
             throw Class8.method216(runtimeexception, ("ac.C(" + arg0 + ',' + (arg1 != null ? "{...}" : "null") + ',' + (arg2 != null ? "{...}" : "null") + ')'));
         }

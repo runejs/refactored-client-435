@@ -73,7 +73,7 @@ public class Class63 {
         aClass7_1490.method206(arg0);
         int i = arg0.method468(false);
         if(i != 0) {
-            arg0.offset--;
+            arg0.currentPosition--;
             aClass7_1484 = new Class7();
             aClass7_1484.method206(arg0);
             aClass7_1498 = new Class7();
@@ -81,7 +81,7 @@ public class Class63 {
         }
         i = arg0.method468(false);
         if(i != 0) {
-            arg0.offset--;
+            arg0.currentPosition--;
             aClass7_1489 = new Class7();
             aClass7_1489.method206(arg0);
             aClass7_1481 = new Class7();
@@ -89,7 +89,7 @@ public class Class63 {
         }
         i = arg0.method468(false);
         if(i != 0) {
-            arg0.offset--;
+            arg0.currentPosition--;
             aClass7_1497 = new Class7();
             aClass7_1497.method206(arg0);
             aClass7_1480 = new Class7();
