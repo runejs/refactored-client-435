@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 
@@ -76,7 +77,7 @@ public class Class40_Sub5_Sub9 extends SubNode {
                             return;
                         }
                     }
-                    if(!class1.method54((Class40_Sub5_Sub13.localPlayer.playerName), 122)) {
+                    if(!class1.equals((Class40_Sub5_Sub13.localPlayer.playerName))) {
                         Class40_Sub11.aClass1Array2147[(Class40_Sub5_Sub17_Sub3.anInt3060)] = class1;
                         Class59.aLongArray1397[(Class40_Sub5_Sub17_Sub3.anInt3060)] = arg0;
                         Class40_Sub7.anIntArray2131[(Class40_Sub5_Sub17_Sub3.anInt3060)] = 0;

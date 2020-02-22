@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -129,11 +130,11 @@ public abstract class Class22 {
             if(arg1 != -1)
                 aBooleanArray548 = null;
             RSString class1 = new RSString();
-            class1.anInt1680 = arg0.getSmart();
-            if(class1.anInt1680 > arg2)
-                class1.anInt1680 = arg2;
-            class1.aByteArray1692 = new byte[class1.anInt1680];
-            arg0.currentPosition += (Class40_Sub5_Sub10.aClass66_2590.method1023(arg0.buffer, class1.anInt1680, 0, class1.aByteArray1692, arg0.currentPosition, -1));
+            class1.length = arg0.getSmart();
+            if(class1.length > arg2)
+                class1.length = arg2;
+            class1.chars = new byte[class1.length];
+            arg0.currentPosition += (Class40_Sub5_Sub10.aClass66_2590.method1023(arg0.buffer, class1.length, 0, class1.chars, arg0.currentPosition, -1));
             return class1;
         } catch(Exception exception) {
             return Class33.aClass1_777;

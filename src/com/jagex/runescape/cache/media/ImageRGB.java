@@ -1,4 +1,6 @@
-package com.jagex.runescape;
+package com.jagex.runescape.cache.media;
+
+import com.jagex.runescape.Rasterizer;
 
 import java.awt.*;
 import java.awt.image.PixelGrabber;

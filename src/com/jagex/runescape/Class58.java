@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -203,17 +204,17 @@ public class Class58 {
         RSString class1 = new RSString();
         class1.str = arg1;
         int i_5_ = 0;
-        class1.aByteArray1692 = new byte[i];
+        class1.chars = new byte[i];
         while(i > i_5_) {
             int i_6_ = 0xff & is[i_5_++];
             if(i_6_ > 45 || i_6_ < 40) {
                 if(i_6_ != 0)
-                    class1.aByteArray1692[class1.anInt1680++] = (byte) i_6_;
+                    class1.chars[class1.length++] = (byte) i_6_;
             } else {
                 if((i_5_ ^ 0xffffffff) <= (i ^ 0xffffffff))
                     break;
                 int i_7_ = 0xff & is[i_5_++];
-                class1.aByteArray1692[class1.anInt1680++] = (byte) (i_7_ + -48 + 43 * (-40 + i_6_));
+                class1.chars[class1.length++] = (byte) (i_7_ + -48 + 43 * (-40 + i_6_));
             }
         }
         class1.method77((byte) -73);
@@ -271,7 +272,7 @@ public class Class58 {
                                                         x += 14;
                                                     }
                                                     typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(53, (new RSString[]{name, (Class43.aClass1_1027)}))), x, y, 0);
-                                                    x += (8 + (typeFace.method685(name)));
+                                                    x += (8 + (typeFace.getStringWidth(name)));
                                                     typeFace.drawString((Actor.chatMessages[i_8_]), x, y, 255);
                                                 }
                                                 line++;
@@ -281,7 +282,7 @@ public class Class58 {
                                                 if((y ^ 0xffffffff) < -1 && y < 110) {
                                                     int i_13_ = 4;
                                                     typeFace.drawString((Class40_Sub5_Sub6.aClass1_2458), i_13_, y, 0);
-                                                    i_13_ += (typeFace.method685(Class40_Sub5_Sub6.aClass1_2458));
+                                                    i_13_ += (typeFace.getStringWidth(Class40_Sub5_Sub6.aClass1_2458));
                                                     i_13_ += typeFace.method689(32);
                                                     if(privelege == 1) {
                                                         Class40_Sub5_Sub13.moderatorIcon[0].drawImage(i_13_, y + -12);
@@ -292,7 +293,7 @@ public class Class58 {
                                                         i_13_ += 14;
                                                     }
                                                     typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(103, (new RSString[]{name, (Class43.aClass1_1027)}))), i_13_, y, 0);
-                                                    i_13_ += (8 + (typeFace.method685(name)));
+                                                    i_13_ += (8 + (typeFace.getStringWidth(name)));
                                                     typeFace.drawString((Actor.chatMessages[i_8_]), i_13_, y, 8388608);
                                                 }
                                             }
@@ -309,7 +310,7 @@ public class Class58 {
                                             if(type == 6 && (CollisionMap.anInt165 ^ 0xffffffff) == -1 && Class4.anInt185 < 2) {
                                                 if(y > 0 && ((y ^ 0xffffffff) > -111)) {
                                                     typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(-108, (new RSString[]{(Class40_Sub5_Sub1.aClass1_2274), (Class48.aClass1_1123), name, (Class43.aClass1_1027)}))), 4, y, 0);
-                                                    typeFace.drawString((Actor.chatMessages[i_8_]), (typeFace.method685(Class40_Sub5_Sub17_Sub6.method832(-98, (new RSString[]{(Class40_Sub5_Sub1.aClass1_2274), (Class48.aClass1_1123), name})))) + 12, y, 8388608);
+                                                    typeFace.drawString((Actor.chatMessages[i_8_]), (typeFace.getStringWidth(Class40_Sub5_Sub17_Sub6.method832(-98, (new RSString[]{(Class40_Sub5_Sub1.aClass1_2274), (Class48.aClass1_1123), name})))) + 12, y, 8388608);
                                                 }
                                                 line++;
                                             }
@@ -331,7 +332,7 @@ public class Class58 {
                                     else
                                         name = Class22_Sub2.username;
                                     typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(-62, (new RSString[]{name, Class43.aClass1_1027}))), 4, 90, 0);
-                                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(71, (new RSString[]{Class66.aClass1_1556, Class19.aClass1_478}))), ((typeFace.method685(Class40_Sub5_Sub17_Sub6.method832(-99, (new RSString[]{name, ISAAC.aClass1_515})))) + 6), 90, 255);
+                                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(71, (new RSString[]{Class66.aClass1_1556, Class19.aClass1_478}))), ((typeFace.getStringWidth(Class40_Sub5_Sub17_Sub6.method832(-99, (new RSString[]{name, ISAAC.aClass1_515})))) + 6), 90, 255);
                                     Rasterizer.method659(0, 77, 479, 0);
                                 }
                             } else {
