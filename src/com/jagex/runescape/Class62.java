@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -12,7 +12,7 @@ import com.jagex.runescape.util.Signlink;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Class62 implements MouseListener, MouseMotionListener, FocusListener {
+public class Class62 implements MouseListener, MouseMotionListener, FocusListener, MouseWheelListener {
     public static int anInt1447;
     public static int anInt1448;
     public static int anInt1449;
@@ -41,6 +41,8 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
     public static int chatboxScrollMax;
     public static byte[][][] aByteArrayArrayArray1473;
     public static RSString aClass1_1474;
+    public int cameraZoom = 600;
+
 
     static {
         anInt1450 = -1;
@@ -242,6 +244,16 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
             arg0.consume();
         anInt1453++;
 
+    }
+
+    public void mouseWheelMoved(MouseWheelEvent event) {
+        int rotation = event.getWheelRotation();
+        //            if (!handleInterfaceScrolling(event, (Game) this)) {
+        if((cameraZoom <= 300 && rotation <= 0) || (cameraZoom >= 1200 && rotation >= 0)) {
+            return;
+        }
+        int diff = rotation * 8;
+        cameraZoom = cameraZoom + diff;
     }
 
     public void mouseClicked(MouseEvent arg0) {
