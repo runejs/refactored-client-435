@@ -15,7 +15,7 @@ import java.util.zip.CRC32;
 
 public class FloorDecoration {
     public static RSString STRING_CONNECTING_UPDATE_SERVER = RSString.CreateString("Connecting to update server");
-    public static CRC32 aCRC32_590;
+    public static CRC32 aCRC32_590 = new CRC32();
     public static RSString aClass1_591;
     public static int anInt592;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_593;
@@ -26,27 +26,19 @@ public class FloorDecoration {
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
     public static int anInt604;
     public static Class6_Sub1 aClass6_Sub1_605;
-    public static RSString aClass1_606;
+    public static RSString aClass1_606 = RSString.CreateString("Add friend");
     public static Class15 aClass15_607;
     public static Class40_Sub9 aClass40_Sub9_608;
-    public static RSString aClass1_609;
-    public static RSString aClass1_610;
-    public static RSString aClass1_611;
+    public static RSString aClass1_609 = RSString.CreateString("blinken2:");
+    public static RSString aClass1_610 = RSString.CreateString("@red@");
+    public static RSString aClass1_611 = null;
     public static int[] anIntArray612;
-    public static RSString aClass1_613;
-    public static int anInt614;
-    public static RSString aClass1_615;
+    public static RSString aClass1_613 = RSString.CreateString("Verbindung mit Update)2Server)3)3)3");
+    public static int anInt614 = -1;
+    public static RSString aClass1_615 = RSString.CreateString("huffman");
 
     static {
-        aClass1_606 = RSString.CreateString("Add friend");
         aClass1_591 = aClass1_606;
-        aCRC32_590 = new CRC32();
-        aClass1_609 = RSString.CreateString("blinken2:");
-        aClass1_610 = RSString.CreateString("@red@");
-        aClass1_611 = null;
-        aClass1_613 = RSString.CreateString("Verbindung mit Update)2Server)3)3)3");
-        anInt614 = -1;
-        aClass1_615 = RSString.CreateString("huffman");
     }
 
     public int config;

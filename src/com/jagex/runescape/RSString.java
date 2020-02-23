@@ -25,7 +25,6 @@ public class RSString implements Interface1 {
     public int length;
     public byte[] chars;
     public int anInt1696;
-    public String str;
 
     public static void method56(int arg0, boolean arg1, byte[] arg2, int arg3) {
         if(arg0 == 2037 && Class5.aClass22_189 != null) {
@@ -107,7 +106,6 @@ public class RSString implements Interface1 {
         byte[] is = arg1.getBytes();
         int i = is.length;
         RSString class1 = new RSString();
-        class1.str = arg1;
         int i_5_ = 0;
         class1.chars = new byte[i];
         while(i > i_5_) {
@@ -562,7 +560,7 @@ public class RSString implements Interface1 {
     }
 
     public String toString() {
-        return this.str;
+        return new String(this.chars);
     }
 
     public int method84(RSString arg0, byte arg1) {

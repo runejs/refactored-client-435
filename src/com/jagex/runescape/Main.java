@@ -1406,7 +1406,6 @@ public class Main extends RSApplet {
         Class56.method967(78);
         Npc.method797(arg0 + -27855);
         PacketBuffer.method514(1);
-        TypeFace.method676();
         Scene.method114();
         CollisionMap.method152(-19156);
         Player.method794(false);
