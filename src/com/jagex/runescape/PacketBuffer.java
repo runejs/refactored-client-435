@@ -149,7 +149,7 @@ public class PacketBuffer extends Buffer {
     public int getPacket(byte arg0) {
         if(arg0 != 49)
             aClass1_2260 = null;
-        return 0xff & (buffer[currentPosition++]/* + -encryption.method286(-101)*/);
+        return 0xff & (buffer[currentPosition++] + -encryption.method286(-101));
     }
 
     public int putBits(int arg0, byte arg1) {
@@ -171,8 +171,8 @@ public class PacketBuffer extends Buffer {
     }
 
     public void putPacket(int arg1) {
-        buffer[currentPosition++] = //(byte) (encryption.method286(com.jagex.runescape.RSApplet.method27(arg0, -11500)) + arg1);
-                (byte) arg1;
+        buffer[currentPosition++] = (byte) (encryption.method286(-101));
+                //(byte) arg1;
     }
 
     public void initEncryption(int arg0, int[] arg1) {
