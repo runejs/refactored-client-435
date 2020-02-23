@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -167,7 +170,7 @@ public class Class55 {
         Class52.aClass1_1223 = Class10.aClass1_352;
         Floor.aClass1_2325 = Class40_Sub2.aClass1_1991;
         SceneTile.aClass1_2047 = Class37.aClass1_860;
-        Class13.aClass1_417 = Class40_Sub5_Sub10.aClass1_2614;
+        Class13.aClass1_417 = IdentityKit.aClass1_2614;
         Class10.aClass1_344 = Class52.aClass1_1238;
         Class12.aClass1_399 = Class60.aClass1_1409;
         Class40_Sub5_Sub6.aClass1_2458 = GameObject.aClass1_3046;
@@ -182,7 +185,7 @@ public class Class55 {
         Npc.aClass1_3311 = Class49.aClass1_1146;
         Class68.aClass1_1628 = Class40_Sub5_Sub6.aClass1_2457;
         Class13.aClass1_405 = VertexNormal.aClass1_1115;
-        Class40_Sub5_Sub10.aClass1_2587 = Class22_Sub1.aClass1_1838;
+        IdentityKit.aClass1_2587 = Class22_Sub1.aClass1_1838;
         Class40_Sub5_Sub11.aClass1_2620 = Class26.aClass1_631;
         Class27.aClass1_664 = Class6_Sub1.aClass1_1799;
         Class61.aClass1_1422 = Class54.aClass1_1271;
@@ -223,14 +226,14 @@ public class Class55 {
         Node.aClass1_934 = Class64.aClass1_1523;
         Class40_Sub5_Sub6.aClass1_2460 = Main.aClass1_1757;
         VertexNormal.aClass1_1099 = Actor.aClass1_3154;
-        Class40_Sub5_Sub10.aClass1_2593 = Class22_Sub1.aClass1_1838;
-        Player.aClass1_3286 = Class40_Sub5_Sub10.aClass1_2611;
+        IdentityKit.aClass1_2593 = Class22_Sub1.aClass1_1838;
+        Player.aClass1_3286 = IdentityKit.aClass1_2611;
         Node.aClass1_973 = Class64.aClass1_1523;
         FloorDecoration.STRING_CONNECTING_UPDATE_SERVER = FloorDecoration.aClass1_613;
         Player.aClass1_3256 = Npc.aClass1_3308;
         Class40_Sub5_Sub1.aClass1_2274 = Class49.aClass1_1149;
         Class8.aClass1_278 = Class13.aClass1_411;
-        Class52.aClass1_1218 = Class40_Sub5_Sub10.aClass1_2592;
+        Class52.aClass1_1218 = IdentityKit.aClass1_2592;
         Node.aClass1_955 = Class64.aClass1_1523;
         Class59.aClass1_1399 = Class52.aClass1_1228;
         Class22_Sub1.aClass1_1851 = RSApplet.aClass1_35;
@@ -319,7 +322,7 @@ public class Class55 {
             Class6.aClass1_258 = Class40_Sub5_Sub7.aClass1_2475;
             Class35.aClass1_1747 = Class45.aClass1_1079;
             Class33.aClass1_783 = Class42.aClass1_1003;
-            Class40_Sub5_Sub10.aClass1_2615 = HashTable.aClass1_558;
+            IdentityKit.aClass1_2615 = HashTable.aClass1_558;
             Main.aClass1_1761 = Class17.aClass1_457;
             Class38_Sub1.aClass1_1922 = Class12.aClass1_386;
             Class44.aClass1_1038 = Class45.aClass1_1059;

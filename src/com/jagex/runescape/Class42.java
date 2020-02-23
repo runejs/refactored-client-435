@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -75,7 +77,7 @@ public class Class42 {
     public static void method883(byte arg0, int arg1) {
 
         anInt991++;
-        if(Class68.method1043(arg1, -7)) {
+        if(Class68.method1043(arg1)) {
             Class40_Sub5_Sub12[] class40_sub5_sub12s = Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1];
             for(int i = 0; class40_sub5_sub12s.length > i; i++) {
                 Class40_Sub5_Sub12 class40_sub5_sub12 = class40_sub5_sub12s[i];
@@ -103,7 +105,7 @@ public class Class42 {
 
     public static void method885(Class6 arg0, boolean arg1, Class6 arg2, int arg3) {
 
-        Class40_Sub5_Sub10.membersServer = arg1;
+        IdentityKit.membersServer = arg1;
         anInt999++;
         if(arg3 != -313)
             aClass1_1012 = null;
@@ -218,7 +220,7 @@ public class Class42 {
             class40_sub5_sub17_sub4_sub2.anInt3096 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.tileSpacesOccupied);
             class40_sub5_sub17_sub4_sub2.anInt3079 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate180Animation);
             class40_sub5_sub17_sub4_sub2.anInt3145 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2421);
-            class40_sub5_sub17_sub4_sub2.anInt3113 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2391);
+            class40_sub5_sub17_sub4_sub2.anInt3113 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.degreesToTurn);
             if(class40_sub5_sub17_sub4_sub2.anInt3113 == 0)
                 class40_sub5_sub17_sub4_sub2.anInt3118 = 0;
             class40_sub5_sub17_sub4_sub2.anInt3075 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate90RightAnimation);

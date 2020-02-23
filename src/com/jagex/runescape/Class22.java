@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -89,7 +91,7 @@ public abstract class Class22 {
                 int i_10_ = (Npc.aScene_3301.method93(Player.anInt3267, i_8_, i_9_));
                 if(i_10_ != 0) {
                     i_10_ = 0x7fff & i_10_ >> -1684965490;
-                    int i_11_ = (GameObjectDefinition.getDefinition(i_10_).anInt2511);
+                    int i_11_ = (GameObjectDefinition.getDefinition(i_10_).icon);
                     if(i_11_ >= 0) {
                         int i_12_ = i_9_;
                         int i_13_ = i_8_;
@@ -134,7 +136,7 @@ public abstract class Class22 {
             if(class1.length > arg2)
                 class1.length = arg2;
             class1.chars = new byte[class1.length];
-            arg0.currentPosition += (Class40_Sub5_Sub10.aClass66_2590.method1023(arg0.buffer, class1.length, 0, class1.chars, arg0.currentPosition, -1));
+            arg0.currentPosition += (IdentityKit.aClass66_2590.method1023(arg0.buffer, class1.length, 0, class1.chars, arg0.currentPosition, -1));
             return class1;
         } catch(Exception exception) {
             return Class33.aClass1_777;
@@ -217,7 +219,7 @@ public abstract class Class22 {
                         RSCanvas.anInt65 = 0;
                 }
                 if(i == 8) {
-                    Class52.aBoolean1221 = true;
+                    Class52.redrawChatbox = true;
                     CollisionMap.anInt165 = i_21_;
                 }
                 if((i ^ 0xffffffff) == -5) {

@@ -11,7 +11,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public static int[] anIntArray2777 = {8, 11, 4, 6, 9, 7, 10};
     public static int anInt2778;
     public static Class6 aClass6_2779;
-    public static int anInt2780;
+    public static int inputType;
     public static RSString aClass1_2781 = Class58.method978(" Sekunde(Xn(Y -Ubertragen)3");
     public static int anInt2782;
     public static int anInt2783;
@@ -27,7 +27,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public static RSString aClass1_2793;
 
     static {
-        anInt2780 = 0;
+        inputType = 0;
         anInt2782 = 0;
         anInt2778 = 0;
         anIntArray2788 = new int[]{16, 32, 64, 128};
@@ -46,64 +46,64 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public Class40_Sub5_Sub15(Class6 arg0, Class6 arg1, int arg2, boolean arg3) {
 
         Class45 class45 = new Class45();
-            int i = arg0.method190(arg2, (byte) 16);
-            aClass41Array2794 = new Class41[i];
-            int[] is = arg0.method192(arg2, true);
-            for(int i_0_ = 0; is.length > i_0_; i_0_++) {
-                byte[] is_1_ = arg0.method172(is[i_0_], 111, arg2);
-                Class40_Sub13 class40_sub13 = null;
-                int i_2_ = is_1_[1] & 0xff | is_1_[0] << 490068232 & 0xff00;
-                for(Class40_Sub13 class40_sub13_3_ = (Class40_Sub13) class45.method902((byte) -90); class40_sub13_3_ != null; class40_sub13_3_ = (Class40_Sub13) class45.method909(-4)) {
-                    if(i_2_ == class40_sub13_3_.anInt2175) {
-                        class40_sub13 = class40_sub13_3_;
-                        break;
-                    }
+        int i = arg0.method190(arg2, (byte) 16);
+        aClass41Array2794 = new Class41[i];
+        int[] is = arg0.method192(arg2, true);
+        for(int i_0_ = 0; is.length > i_0_; i_0_++) {
+            byte[] is_1_ = arg0.method172(is[i_0_], 111, arg2);
+            Class40_Sub13 class40_sub13 = null;
+            int i_2_ = is_1_[1] & 0xff | is_1_[0] << 490068232 & 0xff00;
+            for(Class40_Sub13 class40_sub13_3_ = (Class40_Sub13) class45.method902((byte) -90); class40_sub13_3_ != null; class40_sub13_3_ = (Class40_Sub13) class45.method909(-4)) {
+                if(i_2_ == class40_sub13_3_.anInt2175) {
+                    class40_sub13 = class40_sub13_3_;
+                    break;
                 }
-                if(class40_sub13 == null) {
-                    byte[] is_4_;
-                    if(!arg3)
-                        is_4_ = arg1.method182(0, -16, i_2_);
-                    else
-                        is_4_ = arg1.method182(i_2_, -122, 0);
-                    class40_sub13 = new Class40_Sub13(i_2_, is_4_);
-                    class45.method904(class40_sub13, 60);
-                }
-                aClass41Array2794[is[i_0_]] = new Class41(is_1_, class40_sub13);
             }
+            if(class40_sub13 == null) {
+                byte[] is_4_;
+                if(!arg3)
+                    is_4_ = arg1.method182(0, -16, i_2_);
+                else
+                    is_4_ = arg1.method182(i_2_, -122, 0);
+                class40_sub13 = new Class40_Sub13(i_2_, is_4_);
+                class45.method904(class40_sub13, 60);
+            }
+            aClass41Array2794[is[i_0_]] = new Class41(is_1_, class40_sub13);
+        }
 
     }
 
     public static void method734(int arg0) {
 
         aClass1_2792 = null;
-            aClass40_Sub5_Sub14_Sub2_2775 = null;
-            aClass1_2790 = null;
-            aClass40_Sub5_Sub14_Sub2Array2776 = null;
-            anIntArray2777 = null;
-            int i = -41 % ((32 - arg0) / 40);
-            aClass1_2787 = null;
-            aClass1_2773 = null;
-            aClass6_2779 = null;
-            anIntArray2788 = null;
-            aClass1_2793 = null;
-            aClass1_2786 = null;
-            aClass1_2781 = null;
-            aClass1_2774 = null;
+        aClass40_Sub5_Sub14_Sub2_2775 = null;
+        aClass1_2790 = null;
+        aClass40_Sub5_Sub14_Sub2Array2776 = null;
+        anIntArray2777 = null;
+        int i = -41 % ((32 - arg0) / 40);
+        aClass1_2787 = null;
+        aClass1_2773 = null;
+        aClass6_2779 = null;
+        anIntArray2788 = null;
+        aClass1_2793 = null;
+        aClass1_2786 = null;
+        aClass1_2781 = null;
+        aClass1_2774 = null;
 
     }
 
     public static boolean method735(byte arg0, int arg1) {
 
         anInt2783++;
-            if(arg1 >= 97 && arg1 <= 122)
-                return true;
-            if((arg1 ^ 0xffffffff) <= -66 && arg1 <= 90)
-                return true;
-            if((arg1 ^ 0xffffffff) <= -49 && arg1 <= 57)
-                return true;
-            if(arg0 != -37)
-                method734(31);
-            return false;
+        if(arg1 >= 97 && arg1 <= 122)
+            return true;
+        if((arg1 ^ 0xffffffff) <= -66 && arg1 <= 90)
+            return true;
+        if((arg1 ^ 0xffffffff) <= -49 && arg1 <= 57)
+            return true;
+        if(arg0 != -37)
+            method734(31);
+        return false;
 
     }
 
@@ -183,8 +183,8 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public boolean method737(int arg0, int arg1) {
 
         int i = 104 % ((58 - arg1) / 61);
-            anInt2785++;
-            return aClass41Array2794[arg0].aBoolean985;
+        anInt2785++;
+        return aClass41Array2794[arg0].aBoolean985;
 
     }
 }

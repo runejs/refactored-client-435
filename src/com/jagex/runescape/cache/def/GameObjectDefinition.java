@@ -1,5 +1,6 @@
-package com.jagex.runescape;
+package com.jagex.runescape.cache.def;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
 
@@ -21,12 +22,12 @@ public class GameObjectDefinition extends SubNode {
     public int anInt2502;
     public int sizeX;
     public int offsetY;
-    public int anInt2505;
+    public int offsetAmplifier;
     public int animationId;
     public int modelSizeX;
     public RSString[] actions;
     public int[] recolorToReplace;
-    public int anInt2511 = -1;
+    public int icon = -1;
     public int anInt2512;
     public int anInt2513;
     public int sizeY;
@@ -35,12 +36,12 @@ public class GameObjectDefinition extends SubNode {
     public boolean isSolid;
     public int offsetHeight;
     public boolean nonFlatShading;
-    public boolean aBoolean2521;
+    public boolean wall;
     public int[] objectTypes;
     public int[] anIntArray2523;
     public int[] objectModels;
     public int ambient;
-    public boolean aBoolean2528;
+    public boolean walkable;
     public boolean adjustToTerrain;
     public int anInt2533;
     public int[] configChangeDest;
@@ -48,14 +49,14 @@ public class GameObjectDefinition extends SubNode {
     public int mapSceneID;
     public int anInt2538;
     public int modelSizeHeight;
-    public boolean aBoolean2541;
+    public boolean castsShadow;
     public int anInt2542;
     public int contrast;
     public int hasActions;
     public boolean unknown;
     public int varpID;
     public RSString name;
-    public boolean aBoolean2553;
+    public boolean unknown3;
 
     public GameObjectDefinition() {
         anInt2502 = 0;
@@ -65,11 +66,11 @@ public class GameObjectDefinition extends SubNode {
         offsetX = 0;
         modelSizeX = 128;
         isSolid = false;
-        aBoolean2521 = false;
+        wall = false;
         adjustToTerrain = false;
         anInt2533 = -1;
         animationId = -1;
-        anInt2505 = 16;
+        offsetAmplifier = 16;
         actions = new RSString[5];
         offsetHeight = 0;
         solid = true;
@@ -78,15 +79,15 @@ public class GameObjectDefinition extends SubNode {
         offsetY = 0;
         nonFlatShading = false;
         mapSceneID = -1;
-        aBoolean2528 = true;
+        walkable = true;
         sizeX = 1;
         unknown = false;
         modelSizeHeight = 128;
         name = Class44.aClass1_1043;
-        aBoolean2541 = true;
+        castsShadow = true;
         contrast = 0;
         configId = -1;
-        aBoolean2553 = false;
+        unknown3 = false;
         varpID = -1;
         hasActions = -1;
         ambient = 0;
@@ -173,7 +174,7 @@ public class GameObjectDefinition extends SubNode {
         gameObjectDefinition.method605(true);
         if(gameObjectDefinition.isSolid) {
             gameObjectDefinition.solid = false;
-            gameObjectDefinition.aBoolean2528 = false;
+            gameObjectDefinition.walkable = false;
         }
         Class58.aClass9_1364.method230(-7208, (long) arg0, gameObjectDefinition);
         return gameObjectDefinition;
@@ -239,10 +240,10 @@ public class GameObjectDefinition extends SubNode {
     public void readValues(Buffer gameObjectDefinitionBuffer) {
         for(; ; ) {
             int opcode = gameObjectDefinitionBuffer.getUnsignedByte();
-            if((opcode ^ 0xffffffff) == -1) {
+            if(opcode == 0) {
                 break;
             }
-            readValue(gameObjectDefinitionBuffer, -1663, opcode);
+            readValue(gameObjectDefinitionBuffer, opcode);
         }
     }
 
@@ -276,7 +277,7 @@ public class GameObjectDefinition extends SubNode {
             if(objectModels == null) {
                 return null;
             }
-            boolean bool = arg3 > 3 ^ aBoolean2553;
+            boolean bool = arg3 > 3 ^ unknown3;
             int i = objectModels.length;
             for(int i_7_ = 0; i > i_7_; i_7_++) {
                 int i_8_ = objectModels[i_7_];
@@ -313,7 +314,7 @@ public class GameObjectDefinition extends SubNode {
                 return null;
             }
             int i_10_ = objectModels[i];
-            boolean bool = aBoolean2553 ^ arg3 > 3;
+            boolean bool = unknown3 ^ arg3 > 3;
             if(bool) {
                 i_10_ += 65536;
             }
@@ -408,7 +409,7 @@ public class GameObjectDefinition extends SubNode {
 
     }
 
-    public void readValue(Buffer buffer, int arg1, int opcode) {
+    public void readValue(Buffer buffer, int opcode) {
         if(opcode == 1) {
             int length = buffer.getUnsignedByte();
             if(length > 0) {
@@ -445,7 +446,7 @@ public class GameObjectDefinition extends SubNode {
         } else if(opcode == 17) {
             solid = false;
         } else if(opcode == 18) {
-            aBoolean2528 = false;
+            walkable = false;
         } else if(opcode == 19) {
             hasActions = buffer.getUnsignedByte();
         } else if(opcode == 21) {
@@ -453,14 +454,14 @@ public class GameObjectDefinition extends SubNode {
         } else if(opcode == 22) {
             nonFlatShading = true;
         } else if(opcode == 23) {
-            aBoolean2521 = true;
+            wall = true;
         } else if(opcode == 24) {
             animationId = buffer.getUnsignedShortBE();
             if(animationId == 0xFFFF) {
                 animationId = -1;
             }
         } else if(opcode == 28) {
-            anInt2505 = buffer.getUnsignedByte();
+            offsetAmplifier = buffer.getUnsignedByte();
         } else if(opcode == 29) {
             ambient = buffer.getByte();
         } else if(opcode == 39) {
@@ -479,11 +480,11 @@ public class GameObjectDefinition extends SubNode {
                 recolorToReplace[index] = (buffer.getUnsignedShortBE());
             }
         } else if(opcode == 60) {
-            anInt2511 = (buffer.getUnsignedShortBE());
+            icon = (buffer.getUnsignedShortBE());
         } else if(opcode == 62) {
-            aBoolean2553 = true;
+            unknown3 = true;
         } else if(opcode == 64) {
-            aBoolean2541 = false;
+            castsShadow = false;
         } else if(opcode == 65) {
             modelSizeX = (buffer.getUnsignedShortBE());
         } else if(opcode == 66) {
@@ -536,9 +537,6 @@ public class GameObjectDefinition extends SubNode {
                 anIntArray2523[index] = buffer.getUnsignedShortBE();
             }
         }
-        if(arg1 != -1663) {
-            method601((byte) -112);
-        }
     }
 
     public boolean method610(int arg0, int arg1) {
@@ -549,7 +547,7 @@ public class GameObjectDefinition extends SubNode {
         if(objectTypes != null) {
             for(int i = 0; objectTypes.length > i; i++) {
                 if((arg0 ^ 0xffffffff) == (objectTypes[i] ^ 0xffffffff)) {
-                    return RSString.aClass6_1705.method173((objectModels[i] & 0xffff), (byte) -10, 0);
+                    return RSString.aClass6_1705.loaded((objectModels[i] & 0xffff), 0);
                 }
             }
             return true;
@@ -562,7 +560,7 @@ public class GameObjectDefinition extends SubNode {
         }
         boolean bool = true;
         for(int i = 0; objectModels.length > i; i++) {
-            bool &= RSString.aClass6_1705.method173((0xffff & objectModels[i]), (byte) -10, 0);
+            bool &= RSString.aClass6_1705.loaded((0xffff & objectModels[i]), 0);
         }
         return bool;
 
@@ -595,7 +593,7 @@ public class GameObjectDefinition extends SubNode {
         }
         boolean bool = true;
         for(int i = 0; objectModels.length > i; i++) {
-            bool &= RSString.aClass6_1705.method173((0xffff & objectModels[i]), (byte) -10, 0);
+            bool &= RSString.aClass6_1705.loaded((0xffff & objectModels[i]), 0);
         }
         int i = -67 % ((-65 - arg0) / 50);
         return bool;

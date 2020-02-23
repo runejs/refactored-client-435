@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.NpcDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.TypeFace;
@@ -58,8 +59,8 @@ public class FloorDecoration {
     public static void method342(int arg0, int arg1, Actor arg2) {
 
         Class22_Sub1.method312(arg1, arg2.anInt3089, arg2.anInt3098, 4976905);
-            int i = -63 % ((41 - arg0) / 41);
-            anInt598++;
+        int i = -63 % ((41 - arg0) / 41);
+        anInt598++;
 
     }
 
@@ -167,141 +168,141 @@ public class FloorDecoration {
     public static void method344(int arg0) {
 
         anInt592++;
-            if(SubNode.aBoolean2083) {
-                Class5.anIntArray198 = null;
-                SubNode.aBoolean2083 = false;
-                RSCanvas.anIntArray66 = null;
-                Class34.mapBack = null;
-                Landscape.anIntArray1186 = null;
-                Class17.aClass68_462 = null;
-                RSCanvas.aClass68_59 = null;
-                GameObject.aClass68_3045 = null;
-                Class57.aClass40_Sub5_Sub14_Sub2_1346 = null;
-                aClass40_Sub5_Sub14_Sub2_593 = null;
-                Class53.aClass40_Sub5_Sub14_Sub2_1270 = null;
-                Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776 = null;
-                Class13.aClass40_Sub5_Sub14_Sub2_418 = null;
-                RSString.aClass68_1665 = null;
-                RSCanvas.anIntArray62 = null;
-                NpcDefinition.anIntArray2386 = null;
-                Class39.aClass68_908 = null;
-                Class38_Sub1.aClass40_Sub5_Sub14_Sub2_1919 = null;
-                Class56.aClass40_Sub5_Sub14_Sub2_1329 = null;
-                Landscape.aClass68_1185 = null;
-                RSApplet.aClass40_Sub5_Sub14_Sub2_1 = null;
-                Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105 = null;
-                Class34.anIntArray852 = null;
-                Class66.aClass68_1541 = null;
-                Buffer.aClass40_Sub5_Sub14_Sub2_1959 = null;
-                SubNode.aClass68_2091 = null;
-                Class56.aClass40_Sub5_Sub14_Sub2_1315 = null;
-                Class40_Sub5_Sub4.aClass68_2350 = null;
-                ISAAC.aClass40_Sub5_Sub14_Sub2_524 = null;
-                RSCanvas.aClass68_64 = null;
-                Class40_Sub7.aClass68_2123 = null;
-                Class19.aClass68_482 = null;
-                if(arg0 < -28) {
-                    Class40_Sub5_Sub1.aClass68_2275 = null;
-                    Class61.aClass68_1441 = null;
-                    Class35.aClass40_Sub5_Sub14_Sub2_1744 = null;
-                    HashTable.aClass40_Sub5_Sub14_Sub2_549 = null;
-                    Renderable.aClass40_Sub5_Sub14_Sub2_2860 = null;
-                    Class24.anIntArray577 = null;
-                    Class30.aClass68_714 = null;
-                    Class40_Sub5_Sub17_Sub6.aClass68_3243 = null;
-                    Class44.aClass40_Sub5_Sub14_Sub2_1047 = null;
-                }
+        if(SubNode.aBoolean2083) {
+            Class5.anIntArray198 = null;
+            SubNode.aBoolean2083 = false;
+            RSCanvas.anIntArray66 = null;
+            Class34.mapBack = null;
+            Landscape.anIntArray1186 = null;
+            Class17.aClass68_462 = null;
+            RSCanvas.aClass68_59 = null;
+            GameObject.aClass68_3045 = null;
+            Class57.aClass40_Sub5_Sub14_Sub2_1346 = null;
+            aClass40_Sub5_Sub14_Sub2_593 = null;
+            Class53.aClass40_Sub5_Sub14_Sub2_1270 = null;
+            Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776 = null;
+            Class13.aClass40_Sub5_Sub14_Sub2_418 = null;
+            RSString.aClass68_1665 = null;
+            RSCanvas.anIntArray62 = null;
+            NpcDefinition.anIntArray2386 = null;
+            Class39.aClass68_908 = null;
+            Class38_Sub1.aClass40_Sub5_Sub14_Sub2_1919 = null;
+            Class56.aClass40_Sub5_Sub14_Sub2_1329 = null;
+            Landscape.aClass68_1185 = null;
+            RSApplet.aClass40_Sub5_Sub14_Sub2_1 = null;
+            Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105 = null;
+            Class34.anIntArray852 = null;
+            Class66.aClass68_1541 = null;
+            Buffer.aClass40_Sub5_Sub14_Sub2_1959 = null;
+            SubNode.aClass68_2091 = null;
+            Class56.aClass40_Sub5_Sub14_Sub2_1315 = null;
+            Class40_Sub5_Sub4.aClass68_2350 = null;
+            ISAAC.aClass40_Sub5_Sub14_Sub2_524 = null;
+            RSCanvas.aClass68_64 = null;
+            Class40_Sub7.aClass68_2123 = null;
+            Class19.aClass68_482 = null;
+            if(arg0 < -28) {
+                Class40_Sub5_Sub1.aClass68_2275 = null;
+                Class61.aClass68_1441 = null;
+                Class35.aClass40_Sub5_Sub14_Sub2_1744 = null;
+                HashTable.aClass40_Sub5_Sub14_Sub2_549 = null;
+                Renderable.aClass40_Sub5_Sub14_Sub2_2860 = null;
+                Class24.anIntArray577 = null;
+                Class30.aClass68_714 = null;
+                Class40_Sub5_Sub17_Sub6.aClass68_3243 = null;
+                Class44.aClass40_Sub5_Sub14_Sub2_1047 = null;
             }
+        }
 
     }
 
     public static Object[] method345(byte arg0, Buffer arg1) {
 
         int i = arg1.getUnsignedByte();
-            anInt604++;
-            if((i ^ 0xffffffff) == -1)
-                return null;
-            Object[] objects = new Object[i];
-            for(int i_31_ = 0; i_31_ < i; i_31_++) {
-                int i_32_ = arg1.getUnsignedByte();
-                if(i_32_ == 0)
-                    objects[i_31_] = new Integer(arg1.getIntBE());
-                else if(i_32_ == 1)
-                    objects[i_31_] = arg1.getRSString();
-            }
-            if(arg0 != 89)
-                aClass40_Sub9_608 = null;
-            return objects;
+        anInt604++;
+        if((i ^ 0xffffffff) == -1)
+            return null;
+        Object[] objects = new Object[i];
+        for(int i_31_ = 0; i_31_ < i; i_31_++) {
+            int i_32_ = arg1.getUnsignedByte();
+            if(i_32_ == 0)
+                objects[i_31_] = new Integer(arg1.getIntBE());
+            else if(i_32_ == 1)
+                objects[i_31_] = arg1.getRSString();
+        }
+        if(arg0 != 89)
+            aClass40_Sub9_608 = null;
+        return objects;
 
     }
 
     public static boolean method346(byte arg0) {
 
         anInt597++;
-            long l = Class51.method937(1);
-            int i = (int) (l - Class45.aLong1051);
-            Class45.aLong1051 = l;
-            if((i ^ 0xffffffff) < -201)
-                i = 200;
-            if(arg0 != 48)
-                return false;
-            Class22.anInt547 += i;
-            if(Class42.anInt1006 == 0 && Class17.anInt464 == 0 && HashTable.anInt554 == 0 && Class68.anInt1618 == 0)
-                return true;
-            if(Class57.aClass64_1345 == null)
-                return false;
-            try {
-                if((Class22.anInt547 ^ 0xffffffff) < -30001)
+        long l = Class51.method937(1);
+        int i = (int) (l - Class45.aLong1051);
+        Class45.aLong1051 = l;
+        if((i ^ 0xffffffff) < -201)
+            i = 200;
+        if(arg0 != 48)
+            return false;
+        Class22.anInt547 += i;
+        if(Class42.anInt1006 == 0 && Class17.anInt464 == 0 && HashTable.anInt554 == 0 && Class68.anInt1618 == 0)
+            return true;
+        if(Class57.aClass64_1345 == null)
+            return false;
+        try {
+            if((Class22.anInt547 ^ 0xffffffff) < -30001)
+                throw new IOException();
+            for(/**/; (Class17.anInt464 ^ 0xffffffff) > -21; Class17.anInt464++) {
+                if((Class68.anInt1618 ^ 0xffffffff) >= -1)
+                    break;
+                Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class51.aClass23_1194.method329(false));
+                Buffer class40_sub1 = new Buffer(4);
+                class40_sub1.putByte(1);
+                class40_sub1.putMediumBE((int) class40_sub5_sub13.key);
+                Class57.aClass64_1345.method1010(4, (byte) -19, 0, (class40_sub1.buffer));
+                Class37.aClass23_869.put(class40_sub5_sub13, (byte) -115, (class40_sub5_sub13.key));
+                Class68.anInt1618--;
+            }
+            for(/**/; Class42.anInt1006 < 20 && HashTable.anInt554 > 0; HashTable.anInt554--) {
+                Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class19.aClass27_485.method362(-113));
+                Buffer class40_sub1 = new Buffer(4);
+                class40_sub1.putByte(0);
+                class40_sub1.putMediumBE((int) class40_sub5_sub13.key);
+                Class57.aClass64_1345.method1010(4, (byte) -19, 0, (class40_sub1.buffer));
+                class40_sub5_sub13.method539(0);
+                Class34.aClass23_841.put(class40_sub5_sub13, (byte) -122, (class40_sub5_sub13.key));
+                Class42.anInt1006++;
+            }
+            for(int i_33_ = 0; i_33_ < 100; i_33_++) {
+                int i_34_ = Class57.aClass64_1345.method1014(-122);
+                if(i_34_ < 0)
                     throw new IOException();
-                for(/**/; (Class17.anInt464 ^ 0xffffffff) > -21; Class17.anInt464++) {
-                    if((Class68.anInt1618 ^ 0xffffffff) >= -1)
-                        break;
-                    Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class51.aClass23_1194.method329(false));
-                    Buffer class40_sub1 = new Buffer(4);
-                    class40_sub1.putByte(1);
-                    class40_sub1.putMediumBE((int) class40_sub5_sub13.key);
-                    Class57.aClass64_1345.method1010(4, (byte) -19, 0, (class40_sub1.buffer));
-                    Class37.aClass23_869.put(class40_sub5_sub13, (byte) -115, (class40_sub5_sub13.key));
-                    Class68.anInt1618--;
-                }
-                for(/**/; Class42.anInt1006 < 20 && HashTable.anInt554 > 0; HashTable.anInt554--) {
-                    Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class19.aClass27_485.method362(-113));
-                    Buffer class40_sub1 = new Buffer(4);
-                    class40_sub1.putByte(0);
-                    class40_sub1.putMediumBE((int) class40_sub5_sub13.key);
-                    Class57.aClass64_1345.method1010(4, (byte) -19, 0, (class40_sub1.buffer));
-                    class40_sub5_sub13.method539(0);
-                    Class34.aClass23_841.put(class40_sub5_sub13, (byte) -122, (class40_sub5_sub13.key));
-                    Class42.anInt1006++;
-                }
-                for(int i_33_ = 0; i_33_ < 100; i_33_++) {
-                    int i_34_ = Class57.aClass64_1345.method1014(-122);
-                    if(i_34_ < 0)
-                        throw new IOException();
-                    if((i_34_ ^ 0xffffffff) == -1)
-                        break;
-                    Class22.anInt547 = 0;
-                    int i_35_ = 0;
-                    if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null)
-                        i_35_ = 8;
-                    else if((Landscape.anInt1157 ^ 0xffffffff) == -1)
-                        i_35_ = 1;
-                    if(i_35_ <= 0) {
-                        int i_36_ = ((Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer).length + -(PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758));
-                        int i_37_ = -Landscape.anInt1157 + 512;
-                        if(((-Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition + i_36_) ^ 0xffffffff) > (i_37_ ^ 0xffffffff))
-                            i_37_ = i_36_ - (Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition);
-                        if(i_37_ > i_34_)
-                            i_37_ = i_34_;
-                        Class57.aClass64_1345.method1008((Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition), i_37_, -127, (Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer));
-                        if((Class8.aByte302 ^ 0xffffffff) != -1) {
-                            for(int i_38_ = 0; (i_37_ ^ 0xffffffff) < (i_38_ ^ 0xffffffff); i_38_++)
-                                Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[(Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition) + i_38_] = (byte) (RSApplet.method27((Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[(Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition) + i_38_]), Class8.aByte302));
-                        }
-                        Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition += i_37_;
-                        Landscape.anInt1157 += i_37_;
-                        if((Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition ^ 0xffffffff) == (i_36_ ^ 0xffffffff)) {
-                            if(((PacketBuffer.aClass40_Sub5_Sub13_2250.key) ^ 0xffffffffffffffffL) != -16711936L) {
+                if((i_34_ ^ 0xffffffff) == -1)
+                    break;
+                Class22.anInt547 = 0;
+                int i_35_ = 0;
+                if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null)
+                    i_35_ = 8;
+                else if((Landscape.anInt1157 ^ 0xffffffff) == -1)
+                    i_35_ = 1;
+                if(i_35_ <= 0) {
+                    int i_36_ = ((Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer).length + -(PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758));
+                    int i_37_ = -Landscape.anInt1157 + 512;
+                    if(((-Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition + i_36_) ^ 0xffffffff) > (i_37_ ^ 0xffffffff))
+                        i_37_ = i_36_ - (Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition);
+                    if(i_37_ > i_34_)
+                        i_37_ = i_34_;
+                    Class57.aClass64_1345.method1008((Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition), i_37_, -127, (Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer));
+                    if((Class8.aByte302 ^ 0xffffffff) != -1) {
+                        for(int i_38_ = 0; (i_37_ ^ 0xffffffff) < (i_38_ ^ 0xffffffff); i_38_++)
+                            Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[(Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition) + i_38_] = (byte) (RSApplet.method27((Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[(Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition) + i_38_]), Class8.aByte302));
+                    }
+                    Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition += i_37_;
+                    Landscape.anInt1157 += i_37_;
+                    if((Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition ^ 0xffffffff) == (i_36_ ^ 0xffffffff)) {
+                        if(((PacketBuffer.aClass40_Sub5_Sub13_2250.key) ^ 0xffffffffffffffffL) != -16711936L) {
 				/*aCRC32_590.reset();
 				aCRC32_590.update((com.jagex.runescape.Class40_Sub5_Sub13
 						   .aClass40_Sub1_2752
@@ -323,121 +324,121 @@ public class FloorDecoration {
 				    com.jagex.runescape.Class34.anInt813++;
 				    return false;
 				}*/
-                                Class40_Sub5_Sub1.anInt2278 = 0;
-                                Class34.anInt813 = 0;
-                                PacketBuffer.aClass40_Sub5_Sub13_2250.aClass6_Sub1_2754.method196(((PacketBuffer.aClass40_Sub5_Sub13_2250.key) & 0xff0000L) == 16711680L, false, (int) ((PacketBuffer.aClass40_Sub5_Sub13_2250.key) & 0xffffL), Npc.aBoolean3298, (Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer));
-                            } else {
-                                Class48.aClass40_Sub1_1132 = Class40_Sub5_Sub13.aClass40_Sub1_2752;
-                                for(int i_40_ = 0; i_40_ < 256; i_40_++) {
-                                    Class6_Sub1 class6_sub1 = Class24.aClass6_Sub1Array580[i_40_];
-                                    if(class6_sub1 != null) {
-                                        Class48.aClass40_Sub1_1132.currentPosition = 4 * i_40_ + 5;
-                                        int i_41_ = Class48.aClass40_Sub1_1132.getIntBE();
-                                        class6_sub1.method200(i_41_, 99);
-                                    }
+                            Class40_Sub5_Sub1.anInt2278 = 0;
+                            Class34.anInt813 = 0;
+                            PacketBuffer.aClass40_Sub5_Sub13_2250.aClass6_Sub1_2754.method196(((PacketBuffer.aClass40_Sub5_Sub13_2250.key) & 0xff0000L) == 16711680L, (int) ((PacketBuffer.aClass40_Sub5_Sub13_2250.key) & 0xffffL), Npc.aBoolean3298, (Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer));
+                        } else {
+                            Class48.aClass40_Sub1_1132 = Class40_Sub5_Sub13.aClass40_Sub1_2752;
+                            for(int i_40_ = 0; i_40_ < 256; i_40_++) {
+                                Class6_Sub1 class6_sub1 = Class24.aClass6_Sub1Array580[i_40_];
+                                if(class6_sub1 != null) {
+                                    Class48.aClass40_Sub1_1132.currentPosition = 4 * i_40_ + 5;
+                                    int i_41_ = Class48.aClass40_Sub1_1132.getIntBE();
+                                    class6_sub1.method200(i_41_, 99);
                                 }
                             }
-                            PacketBuffer.aClass40_Sub5_Sub13_2250.method457(-1);
-                            PacketBuffer.aClass40_Sub5_Sub13_2250 = null;
-                            Class40_Sub5_Sub13.aClass40_Sub1_2752 = null;
-                            Landscape.anInt1157 = 0;
-                            if(!Npc.aBoolean3298)
-                                Class42.anInt1006--;
-                            else
-                                Class17.anInt464--;
-                        } else {
-                            if(Landscape.anInt1157 != 512)
-                                break;
-                            Landscape.anInt1157 = 0;
                         }
+                        PacketBuffer.aClass40_Sub5_Sub13_2250.method457(-1);
+                        PacketBuffer.aClass40_Sub5_Sub13_2250 = null;
+                        Class40_Sub5_Sub13.aClass40_Sub1_2752 = null;
+                        Landscape.anInt1157 = 0;
+                        if(!Npc.aBoolean3298)
+                            Class42.anInt1006--;
+                        else
+                            Class17.anInt464--;
                     } else {
-                        int i_42_ = -Class45.aClass40_Sub1_1081.currentPosition + i_35_;
-                        if(i_42_ > i_34_)
-                            i_42_ = i_34_;
-                        Class57.aClass64_1345.method1008(Class45.aClass40_Sub1_1081.currentPosition, i_42_, -128, Class45.aClass40_Sub1_1081.buffer);
-                        if((Class8.aByte302 ^ 0xffffffff) != -1) {
-                            for(int i_43_ = 0; i_42_ > i_43_; i_43_++)
-                                Class45.aClass40_Sub1_1081.buffer[(Class45.aClass40_Sub1_1081.currentPosition + i_43_)] = (byte) (RSApplet.method27((Class45.aClass40_Sub1_1081.buffer[(Class45.aClass40_Sub1_1081.currentPosition) + i_43_]), Class8.aByte302));
-                        }
-                        Class45.aClass40_Sub1_1081.currentPosition += i_42_;
-                        if((i_35_ ^ 0xffffffff) < (Class45.aClass40_Sub1_1081.currentPosition ^ 0xffffffff))
+                        if(Landscape.anInt1157 != 512)
                             break;
-                        if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null) {
+                        Landscape.anInt1157 = 0;
+                    }
+                } else {
+                    int i_42_ = -Class45.aClass40_Sub1_1081.currentPosition + i_35_;
+                    if(i_42_ > i_34_)
+                        i_42_ = i_34_;
+                    Class57.aClass64_1345.method1008(Class45.aClass40_Sub1_1081.currentPosition, i_42_, -128, Class45.aClass40_Sub1_1081.buffer);
+                    if((Class8.aByte302 ^ 0xffffffff) != -1) {
+                        for(int i_43_ = 0; i_42_ > i_43_; i_43_++)
+                            Class45.aClass40_Sub1_1081.buffer[(Class45.aClass40_Sub1_1081.currentPosition + i_43_)] = (byte) (RSApplet.method27((Class45.aClass40_Sub1_1081.buffer[(Class45.aClass40_Sub1_1081.currentPosition) + i_43_]), Class8.aByte302));
+                    }
+                    Class45.aClass40_Sub1_1081.currentPosition += i_42_;
+                    if((i_35_ ^ 0xffffffff) < (Class45.aClass40_Sub1_1081.currentPosition ^ 0xffffffff))
+                        break;
+                    if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null) {
+                        Class45.aClass40_Sub1_1081.currentPosition = 0;
+                        int i_44_ = Class45.aClass40_Sub1_1081.getUnsignedByte();
+                        int i_45_ = Class45.aClass40_Sub1_1081.getUnsignedShortBE();
+                        int i_46_ = Class45.aClass40_Sub1_1081.getUnsignedByte();
+                        int i_47_ = Class45.aClass40_Sub1_1081.getIntBE();
+                        long l_48_ = (long) ((i_44_ << 58201072) + i_45_);
+                        Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class37.aClass23_869.method331(l_48_, 6120));
+                        Npc.aBoolean3298 = true;
+                        if(class40_sub5_sub13 == null) {
+                            class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class34.aClass23_841.method331(l_48_, 6120));
+                            Npc.aBoolean3298 = false;
+                        }
+                        if(class40_sub5_sub13 == null)
+                            throw new IOException();
+                        PacketBuffer.aClass40_Sub5_Sub13_2250 = class40_sub5_sub13;
+                        int i_49_ = i_46_ == 0 ? 5 : 9;
+                        Class40_Sub5_Sub13.aClass40_Sub1_2752 = new Buffer((PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758) + i_49_ + i_47_);
+                        Class40_Sub5_Sub13.aClass40_Sub1_2752.putByte(i_46_);
+                        Class40_Sub5_Sub13.aClass40_Sub1_2752.putIntBE(i_47_);
+                        Landscape.anInt1157 = 8;
+                        Class45.aClass40_Sub1_1081.currentPosition = 0;
+                    } else if(Landscape.anInt1157 == 0) {
+                        if((Class45.aClass40_Sub1_1081.buffer[0] ^ 0xffffffff) != 0)
+                            PacketBuffer.aClass40_Sub5_Sub13_2250 = null;
+                        else {
                             Class45.aClass40_Sub1_1081.currentPosition = 0;
-                            int i_44_ = Class45.aClass40_Sub1_1081.getUnsignedByte();
-                            int i_45_ = Class45.aClass40_Sub1_1081.getUnsignedShortBE();
-                            int i_46_ = Class45.aClass40_Sub1_1081.getUnsignedByte();
-                            int i_47_ = Class45.aClass40_Sub1_1081.getIntBE();
-                            long l_48_ = (long) ((i_44_ << 58201072) + i_45_);
-                            Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class37.aClass23_869.method331(l_48_, 6120));
-                            Npc.aBoolean3298 = true;
-                            if(class40_sub5_sub13 == null) {
-                                class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class34.aClass23_841.method331(l_48_, 6120));
-                                Npc.aBoolean3298 = false;
-                            }
-                            if(class40_sub5_sub13 == null)
-                                throw new IOException();
-                            PacketBuffer.aClass40_Sub5_Sub13_2250 = class40_sub5_sub13;
-                            int i_49_ = i_46_ == 0 ? 5 : 9;
-                            Class40_Sub5_Sub13.aClass40_Sub1_2752 = new Buffer((PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758) + i_49_ + i_47_);
-                            Class40_Sub5_Sub13.aClass40_Sub1_2752.putByte(i_46_);
-                            Class40_Sub5_Sub13.aClass40_Sub1_2752.putIntBE(i_47_);
-                            Landscape.anInt1157 = 8;
-                            Class45.aClass40_Sub1_1081.currentPosition = 0;
-                        } else if(Landscape.anInt1157 == 0) {
-                            if((Class45.aClass40_Sub1_1081.buffer[0] ^ 0xffffffff) != 0)
-                                PacketBuffer.aClass40_Sub5_Sub13_2250 = null;
-                            else {
-                                Class45.aClass40_Sub1_1081.currentPosition = 0;
-                                Landscape.anInt1157 = 1;
-                            }
+                            Landscape.anInt1157 = 1;
                         }
                     }
                 }
-                return true;
-            } catch(IOException ioexception) {
-                try {
-                    Class57.aClass64_1345.method1009(-104);
-                } catch(Exception exception) {
-                    /* empty */
-                }
-                Class40_Sub5_Sub1.anInt2278++;
-                Class57.aClass64_1345 = null;
-                return false;
             }
+            return true;
+        } catch(IOException ioexception) {
+            try {
+                Class57.aClass64_1345.method1009(-104);
+            } catch(Exception exception) {
+                /* empty */
+            }
+            Class40_Sub5_Sub1.anInt2278++;
+            Class57.aClass64_1345 = null;
+            return false;
+        }
 
     }
 
     public static TypeFace method347(Class6 arg0, int arg1, RSString arg2, RSString arg3) {
 
         anInt599++;
-            int i = arg0.method183(0, arg3);
-            if(arg1 != 255)
-                aClass1_591 = null;
-            int i_50_ = arg0.method179(arg1 ^ 0xe3, i, arg2);
-            return Class40_Sub5_Sub17_Sub1.method760(i_50_, (byte) -124, arg0, i);
+        int i = arg0.method183(0, arg3);
+        if(arg1 != 255)
+            aClass1_591 = null;
+        int i_50_ = arg0.method179(arg1 ^ 0xe3, i, arg2);
+        return Class40_Sub5_Sub17_Sub1.method760(i_50_, (byte) -124, arg0, i);
 
     }
 
     public static void method348(int arg0) {
 
         aClass40_Sub5_Sub14_Sub2_593 = null;
-            aCRC32_590 = null;
-            aClass1_610 = null;
-            aClass1_611 = null;
-            aClass1_613 = null;
-            aClass1_606 = null;
-            anIntArray612 = null;
-            aClass1_591 = null;
-            aClass40_Sub5_Sub14_Sub4Array603 = null;
-            aClass6_Sub1_605 = null;
+        aCRC32_590 = null;
+        aClass1_610 = null;
+        aClass1_611 = null;
+        aClass1_613 = null;
+        aClass1_606 = null;
+        anIntArray612 = null;
+        aClass1_591 = null;
+        aClass40_Sub5_Sub14_Sub4Array603 = null;
+        aClass6_Sub1_605 = null;
+        STRING_CONNECTING_UPDATE_SERVER = null;
+        if(arg0 != -6580)
             STRING_CONNECTING_UPDATE_SERVER = null;
-            if(arg0 != -6580)
-                STRING_CONNECTING_UPDATE_SERVER = null;
-            aClass1_615 = null;
-            aClass1_609 = null;
-            aClass15_607 = null;
-            aClass40_Sub9_608 = null;
+        aClass1_615 = null;
+        aClass1_609 = null;
+        aClass15_607 = null;
+        aClass40_Sub9_608 = null;
 
     }
 }

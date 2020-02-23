@@ -33,47 +33,47 @@ public class Class49 {
     public static void method929(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
 
         int i = 0;
-            int i_0_ = 0x7ff & -arg3 + 2048;
-            int i_1_ = 0;
-            int i_2_ = 2048 - arg0 & 0x7ff;
-            anInt1144++;
-            int i_3_ = arg6;
-            if(arg5 != (i_2_ ^ 0xffffffff)) {
-                int i_4_ = Model.COSINE[i_2_];
-                int i_5_ = Model.SINE[i_2_];
-                int i_6_ = i_1_ * i_4_ + -(i_5_ * i_3_) >> 530951344;
-                i_3_ = i_4_ * i_3_ + i_5_ * i_1_ >> -1614421968;
-                i_1_ = i_6_;
-            }
-            if(i_0_ != 0) {
-                int i_7_ = Model.COSINE[i_0_];
-                int i_8_ = Model.SINE[i_0_];
-                int i_9_ = i_7_ * i + i_3_ * i_8_ >> -435436048;
-                i_3_ = -(i * i_8_) + i_3_ * i_7_ >> -2076141520;
-                i = i_9_;
-            }
-            Class68_Sub1.anInt2210 = arg3;
-            Class32.anInt769 = -i_1_ + arg2;
-            Class12.anInt388 = -i + arg1;
-            Class26.anInt627 = arg0;
-            Class40_Sub5_Sub6.anInt2443 = arg4 + -i_3_;
+        int i_0_ = 0x7ff & -arg3 + 2048;
+        int i_1_ = 0;
+        int i_2_ = 2048 - arg0 & 0x7ff;
+        anInt1144++;
+        int i_3_ = arg6;
+        if(arg5 != (i_2_ ^ 0xffffffff)) {
+            int i_4_ = Model.COSINE[i_2_];
+            int i_5_ = Model.SINE[i_2_];
+            int i_6_ = i_1_ * i_4_ + -(i_5_ * i_3_) >> 530951344;
+            i_3_ = i_4_ * i_3_ + i_5_ * i_1_ >> -1614421968;
+            i_1_ = i_6_;
+        }
+        if(i_0_ != 0) {
+            int i_7_ = Model.COSINE[i_0_];
+            int i_8_ = Model.SINE[i_0_];
+            int i_9_ = i_7_ * i + i_3_ * i_8_ >> -435436048;
+            i_3_ = -(i * i_8_) + i_3_ * i_7_ >> -2076141520;
+            i = i_9_;
+        }
+        Class68_Sub1.anInt2210 = arg3;
+        Class32.anInt769 = -i_1_ + arg2;
+        Class12.anInt388 = -i + arg1;
+        Class26.anInt627 = arg0;
+        Class40_Sub5_Sub6.anInt2443 = arg4 + -i_3_;
 
     }
 
     public static void method930(int arg0) {
 
         aClass1_1153 = null;
-            aClass9_1145 = null;
-            aClass40_Sub9_Sub1_1152 = null;
-            aClass1_1155 = null;
-            aClass1_1149 = null;
-            if(arg0 > 11) {
-                aClass1_1148 = null;
-                aClass1_1146 = null;
-                aClass1_1143 = null;
-                aClass1_1156 = null;
-                aClass6_1150 = null;
-            }
+        aClass9_1145 = null;
+        aClass40_Sub9_Sub1_1152 = null;
+        aClass1_1155 = null;
+        aClass1_1149 = null;
+        if(arg0 > 11) {
+            aClass1_1148 = null;
+            aClass1_1146 = null;
+            aClass1_1143 = null;
+            aClass1_1156 = null;
+            aClass6_1150 = null;
+        }
 
     }
 }

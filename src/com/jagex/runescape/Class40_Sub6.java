@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
 
 public class Class40_Sub6 extends Node {
@@ -85,53 +86,53 @@ public class Class40_Sub6 extends Node {
         Class17.anIntArray466[i - arg0] = (int) (16.0 * Math.sin((double) Node.anInt926 / 14.0) + 14.0 * Math.sin((double) Node.anInt926 / 15.0) + 12.0 * Math.sin((double) Node.anInt926 / 16.0));
         if((Class40_Sub5_Sub6.anInt2452 ^ 0xffffffff) < -1)
             Class40_Sub5_Sub6.anInt2452 -= 4;
-        if(Class40_Sub5_Sub10.anInt2613 > 0)
-            Class40_Sub5_Sub10.anInt2613 -= 4;
-        if(Class40_Sub5_Sub6.anInt2452 == 0 && Class40_Sub5_Sub10.anInt2613 == 0) {
+        if(IdentityKit.anInt2613 > 0)
+            IdentityKit.anInt2613 -= 4;
+        if(Class40_Sub5_Sub6.anInt2452 == 0 && IdentityKit.anInt2613 == 0) {
             int i_15_ = (int) (2000.0 * Math.random());
             if(i_15_ == 0)
                 Class40_Sub5_Sub6.anInt2452 = 1024;
             if(i_15_ == 1)
-                Class40_Sub5_Sub10.anInt2613 = 1024;
+                IdentityKit.anInt2613 = 1024;
         }
     }
 
     public static void method837(byte arg0) {
 
         aClass1_2111 = null;
-            tile_height = null;
-            aClass1_2114 = null;
-            aClass1_2121 = null;
-            aClass40_Sub5_Sub12_2116 = null;
-            aClass1_2103 = null;
-            aClass1_2109 = null;
-            aClass64_2098 = null;
-            aClass1_2097 = null;
-            aClass1_2101 = null;
-            anIntArray2106 = null;
-            aClass40_Sub5_Sub14_Sub2_2105 = null;
-            if(arg0 < 23)
-                method838(-95, -33L);
-            anIntArray2113 = null;
+        tile_height = null;
+        aClass1_2114 = null;
+        aClass1_2121 = null;
+        aClass40_Sub5_Sub12_2116 = null;
+        aClass1_2103 = null;
+        aClass1_2109 = null;
+        aClass64_2098 = null;
+        aClass1_2097 = null;
+        aClass1_2101 = null;
+        anIntArray2106 = null;
+        aClass40_Sub5_Sub14_Sub2_2105 = null;
+        if(arg0 < 23)
+            method838(-95, -33L);
+        anIntArray2113 = null;
 
     }
 
     public static void method838(int arg0, long arg1) {
 
         anInt2100++;
-            if((arg1 ^ 0xffffffffffffffffL) != -1L) {
-                for(int i = arg0; i < Class42.anInt1008; i++) {
-                    if(Class53.aLongArray1267[i] == arg1) {
-                        ISAAC.aBoolean505 = true;
-                        Class42.anInt1008--;
-                        for(int i_16_ = i; Class42.anInt1008 > i_16_; i_16_++)
-                            Class53.aLongArray1267[i_16_] = Class53.aLongArray1267[1 + i_16_];
-                        Class32.packetBuffer.putPacket(11453, 28);
-                        Class32.packetBuffer.putLongBE(arg1);
-                        break;
-                    }
+        if((arg1 ^ 0xffffffffffffffffL) != -1L) {
+            for(int i = arg0; i < Class42.anInt1008; i++) {
+                if(Class53.aLongArray1267[i] == arg1) {
+                    ISAAC.redrawTabArea = true;
+                    Class42.anInt1008--;
+                    for(int i_16_ = i; Class42.anInt1008 > i_16_; i_16_++)
+                        Class53.aLongArray1267[i_16_] = Class53.aLongArray1267[1 + i_16_];
+                    Class32.packetBuffer.putPacket(28);
+                    Class32.packetBuffer.putLongBE(arg1);
+                    break;
                 }
             }
+        }
 
     }
 }

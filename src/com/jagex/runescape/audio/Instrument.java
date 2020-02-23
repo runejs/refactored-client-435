@@ -65,24 +65,24 @@ public class Instrument {
         pitch_env.decode(buffer);
         vol_env = new Envelope();
         vol_env.decode(buffer);
-        int i = buffer.getUnsignedByte();
-        if(i != 0) {
+        int opcode = buffer.getUnsignedByte();
+        if(opcode != 0) {
             buffer.currentPosition--;
             pitch_mod_env = new Envelope();
             pitch_mod_env.decode(buffer);
             pitch_mod_amp_env = new Envelope();
             pitch_mod_amp_env.decode(buffer);
         }
-        i = buffer.getUnsignedByte();
-        if(i != 0) {
+        opcode = buffer.getUnsignedByte();
+        if(opcode != 0) {
             buffer.currentPosition--;
             vol_mod_env = new Envelope();
             vol_mod_env.decode(buffer);
             vol_mod_amp_env = new Envelope();
             vol_mod_amp_env.decode(buffer);
         }
-        i = buffer.getUnsignedByte();
-        if(i != 0) {
+        opcode = buffer.getUnsignedByte();
+        if(opcode != 0) {
             buffer.currentPosition--;
             gating_release_env = new Envelope();
             gating_release_env.decode(buffer);

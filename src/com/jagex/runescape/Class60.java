@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.def.NpcDefinition;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -39,29 +41,29 @@ public class Class60 {
 
         anInt1414++;
         TypeFace class40_sub5_sub14_sub1 = new TypeFace((Actor.anIntArray3111), Class17.anIntArray456, (Npc.anIntArray3312), Buffer.anIntArray1972, Class58.aByteArrayArray1370);
-            NpcDefinition.method569(true);
-            if(arg0 < 4)
-                return null;
-            return class40_sub5_sub14_sub1;
+        NpcDefinition.method569();
+        if(arg0 < 4)
+            return null;
+        return class40_sub5_sub14_sub1;
 
     }
 
     public static int method988(Class6 arg0, Class6 arg1, int arg2) {
 
         anInt1412++;
-            int i = 0;
-            if(arg0.method194(Class32.aClass1_772, Class22_Sub2.aClass1_1886, -1234))
-                i++;
-            if(arg1.method194(Main.aClass1_1762, Class22_Sub2.aClass1_1886, -1234))
-                i++;
-            if(arg1.method194(Class40_Sub5_Sub7.aClass1_2488, Class22_Sub2.aClass1_1886, -1234))
-                i++;
-            if(arg1.method194(ISAAC.aClass1_506, Class22_Sub2.aClass1_1886, -1234))
-                i++;
-            if(arg1.method194(Class8.aClass1_299, Class22_Sub2.aClass1_1886, -1234))
-                i++;
-            int i_0_ = 84 % ((11 - arg2) / 47);
-            return i;
+        int i = 0;
+        if(arg0.method194(Class32.aClass1_772, Class22_Sub2.string_blank, -1234))
+            i++;
+        if(arg1.method194(Main.aClass1_1762, Class22_Sub2.string_blank, -1234))
+            i++;
+        if(arg1.method194(Class40_Sub5_Sub7.aClass1_2488, Class22_Sub2.string_blank, -1234))
+            i++;
+        if(arg1.method194(ISAAC.aClass1_506, Class22_Sub2.string_blank, -1234))
+            i++;
+        if(arg1.method194(Class8.aClass1_299, Class22_Sub2.string_blank, -1234))
+            i++;
+        int i_0_ = 84 % ((11 - arg2) / 47);
+        return i;
 
     }
 
@@ -86,9 +88,9 @@ public class Class60 {
         i += 8;
         int i_3_ = NpcDefinition.anInt2394 * 15 + 21;
         if((Class57.anInt1338 ^ 0xffffffff) < -5 && (RSString.anInt1668 ^ 0xffffffff) < -5 && (Class57.anInt1338 ^ 0xffffffff) > -517 && (RSString.anInt1668 ^ 0xffffffff) > -339) {
-            Class40_Sub5_Sub17_Sub1.anInt2983 = 0;
+            Class40_Sub5_Sub17_Sub1.menuScreenArea = 0;
             CollisionMap.anInt168 = NpcDefinition.anInt2394 * 15 + 22;
-            Class4.aBoolean173 = true;
+            Class4.menuOpen = true;
             int i_4_ = -(i / 2) + -4 + Class57.anInt1338;
             VertexNormal.anInt1086 = i;
             if((i + i_4_ ^ 0xffffffff) < -513)
@@ -106,14 +108,14 @@ public class Class60 {
         if(arg0 == 11451) {
             if((Class57.anInt1338 ^ 0xffffffff) < -554 && (RSString.anInt1668 ^ 0xffffffff) < -206 && (Class57.anInt1338 ^ 0xffffffff) > -744 && RSString.anInt1668 < 466) {
                 CollisionMap.anInt168 = 22 + 15 * NpcDefinition.anInt2394;
-                Class40_Sub5_Sub17_Sub1.anInt2983 = 1;
+                Class40_Sub5_Sub17_Sub1.menuScreenArea = 1;
                 int i_6_ = -205 + RSString.anInt1668;
                 int i_7_ = -(i / 2) + (-553 + Class57.anInt1338);
                 if(i_7_ < 0)
                     i_7_ = 0;
                 else if(i + i_7_ > 190)
                     i_7_ = 190 - i;
-                Class4.aBoolean173 = true;
+                Class4.menuOpen = true;
                 Class19.anInt475 = i_7_;
                 if((i_6_ ^ 0xffffffff) <= -1) {
                     if(i_3_ + i_6_ > 261)
@@ -125,7 +127,7 @@ public class Class60 {
             }
             if((Class57.anInt1338 ^ 0xffffffff) < -18 && RSString.anInt1668 > 357 && Class57.anInt1338 < 496 && RSString.anInt1668 < 453) {
                 VertexNormal.anInt1086 = i;
-                Class40_Sub5_Sub17_Sub1.anInt2983 = 2;
+                Class40_Sub5_Sub17_Sub1.menuScreenArea = 2;
                 CollisionMap.anInt168 = NpcDefinition.anInt2394 * 15 + 22;
                 int i_8_ = RSString.anInt1668 + -357;
                 if((i_8_ ^ 0xffffffff) <= -1) {
@@ -134,7 +136,7 @@ public class Class60 {
                 } else
                     i_8_ = 0;
                 int i_9_ = -(i / 2) + -17 + Class57.anInt1338;
-                Class4.aBoolean173 = true;
+                Class4.menuOpen = true;
                 Main.anInt1758 = i_8_;
                 if((i_9_ ^ 0xffffffff) > -1)
                     i_9_ = 0;
@@ -148,28 +150,28 @@ public class Class60 {
     public static RSString method991(int arg0, long arg1) {
 
         anInt1403++;
-            if(arg1 <= 0L || (arg1 ^ 0xffffffffffffffffL) <= -6582952005840035282L)
-                return null;
-            if((arg1 % 37L ^ 0xffffffffffffffffL) == -1L)
-                return null;
-            long l = arg1;
-            int i = 0;
-            while((l ^ 0xffffffffffffffffL) != -1L) {
-                l /= 37L;
-                i++;
-            }
-            if(arg0 >= -3)
-                aClass1_1416 = null;
-            byte[] is = new byte[i];
-            while((arg1 ^ 0xffffffffffffffffL) != -1L) {
-                long l_10_ = arg1;
-                arg1 /= 37L;
-                is[--i] = CollisionMap.aByteArray169[(int) (-(arg1 * 37L) + l_10_)];
-            }
-            RSString class1 = new RSString();
+        if(arg1 <= 0L || (arg1 ^ 0xffffffffffffffffL) <= -6582952005840035282L)
+            return null;
+        if((arg1 % 37L ^ 0xffffffffffffffffL) == -1L)
+            return null;
+        long l = arg1;
+        int i = 0;
+        while((l ^ 0xffffffffffffffffL) != -1L) {
+            l /= 37L;
+            i++;
+        }
+        if(arg0 >= -3)
+            aClass1_1416 = null;
+        byte[] is = new byte[i];
+        while((arg1 ^ 0xffffffffffffffffL) != -1L) {
+            long l_10_ = arg1;
+            arg1 /= 37L;
+            is[--i] = CollisionMap.aByteArray169[(int) (-(arg1 * 37L) + l_10_)];
+        }
+        RSString class1 = new RSString();
         class1.chars = is;
         class1.length = is.length;
-            return class1;
+        return class1;
 
     }
 
@@ -226,13 +228,13 @@ public class Class60 {
                 } else {
                     i_17_ = 260;
                     if(i_11_ == 1 && i >= -75 + i_17_ && (i_17_ + 75 ^ 0xffffffff) <= (i ^ 0xffffffff) && (i_12_ ^ 0xffffffff) <= (-20 + i_18_ ^ 0xffffffff) && (i_12_ ^ 0xffffffff) >= (i_18_ + 20 ^ 0xffffffff)) {
-                        Class22_Sub2.username = Class22_Sub2.aClass1_1886;
-                        Class22_Sub2.password = Class22_Sub2.aClass1_1886;
+                        Class22_Sub2.username = Class22_Sub2.string_blank;
+                        Class22_Sub2.password = Class22_Sub2.string_blank;
                         Class26.anInt622 = 0;
                     }
                     while(Class34.method416((byte) -104)) {
                         boolean bool = false;
-                        for(int i_19_ = 0; ((i_19_ ^ 0xffffffff) > (Class22_Sub2.aClass1_1893.method59() ^ 0xffffffff)); i_19_++) {
+                        for(int i_19_ = 0; ((i_19_ ^ 0xffffffff) > (Class22_Sub2.aClass1_1893.length() ^ 0xffffffff)); i_19_++) {
                             if((Class59.anInt1388 ^ 0xffffffff) == (Class22_Sub2.aClass1_1893.method55(i_19_, false) ^ 0xffffffff)) {
                                 bool = true;
                                 break;
@@ -240,19 +242,19 @@ public class Class60 {
                         }
                         if((Node.anInt947 ^ 0xffffffff) != -1) {
                             if(Node.anInt947 == 1) {
-                                if(ItemDefinition.anInt2854 == 85 && (Class22_Sub2.password.method59() ^ 0xffffffff) < -1)
-                                    Class22_Sub2.password = (Class22_Sub2.password.method68(0, Class22_Sub2.password.method59() + -1));
+                                if(ItemDefinition.anInt2854 == 85 && (Class22_Sub2.password.length() ^ 0xffffffff) < -1)
+                                    Class22_Sub2.password = (Class22_Sub2.password.substring(0, Class22_Sub2.password.length() + -1));
                                 if((ItemDefinition.anInt2854 ^ 0xffffffff) == -85 || ItemDefinition.anInt2854 == 80)
                                     Node.anInt947 = 0;
-                                if(bool && (Class22_Sub2.password.method59() ^ 0xffffffff) > -21)
+                                if(bool && (Class22_Sub2.password.length() ^ 0xffffffff) > -21)
                                     Class22_Sub2.password = Class22_Sub2.password.method70(Class59.anInt1388, 0);
                             }
                         } else {
-                            if(((ItemDefinition.anInt2854 ^ 0xffffffff) == -86) && (Class22_Sub2.username.method59() > 0))
-                                Class22_Sub2.username = (Class22_Sub2.username.method68(0, -1 + Class22_Sub2.username.method59()));
+                            if(((ItemDefinition.anInt2854 ^ 0xffffffff) == -86) && (Class22_Sub2.username.length() > 0))
+                                Class22_Sub2.username = (Class22_Sub2.username.substring(0, -1 + Class22_Sub2.username.length()));
                             if(ItemDefinition.anInt2854 == 84 || ((ItemDefinition.anInt2854 ^ 0xffffffff) == -81))
                                 Node.anInt947 = 1;
-                            if(bool && (Class22_Sub2.username.method59() ^ 0xffffffff) > -13)
+                            if(bool && (Class22_Sub2.username.length() ^ 0xffffffff) > -13)
                                 Class22_Sub2.username = Class22_Sub2.username.method70(Class59.anInt1388, 0);
                         }
                     }
@@ -269,12 +271,12 @@ public class Class60 {
     public static void method994(boolean arg0) {
 
         aClass1_1401 = null;
+        aClass1_1408 = null;
+        aClass1_1409 = null;
+        if(arg0 != false)
             aClass1_1408 = null;
-            aClass1_1409 = null;
-            if(arg0 != false)
-                aClass1_1408 = null;
-            aClass1_1411 = null;
-            aClass1_1416 = null;
+        aClass1_1411 = null;
+        aClass1_1416 = null;
 
     }
 }

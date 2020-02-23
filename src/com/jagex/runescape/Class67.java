@@ -68,64 +68,64 @@ public class Class67 {
     public Class67(Class47 arg0, int arg1, int arg2) throws IOException {
         aLong1593 = -1L;
         aLong1596 = -1L;
-            aClass47_1603 = arg0;
-            aLong1602 = aLong1604 = arg0.method919(87);
-            aByteArray1592 = new byte[arg2];
-            aByteArray1583 = new byte[arg1];
-            aLong1578 = 0L;
+        aClass47_1603 = arg0;
+        aLong1602 = aLong1604 = arg0.method919(87);
+        aByteArray1592 = new byte[arg2];
+        aByteArray1583 = new byte[arg1];
+        aLong1578 = 0L;
 
     }
 
     public static int method1034(boolean arg0, int arg1, int arg2, byte[] arg3) {
 
         anInt1584++;
-            int i = -1;
-            if(arg0 != true)
-                return 39;
-            for(int i_1_ = arg1; (i_1_ ^ 0xffffffff) > (arg2 ^ 0xffffffff); i_1_++)
-                i = (Class54.anIntArray1282[0xff & (i ^ arg3[i_1_])] ^ i >>> -1341612408);
-            i ^= 0xffffffff;
-            return i;
+        int i = -1;
+        if(arg0 != true)
+            return 39;
+        for(int i_1_ = arg1; (i_1_ ^ 0xffffffff) > (arg2 ^ 0xffffffff); i_1_++)
+            i = (Class54.anIntArray1282[0xff & (i ^ arg3[i_1_])] ^ i >>> -1341612408);
+        i ^= 0xffffffff;
+        return i;
 
     }
 
     public static void method1037(boolean arg0) {
 
         anIntArray1579 = null;
-            aClass1_1598 = null;
-            aLongArray1614 = null;
-            aClass1_1612 = null;
-            aClass1_1580 = null;
-            aClass1_1613 = null;
-            if(arg0 != false)
-                aClass1_1590 = null;
-            aClass9_1582 = null;
-            aClass1_1591 = null;
-            aClass1_1605 = null;
-            aClass1_1610 = null;
-            aClass9_1611 = null;
-            anIntArray1588 = null;
+        aClass1_1598 = null;
+        aLongArray1614 = null;
+        aClass1_1612 = null;
+        aClass1_1580 = null;
+        aClass1_1613 = null;
+        if(arg0 != false)
             aClass1_1590 = null;
-            aClass1_1585 = null;
-            aClass1_1609 = null;
-            aClass6_1577 = null;
+        aClass9_1582 = null;
+        aClass1_1591 = null;
+        aClass1_1605 = null;
+        aClass1_1610 = null;
+        aClass9_1611 = null;
+        anIntArray1588 = null;
+        aClass1_1590 = null;
+        aClass1_1585 = null;
+        aClass1_1609 = null;
+        aClass6_1577 = null;
 
     }
 
     public void method1031(int arg0, long arg1) {
 
         anInt1587++;
-            if(arg0 == 0 && (arg1 ^ 0xffffffffffffffffL) <= -1L)
-                aLong1578 = arg1;
+        if(arg0 == 0 && (arg1 ^ 0xffffffffffffffffL) <= -1L)
+            aLong1578 = arg1;
 
     }
 
     public long method1032(int arg0) {
 
         if(arg0 != 0)
-                return -105L;
-            anInt1581++;
-            return aLong1602;
+            return -105L;
+        anInt1581++;
+        return aLong1602;
 
     }
 
@@ -275,31 +275,31 @@ public class Class67 {
     public void method1036(int arg0) throws IOException {
 
         anInt1574++;
-            if(arg0 == 841617512) {
-                method1039(arg0 ^ ~0x322a1068);
-                aClass47_1603.method917(arg0 + -841617511);
-            }
+        if(arg0 == 841617512) {
+            method1039(arg0 ^ ~0x322a1068);
+            aClass47_1603.method917(arg0 + -841617511);
+        }
 
     }
 
     public void method1038(byte arg0) throws IOException {
 
         anInt1608++;
-            if(arg0 == 50) {
-                anInt1589 = 0;
-                if((aLong1600 ^ 0xffffffffffffffffL) != (aLong1578 ^ 0xffffffffffffffffL)) {
-                    aClass47_1603.method916(true, aLong1578);
-                    aLong1600 = aLong1578;
-                }
-                aLong1596 = aLong1578;
-                int i;
-                for(/**/; (anInt1589 < aByteArray1583.length); anInt1589 += i) {
-                    i = aClass47_1603.method920(anInt1589, (aByteArray1583.length - anInt1589), aByteArray1583, -110);
-                    if((i ^ 0xffffffff) == 0)
-                        break;
-                    aLong1600 += (long) i;
-                }
+        if(arg0 == 50) {
+            anInt1589 = 0;
+            if((aLong1600 ^ 0xffffffffffffffffL) != (aLong1578 ^ 0xffffffffffffffffL)) {
+                aClass47_1603.method916(true, aLong1578);
+                aLong1600 = aLong1578;
             }
+            aLong1596 = aLong1578;
+            int i;
+            for(/**/; (anInt1589 < aByteArray1583.length); anInt1589 += i) {
+                i = aClass47_1603.method920(anInt1589, (aByteArray1583.length - anInt1589), aByteArray1583, -110);
+                if((i ^ 0xffffffff) == 0)
+                    break;
+                aLong1600 += (long) i;
+            }
+        }
 
     }
 

@@ -40,70 +40,70 @@ public class Class40_Sub5_Sub4 extends SubNode {
     public static int method564(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, byte arg6) {
 
         arg4 &= 0x3;
-            anInt2371++;
-            if((arg5 & 0x1) == 1) {
-                int i = arg3;
-                arg3 = arg1;
-                arg1 = i;
-            }
-            if((arg4 ^ 0xffffffff) == -1)
-                return arg0;
-            if(arg4 == 1)
-                return 1 + (-arg3 + 7 - arg2);
-            if(arg6 > -64)
-                method564(12, 96, -19, -17, -19, 1, (byte) -99);
-            if((arg4 ^ 0xffffffff) == -3)
-                return -arg1 + 1 + (-arg0 + 7);
-            return arg2;
+        anInt2371++;
+        if((arg5 & 0x1) == 1) {
+            int i = arg3;
+            arg3 = arg1;
+            arg1 = i;
+        }
+        if((arg4 ^ 0xffffffff) == -1)
+            return arg0;
+        if(arg4 == 1)
+            return 1 + (-arg3 + 7 - arg2);
+        if(arg6 > -64)
+            method564(12, 96, -19, -17, -19, 1, (byte) -99);
+        if((arg4 ^ 0xffffffff) == -3)
+            return -arg1 + 1 + (-arg0 + 7);
+        return arg2;
 
     }
 
     public static void method565(int arg0) {
 
         aClass1_2351 = null;
-            if(arg0 <= -120) {
-                aClass6_2364 = null;
-                aClass68_2350 = null;
-                aClass6_2349 = null;
-                aClass1_2357 = null;
-                anIntArray2361 = null;
-                aClass56_2356 = null;
-                aClass1_2354 = null;
-                aClass1_2367 = null;
-                aClass1_2352 = null;
-            }
+        if(arg0 <= -120) {
+            aClass6_2364 = null;
+            aClass68_2350 = null;
+            aClass6_2349 = null;
+            aClass1_2357 = null;
+            anIntArray2361 = null;
+            aClass56_2356 = null;
+            aClass1_2354 = null;
+            aClass1_2367 = null;
+            aClass1_2352 = null;
+        }
 
     }
 
     public static void method566(int arg0, boolean arg1, int arg2, byte[] arg3, int arg4) {
 
         anInt2365++;
-            if(arg4 != -27520)
-                method565(49);
-            if(Class5.aClass22_189 != null) {
-                if(Class62.anInt1450 >= 0) {
-                    arg2 -= 20;
-                    if((arg2 ^ 0xffffffff) > -2)
-                        arg2 = 1;
-                    RSCanvas.anInt54 = arg2;
-                    if((Class62.anInt1450 ^ 0xffffffff) == -1)
-                        Buffer.anInt1982 = 0;
-                    else {
-                        int i = Class29.method372(113, Class62.anInt1450);
-                        i -= Class39.anInt909;
-                        Buffer.anInt1982 = (-1 + (arg2 + 3600 + i)) / arg2;
-                    }
-                    Player.aByteArray3270 = arg3;
-                    PacketBuffer.anInt2258 = arg0;
-                    Class30.aBoolean687 = arg1;
-                } else if((RSCanvas.anInt54 ^ 0xffffffff) == -1)
-                    RSString.method56(2037, arg1, arg3, arg0);
+        if(arg4 != -27520)
+            method565(49);
+        if(Class5.aClass22_189 != null) {
+            if(Class62.anInt1450 >= 0) {
+                arg2 -= 20;
+                if((arg2 ^ 0xffffffff) > -2)
+                    arg2 = 1;
+                RSCanvas.anInt54 = arg2;
+                if((Class62.anInt1450 ^ 0xffffffff) == -1)
+                    Buffer.anInt1982 = 0;
                 else {
-                    PacketBuffer.anInt2258 = arg0;
-                    Class30.aBoolean687 = arg1;
-                    Player.aByteArray3270 = arg3;
+                    int i = Class29.method372(113, Class62.anInt1450);
+                    i -= Class39.anInt909;
+                    Buffer.anInt1982 = (-1 + (arg2 + 3600 + i)) / arg2;
                 }
+                Player.aByteArray3270 = arg3;
+                PacketBuffer.anInt2258 = arg0;
+                Class30.aBoolean687 = arg1;
+            } else if((RSCanvas.anInt54 ^ 0xffffffff) == -1)
+                RSString.method56(2037, arg1, arg3, arg0);
+            else {
+                PacketBuffer.anInt2258 = arg0;
+                Class30.aBoolean687 = arg1;
+                Player.aByteArray3270 = arg3;
             }
+        }
 
     }
 

@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.NpcDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -103,7 +105,7 @@ public class Class37 {
 
     public static void method434(int arg0) {
 
-        Class4.aBoolean173 = false;
+        Class4.menuOpen = false;
         Class57.packetid = -1;
         NpcDefinition.anInt2394 = 0;
         Class40_Sub5_Sub12.packetsize = 0;
@@ -167,7 +169,7 @@ public class Class37 {
                 Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_13_]]);
                 if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.method784(1)) {
                     NpcDefinition class40_sub5_sub5 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300);
-                    if(class40_sub5_sub5.anIntArray2426 != null)
+                    if(class40_sub5_sub5.childrenIds != null)
                         class40_sub5_sub5 = class40_sub5_sub5.method577(-1);
                     if(class40_sub5_sub5 != null && class40_sub5_sub5.renderOnMinimap && class40_sub5_sub5.isClickable) {
                         i = (-((Class40_Sub5_Sub13.localPlayer.anInt3098) / 32) + (class40_sub5_sub17_sub4_sub2.anInt3098 / 32));

@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -44,37 +45,37 @@ public class Class44 implements Runnable {
     public static void method895(int arg0, int arg1, RSString arg2, RSString arg3) {
 
         anInt1029++;
-            if(Class43.anInt1028 == -1)
-                Class52.aBoolean1221 = true;
-            if(arg1 == 0 && (Class48.anInt1138 ^ 0xffffffff) != 0) {
-                Class62.anInt1470 = 0;
-                RSApplet.aClass1_8 = arg2;
-            }
-            for(int i = 99; (i ^ 0xffffffff) < -1; i--) {
-                Class66.chatTypes[i] = Class66.chatTypes[i + -1];
-                Renderable.chatPlayerNames[i] = Renderable.chatPlayerNames[-1 + i];
-                Actor.chatMessages[i] = Actor.chatMessages[-1 + i];
-            }
+        if(Class43.openChatboxWidgetId == -1)
+            Class52.redrawChatbox = true;
+        if(arg1 == 0 && (Class48.anInt1138 ^ 0xffffffff) != 0) {
+            Class62.anInt1470 = 0;
+            RSApplet.aClass1_8 = arg2;
+        }
+        for(int i = 99; (i ^ 0xffffffff) < -1; i--) {
+            Class66.chatTypes[i] = Class66.chatTypes[i + -1];
+            Renderable.chatPlayerNames[i] = Renderable.chatPlayerNames[-1 + i];
+            Actor.chatMessages[i] = Actor.chatMessages[-1 + i];
+        }
         Class66.chatTypes[0] = arg1;
         Renderable.chatPlayerNames[0] = arg3;
-            if(arg0 >= 60)
-                Actor.chatMessages[0] = arg2;
+        if(arg0 >= 60)
+            Actor.chatMessages[0] = arg2;
 
     }
 
     public static void method896(int arg0) {
 
         aClass1_1034 = null;
-            aClass40_Sub5_Sub14_Sub2_1047 = null;
-            aClass1_1033 = null;
-            aByteArrayArray1039 = null;
-            if(arg0 == -1) {
-                aClass1_1041 = null;
-                aClass1_1032 = null;
-                aClass1_1038 = null;
-                anIntArrayArray1030 = null;
-                aClass1_1043 = null;
-            }
+        aClass40_Sub5_Sub14_Sub2_1047 = null;
+        aClass1_1033 = null;
+        aByteArrayArray1039 = null;
+        if(arg0 == -1) {
+            aClass1_1041 = null;
+            aClass1_1032 = null;
+            aClass1_1038 = null;
+            anIntArrayArray1030 = null;
+            aClass1_1043 = null;
+        }
 
     }
 
@@ -182,49 +183,49 @@ public class Class44 implements Runnable {
     public void run() {
 
         anInt1031++;
-            try {
-                for(; ; ) {
-                    Class40_Sub6 class40_sub6;
-                    synchronized(RSCanvas.aClass45_53) {
-                        class40_sub6 = ((Class40_Sub6) RSCanvas.aClass45_53.method902((byte) -90));
+        try {
+            for(; ; ) {
+                Class40_Sub6 class40_sub6;
+                synchronized(RSCanvas.aClass45_53) {
+                    class40_sub6 = ((Class40_Sub6) RSCanvas.aClass45_53.method902((byte) -90));
+                }
+                if(class40_sub6 == null) {
+                    Class43.method890(100L, 113);
+                    synchronized(CollisionMap.anObject162) {
+                        if((Buffer.anInt1987 ^ 0xffffffff) >= -2) {
+                            Buffer.anInt1987 = 0;
+                            CollisionMap.anObject162.notifyAll();
+                            break;
+                        }
+                        Buffer.anInt1987--;
                     }
-                    if(class40_sub6 == null) {
-                        Class43.method890(100L, 113);
-                        synchronized(CollisionMap.anObject162) {
-                            if((Buffer.anInt1987 ^ 0xffffffff) >= -2) {
-                                Buffer.anInt1987 = 0;
-                                CollisionMap.anObject162.notifyAll();
-                                break;
+                } else {
+                    if((class40_sub6.anInt2112 ^ 0xffffffff) != -1) {
+                        if(class40_sub6.anInt2112 == 1) {
+                            class40_sub6.aByteArray2102 = (class40_sub6.aClass56_2117.method969((int) class40_sub6.key, (byte) -111));
+                            synchronized(RSCanvas.aClass45_53) {
+                                IdentityKit.aClass45_2604.method904(class40_sub6, 115);
                             }
-                            Buffer.anInt1987--;
                         }
                     } else {
-                        if((class40_sub6.anInt2112 ^ 0xffffffff) != -1) {
-                            if(class40_sub6.anInt2112 == 1) {
-                                class40_sub6.aByteArray2102 = (class40_sub6.aClass56_2117.method969((int) class40_sub6.key, (byte) -111));
-                                synchronized(RSCanvas.aClass45_53) {
-                                    Class40_Sub5_Sub10.aClass45_2604.method904(class40_sub6, 115);
-                                }
-                            }
-                        } else {
-                            class40_sub6.aClass56_2117.method971(class40_sub6.aByteArray2102, 1862596560, class40_sub6.aByteArray2102.length, (int) class40_sub6.key);
-                            synchronized(RSCanvas.aClass45_53) {
-                                class40_sub6.method457(-1);
-                            }
-                        }
-                        synchronized(CollisionMap.anObject162) {
-                            if((Buffer.anInt1987 ^ 0xffffffff) >= -2) {
-                                Buffer.anInt1987 = 0;
-                                CollisionMap.anObject162.notifyAll();
-                                break;
-                            }
-                            Buffer.anInt1987 = 600;
+                        class40_sub6.aClass56_2117.method971(class40_sub6.aByteArray2102, 1862596560, class40_sub6.aByteArray2102.length, (int) class40_sub6.key);
+                        synchronized(RSCanvas.aClass45_53) {
+                            class40_sub6.method457(-1);
                         }
                     }
+                    synchronized(CollisionMap.anObject162) {
+                        if((Buffer.anInt1987 ^ 0xffffffff) >= -2) {
+                            Buffer.anInt1987 = 0;
+                            CollisionMap.anObject162.notifyAll();
+                            break;
+                        }
+                        Buffer.anInt1987 = 600;
+                    }
                 }
-            } catch(Exception exception) {
-                Class6.method169(null, (byte) -127, exception);
             }
+        } catch(Exception exception) {
+            Class6.method169(null, (byte) -127, exception);
+        }
 
     }
 }

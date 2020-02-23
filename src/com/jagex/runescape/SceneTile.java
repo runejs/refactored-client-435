@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.NpcDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -16,7 +18,7 @@ public class SceneTile extends Node {
     public static RSString aClass1_2046 = Class58.method978("Verbindung mit Freunde)2Server)3)3)3");
     public static RSString aClass1_2047;
     public static int[] anIntArray2048;
-    public static int anInt2049;
+    public static int activeInterfaceType;
     public static RSString aClass1_2050;
     public static RSString aClass1_2051;
     public static int anInt2052;
@@ -35,7 +37,7 @@ public class SceneTile extends Node {
         aClass1_2053 = aClass1_2055;
         aClass1_2057 = aClass1_2055;
         aClass1_2042 = aClass1_2055;
-        anInt2049 = 0;
+        activeInterfaceType = 0;
         aClass1_2054 = aClass1_2055;
     }
 
@@ -76,42 +78,42 @@ public class SceneTile extends Node {
         anInt2045++;
         if(arg0 != 20)
             aClass1_2047 = null;
-        if(arg2.method60(Class44.aClass1_1041, arg0 + 12) != -1) {
+        if(arg2.method60(Class44.aClass1_1041) != -1) {
             for(; ; ) {
-                int i = arg2.method60(Class38.aClass1_890, 32);
+                int i = arg2.method60(Class38.aClass1_890);
                 if(i == -1)
                     break;
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832(-37, (new RSString[]{arg2.method68(0, i), (Class40_Sub11.method872(999999999, Class66.method1029(0, false, arg1))), arg2.substring(2 + i)})));
+                arg2 = (Class40_Sub5_Sub17_Sub6.method832(-37, (new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, Class66.method1029(0, false, arg1))), arg2.substring(2 + i)})));
             }
             for(; ; ) {
-                int i = arg2.method60(Class45.aClass1_1077, 32);
+                int i = arg2.method60(Class45.aClass1_1077);
                 if((i ^ 0xffffffff) == 0)
                     break;
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832(72, (new RSString[]{arg2.method68(0, i), (Class40_Sub11.method872(999999999, Class66.method1029(1, false, arg1))), arg2.substring(i + 2)})));
+                arg2 = (Class40_Sub5_Sub17_Sub6.method832(72, (new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, Class66.method1029(1, false, arg1))), arg2.substring(i + 2)})));
             }
             for(; ; ) {
-                int i = arg2.method60(Class67.aClass1_1610, 32);
+                int i = arg2.method60(Class67.aClass1_1610);
                 if((i ^ 0xffffffff) == 0)
                     break;
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832(-121, (new RSString[]{arg2.method68(0, i), (Class40_Sub11.method872(999999999, Class66.method1029(2, false, arg1))), arg2.substring(2 + i)})));
+                arg2 = (Class40_Sub5_Sub17_Sub6.method832(-121, (new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, Class66.method1029(2, false, arg1))), arg2.substring(2 + i)})));
             }
             for(; ; ) {
-                int i = arg2.method60(Class55.aClass1_1300, 32);
+                int i = arg2.method60(Class55.aClass1_1300);
                 if(i == -1)
                     break;
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832(125, (new RSString[]{arg2.method68(0, i), (Class40_Sub11.method872(arg0 ^ 0x3b9ac9eb, Class66.method1029(3, false, arg1))), arg2.substring(i + 2)})));
+                arg2 = (Class40_Sub5_Sub17_Sub6.method832(125, (new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(arg0 ^ 0x3b9ac9eb, Class66.method1029(3, false, arg1))), arg2.substring(i + 2)})));
             }
             for(; ; ) {
-                int i = arg2.method60(SubNode.aClass1_2090, 32);
+                int i = arg2.method60(SubNode.aClass1_2090);
                 if(i == -1)
                     break;
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832(-43, (new RSString[]{arg2.method68(0, i), (Class40_Sub11.method872(999999999, Class66.method1029(4, false, arg1))), arg2.substring(i + 2)})));
+                arg2 = (Class40_Sub5_Sub17_Sub6.method832(-43, (new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, Class66.method1029(4, false, arg1))), arg2.substring(i + 2)})));
             }
             for(; ; ) {
-                int i = arg2.method60(GameObjectDefinition.aClass1_2526, arg0 ^ 0x34);
+                int i = arg2.method60(GameObjectDefinition.aClass1_2526);
                 if((i ^ 0xffffffff) == 0)
                     break;
-                RSString class1 = Class66.aClass1_1567;
+                RSString class1 = Class66.blank_string;
                 if(Class12.aClass15_394 != null) {
                     class1 = Class6_Sub1.method204((Class12.aClass15_394.anInt432), 255);
                     if(Class12.aClass15_394.anObject437 != null) {
@@ -119,7 +121,7 @@ public class SceneTile extends Node {
                         class1 = Class19.method279(is, true, 0, is.length);
                     }
                 }
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832(124, new RSString[]{arg2.method68(0, i), class1, arg2.substring(i + 4)}));
+                arg2 = (Class40_Sub5_Sub17_Sub6.method832(124, new RSString[]{arg2.substring(0, i), class1, arg2.substring(i + 4)}));
             }
         }
         return arg2;

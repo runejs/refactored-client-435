@@ -1,73 +1,50 @@
 package com.jagex.runescape.media.renderable.actor;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.def.NpcDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 
 public class Npc extends Actor {
-    public static int anInt3294;
-    public static RSString aClass1_3295;
-    public static int anInt3296;
-    public static RSString aClass1_3297;
+    public static int anInt3294 = 0;
+    public static RSString aClass1_3295 = null;
     public static boolean aBoolean3298;
-    public static int anInt3299;
     public static Scene aScene_3301;
     public static RSString aClass1_3302 = Class58.method978("Sichtbare Karte vorbereitet)3");
-    public static int anInt3303;
-    public static int[] anIntArray3304;
-    public static RSString aClass1_3305;
-    public static int anInt3306;
-    public static RSString aClass1_3307;
-    public static RSString aClass1_3308;
-    public static RSString aClass1_3309;
-    public static int anInt3310;
-    public static RSString aClass1_3311;
+    public static int[] anIntArray3304 = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
+    public static RSString aClass1_3305 = Class58.method978("Connection lost");
+    public static RSString aClass1_3307 = Class58.method978("Keine Antwort vom Server)3");
+    public static RSString aClass1_3308 = Class58.method978("gr-Un:");
+    public static RSString aClass1_3309 = Class58.method978("Hierhin gehen");
+    public static RSString aClass1_3311 = Class58.method978("On");
     public static int[] anIntArray3312;
-    public static int anInt3313;
-    public static RSString aClass1_3314;
-
-    static {
-        aClass1_3295 = null;
-        anInt3294 = 0;
-        aClass1_3308 = Class58.method978("gr-Un:");
-        aClass1_3309 = Class58.method978("Hierhin gehen");
-        anIntArray3304 = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
-        aClass1_3307 = Class58.method978("Keine Antwort vom Server)3");
-        aClass1_3297 = Class58.method978("On");
-        aClass1_3311 = aClass1_3297;
-        aClass1_3314 = Class58.method978("Connection lost");
-        aClass1_3305 = aClass1_3314;
-    }
-
     public NpcDefinition aClass40_Sub5_Sub5_3300;
 
     public static Class40_Sub5_Sub11 method795(byte arg0, int arg1) {
-
-        anInt3303++;
-            Class40_Sub5_Sub11 class40_sub5_sub11 = ((Class40_Sub5_Sub11) Class13.aClass9_406.method231((long) arg1, (byte) 98));
-            if(arg0 >= -66)
-                aClass1_3295 = null;
-            if(class40_sub5_sub11 != null)
-                return class40_sub5_sub11;
-            byte[] is = Class64.aClass6_1521.method172(arg1, 120, 16);
-            class40_sub5_sub11 = new Class40_Sub5_Sub11();
-            if(is != null)
-                class40_sub5_sub11.method634(new Buffer(is), 0);
-            Class13.aClass9_406.method230(-7208, (long) arg1, class40_sub5_sub11);
+        Class40_Sub5_Sub11 class40_sub5_sub11 = ((Class40_Sub5_Sub11) Class13.aClass9_406.method231((long) arg1, (byte) 98));
+        if(arg0 >= -66)
+            aClass1_3295 = null;
+        if(class40_sub5_sub11 != null)
             return class40_sub5_sub11;
-
+        byte[] is = Class64.aClass6_1521.method172(arg1, 120, 16);
+        class40_sub5_sub11 = new Class40_Sub5_Sub11();
+        if(is != null)
+            class40_sub5_sub11.method634(new Buffer(is), 0);
+        Class13.aClass9_406.method230(-7208, (long) arg1, class40_sub5_sub11);
+        return class40_sub5_sub11;
     }
 
     public static void method796(byte arg0) {
-        anInt3306++;
         if((Class40_Sub5_Sub15.anInt2782 ^ 0xffffffff) < -2)
             Class40_Sub5_Sub15.anInt2782--;
         if((Class32.anInt771 ^ 0xffffffff) < -1)
             Class32.anInt771--;
         if(Class37.aBoolean871) {
             Class37.aBoolean871 = false;
-            Class59.method982(2578);
+            Class59.dropClient(2578);
         } else {
             for(int i = 0; (i ^ 0xffffffff) > -101; i++) {
                 if(!CollisionMap.parsePackets(false))
@@ -88,9 +65,8 @@ public class Npc extends Actor {
                     if(!Class22.aBoolean544)
                         Class12.aClass39_387.anInt921 = 0;
                     else if((Class62.anInt1470 ^ 0xffffffff) != -1 || Class12.aClass39_387.anInt921 >= 40) {
-                        Class26.anInt616++;
                         int i = 0;
-                        Class32.packetBuffer.putPacket(11453, 210);
+                        Class32.packetBuffer.putPacket(210);
                         Class32.packetBuffer.putByte(0);
                         int i_2_ = Class32.packetBuffer.currentPosition;
                         for(int i_3_ = 0; i_3_ < Class12.aClass39_387.anInt921; i_3_++) {
@@ -169,7 +145,7 @@ public class Npc extends Actor {
                     if((l ^ 0xffffffffffffffffL) < -4096L)
                         l = 4095L;
                     int i_12_ = (int) l;
-                    Class32.packetBuffer.putPacket(11453, 234);
+                    Class32.packetBuffer.putPacket(234);
                     int i_13_ = i_10_ * 765 + i;
                     Class32.packetBuffer.putIntLE(((i_11_ << -1245872941) + ((i_12_ << 651937044) + i_13_)));
                 }
@@ -181,20 +157,20 @@ public class Npc extends Actor {
                     Class13.anInt415++;
                     Class19.anInt487 = 20;
                     HashTable.aBoolean565 = false;
-                    Class32.packetBuffer.putPacket(11453, 58);
+                    Class32.packetBuffer.putPacket(58);
                     Class32.packetBuffer.putShortBE(Class58.cameraHorizontal);
                     Class32.packetBuffer.putShortBE(Class65.anInt1537);
                 }
                 if(HashTable.aBoolean571 != false && !Class35.aBoolean1735 == true) {
                     Class60.anInt1406++;
                     Class35.aBoolean1735 = true;
-                    Class32.packetBuffer.putPacket(11453, 160);
+                    Class32.packetBuffer.putPacket(160);
                     Class32.packetBuffer.putByte(1);
                 }
                 if(!HashTable.aBoolean571 != false && Class35.aBoolean1735 == true) {
                     Class35.aBoolean1735 = false;
                     Class60.anInt1406++;
-                    Class32.packetBuffer.putPacket(11453, 160);
+                    Class32.packetBuffer.putPacket(160);
                     Class32.packetBuffer.putByte(0);
                 }
                 Class45.method910(-32322);
@@ -203,7 +179,7 @@ public class Npc extends Actor {
                     Class4.method161(128);
                     Class35.anInt1728++;
                     if(Class35.anInt1728 > 750)
-                        Class59.method982(2578);
+                        Class59.dropClient(2578);
                     else {
                         Class17.method276(-1);
                         Class8.method209(69);
@@ -213,27 +189,27 @@ public class Npc extends Actor {
                             if((Floor.anInt2319 ^ 0xffffffff) <= -401)
                                 Class45.anInt1075 = 0;
                         }
-                        if(Class40_Sub5_Sub17_Sub1.anInt2999 != 0) {
+                        if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType != 0) {
                             RSRuntimeException.anInt1651++;
                             if((RSRuntimeException.anInt1651 ^ 0xffffffff) <= -16) {
-                                if(Class40_Sub5_Sub17_Sub1.anInt2999 == 2)
-                                    ISAAC.aBoolean505 = true;
-                                if(Class40_Sub5_Sub17_Sub1.anInt2999 == 3)
-                                    Class52.aBoolean1221 = true;
-                                Class40_Sub5_Sub17_Sub1.anInt2999 = 0;
+                                if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 2)
+                                    ISAAC.redrawTabArea = true;
+                                if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 3)
+                                    Class52.redrawChatbox = true;
+                                Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 0;
                             }
                         }
                         Class5.anInt199++;
-                        if((SceneTile.anInt2049 ^ 0xffffffff) != -1) {
+                        if((SceneTile.activeInterfaceType ^ 0xffffffff) != -1) {
                             Buffer.anInt1978++;
-                            if(((Class13.anInt420 ^ 0xffffffff) < (Renderable.anInt2869 + 5 ^ 0xffffffff)) || ((Renderable.anInt2869 + -5 ^ 0xffffffff) < (Class13.anInt420 ^ 0xffffffff)) || ((ItemDefinition.anInt2798 + 5 ^ 0xffffffff) > (Landscape.anInt1166 ^ 0xffffffff)) || (ItemDefinition.anInt2798 - 5 > Landscape.anInt1166))
+                            if(((Class13.mouseX ^ 0xffffffff) < (Renderable.anInt2869 + 5 ^ 0xffffffff)) || ((Renderable.anInt2869 + -5 ^ 0xffffffff) < (Class13.mouseX ^ 0xffffffff)) || ((ItemDefinition.anInt2798 + 5 ^ 0xffffffff) > (Landscape.mouseY ^ 0xffffffff)) || (ItemDefinition.anInt2798 - 5 > Landscape.mouseY))
                                 Class40_Sub5_Sub15.aBoolean2784 = true;
                             if((Class40_Sub5_Sub2.anInt2302 ^ 0xffffffff) == -1) {
-                                if((SceneTile.anInt2049 ^ 0xffffffff) == -4)
-                                    Class52.aBoolean1221 = true;
-                                if((SceneTile.anInt2049 ^ 0xffffffff) == -3)
-                                    ISAAC.aBoolean505 = true;
-                                SceneTile.anInt2049 = 0;
+                                if((SceneTile.activeInterfaceType ^ 0xffffffff) == -4)
+                                    Class52.redrawChatbox = true;
+                                if((SceneTile.activeInterfaceType ^ 0xffffffff) == -3)
+                                    ISAAC.redrawTabArea = true;
+                                SceneTile.activeInterfaceType = 0;
                                 if(!Class40_Sub5_Sub15.aBoolean2784 || Buffer.anInt1978 < 5) {
                                     if(((Class68.anInt1630 ^ 0xffffffff) == -2 || (Class33.method409((byte) 63, (NpcDefinition.anInt2394 - 1)))) && NpcDefinition.anInt2394 > 2)
                                         Class60.method990(11451);
@@ -243,7 +219,6 @@ public class Npc extends Actor {
                                     RSRuntimeException.anInt1642 = -1;
                                     Class43.method894(false);
                                     if((RSRuntimeException.anInt1642 == Class48.anInt1127) && (Class55.anInt1288 != Class58.anInt1352)) {
-                                        Class66.anInt1562++;
                                         Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045((Class48.anInt1127), (byte) -95);
                                         int i = 0;
                                         if(((Class43.anInt1025 ^ 0xffffffff) == -2) && (class40_sub5_sub12.anInt2639 == 206))
@@ -276,7 +251,7 @@ public class Npc extends Actor {
                                             class40_sub5_sub12.anIntArray2685[i_17_] = -1;
                                             class40_sub5_sub12.anIntArray2710[i_17_] = 0;
                                         }
-                                        Class32.packetBuffer.putPacket(11453, 83);
+                                        Class32.packetBuffer.putPacket(83);
                                         Class32.packetBuffer.putDualByte(i, 128);
                                         Class32.packetBuffer.putCustomNegativeOffsetShortBE(Class58.anInt1352, -128);
                                         Class32.packetBuffer.putOffsetShortLE(Class55.anInt1288);
@@ -301,7 +276,7 @@ public class Npc extends Actor {
                         }
                         if((Class62.anInt1470 ^ 0xffffffff) == -2 && RSApplet.aClass1_8 != null) {
                             Class62.anInt1470 = 0;
-                            Class52.aBoolean1221 = true;
+                            Class52.redrawChatbox = true;
                             RSApplet.aClass1_8 = null;
                         }
                         Class62.method1002(-77);
@@ -316,22 +291,22 @@ public class Npc extends Actor {
                         if(Class66.anInt1560 != -1)
                             Class27.method360((byte) 125, 516, i, 338, Class66.anInt1560, 4, 4);
                         if(Class29.anInt673 == -1) {
-                            if(((Class40_Sub5_Sub11.anIntArray2626[Class5.anInt208]) ^ 0xffffffff) != 0)
-                                Class27.method360((byte) 125, 743, i, 466, (Class40_Sub5_Sub11.anIntArray2626[Class5.anInt208]), 205, 553);
+                            if(((Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]) ^ 0xffffffff) != 0)
+                                Class27.method360((byte) 125, 743, i, 466, (Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]), 205, 553);
                         } else
                             Class27.method360((byte) 125, 743, i, 466, Class29.anInt673, 205, 553);
-                        if((Class43.anInt1028 ^ 0xffffffff) != 0)
-                            Class27.method360((byte) 125, 496, i, 453, Class43.anInt1028, 357, 17);
+                        if((Class43.openChatboxWidgetId ^ 0xffffffff) != 0)
+                            Class27.method360((byte) 125, 496, i, 453, Class43.openChatboxWidgetId, 357, 17);
                         else if((Class48.anInt1138 ^ 0xffffffff) != 0)
                             Class27.method360((byte) 125, 496, i, 453, Class48.anInt1138, 357, 17);
                         if((Class66.anInt1560 ^ 0xffffffff) != 0)
                             Class27.method360((byte) 125, 516, i ^ 0xffffffff, 338, Class66.anInt1560, 4, 4);
                         if(Class29.anInt673 != -1)
                             Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, Class29.anInt673, 205, 553);
-                        else if((Class40_Sub5_Sub11.anIntArray2626[Class5.anInt208]) != -1)
-                            Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, (Class40_Sub5_Sub11.anIntArray2626[Class5.anInt208]), 205, 553);
-                        if(Class43.anInt1028 != -1)
-                            Class27.method360((byte) 125, 496, i ^ 0xffffffff, 453, Class43.anInt1028, 357, 17);
+                        else if((Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]) != -1)
+                            Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, (Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]), 205, 553);
+                        if(Class43.openChatboxWidgetId != -1)
+                            Class27.method360((byte) 125, 496, i ^ 0xffffffff, 453, Class43.openChatboxWidgetId, 357, 17);
                         else if(Class48.anInt1138 != -1)
                             Class27.method360((byte) 125, 496, i ^ 0xffffffff, 453, Class48.anInt1138, 357, 17);
                         if((Class67.anInt1586 ^ 0xffffffff) != 0 || (FloorDecoration.anInt614 ^ 0xffffffff) != 0 || HashTable.anInt573 != -1) {
@@ -339,9 +314,9 @@ public class Npc extends Actor {
                                 Class53.anInt1257++;
                                 if(RSString.anInt1711 == Class53.anInt1257) {
                                     if(Class67.anInt1586 != -1)
-                                        Class52.aBoolean1221 = true;
+                                        Class52.redrawChatbox = true;
                                     if(FloorDecoration.anInt614 != -1)
-                                        ISAAC.aBoolean505 = true;
+                                        ISAAC.redrawTabArea = true;
                                 }
                             }
                         } else if((Class53.anInt1257 ^ 0xffffffff) < -1)
@@ -355,10 +330,9 @@ public class Npc extends Actor {
                         int i_20_ = Class32.method400(-1);
                         int i_21_ = Class17.method274(true);
                         if(i_20_ > 4500 && i_21_ > 4500) {
-                            RSString.anInt1673++;
                             Class32.anInt771 = 250;
                             Class40_Sub5_Sub13.method650(true, 4000);
-                            Class32.packetBuffer.putPacket(11453, 216);
+                            Class32.packetBuffer.putPacket(216);
                         }
                         Player.anInt3264++;
                         Class38_Sub1.anInt1923++;
@@ -404,7 +378,7 @@ public class Npc extends Actor {
                         if(Class51.mapZoomOffset > 10)
                             Main.anInt1766 = -1;
                         if((Class22.anInt537 ^ 0xffffffff) < -51) {
-                            Class32.packetBuffer.putPacket(11453, 13);
+                            Class32.packetBuffer.putPacket(13);
                             Class49.anInt1142++;
                         }
                         do {
@@ -415,7 +389,7 @@ public class Npc extends Actor {
                                 Class22.anInt537 = 0;
                                 Class32.packetBuffer.currentPosition = 0;
                             } catch(java.io.IOException ioexception) {
-                                Class59.method982(2578);
+                                Class59.dropClient(2578);
                                 break;
                             }
                             break;
@@ -429,9 +403,7 @@ public class Npc extends Actor {
     public static void method797(int arg0) {
         aClass1_3307 = null;
         anIntArray3304 = null;
-        aClass1_3314 = null;
         aClass1_3305 = null;
-        aClass1_3297 = null;
         aClass1_3295 = null;
         aClass1_3311 = null;
         aClass1_3308 = null;
@@ -444,54 +416,46 @@ public class Npc extends Actor {
     }
 
     public static Floor loadFloor(int arg0, int arg1) {
-
-        anInt3296++;
-            Floor floor = ((Floor) Class33.aClass9_778.method231((long) arg0, (byte) 63));
-            if(floor != null)
-                return floor;
-        byte[] is = Actor.aClass6_3144.method172(arg0, 118, arg1);
-            floor = new Floor();
-            if(is != null)
-                floor.method553((byte) 65, arg0, new Buffer(is));
-            floor.method555((byte) 64);
-            Class33.aClass9_778.method230(-7208, (long) arg0, floor);
+        Floor floor = ((Floor) Class33.aClass9_778.method231((long) arg0, (byte) 63));
+        if(floor != null)
             return floor;
-
+        byte[] is = Actor.aClass6_3144.method172(arg0, 118, arg1);
+        floor = new Floor();
+        if(is != null)
+            floor.method553((byte) 65, arg0, new Buffer(is));
+        floor.method555((byte) 64);
+        Class33.aClass9_778.method230(-7208, (long) arg0, floor);
+        return floor;
     }
 
     public Model method756(int arg0) {
-
-        anInt3313++;
-            if(aClass40_Sub5_Sub5_3300 == null)
-                return null;
-            int i = 25 % ((41 - arg0) / 47);
-            Class40_Sub5_Sub7 class40_sub5_sub7 = ((anInt3141 ^ 0xffffffff) == 0 || anInt3122 != 0 ? null : Class68_Sub1.method1050(anInt3141, 2));
-            Class40_Sub5_Sub7 class40_sub5_sub7_0_ = (anInt3077 != -1 && (anInt3077 != anInt3126 || class40_sub5_sub7 == null) ? Class68_Sub1.method1050(anInt3077, 2) : null);
-            Model class40_sub5_sub17_sub5 = aClass40_Sub5_Sub5_3300.method568((byte) -50, class40_sub5_sub7, class40_sub5_sub7_0_, anInt3116, anInt3104);
-            if(class40_sub5_sub17_sub5 == null)
-                return null;
-            class40_sub5_sub17_sub5.method799();
-            anInt3117 = class40_sub5_sub17_sub5.anInt2861;
-            if((anInt3091 ^ 0xffffffff) != 0 && anInt3140 != -1) {
-                Model class40_sub5_sub17_sub5_1_ = Class37.method431(anInt3091, 13).method549(anInt3140, 2);
-                if(class40_sub5_sub17_sub5_1_ != null) {
-                    class40_sub5_sub17_sub5_1_.method828(0, -anInt3110, 0);
-                    Model[] class40_sub5_sub17_sub5s = {class40_sub5_sub17_sub5, class40_sub5_sub17_sub5_1_};
-                    class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, 2, true);
-                }
+        if(aClass40_Sub5_Sub5_3300 == null)
+            return null;
+        int i = 25 % ((41 - arg0) / 47);
+        Class40_Sub5_Sub7 class40_sub5_sub7 = ((anInt3141 ^ 0xffffffff) == 0 || anInt3122 != 0 ? null : Class68_Sub1.method1050(anInt3141, 2));
+        Class40_Sub5_Sub7 class40_sub5_sub7_0_ = (anInt3077 != -1 && (anInt3077 != anInt3126 || class40_sub5_sub7 == null) ? Class68_Sub1.method1050(anInt3077, 2) : null);
+        Model class40_sub5_sub17_sub5 = aClass40_Sub5_Sub5_3300.method568((byte) -50, class40_sub5_sub7, class40_sub5_sub7_0_, anInt3116, anInt3104);
+        if(class40_sub5_sub17_sub5 == null)
+            return null;
+        class40_sub5_sub17_sub5.method799();
+        anInt3117 = class40_sub5_sub17_sub5.anInt2861;
+        if((anInt3091 ^ 0xffffffff) != 0 && anInt3140 != -1) {
+            Model class40_sub5_sub17_sub5_1_ = Class37.method431(anInt3091, 13).method549(anInt3140, 2);
+            if(class40_sub5_sub17_sub5_1_ != null) {
+                class40_sub5_sub17_sub5_1_.method828(0, -anInt3110, 0);
+                Model[] class40_sub5_sub17_sub5s = {class40_sub5_sub17_sub5, class40_sub5_sub17_sub5_1_};
+                class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, 2, true);
             }
+        }
         if((aClass40_Sub5_Sub5_3300.tileSpacesOccupied ^ 0xffffffff) == -2)
-                class40_sub5_sub17_sub5.aBoolean3164 = true;
-            return class40_sub5_sub17_sub5;
-
+            class40_sub5_sub17_sub5.aBoolean3164 = true;
+        return class40_sub5_sub17_sub5;
     }
 
     public boolean method784(int arg0) {
-
-        anInt3299++;
-            if(aClass40_Sub5_Sub5_3300 == null)
-                return false;
-            return arg0 == 1;
+        if(aClass40_Sub5_Sub5_3300 == null)
+            return false;
+        return arg0 == 1;
 
     }
 }

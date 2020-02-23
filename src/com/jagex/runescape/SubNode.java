@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.def.NpcDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -42,7 +44,7 @@ public class SubNode extends Node {
         class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[0];
         class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
         class40_sub5_sub14_sub2.imgPixels = Class58.aByteArrayArray1370[arg0];
-        NpcDefinition.method569(true);
+        NpcDefinition.method569();
         return class40_sub5_sub14_sub2;
     }
 

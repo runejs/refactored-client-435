@@ -27,26 +27,26 @@ public class Class40_Sub5_Sub13 extends SubNode {
     public static Class68 method649(int arg0, int arg1, Component arg2, int arg3) {
 
         anInt2756++;
-            if(arg3 != -4875)
-                aClass40_Sub5_Sub14_Sub4_2765 = null;
-            try {
-                Class var_class = Class.forName("com.jagex.runescape.Class68_Sub2");
-                Class68 class68 = (Class68) var_class.newInstance();
-                class68.method1041(13, arg1, arg2, arg0);
-                return class68;
-            } catch(Throwable throwable) {
-                Class68_Sub1 class68_sub1 = new Class68_Sub1();
-                class68_sub1.method1041(44, arg1, arg2, arg0);
-                return class68_sub1;
-            }
+        if(arg3 != -4875)
+            aClass40_Sub5_Sub14_Sub4_2765 = null;
+        try {
+            Class var_class = Class.forName("com.jagex.runescape.Class68_Sub2");
+            Class68 class68 = (Class68) var_class.newInstance();
+            class68.method1041(13, arg1, arg2, arg0);
+            return class68;
+        } catch(Throwable throwable) {
+            Class68_Sub1 class68_sub1 = new Class68_Sub1();
+            class68_sub1.method1041(44, arg1, arg2, arg0);
+            return class68_sub1;
+        }
 
     }
 
     public static void method650(boolean arg0, int arg1) {
 
         Class45.anInt1073 = arg1;
-            if(arg0 == true)
-                anInt2759++;
+        if(arg0 == true)
+            anInt2759++;
 
     }
 
@@ -68,41 +68,41 @@ public class Class40_Sub5_Sub13 extends SubNode {
     public static void method652(byte arg0) {
 
         anInt2761++;
-            int i = 72 / ((arg0 - 64) / 52);
-            for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = (Class40_Sub3) Class45.aClass45_1064.method909(-4)) {
-                if(class40_sub3.anInt2031 > 0)
-                    class40_sub3.anInt2031--;
-                if(class40_sub3.anInt2031 == 0) {
-                    if(class40_sub3.anInt2028 < 0 || Node.method459(class40_sub3.anInt2036, class40_sub3.anInt2028, (byte) 103)) {
-                        Class52.method945(class40_sub3.anInt2038, class40_sub3.anInt2028, class40_sub3.anInt2039, class40_sub3.anInt2036, class40_sub3.anInt2025, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
+        int i = 72 / ((arg0 - 64) / 52);
+        for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = (Class40_Sub3) Class45.aClass45_1064.method909(-4)) {
+            if(class40_sub3.anInt2031 > 0)
+                class40_sub3.anInt2031--;
+            if(class40_sub3.anInt2031 == 0) {
+                if(class40_sub3.anInt2028 < 0 || Node.method459(class40_sub3.anInt2036, class40_sub3.anInt2028, (byte) 103)) {
+                    Class52.method945(class40_sub3.anInt2038, class40_sub3.anInt2028, class40_sub3.anInt2039, class40_sub3.anInt2036, class40_sub3.anInt2025, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
+                    class40_sub3.method457(-1);
+                }
+            } else {
+                if((class40_sub3.anInt2033 ^ 0xffffffff) < -1)
+                    class40_sub3.anInt2033--;
+                if(class40_sub3.anInt2033 == 0 && class40_sub3.anInt2039 >= 1 && class40_sub3.anInt2038 >= 1 && class40_sub3.anInt2039 <= 102 && class40_sub3.anInt2038 <= 102 && ((class40_sub3.anInt2017 ^ 0xffffffff) > -1 || Node.method459(class40_sub3.anInt2030, class40_sub3.anInt2017, (byte) 106))) {
+                    Class52.method945(class40_sub3.anInt2038, class40_sub3.anInt2017, class40_sub3.anInt2039, class40_sub3.anInt2030, class40_sub3.anInt2035, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
+                    class40_sub3.anInt2033 = -1;
+                    if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2028 == -1)
                         class40_sub3.method457(-1);
-                    }
-                } else {
-                    if((class40_sub3.anInt2033 ^ 0xffffffff) < -1)
-                        class40_sub3.anInt2033--;
-                    if(class40_sub3.anInt2033 == 0 && class40_sub3.anInt2039 >= 1 && class40_sub3.anInt2038 >= 1 && class40_sub3.anInt2039 <= 102 && class40_sub3.anInt2038 <= 102 && ((class40_sub3.anInt2017 ^ 0xffffffff) > -1 || Node.method459(class40_sub3.anInt2030, class40_sub3.anInt2017, (byte) 106))) {
-                        Class52.method945(class40_sub3.anInt2038, class40_sub3.anInt2017, class40_sub3.anInt2039, class40_sub3.anInt2030, class40_sub3.anInt2035, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
-                        class40_sub3.anInt2033 = -1;
-                        if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2028 == -1)
-                            class40_sub3.method457(-1);
-                        else if(((class40_sub3.anInt2017 ^ 0xffffffff) == (class40_sub3.anInt2028 ^ 0xffffffff)) && ((class40_sub3.anInt2035 ^ 0xffffffff) == (class40_sub3.anInt2025 ^ 0xffffffff)) && (class40_sub3.anInt2030 == class40_sub3.anInt2036))
-                            class40_sub3.method457(-1);
-                    }
+                    else if(((class40_sub3.anInt2017 ^ 0xffffffff) == (class40_sub3.anInt2028 ^ 0xffffffff)) && ((class40_sub3.anInt2035 ^ 0xffffffff) == (class40_sub3.anInt2025 ^ 0xffffffff)) && (class40_sub3.anInt2030 == class40_sub3.anInt2036))
+                        class40_sub3.method457(-1);
                 }
             }
+        }
 
     }
 
     public static void method653(int arg0) {
 
         anIntArray2764 = null;
-            aClass40_Sub1_2752 = null;
+        aClass40_Sub1_2752 = null;
         localPlayer = null;
-            aClass40_Sub5_Sub17_Sub5Array2762 = null;
+        aClass40_Sub5_Sub17_Sub5Array2762 = null;
+        aClass40_Sub5_Sub14_Sub4_2765 = null;
+        if(arg0 != -1)
             aClass40_Sub5_Sub14_Sub4_2765 = null;
-            if(arg0 != -1)
-                aClass40_Sub5_Sub14_Sub4_2765 = null;
-            aLongArray2757 = null;
+        aLongArray2757 = null;
         moderatorIcon = null;
 
     }

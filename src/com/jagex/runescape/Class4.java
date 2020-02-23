@@ -1,14 +1,16 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.audio.Effect;
+import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.media.renderable.actor.Actor;
 
 public class Class4 {
-    public static boolean aBoolean173;
+    public static boolean menuOpen;
     public static volatile long aLong174 = 0L;
     public static int anInt175;
     public static RSString aClass1_176;
-    public static RSString aClass1_177 = Class58.method978("::hiddenbuttontest");
+    public static RSString cmd_hiddenbuttontest = Class58.method978("::hiddenbuttontest");
     public static int[] anIntArray178;
     public static RSApplet anApplet_Sub1_179;
     public static RSString aClass1_180;
@@ -22,7 +24,7 @@ public class Class4 {
     public static int anInt188;
 
     static {
-        aBoolean173 = false;
+        menuOpen = false;
         anInt175 = 0;
         aClass1_181 = Class58.method978("Einloggen");
         aClass1_183 = Class58.method978("mapdots");
@@ -35,43 +37,43 @@ public class Class4 {
 
     public static void method159(byte arg0) {
 
-        aClass1_177 = null;
-            aClass1_180 = null;
-            int i = 18 % ((arg0 - 8) / 59);
-            aClass1_183 = null;
-            anIntArray178 = null;
-            aClass1_176 = null;
-            aClass1_181 = null;
+        cmd_hiddenbuttontest = null;
+        aClass1_180 = null;
+        int i = 18 % ((arg0 - 8) / 59);
+        aClass1_183 = null;
+        anIntArray178 = null;
+        aClass1_176 = null;
+        aClass1_181 = null;
 
     }
 
     public static int method160(int arg0, int arg1, int arg2, int arg3) {
 
         anInt186++;
-            int i = arg0 & -1 + arg2;
-            int i_0_ = arg3 / arg2;
-            int i_1_ = arg2 - 1 & arg3;
-            int i_2_ = arg0 / arg2;
-            int i_3_ = CollisionMap.method157(arg1 + -15177, i_2_, i_0_);
-            int i_4_ = CollisionMap.method157(arg1 ^ arg1, 1 + i_2_, i_0_);
-            int i_5_ = CollisionMap.method157(0, i_2_, 1 + i_0_);
-            int i_6_ = CollisionMap.method157(0, 1 + i_2_, 1 + i_0_);
-            int i_7_ = RSApplet.method32(i_3_, arg2, i_4_, true, i);
-            int i_8_ = RSApplet.method32(i_5_, arg2, i_6_, true, i);
-            return RSApplet.method32(i_7_, arg2, i_8_, true, i_1_);
+        int i = arg0 & -1 + arg2;
+        int i_0_ = arg3 / arg2;
+        int i_1_ = arg2 - 1 & arg3;
+        int i_2_ = arg0 / arg2;
+        int i_3_ = CollisionMap.method157(arg1 + -15177, i_2_, i_0_);
+        int i_4_ = CollisionMap.method157(arg1 ^ arg1, 1 + i_2_, i_0_);
+        int i_5_ = CollisionMap.method157(0, i_2_, 1 + i_0_);
+        int i_6_ = CollisionMap.method157(0, 1 + i_2_, 1 + i_0_);
+        int i_7_ = RSApplet.method32(i_3_, arg2, i_4_, true, i);
+        int i_8_ = RSApplet.method32(i_5_, arg2, i_6_, true, i);
+        return RSApplet.method32(i_7_, arg2, i_8_, true, i_1_);
 
     }
 
     public static void method161(int arg0) {
         anInt187++;
         if(arg0 != 128)
-            aBoolean173 = false;
+            menuOpen = false;
         for(int i = 0; i < PacketBuffer.anInt2248; i++) {
             Class40_Sub3.anIntArray2023[i]--;
             if(Class40_Sub3.anIntArray2023[i] < -10) {
                 PacketBuffer.anInt2248--;
                 for(int i_9_ = i; ((PacketBuffer.anInt2248 ^ 0xffffffff) < (i_9_ ^ 0xffffffff)); i_9_++) {
-                    Class40_Sub5_Sub10.anIntArray2602[i_9_] = Class40_Sub5_Sub10.anIntArray2602[i_9_ + 1];
+                    IdentityKit.anIntArray2602[i_9_] = IdentityKit.anIntArray2602[i_9_ + 1];
                     PacketBuffer.effects[i_9_] = PacketBuffer.effects[1 + i_9_];
                     ItemDefinition.anIntArray2814[i_9_] = ItemDefinition.anIntArray2814[1 + i_9_];
                     Class40_Sub3.anIntArray2023[i_9_] = Class40_Sub3.anIntArray2023[1 + i_9_];
@@ -81,7 +83,7 @@ public class Class4 {
             } else {
                 Effect effect = PacketBuffer.effects[i];
                 if(effect == null) {
-                    effect = Effect.method429((Actor.aClass6_Sub1_3157), (Class40_Sub5_Sub10.anIntArray2602[i]), 0);
+                    effect = Effect.method429((Actor.aClass6_Sub1_3157), (IdentityKit.anIntArray2602[i]), 0);
                     if(effect == null)
                         continue;
                     Class40_Sub3.anIntArray2023[i] += effect.method427();

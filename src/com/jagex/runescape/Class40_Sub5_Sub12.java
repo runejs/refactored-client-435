@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
@@ -24,7 +27,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public static RSString aClass1_2678;
     public static RSString aClass1_2684;
     public static RSString aClass1_2686;
-    public static RSString aClass1_2691;
+    public static RSString cmd_errortest;
     public static int anInt2697;
     public static int anInt2700;
     public static int anInt2705;
@@ -42,7 +45,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
         aClass1_2678 = Class58.method978("Enter name of friend to add to list");
         goldCrown = Class58.method978("@cr2@");
         aClass1_2684 = aClass1_2706;
-        aClass1_2691 = Class58.method978("::errortest");
+        cmd_errortest = Class58.method978("::errortest");
         aClass1_2716 = Class58.method978("Fehler beim Laden Ihres Charakter)2Profils");
         aClass1_2671 = aClass1_2637;
         packetsize = 0;
@@ -125,7 +128,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public boolean aBoolean2727;
     public int anInt2728;
     public boolean aBoolean2730;
-    public int anInt2731;
+    public int scrollPosition;
     public int anInt2732;
     public int anInt2733;
     public int anInt2734;
@@ -202,7 +205,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
         aBoolean2750 = false;
         anInt2726 = 0;
         anInt2720 = 0;
-        anInt2731 = 0;
+        scrollPosition = 0;
         anInt2736 = 0;
         anInt2718 = -1;
         anInt2749 = 0;
@@ -228,7 +231,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
                         Class40_Sub5_Sub17_Sub3.aBooleanArray3056[i] = true;
                 }
             }
-            Class52.anInt1214 = Class40_Sub5_Sub10.anInt2598;
+            Class52.anInt1214 = IdentityKit.anInt2598;
         }
         if(arg0 <= 121)
             aClass1_2674 = null;
@@ -237,94 +240,92 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public static void method640(byte arg0) {
 
         Class68.aClass9_1615.method235((byte) 49);
-            if(arg0 < -11)
-                anInt2652++;
+        if(arg0 < -11)
+            anInt2652++;
 
     }
 
     public static void method641(int arg0) {
 
         aClass1_2716 = null;
-            aClass1_2671 = null;
-            aClass1_2678 = null;
-            if(arg0 > -88)
-                method648(85, (byte) 24);
-            aClass1_2706 = null;
-            aClass1_2686 = null;
-            aClass1_2691 = null;
+        aClass1_2671 = null;
+        aClass1_2678 = null;
+        if(arg0 > -88)
+            method648(85, (byte) 24);
+        aClass1_2706 = null;
+        aClass1_2686 = null;
+        cmd_errortest = null;
         goldCrown = null;
-            aClass1_2637 = null;
-            aClass1_2674 = null;
-            aClass1_2740 = null;
-            aClass1_2684 = null;
+        aClass1_2637 = null;
+        aClass1_2674 = null;
+        aClass1_2740 = null;
+        aClass1_2684 = null;
 
     }
 
     public static void method642(Component arg0, int arg1) {
 
         if(arg1 != -10)
-                method639(-106);
-            Method method = Signlink.aMethod729;
-            if(method != null) {
-                try {
-                    method.invoke(arg0, Boolean.FALSE);
-                } catch(Throwable throwable) {
-                    /* empty */
-                }
+            method639(-106);
+        Method method = Signlink.aMethod729;
+        if(method != null) {
+            try {
+                method.invoke(arg0, Boolean.FALSE);
+            } catch(Throwable throwable) {
+                /* empty */
             }
-            arg0.addKeyListener(Class59.aClass54_1392);
-            arg0.addFocusListener(Class59.aClass54_1392);
-            anInt2697++;
+        }
+        arg0.addKeyListener(Class59.aClass54_1392);
+        arg0.addFocusListener(Class59.aClass54_1392);
+        anInt2697++;
 
     }
 
     public static void method645(byte arg0) {
 
         Class58.aClass9_1364.method235((byte) 118);
-            anInt2739++;
-            VertexNormal.aClass9_1102.method235((byte) -42);
-            if(arg0 != -37)
-                aClass1_2637 = null;
-            Class19.aClass9_470.method235((byte) 103);
-            Class49.aClass9_1145.method235((byte) 97);
+        anInt2739++;
+        VertexNormal.aClass9_1102.method235((byte) -42);
+        if(arg0 != -37)
+            aClass1_2637 = null;
+        Class19.aClass9_470.method235((byte) 103);
+        Class49.aClass9_1145.method235((byte) 97);
 
     }
 
     public static RSString method648(int arg0, byte arg1) {
 
         anInt2724++;
-            if(arg1 != -100)
-                return null;
-            if(arg0 < 100000)
-                return HashTable.method334(arg0, -1);
-            if((arg0 ^ 0xffffffff) > -10000001)
-                return (Class40_Sub5_Sub17_Sub6.method832(110, new RSString[]{HashTable.method334(arg0 / 1000, -1), Class40_Sub5_Sub10.aClass1_2587}));
-            return (Class40_Sub5_Sub17_Sub6.method832(-84, new RSString[]{HashTable.method334(arg0 / 1000000, arg1 ^ 0x63), Class22.aClass1_542}));
+        if(arg1 != -100)
+            return null;
+        if(arg0 < 100000)
+            return HashTable.method334(arg0, -1);
+        if((arg0 ^ 0xffffffff) > -10000001)
+            return (Class40_Sub5_Sub17_Sub6.method832(110, new RSString[]{HashTable.method334(arg0 / 1000, -1), IdentityKit.aClass1_2587}));
+        return (Class40_Sub5_Sub17_Sub6.method832(-84, new RSString[]{HashTable.method334(arg0 / 1000000, arg1 ^ 0x63), Class22.aClass1_542}));
 
     }
 
     public void method636(int arg0, boolean arg1, int arg2) {
 
         anInt2646++;
-            int i = anIntArray2685[arg2];
-            anIntArray2685[arg2] = anIntArray2685[arg0];
-            anIntArray2685[arg0] = i;
-            i = anIntArray2710[arg2];
-            anIntArray2710[arg2] = anIntArray2710[arg0];
-            if(arg1 != false)
-                anIntArrayArray2748 = null;
-            anIntArray2710[arg0] = i;
+        int i = anIntArray2685[arg2];
+        anIntArray2685[arg2] = anIntArray2685[arg0];
+        anIntArray2685[arg0] = i;
+        i = anIntArray2710[arg2];
+        anIntArray2710[arg2] = anIntArray2710[arg0];
+        if(arg1 != false)
+            anIntArrayArray2748 = null;
+        anIntArray2710[arg0] = i;
 
     }
 
-    public void method637(Buffer arg0, int arg1) {
+    public void method637(Buffer arg0) {
         anInt2717++;
         aBoolean2636 = false;
         anInt2683 = arg0.getUnsignedByte();
         anInt2714 = arg0.getUnsignedByte();
         anInt2639 = arg0.getUnsignedShortBE();
-        if(arg1 >= -35)
-            aBoolean2723 = true;
         anInt2649 = anInt2656 = arg0.getShortBE();
         anInt2743 = anInt2696 = arg0.getShortBE();
         anInt2692 = arg0.getUnsignedShortBE();
@@ -390,7 +391,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
             aClass1Array2698 = new RSString[5];
             for(int i_7_ = 0; i_7_ < 5; i_7_++) {
                 aClass1Array2698[i_7_] = arg0.getRSString();
-                if(aClass1Array2698[i_7_].method59() == 0)
+                if(aClass1Array2698[i_7_].length() == 0)
                     aClass1Array2698[i_7_] = null;
             }
         }
@@ -450,7 +451,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
             aClass1Array2698 = new RSString[5];
             for(int i_8_ = 0; i_8_ < 5; i_8_++) {
                 aClass1Array2698[i_8_] = arg0.getRSString();
-                if((aClass1Array2698[i_8_].method59() ^ 0xffffffff) == -1)
+                if((aClass1Array2698[i_8_].length() ^ 0xffffffff) == -1)
                     aClass1Array2698[i_8_] = null;
             }
         }
@@ -463,7 +464,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
         }
         if((anInt2714 ^ 0xffffffff) == -2 || (anInt2714 ^ 0xffffffff) == -5 || (anInt2714 ^ 0xffffffff) == -6 || (anInt2714 ^ 0xffffffff) == -7) {
             aClass1_2676 = arg0.getRSString();
-            if((aClass1_2676.method59() ^ 0xffffffff) == -1) {
+            if((aClass1_2676.length() ^ 0xffffffff) == -1) {
                 if((anInt2714 ^ 0xffffffff) == -2)
                     aClass1_2676 = Class39.aClass1_919;
                 if((anInt2714 ^ 0xffffffff) == -5)
@@ -479,47 +480,47 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public ImageRGB method638(byte arg0, int arg1) {
 
         anInt2675++;
-            Class40_Sub13.aBoolean2177 = false;
-            if((arg1 ^ 0xffffffff) > -1 || anIntArray2704.length <= arg1)
-                return null;
-            int i = anIntArray2704[arg1];
-            if((i ^ 0xffffffff) == 0)
-                return null;
-            int i_9_ = 124 % ((-15 - arg0) / 34);
+        Class40_Sub13.aBoolean2177 = false;
+        if((arg1 ^ 0xffffffff) > -1 || anIntArray2704.length <= arg1)
+            return null;
+        int i = anIntArray2704[arg1];
+        if((i ^ 0xffffffff) == 0)
+            return null;
+        int i_9_ = 124 % ((-15 - arg0) / 34);
         ImageRGB class40_sub5_sub14_sub4 = ((ImageRGB) Cache.aClass9_326.method231((long) i, (byte) 121));
-            if(class40_sub5_sub14_sub4 != null)
-                return class40_sub5_sub14_sub4;
-            class40_sub5_sub14_sub4 = Class48.method927(0, Class40_Sub5_Sub15.aClass6_2779, true, i);
-            if(class40_sub5_sub14_sub4 != null)
-                Cache.aClass9_326.method230(-7208, (long) i, class40_sub5_sub14_sub4);
-            else
-                Class40_Sub13.aBoolean2177 = true;
+        if(class40_sub5_sub14_sub4 != null)
             return class40_sub5_sub14_sub4;
+        class40_sub5_sub14_sub4 = Class48.method927(0, Class40_Sub5_Sub15.aClass6_2779, true, i);
+        if(class40_sub5_sub14_sub4 != null)
+            Cache.aClass9_326.method230(-7208, (long) i, class40_sub5_sub14_sub4);
+        else
+            Class40_Sub13.aBoolean2177 = true;
+        return class40_sub5_sub14_sub4;
 
     }
 
     public ImageRGB method643(int arg0, boolean arg1) {
 
         Class40_Sub13.aBoolean2177 = false;
-            anInt2666++;
-            int i;
-            if(arg1)
-                i = anInt2670;
-            else
-                i = anInt2744;
-            if((i ^ 0xffffffff) == 0)
-                return null;
+        anInt2666++;
+        int i;
+        if(arg1)
+            i = anInt2670;
+        else
+            i = anInt2744;
+        if((i ^ 0xffffffff) == 0)
+            return null;
         ImageRGB class40_sub5_sub14_sub4 = ((ImageRGB) Cache.aClass9_326.method231((long) i, (byte) 103));
-            if(arg0 != 127)
-                aBoolean2636 = false;
-            if(class40_sub5_sub14_sub4 != null)
-                return class40_sub5_sub14_sub4;
-            class40_sub5_sub14_sub4 = Class48.method927(0, Class40_Sub5_Sub15.aClass6_2779, true, i);
-            if(class40_sub5_sub14_sub4 == null)
-                Class40_Sub13.aBoolean2177 = true;
-            else
-                Cache.aClass9_326.method230(-7208, (long) i, class40_sub5_sub14_sub4);
+        if(arg0 != 127)
+            aBoolean2636 = false;
+        if(class40_sub5_sub14_sub4 != null)
             return class40_sub5_sub14_sub4;
+        class40_sub5_sub14_sub4 = Class48.method927(0, Class40_Sub5_Sub15.aClass6_2779, true, i);
+        if(class40_sub5_sub14_sub4 == null)
+            Class40_Sub13.aBoolean2177 = true;
+        else
+            Cache.aClass9_326.method230(-7208, (long) i, class40_sub5_sub14_sub4);
+        return class40_sub5_sub14_sub4;
 
     }
 
@@ -545,7 +546,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
         aBoolean2688 = (arg1.getUnsignedByte() ^ 0xffffffff) == -2;
         if(anInt2683 == 0) {
             anInt2746 = arg1.getUnsignedShortBE();
-            anInt2731 = arg1.getUnsignedShortBE();
+            scrollPosition = arg1.getUnsignedShortBE();
         }
         if((anInt2683 ^ 0xffffffff) == -6) {
             anInt2744 = arg1.getIntBE();
@@ -621,88 +622,88 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public Model method646(byte arg0, Class40_Sub5_Sub7 arg1, int arg2, boolean arg3, Class30 arg4) {
 
         Class40_Sub13.aBoolean2177 = false;
-            anInt2705++;
-            int i;
-            int i_11_;
-            if(arg3) {
-                i_11_ = anInt2711;
-                i = anInt2651;
-            } else {
-                i = anInt2687;
-                i_11_ = anInt2673;
+        anInt2705++;
+        int i;
+        int i_11_;
+        if(arg3) {
+            i_11_ = anInt2711;
+            i = anInt2651;
+        } else {
+            i = anInt2687;
+            i_11_ = anInt2673;
+        }
+        if((i ^ 0xffffffff) == -1)
+            return null;
+        if((i ^ 0xffffffff) == -2 && (i_11_ ^ 0xffffffff) == 0)
+            return null;
+        if(arg0 <= 25)
+            aBoolean2688 = true;
+        Model class40_sub5_sub17_sub5 = ((Model) Class53.aClass9_1264.method231((long) ((i << -983578160) + i_11_), (byte) 59));
+        if(class40_sub5_sub17_sub5 == null) {
+            if((i ^ 0xffffffff) == -2) {
+                class40_sub5_sub17_sub5 = Model.getModel(Cache.aClass6_329, i_11_, 0);
+                if(class40_sub5_sub17_sub5 == null) {
+                    Class40_Sub13.aBoolean2177 = true;
+                    return null;
+                }
+                class40_sub5_sub17_sub5.method810();
+                class40_sub5_sub17_sub5.method802(64, 768, -50, -10, -50, true);
             }
-            if((i ^ 0xffffffff) == -1)
-                return null;
-            if((i ^ 0xffffffff) == -2 && (i_11_ ^ 0xffffffff) == 0)
-                return null;
-            if(arg0 <= 25)
-                aBoolean2688 = true;
-            Model class40_sub5_sub17_sub5 = ((Model) Class53.aClass9_1264.method231((long) ((i << -983578160) + i_11_), (byte) 59));
-            if(class40_sub5_sub17_sub5 == null) {
-                if((i ^ 0xffffffff) == -2) {
-                    class40_sub5_sub17_sub5 = Model.getModel(Cache.aClass6_329, i_11_, 0);
-                    if(class40_sub5_sub17_sub5 == null) {
-                        Class40_Sub13.aBoolean2177 = true;
-                        return null;
-                    }
-                    class40_sub5_sub17_sub5.method810();
-                    class40_sub5_sub17_sub5.method802(64, 768, -50, -10, -50, true);
+            if((i ^ 0xffffffff) == -3) {
+                class40_sub5_sub17_sub5 = Landscape.method932((byte) -101, i_11_).method575((byte) 122);
+                if(class40_sub5_sub17_sub5 == null) {
+                    Class40_Sub13.aBoolean2177 = true;
+                    return null;
                 }
-                if((i ^ 0xffffffff) == -3) {
-                    class40_sub5_sub17_sub5 = Landscape.method932((byte) -101, i_11_).method575((byte) 122);
-                    if(class40_sub5_sub17_sub5 == null) {
-                        Class40_Sub13.aBoolean2177 = true;
-                        return null;
-                    }
-                    class40_sub5_sub17_sub5.method810();
-                    class40_sub5_sub17_sub5.method802(64, 768, -50, -10, -50, true);
-                }
-                if((i ^ 0xffffffff) == -4) {
-                    if(arg4 == null)
-                        return null;
-                    class40_sub5_sub17_sub5 = arg4.method379(30);
-                    if(class40_sub5_sub17_sub5 == null) {
-                        Class40_Sub13.aBoolean2177 = true;
-                        return null;
-                    }
-                    class40_sub5_sub17_sub5.method810();
-                    class40_sub5_sub17_sub5.method802(64, 768, -50, -10, -50, true);
-                }
-                if((i ^ 0xffffffff) == -5) {
-                    ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_11_, 10);
-                    class40_sub5_sub17_sub5 = class40_sub5_sub16.method753(false, 10, 26910);
-                    if(class40_sub5_sub17_sub5 == null) {
-                        Class40_Sub13.aBoolean2177 = true;
-                        return null;
-                    }
-                    class40_sub5_sub17_sub5.method810();
-                    class40_sub5_sub17_sub5.method802(64 + (class40_sub5_sub16.anInt2825), 768 + (class40_sub5_sub16.anInt2840), -50, -10, -50, true);
-                }
-                Class53.aClass9_1264.method230(-7208, (long) ((i << -557905040) + i_11_), class40_sub5_sub17_sub5);
+                class40_sub5_sub17_sub5.method810();
+                class40_sub5_sub17_sub5.method802(64, 768, -50, -10, -50, true);
             }
-            if(arg1 != null)
-                class40_sub5_sub17_sub5 = arg1.method598(arg2, class40_sub5_sub17_sub5, true);
-            return class40_sub5_sub17_sub5;
+            if((i ^ 0xffffffff) == -4) {
+                if(arg4 == null)
+                    return null;
+                class40_sub5_sub17_sub5 = arg4.method379(30);
+                if(class40_sub5_sub17_sub5 == null) {
+                    Class40_Sub13.aBoolean2177 = true;
+                    return null;
+                }
+                class40_sub5_sub17_sub5.method810();
+                class40_sub5_sub17_sub5.method802(64, 768, -50, -10, -50, true);
+            }
+            if((i ^ 0xffffffff) == -5) {
+                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_11_, 10);
+                class40_sub5_sub17_sub5 = class40_sub5_sub16.method753(false, 10, 26910);
+                if(class40_sub5_sub17_sub5 == null) {
+                    Class40_Sub13.aBoolean2177 = true;
+                    return null;
+                }
+                class40_sub5_sub17_sub5.method810();
+                class40_sub5_sub17_sub5.method802(64 + (class40_sub5_sub16.ambience), 768 + (class40_sub5_sub16.diffusion), -50, -10, -50, true);
+            }
+            Class53.aClass9_1264.method230(-7208, (long) ((i << -557905040) + i_11_), class40_sub5_sub17_sub5);
+        }
+        if(arg1 != null)
+            class40_sub5_sub17_sub5 = arg1.method598(arg2, class40_sub5_sub17_sub5, true);
+        return class40_sub5_sub17_sub5;
 
     }
 
     public TypeFace method647(byte arg0) {
 
         Class40_Sub13.aBoolean2177 = false;
-            anInt2735++;
-            if((anInt2642 ^ 0xffffffff) == -65536)
-                return null;
+        anInt2735++;
+        if((anInt2642 ^ 0xffffffff) == -65536)
+            return null;
         TypeFace class40_sub5_sub14_sub1 = ((TypeFace) Class67.aClass9_1582.method231((long) anInt2642, (byte) 67));
-            if(arg0 != 34)
-                return null;
-            if(class40_sub5_sub14_sub1 != null)
-                return class40_sub5_sub14_sub1;
-            class40_sub5_sub14_sub1 = Class40_Sub5_Sub17_Sub1.method760(0, (byte) 36, (Class40_Sub5_Sub15.aClass6_2779), anInt2642);
-            if(class40_sub5_sub14_sub1 == null)
-                Class40_Sub13.aBoolean2177 = true;
-            else
-                Class67.aClass9_1582.method230(-7208, (long) anInt2642, class40_sub5_sub14_sub1);
+        if(arg0 != 34)
+            return null;
+        if(class40_sub5_sub14_sub1 != null)
             return class40_sub5_sub14_sub1;
+        class40_sub5_sub14_sub1 = Class40_Sub5_Sub17_Sub1.method760(0, (byte) 36, (Class40_Sub5_Sub15.aClass6_2779), anInt2642);
+        if(class40_sub5_sub14_sub1 == null)
+            Class40_Sub13.aBoolean2177 = true;
+        else
+            Class67.aClass9_1582.method230(-7208, (long) anInt2642, class40_sub5_sub14_sub1);
+        return class40_sub5_sub14_sub1;
 
     }
 }

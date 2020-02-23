@@ -1,5 +1,7 @@
-package com.jagex.runescape;
+package com.jagex.runescape.cache.def;
 
+import com.jagex.runescape.*;
+import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;
@@ -41,7 +43,7 @@ public class ItemDefinition extends SubNode {
     public int stackable;
     public RSString name;
     public RSString[] inventoryOptions;
-    public int anInt2800 = -1;
+    public int primaryMaleHeadPiece = -1;
     public int[] modifiedModelColors;
     public RSString[] groundOptions;
     public int inventoryModelId;
@@ -49,66 +51,66 @@ public class ItemDefinition extends SubNode {
     public int noteTemplateId;
     public int modelOffset2;
     public int notedId;
-    public int anInt2813;
+    public int groundScaleX;
     public int[] originalModelColors;
     public int modelZoom;
-    public int anInt2818;
+    public int maleTranslation;
     public int femaleWearModel2;
     public int femaleWearModel1;
-    public int anInt2822;
+    public int secondaryFemaleHeadPiece;
     public int teamIndex;
     public int colorEquip1;
-    public int anInt2825;
+    public int ambience;
     public int anInt2827;
     public int value;
-    public int anInt2829;
+    public int femaleTranslation;
     public int modelRotation2;
     public int[] stackableIds;
-    public int anInt2833;
+    public int groundScaleZ;
     public int[] stackableAmounts;
-    public int anInt2836;
-    public int anInt2840;
-    public int anInt2841;
+    public int primaryMaleModel;
+    public int diffusion;
+    public int secondaryMaleHeadPiece;
     public int modelRotation1;
     public int colorEquip2;
-    public int anInt2848;
+    public int primaryFemaleModel;
     public boolean members;
-    public int anInt2851;
+    public int primaryFemaleHeadPiece;
     public int anInt2852;
-    public int anInt2853;
+    public int groundScaleY;
 
     public ItemDefinition() {
         inventoryOptions = new RSString[]{null, null, null, null, Cache.dropStringInstance};
         stackable = 0;
-        anInt2818 = 0;
+        maleTranslation = 0;
         name = Class61.aClass1_1437;
         modelOffset2 = 0;
         value = 1;
         modelOffset1 = 0;
-        anInt2829 = 0;
-        anInt2825 = 0;
+        femaleTranslation = 0;
+        ambience = 0;
         femaleWearModel1 = -1;
         modelRotation2 = 0;
         groundOptions = new RSString[]{null, null, Class27.takeStringInstance, null, null};
-        anInt2813 = 128;
+        groundScaleX = 128;
         noteTemplateId = -1;
-        anInt2822 = -1;
+        secondaryFemaleHeadPiece = -1;
         modelZoom = 2000;
         colorEquip1 = -1;
         teamIndex = 0;
         anInt2827 = 0;
-        anInt2840 = 0;
+        diffusion = 0;
         femaleWearModel2 = -1;
         colorEquip2 = -1;
         modelRotation1 = 0;
-        anInt2833 = 128;
-        anInt2841 = -1;
-        anInt2848 = -1;
+        groundScaleZ = 128;
+        secondaryMaleHeadPiece = -1;
+        primaryFemaleModel = -1;
         members = false;
-        anInt2851 = -1;
-        anInt2853 = 128;
+        primaryFemaleHeadPiece = -1;
+        groundScaleY = 128;
         notedId = -1;
-        anInt2836 = -1;
+        primaryMaleModel = -1;
     }
 
     public static void method742(int arg0) {
@@ -219,7 +221,7 @@ public class ItemDefinition extends SubNode {
         if(definition.noteTemplateId != -1) {
             definition.itemToNote(forId(definition.noteTemplateId, 10), forId(definition.notedId, 10));
         }
-        if(!Class40_Sub5_Sub10.membersServer && definition.members) {
+        if(!IdentityKit.membersServer && definition.members) {
             definition.inventoryOptions = null;
             definition.teamIndex = 0;
             definition.groundOptions = null;
@@ -234,20 +236,20 @@ public class ItemDefinition extends SubNode {
         if(arg0 != 44) {
             inventoryOptions = null;
         }
-        int i = anInt2800;
-        int i_0_ = anInt2841;
+        int i = primaryMaleHeadPiece;
+        int i_0_ = secondaryMaleHeadPiece;
         if(arg1) {
-            i_0_ = anInt2822;
-            i = anInt2851;
+            i_0_ = secondaryFemaleHeadPiece;
+            i = primaryFemaleHeadPiece;
         }
         if(i == -1) {
             return true;
         }
         boolean bool = true;
-        if(!Class8.aClass6_284.method173(i, (byte) -10, 0)) {
+        if(!Class8.aClass6_284.loaded(i, 0)) {
             bool = false;
         }
-        if(i_0_ != -1 && !Class8.aClass6_284.method173(i_0_, (byte) -10, 0)) {
+        if(i_0_ != -1 && !Class8.aClass6_284.loaded(i_0_, 0)) {
             bool = false;
         }
         return bool;
@@ -255,13 +257,13 @@ public class ItemDefinition extends SubNode {
 
     public boolean method739(boolean arg0, byte arg1) {
         anInt2826++;
-        int i = anInt2836;
+        int i = primaryMaleModel;
         int i_1_ = femaleWearModel1;
         int i_2_ = colorEquip1;
         if(arg0) {
             i_2_ = colorEquip2;
             i_1_ = femaleWearModel2;
-            i = anInt2848;
+            i = primaryFemaleModel;
         }
         if((i ^ 0xffffffff) == 0) {
             return true;
@@ -270,13 +272,13 @@ public class ItemDefinition extends SubNode {
         if(arg1 <= 126) {
             return false;
         }
-        if(!Class8.aClass6_284.method173(i, (byte) -10, 0)) {
+        if(!Class8.aClass6_284.loaded(i, 0)) {
             bool = false;
         }
-        if(i_1_ != -1 && !Class8.aClass6_284.method173(i_1_, (byte) -10, 0)) {
+        if(i_1_ != -1 && !Class8.aClass6_284.loaded(i_1_, 0)) {
             bool = false;
         }
-        if(i_2_ != -1 && !Class8.aClass6_284.method173(i_2_, (byte) -10, 0)) {
+        if(i_2_ != -1 && !Class8.aClass6_284.loaded(i_2_, 0)) {
             bool = false;
         }
         return bool;
@@ -284,12 +286,12 @@ public class ItemDefinition extends SubNode {
 
     public Model method740(boolean arg0, int arg1) {
         anInt2837++;
-        int i = anInt2836;
+        int i = primaryMaleModel;
         int i_3_ = femaleWearModel1;
         int i_4_ = 11 / ((arg1 - 35) / 56);
         int i_5_ = colorEquip1;
         if(arg0) {
-            i = anInt2848;
+            i = primaryFemaleModel;
             i_3_ = femaleWearModel2;
             i_5_ = colorEquip2;
         }
@@ -308,11 +310,11 @@ public class ItemDefinition extends SubNode {
                 model1 = new Model(models, 3);
             }
         }
-        if(!arg0 && (anInt2818 ^ 0xffffffff) != -1) {
-            model1.method828(0, anInt2818, 0);
+        if(!arg0 && (maleTranslation ^ 0xffffffff) != -1) {
+            model1.method828(0, maleTranslation, 0);
         }
-        if(arg0 && anInt2829 != 0) {
-            model1.method828(0, anInt2829, 0);
+        if(arg0 && femaleTranslation != 0) {
+            model1.method828(0, femaleTranslation, 0);
         }
         if(modifiedModelColors != null) {
             for(int i_8_ = 0; ((modifiedModelColors.length ^ 0xffffffff) < (i_8_ ^ 0xffffffff)); i_8_++) {
@@ -345,15 +347,15 @@ public class ItemDefinition extends SubNode {
     }
 
     public Model method747(boolean arg0, byte arg1) {
-        int i = anInt2800;
-        int i_12_ = anInt2841;
+        int i = primaryMaleHeadPiece;
+        int i_12_ = secondaryMaleHeadPiece;
         if(arg1 != 25) {
             return null;
         }
         anInt2847++;
         if(arg0) {
-            i = anInt2851;
-            i_12_ = anInt2822;
+            i = primaryFemaleHeadPiece;
+            i_12_ = secondaryFemaleHeadPiece;
         }
         if(i == -1) {
             return null;
@@ -401,13 +403,13 @@ public class ItemDefinition extends SubNode {
         } else if(opcode == 16) {
             members = true;
         } else if(opcode == 23) {
-            anInt2836 = buffer.getUnsignedShortBE();
-            anInt2818 = buffer.getUnsignedByte();
+            primaryMaleModel = buffer.getUnsignedShortBE();
+            maleTranslation = buffer.getUnsignedByte();
         } else if(opcode == 24) {
             femaleWearModel1 = buffer.getUnsignedShortBE();
         } else if(opcode == 25) {
-            anInt2848 = buffer.getUnsignedShortBE();
-            anInt2829 = buffer.getUnsignedByte();
+            primaryFemaleModel = buffer.getUnsignedShortBE();
+            femaleTranslation = buffer.getUnsignedByte();
         } else if(opcode == 26) {
             femaleWearModel2 = buffer.getUnsignedShortBE();
         } else if(opcode >= 30 && opcode < 35) {
@@ -430,13 +432,13 @@ public class ItemDefinition extends SubNode {
         } else if(opcode == 79) {
             colorEquip2 = buffer.getUnsignedShortBE();
         } else if(opcode == 90) {
-            anInt2800 = buffer.getUnsignedShortBE();
+            primaryMaleHeadPiece = buffer.getUnsignedShortBE();
         } else if(opcode == 91) {
-            anInt2851 = buffer.getUnsignedShortBE();
+            primaryFemaleHeadPiece = buffer.getUnsignedShortBE();
         } else if(opcode == 92) {
-            anInt2841 = buffer.getUnsignedShortBE();
+            secondaryMaleHeadPiece = buffer.getUnsignedShortBE();
         } else if(opcode == 93) {
-            anInt2822 = buffer.getUnsignedShortBE();
+            secondaryFemaleHeadPiece = buffer.getUnsignedShortBE();
         } else if(opcode == 95) {
             anInt2827 = (buffer.getUnsignedShortBE());
         } else if(opcode == 97) {
@@ -451,15 +453,15 @@ public class ItemDefinition extends SubNode {
             stackableIds[-100 + opcode] = (buffer.getUnsignedShortBE());
             stackableAmounts[-100 + opcode] = (buffer.getUnsignedShortBE());
         } else if(opcode == 110) {
-            anInt2813 = (buffer.getUnsignedShortBE());
+            groundScaleX = (buffer.getUnsignedShortBE());
         } else if(opcode == 111) {
-            anInt2853 = (buffer.getUnsignedShortBE());
+            groundScaleY = (buffer.getUnsignedShortBE());
         } else if(opcode == 112) {
-            anInt2833 = (buffer.getUnsignedShortBE());
+            groundScaleZ = (buffer.getUnsignedShortBE());
         } else if(opcode == 113) {
-            anInt2825 = (buffer.getByte());
+            ambience = (buffer.getByte());
         } else if(opcode == 114) {
-            anInt2840 = ((buffer.getByte()) * 5);
+            diffusion = ((buffer.getByte()) * 5);
         } else if(opcode == 115) {
             teamIndex = buffer.getUnsignedByte();
         }
@@ -469,7 +471,7 @@ public class ItemDefinition extends SubNode {
     public void readValues(Buffer itemDefinitionBuffer) {
         for(; ; ) {
             int opcode = itemDefinitionBuffer.getUnsignedByte();
-            if((opcode ^ 0xffffffff) == -1) {
+            if(opcode == 0) {
                 break;
             }
             readValue(opcode, itemDefinitionBuffer);
@@ -519,8 +521,8 @@ public class ItemDefinition extends SubNode {
         if(model == null) {
             return null;
         }
-        if((anInt2813 ^ 0xffffffff) != -129 || anInt2853 != 128 || anInt2833 != 128) {
-            model.method821(anInt2813, anInt2853, anInt2833);
+        if((groundScaleX ^ 0xffffffff) != -129 || groundScaleY != 128 || groundScaleZ != 128) {
+            model.method821(groundScaleX, groundScaleY, groundScaleZ);
         }
         if(modifiedModelColors != null) {
             for(int i = 0; i < modifiedModelColors.length; i++) {
@@ -528,7 +530,7 @@ public class ItemDefinition extends SubNode {
             }
         }
         if(arg0) {
-            model.method802(anInt2825 + 64, 768 + anInt2840, -50, -10, -50, true);
+            model.method802(ambience + 64, 768 + diffusion, -50, -10, -50, true);
             model.aBoolean3164 = true;
             Class62.aClass9_1455.method230(-7208, (long) anInt2852, model);
         }

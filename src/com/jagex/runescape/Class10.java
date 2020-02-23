@@ -73,11 +73,11 @@ public class Class10 {
                     RSString class1 = Renderable.chatPlayerNames[i_0_];
                     int i_1_ = 0;
                     int i_2_ = Class66.chatTypes[i_0_];
-                    if(class1 != null && class1.startsWith((byte) 116, Class51.whiteCrown)) {
+                    if(class1 != null && class1.startsWith(Class51.whiteCrown)) {
                         class1 = class1.substring(5);
                         i_1_ = 1;
                     }
-                    if(class1 != null && class1.startsWith((byte) 116, Class40_Sub5_Sub12.goldCrown)) {
+                    if(class1 != null && class1.startsWith(Class40_Sub5_Sub12.goldCrown)) {
                         class1 = class1.substring(5);
                         i_1_ = 2;
                     }

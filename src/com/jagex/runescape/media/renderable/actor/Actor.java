@@ -1,6 +1,7 @@
 package com.jagex.runescape.media.renderable.actor;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -297,10 +298,10 @@ public abstract class Actor extends Renderable {
     public static void method783(int arg0) {
 
         anInt3085++;
-            Cache.aClass9_326.method235((byte) -126);
-            int i = 12 / ((-12 - arg0) / 50);
-            Class53.aClass9_1264.method235((byte) -96);
-            Class67.aClass9_1582.method235((byte) 34);
+        Cache.aClass9_326.method235((byte) -126);
+        int i = 12 / ((-12 - arg0) / 50);
+        Class53.aClass9_1264.method235((byte) -96);
+        Class67.aClass9_1582.method235((byte) 34);
 
     }
 
@@ -343,23 +344,23 @@ public abstract class Actor extends Renderable {
     public static void method788(int arg0) {
 
         aClass1_3158 = null;
-            aClass6_Sub1_3157 = null;
-            aClass1_3092 = null;
-            aClass1_3154 = null;
-            aClass1_3138 = null;
-            aClass1_3114 = null;
+        aClass6_Sub1_3157 = null;
+        aClass1_3092 = null;
+        aClass1_3154 = null;
+        aClass1_3138 = null;
+        aClass1_3114 = null;
         chatMessages = null;
-            aClass40_Sub5_Sub17_Sub4_Sub1Array3156 = null;
-            aClass6_3150 = null;
-            aClass1_3155 = null;
-            aClass6_3144 = null;
-            aClass31_3152 = null;
-            int i = -42 / ((arg0 - 20) / 50);
-            anIntArray3111 = null;
-            aClass1_3124 = null;
-            anIntArray3149 = null;
-            rsaModulus = null;
-            aClass1_3159 = null;
+        aClass40_Sub5_Sub17_Sub4_Sub1Array3156 = null;
+        aClass6_3150 = null;
+        aClass1_3155 = null;
+        aClass6_3144 = null;
+        aClass31_3152 = null;
+        int i = -42 / ((arg0 - 20) / 50);
+        anIntArray3111 = null;
+        aClass1_3124 = null;
+        anIntArray3149 = null;
+        rsaModulus = null;
+        aClass1_3159 = null;
 
     }
 
@@ -367,146 +368,146 @@ public abstract class Actor extends Renderable {
 
         anInt3147++;
         if(arg3 != Class51.anInt1202 || arg2 != Class17.anInt448 || ((arg5 ^ 0xffffffff) != (Class40_Sub6.onBuildTimePlane ^ 0xffffffff) && VertexNormal.lowMemory)) {
-                Class40_Sub6.onBuildTimePlane = arg5;
-                Class51.anInt1202 = arg3;
-                if(!VertexNormal.lowMemory)
-                    Class40_Sub6.onBuildTimePlane = 0;
-                Class17.anInt448 = arg2;
-                Floor.method559(25, 88);
-                Class51.method940(0, Class67.aClass1_1585, false, null);
-                int i = Class26.anInt635;
-                int i_33_ = Class40_Sub5_Sub2.anInt2307;
-                Class40_Sub5_Sub2.anInt2307 = (arg3 - 6) * 8;
-                int i_34_ = Class40_Sub5_Sub2.anInt2307 + -i_33_;
-                if(arg1 != -1000)
-                    method781(14, 98, 96, -85, -118, 89);
-                i_33_ = Class40_Sub5_Sub2.anInt2307;
-                Class26.anInt635 = (-6 + arg2) * 8;
-                int i_35_ = Class26.anInt635 + -i;
-                i = Class26.anInt635;
-                for(int i_36_ = 0; (i_36_ ^ 0xffffffff) > -32769; i_36_++) {
-                    Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_36_]);
-                    if(class40_sub5_sub17_sub4_sub2 != null) {
-                        for(int i_37_ = 0; i_37_ < 10; i_37_++) {
-                            class40_sub5_sub17_sub4_sub2.anIntArray3088[i_37_] -= i_34_;
-                            class40_sub5_sub17_sub4_sub2.anIntArray3135[i_37_] -= i_35_;
-                        }
-                        class40_sub5_sub17_sub4_sub2.anInt3098 -= 128 * i_34_;
-                        class40_sub5_sub17_sub4_sub2.anInt3089 -= i_35_ * 128;
+            Class40_Sub6.onBuildTimePlane = arg5;
+            Class51.anInt1202 = arg3;
+            if(!VertexNormal.lowMemory)
+                Class40_Sub6.onBuildTimePlane = 0;
+            Class17.anInt448 = arg2;
+            Floor.method559(25, 88);
+            Class51.method940(0, Class67.aClass1_1585, false, null);
+            int i = Class26.anInt635;
+            int i_33_ = Class40_Sub5_Sub2.anInt2307;
+            Class40_Sub5_Sub2.anInt2307 = (arg3 - 6) * 8;
+            int i_34_ = Class40_Sub5_Sub2.anInt2307 + -i_33_;
+            if(arg1 != -1000)
+                method781(14, 98, 96, -85, -118, 89);
+            i_33_ = Class40_Sub5_Sub2.anInt2307;
+            Class26.anInt635 = (-6 + arg2) * 8;
+            int i_35_ = Class26.anInt635 + -i;
+            i = Class26.anInt635;
+            for(int i_36_ = 0; (i_36_ ^ 0xffffffff) > -32769; i_36_++) {
+                Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_36_]);
+                if(class40_sub5_sub17_sub4_sub2 != null) {
+                    for(int i_37_ = 0; i_37_ < 10; i_37_++) {
+                        class40_sub5_sub17_sub4_sub2.anIntArray3088[i_37_] -= i_34_;
+                        class40_sub5_sub17_sub4_sub2.anIntArray3135[i_37_] -= i_35_;
                     }
+                    class40_sub5_sub17_sub4_sub2.anInt3098 -= 128 * i_34_;
+                    class40_sub5_sub17_sub4_sub2.anInt3089 -= i_35_ * 128;
                 }
-                for(int i_38_ = 0; i_38_ < 2048; i_38_++) {
-                    Player class40_sub5_sub17_sub4_sub1 = aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_38_];
-                    if(class40_sub5_sub17_sub4_sub1 != null) {
-                        for(int i_39_ = 0; (i_39_ ^ 0xffffffff) > -11; i_39_++) {
-                            class40_sub5_sub17_sub4_sub1.anIntArray3088[i_39_] -= i_34_;
-                            class40_sub5_sub17_sub4_sub1.anIntArray3135[i_39_] -= i_35_;
-                        }
-                        class40_sub5_sub17_sub4_sub1.anInt3089 -= 128 * i_35_;
-                        class40_sub5_sub17_sub4_sub1.anInt3098 -= 128 * i_34_;
-                    }
-                }
-                Player.anInt3267 = arg5;
-                int i_40_ = 0;
-            Class40_Sub5_Sub13.localPlayer.method787(arg4, -7717, false, arg0);
-                int i_41_ = 104;
-                int i_42_ = 1;
-                if((i_34_ ^ 0xffffffff) > -1) {
-                    i_41_ = -1;
-                    i_40_ = 103;
-                    i_42_ = -1;
-                }
-                int i_43_ = 104;
-                int i_44_ = 0;
-                int i_45_ = 1;
-                if((i_35_ ^ 0xffffffff) > -1) {
-                    i_44_ = 103;
-                    i_43_ = -1;
-                    i_45_ = -1;
-                }
-                for(int i_46_ = i_40_; (i_46_ ^ 0xffffffff) != (i_41_ ^ 0xffffffff); i_46_ += i_42_) {
-                    for(int i_47_ = i_44_; (i_47_ ^ 0xffffffff) != (i_43_ ^ 0xffffffff); i_47_ += i_45_) {
-                        int i_48_ = i_34_ + i_46_;
-                        int i_49_ = i_35_ + i_47_;
-                        for(int i_50_ = 0; (i_50_ ^ 0xffffffff) > -5; i_50_++) {
-                            if((i_48_ ^ 0xffffffff) > -1 || i_49_ < 0 || i_48_ >= 104 || i_49_ >= 104)
-                                Class10.aClass45ArrayArrayArray357[i_50_][i_46_][i_47_] = null;
-                            else
-                                Class10.aClass45ArrayArrayArray357[i_50_][i_46_][i_47_] = (Class10.aClass45ArrayArrayArray357[i_50_][i_48_][i_49_]);
-                        }
-                    }
-                }
-                for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = ((Class40_Sub3) Class45.aClass45_1064.method909(-4))) {
-                    class40_sub3.anInt2038 -= i_35_;
-                    class40_sub3.anInt2039 -= i_34_;
-                    if((class40_sub3.anInt2039 ^ 0xffffffff) > -1 || (class40_sub3.anInt2038 ^ 0xffffffff) > -1 || class40_sub3.anInt2039 >= 104 || (class40_sub3.anInt2038 ^ 0xffffffff) <= -105)
-                        class40_sub3.method457(-1);
-                }
-                Buffer.anInt1985 = -1;
-                if(Class40_Sub5_Sub4.anInt2366 != 0) {
-                    Class40_Sub5_Sub4.anInt2366 -= i_34_;
-                    Class55.anInt1304 -= i_35_;
-                }
-                Class39.aBoolean906 = false;
-                PacketBuffer.anInt2248 = 0;
-                Class57.aClass45_1332.method906(0);
-                Class43.aClass45_1022.method906(0);
             }
+            for(int i_38_ = 0; i_38_ < 2048; i_38_++) {
+                Player class40_sub5_sub17_sub4_sub1 = aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_38_];
+                if(class40_sub5_sub17_sub4_sub1 != null) {
+                    for(int i_39_ = 0; (i_39_ ^ 0xffffffff) > -11; i_39_++) {
+                        class40_sub5_sub17_sub4_sub1.anIntArray3088[i_39_] -= i_34_;
+                        class40_sub5_sub17_sub4_sub1.anIntArray3135[i_39_] -= i_35_;
+                    }
+                    class40_sub5_sub17_sub4_sub1.anInt3089 -= 128 * i_35_;
+                    class40_sub5_sub17_sub4_sub1.anInt3098 -= 128 * i_34_;
+                }
+            }
+            Player.anInt3267 = arg5;
+            int i_40_ = 0;
+            Class40_Sub5_Sub13.localPlayer.method787(arg4, -7717, false, arg0);
+            int i_41_ = 104;
+            int i_42_ = 1;
+            if((i_34_ ^ 0xffffffff) > -1) {
+                i_41_ = -1;
+                i_40_ = 103;
+                i_42_ = -1;
+            }
+            int i_43_ = 104;
+            int i_44_ = 0;
+            int i_45_ = 1;
+            if((i_35_ ^ 0xffffffff) > -1) {
+                i_44_ = 103;
+                i_43_ = -1;
+                i_45_ = -1;
+            }
+            for(int i_46_ = i_40_; (i_46_ ^ 0xffffffff) != (i_41_ ^ 0xffffffff); i_46_ += i_42_) {
+                for(int i_47_ = i_44_; (i_47_ ^ 0xffffffff) != (i_43_ ^ 0xffffffff); i_47_ += i_45_) {
+                    int i_48_ = i_34_ + i_46_;
+                    int i_49_ = i_35_ + i_47_;
+                    for(int i_50_ = 0; (i_50_ ^ 0xffffffff) > -5; i_50_++) {
+                        if((i_48_ ^ 0xffffffff) > -1 || i_49_ < 0 || i_48_ >= 104 || i_49_ >= 104)
+                            Class10.aClass45ArrayArrayArray357[i_50_][i_46_][i_47_] = null;
+                        else
+                            Class10.aClass45ArrayArrayArray357[i_50_][i_46_][i_47_] = (Class10.aClass45ArrayArrayArray357[i_50_][i_48_][i_49_]);
+                    }
+                }
+            }
+            for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = ((Class40_Sub3) Class45.aClass45_1064.method909(-4))) {
+                class40_sub3.anInt2038 -= i_35_;
+                class40_sub3.anInt2039 -= i_34_;
+                if((class40_sub3.anInt2039 ^ 0xffffffff) > -1 || (class40_sub3.anInt2038 ^ 0xffffffff) > -1 || class40_sub3.anInt2039 >= 104 || (class40_sub3.anInt2038 ^ 0xffffffff) <= -105)
+                    class40_sub3.method457(-1);
+            }
+            Buffer.anInt1985 = -1;
+            if(Class40_Sub5_Sub4.anInt2366 != 0) {
+                Class40_Sub5_Sub4.anInt2366 -= i_34_;
+                Class55.anInt1304 -= i_35_;
+            }
+            Class39.aBoolean906 = false;
+            PacketBuffer.anInt2248 = 0;
+            Class57.aClass45_1332.method906(0);
+            Class43.aClass45_1022.method906(0);
+        }
 
     }
 
     public void method782(int arg0, byte arg1, boolean arg2) {
 
         anInt3103++;
-            int i = anIntArray3088[0];
-            int i_19_ = anIntArray3135[0];
-            if(arg0 == 0) {
-                i_19_++;
-                i--;
-            }
-            if(anInt3141 != -1 && (Class68_Sub1.method1050(anInt3141, arg1 ^ ~0x5d).anInt2476 == 1))
-                anInt3141 = -1;
-            if(anInt3109 < 9)
-                anInt3109++;
-            for(int i_20_ = anInt3109; (i_20_ ^ 0xffffffff) < -1; i_20_--) {
-                anIntArray3088[i_20_] = anIntArray3088[i_20_ + -1];
-                anIntArray3135[i_20_] = anIntArray3135[i_20_ - 1];
-                aBooleanArray3072[i_20_] = aBooleanArray3072[-1 + i_20_];
-            }
-            if(arg0 == 1)
-                i_19_++;
-            if(arg1 != -96)
-                method783(125);
-            if(arg0 == 2) {
-                i_19_++;
-                i++;
-            }
-            if(arg0 == 3)
-                i--;
-            if((arg0 ^ 0xffffffff) == -5)
-                i++;
-            if((arg0 ^ 0xffffffff) == -6) {
-                i--;
-                i_19_--;
-            }
-            if((arg0 ^ 0xffffffff) == -7)
-                i_19_--;
-            if(arg0 == 7) {
-                i++;
-                i_19_--;
-            }
-            anIntArray3088[0] = i;
-            anIntArray3135[0] = i_19_;
-            aBooleanArray3072[0] = arg2;
+        int i = anIntArray3088[0];
+        int i_19_ = anIntArray3135[0];
+        if(arg0 == 0) {
+            i_19_++;
+            i--;
+        }
+        if(anInt3141 != -1 && (Class68_Sub1.method1050(anInt3141, arg1 ^ ~0x5d).anInt2476 == 1))
+            anInt3141 = -1;
+        if(anInt3109 < 9)
+            anInt3109++;
+        for(int i_20_ = anInt3109; (i_20_ ^ 0xffffffff) < -1; i_20_--) {
+            anIntArray3088[i_20_] = anIntArray3088[i_20_ + -1];
+            anIntArray3135[i_20_] = anIntArray3135[i_20_ - 1];
+            aBooleanArray3072[i_20_] = aBooleanArray3072[-1 + i_20_];
+        }
+        if(arg0 == 1)
+            i_19_++;
+        if(arg1 != -96)
+            method783(125);
+        if(arg0 == 2) {
+            i_19_++;
+            i++;
+        }
+        if(arg0 == 3)
+            i--;
+        if((arg0 ^ 0xffffffff) == -5)
+            i++;
+        if((arg0 ^ 0xffffffff) == -6) {
+            i--;
+            i_19_--;
+        }
+        if((arg0 ^ 0xffffffff) == -7)
+            i_19_--;
+        if(arg0 == 7) {
+            i++;
+            i_19_--;
+        }
+        anIntArray3088[0] = i;
+        anIntArray3135[0] = i_19_;
+        aBooleanArray3072[0] = arg2;
 
     }
 
     public boolean method784(int arg0) {
 
         anInt3108++;
-            if(arg0 != 1)
-                method783(-80);
-            return false;
+        if(arg0 != 1)
+            method783(-80);
+        return false;
 
     }
 
@@ -527,42 +528,42 @@ public abstract class Actor extends Renderable {
     public void method787(int arg0, int arg1, boolean arg2, int arg3) {
 
         if((anInt3141 ^ 0xffffffff) != 0 && Class68_Sub1.method1050(anInt3141, 2).anInt2476 == 1)
-                anInt3141 = -1;
-            anInt3076++;
-            if(!arg2) {
-                int i = -anIntArray3088[0] + arg3;
-                int i_31_ = -anIntArray3135[0] + arg0;
-                if(i >= -8 && (i ^ 0xffffffff) >= -9 && i_31_ >= -8 && (i_31_ ^ 0xffffffff) >= -9) {
-                    if(anInt3109 < 9)
-                        anInt3109++;
-                    for(int i_32_ = anInt3109; (i_32_ ^ 0xffffffff) < -1; i_32_--) {
-                        anIntArray3088[i_32_] = anIntArray3088[-1 + i_32_];
-                        anIntArray3135[i_32_] = anIntArray3135[-1 + i_32_];
-                        aBooleanArray3072[i_32_] = aBooleanArray3072[i_32_ + -1];
-                    }
-                    anIntArray3088[0] = arg3;
-                    anIntArray3135[0] = arg0;
-                    aBooleanArray3072[0] = false;
-                    return;
+            anInt3141 = -1;
+        anInt3076++;
+        if(!arg2) {
+            int i = -anIntArray3088[0] + arg3;
+            int i_31_ = -anIntArray3135[0] + arg0;
+            if(i >= -8 && (i ^ 0xffffffff) >= -9 && i_31_ >= -8 && (i_31_ ^ 0xffffffff) >= -9) {
+                if(anInt3109 < 9)
+                    anInt3109++;
+                for(int i_32_ = anInt3109; (i_32_ ^ 0xffffffff) < -1; i_32_--) {
+                    anIntArray3088[i_32_] = anIntArray3088[-1 + i_32_];
+                    anIntArray3135[i_32_] = anIntArray3135[-1 + i_32_];
+                    aBooleanArray3072[i_32_] = aBooleanArray3072[i_32_ + -1];
                 }
+                anIntArray3088[0] = arg3;
+                anIntArray3135[0] = arg0;
+                aBooleanArray3072[0] = false;
+                return;
             }
-            anInt3109 = 0;
-            anInt3074 = 0;
-            if(arg1 != -7717)
-                method785(-19, 10, -70, -9);
-            anInt3094 = 0;
-            anIntArray3088[0] = arg3;
-            anIntArray3135[0] = arg0;
-            anInt3098 = anInt3096 * 64 + anIntArray3088[0] * 128;
-            anInt3089 = anInt3096 * 64 + anIntArray3135[0] * 128;
+        }
+        anInt3109 = 0;
+        anInt3074 = 0;
+        if(arg1 != -7717)
+            method785(-19, 10, -70, -9);
+        anInt3094 = 0;
+        anIntArray3088[0] = arg3;
+        anIntArray3135[0] = arg0;
+        anInt3098 = anInt3096 * 64 + anIntArray3088[0] * 128;
+        anInt3089 = anInt3096 * 64 + anIntArray3135[0] * 128;
 
     }
 
     public void method790(int arg0) {
 
         anInt3106++;
-            anInt3094 = arg0;
-            anInt3109 = 0;
+        anInt3094 = arg0;
+        anInt3109 = 0;
 
     }
 }

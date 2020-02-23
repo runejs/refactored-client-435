@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.def.NpcDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -56,28 +58,28 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
     public static void method1001(boolean arg0) {
 
         aClass1_1471 = null;
-            aClass40_Sub5_Sub14_Sub4Array1466 = null;
-            aClass1_1465 = null;
-            if(arg0 != true)
-                method1003(null, null, 31);
-            aClass1_1463 = null;
-            aClass9_1455 = null;
-            aCanvas1469 = null;
-            aClass1_1464 = null;
-            aClass1_1474 = null;
-            aByteArrayArrayArray1473 = null;
+        aClass40_Sub5_Sub14_Sub4Array1466 = null;
+        aClass1_1465 = null;
+        if(arg0 != true)
+            method1003(null, null, 31);
+        aClass1_1463 = null;
+        aClass9_1455 = null;
+        aCanvas1469 = null;
+        aClass1_1464 = null;
+        aClass1_1474 = null;
+        aByteArrayArrayArray1473 = null;
 
     }
 
     public static void method1002(int arg0) {
         anInt1460++;
-        if((SceneTile.anInt2049 ^ 0xffffffff) == -1) {
+        if((SceneTile.activeInterfaceType ^ 0xffffffff) == -1) {
             if(arg0 > -60)
                 anInt1470 = -90;
             int i = anInt1470;
             if((Main.anInt1773 ^ 0xffffffff) == -2 && (Class57.anInt1338 ^ 0xffffffff) <= -517 && (RSString.anInt1668 ^ 0xffffffff) <= -161 && (Class57.anInt1338 ^ 0xffffffff) >= -766 && RSString.anInt1668 <= 205)
                 i = 0;
-            if(!Class4.aBoolean173) {
+            if(!Class4.menuOpen) {
                 if(i == 1 && (NpcDefinition.anInt2394 ^ 0xffffffff) < -1) {
                     int i_0_ = (Class38.anIntArray884[NpcDefinition.anInt2394 - 1]);
                     if((i_0_ ^ 0xffffffff) == -54 || i_0_ == 25 || i_0_ == 55 || (i_0_ ^ 0xffffffff) == -49 || (i_0_ ^ 0xffffffff) == -25 || (i_0_ ^ 0xffffffff) == -53 || (i_0_ ^ 0xffffffff) == -7 || i_0_ == 31 || (i_0_ ^ 0xffffffff) == -44 || i_0_ == 11 || i_0_ == 19 || i_0_ == 1006) {
@@ -87,14 +89,14 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
                         if(class40_sub5_sub12.aBoolean2703 || class40_sub5_sub12.aBoolean2723) {
                             Renderable.anInt2869 = Class57.anInt1338;
                             Class40_Sub5_Sub15.aBoolean2784 = false;
-                            SceneTile.anInt2049 = 2;
+                            SceneTile.activeInterfaceType = 2;
                             Class48.anInt1127 = i_2_;
                             ItemDefinition.anInt2798 = RSString.anInt1668;
                             Class58.anInt1352 = i_1_;
                             if((Class66.anInt1560 ^ 0xffffffff) == (i_2_ >> 799918864 ^ 0xffffffff))
-                                SceneTile.anInt2049 = 1;
-                            if((i_2_ >> 1441108912 ^ 0xffffffff) == (Class43.anInt1028 ^ 0xffffffff))
-                                SceneTile.anInt2049 = 3;
+                                SceneTile.activeInterfaceType = 1;
+                            if((i_2_ >> 1441108912 ^ 0xffffffff) == (Class43.openChatboxWidgetId ^ 0xffffffff))
+                                SceneTile.activeInterfaceType = 3;
                             Buffer.anInt1978 = 0;
                             return;
                         }
@@ -108,26 +110,26 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
                     Class60.method990(11451);
             } else {
                 if((i ^ 0xffffffff) != -2) {
-                    int i_3_ = Class13.anInt420;
-                    int i_4_ = Landscape.anInt1166;
-                    if(Class40_Sub5_Sub17_Sub1.anInt2983 == 0) {
+                    int i_3_ = Class13.mouseX;
+                    int i_4_ = Landscape.mouseY;
+                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
                         i_3_ -= 4;
                         i_4_ -= 4;
                     }
-                    if((Class40_Sub5_Sub17_Sub1.anInt2983 ^ 0xffffffff) == -2) {
+                    if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -2) {
                         i_4_ -= 205;
                         i_3_ -= 553;
                     }
-                    if((Class40_Sub5_Sub17_Sub1.anInt2983 ^ 0xffffffff) == -3) {
+                    if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -3) {
                         i_4_ -= 357;
                         i_3_ -= 17;
                     }
                     if((-10 + Class19.anInt475 ^ 0xffffffff) < (i_3_ ^ 0xffffffff) || 10 + VertexNormal.anInt1086 + Class19.anInt475 < i_3_ || (i_4_ ^ 0xffffffff) > (Main.anInt1758 + -10 ^ 0xffffffff) || ((i_4_ ^ 0xffffffff) < (Main.anInt1758 + CollisionMap.anInt168 + 10 ^ 0xffffffff))) {
-                        if((Class40_Sub5_Sub17_Sub1.anInt2983 ^ 0xffffffff) == -2)
-                            ISAAC.aBoolean505 = true;
-                        Class4.aBoolean173 = false;
-                        if(Class40_Sub5_Sub17_Sub1.anInt2983 == 2)
-                            Class52.aBoolean1221 = true;
+                        if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -2)
+                            ISAAC.redrawTabArea = true;
+                        Class4.menuOpen = false;
+                        if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
+                            Class52.redrawChatbox = true;
                     }
                 }
                 if((i ^ 0xffffffff) == -2) {
@@ -137,15 +139,15 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
                     int i_8_ = Class57.anInt1338;
                     int i_9_ = -1;
                     int i_10_ = RSString.anInt1668;
-                    if((Class40_Sub5_Sub17_Sub1.anInt2983 ^ 0xffffffff) == -1) {
+                    if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -1) {
                         i_8_ -= 4;
                         i_10_ -= 4;
                     }
-                    if((Class40_Sub5_Sub17_Sub1.anInt2983 ^ 0xffffffff) == -2) {
+                    if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -2) {
                         i_8_ -= 553;
                         i_10_ -= 205;
                     }
-                    if((Class40_Sub5_Sub17_Sub1.anInt2983 ^ 0xffffffff) == -3) {
+                    if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -3) {
                         i_8_ -= 17;
                         i_10_ -= 357;
                     }
@@ -156,11 +158,11 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
                     }
                     if((i_9_ ^ 0xffffffff) != 0)
                         Class27.method358(109, i_9_);
-                    if((Class40_Sub5_Sub17_Sub1.anInt2983 ^ 0xffffffff) == -2)
-                        ISAAC.aBoolean505 = true;
-                    Class4.aBoolean173 = false;
-                    if(Class40_Sub5_Sub17_Sub1.anInt2983 == 2)
-                        Class52.aBoolean1221 = true;
+                    if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -2)
+                        ISAAC.redrawTabArea = true;
+                    Class4.menuOpen = false;
+                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
+                        Class52.redrawChatbox = true;
                 }
             }
         }
@@ -169,12 +171,12 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
     public static Class40_Sub9_Sub1 method1003(Signlink arg0, Component arg1, int arg2) {
 
         if(arg2 != 29914)
-                aByteArrayArrayArray1473 = null;
-            Class68.method1040(arg1, 0, arg0);
-            Class40_Sub9_Sub1 class40_sub9_sub1 = new Class40_Sub9_Sub1();
-            Class8.method218(class40_sub9_sub1, -125);
-            anInt1447++;
-            return class40_sub9_sub1;
+            aByteArrayArrayArray1473 = null;
+        Class68.method1040(arg1, 0, arg0);
+        Class40_Sub9_Sub1 class40_sub9_sub1 = new Class40_Sub9_Sub1();
+        Class8.method218(class40_sub9_sub1, -125);
+        anInt1447++;
+        return class40_sub9_sub1;
 
     }
 
@@ -199,19 +201,19 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
     public synchronized void focusLost(FocusEvent arg0) {
 
         if(GameObject.aClass62_3019 != null)
-                Cache.anInt320 = 0;
-            anInt1459++;
+            Cache.anInt320 = 0;
+        anInt1459++;
 
     }
 
     public synchronized void mouseDragged(MouseEvent arg0) {
 
         if(GameObject.aClass62_3019 != null) {
-                Class45.anInt1073 = 0;
-                Class12.anInt389 = arg0.getX();
-                Cache.anInt322 = arg0.getY();
-            }
-            anInt1454++;
+            Class45.anInt1073 = 0;
+            Class12.anInt389 = arg0.getX();
+            Cache.anInt322 = arg0.getY();
+        }
+        anInt1454++;
 
     }
 
@@ -224,21 +226,21 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
     public synchronized void mousePressed(MouseEvent arg0) {
 
         if(GameObject.aClass62_3019 != null) {
-                Class45.anInt1073 = 0;
-                Class55.anInt1295 = arg0.getX();
-                Class40_Sub5_Sub11.anInt2625 = arg0.getY();
-                Floor.aLong2344 = Class51.method937(1);
-                if(!arg0.isMetaDown()) {
-                    Actor.anInt3143 = 1;
-                    Cache.anInt320 = 1;
-                } else {
-                    Actor.anInt3143 = 2;
-                    Cache.anInt320 = 2;
-                }
+            Class45.anInt1073 = 0;
+            Class55.anInt1295 = arg0.getX();
+            Class40_Sub5_Sub11.anInt2625 = arg0.getY();
+            Floor.aLong2344 = Class51.method937(1);
+            if(!arg0.isMetaDown()) {
+                Actor.anInt3143 = 1;
+                Cache.anInt320 = 1;
+            } else {
+                Actor.anInt3143 = 2;
+                Cache.anInt320 = 2;
             }
-            if(arg0.isPopupTrigger())
-                arg0.consume();
-            anInt1453++;
+        }
+        if(arg0.isPopupTrigger())
+            arg0.consume();
+        anInt1453++;
 
     }
 

@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.def.NpcDefinition;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 import java.awt.event.KeyEvent;
@@ -47,84 +49,84 @@ public class Class51 {
     public static synchronized long method937(int arg0) {
 
         anInt1192++;
-            if(arg0 != 1)
-                aClass68_1206 = null;
-            long l = System.currentTimeMillis();
-            if(Class62.aLong1456 > l)
-                Class62.aLong1467 += Class62.aLong1456 + -l;
-            Class62.aLong1456 = l;
-            return l + Class62.aLong1467;
+        if(arg0 != 1)
+            aClass68_1206 = null;
+        long l = System.currentTimeMillis();
+        if(Class62.aLong1456 > l)
+            Class62.aLong1467 += Class62.aLong1456 + -l;
+        Class62.aLong1456 = l;
+        return l + Class62.aLong1467;
 
     }
 
     public static int method938(int arg0, KeyEvent arg1) {
 
         anInt1188++;
-            if(arg0 <= 86)
-                method940(-15, null, false, null);
-            int i = arg1.getKeyChar();
-            if(i <= 0 || (i ^ 0xffffffff) <= -257)
-                i = -1;
-            return i;
+        if(arg0 <= 86)
+            method940(-15, null, false, null);
+        int i = arg1.getKeyChar();
+        if(i <= 0 || (i ^ 0xffffffff) <= -257)
+            i = -1;
+        return i;
 
     }
 
     public static void method939(int arg0) {
 
         aClass1_1207 = null;
-            aClass1_1200 = null;
-            aClass1_1196 = null;
+        aClass1_1200 = null;
+        aClass1_1196 = null;
         whiteCrown = null;
-            aClass1_1201 = null;
-            aClass1_1208 = null;
-            anIntArray1198 = null;
-            aClass23_1194 = null;
-            aClass1Array1204 = null;
-            aClass68_1206 = null;
-            aClass1_1199 = null;
-            int i = -41 / ((arg0 - 53) / 57);
-            aClass1_1209 = null;
+        aClass1_1201 = null;
+        aClass1_1208 = null;
+        anIntArray1198 = null;
+        aClass23_1194 = null;
+        aClass1Array1204 = null;
+        aClass68_1206 = null;
+        aClass1_1199 = null;
+        int i = -41 / ((arg0 - 53) / 57);
+        aClass1_1209 = null;
 
     }
 
     public static void method940(int arg0, RSString arg1, boolean arg2, RSString arg3) {
 
         if(Class40_Sub5_Sub11.aBoolean2631) {
-                Class40_Sub5_Sub11.aBoolean2631 = false;
-                ItemDefinition.method742(205);
-                Class45.method908((byte) 114);
-                Class55.method964(40);
-                NpcDefinition.method574(4);
+            Class40_Sub5_Sub11.aBoolean2631 = false;
+            ItemDefinition.method742(205);
+            Class45.method908((byte) 114);
+            Class55.method964(40);
+            NpcDefinition.method574(4);
             Class52.method943(ItemDefinition.anInt2797, -118, Class53.aClass40_Sub5_Sub14_Sub1_1268, Class4.anInt185, Class35.publicChatMode);
-                Class40_Sub2.method527(Class5.anInt208, arg0 + 4, Class40_Sub5_Sub11.anIntArray2626, Class29.anInt673 == -1, -1);
-                Class38.aBoolean893 = true;
-                Class40_Sub3.aBoolean2026 = true;
-                Class6.aBoolean260 = true;
+            Class40_Sub2.method527(Class5.currentTabId, arg0 + 4, Class40_Sub5_Sub11.tabWidgetIds, Class29.anInt673 == -1, -1);
+            Class38.aBoolean893 = true;
+            Class40_Sub3.aBoolean2026 = true;
+            Class6.aBoolean260 = true;
+        }
+        int i = 151;
+        Class65.method1018((byte) -83);
+        i -= 3;
+        Class53.aClass40_Sub5_Sub14_Sub1_1268.method686(arg1, 257, i, arg0);
+        Class53.aClass40_Sub5_Sub14_Sub1_1268.method686(arg1, 256, i + -1, 16777215);
+        if(arg3 != null) {
+            i += 15;
+            if(arg2) {
+                int i_0_ = 4 + Class53.aClass40_Sub5_Sub14_Sub1_1268.getStringWidth(arg3);
+                Rasterizer.method656(257 - i_0_ / 2, -11 + i, i_0_, 11, 0);
             }
-            int i = 151;
-            Class65.method1018((byte) -83);
-            i -= 3;
-            Class53.aClass40_Sub5_Sub14_Sub1_1268.method686(arg1, 257, i, arg0);
-            Class53.aClass40_Sub5_Sub14_Sub1_1268.method686(arg1, 256, i + -1, 16777215);
-            if(arg3 != null) {
-                i += 15;
-                if(arg2) {
-                    int i_0_ = 4 + Class53.aClass40_Sub5_Sub14_Sub1_1268.getStringWidth(arg3);
-                    Rasterizer.method656(257 - i_0_ / 2, -11 + i, i_0_, 11, 0);
-                }
-                Class53.aClass40_Sub5_Sub14_Sub1_1268.method686(arg3, 257, i, 0);
-                Class53.aClass40_Sub5_Sub14_Sub1_1268.method686(arg3, 256, i - 1, 16777215);
-            }
-            anInt1193++;
-            Player.method792(arg0 + 107);
+            Class53.aClass40_Sub5_Sub14_Sub1_1268.method686(arg3, 257, i, 0);
+            Class53.aClass40_Sub5_Sub14_Sub1_1268.method686(arg3, 256, i - 1, 16777215);
+        }
+        anInt1193++;
+        Player.method792(arg0 + 107);
 
     }
 
     public static void method941(byte arg0) {
 
         Class6.aClass9_229.method235((byte) 50);
-            if(arg0 == -93)
-                anInt1191++;
+        if(arg0 == -93)
+            anInt1191++;
 
     }
 
