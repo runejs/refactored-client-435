@@ -72,33 +72,33 @@ public class Class40_Sub5_Sub2 extends SubNode {
     public static void method548(int arg0) {
 
         if(arg0 != -3254)
-                method548(-111);
-            aClass1_2291 = null;
-            aClass67_2298 = null;
-            aClass1_2297 = null;
-            aClass1_2283 = null;
-            aClass40_Sub5_Sub14_Sub2Array2301 = null;
+            method548(-111);
+        aClass1_2291 = null;
+        aClass67_2298 = null;
+        aClass1_2297 = null;
+        aClass1_2283 = null;
+        aClass40_Sub5_Sub14_Sub2Array2301 = null;
         minimapEdge = null;
-            aClass1_2299 = null;
-            aClass1_2306 = null;
-            aClass1_2294 = null;
-            aClass1_2311 = null;
+        aClass1_2299 = null;
+        aClass1_2306 = null;
+        aClass1_2294 = null;
+        aClass1_2311 = null;
         cmd_noclip = null;
-            aClass1_2286 = null;
-            aClass1_2303 = null;
-            aClass1_2296 = null;
-            aClass1_2292 = null;
+        aClass1_2286 = null;
+        aClass1_2303 = null;
+        aClass1_2296 = null;
+        aClass1_2292 = null;
 
     }
 
     public static IndexedImage[] method550(Class6 arg0, byte arg1, RSString arg2, RSString arg3) {
 
         anInt2282++;
-            int i = arg0.method183(0, arg2);
-            if(arg1 > -53)
-                aClass1_2283 = null;
-            int i_1_ = arg0.method179(-118, i, arg3);
-            return Class24.method337(7729, arg0, i_1_, i);
+        int i = arg0.method183(0, arg2);
+        if(arg1 > -53)
+            aClass1_2283 = null;
+        int i_1_ = arg0.method179(-118, i, arg3);
+        return Class24.method337(7729, arg0, i_1_, i);
 
     }
 
@@ -293,86 +293,86 @@ public class Class40_Sub5_Sub2 extends SubNode {
     public void method547(int arg0, byte arg1, Buffer arg2) {
 
         if(arg1 > -100)
-                anInt2308 = -55;
-            if((arg0 ^ 0xffffffff) == -2)
-                anInt2293 = arg2.getUnsignedShortBE();
-            else if(arg0 == 2)
-                anInt2287 = arg2.getUnsignedShortBE();
-            else if(arg0 != 4) {
-                if((arg0 ^ 0xffffffff) != -6) {
-                    if((arg0 ^ 0xffffffff) != -7) {
-                        if(arg0 != 7) {
-                            if(arg0 != 8) {
-                                if(arg0 >= 40 && arg0 < 50)
-                                    anIntArray2309[-40 + arg0] = arg2.getUnsignedShortBE();
-                                else if(arg0 >= 50 && (arg0 ^ 0xffffffff) > -61)
-                                    anIntArray2312[-50 + arg0] = arg2.getUnsignedShortBE();
-                            } else
-                                anInt2295 = arg2.getUnsignedByte();
+            anInt2308 = -55;
+        if((arg0 ^ 0xffffffff) == -2)
+            anInt2293 = arg2.getUnsignedShortBE();
+        else if(arg0 == 2)
+            anInt2287 = arg2.getUnsignedShortBE();
+        else if(arg0 != 4) {
+            if((arg0 ^ 0xffffffff) != -6) {
+                if((arg0 ^ 0xffffffff) != -7) {
+                    if(arg0 != 7) {
+                        if(arg0 != 8) {
+                            if(arg0 >= 40 && arg0 < 50)
+                                anIntArray2309[-40 + arg0] = arg2.getUnsignedShortBE();
+                            else if(arg0 >= 50 && (arg0 ^ 0xffffffff) > -61)
+                                anIntArray2312[-50 + arg0] = arg2.getUnsignedShortBE();
                         } else
-                            anInt2300 = arg2.getUnsignedByte();
+                            anInt2295 = arg2.getUnsignedByte();
                     } else
-                        anInt2308 = arg2.getUnsignedShortBE();
+                        anInt2300 = arg2.getUnsignedByte();
                 } else
-                    anInt2313 = arg2.getUnsignedShortBE();
+                    anInt2308 = arg2.getUnsignedShortBE();
             } else
-                anInt2305 = arg2.getUnsignedShortBE();
-            anInt2304++;
+                anInt2313 = arg2.getUnsignedShortBE();
+        } else
+            anInt2305 = arg2.getUnsignedShortBE();
+        anInt2304++;
 
     }
 
     public Model method549(int arg0, int arg1) {
 
         anInt2288++;
-            Model class40_sub5_sub17_sub5 = ((Model) Class34.aClass9_851.method231((long) anInt2310, (byte) 50));
-            if(class40_sub5_sub17_sub5 == null) {
-                class40_sub5_sub17_sub5 = Model.getModel((Class40_Sub5_Sub9.aClass6_2582), anInt2293, 0);
-                if(class40_sub5_sub17_sub5 == null)
-                    return null;
-                for(int i = 0; (i ^ 0xffffffff) > -7; i++) {
-                    if((anIntArray2309[0] ^ 0xffffffff) != -1)
-                        class40_sub5_sub17_sub5.method803(anIntArray2309[i], anIntArray2312[i]);
-                }
-                class40_sub5_sub17_sub5.method810();
-                class40_sub5_sub17_sub5.method802(64 + anInt2300, anInt2295 + 850, -30, -50, -30, true);
-                Class34.aClass9_851.method230(-7208, (long) anInt2310, class40_sub5_sub17_sub5);
-            }
-            Model class40_sub5_sub17_sub5_0_;
-            if(anInt2287 != -1 && (arg0 ^ 0xffffffff) != 0)
-                class40_sub5_sub17_sub5_0_ = (Class68_Sub1.method1050(anInt2287, 2).method597((byte) -87, class40_sub5_sub17_sub5, arg0));
-            else
-                class40_sub5_sub17_sub5_0_ = class40_sub5_sub17_sub5.method806(true);
-            if(arg1 != 2)
+        Model class40_sub5_sub17_sub5 = ((Model) Class34.aClass9_851.method231((long) anInt2310, (byte) 50));
+        if(class40_sub5_sub17_sub5 == null) {
+            class40_sub5_sub17_sub5 = Model.getModel((Class40_Sub5_Sub9.aClass6_2582), anInt2293, 0);
+            if(class40_sub5_sub17_sub5 == null)
                 return null;
-            if(anInt2305 != 128 || anInt2313 != 128)
-                class40_sub5_sub17_sub5_0_.method821(anInt2305, anInt2313, anInt2305);
-            if(anInt2308 != 0) {
-                if(anInt2308 == 90)
-                    class40_sub5_sub17_sub5_0_.method813();
-                if(anInt2308 == 180) {
-                    class40_sub5_sub17_sub5_0_.method813();
-                    class40_sub5_sub17_sub5_0_.method813();
-                }
-                if((anInt2308 ^ 0xffffffff) == -271) {
-                    class40_sub5_sub17_sub5_0_.method813();
-                    class40_sub5_sub17_sub5_0_.method813();
-                    class40_sub5_sub17_sub5_0_.method813();
-                }
+            for(int i = 0; (i ^ 0xffffffff) > -7; i++) {
+                if((anIntArray2309[0] ^ 0xffffffff) != -1)
+                    class40_sub5_sub17_sub5.method803(anIntArray2309[i], anIntArray2312[i]);
             }
-            return class40_sub5_sub17_sub5_0_;
+            class40_sub5_sub17_sub5.method810();
+            class40_sub5_sub17_sub5.method802(64 + anInt2300, anInt2295 + 850, -30, -50, -30, true);
+            Class34.aClass9_851.method230(-7208, (long) anInt2310, class40_sub5_sub17_sub5);
+        }
+        Model class40_sub5_sub17_sub5_0_;
+        if(anInt2287 != -1 && (arg0 ^ 0xffffffff) != 0)
+            class40_sub5_sub17_sub5_0_ = (Class68_Sub1.method1050(anInt2287, 2).method597((byte) -87, class40_sub5_sub17_sub5, arg0));
+        else
+            class40_sub5_sub17_sub5_0_ = class40_sub5_sub17_sub5.method806(true);
+        if(arg1 != 2)
+            return null;
+        if(anInt2305 != 128 || anInt2313 != 128)
+            class40_sub5_sub17_sub5_0_.method821(anInt2305, anInt2313, anInt2305);
+        if(anInt2308 != 0) {
+            if(anInt2308 == 90)
+                class40_sub5_sub17_sub5_0_.method813();
+            if(anInt2308 == 180) {
+                class40_sub5_sub17_sub5_0_.method813();
+                class40_sub5_sub17_sub5_0_.method813();
+            }
+            if((anInt2308 ^ 0xffffffff) == -271) {
+                class40_sub5_sub17_sub5_0_.method813();
+                class40_sub5_sub17_sub5_0_.method813();
+                class40_sub5_sub17_sub5_0_.method813();
+            }
+        }
+        return class40_sub5_sub17_sub5_0_;
 
     }
 
     public void method551(Buffer arg0, byte arg1) {
 
         anInt2289++;
-            for(; ; ) {
-                int i = arg0.getUnsignedByte();
-                if(i == 0)
-                    break;
-                method547(i, (byte) -107, arg0);
-            }
-            int i = -3 / ((-30 - arg1) / 53);
+        for(; ; ) {
+            int i = arg0.getUnsignedByte();
+            if(i == 0)
+                break;
+            method547(i, (byte) -107, arg0);
+        }
+        int i = -3 / ((-30 - arg1) / 53);
 
     }
 }

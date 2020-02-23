@@ -853,7 +853,7 @@ public class Class43 {
                     if((openChatboxWidgetId ^ 0xffffffff) == 0) {
                         if((Class48.anInt1138 ^ 0xffffffff) == 0) {
                             if(Landscape.mouseY < 434 && Class13.mouseX < 426)
-                                Class40_Sub11.method873(-17 + (Class13.mouseX), (Landscape.mouseY + -357), 45);
+                                Class40_Sub11.method873((Landscape.mouseY + -357), 45);
                         } else
                             Class13.method243((byte) 89, 357, 496, 453, Class48.anInt1138, 17, Class13.mouseX, Landscape.mouseY, 3);
                     } else

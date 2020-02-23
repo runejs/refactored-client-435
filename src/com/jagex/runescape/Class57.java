@@ -41,33 +41,33 @@ public class Class57 {
     public static void method974(int arg0) {
 
         aClass45_1332 = null;
-            aClass1_1348 = null;
-            aClass40_Sub5_Sub14_Sub2_1346 = null;
-            anIntArrayArray1335 = null;
-            aClass9_1331 = null;
-            aClass1_1336 = null;
-            aClass1_1344 = null;
-            aClass64_1345 = null;
-            aClass1_1339 = null;
-            aClass1_1340 = null;
-            aClass1_1343 = null;
-            anIntArray1347 = null;
-            anIntArray1334 = null;
-            aClass1_1341 = null;
-            aClass1_1333 = null;
-            int i = -39 % ((70 - arg0) / 56);
+        aClass1_1348 = null;
+        aClass40_Sub5_Sub14_Sub2_1346 = null;
+        anIntArrayArray1335 = null;
+        aClass9_1331 = null;
+        aClass1_1336 = null;
+        aClass1_1344 = null;
+        aClass64_1345 = null;
+        aClass1_1339 = null;
+        aClass1_1340 = null;
+        aClass1_1343 = null;
+        anIntArray1347 = null;
+        anIntArray1334 = null;
+        aClass1_1341 = null;
+        aClass1_1333 = null;
+        int i = -39 % ((70 - arg0) / 56);
 
     }
 
     public static void method975(int arg0, byte arg1, int arg2) {
 
         if(arg1 == 110) {
-                if((RSCanvas.anInt60 ^ 0xffffffff) != -1 && arg2 != -1) {
-                    Class33.method414(false, 1, arg2, RSCanvas.anInt60, 0, VertexNormal.aClass6_Sub1_1104, arg1 ^ ~0x6e);
-                    Class35.anInt1733 = arg0;
-                }
-                anInt1330++;
+            if((RSCanvas.anInt60 ^ 0xffffffff) != -1 && arg2 != -1) {
+                Class33.method414(false, 1, arg2, RSCanvas.anInt60, 0, VertexNormal.aClass6_Sub1_1104, arg1 ^ ~0x6e);
+                Class35.anInt1733 = arg0;
             }
+            anInt1330++;
+        }
 
     }
 }

@@ -46,33 +46,33 @@ public class Class19 {
     public static RSString method279(byte[] arg0, boolean arg1, int arg2, int arg3) {
 
         anInt467++;
-            RSString class1 = new RSString();
+        RSString class1 = new RSString();
         class1.length = 0;
         class1.chars = new byte[arg3];
-            if(arg1 != true)
-                aClass1_495 = null;
-            for(int i = arg2; arg3 + arg2 > i; i++) {
-                if((arg0[i] ^ 0xffffffff) != -1)
-                    class1.chars[class1.length++] = arg0[i];
-            }
-            return class1;
+        if(arg1 != true)
+            aClass1_495 = null;
+        for(int i = arg2; arg3 + arg2 > i; i++) {
+            if((arg0[i] ^ 0xffffffff) != -1)
+                class1.chars[class1.length++] = arg0[i];
+        }
+        return class1;
 
     }
 
     public static void method280(boolean arg0) {
 
         aClass1_495 = null;
-            aClass1_494 = null;
-            aClass68_482 = null;
-            aClass1_489 = null;
-            aClass27_485 = null;
-            aByteArrayArrayArray492 = null;
-            aClass9_470 = null;
-            aClass1_478 = null;
-            if(arg0 != true)
-                method280(false);
-            anIntArray483 = null;
-            aClass6_488 = null;
+        aClass1_494 = null;
+        aClass68_482 = null;
+        aClass1_489 = null;
+        aClass27_485 = null;
+        aByteArrayArrayArray492 = null;
+        aClass9_470 = null;
+        aClass1_478 = null;
+        if(arg0 != true)
+            method280(false);
+        anIntArray483 = null;
+        aClass6_488 = null;
 
     }
 }

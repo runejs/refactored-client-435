@@ -42,28 +42,28 @@ public class Class60 {
         anInt1414++;
         TypeFace class40_sub5_sub14_sub1 = new TypeFace((Actor.anIntArray3111), Class17.anIntArray456, (Npc.anIntArray3312), Buffer.anIntArray1972, Class58.aByteArrayArray1370);
         NpcDefinition.method569();
-            if(arg0 < 4)
-                return null;
-            return class40_sub5_sub14_sub1;
+        if(arg0 < 4)
+            return null;
+        return class40_sub5_sub14_sub1;
 
     }
 
     public static int method988(Class6 arg0, Class6 arg1, int arg2) {
 
         anInt1412++;
-            int i = 0;
+        int i = 0;
         if(arg0.method194(Class32.aClass1_772, Class22_Sub2.string_blank, -1234))
-                i++;
+            i++;
         if(arg1.method194(Main.aClass1_1762, Class22_Sub2.string_blank, -1234))
-                i++;
+            i++;
         if(arg1.method194(Class40_Sub5_Sub7.aClass1_2488, Class22_Sub2.string_blank, -1234))
-                i++;
+            i++;
         if(arg1.method194(ISAAC.aClass1_506, Class22_Sub2.string_blank, -1234))
-                i++;
+            i++;
         if(arg1.method194(Class8.aClass1_299, Class22_Sub2.string_blank, -1234))
-                i++;
-            int i_0_ = 84 % ((11 - arg2) / 47);
-            return i;
+            i++;
+        int i_0_ = 84 % ((11 - arg2) / 47);
+        return i;
 
     }
 
@@ -150,28 +150,28 @@ public class Class60 {
     public static RSString method991(int arg0, long arg1) {
 
         anInt1403++;
-            if(arg1 <= 0L || (arg1 ^ 0xffffffffffffffffL) <= -6582952005840035282L)
-                return null;
-            if((arg1 % 37L ^ 0xffffffffffffffffL) == -1L)
-                return null;
-            long l = arg1;
-            int i = 0;
-            while((l ^ 0xffffffffffffffffL) != -1L) {
-                l /= 37L;
-                i++;
-            }
-            if(arg0 >= -3)
-                aClass1_1416 = null;
-            byte[] is = new byte[i];
-            while((arg1 ^ 0xffffffffffffffffL) != -1L) {
-                long l_10_ = arg1;
-                arg1 /= 37L;
-                is[--i] = CollisionMap.aByteArray169[(int) (-(arg1 * 37L) + l_10_)];
-            }
-            RSString class1 = new RSString();
+        if(arg1 <= 0L || (arg1 ^ 0xffffffffffffffffL) <= -6582952005840035282L)
+            return null;
+        if((arg1 % 37L ^ 0xffffffffffffffffL) == -1L)
+            return null;
+        long l = arg1;
+        int i = 0;
+        while((l ^ 0xffffffffffffffffL) != -1L) {
+            l /= 37L;
+            i++;
+        }
+        if(arg0 >= -3)
+            aClass1_1416 = null;
+        byte[] is = new byte[i];
+        while((arg1 ^ 0xffffffffffffffffL) != -1L) {
+            long l_10_ = arg1;
+            arg1 /= 37L;
+            is[--i] = CollisionMap.aByteArray169[(int) (-(arg1 * 37L) + l_10_)];
+        }
+        RSString class1 = new RSString();
         class1.chars = is;
         class1.length = is.length;
-            return class1;
+        return class1;
 
     }
 
@@ -271,12 +271,12 @@ public class Class60 {
     public static void method994(boolean arg0) {
 
         aClass1_1401 = null;
+        aClass1_1408 = null;
+        aClass1_1409 = null;
+        if(arg0 != false)
             aClass1_1408 = null;
-            aClass1_1409 = null;
-            if(arg0 != false)
-                aClass1_1408 = null;
-            aClass1_1411 = null;
-            aClass1_1416 = null;
+        aClass1_1411 = null;
+        aClass1_1416 = null;
 
     }
 }

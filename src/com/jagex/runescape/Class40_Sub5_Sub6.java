@@ -10,52 +10,21 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class Class40_Sub5_Sub6 extends SubNode {
-    public static RSString aClass1_2434;
-    public static int anInt2435;
+    public static RSString aClass1_2434 = Class58.method978(":duelreq:");
     public static Class67[] aClass67Array2436 = new Class67[13];
     public static int anInt2437;
-    public static RSString aClass1_2438;
-    public static Cache aClass9_2439;
-    public static RSString aClass1_2440;
-    public static RSString aClass1_2442;
+    public static RSString aClass1_2438 = Class58.method978("scroll:");
+    public static Cache aClass9_2439 = new Cache(64);
+    public static RSString aClass1_2440 = Class58.method978("Enter name:");
     public static int anInt2443;
-    public static int anInt2444;
-    public static int anInt2445;
-    public static RSString aClass1_2446;
-    public static RSString aClass1_2447;
-    public static int anInt2448;
-    public static int anInt2449;
-    public static int anInt2450;
-    public static int anInt2451;
-    public static int anInt2452;
-    public static int anInt2453;
-    public static int anInt2454;
-    public static int anInt2455;
-    public static int anInt2456;
-    public static RSString aClass1_2457;
-    public static RSString aClass1_2458;
-    public static RSString aClass1_2459;
+    public static RSString aClass1_2446 = aClass1_2440;
+    public static RSString aClass1_2447 = Class58.method978("@yel@*V");
+    public static int anInt2451 = 0;
+    public static int anInt2452 = 0;
+    public static RSString aClass1_2457 = (Class58.method978(" steht bereits auf Ihrer Ignorieren)2Liste(Q"));
+    public static RSString aClass1_2458 = Class58.method978("From");
     public static RSString aClass1_2460 = Class58.method978("RuneScape has been updated(Q");
-    public static RSString aClass1_2461;
-    public static RSString aClass1_2462;
-
-    static {
-        aClass1_2434 = Class58.method978(":duelreq:");
-        aClass1_2447 = Class58.method978("@yel@*V");
-        aClass1_2440 = Class58.method978("Enter name:");
-        aClass1_2446 = aClass1_2440;
-        aClass1_2442 = Class58.method978("scroll:");
-        aClass1_2438 = aClass1_2442;
-        anInt2452 = 0;
-        anInt2451 = 0;
-        aClass9_2439 = new Cache(64);
-        aClass1_2457 = (Class58.method978(" steht bereits auf Ihrer Ignorieren)2Liste(Q"));
-        aClass1_2459 = Class58.method978("From");
-        aClass1_2458 = aClass1_2459;
-        aClass1_2461 = Class58.method978("Error connecting to server)3");
-        aClass1_2462 = aClass1_2461;
-    }
-
+    public static RSString aClass1_2462 = Class58.method978("Error connecting to server)3");
     public byte[] aByteArray2441;
 
     public Class40_Sub5_Sub6(byte[] arg0) {
@@ -63,15 +32,12 @@ public class Class40_Sub5_Sub6 extends SubNode {
     }
 
     public static void method582(boolean arg0) {
-        aClass1_2461 = null;
         aClass1_2446 = null;
         aClass1_2434 = null;
-        aClass1_2459 = null;
         aClass1_2447 = null;
         aClass1_2438 = null;
         aClass67Array2436 = null;
         aClass1_2458 = null;
-        aClass1_2442 = null;
         aClass1_2462 = null;
         aClass9_2439 = null;
         aClass1_2457 = null;
@@ -82,7 +48,6 @@ public class Class40_Sub5_Sub6 extends SubNode {
     }
 
     public static boolean drawInterface(int arg0, int arg1, int arg2, byte arg3, int arg4, int arg5, int arg6) {
-        anInt2450++;
         if(!Class68.method1043(arg1))
             return false;
         if(arg3 != -5)
@@ -91,9 +56,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
     }
 
     public static void putHackCheckPacket(int arg0, int arg1, PacketBuffer arg2) {
-
         if(arg0 == -12) {
-            anInt2444++;
             for(; ; ) {
                 Class40_Sub11 class40_sub11 = ((Class40_Sub11) Class54.aClass45_1278.method902((byte) -90));
                 if(class40_sub11 == null)
@@ -205,30 +168,24 @@ public class Class40_Sub5_Sub6 extends SubNode {
     }
 
     public static int method585(int arg0, int arg1) {
-
         Class40_Sub5_Sub4 class40_sub5_sub4 = Class34.method417(0, arg0);
         if(arg1 != 1369)
             return 27;
-        anInt2456++;
         int i = class40_sub5_sub4.anInt2370;
         int i_6_ = class40_sub5_sub4.anInt2358;
         int i_7_ = class40_sub5_sub4.anInt2368;
         int i_8_ = Class68_Sub1.anIntArray2199[i - i_7_];
         return Class58.varbitmasks[i_6_] >> i_7_ & i_8_;
-
     }
 
     public static void method586(int arg0) {
         ISAAC.aClass9_510.method235((byte) 64);
-        anInt2449++;
         Class67.aClass9_1611.method235((byte) -105);
         if(arg0 <= 63)
             aClass1_2462 = null;
     }
 
     public static void method587(int arg0) {
-
-        anInt2445++;
         if(arg0 == 2) {
             while(Class34.method416((byte) -125)) {
                 if(Class66.anInt1560 != -1 && (Class66.anInt1548 == Class66.anInt1560)) {
@@ -394,10 +351,9 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                     Class32.packetBuffer.putPacket(248);
                                     Class32.packetBuffer.putByte(-1 + Class66.chatboxInput.length());
                                     Class32.packetBuffer.method505(Class66.chatboxInput.substring(2));
-                                    CollisionMap.anInt149++;
                                 }
                                 Class52.redrawChatbox = true;
-                                Class66.chatboxInput = Class66.aClass1_1567;
+                                Class66.chatboxInput = Class66.blank_string;
                             }
                         }
                     } else {
@@ -473,9 +429,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
     }
 
     public static void method588(int arg0) {
-
         if(arg0 == -1) {
-            anInt2454++;
             int i = Class19.anInt475;
             int i_13_ = CollisionMap.anInt168;
             int i_14_ = Main.anInt1758;
@@ -507,6 +461,5 @@ public class Class40_Sub5_Sub6 extends SubNode {
                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method683(Landscape.aClass1Array1184[i_19_], i + 3, i_20_, i_21_, true);
             }
         }
-
     }
 }

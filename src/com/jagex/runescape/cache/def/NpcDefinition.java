@@ -13,43 +13,19 @@ import java.awt.*;
 
 public class NpcDefinition extends SubNode {
     public static Class6_Sub1 aClass6_Sub1_2377;
-    public static RSString aClass1_2380;
-    public static RSString aClass1_2383 = Class58.method978("Please wait 1 minute and try again)3");
-    public static RSString aClass1_2384;
+    public static RSString aClass1_2384 = (Class58.method978("Moderator option: Mute player for 48 hours: <ON>"));
     public static int[] anIntArray2386;
-    public static RSString aClass1_2388;
-    public static RSString aClass1_2392;
-    public static int anInt2394;
-    public static RSString aClass1_2396;
-    public static RSString aClass1_2399;
-    public static RSString aClass1_2401;
-    public static int anInt2404;
-    public static RSString aClass1_2408;
-    public static RSString aClass1_2410;
-    public static byte[] aByteArray2416;
-    public static RSString aClass1_2417;
-    public static RSString aClass1_2423;
-    public static RSString aClass1_2432;
-    public static int anInt2433;
-
-    static {
-        aClass1_2380 = (Class58.method978("Moderator option: Mute player for 48 hours: <ON>"));
-        aClass1_2399 = Class58.method978("Loaded fonts");
-        aClass1_2401 = aClass1_2383;
-        aClass1_2384 = aClass1_2380;
-        anInt2394 = 0;
-        anInt2404 = 0;
-        aClass1_2410 = aClass1_2383;
-        aClass1_2392 = aClass1_2399;
-        aClass1_2408 = Class58.method978("Unexpected server response");
-        aByteArray2416 = new byte[520];
-        aClass1_2417 = Class58.method978("Versteckt");
-        aClass1_2423 = Class58.method978("(X100(U(Y");
-        aClass1_2388 = Class58.method978("Checking for updates )2 ");
-        aClass1_2396 = aClass1_2388;
-        anInt2433 = -1;
-        aClass1_2432 = aClass1_2408;
-    }
+    public static RSString aClass1_2392 = Class58.method978("Loaded fonts");
+    public static int anInt2394 = 0;
+    public static RSString aClass1_2396 = Class58.method978("Checking for updates )2 ");
+    public static RSString aClass1_2401 = Class58.method978("Please wait 1 minute and try again)3");
+    public static int anInt2404 = 0;
+    public static RSString aClass1_2410 = Class58.method978("Please wait 1 minute and try again)3");
+    public static byte[] aByteArray2416 = new byte[520];
+    public static RSString aClass1_2417 = Class58.method978("Versteckt");
+    public static RSString aClass1_2423 = Class58.method978("(X100(U(Y");
+    public static RSString aClass1_2432 = Class58.method978("Unexpected server response");
+    public static int anInt2433 = -1;
 
     public boolean isClickable = true;
     public int tileSpacesOccupied = 1;
@@ -251,20 +227,15 @@ public class NpcDefinition extends SubNode {
     public static void method581(int arg0) {
         anIntArray2386 = null;
         aClass6_Sub1_2377 = null;
-        aClass1_2388 = null;
-        aClass1_2399 = null;
         aClass1_2432 = null;
-        aClass1_2380 = null;
         aClass1_2396 = null;
         aClass1_2423 = null;
         aClass1_2417 = null;
         if(arg0 == -96) {
             aClass1_2410 = null;
-            aClass1_2383 = null;
             aByteArray2416 = null;
             aClass1_2401 = null;
             aClass1_2392 = null;
-            aClass1_2408 = null;
             aClass1_2384 = null;
         }
 

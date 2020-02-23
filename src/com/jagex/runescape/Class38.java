@@ -42,62 +42,62 @@ public abstract class Class38 {
     public static void method439(byte arg0) {
 
         aClass1_882 = null;
-            aClass1_895 = null;
-            if(arg0 <= 120)
-                aClass1_883 = null;
-            aClass1_890 = null;
-            aClass1_881 = null;
-            aClass1_885 = null;
-            anIntArray884 = null;
-            anIntArray889 = null;
-            aClass1_896 = null;
+        aClass1_895 = null;
+        if(arg0 <= 120)
             aClass1_883 = null;
-            aClass1_894 = null;
-            aClass68_887 = null;
-            aClass1_886 = null;
-            aClass1_888 = null;
+        aClass1_890 = null;
+        aClass1_881 = null;
+        aClass1_885 = null;
+        anIntArray884 = null;
+        anIntArray889 = null;
+        aClass1_896 = null;
+        aClass1_883 = null;
+        aClass1_894 = null;
+        aClass68_887 = null;
+        aClass1_886 = null;
+        aClass1_888 = null;
 
     }
 
     public static void method440(byte arg0) {
 
         anInt891++;
-            if(ISAAC.aBoolean512) {
-                Class51.anIntArray1198 = null;
-                GameObject.aClass68_3042 = null;
-                Class68.aClass68_1631 = null;
-                Class51.aClass68_1206 = null;
-                Landscape.anIntArray1168 = null;
-                Class40_Sub5_Sub17_Sub6.anIntArray3255 = null;
-                Class59.aClass40_Sub5_Sub14_Sub2_1387 = null;
-                Class61.anIntArray1445 = null;
-                Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775 = null;
-                Renderable.anIntArray2865 = null;
-                Class8.aClass68_298 = null;
-                Class39.aClass68_907 = null;
-                GameObjectDefinition.aClass68_2524 = null;
-                Class39.aClass40_Sub5_Sub14_Sub4_918 = null;
-                Class22.aClass40_Sub5_Sub14_Sub2Array535 = null;
-                Class40_Sub5_Sub17_Sub6.anIntArray3248 = null;
-                aClass68_887 = null;
-                SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = null;
-                Class4.anIntArray178 = null;
-                Class54.aClass68_1285 = null;
-                if(arg0 <= -65) {
-                    Class17.aClass68_463 = null;
-                    Class42.anIntArray1013 = null;
-                    Class33.method405(16969, 10);
-                    RSApplet.method19(true, 24041);
-                    ISAAC.aBoolean512 = false;
-                }
+        if(ISAAC.aBoolean512) {
+            Class51.anIntArray1198 = null;
+            GameObject.aClass68_3042 = null;
+            Class68.aClass68_1631 = null;
+            Class51.aClass68_1206 = null;
+            Landscape.anIntArray1168 = null;
+            Class40_Sub5_Sub17_Sub6.anIntArray3255 = null;
+            Class59.aClass40_Sub5_Sub14_Sub2_1387 = null;
+            Class61.anIntArray1445 = null;
+            Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775 = null;
+            Renderable.anIntArray2865 = null;
+            Class8.aClass68_298 = null;
+            Class39.aClass68_907 = null;
+            GameObjectDefinition.aClass68_2524 = null;
+            Class39.aClass40_Sub5_Sub14_Sub4_918 = null;
+            Class22.aClass40_Sub5_Sub14_Sub2Array535 = null;
+            Class40_Sub5_Sub17_Sub6.anIntArray3248 = null;
+            aClass68_887 = null;
+            SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = null;
+            Class4.anIntArray178 = null;
+            Class54.aClass68_1285 = null;
+            if(arg0 <= -65) {
+                Class17.aClass68_463 = null;
+                Class42.anIntArray1013 = null;
+                Class33.method405(16969, 10);
+                RSApplet.method19(true, 24041);
+                ISAAC.aBoolean512 = false;
             }
+        }
 
     }
 
     public static void method441(Class6 arg0, int arg1) {
 
         anInt897++;
-            int i = -109 / ((arg1 + 14) / 32);
+        int i = -109 / ((arg1 + 14) / 32);
         Actor.aClass6_3144 = arg0;
 
     }

@@ -1,8 +1,8 @@
 package com.jagex.runescape.audio;
 
-import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.Class40_Sub12_Sub1;
 import com.jagex.runescape.Class6;
+import com.jagex.runescape.io.Buffer;
 
 public class Effect {
     public Instrument[] instruments;

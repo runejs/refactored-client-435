@@ -45,13 +45,13 @@ public class Class54 implements KeyListener, FocusListener {
     public static void method953(byte arg0) {
 
         if(arg0 > -32)
-                method957(75, false, false, (byte) 125, true);
-            aClass1_1271 = null;
-            aClass1_1283 = null;
-            aClass68_1285 = null;
-            aClass45_1278 = null;
-            anIntArray1282 = null;
-            aClass1_1284 = null;
+            method957(75, false, false, (byte) 125, true);
+        aClass1_1271 = null;
+        aClass1_1283 = null;
+        aClass68_1285 = null;
+        aClass45_1278 = null;
+        anIntArray1282 = null;
+        aClass1_1284 = null;
 
     }
 
@@ -131,76 +131,76 @@ public class Class54 implements KeyListener, FocusListener {
     public static int method955(Class6 arg0, byte arg1) {
 
         anInt1277++;
-            int i = 0;
-            if(arg0.method194(Class27.aClass1_638, Class8.aClass1_305, -1234))
-                i++;
-            if(arg0.method194(RSString.aClass1_1716, Class8.aClass1_305, arg1 + -1175))
-                i++;
-            if(arg0.method194(VertexNormal.aClass1_1113, Class8.aClass1_305, -1234))
-                i++;
-            if(arg0.method194(Class59.aClass1_1395, Class8.aClass1_305, -1234))
-                i++;
-            if(arg0.method194(Class6.aClass1_256, Class8.aClass1_305, arg1 ^ 0x4eb))
-                i++;
-            if(arg0.method194(Class10.aClass1_338, Class8.aClass1_305, -1234))
-                i++;
-            if(arg0.method194(Class61.aClass1_1440, Class8.aClass1_305, -1234))
-                i++;
-            if(arg0.method194(Class43.aClass1_1024, Class8.aClass1_305, -1234))
-                i++;
-            if(arg0.method194(Class8.aClass1_281, Class8.aClass1_305, -1234))
-                i++;
-            if(arg0.method194(Class53.aClass1_1266, Class8.aClass1_305, -1234))
-                i++;
-            if(arg0.method194(Main.aClass1_1788, Class8.aClass1_305, -1234))
-                i++;
-            if(arg0.method194(Class58.aClass1_1374, Class8.aClass1_305, arg1 ^ 0x4eb))
-                i++;
+        int i = 0;
+        if(arg0.method194(Class27.aClass1_638, Class8.aClass1_305, -1234))
+            i++;
+        if(arg0.method194(RSString.aClass1_1716, Class8.aClass1_305, arg1 + -1175))
+            i++;
+        if(arg0.method194(VertexNormal.aClass1_1113, Class8.aClass1_305, -1234))
+            i++;
+        if(arg0.method194(Class59.aClass1_1395, Class8.aClass1_305, -1234))
+            i++;
+        if(arg0.method194(Class6.aClass1_256, Class8.aClass1_305, arg1 ^ 0x4eb))
+            i++;
+        if(arg0.method194(Class10.aClass1_338, Class8.aClass1_305, -1234))
+            i++;
+        if(arg0.method194(Class61.aClass1_1440, Class8.aClass1_305, -1234))
+            i++;
+        if(arg0.method194(Class43.aClass1_1024, Class8.aClass1_305, -1234))
+            i++;
+        if(arg0.method194(Class8.aClass1_281, Class8.aClass1_305, -1234))
+            i++;
+        if(arg0.method194(Class53.aClass1_1266, Class8.aClass1_305, -1234))
+            i++;
+        if(arg0.method194(Main.aClass1_1788, Class8.aClass1_305, -1234))
+            i++;
+        if(arg0.method194(Class58.aClass1_1374, Class8.aClass1_305, arg1 ^ 0x4eb))
+            i++;
         if(arg0.method194(IdentityKit.aClass1_2588, Class8.aClass1_305, -1234))
-                i++;
-            if(arg1 != -59)
-                aClass1_1271 = null;
-            if(arg0.method194(Class5.aClass1_196, Class8.aClass1_305, -1234))
-                i++;
-            if(arg0.method194(Class8.aClass1_304, Class8.aClass1_305, -1234))
-                i++;
-            if(arg0.method194(SubNode.aClass1_2093, Class8.aClass1_305, -1234))
-                i++;
-            if(arg0.method194(Class40_Sub5_Sub17_Sub6.aClass1_3254, Class8.aClass1_305, arg1 + -1175))
-                i++;
-            if(arg0.method194(Class64.aClass1_1517, Class8.aClass1_305, -1234))
-                i++;
-            if(arg0.method194(Class40_Sub5_Sub15.aClass1_2787, Class8.aClass1_305, -1234))
-                i++;
-            return i;
+            i++;
+        if(arg1 != -59)
+            aClass1_1271 = null;
+        if(arg0.method194(Class5.aClass1_196, Class8.aClass1_305, -1234))
+            i++;
+        if(arg0.method194(Class8.aClass1_304, Class8.aClass1_305, -1234))
+            i++;
+        if(arg0.method194(SubNode.aClass1_2093, Class8.aClass1_305, -1234))
+            i++;
+        if(arg0.method194(Class40_Sub5_Sub17_Sub6.aClass1_3254, Class8.aClass1_305, arg1 + -1175))
+            i++;
+        if(arg0.method194(Class64.aClass1_1517, Class8.aClass1_305, -1234))
+            i++;
+        if(arg0.method194(Class40_Sub5_Sub15.aClass1_2787, Class8.aClass1_305, -1234))
+            i++;
+        return i;
 
     }
 
     public static RSString method956(int arg0, Buffer arg1) {
 
         if(arg0 < 62)
-                aClass45_1278 = null;
-            anInt1279++;
-            return Class22.method307(arg1, -1, 32767);
+            aClass45_1278 = null;
+        anInt1279++;
+        return Class22.method307(arg1, -1, 32767);
 
     }
 
     public static Class6_Sub1 method957(int arg0, boolean arg1, boolean arg2, byte arg3, boolean arg4) {
 
         anInt1272++;
-            Class56 class56 = null;
-            if(Class40_Sub5_Sub2.aClass67_2298 != null)
-                class56 = new Class56(arg0, Class40_Sub5_Sub2.aClass67_2298, Class40_Sub5_Sub6.aClass67Array2436[arg0], 1000000);
-            if(arg3 < 116)
-                method955(null, (byte) -86);
-            return new Class6_Sub1(class56, Class40_Sub5_Sub4.aClass56_2356, arg0, arg2, arg4, arg1);
+        Class56 class56 = null;
+        if(Class40_Sub5_Sub2.aClass67_2298 != null)
+            class56 = new Class56(arg0, Class40_Sub5_Sub2.aClass67_2298, Class40_Sub5_Sub6.aClass67Array2436[arg0], 1000000);
+        if(arg3 < 116)
+            method955(null, (byte) -86);
+        return new Class6_Sub1(class56, Class40_Sub5_Sub4.aClass56_2356, arg0, arg2, arg4, arg1);
 
     }
 
     public void keyTyped(KeyEvent arg0) {
 
         arg0.consume();
-            anInt1275++;
+        anInt1275++;
 
     }
 
@@ -219,57 +219,57 @@ public class Class54 implements KeyListener, FocusListener {
     public synchronized void keyPressed(KeyEvent arg0) {
 
         anInt1273++;
-            if(Class59.aClass54_1392 != null) {
-                Class49.anInt1147 = 0;
-                int i = arg0.getKeyCode();
-                if((i ^ 0xffffffff) <= -1 && Class66.anIntArray1564.length > i) {
-                    i = Class66.anIntArray1564[i];
-                    if((0x80 & i ^ 0xffffffff) != -1)
-                        i = -1;
-                } else
+        if(Class59.aClass54_1392 != null) {
+            Class49.anInt1147 = 0;
+            int i = arg0.getKeyCode();
+            if((i ^ 0xffffffff) <= -1 && Class66.anIntArray1564.length > i) {
+                i = Class66.anIntArray1564[i];
+                if((0x80 & i ^ 0xffffffff) != -1)
                     i = -1;
-                int i_4_;
-                if(i == 85 || (i ^ 0xffffffff) == -81 || i == 84 || (i ^ 0xffffffff) == -1 || (i ^ 0xffffffff) == -102)
-                    i_4_ = -1;
-                else
-                    i_4_ = Class51.method938(107, arg0);
-                if(GameObjectDefinition.anInt2543 >= 0 && (i ^ 0xffffffff) <= -1) {
-                    RSString.anIntArray1706[GameObjectDefinition.anInt2543] = i;
-                    GameObjectDefinition.anInt2543 = 0x7f & GameObjectDefinition.anInt2543 + 1;
-                    if(GameObjectDefinition.anInt2543 == Class40_Sub13.anInt2183)
-                        GameObjectDefinition.anInt2543 = -1;
-                }
-                if((i ^ 0xffffffff) <= -1 || (i_4_ ^ 0xffffffff) <= -1) {
-                    int i_5_ = 0x7f & 1 + IdentityKit.anInt2598;
-                    if(Class59.anInt1389 != i_5_) {
-                        Class40_Sub6.anIntArray2113[(IdentityKit.anInt2598)] = i;
-                        Class40_Sub5_Sub13.anIntArray2764[(IdentityKit.anInt2598)] = i_4_;
-                        IdentityKit.anInt2598 = i_5_;
-                    }
+            } else
+                i = -1;
+            int i_4_;
+            if(i == 85 || (i ^ 0xffffffff) == -81 || i == 84 || (i ^ 0xffffffff) == -1 || (i ^ 0xffffffff) == -102)
+                i_4_ = -1;
+            else
+                i_4_ = Class51.method938(107, arg0);
+            if(GameObjectDefinition.anInt2543 >= 0 && (i ^ 0xffffffff) <= -1) {
+                RSString.anIntArray1706[GameObjectDefinition.anInt2543] = i;
+                GameObjectDefinition.anInt2543 = 0x7f & GameObjectDefinition.anInt2543 + 1;
+                if(GameObjectDefinition.anInt2543 == Class40_Sub13.anInt2183)
+                    GameObjectDefinition.anInt2543 = -1;
+            }
+            if((i ^ 0xffffffff) <= -1 || (i_4_ ^ 0xffffffff) <= -1) {
+                int i_5_ = 0x7f & 1 + IdentityKit.anInt2598;
+                if(Class59.anInt1389 != i_5_) {
+                    Class40_Sub6.anIntArray2113[(IdentityKit.anInt2598)] = i;
+                    Class40_Sub5_Sub13.anIntArray2764[(IdentityKit.anInt2598)] = i_4_;
+                    IdentityKit.anInt2598 = i_5_;
                 }
             }
-            arg0.consume();
+        }
+        arg0.consume();
 
     }
 
     public synchronized void keyReleased(KeyEvent arg0) {
 
         if(Class59.aClass54_1392 != null) {
-                Class49.anInt1147 = 0;
-                int i = arg0.getKeyCode();
-                if(i < 0 || Class66.anIntArray1564.length <= i)
-                    i = -1;
-                else
-                    i = ~0x80 & Class66.anIntArray1564[i];
-                if((GameObjectDefinition.anInt2543 ^ 0xffffffff) <= -1 && i >= 0) {
-                    RSString.anIntArray1706[GameObjectDefinition.anInt2543] = i ^ 0xffffffff;
-                    GameObjectDefinition.anInt2543 = 0x7f & 1 + GameObjectDefinition.anInt2543;
-                    if(Class40_Sub13.anInt2183 == GameObjectDefinition.anInt2543)
-                        GameObjectDefinition.anInt2543 = -1;
-                }
+            Class49.anInt1147 = 0;
+            int i = arg0.getKeyCode();
+            if(i < 0 || Class66.anIntArray1564.length <= i)
+                i = -1;
+            else
+                i = ~0x80 & Class66.anIntArray1564[i];
+            if((GameObjectDefinition.anInt2543 ^ 0xffffffff) <= -1 && i >= 0) {
+                RSString.anIntArray1706[GameObjectDefinition.anInt2543] = i ^ 0xffffffff;
+                GameObjectDefinition.anInt2543 = 0x7f & 1 + GameObjectDefinition.anInt2543;
+                if(Class40_Sub13.anInt2183 == GameObjectDefinition.anInt2543)
+                    GameObjectDefinition.anInt2543 = -1;
             }
-            anInt1280++;
-            arg0.consume();
+        }
+        anInt1280++;
+        arg0.consume();
 
     }
 }

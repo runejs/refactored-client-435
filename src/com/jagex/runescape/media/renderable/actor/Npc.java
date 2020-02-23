@@ -9,61 +9,35 @@ import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 
 public class Npc extends Actor {
-    public static int anInt3294;
-    public static RSString aClass1_3295;
-    public static int anInt3296;
-    public static RSString aClass1_3297;
+    public static int anInt3294 = 0;
+    public static RSString aClass1_3295 = null;
     public static boolean aBoolean3298;
-    public static int anInt3299;
     public static Scene aScene_3301;
     public static RSString aClass1_3302 = Class58.method978("Sichtbare Karte vorbereitet)3");
-    public static int anInt3303;
-    public static int[] anIntArray3304;
-    public static RSString aClass1_3305;
-    public static int anInt3306;
-    public static RSString aClass1_3307;
-    public static RSString aClass1_3308;
-    public static RSString aClass1_3309;
-    public static int anInt3310;
-    public static RSString aClass1_3311;
+    public static int[] anIntArray3304 = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
+    public static RSString aClass1_3305 = Class58.method978("Connection lost");
+    public static RSString aClass1_3307 = Class58.method978("Keine Antwort vom Server)3");
+    public static RSString aClass1_3308 = Class58.method978("gr-Un:");
+    public static RSString aClass1_3309 = Class58.method978("Hierhin gehen");
+    public static RSString aClass1_3311 = Class58.method978("On");
     public static int[] anIntArray3312;
-    public static int anInt3313;
-    public static RSString aClass1_3314;
-
-    static {
-        aClass1_3295 = null;
-        anInt3294 = 0;
-        aClass1_3308 = Class58.method978("gr-Un:");
-        aClass1_3309 = Class58.method978("Hierhin gehen");
-        anIntArray3304 = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
-        aClass1_3307 = Class58.method978("Keine Antwort vom Server)3");
-        aClass1_3297 = Class58.method978("On");
-        aClass1_3311 = aClass1_3297;
-        aClass1_3314 = Class58.method978("Connection lost");
-        aClass1_3305 = aClass1_3314;
-    }
-
     public NpcDefinition aClass40_Sub5_Sub5_3300;
 
     public static Class40_Sub5_Sub11 method795(byte arg0, int arg1) {
-
-        anInt3303++;
-            Class40_Sub5_Sub11 class40_sub5_sub11 = ((Class40_Sub5_Sub11) Class13.aClass9_406.method231((long) arg1, (byte) 98));
-            if(arg0 >= -66)
-                aClass1_3295 = null;
-            if(class40_sub5_sub11 != null)
-                return class40_sub5_sub11;
-            byte[] is = Class64.aClass6_1521.method172(arg1, 120, 16);
-            class40_sub5_sub11 = new Class40_Sub5_Sub11();
-            if(is != null)
-                class40_sub5_sub11.method634(new Buffer(is), 0);
-            Class13.aClass9_406.method230(-7208, (long) arg1, class40_sub5_sub11);
+        Class40_Sub5_Sub11 class40_sub5_sub11 = ((Class40_Sub5_Sub11) Class13.aClass9_406.method231((long) arg1, (byte) 98));
+        if(arg0 >= -66)
+            aClass1_3295 = null;
+        if(class40_sub5_sub11 != null)
             return class40_sub5_sub11;
-
+        byte[] is = Class64.aClass6_1521.method172(arg1, 120, 16);
+        class40_sub5_sub11 = new Class40_Sub5_Sub11();
+        if(is != null)
+            class40_sub5_sub11.method634(new Buffer(is), 0);
+        Class13.aClass9_406.method230(-7208, (long) arg1, class40_sub5_sub11);
+        return class40_sub5_sub11;
     }
 
     public static void method796(byte arg0) {
-        anInt3306++;
         if((Class40_Sub5_Sub15.anInt2782 ^ 0xffffffff) < -2)
             Class40_Sub5_Sub15.anInt2782--;
         if((Class32.anInt771 ^ 0xffffffff) < -1)
@@ -91,7 +65,6 @@ public class Npc extends Actor {
                     if(!Class22.aBoolean544)
                         Class12.aClass39_387.anInt921 = 0;
                     else if((Class62.anInt1470 ^ 0xffffffff) != -1 || Class12.aClass39_387.anInt921 >= 40) {
-                        Class26.anInt616++;
                         int i = 0;
                         Class32.packetBuffer.putPacket(210);
                         Class32.packetBuffer.putByte(0);
@@ -246,7 +219,6 @@ public class Npc extends Actor {
                                     RSRuntimeException.anInt1642 = -1;
                                     Class43.method894(false);
                                     if((RSRuntimeException.anInt1642 == Class48.anInt1127) && (Class55.anInt1288 != Class58.anInt1352)) {
-                                        Class66.anInt1562++;
                                         Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045((Class48.anInt1127), (byte) -95);
                                         int i = 0;
                                         if(((Class43.anInt1025 ^ 0xffffffff) == -2) && (class40_sub5_sub12.anInt2639 == 206))
@@ -431,9 +403,7 @@ public class Npc extends Actor {
     public static void method797(int arg0) {
         aClass1_3307 = null;
         anIntArray3304 = null;
-        aClass1_3314 = null;
         aClass1_3305 = null;
-        aClass1_3297 = null;
         aClass1_3295 = null;
         aClass1_3311 = null;
         aClass1_3308 = null;
@@ -446,54 +416,46 @@ public class Npc extends Actor {
     }
 
     public static Floor loadFloor(int arg0, int arg1) {
-
-        anInt3296++;
-            Floor floor = ((Floor) Class33.aClass9_778.method231((long) arg0, (byte) 63));
-            if(floor != null)
-                return floor;
-        byte[] is = Actor.aClass6_3144.method172(arg0, 118, arg1);
-            floor = new Floor();
-            if(is != null)
-                floor.method553((byte) 65, arg0, new Buffer(is));
-            floor.method555((byte) 64);
-            Class33.aClass9_778.method230(-7208, (long) arg0, floor);
+        Floor floor = ((Floor) Class33.aClass9_778.method231((long) arg0, (byte) 63));
+        if(floor != null)
             return floor;
-
+        byte[] is = Actor.aClass6_3144.method172(arg0, 118, arg1);
+        floor = new Floor();
+        if(is != null)
+            floor.method553((byte) 65, arg0, new Buffer(is));
+        floor.method555((byte) 64);
+        Class33.aClass9_778.method230(-7208, (long) arg0, floor);
+        return floor;
     }
 
     public Model method756(int arg0) {
-
-        anInt3313++;
-            if(aClass40_Sub5_Sub5_3300 == null)
-                return null;
-            int i = 25 % ((41 - arg0) / 47);
-            Class40_Sub5_Sub7 class40_sub5_sub7 = ((anInt3141 ^ 0xffffffff) == 0 || anInt3122 != 0 ? null : Class68_Sub1.method1050(anInt3141, 2));
-            Class40_Sub5_Sub7 class40_sub5_sub7_0_ = (anInt3077 != -1 && (anInt3077 != anInt3126 || class40_sub5_sub7 == null) ? Class68_Sub1.method1050(anInt3077, 2) : null);
-            Model class40_sub5_sub17_sub5 = aClass40_Sub5_Sub5_3300.method568((byte) -50, class40_sub5_sub7, class40_sub5_sub7_0_, anInt3116, anInt3104);
-            if(class40_sub5_sub17_sub5 == null)
-                return null;
-            class40_sub5_sub17_sub5.method799();
-            anInt3117 = class40_sub5_sub17_sub5.anInt2861;
-            if((anInt3091 ^ 0xffffffff) != 0 && anInt3140 != -1) {
-                Model class40_sub5_sub17_sub5_1_ = Class37.method431(anInt3091, 13).method549(anInt3140, 2);
-                if(class40_sub5_sub17_sub5_1_ != null) {
-                    class40_sub5_sub17_sub5_1_.method828(0, -anInt3110, 0);
-                    Model[] class40_sub5_sub17_sub5s = {class40_sub5_sub17_sub5, class40_sub5_sub17_sub5_1_};
-                    class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, 2, true);
-                }
+        if(aClass40_Sub5_Sub5_3300 == null)
+            return null;
+        int i = 25 % ((41 - arg0) / 47);
+        Class40_Sub5_Sub7 class40_sub5_sub7 = ((anInt3141 ^ 0xffffffff) == 0 || anInt3122 != 0 ? null : Class68_Sub1.method1050(anInt3141, 2));
+        Class40_Sub5_Sub7 class40_sub5_sub7_0_ = (anInt3077 != -1 && (anInt3077 != anInt3126 || class40_sub5_sub7 == null) ? Class68_Sub1.method1050(anInt3077, 2) : null);
+        Model class40_sub5_sub17_sub5 = aClass40_Sub5_Sub5_3300.method568((byte) -50, class40_sub5_sub7, class40_sub5_sub7_0_, anInt3116, anInt3104);
+        if(class40_sub5_sub17_sub5 == null)
+            return null;
+        class40_sub5_sub17_sub5.method799();
+        anInt3117 = class40_sub5_sub17_sub5.anInt2861;
+        if((anInt3091 ^ 0xffffffff) != 0 && anInt3140 != -1) {
+            Model class40_sub5_sub17_sub5_1_ = Class37.method431(anInt3091, 13).method549(anInt3140, 2);
+            if(class40_sub5_sub17_sub5_1_ != null) {
+                class40_sub5_sub17_sub5_1_.method828(0, -anInt3110, 0);
+                Model[] class40_sub5_sub17_sub5s = {class40_sub5_sub17_sub5, class40_sub5_sub17_sub5_1_};
+                class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, 2, true);
             }
+        }
         if((aClass40_Sub5_Sub5_3300.tileSpacesOccupied ^ 0xffffffff) == -2)
-                class40_sub5_sub17_sub5.aBoolean3164 = true;
-            return class40_sub5_sub17_sub5;
-
+            class40_sub5_sub17_sub5.aBoolean3164 = true;
+        return class40_sub5_sub17_sub5;
     }
 
     public boolean method784(int arg0) {
-
-        anInt3299++;
-            if(aClass40_Sub5_Sub5_3300 == null)
-                return false;
-            return arg0 == 1;
+        if(aClass40_Sub5_Sub5_3300 == null)
+            return false;
+        return arg0 == 1;
 
     }
 }

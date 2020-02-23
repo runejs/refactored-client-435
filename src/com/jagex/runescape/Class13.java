@@ -79,17 +79,17 @@ public class Class13 {
     public static void method242(byte arg0) {
 
         anInt410++;
-            if(arg0 > -88)
-                method247(null, (byte) 34);
-            for(; ; ) {
-                Class40_Sub6 class40_sub6;
-                synchronized(RSCanvas.aClass45_53) {
-                    class40_sub6 = ((Class40_Sub6) IdentityKit.aClass45_2604.method913(25447));
-                }
-                if(class40_sub6 == null)
-                    break;
-                class40_sub6.aClass6_Sub1_2104.method198((byte) -115, false, class40_sub6.aByteArray2102, (int) class40_sub6.key, class40_sub6.aClass56_2117);
+        if(arg0 > -88)
+            method247(null, (byte) 34);
+        for(; ; ) {
+            Class40_Sub6 class40_sub6;
+            synchronized(RSCanvas.aClass45_53) {
+                class40_sub6 = ((Class40_Sub6) IdentityKit.aClass45_2604.method913(25447));
             }
+            if(class40_sub6 == null)
+                break;
+            class40_sub6.aClass6_Sub1_2104.method198((byte) -115, false, class40_sub6.aByteArray2102, (int) class40_sub6.key, class40_sub6.aClass56_2117);
+        }
 
     }
 
@@ -105,17 +105,17 @@ public class Class13 {
     public static int method244(int arg0, int arg1, int arg2, int arg3) {
 
         int i = 69 % ((-65 - arg2) / 53);
-            anInt413++;
-            if((arg1 ^ 0xffffffff) < -180)
-                arg0 /= 2;
-            if((arg1 ^ 0xffffffff) < -193)
-                arg0 /= 2;
-            if(arg1 > 217)
-                arg0 /= 2;
-            if((arg1 ^ 0xffffffff) < -244)
-                arg0 /= 2;
-            int i_0_ = arg1 / 2 + ((arg0 / 32 << 906471527) + (arg3 / 4 << 1215235370));
-            return i_0_;
+        anInt413++;
+        if((arg1 ^ 0xffffffff) < -180)
+            arg0 /= 2;
+        if((arg1 ^ 0xffffffff) < -193)
+            arg0 /= 2;
+        if(arg1 > 217)
+            arg0 /= 2;
+        if((arg1 ^ 0xffffffff) < -244)
+            arg0 /= 2;
+        int i_0_ = arg1 / 2 + ((arg0 / 32 << 906471527) + (arg3 / 4 << 1215235370));
+        return i_0_;
 
     }
 
@@ -210,85 +210,85 @@ public class Class13 {
     public static synchronized byte[] method246(int arg1) {
 
         anInt408++;
-            if(arg1 == 100 && Class10.anInt356 > 0) {
-                byte[] is = Class58.aByteArrayArray1377[--Class10.anInt356];
-                Class58.aByteArrayArray1377[Class10.anInt356] = null;
-                return is;
-            }
-            if(arg1 == 5000 && Main.anInt1764 > 0) {
-                byte[] is = Class44.aByteArrayArray1039[--Main.anInt1764];
-                Class44.aByteArrayArray1039[Main.anInt1764] = null;
-                return is;
-            }
-            if((arg1 ^ 0xffffffff) == -30001 && Class40_Sub5_Sub4.anInt2359 > 0) {
-                byte[] is = (RSCanvas.aByteArrayArray47[--Class40_Sub5_Sub4.anInt2359]);
-                RSCanvas.aByteArrayArray47[Class40_Sub5_Sub4.anInt2359] = null;
-                return is;
-            }
-            return new byte[arg1];
+        if(arg1 == 100 && Class10.anInt356 > 0) {
+            byte[] is = Class58.aByteArrayArray1377[--Class10.anInt356];
+            Class58.aByteArrayArray1377[Class10.anInt356] = null;
+            return is;
+        }
+        if(arg1 == 5000 && Main.anInt1764 > 0) {
+            byte[] is = Class44.aByteArrayArray1039[--Main.anInt1764];
+            Class44.aByteArrayArray1039[Main.anInt1764] = null;
+            return is;
+        }
+        if((arg1 ^ 0xffffffff) == -30001 && Class40_Sub5_Sub4.anInt2359 > 0) {
+            byte[] is = (RSCanvas.aByteArrayArray47[--Class40_Sub5_Sub4.anInt2359]);
+            RSCanvas.aByteArrayArray47[Class40_Sub5_Sub4.anInt2359] = null;
+            return is;
+        }
+        return new byte[arg1];
 
     }
 
     public static int[] method247(Class40_Sub5_Sub12 arg0, byte arg1) {
 
         if(arg1 <= 74)
-                anInt419 = -37;
-            int i;
-            if(arg0.anInt2689 < 0)
-                i = arg0.anInt2648 >> 567649872;
-            else
-                i = arg0.anInt2689 >> -1265498640;
-            anInt401++;
+            anInt419 = -37;
+        int i;
+        if(arg0.anInt2689 < 0)
+            i = arg0.anInt2648 >> 567649872;
+        else
+            i = arg0.anInt2689 >> -1265498640;
+        anInt401++;
         if(!Class68.method1043(i))
-                return null;
-            int i_11_ = arg0.anInt2656;
-            int i_12_ = arg0.anInt2696;
-            int i_13_ = arg0.anInt2648;
-            while(i_13_ != -1) {
-                Class40_Sub5_Sub12 class40_sub5_sub12 = (Class59.aClass40_Sub5_Sub12ArrayArray1390[i][i_13_ & 0xffff]);
-                i_11_ += class40_sub5_sub12.anInt2656;
-                if(!arg0.aBoolean2694)
-                    i_11_ -= class40_sub5_sub12.anInt2746;
-                i_12_ += class40_sub5_sub12.anInt2696;
-                i_13_ = class40_sub5_sub12.anInt2648;
-                if(!arg0.aBoolean2694)
-                    i_12_ -= class40_sub5_sub12.scrollPosition;
-            }
-            int[] is = new int[2];
-            is[0] = i_11_;
-            is[1] = i_12_;
-            return is;
+            return null;
+        int i_11_ = arg0.anInt2656;
+        int i_12_ = arg0.anInt2696;
+        int i_13_ = arg0.anInt2648;
+        while(i_13_ != -1) {
+            Class40_Sub5_Sub12 class40_sub5_sub12 = (Class59.aClass40_Sub5_Sub12ArrayArray1390[i][i_13_ & 0xffff]);
+            i_11_ += class40_sub5_sub12.anInt2656;
+            if(!arg0.aBoolean2694)
+                i_11_ -= class40_sub5_sub12.anInt2746;
+            i_12_ += class40_sub5_sub12.anInt2696;
+            i_13_ = class40_sub5_sub12.anInt2648;
+            if(!arg0.aBoolean2694)
+                i_12_ -= class40_sub5_sub12.scrollPosition;
+        }
+        int[] is = new int[2];
+        is[0] = i_11_;
+        is[1] = i_12_;
+        return is;
 
     }
 
     public static void method248(int arg0) {
 
         anIntArray421 = null;
-            aClass1_422 = null;
-            aClass1_404 = null;
-            aClass40_Sub5_Sub14_Sub2_418 = null;
-            aClass1_405 = null;
-            aClass1_411 = null;
-            aClass1_417 = null;
-            anIntArray403 = null;
-            aBooleanArray414 = null;
-            aClass9_406 = null;
-            if(arg0 != 65535)
-                method244(11, 13, 49, 49);
-            aClass1_412 = null;
+        aClass1_422 = null;
+        aClass1_404 = null;
+        aClass40_Sub5_Sub14_Sub2_418 = null;
+        aClass1_405 = null;
+        aClass1_411 = null;
+        aClass1_417 = null;
+        anIntArray403 = null;
+        aBooleanArray414 = null;
+        aClass9_406 = null;
+        if(arg0 != 65535)
+            method244(11, 13, 49, 49);
+        aClass1_412 = null;
 
     }
 
     public static void method249(boolean arg0) {
 
         if(arg0 != true)
-                method244(-58, 116, -89, 98);
-            if(GameObject.aClass62_3019 != null) {
-                synchronized(GameObject.aClass62_3019) {
-                    GameObject.aClass62_3019 = null;
-                }
+            method244(-58, 116, -89, 98);
+        if(GameObject.aClass62_3019 != null) {
+            synchronized(GameObject.aClass62_3019) {
+                GameObject.aClass62_3019 = null;
             }
-            anInt416++;
+        }
+        anInt416++;
 
     }
 }

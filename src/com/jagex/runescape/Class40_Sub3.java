@@ -40,11 +40,11 @@ public class Class40_Sub3 extends Node {
 
         if(arg0 != -10)
             cmd_fpson = null;
-            anIntArray2023 = null;
-            aClass6_2037 = null;
-            anIntArray2016 = null;
+        anIntArray2023 = null;
+        aClass6_2037 = null;
+        anIntArray2016 = null;
         cmd_fpson = null;
-            aClass40_Sub5_Sub14_Sub4Array2019 = null;
+        aClass40_Sub5_Sub14_Sub4Array2019 = null;
 
     }
 
@@ -123,15 +123,15 @@ public class Class40_Sub3 extends Node {
             if(Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236 != null)
                 i++;
             else
-                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236 = FloorDecoration.method347(NpcDefinition.aClass6_Sub1_2377, arg0 + 155, Class66.aClass1_1567, Class40_Sub6.aClass1_2101);
+                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236 = FloorDecoration.method347(NpcDefinition.aClass6_Sub1_2377, arg0 + 155, Class66.blank_string, Class40_Sub6.aClass1_2101);
             if(Class53.aClass40_Sub5_Sub14_Sub1_1268 != null)
                 i++;
             else
-                Class53.aClass40_Sub5_Sub14_Sub1_1268 = FloorDecoration.method347(NpcDefinition.aClass6_Sub1_2377, 255, Class66.aClass1_1567, Class67.aClass1_1580);
+                Class53.aClass40_Sub5_Sub14_Sub1_1268 = FloorDecoration.method347(NpcDefinition.aClass6_Sub1_2377, 255, Class66.blank_string, Class67.aClass1_1580);
             if(Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246 != null)
                 i++;
             else
-                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246 = FloorDecoration.method347(NpcDefinition.aClass6_Sub1_2377, 255, Class66.aClass1_1567, Class38_Sub1.aClass1_1921);
+                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246 = FloorDecoration.method347(NpcDefinition.aClass6_Sub1_2377, 255, Class66.blank_string, Class38_Sub1.aClass1_1921);
             if(i < 3) {
                 Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(59, new RSString[]{VertexNormal.aClass1_1099, HashTable.method334(i * 100 / 3, -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 40;
@@ -177,59 +177,59 @@ public class Class40_Sub3 extends Node {
             if(Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4_2482 != null)
                 i++;
             else
-                Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4_2482 = Class66.method1028(NpcDefinition.aClass6_Sub1_2377, Class54.aClass1_1284, (byte) 21, Class66.aClass1_1567);
+                Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4_2482 = Class66.method1028(NpcDefinition.aClass6_Sub1_2377, Class54.aClass1_1284, (byte) 21, Class66.blank_string);
             if(Class40_Sub5_Sub2.minimapEdge == null)
-                Class40_Sub5_Sub2.minimapEdge = Class66.method1028(NpcDefinition.aClass6_Sub1_2377, Class61.aClass1_1427, (byte) 21, Class66.aClass1_1567);
+                Class40_Sub5_Sub2.minimapEdge = Class66.method1028(NpcDefinition.aClass6_Sub1_2377, Class61.aClass1_1427, (byte) 21, Class66.blank_string);
             else
                 i++;
             if(Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301 != null)
                 i++;
             else
-                Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301 = Class40_Sub5_Sub2.method550((NpcDefinition.aClass6_Sub1_2377), (byte) -66, Class29.aClass1_671, Class66.aClass1_1567);
+                Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301 = Class40_Sub5_Sub2.method550((NpcDefinition.aClass6_Sub1_2377), (byte) -66, Class29.aClass1_671, Class66.blank_string);
             if(Class8.aClass40_Sub5_Sub14_Sub4Array296 == null)
-                Class8.aClass40_Sub5_Sub14_Sub4Array296 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, (GameObject.aClass1_3047), Class66.aClass1_1567);
+                Class8.aClass40_Sub5_Sub14_Sub4Array296 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, (GameObject.aClass1_3047), Class66.blank_string);
             else
                 i++;
             if(Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4Array2474 != null)
                 i++;
             else
-                Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4Array2474 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class40_Sub6.aClass1_2114, Class66.aClass1_1567);
+                Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4Array2474 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class40_Sub6.aClass1_2114, Class66.blank_string);
             if(FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 == null)
-                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class40_Sub11.aClass1_2161, Class66.aClass1_1567);
+                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class40_Sub11.aClass1_2161, Class66.blank_string);
             else
                 i++;
             if(Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 != null)
                 i++;
             else
-                Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class22_Sub1.aClass1_1861, Class66.aClass1_1567);
+                Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class22_Sub1.aClass1_1861, Class66.blank_string);
             if(Class40_Sub5_Sub9.aClass40_Sub5_Sub14_Sub4Array2567 == null)
-                Class40_Sub5_Sub9.aClass40_Sub5_Sub14_Sub4Array2567 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class52.aClass1_1230, Class66.aClass1_1567);
+                Class40_Sub5_Sub9.aClass40_Sub5_Sub14_Sub4Array2567 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class52.aClass1_1230, Class66.blank_string);
             else
                 i++;
             if(Class45.aClass40_Sub5_Sub14_Sub4_1057 == null)
-                Class45.aClass40_Sub5_Sub14_Sub4_1057 = Class66.method1028(NpcDefinition.aClass6_Sub1_2377, Class40_Sub6.aClass1_2109, (byte) 21, Class66.aClass1_1567);
+                Class45.aClass40_Sub5_Sub14_Sub4_1057 = Class66.method1028(NpcDefinition.aClass6_Sub1_2377, Class40_Sub6.aClass1_2109, (byte) 21, Class66.blank_string);
             else
                 i++;
             if(aClass40_Sub5_Sub14_Sub4Array2019 == null)
-                aClass40_Sub5_Sub14_Sub4Array2019 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class5.aClass1_203, Class66.aClass1_1567);
+                aClass40_Sub5_Sub14_Sub4Array2019 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class5.aClass1_203, Class66.blank_string);
             else
                 i++;
             if(Class37.aClass40_Sub5_Sub14_Sub4Array878 != null)
                 i++;
             else
-                Class37.aClass40_Sub5_Sub14_Sub4Array878 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class40_Sub13.aClass1_2179, Class66.aClass1_1567);
+                Class37.aClass40_Sub5_Sub14_Sub4Array878 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class40_Sub13.aClass1_2179, Class66.blank_string);
             if(Class27.aClass40_Sub5_Sub14_Sub4Array649 == null)
-                Class27.aClass40_Sub5_Sub14_Sub4Array649 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class4.aClass1_183, Class66.aClass1_1567);
+                Class27.aClass40_Sub5_Sub14_Sub4Array649 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class4.aClass1_183, Class66.blank_string);
             else
                 i++;
             if(Class6.aClass40_Sub5_Sub14_Sub2Array215 == null)
-                Class6.aClass40_Sub5_Sub14_Sub2Array215 = Class40_Sub5_Sub2.method550((NpcDefinition.aClass6_Sub1_2377), (byte) -125, RSString.aClass1_1677, Class66.aClass1_1567);
+                Class6.aClass40_Sub5_Sub14_Sub2Array215 = Class40_Sub5_Sub2.method550((NpcDefinition.aClass6_Sub1_2377), (byte) -125, RSString.aClass1_1677, Class66.blank_string);
             else
                 i++;
             if(Class40_Sub5_Sub13.moderatorIcon != null)
                 i++;
             else
-                Class40_Sub5_Sub13.moderatorIcon = Class40_Sub5_Sub2.method550((NpcDefinition.aClass6_Sub1_2377), (byte) -55, Class38.aClass1_881, Class66.aClass1_1567);
+                Class40_Sub5_Sub13.moderatorIcon = Class40_Sub5_Sub2.method550((NpcDefinition.aClass6_Sub1_2377), (byte) -55, Class38.aClass1_881, Class66.blank_string);
             if((i ^ 0xffffffff) > -15) {
                 Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(arg0 + -139, new RSString[]{Class17.aClass1_452, HashTable.method334(100 * i / 14, -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 70;
@@ -276,11 +276,11 @@ public class Class40_Sub3 extends Node {
             Class40_Sub5_Sub6.anInt2451 = 120;
             Class67.anInt1607 = 94;
         } else if((Class40_Sub5_Sub6.anInt2451 ^ 0xffffffff) == -121) {
-            if(!RSCanvas.aClass6_Sub1_48.method194(FloorDecoration.aClass1_615, Class66.aClass1_1567, -1234)) {
+            if(!RSCanvas.aClass6_Sub1_48.method194(FloorDecoration.aClass1_615, Class66.blank_string, -1234)) {
                 Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(75, new RSString[]{Class40_Sub5_Sub17_Sub1.aClass1_3014, Class57.aClass1_1348}));
                 Class67.anInt1607 = 96;
             } else {
-                Class66 class66 = new Class66(RSCanvas.aClass6_Sub1_48.method170(Class66.aClass1_1567, FloorDecoration.aClass1_615, arg0 + -99));
+                Class66 class66 = new Class66(RSCanvas.aClass6_Sub1_48.method170(Class66.blank_string, FloorDecoration.aClass1_615, arg0 + -99));
                 Class40_Sub5_Sub17_Sub3.method778(true, class66);
                 Class40_Sub5_Sub6.anInt2451 = 130;
                 Class22_Sub2.currentLoadingText = Landscape.aClass1_1173;
@@ -309,18 +309,18 @@ public class Class40_Sub3 extends Node {
     public static Class40_Sub5_Sub9 method531(byte arg0, int arg1) {
 
         Class40_Sub5_Sub9 class40_sub5_sub9 = ((Class40_Sub5_Sub9) Class53.aClass9_1247.method231((long) arg1, (byte) 43));
-            anInt2022++;
-            if(class40_sub5_sub9 != null)
-                return class40_sub5_sub9;
-        byte[] is = Actor.aClass6_3150.method172(arg1, 127, 1);
-            class40_sub5_sub9 = new Class40_Sub5_Sub9();
-            if(is != null)
-                class40_sub5_sub9.readValues(new Buffer(is));
-        class40_sub5_sub9.method615();
-            if(arg0 >= -39)
-                cmd_fpson = null;
-            Class53.aClass9_1247.method230(-7208, (long) arg1, class40_sub5_sub9);
+        anInt2022++;
+        if(class40_sub5_sub9 != null)
             return class40_sub5_sub9;
+        byte[] is = Actor.aClass6_3150.method172(arg1, 127, 1);
+        class40_sub5_sub9 = new Class40_Sub5_Sub9();
+        if(is != null)
+            class40_sub5_sub9.readValues(new Buffer(is));
+        class40_sub5_sub9.method615();
+        if(arg0 >= -39)
+            cmd_fpson = null;
+        Class53.aClass9_1247.method230(-7208, (long) arg1, class40_sub5_sub9);
+        return class40_sub5_sub9;
 
     }
 }

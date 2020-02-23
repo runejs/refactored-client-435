@@ -339,106 +339,106 @@ public class Class53 {
 
     public static void method951(int arg0, TypeFace arg1, TypeFace arg2) {
         do {
-                Class38.aClass68_887.method1046((byte) 90);
-                anInt1245++;
-                if((Class51.anInt1197 ^ 0xffffffff) == -1 || Class51.anInt1197 == 5) {
-                    int i = 20;
-                    arg1.method686(Class48.aClass1_1122, 180, 74 + -i, 16777215);
-                    int i_89_ = -i + 82;
-                    Rasterizer.method665(28, i_89_, 304, 34, 9179409);
-                    Rasterizer.method665(29, 1 + i_89_, 302, 32, 0);
-                    Rasterizer.method656(30, 2 + i_89_, Class67.anInt1607 * 3, 30, 9179409);
-                    Rasterizer.method656(3 * Class67.anInt1607 + 30, i_89_ + 2, (-(Class67.anInt1607 * 3) + 300), 30, 0);
-                    arg1.method686(Class22_Sub2.currentLoadingText, 180, -i + 105, 16777215);
-                }
-                if((Class51.anInt1197 ^ 0xffffffff) == -21) {
-                    int i = 40;
-                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775.drawImage(0, 0);
-                    arg1.method688(Class22_Sub2.aClass1_1879, 180, i, 16776960, true);
-                    i += 15;
-                    arg1.method688(Class22_Sub2.aClass1_1896, 180, i, 16776960, true);
-                    i += 15;
-                    arg1.method688(Class22_Sub2.aClass1_1881, 180, i, 16776960, true);
-                    i += 15;
-                    i += 10;
-                    arg1.method683((Class40_Sub5_Sub17_Sub6.method832(126, (new RSString[]{Class61.aClass1_1422, Class22_Sub2.username}))), 90, i, 16777215, true);
-                    i += 15;
-                    arg1.method683((Class40_Sub5_Sub17_Sub6.method832(-121, new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false)})), 92, i, 16777215, true);
-                    i += 15;
-                }
-                if((Class51.anInt1197 ^ 0xffffffff) == -11) {
-                    Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775.drawImage(0, 0);
-                    if(Class26.anInt622 != 0) {
-                        if(Class26.anInt622 == 2) {
-                            int i = 40;
-                            int i_90_ = 100;
-                            arg1.method688(Class22_Sub2.aClass1_1879, 180, i, 16776960, true);
-                            i += 15;
-                            int i_91_ = 150;
-                            arg1.method688(Class22_Sub2.aClass1_1896, 180, i, 16776960, true);
-                            i += 15;
-                            arg1.method688(Class22_Sub2.aClass1_1881, 180, i, 16776960, true);
-                            i += 15;
-                            i += 10;
-                            arg1.method683((Class40_Sub5_Sub17_Sub6.method832(-113, (new RSString[]{Class61.aClass1_1422, Class22_Sub2.username, ((Node.anInt926 % 40 < 20 & Node.anInt947 == 0) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 90, i, 16777215, true);
-                            i += 15;
-                            arg1.method683((Class40_Sub5_Sub17_Sub6.method832(arg0 + 18924, (new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false), (((Node.anInt926 % 40 ^ 0xffffffff) > -21 & (Node.anInt947 ^ 0xffffffff) == -2) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 92, i, 16777215, true);
-                            Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
-                            i += 15;
-                            arg1.method688(Class40_Sub5_Sub4.aClass1_2351, i_90_, i_91_ + 5, 16777215, true);
-                            i_90_ = 260;
-                            Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
-                            arg1.method688(Class68.aClass1_1635, i_90_, 5 + i_91_, 16777215, true);
-                        } else if((Class26.anInt622 ^ 0xffffffff) == -4) {
-                            arg1.method688(Class67.aClass1_1598, 180, 40, 16776960, true);
-                            int i = 180;
-                            int i_92_ = 150;
-                            int i_93_ = 65;
-                            arg1.method688(Class57.aClass1_1333, 180, i_93_, 16777215, true);
-                            i_93_ += 15;
-                            arg1.method688(aClass1_1259, 180, i_93_, 16777215, true);
-                            i_93_ += 15;
-                            arg1.method688(aClass1_1251, 180, i_93_, 16777215, true);
-                            i_93_ += 15;
-                            arg1.method688(Class40_Sub5_Sub11.aClass1_2629, 180, i_93_, 16777215, true);
-                            Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i, i_92_ - 20);
-                            arg1.method688(Class68.aClass1_1635, i, 5 + i_92_, 16777215, true);
-                            i_93_ += 15;
-                        }
-                    } else {
-                        int i = 80;
-                        int i_94_ = 100;
-                        arg1.method688(Main.aClass1_1761, 180, i, 16776960, true);
-                        i += 30;
-                        int i_95_ = 120;
-                        Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(i_94_ - 73, i_95_ - 20);
-                        arg1.method672(Class52.aClass1_1223, i_94_ + -73, -20 + i_95_, 144, 40, 16777215, true, 1, 1, 0);
-                        i_94_ = 260;
-                        Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(i_94_ - 73, i_95_ + -20);
-                        arg1.method672(Class42.aClass1_1011, -73 + i_94_, -20 + i_95_, 144, 40, 16777215, true, 1, 1, 0);
+            Class38.aClass68_887.method1046((byte) 90);
+            anInt1245++;
+            if((Class51.anInt1197 ^ 0xffffffff) == -1 || Class51.anInt1197 == 5) {
+                int i = 20;
+                arg1.method686(Class48.aClass1_1122, 180, 74 + -i, 16777215);
+                int i_89_ = -i + 82;
+                Rasterizer.method665(28, i_89_, 304, 34, 9179409);
+                Rasterizer.method665(29, 1 + i_89_, 302, 32, 0);
+                Rasterizer.method656(30, 2 + i_89_, Class67.anInt1607 * 3, 30, 9179409);
+                Rasterizer.method656(3 * Class67.anInt1607 + 30, i_89_ + 2, (-(Class67.anInt1607 * 3) + 300), 30, 0);
+                arg1.method686(Class22_Sub2.currentLoadingText, 180, -i + 105, 16777215);
+            }
+            if((Class51.anInt1197 ^ 0xffffffff) == -21) {
+                int i = 40;
+                Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775.drawImage(0, 0);
+                arg1.method688(Class22_Sub2.aClass1_1879, 180, i, 16776960, true);
+                i += 15;
+                arg1.method688(Class22_Sub2.aClass1_1896, 180, i, 16776960, true);
+                i += 15;
+                arg1.method688(Class22_Sub2.aClass1_1881, 180, i, 16776960, true);
+                i += 15;
+                i += 10;
+                arg1.method683((Class40_Sub5_Sub17_Sub6.method832(126, (new RSString[]{Class61.aClass1_1422, Class22_Sub2.username}))), 90, i, 16777215, true);
+                i += 15;
+                arg1.method683((Class40_Sub5_Sub17_Sub6.method832(-121, new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false)})), 92, i, 16777215, true);
+                i += 15;
+            }
+            if((Class51.anInt1197 ^ 0xffffffff) == -11) {
+                Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775.drawImage(0, 0);
+                if(Class26.anInt622 != 0) {
+                    if(Class26.anInt622 == 2) {
+                        int i = 40;
+                        int i_90_ = 100;
+                        arg1.method688(Class22_Sub2.aClass1_1879, 180, i, 16776960, true);
+                        i += 15;
+                        int i_91_ = 150;
+                        arg1.method688(Class22_Sub2.aClass1_1896, 180, i, 16776960, true);
+                        i += 15;
+                        arg1.method688(Class22_Sub2.aClass1_1881, 180, i, 16776960, true);
+                        i += 15;
+                        i += 10;
+                        arg1.method683((Class40_Sub5_Sub17_Sub6.method832(-113, (new RSString[]{Class61.aClass1_1422, Class22_Sub2.username, ((Node.anInt926 % 40 < 20 & Node.anInt947 == 0) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 90, i, 16777215, true);
+                        i += 15;
+                        arg1.method683((Class40_Sub5_Sub17_Sub6.method832(arg0 + 18924, (new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false), (((Node.anInt926 % 40 ^ 0xffffffff) > -21 & (Node.anInt947 ^ 0xffffffff) == -2) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 92, i, 16777215, true);
+                        Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
+                        i += 15;
+                        arg1.method688(Class40_Sub5_Sub4.aClass1_2351, i_90_, i_91_ + 5, 16777215, true);
+                        i_90_ = 260;
+                        Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
+                        arg1.method688(Class68.aClass1_1635, i_90_, 5 + i_91_, 16777215, true);
+                    } else if((Class26.anInt622 ^ 0xffffffff) == -4) {
+                        arg1.method688(Class67.aClass1_1598, 180, 40, 16776960, true);
+                        int i = 180;
+                        int i_92_ = 150;
+                        int i_93_ = 65;
+                        arg1.method688(Class57.aClass1_1333, 180, i_93_, 16777215, true);
+                        i_93_ += 15;
+                        arg1.method688(aClass1_1259, 180, i_93_, 16777215, true);
+                        i_93_ += 15;
+                        arg1.method688(aClass1_1251, 180, i_93_, 16777215, true);
+                        i_93_ += 15;
+                        arg1.method688(Class40_Sub5_Sub11.aClass1_2629, 180, i_93_, 16777215, true);
+                        Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i, i_92_ - 20);
+                        arg1.method688(Class68.aClass1_1635, i, 5 + i_92_, 16777215, true);
+                        i_93_ += 15;
                     }
+                } else {
+                    int i = 80;
+                    int i_94_ = 100;
+                    arg1.method688(Main.aClass1_1761, 180, i, 16776960, true);
+                    i += 30;
+                    int i_95_ = 120;
+                    Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(i_94_ - 73, i_95_ - 20);
+                    arg1.method672(Class52.aClass1_1223, i_94_ + -73, -20 + i_95_, 144, 40, 16777215, true, 1, 1, 0);
+                    i_94_ = 260;
+                    Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(i_94_ - 73, i_95_ + -20);
+                    arg1.method672(Class42.aClass1_1011, -73 + i_94_, -20 + i_95_, 144, 40, 16777215, true, 1, 1, 0);
                 }
-                Main.method38(0);
-                try {
-                    Graphics graphics = Class62.aCanvas1469.getGraphics();
-                    Class38.aClass68_887.method1044(0, 202, graphics, 171);
-                    if(arg0 != -19010)
-                        method949((byte) 41);
-                    Class8.aClass68_298.method1044(arg0 ^ ~0x4a41, 0, graphics, 0);
-                    GameObject.aClass68_3042.method1044(0, 637, graphics, 0);
-                    if(!Class40_Sub5_Sub11.aBoolean2631)
-                        break;
-                    Class40_Sub5_Sub11.aBoolean2631 = false;
-                    Class39.aClass68_907.method1044(0, 128, graphics, 0);
-                    Class51.aClass68_1206.method1044(0, 202, graphics, 371);
-                    Class17.aClass68_463.method1044(0, 0, graphics, 265);
-                    Class54.aClass68_1285.method1044(0, 562, graphics, 265);
-                    GameObjectDefinition.aClass68_2524.method1044(0, 128, graphics, 171);
-                    Class68.aClass68_1631.method1044(0, 562, graphics, 171);
-                } catch(Exception exception) {
-                    Class62.aCanvas1469.repaint();
-                }
-                break;
+            }
+            Main.method38(0);
+            try {
+                Graphics graphics = Class62.aCanvas1469.getGraphics();
+                Class38.aClass68_887.method1044(0, 202, graphics, 171);
+                if(arg0 != -19010)
+                    method949((byte) 41);
+                Class8.aClass68_298.method1044(arg0 ^ ~0x4a41, 0, graphics, 0);
+                GameObject.aClass68_3042.method1044(0, 637, graphics, 0);
+                if(!Class40_Sub5_Sub11.aBoolean2631)
+                    break;
+                Class40_Sub5_Sub11.aBoolean2631 = false;
+                Class39.aClass68_907.method1044(0, 128, graphics, 0);
+                Class51.aClass68_1206.method1044(0, 202, graphics, 371);
+                Class17.aClass68_463.method1044(0, 0, graphics, 265);
+                Class54.aClass68_1285.method1044(0, 562, graphics, 265);
+                GameObjectDefinition.aClass68_2524.method1044(0, 128, graphics, 171);
+                Class68.aClass68_1631.method1044(0, 562, graphics, 171);
+            } catch(Exception exception) {
+                Class62.aCanvas1469.repaint();
+            }
+            break;
 
         } while(false);
     }
@@ -446,22 +446,22 @@ public class Class53 {
     public static void method952(int arg0) {
 
         aClass40_Sub5_Sub14_Sub2_1270 = null;
-            aClass40_Sub5_Sub14_Sub1_1268 = null;
-            aClass9_1247 = null;
-            aClass1_1243 = null;
-            aClass1_1251 = null;
-            aClass1_1246 = null;
-            aClass1_1265 = null;
-            aClass1_1269 = null;
-            aClass1_1266 = null;
-            aClass1_1255 = null;
-            if(arg0 != 0)
-                method950(-77, (byte) 57, -36, 56);
-            aClass9_1264 = null;
-            aClass1_1259 = null;
-            aLongArray1267 = null;
-            aClass1_1263 = null;
-            aClass1_1260 = null;
+        aClass40_Sub5_Sub14_Sub1_1268 = null;
+        aClass9_1247 = null;
+        aClass1_1243 = null;
+        aClass1_1251 = null;
+        aClass1_1246 = null;
+        aClass1_1265 = null;
+        aClass1_1269 = null;
+        aClass1_1266 = null;
+        aClass1_1255 = null;
+        if(arg0 != 0)
+            method950(-77, (byte) 57, -36, 56);
+        aClass9_1264 = null;
+        aClass1_1259 = null;
+        aLongArray1267 = null;
+        aClass1_1263 = null;
+        aClass1_1260 = null;
 
     }
 }

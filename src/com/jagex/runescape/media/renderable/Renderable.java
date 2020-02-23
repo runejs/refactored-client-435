@@ -36,48 +36,48 @@ public abstract class Renderable extends SubNode {
 
         anInt2859++;
         if(!Class68.method1043(arg1))
-                return false;
-            Class40_Sub5_Sub12[] class40_sub5_sub12s = Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1];
-            if(arg0 != 29378)
-                anInt2866 = 125;
-            boolean bool = false;
-            for(int i = 0; class40_sub5_sub12s.length > i; i++) {
-                Class40_Sub5_Sub12 class40_sub5_sub12 = class40_sub5_sub12s[i];
-                if(class40_sub5_sub12 != null && class40_sub5_sub12.anInt2683 == 6) {
-                    if((class40_sub5_sub12.anInt2659 ^ 0xffffffff) != 0 || class40_sub5_sub12.anInt2653 != -1) {
-                        boolean bool_0_ = ItemDefinition.method746(class40_sub5_sub12);
-                        int i_1_;
-                        if(bool_0_)
-                            i_1_ = class40_sub5_sub12.anInt2653;
-                        else
-                            i_1_ = class40_sub5_sub12.anInt2659;
-                        if((i_1_ ^ 0xffffffff) != 0) {
-                            Class40_Sub5_Sub7 class40_sub5_sub7 = Class68_Sub1.method1050(i_1_, 2);
-                            class40_sub5_sub12.anInt2660 += Class5.anInt199;
-                            while((class40_sub5_sub7.anIntArray2466[class40_sub5_sub12.anInt2654]) < class40_sub5_sub12.anInt2660) {
-                                bool = true;
-                                class40_sub5_sub12.anInt2660 -= (class40_sub5_sub7.anIntArray2466[class40_sub5_sub12.anInt2654]);
-                                class40_sub5_sub12.anInt2654++;
-                                if((class40_sub5_sub12.anInt2654 ^ 0xffffffff) <= (class40_sub5_sub7.anIntArray2485.length ^ 0xffffffff)) {
-                                    class40_sub5_sub12.anInt2654 -= class40_sub5_sub7.anInt2497;
-                                    if((class40_sub5_sub12.anInt2654 ^ 0xffffffff) > -1 || ((class40_sub5_sub12.anInt2654 ^ 0xffffffff) <= ((class40_sub5_sub7.anIntArray2485).length ^ 0xffffffff)))
-                                        class40_sub5_sub12.anInt2654 = 0;
-                                }
+            return false;
+        Class40_Sub5_Sub12[] class40_sub5_sub12s = Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1];
+        if(arg0 != 29378)
+            anInt2866 = 125;
+        boolean bool = false;
+        for(int i = 0; class40_sub5_sub12s.length > i; i++) {
+            Class40_Sub5_Sub12 class40_sub5_sub12 = class40_sub5_sub12s[i];
+            if(class40_sub5_sub12 != null && class40_sub5_sub12.anInt2683 == 6) {
+                if((class40_sub5_sub12.anInt2659 ^ 0xffffffff) != 0 || class40_sub5_sub12.anInt2653 != -1) {
+                    boolean bool_0_ = ItemDefinition.method746(class40_sub5_sub12);
+                    int i_1_;
+                    if(bool_0_)
+                        i_1_ = class40_sub5_sub12.anInt2653;
+                    else
+                        i_1_ = class40_sub5_sub12.anInt2659;
+                    if((i_1_ ^ 0xffffffff) != 0) {
+                        Class40_Sub5_Sub7 class40_sub5_sub7 = Class68_Sub1.method1050(i_1_, 2);
+                        class40_sub5_sub12.anInt2660 += Class5.anInt199;
+                        while((class40_sub5_sub7.anIntArray2466[class40_sub5_sub12.anInt2654]) < class40_sub5_sub12.anInt2660) {
+                            bool = true;
+                            class40_sub5_sub12.anInt2660 -= (class40_sub5_sub7.anIntArray2466[class40_sub5_sub12.anInt2654]);
+                            class40_sub5_sub12.anInt2654++;
+                            if((class40_sub5_sub12.anInt2654 ^ 0xffffffff) <= (class40_sub5_sub7.anIntArray2485.length ^ 0xffffffff)) {
+                                class40_sub5_sub12.anInt2654 -= class40_sub5_sub7.anInt2497;
+                                if((class40_sub5_sub12.anInt2654 ^ 0xffffffff) > -1 || ((class40_sub5_sub12.anInt2654 ^ 0xffffffff) <= ((class40_sub5_sub7.anIntArray2485).length ^ 0xffffffff)))
+                                    class40_sub5_sub12.anInt2654 = 0;
                             }
                         }
                     }
-                    if(class40_sub5_sub12.anInt2722 != 0) {
-                        bool = true;
-                        int i_2_ = class40_sub5_sub12.anInt2722 >> -1999002640;
-                        int i_3_ = (class40_sub5_sub12.anInt2722 << 1943281072 >> -1142238960);
-                        i_2_ *= Class5.anInt199;
-                        class40_sub5_sub12.anInt2690 = 0x7ff & i_2_ + class40_sub5_sub12.anInt2690;
-                        i_3_ *= Class5.anInt199;
-                        class40_sub5_sub12.anInt2657 = 0x7ff & class40_sub5_sub12.anInt2657 + i_3_;
-                    }
+                }
+                if(class40_sub5_sub12.anInt2722 != 0) {
+                    bool = true;
+                    int i_2_ = class40_sub5_sub12.anInt2722 >> -1999002640;
+                    int i_3_ = (class40_sub5_sub12.anInt2722 << 1943281072 >> -1142238960);
+                    i_2_ *= Class5.anInt199;
+                    class40_sub5_sub12.anInt2690 = 0x7ff & i_2_ + class40_sub5_sub12.anInt2690;
+                    i_3_ *= Class5.anInt199;
+                    class40_sub5_sub12.anInt2657 = 0x7ff & class40_sub5_sub12.anInt2657 + i_3_;
                 }
             }
-            return bool;
+        }
+        return bool;
 
     }
 
@@ -85,14 +85,14 @@ public abstract class Renderable extends SubNode {
 
         aClass1_2871 = null;
         chatPlayerNames = null;
-            if(arg0 > -112)
-                method757((byte) 59);
-            aClass40_Sub5_Sub14_Sub2_2860 = null;
-            aClass6_Sub1_2857 = null;
-            aClass1_2870 = null;
-            anIntArray2865 = null;
-            aClass1_2862 = null;
-            aClass1_2864 = null;
+        if(arg0 > -112)
+            method757((byte) 59);
+        aClass40_Sub5_Sub14_Sub2_2860 = null;
+        aClass6_Sub1_2857 = null;
+        aClass1_2870 = null;
+        anIntArray2865 = null;
+        aClass1_2862 = null;
+        aClass1_2864 = null;
 
     }
 
@@ -108,8 +108,8 @@ public abstract class Renderable extends SubNode {
     public Model method756(int arg0) {
 
         int i = 87 / ((arg0 - 41) / 47);
-            anInt2855++;
-            return null;
+        anInt2855++;
+        return null;
 
     }
 }

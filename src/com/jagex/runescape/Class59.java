@@ -49,75 +49,75 @@ public class Class59 {
     public static void method983(int arg0) {
 
         anInt1381++;
-            int i = 70 / ((62 - arg0) / 55);
-            Scene.aBoolean88 = true;
-            VertexNormal.lowMemory = true;
+        int i = 70 / ((62 - arg0) / 55);
+        Scene.aBoolean88 = true;
+        VertexNormal.lowMemory = true;
 
     }
 
     public static void method984(int arg0) {
 
         if(arg0 == 0) {
-                anInt1380++;
-                if(Class5.aClass22_189 != null) {
-                    if((Class62.anInt1450 ^ 0xffffffff) <= -1) {
-                        if(RSCanvas.anInt54 > 0) {
-                            Class39.anInt909 += Buffer.anInt1982;
-                            Class5.aClass22_189.method304((byte) -97, Class62.anInt1450, Class39.anInt909);
-                            RSCanvas.anInt54--;
-                            if(RSCanvas.anInt54 == 0) {
-                                Class5.aClass22_189.method303((byte) -96);
-                                Class62.anInt1450 = -1;
-                                RSCanvas.anInt54 = 20;
-                            }
-                        }
-                    } else if(RSCanvas.anInt54 > 0) {
+            anInt1380++;
+            if(Class5.aClass22_189 != null) {
+                if((Class62.anInt1450 ^ 0xffffffff) <= -1) {
+                    if(RSCanvas.anInt54 > 0) {
+                        Class39.anInt909 += Buffer.anInt1982;
+                        Class5.aClass22_189.method304((byte) -97, Class62.anInt1450, Class39.anInt909);
                         RSCanvas.anInt54--;
-                        if((RSCanvas.anInt54 ^ 0xffffffff) == -1) {
-                            if(Player.aByteArray3270 == null)
-                                Class5.aClass22_189.method301(256, 0);
-                            else {
-                                Class5.aClass22_189.method301(PacketBuffer.anInt2258, arg0);
-                                Class62.anInt1450 = PacketBuffer.anInt2258;
-                                Class5.aClass22_189.method300((Player.aByteArray3270), Class30.aBoolean687, -15910, PacketBuffer.anInt2258);
-                                Player.aByteArray3270 = null;
-                            }
-                            Class39.anInt909 = 0;
+                        if(RSCanvas.anInt54 == 0) {
+                            Class5.aClass22_189.method303((byte) -96);
+                            Class62.anInt1450 = -1;
+                            RSCanvas.anInt54 = 20;
                         }
                     }
-                    Class5.aClass22_189.method302(0);
+                } else if(RSCanvas.anInt54 > 0) {
+                    RSCanvas.anInt54--;
+                    if((RSCanvas.anInt54 ^ 0xffffffff) == -1) {
+                        if(Player.aByteArray3270 == null)
+                            Class5.aClass22_189.method301(256, 0);
+                        else {
+                            Class5.aClass22_189.method301(PacketBuffer.anInt2258, arg0);
+                            Class62.anInt1450 = PacketBuffer.anInt2258;
+                            Class5.aClass22_189.method300((Player.aByteArray3270), Class30.aBoolean687, -15910, PacketBuffer.anInt2258);
+                            Player.aByteArray3270 = null;
+                        }
+                        Class39.anInt909 = 0;
+                    }
                 }
+                Class5.aClass22_189.method302(0);
             }
+        }
 
     }
 
     public static void method985(byte arg0) {
 
         aClass40_Sub1_1385 = null;
-            int i = 84 / ((arg0 + 74) / 47);
-            aClass40_Sub5_Sub12ArrayArray1390 = null;
-            anIntArray1398 = null;
-            aClass40_Sub5_Sub14_Sub2_1387 = null;
-            aClass1_1399 = null;
-            aLongArray1397 = null;
-            aClass1_1395 = null;
-            aClass54_1392 = null;
-            aClass1_1391 = null;
+        int i = 84 / ((arg0 + 74) / 47);
+        aClass40_Sub5_Sub12ArrayArray1390 = null;
+        anIntArray1398 = null;
+        aClass40_Sub5_Sub14_Sub2_1387 = null;
+        aClass1_1399 = null;
+        aLongArray1397 = null;
+        aClass1_1395 = null;
+        aClass54_1392 = null;
+        aClass1_1391 = null;
         string_Hidden = null;
-            anIntArray1393 = null;
+        anIntArray1393 = null;
 
     }
 
     public static int getVisibilityPlaneFor(int arg0, int arg1, int arg2, int arg3) {
 
         if(arg2 != 0)
-                getVisibilityPlaneFor(-73, 123, 115, 98);
-            anInt1382++;
-            if(((Floor.tile_flags[arg0][arg3][arg1] & 0x8) ^ 0xffffffff) != -1)
-                return 0;
-            if((arg0 ^ 0xffffffff) < -1 && ((Floor.tile_flags[1][arg3][arg1] & 0x2) ^ 0xffffffff) != -1)
-                return -1 + arg0;
-            return arg0;
+            getVisibilityPlaneFor(-73, 123, 115, 98);
+        anInt1382++;
+        if(((Floor.tile_flags[arg0][arg3][arg1] & 0x8) ^ 0xffffffff) != -1)
+            return 0;
+        if((arg0 ^ 0xffffffff) < -1 && ((Floor.tile_flags[1][arg3][arg1] & 0x2) ^ 0xffffffff) != -1)
+            return -1 + arg0;
+        return arg0;
 
     }
 }

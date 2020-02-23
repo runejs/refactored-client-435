@@ -8,21 +8,19 @@ import java.nio.charset.StandardCharsets;
 public class RSString implements Interface1 {
     public static Class68 aClass68_1665;
     public static int anInt1668 = 0;
-    public static RSString aClass1_1677 = Class58.method978("scrollbar");
     public static Cache aClass9_1684;
     public static int anInt1690 = 0;
-    public static RSString aClass1_1699 = Class58.method978("purple:");
-    public static RSString aClass1_1702 = Class58.method978("Der Anmelde)2Server ist offline)3");
-    public static RSString aClass1_1703 = Class58.method978("Private chat");
     public static Class6 aClass6_1705;
     public static int[] anIntArray1706 = new int[128];
     public static int anInt1711 = 50;
-    public static RSString aClass1_1713 = Class58.method978("Diese Welt ist voll)3");
     public static byte[][] aByteArrayArray1715;
-    public static RSString aClass1_1716 = Class58.method978("chatback");
-    public static RSString aClass1_1717 = aClass1_1699;
+    public static RSString aClass1_1717 = Class58.method978("purple:");
     /*synthetic*/ public static Class aClass1718;
-
+    public static RSString aClass1_1677 = Class58.method978("scrollbar");
+    public static RSString aClass1_1702 = Class58.method978("Der Anmelde)2Server ist offline)3");
+    public static RSString aClass1_1703 = Class58.method978("Private chat");
+    public static RSString aClass1_1713 = Class58.method978("Diese Welt ist voll)3");
+    public static RSString aClass1_1716 = Class58.method978("chatback");
     public boolean aBoolean1675 = true;
     public int length;
     public byte[] chars;
@@ -90,7 +88,6 @@ public class RSString implements Interface1 {
         if(arg0 < 111)
             aByteArrayArray1715 = null;
         aClass68_1665 = null;
-        aClass1_1699 = null;
         aClass1_1716 = null;
         aClass1_1703 = null;
         anIntArray1706 = null;

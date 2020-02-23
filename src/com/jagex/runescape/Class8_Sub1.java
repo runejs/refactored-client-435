@@ -140,17 +140,17 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
     public void run() {
 
         for(; ; ) {
-                synchronized(this) {
-                    if(aBoolean1820) {
-                        if(aLong1821 == 0L)
-                            method225();
-                        aBoolean1820 = false;
-                        break;
-                    }
-                    method212(Class51.method937(1));
+            synchronized(this) {
+                if(aBoolean1820) {
+                    if(aLong1821 == 0L)
+                        method225();
+                    aBoolean1820 = false;
+                    break;
                 }
-                Class43.method890(5L, -86);
+                method212(Class51.method937(1));
             }
+            Class43.method890(5L, -86);
+        }
     }
 
     public abstract int method224() throws Exception;

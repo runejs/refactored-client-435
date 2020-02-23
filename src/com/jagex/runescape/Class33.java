@@ -289,7 +289,6 @@ public class Class33 {
             Class32.packetBuffer.putShortBE(arg0);
         }
         if(arg1 == 6) {
-            Class5.anInt201++;
             Class32.packetBuffer.putPacket(213);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);

@@ -139,10 +139,7 @@ public class Buffer extends Node {
 
     public int getIntME1() {
         currentPosition += 4;
-        return ((0xff00 & buffer[currentPosition - 1] << 8) +
-                ((buffer[currentPosition - 4] << 16 & 0xff0000) +
-                ((buffer[currentPosition - 3] & 0xff) << 24)) +
-                (buffer[currentPosition - 2] & 0xff));
+        return ((0xff00 & buffer[currentPosition - 1] << 8) + ((buffer[currentPosition - 4] << 16 & 0xff0000) + ((buffer[currentPosition - 3] & 0xff) << 24)) + (buffer[currentPosition - 2] & 0xff));
     }
 
     public int getIntME2() {

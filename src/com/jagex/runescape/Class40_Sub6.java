@@ -100,39 +100,39 @@ public class Class40_Sub6 extends Node {
     public static void method837(byte arg0) {
 
         aClass1_2111 = null;
-            tile_height = null;
-            aClass1_2114 = null;
-            aClass1_2121 = null;
-            aClass40_Sub5_Sub12_2116 = null;
-            aClass1_2103 = null;
-            aClass1_2109 = null;
-            aClass64_2098 = null;
-            aClass1_2097 = null;
-            aClass1_2101 = null;
-            anIntArray2106 = null;
-            aClass40_Sub5_Sub14_Sub2_2105 = null;
-            if(arg0 < 23)
-                method838(-95, -33L);
-            anIntArray2113 = null;
+        tile_height = null;
+        aClass1_2114 = null;
+        aClass1_2121 = null;
+        aClass40_Sub5_Sub12_2116 = null;
+        aClass1_2103 = null;
+        aClass1_2109 = null;
+        aClass64_2098 = null;
+        aClass1_2097 = null;
+        aClass1_2101 = null;
+        anIntArray2106 = null;
+        aClass40_Sub5_Sub14_Sub2_2105 = null;
+        if(arg0 < 23)
+            method838(-95, -33L);
+        anIntArray2113 = null;
 
     }
 
     public static void method838(int arg0, long arg1) {
 
         anInt2100++;
-            if((arg1 ^ 0xffffffffffffffffL) != -1L) {
-                for(int i = arg0; i < Class42.anInt1008; i++) {
-                    if(Class53.aLongArray1267[i] == arg1) {
-                        ISAAC.redrawTabArea = true;
-                        Class42.anInt1008--;
-                        for(int i_16_ = i; Class42.anInt1008 > i_16_; i_16_++)
-                            Class53.aLongArray1267[i_16_] = Class53.aLongArray1267[1 + i_16_];
-                        Class32.packetBuffer.putPacket(28);
-                        Class32.packetBuffer.putLongBE(arg1);
-                        break;
-                    }
+        if((arg1 ^ 0xffffffffffffffffL) != -1L) {
+            for(int i = arg0; i < Class42.anInt1008; i++) {
+                if(Class53.aLongArray1267[i] == arg1) {
+                    ISAAC.redrawTabArea = true;
+                    Class42.anInt1008--;
+                    for(int i_16_ = i; Class42.anInt1008 > i_16_; i_16_++)
+                        Class53.aLongArray1267[i_16_] = Class53.aLongArray1267[1 + i_16_];
+                    Class32.packetBuffer.putPacket(28);
+                    Class32.packetBuffer.putLongBE(arg1);
+                    break;
                 }
             }
+        }
 
     }
 }

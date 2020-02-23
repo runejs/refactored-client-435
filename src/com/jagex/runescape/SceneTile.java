@@ -113,7 +113,7 @@ public class SceneTile extends Node {
                 int i = arg2.method60(GameObjectDefinition.aClass1_2526);
                 if((i ^ 0xffffffff) == 0)
                     break;
-                RSString class1 = Class66.aClass1_1567;
+                RSString class1 = Class66.blank_string;
                 if(Class12.aClass15_394 != null) {
                     class1 = Class6_Sub1.method204((Class12.aClass15_394.anInt432), 255);
                     if(Class12.aClass15_394.anObject437 != null) {

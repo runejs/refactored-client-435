@@ -42,23 +42,23 @@ public class Class12 {
     public static void method240(byte arg0) {
 
         if(arg0 > -31)
-                method240((byte) -27);
-            aClass1_391 = null;
-            aClass1_386 = null;
-            aClass15_394 = null;
+            method240((byte) -27);
+        aClass1_391 = null;
+        aClass1_386 = null;
+        aClass15_394 = null;
         chatboxInterface = null;
-            aClass1_382 = null;
-            aClass1_398 = null;
-            aClass1_385 = null;
-            aClass1_396 = null;
-            aClass1_381 = null;
-            aClass1_395 = null;
-            aClass1_384 = null;
-            aClass1_399 = null;
-            aClass39_387 = null;
-            aClass1_393 = null;
-            aClass1_392 = null;
-            aClass1_397 = null;
+        aClass1_382 = null;
+        aClass1_398 = null;
+        aClass1_385 = null;
+        aClass1_396 = null;
+        aClass1_381 = null;
+        aClass1_395 = null;
+        aClass1_384 = null;
+        aClass1_399 = null;
+        aClass39_387 = null;
+        aClass1_393 = null;
+        aClass1_392 = null;
+        aClass1_397 = null;
 
     }
 }
