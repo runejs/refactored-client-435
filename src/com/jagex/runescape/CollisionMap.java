@@ -184,41 +184,41 @@ public class CollisionMap {
             }
             if(Class57.packetid == 12) {
                 ISAAC.redrawTabArea = true;
-                int i_11_ = Cache.outgoingbuffer.getIntBE();
-                Widget widget = Class68.method1045(i_11_, (byte) -128);
+                int widgetData = Cache.outgoingbuffer.getIntBE();
+                Widget widget = Class68.method1045(widgetData, (byte) -128);
                 if(!widget.aBoolean2636) {
-                    for(int i_12_ = 0; widget.items.length > i_12_; i_12_++) {
-                        widget.items[i_12_] = 0;
-                        widget.itemAmounts[i_12_] = 0;
+                    for(int containerIndex = 0; widget.items.length > containerIndex; containerIndex++) {
+                        widget.items[containerIndex] = 0;
+                        widget.itemAmounts[containerIndex] = 0;
                     }
                 } else {
-                    Widget[] widgets = (Class59.aWidgetArrayArray1390[i_11_ >> -1887808688]);
-                    for(int i_13_ = 0; i_13_ < widgets.length; i_13_++) {
-                        Widget widget_14_ = widgets[i_13_];
-                        if(((0xffff & widget_14_.anInt2648 ^ 0xffffffff) == (0xffff & widget.anInt2689 ^ 0xffffffff)) && (widget_14_.anInt2736 ^ 0xffffffff) < -1) {
-                            widget_14_.anInt2734 = 0;
-                            widget_14_.anInt2718 = -1;
+                    Widget[] widgets = (Class59.aWidgetArrayArray1390[widgetData >> -1887808688]);
+                    for(int childIndex = 0; childIndex < widgets.length; childIndex++) {
+                        Widget child = widgets[childIndex];
+                        if(((0xffff & child.anInt2648 ^ 0xffffffff) == (0xffff & widget.anInt2689 ^ 0xffffffff)) && (child.anInt2736 ^ 0xffffffff) < -1) {
+                            child.anInt2734 = 0;
+                            child.anInt2718 = -1;
                         }
                     }
                 }
-                int i_15_ = Cache.outgoingbuffer.getUnsignedShortBE();
-                for(int i_16_ = 0; (i_15_ > i_16_); i_16_++) {
-                    int i_17_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-                    if((i_17_ ^ 0xffffffff) == -256)
-                        i_17_ = Cache.outgoingbuffer.getIntBE();
-                    int i_18_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
+                int containerSize = Cache.outgoingbuffer.getUnsignedShortBE();
+                for(int containerIndex = 0; (containerSize > containerIndex); containerIndex++) {
+                    int itemAmount = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
+                    if((itemAmount ^ 0xffffffff) == -256)
+                        itemAmount = Cache.outgoingbuffer.getIntBE();
+                    int itemId = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
                     if(!widget.aBoolean2636) {
-                        if(widget.items.length > i_16_) {
-                            widget.items[i_16_] = i_18_;
-                            widget.itemAmounts[i_16_] = i_17_;
+                        if(widget.items.length > containerIndex) {
+                            widget.items[containerIndex] = itemId;
+                            widget.itemAmounts[containerIndex] = itemAmount;
                         }
                     } else {
-                        Widget[] widgets = (Class59.aWidgetArrayArray1390[i_11_ >> -424241648]);
-                        for(int i_19_ = 0; ((i_19_ < widgets.length)); i_19_++) {
-                            Widget widget_20_ = widgets[i_19_];
-                            if(((widget.anInt2689 & 0xffff) == (widget_20_.anInt2648 & 0xffff)) && ((widget_20_.anInt2736 ^ 0xffffffff) == (1 + i_16_ ^ 0xffffffff))) {
-                                widget_20_.anInt2734 = i_17_;
-                                widget_20_.anInt2718 = -1 + i_18_;
+                        Widget[] widgets = (Class59.aWidgetArrayArray1390[widgetData >> -424241648]);
+                        for(int childIndex = 0; ((childIndex < widgets.length)); childIndex++) {
+                            Widget child = widgets[childIndex];
+                            if(((widget.anInt2689 & 0xffff) == (child.anInt2648 & 0xffff)) && ((child.anInt2736 ^ 0xffffffff) == (1 + containerIndex ^ 0xffffffff))) {
+                                child.anInt2734 = itemAmount;
+                                child.anInt2718 = -1 + itemId;
                             }
                         }
                     }
