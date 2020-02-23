@@ -250,7 +250,7 @@ public class Class43 {
                         }
                         Class40_Sub5_Sub12 class40_sub5_sub12_22_ = new Class40_Sub5_Sub12();
                         class40_sub5_sub12_22_.anInt2648 = class40_sub5_sub12.anInt2689;
-                        class40_sub5_sub12_22_.anInt2683 = i_19_;
+                        class40_sub5_sub12_22_.type = i_19_;
                         class40_sub5_sub12_22_.anInt2689 = ((0xffff & class40_sub5_sub12.anInt2689) << -1708169617) + (-2147483648 + i_20_);
                         class40_sub5_sub12.aClass40_Sub5_Sub12Array2713[i_20_] = class40_sub5_sub12_22_;
                         if(!bool)

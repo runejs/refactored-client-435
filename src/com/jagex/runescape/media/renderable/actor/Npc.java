@@ -223,9 +223,9 @@ public class Npc extends Actor {
                                         int i = 0;
                                         if(((Class43.anInt1025 ^ 0xffffffff) == -2) && (class40_sub5_sub12.anInt2639 == 206))
                                             i = 1;
-                                        if(((class40_sub5_sub12.anIntArray2685[Class55.anInt1288]) ^ 0xffffffff) >= -1)
+                                        if(((class40_sub5_sub12.items[Class55.anInt1288]) ^ 0xffffffff) >= -1)
                                             i = 0;
-                                        if(!class40_sub5_sub12.aBoolean2723) {
+                                        if(!class40_sub5_sub12.itemDeletesDraged) {
                                             if((i ^ 0xffffffff) != -2)
                                                 class40_sub5_sub12.method636(Class55.anInt1288, false, Class58.anInt1352);
                                             else {
@@ -246,10 +246,10 @@ public class Npc extends Actor {
                                         } else {
                                             int i_16_ = Class55.anInt1288;
                                             int i_17_ = Class58.anInt1352;
-                                            class40_sub5_sub12.anIntArray2685[i_16_] = (class40_sub5_sub12.anIntArray2685[i_17_]);
-                                            class40_sub5_sub12.anIntArray2710[i_16_] = (class40_sub5_sub12.anIntArray2710[i_17_]);
-                                            class40_sub5_sub12.anIntArray2685[i_17_] = -1;
-                                            class40_sub5_sub12.anIntArray2710[i_17_] = 0;
+                                            class40_sub5_sub12.items[i_16_] = (class40_sub5_sub12.items[i_17_]);
+                                            class40_sub5_sub12.itemAmounts[i_16_] = (class40_sub5_sub12.itemAmounts[i_17_]);
+                                            class40_sub5_sub12.items[i_17_] = -1;
+                                            class40_sub5_sub12.itemAmounts[i_17_] = 0;
                                         }
                                         Class32.packetBuffer.putPacket(83);
                                         Class32.packetBuffer.putDualByte(i, 128);

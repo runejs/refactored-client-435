@@ -125,7 +125,7 @@ public abstract class Class68 {
     public static Class40_Sub5_Sub12 method1045(int arg0, byte arg1) {
 
         anInt1626++;
-        int i = arg0 >> 144471440;
+        int i = arg0 >> 16;
         int i_8_ = 0xffff & arg0;
         if(Class59.aClass40_Sub5_Sub12ArrayArray1390[i] == null || (Class59.aClass40_Sub5_Sub12ArrayArray1390[i][i_8_] == null)) {
             boolean bool = method1043(i);

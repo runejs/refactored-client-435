@@ -182,20 +182,20 @@ public class CollisionMap {
                 Class57.packetid = -1;
                 return true;
             }
-            if((Class57.packetid ^ 0xffffffff) == -13) {
+            if(Class57.packetid == 12) {
                 ISAAC.redrawTabArea = true;
                 int i_11_ = Cache.outgoingbuffer.getIntBE();
-                Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_11_, (byte) -128);
-                if(!class40_sub5_sub12.aBoolean2636) {
-                    for(int i_12_ = 0; class40_sub5_sub12.anIntArray2685.length > i_12_; i_12_++) {
-                        class40_sub5_sub12.anIntArray2685[i_12_] = 0;
-                        class40_sub5_sub12.anIntArray2710[i_12_] = 0;
+                Class40_Sub5_Sub12 widget = Class68.method1045(i_11_, (byte) -128);
+                if(!widget.aBoolean2636) {
+                    for(int i_12_ = 0; widget.items.length > i_12_; i_12_++) {
+                        widget.items[i_12_] = 0;
+                        widget.itemAmounts[i_12_] = 0;
                     }
                 } else {
                     Class40_Sub5_Sub12[] class40_sub5_sub12s = (Class59.aClass40_Sub5_Sub12ArrayArray1390[i_11_ >> -1887808688]);
                     for(int i_13_ = 0; i_13_ < class40_sub5_sub12s.length; i_13_++) {
                         Class40_Sub5_Sub12 class40_sub5_sub12_14_ = class40_sub5_sub12s[i_13_];
-                        if(((0xffff & class40_sub5_sub12_14_.anInt2648 ^ 0xffffffff) == (0xffff & class40_sub5_sub12.anInt2689 ^ 0xffffffff)) && (class40_sub5_sub12_14_.anInt2736 ^ 0xffffffff) < -1) {
+                        if(((0xffff & class40_sub5_sub12_14_.anInt2648 ^ 0xffffffff) == (0xffff & widget.anInt2689 ^ 0xffffffff)) && (class40_sub5_sub12_14_.anInt2736 ^ 0xffffffff) < -1) {
                             class40_sub5_sub12_14_.anInt2734 = 0;
                             class40_sub5_sub12_14_.anInt2718 = -1;
                         }
@@ -207,16 +207,16 @@ public class CollisionMap {
                     if((i_17_ ^ 0xffffffff) == -256)
                         i_17_ = Cache.outgoingbuffer.getIntBE();
                     int i_18_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
-                    if(!class40_sub5_sub12.aBoolean2636) {
-                        if(class40_sub5_sub12.anIntArray2685.length > i_16_) {
-                            class40_sub5_sub12.anIntArray2685[i_16_] = i_18_;
-                            class40_sub5_sub12.anIntArray2710[i_16_] = i_17_;
+                    if(!widget.aBoolean2636) {
+                        if(widget.items.length > i_16_) {
+                            widget.items[i_16_] = i_18_;
+                            widget.itemAmounts[i_16_] = i_17_;
                         }
                     } else {
                         Class40_Sub5_Sub12[] class40_sub5_sub12s = (Class59.aClass40_Sub5_Sub12ArrayArray1390[i_11_ >> -424241648]);
                         for(int i_19_ = 0; ((i_19_ ^ 0xffffffff) > (class40_sub5_sub12s.length ^ 0xffffffff)); i_19_++) {
                             Class40_Sub5_Sub12 class40_sub5_sub12_20_ = class40_sub5_sub12s[i_19_];
-                            if(((class40_sub5_sub12.anInt2689 & 0xffff) == (class40_sub5_sub12_20_.anInt2648 & 0xffff)) && ((class40_sub5_sub12_20_.anInt2736 ^ 0xffffffff) == (1 + i_16_ ^ 0xffffffff))) {
+                            if(((widget.anInt2689 & 0xffff) == (class40_sub5_sub12_20_.anInt2648 & 0xffff)) && ((class40_sub5_sub12_20_.anInt2736 ^ 0xffffffff) == (1 + i_16_ ^ 0xffffffff))) {
                                 class40_sub5_sub12_20_.anInt2734 = i_17_;
                                 class40_sub5_sub12_20_.anInt2718 = -1 + i_18_;
                             }
@@ -315,7 +315,7 @@ public class CollisionMap {
                 int i_35_ = Cache.outgoingbuffer.getIntLE();
                 Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_35_, (byte) -61);
                 Class57.packetid = -1;
-                if(class40_sub5_sub12 != null && (class40_sub5_sub12.anInt2683 ^ 0xffffffff) == -1) {
+                if(class40_sub5_sub12 != null && (class40_sub5_sub12.type ^ 0xffffffff) == -1) {
                     if((i_34_ ^ 0xffffffff) > -1)
                         i_34_ = 0;
                     if((-class40_sub5_sub12.anInt2643 + class40_sub5_sub12.anInt2720) < i_34_)
@@ -337,9 +337,9 @@ public class CollisionMap {
                         }
                     }
                 } else {
-                    for(int i_39_ = 0; class40_sub5_sub12.anIntArray2685.length > i_39_; i_39_++) {
-                        class40_sub5_sub12.anIntArray2685[i_39_] = -1;
-                        class40_sub5_sub12.anIntArray2685[i_39_] = 0;
+                    for(int i_39_ = 0; class40_sub5_sub12.items.length > i_39_; i_39_++) {
+                        class40_sub5_sub12.items[i_39_] = -1;
+                        class40_sub5_sub12.items[i_39_] = 0;
                     }
                 }
                 Class57.packetid = -1;
@@ -1036,7 +1036,7 @@ public class CollisionMap {
                 Class57.packetid = -1;
                 return true;
             }
-            if((Class57.packetid ^ 0xffffffff) == -215) {
+            if(Class57.packetid == 214) {
                 ISAAC.redrawTabArea = true;
                 int i_107_ = Cache.outgoingbuffer.getIntBE();
                 Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_107_, (byte) -112);
@@ -1050,9 +1050,9 @@ public class CollisionMap {
                             i_110_ = Cache.outgoingbuffer.getIntBE();
                     }
                     if(!class40_sub5_sub12.aBoolean2636) {
-                        if((i_108_ ^ 0xffffffff) <= -1 && (class40_sub5_sub12.anIntArray2685.length > i_108_)) {
-                            class40_sub5_sub12.anIntArray2685[i_108_] = i_109_;
-                            class40_sub5_sub12.anIntArray2710[i_108_] = i_110_;
+                        if((i_108_ ^ 0xffffffff) <= -1 && (class40_sub5_sub12.items.length > i_108_)) {
+                            class40_sub5_sub12.items[i_108_] = i_109_;
+                            class40_sub5_sub12.itemAmounts[i_108_] = i_110_;
                         }
                     } else {
                         Class40_Sub5_Sub12[] class40_sub5_sub12s = (Class59.aClass40_Sub5_Sub12ArrayArray1390[i_107_ >> 886089392]);

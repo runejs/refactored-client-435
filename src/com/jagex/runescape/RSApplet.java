@@ -73,7 +73,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             providesignlink(null);
         for(int i = 0; i < arg7.length; i++) {
             Class40_Sub5_Sub12 class40_sub5_sub12 = arg7[i];
-            if(class40_sub5_sub12 != null && (class40_sub5_sub12.anInt2683 == 0 || class40_sub5_sub12.aBoolean2688) && class40_sub5_sub12 != null && arg5 == class40_sub5_sub12.anInt2648 && (!class40_sub5_sub12.aBoolean2750 || PacketBuffer.aBoolean2236)) {
+            if(class40_sub5_sub12 != null && (class40_sub5_sub12.type == 0 || class40_sub5_sub12.aBoolean2688) && class40_sub5_sub12 != null && arg5 == class40_sub5_sub12.anInt2648 && (!class40_sub5_sub12.aBoolean2750 || PacketBuffer.aBoolean2236)) {
                 int i_1_ = arg4 + class40_sub5_sub12.anInt2656;
                 int i_2_ = arg0 + class40_sub5_sub12.anInt2696;
                 if(!class40_sub5_sub12.aBoolean2694)
@@ -86,7 +86,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 int i_6_ = arg4 < i_1_ ? i_1_ : arg4;
                 int i_7_ = arg1 > i_3_ ? i_3_ : arg1;
                 int i_8_ = i_5_ < arg8 ? i_5_ : arg8;
-                if(class40_sub5_sub12.anInt2683 == 0) {
+                if(class40_sub5_sub12.type == 0) {
                     method20(i_4_, i_7_, class40_sub5_sub12.anInt2746, arg3, i_6_, i, 1, arg7, i_8_, class40_sub5_sub12.scrollPosition);
                     if(class40_sub5_sub12.aClass40_Sub5_Sub12Array2713 != null)
                         method20(i_4_, i_7_, class40_sub5_sub12.anInt2746, arg3, i_6_, class40_sub5_sub12.anInt2689, 1, (class40_sub5_sub12.aClass40_Sub5_Sub12Array2713), i_8_, class40_sub5_sub12.scrollPosition);

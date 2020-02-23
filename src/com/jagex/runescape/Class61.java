@@ -35,7 +35,7 @@ public class Class61 {
                 boolean bool = true;
                 for(int i = 0; ((i ^ 0xffffffff) > ((Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1]).length ^ 0xffffffff)); i++) {
                     if(Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1][i] != null) {
-                        if((Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1][i].anInt2683) != 2)
+                        if((Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1][i].type) != 2)
                             Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1][i] = null;
                         else
                             bool = false;

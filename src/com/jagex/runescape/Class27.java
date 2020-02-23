@@ -701,11 +701,11 @@ public class Class27 {
                     }
                     if(action == 1006) {
                         Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_10_, (byte) -111);
-                        if(class40_sub5_sub12 == null || (class40_sub5_sub12.anIntArray2710[i] ^ 0xffffffff) > -100001) {
+                        if(class40_sub5_sub12 == null || (class40_sub5_sub12.itemAmounts[i] ^ 0xffffffff) > -100001) {
                             Class32.packetBuffer.putPacket(151);
                             Class32.packetBuffer.putOffsetShortLE(i_12_);
                         } else
-                            Class44.method895(103, 0, (Class40_Sub5_Sub17_Sub6.method832(-49, (new RSString[]{HashTable.method334((class40_sub5_sub12.anIntArray2710[i]), -1), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), Class66.blank_string);
+                            Class44.method895(103, 0, (Class40_Sub5_Sub17_Sub6.method832(-49, (new RSString[]{HashTable.method334((class40_sub5_sub12.itemAmounts[i]), -1), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), Class66.blank_string);
                         Class52.anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
                         Class30.anInt704 = i_10_;
@@ -998,7 +998,7 @@ public class Class27 {
                 if(i_29_ <= arg6 && i_28_ <= arg1 && (i_29_ + class40_sub5_sub12_27_.anInt2692 ^ 0xffffffff) < (arg6 ^ 0xffffffff) && ((arg1 ^ 0xffffffff) > (i_28_ + class40_sub5_sub12_27_.anInt2643 ^ 0xffffffff)) && !class40_sub5_sub12_27_.aBoolean2750) {
                     if(class40_sub5_sub12_27_.anInt2689 < 0 && arg2 || class40_sub5_sub12_27_.anInt2689 >= 0 && !arg2)
                         class40_sub5_sub12 = class40_sub5_sub12_27_;
-                    if((class40_sub5_sub12_27_.anInt2683 ^ 0xffffffff) == -1) {
+                    if((class40_sub5_sub12_27_.type ^ 0xffffffff) == -1) {
                         Class40_Sub5_Sub12 class40_sub5_sub12_30_ = method361(arg0, arg1, arg2, (-class40_sub5_sub12_27_.scrollPosition + (class40_sub5_sub12_27_.anInt2696)), i, (class40_sub5_sub12_27_.anInt2656 - (class40_sub5_sub12_27_.anInt2746)), arg6, 398);
                         if(class40_sub5_sub12_30_ != null)
                             class40_sub5_sub12 = class40_sub5_sub12_30_;

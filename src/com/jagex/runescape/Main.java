@@ -71,7 +71,7 @@ public class Main extends RSApplet {
                     i_0_ = is[0] + i_6_;
                 }
                 if(!class40_sub5_sub12.aBoolean2636 || (Rasterizer.viewport_right >= i_0_ && ((Rasterizer.viewport_bottom ^ 0xffffffff) <= (i_1_ ^ 0xffffffff)) && ((Rasterizer.viewport_left ^ 0xffffffff) >= (i_0_ + class40_sub5_sub12.anInt2692 ^ 0xffffffff)) && ((i_1_ + class40_sub5_sub12.anInt2643 ^ 0xffffffff) <= (Rasterizer.viewport_top ^ 0xffffffff)))) {
-                    if(class40_sub5_sub12.anInt2683 == 0) {
+                    if(class40_sub5_sub12.type == 0) {
                         if(class40_sub5_sub12.aBoolean2750 && !Class29.method371(8247, arg0, i))
                             continue;
                         if(!class40_sub5_sub12.aBoolean2636) {
@@ -87,19 +87,19 @@ public class Main extends RSApplet {
                         if((class40_sub5_sub12.anInt2643 ^ 0xffffffff) > (class40_sub5_sub12.anInt2720 ^ 0xffffffff))
                             Class27.drawScrollBar(0, class40_sub5_sub12.scrollPosition, class40_sub5_sub12.anInt2720, i_0_ + (class40_sub5_sub12.anInt2692), class40_sub5_sub12.anInt2643, i_1_);
                     }
-                    if(class40_sub5_sub12.anInt2683 != 1) {
-                        if(class40_sub5_sub12.anInt2683 == 2) {
+                    if(class40_sub5_sub12.type != 1) {
+                        if(class40_sub5_sub12.type == 2) {
                             int i_7_ = 0;
                             for(int i_8_ = 0; ((i_8_ ^ 0xffffffff) > (class40_sub5_sub12.anInt2643 ^ 0xffffffff)); i_8_++) {
                                 for(int i_9_ = 0; class40_sub5_sub12.anInt2692 > i_9_; i_9_++) {
-                                    int i_10_ = ((class40_sub5_sub12.anInt2749 + 32) * i_9_ + i_0_);
-                                    int i_11_ = ((32 + (class40_sub5_sub12.anInt2667)) * i_8_ + i_1_);
+                                    int i_10_ = ((class40_sub5_sub12.itemSpritePadsX + 32) * i_9_ + i_0_);
+                                    int i_11_ = ((32 + (class40_sub5_sub12.itemSpritePadsY)) * i_8_ + i_1_);
                                     if((i_7_ ^ 0xffffffff) > -21) {
-                                        i_10_ += (class40_sub5_sub12.anIntArray2699[i_7_]);
-                                        i_11_ += (class40_sub5_sub12.anIntArray2708[i_7_]);
+                                        i_10_ += (class40_sub5_sub12.images[i_7_]);
+                                        i_11_ += (class40_sub5_sub12.imageX[i_7_]);
                                     }
-                                    if(((class40_sub5_sub12.anIntArray2685[i_7_]) ^ 0xffffffff) >= -1) {
-                                        if((class40_sub5_sub12.anIntArray2704) != null && (i_7_ ^ 0xffffffff) > -21) {
+                                    if(((class40_sub5_sub12.items[i_7_]) ^ 0xffffffff) >= -1) {
+                                        if((class40_sub5_sub12.imageY) != null && (i_7_ ^ 0xffffffff) > -21) {
                                             ImageRGB class40_sub5_sub14_sub4 = (class40_sub5_sub12.method638((byte) 78, i_7_));
                                             if(class40_sub5_sub14_sub4 == null) {
                                                 if(Class40_Sub13.aBoolean2177)
@@ -109,13 +109,13 @@ public class Main extends RSApplet {
                                         }
                                     } else {
                                         int i_12_ = 0;
-                                        int i_13_ = -1 + (class40_sub5_sub12.anIntArray2685[i_7_]);
+                                        int i_13_ = -1 + (class40_sub5_sub12.items[i_7_]);
                                         int i_14_ = 0;
                                         if((-32 + (Rasterizer.viewport_left) < i_10_ && ((i_10_ ^ 0xffffffff) > ((Rasterizer.viewport_right) ^ 0xffffffff)) && (((Rasterizer.viewport_top) + -32 ^ 0xffffffff) > (i_11_ ^ 0xffffffff)) && (Rasterizer.viewport_bottom) > i_11_) || (SceneTile.activeInterfaceType != 0 && (Class58.anInt1352 == i_7_))) {
                                             int i_15_ = 0;
                                             if(Class8.anInt301 == 1 && ((Class45.anInt1061 ^ 0xffffffff) == (i_7_ ^ 0xffffffff)) && ((class40_sub5_sub12.anInt2689) == ISAAC.anInt525))
                                                 i_15_ = 16777215;
-                                            ImageRGB class40_sub5_sub14_sub4 = (Class40_Sub13.method876(117, (class40_sub5_sub12.anIntArray2710[i_7_]), i_13_, i_15_));
+                                            ImageRGB class40_sub5_sub14_sub4 = (Class40_Sub13.method876(117, (class40_sub5_sub12.itemAmounts[i_7_]), i_13_, i_15_));
                                             if(class40_sub5_sub14_sub4 == null)
                                                 bool = false;
                                             else {
@@ -156,8 +156,8 @@ public class Main extends RSApplet {
                                                     class40_sub5_sub14_sub4.drawImage(i_10_, i_11_);
                                                 else
                                                     class40_sub5_sub14_sub4.method728(i_10_, i_11_, 128);
-                                                if(((class40_sub5_sub14_sub4.maxWidth) ^ 0xffffffff) == -34 || (class40_sub5_sub12.anIntArray2710[i_7_]) != 1) {
-                                                    int i_19_ = (class40_sub5_sub12.anIntArray2710[i_7_]);
+                                                if(((class40_sub5_sub14_sub4.maxWidth) ^ 0xffffffff) == -34 || (class40_sub5_sub12.itemAmounts[i_7_]) != 1) {
+                                                    int i_19_ = (class40_sub5_sub12.itemAmounts[i_7_]);
                                                     Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.drawString((Class40_Sub5_Sub12.method648(i_19_, (byte) -100)), i_12_ + (1 + i_10_), (i_11_ + 10 + i_14_), 0);
                                                     Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.drawString((Class40_Sub5_Sub12.method648(i_19_, (byte) -100)), i_10_ + i_12_, i_14_ + (i_11_ + 9), 16776960);
                                                 }
@@ -167,7 +167,7 @@ public class Main extends RSApplet {
                                     i_7_++;
                                 }
                             }
-                        } else if(class40_sub5_sub12.anInt2683 == 3) {
+                        } else if(class40_sub5_sub12.type == 3) {
                             int i_20_;
                             if(ItemDefinition.method746(class40_sub5_sub12)) {
                                 i_20_ = class40_sub5_sub12.anInt2726;
@@ -187,7 +187,7 @@ public class Main extends RSApplet {
                                 Rasterizer.method654(i_0_, i_1_, class40_sub5_sub12.anInt2692, class40_sub5_sub12.anInt2643, i_20_, -(0xff & i_2_) + 256);
                             else
                                 Rasterizer.method664(i_0_, i_1_, class40_sub5_sub12.anInt2692, class40_sub5_sub12.anInt2643, i_20_, -(0xff & i_2_) + 256);
-                        } else if(class40_sub5_sub12.anInt2683 == 4) {
+                        } else if(class40_sub5_sub12.type == 4) {
                             TypeFace class40_sub5_sub14_sub1 = class40_sub5_sub12.method647((byte) 34);
                             if(class40_sub5_sub14_sub1 == null) {
                                 if(Class40_Sub13.aBoolean2177)
@@ -227,7 +227,7 @@ public class Main extends RSApplet {
                                 class1 = (SceneTile.method532((byte) 20, class40_sub5_sub12, class1));
                                 class40_sub5_sub14_sub1.method672(class1, i_0_, i_1_, class40_sub5_sub12.anInt2692, class40_sub5_sub12.anInt2643, i_21_, class40_sub5_sub12.aBoolean2665, class40_sub5_sub12.anInt2733, class40_sub5_sub12.anInt2715, class40_sub5_sub12.anInt2732);
                             }
-                        } else if(class40_sub5_sub12.anInt2683 == 5) {
+                        } else if(class40_sub5_sub12.type == 5) {
                             if(!class40_sub5_sub12.aBoolean2636) {
                                 ImageRGB class40_sub5_sub14_sub4 = (class40_sub5_sub12.method643(127, (ItemDefinition.method746(class40_sub5_sub12))));
                                 if(class40_sub5_sub14_sub4 != null)
@@ -304,7 +304,7 @@ public class Main extends RSApplet {
                                     class40_sub5_sub14_sub4.maxHeight = i_23_;
                                 }
                             }
-                        } else if((class40_sub5_sub12.anInt2683 ^ 0xffffffff) == -7) {
+                        } else if((class40_sub5_sub12.type ^ 0xffffffff) == -7) {
                             boolean bool_35_ = (ItemDefinition.method746(class40_sub5_sub12));
                             Object object = null;
                             int i_36_;
@@ -364,7 +364,7 @@ public class Main extends RSApplet {
                             }
                             R3D.method702();
                         } else {
-                            if(class40_sub5_sub12.anInt2683 == 7) {
+                            if(class40_sub5_sub12.type == 7) {
                                 TypeFace class40_sub5_sub14_sub1 = class40_sub5_sub12.method647((byte) 34);
                                 if(class40_sub5_sub14_sub1 == null) {
                                     if(Class40_Sub13.aBoolean2177)
@@ -374,15 +374,15 @@ public class Main extends RSApplet {
                                 int i_45_ = 0;
                                 for(int i_46_ = 0; ((i_46_ ^ 0xffffffff) > (class40_sub5_sub12.anInt2643 ^ 0xffffffff)); i_46_++) {
                                     for(int i_47_ = 0; (i_47_ < class40_sub5_sub12.anInt2692); i_47_++) {
-                                        if(((class40_sub5_sub12.anIntArray2685[i_45_]) ^ 0xffffffff) < -1) {
-                                            ItemDefinition class40_sub5_sub16 = (ItemDefinition.forId((-1 + (class40_sub5_sub12.anIntArray2685[i_45_])), 10));
+                                        if(((class40_sub5_sub12.items[i_45_]) ^ 0xffffffff) < -1) {
+                                            ItemDefinition class40_sub5_sub16 = (ItemDefinition.forId((-1 + (class40_sub5_sub12.items[i_45_])), 10));
                                             RSString class1 = (class40_sub5_sub16.name);
                                             if(class1 == null)
                                                 class1 = (RSApplet.aClass1_34);
-                                            if((class40_sub5_sub16.stackable) == 1 || ((class40_sub5_sub12.anIntArray2710[i_45_]) ^ 0xffffffff) != -2)
-                                                class1 = (Class40_Sub5_Sub17_Sub6.method832(101, (new RSString[]{class1, (Class29.aClass1_674), (Class45.method903((class40_sub5_sub12.anIntArray2710[i_45_]), (byte) -105))})));
-                                            int i_48_ = ((i_47_ * ((class40_sub5_sub12.anInt2749) + 115)) + i_0_);
-                                            int i_49_ = ((i_46_ * ((class40_sub5_sub12.anInt2667) + 12)) + i_1_);
+                                            if((class40_sub5_sub16.stackable) == 1 || ((class40_sub5_sub12.itemAmounts[i_45_]) ^ 0xffffffff) != -2)
+                                                class1 = (Class40_Sub5_Sub17_Sub6.method832(101, (new RSString[]{class1, (Class29.aClass1_674), (Class45.method903((class40_sub5_sub12.itemAmounts[i_45_]), (byte) -105))})));
+                                            int i_48_ = ((i_47_ * ((class40_sub5_sub12.itemSpritePadsX) + 115)) + i_0_);
+                                            int i_49_ = ((i_46_ * ((class40_sub5_sub12.itemSpritePadsY) + 12)) + i_1_);
                                             if(((class40_sub5_sub12.anInt2733) ^ 0xffffffff) == -1)
                                                 class40_sub5_sub14_sub1.method683(class1, i_48_, i_49_, (class40_sub5_sub12.anInt2647), (class40_sub5_sub12.aBoolean2665));
                                             else if((class40_sub5_sub12.anInt2733) == 1)
@@ -394,7 +394,7 @@ public class Main extends RSApplet {
                                     }
                                 }
                             }
-                            if(class40_sub5_sub12.anInt2683 == 8 && Class37.method438(arg0, i, (byte) 52) && (RSString.anInt1711 == Class53.anInt1257)) {
+                            if(class40_sub5_sub12.type == 8 && Class37.method438(arg0, i, (byte) 52) && (RSString.anInt1711 == Class53.anInt1257)) {
                                 int i_50_ = 0;
                                 int i_51_ = 0;
                                 TypeFace class40_sub5_sub14_sub1 = (Class53.aClass40_Sub5_Sub14_Sub1_1268);
@@ -444,7 +444,7 @@ public class Main extends RSApplet {
                                     i_57_ += 1 + (class40_sub5_sub14_sub1.characterDefaultHeight);
                                 }
                             }
-                            if((class40_sub5_sub12.anInt2683 ^ 0xffffffff) == -10)
+                            if((class40_sub5_sub12.type ^ 0xffffffff) == -10)
                                 Rasterizer.method666(i_0_, i_1_, class40_sub5_sub12.anInt2692 + i_0_, class40_sub5_sub12.anInt2643 + i_1_, class40_sub5_sub12.anInt2647);
                         }
                     }

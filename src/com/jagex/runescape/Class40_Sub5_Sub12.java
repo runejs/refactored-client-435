@@ -22,36 +22,29 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public static int anInt2652;
     public static int anInt2662;
     public static int anInt2666;
-    public static RSString aClass1_2671;
+    public static RSString aClass1_2671 = aClass1_2637;
     public static RSString aClass1_2674;
     public static int anInt2675;
-    public static RSString aClass1_2678;
+    public static RSString aClass1_2678 = RSString.CreateString("Enter name of friend to add to list");
     public static RSString aClass1_2684;
-    public static RSString aClass1_2686;
-    public static RSString cmd_errortest;
+    public static RSString aClass1_2686 = RSString.CreateString("Starting game engine)3)3)3");
+    public static RSString cmd_errortest = RSString.CreateString("::errortest");
     public static int anInt2697;
     public static int anInt2700;
     public static int anInt2705;
     public static RSString aClass1_2706 = RSString.CreateString("Choose Option");
-    public static RSString aClass1_2716;
+    public static RSString aClass1_2716 = RSString.CreateString("Fehler beim Laden Ihres Charakter)2Profils");
     public static int anInt2717;
     public static int anInt2724;
-    public static RSString goldCrown;
+    public static RSString goldCrown = RSString.CreateString("@cr2@");
     public static int anInt2735;
     public static int anInt2739;
     public static RSString aClass1_2740;
-    public static int packetsize;
+    public static int packetsize = 0;
 
     static {
-        aClass1_2678 = RSString.CreateString("Enter name of friend to add to list");
-        goldCrown = RSString.CreateString("@cr2@");
         aClass1_2684 = aClass1_2706;
-        cmd_errortest = RSString.CreateString("::errortest");
-        aClass1_2716 = RSString.CreateString("Fehler beim Laden Ihres Charakter)2Profils");
-        aClass1_2671 = aClass1_2637;
-        packetsize = 0;
         aClass1_2740 = aClass1_2678;
-        aClass1_2686 = RSString.CreateString("Starting game engine)3)3)3");
         aClass1_2674 = aClass1_2686;
     }
 
@@ -70,7 +63,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public int anInt2651 = 1;
     public int anInt2653;
     public int anInt2654;
-    public boolean aBoolean2655;
+    public boolean itemUsable;
     public int anInt2656;
     public int anInt2657;
     public Object[] anObjectArray2658;
@@ -80,7 +73,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public int anInt2663;
     public RSString aClass1_2664;
     public boolean aBoolean2665;
-    public int anInt2667;
+    public int itemSpritePadsY;
     public RSString aClass1_2668;
     public Object[] anObjectArray2669;
     public int anInt2670;
@@ -92,8 +85,8 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public Object[] anObjectArray2680;
     public Object[] anObjectArray2681;
     public boolean aBoolean2682;
-    public int anInt2683;
-    public int[] anIntArray2685;
+    public int type;
+    public int[] items;
     public int anInt2687;
     public boolean aBoolean2688;
     public int anInt2689;
@@ -104,15 +97,15 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public Object[] anObjectArray2695;
     public int anInt2696;
     public RSString[] aClass1Array2698;
-    public int[] anIntArray2699;
+    public int[] images;
     public boolean aBoolean2701;
     public int anInt2702;
-    public boolean aBoolean2703;
-    public int[] anIntArray2704;
+    public boolean itemSwapable;
+    public int[] imageY;
     public Object[] anObjectArray2707;
-    public int[] anIntArray2708;
+    public int[] imageX;
     public RSString aClass1_2709;
-    public int[] anIntArray2710;
+    public int[] itemAmounts;
     public int anInt2711;
     public Object[] anObjectArray2712;
     public Class40_Sub5_Sub12[] aClass40_Sub5_Sub12Array2713;
@@ -123,10 +116,10 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public int anInt2720;
     public int anInt2721;
     public int anInt2722;
-    public boolean aBoolean2723;
+    public boolean itemDeletesDraged;
     public int anInt2725;
     public int anInt2726;
-    public boolean aBoolean2727;
+    public boolean isInventory;
     public int anInt2728;
     public boolean aBoolean2730;
     public int scrollPosition;
@@ -143,7 +136,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public int anInt2746;
     public Object[] anObjectArray2747;
     public int[][] anIntArrayArray2748;
-    public int anInt2749;
+    public int itemSpritePadsX;
     public boolean aBoolean2750;
     public int anInt2751;
 
@@ -155,7 +148,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
         aClass1_2664 = Class22_Sub2.aClass1_1877;
         anInt2654 = 0;
         aClass1_2676 = Class39.aClass1_919;
-        anInt2667 = 0;
+        itemSpritePadsY = 0;
         anInt2660 = 0;
         anInt2687 = 1;
         anInt2653 = -1;
@@ -172,9 +165,9 @@ public class Class40_Sub5_Sub12 extends SubNode {
         anInt2696 = 0;
         anInt2711 = -1;
         anInt2649 = 0;
-        aBoolean2727 = false;
+        isInventory = false;
         aClass1_2640 = Class22_Sub2.aClass1_1877;
-        aBoolean2703 = false;
+        itemSwapable = false;
         anInt2719 = 0;
         anInt2692 = 0;
         anInt2659 = -1;
@@ -186,11 +179,11 @@ public class Class40_Sub5_Sub12 extends SubNode {
         aClass1_2668 = Class22_Sub2.aClass1_1877;
         anInt2689 = -1;
         anInt2732 = 0;
-        aBoolean2655 = false;
+        itemUsable = false;
         aBoolean2645 = false;
         anInt2738 = -1;
         anInt2728 = 100;
-        aBoolean2723 = false;
+        itemDeletesDraged = false;
         anInt2722 = 0;
         anInt2715 = 0;
         anInt2656 = 0;
@@ -209,7 +202,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
         scrollPosition = 0;
         anInt2736 = 0;
         anInt2718 = -1;
-        anInt2749 = 0;
+        itemSpritePadsX = 0;
         anInt2714 = 0;
         anInt2751 = 0;
     }
@@ -310,21 +303,21 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public void method636(int arg0, boolean arg1, int arg2) {
 
         anInt2646++;
-        int i = anIntArray2685[arg2];
-        anIntArray2685[arg2] = anIntArray2685[arg0];
-        anIntArray2685[arg0] = i;
-        i = anIntArray2710[arg2];
-        anIntArray2710[arg2] = anIntArray2710[arg0];
+        int i = items[arg2];
+        items[arg2] = items[arg0];
+        items[arg0] = i;
+        i = itemAmounts[arg2];
+        itemAmounts[arg2] = itemAmounts[arg0];
         if(arg1 != false)
             anIntArrayArray2748 = null;
-        anIntArray2710[arg0] = i;
+        itemAmounts[arg0] = i;
 
     }
 
     public void method637(Buffer arg0) {
         anInt2717++;
         aBoolean2636 = false;
-        anInt2683 = arg0.getUnsignedByte();
+        type = arg0.getUnsignedByte();
         anInt2714 = arg0.getUnsignedByte();
         anInt2639 = arg0.getUnsignedShortBE();
         anInt2649 = anInt2656 = arg0.getShortBE();
@@ -360,34 +353,34 @@ public class Class40_Sub5_Sub12 extends SubNode {
                 }
             }
         }
-        if((anInt2683 ^ 0xffffffff) == -1) {
+        if((type ^ 0xffffffff) == -1) {
             anInt2720 = arg0.getUnsignedShortBE();
             aBoolean2750 = arg0.getUnsignedByte() == 1;
         }
-        if((anInt2683 ^ 0xffffffff) == -2) {
+        if((type ^ 0xffffffff) == -2) {
             arg0.getUnsignedShortBE();
             arg0.getUnsignedByte();
         }
-        if(anInt2683 == 2) {
-            anIntArray2685 = new int[anInt2643 * anInt2692];
-            anIntArray2710 = new int[anInt2643 * anInt2692];
-            aBoolean2703 = (arg0.getUnsignedByte() ^ 0xffffffff) == -2;
-            aBoolean2727 = arg0.getUnsignedByte() == 1;
-            aBoolean2655 = arg0.getUnsignedByte() == 1;
-            aBoolean2723 = (arg0.getUnsignedByte() ^ 0xffffffff) == -2;
-            anInt2749 = arg0.getUnsignedByte();
-            anInt2667 = arg0.getUnsignedByte();
-            anIntArray2708 = new int[20];
-            anIntArray2704 = new int[20];
-            anIntArray2699 = new int[20];
-            for(int i_5_ = 0; i_5_ < 20; i_5_++) {
-                int i_6_ = arg0.getUnsignedByte();
-                if((i_6_ ^ 0xffffffff) == -2) {
-                    anIntArray2699[i_5_] = arg0.getShortBE();
-                    anIntArray2708[i_5_] = arg0.getShortBE();
-                    anIntArray2704[i_5_] = arg0.getIntBE();
+        if(type == 2) {
+            items = new int[anInt2643 * anInt2692];
+            itemAmounts = new int[anInt2643 * anInt2692];
+            itemSwapable = (arg0.getUnsignedByte() ^ 0xffffffff) == -2;
+            isInventory = arg0.getUnsignedByte() == 1;
+            itemUsable = arg0.getUnsignedByte() == 1;
+            itemDeletesDraged = (arg0.getUnsignedByte() ^ 0xffffffff) == -2;
+            itemSpritePadsX = arg0.getUnsignedByte();
+            itemSpritePadsY = arg0.getUnsignedByte();
+            imageX = new int[20];
+            imageY = new int[20];
+            images = new int[20];
+            for(int sprite = 0; sprite < 20; sprite++) {
+                int hasSprite = arg0.getUnsignedByte();
+                if((hasSprite ^ 0xffffffff) == -2) {
+                    images[sprite] = arg0.getShortBE();
+                    imageX[sprite] = arg0.getShortBE();
+                    imageY[sprite] = arg0.getIntBE();
                 } else
-                    anIntArray2704[i_5_] = -1;
+                    imageY[sprite] = -1;
             }
             aClass1Array2698 = new RSString[5];
             for(int i_7_ = 0; i_7_ < 5; i_7_++) {
@@ -396,31 +389,31 @@ public class Class40_Sub5_Sub12 extends SubNode {
                     aClass1Array2698[i_7_] = null;
             }
         }
-        if((anInt2683 ^ 0xffffffff) == -4)
+        if((type ^ 0xffffffff) == -4)
             aBoolean2645 = arg0.getUnsignedByte() == 1;
-        if(anInt2683 == 4 || anInt2683 == 1) {
+        if(type == 4 || type == 1) {
             anInt2733 = arg0.getUnsignedByte();
             anInt2715 = arg0.getUnsignedByte();
             anInt2732 = arg0.getUnsignedByte();
             anInt2642 = arg0.getUnsignedShortBE();
             aBoolean2665 = (arg0.getUnsignedByte() ^ 0xffffffff) == -2;
         }
-        if((anInt2683 ^ 0xffffffff) == -5) {
+        if((type ^ 0xffffffff) == -5) {
             aClass1_2668 = arg0.getRSString();
             aClass1_2640 = arg0.getRSString();
         }
-        if(anInt2683 == 1 || (anInt2683 ^ 0xffffffff) == -4 || (anInt2683 ^ 0xffffffff) == -5)
+        if(type == 1 || (type ^ 0xffffffff) == -4 || (type ^ 0xffffffff) == -5)
             anInt2647 = arg0.getIntBE();
-        if((anInt2683 ^ 0xffffffff) == -4 || (anInt2683 ^ 0xffffffff) == -5) {
+        if((type ^ 0xffffffff) == -4 || (type ^ 0xffffffff) == -5) {
             anInt2726 = arg0.getIntBE();
             anInt2719 = arg0.getIntBE();
             anInt2663 = arg0.getIntBE();
         }
-        if((anInt2683 ^ 0xffffffff) == -6) {
+        if((type ^ 0xffffffff) == -6) {
             anInt2744 = arg0.getIntBE();
             anInt2670 = arg0.getIntBE();
         }
-        if((anInt2683 ^ 0xffffffff) == -7) {
+        if((type ^ 0xffffffff) == -7) {
             anInt2687 = 1;
             anInt2673 = arg0.getUnsignedShortBE();
             if(anInt2673 == 65535)
@@ -439,16 +432,16 @@ public class Class40_Sub5_Sub12 extends SubNode {
             anInt2690 = arg0.getUnsignedShortBE();
             anInt2657 = arg0.getUnsignedShortBE();
         }
-        if(anInt2683 == 7) {
-            anIntArray2685 = new int[anInt2692 * anInt2643];
-            anIntArray2710 = new int[anInt2692 * anInt2643];
+        if(type == 7) {
+            items = new int[anInt2692 * anInt2643];
+            itemAmounts = new int[anInt2692 * anInt2643];
             anInt2733 = arg0.getUnsignedByte();
             anInt2642 = arg0.getUnsignedShortBE();
             aBoolean2665 = arg0.getUnsignedByte() == 1;
             anInt2647 = arg0.getIntBE();
-            anInt2749 = arg0.getShortBE();
-            anInt2667 = arg0.getShortBE();
-            aBoolean2727 = (arg0.getUnsignedByte() ^ 0xffffffff) == -2;
+            itemSpritePadsX = arg0.getShortBE();
+            itemSpritePadsY = arg0.getShortBE();
+            isInventory = (arg0.getUnsignedByte() ^ 0xffffffff) == -2;
             aClass1Array2698 = new RSString[5];
             for(int i_8_ = 0; i_8_ < 5; i_8_++) {
                 aClass1Array2698[i_8_] = arg0.getRSString();
@@ -456,9 +449,9 @@ public class Class40_Sub5_Sub12 extends SubNode {
                     aClass1Array2698[i_8_] = null;
             }
         }
-        if((anInt2683 ^ 0xffffffff) == -9)
+        if((type ^ 0xffffffff) == -9)
             aClass1_2668 = arg0.getRSString();
-        if((anInt2714 ^ 0xffffffff) == -3 || anInt2683 == 2) {
+        if((anInt2714 ^ 0xffffffff) == -3 || type == 2) {
             aClass1_2664 = arg0.getRSString();
             aClass1_2709 = arg0.getRSString();
             anInt2702 = arg0.getUnsignedShortBE();
@@ -482,9 +475,9 @@ public class Class40_Sub5_Sub12 extends SubNode {
 
         anInt2675++;
         Class40_Sub13.aBoolean2177 = false;
-        if((arg1 ^ 0xffffffff) > -1 || anIntArray2704.length <= arg1)
+        if((arg1 ^ 0xffffffff) > -1 || imageY.length <= arg1)
             return null;
-        int i = anIntArray2704[arg1];
+        int i = imageY[arg1];
         if((i ^ 0xffffffff) == 0)
             return null;
         int i_9_ = 124 % ((-15 - arg0) / 34);
@@ -528,7 +521,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public void method644(byte arg0, Buffer arg1) {
         arg1.getUnsignedByte();
         aBoolean2636 = true;
-        anInt2683 = arg1.getUnsignedByte();
+        type = arg1.getUnsignedByte();
         anInt2639 = arg1.getUnsignedShortBE();
         if(arg0 < 58)
             method642(null, -90);
@@ -536,7 +529,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
         anInt2638++;
         anInt2743 = anInt2696 = arg1.getShortBE();
         anInt2692 = arg1.getUnsignedShortBE();
-        if(anInt2683 == 9)
+        if(type == 9)
             anInt2643 = arg1.getShortBE();
         else
             anInt2643 = arg1.getUnsignedShortBE();
@@ -545,17 +538,17 @@ public class Class40_Sub5_Sub12 extends SubNode {
             anInt2648 = -1;
         aBoolean2750 = (arg1.getUnsignedByte() ^ 0xffffffff) == -2;
         aBoolean2688 = (arg1.getUnsignedByte() ^ 0xffffffff) == -2;
-        if(anInt2683 == 0) {
+        if(type == 0) {
             anInt2746 = arg1.getUnsignedShortBE();
             scrollPosition = arg1.getUnsignedShortBE();
         }
-        if((anInt2683 ^ 0xffffffff) == -6) {
+        if((type ^ 0xffffffff) == -6) {
             anInt2744 = arg1.getIntBE();
             anInt2751 = arg1.getUnsignedShortBE();
             aBoolean2641 = (arg1.getUnsignedByte() ^ 0xffffffff) == -2;
             anInt2745 = arg1.getUnsignedByte();
         }
-        if(anInt2683 == 6) {
+        if(type == 6) {
             anInt2687 = 1;
             anInt2673 = arg1.getUnsignedShortBE();
             if((anInt2673 ^ 0xffffffff) == -65536)
@@ -571,7 +564,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
                 anInt2659 = -1;
             aBoolean2701 = arg1.getUnsignedByte() == 1;
         }
-        if(anInt2683 == 4) {
+        if(type == 4) {
             anInt2642 = arg1.getUnsignedShortBE();
             aClass1_2668 = arg1.getRSString();
             anInt2732 = arg1.getUnsignedByte();
@@ -580,12 +573,12 @@ public class Class40_Sub5_Sub12 extends SubNode {
             aBoolean2665 = arg1.getUnsignedByte() == 1;
             anInt2647 = arg1.getIntBE();
         }
-        if((anInt2683 ^ 0xffffffff) == -4) {
+        if((type ^ 0xffffffff) == -4) {
             anInt2647 = arg1.getIntBE();
             aBoolean2645 = (arg1.getUnsignedByte() ^ 0xffffffff) == -2;
             anInt2745 = arg1.getUnsignedByte();
         }
-        if(anInt2683 == 9) {
+        if(type == 9) {
             arg1.getUnsignedByte();
             anInt2647 = arg1.getIntBE();
         }
@@ -604,7 +597,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
             anObjectArray2695 = FloorDecoration.method345((byte) 89, arg1);
             anObjectArray2747 = FloorDecoration.method345((byte) 89, arg1);
             anObjectArray2680 = FloorDecoration.method345((byte) 89, arg1);
-            aBoolean2727 = arg1.getUnsignedByte() == 1;
+            isInventory = arg1.getUnsignedByte() == 1;
             anInt2736 = arg1.getUnsignedShortBE();
             aBoolean2694 = arg1.getUnsignedByte() == 1;
             arg1.getUnsignedByte();

@@ -86,7 +86,7 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
                         int i_1_ = (Class19.anIntArray483[ActorDefinition.anInt2394 - 1]);
                         int i_2_ = (Class59.anIntArray1393[-1 + ActorDefinition.anInt2394]);
                         Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_2_, (byte) -58);
-                        if(class40_sub5_sub12.aBoolean2703 || class40_sub5_sub12.aBoolean2723) {
+                        if(class40_sub5_sub12.itemSwapable || class40_sub5_sub12.itemDeletesDraged) {
                             Renderable.anInt2869 = Class57.anInt1338;
                             Class40_Sub5_Sub15.aBoolean2784 = false;
                             SceneTile.activeInterfaceType = 2;
