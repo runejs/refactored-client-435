@@ -15,21 +15,19 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class27 {
-    public static RSString aClass1_637 = Class58.method978("Loading game screen )2 ");
     public static RSString aClass1_638 = Class58.method978("invback");
     public static RSString aClass1_643 = Class58.method978(")2");
     public static RSString aClass1_647 = Class58.method978("sich mit einer anderen Welt zu verbinden)3");
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array649;
     public static RSString aClass1_652 = Class58.method978("und loggen sich dann erneut ein)3");
-    public static RSString aClass1_653 = Class58.method978("Offline");
     public static Class6 aClass6_654;
     public static int anInt658 = 0;
     public static int anInt661;
     public static RSString takeString = Class58.method978("Take");
-    public static RSString aClass1_664 = aClass1_653;
+    public static RSString aClass1_664 = Class58.method978("Offline");
     public static RSString takeStringInstance = takeString;
     public static int[] anIntArray666 = new int[]{1, 0, -1, 0};
-    public static RSString aClass1_668 = aClass1_637;
+    public static RSString aClass1_668 = Class58.method978("Loading game screen )2 ");
     public SubNode aClass40_Sub5_660 = new SubNode();
 
     public Class27() {
@@ -163,14 +161,12 @@ public class Class27 {
             takeString = null;
             aClass6_654 = null;
             aClass1_638 = null;
-            aClass1_653 = null;
             aClass1_652 = null;
             aClass1_668 = null;
             takeStringInstance = null;
             anIntArray666 = null;
             aClass1_664 = null;
             aClass1_643 = null;
-            aClass1_637 = null;
         }
     }
 
@@ -1203,8 +1199,6 @@ public class Class27 {
                 Class33.method411(Node.aClass1_937, Class42.aClass1_997, Class68_Sub1.aClass1_2209, (byte) -76);
         } else
             Class33.method411(Node.aClass1_966, Class22.aClass1_532, Player.aClass1_3286, (byte) -101);
-        if(arg0 != 5)
-            aClass1_637 = null;
         Floor.method559(10, -83);
     }
 
@@ -1220,8 +1214,6 @@ public class Class27 {
     }
 
     public SubNode method351(int arg0) {
-        if(arg0 != 536857847)
-            aClass1_637 = null;
         SubNode class40_sub5 = aClass40_Sub5_660.aClass40_Sub5_2082;
         if(class40_sub5 == aClass40_Sub5_660)
             return null;
