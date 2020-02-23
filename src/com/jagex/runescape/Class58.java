@@ -57,7 +57,7 @@ public class Class58 {
     public int anInt1371;
     public int anInt1372;
 
-    public static void method976(byte arg0, Class40_Sub5_Sub12 arg1) {
+    public static void method976(byte arg0, Widget arg1) {
         anInt1350++;
         int i = arg1.anInt2639;
         if(i >= 1 && i <= 100 || (i ^ 0xffffffff) <= -702 && (i ^ 0xffffffff) >= -801) {
@@ -231,7 +231,7 @@ public class Class58 {
                                             name = (name.substring(5));
                                             privelege = 1;
                                         }
-                                        if(name != null && (name.startsWith((Class40_Sub5_Sub12.goldCrown)))) {
+                                        if(name != null && (name.startsWith((Widget.goldCrown)))) {
                                             name = (name.substring(5));
                                             privelege = 2;
                                         }

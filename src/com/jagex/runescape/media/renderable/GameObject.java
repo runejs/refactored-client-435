@@ -94,8 +94,8 @@ public class GameObject extends Renderable {
                     Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_] = null;
                 }
             }
-            if((Class40_Sub5_Sub12.packetsize ^ 0xffffffff) != (Cache.outgoingbuffer.currentPosition ^ 0xffffffff))
-                throw new RuntimeException("gnp1 pos:" + (Cache.outgoingbuffer.currentPosition) + " psize:" + Class40_Sub5_Sub12.packetsize);
+            if((Widget.packetsize ^ 0xffffffff) != (Cache.outgoingbuffer.currentPosition ^ 0xffffffff))
+                throw new RuntimeException("gnp1 pos:" + (Cache.outgoingbuffer.currentPosition) + " psize:" + Widget.packetsize);
             for(int i = 0; GameObjectDefinition.anInt2558 > i; i++) {
                 if((Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i]]) == null)
                     throw new RuntimeException("gnp2 pos:" + i + " size:" + (GameObjectDefinition.anInt2558));

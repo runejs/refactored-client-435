@@ -22,7 +22,7 @@ public abstract class Class22_Sub2 extends Class22 {
     public static RSString aClass1_1883 = RSString.CreateString("Fehler bei der Verbindung zum Server)3");
     public static int anInt1884;
     public static RSString aClass1_1885 = (RSString.CreateString("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789(Q(R+R(T(U^(V(Z(X(Y)2_=)0[*U]*W;:(W@(S*X)1<)3>)4?*6*V "));
-    public static Class40_Sub5_Sub12 aClass40_Sub5_Sub12_1887;
+    public static Widget aWidget_1887;
     public static int anInt1888 = 0;
     public static RSString aClass1_1889 = RSString.CreateString("Benutzen");
     public static RSString username = string_blank;
@@ -100,7 +100,7 @@ public abstract class Class22_Sub2 extends Class22 {
         currentLoadingText = null;
         string_blank = null;
         aClass1_1881 = null;
-        aClass40_Sub5_Sub12_1887 = null;
+        aWidget_1887 = null;
         aClass1_1879 = null;
         aClass1_1878 = null;
         username = null;

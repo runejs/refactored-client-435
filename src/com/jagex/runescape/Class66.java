@@ -209,7 +209,7 @@ public class Class66 {
         return Class48.method927(i_13_, arg0, true, i);
     }
 
-    public static int method1029(int arg0, boolean arg1, Class40_Sub5_Sub12 arg2) {
+    public static int method1029(int arg0, boolean arg1, Widget arg2) {
         if(arg2.anIntArrayArray2748 == null || (arg0 >= arg2.anIntArrayArray2748.length))
             return -2;
         try {
@@ -240,12 +240,12 @@ public class Class66 {
                 if((i_18_ ^ 0xffffffff) == -5) {
                     int i_19_ = is[i_14_++] << 1814235088;
                     i_19_ += is[i_14_++];
-                    Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_19_, (byte) -70);
+                    Widget widget = Class68.method1045(i_19_, (byte) -70);
                     int i_20_ = is[i_14_++];
                     if(i_20_ != -1 && (!ItemDefinition.forId(i_20_, 10).members || Class22.aBoolean541)) {
-                        for(int i_21_ = 0; ((i_21_ ^ 0xffffffff) > (class40_sub5_sub12.items.length ^ 0xffffffff)); i_21_++) {
-                            if(1 + i_20_ == (class40_sub5_sub12.items[i_21_]))
-                                i_16_ += (class40_sub5_sub12.itemAmounts[i_21_]);
+                        for(int i_21_ = 0; ((i_21_ ^ 0xffffffff) > (widget.items.length ^ 0xffffffff)); i_21_++) {
+                            if(1 + i_20_ == (widget.items[i_21_]))
+                                i_16_ += (widget.itemAmounts[i_21_]);
                         }
                     }
                 }
@@ -266,11 +266,11 @@ public class Class66 {
                 if(i_18_ == 10) {
                     int i_23_ = is[i_14_++] << -1588807344;
                     i_23_ += is[i_14_++];
-                    Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_23_, (byte) -118);
+                    Widget widget = Class68.method1045(i_23_, (byte) -118);
                     int i_24_ = is[i_14_++];
                     if((i_24_ ^ 0xffffffff) != 0 && (!ItemDefinition.forId(i_24_, 10).members || Class22.aBoolean541)) {
-                        for(int i_25_ = 0; (class40_sub5_sub12.items.length > i_25_); i_25_++) {
-                            if(i_24_ + 1 == (class40_sub5_sub12.items[i_25_])) {
+                        for(int i_25_ = 0; (widget.items.length > i_25_); i_25_++) {
+                            if(i_24_ + 1 == (widget.items[i_25_])) {
                                 i_16_ = 999999999;
                                 break;
                             }

@@ -64,8 +64,8 @@ public class RSCanvas extends Canvas {
         Cache.method233(true);
         Class6.method189(false);
         anInt58++;
-        Class40_Sub5_Sub12.method640((byte) -90);
-        Class40_Sub5_Sub12.method645((byte) -37);
+        Widget.method640((byte) -90);
+        Widget.method645((byte) -37);
         Class40_Sub5_Sub6.method586(64);
         Class8.method211((byte) 60);
         Class6.method188(true);

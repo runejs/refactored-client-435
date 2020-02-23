@@ -159,7 +159,7 @@ public class Class34 {
 
         int i = -2 / ((-31 - arg0) / 57);
         anInt807++;
-        while((Cache.outgoingbuffer.method510(125, Class40_Sub5_Sub12.packetsize) ^ 0xffffffff) <= -12) {
+        while((Cache.outgoingbuffer.method510(125, Widget.packetsize) ^ 0xffffffff) <= -12) {
             int i_0_ = Cache.outgoingbuffer.putBits(11, (byte) -65);
             if((i_0_ ^ 0xffffffff) == -2048)
                 break;

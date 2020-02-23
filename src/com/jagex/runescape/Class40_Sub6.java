@@ -20,7 +20,7 @@ public class Class40_Sub6 extends Node {
     public static int[] anIntArray2113;
     public static RSString aClass1_2114;
     public static int anInt2115;
-    public static Class40_Sub5_Sub12 aClass40_Sub5_Sub12_2116;
+    public static Widget aWidget_2116;
     public static int anInt2118;
     public static int anInt2119;
     public static int onBuildTimePlane;
@@ -103,7 +103,7 @@ public class Class40_Sub6 extends Node {
         tile_height = null;
         aClass1_2114 = null;
         aClass1_2121 = null;
-        aClass40_Sub5_Sub12_2116 = null;
+        aWidget_2116 = null;
         aClass1_2103 = null;
         aClass1_2109 = null;
         aClass64_2098 = null;

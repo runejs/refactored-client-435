@@ -77,7 +77,7 @@ public class FloorDecoration {
                 }
             }
             Cache.outgoingbuffer.finishBitAccess((byte) -110);
-            int i_8_ = ((-Cache.outgoingbuffer.currentPosition + Class40_Sub5_Sub12.packetsize) / 16);
+            int i_8_ = ((-Cache.outgoingbuffer.currentPosition + Widget.packetsize) / 16);
             Class44.anIntArrayArray1030 = new int[i_8_][4];
             for(int i_9_ = 0; i_8_ > i_9_; i_9_++) {
                 for(int i_10_ = 0; i_10_ < 4; i_10_++)
@@ -122,7 +122,7 @@ public class FloorDecoration {
             int i_22_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
             int i_23_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
             int i_24_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
-            int i_25_ = ((Class40_Sub5_Sub12.packetsize - Cache.outgoingbuffer.currentPosition) / 16);
+            int i_25_ = ((Widget.packetsize - Cache.outgoingbuffer.currentPosition) / 16);
             Class44.anIntArrayArray1030 = new int[i_25_][4];
             for(int i_26_ = 0; (i_25_ ^ 0xffffffff) < (i_26_ ^ 0xffffffff); i_26_++) {
                 for(int i_27_ = 0; i_27_ < 4; i_27_++)

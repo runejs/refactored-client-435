@@ -165,12 +165,12 @@ public class Class5 {
         }
     }
 
-    public static boolean method166(byte arg0, Class40_Sub5_Sub12 arg1) {
+    public static boolean method166(byte arg0, Widget arg1) {
         int i = arg1.anInt2639;
         if(Class12.anInt380 == 2) {
             if((i ^ 0xffffffff) == -202) {
                 Class37.anInt876 = 1;
-                Class66.aClass1_1563 = Class40_Sub5_Sub12.aClass1_2740;
+                Class66.aClass1_1563 = Widget.aClass1_2740;
                 Class19.aBoolean490 = true;
                 Class40_Sub5_Sub15.inputType = 0;
                 Class66.aClass1_1565 = Class66.blank_string;
@@ -247,7 +247,7 @@ public class Class5 {
         Class13.aClass9_406.method235((byte) -56);
     }
 
-    public static void scrollInterface(int arg0, int arg1, int arg2, int arg3, byte arg4, Class40_Sub5_Sub12 arg5, int arg6, int arg7, int arg8) {
+    public static void scrollInterface(int arg0, int arg1, int arg2, int arg3, byte arg4, Widget arg5, int arg6, int arg7, int arg8) {
         if(Class61.aBoolean1444)
             Landscape.anInt1171 = 32;
         else

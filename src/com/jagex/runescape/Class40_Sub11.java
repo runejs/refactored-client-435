@@ -45,7 +45,7 @@ public class Class40_Sub11 extends Node {
                 RSString class1 = Renderable.chatPlayerNames[i_0_];
                 if(class1 != null && class1.startsWith(Class51.whiteCrown))
                     class1 = class1.substring(5);
-                if(class1 != null && class1.startsWith(Class40_Sub5_Sub12.goldCrown))
+                if(class1 != null && class1.startsWith(Widget.goldCrown))
                     class1 = class1.substring(5);
                 if((i_1_ == 1 || i_1_ == 2) && ((i_1_ ^ 0xffffffff) == -2 || Class35.publicChatMode == 0 || (Class35.publicChatMode == 1 && Class40_Sub2.hasFriend(class1, -32624)))) {
                     if(arg1 > i_2_ - 14 && arg1 <= i_2_ && !(class1.equals((Player.localPlayer.playerName)))) {

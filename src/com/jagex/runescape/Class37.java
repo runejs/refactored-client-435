@@ -108,7 +108,7 @@ public class Class37 {
         Class4.menuOpen = false;
         Class57.packetid = -1;
         ActorDefinition.anInt2394 = 0;
-        Class40_Sub5_Sub12.packetsize = 0;
+        Widget.packetsize = 0;
         Class32.packetBuffer.currentPosition = 0;
         RSString.anInt1690 = -1;
         Cache.anInt324 = -1;

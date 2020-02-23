@@ -110,7 +110,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
                     arg0.anInt3123 = i & 0xff;
                     arg0.anInt3102 = i >> 8;
                     if((i_3_ ^ 0xffffffff) == -3 || (i_3_ ^ 0xffffffff) == -4)
-                        Class44.method895(68, 1, class1, (Class40_Sub5_Sub17_Sub6.method832(75, (new RSString[]{Class40_Sub5_Sub12.goldCrown, arg0.playerName}))));
+                        Class44.method895(68, 1, class1, (Class40_Sub5_Sub17_Sub6.method832(75, (new RSString[]{Widget.goldCrown, arg0.playerName}))));
                     else if((i_3_ ^ 0xffffffff) == -2)
                         Class44.method895(123, 1, class1, (Class40_Sub5_Sub17_Sub6.method832(-79, (new RSString[]{Class51.whiteCrown, arg0.playerName}))));
                     else
@@ -169,7 +169,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
         return class40_sub5_sub7;
     }
 
-    public static boolean method1051(int arg0, Class40_Sub5_Sub12 arg1) {
+    public static boolean method1051(int arg0, Widget arg1) {
         if(arg0 != 300)
             return false;
         int i = arg1.anInt2639;

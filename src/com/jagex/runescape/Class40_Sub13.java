@@ -205,7 +205,7 @@ public class Class40_Sub13 extends Node {
 
     }
 
-    public static Class40_Sub5_Sub12 method878(int arg0, Class40_Sub5_Sub12 arg1) {
+    public static Widget method878(int arg0, Widget arg1) {
 
         anInt2169++;
         int i;
@@ -218,9 +218,9 @@ public class Class40_Sub13 extends Node {
         if(arg0 != -1598852880)
             method876(44, -123, -88, 35);
         if((arg1.anInt2738 ^ 0xffffffff) <= -1)
-            return (Class59.aClass40_Sub5_Sub12ArrayArray1390[i][0xffff & arg1.anInt2738]);
-        Class40_Sub5_Sub12 class40_sub5_sub12 = (Class59.aClass40_Sub5_Sub12ArrayArray1390[i][(0x7fff99d9 & arg1.anInt2738) >> -88908881]);
-        return (class40_sub5_sub12.aClass40_Sub5_Sub12Array2713[arg1.anInt2738 & 0x7fff]);
+            return (Class59.aWidgetArrayArray1390[i][0xffff & arg1.anInt2738]);
+        Widget widget = (Class59.aWidgetArrayArray1390[i][(0x7fff99d9 & arg1.anInt2738) >> -88908881]);
+        return (widget.aWidgetArray2713[arg1.anInt2738 & 0x7fff]);
 
     }
 

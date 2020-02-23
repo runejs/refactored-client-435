@@ -67,79 +67,79 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
     }
 
-    public static void method20(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, Class40_Sub5_Sub12[] arg7, int arg8, int arg9) {
+    public static void method20(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, Widget[] arg7, int arg8, int arg9) {
 
         if(arg6 != 1)
             providesignlink(null);
         for(int i = 0; i < arg7.length; i++) {
-            Class40_Sub5_Sub12 class40_sub5_sub12 = arg7[i];
-            if(class40_sub5_sub12 != null && (class40_sub5_sub12.type == 0 || class40_sub5_sub12.aBoolean2688) && class40_sub5_sub12 != null && arg5 == class40_sub5_sub12.anInt2648 && (!class40_sub5_sub12.aBoolean2750 || PacketBuffer.aBoolean2236)) {
-                int i_1_ = arg4 + class40_sub5_sub12.anInt2656;
-                int i_2_ = arg0 + class40_sub5_sub12.anInt2696;
-                if(!class40_sub5_sub12.aBoolean2694)
+            Widget widget = arg7[i];
+            if(widget != null && (widget.type == 0 || widget.aBoolean2688) && widget != null && arg5 == widget.anInt2648 && (!widget.aBoolean2750 || PacketBuffer.aBoolean2236)) {
+                int i_1_ = arg4 + widget.anInt2656;
+                int i_2_ = arg0 + widget.anInt2696;
+                if(!widget.aBoolean2694)
                     i_2_ -= arg9;
-                int i_3_ = i_2_ + class40_sub5_sub12.anInt2643;
+                int i_3_ = i_2_ + widget.anInt2643;
                 int i_4_ = arg0 >= i_2_ ? arg0 : i_2_;
-                if(!class40_sub5_sub12.aBoolean2694)
+                if(!widget.aBoolean2694)
                     i_1_ -= arg2;
-                int i_5_ = i_1_ + class40_sub5_sub12.anInt2692;
+                int i_5_ = i_1_ + widget.anInt2692;
                 int i_6_ = arg4 < i_1_ ? i_1_ : arg4;
                 int i_7_ = arg1 > i_3_ ? i_3_ : arg1;
                 int i_8_ = i_5_ < arg8 ? i_5_ : arg8;
-                if(class40_sub5_sub12.type == 0) {
-                    method20(i_4_, i_7_, class40_sub5_sub12.anInt2746, arg3, i_6_, i, 1, arg7, i_8_, class40_sub5_sub12.scrollPosition);
-                    if(class40_sub5_sub12.aClass40_Sub5_Sub12Array2713 != null)
-                        method20(i_4_, i_7_, class40_sub5_sub12.anInt2746, arg3, i_6_, class40_sub5_sub12.anInt2689, 1, (class40_sub5_sub12.aClass40_Sub5_Sub12Array2713), i_8_, class40_sub5_sub12.scrollPosition);
+                if(widget.type == 0) {
+                    method20(i_4_, i_7_, widget.anInt2746, arg3, i_6_, i, 1, arg7, i_8_, widget.scrollPosition);
+                    if(widget.aWidgetArray2713 != null)
+                        method20(i_4_, i_7_, widget.anInt2746, arg3, i_6_, widget.anInt2689, 1, (widget.aWidgetArray2713), i_8_, widget.scrollPosition);
                 }
-                if(class40_sub5_sub12.aBoolean2688) {
+                if(widget.aBoolean2688) {
                     boolean bool;
                     bool = (Class13.mouseX ^ 0xffffffff) <= (i_6_ ^ 0xffffffff) && (i_4_ ^ 0xffffffff) >= (Landscape.mouseY ^ 0xffffffff) && i_8_ > Class13.mouseX && (i_7_ ^ 0xffffffff) < (Landscape.mouseY ^ 0xffffffff);
                     boolean bool_9_ = false;
                     if(Class40_Sub5_Sub2.anInt2302 == 1 && bool)
                         bool_9_ = true;
                     boolean bool_10_ = false;
-                    if((class40_sub5_sub12.anInt2738 ^ 0xffffffff) != 0 && bool_9_ && Class10.aClass40_Sub5_Sub12_353 == null) {
+                    if((widget.anInt2738 ^ 0xffffffff) != 0 && bool_9_ && Class10.aWidget_353 == null) {
                         Class40_Sub2.anInt1996 = Class13.mouseX;
-                        Class10.aClass40_Sub5_Sub12_353 = class40_sub5_sub12;
+                        Class10.aWidget_353 = widget;
                         Class40_Sub5_Sub11.anInt2621 = Landscape.mouseY;
                     }
                     if(Class62.anInt1470 == 1 && (i_6_ ^ 0xffffffff) >= (Class57.anInt1338 ^ 0xffffffff) && ((RSString.anInt1668 ^ 0xffffffff) <= (i_4_ ^ 0xffffffff)) && Class57.anInt1338 < i_8_ && RSString.anInt1668 < i_7_)
                         bool_10_ = true;
-                    if(Class10.aClass40_Sub5_Sub12_353 != null) {
+                    if(Class10.aWidget_353 != null) {
                         bool_9_ = false;
                         bool = false;
                         bool_10_ = false;
                     }
-                    if(!class40_sub5_sub12.aBoolean2730 && bool_10_ && (0x1 & arg3) != 0) {
-                        class40_sub5_sub12.aBoolean2730 = true;
-                        if(class40_sub5_sub12.anObjectArray2681 != null)
-                            Class43.method891((class40_sub5_sub12.anObjectArray2681), 0, RSString.anInt1668 + -i_2_, class40_sub5_sub12, Class57.anInt1338 - i_1_, false);
+                    if(!widget.aBoolean2730 && bool_10_ && (0x1 & arg3) != 0) {
+                        widget.aBoolean2730 = true;
+                        if(widget.anObjectArray2681 != null)
+                            Class43.method891((widget.anObjectArray2681), 0, RSString.anInt1668 + -i_2_, widget, Class57.anInt1338 - i_1_, false);
                     }
-                    if(class40_sub5_sub12.aBoolean2730 && bool_9_ && (arg3 & 0x4 ^ 0xffffffff) != -1 && class40_sub5_sub12.anObjectArray2747 != null)
-                        Class43.method891((class40_sub5_sub12.anObjectArray2747), 0, -i_2_ + Landscape.mouseY, class40_sub5_sub12, -i_1_ + Class13.mouseX, false);
-                    if(class40_sub5_sub12.aBoolean2730 && !bool_9_ && (0x2 & arg3 ^ 0xffffffff) != -1) {
-                        class40_sub5_sub12.aBoolean2730 = false;
-                        if(class40_sub5_sub12.anObjectArray2707 != null)
-                            Class43.method891((class40_sub5_sub12.anObjectArray2707), 0, Landscape.mouseY - i_2_, class40_sub5_sub12, Class13.mouseX - i_1_, false);
+                    if(widget.aBoolean2730 && bool_9_ && (arg3 & 0x4 ^ 0xffffffff) != -1 && widget.anObjectArray2747 != null)
+                        Class43.method891((widget.anObjectArray2747), 0, -i_2_ + Landscape.mouseY, widget, -i_1_ + Class13.mouseX, false);
+                    if(widget.aBoolean2730 && !bool_9_ && (0x2 & arg3 ^ 0xffffffff) != -1) {
+                        widget.aBoolean2730 = false;
+                        if(widget.anObjectArray2707 != null)
+                            Class43.method891((widget.anObjectArray2707), 0, Landscape.mouseY - i_2_, widget, Class13.mouseX - i_1_, false);
                     }
-                    if(bool_9_ && (arg3 & 0x8 ^ 0xffffffff) != -1 && class40_sub5_sub12.anObjectArray2644 != null)
-                        Class43.method891((class40_sub5_sub12.anObjectArray2644), 0, -i_2_ + Landscape.mouseY, class40_sub5_sub12, -i_1_ + Class13.mouseX, false);
-                    if(!class40_sub5_sub12.aBoolean2682 && bool && (0x10 & arg3) != 0) {
-                        class40_sub5_sub12.aBoolean2682 = true;
-                        if(class40_sub5_sub12.anObjectArray2658 != null)
-                            Class43.method891((class40_sub5_sub12.anObjectArray2658), 0, Landscape.mouseY - i_2_, class40_sub5_sub12, Class13.mouseX - i_1_, false);
+                    if(bool_9_ && (arg3 & 0x8 ^ 0xffffffff) != -1 && widget.anObjectArray2644 != null)
+                        Class43.method891((widget.anObjectArray2644), 0, -i_2_ + Landscape.mouseY, widget, -i_1_ + Class13.mouseX, false);
+                    if(!widget.aBoolean2682 && bool && (0x10 & arg3) != 0) {
+                        widget.aBoolean2682 = true;
+                        if(widget.anObjectArray2658 != null)
+                            Class43.method891((widget.anObjectArray2658), 0, Landscape.mouseY - i_2_, widget, Class13.mouseX - i_1_, false);
                     }
-                    if(class40_sub5_sub12.aBoolean2682 && bool && (0x40 & arg3) != 0 && class40_sub5_sub12.anObjectArray2680 != null)
-                        Class43.method891((class40_sub5_sub12.anObjectArray2680), 0, -i_2_ + Landscape.mouseY, class40_sub5_sub12, -i_1_ + Class13.mouseX, false);
-                    if(class40_sub5_sub12.aBoolean2682 && !bool && (arg3 & 0x20) != 0) {
-                        class40_sub5_sub12.aBoolean2682 = false;
-                        if(class40_sub5_sub12.anObjectArray2672 != null)
-                            Class43.method891((class40_sub5_sub12.anObjectArray2672), 0, -i_2_ + Landscape.mouseY, class40_sub5_sub12, -i_1_ + Class13.mouseX, false);
+                    if(widget.aBoolean2682 && bool && (0x40 & arg3) != 0 && widget.anObjectArray2680 != null)
+                        Class43.method891((widget.anObjectArray2680), 0, -i_2_ + Landscape.mouseY, widget, -i_1_ + Class13.mouseX, false);
+                    if(widget.aBoolean2682 && !bool && (arg3 & 0x20) != 0) {
+                        widget.aBoolean2682 = false;
+                        if(widget.anObjectArray2672 != null)
+                            Class43.method891((widget.anObjectArray2672), 0, -i_2_ + Landscape.mouseY, widget, -i_1_ + Class13.mouseX, false);
                     }
-                    if(class40_sub5_sub12.anObjectArray2712 != null && (arg3 & 0x80) != 0)
-                        Class43.method891((class40_sub5_sub12.anObjectArray2712), 0, 0, class40_sub5_sub12, 0, false);
-                    if(Class40_Sub5_Sub7.anInt2480 == Node.anInt926 && class40_sub5_sub12.anObjectArray2650 != null && (arg3 & 0x100 ^ 0xffffffff) != -1)
-                        Class43.method891((class40_sub5_sub12.anObjectArray2650), 0, 0, class40_sub5_sub12, 0, false);
+                    if(widget.anObjectArray2712 != null && (arg3 & 0x80) != 0)
+                        Class43.method891((widget.anObjectArray2712), 0, 0, widget, 0, false);
+                    if(Class40_Sub5_Sub7.anInt2480 == Node.anInt926 && widget.anObjectArray2650 != null && (arg3 & 0x100 ^ 0xffffffff) != -1)
+                        Class43.method891((widget.anObjectArray2650), 0, 0, widget, 0, false);
                 }
             }
         }

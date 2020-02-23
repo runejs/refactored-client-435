@@ -219,26 +219,26 @@ public class Npc extends Actor {
                                     RSRuntimeException.anInt1642 = -1;
                                     Class43.method894(false);
                                     if((RSRuntimeException.anInt1642 == Class48.anInt1127) && (Class55.anInt1288 != Class58.anInt1352)) {
-                                        Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045((Class48.anInt1127), (byte) -95);
+                                        Widget widget = Class68.method1045((Class48.anInt1127), (byte) -95);
                                         int i = 0;
-                                        if(((Class43.anInt1025 ^ 0xffffffff) == -2) && (class40_sub5_sub12.anInt2639 == 206))
+                                        if(((Class43.anInt1025 ^ 0xffffffff) == -2) && (widget.anInt2639 == 206))
                                             i = 1;
-                                        if(((class40_sub5_sub12.items[Class55.anInt1288]) ^ 0xffffffff) >= -1)
+                                        if(((widget.items[Class55.anInt1288]) ^ 0xffffffff) >= -1)
                                             i = 0;
-                                        if(!class40_sub5_sub12.itemDeletesDraged) {
+                                        if(!widget.itemDeletesDraged) {
                                             if((i ^ 0xffffffff) != -2)
-                                                class40_sub5_sub12.method636(Class55.anInt1288, false, Class58.anInt1352);
+                                                widget.method636(Class55.anInt1288, false, Class58.anInt1352);
                                             else {
                                                 int i_14_ = Class58.anInt1352;
                                                 int i_15_ = Class55.anInt1288;
                                                 while(i_15_ != i_14_) {
                                                     if(i_14_ <= i_15_) {
                                                         if((i_14_ ^ 0xffffffff) > (i_15_ ^ 0xffffffff)) {
-                                                            class40_sub5_sub12.method636(1 + i_14_, false, i_14_);
+                                                            widget.method636(1 + i_14_, false, i_14_);
                                                             i_14_++;
                                                         }
                                                     } else {
-                                                        class40_sub5_sub12.method636(-1 + i_14_, false, i_14_);
+                                                        widget.method636(-1 + i_14_, false, i_14_);
                                                         i_14_--;
                                                     }
                                                 }
@@ -246,10 +246,10 @@ public class Npc extends Actor {
                                         } else {
                                             int i_16_ = Class55.anInt1288;
                                             int i_17_ = Class58.anInt1352;
-                                            class40_sub5_sub12.items[i_16_] = (class40_sub5_sub12.items[i_17_]);
-                                            class40_sub5_sub12.itemAmounts[i_16_] = (class40_sub5_sub12.itemAmounts[i_17_]);
-                                            class40_sub5_sub12.items[i_17_] = -1;
-                                            class40_sub5_sub12.itemAmounts[i_17_] = 0;
+                                            widget.items[i_16_] = (widget.items[i_17_]);
+                                            widget.itemAmounts[i_16_] = (widget.itemAmounts[i_17_]);
+                                            widget.items[i_17_] = -1;
+                                            widget.itemAmounts[i_17_] = 0;
                                         }
                                         Class32.packetBuffer.putPacket(83);
                                         Class32.packetBuffer.putDualByte(i, 128);

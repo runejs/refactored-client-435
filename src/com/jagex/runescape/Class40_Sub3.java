@@ -57,7 +57,7 @@ public class Class40_Sub3 extends Node {
             Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765 = new ImageRGB(512, 512);
             Class67.anInt1607 = 5;
             Class40_Sub5_Sub6.anInt2451 = 20;
-            Class22_Sub2.currentLoadingText = Class40_Sub5_Sub12.aClass1_2674;
+            Class22_Sub2.currentLoadingText = Widget.aClass1_2674;
         } else if((Class40_Sub5_Sub6.anInt2451 ^ 0xffffffff) == -21) {
             int[] is = new int[9];
             for(int i = 0; (i ^ 0xffffffff) > -10; i++) {

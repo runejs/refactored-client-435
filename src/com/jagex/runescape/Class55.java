@@ -171,7 +171,7 @@ public class Class55 {
         Class39.aClass1_904 = Class56.aClass1_1314;
         Class61.aClass1_1421 = ISAAC.aClass1_529;
         Cache.dropStringInstance = SubNode.aClass1_2095;
-        Class40_Sub5_Sub12.aClass1_2740 = Class40_Sub5_Sub17_Sub3.aClass1_3071;
+        Widget.aClass1_2740 = Class40_Sub5_Sub17_Sub3.aClass1_3071;
         Class42.aClass1_1001 = Class49.aClass1_1155;
         RSRuntimeException.aClass1_1649 = Buffer.aClass1_1990;
         Class51.aClass1_1200 = Class35.aClass1_1726;
@@ -231,10 +231,10 @@ public class Class55 {
         Class38.aClass1_883 = Class40_Sub5_Sub15.aClass1_2781;
         Class22_Sub1.aClass1_1864 = Landscape.aClass1_1160;
         Node.aClass1_956 = Class27.aClass1_647;
-        Class40_Sub5_Sub12.aClass1_2671 = Class66.aClass1_1558;
+        Widget.aClass1_2671 = Class66.aClass1_1558;
         Class43.aClass1_1019 = Class6_Sub1.aClass1_1798;
         Class40_Sub5_Sub6.aClass1_2446 = Class68_Sub1.aClass1_2198;
-        Class40_Sub5_Sub12.aClass1_2684 = Class40_Sub5_Sub2.aClass1_2291;
+        Widget.aClass1_2684 = Class40_Sub5_Sub2.aClass1_2291;
         Class27.takeStringInstance = Class40_Sub5_Sub2.aClass1_2296;
         Class48.aClass1_1124 = Class62.aClass1_1471;
         Class5.aClass1_193 = Landscape.aClass1_1161;
@@ -250,7 +250,7 @@ public class Class55 {
         Class58.aClass1_1354 = Player.aClass1_3269;
         Class22_Sub1.aClass1_1865 = RSRuntimeException.aClass1_1647;
         Class61.aClass1_1428 = SceneTile.aClass1_2051;
-        Class40_Sub5_Sub12.aClass1_2674 = Class33.aClass1_797;
+        Widget.aClass1_2674 = Class33.aClass1_797;
         Class30.aClass1_682 = PacketBuffer.aClass1_2245;
         ActorDefinition.aClass1_2410 = RSApplet.aClass1_21;
         Class40_Sub5_Sub9.aClass1_2566 = FloorDecoration.aClass1_609;
@@ -298,7 +298,7 @@ public class Class55 {
         Node.aClass1_924 = aClass1_1292;
         aClass1_1298 = Class40_Sub5_Sub17_Sub3.aClass1_3055;
         Actor.aClass1_3124 = Class45.aClass1_1084;
-        Class60.aClass1_1416 = Class40_Sub5_Sub12.aClass1_2716;
+        Class60.aClass1_1416 = Widget.aClass1_2716;
         Class42.aClass1_1000 = CollisionMap.aClass1_164;
         ISAAC.aClass1_526 = Class13.aClass1_422;
         Node.aClass1_963 = Class45.aClass1_1078;

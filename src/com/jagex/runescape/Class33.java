@@ -304,13 +304,13 @@ public class Class33 {
             Class40_Sub5_Sub17_Sub1.anInt2979++;
         }
         if((arg1 ^ 0xffffffff) == -10) {
-            Class40_Sub5_Sub12.anInt2700++;
+            Widget.anInt2700++;
             Class32.packetBuffer.putPacket(157);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
         }
         if(arg1 == 10) {
-            Class40_Sub5_Sub12.anInt2635++;
+            Widget.anInt2635++;
             Class32.packetBuffer.putPacket(84);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);

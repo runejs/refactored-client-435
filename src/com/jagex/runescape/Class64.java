@@ -66,13 +66,13 @@ public class Class64 implements Runnable {
 
     public static void method1012(int arg0, int arg1) {
         if(Class68.method1043(arg0)) {
-            Class40_Sub5_Sub12[] class40_sub5_sub12s = Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0];
+            Widget[] widgets = Class59.aWidgetArrayArray1390[arg0];
             if(arg1 != 2)
                 method1013(true);
-            for(int i = 0; class40_sub5_sub12s.length > i; i++) {
-                Class40_Sub5_Sub12 class40_sub5_sub12 = class40_sub5_sub12s[i];
-                if(class40_sub5_sub12.anObjectArray2677 != null)
-                    Class43.method891(class40_sub5_sub12.anObjectArray2677, 0, 0, class40_sub5_sub12, 0, false);
+            for(int i = 0; widgets.length > i; i++) {
+                Widget widget = widgets[i];
+                if(widget.anObjectArray2677 != null)
+                    Class43.method891(widget.anObjectArray2677, 0, 0, widget, 0, false);
             }
         }
     }

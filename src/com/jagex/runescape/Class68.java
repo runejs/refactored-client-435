@@ -102,18 +102,18 @@ public abstract class Class68 {
             aBooleanArray1629[arg0] = true;
             return true;
         }
-        if(Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0] == null)
-            Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0] = new Class40_Sub5_Sub12[i_4_];
+        if(Class59.aWidgetArrayArray1390[arg0] == null)
+            Class59.aWidgetArrayArray1390[arg0] = new Widget[i_4_];
         for(int i_5_ = 0; (i_5_ ^ 0xffffffff) > (i_4_ ^ 0xffffffff); i_5_++) {
-            if(Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0][i_5_] == null) {
+            if(Class59.aWidgetArrayArray1390[arg0][i_5_] == null) {
                 byte[] is = Class40_Sub5_Sub4.aClass6_2349.method172(i_5_, 119, arg0);
                 if(is != null) {
-                    Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0][i_5_] = new Class40_Sub5_Sub12();
-                    Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0][i_5_].anInt2689 = (arg0 << 692667152) + i_5_;
+                    Class59.aWidgetArrayArray1390[arg0][i_5_] = new Widget();
+                    Class59.aWidgetArrayArray1390[arg0][i_5_].anInt2689 = (arg0 << 692667152) + i_5_;
                     if((is[0] ^ 0xffffffff) == 0)
-                        Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0][i_5_].method644((byte) 73, new Buffer(is));
+                        Class59.aWidgetArrayArray1390[arg0][i_5_].method644((byte) 73, new Buffer(is));
                     else
-                        Class59.aClass40_Sub5_Sub12ArrayArray1390[arg0][i_5_].method637(new Buffer(is));
+                        Class59.aWidgetArrayArray1390[arg0][i_5_].method637(new Buffer(is));
                 }
             }
         }
@@ -122,19 +122,19 @@ public abstract class Class68 {
 
     }
 
-    public static Class40_Sub5_Sub12 method1045(int arg0, byte arg1) {
+    public static Widget method1045(int arg0, byte arg1) {
 
         anInt1626++;
         int i = arg0 >> 16;
         int i_8_ = 0xffff & arg0;
-        if(Class59.aClass40_Sub5_Sub12ArrayArray1390[i] == null || (Class59.aClass40_Sub5_Sub12ArrayArray1390[i][i_8_] == null)) {
+        if(Class59.aWidgetArrayArray1390[i] == null || (Class59.aWidgetArrayArray1390[i][i_8_] == null)) {
             boolean bool = method1043(i);
             if(!bool)
                 return null;
         }
         if(arg1 >= -54)
             method1042(-90);
-        return Class59.aClass40_Sub5_Sub12ArrayArray1390[i][i_8_];
+        return Class59.aWidgetArrayArray1390[i][i_8_];
 
     }
 

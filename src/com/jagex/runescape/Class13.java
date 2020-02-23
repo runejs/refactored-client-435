@@ -98,7 +98,7 @@ public class Class13 {
     public static void method243(byte arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
         anInt407++;
         if(Class68.method1043(arg4)) {
-            Class48.method925(arg3, Class59.aClass40_Sub5_Sub12ArrayArray1390[arg4], arg5, 0, arg7, 0, -1, arg8, arg6, arg1, 0, arg2);
+            Class48.method925(arg3, Class59.aWidgetArrayArray1390[arg4], arg5, 0, arg7, 0, -1, arg8, arg6, arg1, 0, arg2);
             if(arg0 != 89)
                 aClass1_405 = null;
         }
@@ -231,7 +231,7 @@ public class Class13 {
 
     }
 
-    public static int[] method247(Class40_Sub5_Sub12 arg0, byte arg1) {
+    public static int[] method247(Widget arg0, byte arg1) {
 
         if(arg1 <= 74)
             anInt419 = -37;
@@ -247,14 +247,14 @@ public class Class13 {
         int i_12_ = arg0.anInt2696;
         int i_13_ = arg0.anInt2648;
         while(i_13_ != -1) {
-            Class40_Sub5_Sub12 class40_sub5_sub12 = (Class59.aClass40_Sub5_Sub12ArrayArray1390[i][i_13_ & 0xffff]);
-            i_11_ += class40_sub5_sub12.anInt2656;
+            Widget widget = (Class59.aWidgetArrayArray1390[i][i_13_ & 0xffff]);
+            i_11_ += widget.anInt2656;
             if(!arg0.aBoolean2694)
-                i_11_ -= class40_sub5_sub12.anInt2746;
-            i_12_ += class40_sub5_sub12.anInt2696;
-            i_13_ = class40_sub5_sub12.anInt2648;
+                i_11_ -= widget.anInt2746;
+            i_12_ += widget.anInt2696;
+            i_13_ = widget.anInt2648;
             if(!arg0.aBoolean2694)
-                i_12_ -= class40_sub5_sub12.scrollPosition;
+                i_12_ -= widget.scrollPosition;
         }
         int[] is = new int[2];
         is[0] = i_11_;

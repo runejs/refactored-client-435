@@ -31,18 +31,18 @@ public class Class61 {
             Class40_Sub5_Sub4.aClass6_2349.method171(1, arg1);
             if(arg0 < 31)
                 aClass1_1428 = null;
-            if(Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1] != null) {
+            if(Class59.aWidgetArrayArray1390[arg1] != null) {
                 boolean bool = true;
-                for(int i = 0; ((i ^ 0xffffffff) > ((Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1]).length ^ 0xffffffff)); i++) {
-                    if(Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1][i] != null) {
-                        if((Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1][i].type) != 2)
-                            Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1][i] = null;
+                for(int i = 0; ((i ^ 0xffffffff) > ((Class59.aWidgetArrayArray1390[arg1]).length ^ 0xffffffff)); i++) {
+                    if(Class59.aWidgetArrayArray1390[arg1][i] != null) {
+                        if((Class59.aWidgetArrayArray1390[arg1][i].type) != 2)
+                            Class59.aWidgetArrayArray1390[arg1][i] = null;
                         else
                             bool = false;
                     }
                 }
                 if(bool)
-                    Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1] = null;
+                    Class59.aWidgetArrayArray1390[arg1] = null;
                 Class68.aBooleanArray1629[arg1] = false;
             }
         }

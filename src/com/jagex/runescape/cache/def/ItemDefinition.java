@@ -144,7 +144,7 @@ public class ItemDefinition extends SubNode {
         anIntArray2814 = null;
     }
 
-    public static boolean method746(Class40_Sub5_Sub12 arg1) {
+    public static boolean method746(Widget arg1) {
         anInt2838++;
         if(arg1.anIntArray2742 == null) {
             return false;

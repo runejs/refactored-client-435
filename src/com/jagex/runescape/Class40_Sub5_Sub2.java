@@ -229,13 +229,13 @@ public class Class40_Sub5_Sub2 extends SubNode {
                     Class57.packetid = Cache.outgoingbuffer.getPacket((byte) 49);
                     Class40_Sub6.aClass64_2098.method1008(0, 2, -127, Cache.outgoingbuffer.buffer);
                     Cache.outgoingbuffer.currentPosition = 0;
-                    Class40_Sub5_Sub12.packetsize = Cache.outgoingbuffer.getUnsignedShortBE();
+                    Widget.packetsize = Cache.outgoingbuffer.getUnsignedShortBE();
                     Class40_Sub3.anInt2032 = 10;
                 }
                 if((Class40_Sub3.anInt2032 ^ 0xffffffff) == -11) {
-                    if((Class40_Sub6.aClass64_2098.method1014(-124) ^ 0xffffffff) <= (Class40_Sub5_Sub12.packetsize ^ 0xffffffff)) {
+                    if((Class40_Sub6.aClass64_2098.method1014(-124) ^ 0xffffffff) <= (Widget.packetsize ^ 0xffffffff)) {
                         Cache.outgoingbuffer.currentPosition = 0;
-                        Class40_Sub6.aClass64_2098.method1008(0, Class40_Sub5_Sub12.packetsize, -128, Cache.outgoingbuffer.buffer);
+                        Class40_Sub6.aClass64_2098.method1008(0, Widget.packetsize, -128, Cache.outgoingbuffer.buffer);
                         Main.method44(0);
                         Class51.anInt1202 = -1;
                         FloorDecoration.method343(false, 5688);

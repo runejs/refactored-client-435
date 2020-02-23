@@ -13,7 +13,7 @@ import com.jagex.runescape.util.Signlink;
 import java.awt.*;
 import java.lang.reflect.Method;
 
-public class Class40_Sub5_Sub12 extends SubNode {
+public class Widget extends SubNode {
     public static int anInt2634;
     public static int anInt2635;
     public static RSString aClass1_2637 = RSString.CreateString("glow2:");
@@ -108,7 +108,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public int[] itemAmounts;
     public int anInt2711;
     public Object[] anObjectArray2712;
-    public Class40_Sub5_Sub12[] aClass40_Sub5_Sub12Array2713;
+    public Widget[] aWidgetArray2713;
     public int anInt2714;
     public int anInt2715;
     public int anInt2718;
@@ -140,7 +140,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public boolean aBoolean2750;
     public int anInt2751;
 
-    public Class40_Sub5_Sub12() {
+    public Widget() {
         anInt2639 = 0;
         anInt2657 = 0;
         aBoolean2665 = false;

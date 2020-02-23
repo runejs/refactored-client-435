@@ -4,7 +4,7 @@ public class Class12 {
     public static int anInt380;
     public static RSString aClass1_381;
     public static RSString aClass1_382 = RSString.CreateString("Benutzeroberfl-=che geladen)3");
-    public static Class40_Sub5_Sub12 chatboxInterface;
+    public static Widget chatboxInterface;
     public static RSString aClass1_384;
     public static RSString aClass1_385;
     public static RSString aClass1_386;

@@ -126,7 +126,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             Cache.aClass6_329 = arg2;
             Class40_Sub5_Sub4.aClass6_2349 = arg0;
             Class40_Sub5_Sub15.aClass6_2779 = arg1;
-            Class59.aClass40_Sub5_Sub12ArrayArray1390 = (new Class40_Sub5_Sub12
+            Class59.aWidgetArrayArray1390 = (new Widget
                     [Class40_Sub5_Sub4.aClass6_2349.method175(-82)][]);
             anInt2994++;
             Class68.aBooleanArray1629 = (new boolean

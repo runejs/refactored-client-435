@@ -73,7 +73,7 @@ public class SceneTile extends Node {
 
     }
 
-    public static RSString method532(byte arg0, Class40_Sub5_Sub12 arg1, RSString arg2) {
+    public static RSString method532(byte arg0, Widget arg1, RSString arg2) {
 
         anInt2045++;
         if(arg0 != 20)

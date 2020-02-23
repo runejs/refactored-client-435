@@ -52,7 +52,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
             return false;
         if(arg3 != -5)
             return true;
-        return Main.method36(arg5, arg0, arg4, 0, -1, arg2, arg6, 0, (Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1]), true);
+        return Main.method36(arg5, arg0, arg4, 0, -1, arg2, arg6, 0, (Class59.aWidgetArrayArray1390[arg1]), true);
     }
 
     public static void putHackCheckPacket(int arg0, int arg1, PacketBuffer arg2) {
@@ -254,7 +254,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                             }
                                         }
                                     }
-                                    if((Class66.chatboxInput.equals(Class40_Sub5_Sub12.cmd_errortest)) && (Class44.modewhere ^ 0xffffffff) == -3)
+                                    if((Class66.chatboxInput.equals(Widget.cmd_errortest)) && (Class44.modewhere ^ 0xffffffff) == -3)
                                         throw new RuntimeException();
                                     if(Class66.chatboxInput.equals(Class4.cmd_hiddenbuttontest))
                                         PacketBuffer.aBoolean2236 = true;
@@ -282,13 +282,13 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                                             if(class1.startsWith((Landscape.aClass1_1181))) {
                                                                 i_11_ = 9;
                                                                 Class66.chatboxInput = (Class66.chatboxInput.substring((Landscape.aClass1_1181.length())));
-                                                            } else if(!class1.startsWith(Class40_Sub5_Sub12.aClass1_2671)) {
+                                                            } else if(!class1.startsWith(Widget.aClass1_2671)) {
                                                                 if(class1.startsWith((Class51.aClass1_1196))) {
                                                                     Class66.chatboxInput = Class66.chatboxInput.substring(Class51.aClass1_1196.length());
                                                                     i_11_ = 11;
                                                                 }
                                                             } else {
-                                                                Class66.chatboxInput = (Class66.chatboxInput.substring(Class40_Sub5_Sub12.aClass1_2671.length()));
+                                                                Class66.chatboxInput = (Class66.chatboxInput.substring(Widget.aClass1_2671.length()));
                                                                 i_11_ = 10;
                                                             }
                                                         } else {
@@ -440,7 +440,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
             Rasterizer.method656(i, i_14_, i_15_, i_13_, i_16_);
             Rasterizer.method656(1 + i, 1 + i_14_, -2 + i_15_, 16, 0);
             Rasterizer.method665(i + 1, 18 + i_14_, -2 + i_15_, -19 + i_13_, 0);
-            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawString(Class40_Sub5_Sub12.aClass1_2684, i + 3, 14 + i_14_, i_16_);
+            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawString(Widget.aClass1_2684, i + 3, 14 + i_14_, i_16_);
             int i_17_ = Class13.mouseX;
             int i_18_ = Landscape.mouseY;
             if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {

@@ -79,12 +79,12 @@ public class Class42 {
 
         anInt991++;
         if(Class68.method1043(arg1)) {
-            Class40_Sub5_Sub12[] class40_sub5_sub12s = Class59.aClass40_Sub5_Sub12ArrayArray1390[arg1];
-            for(int i = 0; class40_sub5_sub12s.length > i; i++) {
-                Class40_Sub5_Sub12 class40_sub5_sub12 = class40_sub5_sub12s[i];
-                if(class40_sub5_sub12 != null) {
-                    class40_sub5_sub12.anInt2660 = 0;
-                    class40_sub5_sub12.anInt2654 = 0;
+            Widget[] widgets = Class59.aWidgetArrayArray1390[arg1];
+            for(int i = 0; widgets.length > i; i++) {
+                Widget widget = widgets[i];
+                if(widget != null) {
+                    widget.anInt2660 = 0;
+                    widget.anInt2654 = 0;
                 }
             }
             int i = 40 % ((arg0 + 57) / 54);
@@ -188,7 +188,7 @@ public class Class42 {
         anInt1009++;
         if(arg0 < 3)
             method883((byte) 24, 79);
-        while(Cache.outgoingbuffer.method510(121, Class40_Sub5_Sub12.packetsize) >= 27) {
+        while(Cache.outgoingbuffer.method510(121, Widget.packetsize) >= 27) {
             int i = Cache.outgoingbuffer.putBits(15, (byte) -65);
             if((i ^ 0xffffffff) == -32768)
                 break;

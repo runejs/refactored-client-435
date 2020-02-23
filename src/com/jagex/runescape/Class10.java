@@ -16,7 +16,7 @@ public class Class10 {
     public static int anInt350;
     public static int[] anIntArray351;
     public static RSString aClass1_352;
-    public static Class40_Sub5_Sub12 aClass40_Sub5_Sub12_353;
+    public static Widget aWidget_353;
     public static int[] anIntArray354;
     public static int anInt356;
     public static Class45[][][] aClass45ArrayArrayArray357;
@@ -28,7 +28,7 @@ public class Class10 {
         anIntArray351 = new int[4000];
         aClass1_343 = RSString.CreateString("Geben Sie Ihren Benutzernamen");
         anIntArray354 = new int[25];
-        aClass40_Sub5_Sub12_353 = null;
+        aWidget_353 = null;
         anInt356 = 0;
         aClass45ArrayArrayArray357 = new Class45[4][104][104];
     }
@@ -56,7 +56,7 @@ public class Class10 {
         aClass1_343 = null;
         aClass1_346 = null;
         anIntArray351 = null;
-        aClass40_Sub5_Sub12_353 = null;
+        aWidget_353 = null;
         if(arg0 <= 54)
             method237(102);
     }
@@ -77,7 +77,7 @@ public class Class10 {
                         class1 = class1.substring(5);
                         i_1_ = 1;
                     }
-                    if(class1 != null && class1.startsWith(Class40_Sub5_Sub12.goldCrown)) {
+                    if(class1 != null && class1.startsWith(Widget.goldCrown)) {
                         class1 = class1.substring(5);
                         i_1_ = 2;
                     }

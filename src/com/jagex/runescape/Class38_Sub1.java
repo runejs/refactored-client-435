@@ -51,7 +51,7 @@ public class Class38_Sub1 extends Class38 {
                     RSString class1 = Renderable.chatPlayerNames[i_1_];
                     if(class1 != null && class1.startsWith(Class51.whiteCrown))
                         class1 = class1.substring(5);
-                    if(class1 != null && class1.startsWith(Class40_Sub5_Sub12.goldCrown))
+                    if(class1 != null && class1.startsWith(Widget.goldCrown))
                         class1 = class1.substring(5);
                     if((i_2_ == 3 || (i_2_ ^ 0xffffffff) == -8) && ((i_2_ ^ 0xffffffff) == -8 || (Class4.anInt185 ^ 0xffffffff) == -1 || ((Class4.anInt185 ^ 0xffffffff) == -2 && Class40_Sub2.hasFriend(class1, arg0 + -42391)))) {
                         int i_3_ = 329 + -(13 * i);
