@@ -39,9 +39,9 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
         anIntArray2207 = null;
     }
 
-    public static void method1049(Player arg0, byte arg1, int arg2, int arg3) {
+    public static void parsePlayerUpdateMasks(Player arg0, byte arg1, int arg2, int arg3) {
         if(arg1 <= 14)
-            method1049(null, (byte) 8, -14, 82);
+            parsePlayerUpdateMasks(null, (byte) 8, -14, 82);
         if((0x100 & arg2) != 0) {
             int i = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
             int i_0_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
@@ -84,7 +84,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             arg0.anInt3073 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
             arg0.method790(0);
         }
-        if((0x8 & arg2 ^ 0xffffffff) != -1) {
+        if((0x8 & arg2 ^ 0xffffffff) != -1) { // chat?...
             int i = Cache.outgoingbuffer.getUnsignedShortBE();
             int i_3_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
             int i_4_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
@@ -119,15 +119,15 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             }
             Cache.outgoingbuffer.currentPosition = i_4_ + i_5_;
         }
-        if((0x20 & arg2) != 0) {
-            int i = Cache.outgoingbuffer.getUnsignedByte();
-            byte[] is = new byte[i];
+        if((0x20 & arg2) != 0) { // appearance
+            int appearanceUpdateLength = Cache.outgoingbuffer.getUnsignedByte();
+            byte[] is = new byte[appearanceUpdateLength];
             Buffer buffer = new Buffer(is);
-            Cache.outgoingbuffer.getBytes(i, 0, is);
+            Cache.outgoingbuffer.getBytes(appearanceUpdateLength, 0, is);
             Class22.aClass40_Sub1Array534[arg3] = buffer;
-            arg0.method791((byte) -85, buffer);
+            arg0.parsePlayerAppearanceData((byte) -85, buffer);
         }
-        if((arg2 & 0x200) != 0) {
+        if((arg2 & 0x200) != 0) { // graphics?
             arg0.anInt3091 = Cache.outgoingbuffer.getUnsignedShortLE();
             int i = Cache.outgoingbuffer.getIntME1();
             arg0.anInt3129 = 0;
@@ -139,7 +139,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             if(arg0.anInt3093 > Node.anInt926)
                 arg0.anInt3140 = -1;
         }
-        if((0x80 & arg2 ^ 0xffffffff) != -1) {
+        if((0x80 & arg2 ^ 0xffffffff) != -1) { // forced chat
             arg0.aClass1_3090 = Cache.outgoingbuffer.getRSString();
             if(arg0.aClass1_3090.method55(0, false) != 126) {
                 if(arg0 == Player.localPlayer)

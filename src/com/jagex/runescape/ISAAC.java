@@ -480,17 +480,13 @@ public class ISAAC {
 
     }
 
-    public int method286(int arg0) {
-
+    public int rand() {
         anInt520++;
-        if(arg0 > -54)
-            return -67;
         if(anInt497-- == 0) {
             method284((byte) -92);
             anInt497 = 255;
         }
         return anIntArray508[anInt497];
-
     }
 
     public void method287(boolean arg0) {
