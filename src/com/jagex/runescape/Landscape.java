@@ -118,7 +118,6 @@ public class Landscape {
             class40_sub5_sub5.anInt2427 = arg1;
             if(is != null)
                 class40_sub5_sub5.readValues(new Buffer(is));
-            class40_sub5_sub5.method579((byte) -77);
             ISAAC.aClass9_510.method230(-7208, (long) arg1, class40_sub5_sub5);
             return class40_sub5_sub5;
 
@@ -294,7 +293,7 @@ public class Landscape {
                     VertexNormal.aClass9_1102.method235((byte) -43);
                     if(Class35.aFrame1732 != null) {
                         Class62.anInt1452++;
-                        Class32.packetBuffer.putPacket(11453, 121);
+                        Class32.packetBuffer.putPacket(121);
                         Class32.packetBuffer.putIntBE(1057001181);
                     }
                     if(!Class58.aBoolean1349) {
@@ -316,7 +315,7 @@ public class Landscape {
                     else
                         Floor.method559(30, -54);
                     Class56.method973(-65);
-                    Class32.packetBuffer.putPacket(11453, 178);
+                    Class32.packetBuffer.putPacket(178);
                     RSRuntimeException.method1057(126);
                 }
             }

@@ -72,7 +72,7 @@ public class Class40_Sub5_Sub9 extends SubNode {
                     Class40_Sub5_Sub17_Sub3.anInt3060++;
                     CollisionMap.anInt139++;
                     ISAAC.redrawTabArea = true;
-                    Class32.packetBuffer.putPacket(11453, 114);
+                    Class32.packetBuffer.putPacket(114);
                     Class32.packetBuffer.putLongBE(arg0);
                 }
             }

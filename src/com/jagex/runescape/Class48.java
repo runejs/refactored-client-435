@@ -194,7 +194,6 @@ public class Class48 {
                             }
                             if(class40_sub5_sub12.anInt2714 == 6 && (Class6_Sub1.anInt1819 ^ 0xffffffff) == 0 && (i_2_ ^ 0xffffffff) >= (arg8 ^ 0xffffffff) && i_1_ <= arg4 && arg8 < i_2_ + class40_sub5_sub12.anInt2692 && ((arg4 ^ 0xffffffff) > (class40_sub5_sub12.anInt2643 + i_1_ ^ 0xffffffff))) {
                                 Floor.method558(0, class40_sub5_sub12.aClass1_2676, class40_sub5_sub12.anInt2689, -501, 0, 54, Class66.aClass1_1567);
-                                VertexNormal.anInt1101++;
                             }
                             if((class40_sub5_sub12.anInt2683 ^ 0xffffffff) == -3) {
                                 int i_4_ = 0;

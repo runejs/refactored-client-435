@@ -106,7 +106,6 @@ public class Class64 implements Runnable {
             if(arg0 != false)
                 method1013(false);
             if((Class8.anInt301 ^ 0xffffffff) == -1 && Main.anInt1773 == 0) {
-                VertexNormal.anInt1091++;
                 Floor.method558(0, Class22_Sub2.aClass1_1876, Landscape.mouseY, -501, Class13.mouseX, 7, Class66.aClass1_1567);
             }
             int i_1_ = 0;

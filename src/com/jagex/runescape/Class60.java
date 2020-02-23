@@ -41,7 +41,7 @@ public class Class60 {
 
         anInt1414++;
         TypeFace class40_sub5_sub14_sub1 = new TypeFace((Actor.anIntArray3111), Class17.anIntArray456, (Npc.anIntArray3312), Buffer.anIntArray1972, Class58.aByteArrayArray1370);
-            NpcDefinition.method569(true);
+        NpcDefinition.method569();
             if(arg0 < 4)
                 return null;
             return class40_sub5_sub14_sub1;

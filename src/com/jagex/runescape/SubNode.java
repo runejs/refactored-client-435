@@ -44,7 +44,7 @@ public class SubNode extends Node {
         class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[0];
         class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
         class40_sub5_sub14_sub2.imgPixels = Class58.aByteArrayArray1370[arg0];
-        NpcDefinition.method569(true);
+        NpcDefinition.method569();
         return class40_sub5_sub14_sub2;
     }
 

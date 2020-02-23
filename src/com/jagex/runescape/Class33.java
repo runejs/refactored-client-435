@@ -261,61 +261,59 @@ public class Class33 {
     public static void method406(int arg0, int arg1, int arg2, int arg3) {
         if((arg1 ^ 0xffffffff) == -2) {
             Class67.anInt1594++;
-            Class32.packetBuffer.putPacket(11453, 111);
+            Class32.packetBuffer.putPacket(111);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
         }
         if((arg1 ^ 0xffffffff) == -3) {
-            Class32.packetBuffer.putPacket(11453, 9);
+            Class32.packetBuffer.putPacket(9);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
             Class56.anInt1327++;
         }
         if((arg1 ^ 0xffffffff) == -4) {
             Class6.anInt245++;
-            Class32.packetBuffer.putPacket(11453, 193);
+            Class32.packetBuffer.putPacket(193);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
         }
         if((arg1 ^ 0xffffffff) == -5) {
-            Class32.packetBuffer.putPacket(11453, 53);
+            Class32.packetBuffer.putPacket(53);
             Class58.anInt1369++;
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
         }
         if((arg1 ^ 0xffffffff) == -6) {
-            VertexNormal.anInt1103++;
-            Class32.packetBuffer.putPacket(11453, 94);
+            Class32.packetBuffer.putPacket(94);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
         }
         if(arg1 == 6) {
             Class5.anInt201++;
-            Class32.packetBuffer.putPacket(11453, 213);
+            Class32.packetBuffer.putPacket(213);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
         }
         if(arg1 == 7) {
-            PacketBuffer.anInt2242++;
-            Class32.packetBuffer.putPacket(11453, 46);
+            Class32.packetBuffer.putPacket(46);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
         }
         if((arg1 ^ 0xffffffff) == -9) {
-            Class32.packetBuffer.putPacket(11453, 130);
+            Class32.packetBuffer.putPacket(130);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
             Class40_Sub5_Sub17_Sub1.anInt2979++;
         }
         if((arg1 ^ 0xffffffff) == -10) {
             Class40_Sub5_Sub12.anInt2700++;
-            Class32.packetBuffer.putPacket(11453, 157);
+            Class32.packetBuffer.putPacket(157);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
         }
         if(arg1 == 10) {
             Class40_Sub5_Sub12.anInt2635++;
-            Class32.packetBuffer.putPacket(11453, 84);
+            Class32.packetBuffer.putPacket(84);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
         }

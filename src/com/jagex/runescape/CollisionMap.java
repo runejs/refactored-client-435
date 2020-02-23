@@ -128,25 +128,25 @@ public class CollisionMap {
                 if(Class57.packetid == 156) {
                     long l = Cache.outgoingbuffer.getLongBE();
                     int i_1_ = Cache.outgoingbuffer.getUnsignedShortBE();
-                    RSString class1 = Class60.method991(-64, l).method85(-4305);
+                    RSString string = Class60.method991(-64, l).method85(-4305);
                     for(int i_2_ = 0; i_2_ < Class40_Sub5_Sub17_Sub3.anInt3060; i_2_++) {
                         if(l == Class59.aLongArray1397[i_2_]) {
                             if(i_1_ != Class40_Sub7.anIntArray2131[i_2_]) {
                                 Class40_Sub7.anIntArray2131[i_2_] = i_1_;
                                 ISAAC.redrawTabArea = true;
                                 if((i_1_ ^ 0xffffffff) < -1)
-                                    Class44.method895(127, 5, (Class40_Sub5_Sub17_Sub6.method832(124, (new RSString[]{class1, (Class42.aClass1_988)}))), Class66.aClass1_1567);
+                                    Class44.method895(127, 5, (Class40_Sub5_Sub17_Sub6.method832(124, (new RSString[]{string, (Class42.aClass1_988)}))), Class66.aClass1_1567);
                                 if((i_1_ ^ 0xffffffff) == -1)
-                                    Class44.method895(101, 5, (Class40_Sub5_Sub17_Sub6.method832(85, (new RSString[]{class1, Class38_Sub1.aClass1_1905}))), Class66.aClass1_1567);
+                                    Class44.method895(101, 5, (Class40_Sub5_Sub17_Sub6.method832(85, (new RSString[]{string, Class38_Sub1.aClass1_1905}))), Class66.aClass1_1567);
                             }
-                            class1 = null;
+                            string = null;
                             break;
                         }
                     }
                     boolean bool = false;
-                    if(class1 != null && (Class40_Sub5_Sub17_Sub3.anInt3060 ^ 0xffffffff) > -201) {
+                    if(string != null && (Class40_Sub5_Sub17_Sub3.anInt3060 ^ 0xffffffff) > -201) {
                         Class59.aLongArray1397[(Class40_Sub5_Sub17_Sub3.anInt3060)] = l;
-                        Class40_Sub11.aClass1Array2147[(Class40_Sub5_Sub17_Sub3.anInt3060)] = class1;
+                        Class40_Sub11.aClass1Array2147[(Class40_Sub5_Sub17_Sub3.anInt3060)] = string;
                         Class40_Sub7.anIntArray2131[(Class40_Sub5_Sub17_Sub3.anInt3060)] = i_1_;
                         Class40_Sub5_Sub17_Sub3.anInt3060++;
                         ISAAC.redrawTabArea = true;

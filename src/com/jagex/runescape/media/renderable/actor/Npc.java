@@ -93,7 +93,7 @@ public class Npc extends Actor {
                     else if((Class62.anInt1470 ^ 0xffffffff) != -1 || Class12.aClass39_387.anInt921 >= 40) {
                         Class26.anInt616++;
                         int i = 0;
-                        Class32.packetBuffer.putPacket(11453, 210);
+                        Class32.packetBuffer.putPacket(210);
                         Class32.packetBuffer.putByte(0);
                         int i_2_ = Class32.packetBuffer.currentPosition;
                         for(int i_3_ = 0; i_3_ < Class12.aClass39_387.anInt921; i_3_++) {
@@ -172,7 +172,7 @@ public class Npc extends Actor {
                     if((l ^ 0xffffffffffffffffL) < -4096L)
                         l = 4095L;
                     int i_12_ = (int) l;
-                    Class32.packetBuffer.putPacket(11453, 234);
+                    Class32.packetBuffer.putPacket(234);
                     int i_13_ = i_10_ * 765 + i;
                     Class32.packetBuffer.putIntLE(((i_11_ << -1245872941) + ((i_12_ << 651937044) + i_13_)));
                 }
@@ -184,20 +184,20 @@ public class Npc extends Actor {
                     Class13.anInt415++;
                     Class19.anInt487 = 20;
                     HashTable.aBoolean565 = false;
-                    Class32.packetBuffer.putPacket(11453, 58);
+                    Class32.packetBuffer.putPacket(58);
                     Class32.packetBuffer.putShortBE(Class58.cameraHorizontal);
                     Class32.packetBuffer.putShortBE(Class65.anInt1537);
                 }
                 if(HashTable.aBoolean571 != false && !Class35.aBoolean1735 == true) {
                     Class60.anInt1406++;
                     Class35.aBoolean1735 = true;
-                    Class32.packetBuffer.putPacket(11453, 160);
+                    Class32.packetBuffer.putPacket(160);
                     Class32.packetBuffer.putByte(1);
                 }
                 if(!HashTable.aBoolean571 != false && Class35.aBoolean1735 == true) {
                     Class35.aBoolean1735 = false;
                     Class60.anInt1406++;
-                    Class32.packetBuffer.putPacket(11453, 160);
+                    Class32.packetBuffer.putPacket(160);
                     Class32.packetBuffer.putByte(0);
                 }
                 Class45.method910(-32322);
@@ -279,7 +279,7 @@ public class Npc extends Actor {
                                             class40_sub5_sub12.anIntArray2685[i_17_] = -1;
                                             class40_sub5_sub12.anIntArray2710[i_17_] = 0;
                                         }
-                                        Class32.packetBuffer.putPacket(11453, 83);
+                                        Class32.packetBuffer.putPacket(83);
                                         Class32.packetBuffer.putDualByte(i, 128);
                                         Class32.packetBuffer.putCustomNegativeOffsetShortBE(Class58.anInt1352, -128);
                                         Class32.packetBuffer.putOffsetShortLE(Class55.anInt1288);
@@ -360,7 +360,7 @@ public class Npc extends Actor {
                         if(i_20_ > 4500 && i_21_ > 4500) {
                             Class32.anInt771 = 250;
                             Class40_Sub5_Sub13.method650(true, 4000);
-                            Class32.packetBuffer.putPacket(11453, 216);
+                            Class32.packetBuffer.putPacket(216);
                         }
                         Player.anInt3264++;
                         Class38_Sub1.anInt1923++;
@@ -406,7 +406,7 @@ public class Npc extends Actor {
                         if(Class51.mapZoomOffset > 10)
                             Main.anInt1766 = -1;
                         if((Class22.anInt537 ^ 0xffffffff) < -51) {
-                            Class32.packetBuffer.putPacket(11453, 13);
+                            Class32.packetBuffer.putPacket(13);
                             Class49.anInt1142++;
                         }
                         do {

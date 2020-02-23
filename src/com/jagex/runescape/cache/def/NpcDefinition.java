@@ -12,38 +12,23 @@ import com.jagex.runescape.util.Signlink;
 import java.awt.*;
 
 public class NpcDefinition extends SubNode {
-    public static int anInt2373;
     public static Class6_Sub1 aClass6_Sub1_2377;
-    public static int anInt2378;
-    public static int anInt2379;
     public static RSString aClass1_2380;
     public static RSString aClass1_2383 = Class58.method978("Please wait 1 minute and try again)3");
     public static RSString aClass1_2384;
     public static int[] anIntArray2386;
     public static RSString aClass1_2388;
-    public static int anInt2390;
     public static RSString aClass1_2392;
     public static int anInt2394;
     public static RSString aClass1_2396;
-    public static int anInt2398;
     public static RSString aClass1_2399;
-    public static int anInt2400;
     public static RSString aClass1_2401;
-    public static int anInt2403;
     public static int anInt2404;
     public static RSString aClass1_2408;
     public static RSString aClass1_2410;
-    public static int anInt2412;
-    public static int anInt2414;
     public static byte[] aByteArray2416;
     public static RSString aClass1_2417;
-    public static int anInt2419;
-    public static int anInt2420;
-    public static int anInt2422;
     public static RSString aClass1_2423;
-    public static int anInt2424;
-    public static int anInt2429;
-    public static int anInt2431;
     public static RSString aClass1_2432;
     public static int anInt2433;
 
@@ -68,7 +53,7 @@ public class NpcDefinition extends SubNode {
 
     public boolean isClickable = true;
     public int tileSpacesOccupied = 1;
-    public int[] models_2;
+    public int[] headModels;
     public RSString[] options = new RSString[5];
     public int headIcon;
     public int stanceAnimation = -1;
@@ -117,7 +102,6 @@ public class NpcDefinition extends SubNode {
     }
 
     public static void method567(int arg0) {
-        anInt2400++;
         if(arg0 != 1) {
             aClass1_2432 = null;
         }
@@ -126,20 +110,16 @@ public class NpcDefinition extends SubNode {
         }
     }
 
-    public static void method569(boolean arg0) {
+    public static void method569() {
         Class17.anIntArray456 = null;
         Class58.aByteArrayArray1370 = null;
         Npc.anIntArray3312 = null;
-        if(arg0 == true) {
-            Actor.anIntArray3111 = null;
-            Buffer.anIntArray1972 = null;
-            Class57.anIntArray1347 = null;
-            anInt2403++;
-        }
+        Actor.anIntArray3111 = null;
+        Buffer.anIntArray1972 = null;
+        Class57.anIntArray1347 = null;
     }
 
     public static void method570(int arg0, int arg1, Player arg2, int arg3) {
-        anInt2431++;
         if(arg3 == -1) {
             if(arg2.anInt3141 == arg0 && arg0 != -1) {
                 int i = Class68_Sub1.method1050(arg0, 2).anInt2483;
@@ -173,19 +153,16 @@ public class NpcDefinition extends SubNode {
         } catch(Exception exception) {
             Class62.aCanvas1469.repaint();
         }
-        anInt2429++;
     }
 
     public static int method576(boolean arg0) {
         if(arg0 != false) {
             aClass1_2432 = null;
         }
-        anInt2422++;
         return 19;
     }
 
     public static ImageRGB method578(int arg0) {
-        anInt2379++;
         ImageRGB class40_sub5_sub14_sub4 = new ImageRGB();
         class40_sub5_sub14_sub4.maxWidth = ItemDefinition.anInt2846;
         class40_sub5_sub14_sub4.maxHeight = RSApplet.anInt31;
@@ -202,14 +179,13 @@ public class NpcDefinition extends SubNode {
         for(int i_5_ = 0; i_5_ < i; i_5_++) {
             class40_sub5_sub14_sub4.pixels[i_5_] = (Buffer.anIntArray1972[Class66.method1021(255, is[i_5_])]);
         }
-        method569(true);
+        method569();
         return class40_sub5_sub14_sub4;
     }
 
     public static void method580(Signlink arg0, byte arg1, Buffer arg2, int arg3) {
         Class40_Sub11 class40_sub11 = new Class40_Sub11();
         class40_sub11.anInt2160 = arg2.getUnsignedByte();
-        anInt2424++;
         class40_sub11.anInt2166 = arg2.getIntBE();
         class40_sub11.anIntArray2154 = new int[class40_sub11.anInt2160];
         int i = 123 / ((-34 - arg1) / 43);
@@ -273,7 +249,6 @@ public class NpcDefinition extends SubNode {
     }
 
     public static void method581(int arg0) {
-
         anIntArray2386 = null;
         aClass6_Sub1_2377 = null;
         aClass1_2388 = null;
@@ -296,8 +271,6 @@ public class NpcDefinition extends SubNode {
     }
 
     public Model method568(byte arg0, Class40_Sub5_Sub7 arg1, Class40_Sub5_Sub7 arg2, int arg3, int arg4) {
-
-        anInt2412++;
         if(arg0 != -50) {
             degreesToTurn = 31;
         }
@@ -355,8 +328,6 @@ public class NpcDefinition extends SubNode {
     }
 
     public boolean method571(int arg0) {
-
-        anInt2378++;
         if(childrenIds == null) {
             return true;
         }
@@ -367,7 +338,6 @@ public class NpcDefinition extends SubNode {
             i = Class58.varbitmasks[settingId];
         }
         return i >= 0 && childrenIds.length > i && (childrenIds[i] ^ 0xffffffff) != 0;
-
     }
 
     public void readValue(Buffer buffer, int opcode) {
@@ -409,9 +379,9 @@ public class NpcDefinition extends SubNode {
             }
         } else if(opcode == 60) {
             int length = buffer.getUnsignedByte();
-            models_2 = new int[length];
+            headModels = new int[length];
             for(int i_4_ = 0; length > i_4_; i_4_++) {
-                models_2[i_4_] = buffer.getUnsignedShortBE();
+                headModels[i_4_] = buffer.getUnsignedShortBE();
             }
         } else if(opcode == 93) {
             renderOnMinimap = false;
@@ -451,25 +421,19 @@ public class NpcDefinition extends SubNode {
         } else if(opcode == 107) {
             isClickable = false;
         }
-        anInt2414++;
     }
 
     public void readValues(Buffer npcDefinitionBuffer) {
-
-        for(; ; ) {
+        while(true) {
             int opcode = npcDefinitionBuffer.getUnsignedByte();
             if(opcode == 0) {
                 break;
             }
             readValue(npcDefinitionBuffer, opcode);
         }
-        anInt2420++;
-
     }
 
     public Model method575(byte arg0) {
-
-        anInt2419++;
         if(childrenIds != null) {
             NpcDefinition class40_sub5_sub5 = method577(-1);
             if(class40_sub5_sub5 == null) {
@@ -477,12 +441,12 @@ public class NpcDefinition extends SubNode {
             }
             return class40_sub5_sub5.method575((byte) 112);
         }
-        if(models_2 == null) {
+        if(headModels == null) {
             return null;
         }
         boolean bool = false;
-        for(int i = 0; i < models_2.length; i++) {
-            if(!Class67.aClass6_1577.loaded(models_2[i], 0)) {
+        for(int i = 0; i < headModels.length; i++) {
+            if(!Class67.aClass6_1577.loaded(headModels[i], 0)) {
                 bool = true;
             }
         }
@@ -492,9 +456,9 @@ public class NpcDefinition extends SubNode {
         if(bool) {
             return null;
         }
-        Model[] class40_sub5_sub17_sub5s = new Model[models_2.length];
-        for(int i = 0; i < models_2.length; i++) {
-            class40_sub5_sub17_sub5s[i] = Model.getModel(Class67.aClass6_1577, models_2[i], 0);
+        Model[] class40_sub5_sub17_sub5s = new Model[headModels.length];
+        for(int i = 0; i < headModels.length; i++) {
+            class40_sub5_sub17_sub5s[i] = Model.getModel(Class67.aClass6_1577, headModels[i], 0);
         }
         Model class40_sub5_sub17_sub5;
         if(class40_sub5_sub17_sub5s.length != 1) {
@@ -508,13 +472,10 @@ public class NpcDefinition extends SubNode {
             }
         }
         return class40_sub5_sub17_sub5;
-
     }
 
     public NpcDefinition method577(int arg0) {
-
         int i = arg0;
-        anInt2398++;
         if(varBitId != -1) {
             i = Class40_Sub5_Sub6.method585(varBitId, 1369);
         } else if(settingId != -1) {
@@ -524,13 +485,5 @@ public class NpcDefinition extends SubNode {
             return null;
         }
         return Landscape.method932((byte) -114, childrenIds[i]);
-
-    }
-
-    public void method579(byte arg0) {
-
-        anInt2373++;
-        int i = -82 % ((arg0 - 15) / 41);
-
     }
 }

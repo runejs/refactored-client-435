@@ -366,17 +366,16 @@ public class Class38_Sub1 extends Class38 {
                 int i_25_ = Class24.anIntArray581[i_10_];
                 if((arg11 ^ 0xffffffff) == -1) {
                     Class34.anInt838++;
-                    Class32.packetBuffer.putPacket(11453, 73);
+                    Class32.packetBuffer.putPacket(73);
                     Class32.packetBuffer.putByte(3 + (i_12_ + i_12_));
                 }
                 if(arg11 == 1) {
-                    Class32.packetBuffer.putPacket(11453, 236);
+                    Class32.packetBuffer.putPacket(236);
                     SubNode.anInt2096++;
                     Class32.packetBuffer.putByte(14 + i_12_ + i_12_ + 3);
                 }
                 if(arg11 == 2) {
-                    VertexNormal.anInt1106++;
-                    Class32.packetBuffer.putPacket(11453, 89);
+                    Class32.packetBuffer.putPacket(89);
                     Class32.packetBuffer.putByte(3 + (i_12_ + i_12_));
                 }
                 Class32.packetBuffer.putShortLE(i_24_ + Class26.anInt635);

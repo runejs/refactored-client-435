@@ -259,7 +259,7 @@ public class Class5 {
                 Class45.aClass30_1082.method383(true, (byte) -110);
             if((i ^ 0xffffffff) == -327) {
                 Class22_Sub1.anInt1869++;
-                Class32.packetBuffer.putPacket(arg0 + 11365, 231);
+                Class32.packetBuffer.putPacket(231);
                 Class45.aClass30_1082.method375(arg0 ^ 0x58, Class32.packetBuffer);
                 return true;
             }
@@ -268,8 +268,7 @@ public class Class5 {
             if((i ^ 0xffffffff) <= -602 && (i ^ 0xffffffff) >= -614) {
                 PacketBuffer.method516(123);
                 if((Class66.aClass1_1550.length() ^ 0xffffffff) < -1) {
-                    Class32.packetBuffer.putPacket(11453, 202);
-                    VertexNormal.anInt1096++;
+                    Class32.packetBuffer.putPacket(202);
                     Class32.packetBuffer.putLongBE(Class66.aClass1_1550.method58((byte) 102));
                     Class32.packetBuffer.putByte(-601 + i);
                     Class32.packetBuffer.putByte(Class67.aBoolean1601 ? 1 : 0);

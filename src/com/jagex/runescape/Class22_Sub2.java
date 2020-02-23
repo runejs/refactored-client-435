@@ -50,7 +50,7 @@ public abstract class Class22_Sub2 extends Class22 {
                 class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
                 class40_sub5_sub14_sub2.imgPixels = Class58.aByteArrayArray1370[i];
             }
-            NpcDefinition.method569(true);
+        NpcDefinition.method569();
             return class40_sub5_sub14_sub2s;
 
     }
@@ -88,7 +88,7 @@ public abstract class Class22_Sub2 extends Class22 {
                 for(int i_5_ = 0; (i_5_ ^ 0xffffffff) > (i_4_ ^ 0xffffffff); i_5_++)
                     class40_sub5_sub14_sub4.pixels[i_5_] = (Buffer.anIntArray1972[Class66.method1021(255, is[i_5_])]);
             }
-            NpcDefinition.method569(true);
+        NpcDefinition.method569();
             return class40_sub5_sub14_sub4s;
 
     }

@@ -241,7 +241,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 Cache.aBoolean330 = true;
                 Class35.publicChatMode = (1 + Class35.publicChatMode) % 4;
                 Class52.redrawChatbox = true;
-                Class32.packetBuffer.putPacket(11453, 32);
+                Class32.packetBuffer.putPacket(32);
                 Class34.anInt821++;
                 Class32.packetBuffer.putByte(Class35.publicChatMode);
                 Class32.packetBuffer.putByte(Class4.anInt185);
@@ -252,7 +252,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 Class4.anInt185 = (Class4.anInt185 + 1) % 3;
                 Cache.aBoolean330 = true;
                 Class34.anInt821++;
-                Class32.packetBuffer.putPacket(arg0 ^ ~0x2c88, 32);
+                Class32.packetBuffer.putPacket(32);
                 Class32.packetBuffer.putByte(Class35.publicChatMode);
                 Class32.packetBuffer.putByte(Class4.anInt185);
                 Class32.packetBuffer.putByte(ItemDefinition.anInt2797);
@@ -261,7 +261,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 ItemDefinition.anInt2797 = (ItemDefinition.anInt2797 + 1) % 3;
                 Cache.aBoolean330 = true;
                 Class52.redrawChatbox = true;
-                Class32.packetBuffer.putPacket(11453, 32);
+                Class32.packetBuffer.putPacket(32);
                 Class34.anInt821++;
                 Class32.packetBuffer.putByte(Class35.publicChatMode);
                 Class32.packetBuffer.putByte(Class4.anInt185);

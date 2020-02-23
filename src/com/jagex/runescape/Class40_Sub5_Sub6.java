@@ -115,7 +115,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                 }
                 if(bool)
                     break;
-                arg2.putPacket(11453, arg1);
+                arg2.putPacket(arg1);
                 arg2.putByte(0);
                 int i = arg2.currentPosition;
                 arg2.putIntBE(class40_sub11.anInt2166);
@@ -251,7 +251,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                 int i = 0;
                                 if(Class66.aClass1_1543.method82(arg0 + 105))
                                     i = Class66.aClass1_1543.method52();
-                                Class32.packetBuffer.putPacket(11453, 238);
+                                Class32.packetBuffer.putPacket(238);
                                 Class32.packetBuffer.putIntBE(i);
                             }
                             Class52.redrawChatbox = true;
@@ -374,7 +374,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                         i = 4;
                                         Class66.chatboxInput = (Class66.chatboxInput.substring(aClass1_2438.length()));
                                     }
-                                    Class32.packetBuffer.putPacket(11453, 75);
+                                    Class32.packetBuffer.putPacket(75);
                                     Class32.packetBuffer.putByte(0);
                                     int i_12_ = (Class32.packetBuffer.currentPosition);
                                     Class32.packetBuffer.putByte(i_11_);
@@ -385,13 +385,13 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                         Class34.anInt821++;
                                         Cache.aBoolean330 = true;
                                         Class35.publicChatMode = 3;
-                                        Class32.packetBuffer.putPacket(11453, 32);
+                                        Class32.packetBuffer.putPacket(32);
                                         Class32.packetBuffer.putByte(Class35.publicChatMode);
                                         Class32.packetBuffer.putByte(Class4.anInt185);
                                         Class32.packetBuffer.putByte(ItemDefinition.anInt2797);
                                     }
                                 } else {
-                                    Class32.packetBuffer.putPacket(11453, 248);
+                                    Class32.packetBuffer.putPacket(248);
                                     Class32.packetBuffer.putByte(-1 + Class66.chatboxInput.length());
                                     Class32.packetBuffer.method505(Class66.chatboxInput.substring(2));
                                     CollisionMap.anInt149++;
@@ -412,7 +412,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         if(ItemDefinition.anInt2854 == 84) {
                             if(Class66.aClass1_1543.length() > 0) {
                                 Player.anInt3280++;
-                                Class32.packetBuffer.putPacket(11453, 86);
+                                Class32.packetBuffer.putPacket(86);
                                 Class32.packetBuffer.putLongBE(Class66.aClass1_1543.method58((byte) 89));
                             }
                             Class40_Sub5_Sub15.inputType = 0;
@@ -441,7 +441,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         }
                         if((Class37.anInt876 ^ 0xffffffff) == -4 && Class66.aClass1_1565.length() > 0) {
                             Class44.anInt1044++;
-                            Class32.packetBuffer.putPacket(11453, 207);
+                            Class32.packetBuffer.putPacket(207);
                             Class32.packetBuffer.putByte(0);
                             int i = Class32.packetBuffer.currentPosition;
                             Class32.packetBuffer.putLongBE(PacketBuffer.aLong2241);
@@ -451,7 +451,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                 Class4.anInt185 = 1;
                                 Cache.aBoolean330 = true;
                                 Class34.anInt821++;
-                                Class32.packetBuffer.putPacket(11453, 32);
+                                Class32.packetBuffer.putPacket(32);
                                 Class32.packetBuffer.putByte(Class35.publicChatMode);
                                 Class32.packetBuffer.putByte(Class4.anInt185);
                                 Class32.packetBuffer.putByte(ItemDefinition.anInt2797);
