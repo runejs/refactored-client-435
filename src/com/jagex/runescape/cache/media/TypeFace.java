@@ -1,7 +1,6 @@
 package com.jagex.runescape.cache.media;
 
 import com.jagex.runescape.Class40_Sub5_Sub17_Sub3;
-import com.jagex.runescape.Class58;
 import com.jagex.runescape.RSString;
 import com.jagex.runescape.Rasterizer;
 
@@ -9,24 +8,24 @@ import java.util.Random;
 
 public class TypeFace extends Rasterizer {
     public static RSString[] aClass1Array2897 = new RSString[100];
-    public static RSString col_cyan = Class58.method978("cya");
-    public static RSString col_light_orange = Class58.method978("or1");
-    public static RSString col_blue = Class58.method978("blu");
-    public static RSString col_magenta = Class58.method978("mag");
-    public static RSString col_white = Class58.method978("whi");
-    public static RSString col_dark_red_dbl = Class58.method978("dbl");
-    public static RSString col_yellow_green = Class58.method978("gr1");
-    public static RSString col_light_green = Class58.method978("gr2");
-    public static RSString col_red = Class58.method978("red");
-    public static RSString col_green = Class58.method978("gre");
-    public static RSString col_orange = Class58.method978("or2");
-    public static RSString col_black = Class58.method978("bla");
-    public static RSString col_red_orange = Class58.method978("or3");
-    public static RSString col_orange_lre = Class58.method978("lre");
-    public static RSString col_dark_red = Class58.method978("dre");
-    public static RSString col_green_gr3 = Class58.method978("gr3");
-    public static RSString col_yellow = Class58.method978("yel");
-    public static RSString effect_strikethough = Class58.method978("str");
+    public static RSString col_cyan = RSString.CreateString("cya");
+    public static RSString col_light_orange = RSString.CreateString("or1");
+    public static RSString col_blue = RSString.CreateString("blu");
+    public static RSString col_magenta = RSString.CreateString("mag");
+    public static RSString col_white = RSString.CreateString("whi");
+    public static RSString col_dark_red_dbl = RSString.CreateString("dbl");
+    public static RSString col_yellow_green = RSString.CreateString("gr1");
+    public static RSString col_light_green = RSString.CreateString("gr2");
+    public static RSString col_red = RSString.CreateString("red");
+    public static RSString col_green = RSString.CreateString("gre");
+    public static RSString col_orange = RSString.CreateString("or2");
+    public static RSString col_black = RSString.CreateString("bla");
+    public static RSString col_red_orange = RSString.CreateString("or3");
+    public static RSString col_orange_lre = RSString.CreateString("lre");
+    public static RSString col_dark_red = RSString.CreateString("dre");
+    public static RSString col_green_gr3 = RSString.CreateString("gr3");
+    public static RSString col_yellow = RSString.CreateString("yel");
+    public static RSString effect_strikethough = RSString.CreateString("str");
 
     public Random aRandom2902;
     public int[] characterScreenWidths;

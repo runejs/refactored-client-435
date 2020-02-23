@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -14,13 +14,13 @@ public class CollisionMap {
     public static int anInt158;
     public static Object anObject162 = new Object();
     public static int anInt163 = -1;
-    public static RSString aClass1_164 = Class58.method978("Konfig geladen)3");
+    public static RSString aClass1_164 = RSString.CreateString("Konfig geladen)3");
     public static int anInt165 = 0;
     public static Class8 aClass8_166;
-    public static RSString aClass1_167 = Class58.method978("Continue");
+    public static RSString aClass1_167 = RSString.CreateString("Continue");
     public static int anInt168;
     public static byte[] aByteArray169 = new byte[]{95, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57};
-    public static RSString aClass1_170 = Class58.method978("(X");
+    public static RSString aClass1_170 = RSString.CreateString("(X");
     public static int anInt172;
 
 
@@ -355,7 +355,7 @@ public class CollisionMap {
                 int i_41_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                 int i_42_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
                 Player.anInt3267 = i_40_ >> 2097688801;
-                Class40_Sub5_Sub13.localPlayer.method787(i_42_, -7717, (i_40_ & 0x1) == 1, i_41_);
+                Player.localPlayer.method787(i_42_, -7717, (i_40_ & 0x1) == 1, i_41_);
                 Class57.packetid = -1;
                 return true;
             }
@@ -404,9 +404,9 @@ public class CollisionMap {
                     Class52.redrawChatbox = true;
                     Class43.openChatboxWidgetId = -1;
                 }
-                if(NpcDefinition.anInt2433 != -1) {
-                    Class55.method958(NpcDefinition.anInt2433, -14222);
-                    NpcDefinition.anInt2433 = -1;
+                if(ActorDefinition.anInt2433 != -1) {
+                    Class55.method958(ActorDefinition.anInt2433, -14222);
+                    ActorDefinition.anInt2433 = -1;
                     Floor.method559(30, 91);
                 }
                 if(Class40_Sub5_Sub9.anInt2562 != -1) {
@@ -476,9 +476,9 @@ public class CollisionMap {
                     Class52.redrawChatbox = true;
                     Class43.openChatboxWidgetId = -1;
                 }
-                if((NpcDefinition.anInt2433 ^ 0xffffffff) != 0) {
-                    Class55.method958(NpcDefinition.anInt2433, -14222);
-                    NpcDefinition.anInt2433 = -1;
+                if((ActorDefinition.anInt2433 ^ 0xffffffff) != 0) {
+                    Class55.method958(ActorDefinition.anInt2433, -14222);
+                    ActorDefinition.anInt2433 = -1;
                     Floor.method559(30, -117);
                 }
                 if((Class40_Sub5_Sub9.anInt2562 ^ 0xffffffff) != 0) {
@@ -548,9 +548,9 @@ public class CollisionMap {
                     Class55.method958(Class43.openChatboxWidgetId, -14222);
                     Class43.openChatboxWidgetId = -1;
                 }
-                if((NpcDefinition.anInt2433 ^ 0xffffffff) != (i_58_ ^ 0xffffffff)) {
-                    Class55.method958(NpcDefinition.anInt2433, -14222);
-                    NpcDefinition.anInt2433 = i_58_;
+                if((ActorDefinition.anInt2433 ^ 0xffffffff) != (i_58_ ^ 0xffffffff)) {
+                    Class55.method958(ActorDefinition.anInt2433, -14222);
+                    ActorDefinition.anInt2433 = i_58_;
                     Floor.method559(35, -57);
                 }
                 if(i_58_ != Class40_Sub5_Sub9.anInt2562) {
@@ -574,9 +574,9 @@ public class CollisionMap {
                     Class52.redrawChatbox = true;
                     Class43.openChatboxWidgetId = -1;
                 }
-                if((NpcDefinition.anInt2433 ^ 0xffffffff) != 0) {
-                    Class55.method958(NpcDefinition.anInt2433, -14222);
-                    NpcDefinition.anInt2433 = -1;
+                if((ActorDefinition.anInt2433 ^ 0xffffffff) != 0) {
+                    Class55.method958(ActorDefinition.anInt2433, -14222);
+                    ActorDefinition.anInt2433 = -1;
                     Floor.method559(30, -84);
                 }
                 if(Class40_Sub5_Sub9.anInt2562 != -1) {
@@ -604,9 +604,9 @@ public class CollisionMap {
                     Class29.anInt673 = -1;
                     ISAAC.redrawTabArea = true;
                 }
-                if(NpcDefinition.anInt2433 != -1) {
-                    Class55.method958(NpcDefinition.anInt2433, -14222);
-                    NpcDefinition.anInt2433 = -1;
+                if(ActorDefinition.anInt2433 != -1) {
+                    Class55.method958(ActorDefinition.anInt2433, -14222);
+                    ActorDefinition.anInt2433 = -1;
                     Floor.method559(30, -53);
                 }
                 if((Class40_Sub5_Sub9.anInt2562 ^ 0xffffffff) != 0) {
@@ -725,9 +725,9 @@ public class CollisionMap {
                     Class43.openChatboxWidgetId = -1;
                     Class52.redrawChatbox = true;
                 }
-                if((NpcDefinition.anInt2433 ^ 0xffffffff) != 0) {
-                    Class55.method958(NpcDefinition.anInt2433, -14222);
-                    NpcDefinition.anInt2433 = -1;
+                if((ActorDefinition.anInt2433 ^ 0xffffffff) != 0) {
+                    Class55.method958(ActorDefinition.anInt2433, -14222);
+                    ActorDefinition.anInt2433 = -1;
                     Floor.method559(30, 81);
                 }
                 if((Class40_Sub5_Sub9.anInt2562 ^ 0xffffffff) != 0) {
@@ -871,7 +871,7 @@ public class CollisionMap {
                     Player.anInt3288 = 2;
                     Class68.anInt1637 = Cache.outgoingbuffer.getUnsignedShortBE();
                     Class4.anInt175 = Cache.outgoingbuffer.getUnsignedShortBE();
-                    NpcDefinition.anInt2404 = Cache.outgoingbuffer.getUnsignedByte();
+                    ActorDefinition.anInt2404 = Cache.outgoingbuffer.getUnsignedByte();
                 }
                 if((Player.anInt3288 ^ 0xffffffff) == -11)
                     Class68.anInt1623 = Cache.outgoingbuffer.getUnsignedShortBE();
@@ -882,7 +882,7 @@ public class CollisionMap {
                 int i_83_ = Cache.outgoingbuffer.getIntLE();
                 Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_83_, (byte) -107);
                 class40_sub5_sub12.anInt2687 = 3;
-                class40_sub5_sub12.anInt2673 = Class40_Sub5_Sub13.localPlayer.aClass30_3282.method374(-20874);
+                class40_sub5_sub12.anInt2673 = Player.localPlayer.aClass30_3282.method374(-20874);
                 Class57.packetid = -1;
                 return true;
             }
@@ -1026,7 +1026,7 @@ public class CollisionMap {
                 return true;
             }
             if((Class57.packetid ^ 0xffffffff) == -241) {
-                NpcDefinition.method580(ISAAC.aClass31_521, (byte) -98, Cache.outgoingbuffer, Class40_Sub5_Sub12.packetsize);
+                ActorDefinition.method580(ISAAC.aClass31_521, (byte) -98, Cache.outgoingbuffer, Class40_Sub5_Sub12.packetsize);
                 Class57.packetid = -1;
                 return true;
             }
@@ -1108,7 +1108,7 @@ public class CollisionMap {
         } catch(java.io.IOException ioexception) {
             Class59.dropClient(2578);
         } catch(Exception exception) {
-            String string = ("T2 - " + Class57.packetid + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + Class40_Sub5_Sub12.packetsize + "," + (Class40_Sub5_Sub2.anInt2307 + (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0])) + "," + ((Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]) + Class26.anInt635) + " - ");
+            String string = ("T2 - " + Class57.packetid + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + Class40_Sub5_Sub12.packetsize + "," + (Class40_Sub5_Sub2.anInt2307 + (Player.localPlayer.anIntArray3088[0])) + "," + ((Player.localPlayer.anIntArray3135[0]) + Class26.anInt635) + " - ");
             for(int i = 0; (((Class40_Sub5_Sub12.packetsize ^ 0xffffffff) < (i ^ 0xffffffff)) && (i ^ 0xffffffff) > -51); i++)
                 string += (Cache.outgoingbuffer.buffer[i] + ",");
             Class6.method169(string, (byte) -120, exception);

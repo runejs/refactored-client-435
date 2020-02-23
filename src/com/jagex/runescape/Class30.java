@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.io.Buffer;
@@ -12,7 +13,7 @@ public class Class30 {
     public static RSString aClass1_682;
     public static int[] anIntArray684;
     public static int[] anIntArray685;
-    public static RSString aClass1_686 = Class58.method978("*6n");
+    public static RSString aClass1_686 = RSString.CreateString("*6n");
     public static boolean aBoolean687;
     public static int[] anIntArray688;
     public static int anInt689;
@@ -43,9 +44,9 @@ public class Class30 {
     public static Class64 aClass64_717;
 
     static {
-        aClass1_699 = Class58.method978("Trade)4compete");
+        aClass1_699 = RSString.CreateString("Trade)4compete");
         aClass1_701 = aClass1_699;
-        aClass1_710 = Class58.method978("Off");
+        aClass1_710 = RSString.CreateString("Off");
         anInt709 = 50;
         anIntArray712 = new int[anInt709];
         anIntArray684 = new int[anInt709];
@@ -53,12 +54,12 @@ public class Class30 {
         anIntArray715 = new int[anInt709];
         aClass1_682 = aClass1_710;
         anIntArray688 = new int[anInt709];
-        aClass1_698 = Class58.method978("(U(Y");
+        aClass1_698 = RSString.CreateString("(U(Y");
         anIntArray695 = new int[anInt709];
         anInt708 = -1;
         anIntArray685 = new int[anInt709];
         aClass1Array697 = new RSString[anInt709];
-        aClass1_716 = Class58.method978("scape main");
+        aClass1_716 = RSString.CreateString("scape main");
     }
 
     public boolean aBoolean683;
@@ -127,7 +128,7 @@ public class Class30 {
         if(arg0 != -20874)
             return 109;
         if((anInt696 ^ 0xffffffff) != 0)
-            return (Landscape.method932((byte) -105, anInt696).anInt2427 + 305419896);
+            return (ActorDefinition.getDefinition((byte) -105, anInt696).id + 305419896);
         return (anIntArray692[1] + (anIntArray692[11] << -991626235) + ((anIntArray713[4] << -1350296556) + ((anIntArray713[0] << 1525506553) + (anIntArray692[0] << 1592541583)) + (anIntArray692[8] << 307187338)));
 
     }
@@ -152,7 +153,7 @@ public class Class30 {
 
         anInt694++;
         if((anInt696 ^ 0xffffffff) != 0)
-            return Landscape.method932((byte) -101, anInt696).method568((byte) -50, arg0, arg1, arg2, arg3);
+            return ActorDefinition.getDefinition((byte) -101, anInt696).method568((byte) -50, arg0, arg1, arg2, arg3);
         long l = aLong718;
         int[] is = anIntArray692;
         if(arg0 != null && ((arg0.anInt2477 ^ 0xffffffff) <= -1 || arg0.anInt2489 >= 0)) {
@@ -205,9 +206,9 @@ public class Class30 {
                 class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, i);
                 for(int i_6_ = 0; (i_6_ ^ 0xffffffff) > -6; i_6_++) {
                     if(anIntArray713[i_6_] != 0) {
-                        class40_sub5_sub17_sub5.method803((Class40_Sub5_Sub17_Sub6.anIntArrayArray3238[i_6_][0]), (Class40_Sub5_Sub17_Sub6.anIntArrayArray3238[i_6_][anIntArray713[i_6_]]));
+                        class40_sub5_sub17_sub5.replaceColor((Class40_Sub5_Sub17_Sub6.anIntArrayArray3238[i_6_][0]), (Class40_Sub5_Sub17_Sub6.anIntArrayArray3238[i_6_][anIntArray713[i_6_]]));
                         if(i_6_ == 1)
-                            class40_sub5_sub17_sub5.method803(Class35.anIntArray1738[0], (Class35.anIntArray1738[anIntArray713[i_6_]]));
+                            class40_sub5_sub17_sub5.replaceColor(Class35.anIntArray1738[0], (Class35.anIntArray1738[anIntArray713[i_6_]]));
                     }
                 }
                 class40_sub5_sub17_sub5.method810();
@@ -267,7 +268,7 @@ public class Class30 {
 
         anInt689++;
         if(anInt696 != -1)
-            return Landscape.method932((byte) -117, anInt696).method575((byte) 111);
+            return ActorDefinition.getDefinition((byte) -117, anInt696).getHeadModel((byte) 111);
         boolean bool = false;
         for(int i = 0; i < 12; i++) {
             int i_11_ = anIntArray692[i];
@@ -298,9 +299,9 @@ public class Class30 {
         Model class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, i);
         for(int i_14_ = 0; i_14_ < 5; i_14_++) {
             if((anIntArray713[i_14_] ^ 0xffffffff) != -1) {
-                class40_sub5_sub17_sub5.method803(Class40_Sub5_Sub17_Sub6.anIntArrayArray3238[i_14_][0], (Class40_Sub5_Sub17_Sub6.anIntArrayArray3238[i_14_][anIntArray713[i_14_]]));
+                class40_sub5_sub17_sub5.replaceColor(Class40_Sub5_Sub17_Sub6.anIntArrayArray3238[i_14_][0], (Class40_Sub5_Sub17_Sub6.anIntArrayArray3238[i_14_][anIntArray713[i_14_]]));
                 if(i_14_ == 1)
-                    class40_sub5_sub17_sub5.method803(Class35.anIntArray1738[0], Class35.anIntArray1738[anIntArray713[i_14_]]);
+                    class40_sub5_sub17_sub5.replaceColor(Class35.anIntArray1738[0], Class35.anIntArray1738[anIntArray713[i_14_]]);
             }
         }
         return class40_sub5_sub17_sub5;

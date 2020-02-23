@@ -12,10 +12,10 @@ import java.awt.*;
 public class Class52 {
     public static int anInt1211;
     public static int anInt1212;
-    public static RSString aClass1_1213 = Class58.method978(" @whi@(X");
+    public static RSString aClass1_1213 = RSString.CreateString(" @whi@(X");
     public static int anInt1214;
     public static volatile boolean aBoolean1215;
-    public static RSString aClass1_1216 = Class58.method978("New User");
+    public static RSString aClass1_1216 = RSString.CreateString("New User");
     public static byte[][] aByteArrayArray1217;
     public static RSString aClass1_1218;
     public static int anInt1219;
@@ -39,15 +39,15 @@ public class Class52 {
         aBoolean1215 = true;
         anInt1222 = 0;
         aClass1_1223 = aClass1_1216;
-        aClass1_1228 = (Class58.method978("Ihre Freunde)2Liste ist voll(Q Mitglieder k-Onnen 200 Freunde hinzuf-Ugen)1 freie Spieler nur 100)3"));
-        aClass1_1230 = Class58.method978("headicons_hint");
+        aClass1_1228 = (RSString.CreateString("Ihre Freunde)2Liste ist voll(Q Mitglieder k-Onnen 200 Freunde hinzuf-Ugen)1 freie Spieler nur 100)3"));
+        aClass1_1230 = RSString.CreateString("headicons_hint");
         anInt1219 = 0;
-        aClass1_1234 = Class58.method978("Connection timed out)3");
+        aClass1_1234 = RSString.CreateString("Connection timed out)3");
         anInt1233 = 0;
-        aClass1_1238 = Class58.method978("Der Server wird gerade aktualisiert)3");
+        aClass1_1238 = RSString.CreateString("Der Server wird gerade aktualisiert)3");
         aClass1_1218 = aClass1_1234;
         anInt1214 = 0;
-        aClass1_1241 = Class58.method978("Lade Wordpack )2 ");
+        aClass1_1241 = RSString.CreateString("Lade Wordpack )2 ");
     }
 
     public int anInt1220;

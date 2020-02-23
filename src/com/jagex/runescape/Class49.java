@@ -7,7 +7,7 @@ public class Class49 {
     public static RSString aClass1_1143;
     public static int anInt1144;
     public static Cache aClass9_1145;
-    public static RSString aClass1_1146 = Class58.method978("An");
+    public static RSString aClass1_1146 = RSString.CreateString("An");
     public static volatile int anInt1147 = 0;
     public static RSString aClass1_1148;
     public static RSString aClass1_1149;
@@ -20,13 +20,13 @@ public class Class49 {
     public static RSString aClass1_1156;
 
     static {
-        aClass1_1143 = (Class58.method978("sind fehlgeschlagen)3 Bitte warten Sie 5 Minuten)1"));
+        aClass1_1143 = (RSString.CreateString("sind fehlgeschlagen)3 Bitte warten Sie 5 Minuten)1"));
         aClass9_1145 = new Cache(30);
-        aClass1_1149 = Class58.method978("Empf-=nger:");
+        aClass1_1149 = RSString.CreateString("Empf-=nger:");
         anInt1151 = 0;
-        aClass1_1153 = Class58.method978("Bitte warten Sie)3)3)3");
-        aClass1_1155 = (Class58.method978("Wir vermuten)1 dass jemand Ihr Passwort kennt)3"));
-        aClass1_1156 = Class58.method978("Loading ignore list");
+        aClass1_1153 = RSString.CreateString("Bitte warten Sie)3)3)3");
+        aClass1_1155 = (RSString.CreateString("Wir vermuten)1 dass jemand Ihr Passwort kennt)3"));
+        aClass1_1156 = RSString.CreateString("Loading ignore list");
         aClass1_1148 = aClass1_1156;
     }
 

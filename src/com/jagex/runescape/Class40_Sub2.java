@@ -4,13 +4,14 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Player;
 
 import java.awt.*;
 
 public class Class40_Sub2 extends Node {
     public static RSString aClass1_1991;
     public static int anInt1992;
-    public static RSString aClass1_1995 = Class58.method978("Lade Spiel)2Fenster )2 ");
+    public static RSString aClass1_1995 = RSString.CreateString("Lade Spiel)2Fenster )2 ");
     public static int anInt1996 = 0;
     public static int anInt1998;
     public static int anInt1999;
@@ -20,8 +21,8 @@ public class Class40_Sub2 extends Node {
     public static int anInt2009;
 
     static {
-        aClass1_1991 = Class58.method978("Ung-Ultiges Anmelde)2Paket)3");
-        aClass1_2008 = (Class58.method978("Ihre Ignorieren)2Liste ist voll)1 Sie k-Onnen nur 100 Spieler darauf eintragen)3"));
+        aClass1_1991 = RSString.CreateString("Ung-Ultiges Anmelde)2Paket)3");
+        aClass1_2008 = (RSString.CreateString("Ihre Ignorieren)2Liste ist voll)1 Sie k-Onnen nur 100 Spieler darauf eintragen)3"));
     }
 
     public int anInt1993;
@@ -66,7 +67,7 @@ public class Class40_Sub2 extends Node {
         }
         if(arg1 != -32624)
             aClass1_1991 = null;
-        return arg0.equalsIgnoreCase((Class40_Sub5_Sub13.localPlayer.playerName), true);
+        return arg0.equalsIgnoreCase((Player.localPlayer.playerName), true);
 
     }
 

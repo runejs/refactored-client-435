@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
@@ -20,11 +20,11 @@ public class Class40_Sub5_Sub2 extends SubNode {
     public static RSString aClass1_2286;
     public static int anInt2288;
     public static int anInt2289;
-    public static RSString cmd_noclip = Class58.method978("::noclip");
+    public static RSString cmd_noclip = RSString.CreateString("::noclip");
     public static RSString aClass1_2291;
     public static RSString aClass1_2292;
     public static RSString aClass1_2294;
-    public static RSString aClass1_2296 = Class58.method978("Nehmen");
+    public static RSString aClass1_2296 = RSString.CreateString("Nehmen");
     public static RSString aClass1_2297;
     public static Class67 aClass67_2298;
     public static RSString aClass1_2299;
@@ -37,15 +37,15 @@ public class Class40_Sub5_Sub2 extends SubNode {
     public static RSString aClass1_2311;
 
     static {
-        aClass1_2292 = (Class58.method978("Verbindung konnte nicht hergestellt werden)3"));
-        aClass1_2299 = Class58.method978("Loaded input handler");
-        aClass1_2291 = Class58.method978("W-=hlen Sie eine Option");
+        aClass1_2292 = (RSString.CreateString("Verbindung konnte nicht hergestellt werden)3"));
+        aClass1_2299 = RSString.CreateString("Loaded input handler");
+        aClass1_2291 = RSString.CreateString("W-=hlen Sie eine Option");
         anInt2302 = 0;
-        aClass1_2306 = Class58.method978(" )2> @yel@");
-        aClass1_2283 = Class58.method978("Loading textures )2 ");
-        aClass1_2303 = Class58.method978("level)2");
+        aClass1_2306 = RSString.CreateString(" )2> @yel@");
+        aClass1_2283 = RSString.CreateString("Loading textures )2 ");
+        aClass1_2303 = RSString.CreateString("level)2");
         aClass1_2286 = aClass1_2303;
-        aClass1_2311 = Class58.method978("leuchten3:");
+        aClass1_2311 = RSString.CreateString("leuchten3:");
         aClass1_2297 = aClass1_2299;
         aClass1_2294 = aClass1_2283;
     }
@@ -195,7 +195,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 Class61.packetBuffer.putIntBE((Renderable.aClass6_Sub1_2857.anInt216));
                 Class61.packetBuffer.putIntBE(Class55.aClass6_Sub1_1286.anInt216);
                 Class61.packetBuffer.putIntBE((Class40_Sub5_Sub9.aClass6_Sub1_2571.anInt216));
-                Class61.packetBuffer.putIntBE((NpcDefinition.aClass6_Sub1_2377.anInt216));
+                Class61.packetBuffer.putIntBE((ActorDefinition.aClass6_Sub1_2377.anInt216));
                 Class61.packetBuffer.putIntBE(Class32.aClass6_Sub1_773.anInt216);
                 Class61.packetBuffer.putIntBE(RSCanvas.aClass6_Sub1_48.anInt216);
                 Class61.packetBuffer.putIntBE(VertexNormal.aClass6_Sub1_1104.anInt216);
@@ -331,7 +331,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 return null;
             for(int i = 0; (i ^ 0xffffffff) > -7; i++) {
                 if((anIntArray2309[0] ^ 0xffffffff) != -1)
-                    class40_sub5_sub17_sub5.method803(anIntArray2309[i], anIntArray2312[i]);
+                    class40_sub5_sub17_sub5.replaceColor(anIntArray2309[i], anIntArray2312[i]);
             }
             class40_sub5_sub17_sub5.method810();
             class40_sub5_sub17_sub5.method802(64 + anInt2300, anInt2295 + 850, -30, -50, -30, true);

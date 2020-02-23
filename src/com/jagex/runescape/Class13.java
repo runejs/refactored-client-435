@@ -1,17 +1,19 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class13 {
     public static int anInt400;
     public static int anInt401;
     public static int worldid;
     public static int[] anIntArray403 = new int[25];
-    public static RSString aClass1_404 = Class58.method978("Enter name of friend to delete from list");
+    public static RSString aClass1_404 = RSString.CreateString("Enter name of friend to delete from list");
     public static RSString aClass1_405;
     public static Cache aClass9_406;
     public static int anInt407;
@@ -33,14 +35,14 @@ public class Class13 {
 
     static {
         worldid = 1;
-        aClass1_411 = Class58.method978("Unerwartete Antwort vom Anmelde)2Server)3");
+        aClass1_411 = RSString.CreateString("Unerwartete Antwort vom Anmelde)2Server)3");
         aBooleanArray414 = new boolean[5];
         aClass1_417 = aClass1_404;
-        aClass1_412 = Class58.method978("Loading friend list");
+        aClass1_412 = RSString.CreateString("Loading friend list");
         aClass1_405 = aClass1_412;
         aClass9_406 = new Cache(64);
         anInt419 = 2;
-        aClass1_422 = Class58.method978("oder ung-Ultiges Passwort)3");
+        aClass1_422 = RSString.CreateString("oder ung-Ultiges Passwort)3");
         mouseX = 0;
     }
 
@@ -55,7 +57,7 @@ public class Class13 {
             arg0.anInt3089 = arg0.anIntArray3135[0] * 128 + 64 * arg0.anInt3096;
             arg0.method790(0);
         }
-        if(arg0 == Class40_Sub5_Sub13.localPlayer && ((arg0.anInt3098 ^ 0xffffffff) > -1537 || (arg0.anInt3089 ^ 0xffffffff) > -1537 || arg0.anInt3098 >= 11776 || arg0.anInt3089 >= 11776)) {
+        if(arg0 == Player.localPlayer && ((arg0.anInt3098 ^ 0xffffffff) > -1537 || (arg0.anInt3089 ^ 0xffffffff) > -1537 || arg0.anInt3098 >= 11776 || arg0.anInt3089 >= 11776)) {
             arg0.anInt3091 = -1;
             arg0.anInt3107 = 0;
             arg0.anInt3112 = 0;
@@ -162,7 +164,7 @@ public class Class13 {
                 class40_sub5_sub17_sub4_sub2.anInt3078 = 100;
             }
             if((i_2_ & 0x80) != 0) {
-                class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300 = Landscape.method932((byte) -122, Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE());
+                class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300 = ActorDefinition.getDefinition((byte) -122, Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE());
                 class40_sub5_sub17_sub4_sub2.anInt3083 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2389);
                 class40_sub5_sub17_sub4_sub2.anInt3113 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.degreesToTurn);
                 class40_sub5_sub17_sub4_sub2.anInt3075 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate90RightAnimation);

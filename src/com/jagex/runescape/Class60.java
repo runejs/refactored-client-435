@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -16,7 +16,7 @@ public class Class60 {
     public static int anInt1405;
     public static int anInt1406;
     public static int anInt1407;
-    public static RSString aClass1_1408 = Class58.method978("auf der Hautpseite)3");
+    public static RSString aClass1_1408 = RSString.CreateString("auf der Hautpseite)3");
     public static RSString aClass1_1409;
     public static int anInt1410;
     public static RSString aClass1_1411;
@@ -29,9 +29,9 @@ public class Class60 {
     public static int anInt1418;
 
     static {
-        aClass1_1401 = Class58.method978(",Zffentlicher Chat");
-        aClass1_1411 = Class58.method978("Error loading your profile)3");
-        aClass1_1409 = Class58.method978("Wen m-Ochten Sie von der Liste entfernen?");
+        aClass1_1401 = RSString.CreateString(",Zffentlicher Chat");
+        aClass1_1411 = RSString.CreateString("Error loading your profile)3");
+        aClass1_1409 = RSString.CreateString("Wen m-Ochten Sie von der Liste entfernen?");
         anInt1407 = 0;
         aClass1_1416 = aClass1_1411;
         anInt1415 = 0;
@@ -41,7 +41,7 @@ public class Class60 {
 
         anInt1414++;
         TypeFace class40_sub5_sub14_sub1 = new TypeFace((Actor.anIntArray3111), Class17.anIntArray456, (Npc.anIntArray3312), Buffer.anIntArray1972, Class58.aByteArrayArray1370);
-        NpcDefinition.method569();
+        ActorDefinition.method569();
         if(arg0 < 4)
             return null;
         return class40_sub5_sub14_sub1;
@@ -80,16 +80,16 @@ public class Class60 {
     public static void method990(int arg0) {
         anInt1405++;
         int i = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getStringWidth(Class40_Sub5_Sub12.aClass1_2684);
-        for(int i_1_ = 0; i_1_ < NpcDefinition.anInt2394; i_1_++) {
+        for(int i_1_ = 0; i_1_ < ActorDefinition.anInt2394; i_1_++) {
             int i_2_ = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method681(Landscape.aClass1Array1184[i_1_]);
             if((i ^ 0xffffffff) > (i_2_ ^ 0xffffffff))
                 i = i_2_;
         }
         i += 8;
-        int i_3_ = NpcDefinition.anInt2394 * 15 + 21;
+        int i_3_ = ActorDefinition.anInt2394 * 15 + 21;
         if((Class57.anInt1338 ^ 0xffffffff) < -5 && (RSString.anInt1668 ^ 0xffffffff) < -5 && (Class57.anInt1338 ^ 0xffffffff) > -517 && (RSString.anInt1668 ^ 0xffffffff) > -339) {
             Class40_Sub5_Sub17_Sub1.menuScreenArea = 0;
-            CollisionMap.anInt168 = NpcDefinition.anInt2394 * 15 + 22;
+            CollisionMap.anInt168 = ActorDefinition.anInt2394 * 15 + 22;
             Class4.menuOpen = true;
             int i_4_ = -(i / 2) + -4 + Class57.anInt1338;
             VertexNormal.anInt1086 = i;
@@ -107,7 +107,7 @@ public class Class60 {
         }
         if(arg0 == 11451) {
             if((Class57.anInt1338 ^ 0xffffffff) < -554 && (RSString.anInt1668 ^ 0xffffffff) < -206 && (Class57.anInt1338 ^ 0xffffffff) > -744 && RSString.anInt1668 < 466) {
-                CollisionMap.anInt168 = 22 + 15 * NpcDefinition.anInt2394;
+                CollisionMap.anInt168 = 22 + 15 * ActorDefinition.anInt2394;
                 Class40_Sub5_Sub17_Sub1.menuScreenArea = 1;
                 int i_6_ = -205 + RSString.anInt1668;
                 int i_7_ = -(i / 2) + (-553 + Class57.anInt1338);
@@ -128,7 +128,7 @@ public class Class60 {
             if((Class57.anInt1338 ^ 0xffffffff) < -18 && RSString.anInt1668 > 357 && Class57.anInt1338 < 496 && RSString.anInt1668 < 453) {
                 VertexNormal.anInt1086 = i;
                 Class40_Sub5_Sub17_Sub1.menuScreenArea = 2;
-                CollisionMap.anInt168 = NpcDefinition.anInt2394 * 15 + 22;
+                CollisionMap.anInt168 = ActorDefinition.anInt2394 * 15 + 22;
                 int i_8_ = RSString.anInt1668 + -357;
                 if((i_8_ ^ 0xffffffff) <= -1) {
                     if((i_3_ + i_8_ ^ 0xffffffff) < -97)

@@ -13,12 +13,12 @@ public class Node {
     public static RSString aClass1_930;
     public static RSString aClass1_931;
     public static RSString aClass1_932;
-    public static RSString aClass1_933 = Class58.method978(" zuerst von Ihrer Ignorieren)2Liste(Q");
+    public static RSString aClass1_933 = RSString.CreateString(" zuerst von Ihrer Ignorieren)2Liste(Q");
     public static RSString aClass1_934;
     public static int anInt935;
     public static RSString aClass1_937;
     public static int anInt938;
-    public static RSString aClass1_939 = Class58.method978("white:");
+    public static RSString aClass1_939 = RSString.CreateString("white:");
     public static RSString aClass1_940 = aClass1_939;
     public static RSString aClass1_941;
     public static RSString aClass1_942;
@@ -27,7 +27,7 @@ public class Node {
     public static RSString aClass1_945;
     public static RSString aClass1_946;
     public static int anInt947;
-    public static RSString aClass1_948 = Class58.method978(":chalreq:");
+    public static RSString aClass1_948 = RSString.CreateString(":chalreq:");
     public static RSString aClass1_949;
     public static RSString aClass1_951;
     public static RSString aClass1_952;
@@ -58,8 +58,8 @@ public class Node {
     static {
         anInt938 = 500;
         anInt926 = 0;
-        aClass1_932 = Class58.method978("@gr2@");
-        aClass1_923 = Class58.method978("");
+        aClass1_932 = RSString.CreateString("@gr2@");
+        aClass1_923 = RSString.CreateString("");
         aClass1_955 = aClass1_923;
         aClass1_958 = aClass1_923;
         aClass1_967 = aClass1_923;
@@ -75,10 +75,10 @@ public class Node {
         aClass1_930 = aClass1_923;
         aClass1_969 = aClass1_923;
         aClass1_925 = aClass1_923;
-        aClass1_965 = Class58.method978("scrollen:");
+        aClass1_965 = RSString.CreateString("scrollen:");
         aClass1_941 = aClass1_923;
         aClass1_931 = aClass1_923;
-        aClass1_975 = Class58.method978(")3");
+        aClass1_975 = RSString.CreateString(")3");
         aClass1_946 = aClass1_923;
         aClass1_952 = aClass1_923;
         aClass1_945 = aClass1_923;

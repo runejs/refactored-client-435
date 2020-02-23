@@ -11,16 +11,16 @@ import java.awt.*;
 public class Class17 {
     public static int anInt448;
     public static Cache aClass9_449 = new Cache(128);
-    public static RSString aClass1_452 = Class58.method978("Loading sprites )2 ");
-    public static RSString aClass1_455 = Class58.method978("as it was used to break our rules)3");
+    public static RSString aClass1_452 = RSString.CreateString("Loading sprites )2 ");
+    public static RSString aClass1_455 = RSString.CreateString("as it was used to break our rules)3");
     public static int[] anIntArray456;
-    public static RSString aClass1_457 = Class58.method978("Willkommen auf RuneScape");
+    public static RSString aClass1_457 = RSString.CreateString("Willkommen auf RuneScape");
     public static int anInt460 = 0;
     public static Font aFont461;
     public static Class68 aClass68_462;
     public static Class68 aClass68_463;
     public static int anInt464 = 0;
-    public static RSString aClass1_465 = Class58.method978(":0");
+    public static RSString aClass1_465 = RSString.CreateString(":0");
     public static int[] anIntArray466 = new int[256];
 
     public static void method273(Class64 arg0, int arg1, boolean arg2) {
@@ -102,7 +102,7 @@ public class Class17 {
                         return;
                     }
                 }
-                if(!class1.equals((Class40_Sub5_Sub13.localPlayer.playerName))) {
+                if(!class1.equals((Player.localPlayer.playerName))) {
                     if(arg0 != 24686)
                         aClass68_462 = null;
                     Class53.aLongArray1267[Class42.anInt1008++] = arg1;

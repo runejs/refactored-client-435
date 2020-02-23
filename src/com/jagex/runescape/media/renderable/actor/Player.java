@@ -8,37 +8,18 @@ import com.jagex.runescape.media.renderable.Model;
 import java.awt.*;
 
 public class Player extends Actor {
-    public static RSString aClass1_3256;
-    public static RSString aClass1_3259;
-    public static int anInt3261;
-    public static int anInt3263;
-    public static int anInt3264;
+    public static RSString aClass1_3256 = RSString.CreateString("green:");
+    public static int anInt3264 = 0;
     public static int anInt3267;
-    public static RSString aClass1_3269 = Class58.method978("Mitteilung");
+    public static RSString aClass1_3269 = RSString.CreateString("Mitteilung");
     public static byte[] aByteArray3270;
-    public static RSString aClass1_3275 = Class58.method978("Bitte starten Sie eine Mitgliedschaft");
-    public static int anInt3277;
-    public static int anInt3279;
-    public static int anInt3280;
+    public static RSString aClass1_3275 = RSString.CreateString("Bitte starten Sie eine Mitgliedschaft");
     public static int[] anIntArray3284;
-    public static RSString aClass1_3285;
-    public static RSString aClass1_3286;
-    public static int anInt3288;
-    public static RSString aClass1_3290;
-    public static int anInt3292;
-    public static RSString aClass1_3293;
-
-    static {
-        anInt3264 = 0;
-        anInt3288 = 0;
-        aClass1_3290 = Class58.method978("Spieler kann nicht gefunden werden: ");
-        aClass1_3259 = Class58.method978("Try again in 60 secs)3)3)3");
-        aClass1_3293 = Class58.method978("green:");
-        aClass1_3285 = Class58.method978("Keine Antwort vom Anmelde)2Server)3");
-        aClass1_3256 = aClass1_3293;
-        aClass1_3286 = aClass1_3259;
-    }
-
+    public static RSString aClass1_3285 = RSString.CreateString("Keine Antwort vom Anmelde)2Server)3");
+    public static RSString aClass1_3286 = RSString.CreateString("Try again in 60 secs)3)3)3");
+    public static int anInt3288 = 0;
+    public static RSString aClass1_3290 = RSString.CreateString("Spieler kann nicht gefunden werden: ");
+    public static Player localPlayer;
     public int anInt3257;
     public int anInt3258;
     public int anInt3260 = 0;
@@ -69,7 +50,6 @@ public class Player extends Actor {
     }
 
     public static void method792(int arg0) {
-
         try {
             if(arg0 < 106)
                 return;
@@ -78,13 +58,9 @@ public class Player extends Actor {
         } catch(Exception exception) {
             Class62.aCanvas1469.repaint();
         }
-        anInt3263++;
-
     }
 
     public static boolean method793(byte arg0, int arg1) {
-
-        anInt3279++;
         if((arg1 ^ 0xffffffff) > -33)
             return false;
         if(arg1 == 127)
@@ -92,29 +68,22 @@ public class Player extends Actor {
         if(arg0 < 118)
             aByteArray3270 = null;
         return (arg1 ^ 0xffffffff) > -130 || arg1 > 159;
-
     }
 
     public static void method794(boolean arg0) {
-
         aClass1_3275 = null;
         aClass1_3269 = null;
         aByteArray3270 = null;
         aClass1_3285 = null;
         anIntArray3284 = null;
         if(arg0 == false) {
-            aClass1_3259 = null;
-            aClass1_3293 = null;
             aClass1_3286 = null;
             aClass1_3290 = null;
             aClass1_3256 = null;
         }
-
     }
 
     public Model method756(int arg0) {
-
-        anInt3261++;
         if(aClass30_3282 == null)
             return null;
         int i = 71 % ((41 - arg0) / 47);
@@ -168,21 +137,15 @@ public class Player extends Actor {
         }
         class40_sub5_sub17_sub5.aBoolean3164 = true;
         return class40_sub5_sub17_sub5;
-
     }
 
-    public boolean method784(int arg0) {
-
-        anInt3277++;
+    public boolean isVisible(int arg0) {
         if(arg0 != 1)
             method792(-71);
         return aClass30_3282 != null;
-
     }
 
     public void method791(byte arg0, Buffer arg1) {
-
-        anInt3292++;
         arg1.currentPosition = 0;
         int i = arg1.getUnsignedByte();
         anInt3268 = arg1.getByte();
@@ -245,6 +208,5 @@ public class Player extends Actor {
         if(aClass30_3282 == null)
             aClass30_3282 = new Class30();
         aClass30_3282.method380(is, i == 1, 7, is_8_, i_3_);
-
     }
 }

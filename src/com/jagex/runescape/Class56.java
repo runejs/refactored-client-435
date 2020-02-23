@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 
 public class Class56 {
@@ -9,7 +9,7 @@ public class Class56 {
     public static int anInt1312;
     public static RSString aClass1_1314;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1315;
-    public static RSString aClass1_1316 = Class58.method978("Zu viele Verbindungen von Ihrer Adresse)3");
+    public static RSString aClass1_1316 = RSString.CreateString("Zu viele Verbindungen von Ihrer Adresse)3");
     public static int anInt1317;
     public static int anInt1318;
     public static int anInt1319;
@@ -23,7 +23,7 @@ public class Class56 {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1329;
 
     static {
-        aClass1_1314 = Class58.method978(" weitere Optionen");
+        aClass1_1314 = RSString.CreateString(" weitere Optionen");
         anInt1318 = 3353893;
         aClass61Array1320 = new Class61[50];
     }
@@ -120,9 +120,9 @@ public class Class56 {
                 if(aClass67_1313.method1032(0) < (long) (6 + arg0 * 6))
                     return null;
                 aClass67_1313.method1031(0, (long) (6 * arg0));
-                aClass67_1313.method1035(0, (byte) -49, 6, NpcDefinition.aByteArray2416);
-                int i_0_ = ((0xff00 & (NpcDefinition.aByteArray2416[4] << 2112382504)) + ((0xff & NpcDefinition.aByteArray2416[3]) << -1692209456) + (0xff & NpcDefinition.aByteArray2416[5]));
-                int i_1_ = ((0xff & NpcDefinition.aByteArray2416[2]) + (((NpcDefinition.aByteArray2416[0] & 0xff) << 2016836816) + ((0xff & NpcDefinition.aByteArray2416[1]) << 1439956072)));
+                aClass67_1313.method1035(0, (byte) -49, 6, ActorDefinition.aByteArray2416);
+                int i_0_ = ((0xff00 & (ActorDefinition.aByteArray2416[4] << 2112382504)) + ((0xff & ActorDefinition.aByteArray2416[3]) << -1692209456) + (0xff & ActorDefinition.aByteArray2416[5]));
+                int i_1_ = ((0xff & ActorDefinition.aByteArray2416[2]) + (((ActorDefinition.aByteArray2416[0] & 0xff) << 2016836816) + ((0xff & ActorDefinition.aByteArray2416[1]) << 1439956072)));
                 if(i_1_ < 0 || (i_1_ ^ 0xffffffff) < (anInt1321 ^ 0xffffffff))
                     return null;
                 if(i_0_ <= 0 || (((long) i_0_ ^ 0xffffffffffffffffL) < (aClass67_1309.method1032(0) / 520L ^ 0xffffffffffffffffL)))
@@ -137,18 +137,18 @@ public class Class56 {
                     int i_4_ = -i_2_ + i_1_;
                     if((i_4_ ^ 0xffffffff) < -513)
                         i_4_ = 512;
-                    aClass67_1309.method1035(0, (byte) -14, 8 + i_4_, (NpcDefinition.aByteArray2416));
-                    int i_5_ = ((0xff00 & (NpcDefinition.aByteArray2416[0] << -1509655160)) + (0xff & NpcDefinition.aByteArray2416[1]));
-                    int i_6_ = ((NpcDefinition.aByteArray2416[6] & 0xff) + ((0xff & NpcDefinition.aByteArray2416[5]) << -109515864) + ((0xff & NpcDefinition.aByteArray2416[4]) << -873067312));
-                    int i_7_ = ((0xff00 & (NpcDefinition.aByteArray2416[2] << 52160136)) + (0xff & NpcDefinition.aByteArray2416[3]));
-                    int i_8_ = 0xff & NpcDefinition.aByteArray2416[7];
+                    aClass67_1309.method1035(0, (byte) -14, 8 + i_4_, (ActorDefinition.aByteArray2416));
+                    int i_5_ = ((0xff00 & (ActorDefinition.aByteArray2416[0] << -1509655160)) + (0xff & ActorDefinition.aByteArray2416[1]));
+                    int i_6_ = ((ActorDefinition.aByteArray2416[6] & 0xff) + ((0xff & ActorDefinition.aByteArray2416[5]) << -109515864) + ((0xff & ActorDefinition.aByteArray2416[4]) << -873067312));
+                    int i_7_ = ((0xff00 & (ActorDefinition.aByteArray2416[2] << 52160136)) + (0xff & ActorDefinition.aByteArray2416[3]));
+                    int i_8_ = 0xff & ActorDefinition.aByteArray2416[7];
                     if((i_5_ ^ 0xffffffff) != (arg0 ^ 0xffffffff) || (i_7_ ^ 0xffffffff) != (i_3_ ^ 0xffffffff) || (i_8_ ^ 0xffffffff) != (anInt1324 ^ 0xffffffff))
                         return null;
                     if((i_6_ ^ 0xffffffff) > -1 || (((long) i_6_ ^ 0xffffffffffffffffL) < (aClass67_1309.method1032(0) / 520L ^ 0xffffffffffffffffL)))
                         return null;
                     i_3_++;
                     for(int i_9_ = 0; (i_9_ ^ 0xffffffff) > (i_4_ ^ 0xffffffff); i_9_++)
-                        is[i_2_++] = NpcDefinition.aByteArray2416[8 + i_9_];
+                        is[i_2_++] = ActorDefinition.aByteArray2416[8 + i_9_];
                     i_0_ = i_6_;
                 }
                 return is;
@@ -171,8 +171,8 @@ public class Class56 {
                     if(aClass67_1313.method1032(0) < (long) (6 + 6 * arg3))
                         return false;
                     aClass67_1313.method1031(0, (long) (arg3 * 6));
-                    aClass67_1313.method1035(0, (byte) -111, 6, (NpcDefinition.aByteArray2416));
-                    i = ((NpcDefinition.aByteArray2416[5] & 0xff) + (((NpcDefinition.aByteArray2416[3] & 0xff) << 244380432) + ((NpcDefinition.aByteArray2416[4] & 0xff) << -1843041752)));
+                    aClass67_1313.method1035(0, (byte) -111, 6, (ActorDefinition.aByteArray2416));
+                    i = ((ActorDefinition.aByteArray2416[5] & 0xff) + (((ActorDefinition.aByteArray2416[3] & 0xff) << 244380432) + ((ActorDefinition.aByteArray2416[4] & 0xff) << -1843041752)));
                     if((i ^ 0xffffffff) >= -1 || (((long) i ^ 0xffffffffffffffffL) < (aClass67_1309.method1032(0) / 520L ^ 0xffffffffffffffffL)))
                         return false;
                 } else {
@@ -180,30 +180,30 @@ public class Class56 {
                     if(i == 0)
                         i = 1;
                 }
-                NpcDefinition.aByteArray2416[0] = (byte) (arg1 >> -897009424);
-                NpcDefinition.aByteArray2416[1] = (byte) (arg1 >> 2120801992);
-                NpcDefinition.aByteArray2416[2] = (byte) arg1;
+                ActorDefinition.aByteArray2416[0] = (byte) (arg1 >> -897009424);
+                ActorDefinition.aByteArray2416[1] = (byte) (arg1 >> 2120801992);
+                ActorDefinition.aByteArray2416[2] = (byte) arg1;
                 int i_10_ = 0;
-                NpcDefinition.aByteArray2416[3] = (byte) (i >> -1783240816);
+                ActorDefinition.aByteArray2416[3] = (byte) (i >> -1783240816);
                 int i_11_ = 0;
-                NpcDefinition.aByteArray2416[4] = (byte) (i >> -102164472);
-                NpcDefinition.aByteArray2416[5] = (byte) i;
+                ActorDefinition.aByteArray2416[4] = (byte) (i >> -102164472);
+                ActorDefinition.aByteArray2416[5] = (byte) i;
                 aClass67_1313.method1031(0, (long) (arg3 * 6));
-                aClass67_1313.method1033(0, -16777216, 6, NpcDefinition.aByteArray2416);
+                aClass67_1313.method1033(0, -16777216, 6, ActorDefinition.aByteArray2416);
                 int i_12_;
                 for(/**/; i_10_ < arg1; i_10_ += i_12_) {
                     int i_13_ = 0;
                     if(arg2) {
                         aClass67_1309.method1031(0, (long) (520 * i));
                         try {
-                            aClass67_1309.method1035(0, (byte) -106, 8, (NpcDefinition.aByteArray2416));
+                            aClass67_1309.method1035(0, (byte) -106, 8, (ActorDefinition.aByteArray2416));
                         } catch(java.io.EOFException eofexception) {
                             break;
                         }
-                        i_13_ = ((NpcDefinition.aByteArray2416[6] & 0xff) + (((NpcDefinition.aByteArray2416[4] << 809811568) & 0xff0000) + (0xff00 & (NpcDefinition.aByteArray2416[5]) << -83110776)));
-                        i_12_ = ((NpcDefinition.aByteArray2416[1] & 0xff) + ((NpcDefinition.aByteArray2416[0] << 1593639048) & 0xff00));
-                        int i_14_ = NpcDefinition.aByteArray2416[7] & 0xff;
-                        int i_15_ = ((NpcDefinition.aByteArray2416[3] & 0xff) + ((0xff & NpcDefinition.aByteArray2416[2]) << -1878865912));
+                        i_13_ = ((ActorDefinition.aByteArray2416[6] & 0xff) + (((ActorDefinition.aByteArray2416[4] << 809811568) & 0xff0000) + (0xff00 & (ActorDefinition.aByteArray2416[5]) << -83110776)));
+                        i_12_ = ((ActorDefinition.aByteArray2416[1] & 0xff) + ((ActorDefinition.aByteArray2416[0] << 1593639048) & 0xff00));
+                        int i_14_ = ActorDefinition.aByteArray2416[7] & 0xff;
+                        int i_15_ = ((ActorDefinition.aByteArray2416[3] & 0xff) + ((0xff & ActorDefinition.aByteArray2416[2]) << -1878865912));
                         if(arg3 != i_12_ || (i_15_ ^ 0xffffffff) != (i_11_ ^ 0xffffffff) || (i_14_ ^ 0xffffffff) != (anInt1324 ^ 0xffffffff))
                             return false;
                         if(i_13_ < 0 || (aClass67_1309.method1032(0) / 520L < (long) i_13_))
@@ -217,22 +217,22 @@ public class Class56 {
                         if(i == i_13_)
                             i_13_++;
                     }
-                    NpcDefinition.aByteArray2416[0] = (byte) (arg3 >> 989037448);
+                    ActorDefinition.aByteArray2416[0] = (byte) (arg3 >> 989037448);
                     if(-i_10_ + arg1 <= 512)
                         i_13_ = 0;
-                    NpcDefinition.aByteArray2416[1] = (byte) arg3;
+                    ActorDefinition.aByteArray2416[1] = (byte) arg3;
                     i_12_ = -i_10_ + arg1;
                     if((i_12_ ^ 0xffffffff) < -513)
                         i_12_ = 512;
-                    NpcDefinition.aByteArray2416[2] = (byte) (i_11_ >> 436921608);
-                    NpcDefinition.aByteArray2416[3] = (byte) i_11_;
-                    NpcDefinition.aByteArray2416[4] = (byte) (i_13_ >> 1862596560);
-                    NpcDefinition.aByteArray2416[5] = (byte) (i_13_ >> 154341896);
+                    ActorDefinition.aByteArray2416[2] = (byte) (i_11_ >> 436921608);
+                    ActorDefinition.aByteArray2416[3] = (byte) i_11_;
+                    ActorDefinition.aByteArray2416[4] = (byte) (i_13_ >> 1862596560);
+                    ActorDefinition.aByteArray2416[5] = (byte) (i_13_ >> 154341896);
                     i_11_++;
-                    NpcDefinition.aByteArray2416[6] = (byte) i_13_;
-                    NpcDefinition.aByteArray2416[7] = (byte) anInt1324;
+                    ActorDefinition.aByteArray2416[6] = (byte) i_13_;
+                    ActorDefinition.aByteArray2416[7] = (byte) anInt1324;
                     aClass67_1309.method1031(0, (long) (520 * i));
-                    aClass67_1309.method1033(0, -16777216, 8, (NpcDefinition.aByteArray2416));
+                    aClass67_1309.method1033(0, -16777216, 8, (ActorDefinition.aByteArray2416));
                     i = i_13_;
                     aClass67_1309.method1033(i_10_, -16777216, i_12_, arg0);
                 }

@@ -186,7 +186,7 @@ public class ItemDefinition extends SubNode {
         for(int i = 0; GameObjectDefinition.anInt2558 > i; i++) {
             Npc npc = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i]]);
             int i_15_ = (536870912 + (Class40_Sub3.anIntArray2016[i] << 1399377262));
-            if(npc != null && npc.method784(1) && !arg0 != (npc.aClass40_Sub5_Sub5_3300.hasRenderPriority) && npc.aClass40_Sub5_Sub5_3300.method571(-1)) {
+            if(npc != null && npc.isVisible(1) && !arg0 != (npc.aClass40_Sub5_Sub5_3300.hasRenderPriority) && npc.aClass40_Sub5_Sub5_3300.method571(-1)) {
                 int i_16_ = (npc.anInt3098 >> -1699335129);
                 int i_17_ = npc.anInt3089 >> 698755175;
                 if((i_16_ ^ 0xffffffff) <= -1 && (i_16_ ^ 0xffffffff) > -105 && (i_17_ ^ 0xffffffff) <= -1 && i_17_ < 104) {
@@ -318,7 +318,7 @@ public class ItemDefinition extends SubNode {
         }
         if(modifiedModelColors != null) {
             for(int i_8_ = 0; ((modifiedModelColors.length ^ 0xffffffff) < (i_8_ ^ 0xffffffff)); i_8_++) {
-                model1.method803(modifiedModelColors[i_8_], originalModelColors[i_8_]);
+                model1.replaceColor(modifiedModelColors[i_8_], originalModelColors[i_8_]);
             }
         }
         return model1;
@@ -368,7 +368,7 @@ public class ItemDefinition extends SubNode {
         }
         if(modifiedModelColors != null) {
             for(int j = 0; ((modifiedModelColors.length ^ 0xffffffff) < (j ^ 0xffffffff)); j++) {
-                model1.method803(modifiedModelColors[j], originalModelColors[j]);
+                model1.replaceColor(modifiedModelColors[j], originalModelColors[j]);
             }
         }
         return model1;
@@ -526,7 +526,7 @@ public class ItemDefinition extends SubNode {
         }
         if(modifiedModelColors != null) {
             for(int i = 0; i < modifiedModelColors.length; i++) {
-                model.method803(modifiedModelColors[i], originalModelColors[i]);
+                model.replaceColor(modifiedModelColors[i], originalModelColors[i]);
             }
         }
         if(arg0) {

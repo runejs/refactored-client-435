@@ -1,25 +1,26 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class66 {
-    public static RSString blank_string = Class58.method978("");
+    public static RSString blank_string = RSString.CreateString("");
     public static Class68 aClass68_1541;
     public static RSString aClass1_1542 = blank_string;
     public static RSString aClass1_1543 = blank_string;
-    public static RSString aClass1_1544 = Class58.method978("Side panel redrawn");
+    public static RSString aClass1_1544 = RSString.CreateString("Side panel redrawn");
     public static int anInt1545 = 0;
-    public static RSString aClass1_1546 = Class58.method978("Icons redrawn");
+    public static RSString aClass1_1546 = RSString.CreateString("Icons redrawn");
     public static int anInt1548 = -1;
-    public static RSString aClass1_1549 = Class58.method978("leuchten1:");
+    public static RSString aClass1_1549 = RSString.CreateString("leuchten1:");
     public static RSString aClass1_1550 = blank_string;
-    public static RSString aClass1_1552 = Class58.method978("Connecting to friendserver");
-    public static RSString aClass1_1555 = Class58.method978("Remove");
+    public static RSString aClass1_1552 = RSString.CreateString("Connecting to friendserver");
+    public static RSString aClass1_1555 = RSString.CreateString("Remove");
     public static RSString chatboxInput = blank_string;
-    public static RSString aClass1_1558 = Class58.method978("leuchten2:");
+    public static RSString aClass1_1558 = RSString.CreateString("leuchten2:");
     public static int anInt1559 = 7759444;
     public static int anInt1560 = -1;
     public static RSString aClass1_1563 = blank_string;
@@ -128,14 +129,14 @@ public class Class66 {
         return PacketBuffer.method521(arg0, (byte) 8, 10, arg2);
     }
 
-    public static void method1025(int arg0, int arg1, int arg2, int arg3, NpcDefinition arg4) {
-        if((NpcDefinition.anInt2394 ^ 0xffffffff) > -401) {
+    public static void method1025(int arg0, int arg1, int arg2, int arg3, ActorDefinition arg4) {
+        if((ActorDefinition.anInt2394 ^ 0xffffffff) > -401) {
             if(arg4.childrenIds != null)
-                arg4 = arg4.method577(-1);
+                arg4 = arg4.getChildDefinition(-1);
             if(arg4 != null && arg4.isClickable) {
                 RSString class1 = arg4.name;
                 if(arg4.combatLevel != arg0)
-                    class1 = (Class40_Sub5_Sub17_Sub6.method832(-47, (new RSString[]{class1, (SceneTile.method536((Class40_Sub5_Sub13.localPlayer.anInt3260), arg4.combatLevel, arg0 + -99)), HashTable.aClass1_569, Class40_Sub5_Sub2.aClass1_2286, HashTable.method334(arg4.combatLevel, -1), Class51.aClass1_1199})));
+                    class1 = (Class40_Sub5_Sub17_Sub6.method832(-47, (new RSString[]{class1, (SceneTile.method536((Player.localPlayer.anInt3260), arg4.combatLevel, arg0 + -99)), HashTable.aClass1_569, Class40_Sub5_Sub2.aClass1_2286, HashTable.method334(arg4.combatLevel, -1), Class51.aClass1_1199})));
                 if((Class8.anInt301 ^ 0xffffffff) == -2) {
                     Node.anInt927++;
                     Floor.method558(arg3, Main.aClass1_1763, arg2, -501, arg1, 49, (Class40_Sub5_Sub17_Sub6.method832(-124, (new RSString[]{Npc.aClass1_3295, Class40_Sub5_Sub2.aClass1_2306, class1}))));
@@ -171,7 +172,7 @@ public class Class66 {
                         for(int i = 4; i >= 0; i--) {
                             if(class1s[i] != null && class1s[i].equalsIgnoreCase((Class38_Sub1.aClass1_1917), true)) {
                                 int i_4_ = 0;
-                                if(((Class40_Sub5_Sub13.localPlayer.anInt3260) ^ 0xffffffff) > (arg4.combatLevel ^ 0xffffffff))
+                                if(((Player.localPlayer.anInt3260) ^ 0xffffffff) > (arg4.combatLevel ^ 0xffffffff))
                                     i_4_ = 2000;
                                 int i_5_ = 0;
                                 if((i ^ 0xffffffff) == -1)
@@ -255,7 +256,7 @@ public class Class66 {
                 if((i_18_ ^ 0xffffffff) == -8)
                     i_16_ = (100 * Class58.varbitmasks[is[i_14_++]] / 46875);
                 if((i_18_ ^ 0xffffffff) == -9)
-                    i_16_ = (Class40_Sub5_Sub13.localPlayer.anInt3260);
+                    i_16_ = (Player.localPlayer.anInt3260);
                 if(i_18_ == 9) {
                     for(int i_22_ = 0; i_22_ < 25; i_22_++) {
                         if(Class22.aBooleanArray548[i_22_])
@@ -290,9 +291,9 @@ public class Class66 {
                     i_16_ = Class40_Sub5_Sub6.method585(i_28_, 1369);
                 }
                 if((i_18_ ^ 0xffffffff) == -19)
-                    i_16_ = ((Class40_Sub5_Sub13.localPlayer.anInt3098) >> -949277977) + Class40_Sub5_Sub2.anInt2307;
+                    i_16_ = ((Player.localPlayer.anInt3098) >> -949277977) + Class40_Sub5_Sub2.anInt2307;
                 if(i_18_ == 19)
-                    i_16_ = ((Class40_Sub5_Sub13.localPlayer.anInt3089) >> 745230119) + Class26.anInt635;
+                    i_16_ = ((Player.localPlayer.anInt3089) >> 745230119) + Class26.anInt635;
                 if((i_18_ ^ 0xffffffff) == -21)
                     i_16_ = is[i_14_++];
                 if((i_17_ ^ 0xffffffff) != -1)

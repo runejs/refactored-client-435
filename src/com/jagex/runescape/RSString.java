@@ -14,13 +14,13 @@ public class RSString implements Interface1 {
     public static int[] anIntArray1706 = new int[128];
     public static int anInt1711 = 50;
     public static byte[][] aByteArrayArray1715;
-    public static RSString aClass1_1717 = Class58.method978("purple:");
+    public static RSString aClass1_1717 = CreateString("purple:");
     /*synthetic*/ public static Class aClass1718;
-    public static RSString aClass1_1677 = Class58.method978("scrollbar");
-    public static RSString aClass1_1702 = Class58.method978("Der Anmelde)2Server ist offline)3");
-    public static RSString aClass1_1703 = Class58.method978("Private chat");
-    public static RSString aClass1_1713 = Class58.method978("Diese Welt ist voll)3");
-    public static RSString aClass1_1716 = Class58.method978("chatback");
+    public static RSString aClass1_1677 = CreateString("scrollbar");
+    public static RSString aClass1_1702 = CreateString("Der Anmelde)2Server ist offline)3");
+    public static RSString aClass1_1703 = CreateString("Private chat");
+    public static RSString aClass1_1713 = CreateString("Diese Welt ist voll)3");
+    public static RSString aClass1_1716 = CreateString("chatback");
     public boolean aBoolean1675 = true;
     public int length;
     public byte[] chars;
@@ -49,8 +49,8 @@ public class RSString implements Interface1 {
 
     public static void method71(int arg0) {
         Class4.anInt182 = 0;
-        int i = (((Class40_Sub5_Sub13.localPlayer.anInt3098) >> 2067257703) + Class40_Sub5_Sub2.anInt2307);
-        int i_10_ = (Class26.anInt635 + ((Class40_Sub5_Sub13.localPlayer.anInt3089) >> 1064414503));
+        int i = (((Player.localPlayer.anInt3098) >> 2067257703) + Class40_Sub5_Sub2.anInt2307);
+        int i_10_ = (Class26.anInt635 + ((Player.localPlayer.anInt3089) >> 1064414503));
         if((i ^ 0xffffffff) <= -3054 && i <= 3156 && i_10_ >= 3056 && i_10_ <= 3136)
             Class4.anInt182 = 1;
         if(i >= 3072 && (i ^ 0xffffffff) >= -3119 && (i_10_ ^ 0xffffffff) <= -9493 && (i_10_ ^ 0xffffffff) >= -9536)
@@ -100,6 +100,30 @@ public class RSString implements Interface1 {
         } catch(ClassNotFoundException classnotfoundexception) {
             throw new NoClassDefFoundError(classnotfoundexception.getMessage());
         }
+    }
+
+    public static RSString CreateString(String arg1) { // TODO: CreateString?
+        Class58.anInt1367++;
+        byte[] is = arg1.getBytes();
+        int i = is.length;
+        RSString class1 = new RSString();
+        class1.str = arg1;
+        int i_5_ = 0;
+        class1.chars = new byte[i];
+        while(i > i_5_) {
+            int i_6_ = 0xff & is[i_5_++];
+            if(i_6_ > 45 || i_6_ < 40) {
+                if(i_6_ != 0)
+                    class1.chars[class1.length++] = (byte) i_6_;
+            } else {
+                if((i_5_ ^ 0xffffffff) <= (i ^ 0xffffffff))
+                    break;
+                int i_7_ = 0xff & is[i_5_++];
+                class1.chars[class1.length++] = (byte) (i_7_ + -48 + 43 * (-40 + i_6_));
+            }
+        }
+        class1.method77((byte) -73);
+        return class1.method66();
     }
 
     public RSString substring(int arg1) {

@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.audio.Effect;
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -48,22 +48,22 @@ public class Landscape {
     public static int[] anIntArray1186;
 
     static {
-        aClass1_1163 = Class58.method978("glow1:");
-        aClass1_1158 = Class58.method978("Enter amount:");
-        aClass1_1160 = Class58.method978("Passwort: ");
+        aClass1_1163 = RSString.CreateString("glow1:");
+        aClass1_1158 = RSString.CreateString("Enter amount:");
+        aClass1_1160 = RSString.CreateString("Passwort: ");
         aClass1_1174 = aClass1_1158;
-        aClass1_1162 = Class58.method978("@gre@");
-        aClass1_1176 = Class58.method978("Loaded wordpack");
+        aClass1_1162 = RSString.CreateString("@gre@");
+        aClass1_1176 = RSString.CreateString("Loaded wordpack");
         aCollisionMapArray1167 = new CollisionMap[4];
         aClass1_1173 = aClass1_1176;
         anIntArrayArray1175 = new int[104][104];
         anInt1170 = 0;
-        aClass1_1172 = Class58.method978("You are standing in a members)2only area)3");
+        aClass1_1172 = RSString.CreateString("You are standing in a members)2only area)3");
         aClass1_1178 = aClass1_1172;
-        aClass1_1161 = Class58.method978("Bitte wenden Sie sich an den Kundendienst)3");
-        aClass1_1183 = Class58.method978("");
+        aClass1_1161 = RSString.CreateString("Bitte wenden Sie sich an den Kundendienst)3");
+        aClass1_1183 = RSString.CreateString("");
         anInt1171 = 0;
-        aClass1_1169 = Class58.method978("Your ignore list is full)3 Max of 100 hit");
+        aClass1_1169 = RSString.CreateString("Your ignore list is full)3 Max of 100 hit");
         aClass1_1181 = aClass1_1163;
         aClass1_1180 = aClass1_1169;
         aClass1Array1184 = new RSString[500];
@@ -102,24 +102,6 @@ public class Landscape {
         byte[] is = new byte[i_0_];
         class40_sub1.getBytes(i_0_, 0, is);
         return is;
-
-    }
-
-    public static NpcDefinition method932(byte arg0, int arg1) {
-
-        anInt1182++;
-        if(arg0 >= -95)
-            aClass1_1160 = null;
-        NpcDefinition class40_sub5_sub5 = ((NpcDefinition) ISAAC.aClass9_510.method231((long) arg1, (byte) 119));
-        if(class40_sub5_sub5 != null)
-            return class40_sub5_sub5;
-        byte[] is = Class58.aClass6_1375.method172(arg1, 113, 9);
-        class40_sub5_sub5 = new NpcDefinition();
-        class40_sub5_sub5.anInt2427 = arg1;
-        if(is != null)
-            class40_sub5_sub5.readValues(new Buffer(is));
-        ISAAC.aClass9_510.method230(-7208, (long) arg1, class40_sub5_sub5);
-        return class40_sub5_sub5;
 
     }
 
@@ -166,7 +148,7 @@ public class Landscape {
                 Class68.anInt1634 = 2;
             else {
                 if(Class68.anInt1634 != 0)
-                    Class51.method940(0, Class67.aClass1_1585, true, NpcDefinition.aClass1_2423);
+                    Class51.method940(0, Class67.aClass1_1585, true, ActorDefinition.aClass1_2423);
                 RSCanvas.method46(0);
                 Npc.aScene_3301.method98();
                 System.gc();
@@ -310,7 +292,7 @@ public class Landscape {
                         }
                     }
                 }
-                if(NpcDefinition.anInt2433 != -1)
+                if(ActorDefinition.anInt2433 != -1)
                     Floor.method559(35, -88);
                 else
                     Floor.method559(30, -54);
@@ -419,7 +401,7 @@ public class Landscape {
     public static void method936(int arg0, Class6 arg1) {
 
         if(arg0 != -17552)
-            method932((byte) -94, 97);
+            ActorDefinition.getDefinition((byte) -94, 97);
         anInt1177++;
         RSCanvas.aClass6_61 = arg1;
 

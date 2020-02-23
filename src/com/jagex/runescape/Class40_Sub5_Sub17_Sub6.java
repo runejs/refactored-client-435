@@ -15,7 +15,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     public static int[][] anIntArrayArray3238 = {{6798, 107, 10283, 16, 4797, 7744, 5799, 4634, 33697, 22433, 2983, 54193}, {8741, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003, 25239}, {25238, 8742, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003}, {4626, 11146, 6439, 12, 4758, 10270}, {4550, 4537, 5681, 5673, 5790, 6806, 8076, 4574}};
     public static int anInt3241;
     public static Class68 aClass68_3243;
-    public static RSString aClass1_3245 = Class58.method978("Sie haben gerade eine andere Welt verlassen)3");
+    public static RSString aClass1_3245 = RSString.CreateString("Sie haben gerade eine andere Welt verlassen)3");
     public static TypeFace aClass40_Sub5_Sub14_Sub1_3246;
     public static RSString aClass1_3247;
     public static int[] anIntArray3248;
@@ -23,11 +23,11 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     public static int anInt3251;
     public static int anInt3252;
     public static int[] anIntArray3253;
-    public static RSString aClass1_3254 = Class58.method978("redstone2");
+    public static RSString aClass1_3254 = RSString.CreateString("redstone2");
     public static int[] anIntArray3255;
 
     static {
-        aClass1_3247 = Class58.method978("Die Verbindung konnte");
+        aClass1_3247 = RSString.CreateString("Die Verbindung konnte");
     }
 
     public int anInt3230;
@@ -88,7 +88,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     public static void method833(int arg0, boolean arg1) {
 
         anInt3241++;
-        if(((Class40_Sub5_Sub4.anInt2366 ^ 0xffffffff) == ((Class40_Sub5_Sub13.localPlayer.anInt3098) >> 1533110887 ^ 0xffffffff)) && ((Class55.anInt1304 ^ 0xffffffff) == ((Class40_Sub5_Sub13.localPlayer.anInt3089) >> -425626553 ^ 0xffffffff)))
+        if(((Class40_Sub5_Sub4.anInt2366 ^ 0xffffffff) == ((Player.localPlayer.anInt3098) >> 1533110887 ^ 0xffffffff)) && ((Class55.anInt1304 ^ 0xffffffff) == ((Player.localPlayer.anInt3089) >> -425626553 ^ 0xffffffff)))
             Class40_Sub5_Sub4.anInt2366 = 0;
         int i = Class60.anInt1407;
         if(arg1)
@@ -99,12 +99,12 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
             Player class40_sub5_sub17_sub4_sub1;
             if(arg1) {
                 i_1_ = 33538048;
-                class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub13.localPlayer);
+                class40_sub5_sub17_sub4_sub1 = (Player.localPlayer);
             } else {
                 i_1_ = Class57.anIntArray1334[i_0_] << -377206898;
                 class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_0_]]);
             }
-            if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.method784(1)) {
+            if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.isVisible(1)) {
                 class40_sub5_sub17_sub4_sub1.aBoolean3287 = false;
                 int i_2_ = class40_sub5_sub17_sub4_sub1.anInt3098 >> 1455652391;
                 int i_3_ = class40_sub5_sub17_sub4_sub1.anInt3089 >> -130081305;

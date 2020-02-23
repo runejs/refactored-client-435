@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
@@ -9,22 +9,22 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 
 public abstract class Class22_Sub2 extends Class22 {
-    public static RSString string_blank = Class58.method978("");
+    public static RSString string_blank = RSString.CreateString("");
     public static RSString password = string_blank;
-    public static RSString aClass1_1875 = Class58.method978("Please use a different world)3");
-    public static RSString aClass1_1876 = Class58.method978("Walk here");
-    public static RSString aClass1_1877 = Class58.method978("");
-    public static RSString aClass1_1878 = Class58.method978("@yel@*V");
+    public static RSString aClass1_1875 = RSString.CreateString("Please use a different world)3");
+    public static RSString aClass1_1876 = RSString.CreateString("Walk here");
+    public static RSString aClass1_1877 = RSString.CreateString("");
+    public static RSString aClass1_1878 = RSString.CreateString("@yel@*V");
     public static RSString aClass1_1879 = string_blank;
     public static int anInt1880;
     public static RSString aClass1_1881 = string_blank;
     public static int anInt1882;
-    public static RSString aClass1_1883 = Class58.method978("Fehler bei der Verbindung zum Server)3");
+    public static RSString aClass1_1883 = RSString.CreateString("Fehler bei der Verbindung zum Server)3");
     public static int anInt1884;
-    public static RSString aClass1_1885 = (Class58.method978("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789(Q(R+R(T(U^(V(Z(X(Y)2_=)0[*U]*W;:(W@(S*X)1<)3>)4?*6*V "));
+    public static RSString aClass1_1885 = (RSString.CreateString("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789(Q(R+R(T(U^(V(Z(X(Y)2_=)0[*U]*W;:(W@(S*X)1<)3>)4?*6*V "));
     public static Class40_Sub5_Sub12 aClass40_Sub5_Sub12_1887;
     public static int anInt1888 = 0;
-    public static RSString aClass1_1889 = Class58.method978("Benutzen");
+    public static RSString aClass1_1889 = RSString.CreateString("Benutzen");
     public static RSString username = string_blank;
     public static RSString aClass1_1891 = aClass1_1875;
     public static int anInt1892;
@@ -50,7 +50,7 @@ public abstract class Class22_Sub2 extends Class22 {
             class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
             class40_sub5_sub14_sub2.imgPixels = Class58.aByteArrayArray1370[i];
         }
-        NpcDefinition.method569();
+        ActorDefinition.method569();
         return class40_sub5_sub14_sub2s;
 
     }
@@ -88,7 +88,7 @@ public abstract class Class22_Sub2 extends Class22 {
             for(int i_5_ = 0; (i_5_ ^ 0xffffffff) > (i_4_ ^ 0xffffffff); i_5_++)
                 class40_sub5_sub14_sub4.pixels[i_5_] = (Buffer.anIntArray1972[Class66.method1021(255, is[i_5_])]);
         }
-        NpcDefinition.method569();
+        ActorDefinition.method569();
         return class40_sub5_sub14_sub4s;
 
     }

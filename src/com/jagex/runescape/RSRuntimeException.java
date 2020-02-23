@@ -7,9 +7,9 @@ import java.awt.*;
 public class RSRuntimeException extends RuntimeException {
     public static int anInt1641 = 0;
     public static int anInt1642 = 0;
-    public static RSString aClass1_1644 = Class58.method978("Lade Sprites )2 ");
-    public static RSString aClass1_1647 = Class58.method978("Regelversto-8 melden");
-    public static RSString aClass1_1649 = Class58.method978("Select");
+    public static RSString aClass1_1644 = RSString.CreateString("Lade Sprites )2 ");
+    public static RSString aClass1_1647 = RSString.CreateString("Regelversto-8 melden");
+    public static RSString aClass1_1649 = RSString.CreateString("Select");
     public static int anInt1651 = 0;
     /*synthetic*/ public static Class aClass1654;
 

@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.TypeFace;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.zip.CRC32;
 
 public class FloorDecoration {
-    public static RSString STRING_CONNECTING_UPDATE_SERVER = Class58.method978("Connecting to update server");
+    public static RSString STRING_CONNECTING_UPDATE_SERVER = RSString.CreateString("Connecting to update server");
     public static CRC32 aCRC32_590;
     public static RSString aClass1_591;
     public static int anInt592;
@@ -38,15 +38,15 @@ public class FloorDecoration {
     public static RSString aClass1_615;
 
     static {
-        aClass1_606 = Class58.method978("Add friend");
+        aClass1_606 = RSString.CreateString("Add friend");
         aClass1_591 = aClass1_606;
         aCRC32_590 = new CRC32();
-        aClass1_609 = Class58.method978("blinken2:");
-        aClass1_610 = Class58.method978("@red@");
+        aClass1_609 = RSString.CreateString("blinken2:");
+        aClass1_610 = RSString.CreateString("@red@");
         aClass1_611 = null;
-        aClass1_613 = Class58.method978("Verbindung mit Update)2Server)3)3)3");
+        aClass1_613 = RSString.CreateString("Verbindung mit Update)2Server)3)3)3");
         anInt614 = -1;
-        aClass1_615 = Class58.method978("huffman");
+        aClass1_615 = RSString.CreateString("huffman");
     }
 
     public int config;
@@ -184,7 +184,7 @@ public class FloorDecoration {
             Class13.aClass40_Sub5_Sub14_Sub2_418 = null;
             RSString.aClass68_1665 = null;
             RSCanvas.anIntArray62 = null;
-            NpcDefinition.anIntArray2386 = null;
+            ActorDefinition.anIntArray2386 = null;
             Class39.aClass68_908 = null;
             Class38_Sub1.aClass40_Sub5_Sub14_Sub2_1919 = null;
             Class56.aClass40_Sub5_Sub14_Sub2_1329 = null;

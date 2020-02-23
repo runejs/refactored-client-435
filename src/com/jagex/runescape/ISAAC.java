@@ -12,13 +12,13 @@ public class ISAAC {
     public static int anInt503;
     public static int anInt504;
     public static boolean redrawTabArea = false;
-    public static RSString aClass1_506 = Class58.method978("titlebutton");
+    public static RSString aClass1_506 = RSString.CreateString("titlebutton");
     public static int anInt507;
     public static int anInt509 = 0;
     public static Cache aClass9_510 = new Cache(64);
     public static boolean aBoolean512;
     public static int anInt514;
-    public static RSString aClass1_515 = Class58.method978(": ");
+    public static RSString aClass1_515 = RSString.CreateString(": ");
     public static Cache aClass9_516;
     public static RSString aClass1_517;
     public static RSString aClass1_518;
@@ -35,14 +35,14 @@ public class ISAAC {
     public static RSString aClass1_529;
 
     static {
-        aClass1_517 = Class58.method978("Gegenstand f-Ur Mitglieder");
+        aClass1_517 = RSString.CreateString("Gegenstand f-Ur Mitglieder");
         anInt522 = -1;
-        aClass1_518 = Class58.method978("Invalid username or password)3");
+        aClass1_518 = RSString.CreateString("Invalid username or password)3");
         aClass1_526 = aClass1_518;
-        aClass1_527 = Class58.method978("blinken3:");
-        aClass1_523 = Class58.method978("oberen Rand der Webseite ausw-=hlen)3");
+        aClass1_527 = RSString.CreateString("blinken3:");
+        aClass1_523 = RSString.CreateString("oberen Rand der Webseite ausw-=hlen)3");
         aClass9_516 = new Cache(64);
-        aClass1_529 = Class58.method978("Begeben Sie sich in ein freies Gebiet)1 um");
+        aClass1_529 = RSString.CreateString("Begeben Sie sich in ein freies Gebiet)1 um");
     }
 
     public int anInt497;

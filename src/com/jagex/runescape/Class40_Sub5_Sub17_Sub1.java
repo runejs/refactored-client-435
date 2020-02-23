@@ -17,12 +17,12 @@ import java.awt.*;
 public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     public static int anInt2956;
     public static int anInt2959;
-    public static RSString aClass1_2963 = Class58.method978("Feb");
+    public static RSString aClass1_2963 = RSString.CreateString("Feb");
     public static RSString[] aClass1Array2964;
     public static RSString aClass1_2965;
     public static RSString aClass1_2966;
     public static RSString aClass1_2967;
-    public static RSString aClass1_2969 = Class58.method978("Aug");
+    public static RSString aClass1_2969 = RSString.CreateString("Aug");
     public static int anInt2970;
     public static boolean[] aBooleanArray2975;
     public static RSString aClass1_2977;
@@ -51,24 +51,24 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     public static RSString aClass1_3015;
 
     static {
-        aClass1_2967 = Class58.method978("Dec");
+        aClass1_2967 = RSString.CreateString("Dec");
         aBooleanArray2975 = new boolean[5];
-        aClass1_2990 = Class58.method978("Mar");
-        aClass1_2977 = Class58.method978("Regeln versto-8en hat)3");
+        aClass1_2990 = RSString.CreateString("Mar");
+        aClass1_2977 = RSString.CreateString("Regeln versto-8en hat)3");
         atInventoryInterfaceType = 0;
-        aClass1_2998 = Class58.method978("May");
-        aClass1_3002 = Class58.method978("Loading wordpack )2 ");
-        aClass1_2985 = Class58.method978("Jun");
-        aClass1_2965 = Class58.method978("Oct");
-        aClass1_2991 = Class58.method978("Jul");
-        aClass1_3010 = Class58.method978("Connecting to server)3)3)3");
+        aClass1_2998 = RSString.CreateString("May");
+        aClass1_3002 = RSString.CreateString("Loading wordpack )2 ");
+        aClass1_2985 = RSString.CreateString("Jun");
+        aClass1_2965 = RSString.CreateString("Oct");
+        aClass1_2991 = RSString.CreateString("Jul");
+        aClass1_3010 = RSString.CreateString("Connecting to server)3)3)3");
         aClass1_3009 = aClass1_3010;
         anIntArray2987 = new int[]{768, 1024, 1280, 512, 1536, 256, 0, 1792};
-        aClass1_3012 = Class58.method978("Jan");
-        aClass1_2966 = Class58.method978("Sep");
-        aClass1_2988 = Class58.method978("Nov");
+        aClass1_3012 = RSString.CreateString("Jan");
+        aClass1_2966 = RSString.CreateString("Sep");
+        aClass1_2988 = RSString.CreateString("Nov");
         aClass1_3014 = aClass1_3002;
-        aClass1_3015 = Class58.method978("Apr");
+        aClass1_3015 = RSString.CreateString("Apr");
         aClass1Array2964 = new RSString[]{aClass1_3012, aClass1_2963, aClass1_2990, aClass1_3015, aClass1_2998, aClass1_2985, aClass1_2991, aClass1_2969, aClass1_2966, aClass1_2965, aClass1_2988, aClass1_2967};
     }
 
@@ -422,8 +422,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             }
             if(((Floor.tile_flags[Player.anInt3267][i_23_][i_22_]) & 0x4) != 0)
                 i = Player.anInt3267;
-            int i_24_ = ((Class40_Sub5_Sub13.localPlayer.anInt3098) >> -1546085145);
-            int i_25_ = ((Class40_Sub5_Sub13.localPlayer.anInt3089) >> -26166617);
+            int i_24_ = ((Player.localPlayer.anInt3098) >> -1546085145);
+            int i_25_ = ((Player.localPlayer.anInt3089) >> -26166617);
             int i_26_;
             if(i_24_ <= i_23_)
                 i_26_ = -i_24_ + i_23_;
@@ -485,7 +485,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         }
         if(arg0 > -101)
             aClass6_Sub1_3000 = null;
-        if(((Floor.tile_flags[Player.anInt3267][(Class40_Sub5_Sub13.localPlayer.anInt3098) >> -1782384953][(Class40_Sub5_Sub13.localPlayer.anInt3089) >> -1953891737]) & 0x4) != 0)
+        if(((Floor.tile_flags[Player.anInt3267][(Player.localPlayer.anInt3098) >> -1782384953][(Player.localPlayer.anInt3089) >> -1953891737]) & 0x4) != 0)
             i = Player.anInt3267;
         return i;
 
