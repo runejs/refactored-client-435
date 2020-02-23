@@ -36,12 +36,12 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
     public static long aLong1467;
     public static int anInt1468;
     public static Canvas aCanvas1469;
-    public static int anInt1470;
+    public static int clickType;
     public static RSString aClass1_1471;
     public static int chatboxScrollMax;
     public static byte[][][] aByteArrayArrayArray1473;
     public static RSString aClass1_1474;
-    public int cameraZoom = 600;
+    public static int cameraZoom = 600;
 
 
     static {
@@ -51,7 +51,7 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
         aClass1_1465 = aClass1_1464;
         aClass40_Sub5_Sub14_Sub4Array1466 = new ImageRGB[1000];
         aClass1_1463 = RSString.CreateString("wave2:");
-        anInt1470 = 0;
+        clickType = 0;
         chatboxScrollMax = 78;
         aClass1_1471 = RSString.CreateString("Lade Titelbild )2 ");
         aClass1_1474 = aClass1_1463;
@@ -77,8 +77,8 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
         anInt1460++;
         if((SceneTile.activeInterfaceType ^ 0xffffffff) == -1) {
             if(arg0 > -60)
-                anInt1470 = -90;
-            int i = anInt1470;
+                clickType = -90;
+            int i = clickType;
             if((Main.anInt1773 ^ 0xffffffff) == -2 && (Class57.anInt1338 ^ 0xffffffff) <= -517 && (RSString.anInt1668 ^ 0xffffffff) <= -161 && (Class57.anInt1338 ^ 0xffffffff) >= -766 && RSString.anInt1668 <= 205)
                 i = 0;
             if(!Class4.menuOpen) {
@@ -229,8 +229,8 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
 
         if(GameObject.aClass62_3019 != null) {
             Class45.anInt1073 = 0;
-            Class55.anInt1295 = arg0.getX();
-            Class40_Sub5_Sub11.anInt2625 = arg0.getY();
+            Class55.mouseX = arg0.getX();
+            Class40_Sub5_Sub11.mouseY = arg0.getY();
             Floor.aLong2344 = Class51.method937(1);
             if(!arg0.isMetaDown()) {
                 Actor.anInt3143 = 1;
@@ -247,6 +247,7 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
     }
 
     public void mouseWheelMoved(MouseWheelEvent event) {
+        System.out.println(cameraZoom);
         int rotation = event.getWheelRotation();
         //            if (!handleInterfaceScrolling(event, (Game) this)) {
         if((cameraZoom <= 300 && rotation <= 0) || (cameraZoom >= 1200 && rotation >= 0)) {

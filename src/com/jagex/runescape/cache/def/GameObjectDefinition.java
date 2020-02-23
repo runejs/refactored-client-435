@@ -12,7 +12,7 @@ public class GameObjectDefinition extends SubNode {
     public static RSString aClass1_2556 = RSString.CreateString("blaugr-Un:");
     public static int chatboxScroll = 0;
     public static int anInt2558 = 0;
-    public static int anInt2559 = 0;
+    public static int lastClickY = 0;
     public static RSString aClass1_2560 = RSString.CreateString(": ");
     public static long aLong2561 = 0L;
 

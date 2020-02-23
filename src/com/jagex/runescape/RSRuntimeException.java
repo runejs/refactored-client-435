@@ -71,6 +71,7 @@ public class RSRuntimeException extends RuntimeException {
         int i = -23 / ((-32 - arg1) / 47);
         arg0.addMouseMotionListener(GameObject.aClass62_3019);
         arg0.addFocusListener(GameObject.aClass62_3019);
+        arg0.addMouseWheelListener(GameObject.aClass62_3019);
     }
 
     public static void method1057(int arg0) {

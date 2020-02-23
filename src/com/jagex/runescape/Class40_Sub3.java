@@ -270,8 +270,8 @@ public class Class40_Sub3 extends Node {
                 Class22_Sub2.currentLoadingText = Actor.aClass1_3124;
             }
         } else if((Class40_Sub5_Sub6.anInt2451 ^ 0xffffffff) == -111) {
-            Class12.aClass39_387 = new Class39();
-            ISAAC.aClass31_521.method394(10, 0, Class12.aClass39_387);
+            Class12.mouseCapturer = new Class39();
+            ISAAC.aClass31_521.method394(10, 0, Class12.mouseCapturer);
             Class22_Sub2.currentLoadingText = Class40_Sub5_Sub2.aClass1_2297;
             Class40_Sub5_Sub6.anInt2451 = 120;
             Class67.anInt1607 = 94;

@@ -53,7 +53,7 @@ public class Npc extends Actor {
             if((Class51.anInt1197 ^ 0xffffffff) == -31 || (Class51.anInt1197 ^ 0xffffffff) == -36) {
                 if(ISAAC.aBoolean519 && (Class51.anInt1197 ^ 0xffffffff) == -31) {
                     Class40_Sub5_Sub2.anInt2302 = 0;
-                    Class62.anInt1470 = 0;
+                    Class62.clickType = 0;
                     while(Class34.method416((byte) -104)) {
                         /* empty */
                     }
@@ -61,69 +61,71 @@ public class Npc extends Actor {
                         Class40_Sub5_Sub17_Sub3.aBooleanArray3056[i] = false;
                 }
                 Class40_Sub5_Sub6.putHackCheckPacket(-12, 205, Class32.packetBuffer);
-                synchronized(Class12.aClass39_387.anObject905) {
-                    if(!Class22.aBoolean544)
-                        Class12.aClass39_387.anInt921 = 0;
-                    else if((Class62.anInt1470 ^ 0xffffffff) != -1 || Class12.aClass39_387.anInt921 >= 40) {
-                        int i = 0;
-                        Class32.packetBuffer.putPacket(210);
-                        Class32.packetBuffer.putByte(0);
-                        int i_2_ = Class32.packetBuffer.currentPosition;
-                        for(int i_3_ = 0; i_3_ < Class12.aClass39_387.anInt921; i_3_++) {
-                            if((-i_2_ + Class32.packetBuffer.currentPosition) >= 240)
-                                break;
-                            i++;
-                            int i_4_ = Class12.aClass39_387.anIntArray920[i_3_];
-                            if(i_4_ >= 0) {
-                                if((i_4_ ^ 0xffffffff) < -503)
-                                    i_4_ = 502;
-                            } else
-                                i_4_ = 0;
-                            int i_5_ = Class12.aClass39_387.anIntArray922[i_3_];
-                            if(i_5_ < 0)
-                                i_5_ = 0;
-                            else if((i_5_ ^ 0xffffffff) < -765)
-                                i_5_ = 764;
-                            int i_6_ = i_4_ * 765 + i_5_;
-                            if((Class12.aClass39_387.anIntArray920[i_3_] ^ 0xffffffff) == 0 && (Class12.aClass39_387.anIntArray922[i_3_] ^ 0xffffffff) == 0) {
-                                i_5_ = -1;
-                                i_6_ = 524287;
-                                i_4_ = -1;
-                            }
-                            if(((i_5_ ^ 0xffffffff) == (PacketBuffer.anInt2256 ^ 0xffffffff)) && i_4_ == GameObjectDefinition.anInt2559) {
-                                if(Class22_Sub2.anInt1888 < 2047)
-                                    Class22_Sub2.anInt1888++;
-                            } else {
-                                int i_7_ = i_5_ - PacketBuffer.anInt2256;
-                                PacketBuffer.anInt2256 = i_5_;
-                                int i_8_ = i_4_ - GameObjectDefinition.anInt2559;
-                                GameObjectDefinition.anInt2559 = i_4_;
-                                if(Class22_Sub2.anInt1888 < 8 && i_7_ >= -32 && (i_7_ ^ 0xffffffff) >= -32 && (i_8_ ^ 0xffffffff) <= 31 && i_8_ <= 31) {
-                                    i_7_ += 32;
-                                    i_8_ += 32;
-                                    Class32.packetBuffer.putShortBE((i_8_ + (i_7_ << -1041963898) + (Class22_Sub2.anInt1888 << 164403180)));
-                                    Class22_Sub2.anInt1888 = 0;
-                                } else if(Class22_Sub2.anInt1888 < 8) {
-                                    Class32.packetBuffer.putMediumBE((i_6_ + 8388608 + (Class22_Sub2.anInt1888 << 1170876883)));
-                                    Class22_Sub2.anInt1888 = 0;
+                synchronized(Class12.mouseCapturer.objectLock) {
+                    if(Class22.accountFlagged) {
+                        if(Class62.clickType != 0 || Class12.mouseCapturer.coord >= 40) {
+                            int coordinateCount = 0;
+                            Class32.packetBuffer.putPacket(210);
+                            Class32.packetBuffer.putByte(0);
+                            int originalOffset = Class32.packetBuffer.currentPosition;
+                            for(int c = 0; c < Class12.mouseCapturer.coord; c++) {
+                                if((-originalOffset + Class32.packetBuffer.currentPosition) >= 240)
+                                    break;
+                                coordinateCount++;
+                                int pixelOffset = Class12.mouseCapturer.coordsY[c];
+                                if(pixelOffset >= 0) {
+                                    if(pixelOffset > 502)
+                                        pixelOffset = 502;
+                                } else
+                                    pixelOffset = 0;
+                                int x = Class12.mouseCapturer.coordsX[c];
+                                if(x < 0)
+                                    x = 0;
+                                else if(x > 764)
+                                    x = 764;
+                                int y = pixelOffset * 765 + x;
+                                if(Class12.mouseCapturer.coordsY[c] == -1 && Class12.mouseCapturer.coordsX[c] == -1) {
+                                    x = -1;
+                                    y = -1;
+                                    pixelOffset = 0x7ffff;
+                                }
+                                if(x == PacketBuffer.lastClickX && y == GameObjectDefinition.lastClickY) {
+                                    if(Class22_Sub2.duplicateClickCount < 2047)
+                                        Class22_Sub2.duplicateClickCount++;
                                 } else {
-                                    Class32.packetBuffer.putIntBE(((Class22_Sub2.anInt1888 << 811733811) + -1073741824 + i_6_));
-                                    Class22_Sub2.anInt1888 = 0;
+                                    int differenceX = x - PacketBuffer.lastClickX;
+                                    PacketBuffer.lastClickX = x;
+                                    int differenceY = pixelOffset - GameObjectDefinition.lastClickY;
+                                    GameObjectDefinition.lastClickY = pixelOffset;
+                                    if(Class22_Sub2.duplicateClickCount < 8 && differenceX >= -32 && (differenceX ^ 0xffffffff) >= -32 && (differenceY ^ 0xffffffff) <= 31 && differenceY <= 31) {
+                                        differenceX += 32;
+                                        differenceY += 32;
+                                        Class32.packetBuffer.putShortBE((differenceY + (differenceX << -1041963898) + (Class22_Sub2.duplicateClickCount << 164403180)));
+                                        Class22_Sub2.duplicateClickCount = 0;
+                                    } else if(Class22_Sub2.duplicateClickCount < 8) {
+                                        Class32.packetBuffer.putMediumBE((y + 8388608 + (Class22_Sub2.duplicateClickCount << 1170876883)));
+                                        Class22_Sub2.duplicateClickCount = 0;
+                                    } else {
+                                        Class32.packetBuffer.putIntBE(((Class22_Sub2.duplicateClickCount << 811733811) + -1073741824 + y));
+                                        Class22_Sub2.duplicateClickCount = 0;
+                                    }
                                 }
                             }
+                            Class32.packetBuffer.finishVarByte(Class32.packetBuffer.currentPosition + -originalOffset);
+                            if(coordinateCount < Class12.mouseCapturer.coord) {
+                                Class12.mouseCapturer.coord -= coordinateCount;
+                                for(int i_9_ = 0; ((Class12.mouseCapturer.coord > i_9_)); i_9_++) {
+                                    Class12.mouseCapturer.coordsX[i_9_] = (Class12.mouseCapturer.coordsX[coordinateCount + i_9_]);
+                                    Class12.mouseCapturer.coordsY[i_9_] = (Class12.mouseCapturer.coordsY[i_9_ + coordinateCount]);
+                                }
+                            } else
+                                Class12.mouseCapturer.coord = 0;
                         }
-                        Class32.packetBuffer.finishVarByte(Class32.packetBuffer.currentPosition + -i_2_);
-                        if(i < Class12.aClass39_387.anInt921) {
-                            Class12.aClass39_387.anInt921 -= i;
-                            for(int i_9_ = 0; ((Class12.aClass39_387.anInt921 > i_9_)); i_9_++) {
-                                Class12.aClass39_387.anIntArray922[i_9_] = (Class12.aClass39_387.anIntArray922[i + i_9_]);
-                                Class12.aClass39_387.anIntArray920[i_9_] = (Class12.aClass39_387.anIntArray920[i_9_ + i]);
-                            }
-                        } else
-                            Class12.aClass39_387.anInt921 = 0;
+                    } else {
+                        Class12.mouseCapturer.coord = 0;
                     }
                 }
-                if(Class62.anInt1470 != 0) {
+                if(Class62.clickType != 0) {
                     Class40_Sub5_Sub4.anInt2363++;
                     long l = ((GameObjectDefinition.aLong2561 - Class51.aLong1203) / 50L);
                     int i = Class57.anInt1338;
@@ -140,7 +142,7 @@ public class Npc extends Actor {
                     } else
                         i_10_ = 0;
                     int i_11_ = 0;
-                    if((Class62.anInt1470 ^ 0xffffffff) == -3)
+                    if((Class62.clickType ^ 0xffffffff) == -3)
                         i_11_ = 1;
                     if((l ^ 0xffffffffffffffffL) < -4096L)
                         l = 4095L;
@@ -259,7 +261,7 @@ public class Npc extends Actor {
                                     }
                                 }
                                 RSRuntimeException.anInt1651 = 10;
-                                Class62.anInt1470 = 0;
+                                Class62.clickType = 0;
                             }
                         }
                         if((Scene.anInt78 ^ 0xffffffff) != 0) {
@@ -274,8 +276,8 @@ public class Npc extends Actor {
                             }
                             Scene.anInt78 = -1;
                         }
-                        if((Class62.anInt1470 ^ 0xffffffff) == -2 && RSApplet.aClass1_8 != null) {
-                            Class62.anInt1470 = 0;
+                        if((Class62.clickType ^ 0xffffffff) == -2 && RSApplet.aClass1_8 != null) {
+                            Class62.clickType = 0;
                             Class52.redrawChatbox = true;
                             RSApplet.aClass1_8 = null;
                         }
@@ -285,7 +287,7 @@ public class Npc extends Actor {
                             Class38_Sub1.method447((byte) 29);
                             Class40_Sub5_Sub1.method544((byte) -54);
                         }
-                        if((Class40_Sub5_Sub2.anInt2302 ^ 0xffffffff) == -2 || (Class62.anInt1470 ^ 0xffffffff) == -2)
+                        if((Class40_Sub5_Sub2.anInt2302 ^ 0xffffffff) == -2 || (Class62.clickType ^ 0xffffffff) == -2)
                             anInt3294++;
                         int i = 34;
                         if(Class66.anInt1560 != -1)

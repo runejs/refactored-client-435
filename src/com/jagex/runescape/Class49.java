@@ -5,7 +5,6 @@ import com.jagex.runescape.media.renderable.Model;
 public class Class49 {
     public static int anInt1142;
     public static RSString aClass1_1143;
-    public static int anInt1144;
     public static Cache aClass9_1145;
     public static RSString aClass1_1146 = RSString.CreateString("An");
     public static volatile int anInt1147 = 0;
@@ -30,34 +29,31 @@ public class Class49 {
         aClass1_1148 = aClass1_1156;
     }
 
-    public static void method929(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
-
-        int i = 0;
-        int i_0_ = 0x7ff & -arg3 + 2048;
-        int i_1_ = 0;
-        int i_2_ = 2048 - arg0 & 0x7ff;
-        anInt1144++;
-        int i_3_ = arg6;
-        if(arg5 != (i_2_ ^ 0xffffffff)) {
-            int i_4_ = Model.COSINE[i_2_];
-            int i_5_ = Model.SINE[i_2_];
-            int i_6_ = i_1_ * i_4_ + -(i_5_ * i_3_) >> 530951344;
-            i_3_ = i_4_ * i_3_ + i_5_ * i_1_ >> -1614421968;
-            i_1_ = i_6_;
+    public static void setCameraPosition(int pitch, int x, int z, int yaw, int y, int ___pitch, int arg6) {
+        int xOffset = 0;
+        int yawDifference = 0x7ff & -yaw + 2048;
+        int zOffset = 0;
+        int pitchDifference = 2048 - pitch & 0x7ff;
+        int yOffset = Class62.cameraZoom + pitch * 3;
+        if(pitchDifference != 0) {
+            int cosine = Model.COSINE[pitchDifference];
+            int sine = Model.SINE[pitchDifference];
+            int temp = zOffset * cosine + -(sine * yOffset) >> 16;
+            yOffset = cosine * yOffset + sine * zOffset >> 16;
+            zOffset = temp;
         }
-        if(i_0_ != 0) {
-            int i_7_ = Model.COSINE[i_0_];
-            int i_8_ = Model.SINE[i_0_];
-            int i_9_ = i_7_ * i + i_3_ * i_8_ >> -435436048;
-            i_3_ = -(i * i_8_) + i_3_ * i_7_ >> -2076141520;
-            i = i_9_;
+        if(yawDifference != 0) {
+            int cosine = Model.COSINE[yawDifference];
+            int sine = Model.SINE[yawDifference];
+            int temp = cosine * xOffset + yOffset * sine >> 16;
+            yOffset = -(xOffset * sine) + yOffset * cosine >> 16;
+            xOffset = temp;
         }
-        Class68_Sub1.anInt2210 = arg3;
-        Class32.anInt769 = -i_1_ + arg2;
-        Class12.anInt388 = -i + arg1;
-        Class26.anInt627 = arg0;
-        Class40_Sub5_Sub6.anInt2443 = arg4 + -i_3_;
-
+        Class68_Sub1.anInt2210 = yaw;
+        Class32.cameraZ = -zOffset + z;
+        Class12.cameraX = -xOffset + x;
+        Class26.anInt627 = pitch;
+        Class40_Sub5_Sub6.cameraY = y + -yOffset;
     }
 
     public static void method930(int arg0) {

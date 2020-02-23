@@ -86,44 +86,44 @@ public class Class5 {
         int i = 64 + Class32.anInt767 * 128;
         int i_3_ = 64 + 128 * Class22.anInt545;
         int i_4_ = (Class37.method430((byte) -121, Player.anInt3267, i_3_, i) + -anInt194);
-        if((i_3_ > Class12.anInt388)) {
-            Class12.anInt388 += (Class59.anInt1386 * (i_3_ + -Class12.anInt388) / 1000 + Class4.anInt188);
-            if(Class12.anInt388 > i_3_) {
-                Class12.anInt388 = i_3_;
+        if((i_3_ > Class12.cameraX)) {
+            Class12.cameraX += (Class59.anInt1386 * (i_3_ + -Class12.cameraX) / 1000 + Class4.anInt188);
+            if(Class12.cameraX > i_3_) {
+                Class12.cameraX = i_3_;
             }
         }
-        if((i_4_ > Class32.anInt769)) {
-            Class32.anInt769 += (Class59.anInt1386 * (i_4_ - Class32.anInt769) / 1000 + Class4.anInt188);
-            if((i_4_ < Class32.anInt769))
-                Class32.anInt769 = i_4_;
+        if((i_4_ > Class32.cameraZ)) {
+            Class32.cameraZ += (Class59.anInt1386 * (i_4_ - Class32.cameraZ) / 1000 + Class4.anInt188);
+            if((i_4_ < Class32.cameraZ))
+                Class32.cameraZ = i_4_;
         }
-        if((Class12.anInt388 > i_3_)) {
-            Class12.anInt388 -= Class4.anInt188 + (Class59.anInt1386 * (Class12.anInt388 + -i_3_) / 1000);
-            if(i_3_ > Class12.anInt388) {
-                Class12.anInt388 = i_3_;
+        if((Class12.cameraX > i_3_)) {
+            Class12.cameraX -= Class4.anInt188 + (Class59.anInt1386 * (Class12.cameraX + -i_3_) / 1000);
+            if(i_3_ > Class12.cameraX) {
+                Class12.cameraX = i_3_;
             }
         }
-        if((Class40_Sub5_Sub6.anInt2443 < i)) {
-            Class40_Sub5_Sub6.anInt2443 += Class4.anInt188 + (Class59.anInt1386 * (-Class40_Sub5_Sub6.anInt2443 + i) / 1000);
-            if((Class40_Sub5_Sub6.anInt2443 > i))
-                Class40_Sub5_Sub6.anInt2443 = i;
+        if((Class40_Sub5_Sub6.cameraY < i)) {
+            Class40_Sub5_Sub6.cameraY += Class4.anInt188 + (Class59.anInt1386 * (-Class40_Sub5_Sub6.cameraY + i) / 1000);
+            if((Class40_Sub5_Sub6.cameraY > i))
+                Class40_Sub5_Sub6.cameraY = i;
         }
-        if(Class32.anInt769 > i_4_) {
-            Class32.anInt769 -= ((Class32.anInt769 + -i_4_) * Class59.anInt1386 / 1000 + Class4.anInt188);
-            if((i_4_ > Class32.anInt769))
-                Class32.anInt769 = i_4_;
+        if(Class32.cameraZ > i_4_) {
+            Class32.cameraZ -= ((Class32.cameraZ + -i_4_) * Class59.anInt1386 / 1000 + Class4.anInt188);
+            if((i_4_ > Class32.cameraZ))
+                Class32.cameraZ = i_4_;
         }
         i_3_ = 64 + HashTable.anInt564 * 128;
-        if(Class40_Sub5_Sub6.anInt2443 > i) {
-            Class40_Sub5_Sub6.anInt2443 -= Class4.anInt188 + (Class59.anInt1386 * (Class40_Sub5_Sub6.anInt2443 - i) / 1000);
-            if(Class40_Sub5_Sub6.anInt2443 < i)
-                Class40_Sub5_Sub6.anInt2443 = i;
+        if(Class40_Sub5_Sub6.cameraY > i) {
+            Class40_Sub5_Sub6.cameraY -= Class4.anInt188 + (Class59.anInt1386 * (Class40_Sub5_Sub6.cameraY - i) / 1000);
+            if(Class40_Sub5_Sub6.cameraY < i)
+                Class40_Sub5_Sub6.cameraY = i;
         }
         i = Class40_Sub5_Sub9.anInt2576 * 128 + 64;
         i_4_ = Class37.method430((byte) -125, Player.anInt3267, i_3_, i) - Class38.anInt892;
-        int i_5_ = -Class32.anInt769 + i_4_;
-        int i_6_ = i - Class40_Sub5_Sub6.anInt2443;
-        int i_7_ = i_3_ - Class12.anInt388;
+        int i_5_ = -Class32.cameraZ + i_4_;
+        int i_6_ = i - Class40_Sub5_Sub6.cameraY;
+        int i_7_ = i_3_ - Class12.cameraX;
         int i_8_ = (int) Math.sqrt((double) (i_7_ * i_7_ + (i_6_ * i_6_)));
         int i_9_ = 0x7ff & (int) (Math.atan2((double) i_5_, (double) i_8_) * 325.949);
         if(i_9_ < 128)

@@ -220,9 +220,9 @@ public class Class64 implements Runnable {
             if(arg0 != -656)
                 aClass1_1524 = null;
             Landscape.mouseY = Cache.anInt322;
-            Class62.anInt1470 = Actor.anInt3143;
-            Class57.anInt1338 = Class55.anInt1295;
-            RSString.anInt1668 = Class40_Sub5_Sub11.anInt2625;
+            Class62.clickType = Actor.anInt3143;
+            Class57.anInt1338 = Class55.mouseX;
+            RSString.anInt1668 = Class40_Sub5_Sub11.mouseY;
             GameObjectDefinition.aLong2561 = Floor.aLong2344;
             Actor.anInt3143 = 0;
         }

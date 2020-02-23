@@ -630,8 +630,8 @@ public class Main extends RSApplet {
 
     public static void method44(int arg0) {
         Class51.aLong1203 = 0L;
-        Class12.aClass39_387.anInt921 = 0;
-        Class22_Sub2.anInt1888 = 0;
+        Class12.mouseCapturer.coord = 0;
+        Class22_Sub2.duplicateClickCount = 0;
         Class10.anInt335 = 0;
         Class42.anInt994 = 0;
         SubNode.anInt2088 = 0;
@@ -867,7 +867,6 @@ public class Main extends RSApplet {
         Class40_Sub13.anInt2173 = 0;
         Class68.anInt1626 = 0;
         Class30.anInt689 = 0;
-        Class49.anInt1144 = 0;
         Class40_Sub5_Sub7.anInt2464 = 0;
         Class51.anInt1191 = 0;
         Class40_Sub5_Sub17_Sub3.anInt3052 = 0;
@@ -1316,9 +1315,9 @@ public class Main extends RSApplet {
     }
 
     public void method24(int arg0) {
-        if(Class12.aClass39_387 != null)
-            Class12.aClass39_387.aBoolean913 = false;
-        Class12.aClass39_387 = null;
+        if(Class12.mouseCapturer != null)
+            Class12.mouseCapturer.aBoolean913 = false;
+        Class12.mouseCapturer = null;
         if(Class40_Sub6.aClass64_2098 != null) {
             Class40_Sub6.aClass64_2098.method1009(-100);
             Class40_Sub6.aClass64_2098 = null;

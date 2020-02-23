@@ -21,17 +21,17 @@ public class Class39 implements Runnable {
     public static RSString aClass1_917 = RSString.CreateString(" from your ignore list first");
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_918;
     public static RSString aClass1_919 = RSString.CreateString("Ok");
-    public Object anObject905;
+    public Object objectLock;
     public boolean aBoolean913 = true;
-    public int[] anIntArray920;
-    public int anInt921;
-    public int[] anIntArray922;
+    public int[] coordsY;
+    public int coord;
+    public int[] coordsX;
 
     public Class39() {
-        anObject905 = new Object();
-        anInt921 = 0;
-        anIntArray920 = new int[500];
-        anIntArray922 = new int[500];
+        objectLock = new Object();
+        coord = 0;
+        coordsY = new int[500];
+        coordsX = new int[500];
     }
 
     public static void method451(Class40_Sub3 arg0, int arg1) {
@@ -100,11 +100,11 @@ public class Class39 implements Runnable {
 
     public void run() {
         while(aBoolean913) {
-            synchronized(anObject905) {
-                if(anInt921 < 500) {
-                    anIntArray922[anInt921] = Class13.mouseX;
-                    anIntArray920[anInt921] = Landscape.mouseY;
-                    anInt921++;
+            synchronized(objectLock) {
+                if(coord < 500) {
+                    coordsX[coord] = Class13.mouseX;
+                    coordsY[coord] = Landscape.mouseY;
+                    coord++;
                 }
             }
             Class43.method890(50L, 44);

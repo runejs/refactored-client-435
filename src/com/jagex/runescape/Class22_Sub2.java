@@ -23,7 +23,7 @@ public abstract class Class22_Sub2 extends Class22 {
     public static int anInt1884;
     public static RSString aClass1_1885 = (RSString.CreateString("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789(Q(R+R(T(U^(V(Z(X(Y)2_=)0[*U]*W;:(W@(S*X)1<)3>)4?*6*V "));
     public static Widget aWidget_1887;
-    public static int anInt1888 = 0;
+    public static int duplicateClickCount = 0;
     public static RSString aClass1_1889 = RSString.CreateString("Benutzen");
     public static RSString username = string_blank;
     public static RSString aClass1_1891 = aClass1_1875;
@@ -109,7 +109,7 @@ public abstract class Class22_Sub2 extends Class22 {
         aClass1_1876 = null;
         aClass1_1875 = null;
         if(arg0 != 39)
-            anInt1888 = 56;
+            duplicateClickCount = 56;
         aClass1_1889 = null;
         aClass1_1896 = null;
         password = null;

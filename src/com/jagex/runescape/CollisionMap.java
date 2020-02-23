@@ -513,9 +513,9 @@ public class CollisionMap {
                 Class4.anInt188 = Cache.outgoingbuffer.getUnsignedByte();
                 Class59.anInt1386 = Cache.outgoingbuffer.getUnsignedByte();
                 if((Class59.anInt1386 ^ 0xffffffff) <= -101) {
-                    Class40_Sub5_Sub6.anInt2443 = 64 + Class32.anInt767 * 128;
-                    Class12.anInt388 = Class22.anInt545 * 128 + 64;
-                    Class32.anInt769 = (Class37.method430((byte) -125, (Player.anInt3267), Class12.anInt388, Class40_Sub5_Sub6.anInt2443) - Class5.anInt194);
+                    Class40_Sub5_Sub6.cameraY = 64 + Class32.anInt767 * 128;
+                    Class12.cameraX = Class22.anInt545 * 128 + 64;
+                    Class32.cameraZ = (Class37.method430((byte) -125, (Player.anInt3267), Class12.cameraX, Class40_Sub5_Sub6.cameraY) - Class5.anInt194);
                 }
                 Class57.packetid = -1;
                 return true;
@@ -763,9 +763,9 @@ public class CollisionMap {
                     int i_69_ = 128 * HashTable.anInt564 + 64;
                     int i_70_ = 128 * Class40_Sub5_Sub9.anInt2576 + 64;
                     int i_71_ = (Class37.method430((byte) -120, (Player.anInt3267), i_69_, i_70_) - Class38.anInt892);
-                    int i_72_ = i_69_ + -Class12.anInt388;
-                    int i_73_ = i_70_ + -Class40_Sub5_Sub6.anInt2443;
-                    int i_74_ = -Class32.anInt769 + i_71_;
+                    int i_72_ = i_69_ + -Class12.cameraX;
+                    int i_73_ = i_70_ + -Class40_Sub5_Sub6.cameraY;
+                    int i_74_ = -Class32.cameraZ + i_71_;
                     int i_75_ = (int) Math.sqrt((double) (i_73_ * i_73_ + i_72_ * i_72_));
                     Class26.anInt627 = ((int) (325.949 * Math.atan2((double) i_74_, (double) i_75_)) & 0x7ff);
                     Class68_Sub1.anInt2210 = (int) (Math.atan2((double) i_72_, (double) i_73_) * -325.949) & 0x7ff;

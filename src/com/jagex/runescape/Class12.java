@@ -8,8 +8,8 @@ public class Class12 {
     public static RSString aClass1_384;
     public static RSString aClass1_385;
     public static RSString aClass1_386;
-    public static Class39 aClass39_387;
-    public static int anInt388;
+    public static Class39 mouseCapturer;
+    public static int cameraX;
     public static volatile int anInt389;
     public static int width;
     public static RSString aClass1_391;
@@ -55,7 +55,7 @@ public class Class12 {
         aClass1_395 = null;
         aClass1_384 = null;
         aClass1_399 = null;
-        aClass39_387 = null;
+        mouseCapturer = null;
         aClass1_393 = null;
         aClass1_392 = null;
         aClass1_397 = null;

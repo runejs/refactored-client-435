@@ -19,7 +19,7 @@ public class Class55 {
     public static Class48 aClass48_1289;
     public static RSString aClass1_1291 = RSString.CreateString("slide:");
     public static RSString aClass1_1292 = RSString.CreateString("bevor Sie den Vorgang wiederholen)3");
-    public static volatile int anInt1295 = 0;
+    public static volatile int mouseX = 0;
     public static int anInt1296 = -1;
     public static RSString aClass1_1298 = RSString.CreateString("Invalid loginserver requested)3");
     public static int anInt1299 = 2301979;

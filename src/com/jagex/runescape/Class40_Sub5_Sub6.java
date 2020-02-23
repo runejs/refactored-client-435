@@ -16,7 +16,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
     public static RSString aClass1_2438 = RSString.CreateString("scroll:");
     public static Cache aClass9_2439 = new Cache(64);
     public static RSString aClass1_2440 = RSString.CreateString("Enter name:");
-    public static int anInt2443;
+    public static int cameraY;
     public static RSString aClass1_2446 = aClass1_2440;
     public static RSString aClass1_2447 = RSString.CreateString("@yel@*V");
     public static int anInt2451 = 0;

@@ -9,10 +9,7 @@ import com.jagex.runescape.util.Signlink;
 import java.applet.Applet;
 import java.applet.AppletContext;
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.URL;
@@ -103,7 +100,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                         Class10.aWidget_353 = widget;
                         Class40_Sub5_Sub11.anInt2621 = Landscape.mouseY;
                     }
-                    if(Class62.anInt1470 == 1 && (i_6_ <= Class57.anInt1338) && ((RSString.anInt1668 >= i_4_)) && Class57.anInt1338 < i_8_ && RSString.anInt1668 < i_7_)
+                    if(Class62.clickType == 1 && (i_6_ <= Class57.anInt1338) && ((RSString.anInt1668 >= i_4_)) && Class57.anInt1338 < i_8_ && RSString.anInt1668 < i_7_)
                         bool_10_ = true;
                     if(Class10.aWidget_353 != null) {
                         bool_9_ = false;

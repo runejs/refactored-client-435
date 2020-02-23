@@ -13,7 +13,7 @@ public class Class32 {
     public static RSString aClass1_766;
     public static int anInt767;
     public static Class38 aClass38_768;
-    public static int anInt769;
+    public static int cameraZ;
     public static int anInt770;
     public static int anInt771;
     public static RSString aClass1_772;

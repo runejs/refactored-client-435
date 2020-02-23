@@ -18,7 +18,7 @@ public class PacketBuffer extends Buffer {
     public static int anInt2248 = 0;
     public static Class40_Sub5_Sub13 aClass40_Sub5_Sub13_2250;
     public static boolean aBoolean2255 = false;
-    public static int anInt2256 = 0;
+    public static int lastClickX = 0;
     public static int anInt2257;
     public static int anInt2258;
     public static RSString aClass1_2259 = RSString.CreateString("oder benutzen Sie eine andere Welt)3");

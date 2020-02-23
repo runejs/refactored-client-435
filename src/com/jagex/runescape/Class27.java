@@ -50,28 +50,28 @@ public class Class27 {
             int i_0_ = 0x7ff & Class58.cameraHorizontal + Class57.anInt1342;
             if(Class40_Sub5_Sub17_Sub1.aBooleanArray2975[4] && 128 + RSApplet.anIntArray2[4] > i)
                 i = 128 + RSApplet.anIntArray2[4];
-            Class49.method929(i, Class40_Sub5_Sub6.anInt2437, -50 + (Class37.method430((byte) -123, Player.anInt3267, (Player.localPlayer.anInt3098), (Player.localPlayer.anInt3089))), i_0_, Class34.anInt849, -1, 3 * i + 600);
+            Class49.setCameraPosition(i, Class40_Sub5_Sub6.anInt2437, -50 + (Class37.method430((byte) -123, Player.anInt3267, (Player.localPlayer.anInt3098), (Player.localPlayer.anInt3089))), i_0_, Class34.anInt849, -1, 3 * i + 600);
         }
         int i;
         if(!Class39.aBoolean906)
             i = Class40_Sub5_Sub17_Sub1.method764((byte) -107);
         else
             i = Class40_Sub5_Sub1.method546(256);
-        int i_1_ = Class12.anInt388;
+        int i_1_ = Class12.cameraX;
         int i_2_ = Class68_Sub1.anInt2210;
-        int i_3_ = Class32.anInt769;
+        int i_3_ = Class32.cameraZ;
         int i_4_ = Class26.anInt627;
-        int i_5_ = Class40_Sub5_Sub6.anInt2443;
+        int i_5_ = Class40_Sub5_Sub6.cameraY;
         for(int i_6_ = 0; i_6_ < 5; i_6_++) {
             if(Class40_Sub5_Sub17_Sub1.aBooleanArray2975[i_6_]) {
                 int i_7_ = (int) (((double) (Class8.anIntArray297[i_6_] * 2 + 1) * Math.random()) - (double) Class8.anIntArray297[i_6_] + (Math.sin((double) (Class22_Sub1.anIntArray1846[i_6_]) * ((double) (Class58.anIntArray1358[i_6_]) / 100.0)) * (double) RSApplet.anIntArray2[i_6_]));
                 if(i_6_ == 1)
-                    Class32.anInt769 += i_7_;
+                    Class32.cameraZ += i_7_;
                 if((i_6_ ^ 0xffffffff) == -1) {
-                    Class12.anInt388 += i_7_;
+                    Class12.cameraX += i_7_;
                 }
                 if((i_6_ ^ 0xffffffff) == -3)
-                    Class40_Sub5_Sub6.anInt2443 += i_7_;
+                    Class40_Sub5_Sub6.cameraY += i_7_;
                 if((i_6_ ^ 0xffffffff) == -5) {
                     Class26.anInt627 += i_7_;
                     if((Class26.anInt627 ^ 0xffffffff) > -129)
@@ -89,7 +89,7 @@ public class Class27 {
         Model.anInt3229 = Class13.mouseX + -4;
         Model.anInt3220 = 0;
         Rasterizer.method663();
-        Npc.aScene_3301.method97(Class12.anInt388, Class32.anInt769, Class40_Sub5_Sub6.anInt2443, Class26.anInt627, Class68_Sub1.anInt2210, i);
+        Npc.aScene_3301.method97(Class12.cameraX, Class32.cameraZ, Class40_Sub5_Sub6.cameraY, Class26.anInt627, Class68_Sub1.anInt2210, i);
         Npc.aScene_3301.method104();
         Class33.method404((byte) -28);
         Class38_Sub1.method450((byte) -67);
@@ -103,11 +103,11 @@ public class Class27 {
             Class51.method940(0, Class67.aClass1_1585, false, null);
         }
         Player.method792(110);
-        Class12.anInt388 = i_1_;
-        Class40_Sub5_Sub6.anInt2443 = i_5_;
+        Class12.cameraX = i_1_;
+        Class40_Sub5_Sub6.cameraY = i_5_;
         Class68_Sub1.anInt2210 = i_2_;
         Class26.anInt627 = i_4_;
-        Class32.anInt769 = i_3_;
+        Class32.cameraZ = i_3_;
         if(arg0 >= -98)
             drawScrollBar(-36, 10, 23, 0, 3, -27);
     }

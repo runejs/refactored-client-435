@@ -23,7 +23,7 @@ public abstract class Class22 {
     public static boolean aBoolean541;
     public static RSString aClass1_542;
     public static int anInt543;
-    public static boolean aBoolean544;
+    public static boolean accountFlagged;
     public static int anInt545;
     public static RSString aClass1_546;
     public static int anInt547;
@@ -35,7 +35,7 @@ public abstract class Class22 {
         aClass1_533 = RSString.CreateString("M");
         aClass1_542 = aClass1_533;
         aBoolean541 = false;
-        aBoolean544 = false;
+        accountFlagged = false;
         anInt547 = 0;
         aClass1_546 = RSString.CreateString("Your account is already logged in)3");
         aClass1_532 = aClass1_546;

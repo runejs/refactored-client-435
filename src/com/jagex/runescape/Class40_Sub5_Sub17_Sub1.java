@@ -412,8 +412,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         anInt2956++;
         int i = 3;
         if((Class26.anInt627 ^ 0xffffffff) > -311) {
-            int i_22_ = Class40_Sub5_Sub6.anInt2443 >> -300913273;
-            int i_23_ = Class12.anInt388 >> -1245518521;
+            int i_22_ = Class40_Sub5_Sub6.cameraY >> -300913273;
+            int i_23_ = Class12.cameraX >> -1245518521;
             if(i_22_ > 103) {
                 i_22_ = 103;
             }

@@ -95,7 +95,7 @@ public class Class38_Sub1 extends Class38 {
     public static void method447(byte arg0) {
         if(arg0 != 29)
             method448(79, 61, 50, -68, (byte) 53, -121, false, 1, 18, -15, 29, 27);
-        if(Class62.anInt1470 == 1) {
+        if(Class62.clickType == 1) {
             if(Class57.anInt1338 >= 539 && (Class57.anInt1338 ^ 0xffffffff) >= -574 && RSString.anInt1668 >= 169 && RSString.anInt1668 < 205 && (Class40_Sub5_Sub11.tabWidgetIds[0] ^ 0xffffffff) != 0) {
                 IdentityKit.aBoolean2597 = true;
                 ISAAC.redrawTabArea = true;

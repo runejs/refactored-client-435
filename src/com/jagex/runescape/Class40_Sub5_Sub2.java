@@ -219,7 +219,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
             } else {
                 if(Class40_Sub3.anInt2032 == 9 && Class40_Sub6.aClass64_2098.method1014(-121) >= 8) {
                     Class19.anInt493 = Class40_Sub6.aClass64_2098.method1016(99);
-                    Class22.aBoolean544 = (Class40_Sub6.aClass64_2098.method1016(38) ^ 0xffffffff) == -2;
+                    Class22.accountFlagged = (Class40_Sub6.aClass64_2098.method1016(38) ^ 0xffffffff) == -2;
                     Class30.anInt708 = Class40_Sub6.aClass64_2098.method1016(86);
                     Class30.anInt708 <<= 8;
                     Class30.anInt708 += Class40_Sub6.aClass64_2098.method1016(16);

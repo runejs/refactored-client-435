@@ -118,7 +118,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
         if(arg0 > -79)
             method779(null, false, null, null);
         if(Class27.anInt658 == 0) {
-            if((Class62.anInt1470 ^ 0xffffffff) == -2) {
+            if((Class62.clickType ^ 0xffffffff) == -2) {
                 int i = -575 + Class57.anInt1338;
                 int i_10_ = -5 + (RSString.anInt1668 - 4);
                 if((i ^ 0xffffffff) <= -1 && (i_10_ ^ 0xffffffff) <= -1 && i < 146 && i_10_ < 151) {
