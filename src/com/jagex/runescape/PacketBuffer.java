@@ -171,7 +171,8 @@ public class PacketBuffer extends Buffer {
     }
 
     public void putPacket(int arg1) {
-        buffer[currentPosition++] = (byte) (encryption.method286(-101));
+        System.out.printf("packet sent: %d\n", arg1);
+        buffer[currentPosition++] = (byte) (encryption.method286(-101) + arg1);
     }
 
     public void initEncryption(int arg0, int[] arg1) {
