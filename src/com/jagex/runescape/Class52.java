@@ -101,10 +101,10 @@ public class Class52 {
         arg2.method672(Class22_Sub1.aClass1_1865, 417, 17, 85, 25, 16777215, true, 1, 1, 0);
         int i = -50 % ((arg1 - 82) / 38);
         try {
-            Graphics graphics = Class62.aCanvas1469.getGraphics();
+            Graphics graphics = GameFrame.aCanvas1469.getGraphics();
             Class66.aClass68_1541.method1044(0, 0, graphics, 453);
         } catch(Exception exception) {
-            Class62.aCanvas1469.repaint();
+            GameFrame.aCanvas1469.repaint();
         }
 
     }

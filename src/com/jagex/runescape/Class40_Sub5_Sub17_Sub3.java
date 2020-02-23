@@ -67,21 +67,21 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
         if(Class34.anInt849 != i)
             Class34.anInt849 += (-Class34.anInt849 + i) / 16;
         if(aBooleanArray3056[96])
-            Class10.anInt349 += (-24 - Class10.anInt349) / 2;
+            Class10.cameraVelocityHorizontal += (-24 - Class10.cameraVelocityHorizontal) / 2;
         else if(aBooleanArray3056[97])
-            Class10.anInt349 += (24 - Class10.anInt349) / 2;
+            Class10.cameraVelocityHorizontal += (24 - Class10.cameraVelocityHorizontal) / 2;
         else
-            Class10.anInt349 /= 2;
+            Class10.cameraVelocityHorizontal /= 2;
         if(aBooleanArray3056[98])
-            Class60.anInt1415 += (12 + -Class60.anInt1415) / 2;
+            Class60.cameraVelocityVertical += (12 + -Class60.cameraVelocityVertical) / 2;
         else if(aBooleanArray3056[99])
-            Class60.anInt1415 += (-12 - Class60.anInt1415) / 2;
+            Class60.cameraVelocityVertical += (-12 - Class60.cameraVelocityVertical) / 2;
         else
-            Class60.anInt1415 /= 2;
+            Class60.cameraVelocityVertical /= 2;
         int i_1_ = Class34.anInt849 >> 736593415;
-        Class58.cameraHorizontal = Class10.anInt349 / 2 + Class58.cameraHorizontal & 0x7ff;
+        Class58.cameraHorizontal = Class10.cameraVelocityHorizontal / 2 + Class58.cameraHorizontal & 0x7ff;
         int i_2_ = Class40_Sub5_Sub6.anInt2437 >> -470684185;
-        Class65.anInt1537 += Class60.anInt1415 / 2;
+        Class65.anInt1537 += Class60.cameraVelocityVertical / 2;
         int i_3_ = 0;
         if((Class65.anInt1537 ^ 0xffffffff) > -129)
             Class65.anInt1537 = 128;
@@ -118,7 +118,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
         if(arg0 > -79)
             method779(null, false, null, null);
         if(Class27.anInt658 == 0) {
-            if((Class62.clickType ^ 0xffffffff) == -2) {
+            if((GameFrame.clickType ^ 0xffffffff) == -2) {
                 int i = -575 + Class57.anInt1338;
                 int i_10_ = -5 + (RSString.anInt1668 - 4);
                 if((i ^ 0xffffffff) <= -1 && (i_10_ ^ 0xffffffff) <= -1 && i < 146 && i_10_ < 151) {

@@ -77,7 +77,7 @@ public class Class48 {
                     break;
                 }
                 if(i <= 49) {
-                    Class62.aByteArrayArrayArray1473[arg7][arg0][arg4] = arg2.getByte();
+                    GameFrame.aByteArrayArrayArray1473[arg7][arg0][arg4] = arg2.getByte();
                     Floor.aByteArrayArrayArray2335[arg7][arg0][arg4] = (byte) ((i + -2) / 4);
                     Class35.aByteArrayArrayArray1745[arg7][arg0][arg4] = (byte) Class66.method1021(arg1 + -2 + i, 3);
                 } else if(i <= 81)
@@ -333,7 +333,7 @@ public class Class48 {
         System.gc();
         Class33.method405(arg0 ^ ~0x5e71, 10);
         Class35.anInt1733 = 0;
-        Class62.anInt1457 = -1;
+        GameFrame.anInt1457 = -1;
         Class37.method436(arg0 + 7352);
         Floor.method559(10, -76);
     }

@@ -56,7 +56,7 @@ public class Class40_Sub5_Sub9 extends SubNode {
                 RSString class1 = Class60.method991(-23, arg0).method85(-4305);
                 for(int i = 0; Class40_Sub5_Sub17_Sub3.anInt3060 > i; i++) {
                     if((arg0 ^ 0xffffffffffffffffL) == (Class59.aLongArray1397[i] ^ 0xffffffffffffffffL)) {
-                        Class44.method895(62, 0, (Class40_Sub5_Sub17_Sub6.method832(-124, (new RSString[]{class1, Class62.aClass1_1465}))), Class66.blank_string);
+                        Class44.method895(62, 0, (Class40_Sub5_Sub17_Sub6.method832(-124, (new RSString[]{class1, GameFrame.aClass1_1465}))), Class66.blank_string);
                         return;
                     }
                 }

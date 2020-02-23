@@ -97,7 +97,7 @@ public class Class56 {
         Class59.anIntArray1398 = null;
         Class19.aByteArrayArrayArray492 = null;
         Floor.aByteArrayArrayArray2335 = null;
-        Class62.aByteArrayArrayArray1473 = null;
+        GameFrame.aByteArrayArrayArray1473 = null;
         anInt1312++;
         Class42.aByteArrayArrayArray993 = null;
         Class40_Sub5_Sub17_Sub6.anIntArray3250 = null;

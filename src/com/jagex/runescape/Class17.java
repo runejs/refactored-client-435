@@ -75,7 +75,7 @@ public class Class17 {
         if(arg1 < 102)
             method273(null, 92, true);
         Class22.anInt547 = 0;
-        Class45.aLong1051 = Class51.method937(1);
+        Class45.aLong1051 = System.currentTimeMillis();
     }
 
     public static int method274(boolean arg0) {

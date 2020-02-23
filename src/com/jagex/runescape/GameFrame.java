@@ -12,28 +12,14 @@ import com.jagex.runescape.util.Signlink;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Class62 implements MouseListener, MouseMotionListener, FocusListener, MouseWheelListener {
-    public static int anInt1447;
-    public static int anInt1448;
-    public static int anInt1449;
+public class GameFrame implements MouseListener, MouseMotionListener, FocusListener, MouseWheelListener {
     public static int anInt1450;
-    public static int anInt1451;
-    public static int anInt1452;
-    public static int anInt1453;
-    public static int anInt1454;
     public static Cache aClass9_1455;
-    public static long aLong1456;
     public static int anInt1457 = -1;
-    public static int anInt1458;
-    public static int anInt1459;
-    public static int anInt1460;
-    public static int anInt1461;
-    public static int anInt1462;
     public static RSString aClass1_1463;
     public static RSString aClass1_1464;
     public static RSString aClass1_1465;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array1466;
-    public static long aLong1467;
     public static int anInt1468;
     public static Canvas aCanvas1469;
     public static int clickType;
@@ -42,7 +28,9 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
     public static byte[][][] aByteArrayArrayArray1473;
     public static RSString aClass1_1474;
     public static int cameraZoom = 600;
-
+    public boolean mouseWheelDown;
+    public int mouseWheelX;
+    public int mouseWheelY;
 
     static {
         anInt1450 = -1;
@@ -74,7 +62,6 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
     }
 
     public static void method1002(int arg0) {
-        anInt1460++;
         if((SceneTile.activeInterfaceType ^ 0xffffffff) == -1) {
             if(arg0 > -60)
                 clickType = -90;
@@ -177,14 +164,12 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
         Class68.method1040(arg1, 0, arg0);
         Class40_Sub9_Sub1 class40_sub9_sub1 = new Class40_Sub9_Sub1();
         Class8.method218(class40_sub9_sub1, -125);
-        anInt1447++;
         return class40_sub9_sub1;
 
     }
 
     public synchronized void mouseEntered(MouseEvent arg0) {
-        anInt1461++;
-        if(GameObject.aClass62_3019 != null) {
+        if(GameObject.frame != null) {
             Class45.anInt1073 = 0;
             Class12.anInt389 = arg0.getX();
             Cache.anInt322 = arg0.getY();
@@ -192,8 +177,7 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
     }
 
     public synchronized void mouseExited(MouseEvent arg0) {
-        anInt1451++;
-        if(GameObject.aClass62_3019 != null) {
+        if(GameObject.frame != null) {
             Class45.anInt1073 = 0;
             Class12.anInt389 = -1;
             Cache.anInt322 = -1;
@@ -201,49 +185,63 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
     }
 
     public synchronized void focusLost(FocusEvent arg0) {
-
-        if(GameObject.aClass62_3019 != null)
-            Cache.anInt320 = 0;
-        anInt1459++;
-
+        if(GameObject.frame != null)
+            Cache.mouseButtonPressed = 0;
     }
 
-    public synchronized void mouseDragged(MouseEvent arg0) {
-
-        if(GameObject.aClass62_3019 != null) {
+    public synchronized void mouseDragged(MouseEvent mouseEvent) {
+        int mouseX = mouseEvent.getX();
+        int mouseY = mouseEvent.getY();
+        if(GameObject.frame != null) {
             Class45.anInt1073 = 0;
-            Class12.anInt389 = arg0.getX();
-            Cache.anInt322 = arg0.getY();
         }
-        anInt1454++;
+        if(mouseWheelDown) {
+            mouseY = mouseWheelX - mouseEvent.getX();
+            int k = mouseWheelY - mouseEvent.getY();
+            mouseWheelDragged(mouseY, -k);
+            mouseWheelX = mouseEvent.getX();
+            mouseWheelY = mouseEvent.getY();
+            return;
+        }
+        Class12.anInt389 = mouseX;
+        Cache.anInt322 = mouseY;
+    }
 
+    private void mouseWheelDragged(int i, int j) {
+        if(!mouseWheelDown)
+            return;
+        Class10.cameraVelocityHorizontal += i * 3;
+        Class60.cameraVelocityVertical += (j << 1);
     }
 
     public void focusGained(FocusEvent arg0) {
-
-        anInt1458++;
-
     }
 
-    public synchronized void mousePressed(MouseEvent arg0) {
+    public synchronized void mousePressed(MouseEvent event) {
+        if(GameObject.frame != null) {
 
-        if(GameObject.aClass62_3019 != null) {
+            int mouseX = event.getX();
+            int mouseY = event.getY();
             Class45.anInt1073 = 0;
-            Class55.mouseX = arg0.getX();
-            Class40_Sub5_Sub11.mouseY = arg0.getY();
-            Floor.aLong2344 = Class51.method937(1);
-            if(!arg0.isMetaDown()) {
-                Actor.anInt3143 = 1;
-                Cache.anInt320 = 1;
+            Class55.eventClickX = event.getX();
+            Class40_Sub5_Sub11.eventClickY = event.getY();
+            Floor.lastClick = System.currentTimeMillis();
+            if(event.getButton() == MouseEvent.BUTTON2) {
+                mouseWheelDown = true;
+                mouseWheelX = mouseX;
+                mouseWheelY = mouseY;
+                return;
+            }
+            if(event.isMetaDown() || event.getButton() == MouseEvent.BUTTON3) {
+                Actor.eventMouseButtonPressed = 2;
+                Cache.mouseButtonPressed = 2;
             } else {
-                Actor.anInt3143 = 2;
-                Cache.anInt320 = 2;
+                Actor.eventMouseButtonPressed = 1;
+                Cache.mouseButtonPressed = 1;
             }
         }
-        if(arg0.isPopupTrigger())
-            arg0.consume();
-        anInt1453++;
-
+        if(event.isPopupTrigger())
+            event.consume();
     }
 
     public void mouseWheelMoved(MouseWheelEvent event) {
@@ -258,14 +256,12 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
     }
 
     public void mouseClicked(MouseEvent arg0) {
-        anInt1448++;
         if(arg0.isPopupTrigger())
             arg0.consume();
     }
 
     public synchronized void mouseMoved(MouseEvent arg0) {
-        anInt1449++;
-        if(GameObject.aClass62_3019 != null) {
+        if(GameObject.frame != null) {
             Class45.anInt1073 = 0;
             Class12.anInt389 = arg0.getX();
             Cache.anInt322 = arg0.getY();
@@ -273,10 +269,10 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
     }
 
     public synchronized void mouseReleased(MouseEvent arg0) {
-        anInt1462++;
-        if(GameObject.aClass62_3019 != null) {
+        if(GameObject.frame != null) {
             Class45.anInt1073 = 0;
-            Cache.anInt320 = 0;
+            Cache.mouseButtonPressed = 0;
+            mouseWheelDown = false;
         }
         if(arg0.isPopupTrigger())
             arg0.consume();

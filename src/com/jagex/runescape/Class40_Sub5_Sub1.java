@@ -216,7 +216,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
     }
 
     public static void method544(byte arg0) {
-        if((Class62.clickType ^ 0xffffffff) == -2) {
+        if((GameFrame.clickType ^ 0xffffffff) == -2) {
             if(Class57.anInt1338 >= 6 && Class57.anInt1338 <= 106 && RSString.anInt1668 >= 467 && (RSString.anInt1668 ^ 0xffffffff) >= -500) {
                 Cache.aBoolean330 = true;
                 Class35.publicChatMode = (1 + Class35.publicChatMode) % 4;

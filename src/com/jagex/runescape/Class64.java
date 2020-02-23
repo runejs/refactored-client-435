@@ -214,17 +214,17 @@ public class Class64 implements Runnable {
 
     public static void method1015(int arg0) {
 
-        synchronized(GameObject.aClass62_3019) {
-            Class40_Sub5_Sub2.anInt2302 = Cache.anInt320;
+        synchronized(GameObject.frame) {
+            Class40_Sub5_Sub2.anInt2302 = Cache.mouseButtonPressed;
             Class13.mouseX = Class12.anInt389;
             if(arg0 != -656)
                 aClass1_1524 = null;
             Landscape.mouseY = Cache.anInt322;
-            Class62.clickType = Actor.anInt3143;
-            Class57.anInt1338 = Class55.mouseX;
-            RSString.anInt1668 = Class40_Sub5_Sub11.mouseY;
-            GameObjectDefinition.aLong2561 = Floor.aLong2344;
-            Actor.anInt3143 = 0;
+            GameFrame.clickType = Actor.eventMouseButtonPressed;
+            Class57.anInt1338 = Class55.eventClickX;
+            RSString.anInt1668 = Class40_Sub5_Sub11.eventClickY;
+            GameObjectDefinition.aLong2561 = Floor.lastClick;
+            Actor.eventMouseButtonPressed = 0;
         }
     }
 

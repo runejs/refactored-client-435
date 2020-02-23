@@ -319,9 +319,9 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                     if(class1.startsWith((VertexNormal.aClass1_1097))) {
                                         i = 1;
                                         Class66.chatboxInput = (Class66.chatboxInput.substring((VertexNormal.aClass1_1097.length())));
-                                    } else if(class1.startsWith(Class62.aClass1_1474)) {
+                                    } else if(class1.startsWith(GameFrame.aClass1_1474)) {
                                         i = 2;
-                                        Class66.chatboxInput = (Class66.chatboxInput.substring(Class62.aClass1_1474.length()));
+                                        Class66.chatboxInput = (Class66.chatboxInput.substring(GameFrame.aClass1_1474.length()));
                                     } else if(class1.startsWith(RSCanvas.aClass1_51)) {
                                         Class66.chatboxInput = (Class66.chatboxInput.substring(RSCanvas.aClass1_51.length()));
                                         i = 3;

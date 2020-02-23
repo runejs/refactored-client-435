@@ -1068,14 +1068,14 @@ public class Class27 {
             Class43.drawTabArea(-29);
         }
         if(Class43.openChatboxWidgetId == -1) {
-            Class12.chatboxInterface.scrollPosition = -77 + (-GameObjectDefinition.chatboxScroll + Class62.chatboxScrollMax);
+            Class12.chatboxInterface.scrollPosition = -77 + (-GameObjectDefinition.chatboxScroll + GameFrame.chatboxScrollMax);
             if(Class13.mouseX > 448 && Class13.mouseX < 560 && Landscape.mouseY > 332)
-                Class5.scrollInterface(77, Landscape.mouseY + -357, -17 + Class13.mouseX, Class62.chatboxScrollMax, (byte) 114, Class12.chatboxInterface, 463, -1, 0);
-            int currentScroll = (Class62.chatboxScrollMax - 77 - Class12.chatboxInterface.scrollPosition);
+                Class5.scrollInterface(77, Landscape.mouseY + -357, -17 + Class13.mouseX, GameFrame.chatboxScrollMax, (byte) 114, Class12.chatboxInterface, 463, -1, 0);
+            int currentScroll = (GameFrame.chatboxScrollMax - 77 - Class12.chatboxInterface.scrollPosition);
             if(currentScroll < 0)
                 currentScroll = 0;
-            if(currentScroll > Class62.chatboxScrollMax + -77)
-                currentScroll = -77 + Class62.chatboxScrollMax;
+            if(currentScroll > GameFrame.chatboxScrollMax + -77)
+                currentScroll = -77 + GameFrame.chatboxScrollMax;
             if(currentScroll != GameObjectDefinition.chatboxScroll) {
                 GameObjectDefinition.chatboxScroll = currentScroll;
                 Class52.redrawChatbox = true;

@@ -120,7 +120,7 @@ public class Class42 {
 
         anInt1007++;
         if(arg0 == 0 && Class5.aClass22_189 != null) {
-            if((Class62.anInt1450 ^ 0xffffffff) > -1) {
+            if((GameFrame.anInt1450 ^ 0xffffffff) > -1) {
                 if(RSCanvas.anInt54 != 0) {
                     PacketBuffer.anInt2258 = arg1;
                     Player.aByteArray3270 = arg3;
@@ -129,8 +129,8 @@ public class Class42 {
                     RSString.method56(2037, arg2, arg3, arg1);
             } else {
                 Buffer.anInt1982 = arg4;
-                if(Class62.anInt1450 != 0) {
-                    int i = Class29.method372(arg0 ^ 0x60, Class62.anInt1450);
+                if(GameFrame.anInt1450 != 0) {
+                    int i = Class29.method372(arg0 ^ 0x60, GameFrame.anInt1450);
                     i -= Class39.anInt909;
                     RSCanvas.anInt54 = (i + 3600) / arg4;
                     if(RSCanvas.anInt54 < 1)

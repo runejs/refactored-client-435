@@ -23,7 +23,7 @@ public class Class60 {
     public static int anInt1412;
     public static int anInt1413;
     public static int anInt1414;
-    public static int anInt1415;
+    public static int cameraVelocityVertical;
     public static RSString aClass1_1416;
     public static int anInt1417;
     public static int anInt1418;
@@ -34,7 +34,7 @@ public class Class60 {
         aClass1_1409 = RSString.CreateString("Wen m-Ochten Sie von der Liste entfernen?");
         anInt1407 = 0;
         aClass1_1416 = aClass1_1411;
-        anInt1415 = 0;
+        cameraVelocityVertical = 0;
     }
 
     public static TypeFace method987(int arg0) {
@@ -192,7 +192,7 @@ public class Class60 {
         Class40_Sub6.method836(1);
         if((Class51.anInt1197 ^ 0xffffffff) == -11) {
             int i = Class57.anInt1338 + -202;
-            int i_11_ = Class62.clickType;
+            int i_11_ = GameFrame.clickType;
             int i_12_ = -171 + RSString.anInt1668;
             int i_13_ = -58 % ((-38 - arg0) / 59);
             if(Class26.anInt622 == 0) {

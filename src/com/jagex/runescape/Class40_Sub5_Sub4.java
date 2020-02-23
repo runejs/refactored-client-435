@@ -81,15 +81,15 @@ public class Class40_Sub5_Sub4 extends SubNode {
         if(arg4 != -27520)
             method565(49);
         if(Class5.aClass22_189 != null) {
-            if(Class62.anInt1450 >= 0) {
+            if(GameFrame.anInt1450 >= 0) {
                 arg2 -= 20;
                 if((arg2 ^ 0xffffffff) > -2)
                     arg2 = 1;
                 RSCanvas.anInt54 = arg2;
-                if((Class62.anInt1450 ^ 0xffffffff) == -1)
+                if((GameFrame.anInt1450 ^ 0xffffffff) == -1)
                     Buffer.anInt1982 = 0;
                 else {
-                    int i = Class29.method372(113, Class62.anInt1450);
+                    int i = Class29.method372(113, GameFrame.anInt1450);
                     i -= Class39.anInt909;
                     Buffer.anInt1982 = (-1 + (arg2 + 3600 + i)) / arg2;
                 }

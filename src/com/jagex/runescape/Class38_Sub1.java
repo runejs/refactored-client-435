@@ -95,7 +95,7 @@ public class Class38_Sub1 extends Class38 {
     public static void method447(byte arg0) {
         if(arg0 != 29)
             method448(79, 61, 50, -68, (byte) 53, -121, false, 1, 18, -15, 29, 27);
-        if(Class62.clickType == 1) {
+        if(GameFrame.clickType == 1) {
             if(Class57.anInt1338 >= 539 && (Class57.anInt1338 ^ 0xffffffff) >= -574 && RSString.anInt1668 >= 169 && RSString.anInt1668 < 205 && (Class40_Sub5_Sub11.tabWidgetIds[0] ^ 0xffffffff) != 0) {
                 IdentityKit.aBoolean2597 = true;
                 ISAAC.redrawTabArea = true;
@@ -395,7 +395,7 @@ public class Class38_Sub1 extends Class38 {
         anInt1915 = 256;
         anInt1903 = 0;
         anInt1912 = 1;
-        aLong1914 = Class51.method937(1);
+        aLong1914 = System.currentTimeMillis();
         for(int i = 0; i < 10; i++)
             aLongArray1910[i] = aLong1914;
         if(arg0 != -10115)
@@ -407,7 +407,7 @@ public class Class38_Sub1 extends Class38 {
         anInt1912 = 1;
         int i_5_ = anInt1915;
         anInt1915 = 300;
-        aLong1914 = Class51.method937(arg2 ^ 0x2646);
+        aLong1914 = System.currentTimeMillis();
         if(aLongArray1910[anInt1900] != 0L) {
             if((aLongArray1910[anInt1900] ^ 0xffffffffffffffffL) > (aLong1914 ^ 0xffffffffffffffffL))
                 anInt1915 = (int) ((long) (arg0 * 2560) / (-aLongArray1910[anInt1900] + aLong1914));

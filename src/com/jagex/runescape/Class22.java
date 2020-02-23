@@ -109,7 +109,7 @@ public abstract class Class22 {
                                     i_12_++;
                             }
                         }
-                        Class62.aClass40_Sub5_Sub14_Sub4Array1466[GameObject.anInt3040] = (Class8.aClass40_Sub5_Sub14_Sub4Array296[i_11_]);
+                        GameFrame.aClass40_Sub5_Sub14_Sub4Array1466[GameObject.anInt3040] = (Class8.aClass40_Sub5_Sub14_Sub4Array296[i_11_]);
                         Actor.anIntArray3149[GameObject.anInt3040] = i_13_;
                         Class45.anIntArray1083[(GameObject.anInt3040)] = i_12_;
                         GameObject.anInt3040++;
@@ -191,14 +191,14 @@ public abstract class Class22 {
                     if(i_21_ == 4)
                         i_22_ = 0;
                     if(i_22_ != RSCanvas.anInt60) {
-                        if(RSCanvas.anInt60 != 0 || Class62.anInt1457 == -1) {
+                        if(RSCanvas.anInt60 != 0 || GameFrame.anInt1457 == -1) {
                             if((i_22_ ^ 0xffffffff) == -1) {
                                 Class33.method402(false);
                                 Class35.anInt1733 = 0;
                             } else
                                 Node.method456(i_22_, (byte) 81);
                         } else {
-                            Class33.method414(false, 0, Class62.anInt1457, i_22_, 0, Class55.aClass6_Sub1_1286, arg0);
+                            Class33.method414(false, 0, GameFrame.anInt1457, i_22_, 0, Class55.aClass6_Sub1_1286, arg0);
                             Class35.anInt1733 = 0;
                         }
                         RSCanvas.anInt60 = i_22_;

@@ -46,19 +46,6 @@ public class Class51 {
         aClass1_1196 = aClass1_1209;
     }
 
-    public static synchronized long method937(int arg0) {
-
-        anInt1192++;
-        if(arg0 != 1)
-            aClass68_1206 = null;
-        long l = System.currentTimeMillis();
-        if(Class62.aLong1456 > l)
-            Class62.aLong1467 += Class62.aLong1456 + -l;
-        Class62.aLong1456 = l;
-        return l + Class62.aLong1467;
-
-    }
-
     public static int method938(int arg0, KeyEvent arg1) {
 
         anInt1188++;
@@ -134,9 +121,9 @@ public class Class51 {
         anInt1190++;
         if((arg1 ^ 0xffffffff) == 0 && Class35.anInt1733 == 0)
             Class33.method402(false);
-        else if(arg1 != -1 && arg1 != Class62.anInt1457 && (RSCanvas.anInt60 ^ 0xffffffff) != -1 && Class35.anInt1733 == 0)
+        else if(arg1 != -1 && arg1 != GameFrame.anInt1457 && (RSCanvas.anInt60 ^ 0xffffffff) != -1 && Class35.anInt1733 == 0)
             Class33.method403(RSCanvas.anInt60, true, 10, arg1, Class55.aClass6_Sub1_1286, 0, 0, false);
-        Class62.anInt1457 = arg1;
+        GameFrame.anInt1457 = arg1;
         if(arg0 != 257)
             aClass1_1199 = null;
     }

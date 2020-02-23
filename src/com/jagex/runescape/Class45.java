@@ -76,12 +76,12 @@ public class Class45 {
 
     public static void method908(byte arg0) {
         try {
-            Graphics graphics = Class62.aCanvas1469.getGraphics();
+            Graphics graphics = GameFrame.aCanvas1469.getGraphics();
             if(arg0 <= 83)
                 method908((byte) 19);
             RSCanvas.aClass68_64.method1044(0, 17, graphics, 357);
         } catch(Exception exception) {
-            Class62.aCanvas1469.repaint();
+            GameFrame.aCanvas1469.repaint();
         }
     }
 

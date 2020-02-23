@@ -26,7 +26,7 @@ public abstract class Actor extends Renderable {
     public static int anInt3133;
     public static RSString aClass1_3138 = aClass1_3114;
     public static int anInt3142;
-    public static volatile int anInt3143 = 0;
+    public static volatile int eventMouseButtonPressed = 0;
     public static Class6 aClass6_3144;
     public static int anInt3146;
     public static int anInt3147;

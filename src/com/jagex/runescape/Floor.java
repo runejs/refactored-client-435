@@ -30,7 +30,7 @@ public class Floor extends SubNode {
     public static int anInt2341;
     public static int anInt2342;
     public static int anInt2343;
-    public static volatile long aLong2344;
+    public static volatile long lastClick;
     public static int anInt2347;
     public static int anInt2348;
 
@@ -43,7 +43,7 @@ public class Floor extends SubNode {
         tile_flags = new byte[4][104][104];
         anInt2328 = -1;
         anIntArrayArrayArray2333 = new int[4][13][13];
-        aLong2344 = 0L;
+        lastClick = 0L;
     }
 
     public int anInt2320;
@@ -134,17 +134,17 @@ public class Floor extends SubNode {
                 FloorDecoration.method344(-40);
                 Class38.method440((byte) -73);
                 if(Class68_Sub1.aClass68_2213 == null)
-                    Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649(503, 765, Class62.aCanvas1469, -4875);
+                    Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649(503, 765, GameFrame.aCanvas1469, -4875);
             }
             if((arg0 ^ 0xffffffff) == -6 || arg0 == 10 || arg0 == 20) {
                 Class68_Sub1.aClass68_2213 = null;
                 FloorDecoration.method344(-69);
-                Class40_Sub5_Sub17_Sub3.method779(Class62.aCanvas1469, true, (RSCanvas.aClass6_Sub1_48), (ActorDefinition.aClass6_Sub1_2377));
+                Class40_Sub5_Sub17_Sub3.method779(GameFrame.aCanvas1469, true, (RSCanvas.aClass6_Sub1_48), (ActorDefinition.aClass6_Sub1_2377));
             }
             if(arg0 == 25 || arg0 == 30 || (arg0 ^ 0xffffffff) == -41) {
                 Class68_Sub1.aClass68_2213 = null;
                 Class38.method440((byte) -98);
-                Class40_Sub5_Sub17_Sub1.method763(Class62.aCanvas1469, (byte) -128, (ActorDefinition.aClass6_Sub1_2377));
+                Class40_Sub5_Sub17_Sub1.method763(GameFrame.aCanvas1469, (byte) -128, (ActorDefinition.aClass6_Sub1_2377));
             }
             Class51.anInt1197 = arg0;
             Class40_Sub5_Sub11.aBoolean2631 = true;

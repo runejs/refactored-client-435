@@ -19,7 +19,7 @@ public class Class55 {
     public static Class48 aClass48_1289;
     public static RSString aClass1_1291 = RSString.CreateString("slide:");
     public static RSString aClass1_1292 = RSString.CreateString("bevor Sie den Vorgang wiederholen)3");
-    public static volatile int mouseX = 0;
+    public static volatile int eventClickX = 0;
     public static int anInt1296 = -1;
     public static RSString aClass1_1298 = RSString.CreateString("Invalid loginserver requested)3");
     public static int anInt1299 = 2301979;
@@ -127,7 +127,7 @@ public class Class55 {
         Class40_Sub5_Sub2.aClass1_2294 = Class67.aClass1_1612;
         VertexNormal.aClass1_1117 = GameObjectDefinition.aClass1_2560;
         Cache.aClass1_323 = Floor.aClass1_2327;
-        Class62.aClass1_1465 = Class39.aClass1_898;
+        GameFrame.aClass1_1465 = Class39.aClass1_898;
         Class53.aClass1_1251 = HashTable.aClass1_563;
         Node.aClass1_960 = Class40_Sub5_Sub17_Sub1.aClass1_2977;
         Node.aClass1_946 = Class64.aClass1_1523;
@@ -236,7 +236,7 @@ public class Class55 {
         Class40_Sub5_Sub6.aClass1_2446 = Class68_Sub1.aClass1_2198;
         Widget.aClass1_2684 = Class40_Sub5_Sub2.aClass1_2291;
         Class27.takeStringInstance = Class40_Sub5_Sub2.aClass1_2296;
-        Class48.aClass1_1124 = Class62.aClass1_1471;
+        Class48.aClass1_1124 = GameFrame.aClass1_1471;
         Class5.aClass1_193 = Landscape.aClass1_1161;
         Class49.aClass1_1148 = Class40_Sub5_Sub1.aClass1_2279;
         Class33.aClass1_799 = Npc.aClass1_3307;
@@ -259,7 +259,7 @@ public class Class55 {
         VertexNormal.aClass1_1105 = Class40_Sub13.aClass1_2181;
         Class42.aClass1_1011 = Actor.aClass1_3158;
         Class22_Sub1.aClass1_1870 = Class49.aClass1_1143;
-        Class62.aClass1_1474 = Class8.aClass1_300;
+        GameFrame.aClass1_1474 = Class8.aClass1_300;
         Node.aClass1_937 = Class64.aClass1_1523;
         VertexNormal.aClass1_1090 = Class43.aClass1_1026;
         ActorDefinition.aClass1_2401 = RSApplet.aClass1_21;
@@ -329,10 +329,10 @@ public class Class55 {
 
     public static void method964(int arg0) {
         try {
-            Graphics graphics = Class62.aCanvas1469.getGraphics();
+            Graphics graphics = GameFrame.aCanvas1469.getGraphics();
             SubNode.aClass68_2091.method1044(0, 553, graphics, 205);
         } catch(Exception exception) {
-            Class62.aCanvas1469.repaint();
+            GameFrame.aCanvas1469.repaint();
         }
         if(arg0 != 40)
             anInt1296 = 7;
@@ -340,9 +340,9 @@ public class Class55 {
 
     public static void method965(int arg0, Component arg1) {
         if(arg0 == 32) {
-            arg1.removeMouseListener(GameObject.aClass62_3019);
-            arg1.removeMouseMotionListener(GameObject.aClass62_3019);
-            arg1.removeFocusListener(GameObject.aClass62_3019);
+            arg1.removeMouseListener(GameObject.frame);
+            arg1.removeMouseMotionListener(GameObject.frame);
+            arg1.removeFocusListener(GameObject.frame);
         }
     }
 

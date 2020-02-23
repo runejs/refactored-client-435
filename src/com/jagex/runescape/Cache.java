@@ -4,7 +4,7 @@ public class Cache {
     public static RSString dropString = RSString.CreateString("Drop");
     public static RSString dropStringInstance = dropString;
     public static PacketBuffer outgoingbuffer = new PacketBuffer(5000);
-    public static volatile int anInt320 = 0;
+    public static volatile int mouseButtonPressed = 0;
     public static int anInt321 = 5063219;
     public static volatile int anInt322 = -1;
     public static RSString aClass1_323 = (RSString.CreateString("Please check your message)2centre for details)3"));

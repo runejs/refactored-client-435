@@ -48,7 +48,7 @@ public class Class44 implements Runnable {
         if(Class43.openChatboxWidgetId == -1)
             Class52.redrawChatbox = true;
         if(arg1 == 0 && (Class48.anInt1138 ^ 0xffffffff) != 0) {
-            Class62.clickType = 0;
+            GameFrame.clickType = 0;
             RSApplet.aClass1_8 = arg2;
         }
         for(int i = 99; (i ^ 0xffffffff) < -1; i--) {

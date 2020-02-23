@@ -302,10 +302,10 @@ public class Class58 {
                                     }
                                 }
                                 Rasterizer.resetCoordinates();
-                                Class62.chatboxScrollMax = line * 14 + 7;
-                                if(Class62.chatboxScrollMax < 78)
-                                    Class62.chatboxScrollMax = 78;
-                                Class27.drawScrollBar(0, (-(GameObjectDefinition.chatboxScroll) + Class62.chatboxScrollMax - 77), Class62.chatboxScrollMax, 463, 77, 0);
+                                GameFrame.chatboxScrollMax = line * 14 + 7;
+                                if(GameFrame.chatboxScrollMax < 78)
+                                    GameFrame.chatboxScrollMax = 78;
+                                Class27.drawScrollBar(0, (-(GameObjectDefinition.chatboxScroll) + GameFrame.chatboxScrollMax - 77), GameFrame.chatboxScrollMax, 463, 77, 0);
                                 RSString name;
                                 if(((Player.localPlayer) != null) && (Player.localPlayer.playerName) != null)
                                     name = (Player.localPlayer.playerName);

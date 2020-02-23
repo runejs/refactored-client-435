@@ -173,11 +173,11 @@ public class Class40_Sub2 extends Node {
                 Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[12].drawImage(226, 2);
         }
         try {
-            Graphics graphics = Class62.aCanvas1469.getGraphics();
+            Graphics graphics = GameFrame.aCanvas1469.getGraphics();
             Class19.aClass68_482.method1044(0, 516, graphics, 160);
             RSCanvas.aClass68_59.method1044(0, 496, graphics, 466);
         } catch(Exception exception) {
-            Class62.aCanvas1469.repaint();
+            GameFrame.aCanvas1469.repaint();
         }
 
     }

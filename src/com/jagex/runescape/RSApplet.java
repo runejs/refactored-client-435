@@ -100,7 +100,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                         Class10.aWidget_353 = widget;
                         Class40_Sub5_Sub11.anInt2621 = Landscape.mouseY;
                     }
-                    if(Class62.clickType == 1 && (i_6_ <= Class57.anInt1338) && ((RSString.anInt1668 >= i_4_)) && Class57.anInt1338 < i_8_ && RSString.anInt1668 < i_7_)
+                    if(GameFrame.clickType == 1 && (i_6_ <= Class57.anInt1338) && ((RSString.anInt1668 >= i_4_)) && Class57.anInt1338 < i_8_ && RSString.anInt1668 < i_7_)
                         bool_10_ = true;
                     if(Class10.aWidget_353 != null) {
                         bool_9_ = false;
@@ -209,11 +209,11 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 }
             }
             setCanvas((byte) 121);
-            Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649((IdentityKit.height), Class12.width, Class62.aCanvas1469, -4875);
+            Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649((IdentityKit.height), Class12.width, GameFrame.aCanvas1469, -4875);
             method31(true);
             Class32.aClass38_768 = Class56.method972((byte) 47);
             Class32.aClass38_768.method443(-10115);
-            while(Class6.aLong219 == 0L || Class51.method937(1) < Class6.aLong219) {
+            while(Class6.aLong219 == 0L || System.currentTimeMillis() < Class6.aLong219) {
                 Class40_Sub3.anInt2020 = Class32.aClass38_768.method442(Class39.anInt912, (Class40_Sub3.anInt2024), 9799);
                 for(int i = 0; (i < Class40_Sub3.anInt2020); i++)
                     method29(true);
@@ -235,7 +235,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 aClass1_14 = null;
             PacketBuffer.aBoolean2255 = true;
             try {
-                Class62.aCanvas1469.removeFocusListener(this);
+                GameFrame.aCanvas1469.removeFocusListener(this);
             } catch(Exception exception) {
                 /* empty */
             }
@@ -264,7 +264,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
     public void stop() {
         if(this == Class4.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255)
-            Class6.aLong219 = Class51.method937(1) + 4000L;
+            Class6.aLong219 = System.currentTimeMillis() + 4000L;
     }
 
     public abstract void init();
@@ -320,7 +320,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
     public synchronized void paint(Graphics arg0) {
         if(this == Class4.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255) {
             Class40_Sub5_Sub11.aBoolean2631 = true;
-            if(Signlink.aString739 == null || !Signlink.aString739.startsWith("1.5") || -Class4.aLong174 + Class51.method937(1) <= 1000L)
+            if(Signlink.aString739 == null || !Signlink.aString739.startsWith("1.5") || -Class4.aLong174 + System.currentTimeMillis() <= 1000L)
                 return;
             Rectangle rectangle = arg0.getClipBounds();
             if(rectangle == null || (rectangle.width >= Class12.width && ((rectangle.height >= IdentityKit.height))))
@@ -330,7 +330,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
     public void destroy() {
         if(Class4.anApplet_Sub1_179 == this && !PacketBuffer.aBoolean2255) {
-            Class6.aLong219 = Class51.method937(1);
+            Class6.aLong219 = System.currentTimeMillis();
             Class43.method890(5000L, -123);
             Actor.aClass31_3152 = null;
             method17(121);
@@ -377,7 +377,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
     public void method26(byte arg0) {
         if(arg0 == 88) {
-            long l = Class51.method937(1);
+            long l = System.currentTimeMillis();
             long l_11_ = aLongArray4[Class30.anInt681];
             aLongArray4[Class30.anInt681] = l;
             if((l_11_ ^ 0xffffffffffffffffL) != -1L && ((l_11_ ^ 0xffffffffffffffffL) > (l ^ 0xffffffffffffffffL))) {
@@ -388,13 +388,13 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             if(Node.anInt938++ > 50) {
                 Node.anInt938 -= 50;
                 Class40_Sub5_Sub11.aBoolean2631 = true;
-                Class62.aCanvas1469.setSize(Class12.width, IdentityKit.height);
-                Class62.aCanvas1469.setVisible(true);
+                GameFrame.aCanvas1469.setSize(Class12.width, IdentityKit.height);
+                GameFrame.aCanvas1469.setVisible(true);
                 if(Class35.aFrame1732 == null)
-                    Class62.aCanvas1469.setLocation(0, 0);
+                    GameFrame.aCanvas1469.setLocation(0, 0);
                 else {
                     Insets insets = Class35.aFrame1732.getInsets();
-                    Class62.aCanvas1469.setLocation(insets.left, insets.top);
+                    GameFrame.aCanvas1469.setLocation(insets.left, insets.top);
                 }
             }
             method34(arg0 + -210);
@@ -410,13 +410,13 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
     }
 
     public void method29(boolean arg0) {
-        long l = Class51.method937(1);
-        long l_14_ = Class67.aLongArray1614[Class62.anInt1468];
+        long l = System.currentTimeMillis();
+        long l_14_ = Class67.aLongArray1614[GameFrame.anInt1468];
         if(l_14_ != 0L && l > l_14_) {
             /* empty */
         }
-        Class67.aLongArray1614[Class62.anInt1468] = l;
-        Class62.anInt1468 = 0x1f & Class62.anInt1468 + 1;
+        Class67.aLongArray1614[GameFrame.anInt1468] = l;
+        GameFrame.anInt1468 = 0x1f & GameFrame.anInt1468 + 1;
         synchronized(this) {
             HashTable.aBoolean571 = Class52.aBoolean1215;
         }
@@ -483,26 +483,26 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             container = Class35.aFrame1732;
         else
             container = ISAAC.aClass31_521.anApplet740;
-        if(Class62.aCanvas1469 != null) {
-            Class62.aCanvas1469.removeFocusListener(this);
-            container.remove(Class62.aCanvas1469);
+        if(GameFrame.aCanvas1469 != null) {
+            GameFrame.aCanvas1469.removeFocusListener(this);
+            container.remove(GameFrame.aCanvas1469);
         }
-        Class62.aCanvas1469 = new RSCanvas(this);
-        container.add(Class62.aCanvas1469);
-        Class62.aCanvas1469.setSize(Class12.width, IdentityKit.height);
-        Class62.aCanvas1469.setVisible(true);
+        GameFrame.aCanvas1469 = new RSCanvas(this);
+        container.add(GameFrame.aCanvas1469);
+        GameFrame.aCanvas1469.setSize(Class12.width, IdentityKit.height);
+        GameFrame.aCanvas1469.setVisible(true);
         if(Class35.aFrame1732 != null) {
             Insets insets = Class35.aFrame1732.getInsets();
-            Class62.aCanvas1469.setLocation(insets.left, insets.top);
+            GameFrame.aCanvas1469.setLocation(insets.left, insets.top);
         } else
-            Class62.aCanvas1469.setLocation(0, 0);
-        Class62.aCanvas1469.addFocusListener(this);
+            GameFrame.aCanvas1469.setLocation(0, 0);
+        GameFrame.aCanvas1469.addFocusListener(this);
         if(arg0 < 85)
             run();
-        Class62.aCanvas1469.requestFocus();
+        GameFrame.aCanvas1469.requestFocus();
         Class40_Sub5_Sub11.aBoolean2631 = true;
         Class67.aBoolean1575 = false;
-        Class4.aLong174 = Class51.method937(1);
+        Class4.aLong174 = System.currentTimeMillis();
     }
 
     public abstract void method34(int i);

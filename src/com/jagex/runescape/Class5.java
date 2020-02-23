@@ -75,10 +75,10 @@ public class Class5 {
         } else
             Class40_Sub5_Sub6.method588(-1);
         try {
-            Graphics graphics = Class62.aCanvas1469.getGraphics();
+            Graphics graphics = GameFrame.aCanvas1469.getGraphics();
             Class68_Sub1.aClass68_2213.method1044(0, 0, graphics, 0);
         } catch(Exception exception) {
-            Class62.aCanvas1469.repaint();
+            GameFrame.aCanvas1469.repaint();
         }
     }
 

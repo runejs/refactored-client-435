@@ -12,7 +12,7 @@ public class Class10 {
     public static RSString aClass1_344;
     public static int anInt345;
     public static RSString aClass1_346;
-    public static int anInt349 = 0;
+    public static int cameraVelocityHorizontal = 0;
     public static int anInt350;
     public static int[] anIntArray351;
     public static RSString aClass1_352;

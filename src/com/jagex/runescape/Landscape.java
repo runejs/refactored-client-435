@@ -274,7 +274,6 @@ public class Landscape {
                 ISAAC.method285((byte) 118);
                 VertexNormal.aClass9_1102.method235((byte) -43);
                 if(Class35.aFrame1732 != null) {
-                    Class62.anInt1452++;
                     Class32.packetBuffer.putPacket(121);
                     Class32.packetBuffer.putIntBE(1057001181);
                 }

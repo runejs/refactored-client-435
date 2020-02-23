@@ -153,7 +153,7 @@ public class Class37 {
             for(int i_10_ = 0; GameObject.anInt3040 > i_10_; i_10_++) {
                 i = 2 + (4 * Actor.anIntArray3149[i_10_] + -((Player.localPlayer.anInt3098) / 32));
                 i_8_ = (2 + 4 * Class45.anIntArray1083[i_10_] - ((Player.localPlayer.anInt3089) / 32));
-                SceneTile.drawOnMinimap(i_8_, i, (Class62.aClass40_Sub5_Sub14_Sub4Array1466[i_10_]));
+                SceneTile.drawOnMinimap(i_8_, i, (GameFrame.aClass40_Sub5_Sub14_Sub4Array1466[i_10_]));
             }
             for(int i_11_ = 0; (i_11_ ^ 0xffffffff) > -105; i_11_++) {
                 for(int i_12_ = 0; i_12_ < 104; i_12_++) {

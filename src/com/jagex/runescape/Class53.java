@@ -420,7 +420,7 @@ public class Class53 {
             }
             Main.method38(0);
             try {
-                Graphics graphics = Class62.aCanvas1469.getGraphics();
+                Graphics graphics = GameFrame.aCanvas1469.getGraphics();
                 Class38.aClass68_887.method1044(0, 202, graphics, 171);
                 if(arg0 != -19010)
                     method949((byte) 41);
@@ -436,7 +436,7 @@ public class Class53 {
                 GameObjectDefinition.aClass68_2524.method1044(0, 128, graphics, 171);
                 Class68.aClass68_1631.method1044(0, 562, graphics, 171);
             } catch(Exception exception) {
-                Class62.aCanvas1469.repaint();
+                GameFrame.aCanvas1469.repaint();
             }
             break;
 

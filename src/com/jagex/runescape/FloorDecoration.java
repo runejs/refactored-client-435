@@ -231,7 +231,7 @@ public class FloorDecoration {
     public static boolean method346(byte arg0) {
 
         anInt597++;
-        long l = Class51.method937(1);
+        long l = System.currentTimeMillis();
         int i = (int) (l - Class45.aLong1051);
         Class45.aLong1051 = l;
         if((i ^ 0xffffffff) < -201)

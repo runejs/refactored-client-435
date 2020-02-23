@@ -62,7 +62,7 @@ public class Class8 {
 
     public Class8(int arg0) {
         CollisionMap.anInt141 = arg0;
-        aLong288 = Class51.method937(1);
+        aLong288 = System.currentTimeMillis();
 
     }
 
@@ -90,7 +90,7 @@ public class Class8 {
     public static void method211(byte arg0) {
         anInt280++;
         ISAAC.aClass9_516.method235((byte) 78);
-        Class62.aClass9_1455.method235((byte) 36);
+        GameFrame.aClass9_1455.method235((byte) 36);
         if(arg0 != 60)
             method217(17, (byte) -110);
         Buffer.aClass9_1933.method235((byte) 72);

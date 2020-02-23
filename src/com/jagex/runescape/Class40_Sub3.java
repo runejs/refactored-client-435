@@ -113,7 +113,7 @@ public class Class40_Sub3 extends Node {
             }
         } else if(Class40_Sub5_Sub6.anInt2451 == 45) {
             Class38_Sub1.method446(ISAAC.aClass31_521, 0, !VertexNormal.lowMemory, (byte) 30);
-            Class49.aClass40_Sub9_Sub1_1152 = Class62.method1003(ISAAC.aClass31_521, Class62.aCanvas1469, arg0 ^ 0x74be);
+            Class49.aClass40_Sub9_Sub1_1152 = GameFrame.method1003(ISAAC.aClass31_521, GameFrame.aCanvas1469, arg0 ^ 0x74be);
             Class55.aClass48_1289 = new Class48(22050, CollisionMap.anInt141);
             Class40_Sub5_Sub6.anInt2451 = 50;
             Class22_Sub2.currentLoadingText = VertexNormal.aClass1_1105;

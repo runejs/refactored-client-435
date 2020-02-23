@@ -166,7 +166,7 @@ public class ISAAC {
                             if(Class64.setZ > i)
                                 Class64.setZ = i;
                             int i_30_ = ((Class42.aByteArrayArrayArray993[i][i_16_][i_27_]) & 0xff);
-                            int i_31_ = ((Class62.aByteArrayArrayArray1473[i][i_16_][i_27_]) & 0xff);
+                            int i_31_ = ((GameFrame.aByteArrayArrayArray1473[i][i_16_][i_27_]) & 0xff);
                             if(i_30_ > 0 || (i_31_ ^ 0xffffffff) < -1) {
                                 int i_32_ = (Class40_Sub6.tile_height[i][i_16_][i_27_]);
                                 int i_33_ = (Class40_Sub6.tile_height[i][i_16_ + 1][i_27_]);
@@ -255,7 +255,7 @@ public class ISAAC {
                     arg0.method130(i, i_57_, i_56_, Class59.getVisibilityPlaneFor(i, i_56_, 0, i_57_));
             }
             Class42.aByteArrayArrayArray993[i] = null;
-            Class62.aByteArrayArrayArray1473[i] = null;
+            GameFrame.aByteArrayArrayArray1473[i] = null;
             Floor.aByteArrayArrayArray2335[i] = null;
             Class35.aByteArrayArrayArray1745[i] = null;
             Class19.aByteArrayArrayArray492[i] = null;

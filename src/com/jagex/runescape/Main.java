@@ -647,7 +647,6 @@ public class Main extends RSApplet {
         Class13.anInt413 = 0;
         Class30.anInt706 = 0;
         RSCanvas.anInt58 = 0;
-        Class62.anInt1449 = 0;
         Class60.anInt1412 = 0;
         Class59.anInt1381 = 0;
         Renderable.anInt2868 = 0;
@@ -674,7 +673,6 @@ public class Main extends RSApplet {
         Class38.anInt891 = 0;
         Class10.anInt339 = 0;
         Class32.anInt765 = 0;
-        Class62.anInt1448 = 0;
         SceneTile.anInt2041 = 0;
         Class52.anInt1227 = 0;
         Class67.anInt1584 = 0;
@@ -684,7 +682,6 @@ public class Main extends RSApplet {
         Class57.anInt1330 = 0;
         FloorDecoration.anInt599 = 0;
         Class29.anInt677 = 0;
-        Class62.anInt1454 = 0;
         Class40_Sub6.anInt2115 = 0;
         FloorDecoration.anInt596 = 0;
         Class37.anInt859 = 0;
@@ -722,7 +719,6 @@ public class Main extends RSApplet {
         Class22_Sub1.anInt1862 = 0;
         Class30.anInt707 = 0;
         Class40_Sub5_Sub17_Sub6.anInt3232 = 0;
-        Class62.anInt1460 = 0;
         Class22_Sub1.anInt1859 = 0;
         Class8.anInt283 = 0;
         Class40_Sub3.anInt2029 = 0;
@@ -730,7 +726,6 @@ public class Main extends RSApplet {
         Class22_Sub1.anInt1843 = 0;
         Class52.anInt1236 = 0;
         Class13.anInt410 = 0;
-        Class62.anInt1462 = 0;
         Actor.anInt3106 = 0;
         Class30.anInt694 = 0;
         Node.anInt927 = 0;
@@ -740,7 +735,6 @@ public class Main extends RSApplet {
         Class30.anInt690 = 0;
         Actor.anInt3108 = 0;
         Floor.anInt2316 = 0;
-        Class62.anInt1461 = 0;
         Class6_Sub1.anInt1815 = 0;
         Class40_Sub5_Sub17_Sub3.anInt3064 = 0;
         Class30.anInt703 = 0;
@@ -751,10 +745,8 @@ public class Main extends RSApplet {
         Class59.anInt1382 = 0;
         Class58.anInt1367 = 0;
         Class8.anInt275 = 0;
-        Class62.anInt1453 = 0;
         Class67.anInt1587 = 0;
         Class68.anInt1622 = 0;
-        Class62.anInt1459 = 0;
         GameObject.anInt3020 = 0;
         Class65.anInt1534 = 0;
         Class10.anInt345 = 0;
@@ -816,8 +808,6 @@ public class Main extends RSApplet {
         Class58.anInt1351 = 0;
         Actor.anInt3133 = 0;
         IdentityKit.anInt2612 = 0;
-        Class62.anInt1447 = 0;
-        Class62.anInt1452 = 0;
         Class30.anInt702 = 0;
         ItemDefinition.anInt2826 = 0;
         Class40_Sub5_Sub4.anInt2369 = 0;
@@ -837,7 +827,6 @@ public class Main extends RSApplet {
         Class56.anInt1326 = 0;
         Class40_Sub5_Sub4.anInt2371 = 0;
         ItemDefinition.anInt2839 = 0;
-        Class62.anInt1451 = 0;
         Class44.anInt1036 = 0;
         Class54.anInt1275 = 0;
         Class44.anInt1044 = 0;
@@ -914,7 +903,6 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub17_Sub1.anInt3008 = 0;
         Class40_Sub5_Sub4.anInt2355 = 0;
         Class35.anInt1751 = 0;
-        Class62.anInt1458 = 0;
         Class22_Sub2.anInt1884 = 0;
         Class44.anInt1037 = 0;
         SubNode.anInt2094 = 0;
@@ -1199,11 +1187,11 @@ public class Main extends RSApplet {
 
     public void method34(int arg0) { // TODO: Might be Startup
         if(Class67.aBoolean1575) {
-            Class22_Sub1.method311((byte) -80, Class62.aCanvas1469);
-            Class55.method965(32, Class62.aCanvas1469);
+            Class22_Sub1.method311((byte) -80, GameFrame.aCanvas1469);
+            Class55.method965(32, GameFrame.aCanvas1469);
             this.setCanvas((byte) 86);
-            Widget.method642(Class62.aCanvas1469, -10);
-            RSRuntimeException.method1056(Class62.aCanvas1469, (byte) 33);
+            Widget.method642(GameFrame.aCanvas1469, -10);
+            RSRuntimeException.method1056(GameFrame.aCanvas1469, (byte) 33);
         }
         if(Class51.anInt1197 == 0)
             GameObject.drawLoadingText(Class67.anInt1607, null, Class22_Sub2.currentLoadingText, -86);
@@ -1280,11 +1268,11 @@ public class Main extends RSApplet {
                             class40_sub1.putIntBE(435);
                             Class29.aClass64_676.method1010(5, (byte) -19, 0, (class40_sub1.buffer));
                             Class8.anInt290++;
-                            Class22_Sub1.aLong1841 = Class51.method937(1);
+                            Class22_Sub1.aLong1841 = System.currentTimeMillis();
                         }
                         if((Class8.anInt290 ^ 0xffffffff) == -4) {
                             if(Class51.anInt1197 > 5 && (Class29.aClass64_676.method1014(arg0 + -131) ^ 0xffffffff) >= -1) {
-                                if((Class51.method937(1) + -Class22_Sub1.aLong1841) > 30000L) {
+                                if((System.currentTimeMillis() + -Class22_Sub1.aLong1841) > 30000L) {
                                     method35(-2);
                                     break;
                                 }
@@ -1415,7 +1403,7 @@ public class Main extends RSApplet {
         Class52.method946(false);
         Class11.method239();
         Class54.method953((byte) -38);
-        Class62.method1001(true);
+        GameFrame.method1001(true);
         Class51.method939(-108);
         SubNode.method541(117);
         Class6.method180(arg0 ^ arg0);
@@ -1490,8 +1478,8 @@ public class Main extends RSApplet {
             aBoolean1790 = true;
         Class10.anInt350 = Floor.anInt2340;
         Class61.method997(47);
-        Widget.method642(Class62.aCanvas1469, -10);
-        RSRuntimeException.method1056(Class62.aCanvas1469, (byte) 70);
+        Widget.method642(GameFrame.aCanvas1469, -10);
+        RSRuntimeException.method1056(GameFrame.aCanvas1469, (byte) 70);
         RSCanvas.anInt57 = Signlink.anInt737;
         try {
             if(ISAAC.aClass31_521.cacheData != null) {

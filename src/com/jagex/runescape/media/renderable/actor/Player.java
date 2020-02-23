@@ -53,10 +53,10 @@ public class Player extends Actor {
         try {
             if(arg0 < 106)
                 return;
-            Graphics graphics = Class62.aCanvas1469.getGraphics();
+            Graphics graphics = GameFrame.aCanvas1469.getGraphics();
             Class40_Sub5_Sub4.aClass68_2350.method1044(0, 4, graphics, 4);
         } catch(Exception exception) {
-            Class62.aCanvas1469.repaint();
+            GameFrame.aCanvas1469.repaint();
         }
     }
 

@@ -124,8 +124,8 @@ public class Class4 {
             Class35.anInt1733 -= 20;
             if(Class35.anInt1733 < 0)
                 Class35.anInt1733 = 0;
-            if((Class35.anInt1733 ^ 0xffffffff) == -1 && (RSCanvas.anInt60 ^ 0xffffffff) != -1 && (Class62.anInt1457 ^ 0xffffffff) != 0)
-                Class33.method414(false, 0, Class62.anInt1457, RSCanvas.anInt60, 0, Class55.aClass6_Sub1_1286, -1);
+            if((Class35.anInt1733 ^ 0xffffffff) == -1 && (RSCanvas.anInt60 ^ 0xffffffff) != -1 && (GameFrame.anInt1457 ^ 0xffffffff) != 0)
+                Class33.method414(false, 0, GameFrame.anInt1457, RSCanvas.anInt60, 0, Class55.aClass6_Sub1_1286, -1);
         }
     }
 }

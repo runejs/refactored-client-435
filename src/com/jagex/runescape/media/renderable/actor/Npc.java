@@ -53,7 +53,7 @@ public class Npc extends Actor {
             if((Class51.anInt1197 ^ 0xffffffff) == -31 || (Class51.anInt1197 ^ 0xffffffff) == -36) {
                 if(ISAAC.aBoolean519 && (Class51.anInt1197 ^ 0xffffffff) == -31) {
                     Class40_Sub5_Sub2.anInt2302 = 0;
-                    Class62.clickType = 0;
+                    GameFrame.clickType = 0;
                     while(Class34.method416((byte) -104)) {
                         /* empty */
                     }
@@ -63,7 +63,7 @@ public class Npc extends Actor {
                 Class40_Sub5_Sub6.putHackCheckPacket(-12, 205, Class32.packetBuffer);
                 synchronized(Class12.mouseCapturer.objectLock) {
                     if(Class22.accountFlagged) {
-                        if(Class62.clickType != 0 || Class12.mouseCapturer.coord >= 40) {
+                        if(GameFrame.clickType != 0 || Class12.mouseCapturer.coord >= 40) {
                             int coordinateCount = 0;
                             Class32.packetBuffer.putPacket(210);
                             Class32.packetBuffer.putByte(0);
@@ -125,7 +125,7 @@ public class Npc extends Actor {
                         Class12.mouseCapturer.coord = 0;
                     }
                 }
-                if(Class62.clickType != 0) {
+                if(GameFrame.clickType != 0) {
                     Class40_Sub5_Sub4.anInt2363++;
                     long l = ((GameObjectDefinition.aLong2561 - Class51.aLong1203) / 50L);
                     int i = Class57.anInt1338;
@@ -142,7 +142,7 @@ public class Npc extends Actor {
                     } else
                         i_10_ = 0;
                     int i_11_ = 0;
-                    if((Class62.clickType ^ 0xffffffff) == -3)
+                    if((GameFrame.clickType ^ 0xffffffff) == -3)
                         i_11_ = 1;
                     if((l ^ 0xffffffffffffffffL) < -4096L)
                         l = 4095L;
@@ -261,7 +261,7 @@ public class Npc extends Actor {
                                     }
                                 }
                                 RSRuntimeException.anInt1651 = 10;
-                                Class62.clickType = 0;
+                                GameFrame.clickType = 0;
                             }
                         }
                         if((Scene.anInt78 ^ 0xffffffff) != 0) {
@@ -276,18 +276,18 @@ public class Npc extends Actor {
                             }
                             Scene.anInt78 = -1;
                         }
-                        if((Class62.clickType ^ 0xffffffff) == -2 && RSApplet.aClass1_8 != null) {
-                            Class62.clickType = 0;
+                        if((GameFrame.clickType ^ 0xffffffff) == -2 && RSApplet.aClass1_8 != null) {
+                            GameFrame.clickType = 0;
                             Class52.redrawChatbox = true;
                             RSApplet.aClass1_8 = null;
                         }
-                        Class62.method1002(-77);
+                        GameFrame.method1002(-77);
                         if((ActorDefinition.anInt2433 ^ 0xffffffff) == 0) {
                             Class40_Sub5_Sub17_Sub3.method776((byte) -125);
                             Class38_Sub1.method447((byte) 29);
                             Class40_Sub5_Sub1.method544((byte) -54);
                         }
-                        if((Class40_Sub5_Sub2.anInt2302 ^ 0xffffffff) == -2 || (Class62.clickType ^ 0xffffffff) == -2)
+                        if((Class40_Sub5_Sub2.anInt2302 ^ 0xffffffff) == -2 || (GameFrame.clickType ^ 0xffffffff) == -2)
                             anInt3294++;
                         int i = 34;
                         if(Class66.anInt1560 != -1)

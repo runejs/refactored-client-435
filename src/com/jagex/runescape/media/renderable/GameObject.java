@@ -12,7 +12,7 @@ import java.awt.*;
 
 public class GameObject extends Renderable {
     public static int anInt3017;
-    public static Class62 aClass62_3019 = new Class62();
+    public static GameFrame frame = new GameFrame();
     public static int anInt3020;
     public static int anInt3022;
     public static int anInt3023;
@@ -34,6 +34,7 @@ public class GameObject extends Renderable {
     public static RSString aClass1_3046;
     public static RSString aClass1_3047;
     public static int anInt3048;
+
 
     static {
         anInt3040 = 0;
@@ -58,6 +59,7 @@ public class GameObject extends Renderable {
     public int anInt3030;
     public Class40_Sub5_Sub7 aClass40_Sub5_Sub7_3034;
     public int anInt3035;
+
 
     public GameObject(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, boolean arg8) {
         anInt3029 = arg3;
@@ -123,7 +125,7 @@ public class GameObject extends Renderable {
         aClass1_3041 = null;
         aClass1_3044 = null;
         aClass68_3045 = null;
-        aClass62_3019 = null;
+        frame = null;
         aClass1_3038 = null;
         aClass1_3036 = null;
         aClass1_3039 = null;
@@ -172,10 +174,10 @@ public class GameObject extends Renderable {
 
         anInt3033++;
         try {
-            Graphics graphics = Class62.aCanvas1469.getGraphics();
+            Graphics graphics = GameFrame.aCanvas1469.getGraphics();
             if(Class17.aFont461 == null) {
                 Class17.aFont461 = new Font("Helvetica", 1, 13);
-                Class8.aFontMetrics295 = Class62.aCanvas1469.getFontMetrics(Class17.aFont461);
+                Class8.aFontMetrics295 = GameFrame.aCanvas1469.getFontMetrics(Class17.aFont461);
             }
             if(Class40_Sub5_Sub11.aBoolean2631) {
                 Class40_Sub5_Sub11.aBoolean2631 = false;
@@ -186,7 +188,7 @@ public class GameObject extends Renderable {
                 color = new Color(140, 17, 17);
             try {
                 if(Class26.anImage624 == null)
-                    Class26.anImage624 = Class62.aCanvas1469.createImage(304, 34);
+                    Class26.anImage624 = GameFrame.aCanvas1469.createImage(304, 34);
                 Graphics graphics_13_ = Class26.anImage624.getGraphics();
                 graphics_13_.setColor(color);
                 int i = -71 % ((arg3 - 8) / 54);
@@ -213,7 +215,7 @@ public class GameObject extends Renderable {
                 rsString.method65((-rsString.method73(Class8.aFontMetrics295) + 304) / 2 + i, 22 + i_14_, graphics);
             }
         } catch(Exception exception) {
-            Class62.aCanvas1469.repaint();
+            GameFrame.aCanvas1469.repaint();
         }
 
     }

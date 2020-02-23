@@ -33,7 +33,7 @@ public class RSRuntimeException extends RuntimeException {
 
     public static void method1054(byte arg0) {
         if(CollisionMap.aClass8_166 != null) {
-            long l = Class51.method937(1);
+            long l = System.currentTimeMillis();
             if((l ^ 0xffffffffffffffffL) < (Class8.aLong288 ^ 0xffffffffffffffffL)) {
                 CollisionMap.aClass8_166.method212(l);
                 int i = (int) (-Class8.aLong288 + l);
@@ -67,11 +67,11 @@ public class RSRuntimeException extends RuntimeException {
     }
 
     public static void method1056(Component arg0, byte arg1) {
-        arg0.addMouseListener(GameObject.aClass62_3019);
+        arg0.addMouseListener(GameObject.frame);
         int i = -23 / ((-32 - arg1) / 47);
-        arg0.addMouseMotionListener(GameObject.aClass62_3019);
-        arg0.addFocusListener(GameObject.aClass62_3019);
-        arg0.addMouseWheelListener(GameObject.aClass62_3019);
+        arg0.addMouseMotionListener(GameObject.frame);
+        arg0.addFocusListener(GameObject.frame);
+        arg0.addMouseWheelListener(GameObject.frame);
     }
 
     public static void method1057(int arg0) {
