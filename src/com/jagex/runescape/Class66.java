@@ -170,7 +170,6 @@ public class Class66 {
                     if(class1s != null) {
                         for(int i = 4; i >= 0; i--) {
                             if(class1s[i] != null && class1s[i].equalsIgnoreCase((Class38_Sub1.aClass1_1917), true)) {
-                                Class55.anInt1297++;
                                 int i_4_ = 0;
                                 if(((Class40_Sub5_Sub13.localPlayer.anInt3260) ^ 0xffffffff) > (arg4.combatLevel ^ 0xffffffff))
                                     i_4_ = 2000;

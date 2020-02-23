@@ -7,37 +7,20 @@ import com.jagex.runescape.util.Signlink;
 public class Class39 implements Runnable {
     public static RSString aClass1_898 = Class58.method978(" steht bereits auf Ihrer Freunde)2Liste(Q");
     public static RSString aClass1_899 = Class58.method978("Benutzen Sie bitte eine andere Welt)3");
-    public static RSString aClass1_900 = Class58.method978("Ok");
     public static int anInt901;
-    public static int anInt902;
-    public static int anInt903;
-    public static RSString aClass1_904;
-    public static boolean aBoolean906;
+    public static RSString aClass1_904 = Class58.method978(" more options");
+    public static boolean aBoolean906 = false;
     public static Class68 aClass68_907;
     public static Class68 aClass68_908;
-    public static int anInt909;
+    public static int anInt909 = 0;
     public static RSString aClass1_910;
     public static RSString aClass1_911 = Class58.method978("Spiel)2Fenster geladen)3");
-    public static int anInt912;
-    public static RSString aClass1_914;
-    public static RSString aClass1_915;
+    public static int anInt912 = 20;
+    public static RSString aClass1_914 = Class58.method978("Stufe)2");
     public static int anInt916;
-    public static RSString aClass1_917;
+    public static RSString aClass1_917 = Class58.method978(" from your ignore list first");
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_918;
-    public static RSString aClass1_919;
-
-    static {
-        aClass1_910 = Class58.method978(" from your ignore list first");
-        anInt909 = 0;
-        aClass1_914 = Class58.method978("Stufe)2");
-        aBoolean906 = false;
-        aClass1_917 = aClass1_910;
-        anInt912 = 20;
-        aClass1_919 = aClass1_900;
-        aClass1_915 = Class58.method978(" more options");
-        aClass1_904 = aClass1_915;
-    }
-
+    public static RSString aClass1_919 = Class58.method978("Ok");
     public Object anObject905;
     public boolean aBoolean913 = true;
     public int[] anIntArray920;
@@ -52,9 +35,7 @@ public class Class39 implements Runnable {
     }
 
     public static void method451(Class40_Sub3 arg0, int arg1) {
-
         int i = 0;
-        anInt902++;
         int i_0_ = -1;
         int i_1_ = 0;
         if(arg0.anInt2027 == 0)
@@ -77,11 +58,9 @@ public class Class39 implements Runnable {
             arg0.anInt2028 = i_0_;
             arg0.anInt2036 = i_1_;
         }
-
     }
 
     public static boolean method452(Signlink arg0, byte arg1, boolean arg2) {
-
         RSCanvas.anInt54 = 20;
         anInt916++;
         try {
@@ -101,12 +80,9 @@ public class Class39 implements Runnable {
             }
             return false;
         }
-
     }
 
     public static void method453(byte arg0) {
-
-        aClass1_900 = null;
         aClass68_907 = null;
         aClass1_899 = null;
         aClass1_917 = null;
@@ -120,13 +96,9 @@ public class Class39 implements Runnable {
         aClass1_898 = null;
         aClass68_908 = null;
         aClass1_910 = null;
-        aClass1_915 = null;
-
     }
 
     public void run() {
-
-        anInt903++;
         while(aBoolean913) {
             synchronized(anObject905) {
                 if(anInt921 < 500) {
@@ -137,6 +109,5 @@ public class Class39 implements Runnable {
             }
             Class43.method890(50L, 44);
         }
-
     }
 }

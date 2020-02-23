@@ -577,15 +577,14 @@ public class Main extends RSApplet {
                     Class37.method432((byte) 93);
             } else
                 Class22.aBoolean541 = false;
-            if(!arg0[5].equals("english")) {
-                if(!arg0[5].equals("german"))
-                    Class37.method432((byte) 106);
-                else {
-                    Class55.method962(18782);
-                    Class34.anInt848 = 1;
-                }
-            } else
+            if(arg0[5].equals("english")) {
                 Class34.anInt848 = 0;
+            } else if(arg0[5].equals("german")) {
+                Class55.setGerman();
+                Class34.anInt848 = 1;
+            } else {
+                Class37.method432((byte) 106);
+            }
             Main main = new Main();
             main.openClientApplet("runescape", 13, 503, 32 + Class44.modewhat, InetAddress.getLocalHost(), 435, 765);
         } catch(Exception exception) {
@@ -745,7 +744,6 @@ public class Main extends RSApplet {
         Class52.anInt1236 = 0;
         Class13.anInt410 = 0;
         Class62.anInt1462 = 0;
-        Class55.anInt1287 = 0;
         Actor.anInt3106 = 0;
         Class30.anInt694 = 0;
         Node.anInt927 = 0;
@@ -758,12 +756,10 @@ public class Main extends RSApplet {
         Class62.anInt1461 = 0;
         Player.anInt3261 = 0;
         Class6_Sub1.anInt1815 = 0;
-        Class55.anInt1302 = 0;
         Class40_Sub5_Sub17_Sub3.anInt3064 = 0;
         Class30.anInt703 = 0;
         Class44.anInt1045 = 0;
         Class40_Sub2.anInt2006 = 0;
-        Class55.anInt1293 = 0;
         Class30.anInt705 = 0;
         Class32.anInt744 = 0;
         Class59.anInt1382 = 0;
@@ -825,7 +821,6 @@ public class Main extends RSApplet {
         Class32.anInt754 = 0;
         Actor.anInt3147 = 0;
         Actor.anInt3076 = 0;
-        Class55.anInt1307 = 0;
         Class22_Sub1.anInt1854 = 0;
         Class52.anInt1239 = 0;
         RSCanvas.anInt56 = 0;
@@ -840,7 +835,6 @@ public class Main extends RSApplet {
         RSCanvas.anInt52 = 0;
         Class40_Sub13.anInt2182 = 0;
         Class40_Sub5_Sub2.anInt2289 = 0;
-        Class55.anInt1303 = 0;
         Renderable.anInt2867 = 0;
         Class22_Sub2.anInt1897 = 0;
         ISAAC.anInt520 = 0;
@@ -885,7 +879,6 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub17_Sub1.anInt2959 = 0;
         Class40_Sub5_Sub17_Sub1.anInt2956 = 0;
         Class22_Sub2.anInt1892 = 0;
-        Class39.anInt902 = 0;
         Renderable.anInt2859 = 0;
         Class56.anInt1322 = 0;
         Class4.anInt187 = 0;
@@ -908,7 +901,6 @@ public class Main extends RSApplet {
         Class60.anInt1410 = 0;
         Class40_Sub13.anInt2173 = 0;
         Class68.anInt1626 = 0;
-        Class55.anInt1308 = 0;
         Class30.anInt689 = 0;
         Class49.anInt1144 = 0;
         Class40_Sub5_Sub12.anInt2697 = 0;
@@ -925,7 +917,6 @@ public class Main extends RSApplet {
         Class54.anInt1281 = 0;
         Class22.anInt543 = 0;
         Class13.anInt401 = 0;
-        Class39.anInt903 = 0;
         Class22.anInt539 = 0;
         Class34.anInt821 = 0;
         Class40_Sub5_Sub9.anInt2569 = 0;
@@ -966,7 +957,6 @@ public class Main extends RSApplet {
         Class44.anInt1037 = 0;
         SubNode.anInt2094 = 0;
         Class8.anInt280 = 0;
-        Class55.anInt1290 = 0;
         Class52.anInt1212 = 0;
         Class40_Sub5_Sub17_Sub1.anInt3005 = 0;
         SceneTile.anInt2040 = 0;
@@ -1001,7 +991,6 @@ public class Main extends RSApplet {
         FloorDecoration.anInt604 = 0;
         Class40_Sub5_Sub17_Sub1.anInt2978 = 0;
         Landscape.anInt1164 = 0;
-        Class55.anInt1305 = 0;
         Class34.anInt800 = 0;
         Class38.anInt897 = 0;
         Class43.anInt1015 = 0;
@@ -1032,7 +1021,6 @@ public class Main extends RSApplet {
         GameObject.anInt3022 = 0;
         Class34.anInt803 = 0;
         Class58.anInt1357 = 0;
-        Class55.anInt1297 = 0;
         SubNode.anInt2096 = 0;
         Class40_Sub5_Sub12.anInt2638 = 0;
         Class54.anInt1280 = 0;
@@ -1060,7 +1048,6 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub11.anInt2618 = 0;
         Floor.anInt2329 = 0;
         Node.anInt970 = 0;
-        Class55.anInt1306 = 0;
         Class6_Sub1.anInt1809 = 0;
         Class24.anInt576 = 0;
         Floor.anInt2343 = 0;
@@ -1421,7 +1408,7 @@ public class Main extends RSApplet {
             Class22.aBoolean541 = string_80_ != null && string_80_.equals("1");
             String string_81_ = this.getParameter("lang");
             if(string_81_ != null && string_81_.equals("1")) {
-                Class55.method962(18782);
+                Class55.setGerman();
                 Class34.anInt848 = 1;
             }
             this.displayClientFrame((byte) 120, 435, 503, 765, Class44.modewhat + 32);

@@ -15,51 +15,24 @@ import java.io.*;
 
 public class Class55 {
     public static Class6_Sub1 aClass6_Sub1_1286;
-    public static int anInt1287;
     public static int anInt1288 = 0;
     public static Class48 aClass48_1289;
-    public static int anInt1290;
-    public static RSString aClass1_1291;
+    public static RSString aClass1_1291 = Class58.method978("slide:");
     public static RSString aClass1_1292 = Class58.method978("bevor Sie den Vorgang wiederholen)3");
-    public static int anInt1293;
-    public static RSString aClass1_1294 = Class58.method978("slide:");
-    public static volatile int anInt1295;
-    public static int anInt1296;
-    public static int anInt1297;
-    public static RSString aClass1_1298;
+    public static volatile int anInt1295 = 0;
+    public static int anInt1296 = -1;
+    public static RSString aClass1_1298 = Class58.method978("Invalid loginserver requested)3");
     public static int anInt1299 = 2301979;
-    public static RSString aClass1_1300;
-    public static RSString aClass1_1301;
-    public static int anInt1302;
-    public static int anInt1303;
-    public static int anInt1304;
-    public static int anInt1305;
-    public static int anInt1306;
-    public static int anInt1307;
-    public static int anInt1308;
-
-    static {
-        anInt1295 = 0;
-        aClass1_1300 = Class58.method978("(U4");
-        aClass1_1291 = aClass1_1294;
-        aClass1_1301 = Class58.method978("Invalid loginserver requested)3");
-        anInt1296 = -1;
-        aClass1_1298 = aClass1_1301;
-        anInt1304 = 0;
-    }
+    public static RSString aClass1_1300 = Class58.method978("(U4");
+    public static int anInt1304 = 0;
 
     public static void method958(int arg0, int arg1) {
-
         if(arg1 != -14222)
             aClass6_Sub1_1286 = null;
-        anInt1308++;
         Class61.method995((byte) 85, arg0);
-
     }
 
     public static String method959(int arg0, Throwable arg1) throws IOException {
-
-        anInt1303++;
         String string;
         if(arg1 instanceof RSRuntimeException) {
             RSRuntimeException runtimeexception_sub1 = (RSRuntimeException) arg1;
@@ -99,12 +72,9 @@ public class Class55 {
         }
         string += "| " + string_1_;
         return string;
-
     }
 
     public static Class40_Sub5_Sub15 method960(byte arg0, int arg1) {
-
-        anInt1305++;
         Class40_Sub5_Sub15 class40_sub5_sub15 = ((Class40_Sub5_Sub15) Class42.aClass9_998.method231((long) arg1, (byte) 101));
         if(class40_sub5_sub15 != null)
             return class40_sub5_sub15;
@@ -114,26 +84,20 @@ public class Class55 {
         if(arg0 != -99)
             method961(34);
         return class40_sub5_sub15;
-
     }
 
     public static void method961(int arg0) {
-
         aClass1_1292 = null;
-        aClass1_1294 = null;
         aClass1_1300 = null;
         aClass1_1291 = null;
         aClass6_Sub1_1286 = null;
-        aClass1_1301 = null;
         aClass48_1289 = null;
         if(arg0 != 1)
             method964(120);
         aClass1_1298 = null;
-
     }
 
-    public static void method962(int arg0) {
-
+    public static void setGerman() {
         Class39.aClass1_917 = Node.aClass1_933;
         SceneTile.aClass1_2057 = Renderable.aClass1_2871;
         Main.aClass1_1781 = Class37.aClass1_880;
@@ -292,67 +256,62 @@ public class Class55 {
         Class40_Sub5_Sub9.aClass1_2566 = FloorDecoration.aClass1_609;
         Node.aClass1_944 = Class64.aClass1_1523;
         PacketBuffer.aClass1_2240 = Class49.aClass1_1153;
-        anInt1302++;
         VertexNormal.aClass1_1105 = Class40_Sub13.aClass1_2181;
         Class42.aClass1_1011 = Actor.aClass1_3158;
         Class22_Sub1.aClass1_1870 = Class49.aClass1_1143;
         Class62.aClass1_1474 = Class8.aClass1_300;
-        if(arg0 == 18782) {
-            Node.aClass1_937 = Class64.aClass1_1523;
-            VertexNormal.aClass1_1090 = Class43.aClass1_1026;
-            NpcDefinition.aClass1_2401 = RSApplet.aClass1_21;
-            Node.aClass1_967 = Class10.aClass1_343;
-            Class65.aClass1_1538 = GameObject.aClass1_3043;
-            NpcDefinition.aClass1_2392 = SceneTile.aClass1_2044;
-            VertexNormal.aClass1_1097 = Class22_Sub1.aClass1_1849;
-            Class40_Sub6.aClass1_2097 = Class40_Sub5_Sub7.aClass1_2481;
-            Class67.aClass1_1585 = Class61.aClass1_1426;
-            RSString.aClass1_1703 = Class12.aClass1_385;
-            VertexNormal.aClass1_1088 = Class26.aClass1_633;
-            Class45.aClass1_1076 = GameObjectDefinition.aClass1_2556;
-            Class34.aClass1_829 = RSApplet.aClass1_25;
-            CollisionMap.aClass1_167 = Class26.aClass1_629;
-            Landscape.aClass1_1178 = Class6.aClass1_259;
-            Class61.aClass1_1432 = Class44.aClass1_1034;
-            Node.aClass1_941 = Class64.aClass1_1523;
-            Class26.aClass1_634 = Class40_Sub5_Sub9.aClass1_2564;
-            Class53.aClass1_1259 = Class12.aClass1_396;
-            Class40_Sub5_Sub4.aClass1_2351 = Class4.aClass1_181;
-            Class22_Sub1.aClass1_1858 = Class12.aClass1_382;
-            Class6.aClass1_258 = Class40_Sub5_Sub7.aClass1_2475;
-            Class35.aClass1_1747 = Class45.aClass1_1079;
-            Class33.aClass1_783 = Class42.aClass1_1003;
-            IdentityKit.aClass1_2615 = HashTable.aClass1_558;
-            Main.aClass1_1761 = Class17.aClass1_457;
-            Class38_Sub1.aClass1_1922 = Class12.aClass1_386;
-            Class44.aClass1_1038 = Class45.aClass1_1059;
-            Class40_Sub5_Sub17_Sub3.aClass1_3050 = Class56.aClass1_1316;
-            Class40_Sub6.aClass1_2111 = VertexNormal.aClass1_1116;
-            Class39.aClass1_919 = GameObject.aClass1_3037;
-            Class12.aClass1_397 = Player.aClass1_3290;
-            Landscape.aClass1_1180 = Class40_Sub2.aClass1_2008;
-            Class22.aClass1_542 = Class48.aClass1_1137;
-            Class17.aClass1_455 = PacketBuffer.aClass1_2260;
-            Node.aClass1_924 = aClass1_1292;
-            aClass1_1298 = Class40_Sub5_Sub17_Sub3.aClass1_3055;
-            Actor.aClass1_3124 = Class45.aClass1_1084;
-            Class60.aClass1_1416 = Class40_Sub5_Sub12.aClass1_2716;
-            Class42.aClass1_1000 = CollisionMap.aClass1_164;
-            ISAAC.aClass1_526 = Class13.aClass1_422;
-            Node.aClass1_963 = Class45.aClass1_1078;
-            Class40_Sub5_Sub17_Sub3.aClass1_3069 = ISAAC.aClass1_517;
-            Class48.aClass1_1122 = Cache.aClass1_331;
-            Class40_Sub5_Sub17_Sub1.aClass1_3014 = Class52.aClass1_1241;
-            Class44.aClass1_1032 = Class45.aClass1_1059;
-            Class40_Sub5_Sub4.aClass1_2357 = Player.aClass1_3275;
-            Class8.aClass1_294 = Class40_Sub5_Sub17_Sub6.aClass1_3245;
-            Node.aClass1_964 = Class64.aClass1_1523;
-        }
-
+        Node.aClass1_937 = Class64.aClass1_1523;
+        VertexNormal.aClass1_1090 = Class43.aClass1_1026;
+        NpcDefinition.aClass1_2401 = RSApplet.aClass1_21;
+        Node.aClass1_967 = Class10.aClass1_343;
+        Class65.aClass1_1538 = GameObject.aClass1_3043;
+        NpcDefinition.aClass1_2392 = SceneTile.aClass1_2044;
+        VertexNormal.aClass1_1097 = Class22_Sub1.aClass1_1849;
+        Class40_Sub6.aClass1_2097 = Class40_Sub5_Sub7.aClass1_2481;
+        Class67.aClass1_1585 = Class61.aClass1_1426;
+        RSString.aClass1_1703 = Class12.aClass1_385;
+        VertexNormal.aClass1_1088 = Class26.aClass1_633;
+        Class45.aClass1_1076 = GameObjectDefinition.aClass1_2556;
+        Class34.aClass1_829 = RSApplet.aClass1_25;
+        CollisionMap.aClass1_167 = Class26.aClass1_629;
+        Landscape.aClass1_1178 = Class6.aClass1_259;
+        Class61.aClass1_1432 = Class44.aClass1_1034;
+        Node.aClass1_941 = Class64.aClass1_1523;
+        Class26.aClass1_634 = Class40_Sub5_Sub9.aClass1_2564;
+        Class53.aClass1_1259 = Class12.aClass1_396;
+        Class40_Sub5_Sub4.aClass1_2351 = Class4.aClass1_181;
+        Class22_Sub1.aClass1_1858 = Class12.aClass1_382;
+        Class6.aClass1_258 = Class40_Sub5_Sub7.aClass1_2475;
+        Class35.aClass1_1747 = Class45.aClass1_1079;
+        Class33.aClass1_783 = Class42.aClass1_1003;
+        IdentityKit.aClass1_2615 = HashTable.aClass1_558;
+        Main.aClass1_1761 = Class17.aClass1_457;
+        Class38_Sub1.aClass1_1922 = Class12.aClass1_386;
+        Class44.aClass1_1038 = Class45.aClass1_1059;
+        Class40_Sub5_Sub17_Sub3.aClass1_3050 = Class56.aClass1_1316;
+        Class40_Sub6.aClass1_2111 = VertexNormal.aClass1_1116;
+        Class39.aClass1_919 = GameObject.aClass1_3037;
+        Class12.aClass1_397 = Player.aClass1_3290;
+        Landscape.aClass1_1180 = Class40_Sub2.aClass1_2008;
+        Class22.aClass1_542 = Class48.aClass1_1137;
+        Class17.aClass1_455 = PacketBuffer.aClass1_2260;
+        Node.aClass1_924 = aClass1_1292;
+        aClass1_1298 = Class40_Sub5_Sub17_Sub3.aClass1_3055;
+        Actor.aClass1_3124 = Class45.aClass1_1084;
+        Class60.aClass1_1416 = Class40_Sub5_Sub12.aClass1_2716;
+        Class42.aClass1_1000 = CollisionMap.aClass1_164;
+        ISAAC.aClass1_526 = Class13.aClass1_422;
+        Node.aClass1_963 = Class45.aClass1_1078;
+        Class40_Sub5_Sub17_Sub3.aClass1_3069 = ISAAC.aClass1_517;
+        Class48.aClass1_1122 = Cache.aClass1_331;
+        Class40_Sub5_Sub17_Sub1.aClass1_3014 = Class52.aClass1_1241;
+        Class44.aClass1_1032 = Class45.aClass1_1059;
+        Class40_Sub5_Sub4.aClass1_2357 = Player.aClass1_3275;
+        Class8.aClass1_294 = Class40_Sub5_Sub17_Sub6.aClass1_3245;
+        Node.aClass1_964 = Class64.aClass1_1523;
     }
 
     public static int method963(int arg0, byte arg1, int arg2) {
-
         if(arg0 > arg2) {
             int i = arg2;
             arg2 = arg0;
@@ -360,18 +319,15 @@ public class Class55 {
         }
         if(arg1 != -62)
             aClass48_1289 = null;
-        anInt1293++;
         int i;
         for(/**/; arg0 != 0; arg0 = i) {
             i = arg2 % arg0;
             arg2 = arg0;
         }
         return arg2;
-
     }
 
     public static void method964(int arg0) {
-
         try {
             Graphics graphics = Class62.aCanvas1469.getGraphics();
             SubNode.aClass68_2091.method1044(0, 553, graphics, 205);
@@ -380,27 +336,19 @@ public class Class55 {
         }
         if(arg0 != 40)
             anInt1296 = 7;
-        anInt1287++;
-
     }
 
     public static void method965(int arg0, Component arg1) {
-
         if(arg0 == 32) {
-            anInt1306++;
             arg1.removeMouseListener(GameObject.aClass62_3019);
             arg1.removeMouseMotionListener(GameObject.aClass62_3019);
             arg1.removeFocusListener(GameObject.aClass62_3019);
         }
-
     }
 
     public static void method966(int arg0, Class6 arg1, Class6 arg2) {
-
         Class40_Sub5_Sub9.aClass6_2582 = arg1;
-        anInt1307++;
         int i = -87 / ((-20 - arg0) / 56);
         Class19.aClass6_488 = arg2;
-
     }
 }
