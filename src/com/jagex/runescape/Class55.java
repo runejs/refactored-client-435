@@ -15,51 +15,24 @@ import java.io.*;
 
 public class Class55 {
     public static Class6_Sub1 aClass6_Sub1_1286;
-    public static int anInt1287;
     public static int anInt1288 = 0;
     public static Class48 aClass48_1289;
-    public static int anInt1290;
-    public static RSString aClass1_1291;
+    public static RSString aClass1_1291 = Class58.method978("slide:");
     public static RSString aClass1_1292 = Class58.method978("bevor Sie den Vorgang wiederholen)3");
-    public static int anInt1293;
-    public static RSString aClass1_1294 = Class58.method978("slide:");
-    public static volatile int anInt1295;
-    public static int anInt1296;
-    public static int anInt1297;
-    public static RSString aClass1_1298;
+    public static volatile int anInt1295 = 0;
+    public static int anInt1296 = -1;
+    public static RSString aClass1_1298 = Class58.method978("Invalid loginserver requested)3");
     public static int anInt1299 = 2301979;
-    public static RSString aClass1_1300;
-    public static RSString aClass1_1301;
-    public static int anInt1302;
-    public static int anInt1303;
-    public static int anInt1304;
-    public static int anInt1305;
-    public static int anInt1306;
-    public static int anInt1307;
-    public static int anInt1308;
-
-    static {
-        anInt1295 = 0;
-        aClass1_1300 = Class58.method978("(U4");
-        aClass1_1291 = aClass1_1294;
-        aClass1_1301 = Class58.method978("Invalid loginserver requested)3");
-        anInt1296 = -1;
-        aClass1_1298 = aClass1_1301;
-        anInt1304 = 0;
-    }
+    public static RSString aClass1_1300 = Class58.method978("(U4");
+    public static int anInt1304 = 0;
 
     public static void method958(int arg0, int arg1) {
-
         if(arg1 != -14222)
             aClass6_Sub1_1286 = null;
-        anInt1308++;
         Class61.method995((byte) 85, arg0);
-
     }
 
     public static String method959(int arg0, Throwable arg1) throws IOException {
-
-        anInt1303++;
         String string;
         if(arg1 instanceof RSRuntimeException) {
             RSRuntimeException runtimeexception_sub1 = (RSRuntimeException) arg1;
@@ -99,12 +72,9 @@ public class Class55 {
         }
         string += "| " + string_1_;
         return string;
-
     }
 
     public static Class40_Sub5_Sub15 method960(byte arg0, int arg1) {
-
-        anInt1305++;
         Class40_Sub5_Sub15 class40_sub5_sub15 = ((Class40_Sub5_Sub15) Class42.aClass9_998.method231((long) arg1, (byte) 101));
         if(class40_sub5_sub15 != null)
             return class40_sub5_sub15;
@@ -114,22 +84,17 @@ public class Class55 {
         if(arg0 != -99)
             method961(34);
         return class40_sub5_sub15;
-
     }
 
     public static void method961(int arg0) {
-
         aClass1_1292 = null;
-        aClass1_1294 = null;
         aClass1_1300 = null;
         aClass1_1291 = null;
         aClass6_Sub1_1286 = null;
-        aClass1_1301 = null;
         aClass48_1289 = null;
         if(arg0 != 1)
             method964(120);
         aClass1_1298 = null;
-
     }
 
     public static void setGerman() {
@@ -291,7 +256,6 @@ public class Class55 {
         Class40_Sub5_Sub9.aClass1_2566 = FloorDecoration.aClass1_609;
         Node.aClass1_944 = Class64.aClass1_1523;
         PacketBuffer.aClass1_2240 = Class49.aClass1_1153;
-        anInt1302++;
         VertexNormal.aClass1_1105 = Class40_Sub13.aClass1_2181;
         Class42.aClass1_1011 = Actor.aClass1_3158;
         Class22_Sub1.aClass1_1870 = Class49.aClass1_1143;
@@ -348,7 +312,6 @@ public class Class55 {
     }
 
     public static int method963(int arg0, byte arg1, int arg2) {
-
         if(arg0 > arg2) {
             int i = arg2;
             arg2 = arg0;
@@ -356,18 +319,15 @@ public class Class55 {
         }
         if(arg1 != -62)
             aClass48_1289 = null;
-        anInt1293++;
         int i;
         for(/**/; arg0 != 0; arg0 = i) {
             i = arg2 % arg0;
             arg2 = arg0;
         }
         return arg2;
-
     }
 
     public static void method964(int arg0) {
-
         try {
             Graphics graphics = Class62.aCanvas1469.getGraphics();
             SubNode.aClass68_2091.method1044(0, 553, graphics, 205);
@@ -376,27 +336,19 @@ public class Class55 {
         }
         if(arg0 != 40)
             anInt1296 = 7;
-        anInt1287++;
-
     }
 
     public static void method965(int arg0, Component arg1) {
-
         if(arg0 == 32) {
-            anInt1306++;
             arg1.removeMouseListener(GameObject.aClass62_3019);
             arg1.removeMouseMotionListener(GameObject.aClass62_3019);
             arg1.removeFocusListener(GameObject.aClass62_3019);
         }
-
     }
 
     public static void method966(int arg0, Class6 arg1, Class6 arg2) {
-
         Class40_Sub5_Sub9.aClass6_2582 = arg1;
-        anInt1307++;
         int i = -87 / ((-20 - arg0) / 56);
         Class19.aClass6_488 = arg2;
-
     }
 }

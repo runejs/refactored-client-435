@@ -873,7 +873,6 @@ public class Class27 {
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                     }
                     if(action == 16) {
-                        Class55.anInt1290++;
                         Class40_Sub5_Sub7.method596(i, i_12_, (byte) -47, i_10_);
                         Class32.packetBuffer.putPacket(30);
                         Class32.packetBuffer.putCustomNegativeOffsetShortBE(0x7fff & i_12_ >> 14, -128);
