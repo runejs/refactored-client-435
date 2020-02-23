@@ -56,7 +56,7 @@ public class Class38_Sub1 extends Class38 {
                     if((i_2_ == 3 || (i_2_ ^ 0xffffffff) == -8) && ((i_2_ ^ 0xffffffff) == -8 || (Class4.anInt185 ^ 0xffffffff) == -1 || ((Class4.anInt185 ^ 0xffffffff) == -2 && Class40_Sub2.hasFriend(class1, arg0 + -42391)))) {
                         int i_3_ = 329 + -(13 * i);
                         i++;
-                        if((Class13.mouseX ^ 0xffffffff) < -5 && ((i_3_ + -10 ^ 0xffffffff) > (Landscape.mouseY + -4 ^ 0xffffffff)) && ((-4 + Landscape.mouseY ^ 0xffffffff) >= (i_3_ + 3 ^ 0xffffffff))) {
+                        if((Class13.mouseX ^ 0xffffffff) < -5 && ((i_3_ + -10 < Landscape.mouseY + -4)) && ((-4 + Landscape.mouseY <= i_3_ + 3))) {
                             int i_4_ = 25 + (Class53.aClass40_Sub5_Sub14_Sub1_1268.getStringWidth(Class40_Sub5_Sub17_Sub6.method832(arg0 + -9666, (new RSString[]{Class40_Sub5_Sub6.aClass1_2458, Class12.aClass1_392, class1, (Actor.chatMessages[i_1_])}))));
                             if(i_4_ > 450)
                                 i_4_ = 450;
@@ -278,7 +278,7 @@ public class Class38_Sub1 extends Class38 {
             int i_15_ = 10;
             int i_16_ = 100;
             for(int i_17_ = arg3 + -i_15_; arg3 + i_15_ >= i_17_; i_17_++) {
-                for(int i_18_ = -i_15_ + arg10; (arg10 + i_15_ ^ 0xffffffff) <= (i_18_ ^ 0xffffffff); i_18_++) {
+                for(int i_18_ = -i_15_ + arg10; (arg10 + i_15_ >= i_18_); i_18_++) {
                     if((i_17_ ^ 0xffffffff) <= -1 && (i_18_ ^ 0xffffffff) <= -1 && i_17_ < 104 && i_18_ < 104 && (Landscape.anIntArrayArray1175[i_17_][i_18_] < 100)) {
                         int i_19_ = 0;
                         int i_20_ = 0;
@@ -291,7 +291,7 @@ public class Class38_Sub1 extends Class38 {
                         else if(-1 + arg0 + arg3 < i_17_)
                             i_20_ = i_17_ + (-arg0 + -arg3 + 1);
                         int i_21_ = i_19_ * i_19_ + i_20_ * i_20_;
-                        if(i_14_ > i_21_ || ((i_14_ ^ 0xffffffff) == (i_21_ ^ 0xffffffff) && (((Landscape.anIntArrayArray1175[i_17_][i_18_]) ^ 0xffffffff) > (i_16_ ^ 0xffffffff)))) {
+                        if(i_14_ > i_21_ || ((i_14_ ^ 0xffffffff) == (i_21_ ^ 0xffffffff) && (((Landscape.anIntArrayArray1175[i_17_][i_18_]) < i_16_)))) {
                             i_9_ = i_18_;
                             i_14_ = i_21_;
                             i_11_ = i_17_;

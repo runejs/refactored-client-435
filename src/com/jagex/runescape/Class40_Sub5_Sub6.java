@@ -62,7 +62,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                 if(class40_sub11 == null)
                     break;
                 boolean bool = false;
-                for(int i = 0; ((class40_sub11.anInt2160 ^ 0xffffffff) < (i ^ 0xffffffff)); i++) {
+                for(int i = 0; ((class40_sub11.anInt2160 > i)); i++) {
                     if(class40_sub11.aClass15Array2157[i] != null) {
                         if((class40_sub11.aClass15Array2157[i].anInt434 ^ 0xffffffff) == -3)
                             class40_sub11.anIntArray2155[i] = -5;
@@ -114,7 +114,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                 Method method = ((Method) (class40_sub11.aClass15Array2156[i_0_].anObject437));
                                 byte[][] is = (class40_sub11.aByteArrayArrayArray2159[i_0_]);
                                 Object[] objects = new Object[is.length];
-                                for(int i_5_ = 0; ((is.length ^ 0xffffffff) < (i_5_ ^ 0xffffffff)); i_5_++) {
+                                for(int i_5_ = 0; ((is.length > i_5_)); i_5_++) {
                                     ObjectInputStream objectinputstream = (new ObjectInputStream(new ByteArrayInputStream(is[i_5_])));
                                     objects[i_5_] = objectinputstream.readObject();
                                 }
@@ -458,7 +458,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
             for(int i_19_ = 0; i_19_ < ActorDefinition.anInt2394; i_19_++) {
                 int i_20_ = (15 * (-i_19_ + ActorDefinition.anInt2394 + -1) + i_14_ + 31);
                 int i_21_ = 16777215;
-                if((i_17_ ^ 0xffffffff) < (i ^ 0xffffffff) && i + i_15_ > i_17_ && (i_18_ ^ 0xffffffff) < (-13 + i_20_ ^ 0xffffffff) && (i_20_ + 3 ^ 0xffffffff) < (i_18_ ^ 0xffffffff))
+                if((i_17_ > i) && i + i_15_ > i_17_ && (i_18_ > -13 + i_20_) && (i_20_ + 3 > i_18_))
                     i_21_ = 16776960;
                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method683(Landscape.aClass1Array1184[i_19_], i + 3, i_20_, i_21_, true);
             }

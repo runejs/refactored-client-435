@@ -296,10 +296,10 @@ public class Widget extends SubNode {
         int i_1_ = arg0.getUnsignedByte();
         if((i_1_ ^ 0xffffffff) < -1) {
             anIntArrayArray2748 = new int[i_1_][];
-            for(int i_2_ = 0; (i_2_ ^ 0xffffffff) > (i_1_ ^ 0xffffffff); i_2_++) {
+            for(int i_2_ = 0; (i_2_ < i_1_); i_2_++) {
                 int i_3_ = arg0.getUnsignedShortBE();
                 anIntArrayArray2748[i_2_] = new int[i_3_];
-                for(int i_4_ = 0; (i_3_ ^ 0xffffffff) < (i_4_ ^ 0xffffffff); i_4_++) {
+                for(int i_4_ = 0; (i_3_ > i_4_); i_4_++) {
                     anIntArrayArray2748[i_2_][i_4_] = arg0.getUnsignedShortBE();
                     if((anIntArrayArray2748[i_2_][i_4_] ^ 0xffffffff) == -65536)
                         anIntArrayArray2748[i_2_][i_4_] = -1;
@@ -550,7 +550,7 @@ public class Widget extends SubNode {
             int i = arg1.getUnsignedByte();
             if(i > 0) {
                 aClass1Array2661 = new RSString[i];
-                for(int i_10_ = 0; (i_10_ ^ 0xffffffff) > (i ^ 0xffffffff); i_10_++)
+                for(int i_10_ = 0; (i_10_ < i); i_10_++)
                     aClass1Array2661[i_10_] = arg1.getRSString();
             }
             anInt2738 = arg1.getUnsignedShortBE();

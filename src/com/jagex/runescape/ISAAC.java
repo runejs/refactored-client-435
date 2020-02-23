@@ -278,7 +278,7 @@ public class ISAAC {
                 i_60_ <<= 3;
                 i_59_ <<= 3;
             }
-            for(int i_62_ = 0; (i_62_ ^ 0xffffffff) >= (i_61_ ^ 0xffffffff); i_62_++) {
+            for(int i_62_ = 0; (i_62_ <= i_61_); i_62_++) {
                 for(int i_63_ = 0; i_63_ <= 104; i_63_++) {
                     for(int i_64_ = 0; i_64_ <= 104; i_64_++) {
                         if(((Class6.anIntArrayArrayArray262[i_62_][i_64_][i_63_]) & i ^ 0xffffffff) != -1) {
@@ -294,14 +294,14 @@ public class ISAAC {
                             int i_68_ = i_62_;
                             while_4_:
                             for(/**/; i_67_ > 0; i_67_--) {
-                                for(int i_69_ = i_65_; ((i_69_ ^ 0xffffffff) >= (i_66_ ^ 0xffffffff)); i_69_++) {
+                                for(int i_69_ = i_65_; ((i_69_ <= i_66_)); i_69_++) {
                                     if(((Class6.anIntArrayArrayArray262[-1 + i_67_][i_64_][i_69_]) & i ^ 0xffffffff) == -1)
                                         break while_4_;
                                 }
                             }
                             while_5_:
                             for(/**/; i_68_ < i_61_; i_68_++) {
-                                for(int i_70_ = i_65_; ((i_70_ ^ 0xffffffff) >= (i_66_ ^ 0xffffffff)); i_70_++) {
+                                for(int i_70_ = i_65_; ((i_70_ <= i_66_)); i_70_++) {
                                     if((i & (Class6.anIntArrayArrayArray262[i_68_ + 1][i_64_][i_70_])) == 0)
                                         break while_5_;
                                 }
@@ -312,8 +312,8 @@ public class ISAAC {
                                 int i_73_ = -i_72_ + (Class40_Sub6.tile_height[i_68_][i_64_][i_65_]);
                                 int i_74_ = (Class40_Sub6.tile_height[i_67_][i_64_][i_65_]);
                                 Scene.method116(i_61_, 1, 128 * i_64_, 128 * i_64_, 128 * i_65_, 128 + 128 * i_66_, i_73_, i_74_);
-                                for(int i_75_ = i_67_; ((i_75_ ^ 0xffffffff) >= (i_68_ ^ 0xffffffff)); i_75_++) {
-                                    for(int i_76_ = i_65_; ((i_76_ ^ 0xffffffff) >= (i_66_ ^ 0xffffffff)); i_76_++)
+                                for(int i_75_ = i_67_; ((i_75_ <= i_68_)); i_75_++) {
+                                    for(int i_76_ = i_65_; ((i_76_ <= i_66_)); i_76_++)
                                         Class6.anIntArrayArrayArray262[i_75_][i_64_][i_76_] = (Class66.method1021((Class6.anIntArrayArrayArray262[i_75_][i_64_][i_76_]), i ^ 0xffffffff));
                                 }
                             }
@@ -339,7 +339,7 @@ public class ISAAC {
                             }
                             while_7_:
                             for(/**/; i_78_ < i_61_; i_78_++) {
-                                for(int i_82_ = i_77_; ((i_82_ ^ 0xffffffff) >= (i_79_ ^ 0xffffffff)); i_82_++) {
+                                for(int i_82_ = i_77_; ((i_82_ <= i_79_)); i_82_++) {
                                     if(((i_59_ & (Class6.anIntArrayArrayArray262[1 + i_78_][i_82_][i_63_])) ^ 0xffffffff) == -1)
                                         break while_7_;
                                 }
@@ -350,7 +350,7 @@ public class ISAAC {
                                 int i_85_ = 240;
                                 int i_86_ = ((Class40_Sub6.tile_height[i_78_][i_77_][i_63_]) - i_85_);
                                 Scene.method116(i_61_, 2, 128 * i_77_, 128 * i_79_ + 128, 128 * i_63_, i_63_ * 128, i_86_, i_84_);
-                                for(int i_87_ = i_80_; ((i_78_ ^ 0xffffffff) <= (i_87_ ^ 0xffffffff)); i_87_++) {
+                                for(int i_87_ = i_80_; ((i_78_ >= i_87_)); i_87_++) {
                                     for(int i_88_ = i_77_; i_88_ <= i_79_; i_88_++)
                                         Class6.anIntArrayArrayArray262[i_87_][i_88_][i_63_] = (Class66.method1021((Class6.anIntArrayArrayArray262[i_87_][i_88_][i_63_]), i_59_ ^ 0xffffffff));
                                 }
@@ -378,7 +378,7 @@ public class ISAAC {
                             }
                             while_9_:
                             for(/**/; (i_90_ ^ 0xffffffff) > -105; i_90_++) {
-                                for(int i_94_ = i_91_; ((i_92_ ^ 0xffffffff) <= (i_94_ ^ 0xffffffff)); i_94_++) {
+                                for(int i_94_ = i_91_; ((i_92_ >= i_94_)); i_94_++) {
                                     if(((i_60_ & (Class6.anIntArrayArrayArray262[i_62_][1 + i_90_][i_94_])) ^ 0xffffffff) == -1)
                                         break while_9_;
                                 }
@@ -386,8 +386,8 @@ public class ISAAC {
                             if((-i_89_ + i_90_ + 1) * (1 + i_92_ - i_91_) >= 4) {
                                 int i_95_ = (Class40_Sub6.tile_height[i_62_][i_89_][i_91_]);
                                 Scene.method116(i_61_, 4, i_89_ * 128, i_90_ * 128 + 128, 128 * i_91_, i_92_ * 128 + 128, i_95_, i_95_);
-                                for(int i_96_ = i_89_; ((i_96_ ^ 0xffffffff) >= (i_90_ ^ 0xffffffff)); i_96_++) {
-                                    for(int i_97_ = i_91_; ((i_92_ ^ 0xffffffff) <= (i_97_ ^ 0xffffffff)); i_97_++)
+                                for(int i_96_ = i_89_; ((i_96_ <= i_90_)); i_96_++) {
+                                    for(int i_97_ = i_91_; ((i_92_ >= i_97_)); i_97_++)
                                         Class6.anIntArrayArrayArray262[i_62_][i_96_][i_97_] = (Class66.method1021((Class6.anIntArrayArrayArray262[i_62_][i_96_][i_97_]), i_60_ ^ 0xffffffff));
                                 }
                             }

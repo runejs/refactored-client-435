@@ -78,7 +78,7 @@ public class Class58 {
                     i--;
                 if((Class12.anInt380 ^ 0xffffffff) != -3)
                     i_0_ = 0;
-                if((i_0_ ^ 0xffffffff) >= (i ^ 0xffffffff)) {
+                if((i_0_ <= i)) {
                     arg1.aClass1_2668 = Class66.blank_string;
                     arg1.anInt2714 = 0;
                 } else {
@@ -133,7 +133,7 @@ public class Class58 {
                     int i_4_ = Class42.anInt1008;
                     if((Class12.anInt380 ^ 0xffffffff) == -1)
                         i_4_ = 0;
-                    if((i_4_ ^ 0xffffffff) >= (i ^ 0xffffffff)) {
+                    if((i_4_ <= i)) {
                         arg1.anInt2714 = 0;
                         arg1.aClass1_2668 = Class66.blank_string;
                     } else {

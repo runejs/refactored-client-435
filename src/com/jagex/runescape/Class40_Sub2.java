@@ -49,7 +49,7 @@ public class Class40_Sub2 extends Node {
         int i_1_ = class40_sub5_sub4.anInt2370;
         int i_2_ = -115 % ((arg2 - 46) / 57);
         int i_3_ = Class68_Sub1.anIntArray2199[i_1_ + -i];
-        if((arg0 ^ 0xffffffff) > -1 || (i_3_ ^ 0xffffffff) > (arg0 ^ 0xffffffff))
+        if((arg0 ^ 0xffffffff) > -1 || (i_3_ < arg0))
             arg0 = 0;
         i_3_ <<= i;
         Class58.varbitmasks[i_0_] = (Class40_Sub5_Sub9.method619(Class66.method1021(Class58.varbitmasks[i_0_], i_3_ ^ 0xffffffff), Class66.method1021(i_3_, arg0 << i)));

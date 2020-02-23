@@ -176,7 +176,7 @@ public class Player extends Actor {
         int[] is_8_ = new int[5];
         for(int i_9_ = 0; (i_9_ ^ 0xffffffff) > -6; i_9_++) {
             int i_10_ = arg1.getUnsignedByte();
-            if((i_10_ ^ 0xffffffff) > -1 || ((Class40_Sub5_Sub17_Sub6.anIntArrayArray3238[i_9_]).length ^ 0xffffffff) >= (i_10_ ^ 0xffffffff))
+            if((i_10_ ^ 0xffffffff) > -1 || ((Class40_Sub5_Sub17_Sub6.anIntArrayArray3238[i_9_]).length <= i_10_))
                 i_10_ = 0;
             is_8_[i_9_] = i_10_;
         }

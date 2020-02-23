@@ -82,7 +82,7 @@ public class Class67 {
         int i = -1;
         if(arg0 != true)
             return 39;
-        for(int i_1_ = arg1; (i_1_ ^ 0xffffffff) > (arg2 ^ 0xffffffff); i_1_++)
+        for(int i_1_ = arg1; (i_1_ < arg2); i_1_++)
             i = (Class54.anIntArray1282[0xff & (i ^ arg3[i_1_])] ^ i >>> -1341612408);
         i ^= 0xffffffff;
         return i;
@@ -188,7 +188,7 @@ public class Class67 {
     public void method1035(int arg0, byte arg1, int arg2, byte[] arg3) throws IOException {
         anInt1599++;
         try {
-            if((arg0 + arg2 ^ 0xffffffff) < (arg3.length ^ 0xffffffff))
+            if((arg0 + arg2 > arg3.length))
                 throw new ArrayIndexOutOfBoundsException(arg2 + (arg0 - arg3.length));
             if((aLong1593 ^ 0xffffffffffffffffL) != 0L && (aLong1578 ^ 0xffffffffffffffffL) <= (aLong1593 ^ 0xffffffffffffffffL) && (long) arg2 + aLong1578 <= (long) anInt1595 + aLong1593) {
                 Class18.method278(aByteArray1592, (int) (aLong1578 - aLong1593), arg3, arg0, arg2);
@@ -200,7 +200,7 @@ public class Class67 {
             int i_2_ = arg0;
             if((aLong1596 ^ 0xffffffffffffffffL) >= (aLong1578 ^ 0xffffffffffffffffL) && (long) anInt1589 + aLong1596 > aLong1578) {
                 int i_3_ = (int) ((long) anInt1589 + (-aLong1578 + aLong1596));
-                if((i_3_ ^ 0xffffffff) < (arg2 ^ 0xffffffff))
+                if((i_3_ > arg2))
                     i_3_ = arg2;
                 Class18.method278(aByteArray1583, (int) (-aLong1596 + aLong1578), arg3, arg0, i_3_);
                 arg0 += i_3_;
@@ -234,7 +234,7 @@ public class Class67 {
             if(aLong1593 != -1L) {
                 if((aLong1578 ^ 0xffffffffffffffffL) > (aLong1593 ^ 0xffffffffffffffffL) && arg2 > 0) {
                     int i_6_ = (int) (-aLong1578 + aLong1593) + arg0;
-                    if((i_6_ ^ 0xffffffff) < (arg0 + arg2 ^ 0xffffffff))
+                    if((i_6_ > arg0 + arg2))
                         i_6_ = arg0 + arg2;
                     while(arg0 < i_6_) {
                         arg2--;

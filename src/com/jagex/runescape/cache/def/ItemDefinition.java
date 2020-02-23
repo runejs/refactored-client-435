@@ -153,11 +153,11 @@ public class ItemDefinition extends SubNode {
             int i_10_ = Class66.method1029(i, false, arg1);
             int i_11_ = arg1.anIntArray2693[i];
             if((arg1.anIntArray2742[i] ^ 0xffffffff) == -3) {
-                if((i_11_ ^ 0xffffffff) >= (i_10_ ^ 0xffffffff)) {
+                if((i_11_ <= i_10_)) {
                     return false;
                 }
             } else if((arg1.anIntArray2742[i] ^ 0xffffffff) == -4) {
-                if((i_11_ ^ 0xffffffff) <= (i_10_ ^ 0xffffffff)) {
+                if((i_11_ >= i_10_)) {
                     return false;
                 }
             } else if((arg1.anIntArray2742[i] ^ 0xffffffff) == -5) {
@@ -317,7 +317,7 @@ public class ItemDefinition extends SubNode {
             model1.method828(0, femaleTranslation, 0);
         }
         if(modifiedModelColors != null) {
-            for(int i_8_ = 0; ((modifiedModelColors.length ^ 0xffffffff) < (i_8_ ^ 0xffffffff)); i_8_++) {
+            for(int i_8_ = 0; ((modifiedModelColors.length > i_8_)); i_8_++) {
                 model1.replaceColor(modifiedModelColors[i_8_], originalModelColors[i_8_]);
             }
         }
@@ -334,7 +334,7 @@ public class ItemDefinition extends SubNode {
         if(stackableIds != null && (arg1 ^ 0xffffffff) < -2) {
             int i = -1;
             for(int i_9_ = 0; (i_9_ ^ 0xffffffff) > -11; i_9_++) {
-                if((arg1 ^ 0xffffffff) <= (stackableAmounts[i_9_] ^ 0xffffffff) && (stackableAmounts[i_9_] ^ 0xffffffff) != -1) {
+                if((arg1 >= stackableAmounts[i_9_]) && (stackableAmounts[i_9_] ^ 0xffffffff) != -1) {
                     i = stackableIds[i_9_];
                 }
             }
@@ -367,7 +367,7 @@ public class ItemDefinition extends SubNode {
             model1 = new Model(models, 2);
         }
         if(modifiedModelColors != null) {
-            for(int j = 0; ((modifiedModelColors.length ^ 0xffffffff) < (j ^ 0xffffffff)); j++) {
+            for(int j = 0; ((modifiedModelColors.length > j)); j++) {
                 model1.replaceColor(modifiedModelColors[j], originalModelColors[j]);
             }
         }

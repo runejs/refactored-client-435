@@ -58,7 +58,7 @@ public abstract class Renderable extends SubNode {
                             bool = true;
                             widget.anInt2660 -= (class40_sub5_sub7.anIntArray2466[widget.anInt2654]);
                             widget.anInt2654++;
-                            if((widget.anInt2654 ^ 0xffffffff) <= (class40_sub5_sub7.anIntArray2485.length ^ 0xffffffff)) {
+                            if((widget.anInt2654 >= class40_sub5_sub7.anIntArray2485.length)) {
                                 widget.anInt2654 -= class40_sub5_sub7.anInt2497;
                                 if((widget.anInt2654 ^ 0xffffffff) > -1 || ((widget.anInt2654 ^ 0xffffffff) <= ((class40_sub5_sub7.anIntArray2485).length ^ 0xffffffff)))
                                     widget.anInt2654 = 0;

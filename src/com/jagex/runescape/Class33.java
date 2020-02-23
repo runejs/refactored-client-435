@@ -111,7 +111,7 @@ public class Class33 {
                             Class32.anInt770++;
                         }
                     }
-                    if((Node.anInt926 ^ 0xffffffff) > (actor.anInt3139 ^ 0xffffffff)) {
+                    if((Node.anInt926 < actor.anInt3139)) {
                         FloorDecoration.method342(109, (actor.anInt3117) + 15, actor);
                         if((ISAAC.anInt522 ^ 0xffffffff) < 0) {
                             int i_1_ = (30 * actor.anInt3130 / actor.anInt3101);
@@ -151,8 +151,8 @@ public class Class33 {
                 boolean bool = true;
                 while(bool) {
                     bool = false;
-                    for(int i_7_ = 0; (i ^ 0xffffffff) < (i_7_ ^ 0xffffffff); i_7_++) {
-                        if(((-Class30.anIntArray688[i_7_] + Class30.anIntArray685[i_7_]) ^ 0xffffffff) > (i_4_ + 2 ^ 0xffffffff) && ((-i_6_ + i_4_ ^ 0xffffffff) > (2 + Class30.anIntArray685[i_7_] ^ 0xffffffff)) && ((-i_5_ + i_3_ ^ 0xffffffff) > ((Class30.anIntArray715[i_7_] + Class30.anIntArray680[i_7_]) ^ 0xffffffff)) && (i_5_ + i_3_ > (-Class30.anIntArray680[i_7_] + Class30.anIntArray715[i_7_])) && ((i_4_ ^ 0xffffffff) < ((-Class30.anIntArray688[i_7_] + Class30.anIntArray685[i_7_]) ^ 0xffffffff))) {
+                    for(int i_7_ = 0; (i > i_7_); i_7_++) {
+                        if(((-Class30.anIntArray688[i_7_] + Class30.anIntArray685[i_7_]) < i_4_ + 2) && ((-i_6_ + i_4_ < 2 + Class30.anIntArray685[i_7_])) && ((-i_5_ + i_3_ ^ 0xffffffff) > ((Class30.anIntArray715[i_7_] + Class30.anIntArray680[i_7_]) ^ 0xffffffff)) && (i_5_ + i_3_ > (-Class30.anIntArray680[i_7_] + Class30.anIntArray715[i_7_])) && ((i_4_ ^ 0xffffffff) < ((-Class30.anIntArray688[i_7_] + Class30.anIntArray685[i_7_]) ^ 0xffffffff))) {
                             bool = true;
                             i_4_ = (-Class30.anIntArray688[i_7_] + Class30.anIntArray685[i_7_]);
                         }

@@ -237,7 +237,7 @@ public class Class40_Sub13 extends Node {
             Landscape.anIntArray1168[i_21_] = (int) (256.0 * Math.random());
         }
         for(int i_22_ = 0; (i_22_ ^ 0xffffffff) > -21; i_22_++) {
-            for(int i_23_ = 1; (-1 + i_19_ ^ 0xffffffff) < (i_23_ ^ 0xffffffff); i_23_++) {
+            for(int i_23_ = 1; (-1 + i_19_ > i_23_); i_23_++) {
                 for(int i_24_ = 1; i_24_ < 127; i_24_++) {
                     int i_25_ = (i_23_ << 2116521895) + i_24_;
                     Class61.anIntArray1445[i_25_] = (Landscape.anIntArray1168[i_25_ - 128] + Landscape.anIntArray1168[i_25_ + -1] + (Landscape.anIntArray1168[i_25_ + 1] + Landscape.anIntArray1168[128 + i_25_])) / 4;
@@ -250,7 +250,7 @@ public class Class40_Sub13 extends Node {
         if(arg1 != null) {
             int i_26_ = 0;
             for(int i_27_ = 0; arg1.imgHeight > i_27_; i_27_++) {
-                for(int i_28_ = 0; (i_28_ ^ 0xffffffff) > (arg1.imgWidth ^ 0xffffffff); i_28_++) {
+                for(int i_28_ = 0; (i_28_ < arg1.imgWidth); i_28_++) {
                     if((arg1.imgPixels[i_26_++] ^ 0xffffffff) != -1) {
                         int i_29_ = arg1.yDrawOffset + i_27_ + 16;
                         int i_30_ = arg1.xDrawOffset + (i_28_ + 16);
@@ -276,7 +276,7 @@ public class Class40_Sub13 extends Node {
                 int i_33_ = class40_sub5_sub16.value;
                 if(class40_sub5_sub16.stackable == 1)
                     i_33_ *= class40_sub5_sub17_sub3_32_.anInt3058 + 1;
-                if((i_33_ ^ 0xffffffff) < (i ^ 0xffffffff)) {
+                if((i_33_ > i)) {
                     i = i_33_;
                     class40_sub5_sub17_sub3 = class40_sub5_sub17_sub3_32_;
                 }

@@ -114,7 +114,7 @@ public class RSString implements Interface1 {
                 if(i_6_ != 0)
                     class1.chars[class1.length++] = (byte) i_6_;
             } else {
-                if((i_5_ ^ 0xffffffff) <= (i ^ 0xffffffff))
+                if((i_5_ >= i))
                     break;
                 int i_7_ = 0xff & is[i_5_++];
                 class1.chars[class1.length++] = (byte) (i_7_ + -48 + 43 * (-40 + i_6_));
@@ -249,7 +249,7 @@ public class RSString implements Interface1 {
         class1.length = 0;
         int i = 0;
         class1.chars = new byte[12];
-        for(int i_2_ = 0; (i_2_ ^ 0xffffffff) > (length ^ 0xffffffff); i_2_++) {
+        for(int i_2_ = 0; (i_2_ < length); i_2_++) {
             if(chars[i_2_] >= 65 && (chars[i_2_] ^ 0xffffffff) >= -91) {
                 class1.chars[i++] = (byte) (-65 + chars[i_2_] + 97);
                 class1.length = i;
@@ -351,7 +351,7 @@ public class RSString implements Interface1 {
                 }
             } else
                 i_8_ -= 48;
-            if((arg1 ^ 0xffffffff) >= (i_8_ ^ 0xffffffff))
+            if((arg1 <= i_8_))
                 return false;
             if(bool)
                 i_8_ = -i_8_;
@@ -382,7 +382,7 @@ public class RSString implements Interface1 {
         anInt1696 = 0;
         if(arg0.length + arg2 > chars.length) {
             int i;
-            for(i = 1; (i ^ 0xffffffff) > (arg0.length + arg2 ^ 0xffffffff); i += i) {
+            for(i = 1; (i < arg0.length + arg2); i += i) {
                 /* empty */
             }
             byte[] is = new byte[i];
@@ -410,9 +410,9 @@ public class RSString implements Interface1 {
         if(!aBoolean1675)
             throw new IllegalArgumentException();
         anInt1696 = 0;
-        if((length + arg0.length ^ 0xffffffff) < (chars.length ^ 0xffffffff)) {
+        if((length + arg0.length > chars.length)) {
             int i;
-            for(i = 1; (i ^ 0xffffffff) > (length + arg0.length ^ 0xffffffff); i += i) {
+            for(i = 1; (i < length + arg0.length); i += i) {
                 /* empty */
             }
             byte[] is = new byte[i];
@@ -508,7 +508,7 @@ public class RSString implements Interface1 {
         int[] is = new int[arg0.length];
         int[] is_14_ = new int[arg0.length];
         int[] is_15_ = new int[256];
-        for(int i = 0; (i ^ 0xffffffff) > (is_15_.length ^ 0xffffffff); i++)
+        for(int i = 0; (i < is_15_.length); i++)
             is_15_[i] = arg0.length;
         for(int i = 1; i <= arg0.length; i++) {
             is[-1 + i] = (arg0.length << 828194177) - i;
@@ -518,7 +518,7 @@ public class RSString implements Interface1 {
         for(int i_16_ = arg0.length; i_16_ > 0; i_16_--) {
             is_14_[i_16_ - 1] = i;
             for(/**/; (i <= arg0.length && (arg0.chars[i - 1] != arg0.chars[-1 + i_16_])); i = is_14_[-1 + i]) {
-                if((-i_16_ + arg0.length ^ 0xffffffff) >= (is[i - 1] ^ 0xffffffff))
+                if((-i_16_ + arg0.length <= is[i - 1]))
                     is[i - 1] = -i_16_ + arg0.length;
             }
             i--;
@@ -536,7 +536,7 @@ public class RSString implements Interface1 {
         }
         while(i_17_ < arg0.length) {
             for(int i_21_ = i_18_; i_17_ >= i_21_; i_21_++) {
-                if((-i_21_ + i_17_ + arg0.length ^ 0xffffffff) >= (is[i_21_ + -1] ^ 0xffffffff))
+                if((-i_21_ + i_17_ + arg0.length <= is[i_21_ + -1]))
                     is[i_21_ + -1] = -i_21_ + arg0.length + i_17_;
             }
             i_18_ = 1 + i_17_;
@@ -569,10 +569,10 @@ public class RSString implements Interface1 {
             i = length;
         else
             i = arg0.length;
-        for(int i_24_ = 0; (i ^ 0xffffffff) < (i_24_ ^ 0xffffffff); i_24_++) {
-            if((arg0.chars[i_24_] ^ 0xffffffff) < (chars[i_24_] ^ 0xffffffff))
+        for(int i_24_ = 0; (i > i_24_); i_24_++) {
+            if((arg0.chars[i_24_] > chars[i_24_]))
                 return -1;
-            if((chars[i_24_] ^ 0xffffffff) < (arg0.chars[i_24_] ^ 0xffffffff))
+            if((chars[i_24_] > arg0.chars[i_24_]))
                 return 1;
         }
         if(arg1 < 75)
@@ -677,7 +677,7 @@ public class RSString implements Interface1 {
         }
         if(arg0 != false)
             aClass1_1717 = null;
-        while(((i_31_ ^ 0xffffffff) < (i ^ 0xffffffff) && ((chars[i_31_ + -1] >= 0 && chars[-1 + i_31_] <= 32) || (chars[i_31_ + -1] & 0xff ^ 0xffffffff) == -161))) {
+        while(((i_31_ > i) && ((chars[i_31_ + -1] >= 0 && chars[-1 + i_31_] <= 32) || (chars[i_31_ + -1] & 0xff ^ 0xffffffff) == -161))) {
             i_31_--;
         }
         if(i == 0 && (i_31_ ^ 0xffffffff) == (length ^ 0xffffffff))
@@ -685,7 +685,7 @@ public class RSString implements Interface1 {
         RSString class1 = new RSString();
         class1.length = i_31_ + -i;
         class1.chars = new byte[class1.length];
-        for(int i_32_ = 0; (class1.length ^ 0xffffffff) < (i_32_ ^ 0xffffffff); i_32_++)
+        for(int i_32_ = 0; (class1.length > i_32_); i_32_++)
             class1.chars[i_32_] = chars[i + i_32_];
         return class1;
     }

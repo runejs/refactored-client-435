@@ -256,7 +256,7 @@ public class GameObject extends Renderable {
                     Class22_Sub1.aClass1Array1844[VertexNormal.itemSearchResultCount] = class1_18_;
                     Class5.anIntArray191[VertexNormal.itemSearchResultCount] = i_17_;
                     VertexNormal.itemSearchResultCount++;
-                    if((VertexNormal.itemSearchResultCount ^ 0xffffffff) <= (Class22_Sub1.aClass1Array1844.length ^ 0xffffffff))
+                    if((VertexNormal.itemSearchResultCount >= Class22_Sub1.aClass1Array1844.length))
                         break;
                 }
             }
@@ -280,9 +280,9 @@ public class GameObject extends Renderable {
             while(aClass40_Sub5_Sub7_3034.anIntArray2466[anInt3026] < i) {
                 i -= aClass40_Sub5_Sub7_3034.anIntArray2466[anInt3026];
                 anInt3026++;
-                if((aClass40_Sub5_Sub7_3034.anIntArray2485.length ^ 0xffffffff) >= (anInt3026 ^ 0xffffffff)) {
+                if((aClass40_Sub5_Sub7_3034.anIntArray2485.length <= anInt3026)) {
                     anInt3026 -= aClass40_Sub5_Sub7_3034.anInt2497;
-                    if((anInt3026 ^ 0xffffffff) > -1 || (aClass40_Sub5_Sub7_3034.anIntArray2485.length ^ 0xffffffff) >= (anInt3026 ^ 0xffffffff)) {
+                    if((anInt3026 ^ 0xffffffff) > -1 || (aClass40_Sub5_Sub7_3034.anIntArray2485.length <= anInt3026)) {
                         aClass40_Sub5_Sub7_3034 = null;
                         break;
                     }

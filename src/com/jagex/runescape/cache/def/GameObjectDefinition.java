@@ -304,7 +304,7 @@ public class GameObjectDefinition extends SubNode {
             }
         } else {
             int i = -1;
-            for(int i_9_ = 0; ((objectTypes.length ^ 0xffffffff) < (i_9_ ^ 0xffffffff)); i_9_++) {
+            for(int i_9_ = 0; ((objectTypes.length > i_9_)); i_9_++) {
                 if(arg4 == objectTypes[i_9_]) {
                     i = i_9_;
                     break;
@@ -396,7 +396,7 @@ public class GameObjectDefinition extends SubNode {
         }
         if(adjustToTerrain) {
             int i = (arg2 + arg0 - (-arg8 + -arg7)) / 4;
-            for(int i_13_ = 0; ((i_13_ ^ 0xffffffff) > (class40_sub5_sub17_sub5.vertexCount ^ 0xffffffff)); i_13_++) {
+            for(int i_13_ = 0; ((i_13_ < class40_sub5_sub17_sub5.vertexCount)); i_13_++) {
                 int i_14_ = class40_sub5_sub17_sub5.verticesZ[i_13_];
                 int i_15_ = class40_sub5_sub17_sub5.verticesX[i_13_];
                 int i_16_ = arg0 + (64 + i_15_) * (arg2 - arg0) / 128;

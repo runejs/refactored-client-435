@@ -89,13 +89,13 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             Class65.anInt1537 = 383;
         int i_4_ = Class37.method430((byte) -124, Player.anInt3267, Class40_Sub5_Sub6.anInt2437, Class34.anInt849);
         if(i_2_ > 3 && (i_1_ ^ 0xffffffff) < -4 && (i_2_ ^ 0xffffffff) > -101 && (i_1_ ^ 0xffffffff) > -101) {
-            for(int i_5_ = -4 + i_2_; (i_5_ ^ 0xffffffff) >= (4 + i_2_ ^ 0xffffffff); i_5_++) {
+            for(int i_5_ = -4 + i_2_; (i_5_ <= 4 + i_2_); i_5_++) {
                 for(int i_6_ = -4 + i_1_; 4 + i_1_ >= i_6_; i_6_++) {
                     int i_7_ = Player.anInt3267;
                     if((i_7_ ^ 0xffffffff) > -4 && (0x2 & (Floor.tile_flags[1][i_5_][i_6_]) ^ 0xffffffff) == -3)
                         i_7_++;
                     int i_8_ = i_4_ + -(Class40_Sub6.tile_height[i_7_][i_5_][i_6_]);
-                    if((i_8_ ^ 0xffffffff) < (i_3_ ^ 0xffffffff))
+                    if((i_8_ > i_3_))
                         i_3_ = i_8_;
                 }
             }
@@ -105,7 +105,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             i_9_ = 98048;
         if((i_9_ ^ 0xffffffff) > -32769)
             i_9_ = 32768;
-        if((Class40_Sub6.anInt2107 ^ 0xffffffff) <= (i_9_ ^ 0xffffffff)) {
+        if((Class40_Sub6.anInt2107 >= i_9_)) {
             if(Class40_Sub6.anInt2107 > i_9_)
                 Class40_Sub6.anInt2107 += (-Class40_Sub6.anInt2107 + i_9_) / 80;
         } else
@@ -215,9 +215,9 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             class40_sub5_sub14_sub4.method727(-562, -171);
             int[] is_18_ = new int[class40_sub5_sub14_sub4.image_width];
             for(int i = 0; i < class40_sub5_sub14_sub4.image_height; i++) {
-                for(int i_19_ = 0; ((i_19_ ^ 0xffffffff) > (class40_sub5_sub14_sub4.image_width ^ 0xffffffff)); i_19_++)
+                for(int i_19_ = 0; ((i_19_ < class40_sub5_sub14_sub4.image_width)); i_19_++)
                     is_18_[i_19_] = (class40_sub5_sub14_sub4.pixels[(i * class40_sub5_sub14_sub4.image_width + class40_sub5_sub14_sub4.image_width + -i_19_ - 1)]);
-                for(int i_20_ = 0; ((i_20_ ^ 0xffffffff) > (class40_sub5_sub14_sub4.image_width ^ 0xffffffff)); i_20_++)
+                for(int i_20_ = 0; ((i_20_ < class40_sub5_sub14_sub4.image_width)); i_20_++)
                     class40_sub5_sub14_sub4.pixels[i_20_ + class40_sub5_sub14_sub4.image_width * i] = is_18_[i_20_];
             }
             Class8.aClass68_298.method1046((byte) 90);

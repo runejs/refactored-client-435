@@ -115,7 +115,7 @@ public class Npc extends Actor {
                         Class32.packetBuffer.finishVarByte(Class32.packetBuffer.currentPosition + -i_2_);
                         if(i < Class12.aClass39_387.anInt921) {
                             Class12.aClass39_387.anInt921 -= i;
-                            for(int i_9_ = 0; ((Class12.aClass39_387.anInt921 ^ 0xffffffff) < (i_9_ ^ 0xffffffff)); i_9_++) {
+                            for(int i_9_ = 0; ((Class12.aClass39_387.anInt921 > i_9_)); i_9_++) {
                                 Class12.aClass39_387.anIntArray922[i_9_] = (Class12.aClass39_387.anIntArray922[i + i_9_]);
                                 Class12.aClass39_387.anIntArray920[i_9_] = (Class12.aClass39_387.anIntArray920[i_9_ + i]);
                             }
@@ -202,7 +202,7 @@ public class Npc extends Actor {
                         Class5.anInt199++;
                         if((SceneTile.activeInterfaceType ^ 0xffffffff) != -1) {
                             Buffer.anInt1978++;
-                            if(((Class13.mouseX ^ 0xffffffff) < (Renderable.anInt2869 + 5 ^ 0xffffffff)) || ((Renderable.anInt2869 + -5 ^ 0xffffffff) < (Class13.mouseX ^ 0xffffffff)) || ((ItemDefinition.anInt2798 + 5 ^ 0xffffffff) > (Landscape.mouseY ^ 0xffffffff)) || (ItemDefinition.anInt2798 - 5 > Landscape.mouseY))
+                            if(((Class13.mouseX > Renderable.anInt2869 + 5)) || ((Renderable.anInt2869 + -5 > Class13.mouseX)) || ((ItemDefinition.anInt2798 + 5 < Landscape.mouseY)) || (ItemDefinition.anInt2798 - 5 > Landscape.mouseY))
                                 Class40_Sub5_Sub15.aBoolean2784 = true;
                             if((Class40_Sub5_Sub2.anInt2302 ^ 0xffffffff) == -1) {
                                 if((SceneTile.activeInterfaceType ^ 0xffffffff) == -4)
@@ -233,7 +233,7 @@ public class Npc extends Actor {
                                                 int i_15_ = Class55.anInt1288;
                                                 while(i_15_ != i_14_) {
                                                     if(i_14_ <= i_15_) {
-                                                        if((i_14_ ^ 0xffffffff) > (i_15_ ^ 0xffffffff)) {
+                                                        if((i_14_ < i_15_)) {
                                                             widget.method636(1 + i_14_, false, i_14_);
                                                             i_14_++;
                                                         }

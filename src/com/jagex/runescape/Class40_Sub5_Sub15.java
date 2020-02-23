@@ -116,7 +116,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
                 arg1.anInt3077 = -1;
             else {
                 arg1.anInt3120++;
-                if(((arg1.anInt3116 ^ 0xffffffff) > (class40_sub5_sub7.anIntArray2485.length ^ 0xffffffff)) && (class40_sub5_sub7.anIntArray2466[arg1.anInt3116] ^ 0xffffffff) > (arg1.anInt3120 ^ 0xffffffff)) {
+                if(((arg1.anInt3116 < class40_sub5_sub7.anIntArray2485.length)) && (class40_sub5_sub7.anIntArray2466[arg1.anInt3116] < arg1.anInt3120)) {
                     arg1.anInt3116++;
                     arg1.anInt3120 = 1;
                 }
@@ -138,11 +138,11 @@ public class Class40_Sub5_Sub15 extends SubNode {
                     arg1.anInt3091 = -1;
                 else {
                     arg1.anInt3129++;
-                    if(((class40_sub5_sub7.anIntArray2485.length ^ 0xffffffff) < (arg1.anInt3140 ^ 0xffffffff)) && ((arg1.anInt3129 ^ 0xffffffff) < (class40_sub5_sub7.anIntArray2466[arg1.anInt3140] ^ 0xffffffff))) {
+                    if(((class40_sub5_sub7.anIntArray2485.length > arg1.anInt3140)) && ((arg1.anInt3129 > class40_sub5_sub7.anIntArray2466[arg1.anInt3140]))) {
                         arg1.anInt3129 = 1;
                         arg1.anInt3140++;
                     }
-                    if(((class40_sub5_sub7.anIntArray2485.length ^ 0xffffffff) >= (arg1.anInt3140 ^ 0xffffffff)) && ((arg1.anInt3140 ^ 0xffffffff) > -1 || ((class40_sub5_sub7.anIntArray2485.length ^ 0xffffffff) >= (arg1.anInt3140 ^ 0xffffffff))))
+                    if(((class40_sub5_sub7.anIntArray2485.length <= arg1.anInt3140)) && ((arg1.anInt3140 ^ 0xffffffff) > -1 || ((class40_sub5_sub7.anIntArray2485.length <= arg1.anInt3140))))
                         arg1.anInt3091 = -1;
                 }
             }
@@ -163,10 +163,10 @@ public class Class40_Sub5_Sub15 extends SubNode {
                         arg1.anInt3104++;
                         arg1.anInt3115 = 1;
                     }
-                    if((class40_sub5_sub7.anIntArray2485.length ^ 0xffffffff) >= (arg1.anInt3104 ^ 0xffffffff)) {
+                    if((class40_sub5_sub7.anIntArray2485.length <= arg1.anInt3104)) {
                         arg1.anInt3104 -= class40_sub5_sub7.anInt2497;
                         arg1.anInt3095++;
-                        if((class40_sub5_sub7.anInt2495 ^ 0xffffffff) >= (arg1.anInt3095 ^ 0xffffffff))
+                        if((class40_sub5_sub7.anInt2495 <= arg1.anInt3095))
                             arg1.anInt3141 = -1;
                         if((arg1.anInt3104 ^ 0xffffffff) > -1 || (arg1.anInt3104 >= class40_sub5_sub7.anIntArray2485.length))
                             arg1.anInt3141 = -1;

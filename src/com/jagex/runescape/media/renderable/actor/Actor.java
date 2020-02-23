@@ -509,7 +509,7 @@ public abstract class Actor extends Renderable {
     public void method785(int arg0, int arg1, int arg2, int arg3) {
         anInt3142++;
         for(int i = 0; (i ^ 0xffffffff) > -5; i++) {
-            if((arg1 ^ 0xffffffff) <= (anIntArray3136[i] ^ 0xffffffff)) {
+            if((arg1 >= anIntArray3136[i])) {
                 anIntArray3087[i] = arg2;
                 anIntArray3086[i] = arg0;
                 anIntArray3136[i] = 70 + arg1;

@@ -124,7 +124,7 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
                         i_4_ -= 357;
                         i_3_ -= 17;
                     }
-                    if((-10 + Class19.anInt475 ^ 0xffffffff) < (i_3_ ^ 0xffffffff) || 10 + VertexNormal.anInt1086 + Class19.anInt475 < i_3_ || (i_4_ ^ 0xffffffff) > (Main.anInt1758 + -10 ^ 0xffffffff) || ((i_4_ ^ 0xffffffff) < (Main.anInt1758 + CollisionMap.anInt168 + 10 ^ 0xffffffff))) {
+                    if((-10 + Class19.anInt475 > i_3_) || 10 + VertexNormal.anInt1086 + Class19.anInt475 < i_3_ || (i_4_ < Main.anInt1758 + -10) || ((i_4_ > Main.anInt1758 + CollisionMap.anInt168 + 10))) {
                         if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -2)
                             ISAAC.redrawTabArea = true;
                         Class4.menuOpen = false;
@@ -151,7 +151,7 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
                         i_8_ -= 17;
                         i_10_ -= 357;
                     }
-                    for(int i_11_ = 0; ((i_11_ ^ 0xffffffff) > (ActorDefinition.anInt2394 ^ 0xffffffff)); i_11_++) {
+                    for(int i_11_ = 0; ((i_11_ < ActorDefinition.anInt2394)); i_11_++) {
                         int i_12_ = 31 + i_6_ + 15 * (ActorDefinition.anInt2394 + -1 - i_11_);
                         if(i_8_ > i_5_ && i_8_ < i_7_ + i_5_ && i_10_ > -13 + i_12_ && i_10_ < 3 + i_12_)
                             i_9_ = i_11_;

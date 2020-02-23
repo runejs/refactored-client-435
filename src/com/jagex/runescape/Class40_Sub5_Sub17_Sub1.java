@@ -267,7 +267,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 if(i > 1024) {
                     arg1.anInt3118 -= arg1.anInt3113;
                     boolean bool = true;
-                    if(arg1.anInt3113 > i || ((2048 + -arg1.anInt3113 ^ 0xffffffff) > (i ^ 0xffffffff))) {
+                    if(arg1.anInt3113 > i || ((2048 + -arg1.anInt3113 < i))) {
                         bool = false;
                         arg1.anInt3118 = arg1.anInt3080;
                     }
@@ -280,7 +280,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 } else {
                     arg1.anInt3118 += arg1.anInt3113;
                     boolean bool = true;
-                    if(i < arg1.anInt3113 || (i ^ 0xffffffff) < (-arg1.anInt3113 + 2048 ^ 0xffffffff)) {
+                    if(i < arg1.anInt3113 || (i > -arg1.anInt3113 + 2048)) {
                         arg1.anInt3118 = arg1.anInt3080;
                         bool = false;
                     }
@@ -430,7 +430,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             else
                 i_26_ = -i_23_ + i_24_;
             int i_27_;
-            if((i_22_ ^ 0xffffffff) > (i_25_ ^ 0xffffffff))
+            if((i_22_ < i_25_))
                 i_27_ = i_25_ + -i_22_;
             else
                 i_27_ = -i_25_ + i_22_;
@@ -452,7 +452,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     if((i_29_ ^ 0xffffffff) <= -65537) {
                         if(i_23_ < i_24_)
                             i_23_++;
-                        else if((i_24_ ^ 0xffffffff) > (i_23_ ^ 0xffffffff))
+                        else if((i_24_ < i_23_))
                             i_23_--;
                         i_29_ -= 65536;
                         if(((0x4 & (Floor.tile_flags[Player.anInt3267][i_23_][i_22_])) ^ 0xffffffff) != -1)
@@ -464,7 +464,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 int i_31_ = 32768;
                 while((i_24_ ^ 0xffffffff) != (i_23_ ^ 0xffffffff)) {
                     if(i_23_ >= i_24_) {
-                        if((i_24_ ^ 0xffffffff) > (i_23_ ^ 0xffffffff))
+                        if((i_24_ < i_23_))
                             i_23_--;
                     } else
                         i_23_++;
@@ -546,7 +546,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         else
                             class40_sub5_sub17_sub5 = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 10, (byte) 124, vertexHeightRight);
                         if(class40_sub5_sub17_sub5 != null) {
-                            for(int i_43_ = 0; ((i_43_ ^ 0xffffffff) >= (i_41_ ^ 0xffffffff)); i_43_++) {
+                            for(int i_43_ = 0; ((i_43_ <= i_41_)); i_43_++) {
                                 for(int i_44_ = 0; i_40_ >= i_44_; i_44_++) {
                                     int i_45_ = (class40_sub5_sub17_sub5.method805() / 4);
                                     if(i_45_ > 30)
@@ -789,10 +789,10 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             anInt2976 = 0x7ff & (int) (325.949 * Math.atan2(aDouble2972, aDouble2995));
             if(aClass40_Sub5_Sub7_3006 != null) {
                 anInt2973 += arg1;
-                while((aClass40_Sub5_Sub7_3006.anIntArray2466[anInt2982] ^ 0xffffffff) > (anInt2973 ^ 0xffffffff)) {
+                while((aClass40_Sub5_Sub7_3006.anIntArray2466[anInt2982] < anInt2973)) {
                     anInt2973 -= aClass40_Sub5_Sub7_3006.anIntArray2466[anInt2982];
                     anInt2982++;
-                    if((aClass40_Sub5_Sub7_3006.anIntArray2485.length ^ 0xffffffff) >= (anInt2982 ^ 0xffffffff))
+                    if((aClass40_Sub5_Sub7_3006.anIntArray2485.length <= anInt2982))
                         anInt2982 = 0;
                 }
             }

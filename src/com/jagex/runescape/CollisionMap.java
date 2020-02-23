@@ -81,7 +81,7 @@ public class CollisionMap {
                 Cache.outgoingbuffer.currentPosition = 0;
                 Widget.packetsize = Cache.outgoingbuffer.getUnsignedShortBE();
             }
-            if((Widget.packetsize ^ 0xffffffff) < (i ^ 0xffffffff))
+            if((Widget.packetsize > i))
                 return false;
             Cache.outgoingbuffer.currentPosition = 0;
             Class40_Sub6.aClass64_2098.method1008(0, Widget.packetsize, -128, Cache.outgoingbuffer.buffer);
@@ -202,7 +202,7 @@ public class CollisionMap {
                     }
                 }
                 int i_15_ = Cache.outgoingbuffer.getUnsignedShortBE();
-                for(int i_16_ = 0; (i_15_ ^ 0xffffffff) < (i_16_ ^ 0xffffffff); i_16_++) {
+                for(int i_16_ = 0; (i_15_ > i_16_); i_16_++) {
                     int i_17_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                     if((i_17_ ^ 0xffffffff) == -256)
                         i_17_ = Cache.outgoingbuffer.getIntBE();
@@ -214,7 +214,7 @@ public class CollisionMap {
                         }
                     } else {
                         Widget[] widgets = (Class59.aWidgetArrayArray1390[i_11_ >> -424241648]);
-                        for(int i_19_ = 0; ((i_19_ ^ 0xffffffff) > (widgets.length ^ 0xffffffff)); i_19_++) {
+                        for(int i_19_ = 0; ((i_19_ < widgets.length)); i_19_++) {
                             Widget widget_20_ = widgets[i_19_];
                             if(((widget.anInt2689 & 0xffff) == (widget_20_.anInt2648 & 0xffff)) && ((widget_20_.anInt2736 ^ 0xffffffff) == (1 + i_16_ ^ 0xffffffff))) {
                                 widget_20_.anInt2734 = i_17_;
@@ -285,7 +285,7 @@ public class CollisionMap {
                         RSString class1_30_ = (class1.substring(0, class1.method60(Class43.aClass1_1027)));
                         long l = class1_30_.method58((byte) 120);
                         boolean bool = false;
-                        for(int i_31_ = 0; ((Class42.anInt1008 ^ 0xffffffff) < (i_31_ ^ 0xffffffff)); i_31_++) {
+                        for(int i_31_ = 0; ((Class42.anInt1008 > i_31_)); i_31_++) {
                             if((Class53.aLongArray1267[i_31_] ^ 0xffffffffffffffffL) == (l ^ 0xffffffffffffffffL)) {
                                 bool = true;
                                 break;
@@ -434,8 +434,8 @@ public class CollisionMap {
             if((Class57.packetid ^ 0xffffffff) == -65) {
                 Floor.anInt2318 = Cache.outgoingbuffer.getUnsignedByte();
                 Class40_Sub6.anInt2119 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-                for(int i_51_ = Class40_Sub6.anInt2119; ((i_51_ ^ 0xffffffff) > (8 + Class40_Sub6.anInt2119 ^ 0xffffffff)); i_51_++) {
-                    for(int i_52_ = Floor.anInt2318; ((8 + Floor.anInt2318 ^ 0xffffffff) < (i_52_ ^ 0xffffffff)); i_52_++) {
+                for(int i_51_ = Class40_Sub6.anInt2119; ((i_51_ < 8 + Class40_Sub6.anInt2119)); i_51_++) {
+                    for(int i_52_ = Floor.anInt2318; ((8 + Floor.anInt2318 > i_52_)); i_52_++) {
                         if((Class10.aClass45ArrayArrayArray357[Player.anInt3267][i_51_][i_52_]) != null) {
                             Class10.aClass45ArrayArrayArray357[Player.anInt3267][i_51_][i_52_] = null;
                             Class40_Sub13.method880((byte) -80, i_52_, i_51_);
@@ -942,7 +942,7 @@ public class CollisionMap {
                     }
                 }
                 if(i_90_ <= 1) {
-                    for(int i_93_ = 0; ((i_93_ ^ 0xffffffff) > (Class42.anInt1008 ^ 0xffffffff)); i_93_++) {
+                    for(int i_93_ = 0; ((i_93_ < Class42.anInt1008)); i_93_++) {
                         if(l == Class53.aLongArray1267[i_93_]) {
                             bool = true;
                             break;
@@ -968,7 +968,7 @@ public class CollisionMap {
                     if((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_94_]) != null)
                         Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_94_].anInt3141 = -1;
                 }
-                for(int i_95_ = 0; (((Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813).length ^ 0xffffffff) < (i_95_ ^ 0xffffffff)); i_95_++) {
+                for(int i_95_ = 0; (((Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813).length > i_95_)); i_95_++) {
                     if((Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_95_]) != null)
                         Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_95_].anInt3141 = -1;
                 }
@@ -998,7 +998,7 @@ public class CollisionMap {
                 Class13.anIntArray403[i_99_] = i_98_;
                 Class10.anIntArray354[i_99_] = 1;
                 for(int i_101_ = 0; i_101_ < 98; i_101_++) {
-                    if((Class38_Sub1.anIntArray1909[i_101_] ^ 0xffffffff) >= (i_100_ ^ 0xffffffff))
+                    if((Class38_Sub1.anIntArray1909[i_101_] <= i_100_))
                         Class10.anIntArray354[i_99_] = i_101_ + 2;
                 }
                 Class57.packetid = -1;
@@ -1015,7 +1015,7 @@ public class CollisionMap {
                 return true;
             }
             if((Class57.packetid ^ 0xffffffff) == -73) {
-                for(int i_105_ = 0; ((i_105_ ^ 0xffffffff) > (Class58.varbitmasks.length ^ 0xffffffff)); i_105_++) {
+                for(int i_105_ = 0; ((i_105_ < Class58.varbitmasks.length)); i_105_++) {
                     if(Buffer.anIntArray1984[i_105_] != Class58.varbitmasks[i_105_]) {
                         Class58.varbitmasks[i_105_] = Buffer.anIntArray1984[i_105_];
                         Class22.method309(-1, i_105_);
@@ -1056,7 +1056,7 @@ public class CollisionMap {
                         }
                     } else {
                         Widget[] widgets = (Class59.aWidgetArrayArray1390[i_107_ >> 886089392]);
-                        for(int i_111_ = 0; ((i_111_ ^ 0xffffffff) > (widgets.length ^ 0xffffffff)); i_111_++) {
+                        for(int i_111_ = 0; ((i_111_ < widgets.length)); i_111_++) {
                             Widget widget_112_ = widgets[i_111_];
                             if((((widget_112_.anInt2648 & 0xffff) ^ 0xffffffff) == (widget.anInt2689 & 0xffff ^ 0xffffffff)) && 1 + i_108_ == (widget_112_.anInt2736)) {
                                 widget_112_.anInt2734 = i_110_;
@@ -1086,7 +1086,7 @@ public class CollisionMap {
             }
             if((Class57.packetid ^ 0xffffffff) == -212) {
                 Class42.anInt1008 = Widget.packetsize / 8;
-                for(int i_118_ = 0; ((Class42.anInt1008 ^ 0xffffffff) < (i_118_ ^ 0xffffffff)); i_118_++)
+                for(int i_118_ = 0; ((Class42.anInt1008 > i_118_)); i_118_++)
                     Class53.aLongArray1267[i_118_] = Cache.outgoingbuffer.getLongBE();
                 Class57.packetid = -1;
                 return true;
@@ -1109,7 +1109,7 @@ public class CollisionMap {
             Class59.dropClient(2578);
         } catch(Exception exception) {
             String string = ("T2 - " + Class57.packetid + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + Widget.packetsize + "," + (Class40_Sub5_Sub2.anInt2307 + (Player.localPlayer.anIntArray3088[0])) + "," + ((Player.localPlayer.anIntArray3135[0]) + Class26.anInt635) + " - ");
-            for(int i = 0; (((Widget.packetsize ^ 0xffffffff) < (i ^ 0xffffffff)) && (i ^ 0xffffffff) > -51); i++)
+            for(int i = 0; (((Widget.packetsize > i)) && (i ^ 0xffffffff) > -51); i++)
                 string += (Cache.outgoingbuffer.buffer[i] + ",");
             Class6.method169(string, (byte) -120, exception);
             Class48.method928(-7225);
@@ -1157,7 +1157,7 @@ public class CollisionMap {
     public void method146(int arg0) {
         if(arg0 == 16777216) {
             for(int i = 0; anInt153 > i; i++) {
-                for(int i_0_ = 0; (anInt145 ^ 0xffffffff) < (i_0_ ^ 0xffffffff); i_0_++) {
+                for(int i_0_ = 0; (anInt145 > i_0_); i_0_++) {
                     if((i ^ 0xffffffff) != -1 && i_0_ != 0 && (anInt153 - 1 ^ 0xffffffff) != (i ^ 0xffffffff) && (-1 + anInt145 ^ 0xffffffff) != (i_0_ ^ 0xffffffff))
                         anIntArrayArray150[i][i_0_] = 16777216;
                     else
@@ -1303,9 +1303,9 @@ public class CollisionMap {
         if(arg0)
             i += 131072;
         arg2 -= anInt140;
-        for(int i_119_ = arg2; (arg4 + arg2 ^ 0xffffffff) < (i_119_ ^ 0xffffffff); i_119_++) {
-            if(i_119_ >= 0 && (i_119_ ^ 0xffffffff) > (anInt153 ^ 0xffffffff)) {
-                for(int i_120_ = arg1; (arg6 + arg1 ^ 0xffffffff) < (i_120_ ^ 0xffffffff); i_120_++) {
+        for(int i_119_ = arg2; (arg4 + arg2 > i_119_); i_119_++) {
+            if(i_119_ >= 0 && (i_119_ < anInt153)) {
+                for(int i_120_ = arg1; (arg6 + arg1 > i_120_); i_120_++) {
                     if((i_120_ ^ 0xffffffff) <= -1 && anInt145 > i_120_)
                         method156(i_120_, i, i_119_, (byte) 124);
                 }
@@ -1455,7 +1455,7 @@ public class CollisionMap {
         int i_121_ = -1 + arg4 + arg1;
         if(arg2 <= arg7 && i >= arg7 && arg4 <= arg6 && i_121_ >= arg6)
             return true;
-        if((arg7 ^ 0xffffffff) == (arg2 + -1 ^ 0xffffffff) && arg4 <= arg6 && (i_121_ ^ 0xffffffff) <= (arg6 ^ 0xffffffff) && (anIntArrayArray150[-anInt140 + arg7][-anInt151 + arg6] & 0x8) == 0 && (arg5 & 0x8 ^ 0xffffffff) == -1)
+        if((arg7 ^ 0xffffffff) == (arg2 + -1 ^ 0xffffffff) && arg4 <= arg6 && (i_121_ >= arg6) && (anIntArrayArray150[-anInt140 + arg7][-anInt151 + arg6] & 0x8) == 0 && (arg5 & 0x8 ^ 0xffffffff) == -1)
             return true;
         if((i + 1 ^ 0xffffffff) == (arg7 ^ 0xffffffff) && arg4 <= arg6 && arg6 <= i_121_ && (anIntArrayArray150[arg7 - anInt140][arg6 + -anInt151] & 0x80) == 0 && (0x2 & arg5 ^ 0xffffffff) == -1)
             return true;
@@ -1478,7 +1478,7 @@ public class CollisionMap {
             i_123_ += 131072;
         for(int i_124_ = arg0; i_124_ < arg0 + arg6; i_124_++) {
             if((i_124_ ^ 0xffffffff) <= -1 && i_124_ < anInt153) {
-                for(int i_125_ = arg5; (i_125_ ^ 0xffffffff) > (arg3 + arg5 ^ 0xffffffff); i_125_++) {
+                for(int i_125_ = arg5; (i_125_ < arg3 + arg5); i_125_++) {
                     if((i_125_ ^ 0xffffffff) <= -1 && i_125_ < anInt145)
                         method143(true, i_124_, i_125_, i_123_);
                 }

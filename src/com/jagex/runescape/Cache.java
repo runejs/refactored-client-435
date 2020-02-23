@@ -28,7 +28,7 @@ public class Cache {
         anInt317 = arg0;
         int i;
         i = 1;
-        while((i + i ^ 0xffffffff) > (arg0 ^ 0xffffffff)) {
+        while((i + i < arg0)) {
             i += i;
         }
         anInt316 = arg0;

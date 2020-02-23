@@ -88,7 +88,7 @@ public class Class32 {
                 i_5_ -= 357;
                 i_4_ -= 17;
             }
-            for(int i_6_ = 0; ((i_6_ ^ 0xffffffff) > (ActorDefinition.anInt2394 ^ 0xffffffff)); i_6_++) {
+            for(int i_6_ = 0; ((i_6_ < ActorDefinition.anInt2394)); i_6_++) {
                 int i_7_ = 31 + i_2_ + (ActorDefinition.anInt2394 + (-1 + -i_6_)) * 15;
                 RSString class1_8_ = Landscape.aClass1Array1184[i_6_];
                 int i_9_ = 16777215;
@@ -97,7 +97,7 @@ public class Class32 {
                     if(class1_8_.method87(arg0 ^ ~0x6f, VertexNormal.aClass1_1117))
                         class1_8_ = (class1_8_.substring(0, (class1_8_.length() + -VertexNormal.aClass1_1117.length())));
                 }
-                if((i_0_ ^ 0xffffffff) > (i_4_ ^ 0xffffffff) && (i_4_ ^ 0xffffffff) > (i_0_ + i ^ 0xffffffff) && -13 + i_7_ < i_5_ && 3 + i_7_ > i_5_)
+                if((i_0_ < i_4_) && (i_4_ < i_0_ + i) && -13 + i_7_ < i_5_ && 3 + i_7_ > i_5_)
                     i_9_ = 16776960;
                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method683(class1_8_, 3 + i_0_, i_7_, i_9_, true);
             }

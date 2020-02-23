@@ -136,7 +136,7 @@ public abstract class Class6 {
         ItemDefinition.anInt2846 = class40_sub1.getUnsignedShortBE();
         RSApplet.anInt31 = class40_sub1.getUnsignedShortBE();
         int i = 1 + (class40_sub1.getUnsignedByte() & 0xff);
-        for(int i_34_ = 0; ((i_34_ ^ 0xffffffff) > (Class40_Sub5_Sub9.anInt2581 ^ 0xffffffff)); i_34_++)
+        for(int i_34_ = 0; ((i_34_ < Class40_Sub5_Sub9.anInt2581)); i_34_++)
             Class57.anIntArray1347[i_34_] = class40_sub1.getUnsignedShortBE();
         for(int i_35_ = arg1; i_35_ < Class40_Sub5_Sub9.anInt2581; i_35_++)
             Actor.anIntArray3111[i_35_] = class40_sub1.getUnsignedShortBE();
@@ -146,7 +146,7 @@ public abstract class Class6 {
             Npc.anIntArray3312[i_37_] = class40_sub1.getUnsignedShortBE();
         class40_sub1.currentPosition = arg0.length - (7 + (Class40_Sub5_Sub9.anInt2581 * 8 + (-3 + i * 3)));
         Buffer.anIntArray1972 = new int[i];
-        for(int i_38_ = 1; (i ^ 0xffffffff) < (i_38_ ^ 0xffffffff); i_38_++) {
+        for(int i_38_ = 1; (i > i_38_); i_38_++) {
             Buffer.anIntArray1972[i_38_] = class40_sub1.getMediumBE();
             if(Buffer.anIntArray1972[i_38_] == 0)
                 Buffer.anIntArray1972[i_38_] = 1;
@@ -161,13 +161,13 @@ public abstract class Class6 {
             int i_43_ = class40_sub1.getUnsignedByte();
             if((i_43_ ^ 0xffffffff) != -1) {
                 if((i_43_ ^ 0xffffffff) == -2) {
-                    for(int i_44_ = 0; (i_41_ ^ 0xffffffff) < (i_44_ ^ 0xffffffff); i_44_++) {
+                    for(int i_44_ = 0; (i_41_ > i_44_); i_44_++) {
                         for(int i_45_ = 0; i_40_ > i_45_; i_45_++)
                             is[i_41_ * i_45_ + i_44_] = class40_sub1.getByte();
                     }
                 }
             } else {
-                for(int i_46_ = 0; (i_42_ ^ 0xffffffff) < (i_46_ ^ 0xffffffff); i_46_++)
+                for(int i_46_ = 0; (i_42_ > i_46_); i_46_++)
                     is[i_46_] = class40_sub1.getByte();
             }
         }
@@ -202,7 +202,7 @@ public abstract class Class6 {
         anInt242++;
         int i = 0;
         if(arg0 == 1) {
-            for(/**/; ((i ^ 0xffffffff) > (aByteArrayArrayArray249[arg1].length ^ 0xffffffff)); i++)
+            for(/**/; ((i < aByteArrayArrayArray249[arg1].length)); i++)
                 aByteArrayArrayArray249[arg1][i] = null;
         }
     }
@@ -276,7 +276,7 @@ public abstract class Class6 {
             int i_3_ = -1;
             for(int i_4_ = 0; anInt221 > i_4_; i_4_++) {
                 anIntArray227[i_4_] = i_1_ += class40_sub1.getUnsignedShortBE();
-                if((anIntArray227[i_4_] ^ 0xffffffff) < (i_3_ ^ 0xffffffff))
+                if((anIntArray227[i_4_] > i_3_))
                     i_3_ = anIntArray227[i_4_];
             }
             anIntArrayArray243 = new int[i_3_ + 1][];
@@ -287,7 +287,7 @@ public abstract class Class6 {
             aByteArrayArray212 = new byte[i_3_ + 1][];
             if((i_2_ ^ 0xffffffff) != -1) {
                 anIntArray239 = new int[i_3_ + 1];
-                for(int i_5_ = 0; (anInt221 ^ 0xffffffff) < (i_5_ ^ 0xffffffff); i_5_++)
+                for(int i_5_ = 0; (anInt221 > i_5_); i_5_++)
                     anIntArray239[anIntArray227[i_5_]] = class40_sub1.getIntBE();
                 aClass42_254 = new Class42(anIntArray239);
             }
@@ -295,9 +295,9 @@ public abstract class Class6 {
                 anIntArray252[anIntArray227[i_6_]] = class40_sub1.getIntBE();
             for(int i_7_ = 0; i_7_ < anInt221; i_7_++)
                 anIntArray224[anIntArray227[i_7_]] = class40_sub1.getIntBE();
-            for(int i_8_ = 0; (anInt221 ^ 0xffffffff) < (i_8_ ^ 0xffffffff); i_8_++)
+            for(int i_8_ = 0; (anInt221 > i_8_); i_8_++)
                 anIntArray261[anIntArray227[i_8_]] = class40_sub1.getUnsignedShortBE();
-            for(int i_9_ = 0; (i_9_ ^ 0xffffffff) > (anInt221 ^ 0xffffffff); i_9_++) {
+            for(int i_9_ = 0; (i_9_ < anInt221); i_9_++) {
                 i_1_ = 0;
                 int i_10_ = anIntArray227[i_9_];
                 int i_11_ = -1;
@@ -313,7 +313,7 @@ public abstract class Class6 {
             if(i_2_ != 0) {
                 aClass42Array217 = new Class42[i_3_ + 1];
                 anIntArrayArray236 = new int[1 + i_3_][];
-                for(int i_15_ = 0; (anInt221 ^ 0xffffffff) < (i_15_ ^ 0xffffffff); i_15_++) {
+                for(int i_15_ = 0; (anInt221 > i_15_); i_15_++) {
                     int i_16_ = anIntArray227[i_15_];
                     int i_17_ = anIntArray261[i_16_];
                     anIntArrayArray236[i_16_] = new int[aByteArrayArrayArray249[i_16_].length];
@@ -368,21 +368,21 @@ public abstract class Class6 {
             i_23_ -= 4 * (i_24_ * i);
             class40_sub1.currentPosition = i_23_;
             int[] is_25_ = new int[i];
-            for(int i_26_ = 0; (i_24_ ^ 0xffffffff) < (i_26_ ^ 0xffffffff); i_26_++) {
+            for(int i_26_ = 0; (i_24_ > i_26_); i_26_++) {
                 int i_27_ = 0;
-                for(int i_28_ = 0; (i_28_ ^ 0xffffffff) > (i ^ 0xffffffff); i_28_++) {
+                for(int i_28_ = 0; (i_28_ < i); i_28_++) {
                     i_27_ += class40_sub1.getIntBE();
                     is_25_[i_28_] += i_27_;
                 }
             }
-            for(int i_29_ = 0; (i_29_ ^ 0xffffffff) > (i ^ 0xffffffff); i_29_++) {
+            for(int i_29_ = 0; (i_29_ < i); i_29_++) {
                 if(is[is_19_[i_29_]] == null)
                     is[is_19_[i_29_]] = new byte[is_25_[i_29_]];
                 is_25_[i_29_] = 0;
             }
             class40_sub1.currentPosition = i_23_;
             int i_30_ = 0;
-            for(int i_31_ = 0; (i_24_ ^ 0xffffffff) < (i_31_ ^ 0xffffffff); i_31_++) {
+            for(int i_31_ = 0; (i_24_ > i_31_); i_31_++) {
                 int i_32_ = 0;
                 for(int i_33_ = 0; i_33_ < i; i_33_++) {
                     i_32_ += class40_sub1.getIntBE();
@@ -470,7 +470,7 @@ public abstract class Class6 {
         anInt218++;
         for(int i = 0; i < aByteArrayArrayArray249.length; i++) {
             if(aByteArrayArrayArray249[i] != null) {
-                for(int i_48_ = 0; ((i_48_ ^ 0xffffffff) > (aByteArrayArrayArray249[i].length ^ 0xffffffff)); i_48_++)
+                for(int i_48_ = 0; ((i_48_ < aByteArrayArrayArray249[i].length)); i_48_++)
                     aByteArrayArrayArray249[i][i_48_] = null;
             }
         }

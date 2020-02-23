@@ -75,11 +75,11 @@ public class Landscape {
         anInt1159++;
         int i = class40_sub1.getUnsignedByte();
         int i_0_ = class40_sub1.getIntBE();
-        if(i_0_ < 0 || (Class51.anInt1195 != 0 && (Class51.anInt1195 ^ 0xffffffff) > (i_0_ ^ 0xffffffff)))
+        if(i_0_ < 0 || (Class51.anInt1195 != 0 && (Class51.anInt1195 < i_0_)))
             throw new RuntimeException();
         if((i ^ 0xffffffff) != -1) {
             int i_1_ = class40_sub1.getIntBE();
-            if(i_1_ < 0 || ((Class51.anInt1195 ^ 0xffffffff) != -1 && (i_1_ ^ 0xffffffff) < (Class51.anInt1195 ^ 0xffffffff))) {
+            if(i_1_ < 0 || ((Class51.anInt1195 ^ 0xffffffff) != -1 && (i_1_ > Class51.anInt1195))) {
                 return new byte[100];
                 //throw new RuntimeException();
             }
@@ -285,7 +285,7 @@ public class Landscape {
                     int i_45_ = (Class51.anInt1202 + 6) / 8;
                     for(int i_46_ = -1 + i_42_; i_46_ <= 1 + i_45_; i_46_++) {
                         for(int i_47_ = -1 + i_43_; i_47_ <= i_44_ + 1; i_47_++) {
-                            if(i_42_ > i_46_ || (i_46_ ^ 0xffffffff) < (i_45_ ^ 0xffffffff) || i_47_ < i_43_ || (i_47_ ^ 0xffffffff) < (i_44_ ^ 0xffffffff)) {
+                            if(i_42_ > i_46_ || (i_46_ > i_45_) || i_47_ < i_43_ || (i_47_ > i_44_)) {
                                 Renderable.aClass6_Sub1_2857.method195(0, (Class40_Sub5_Sub17_Sub6.method832(74, (new RSString[]{Class45.aClass1_1085, HashTable.method334(i_46_, -1), Class8.aClass1_303, HashTable.method334(i_47_, -1)}))));
                                 Renderable.aClass6_Sub1_2857.method195(0, (Class40_Sub5_Sub17_Sub6.method832(-102, (new RSString[]{HashTable.aClass1_553, HashTable.method334(i_46_, -1), Class8.aClass1_303, HashTable.method334(i_47_, -1)}))));
                             }
@@ -312,13 +312,13 @@ public class Landscape {
             if(class40_sub2.anInt1997 != -1 || class40_sub2.anIntArray2005 != null) {
                 int i_48_ = 0;
                 if(arg0 <= class40_sub2.anInt2013) {
-                    if((arg0 ^ 0xffffffff) > (class40_sub2.anInt1994 ^ 0xffffffff))
+                    if((arg0 < class40_sub2.anInt1994))
                         i_48_ += class40_sub2.anInt1994 - arg0;
                 } else
                     i_48_ += -class40_sub2.anInt2013 + arg0;
                 if(arg4 > class40_sub2.anInt2007)
                     i_48_ += -class40_sub2.anInt2007 + arg4;
-                else if((arg4 ^ 0xffffffff) > (class40_sub2.anInt2003 ^ 0xffffffff))
+                else if((arg4 < class40_sub2.anInt2003))
                     i_48_ += -arg4 + class40_sub2.anInt2003;
                 if(class40_sub2.anInt2000 < -64 + i_48_ || RSCanvas.anInt65 == 0 || ((class40_sub2.anInt1993 ^ 0xffffffff) != (arg2 ^ 0xffffffff))) {
                     if(class40_sub2.aClass40_Sub9_Sub2_2001 != null) {

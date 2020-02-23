@@ -229,12 +229,12 @@ public class Class40_Sub5_Sub7 extends SubNode {
         if(arg1 == 1) {
             int i_5_ = arg2.getUnsignedByte();
             anIntArray2466 = new int[i_5_];
-            for(int i_6_ = 0; (i_5_ ^ 0xffffffff) < (i_6_ ^ 0xffffffff); i_6_++)
+            for(int i_6_ = 0; (i_5_ > i_6_); i_6_++)
                 anIntArray2466[i_6_] = arg2.getUnsignedShortBE();
             anIntArray2485 = new int[i_5_];
-            for(int i_7_ = 0; (i_5_ ^ 0xffffffff) < (i_7_ ^ 0xffffffff); i_7_++)
+            for(int i_7_ = 0; (i_5_ > i_7_); i_7_++)
                 anIntArray2485[i_7_] = arg2.getUnsignedShortBE();
-            for(int i_8_ = 0; (i_8_ ^ 0xffffffff) > (i_5_ ^ 0xffffffff); i_8_++)
+            for(int i_8_ = 0; (i_8_ < i_5_); i_8_++)
                 anIntArray2485[i_8_] = ((arg2.getUnsignedShortBE() << -1678933328) + anIntArray2485[i_8_]);
         } else if((arg1 ^ 0xffffffff) == -3)
             anInt2497 = arg2.getUnsignedShortBE();
@@ -254,9 +254,9 @@ public class Class40_Sub5_Sub7 extends SubNode {
                             else if((arg1 ^ 0xffffffff) == -13) {
                                 int i_9_ = arg2.getUnsignedByte();
                                 anIntArray2479 = new int[i_9_];
-                                for(int i_10_ = 0; ((i_10_ ^ 0xffffffff) > (i_9_ ^ 0xffffffff)); i_10_++)
+                                for(int i_10_ = 0; ((i_10_ < i_9_)); i_10_++)
                                     anIntArray2479[i_10_] = arg2.getUnsignedShortBE();
-                                for(int i_11_ = 0; ((i_9_ ^ 0xffffffff) < (i_11_ ^ 0xffffffff)); i_11_++)
+                                for(int i_11_ = 0; ((i_9_ > i_11_)); i_11_++)
                                     anIntArray2479[i_11_] = ((arg2.getUnsignedShortBE() << -416587984) + anIntArray2479[i_11_]);
                             }
                         } else

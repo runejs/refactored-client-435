@@ -82,7 +82,7 @@ public class Class60 {
         int i = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getStringWidth(Widget.aClass1_2684);
         for(int i_1_ = 0; i_1_ < ActorDefinition.anInt2394; i_1_++) {
             int i_2_ = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method681(Landscape.aClass1Array1184[i_1_]);
-            if((i ^ 0xffffffff) > (i_2_ ^ 0xffffffff))
+            if((i < i_2_))
                 i = i_2_;
         }
         i += 8;
@@ -203,7 +203,7 @@ public class Class60 {
                     Class26.anInt622 = 3;
                 }
                 i_14_ = 260;
-                if((i_11_ ^ 0xffffffff) == -2 && (i ^ 0xffffffff) <= (-75 + i_14_ ^ 0xffffffff) && i <= 75 + i_14_ && (i_12_ ^ 0xffffffff) <= (-20 + i_15_ ^ 0xffffffff) && (20 + i_15_ ^ 0xffffffff) <= (i_12_ ^ 0xffffffff)) {
+                if((i_11_ ^ 0xffffffff) == -2 && (i >= -75 + i_14_) && i <= 75 + i_14_ && (i_12_ >= -20 + i_15_) && (20 + i_15_ >= i_12_)) {
                     Class26.anInt622 = 2;
                     Node.anInt947 = 0;
                     Class22_Sub2.aClass1_1879 = Node.aClass1_967;
@@ -214,20 +214,20 @@ public class Class60 {
                 int i_16_ = 60;
                 int i_17_ = 100;
                 i_16_ += 30;
-                if(i_11_ == 1 && (-15 + i_16_ ^ 0xffffffff) >= (i_12_ ^ 0xffffffff) && (i_12_ ^ 0xffffffff) > (i_16_ ^ 0xffffffff))
+                if(i_11_ == 1 && (-15 + i_16_ <= i_12_) && (i_12_ < i_16_))
                     Node.anInt947 = 0;
                 int i_18_ = 150;
                 i_16_ += 15;
-                if(i_11_ == 1 && (-15 + i_16_ ^ 0xffffffff) >= (i_12_ ^ 0xffffffff) && i_16_ > i_12_)
+                if(i_11_ == 1 && (-15 + i_16_ <= i_12_) && i_16_ > i_12_)
                     Node.anInt947 = 1;
                 i_16_ += 15;
-                if(i_11_ == 1 && i_17_ + -75 <= i && i <= i_17_ + 75 && (i_12_ ^ 0xffffffff) <= (i_18_ + -20 ^ 0xffffffff) && (i_12_ ^ 0xffffffff) >= (i_18_ + 20 ^ 0xffffffff)) {
+                if(i_11_ == 1 && i_17_ + -75 <= i && i <= i_17_ + 75 && (i_12_ >= i_18_ + -20) && (i_12_ <= i_18_ + 20)) {
                     Class22_Sub2.username = Class22_Sub2.username.method62(57).method85(-4305);
                     Class33.method411(Node.aClass1_964, Node.aClass1_958, Class40_Sub5_Sub17_Sub1.aClass1_3009, (byte) 106);
                     Floor.method559(20, 70);
                 } else {
                     i_17_ = 260;
-                    if(i_11_ == 1 && i >= -75 + i_17_ && (i_17_ + 75 ^ 0xffffffff) <= (i ^ 0xffffffff) && (i_12_ ^ 0xffffffff) <= (-20 + i_18_ ^ 0xffffffff) && (i_12_ ^ 0xffffffff) >= (i_18_ + 20 ^ 0xffffffff)) {
+                    if(i_11_ == 1 && i >= -75 + i_17_ && (i_17_ + 75 >= i) && (i_12_ >= -20 + i_18_) && (i_12_ <= i_18_ + 20)) {
                         Class22_Sub2.username = Class22_Sub2.string_blank;
                         Class22_Sub2.password = Class22_Sub2.string_blank;
                         Class26.anInt622 = 0;
@@ -262,7 +262,7 @@ public class Class60 {
             } else if(Class26.anInt622 == 3) {
                 int i_20_ = 150;
                 int i_21_ = 180;
-                if(i_11_ == 1 && (i ^ 0xffffffff) <= (-75 + i_21_ ^ 0xffffffff) && 75 + i_21_ >= i && -20 + i_20_ <= i_12_ && (20 + i_20_ ^ 0xffffffff) <= (i_12_ ^ 0xffffffff))
+                if(i_11_ == 1 && (i >= -75 + i_21_) && 75 + i_21_ >= i && -20 + i_20_ <= i_12_ && (20 + i_20_ >= i_12_))
                     Class26.anInt622 = 0;
             }
         }

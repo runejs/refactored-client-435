@@ -73,7 +73,7 @@ public class Class4 {
             Class40_Sub3.anIntArray2023[i]--;
             if(Class40_Sub3.anIntArray2023[i] < -10) {
                 PacketBuffer.anInt2248--;
-                for(int i_9_ = i; ((PacketBuffer.anInt2248 ^ 0xffffffff) < (i_9_ ^ 0xffffffff)); i_9_++) {
+                for(int i_9_ = i; ((PacketBuffer.anInt2248 > i_9_)); i_9_++) {
                     IdentityKit.anIntArray2602[i_9_] = IdentityKit.anIntArray2602[i_9_ + 1];
                     PacketBuffer.effects[i_9_] = PacketBuffer.effects[1 + i_9_];
                     ItemDefinition.anIntArray2814[i_9_] = ItemDefinition.anIntArray2814[1 + i_9_];

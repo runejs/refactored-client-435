@@ -131,7 +131,7 @@ public class Class35 implements Interface3 {
     public void method422(int arg0) {
 
         anInt1723++;
-        for(int i = arg0; ((aClass40_Sub10Array1740.length ^ 0xffffffff) < (i ^ 0xffffffff)); i++) {
+        for(int i = arg0; ((aClass40_Sub10Array1740.length > i)); i++) {
             if(aClass40_Sub10Array1740[i] != null)
                 aClass40_Sub10Array1740[i].method870();
         }
@@ -202,7 +202,7 @@ public class Class35 implements Interface3 {
         anInt1751++;
         int i = 0;
         if(arg0 == 6) {
-            for(/**/; (i ^ 0xffffffff) > (aClass40_Sub10Array1740.length ^ 0xffffffff); i++) {
+            for(/**/; (i < aClass40_Sub10Array1740.length); i++) {
                 EntryTable class40_sub10 = aClass40_Sub10Array1740[i];
                 if(class40_sub10 != null && (class40_sub10.anInt2136 ^ 0xffffffff) != -1 && class40_sub10.aBoolean2146) {
                     class40_sub10.method868(arg1);

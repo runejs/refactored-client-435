@@ -93,7 +93,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 }
                 if(widget.aBoolean2688) {
                     boolean bool;
-                    bool = (Class13.mouseX ^ 0xffffffff) <= (i_6_ ^ 0xffffffff) && (i_4_ ^ 0xffffffff) >= (Landscape.mouseY ^ 0xffffffff) && i_8_ > Class13.mouseX && (i_7_ ^ 0xffffffff) < (Landscape.mouseY ^ 0xffffffff);
+                    bool = (Class13.mouseX >= i_6_) && (i_4_ <= Landscape.mouseY) && i_8_ > Class13.mouseX && (i_7_ > Landscape.mouseY);
                     boolean bool_9_ = false;
                     if(Class40_Sub5_Sub2.anInt2302 == 1 && bool)
                         bool_9_ = true;
@@ -103,7 +103,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                         Class10.aWidget_353 = widget;
                         Class40_Sub5_Sub11.anInt2621 = Landscape.mouseY;
                     }
-                    if(Class62.anInt1470 == 1 && (i_6_ ^ 0xffffffff) >= (Class57.anInt1338 ^ 0xffffffff) && ((RSString.anInt1668 ^ 0xffffffff) <= (i_4_ ^ 0xffffffff)) && Class57.anInt1338 < i_8_ && RSString.anInt1668 < i_7_)
+                    if(Class62.anInt1470 == 1 && (i_6_ <= Class57.anInt1338) && ((RSString.anInt1668 >= i_4_)) && Class57.anInt1338 < i_8_ && RSString.anInt1668 < i_7_)
                         bool_10_ = true;
                     if(Class10.aWidget_353 != null) {
                         bool_9_ = false;
@@ -158,7 +158,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
         if((arg0 ^ 0xffffffffffffffffL) != -1L) {
             int i = 0;
             int i_12_ = -18 % ((arg1 - 69) / 44);
-            for(/**/; ((Class40_Sub5_Sub17_Sub3.anInt3060 ^ 0xffffffff) < (i ^ 0xffffffff)); i++) {
+            for(/**/; ((Class40_Sub5_Sub17_Sub3.anInt3060 > i)); i++) {
                 if(Class59.aLongArray1397[i] == arg0) {
                     Class53.anInt1258++;
                     Class40_Sub5_Sub17_Sub3.anInt3060--;
@@ -218,7 +218,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             Class32.aClass38_768.method443(-10115);
             while(Class6.aLong219 == 0L || Class51.method937(1) < Class6.aLong219) {
                 Class40_Sub3.anInt2020 = Class32.aClass38_768.method442(Class39.anInt912, (Class40_Sub3.anInt2024), 9799);
-                for(int i = 0; (i ^ 0xffffffff) > (Class40_Sub3.anInt2020 ^ 0xffffffff); i++)
+                for(int i = 0; (i < Class40_Sub3.anInt2020); i++)
                     method29(true);
                 method26((byte) 88);
             }
@@ -326,7 +326,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             if(Signlink.aString739 == null || !Signlink.aString739.startsWith("1.5") || -Class4.aLong174 + Class51.method937(1) <= 1000L)
                 return;
             Rectangle rectangle = arg0.getClipBounds();
-            if(rectangle == null || (rectangle.width >= Class12.width && ((rectangle.height ^ 0xffffffff) <= (IdentityKit.height ^ 0xffffffff))))
+            if(rectangle == null || (rectangle.width >= Class12.width && ((rectangle.height >= IdentityKit.height))))
                 Class67.aBoolean1575 = true;
         }
     }

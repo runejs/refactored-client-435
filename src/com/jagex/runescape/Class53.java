@@ -211,7 +211,7 @@ public class Class53 {
                         int i_60_ = (Class40_Sub6.tile_height[Player.anInt3267][i_52_ + 1][i_51_]);
                         Model class40_sub5_sub17_sub5 = gameObjectDefinition.getGameObjectModel(i_59_, i_58_, i_47_, i_57_, i_48_, (byte) 124, i_60_);
                         if(class40_sub5_sub17_sub5 != null) {
-                            if((i ^ 0xffffffff) > (i_54_ ^ 0xffffffff)) {
+                            if((i < i_54_)) {
                                 int i_61_ = i_54_;
                                 i_54_ = i;
                                 i = i_61_;

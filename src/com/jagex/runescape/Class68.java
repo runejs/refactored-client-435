@@ -104,7 +104,7 @@ public abstract class Class68 {
         }
         if(Class59.aWidgetArrayArray1390[arg0] == null)
             Class59.aWidgetArrayArray1390[arg0] = new Widget[i_4_];
-        for(int i_5_ = 0; (i_5_ ^ 0xffffffff) > (i_4_ ^ 0xffffffff); i_5_++) {
+        for(int i_5_ = 0; (i_5_ < i_4_); i_5_++) {
             if(Class59.aWidgetArrayArray1390[arg0][i_5_] == null) {
                 byte[] is = Class40_Sub5_Sub4.aClass6_2349.method172(i_5_, 119, arg0);
                 if(is != null) {

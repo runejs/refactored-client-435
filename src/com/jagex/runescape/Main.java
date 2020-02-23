@@ -66,11 +66,11 @@ public class Main extends RSApplet {
                     int i_6_ = (Class13.mouseX + (-Class40_Sub2.anInt1996 + -is[0]) + is_4_[0]);
                     if(i_6_ < 0)
                         i_6_ = 0;
-                    if((i_6_ + widget.anInt2692 ^ 0xffffffff) < (widget_3_.anInt2692 ^ 0xffffffff))
+                    if((i_6_ + widget.anInt2692 > widget_3_.anInt2692))
                         i_6_ = (-widget.anInt2692 + widget_3_.anInt2692);
                     i_0_ = is[0] + i_6_;
                 }
-                if(!widget.aBoolean2636 || (Rasterizer.viewport_right >= i_0_ && ((Rasterizer.viewport_bottom ^ 0xffffffff) <= (i_1_ ^ 0xffffffff)) && ((Rasterizer.viewport_left ^ 0xffffffff) >= (i_0_ + widget.anInt2692 ^ 0xffffffff)) && ((i_1_ + widget.anInt2643 ^ 0xffffffff) <= (Rasterizer.viewport_top ^ 0xffffffff)))) {
+                if(!widget.aBoolean2636 || (Rasterizer.viewport_right >= i_0_ && ((Rasterizer.viewport_bottom >= i_1_)) && ((Rasterizer.viewport_left <= i_0_ + widget.anInt2692)) && ((i_1_ + widget.anInt2643 >= Rasterizer.viewport_top)))) {
                     if(widget.type == 0) {
                         if(widget.aBoolean2750 && !Class29.method371(8247, arg0, i))
                             continue;
@@ -84,13 +84,13 @@ public class Main extends RSApplet {
                         if(widget.aWidgetArray2713 != null)
                             bool &= (method36(arg0, i_1_, i_0_, widget.anInt2746, widget.anInt2689, i_1_ + widget.anInt2643, widget.anInt2692 + i_0_, widget.scrollPosition, (widget.aWidgetArray2713), true));
                         Rasterizer.setCoordinates(arg2, arg1, arg5, arg6);
-                        if((widget.anInt2643 ^ 0xffffffff) > (widget.anInt2720 ^ 0xffffffff))
+                        if((widget.anInt2643 < widget.anInt2720))
                             Class27.drawScrollBar(0, widget.scrollPosition, widget.anInt2720, i_0_ + (widget.anInt2692), widget.anInt2643, i_1_);
                     }
                     if(widget.type != 1) {
                         if(widget.type == 2) {
                             int i_7_ = 0;
-                            for(int i_8_ = 0; ((i_8_ ^ 0xffffffff) > (widget.anInt2643 ^ 0xffffffff)); i_8_++) {
+                            for(int i_8_ = 0; ((i_8_ < widget.anInt2643)); i_8_++) {
                                 for(int i_9_ = 0; widget.anInt2692 > i_9_; i_9_++) {
                                     int i_10_ = ((widget.itemSpritePadsX + 32) * i_9_ + i_0_);
                                     int i_11_ = ((32 + (widget.itemSpritePadsY)) * i_8_ + i_1_);
@@ -111,7 +111,7 @@ public class Main extends RSApplet {
                                         int i_12_ = 0;
                                         int i_13_ = -1 + (widget.items[i_7_]);
                                         int i_14_ = 0;
-                                        if((-32 + (Rasterizer.viewport_left) < i_10_ && ((i_10_ ^ 0xffffffff) > ((Rasterizer.viewport_right) ^ 0xffffffff)) && (((Rasterizer.viewport_top) + -32 ^ 0xffffffff) > (i_11_ ^ 0xffffffff)) && (Rasterizer.viewport_bottom) > i_11_) || (SceneTile.activeInterfaceType != 0 && (Class58.anInt1352 == i_7_))) {
+                                        if((-32 + (Rasterizer.viewport_left) < i_10_ && ((i_10_ ^ 0xffffffff) > ((Rasterizer.viewport_right) ^ 0xffffffff)) && (((Rasterizer.viewport_top) + -32 < i_11_)) && (Rasterizer.viewport_bottom) > i_11_) || (SceneTile.activeInterfaceType != 0 && (Class58.anInt1352 == i_7_))) {
                                             int i_15_ = 0;
                                             if(Class8.anInt301 == 1 && ((Class45.anInt1061 ^ 0xffffffff) == (i_7_ ^ 0xffffffff)) && ((widget.anInt2689) == ISAAC.anInt525))
                                                 i_15_ = 16777215;
@@ -266,13 +266,13 @@ public class Main extends RSApplet {
                                         int[] is = new int[4];
                                         Rasterizer.method661(is);
                                         int i_27_ = i_0_;
-                                        if((is[0] ^ 0xffffffff) < (i_27_ ^ 0xffffffff))
+                                        if((is[0] > i_27_))
                                             i_27_ = is[0];
                                         int i_28_ = i_1_;
-                                        if((is[1] ^ 0xffffffff) < (i_28_ ^ 0xffffffff))
+                                        if((is[1] > i_28_))
                                             i_28_ = is[1];
                                         int i_29_ = (widget.anInt2692 + i_0_);
-                                        if((is[2] ^ 0xffffffff) > (i_29_ ^ 0xffffffff))
+                                        if((is[2] < i_29_))
                                             i_29_ = is[2];
                                         int i_30_ = (widget.anInt2643 + i_1_);
                                         if(i_30_ > is[3])
@@ -281,7 +281,7 @@ public class Main extends RSApplet {
                                         int i_31_ = (widget.anInt2692 - (1 + -i_25_)) / i_25_;
                                         int i_32_ = (widget.anInt2643 - (1 + -i_24_)) / i_24_;
                                         for(int i_33_ = 0; i_31_ > i_33_; i_33_++) {
-                                            for(int i_34_ = 0; ((i_32_ ^ 0xffffffff) < (i_34_ ^ 0xffffffff)); i_34_++) {
+                                            for(int i_34_ = 0; ((i_32_ > i_34_)); i_34_++) {
                                                 if(((widget.anInt2751) ^ 0xffffffff) == -1) {
                                                     if((i_2_ ^ 0xffffffff) == -1)
                                                         class40_sub5_sub14_sub4.drawImage((i_33_ * i_25_ + i_0_), (i_34_ * i_24_ + i_1_));
@@ -372,7 +372,7 @@ public class Main extends RSApplet {
                                     continue;
                                 }
                                 int i_45_ = 0;
-                                for(int i_46_ = 0; ((i_46_ ^ 0xffffffff) > (widget.anInt2643 ^ 0xffffffff)); i_46_++) {
+                                for(int i_46_ = 0; ((i_46_ < widget.anInt2643)); i_46_++) {
                                     for(int i_47_ = 0; (i_47_ < widget.anInt2692); i_47_++) {
                                         if(((widget.items[i_45_]) ^ 0xffffffff) < -1) {
                                             ItemDefinition class40_sub5_sub16 = (ItemDefinition.forId((-1 + (widget.items[i_45_])), 10));
@@ -412,7 +412,7 @@ public class Main extends RSApplet {
                                     }
                                     int i_54_ = class40_sub5_sub14_sub1.method681(class1_53_);
                                     i_51_ += (class40_sub5_sub14_sub1.characterDefaultHeight) + 1;
-                                    if((i_50_ ^ 0xffffffff) > (i_54_ ^ 0xffffffff))
+                                    if((i_50_ < i_54_))
                                         i_50_ = i_54_;
                                 }
                                 i_51_ += 7;
@@ -421,7 +421,7 @@ public class Main extends RSApplet {
                                     i_55_ = arg5 + -i_51_;
                                 i_50_ += 6;
                                 int i_56_ = -5 + (widget.anInt2692 + i_0_ - i_50_);
-                                if((i_56_ ^ 0xffffffff) > (5 + i_0_ ^ 0xffffffff))
+                                if((i_56_ < 5 + i_0_))
                                     i_56_ = 5 + i_0_;
                                 if(i_50_ + i_56_ > arg6)
                                     i_56_ = -i_50_ + arg6;
@@ -521,7 +521,7 @@ public class Main extends RSApplet {
         i_61_ = arg0;
         for(int i_71_ = 0; i_71_ < 33920; i_71_++)
             GameObject.aClass68_3042.anIntArray1621[i_71_] = (SceneTile.aClass40_Sub5_Sub14_Sub4_2043.pixels[i_71_]);
-        for(int i_72_ = 1; (i_72_ ^ 0xffffffff) > (-1 + i ^ 0xffffffff); i_72_++) {
+        for(int i_72_ = 1; (i_72_ < -1 + i); i_72_++) {
             int i_73_ = (-i_72_ + i) * Class17.anIntArray466[i_72_] / i;
             int i_74_ = 103 + -i_73_;
             i_62_ += i_73_;

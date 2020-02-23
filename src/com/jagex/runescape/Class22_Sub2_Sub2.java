@@ -144,7 +144,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
         aRunnable_Impl1_2223.method6(-26);
         this.method317(arg3, 0, (long) anInt2226, 0);
         int i = aClass14_2225.method253();
-        for(int i_7_ = 0; (i_7_ ^ 0xffffffff) > (i ^ 0xffffffff); i_7_++) {
+        for(int i_7_ = 0; (i_7_ < i); i_7_++) {
             aClass14_2225.method265(i_7_);
             while(!aClass14_2225.method258()) {
                 aClass14_2225.method254(i_7_);

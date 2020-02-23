@@ -70,7 +70,7 @@ public class Class66 {
                         is[i_38_] = i_34_;
                 }
                 int i_39_ = 0;
-                for(int i_40_ = 0; (i_40_ ^ 0xffffffff) > (i_31_ ^ 0xffffffff); i_40_++) {
+                for(int i_40_ = 0; (i_40_ < i_31_); i_40_++) {
                     int i_41_ = -2147483648 >>> i_40_;
                     if((i_41_ & i_33_) != 0) {
                         if(anIntArray1540[i_39_] == 0)
@@ -86,7 +86,7 @@ public class Class66 {
                     }
                     i_41_ >>>= 1;
                 }
-                if((i_39_ ^ 0xffffffff) <= (i_29_ ^ 0xffffffff))
+                if((i_39_ >= i_29_))
                     i_29_ = i_39_ + 1;
                 anIntArray1540[i_39_] = i_30_ ^ 0xffffffff;
             }
@@ -172,7 +172,7 @@ public class Class66 {
                         for(int i = 4; i >= 0; i--) {
                             if(class1s[i] != null && class1s[i].equalsIgnoreCase((Class38_Sub1.aClass1_1917), true)) {
                                 int i_4_ = 0;
-                                if(((Player.localPlayer.anInt3260) ^ 0xffffffff) > (arg4.combatLevel ^ 0xffffffff))
+                                if(((Player.localPlayer.anInt3260) < arg4.combatLevel))
                                     i_4_ = 2000;
                                 int i_5_ = 0;
                                 if((i ^ 0xffffffff) == -1)
@@ -243,7 +243,7 @@ public class Class66 {
                     Widget widget = Class68.method1045(i_19_, (byte) -70);
                     int i_20_ = is[i_14_++];
                     if(i_20_ != -1 && (!ItemDefinition.forId(i_20_, 10).members || Class22.aBoolean541)) {
-                        for(int i_21_ = 0; ((i_21_ ^ 0xffffffff) > (widget.items.length ^ 0xffffffff)); i_21_++) {
+                        for(int i_21_ = 0; ((i_21_ < widget.items.length)); i_21_++) {
                             if(1 + i_20_ == (widget.items[i_21_]))
                                 i_16_ += (widget.itemAmounts[i_21_]);
                         }
@@ -449,7 +449,7 @@ public class Class66 {
                         i_10_++;
                         i_11_ -= 8;
                         arg5[i_10_] = (byte) (i = i_8_ >>> i_11_);
-                        if((i_10_ ^ 0xffffffff) > (i_12_ ^ 0xffffffff)) {
+                        if((i_10_ < i_12_)) {
                             i_11_ -= 8;
                             i_10_++;
                             arg5[i_10_] = (byte) (i = i_8_ << -i_11_);

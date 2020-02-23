@@ -104,22 +104,22 @@ public class Class44 implements Runnable {
                 arg1.anInt3098 = i_0_;
                 arg1.anInt3089 = i_2_;
             } else {
-                if((i ^ 0xffffffff) > (i_0_ ^ 0xffffffff)) {
-                    if((i_1_ ^ 0xffffffff) > (i_2_ ^ 0xffffffff))
+                if((i < i_0_)) {
+                    if((i_1_ < i_2_))
                         arg1.anInt3080 = 1280;
                     else if(i_2_ < i_1_)
                         arg1.anInt3080 = 1792;
                     else
                         arg1.anInt3080 = 1536;
-                } else if((i ^ 0xffffffff) >= (i_0_ ^ 0xffffffff)) {
-                    if((i_2_ ^ 0xffffffff) >= (i_1_ ^ 0xffffffff)) {
+                } else if((i <= i_0_)) {
+                    if((i_2_ <= i_1_)) {
                         if(i_2_ < i_1_)
                             arg1.anInt3080 = 0;
                     } else
                         arg1.anInt3080 = 1024;
-                } else if((i_1_ ^ 0xffffffff) > (i_2_ ^ 0xffffffff))
+                } else if((i_1_ < i_2_))
                     arg1.anInt3080 = 768;
-                else if((i_2_ ^ 0xffffffff) > (i_1_ ^ 0xffffffff))
+                else if((i_2_ < i_1_))
                     arg1.anInt3080 = 256;
                 else
                     arg1.anInt3080 = 512;
@@ -151,20 +151,20 @@ public class Class44 implements Runnable {
                 }
                 if(arg1.aBooleanArray3072[-1 + arg1.anInt3109])
                     i_4_ <<= 1;
-                if((i_1_ ^ 0xffffffff) > (i_2_ ^ 0xffffffff)) {
+                if((i_1_ < i_2_)) {
                     arg1.anInt3089 += i_4_;
                     if(arg1.anInt3089 > i_2_)
                         arg1.anInt3089 = i_2_;
                 } else if(i_1_ > i_2_) {
                     arg1.anInt3089 -= i_4_;
-                    if((arg1.anInt3089 ^ 0xffffffff) > (i_2_ ^ 0xffffffff))
+                    if((arg1.anInt3089 < i_2_))
                         arg1.anInt3089 = i_2_;
                 }
                 if((i_4_ ^ 0xffffffff) <= -9 && arg1.anInt3077 == arg1.anInt3131 && arg1.anInt3082 != -1)
                     arg1.anInt3077 = arg1.anInt3082;
                 if(i < i_0_) {
                     arg1.anInt3098 += i_4_;
-                    if((i_0_ ^ 0xffffffff) > (arg1.anInt3098 ^ 0xffffffff))
+                    if((i_0_ < arg1.anInt3098))
                         arg1.anInt3098 = i_0_;
                 } else if(i_0_ < i) {
                     arg1.anInt3098 -= i_4_;

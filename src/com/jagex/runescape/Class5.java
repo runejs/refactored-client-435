@@ -86,31 +86,31 @@ public class Class5 {
         int i = 64 + Class32.anInt767 * 128;
         int i_3_ = 64 + 128 * Class22.anInt545;
         int i_4_ = (Class37.method430((byte) -121, Player.anInt3267, i_3_, i) + -anInt194);
-        if((i_3_ ^ 0xffffffff) < (Class12.anInt388 ^ 0xffffffff)) {
+        if((i_3_ > Class12.anInt388)) {
             Class12.anInt388 += (Class59.anInt1386 * (i_3_ + -Class12.anInt388) / 1000 + Class4.anInt188);
             if(Class12.anInt388 > i_3_) {
                 Class12.anInt388 = i_3_;
             }
         }
-        if((i_4_ ^ 0xffffffff) < (Class32.anInt769 ^ 0xffffffff)) {
+        if((i_4_ > Class32.anInt769)) {
             Class32.anInt769 += (Class59.anInt1386 * (i_4_ - Class32.anInt769) / 1000 + Class4.anInt188);
-            if((i_4_ ^ 0xffffffff) > (Class32.anInt769 ^ 0xffffffff))
+            if((i_4_ < Class32.anInt769))
                 Class32.anInt769 = i_4_;
         }
-        if((Class12.anInt388 ^ 0xffffffff) < (i_3_ ^ 0xffffffff)) {
+        if((Class12.anInt388 > i_3_)) {
             Class12.anInt388 -= Class4.anInt188 + (Class59.anInt1386 * (Class12.anInt388 + -i_3_) / 1000);
             if(i_3_ > Class12.anInt388) {
                 Class12.anInt388 = i_3_;
             }
         }
-        if((Class40_Sub5_Sub6.anInt2443 ^ 0xffffffff) > (i ^ 0xffffffff)) {
+        if((Class40_Sub5_Sub6.anInt2443 < i)) {
             Class40_Sub5_Sub6.anInt2443 += Class4.anInt188 + (Class59.anInt1386 * (-Class40_Sub5_Sub6.anInt2443 + i) / 1000);
-            if((Class40_Sub5_Sub6.anInt2443 ^ 0xffffffff) < (i ^ 0xffffffff))
+            if((Class40_Sub5_Sub6.anInt2443 > i))
                 Class40_Sub5_Sub6.anInt2443 = i;
         }
         if(Class32.anInt769 > i_4_) {
             Class32.anInt769 -= ((Class32.anInt769 + -i_4_) * Class59.anInt1386 / 1000 + Class4.anInt188);
-            if((i_4_ ^ 0xffffffff) < (Class32.anInt769 ^ 0xffffffff))
+            if((i_4_ > Class32.anInt769))
                 Class32.anInt769 = i_4_;
         }
         i_3_ = 64 + HashTable.anInt564 * 128;
@@ -259,7 +259,7 @@ public class Class5 {
                 ISAAC.redrawTabArea = true;
             if(arg7 == 2 || (arg7 ^ 0xffffffff) == -4)
                 Class52.redrawChatbox = true;
-        } else if(arg6 > arg2 || (arg6 + 16 ^ 0xffffffff) >= (arg2 ^ 0xffffffff) || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
+        } else if(arg6 > arg2 || (arg6 + 16 <= arg2) || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
             if(-Landscape.anInt1171 + arg6 <= arg2 && (arg2 ^ 0xffffffff) > (16 + (arg6 + Landscape.anInt1171) ^ 0xffffffff) && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && Npc.anInt3294 > 0) {
                 Class61.aBoolean1444 = true;
                 int i = (-32 + arg0) * arg0 / arg3;

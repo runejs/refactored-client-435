@@ -61,7 +61,7 @@ public class Class40_Sub11 extends Node {
                 }
                 if(((i_1_ ^ 0xffffffff) == -4 || (i_1_ ^ 0xffffffff) == -8) && (CollisionMap.anInt165 ^ 0xffffffff) == -1 && ((i_1_ ^ 0xffffffff) == -8 || (Class4.anInt185 ^ 0xffffffff) == -1 || (Class4.anInt185 == 1 && Class40_Sub2.hasFriend(class1, -32624)))) {
                     i++;
-                    if(arg1 > -14 + i_2_ && (arg1 ^ 0xffffffff) >= (i_2_ ^ 0xffffffff)) {
+                    if(arg1 > -14 + i_2_ && (arg1 <= i_2_)) {
                         if((Class19.anInt493 ^ 0xffffffff) <= -2) {
                             CollisionMap.anInt158++;
                             Floor.method558(0, Class22_Sub1.aClass1_1865, 0, -501, 0, 28, (Class40_Sub5_Sub17_Sub6.method832(arg2 + 60, new RSString[]{Class26.aClass1_620, class1})));
@@ -72,7 +72,7 @@ public class Class40_Sub11 extends Node {
                     }
                 }
                 if((i_1_ ^ 0xffffffff) == -5 && ((ItemDefinition.anInt2797 ^ 0xffffffff) == -1 || (((ItemDefinition.anInt2797 ^ 0xffffffff) == -2) && Class40_Sub2.hasFriend(class1, -32624)))) {
-                    if(arg1 > -14 + i_2_ && (arg1 ^ 0xffffffff) >= (i_2_ ^ 0xffffffff)) {
+                    if(arg1 > -14 + i_2_ && (arg1 <= i_2_)) {
                         Renderable.anInt2867++;
                         Floor.method558(0, Class51.aClass1_1208, 0, arg2 ^ ~0x1d9, 0, 26, (Class40_Sub5_Sub17_Sub6.method832(-41, new RSString[]{Class26.aClass1_620, class1})));
                     }
@@ -81,7 +81,7 @@ public class Class40_Sub11 extends Node {
                 if(((i_1_ ^ 0xffffffff) == -6 || i_1_ == 6) && CollisionMap.anInt165 == 0 && (Class4.anInt185 ^ 0xffffffff) > -3)
                     i++;
                 if(i_1_ == 8 && (ItemDefinition.anInt2797 == 0 || (((ItemDefinition.anInt2797 ^ 0xffffffff) == -2) && Class40_Sub2.hasFriend(class1, -32624)))) {
-                    if((i_2_ + -14 ^ 0xffffffff) > (arg1 ^ 0xffffffff) && (arg1 ^ 0xffffffff) >= (i_2_ ^ 0xffffffff)) {
+                    if((i_2_ + -14 < arg1) && (arg1 <= i_2_)) {
                         Floor.method558(0, GameObject.aClass1_3039, 0, -501, 0, 46, (Class40_Sub5_Sub17_Sub6.method832(arg2 + -108, new RSString[]{Class26.aClass1_620, class1})));
                         Actor.anInt3133++;
                     }

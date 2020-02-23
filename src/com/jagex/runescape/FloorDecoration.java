@@ -124,7 +124,7 @@ public class FloorDecoration {
             int i_24_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
             int i_25_ = ((Widget.packetsize - Cache.outgoingbuffer.currentPosition) / 16);
             Class44.anIntArrayArray1030 = new int[i_25_][4];
-            for(int i_26_ = 0; (i_25_ ^ 0xffffffff) < (i_26_ ^ 0xffffffff); i_26_++) {
+            for(int i_26_ = 0; (i_25_ > i_26_); i_26_++) {
                 for(int i_27_ = 0; i_27_ < 4; i_27_++)
                     Class44.anIntArrayArray1030[i_26_][i_27_] = Cache.outgoingbuffer.getIntME1();
             }
@@ -282,13 +282,13 @@ public class FloorDecoration {
                 if(i_35_ <= 0) {
                     int i_36_ = ((Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer).length + -(PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758));
                     int i_37_ = -Landscape.anInt1157 + 512;
-                    if(((-Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition + i_36_) ^ 0xffffffff) > (i_37_ ^ 0xffffffff))
+                    if(((-Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition + i_36_) < i_37_))
                         i_37_ = i_36_ - (Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition);
                     if(i_37_ > i_34_)
                         i_37_ = i_34_;
                     Class57.aClass64_1345.method1008((Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition), i_37_, -127, (Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer));
                     if((Class8.aByte302 ^ 0xffffffff) != -1) {
-                        for(int i_38_ = 0; (i_37_ ^ 0xffffffff) < (i_38_ ^ 0xffffffff); i_38_++)
+                        for(int i_38_ = 0; (i_37_ > i_38_); i_38_++)
                             Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[(Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition) + i_38_] = (byte) (RSApplet.method27((Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[(Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition) + i_38_]), Class8.aByte302));
                     }
                     Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition += i_37_;
@@ -353,7 +353,7 @@ public class FloorDecoration {
                             Class45.aClass40_Sub1_1081.buffer[(Class45.aClass40_Sub1_1081.currentPosition + i_43_)] = (byte) (RSApplet.method27((Class45.aClass40_Sub1_1081.buffer[(Class45.aClass40_Sub1_1081.currentPosition) + i_43_]), Class8.aByte302));
                     }
                     Class45.aClass40_Sub1_1081.currentPosition += i_42_;
-                    if((i_35_ ^ 0xffffffff) < (Class45.aClass40_Sub1_1081.currentPosition ^ 0xffffffff))
+                    if((i_35_ > Class45.aClass40_Sub1_1081.currentPosition))
                         break;
                     if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null) {
                         Class45.aClass40_Sub1_1081.currentPosition = 0;

@@ -58,13 +58,13 @@ public class Class42 {
     public Class42(int[] arg0) {
 
         int i;
-        for(i = 1; (((arg0.length >> -2026619711) + arg0.length ^ 0xffffffff) <= (i ^ 0xffffffff)); i <<= 1) {
+        for(i = 1; (((arg0.length >> -2026619711) + arg0.length >= i)); i <<= 1) {
             /* empty */
         }
         anIntArray996 = new int[i + i];
-        for(int i_8_ = 0; (i + i ^ 0xffffffff) < (i_8_ ^ 0xffffffff); i_8_++)
+        for(int i_8_ = 0; (i + i > i_8_); i_8_++)
             anIntArray996[i_8_] = -1;
-        for(int i_9_ = 0; (arg0.length ^ 0xffffffff) < (i_9_ ^ 0xffffffff); i_9_++) {
+        for(int i_9_ = 0; (arg0.length > i_9_); i_9_++) {
             int i_10_;
             for(i_10_ = arg0[i_9_] & i - 1; anIntArray996[i_10_ + (i_10_ + 1)] != -1; i_10_ = i_10_ + 1 & -1 + i) {
                 /* empty */

@@ -74,7 +74,7 @@ public abstract class Class22_Sub2 extends Class22 {
         ImageRGB[] class40_sub5_sub14_sub4s = new ImageRGB[Class40_Sub5_Sub9.anInt2581];
         if(arg0 != -62)
             return null;
-        for(int i = 0; (i ^ 0xffffffff) > (Class40_Sub5_Sub9.anInt2581 ^ 0xffffffff); i++) {
+        for(int i = 0; (i < Class40_Sub5_Sub9.anInt2581); i++) {
             ImageRGB class40_sub5_sub14_sub4 = (class40_sub5_sub14_sub4s[i] = new ImageRGB());
             class40_sub5_sub14_sub4.maxWidth = ItemDefinition.anInt2846;
             class40_sub5_sub14_sub4.maxHeight = RSApplet.anInt31;
@@ -85,7 +85,7 @@ public abstract class Class22_Sub2 extends Class22 {
             byte[] is = Class58.aByteArrayArray1370[i];
             int i_4_ = (class40_sub5_sub14_sub4.image_height * class40_sub5_sub14_sub4.image_width);
             class40_sub5_sub14_sub4.pixels = new int[i_4_];
-            for(int i_5_ = 0; (i_5_ ^ 0xffffffff) > (i_4_ ^ 0xffffffff); i_5_++)
+            for(int i_5_ = 0; (i_5_ < i_4_); i_5_++)
                 class40_sub5_sub14_sub4.pixels[i_5_] = (Buffer.anIntArray1972[Class66.method1021(255, is[i_5_])]);
         }
         ActorDefinition.method569();

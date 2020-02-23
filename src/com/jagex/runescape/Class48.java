@@ -31,7 +31,7 @@ public class Class48 {
         anInt1133 = arg1;
         if(arg1 != arg0) {
             anIntArrayArray1128 = new int[arg0][14];
-            for(int i_25_ = 0; (i_25_ ^ 0xffffffff) > (arg0 ^ 0xffffffff); i_25_++) {
+            for(int i_25_ = 0; (i_25_ < arg0); i_25_++) {
                 int[] is = anIntArrayArray1128[i_25_];
                 double d = (double) i_25_ / (double) arg0 + 6.0;
                 double d_26_ = (double) arg1 / (double) arg0;
@@ -120,9 +120,9 @@ public class Class48 {
                 if(widget != null && arg6 == widget.anInt2648) {
                     int i_1_ = widget.anInt2696 - (-arg9 + arg3);
                     int i_2_ = -arg10 + (widget.anInt2656 + arg2);
-                    if(widget.type == 8 && (i_2_ ^ 0xffffffff) >= (arg8 ^ 0xffffffff) && i_1_ <= arg4 && arg8 < i_2_ + widget.anInt2692 && ((arg4 ^ 0xffffffff) > (widget.anInt2643 + i_1_ ^ 0xffffffff)))
+                    if(widget.type == 8 && (i_2_ <= arg8) && i_1_ <= arg4 && arg8 < i_2_ + widget.anInt2692 && ((arg4 < widget.anInt2643 + i_1_)))
                         Class40_Sub5_Sub17_Sub3.anInt3065 = i;
-                    if((widget.anInt2721 >= 0 || widget.anInt2719 != 0) && i_2_ <= arg8 && i_1_ <= arg4 && arg8 < i_2_ + widget.anInt2692 && ((arg4 ^ 0xffffffff) > (widget.anInt2643 + i_1_ ^ 0xffffffff))) {
+                    if((widget.anInt2721 >= 0 || widget.anInt2719 != 0) && i_2_ <= arg8 && i_1_ <= arg4 && arg8 < i_2_ + widget.anInt2692 && ((arg4 < widget.anInt2643 + i_1_))) {
                         if(widget.anInt2721 >= 0)
                             Floor.anInt2328 = widget.anInt2721;
                         else
@@ -133,11 +133,11 @@ public class Class48 {
                             method925(i_1_ + widget.anInt2643, arg1, i_2_, widget.scrollPosition, arg4, arg5, i, arg7, arg8, i_1_, widget.anInt2746, (i_2_ + widget.anInt2692));
                             if((widget.aWidgetArray2713) != null)
                                 method925(i_1_ + widget.anInt2643, (widget.aWidgetArray2713), i_2_, widget.scrollPosition, arg4, 0, widget.anInt2689, arg7, arg8, i_1_, widget.anInt2746, widget.anInt2692 + i_2_);
-                            if((widget.anInt2643 ^ 0xffffffff) > (widget.anInt2720 ^ 0xffffffff))
+                            if((widget.anInt2643 < widget.anInt2720))
                                 Class5.scrollInterface(widget.anInt2643, arg4, arg8, widget.anInt2720, (byte) 69, widget, widget.anInt2692 + i_2_, arg7, i_1_);
                         }
                     } else {
-                        if(widget.anInt2714 == 1 && (i_2_ ^ 0xffffffff) >= (arg8 ^ 0xffffffff) && (i_1_ ^ 0xffffffff) >= (arg4 ^ 0xffffffff) && (widget.anInt2692 + i_2_ ^ 0xffffffff) < (arg8 ^ 0xffffffff) && (widget.anInt2643 + i_1_ ^ 0xffffffff) < (arg4 ^ 0xffffffff)) {
+                        if(widget.anInt2714 == 1 && (i_2_ <= arg8) && (i_1_ <= arg4) && (widget.anInt2692 + i_2_ > arg8) && (widget.anInt2643 + i_1_ > arg4)) {
                             boolean bool = false;
                             if(widget.anInt2639 != 0)
                                 bool = (Class68_Sub1.method1051(300, widget));
@@ -146,11 +146,11 @@ public class Class48 {
                                 Floor.method558(0, widget.aClass1_2676, widget.anInt2689, -501, 0, 42, Class66.blank_string);
                             }
                         }
-                        if(((widget.anInt2714 ^ 0xffffffff) == -3) && (Main.anInt1773 ^ 0xffffffff) == -1 && arg8 >= i_2_ && (arg4 ^ 0xffffffff) <= (i_1_ ^ 0xffffffff) && arg8 < widget.anInt2692 + i_2_ && ((arg4 ^ 0xffffffff) > (i_1_ + widget.anInt2643 ^ 0xffffffff))) {
+                        if(((widget.anInt2714 ^ 0xffffffff) == -3) && (Main.anInt1773 ^ 0xffffffff) == -1 && arg8 >= i_2_ && (arg4 >= i_1_) && arg8 < widget.anInt2692 + i_2_ && ((arg4 < i_1_ + widget.anInt2643))) {
                             Floor.method558(0, widget.aClass1_2664, widget.anInt2689, -501, 0, 33, (Class40_Sub5_Sub17_Sub6.method832(102, new RSString[]{Landscape.aClass1_1162, (widget.aClass1_2709)})));
                             Class68.anInt1616++;
                         }
-                        if(((widget.anInt2714 ^ 0xffffffff) == -4) && (arg8 ^ 0xffffffff) <= (i_2_ ^ 0xffffffff) && (arg4 ^ 0xffffffff) <= (i_1_ ^ 0xffffffff) && i_2_ + widget.anInt2692 > arg8 && (arg4 < i_1_ + widget.anInt2643)) {
+                        if(((widget.anInt2714 ^ 0xffffffff) == -4) && (arg8 >= i_2_) && (arg4 >= i_1_) && i_2_ + widget.anInt2692 > arg8 && (arg4 < i_1_ + widget.anInt2643)) {
                             Floor.anInt2347++;
                             int i_3_;
                             if(arg7 != 3)
@@ -159,20 +159,20 @@ public class Class48 {
                                 i_3_ = 40;
                             Floor.method558(0, VertexNormal.aClass1_1090, widget.anInt2689, arg5 ^ ~0x1f4, 0, i_3_, Class66.blank_string);
                         }
-                        if(((widget.anInt2714 ^ 0xffffffff) == -5) && arg8 >= i_2_ && i_1_ <= arg4 && arg8 < widget.anInt2692 + i_2_ && (widget.anInt2643 + i_1_ ^ 0xffffffff) < (arg4 ^ 0xffffffff)) {
+                        if(((widget.anInt2714 ^ 0xffffffff) == -5) && arg8 >= i_2_ && i_1_ <= arg4 && arg8 < widget.anInt2692 + i_2_ && (widget.anInt2643 + i_1_ > arg4)) {
                             Floor.method558(0, widget.aClass1_2676, widget.anInt2689, -501, 0, 23, Class66.blank_string);
                             Actor.anInt3128++;
                         }
-                        if(widget.anInt2714 == 5 && (i_2_ ^ 0xffffffff) >= (arg8 ^ 0xffffffff) && i_1_ <= arg4 && arg8 < i_2_ + widget.anInt2692 && (i_1_ + widget.anInt2643 ^ 0xffffffff) < (arg4 ^ 0xffffffff)) {
+                        if(widget.anInt2714 == 5 && (i_2_ <= arg8) && i_1_ <= arg4 && arg8 < i_2_ + widget.anInt2692 && (i_1_ + widget.anInt2643 > arg4)) {
                             Class10.anInt345++;
                             Floor.method558(0, widget.aClass1_2676, widget.anInt2689, -501, 0, 57, Class66.blank_string);
                         }
-                        if(widget.anInt2714 == 6 && (Class6_Sub1.anInt1819 ^ 0xffffffff) == 0 && (i_2_ ^ 0xffffffff) >= (arg8 ^ 0xffffffff) && i_1_ <= arg4 && arg8 < i_2_ + widget.anInt2692 && ((arg4 ^ 0xffffffff) > (widget.anInt2643 + i_1_ ^ 0xffffffff))) {
+                        if(widget.anInt2714 == 6 && (Class6_Sub1.anInt1819 ^ 0xffffffff) == 0 && (i_2_ <= arg8) && i_1_ <= arg4 && arg8 < i_2_ + widget.anInt2692 && ((arg4 < widget.anInt2643 + i_1_))) {
                             Floor.method558(0, widget.aClass1_2676, widget.anInt2689, -501, 0, 54, Class66.blank_string);
                         }
                         if((widget.type ^ 0xffffffff) == -3) {
                             int i_4_ = 0;
-                            for(int i_5_ = 0; ((i_5_ ^ 0xffffffff) > (widget.anInt2643 ^ 0xffffffff)); i_5_++) {
+                            for(int i_5_ = 0; ((i_5_ < widget.anInt2643)); i_5_++) {
                                 for(int i_6_ = 0; i_6_ < widget.anInt2692; i_6_++) {
                                     int i_7_ = (i_6_ * ((widget.itemSpritePadsX) + 32) + i_2_);
                                     int i_8_ = (i_1_ + ((32 + (widget.itemSpritePadsY)) * i_5_));
@@ -180,7 +180,7 @@ public class Class48 {
                                         i_7_ += (widget.images[i_4_]);
                                         i_8_ += (widget.imageX[i_4_]);
                                     }
-                                    if(arg8 >= i_7_ && i_8_ <= arg4 && i_7_ + 32 > arg8 && ((arg4 ^ 0xffffffff) > (32 + i_8_ ^ 0xffffffff))) {
+                                    if(arg8 >= i_7_ && i_8_ <= arg4 && i_7_ + 32 > arg8 && ((arg4 < 32 + i_8_))) {
                                         RSRuntimeException.anInt1642 = widget.anInt2689;
                                         Class55.anInt1288 = i_4_;
                                         if(((widget.items[i_4_]) ^ 0xffffffff) < -1) {
@@ -263,7 +263,7 @@ public class Class48 {
                                 }
                             }
                         }
-                        if(widget.aBoolean2636 && ((widget.anInt2718 ^ 0xffffffff) != 0) && (arg8 ^ 0xffffffff) <= (i_2_ ^ 0xffffffff) && (arg4 ^ 0xffffffff) <= (i_1_ ^ 0xffffffff) && ((arg8 ^ 0xffffffff) > (widget.anInt2692 + i_2_ ^ 0xffffffff)) && ((arg4 ^ 0xffffffff) > (i_1_ + widget.anInt2643 ^ 0xffffffff))) {
+                        if(widget.aBoolean2636 && ((widget.anInt2718 ^ 0xffffffff) != 0) && (arg8 >= i_2_) && (arg4 >= i_1_) && ((arg8 < widget.anInt2692 + i_2_)) && ((arg4 < i_1_ + widget.anInt2643))) {
                             Class67.anInt1576++;
                             ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((widget.anInt2718), 10);
                             if(widget.isInventory) {
@@ -288,7 +288,7 @@ public class Class48 {
                             else
                                 Floor.method558(class40_sub5_sub16.anInt2852, Class40_Sub5_Sub15.aClass1_2774, widget.anInt2648, -501, widget.anInt2689 & 0x7fff, 1007, (Class40_Sub5_Sub17_Sub6.method832(68, new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)})));
                         }
-                        if(widget.aBoolean2688 && widget.aClass1Array2661 != null && (i_2_ ^ 0xffffffff) >= (arg8 ^ 0xffffffff) && (i_1_ ^ 0xffffffff) >= (arg4 ^ 0xffffffff) && widget.anInt2692 + i_2_ > arg8 && (arg4 < i_1_ + widget.anInt2643)) {
+                        if(widget.aBoolean2688 && widget.aClass1Array2661 != null && (i_2_ <= arg8) && (i_1_ <= arg4) && widget.anInt2692 + i_2_ > arg8 && (arg4 < i_1_ + widget.anInt2643)) {
                             RSString class1 = Class66.blank_string;
                             if(widget.anInt2718 != -1) {
                                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((widget.anInt2718), arg5 ^ 0xa);

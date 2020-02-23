@@ -185,13 +185,13 @@ public class Class6_Sub1 extends Class6 {
         aBooleanArray1796 = new boolean[aByteArrayArray212.length];
         anInt1817++;
         int i = -58 % ((-44 - arg0) / 55);
-        for(int i_1_ = 0; (i_1_ ^ 0xffffffff) > (aBooleanArray1796.length ^ 0xffffffff); i_1_++)
+        for(int i_1_ = 0; (i_1_ < aBooleanArray1796.length); i_1_++)
             aBooleanArray1796[i_1_] = false;
         if(aClass56_1812 == null)
             aBoolean1800 = true;
         else {
             anInt1797 = -1;
-            for(int i_2_ = 0; (aBooleanArray1796.length ^ 0xffffffff) < (i_2_ ^ 0xffffffff); i_2_++) {
+            for(int i_2_ = 0; (aBooleanArray1796.length > i_2_); i_2_++) {
                 if(anIntArray261[i_2_] > 0) {
                     PacketBuffer.method513(i_2_, this, aClass56_1812, (byte) -28);
                     anInt1797 = i_2_;
@@ -232,7 +232,7 @@ public class Class6_Sub1 extends Class6 {
         int i = 0;
         anInt1803++;
         int i_3_ = 0;
-        for(int i_4_ = 0; (i_4_ ^ 0xffffffff) > (aByteArrayArray212.length ^ 0xffffffff); i_4_++) {
+        for(int i_4_ = 0; (i_4_ < aByteArrayArray212.length); i_4_++) {
             if(anIntArray261[i_4_] > 0) {
                 i += 100;
                 i_3_ += method201(i_4_, 28);

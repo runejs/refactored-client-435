@@ -229,7 +229,7 @@ public class Class27 {
                 Class32.packetBuffer.putPacket(148);
                 Class32.packetBuffer.putShortLE(i_12_ >> 14 & 0x7fff);
             }
-            if((action ^ 0xffffffff) == -28) {
+            if(action == 27) {
                 Class40_Sub5_Sub7.method596(i, i_12_, (byte) -79, i_10_);
                 Class32.packetBuffer.putPacket(229);
                 Class40_Sub6.anInt2115++;
@@ -251,7 +251,7 @@ public class Class27 {
                     Class32.packetBuffer.putShortLE(i_12_);
                 }
             }
-            if((action ^ 0xffffffff) == -27 || (action ^ 0xffffffff) == -47) {
+            if(action == 26 || action == 46) {
                 RSString class1 = Landscape.aClass1Array1184[arg1];
                 int i_13_ = class1.method60(Class26.aClass1_620);
                 if((i_13_ ^ 0xffffffff) != 0) {
@@ -308,7 +308,7 @@ public class Class27 {
                 if((Class43.openChatboxWidgetId ^ 0xffffffff) == (i_10_ >> 16 ^ 0xffffffff))
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
             }
-            if((action ^ 0xffffffff) == -58) {
+            if(action == 57) {
                 Class32.packetBuffer.putPacket(64);
                 Class32.packetBuffer.putIntBE(i_10_);
                 Widget widget = Class68.method1045(i_10_, (byte) -93);
@@ -348,7 +348,7 @@ public class Class27 {
                     Class32.packetBuffer.putShortLE(i_12_);
                 }
             }
-            if((action ^ 0xffffffff) == -15) {
+            if(action == 14) {
                 Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     Class29.anInt677++;
@@ -403,7 +403,7 @@ public class Class27 {
                     Npc.aClass1_3295 = RSApplet.aClass1_34;
                 ISAAC.redrawTabArea = true;
             } else {
-                if((action ^ 0xffffffff) == -16) {
+                if(action == 15) {
                     GameObject.anInt3020++;
                     boolean bool = (Class38_Sub1.method448(0, 0, (Player.localPlayer.anIntArray3088[0]), i, (byte) 102, 0, false, 0, 0, (Player.localPlayer.anIntArray3135[0]), i_10_, 2));
                     if(!bool)
@@ -474,7 +474,7 @@ public class Class27 {
                     Class32.packetBuffer.putPacket(151);
                     Class32.packetBuffer.putOffsetShortLE(i_12_);
                 }
-                if((action ^ 0xffffffff) == -1003) {
+                if(action == 1002) {
                     Class40_Sub5_Sub7.method596(i, i_12_, (byte) -11, i_10_);
                     SubNode.anInt2089++;
                     Class32.packetBuffer.putPacket(62);
@@ -482,7 +482,7 @@ public class Class27 {
                     Class32.packetBuffer.putShortLE(i_10_ + Class26.anInt635);
                     Class32.packetBuffer.putOffsetShortLE(i + Class40_Sub5_Sub2.anInt2307);
                 }
-                if((action ^ 0xffffffff) == -31) {
+                if(action == 30) {
                     Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Class40_Sub13.anInt2180++;
@@ -971,7 +971,7 @@ public class Class27 {
                         i = (-widget.anInt2643 + widget_24_.anInt2643);
                     if(i_26_ < 0)
                         i_26_ = 0;
-                    if((widget_24_.anInt2692 ^ 0xffffffff) > (widget.anInt2692 + i_26_ ^ 0xffffffff))
+                    if((widget_24_.anInt2692 < widget.anInt2692 + i_26_))
                         i_26_ = (widget_24_.anInt2692 - widget.anInt2692);
                     if((Class10.aWidget_353.anObjectArray2669 != null) && (arg2 & 0x200) != 0)
                         Class43.method891(widget.anObjectArray2669, 0, i, widget, i_26_, false);
@@ -994,7 +994,7 @@ public class Class27 {
             if(widget_27_ != null && (arg4 ^ 0xffffffff) == (widget_27_.anInt2648 ^ 0xffffffff)) {
                 int i_28_ = arg3 + widget_27_.anInt2696;
                 int i_29_ = arg5 + widget_27_.anInt2656;
-                if(i_29_ <= arg6 && i_28_ <= arg1 && (i_29_ + widget_27_.anInt2692 ^ 0xffffffff) < (arg6 ^ 0xffffffff) && ((arg1 ^ 0xffffffff) > (i_28_ + widget_27_.anInt2643 ^ 0xffffffff)) && !widget_27_.aBoolean2750) {
+                if(i_29_ <= arg6 && i_28_ <= arg1 && (i_29_ + widget_27_.anInt2692 > arg6) && ((arg1 < i_28_ + widget_27_.anInt2643)) && !widget_27_.aBoolean2750) {
                     if(widget_27_.anInt2689 < 0 && arg2 || widget_27_.anInt2689 >= 0 && !arg2)
                         widget = widget_27_;
                     if((widget_27_.type ^ 0xffffffff) == -1) {

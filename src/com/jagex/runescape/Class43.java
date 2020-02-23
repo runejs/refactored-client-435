@@ -156,13 +156,13 @@ public class Class43 {
                     }
                     if((i_3_ ^ 0xffffffff) == -32) {
                         i -= 2;
-                        if((Class67.anIntArray1588[i] ^ 0xffffffff) >= (Class67.anIntArray1588[i + 1] ^ 0xffffffff))
+                        if((Class67.anIntArray1588[i] <= Class67.anIntArray1588[i + 1]))
                             i_2_ += is[i_2_];
                         continue;
                     }
                     if((i_3_ ^ 0xffffffff) == -33) {
                         i -= 2;
-                        if((Class67.anIntArray1588[1 + i] ^ 0xffffffff) >= (Class67.anIntArray1588[i] ^ 0xffffffff))
+                        if((Class67.anIntArray1588[1 + i] <= Class67.anIntArray1588[i]))
                             i_2_ += is[i_2_];
                         continue;
                     }
@@ -202,7 +202,7 @@ public class Class43 {
                         Class40_Sub5_Sub1 class40_sub5_sub1_14_ = IdentityKit.method626(i_13_, 73, 65);
                         int[] is_15_ = new int[class40_sub5_sub1_14_.anInt2271];
                         RSString[] class1s = new RSString[class40_sub5_sub1_14_.anInt2267];
-                        for(int i_16_ = 0; ((class40_sub5_sub1_14_.anInt2263 ^ 0xffffffff) < (i_16_ ^ 0xffffffff)); i_16_++)
+                        for(int i_16_ = 0; ((class40_sub5_sub1_14_.anInt2263 > i_16_)); i_16_++)
                             is_15_[i_16_] = (Class67.anIntArray1588[i - (class40_sub5_sub1_14_.anInt2263 + -i_16_)]);
                         for(int i_17_ = 0; class40_sub5_sub1_14_.anInt2266 > i_17_; i_17_++)
                             class1s[i_17_] = (Class40_Sub11.aClass1Array2153[(i_1_ - class40_sub5_sub1_14_.anInt2266 + i_17_)]);
@@ -244,7 +244,7 @@ public class Class43 {
                             widget.aWidgetArray2713 = new Widget[1 + i_20_];
                         if((i_20_ ^ 0xffffffff) <= ((widget.aWidgetArray2713).length ^ 0xffffffff)) {
                             Widget[] widgets = new Widget[1 + i_20_];
-                            for(int i_21_ = 0; (((widget.aWidgetArray2713).length ^ 0xffffffff) < (i_21_ ^ 0xffffffff)); i_21_++)
+                            for(int i_21_ = 0; (((widget.aWidgetArray2713).length > i_21_)); i_21_++)
                                 widgets[i_21_] = (widget.aWidgetArray2713[i_21_]);
                             widget.aWidgetArray2713 = widgets;
                         }
@@ -705,10 +705,10 @@ public class Class43 {
                             if((i_85_ ^ 0xffffffff) > -1 || (i_85_ ^ 0xffffffff) < -10)
                                 i_1_--;
                             else {
-                                if((widget.aClass1Array2661 == null) || (((widget.aClass1Array2661).length ^ 0xffffffff) >= (i_85_ ^ 0xffffffff))) {
+                                if((widget.aClass1Array2661 == null) || (((widget.aClass1Array2661).length <= i_85_))) {
                                     RSString[] class1s = new RSString[1 + i_85_];
                                     if(widget.aClass1Array2661 != null) {
-                                        for(int i_86_ = 0; (((widget.aClass1Array2661).length ^ 0xffffffff) < (i_86_ ^ 0xffffffff)); i_86_++)
+                                        for(int i_86_ = 0; (((widget.aClass1Array2661).length > i_86_)); i_86_++)
                                             class1s[i_86_] = (widget.aClass1Array2661[i_86_]);
                                     }
                                     widget.aClass1Array2661 = class1s;

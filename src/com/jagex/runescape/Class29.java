@@ -61,7 +61,7 @@ public class Class29 {
         Class60.anInt1407 = 0;
         if(arg0 != -5)
             method370(45);
-        for(int i_1_ = 0; (i ^ 0xffffffff) < (i_1_ ^ 0xffffffff); i_1_++) {
+        for(int i_1_ = 0; (i > i_1_); i_1_++) {
             int i_2_ = Class57.anIntArray1334[i_1_];
             Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_2_]);
             int i_3_ = Cache.outgoingbuffer.putBits(1, (byte) -65);

@@ -149,7 +149,7 @@ public class ActorDefinition extends SubNode {
         class40_sub11.aByteArrayArrayArray2159 = new byte[class40_sub11.anInt2160][][];
         class40_sub11.aClass15Array2156 = new Class15[class40_sub11.anInt2160];
         class40_sub11.anIntArray2155 = new int[class40_sub11.anInt2160];
-        for(int i_6_ = 0; (i_6_ ^ 0xffffffff) > (class40_sub11.anInt2160 ^ 0xffffffff); i_6_++) {
+        for(int i_6_ = 0; (i_6_ < class40_sub11.anInt2160); i_6_++) {
             try {
                 int i_7_ = arg2.getUnsignedByte();
                 if(i_7_ != 0 && i_7_ != 1 && (i_7_ ^ 0xffffffff) != -3) {
@@ -163,7 +163,7 @@ public class ActorDefinition extends SubNode {
                         }
                         byte[][] is = new byte[i_9_][];
                         if(i_7_ == 3) {
-                            for(int i_11_ = 0; ((i_11_ ^ 0xffffffff) > (i_9_ ^ 0xffffffff)); i_11_++) {
+                            for(int i_11_ = 0; ((i_11_ < i_9_)); i_11_++) {
                                 int i_12_ = arg2.getIntBE();
                                 is[i_11_] = new byte[i_12_];
                                 arg2.getBytes(i_12_, 0, is[i_11_]);
@@ -171,7 +171,7 @@ public class ActorDefinition extends SubNode {
                         }
                         class40_sub11.anIntArray2154[i_6_] = i_7_;
                         Class[] var_classes = new Class[i_9_];
-                        for(int i_13_ = 0; (i_13_ ^ 0xffffffff) > (i_9_ ^ 0xffffffff); i_13_++) {
+                        for(int i_13_ = 0; (i_13_ < i_9_); i_13_++) {
                             var_classes[i_13_] = Class26.method349((byte) 91, strings[i_13_]);
                         }
                         class40_sub11.aClass15Array2156[i_6_] = arg0.method386(var_classes, string_8_, Class26.method349((byte) 91, string), (byte) -64);

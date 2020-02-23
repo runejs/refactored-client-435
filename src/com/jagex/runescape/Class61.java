@@ -114,8 +114,8 @@ public class Class61 {
 
     public static void method999(int arg0, byte arg1, int arg2, int arg3, int arg4) {
         int i = -112 / ((50 - arg1) / 53);
-        for(int i_0_ = arg0; (i_0_ ^ 0xffffffff) >= (arg0 + arg2 ^ 0xffffffff); i_0_++) {
-            for(int i_1_ = arg4; (arg3 + arg4 ^ 0xffffffff) <= (i_1_ ^ 0xffffffff); i_1_++) {
+        for(int i_0_ = arg0; (i_0_ <= arg0 + arg2); i_0_++) {
+            for(int i_1_ = arg4; (arg3 + arg4 >= i_1_); i_1_++) {
                 if(i_1_ >= 0 && (i_1_ ^ 0xffffffff) > -105 && i_0_ >= 0 && (i_0_ ^ 0xffffffff) > -105) {
                     Class19.aByteArrayArrayArray492[0][i_1_][i_0_] = (byte) 127;
                     if(arg4 == i_1_ && i_1_ > 0)

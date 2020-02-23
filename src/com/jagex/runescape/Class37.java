@@ -123,7 +123,7 @@ public class Class37 {
             if((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i]) != null)
                 Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i].anInt3137 = -1;
         }
-        for(int i = 0; ((Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813.length ^ 0xffffffff) < (i ^ 0xffffffff)); i++) {
+        for(int i = 0; ((Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813.length > i)); i++) {
             if(Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i] != null)
                 Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i].anInt3137 = -1;
         }
@@ -178,7 +178,7 @@ public class Class37 {
                     }
                 }
             }
-            for(int i_14_ = 0; (Class60.anInt1407 ^ 0xffffffff) < (i_14_ ^ 0xffffffff); i_14_++) {
+            for(int i_14_ = 0; (Class60.anInt1407 > i_14_); i_14_++) {
                 Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_14_]]);
                 if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.isVisible(1)) {
                     i = (class40_sub5_sub17_sub4_sub1.anInt3098 / 32 + -((Player.localPlayer.anInt3098) / 32));
@@ -216,7 +216,7 @@ public class Class37 {
                     i = (4 * (Class68.anInt1637 - Class40_Sub5_Sub2.anInt2307) - (-2 + ((Player.localPlayer.anInt3098) / 32)));
                     Floor.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], i, i_8_);
                 }
-                if(Player.anInt3288 == 10 && (Class68.anInt1623 ^ 0xffffffff) <= -1 && ((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156).length ^ 0xffffffff) < (Class68.anInt1623 ^ 0xffffffff)) {
+                if(Player.anInt3288 == 10 && (Class68.anInt1623 ^ 0xffffffff) <= -1 && ((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156).length > Class68.anInt1623)) {
                     Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class68.anInt1623]);
                     if(class40_sub5_sub17_sub4_sub1 != null) {
                         i_8_ = (-((Player.localPlayer.anInt3089) / 32) + (class40_sub5_sub17_sub4_sub1.anInt3089 / 32));
