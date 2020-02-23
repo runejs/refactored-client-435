@@ -32,7 +32,7 @@ public class PacketBuffer extends Buffer {
         super(arg0);
     }
 
-    public static void method513(int arg0, Class6_Sub1 arg1, Class56 arg2, byte arg3) {
+    public static void method513(int arg0, CacheIndex_Sub1 arg1, Class56 arg2, byte arg3) {
         Class40_Sub6 class40_sub6 = new Class40_Sub6();
         class40_sub6.anInt2112 = 1;
         class40_sub6.key = (long) arg0;
@@ -62,7 +62,7 @@ public class PacketBuffer extends Buffer {
         Class32.packetBuffer.putPacket(176);
         if(Class29.anInt673 != -1) {
             Class55.method958(Class29.anInt673, -14222);
-            Class6_Sub1.anInt1819 = -1;
+            CacheIndex_Sub1.anInt1819 = -1;
             IdentityKit.aBoolean2597 = true;
             ISAAC.redrawTabArea = true;
             Class29.anInt673 = -1;
@@ -70,7 +70,7 @@ public class PacketBuffer extends Buffer {
         Class40_Sub13.anInt2184++;
         if(Class43.openChatboxWidgetId != -1) {
             Class55.method958(Class43.openChatboxWidgetId, -14222);
-            Class6_Sub1.anInt1819 = -1;
+            CacheIndex_Sub1.anInt1819 = -1;
             Class52.redrawChatbox = true;
             Class43.openChatboxWidgetId = -1;
         }
@@ -87,7 +87,7 @@ public class PacketBuffer extends Buffer {
             if(Class66.anInt1560 != -1) {
                 Class55.method958(Class66.anInt1560, -14222);
                 Class66.anInt1560 = -1;
-                Class6_Sub1.anInt1819 = -1;
+                CacheIndex_Sub1.anInt1819 = -1;
             }
         }
     }

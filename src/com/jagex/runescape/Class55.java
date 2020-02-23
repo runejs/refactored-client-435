@@ -14,7 +14,7 @@ import java.awt.*;
 import java.io.*;
 
 public class Class55 {
-    public static Class6_Sub1 aClass6_Sub1_1286;
+    public static CacheIndex_Sub1 aClass6_Sub1_1286;
     public static int anInt1288 = 0;
     public static Class48 aClass48_1289;
     public static RSString aClass1_1291 = RSString.CreateString("slide:");
@@ -78,7 +78,7 @@ public class Class55 {
         Class40_Sub5_Sub15 class40_sub5_sub15 = ((Class40_Sub5_Sub15) Class42.aClass9_998.method231((long) arg1, (byte) 101));
         if(class40_sub5_sub15 != null)
             return class40_sub5_sub15;
-        class40_sub5_sub15 = Class35.method421(Class40_Sub5_Sub4.aClass6_2364, (byte) 79, arg1, Class40_Sub11.aClass6_2162, false);
+        class40_sub5_sub15 = Class35.method421(Class40_Sub5_Sub4.aCacheIndex_2364, (byte) 79, arg1, Class40_Sub11.aCacheIndex_2162, false);
         if(class40_sub5_sub15 != null)
             Class42.aClass9_998.method230(arg0 + -7109, (long) arg1, class40_sub5_sub15);
         if(arg0 != -99)
@@ -151,12 +151,12 @@ public class Class55 {
         Class13.aClass1_405 = VertexNormal.aClass1_1115;
         IdentityKit.aClass1_2587 = Class22_Sub1.aClass1_1838;
         Class40_Sub5_Sub11.aClass1_2620 = Class26.aClass1_631;
-        Class27.aClass1_664 = Class6_Sub1.aClass1_1799;
+        Class27.aClass1_664 = CacheIndex_Sub1.aClass1_1799;
         Class61.aClass1_1422 = Class54.aClass1_1271;
         Landscape.aClass1_1181 = Class66.aClass1_1549;
         Class40_Sub7.aClass1_2125 = Class67.aClass1_1591;
         Class40_Sub5_Sub9.aClass1_2577 = Class48.aClass1_1137;
-        Renderable.aClass1_2864 = Class6_Sub1.aClass1_1816;
+        Renderable.aClass1_2864 = CacheIndex_Sub1.aClass1_1816;
         Class68_Sub1.aClass1_2209 = RSString.aClass1_1702;
         ActorDefinition.aClass1_2384 = Class53.aClass1_1269;
         Class22.aClass1_532 = Class57.aClass1_1340;
@@ -203,7 +203,7 @@ public class Class55 {
         Class22_Sub1.aClass1_1851 = RSApplet.aClass1_35;
         Node.aClass1_949 = Class27.aClass1_647;
         Class40_Sub5_Sub6.aClass1_2462 = Class22_Sub2.aClass1_1883;
-        Class40_Sub13.aClass1_2188 = Class6_Sub1.aClass1_1814;
+        Class40_Sub13.aClass1_2188 = CacheIndex_Sub1.aClass1_1814;
         Class42.aClass1_1002 = Class40_Sub5_Sub2.aClass1_2292;
         Class38_Sub1.aClass1_1905 = Class53.aClass1_1246;
         Node.aClass1_957 = Class27.aClass1_652;
@@ -232,7 +232,7 @@ public class Class55 {
         Class22_Sub1.aClass1_1864 = Landscape.aClass1_1160;
         Node.aClass1_956 = Class27.aClass1_647;
         Widget.aClass1_2671 = Class66.aClass1_1558;
-        Class43.aClass1_1019 = Class6_Sub1.aClass1_1798;
+        Class43.aClass1_1019 = CacheIndex_Sub1.aClass1_1798;
         Class40_Sub5_Sub6.aClass1_2446 = Class68_Sub1.aClass1_2198;
         Widget.aClass1_2684 = Class40_Sub5_Sub2.aClass1_2291;
         Class27.takeStringInstance = Class40_Sub5_Sub2.aClass1_2296;
@@ -241,7 +241,7 @@ public class Class55 {
         Class49.aClass1_1148 = Class40_Sub5_Sub1.aClass1_2279;
         Class33.aClass1_799 = Npc.aClass1_3307;
         Class4.aClass1_180 = Class34.aClass1_804;
-        Class40_Sub5_Sub15.aClass1_2786 = Class6_Sub1.aClass1_1801;
+        Class40_Sub5_Sub15.aClass1_2786 = CacheIndex_Sub1.aClass1_1801;
         GameObject.aClass1_3039 = Class8.aClass1_293;
         Class40_Sub5_Sub17_Sub1.aClass1_3009 = Main.aClass1_1777;
         GameObject.aClass1_3038 = Class39.aClass1_911;
@@ -274,14 +274,14 @@ public class Class55 {
         Class45.aClass1_1076 = GameObjectDefinition.aClass1_2556;
         Class34.aClass1_829 = RSApplet.aClass1_25;
         CollisionMap.aClass1_167 = Class26.aClass1_629;
-        Landscape.aClass1_1178 = Class6.aClass1_259;
+        Landscape.aClass1_1178 = CacheIndex.aClass1_259;
         Class61.aClass1_1432 = Class44.aClass1_1034;
         Node.aClass1_941 = Class64.aClass1_1523;
         Class26.aClass1_634 = Class40_Sub5_Sub9.aClass1_2564;
         Class53.aClass1_1259 = Class12.aClass1_396;
         Class40_Sub5_Sub4.aClass1_2351 = Class4.aClass1_181;
         Class22_Sub1.aClass1_1858 = Class12.aClass1_382;
-        Class6.aClass1_258 = Class40_Sub5_Sub7.aClass1_2475;
+        CacheIndex.aClass1_258 = Class40_Sub5_Sub7.aClass1_2475;
         Class35.aClass1_1747 = Class45.aClass1_1079;
         Class33.aClass1_783 = Class42.aClass1_1003;
         IdentityKit.aClass1_2615 = HashTable.aClass1_558;
@@ -346,9 +346,9 @@ public class Class55 {
         }
     }
 
-    public static void method966(int arg0, Class6 arg1, Class6 arg2) {
-        Class40_Sub5_Sub9.aClass6_2582 = arg1;
+    public static void method966(int arg0, CacheIndex arg1, CacheIndex arg2) {
+        Class40_Sub5_Sub9.aCacheIndex_2582 = arg1;
         int i = -87 / ((-20 - arg0) / 56);
-        Class19.aClass6_488 = arg2;
+        Class19.aCacheIndex_488 = arg2;
     }
 }

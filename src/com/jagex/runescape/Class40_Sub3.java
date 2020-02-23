@@ -22,7 +22,7 @@ public class Class40_Sub3 extends Node {
     public static int anInt2029;
     public static int anInt2032 = 0;
     public static int anInt2034;
-    public static Class6 aClass6_2037;
+    public static CacheIndex aCacheIndex_2037;
     public int anInt2017;
     public int anInt2018;
     public int anInt2025;
@@ -41,7 +41,7 @@ public class Class40_Sub3 extends Node {
         if(arg0 != -10)
             cmd_fpson = null;
         anIntArray2023 = null;
-        aClass6_2037 = null;
+        aCacheIndex_2037 = null;
         anIntArray2016 = null;
         cmd_fpson = null;
         aClass40_Sub5_Sub14_Sub4Array2019 = null;
@@ -222,8 +222,8 @@ public class Class40_Sub3 extends Node {
                 Class27.aClass40_Sub5_Sub14_Sub4Array649 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Class4.aClass1_183, Class66.blank_string);
             else
                 i++;
-            if(Class6.aClass40_Sub5_Sub14_Sub2Array215 == null)
-                Class6.aClass40_Sub5_Sub14_Sub2Array215 = Class40_Sub5_Sub2.method550((ActorDefinition.aClass6_Sub1_2377), (byte) -125, RSString.aClass1_1677, Class66.blank_string);
+            if(CacheIndex.aClass40_Sub5_Sub14_Sub2Array215 == null)
+                CacheIndex.aClass40_Sub5_Sub14_Sub2Array215 = Class40_Sub5_Sub2.method550((ActorDefinition.aClass6_Sub1_2377), (byte) -125, RSString.aClass1_1677, Class66.blank_string);
             else
                 i++;
             if(Class40_Sub5_Sub13.moderatorIcon != null)
@@ -312,7 +312,7 @@ public class Class40_Sub3 extends Node {
         anInt2022++;
         if(class40_sub5_sub9 != null)
             return class40_sub5_sub9;
-        byte[] is = Actor.aClass6_3150.method172(arg1, 127, 1);
+        byte[] is = Actor.aCacheIndex_3150.getFile(arg1, 1);
         class40_sub5_sub9 = new Class40_Sub5_Sub9();
         if(is != null)
             class40_sub5_sub9.readValues(new Buffer(is));

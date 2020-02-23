@@ -10,7 +10,7 @@ public class Class49 {
     public static volatile int anInt1147 = 0;
     public static RSString aClass1_1148;
     public static RSString aClass1_1149;
-    public static Class6 aClass6_1150;
+    public static CacheIndex aCacheIndex_1150;
     public static int anInt1151;
     public static Class40_Sub9_Sub1 aClass40_Sub9_Sub1_1152;
     public static RSString aClass1_1153;
@@ -68,7 +68,7 @@ public class Class49 {
             aClass1_1146 = null;
             aClass1_1143 = null;
             aClass1_1156 = null;
-            aClass6_1150 = null;
+            aCacheIndex_1150 = null;
         }
 
     }

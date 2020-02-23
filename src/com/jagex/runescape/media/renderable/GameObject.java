@@ -90,23 +90,23 @@ public class GameObject extends Renderable {
         Class13.method245(3799);
         if(arg0 > 75) {
             for(int i = 0; i < Class17.anInt460; i++) {
-                int i_0_ = Class6.anIntArray225[i];
-                if(Node.anInt926 != (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_].anInt3134)) {
-                    Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_].aClass40_Sub5_Sub5_3300 = null;
-                    Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_] = null;
+                int i_0_ = CacheIndex.anIntArray225[i];
+                if(Node.anInt926 != (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_].anInt3134)) {
+                    CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_].aClass40_Sub5_Sub5_3300 = null;
+                    CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_] = null;
                 }
             }
             if((Widget.packetsize ^ 0xffffffff) != (Cache.outgoingbuffer.currentPosition ^ 0xffffffff))
                 throw new RuntimeException("gnp1 pos:" + (Cache.outgoingbuffer.currentPosition) + " psize:" + Widget.packetsize);
             for(int i = 0; GameObjectDefinition.anInt2558 > i; i++) {
-                if((Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i]]) == null)
+                if((CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i]]) == null)
                     throw new RuntimeException("gnp2 pos:" + i + " size:" + (GameObjectDefinition.anInt2558));
             }
         }
 
     }
 
-    public static IndexedImage method769(int arg0, Class6 arg1, int arg2) {
+    public static IndexedImage method769(int arg0, CacheIndex arg1, int arg2) {
 
         anInt3032++;
         if(!Buffer.method472(arg1, arg2))

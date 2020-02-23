@@ -224,7 +224,7 @@ public class Class44 implements Runnable {
                 }
             }
         } catch(Exception exception) {
-            Class6.method169(null, (byte) -127, exception);
+            CacheIndex.method169(null, (byte) -127, exception);
         }
 
     }

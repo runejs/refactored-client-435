@@ -695,7 +695,7 @@ public class Model extends Renderable {
         return (arg0 & 0xff80) + arg1;
     }
 
-    public static Model getModel(Class6 arg0, int arg1, int arg2) {
+    public static Model getModel(CacheIndex arg0, int arg1, int arg2) {
         try {
             if(ModelLoader.models == null) {
                 new ModelLoader();
@@ -705,7 +705,7 @@ public class Model extends Renderable {
                     return new Model(ModelLoader.loadNewModel(modelStored));
                 }
             }
-            byte[] is = arg0.method172(arg2, 117, arg1);
+            byte[] is = arg0.getFile(arg2, arg1);
             if(is == null)
                 return null;
             return new Model(is);
@@ -715,7 +715,7 @@ public class Model extends Renderable {
         return null;
 
         // 435 model loading:
-        //        byte[] is = arg0.method172(arg2, 117, arg1);
+        //        byte[] is = arg0.getFile(arg2, 117, arg1);
         //        if(is == null)
         //            return null;
         //        return new com.jagex.runescape.media.renderable.Model(is);

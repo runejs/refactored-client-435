@@ -27,18 +27,18 @@ public abstract class Actor extends Renderable {
     public static RSString aClass1_3138 = aClass1_3114;
     public static int anInt3142;
     public static volatile int eventMouseButtonPressed = 0;
-    public static Class6 aClass6_3144;
+    public static CacheIndex aCacheIndex_3144;
     public static int anInt3146;
     public static int anInt3147;
     public static int[] anIntArray3149;
-    public static Class6 aClass6_3150;
+    public static CacheIndex aCacheIndex_3150;
     public static int anInt3151;
     public static Signlink aClass31_3152;
     public static int anInt3153;
     public static RSString aClass1_3154;
     public static RSString aClass1_3155;
     public static Player[] aClass40_Sub5_Sub17_Sub4_Sub1Array3156;
-    public static Class6_Sub1 aClass6_Sub1_3157;
+    public static CacheIndex_Sub1 aClass6_Sub1_3157;
     public static RSString aClass1_3158;
     public static RSString aClass1_3159;
     public static RSString[] chatMessages;
@@ -351,9 +351,9 @@ public abstract class Actor extends Renderable {
         aClass1_3114 = null;
         chatMessages = null;
         aClass40_Sub5_Sub17_Sub4_Sub1Array3156 = null;
-        aClass6_3150 = null;
+        aCacheIndex_3150 = null;
         aClass1_3155 = null;
-        aClass6_3144 = null;
+        aCacheIndex_3144 = null;
         aClass31_3152 = null;
         int i = -42 / ((arg0 - 20) / 50);
         anIntArray3111 = null;
@@ -386,7 +386,7 @@ public abstract class Actor extends Renderable {
             int i_35_ = Class26.anInt635 + -i;
             i = Class26.anInt635;
             for(int i_36_ = 0; (i_36_ ^ 0xffffffff) > -32769; i_36_++) {
-                Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_36_]);
+                Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_36_]);
                 if(class40_sub5_sub17_sub4_sub2 != null) {
                     for(int i_37_ = 0; i_37_ < 10; i_37_++) {
                         class40_sub5_sub17_sub4_sub2.anIntArray3088[i_37_] -= i_34_;

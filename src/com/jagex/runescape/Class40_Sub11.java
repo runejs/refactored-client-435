@@ -12,7 +12,7 @@ public class Class40_Sub11 extends Node {
     public static RSString[] aClass1Array2153 = new RSString[1000];
     public static int anInt2158 = 0;
     public static RSString aClass1_2161 = RSString.CreateString("headicons_pk");
-    public static Class6 aClass6_2162;
+    public static CacheIndex aCacheIndex_2162;
     public static int anInt2163 = 0;
     public static RSString cmd_fpsoff = RSString.CreateString("::fpsoff");
     public int[] anIntArray2154;
@@ -93,7 +93,7 @@ public class Class40_Sub11 extends Node {
 
     public static void method874(byte arg0) {
         aClass1Array2153 = null;
-        aClass6_2162 = null;
+        aCacheIndex_2162 = null;
         cmd_fpsoff = null;
         if(arg0 != 101)
             method873(-35, -55);

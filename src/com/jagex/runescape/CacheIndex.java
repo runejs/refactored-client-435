@@ -10,9 +10,8 @@ import com.jagex.runescape.util.Signlink;
 import java.io.DataInputStream;
 import java.net.URL;
 
-public abstract class Class6 {
+public abstract class CacheIndex {
     public static int anInt211;
-    public static int anInt213;
     public static int anInt214;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array215;
     public static int anInt218;
@@ -70,7 +69,7 @@ public abstract class Class6 {
     public Class42 aClass42_254;
     public int[] anIntArray261;
 
-    public Class6(boolean arg0, boolean arg1) {
+    public CacheIndex(boolean arg0, boolean arg1) {
         aBoolean220 = arg1;
         aBoolean233 = arg0;
     }
@@ -195,7 +194,8 @@ public abstract class Class6 {
         arg0 = arg0.method79();
         int i = aClass42_254.method882(arg1.method76(), arg2 + -126);
         int i_0_ = aClass42Array217[i].method882(arg0.method76(), -112);
-        return method172(i_0_, 114, i);
+
+        return getFile(i_0_, i);
     }
 
     public void method171(int arg0, int arg1) {
@@ -207,10 +207,8 @@ public abstract class Class6 {
         }
     }
 
-    public byte[] method172(int arg0, int arg1, int arg2) {
-        anInt213++;
-        if(arg1 <= 110)
-            anIntArray239 = null;
+    public byte[] getFile(int arg0, int arg2) {
+        System.out.printf("Request cache index: %d, file: %d\n", arg0, arg2);
         return method176(arg2, arg0, null, 20582);
     }
 
@@ -453,9 +451,9 @@ public abstract class Class6 {
     public byte[] method187(int arg0) {
         anInt263++;
         if(aByteArrayArrayArray249.length == 1)
-            return method172(arg0, 115, 0);
+            return getFile(arg0, 0);
         if(aByteArrayArrayArray249[arg0].length == 1)
-            return method172(0, 120, arg0);
+            return getFile(0, arg0);
         throw new RuntimeException();
     }
 

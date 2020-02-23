@@ -10,7 +10,7 @@ public class RSString implements Interface1 {
     public static int anInt1668 = 0;
     public static Cache aClass9_1684;
     public static int anInt1690 = 0;
-    public static Class6 aClass6_1705;
+    public static CacheIndex aCacheIndex_1705;
     public static int[] anIntArray1706 = new int[128];
     public static int anInt1711 = 50;
     public static byte[][] aByteArrayArray1715;
@@ -59,7 +59,7 @@ public class RSString implements Interface1 {
         int i_11_ = 74 / ((arg0 - 42) / 38);
     }
 
-    public static byte[] method74(int arg0, Class6 arg1, int arg2, int arg3, int arg4) {
+    public static byte[] method74(int arg0, CacheIndex arg1, int arg2, int arg3, int arg4) {
         if(arg3 >= -98)
             method83((byte) -1);
         long l = ((long) (arg0 + 37 * arg2 & 0xffff) + ((long) arg4 << -1686849184) + (long) (arg2 << -1491383504));
@@ -68,7 +68,7 @@ public class RSString implements Interface1 {
             if(class40_sub5_sub6 != null)
                 return class40_sub5_sub6.aByteArray2441;
         }
-        byte[] is = arg1.method172(arg0, 112, arg2);
+        byte[] is = arg1.getFile(arg0, arg2);
         if(is == null)
             return null;
         if(aClass9_1684 != null)
@@ -81,7 +81,7 @@ public class RSString implements Interface1 {
         aClass1_1713 = null;
         aByteArrayArray1715 = null;
         aClass1_1677 = null;
-        aClass6_1705 = null;
+        aCacheIndex_1705 = null;
         aClass1_1702 = null;
         aClass1_1717 = null;
         if(arg0 < 111)
@@ -445,7 +445,7 @@ public class RSString implements Interface1 {
     public int method76() {
         int i = 0;
         for(int i_12_ = 0; length > i_12_; i_12_++)
-            i = (0xff & chars[i_12_]) + -i + (i << -361727451);
+            i = (0xff & chars[i_12_]) + -i + (i << 5);
         return i;
     }
 

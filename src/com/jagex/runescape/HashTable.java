@@ -37,7 +37,7 @@ public class HashTable {
 
     }
 
-    public static void method327(boolean arg0, Class6_Sub1 arg1, int arg2, int arg3, byte arg4, int arg5, byte arg6) {
+    public static void method327(boolean arg0, CacheIndex_Sub1 arg1, int arg2, int arg3, byte arg4, int arg5, byte arg6) {
         int i = 14 % ((arg6 - 5) / 62);
         long l = (long) (arg3 + (arg2 << -1726391664));
         Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class51.aClass23_1194.method331(l, 6120));
@@ -106,7 +106,7 @@ public class HashTable {
                 if((Player.anInt3267 == class40_sub5_sub17_sub1.anInt2981) && (Node.anInt926 <= class40_sub5_sub17_sub1.anInt2971)) {
                     if(class40_sub5_sub17_sub1.anInt2974 <= Node.anInt926) {
                         if((class40_sub5_sub17_sub1.anInt2961 ^ 0xffffffff) < -1) {
-                            Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[-1 + (class40_sub5_sub17_sub1.anInt2961)]);
+                            Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[-1 + (class40_sub5_sub17_sub1.anInt2961)]);
                             if(class40_sub5_sub17_sub4_sub2 != null && (class40_sub5_sub17_sub4_sub2.anInt3098 ^ 0xffffffff) <= -1 && (class40_sub5_sub17_sub4_sub2.anInt3098 < 13312) && (class40_sub5_sub17_sub4_sub2.anInt3089 >= 0) && (class40_sub5_sub17_sub4_sub2.anInt3089 < 13312))
                                 class40_sub5_sub17_sub1.method766(Node.anInt926, arg0 + -61, (class40_sub5_sub17_sub4_sub2.anInt3089), ((Class37.method430((byte) -127, class40_sub5_sub17_sub1.anInt2981, (class40_sub5_sub17_sub4_sub2.anInt3098), (class40_sub5_sub17_sub4_sub2.anInt3089))) - class40_sub5_sub17_sub1.anInt2960), (class40_sub5_sub17_sub4_sub2.anInt3098));
                         }

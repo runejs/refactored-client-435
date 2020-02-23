@@ -90,7 +90,7 @@ public class Class40_Sub2 extends Node {
 
     }
 
-    public static ImageRGB[] method526(Class6 arg0, int arg1, RSString arg2, RSString arg3) {
+    public static ImageRGB[] method526(CacheIndex arg0, int arg1, RSString arg2, RSString arg3) {
 
         anInt1998++;
         if(arg1 != 0)

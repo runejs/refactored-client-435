@@ -455,9 +455,9 @@ public class Class43 {
                                     if(i_3_ < 3100) {
                                         if(i_3_ == 3000) {
                                             int i_42_ = (Class67.anIntArray1588[--i]);
-                                            if((Class6_Sub1.anInt1819 ^ 0xffffffff) == 0) {
+                                            if((CacheIndex_Sub1.anInt1819 ^ 0xffffffff) == 0) {
                                                 PacketBuffer.method517(0, i_42_, -9225);
-                                                Class6_Sub1.anInt1819 = i_42_;
+                                                CacheIndex_Sub1.anInt1819 = i_42_;
                                             }
                                         } else if(((i_3_ ^ 0xffffffff) == -3002) || ((i_3_ ^ 0xffffffff) == -3004)) {
                                             i -= 2;
@@ -466,9 +466,9 @@ public class Class43 {
                                             Class33.method406(0, i_44_, i_43_, -128);
                                         } else if(i_3_ == 3002) {
                                             Widget widget = (!bool ? (Class22_Sub2.aWidget_1887) : (Class40_Sub6.aWidget_2116));
-                                            if((Class6_Sub1.anInt1819 ^ 0xffffffff) == 0) {
+                                            if((CacheIndex_Sub1.anInt1819 ^ 0xffffffff) == 0) {
                                                 PacketBuffer.method517((widget.anInt2689) & 0x7fff, (widget.anInt2648), -9225);
-                                                Class6_Sub1.anInt1819 = (widget.anInt2689);
+                                                CacheIndex_Sub1.anInt1819 = (widget.anInt2689);
                                             }
                                         } else {
                                             if((i_3_ ^ 0xffffffff) != -3004)

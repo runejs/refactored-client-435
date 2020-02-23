@@ -63,7 +63,7 @@ public class Class53 {
 
     public static void method949(byte arg0) {
         anInt1256++;
-        if((Class57.packetid ^ 0xffffffff) == -50) {
+        if((Class57.incomingPacket ^ 0xffffffff) == -50) {
             int i = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
             int i_0_ = Floor.anInt2318 + (i & 0x7);
             int i_1_ = ((0x7b & i) >> -340685532) + Class40_Sub6.anInt2119;
@@ -106,7 +106,7 @@ public class Class53 {
                         floorDecoration.renderable = new GameObject((0x7fff & (floorDecoration.hash >> 379531822)), 22, i_4_, i_7_, i_8_, i_9_, i_10_, i_6_, false);
                 }
             }
-        } else if((Class57.packetid ^ 0xffffffff) == -242) {
+        } else if((Class57.incomingPacket ^ 0xffffffff) == -242) {
             int i = Cache.outgoingbuffer.getUnsignedInvertedByte();
             int i_12_ = i & 0x3;
             int i_13_ = i >> -236247198;
@@ -118,7 +118,7 @@ public class Class53 {
             if((i_18_ ^ 0xffffffff) <= -1 && i_17_ >= 0 && i_18_ < 104 && (i_17_ ^ 0xffffffff) > -105)
                 GameObjectDefinition.method609(i_15_, true, i_18_, i_12_, -1, (Player.anInt3267), i_17_, i_14_, i_13_, 0);
         } else {
-            if((Class57.packetid ^ 0xffffffff) == -10) {
+            if((Class57.incomingPacket ^ 0xffffffff) == -10) {
                 int i = Cache.outgoingbuffer.getUnsignedByte();
                 int i_19_ = (i & 0x7) + Floor.anInt2318;
                 int i_20_ = (0x7 & i >> -1724498300) + Class40_Sub6.anInt2119;
@@ -139,7 +139,7 @@ public class Class53 {
                     }
                 }
             }
-            if(Class57.packetid == 202) {
+            if(Class57.incomingPacket == 202) {
                 int i = Cache.outgoingbuffer.getUnsignedByte();
                 int i_27_ = ((0x78 & i) >> -680156572) + Class40_Sub6.anInt2119;
                 int i_28_ = Floor.anInt2318 + (0x7 & i);
@@ -152,7 +152,7 @@ public class Class53 {
                     Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (new Class40_Sub5_Sub17_Sub6(i_29_, Player.anInt3267, i_27_, i_28_, (-i_30_ + Class37.method430((byte) -124, (Player.anInt3267), i_27_, i_28_)), i_31_, Node.anInt926));
                     Class57.aClass45_1332.method904(class40_sub5_sub17_sub6, -111);
                 }
-            } else if(Class57.packetid == 99) {
+            } else if(Class57.incomingPacket == 99) {
                 int i = Cache.outgoingbuffer.getUnsignedByte();
                 int i_32_ = Class40_Sub6.anInt2119 + ((0x75 & i) >> 1144596612);
                 int i_33_ = (i & 0x7) + Floor.anInt2318;
@@ -171,7 +171,7 @@ public class Class53 {
                         Class40_Sub13.method880((byte) -80, i_33_, i_32_);
                     }
                 }
-            } else if(Class57.packetid == 143) {
+            } else if(Class57.incomingPacket == 143) {
                 int i = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                 int i_37_ = Floor.anInt2318 + (0x7 & i);
                 int i_38_ = Class40_Sub6.anInt2119 + (i >> 1546541380 & 0x7);
@@ -182,7 +182,7 @@ public class Class53 {
                 if((i_38_ ^ 0xffffffff) <= -1 && (i_37_ ^ 0xffffffff) <= -1 && (i_38_ ^ 0xffffffff) > -105 && i_37_ < 104)
                     GameObjectDefinition.method609(-1, true, i_38_, i_40_, -1, (Player.anInt3267), i_37_, i_42_, i_41_, 0);
             } else {
-                if((Class57.packetid ^ 0xffffffff) == -230) {
+                if((Class57.incomingPacket ^ 0xffffffff) == -230) {
                     int i = Cache.outgoingbuffer.getNegativeOffsetByte();
                     int i_43_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
                     int i_44_ = Cache.outgoingbuffer.getByte();
@@ -241,7 +241,7 @@ public class Class53 {
                         }
                     }
                 }
-                if((Class57.packetid ^ 0xffffffff) == -75) {
+                if((Class57.incomingPacket ^ 0xffffffff) == -75) {
                     int i = Cache.outgoingbuffer.getUnsignedByte();
                     int i_65_ = Class40_Sub6.anInt2119 + (i >> 750181060 & 0x7);
                     int i_66_ = (i & 0x7) + Floor.anInt2318;
@@ -260,7 +260,7 @@ public class Class53 {
                             Class40_Sub13.method880((byte) -80, i_66_, i_65_);
                         }
                     }
-                } else if(Class57.packetid == 1) {
+                } else if(Class57.incomingPacket == 1) {
                     int i = Cache.outgoingbuffer.getUnsignedByte();
                     int i_68_ = (i & 0x7) + Floor.anInt2318;
                     int i_69_ = Class40_Sub6.anInt2119 + (0x7 & i >> 80153604);
@@ -286,7 +286,7 @@ public class Class53 {
                 } else {
                     if(arg0 >= -110)
                         method952(32);
-                    if((Class57.packetid ^ 0xffffffff) == -20) {
+                    if((Class57.incomingPacket ^ 0xffffffff) == -20) {
                         int i = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
                         int i_80_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
                         int i_81_ = Cache.outgoingbuffer.getUnsignedShortBE();
@@ -302,7 +302,7 @@ public class Class53 {
                             Class10.aClass45ArrayArrayArray357[Player.anInt3267][i_83_][i_84_].method904(class40_sub5_sub17_sub3, 64);
                             Class40_Sub13.method880((byte) -80, i_84_, i_83_);
                         }
-                    } else if(Class57.packetid == 175) {
+                    } else if(Class57.incomingPacket == 175) {
                         int i = Cache.outgoingbuffer.getUnsignedShortLE();
                         int i_85_ = Cache.outgoingbuffer.getUnsignedShortBE();
                         int i_86_ = Cache.outgoingbuffer.getUnsignedByte();

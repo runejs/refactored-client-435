@@ -7,7 +7,7 @@ public class Class67 {
     public static int anInt1574;
     public static volatile boolean aBoolean1575;
     public static int anInt1576;
-    public static Class6 aClass6_1577;
+    public static CacheIndex aCacheIndex_1577;
     public static int[] anIntArray1579;
     public static RSString aClass1_1580;
     public static int anInt1581;
@@ -108,7 +108,7 @@ public class Class67 {
         aClass1_1590 = null;
         aClass1_1585 = null;
         aClass1_1609 = null;
-        aClass6_1577 = null;
+        aCacheIndex_1577 = null;
 
     }
 

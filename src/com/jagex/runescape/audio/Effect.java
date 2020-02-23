@@ -1,7 +1,7 @@
 package com.jagex.runescape.audio;
 
 import com.jagex.runescape.Class40_Sub12_Sub1;
-import com.jagex.runescape.Class6;
+import com.jagex.runescape.CacheIndex;
 import com.jagex.runescape.io.Buffer;
 
 public class Effect {
@@ -27,8 +27,9 @@ public class Effect {
         instruments = new Instrument[10];
     }
 
-    public static Effect method429(Class6 arg0, int arg1, int arg2) {
-        byte[] is = arg0.method172(arg2, 123, arg1);
+    public static Effect method429(CacheIndex arg0, int arg1, int arg2) {
+        byte[] is = arg0.getFile(arg2, arg1);
+
         if(is == null)
             return null;
         return new Effect(new Buffer(is));
@@ -36,49 +37,49 @@ public class Effect {
 
     public byte[] method426() {
         int i = 0;
-        for(int i_0_ = 0; i_0_ < 10; i_0_++) {
-            if(instruments[i_0_] != null && (instruments[i_0_].duration + instruments[i_0_].begin) > i)
-                i = (instruments[i_0_].duration + instruments[i_0_].begin);
+        for(int i_2_ = 0; i_2_ < 10; i_2_++) {
+            if(instruments[i_2_] != null && (instruments[i_2_].duration + instruments[i_2_].begin) > i)
+                i = (instruments[i_2_].duration + instruments[i_2_].begin);
         }
         if(i == 0)
             return new byte[0];
-        int i_1_ = 22050 * i / 1000;
-        byte[] is = new byte[i_1_];
-        for(int i_2_ = 0; i_2_ < 10; i_2_++) {
-            if(instruments[i_2_] != null) {
-                int i_3_ = instruments[i_2_].duration * 22050 / 1000;
-                int i_4_ = instruments[i_2_].begin * 22050 / 1000;
-                int[] is_5_ = instruments[i_2_].synthesize(i_3_, instruments[i_2_].duration);
-                for(int i_6_ = 0; i_6_ < i_3_; i_6_++) {
-                    int i_7_ = is[i_6_ + i_4_] + (is_5_[i_6_] >> 8);
-                    if((i_7_ + 128 & ~0xff) != 0)
-                        i_7_ = i_7_ >> 31 ^ 0x7f;
-                    is[i_6_ + i_4_] = (byte) i_7_;
+        int i_3_ = 22050 * i / 1000;
+        byte[] is = new byte[i_3_];
+        for(int i_4_ = 0; i_4_ < 10; i_4_++) {
+            if(instruments[i_4_] != null) {
+                int i_5_ = instruments[i_4_].duration * 22050 / 1000;
+                int i_6_ = instruments[i_4_].begin * 22050 / 1000;
+                int[] is_7_ = instruments[i_4_].synthesize(i_5_, instruments[i_4_].duration);
+                for(int i_8_ = 0; i_8_ < i_5_; i_8_++) {
+                    int i_9_ = is[i_8_ + i_6_] + (is_7_[i_8_] >> 8);
+                    if((i_9_ + 128 & ~0xff) != 0)
+                        i_9_ = i_9_ >> 31 ^ 0x7f;
+                    is[i_8_ + i_6_] = (byte) i_9_;
                 }
             }
         }
         return is;
     }
 
-    public int method427() {
-        int i = 9999999;
-        for(int i_8_ = 0; i_8_ < 10; i_8_++) {
-            if(instruments[i_8_] != null && instruments[i_8_].begin / 20 < i)
-                i = instruments[i_8_].begin / 20;
+    public int delay() {
+        int offset = 0x98967f;
+        for(int k = 0; k < 10; k++) {
+            if(instruments[k] != null && instruments[k].begin / 20 < offset)
+                offset = instruments[k].begin / 20;
         }
-        if(loop_begin < loop_end && loop_begin / 20 < i)
-            i = loop_begin / 20;
-        if(i == 9999999 || i == 0)
+        if(loop_begin < loop_end && loop_begin / 20 < offset)
+            offset = loop_begin / 20;
+        if(offset == 0x98967f || offset == 0)
             return 0;
-        for(int i_9_ = 0; i_9_ < 10; i_9_++) {
-            if(instruments[i_9_] != null)
-                instruments[i_9_].begin -= i * 20;
+        for(int l = 0; l < 10; l++) {
+            if(instruments[l] != null)
+                instruments[l].begin -= offset * 20;
         }
         if(loop_begin < loop_end) {
-            loop_begin -= i * 20;
-            loop_end -= i * 20;
+            loop_begin -= offset * 20;
+            loop_end -= offset * 20;
         }
-        return i;
+        return offset;
     }
 
     public Class40_Sub12_Sub1 method428() {

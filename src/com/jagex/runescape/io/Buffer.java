@@ -35,12 +35,12 @@ public class Buffer extends Node {
     }
 
     // ???
-    public static boolean method472(Class6 arg1, int arg2) {
+    public static boolean method472(CacheIndex arg1, int arg2) {
         byte[] is = arg1.method187(arg2);
         if(is == null) {
             return false;
         }
-        Class6.method184(is, 0);
+        CacheIndex.method184(is, 0);
         return true;
 
     }
@@ -60,7 +60,7 @@ public class Buffer extends Node {
         if(identityKit != null) {
             return identityKit;
         }
-        byte[] is = Class49.aClass6_1150.method172(arg1, 114, 3);
+        byte[] is = Class49.aCacheIndex_1150.getFile(arg1, 3);
         identityKit = new IdentityKit();
         if(is != null) {
             identityKit.readValues(new Buffer(is));

@@ -20,7 +20,7 @@ public class Class27 {
     public static RSString aClass1_647 = RSString.CreateString("sich mit einer anderen Welt zu verbinden)3");
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array649;
     public static RSString aClass1_652 = RSString.CreateString("und loggen sich dann erneut ein)3");
-    public static Class6 aClass6_654;
+    public static CacheIndex aCacheIndex_654;
     public static int anInt658 = 0;
     public static int anInt661;
     public static RSString takeString = RSString.CreateString("Take");
@@ -120,7 +120,7 @@ public class Class27 {
         Class34.method419((byte) 108);
         Class40_Sub5_Sub11.method633(-1);
         for(int i = 0; Class17.anInt460 > i; i++) {
-            int i_8_ = Class6.anIntArray225[i];
+            int i_8_ = CacheIndex.anIntArray225[i];
             if(((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_8_].anInt3134) ^ 0xffffffff) != (Node.anInt926 ^ 0xffffffff))
                 Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_8_] = null;
         }
@@ -128,7 +128,7 @@ public class Class27 {
             throw new RuntimeException("gpp1 pos:" + (Cache.outgoingbuffer.currentPosition) + " psize:" + Widget.packetsize);
         int i = 0;
         if(arg0 < 50)
-            aClass6_654 = null;
+            aCacheIndex_654 = null;
         for(/**/; Class60.anInt1407 > i; i++) {
             if((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i]]) == null)
                 throw new RuntimeException("gpp2 pos:" + i + " size:" + Class60.anInt1407);
@@ -137,8 +137,8 @@ public class Class27 {
 
     public static void drawScrollBar(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
         int i = (-32 + arg4) * arg4 / arg2;
-        Class6.aClass40_Sub5_Sub14_Sub2Array215[arg0].drawImage(arg3, arg5);
-        Class6.aClass40_Sub5_Sub14_Sub2Array215[1].drawImage(arg3, arg5 - (-arg4 + 16));
+        CacheIndex.aClass40_Sub5_Sub14_Sub2Array215[arg0].drawImage(arg3, arg5);
+        CacheIndex.aClass40_Sub5_Sub14_Sub2Array215[1].drawImage(arg3, arg5 - (-arg4 + 16));
         Rasterizer.method656(arg3, arg5 + 16, 16, arg4 + -32, Class55.anInt1299);
         if((i ^ 0xffffffff) > -9)
             i = 8;
@@ -159,7 +159,7 @@ public class Class27 {
         if(arg0 == -333) {
             aClass40_Sub5_Sub14_Sub4Array649 = null;
             takeString = null;
-            aClass6_654 = null;
+            aCacheIndex_654 = null;
             aClass1_638 = null;
             aClass1_652 = null;
             aClass1_668 = null;
@@ -170,9 +170,9 @@ public class Class27 {
         }
     }
 
-    public static void method357(Class6 arg0, int arg1, Class6 arg2) {
-        Class58.aClass6_1375 = arg2;
-        Class67.aClass6_1577 = arg0;
+    public static void method357(CacheIndex arg0, int arg1, CacheIndex arg2) {
+        Class58.aCacheIndex_1375 = arg2;
+        Class67.aCacheIndex_1577 = arg0;
         if(arg1 == -10978)
             return;
         method365(-3);
@@ -366,7 +366,7 @@ public class Class27 {
                 Class45.anInt1075 = 2;
                 Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                 Floor.anInt2319 = 0;
-                Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
+                Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                 if(class40_sub5_sub17_sub4_sub2 != null) {
                     ActorDefinition class40_sub5_sub5 = class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300;
                     if(class40_sub5_sub5.childrenIds != null)
@@ -483,7 +483,7 @@ public class Class27 {
                     Class32.packetBuffer.putOffsetShortLE(i + Class40_Sub5_Sub2.anInt2307);
                 }
                 if(action == 30) {
-                    Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
+                    Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Class40_Sub13.anInt2180++;
                         Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), class40_sub5_sub17_sub4_sub2.anIntArray3088[0], (byte) 107, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), class40_sub5_sub17_sub4_sub2.anIntArray3135[0], 2);
@@ -496,7 +496,7 @@ public class Class27 {
                     }
                 }
                 if((action ^ 0xffffffff) == -50) {
-                    Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
+                    Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), class40_sub5_sub17_sub4_sub2.anIntArray3088[0], (byte) 112, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), class40_sub5_sub17_sub4_sub2.anIntArray3135[0], 2);
                         Class35.anInt1719++;
@@ -529,7 +529,7 @@ public class Class27 {
                     Class32.packetBuffer.putOffsetShortLE(i + Class40_Sub5_Sub2.anInt2307);
                 }
                 if(action == 34) {
-                    Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
+                    Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), class40_sub5_sub17_sub4_sub2.anIntArray3088[0], (byte) 126, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), class40_sub5_sub17_sub4_sub2.anIntArray3135[0], 2);
                         Floor.anInt2319 = 0;
@@ -609,7 +609,7 @@ public class Class27 {
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                     }
                     if(action == 12) {
-                        Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
+                        Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3088[0]), (byte) 113, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3135[0]), 2);
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
@@ -641,7 +641,7 @@ public class Class27 {
                             bool = (Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), i, (byte) 100, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), i_10_, 2));
                         Floor.anInt2319 = 0;
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
-                        Class6_Sub1.anInt1792++;
+                        CacheIndex_Sub1.anInt1792++;
                         Class45.anInt1075 = 2;
                         Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                         Class32.packetBuffer.putPacket(85);
@@ -650,7 +650,7 @@ public class Class27 {
                         Class32.packetBuffer.putShortLE(i + Class40_Sub5_Sub2.anInt2307);
                     }
                     if((action ^ 0xffffffff) == -22) {
-                        Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
+                        Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3088[0]), (byte) 112, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3135[0]), 2);
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
@@ -807,9 +807,9 @@ public class Class27 {
                     }
                     if(action == 9)
                         PacketBuffer.method516(106);
-                    if((action ^ 0xffffffff) == -55 && Class6_Sub1.anInt1819 == -1) {
+                    if((action ^ 0xffffffff) == -55 && CacheIndex_Sub1.anInt1819 == -1) {
                         PacketBuffer.method517(0, i_10_, -9225);
-                        Class6_Sub1.anInt1819 = i_10_;
+                        CacheIndex_Sub1.anInt1819 = i_10_;
                     }
                     if((action ^ 0xffffffff) == -44) {
                         Class32.packetBuffer.putPacket(98);
@@ -875,7 +875,7 @@ public class Class27 {
                         Class32.packetBuffer.putOffsetShortLE(i + Class40_Sub5_Sub2.anInt2307);
                     }
                     if(action == 20) {
-                        Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
+                        Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3088[0]), (byte) 122, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3135[0]), 2);
                             Class45.anInt1075 = 2;
@@ -920,7 +920,7 @@ public class Class27 {
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                     }
                     if(action == 4) {
-                        Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
+                        Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3088[0]), (byte) 98, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3135[0]), 2);
                             Class45.anInt1075 = 2;
@@ -944,7 +944,7 @@ public class Class27 {
         }
     }
 
-    public static IndexedImage method359(RSString arg0, RSString arg1, Class6 arg2, byte arg3) {
+    public static IndexedImage method359(RSString arg0, RSString arg1, CacheIndex arg2, byte arg3) {
         if(arg3 != -64)
             aClass1_652 = null;
         int i = arg2.method183(0, arg0);
@@ -1015,7 +1015,7 @@ public class Class27 {
         return widget;
     }
 
-    public static IndexedImage method363(Class6 arg0, byte arg1, int arg2, int arg3) {
+    public static IndexedImage method363(CacheIndex arg0, byte arg1, int arg2, int arg3) {
         int i = 106 % ((arg1 - 66) / 53);
         if(!Class52.method948(arg2, arg3, arg0, -3844))
             return null;
@@ -1172,7 +1172,7 @@ public class Class27 {
                                 if((arg1 ^ 0xffffffff) == -21)
                                     Class33.method411(Node.aClass1_944, Class55.aClass1_1298, (SceneTile.aClass1_2047), (byte) 126);
                                 else if((arg1 ^ 0xffffffff) == -23)
-                                    Class33.method411(Node.aClass1_955, (Floor.aClass1_2325), Class6.aClass1_258, (byte) -123);
+                                    Class33.method411(Node.aClass1_955, (Floor.aClass1_2325), CacheIndex.aClass1_258, (byte) -123);
                                 else if(arg1 == 23)
                                     Class33.method411(Node.aClass1_957, Class38.aClass1_882, (ActorDefinition.aClass1_2410), (byte) -128);
                                 else if((arg1 ^ 0xffffffff) != -25) {

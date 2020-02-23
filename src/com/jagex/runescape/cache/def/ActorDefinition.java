@@ -12,7 +12,7 @@ import com.jagex.runescape.util.Signlink;
 import java.awt.*;
 
 public class ActorDefinition extends SubNode {
-    public static Class6_Sub1 aClass6_Sub1_2377;
+    public static CacheIndex_Sub1 aClass6_Sub1_2377;
     public static RSString aClass1_2384 = (RSString.CreateString("Moderator option: Mute player for 48 hours: <ON>"));
     public static int[] anIntArray2386;
     public static RSString aClass1_2392 = RSString.CreateString("Loaded fonts");
@@ -228,7 +228,7 @@ public class ActorDefinition extends SubNode {
         ActorDefinition definition = ((ActorDefinition) ISAAC.aClass9_510.method231((long) arg1, (byte) 119));
         if(definition != null)
             return definition;
-        byte[] is = Class58.aClass6_1375.method172(arg1, 113, 9);
+        byte[] is = Class58.aCacheIndex_1375.getFile(arg1, 9);
         definition = new ActorDefinition();
         definition.id = arg1;
         if(is != null)
@@ -253,7 +253,7 @@ public class ActorDefinition extends SubNode {
         if(class40_sub5_sub17_sub5 == null) {
             boolean bool = false;
             for(int i = 0; i < models.length; i++) {
-                if(!Class67.aClass6_1577.loaded(models[i], 0)) {
+                if(!Class67.aCacheIndex_1577.loaded(models[i], 0)) {
                     bool = true;
                 }
             }
@@ -262,7 +262,7 @@ public class ActorDefinition extends SubNode {
             }
             Model[] class40_sub5_sub17_sub5s = new Model[models.length];
             for(int i = 0; models.length > i; i++) {
-                class40_sub5_sub17_sub5s[i] = Model.getModel((Class67.aClass6_1577), models[i], 0);
+                class40_sub5_sub17_sub5s[i] = Model.getModel((Class67.aCacheIndex_1577), models[i], 0);
             }
             if(class40_sub5_sub17_sub5s.length == 1) {
                 class40_sub5_sub17_sub5 = class40_sub5_sub17_sub5s[0];
@@ -414,7 +414,7 @@ public class ActorDefinition extends SubNode {
         }
         boolean cached = false;
         for(int headModel = 0; headModel < headModelIndexes.length; headModel++) {
-            if(!Class67.aClass6_1577.loaded(headModelIndexes[headModel], 0)) {
+            if(!Class67.aCacheIndex_1577.loaded(headModelIndexes[headModel], 0)) {
                 cached = true;
             }
         }
@@ -426,7 +426,7 @@ public class ActorDefinition extends SubNode {
         }
         Model[] models = new Model[headModelIndexes.length];
         for(int i = 0; i < headModelIndexes.length; i++) {
-            models[i] = Model.getModel(Class67.aClass6_1577, headModelIndexes[i], 0);
+            models[i] = Model.getModel(Class67.aCacheIndex_1577, headModelIndexes[i], 0);
         }
         Model headModel;
         if(models.length != 1) {

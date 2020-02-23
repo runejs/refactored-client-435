@@ -3,7 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.media.renderable.actor.Npc;
 
-public class Class6_Sub1 extends Class6 {
+public class CacheIndex_Sub1 extends CacheIndex {
     public static int anInt1792;
     public static int anInt1793;
     public static int anInt1794;
@@ -43,7 +43,7 @@ public class Class6_Sub1 extends Class6 {
     public boolean aBoolean1811 = false;
     public Class56 aClass56_1812;
 
-    public Class6_Sub1(Class56 arg0, Class56 arg1, int arg2, boolean arg3, boolean arg4, boolean arg5) {
+    public CacheIndex_Sub1(Class56 arg0, Class56 arg1, int arg2, boolean arg3, boolean arg4, boolean arg5) {
         super(arg3, arg4);
         aClass56_1812 = arg0;
         aBoolean1811 = arg5;

@@ -25,7 +25,7 @@ public class FloorDecoration {
     public static int anInt599;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
     public static int anInt604;
-    public static Class6_Sub1 aClass6_Sub1_605;
+    public static CacheIndex_Sub1 aClass6_Sub1_605;
     public static RSString aClass1_606 = RSString.CreateString("Add friend");
     public static Class15 aClass15_607;
     public static Class40_Sub9 aClass40_Sub9_608;
@@ -322,7 +322,7 @@ public class FloorDecoration {
                         } else {
                             Class48.aClass40_Sub1_1132 = Class40_Sub5_Sub13.aClass40_Sub1_2752;
                             for(int i_40_ = 0; i_40_ < 256; i_40_++) {
-                                Class6_Sub1 class6_sub1 = Class24.aClass6_Sub1Array580[i_40_];
+                                CacheIndex_Sub1 class6_sub1 = Class24.aClass6_Sub1Array580[i_40_];
                                 if(class6_sub1 != null) {
                                     Class48.aClass40_Sub1_1132.currentPosition = 4 * i_40_ + 5;
                                     int i_41_ = Class48.aClass40_Sub1_1132.getIntBE();
@@ -401,7 +401,7 @@ public class FloorDecoration {
 
     }
 
-    public static TypeFace method347(Class6 arg0, int arg1, RSString arg2, RSString arg3) {
+    public static TypeFace method347(CacheIndex arg0, int arg1, RSString arg2, RSString arg3) {
 
         anInt599++;
         int i = arg0.method183(0, arg3);

@@ -15,7 +15,7 @@ public class Class56 {
     public static int anInt1319;
     public static Class61[] aClass61Array1320;
     public static int anInt1322;
-    public static Class6_Sub1 aClass6_Sub1_1323;
+    public static CacheIndex_Sub1 aClass6_Sub1_1323;
     public static int anInt1325;
     public static int anInt1326;
     public static int anInt1327;
@@ -91,7 +91,7 @@ public class Class56 {
         if(arg0 >= -57)
             aClass1_1314 = null;
         FloorDecoration.anIntArray612 = null;
-        Class6.anIntArrayArrayArray262 = null;
+        CacheIndex.anIntArrayArrayArray262 = null;
         Class40_Sub5_Sub7.anIntArrayArray2490 = null;
         Class35.aByteArrayArrayArray1745 = null;
         Class59.anIntArray1398 = null;

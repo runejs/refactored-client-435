@@ -19,7 +19,7 @@ public class Class8 {
     public static int anInt282;
     public static RSString aClass1_281 = RSString.CreateString("backright1");
     public static int anInt283;
-    public static Class6 aClass6_284;
+    public static CacheIndex aCacheIndex_284;
     public static int anInt285;
     public static RSString aClass1_286 = RSString.CreateString("Unexpected loginserver response)3");
     public static int anInt287;
@@ -69,7 +69,7 @@ public class Class8 {
     public static void method209(int arg0) {
         for(int i = 0; i < GameObjectDefinition.anInt2558; i++) {
             int i_0_ = Class40_Sub3.anIntArray2016[i];
-            Npc class40_sub5_sub17_sub4_sub2 = Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_];
+            Npc class40_sub5_sub17_sub4_sub2 = CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_];
             if(class40_sub5_sub17_sub4_sub2 != null)
                 Class13.method241(class40_sub5_sub17_sub4_sub2, (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.tileSpacesOccupied), (byte) 107);
         }
@@ -104,7 +104,7 @@ public class Class8 {
         aFontMetrics295 = null;
         int i = 53 % ((51 - arg0) / 40);
         aClass1_305 = null;
-        aClass6_284 = null;
+        aCacheIndex_284 = null;
         aClass1_291 = null;
         aClass1_303 = null;
         aCalendar279 = null;

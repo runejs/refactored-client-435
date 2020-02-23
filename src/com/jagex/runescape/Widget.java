@@ -435,7 +435,7 @@ public class Widget extends SubNode {
         ImageRGB class40_sub5_sub14_sub4 = ((ImageRGB) Cache.aClass9_326.method231((long) i, (byte) 121));
         if(class40_sub5_sub14_sub4 != null)
             return class40_sub5_sub14_sub4;
-        class40_sub5_sub14_sub4 = Class48.method927(0, Class40_Sub5_Sub15.aClass6_2779, true, i);
+        class40_sub5_sub14_sub4 = Class48.method927(0, Class40_Sub5_Sub15.aCacheIndex_2779, true, i);
         if(class40_sub5_sub14_sub4 != null)
             Cache.aClass9_326.method230(-7208, (long) i, class40_sub5_sub14_sub4);
         else
@@ -457,7 +457,7 @@ public class Widget extends SubNode {
             aBoolean2636 = false;
         if(class40_sub5_sub14_sub4 != null)
             return class40_sub5_sub14_sub4;
-        class40_sub5_sub14_sub4 = Class48.method927(0, Class40_Sub5_Sub15.aClass6_2779, true, i);
+        class40_sub5_sub14_sub4 = Class48.method927(0, Class40_Sub5_Sub15.aCacheIndex_2779, true, i);
         if(class40_sub5_sub14_sub4 == null)
             Class40_Sub13.aBoolean2177 = true;
         else
@@ -579,7 +579,7 @@ public class Widget extends SubNode {
         Model class40_sub5_sub17_sub5 = ((Model) Class53.aClass9_1264.method231((long) ((i << -983578160) + i_11_), (byte) 59));
         if(class40_sub5_sub17_sub5 == null) {
             if((i ^ 0xffffffff) == -2) {
-                class40_sub5_sub17_sub5 = Model.getModel(Cache.aClass6_329, i_11_, 0);
+                class40_sub5_sub17_sub5 = Model.getModel(Cache.aCacheIndex_329, i_11_, 0);
                 if(class40_sub5_sub17_sub5 == null) {
                     Class40_Sub13.aBoolean2177 = true;
                     return null;
@@ -633,7 +633,7 @@ public class Widget extends SubNode {
             return null;
         if(class40_sub5_sub14_sub1 != null)
             return class40_sub5_sub14_sub1;
-        class40_sub5_sub14_sub1 = Class40_Sub5_Sub17_Sub1.method760(0, (byte) 36, (Class40_Sub5_Sub15.aClass6_2779), anInt2642);
+        class40_sub5_sub14_sub1 = Class40_Sub5_Sub17_Sub1.method760(0, (byte) 36, (Class40_Sub5_Sub15.aCacheIndex_2779), anInt2642);
         if(class40_sub5_sub14_sub1 == null)
             Class40_Sub13.aBoolean2177 = true;
         else

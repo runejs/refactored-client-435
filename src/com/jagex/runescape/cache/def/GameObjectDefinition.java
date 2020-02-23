@@ -94,7 +94,7 @@ public class GameObjectDefinition extends SubNode {
         modelSizeY = 128;
     }
 
-    public static void method602(Class6_Sub1 arg0, int arg1, Class56 arg2, byte arg3) {
+    public static void method602(CacheIndex_Sub1 arg0, int arg1, Class56 arg2, byte arg3) {
 
         byte[] is = null;
         synchronized(RSCanvas.aClass45_53) {
@@ -165,7 +165,7 @@ public class GameObjectDefinition extends SubNode {
         if(gameObjectDefinition != null) {
             return gameObjectDefinition;
         }
-        byte[] is = Class40_Sub3.aClass6_2037.method172(arg0, 113, 6);
+        byte[] is = Class40_Sub3.aCacheIndex_2037.getFile(arg0, 6);
         gameObjectDefinition = new GameObjectDefinition();
         gameObjectDefinition.anInt2538 = arg0;
         if(is != null) {
@@ -286,7 +286,7 @@ public class GameObjectDefinition extends SubNode {
                 }
                 class40_sub5_sub17_sub5 = ((Model) VertexNormal.aClass9_1102.method231((long) i_8_, (byte) 122));
                 if(class40_sub5_sub17_sub5 == null) {
-                    class40_sub5_sub17_sub5 = (Model.getModel(RSString.aClass6_1705, i_8_ & 0xffff, 0));
+                    class40_sub5_sub17_sub5 = (Model.getModel(RSString.aCacheIndex_1705, i_8_ & 0xffff, 0));
                     if(class40_sub5_sub17_sub5 == null) {
                         return null;
                     }
@@ -320,7 +320,7 @@ public class GameObjectDefinition extends SubNode {
             }
             class40_sub5_sub17_sub5 = ((Model) VertexNormal.aClass9_1102.method231((long) i_10_, (byte) 48));
             if(class40_sub5_sub17_sub5 == null) {
-                class40_sub5_sub17_sub5 = Model.getModel((RSString.aClass6_1705), 0xffff & i_10_, 0);
+                class40_sub5_sub17_sub5 = Model.getModel((RSString.aCacheIndex_1705), 0xffff & i_10_, 0);
                 if(class40_sub5_sub17_sub5 == null) {
                     return null;
                 }
@@ -547,7 +547,7 @@ public class GameObjectDefinition extends SubNode {
         if(objectTypes != null) {
             for(int i = 0; objectTypes.length > i; i++) {
                 if((arg0 ^ 0xffffffff) == (objectTypes[i] ^ 0xffffffff)) {
-                    return RSString.aClass6_1705.loaded((objectModels[i] & 0xffff), 0);
+                    return RSString.aCacheIndex_1705.loaded((objectModels[i] & 0xffff), 0);
                 }
             }
             return true;
@@ -560,7 +560,7 @@ public class GameObjectDefinition extends SubNode {
         }
         boolean bool = true;
         for(int i = 0; objectModels.length > i; i++) {
-            bool &= RSString.aClass6_1705.loaded((0xffff & objectModels[i]), 0);
+            bool &= RSString.aCacheIndex_1705.loaded((0xffff & objectModels[i]), 0);
         }
         return bool;
 
@@ -593,7 +593,7 @@ public class GameObjectDefinition extends SubNode {
         }
         boolean bool = true;
         for(int i = 0; objectModels.length > i; i++) {
-            bool &= RSString.aClass6_1705.loaded((0xffff & objectModels[i]), 0);
+            bool &= RSString.aCacheIndex_1705.loaded((0xffff & objectModels[i]), 0);
         }
         int i = -67 % ((-65 - arg0) / 50);
         return bool;

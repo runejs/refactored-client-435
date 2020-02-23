@@ -54,7 +54,7 @@ public class Class29 {
         int i = Cache.outgoingbuffer.putBits(8, (byte) -65);
         if(i < Class60.anInt1407) {
             for(int i_0_ = i; Class60.anInt1407 > i_0_; i_0_++)
-                Class6.anIntArray225[Class17.anInt460++] = Class57.anIntArray1334[i_0_];
+                CacheIndex.anIntArray225[Class17.anInt460++] = Class57.anIntArray1334[i_0_];
         }
         if(Class60.anInt1407 < i)
             throw new RuntimeException("gppov1");
@@ -93,7 +93,7 @@ public class Class29 {
                     if(i_9_ == 1)
                         Class24.anIntArray578[Actor.anInt3153++] = i_2_;
                 } else if((i_4_ ^ 0xffffffff) == -4)
-                    Class6.anIntArray225[Class17.anInt460++] = i_2_;
+                    CacheIndex.anIntArray225[Class17.anInt460++] = i_2_;
             }
         }
 

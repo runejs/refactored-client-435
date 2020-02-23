@@ -213,14 +213,14 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             method31(true);
             Class32.aClass38_768 = Class56.method972((byte) 47);
             Class32.aClass38_768.method443(-10115);
-            while(Class6.aLong219 == 0L || System.currentTimeMillis() < Class6.aLong219) {
+            while(CacheIndex.aLong219 == 0L || System.currentTimeMillis() < CacheIndex.aLong219) {
                 Class40_Sub3.anInt2020 = Class32.aClass38_768.method442(Class39.anInt912, (Class40_Sub3.anInt2024), 9799);
                 for(int i = 0; (i < Class40_Sub3.anInt2020); i++)
                     method29(true);
                 method26((byte) 88);
             }
         } catch(Exception exception) {
-            Class6.method169(null, (byte) -121, exception);
+            CacheIndex.method169(null, (byte) -121, exception);
             openErrorPage((byte) 62, "crash");
         }
         method17(118);
@@ -264,7 +264,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
     public void stop() {
         if(this == Class4.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255)
-            Class6.aLong219 = System.currentTimeMillis() + 4000L;
+            CacheIndex.aLong219 = System.currentTimeMillis() + 4000L;
     }
 
     public abstract void init();
@@ -306,7 +306,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
     public void start() {
         if(this == Class4.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255)
-            Class6.aLong219 = 0L;
+            CacheIndex.aLong219 = 0L;
     }
 
     public abstract void method23(int i);
@@ -330,7 +330,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
     public void destroy() {
         if(Class4.anApplet_Sub1_179 == this && !PacketBuffer.aBoolean2255) {
-            Class6.aLong219 = System.currentTimeMillis();
+            CacheIndex.aLong219 = System.currentTimeMillis();
             Class43.method890(5000L, -123);
             Actor.aClass31_3152 = null;
             method17(121);
@@ -364,7 +364,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 Actor.aClass31_3152 = ISAAC.aClass31_521 = (new Signlink(false, this, InetAddress.getByName(getCodeBase().getHost()), fileStoreId, null, 0));
             ISAAC.aClass31_521.method394(1, 0, this);
         } catch(Exception exception) {
-            Class6.method169(null, (byte) -126, exception);
+            CacheIndex.method169(null, (byte) -126, exception);
             openErrorPage((byte) 31, "crash");
         }
         if(arg0 == 120)
@@ -443,7 +443,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             Actor.aClass31_3152 = ISAAC.aClass31_521 = new Signlink(true, null, inetAddress, fileStoreId, cacheFolder, cacheIndexes);
             ISAAC.aClass31_521.method394(1, 0, this);
         } catch(Exception exception) {
-            Class6.method169(null, (byte) -127, exception);
+            CacheIndex.method169(null, (byte) -127, exception);
         }
     }
 

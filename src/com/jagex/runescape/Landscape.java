@@ -113,7 +113,7 @@ public class Landscape {
         boolean bool = true;
         for(int i = 0; (i < RSString.aByteArrayArray1715.length); i++) {
             if(Class45.anIntArray1071[i] != -1 && RSString.aByteArrayArray1715[i] == null) {
-                RSString.aByteArrayArray1715[i] = Renderable.aClass6_Sub1_2857.method172(0, 122, Class45.anIntArray1071[i]);
+                RSString.aByteArrayArray1715[i] = Renderable.aClass6_Sub1_2857.getFile(0, Class45.anIntArray1071[i]);
                 if(RSString.aByteArrayArray1715[i] == null) {
                     Class37.anInt874++;
                     bool = false;
@@ -397,12 +397,12 @@ public class Landscape {
 
     }
 
-    public static void method936(int arg0, Class6 arg1) {
+    public static void method936(int arg0, CacheIndex arg1) {
 
         if(arg0 != -17552)
             ActorDefinition.getDefinition((byte) -94, 97);
         anInt1177++;
-        RSCanvas.aClass6_61 = arg1;
+        RSCanvas.aCacheIndex_61 = arg1;
 
     }
 }

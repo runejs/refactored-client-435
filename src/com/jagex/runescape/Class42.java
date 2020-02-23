@@ -104,15 +104,15 @@ public class Class42 {
 
     }
 
-    public static void method885(Class6 arg0, boolean arg1, Class6 arg2, int arg3) {
+    public static void method885(CacheIndex arg0, boolean arg1, CacheIndex arg2, int arg3) {
 
         IdentityKit.membersServer = arg1;
         anInt999++;
         if(arg3 != -313)
             aClass1_1012 = null;
-        Class8.aClass6_284 = arg2;
-        Class26.aClass6_632 = arg0;
-        Class27.anInt661 = Class26.aClass6_632.method190(10, (byte) 109);
+        Class8.aCacheIndex_284 = arg2;
+        Class26.aCacheIndex_632 = arg0;
+        Class27.anInt661 = Class26.aCacheIndex_632.method190(10, (byte) 109);
 
     }
 
@@ -193,11 +193,11 @@ public class Class42 {
             if((i ^ 0xffffffff) == -32768)
                 break;
             boolean bool = false;
-            if(Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i] == null) {
-                Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i] = new Npc();
+            if(CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i] == null) {
+                CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i] = new Npc();
                 bool = true;
             }
-            Npc class40_sub5_sub17_sub4_sub2 = Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i];
+            Npc class40_sub5_sub17_sub4_sub2 = CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i];
             Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i;
             class40_sub5_sub17_sub4_sub2.anInt3134 = Node.anInt926;
             int i_3_ = (Class40_Sub5_Sub17_Sub1.anIntArray2987[Cache.outgoingbuffer.putBits(3, (byte) -65)]);

@@ -184,7 +184,7 @@ public class ItemDefinition extends SubNode {
 
     public static void method749(boolean arg0) {
         for(int i = 0; GameObjectDefinition.anInt2558 > i; i++) {
-            Npc npc = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i]]);
+            Npc npc = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i]]);
             int i_15_ = (536870912 + (Class40_Sub3.anIntArray2016[i] << 1399377262));
             if(npc != null && npc.isVisible(1) && !arg0 != (npc.aClass40_Sub5_Sub5_3300.hasRenderPriority) && npc.aClass40_Sub5_Sub5_3300.method571(-1)) {
                 int i_16_ = (npc.anInt3098 >> -1699335129);
@@ -211,7 +211,7 @@ public class ItemDefinition extends SubNode {
         if(definition != null) {
             return definition;
         }
-        byte[] is = Class26.aClass6_632.method172(arg0, 112, arg1);
+        byte[] is = Class26.aCacheIndex_632.getFile(arg0, arg1);
         definition = new ItemDefinition();
         definition.anInt2852 = arg0;
         if(is != null) {
@@ -246,10 +246,10 @@ public class ItemDefinition extends SubNode {
             return true;
         }
         boolean bool = true;
-        if(!Class8.aClass6_284.loaded(i, 0)) {
+        if(!Class8.aCacheIndex_284.loaded(i, 0)) {
             bool = false;
         }
-        if(i_0_ != -1 && !Class8.aClass6_284.loaded(i_0_, 0)) {
+        if(i_0_ != -1 && !Class8.aCacheIndex_284.loaded(i_0_, 0)) {
             bool = false;
         }
         return bool;
@@ -272,13 +272,13 @@ public class ItemDefinition extends SubNode {
         if(arg1 <= 126) {
             return false;
         }
-        if(!Class8.aClass6_284.loaded(i, 0)) {
+        if(!Class8.aCacheIndex_284.loaded(i, 0)) {
             bool = false;
         }
-        if(i_1_ != -1 && !Class8.aClass6_284.loaded(i_1_, 0)) {
+        if(i_1_ != -1 && !Class8.aCacheIndex_284.loaded(i_1_, 0)) {
             bool = false;
         }
-        if(i_2_ != -1 && !Class8.aClass6_284.loaded(i_2_, 0)) {
+        if(i_2_ != -1 && !Class8.aCacheIndex_284.loaded(i_2_, 0)) {
             bool = false;
         }
         return bool;
@@ -298,14 +298,14 @@ public class ItemDefinition extends SubNode {
         if(i == -1) {
             return null;
         }
-        Model model1 = Model.getModel(Class8.aClass6_284, i, 0);
+        Model model1 = Model.getModel(Class8.aCacheIndex_284, i, 0);
         if(i_3_ != -1) {
-            Model model2 = Model.getModel(Class8.aClass6_284, i_3_, 0);
+            Model model2 = Model.getModel(Class8.aCacheIndex_284, i_3_, 0);
             if(i_5_ == -1) {
                 Model[] models = {model1, model2};
                 model1 = new Model(models, 2);
             } else {
-                Model model3 = Model.getModel(Class8.aClass6_284, i_5_, 0);
+                Model model3 = Model.getModel(Class8.aCacheIndex_284, i_5_, 0);
                 Model[] models = {model1, model2, model3};
                 model1 = new Model(models, 3);
             }
@@ -360,9 +360,9 @@ public class ItemDefinition extends SubNode {
         if(i == -1) {
             return null;
         }
-        Model model1 = Model.getModel(Class8.aClass6_284, i, 0);
+        Model model1 = Model.getModel(Class8.aCacheIndex_284, i, 0);
         if(i_12_ != -1) {
-            Model model2 = Model.getModel(Class8.aClass6_284, i_12_, 0);
+            Model model2 = Model.getModel(Class8.aCacheIndex_284, i_12_, 0);
             Model[] models = {model1, model2};
             model1 = new Model(models, 2);
         }
@@ -517,7 +517,7 @@ public class ItemDefinition extends SubNode {
                 return model;
             }
         }
-        Model model = Model.getModel(Class8.aClass6_284, inventoryModelId, 0);
+        Model model = Model.getModel(Class8.aCacheIndex_284, inventoryModelId, 0);
         if(model == null) {
             return null;
         }

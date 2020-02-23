@@ -115,7 +115,7 @@ public class SceneTile extends Node {
                     break;
                 RSString class1 = Class66.blank_string;
                 if(Class12.aClass15_394 != null) {
-                    class1 = Class6_Sub1.method204((Class12.aClass15_394.anInt432), 255);
+                    class1 = CacheIndex_Sub1.method204((Class12.aClass15_394.anInt432), 255);
                     if(Class12.aClass15_394.anObject437 != null) {
                         byte[] is = ((String) Class12.aClass15_394.anObject437).getBytes(StandardCharsets.ISO_8859_1);
                         class1 = Class19.method279(is, true, 0, is.length);

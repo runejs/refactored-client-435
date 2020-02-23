@@ -19,7 +19,7 @@ public class Class40_Sub5_Sub13 extends SubNode {
     public static Model[] aClass40_Sub5_Sub17_Sub5Array2762 = new Model[4];
     public static int[] anIntArray2764 = new int[128];
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_2765;
-    public Class6_Sub1 aClass6_Sub1_2754;
+    public CacheIndex_Sub1 aClass6_Sub1_2754;
     public byte aByte2758;
     public int anInt2763;
 

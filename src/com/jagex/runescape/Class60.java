@@ -48,7 +48,7 @@ public class Class60 {
 
     }
 
-    public static int method988(Class6 arg0, Class6 arg1, int arg2) {
+    public static int method988(CacheIndex arg0, CacheIndex arg1, int arg2) {
 
         anInt1412++;
         int i = 0;

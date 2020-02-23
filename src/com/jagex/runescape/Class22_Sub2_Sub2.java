@@ -111,7 +111,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
                 Class43.method890(100L, -75);
             }
         } catch(Exception exception) {
-            Class6.method169(null, (byte) -127, exception);
+            CacheIndex.method169(null, (byte) -127, exception);
         }
 
     }

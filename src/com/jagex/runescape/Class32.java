@@ -17,7 +17,7 @@ public class Class32 {
     public static int anInt770;
     public static int anInt771;
     public static RSString aClass1_772;
-    public static Class6_Sub1 aClass6_Sub1_773;
+    public static CacheIndex_Sub1 aClass6_Sub1_773;
     public static int[] anIntArray774;
 
     static {

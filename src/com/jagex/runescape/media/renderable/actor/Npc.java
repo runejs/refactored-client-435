@@ -29,7 +29,7 @@ public class Npc extends Actor {
             aClass1_3295 = null;
         if(class40_sub5_sub11 != null)
             return class40_sub5_sub11;
-        byte[] is = Class64.aClass6_1521.method172(arg1, 120, 16);
+        byte[] is = Class64.aCacheIndex_1521.getFile(arg1, 16);
         class40_sub5_sub11 = new Class40_Sub5_Sub11();
         if(is != null)
             class40_sub5_sub11.method634(new Buffer(is), 0);
@@ -421,7 +421,7 @@ public class Npc extends Actor {
         Floor floor = ((Floor) Class33.aClass9_778.method231((long) arg0, (byte) 63));
         if(floor != null)
             return floor;
-        byte[] is = Actor.aClass6_3144.method172(arg0, 118, arg1);
+        byte[] is = Actor.aCacheIndex_3144.getFile(arg0, arg1);
         floor = new Floor();
         if(is != null)
             floor.method553((byte) 65, arg0, new Buffer(is));

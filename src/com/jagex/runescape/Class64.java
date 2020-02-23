@@ -21,7 +21,7 @@ public class Class64 implements Runnable {
     public static RSString aClass1_1505 = RSString.CreateString("Handel akzeptieren");
     public static int anInt1511 = -1;
     public static RSString aClass1_1517 = RSString.CreateString("redstone3");
-    public static Class6 aClass6_1521;
+    public static CacheIndex aCacheIndex_1521;
     public static RSString aClass1_1523 = RSString.CreateString("");
     public static RSString aClass1_1524 = RSString.CreateString("Menge eingeben:");
     public static RSString aClass1_1526 = RSString.CreateString("Your account has been disabled)3");
@@ -58,7 +58,7 @@ public class Class64 implements Runnable {
             aClass1_1502 = null;
         aClass1_1523 = null;
         aClass1_1502 = null;
-        aClass6_1521 = null;
+        aCacheIndex_1521 = null;
         aClass1_1524 = null;
         aClass1_1517 = null;
 
@@ -133,10 +133,10 @@ public class Class64 implements Runnable {
                     }
                 }
                 if(i_5_ == 1) {
-                    Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_6_]);
+                    Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_6_]);
                     if(((class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.tileSpacesOccupied) ^ 0xffffffff) == -2 && ((class40_sub5_sub17_sub4_sub2.anInt3098 & 0x7f) == 64) && ((0x7f & class40_sub5_sub17_sub4_sub2.anInt3089) == 64)) {
                         for(int i_9_ = 0; ((GameObjectDefinition.anInt2558 > i_9_)); i_9_++) {
-                            Npc class40_sub5_sub17_sub4_sub2_10_ = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_9_]]);
+                            Npc class40_sub5_sub17_sub4_sub2_10_ = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_9_]]);
                             if(class40_sub5_sub17_sub4_sub2_10_ != null && (class40_sub5_sub17_sub4_sub2_10_ != class40_sub5_sub17_sub4_sub2) && ((class40_sub5_sub17_sub4_sub2_10_.aClass40_Sub5_Sub5_3300.tileSpacesOccupied) ^ 0xffffffff) == -2 && ((class40_sub5_sub17_sub4_sub2.anInt3098 ^ 0xffffffff) == ((class40_sub5_sub17_sub4_sub2_10_.anInt3098) ^ 0xffffffff)) && ((class40_sub5_sub17_sub4_sub2_10_.anInt3089) == (class40_sub5_sub17_sub4_sub2.anInt3089)))
                                 Class66.method1025(0, i_3_, i_4_, Class40_Sub3.anIntArray2016[i_9_], (class40_sub5_sub17_sub4_sub2_10_.aClass40_Sub5_Sub5_3300));
                         }
@@ -152,7 +152,7 @@ public class Class64 implements Runnable {
                     Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_6_]);
                     if((0x7f & class40_sub5_sub17_sub4_sub1.anInt3098 ^ 0xffffffff) == -65 && (0x7f & class40_sub5_sub17_sub4_sub1.anInt3089 ^ 0xffffffff) == -65) {
                         for(int i_12_ = 0; ((i_12_ < GameObjectDefinition.anInt2558)); i_12_++) {
-                            Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_12_]]);
+                            Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_12_]]);
                             if(class40_sub5_sub17_sub4_sub2 != null && ((class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.tileSpacesOccupied) == 1) && ((class40_sub5_sub17_sub4_sub1.anInt3098 ^ 0xffffffff) == ((class40_sub5_sub17_sub4_sub2.anInt3098) ^ 0xffffffff)) && (class40_sub5_sub17_sub4_sub2.anInt3089 == (class40_sub5_sub17_sub4_sub1.anInt3089)))
                                 Class66.method1025(0, i_3_, i_4_, Class40_Sub3.anIntArray2016[i_12_], (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300));
                         }
@@ -339,7 +339,7 @@ public class Class64 implements Runnable {
             }
             aByteArray1504 = null;
         } catch(Exception exception) {
-            Class6.method169(null, (byte) -122, exception);
+            CacheIndex.method169(null, (byte) -122, exception);
         }
     }
 

@@ -128,7 +128,7 @@ public class Class34 {
         Class40_Sub5_Sub4 class40_sub5_sub4 = ((Class40_Sub5_Sub4) Class57.aClass9_1331.method231((long) arg1, (byte) 111));
         if(class40_sub5_sub4 != null)
             return class40_sub5_sub4;
-        byte[] is = RSCanvas.aClass6_61.method172(arg1, 115, 14);
+        byte[] is = RSCanvas.aCacheIndex_61.getFile(arg1, 14);
         class40_sub5_sub4 = new Class40_Sub5_Sub4();
         if(is != null)
             class40_sub5_sub4.method562(0, new Buffer(is));

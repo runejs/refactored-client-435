@@ -12,7 +12,7 @@ public class Cache {
     public static RSString aClass1_325 = RSString.CreateString("Ung-Ultiger Benutzername");
     public static Cache aClass9_326 = new Cache(200);
     public static RSString aClass1_327 = RSString.CreateString("@or1@");
-    public static Class6 aClass6_329;
+    public static CacheIndex aCacheIndex_329;
     public static boolean aBoolean330 = false;
     public static RSString aClass1_331 = (RSString.CreateString("RuneScape wird geladen )2 bitte warten)3)3)3"));
     public static RSString aClass1_332 = RSString.CreateString("Classic");
@@ -51,17 +51,17 @@ public class Cache {
         outgoingbuffer = null;
         aClass1_325 = null;
         aClass9_326 = null;
-        aClass6_329 = null;
+        aCacheIndex_329 = null;
         aClass1_327 = null;
         aClass1_323 = null;
     }
 
-    public static void method236(boolean arg0, Class6 arg1, Class6 arg2, Class6 arg3) {
-        Class40_Sub11.aClass6_2162 = arg1;
+    public static void method236(boolean arg0, CacheIndex arg1, CacheIndex arg2, CacheIndex arg3) {
+        Class40_Sub11.aCacheIndex_2162 = arg1;
         if(arg0 != false)
             anInt324 = -101;
-        Class40_Sub5_Sub4.aClass6_2364 = arg3;
-        Class40_Sub5_Sub7.aClass6_2484 = arg2;
+        Class40_Sub5_Sub4.aCacheIndex_2364 = arg3;
+        Class40_Sub5_Sub7.aCacheIndex_2484 = arg2;
     }
 
     public void method230(int arg0, long arg1, SubNode arg2) {

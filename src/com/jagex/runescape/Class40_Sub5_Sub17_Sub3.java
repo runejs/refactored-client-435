@@ -171,7 +171,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             method775(true);
     }
 
-    public static void method779(Component arg0, boolean arg1, Class6 arg2, Class6 arg3) {
+    public static void method779(Component arg0, boolean arg1, CacheIndex arg2, CacheIndex arg3) {
 
         anInt3057++;
         if(!ISAAC.aBoolean512) {

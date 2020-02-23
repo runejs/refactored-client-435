@@ -95,9 +95,9 @@ public abstract class Class68 {
         anInt1627++;
         if(aBooleanArray1629[arg0])
             return true;
-        if(!Class40_Sub5_Sub4.aClass6_2349.method186(123, arg0))
+        if(!Class40_Sub5_Sub4.aCacheIndex_2349.method186(123, arg0))
             return false;
-        int i_4_ = Class40_Sub5_Sub4.aClass6_2349.method190(arg0, (byte) 71);
+        int i_4_ = Class40_Sub5_Sub4.aCacheIndex_2349.method190(arg0, (byte) 71);
         if(i_4_ == 0) {
             aBooleanArray1629[arg0] = true;
             return true;
@@ -106,7 +106,7 @@ public abstract class Class68 {
             Class59.aWidgetArrayArray1390[arg0] = new Widget[i_4_];
         for(int i_5_ = 0; (i_5_ < i_4_); i_5_++) {
             if(Class59.aWidgetArrayArray1390[arg0][i_5_] == null) {
-                byte[] is = Class40_Sub5_Sub4.aClass6_2349.method172(i_5_, 119, arg0);
+                byte[] is = Class40_Sub5_Sub4.aCacheIndex_2349.getFile(i_5_, arg0);
                 if(is != null) {
                     Class59.aWidgetArrayArray1390[arg0][i_5_] = new Widget();
                     Class59.aWidgetArrayArray1390[arg0][i_5_].anInt2689 = (arg0 << 692667152) + i_5_;

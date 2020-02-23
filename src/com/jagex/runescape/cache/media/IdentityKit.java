@@ -23,7 +23,7 @@ public class IdentityKit extends SubNode {
     public static int height;
     public static int anInt2607;
     public static int anInt2608;
-    public static Class6_Sub1 aClass6_Sub1_2609;
+    public static CacheIndex_Sub1 aClass6_Sub1_2609;
     public static RSString aClass1_2611;
     public static int anInt2612;
     public static int anInt2613;
@@ -159,7 +159,7 @@ public class IdentityKit extends SubNode {
         }
         boolean isCached = true;
         for(int i = 0; modelId.length > i; i++) {
-            if(!Class27.aClass6_654.loaded(modelId[i], 0)) {
+            if(!Class27.aCacheIndex_654.loaded(modelId[i], 0)) {
                 isCached = false;
             }
         }
@@ -174,7 +174,7 @@ public class IdentityKit extends SubNode {
             return false;
         }
         for(/**/; i < 5; i++) {
-            if(headModelIds[i] != -1 && !Class27.aClass6_654.loaded(headModelIds[i], 0)) {
+            if(headModelIds[i] != -1 && !Class27.aCacheIndex_654.loaded(headModelIds[i], 0)) {
                 bool = false;
             }
         }
@@ -210,7 +210,7 @@ public class IdentityKit extends SubNode {
         }
         for(int i_7_ = 0; (i_7_ ^ 0xffffffff) > -6; i_7_++) {
             if(headModelIds[i_7_] != -1) {
-                class40_sub5_sub17_sub5s[i++] = Model.getModel((Class27.aClass6_654), (headModelIds[i_7_]), 0);
+                class40_sub5_sub17_sub5s[i++] = Model.getModel((Class27.aCacheIndex_654), (headModelIds[i_7_]), 0);
             }
         }
         Model class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, i);
@@ -230,7 +230,7 @@ public class IdentityKit extends SubNode {
         }
         Model[] class40_sub5_sub17_sub5s = new Model[modelId.length];
         for(int i = 0; i < modelId.length; i++) {
-            class40_sub5_sub17_sub5s[i] = Model.getModel(Class27.aClass6_654, modelId[i], 0);
+            class40_sub5_sub17_sub5s[i] = Model.getModel(Class27.aCacheIndex_654, modelId[i], 0);
         }
         Model class40_sub5_sub17_sub5;
         if(class40_sub5_sub17_sub5s.length != 1) {

@@ -59,7 +59,7 @@ public class Class30 {
         anInt708 = -1;
         anIntArray685 = new int[anInt709];
         aClass1Array697 = new RSString[anInt709];
-        aClass1_716 = RSString.CreateString("scape main");
+        aClass1_716 = RSString.CreateString("autumn voyage");
     }
 
     public boolean aBoolean683;
@@ -171,7 +171,7 @@ public class Class30 {
         }
         if(arg4 >= -84)
             return null;
-        Model class40_sub5_sub17_sub5 = ((Model) Class6.aClass9_229.method231(l, (byte) 66));
+        Model class40_sub5_sub17_sub5 = ((Model) CacheIndex.aClass9_229.method231(l, (byte) 66));
         if(class40_sub5_sub17_sub5 == null) {
             boolean bool = false;
             for(int i = 0; i < 12; i++) {
@@ -183,7 +183,7 @@ public class Class30 {
             }
             if(bool) {
                 if(aLong719 != -1L)
-                    class40_sub5_sub17_sub5 = ((Model) Class6.aClass9_229.method231(aLong719, (byte) 123));
+                    class40_sub5_sub17_sub5 = ((Model) CacheIndex.aClass9_229.method231(aLong719, (byte) 123));
                 if(class40_sub5_sub17_sub5 == null)
                     return null;
             }
@@ -213,7 +213,7 @@ public class Class30 {
                 }
                 class40_sub5_sub17_sub5.method810();
                 class40_sub5_sub17_sub5.method802(64, 850, -30, -50, -30, true);
-                Class6.aClass9_229.method230(-7208, l, class40_sub5_sub17_sub5);
+                CacheIndex.aClass9_229.method230(-7208, l, class40_sub5_sub17_sub5);
                 aLong719 = l;
             }
         }
@@ -261,7 +261,7 @@ public class Class30 {
         anIntArray692[5] = i_8_;
         anIntArray692[9] = i;
         if(l != 0L && (aLong718 ^ 0xffffffffffffffffL) != (l ^ 0xffffffffffffffffL))
-            Class6.aClass9_229.removeAll(l, 108);
+            CacheIndex.aClass9_229.removeAll(l, 108);
     }
 
     public Model method379(int arg0) {

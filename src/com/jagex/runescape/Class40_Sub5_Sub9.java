@@ -11,13 +11,13 @@ public class Class40_Sub5_Sub9 extends SubNode {
     public static RSString aClass1_2566 = RSString.CreateString("flash2:");
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2567;
     public static int anInt2569;
-    public static Class6_Sub1 aClass6_Sub1_2571;
+    public static CacheIndex_Sub1 aClass6_Sub1_2571;
     public static int anInt2572;
     public static int anInt2576;
     public static RSString aClass1_2577 = RSString.CreateString(" million");
     public static int anInt2580;
     public static int anInt2581;
-    public static Class6 aClass6_2582;
+    public static CacheIndex aCacheIndex_2582;
 
     public int anInt2563;
     public int anInt2565;
@@ -34,11 +34,11 @@ public class Class40_Sub5_Sub9 extends SubNode {
 
     }
 
-    public static void method616(Class6 arg0, byte arg1) {
+    public static void method616(CacheIndex arg0, byte arg1) {
 
         anInt2580++;
         if(arg1 == 85) {
-            Actor.aClass6_3150 = arg0;
+            Actor.aCacheIndex_3150 = arg0;
         }
 
     }
@@ -91,7 +91,7 @@ public class Class40_Sub5_Sub9 extends SubNode {
             aClass1_2566 = null;
             aClass40_Sub5_Sub14_Sub4Array2567 = null;
             aClass1_2564 = null;
-            aClass6_2582 = null;
+            aCacheIndex_2582 = null;
             aClass1_2577 = null;
             aClass6_Sub1_2571 = null;
         }

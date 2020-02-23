@@ -27,7 +27,7 @@ public class Class22_Sub1 extends Class22 {
     public static RSString aClass1_1851 = aClass1_1848;
     public static int anInt1853;
     public static int anInt1854;
-    public static Class6 aClass6_1855;
+    public static CacheIndex aCacheIndex_1855;
     public static int anInt1856;
     public static RSString aClass1_1857;
     public static RSString aClass1_1858;
@@ -96,7 +96,7 @@ public class Class22_Sub1 extends Class22 {
         aClass1_1845 = null;
         aClass1Array1844 = null;
         aClass1_1849 = null;
-        aClass6_1855 = null;
+        aCacheIndex_1855 = null;
         if(arg0 <= 56)
             anInt1856 = 74;
     }
@@ -163,7 +163,7 @@ public class Class22_Sub1 extends Class22 {
         int i = 18 % ((-46 - arg0) / 58);
         for(int i_7_ = 0; i_7_ < GameObjectDefinition.anInt2558; i_7_++) {
             int i_8_ = Class40_Sub3.anIntArray2016[i_7_];
-            Npc class40_sub5_sub17_sub4_sub2 = Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_8_];
+            Npc class40_sub5_sub17_sub4_sub2 = CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_8_];
             if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.anInt3078 > 0) {
                 class40_sub5_sub17_sub4_sub2.anInt3078--;
                 if((class40_sub5_sub17_sub4_sub2.anInt3078 ^ 0xffffffff) == -1)
@@ -221,7 +221,7 @@ public class Class22_Sub1 extends Class22 {
             }
             aClass15_1836 = null;
             if(arg0 != 0)
-                aClass6_1855 = null;
+                aCacheIndex_1855 = null;
         }
     }
 

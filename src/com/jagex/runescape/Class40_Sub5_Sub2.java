@@ -67,7 +67,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
 
     }
 
-    public static IndexedImage[] method550(Class6 arg0, byte arg1, RSString arg2, RSString arg3) {
+    public static IndexedImage[] method550(CacheIndex arg0, byte arg1, RSString arg2, RSString arg3) {
         int i = arg0.method183(0, arg2);
         int i_1_ = arg0.method179(-118, i, arg3);
         return Class24.method337(7729, arg0, i_1_, i);
@@ -226,7 +226,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
                     Class44.anInt1049 = Class40_Sub6.aClass64_2098.method1016(37);
                     Class40_Sub6.aClass64_2098.method1008(0, 1, -127, Cache.outgoingbuffer.buffer);
                     Cache.outgoingbuffer.currentPosition = 0;
-                    Class57.packetid = Cache.outgoingbuffer.getPacket((byte) 49);
+                    Class57.incomingPacket = Cache.outgoingbuffer.getPacket((byte) 49);
                     Class40_Sub6.aClass64_2098.method1008(0, 2, -127, Cache.outgoingbuffer.buffer);
                     Cache.outgoingbuffer.currentPosition = 0;
                     Widget.packetsize = Cache.outgoingbuffer.getUnsignedShortBE();
@@ -239,7 +239,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
                         Main.method44(0);
                         Class51.anInt1202 = -1;
                         FloorDecoration.method343(false, 5688);
-                        Class57.packetid = -1;
+                        Class57.incomingPacket = -1;
                     }
                 } else {
                     Main.anInt1756++;
@@ -303,7 +303,7 @@ public class Class40_Sub5_Sub2 extends SubNode {
     public Model method549(int arg0, int arg1) {
         Model class40_sub5_sub17_sub5 = ((Model) Class34.aClass9_851.method231((long) anInt2310, (byte) 50));
         if(class40_sub5_sub17_sub5 == null) {
-            class40_sub5_sub17_sub5 = Model.getModel((Class40_Sub5_Sub9.aClass6_2582), anInt2293, 0);
+            class40_sub5_sub17_sub5 = Model.getModel((Class40_Sub5_Sub9.aCacheIndex_2582), anInt2293, 0);
             if(class40_sub5_sub17_sub5 == null) {
                 return null;
             }

@@ -201,7 +201,7 @@ public class Class66 {
         return (arg0 ^ 0xffffffff) <= -49 && (arg0 ^ 0xffffffff) >= -58;
     }
 
-    public static ImageRGB method1028(Class6 arg0, RSString arg1, byte arg2, RSString arg3) {
+    public static ImageRGB method1028(CacheIndex arg0, RSString arg1, byte arg2, RSString arg3) {
         int i = arg0.method183(0, arg1);
         int i_13_ = arg0.method179(arg2 ^ ~0x6f, i, arg3);
         if(arg2 != 21)

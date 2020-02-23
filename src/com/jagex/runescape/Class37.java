@@ -67,7 +67,7 @@ public class Class37 {
         Class40_Sub5_Sub2 class40_sub5_sub2 = ((Class40_Sub5_Sub2) Class43.aClass9_1014.method231((long) arg0, (byte) 59));
         if(class40_sub5_sub2 != null)
             return class40_sub5_sub2;
-        byte[] is = Class19.aClass6_488.method172(arg0, 114, 13);
+        byte[] is = Class19.aCacheIndex_488.getFile(arg0, 13);
         class40_sub5_sub2 = new Class40_Sub5_Sub2();
         class40_sub5_sub2.anInt2310 = arg0;
         if(is != null)
@@ -106,7 +106,7 @@ public class Class37 {
     public static void method434(int arg0) {
 
         Class4.menuOpen = false;
-        Class57.packetid = -1;
+        Class57.incomingPacket = -1;
         ActorDefinition.anInt2394 = 0;
         Widget.packetsize = 0;
         Class32.packetBuffer.currentPosition = 0;
@@ -123,9 +123,9 @@ public class Class37 {
             if((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i]) != null)
                 Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i].anInt3137 = -1;
         }
-        for(int i = 0; ((Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813.length > i)); i++) {
-            if(Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i] != null)
-                Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i].anInt3137 = -1;
+        for(int i = 0; ((CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813.length > i)); i++) {
+            if(CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i] != null)
+                CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i].anInt3137 = -1;
         }
         Floor.method559(30, -88);
 
@@ -166,7 +166,7 @@ public class Class37 {
                 }
             }
             for(int i_13_ = 0; GameObjectDefinition.anInt2558 > i_13_; i_13_++) {
-                Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_13_]]);
+                Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_13_]]);
                 if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.isVisible(1)) {
                     ActorDefinition class40_sub5_sub5 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300);
                     if(class40_sub5_sub5.childrenIds != null)
@@ -203,8 +203,8 @@ public class Class37 {
                 }
             }
             if((Player.anInt3288 ^ 0xffffffff) != -1 && (Node.anInt926 % 20 ^ 0xffffffff) > -11) {
-                if(Player.anInt3288 == 1 && (Class66.anInt1545 ^ 0xffffffff) <= -1 && ((Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813).length > Class66.anInt1545)) {
-                    Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class66.anInt1545]);
+                if(Player.anInt3288 == 1 && (Class66.anInt1545 ^ 0xffffffff) <= -1 && ((CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813).length > Class66.anInt1545)) {
+                    Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class66.anInt1545]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         i = (-((Player.localPlayer.anInt3098) / 32) + (class40_sub5_sub17_sub4_sub2.anInt3098 / 32));
                         i_8_ = (class40_sub5_sub17_sub4_sub2.anInt3089 / 32 - (Player.localPlayer.anInt3089) / 32);

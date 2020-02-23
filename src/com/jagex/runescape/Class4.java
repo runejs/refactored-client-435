@@ -87,7 +87,7 @@ public class Class4 {
                     effect = Effect.method429((Actor.aClass6_Sub1_3157), (IdentityKit.anIntArray2602[i]), 0);
                     if(effect == null)
                         continue;
-                    Class40_Sub3.anIntArray2023[i] += effect.method427();
+                    Class40_Sub3.anIntArray2023[i] += effect.delay();
                     PacketBuffer.effects[i] = effect;
                 }
                 if((Class40_Sub3.anIntArray2023[i] ^ 0xffffffff) > -1) {

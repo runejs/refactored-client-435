@@ -42,7 +42,7 @@ public class Class40_Sub6 extends Node {
     }
 
     public byte[] aByteArray2102;
-    public Class6_Sub1 aClass6_Sub1_2104;
+    public CacheIndex_Sub1 aClass6_Sub1_2104;
     public int anInt2112;
     public Class56 aClass56_2117;
 

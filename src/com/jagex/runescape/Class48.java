@@ -167,7 +167,7 @@ public class Class48 {
                             Class10.anInt345++;
                             Floor.method558(0, widget.aClass1_2676, widget.anInt2689, -501, 0, 57, Class66.blank_string);
                         }
-                        if(widget.anInt2714 == 6 && (Class6_Sub1.anInt1819 ^ 0xffffffff) == 0 && (i_2_ <= arg8) && i_1_ <= arg4 && arg8 < i_2_ + widget.anInt2692 && ((arg4 < widget.anInt2643 + i_1_))) {
+                        if(widget.anInt2714 == 6 && (CacheIndex_Sub1.anInt1819 ^ 0xffffffff) == 0 && (i_2_ <= arg8) && i_1_ <= arg4 && arg8 < i_2_ + widget.anInt2692 && ((arg4 < widget.anInt2643 + i_1_))) {
                             Floor.method558(0, widget.aClass1_2676, widget.anInt2689, -501, 0, 54, Class66.blank_string);
                         }
                         if((widget.type ^ 0xffffffff) == -3) {
@@ -310,7 +310,7 @@ public class Class48 {
 
     }
 
-    public static ImageRGB method927(int arg0, Class6 arg1, boolean arg2, int arg3) {
+    public static ImageRGB method927(int arg0, CacheIndex arg1, boolean arg2, int arg3) {
         if(!Class52.method948(arg0, arg3, arg1, -3844))
             return null;
         if(arg2 != true)

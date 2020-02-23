@@ -160,7 +160,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             anInt2211 = -106;
         if(class40_sub5_sub7 != null)
             return class40_sub5_sub7;
-        byte[] is = Class40_Sub5_Sub7.aClass6_2484.method172(arg0, 115, 12);
+        byte[] is = Class40_Sub5_Sub7.aCacheIndex_2484.getFile(arg0, 12);
         class40_sub5_sub7 = new Class40_Sub5_Sub7();
         if(is != null)
             class40_sub5_sub7.method594(-1, new Buffer(is));
@@ -188,7 +188,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             return true;
         }
         if(i >= 401 && (i ^ 0xffffffff) >= -501) {
-            Class6_Sub1.anInt1793++;
+            CacheIndex_Sub1.anInt1793++;
             Floor.method558(0, Class66.aClass1_1572, 0, -501, 0, 35, (Class40_Sub5_Sub17_Sub6.method832(115, (new RSString[]{Class26.aClass1_620, arg1.aClass1_2668}))));
             return true;
         }

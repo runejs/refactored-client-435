@@ -54,16 +54,16 @@ public class Class35 implements Interface3 {
     public Class45 aClass45_1727 = new Class45();
     public EntryTable[] aClass40_Sub10Array1740;
     public int anInt1748;
-    public Class6 aClass6_1749;
+    public CacheIndex aCacheIndex_1749;
     public double aDouble1750 = 1.0;
     public int anInt1752;
     public int anInt1753;
 
-    public Class35(Class6 arg0, Class6 arg1, int arg2, double arg3, int arg4) {
+    public Class35(CacheIndex arg0, CacheIndex arg1, int arg2, double arg3, int arg4) {
         anInt1748 = 128;
         anInt1753 = 0;
         anInt1752 = arg2;
-        aClass6_1749 = arg1;
+        aCacheIndex_1749 = arg1;
         aDouble1750 = arg3;
         anInt1748 = arg4;
         anInt1753 = anInt1752;
@@ -71,13 +71,13 @@ public class Class35 implements Interface3 {
         int i = is.length;
         aClass40_Sub10Array1740 = new EntryTable[arg0.method190(0, (byte) 120)];
         for(int i_4_ = 0; i > i_4_; i_4_++) {
-            Buffer class40_sub1 = new Buffer(arg0.method172(is[i_4_], 120, 0));
+            Buffer class40_sub1 = new Buffer(arg0.getFile(is[i_4_], 0));
             aClass40_Sub10Array1740[is[i_4_]] = new EntryTable(class40_sub1);
         }
 
     }
 
-    public static Class40_Sub5_Sub15 method421(Class6 arg0, byte arg1, int arg2, Class6 arg3, boolean arg4) {
+    public static Class40_Sub5_Sub15 method421(CacheIndex arg0, byte arg1, int arg2, CacheIndex arg3, boolean arg4) {
 
         if(arg1 < 40)
             return null;
@@ -151,7 +151,7 @@ public class Class35 implements Interface3 {
                 class40_sub10.aBoolean2146 = true;
                 return class40_sub10.anIntArray2139;
             }
-            boolean bool = class40_sub10.method869(aDouble1750, anInt1748, aClass6_1749);
+            boolean bool = class40_sub10.method869(aDouble1750, anInt1748, aCacheIndex_1749);
             if(bool) {
                 if((anInt1753 ^ 0xffffffff) == -1) {
                     EntryTable class40_sub10_3_ = ((EntryTable) aClass45_1727.method899((byte) 87));

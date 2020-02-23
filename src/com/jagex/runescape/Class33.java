@@ -24,19 +24,19 @@ public class Class33 {
         if(Class24.method340(-122)) {
             Class22.method308(-110);
             Class26.aBoolean618 = arg0;
-            Class22_Sub1.aClass6_1855 = null;
+            Class22_Sub1.aCacheIndex_1855 = null;
         }
 
     }
 
-    public static synchronized void method403(int arg0, boolean arg1, int arg2, int arg3, Class6 arg4, int arg5, int arg6, boolean arg7) {
+    public static synchronized void method403(int arg0, boolean arg1, int arg2, int arg3, CacheIndex arg4, int arg5, int arg6, boolean arg7) {
         if(Class24.method340(5)) {
             Main.aBoolean1790 = arg7;
-            Class6.anInt255 = arg2;
+            CacheIndex.anInt255 = arg2;
             Class40_Sub5_Sub17_Sub1.anInt3004 = arg5;
             Class26.aBoolean618 = arg1;
-            Class22_Sub1.aClass6_1855 = arg4;
-            Class6_Sub1.anInt1806 = -1;
+            Class22_Sub1.aCacheIndex_1855 = arg4;
+            CacheIndex_Sub1.anInt1806 = -1;
             Floor.anInt2342 = arg0;
             Class40_Sub6.anInt2110 = arg6;
             Class8.anInt289 = arg3;
@@ -54,7 +54,7 @@ public class Class33 {
                 else if(i < Class60.anInt1407)
                     actor = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i]]);
                 else
-                    actor = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[(Class40_Sub3.anIntArray2016[i + -Class60.anInt1407])]);
+                    actor = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[(Class40_Sub3.anIntArray2016[i + -Class60.anInt1407])]);
                 if(actor != null && actor.isVisible(1)) {
                     if(actor instanceof Npc) {
                         ActorDefinition class40_sub5_sub5 = (((Npc) actor).aClass40_Sub5_Sub5_3300);
@@ -251,7 +251,7 @@ public class Class33 {
     public static synchronized void method405(int arg0, int arg1) {
         if(Class24.method340(arg0 + -16923)) {
             Floor.method557(arg1, 17098);
-            Class22_Sub1.aClass6_1855 = null;
+            Class22_Sub1.aCacheIndex_1855 = null;
             Class26.aBoolean618 = false;
             if(arg0 != 16969)
                 method414(false, -11, -36, -55, 122, null, 102);
@@ -372,7 +372,7 @@ public class Class33 {
         Class22_Sub2.aClass1_1879 = arg1;
     }
 
-    public static synchronized void method412(boolean arg0, Class6 arg1, int arg2, byte arg3, RSString arg4, int arg5, RSString arg6, int arg7) {
+    public static synchronized void method412(boolean arg0, CacheIndex arg1, int arg2, byte arg3, RSString arg4, int arg5, RSString arg6, int arg7) {
         if(Class24.method340(70)) {
             if(arg3 != 66)
                 method412(false, null, 120, (byte) -44, null, 71, null, -13);
@@ -385,17 +385,17 @@ public class Class33 {
     public static synchronized void method413(byte arg0) {
         if(Class24.method340(-124)) {
             if(Class26.aBoolean618) {
-                byte[] is = RSString.method74(Class40_Sub5_Sub17_Sub1.anInt3004, Class22_Sub1.aClass6_1855, Class8.anInt289, -118, Class40_Sub6.anInt2110);
+                byte[] is = RSString.method74(Class40_Sub5_Sub17_Sub1.anInt3004, Class22_Sub1.aCacheIndex_1855, Class8.anInt289, -118, Class40_Sub6.anInt2110);
                 if(is != null) {
-                    if((Class6.anInt255 ^ 0xffffffff) > -1) {
-                        if(Class6_Sub1.anInt1806 < 0)
+                    if((CacheIndex.anInt255 ^ 0xffffffff) > -1) {
+                        if(CacheIndex_Sub1.anInt1806 < 0)
                             RSString.method56(2037, Main.aBoolean1790, is, Floor.anInt2342);
                         else
-                            Class40_Sub5_Sub4.method566((Floor.anInt2342), Main.aBoolean1790, Class6_Sub1.anInt1806, is, -27520);
+                            Class40_Sub5_Sub4.method566((Floor.anInt2342), Main.aBoolean1790, CacheIndex_Sub1.anInt1806, is, -27520);
                     } else
-                        Class42.method886(0, Floor.anInt2342, Main.aBoolean1790, is, Class6.anInt255);
+                        Class42.method886(0, Floor.anInt2342, Main.aBoolean1790, is, CacheIndex.anInt255);
                     Class26.aBoolean618 = false;
-                    Class22_Sub1.aClass6_1855 = null;
+                    Class22_Sub1.aCacheIndex_1855 = null;
                 }
             }
             Class59.method984(0);
@@ -404,16 +404,16 @@ public class Class33 {
         }
     }
 
-    public static synchronized void method414(boolean arg0, int arg1, int arg2, int arg3, int arg4, Class6 arg5, int arg6) {
+    public static synchronized void method414(boolean arg0, int arg1, int arg2, int arg3, int arg4, CacheIndex arg5, int arg6) {
         if(Class24.method340(arg6 ^ ~0xf)) {
             Class26.aBoolean618 = true;
-            Class6_Sub1.anInt1806 = arg6;
-            Class6.anInt255 = -1;
+            CacheIndex_Sub1.anInt1806 = arg6;
+            CacheIndex.anInt255 = -1;
             Floor.anInt2342 = arg3;
             Class40_Sub5_Sub17_Sub1.anInt3004 = arg4;
             Main.aBoolean1790 = arg0;
             Class40_Sub6.anInt2110 = arg1;
-            Class22_Sub1.aClass6_1855 = arg5;
+            Class22_Sub1.aCacheIndex_1855 = arg5;
             Class8.anInt289 = arg2;
         }
     }

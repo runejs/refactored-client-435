@@ -28,7 +28,7 @@ public class Class58 {
     public static byte[][] aByteArrayArray1370;
     public static int cameraHorizontal;
     public static RSString aClass1_1374;
-    public static Class6 aClass6_1375;
+    public static CacheIndex aCacheIndex_1375;
     public static int anInt1376;
     public static byte[][] aByteArrayArray1377;
     public static RSString aClass1_1378;
@@ -190,20 +190,20 @@ public class Class58 {
         }
     }
 
-    public static void method977(int arg0, Class6 arg1, Class6 arg2) {
+    public static void method977(int arg0, CacheIndex arg1, CacheIndex arg2) {
 
-        Class27.aClass6_654 = arg2;
+        Class27.aCacheIndex_654 = arg2;
         if(arg0 == 3) {
             anInt1360++;
-            Class49.aClass6_1150 = arg1;
-            PacketBuffer.anInt2257 = Class49.aClass6_1150.method190(3, (byte) 8);
+            Class49.aCacheIndex_1150 = arg1;
+            PacketBuffer.anInt2257 = Class49.aCacheIndex_1150.method190(3, (byte) 8);
         }
 
     }
 
     public static void method979(boolean arg0) {
 
-        Class6.aBoolean260 = arg0;
+        CacheIndex.aBoolean260 = arg0;
         Class22.method305((byte) 124);
         if(!Class19.aBoolean490) {
             if((Class40_Sub5_Sub15.inputType ^ 0xffffffff) != -2) {
@@ -362,13 +362,13 @@ public class Class58 {
 
     }
 
-    public static void method980(int arg0, Class6 arg1, boolean arg2, Class6 arg3) {
+    public static void method980(int arg0, CacheIndex arg1, boolean arg2, CacheIndex arg3) {
 
-        Class40_Sub3.aClass6_2037 = arg3;
+        Class40_Sub3.aCacheIndex_2037 = arg3;
         Class35.aBoolean1734 = arg2;
         anInt1351++;
         if(arg0 == 28987)
-            RSString.aClass6_1705 = arg1;
+            RSString.aCacheIndex_1705 = arg1;
 
     }
 
@@ -385,7 +385,7 @@ public class Class58 {
             aByteArrayArray1370 = null;
             aClass1_1378 = null;
             cmd_clientdrop = null;
-            aClass6_1375 = null;
+            aCacheIndex_1375 = null;
         }
 
     }

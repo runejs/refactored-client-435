@@ -124,7 +124,7 @@ public class Class13 {
     public static void method245(int arg0) {
         for(int i = 0; i < Actor.anInt3153; i++) {
             int i_1_ = Class24.anIntArray578[i];
-            Npc class40_sub5_sub17_sub4_sub2 = Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_1_];
+            Npc class40_sub5_sub17_sub4_sub2 = CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_1_];
             int i_2_ = Cache.outgoingbuffer.getUnsignedByte();
             if((0x1 & i_2_ ^ 0xffffffff) != -1) {
                 int i_3_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();

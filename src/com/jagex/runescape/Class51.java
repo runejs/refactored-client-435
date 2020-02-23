@@ -88,7 +88,7 @@ public class Class51 {
             Class40_Sub2.method527(Class5.currentTabId, arg0 + 4, Class40_Sub5_Sub11.tabWidgetIds, Class29.anInt673 == -1, -1);
             Class38.aBoolean893 = true;
             Class40_Sub3.aBoolean2026 = true;
-            Class6.aBoolean260 = true;
+            CacheIndex.aBoolean260 = true;
         }
         int i = 151;
         Class65.method1018((byte) -83);
@@ -111,7 +111,7 @@ public class Class51 {
 
     public static void method941(byte arg0) {
 
-        Class6.aClass9_229.method235((byte) 50);
+        CacheIndex.aClass9_229.method235((byte) 50);
         if(arg0 == -93)
             anInt1191++;
 

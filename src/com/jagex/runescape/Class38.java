@@ -94,11 +94,11 @@ public abstract class Class38 {
 
     }
 
-    public static void method441(Class6 arg0, int arg1) {
+    public static void method441(CacheIndex arg0, int arg1) {
 
         anInt897++;
         int i = -109 / ((arg1 + 14) / 32);
-        Actor.aClass6_3144 = arg0;
+        Actor.aCacheIndex_3144 = arg0;
 
     }
 

@@ -4,7 +4,7 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class40_Sub5_Sub4 extends SubNode {
-    public static Class6 aClass6_2349;
+    public static CacheIndex aCacheIndex_2349;
     public static Class68 aClass68_2350;
     public static RSString aClass1_2351;
     public static RSString aClass1_2352 = RSString.CreateString("Login");
@@ -18,7 +18,7 @@ public class Class40_Sub5_Sub4 extends SubNode {
     public static int[] anIntArray2361;
     public static int anInt2362;
     public static int anInt2363;
-    public static Class6 aClass6_2364;
+    public static CacheIndex aCacheIndex_2364;
     public static int anInt2365;
     public static int anInt2366;
     public static RSString aClass1_2367 = RSString.CreateString("Please subscribe)1 or use a different world)3");
@@ -62,9 +62,9 @@ public class Class40_Sub5_Sub4 extends SubNode {
 
         aClass1_2351 = null;
         if(arg0 <= -120) {
-            aClass6_2364 = null;
+            aCacheIndex_2364 = null;
             aClass68_2350 = null;
-            aClass6_2349 = null;
+            aCacheIndex_2349 = null;
             aClass1_2357 = null;
             anIntArray2361 = null;
             aClass56_2356 = null;

@@ -7,7 +7,7 @@ import com.jagex.runescape.cache.media.IndexedImage;
 public abstract class Renderable extends SubNode {
     public static int anInt2855;
     public static RSString[] chatPlayerNames;
-    public static Class6_Sub1 aClass6_Sub1_2857;
+    public static CacheIndex_Sub1 aClass6_Sub1_2857;
     public static long aLong2858 = 0L;
     public static int anInt2859;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2860;

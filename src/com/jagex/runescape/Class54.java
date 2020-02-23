@@ -105,10 +105,10 @@ public class Class54 implements KeyListener, FocusListener {
                     i += 15;
                     Class38.aBoolean893 = false;
                 }
-                if(Class6.aBoolean260) {
+                if(CacheIndex.aBoolean260) {
                     Class53.aClass40_Sub5_Sub14_Sub1_1268.method687(Class58.aClass1_1378, i_0_, i, 16711680);
                     i += 15;
-                    Class6.aBoolean260 = false;
+                    CacheIndex.aBoolean260 = false;
                 }
                 if(Class40_Sub3.aBoolean2026) {
                     Class53.aClass40_Sub5_Sub14_Sub1_1268.method687(Class66.aClass1_1546, i_0_, i, 16711680);
@@ -128,7 +128,7 @@ public class Class54 implements KeyListener, FocusListener {
         }
     }
 
-    public static int method955(Class6 arg0, byte arg1) {
+    public static int method955(CacheIndex arg0, byte arg1) {
 
         anInt1277++;
         int i = 0;
@@ -140,7 +140,7 @@ public class Class54 implements KeyListener, FocusListener {
             i++;
         if(arg0.method194(Class59.aClass1_1395, Class8.aClass1_305, -1234))
             i++;
-        if(arg0.method194(Class6.aClass1_256, Class8.aClass1_305, arg1 ^ 0x4eb))
+        if(arg0.method194(CacheIndex.aClass1_256, Class8.aClass1_305, arg1 ^ 0x4eb))
             i++;
         if(arg0.method194(Class10.aClass1_338, Class8.aClass1_305, -1234))
             i++;
@@ -185,7 +185,7 @@ public class Class54 implements KeyListener, FocusListener {
 
     }
 
-    public static Class6_Sub1 method957(int arg0, boolean arg1, boolean arg2, byte arg3, boolean arg4) {
+    public static CacheIndex_Sub1 method957(int arg0, boolean arg1, boolean arg2, byte arg3, boolean arg4) {
 
         anInt1272++;
         Class56 class56 = null;
@@ -193,7 +193,7 @@ public class Class54 implements KeyListener, FocusListener {
             class56 = new Class56(arg0, Class40_Sub5_Sub2.aClass67_2298, Class40_Sub5_Sub6.aClass67Array2436[arg0], 1000000);
         if(arg3 < 116)
             method955(null, (byte) -86);
-        return new Class6_Sub1(class56, Class40_Sub5_Sub4.aClass56_2356, arg0, arg2, arg4, arg1);
+        return new CacheIndex_Sub1(class56, Class40_Sub5_Sub4.aClass56_2356, arg0, arg2, arg4, arg1);
 
     }
 

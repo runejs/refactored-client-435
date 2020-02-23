@@ -21,7 +21,7 @@ public class Class40_Sub5_Sub7 extends SubNode {
     public static int anInt2480;
     public static RSString aClass1_2481 = (RSString.CreateString("Gegenstand konnte nicht gefunden werden)1 verk-Urzen Sie den Suchbegriff)3"));
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_2482;
-    public static Class6 aClass6_2484;
+    public static CacheIndex aCacheIndex_2484;
     public static int anInt2486;
     public static RSString aClass1_2487;
     public static RSString aClass1_2488;
@@ -63,7 +63,7 @@ public class Class40_Sub5_Sub7 extends SubNode {
     public static void method589(int arg0) {
 
         aClass1_2488 = null;
-        aClass6_2484 = null;
+        aCacheIndex_2484 = null;
         aClass1_2475 = null;
         aClass40_Sub5_Sub14_Sub4_2482 = null;
         if(arg0 < 47)

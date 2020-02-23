@@ -109,7 +109,7 @@ public class Class52 {
 
     }
 
-    public static ImageRGB[] method944(byte arg0, int arg1, Class6 arg2, int arg3) {
+    public static ImageRGB[] method944(byte arg0, int arg1, CacheIndex arg2, int arg3) {
 
         anInt1237++;
         if(!method948(arg3, arg1, arg2, -3844))
@@ -208,15 +208,15 @@ public class Class52 {
 
     }
 
-    public static boolean method948(int arg0, int arg1, Class6 arg2, int arg3) {
+    public static boolean method948(int arg0, int arg1, CacheIndex arg2, int arg3) {
 
         if(arg3 != -3844)
             method948(14, -28, null, -69);
-        byte[] is = arg2.method172(arg0, 117, arg1);
+        byte[] is = arg2.getFile(arg0, arg1);
         anInt1239++;
         if(is == null)
             return false;
-        Class6.method184(is, 0);
+        CacheIndex.method184(is, 0);
         return true;
 
     }
