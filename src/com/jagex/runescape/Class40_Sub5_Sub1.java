@@ -265,7 +265,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
         if(Player.localPlayer != arg3 && ActorDefinition.anInt2394 < 400) {
             RSString class1;
             if(arg3.anInt3257 == 0)
-                class1 = (Class40_Sub5_Sub17_Sub6.method832(82, (new RSString[]{arg3.playerName, (SceneTile.method536((Player.localPlayer.anInt3260), arg3.anInt3260, -122)), HashTable.aClass1_569, Class40_Sub5_Sub2.aClass1_2286, HashTable.method334(arg3.anInt3260, -1), Class51.aClass1_1199})));
+                class1 = (Class40_Sub5_Sub17_Sub6.method832(82, (new RSString[]{arg3.playerName, (SceneTile.method536((Player.localPlayer.anInt3260), arg3.anInt3260, -122)), HashTable.aClass1_569, Class40_Sub5_Sub2.str_prefix_level, HashTable.method334(arg3.anInt3260, -1), Class51.aClass1_1199})));
             else
                 class1 = (Class40_Sub5_Sub17_Sub6.method832(-60, (new RSString[]{arg3.playerName, HashTable.aClass1_569, Class26.aClass1_619, HashTable.method334(arg3.anInt3257, -1), Class51.aClass1_1199})));
             if((Class8.anInt301 ^ 0xffffffff) == -2) {

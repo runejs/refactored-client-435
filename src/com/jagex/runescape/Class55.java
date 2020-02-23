@@ -184,7 +184,7 @@ public class Class55 {
         Buffer.aClass1_1983 = Floor.aClass1_2315;
         Landscape.aClass1_1173 = Class64.aClass1_1502;
         SceneTile.aClass1_2053 = Renderable.aClass1_2871;
-        Class40_Sub5_Sub2.aClass1_2286 = Class39.aClass1_914;
+        Class40_Sub5_Sub2.str_prefix_level = Class39.aClass1_914;
         SceneTile.aClass1_2050 = Class37.aClass1_860;
         Node.aClass1_969 = Class64.aClass1_1523;
         Node.aClass1_934 = Class64.aClass1_1523;

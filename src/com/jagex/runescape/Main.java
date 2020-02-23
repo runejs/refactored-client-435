@@ -632,7 +632,6 @@ public class Main extends RSApplet {
         Class51.aLong1203 = 0L;
         Class12.aClass39_387.anInt921 = 0;
         Class22_Sub2.anInt1888 = 0;
-        Class40_Sub5_Sub2.anInt2282 = 0;
         Class10.anInt335 = 0;
         Class42.anInt994 = 0;
         SubNode.anInt2088 = 0;
@@ -772,7 +771,6 @@ public class Main extends RSApplet {
         Class54.anInt1274 = 0;
         Class40_Sub5_Sub12.anInt2675 = 0;
         Class24.anInt586 = 0;
-        Class40_Sub5_Sub2.anInt2288 = 0;
         Class40_Sub3.anInt2022 = 0;
         Class42.anInt999 = 0;
         Class54.anInt1279 = 0;
@@ -815,10 +813,8 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub7.anInt2467 = 0;
         Class59.anInt1380 = 0;
         Class51.anInt1192 = 0;
-        Class40_Sub5_Sub2.anInt2284 = 0;
         RSCanvas.anInt52 = 0;
         Class40_Sub13.anInt2182 = 0;
-        Class40_Sub5_Sub2.anInt2289 = 0;
         Renderable.anInt2867 = 0;
         Class22_Sub2.anInt1897 = 0;
         ISAAC.anInt520 = 0;
@@ -947,7 +943,6 @@ public class Main extends RSApplet {
         Class6.anInt245 = 0;
         Class6.anInt240 = 0;
         Class44.anInt1029 = 0;
-        Class40_Sub5_Sub2.anInt2304 = 0;
         Class40_Sub5_Sub13.anInt2761 = 0;
         Class60.anInt1406 = 0;
         Class22_Sub1.anInt1837 = 0;
