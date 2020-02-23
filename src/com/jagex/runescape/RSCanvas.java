@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 
@@ -14,7 +14,7 @@ public class RSCanvas extends Canvas {
     public static int anInt52;
     public static Class45 aClass45_53;
     public static int anInt54;
-    public static RSString aClass1_55 = Class58.method978("shake:");
+    public static RSString aClass1_55 = RSString.CreateString("shake:");
     public static int anInt56;
     public static int anInt57;
     public static int anInt58;
@@ -37,10 +37,10 @@ public class RSCanvas extends Canvas {
         aClass45_53 = new Class45();
         anInt60 = 255;
         anInt65 = 127;
-        aClass1_69 = Class58.method978("Your profile will be transferred in:");
+        aClass1_69 = RSString.CreateString("Your profile will be transferred in:");
         aClass1_67 = aClass1_69;
-        aClass1_70 = Class58.method978("Prepared visibility map");
-        aClass1_68 = Class58.method978("k");
+        aClass1_70 = RSString.CreateString("Prepared visibility map");
+        aClass1_68 = RSString.CreateString("k");
         aClass1_63 = aClass1_70;
     }
 
@@ -83,7 +83,7 @@ public class RSCanvas extends Canvas {
         Renderable.aClass6_Sub1_2857.method191(1120);
         Class55.aClass6_Sub1_1286.method191(1120);
         Class40_Sub5_Sub9.aClass6_Sub1_2571.method191(1120);
-        NpcDefinition.aClass6_Sub1_2377.method191(arg0 ^ 0x460);
+        ActorDefinition.aClass6_Sub1_2377.method191(arg0 ^ 0x460);
         Class32.aClass6_Sub1_773.method191(1120);
         aClass6_Sub1_48.method191(arg0 + 1120);
         VertexNormal.aClass6_Sub1_1104.method191(1120);

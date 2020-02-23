@@ -14,11 +14,11 @@ public class Buffer extends Node {
     public static int anInt1978 = 0;
 
     public static int anInt1982 = 0;
-    public static RSString aClass1_1983 = (Class58.method978("Too many incorrect logins from your address)3"));
+    public static RSString aClass1_1983 = (RSString.CreateString("Too many incorrect logins from your address)3"));
     public static int[] anIntArray1984 = new int[2000];
     public static int anInt1985 = -1;
     public static int anInt1987 = 0;
-    public static RSString aClass1_1990 = Class58.method978("Ausw-=hlen");
+    public static RSString aClass1_1990 = RSString.CreateString("Ausw-=hlen");
 
     public int currentPosition;
     public byte[] buffer;

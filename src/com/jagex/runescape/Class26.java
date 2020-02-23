@@ -5,17 +5,17 @@ import java.awt.*;
 public class Class26 {
     public static int itemSearchScroll = 0;
     public static boolean aBoolean618 = false;
-    public static RSString aClass1_619 = Class58.method978("skill)2");
-    public static RSString aClass1_620 = Class58.method978("@whi@");
+    public static RSString aClass1_619 = RSString.CreateString("skill)2");
+    public static RSString aClass1_620 = RSString.CreateString("@whi@");
     public static int anInt622 = 0;
     public static Image anImage624;
     public static int anInt627;
-    public static RSString aClass1_629 = Class58.method978("Weiter");
-    public static RSString aClass1_630 = Class58.method978("Untersuchen");
-    public static RSString aClass1_631 = Class58.method978("gelb:");
+    public static RSString aClass1_629 = RSString.CreateString("Weiter");
+    public static RSString aClass1_630 = RSString.CreateString("Untersuchen");
+    public static RSString aClass1_631 = RSString.CreateString("gelb:");
     public static Class6 aClass6_632;
-    public static RSString aClass1_633 = (Class58.method978("Moderator)2Option: Spieler f-Ur 48 Stunden stumm schalten: <OFF>"));
-    public static RSString aClass1_634 = Class58.method978("World");
+    public static RSString aClass1_633 = (RSString.CreateString("Moderator)2Option: Spieler f-Ur 48 Stunden stumm schalten: <OFF>"));
+    public static RSString aClass1_634 = RSString.CreateString("World");
     public static int anInt635;
 
     public static Class method349(byte arg0, String arg1) throws ClassNotFoundException {

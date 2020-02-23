@@ -2,11 +2,12 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class58 {
     public static boolean aBoolean1349;
@@ -21,7 +22,7 @@ public class Class58 {
     public static int anInt1360;
     public static Cache aClass9_1364;
     public static int anInt1367;
-    public static RSString aClass1_1365 = method978("Message");
+    public static RSString aClass1_1365 = RSString.CreateString("Message");
     public static int anInt1368;
     public static int anInt1369;
     public static byte[][] aByteArrayArray1370;
@@ -37,12 +38,12 @@ public class Class58 {
         aBoolean1349 = false;
         aClass1_1354 = aClass1_1365;
         anIntArray1358 = new int[5];
-        cmd_clientdrop = method978("::clientdrop");
+        cmd_clientdrop = RSString.CreateString("::clientdrop");
         aClass9_1364 = new Cache(64);
-        aClass1_1374 = method978("backvmid1");
+        aClass1_1374 = RSString.CreateString("backvmid1");
         cameraHorizontal = 0;
         anInt1376 = -1;
-        aClass1_1378 = method978("Chat panel redrawn");
+        aClass1_1378 = RSString.CreateString("Chat panel redrawn");
         aByteArrayArray1377 = new byte[1000][];
         varbitmasks = new int[2000];
     }
@@ -181,7 +182,7 @@ public class Class58 {
                         arg1.aClass1_2668 = VertexNormal.aClass1_1088;
                     } else {
                         arg1.anInt2647 = 16711680;
-                        arg1.aClass1_2668 = NpcDefinition.aClass1_2384;
+                        arg1.aClass1_2668 = ActorDefinition.aClass1_2384;
                     }
                 } else
                     arg1.aClass1_2668 = Class66.blank_string;
@@ -198,30 +199,6 @@ public class Class58 {
             PacketBuffer.anInt2257 = Class49.aClass6_1150.method190(3, (byte) 8);
         }
 
-    }
-
-    public static RSString method978(String arg1) { // TODO: CreateString?
-        anInt1367++;
-        byte[] is = arg1.getBytes();
-        int i = is.length;
-        RSString class1 = new RSString();
-        class1.str = arg1;
-        int i_5_ = 0;
-        class1.chars = new byte[i];
-        while(i > i_5_) {
-            int i_6_ = 0xff & is[i_5_++];
-            if(i_6_ > 45 || i_6_ < 40) {
-                if(i_6_ != 0)
-                    class1.chars[class1.length++] = (byte) i_6_;
-            } else {
-                if((i_5_ ^ 0xffffffff) <= (i ^ 0xffffffff))
-                    break;
-                int i_7_ = 0xff & is[i_5_++];
-                class1.chars[class1.length++] = (byte) (i_7_ + -48 + 43 * (-40 + i_6_));
-            }
-        }
-        class1.method77((byte) -73);
-        return class1.method66();
     }
 
     public static void method979(boolean arg0) {
@@ -330,8 +307,8 @@ public class Class58 {
                                     Class62.chatboxScrollMax = 78;
                                 Class27.drawScrollBar(0, (-(GameObjectDefinition.chatboxScroll) + Class62.chatboxScrollMax - 77), Class62.chatboxScrollMax, 463, 77, 0);
                                 RSString name;
-                                if(((Class40_Sub5_Sub13.localPlayer) != null) && (Class40_Sub5_Sub13.localPlayer.playerName) != null)
-                                    name = (Class40_Sub5_Sub13.localPlayer.playerName);
+                                if(((Player.localPlayer) != null) && (Player.localPlayer.playerName) != null)
+                                    name = (Player.localPlayer.playerName);
                                 else
                                     name = Class22_Sub2.username;
                                 typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(-62, (new RSString[]{name, Class43.aClass1_1027}))), 4, 90, 0);

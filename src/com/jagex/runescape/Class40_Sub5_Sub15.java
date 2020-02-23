@@ -4,7 +4,7 @@ import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.media.renderable.actor.Actor;
 
 public class Class40_Sub5_Sub15 extends SubNode {
-    public static RSString aClass1_2773 = (Class58.method978("Um ein neues Spielkonto zu erstellen)1 m-Ussen Sie"));
+    public static RSString aClass1_2773 = (RSString.CreateString("Um ein neues Spielkonto zu erstellen)1 m-Ussen Sie"));
     public static RSString aClass1_2774;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2775;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2776;
@@ -12,7 +12,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public static int anInt2778;
     public static Class6 aClass6_2779;
     public static int inputType;
-    public static RSString aClass1_2781 = Class58.method978(" Sekunde(Xn(Y -Ubertragen)3");
+    public static RSString aClass1_2781 = RSString.CreateString(" Sekunde(Xn(Y -Ubertragen)3");
     public static int anInt2782;
     public static int anInt2783;
     public static boolean aBoolean2784;
@@ -31,12 +31,12 @@ public class Class40_Sub5_Sub15 extends SubNode {
         anInt2782 = 0;
         anInt2778 = 0;
         anIntArray2788 = new int[]{16, 32, 64, 128};
-        aClass1_2787 = Class58.method978("sideicons");
+        aClass1_2787 = RSString.CreateString("sideicons");
         aBoolean2784 = false;
-        aClass1_2790 = Class58.method978("Friends");
-        aClass1_2792 = Class58.method978("Examine");
+        aClass1_2790 = RSString.CreateString("Friends");
+        aClass1_2792 = RSString.CreateString("Examine");
         aClass1_2786 = aClass1_2790;
-        aClass1_2793 = Class58.method978("Ihr Charakter)2Profil wird in:");
+        aClass1_2793 = RSString.CreateString("Ihr Charakter)2Profil wird in:");
         anInt2791 = -8 + (int) (17.0 * Math.random());
         aClass1_2774 = aClass1_2792;
     }

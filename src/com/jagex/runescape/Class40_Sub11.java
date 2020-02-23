@@ -5,15 +5,16 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class40_Sub11 extends Node {
     public static RSString[] aClass1Array2147 = new RSString[200];
     public static RSString[] aClass1Array2153 = new RSString[1000];
     public static int anInt2158 = 0;
-    public static RSString aClass1_2161 = Class58.method978("headicons_pk");
+    public static RSString aClass1_2161 = RSString.CreateString("headicons_pk");
     public static Class6 aClass6_2162;
     public static int anInt2163 = 0;
-    public static RSString cmd_fpsoff = Class58.method978("::fpsoff");
+    public static RSString cmd_fpsoff = RSString.CreateString("::fpsoff");
     public int[] anIntArray2154;
     public int[] anIntArray2155;
     public Class15[] aClass15Array2156;
@@ -47,7 +48,7 @@ public class Class40_Sub11 extends Node {
                 if(class1 != null && class1.startsWith(Class40_Sub5_Sub12.goldCrown))
                     class1 = class1.substring(5);
                 if((i_1_ == 1 || i_1_ == 2) && ((i_1_ ^ 0xffffffff) == -2 || Class35.publicChatMode == 0 || (Class35.publicChatMode == 1 && Class40_Sub2.hasFriend(class1, -32624)))) {
-                    if(arg1 > i_2_ - 14 && arg1 <= i_2_ && !(class1.equals((Class40_Sub5_Sub13.localPlayer.playerName)))) {
+                    if(arg1 > i_2_ - 14 && arg1 <= i_2_ && !(class1.equals((Player.localPlayer.playerName)))) {
                         if((Class19.anInt493 ^ 0xffffffff) <= -2) {
                             Floor.method558(0, Class22_Sub1.aClass1_1865, 0, -501, 0, 28, (Class40_Sub5_Sub17_Sub6.method832(arg2 ^ ~0x18, new RSString[]{Class26.aClass1_620, class1})));
                             CollisionMap.anInt158++;

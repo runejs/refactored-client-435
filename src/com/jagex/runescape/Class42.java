@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.io.Buffer;
@@ -22,7 +23,7 @@ public class Class42 {
     public static RSString aClass1_1000;
     public static RSString aClass1_1001;
     public static RSString aClass1_1002;
-    public static RSString aClass1_1003 = Class58.method978("Lade Konfiguration )2 ");
+    public static RSString aClass1_1003 = RSString.CreateString("Lade Konfiguration )2 ");
     public static int anInt1004;
     public static RSString aClass1_1005;
     public static int anInt1006;
@@ -35,20 +36,20 @@ public class Class42 {
     public static int[] anIntArray1013;
 
     static {
-        aClass1_995 = Class58.method978(" has logged in)3");
-        aClass1_989 = Class58.method978("We suspect someone knows your password)3");
+        aClass1_995 = RSString.CreateString(" has logged in)3");
+        aClass1_989 = RSString.CreateString("We suspect someone knows your password)3");
         aClass1_1001 = aClass1_989;
-        aClass1_1005 = Class58.method978("Loaded config");
+        aClass1_1005 = RSString.CreateString("Loaded config");
         aClass1_1000 = aClass1_1005;
         aClass1_988 = aClass1_995;
         anInt1008 = 0;
         anInt1006 = 0;
-        aClass1_990 = Class58.method978("Unable to connect)3");
+        aClass1_990 = RSString.CreateString("Unable to connect)3");
         aClass1_1002 = aClass1_990;
         aClass1_997 = aClass1_990;
         aClass9_998 = new Cache(100);
         anInt1010 = 2;
-        aClass1_1012 = Class58.method978("Existing user");
+        aClass1_1012 = RSString.CreateString("Existing user");
         aClass1_1011 = aClass1_1012;
     }
 
@@ -212,7 +213,7 @@ public class Class42 {
             if((i_6_ ^ 0xffffffff) == -2)
                 Class24.anIntArray578[Actor.anInt3153++] = i;
             int i_7_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
-            class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300 = Landscape.method932((byte) -121, Cache.outgoingbuffer.putBits(13, (byte) -65));
+            class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300 = ActorDefinition.getDefinition((byte) -121, Cache.outgoingbuffer.putBits(13, (byte) -65));
             class40_sub5_sub17_sub4_sub2.anInt3132 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate90LeftAnimation);
             class40_sub5_sub17_sub4_sub2.anInt3126 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.stanceAnimation);
             class40_sub5_sub17_sub4_sub2.anInt3083 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2389);
@@ -224,7 +225,7 @@ public class Class42 {
             if(class40_sub5_sub17_sub4_sub2.anInt3113 == 0)
                 class40_sub5_sub17_sub4_sub2.anInt3118 = 0;
             class40_sub5_sub17_sub4_sub2.anInt3075 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate90RightAnimation);
-            class40_sub5_sub17_sub4_sub2.method787((Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]) + i_5_, -7717, (i_7_ ^ 0xffffffff) == -2, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]) + i_4_);
+            class40_sub5_sub17_sub4_sub2.method787((Player.localPlayer.anIntArray3135[0]) + i_5_, -7717, (i_7_ ^ 0xffffffff) == -2, (Player.localPlayer.anIntArray3088[0]) + i_4_);
         }
         Cache.outgoingbuffer.finishBitAccess((byte) -110);
 

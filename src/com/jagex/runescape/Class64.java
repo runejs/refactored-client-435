@@ -17,14 +17,14 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 public class Class64 implements Runnable {
-    public static RSString aClass1_1502 = Class58.method978("Wordpack geladen)3");
-    public static RSString aClass1_1505 = Class58.method978("Handel akzeptieren");
+    public static RSString aClass1_1502 = RSString.CreateString("Wordpack geladen)3");
+    public static RSString aClass1_1505 = RSString.CreateString("Handel akzeptieren");
     public static int anInt1511 = -1;
-    public static RSString aClass1_1517 = Class58.method978("redstone3");
+    public static RSString aClass1_1517 = RSString.CreateString("redstone3");
     public static Class6 aClass6_1521;
-    public static RSString aClass1_1523 = Class58.method978("");
-    public static RSString aClass1_1524 = Class58.method978("Menge eingeben:");
-    public static RSString aClass1_1526 = Class58.method978("Your account has been disabled)3");
+    public static RSString aClass1_1523 = RSString.CreateString("");
+    public static RSString aClass1_1524 = RSString.CreateString("Menge eingeben:");
+    public static RSString aClass1_1526 = RSString.CreateString("Your account has been disabled)3");
     public static int setZ = 99;
 
     public InputStream anInputStream1503;

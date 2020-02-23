@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 import java.io.ByteArrayInputStream;
@@ -10,21 +10,21 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class Class40_Sub5_Sub6 extends SubNode {
-    public static RSString aClass1_2434 = Class58.method978(":duelreq:");
+    public static RSString aClass1_2434 = RSString.CreateString(":duelreq:");
     public static Class67[] aClass67Array2436 = new Class67[13];
     public static int anInt2437;
-    public static RSString aClass1_2438 = Class58.method978("scroll:");
+    public static RSString aClass1_2438 = RSString.CreateString("scroll:");
     public static Cache aClass9_2439 = new Cache(64);
-    public static RSString aClass1_2440 = Class58.method978("Enter name:");
+    public static RSString aClass1_2440 = RSString.CreateString("Enter name:");
     public static int anInt2443;
     public static RSString aClass1_2446 = aClass1_2440;
-    public static RSString aClass1_2447 = Class58.method978("@yel@*V");
+    public static RSString aClass1_2447 = RSString.CreateString("@yel@*V");
     public static int anInt2451 = 0;
     public static int anInt2452 = 0;
-    public static RSString aClass1_2457 = (Class58.method978(" steht bereits auf Ihrer Ignorieren)2Liste(Q"));
-    public static RSString aClass1_2458 = Class58.method978("From");
-    public static RSString aClass1_2460 = Class58.method978("RuneScape has been updated(Q");
-    public static RSString aClass1_2462 = Class58.method978("Error connecting to server)3");
+    public static RSString aClass1_2457 = (RSString.CreateString(" steht bereits auf Ihrer Ignorieren)2Liste(Q"));
+    public static RSString aClass1_2458 = RSString.CreateString("From");
+    public static RSString aClass1_2460 = RSString.CreateString("RuneScape has been updated(Q");
+    public static RSString aClass1_2462 = RSString.CreateString("Error connecting to server)3");
     public byte[] aByteArray2441;
 
     public Class40_Sub5_Sub6(byte[] arg0) {
@@ -224,7 +224,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                 Class66.aClass1_1543 = Class66.aClass1_1543.method70(Class59.anInt1388, 0);
                                 Class52.redrawChatbox = true;
                             }
-                        } else if((Class43.openChatboxWidgetId ^ 0xffffffff) == 0 && (NpcDefinition.anInt2433 ^ 0xffffffff) == 0) {
+                        } else if((Class43.openChatboxWidgetId ^ 0xffffffff) == 0 && (ActorDefinition.anInt2433 ^ 0xffffffff) == 0) {
                             if((ItemDefinition.anInt2854 ^ 0xffffffff) == -86 && (Class66.chatboxInput.length() > 0)) {
                                 Class66.chatboxInput = (Class66.chatboxInput.substring(0, Class66.chatboxInput.length() - 1));
                                 Class52.redrawChatbox = true;
@@ -240,6 +240,9 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                     if(Class66.chatboxInput.equals(Class40_Sub3.cmd_fpson)) {
                                         Class19.showFps = true;
                                         Class40_Sub5_Sub15.inputType = 3;
+                                        for(int i = 0; i <= Class24.INCOMINGPACKETSIZES.length; i++) {
+                                            System.out.printf("incomingPacketSizes[%d] = %d;\n", i, Class24.INCOMINGPACKETSIZES[i]);
+                                        }
                                     }
                                     if(Class66.chatboxInput.equals(Class40_Sub11.cmd_fpsoff))
                                         Class19.showFps = false;
@@ -367,7 +370,6 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         }
                         if(ItemDefinition.anInt2854 == 84) {
                             if(Class66.aClass1_1543.length() > 0) {
-                                Player.anInt3280++;
                                 Class32.packetBuffer.putPacket(86);
                                 Class32.packetBuffer.putLongBE(Class66.aClass1_1543.method58((byte) 89));
                             }
@@ -453,8 +455,8 @@ public class Class40_Sub5_Sub6 extends SubNode {
                 i_18_ -= 357;
                 i_17_ -= 17;
             }
-            for(int i_19_ = 0; i_19_ < NpcDefinition.anInt2394; i_19_++) {
-                int i_20_ = (15 * (-i_19_ + NpcDefinition.anInt2394 + -1) + i_14_ + 31);
+            for(int i_19_ = 0; i_19_ < ActorDefinition.anInt2394; i_19_++) {
+                int i_20_ = (15 * (-i_19_ + ActorDefinition.anInt2394 + -1) + i_14_ + 31);
                 int i_21_ = 16777215;
                 if((i_17_ ^ 0xffffffff) < (i ^ 0xffffffff) && i + i_15_ > i_17_ && (i_18_ ^ 0xffffffff) < (-13 + i_20_ ^ 0xffffffff) && (i_20_ + 3 ^ 0xffffffff) < (i_18_ ^ 0xffffffff))
                     i_21_ = 16776960;

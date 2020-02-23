@@ -2,7 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -10,12 +10,12 @@ import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class40_Sub5_Sub1 extends SubNode {
     public static Class45 aClass45_2268 = new Class45();
-    public static RSString aClass1_2274 = Class58.method978("To");
+    public static RSString aClass1_2274 = RSString.CreateString("To");
     public static Class68 aClass68_2275;
     public static int anInt2276 = 0;
-    public static RSString aClass1_2277 = Class58.method978(" )2> @cya@");
+    public static RSString aClass1_2277 = RSString.CreateString(" )2> @cya@");
     public static int anInt2278 = 0;
-    public static RSString aClass1_2279 = Class58.method978("Lade Ignorieren)2Liste)3)3)3");
+    public static RSString aClass1_2279 = RSString.CreateString("Lade Ignorieren)2Liste)3)3)3");
     public static int anInt2280 = 0;
 
     public int[] anIntArray2262;
@@ -262,10 +262,10 @@ public class Class40_Sub5_Sub1 extends SubNode {
     }
 
     public static void method545(int arg0, boolean arg1, int arg2, Player arg3, int arg4) {
-        if(Class40_Sub5_Sub13.localPlayer != arg3 && NpcDefinition.anInt2394 < 400) {
+        if(Player.localPlayer != arg3 && ActorDefinition.anInt2394 < 400) {
             RSString class1;
             if(arg3.anInt3257 == 0)
-                class1 = (Class40_Sub5_Sub17_Sub6.method832(82, (new RSString[]{arg3.playerName, (SceneTile.method536((Class40_Sub5_Sub13.localPlayer.anInt3260), arg3.anInt3260, -122)), HashTable.aClass1_569, Class40_Sub5_Sub2.aClass1_2286, HashTable.method334(arg3.anInt3260, -1), Class51.aClass1_1199})));
+                class1 = (Class40_Sub5_Sub17_Sub6.method832(82, (new RSString[]{arg3.playerName, (SceneTile.method536((Player.localPlayer.anInt3260), arg3.anInt3260, -122)), HashTable.aClass1_569, Class40_Sub5_Sub2.str_prefix_level, HashTable.method334(arg3.anInt3260, -1), Class51.aClass1_1199})));
             else
                 class1 = (Class40_Sub5_Sub17_Sub6.method832(-60, (new RSString[]{arg3.playerName, HashTable.aClass1_569, Class26.aClass1_619, HashTable.method334(arg3.anInt3257, -1), Class51.aClass1_1199})));
             if((Class8.anInt301 ^ 0xffffffff) == -2) {
@@ -282,10 +282,10 @@ public class Class40_Sub5_Sub1 extends SubNode {
                         int i_16_ = 0;
                         int i_17_ = 0;
                         if(Main.aClass1Array1778[i].equalsIgnoreCase(Class38_Sub1.aClass1_1917, true)) {
-                            if((Class40_Sub5_Sub13.localPlayer.anInt3260) < arg3.anInt3260)
+                            if((Player.localPlayer.anInt3260) < arg3.anInt3260)
                                 i_17_ = 2000;
-                            if(((Class40_Sub5_Sub13.localPlayer.anInt3266) ^ 0xffffffff) != -1 && arg3.anInt3266 != 0) {
-                                if((Class40_Sub5_Sub13.localPlayer.anInt3266) != arg3.anInt3266)
+                            if(((Player.localPlayer.anInt3266) ^ 0xffffffff) != -1 && arg3.anInt3266 != 0) {
+                                if((Player.localPlayer.anInt3266) != arg3.anInt3266)
                                     i_17_ = 0;
                                 else
                                     i_17_ = 2000;
@@ -307,7 +307,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 }
             }
             if(arg1 == false) {
-                for(int i = 0; i < NpcDefinition.anInt2394; i++) {
+                for(int i = 0; i < ActorDefinition.anInt2394; i++) {
                     if((Class38.anIntArray884[i] ^ 0xffffffff) == -8) {
                         Landscape.aClass1Array1184[i] = (Class40_Sub5_Sub17_Sub6.method832(-78, new RSString[]{Class22_Sub2.aClass1_1876, VertexNormal.aClass1_1117, Class26.aClass1_620, class1}));
                         break;

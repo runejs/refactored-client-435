@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -15,7 +15,7 @@ public class SceneTile extends Node {
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_2043;
     public static RSString aClass1_2044;
     public static int anInt2045;
-    public static RSString aClass1_2046 = Class58.method978("Verbindung mit Freunde)2Server)3)3)3");
+    public static RSString aClass1_2046 = RSString.CreateString("Verbindung mit Freunde)2Server)3)3)3");
     public static RSString aClass1_2047;
     public static int[] anIntArray2048;
     public static int activeInterfaceType;
@@ -29,9 +29,9 @@ public class SceneTile extends Node {
     public static RSString aClass1_2057;
 
     static {
-        aClass1_2044 = Class58.method978("Schrifts-=tze geladen)3");
-        aClass1_2051 = Class58.method978("m-Ochte sich mit Ihnen duellieren)3");
-        aClass1_2055 = Class58.method978("Please try using a different world)3");
+        aClass1_2044 = RSString.CreateString("Schrifts-=tze geladen)3");
+        aClass1_2051 = RSString.CreateString("m-Ochte sich mit Ihnen duellieren)3");
+        aClass1_2055 = RSString.CreateString("Please try using a different world)3");
         aClass1_2050 = aClass1_2055;
         aClass1_2047 = aClass1_2055;
         aClass1_2053 = aClass1_2055;
@@ -196,16 +196,16 @@ public class SceneTile extends Node {
     public static void method537(int arg0) {
 
         anInt2041++;
-        if(NpcDefinition.anInt2394 >= 2 || (Class8.anInt301 ^ 0xffffffff) != -1 || (Main.anInt1773 ^ 0xffffffff) != -1) {
+        if(ActorDefinition.anInt2394 >= 2 || (Class8.anInt301 ^ 0xffffffff) != -1 || (Main.anInt1773 ^ 0xffffffff) != -1) {
             RSString class1;
-            if(Class8.anInt301 == 1 && (NpcDefinition.anInt2394 ^ 0xffffffff) > -3)
+            if(Class8.anInt301 == 1 && (ActorDefinition.anInt2394 ^ 0xffffffff) > -3)
                 class1 = (Class40_Sub5_Sub17_Sub6.method832(-74, (new RSString[]{Main.aClass1_1763, VertexNormal.aClass1_1117, Npc.aClass1_3295, Class38.aClass1_894})));
-            else if(Main.anInt1773 != 1 || NpcDefinition.anInt2394 >= 2)
-                class1 = (Landscape.aClass1Array1184[-1 + NpcDefinition.anInt2394]);
+            else if(Main.anInt1773 != 1 || ActorDefinition.anInt2394 >= 2)
+                class1 = (Landscape.aClass1Array1184[-1 + ActorDefinition.anInt2394]);
             else
                 class1 = (Class40_Sub5_Sub17_Sub6.method832(-57, new RSString[]{Class38_Sub1.aClass1_1918, VertexNormal.aClass1_1117, FloorDecoration.aClass1_611, Class38.aClass1_894}));
-            if((NpcDefinition.anInt2394 ^ 0xffffffff) < -3)
-                class1 = (Class40_Sub5_Sub17_Sub6.method832(56, new RSString[]{class1, Class53.aClass1_1243, HashTable.method334((NpcDefinition.anInt2394) + -2, -1), Class39.aClass1_904}));
+            if((ActorDefinition.anInt2394 ^ 0xffffffff) < -3)
+                class1 = (Class40_Sub5_Sub17_Sub6.method832(56, new RSString[]{class1, Class53.aClass1_1243, HashTable.method334((ActorDefinition.anInt2394) + -2, -1), Class39.aClass1_904}));
             if(arg0 == 4)
                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method684(class1, 4, 15, 16777215, true, Node.anInt926 / 1000);
         }

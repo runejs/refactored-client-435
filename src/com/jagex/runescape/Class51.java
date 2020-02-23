@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 import java.awt.event.KeyEvent;
@@ -19,7 +19,7 @@ public class Class51 {
     public static RSString aClass1_1196;
     public static int anInt1197;
     public static int[] anIntArray1198;
-    public static RSString aClass1_1199 = Class58.method978("(Y");
+    public static RSString aClass1_1199 = RSString.CreateString("(Y");
     public static RSString aClass1_1200;
     public static RSString aClass1_1201;
     public static int anInt1202;
@@ -35,13 +35,13 @@ public class Class51 {
     static {
         anInt1197 = 0;
         anInt1205 = -1;
-        aClass1_1201 = Class58.method978("Enter name of player to add to list");
+        aClass1_1201 = RSString.CreateString("Enter name of player to add to list");
         aClass1_1200 = aClass1_1201;
-        aClass1_1207 = Class58.method978("Accept trade");
+        aClass1_1207 = RSString.CreateString("Accept trade");
         aClass1_1208 = aClass1_1207;
         anInt1195 = 0;
-        aClass1_1209 = Class58.method978("glow3:");
-        whiteCrown = Class58.method978("@cr1@");
+        aClass1_1209 = RSString.CreateString("glow3:");
+        whiteCrown = RSString.CreateString("@cr1@");
         aLong1203 = 0L;
         aClass1_1196 = aClass1_1209;
     }
@@ -96,7 +96,7 @@ public class Class51 {
             ItemDefinition.method742(205);
             Class45.method908((byte) 114);
             Class55.method964(40);
-            NpcDefinition.method574(4);
+            ActorDefinition.method574(4);
             Class52.method943(ItemDefinition.anInt2797, -118, Class53.aClass40_Sub5_Sub14_Sub1_1268, Class4.anInt185, Class35.publicChatMode);
             Class40_Sub2.method527(Class5.currentTabId, arg0 + 4, Class40_Sub5_Sub11.tabWidgetIds, Class29.anInt673 == -1, -1);
             Class38.aBoolean893 = true;

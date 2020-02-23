@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -9,14 +9,14 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.util.Signlink;
 
 public class Class38_Sub1 extends Class38 {
-    public static RSString aClass1_1905 = Class58.method978(" has logged out)3");
+    public static RSString aClass1_1905 = RSString.CreateString(" has logged out)3");
     public static int[] anIntArray1909 = new int[99];
     public static int[] anIntArray1916 = new int[50];
-    public static RSString aClass1_1917 = Class58.method978("Attack");
+    public static RSString aClass1_1917 = RSString.CreateString("Attack");
     public static RSString aClass1_1918 = null;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1919;
-    public static RSString aClass1_1921 = Class58.method978("b12_full");
-    public static RSString aClass1_1922 = Class58.method978("Loaded sprites");
+    public static RSString aClass1_1921 = RSString.CreateString("b12_full");
+    public static RSString aClass1_1922 = RSString.CreateString("Loaded sprites");
     public static int anInt1923 = 0;
 
     static {
@@ -379,7 +379,7 @@ public class Class38_Sub1 extends Class38 {
         if(Player.anInt3288 == 2) {
             if(arg0 >= -28)
                 method445(-128);
-            Class22_Sub1.method312(2 * NpcDefinition.anInt2404, (Class35.anInt1730 + (-Class26.anInt635 + Class4.anInt175 << -977811321)), ((Class68.anInt1637 + -Class40_Sub5_Sub2.anInt2307) << 1068913575) + Landscape.anInt1170, 4976905);
+            Class22_Sub1.method312(2 * ActorDefinition.anInt2404, (Class35.anInt1730 + (-Class26.anInt635 + Class4.anInt175 << -977811321)), ((Class68.anInt1637 + -Class40_Sub5_Sub2.anInt2307) << 1068913575) + Landscape.anInt1170, 4976905);
             if(ISAAC.anInt522 > -1 && Node.anInt926 % 20 < 10)
                 Class40_Sub5_Sub9.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
         }

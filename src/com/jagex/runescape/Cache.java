@@ -1,21 +1,21 @@
 package com.jagex.runescape;
 
 public class Cache {
-    public static RSString dropString = Class58.method978("Drop");
+    public static RSString dropString = RSString.CreateString("Drop");
     public static RSString dropStringInstance = dropString;
     public static PacketBuffer outgoingbuffer = new PacketBuffer(5000);
     public static volatile int anInt320 = 0;
     public static int anInt321 = 5063219;
     public static volatile int anInt322 = -1;
-    public static RSString aClass1_323 = (Class58.method978("Please check your message)2centre for details)3"));
+    public static RSString aClass1_323 = (RSString.CreateString("Please check your message)2centre for details)3"));
     public static int anInt324 = 0;
-    public static RSString aClass1_325 = Class58.method978("Ung-Ultiger Benutzername");
+    public static RSString aClass1_325 = RSString.CreateString("Ung-Ultiger Benutzername");
     public static Cache aClass9_326 = new Cache(200);
-    public static RSString aClass1_327 = Class58.method978("@or1@");
+    public static RSString aClass1_327 = RSString.CreateString("@or1@");
     public static Class6 aClass6_329;
     public static boolean aBoolean330 = false;
-    public static RSString aClass1_331 = (Class58.method978("RuneScape wird geladen )2 bitte warten)3)3)3"));
-    public static RSString aClass1_332 = Class58.method978("Classic");
+    public static RSString aClass1_331 = (RSString.CreateString("RuneScape wird geladen )2 bitte warten)3)3)3"));
+    public static RSString aClass1_332 = RSString.CreateString("Classic");
     public static RSString aClass1_333 = aClass1_332;
 
     public SubNode aClass40_Sub5_309 = new SubNode();

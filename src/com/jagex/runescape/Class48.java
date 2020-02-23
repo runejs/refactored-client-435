@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -9,13 +9,13 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 
 public class Class48 {
-    public static RSString aClass1_1122 = Class58.method978("RuneScape is loading )2 please wait)3)3)3");
-    public static RSString aClass1_1123 = Class58.method978(" ");
-    public static RSString aClass1_1124 = Class58.method978("Loading title screen )2 ");
+    public static RSString aClass1_1122 = RSString.CreateString("RuneScape is loading )2 please wait)3)3)3");
+    public static RSString aClass1_1123 = RSString.CreateString(" ");
+    public static RSString aClass1_1124 = RSString.CreateString("Loading title screen )2 ");
     public static int anInt1126 = 0;
     public static int anInt1127 = 0;
     public static Buffer aClass40_Sub1_1132;
-    public static RSString aClass1_1137 = Class58.method978("M");
+    public static RSString aClass1_1137 = RSString.CreateString("M");
     public static int anInt1138 = -1;
 
     public int[][] anIntArrayArray1128;
@@ -315,7 +315,7 @@ public class Class48 {
             return null;
         if(arg2 != true)
             method922(3, -92, null, -95, -119, -82, -28, -32);
-        return NpcDefinition.method578(-120);
+        return ActorDefinition.method578(-120);
     }
 
     public static void method928(int arg0) {

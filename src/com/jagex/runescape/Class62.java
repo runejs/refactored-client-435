@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -45,13 +45,13 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
     static {
         anInt1450 = -1;
         aClass9_1455 = new Cache(50);
-        aClass1_1464 = Class58.method978(" is already on your friend list");
+        aClass1_1464 = RSString.CreateString(" is already on your friend list");
         aClass1_1465 = aClass1_1464;
         aClass40_Sub5_Sub14_Sub4Array1466 = new ImageRGB[1000];
-        aClass1_1463 = Class58.method978("wave2:");
+        aClass1_1463 = RSString.CreateString("wave2:");
         anInt1470 = 0;
         chatboxScrollMax = 78;
-        aClass1_1471 = Class58.method978("Lade Titelbild )2 ");
+        aClass1_1471 = RSString.CreateString("Lade Titelbild )2 ");
         aClass1_1474 = aClass1_1463;
     }
 
@@ -80,11 +80,11 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
             if((Main.anInt1773 ^ 0xffffffff) == -2 && (Class57.anInt1338 ^ 0xffffffff) <= -517 && (RSString.anInt1668 ^ 0xffffffff) <= -161 && (Class57.anInt1338 ^ 0xffffffff) >= -766 && RSString.anInt1668 <= 205)
                 i = 0;
             if(!Class4.menuOpen) {
-                if(i == 1 && (NpcDefinition.anInt2394 ^ 0xffffffff) < -1) {
-                    int i_0_ = (Class38.anIntArray884[NpcDefinition.anInt2394 - 1]);
+                if(i == 1 && (ActorDefinition.anInt2394 ^ 0xffffffff) < -1) {
+                    int i_0_ = (Class38.anIntArray884[ActorDefinition.anInt2394 - 1]);
                     if((i_0_ ^ 0xffffffff) == -54 || i_0_ == 25 || i_0_ == 55 || (i_0_ ^ 0xffffffff) == -49 || (i_0_ ^ 0xffffffff) == -25 || (i_0_ ^ 0xffffffff) == -53 || (i_0_ ^ 0xffffffff) == -7 || i_0_ == 31 || (i_0_ ^ 0xffffffff) == -44 || i_0_ == 11 || i_0_ == 19 || i_0_ == 1006) {
-                        int i_1_ = (Class19.anIntArray483[NpcDefinition.anInt2394 - 1]);
-                        int i_2_ = (Class59.anIntArray1393[-1 + NpcDefinition.anInt2394]);
+                        int i_1_ = (Class19.anIntArray483[ActorDefinition.anInt2394 - 1]);
+                        int i_2_ = (Class59.anIntArray1393[-1 + ActorDefinition.anInt2394]);
                         Class40_Sub5_Sub12 class40_sub5_sub12 = Class68.method1045(i_2_, (byte) -58);
                         if(class40_sub5_sub12.aBoolean2703 || class40_sub5_sub12.aBoolean2723) {
                             Renderable.anInt2869 = Class57.anInt1338;
@@ -102,11 +102,11 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
                         }
                     }
                 }
-                if((i ^ 0xffffffff) == -2 && ((Class68.anInt1630 ^ 0xffffffff) == -2 || Class33.method409((byte) 46, -1 + NpcDefinition.anInt2394)) && (NpcDefinition.anInt2394 ^ 0xffffffff) < -3)
+                if((i ^ 0xffffffff) == -2 && ((Class68.anInt1630 ^ 0xffffffff) == -2 || Class33.method409((byte) 46, -1 + ActorDefinition.anInt2394)) && (ActorDefinition.anInt2394 ^ 0xffffffff) < -3)
                     i = 2;
-                if(i == 1 && NpcDefinition.anInt2394 > 0)
-                    Class27.method358(59, NpcDefinition.anInt2394 + -1);
-                if(i == 2 && NpcDefinition.anInt2394 > 0)
+                if(i == 1 && ActorDefinition.anInt2394 > 0)
+                    Class27.method358(59, ActorDefinition.anInt2394 + -1);
+                if(i == 2 && ActorDefinition.anInt2394 > 0)
                     Class60.method990(11451);
             } else {
                 if((i ^ 0xffffffff) != -2) {
@@ -151,8 +151,8 @@ public class Class62 implements MouseListener, MouseMotionListener, FocusListene
                         i_8_ -= 17;
                         i_10_ -= 357;
                     }
-                    for(int i_11_ = 0; ((i_11_ ^ 0xffffffff) > (NpcDefinition.anInt2394 ^ 0xffffffff)); i_11_++) {
-                        int i_12_ = 31 + i_6_ + 15 * (NpcDefinition.anInt2394 + -1 - i_11_);
+                    for(int i_11_ = 0; ((i_11_ ^ 0xffffffff) > (ActorDefinition.anInt2394 ^ 0xffffffff)); i_11_++) {
+                        int i_12_ = 31 + i_6_ + 15 * (ActorDefinition.anInt2394 + -1 - i_11_);
                         if(i_8_ > i_5_ && i_8_ < i_7_ + i_5_ && i_10_ > -13 + i_12_ && i_10_ < 3 + i_12_)
                             i_9_ = i_11_;
                     }

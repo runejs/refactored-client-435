@@ -15,7 +15,6 @@ public class Class40_Sub5_Sub13 extends SubNode {
     public static int anInt2756;
     public static long[] aLongArray2757 = new long[100];
     public static int anInt2759;
-    public static Player localPlayer;
     public static int anInt2761;
     public static Model[] aClass40_Sub5_Sub17_Sub5Array2762 = new Model[4];
     public static int[] anIntArray2764 = new int[128];
@@ -97,7 +96,7 @@ public class Class40_Sub5_Sub13 extends SubNode {
 
         anIntArray2764 = null;
         aClass40_Sub1_2752 = null;
-        localPlayer = null;
+        Player.localPlayer = null;
         aClass40_Sub5_Sub17_Sub5Array2762 = null;
         aClass40_Sub5_Sub14_Sub4_2765 = null;
         if(arg0 != -1)

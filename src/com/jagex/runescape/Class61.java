@@ -1,25 +1,25 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.util.Signlink;
 
 public class Class61 {
-    public static RSString aClass1_1421 = (Class58.method978("To play on this world move to a free area first"));
-    public static RSString aClass1_1422 = Class58.method978("Username: ");
+    public static RSString aClass1_1421 = (RSString.CreateString("To play on this world move to a free area first"));
+    public static RSString aClass1_1422 = RSString.CreateString("Username: ");
     public static PacketBuffer packetBuffer = new PacketBuffer(5000);
-    public static RSString aClass1_1426 = Class58.method978("Ladevorgang )2 bitte warten Sie)3");
-    public static RSString aClass1_1427 = Class58.method978("mapedge");
-    public static RSString aClass1_1428 = Class58.method978("wishes to duel with you)3");
-    public static RSString aClass1_1432 = Class58.method978("System update in: ");
+    public static RSString aClass1_1426 = RSString.CreateString("Ladevorgang )2 bitte warten Sie)3");
+    public static RSString aClass1_1427 = RSString.CreateString("mapedge");
+    public static RSString aClass1_1428 = RSString.CreateString("wishes to duel with you)3");
+    public static RSString aClass1_1432 = RSString.CreateString("System update in: ");
     public static int[][] anIntArrayArray1435 = new int[104][104];
-    public static RSString aClass1_1437 = Class58.method978("null");
-    public static RSString aClass1_1440 = Class58.method978("backleft1");
+    public static RSString aClass1_1437 = RSString.CreateString("null");
+    public static RSString aClass1_1440 = RSString.CreateString("backleft1");
     public static Class68 aClass68_1441;
     public static boolean aBoolean1444 = false;
     public static int[] anIntArray1445;
-    public static RSString aClass1_1446 = Class58.method978("Fps:");
+    public static RSString aClass1_1446 = RSString.CreateString("Fps:");
 
     public Class40_Sub5_Sub1 aClass40_Sub5_Sub1_1419;
     public int[] anIntArray1420;
@@ -53,7 +53,7 @@ public class Class61 {
             aClass1_1432 = null;
         SubNode.aClass68_2091.method1046((byte) 90);
         FloorDecoration.aClass40_Sub5_Sub14_Sub2_593.drawImage(0, 0);
-        NpcDefinition.anIntArray2386 = R3D.method708(NpcDefinition.anIntArray2386);
+        ActorDefinition.anIntArray2386 = R3D.method708(ActorDefinition.anIntArray2386);
     }
 
     public static void method997(int arg0) {

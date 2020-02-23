@@ -10,14 +10,14 @@ public class Class34 {
     public static int anInt800;
     public static int anInt803;
     public static HashTable aClass23_805;
-    public static RSString aClass1_804 = Class58.method978("m-Ochte mit Ihnen handeln)3");
+    public static RSString aClass1_804 = RSString.CreateString("m-Ochte mit Ihnen handeln)3");
     public static int anInt806;
     public static int anInt807;
     public static int anInt813;
     public static int anInt815;
     public static RSString aClass1_817;
     public static int anInt821;
-    public static RSString aClass1_826 = Class58.method978("Click to continue");
+    public static RSString aClass1_826 = RSString.CreateString("Click to continue");
     public static RSString aClass1_829 = aClass1_826;
     public static int anInt836;
     public static int anInt838;
@@ -34,10 +34,10 @@ public class Class34 {
 
     static {
         anInt813 = 0;
-        aClass1_844 = (Class58.method978("Press (Wrecover a locked account(W on front page)3"));
+        aClass1_844 = (RSString.CreateString("Press (Wrecover a locked account(W on front page)3"));
         aClass1_817 = aClass1_844;
         aClass23_841 = new HashTable(4096);
-        aClass1_850 = Class58.method978("Suche nach Updates )2 ");
+        aClass1_850 = RSString.CreateString("Suche nach Updates )2 ");
         anInt848 = 0;
         aClass9_851 = new Cache(30);
         anInt854 = -1;
@@ -186,7 +186,7 @@ public class Class34 {
             int i_5_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
             if((i_5_ ^ 0xffffffff) == -2)
                 Class24.anIntArray578[Actor.anInt3153++] = i_0_;
-            class40_sub5_sub17_sub4_sub1.method787(i_2_ + (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), -7717, (i_4_ ^ 0xffffffff) == -2, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]) + i_1_);
+            class40_sub5_sub17_sub4_sub1.method787(i_2_ + (Player.localPlayer.anIntArray3135[0]), -7717, (i_4_ ^ 0xffffffff) == -2, (Player.localPlayer.anIntArray3088[0]) + i_1_);
         }
         Cache.outgoingbuffer.finishBitAccess((byte) -110);
 

@@ -3,17 +3,18 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class40_Sub5_Sub9 extends SubNode {
     public static int anInt2562 = -1;
-    public static RSString aClass1_2564 = Class58.method978("Welt");
-    public static RSString aClass1_2566 = Class58.method978("flash2:");
+    public static RSString aClass1_2564 = RSString.CreateString("Welt");
+    public static RSString aClass1_2566 = RSString.CreateString("flash2:");
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2567;
     public static int anInt2569;
     public static Class6_Sub1 aClass6_Sub1_2571;
     public static int anInt2572;
     public static int anInt2576;
-    public static RSString aClass1_2577 = Class58.method978(" million");
+    public static RSString aClass1_2577 = RSString.CreateString(" million");
     public static int anInt2580;
     public static int anInt2581;
     public static Class6 aClass6_2582;
@@ -65,7 +66,7 @@ public class Class40_Sub5_Sub9 extends SubNode {
                         return;
                     }
                 }
-                if(!class1.equals((Class40_Sub5_Sub13.localPlayer.playerName))) {
+                if(!class1.equals((Player.localPlayer.playerName))) {
                     Class40_Sub11.aClass1Array2147[(Class40_Sub5_Sub17_Sub3.anInt3060)] = class1;
                     Class59.aLongArray1397[(Class40_Sub5_Sub17_Sub3.anInt3060)] = arg0;
                     Class40_Sub7.anIntArray2131[(Class40_Sub5_Sub17_Sub3.anInt3060)] = 0;

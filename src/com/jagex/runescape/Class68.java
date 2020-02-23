@@ -32,14 +32,14 @@ public abstract class Class68 {
     static {
         aClass9_1615 = new Cache(64);
         anInt1630 = 0;
-        aClass1_1633 = Class58.method978(" is already on your ignore list");
+        aClass1_1633 = RSString.CreateString(" is already on your ignore list");
         anInt1634 = 0;
         anInt1637 = 0;
-        aClass1_1636 = Class58.method978("Loaded title screen");
+        aClass1_1636 = RSString.CreateString("Loaded title screen");
         aClass1_1638 = aClass1_1636;
         aClass1_1628 = aClass1_1633;
-        aClass1_1639 = Class58.method978("@or2@");
-        aClass1_1640 = Class58.method978("Cancel");
+        aClass1_1639 = RSString.CreateString("@or2@");
+        aClass1_1640 = RSString.CreateString("Cancel");
         aClass1_1635 = aClass1_1640;
     }
 

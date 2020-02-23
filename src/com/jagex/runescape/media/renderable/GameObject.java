@@ -26,7 +26,7 @@ public class GameObject extends Renderable {
     public static RSString aClass1_3038;
     public static RSString aClass1_3039;
     public static int anInt3040;
-    public static RSString aClass1_3041 = Class58.method978("Loaded gamescreen");
+    public static RSString aClass1_3041 = RSString.CreateString("Loaded gamescreen");
     public static Class68 aClass68_3042;
     public static RSString aClass1_3043;
     public static RSString aClass1_3044;
@@ -37,15 +37,15 @@ public class GameObject extends Renderable {
 
     static {
         anInt3040 = 0;
-        aClass1_3036 = Class58.method978("Accept challenge");
-        aClass1_3037 = Class58.method978("Okay");
+        aClass1_3036 = RSString.CreateString("Accept challenge");
+        aClass1_3037 = RSString.CreateString("Okay");
         aClass1_3038 = aClass1_3041;
-        aClass1_3047 = Class58.method978("mapfunction");
-        aClass1_3043 = Class58.method978("Bitte laden Sie die Seite neu)3");
-        aClass1_3046 = Class58.method978("Absender:");
+        aClass1_3047 = RSString.CreateString("mapfunction");
+        aClass1_3043 = RSString.CreateString("Bitte laden Sie die Seite neu)3");
+        aClass1_3046 = RSString.CreateString("Absender:");
         aClass1_3039 = aClass1_3036;
         anInt3048 = 1;
-        aClass1_3044 = Class58.method978("");
+        aClass1_3044 = RSString.CreateString("");
     }
 
     public int anInt3016;

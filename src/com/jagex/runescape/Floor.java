@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
@@ -35,9 +35,9 @@ public class Floor extends SubNode {
     public static int anInt2348;
 
     static {
-        aClass1_2315 = (Class58.method978("Zu viele Anmelde)2Versuche von Ihrer Adresse"));
-        aClass1_2314 = Class58.method978("Malformed login packet)3");
-        aClass1_2327 = Class58.method978("-5berpr-Ufen Sie Ihr Mitteilungsfach)3");
+        aClass1_2315 = (RSString.CreateString("Zu viele Anmelde)2Versuche von Ihrer Adresse"));
+        aClass1_2314 = RSString.CreateString("Malformed login packet)3");
+        aClass1_2327 = RSString.CreateString("-5berpr-Ufen Sie Ihr Mitteilungsfach)3");
         anInt2321 = 0;
         aClass1_2325 = aClass1_2314;
         tile_flags = new byte[4][104][104];
@@ -88,16 +88,16 @@ public class Floor extends SubNode {
 
     public static void method558(int arg0, RSString arg1, int arg2, int arg3, int arg4, int arg5, RSString arg6) {
 
-        if((NpcDefinition.anInt2394 ^ 0xffffffff) > arg3) {
+        if((ActorDefinition.anInt2394 ^ 0xffffffff) > arg3) {
             if((arg6.length() ^ 0xffffffff) >= -1)
-                Landscape.aClass1Array1184[NpcDefinition.anInt2394] = arg1;
+                Landscape.aClass1Array1184[ActorDefinition.anInt2394] = arg1;
             else
-                Landscape.aClass1Array1184[NpcDefinition.anInt2394] = Class40_Sub5_Sub17_Sub6.method832(-77, (new RSString[]{arg1, (VertexNormal.aClass1_1117), arg6}));
-            Class38.anIntArray884[NpcDefinition.anInt2394] = arg5;
-            Class33.anIntArray791[NpcDefinition.anInt2394] = arg0;
-            Class19.anIntArray483[NpcDefinition.anInt2394] = arg4;
-            Class59.anIntArray1393[NpcDefinition.anInt2394] = arg2;
-            NpcDefinition.anInt2394++;
+                Landscape.aClass1Array1184[ActorDefinition.anInt2394] = Class40_Sub5_Sub17_Sub6.method832(-77, (new RSString[]{arg1, (VertexNormal.aClass1_1117), arg6}));
+            Class38.anIntArray884[ActorDefinition.anInt2394] = arg5;
+            Class33.anIntArray791[ActorDefinition.anInt2394] = arg0;
+            Class19.anIntArray483[ActorDefinition.anInt2394] = arg4;
+            Class59.anIntArray1393[ActorDefinition.anInt2394] = arg2;
+            ActorDefinition.anInt2394++;
         }
         anInt2339++;
 
@@ -139,12 +139,12 @@ public class Floor extends SubNode {
             if((arg0 ^ 0xffffffff) == -6 || arg0 == 10 || arg0 == 20) {
                 Class68_Sub1.aClass68_2213 = null;
                 FloorDecoration.method344(-69);
-                Class40_Sub5_Sub17_Sub3.method779(Class62.aCanvas1469, true, (RSCanvas.aClass6_Sub1_48), (NpcDefinition.aClass6_Sub1_2377));
+                Class40_Sub5_Sub17_Sub3.method779(Class62.aCanvas1469, true, (RSCanvas.aClass6_Sub1_48), (ActorDefinition.aClass6_Sub1_2377));
             }
             if(arg0 == 25 || arg0 == 30 || (arg0 ^ 0xffffffff) == -41) {
                 Class68_Sub1.aClass68_2213 = null;
                 Class38.method440((byte) -98);
-                Class40_Sub5_Sub17_Sub1.method763(Class62.aCanvas1469, (byte) -128, (NpcDefinition.aClass6_Sub1_2377));
+                Class40_Sub5_Sub17_Sub1.method763(Class62.aCanvas1469, (byte) -128, (ActorDefinition.aClass6_Sub1_2377));
             }
             Class51.anInt1197 = arg0;
             Class40_Sub5_Sub11.aBoolean2631 = true;

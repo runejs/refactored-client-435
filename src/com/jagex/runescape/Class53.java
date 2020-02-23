@@ -15,7 +15,7 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import java.awt.*;
 
 public class Class53 {
-    public static RSString aClass1_1243 = Class58.method978("@whi@ )4 ");
+    public static RSString aClass1_1243 = RSString.CreateString("@whi@ )4 ");
     public static int anInt1245;
     public static RSString aClass1_1246;
     public static Cache aClass9_1247;
@@ -38,18 +38,18 @@ public class Class53 {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1270;
 
     static {
-        aClass1_1246 = Class58.method978(" hat sich ausgeloggt)3");
-        aClass1_1260 = Class58.method978("go back to the main RuneScape webpage");
-        aClass1_1263 = Class58.method978("nicht hergestellt werden)3");
-        aClass1_1255 = Class58.method978("and choose the (Wcreate account(W");
+        aClass1_1246 = RSString.CreateString(" hat sich ausgeloggt)3");
+        aClass1_1260 = RSString.CreateString("go back to the main RuneScape webpage");
+        aClass1_1263 = RSString.CreateString("nicht hergestellt werden)3");
+        aClass1_1255 = RSString.CreateString("and choose the (Wcreate account(W");
         aClass1_1259 = aClass1_1260;
         aClass1_1251 = aClass1_1255;
         aClass9_1247 = new Cache(64);
         aClass9_1264 = new Cache(50);
-        aClass1_1266 = Class58.method978("backright2");
+        aClass1_1266 = RSString.CreateString("backright2");
         aLongArray1267 = new long[100];
-        aClass1_1265 = Class58.method978("auf einer freien Welt zu spielen)3");
-        aClass1_1269 = (Class58.method978("Moderator)2Option: Spieler f-Ur 48 Stunden stumm schalten: <ON>"));
+        aClass1_1265 = RSString.CreateString("auf einer freien Welt zu spielen)3");
+        aClass1_1269 = (RSString.CreateString("Moderator)2Option: Spieler f-Ur 48 Stunden stumm schalten: <ON>"));
     }
 
     public int anInt1242;
@@ -129,7 +129,7 @@ public class Class53 {
                 int i_25_ = Cache.outgoingbuffer.getUnsignedByte();
                 if(i_20_ >= 0 && i_19_ >= 0 && i_20_ < 104 && i_19_ < 104) {
                     int i_26_ = 1 + i_23_;
-                    if(((i_20_ + -i_26_ ^ 0xffffffff) >= ((Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]) ^ 0xffffffff)) && ((i_20_ + i_26_ ^ 0xffffffff) <= ((Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]) ^ 0xffffffff)) && (i_19_ - i_26_ <= (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0])) && (i_19_ + i_26_ >= (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0])) && RSCanvas.anInt65 != 0 && i_24_ > 0 && PacketBuffer.anInt2248 < 50) {
+                    if(((i_20_ + -i_26_ ^ 0xffffffff) >= ((Player.localPlayer.anIntArray3088[0]) ^ 0xffffffff)) && ((i_20_ + i_26_ ^ 0xffffffff) <= ((Player.localPlayer.anIntArray3088[0]) ^ 0xffffffff)) && (i_19_ - i_26_ <= (Player.localPlayer.anIntArray3135[0])) && (i_19_ + i_26_ >= (Player.localPlayer.anIntArray3135[0])) && RSCanvas.anInt65 != 0 && i_24_ > 0 && PacketBuffer.anInt2248 < 50) {
                         IdentityKit.anIntArray2602[(PacketBuffer.anInt2248)] = i_21_;
                         ItemDefinition.anIntArray2814[(PacketBuffer.anInt2248)] = i_24_;
                         Class40_Sub3.anIntArray2023[(PacketBuffer.anInt2248)] = i_25_;
@@ -202,7 +202,7 @@ public class Class53 {
                     if(i_43_ != Class30.anInt708)
                         class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_43_]);
                     else
-                        class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub13.localPlayer);
+                        class40_sub5_sub17_sub4_sub1 = (Player.localPlayer);
                     if(class40_sub5_sub17_sub4_sub1 != null) {
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_55_);
                         int i_57_ = (Class40_Sub6.tile_height[Player.anInt3267][i_52_][i_51_]);

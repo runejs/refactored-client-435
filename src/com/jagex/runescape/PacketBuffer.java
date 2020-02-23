@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.audio.Effect;
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.io.Buffer;
 
@@ -11,9 +11,9 @@ public class PacketBuffer extends Buffer {
     public static int anInt2231 = 1;
     public static boolean aBoolean2236 = false;
     public static Effect[] effects = new Effect[50];
-    public static RSString aClass1_2240 = Class58.method978("Please wait)3)3)3");
+    public static RSString aClass1_2240 = RSString.CreateString("Please wait)3)3)3");
     public static long aLong2241 = 0L;
-    public static RSString aClass1_2245 = Class58.method978("Aus");
+    public static RSString aClass1_2245 = RSString.CreateString("Aus");
     public static BigInteger rsaKey = (new BigInteger("65537"));
     public static int anInt2248 = 0;
     public static Class40_Sub5_Sub13 aClass40_Sub5_Sub13_2250;
@@ -21,8 +21,8 @@ public class PacketBuffer extends Buffer {
     public static int anInt2256 = 0;
     public static int anInt2257;
     public static int anInt2258;
-    public static RSString aClass1_2259 = Class58.method978("oder benutzen Sie eine andere Welt)3");
-    public static RSString aClass1_2260 = Class58.method978("da dieser Computer gegen unsere ");
+    public static RSString aClass1_2259 = RSString.CreateString("oder benutzen Sie eine andere Welt)3");
+    public static RSString aClass1_2260 = RSString.CreateString("da dieser Computer gegen unsere ");
 
     public ISAAC encryption;
     public int bitoffset;
@@ -73,9 +73,9 @@ public class PacketBuffer extends Buffer {
             Class52.redrawChatbox = true;
             Class43.openChatboxWidgetId = -1;
         }
-        if((NpcDefinition.anInt2433 ^ 0xffffffff) != 0) {
-            Class55.method958(NpcDefinition.anInt2433, -14222);
-            NpcDefinition.anInt2433 = -1;
+        if((ActorDefinition.anInt2433 ^ 0xffffffff) != 0) {
+            Class55.method958(ActorDefinition.anInt2433, -14222);
+            ActorDefinition.anInt2433 = -1;
             Floor.method559(30, -47);
         }
         if((Class40_Sub5_Sub9.anInt2562 ^ 0xffffffff) != 0) {
@@ -172,7 +172,6 @@ public class PacketBuffer extends Buffer {
 
     public void putPacket(int arg1) {
         buffer[currentPosition++] = (byte) (encryption.method286(-101));
-                //(byte) arg1;
     }
 
     public void initEncryption(int arg0, int[] arg1) {

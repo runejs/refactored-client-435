@@ -13,13 +13,13 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import java.awt.*;
 
 public class Class40_Sub5_Sub17_Sub3 extends Renderable {
-    public static RSString aClass1_3049 = Class58.method978("Could not complete login)3");
+    public static RSString aClass1_3049 = RSString.CreateString("Could not complete login)3");
     public static RSString aClass1_3050;
     public static int[] anIntArray3051 = new int[25];
     public static int anInt3052;
     public static int anInt3053;
     public static RSString aClass1_3054;
-    public static RSString aClass1_3055 = (Class58.method978("Ung-Ultige Verbindung mit einem Anmelde)2Server)3"));
+    public static RSString aClass1_3055 = (RSString.CreateString("Ung-Ultige Verbindung mit einem Anmelde)2Server)3"));
     public static boolean[] aBooleanArray3056 = new boolean[112];
     public static int anInt3057;
     public static RSString aClass1_3059;
@@ -36,16 +36,16 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
     public static RSString aClass1_3071;
 
     static {
-        aClass1_3054 = Class58.method978("Members object");
-        aClass1_3059 = Class58.method978("Too many connections from your address)3");
+        aClass1_3054 = RSString.CreateString("Members object");
+        aClass1_3059 = RSString.CreateString("Too many connections from your address)3");
         anInt3060 = 0;
         aClass1_3050 = aClass1_3059;
         anInt3065 = -1;
-        aClass1_3062 = Class58.method978("Lade Eingabe)2Steuerungsprogramm)3)3)3");
-        aClass1_3068 = Class58.method978(" )2> @whi@");
+        aClass1_3062 = RSString.CreateString("Lade Eingabe)2Steuerungsprogramm)3)3)3");
+        aClass1_3068 = RSString.CreateString(" )2> @whi@");
         aClass1_3066 = aClass1_3049;
         aClass1_3069 = aClass1_3054;
-        aClass1_3071 = Class58.method978("Wen m-Ochten Sie hinzuf-Ugen?");
+        aClass1_3071 = RSString.CreateString("Wen m-Ochten Sie hinzuf-Ugen?");
     }
 
     public int anInt3058;
@@ -54,10 +54,10 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
     public static void method775(boolean arg0) {
 
         anInt3064++;
-        int i = ((Class40_Sub5_Sub13.localPlayer.anInt3089) + Class48.anInt1126);
+        int i = ((Player.localPlayer.anInt3089) + Class48.anInt1126);
         if(arg0 != false)
             method778(true, null);
-        int i_0_ = (Buffer.anInt1976 + (Class40_Sub5_Sub13.localPlayer.anInt3098));
+        int i_0_ = (Buffer.anInt1976 + (Player.localPlayer.anInt3098));
         if((Class40_Sub5_Sub6.anInt2437 - i_0_ ^ 0xffffffff) > 499 || -i_0_ + Class40_Sub5_Sub6.anInt2437 > 500 || Class34.anInt849 + -i < -500 || -i + Class34.anInt849 > 500) {
             Class34.anInt849 = i;
             Class40_Sub5_Sub6.anInt2437 = i_0_;
@@ -131,9 +131,9 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                     i_12_ = (Class51.mapZoomOffset + 256) * i_12_ >> -413658424;
                     int i_14_ = i_10_ * i_12_ + (i * i_13_) >> 843700395;
                     int i_15_ = i_13_ * i_10_ - i * i_12_ >> -1318258005;
-                    int i_16_ = ((Class40_Sub5_Sub13.localPlayer.anInt3098) + i_14_ >> -2121665369);
-                    int i_17_ = (-i_15_ + (Class40_Sub5_Sub13.localPlayer.anInt3089) >> -208961177);
-                    boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), i_16_, (byte) 125, 0, true, 0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), i_17_, 1));
+                    int i_16_ = ((Player.localPlayer.anInt3098) + i_14_ >> -2121665369);
+                    int i_17_ = (-i_15_ + (Player.localPlayer.anInt3089) >> -208961177);
+                    boolean bool = (Class38_Sub1.method448(0, 0, (Player.localPlayer.anIntArray3088[0]), i_16_, (byte) 125, 0, true, 0, 0, (Player.localPlayer.anIntArray3135[0]), i_17_, 1));
                     if(bool) {
                         Class32.packetBuffer.putByte(i);
                         Class32.packetBuffer.putByte(i_10_);
@@ -142,8 +142,8 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                         Class32.packetBuffer.putByte(Class43.cameraYawOffset);
                         Class32.packetBuffer.putByte(Class51.mapZoomOffset);
                         Class32.packetBuffer.putByte(89);
-                        Class32.packetBuffer.putShortBE((Class40_Sub5_Sub13.localPlayer.anInt3098));
-                        Class32.packetBuffer.putShortBE((Class40_Sub5_Sub13.localPlayer.anInt3089));
+                        Class32.packetBuffer.putShortBE((Player.localPlayer.anInt3098));
+                        Class32.packetBuffer.putShortBE((Player.localPlayer.anInt3089));
                         Class32.packetBuffer.putByte(Class40_Sub5_Sub15.anInt2778);
                         Class32.packetBuffer.putByte(63);
                     }

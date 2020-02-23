@@ -1,46 +1,45 @@
 package com.jagex.runescape.cache.media;
 
 import com.jagex.runescape.Class40_Sub5_Sub17_Sub3;
-import com.jagex.runescape.Class58;
 import com.jagex.runescape.RSString;
 import com.jagex.runescape.Rasterizer;
 
 import java.util.Random;
 
 public class TypeFace extends Rasterizer {
-    public static RSString[] aClass1Array2897 = new RSString[100];
-    public static RSString col_cyan = Class58.method978("cya");
-    public static RSString col_light_orange = Class58.method978("or1");
-    public static RSString col_blue = Class58.method978("blu");
-    public static RSString col_magenta = Class58.method978("mag");
-    public static RSString col_white = Class58.method978("whi");
-    public static RSString col_dark_red_dbl = Class58.method978("dbl");
-    public static RSString col_yellow_green = Class58.method978("gr1");
-    public static RSString col_light_green = Class58.method978("gr2");
-    public static RSString col_red = Class58.method978("red");
-    public static RSString col_green = Class58.method978("gre");
-    public static RSString col_orange = Class58.method978("or2");
-    public static RSString col_black = Class58.method978("bla");
-    public static RSString col_red_orange = Class58.method978("or3");
-    public static RSString col_orange_lre = Class58.method978("lre");
-    public static RSString col_dark_red = Class58.method978("dre");
-    public static RSString col_green_gr3 = Class58.method978("gr3");
-    public static RSString col_yellow = Class58.method978("yel");
-    public static RSString effect_strikethough = Class58.method978("str");
+    private RSString[] aClass1Array2897 = new RSString[100];
+    private RSString col_cyan = RSString.CreateString("cya");
+    private RSString col_light_orange = RSString.CreateString("or1");
+    private RSString col_blue = RSString.CreateString("blu");
+    private RSString col_magenta = RSString.CreateString("mag");
+    private RSString col_white = RSString.CreateString("whi");
+    private RSString col_dark_red_dbl = RSString.CreateString("dbl");
+    private RSString col_yellow_green = RSString.CreateString("gr1");
+    private RSString col_light_green = RSString.CreateString("gr2");
+    private RSString col_red = RSString.CreateString("red");
+    private RSString col_green = RSString.CreateString("gre");
+    private RSString col_orange = RSString.CreateString("or2");
+    private RSString col_black = RSString.CreateString("bla");
+    private RSString col_red_orange = RSString.CreateString("or3");
+    private RSString col_orange_lre = RSString.CreateString("lre");
+    private RSString col_dark_red = RSString.CreateString("dre");
+    private RSString col_green_gr3 = RSString.CreateString("gr3");
+    private RSString col_yellow = RSString.CreateString("yel");
+    private RSString effect_strikethough = RSString.CreateString("str");
 
-    public Random aRandom2902;
-    public int[] characterScreenWidths;
+    private Random random;
+    private int[] characterScreenWidths;
     public int characterDefaultHeight;
-    public int[] characterYOffsets;
-    public byte[][] characterPixels = new byte[256][];
-    public int[] anIntArray2915;
-    public boolean strikethrough;
-    public int anInt2919;
-    public int anInt2920;
+    private int[] characterYOffsets;
+    private byte[][] characterPixels;
+    private int[] anIntArray2915;
+    private boolean strikethrough;
+    private int anInt2919;
+    private int anInt2920;
 
     public TypeFace(int[] arg0, int[] arg1, int[] arg2, int[] arg3, byte[][] arg4) {
         characterDefaultHeight = 0;
-        aRandom2902 = new Random();
+        random = new Random();
         strikethrough = false;
         characterYOffsets = arg0;
         characterScreenWidths = arg1;
@@ -68,29 +67,7 @@ public class TypeFace extends Rasterizer {
         anInt2919 = i_49_ - characterDefaultHeight;
     }
 
-    public static void method676() {
-        col_red = null;
-        col_green = null;
-        col_blue = null;
-        col_yellow = null;
-        col_cyan = null;
-        col_magenta = null;
-        col_white = null;
-        col_black = null;
-        col_orange_lre = null;
-        col_dark_red = null;
-        col_dark_red_dbl = null;
-        col_light_orange = null;
-        col_orange = null;
-        col_red_orange = null;
-        col_yellow_green = null;
-        col_light_green = null;
-        col_green_gr3 = null;
-        effect_strikethough = null;
-        aClass1Array2897 = null;
-    }
-
-    public int getColour(RSString getColour) {
+    private int getColour(RSString getColour) {
         if(getColour.equals(col_red))
             return 0xff0000;
         if(getColour.equals(col_green))
@@ -130,7 +107,7 @@ public class TypeFace extends Rasterizer {
         return -1;
     }
 
-    public void drawCharacterPixels(byte[] characterPixels, int[] rasterizerPixels, int characterPixel, int rasterizerPixel, int characterPixelOffset, int rasterizerPixelOffset, int width, int height, int colour) {
+    private void drawCharacterPixels(byte[] characterPixels, int[] rasterizerPixels, int characterPixel, int rasterizerPixel, int characterPixelOffset, int rasterizerPixelOffset, int width, int height, int colour) {
         int negativeQuaterWidth = -(width >> 2);
         width = -(width & 0x3);
         for(int heightCounter = -height; heightCounter < 0; heightCounter++) {
@@ -248,16 +225,16 @@ public class TypeFace extends Rasterizer {
         if(arg0 != null) {
             arg1 -= getStringWidth(arg0) / 2;
             arg2 -= characterDefaultHeight;
-            for(int i = 0; i < arg0.length; i++) {
-                int i_14_ = arg0.chars[i] & 0xff;
-                if(i_14_ != 32)
-                    drawCharacterLegacy(characterPixels[i_14_], arg1, (arg2 + characterYOffsets[i_14_] + (int) (Math.sin((double) i / 2.0 + (double) arg4 / 5.0) * 5.0)), characterScreenWidths[i_14_], anIntArray2915[i_14_], arg3);
-                arg1 += characterScreenWidths[i_14_];
+            for(int index = 0; index < arg0.length; index++) {
+                int character = arg0.chars[index] & 0xff;
+                if(character != ' ')
+                    drawCharacterLegacy(characterPixels[character], arg1, (arg2 + characterYOffsets[character] + (int) (Math.sin((double) index / 2.0 + (double) arg4 / 5.0) * 5.0)), characterScreenWidths[character], anIntArray2915[character], arg3);
+                arg1 += characterScreenWidths[character];
             }
         }
     }
 
-    public void method674(int[] arg0, byte[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
+    private void method674(int[] arg0, byte[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
         arg2 = ((arg2 & 0xff00ff) * arg9 & ~0xff00ff) + ((arg2 & 0xff00) * arg9 & 0xff0000) >> 8;
         arg9 = 256 - arg9;
         for(int i = -arg6; i < 0; i++) {
@@ -277,11 +254,11 @@ public class TypeFace extends Rasterizer {
         if(arg0 != null) {
             arg1 -= getStringWidth(arg0) / 2;
             arg2 -= characterDefaultHeight;
-            for(int i = 0; i < arg0.length(); i++) {
-                int i_17_ = arg0.chars[i] & 0xff;
-                if(i_17_ != 32)
-                    drawCharacterLegacy(characterPixels[i_17_], arg1 + (int) (Math.sin((double) i / 5.0 + (double) arg4 / 5.0) * 5.0), (arg2 + characterYOffsets[i_17_] + (int) (Math.sin((double) i / 3.0 + (double) arg4 / 5.0) * 5.0)), characterScreenWidths[i_17_], anIntArray2915[i_17_], arg3);
-                arg1 += characterScreenWidths[i_17_];
+            for(int index = 0; index < arg0.length(); index++) {
+                int character = arg0.chars[index] & 0xff;
+                if(character != ' ')
+                    drawCharacterLegacy(characterPixels[character], arg1 + (int) (Math.sin((double) index / 5.0 + (double) arg4 / 5.0) * 5.0), (arg2 + characterYOffsets[character] + (int) (Math.sin((double) index / 3.0 + (double) arg4 / 5.0) * 5.0)), characterScreenWidths[character], anIntArray2915[character], arg3);
+                arg1 += characterScreenWidths[character];
             }
         }
     }
@@ -299,14 +276,14 @@ public class TypeFace extends Rasterizer {
             arg2 -= characterDefaultHeight;
             for(int i = 0; i < arg0.length(); i++) {
                 int i_18_ = arg0.chars[i] & 0xff;
-                if(i_18_ != 32)
+                if(i_18_ != ' ')
                     drawCharacterLegacy(characterPixels[i_18_], arg1, (arg2 + characterYOffsets[i_18_] + (int) (Math.sin((double) i / 1.5 + (double) arg4) * d)), characterScreenWidths[i_18_], anIntArray2915[i_18_], arg3);
                 arg1 += characterScreenWidths[i_18_];
             }
         }
     }
 
-    public void method679(byte[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
+    private void method679(byte[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
         int i = arg1 + arg2 * Rasterizer.width;
         int i_19_ = Rasterizer.width - arg3;
         int i_20_ = 0;
@@ -339,7 +316,7 @@ public class TypeFace extends Rasterizer {
             method674(Rasterizer.pixels, arg0, arg5, i_21_, i, arg3, arg4, i_19_, i_20_, arg6);
     }
 
-    public void method680(RSString arg0, int arg1, int arg2, int arg3, boolean arg4, int arg5) {
+    private void method680(RSString arg0, int arg1, int arg2, int arg3, boolean arg4, int arg5) {
         arg0 = arg0.method89(false);
         int i = 0;
         for(int i_25_ = 0; i_25_ < arg0.length(); i_25_++) {
@@ -355,7 +332,7 @@ public class TypeFace extends Rasterizer {
         if(arg0 != null) {
             arg2 -= characterDefaultHeight;
             for(int i_29_ = 0; i_29_ < arg0.length; i_29_++) {
-                if(arg0.chars[i_29_] == 64 && i_29_ + 4 < arg0.length && arg0.chars[i_29_ + 4] == 64) {
+                if(arg0.chars[i_29_] == '@' && i_29_ + 4 < arg0.length && arg0.chars[i_29_ + 4] == '@') {
                     int i_30_ = getColour(arg0.substring(i_29_ + 1, i_29_ + 4));
                     if(i_30_ != -1)
                         arg3 = i_30_;
@@ -393,7 +370,7 @@ public class TypeFace extends Rasterizer {
         return i;
     }
 
-    public void drawCharacterLegacy(byte[] pixels, int x, int y, int width, int height, int colour) {
+    private void drawCharacterLegacy(byte[] pixels, int x, int y, int width, int height, int colour) {
         int rasterizerPixel = x + y * Rasterizer.width;
         int remainingWidth = Rasterizer.width - width;
         int characterPixelOffset = 0;
@@ -426,25 +403,25 @@ public class TypeFace extends Rasterizer {
             drawCharacterPixels(pixels, Rasterizer.pixels, characterPixel, rasterizerPixel, characterPixelOffset, remainingWidth, width, height, colour);
     }
 
-    public void method683(RSString arg0, int arg1, int arg2, int arg3, boolean arg4) {
+    public void method683(RSString string, int arg1, int arg2, int arg3, boolean arg4) {
         strikethrough = false;
         int i = arg1;
-        if(arg0 != null) {
+        if(string != null) {
             arg2 -= characterDefaultHeight;
-            for(int i_39_ = 0; i_39_ < arg0.length; i_39_++) {
-                if(arg0.chars[i_39_] == 64 && i_39_ + 4 < arg0.length && arg0.chars[i_39_ + 4] == 64) {
-                    int i_40_ = getColour(arg0.substring(i_39_ + 1, i_39_ + 4));
+            for(int index = 0; index < string.length; index++) {
+                if(string.chars[index] == 64 && index + 4 < string.length && string.chars[index + 4] == 64) {
+                    int i_40_ = getColour(string.substring(index + 1, index + 4));
                     if(i_40_ != -1)
                         arg3 = i_40_;
-                    i_39_ += 4;
+                    index += 4;
                 } else {
-                    int i_41_ = arg0.chars[i_39_] & 0xff;
-                    if(i_41_ != 32) {
+                    int character = string.chars[index] & 0xff;
+                    if(character != ' ') {
                         if(arg4)
-                            drawCharacterLegacy(characterPixels[i_41_], arg1 + 1, arg2 + characterYOffsets[i_41_] + 1, characterScreenWidths[i_41_], anIntArray2915[i_41_], 0);
-                        drawCharacterLegacy(characterPixels[i_41_], arg1, arg2 + characterYOffsets[i_41_], characterScreenWidths[i_41_], anIntArray2915[i_41_], arg3);
+                            drawCharacterLegacy(characterPixels[character], arg1 + 1, arg2 + characterYOffsets[character] + 1, characterScreenWidths[character], anIntArray2915[character], 0);
+                        drawCharacterLegacy(characterPixels[character], arg1, arg2 + characterYOffsets[character], characterScreenWidths[character], anIntArray2915[character], arg3);
                     }
-                    arg1 += characterScreenWidths[i_41_];
+                    arg1 += characterScreenWidths[character];
                 }
             }
             if(strikethrough)
@@ -452,26 +429,26 @@ public class TypeFace extends Rasterizer {
         }
     }
 
-    public void method684(RSString arg0, int arg1, int arg2, int arg3, boolean arg4, int arg5) {
-        if(arg0 != null) {
-            aRandom2902.setSeed((long) arg5);
-            int i = 192 + (aRandom2902.nextInt() & 0x1f);
+    public void method684(RSString string, int arg1, int arg2, int arg3, boolean arg4, int arg5) {
+        if(string != null) {
+            random.setSeed((long) arg5);
+            int i = 192 + (random.nextInt() & 0x1f);
             arg2 -= characterDefaultHeight;
-            for(int i_42_ = 0; i_42_ < arg0.length; i_42_++) {
-                if(arg0.chars[i_42_] == 64 && i_42_ + 4 < arg0.length && arg0.chars[i_42_ + 4] == 64) {
-                    int i_43_ = getColour(arg0.substring(i_42_ + 1, i_42_ + 4));
+            for(int index = 0; index < string.length; index++) {
+                if(string.chars[index] == '@' && index + 4 < string.length && string.chars[index + 4] == '@') {
+                    int i_43_ = getColour(string.substring(index + 1, index + 4));
                     if(i_43_ != -1)
                         arg3 = i_43_;
-                    i_42_ += 4;
+                    index += 4;
                 } else {
-                    int i_44_ = arg0.chars[i_42_] & 0xff;
-                    if(i_44_ != 32) {
+                    int character = string.chars[index] & 0xff;
+                    if(character != ' ') {
                         if(arg4)
-                            method679(characterPixels[i_44_], arg1 + 1, arg2 + characterYOffsets[i_44_] + 1, characterScreenWidths[i_44_], anIntArray2915[i_44_], 0, 192);
-                        method679(characterPixels[i_44_], arg1, arg2 + characterYOffsets[i_44_], characterScreenWidths[i_44_], anIntArray2915[i_44_], arg3, i);
+                            method679(characterPixels[character], arg1 + 1, arg2 + characterYOffsets[character] + 1, characterScreenWidths[character], anIntArray2915[character], 0, 192);
+                        method679(characterPixels[character], arg1, arg2 + characterYOffsets[character], characterScreenWidths[character], anIntArray2915[character], arg3, i);
                     }
-                    arg1 += characterScreenWidths[i_44_];
-                    if((aRandom2902.nextInt() & 0x3) == 0)
+                    arg1 += characterScreenWidths[character];
+                    if((random.nextInt() & 0x3) == 0)
                         arg1++;
                 }
             }
@@ -508,7 +485,7 @@ public class TypeFace extends Rasterizer {
             y -= characterDefaultHeight;
             for(int index = 0; index < string.length; index++) {
                 int character = string.chars[index] & 0xff;
-                if(character != 32)
+                if(character != ' ')
                     drawCharacterLegacy(characterPixels[character], x, y + characterYOffsets[character], characterScreenWidths[character], anIntArray2915[character], colour);
                 x += characterScreenWidths[character];
             }

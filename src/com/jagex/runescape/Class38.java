@@ -11,7 +11,7 @@ public abstract class Class38 {
     public static RSString aClass1_883;
     public static int[] anIntArray884;
     public static RSString aClass1_885;
-    public static RSString aClass1_886 = Class58.method978(" seconds)3");
+    public static RSString aClass1_886 = RSString.CreateString(" seconds)3");
     public static Class68 aClass68_887;
     public static RSString aClass1_888;
     public static int[] anIntArray889;
@@ -26,16 +26,16 @@ public abstract class Class38 {
 
     static {
         aClass1_883 = aClass1_886;
-        aClass1_888 = Class58.method978("No reply from loginserver)3");
-        aClass1_881 = Class58.method978("mod_icons");
+        aClass1_888 = RSString.CreateString("No reply from loginserver)3");
+        aClass1_881 = RSString.CreateString("mod_icons");
         aBoolean893 = false;
-        aClass1_890 = Class58.method978("(U1");
+        aClass1_890 = RSString.CreateString("(U1");
         aClass1_882 = aClass1_888;
-        aClass1_896 = Class58.method978("Entfernen");
+        aClass1_896 = RSString.CreateString("Entfernen");
         anIntArray889 = new int[128];
         anIntArray884 = new int[500];
-        aClass1_894 = Class58.method978(" )2>");
-        aClass1_895 = Class58.method978("Add ignore");
+        aClass1_894 = RSString.CreateString(" )2>");
+        aClass1_895 = RSString.CreateString("Add ignore");
         aClass1_885 = aClass1_895;
     }
 

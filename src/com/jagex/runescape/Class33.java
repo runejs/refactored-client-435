@@ -1,22 +1,22 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class33 {
-    public static RSString aClass1_777 = Class58.method978("Cabbage");
+    public static RSString aClass1_777 = RSString.CreateString("Cabbage");
     public static Cache aClass9_778 = new Cache(64);
-    public static RSString aClass1_779 = (Class58.method978("Bitte schlie-8en Sie die momentan ge-Offnete Benutzeroberfl-=che)1 bevor Sie die (WRegelversto-8 melden(W Option benutzen"));
-    public static RSString aClass1_783 = Class58.method978("Loading config )2 ");
+    public static RSString aClass1_779 = (RSString.CreateString("Bitte schlie-8en Sie die momentan ge-Offnete Benutzeroberfl-=che)1 bevor Sie die (WRegelversto-8 melden(W Option benutzen"));
+    public static RSString aClass1_783 = RSString.CreateString("Loading config )2 ");
     public static int anInt784 = 0;
-    public static RSString cmd_prefix = Class58.method978("::");
+    public static RSString cmd_prefix = RSString.CreateString("::");
     public static int[] anIntArray791 = new int[500];
-    public static RSString aClass1_795 = Class58.method978(")1");
-    public static RSString aClass1_797 = Class58.method978("Spiel)2Engine wird gestartet)3)3)3");
-    public static RSString aClass1_798 = Class58.method978("No response from server)3");
+    public static RSString aClass1_795 = RSString.CreateString(")1");
+    public static RSString aClass1_797 = RSString.CreateString("Spiel)2Engine wird gestartet)3)3)3");
+    public static RSString aClass1_798 = RSString.CreateString("No response from server)3");
     public static RSString aClass1_799 = aClass1_798;
 
 
@@ -50,21 +50,21 @@ public class Class33 {
             for(int i = -1; Class60.anInt1407 + GameObjectDefinition.anInt2558 > i; i++) {
                 Actor actor;
                 if((i ^ 0xffffffff) == 0)
-                    actor = (Class40_Sub5_Sub13.localPlayer);
+                    actor = (Player.localPlayer);
                 else if(i < Class60.anInt1407)
                     actor = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i]]);
                 else
                     actor = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[(Class40_Sub3.anIntArray2016[i + -Class60.anInt1407])]);
-                if(actor != null && actor.method784(1)) {
+                if(actor != null && actor.isVisible(1)) {
                     if(actor instanceof Npc) {
-                        NpcDefinition class40_sub5_sub5 = (((Npc) actor).aClass40_Sub5_Sub5_3300);
+                        ActorDefinition class40_sub5_sub5 = (((Npc) actor).aClass40_Sub5_Sub5_3300);
                         if(class40_sub5_sub5.childrenIds != null)
-                            class40_sub5_sub5 = class40_sub5_sub5.method577(arg0 + 27);
+                            class40_sub5_sub5 = class40_sub5_sub5.getChildDefinition(arg0 + 27);
                         if(class40_sub5_sub5 == null)
                             continue;
                     }
                     if(Class60.anInt1407 <= i) {
-                        NpcDefinition class40_sub5_sub5 = (((Npc) actor).aClass40_Sub5_Sub5_3300);
+                        ActorDefinition class40_sub5_sub5 = (((Npc) actor).aClass40_Sub5_Sub5_3300);
                         if(((class40_sub5_sub5.headIcon ^ 0xffffffff) <= -1) && (class40_sub5_sub5.headIcon < (Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204).length)) {
                             FloorDecoration.method342(-127, (actor.anInt3117) + 15, actor);
                             if(ISAAC.anInt522 > -1)
@@ -272,7 +272,6 @@ public class Class33 {
             Class56.anInt1327++;
         }
         if((arg1 ^ 0xffffffff) == -4) {
-            Class6.anInt245++;
             Class32.packetBuffer.putPacket(193);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);

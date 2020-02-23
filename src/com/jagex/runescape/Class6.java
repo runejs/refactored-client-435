@@ -42,8 +42,8 @@ public abstract class Class6 {
     public static int anInt251;
     public static int anInt253;
     public static int anInt255;
-    public static RSString aClass1_256 = Class58.method978("backbase2");
-    public static RSString aClass1_257 = Class58.method978("Please try again)3");
+    public static RSString aClass1_256 = RSString.CreateString("backbase2");
+    public static RSString aClass1_257 = RSString.CreateString("Please try again)3");
     public static RSString aClass1_258 = aClass1_257;
     public static RSString aClass1_259;
     public static boolean aBoolean260 = false;
@@ -51,7 +51,7 @@ public abstract class Class6 {
     public static int anInt263;
 
     static {
-        aClass1_259 = (Class58.method978("Sie befinden sich in einem Mitglieder)2Gebiet(Q"));
+        aClass1_259 = (RSString.CreateString("Sie befinden sich in einem Mitglieder)2Gebiet(Q"));
     }
 
     public byte[][] aByteArrayArray212;
