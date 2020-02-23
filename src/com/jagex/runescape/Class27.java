@@ -296,7 +296,6 @@ public class Class27 {
             }
             if(action == 53) {
                 Class32.packetBuffer.putPacket(38);
-                Widget.anInt2634++;
                 Class32.packetBuffer.putCustomNegativeOffsetShortBE(i_12_, -128);
                 Class32.packetBuffer.putShortLE(i);
                 Class32.packetBuffer.putIntME1(i_10_);

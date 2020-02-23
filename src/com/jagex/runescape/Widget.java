@@ -14,39 +14,15 @@ import java.awt.*;
 import java.lang.reflect.Method;
 
 public class Widget extends SubNode {
-    public static int anInt2634;
-    public static int anInt2635;
     public static RSString aClass1_2637 = RSString.CreateString("glow2:");
-    public static int anInt2638;
-    public static int anInt2646;
-    public static int anInt2652;
-    public static int anInt2662;
-    public static int anInt2666;
     public static RSString aClass1_2671 = aClass1_2637;
-    public static RSString aClass1_2674;
-    public static int anInt2675;
-    public static RSString aClass1_2678 = RSString.CreateString("Enter name of friend to add to list");
-    public static RSString aClass1_2684;
-    public static RSString aClass1_2686 = RSString.CreateString("Starting game engine)3)3)3");
+    public static RSString aClass1_2674 = RSString.CreateString("Starting game engine)3)3)3");
+    public static RSString aClass1_2684 = RSString.CreateString("Choose Option");
     public static RSString cmd_errortest = RSString.CreateString("::errortest");
-    public static int anInt2697;
-    public static int anInt2700;
-    public static int anInt2705;
-    public static RSString aClass1_2706 = RSString.CreateString("Choose Option");
     public static RSString aClass1_2716 = RSString.CreateString("Fehler beim Laden Ihres Charakter)2Profils");
-    public static int anInt2717;
-    public static int anInt2724;
     public static RSString goldCrown = RSString.CreateString("@cr2@");
-    public static int anInt2735;
-    public static int anInt2739;
-    public static RSString aClass1_2740;
+    public static RSString aClass1_2740 = RSString.CreateString("Enter name of friend to add to list");
     public static int packetsize = 0;
-
-    static {
-        aClass1_2684 = aClass1_2706;
-        aClass1_2740 = aClass1_2678;
-        aClass1_2674 = aClass1_2686;
-    }
 
     public boolean aBoolean2636 = false;
     public int anInt2639;
@@ -208,7 +184,6 @@ public class Widget extends SubNode {
     }
 
     public static void method639(int arg0) {
-        anInt2662++;
         synchronized(Class59.aClass54_1392) {
             Class59.anInt1389 = Class52.anInt1214;
             if(GameObjectDefinition.anInt2543 < 0) {
@@ -232,33 +207,23 @@ public class Widget extends SubNode {
     }
 
     public static void method640(byte arg0) {
-
         Class68.aClass9_1615.method235((byte) 49);
-        if(arg0 < -11)
-            anInt2652++;
-
     }
 
     public static void method641(int arg0) {
-
         aClass1_2716 = null;
         aClass1_2671 = null;
-        aClass1_2678 = null;
         if(arg0 > -88)
             method648(85, (byte) 24);
-        aClass1_2706 = null;
-        aClass1_2686 = null;
         cmd_errortest = null;
         goldCrown = null;
         aClass1_2637 = null;
         aClass1_2674 = null;
         aClass1_2740 = null;
         aClass1_2684 = null;
-
     }
 
     public static void method642(Component arg0, int arg1) {
-
         if(arg1 != -10)
             method639(-106);
         Method method = Signlink.aMethod729;
@@ -271,25 +236,18 @@ public class Widget extends SubNode {
         }
         arg0.addKeyListener(Class59.aClass54_1392);
         arg0.addFocusListener(Class59.aClass54_1392);
-        anInt2697++;
-
     }
 
     public static void method645(byte arg0) {
-
         Class58.aClass9_1364.method235((byte) 118);
-        anInt2739++;
         VertexNormal.aClass9_1102.method235((byte) -42);
         if(arg0 != -37)
             aClass1_2637 = null;
         Class19.aClass9_470.method235((byte) 103);
         Class49.aClass9_1145.method235((byte) 97);
-
     }
 
     public static RSString method648(int arg0, byte arg1) {
-
-        anInt2724++;
         if(arg1 != -100)
             return null;
         if(arg0 < 100000)
@@ -297,12 +255,9 @@ public class Widget extends SubNode {
         if((arg0 ^ 0xffffffff) > -10000001)
             return (Class40_Sub5_Sub17_Sub6.method832(110, new RSString[]{HashTable.method334(arg0 / 1000, -1), IdentityKit.aClass1_2587}));
         return (Class40_Sub5_Sub17_Sub6.method832(-84, new RSString[]{HashTable.method334(arg0 / 1000000, arg1 ^ 0x63), Class22.aClass1_542}));
-
     }
 
     public void method636(int arg0, boolean arg1, int arg2) {
-
-        anInt2646++;
         int i = items[arg2];
         items[arg2] = items[arg0];
         items[arg0] = i;
@@ -311,11 +266,9 @@ public class Widget extends SubNode {
         if(arg1 != false)
             anIntArrayArray2748 = null;
         itemAmounts[arg0] = i;
-
     }
 
     public void method637(Buffer arg0) {
-        anInt2717++;
         aBoolean2636 = false;
         type = arg0.getUnsignedByte();
         anInt2714 = arg0.getUnsignedByte();
@@ -472,8 +425,6 @@ public class Widget extends SubNode {
     }
 
     public ImageRGB method638(byte arg0, int arg1) {
-
-        anInt2675++;
         Class40_Sub13.aBoolean2177 = false;
         if((arg1 ^ 0xffffffff) > -1 || imageY.length <= arg1)
             return null;
@@ -490,13 +441,10 @@ public class Widget extends SubNode {
         else
             Class40_Sub13.aBoolean2177 = true;
         return class40_sub5_sub14_sub4;
-
     }
 
     public ImageRGB method643(int arg0, boolean arg1) {
-
         Class40_Sub13.aBoolean2177 = false;
-        anInt2666++;
         int i;
         if(arg1)
             i = anInt2670;
@@ -515,7 +463,6 @@ public class Widget extends SubNode {
         else
             Cache.aClass9_326.method230(-7208, (long) i, class40_sub5_sub14_sub4);
         return class40_sub5_sub14_sub4;
-
     }
 
     public void method644(byte arg0, Buffer arg1) {
@@ -526,7 +473,6 @@ public class Widget extends SubNode {
         if(arg0 < 58)
             method642(null, -90);
         anInt2649 = anInt2656 = arg1.getShortBE();
-        anInt2638++;
         anInt2743 = anInt2696 = arg1.getShortBE();
         anInt2692 = arg1.getUnsignedShortBE();
         if(type == 9)
@@ -614,9 +560,7 @@ public class Widget extends SubNode {
     }
 
     public Model method646(byte arg0, Class40_Sub5_Sub7 arg1, int arg2, boolean arg3, Class30 arg4) {
-
         Class40_Sub13.aBoolean2177 = false;
-        anInt2705++;
         int i;
         int i_11_;
         if(arg3) {
@@ -678,13 +622,10 @@ public class Widget extends SubNode {
         if(arg1 != null)
             class40_sub5_sub17_sub5 = arg1.method598(arg2, class40_sub5_sub17_sub5, true);
         return class40_sub5_sub17_sub5;
-
     }
 
     public TypeFace method647(byte arg0) {
-
         Class40_Sub13.aBoolean2177 = false;
-        anInt2735++;
         if((anInt2642 ^ 0xffffffff) == -65536)
             return null;
         TypeFace class40_sub5_sub14_sub1 = ((TypeFace) Class67.aClass9_1582.method231((long) anInt2642, (byte) 67));
@@ -698,6 +639,5 @@ public class Widget extends SubNode {
         else
             Class67.aClass9_1582.method230(-7208, (long) anInt2642, class40_sub5_sub14_sub1);
         return class40_sub5_sub14_sub1;
-
     }
 }

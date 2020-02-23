@@ -640,7 +640,6 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub4.anInt2363 = 0;
         Class40_Sub13.anInt2184 = 0;
         Class60.anInt1418 = 0;
-        Widget.anInt2700 = 0;
         ItemDefinition.anInt2809 = 0;
         Floor.anInt2348 = 0;
         Class4.anInt184 = 0;
@@ -669,7 +668,6 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub4.anInt2365 = 0;
         Class35.anInt1723 = 0;
         IdentityKit.anInt2608 = 0;
-        Widget.anInt2662 = 0;
         Class40_Sub13.anInt2169 = 0;
         GameObject.anInt3028 = 0;
         SubNode.anInt2085 = 0;
@@ -687,13 +685,11 @@ public class Main extends RSApplet {
         FloorDecoration.anInt599 = 0;
         Class29.anInt677 = 0;
         Class62.anInt1454 = 0;
-        Widget.anInt2635 = 0;
         Class40_Sub6.anInt2115 = 0;
         FloorDecoration.anInt596 = 0;
         Class37.anInt859 = 0;
         Actor.anInt3128 = 0;
         Class34.anInt815 = 0;
-        Widget.anInt2705 = 0;
         Class40_Sub5_Sub17_Sub3.anInt3053 = 0;
         Class40_Sub7.anInt2126 = 0;
         IdentityKit.anInt2601 = 0;
@@ -757,7 +753,6 @@ public class Main extends RSApplet {
         Class8.anInt275 = 0;
         Class62.anInt1453 = 0;
         Class67.anInt1587 = 0;
-        Widget.anInt2739 = 0;
         Class68.anInt1622 = 0;
         Class62.anInt1459 = 0;
         GameObject.anInt3020 = 0;
@@ -769,14 +764,12 @@ public class Main extends RSApplet {
         GameObject.anInt3033 = 0;
         ISAAC.anInt514 = 0;
         Class54.anInt1274 = 0;
-        Widget.anInt2675 = 0;
         Class24.anInt586 = 0;
         Class40_Sub3.anInt2022 = 0;
         Class42.anInt999 = 0;
         Class54.anInt1279 = 0;
         IdentityKit.anInt2603 = 0;
         IdentityKit.anInt2585 = 0;
-        Widget.anInt2652 = 0;
         IdentityKit.anInt2607 = 0;
         Class68.anInt1627 = 0;
         Node.anInt971 = 0;
@@ -800,7 +793,6 @@ public class Main extends RSApplet {
         Class22.anInt536 = 0;
         Class58.anInt1356 = 0;
         Class40_Sub13.anInt2180 = 0;
-        Widget.anInt2634 = 0;
         Class32.anInt754 = 0;
         Actor.anInt3147 = 0;
         Actor.anInt3076 = 0;
@@ -825,7 +817,6 @@ public class Main extends RSApplet {
         Actor.anInt3133 = 0;
         IdentityKit.anInt2612 = 0;
         Class62.anInt1447 = 0;
-        Widget.anInt2735 = 0;
         Class62.anInt1452 = 0;
         Class30.anInt702 = 0;
         ItemDefinition.anInt2826 = 0;
@@ -837,7 +828,6 @@ public class Main extends RSApplet {
         Class67.anInt1597 = 0;
         Class39.anInt916 = 0;
         Class34.anInt838 = 0;
-        Widget.anInt2717 = 0;
         Class40_Sub5_Sub13.anInt2756 = 0;
         Class22_Sub1.anInt1853 = 0;
         Node.anInt935 = 0;
@@ -862,7 +852,6 @@ public class Main extends RSApplet {
         Class6.anInt211 = 0;
         Class6.anInt263 = 0;
         Class37.anInt870 = 0;
-        Widget.anInt2724 = 0;
         Class60.anInt1400 = 0;
         GameObject.anInt3032 = 0;
         Class8.anInt287 = 0;
@@ -879,7 +868,6 @@ public class Main extends RSApplet {
         Class68.anInt1626 = 0;
         Class30.anInt689 = 0;
         Class49.anInt1144 = 0;
-        Widget.anInt2697 = 0;
         Class40_Sub5_Sub7.anInt2464 = 0;
         Class51.anInt1191 = 0;
         Class40_Sub5_Sub17_Sub3.anInt3052 = 0;
@@ -901,7 +889,6 @@ public class Main extends RSApplet {
         Class6.anInt234 = 0;
         Class30.anInt700 = 0;
         Class6_Sub1.anInt1804 = 0;
-        Widget.anInt2646 = 0;
         Class6_Sub1.anInt1792 = 0;
         Class35.anInt1741 = 0;
         Node.anInt961 = 0;
@@ -974,7 +961,6 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub4.anInt2353 = 0;
         ItemDefinition.anInt2832 = 0;
         Actor.anInt3085 = 0;
-        Widget.anInt2666 = 0;
         Class40_Sub5_Sub13.anInt2755 = 0;
         Class40_Sub2.anInt1998 = 0;
         Class40_Sub5_Sub17_Sub6.anInt3241 = 0;
@@ -996,7 +982,6 @@ public class Main extends RSApplet {
         Class34.anInt803 = 0;
         Class58.anInt1357 = 0;
         SubNode.anInt2096 = 0;
-        Widget.anInt2638 = 0;
         Class54.anInt1280 = 0;
         Class56.anInt1317 = 0;
         ItemDefinition.anInt2808 = 0;
