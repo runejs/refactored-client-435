@@ -577,15 +577,14 @@ public class Main extends RSApplet {
                     Class37.method432((byte) 93);
             } else
                 Class22.aBoolean541 = false;
-            if(!arg0[5].equals("english")) {
-                if(!arg0[5].equals("german"))
-                    Class37.method432((byte) 106);
-                else {
-                    Class55.method962(18782);
-                    Class34.anInt848 = 1;
-                }
-            } else
+            if(arg0[5].equals("english")) {
                 Class34.anInt848 = 0;
+            } else if(arg0[5].equals("german")) {
+                Class55.setGerman();
+                Class34.anInt848 = 1;
+            } else {
+                Class37.method432((byte) 106);
+            }
             Main main = new Main();
             main.openClientApplet("runescape", 13, 503, 32 + Class44.modewhat, InetAddress.getLocalHost(), 435, 765);
         } catch(Exception exception) {
@@ -885,7 +884,6 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub17_Sub1.anInt2959 = 0;
         Class40_Sub5_Sub17_Sub1.anInt2956 = 0;
         Class22_Sub2.anInt1892 = 0;
-        Class39.anInt902 = 0;
         Renderable.anInt2859 = 0;
         Class56.anInt1322 = 0;
         Class4.anInt187 = 0;
@@ -925,7 +923,6 @@ public class Main extends RSApplet {
         Class54.anInt1281 = 0;
         Class22.anInt543 = 0;
         Class13.anInt401 = 0;
-        Class39.anInt903 = 0;
         Class22.anInt539 = 0;
         Class34.anInt821 = 0;
         Class40_Sub5_Sub9.anInt2569 = 0;
@@ -1421,7 +1418,7 @@ public class Main extends RSApplet {
             Class22.aBoolean541 = string_80_ != null && string_80_.equals("1");
             String string_81_ = this.getParameter("lang");
             if(string_81_ != null && string_81_.equals("1")) {
-                Class55.method962(18782);
+                Class55.setGerman();
                 Class34.anInt848 = 1;
             }
             this.displayClientFrame((byte) 120, 435, 503, 765, Class44.modewhat + 32);
