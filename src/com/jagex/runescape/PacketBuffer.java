@@ -24,7 +24,8 @@ public class PacketBuffer extends Buffer {
     public static RSString aClass1_2259 = RSString.CreateString("oder benutzen Sie eine andere Welt)3");
     public static RSString aClass1_2260 = RSString.CreateString("da dieser Computer gegen unsere ");
 
-    public ISAAC encryption;
+    public ISAAC inCipher;
+    public ISAAC outCipher;
     public int bitoffset;
 
     public PacketBuffer(int arg0) {
@@ -149,7 +150,7 @@ public class PacketBuffer extends Buffer {
     public int getPacket(byte arg0) {
         if(arg0 != 49)
             aClass1_2260 = null;
-        return 0xff & (buffer[currentPosition++] + -encryption.method286(-101));
+        return 0xff & (buffer[currentPosition++] - inCipher.rand());
     }
 
     public int putBits(int arg0, byte arg1) {
@@ -170,20 +171,21 @@ public class PacketBuffer extends Buffer {
         return i_0_;
     }
 
-    public void putPacket(int arg1) {
-        System.out.printf("packet sent: %d\n", arg1);
-        buffer[currentPosition++] = (byte) (encryption.method286(-101) + arg1);
+    public void putPacket(int packetId) {
+        buffer[currentPosition++] = (byte) ((packetId + outCipher.rand()) & 0xff);
     }
 
-    public void initEncryption(int arg0, int[] arg1) {
-        encryption = new ISAAC(arg1);
-        if(arg0 != -1)
-            aClass1_2259 = null;
+    public void initInCipher(int[] seed) {
+        inCipher = new ISAAC(seed);
+    }
+
+    public void initOutCipher(int[] seed) {
+        outCipher = new ISAAC(seed);
     }
 
     public void initBitAccess(int arg0) {
         bitoffset = currentPosition * 8;
         if(arg0 <= 21)
-            encryption = null;
+            inCipher = null;
     }
 }

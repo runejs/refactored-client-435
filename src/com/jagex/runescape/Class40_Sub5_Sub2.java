@@ -177,11 +177,11 @@ public class Class40_Sub5_Sub2 extends SubNode {
                 Class61.packetBuffer.putIntBE(Class56.aClass6_Sub1_1323.anInt216);
                 Class61.packetBuffer.putBytes(0, Class32.packetBuffer.currentPosition, Class32.packetBuffer.buffer);
                 Class40_Sub6.aClass64_2098.method1010(Class61.packetBuffer.currentPosition, (byte) -19, 0, Class61.packetBuffer.buffer);
-                Class32.packetBuffer.initEncryption(-1, seeds);
+                Class32.packetBuffer.initOutCipher(seeds);
                 for(int i = 0; i < 4; i++) {
                     seeds[i] += 50;
                 }
-                Cache.outgoingbuffer.initEncryption(-1, seeds);
+                Cache.outgoingbuffer.initInCipher(seeds);
                 Class40_Sub3.anInt2032 = 6;
             }
             if(Class40_Sub3.anInt2032 == 6 && Class40_Sub6.aClass64_2098.method1014(-126) > 0) {

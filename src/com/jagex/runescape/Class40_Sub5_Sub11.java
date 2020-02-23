@@ -62,7 +62,7 @@ public class Class40_Sub5_Sub11 extends SubNode {
                 int i_3_ = Cache.outgoingbuffer.getUnsignedByte();
                 if((i_3_ & 0x2) != 0)
                     i_3_ += (Cache.outgoingbuffer.getUnsignedByte() << 1874166152);
-                Class68_Sub1.method1049(class40_sub5_sub17_sub4_sub1, (byte) 51, i_3_, i_2_);
+                Class68_Sub1.parsePlayerUpdateMasks(class40_sub5_sub17_sub4_sub1, (byte) 51, i_3_, i_2_);
             }
             anInt2632++;
         }
