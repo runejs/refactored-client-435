@@ -64,7 +64,7 @@ public class CollisionMap {
                 Class57.packetid = Cache.outgoingbuffer.getPacket((byte) 49);
                 Widget.packetsize = Class24.INCOMINGPACKETSIZES[Class57.packetid];
             }
-            System.out.println("packet received: " + Class57.packetid);
+            // System.out.println("packet received: " + Class57.packetid);
             if((Widget.packetsize ^ 0xffffffff) == 0) {
                 if((i ^ 0xffffffff) < -1) {
                     Class40_Sub6.aClass64_2098.method1008(0, 1, -127, Cache.outgoingbuffer.buffer);
