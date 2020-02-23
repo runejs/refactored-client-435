@@ -145,25 +145,25 @@ public class Player extends Actor {
         return aClass30_3282 != null;
     }
 
-    public void method791(byte arg0, Buffer arg1) {
-        arg1.currentPosition = 0;
-        int i = arg1.getUnsignedByte();
-        anInt3268 = arg1.getByte();
-        anInt3273 = arg1.getByte();
+    public void parsePlayerAppearanceData(byte arg0, Buffer buffer) {
+        buffer.currentPosition = 0;
+        int i = buffer.getUnsignedByte();
+        anInt3268 = buffer.getByte();
+        anInt3273 = buffer.getByte();
         int i_3_ = -1;
         anInt3266 = 0;
         int[] is = new int[12];
         if(arg0 >= -51)
             aClass1_3275 = null;
         for(int i_4_ = 0; i_4_ < 12; i_4_++) {
-            int i_5_ = arg1.getUnsignedByte();
+            int i_5_ = buffer.getUnsignedByte();
             if((i_5_ ^ 0xffffffff) == -1)
                 is[i_4_] = 0;
             else {
-                int i_6_ = arg1.getUnsignedByte();
+                int i_6_ = buffer.getUnsignedByte();
                 is[i_4_] = (i_5_ << 292869864) + i_6_;
                 if((i_4_ ^ 0xffffffff) == -1 && is[0] == 65535) {
-                    i_3_ = arg1.getUnsignedShortBE();
+                    i_3_ = buffer.getUnsignedShortBE();
                     break;
                 }
                 if((is[i_4_] ^ 0xffffffff) <= -513) {
@@ -175,36 +175,36 @@ public class Player extends Actor {
         }
         int[] is_8_ = new int[5];
         for(int i_9_ = 0; (i_9_ ^ 0xffffffff) > -6; i_9_++) {
-            int i_10_ = arg1.getUnsignedByte();
+            int i_10_ = buffer.getUnsignedByte();
             if((i_10_ ^ 0xffffffff) > -1 || ((Class40_Sub5_Sub17_Sub6.anIntArrayArray3238[i_9_]).length <= i_10_))
                 i_10_ = 0;
             is_8_[i_9_] = i_10_;
         }
-        anInt3126 = arg1.getUnsignedShortBE();
+        anInt3126 = buffer.getUnsignedShortBE();
         if((anInt3126 ^ 0xffffffff) == -65536)
             anInt3126 = -1;
-        anInt3145 = arg1.getUnsignedShortBE();
+        anInt3145 = buffer.getUnsignedShortBE();
         if(anInt3145 == 65535)
             anInt3145 = -1;
         anInt3083 = anInt3145;
-        anInt3131 = arg1.getUnsignedShortBE();
+        anInt3131 = buffer.getUnsignedShortBE();
         if((anInt3131 ^ 0xffffffff) == -65536)
             anInt3131 = -1;
-        anInt3079 = arg1.getUnsignedShortBE();
+        anInt3079 = buffer.getUnsignedShortBE();
         if(anInt3079 == 65535)
             anInt3079 = -1;
-        anInt3075 = arg1.getUnsignedShortBE();
+        anInt3075 = buffer.getUnsignedShortBE();
         if(anInt3075 == 65535)
             anInt3075 = -1;
-        anInt3132 = arg1.getUnsignedShortBE();
+        anInt3132 = buffer.getUnsignedShortBE();
         if((anInt3132 ^ 0xffffffff) == -65536)
             anInt3132 = -1;
-        anInt3082 = arg1.getUnsignedShortBE();
+        anInt3082 = buffer.getUnsignedShortBE();
         if(anInt3082 == 65535)
             anInt3082 = -1;
-        playerName = Class60.method991(-127, arg1.getLongBE()).method85(-4305);
-        anInt3260 = arg1.getUnsignedByte();
-        anInt3257 = arg1.getUnsignedShortBE();
+        playerName = Class60.method991(-127, buffer.getLongBE()).method85(-4305);
+        anInt3260 = buffer.getUnsignedByte();
+        anInt3257 = buffer.getUnsignedShortBE();
         if(aClass30_3282 == null)
             aClass30_3282 = new Class30();
         aClass30_3282.method380(is, i == 1, 7, is_8_, i_3_);
