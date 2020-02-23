@@ -3,7 +3,7 @@ package com.jagex.runescape.media.renderable.actor;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -13,15 +13,15 @@ public class Npc extends Actor {
     public static RSString aClass1_3295 = null;
     public static boolean aBoolean3298;
     public static Scene aScene_3301;
-    public static RSString aClass1_3302 = Class58.method978("Sichtbare Karte vorbereitet)3");
+    public static RSString aClass1_3302 = RSString.CreateString("Sichtbare Karte vorbereitet)3");
     public static int[] anIntArray3304 = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
-    public static RSString aClass1_3305 = Class58.method978("Connection lost");
-    public static RSString aClass1_3307 = Class58.method978("Keine Antwort vom Server)3");
-    public static RSString aClass1_3308 = Class58.method978("gr-Un:");
-    public static RSString aClass1_3309 = Class58.method978("Hierhin gehen");
-    public static RSString aClass1_3311 = Class58.method978("On");
+    public static RSString aClass1_3305 = RSString.CreateString("Connection lost");
+    public static RSString aClass1_3307 = RSString.CreateString("Keine Antwort vom Server)3");
+    public static RSString aClass1_3308 = RSString.CreateString("gr-Un:");
+    public static RSString aClass1_3309 = RSString.CreateString("Hierhin gehen");
+    public static RSString aClass1_3311 = RSString.CreateString("On");
     public static int[] anIntArray3312;
-    public NpcDefinition aClass40_Sub5_Sub5_3300;
+    public ActorDefinition aClass40_Sub5_Sub5_3300;
 
     public static Class40_Sub5_Sub11 method795(byte arg0, int arg1) {
         Class40_Sub5_Sub11 class40_sub5_sub11 = ((Class40_Sub5_Sub11) Class13.aClass9_406.method231((long) arg1, (byte) 98));
@@ -211,10 +211,10 @@ public class Npc extends Actor {
                                     ISAAC.redrawTabArea = true;
                                 SceneTile.activeInterfaceType = 0;
                                 if(!Class40_Sub5_Sub15.aBoolean2784 || Buffer.anInt1978 < 5) {
-                                    if(((Class68.anInt1630 ^ 0xffffffff) == -2 || (Class33.method409((byte) 63, (NpcDefinition.anInt2394 - 1)))) && NpcDefinition.anInt2394 > 2)
+                                    if(((Class68.anInt1630 ^ 0xffffffff) == -2 || (Class33.method409((byte) 63, (ActorDefinition.anInt2394 - 1)))) && ActorDefinition.anInt2394 > 2)
                                         Class60.method990(11451);
-                                    else if((NpcDefinition.anInt2394 ^ 0xffffffff) < -1)
-                                        Class27.method358(123, (-1 + (NpcDefinition.anInt2394)));
+                                    else if((ActorDefinition.anInt2394 ^ 0xffffffff) < -1)
+                                        Class27.method358(123, (-1 + (ActorDefinition.anInt2394)));
                                 } else {
                                     RSRuntimeException.anInt1642 = -1;
                                     Class43.method894(false);
@@ -265,7 +265,7 @@ public class Npc extends Actor {
                         if((Scene.anInt78 ^ 0xffffffff) != 0) {
                             int i = Scene.anInt78;
                             int i_18_ = Scene.anInt81;
-                            boolean bool = (Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), i, (byte) 119, 0, true, 0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), i_18_, 0));
+                            boolean bool = (Class38_Sub1.method448(0, 0, (Player.localPlayer.anIntArray3088[0]), i, (byte) 119, 0, true, 0, 0, (Player.localPlayer.anIntArray3135[0]), i_18_, 0));
                             if(bool) {
                                 Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                                 Floor.anInt2319 = 0;
@@ -280,7 +280,7 @@ public class Npc extends Actor {
                             RSApplet.aClass1_8 = null;
                         }
                         Class62.method1002(-77);
-                        if((NpcDefinition.anInt2433 ^ 0xffffffff) == 0) {
+                        if((ActorDefinition.anInt2433 ^ 0xffffffff) == 0) {
                             Class40_Sub5_Sub17_Sub3.method776((byte) -125);
                             Class38_Sub1.method447((byte) 29);
                             Class40_Sub5_Sub1.method544((byte) -54);
@@ -452,7 +452,7 @@ public class Npc extends Actor {
         return class40_sub5_sub17_sub5;
     }
 
-    public boolean method784(int arg0) {
+    public boolean isVisible(int arg0) {
         if(aClass40_Sub5_Sub5_3300 == null)
             return false;
         return arg0 == 1;

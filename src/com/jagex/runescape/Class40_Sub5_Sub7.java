@@ -14,12 +14,12 @@ public class Class40_Sub5_Sub7 extends SubNode {
     public static int anInt2468;
     public static int anInt2469;
     public static int anInt2471;
-    public static RSString aClass1_2472 = Class58.method978(":tradereq:");
+    public static RSString aClass1_2472 = RSString.CreateString(":tradereq:");
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2474;
     public static RSString aClass1_2475;
     public static int anInt2478;
     public static int anInt2480;
-    public static RSString aClass1_2481 = (Class58.method978("Gegenstand konnte nicht gefunden werden)1 verk-Urzen Sie den Suchbegriff)3"));
+    public static RSString aClass1_2481 = (RSString.CreateString("Gegenstand konnte nicht gefunden werden)1 verk-Urzen Sie den Suchbegriff)3"));
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_2482;
     public static Class6 aClass6_2484;
     public static int anInt2486;
@@ -32,9 +32,9 @@ public class Class40_Sub5_Sub7 extends SubNode {
 
     static {
         anInt2480 = 0;
-        aClass1_2488 = Class58.method978("titlebox");
-        aClass1_2475 = Class58.method978("Bitte versuchen Sie es erneut)3");
-        aClass1_2487 = Class58.method978("sch-Utteln:");
+        aClass1_2488 = RSString.CreateString("titlebox");
+        aClass1_2475 = RSString.CreateString("Bitte versuchen Sie es erneut)3");
+        aClass1_2487 = RSString.CreateString("sch-Utteln:");
     }
 
     public int[] anIntArray2466;
@@ -111,7 +111,7 @@ public class Class40_Sub5_Sub7 extends SubNode {
         int i_15_ = 0x3 & i_14_ >> -1327198362;
         int i_16_ = 0x1f & i_14_;
         if(i_16_ != 10 && i_16_ != 11 && i_16_ != 22)
-            Class38_Sub1.method448(0, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), arg0, (byte) 98, 1 + i_16_, true, i_15_, 0, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), arg3, 2);
+            Class38_Sub1.method448(0, 0, (Player.localPlayer.anIntArray3088[0]), arg0, (byte) 98, 1 + i_16_, true, i_15_, 0, (Player.localPlayer.anIntArray3135[0]), arg3, 2);
         else {
             GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
             int i_17_ = gameObjectDefinition.anInt2512;
@@ -126,7 +126,7 @@ public class Class40_Sub5_Sub7 extends SubNode {
                 i_18_ = gameObjectDefinition.sizeY;
                 i_19_ = gameObjectDefinition.sizeX;
             }
-            Class38_Sub1.method448(i_18_, i_17_, (Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), arg0, (byte) 94, 0, true, 0, i_19_, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), arg3, 2);
+            Class38_Sub1.method448(i_18_, i_17_, (Player.localPlayer.anIntArray3088[0]), arg0, (byte) 94, 0, true, 0, i_19_, (Player.localPlayer.anIntArray3135[0]), arg3, 2);
         }
         Class40_Sub11.anInt2163 = Class57.anInt1338;
         Class45.anInt1075 = 2;

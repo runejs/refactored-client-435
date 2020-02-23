@@ -7,7 +7,7 @@ public class Class40_Sub5_Sub4 extends SubNode {
     public static Class6 aClass6_2349;
     public static Class68 aClass68_2350;
     public static RSString aClass1_2351;
-    public static RSString aClass1_2352 = Class58.method978("Login");
+    public static RSString aClass1_2352 = RSString.CreateString("Login");
     public static int anInt2353;
     public static RSString aClass1_2354;
     public static int anInt2355;
@@ -21,7 +21,7 @@ public class Class40_Sub5_Sub4 extends SubNode {
     public static Class6 aClass6_2364;
     public static int anInt2365;
     public static int anInt2366;
-    public static RSString aClass1_2367 = Class58.method978("Please subscribe)1 or use a different world)3");
+    public static RSString aClass1_2367 = RSString.CreateString("Please subscribe)1 or use a different world)3");
     public static int anInt2369;
     public static int anInt2371;
 
@@ -30,7 +30,7 @@ public class Class40_Sub5_Sub4 extends SubNode {
         anIntArray2361 = new int[]{0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535, 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607, 16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, 2147483647, -1};
         aClass1_2351 = aClass1_2352;
         anInt2366 = 0;
-        aClass1_2354 = Class58.method978("Unerwartete Antwort vom Anmelde)2Server");
+        aClass1_2354 = RSString.CreateString("Unerwartete Antwort vom Anmelde)2Server");
     }
 
     public int anInt2358;

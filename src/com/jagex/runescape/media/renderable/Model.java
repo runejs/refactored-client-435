@@ -979,7 +979,7 @@ public class Model extends Renderable {
         }
     }
 
-    public void method803(int arg0, int arg1) {
+    public void replaceColor(int arg0, int arg1) {
         for(int i = 0; i < triangleCount; i++) {
             if(triangleColorValues[i] == arg0)
                 triangleColorValues[i] = arg1;

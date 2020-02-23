@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -11,30 +11,30 @@ import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class37 {
     public static int anInt859;
-    public static RSString aClass1_860 = Class58.method978("Bitte benutzen Sie eine andere Welt)3");
+    public static RSString aClass1_860 = RSString.CreateString("Bitte benutzen Sie eine andere Welt)3");
     public static int anInt861;
     public static int anInt862;
     public static int anInt863;
     public static int anInt864;
     public static int anInt865;
     public static int anInt866;
-    public static RSString aClass1_867 = Class58.method978("Ein kostenloses Spielkonto erstellen)3");
+    public static RSString aClass1_867 = RSString.CreateString("Ein kostenloses Spielkonto erstellen)3");
     public static int anInt868;
     public static HashTable aClass23_869 = new HashTable(32);
     public static int anInt870;
     public static boolean aBoolean871 = false;
-    public static RSString aClass1_872 = Class58.method978("Ihre Nachricht an: ");
+    public static RSString aClass1_872 = RSString.CreateString("Ihre Nachricht an: ");
     public static RSString aClass1_873;
     public static int anInt874;
     public static RSString aClass1_875;
     public static int anInt876 = 0;
-    public static RSString aClass1_877 = Class58.method978("@gr1@");
+    public static RSString aClass1_877 = RSString.CreateString("@gr1@");
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array878;
-    public static RSString aClass1_879 = Class58.method978("weiss:");
-    public static RSString aClass1_880 = Class58.method978("Wir vermuten ihr Spielkonto wurde gestohlen");
+    public static RSString aClass1_879 = RSString.CreateString("weiss:");
+    public static RSString aClass1_880 = RSString.CreateString("Wir vermuten ihr Spielkonto wurde gestohlen");
 
     static {
-        aClass1_875 = (Class58.method978("Please close the interface you have open before using (Wreport abuse(W"));
+        aClass1_875 = (RSString.CreateString("Please close the interface you have open before using (Wreport abuse(W"));
         aClass1_873 = aClass1_875;
         anInt874 = 0;
     }
@@ -107,7 +107,7 @@ public class Class37 {
 
         Class4.menuOpen = false;
         Class57.packetid = -1;
-        NpcDefinition.anInt2394 = 0;
+        ActorDefinition.anInt2394 = 0;
         Class40_Sub5_Sub12.packetsize = 0;
         Class32.packetBuffer.currentPosition = 0;
         RSString.anInt1690 = -1;
@@ -144,45 +144,45 @@ public class Class37 {
                     is[i_7_] = 0;
             }
             Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, Class58.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
-            NpcDefinition.method574(4);
+            ActorDefinition.method574(4);
         } else {
-            int i = 48 + ((Class40_Sub5_Sub13.localPlayer.anInt3098) / 32);
-            int i_8_ = 464 + -((Class40_Sub5_Sub13.localPlayer.anInt3089) / 32);
+            int i = 48 + ((Player.localPlayer.anInt3098) / 32);
+            int i_8_ = 464 + -((Player.localPlayer.anInt3089) / 32);
             int i_9_ = Class58.cameraHorizontal + Class43.cameraYawOffset & 0x7ff;
             Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.method724(25, 5, 146, 151, i, i_8_, i_9_, Class51.mapZoomOffset + 256, Landscape.anIntArray1186, Class34.anIntArray852);
             for(int i_10_ = 0; GameObject.anInt3040 > i_10_; i_10_++) {
-                i = 2 + (4 * Actor.anIntArray3149[i_10_] + -((Class40_Sub5_Sub13.localPlayer.anInt3098) / 32));
-                i_8_ = (2 + 4 * Class45.anIntArray1083[i_10_] - ((Class40_Sub5_Sub13.localPlayer.anInt3089) / 32));
+                i = 2 + (4 * Actor.anIntArray3149[i_10_] + -((Player.localPlayer.anInt3098) / 32));
+                i_8_ = (2 + 4 * Class45.anIntArray1083[i_10_] - ((Player.localPlayer.anInt3089) / 32));
                 SceneTile.drawOnMinimap(i_8_, i, (Class62.aClass40_Sub5_Sub14_Sub4Array1466[i_10_]));
             }
             for(int i_11_ = 0; (i_11_ ^ 0xffffffff) > -105; i_11_++) {
                 for(int i_12_ = 0; i_12_ < 104; i_12_++) {
                     Class45 class45 = (Class10.aClass45ArrayArrayArray357[Player.anInt3267][i_11_][i_12_]);
                     if(class45 != null) {
-                        i_8_ = -((Class40_Sub5_Sub13.localPlayer.anInt3089) / 32) + 2 + i_12_ * 4;
-                        i = -((Class40_Sub5_Sub13.localPlayer.anInt3098) / 32) + 2 + i_11_ * 4;
+                        i_8_ = -((Player.localPlayer.anInt3089) / 32) + 2 + i_12_ * 4;
+                        i = -((Player.localPlayer.anInt3098) / 32) + 2 + i_11_ * 4;
                         SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[0]);
                     }
                 }
             }
             for(int i_13_ = 0; GameObjectDefinition.anInt2558 > i_13_; i_13_++) {
                 Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_13_]]);
-                if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.method784(1)) {
-                    NpcDefinition class40_sub5_sub5 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300);
+                if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.isVisible(1)) {
+                    ActorDefinition class40_sub5_sub5 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300);
                     if(class40_sub5_sub5.childrenIds != null)
-                        class40_sub5_sub5 = class40_sub5_sub5.method577(-1);
+                        class40_sub5_sub5 = class40_sub5_sub5.getChildDefinition(-1);
                     if(class40_sub5_sub5 != null && class40_sub5_sub5.renderOnMinimap && class40_sub5_sub5.isClickable) {
-                        i = (-((Class40_Sub5_Sub13.localPlayer.anInt3098) / 32) + (class40_sub5_sub17_sub4_sub2.anInt3098 / 32));
-                        i_8_ = (class40_sub5_sub17_sub4_sub2.anInt3089 / 32 + -((Class40_Sub5_Sub13.localPlayer.anInt3089) / 32));
+                        i = (-((Player.localPlayer.anInt3098) / 32) + (class40_sub5_sub17_sub4_sub2.anInt3098 / 32));
+                        i_8_ = (class40_sub5_sub17_sub4_sub2.anInt3089 / 32 + -((Player.localPlayer.anInt3089) / 32));
                         SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[1]);
                     }
                 }
             }
             for(int i_14_ = 0; (Class60.anInt1407 ^ 0xffffffff) < (i_14_ ^ 0xffffffff); i_14_++) {
                 Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_14_]]);
-                if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.method784(1)) {
-                    i = (class40_sub5_sub17_sub4_sub1.anInt3098 / 32 + -((Class40_Sub5_Sub13.localPlayer.anInt3098) / 32));
-                    i_8_ = (-((Class40_Sub5_Sub13.localPlayer.anInt3089) / 32) + class40_sub5_sub17_sub4_sub1.anInt3089 / 32);
+                if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.isVisible(1)) {
+                    i = (class40_sub5_sub17_sub4_sub1.anInt3098 / 32 + -((Player.localPlayer.anInt3098) / 32));
+                    i_8_ = (-((Player.localPlayer.anInt3089) / 32) + class40_sub5_sub17_sub4_sub1.anInt3089 / 32);
                     boolean bool = false;
                     long l = class40_sub5_sub17_sub4_sub1.playerName.method58((byte) 122);
                     for(int i_15_ = 0; Class40_Sub5_Sub17_Sub3.anInt3060 > i_15_; i_15_++) {
@@ -192,7 +192,7 @@ public class Class37 {
                         }
                     }
                     boolean bool_16_ = false;
-                    if(((Class40_Sub5_Sub13.localPlayer.anInt3266) != 0) && (class40_sub5_sub17_sub4_sub1.anInt3266 ^ 0xffffffff) != -1 && (((Class40_Sub5_Sub13.localPlayer.anInt3266) ^ 0xffffffff) == (class40_sub5_sub17_sub4_sub1.anInt3266 ^ 0xffffffff)))
+                    if(((Player.localPlayer.anInt3266) != 0) && (class40_sub5_sub17_sub4_sub1.anInt3266 ^ 0xffffffff) != -1 && (((Player.localPlayer.anInt3266) ^ 0xffffffff) == (class40_sub5_sub17_sub4_sub1.anInt3266 ^ 0xffffffff)))
                         bool_16_ = true;
                     if(bool)
                         SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[3]);
@@ -206,34 +206,34 @@ public class Class37 {
                 if(Player.anInt3288 == 1 && (Class66.anInt1545 ^ 0xffffffff) <= -1 && ((Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813).length > Class66.anInt1545)) {
                     Npc class40_sub5_sub17_sub4_sub2 = (Class6_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class66.anInt1545]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
-                        i = (-((Class40_Sub5_Sub13.localPlayer.anInt3098) / 32) + (class40_sub5_sub17_sub4_sub2.anInt3098 / 32));
-                        i_8_ = (class40_sub5_sub17_sub4_sub2.anInt3089 / 32 - (Class40_Sub5_Sub13.localPlayer.anInt3089) / 32);
+                        i = (-((Player.localPlayer.anInt3098) / 32) + (class40_sub5_sub17_sub4_sub2.anInt3098 / 32));
+                        i_8_ = (class40_sub5_sub17_sub4_sub2.anInt3089 / 32 - (Player.localPlayer.anInt3089) / 32);
                         Floor.drawMinimapMark((Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1]), i, i_8_);
                     }
                 }
                 if((Player.anInt3288 ^ 0xffffffff) == -3) {
-                    i_8_ = (-((Class40_Sub5_Sub13.localPlayer.anInt3089) / 32) + 2 + 4 * (-Class26.anInt635 + Class4.anInt175));
-                    i = (4 * (Class68.anInt1637 - Class40_Sub5_Sub2.anInt2307) - (-2 + ((Class40_Sub5_Sub13.localPlayer.anInt3098) / 32)));
+                    i_8_ = (-((Player.localPlayer.anInt3089) / 32) + 2 + 4 * (-Class26.anInt635 + Class4.anInt175));
+                    i = (4 * (Class68.anInt1637 - Class40_Sub5_Sub2.anInt2307) - (-2 + ((Player.localPlayer.anInt3098) / 32)));
                     Floor.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], i, i_8_);
                 }
                 if(Player.anInt3288 == 10 && (Class68.anInt1623 ^ 0xffffffff) <= -1 && ((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156).length ^ 0xffffffff) < (Class68.anInt1623 ^ 0xffffffff)) {
                     Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class68.anInt1623]);
                     if(class40_sub5_sub17_sub4_sub1 != null) {
-                        i_8_ = (-((Class40_Sub5_Sub13.localPlayer.anInt3089) / 32) + (class40_sub5_sub17_sub4_sub1.anInt3089 / 32));
-                        i = (class40_sub5_sub17_sub4_sub1.anInt3098 / 32 - (Class40_Sub5_Sub13.localPlayer.anInt3098) / 32);
+                        i_8_ = (-((Player.localPlayer.anInt3089) / 32) + (class40_sub5_sub17_sub4_sub1.anInt3089 / 32));
+                        i = (class40_sub5_sub17_sub4_sub1.anInt3098 / 32 - (Player.localPlayer.anInt3098) / 32);
                         Floor.drawMinimapMark((Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1]), i, i_8_);
                     }
                 }
             }
             if((Class40_Sub5_Sub4.anInt2366 ^ 0xffffffff) != -1) {
-                i = (2 + Class40_Sub5_Sub4.anInt2366 * 4 + -((Class40_Sub5_Sub13.localPlayer.anInt3098) / 32));
-                i_8_ = 2 + (4 * Class55.anInt1304 + -((Class40_Sub5_Sub13.localPlayer.anInt3089) / 32));
+                i = (2 + Class40_Sub5_Sub4.anInt2366 * 4 + -((Player.localPlayer.anInt3098) / 32));
+                i_8_ = 2 + (4 * Class55.anInt1304 + -((Player.localPlayer.anInt3089) / 32));
                 SceneTile.drawOnMinimap(i_8_, i, (Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[0]));
             }
             Rasterizer.method656(97, 78, 3, 3, 16777215);
             Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, Class58.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
             if(arg0 == true)
-                NpcDefinition.method574(4);
+                ActorDefinition.method574(4);
         }
 
     }

@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 
 public class Class32 {
     public static int anInt744;
@@ -23,8 +23,8 @@ public class Class32 {
     static {
         packetBuffer = new PacketBuffer(5000);
         anInt770 = 0;
-        aClass1_772 = Class58.method978("title)3jpg");
-        aClass1_766 = Class58.method978("Ignorieren");
+        aClass1_772 = RSString.CreateString("title)3jpg");
+        aClass1_766 = RSString.CreateString("Ignorieren");
         anIntArray774 = new int[]{12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800};
         anInt771 = 0;
     }
@@ -51,7 +51,7 @@ public class Class32 {
     public static void method398(int arg0) {
 
         RSString class1 = null;
-        for(int i = 0; NpcDefinition.anInt2394 > i; i++) {
+        for(int i = 0; ActorDefinition.anInt2394 > i; i++) {
             if((Landscape.aClass1Array1184[i].method60(VertexNormal.aClass1_1114) ^ 0xffffffff) != 0) {
                 class1 = (Landscape.aClass1Array1184[i].substring(Landscape.aClass1Array1184[i].method60(VertexNormal.aClass1_1114)));
                 break;
@@ -88,8 +88,8 @@ public class Class32 {
                 i_5_ -= 357;
                 i_4_ -= 17;
             }
-            for(int i_6_ = 0; ((i_6_ ^ 0xffffffff) > (NpcDefinition.anInt2394 ^ 0xffffffff)); i_6_++) {
-                int i_7_ = 31 + i_2_ + (NpcDefinition.anInt2394 + (-1 + -i_6_)) * 15;
+            for(int i_6_ = 0; ((i_6_ ^ 0xffffffff) > (ActorDefinition.anInt2394 ^ 0xffffffff)); i_6_++) {
+                int i_7_ = 31 + i_2_ + (ActorDefinition.anInt2394 + (-1 + -i_6_)) * 15;
                 RSString class1_8_ = Landscape.aClass1Array1184[i_6_];
                 int i_9_ = 16777215;
                 if(class1_8_.method87(arg0 + 112, class1)) {

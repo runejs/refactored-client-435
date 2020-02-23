@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
@@ -10,7 +10,7 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 
 public class Class40_Sub3 extends Node {
-    public static RSString cmd_fpson = Class58.method978("::fpson");
+    public static RSString cmd_fpson = RSString.CreateString("::fpson");
     public static int[] anIntArray2016 = new int[32768];
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2019;
     public static int anInt2020;
@@ -79,7 +79,7 @@ public class Class40_Sub3 extends Node {
             Renderable.aClass6_Sub1_2857 = Class54.method957(5, true, true, (byte) 123, true);
             Class55.aClass6_Sub1_1286 = Class54.method957(6, false, true, (byte) 117, true);
             Class40_Sub5_Sub9.aClass6_Sub1_2571 = Class54.method957(7, true, false, (byte) 124, true);
-            NpcDefinition.aClass6_Sub1_2377 = Class54.method957(8, true, false, (byte) 127, true);
+            ActorDefinition.aClass6_Sub1_2377 = Class54.method957(8, true, false, (byte) 127, true);
             Class32.aClass6_Sub1_773 = Class54.method957(9, true, false, (byte) 127, true);
             RSCanvas.aClass6_Sub1_48 = Class54.method957(10, true, false, (byte) 125, true);
             VertexNormal.aClass6_Sub1_1104 = Class54.method957(11, true, false, (byte) 120, true);
@@ -97,14 +97,14 @@ public class Class40_Sub3 extends Node {
             i += (5 * Renderable.aClass6_Sub1_2857.method197(arg0) / 100);
             i += Class55.aClass6_Sub1_1286.method197(100) * 5 / 100;
             i += 40 * Class40_Sub5_Sub9.aClass6_Sub1_2571.method197(100) / 100;
-            i += NpcDefinition.aClass6_Sub1_2377.method197(100) * 5 / 100;
+            i += ActorDefinition.aClass6_Sub1_2377.method197(100) * 5 / 100;
             i += Class32.aClass6_Sub1_773.method197(arg0) * 5 / 100;
             i += 5 * RSCanvas.aClass6_Sub1_48.method197(100) / 100;
             i += 5 * VertexNormal.aClass6_Sub1_1104.method197(100) / 100;
             i += 5 * Class56.aClass6_Sub1_1323.method197(100) / 100;
             if(i != 100) {
                 if((i ^ 0xffffffff) != -1)
-                    Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(arg0 + -42, new RSString[]{NpcDefinition.aClass1_2396, HashTable.method334(i, -1), Class44.aClass1_1041}));
+                    Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(arg0 + -42, new RSString[]{ActorDefinition.aClass1_2396, HashTable.method334(i, -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 30;
             } else {
                 Class40_Sub5_Sub6.anInt2451 = 45;
@@ -123,25 +123,25 @@ public class Class40_Sub3 extends Node {
             if(Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236 != null)
                 i++;
             else
-                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236 = FloorDecoration.method347(NpcDefinition.aClass6_Sub1_2377, arg0 + 155, Class66.blank_string, Class40_Sub6.aClass1_2101);
+                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236 = FloorDecoration.method347(ActorDefinition.aClass6_Sub1_2377, arg0 + 155, Class66.blank_string, Class40_Sub6.aClass1_2101);
             if(Class53.aClass40_Sub5_Sub14_Sub1_1268 != null)
                 i++;
             else
-                Class53.aClass40_Sub5_Sub14_Sub1_1268 = FloorDecoration.method347(NpcDefinition.aClass6_Sub1_2377, 255, Class66.blank_string, Class67.aClass1_1580);
+                Class53.aClass40_Sub5_Sub14_Sub1_1268 = FloorDecoration.method347(ActorDefinition.aClass6_Sub1_2377, 255, Class66.blank_string, Class67.aClass1_1580);
             if(Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246 != null)
                 i++;
             else
-                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246 = FloorDecoration.method347(NpcDefinition.aClass6_Sub1_2377, 255, Class66.blank_string, Class38_Sub1.aClass1_1921);
+                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246 = FloorDecoration.method347(ActorDefinition.aClass6_Sub1_2377, 255, Class66.blank_string, Class38_Sub1.aClass1_1921);
             if(i < 3) {
                 Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(59, new RSString[]{VertexNormal.aClass1_1099, HashTable.method334(i * 100 / 3, -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 40;
             } else {
                 Class40_Sub5_Sub6.anInt2451 = 60;
                 Class67.anInt1607 = 40;
-                Class22_Sub2.currentLoadingText = NpcDefinition.aClass1_2392;
+                Class22_Sub2.currentLoadingText = ActorDefinition.aClass1_2392;
             }
         } else if(Class40_Sub5_Sub6.anInt2451 == 60) {
-            int i = Class60.method988(RSCanvas.aClass6_Sub1_48, NpcDefinition.aClass6_Sub1_2377, arg0 ^ ~0x14);
+            int i = Class60.method988(RSCanvas.aClass6_Sub1_48, ActorDefinition.aClass6_Sub1_2377, arg0 ^ ~0x14);
             int i_3_ = ISAAC.method288((byte) 119);
             if(i < i_3_) {
                 Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(arg0 ^ 0x35, new RSString[]{Class48.aClass1_1124, HashTable.method334(100 * i / i_3_, -1), Class44.aClass1_1041}));
@@ -167,7 +167,7 @@ public class Class40_Sub3 extends Node {
                 Class55.method966(arg0 ^ 0x38, Class40_Sub5_Sub9.aClass6_Sub1_2571, IdentityKit.aClass6_Sub1_2609);
                 Landscape.method936(-17552, IdentityKit.aClass6_Sub1_2609);
                 Main.method43(IdentityKit.aClass6_Sub1_2609, true);
-                Class40_Sub5_Sub17_Sub1.method758(Class65.aClass6_Sub1_1533, (NpcDefinition.aClass6_Sub1_2377), (Class40_Sub5_Sub9.aClass6_Sub1_2571), (byte) 90);
+                Class40_Sub5_Sub17_Sub1.method758(Class65.aClass6_Sub1_1533, (ActorDefinition.aClass6_Sub1_2377), (Class40_Sub5_Sub9.aClass6_Sub1_2571), (byte) 90);
                 Class40_Sub5_Sub6.anInt2451 = 80;
                 Class67.anInt1607 = 60;
                 Class22_Sub2.currentLoadingText = Class42.aClass1_1000;
@@ -177,59 +177,59 @@ public class Class40_Sub3 extends Node {
             if(Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4_2482 != null)
                 i++;
             else
-                Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4_2482 = Class66.method1028(NpcDefinition.aClass6_Sub1_2377, Class54.aClass1_1284, (byte) 21, Class66.blank_string);
+                Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4_2482 = Class66.method1028(ActorDefinition.aClass6_Sub1_2377, Class54.aClass1_1284, (byte) 21, Class66.blank_string);
             if(Class40_Sub5_Sub2.minimapEdge == null)
-                Class40_Sub5_Sub2.minimapEdge = Class66.method1028(NpcDefinition.aClass6_Sub1_2377, Class61.aClass1_1427, (byte) 21, Class66.blank_string);
+                Class40_Sub5_Sub2.minimapEdge = Class66.method1028(ActorDefinition.aClass6_Sub1_2377, Class61.aClass1_1427, (byte) 21, Class66.blank_string);
             else
                 i++;
             if(Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301 != null)
                 i++;
             else
-                Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301 = Class40_Sub5_Sub2.method550((NpcDefinition.aClass6_Sub1_2377), (byte) -66, Class29.aClass1_671, Class66.blank_string);
+                Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301 = Class40_Sub5_Sub2.method550((ActorDefinition.aClass6_Sub1_2377), (byte) -66, Class29.aClass1_671, Class66.blank_string);
             if(Class8.aClass40_Sub5_Sub14_Sub4Array296 == null)
-                Class8.aClass40_Sub5_Sub14_Sub4Array296 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, (GameObject.aClass1_3047), Class66.blank_string);
+                Class8.aClass40_Sub5_Sub14_Sub4Array296 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, (GameObject.aClass1_3047), Class66.blank_string);
             else
                 i++;
             if(Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4Array2474 != null)
                 i++;
             else
-                Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4Array2474 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class40_Sub6.aClass1_2114, Class66.blank_string);
+                Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4Array2474 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Class40_Sub6.aClass1_2114, Class66.blank_string);
             if(FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 == null)
-                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class40_Sub11.aClass1_2161, Class66.blank_string);
+                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Class40_Sub11.aClass1_2161, Class66.blank_string);
             else
                 i++;
             if(Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 != null)
                 i++;
             else
-                Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class22_Sub1.aClass1_1861, Class66.blank_string);
+                Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Class22_Sub1.aClass1_1861, Class66.blank_string);
             if(Class40_Sub5_Sub9.aClass40_Sub5_Sub14_Sub4Array2567 == null)
-                Class40_Sub5_Sub9.aClass40_Sub5_Sub14_Sub4Array2567 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class52.aClass1_1230, Class66.blank_string);
+                Class40_Sub5_Sub9.aClass40_Sub5_Sub14_Sub4Array2567 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Class52.aClass1_1230, Class66.blank_string);
             else
                 i++;
             if(Class45.aClass40_Sub5_Sub14_Sub4_1057 == null)
-                Class45.aClass40_Sub5_Sub14_Sub4_1057 = Class66.method1028(NpcDefinition.aClass6_Sub1_2377, Class40_Sub6.aClass1_2109, (byte) 21, Class66.blank_string);
+                Class45.aClass40_Sub5_Sub14_Sub4_1057 = Class66.method1028(ActorDefinition.aClass6_Sub1_2377, Class40_Sub6.aClass1_2109, (byte) 21, Class66.blank_string);
             else
                 i++;
             if(aClass40_Sub5_Sub14_Sub4Array2019 == null)
-                aClass40_Sub5_Sub14_Sub4Array2019 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class5.aClass1_203, Class66.blank_string);
+                aClass40_Sub5_Sub14_Sub4Array2019 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Class5.aClass1_203, Class66.blank_string);
             else
                 i++;
             if(Class37.aClass40_Sub5_Sub14_Sub4Array878 != null)
                 i++;
             else
-                Class37.aClass40_Sub5_Sub14_Sub4Array878 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class40_Sub13.aClass1_2179, Class66.blank_string);
+                Class37.aClass40_Sub5_Sub14_Sub4Array878 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Class40_Sub13.aClass1_2179, Class66.blank_string);
             if(Class27.aClass40_Sub5_Sub14_Sub4Array649 == null)
-                Class27.aClass40_Sub5_Sub14_Sub4Array649 = Class40_Sub2.method526((NpcDefinition.aClass6_Sub1_2377), 0, Class4.aClass1_183, Class66.blank_string);
+                Class27.aClass40_Sub5_Sub14_Sub4Array649 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Class4.aClass1_183, Class66.blank_string);
             else
                 i++;
             if(Class6.aClass40_Sub5_Sub14_Sub2Array215 == null)
-                Class6.aClass40_Sub5_Sub14_Sub2Array215 = Class40_Sub5_Sub2.method550((NpcDefinition.aClass6_Sub1_2377), (byte) -125, RSString.aClass1_1677, Class66.blank_string);
+                Class6.aClass40_Sub5_Sub14_Sub2Array215 = Class40_Sub5_Sub2.method550((ActorDefinition.aClass6_Sub1_2377), (byte) -125, RSString.aClass1_1677, Class66.blank_string);
             else
                 i++;
             if(Class40_Sub5_Sub13.moderatorIcon != null)
                 i++;
             else
-                Class40_Sub5_Sub13.moderatorIcon = Class40_Sub5_Sub2.method550((NpcDefinition.aClass6_Sub1_2377), (byte) -55, Class38.aClass1_881, Class66.blank_string);
+                Class40_Sub5_Sub13.moderatorIcon = Class40_Sub5_Sub2.method550((ActorDefinition.aClass6_Sub1_2377), (byte) -55, Class38.aClass1_881, Class66.blank_string);
             if((i ^ 0xffffffff) > -15) {
                 Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(arg0 + -139, new RSString[]{Class17.aClass1_452, HashTable.method334(100 * i / 14, -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 70;
@@ -247,8 +247,8 @@ public class Class40_Sub3 extends Node {
                 Class40_Sub5_Sub6.anInt2451 = 85;
             }
         } else if((Class40_Sub5_Sub6.anInt2451 ^ 0xffffffff) == -86) {
-            int i = Class54.method955(NpcDefinition.aClass6_Sub1_2377, (byte) -59);
-            int i_9_ = NpcDefinition.method576(false);
+            int i = Class54.method955(ActorDefinition.aClass6_Sub1_2377, (byte) -59);
+            int i_9_ = ActorDefinition.method576(false);
             if(i < i_9_) {
                 Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(97, new RSString[]{Class27.aClass1_668, HashTable.method334(i * 100 / i_9_, -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 80;
@@ -262,7 +262,7 @@ public class Class40_Sub3 extends Node {
                 Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(85, new RSString[]{Class40_Sub5_Sub2.aClass1_2294, HashTable.method334(Class32.aClass6_Sub1_773.method202(false), -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 90;
             } else {
-                Class35 class35 = new Class35(Class32.aClass6_Sub1_773, NpcDefinition.aClass6_Sub1_2377, 20, 0.8, !VertexNormal.lowMemory ? 128 : 64);
+                Class35 class35 = new Class35(Class32.aClass6_Sub1_773, ActorDefinition.aClass6_Sub1_2377, 20, 0.8, !VertexNormal.lowMemory ? 128 : 64);
                 R3D.method703(class35);
                 R3D.method711(0.8);
                 Class40_Sub5_Sub6.anInt2451 = 110;

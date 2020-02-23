@@ -6,14 +6,14 @@ import com.jagex.runescape.media.renderable.Model;
 
 public class GameObjectDefinition extends SubNode {
     public static Class68 aClass68_2524;
-    public static RSString aClass1_2526 = Class58.method978("(Udns");
+    public static RSString aClass1_2526 = RSString.CreateString("(Udns");
     public static int anInt2543 = 0;
     public static HashTable aClass23_2545 = new HashTable(4096);
-    public static RSString aClass1_2556 = Class58.method978("blaugr-Un:");
+    public static RSString aClass1_2556 = RSString.CreateString("blaugr-Un:");
     public static int chatboxScroll = 0;
     public static int anInt2558 = 0;
     public static int anInt2559 = 0;
-    public static RSString aClass1_2560 = Class58.method978(": ");
+    public static RSString aClass1_2560 = RSString.CreateString(": ");
     public static long aLong2561 = 0L;
 
     public int anInt2499;
@@ -349,7 +349,7 @@ public class GameObjectDefinition extends SubNode {
         }
         if(recolorToFind != null) {
             for(int i = 0; i < recolorToFind.length; i++) {
-                class40_sub5_sub17_sub5_12_.method803(recolorToFind[i], recolorToReplace[i]);
+                class40_sub5_sub17_sub5_12_.replaceColor(recolorToFind[i], recolorToReplace[i]);
             }
         }
         int i = -128 % ((53 - arg1) / 35);

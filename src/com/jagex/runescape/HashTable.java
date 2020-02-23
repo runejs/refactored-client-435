@@ -9,13 +9,13 @@ import com.jagex.runescape.media.renderable.actor.Player;
 
 public class HashTable {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_549;
-    public static RSString aClass1_553 = Class58.method978("l");
+    public static RSString aClass1_553 = RSString.CreateString("l");
     public static int anInt554 = 0;
-    public static RSString aClass1_558 = Class58.method978("Ung-Ultige Session)2ID)3");
-    public static RSString aClass1_563 = (Class58.method978("und die Schaltfl-=che (WSpielkonto erstellen(W am"));
+    public static RSString aClass1_558 = RSString.CreateString("Ung-Ultige Session)2ID)3");
+    public static RSString aClass1_563 = (RSString.CreateString("und die Schaltfl-=che (WSpielkonto erstellen(W am"));
     public static int anInt564;
     public static boolean aBoolean565 = false;
-    public static RSString aClass1_569 = Class58.method978(" (X");
+    public static RSString aClass1_569 = RSString.CreateString(" (X");
     public static boolean aBoolean571;
     public static int anInt573 = -1;
     public long aLong550;
@@ -116,7 +116,7 @@ public class HashTable {
                             if(i != Class30.anInt708)
                                 class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i]);
                             else
-                                class40_sub5_sub17_sub4_sub1 = (Class40_Sub5_Sub13.localPlayer);
+                                class40_sub5_sub17_sub4_sub1 = (Player.localPlayer);
                             if(class40_sub5_sub17_sub4_sub1 != null && (class40_sub5_sub17_sub4_sub1.anInt3098 >= 0) && (class40_sub5_sub17_sub4_sub1.anInt3098 < 13312) && (class40_sub5_sub17_sub4_sub1.anInt3089 >= 0) && (class40_sub5_sub17_sub4_sub1.anInt3089 < 13312))
                                 class40_sub5_sub17_sub1.method766(Node.anInt926, 0, (class40_sub5_sub17_sub4_sub1.anInt3089), ((Class37.method430((byte) -127, class40_sub5_sub17_sub1.anInt2981, (class40_sub5_sub17_sub4_sub1.anInt3098), (class40_sub5_sub17_sub4_sub1.anInt3089))) - class40_sub5_sub17_sub1.anInt2960), (class40_sub5_sub17_sub4_sub1.anInt3098));
                         }

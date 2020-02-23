@@ -13,12 +13,12 @@ public abstract class Actor extends Renderable {
     public static int anInt3076;
     public static int anInt3084;
     public static int anInt3085;
-    public static RSString aClass1_3092 = Class58.method978("Loaded textures");
+    public static RSString aClass1_3092 = RSString.CreateString("Loaded textures");
     public static int anInt3103;
     public static int anInt3106;
     public static int anInt3108;
     public static int[] anIntArray3111;
-    public static RSString aClass1_3114 = Class58.method978("Login limit exceeded)3");
+    public static RSString aClass1_3114 = RSString.CreateString("Login limit exceeded)3");
     public static BigInteger rsaModulus;
     public static int anInt3121;
     public static RSString aClass1_3124 = aClass1_3092;
@@ -48,11 +48,11 @@ public abstract class Actor extends Renderable {
         anInt3151 = -16 + (int) (Math.random() * 33.0);
         aClass40_Sub5_Sub17_Sub4_Sub1Array3156 = new Player[2048];
         anInt3153 = 0;
-        aClass1_3154 = Class58.method978("Lade Schrifts-=tze )2 ");
-        aClass1_3155 = Class58.method978("Please wait )2 attempting to reestablish");
+        aClass1_3154 = RSString.CreateString("Lade Schrifts-=tze )2 ");
+        aClass1_3155 = RSString.CreateString("Please wait )2 attempting to reestablish");
         aClass1_3159 = aClass1_3155;
         anIntArray3149 = new int[1000];
-        aClass1_3158 = Class58.method978("Registrierter Benutzer");
+        aClass1_3158 = RSString.CreateString("Registrierter Benutzer");
         chatMessages = new RSString[100];
     }
 
@@ -315,15 +315,15 @@ public abstract class Actor extends Renderable {
                 Class24.anIntArray578[anInt3153++] = 2047;
             else if((i_21_ ^ 0xffffffff) == -2) {
                 int i_22_ = Cache.outgoingbuffer.putBits(3, (byte) -65);
-                Class40_Sub5_Sub13.localPlayer.method782(i_22_, (byte) -96, false);
+                Player.localPlayer.method782(i_22_, (byte) -96, false);
                 int i_23_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
                 if((i_23_ ^ 0xffffffff) == -2)
                     Class24.anIntArray578[anInt3153++] = 2047;
             } else if(i_21_ == 2) {
                 int i_24_ = Cache.outgoingbuffer.putBits(3, (byte) -65);
-                Class40_Sub5_Sub13.localPlayer.method782(i_24_, (byte) -96, true);
+                Player.localPlayer.method782(i_24_, (byte) -96, true);
                 int i_25_ = Cache.outgoingbuffer.putBits(3, (byte) -65);
-                Class40_Sub5_Sub13.localPlayer.method782(i_25_, (byte) -96, true);
+                Player.localPlayer.method782(i_25_, (byte) -96, true);
                 int i_26_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
                 if((i_26_ ^ 0xffffffff) == -2)
                     Class24.anIntArray578[anInt3153++] = 2047;
@@ -335,7 +335,7 @@ public abstract class Actor extends Renderable {
                     Class24.anIntArray578[anInt3153++] = 2047;
                 int i_29_ = Cache.outgoingbuffer.putBits(7, (byte) -65);
                 int i_30_ = Cache.outgoingbuffer.putBits(7, (byte) -65);
-                Class40_Sub5_Sub13.localPlayer.method787(i_30_, -7717, (i_27_ ^ 0xffffffff) == -2, i_29_);
+                Player.localPlayer.method787(i_30_, -7717, (i_27_ ^ 0xffffffff) == -2, i_29_);
             } else if(arg0 != true)
                 method781(-5, -11, -11, 113, 49, 123);
         }
@@ -409,7 +409,7 @@ public abstract class Actor extends Renderable {
             }
             Player.anInt3267 = arg5;
             int i_40_ = 0;
-            Class40_Sub5_Sub13.localPlayer.method787(arg4, -7717, false, arg0);
+            Player.localPlayer.method787(arg4, -7717, false, arg0);
             int i_41_ = 104;
             int i_42_ = 1;
             if((i_34_ ^ 0xffffffff) > -1) {
@@ -502,13 +502,8 @@ public abstract class Actor extends Renderable {
 
     }
 
-    public boolean method784(int arg0) {
-
-        anInt3108++;
-        if(arg0 != 1)
-            method783(-80);
+    public boolean isVisible(int arg0) {
         return false;
-
     }
 
     public void method785(int arg0, int arg1, int arg2, int arg3) {

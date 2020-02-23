@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -11,16 +11,16 @@ import java.awt.*;
 public class Class5 {
     public static Class22 aClass22_189;
     public static int[] anIntArray191 = new int[100];
-    public static RSString aClass1_193 = Class58.method978("Please contact customer support)3");
+    public static RSString aClass1_193 = RSString.CreateString("Please contact customer support)3");
     public static int anInt194;
     public static int anInt195 = 1;
-    public static RSString aClass1_196 = Class58.method978("backvmid3");
+    public static RSString aClass1_196 = RSString.CreateString("backvmid3");
     public static int[] anIntArray198;
     public static int anInt199 = 0;
     public static int anInt200 = 127;
-    public static RSString aClass1_203 = Class58.method978("mapmarker");
-    public static RSString aClass1_204 = Class58.method978("red:");
-    public static RSString aClass1_206 = Class58.method978(" )2> @lre@");
+    public static RSString aClass1_203 = RSString.CreateString("mapmarker");
+    public static RSString aClass1_204 = RSString.CreateString("red:");
+    public static RSString aClass1_206 = RSString.CreateString(" )2> @lre@");
     public static int currentTabId = 3;
 
     public static void method162(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, byte[] arg8, CollisionMap[] arg9) {
@@ -59,14 +59,14 @@ public class Class5 {
     }
 
     public static void method164(int arg0) {
-        Renderable.method754(arg0 + 29378, NpcDefinition.anInt2433);
+        Renderable.method754(arg0 + 29378, ActorDefinition.anInt2433);
         if(arg0 != (Class40_Sub5_Sub9.anInt2562 ^ 0xffffffff))
             Renderable.method754(arg0 + 29378, Class40_Sub5_Sub9.anInt2562);
         anInt199 = 0;
         Class68_Sub1.aClass68_2213.method1046((byte) 90);
         Player.anIntArray3284 = R3D.method708(Player.anIntArray3284);
         Rasterizer.method663();
-        Class40_Sub5_Sub6.drawInterface(0, NpcDefinition.anInt2433, 503, (byte) -5, 0, 0, 765);
+        Class40_Sub5_Sub6.drawInterface(0, ActorDefinition.anInt2433, 503, (byte) -5, 0, 0, 765);
         if(Class40_Sub5_Sub9.anInt2562 != -1)
             Class40_Sub5_Sub6.drawInterface(0, Class40_Sub5_Sub9.anInt2562, 503, (byte) -5, 0, 0, 765);
         if(!Class4.menuOpen) {

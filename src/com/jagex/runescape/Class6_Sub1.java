@@ -10,7 +10,7 @@ public class Class6_Sub1 extends Class6 {
     public static int anInt1795;
     public static RSString aClass1_1798;
     public static RSString aClass1_1799;
-    public static RSString aClass1_1801 = Class58.method978("Freunde");
+    public static RSString aClass1_1801 = RSString.CreateString("Freunde");
     public static int anInt1803;
     public static int anInt1804;
     public static int anInt1805;
@@ -26,10 +26,10 @@ public class Class6_Sub1 extends Class6 {
     public static int anInt1819;
 
     static {
-        aClass1_1798 = Class58.method978("blinken1:");
-        aClass1_1814 = Class58.method978("Das ist eine Mitglieder)2Welt(Q");
-        aClass1_1799 = Class58.method978("Offline");
-        aClass1_1816 = Class58.method978(" zuerst von Ihrer Freunde)2Liste(Q");
+        aClass1_1798 = RSString.CreateString("blinken1:");
+        aClass1_1814 = RSString.CreateString("Das ist eine Mitglieder)2Welt(Q");
+        aClass1_1799 = RSString.CreateString("Offline");
+        aClass1_1816 = RSString.CreateString(" zuerst von Ihrer Freunde)2Liste(Q");
         anInt1819 = -1;
         aClass40_Sub5_Sub17_Sub4_Sub2Array1813 = new Npc[32768];
     }

@@ -4,13 +4,14 @@ import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class4 {
     public static boolean menuOpen;
     public static volatile long aLong174 = 0L;
     public static int anInt175;
     public static RSString aClass1_176;
-    public static RSString cmd_hiddenbuttontest = Class58.method978("::hiddenbuttontest");
+    public static RSString cmd_hiddenbuttontest = RSString.CreateString("::hiddenbuttontest");
     public static int[] anIntArray178;
     public static RSApplet anApplet_Sub1_179;
     public static RSString aClass1_180;
@@ -26,9 +27,9 @@ public class Class4 {
     static {
         menuOpen = false;
         anInt175 = 0;
-        aClass1_181 = Class58.method978("Einloggen");
-        aClass1_183 = Class58.method978("mapdots");
-        aClass1_176 = Class58.method978("wishes to trade with you)3");
+        aClass1_181 = RSString.CreateString("Einloggen");
+        aClass1_183 = RSString.CreateString("mapdots");
+        aClass1_176 = RSString.CreateString("wishes to trade with you)3");
         anInt182 = 0;
         aClass1_180 = aClass1_176;
         anApplet_Sub1_179 = null;
@@ -95,8 +96,8 @@ public class Class4 {
                         int i_11_ = 128 * (Class38_Sub1.anIntArray1916[i] & 0xff);
                         int i_12_ = (0xff & Class38_Sub1.anIntArray1916[i] >> 854878096);
                         int i_13_ = ((Class38_Sub1.anIntArray1916[i] & 0xffb8) >> 1161269672);
-                        int i_14_ = (i_13_ * 128 + 64 + -(Class40_Sub5_Sub13.localPlayer.anInt3089));
-                        int i_15_ = (i_12_ * 128 + (64 - (Class40_Sub5_Sub13.localPlayer.anInt3098)));
+                        int i_14_ = (i_13_ * 128 + 64 + -(Player.localPlayer.anInt3089));
+                        int i_15_ = (i_12_ * 128 + (64 - (Player.localPlayer.anInt3098)));
                         if(i_15_ < 0)
                             i_15_ = -i_15_;
                         if((i_14_ ^ 0xffffffff) > -1)

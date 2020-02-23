@@ -1,8 +1,9 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.media.renderable.actor.Player;
 
 import java.util.Date;
 
@@ -13,7 +14,7 @@ public class Class43 {
     public static int anInt1018;
     public static RSString aClass1_1019;
     public static int cameraYawOffset = 0;
-    public static RSString aClass1_1021 = Class58.method978("flash1:");
+    public static RSString aClass1_1021 = RSString.CreateString("flash1:");
     public static Class45 aClass45_1022;
     public static int anInt1023;
     public static RSString aClass1_1024;
@@ -25,11 +26,11 @@ public class Class43 {
     static {
         aClass1_1019 = aClass1_1021;
         aClass45_1022 = new Class45();
-        aClass1_1024 = Class58.method978("backleft2");
-        aClass1_1027 = Class58.method978(":");
+        aClass1_1024 = RSString.CreateString("backleft2");
+        aClass1_1027 = RSString.CreateString(":");
         anInt1025 = 0;
         openChatboxWidgetId = -1;
-        aClass1_1026 = Class58.method978("Schlie-8en");
+        aClass1_1026 = RSString.CreateString("Schlie-8en");
     }
 
     public static void method890(long arg0, int arg1) {
@@ -606,7 +607,7 @@ public class Class43 {
                                                 i_1_ -= 2;
                                                 RSString class1 = (Class40_Sub11.aClass1Array2153[i_1_]);
                                                 RSString class1_82_ = (Class40_Sub11.aClass1Array2153[i_1_ + 1]);
-                                                if((Class40_Sub5_Sub13.localPlayer.aClass30_3282) == null || !(Class40_Sub5_Sub13.localPlayer.aClass30_3282.aBoolean683))
+                                                if((Player.localPlayer.aClass30_3282) == null || !(Player.localPlayer.aClass30_3282.aBoolean683))
                                                     Class40_Sub11.aClass1Array2153[i_1_++] = class1;
                                                 else
                                                     Class40_Sub11.aClass1Array2153[i_1_++] = class1_82_;
@@ -627,7 +628,7 @@ public class Class43 {
                                         if(i_3_ != 3101)
                                             break;
                                         i -= 2;
-                                        NpcDefinition.method570(Class67.anIntArray1588[i], (Class67.anIntArray1588[i + 1]), (Class40_Sub5_Sub13.localPlayer), -1);
+                                        ActorDefinition.method570(Class67.anIntArray1588[i], (Class67.anIntArray1588[i + 1]), (Player.localPlayer), -1);
                                     }
                                 }
                             } else {
@@ -753,7 +754,7 @@ public class Class43 {
                         class40_sub5_sub12.anInt2673 = Class67.anIntArray1588[--i];
                     } else if(i_3_ == 1202) {
                         class40_sub5_sub12.anInt2687 = 3;
-                        class40_sub5_sub12.anInt2673 = Class40_Sub5_Sub13.localPlayer.aClass30_3282.method374(-20874);
+                        class40_sub5_sub12.anInt2673 = Player.localPlayer.aClass30_3282.method374(-20874);
                     } else {
                         if(i_3_ != 1203)
                             break;
@@ -811,11 +812,11 @@ public class Class43 {
         if((SceneTile.activeInterfaceType ^ 0xffffffff) == -1) {
             Landscape.aClass1Array1184[0] = Class68.aClass1_1635;
             Class38.anIntArray884[0] = 1005;
-            NpcDefinition.anInt2394 = 1;
-            if((NpcDefinition.anInt2433 ^ 0xffffffff) != 0) {
+            ActorDefinition.anInt2394 = 1;
+            if((ActorDefinition.anInt2433 ^ 0xffffffff) != 0) {
                 Class40_Sub5_Sub17_Sub3.anInt3065 = -1;
                 Floor.anInt2328 = -1;
-                Class13.method243((byte) 89, 0, 765, 503, NpcDefinition.anInt2433, 0, Class13.mouseX, Landscape.mouseY, 0);
+                Class13.method243((byte) 89, 0, 765, 503, ActorDefinition.anInt2433, 0, Class13.mouseX, Landscape.mouseY, 0);
                 ItemDefinition.anInt2850 = Floor.anInt2328;
                 HashTable.anInt573 = Class40_Sub5_Sub17_Sub3.anInt3065;
             } else {
@@ -869,7 +870,7 @@ public class Class43 {
                 }
                 while(!bool) {
                     bool = true;
-                    for(int i = 0; -1 + NpcDefinition.anInt2394 > i; i++) {
+                    for(int i = 0; -1 + ActorDefinition.anInt2394 > i; i++) {
                         if(Class38.anIntArray884[i] < 1000 && ((Class38.anIntArray884[1 + i] ^ 0xffffffff) < -1001)) {
                             bool = false;
                             RSString class1 = Landscape.aClass1Array1184[i];

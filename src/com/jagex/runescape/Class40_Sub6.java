@@ -27,17 +27,17 @@ public class Class40_Sub6 extends Node {
     public static RSString aClass1_2121;
 
     static {
-        aClass1_2101 = Class58.method978("p11_full");
+        aClass1_2101 = RSString.CreateString("p11_full");
         anInt2107 = 0;
         anIntArray2113 = new int[128];
-        aClass1_2109 = Class58.method978("overlay_multiway");
+        aClass1_2109 = RSString.CreateString("overlay_multiway");
         tile_height = new int[4][105][105];
-        aClass1_2114 = Class58.method978("hitmarks");
-        aClass1_2103 = (Class58.method978("No matching objects found)1 please shorten search"));
+        aClass1_2114 = RSString.CreateString("hitmarks");
+        aClass1_2103 = (RSString.CreateString("No matching objects found)1 please shorten search"));
         aClass1_2097 = aClass1_2103;
         anInt2118 = 0;
         onBuildTimePlane = 0;
-        aClass1_2121 = (Class58.method978("Press (Wchange your password(W on front page)3"));
+        aClass1_2121 = (RSString.CreateString("Press (Wchange your password(W on front page)3"));
         aClass1_2111 = aClass1_2121;
     }
 

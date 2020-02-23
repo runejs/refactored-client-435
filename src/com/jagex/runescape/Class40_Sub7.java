@@ -9,10 +9,10 @@ public class Class40_Sub7 extends Node {
     public static Class68 aClass68_2123;
     public static RSString aClass1_2125;
     public static int anInt2126;
-    public static RSString aClass1_2127 = Class58.method978("Loading interfaces )2 ");
-    public static RSString aClass1_2128 = Class58.method978("Fertigkeit)2");
-    public static RSString aClass1_2129 = Class58.method978("Mem:");
-    public static RSString aClass1_2130 = Class58.method978("Loaded update list");
+    public static RSString aClass1_2127 = RSString.CreateString("Loading interfaces )2 ");
+    public static RSString aClass1_2128 = RSString.CreateString("Fertigkeit)2");
+    public static RSString aClass1_2129 = RSString.CreateString("Mem:");
+    public static RSString aClass1_2130 = RSString.CreateString("Loaded update list");
     public static int[] anIntArray2131;
     public static RSString aClass1_2132;
 

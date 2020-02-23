@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.IdentityKit;
@@ -15,7 +16,7 @@ import java.lang.reflect.Method;
 public class Class40_Sub5_Sub12 extends SubNode {
     public static int anInt2634;
     public static int anInt2635;
-    public static RSString aClass1_2637 = Class58.method978("glow2:");
+    public static RSString aClass1_2637 = RSString.CreateString("glow2:");
     public static int anInt2638;
     public static int anInt2646;
     public static int anInt2652;
@@ -31,7 +32,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public static int anInt2697;
     public static int anInt2700;
     public static int anInt2705;
-    public static RSString aClass1_2706 = Class58.method978("Choose Option");
+    public static RSString aClass1_2706 = RSString.CreateString("Choose Option");
     public static RSString aClass1_2716;
     public static int anInt2717;
     public static int anInt2724;
@@ -42,15 +43,15 @@ public class Class40_Sub5_Sub12 extends SubNode {
     public static int packetsize;
 
     static {
-        aClass1_2678 = Class58.method978("Enter name of friend to add to list");
-        goldCrown = Class58.method978("@cr2@");
+        aClass1_2678 = RSString.CreateString("Enter name of friend to add to list");
+        goldCrown = RSString.CreateString("@cr2@");
         aClass1_2684 = aClass1_2706;
-        cmd_errortest = Class58.method978("::errortest");
-        aClass1_2716 = Class58.method978("Fehler beim Laden Ihres Charakter)2Profils");
+        cmd_errortest = RSString.CreateString("::errortest");
+        aClass1_2716 = RSString.CreateString("Fehler beim Laden Ihres Charakter)2Profils");
         aClass1_2671 = aClass1_2637;
         packetsize = 0;
         aClass1_2740 = aClass1_2678;
-        aClass1_2686 = Class58.method978("Starting game engine)3)3)3");
+        aClass1_2686 = RSString.CreateString("Starting game engine)3)3)3");
         aClass1_2674 = aClass1_2686;
     }
 
@@ -650,7 +651,7 @@ public class Class40_Sub5_Sub12 extends SubNode {
                 class40_sub5_sub17_sub5.method802(64, 768, -50, -10, -50, true);
             }
             if((i ^ 0xffffffff) == -3) {
-                class40_sub5_sub17_sub5 = Landscape.method932((byte) -101, i_11_).method575((byte) 122);
+                class40_sub5_sub17_sub5 = ActorDefinition.getDefinition((byte) -101, i_11_).getHeadModel((byte) 122);
                 if(class40_sub5_sub17_sub5 == null) {
                     Class40_Sub13.aBoolean2177 = true;
                     return null;

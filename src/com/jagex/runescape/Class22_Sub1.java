@@ -21,7 +21,7 @@ public class Class22_Sub1 extends Class22 {
     public static RSString aClass1_1845;
     public static int[] anIntArray1846;
     public static int[] anIntArray1847;
-    public static RSString aClass1_1848 = Class58.method978("This computers address has been blocked");
+    public static RSString aClass1_1848 = RSString.CreateString("This computers address has been blocked");
     public static RSString aClass1_1849;
     public static int anInt1850;
     public static RSString aClass1_1851 = aClass1_1848;
@@ -45,21 +45,21 @@ public class Class22_Sub1 extends Class22 {
     public static RSString aClass1_1873;
 
     static {
-        aClass1_1845 = Class58.method978("Enter your username (V password)3");
-        aClass1_1849 = Class58.method978("welle:");
+        aClass1_1845 = RSString.CreateString("Enter your username (V password)3");
+        aClass1_1849 = RSString.CreateString("welle:");
         aClass1_1857 = aClass1_1845;
-        aClass1_1867 = Class58.method978("Loaded interfaces");
-        aClass1_1838 = Class58.method978("T");
-        aClass1_1863 = Class58.method978("Please wait 5 minutes before trying again)3");
-        aClass1_1861 = Class58.method978("headicons_prayer");
+        aClass1_1867 = RSString.CreateString("Loaded interfaces");
+        aClass1_1838 = RSString.CreateString("T");
+        aClass1_1863 = RSString.CreateString("Please wait 5 minutes before trying again)3");
+        aClass1_1861 = RSString.CreateString("headicons_prayer");
         anIntArray1846 = new int[5];
-        aClass1_1868 = Class58.method978("Report abuse");
+        aClass1_1868 = RSString.CreateString("Report abuse");
         aClass1_1858 = aClass1_1867;
         aClass1_1870 = aClass1_1863;
         aClass1_1865 = aClass1_1868;
-        aClass1_1873 = Class58.method978("Password: ");
+        aClass1_1873 = RSString.CreateString("Password: ");
         aClass1_1864 = aClass1_1873;
-        aClass1_1871 = Class58.method978("Verbindung abgebrochen)3");
+        aClass1_1871 = RSString.CreateString("Verbindung abgebrochen)3");
         anIntArray1847 = new int[2000];
     }
 

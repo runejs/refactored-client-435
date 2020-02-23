@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -15,7 +15,7 @@ public class SubNode extends Node {
     public static int[] anIntArray2086;
     public static int anInt2088;
     public static int anInt2089;
-    public static RSString aClass1_2090 = Class58.method978("(U5");
+    public static RSString aClass1_2090 = RSString.CreateString("(U5");
     public static Class68 aClass68_2091;
     public static int anInt2092;
     public static RSString aClass1_2093;
@@ -25,9 +25,9 @@ public class SubNode extends Node {
 
     static {
         aBoolean2083 = false;
-        aClass1_2084 = Class58.method978(")1");
-        aClass1_2093 = Class58.method978("redstone1");
-        aClass1_2095 = Class58.method978("Fallen lassen");
+        aClass1_2084 = RSString.CreateString(")1");
+        aClass1_2093 = RSString.CreateString("redstone1");
+        aClass1_2095 = RSString.CreateString("Fallen lassen");
     }
 
     public SubNode aClass40_Sub5_2082;
@@ -44,7 +44,7 @@ public class SubNode extends Node {
         class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[0];
         class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
         class40_sub5_sub14_sub2.imgPixels = Class58.aByteArrayArray1370[arg0];
-        NpcDefinition.method569();
+        ActorDefinition.method569();
         return class40_sub5_sub14_sub2;
     }
 

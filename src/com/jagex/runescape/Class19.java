@@ -6,13 +6,13 @@ public class Class19 {
     public static int anInt467;
     public static Cache aClass9_470 = new Cache(10);
     public static int anInt475;
-    public static RSString aClass1_478 = Class58.method978("(Z");
+    public static RSString aClass1_478 = RSString.CreateString("(Z");
     public static Class68 aClass68_482;
     public static int[] anIntArray483 = new int[500];
     public static Class27 aClass27_485 = new Class27();
     public static int anInt487 = 0;
     public static Class6 aClass6_488;
-    public static RSString aClass1_489 = Class58.method978("Public chat");
+    public static RSString aClass1_489 = RSString.CreateString("Public chat");
     public static boolean aBoolean490 = false;
     public static byte[][][] aByteArrayArrayArray492;
     public static int anInt493 = 0;
@@ -21,7 +21,7 @@ public class Class19 {
     public static boolean showFps = false;
 
     static {
-        aClass1_494 = Class58.method978("@gr3@");
+        aClass1_494 = RSString.CreateString("@gr3@");
     }
 
     public int anInt468;

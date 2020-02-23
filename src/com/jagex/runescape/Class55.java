@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -17,13 +17,13 @@ public class Class55 {
     public static Class6_Sub1 aClass6_Sub1_1286;
     public static int anInt1288 = 0;
     public static Class48 aClass48_1289;
-    public static RSString aClass1_1291 = Class58.method978("slide:");
-    public static RSString aClass1_1292 = Class58.method978("bevor Sie den Vorgang wiederholen)3");
+    public static RSString aClass1_1291 = RSString.CreateString("slide:");
+    public static RSString aClass1_1292 = RSString.CreateString("bevor Sie den Vorgang wiederholen)3");
     public static volatile int anInt1295 = 0;
     public static int anInt1296 = -1;
-    public static RSString aClass1_1298 = Class58.method978("Invalid loginserver requested)3");
+    public static RSString aClass1_1298 = RSString.CreateString("Invalid loginserver requested)3");
     public static int anInt1299 = 2301979;
-    public static RSString aClass1_1300 = Class58.method978("(U4");
+    public static RSString aClass1_1300 = RSString.CreateString("(U4");
     public static int anInt1304 = 0;
 
     public static void method958(int arg0, int arg1) {
@@ -110,13 +110,13 @@ public class Class55 {
         Class51.aClass1_1196 = Class40_Sub5_Sub2.aClass1_2311;
         Class64.aClass1_1526 = VertexNormal.aClass1_1109;
         Node.aClass1_929 = Class27.aClass1_652;
-        Class40_Sub5_Sub11.aClass1_2622 = NpcDefinition.aClass1_2417;
+        Class40_Sub5_Sub11.aClass1_2622 = ActorDefinition.aClass1_2417;
         Class40_Sub5_Sub17_Sub3.aClass1_3066 = Class40_Sub5_Sub17_Sub6.aClass1_3247;
-        Class59.string_Hidden = NpcDefinition.aClass1_2417;
+        Class59.string_Hidden = ActorDefinition.aClass1_2417;
         Class68.aClass1_1635 = Class65.aClass1_1530;
         Node.aClass1_966 = Class67.aClass1_1613;
         Class19.aClass1_495 = Class60.aClass1_1401;
-        NpcDefinition.aClass1_2396 = Class34.aClass1_850;
+        ActorDefinition.aClass1_2396 = Class34.aClass1_850;
         SceneTile.aClass1_2054 = Class37.aClass1_860;
         Node.aClass1_958 = Class64.aClass1_1523;
         RSCanvas.aClass1_51 = Class40_Sub5_Sub7.aClass1_2487;
@@ -158,7 +158,7 @@ public class Class55 {
         Class40_Sub5_Sub9.aClass1_2577 = Class48.aClass1_1137;
         Renderable.aClass1_2864 = Class6_Sub1.aClass1_1816;
         Class68_Sub1.aClass1_2209 = RSString.aClass1_1702;
-        NpcDefinition.aClass1_2384 = Class53.aClass1_1269;
+        ActorDefinition.aClass1_2384 = Class53.aClass1_1269;
         Class22.aClass1_532 = Class57.aClass1_1340;
         Class67.aClass1_1598 = Class37.aClass1_867;
         Npc.aClass1_3305 = Class22_Sub1.aClass1_1871;
@@ -184,7 +184,7 @@ public class Class55 {
         Buffer.aClass1_1983 = Floor.aClass1_2315;
         Landscape.aClass1_1173 = Class64.aClass1_1502;
         SceneTile.aClass1_2053 = Renderable.aClass1_2871;
-        Class40_Sub5_Sub2.aClass1_2286 = Class39.aClass1_914;
+        Class40_Sub5_Sub2.str_prefix_level = Class39.aClass1_914;
         SceneTile.aClass1_2050 = Class37.aClass1_860;
         Node.aClass1_969 = Class64.aClass1_1523;
         Node.aClass1_934 = Class64.aClass1_1523;
@@ -213,7 +213,7 @@ public class Class55 {
         Node.aClass1_972 = Class37.aClass1_860;
         Class26.aClass1_619 = Class40_Sub7.aClass1_2128;
         Class27.aClass1_668 = Class40_Sub2.aClass1_1995;
-        NpcDefinition.aClass1_2432 = Class40_Sub5_Sub4.aClass1_2354;
+        ActorDefinition.aClass1_2432 = Class40_Sub5_Sub4.aClass1_2354;
         Class40_Sub5_Sub11.aClass1_2629 = ISAAC.aClass1_523;
         SceneTile.aClass1_2042 = Class53.aClass1_1263;
         Node.aClass1_974 = Cache.aClass1_325;
@@ -252,7 +252,7 @@ public class Class55 {
         Class61.aClass1_1428 = SceneTile.aClass1_2051;
         Class40_Sub5_Sub12.aClass1_2674 = Class33.aClass1_797;
         Class30.aClass1_682 = PacketBuffer.aClass1_2245;
-        NpcDefinition.aClass1_2410 = RSApplet.aClass1_21;
+        ActorDefinition.aClass1_2410 = RSApplet.aClass1_21;
         Class40_Sub5_Sub9.aClass1_2566 = FloorDecoration.aClass1_609;
         Node.aClass1_944 = Class64.aClass1_1523;
         PacketBuffer.aClass1_2240 = Class49.aClass1_1153;
@@ -262,10 +262,10 @@ public class Class55 {
         Class62.aClass1_1474 = Class8.aClass1_300;
         Node.aClass1_937 = Class64.aClass1_1523;
         VertexNormal.aClass1_1090 = Class43.aClass1_1026;
-        NpcDefinition.aClass1_2401 = RSApplet.aClass1_21;
+        ActorDefinition.aClass1_2401 = RSApplet.aClass1_21;
         Node.aClass1_967 = Class10.aClass1_343;
         Class65.aClass1_1538 = GameObject.aClass1_3043;
-        NpcDefinition.aClass1_2392 = SceneTile.aClass1_2044;
+        ActorDefinition.aClass1_2392 = SceneTile.aClass1_2044;
         VertexNormal.aClass1_1097 = Class22_Sub1.aClass1_1849;
         Class40_Sub6.aClass1_2097 = Class40_Sub5_Sub7.aClass1_2481;
         Class67.aClass1_1585 = Class61.aClass1_1426;

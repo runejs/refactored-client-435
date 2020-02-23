@@ -11,71 +11,50 @@ import com.jagex.runescape.util.Signlink;
 
 import java.awt.*;
 
-public class NpcDefinition extends SubNode {
+public class ActorDefinition extends SubNode {
     public static Class6_Sub1 aClass6_Sub1_2377;
-    public static RSString aClass1_2384 = (Class58.method978("Moderator option: Mute player for 48 hours: <ON>"));
+    public static RSString aClass1_2384 = (RSString.CreateString("Moderator option: Mute player for 48 hours: <ON>"));
     public static int[] anIntArray2386;
-    public static RSString aClass1_2392 = Class58.method978("Loaded fonts");
+    public static RSString aClass1_2392 = RSString.CreateString("Loaded fonts");
     public static int anInt2394 = 0;
-    public static RSString aClass1_2396 = Class58.method978("Checking for updates )2 ");
-    public static RSString aClass1_2401 = Class58.method978("Please wait 1 minute and try again)3");
+    public static RSString aClass1_2396 = RSString.CreateString("Checking for updates )2 ");
+    public static RSString aClass1_2401 = RSString.CreateString("Please wait 1 minute and try again)3");
     public static int anInt2404 = 0;
-    public static RSString aClass1_2410 = Class58.method978("Please wait 1 minute and try again)3");
+    public static RSString aClass1_2410 = RSString.CreateString("Please wait 1 minute and try again)3");
     public static byte[] aByteArray2416 = new byte[520];
-    public static RSString aClass1_2417 = Class58.method978("Versteckt");
-    public static RSString aClass1_2423 = Class58.method978("(X100(U(Y");
-    public static RSString aClass1_2432 = Class58.method978("Unexpected server response");
+    public static RSString aClass1_2417 = RSString.CreateString("Versteckt");
+    public static RSString aClass1_2423 = RSString.CreateString("(X100(U(Y");
+    public static RSString aClass1_2432 = RSString.CreateString("Unexpected server response");
     public static int anInt2433 = -1;
 
     public boolean isClickable = true;
     public int tileSpacesOccupied = 1;
-    public int[] headModels;
+    public int[] headModelIndexes;
     public RSString[] options = new RSString[5];
-    public int headIcon;
+    public int headIcon = -1;
     public int stanceAnimation = -1;
-    public int settingId;
-    public int ambient;
-    public int anInt2389;
-    public int degreesToTurn;
-    public int combatLevel;
-    public int[] recolorToFind;
-    public boolean hasRenderPriority;
-    public RSString name;
+    public int settingId = -1;
+    public int ambient = 0;
+    public int anInt2389 = -1;
+    public int degreesToTurn = 32;
+    public int combatLevel = -1;
+    public int[] originalModelColors;
+    public boolean hasRenderPriority = false;
+    public RSString name = RSString.CreateString("null");
     public int[] models;
-    public int rotate180Animation;
-    public int resizeX;
-    public int contrast;
-    public int varBitId;
-    public int rotate90LeftAnimation;
-    public int resizeY;
-    public int rotate90RightAnimation;
-    public int anInt2421;
-    public int walkAnimation;
+    public int rotate180Animation = -1;
+    public int resizeX = 128;
+    public int contrast = 0;
+    public int varBitId = -1;
+    public int rotate90LeftAnimation = -1;
+    public int resizeY = 128;
+    public int rotate90RightAnimation = -1;
+    public int anInt2421 = -1;
+    public int walkAnimation = -1;
     public int[] childrenIds;
-    public int anInt2427;
-    public int[] recolorToReplace;
-    public boolean renderOnMinimap;
-
-    public NpcDefinition() {
-        headIcon = -1;
-        degreesToTurn = 32;
-        ambient = 0;
-        rotate180Animation = -1;
-        settingId = -1;
-        contrast = 0;
-        resizeX = 128;
-        hasRenderPriority = false;
-        combatLevel = -1;
-        anInt2389 = -1;
-        rotate90LeftAnimation = -1;
-        varBitId = -1;
-        resizeY = 128;
-        walkAnimation = -1;
-        anInt2421 = -1;
-        name = Class35.aClass1_1725;
-        rotate90RightAnimation = -1;
-        renderOnMinimap = true;
-    }
+    public int id;
+    public int[] modifiedModelColors;
+    public boolean renderOnMinimap = true;
 
     public static void method567(int arg0) {
         if(arg0 != 1) {
@@ -241,18 +220,36 @@ public class NpcDefinition extends SubNode {
 
     }
 
+    public static ActorDefinition getDefinition(byte arg0, int arg1) {
+
+        Landscape.anInt1182++;
+        if(arg0 >= -95)
+            Landscape.aClass1_1160 = null;
+        ActorDefinition definition = ((ActorDefinition) ISAAC.aClass9_510.method231((long) arg1, (byte) 119));
+        if(definition != null)
+            return definition;
+        byte[] is = Class58.aClass6_1375.method172(arg1, 113, 9);
+        definition = new ActorDefinition();
+        definition.id = arg1;
+        if(is != null)
+            definition.readValues(new Buffer(is));
+        ISAAC.aClass9_510.method230(-7208, (long) arg1, definition);
+        return definition;
+
+    }
+
     public Model method568(byte arg0, Class40_Sub5_Sub7 arg1, Class40_Sub5_Sub7 arg2, int arg3, int arg4) {
         if(arg0 != -50) {
             degreesToTurn = 31;
         }
         if(childrenIds != null) {
-            NpcDefinition class40_sub5_sub5 = method577(arg0 ^ 0x31);
+            ActorDefinition class40_sub5_sub5 = getChildDefinition(arg0 ^ 0x31);
             if(class40_sub5_sub5 == null) {
                 return null;
             }
             return class40_sub5_sub5.method568((byte) -50, arg1, arg2, arg3, arg4);
         }
-        Model class40_sub5_sub17_sub5 = ((Model) Class67.aClass9_1611.method231((long) anInt2427, (byte) 75));
+        Model class40_sub5_sub17_sub5 = ((Model) Class67.aClass9_1611.method231((long) id, (byte) 75));
         if(class40_sub5_sub17_sub5 == null) {
             boolean bool = false;
             for(int i = 0; i < models.length; i++) {
@@ -272,14 +269,14 @@ public class NpcDefinition extends SubNode {
             } else {
                 class40_sub5_sub17_sub5 = (new Model(class40_sub5_sub17_sub5s, class40_sub5_sub17_sub5s.length));
             }
-            if(recolorToReplace != null) {
-                for(int i = 0; (i < recolorToReplace.length); i++) {
-                    class40_sub5_sub17_sub5.method803(recolorToReplace[i], recolorToFind[i]);
+            if(modifiedModelColors != null) {
+                for(int i = 0; (i < modifiedModelColors.length); i++) {
+                    class40_sub5_sub17_sub5.replaceColor(modifiedModelColors[i], originalModelColors[i]);
                 }
             }
             class40_sub5_sub17_sub5.method810();
             class40_sub5_sub17_sub5.method802(ambient + 64, 850 + contrast, -30, -50, -30, true);
-            Class67.aClass9_1611.method230(-7208, (long) anInt2427, class40_sub5_sub17_sub5);
+            Class67.aClass9_1611.method230(-7208, (long) id, class40_sub5_sub17_sub5);
         }
         Model class40_sub5_sub17_sub5_0_;
         if(arg1 != null && arg2 != null) {
@@ -342,17 +339,17 @@ public class NpcDefinition extends SubNode {
             }
         } else if(opcode == 40) {
             int length = buffer.getUnsignedByte();
-            recolorToFind = new int[length];
-            recolorToReplace = new int[length];
+            originalModelColors = new int[length];
+            modifiedModelColors = new int[length];
             for(int i_2_ = 0; i_2_ < length; i_2_++) {
-                recolorToReplace[i_2_] = buffer.getUnsignedShortBE();
-                recolorToFind[i_2_] = buffer.getUnsignedShortBE();
+                modifiedModelColors[i_2_] = buffer.getUnsignedShortBE();
+                originalModelColors[i_2_] = buffer.getUnsignedShortBE();
             }
         } else if(opcode == 60) {
             int length = buffer.getUnsignedByte();
-            headModels = new int[length];
+            headModelIndexes = new int[length];
             for(int i_4_ = 0; length > i_4_; i_4_++) {
-                headModels[i_4_] = buffer.getUnsignedShortBE();
+                headModelIndexes[i_4_] = buffer.getUnsignedShortBE();
             }
         } else if(opcode == 93) {
             renderOnMinimap = false;
@@ -404,57 +401,57 @@ public class NpcDefinition extends SubNode {
         }
     }
 
-    public Model method575(byte arg0) {
+    public Model getHeadModel(byte arg0) {
         if(childrenIds != null) {
-            NpcDefinition class40_sub5_sub5 = method577(-1);
-            if(class40_sub5_sub5 == null) {
+            ActorDefinition definition = getChildDefinition(-1);
+            if(definition == null) {
                 return null;
             }
-            return class40_sub5_sub5.method575((byte) 112);
+            return definition.getHeadModel((byte) 112);
         }
-        if(headModels == null) {
+        if(headModelIndexes == null) {
             return null;
         }
-        boolean bool = false;
-        for(int i = 0; i < headModels.length; i++) {
-            if(!Class67.aClass6_1577.loaded(headModels[i], 0)) {
-                bool = true;
+        boolean cached = false;
+        for(int headModel = 0; headModel < headModelIndexes.length; headModel++) {
+            if(!Class67.aClass6_1577.loaded(headModelIndexes[headModel], 0)) {
+                cached = true;
             }
         }
         if(arg0 < 108) {
             method570(-116, 79, null, -61);
         }
-        if(bool) {
+        if(cached) {
             return null;
         }
-        Model[] class40_sub5_sub17_sub5s = new Model[headModels.length];
-        for(int i = 0; i < headModels.length; i++) {
-            class40_sub5_sub17_sub5s[i] = Model.getModel(Class67.aClass6_1577, headModels[i], 0);
+        Model[] models = new Model[headModelIndexes.length];
+        for(int i = 0; i < headModelIndexes.length; i++) {
+            models[i] = Model.getModel(Class67.aClass6_1577, headModelIndexes[i], 0);
         }
-        Model class40_sub5_sub17_sub5;
-        if(class40_sub5_sub17_sub5s.length != 1) {
-            class40_sub5_sub17_sub5 = (new Model(class40_sub5_sub17_sub5s, class40_sub5_sub17_sub5s.length));
+        Model headModel;
+        if(models.length != 1) {
+            headModel = (new Model(models, models.length));
         } else {
-            class40_sub5_sub17_sub5 = class40_sub5_sub17_sub5s[0];
+            headModel = models[0];
         }
-        if(recolorToReplace != null) {
-            for(int i = 0; i < recolorToReplace.length; i++) {
-                class40_sub5_sub17_sub5.method803(recolorToReplace[i], recolorToFind[i]);
+        if(modifiedModelColors != null) {
+            for(int i = 0; i < modifiedModelColors.length; i++) {
+                headModel.replaceColor(modifiedModelColors[i], originalModelColors[i]);
             }
         }
-        return class40_sub5_sub17_sub5;
+        return headModel;
     }
 
-    public NpcDefinition method577(int arg0) {
-        int i = arg0;
+    public ActorDefinition getChildDefinition(int arg0) {
+        int childId = arg0;
         if(varBitId != -1) {
-            i = Class40_Sub5_Sub6.method585(varBitId, 1369);
+            childId = Class40_Sub5_Sub6.method585(varBitId, 1369);
         } else if(settingId != -1) {
-            i = Class58.varbitmasks[settingId];
+            childId = Class58.varbitmasks[settingId];
         }
-        if((i ^ 0xffffffff) > -1 || childrenIds.length <= i || (childrenIds[i] ^ 0xffffffff) == 0) {
+        if(childId < 0 || childId >= childrenIds.length || childrenIds[childId] == -1) {
             return null;
         }
-        return Landscape.method932((byte) -114, childrenIds[i]);
+        return getDefinition((byte) -114, childrenIds[childId]);
     }
 }

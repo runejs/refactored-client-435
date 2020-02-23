@@ -12,21 +12,21 @@ import java.awt.*;
 public class Class45 {
     public static long aLong1051;
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_1057;
-    public static RSString aClass1_1059 = Class58.method978("Bitte entfernen Sie ");
+    public static RSString aClass1_1059 = RSString.CreateString("Bitte entfernen Sie ");
     public static int anInt1061;
     public static Class45 aClass45_1064 = new Class45();
     public static int[] anIntArray1071;
     public static volatile int anInt1073 = 0;
     public static int anInt1075 = 0;
-    public static RSString aClass1_1076 = Class58.method978("cyan:");
-    public static RSString aClass1_1077 = Class58.method978("(U2");
-    public static RSString aClass1_1078 = (Class58.method978("(WSpielkonto wiederherstellen(W Option auf der Hauptseite)3"));
-    public static RSString aClass1_1079 = Class58.method978("Name des Gegenstands eingeben:");
+    public static RSString aClass1_1076 = RSString.CreateString("cyan:");
+    public static RSString aClass1_1077 = RSString.CreateString("(U2");
+    public static RSString aClass1_1078 = (RSString.CreateString("(WSpielkonto wiederherstellen(W Option auf der Hauptseite)3"));
+    public static RSString aClass1_1079 = RSString.CreateString("Name des Gegenstands eingeben:");
     public static Buffer aClass40_Sub1_1081 = new Buffer(8);
     public static Class30 aClass30_1082 = new Class30();
     public static int[] anIntArray1083 = new int[1000];
-    public static RSString aClass1_1084 = Class58.method978("Texturen geladen)3");
-    public static RSString aClass1_1085 = Class58.method978("m");
+    public static RSString aClass1_1084 = RSString.CreateString("Texturen geladen)3");
+    public static RSString aClass1_1085 = RSString.CreateString("m");
     public Node aClass40_1056 = new Node();
     public Node aClass40_1068;
 
@@ -88,7 +88,7 @@ public class Class45 {
     public static void method910(int arg0) {
         if(arg0 == -32322) {
             if(VertexNormal.lowMemory && (Class40_Sub6.onBuildTimePlane != Player.anInt3267))
-                Actor.method789((Class40_Sub5_Sub13.localPlayer.anIntArray3088[0]), -1000, Class17.anInt448, Class51.anInt1202, (Class40_Sub5_Sub13.localPlayer.anIntArray3135[0]), Player.anInt3267);
+                Actor.method789((Player.localPlayer.anIntArray3088[0]), -1000, Class17.anInt448, Class51.anInt1202, (Player.localPlayer.anIntArray3135[0]), Player.anInt3267);
             else if(Buffer.anInt1985 != Player.anInt3267) {
                 Buffer.anInt1985 = Player.anInt3267;
                 Class22.method299((byte) 53, Player.anInt3267);

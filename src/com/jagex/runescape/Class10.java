@@ -6,7 +6,7 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 
 public class Class10 {
     public static int anInt335;
-    public static RSString aClass1_338 = Class58.method978("backhmid1");
+    public static RSString aClass1_338 = RSString.CreateString("backhmid1");
     public static int anInt339;
     public static RSString aClass1_343;
     public static RSString aClass1_344;
@@ -22,11 +22,11 @@ public class Class10 {
     public static Class45[][][] aClass45ArrayArrayArray357;
 
     static {
-        aClass1_346 = Class58.method978("The server is being updated)3");
+        aClass1_346 = RSString.CreateString("The server is being updated)3");
         aClass1_344 = aClass1_346;
-        aClass1_352 = Class58.method978("Neuer Benutzer");
+        aClass1_352 = RSString.CreateString("Neuer Benutzer");
         anIntArray351 = new int[4000];
-        aClass1_343 = Class58.method978("Geben Sie Ihren Benutzernamen");
+        aClass1_343 = RSString.CreateString("Geben Sie Ihren Benutzernamen");
         anIntArray354 = new int[25];
         aClass40_Sub5_Sub12_353 = null;
         anInt356 = 0;

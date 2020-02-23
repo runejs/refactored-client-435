@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.NpcDefinition;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
@@ -10,11 +10,11 @@ import java.awt.*;
 import java.awt.image.*;
 
 public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserver {
-    public static RSString aClass1_2198 = Class58.method978("Name eingeben:");
+    public static RSString aClass1_2198 = RSString.CreateString("Name eingeben:");
     public static int[] anIntArray2199 = new int[32];
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2204;
     public static int[] anIntArray2207 = {0, -1, 0, 1};
-    public static RSString aClass1_2209 = Class58.method978("Login server offline)3");
+    public static RSString aClass1_2209 = RSString.CreateString("Login server offline)3");
     public static int anInt2210;
     public static int anInt2211 = 2;
     public static Class68 aClass68_2213;
@@ -59,7 +59,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             if(i == 65535)
                 i = -1;
             int i_1_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
-            NpcDefinition.method570(i, i_1_, arg0, -1);
+            ActorDefinition.method570(i, i_1_, arg0, -1);
         }
         if((arg2 & 0x4) != 0) {
             arg0.anInt3137 = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
@@ -142,7 +142,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
         if((0x80 & arg2 ^ 0xffffffff) != -1) {
             arg0.aClass1_3090 = Cache.outgoingbuffer.getRSString();
             if(arg0.aClass1_3090.method55(0, false) != 126) {
-                if(arg0 == Class40_Sub5_Sub13.localPlayer)
+                if(arg0 == Player.localPlayer)
                     Class44.method895(99, 2, arg0.aClass1_3090, arg0.playerName);
             } else {
                 arg0.aClass1_3090 = arg0.aClass1_3090.substring(1);

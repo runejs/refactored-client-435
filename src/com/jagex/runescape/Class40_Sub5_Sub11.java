@@ -7,14 +7,14 @@ import com.jagex.runescape.media.renderable.actor.Player;
 public class Class40_Sub5_Sub11 extends SubNode {
     public static int anInt2618;
     public static int anInt2619;
-    public static RSString aClass1_2620 = Class58.method978("yellow:");
+    public static RSString aClass1_2620 = RSString.CreateString("yellow:");
     public static int anInt2621 = 0;
-    public static RSString aClass1_2622 = Class58.method978("Hide");
+    public static RSString aClass1_2622 = RSString.CreateString("Hide");
     public static int anInt2624;
     public static volatile int anInt2625 = 0;
     public static int[] tabWidgetIds = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
     public static int anInt2628 = 0;
-    public static RSString aClass1_2629 = Class58.method978("button near the top of that page)3");
+    public static RSString aClass1_2629 = RSString.CreateString("button near the top of that page)3");
     public static volatile boolean aBoolean2631 = true;
     public static int anInt2632;
 
