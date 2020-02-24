@@ -15,7 +15,7 @@ public class Class43 {
     public static Class45 aClass45_1022;
     public static int anInt1023;
     public static RSString aClass1_1024;
-    public static int anInt1025;
+    public static int bankInsertMode;
     public static RSString aClass1_1026;
     public static RSString aClass1_1027;
     public static int openChatboxWidgetId;
@@ -25,7 +25,7 @@ public class Class43 {
         aClass45_1022 = new Class45();
         aClass1_1024 = RSString.CreateString("backleft2");
         aClass1_1027 = RSString.CreateString(":");
-        anInt1025 = 0;
+        bankInsertMode = 0;
         openChatboxWidgetId = -1;
         aClass1_1026 = RSString.CreateString("Schlie-8en");
     }
@@ -48,8 +48,8 @@ public class Class43 {
     public static void drawTabArea(int arg0) {
         Class38.aBoolean893 = true;
         Class61.method996(19655);
-        if((Class29.anInt673 ^ 0xffffffff) != 0) {
-            boolean bool = Class40_Sub5_Sub6.drawInterface(0, Class29.anInt673, 261, (byte) -5, 0, 1, 190);
+        if(Class29.tabAreaOverlayWidgetId != -1) {
+            boolean bool = Class40_Sub5_Sub6.drawInterface(0, Class29.tabAreaOverlayWidgetId, 261, (byte) -5, 0, 1, 190);
             if(!bool)
                 ISAAC.redrawTabArea = true;
         } else if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] != -1) {
@@ -111,8 +111,8 @@ public class Class43 {
                 Class40_Sub5_Sub17_Sub3.anInt3065 = -1;
                 OverlayDefinition.anInt2328 = -1;
                 if((Class13.mouseX ^ 0xffffffff) < -554 && Landscape.mouseY > 205 && Class13.mouseX < 743 && (Landscape.mouseY ^ 0xffffffff) > -467) {
-                    if((Class29.anInt673 ^ 0xffffffff) != 0)
-                        Class13.method243((byte) 89, 205, 743, 466, Class29.anInt673, 553, Class13.mouseX, Landscape.mouseY, 1);
+                    if((Class29.tabAreaOverlayWidgetId ^ 0xffffffff) != 0)
+                        Class13.method243((byte) 89, 205, 743, 466, Class29.tabAreaOverlayWidgetId, 553, Class13.mouseX, Landscape.mouseY, 1);
                     else if((Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]) != -1)
                         Class13.method243((byte) 89, 205, 743, 466, (Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]), 553, Class13.mouseX, Landscape.mouseY, 1);
                 }

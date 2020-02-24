@@ -6,10 +6,10 @@ import java.awt.*;
 
 public class RSRuntimeException extends RuntimeException {
     public static int anInt1641 = 0;
-    public static int anInt1642 = 0;
+    public static int lastActiveInvInterface = 0;
     public static RSString aClass1_1644 = RSString.CreateString("Lade Sprites )2 ");
     public static RSString aClass1_1647 = RSString.CreateString("Regelversto-8 melden");
-    public static RSString aClass1_1649 = RSString.CreateString("Select");
+    public static RSString str_select = RSString.CreateString("Select");
     public static int anInt1651 = 0;
     /*synthetic*/ public static Class aClass1654;
 
@@ -27,8 +27,8 @@ public class RSRuntimeException extends RuntimeException {
         aClass1_1644 = null;
         aClass1_1647 = null;
         if(arg0 >= -39)
-            anInt1642 = 95;
-        aClass1_1649 = null;
+            lastActiveInvInterface = 95;
+        str_select = null;
     }
 
     public static void method1054(byte arg0) {
@@ -81,7 +81,7 @@ public class RSRuntimeException extends RuntimeException {
         for(int i = 0; i < 32; i++)
             Class67.aLongArray1614[i] = 0L;
         if(arg0 <= 67)
-            anInt1642 = -3;
+            lastActiveInvInterface = -3;
         Class40_Sub3.anInt2020 = 0;
     }
 

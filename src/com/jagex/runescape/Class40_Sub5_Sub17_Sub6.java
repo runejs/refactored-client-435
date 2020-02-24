@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -37,7 +38,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     public boolean aBoolean3237;
     public int anInt3239;
     public int anInt3240 = 0;
-    public Class40_Sub5_Sub7 aClass40_Sub5_Sub7_3242;
+    public AnimationSequence aAnimationSequence_3242;
     public int anInt3244;
     public int anInt3249;
 
@@ -53,7 +54,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
         int i = SpotAnimDefinition.forId(anInt3249, 13).animationId;
         if((i ^ 0xffffffff) != 0) {
             aBoolean3237 = false;
-            aClass40_Sub5_Sub7_3242 = Class68_Sub1.method1050(i, 2);
+            aAnimationSequence_3242 = Class68_Sub1.method1050(i, 2);
         } else
             aBoolean3237 = true;
 
@@ -111,7 +112,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                 if(((VertexNormal.lowMemory && (Class60.anInt1407 ^ 0xffffffff) < -51) || (Class60.anInt1407 ^ 0xffffffff) < -201) && !arg1 && ((class40_sub5_sub17_sub4_sub1.anInt3126 ^ 0xffffffff) == (class40_sub5_sub17_sub4_sub1.anInt3077 ^ 0xffffffff)))
                     class40_sub5_sub17_sub4_sub1.aBoolean3287 = true;
                 if(i_2_ >= 0 && (i_2_ ^ 0xffffffff) > -105 && i_3_ >= 0 && i_3_ < 104) {
-                    if((class40_sub5_sub17_sub4_sub1.aClass40_Sub5_Sub17_Sub5_3265) != null && ((class40_sub5_sub17_sub4_sub1.anInt3283 <= Node.anInt926)) && (Node.anInt926 < class40_sub5_sub17_sub4_sub1.anInt3274)) {
+                    if((class40_sub5_sub17_sub4_sub1.aClass40_Sub5_Sub17_Sub5_3265) != null && ((class40_sub5_sub17_sub4_sub1.anInt3283 <= Node.pulseCycle)) && (Node.pulseCycle < class40_sub5_sub17_sub4_sub1.anInt3274)) {
                         class40_sub5_sub17_sub4_sub1.aBoolean3287 = false;
                         class40_sub5_sub17_sub4_sub1.anInt3276 = (Class37.method430((byte) -117, Player.anInt3267, class40_sub5_sub17_sub4_sub1.anInt3098, class40_sub5_sub17_sub4_sub1.anInt3089));
                         Npc.aScene_3301.method112(Player.anInt3267, class40_sub5_sub17_sub4_sub1.anInt3098, class40_sub5_sub17_sub4_sub1.anInt3089, class40_sub5_sub17_sub4_sub1.anInt3276, 60, class40_sub5_sub17_sub4_sub1, class40_sub5_sub17_sub4_sub1.anInt3118, i_1_, class40_sub5_sub17_sub4_sub1.anInt3258, class40_sub5_sub17_sub4_sub1.anInt3281, class40_sub5_sub17_sub4_sub1.anInt3262, class40_sub5_sub17_sub4_sub1.anInt3289);
@@ -148,7 +149,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
 
     }
 
-    public Model method756(int arg0) {
+    public Model getRotatedModel(int arg0) {
 
         anInt3234++;
         SpotAnimDefinition spotAnimDefinition = SpotAnimDefinition.forId(anInt3249, 13);
@@ -171,10 +172,10 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
             method834(106, 6);
         if(!aBoolean3237) {
             anInt3233 += arg1;
-            while((anInt3233 > aClass40_Sub5_Sub7_3242.anIntArray2466[anInt3240])) {
-                anInt3233 -= aClass40_Sub5_Sub7_3242.anIntArray2466[anInt3240];
+            while((anInt3233 > aAnimationSequence_3242.animationLengths[anInt3240])) {
+                anInt3233 -= aAnimationSequence_3242.animationLengths[anInt3240];
                 anInt3240++;
-                if(aClass40_Sub5_Sub7_3242.anIntArray2485.length <= anInt3240) {
+                if(aAnimationSequence_3242.anIntArray2485.length <= anInt3240) {
                     aBoolean3237 = true;
                     break;
                 }

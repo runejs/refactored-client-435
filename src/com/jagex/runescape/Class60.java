@@ -3,6 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -57,7 +58,7 @@ public class Class60 {
             i++;
         if(arg1.method194(Main.aClass1_1762, Class22_Sub2.string_blank, -1234))
             i++;
-        if(arg1.method194(Class40_Sub5_Sub7.aClass1_2488, Class22_Sub2.string_blank, -1234))
+        if(arg1.method194(AnimationSequence.aClass1_2488, Class22_Sub2.string_blank, -1234))
             i++;
         if(arg1.method194(ISAAC.aClass1_506, Class22_Sub2.string_blank, -1234))
             i++;

@@ -209,17 +209,17 @@ public class Class40_Sub13 extends Node {
 
         anInt2169++;
         int i;
-        if((arg1.anInt2689 ^ 0xffffffff) > -1)
-            i = arg1.anInt2648 >> -1744237840;
+        if((arg1.id ^ 0xffffffff) > -1)
+            i = arg1.parentId >> -1744237840;
         else
-            i = arg1.anInt2689 >> -462467952;
+            i = arg1.id >> -462467952;
         if(!Class68.method1043(i))
             return null;
         if(arg0 != -1598852880)
             method876(44, -123, -88, 35);
         if((arg1.anInt2738 ^ 0xffffffff) <= -1)
-            return (Class59.aWidgetArrayArray1390[i][0xffff & arg1.anInt2738]);
-        Widget widget = (Class59.aWidgetArrayArray1390[i][(0x7fff99d9 & arg1.anInt2738) >> -88908881]);
+            return (Widget.interfaces[i][0xffff & arg1.anInt2738]);
+        Widget widget = (Widget.interfaces[i][(0x7fff99d9 & arg1.anInt2738) >> -88908881]);
         return (widget.aWidgetArray2713[arg1.anInt2738 & 0x7fff]);
 
     }

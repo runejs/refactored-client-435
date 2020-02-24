@@ -80,7 +80,7 @@ public class Class42 {
 
         anInt991++;
         if(Class68.method1043(arg1)) {
-            Widget[] widgets = Class59.aWidgetArrayArray1390[arg1];
+            Widget[] widgets = Widget.interfaces[arg1];
             for(int i = 0; widgets.length > i; i++) {
                 Widget widget = widgets[i];
                 if(widget != null) {
@@ -200,7 +200,7 @@ public class Class42 {
             }
             Npc class40_sub5_sub17_sub4_sub2 = CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i];
             Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i;
-            class40_sub5_sub17_sub4_sub2.anInt3134 = Node.anInt926;
+            class40_sub5_sub17_sub4_sub2.anInt3134 = Node.pulseCycle;
             int i_3_ = (Class40_Sub5_Sub17_Sub1.anIntArray2987[Cache.outgoingbuffer.putBits(3, (byte) -65)]);
             if(bool)
                 class40_sub5_sub17_sub4_sub2.anInt3118 = i_3_;

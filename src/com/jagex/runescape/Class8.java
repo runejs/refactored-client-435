@@ -30,7 +30,7 @@ public class Class8 {
     public static int anInt292;
     public static RSString aClass1_293;
     public static RSString aClass1_294;
-    public static FontMetrics aFontMetrics295;
+    public static FontMetrics fontMetrics;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array296;
     public static int[] anIntArray297;
     public static Class68 aClass68_298;
@@ -101,7 +101,7 @@ public class Class8 {
         aClass1_286 = null;
         aClass1_278 = null;
         anIntArray297 = null;
-        aFontMetrics295 = null;
+        fontMetrics = null;
         int i = 53 % ((51 - arg0) / 40);
         aClass1_305 = null;
         aCacheIndex_284 = null;

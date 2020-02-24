@@ -16,7 +16,7 @@ public class Class17 {
     public static int[] anIntArray456;
     public static RSString aClass1_457 = RSString.CreateString("Willkommen auf RuneScape");
     public static int anInt460 = 0;
-    public static Font aFont461;
+    public static Font helveticaBold;
     public static Class68 aClass68_462;
     public static Class68 aClass68_463;
     public static int anInt464 = 0;
@@ -137,7 +137,7 @@ public class Class17 {
             aClass68_463 = null;
             aClass1_457 = null;
             anIntArray456 = null;
-            aFont461 = null;
+            helveticaBold = null;
             anIntArray466 = null;
         }
     }

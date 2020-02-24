@@ -1,8 +1,6 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -148,7 +146,7 @@ public class OverlayDefinition extends SubNode {
                 Class40_Sub5_Sub17_Sub1.method763(GameFrame.aCanvas1469, (byte) -128, (ActorDefinition.aClass6_Sub1_2377));
             }
             Class51.anInt1197 = arg0;
-            Class40_Sub5_Sub11.aBoolean2631 = true;
+            Class40_Sub5_Sub11.clearScreen = true;
         }
 
     }

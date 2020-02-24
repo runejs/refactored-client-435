@@ -3,6 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -44,8 +45,8 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
         if((0x100 & mask) != 0) {
             int i = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
             int i_0_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-            player.method785(i_0_, Node.anInt926, i, -122);
-            player.anInt3139 = 300 + Node.anInt926;
+            player.method785(i_0_, Node.pulseCycle, i, -122);
+            player.anInt3139 = 300 + Node.pulseCycle;
             player.anInt3130 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
             player.anInt3101 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
         }
@@ -68,8 +69,8 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
         if((0x40 & mask) != 0) {
             int i = Cache.outgoingbuffer.getUnsignedByte();
             int i_2_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-            player.method785(i_2_, Node.anInt926, i, -123);
-            player.anInt3139 = 300 + Node.anInt926;
+            player.method785(i_2_, Node.pulseCycle, i, -123);
+            player.anInt3139 = 300 + Node.pulseCycle;
             player.anInt3130 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
             player.anInt3101 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
         }
@@ -78,8 +79,8 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             player.anInt3081 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
             player.anInt3099 = Cache.outgoingbuffer.getUnsignedByte();
             player.anInt3127 = Cache.outgoingbuffer.getUnsignedByte();
-            player.anInt3112 = (Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE() + Node.anInt926);
-            player.anInt3107 = (Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE() + Node.anInt926);
+            player.anInt3112 = (Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE() + Node.pulseCycle);
+            player.anInt3107 = (Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE() + Node.pulseCycle);
             player.anInt3073 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
             player.method790(0);
         }
@@ -130,12 +131,12 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             player.anInt3091 = Cache.outgoingbuffer.getUnsignedShortLE();
             int i = Cache.outgoingbuffer.getIntME1();
             player.anInt3129 = 0;
-            player.anInt3093 = Node.anInt926 + (i & 0xffff);
+            player.anInt3093 = Node.pulseCycle + (i & 0xffff);
             if((player.anInt3091 ^ 0xffffffff) == -65536)
                 player.anInt3091 = -1;
             player.anInt3140 = 0;
             player.anInt3110 = i >> -1354160784;
-            if(player.anInt3093 > Node.anInt926)
+            if(player.anInt3093 > Node.pulseCycle)
                 player.anInt3140 = -1;
         }
         if((0x80 & mask ^ 0xffffffff) != -1) { // forced chat
@@ -153,25 +154,25 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
         }
     }
 
-    public static Class40_Sub5_Sub7 method1050(int arg0, int arg1) {
-        Class40_Sub5_Sub7 class40_sub5_sub7 = ((Class40_Sub5_Sub7) Class40_Sub5_Sub6.aClass9_2439.method231((long) arg0, (byte) 47));
+    public static AnimationSequence method1050(int arg0, int arg1) {
+        AnimationSequence animationSequence = ((AnimationSequence) Class40_Sub5_Sub6.aClass9_2439.method231((long) arg0, (byte) 47));
         if(arg1 != 2)
             anInt2211 = -106;
-        if(class40_sub5_sub7 != null)
-            return class40_sub5_sub7;
-        byte[] is = Class40_Sub5_Sub7.aCacheIndex_2484.getFile(arg0, 12);
-        class40_sub5_sub7 = new Class40_Sub5_Sub7();
+        if(animationSequence != null)
+            return animationSequence;
+        byte[] is = AnimationSequence.aCacheIndex_2484.getFile(arg0, 12);
+        animationSequence = new AnimationSequence();
         if(is != null)
-            class40_sub5_sub7.method594(-1, new Buffer(is));
-        class40_sub5_sub7.method591((byte) 37);
-        Class40_Sub5_Sub6.aClass9_2439.method230(arg1 + -7210, (long) arg0, class40_sub5_sub7);
-        return class40_sub5_sub7;
+            animationSequence.method594(-1, new Buffer(is));
+        animationSequence.method591((byte) 37);
+        Class40_Sub5_Sub6.aClass9_2439.method230(arg1 + -7210, (long) arg0, animationSequence);
+        return animationSequence;
     }
 
     public static boolean method1051(int arg0, Widget arg1) {
         if(arg0 != 300)
             return false;
-        int i = arg1.anInt2639;
+        int i = arg1.contentType;
         if(i >= 1 && i <= 200 || i >= 701 && i <= 900) {
             if(i >= 801)
                 i -= 701;
@@ -188,7 +189,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
         }
         if(i >= 401 && (i ^ 0xffffffff) >= -501) {
             CacheIndex_Sub1.anInt1793++;
-            OverlayDefinition.method558(0, Class66.aClass1_1572, 0, -501, 0, 35, (Class40_Sub5_Sub17_Sub6.method832(115, (new RSString[]{Class26.aClass1_620, arg1.aClass1_2668}))));
+            OverlayDefinition.method558(0, Class66.aClass1_1572, 0, -501, 0, 35, (Class40_Sub5_Sub17_Sub6.method832(115, (new RSString[]{Class26.aClass1_620, arg1.text}))));
             return true;
         }
         return false;

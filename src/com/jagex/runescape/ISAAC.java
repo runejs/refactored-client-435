@@ -2,6 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -104,7 +105,7 @@ public class ISAAC {
                     int i_12_ = (i_7_ << 705744584) / i_9_;
                     int i_13_ = (i_8_ << -882987384) / i_9_;
                     int i_14_ = 96 + (i_12_ * -50 + (-10 * i_10_) + i_13_ * -50) / i_4_;
-                    Class40_Sub5_Sub7.anIntArrayArray2490[i_6_][i_5_] = i_14_ + -i_11_;
+                    AnimationSequence.anIntArrayArray2490[i_6_][i_5_] = i_14_ + -i_11_;
                 }
             }
             for(int i_15_ = 0; i_15_ < 104; i_15_++) {
@@ -174,11 +175,11 @@ public class ISAAC {
                                 int i_33_ = (Class40_Sub6.tile_height[i][i_16_ + 1][i_27_]);
                                 int i_34_ = (Class40_Sub6.tile_height[i][i_16_ + 1][1 + i_27_]);
                                 int i_35_ = (Class40_Sub6.tile_height[i][i_16_][i_27_ + 1]);
-                                int i_36_ = (Class40_Sub5_Sub7.anIntArrayArray2490[i_16_][i_27_]);
-                                int i_37_ = (Class40_Sub5_Sub7.anIntArrayArray2490[i_16_ + 1][i_27_]);
-                                int i_38_ = (Class40_Sub5_Sub7.anIntArrayArray2490[i_16_ + 1][i_27_ + 1]);
+                                int i_36_ = (AnimationSequence.anIntArrayArray2490[i_16_][i_27_]);
+                                int i_37_ = (AnimationSequence.anIntArrayArray2490[i_16_ + 1][i_27_]);
+                                int i_38_ = (AnimationSequence.anIntArrayArray2490[i_16_ + 1][i_27_ + 1]);
                                 int i_39_ = -1;
-                                int i_40_ = (Class40_Sub5_Sub7.anIntArrayArray2490[i_16_][i_27_ + 1]);
+                                int i_40_ = (AnimationSequence.anIntArrayArray2490[i_16_][i_27_ + 1]);
                                 int i_41_ = -1;
                                 if((i_30_ ^ 0xffffffff) < -1) {
                                     int i_42_ = 256 * i_22_ / i_26_;

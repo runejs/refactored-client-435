@@ -212,10 +212,10 @@ public class Class66 {
     }
 
     public static int method1029(int arg0, boolean arg1, Widget arg2) {
-        if(arg2.anIntArrayArray2748 == null || (arg0 >= arg2.anIntArrayArray2748.length))
+        if(arg2.clientScripts == null || (arg0 >= arg2.clientScripts.length))
             return -2;
         try {
-            int[] is = arg2.anIntArrayArray2748[arg0];
+            int[] is = arg2.clientScripts[arg0];
             int i = 0;
             int i_14_ = 0;
             if(arg1 != false)
@@ -242,7 +242,7 @@ public class Class66 {
                 if((i_18_ ^ 0xffffffff) == -5) {
                     int i_19_ = is[i_14_++] << 1814235088;
                     i_19_ += is[i_14_++];
-                    Widget widget = Class68.method1045(i_19_, (byte) -70);
+                    Widget widget = Widget.forId(i_19_);
                     int i_20_ = is[i_14_++];
                     if(i_20_ != -1 && (!ItemDefinition.forId(i_20_, 10).members || Class22.aBoolean541)) {
                         for(int i_21_ = 0; ((i_21_ < widget.items.length)); i_21_++) {
@@ -268,7 +268,7 @@ public class Class66 {
                 if(i_18_ == 10) {
                     int i_23_ = is[i_14_++] << -1588807344;
                     i_23_ += is[i_14_++];
-                    Widget widget = Class68.method1045(i_23_, (byte) -118);
+                    Widget widget = Widget.forId(i_23_);
                     int i_24_ = is[i_14_++];
                     if((i_24_ ^ 0xffffffff) != 0 && (!ItemDefinition.forId(i_24_, 10).members || Class22.aBoolean541)) {
                         for(int i_25_ = 0; (widget.items.length > i_25_); i_25_++) {

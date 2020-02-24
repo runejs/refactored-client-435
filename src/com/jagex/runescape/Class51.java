@@ -78,14 +78,14 @@ public class Class51 {
 
     public static void method940(int arg0, RSString arg1, boolean arg2, RSString arg3) {
 
-        if(Class40_Sub5_Sub11.aBoolean2631) {
-            Class40_Sub5_Sub11.aBoolean2631 = false;
+        if(Class40_Sub5_Sub11.clearScreen) {
+            Class40_Sub5_Sub11.clearScreen = false;
             ItemDefinition.method742(205);
             Class45.method908((byte) 114);
             Class55.method964(40);
             ActorDefinition.method574(4);
             Class52.method943(ItemDefinition.anInt2797, -118, Class53.aClass40_Sub5_Sub14_Sub1_1268, Class4.anInt185, Class35.publicChatMode);
-            Class40_Sub2.method527(Class5.currentTabId, arg0 + 4, Class40_Sub5_Sub11.tabWidgetIds, Class29.anInt673 == -1, -1);
+            Class40_Sub2.method527(Class5.currentTabId, arg0 + 4, Class40_Sub5_Sub11.tabWidgetIds, Class29.tabAreaOverlayWidgetId == -1, -1);
             Class38.aBoolean893 = true;
             Class40_Sub3.aBoolean2026 = true;
             CacheIndex.aBoolean260 = true;

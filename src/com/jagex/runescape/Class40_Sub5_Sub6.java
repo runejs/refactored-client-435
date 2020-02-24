@@ -53,7 +53,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
             return false;
         if(arg3 != -5)
             return true;
-        return Main.method36(arg5, arg0, arg4, 0, -1, arg2, arg6, 0, (Class59.aWidgetArrayArray1390[arg1]), true);
+        return Main.method36(arg5, arg0, arg4, 0, -1, arg2, arg6, 0, (Widget.interfaces[arg1]), true);
     }
 
     public static void putHackCheckPacket(int arg0, int arg1, PacketBuffer arg2) {

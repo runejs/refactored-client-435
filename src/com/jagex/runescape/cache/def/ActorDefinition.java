@@ -1,6 +1,7 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
@@ -238,7 +239,7 @@ public class ActorDefinition extends SubNode {
 
     }
 
-    public Model method568(byte arg0, Class40_Sub5_Sub7 arg1, Class40_Sub5_Sub7 arg2, int arg3, int arg4) {
+    public Model method568(byte arg0, AnimationSequence arg1, AnimationSequence arg2, int arg3, int arg4) {
         if(arg0 != -50) {
             degreesToTurn = 31;
         }

@@ -2,6 +2,7 @@ package com.jagex.runescape.media.renderable.actor;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
 
@@ -83,13 +84,13 @@ public class Player extends Actor {
         }
     }
 
-    public Model method756(int arg0) {
+    public Model getRotatedModel(int arg0) {
         if(aClass30_3282 == null)
             return null;
         int i = 71 % ((41 - arg0) / 47);
-        Class40_Sub5_Sub7 class40_sub5_sub7 = (playingAnimation == -1 || (playingAnimationDelay ^ 0xffffffff) != -1 ? null : Class68_Sub1.method1050(playingAnimation, 2));
-        Class40_Sub5_Sub7 class40_sub5_sub7_0_ = (((anInt3077 ^ 0xffffffff) != 0 && !aBoolean3287 && (anInt3126 != anInt3077 || class40_sub5_sub7 == null)) ? Class68_Sub1.method1050(anInt3077, 2) : null);
-        Model class40_sub5_sub17_sub5 = aClass30_3282.method377(class40_sub5_sub7, class40_sub5_sub7_0_, anInt3116, anInt3104, (byte) -128);
+        AnimationSequence animationSequence = (playingAnimation == -1 || (playingAnimationDelay ^ 0xffffffff) != -1 ? null : Class68_Sub1.method1050(playingAnimation, 2));
+        AnimationSequence animationSequence_0_ = (((anInt3077 ^ 0xffffffff) != 0 && !aBoolean3287 && (anInt3126 != anInt3077 || animationSequence == null)) ? Class68_Sub1.method1050(anInt3077, 2) : null);
+        Model class40_sub5_sub17_sub5 = aClass30_3282.method377(animationSequence, animationSequence_0_, anInt3116, anInt3104, (byte) -128);
         if(class40_sub5_sub17_sub5 == null)
             return null;
         class40_sub5_sub17_sub5.method799();
@@ -103,9 +104,9 @@ public class Player extends Actor {
             }
         }
         if(!aBoolean3287 && aClass40_Sub5_Sub17_Sub5_3265 != null) {
-            if(anInt3274 <= Node.anInt926)
+            if(anInt3274 <= Node.pulseCycle)
                 aClass40_Sub5_Sub17_Sub5_3265 = null;
-            if(anInt3283 <= Node.anInt926 && Node.anInt926 < anInt3274) {
+            if(anInt3283 <= Node.pulseCycle && Node.pulseCycle < anInt3274) {
                 Model class40_sub5_sub17_sub5_2_ = aClass40_Sub5_Sub17_Sub5_3265;
                 class40_sub5_sub17_sub5_2_.method828(-anInt3098 + anInt3271, -anInt3276 + anInt3272, anInt3291 + -anInt3089);
                 if(anInt3080 != 512) {

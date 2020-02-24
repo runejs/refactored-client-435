@@ -1,12 +1,14 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.media.AnimationSequence;
+
 public class Cache {
     public static RSString dropString = RSString.CreateString("Drop");
     public static RSString dropStringInstance = dropString;
     public static PacketBuffer outgoingbuffer = new PacketBuffer(5000);
     public static volatile int mouseButtonPressed = 0;
     public static int anInt321 = 5063219;
-    public static volatile int anInt322 = -1;
+    public static volatile int eventMouseY = -1;
     public static RSString aClass1_323 = (RSString.CreateString("Please check your message)2centre for details)3"));
     public static int anInt324 = 0;
     public static RSString aClass1_325 = RSString.CreateString("Ung-Ultiger Benutzername");
@@ -61,7 +63,7 @@ public class Cache {
         if(arg0 != false)
             anInt324 = -101;
         Class40_Sub5_Sub4.aCacheIndex_2364 = arg3;
-        Class40_Sub5_Sub7.aCacheIndex_2484 = arg2;
+        AnimationSequence.aCacheIndex_2484 = arg2;
     }
 
     public void method230(int arg0, long arg1, SubNode arg2) {

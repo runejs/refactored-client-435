@@ -20,7 +20,7 @@ public class Class39 implements Runnable {
     public static int anInt916;
     public static RSString aClass1_917 = RSString.CreateString(" from your ignore list first");
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_918;
-    public static RSString aClass1_919 = RSString.CreateString("Ok");
+    public static RSString str_ok = RSString.CreateString("Ok");
     public Object objectLock;
     public boolean aBoolean913 = true;
     public int[] coordsY;
@@ -91,7 +91,7 @@ public class Class39 implements Runnable {
             method451(null, 36);
         aClass40_Sub5_Sub14_Sub4_918 = null;
         aClass1_904 = null;
-        aClass1_919 = null;
+        str_ok = null;
         aClass1_914 = null;
         aClass1_898 = null;
         aClass68_908 = null;

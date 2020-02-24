@@ -4,6 +4,7 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -242,7 +243,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             class40_sub5_sub14_sub4 = Class66.method1028(arg3, Main.aClass1_1762, (byte) 21, Class22_Sub2.string_blank);
             Class39.aClass68_907.method1046((byte) 90);
             class40_sub5_sub14_sub4.drawImage(-128 + (382 + -(class40_sub5_sub14_sub4.image_width / 2)), 18);
-            Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775 = Class27.method359(Class40_Sub5_Sub7.aClass1_2488, Class22_Sub2.string_blank, arg3, (byte) -64);
+            Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775 = Class27.method359(AnimationSequence.aClass1_2488, Class22_Sub2.string_blank, arg3, (byte) -64);
             Class59.aClass40_Sub5_Sub14_Sub2_1387 = Class27.method359(ISAAC.aClass1_506, Class22_Sub2.string_blank, arg3, (byte) -64);
             Class22.aClass40_Sub5_Sub14_Sub2Array535 = SpotAnimDefinition.method550(arg3, (byte) -114, Class8.aClass1_299, Class22_Sub2.string_blank);
             Class39.aClass40_Sub5_Sub14_Sub4_918 = new ImageRGB(128, 265);
@@ -294,7 +295,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             else
                 Class33.method405(16969, 10);
             RSApplet.method19(false, 24041);
-            Class40_Sub5_Sub11.aBoolean2631 = true;
+            Class40_Sub5_Sub11.clearScreen = true;
             ISAAC.aBoolean512 = true;
         }
 
@@ -319,7 +320,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
 
     }
 
-    public Model method756(int arg0) {
+    public Model getRotatedModel(int arg0) {
 
         anInt3052++;
         int i = 58 % ((41 - arg0) / 47);

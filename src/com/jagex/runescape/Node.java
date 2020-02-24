@@ -7,7 +7,7 @@ public class Node {
     public static RSString aClass1_923;
     public static RSString aClass1_924;
     public static RSString aClass1_925;
-    public static int anInt926;
+    public static int pulseCycle;
     public static int anInt927;
     public static int anInt928;
     public static RSString aClass1_929;
@@ -58,7 +58,7 @@ public class Node {
 
     static {
         anInt938 = 500;
-        anInt926 = 0;
+        pulseCycle = 0;
         aClass1_932 = RSString.CreateString("@gr2@");
         aClass1_923 = RSString.CreateString("");
         aClass1_955 = aClass1_923;

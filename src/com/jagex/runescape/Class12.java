@@ -10,7 +10,7 @@ public class Class12 {
     public static RSString aClass1_386;
     public static Class39 mouseCapturer;
     public static int cameraX;
-    public static volatile int anInt389;
+    public static volatile int eventMouseX;
     public static int width;
     public static RSString aClass1_391;
     public static RSString aClass1_392;
@@ -33,7 +33,7 @@ public class Class12 {
         aClass1_396 = RSString.CreateString("zur-Uck auf die RuneScape)2Webseite gehen");
         aClass1_395 = RSString.CreateString("Lade Benutzeroberfl-=che )2 ");
         aClass1_399 = aClass1_384;
-        anInt389 = -1;
+        eventMouseX = -1;
         aClass1_381 = RSString.CreateString("und Ihr Passwort ein)3");
         aClass1_397 = aClass1_393;
         aClass1_398 = RSString.CreateString("lila:");

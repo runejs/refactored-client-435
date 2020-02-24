@@ -60,9 +60,9 @@ public class Class5 {
     }
 
     public static void method164(int arg0) {
-        Renderable.method754(arg0 + 29378, ActorDefinition.anInt2433);
+        Renderable.handleSequences(arg0 + 29378, ActorDefinition.anInt2433);
         if(arg0 != (UnderlayDefinition.anInt2562 ^ 0xffffffff))
-            Renderable.method754(arg0 + 29378, UnderlayDefinition.anInt2562);
+            Renderable.handleSequences(arg0 + 29378, UnderlayDefinition.anInt2562);
         anInt199 = 0;
         Class68_Sub1.aClass68_2213.method1046((byte) 90);
         Player.anIntArray3284 = R3D.method708(Player.anIntArray3284);
@@ -167,7 +167,7 @@ public class Class5 {
     }
 
     public static boolean method166(byte arg0, Widget arg1) {
-        int i = arg1.anInt2639;
+        int i = arg1.contentType;
         if(Class12.anInt380 == 2) {
             if((i ^ 0xffffffff) == -202) {
                 Class37.anInt876 = 1;

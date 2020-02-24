@@ -103,12 +103,12 @@ public class HashTable {
         Class40_Sub5_Sub17_Sub1 class40_sub5_sub17_sub1 = ((Class40_Sub5_Sub17_Sub1) Class43.aClass45_1022.method902((byte) -90));
         if(arg0 == 61) {
             for(/**/; class40_sub5_sub17_sub1 != null; class40_sub5_sub17_sub1 = ((Class40_Sub5_Sub17_Sub1) Class43.aClass45_1022.method909(arg0 + -65))) {
-                if((Player.anInt3267 == class40_sub5_sub17_sub1.anInt2981) && (Node.anInt926 <= class40_sub5_sub17_sub1.anInt2971)) {
-                    if(class40_sub5_sub17_sub1.anInt2974 <= Node.anInt926) {
+                if((Player.anInt3267 == class40_sub5_sub17_sub1.anInt2981) && (Node.pulseCycle <= class40_sub5_sub17_sub1.anInt2971)) {
+                    if(class40_sub5_sub17_sub1.anInt2974 <= Node.pulseCycle) {
                         if((class40_sub5_sub17_sub1.anInt2961 ^ 0xffffffff) < -1) {
                             Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[-1 + (class40_sub5_sub17_sub1.anInt2961)]);
                             if(class40_sub5_sub17_sub4_sub2 != null && (class40_sub5_sub17_sub4_sub2.anInt3098 ^ 0xffffffff) <= -1 && (class40_sub5_sub17_sub4_sub2.anInt3098 < 13312) && (class40_sub5_sub17_sub4_sub2.anInt3089 >= 0) && (class40_sub5_sub17_sub4_sub2.anInt3089 < 13312))
-                                class40_sub5_sub17_sub1.method766(Node.anInt926, arg0 + -61, (class40_sub5_sub17_sub4_sub2.anInt3089), ((Class37.method430((byte) -127, class40_sub5_sub17_sub1.anInt2981, (class40_sub5_sub17_sub4_sub2.anInt3098), (class40_sub5_sub17_sub4_sub2.anInt3089))) - class40_sub5_sub17_sub1.anInt2960), (class40_sub5_sub17_sub4_sub2.anInt3098));
+                                class40_sub5_sub17_sub1.method766(Node.pulseCycle, arg0 + -61, (class40_sub5_sub17_sub4_sub2.anInt3089), ((Class37.method430((byte) -127, class40_sub5_sub17_sub1.anInt2981, (class40_sub5_sub17_sub4_sub2.anInt3098), (class40_sub5_sub17_sub4_sub2.anInt3089))) - class40_sub5_sub17_sub1.anInt2960), (class40_sub5_sub17_sub4_sub2.anInt3098));
                         }
                         if((class40_sub5_sub17_sub1.anInt2961 ^ 0xffffffff) > -1) {
                             int i = -1 + -class40_sub5_sub17_sub1.anInt2961;
@@ -118,7 +118,7 @@ public class HashTable {
                             else
                                 class40_sub5_sub17_sub4_sub1 = (Player.localPlayer);
                             if(class40_sub5_sub17_sub4_sub1 != null && (class40_sub5_sub17_sub4_sub1.anInt3098 >= 0) && (class40_sub5_sub17_sub4_sub1.anInt3098 < 13312) && (class40_sub5_sub17_sub4_sub1.anInt3089 >= 0) && (class40_sub5_sub17_sub4_sub1.anInt3089 < 13312))
-                                class40_sub5_sub17_sub1.method766(Node.anInt926, 0, (class40_sub5_sub17_sub4_sub1.anInt3089), ((Class37.method430((byte) -127, class40_sub5_sub17_sub1.anInt2981, (class40_sub5_sub17_sub4_sub1.anInt3098), (class40_sub5_sub17_sub4_sub1.anInt3089))) - class40_sub5_sub17_sub1.anInt2960), (class40_sub5_sub17_sub4_sub1.anInt3098));
+                                class40_sub5_sub17_sub1.method766(Node.pulseCycle, 0, (class40_sub5_sub17_sub4_sub1.anInt3089), ((Class37.method430((byte) -127, class40_sub5_sub17_sub1.anInt2981, (class40_sub5_sub17_sub4_sub1.anInt3098), (class40_sub5_sub17_sub4_sub1.anInt3089))) - class40_sub5_sub17_sub1.anInt2960), (class40_sub5_sub17_sub4_sub1.anInt3098));
                         }
                         class40_sub5_sub17_sub1.method765(51, Class5.anInt199);
                         Npc.aScene_3301.method134(Player.anInt3267, (int) class40_sub5_sub17_sub1.aDouble2980, (int) class40_sub5_sub17_sub1.aDouble2993, (int) class40_sub5_sub17_sub1.aDouble2992, 60, class40_sub5_sub17_sub1, class40_sub5_sub17_sub1.anInt3013, -1, false);

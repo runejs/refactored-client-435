@@ -4,6 +4,7 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -72,7 +73,7 @@ public class Class33 {
                             if(ISAAC.anInt522 > -1)
                                 Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204[class40_sub5_sub5.headIcon].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -30);
                         }
-                        if((Player.anInt3288 ^ 0xffffffff) == -2 && (((Class40_Sub3.anIntArray2016[-Class60.anInt1407 + i]) ^ 0xffffffff) == (Class66.anInt1545 ^ 0xffffffff)) && Node.anInt926 % 20 < 10) {
+                        if((Player.anInt3288 ^ 0xffffffff) == -2 && (((Class40_Sub3.anIntArray2016[-Class60.anInt1407 + i]) ^ 0xffffffff) == (Class66.anInt1545 ^ 0xffffffff)) && Node.pulseCycle % 20 < 10) {
                             FloorDecoration.method342(107, 15 + (actor.anInt3117), actor);
                             if(ISAAC.anInt522 > -1)
                                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, Class44.anInt1048 + -28);
@@ -113,7 +114,7 @@ public class Class33 {
                             Class32.anInt770++;
                         }
                     }
-                    if((Node.anInt926 < actor.anInt3139)) {
+                    if((Node.pulseCycle < actor.anInt3139)) {
                         FloorDecoration.method342(109, (actor.anInt3117) + 15, actor);
                         if((ISAAC.anInt522 ^ 0xffffffff) < 0) {
                             int i_1_ = (30 * actor.anInt3130 / actor.anInt3101);
@@ -124,7 +125,7 @@ public class Class33 {
                         }
                     }
                     for(int i_2_ = 0; (i_2_ ^ 0xffffffff) > -5; i_2_++) {
-                        if(Node.anInt926 < (actor.anIntArray3136[i_2_])) {
+                        if(Node.pulseCycle < (actor.anIntArray3136[i_2_])) {
                             FloorDecoration.method342(99, (actor.anInt3117) / 2, actor);
                             if((ISAAC.anInt522 ^ 0xffffffff) < 0) {
                                 if((i_2_ ^ 0xffffffff) == -2)
@@ -137,7 +138,7 @@ public class Class33 {
                                     ISAAC.anInt522 += 15;
                                     Class44.anInt1048 -= 10;
                                 }
-                                Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4Array2474[(actor.anIntArray3086[i_2_])].drawImage(ISAAC.anInt522 + -12, -12 + Class44.anInt1048);
+                                AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474[(actor.anIntArray3086[i_2_])].drawImage(ISAAC.anInt522 + -12, -12 + Class44.anInt1048);
                                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.method686((HashTable.method334((actor.anIntArray3087[i_2_]), -1)), ISAAC.anInt522, 4 + Class44.anInt1048, 0);
                                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.method686((HashTable.method334((actor.anIntArray3087[i_2_]), -1)), ISAAC.anInt522 - 1, Class44.anInt1048 + 3, 16777215);
                             }

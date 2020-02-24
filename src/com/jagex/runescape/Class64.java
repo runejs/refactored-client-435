@@ -67,7 +67,7 @@ public class Class64 implements Runnable {
 
     public static void method1012(int arg0, int arg1) {
         if(Class68.method1043(arg0)) {
-            Widget[] widgets = Class59.aWidgetArrayArray1390[arg0];
+            Widget[] widgets = Widget.interfaces[arg0];
             if(arg1 != 2)
                 method1013(true);
             for(int i = 0; widgets.length > i; i++) {
@@ -217,10 +217,10 @@ public class Class64 implements Runnable {
 
         synchronized(GameObject.frame) {
             SpotAnimDefinition.anInt2302 = Cache.mouseButtonPressed;
-            Class13.mouseX = Class12.anInt389;
+            Class13.mouseX = Class12.eventMouseX;
             if(arg0 != -656)
                 aClass1_1524 = null;
-            Landscape.mouseY = Cache.anInt322;
+            Landscape.mouseY = Cache.eventMouseY;
             GameFrame.clickType = Actor.eventMouseButtonPressed;
             Class57.anInt1338 = Class55.eventClickX;
             RSString.anInt1668 = Class40_Sub5_Sub11.eventClickY;

@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
@@ -17,28 +17,20 @@ public abstract class Class22_Sub2 extends Class22 {
     public static RSString aClass1_1877 = RSString.CreateString("");
     public static RSString aClass1_1878 = RSString.CreateString("@yel@*V");
     public static RSString aClass1_1879 = string_blank;
-    public static int anInt1880;
     public static RSString aClass1_1881 = string_blank;
-    public static int anInt1882;
     public static RSString aClass1_1883 = RSString.CreateString("Fehler bei der Verbindung zum Server)3");
-    public static int anInt1884;
     public static RSString aClass1_1885 = (RSString.CreateString("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789(Q(R+R(T(U^(V(Z(X(Y)2_=)0[*U]*W;:(W@(S*X)1<)3>)4?*6*V "));
     public static Widget aWidget_1887;
     public static int duplicateClickCount = 0;
     public static RSString aClass1_1889 = RSString.CreateString("Benutzen");
     public static RSString username = string_blank;
     public static RSString aClass1_1891 = aClass1_1875;
-    public static int anInt1892;
     public static RSString aClass1_1893 = aClass1_1885;
-    public static int anInt1894;
     public static RSString aClass1_1896 = string_blank;
-    public static int anInt1897;
     public static RSString currentLoadingText = string_blank;
 
 
     public static IndexedImage[] method315(int arg0) {
-
-        anInt1897++;
         IndexedImage[] class40_sub5_sub14_sub2s = new IndexedImage[UnderlayDefinition.anInt2581];
         for(int i = arg0; UnderlayDefinition.anInt2581 > i; i++) {
             IndexedImage class40_sub5_sub14_sub2 = (class40_sub5_sub14_sub2s[i] = new IndexedImage());
@@ -53,13 +45,11 @@ public abstract class Class22_Sub2 extends Class22 {
         }
         ActorDefinition.method569();
         return class40_sub5_sub14_sub2s;
-
     }
 
     public static void method316(int arg0) {
         do {
             Class43.aClass9_1014.method235((byte) -104);
-            anInt1880++;
             Class34.aClass9_851.method235((byte) -113);
             if(arg0 == -11965)
                 break;
@@ -70,8 +60,6 @@ public abstract class Class22_Sub2 extends Class22 {
     }
 
     public static ImageRGB[] method319(byte arg0) {
-
-        anInt1882++;
         ImageRGB[] class40_sub5_sub14_sub4s = new ImageRGB[UnderlayDefinition.anInt2581];
         if(arg0 != -62)
             return null;
@@ -91,11 +79,9 @@ public abstract class Class22_Sub2 extends Class22 {
         }
         ActorDefinition.method569();
         return class40_sub5_sub14_sub4s;
-
     }
 
     public static void method320(int arg0) {
-
         aClass1_1877 = null;
         aClass1_1885 = null;
         currentLoadingText = null;
@@ -115,7 +101,6 @@ public abstract class Class22_Sub2 extends Class22 {
         aClass1_1896 = null;
         password = null;
         aClass1_1883 = null;
-
     }
 
     public static int method323(int arg0) {
@@ -137,18 +122,14 @@ public abstract class Class22_Sub2 extends Class22 {
                     method314(176 + i, 39, i_2_ & 0x7f, arg2);
                 }
             }
-            anInt1884++;
             if(arg3 == 0)
                 break;
             method318(95, 122L, 123);
-
             break;
         } while(false);
     }
 
     public void method318(int arg0, long arg1, int arg2) {
-
-        anInt1894++;
         Class44.anInt1040 = arg2;
         for(int i = 0; i < 16; i++)
             Class32.anIntArray774[i] = 12800;
@@ -159,11 +140,9 @@ public abstract class Class22_Sub2 extends Class22 {
             method314(176 + i, 7, i_3_ >> -144095193, arg1);
             method314(176 + i, 39, 0x7f & i_3_, arg1);
         }
-
     }
 
     public void method321(byte arg0, long arg1) {
-
         for(int i = 0; (i ^ 0xffffffff) > -129; i++) {
             int i_6_ = Class38.anIntArray889[i];
             Class38.anIntArray889[i] = 0;
@@ -182,12 +161,10 @@ public abstract class Class22_Sub2 extends Class22 {
             method314(i + 176, 121, 0, arg1);
         for(int i = 0; (i ^ 0xffffffff) > -17; i++)
             method314(i + 176, 0, 0, arg1);
-        anInt1892++;
         for(int i = 0; i < 16; i++)
             method314(176 + i, 32, 0, arg1);
         for(int i = 0; (i ^ 0xffffffff) > -17; i++)
             method314(i + 192, 0, 0, arg1);
-
     }
 
     public boolean method322(int arg0, int arg1, int arg2, long arg3) {

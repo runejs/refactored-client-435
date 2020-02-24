@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -70,23 +71,23 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             providesignlink(null);
         for(int i = 0; i < arg7.length; i++) {
             Widget widget = arg7[i];
-            if(widget != null && (widget.type == 0 || widget.aBoolean2688) && widget != null && arg5 == widget.anInt2648 && (!widget.aBoolean2750 || PacketBuffer.hiddenButtonTest)) {
-                int i_1_ = arg4 + widget.anInt2656;
-                int i_2_ = arg0 + widget.anInt2696;
+            if(widget != null && (widget.type == 0 || widget.aBoolean2688) && widget != null && arg5 == widget.parentId && (!widget.isHidden || PacketBuffer.hiddenButtonTest)) {
+                int i_1_ = arg4 + widget.currentX;
+                int i_2_ = arg0 + widget.currentY;
                 if(!widget.aBoolean2694)
                     i_2_ -= arg9;
-                int i_3_ = i_2_ + widget.anInt2643;
+                int i_3_ = i_2_ + widget.originalHeight;
                 int i_4_ = arg0 >= i_2_ ? arg0 : i_2_;
                 if(!widget.aBoolean2694)
                     i_1_ -= arg2;
-                int i_5_ = i_1_ + widget.anInt2692;
+                int i_5_ = i_1_ + widget.originalWidth;
                 int i_6_ = arg4 < i_1_ ? i_1_ : arg4;
                 int i_7_ = arg1 > i_3_ ? i_3_ : arg1;
                 int i_8_ = i_5_ < arg8 ? i_5_ : arg8;
                 if(widget.type == 0) {
                     method20(i_4_, i_7_, widget.anInt2746, arg3, i_6_, i, 1, arg7, i_8_, widget.scrollPosition);
                     if(widget.aWidgetArray2713 != null)
-                        method20(i_4_, i_7_, widget.anInt2746, arg3, i_6_, widget.anInt2689, 1, (widget.aWidgetArray2713), i_8_, widget.scrollPosition);
+                        method20(i_4_, i_7_, widget.anInt2746, arg3, i_6_, widget.id, 1, (widget.aWidgetArray2713), i_8_, widget.scrollPosition);
                 }
                 if(widget.aBoolean2688) {
                     boolean bool;
@@ -135,7 +136,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     }
                     if(widget.anObjectArray2712 != null && (arg3 & 0x80) != 0)
                         Widget.method891((widget.anObjectArray2712), 0, 0, widget, 0, false);
-                    if(Class40_Sub5_Sub7.anInt2480 == Node.anInt926 && widget.anObjectArray2650 != null && (arg3 & 0x100 ^ 0xffffffff) != -1)
+                    if(AnimationSequence.anInt2480 == Node.pulseCycle && widget.anObjectArray2650 != null && (arg3 & 0x100 ^ 0xffffffff) != -1)
                         Widget.method891((widget.anObjectArray2650), 0, 0, widget, 0, false);
                 }
             }
@@ -319,7 +320,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
     public synchronized void paint(Graphics arg0) {
         if(this == Class4.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255) {
-            Class40_Sub5_Sub11.aBoolean2631 = true;
+            Class40_Sub5_Sub11.clearScreen = true;
             if(Signlink.aString739 == null || !Signlink.aString739.startsWith("1.5") || -Class4.aLong174 + System.currentTimeMillis() <= 1000L)
                 return;
             Rectangle rectangle = arg0.getClipBounds();
@@ -339,7 +340,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
     public void focusGained(FocusEvent arg0) {
         Class52.aBoolean1215 = true;
-        Class40_Sub5_Sub11.aBoolean2631 = true;
+        Class40_Sub5_Sub11.clearScreen = true;
     }
 
     public URL getDocumentBase() {
@@ -387,7 +388,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             Class30.anInt681 = Class30.anInt681 + 1 & 0x1f;
             if(Node.anInt938++ > 50) {
                 Node.anInt938 -= 50;
-                Class40_Sub5_Sub11.aBoolean2631 = true;
+                Class40_Sub5_Sub11.clearScreen = true;
                 GameFrame.aCanvas1469.setSize(Class12.width, IdentityKit.height);
                 GameFrame.aCanvas1469.setVisible(true);
                 if(Class35.aFrame1732 == null)
@@ -500,7 +501,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
         if(arg0 < 85)
             run();
         GameFrame.aCanvas1469.requestFocus();
-        Class40_Sub5_Sub11.aBoolean2631 = true;
+        Class40_Sub5_Sub11.clearScreen = true;
         Class67.aBoolean1575 = false;
         Class4.aLong174 = System.currentTimeMillis();
     }

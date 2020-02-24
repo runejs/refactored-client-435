@@ -123,21 +123,21 @@ public class ItemDefinition extends SubNode {
     }
 
     public static boolean method746(Widget arg1) {
-        if(arg1.anIntArray2742 == null) {
+        if(arg1.alternateOperators == null) {
             return false;
         }
-        for(int i = 0; arg1.anIntArray2742.length > i; i++) {
+        for(int i = 0; arg1.alternateOperators.length > i; i++) {
             int i_10_ = Class66.method1029(i, false, arg1);
-            int i_11_ = arg1.anIntArray2693[i];
-            if((arg1.anIntArray2742[i] ^ 0xffffffff) == -3) {
+            int i_11_ = arg1.alternateRhs[i];
+            if((arg1.alternateOperators[i] ^ 0xffffffff) == -3) {
                 if((i_11_ <= i_10_)) {
                     return false;
                 }
-            } else if((arg1.anIntArray2742[i] ^ 0xffffffff) == -4) {
+            } else if((arg1.alternateOperators[i] ^ 0xffffffff) == -4) {
                 if((i_11_ >= i_10_)) {
                     return false;
                 }
-            } else if((arg1.anIntArray2742[i] ^ 0xffffffff) == -5) {
+            } else if((arg1.alternateOperators[i] ^ 0xffffffff) == -5) {
                 if(i_11_ == i_10_) {
                     return false;
                 }

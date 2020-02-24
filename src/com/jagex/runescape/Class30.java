@@ -3,6 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -98,9 +99,9 @@ public class Class30 {
 
         if(arg0 != 22378)
             method376(90);
-        if(Node.anInt926 == arg1.anInt3107 || (arg1.playingAnimation ^ 0xffffffff) == 0 || (arg1.playingAnimationDelay ^ 0xffffffff) != -1 || arg1.anInt3115 + 1 > (Class68_Sub1.method1050(arg1.playingAnimation, 2).anIntArray2466[arg1.anInt3104])) {
+        if(Node.pulseCycle == arg1.anInt3107 || (arg1.playingAnimation ^ 0xffffffff) == 0 || (arg1.playingAnimationDelay ^ 0xffffffff) != -1 || arg1.anInt3115 + 1 > (Class68_Sub1.method1050(arg1.playingAnimation, 2).animationLengths[arg1.anInt3104])) {
             int i = -arg1.anInt3112 + arg1.anInt3107;
-            int i_16_ = -arg1.anInt3112 + Node.anInt926;
+            int i_16_ = -arg1.anInt3112 + Node.pulseCycle;
             int i_17_ = arg1.anInt3125 * 128 + (64 * arg1.anInt3096);
             int i_18_ = arg1.anInt3096 * 64 + 128 * arg1.anInt3081;
             int i_19_ = arg1.anInt3096 * 64 + 128 * arg1.anInt3099;
@@ -149,7 +150,7 @@ public class Class30 {
 
     }
 
-    public Model method377(Class40_Sub5_Sub7 arg0, Class40_Sub5_Sub7 arg1, int arg2, int arg3, byte arg4) {
+    public Model method377(AnimationSequence arg0, AnimationSequence arg1, int arg2, int arg3, byte arg4) {
 
         anInt694++;
         if((anInt696 ^ 0xffffffff) != 0)

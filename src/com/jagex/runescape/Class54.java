@@ -65,11 +65,11 @@ public class Class54 implements KeyListener, FocusListener {
         if(arg0 == -15454) {
             anInt1276++;
             if(Class58.anInt1376 != -1) {
-                Renderable.method754(29378, Class58.anInt1376);
+                Renderable.handleSequences(29378, Class58.anInt1376);
                 Class40_Sub5_Sub6.drawInterface(0, Class58.anInt1376, 334, (byte) -5, 0, 4, 512);
             }
             if((Class66.anInt1560 ^ 0xffffffff) != 0) {
-                Renderable.method754(29378, Class66.anInt1560);
+                Renderable.handleSequences(29378, Class66.anInt1560);
                 Class40_Sub5_Sub6.drawInterface(0, Class66.anInt1560, 334, (byte) -5, 0, 0, 512);
             }
             RSString.method71(arg0 ^ 0x3c7b);

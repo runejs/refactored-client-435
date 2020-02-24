@@ -3,6 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -153,7 +154,7 @@ public abstract class Class22 {
 
     public static void method309(int arg0, int arg1) {
         do {
-            Class40_Sub5_Sub7.anInt2480 = Node.anInt926;
+            AnimationSequence.anInt2480 = Node.pulseCycle;
             Class66.method1030((byte) 127);
             anInt531++;
             int i = (Npc.method795((byte) -70, arg1).anInt2633);
@@ -177,7 +178,7 @@ public abstract class Class22 {
                         ((Class35) R3D.anInterface3_2939).method424(arg0 ^ ~0x6a, 0.6);
                     }
                     GameObject.method774((byte) -96);
-                    Class40_Sub5_Sub11.aBoolean2631 = true;
+                    Class40_Sub5_Sub11.clearScreen = true;
                 }
                 if(i == 3) {
                     int i_22_ = 0;
@@ -206,7 +207,7 @@ public abstract class Class22 {
                     }
                 }
                 if(i == 9)
-                    Class43.anInt1025 = i_21_;
+                    Class43.bankInsertMode = i_21_;
                 if(i == 10) {
                     if(i_21_ == 0)
                         RSCanvas.anInt65 = 127;

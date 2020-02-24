@@ -62,12 +62,12 @@ public class PacketBuffer extends Buffer {
 
     public static void method516(int arg0) {
         Class32.packetBuffer.putPacket(176);
-        if(Class29.anInt673 != -1) {
-            Class55.method958(Class29.anInt673, -14222);
+        if(Class29.tabAreaOverlayWidgetId != -1) {
+            Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
             CacheIndex_Sub1.anInt1819 = -1;
             IdentityKit.aBoolean2597 = true;
             ISAAC.redrawTabArea = true;
-            Class29.anInt673 = -1;
+            Class29.tabAreaOverlayWidgetId = -1;
         }
         Class40_Sub13.anInt2184++;
         if(Class43.openChatboxWidgetId != -1) {

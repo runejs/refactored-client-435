@@ -4,6 +4,7 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
@@ -96,7 +97,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     public double aDouble2996;
     public int anInt2997;
     public double aDouble3001;
-    public Class40_Sub5_Sub7 aClass40_Sub5_Sub7_3006;
+    public AnimationSequence aAnimationSequence_3006;
     public double aDouble3011;
     public int anInt3013;
 
@@ -117,9 +118,9 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         anInt2997 = arg7;
         int i = SpotAnimDefinition.forId(anInt2962, 13).animationId;
         if(i != -1)
-            aClass40_Sub5_Sub7_3006 = Class68_Sub1.method1050(i, 2);
+            aAnimationSequence_3006 = Class68_Sub1.method1050(i, 2);
         else
-            aClass40_Sub5_Sub7_3006 = null;
+            aAnimationSequence_3006 = null;
 
     }
 
@@ -128,7 +129,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             Cache.aCacheIndex_329 = arg2;
             Class40_Sub5_Sub4.aCacheIndex_2349 = arg0;
             Class40_Sub5_Sub15.aCacheIndex_2779 = arg1;
-            Class59.aWidgetArrayArray1390 = (new Widget
+            Widget.interfaces = (new Widget
                     [Class40_Sub5_Sub4.aCacheIndex_2349.method175(-82)][]);
             anInt2994++;
             Class68.aBooleanArray1629 = (new boolean
@@ -160,16 +161,16 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 int i_3_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
                 if(i_3_ == 0) {
                     Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i_2_;
-                    class40_sub5_sub17_sub4_sub2.anInt3134 = Node.anInt926;
+                    class40_sub5_sub17_sub4_sub2.anInt3134 = Node.pulseCycle;
                 } else {
                     int i_4_ = Cache.outgoingbuffer.putBits(2, (byte) -65);
                     if((i_4_ ^ 0xffffffff) == -1) {
                         Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i_2_;
-                        class40_sub5_sub17_sub4_sub2.anInt3134 = Node.anInt926;
+                        class40_sub5_sub17_sub4_sub2.anInt3134 = Node.pulseCycle;
                         Class24.anIntArray578[Actor.anInt3153++] = i_2_;
                     } else if((i_4_ ^ 0xffffffff) == -2) {
                         Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i_2_;
-                        class40_sub5_sub17_sub4_sub2.anInt3134 = Node.anInt926;
+                        class40_sub5_sub17_sub4_sub2.anInt3134 = Node.pulseCycle;
                         int i_5_ = Cache.outgoingbuffer.putBits(3, (byte) -65);
                         class40_sub5_sub17_sub4_sub2.method782(i_5_, (byte) -96, false);
                         int i_6_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
@@ -177,7 +178,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                             Class24.anIntArray578[Actor.anInt3153++] = i_2_;
                     } else if((i_4_ ^ 0xffffffff) == -3) {
                         Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i_2_;
-                        class40_sub5_sub17_sub4_sub2.anInt3134 = Node.anInt926;
+                        class40_sub5_sub17_sub4_sub2.anInt3134 = Node.pulseCycle;
                         int i_7_ = Cache.outgoingbuffer.putBits(3, (byte) -65);
                         class40_sub5_sub17_sub4_sub2.method782(i_7_, (byte) -96, true);
                         int i_8_ = Cache.outgoingbuffer.putBits(3, (byte) -65);
@@ -766,7 +767,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
 
     }
 
-    public Model method756(int arg0) {
+    public Model getRotatedModel(int arg0) {
 
         anInt2986++;
         int i = 119 / ((arg0 - 41) / 47);
@@ -789,12 +790,12 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             aDouble2972 += (double) arg1 * aDouble2996;
             anInt3013 = 0x7ff & (int) (Math.atan2(aDouble3011, aDouble3001) * 325.949) + 1024;
             anInt2976 = 0x7ff & (int) (325.949 * Math.atan2(aDouble2972, aDouble2995));
-            if(aClass40_Sub5_Sub7_3006 != null) {
+            if(aAnimationSequence_3006 != null) {
                 anInt2973 += arg1;
-                while((aClass40_Sub5_Sub7_3006.anIntArray2466[anInt2982] < anInt2973)) {
-                    anInt2973 -= aClass40_Sub5_Sub7_3006.anIntArray2466[anInt2982];
+                while((aAnimationSequence_3006.animationLengths[anInt2982] < anInt2973)) {
+                    anInt2973 -= aAnimationSequence_3006.animationLengths[anInt2982];
                     anInt2982++;
-                    if((aClass40_Sub5_Sub7_3006.anIntArray2485.length <= anInt2982))
+                    if((aAnimationSequence_3006.anIntArray2485.length <= anInt2982))
                         anInt2982 = 0;
                 }
             }

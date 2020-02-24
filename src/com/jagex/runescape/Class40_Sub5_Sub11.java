@@ -15,7 +15,7 @@ public class Class40_Sub5_Sub11 extends SubNode {
     public static int[] tabWidgetIds = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
     public static int anInt2628 = 0;
     public static RSString aClass1_2629 = RSString.CreateString("button near the top of that page)3");
-    public static volatile boolean aBoolean2631 = true;
+    public static volatile boolean clearScreen = true;
     public static int anInt2632;
 
     public int anInt2633 = 0;
@@ -25,7 +25,7 @@ public class Class40_Sub5_Sub11 extends SubNode {
         if(arg1 != false)
             method633(-48);
         int i = arg0.anInt3125 * 128 + (64 * arg0.anInt3096);
-        int i_0_ = arg0.anInt3112 + -Node.anInt926;
+        int i_0_ = arg0.anInt3112 + -Node.pulseCycle;
         if(arg0.anInt3073 == 0)
             arg0.anInt3080 = 1024;
         anInt2619++;
