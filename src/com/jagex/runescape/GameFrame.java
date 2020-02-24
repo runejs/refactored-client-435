@@ -305,21 +305,20 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
             /* Tab interface scrolling */
             int tabInterfaceID = Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId];
             if(tabInterfaceID != -1) {
-                Widget tab = Widget.forId(tabInterfaceID);
                 offsetX = 765 - 218;
                 offsetY = 503 - 298;
-                for(int index = 0; index < Widget.interfaces[tab.id].length; index++) {
-                    if(Widget.interfaces[tab.id][index].scrollHeight > 0) {
+                for(int index = 0; index < Widget.interfaces[tabInterfaceID].length; index++) {
+                    if(Widget.interfaces[tabInterfaceID][index].scrollHeight > 0) {
                         childID = index;
-                        positionX = Widget.interfaces[tab.id][index].currentX;
-                        positionY = Widget.interfaces[tab.id][index].currentY;
-                        width = Widget.interfaces[tab.id][index].originalWidth;
-                        height = Widget.interfaces[tab.id][index].originalHeight;
+                        positionX = Widget.interfaces[tabInterfaceID][index].currentX;
+                        positionY = Widget.interfaces[tabInterfaceID][index].currentY;
+                        width = Widget.interfaces[tabInterfaceID][index].originalWidth;
+                        height = Widget.interfaces[tabInterfaceID][index].originalHeight;
                         break;
                     }
                 }
                 if(mouseX > offsetX + positionX && mouseY > offsetY + positionY && mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
-                    Widget.interfaces[tab.id][childID].scrollPosition += rotation * 30;
+                    Widget.interfaces[tabInterfaceID][childID].scrollPosition += rotation * 30;
                     //				client.tabAreaAltered = true;
                     ISAAC.redrawTabArea = true;
                     return true;
