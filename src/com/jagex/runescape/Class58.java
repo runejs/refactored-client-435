@@ -13,7 +13,7 @@ public class Class58 {
     public static boolean aBoolean1349;
     public static int anInt1350;
     public static int anInt1351;
-    public static int anInt1352 = 0;
+    public static int selectedInventorySlot = 0;
     public static RSString aClass1_1354;
     public static int anInt1356;
     public static int anInt1357;
@@ -59,17 +59,17 @@ public class Class58 {
 
     public static void method976(byte arg0, Widget arg1) {
         anInt1350++;
-        int i = arg1.anInt2639;
+        int i = arg1.contentType;
         if(i >= 1 && i <= 100 || (i ^ 0xffffffff) <= -702 && (i ^ 0xffffffff) >= -801) {
             if((i ^ 0xffffffff) == -2 && (Class12.anInt380 ^ 0xffffffff) == -1) {
-                arg1.aClass1_2668 = Class13.aClass1_405;
-                arg1.anInt2714 = 0;
+                arg1.text = Class13.aClass1_405;
+                arg1.menuType = 0;
             } else if(i == 1 && (Class12.anInt380 ^ 0xffffffff) == -2) {
-                arg1.aClass1_2668 = Class66.aClass1_1552;
-                arg1.anInt2714 = 0;
+                arg1.text = Class66.aClass1_1552;
+                arg1.menuType = 0;
             } else if(i == 2 && (Class12.anInt380 ^ 0xffffffff) != -3) {
-                arg1.anInt2714 = 0;
-                arg1.aClass1_2668 = PacketBuffer.aClass1_2240;
+                arg1.menuType = 0;
+                arg1.text = PacketBuffer.aClass1_2240;
             } else {
                 int i_0_ = Class40_Sub5_Sub17_Sub3.anInt3060;
                 if((i ^ 0xffffffff) < -701)
@@ -79,11 +79,11 @@ public class Class58 {
                 if((Class12.anInt380 ^ 0xffffffff) != -3)
                     i_0_ = 0;
                 if((i_0_ <= i)) {
-                    arg1.aClass1_2668 = Class66.blank_string;
-                    arg1.anInt2714 = 0;
+                    arg1.text = Class66.blank_string;
+                    arg1.menuType = 0;
                 } else {
-                    arg1.aClass1_2668 = Class40_Sub11.aClass1Array2147[i];
-                    arg1.anInt2714 = 1;
+                    arg1.text = Class40_Sub11.aClass1Array2147[i];
+                    arg1.menuType = 1;
                 }
             }
         } else if(i >= 101 && (i ^ 0xffffffff) >= -201 || (i ^ 0xffffffff) <= -802 && (i ^ 0xffffffff) >= -901) {
@@ -95,22 +95,22 @@ public class Class58 {
             if(Class12.anInt380 != 2)
                 i_1_ = 0;
             if(i >= i_1_) {
-                arg1.aClass1_2668 = Class66.blank_string;
-                arg1.anInt2714 = 0;
+                arg1.text = Class66.blank_string;
+                arg1.menuType = 0;
             } else {
                 if((Class40_Sub7.anIntArray2131[i] ^ 0xffffffff) != -1) {
                     if((Class40_Sub7.anIntArray2131[i] ^ 0xffffffff) > -5001) {
                         if((Class13.worldid ^ 0xffffffff) != (Class40_Sub7.anIntArray2131[i] ^ 0xffffffff))
-                            arg1.aClass1_2668 = (Class40_Sub5_Sub17_Sub6.method832(86, (new RSString[]{Class54.aClass1_1283, Class26.aClass1_634, HashTable.method334((Class40_Sub7.anIntArray2131[i]), -1)})));
+                            arg1.text = (Class40_Sub5_Sub17_Sub6.method832(86, (new RSString[]{Class54.aClass1_1283, Class26.aClass1_634, HashTable.method334((Class40_Sub7.anIntArray2131[i]), -1)})));
                         else
-                            arg1.aClass1_2668 = (Class40_Sub5_Sub17_Sub6.method832(86, (new RSString[]{Landscape.aClass1_1162, Class26.aClass1_634, HashTable.method334((Class40_Sub7.anIntArray2131[i]), -1)})));
+                            arg1.text = (Class40_Sub5_Sub17_Sub6.method832(86, (new RSString[]{Landscape.aClass1_1162, Class26.aClass1_634, HashTable.method334((Class40_Sub7.anIntArray2131[i]), -1)})));
                     } else if((Class40_Sub7.anIntArray2131[i] ^ 0xffffffff) != (Class13.worldid ^ 0xffffffff))
-                        arg1.aClass1_2668 = (Class40_Sub5_Sub17_Sub6.method832(53, (new RSString[]{Class54.aClass1_1283, Cache.aClass1_333, HashTable.method334(((Class40_Sub7.anIntArray2131[i]) + -5000), -1)})));
+                        arg1.text = (Class40_Sub5_Sub17_Sub6.method832(53, (new RSString[]{Class54.aClass1_1283, Cache.aClass1_333, HashTable.method334(((Class40_Sub7.anIntArray2131[i]) + -5000), -1)})));
                     else
-                        arg1.aClass1_2668 = (Class40_Sub5_Sub17_Sub6.method832(-111, (new RSString[]{Landscape.aClass1_1162, Cache.aClass1_333, HashTable.method334(-5000 + (Class40_Sub7.anIntArray2131[i]), -1)})));
+                        arg1.text = (Class40_Sub5_Sub17_Sub6.method832(-111, (new RSString[]{Landscape.aClass1_1162, Cache.aClass1_333, HashTable.method334(-5000 + (Class40_Sub7.anIntArray2131[i]), -1)})));
                 } else
-                    arg1.aClass1_2668 = (Class40_Sub5_Sub17_Sub6.method832(104, new RSString[]{FloorDecoration.aClass1_610, Class27.aClass1_664}));
-                arg1.anInt2714 = 1;
+                    arg1.text = (Class40_Sub5_Sub17_Sub6.method832(104, new RSString[]{FloorDecoration.aClass1_610, Class27.aClass1_664}));
+                arg1.menuType = 1;
             }
         } else {
             int i_2_ = 88 / ((arg0 - 13) / 53);
@@ -118,74 +118,74 @@ public class Class58 {
                 int i_3_ = Class40_Sub5_Sub17_Sub3.anInt3060;
                 if(Class12.anInt380 != 2)
                     i_3_ = 0;
-                arg1.anInt2720 = 20 + 15 * i_3_;
-                if(arg1.anInt2643 >= arg1.anInt2720)
-                    arg1.anInt2720 = 1 + arg1.anInt2643;
+                arg1.scrollHeight = 20 + 15 * i_3_;
+                if(arg1.originalHeight >= arg1.scrollHeight)
+                    arg1.scrollHeight = 1 + arg1.originalHeight;
             } else if((i ^ 0xffffffff) <= -402 && i <= 500) {
                 i -= 401;
                 if((i ^ 0xffffffff) == -1 && (Class12.anInt380 ^ 0xffffffff) == -1) {
-                    arg1.aClass1_2668 = Class49.aClass1_1148;
-                    arg1.anInt2714 = 0;
+                    arg1.text = Class49.aClass1_1148;
+                    arg1.menuType = 0;
                 } else if((i ^ 0xffffffff) == -2 && (Class12.anInt380 ^ 0xffffffff) == -1) {
-                    arg1.aClass1_2668 = PacketBuffer.aClass1_2240;
-                    arg1.anInt2714 = 0;
+                    arg1.text = PacketBuffer.aClass1_2240;
+                    arg1.menuType = 0;
                 } else {
                     int i_4_ = Class42.anInt1008;
                     if((Class12.anInt380 ^ 0xffffffff) == -1)
                         i_4_ = 0;
                     if((i_4_ <= i)) {
-                        arg1.anInt2714 = 0;
-                        arg1.aClass1_2668 = Class66.blank_string;
+                        arg1.menuType = 0;
+                        arg1.text = Class66.blank_string;
                     } else {
-                        arg1.aClass1_2668 = Class60.method991(-111, Class53.aLongArray1267[i]).method85(-4305);
-                        arg1.anInt2714 = 1;
+                        arg1.text = Class60.method991(-111, Class53.aLongArray1267[i]).method85(-4305);
+                        arg1.menuType = 1;
                     }
                 }
             } else if((i ^ 0xffffffff) == -504) {
-                arg1.anInt2720 = 15 * Class42.anInt1008 + 20;
-                if(arg1.anInt2720 <= arg1.anInt2643)
-                    arg1.anInt2720 = arg1.anInt2643 + 1;
+                arg1.scrollHeight = 15 * Class42.anInt1008 + 20;
+                if(arg1.scrollHeight <= arg1.originalHeight)
+                    arg1.scrollHeight = arg1.originalHeight + 1;
             } else if(i == 324) {
                 if((Class64.anInt1511 ^ 0xffffffff) == 0) {
-                    Class64.anInt1511 = arg1.anInt2744;
-                    Main.anInt1769 = arg1.anInt2670;
+                    Class64.anInt1511 = arg1.spriteId;
+                    Main.anInt1769 = arg1.alternateSpriteId;
                 }
                 if(!Class45.aClass30_1082.aBoolean683)
-                    arg1.anInt2744 = Main.anInt1769;
+                    arg1.spriteId = Main.anInt1769;
                 else
-                    arg1.anInt2744 = Class64.anInt1511;
+                    arg1.spriteId = Class64.anInt1511;
             } else if((i ^ 0xffffffff) == -326) {
                 if((Class64.anInt1511 ^ 0xffffffff) == 0) {
-                    Main.anInt1769 = arg1.anInt2670;
-                    Class64.anInt1511 = arg1.anInt2744;
+                    Main.anInt1769 = arg1.alternateSpriteId;
+                    Class64.anInt1511 = arg1.spriteId;
                 }
                 if(Class45.aClass30_1082.aBoolean683)
-                    arg1.anInt2744 = Main.anInt1769;
+                    arg1.spriteId = Main.anInt1769;
                 else
-                    arg1.anInt2744 = Class64.anInt1511;
+                    arg1.spriteId = Class64.anInt1511;
             } else if((i ^ 0xffffffff) == -328) {
-                arg1.anInt2690 = 150;
-                arg1.anInt2657 = 0x7ff & (int) (256.0 * Math.sin((double) Node.anInt926 / 40.0));
-                arg1.anInt2673 = 0;
-                arg1.anInt2687 = 5;
+                arg1.rotationX = 150;
+                arg1.rotationZ = 0x7ff & (int) (256.0 * Math.sin((double) Node.pulseCycle / 40.0));
+                arg1.modelId = 0;
+                arg1.modelType = 5;
             } else if(i == 328) {
-                arg1.anInt2690 = 150;
-                arg1.anInt2657 = 0x7ff & (int) (256.0 * Math.sin((double) Node.anInt926 / 40.0));
-                arg1.anInt2673 = 1;
-                arg1.anInt2687 = 5;
+                arg1.rotationX = 150;
+                arg1.rotationZ = 0x7ff & (int) (256.0 * Math.sin((double) Node.pulseCycle / 40.0));
+                arg1.modelId = 1;
+                arg1.modelType = 5;
             } else if((i ^ 0xffffffff) == -601)
-                arg1.aClass1_2668 = (Class40_Sub5_Sub17_Sub6.method832(-128, new RSString[]{Class66.aClass1_1550, Class22_Sub2.aClass1_1878}));
+                arg1.text = (Class40_Sub5_Sub17_Sub6.method832(-128, new RSString[]{Class66.aClass1_1550, Class22_Sub2.aClass1_1878}));
             else if(i == 620) {
                 if((Class19.anInt493 ^ 0xffffffff) <= -2) {
                     if(!Class67.aBoolean1601) {
-                        arg1.anInt2647 = 16777215;
-                        arg1.aClass1_2668 = VertexNormal.aClass1_1088;
+                        arg1.textColor = 16777215;
+                        arg1.text = VertexNormal.aClass1_1088;
                     } else {
-                        arg1.anInt2647 = 16711680;
-                        arg1.aClass1_2668 = ActorDefinition.aClass1_2384;
+                        arg1.textColor = 16711680;
+                        arg1.text = ActorDefinition.aClass1_2384;
                     }
                 } else
-                    arg1.aClass1_2668 = Class66.blank_string;
+                    arg1.text = Class66.blank_string;
             }
         }
     }

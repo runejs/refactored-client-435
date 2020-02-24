@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.media.renderable.actor.Actor;
 
@@ -111,67 +112,67 @@ public class Class40_Sub5_Sub15 extends SubNode {
         anInt2789++;
         arg1.aBoolean3105 = false;
         if((arg1.anInt3077 ^ 0xffffffff) != 0) {
-            Class40_Sub5_Sub7 class40_sub5_sub7 = Class68_Sub1.method1050(arg1.anInt3077, 2);
-            if(class40_sub5_sub7 == null || class40_sub5_sub7.anIntArray2485 == null)
+            AnimationSequence animationSequence = Class68_Sub1.method1050(arg1.anInt3077, 2);
+            if(animationSequence == null || animationSequence.anIntArray2485 == null)
                 arg1.anInt3077 = -1;
             else {
                 arg1.anInt3120++;
-                if(((arg1.anInt3116 < class40_sub5_sub7.anIntArray2485.length)) && (class40_sub5_sub7.anIntArray2466[arg1.anInt3116] < arg1.anInt3120)) {
+                if(((arg1.anInt3116 < animationSequence.anIntArray2485.length)) && (animationSequence.animationLengths[arg1.anInt3116] < arg1.anInt3120)) {
                     arg1.anInt3116++;
                     arg1.anInt3120 = 1;
                 }
-                if(class40_sub5_sub7.anIntArray2485.length <= arg1.anInt3116) {
+                if(animationSequence.anIntArray2485.length <= arg1.anInt3116) {
                     arg1.anInt3116 = 0;
                     arg1.anInt3120 = 0;
                 }
             }
         }
-        if(arg1.anInt3091 != -1 && Node.anInt926 >= arg1.anInt3093) {
+        if(arg1.anInt3091 != -1 && Node.pulseCycle >= arg1.anInt3093) {
             if((arg1.anInt3140 ^ 0xffffffff) > -1)
                 arg1.anInt3140 = 0;
             int i = SpotAnimDefinition.forId(arg1.anInt3091, 13).animationId;
             if(i == -1)
                 arg1.anInt3091 = -1;
             else {
-                Class40_Sub5_Sub7 class40_sub5_sub7 = Class68_Sub1.method1050(i, 2);
-                if(class40_sub5_sub7 == null || class40_sub5_sub7.anIntArray2485 == null)
+                AnimationSequence animationSequence = Class68_Sub1.method1050(i, 2);
+                if(animationSequence == null || animationSequence.anIntArray2485 == null)
                     arg1.anInt3091 = -1;
                 else {
                     arg1.anInt3129++;
-                    if(((class40_sub5_sub7.anIntArray2485.length > arg1.anInt3140)) && ((arg1.anInt3129 > class40_sub5_sub7.anIntArray2466[arg1.anInt3140]))) {
+                    if(((animationSequence.anIntArray2485.length > arg1.anInt3140)) && ((arg1.anInt3129 > animationSequence.animationLengths[arg1.anInt3140]))) {
                         arg1.anInt3129 = 1;
                         arg1.anInt3140++;
                     }
-                    if(((class40_sub5_sub7.anIntArray2485.length <= arg1.anInt3140)) && ((arg1.anInt3140 ^ 0xffffffff) > -1 || ((class40_sub5_sub7.anIntArray2485.length <= arg1.anInt3140))))
+                    if(((animationSequence.anIntArray2485.length <= arg1.anInt3140)) && ((arg1.anInt3140 ^ 0xffffffff) > -1 || ((animationSequence.anIntArray2485.length <= arg1.anInt3140))))
                         arg1.anInt3091 = -1;
                 }
             }
         }
         if(arg0 == true) {
             if(arg1.playingAnimation != -1 && arg1.playingAnimationDelay <= 1) {
-                Class40_Sub5_Sub7 class40_sub5_sub7 = Class68_Sub1.method1050(arg1.playingAnimation, 2);
-                if(class40_sub5_sub7.anInt2470 == 1 && (arg1.anInt3094 ^ 0xffffffff) < -1 && arg1.anInt3112 <= Node.anInt926 && Node.anInt926 > arg1.anInt3107) {
+                AnimationSequence animationSequence = Class68_Sub1.method1050(arg1.playingAnimation, 2);
+                if(animationSequence.anInt2470 == 1 && (arg1.anInt3094 ^ 0xffffffff) < -1 && arg1.anInt3112 <= Node.pulseCycle && Node.pulseCycle > arg1.anInt3107) {
                     arg1.playingAnimationDelay = 1;
                     return;
                 }
             }
             if((arg1.playingAnimation ^ 0xffffffff) != 0 && arg1.playingAnimationDelay == 0) {
-                Class40_Sub5_Sub7 class40_sub5_sub7 = Class68_Sub1.method1050(arg1.playingAnimation, 2);
-                if(class40_sub5_sub7 != null && class40_sub5_sub7.anIntArray2485 != null) {
+                AnimationSequence animationSequence = Class68_Sub1.method1050(arg1.playingAnimation, 2);
+                if(animationSequence != null && animationSequence.anIntArray2485 != null) {
                     arg1.anInt3115++;
-                    if((class40_sub5_sub7.anIntArray2485.length > arg1.anInt3104) && (class40_sub5_sub7.anIntArray2466[arg1.anInt3104] < arg1.anInt3115)) {
+                    if((animationSequence.anIntArray2485.length > arg1.anInt3104) && (animationSequence.animationLengths[arg1.anInt3104] < arg1.anInt3115)) {
                         arg1.anInt3104++;
                         arg1.anInt3115 = 1;
                     }
-                    if((class40_sub5_sub7.anIntArray2485.length <= arg1.anInt3104)) {
-                        arg1.anInt3104 -= class40_sub5_sub7.anInt2497;
+                    if((animationSequence.anIntArray2485.length <= arg1.anInt3104)) {
+                        arg1.anInt3104 -= animationSequence.frameStep;
                         arg1.anInt3095++;
-                        if((class40_sub5_sub7.anInt2495 <= arg1.anInt3095))
+                        if((animationSequence.anInt2495 <= arg1.anInt3095))
                             arg1.playingAnimation = -1;
-                        if((arg1.anInt3104 ^ 0xffffffff) > -1 || (arg1.anInt3104 >= class40_sub5_sub7.anIntArray2485.length))
+                        if((arg1.anInt3104 ^ 0xffffffff) > -1 || (arg1.anInt3104 >= animationSequence.anIntArray2485.length))
                             arg1.playingAnimation = -1;
                     }
-                    arg1.aBoolean3105 = class40_sub5_sub7.aBoolean2496;
+                    arg1.aBoolean3105 = animationSequence.aBoolean2496;
                 } else
                     arg1.playingAnimation = -1;
             }

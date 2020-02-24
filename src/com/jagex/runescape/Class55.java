@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -13,7 +14,7 @@ import java.io.*;
 
 public class Class55 {
     public static CacheIndex_Sub1 aClass6_Sub1_1286;
-    public static int anInt1288 = 0;
+    public static int mouseInvInterfaceIndex = 0;
     public static Class48 aClass48_1289;
     public static RSString aClass1_1291 = RSString.CreateString("slide:");
     public static RSString aClass1_1292 = RSString.CreateString("bevor Sie den Vorgang wiederholen)3");
@@ -117,7 +118,7 @@ public class Class55 {
         ActorDefinition.aClass1_2396 = Class34.aClass1_850;
         SceneTile.aClass1_2054 = Class37.aClass1_860;
         Node.aClass1_958 = Class64.aClass1_1523;
-        RSCanvas.aClass1_51 = Class40_Sub5_Sub7.aClass1_2487;
+        RSCanvas.aClass1_51 = AnimationSequence.aClass1_2487;
         aClass1_1291 = Class67.aClass1_1609;
         Class68.aClass1_1638 = Class40_Sub13.aClass1_2185;
         Class37.aClass1_873 = Class33.aClass1_779;
@@ -171,7 +172,7 @@ public class Class55 {
         Cache.dropStringInstance = SubNode.aClass1_2095;
         Widget.aClass1_2740 = Class40_Sub5_Sub17_Sub3.aClass1_3071;
         Class42.aClass1_1001 = Class49.aClass1_1155;
-        RSRuntimeException.aClass1_1649 = Buffer.aClass1_1990;
+        RSRuntimeException.str_select = Buffer.aClass1_1990;
         Class51.aClass1_1200 = Class35.aClass1_1726;
         Class66.aClass1_1572 = Class38.aClass1_896;
         Cache.aClass1_333 = Class12.aClass1_391;
@@ -265,13 +266,13 @@ public class Class55 {
         Class65.aClass1_1538 = GameObject.aClass1_3043;
         ActorDefinition.aClass1_2392 = SceneTile.aClass1_2044;
         VertexNormal.aClass1_1097 = Class22_Sub1.aClass1_1849;
-        Class40_Sub6.aClass1_2097 = Class40_Sub5_Sub7.aClass1_2481;
+        Class40_Sub6.aClass1_2097 = AnimationSequence.aClass1_2481;
         Class67.aClass1_1585 = Class61.aClass1_1426;
         RSString.aClass1_1703 = Class12.aClass1_385;
         VertexNormal.aClass1_1088 = Class26.aClass1_633;
         Class45.aClass1_1076 = GameObjectDefinition.aClass1_2556;
         Class34.aClass1_829 = RSApplet.aClass1_25;
-        CollisionMap.aClass1_167 = Class26.aClass1_629;
+        CollisionMap.str_continue = Class26.aClass1_629;
         Landscape.aClass1_1178 = CacheIndex.aClass1_259;
         Class61.aClass1_1432 = Class44.aClass1_1034;
         Node.aClass1_941 = Class64.aClass1_1523;
@@ -279,7 +280,7 @@ public class Class55 {
         Class53.aClass1_1259 = Class12.aClass1_396;
         Class40_Sub5_Sub4.aClass1_2351 = Class4.aClass1_181;
         Class22_Sub1.aClass1_1858 = Class12.aClass1_382;
-        CacheIndex.aClass1_258 = Class40_Sub5_Sub7.aClass1_2475;
+        CacheIndex.aClass1_258 = AnimationSequence.aClass1_2475;
         Class35.aClass1_1747 = Class45.aClass1_1079;
         Class33.aClass1_783 = Class42.aClass1_1003;
         IdentityKit.aClass1_2615 = HashTable.aClass1_558;
@@ -288,7 +289,7 @@ public class Class55 {
         Class44.aClass1_1038 = Class45.aClass1_1059;
         Class40_Sub5_Sub17_Sub3.aClass1_3050 = Class56.aClass1_1316;
         Class40_Sub6.aClass1_2111 = VertexNormal.aClass1_1116;
-        Class39.aClass1_919 = GameObject.aClass1_3037;
+        Class39.str_ok = GameObject.aClass1_3037;
         Class12.aClass1_397 = Player.aClass1_3290;
         Landscape.aClass1_1180 = Class40_Sub2.aClass1_2008;
         Class22.aClass1_542 = Class48.aClass1_1137;

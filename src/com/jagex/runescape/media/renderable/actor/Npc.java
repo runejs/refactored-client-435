@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -219,46 +220,46 @@ public class Npc extends Actor {
                                     else if((ActorDefinition.anInt2394 ^ 0xffffffff) < -1)
                                         Class27.method358(123, (-1 + (ActorDefinition.anInt2394)));
                                 } else {
-                                    RSRuntimeException.anInt1642 = -1;
+                                    RSRuntimeException.lastActiveInvInterface = -1;
                                     Class43.method894(false);
-                                    if((RSRuntimeException.anInt1642 == Class48.anInt1127) && (Class55.anInt1288 != Class58.anInt1352)) {
-                                        Widget widget = Class68.method1045((Class48.anInt1127), (byte) -95);
-                                        int i = 0;
-                                        if(((Class43.anInt1025 ^ 0xffffffff) == -2) && (widget.anInt2639 == 206))
-                                            i = 1;
-                                        if(((widget.items[Class55.anInt1288]) ^ 0xffffffff) >= -1)
-                                            i = 0;
-                                        if(!widget.itemDeletesDraged) {
-                                            if((i ^ 0xffffffff) != -2)
-                                                widget.method636(Class55.anInt1288, false, Class58.anInt1352);
+                                    if((RSRuntimeException.lastActiveInvInterface == Class48.modifiedWidgetId) && (Class55.mouseInvInterfaceIndex != Class58.selectedInventorySlot)) {
+                                        Widget childInterface = Widget.forId((Class48.modifiedWidgetId));
+                                        int moveItemInsertionMode = 0;
+                                        if((Class43.bankInsertMode == 1) && (childInterface.contentType == 206))
+                                            moveItemInsertionMode = 1;
+                                        if(((childInterface.items[Class55.mouseInvInterfaceIndex]) ^ 0xffffffff) >= -1)
+                                            moveItemInsertionMode = 0;
+                                        if(!childInterface.itemDeletesDraged) {
+                                            if((moveItemInsertionMode ^ 0xffffffff) != -2)
+                                                childInterface.swapItems(Class55.mouseInvInterfaceIndex, false, Class58.selectedInventorySlot);
                                             else {
-                                                int i_14_ = Class58.anInt1352;
-                                                int i_15_ = Class55.anInt1288;
-                                                while(i_15_ != i_14_) {
-                                                    if(i_14_ <= i_15_) {
-                                                        if((i_14_ < i_15_)) {
-                                                            widget.method636(1 + i_14_, false, i_14_);
-                                                            i_14_++;
+                                                int slotStart = Class58.selectedInventorySlot;
+                                                int slotEnd = Class55.mouseInvInterfaceIndex;
+                                                while(slotEnd != slotStart) {
+                                                    if(slotStart <= slotEnd) {
+                                                        if((slotStart < slotEnd)) {
+                                                            childInterface.swapItems(1 + slotStart, false, slotStart);
+                                                            slotStart++;
                                                         }
                                                     } else {
-                                                        widget.method636(-1 + i_14_, false, i_14_);
-                                                        i_14_--;
+                                                        childInterface.swapItems(-1 + slotStart, false, slotStart);
+                                                        slotStart--;
                                                     }
                                                 }
                                             }
                                         } else {
-                                            int i_16_ = Class55.anInt1288;
-                                            int i_17_ = Class58.anInt1352;
-                                            widget.items[i_16_] = (widget.items[i_17_]);
-                                            widget.itemAmounts[i_16_] = (widget.itemAmounts[i_17_]);
-                                            widget.items[i_17_] = -1;
-                                            widget.itemAmounts[i_17_] = 0;
+                                            int i_16_ = Class55.mouseInvInterfaceIndex;
+                                            int i_17_ = Class58.selectedInventorySlot;
+                                            childInterface.items[i_16_] = (childInterface.items[i_17_]);
+                                            childInterface.itemAmounts[i_16_] = (childInterface.itemAmounts[i_17_]);
+                                            childInterface.items[i_17_] = -1;
+                                            childInterface.itemAmounts[i_17_] = 0;
                                         }
                                         Class32.packetBuffer.putPacket(83);
-                                        Class32.packetBuffer.putDualByte(i, 128);
-                                        Class32.packetBuffer.putCustomNegativeOffsetShortBE(Class58.anInt1352, -128);
-                                        Class32.packetBuffer.putOffsetShortLE(Class55.anInt1288);
-                                        Class32.packetBuffer.putIntME2(Class48.anInt1127);
+                                        Class32.packetBuffer.putDualByte(moveItemInsertionMode, 128);
+                                        Class32.packetBuffer.putCustomNegativeOffsetShortBE(Class58.selectedInventorySlot, -128);
+                                        Class32.packetBuffer.putOffsetShortLE(Class55.mouseInvInterfaceIndex);
+                                        Class32.packetBuffer.putIntME2(Class48.modifiedWidgetId);
                                     }
                                 }
                                 RSRuntimeException.anInt1651 = 10;
@@ -293,19 +294,19 @@ public class Npc extends Actor {
                         int i = 34;
                         if(Class66.anInt1560 != -1)
                             Class27.method360((byte) 125, 516, i, 338, Class66.anInt1560, 4, 4);
-                        if(Class29.anInt673 == -1) {
+                        if(Class29.tabAreaOverlayWidgetId == -1) {
                             if(((Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]) ^ 0xffffffff) != 0)
                                 Class27.method360((byte) 125, 743, i, 466, (Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]), 205, 553);
                         } else
-                            Class27.method360((byte) 125, 743, i, 466, Class29.anInt673, 205, 553);
+                            Class27.method360((byte) 125, 743, i, 466, Class29.tabAreaOverlayWidgetId, 205, 553);
                         if((Class43.openChatboxWidgetId ^ 0xffffffff) != 0)
                             Class27.method360((byte) 125, 496, i, 453, Class43.openChatboxWidgetId, 357, 17);
                         else if((Class48.anInt1138 ^ 0xffffffff) != 0)
                             Class27.method360((byte) 125, 496, i, 453, Class48.anInt1138, 357, 17);
                         if((Class66.anInt1560 ^ 0xffffffff) != 0)
                             Class27.method360((byte) 125, 516, i ^ 0xffffffff, 338, Class66.anInt1560, 4, 4);
-                        if(Class29.anInt673 != -1)
-                            Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, Class29.anInt673, 205, 553);
+                        if(Class29.tabAreaOverlayWidgetId != -1)
+                            Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, Class29.tabAreaOverlayWidgetId, 205, 553);
                         else if((Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]) != -1)
                             Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, (Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]), 205, 553);
                         if(Class43.openChatboxWidgetId != -1)
@@ -431,13 +432,13 @@ public class Npc extends Actor {
         return overlayDefinition;
     }
 
-    public Model method756(int arg0) {
+    public Model getRotatedModel(int arg0) {
         if(aClass40_Sub5_Sub5_3300 == null)
             return null;
         int i = 25 % ((41 - arg0) / 47);
-        Class40_Sub5_Sub7 class40_sub5_sub7 = ((playingAnimation ^ 0xffffffff) == 0 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2));
-        Class40_Sub5_Sub7 class40_sub5_sub7_0_ = (anInt3077 != -1 && (anInt3077 != anInt3126 || class40_sub5_sub7 == null) ? Class68_Sub1.method1050(anInt3077, 2) : null);
-        Model class40_sub5_sub17_sub5 = aClass40_Sub5_Sub5_3300.method568((byte) -50, class40_sub5_sub7, class40_sub5_sub7_0_, anInt3116, anInt3104);
+        AnimationSequence animationSequence = ((playingAnimation ^ 0xffffffff) == 0 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2));
+        AnimationSequence animationSequence_0_ = (anInt3077 != -1 && (anInt3077 != anInt3126 || animationSequence == null) ? Class68_Sub1.method1050(anInt3077, 2) : null);
+        Model class40_sub5_sub17_sub5 = aClass40_Sub5_Sub5_3300.method568((byte) -50, animationSequence, animationSequence_0_, anInt3116, anInt3104);
         if(class40_sub5_sub17_sub5 == null)
             return null;
         class40_sub5_sub17_sub5.method799();

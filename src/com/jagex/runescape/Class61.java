@@ -31,18 +31,18 @@ public class Class61 {
             Class40_Sub5_Sub4.aCacheIndex_2349.method171(1, arg1);
             if(arg0 < 31)
                 aClass1_1428 = null;
-            if(Class59.aWidgetArrayArray1390[arg1] != null) {
+            if(Widget.interfaces[arg1] != null) {
                 boolean bool = true;
-                for(int i = 0; ((i ^ 0xffffffff) > ((Class59.aWidgetArrayArray1390[arg1]).length ^ 0xffffffff)); i++) {
-                    if(Class59.aWidgetArrayArray1390[arg1][i] != null) {
-                        if((Class59.aWidgetArrayArray1390[arg1][i].type) != 2)
-                            Class59.aWidgetArrayArray1390[arg1][i] = null;
+                for(int i = 0; ((i ^ 0xffffffff) > ((Widget.interfaces[arg1]).length ^ 0xffffffff)); i++) {
+                    if(Widget.interfaces[arg1][i] != null) {
+                        if((Widget.interfaces[arg1][i].type) != 2)
+                            Widget.interfaces[arg1][i] = null;
                         else
                             bool = false;
                     }
                 }
                 if(bool)
-                    Class59.aWidgetArrayArray1390[arg1] = null;
+                    Widget.interfaces[arg1] = null;
                 Class68.aBooleanArray1629[arg1] = false;
             }
         }
@@ -135,7 +135,7 @@ public class Class61 {
         if(arg0 == true) {
             for(Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = ((Class40_Sub5_Sub17_Sub6) Class57.aClass45_1332.method902((byte) -90)); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = ((Class40_Sub5_Sub17_Sub6) Class57.aClass45_1332.method909(-4))) {
                 if(((class40_sub5_sub17_sub6.anInt3239 ^ 0xffffffff) == (Player.anInt3267 ^ 0xffffffff)) && !class40_sub5_sub17_sub6.aBoolean3237) {
-                    if(Node.anInt926 >= class40_sub5_sub17_sub6.anInt3230) {
+                    if(Node.pulseCycle >= class40_sub5_sub17_sub6.anInt3230) {
                         class40_sub5_sub17_sub6.method834(8076, Class5.anInt199);
                         if(class40_sub5_sub17_sub6.aBoolean3237)
                             class40_sub5_sub17_sub6.method457(-1);

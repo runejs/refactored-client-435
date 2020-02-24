@@ -1,6 +1,7 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
 
@@ -367,45 +368,44 @@ public class GameObjectDefinition extends SubNode {
 
     }
 
-    public Model method607(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, Class40_Sub5_Sub7 arg6, int arg7, int arg8) {
-
+    public Model getGameObjectModel(int vertexHeight, int arg1, int vertexHeightRight, int arg3, int arg4, int arg5, AnimationSequence animationSequence, int vertexHeightTop, int vertexHeightTopRight) {
         long l;
         if(objectTypes == null) {
-            l = (long) (arg5 + (anInt2538 << 554173066));
+            l = (long) (arg5 + (anInt2538 << 10));
         } else {
-            l = (long) (arg5 + ((anInt2538 << 1528233034) + (arg4 << 272341539)));
+            l = (long) (arg5 + ((anInt2538 << 10) + (arg4 << 3)));
         }
-        Model class40_sub5_sub17_sub5 = ((Model) Class49.aClass9_1145.method231(l, (byte) 70));
-        if(class40_sub5_sub17_sub5 == null) {
-            class40_sub5_sub17_sub5 = method606(true, (byte) -25, true, arg5, arg4);
-            if(class40_sub5_sub17_sub5 == null) {
+        Model model = ((Model) Class49.aClass9_1145.method231(l, (byte) 70));
+        if(model == null) {
+            model = method606(true, (byte) -25, true, arg5, arg4);
+            if(model == null) {
                 return null;
             }
-            Class49.aClass9_1145.method230(-7208, l, class40_sub5_sub17_sub5);
+            Class49.aClass9_1145.method230(-7208, l, model);
         }
-        if(arg6 == null && !adjustToTerrain) {
-            return class40_sub5_sub17_sub5;
+        if(animationSequence == null && !adjustToTerrain) {
+            return model;
         }
-        if(arg6 != null) {
-            class40_sub5_sub17_sub5 = arg6.method593(arg3, false, class40_sub5_sub17_sub5, arg5);
+        if(animationSequence != null) {
+            model = animationSequence.method593(arg3, false, model, arg5);
         } else {
-            class40_sub5_sub17_sub5 = class40_sub5_sub17_sub5.method817(true);
+            model = model.method817(true);
         }
         if(arg1 < 54) {
             return null;
         }
         if(adjustToTerrain) {
-            int i = (arg2 + arg0 - (-arg8 + -arg7)) / 4;
-            for(int i_13_ = 0; ((i_13_ < class40_sub5_sub17_sub5.vertexCount)); i_13_++) {
-                int i_14_ = class40_sub5_sub17_sub5.verticesZ[i_13_];
-                int i_15_ = class40_sub5_sub17_sub5.verticesX[i_13_];
-                int i_16_ = arg0 + (64 + i_15_) * (arg2 - arg0) / 128;
-                int i_17_ = arg7 + (64 + i_15_) * (arg8 + -arg7) / 128;
+            int i = (vertexHeightRight + vertexHeight - (-vertexHeightTopRight + -vertexHeightTop)) / 4;
+            for(int i_13_ = 0; ((i_13_ < model.vertexCount)); i_13_++) {
+                int i_14_ = model.verticesZ[i_13_];
+                int i_15_ = model.verticesX[i_13_];
+                int i_16_ = vertexHeight + (64 + i_15_) * (vertexHeightRight - vertexHeight) / 128;
+                int i_17_ = vertexHeightTop + (64 + i_15_) * (vertexHeightTopRight + -vertexHeightTop) / 128;
                 int i_18_ = i_16_ + (i_14_ + 64) * (-i_16_ + i_17_) / 128;
-                class40_sub5_sub17_sub5.verticesY[i_13_] += -i + i_18_;
+                model.verticesY[i_13_] += -i + i_18_;
             }
         }
-        return class40_sub5_sub17_sub5;
+        return model;
 
     }
 

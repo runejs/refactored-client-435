@@ -150,7 +150,7 @@ public class Class53 {
                 if((i_27_ ^ 0xffffffff) <= -1 && (i_28_ ^ 0xffffffff) <= -1 && (i_27_ ^ 0xffffffff) > -105 && i_28_ < 104) {
                     i_28_ = 128 * i_28_ + 64;
                     i_27_ = i_27_ * 128 + 64;
-                    Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (new Class40_Sub5_Sub17_Sub6(i_29_, Player.anInt3267, i_27_, i_28_, (-i_30_ + Class37.method430((byte) -124, (Player.anInt3267), i_27_, i_28_)), i_31_, Node.anInt926));
+                    Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (new Class40_Sub5_Sub17_Sub6(i_29_, Player.anInt3267, i_27_, i_28_, (-i_30_ + Class37.method430((byte) -124, (Player.anInt3267), i_27_, i_28_)), i_31_, Node.pulseCycle));
                     Class57.aClass45_1332.method904(class40_sub5_sub17_sub6, -111);
                 }
             } else if(Class57.incomingPacket == 99) {
@@ -223,10 +223,10 @@ public class Class53 {
                                 i_44_ = i_62_;
                             }
                             GameObjectDefinition.method609(-1, true, i_52_, 0, 1 + i_56_, Player.anInt3267, i_51_, i_49_, 0, 1 + i_53_);
-                            class40_sub5_sub17_sub4_sub1.anInt3274 = i_56_ + Node.anInt926;
+                            class40_sub5_sub17_sub4_sub1.anInt3274 = i_56_ + Node.pulseCycle;
                             int i_63_ = gameObjectDefinition.sizeX;
                             class40_sub5_sub17_sub4_sub1.aClass40_Sub5_Sub17_Sub5_3265 = class40_sub5_sub17_sub5;
-                            class40_sub5_sub17_sub4_sub1.anInt3283 = i_53_ + Node.anInt926;
+                            class40_sub5_sub17_sub4_sub1.anInt3283 = i_53_ + Node.pulseCycle;
                             int i_64_ = gameObjectDefinition.sizeY;
                             if((i_47_ ^ 0xffffffff) == -2 || i_47_ == 3) {
                                 i_64_ = gameObjectDefinition.sizeX;
@@ -279,9 +279,9 @@ public class Class53 {
                         i_70_ = 64 + 128 * i_70_;
                         i_69_ = 64 + 128 * i_69_;
                         i_68_ = i_68_ * 128 + 64;
-                        Class40_Sub5_Sub17_Sub1 class40_sub5_sub17_sub1 = (new Class40_Sub5_Sub17_Sub1(i_73_, Player.anInt3267, i_69_, i_68_, Class37.method430((byte) -121, (Player.anInt3267), i_69_, i_68_) + -i_74_, i_76_ + Node.anInt926, i_77_ + Node.anInt926, i_78_, i_79_, i_72_, i_75_));
+                        Class40_Sub5_Sub17_Sub1 class40_sub5_sub17_sub1 = (new Class40_Sub5_Sub17_Sub1(i_73_, Player.anInt3267, i_69_, i_68_, Class37.method430((byte) -121, (Player.anInt3267), i_69_, i_68_) + -i_74_, i_76_ + Node.pulseCycle, i_77_ + Node.pulseCycle, i_78_, i_79_, i_72_, i_75_));
                         i_71_ = 128 * i_71_ + 64;
-                        class40_sub5_sub17_sub1.method766(i_76_ + Node.anInt926, 0, i_71_, (-i_75_ + Class37.method430((byte) -124, (Player.anInt3267), i_70_, i_71_)), i_70_);
+                        class40_sub5_sub17_sub1.method766(i_76_ + Node.pulseCycle, 0, i_71_, (-i_75_ + Class37.method430((byte) -124, (Player.anInt3267), i_70_, i_71_)), i_70_);
                         Class43.aClass45_1022.method904(class40_sub5_sub17_sub1, -73);
                     }
                 } else {
@@ -381,9 +381,9 @@ public class Class53 {
                         arg1.method688(Class22_Sub2.aClass1_1881, 180, i, 16776960, true);
                         i += 15;
                         i += 10;
-                        arg1.method683((Class40_Sub5_Sub17_Sub6.method832(-113, (new RSString[]{Class61.aClass1_1422, Class22_Sub2.username, ((Node.anInt926 % 40 < 20 & Node.anInt947 == 0) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 90, i, 16777215, true);
+                        arg1.method683((Class40_Sub5_Sub17_Sub6.method832(-113, (new RSString[]{Class61.aClass1_1422, Class22_Sub2.username, ((Node.pulseCycle % 40 < 20 & Node.anInt947 == 0) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 90, i, 16777215, true);
                         i += 15;
-                        arg1.method683((Class40_Sub5_Sub17_Sub6.method832(arg0 + 18924, (new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false), (((Node.anInt926 % 40 ^ 0xffffffff) > -21 & (Node.anInt947 ^ 0xffffffff) == -2) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 92, i, 16777215, true);
+                        arg1.method683((Class40_Sub5_Sub17_Sub6.method832(arg0 + 18924, (new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false), (((Node.pulseCycle % 40 ^ 0xffffffff) > -21 & (Node.anInt947 ^ 0xffffffff) == -2) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 92, i, 16777215, true);
                         Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
                         i += 15;
                         arg1.method688(Class40_Sub5_Sub4.aClass1_2351, i_90_, i_91_ + 5, 16777215, true);
@@ -427,9 +427,9 @@ public class Class53 {
                     method949((byte) 41);
                 Class8.aClass68_298.method1044(arg0 ^ ~0x4a41, 0, graphics, 0);
                 GameObject.aClass68_3042.method1044(0, 637, graphics, 0);
-                if(!Class40_Sub5_Sub11.aBoolean2631)
+                if(!Class40_Sub5_Sub11.clearScreen)
                     break;
-                Class40_Sub5_Sub11.aBoolean2631 = false;
+                Class40_Sub5_Sub11.clearScreen = false;
                 Class39.aClass68_907.method1044(0, 128, graphics, 0);
                 Class51.aClass68_1206.method1044(0, 202, graphics, 371);
                 Class17.aClass68_463.method1044(0, 0, graphics, 265);

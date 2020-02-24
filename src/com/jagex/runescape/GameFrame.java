@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
@@ -75,14 +76,14 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
                     if((i_0_ ^ 0xffffffff) == -54 || i_0_ == 25 || i_0_ == 55 || (i_0_ ^ 0xffffffff) == -49 || (i_0_ ^ 0xffffffff) == -25 || (i_0_ ^ 0xffffffff) == -53 || (i_0_ ^ 0xffffffff) == -7 || i_0_ == 31 || (i_0_ ^ 0xffffffff) == -44 || i_0_ == 11 || i_0_ == 19 || i_0_ == 1006) {
                         int i_1_ = (Class19.anIntArray483[ActorDefinition.anInt2394 - 1]);
                         int i_2_ = (Class59.anIntArray1393[-1 + ActorDefinition.anInt2394]);
-                        Widget widget = Class68.method1045(i_2_, (byte) -58);
+                        Widget widget = Widget.forId(i_2_);
                         if(widget.itemSwapable || widget.itemDeletesDraged) {
                             Renderable.anInt2869 = Class57.anInt1338;
                             Class40_Sub5_Sub15.aBoolean2784 = false;
                             SceneTile.activeInterfaceType = 2;
-                            Class48.anInt1127 = i_2_;
+                            Class48.modifiedWidgetId = i_2_;
                             ItemDefinition.anInt2798 = RSString.anInt1668;
-                            Class58.anInt1352 = i_1_;
+                            Class58.selectedInventorySlot = i_1_;
                             if((Class66.anInt1560 ^ 0xffffffff) == (i_2_ >> 799918864 ^ 0xffffffff))
                                 SceneTile.activeInterfaceType = 1;
                             if((i_2_ >> 1441108912 ^ 0xffffffff) == (Class43.openChatboxWidgetId ^ 0xffffffff))
@@ -172,16 +173,16 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
     public synchronized void mouseEntered(MouseEvent arg0) {
         if(GameObject.frame != null) {
             Class45.anInt1073 = 0;
-            Class12.anInt389 = arg0.getX();
-            Cache.anInt322 = arg0.getY();
+            Class12.eventMouseX = arg0.getX();
+            Cache.eventMouseY = arg0.getY();
         }
     }
 
     public synchronized void mouseExited(MouseEvent arg0) {
         if(GameObject.frame != null) {
             Class45.anInt1073 = 0;
-            Class12.anInt389 = -1;
-            Cache.anInt322 = -1;
+            Class12.eventMouseX = -1;
+            Cache.eventMouseY = -1;
         }
     }
 
@@ -204,8 +205,8 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
             mouseWheelY = mouseEvent.getY();
             return;
         }
-        Class12.anInt389 = mouseX;
-        Cache.anInt322 = mouseY;
+        Class12.eventMouseX = mouseX;
+        Cache.eventMouseY = mouseY;
     }
 
     private void mouseWheelDragged(int i, int j) {
@@ -248,24 +249,115 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
     public void mouseWheelMoved(MouseWheelEvent event) {
         System.out.println(cameraZoom);
         int rotation = event.getWheelRotation();
-        //            if (!handleInterfaceScrolling(event, (Game) this)) {
-        if((cameraZoom <= 300 && rotation <= 0) || (cameraZoom >= 1200 && rotation >= 0)) {
-            return;
-        }
-        int diff = rotation * 8;
-        cameraZoom = cameraZoom + diff;
+//        if(!handleInterfaceScrolling(event)) {
+            if((cameraZoom <= 300 && rotation <= 0) || (cameraZoom >= 1200 && rotation >= 0)) {
+                return;
+            }
+            //                    }
+            int diff = rotation * 8;
+            cameraZoom = cameraZoom + diff;
+            //
+//        }
     }
 
     public void mouseClicked(MouseEvent arg0) {
         if(arg0.isPopupTrigger())
             arg0.consume();
     }
+//
+//    public boolean handleInterfaceScrolling(MouseWheelEvent event) {
+//        int rotation = event.getWheelRotation();
+//        int mouseX = Class12.eventMouseX;
+//        int mouseY = Cache.eventMouseY;
+//        if(mouseX > 0 && mouseY > 346 && mouseX < 516 && mouseY < 505 && Class43.openChatboxWidgetId == -1) {
+//            if(rotation < 0) {
+//                if(Class12.chatboxInterface.scrollPosition >= 1) {
+//
+//                    if(Class40_Sub5_Sub15.inputType == 3) {
+//                        Class26.itemSearchScroll = Class26.itemSearchScroll - 30;
+//                        Class52.redrawChatbox = true;
+//                    } else {
+//                        GameObjectDefinition.chatboxScroll = GameObjectDefinition.chatboxScroll + 30;
+//                        Class52.redrawChatbox = true;
+//                    }
+//                }
+//            } else {
+//                if(Class40_Sub5_Sub15.inputType == 3) {
+//                    Class26.itemSearchScroll = Class26.itemSearchScroll + 30;
+//                    Class52.redrawChatbox = true;
+//                } else if(GameObjectDefinition.chatboxScroll < 1) {
+//                    Class26.itemSearchScroll = 0;
+//                    Class52.redrawChatbox = true;
+//                } else {
+//                    GameObjectDefinition.chatboxScroll = GameObjectDefinition.chatboxScroll - 30;
+//                    Class52.redrawChatbox = true;
+//                }
+//            }
+//            return true;
+//        } else {
+//            int positionX = 0;
+//            int positionY = 0;
+//            int width = 0;
+//            int height = 0;
+//            int offsetX = 0;
+//            int offsetY = 0;
+//            int childID = 0;
+//            /* Tab interface scrolling */
+//            int tabInterfaceID = Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId];
+//            if(tabInterfaceID != -1) {
+//                Widget tab = Widget.forId(tabInterfaceID);
+//                offsetX = 765 - 218;
+//                offsetY = 503 - 298;
+//                for(int index = 0; index < Widget.interfaces[tab.id].length; index++) {
+//                    if(Widget.interfaces[tab.id][index].scrollHeight > 0) {
+//                        childID = index;
+//                        positionX = Widget.interfaces[tab.id][index].currentX;
+//                        positionY = Widget.interfaces[tab.id][index].currentY;
+//                        width = Widget.interfaces[tab.id][index].originalWidth;
+//                        height = Widget.interfaces[tab.id][index].originalHeight;
+//                        break;
+//                    }
+//                }
+//                if(mouseX > offsetX + positionX && mouseY > offsetY + positionY && mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
+//                    Widget.interfaces[tab.id][childID].scrollPosition += rotation * 30;
+//                    //				client.tabAreaAltered = true;
+//                    ISAAC.redrawTabArea = true;
+//                    return true;
+//                }
+//            }
+//            /* Main interface scrolling */
+//            if(client.openScreenWidgetId != -1) {
+//                Widget widget = Widget.interfaces[client.openScreenWidgetId];
+//                offsetX = 4;
+//                offsetY = 4;
+//                for(int index = 0; index < widget.children.length; index++) {
+//                    if(Widget.interfaces[widget.children[index]].scrollLimit > 0) {
+//                        childID = index;
+//                        positionX = widget.childrenX[index];
+//                        positionY = widget.childrenY[index];
+//                        width = Widget.interfaces[widget.children[index]].width;
+//                        height = Widget.interfaces[widget.children[index]].height;
+//                        break;
+//                    }
+//                }
+//                if(mouseX > offsetX + positionX && mouseY > offsetY + positionY && mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
+//                    Widget.interfaces[widget.children[childID]].scrollPosition += rotation * 30;
+//                    return true;
+//                }
+//
+//            }
+//        }
+//        return false;
+//
+//
+//    }
+
 
     public synchronized void mouseMoved(MouseEvent arg0) {
         if(GameObject.frame != null) {
             Class45.anInt1073 = 0;
-            Class12.anInt389 = arg0.getX();
-            Cache.anInt322 = arg0.getY();
+            Class12.eventMouseX = arg0.getX();
+            Cache.eventMouseY = arg0.getY();
         }
     }
 

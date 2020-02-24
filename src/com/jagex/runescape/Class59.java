@@ -16,7 +16,6 @@ public class Class59 {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1387;
     public static int anInt1388;
     public static int anInt1389 = 0;
-    public static Widget[][] aWidgetArrayArray1390;
     public static RSString aClass1_1391;
     public static Class54 aClass54_1392;
     public static int[] anIntArray1393;
@@ -96,7 +95,7 @@ public class Class59 {
 
         aClass40_Sub1_1385 = null;
         int i = 84 / ((arg0 + 74) / 47);
-        aWidgetArrayArray1390 = null;
+        Widget.interfaces = null;
         anIntArray1398 = null;
         aClass40_Sub5_Sub14_Sub2_1387 = null;
         aClass1_1399 = null;

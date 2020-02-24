@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.media.AnimationSequence;
 
 import java.util.zip.CRC32;
 
@@ -72,7 +73,7 @@ public class Class65 {
         FloorDecoration.anIntArray612 = new int[104];
         Class67.anIntArray1579 = new int[104];
         SceneTile.anIntArray2048 = new int[104];
-        Class40_Sub5_Sub7.anIntArrayArray2490 = new int[105][105];
+        AnimationSequence.anIntArrayArray2490 = new int[105][105];
         GameFrame.tile_overlayids = new byte[4][104][104];
         Class40_Sub5_Sub17_Sub6.anIntArray3250 = new int[104];
         Class35.tile_overlay_rotation = new byte[4][104][104];

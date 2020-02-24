@@ -66,9 +66,9 @@ public class Class13 {
             arg0.anInt3089 = 64 * arg0.anInt3096 + arg0.anIntArray3135[0] * 128;
             arg0.method790(0);
         }
-        if(arg0.anInt3112 > Node.anInt926)
+        if(arg0.anInt3112 > Node.pulseCycle)
             Class40_Sub5_Sub11.method631(arg0, false);
-        else if(arg0.anInt3107 < Node.anInt926)
+        else if(arg0.anInt3107 < Node.pulseCycle)
             Class44.method898(255, arg0);
         else
             Class30.method381(22378, arg0);
@@ -98,7 +98,7 @@ public class Class13 {
     public static void method243(byte arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
         anInt407++;
         if(Class68.method1043(arg4)) {
-            Class48.method925(arg3, Class59.aWidgetArrayArray1390[arg4], arg5, 0, arg7, 0, -1, arg8, arg6, arg1, 0, arg2);
+            Class48.method925(arg3, Widget.interfaces[arg4], arg5, 0, arg7, 0, -1, arg8, arg6, arg1, 0, arg2);
             if(arg0 != 89)
                 aClass1_405 = null;
         }
@@ -129,8 +129,8 @@ public class Class13 {
             if((0x1 & mask ^ 0xffffffff) != -1) {
                 int i_3_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                 int i_4_ = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
-                npc.method785(i_4_, Node.anInt926, i_3_, -121);
-                npc.anInt3139 = Node.anInt926 + 300;
+                npc.method785(i_4_, Node.pulseCycle, i_3_, -121);
+                npc.anInt3139 = Node.pulseCycle + 300;
                 npc.anInt3130 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                 npc.anInt3101 = Cache.outgoingbuffer.getUnsignedByte();
             }
@@ -138,10 +138,10 @@ public class Class13 {
                 npc.anInt3091 = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
                 int i_5_ = Cache.outgoingbuffer.getIntBE();
                 npc.anInt3129 = 0;
-                npc.anInt3093 = Node.anInt926 + (0xffff & i_5_);
+                npc.anInt3093 = Node.pulseCycle + (0xffff & i_5_);
                 npc.anInt3110 = i_5_ >> -1206933168;
                 npc.anInt3140 = 0;
-                if(npc.anInt3093 > Node.anInt926)
+                if(npc.anInt3093 > Node.pulseCycle)
                     npc.anInt3140 = -1;
                 if(npc.anInt3091 == 65535)
                     npc.anInt3091 = -1;
@@ -154,8 +154,8 @@ public class Class13 {
             if((0x2 & mask) != 0) {
                 int i_6_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                 int i_7_ = Cache.outgoingbuffer.getUnsignedByte();
-                npc.method785(i_7_, Node.anInt926, i_6_, -119);
-                npc.anInt3139 = Node.anInt926 + 300;
+                npc.method785(i_7_, Node.pulseCycle, i_6_, -119);
+                npc.anInt3139 = Node.pulseCycle + 300;
                 npc.anInt3130 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
                 npc.anInt3101 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
             }
@@ -234,23 +234,23 @@ public class Class13 {
         if(arg1 <= 74)
             anInt419 = -37;
         int i;
-        if(arg0.anInt2689 < 0)
-            i = arg0.anInt2648 >> 567649872;
+        if(arg0.id < 0)
+            i = arg0.parentId >> 567649872;
         else
-            i = arg0.anInt2689 >> -1265498640;
+            i = arg0.id >> -1265498640;
         anInt401++;
         if(!Class68.method1043(i))
             return null;
-        int i_11_ = arg0.anInt2656;
-        int i_12_ = arg0.anInt2696;
-        int i_13_ = arg0.anInt2648;
+        int i_11_ = arg0.currentX;
+        int i_12_ = arg0.currentY;
+        int i_13_ = arg0.parentId;
         while(i_13_ != -1) {
-            Widget widget = (Class59.aWidgetArrayArray1390[i][i_13_ & 0xffff]);
-            i_11_ += widget.anInt2656;
+            Widget widget = (Widget.interfaces[i][i_13_ & 0xffff]);
+            i_11_ += widget.currentX;
             if(!arg0.aBoolean2694)
                 i_11_ -= widget.anInt2746;
-            i_12_ += widget.anInt2696;
-            i_13_ = widget.anInt2648;
+            i_12_ += widget.currentY;
+            i_13_ = widget.parentId;
             if(!arg0.aBoolean2694)
                 i_12_ -= widget.scrollPosition;
         }

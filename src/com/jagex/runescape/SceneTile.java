@@ -207,7 +207,7 @@ public class SceneTile extends Node {
             if((ActorDefinition.anInt2394 ^ 0xffffffff) < -3)
                 class1 = (Class40_Sub5_Sub17_Sub6.method832(56, new RSString[]{class1, Class53.aClass1_1243, HashTable.method334((ActorDefinition.anInt2394) + -2, -1), Class39.aClass1_904}));
             if(arg0 == 4)
-                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method684(class1, 4, 15, 16777215, true, Node.anInt926 / 1000);
+                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method684(class1, 4, 15, 16777215, true, Node.pulseCycle / 1000);
         }
 
     }

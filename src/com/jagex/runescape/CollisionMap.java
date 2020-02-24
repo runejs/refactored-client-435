@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -17,7 +18,7 @@ public class CollisionMap {
     public static RSString aClass1_164 = RSString.CreateString("Konfig geladen)3");
     public static int anInt165 = 0;
     public static Class8 aClass8_166;
-    public static RSString aClass1_167 = RSString.CreateString("Continue");
+    public static RSString str_continue = RSString.CreateString("Continue");
     public static int anInt168;
     public static byte[] aByteArray169 = new byte[]{95, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57};
     public static RSString aClass1_170 = RSString.CreateString("(X");
@@ -43,8 +44,8 @@ public class CollisionMap {
 
     public static void method144(int arg0) {
 
-        Class8.aFontMetrics295 = null;
-        Class17.aFont461 = null;
+        Class8.fontMetrics = null;
+        Class17.helveticaBold = null;
         if(arg0 == 12433)
             Class26.anImage624 = null;
 
@@ -64,7 +65,7 @@ public class CollisionMap {
                 Class57.incomingPacket = Cache.outgoingbuffer.getPacket((byte) 49);
                 Widget.packetsize = Class24.INCOMINGPACKETSIZES[Class57.incomingPacket];
             }
-            // System.out.println("packet received: " + Class57.incomingPacket);
+             System.out.println("packet received: " + Class57.incomingPacket);
             if((Widget.packetsize ^ 0xffffffff) == 0) {
                 if((i ^ 0xffffffff) < -1) {
                     Class40_Sub6.aClass64_2098.method1008(0, 1, -127, Cache.outgoingbuffer.buffer);
@@ -177,25 +178,25 @@ public class CollisionMap {
             if((Class57.incomingPacket ^ 0xffffffff) == -116) {
                 boolean bool = ((Cache.outgoingbuffer.getUnsignedByte() ^ 0xffffffff) == -2);
                 int i_10_ = Cache.outgoingbuffer.getIntME1();
-                Widget widget = Class68.method1045(i_10_, (byte) -92);
-                widget.aBoolean2750 = bool;
+                Widget widget = Widget.forId(i_10_);
+                widget.isHidden = bool;
                 Class57.incomingPacket = -1;
                 return true;
             }
             if(Class57.incomingPacket == UPDATE_ALL_WIDGET_ITEMS) {
                 ISAAC.redrawTabArea = true;
                 int widgetData = Cache.outgoingbuffer.getIntBE();
-                Widget widget = Class68.method1045(widgetData, (byte) -128);
-                if(!widget.aBoolean2636) {
+                Widget widget = Widget.forId(widgetData);
+                if(!widget.isIf3) {
                     for(int containerIndex = 0; widget.items.length > containerIndex; containerIndex++) {
                         widget.items[containerIndex] = 0;
                         widget.itemAmounts[containerIndex] = 0;
                     }
                 } else {
-                    Widget[] widgets = (Class59.aWidgetArrayArray1390[widgetData >> -1887808688]);
+                    Widget[] widgets = (Widget.interfaces[widgetData >> -1887808688]);
                     for(int childIndex = 0; childIndex < widgets.length; childIndex++) {
                         Widget child = widgets[childIndex];
-                        if(((0xffff & child.anInt2648 ^ 0xffffffff) == (0xffff & widget.anInt2689 ^ 0xffffffff)) && (child.anInt2736 ^ 0xffffffff) < -1) {
+                        if(((0xffff & child.parentId ^ 0xffffffff) == (0xffff & widget.id ^ 0xffffffff)) && (child.anInt2736 ^ 0xffffffff) < -1) {
                             child.anInt2734 = 0;
                             child.anInt2718 = -1;
                         }
@@ -207,16 +208,16 @@ public class CollisionMap {
                     if((itemAmount ^ 0xffffffff) == -256)
                         itemAmount = Cache.outgoingbuffer.getIntBE();
                     int itemId = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
-                    if(!widget.aBoolean2636) {
+                    if(!widget.isIf3) {
                         if(widget.items.length > containerIndex) {
                             widget.items[containerIndex] = itemId;
                             widget.itemAmounts[containerIndex] = itemAmount;
                         }
                     } else {
-                        Widget[] widgets = (Class59.aWidgetArrayArray1390[widgetData >> -424241648]);
+                        Widget[] widgets = (Widget.interfaces[widgetData >> -424241648]);
                         for(int childIndex = 0; ((childIndex < widgets.length)); childIndex++) {
                             Widget child = widgets[childIndex];
-                            if(((widget.anInt2689 & 0xffff) == (child.anInt2648 & 0xffff)) && ((child.anInt2736 ^ 0xffffffff) == (1 + containerIndex ^ 0xffffffff))) {
+                            if(((widget.id & 0xffff) == (child.parentId & 0xffff)) && ((child.anInt2736 ^ 0xffffffff) == (1 + containerIndex ^ 0xffffffff))) {
                                 child.anInt2734 = itemAmount;
                                 child.anInt2718 = -1 + itemId;
                             }
@@ -229,9 +230,9 @@ public class CollisionMap {
             if((Class57.incomingPacket ^ 0xffffffff) == -251) {
                 int i_21_ = Cache.outgoingbuffer.getUnsignedShortLE();
                 int i_22_ = Cache.outgoingbuffer.getIntME1();
-                Widget widget = Class68.method1045(i_22_, (byte) -87);
-                widget.anInt2673 = i_21_;
-                widget.anInt2687 = 1;
+                Widget widget = Widget.forId(i_22_);
+                widget.modelId = i_21_;
+                widget.modelType = 1;
                 Class57.incomingPacket = -1;
                 return true;
             }
@@ -262,7 +263,7 @@ public class CollisionMap {
             }
             if(Class57.incomingPacket == 82) {
                 RSString class1 = Cache.outgoingbuffer.getRSString();
-                if(!class1.method87(103, Class40_Sub5_Sub7.aClass1_2472)) {
+                if(!class1.method87(103, AnimationSequence.aClass1_2472)) {
                     if(!class1.method87(104, Class40_Sub5_Sub6.aClass1_2434)) {
                         if(!class1.method87(81, Node.aClass1_948))
                             Class44.method895(72, 0, class1, Class66.blank_string);
@@ -313,25 +314,25 @@ public class CollisionMap {
             if(Class57.incomingPacket == 182) {
                 int i_34_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 int i_35_ = Cache.outgoingbuffer.getIntLE();
-                Widget widget = Class68.method1045(i_35_, (byte) -61);
+                Widget widget = Widget.forId(i_35_);
                 Class57.incomingPacket = -1;
                 if(widget != null && (widget.type ^ 0xffffffff) == -1) {
                     if((i_34_ ^ 0xffffffff) > -1)
                         i_34_ = 0;
-                    if((-widget.anInt2643 + widget.anInt2720) < i_34_)
-                        i_34_ = (-widget.anInt2643 + widget.anInt2720);
+                    if((-widget.originalHeight + widget.scrollHeight) < i_34_)
+                        i_34_ = (-widget.originalHeight + widget.scrollHeight);
                     widget.scrollPosition = i_34_;
                 }
                 return true;
             }
             if((Class57.incomingPacket ^ 0xffffffff) == -175) {
                 int i_36_ = Cache.outgoingbuffer.getIntME1();
-                Widget widget = Class68.method1045(i_36_, (byte) -115);
-                if(widget.aBoolean2636) {
-                    Widget[] widgets = (Class59.aWidgetArrayArray1390[i_36_ >> -1339248816]);
+                Widget widget = Widget.forId(i_36_);
+                if(widget.isIf3) {
+                    Widget[] widgets = (Widget.interfaces[i_36_ >> -1339248816]);
                     for(int i_37_ = 0; i_37_ < widgets.length; i_37_++) {
                         Widget widget_38_ = widgets[i_37_];
-                        if(((widget_38_.anInt2648 & 0xffff ^ 0xffffffff) == (0xffff & widget.anInt2689 ^ 0xffffffff)) && widget_38_.anInt2736 > 0) {
+                        if(((widget_38_.parentId & 0xffff ^ 0xffffffff) == (0xffff & widget.id ^ 0xffffffff)) && widget_38_.anInt2736 > 0) {
                             widget_38_.anInt2718 = -1;
                             widget_38_.anInt2734 = 0;
                         }
@@ -367,11 +368,11 @@ public class CollisionMap {
             if((Class57.incomingPacket ^ 0xffffffff) == -25) {
                 int i_43_ = Cache.outgoingbuffer.getShortBE();
                 int i_44_ = Cache.outgoingbuffer.getIntBE();
-                Widget widget = Class68.method1045(i_44_, (byte) -82);
-                if(((widget.anInt2659 ^ 0xffffffff) != (i_43_ ^ 0xffffffff)) || (i_43_ ^ 0xffffffff) == 0) {
+                Widget widget = Widget.forId(i_44_);
+                if(((widget.animation ^ 0xffffffff) != (i_43_ ^ 0xffffffff)) || (i_43_ ^ 0xffffffff) == 0) {
                     widget.anInt2660 = 0;
                     widget.anInt2654 = 0;
-                    widget.anInt2659 = i_43_;
+                    widget.animation = i_43_;
                 }
                 Class57.incomingPacket = -1;
                 return true;
@@ -391,7 +392,7 @@ public class CollisionMap {
                 int i_46_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 int i_47_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
                 int i_48_ = Cache.outgoingbuffer.getIntLE();
-                Widget widget = Class68.method1045(i_48_, (byte) -100);
+                Widget widget = Widget.forId(i_48_);
                 Class57.incomingPacket = -1;
                 widget.anInt2722 = i_47_ + (i_46_ << -1109526864);
                 return true;
@@ -417,9 +418,9 @@ public class CollisionMap {
                     Class55.method958(Class66.anInt1560, -14222);
                     Class66.anInt1560 = i_50_;
                 }
-                if((i_49_ ^ 0xffffffff) != (Class29.anInt673 ^ 0xffffffff)) {
-                    Class55.method958(Class29.anInt673, -14222);
-                    Class29.anInt673 = i_49_;
+                if((i_49_ ^ 0xffffffff) != (Class29.tabAreaOverlayWidgetId ^ 0xffffffff)) {
+                    Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
+                    Class29.tabAreaOverlayWidgetId = i_49_;
                 }
                 CacheIndex_Sub1.anInt1819 = -1;
                 if(Class40_Sub5_Sub15.inputType != 0) {
@@ -465,10 +466,10 @@ public class CollisionMap {
             if(Class57.incomingPacket == 118) {
                 int i_55_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 Class42.method883((byte) -127, i_55_);
-                if(Class29.anInt673 != -1) {
-                    Class55.method958(Class29.anInt673, -14222);
+                if(Class29.tabAreaOverlayWidgetId != -1) {
+                    Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
                     IdentityKit.aBoolean2597 = true;
-                    Class29.anInt673 = -1;
+                    Class29.tabAreaOverlayWidgetId = -1;
                     ISAAC.redrawTabArea = true;
                 }
                 if((Class43.openChatboxWidgetId ^ 0xffffffff) != 0) {
@@ -540,9 +541,9 @@ public class CollisionMap {
                     Class55.method958(Class66.anInt1560, -14222);
                     Class66.anInt1560 = -1;
                 }
-                if((Class29.anInt673 ^ 0xffffffff) != 0) {
-                    Class55.method958(Class29.anInt673, -14222);
-                    Class29.anInt673 = -1;
+                if((Class29.tabAreaOverlayWidgetId ^ 0xffffffff) != 0) {
+                    Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
+                    Class29.tabAreaOverlayWidgetId = -1;
                 }
                 if(Class43.openChatboxWidgetId != -1) {
                     Class55.method958(Class43.openChatboxWidgetId, -14222);
@@ -563,11 +564,11 @@ public class CollisionMap {
                 return true;
             }
             if((Class57.incomingPacket ^ 0xffffffff) == -181) {
-                if(Class29.anInt673 != -1) {
-                    Class55.method958(Class29.anInt673, -14222);
+                if(Class29.tabAreaOverlayWidgetId != -1) {
+                    Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
                     ISAAC.redrawTabArea = true;
                     IdentityKit.aBoolean2597 = true;
-                    Class29.anInt673 = -1;
+                    Class29.tabAreaOverlayWidgetId = -1;
                 }
                 if((Class43.openChatboxWidgetId ^ 0xffffffff) != 0) {
                     Class55.method958(Class43.openChatboxWidgetId, -14222);
@@ -598,10 +599,10 @@ public class CollisionMap {
             if(Class57.incomingPacket == 208) {
                 int i_59_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
                 Class42.method883((byte) -119, i_59_);
-                if((Class29.anInt673 ^ 0xffffffff) != 0) {
-                    Class55.method958(Class29.anInt673, -14222);
+                if((Class29.tabAreaOverlayWidgetId ^ 0xffffffff) != 0) {
+                    Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
                     IdentityKit.aBoolean2597 = true;
-                    Class29.anInt673 = -1;
+                    Class29.tabAreaOverlayWidgetId = -1;
                     ISAAC.redrawTabArea = true;
                 }
                 if(ActorDefinition.anInt2433 != -1) {
@@ -738,9 +739,9 @@ public class CollisionMap {
                     Class55.method958(Class66.anInt1560, -14222);
                     Class66.anInt1560 = -1;
                 }
-                if((i_68_ ^ 0xffffffff) != (Class29.anInt673 ^ 0xffffffff)) {
-                    Class55.method958(Class29.anInt673, -14222);
-                    Class29.anInt673 = i_68_;
+                if((i_68_ ^ 0xffffffff) != (Class29.tabAreaOverlayWidgetId ^ 0xffffffff)) {
+                    Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
+                    Class29.tabAreaOverlayWidgetId = i_68_;
                 }
                 IdentityKit.aBoolean2597 = true;
                 if(Class40_Sub5_Sub15.inputType != 0) {
@@ -782,11 +783,11 @@ public class CollisionMap {
                 int i_77_ = Cache.outgoingbuffer.getUnsignedShortLE();
                 int i_78_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 int i_79_ = Cache.outgoingbuffer.getIntLE();
-                Widget widget = Class68.method1045(i_79_, (byte) -86);
+                Widget widget = Widget.forId(i_79_);
                 Class57.incomingPacket = -1;
-                widget.anInt2657 = i_76_;
-                widget.anInt2728 = i_77_;
-                widget.anInt2690 = i_78_;
+                widget.rotationZ = i_76_;
+                widget.modelZoom = i_77_;
+                widget.rotationX = i_78_;
                 return true;
             }
             if(Class57.incomingPacket == 6) {
@@ -825,10 +826,10 @@ public class CollisionMap {
             if(Class57.incomingPacket == 160) {
                 int i_81_ = Cache.outgoingbuffer.getUnsignedShortLE();
                 int i_82_ = Cache.outgoingbuffer.getIntLE();
-                Widget widget = Class68.method1045(i_82_, (byte) -67);
-                widget.anInt2687 = 2;
+                Widget widget = Widget.forId(i_82_);
+                widget.modelType = 2;
                 Class57.incomingPacket = -1;
-                widget.anInt2673 = i_81_;
+                widget.modelId = i_81_;
                 return true;
             }
             if(Class57.incomingPacket == 132) {
@@ -880,18 +881,18 @@ public class CollisionMap {
             }
             if(Class57.incomingPacket == 210) {
                 int i_83_ = Cache.outgoingbuffer.getIntLE();
-                Widget widget = Class68.method1045(i_83_, (byte) -107);
-                widget.anInt2687 = 3;
-                widget.anInt2673 = Player.localPlayer.aClass30_3282.method374(-20874);
+                Widget widget = Widget.forId(i_83_);
+                widget.modelType = 3;
+                widget.modelId = Player.localPlayer.aClass30_3282.method374(-20874);
                 Class57.incomingPacket = -1;
                 return true;
             }
             if(Class57.incomingPacket == 110) {
                 int i_84_ = Cache.outgoingbuffer.getIntLE();
                 RSString class1 = Cache.outgoingbuffer.getRSString();
-                Widget widget = Class68.method1045(i_84_, (byte) -73);
-                widget.aClass1_2668 = class1;
-                if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] == i_84_ >> -1297036176)
+                Widget widget = Widget.forId(i_84_);
+                widget.text = class1;
+                if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] == i_84_ >> 16)
                     ISAAC.redrawTabArea = true;
                 Class57.incomingPacket = -1;
                 return true;
@@ -902,25 +903,25 @@ public class CollisionMap {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if((Class57.incomingPacket ^ 0xffffffff) == -121) {
+            if(Class57.incomingPacket == 120) {
                 int i_85_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 int i_86_ = Cache.outgoingbuffer.getUnsignedShortLE();
                 int i_87_ = Cache.outgoingbuffer.getIntLE();
                 if((i_86_ ^ 0xffffffff) == -65536)
                     i_86_ = -1;
-                Widget widget = Class68.method1045(i_87_, (byte) -102);
-                if(!widget.aBoolean2636) {
+                Widget widget = Widget.forId(i_87_);
+                if(!widget.isIf3) {
                     if(i_86_ == -1) {
                         Class57.incomingPacket = -1;
-                        widget.anInt2687 = 0;
+                        widget.modelType = 0;
                         return true;
                     }
                     ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_86_, 10);
-                    widget.anInt2690 = class40_sub5_sub16.xan2d;
-                    widget.anInt2673 = i_86_;
-                    widget.anInt2687 = 4;
-                    widget.anInt2728 = 100 * class40_sub5_sub16.zoom2d / i_85_;
-                    widget.anInt2657 = class40_sub5_sub16.yan2d;
+                    widget.rotationX = class40_sub5_sub16.xan2d;
+                    widget.modelId = i_86_;
+                    widget.modelType = 4;
+                    widget.modelZoom = 100 * class40_sub5_sub16.zoom2d / i_85_;
+                    widget.rotationZ = class40_sub5_sub16.yan2d;
                 } else {
                     widget.anInt2734 = 1;
                     widget.anInt2718 = i_86_;
@@ -1008,10 +1009,10 @@ public class CollisionMap {
                 int i_102_ = Cache.outgoingbuffer.getIntBE();
                 int i_103_ = Cache.outgoingbuffer.getNegativeOffsetShortLE();
                 int i_104_ = Cache.outgoingbuffer.getNegativeOffsetShortLE();
-                Widget widget = Class68.method1045(i_102_, (byte) -86);
-                widget.anInt2656 = widget.anInt2649 + i_104_;
+                Widget widget = Widget.forId(i_102_);
+                widget.currentX = widget.originalX + i_104_;
                 Class57.incomingPacket = -1;
-                widget.anInt2696 = widget.anInt2743 + i_103_;
+                widget.currentY = widget.originalY + i_103_;
                 return true;
             }
             if((Class57.incomingPacket ^ 0xffffffff) == -73) {
@@ -1039,7 +1040,7 @@ public class CollisionMap {
             if(Class57.incomingPacket == UPDATE_SPECIFIC_WIDGET_ITEMS) {
                 ISAAC.redrawTabArea = true;
                 int widgetData = Cache.outgoingbuffer.getIntBE();
-                Widget widget = Class68.method1045(widgetData, (byte) -112);
+                Widget widget = Widget.forId(widgetData);
                 while(Widget.packetsize > Cache.outgoingbuffer.currentPosition) {
                     int itemSlot = Cache.outgoingbuffer.getSmart();
                     int i_109_ = Cache.outgoingbuffer.getUnsignedShortBE();
@@ -1049,16 +1050,16 @@ public class CollisionMap {
                         if((i_110_ ^ 0xffffffff) == -256)
                             i_110_ = Cache.outgoingbuffer.getIntBE();
                     }
-                    if(!widget.aBoolean2636) {
+                    if(!widget.isIf3) {
                         if((itemSlot ^ 0xffffffff) <= -1 && (widget.items.length > itemSlot)) {
                             widget.items[itemSlot] = i_109_;
                             widget.itemAmounts[itemSlot] = i_110_;
                         }
                     } else {
-                        Widget[] widgets = (Class59.aWidgetArrayArray1390[widgetData >> 886089392]);
+                        Widget[] widgets = (Widget.interfaces[widgetData >> 886089392]);
                         for(int i_111_ = 0; ((i_111_ < widgets.length)); i_111_++) {
                             Widget widget_112_ = widgets[i_111_];
-                            if((((widget_112_.anInt2648 & 0xffff) ^ 0xffffffff) == (widget.anInt2689 & 0xffff ^ 0xffffffff)) && 1 + itemSlot == (widget_112_.anInt2736)) {
+                            if((((widget_112_.parentId & 0xffff) ^ 0xffffffff) == (widget.id & 0xffff ^ 0xffffffff)) && 1 + itemSlot == (widget_112_.anInt2736)) {
                                 widget_112_.anInt2734 = i_110_;
                                 widget_112_.anInt2718 = i_109_ + -1;
                             }
@@ -1078,10 +1079,10 @@ public class CollisionMap {
                 int i_114_ = Cache.outgoingbuffer.getIntLE();
                 int i_115_ = i_113_ >> -1304618998 & 0x1f;
                 int i_116_ = 0x1f & i_113_ >> -1608786267;
-                Widget widget = Class68.method1045(i_114_, (byte) -103);
+                Widget widget = Widget.forId(i_114_);
                 Class57.incomingPacket = -1;
                 int i_117_ = i_113_ & 0x1f;
-                widget.anInt2647 = ((i_116_ << -1232932181) + (i_115_ << -1927757997) + (i_117_ << 770125059));
+                widget.textColor = ((i_116_ << -1232932181) + (i_115_ << -1927757997) + (i_117_ << 770125059));
                 return true;
             }
             if((Class57.incomingPacket ^ 0xffffffff) == -212) {
@@ -1122,7 +1123,7 @@ public class CollisionMap {
 
         aByteArray169 = null;
         anObject162 = null;
-        aClass1_167 = null;
+        str_continue = null;
         if(arg0 == -19156) {
             aClass1_170 = null;
             aClass1_164 = null;

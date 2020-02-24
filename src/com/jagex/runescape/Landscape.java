@@ -4,6 +4,7 @@ import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -171,7 +172,7 @@ public class Landscape {
                         int i_8_ = (-SpotAnimDefinition.anInt2307 + 64 * (ISAAC.anIntArray528[i_6_] >> 1048646664));
                         byte[] is = RSString.aByteArrayArray1715[i_6_];
                         if(is != null)
-                            Class40_Sub5_Sub7.method592(aCollisionMapArray1167, (Class51.anInt1202 + -6) * 8, is, -6, i_8_, i_7_, 8 * (-6 + Class17.anInt448));
+                            AnimationSequence.method592(aCollisionMapArray1167, (Class51.anInt1202 + -6) * 8, is, -6, i_8_, i_7_, 8 * (-6 + Class17.anInt448));
                     }
                     for(int i_9_ = 0; i > i_9_; i_9_++) {
                         int i_10_ = (-SpotAnimDefinition.anInt2307 + (ISAAC.anIntArray528[i_9_] >> -401526520) * 64);

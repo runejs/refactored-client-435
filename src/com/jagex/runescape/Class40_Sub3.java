@@ -4,6 +4,7 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -176,10 +177,10 @@ public class Class40_Sub3 extends Node {
             }
         } else if(Class40_Sub5_Sub6.anInt2451 == 80) {
             int i = 0;
-            if(Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4_2482 != null)
+            if(AnimationSequence.aClass40_Sub5_Sub14_Sub4_2482 != null)
                 i++;
             else
-                Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4_2482 = Class66.method1028(ActorDefinition.aClass6_Sub1_2377, Class54.aClass1_1284, (byte) 21, Class66.blank_string);
+                AnimationSequence.aClass40_Sub5_Sub14_Sub4_2482 = Class66.method1028(ActorDefinition.aClass6_Sub1_2377, Class54.aClass1_1284, (byte) 21, Class66.blank_string);
             if(SpotAnimDefinition.minimapEdge == null)
                 SpotAnimDefinition.minimapEdge = Class66.method1028(ActorDefinition.aClass6_Sub1_2377, Class61.aClass1_1427, (byte) 21, Class66.blank_string);
             else
@@ -192,10 +193,10 @@ public class Class40_Sub3 extends Node {
                 Class8.aClass40_Sub5_Sub14_Sub4Array296 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, (GameObject.aClass1_3047), Class66.blank_string);
             else
                 i++;
-            if(Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4Array2474 != null)
+            if(AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 != null)
                 i++;
             else
-                Class40_Sub5_Sub7.aClass40_Sub5_Sub14_Sub4Array2474 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Class40_Sub6.aClass1_2114, Class66.blank_string);
+                AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Class40_Sub6.aClass1_2114, Class66.blank_string);
             if(FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 == null)
                 FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Class40_Sub11.aClass1_2161, Class66.blank_string);
             else

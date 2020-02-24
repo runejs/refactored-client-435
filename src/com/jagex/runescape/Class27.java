@@ -1,10 +1,10 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -117,7 +117,7 @@ public class Class27 {
         Class40_Sub5_Sub11.method633(-1);
         for(int i = 0; Class17.anInt460 > i; i++) {
             int i_8_ = CacheIndex.anIntArray225[i];
-            if(((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_8_].anInt3134) ^ 0xffffffff) != (Node.anInt926 ^ 0xffffffff))
+            if(((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_8_].anInt3134) ^ 0xffffffff) != (Node.pulseCycle ^ 0xffffffff))
                 Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_8_] = null;
         }
         if((Cache.outgoingbuffer.currentPosition ^ 0xffffffff) != (Widget.packetsize ^ 0xffffffff))
@@ -226,7 +226,7 @@ public class Class27 {
                 Class32.packetBuffer.putShortLE(i_12_ >> 14 & 0x7fff);
             }
             if(action == 27) {
-                Class40_Sub5_Sub7.method596(i, i_12_, (byte) -79, i_10_);
+                AnimationSequence.method596(i, i_12_, (byte) -79, i_10_);
                 Class32.packetBuffer.putPacket(229);
                 Class40_Sub6.anInt2115++;
                 Class32.packetBuffer.putShortLE(SpotAnimDefinition.anInt2307 + i);
@@ -307,11 +307,11 @@ public class Class27 {
             if(action == 57) {
                 Class32.packetBuffer.putPacket(64);
                 Class32.packetBuffer.putIntBE(i_10_);
-                Widget widget = Class68.method1045(i_10_, (byte) -93);
-                if(widget.anIntArrayArray2748 != null && (widget.anIntArrayArray2748[0][0] ^ 0xffffffff) == -6) {
-                    int i_16_ = widget.anIntArrayArray2748[0][1];
-                    if(widget.anIntArray2693[0] != Class58.varbitmasks[i_16_]) {
-                        Class58.varbitmasks[i_16_] = widget.anIntArray2693[0];
+                Widget widget = Widget.forId(i_10_);
+                if(widget.clientScripts != null && (widget.clientScripts[0][0] ^ 0xffffffff) == -6) {
+                    int i_16_ = widget.clientScripts[0][1];
+                    if(widget.alternateRhs[0] != Class58.varbitmasks[i_16_]) {
+                        Class58.varbitmasks[i_16_] = widget.alternateRhs[0];
                         Class22.method309(-1, i_16_);
                         ISAAC.redrawTabArea = true;
                     }
@@ -400,7 +400,6 @@ public class Class27 {
                 ISAAC.redrawTabArea = true;
             } else {
                 if(action == 15) {
-                    GameObject.anInt3020++;
                     boolean bool = (Class38_Sub1.method448(0, 0, (Player.localPlayer.anIntArray3088[0]), i, (byte) 102, 0, false, 0, 0, (Player.localPlayer.anIntArray3135[0]), i_10_, 2));
                     if(!bool)
                         bool = (Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), i, (byte) 117, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), i_10_, 2));
@@ -417,9 +416,9 @@ public class Class27 {
                 if(action == 23) {
                     Class32.packetBuffer.putPacket(64);
                     Class32.packetBuffer.putIntBE(i_10_);
-                    Widget widget = Class68.method1045(i_10_, (byte) -68);
-                    if(widget.anIntArrayArray2748 != null && widget.anIntArrayArray2748[0][0] == 5) {
-                        int i_17_ = widget.anIntArrayArray2748[0][1];
+                    Widget widget = Widget.forId(i_10_);
+                    if(widget.clientScripts != null && widget.clientScripts[0][0] == 5) {
+                        int i_17_ = widget.clientScripts[0][1];
                         Class58.varbitmasks[i_17_] = -Class58.varbitmasks[i_17_] + 1;
                         Class22.method309(-1, i_17_);
                         ISAAC.redrawTabArea = true;
@@ -471,7 +470,7 @@ public class Class27 {
                     Class32.packetBuffer.putOffsetShortLE(i_12_);
                 }
                 if(action == 1002) {
-                    Class40_Sub5_Sub7.method596(i, i_12_, (byte) -11, i_10_);
+                    AnimationSequence.method596(i, i_12_, (byte) -11, i_10_);
                     SubNode.anInt2089++;
                     Class32.packetBuffer.putPacket(62);
                     Class32.packetBuffer.putShortBE((0x1fffd05d & i_12_) >> 14);
@@ -508,13 +507,13 @@ public class Class27 {
                     }
                 }
                 if(action == 29) {
-                    Class40_Sub5_Sub7.method596(i, i_12_, (byte) -77, i_10_);
+                    AnimationSequence.method596(i, i_12_, (byte) -77, i_10_);
                     Class32.packetBuffer.putPacket(164);
                     Class32.packetBuffer.putOffsetShortLE(SpotAnimDefinition.anInt2307 + i);
                     Class32.packetBuffer.putOffsetShortLE(Class26.anInt635 + i_10_);
                     Class32.packetBuffer.putOffsetShortLE(i_12_ >> 14 & 0x7fff);
                 }
-                if((action ^ 0xffffffff) == -6 && Class40_Sub5_Sub7.method596(i, i_12_, (byte) -104, i_10_)) {
+                if((action ^ 0xffffffff) == -6 && AnimationSequence.method596(i, i_12_, (byte) -104, i_10_)) {
                     SubNode.anInt2085++;
                     Class32.packetBuffer.putPacket(24);
                     Class32.packetBuffer.putOffsetShortLE(i_10_ + Class26.anInt635);
@@ -555,14 +554,14 @@ public class Class27 {
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                 }
                 if((action ^ 0xffffffff) == -34) {
-                    Widget widget = Class68.method1045(i_10_, (byte) -105);
+                    Widget widget = Widget.forId(i_10_);
                     ISAAC.redrawTabArea = true;
                     Main.anInt1773 = 1;
-                    Class38_Sub1.aClass1_1918 = widget.aClass1_2664;
-                    ItemDefinition.anInt2815 = widget.anInt2702;
+                    Class38_Sub1.aClass1_1918 = widget.targetVerb;
+                    ItemDefinition.anInt2815 = widget.clickMask;
                     Class8.anInt301 = 0;
                     Class60.anInt1417 = i_10_;
-                    FloorDecoration.aClass1_611 = (Class40_Sub5_Sub17_Sub6.method832(-80, new RSString[]{Landscape.aClass1_1162, widget.aClass1_2709, Class26.aClass1_620}));
+                    FloorDecoration.aClass1_611 = (Class40_Sub5_Sub17_Sub6.method832(-80, new RSString[]{Landscape.aClass1_1162, widget.spellName, Class26.aClass1_620}));
                     if((ItemDefinition.anInt2815 ^ 0xffffffff) == -17) {
                         IdentityKit.aBoolean2597 = true;
                         Class5.currentTabId = 3;
@@ -570,7 +569,7 @@ public class Class27 {
                     }
                 } else {
                     if((action ^ 0xffffffff) == -1008) {
-                        Widget widget = Class68.method1045(i_10_, (byte) -59);
+                        Widget widget = Widget.forId(i_10_);
                         if(widget != null && (widget.aWidgetArray2713 != null) && (i ^ 0xffffffff) != 0)
                             widget = (widget.aWidgetArray2713[i]);
                         if(widget == null || widget.anInt2734 < 100000) {
@@ -580,9 +579,9 @@ public class Class27 {
                             Class44.method895(83, 0, (Class40_Sub5_Sub17_Sub6.method832(127, (new RSString[]{HashTable.method334((widget.anInt2734), -1), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), Class66.blank_string);
                     }
                     if((action ^ 0xffffffff) == -43) {
-                        Widget widget = Class68.method1045(i_10_, (byte) -62);
+                        Widget widget = Widget.forId(i_10_);
                         boolean bool = true;
-                        if(widget.anInt2639 > 0)
+                        if(widget.contentType > 0)
                             bool = Class5.method166((byte) 88, widget);
                         if(bool) {
                             Class32.packetBuffer.putPacket(64);
@@ -695,7 +694,7 @@ public class Class27 {
                             Npc.aScene_3301.method120(Class57.anInt1338 - 4, -4 + RSString.anInt1668);
                     }
                     if(action == 1006) {
-                        Widget widget = Class68.method1045(i_10_, (byte) -111);
+                        Widget widget = Widget.forId(i_10_);
                         if(widget == null || (widget.itemAmounts[i] ^ 0xffffffff) > -100001) {
                             Class32.packetBuffer.putPacket(151);
                             Class32.packetBuffer.putOffsetShortLE(i_12_);
@@ -711,7 +710,7 @@ public class Class27 {
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                     }
                     if((action ^ 0xffffffff) == -18) {
-                        Class40_Sub5_Sub7.method596(i, i_12_, (byte) -104, i_10_);
+                        AnimationSequence.method596(i, i_12_, (byte) -104, i_10_);
                         Class32.packetBuffer.putPacket(183);
                         Class32.packetBuffer.putCustomNegativeOffsetShortBE(i_10_ + Class26.anInt635, -128);
                         Class32.packetBuffer.putShortBE(i_12_ >> 14 & 0x7fff);
@@ -724,7 +723,7 @@ public class Class27 {
                         Class48.anInt1138 = -1;
                         Class52.redrawChatbox = true;
                     }
-                    if(action == 32 && Class40_Sub5_Sub7.method596(i, i_12_, (byte) -27, i_10_)) {
+                    if(action == 32 && AnimationSequence.method596(i, i_12_, (byte) -27, i_10_)) {
                         Class32.packetBuffer.putPacket(225);
                         Class32.packetBuffer.putShortBE(i_12_ >> 14 & 0x7fff);
                         Class32.packetBuffer.putOffsetShortLE(i_10_ + Class26.anInt635);
@@ -864,7 +863,7 @@ public class Class27 {
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                     }
                     if(action == 16) {
-                        Class40_Sub5_Sub7.method596(i, i_12_, (byte) -47, i_10_);
+                        AnimationSequence.method596(i, i_12_, (byte) -47, i_10_);
                         Class32.packetBuffer.putPacket(30);
                         Class32.packetBuffer.putCustomNegativeOffsetShortBE(0x7fff & i_12_ >> 14, -128);
                         Class32.packetBuffer.putCustomNegativeOffsetShortBE(Class26.anInt635 + i_10_, -128);
@@ -884,7 +883,6 @@ public class Class27 {
                         }
                     }
                     if((action ^ 0xffffffff) == -48) {
-                        Class40_Sub5_Sub7.anInt2478++;
                         boolean bool = (Class38_Sub1.method448(0, 0, (Player.localPlayer.anIntArray3088[0]), i, (byte) 120, 0, false, 0, 0, (Player.localPlayer.anIntArray3135[0]), i_10_, 2));
                         if(!bool)
                             bool = (Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), i, (byte) 103, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), i_10_, 2));
@@ -952,7 +950,7 @@ public class Class27 {
         if(Class68.method1043(arg4)) {
             if(arg0 != 125)
                 drawScrollBar(-24, -60, 59, -118, 65, 12);
-            RSApplet.method20(arg5, arg3, 0, arg2, arg6, -1, 1, (Class59.aWidgetArrayArray1390[arg4]), arg1, 0);
+            RSApplet.method20(arg5, arg3, 0, arg2, arg6, -1, 1, (Widget.interfaces[arg4]), arg1, 0);
             if(Class10.aWidget_353 != null) {
                 Widget widget = Class10.aWidget_353;
                 Widget widget_24_ = Class40_Sub13.method878(-1598852880, widget);
@@ -963,12 +961,12 @@ public class Class27 {
                     int i_26_ = (-is[0] + is_25_[0] + (Class13.mouseX + -Class40_Sub2.anInt1996));
                     if(i < 0)
                         i = 0;
-                    if(widget_24_.anInt2643 < i + widget.anInt2643)
-                        i = (-widget.anInt2643 + widget_24_.anInt2643);
+                    if(widget_24_.originalHeight < i + widget.originalHeight)
+                        i = (-widget.originalHeight + widget_24_.originalHeight);
                     if(i_26_ < 0)
                         i_26_ = 0;
-                    if((widget_24_.anInt2692 < widget.anInt2692 + i_26_))
-                        i_26_ = (widget_24_.anInt2692 - widget.anInt2692);
+                    if((widget_24_.originalWidth < widget.originalWidth + i_26_))
+                        i_26_ = (widget_24_.originalWidth - widget.originalWidth);
                     if((Class10.aWidget_353.anObjectArray2669 != null) && (arg2 & 0x200) != 0)
                         Widget.method891(widget.anObjectArray2669, 0, i, widget, i_26_, false);
                     if(SpotAnimDefinition.anInt2302 == 0 && (arg2 & 0x400 ^ 0xffffffff) != -1) {
@@ -987,18 +985,18 @@ public class Class27 {
         Widget widget = null;
         for(int i = 0; arg0.length > i; i++) {
             Widget widget_27_ = arg0[i];
-            if(widget_27_ != null && (arg4 ^ 0xffffffff) == (widget_27_.anInt2648 ^ 0xffffffff)) {
-                int i_28_ = arg3 + widget_27_.anInt2696;
-                int i_29_ = arg5 + widget_27_.anInt2656;
-                if(i_29_ <= arg6 && i_28_ <= arg1 && (i_29_ + widget_27_.anInt2692 > arg6) && ((arg1 < i_28_ + widget_27_.anInt2643)) && !widget_27_.aBoolean2750) {
-                    if(widget_27_.anInt2689 < 0 && arg2 || widget_27_.anInt2689 >= 0 && !arg2)
+            if(widget_27_ != null && (arg4 ^ 0xffffffff) == (widget_27_.parentId ^ 0xffffffff)) {
+                int i_28_ = arg3 + widget_27_.currentY;
+                int i_29_ = arg5 + widget_27_.currentX;
+                if(i_29_ <= arg6 && i_28_ <= arg1 && (i_29_ + widget_27_.originalWidth > arg6) && ((arg1 < i_28_ + widget_27_.originalHeight)) && !widget_27_.isHidden) {
+                    if(widget_27_.id < 0 && arg2 || widget_27_.id >= 0 && !arg2)
                         widget = widget_27_;
                     if((widget_27_.type ^ 0xffffffff) == -1) {
-                        Widget widget_30_ = method361(arg0, arg1, arg2, (-widget_27_.scrollPosition + (widget_27_.anInt2696)), i, (widget_27_.anInt2656 - (widget_27_.anInt2746)), arg6, 398);
+                        Widget widget_30_ = method361(arg0, arg1, arg2, (-widget_27_.scrollPosition + (widget_27_.currentY)), i, (widget_27_.currentX - (widget_27_.anInt2746)), arg6, 398);
                         if(widget_30_ != null)
                             widget = widget_30_;
                         if(arg2 && (widget_27_.aWidgetArray2713) != null) {
-                            Widget widget_31_ = (method361((widget_27_.aWidgetArray2713), arg1, arg2, (widget_27_.anInt2696 + -widget_27_.scrollPosition), widget_27_.anInt2689, (widget_27_.anInt2656 - widget_27_.anInt2746), arg6, 398));
+                            Widget widget_31_ = (method361((widget_27_.aWidgetArray2713), arg1, arg2, (widget_27_.currentY + -widget_27_.scrollPosition), widget_27_.id, (widget_27_.currentX - widget_27_.anInt2746), arg6, 398));
                             if(widget_31_ != null)
                                 widget = widget_31_;
                         }
@@ -1039,8 +1037,8 @@ public class Class27 {
     }
 
     public static void method365(int arg0) {
-        if(Class40_Sub5_Sub11.aBoolean2631) {
-            Class40_Sub5_Sub11.aBoolean2631 = false;
+        if(Class40_Sub5_Sub11.clearScreen) {
+            Class40_Sub5_Sub11.clearScreen = false;
             ItemDefinition.method742(arg0 ^ ~0x4e29);
             IdentityKit.aBoolean2597 = true;
             Class52.redrawChatbox = true;
@@ -1050,8 +1048,8 @@ public class Class27 {
         method353((byte) -114);
         if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
             ISAAC.redrawTabArea = true;
-        if(Class29.anInt673 != -1) {
-            boolean bool = Renderable.method754(29378, Class29.anInt673);
+        if(Class29.tabAreaOverlayWidgetId != -1) {
+            boolean bool = Renderable.handleSequences(29378, Class29.tabAreaOverlayWidgetId);
             if(bool)
                 ISAAC.redrawTabArea = true;
         }
@@ -1094,7 +1092,7 @@ public class Class27 {
         }
         if(arg0 == -20197) {
             if(Class43.openChatboxWidgetId != -1) {
-                boolean bool = Renderable.method754(29378, Class43.openChatboxWidgetId);
+                boolean bool = Renderable.handleSequences(29378, Class43.openChatboxWidgetId);
                 if(bool)
                     Class52.redrawChatbox = true;
             }
@@ -1122,7 +1120,7 @@ public class Class27 {
                 }
                 IdentityKit.aBoolean2597 = false;
                 Class40_Sub3.aBoolean2026 = true;
-                Class40_Sub2.method527(Class5.currentTabId, 4, Class40_Sub5_Sub11.tabWidgetIds, ((Class29.anInt673 ^ 0xffffffff) == 0), ((Node.anInt926 % 20 ^ 0xffffffff) <= -11 ? Class51.anInt1205 : -1));
+                Class40_Sub2.method527(Class5.currentTabId, 4, Class40_Sub5_Sub11.tabWidgetIds, ((Class29.tabAreaOverlayWidgetId ^ 0xffffffff) == 0), ((Node.pulseCycle % 20 ^ 0xffffffff) <= -11 ? Class51.anInt1205 : -1));
             }
             if(Cache.aBoolean330) {
                 Class40_Sub3.aBoolean2026 = true;

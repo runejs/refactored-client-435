@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -86,12 +87,12 @@ public class Class44 implements Runnable {
             arg1.anInt3074 = 0;
         else {
             if((arg1.playingAnimation ^ 0xffffffff) != 0 && arg1.playingAnimationDelay == 0) {
-                Class40_Sub5_Sub7 class40_sub5_sub7 = Class68_Sub1.method1050(arg1.playingAnimation, 2);
-                if((arg1.anInt3094 ^ 0xffffffff) < -1 && class40_sub5_sub7.anInt2470 == 0) {
+                AnimationSequence animationSequence = Class68_Sub1.method1050(arg1.playingAnimation, 2);
+                if((arg1.anInt3094 ^ 0xffffffff) < -1 && animationSequence.anInt2470 == 0) {
                     arg1.anInt3074++;
                     return;
                 }
-                if(arg1.anInt3094 <= 0 && (class40_sub5_sub7.anInt2476 ^ 0xffffffff) == -1) {
+                if(arg1.anInt3094 <= 0 && (animationSequence.anInt2476 ^ 0xffffffff) == -1) {
                     arg1.anInt3074++;
                     return;
                 }

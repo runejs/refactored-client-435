@@ -2,6 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.audio.Filter;
 import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
@@ -18,7 +19,7 @@ import java.net.Socket;
 
 public class Main extends RSApplet {
     public static int anInt1756 = 0;
-    public static RSString aClass1_1757 = RSString.CreateString("RS Rebirth wurde aktualisiert(Q");
+    public static RSString aClass1_1757 = RSString.CreateString("Runescape wurde aktualisiert(Q");
     public static int anInt1758;
     public static RSString aClass1_1761 = RSString.CreateString("Welcome to Runescape");
     public static RSString aClass1_1762 = RSString.CreateString("logo");
@@ -38,16 +39,16 @@ public class Main extends RSApplet {
         boolean bool = arg9;
         for(int i = 0; arg8.length > i; i++) {
             Widget widget = arg8[i];
-            if(widget != null && widget.anInt2648 == arg4) {
-                if(widget.anInt2639 > 0)
+            if(widget != null && widget.parentId == arg4) {
+                if(widget.contentType > 0)
                     Class58.method976((byte) 70, widget);
-                int i_0_ = arg2 + widget.anInt2656;
+                int i_0_ = arg2 + widget.currentX;
                 if(!widget.aBoolean2694)
                     i_0_ -= arg3;
-                int i_1_ = arg1 + widget.anInt2696;
+                int i_1_ = arg1 + widget.currentY;
                 if(!widget.aBoolean2694)
                     i_1_ -= arg7;
-                int i_2_ = widget.anInt2745;
+                int i_2_ = widget.opacity;
                 if(widget == Class10.aWidget_353) {
                     i_2_ = 128;
                     Widget widget_3_ = Class40_Sub13.method878(-1598852880, widget);
@@ -56,38 +57,38 @@ public class Main extends RSApplet {
                     int i_5_ = (Landscape.mouseY + (-Class40_Sub5_Sub11.anInt2621 + (is_4_[1] - is[1])));
                     if(i_5_ < 0)
                         i_5_ = 0;
-                    if(i_5_ + widget.anInt2643 > widget_3_.anInt2643)
-                        i_5_ = (widget_3_.anInt2643 + -widget.anInt2643);
+                    if(i_5_ + widget.originalHeight > widget_3_.originalHeight)
+                        i_5_ = (widget_3_.originalHeight + -widget.originalHeight);
                     i_1_ = i_5_ + is[1];
                     int i_6_ = (Class13.mouseX + (-Class40_Sub2.anInt1996 + -is[0]) + is_4_[0]);
                     if(i_6_ < 0)
                         i_6_ = 0;
-                    if((i_6_ + widget.anInt2692 > widget_3_.anInt2692))
-                        i_6_ = (-widget.anInt2692 + widget_3_.anInt2692);
+                    if((i_6_ + widget.originalWidth > widget_3_.originalWidth))
+                        i_6_ = (-widget.originalWidth + widget_3_.originalWidth);
                     i_0_ = is[0] + i_6_;
                 }
-                if(!widget.aBoolean2636 || (Rasterizer.viewport_right >= i_0_ && ((Rasterizer.viewport_bottom >= i_1_)) && ((Rasterizer.viewport_left <= i_0_ + widget.anInt2692)) && ((i_1_ + widget.anInt2643 >= Rasterizer.viewport_top)))) {
+                if(!widget.isIf3 || (Rasterizer.viewport_right >= i_0_ && ((Rasterizer.viewport_bottom >= i_1_)) && ((Rasterizer.viewport_left <= i_0_ + widget.originalWidth)) && ((i_1_ + widget.originalHeight >= Rasterizer.viewport_top)))) {
                     if(widget.type == 0) {
-                        if(widget.aBoolean2750 && !Class29.method371(8247, arg0, i))
+                        if(widget.isHidden && !Class29.method371(8247, arg0, i))
                             continue;
-                        if(!widget.aBoolean2636) {
-                            if((-widget.anInt2643 + widget.anInt2720) < widget.scrollPosition)
-                                widget.scrollPosition = (-widget.anInt2643 + widget.anInt2720);
+                        if(!widget.isIf3) {
+                            if((-widget.originalHeight + widget.scrollHeight) < widget.scrollPosition)
+                                widget.scrollPosition = (-widget.originalHeight + widget.scrollHeight);
                             if(widget.scrollPosition < 0)
                                 widget.scrollPosition = 0;
                         }
-                        bool &= method36(arg0, i_1_, i_0_, widget.anInt2746, i, (widget.anInt2643 + i_1_), (widget.anInt2692 + i_0_), widget.scrollPosition, arg8, arg9);
+                        bool &= method36(arg0, i_1_, i_0_, widget.anInt2746, i, (widget.originalHeight + i_1_), (widget.originalWidth + i_0_), widget.scrollPosition, arg8, arg9);
                         if(widget.aWidgetArray2713 != null)
-                            bool &= (method36(arg0, i_1_, i_0_, widget.anInt2746, widget.anInt2689, i_1_ + widget.anInt2643, widget.anInt2692 + i_0_, widget.scrollPosition, (widget.aWidgetArray2713), true));
+                            bool &= (method36(arg0, i_1_, i_0_, widget.anInt2746, widget.id, i_1_ + widget.originalHeight, widget.originalWidth + i_0_, widget.scrollPosition, (widget.aWidgetArray2713), true));
                         Rasterizer.setCoordinates(arg2, arg1, arg5, arg6);
-                        if((widget.anInt2643 < widget.anInt2720))
-                            Class27.drawScrollBar(0, widget.scrollPosition, widget.anInt2720, i_0_ + (widget.anInt2692), widget.anInt2643, i_1_);
+                        if((widget.originalHeight < widget.scrollHeight))
+                            Class27.drawScrollBar(0, widget.scrollPosition, widget.scrollHeight, i_0_ + (widget.originalWidth), widget.originalHeight, i_1_);
                     }
                     if(widget.type != 1) {
                         if(widget.type == 2) {
                             int i_7_ = 0;
-                            for(int i_8_ = 0; ((i_8_ < widget.anInt2643)); i_8_++) {
-                                for(int i_9_ = 0; widget.anInt2692 > i_9_; i_9_++) {
+                            for(int i_8_ = 0; ((i_8_ < widget.originalHeight)); i_8_++) {
+                                for(int i_9_ = 0; widget.originalWidth > i_9_; i_9_++) {
                                     int i_10_ = ((widget.itemSpritePadsX + 32) * i_9_ + i_0_);
                                     int i_11_ = ((32 + (widget.itemSpritePadsY)) * i_8_ + i_1_);
                                     if((i_7_ ^ 0xffffffff) > -21) {
@@ -107,15 +108,15 @@ public class Main extends RSApplet {
                                         int i_12_ = 0;
                                         int i_13_ = -1 + (widget.items[i_7_]);
                                         int i_14_ = 0;
-                                        if((-32 + (Rasterizer.viewport_left) < i_10_ && ((i_10_ ^ 0xffffffff) > ((Rasterizer.viewport_right) ^ 0xffffffff)) && (((Rasterizer.viewport_top) + -32 < i_11_)) && (Rasterizer.viewport_bottom) > i_11_) || (SceneTile.activeInterfaceType != 0 && (Class58.anInt1352 == i_7_))) {
+                                        if((-32 + (Rasterizer.viewport_left) < i_10_ && ((i_10_ ^ 0xffffffff) > ((Rasterizer.viewport_right) ^ 0xffffffff)) && (((Rasterizer.viewport_top) + -32 < i_11_)) && (Rasterizer.viewport_bottom) > i_11_) || (SceneTile.activeInterfaceType != 0 && (Class58.selectedInventorySlot == i_7_))) {
                                             int i_15_ = 0;
-                                            if(Class8.anInt301 == 1 && ((Class45.anInt1061 ^ 0xffffffff) == (i_7_ ^ 0xffffffff)) && ((widget.anInt2689) == ISAAC.anInt525))
+                                            if(Class8.anInt301 == 1 && ((Class45.anInt1061 ^ 0xffffffff) == (i_7_ ^ 0xffffffff)) && ((widget.id) == ISAAC.anInt525))
                                                 i_15_ = 16777215;
                                             ImageRGB class40_sub5_sub14_sub4 = (Class40_Sub13.method876(117, (widget.itemAmounts[i_7_]), i_13_, i_15_));
                                             if(class40_sub5_sub14_sub4 == null)
                                                 bool = false;
                                             else {
-                                                if((SceneTile.activeInterfaceType ^ 0xffffffff) != -1 && ((i_7_ ^ 0xffffffff) == ((Class58.anInt1352) ^ 0xffffffff)) && ((widget.anInt2689) == (Class48.anInt1127))) {
+                                                if((SceneTile.activeInterfaceType ^ 0xffffffff) != -1 && ((i_7_ ^ 0xffffffff) == ((Class58.selectedInventorySlot) ^ 0xffffffff)) && ((widget.id) == (Class48.modifiedWidgetId))) {
                                                     i_14_ = ((Landscape.mouseY) + -(ItemDefinition.anInt2798));
                                                     i_12_ = (Class13.mouseX + -(Renderable.anInt2869));
                                                     if(i_12_ < 5 && i_12_ > -5)
@@ -138,17 +139,17 @@ public class Main extends RSApplet {
                                                             widget_16_.scrollPosition -= i_17_;
                                                             ItemDefinition.anInt2798 += i_17_;
                                                         }
-                                                        if((((Rasterizer.viewport_bottom) ^ 0xffffffff) > ((32 + i_11_ + i_14_) ^ 0xffffffff)) && (((widget_16_.scrollPosition) ^ 0xffffffff) > ((-(widget_16_.anInt2643) + (widget_16_.anInt2720)) ^ 0xffffffff))) {
+                                                        if((((Rasterizer.viewport_bottom) ^ 0xffffffff) > ((32 + i_11_ + i_14_) ^ 0xffffffff)) && (((widget_16_.scrollPosition) ^ 0xffffffff) > ((-(widget_16_.originalHeight) + (widget_16_.scrollHeight)) ^ 0xffffffff))) {
                                                             int i_18_ = ((Class5.anInt199) * (-(Rasterizer.viewport_bottom) + 32 + (i_11_ + i_14_)) / 3);
                                                             if(((Class5.anInt199) * 10) < i_18_)
                                                                 i_18_ = (10 * Class5.anInt199);
-                                                            if((-(widget_16_.scrollPosition) + (widget_16_.anInt2720) + -(widget_16_.anInt2643)) < i_18_)
-                                                                i_18_ = (-widget_16_.anInt2643 + widget_16_.anInt2720 + -widget_16_.scrollPosition);
+                                                            if((-(widget_16_.scrollPosition) + (widget_16_.scrollHeight) + -(widget_16_.originalHeight)) < i_18_)
+                                                                i_18_ = (-widget_16_.originalHeight + widget_16_.scrollHeight + -widget_16_.scrollPosition);
                                                             ItemDefinition.anInt2798 -= i_18_;
                                                             widget_16_.scrollPosition += i_18_;
                                                         }
                                                     }
-                                                } else if((Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType) == 0 || ((Class52.anInt1233) != i_7_) || (((Class30.anInt704) ^ 0xffffffff) != ((widget.anInt2689) ^ 0xffffffff)))
+                                                } else if((Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType) == 0 || ((Class52.anInt1233) != i_7_) || (((Class30.anInt704) ^ 0xffffffff) != ((widget.id) ^ 0xffffffff)))
                                                     class40_sub5_sub14_sub4.drawImage(i_10_, i_11_);
                                                 else
                                                     class40_sub5_sub14_sub4.method728(i_10_, i_11_, 128);
@@ -166,43 +167,43 @@ public class Main extends RSApplet {
                         } else if(widget.type == 3) {
                             int i_20_;
                             if(ItemDefinition.method746(widget)) {
-                                i_20_ = widget.anInt2726;
-                                if(Class29.method371(8247, arg0, i) && (widget.anInt2663 ^ 0xffffffff) != -1)
-                                    i_20_ = widget.anInt2663;
+                                i_20_ = widget.alternateTextColor;
+                                if(Class29.method371(8247, arg0, i) && (widget.alternateHoveredTextColor ^ 0xffffffff) != -1)
+                                    i_20_ = widget.alternateHoveredTextColor;
                             } else {
-                                i_20_ = widget.anInt2647;
-                                if(Class29.method371(8247, arg0, i) && widget.anInt2719 != 0)
-                                    i_20_ = widget.anInt2719;
+                                i_20_ = widget.textColor;
+                                if(Class29.method371(8247, arg0, i) && widget.hoveredTextColor != 0)
+                                    i_20_ = widget.hoveredTextColor;
                             }
                             if(i_2_ == 0) {
-                                if(!widget.aBoolean2645)
-                                    Rasterizer.method665(i_0_, i_1_, widget.anInt2692, widget.anInt2643, i_20_);
+                                if(!widget.filled)
+                                    Rasterizer.method665(i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_20_);
                                 else
-                                    Rasterizer.method656(i_0_, i_1_, widget.anInt2692, widget.anInt2643, i_20_);
-                            } else if(!widget.aBoolean2645)
-                                Rasterizer.method654(i_0_, i_1_, widget.anInt2692, widget.anInt2643, i_20_, -(0xff & i_2_) + 256);
+                                    Rasterizer.method656(i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_20_);
+                            } else if(!widget.filled)
+                                Rasterizer.method654(i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_20_, -(0xff & i_2_) + 256);
                             else
-                                Rasterizer.method664(i_0_, i_1_, widget.anInt2692, widget.anInt2643, i_20_, -(0xff & i_2_) + 256);
+                                Rasterizer.method664(i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_20_, -(0xff & i_2_) + 256);
                         } else if(widget.type == 4) {
                             TypeFace class40_sub5_sub14_sub1 = widget.method647((byte) 34);
                             if(class40_sub5_sub14_sub1 == null) {
                                 if(Class40_Sub13.aBoolean2177)
                                     bool = false;
                             } else {
-                                RSString class1 = widget.aClass1_2668;
+                                RSString class1 = widget.text;
                                 int i_21_;
                                 if(ItemDefinition.method746(widget)) {
-                                    i_21_ = widget.anInt2726;
-                                    if(Class29.method371(8247, arg0, i) && (widget.anInt2663 ^ 0xffffffff) != -1)
-                                        i_21_ = widget.anInt2663;
-                                    if(widget.aClass1_2640.length() > 0)
-                                        class1 = (widget.aClass1_2640);
+                                    i_21_ = widget.alternateTextColor;
+                                    if(Class29.method371(8247, arg0, i) && (widget.alternateHoveredTextColor ^ 0xffffffff) != -1)
+                                        i_21_ = widget.alternateHoveredTextColor;
+                                    if(widget.alternateText.length() > 0)
+                                        class1 = (widget.alternateText);
                                 } else {
-                                    i_21_ = widget.anInt2647;
-                                    if(Class29.method371(8247, arg0, i) && (widget.anInt2719 != 0))
-                                        i_21_ = widget.anInt2719;
+                                    i_21_ = widget.textColor;
+                                    if(Class29.method371(8247, arg0, i) && (widget.hoveredTextColor != 0))
+                                        i_21_ = widget.hoveredTextColor;
                                 }
-                                if(widget.aBoolean2636 && (widget.anInt2718 != -1)) {
+                                if(widget.isIf3 && (widget.anInt2718 != -1)) {
                                     ItemDefinition class40_sub5_sub16 = (ItemDefinition.forId(widget.anInt2718, 10));
                                     class1 = class40_sub5_sub16.name;
                                     if(class1 == null)
@@ -210,8 +211,8 @@ public class Main extends RSApplet {
                                     if(class40_sub5_sub16.stackable == 1 || (widget.anInt2734 ^ 0xffffffff) != -2)
                                         class1 = (Class40_Sub5_Sub17_Sub6.method832(-40, (new RSString[]{class1, Class29.aClass1_674, (Class45.method903((widget.anInt2734), (byte) -109))})));
                                 }
-                                if(widget.anInt2714 == 6 && ((widget.anInt2689 ^ 0xffffffff) == (CacheIndex_Sub1.anInt1819 ^ 0xffffffff))) {
-                                    i_21_ = widget.anInt2647;
+                                if(widget.menuType == 6 && ((widget.id ^ 0xffffffff) == (CacheIndex_Sub1.anInt1819 ^ 0xffffffff))) {
+                                    i_21_ = widget.textColor;
                                     class1 = PacketBuffer.aClass1_2240;
                                 }
                                 if((Rasterizer.width ^ 0xffffffff) == -480) {
@@ -221,10 +222,10 @@ public class Main extends RSApplet {
                                         i_21_ = 16777215;
                                 }
                                 class1 = (SceneTile.method532((byte) 20, widget, class1));
-                                class40_sub5_sub14_sub1.method672(class1, i_0_, i_1_, widget.anInt2692, widget.anInt2643, i_21_, widget.aBoolean2665, widget.anInt2733, widget.anInt2715, widget.anInt2732);
+                                class40_sub5_sub14_sub1.method672(class1, i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_21_, widget.textShadowed, widget.xTextAlignment, widget.yTextAlignment, widget.lineHeight);
                             }
                         } else if(widget.type == 5) {
-                            if(!widget.aBoolean2636) {
+                            if(!widget.isIf3) {
                                 ImageRGB class40_sub5_sub14_sub4 = (widget.method643(127, (ItemDefinition.method746(widget))));
                                 if(class40_sub5_sub14_sub4 != null)
                                     class40_sub5_sub14_sub4.drawImage(i_0_, i_1_);
@@ -247,17 +248,17 @@ public class Main extends RSApplet {
                                     int i_24_ = (class40_sub5_sub14_sub4.image_height);
                                     int i_25_ = (class40_sub5_sub14_sub4.image_width);
                                     if(!widget.aBoolean2641) {
-                                        int i_26_ = 4096 * (widget.anInt2692) / i_25_;
+                                        int i_26_ = 4096 * (widget.originalWidth) / i_25_;
                                         if((widget.anInt2751 ^ 0xffffffff) == -1) {
                                             if(i_2_ == 0) {
-                                                if(((i_25_ ^ 0xffffffff) == ((widget.anInt2692) ^ 0xffffffff)) && ((widget.anInt2643) == i_24_))
+                                                if(((i_25_ ^ 0xffffffff) == ((widget.originalWidth) ^ 0xffffffff)) && ((widget.originalHeight) == i_24_))
                                                     class40_sub5_sub14_sub4.drawImage(i_0_, i_1_);
                                                 else
-                                                    class40_sub5_sub14_sub4.method732(i_0_, i_1_, (widget.anInt2692), (widget.anInt2643));
+                                                    class40_sub5_sub14_sub4.method732(i_0_, i_1_, (widget.originalWidth), (widget.originalHeight));
                                             } else
-                                                class40_sub5_sub14_sub4.method716(i_0_, i_1_, (widget.anInt2692), (widget.anInt2643), 256 + -(0xff & i_2_));
+                                                class40_sub5_sub14_sub4.method716(i_0_, i_1_, (widget.originalWidth), (widget.originalHeight), 256 + -(0xff & i_2_));
                                         } else
-                                            class40_sub5_sub14_sub4.method720((widget.anInt2692) / 2 + i_0_, (widget.anInt2643) / 2 + i_1_, (widget.anInt2751), i_26_);
+                                            class40_sub5_sub14_sub4.method720((widget.originalWidth) / 2 + i_0_, (widget.originalHeight) / 2 + i_1_, (widget.anInt2751), i_26_);
                                     } else {
                                         int[] is = new int[4];
                                         Rasterizer.method661(is);
@@ -267,15 +268,15 @@ public class Main extends RSApplet {
                                         int i_28_ = i_1_;
                                         if((is[1] > i_28_))
                                             i_28_ = is[1];
-                                        int i_29_ = (widget.anInt2692 + i_0_);
+                                        int i_29_ = (widget.originalWidth + i_0_);
                                         if((is[2] < i_29_))
                                             i_29_ = is[2];
-                                        int i_30_ = (widget.anInt2643 + i_1_);
+                                        int i_30_ = (widget.originalHeight + i_1_);
                                         if(i_30_ > is[3])
                                             i_30_ = is[3];
                                         Rasterizer.setCoordinates(i_27_, i_28_, i_30_, i_29_);
-                                        int i_31_ = (widget.anInt2692 - (1 + -i_25_)) / i_25_;
-                                        int i_32_ = (widget.anInt2643 - (1 + -i_24_)) / i_24_;
+                                        int i_31_ = (widget.originalWidth - (1 + -i_25_)) / i_25_;
+                                        int i_32_ = (widget.originalHeight - (1 + -i_24_)) / i_24_;
                                         for(int i_33_ = 0; i_31_ > i_33_; i_33_++) {
                                             for(int i_34_ = 0; ((i_32_ > i_34_)); i_34_++) {
                                                 if(((widget.anInt2751) ^ 0xffffffff) == -1) {
@@ -305,31 +306,31 @@ public class Main extends RSApplet {
                             Object object = null;
                             int i_36_;
                             if(!bool_35_)
-                                i_36_ = widget.anInt2659;
+                                i_36_ = widget.animation;
                             else
-                                i_36_ = widget.anInt2653;
+                                i_36_ = widget.alternateAnimation;
                             Model class40_sub5_sub17_sub5;
-                            if((widget.anInt2687 ^ 0xffffffff) != -6) {
+                            if((widget.modelType ^ 0xffffffff) != -6) {
                                 if(i_36_ == -1) {
                                     class40_sub5_sub17_sub5 = (widget.method646((byte) 46, null, -1, bool_35_, (Player.localPlayer.aClass30_3282)));
                                     if(class40_sub5_sub17_sub5 == null && Class40_Sub13.aBoolean2177)
                                         bool = false;
                                 } else {
-                                    Class40_Sub5_Sub7 class40_sub5_sub7 = Class68_Sub1.method1050(i_36_, 2);
-                                    class40_sub5_sub17_sub5 = (widget.method646((byte) 76, class40_sub5_sub7, widget.anInt2654, bool_35_, (Player.localPlayer.aClass30_3282)));
+                                    AnimationSequence animationSequence = Class68_Sub1.method1050(i_36_, 2);
+                                    class40_sub5_sub17_sub5 = (widget.method646((byte) 76, animationSequence, widget.anInt2654, bool_35_, (Player.localPlayer.aClass30_3282)));
                                     if(class40_sub5_sub17_sub5 == null && Class40_Sub13.aBoolean2177)
                                         bool = false;
                                 }
-                            } else if((widget.anInt2673 ^ 0xffffffff) != -1)
-                                class40_sub5_sub17_sub5 = Player.localPlayer.method756(92);
+                            } else if((widget.modelId ^ 0xffffffff) != -1)
+                                class40_sub5_sub17_sub5 = Player.localPlayer.getRotatedModel(92);
                             else
                                 class40_sub5_sub17_sub5 = (Class45.aClass30_1082.method377(null, null, -1, -1, (byte) -88));
-                            int i_37_ = widget.anInt2690;
-                            int i_38_ = widget.anInt2725;
-                            int i_39_ = widget.anInt2679;
-                            int i_40_ = widget.anInt2657;
-                            int i_41_ = widget.anInt2737;
-                            int i_42_ = widget.anInt2728;
+                            int i_37_ = widget.rotationX;
+                            int i_38_ = widget.rotationY;
+                            int i_39_ = widget.offsetY2d;
+                            int i_40_ = widget.rotationZ;
+                            int i_41_ = widget.offsetX2d;
+                            int i_42_ = widget.modelZoom;
                             if((widget.anInt2718 ^ 0xffffffff) != 0) {
                                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((widget.anInt2718), 10);
                                 if(class40_sub5_sub16 != null) {
@@ -341,17 +342,17 @@ public class Main extends RSApplet {
                                     i_37_ = class40_sub5_sub16.xan2d;
                                     i_42_ = class40_sub5_sub16.zoom2d;
                                     i_40_ = class40_sub5_sub16.yan2d;
-                                    if(widget.anInt2692 > 0)
-                                        i_42_ = (32 * i_42_ / (widget.anInt2692));
+                                    if(widget.originalWidth > 0)
+                                        i_42_ = (32 * i_42_ / (widget.originalWidth));
                                 }
                             }
-                            R3D.method710(i_0_ + widget.anInt2692 / 2, widget.anInt2643 / 2 + i_1_);
+                            R3D.method710(i_0_ + widget.originalWidth / 2, widget.originalHeight / 2 + i_1_);
                             int i_43_ = (i_42_ * (R3D.sinetable[i_37_]) >> -844145968);
                             int i_44_ = (i_42_ * (R3D.cosinetable[i_37_]) >> -1486826672);
                             if(class40_sub5_sub17_sub5 != null) {
-                                if(widget.aBoolean2636) {
+                                if(widget.isIf3) {
                                     class40_sub5_sub17_sub5.method799();
-                                    if(widget.aBoolean2701)
+                                    if(widget.orthogonal)
                                         class40_sub5_sub17_sub5.method801(0, i_40_, i_38_, i_37_, i_41_, (i_39_ + i_43_ + (class40_sub5_sub17_sub5.anInt2861) / 2), i_44_ + i_39_, i_42_);
                                     else
                                         class40_sub5_sub17_sub5.method812(0, i_40_, i_38_, i_37_, i_41_, (i_39_ + ((class40_sub5_sub17_sub5.anInt2861) / 2 + i_43_)), i_44_ + i_39_);
@@ -368,8 +369,8 @@ public class Main extends RSApplet {
                                     continue;
                                 }
                                 int i_45_ = 0;
-                                for(int i_46_ = 0; ((i_46_ < widget.anInt2643)); i_46_++) {
-                                    for(int i_47_ = 0; (i_47_ < widget.anInt2692); i_47_++) {
+                                for(int i_46_ = 0; ((i_46_ < widget.originalHeight)); i_46_++) {
+                                    for(int i_47_ = 0; (i_47_ < widget.originalWidth); i_47_++) {
                                         if(((widget.items[i_45_]) ^ 0xffffffff) < -1) {
                                             ItemDefinition class40_sub5_sub16 = (ItemDefinition.forId((-1 + (widget.items[i_45_])), 10));
                                             RSString class1 = (class40_sub5_sub16.name);
@@ -379,12 +380,12 @@ public class Main extends RSApplet {
                                                 class1 = (Class40_Sub5_Sub17_Sub6.method832(101, (new RSString[]{class1, (Class29.aClass1_674), (Class45.method903((widget.itemAmounts[i_45_]), (byte) -105))})));
                                             int i_48_ = ((i_47_ * ((widget.itemSpritePadsX) + 115)) + i_0_);
                                             int i_49_ = ((i_46_ * ((widget.itemSpritePadsY) + 12)) + i_1_);
-                                            if(((widget.anInt2733) ^ 0xffffffff) == -1)
-                                                class40_sub5_sub14_sub1.method683(class1, i_48_, i_49_, (widget.anInt2647), (widget.aBoolean2665));
-                                            else if((widget.anInt2733) == 1)
-                                                class40_sub5_sub14_sub1.method688(class1, (i_48_ + (widget.anInt2692) / 2), i_49_, (widget.anInt2647), (widget.aBoolean2665));
+                                            if(((widget.xTextAlignment) ^ 0xffffffff) == -1)
+                                                class40_sub5_sub14_sub1.method683(class1, i_48_, i_49_, (widget.textColor), (widget.textShadowed));
+                                            else if((widget.xTextAlignment) == 1)
+                                                class40_sub5_sub14_sub1.method688(class1, (i_48_ + (widget.originalWidth) / 2), i_49_, (widget.textColor), (widget.textShadowed));
                                             else
-                                                class40_sub5_sub14_sub1.method677(class1, (-1 + (widget.anInt2692) + i_48_), i_49_, (widget.anInt2647), (widget.aBoolean2665));
+                                                class40_sub5_sub14_sub1.method677(class1, (-1 + (widget.originalWidth) + i_48_), i_49_, (widget.textColor), (widget.textShadowed));
                                         }
                                         i_45_++;
                                     }
@@ -394,7 +395,7 @@ public class Main extends RSApplet {
                                 int i_50_ = 0;
                                 int i_51_ = 0;
                                 TypeFace class40_sub5_sub14_sub1 = (Class53.aClass40_Sub5_Sub14_Sub1_1268);
-                                RSString class1 = widget.aClass1_2668;
+                                RSString class1 = widget.text;
                                 class1 = (SceneTile.method532((byte) 20, widget, class1));
                                 while(class1.length() > 0) {
                                     int i_52_ = class1.contains((Class30.aClass1_686));
@@ -412,18 +413,18 @@ public class Main extends RSApplet {
                                         i_50_ = i_54_;
                                 }
                                 i_51_ += 7;
-                                int i_55_ = 5 + (widget.anInt2643 + i_1_);
+                                int i_55_ = 5 + (widget.originalHeight + i_1_);
                                 if(i_55_ + i_51_ > arg5)
                                     i_55_ = arg5 + -i_51_;
                                 i_50_ += 6;
-                                int i_56_ = -5 + (widget.anInt2692 + i_0_ - i_50_);
+                                int i_56_ = -5 + (widget.originalWidth + i_0_ - i_50_);
                                 if((i_56_ < 5 + i_0_))
                                     i_56_ = 5 + i_0_;
                                 if(i_50_ + i_56_ > arg6)
                                     i_56_ = -i_50_ + arg6;
                                 Rasterizer.method656(i_56_, i_55_, i_50_, i_51_, 16777120);
                                 Rasterizer.method665(i_56_, i_55_, i_50_, i_51_, 0);
-                                class1 = widget.aClass1_2668;
+                                class1 = widget.text;
                                 int i_57_ = (2 + (i_55_ + (class40_sub5_sub14_sub1.characterDefaultHeight)));
                                 class1 = (SceneTile.method532((byte) 20, widget, class1));
                                 while((class1.length() ^ 0xffffffff) < -1) {
@@ -441,7 +442,7 @@ public class Main extends RSApplet {
                                 }
                             }
                             if((widget.type ^ 0xffffffff) == -10)
-                                Rasterizer.method666(i_0_, i_1_, widget.anInt2692 + i_0_, widget.anInt2643 + i_1_, widget.anInt2647);
+                                Rasterizer.method666(i_0_, i_1_, widget.originalWidth + i_0_, widget.originalHeight + i_1_, widget.textColor);
                         }
                     }
                 }
@@ -632,7 +633,6 @@ public class Main extends RSApplet {
         Class42.anInt994 = 0;
         SubNode.anInt2088 = 0;
         Class52.anInt1211 = 0;
-        Class40_Sub5_Sub7.anInt2486 = 0;
         Class40_Sub5_Sub4.anInt2363 = 0;
         Class40_Sub13.anInt2184 = 0;
         Class60.anInt1418 = 0;
@@ -651,10 +651,8 @@ public class Main extends RSApplet {
         Class68.anInt1616 = 0;
         Class8.anInt285 = 0;
         UnderlayDefinition.anInt2580 = 0;
-        GameObject.anInt3023 = 0;
         Class8.anInt282 = 0;
         Class37.anInt866 = 0;
-        Class40_Sub5_Sub7.anInt2492 = 0;
         Class40_Sub3.anInt2034 = 0;
         Class56.anInt1319 = 0;
         OverlayDefinition.anInt2341 = 0;
@@ -663,7 +661,6 @@ public class Main extends RSApplet {
         Class35.anInt1723 = 0;
         IdentityKit.anInt2608 = 0;
         Class40_Sub13.anInt2169 = 0;
-        GameObject.anInt3028 = 0;
         SubNode.anInt2085 = 0;
         Class38.anInt891 = 0;
         Class10.anInt339 = 0;
@@ -685,7 +682,6 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub17_Sub3.anInt3053 = 0;
         Class40_Sub7.anInt2126 = 0;
         IdentityKit.anInt2601 = 0;
-        GameObject.anInt3031 = 0;
         Class59.anInt1384 = 0;
         Class40_Sub5_Sub17_Sub1.anInt2986 = 0;
         Class53.anInt1248 = 0;
@@ -703,7 +699,6 @@ public class Main extends RSApplet {
         Class35.anInt1722 = 0;
         FloorDecoration.anInt598 = 0;
         OverlayDefinition.anInt2326 = 0;
-        Class22_Sub2.anInt1894 = 0;
         Class60.anInt1405 = 0;
         Class22_Sub1.anInt1840 = 0;
         Class40_Sub5_Sub11.anInt2619 = 0;
@@ -740,13 +735,10 @@ public class Main extends RSApplet {
         Class8.anInt275 = 0;
         Class67.anInt1587 = 0;
         Class68.anInt1622 = 0;
-        GameObject.anInt3020 = 0;
         Class65.anInt1534 = 0;
         Class10.anInt345 = 0;
-        Class22_Sub2.anInt1880 = 0;
         Class58.anInt1368 = 0;
         FloorDecoration.anInt592 = 0;
-        GameObject.anInt3033 = 0;
         ISAAC.anInt514 = 0;
         Class54.anInt1274 = 0;
         Class24.anInt586 = 0;
@@ -763,8 +755,6 @@ public class Main extends RSApplet {
         Class67.anInt1576 = 0;
         Class44.anInt1050 = 0;
         Class42.anInt1007 = 0;
-        GameObject.anInt3017 = 0;
-        Class40_Sub5_Sub7.anInt2478 = 0;
         Actor.anInt3146 = 0;
         Class43.anInt1023 = 0;
         Class56.anInt1310 = 0;
@@ -786,13 +776,11 @@ public class Main extends RSApplet {
         Class49.anInt1142 = 0;
         Class37.anInt862 = 0;
         Class54.anInt1277 = 0;
-        Class40_Sub5_Sub7.anInt2467 = 0;
         Class59.anInt1380 = 0;
         Class51.anInt1192 = 0;
         RSCanvas.anInt52 = 0;
         Class40_Sub13.anInt2182 = 0;
         Renderable.anInt2867 = 0;
-        Class22_Sub2.anInt1897 = 0;
         ISAAC.anInt520 = 0;
         Class40_Sub5_Sub17_Sub1.anInt2994 = 0;
         Class40_Sub2.anInt1999 = 0;
@@ -802,7 +790,6 @@ public class Main extends RSApplet {
         IdentityKit.anInt2612 = 0;
         Class30.anInt702 = 0;
         Class40_Sub5_Sub4.anInt2369 = 0;
-        Class40_Sub5_Sub7.anInt2493 = 0;
         ISAAC.anInt503 = 0;
         Class34.anInt806 = 0;
         Class58.anInt1369 = 0;
@@ -823,7 +810,6 @@ public class Main extends RSApplet {
         Class43.anInt1016 = 0;
         Class40_Sub5_Sub17_Sub1.anInt2959 = 0;
         Class40_Sub5_Sub17_Sub1.anInt2956 = 0;
-        Class22_Sub2.anInt1892 = 0;
         Renderable.anInt2859 = 0;
         Class56.anInt1322 = 0;
         Class4.anInt187 = 0;
@@ -832,7 +818,6 @@ public class Main extends RSApplet {
         CacheIndex.anInt263 = 0;
         Class37.anInt870 = 0;
         Class60.anInt1400 = 0;
-        GameObject.anInt3032 = 0;
         Class8.anInt287 = 0;
         Class40_Sub2.anInt1992 = 0;
         Class37.anInt863 = 0;
@@ -846,7 +831,6 @@ public class Main extends RSApplet {
         Class40_Sub13.anInt2173 = 0;
         Class68.anInt1626 = 0;
         Class30.anInt689 = 0;
-        Class40_Sub5_Sub7.anInt2464 = 0;
         Class51.anInt1191 = 0;
         Class40_Sub5_Sub17_Sub3.anInt3052 = 0;
         Class42.anInt991 = 0;
@@ -875,7 +859,6 @@ public class Main extends RSApplet {
         Class22_Sub1.anInt1842 = 0;
         Node.anInt962 = 0;
         Class52.anInt1224 = 0;
-        Class40_Sub5_Sub7.anInt2468 = 0;
         Class52.anInt1240 = 0;
         Class54.anInt1276 = 0;
         Landscape.anInt1179 = 0;
@@ -892,7 +875,6 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub17_Sub1.anInt3008 = 0;
         Class40_Sub5_Sub4.anInt2355 = 0;
         Class35.anInt1751 = 0;
-        Class22_Sub2.anInt1884 = 0;
         Class44.anInt1037 = 0;
         SubNode.anInt2094 = 0;
         Class8.anInt280 = 0;
@@ -900,7 +882,6 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub17_Sub1.anInt3005 = 0;
         SceneTile.anInt2040 = 0;
         CacheIndex_Sub1.anInt1818 = 0;
-        Class40_Sub5_Sub7.anInt2471 = 0;
         Class22_Sub1.anInt1850 = 0;
         Class58.anInt1350 = 0;
         CacheIndex.anInt245 = 0;
@@ -913,7 +894,6 @@ public class Main extends RSApplet {
         Class24.anInt582 = 0;
         Landscape.anInt1165 = 0;
         SceneTile.anInt2052 = 0;
-        Class40_Sub5_Sub7.anInt2469 = 0;
         Class40_Sub5_Sub17_Sub6.anInt3234 = 0;
         Class40_Sub5_Sub17_Sub3.anInt3070 = 0;
         Class34.anInt836 = 0;
@@ -938,7 +918,6 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub13.anInt2755 = 0;
         Class40_Sub2.anInt1998 = 0;
         Class40_Sub5_Sub17_Sub6.anInt3241 = 0;
-        Class40_Sub5_Sub7.anInt2465 = 0;
         CacheIndex_Sub1.anInt1795 = 0;
         Class22_Sub1.anInt1869 = 0;
         Class35.anInt1721 = 0;
@@ -950,7 +929,6 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub17_Sub6.anInt3252 = 0;
         Class34.anInt807 = 0;
         Class37.anInt861 = 0;
-        GameObject.anInt3022 = 0;
         Class34.anInt803 = 0;
         Class58.anInt1357 = 0;
         SubNode.anInt2096 = 0;
@@ -967,7 +945,6 @@ public class Main extends RSApplet {
         SubNode.anInt2092 = 0;
         Class8.anInt276 = 0;
         CacheIndex_Sub1.anInt1794 = 0;
-        Class22_Sub2.anInt1882 = 0;
         Node.anInt928 = 0;
         Class13.anInt416 = 0;
         CacheIndex.anInt242 = 0;
@@ -989,13 +966,11 @@ public class Main extends RSApplet {
         Class35.anInt1742 = 0;
         Class35.anInt1729 = 0;
         UnderlayDefinition.anInt2572 = 0;
-        GameObject.anInt3025 = 0;
         CacheIndex_Sub1.anInt1803 = 0;
         Class51.anInt1190 = 0;
         Class29.anInt679 = 0;
         Class56.anInt1311 = 0;
         ISAAC.anInt501 = 0;
-        Class40_Sub5_Sub7.anInt2491 = 0;
         SceneTile.anInt2045 = 0;
         Class29.anInt672 = 0;
         Class60.anInt1403 = 0;
@@ -1071,8 +1046,8 @@ public class Main extends RSApplet {
         ActorDefinition.anInt2433 = -1;
         Class55.method958(UnderlayDefinition.anInt2562, -14222);
         UnderlayDefinition.anInt2562 = -1;
-        Class55.method958(Class29.anInt673, arg0 ^ ~0x378d);
-        Class29.anInt673 = -1;
+        Class55.method958(Class29.tabAreaOverlayWidgetId, arg0 ^ ~0x378d);
+        Class29.tabAreaOverlayWidgetId = -1;
         Class55.method958(Class58.anInt1376, -14222);
         Class40_Sub5_Sub15.inputType = 0;
         Class19.aBoolean490 = false;
@@ -1122,7 +1097,7 @@ public class Main extends RSApplet {
     }
 
     public void method23(int arg0) {
-        Node.anInt926++;
+        Node.pulseCycle++;
         method39(arg0 + 23636);
         Class13.method242((byte) -91);
         if(arg0 != -22636)
@@ -1176,7 +1151,7 @@ public class Main extends RSApplet {
             RSRuntimeException.method1056(GameFrame.aCanvas1469, (byte) 33);
         }
         if(Class51.anInt1197 == 0)
-            GameObject.drawLoadingText(Class67.anInt1607, null, Class22_Sub2.currentLoadingText, -86);
+            GameObject.drawLoadingText(Class67.anInt1607, null, Class22_Sub2.currentLoadingText);
         else if((Class51.anInt1197 ^ 0xffffffff) != -6) {
             if(Class51.anInt1197 != 10) {
                 if((Class51.anInt1197 ^ 0xffffffff) != -21) {
@@ -1370,7 +1345,7 @@ public class Main extends RSApplet {
         ISAAC.method282(true);
         Class49.method930(94);
         Cache.method234(arg0 ^ 0x6def);
-        Class40_Sub5_Sub7.method589(arg0 ^ 0x6de9);
+        AnimationSequence.method589(arg0 ^ 0x6de9);
         Model.method800();
         Class37.method433(-29013);
         RSRuntimeException.method1053(-124);
@@ -1426,7 +1401,7 @@ public class Main extends RSApplet {
         Class12.method240((byte) -76);
         Class43.method893((byte) 127);
         Class61.method998(-128);
-        GameObject.method770((byte) -95);
+        GameObject.method770();
         Class40_Sub5_Sub17_Sub3.method780(24399);
         Class40_Sub7.method839(arg0 ^ 0x6d9e);
         Class13.method248(arg0 ^ 0x925e);
