@@ -1,7 +1,6 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.media.IdentityKit;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;
@@ -12,105 +11,86 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import java.awt.*;
 
 public class ItemDefinition extends SubNode {
-    public static int anInt2797;
+    public static int anInt2797 = 0;
     public static int anInt2798 = 0;
-    public static int anInt2801;
-    public static int anInt2802;
-    public static int anInt2808;
-    public static int anInt2809;
-    public static int anInt2811;
-    public static int[] anIntArray2814;
+    public static int[] anIntArray2814 = new int[50];
     public static int anInt2815;
-    public static int anInt2826;
-    public static int anInt2832;
-    public static int anInt2835;
-    public static int anInt2837;
-    public static int anInt2838;
-    public static int anInt2839;
-    public static int anInt2842;
-    public static int anInt2843;
     public static int anInt2846;
-    public static int anInt2847;
-    public static int anInt2850;
+    public static int anInt2850 = -1;
     public static int anInt2854;
-
-    static {
-        anInt2797 = 0;
-        anIntArray2814 = new int[50];
-        anInt2850 = -1;
-    }
+    public static int count;
 
     public int stackable;
     public RSString name;
-    public RSString[] inventoryOptions;
+    public RSString[] interfaceOptions;
     public int primaryMaleHeadPiece = -1;
-    public int[] modifiedModelColors;
+    public int[] textureReplace;
     public RSString[] groundOptions;
     public int inventoryModelId;
-    public int modelOffset1;
+    public int xOffset2d;
     public int noteTemplateId;
-    public int modelOffset2;
+    public int yOffset2d;
     public int notedId;
     public int groundScaleX;
-    public int[] originalModelColors;
-    public int modelZoom;
-    public int maleTranslation;
-    public int femaleWearModel2;
-    public int femaleWearModel1;
+    public int[] textureFind;
+    public int zoom2d;
+    public int maleOffset;
+    public int femaleModel1;
+    public int maleModel1;
     public int secondaryFemaleHeadPiece;
     public int teamIndex;
-    public int colorEquip1;
-    public int ambience;
-    public int anInt2827;
-    public int value;
-    public int femaleTranslation;
-    public int modelRotation2;
+    public int maleModel2;
+    public int ambient;
+    public int zan2d;
+    public int cost;
+    public int femaleOffset;
+    public int yan2d;
     public int[] stackableIds;
     public int groundScaleZ;
     public int[] stackableAmounts;
-    public int primaryMaleModel;
-    public int diffusion;
+    public int maleModel0;
+    public int contrast;
     public int secondaryMaleHeadPiece;
-    public int modelRotation1;
-    public int colorEquip2;
-    public int primaryFemaleModel;
+    public int xan2d;
+    public int femaleModel2;
+    public int femaleModel0;
     public boolean members;
     public int primaryFemaleHeadPiece;
     public int anInt2852;
     public int groundScaleY;
 
     public ItemDefinition() {
-        inventoryOptions = new RSString[]{null, null, null, null, Cache.dropStringInstance};
+        interfaceOptions = new RSString[]{null, null, null, null, Cache.dropStringInstance};
         stackable = 0;
-        maleTranslation = 0;
+        maleOffset = 0;
         name = Class61.aClass1_1437;
-        modelOffset2 = 0;
-        value = 1;
-        modelOffset1 = 0;
-        femaleTranslation = 0;
-        ambience = 0;
-        femaleWearModel1 = -1;
-        modelRotation2 = 0;
+        yOffset2d = 0;
+        cost = 1;
+        xOffset2d = 0;
+        femaleOffset = 0;
+        ambient = 0;
+        maleModel1 = -1;
+        yan2d = 0;
         groundOptions = new RSString[]{null, null, Class27.takeStringInstance, null, null};
         groundScaleX = 128;
         noteTemplateId = -1;
         secondaryFemaleHeadPiece = -1;
-        modelZoom = 2000;
-        colorEquip1 = -1;
+        zoom2d = 2000;
+        maleModel2 = -1;
         teamIndex = 0;
-        anInt2827 = 0;
-        diffusion = 0;
-        femaleWearModel2 = -1;
-        colorEquip2 = -1;
-        modelRotation1 = 0;
+        zan2d = 0;
+        contrast = 0;
+        femaleModel1 = -1;
+        femaleModel2 = -1;
+        xan2d = 0;
         groundScaleZ = 128;
         secondaryMaleHeadPiece = -1;
-        primaryFemaleModel = -1;
+        femaleModel0 = -1;
         members = false;
         primaryFemaleHeadPiece = -1;
         groundScaleY = 128;
         notedId = -1;
-        primaryMaleModel = -1;
+        maleModel0 = -1;
     }
 
     public static void method742(int arg0) {
@@ -128,11 +108,9 @@ public class ItemDefinition extends SubNode {
         } catch(Exception exception) {
             GameFrame.aCanvas1469.repaint();
         }
-        anInt2808++;
     }
 
     public static void method744() {
-        anInt2839++;
         if(Class59.aClass54_1392 != null) {
             synchronized(Class59.aClass54_1392) {
                 Class59.aClass54_1392 = null;
@@ -145,7 +123,6 @@ public class ItemDefinition extends SubNode {
     }
 
     public static boolean method746(Widget arg1) {
-        anInt2838++;
         if(arg1.anIntArray2742 == null) {
             return false;
         }
@@ -172,7 +149,6 @@ public class ItemDefinition extends SubNode {
     }
 
     public static void method748(int arg1) {
-        anInt2843++;
         for(Renderable.anInt2866 += arg1; (Renderable.anInt2866 >= CollisionMap.anInt141); Renderable.anInt2866 -= CollisionMap.anInt141) {
             SubNode.anInt2081 -= SubNode.anInt2081 >> -1244591038;
         }
@@ -203,7 +179,6 @@ public class ItemDefinition extends SubNode {
                 }
             }
         }
-        anInt2811++;
     }
 
     public static ItemDefinition forId(int arg0, int arg1) {
@@ -217,12 +192,11 @@ public class ItemDefinition extends SubNode {
         if(is != null) {
             definition.readValues(new Buffer(is));
         }
-        definition.method741();
         if(definition.noteTemplateId != -1) {
             definition.itemToNote(forId(definition.noteTemplateId, 10), forId(definition.notedId, 10));
         }
         if(!IdentityKit.membersServer && definition.members) {
-            definition.inventoryOptions = null;
+            definition.interfaceOptions = null;
             definition.teamIndex = 0;
             definition.groundOptions = null;
             definition.name = Class40_Sub5_Sub17_Sub3.aClass1_3069;
@@ -232,9 +206,8 @@ public class ItemDefinition extends SubNode {
     }
 
     public boolean method738(byte arg0, boolean arg1) {
-        anInt2832++;
         if(arg0 != 44) {
-            inventoryOptions = null;
+            interfaceOptions = null;
         }
         int i = primaryMaleHeadPiece;
         int i_0_ = secondaryMaleHeadPiece;
@@ -256,14 +229,13 @@ public class ItemDefinition extends SubNode {
     }
 
     public boolean method739(boolean arg0, byte arg1) {
-        anInt2826++;
-        int i = primaryMaleModel;
-        int i_1_ = femaleWearModel1;
-        int i_2_ = colorEquip1;
+        int i = maleModel0;
+        int i_1_ = maleModel1;
+        int i_2_ = maleModel2;
         if(arg0) {
-            i_2_ = colorEquip2;
-            i_1_ = femaleWearModel2;
-            i = primaryFemaleModel;
+            i_2_ = femaleModel2;
+            i_1_ = femaleModel1;
+            i = femaleModel0;
         }
         if((i ^ 0xffffffff) == 0) {
             return true;
@@ -285,15 +257,14 @@ public class ItemDefinition extends SubNode {
     }
 
     public Model method740(boolean arg0, int arg1) {
-        anInt2837++;
-        int i = primaryMaleModel;
-        int i_3_ = femaleWearModel1;
+        int i = maleModel0;
+        int i_3_ = maleModel1;
         int i_4_ = 11 / ((arg1 - 35) / 56);
-        int i_5_ = colorEquip1;
+        int i_5_ = maleModel2;
         if(arg0) {
-            i = primaryFemaleModel;
-            i_3_ = femaleWearModel2;
-            i_5_ = colorEquip2;
+            i = femaleModel0;
+            i_3_ = femaleModel1;
+            i_5_ = femaleModel2;
         }
         if(i == -1) {
             return null;
@@ -310,27 +281,23 @@ public class ItemDefinition extends SubNode {
                 model1 = new Model(models, 3);
             }
         }
-        if(!arg0 && (maleTranslation ^ 0xffffffff) != -1) {
-            model1.method828(0, maleTranslation, 0);
+        if(!arg0 && (maleOffset ^ 0xffffffff) != -1) {
+            model1.method828(0, maleOffset, 0);
         }
-        if(arg0 && femaleTranslation != 0) {
-            model1.method828(0, femaleTranslation, 0);
+        if(arg0 && femaleOffset != 0) {
+            model1.method828(0, femaleOffset, 0);
         }
-        if(modifiedModelColors != null) {
-            for(int i_8_ = 0; ((modifiedModelColors.length > i_8_)); i_8_++) {
-                model1.replaceColor(modifiedModelColors[i_8_], originalModelColors[i_8_]);
+        if(textureReplace != null) {
+            for(int i_8_ = 0; ((textureReplace.length > i_8_)); i_8_++) {
+                model1.replaceColor(textureReplace[i_8_], textureFind[i_8_]);
             }
         }
         return model1;
 
     }
 
-    public void method741() {
-        anInt2801++;
-    }
 
     public ItemDefinition method743(int arg1) {
-        anInt2809++;
         if(stackableIds != null && (arg1 ^ 0xffffffff) < -2) {
             int i = -1;
             for(int i_9_ = 0; (i_9_ ^ 0xffffffff) > -11; i_9_++) {
@@ -352,7 +319,6 @@ public class ItemDefinition extends SubNode {
         if(arg1 != 25) {
             return null;
         }
-        anInt2847++;
         if(arg0) {
             i = primaryFemaleHeadPiece;
             i_12_ = secondaryFemaleHeadPiece;
@@ -366,9 +332,9 @@ public class ItemDefinition extends SubNode {
             Model[] models = {model1, model2};
             model1 = new Model(models, 2);
         }
-        if(modifiedModelColors != null) {
-            for(int j = 0; ((modifiedModelColors.length > j)); j++) {
-                model1.replaceColor(modifiedModelColors[j], originalModelColors[j]);
+        if(textureReplace != null) {
+            for(int j = 0; ((textureReplace.length > j)); j++) {
+                model1.replaceColor(textureReplace[j], textureFind[j]);
             }
         }
         return model1;
@@ -381,56 +347,56 @@ public class ItemDefinition extends SubNode {
         } else if(opcode == 2) {
             name = buffer.getRSString();
         } else if(opcode == 4) {
-            modelZoom = buffer.getUnsignedShortBE();
+            zoom2d = buffer.getUnsignedShortBE();
         } else if(opcode == 5) {
-            modelRotation1 = buffer.getUnsignedShortBE();
+            xan2d = buffer.getUnsignedShortBE();
         } else if(opcode == 6) {
-            modelRotation2 = buffer.getUnsignedShortBE();
+            yan2d = buffer.getUnsignedShortBE();
         } else if(opcode == 7) {
-            modelOffset1 = buffer.getUnsignedShortBE();
-            if(modelOffset1 > 32767) {
-                modelOffset1 -= 65536;
+            xOffset2d = buffer.getUnsignedShortBE();
+            if(xOffset2d > 32767) {
+                xOffset2d -= 65536;
             }
         } else if(opcode == 8) {
-            modelOffset2 = buffer.getUnsignedShortBE();
-            if(modelOffset2 > 32767) {
-                modelOffset2 -= 65536;
+            yOffset2d = buffer.getUnsignedShortBE();
+            if(yOffset2d > 32767) {
+                yOffset2d -= 65536;
             }
         } else if(opcode == 11) {
             stackable = 1;
         } else if(opcode == 12) {
-            value = buffer.getIntBE();
+            cost = buffer.getIntBE();
         } else if(opcode == 16) {
             members = true;
         } else if(opcode == 23) {
-            primaryMaleModel = buffer.getUnsignedShortBE();
-            maleTranslation = buffer.getUnsignedByte();
+            maleModel0 = buffer.getUnsignedShortBE();
+            maleOffset = buffer.getUnsignedByte();
         } else if(opcode == 24) {
-            femaleWearModel1 = buffer.getUnsignedShortBE();
+            maleModel1 = buffer.getUnsignedShortBE();
         } else if(opcode == 25) {
-            primaryFemaleModel = buffer.getUnsignedShortBE();
-            femaleTranslation = buffer.getUnsignedByte();
+            femaleModel0 = buffer.getUnsignedShortBE();
+            femaleOffset = buffer.getUnsignedByte();
         } else if(opcode == 26) {
-            femaleWearModel2 = buffer.getUnsignedShortBE();
+            femaleModel1 = buffer.getUnsignedShortBE();
         } else if(opcode >= 30 && opcode < 35) {
             groundOptions[-30 + opcode] = buffer.getRSString();
             if(groundOptions[opcode + -30].equalsIgnoreCase(Class59.string_Hidden, true)) {
                 groundOptions[opcode + -30] = null;
             }
         } else if(opcode >= 35 && opcode < 40) {
-            inventoryOptions[opcode + -35] = buffer.getRSString();
+            interfaceOptions[opcode + -35] = buffer.getRSString();
         } else if(opcode == 40) {
             int colorCount = buffer.getUnsignedByte();
-            originalModelColors = new int[colorCount];
-            modifiedModelColors = new int[colorCount];
+            textureFind = new int[colorCount];
+            textureReplace = new int[colorCount];
             for(int colorIndex = 0; colorIndex < colorCount; colorIndex++) {
-                modifiedModelColors[colorIndex] = buffer.getUnsignedShortBE();
-                originalModelColors[colorIndex] = buffer.getUnsignedShortBE();
+                textureReplace[colorIndex] = buffer.getUnsignedShortBE();
+                textureFind[colorIndex] = buffer.getUnsignedShortBE();
             }
         } else if(opcode == 78) {
-            colorEquip1 = buffer.getUnsignedShortBE();
+            maleModel2 = buffer.getUnsignedShortBE();
         } else if(opcode == 79) {
-            colorEquip2 = buffer.getUnsignedShortBE();
+            femaleModel2 = buffer.getUnsignedShortBE();
         } else if(opcode == 90) {
             primaryMaleHeadPiece = buffer.getUnsignedShortBE();
         } else if(opcode == 91) {
@@ -440,7 +406,7 @@ public class ItemDefinition extends SubNode {
         } else if(opcode == 93) {
             secondaryFemaleHeadPiece = buffer.getUnsignedShortBE();
         } else if(opcode == 95) {
-            anInt2827 = (buffer.getUnsignedShortBE());
+            zan2d = (buffer.getUnsignedShortBE());
         } else if(opcode == 97) {
             notedId = (buffer.getUnsignedShortBE());
         } else if(opcode == 98) {
@@ -459,13 +425,12 @@ public class ItemDefinition extends SubNode {
         } else if(opcode == 112) {
             groundScaleZ = (buffer.getUnsignedShortBE());
         } else if(opcode == 113) {
-            ambience = (buffer.getByte());
+            ambient = (buffer.getByte());
         } else if(opcode == 114) {
-            diffusion = ((buffer.getByte()) * 5);
+            contrast = ((buffer.getByte()) * 5);
         } else if(opcode == 115) {
             teamIndex = buffer.getUnsignedByte();
         }
-        anInt2802++;
     }
 
     public void readValues(Buffer itemDefinitionBuffer) {
@@ -479,19 +444,18 @@ public class ItemDefinition extends SubNode {
     }
 
     public void itemToNote(ItemDefinition noteTemplate, ItemDefinition note) {
-        modelRotation1 = noteTemplate.modelRotation1;
-        modelOffset1 = noteTemplate.modelOffset1;
-        anInt2827 = noteTemplate.anInt2827;
+        xan2d = noteTemplate.xan2d;
+        xOffset2d = noteTemplate.xOffset2d;
+        zan2d = noteTemplate.zan2d;
         name = note.name;
-        anInt2835++;
-        value = note.value;
+        cost = note.cost;
         stackable = 1;
-        modelZoom = noteTemplate.modelZoom;
+        zoom2d = noteTemplate.zoom2d;
         members = note.members;
-        originalModelColors = noteTemplate.originalModelColors;
-        modifiedModelColors = noteTemplate.modifiedModelColors;
-        modelRotation2 = noteTemplate.modelRotation2;
-        modelOffset2 = noteTemplate.modelOffset2;
+        textureFind = noteTemplate.textureFind;
+        textureReplace = noteTemplate.textureReplace;
+        yan2d = noteTemplate.yan2d;
+        yOffset2d = noteTemplate.yOffset2d;
         inventoryModelId = noteTemplate.inventoryModelId;
     }
 
@@ -499,7 +463,6 @@ public class ItemDefinition extends SubNode {
         if(arg2 != 26910) {
             anIntArray2814 = null;
         }
-        anInt2842++;
         if(stackableIds != null && arg1 > 1) {
             int i = -1;
             for(int i_19_ = 0; (i_19_ ^ 0xffffffff) > -11; i_19_++) {
@@ -524,13 +487,13 @@ public class ItemDefinition extends SubNode {
         if((groundScaleX ^ 0xffffffff) != -129 || groundScaleY != 128 || groundScaleZ != 128) {
             model.method821(groundScaleX, groundScaleY, groundScaleZ);
         }
-        if(modifiedModelColors != null) {
-            for(int i = 0; i < modifiedModelColors.length; i++) {
-                model.replaceColor(modifiedModelColors[i], originalModelColors[i]);
+        if(textureReplace != null) {
+            for(int i = 0; i < textureReplace.length; i++) {
+                model.replaceColor(textureReplace[i], textureFind[i]);
             }
         }
         if(arg0) {
-            model.method802(ambience + 64, 768 + diffusion, -50, -10, -50, true);
+            model.method802(ambient + 64, 768 + contrast, -50, -10, -50, true);
             model.aBoolean3164 = true;
             GameFrame.aClass9_1455.method230(-7208, (long) anInt2852, model);
         }

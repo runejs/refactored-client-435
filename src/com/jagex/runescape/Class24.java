@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 
@@ -95,7 +96,7 @@ public class Class24 {
                         if((i_9_ ^ 0xffffffff) < -1 && (i_10_ ^ 0xffffffff) < -1 && i_9_ < 103 && i_10_ < 103) {
                             CollisionMap collisionMap = null;
                             int i_11_ = arg3;
-                            if(((Floor.tile_flags[1][i_9_][i_10_]) & 0x2) == 2)
+                            if(((OverlayDefinition.tile_flags[1][i_9_][i_10_]) & 0x2) == 2)
                                 i_11_--;
                             if((i_11_ ^ 0xffffffff) <= -1)
                                 collisionMap = arg8[i_11_];

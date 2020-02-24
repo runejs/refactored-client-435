@@ -1,7 +1,8 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -65,9 +66,9 @@ public abstract class Class22 {
         for(int i_1_ = 1; (i_1_ ^ 0xffffffff) > -104; i_1_++) {
             int i_2_ = 24628 + ((-(512 * i_1_) + 52736) * 4);
             for(int i_3_ = 1; (i_3_ ^ 0xffffffff) > -104; i_3_++) {
-                if((0x18 & (Floor.tile_flags[arg1][i_3_][i_1_])) == 0)
+                if((0x18 & (OverlayDefinition.tile_flags[arg1][i_3_][i_1_])) == 0)
                     Npc.aScene_3301.method96(is, i_2_, 512, arg1, i_3_, i_1_);
-                if((arg1 ^ 0xffffffff) > -4 && ((Floor.tile_flags[1 + arg1][i_3_][i_1_]) & 0x8 ^ 0xffffffff) != -1)
+                if((arg1 ^ 0xffffffff) > -4 && ((OverlayDefinition.tile_flags[1 + arg1][i_3_][i_1_]) & 0x8 ^ 0xffffffff) != -1)
                     Npc.aScene_3301.method96(is, i_2_, 512, 1 + arg1, i_3_, i_1_);
                 i_2_ += 4;
             }
@@ -77,9 +78,9 @@ public abstract class Class22 {
         int i_5_ = -10 + ((int) (20.0 * Math.random()) + 238) << 2143047344;
         for(int i_6_ = 1; i_6_ < 103; i_6_++) {
             for(int i_7_ = 1; i_7_ < 103; i_7_++) {
-                if(((Floor.tile_flags[arg1][i_7_][i_6_]) & 0x18 ^ 0xffffffff) == -1)
+                if(((OverlayDefinition.tile_flags[arg1][i_7_][i_6_]) & 0x18 ^ 0xffffffff) == -1)
                     Actor.method781(1850, arg1, i_7_, i_4_, i_5_, i_6_);
-                if((arg1 ^ 0xffffffff) > -4 && (0x8 & (Floor.tile_flags[1 + arg1][i_7_][i_6_]) ^ 0xffffffff) != -1)
+                if((arg1 ^ 0xffffffff) > -4 && (0x8 & (OverlayDefinition.tile_flags[1 + arg1][i_7_][i_6_]) ^ 0xffffffff) != -1)
                     Actor.method781(1850, 1 + arg1, i_7_, i_4_, i_5_, i_6_);
             }
         }

@@ -30,7 +30,7 @@ public class Class35 implements Interface3 {
     public static int anInt1742;
     public static RSString aClass1_1743;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1744;
-    public static byte[][][] aByteArrayArrayArray1745;
+    public static byte[][][] tile_overlay_rotation;
     public static RSString aClass1_1746;
     public static RSString aClass1_1747;
     public static int anInt1751;
@@ -113,7 +113,7 @@ public class Class35 implements Interface3 {
 
         if(arg0 <= -18) {
             aClass1_1720 = null;
-            aByteArrayArrayArray1745 = null;
+            tile_overlay_rotation = null;
             aClass1_1725 = null;
             aClass1_1746 = null;
             aFrame1732 = null;

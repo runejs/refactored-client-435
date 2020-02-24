@@ -2,6 +2,7 @@ package com.jagex.runescape.media.renderable.actor;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -174,7 +175,7 @@ public abstract class Actor extends Renderable {
                 int[] is = (Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.pixels);
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_5_);
                 if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage class40_sub5_sub14_sub2 = (Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID]);
+                    IndexedImage class40_sub5_sub14_sub2 = (SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID]);
                     if(class40_sub5_sub14_sub2 != null) {
                         int i_6_ = ((-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2);
                         int i_7_ = ((gameObjectDefinition.sizeY * 4 + -class40_sub5_sub14_sub2.imgHeight) / 2);
@@ -254,7 +255,7 @@ public abstract class Actor extends Renderable {
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_9_);
                 int i_11_ = i_8_ & 0x1f;
                 if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage class40_sub5_sub14_sub2 = (Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID]);
+                    IndexedImage class40_sub5_sub14_sub2 = (SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID]);
                     if(class40_sub5_sub14_sub2 != null) {
                         int i_12_ = ((-class40_sub5_sub14_sub2.imgHeight + gameObjectDefinition.sizeY * 4) / 2);
                         int i_13_ = ((gameObjectDefinition.sizeX * 4 + -class40_sub5_sub14_sub2.imgWidth) / 2);
@@ -284,7 +285,7 @@ public abstract class Actor extends Renderable {
                 int i_16_ = (i & 0x1fffd9fb) >> 1370061614;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_16_);
                 if((gameObjectDefinition.mapSceneID ^ 0xffffffff) != 0) {
-                    IndexedImage class40_sub5_sub14_sub2 = (Class40_Sub5_Sub2.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID]);
+                    IndexedImage class40_sub5_sub14_sub2 = (SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID]);
                     if(class40_sub5_sub14_sub2 != null) {
                         int i_17_ = ((-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2);
                         int i_18_ = ((-class40_sub5_sub14_sub2.imgHeight + 4 * gameObjectDefinition.sizeY) / 2);
@@ -373,15 +374,15 @@ public abstract class Actor extends Renderable {
             if(!VertexNormal.lowMemory)
                 Class40_Sub6.onBuildTimePlane = 0;
             Class17.anInt448 = arg2;
-            Floor.method559(25, 88);
+            OverlayDefinition.method559(25, 88);
             Class51.method940(0, Class67.aClass1_1585, false, null);
             int i = Class26.anInt635;
-            int i_33_ = Class40_Sub5_Sub2.anInt2307;
-            Class40_Sub5_Sub2.anInt2307 = (arg3 - 6) * 8;
-            int i_34_ = Class40_Sub5_Sub2.anInt2307 + -i_33_;
+            int i_33_ = SpotAnimDefinition.anInt2307;
+            SpotAnimDefinition.anInt2307 = (arg3 - 6) * 8;
+            int i_34_ = SpotAnimDefinition.anInt2307 + -i_33_;
             if(arg1 != -1000)
                 method781(14, 98, 96, -85, -118, 89);
-            i_33_ = Class40_Sub5_Sub2.anInt2307;
+            i_33_ = SpotAnimDefinition.anInt2307;
             Class26.anInt635 = (-6 + arg2) * 8;
             int i_35_ = Class26.anInt635 + -i;
             i = Class26.anInt635;

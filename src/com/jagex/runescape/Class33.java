@@ -2,6 +2,8 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -37,7 +39,7 @@ public class Class33 {
             Class26.aBoolean618 = arg1;
             Class22_Sub1.aCacheIndex_1855 = arg4;
             CacheIndex_Sub1.anInt1806 = -1;
-            Floor.anInt2342 = arg0;
+            OverlayDefinition.anInt2342 = arg0;
             Class40_Sub6.anInt2110 = arg6;
             Class8.anInt289 = arg3;
         }
@@ -73,7 +75,7 @@ public class Class33 {
                         if((Player.anInt3288 ^ 0xffffffff) == -2 && (((Class40_Sub3.anIntArray2016[-Class60.anInt1407 + i]) ^ 0xffffffff) == (Class66.anInt1545 ^ 0xffffffff)) && Node.anInt926 % 20 < 10) {
                             FloorDecoration.method342(107, 15 + (actor.anInt3117), actor);
                             if(ISAAC.anInt522 > -1)
-                                Class40_Sub5_Sub9.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, Class44.anInt1048 + -28);
+                                UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, Class44.anInt1048 + -28);
                         }
                     } else {
                         Player class40_sub5_sub17_sub4_sub1 = ((Player) actor);
@@ -94,7 +96,7 @@ public class Class33 {
                         if(i >= 0 && (Player.anInt3288 ^ 0xffffffff) == -11 && (Class68.anInt1623 == Class57.anIntArray1334[i])) {
                             FloorDecoration.method342(87, (actor.anInt3117) + 15, actor);
                             if(ISAAC.anInt522 > -1)
-                                Class40_Sub5_Sub9.aClass40_Sub5_Sub14_Sub4Array2567[1].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
+                                UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[1].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
                         }
                     }
                     if(actor.forcedChatMessage != null && (i >= Class60.anInt1407 || (Class35.publicChatMode ^ 0xffffffff) == -1 || Class35.publicChatMode == 3 || ((Class35.publicChatMode ^ 0xffffffff) == -2 && (Class40_Sub2.hasFriend((((Player) actor).playerName), arg0 ^ 0x7f74))))) {
@@ -250,7 +252,7 @@ public class Class33 {
 
     public static synchronized void method405(int arg0, int arg1) {
         if(Class24.method340(arg0 + -16923)) {
-            Floor.method557(arg1, 17098);
+            OverlayDefinition.method557(arg1, 17098);
             Class22_Sub1.aCacheIndex_1855 = null;
             Class26.aBoolean618 = false;
             if(arg0 != 16969)
@@ -389,11 +391,11 @@ public class Class33 {
                 if(is != null) {
                     if((CacheIndex.anInt255 ^ 0xffffffff) > -1) {
                         if(CacheIndex_Sub1.anInt1806 < 0)
-                            RSString.method56(2037, Main.aBoolean1790, is, Floor.anInt2342);
+                            RSString.method56(2037, Main.aBoolean1790, is, OverlayDefinition.anInt2342);
                         else
-                            Class40_Sub5_Sub4.method566((Floor.anInt2342), Main.aBoolean1790, CacheIndex_Sub1.anInt1806, is, -27520);
+                            Class40_Sub5_Sub4.method566((OverlayDefinition.anInt2342), Main.aBoolean1790, CacheIndex_Sub1.anInt1806, is, -27520);
                     } else
-                        Class42.method886(0, Floor.anInt2342, Main.aBoolean1790, is, CacheIndex.anInt255);
+                        Class42.method886(0, OverlayDefinition.anInt2342, Main.aBoolean1790, is, CacheIndex.anInt255);
                     Class26.aBoolean618 = false;
                     Class22_Sub1.aCacheIndex_1855 = null;
                 }
@@ -409,7 +411,7 @@ public class Class33 {
             Class26.aBoolean618 = true;
             CacheIndex_Sub1.anInt1806 = arg6;
             CacheIndex.anInt255 = -1;
-            Floor.anInt2342 = arg3;
+            OverlayDefinition.anInt2342 = arg3;
             Class40_Sub5_Sub17_Sub1.anInt3004 = arg4;
             Main.aBoolean1790 = arg0;
             Class40_Sub6.anInt2110 = arg1;

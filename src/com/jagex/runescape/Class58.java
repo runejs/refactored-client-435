@@ -209,7 +209,7 @@ public class Class58 {
             if((Class40_Sub5_Sub15.inputType ^ 0xffffffff) != -2) {
                 if((Class40_Sub5_Sub15.inputType ^ 0xffffffff) == -3) {
                     Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class40_Sub5_Sub6.aClass1_2446, 239, 40, 0);
-                    Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686((Class40_Sub5_Sub17_Sub6.method832(-50, new RSString[]{Class66.aClass1_1543, Class19.aClass1_478})), 239, 60, 128);
+                    Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686((Class40_Sub5_Sub17_Sub6.method832(-50, new RSString[]{Class66.inputInputMessage, Class19.aClass1_478})), 239, 60, 128);
                 } else if(Class40_Sub5_Sub15.inputType != 3) {
                     if(RSApplet.aClass1_8 == null) {
                         if(Class43.openChatboxWidgetId == -1) {
@@ -325,31 +325,31 @@ public class Class58 {
                         Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class34.aClass1_829, 239, 60, 128);
                     }
                 } else {
-                    if(Class66.aClass1_1543 != Class66.aClass1_1542) {
-                        GameObject.method773((byte) -96, Class66.aClass1_1543);
-                        Class66.aClass1_1542 = Class66.aClass1_1543;
+                    if(Class66.inputInputMessage != Class66.lastItemSearchInput) {
+                        GameObject.itemSearch(Class66.inputInputMessage);
+                        Class66.lastItemSearchInput = Class66.inputInputMessage;
                     }
                     TypeFace class40_sub5_sub14_sub1 = Class53.aClass40_Sub5_Sub14_Sub1_1268;
                     Rasterizer.setCoordinates(0, 0, 77, 463);
                     for(int i = 0; (i < VertexNormal.itemSearchResultCount); i++) {
                         int i_14_ = i * 14 + (18 - Class26.itemSearchScroll);
                         if((i_14_ ^ 0xffffffff) < -1 && (i_14_ ^ 0xffffffff) > -111)
-                            class40_sub5_sub14_sub1.method686(Class22_Sub1.aClass1Array1844[i], 239, i_14_, 0);
+                            class40_sub5_sub14_sub1.method686(Class22_Sub1.itemSearchResultNames[i], 239, i_14_, 0);
                     }
                     Rasterizer.resetCoordinates();
                     if((VertexNormal.itemSearchResultCount ^ 0xffffffff) < -6)
                         Class27.drawScrollBar(0, Class26.itemSearchScroll, 7 + 14 * VertexNormal.itemSearchResultCount, 463, 77, 0);
-                    if(Class66.aClass1_1543.length() != 0) {
+                    if(Class66.inputInputMessage.length() != 0) {
                         if((VertexNormal.itemSearchResultCount ^ 0xffffffff) == -1)
                             Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class40_Sub6.aClass1_2097, 239, 40, 0);
                     } else
                         Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class35.aClass1_1747, 239, 40, 255);
-                    class40_sub5_sub14_sub1.method686((Class40_Sub5_Sub17_Sub6.method832(-122, new RSString[]{Class66.aClass1_1543, Class19.aClass1_478})), 239, 90, 0);
+                    class40_sub5_sub14_sub1.method686((Class40_Sub5_Sub17_Sub6.method832(-122, new RSString[]{Class66.inputInputMessage, Class19.aClass1_478})), 239, 90, 0);
                     Rasterizer.method659(0, 77, 479, 0);
                 }
             } else {
                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Landscape.aClass1_1174, 239, 40, 0);
-                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686((Class40_Sub5_Sub17_Sub6.method832(73, new RSString[]{Class66.aClass1_1543, Class19.aClass1_478})), 239, 60, 128);
+                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686((Class40_Sub5_Sub17_Sub6.method832(73, new RSString[]{Class66.inputInputMessage, Class19.aClass1_478})), 239, 60, 128);
             }
         } else {
             Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class66.aClass1_1563, 239, 40, 0);

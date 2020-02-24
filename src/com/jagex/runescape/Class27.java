@@ -1,9 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
@@ -22,7 +19,6 @@ public class Class27 {
     public static RSString aClass1_652 = RSString.CreateString("und loggen sich dann erneut ein)3");
     public static CacheIndex aCacheIndex_654;
     public static int anInt658 = 0;
-    public static int anInt661;
     public static RSString takeString = RSString.CreateString("Take");
     public static RSString aClass1_664 = RSString.CreateString("Offline");
     public static RSString takeStringInstance = takeString;
@@ -211,12 +207,12 @@ public class Class27 {
                 Class68.anInt1622++;
                 if(!bool)
                     bool = (Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), i, (byte) 92, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), i_10_, 2));
-                Floor.anInt2319 = 0;
+                OverlayDefinition.anInt2319 = 0;
                 Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                 Class40_Sub11.anInt2163 = Class57.anInt1338;
                 Class45.anInt1075 = 2;
                 Class32.packetBuffer.putPacket(190);
-                Class32.packetBuffer.putOffsetShortLE(i + Class40_Sub5_Sub2.anInt2307);
+                Class32.packetBuffer.putOffsetShortLE(i + SpotAnimDefinition.anInt2307);
                 Class32.packetBuffer.putShortBE(i_12_);
                 Class32.packetBuffer.putShortBE(i_10_ + Class26.anInt635);
             }
@@ -225,7 +221,7 @@ public class Class27 {
                 Class30.anInt707++;
                 Class40_Sub11.anInt2163 = Class57.anInt1338;
                 Class45.anInt1075 = 2;
-                Floor.anInt2319 = 0;
+                OverlayDefinition.anInt2319 = 0;
                 Class32.packetBuffer.putPacket(148);
                 Class32.packetBuffer.putShortLE(i_12_ >> 14 & 0x7fff);
             }
@@ -233,7 +229,7 @@ public class Class27 {
                 Class40_Sub5_Sub7.method596(i, i_12_, (byte) -79, i_10_);
                 Class32.packetBuffer.putPacket(229);
                 Class40_Sub6.anInt2115++;
-                Class32.packetBuffer.putShortLE(Class40_Sub5_Sub2.anInt2307 + i);
+                Class32.packetBuffer.putShortLE(SpotAnimDefinition.anInt2307 + i);
                 Class32.packetBuffer.putShortLE((0x1ffffd20 & i_12_) >> 14);
                 Class32.packetBuffer.putShortLE(Class26.anInt635 + i_10_);
             }
@@ -243,7 +239,7 @@ public class Class27 {
                     Class40_Sub5_Sub4.anInt2355++;
                     Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), class40_sub5_sub17_sub4_sub1.anIntArray3088[0], (byte) 112, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), class40_sub5_sub17_sub4_sub1.anIntArray3135[0], 2);
                     Class40_Sub11.anInt2163 = Class57.anInt1338;
-                    Floor.anInt2319 = 0;
+                    OverlayDefinition.anInt2319 = 0;
                     Class45.anInt1075 = 2;
                     Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                     Class32.packetBuffer.putPacket(221);
@@ -253,9 +249,9 @@ public class Class27 {
             }
             if(action == 26 || action == 46) {
                 RSString class1 = Landscape.aClass1Array1184[arg1];
-                int i_13_ = class1.method60(Class26.aClass1_620);
+                int i_13_ = class1.contains(Class26.aClass1_620);
                 if((i_13_ ^ 0xffffffff) != 0) {
-                    class1 = class1.substring(i_13_ + 5).method89(false);
+                    class1 = class1.substring(i_13_ + 5).trim();
                     RSString class1_14_ = class1.method62(57).method85(-4305);
                     boolean bool = false;
                     for(int i_15_ = 0; i_15_ < Class60.anInt1407; i_15_++) {
@@ -343,7 +339,7 @@ public class Class27 {
                     Class52.anInt1227++;
                     Class45.anInt1075 = 2;
                     Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
-                    Floor.anInt2319 = 0;
+                    OverlayDefinition.anInt2319 = 0;
                     Class32.packetBuffer.putPacket(68);
                     Class32.packetBuffer.putShortLE(i_12_);
                 }
@@ -353,7 +349,7 @@ public class Class27 {
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     Class29.anInt677++;
                     Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), class40_sub5_sub17_sub4_sub1.anIntArray3088[0], (byte) 92, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), class40_sub5_sub17_sub4_sub1.anIntArray3135[0], 2);
-                    Floor.anInt2319 = 0;
+                    OverlayDefinition.anInt2319 = 0;
                     Class45.anInt1075 = 2;
                     Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                     Class40_Sub11.anInt2163 = Class57.anInt1338;
@@ -365,7 +361,7 @@ public class Class27 {
                 Class40_Sub11.anInt2163 = Class57.anInt1338;
                 Class45.anInt1075 = 2;
                 Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
-                Floor.anInt2319 = 0;
+                OverlayDefinition.anInt2319 = 0;
                 Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                 if(class40_sub5_sub17_sub4_sub2 != null) {
                     ActorDefinition class40_sub5_sub5 = class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300;
@@ -384,7 +380,7 @@ public class Class27 {
                     Class40_Sub11.anInt2163 = Class57.anInt1338;
                     Class45.anInt1075 = 2;
                     Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
-                    Floor.anInt2319 = 0;
+                    OverlayDefinition.anInt2319 = 0;
                     Class32.packetBuffer.putPacket(110);
                     Class32.packetBuffer.putOffsetShortLE(i_12_);
                     Class32.packetBuffer.putIntME1(ISAAC.anInt525);
@@ -408,13 +404,13 @@ public class Class27 {
                     boolean bool = (Class38_Sub1.method448(0, 0, (Player.localPlayer.anIntArray3088[0]), i, (byte) 102, 0, false, 0, 0, (Player.localPlayer.anIntArray3135[0]), i_10_, 2));
                     if(!bool)
                         bool = (Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), i, (byte) 117, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), i_10_, 2));
-                    Floor.anInt2319 = 0;
+                    OverlayDefinition.anInt2319 = 0;
                     Class45.anInt1075 = 2;
                     Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                     Class40_Sub11.anInt2163 = Class57.anInt1338;
                     Class32.packetBuffer.putPacket(168);
                     Class32.packetBuffer.putShortLE(i_12_);
-                    Class32.packetBuffer.putCustomNegativeOffsetShortBE(Class40_Sub5_Sub2.anInt2307 + i, -128);
+                    Class32.packetBuffer.putCustomNegativeOffsetShortBE(SpotAnimDefinition.anInt2307 + i, -128);
                     Class32.packetBuffer.putIntME1(Class60.anInt1417);
                     Class32.packetBuffer.putShortBE(Class26.anInt635 + i_10_);
                 }
@@ -445,9 +441,9 @@ public class Class27 {
                 }
                 if(action == 18) {
                     RSString class1 = Landscape.aClass1Array1184[arg1];
-                    int i_18_ = class1.method60(Class26.aClass1_620);
+                    int i_18_ = class1.contains(Class26.aClass1_620);
                     if((i_18_ ^ 0xffffffff) != 0) {
-                        long l = class1.substring(5 + i_18_).method89(false).method58((byte) 107);
+                        long l = class1.substring(5 + i_18_).trim().method58((byte) 107);
                         int i_19_ = -1;
                         for(int i_20_ = 0; i_20_ < Class40_Sub5_Sub17_Sub3.anInt3060; i_20_++) {
                             if((l ^ 0xffffffffffffffffL) == (Class59.aLongArray1397[i_20_] ^ 0xffffffffffffffffL)) {
@@ -467,7 +463,7 @@ public class Class27 {
                     }
                 }
                 if(action == 1003) {
-                    Floor.anInt2319 = 0;
+                    OverlayDefinition.anInt2319 = 0;
                     Class45.anInt1075 = 2;
                     Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                     Class40_Sub11.anInt2163 = Class57.anInt1338;
@@ -480,14 +476,14 @@ public class Class27 {
                     Class32.packetBuffer.putPacket(62);
                     Class32.packetBuffer.putShortBE((0x1fffd05d & i_12_) >> 14);
                     Class32.packetBuffer.putShortLE(i_10_ + Class26.anInt635);
-                    Class32.packetBuffer.putOffsetShortLE(i + Class40_Sub5_Sub2.anInt2307);
+                    Class32.packetBuffer.putOffsetShortLE(i + SpotAnimDefinition.anInt2307);
                 }
                 if(action == 30) {
                     Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Class40_Sub13.anInt2180++;
                         Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), class40_sub5_sub17_sub4_sub2.anIntArray3088[0], (byte) 107, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), class40_sub5_sub17_sub4_sub2.anIntArray3135[0], 2);
-                        Floor.anInt2319 = 0;
+                        OverlayDefinition.anInt2319 = 0;
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
                         Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                         Class45.anInt1075 = 2;
@@ -502,7 +498,7 @@ public class Class27 {
                         Class35.anInt1719++;
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
                         Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
-                        Floor.anInt2319 = 0;
+                        OverlayDefinition.anInt2319 = 0;
                         Class45.anInt1075 = 2;
                         Class32.packetBuffer.putPacket(208);
                         Class32.packetBuffer.putCustomNegativeOffsetShortBE(i_12_, -128);
@@ -514,7 +510,7 @@ public class Class27 {
                 if(action == 29) {
                     Class40_Sub5_Sub7.method596(i, i_12_, (byte) -77, i_10_);
                     Class32.packetBuffer.putPacket(164);
-                    Class32.packetBuffer.putOffsetShortLE(Class40_Sub5_Sub2.anInt2307 + i);
+                    Class32.packetBuffer.putOffsetShortLE(SpotAnimDefinition.anInt2307 + i);
                     Class32.packetBuffer.putOffsetShortLE(Class26.anInt635 + i_10_);
                     Class32.packetBuffer.putOffsetShortLE(i_12_ >> 14 & 0x7fff);
                 }
@@ -526,13 +522,13 @@ public class Class27 {
                     Class32.packetBuffer.putShortLE((i_12_ & 0x1fffccf7) >> 14);
                     Class32.packetBuffer.putOffsetShortLE(Class45.anInt1061);
                     Class32.packetBuffer.putIntME1(ISAAC.anInt525);
-                    Class32.packetBuffer.putOffsetShortLE(i + Class40_Sub5_Sub2.anInt2307);
+                    Class32.packetBuffer.putOffsetShortLE(i + SpotAnimDefinition.anInt2307);
                 }
                 if(action == 34) {
                     Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), class40_sub5_sub17_sub4_sub2.anIntArray3088[0], (byte) 126, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), class40_sub5_sub17_sub4_sub2.anIntArray3135[0], 2);
-                        Floor.anInt2319 = 0;
+                        OverlayDefinition.anInt2319 = 0;
                         Class45.anInt1075 = 2;
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
                         Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
@@ -615,7 +611,7 @@ public class Class27 {
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
                             Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                             Class40_Sub5_Sub4.anInt2369++;
-                            Floor.anInt2319 = 0;
+                            OverlayDefinition.anInt2319 = 0;
                             Class45.anInt1075 = 2;
                             Class32.packetBuffer.putPacket(63);
                             Class32.packetBuffer.putOffsetShortLE(i_12_);
@@ -627,11 +623,11 @@ public class Class27 {
                         if(!bool)
                             bool = (Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), i, (byte) 114, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), i_10_, 2));
                         Class45.anInt1075 = 2;
-                        Floor.anInt2319 = 0;
+                        OverlayDefinition.anInt2319 = 0;
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
                         Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                         Class32.packetBuffer.putPacket(244);
-                        Class32.packetBuffer.putShortLE(i + Class40_Sub5_Sub2.anInt2307);
+                        Class32.packetBuffer.putShortLE(i + SpotAnimDefinition.anInt2307);
                         Class32.packetBuffer.putCustomNegativeOffsetShortBE(Class26.anInt635 + i_10_, -128);
                         Class32.packetBuffer.putShortBE(i_12_);
                     }
@@ -639,7 +635,7 @@ public class Class27 {
                         boolean bool = (Class38_Sub1.method448(0, 0, (Player.localPlayer.anIntArray3088[0]), i, (byte) 117, 0, false, 0, 0, (Player.localPlayer.anIntArray3135[0]), i_10_, 2));
                         if(!bool)
                             bool = (Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), i, (byte) 100, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), i_10_, 2));
-                        Floor.anInt2319 = 0;
+                        OverlayDefinition.anInt2319 = 0;
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
                         CacheIndex_Sub1.anInt1792++;
                         Class45.anInt1075 = 2;
@@ -647,7 +643,7 @@ public class Class27 {
                         Class32.packetBuffer.putPacket(85);
                         Class32.packetBuffer.putCustomNegativeOffsetShortBE(Class26.anInt635 + i_10_, -128);
                         Class32.packetBuffer.putCustomNegativeOffsetShortBE(i_12_, -128);
-                        Class32.packetBuffer.putShortLE(i + Class40_Sub5_Sub2.anInt2307);
+                        Class32.packetBuffer.putShortLE(i + SpotAnimDefinition.anInt2307);
                     }
                     if((action ^ 0xffffffff) == -22) {
                         Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
@@ -655,7 +651,7 @@ public class Class27 {
                             Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3088[0]), (byte) 112, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3135[0]), 2);
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
                             Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
-                            Floor.anInt2319 = 0;
+                            OverlayDefinition.anInt2319 = 0;
                             Class45.anInt1075 = 2;
                             Class32.packetBuffer.putPacket(253);
                             Class32.packetBuffer.putShortBE(i_12_);
@@ -664,11 +660,11 @@ public class Class27 {
                     }
                     if(action == 45 || action == 51 || (action ^ 0xffffffff) == -14 || (action ^ 0xffffffff) == -36) {
                         RSString class1 = Landscape.aClass1Array1184[arg1];
-                        int i_21_ = class1.method60(Class26.aClass1_620);
+                        int i_21_ = class1.contains(Class26.aClass1_620);
                         if(i_21_ != -1) {
-                            long l = class1.substring(i_21_ + 5).method89(false).method58((byte) 96);
+                            long l = class1.substring(i_21_ + 5).trim().method58((byte) 96);
                             if(action == 45)
-                                Class40_Sub5_Sub9.method617(l, (byte) -104);
+                                UnderlayDefinition.method617(l, (byte) -104);
                             if((action ^ 0xffffffff) == -52)
                                 Class17.method275(24686, l);
                             if(action == 13)
@@ -683,7 +679,7 @@ public class Class27 {
                             Class51.anInt1189++;
                             Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3088[0]), (byte) 94, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3135[0]), 2);
                             Class45.anInt1075 = 2;
-                            Floor.anInt2319 = 0;
+                            OverlayDefinition.anInt2319 = 0;
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
                             Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                             Class32.packetBuffer.putPacket(220);
@@ -719,7 +715,7 @@ public class Class27 {
                         Class32.packetBuffer.putPacket(183);
                         Class32.packetBuffer.putCustomNegativeOffsetShortBE(i_10_ + Class26.anInt635, -128);
                         Class32.packetBuffer.putShortBE(i_12_ >> 14 & 0x7fff);
-                        Class32.packetBuffer.putCustomNegativeOffsetShortBE(i + Class40_Sub5_Sub2.anInt2307, -128);
+                        Class32.packetBuffer.putCustomNegativeOffsetShortBE(i + SpotAnimDefinition.anInt2307, -128);
                     }
                     if(action == 50)
                         Class33.method406(i, i_12_, i_10_, -121);
@@ -733,7 +729,7 @@ public class Class27 {
                         Class32.packetBuffer.putShortBE(i_12_ >> 14 & 0x7fff);
                         Class32.packetBuffer.putOffsetShortLE(i_10_ + Class26.anInt635);
                         Class32.packetBuffer.putIntME1(Class60.anInt1417);
-                        Class32.packetBuffer.putShortLE(i + Class40_Sub5_Sub2.anInt2307);
+                        Class32.packetBuffer.putShortLE(i + SpotAnimDefinition.anInt2307);
                     }
                     if(action == 25) {
                         Class32.packetBuffer.putPacket(228);
@@ -770,7 +766,7 @@ public class Class27 {
                             Class45.anInt1075 = 2;
                             Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
-                            Floor.anInt2319 = 0;
+                            OverlayDefinition.anInt2319 = 0;
                             Class32.packetBuffer.putPacket(187);
                             Class32.packetBuffer.putOffsetShortLE(i_12_);
                             Class43.anInt1016++;
@@ -778,14 +774,14 @@ public class Class27 {
                     }
                     if((action ^ 0xffffffff) == -29) {
                         RSString class1 = Landscape.aClass1Array1184[arg1];
-                        int i_22_ = class1.method60(Class26.aClass1_620);
+                        int i_22_ = class1.contains(Class26.aClass1_620);
                         if((i_22_ ^ 0xffffffff) != 0) {
                             if((Class66.anInt1560 ^ 0xffffffff) != 0)
                                 Class44.method895(72, 0, Class37.aClass1_873, Class66.blank_string);
                             else {
                                 PacketBuffer.method516(95);
                                 if((Class34.anInt854 ^ 0xffffffff) != 0) {
-                                    Class66.aClass1_1550 = class1.substring(i_22_ + 5).method89(false);
+                                    Class66.aClass1_1550 = class1.substring(i_22_ + 5).trim();
                                     Class66.anInt1548 = Class66.anInt1560 = Class34.anInt854;
                                     Class67.aBoolean1601 = false;
                                 }
@@ -797,13 +793,13 @@ public class Class27 {
                         if(!bool)
                             bool = (Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), i, (byte) 118, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), i_10_, 2));
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
-                        Floor.anInt2319 = 0;
+                        OverlayDefinition.anInt2319 = 0;
                         Class45.anInt1075 = 2;
                         Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                         Class32.packetBuffer.putPacket(65);
                         Class32.packetBuffer.putCustomNegativeOffsetShortBE(i_12_, -128);
                         Class32.packetBuffer.putCustomNegativeOffsetShortBE(i_10_ + Class26.anInt635, -128);
-                        Class32.packetBuffer.putShortLE(Class40_Sub5_Sub2.anInt2307 + i);
+                        Class32.packetBuffer.putShortLE(SpotAnimDefinition.anInt2307 + i);
                     }
                     if(action == 9)
                         PacketBuffer.method516(106);
@@ -832,10 +828,10 @@ public class Class27 {
                             bool = (Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), i, (byte) 105, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), i_10_, 2));
                         Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                         Class45.anInt1075 = 2;
-                        Floor.anInt2319 = 0;
+                        OverlayDefinition.anInt2319 = 0;
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
                         Class32.packetBuffer.putPacket(27);
-                        Class32.packetBuffer.putShortBE(Class40_Sub5_Sub2.anInt2307 + i);
+                        Class32.packetBuffer.putShortBE(SpotAnimDefinition.anInt2307 + i);
                         Class32.packetBuffer.putCustomNegativeOffsetShortBE(i_12_, -128);
                         Class32.packetBuffer.putCustomNegativeOffsetShortBE(i_10_ + Class26.anInt635, -128);
                     }
@@ -844,7 +840,7 @@ public class Class27 {
                         if(class40_sub5_sub17_sub4_sub1 != null) {
                             Landscape.anInt1164++;
                             Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3088[0]), (byte) 97, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub1.anIntArray3135[0]), 2);
-                            Floor.anInt2319 = 0;
+                            OverlayDefinition.anInt2319 = 0;
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
                             Class45.anInt1075 = 2;
                             Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
@@ -872,7 +868,7 @@ public class Class27 {
                         Class32.packetBuffer.putPacket(30);
                         Class32.packetBuffer.putCustomNegativeOffsetShortBE(0x7fff & i_12_ >> 14, -128);
                         Class32.packetBuffer.putCustomNegativeOffsetShortBE(Class26.anInt635 + i_10_, -128);
-                        Class32.packetBuffer.putOffsetShortLE(i + Class40_Sub5_Sub2.anInt2307);
+                        Class32.packetBuffer.putOffsetShortLE(i + SpotAnimDefinition.anInt2307);
                     }
                     if(action == 20) {
                         Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
@@ -881,7 +877,7 @@ public class Class27 {
                             Class45.anInt1075 = 2;
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
                             Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
-                            Floor.anInt2319 = 0;
+                            OverlayDefinition.anInt2319 = 0;
                             Class32.packetBuffer.putPacket(153);
                             Class24.anInt586++;
                             Class32.packetBuffer.putShortLE(i_12_);
@@ -894,10 +890,10 @@ public class Class27 {
                             bool = (Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), i, (byte) 103, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), i_10_, 2));
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
                         Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
-                        Floor.anInt2319 = 0;
+                        OverlayDefinition.anInt2319 = 0;
                         Class45.anInt1075 = 2;
                         Class32.packetBuffer.putPacket(172);
-                        Class32.packetBuffer.putCustomNegativeOffsetShortBE(i + Class40_Sub5_Sub2.anInt2307, -128);
+                        Class32.packetBuffer.putCustomNegativeOffsetShortBE(i + SpotAnimDefinition.anInt2307, -128);
                         Class32.packetBuffer.putShortBE(Class45.anInt1061);
                         Class32.packetBuffer.putCustomNegativeOffsetShortBE(i_12_, -128);
                         Class32.packetBuffer.putIntME2(ISAAC.anInt525);
@@ -925,7 +921,7 @@ public class Class27 {
                             Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3088[0]), (byte) 98, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3135[0]), 2);
                             Class45.anInt1075 = 2;
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
-                            Floor.anInt2319 = 0;
+                            OverlayDefinition.anInt2319 = 0;
                             Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                             Class32.packetBuffer.putPacket(116);
                             Class32.packetBuffer.putShortLE(i_12_);
@@ -975,7 +971,7 @@ public class Class27 {
                         i_26_ = (widget_24_.anInt2692 - widget.anInt2692);
                     if((Class10.aWidget_353.anObjectArray2669 != null) && (arg2 & 0x200) != 0)
                         Widget.method891(widget.anObjectArray2669, 0, i, widget, i_26_, false);
-                    if(Class40_Sub5_Sub2.anInt2302 == 0 && (arg2 & 0x400 ^ 0xffffffff) != -1) {
+                    if(SpotAnimDefinition.anInt2302 == 0 && (arg2 & 0x400 ^ 0xffffffff) != -1) {
                         if(Class10.aWidget_353.anObjectArray2695 != null)
                             Widget.method891((widget.anObjectArray2695), 0, i, widget, i_26_, false);
                         Class10.aWidget_353 = null;
@@ -1172,7 +1168,7 @@ public class Class27 {
                                 if((arg1 ^ 0xffffffff) == -21)
                                     Class33.method411(Node.aClass1_944, Class55.aClass1_1298, (SceneTile.aClass1_2047), (byte) 126);
                                 else if((arg1 ^ 0xffffffff) == -23)
-                                    Class33.method411(Node.aClass1_955, (Floor.aClass1_2325), CacheIndex.aClass1_258, (byte) -123);
+                                    Class33.method411(Node.aClass1_955, (OverlayDefinition.aClass1_2325), CacheIndex.aClass1_258, (byte) -123);
                                 else if(arg1 == 23)
                                     Class33.method411(Node.aClass1_957, Class38.aClass1_882, (ActorDefinition.aClass1_2410), (byte) -128);
                                 else if((arg1 ^ 0xffffffff) != -25) {
@@ -1198,7 +1194,7 @@ public class Class27 {
                 Class33.method411(Node.aClass1_937, Class42.aClass1_997, Class68_Sub1.aClass1_2209, (byte) -76);
         } else
             Class33.method411(Node.aClass1_966, Class22.aClass1_532, Player.aClass1_3286, (byte) -101);
-        Floor.method559(10, -83);
+        OverlayDefinition.method559(10, -83);
     }
 
     public static int method368(byte arg0, boolean arg1, boolean arg2) {

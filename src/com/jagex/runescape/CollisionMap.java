@@ -1,8 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -267,7 +265,7 @@ public class CollisionMap {
                         if(!class1.method87(81, Node.aClass1_948))
                             Class44.method895(72, 0, class1, Class66.blank_string);
                         else {
-                            RSString class1_27_ = (class1.substring(0, class1.method60(Class43.aClass1_1027)));
+                            RSString class1_27_ = (class1.substring(0, class1.contains(Class43.aClass1_1027)));
                             long l = class1_27_.method58((byte) 121);
                             boolean bool = false;
                             for(int i_28_ = 0; i_28_ < Class42.anInt1008; i_28_++) {
@@ -277,12 +275,12 @@ public class CollisionMap {
                                 }
                             }
                             if(!bool && (Class4.anInt182 ^ 0xffffffff) == -1) {
-                                RSString class1_29_ = (class1.substring((1 + class1.method60((Class43.aClass1_1027))), -9 + class1.length()));
+                                RSString class1_29_ = (class1.substring((1 + class1.contains((Class43.aClass1_1027))), -9 + class1.length()));
                                 Class44.method895(122, 8, class1_29_, class1_27_);
                             }
                         }
                     } else {
-                        RSString class1_30_ = (class1.substring(0, class1.method60(Class43.aClass1_1027)));
+                        RSString class1_30_ = (class1.substring(0, class1.contains(Class43.aClass1_1027)));
                         long l = class1_30_.method58((byte) 120);
                         boolean bool = false;
                         for(int i_31_ = 0; ((Class42.anInt1008 > i_31_)); i_31_++) {
@@ -295,7 +293,7 @@ public class CollisionMap {
                             Class44.method895(120, 8, Class61.aClass1_1428, class1_30_);
                     }
                 } else {
-                    RSString class1_32_ = class1.substring(0, class1.method60((Class43.aClass1_1027)));
+                    RSString class1_32_ = class1.substring(0, class1.contains((Class43.aClass1_1027)));
                     long l = class1_32_.method58((byte) 98);
                     boolean bool = false;
                     for(int i_33_ = 0; i_33_ < Class42.anInt1008; i_33_++) {
@@ -407,11 +405,11 @@ public class CollisionMap {
                 if(ActorDefinition.anInt2433 != -1) {
                     Class55.method958(ActorDefinition.anInt2433, -14222);
                     ActorDefinition.anInt2433 = -1;
-                    Floor.method559(30, 91);
+                    OverlayDefinition.method559(30, 91);
                 }
-                if(Class40_Sub5_Sub9.anInt2562 != -1) {
-                    Class55.method958(Class40_Sub5_Sub9.anInt2562, -14222);
-                    Class40_Sub5_Sub9.anInt2562 = -1;
+                if(UnderlayDefinition.anInt2562 != -1) {
+                    Class55.method958(UnderlayDefinition.anInt2562, -14222);
+                    UnderlayDefinition.anInt2562 = -1;
                 }
                 if(Class66.anInt1560 != i_50_) {
                     Class55.method958(Class66.anInt1560, -14222);
@@ -432,10 +430,10 @@ public class CollisionMap {
                 return true;
             }
             if((Class57.incomingPacket ^ 0xffffffff) == -65) {
-                Floor.anInt2318 = Cache.outgoingbuffer.getUnsignedByte();
+                OverlayDefinition.anInt2318 = Cache.outgoingbuffer.getUnsignedByte();
                 Class40_Sub6.anInt2119 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                 for(int i_51_ = Class40_Sub6.anInt2119; ((i_51_ < 8 + Class40_Sub6.anInt2119)); i_51_++) {
-                    for(int i_52_ = Floor.anInt2318; ((8 + Floor.anInt2318 > i_52_)); i_52_++) {
+                    for(int i_52_ = OverlayDefinition.anInt2318; ((8 + OverlayDefinition.anInt2318 > i_52_)); i_52_++) {
                         if((Class10.aClass45ArrayArrayArray357[Player.anInt3267][i_51_][i_52_]) != null) {
                             Class10.aClass45ArrayArrayArray357[Player.anInt3267][i_51_][i_52_] = null;
                             Class40_Sub13.method880((byte) -80, i_52_, i_51_);
@@ -443,7 +441,7 @@ public class CollisionMap {
                     }
                 }
                 for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = (Class40_Sub3) Class45.aClass45_1064.method909(-4)) {
-                    if(class40_sub3.anInt2039 >= Class40_Sub6.anInt2119 && (Class40_Sub6.anInt2119 + 8 > class40_sub3.anInt2039) && (class40_sub3.anInt2038 >= Floor.anInt2318) && (Floor.anInt2318 + 8 > class40_sub3.anInt2038) && (Player.anInt3267 == class40_sub3.anInt2018))
+                    if(class40_sub3.anInt2039 >= Class40_Sub6.anInt2119 && (Class40_Sub6.anInt2119 + 8 > class40_sub3.anInt2039) && (class40_sub3.anInt2038 >= OverlayDefinition.anInt2318) && (OverlayDefinition.anInt2318 + 8 > class40_sub3.anInt2038) && (Player.anInt3267 == class40_sub3.anInt2018))
                         class40_sub3.anInt2031 = 0;
                 }
                 Class57.incomingPacket = -1;
@@ -479,11 +477,11 @@ public class CollisionMap {
                 if((ActorDefinition.anInt2433 ^ 0xffffffff) != 0) {
                     Class55.method958(ActorDefinition.anInt2433, -14222);
                     ActorDefinition.anInt2433 = -1;
-                    Floor.method559(30, -117);
+                    OverlayDefinition.method559(30, -117);
                 }
-                if((Class40_Sub5_Sub9.anInt2562 ^ 0xffffffff) != 0) {
-                    Class55.method958(Class40_Sub5_Sub9.anInt2562, -14222);
-                    Class40_Sub5_Sub9.anInt2562 = -1;
+                if((UnderlayDefinition.anInt2562 ^ 0xffffffff) != 0) {
+                    Class55.method958(UnderlayDefinition.anInt2562, -14222);
+                    UnderlayDefinition.anInt2562 = -1;
                 }
                 if(i_55_ != Class66.anInt1560) {
                     Class55.method958(Class66.anInt1560, -14222);
@@ -551,11 +549,11 @@ public class CollisionMap {
                 if((ActorDefinition.anInt2433 ^ 0xffffffff) != (i_58_ ^ 0xffffffff)) {
                     Class55.method958(ActorDefinition.anInt2433, -14222);
                     ActorDefinition.anInt2433 = i_58_;
-                    Floor.method559(35, -57);
+                    OverlayDefinition.method559(35, -57);
                 }
-                if(i_58_ != Class40_Sub5_Sub9.anInt2562) {
-                    Class55.method958(Class40_Sub5_Sub9.anInt2562, -14222);
-                    Class40_Sub5_Sub9.anInt2562 = i_57_;
+                if(i_58_ != UnderlayDefinition.anInt2562) {
+                    Class55.method958(UnderlayDefinition.anInt2562, -14222);
+                    UnderlayDefinition.anInt2562 = i_57_;
                 }
                 CacheIndex_Sub1.anInt1819 = -1;
                 Class40_Sub5_Sub15.inputType = 0;
@@ -577,11 +575,11 @@ public class CollisionMap {
                 if((ActorDefinition.anInt2433 ^ 0xffffffff) != 0) {
                     Class55.method958(ActorDefinition.anInt2433, -14222);
                     ActorDefinition.anInt2433 = -1;
-                    Floor.method559(30, -84);
+                    OverlayDefinition.method559(30, -84);
                 }
-                if(Class40_Sub5_Sub9.anInt2562 != -1) {
-                    Class55.method958(Class40_Sub5_Sub9.anInt2562, -14222);
-                    Class40_Sub5_Sub9.anInt2562 = -1;
+                if(UnderlayDefinition.anInt2562 != -1) {
+                    Class55.method958(UnderlayDefinition.anInt2562, -14222);
+                    UnderlayDefinition.anInt2562 = -1;
                 }
                 if(Class66.anInt1560 != -1) {
                     Class55.method958(Class66.anInt1560, -14222);
@@ -607,11 +605,11 @@ public class CollisionMap {
                 if(ActorDefinition.anInt2433 != -1) {
                     Class55.method958(ActorDefinition.anInt2433, -14222);
                     ActorDefinition.anInt2433 = -1;
-                    Floor.method559(30, -53);
+                    OverlayDefinition.method559(30, -53);
                 }
-                if((Class40_Sub5_Sub9.anInt2562 ^ 0xffffffff) != 0) {
-                    Class55.method958(Class40_Sub5_Sub9.anInt2562, -14222);
-                    Class40_Sub5_Sub9.anInt2562 = -1;
+                if((UnderlayDefinition.anInt2562 ^ 0xffffffff) != 0) {
+                    Class55.method958(UnderlayDefinition.anInt2562, -14222);
+                    UnderlayDefinition.anInt2562 = -1;
                 }
                 if(Class66.anInt1560 != -1) {
                     Class55.method958(Class66.anInt1560, -14222);
@@ -644,7 +642,7 @@ public class CollisionMap {
                 return true;
             }
             if(Class57.incomingPacket == 254) {
-                Floor.anInt2318 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
+                OverlayDefinition.anInt2318 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
                 Class40_Sub6.anInt2119 = Cache.outgoingbuffer.getUnsignedInvertedByte();
                 Class57.incomingPacket = -1;
                 return true;
@@ -663,7 +661,7 @@ public class CollisionMap {
             }
             if((Class57.incomingPacket ^ 0xffffffff) == -64) {
                 Class40_Sub6.anInt2119 = Cache.outgoingbuffer.getUnsignedInvertedByte();
-                Floor.anInt2318 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
+                OverlayDefinition.anInt2318 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
                 while(Cache.outgoingbuffer.currentPosition < Widget.packetsize) {
                     Class57.incomingPacket = Cache.outgoingbuffer.getUnsignedByte();
                     Class53.method949((byte) -125);
@@ -728,11 +726,11 @@ public class CollisionMap {
                 if((ActorDefinition.anInt2433 ^ 0xffffffff) != 0) {
                     Class55.method958(ActorDefinition.anInt2433, -14222);
                     ActorDefinition.anInt2433 = -1;
-                    Floor.method559(30, 81);
+                    OverlayDefinition.method559(30, 81);
                 }
-                if((Class40_Sub5_Sub9.anInt2562 ^ 0xffffffff) != 0) {
-                    Class55.method958(Class40_Sub5_Sub9.anInt2562, -14222);
-                    Class40_Sub5_Sub9.anInt2562 = -1;
+                if((UnderlayDefinition.anInt2562 ^ 0xffffffff) != 0) {
+                    Class55.method958(UnderlayDefinition.anInt2562, -14222);
+                    UnderlayDefinition.anInt2562 = -1;
                 }
                 if((Class66.anInt1560 ^ 0xffffffff) != 0) {
                     Class55.method958(Class66.anInt1560, -14222);
@@ -755,13 +753,13 @@ public class CollisionMap {
             if((Class57.incomingPacket ^ 0xffffffff) == -235) {
                 Class39.aBoolean906 = true;
                 HashTable.anInt564 = Cache.outgoingbuffer.getUnsignedByte();
-                Class40_Sub5_Sub9.anInt2576 = Cache.outgoingbuffer.getUnsignedByte();
+                UnderlayDefinition.anInt2576 = Cache.outgoingbuffer.getUnsignedByte();
                 Class38.anInt892 = Cache.outgoingbuffer.getUnsignedShortBE();
                 Class60.anInt1413 = Cache.outgoingbuffer.getUnsignedByte();
                 Class22_Sub1.anInt1856 = Cache.outgoingbuffer.getUnsignedByte();
                 if((Class22_Sub1.anInt1856 ^ 0xffffffff) <= -101) {
                     int i_69_ = 128 * HashTable.anInt564 + 64;
-                    int i_70_ = 128 * Class40_Sub5_Sub9.anInt2576 + 64;
+                    int i_70_ = 128 * UnderlayDefinition.anInt2576 + 64;
                     int i_71_ = (Class37.method430((byte) -120, (Player.anInt3267), i_69_, i_70_) - Class38.anInt892);
                     int i_72_ = i_69_ + -Class12.cameraX;
                     int i_73_ = i_70_ + -Class40_Sub5_Sub6.cameraY;
@@ -837,7 +835,7 @@ public class CollisionMap {
                     Class43.openChatboxWidgetId = -1;
                 }
                 Class57.incomingPacket = -1;
-                Class66.aClass1_1543 = Class66.blank_string;
+                Class66.inputInputMessage = Class66.blank_string;
                 Class40_Sub5_Sub15.inputType = 1;
                 Class52.redrawChatbox = true;
                 Class19.aBoolean490 = false;
@@ -916,11 +914,11 @@ public class CollisionMap {
                         return true;
                     }
                     ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_86_, 10);
-                    widget.anInt2690 = class40_sub5_sub16.modelRotation1;
+                    widget.anInt2690 = class40_sub5_sub16.xan2d;
                     widget.anInt2673 = i_86_;
                     widget.anInt2687 = 4;
-                    widget.anInt2728 = 100 * class40_sub5_sub16.modelZoom / i_85_;
-                    widget.anInt2657 = class40_sub5_sub16.modelRotation2;
+                    widget.anInt2728 = 100 * class40_sub5_sub16.zoom2d / i_85_;
+                    widget.anInt2657 = class40_sub5_sub16.yan2d;
                 } else {
                     widget.anInt2734 = 1;
                     widget.anInt2718 = i_86_;
@@ -1097,7 +1095,7 @@ public class CollisionMap {
                     Class43.openChatboxWidgetId = -1;
                 }
                 Class52.redrawChatbox = true;
-                Class66.aClass1_1543 = Class66.blank_string;
+                Class66.inputInputMessage = Class66.blank_string;
                 Class40_Sub5_Sub15.inputType = 2;
                 Class57.incomingPacket = -1;
                 Class19.aBoolean490 = false;
@@ -1108,7 +1106,7 @@ public class CollisionMap {
         } catch(java.io.IOException ioexception) {
             Class59.dropClient(2578);
         } catch(Exception exception) {
-            String string = ("T2 - " + Class57.incomingPacket + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + Widget.packetsize + "," + (Class40_Sub5_Sub2.anInt2307 + (Player.localPlayer.anIntArray3088[0])) + "," + ((Player.localPlayer.anIntArray3135[0]) + Class26.anInt635) + " - ");
+            String string = ("T2 - " + Class57.incomingPacket + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + Widget.packetsize + "," + (SpotAnimDefinition.anInt2307 + (Player.localPlayer.anIntArray3088[0])) + "," + ((Player.localPlayer.anIntArray3135[0]) + Class26.anInt635) + " - ");
             for(int i = 0; (((Widget.packetsize > i)) && (i ^ 0xffffffff) > -51); i++)
                 string += (Cache.outgoingbuffer.buffer[i] + ",");
             CacheIndex.method169(string, (byte) -120, exception);
@@ -1143,7 +1141,7 @@ public class CollisionMap {
     public void method143(boolean arg0, int arg1, int arg2, int arg3) {
         if(arg0 != true)
             anIntArrayArray150 = null;
-        anIntArrayArray150[arg1][arg2] = Class40_Sub5_Sub9.method619(anIntArrayArray150[arg1][arg2], arg3);
+        anIntArrayArray150[arg1][arg2] = UnderlayDefinition.method619(anIntArrayArray150[arg1][arg2], arg3);
     }
 
     public void method145(int arg0, int arg1, int arg2) {
@@ -1445,7 +1443,7 @@ public class CollisionMap {
         arg2 -= anInt140;
         if(arg0 != -28)
             anInt153 = -24;
-        anIntArrayArray150[arg2][arg1] = Class40_Sub5_Sub9.method619(anIntArrayArray150[arg2][arg1], 2097152);
+        anIntArrayArray150[arg2][arg1] = UnderlayDefinition.method619(anIntArrayArray150[arg2][arg1], 2097152);
     }
 
     public boolean method153(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {

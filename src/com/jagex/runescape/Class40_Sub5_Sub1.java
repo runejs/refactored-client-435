@@ -3,6 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -49,7 +50,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
         int i_5_ = arg9 - (-(arg8 << -1503664185) - (arg1 << -1015388722) - 1073741824);
         if(gameObjectDefinition.hasActions == 0)
             i_5_ += -2147483648;
-        if((gameObjectDefinition.anInt2533 ^ 0xffffffff) == -2)
+        if((gameObjectDefinition.supportsItems ^ 0xffffffff) == -2)
             i_4_ += 256;
         if((arg4 ^ 0xffffffff) == -23) {
             Renderable renderable;
@@ -180,7 +181,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 int i_14_ = 16;
                 int i_15_ = arg5.method122(arg3, arg9, arg8);
                 if(i_15_ > 0)
-                    i_14_ = (GameObjectDefinition.getDefinition(i_15_ >> -1535148562 & 0x7fff).offsetAmplifier);
+                    i_14_ = (GameObjectDefinition.getDefinition(i_15_ >> -1535148562 & 0x7fff).setDecorDisplacement);
                 Renderable renderable;
                 if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
                     renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, (byte) 124, i_0_);
@@ -265,15 +266,15 @@ public class Class40_Sub5_Sub1 extends SubNode {
         if(Player.localPlayer != arg3 && ActorDefinition.anInt2394 < 400) {
             RSString class1;
             if(arg3.anInt3257 == 0)
-                class1 = (Class40_Sub5_Sub17_Sub6.method832(82, (new RSString[]{arg3.playerName, (SceneTile.method536((Player.localPlayer.anInt3260), arg3.anInt3260, -122)), HashTable.aClass1_569, Class40_Sub5_Sub2.str_prefix_level, HashTable.method334(arg3.anInt3260, -1), Class51.aClass1_1199})));
+                class1 = (Class40_Sub5_Sub17_Sub6.method832(82, (new RSString[]{arg3.playerName, (SceneTile.method536((Player.localPlayer.anInt3260), arg3.anInt3260, -122)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(arg3.anInt3260, -1), Class51.aClass1_1199})));
             else
                 class1 = (Class40_Sub5_Sub17_Sub6.method832(-60, (new RSString[]{arg3.playerName, HashTable.aClass1_569, Class26.aClass1_619, HashTable.method334(arg3.anInt3257, -1), Class51.aClass1_1199})));
             if((Class8.anInt301 ^ 0xffffffff) == -2) {
                 Node.anInt928++;
-                Floor.method558(arg4, Main.aClass1_1763, arg0, -501, arg2, 22, (Class40_Sub5_Sub17_Sub6.method832(55, (new RSString[]{Npc.aClass1_3295, Class40_Sub5_Sub17_Sub3.aClass1_3068, class1}))));
+                OverlayDefinition.method558(arg4, Main.aClass1_1763, arg0, -501, arg2, 22, (Class40_Sub5_Sub17_Sub6.method832(55, (new RSString[]{Npc.aClass1_3295, Class40_Sub5_Sub17_Sub3.aClass1_3068, class1}))));
             } else if(Main.anInt1773 == 1) {
                 if((ItemDefinition.anInt2815 & 0x8) == 8) {
-                    Floor.method558(arg4, Class38_Sub1.aClass1_1918, arg0, -501, arg2, 1, (Class40_Sub5_Sub17_Sub6.method832(124, (new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub17_Sub3.aClass1_3068, class1}))));
+                    OverlayDefinition.method558(arg4, Class38_Sub1.aClass1_1918, arg0, -501, arg2, 1, (Class40_Sub5_Sub17_Sub6.method832(124, (new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub17_Sub3.aClass1_3068, class1}))));
                     Class22_Sub1.anInt1850++;
                 }
             } else {
@@ -302,7 +303,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                             i_16_ = i_17_ + 14;
                         if(i == 4)
                             i_16_ = 41 + i_17_;
-                        Floor.method558(arg4, Main.aClass1Array1778[i], arg0, -501, arg2, i_16_, (Class40_Sub5_Sub17_Sub6.method832(79, new RSString[]{Class26.aClass1_620, class1})));
+                        OverlayDefinition.method558(arg4, Main.aClass1Array1778[i], arg0, -501, arg2, i_16_, (Class40_Sub5_Sub17_Sub6.method832(79, new RSString[]{Class26.aClass1_620, class1})));
                     }
                 }
             }
@@ -322,7 +323,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
         if(arg0 != 256)
             anInt2280 = 44;
         int i = Class37.method430((byte) -120, Player.anInt3267, Class12.cameraX, Class40_Sub5_Sub6.cameraY);
-        if(i + -Class32.cameraZ < 800 && ((Floor.tile_flags[Player.anInt3267][Class12.cameraX >> -1116963737][Class40_Sub5_Sub6.cameraY >> -161392185]) & 0x4) != 0)
+        if(i + -Class32.cameraZ < 800 && ((OverlayDefinition.tile_flags[Player.anInt3267][Class12.cameraX >> -1116963737][Class40_Sub5_Sub6.cameraY >> -161392185]) & 0x4) != 0)
             return Player.anInt3267;
         return 3;
     }

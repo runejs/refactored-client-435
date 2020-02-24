@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -165,12 +165,12 @@ public class Class13 {
             }
             if((mask & 0x80) != 0) {
                 npc.aClass40_Sub5_Sub5_3300 = ActorDefinition.getDefinition((byte) -122, Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE());
-                npc.anInt3083 = (npc.aClass40_Sub5_Sub5_3300.anInt2389);
+                npc.anInt3083 = (npc.aClass40_Sub5_Sub5_3300.rotateRightAnimation);
                 npc.anInt3113 = (npc.aClass40_Sub5_Sub5_3300.degreesToTurn);
                 npc.anInt3075 = (npc.aClass40_Sub5_Sub5_3300.rotate90RightAnimation);
                 npc.anInt3126 = (npc.aClass40_Sub5_Sub5_3300.stanceAnimation);
                 npc.anInt3131 = (npc.aClass40_Sub5_Sub5_3300.walkAnimation);
-                npc.anInt3145 = (npc.aClass40_Sub5_Sub5_3300.anInt2421);
+                npc.anInt3145 = (npc.aClass40_Sub5_Sub5_3300.rotateLeftAnimation);
                 npc.anInt3096 = (npc.aClass40_Sub5_Sub5_3300.tileSpacesOccupied);
                 npc.anInt3132 = (npc.aClass40_Sub5_Sub5_3300.rotate90LeftAnimation);
                 npc.anInt3079 = (npc.aClass40_Sub5_Sub5_3300.rotate180Animation);

@@ -2,6 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -25,7 +26,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
     public static int clickType;
     public static RSString aClass1_1471;
     public static int chatboxScrollMax;
-    public static byte[][][] aByteArrayArrayArray1473;
+    public static byte[][][] tile_overlayids;
     public static RSString aClass1_1474;
     public static int cameraZoom = 600;
     public boolean mouseWheelDown;
@@ -57,7 +58,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
         aCanvas1469 = null;
         aClass1_1464 = null;
         aClass1_1474 = null;
-        aByteArrayArrayArray1473 = null;
+        tile_overlayids = null;
 
     }
 
@@ -160,7 +161,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
     public static Class40_Sub9_Sub1 method1003(Signlink arg0, Component arg1, int arg2) {
 
         if(arg2 != 29914)
-            aByteArrayArrayArray1473 = null;
+            tile_overlayids = null;
         Class68.method1040(arg1, 0, arg0);
         Class40_Sub9_Sub1 class40_sub9_sub1 = new Class40_Sub9_Sub1();
         Class8.method218(class40_sub9_sub1, -125);
@@ -225,7 +226,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
             Class45.anInt1073 = 0;
             Class55.eventClickX = event.getX();
             Class40_Sub5_Sub11.eventClickY = event.getY();
-            Floor.lastClick = System.currentTimeMillis();
+            OverlayDefinition.lastClick = System.currentTimeMillis();
             if(event.getButton() == MouseEvent.BUTTON2) {
                 mouseWheelDown = true;
                 mouseWheelX = mouseX;

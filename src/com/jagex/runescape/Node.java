@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
 
 public class Node {
     public static RSString aClass1_923;
@@ -132,7 +133,7 @@ public class Node {
             aClass1_965 = null;
         if(Class24.method340(61)) {
             if(Class26.aBoolean618)
-                Floor.anInt2342 = arg0;
+                OverlayDefinition.anInt2342 = arg0;
             else
                 Class40_Sub5_Sub13.method651(22741, arg0);
         }

@@ -1,11 +1,12 @@
-package com.jagex.runescape;
+package com.jagex.runescape.cache.def;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
 
-public class Class40_Sub5_Sub9 extends SubNode {
+public class UnderlayDefinition extends SubNode {
     public static int anInt2562 = -1;
     public static RSString aClass1_2564 = RSString.CreateString("Welt");
     public static RSString aClass1_2566 = RSString.CreateString("flash2:");
@@ -19,11 +20,11 @@ public class Class40_Sub5_Sub9 extends SubNode {
     public static int anInt2581;
     public static CacheIndex aCacheIndex_2582;
 
-    public int anInt2563;
+    public int saturation;
     public int anInt2565;
-    public int anInt2568;
-    public int anInt2574;
-    public int groundTextureColour = 0;
+    public int hueMultiplier;
+    public int hue;
+    public int color = 0;
 
     public static int method614(byte arg0, int arg1, int arg2, int arg3) {
 
@@ -97,75 +98,72 @@ public class Class40_Sub5_Sub9 extends SubNode {
         }
     }
 
-    public void updateTextureBrightness(int arg0) {
-        double d = (double) (arg0 >> 16 & 0xff) / 256.0;
-        double d_0_ = (double) (arg0 & 0xff) / 256.0;
-        double d_1_ = (double) ((arg0 & 0xff68) >> 8) / 256.0;
-        double d_2_ = d;
-        if(d_2_ > d_1_) {
-            d_2_ = d_1_;
+    public void calculateHsl() {
+        double r = (double) (color >> 16 & 0xff) / 256.0;
+        double g = (double) (color & 0xff) / 256.0;
+        double b = (double) ((color & 0xff68) >> 8) / 256.0;
+        double cmin = r;
+        if(cmin > b) {
+            cmin = b;
         }
-        if(d_0_ < d_2_) {
-            d_2_ = d_0_;
+        if(g < cmin) {
+            cmin = g;
         }
-        double d_3_ = d;
-        if(d_3_ < d_1_) {
-            d_3_ = d_1_;
+        double cmax = r;
+        if(cmax < b) {
+            cmax = b;
         }
         double d_4_ = 0.0;
-        if(d_3_ < d_0_) {
-            d_3_ = d_0_;
+        if(cmax < g) {
+            cmax = g;
         }
-        double d_5_ = (d_3_ + d_2_) / 2.0;
-        anInt2563 = (int) (d_5_ * 256.0);
+        double d_5_ = (cmax + cmin) / 2.0;
+        saturation = (int) (d_5_ * 256.0);
         double d_6_ = 0.0;
-        if(d_3_ != d_2_) {
+        if(cmax != cmin) {
             if(d_5_ < 0.5) {
-                d_6_ = (d_3_ - d_2_) / (d_3_ + d_2_);
+                d_6_ = (cmax - cmin) / (cmax + cmin);
             }
             if(d_5_ >= 0.5) {
-                d_6_ = (-d_2_ + d_3_) / (-d_2_ + (-d_3_ + 2.0));
+                d_6_ = (-cmin + cmax) / (-cmin + (-cmax + 2.0));
             }
-            if(d == d_3_) {
-                d_4_ = (-d_0_ + d_1_) / (-d_2_ + d_3_);
-            } else if(d_3_ != d_1_) {
-                if(d_3_ == d_0_) {
-                    d_4_ = (d - d_1_) / (-d_2_ + d_3_) + 4.0;
+            if(r == cmax) {
+                d_4_ = (-g + b) / (-cmin + cmax);
+            } else if(cmax != b) {
+                if(cmax == g) {
+                    d_4_ = (r - b) / (-cmin + cmax) + 4.0;
                 }
             } else {
-                d_4_ = 2.0 + (d_0_ - d) / (d_3_ - d_2_);
+                d_4_ = 2.0 + (g - r) / (cmax - cmin);
             }
         }
         d_4_ /= 6.0;
-        if(anInt2563 >= 0) {
-            if(anInt2563 > 255) {
-                anInt2563 = 255;
+        if(saturation >= 0) {
+            if(saturation > 255) {
+                saturation = 255;
             }
         } else {
-            anInt2563 = 0;
+            saturation = 0;
         }
         if(d_5_ > 0.5) {
-            anInt2568 = (int) ((-d_5_ + 1.0) * d_6_ * 512.0);
+            hueMultiplier = (int) ((-d_5_ + 1.0) * d_6_ * 512.0);
         } else {
-            anInt2568 = (int) (d_5_ * d_6_ * 512.0);
+            hueMultiplier = (int) (d_5_ * d_6_ * 512.0);
         }
-        anInt2574 = (int) (256.0 * d_6_);
-        if(anInt2568 < 1) {
-            anInt2568 = 1;
+        hue = (int) (256.0 * d_6_);
+        if(hueMultiplier < 1) {
+            hueMultiplier = 1;
         }
-        anInt2565 = (int) (d_4_ * (double) anInt2568);
-        if((anInt2574 ^ 0xffffffff) <= -1) {
-            if(anInt2574 > 255) {
-                anInt2574 = 255;
+        anInt2565 = (int) (d_4_ * (double) hueMultiplier);
+        if((hue ^ 0xffffffff) <= -1) {
+            if(hue > 255) {
+                hue = 255;
             }
         } else {
-            anInt2574 = 0;
+            hue = 0;
         }
     }
 
-    public void method615() {
-        updateTextureBrightness(groundTextureColour);
-    }
 
     public void readValues(Buffer buffer) {
         while(true) {
@@ -179,7 +177,7 @@ public class Class40_Sub5_Sub9 extends SubNode {
 
     public void readValue(Buffer buffer, int opcode) {
         if(opcode == 1) {
-            groundTextureColour = buffer.getMediumBE();
+            color = buffer.getMediumBE();
         }
     }
 }

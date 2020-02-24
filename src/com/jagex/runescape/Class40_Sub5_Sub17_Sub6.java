@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -50,7 +50,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
         anInt3231 = arg4;
         anInt3249 = arg0;
         anInt3239 = arg1;
-        int i = Class37.method431(anInt3249, 13).anInt2287;
+        int i = SpotAnimDefinition.forId(anInt3249, 13).animationId;
         if((i ^ 0xffffffff) != 0) {
             aBoolean3237 = false;
             aClass40_Sub5_Sub7_3242 = Class68_Sub1.method1050(i, 2);
@@ -151,13 +151,13 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     public Model method756(int arg0) {
 
         anInt3234++;
-        Class40_Sub5_Sub2 class40_sub5_sub2 = Class37.method431(anInt3249, 13);
+        SpotAnimDefinition spotAnimDefinition = SpotAnimDefinition.forId(anInt3249, 13);
         int i = -110 / ((arg0 - 41) / 47);
         Model class40_sub5_sub17_sub5;
         if(aBoolean3237)
-            class40_sub5_sub17_sub5 = class40_sub5_sub2.method549(-1, 2);
+            class40_sub5_sub17_sub5 = spotAnimDefinition.method549(-1, 2);
         else
-            class40_sub5_sub17_sub5 = class40_sub5_sub2.method549(anInt3240, 2);
+            class40_sub5_sub17_sub5 = spotAnimDefinition.method549(anInt3240, 2);
         if(class40_sub5_sub17_sub5 == null)
             return null;
         return class40_sub5_sub17_sub5;

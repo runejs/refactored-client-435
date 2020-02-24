@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -38,7 +39,7 @@ public class Class59 {
         if(Class32.anInt771 > 0)
             Class48.method928(-7225);
         else {
-            Floor.method559(40, 99);
+            OverlayDefinition.method559(40, 99);
             Class30.aClass64_717 = Class40_Sub6.aClass64_2098;
             Class40_Sub6.aClass64_2098 = null;
             if(arg0 != 2578)
@@ -113,9 +114,9 @@ public class Class59 {
         if(arg2 != 0)
             getVisibilityPlaneFor(-73, 123, 115, 98);
         anInt1382++;
-        if(((Floor.tile_flags[arg0][arg3][arg1] & 0x8) ^ 0xffffffff) != -1)
+        if(((OverlayDefinition.tile_flags[arg0][arg3][arg1] & 0x8) ^ 0xffffffff) != -1)
             return 0;
-        if((arg0 ^ 0xffffffff) < -1 && ((Floor.tile_flags[1][arg3][arg1] & 0x2) ^ 0xffffffff) != -1)
+        if((arg0 ^ 0xffffffff) < -1 && ((OverlayDefinition.tile_flags[1][arg3][arg1] & 0x2) ^ 0xffffffff) != -1)
             return -1 + arg0;
         return arg0;
 

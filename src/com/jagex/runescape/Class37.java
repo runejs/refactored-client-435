@@ -2,8 +2,8 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -48,7 +48,7 @@ public class Class37 {
             return 0;
         int i_1_ = 0x7f & arg2;
         int i_2_ = arg1;
-        if(i_2_ < 3 && (Floor.tile_flags[1][i_0_][i] & 0x2) == 2)
+        if(i_2_ < 3 && (OverlayDefinition.tile_flags[1][i_0_][i] & 0x2) == 2)
             i_2_++;
         int i_3_ = (((-i_1_ + 128) * (Class40_Sub6.tile_height[i_2_][i_0_][i]) + (i_1_ * (Class40_Sub6.tile_height[i_2_][i_0_ + 1][i]))) >> -1503923001);
         int i_4_ = arg3 & 0x7f;
@@ -56,24 +56,6 @@ public class Class37 {
             method432((byte) -86);
         int i_5_ = ((i_1_ * (Class40_Sub6.tile_height[i_2_][1 + i_0_][1 + i]) + (Class40_Sub6.tile_height[i_2_][i_0_][1 + i] * (128 + -i_1_))) >> -820366297);
         return (128 + -i_4_) * i_3_ + (i_5_ * i_4_) >> 2117999111;
-
-    }
-
-    public static Class40_Sub5_Sub2 method431(int arg0, int arg1) {
-
-        if(arg1 != 13)
-            method436(-34);
-        anInt861++;
-        Class40_Sub5_Sub2 class40_sub5_sub2 = ((Class40_Sub5_Sub2) Class43.aClass9_1014.method231((long) arg0, (byte) 59));
-        if(class40_sub5_sub2 != null)
-            return class40_sub5_sub2;
-        byte[] is = Class19.aCacheIndex_488.getFile(arg0, 13);
-        class40_sub5_sub2 = new Class40_Sub5_Sub2();
-        class40_sub5_sub2.anInt2310 = arg0;
-        if(is != null)
-            class40_sub5_sub2.method551(new Buffer(is), (byte) 61);
-        Class43.aClass9_1014.method230(-7208, (long) arg0, class40_sub5_sub2);
-        return class40_sub5_sub2;
 
     }
 
@@ -127,7 +109,7 @@ public class Class37 {
             if(CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i] != null)
                 CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i].facingActorIndex = -1;
         }
-        Floor.method559(30, -88);
+        OverlayDefinition.method559(30, -88);
 
     }
 
@@ -208,20 +190,20 @@ public class Class37 {
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         i = (-((Player.localPlayer.anInt3098) / 32) + (class40_sub5_sub17_sub4_sub2.anInt3098 / 32));
                         i_8_ = (class40_sub5_sub17_sub4_sub2.anInt3089 / 32 - (Player.localPlayer.anInt3089) / 32);
-                        Floor.drawMinimapMark((Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1]), i, i_8_);
+                        OverlayDefinition.drawMinimapMark((Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1]), i, i_8_);
                     }
                 }
                 if((Player.anInt3288 ^ 0xffffffff) == -3) {
                     i_8_ = (-((Player.localPlayer.anInt3089) / 32) + 2 + 4 * (-Class26.anInt635 + Class4.anInt175));
-                    i = (4 * (Class68.anInt1637 - Class40_Sub5_Sub2.anInt2307) - (-2 + ((Player.localPlayer.anInt3098) / 32)));
-                    Floor.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], i, i_8_);
+                    i = (4 * (Class68.anInt1637 - SpotAnimDefinition.anInt2307) - (-2 + ((Player.localPlayer.anInt3098) / 32)));
+                    OverlayDefinition.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], i, i_8_);
                 }
                 if(Player.anInt3288 == 10 && (Class68.anInt1623 ^ 0xffffffff) <= -1 && ((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156).length > Class68.anInt1623)) {
                     Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class68.anInt1623]);
                     if(class40_sub5_sub17_sub4_sub1 != null) {
                         i_8_ = (-((Player.localPlayer.anInt3089) / 32) + (class40_sub5_sub17_sub4_sub1.anInt3089 / 32));
                         i = (class40_sub5_sub17_sub4_sub1.anInt3098 / 32 - (Player.localPlayer.anInt3098) / 32);
-                        Floor.drawMinimapMark((Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1]), i, i_8_);
+                        OverlayDefinition.drawMinimapMark((Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1]), i, i_8_);
                     }
                 }
             }
@@ -277,7 +259,7 @@ public class Class37 {
         class40_sub2.anInt2003 = 128 * arg0;
         class40_sub2.anInt2007 = (i_17_ + arg0) * 128;
         class40_sub2.anInt2013 = (arg4 + i) * 128;
-        class40_sub2.anInt1997 = arg5.anInt2513;
+        class40_sub2.anInt1997 = arg5.ambientSoundId;
         if(arg5.configChangeDest != null) {
             class40_sub2.aGameObjectDefinition_2011 = arg5;
             class40_sub2.method528(57);

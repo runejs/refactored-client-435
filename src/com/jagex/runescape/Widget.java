@@ -3,7 +3,8 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
@@ -750,7 +751,7 @@ public class Widget extends SubNode {
                                                 i -= 2;
                                                 int i_63_ = (Class67.anIntArray1588[i]);
                                                 int i_64_ = (Class67.anIntArray1588[i + 1]);
-                                                Class67.anIntArray1588[i++] = (Class40_Sub5_Sub9.method619(1 << i_64_, i_63_));
+                                                Class67.anIntArray1588[i++] = (UnderlayDefinition.method619(1 << i_64_, i_63_));
                                             } else if((i_3_ ^ 0xffffffff) == -4010) {
                                                 i -= 2;
                                                 int i_65_ = (Class67.anIntArray1588[i]);
@@ -806,7 +807,7 @@ public class Widget extends SubNode {
                                                 Class40_Sub11.aClass1Array2153[i_1_++] = (Class40_Sub5_Sub17_Sub6.method832(-115, (new RSString[]{class1, (Class66.method1024(true, (byte) -85, i_77_))})));
                                             } else if((i_3_ ^ 0xffffffff) == -4104) {
                                                 RSString class1 = (Class40_Sub11.aClass1Array2153[--i_1_]);
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = class1.method79();
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = class1.toLowerCase();
                                             } else if((i_3_ ^ 0xffffffff) == -4105) {
                                                 int i_78_ = (Class67.anIntArray1588[--i]);
                                                 long l = (86400000L * ((long) i_78_ + 11745L));
@@ -952,12 +953,12 @@ public class Widget extends SubNode {
                         if((i_87_ ^ 0xffffffff) != 0) {
                             ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_87_, 10);
                             widget.anInt2687 = 4;
-                            widget.anInt2690 = class40_sub5_sub16.modelRotation1;
-                            widget.anInt2725 = class40_sub5_sub16.anInt2827;
-                            widget.anInt2728 = (100 * class40_sub5_sub16.modelZoom / i_88_);
-                            widget.anInt2657 = class40_sub5_sub16.modelRotation2;
-                            widget.anInt2679 = class40_sub5_sub16.modelOffset2;
-                            widget.anInt2737 = class40_sub5_sub16.modelOffset1;
+                            widget.anInt2690 = class40_sub5_sub16.xan2d;
+                            widget.anInt2725 = class40_sub5_sub16.zan2d;
+                            widget.anInt2728 = (100 * class40_sub5_sub16.zoom2d / i_88_);
+                            widget.anInt2657 = class40_sub5_sub16.yan2d;
+                            widget.anInt2679 = class40_sub5_sub16.yOffset2d;
+                            widget.anInt2737 = class40_sub5_sub16.xOffset2d;
                             widget.anInt2673 = i_87_;
                         } else
                             widget.anInt2687 = 0;
@@ -1339,7 +1340,7 @@ public class Widget extends SubNode {
                     return null;
                 }
                 class40_sub5_sub17_sub5.method810();
-                class40_sub5_sub17_sub5.method802(64 + (class40_sub5_sub16.ambience), 768 + (class40_sub5_sub16.diffusion), -50, -10, -50, true);
+                class40_sub5_sub17_sub5.method802(64 + (class40_sub5_sub16.ambient), 768 + (class40_sub5_sub16.contrast), -50, -10, -50, true);
             }
             Class53.aClass9_1264.method230(-7208, (long) ((i << -557905040) + i_11_), class40_sub5_sub17_sub5);
         }

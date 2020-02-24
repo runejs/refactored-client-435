@@ -2,7 +2,8 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -136,7 +137,7 @@ public class Landscape {
                 byte[] is = Class52.aByteArrayArray1217[i];
                 if(is != null) {
                     int i_2_ = ((ISAAC.anIntArray528[i] & 0xff) * 64 - Class26.anInt635);
-                    int i_3_ = ((ISAAC.anIntArray528[i] >> 430061704) * 64 - Class40_Sub5_Sub2.anInt2307);
+                    int i_3_ = ((ISAAC.anIntArray528[i] >> 430061704) * 64 - SpotAnimDefinition.anInt2307);
                     if(Class58.aBoolean1349) {
                         i_3_ = 10;
                         i_2_ = 10;
@@ -157,7 +158,7 @@ public class Landscape {
                 for(int i = 0; i < 4; i++) {
                     for(int i_4_ = 0; (i_4_ ^ 0xffffffff) > -105; i_4_++) {
                         for(int i_5_ = 0; (i_5_ ^ 0xffffffff) > -105; i_5_++)
-                            Floor.tile_flags[i][i_4_][i_5_] = (byte) 0;
+                            OverlayDefinition.tile_flags[i][i_4_][i_5_] = (byte) 0;
                     }
                 }
                 Class65.method1020(true);
@@ -167,13 +168,13 @@ public class Landscape {
                 if(!Class58.aBoolean1349) {
                     for(int i_6_ = 0; i > i_6_; i_6_++) {
                         int i_7_ = (-Class26.anInt635 + ((0xff & ISAAC.anIntArray528[i_6_]) * 64));
-                        int i_8_ = (-Class40_Sub5_Sub2.anInt2307 + 64 * (ISAAC.anIntArray528[i_6_] >> 1048646664));
+                        int i_8_ = (-SpotAnimDefinition.anInt2307 + 64 * (ISAAC.anIntArray528[i_6_] >> 1048646664));
                         byte[] is = RSString.aByteArrayArray1715[i_6_];
                         if(is != null)
                             Class40_Sub5_Sub7.method592(aCollisionMapArray1167, (Class51.anInt1202 + -6) * 8, is, -6, i_8_, i_7_, 8 * (-6 + Class17.anInt448));
                     }
                     for(int i_9_ = 0; i > i_9_; i_9_++) {
-                        int i_10_ = (-Class40_Sub5_Sub2.anInt2307 + (ISAAC.anIntArray528[i_9_] >> -401526520) * 64);
+                        int i_10_ = (-SpotAnimDefinition.anInt2307 + (ISAAC.anIntArray528[i_9_] >> -401526520) * 64);
                         byte[] is = RSString.aByteArrayArray1715[i_9_];
                         int i_11_ = (-Class26.anInt635 + 64 * (ISAAC.anIntArray528[i_9_] & 0xff));
                         if(is == null && (Class17.anInt448 ^ 0xffffffff) > -801)
@@ -194,7 +195,7 @@ public class Landscape {
                             }
                         }
                         if(is != null) {
-                            int i_13_ = (-Class40_Sub5_Sub2.anInt2307 + (ISAAC.anIntArray528[i_12_] >> 961254632) * 64);
+                            int i_13_ = (-SpotAnimDefinition.anInt2307 + (ISAAC.anIntArray528[i_12_] >> 961254632) * 64);
                             int i_14_ = (64 * (0xff & ISAAC.anIntArray528[i_12_]) - Class26.anInt635);
                             GameObject.loadObjectBlock(i_13_, Npc.aScene_3301, aCollisionMapArray1167, is, i_14_);
                         }
@@ -204,7 +205,7 @@ public class Landscape {
                     for(int i_15_ = 0; (i_15_ ^ 0xffffffff) > -5; i_15_++) {
                         for(int i_16_ = 0; i_16_ < 13; i_16_++) {
                             for(int i_17_ = 0; i_17_ < 13; i_17_++) {
-                                int i_18_ = (Floor.anIntArrayArrayArray2333[i_15_][i_16_][i_17_]);
+                                int i_18_ = (OverlayDefinition.anIntArrayArrayArray2333[i_15_][i_16_][i_17_]);
                                 boolean bool_19_ = false;
                                 if(i_18_ != -1) {
                                     int i_20_ = (0x6 & i_18_) >> 2052754561;
@@ -227,7 +228,7 @@ public class Landscape {
                     }
                     for(int i_26_ = 0; (i_26_ ^ 0xffffffff) > -14; i_26_++) {
                         for(int i_27_ = 0; (i_27_ ^ 0xffffffff) > -14; i_27_++) {
-                            int i_28_ = (Floor.anIntArrayArrayArray2333[0][i_26_][i_27_]);
+                            int i_28_ = (OverlayDefinition.anIntArrayArrayArray2333[0][i_26_][i_27_]);
                             if((i_28_ ^ 0xffffffff) == 0)
                                 Class61.method999(i_27_ * 8, (byte) 120, 8, 8, 8 * i_26_);
                         }
@@ -236,7 +237,7 @@ public class Landscape {
                     for(int i_29_ = 0; (i_29_ ^ 0xffffffff) > -5; i_29_++) {
                         for(int i_30_ = 0; i_30_ < 13; i_30_++) {
                             for(int i_31_ = 0; i_31_ < 13; i_31_++) {
-                                int i_32_ = (Floor.anIntArrayArrayArray2333[i_29_][i_30_][i_31_]);
+                                int i_32_ = (OverlayDefinition.anIntArrayArrayArray2333[i_29_][i_30_][i_31_]);
                                 if((i_32_ ^ 0xffffffff) != 0) {
                                     int i_33_ = ((i_32_ & 0x3ba82fb) >> -1741203752);
                                     int i_34_ = 0x3ff & i_32_ >> 1081885454;
@@ -292,9 +293,9 @@ public class Landscape {
                     }
                 }
                 if(ActorDefinition.anInt2433 != -1)
-                    Floor.method559(35, -88);
+                    OverlayDefinition.method559(35, -88);
                 else
-                    Floor.method559(30, -54);
+                    OverlayDefinition.method559(30, -54);
                 Class56.method973(-65);
                 Class32.packetBuffer.putPacket(178);
                 RSRuntimeException.method1057(126);

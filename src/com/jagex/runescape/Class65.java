@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.OverlayDefinition;
+
 import java.util.zip.CRC32;
 
 public class Class65 {
@@ -60,7 +62,7 @@ public class Class65 {
     public static void method1020(boolean arg0) {
 
         Class59.anIntArray1398 = new int[104];
-        Floor.aByteArrayArrayArray2335 = new byte[4][104][104];
+        OverlayDefinition.tile_underlay_path = new byte[4][104][104];
         anInt1532++;
         CacheIndex.anIntArrayArrayArray262 = new int[4][105][105];
         if(arg0 != true)
@@ -71,10 +73,10 @@ public class Class65 {
         Class67.anIntArray1579 = new int[104];
         SceneTile.anIntArray2048 = new int[104];
         Class40_Sub5_Sub7.anIntArrayArray2490 = new int[105][105];
-        GameFrame.aByteArrayArrayArray1473 = new byte[4][104][104];
+        GameFrame.tile_overlayids = new byte[4][104][104];
         Class40_Sub5_Sub17_Sub6.anIntArray3250 = new int[104];
-        Class35.aByteArrayArrayArray1745 = new byte[4][104][104];
-        Class42.aByteArrayArrayArray993 = new byte[4][104][104];
+        Class35.tile_overlay_rotation = new byte[4][104][104];
+        Class42.tile_underlayids = new byte[4][104][104];
 
     }
 }

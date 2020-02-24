@@ -52,8 +52,8 @@ public class Class32 {
 
         RSString class1 = null;
         for(int i = 0; ActorDefinition.anInt2394 > i; i++) {
-            if((Landscape.aClass1Array1184[i].method60(VertexNormal.aClass1_1114) ^ 0xffffffff) != 0) {
-                class1 = (Landscape.aClass1Array1184[i].substring(Landscape.aClass1Array1184[i].method60(VertexNormal.aClass1_1114)));
+            if((Landscape.aClass1Array1184[i].contains(VertexNormal.aClass1_1114) ^ 0xffffffff) != 0) {
+                class1 = (Landscape.aClass1Array1184[i].substring(Landscape.aClass1Array1184[i].contains(VertexNormal.aClass1_1114)));
                 break;
             }
         }

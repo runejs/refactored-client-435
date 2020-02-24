@@ -2,6 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 import java.io.ByteArrayInputStream;
@@ -195,19 +196,19 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         Class66.aClass1_1550 = Class66.aClass1_1550.method70(Class59.anInt1388, 0);
                 } else if(!Class19.aBoolean490) {
                     if(Class40_Sub5_Sub15.inputType == 1) {
-                        if(((ItemDefinition.anInt2854 ^ 0xffffffff) == -86) && (Class66.aClass1_1543.length() ^ 0xffffffff) < -1) {
-                            Class66.aClass1_1543 = (Class66.aClass1_1543.substring(0, (Class66.aClass1_1543.length() - 1)));
+                        if(((ItemDefinition.anInt2854 ^ 0xffffffff) == -86) && (Class66.inputInputMessage.length() ^ 0xffffffff) < -1) {
+                            Class66.inputInputMessage = (Class66.inputInputMessage.substring(0, (Class66.inputInputMessage.length() - 1)));
                             Class52.redrawChatbox = true;
                         }
-                        if(Class66.method1027(Class59.anInt1388, -58) && Class66.aClass1_1543.length() < 10) {
-                            Class66.aClass1_1543 = Class66.aClass1_1543.method70(Class59.anInt1388, 0);
+                        if(Class66.method1027(Class59.anInt1388, -58) && Class66.inputInputMessage.length() < 10) {
+                            Class66.inputInputMessage = Class66.inputInputMessage.method70(Class59.anInt1388, 0);
                             Class52.redrawChatbox = true;
                         }
                         if(ItemDefinition.anInt2854 == 84) {
-                            if(Class66.aClass1_1543.length() > 0) {
+                            if(Class66.inputInputMessage.length() > 0) {
                                 int i = 0;
-                                if(Class66.aClass1_1543.method82(arg0 + 105))
-                                    i = Class66.aClass1_1543.method52();
+                                if(Class66.inputInputMessage.method82(arg0 + 105))
+                                    i = Class66.inputInputMessage.method52();
                                 Class32.packetBuffer.putPacket(238);
                                 Class32.packetBuffer.putIntBE(i);
                             }
@@ -216,12 +217,12 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         }
                     } else if(Class40_Sub5_Sub15.inputType != 2) {
                         if(Class40_Sub5_Sub15.inputType == 3) {
-                            if((ItemDefinition.anInt2854 ^ 0xffffffff) == -86 && (Class66.aClass1_1543.length() ^ 0xffffffff) < -1) {
-                                Class66.aClass1_1543 = (Class66.aClass1_1543.substring(0, Class66.aClass1_1543.length() - 10));
+                            if(ItemDefinition.anInt2854 == 85 && Class66.inputInputMessage.length() > 0) {
+                                Class66.inputInputMessage = (Class66.inputInputMessage.substring(0, Class66.inputInputMessage.length() - 10));
                                 Class52.redrawChatbox = true;
                             }
-                            if((Player.method793((byte) 122, Class59.anInt1388)) && (Class66.aClass1_1543.length() ^ 0xffffffff) > -41) {
-                                Class66.aClass1_1543 = Class66.aClass1_1543.method70(Class59.anInt1388, 0);
+                            if((Player.method793((byte) 122, Class59.anInt1388)) && (Class66.inputInputMessage.length() ^ 0xffffffff) > -41) {
+                                Class66.inputInputMessage = Class66.inputInputMessage.method70(Class59.anInt1388, 0);
                                 Class52.redrawChatbox = true;
                             }
                         } else if((Class43.openChatboxWidgetId ^ 0xffffffff) == 0 && (ActorDefinition.anInt2433 ^ 0xffffffff) == 0) {
@@ -240,13 +241,10 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                     if(Class66.chatboxInput.equals(Class40_Sub3.cmd_fpson)) {
                                         Class19.showFps = true;
                                         Class40_Sub5_Sub15.inputType = 3;
-                                        for(int i = 0; i <= Class24.INCOMINGPACKETSIZES.length; i++) {
-                                            System.out.printf("incomingPacketSizes[%d] = %d;\n", i, Class24.INCOMINGPACKETSIZES[i]);
-                                        }
                                     }
                                     if(Class66.chatboxInput.equals(Class40_Sub11.cmd_fpsoff))
                                         Class19.showFps = false;
-                                    if(Class66.chatboxInput.equals(Class40_Sub5_Sub2.cmd_noclip)) {
+                                    if(Class66.chatboxInput.equals(SpotAnimDefinition.cmd_noclip)) {
                                         for(int i = 0; i < 4; i++) {
                                             for(int i_9_ = 1; ((i_9_ ^ 0xffffffff) > -104); i_9_++) {
                                                 for(int i_10_ = 1; i_10_ < 103; i_10_++)
@@ -257,12 +255,12 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                     if((Class66.chatboxInput.equals(Widget.cmd_errortest)) && (Class44.modewhere ^ 0xffffffff) == -3)
                                         throw new RuntimeException();
                                     if(Class66.chatboxInput.equals(Class4.cmd_hiddenbuttontest))
-                                        PacketBuffer.aBoolean2236 = true;
+                                        PacketBuffer.hiddenButtonTest = true;
                                 }
                                 if(!Class66.chatboxInput.startsWith(Class33.cmd_prefix)) {
                                     int i = 0;
                                     Class40_Sub5_Sub4.anInt2362++;
-                                    RSString class1 = Class66.chatboxInput.method79();
+                                    RSString class1 = Class66.chatboxInput.toLowerCase();
                                     int i_11_ = 0;
                                     if(class1.startsWith((Class40_Sub5_Sub11.aClass1_2620))) {
                                         i_11_ = 0;
@@ -277,7 +275,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                                     Class66.chatboxInput = (Class66.chatboxInput.substring((Node.aClass1_940.length())));
                                                     i_11_ = 5;
                                                 } else if(!class1.startsWith((Class43.aClass1_1019))) {
-                                                    if(!class1.startsWith((Class40_Sub5_Sub9.aClass1_2566))) {
+                                                    if(!class1.startsWith((UnderlayDefinition.aClass1_2566))) {
                                                         if(!class1.startsWith((Class57.aClass1_1343))) {
                                                             if(class1.startsWith((Landscape.aClass1_1181))) {
                                                                 i_11_ = 9;
@@ -297,7 +295,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                                         }
                                                     } else {
                                                         i_11_ = 7;
-                                                        Class66.chatboxInput = (Class66.chatboxInput.substring((Class40_Sub5_Sub9.aClass1_2566.length())));
+                                                        Class66.chatboxInput = (Class66.chatboxInput.substring((UnderlayDefinition.aClass1_2566.length())));
                                                     }
                                                 } else {
                                                     i_11_ = 6;
@@ -315,7 +313,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                         Class66.chatboxInput = (Class66.chatboxInput.substring((Class5.aClass1_204.length())));
                                         i_11_ = 1;
                                     }
-                                    class1 = Class66.chatboxInput.method79();
+                                    class1 = Class66.chatboxInput.toLowerCase();
                                     if(class1.startsWith((VertexNormal.aClass1_1097))) {
                                         i = 1;
                                         Class66.chatboxInput = (Class66.chatboxInput.substring((VertexNormal.aClass1_1097.length())));
@@ -360,18 +358,18 @@ public class Class40_Sub5_Sub6 extends SubNode {
                             }
                         }
                     } else {
-                        if(((ItemDefinition.anInt2854 ^ 0xffffffff) == -86) && Class66.aClass1_1543.length() > 0) {
-                            Class66.aClass1_1543 = (Class66.aClass1_1543.substring(0, -1 + Class66.aClass1_1543.length()));
+                        if(((ItemDefinition.anInt2854 ^ 0xffffffff) == -86) && Class66.inputInputMessage.length() > 0) {
+                            Class66.inputInputMessage = (Class66.inputInputMessage.substring(0, -1 + Class66.inputInputMessage.length()));
                             Class52.redrawChatbox = true;
                         }
-                        if((Class40_Sub5_Sub15.method735((byte) -37, Class59.anInt1388) || Class59.anInt1388 == 32) && Class66.aClass1_1543.length() < 12) {
-                            Class66.aClass1_1543 = (Class66.aClass1_1543.method70(Class59.anInt1388, arg0 ^ 0x2));
+                        if((Class40_Sub5_Sub15.method735((byte) -37, Class59.anInt1388) || Class59.anInt1388 == 32) && Class66.inputInputMessage.length() < 12) {
+                            Class66.inputInputMessage = (Class66.inputInputMessage.method70(Class59.anInt1388, arg0 ^ 0x2));
                             Class52.redrawChatbox = true;
                         }
                         if(ItemDefinition.anInt2854 == 84) {
-                            if(Class66.aClass1_1543.length() > 0) {
+                            if(Class66.inputInputMessage.length() > 0) {
                                 Class32.packetBuffer.putPacket(86);
-                                Class32.packetBuffer.putLongBE(Class66.aClass1_1543.method58((byte) 89));
+                                Class32.packetBuffer.putLongBE(Class66.inputInputMessage.method58((byte) 89));
                             }
                             Class40_Sub5_Sub15.inputType = 0;
                             Class52.redrawChatbox = true;
@@ -391,7 +389,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         Class52.redrawChatbox = true;
                         if((Class37.anInt876 ^ 0xffffffff) == -2) {
                             long l = Class66.aClass1_1565.method58((byte) 104);
-                            Class40_Sub5_Sub9.method617(l, (byte) -99);
+                            UnderlayDefinition.method617(l, (byte) -99);
                         }
                         if((Class37.anInt876 ^ 0xffffffff) == -3 && (Class40_Sub5_Sub17_Sub3.anInt3060 ^ 0xffffffff) < -1) {
                             long l = Class66.aClass1_1565.method58((byte) 121);

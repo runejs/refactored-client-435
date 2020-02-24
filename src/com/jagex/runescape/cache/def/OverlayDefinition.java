@@ -1,13 +1,14 @@
-package com.jagex.runescape;
+package com.jagex.runescape.cache.def;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;
 
-public class Floor extends SubNode {
+public class OverlayDefinition extends SubNode {
     public static RSString aClass1_2314;
     public static RSString aClass1_2315;
     public static int anInt2316;
@@ -24,7 +25,7 @@ public class Floor extends SubNode {
     public static int anInt2329;
     public static int anInt2331;
     public static int[][][] anIntArrayArrayArray2333;
-    public static byte[][][] aByteArrayArrayArray2335;
+    public static byte[][][] tile_underlay_path;
     public static int anInt2339;
     public static int anInt2340;
     public static int anInt2341;
@@ -46,18 +47,18 @@ public class Floor extends SubNode {
         lastClick = 0L;
     }
 
-    public int anInt2320;
+    public int saturation;
     public int anInt2322;
     public int anInt2330;
-    public int anInt2332;
+    public int hue;
     public int anInt2334;
     public int anInt2336;
-    public int anInt2337;
+    public int lightness;
     public boolean aBoolean2338 = true;
     public int anInt2345;
     public int anInt2346;
 
-    public Floor() {
+    public OverlayDefinition() {
         anInt2322 = -1;
         anInt2336 = -1;
         anInt2345 = 0;
@@ -65,7 +66,7 @@ public class Floor extends SubNode {
 
     public static void method554(byte arg0) {
 
-        aByteArrayArrayArray2335 = null;
+        tile_underlay_path = null;
         tile_flags = null;
         anIntArrayArrayArray2333 = null;
         aClass1_2315 = null;
@@ -166,7 +167,7 @@ public class Floor extends SubNode {
             double angle = Math.atan2((double) x, (double) y);
             int drawX = (int) (Math.sin(angle) * 63.0);
             int drawY = (int) (57.0 * Math.cos(angle));
-            Class40_Sub5_Sub2.minimapEdge.drawRotated(-10 + (94 + (drawX + 4)), 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
+            SpotAnimDefinition.minimapEdge.drawRotated(-10 + (94 + (drawX + 4)), 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
         } else {
             SceneTile.drawOnMinimap(mapY, mapX, sprite);
         }
@@ -189,12 +190,12 @@ public class Floor extends SubNode {
 
     public void method555(byte arg0) {
         if((anInt2336 ^ 0xffffffff) != 0) {
-            method561(anInt2336, 121);
-            anInt2330 = anInt2320;
-            anInt2346 = anInt2337;
-            anInt2334 = anInt2332;
+            calculateHsl(anInt2336);
+            anInt2330 = saturation;
+            anInt2346 = lightness;
+            anInt2334 = hue;
         }
-        method561(anInt2345, 126);
+        calculateHsl(anInt2345);
         anInt2317++;
         if(arg0 != 64)
             method559(39, 9);
@@ -218,49 +219,47 @@ public class Floor extends SubNode {
 
     }
 
-    public void method561(int arg0, int arg1) {
-        anInt2343++;
-        int i = 71 % ((64 - arg1) / 53);
-        double d = (double) (0xff & arg0 >> 58914928) / 256.0;
-        double d_8_ = (double) ((0xff2d & arg0) >> -42632536) / 256.0;
-        double d_9_ = (double) (0xff & arg0) / 256.0;
-        double d_10_ = d;
-        if(d_8_ < d_10_)
-            d_10_ = d_8_;
-        if(d_10_ > d_9_)
-            d_10_ = d_9_;
-        double d_11_ = d;
-        if(d_8_ > d_11_)
-            d_11_ = d_8_;
-        double d_12_ = 0.0;
-        double d_13_ = 0.0;
-        if(d_9_ > d_11_)
-            d_11_ = d_9_;
-        double d_14_ = (d_11_ + d_10_) / 2.0;
-        if(d_10_ != d_11_) {
-            if(d_14_ < 0.5)
-                d_13_ = (d_11_ - d_10_) / (d_11_ + d_10_);
-            if(d_14_ >= 0.5)
-                d_13_ = (-d_10_ + d_11_) / (-d_10_ + (2.0 - d_11_));
-            if(d_11_ != d) {
-                if(d_8_ == d_11_)
-                    d_12_ = 2.0 + (d_9_ - d) / (d_11_ - d_10_);
-                else if(d_11_ == d_9_)
-                    d_12_ = (-d_8_ + d) / (-d_10_ + d_11_) + 4.0;
+    public void calculateHsl(int color) {
+        double r = (double) (0xff & (color >> 16)) / 256.0;
+        double g = (double) ((0xff2d & color) >> 8) / 256.0;
+        double b = (double) (0xff & color) / 256.0;
+        double var10 = r;
+        if(g < var10)
+            var10 = g;
+        if(var10 > b)
+            var10 = b;
+        double var11 = r;
+        if(g > var11)
+            var11 = g;
+        double var12 = 0.0;
+        double var16 = 0.0;
+        if(b > var11)
+            var11 = b;
+        double var14 = (var11 + var10) / 2.0;
+        if(var10 != var11) {
+            if(var14 < 0.5)
+                var16 = (var11 - var10) / (var11 + var10);
+            if(var14 >= 0.5)
+                var16 = (-var10 + var11) / (-var10 + (2.0 - var11));
+            if(var11 != r) {
+                if(g == var11)
+                    var12 = 2.0 + (b - r) / (var11 - var10);
+                else if(var11 == b)
+                    var12 = (-g + r) / (-var10 + var11) + 4.0;
             } else
-                d_12_ = (d_8_ - d_9_) / (d_11_ - d_10_);
+                var12 = (g - b) / (var11 - var10);
         }
-        d_12_ /= 6.0;
-        anInt2332 = (int) (d_12_ * 256.0);
-        anInt2320 = (int) (256.0 * d_14_);
-        anInt2337 = (int) (d_13_ * 256.0);
-        if((anInt2337 ^ 0xffffffff) > -1)
-            anInt2337 = 0;
-        else if((anInt2337 ^ 0xffffffff) < -256)
-            anInt2337 = 255;
-        if((anInt2320 ^ 0xffffffff) > -1)
-            anInt2320 = 0;
-        else if(anInt2320 > 255)
-            anInt2320 = 255;
+        var12 /= 6.0;
+        hue = (int) (var12 * 256.0);
+        saturation = (int) (256.0 * var14);
+        lightness = (int) (var16 * 256.0);
+        if((lightness ^ 0xffffffff) > -1)
+            lightness = 0;
+        else if((lightness ^ 0xffffffff) < -256)
+            lightness = 255;
+        if((saturation ^ 0xffffffff) > -1)
+            saturation = 0;
+        else if(saturation > 255)
+            saturation = 255;
     }
 }

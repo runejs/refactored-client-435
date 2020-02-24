@@ -1,7 +1,8 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
 
@@ -58,9 +59,9 @@ public class Class54 implements KeyListener, FocusListener {
     public static void method954(int arg0) {
         Class10.method238(4);
         if(Class45.anInt1075 == 1)
-            Class37.aClass40_Sub5_Sub14_Sub4Array878[Floor.anInt2319 / 100].drawImage(-4 + Class40_Sub11.anInt2163 + -8, -8 + (Class40_Sub5_Sub1.anInt2276 - 4));
+            Class37.aClass40_Sub5_Sub14_Sub4Array878[OverlayDefinition.anInt2319 / 100].drawImage(-4 + Class40_Sub11.anInt2163 + -8, -8 + (Class40_Sub5_Sub1.anInt2276 - 4));
         if((Class45.anInt1075 ^ 0xffffffff) == -3)
-            Class37.aClass40_Sub5_Sub14_Sub4Array878[4 + Floor.anInt2319 / 100].drawImage(-8 + Class40_Sub11.anInt2163 - 4, -4 + Class40_Sub5_Sub1.anInt2276 - 8);
+            Class37.aClass40_Sub5_Sub14_Sub4Array878[4 + OverlayDefinition.anInt2319 / 100].drawImage(-8 + Class40_Sub11.anInt2163 - 4, -4 + Class40_Sub5_Sub1.anInt2276 - 8);
         if(arg0 == -15454) {
             anInt1276++;
             if(Class58.anInt1376 != -1) {
@@ -189,8 +190,8 @@ public class Class54 implements KeyListener, FocusListener {
 
         anInt1272++;
         Class56 class56 = null;
-        if(Class40_Sub5_Sub2.aClass67_2298 != null)
-            class56 = new Class56(arg0, Class40_Sub5_Sub2.aClass67_2298, Class40_Sub5_Sub6.aClass67Array2436[arg0], 1000000);
+        if(SpotAnimDefinition.aClass67_2298 != null)
+            class56 = new Class56(arg0, SpotAnimDefinition.aClass67_2298, Class40_Sub5_Sub6.aClass67Array2436[arg0], 1000000);
         if(arg3 < 116)
             method955(null, (byte) -86);
         return new CacheIndex_Sub1(class56, Class40_Sub5_Sub4.aClass56_2356, arg0, arg2, arg4, arg1);

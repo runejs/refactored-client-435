@@ -48,7 +48,7 @@ public class RSString implements Interface1 {
 
     public static void method71(int arg0) {
         Class4.anInt182 = 0;
-        int i = (((Player.localPlayer.anInt3098) >> 2067257703) + Class40_Sub5_Sub2.anInt2307);
+        int i = (((Player.localPlayer.anInt3098) >> 2067257703) + SpotAnimDefinition.anInt2307);
         int i_10_ = (Class26.anInt635 + ((Player.localPlayer.anInt3089) >> 1064414503));
         if((i ^ 0xffffffff) <= -3054 && i <= 3156 && i_10_ >= 3056 && i_10_ <= 3136)
             Class4.anInt182 = 1;
@@ -143,7 +143,7 @@ public class RSString implements Interface1 {
         class1.chars = new byte[length];
         boolean bool = true;
         if(arg0 != -16315)
-            method89(false);
+            trim();
         for(int i = 0; i < length; i++) {
             byte i_0_ = chars[i];
             if((i_0_ ^ 0xffffffff) <= -98 && (i_0_ ^ 0xffffffff) >= -123 || i_0_ >= -32 && i_0_ <= -2 && (i_0_ ^ 0xffffffff) != 8) {
@@ -194,9 +194,7 @@ public class RSString implements Interface1 {
         return 0xff & chars[arg0];
     }
 
-    public int method57(byte arg0, int arg1) {
-        if(arg0 != -5)
-            return -56;
+    public int indexOf(int arg1) {
         return method64(0, arg1, true);
     }
 
@@ -218,7 +216,7 @@ public class RSString implements Interface1 {
             /* empty */
         }
         if(arg0 < 88)
-            method89(true);
+            trim();
         return l;
     }
 
@@ -226,7 +224,7 @@ public class RSString implements Interface1 {
         return length;
     }
 
-    public int method60(RSString arg0) {
+    public int contains(RSString arg0) {
         return method81(arg0, 0, true);
     }
 
@@ -483,7 +481,7 @@ public class RSString implements Interface1 {
         return this;
     }
 
-    public RSString method79() {
+    public RSString toLowerCase() {
         RSString class1 = new RSString();
         class1.length = length;
         class1.chars = new byte[length];
@@ -669,14 +667,12 @@ public class RSString implements Interface1 {
         return i;
     }
 
-    public RSString method89(boolean arg0) {
+    public RSString trim() {
         int i = 0;
         int i_31_ = length;
         while((length > i && (chars[i] >= 0 && chars[i] <= 32 || (0xff & chars[i]) == 160))) {
             i++;
         }
-        if(arg0 != false)
-            aClass1_1717 = null;
         while(((i_31_ > i) && ((chars[i_31_ + -1] >= 0 && chars[-1 + i_31_] <= 32) || (chars[i_31_ + -1] & 0xff ^ 0xffffffff) == -161))) {
             i_31_--;
         }

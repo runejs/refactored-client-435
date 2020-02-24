@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 
 public class Class56 {
@@ -93,13 +94,13 @@ public class Class56 {
         FloorDecoration.anIntArray612 = null;
         CacheIndex.anIntArrayArrayArray262 = null;
         Class40_Sub5_Sub7.anIntArrayArray2490 = null;
-        Class35.aByteArrayArrayArray1745 = null;
+        Class35.tile_overlay_rotation = null;
         Class59.anIntArray1398 = null;
         Class19.aByteArrayArrayArray492 = null;
-        Floor.aByteArrayArrayArray2335 = null;
-        GameFrame.aByteArrayArrayArray1473 = null;
+        OverlayDefinition.tile_underlay_path = null;
+        GameFrame.tile_overlayids = null;
         anInt1312++;
-        Class42.aByteArrayArrayArray993 = null;
+        Class42.tile_underlayids = null;
         Class40_Sub5_Sub17_Sub6.anIntArray3250 = null;
 
     }

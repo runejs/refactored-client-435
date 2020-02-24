@@ -163,7 +163,7 @@ public class TypeFace extends Rasterizer {
                     i_9_ += 4;
                 } else if(i_10_ == 92 && i_9_ + 1 < i_8_ && arg0.method55(i_9_ + 1, false) == 110) {
                     class1_6_ = null;
-                    aClass1Array2897[i_7_++] = class1.substring(i_3_, class1.length()).method89(false);
+                    aClass1Array2897[i_7_++] = class1.substring(i_3_, class1.length()).trim();
                     i_3_ = class1.length();
                     i = 0;
                     i_4_ = -1;
@@ -176,7 +176,7 @@ public class TypeFace extends Rasterizer {
                         i_5_ = i;
                     }
                     if(bool && i > arg3 && i_4_ >= 0) {
-                        aClass1Array2897[i_7_++] = class1.substring(i_3_, i_4_).method89(false);
+                        aClass1Array2897[i_7_++] = class1.substring(i_3_, i_4_).trim();
                         i_3_ = i_4_;
                         i_4_ = -1;
                         i -= i_5_;
@@ -188,7 +188,7 @@ public class TypeFace extends Rasterizer {
                 }
             }
             if(class1.length() > i_3_)
-                aClass1Array2897[i_7_++] = class1.substring(i_3_, class1.length()).method89(false);
+                aClass1Array2897[i_7_++] = class1.substring(i_3_, class1.length()).trim();
             if(arg8 == 3 && i_7_ == 1)
                 arg8 = 1;
             int i_11_;
@@ -317,7 +317,7 @@ public class TypeFace extends Rasterizer {
     }
 
     private void method680(RSString arg0, int arg1, int arg2, int arg3, boolean arg4, int arg5) {
-        arg0 = arg0.method89(false);
+        arg0 = arg0.trim();
         int i = 0;
         for(int i_25_ = 0; i_25_ < arg0.length(); i_25_++) {
             if(arg0.method55(i_25_, false) == 32)

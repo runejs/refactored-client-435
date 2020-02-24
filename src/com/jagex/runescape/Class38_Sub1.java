@@ -1,7 +1,9 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -63,11 +65,11 @@ public class Class38_Sub1 extends Class38 {
                             if(Class13.mouseX < 4 + i_4_) {
                                 Class60.anInt1400++;
                                 if((Class19.anInt493 ^ 0xffffffff) <= -2) {
-                                    Floor.method558(0, Class22_Sub1.aClass1_1865, 0, -501, 0, 2028, (Class40_Sub5_Sub17_Sub6.method832(-97, new RSString[]{Class26.aClass1_620, class1})));
+                                    OverlayDefinition.method558(0, Class22_Sub1.aClass1_1865, 0, -501, 0, 2028, (Class40_Sub5_Sub17_Sub6.method832(-97, new RSString[]{Class26.aClass1_620, class1})));
                                     CollisionMap.anInt158++;
                                 }
-                                Floor.method558(0, Class38.aClass1_885, 0, -501, 0, 2051, (Class40_Sub5_Sub17_Sub6.method832(arg0 ^ 0x2613, new RSString[]{Class26.aClass1_620, class1})));
-                                Floor.method558(0, FloorDecoration.aClass1_591, 0, arg0 ^ ~0x27d3, 0, 2045, (Class40_Sub5_Sub17_Sub6.method832(arg0 ^ ~0x2660, new RSString[]{Class26.aClass1_620, class1})));
+                                OverlayDefinition.method558(0, Class38.aClass1_885, 0, -501, 0, 2051, (Class40_Sub5_Sub17_Sub6.method832(arg0 ^ 0x2613, new RSString[]{Class26.aClass1_620, class1})));
+                                OverlayDefinition.method558(0, FloorDecoration.aClass1_591, 0, arg0 ^ ~0x27d3, 0, 2045, (Class40_Sub5_Sub17_Sub6.method832(arg0 ^ ~0x2660, new RSString[]{Class26.aClass1_620, class1})));
                             }
                         }
                         if((i ^ 0xffffffff) <= -6)
@@ -350,7 +352,7 @@ public class Class38_Sub1 extends Class38 {
             }
             Class32.packetBuffer.putShortLE(i_24_ + Class26.anInt635);
             Class32.packetBuffer.putInvertedByte(Class40_Sub5_Sub17_Sub3.aBooleanArray3056[82] ? 1 : 0);
-            Class32.packetBuffer.putShortLE(Class40_Sub5_Sub2.anInt2307 + i_25_);
+            Class32.packetBuffer.putShortLE(SpotAnimDefinition.anInt2307 + i_25_);
             Class40_Sub5_Sub4.anInt2366 = Class24.anIntArray581[0];
             Class55.anInt1304 = Class10.anIntArray351[0];
             for(int i_26_ = 1; i_12_ > i_26_; i_26_++) {
@@ -379,9 +381,9 @@ public class Class38_Sub1 extends Class38 {
         if(Player.anInt3288 == 2) {
             if(arg0 >= -28)
                 method445(-128);
-            Class22_Sub1.method312(2 * ActorDefinition.anInt2404, (Class35.anInt1730 + (-Class26.anInt635 + Class4.anInt175 << -977811321)), ((Class68.anInt1637 + -Class40_Sub5_Sub2.anInt2307) << 1068913575) + Landscape.anInt1170, 4976905);
+            Class22_Sub1.method312(2 * ActorDefinition.anInt2404, (Class35.anInt1730 + (-Class26.anInt635 + Class4.anInt175 << -977811321)), ((Class68.anInt1637 + -SpotAnimDefinition.anInt2307) << 1068913575) + Landscape.anInt1170, 4976905);
             if(ISAAC.anInt522 > -1 && Node.anInt926 % 20 < 10)
-                Class40_Sub5_Sub9.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
+                UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
         }
     }
 

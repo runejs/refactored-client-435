@@ -2,7 +2,8 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -92,7 +93,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             for(int i_5_ = -4 + i_2_; (i_5_ <= 4 + i_2_); i_5_++) {
                 for(int i_6_ = -4 + i_1_; 4 + i_1_ >= i_6_; i_6_++) {
                     int i_7_ = Player.anInt3267;
-                    if((i_7_ ^ 0xffffffff) > -4 && (0x2 & (Floor.tile_flags[1][i_5_][i_6_]) ^ 0xffffffff) == -3)
+                    if((i_7_ ^ 0xffffffff) > -4 && (0x2 & (OverlayDefinition.tile_flags[1][i_5_][i_6_]) ^ 0xffffffff) == -3)
                         i_7_++;
                     int i_8_ = i_4_ + -(Class40_Sub6.tile_height[i_7_][i_5_][i_6_]);
                     if((i_8_ > i_3_))
@@ -243,7 +244,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             class40_sub5_sub14_sub4.drawImage(-128 + (382 + -(class40_sub5_sub14_sub4.image_width / 2)), 18);
             Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775 = Class27.method359(Class40_Sub5_Sub7.aClass1_2488, Class22_Sub2.string_blank, arg3, (byte) -64);
             Class59.aClass40_Sub5_Sub14_Sub2_1387 = Class27.method359(ISAAC.aClass1_506, Class22_Sub2.string_blank, arg3, (byte) -64);
-            Class22.aClass40_Sub5_Sub14_Sub2Array535 = Class40_Sub5_Sub2.method550(arg3, (byte) -114, Class8.aClass1_299, Class22_Sub2.string_blank);
+            Class22.aClass40_Sub5_Sub14_Sub2Array535 = SpotAnimDefinition.method550(arg3, (byte) -114, Class8.aClass1_299, Class22_Sub2.string_blank);
             Class39.aClass40_Sub5_Sub14_Sub4_918 = new ImageRGB(128, 265);
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = new ImageRGB(128, 265);
             for(int i = 0; i < 33920; i++)

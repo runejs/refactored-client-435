@@ -2,6 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -224,7 +225,7 @@ public class Class60 {
                 if(i_11_ == 1 && i_17_ + -75 <= i && i <= i_17_ + 75 && (i_12_ >= i_18_ + -20) && (i_12_ <= i_18_ + 20)) {
                     Class22_Sub2.username = Class22_Sub2.username.method62(57).method85(-4305);
                     Class33.method411(Node.aClass1_964, Node.aClass1_958, Class40_Sub5_Sub17_Sub1.aClass1_3009, (byte) 106);
-                    Floor.method559(20, 70);
+                    OverlayDefinition.method559(20, 70);
                 } else {
                     i_17_ = 260;
                     if(i_11_ == 1 && i >= -75 + i_17_ && (i_17_ + 75 >= i) && (i_12_ >= -20 + i_18_) && (i_12_ <= i_18_ + 20)) {

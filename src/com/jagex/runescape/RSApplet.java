@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -70,7 +70,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             providesignlink(null);
         for(int i = 0; i < arg7.length; i++) {
             Widget widget = arg7[i];
-            if(widget != null && (widget.type == 0 || widget.aBoolean2688) && widget != null && arg5 == widget.anInt2648 && (!widget.aBoolean2750 || PacketBuffer.aBoolean2236)) {
+            if(widget != null && (widget.type == 0 || widget.aBoolean2688) && widget != null && arg5 == widget.anInt2648 && (!widget.aBoolean2750 || PacketBuffer.hiddenButtonTest)) {
                 int i_1_ = arg4 + widget.anInt2656;
                 int i_2_ = arg0 + widget.anInt2696;
                 if(!widget.aBoolean2694)
@@ -92,7 +92,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     boolean bool;
                     bool = (Class13.mouseX >= i_6_) && (i_4_ <= Landscape.mouseY) && i_8_ > Class13.mouseX && (i_7_ > Landscape.mouseY);
                     boolean bool_9_ = false;
-                    if(Class40_Sub5_Sub2.anInt2302 == 1 && bool)
+                    if(SpotAnimDefinition.anInt2302 == 1 && bool)
                         bool_9_ = true;
                     boolean bool_10_ = false;
                     if((widget.anInt2738 ^ 0xffffffff) != 0 && bool_9_ && Class10.aWidget_353 == null) {

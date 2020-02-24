@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.TypeFace;
@@ -70,9 +71,9 @@ public class FloorDecoration {
                     for(int i_6_ = 0; i_6_ < 13; i_6_++) {
                         int i_7_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
                         if(i_7_ != 1)
-                            Floor.anIntArrayArrayArray2333[i_4_][i_5_][i_6_] = -1;
+                            OverlayDefinition.anIntArrayArrayArray2333[i_4_][i_5_][i_6_] = -1;
                         else
-                            Floor.anIntArrayArrayArray2333[i_4_][i_5_][i_6_] = Cache.outgoingbuffer.putBits(26, (byte) -65);
+                            OverlayDefinition.anIntArrayArrayArray2333[i_4_][i_5_][i_6_] = Cache.outgoingbuffer.putBits(26, (byte) -65);
                     }
                 }
             }
@@ -92,7 +93,7 @@ public class FloorDecoration {
             for(int i_11_ = 0; (i_11_ ^ 0xffffffff) > -5; i_11_++) {
                 for(int i_12_ = 0; i_12_ < 13; i_12_++) {
                     for(int i_13_ = 0; (i_13_ ^ 0xffffffff) > -14; i_13_++) {
-                        int i_14_ = (Floor.anIntArrayArrayArray2333[i_11_][i_12_][i_13_]);
+                        int i_14_ = (OverlayDefinition.anIntArrayArrayArray2333[i_11_][i_12_][i_13_]);
                         if((i_14_ ^ 0xffffffff) != 0) {
                             int i_15_ = i_14_ >> -1674306002 & 0x3ff;
                             int i_16_ = i_14_ >> 66731331 & 0x7ff;

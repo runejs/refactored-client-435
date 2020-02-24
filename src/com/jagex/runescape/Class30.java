@@ -2,7 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -315,7 +315,7 @@ public class Class30 {
             for(int i = 0; i < 7; i++) {
                 for(int i_15_ = 0; PacketBuffer.anInt2257 > i_15_; i_15_++) {
                     IdentityKit identityKit = Buffer.method501(i_15_);
-                    if(identityKit != null && !identityKit.widgetDisplayed && ((i + (!arg1 ? 0 : 7) ^ 0xffffffff) == (identityKit.partId ^ 0xffffffff))) {
+                    if(identityKit != null && !identityKit.nonSelectable && ((i + (!arg1 ? 0 : 7) ^ 0xffffffff) == (identityKit.bodyPartId ^ 0xffffffff))) {
                         arg0[Class40_Sub5_Sub15.anIntArray2777[i]] = i_15_ + 256;
                         break;
                     }
@@ -349,7 +349,7 @@ public class Class30 {
                         } else if((--i ^ 0xffffffff) > -1)
                             i = -1 + PacketBuffer.anInt2257;
                         identityKit = Buffer.method501(i);
-                    } while(identityKit == null || identityKit.widgetDisplayed || (identityKit.partId != arg0 + (!aBoolean683 ? 0 : 7)));
+                    } while(identityKit == null || identityKit.nonSelectable || (identityKit.bodyPartId != arg0 + (!aBoolean683 ? 0 : 7)));
                     anIntArray692[Class40_Sub5_Sub15.anIntArray2777[arg0]] = i + 256;
                     method378(117);
                 }

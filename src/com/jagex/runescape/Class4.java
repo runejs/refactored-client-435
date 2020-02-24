@@ -2,55 +2,36 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class4 {
-    public static boolean menuOpen;
+    public static boolean menuOpen = false;
     public static volatile long aLong174 = 0L;
-    public static int anInt175;
-    public static RSString aClass1_176;
+    public static int anInt175 = 0;
     public static RSString cmd_hiddenbuttontest = RSString.CreateString("::hiddenbuttontest");
     public static int[] anIntArray178;
-    public static RSApplet anApplet_Sub1_179;
-    public static RSString aClass1_180;
-    public static RSString aClass1_181;
-    public static int anInt182;
-    public static RSString aClass1_183;
+    public static RSApplet anApplet_Sub1_179 = null;
+    public static RSString aClass1_180 = RSString.CreateString("wishes to trade with you)3");
+    public static RSString aClass1_181 = RSString.CreateString("Einloggen");
+    public static int anInt182 = 0;
+    public static RSString aClass1_183 = RSString.CreateString("mapdots");
     public static int anInt184;
-    public static int anInt185;
+    public static int anInt185 = 0;
     public static int anInt186;
     public static int anInt187;
     public static int anInt188;
 
-    static {
-        menuOpen = false;
-        anInt175 = 0;
-        aClass1_181 = RSString.CreateString("Einloggen");
-        aClass1_183 = RSString.CreateString("mapdots");
-        aClass1_176 = RSString.CreateString("wishes to trade with you)3");
-        anInt182 = 0;
-        aClass1_180 = aClass1_176;
-        anApplet_Sub1_179 = null;
-        anInt185 = 0;
-    }
-
-    public static void method159(byte arg0) {
-
+    public static void method159() {
         cmd_hiddenbuttontest = null;
         aClass1_180 = null;
-        int i = 18 % ((arg0 - 8) / 59);
         aClass1_183 = null;
         anIntArray178 = null;
-        aClass1_176 = null;
         aClass1_181 = null;
-
     }
 
     public static int method160(int arg0, int arg1, int arg2, int arg3) {
-
-        anInt186++;
         int i = arg0 & -1 + arg2;
         int i_0_ = arg3 / arg2;
         int i_1_ = arg2 - 1 & arg3;
@@ -62,7 +43,6 @@ public class Class4 {
         int i_7_ = RSApplet.method32(i_3_, arg2, i_4_, true, i);
         int i_8_ = RSApplet.method32(i_5_, arg2, i_6_, true, i);
         return RSApplet.method32(i_7_, arg2, i_8_, true, i_1_);
-
     }
 
     public static void method161(int arg0) {

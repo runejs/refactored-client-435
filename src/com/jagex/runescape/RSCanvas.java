@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 
@@ -82,7 +83,7 @@ public class RSCanvas extends Canvas {
         Actor.aClass6_Sub1_3157.method191(1120);
         Renderable.aClass6_Sub1_2857.method191(1120);
         Class55.aClass6_Sub1_1286.method191(1120);
-        Class40_Sub5_Sub9.aClass6_Sub1_2571.method191(1120);
+        UnderlayDefinition.aClass6_Sub1_2571.method191(1120);
         ActorDefinition.aClass6_Sub1_2377.method191(arg0 ^ 0x460);
         Class32.aClass6_Sub1_773.method191(1120);
         aClass6_Sub1_48.method191(arg0 + 1120);

@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -67,9 +69,9 @@ public class ISAAC {
         for(int i = 0; (i ^ 0xffffffff) > -5; i++) {
             for(int i_0_ = 0; (i_0_ ^ 0xffffffff) > -105; i_0_++) {
                 for(int i_1_ = 0; i_1_ < 104; i_1_++) {
-                    if((0x1 & (Floor.tile_flags[i][i_0_][i_1_])) == 1) {
+                    if((0x1 & (OverlayDefinition.tile_flags[i][i_0_][i_1_])) == 1) {
                         int i_2_ = i;
-                        if((0x2 & (Floor.tile_flags[1][i_0_][i_1_]) ^ 0xffffffff) == -3)
+                        if((0x2 & (OverlayDefinition.tile_flags[1][i_0_][i_1_]) ^ 0xffffffff) == -3)
                             i_2_--;
                         if((i_2_ ^ 0xffffffff) <= -1)
                             arg2[i_2_].markBlocked((byte) -28, i_1_, i_0_);
@@ -116,25 +118,25 @@ public class ISAAC {
                 for(int i_17_ = 0; (i_17_ ^ 0xffffffff) > -105; i_17_++) {
                     int i_18_ = 5 + i_16_;
                     if((i_18_ ^ 0xffffffff) <= -1 && (i_18_ ^ 0xffffffff) > -105) {
-                        int i_19_ = 0xff & (Class42.aByteArrayArrayArray993[i][i_18_][i_17_]);
+                        int i_19_ = 0xff & (Class42.tile_underlayids[i][i_18_][i_17_]);
                         if((i_19_ ^ 0xffffffff) < -1) {
-                            Class40_Sub5_Sub9 class40_sub5_sub9 = Class40_Sub3.method531((byte) -66, i_19_ - 1);
-                            Class40_Sub5_Sub17_Sub6.anIntArray3250[i_17_] += class40_sub5_sub9.anInt2565;
-                            Class59.anIntArray1398[i_17_] += class40_sub5_sub9.anInt2574;
-                            SceneTile.anIntArray2048[i_17_] += class40_sub5_sub9.anInt2563;
-                            Class67.anIntArray1579[i_17_] += class40_sub5_sub9.anInt2568;
+                            UnderlayDefinition underlayDefinition = Class40_Sub3.method531((byte) -66, i_19_ - 1);
+                            Class40_Sub5_Sub17_Sub6.anIntArray3250[i_17_] += underlayDefinition.anInt2565;
+                            Class59.anIntArray1398[i_17_] += underlayDefinition.hue;
+                            SceneTile.anIntArray2048[i_17_] += underlayDefinition.saturation;
+                            Class67.anIntArray1579[i_17_] += underlayDefinition.hueMultiplier;
                             FloorDecoration.anIntArray612[i_17_]++;
                         }
                     }
                     int i_20_ = i_16_ - 5;
                     if((i_20_ ^ 0xffffffff) <= -1 && (i_20_ ^ 0xffffffff) > -105) {
-                        int i_21_ = 0xff & (Class42.aByteArrayArrayArray993[i][i_20_][i_17_]);
+                        int i_21_ = 0xff & (Class42.tile_underlayids[i][i_20_][i_17_]);
                         if((i_21_ ^ 0xffffffff) < -1) {
-                            Class40_Sub5_Sub9 class40_sub5_sub9 = Class40_Sub3.method531((byte) -95, -1 + i_21_);
-                            Class40_Sub5_Sub17_Sub6.anIntArray3250[i_17_] -= class40_sub5_sub9.anInt2565;
-                            Class59.anIntArray1398[i_17_] -= class40_sub5_sub9.anInt2574;
-                            SceneTile.anIntArray2048[i_17_] -= class40_sub5_sub9.anInt2563;
-                            Class67.anIntArray1579[i_17_] -= class40_sub5_sub9.anInt2568;
+                            UnderlayDefinition underlayDefinition = Class40_Sub3.method531((byte) -95, -1 + i_21_);
+                            Class40_Sub5_Sub17_Sub6.anIntArray3250[i_17_] -= underlayDefinition.anInt2565;
+                            Class59.anIntArray1398[i_17_] -= underlayDefinition.hue;
+                            SceneTile.anIntArray2048[i_17_] -= underlayDefinition.saturation;
+                            Class67.anIntArray1579[i_17_] -= underlayDefinition.hueMultiplier;
                             FloorDecoration.anIntArray612[i_17_]--;
                         }
                     }
@@ -162,11 +164,11 @@ public class ISAAC {
                             i_26_ -= Class67.anIntArray1579[i_29_];
                             i_22_ -= (Class40_Sub5_Sub17_Sub6.anIntArray3250[i_29_]);
                         }
-                        if(i_27_ >= 1 && i_27_ < 103 && (!VertexNormal.lowMemory || (0x2 & (Floor.tile_flags[0][i_16_][i_27_]) ^ 0xffffffff) != -1 || ((0x10 & (Floor.tile_flags[i][i_16_][i_27_]) ^ 0xffffffff) == -1 && ((Class59.getVisibilityPlaneFor(i, i_27_, 0, i_16_) ^ 0xffffffff) == (Class40_Sub6.onBuildTimePlane ^ 0xffffffff))))) {
+                        if(i_27_ >= 1 && i_27_ < 103 && (!VertexNormal.lowMemory || (0x2 & (OverlayDefinition.tile_flags[0][i_16_][i_27_]) ^ 0xffffffff) != -1 || ((0x10 & (OverlayDefinition.tile_flags[i][i_16_][i_27_]) ^ 0xffffffff) == -1 && ((Class59.getVisibilityPlaneFor(i, i_27_, 0, i_16_) ^ 0xffffffff) == (Class40_Sub6.onBuildTimePlane ^ 0xffffffff))))) {
                             if(Class64.setZ > i)
                                 Class64.setZ = i;
-                            int i_30_ = ((Class42.aByteArrayArrayArray993[i][i_16_][i_27_]) & 0xff);
-                            int i_31_ = ((GameFrame.aByteArrayArrayArray1473[i][i_16_][i_27_]) & 0xff);
+                            int i_30_ = ((Class42.tile_underlayids[i][i_16_][i_27_]) & 0xff);
+                            int i_31_ = ((GameFrame.tile_overlayids[i][i_16_][i_27_]) & 0xff);
                             if(i_30_ > 0 || (i_31_ ^ 0xffffffff) < -1) {
                                 int i_32_ = (Class40_Sub6.tile_height[i][i_16_][i_27_]);
                                 int i_33_ = (Class40_Sub6.tile_height[i][i_16_ + 1][i_27_]);
@@ -194,20 +196,20 @@ public class ISAAC {
                                 }
                                 if((i ^ 0xffffffff) < -1) {
                                     boolean bool = true;
-                                    if(i_30_ == 0 && ((Floor.aByteArrayArrayArray2335[i][i_16_][i_27_]) ^ 0xffffffff) != -1)
+                                    if(i_30_ == 0 && ((OverlayDefinition.tile_underlay_path[i][i_16_][i_27_]) ^ 0xffffffff) != -1)
                                         bool = false;
                                     if(i_31_ > 0 && !(Npc.loadFloor(-1 + i_31_, arg1 + -27320).aBoolean2338))
                                         bool = false;
                                     if(bool && ((i_33_ ^ 0xffffffff) == (i_32_ ^ 0xffffffff)) && i_34_ == i_32_ && ((i_35_ ^ 0xffffffff) == (i_32_ ^ 0xffffffff)))
-                                        CacheIndex.anIntArrayArrayArray262[i][i_16_][i_27_] = (Class40_Sub5_Sub9.method619((CacheIndex.anIntArrayArrayArray262[i][i_16_][i_27_]), 2340));
+                                        CacheIndex.anIntArrayArrayArray262[i][i_16_][i_27_] = (UnderlayDefinition.method619((CacheIndex.anIntArrayArrayArray262[i][i_16_][i_27_]), 2340));
                                 }
                                 int i_45_ = 0;
                                 if(i_41_ != -1)
                                     i_45_ = (R3D.anIntArray2932[(Class40_Sub5_Sub17_Sub6.method831(i_41_, 96, (byte) 73))]);
                                 if(i_31_ != 0) {
-                                    int i_46_ = 1 + (Floor.aByteArrayArrayArray2335[i][i_16_][i_27_]);
-                                    byte i_47_ = (Class35.aByteArrayArrayArray1745[i][i_16_][i_27_]);
-                                    Floor class40_sub5_sub3 = Npc.loadFloor(-1 + i_31_, 4);
+                                    int i_46_ = 1 + (OverlayDefinition.tile_underlay_path[i][i_16_][i_27_]);
+                                    byte i_47_ = (Class35.tile_overlay_rotation[i][i_16_][i_27_]);
+                                    OverlayDefinition class40_sub5_sub3 = Npc.loadFloor(-1 + i_31_, 4);
                                     int i_48_ = class40_sub5_sub3.anInt2322;
                                     int i_49_;
                                     int i_50_;
@@ -215,14 +217,14 @@ public class ISAAC {
                                         i_49_ = -1;
                                         i_50_ = R3D.anInterface3_2939.method14(true, i_48_);
                                     } else if(class40_sub5_sub3.anInt2345 != 16711935) {
-                                        i_49_ = (Class13.method244((class40_sub5_sub3.anInt2337), (class40_sub5_sub3.anInt2320), -120, (class40_sub5_sub3.anInt2332)));
-                                        int i_51_ = (Class40_Sub5_Sub15.anInt2791 + (class40_sub5_sub3.anInt2332)) & 0xff;
-                                        int i_52_ = ((Actor.anInt3151) + (class40_sub5_sub3.anInt2320));
+                                        i_49_ = (Class13.method244((class40_sub5_sub3.lightness), (class40_sub5_sub3.saturation), -120, (class40_sub5_sub3.hue)));
+                                        int i_51_ = (Class40_Sub5_Sub15.anInt2791 + (class40_sub5_sub3.hue)) & 0xff;
+                                        int i_52_ = ((Actor.anInt3151) + (class40_sub5_sub3.saturation));
                                         if((i_52_ ^ 0xffffffff) > -1)
                                             i_52_ = 0;
                                         else if((i_52_ ^ 0xffffffff) < -256)
                                             i_52_ = 255;
-                                        i_50_ = (Class13.method244((class40_sub5_sub3.anInt2337), i_52_, arg1 ^ ~0x6acb, i_51_));
+                                        i_50_ = (Class13.method244((class40_sub5_sub3.lightness), i_52_, arg1 ^ ~0x6acb, i_51_));
                                     } else {
                                         i_49_ = -2;
                                         i_48_ = -1;
@@ -254,16 +256,16 @@ public class ISAAC {
                 for(int i_57_ = 1; i_57_ < 103; i_57_++)
                     arg0.method130(i, i_57_, i_56_, Class59.getVisibilityPlaneFor(i, i_56_, 0, i_57_));
             }
-            Class42.aByteArrayArrayArray993[i] = null;
-            GameFrame.aByteArrayArrayArray1473[i] = null;
-            Floor.aByteArrayArrayArray2335[i] = null;
-            Class35.aByteArrayArrayArray1745[i] = null;
+            Class42.tile_underlayids[i] = null;
+            GameFrame.tile_overlayids[i] = null;
+            OverlayDefinition.tile_underlay_path[i] = null;
+            Class35.tile_overlay_rotation[i] = null;
             Class19.aByteArrayArrayArray492[i] = null;
         }
         arg0.method118(-50, -10, -50);
         for(int i = 0; (i ^ 0xffffffff) > -105; i++) {
             for(int i_58_ = 0; (i_58_ ^ 0xffffffff) > -105; i_58_++) {
-                if(((Floor.tile_flags[1][i][i_58_]) & 0x2 ^ 0xffffffff) == -3)
+                if(((OverlayDefinition.tile_flags[1][i][i_58_]) & 0x2 ^ 0xffffffff) == -3)
                     arg0.method92(i, i_58_);
             }
         }

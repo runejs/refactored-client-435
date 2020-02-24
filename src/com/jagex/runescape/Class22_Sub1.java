@@ -17,7 +17,7 @@ public class Class22_Sub1 extends Class22 {
     public static long aLong1841;
     public static int anInt1842;
     public static int anInt1843;
-    public static RSString[] aClass1Array1844 = new RSString[100];
+    public static RSString[] itemSearchResultNames = new RSString[100];
     public static RSString aClass1_1845;
     public static int[] anIntArray1846;
     public static int[] anIntArray1847;
@@ -94,7 +94,7 @@ public class Class22_Sub1 extends Class22 {
         aClass1_1857 = null;
         aClass1_1865 = null;
         aClass1_1845 = null;
-        aClass1Array1844 = null;
+        itemSearchResultNames = null;
         aClass1_1849 = null;
         aCacheIndex_1855 = null;
         if(arg0 <= 56)

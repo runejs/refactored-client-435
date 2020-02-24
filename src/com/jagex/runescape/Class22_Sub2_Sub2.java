@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.util.Signlink;
 
 public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
@@ -40,7 +41,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
         }
         anIntArray2227[anInt2229++] = -anInt2226 + arg3;
         anInt2226 = arg3;
-        anIntArray2227[anInt2229++] = (Class40_Sub5_Sub9.method619(Class40_Sub5_Sub9.method619(arg4, arg0 << -777037144), arg2 << -1978505296));
+        anIntArray2227[anInt2229++] = (UnderlayDefinition.method619(UnderlayDefinition.method619(arg4, arg0 << -777037144), arg2 << -1978505296));
 
     }
 

@@ -2,10 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
-import com.jagex.runescape.media.renderable.actor.Player;
-
-import java.util.Date;
+import com.jagex.runescape.cache.def.OverlayDefinition;
 
 public class Class43 {
     public static Cache aClass9_1014 = new Cache(64);
@@ -94,14 +91,14 @@ public class Class43 {
             ActorDefinition.anInt2394 = 1;
             if((ActorDefinition.anInt2433 ^ 0xffffffff) != 0) {
                 Class40_Sub5_Sub17_Sub3.anInt3065 = -1;
-                Floor.anInt2328 = -1;
+                OverlayDefinition.anInt2328 = -1;
                 Class13.method243((byte) 89, 0, 765, 503, ActorDefinition.anInt2433, 0, Class13.mouseX, Landscape.mouseY, 0);
-                ItemDefinition.anInt2850 = Floor.anInt2328;
+                ItemDefinition.anInt2850 = OverlayDefinition.anInt2328;
                 HashTable.anInt573 = Class40_Sub5_Sub17_Sub3.anInt3065;
             } else {
                 Class38_Sub1.method445(9767);
                 Class40_Sub5_Sub17_Sub3.anInt3065 = -1;
-                Floor.anInt2328 = -1;
+                OverlayDefinition.anInt2328 = -1;
                 boolean bool = arg0;
                 if(Class13.mouseX > 4 && Landscape.mouseY > 4 && Class13.mouseX < 516 && (Landscape.mouseY ^ 0xffffffff) > -339) {
                     if((Class66.anInt1560 ^ 0xffffffff) == 0)
@@ -110,20 +107,20 @@ public class Class43 {
                         Class13.method243((byte) 89, 4, 516, 338, Class66.anInt1560, 4, Class13.mouseX, Landscape.mouseY, 0);
                 }
                 HashTable.anInt573 = Class40_Sub5_Sub17_Sub3.anInt3065;
-                ItemDefinition.anInt2850 = Floor.anInt2328;
+                ItemDefinition.anInt2850 = OverlayDefinition.anInt2328;
                 Class40_Sub5_Sub17_Sub3.anInt3065 = -1;
-                Floor.anInt2328 = -1;
+                OverlayDefinition.anInt2328 = -1;
                 if((Class13.mouseX ^ 0xffffffff) < -554 && Landscape.mouseY > 205 && Class13.mouseX < 743 && (Landscape.mouseY ^ 0xffffffff) > -467) {
                     if((Class29.anInt673 ^ 0xffffffff) != 0)
                         Class13.method243((byte) 89, 205, 743, 466, Class29.anInt673, 553, Class13.mouseX, Landscape.mouseY, 1);
                     else if((Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]) != -1)
                         Class13.method243((byte) 89, 205, 743, 466, (Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]), 553, Class13.mouseX, Landscape.mouseY, 1);
                 }
-                if(Floor.anInt2328 != CollisionMap.anInt163) {
+                if(OverlayDefinition.anInt2328 != CollisionMap.anInt163) {
                     ISAAC.redrawTabArea = true;
-                    CollisionMap.anInt163 = Floor.anInt2328;
+                    CollisionMap.anInt163 = OverlayDefinition.anInt2328;
                 }
-                Floor.anInt2328 = -1;
+                OverlayDefinition.anInt2328 = -1;
                 if(Class40_Sub5_Sub17_Sub3.anInt3065 != FloorDecoration.anInt614) {
                     FloorDecoration.anInt614 = Class40_Sub5_Sub17_Sub3.anInt3065;
                     ISAAC.redrawTabArea = true;
@@ -139,9 +136,9 @@ public class Class43 {
                     } else
                         Class13.method243((byte) 89, 357, 496, 453, openChatboxWidgetId, 17, Class13.mouseX, Landscape.mouseY, 2);
                 }
-                if(((openChatboxWidgetId ^ 0xffffffff) != 0 || (Class48.anInt1138 ^ 0xffffffff) != 0) && (Class55.anInt1296 != Floor.anInt2328)) {
+                if(((openChatboxWidgetId ^ 0xffffffff) != 0 || (Class48.anInt1138 ^ 0xffffffff) != 0) && (Class55.anInt1296 != OverlayDefinition.anInt2328)) {
                     Class52.redrawChatbox = true;
-                    Class55.anInt1296 = Floor.anInt2328;
+                    Class55.anInt1296 = OverlayDefinition.anInt2328;
                 }
                 if(((openChatboxWidgetId ^ 0xffffffff) != 0 || Class48.anInt1138 != -1) && ((Class67.anInt1586 ^ 0xffffffff) != (Class40_Sub5_Sub17_Sub3.anInt3065 ^ 0xffffffff))) {
                     Class52.redrawChatbox = true;

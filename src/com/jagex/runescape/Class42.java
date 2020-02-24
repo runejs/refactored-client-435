@@ -2,7 +2,8 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -14,7 +15,7 @@ public class Class42 {
     public static RSString aClass1_990;
     public static int anInt991;
     public static int anInt992;
-    public static byte[][][] aByteArrayArrayArray993;
+    public static byte[][][] tile_underlayids;
     public static int anInt994;
     public static RSString aClass1_995;
     public static RSString aClass1_997;
@@ -112,7 +113,7 @@ public class Class42 {
             aClass1_1012 = null;
         Class8.aCacheIndex_284 = arg2;
         Class26.aCacheIndex_632 = arg0;
-        Class27.anInt661 = Class26.aCacheIndex_632.method190(10, (byte) 109);
+        ItemDefinition.count = Class26.aCacheIndex_632.method190(10, (byte) 109);
 
     }
 
@@ -154,7 +155,7 @@ public class Class42 {
         aClass1_1012 = null;
         aClass9_998 = null;
         anIntArray1013 = null;
-        aByteArrayArrayArray993 = null;
+        tile_underlayids = null;
         aClass1_995 = null;
         aClass1_990 = null;
         aClass1_1005 = null;
@@ -216,11 +217,11 @@ public class Class42 {
             class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300 = ActorDefinition.getDefinition((byte) -121, Cache.outgoingbuffer.putBits(13, (byte) -65));
             class40_sub5_sub17_sub4_sub2.anInt3132 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate90LeftAnimation);
             class40_sub5_sub17_sub4_sub2.anInt3126 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.stanceAnimation);
-            class40_sub5_sub17_sub4_sub2.anInt3083 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2389);
+            class40_sub5_sub17_sub4_sub2.anInt3083 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotateRightAnimation);
             class40_sub5_sub17_sub4_sub2.anInt3131 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.walkAnimation);
             class40_sub5_sub17_sub4_sub2.anInt3096 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.tileSpacesOccupied);
             class40_sub5_sub17_sub4_sub2.anInt3079 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate180Animation);
-            class40_sub5_sub17_sub4_sub2.anInt3145 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2421);
+            class40_sub5_sub17_sub4_sub2.anInt3145 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotateLeftAnimation);
             class40_sub5_sub17_sub4_sub2.anInt3113 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.degreesToTurn);
             if(class40_sub5_sub17_sub4_sub2.anInt3113 == 0)
                 class40_sub5_sub17_sub4_sub2.anInt3118 = 0;

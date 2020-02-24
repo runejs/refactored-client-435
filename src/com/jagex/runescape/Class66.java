@@ -2,6 +2,8 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -9,8 +11,8 @@ import com.jagex.runescape.media.renderable.actor.Player;
 public class Class66 {
     public static RSString blank_string = RSString.CreateString("");
     public static Class68 aClass68_1541;
-    public static RSString aClass1_1542 = blank_string;
-    public static RSString aClass1_1543 = blank_string;
+    public static RSString lastItemSearchInput = blank_string;
+    public static RSString inputInputMessage = blank_string;
     public static RSString aClass1_1544 = RSString.CreateString("Side panel redrawn");
     public static int anInt1545 = 0;
     public static RSString aClass1_1546 = RSString.CreateString("Icons redrawn");
@@ -55,7 +57,7 @@ public class Class66 {
                             break;
                         int i_37_ = 1 << -i_35_ + 32;
                         if((i_36_ & i_37_) == 0)
-                            is[i_35_] = Class40_Sub5_Sub9.method619(i_36_, i_37_);
+                            is[i_35_] = UnderlayDefinition.method619(i_36_, i_37_);
                         else {
                             is[i_35_] = is[-1 + i_35_];
                             break;
@@ -108,8 +110,8 @@ public class Class66 {
         aClass1_1555 = null;
         aClass1_1563 = null;
         aClass1_1544 = null;
-        aClass1_1542 = null;
-        aClass1_1543 = null;
+        lastItemSearchInput = null;
+        inputInputMessage = null;
         chatTypes = null;
         aClass1_1546 = null;
         aClass1_1550 = null;
@@ -136,13 +138,13 @@ public class Class66 {
             if(arg4 != null && arg4.isClickable) {
                 RSString class1 = arg4.name;
                 if(arg4.combatLevel != arg0)
-                    class1 = (Class40_Sub5_Sub17_Sub6.method832(-47, (new RSString[]{class1, (SceneTile.method536((Player.localPlayer.anInt3260), arg4.combatLevel, arg0 + -99)), HashTable.aClass1_569, Class40_Sub5_Sub2.str_prefix_level, HashTable.method334(arg4.combatLevel, -1), Class51.aClass1_1199})));
+                    class1 = (Class40_Sub5_Sub17_Sub6.method832(-47, (new RSString[]{class1, (SceneTile.method536((Player.localPlayer.anInt3260), arg4.combatLevel, arg0 + -99)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(arg4.combatLevel, -1), Class51.aClass1_1199})));
                 if((Class8.anInt301 ^ 0xffffffff) == -2) {
                     Node.anInt927++;
-                    Floor.method558(arg3, Main.aClass1_1763, arg2, -501, arg1, 49, (Class40_Sub5_Sub17_Sub6.method832(-124, (new RSString[]{Npc.aClass1_3295, Class40_Sub5_Sub2.aClass1_2306, class1}))));
+                    OverlayDefinition.method558(arg3, Main.aClass1_1763, arg2, -501, arg1, 49, (Class40_Sub5_Sub17_Sub6.method832(-124, (new RSString[]{Npc.aClass1_3295, SpotAnimDefinition.aClass1_2306, class1}))));
                 } else if(Main.anInt1773 == 1) {
                     if((0x2 & ItemDefinition.anInt2815 ^ 0xffffffff) == -3) {
-                        Floor.method558(arg3, Class38_Sub1.aClass1_1918, arg2, arg0 + -501, arg1, 21, (Class40_Sub5_Sub17_Sub6.method832(arg0 + 73, (new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub2.aClass1_2306, class1}))));
+                        OverlayDefinition.method558(arg3, Class38_Sub1.aClass1_1918, arg2, arg0 + -501, arg1, 21, (Class40_Sub5_Sub17_Sub6.method832(arg0 + 73, (new RSString[]{FloorDecoration.aClass1_611, SpotAnimDefinition.aClass1_2306, class1}))));
                         Class58.anInt1356++;
                     }
                 } else {
@@ -164,7 +166,7 @@ public class Class66 {
                                     i_3_ = 34;
                                 if(i == 4)
                                     i_3_ = 20;
-                                Floor.method558(arg3, class1s[i], arg2, arg0 + -501, arg1, i_3_, (Class40_Sub5_Sub17_Sub6.method832(arg0 + 93, new RSString[]{Class54.aClass1_1283, class1})));
+                                OverlayDefinition.method558(arg3, class1s[i], arg2, arg0 + -501, arg1, i_3_, (Class40_Sub5_Sub17_Sub6.method832(arg0 + 93, new RSString[]{Class54.aClass1_1283, class1})));
                             }
                         }
                     }
@@ -185,11 +187,11 @@ public class Class66 {
                                     i_5_ = i_4_ + 34;
                                 if((i ^ 0xffffffff) == -5)
                                     i_5_ = 20 + i_4_;
-                                Floor.method558(arg3, class1s[i], arg2, arg0 ^ ~0x1f4, arg1, i_5_, (Class40_Sub5_Sub17_Sub6.method832(-64, new RSString[]{Class54.aClass1_1283, class1})));
+                                OverlayDefinition.method558(arg3, class1s[i], arg2, arg0 ^ ~0x1f4, arg1, i_5_, (Class40_Sub5_Sub17_Sub6.method832(-64, new RSString[]{Class54.aClass1_1283, class1})));
                             }
                         }
                     }
-                    Floor.method558(arg3, Class40_Sub5_Sub15.aClass1_2774, arg2, -501, arg1, 1001, (Class40_Sub5_Sub17_Sub6.method832(-116, new RSString[]{Class54.aClass1_1283, class1})));
+                    OverlayDefinition.method558(arg3, Class40_Sub5_Sub15.aClass1_2774, arg2, -501, arg1, 1001, (Class40_Sub5_Sub17_Sub6.method832(-116, new RSString[]{Class54.aClass1_1283, class1})));
                 }
             }
         }
@@ -291,7 +293,7 @@ public class Class66 {
                     i_16_ = Class40_Sub5_Sub6.method585(i_28_, 1369);
                 }
                 if((i_18_ ^ 0xffffffff) == -19)
-                    i_16_ = ((Player.localPlayer.anInt3098) >> -949277977) + Class40_Sub5_Sub2.anInt2307;
+                    i_16_ = ((Player.localPlayer.anInt3098) >> -949277977) + SpotAnimDefinition.anInt2307;
                 if(i_18_ == 19)
                     i_16_ = ((Player.localPlayer.anInt3089) >> 745230119) + Class26.anInt635;
                 if((i_18_ ^ 0xffffffff) == -21)
@@ -416,7 +418,7 @@ public class Class66 {
             i_0_++;
         }
         if(arg5 != -1)
-            aClass1_1542 = null;
+            lastItemSearchInput = null;
         return -arg4 + (i_0_ + 1);
     }
 
@@ -436,7 +438,7 @@ public class Class66 {
             i &= -i_11_ >> -1953839681;
             int i_12_ = i_10_ + (i_9_ + (i_11_ - 1) >> -559081565);
             i_11_ += 24;
-            arg5[i_10_] = (byte) (i = Class40_Sub5_Sub9.method619(i, i_8_ >>> i_11_));
+            arg5[i_10_] = (byte) (i = UnderlayDefinition.method619(i, i_8_ >>> i_11_));
             if(i_10_ < i_12_) {
                 i_10_++;
                 i_11_ -= 8;

@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
@@ -167,7 +168,7 @@ public class Class52 {
                 }
                 if(arg1 >= 0) {
                     int i_5_ = arg7;
-                    if(i_5_ < 3 && ((Floor.tile_flags[1][arg2][arg0]) & 0x2) == 2)
+                    if(i_5_ < 3 && ((OverlayDefinition.tile_flags[1][arg2][arg0]) & 0x2) == 2)
                         i_5_++;
                     Class40_Sub5_Sub1.method543(Landscape.aCollisionMapArray1167[arg7], arg1, i_5_, arg7, arg3, (Npc.aScene_3301), -22078, arg4, arg0, arg2);
                 }

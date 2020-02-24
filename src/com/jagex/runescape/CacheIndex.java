@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -58,6 +59,7 @@ public abstract class CacheIndex {
     public Class42[] aClass42Array217;
     public boolean aBoolean220;
     public int anInt221;
+    public int anInt1807;
     public int[] anIntArray224;
     public int[] anIntArray227;
     public boolean aBoolean233;
@@ -125,25 +127,25 @@ public abstract class CacheIndex {
         anInt247++;
         Buffer class40_sub1 = new Buffer(arg0);
         class40_sub1.currentPosition = -2 + arg0.length;
-        Class40_Sub5_Sub9.anInt2581 = class40_sub1.getUnsignedShortBE();
-        Actor.anIntArray3111 = new int[Class40_Sub5_Sub9.anInt2581];
-        Class58.aByteArrayArray1370 = new byte[Class40_Sub5_Sub9.anInt2581][];
-        Class17.anIntArray456 = new int[Class40_Sub5_Sub9.anInt2581];
-        Npc.anIntArray3312 = new int[Class40_Sub5_Sub9.anInt2581];
-        Class57.anIntArray1347 = new int[Class40_Sub5_Sub9.anInt2581];
-        class40_sub1.currentPosition = arg0.length + -7 + -(Class40_Sub5_Sub9.anInt2581 * 8);
+        UnderlayDefinition.anInt2581 = class40_sub1.getUnsignedShortBE();
+        Actor.anIntArray3111 = new int[UnderlayDefinition.anInt2581];
+        Class58.aByteArrayArray1370 = new byte[UnderlayDefinition.anInt2581][];
+        Class17.anIntArray456 = new int[UnderlayDefinition.anInt2581];
+        Npc.anIntArray3312 = new int[UnderlayDefinition.anInt2581];
+        Class57.anIntArray1347 = new int[UnderlayDefinition.anInt2581];
+        class40_sub1.currentPosition = arg0.length + -7 + -(UnderlayDefinition.anInt2581 * 8);
         ItemDefinition.anInt2846 = class40_sub1.getUnsignedShortBE();
         RSApplet.anInt31 = class40_sub1.getUnsignedShortBE();
         int i = 1 + (class40_sub1.getUnsignedByte() & 0xff);
-        for(int i_34_ = 0; ((i_34_ < Class40_Sub5_Sub9.anInt2581)); i_34_++)
+        for(int i_34_ = 0; ((i_34_ < UnderlayDefinition.anInt2581)); i_34_++)
             Class57.anIntArray1347[i_34_] = class40_sub1.getUnsignedShortBE();
-        for(int i_35_ = arg1; i_35_ < Class40_Sub5_Sub9.anInt2581; i_35_++)
+        for(int i_35_ = arg1; i_35_ < UnderlayDefinition.anInt2581; i_35_++)
             Actor.anIntArray3111[i_35_] = class40_sub1.getUnsignedShortBE();
-        for(int i_36_ = 0; i_36_ < Class40_Sub5_Sub9.anInt2581; i_36_++)
+        for(int i_36_ = 0; i_36_ < UnderlayDefinition.anInt2581; i_36_++)
             Class17.anIntArray456[i_36_] = class40_sub1.getUnsignedShortBE();
-        for(int i_37_ = 0; Class40_Sub5_Sub9.anInt2581 > i_37_; i_37_++)
+        for(int i_37_ = 0; UnderlayDefinition.anInt2581 > i_37_; i_37_++)
             Npc.anIntArray3312[i_37_] = class40_sub1.getUnsignedShortBE();
-        class40_sub1.currentPosition = arg0.length - (7 + (Class40_Sub5_Sub9.anInt2581 * 8 + (-3 + i * 3)));
+        class40_sub1.currentPosition = arg0.length - (7 + (UnderlayDefinition.anInt2581 * 8 + (-3 + i * 3)));
         Buffer.anIntArray1972 = new int[i];
         for(int i_38_ = 1; (i > i_38_); i_38_++) {
             Buffer.anIntArray1972[i_38_] = class40_sub1.getMediumBE();
@@ -151,7 +153,7 @@ public abstract class CacheIndex {
                 Buffer.anIntArray1972[i_38_] = 1;
         }
         class40_sub1.currentPosition = 0;
-        for(int i_39_ = 0; Class40_Sub5_Sub9.anInt2581 > i_39_; i_39_++) {
+        for(int i_39_ = 0; UnderlayDefinition.anInt2581 > i_39_; i_39_++) {
             int i_40_ = Npc.anIntArray3312[i_39_];
             int i_41_ = Class17.anIntArray456[i_39_];
             int i_42_ = i_40_ * i_41_;
@@ -189,9 +191,9 @@ public abstract class CacheIndex {
     public byte[] method170(RSString arg0, RSString arg1, int arg2) {
         if(arg2 != 1)
             method186(-26, 53);
-        arg1 = arg1.method79();
+        arg1 = arg1.toLowerCase();
         anInt231++;
-        arg0 = arg0.method79();
+        arg0 = arg0.toLowerCase();
         int i = aClass42_254.method882(arg1.method76(), arg2 + -126);
         int i_0_ = aClass42Array217[i].method882(arg0.method76(), -112);
 
@@ -208,7 +210,8 @@ public abstract class CacheIndex {
     }
 
     public byte[] getFile(int arg0, int arg2) {
-        System.out.printf("Request cache index: %d, file: %d\n", arg0, arg2);
+        if(this instanceof CacheIndex_Sub1)
+            System.out.printf("Request cache arch: %d index: %d, file: %d\n", this.anInt1807, arg0, arg2);
         return method176(arg2, arg0, null, 20582);
     }
 
@@ -325,7 +328,7 @@ public abstract class CacheIndex {
 
     public int method179(int arg0, int arg1, RSString arg2) {
         int i = 107 % ((-47 - arg0) / 56);
-        arg2 = arg2.method79();
+        arg2 = arg2.toLowerCase();
         anInt214++;
         return aClass42Array217[arg1].method882(arg2.method76(), -70);
     }
@@ -416,7 +419,7 @@ public abstract class CacheIndex {
         if(arg0 != 0)
             method183(58, null);
         anInt237++;
-        arg1 = arg1.method79();
+        arg1 = arg1.toLowerCase();
         return aClass42_254.method882(arg1.method76(), arg0 + -80);
     }
 
@@ -498,8 +501,8 @@ public abstract class CacheIndex {
         anInt251++;
         if(arg2 != -1234)
             anIntArray261 = null;
-        arg0 = arg0.method79();
-        arg1 = arg1.method79();
+        arg0 = arg0.toLowerCase();
+        arg1 = arg1.toLowerCase();
         int i = aClass42_254.method882(arg0.method76(), -66);
         int i_49_ = aClass42Array217[i].method882(arg1.method76(), arg2 ^ 0x483);
         System.out.println("Loaded: " + i_49_);
@@ -507,7 +510,7 @@ public abstract class CacheIndex {
     }
 
     public void method195(int arg0, RSString arg1) {
-        arg1 = arg1.method79();
+        arg1 = arg1.toLowerCase();
         int i = aClass42_254.method882(arg1.method76(), -69);
         anInt223++;
         if(arg0 == 0 && (i ^ 0xffffffff) <= -1)

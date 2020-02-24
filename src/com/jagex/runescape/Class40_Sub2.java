@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -52,7 +53,7 @@ public class Class40_Sub2 extends Node {
         if((arg0 ^ 0xffffffff) > -1 || (i_3_ < arg0))
             arg0 = 0;
         i_3_ <<= i;
-        Class58.varbitmasks[i_0_] = (Class40_Sub5_Sub9.method619(Class66.method1021(Class58.varbitmasks[i_0_], i_3_ ^ 0xffffffff), Class66.method1021(i_3_, arg0 << i)));
+        Class58.varbitmasks[i_0_] = (UnderlayDefinition.method619(Class66.method1021(Class58.varbitmasks[i_0_], i_3_ ^ 0xffffffff), Class66.method1021(i_3_, arg0 << i)));
 
     }
 
@@ -196,7 +197,7 @@ public class Class40_Sub2 extends Node {
             anInt2000 = 128 * gameObjectDefinition.anInt2502;
             anInt2012 = gameObjectDefinition.anInt2499;
             anInt2002 = gameObjectDefinition.anInt2542;
-            anInt1997 = gameObjectDefinition.anInt2513;
+            anInt1997 = gameObjectDefinition.ambientSoundId;
             anIntArray2005 = gameObjectDefinition.anIntArray2523;
         }
         anInt2004++;

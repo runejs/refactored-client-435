@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.io.Buffer;
 
 public class Class40_Sub7 extends Node {
@@ -72,7 +72,7 @@ public class Class40_Sub7 extends Node {
                     int i_9_ = i_5_ + arg3;
                     if((i_8_ ^ 0xffffffff) < -1 && i_9_ > 0 && i_8_ < 103 && (i_9_ ^ 0xffffffff) > -104) {
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
-                        if((i_6_ ^ 0xffffffff) != -23 || !VertexNormal.lowMemory || ((gameObjectDefinition.hasActions ^ 0xffffffff) != -1) || gameObjectDefinition.unknown) {
+                        if((i_6_ ^ 0xffffffff) != -23 || !VertexNormal.lowMemory || ((gameObjectDefinition.hasActions ^ 0xffffffff) != -1) || gameObjectDefinition.obstructsGround) {
                             bool_2_ = true;
                             if(!gameObjectDefinition.method612((byte) 8)) {
                                 bool = false;

@@ -129,7 +129,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
         if(arg1.anInt3091 != -1 && Node.anInt926 >= arg1.anInt3093) {
             if((arg1.anInt3140 ^ 0xffffffff) > -1)
                 arg1.anInt3140 = 0;
-            int i = Class37.method431(arg1.anInt3091, 13).anInt2287;
+            int i = SpotAnimDefinition.forId(arg1.anInt3091, 13).animationId;
             if(i == -1)
                 arg1.anInt3091 = -1;
             else {

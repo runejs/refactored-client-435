@@ -3,7 +3,8 @@ package com.jagex.runescape.media.renderable;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -159,7 +160,7 @@ public class GameObject extends Renderable {
                 if(object_x > 0 && object_z > 0 && object_x < 103 && object_z < 103) {
                     CollisionMap collisionMap = null;
                     int logic_y = tile_y;
-                    if((Floor.tile_flags[1][object_x][object_z] & 2) == 2)
+                    if((OverlayDefinition.tile_flags[1][object_x][object_z] & 2) == 2)
                         logic_y--;
                     if(logic_y >= 0)
                         collisionMap = collisionMaps[logic_y];
@@ -220,50 +221,44 @@ public class GameObject extends Renderable {
 
     }
 
-    public static void method773(byte arg0, RSString arg1) {
-
-        anInt3017++;
-        if(arg1 == null || arg1.length() == 0)
+    public static void itemSearch(RSString input) {
+        if(input == null || input.length() == 0)
             VertexNormal.itemSearchResultCount = 0;
         else {
-            RSString class1 = arg1;
-            RSString[] class1s = new RSString[100];
-            if(arg0 != -96)
-                aClass1_3043 = null;
+            RSString searchTerm = input;
+            RSString[] splitString = new RSString[100];
             int i = 0;
-            for(; ; ) {
-                int i_15_ = class1.method57((byte) -5, 32);
-                if(i_15_ == -1) {
-                    class1 = class1.method89(false);
-                    if((class1.length() ^ 0xffffffff) < -1)
-                        class1s[i++] = class1.method79();
+            while(true) {
+                int spaceIndex = searchTerm.indexOf(' ');
+                if(spaceIndex == -1) {
+                    searchTerm = searchTerm.trim();
+                    if(searchTerm.length() > 0)
+                        splitString[i++] = searchTerm.toLowerCase();
                     break;
                 }
-                RSString class1_16_ = class1.substring(0, i_15_).method89(false);
-                if((class1_16_.length() ^ 0xffffffff) < -1)
-                    class1s[i++] = class1_16_.method79();
-                class1 = class1.substring(1 + i_15_);
+                RSString first = searchTerm.substring(0, spaceIndex).trim();
+                if(first.length() > 0)
+                    splitString[i++] = first.toLowerCase();
+                searchTerm = searchTerm.substring(1 + spaceIndex);
             }
             VertexNormal.itemSearchResultCount = 0;
-            int i_17_ = 0;
             while_12_:
-            for(/**/; Class27.anInt661 > i_17_; i_17_++) {
-                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_17_, 10);
-                if((class40_sub5_sub16.noteTemplateId ^ 0xffffffff) == 0 && class40_sub5_sub16.name != null) {
-                    RSString class1_18_ = class40_sub5_sub16.name.method79();
-                    for(int i_19_ = 0; i_19_ < i; i_19_++) {
-                        if(class1_18_.method60(class1s[i_19_]) == -1)
+            for(int itemId = 0; ItemDefinition.count > itemId; itemId++) {
+                ItemDefinition definition = ItemDefinition.forId(itemId, 10);
+                if(definition.noteTemplateId == -1 && definition.name != null) {
+                    RSString itemName = definition.name.toLowerCase();
+                    for(int indx = 0; indx < i; indx++) {
+                        if(itemName.contains(splitString[indx]) == -1)
                             continue while_12_;
                     }
-                    Class22_Sub1.aClass1Array1844[VertexNormal.itemSearchResultCount] = class1_18_;
-                    Class5.anIntArray191[VertexNormal.itemSearchResultCount] = i_17_;
+                    Class22_Sub1.itemSearchResultNames[VertexNormal.itemSearchResultCount] = itemName;
+                    Class5.itemSearchResultIds[VertexNormal.itemSearchResultCount] = itemId;
                     VertexNormal.itemSearchResultCount++;
-                    if((VertexNormal.itemSearchResultCount >= Class22_Sub1.aClass1Array1844.length))
+                    if((VertexNormal.itemSearchResultCount >= Class22_Sub1.itemSearchResultNames.length))
                         break;
                 }
             }
         }
-
     }
 
     public static void method774(byte arg0) {

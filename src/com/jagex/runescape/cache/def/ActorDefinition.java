@@ -35,7 +35,7 @@ public class ActorDefinition extends SubNode {
     public int stanceAnimation = -1;
     public int settingId = -1;
     public int ambient = 0;
-    public int anInt2389 = -1;
+    public int rotateRightAnimation = -1;
     public int degreesToTurn = 32;
     public int combatLevel = -1;
     public int[] originalModelColors;
@@ -49,7 +49,7 @@ public class ActorDefinition extends SubNode {
     public int rotate90LeftAnimation = -1;
     public int resizeY = 128;
     public int rotate90RightAnimation = -1;
-    public int anInt2421 = -1;
+    public int rotateLeftAnimation = -1;
     public int walkAnimation = -1;
     public int[] childrenIds;
     public int id;
@@ -324,9 +324,9 @@ public class ActorDefinition extends SubNode {
         } else if(opcode == 14) {
             walkAnimation = buffer.getUnsignedShortBE();
         } else if(opcode == 15) {
-            anInt2421 = buffer.getUnsignedShortBE();
+            rotateLeftAnimation = buffer.getUnsignedShortBE();
         } else if(opcode == 16) {
-            anInt2389 = buffer.getUnsignedShortBE();
+            rotateRightAnimation = buffer.getUnsignedShortBE();
         } else if(opcode == 17) {
             walkAnimation = buffer.getUnsignedShortBE();
             rotate180Animation = buffer.getUnsignedShortBE();

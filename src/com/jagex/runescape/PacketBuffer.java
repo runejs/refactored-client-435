@@ -2,14 +2,16 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.io.Buffer;
 
 import java.math.BigInteger;
 
 public class PacketBuffer extends Buffer {
     public static int anInt2231 = 1;
-    public static boolean aBoolean2236 = false;
+    public static boolean hiddenButtonTest = false;
     public static Effect[] effects = new Effect[50];
     public static RSString aClass1_2240 = RSString.CreateString("Please wait)3)3)3");
     public static long aLong2241 = 0L;
@@ -77,11 +79,11 @@ public class PacketBuffer extends Buffer {
         if((ActorDefinition.anInt2433 ^ 0xffffffff) != 0) {
             Class55.method958(ActorDefinition.anInt2433, -14222);
             ActorDefinition.anInt2433 = -1;
-            Floor.method559(30, -47);
+            OverlayDefinition.method559(30, -47);
         }
-        if((Class40_Sub5_Sub9.anInt2562 ^ 0xffffffff) != 0) {
-            Class55.method958(Class40_Sub5_Sub9.anInt2562, -14222);
-            Class40_Sub5_Sub9.anInt2562 = -1;
+        if((UnderlayDefinition.anInt2562 ^ 0xffffffff) != 0) {
+            Class55.method958(UnderlayDefinition.anInt2562, -14222);
+            UnderlayDefinition.anInt2562 = -1;
         }
         if(arg0 >= 92) {
             if(Class66.anInt1560 != -1) {

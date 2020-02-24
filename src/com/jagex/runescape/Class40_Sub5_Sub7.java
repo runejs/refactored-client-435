@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
@@ -114,7 +115,7 @@ public class Class40_Sub5_Sub7 extends SubNode {
             Class38_Sub1.method448(0, 0, (Player.localPlayer.anIntArray3088[0]), arg0, (byte) 98, 1 + i_16_, true, i_15_, 0, (Player.localPlayer.anIntArray3135[0]), arg3, 2);
         else {
             GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
-            int i_17_ = gameObjectDefinition.anInt2512;
+            int i_17_ = gameObjectDefinition.blockingMask;
             if(i_15_ != 0)
                 i_17_ = (i_17_ >> 4 + -i_15_) + (0xf & i_17_ << i_15_);
             int i_18_;
@@ -131,7 +132,7 @@ public class Class40_Sub5_Sub7 extends SubNode {
         Class40_Sub11.anInt2163 = Class57.anInt1338;
         Class45.anInt1075 = 2;
         Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
-        Floor.anInt2319 = 0;
+        OverlayDefinition.anInt2319 = 0;
         return true;
 
     }

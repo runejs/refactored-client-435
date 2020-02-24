@@ -1,8 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -107,7 +105,7 @@ public class Class55 {
         Class5.aClass1_204 = Class40_Sub13.aClass1_2174;
         Class57.aClass1_1333 = Class40_Sub5_Sub15.aClass1_2773;
         Class35.aClass1_1746 = Class37.aClass1_872;
-        Class51.aClass1_1196 = Class40_Sub5_Sub2.aClass1_2311;
+        Class51.aClass1_1196 = SpotAnimDefinition.aClass1_2311;
         Class64.aClass1_1526 = VertexNormal.aClass1_1109;
         Node.aClass1_929 = Class27.aClass1_652;
         Class40_Sub5_Sub11.aClass1_2622 = ActorDefinition.aClass1_2417;
@@ -124,15 +122,15 @@ public class Class55 {
         Class68.aClass1_1638 = Class40_Sub13.aClass1_2185;
         Class37.aClass1_873 = Class33.aClass1_779;
         Node.aClass1_959 = Class53.aClass1_1265;
-        Class40_Sub5_Sub2.aClass1_2294 = Class67.aClass1_1612;
+        SpotAnimDefinition.aClass1_2294 = Class67.aClass1_1612;
         VertexNormal.aClass1_1117 = GameObjectDefinition.aClass1_2560;
-        Cache.aClass1_323 = Floor.aClass1_2327;
+        Cache.aClass1_323 = OverlayDefinition.aClass1_2327;
         GameFrame.aClass1_1465 = Class39.aClass1_898;
         Class53.aClass1_1251 = HashTable.aClass1_563;
         Node.aClass1_960 = Class40_Sub5_Sub17_Sub1.aClass1_2977;
         Node.aClass1_946 = Class64.aClass1_1523;
         Class52.aClass1_1223 = Class10.aClass1_352;
-        Floor.aClass1_2325 = Class40_Sub2.aClass1_1991;
+        OverlayDefinition.aClass1_2325 = Class40_Sub2.aClass1_1991;
         SceneTile.aClass1_2047 = Class37.aClass1_860;
         Class13.aClass1_417 = IdentityKit.aClass1_2614;
         Class10.aClass1_344 = Class52.aClass1_1238;
@@ -155,7 +153,7 @@ public class Class55 {
         Class61.aClass1_1422 = Class54.aClass1_1271;
         Landscape.aClass1_1181 = Class66.aClass1_1549;
         Class40_Sub7.aClass1_2125 = Class67.aClass1_1591;
-        Class40_Sub5_Sub9.aClass1_2577 = Class48.aClass1_1137;
+        UnderlayDefinition.aClass1_2577 = Class48.aClass1_1137;
         Renderable.aClass1_2864 = CacheIndex_Sub1.aClass1_1816;
         Class68_Sub1.aClass1_2209 = RSString.aClass1_1702;
         ActorDefinition.aClass1_2384 = Class53.aClass1_1269;
@@ -164,10 +162,10 @@ public class Class55 {
         Npc.aClass1_3305 = Class22_Sub1.aClass1_1871;
         FloorDecoration.aClass1_591 = Class24.aClass1_575;
         Node.aClass1_940 = Class37.aClass1_879;
-        Class40_Sub5_Sub2.aClass1_2297 = Class40_Sub5_Sub17_Sub3.aClass1_3062;
+        SpotAnimDefinition.aClass1_2297 = Class40_Sub5_Sub17_Sub3.aClass1_3062;
         Class38_Sub1.aClass1_1917 = Class22.aClass1_538;
         Class30.aClass1_701 = Class35.aClass1_1731;
-        Class42.aClass1_997 = Class40_Sub5_Sub2.aClass1_2292;
+        Class42.aClass1_997 = SpotAnimDefinition.aClass1_2292;
         Class39.aClass1_904 = Class56.aClass1_1314;
         Class61.aClass1_1421 = ISAAC.aClass1_529;
         Cache.dropStringInstance = SubNode.aClass1_2095;
@@ -181,10 +179,10 @@ public class Class55 {
         Node.aClass1_951 = Class64.aClass1_1523;
         Node.aClass1_931 = PacketBuffer.aClass1_2259;
         Main.aClass1_1763 = Class22_Sub2.aClass1_1889;
-        Buffer.aClass1_1983 = Floor.aClass1_2315;
+        Buffer.aClass1_1983 = OverlayDefinition.aClass1_2315;
         Landscape.aClass1_1173 = Class64.aClass1_1502;
         SceneTile.aClass1_2053 = Renderable.aClass1_2871;
-        Class40_Sub5_Sub2.str_prefix_level = Class39.aClass1_914;
+        SpotAnimDefinition.str_prefix_level = Class39.aClass1_914;
         SceneTile.aClass1_2050 = Class37.aClass1_860;
         Node.aClass1_969 = Class64.aClass1_1523;
         Node.aClass1_934 = Class64.aClass1_1523;
@@ -204,7 +202,7 @@ public class Class55 {
         Node.aClass1_949 = Class27.aClass1_647;
         Class40_Sub5_Sub6.aClass1_2462 = Class22_Sub2.aClass1_1883;
         Class40_Sub13.aClass1_2188 = CacheIndex_Sub1.aClass1_1814;
-        Class42.aClass1_1002 = Class40_Sub5_Sub2.aClass1_2292;
+        Class42.aClass1_1002 = SpotAnimDefinition.aClass1_2292;
         Class38_Sub1.aClass1_1905 = Class53.aClass1_1246;
         Node.aClass1_957 = Class27.aClass1_652;
         Class38.aClass1_885 = Class32.aClass1_766;
@@ -234,8 +232,8 @@ public class Class55 {
         Widget.aClass1_2671 = Class66.aClass1_1558;
         Class43.aClass1_1019 = CacheIndex_Sub1.aClass1_1798;
         Class40_Sub5_Sub6.aClass1_2446 = Class68_Sub1.aClass1_2198;
-        Widget.aClass1_2684 = Class40_Sub5_Sub2.aClass1_2291;
-        Class27.takeStringInstance = Class40_Sub5_Sub2.aClass1_2296;
+        Widget.aClass1_2684 = SpotAnimDefinition.aClass1_2291;
+        Class27.takeStringInstance = SpotAnimDefinition.aClass1_2296;
         Class48.aClass1_1124 = GameFrame.aClass1_1471;
         Class5.aClass1_193 = Landscape.aClass1_1161;
         Class49.aClass1_1148 = Class40_Sub5_Sub1.aClass1_2279;
@@ -253,7 +251,7 @@ public class Class55 {
         Widget.aClass1_2674 = Class33.aClass1_797;
         Class30.aClass1_682 = PacketBuffer.aClass1_2245;
         ActorDefinition.aClass1_2410 = RSApplet.aClass1_21;
-        Class40_Sub5_Sub9.aClass1_2566 = FloorDecoration.aClass1_609;
+        UnderlayDefinition.aClass1_2566 = FloorDecoration.aClass1_609;
         Node.aClass1_944 = Class64.aClass1_1523;
         PacketBuffer.aClass1_2240 = Class49.aClass1_1153;
         VertexNormal.aClass1_1105 = Class40_Sub13.aClass1_2181;
@@ -277,7 +275,7 @@ public class Class55 {
         Landscape.aClass1_1178 = CacheIndex.aClass1_259;
         Class61.aClass1_1432 = Class44.aClass1_1034;
         Node.aClass1_941 = Class64.aClass1_1523;
-        Class26.aClass1_634 = Class40_Sub5_Sub9.aClass1_2564;
+        Class26.aClass1_634 = UnderlayDefinition.aClass1_2564;
         Class53.aClass1_1259 = Class12.aClass1_396;
         Class40_Sub5_Sub4.aClass1_2351 = Class4.aClass1_181;
         Class22_Sub1.aClass1_1858 = Class12.aClass1_382;
@@ -347,7 +345,7 @@ public class Class55 {
     }
 
     public static void method966(int arg0, CacheIndex arg1, CacheIndex arg2) {
-        Class40_Sub5_Sub9.aCacheIndex_2582 = arg1;
+        UnderlayDefinition.aCacheIndex_2582 = arg1;
         int i = -87 / ((-20 - arg0) / 56);
         Class19.aCacheIndex_488 = arg2;
     }

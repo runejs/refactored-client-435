@@ -1,4 +1,4 @@
-package com.jagex.runescape.cache.media;
+package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.io.Buffer;
@@ -49,15 +49,15 @@ public class IdentityKit extends SubNode {
         aClass1_2615 = aClass1_2616;
     }
 
-    public int[] originalModelColors = new int[6];
-    public int[] modifiedModelColors;
-    public int partId = -1;
+    public int[] recolorToFind = new int[6];
+    public int[] recolorToReplace;
+    public int bodyPartId = -1;
     public int[] modelId;
-    public boolean widgetDisplayed = false;
-    public int[] headModelIds = {-1, -1, -1, -1, -1};
+    public boolean nonSelectable = false;
+    public int[] models = {-1, -1, -1, -1, -1};
 
     public IdentityKit() {
-        modifiedModelColors = new int[6];
+        recolorToReplace = new int[6];
     }
 
     public static void method625(int arg0) {
@@ -174,7 +174,7 @@ public class IdentityKit extends SubNode {
             return false;
         }
         for(/**/; i < 5; i++) {
-            if(headModelIds[i] != -1 && !Class27.aCacheIndex_654.loaded(headModelIds[i], 0)) {
+            if(models[i] != -1 && !Class27.aCacheIndex_654.loaded(models[i], 0)) {
                 bool = false;
             }
         }
@@ -183,7 +183,7 @@ public class IdentityKit extends SubNode {
 
     public void readValue(Buffer buffer, int opcode) {
         if(opcode == 1) {
-            partId = buffer.getUnsignedByte();
+            bodyPartId = buffer.getUnsignedByte();
         } else if(opcode == 2) {
             int modelCount = buffer.getUnsignedByte();
             modelId = new int[modelCount];
@@ -191,13 +191,13 @@ public class IdentityKit extends SubNode {
                 modelId[model] = buffer.getUnsignedShortBE();
             }
         } else if(opcode == 3) {
-            widgetDisplayed = true;
+            nonSelectable = true;
         } else if(opcode >= 40 && opcode < 50) {
-            originalModelColors[opcode + -40] = buffer.getUnsignedShortBE();
+            recolorToFind[opcode + -40] = buffer.getUnsignedShortBE();
         } else if(opcode >= 50 && opcode < 60) {
-            modifiedModelColors[-50 + opcode] = buffer.getUnsignedShortBE();
+            recolorToReplace[-50 + opcode] = buffer.getUnsignedShortBE();
         } else if(opcode >= 60 && opcode < 70) {
-            headModelIds[-60 + opcode] = buffer.getUnsignedShortBE();
+            models[-60 + opcode] = buffer.getUnsignedShortBE();
         }
     }
 
@@ -209,16 +209,16 @@ public class IdentityKit extends SubNode {
             return null;
         }
         for(int i_7_ = 0; (i_7_ ^ 0xffffffff) > -6; i_7_++) {
-            if(headModelIds[i_7_] != -1) {
-                class40_sub5_sub17_sub5s[i++] = Model.getModel((Class27.aCacheIndex_654), (headModelIds[i_7_]), 0);
+            if(models[i_7_] != -1) {
+                class40_sub5_sub17_sub5s[i++] = Model.getModel((Class27.aCacheIndex_654), (models[i_7_]), 0);
             }
         }
         Model class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, i);
         for(int i_8_ = 0; i_8_ < 6; i_8_++) {
-            if(originalModelColors[i_8_] == 0) {
+            if(recolorToFind[i_8_] == 0) {
                 break;
             }
-            class40_sub5_sub17_sub5.replaceColor(originalModelColors[i_8_], modifiedModelColors[i_8_]);
+            class40_sub5_sub17_sub5.replaceColor(recolorToFind[i_8_], recolorToReplace[i_8_]);
         }
         return class40_sub5_sub17_sub5;
     }
@@ -242,10 +242,10 @@ public class IdentityKit extends SubNode {
             return null;
         }
         for(int i = 0; (i ^ 0xffffffff) > -7; i++) {
-            if(originalModelColors[i] == 0) {
+            if(recolorToFind[i] == 0) {
                 break;
             }
-            class40_sub5_sub17_sub5.replaceColor(originalModelColors[i], modifiedModelColors[i]);
+            class40_sub5_sub17_sub5.replaceColor(recolorToFind[i], recolorToReplace[i]);
         }
         return class40_sub5_sub17_sub5;
     }

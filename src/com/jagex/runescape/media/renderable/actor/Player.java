@@ -95,7 +95,7 @@ public class Player extends Actor {
         class40_sub5_sub17_sub5.method799();
         anInt3117 = class40_sub5_sub17_sub5.anInt2861;
         if(!aBoolean3287 && (anInt3091 ^ 0xffffffff) != 0 && anInt3140 != -1) {
-            Model class40_sub5_sub17_sub5_1_ = Class37.method431(anInt3091, 13).method549(anInt3140, 2);
+            Model class40_sub5_sub17_sub5_1_ = SpotAnimDefinition.forId(anInt3091, 13).method549(anInt3140, 2);
             if(class40_sub5_sub17_sub5_1_ != null) {
                 class40_sub5_sub17_sub5_1_.method828(0, -anInt3110, 0);
                 Model[] class40_sub5_sub17_sub5s = {class40_sub5_sub17_sub5, class40_sub5_sub17_sub5_1_};

@@ -22,18 +22,18 @@ public class GameObjectDefinition extends SubNode {
     public int anInt2502;
     public int sizeX;
     public int offsetY;
-    public int offsetAmplifier;
+    public int setDecorDisplacement;
     public int animationId;
     public int modelSizeX;
     public RSString[] actions;
     public int[] recolorToReplace;
     public int icon = -1;
-    public int anInt2512;
-    public int anInt2513;
+    public int blockingMask;
+    public int ambientSoundId;
     public int sizeY;
     public int[] recolorToFind;
     public int modelSizeY;
-    public boolean isSolid;
+    public boolean hollow;
     public int offsetHeight;
     public boolean nonFlatShading;
     public boolean wall;
@@ -43,7 +43,7 @@ public class GameObjectDefinition extends SubNode {
     public int ambient;
     public boolean walkable;
     public boolean adjustToTerrain;
-    public int anInt2533;
+    public int supportsItems;
     public int[] configChangeDest;
     public int configId;
     public int mapSceneID;
@@ -53,24 +53,24 @@ public class GameObjectDefinition extends SubNode {
     public int anInt2542;
     public int contrast;
     public int hasActions;
-    public boolean unknown;
+    public boolean obstructsGround;
     public int varpID;
     public RSString name;
-    public boolean unknown3;
+    public boolean rotated;
 
     public GameObjectDefinition() {
         anInt2502 = 0;
-        anInt2512 = 0;
-        anInt2513 = -1;
+        blockingMask = 0;
+        ambientSoundId = -1;
         anInt2499 = 0;
         offsetX = 0;
         modelSizeX = 128;
-        isSolid = false;
+        hollow = false;
         wall = false;
         adjustToTerrain = false;
-        anInt2533 = -1;
+        supportsItems = -1;
         animationId = -1;
-        offsetAmplifier = 16;
+        setDecorDisplacement = 16;
         actions = new RSString[5];
         offsetHeight = 0;
         solid = true;
@@ -81,13 +81,13 @@ public class GameObjectDefinition extends SubNode {
         mapSceneID = -1;
         walkable = true;
         sizeX = 1;
-        unknown = false;
+        obstructsGround = false;
         modelSizeHeight = 128;
         name = Class44.aClass1_1043;
         castsShadow = true;
         contrast = 0;
         configId = -1;
-        unknown3 = false;
+        rotated = false;
         varpID = -1;
         hasActions = -1;
         ambient = 0;
@@ -172,7 +172,7 @@ public class GameObjectDefinition extends SubNode {
             gameObjectDefinition.readValues(new Buffer(is));
         }
         gameObjectDefinition.method605(true);
-        if(gameObjectDefinition.isSolid) {
+        if(gameObjectDefinition.hollow) {
             gameObjectDefinition.solid = false;
             gameObjectDefinition.walkable = false;
         }
@@ -220,7 +220,7 @@ public class GameObjectDefinition extends SubNode {
     public boolean method601(byte arg0) {
 
         if(configChangeDest == null) {
-            return (anInt2513 ^ 0xffffffff) != 0 || anIntArray2523 != null;
+            return (ambientSoundId ^ 0xffffffff) != 0 || anIntArray2523 != null;
         }
         if(arg0 != 125) {
             varpID = -89;
@@ -228,7 +228,7 @@ public class GameObjectDefinition extends SubNode {
         for(int i = 0; i < configChangeDest.length; i++) {
             if((configChangeDest[i] ^ 0xffffffff) != 0) {
                 GameObjectDefinition gameObjectDefinition = getDefinition(configChangeDest[i]);
-                if((gameObjectDefinition.anInt2513 ^ 0xffffffff) != 0 || gameObjectDefinition.anIntArray2523 != null) {
+                if((gameObjectDefinition.ambientSoundId ^ 0xffffffff) != 0 || gameObjectDefinition.anIntArray2523 != null) {
                     return true;
                 }
             }
@@ -259,8 +259,8 @@ public class GameObjectDefinition extends SubNode {
                 }
             }
         }
-        if((anInt2533 ^ 0xffffffff) == 0) {
-            anInt2533 = solid ? 1 : 0;
+        if((supportsItems ^ 0xffffffff) == 0) {
+            supportsItems = solid ? 1 : 0;
         }
         if(arg0 != true) {
             readValues(null);
@@ -277,7 +277,7 @@ public class GameObjectDefinition extends SubNode {
             if(objectModels == null) {
                 return null;
             }
-            boolean bool = arg3 > 3 ^ unknown3;
+            boolean bool = arg3 > 3 ^ rotated;
             int i = objectModels.length;
             for(int i_7_ = 0; i > i_7_; i_7_++) {
                 int i_8_ = objectModels[i_7_];
@@ -314,7 +314,7 @@ public class GameObjectDefinition extends SubNode {
                 return null;
             }
             int i_10_ = objectModels[i];
-            boolean bool = unknown3 ^ arg3 > 3;
+            boolean bool = rotated ^ arg3 > 3;
             if(bool) {
                 i_10_ += 65536;
             }
@@ -461,7 +461,7 @@ public class GameObjectDefinition extends SubNode {
                 animationId = -1;
             }
         } else if(opcode == 28) {
-            offsetAmplifier = buffer.getUnsignedByte();
+            setDecorDisplacement = buffer.getUnsignedByte();
         } else if(opcode == 29) {
             ambient = buffer.getByte();
         } else if(opcode == 39) {
@@ -482,7 +482,7 @@ public class GameObjectDefinition extends SubNode {
         } else if(opcode == 60) {
             icon = (buffer.getUnsignedShortBE());
         } else if(opcode == 62) {
-            unknown3 = true;
+            rotated = true;
         } else if(opcode == 64) {
             castsShadow = false;
         } else if(opcode == 65) {
@@ -494,7 +494,7 @@ public class GameObjectDefinition extends SubNode {
         } else if(opcode == 68) {
             mapSceneID = (buffer.getUnsignedShortBE());
         } else if(opcode == 69) {
-            anInt2512 = (buffer.getUnsignedByte());
+            blockingMask = (buffer.getUnsignedByte());
         } else if(opcode == 70) {
             offsetX = (buffer.getShortBE());
         } else if(opcode == 71) {
@@ -502,11 +502,11 @@ public class GameObjectDefinition extends SubNode {
         } else if(opcode == 72) {
             offsetY = (buffer.getShortBE());
         } else if(opcode == 73) {
-            unknown = true;
+            obstructsGround = true;
         } else if(opcode == 74) {
-            isSolid = true;
+            hollow = true;
         } else if(opcode == 75) {
-            anInt2533 = buffer.getUnsignedByte();
+            supportsItems = buffer.getUnsignedByte();
         } else if(opcode == 77) {
             varpID = buffer.getUnsignedShortBE();
             if(varpID == 0xffff) {
@@ -525,7 +525,7 @@ public class GameObjectDefinition extends SubNode {
                 }
             }
         } else if(opcode == 78) {
-            anInt2513 = buffer.getUnsignedShortBE();
+            ambientSoundId = buffer.getUnsignedShortBE();
             anInt2502 = buffer.getUnsignedByte();
         } else if(opcode == 79) {
             anInt2499 = buffer.getUnsignedShortBE();
