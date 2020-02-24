@@ -71,7 +71,7 @@ public abstract class Actor extends Renderable {
     public int[] anIntArray3087;
     public int[] anIntArray3088;
     public int anInt3089;
-    public RSString aClass1_3090;
+    public RSString forcedChatMessage;
     public int anInt3091;
     public int anInt3093;
     public int anInt3094;
@@ -80,7 +80,7 @@ public abstract class Actor extends Renderable {
     public int anInt3097;
     public int anInt3098;
     public int anInt3099;
-    public int anInt3100;
+    public int facePositionY;
     public int anInt3101;
     public int anInt3102;
     public int anInt3104;
@@ -95,7 +95,7 @@ public abstract class Actor extends Renderable {
     public int anInt3117;
     public int anInt3118;
     public int anInt3120;
-    public int anInt3122;
+    public int playingAnimationDelay;
     public int anInt3123;
     public int anInt3125;
     public int anInt3126;
@@ -107,21 +107,21 @@ public abstract class Actor extends Renderable {
     public int anInt3134;
     public int[] anIntArray3135;
     public int[] anIntArray3136;
-    public int anInt3137;
+    public int facingActorIndex;
     public int anInt3139;
     public int anInt3140;
-    public int anInt3141;
+    public int playingAnimation;
     public int anInt3145;
-    public int anInt3148;
+    public int facePositionX;
 
     public Actor() {
         anInt3083 = -1;
-        anInt3100 = 0;
+        facePositionY = 0;
         anInt3082 = -1;
         anInt3079 = -1;
         aBoolean3105 = false;
         anInt3096 = 1;
-        aClass1_3090 = null;
+        forcedChatMessage = null;
         anInt3075 = -1;
         anIntArray3086 = new int[4];
         aBooleanArray3072 = new boolean[10];
@@ -133,7 +133,7 @@ public abstract class Actor extends Renderable {
         anInt3117 = 200;
         anInt3078 = 100;
         anInt3120 = 0;
-        anInt3122 = 0;
+        playingAnimationDelay = 0;
         anInt3077 = -1;
         anIntArray3087 = new int[4];
         anInt3116 = 0;
@@ -144,7 +144,7 @@ public abstract class Actor extends Renderable {
         anInt3097 = 0;
         anIntArray3136 = new int[4];
         anInt3129 = 0;
-        anInt3137 = -1;
+        facingActorIndex = -1;
         anIntArray3135 = new int[10];
         anInt3139 = -1000;
         anInt3131 = -1;
@@ -154,8 +154,8 @@ public abstract class Actor extends Renderable {
         anIntArray3088 = new int[10];
         anInt3132 = -1;
         anInt3145 = -1;
-        anInt3148 = 0;
-        anInt3141 = -1;
+        facePositionX = 0;
+        playingAnimation = -1;
     }
 
     public static void method781(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
@@ -465,8 +465,8 @@ public abstract class Actor extends Renderable {
             i_19_++;
             i--;
         }
-        if(anInt3141 != -1 && (Class68_Sub1.method1050(anInt3141, arg1 ^ ~0x5d).anInt2476 == 1))
-            anInt3141 = -1;
+        if(playingAnimation != -1 && (Class68_Sub1.method1050(playingAnimation, arg1 ^ ~0x5d).anInt2476 == 1))
+            playingAnimation = -1;
         if(anInt3109 < 9)
             anInt3109++;
         for(int i_20_ = anInt3109; (i_20_ ^ 0xffffffff) < -1; i_20_--) {
@@ -522,8 +522,8 @@ public abstract class Actor extends Renderable {
 
     public void method787(int arg0, int arg1, boolean arg2, int arg3) {
 
-        if((anInt3141 ^ 0xffffffff) != 0 && Class68_Sub1.method1050(anInt3141, 2).anInt2476 == 1)
-            anInt3141 = -1;
+        if((playingAnimation ^ 0xffffffff) != 0 && Class68_Sub1.method1050(playingAnimation, 2).anInt2476 == 1)
+            playingAnimation = -1;
         anInt3076++;
         if(!arg2) {
             int i = -anIntArray3088[0] + arg3;

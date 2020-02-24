@@ -157,7 +157,7 @@ public class Class22_Sub1 extends Class22 {
             if(class40_sub5_sub17_sub4_sub1 != null && ((class40_sub5_sub17_sub4_sub1.anInt3078 ^ 0xffffffff) < -1)) {
                 class40_sub5_sub17_sub4_sub1.anInt3078--;
                 if((class40_sub5_sub17_sub4_sub1.anInt3078 ^ 0xffffffff) == -1)
-                    class40_sub5_sub17_sub4_sub1.aClass1_3090 = null;
+                    class40_sub5_sub17_sub4_sub1.forcedChatMessage = null;
             }
         }
         int i = 18 % ((-46 - arg0) / 58);
@@ -167,7 +167,7 @@ public class Class22_Sub1 extends Class22 {
             if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.anInt3078 > 0) {
                 class40_sub5_sub17_sub4_sub2.anInt3078--;
                 if((class40_sub5_sub17_sub4_sub2.anInt3078 ^ 0xffffffff) == -1)
-                    class40_sub5_sub17_sub4_sub2.aClass1_3090 = null;
+                    class40_sub5_sub17_sub4_sub2.forcedChatMessage = null;
             }
         }
 

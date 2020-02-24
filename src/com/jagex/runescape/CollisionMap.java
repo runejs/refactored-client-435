@@ -966,11 +966,11 @@ public class CollisionMap {
             if((Class57.incomingPacket ^ 0xffffffff) == -28) {
                 for(int i_94_ = 0; (i_94_ < (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156).length); i_94_++) {
                     if((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_94_]) != null)
-                        Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_94_].anInt3141 = -1;
+                        Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_94_].playingAnimation = -1;
                 }
                 for(int i_95_ = 0; (((CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813).length > i_95_)); i_95_++) {
                     if((CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_95_]) != null)
-                        CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_95_].anInt3141 = -1;
+                        CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_95_].playingAnimation = -1;
                 }
                 Class57.incomingPacket = -1;
                 return true;
@@ -1038,10 +1038,10 @@ public class CollisionMap {
             }
             if(Class57.incomingPacket == 214) {
                 ISAAC.redrawTabArea = true;
-                int i_107_ = Cache.outgoingbuffer.getIntBE();
-                Widget widget = Class68.method1045(i_107_, (byte) -112);
+                int widgetData = Cache.outgoingbuffer.getIntBE();
+                Widget widget = Class68.method1045(widgetData, (byte) -112);
                 while(Widget.packetsize > Cache.outgoingbuffer.currentPosition) {
-                    int i_108_ = Cache.outgoingbuffer.getSmart();
+                    int itemSlot = Cache.outgoingbuffer.getSmart();
                     int i_109_ = Cache.outgoingbuffer.getUnsignedShortBE();
                     int i_110_ = 0;
                     if((i_109_ ^ 0xffffffff) != -1) {
@@ -1050,15 +1050,15 @@ public class CollisionMap {
                             i_110_ = Cache.outgoingbuffer.getIntBE();
                     }
                     if(!widget.aBoolean2636) {
-                        if((i_108_ ^ 0xffffffff) <= -1 && (widget.items.length > i_108_)) {
-                            widget.items[i_108_] = i_109_;
-                            widget.itemAmounts[i_108_] = i_110_;
+                        if((itemSlot ^ 0xffffffff) <= -1 && (widget.items.length > itemSlot)) {
+                            widget.items[itemSlot] = i_109_;
+                            widget.itemAmounts[itemSlot] = i_110_;
                         }
                     } else {
-                        Widget[] widgets = (Class59.aWidgetArrayArray1390[i_107_ >> 886089392]);
+                        Widget[] widgets = (Class59.aWidgetArrayArray1390[widgetData >> 886089392]);
                         for(int i_111_ = 0; ((i_111_ < widgets.length)); i_111_++) {
                             Widget widget_112_ = widgets[i_111_];
-                            if((((widget_112_.anInt2648 & 0xffff) ^ 0xffffffff) == (widget.anInt2689 & 0xffff ^ 0xffffffff)) && 1 + i_108_ == (widget_112_.anInt2736)) {
+                            if((((widget_112_.anInt2648 & 0xffff) ^ 0xffffffff) == (widget.anInt2689 & 0xffff ^ 0xffffffff)) && 1 + itemSlot == (widget_112_.anInt2736)) {
                                 widget_112_.anInt2734 = i_110_;
                                 widget_112_.anInt2718 = i_109_ + -1;
                             }

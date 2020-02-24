@@ -76,24 +76,24 @@ public class ActorDefinition extends SubNode {
 
     public static void method570(int arg0, int arg1, Player arg2, int arg3) {
         if(arg3 == -1) {
-            if(arg2.anInt3141 == arg0 && arg0 != -1) {
+            if(arg2.playingAnimation == arg0 && arg0 != -1) {
                 int i = Class68_Sub1.method1050(arg0, 2).anInt2483;
                 if(i == 1) {
                     arg2.anInt3104 = 0;
                     arg2.anInt3095 = 0;
-                    arg2.anInt3122 = arg1;
+                    arg2.playingAnimationDelay = arg1;
                     arg2.anInt3115 = 0;
                 }
                 if(i == 2) {
                     arg2.anInt3095 = 0;
                 }
-            } else if((arg0 ^ 0xffffffff) == 0 || arg2.anInt3141 == -1 || (Class68_Sub1.method1050(arg0, 2).anInt2494 >= (Class68_Sub1.method1050(arg2.anInt3141, 2).anInt2494))) {
+            } else if((arg0 ^ 0xffffffff) == 0 || arg2.playingAnimation == -1 || (Class68_Sub1.method1050(arg0, 2).anInt2494 >= (Class68_Sub1.method1050(arg2.playingAnimation, 2).anInt2494))) {
                 arg2.anInt3094 = arg2.anInt3109;
                 arg2.anInt3104 = 0;
                 arg2.anInt3115 = 0;
                 arg2.anInt3095 = 0;
-                arg2.anInt3122 = arg1;
-                arg2.anInt3141 = arg0;
+                arg2.playingAnimationDelay = arg1;
+                arg2.playingAnimation = arg0;
             }
         }
     }

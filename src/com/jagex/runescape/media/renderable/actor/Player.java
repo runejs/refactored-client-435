@@ -87,7 +87,7 @@ public class Player extends Actor {
         if(aClass30_3282 == null)
             return null;
         int i = 71 % ((41 - arg0) / 47);
-        Class40_Sub5_Sub7 class40_sub5_sub7 = (anInt3141 == -1 || (anInt3122 ^ 0xffffffff) != -1 ? null : Class68_Sub1.method1050(anInt3141, 2));
+        Class40_Sub5_Sub7 class40_sub5_sub7 = (playingAnimation == -1 || (playingAnimationDelay ^ 0xffffffff) != -1 ? null : Class68_Sub1.method1050(playingAnimation, 2));
         Class40_Sub5_Sub7 class40_sub5_sub7_0_ = (((anInt3077 ^ 0xffffffff) != 0 && !aBoolean3287 && (anInt3126 != anInt3077 || class40_sub5_sub7 == null)) ? Class68_Sub1.method1050(anInt3077, 2) : null);
         Model class40_sub5_sub17_sub5 = aClass30_3282.method377(class40_sub5_sub7, class40_sub5_sub7_0_, anInt3116, anInt3104, (byte) -128);
         if(class40_sub5_sub17_sub5 == null)

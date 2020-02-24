@@ -87,7 +87,7 @@ public class GameObject extends Renderable {
         Actor.anInt3153 = 0;
         Class40_Sub5_Sub17_Sub1.method759(false);
         Class42.method889(48);
-        Class13.method245(3799);
+        Class13.parseNpcUpdateMasks();
         if(arg0 > 75) {
             for(int i = 0; i < Class17.anInt460; i++) {
                 int i_0_ = CacheIndex.anIntArray225[i];

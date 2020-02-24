@@ -121,11 +121,11 @@ public class Class37 {
         Cache.outgoingbuffer.currentPosition = arg0;
         for(int i = 0; ((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156).length > i); i++) {
             if((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i]) != null)
-                Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i].anInt3137 = -1;
+                Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i].facingActorIndex = -1;
         }
         for(int i = 0; ((CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813.length > i)); i++) {
             if(CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i] != null)
-                CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i].anInt3137 = -1;
+                CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i].facingActorIndex = -1;
         }
         Floor.method559(30, -88);
 

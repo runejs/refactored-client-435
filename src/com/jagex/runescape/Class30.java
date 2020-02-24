@@ -98,7 +98,7 @@ public class Class30 {
 
         if(arg0 != 22378)
             method376(90);
-        if(Node.anInt926 == arg1.anInt3107 || (arg1.anInt3141 ^ 0xffffffff) == 0 || (arg1.anInt3122 ^ 0xffffffff) != -1 || arg1.anInt3115 + 1 > (Class68_Sub1.method1050(arg1.anInt3141, 2).anIntArray2466[arg1.anInt3104])) {
+        if(Node.anInt926 == arg1.anInt3107 || (arg1.playingAnimation ^ 0xffffffff) == 0 || (arg1.playingAnimationDelay ^ 0xffffffff) != -1 || arg1.anInt3115 + 1 > (Class68_Sub1.method1050(arg1.playingAnimation, 2).anIntArray2466[arg1.anInt3104])) {
             int i = -arg1.anInt3112 + arg1.anInt3107;
             int i_16_ = -arg1.anInt3112 + Node.anInt926;
             int i_17_ = arg1.anInt3125 * 128 + (64 * arg1.anInt3096);

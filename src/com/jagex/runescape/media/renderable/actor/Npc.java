@@ -434,7 +434,7 @@ public class Npc extends Actor {
         if(aClass40_Sub5_Sub5_3300 == null)
             return null;
         int i = 25 % ((41 - arg0) / 47);
-        Class40_Sub5_Sub7 class40_sub5_sub7 = ((anInt3141 ^ 0xffffffff) == 0 || anInt3122 != 0 ? null : Class68_Sub1.method1050(anInt3141, 2));
+        Class40_Sub5_Sub7 class40_sub5_sub7 = ((playingAnimation ^ 0xffffffff) == 0 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2));
         Class40_Sub5_Sub7 class40_sub5_sub7_0_ = (anInt3077 != -1 && (anInt3077 != anInt3126 || class40_sub5_sub7 == null) ? Class68_Sub1.method1050(anInt3077, 2) : null);
         Model class40_sub5_sub17_sub5 = aClass40_Sub5_Sub5_3300.method568((byte) -50, class40_sub5_sub7, class40_sub5_sub7_0_, anInt3116, anInt3104);
         if(class40_sub5_sub17_sub5 == null)

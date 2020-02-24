@@ -148,15 +148,15 @@ public class Class40_Sub5_Sub15 extends SubNode {
             }
         }
         if(arg0 == true) {
-            if(arg1.anInt3141 != -1 && arg1.anInt3122 <= 1) {
-                Class40_Sub5_Sub7 class40_sub5_sub7 = Class68_Sub1.method1050(arg1.anInt3141, 2);
+            if(arg1.playingAnimation != -1 && arg1.playingAnimationDelay <= 1) {
+                Class40_Sub5_Sub7 class40_sub5_sub7 = Class68_Sub1.method1050(arg1.playingAnimation, 2);
                 if(class40_sub5_sub7.anInt2470 == 1 && (arg1.anInt3094 ^ 0xffffffff) < -1 && arg1.anInt3112 <= Node.anInt926 && Node.anInt926 > arg1.anInt3107) {
-                    arg1.anInt3122 = 1;
+                    arg1.playingAnimationDelay = 1;
                     return;
                 }
             }
-            if((arg1.anInt3141 ^ 0xffffffff) != 0 && arg1.anInt3122 == 0) {
-                Class40_Sub5_Sub7 class40_sub5_sub7 = Class68_Sub1.method1050(arg1.anInt3141, 2);
+            if((arg1.playingAnimation ^ 0xffffffff) != 0 && arg1.playingAnimationDelay == 0) {
+                Class40_Sub5_Sub7 class40_sub5_sub7 = Class68_Sub1.method1050(arg1.playingAnimation, 2);
                 if(class40_sub5_sub7 != null && class40_sub5_sub7.anIntArray2485 != null) {
                     arg1.anInt3115++;
                     if((class40_sub5_sub7.anIntArray2485.length > arg1.anInt3104) && (class40_sub5_sub7.anIntArray2466[arg1.anInt3104] < arg1.anInt3115)) {
@@ -167,16 +167,16 @@ public class Class40_Sub5_Sub15 extends SubNode {
                         arg1.anInt3104 -= class40_sub5_sub7.anInt2497;
                         arg1.anInt3095++;
                         if((class40_sub5_sub7.anInt2495 <= arg1.anInt3095))
-                            arg1.anInt3141 = -1;
+                            arg1.playingAnimation = -1;
                         if((arg1.anInt3104 ^ 0xffffffff) > -1 || (arg1.anInt3104 >= class40_sub5_sub7.anIntArray2485.length))
-                            arg1.anInt3141 = -1;
+                            arg1.playingAnimation = -1;
                     }
                     arg1.aBoolean3105 = class40_sub5_sub7.aBoolean2496;
                 } else
-                    arg1.anInt3141 = -1;
+                    arg1.playingAnimation = -1;
             }
-            if(arg1.anInt3122 > 0)
-                arg1.anInt3122--;
+            if(arg1.playingAnimationDelay > 0)
+                arg1.playingAnimationDelay--;
         }
     }
 
