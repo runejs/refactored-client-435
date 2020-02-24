@@ -68,9 +68,9 @@ public class Class54 implements KeyListener, FocusListener {
                 Renderable.handleSequences(29378, Class58.anInt1376);
                 Class40_Sub5_Sub6.drawInterface(0, Class58.anInt1376, 334, (byte) -5, 0, 4, 512);
             }
-            if((Class66.anInt1560 ^ 0xffffffff) != 0) {
-                Renderable.handleSequences(29378, Class66.anInt1560);
-                Class40_Sub5_Sub6.drawInterface(0, Class66.anInt1560, 334, (byte) -5, 0, 0, 512);
+            if((Class66.openScreenWidgetId ^ 0xffffffff) != 0) {
+                Renderable.handleSequences(29378, Class66.openScreenWidgetId);
+                Class40_Sub5_Sub6.drawInterface(0, Class66.openScreenWidgetId, 334, (byte) -5, 0, 0, 512);
             }
             RSString.method71(arg0 ^ 0x3c7b);
             if(Class4.menuOpen) {
