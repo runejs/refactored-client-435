@@ -60,7 +60,7 @@ public class Class30 {
         anInt708 = -1;
         anIntArray685 = new int[anInt709];
         aClass1Array697 = new RSString[anInt709];
-        aClass1_716 = RSString.CreateString("autumn voyage");
+        aClass1_716 = RSString.CreateString("scape main");
     }
 
     public boolean aBoolean683;

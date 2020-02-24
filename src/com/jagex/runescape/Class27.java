@@ -108,29 +108,6 @@ public class Class27 {
             drawScrollBar(-36, 10, 23, 0, 3, -27);
     }
 
-    public static void method354(byte arg0) {
-        Actor.anInt3153 = 0;
-        Class17.anInt460 = 0;
-        Actor.method786(true);
-        Class29.method373((byte) -5);
-        Class34.method419((byte) 108);
-        Class40_Sub5_Sub11.method633(-1);
-        for(int i = 0; Class17.anInt460 > i; i++) {
-            int i_8_ = CacheIndex.anIntArray225[i];
-            if(((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_8_].anInt3134) ^ 0xffffffff) != (Node.pulseCycle ^ 0xffffffff))
-                Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_8_] = null;
-        }
-        if((Cache.outgoingbuffer.currentPosition ^ 0xffffffff) != (Widget.packetsize ^ 0xffffffff))
-            throw new RuntimeException("gpp1 pos:" + (Cache.outgoingbuffer.currentPosition) + " psize:" + Widget.packetsize);
-        int i = 0;
-        if(arg0 < 50)
-            aCacheIndex_654 = null;
-        for(/**/; Class60.anInt1407 > i; i++) {
-            if((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i]]) == null)
-                throw new RuntimeException("gpp2 pos:" + i + " size:" + Class60.anInt1407);
-        }
-    }
-
     public static void drawScrollBar(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
         int i = (-32 + arg4) * arg4 / arg2;
         CacheIndex.aClass40_Sub5_Sub14_Sub2Array215[arg0].drawImage(arg3, arg5);

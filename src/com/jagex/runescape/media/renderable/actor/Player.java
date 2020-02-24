@@ -1,6 +1,7 @@
 package com.jagex.runescape.media.renderable.actor;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
@@ -82,6 +83,131 @@ public class Player extends Actor {
             aClass1_3290 = null;
             aClass1_3256 = null;
         }
+    }
+
+    public static void parsePlayerUpdateMasks(Player player, int mask, int arg3) {
+        if((0x100 & mask) != 0) {
+            int i = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
+            int i_0_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
+            player.method785(i_0_, pulseCycle, i, -122);
+            player.anInt3139 = 300 + pulseCycle;
+            player.anInt3130 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
+            player.anInt3101 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
+        }
+        if((mask & 0x10 ^ 0xffffffff) != -1) {
+            player.facePositionX = Cache.outgoingbuffer.getUnsignedShortBE();
+            player.facePositionY = Cache.outgoingbuffer.getUnsignedShortLE();
+        }
+        if((mask & 0x1 ^ 0xffffffff) != -1) {
+            int i = Cache.outgoingbuffer.getUnsignedShortLE();
+            if(i == 65535)
+                i = -1;
+            int i_1_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
+            ActorDefinition.method570(i, i_1_, player, -1);
+        }
+        if((mask & 0x4) != 0) {
+            player.facingActorIndex = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
+            if((player.facingActorIndex ^ 0xffffffff) == -65536)
+                player.facingActorIndex = -1;
+        }
+        if((0x40 & mask) != 0) {
+            int i = Cache.outgoingbuffer.getUnsignedByte();
+            int i_2_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
+            player.method785(i_2_, pulseCycle, i, -123);
+            player.anInt3139 = 300 + pulseCycle;
+            player.anInt3130 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
+            player.anInt3101 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
+        }
+        if((mask & 0x400) != 0) {
+            player.anInt3125 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
+            player.anInt3081 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
+            player.anInt3099 = Cache.outgoingbuffer.getUnsignedByte();
+            player.anInt3127 = Cache.outgoingbuffer.getUnsignedByte();
+            player.anInt3112 = (Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE() + pulseCycle);
+            player.anInt3107 = (Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE() + pulseCycle);
+            player.anInt3073 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
+            player.method790(0);
+        }
+        if((0x8 & mask ^ 0xffffffff) != -1) { // chat?...
+            int i = Cache.outgoingbuffer.getUnsignedShortBE();
+            int i_3_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
+            int i_4_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
+            int i_5_ = Cache.outgoingbuffer.currentPosition;
+            if(player.playerName != null && player.aClass30_3282 != null) {
+                long l = player.playerName.method58((byte) 101);
+                boolean bool = false;
+                if(i_3_ <= 1) {
+                    for(int i_6_ = 0; i_6_ < Class42.anInt1008; i_6_++) {
+                        if((Class53.aLongArray1267[i_6_] ^ 0xffffffffffffffffL) == (l ^ 0xffffffffffffffffL)) {
+                            bool = true;
+                            break;
+                        }
+                    }
+                }
+                if(!bool && Class4.anInt182 == 0) {
+                    Class59.aClass40_Sub1_1385.currentPosition = 0;
+                    Cache.outgoingbuffer.putNegativeOffsetBytes(0, Class59.aClass40_Sub1_1385.buffer, i_4_);
+                    Class59.aClass40_Sub1_1385.currentPosition = 0;
+                    RSString class1 = Class54.method956(124, Class59.aClass40_Sub1_1385).method53(-16315);
+                    player.forcedChatMessage = class1.trim();
+                    player.anInt3078 = 150;
+                    player.anInt3123 = i & 0xff;
+                    player.anInt3102 = i >> 8;
+                    if((i_3_ ^ 0xffffffff) == -3 || (i_3_ ^ 0xffffffff) == -4)
+                        Class44.method895(68, 1, class1, (Class40_Sub5_Sub17_Sub6.method832(75, (new RSString[]{Widget.goldCrown, player.playerName}))));
+                    else if((i_3_ ^ 0xffffffff) == -2)
+                        Class44.method895(123, 1, class1, (Class40_Sub5_Sub17_Sub6.method832(-79, (new RSString[]{Class51.whiteCrown, player.playerName}))));
+                    else
+                        Class44.method895(127, 2, class1, player.playerName);
+                }
+            }
+            Cache.outgoingbuffer.currentPosition = i_4_ + i_5_;
+        }
+        if((0x20 & mask) != 0) { // appearance
+            int appearanceUpdateLength = Cache.outgoingbuffer.getUnsignedByte();
+            byte[] is = new byte[appearanceUpdateLength];
+            Buffer buffer = new Buffer(is);
+            Cache.outgoingbuffer.getBytes(appearanceUpdateLength, 0, is);
+            Class22.aClass40_Sub1Array534[arg3] = buffer;
+            player.parsePlayerAppearanceData((byte) -85, buffer);
+        }
+        if((mask & 0x200) != 0) { // graphics?
+            player.anInt3091 = Cache.outgoingbuffer.getUnsignedShortLE();
+            int i = Cache.outgoingbuffer.getIntME1();
+            player.anInt3129 = 0;
+            player.anInt3093 = pulseCycle + (i & 0xffff);
+            if((player.anInt3091 ^ 0xffffffff) == -65536)
+                player.anInt3091 = -1;
+            player.anInt3140 = 0;
+            player.anInt3110 = i >> -1354160784;
+            if(player.anInt3093 > pulseCycle)
+                player.anInt3140 = -1;
+        }
+        if((0x80 & mask ^ 0xffffffff) != -1) { // forced chat
+            player.forcedChatMessage = Cache.outgoingbuffer.getRSString();
+            if(player.forcedChatMessage.method55(0, false) != 126) {
+                if(player == localPlayer)
+                    Class44.method895(99, 2, player.forcedChatMessage, player.playerName);
+            } else {
+                player.forcedChatMessage = player.forcedChatMessage.substring(1);
+                Class44.method895(120, 2, player.forcedChatMessage, player.playerName);
+            }
+            player.anInt3078 = 150;
+            player.anInt3102 = 0;
+            player.anInt3123 = 0;
+        }
+    }
+
+    public static void parseTrackedPlayerUpdateMasks() {
+        for(int i = 0; i < anInt3153; i++) {
+            int i_2_ = Class24.anIntArray578[i];
+            Player player = (aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_2_]);
+            int i_3_ = Cache.outgoingbuffer.getUnsignedByte();
+            if((i_3_ & 0x2) != 0)
+                i_3_ += (Cache.outgoingbuffer.getUnsignedByte() << 1874166152);
+            parsePlayerUpdateMasks(player, i_3_, i_2_);
+        }
+        Class40_Sub5_Sub11.anInt2632++;
     }
 
     public Model getRotatedModel(int arg0) {
