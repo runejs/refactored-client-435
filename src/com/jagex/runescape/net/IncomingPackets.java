@@ -10,18 +10,25 @@ import com.jagex.runescape.media.renderable.actor.Player;
 
 public class IncomingPackets {
 
-    public static final int
+    private static final int
 
-    UPDATE_SPECIFIC_WIDGET_ITEMS = 214,
-    UPDATE_ALL_WIDGET_ITEMS = 12,
-    SET_TAB_WIDGET = 140,
+            UPDATE_SPECIFIC_WIDGET_ITEMS = 214,
+            UPDATE_ALL_WIDGET_ITEMS = 12,
+            UPDATE_WIDGET_TEXT = 110,
+            SET_WIDGET_PLAYER_HEAD = 210,
+            SET_WIDGET_NPC_HEAD = 160,
+            PLAY_WIDGET_ANIMATION = 24,
+            SET_TAB_WIDGET = 140,
 
-    UPDATE_SKILL = 34,
+            SHOW_CHATBOX_WIDGET = 208,
+            CLOSE_ALL_WIDGETS = 180,
 
-    SET_MAP_CHUNK = 166,
+            UPDATE_SKILL = 34,
 
-    UPDATE_PLAYERS = 92,
-    UPDATE_NPCS = 128;
+            SET_MAP_CHUNK = 166,
+
+            UPDATE_PLAYERS = 92,
+            UPDATE_NPCS = 128;
 
     public static boolean parseIncomingPackets(boolean arg0) {
         if(Class40_Sub6.aClass64_2098 == null)
@@ -147,7 +154,7 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if((Class57.incomingPacket ^ 0xffffffff) == -116) {
+            if((Class57.incomingPacket ^ 0xffffffff) == -116) { // set widget hidden state
                 boolean bool = ((Cache.outgoingbuffer.getUnsignedByte() ^ 0xffffffff) == -2);
                 int i_10_ = Cache.outgoingbuffer.getIntME1();
                 Widget widget = Widget.forId(i_10_);
@@ -199,11 +206,11 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if((Class57.incomingPacket ^ 0xffffffff) == -251) {
-                int i_21_ = Cache.outgoingbuffer.getUnsignedShortLE();
-                int i_22_ = Cache.outgoingbuffer.getIntME1();
-                Widget widget = Widget.forId(i_22_);
-                widget.modelId = i_21_;
+            if((Class57.incomingPacket ^ 0xffffffff) == -251) { // widget model type 1
+                int modelId = Cache.outgoingbuffer.getUnsignedShortLE();
+                int widgetData = Cache.outgoingbuffer.getIntME1();
+                Widget widget = Widget.forId(widgetData);
+                widget.modelId = modelId;
                 widget.modelType = 1;
                 Class57.incomingPacket = -1;
                 return true;
@@ -283,7 +290,7 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 182) {
+            if(Class57.incomingPacket == 182) { // set widget scroll position
                 int i_34_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 int i_35_ = Cache.outgoingbuffer.getIntLE();
                 Widget widget = Widget.forId(i_35_);
@@ -297,7 +304,7 @@ public class IncomingPackets {
                 }
                 return true;
             }
-            if((Class57.incomingPacket ^ 0xffffffff) == -175) {
+            if((Class57.incomingPacket ^ 0xffffffff) == -175) { // clear widget item container?
                 int i_36_ = Cache.outgoingbuffer.getIntME1();
                 Widget widget = Widget.forId(i_36_);
                 if(widget.isIf3) {
@@ -337,14 +344,14 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return false;
             }
-            if((Class57.incomingPacket ^ 0xffffffff) == -25) {
-                int i_43_ = Cache.outgoingbuffer.getShortBE();
-                int i_44_ = Cache.outgoingbuffer.getIntBE();
-                Widget widget = Widget.forId(i_44_);
-                if(((widget.animation ^ 0xffffffff) != (i_43_ ^ 0xffffffff)) || (i_43_ ^ 0xffffffff) == 0) {
+            if(Class57.incomingPacket == PLAY_WIDGET_ANIMATION) {
+                int animationId = Cache.outgoingbuffer.getShortBE();
+                int widgetData = Cache.outgoingbuffer.getIntBE();
+                Widget widget = Widget.forId(widgetData);
+                if(((widget.animation ^ 0xffffffff) != (animationId ^ 0xffffffff)) || (animationId ^ 0xffffffff) == 0) {
                     widget.anInt2660 = 0;
                     widget.anInt2654 = 0;
-                    widget.animation = i_43_;
+                    widget.animation = animationId;
                 }
                 Class57.incomingPacket = -1;
                 return true;
@@ -535,7 +542,7 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if((Class57.incomingPacket ^ 0xffffffff) == -181) {
+            if(Class57.incomingPacket == CLOSE_ALL_WIDGETS) {
                 if(Class29.tabAreaOverlayWidgetId != -1) {
                     Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
                     ISAAC.redrawTabArea = true;
@@ -568,9 +575,9 @@ public class IncomingPackets {
                 }
                 return true;
             }
-            if(Class57.incomingPacket == 208) {
-                int i_59_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
-                Class42.method883((byte) -119, i_59_);
+            if(Class57.incomingPacket == SHOW_CHATBOX_WIDGET) {
+                int widgetId = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
+                Class42.method883((byte) -119, widgetId);
                 if((Class29.tabAreaOverlayWidgetId ^ 0xffffffff) != 0) {
                     Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
                     IdentityKit.aBoolean2597 = true;
@@ -590,9 +597,9 @@ public class IncomingPackets {
                     Class55.method958(Class66.openScreenWidgetId, -14222);
                     Class66.openScreenWidgetId = -1;
                 }
-                if(Class43.openChatboxWidgetId != i_59_) {
+                if(Class43.openChatboxWidgetId != widgetId) {
                     Class55.method958(Class43.openChatboxWidgetId, -14222);
-                    Class43.openChatboxWidgetId = i_59_;
+                    Class43.openChatboxWidgetId = widgetId;
                 }
                 Class52.redrawChatbox = true;
                 Class57.incomingPacket = -1;
@@ -795,13 +802,13 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 160) {
-                int i_81_ = Cache.outgoingbuffer.getUnsignedShortLE();
-                int i_82_ = Cache.outgoingbuffer.getIntLE();
-                Widget widget = Widget.forId(i_82_);
+            if(Class57.incomingPacket == SET_WIDGET_NPC_HEAD) {
+                int npcId = Cache.outgoingbuffer.getUnsignedShortLE();
+                int widgetData = Cache.outgoingbuffer.getIntLE();
+                Widget widget = Widget.forId(widgetData);
                 widget.modelType = 2;
                 Class57.incomingPacket = -1;
-                widget.modelId = i_81_;
+                widget.modelId = npcId;
                 return true;
             }
             if(Class57.incomingPacket == 132) {
@@ -851,20 +858,20 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 210) {
-                int i_83_ = Cache.outgoingbuffer.getIntLE();
-                Widget widget = Widget.forId(i_83_);
+            if(Class57.incomingPacket == SET_WIDGET_PLAYER_HEAD) {
+                int widgetData = Cache.outgoingbuffer.getIntLE();
+                Widget widget = Widget.forId(widgetData);
                 widget.modelType = 3;
                 widget.modelId = Player.localPlayer.aClass30_3282.method374(-20874);
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 110) {
-                int i_84_ = Cache.outgoingbuffer.getIntLE();
+            if(Class57.incomingPacket == UPDATE_WIDGET_TEXT) {
+                int widgetData = Cache.outgoingbuffer.getIntLE();
                 RSString class1 = Cache.outgoingbuffer.getRSString();
-                Widget widget = Widget.forId(i_84_);
+                Widget widget = Widget.forId(widgetData);
                 widget.text = class1;
-                if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] == i_84_ >> 16)
+                if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] == widgetData >> 16)
                     ISAAC.redrawTabArea = true;
                 Class57.incomingPacket = -1;
                 return true;
@@ -875,28 +882,28 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 120) {
+            if(Class57.incomingPacket == 120) { // item model on interface
                 int i_85_ = Cache.outgoingbuffer.getUnsignedShortBE();
-                int i_86_ = Cache.outgoingbuffer.getUnsignedShortLE();
+                int itemId = Cache.outgoingbuffer.getUnsignedShortLE();
                 int i_87_ = Cache.outgoingbuffer.getIntLE();
-                if((i_86_ ^ 0xffffffff) == -65536)
-                    i_86_ = -1;
+                if((itemId ^ 0xffffffff) == -65536)
+                    itemId = -1;
                 Widget widget = Widget.forId(i_87_);
                 if(!widget.isIf3) {
-                    if(i_86_ == -1) {
+                    if(itemId == -1) {
                         Class57.incomingPacket = -1;
                         widget.modelType = 0;
                         return true;
                     }
-                    ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_86_, 10);
-                    widget.rotationX = class40_sub5_sub16.xan2d;
-                    widget.modelId = i_86_;
+                    ItemDefinition itemDefinition = ItemDefinition.forId(itemId, 10);
+                    widget.rotationX = itemDefinition.xan2d;
+                    widget.modelId = itemId;
                     widget.modelType = 4;
-                    widget.modelZoom = 100 * class40_sub5_sub16.zoom2d / i_85_;
-                    widget.rotationZ = class40_sub5_sub16.yan2d;
+                    widget.modelZoom = 100 * itemDefinition.zoom2d / i_85_;
+                    widget.rotationZ = itemDefinition.yan2d;
                 } else {
                     widget.anInt2734 = 1;
-                    widget.anInt2718 = i_86_;
+                    widget.anInt2718 = itemId;
                 }
                 Class57.incomingPacket = -1;
                 return true;
@@ -977,7 +984,7 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if((Class57.incomingPacket ^ 0xffffffff) == -4) {
+            if((Class57.incomingPacket ^ 0xffffffff) == -4) { // move widget position
                 int i_102_ = Cache.outgoingbuffer.getIntBE();
                 int i_103_ = Cache.outgoingbuffer.getNegativeOffsetShortLE();
                 int i_104_ = Cache.outgoingbuffer.getNegativeOffsetShortLE();
@@ -1046,7 +1053,7 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if((Class57.incomingPacket ^ 0xffffffff) == -232) {
+            if((Class57.incomingPacket ^ 0xffffffff) == -232) { // update widget text color
                 int i_113_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
                 int i_114_ = Cache.outgoingbuffer.getIntLE();
                 int i_115_ = i_113_ >> -1304618998 & 0x1f;
