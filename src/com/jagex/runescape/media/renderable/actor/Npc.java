@@ -292,8 +292,8 @@ public class Npc extends Actor {
                         if((SpotAnimDefinition.anInt2302 ^ 0xffffffff) == -2 || (GameFrame.clickType ^ 0xffffffff) == -2)
                             anInt3294++;
                         int i = 34;
-                        if(Class66.anInt1560 != -1)
-                            Class27.method360((byte) 125, 516, i, 338, Class66.anInt1560, 4, 4);
+                        if(Class66.openScreenWidgetId != -1)
+                            Class27.method360((byte) 125, 516, i, 338, Class66.openScreenWidgetId, 4, 4);
                         if(Class29.tabAreaOverlayWidgetId == -1) {
                             if(((Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]) ^ 0xffffffff) != 0)
                                 Class27.method360((byte) 125, 743, i, 466, (Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]), 205, 553);
@@ -303,8 +303,8 @@ public class Npc extends Actor {
                             Class27.method360((byte) 125, 496, i, 453, Class43.openChatboxWidgetId, 357, 17);
                         else if((Class48.anInt1138 ^ 0xffffffff) != 0)
                             Class27.method360((byte) 125, 496, i, 453, Class48.anInt1138, 357, 17);
-                        if((Class66.anInt1560 ^ 0xffffffff) != 0)
-                            Class27.method360((byte) 125, 516, i ^ 0xffffffff, 338, Class66.anInt1560, 4, 4);
+                        if((Class66.openScreenWidgetId ^ 0xffffffff) != 0)
+                            Class27.method360((byte) 125, 516, i ^ 0xffffffff, 338, Class66.openScreenWidgetId, 4, 4);
                         if(Class29.tabAreaOverlayWidgetId != -1)
                             Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, Class29.tabAreaOverlayWidgetId, 205, 553);
                         else if((Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]) != -1)

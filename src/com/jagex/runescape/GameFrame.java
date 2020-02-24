@@ -84,7 +84,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
                             Class48.modifiedWidgetId = i_2_;
                             ItemDefinition.anInt2798 = RSString.anInt1668;
                             Class58.selectedInventorySlot = i_1_;
-                            if((Class66.anInt1560 ^ 0xffffffff) == (i_2_ >> 799918864 ^ 0xffffffff))
+                            if((Class66.openScreenWidgetId ^ 0xffffffff) == (i_2_ >> 799918864 ^ 0xffffffff))
                                 SceneTile.activeInterfaceType = 1;
                             if((i_2_ >> 1441108912 ^ 0xffffffff) == (Class43.openChatboxWidgetId ^ 0xffffffff))
                                 SceneTile.activeInterfaceType = 3;
@@ -249,7 +249,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
     public void mouseWheelMoved(MouseWheelEvent event) {
         System.out.println(cameraZoom);
         int rotation = event.getWheelRotation();
-//        if(!handleInterfaceScrolling(event)) {
+        if(!handleInterfaceScrolling(event)) {
             if((cameraZoom <= 300 && rotation <= 0) || (cameraZoom >= 1200 && rotation >= 0)) {
                 return;
             }
@@ -257,100 +257,99 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
             int diff = rotation * 8;
             cameraZoom = cameraZoom + diff;
             //
-//        }
+        }
     }
 
     public void mouseClicked(MouseEvent arg0) {
         if(arg0.isPopupTrigger())
             arg0.consume();
     }
-//
-//    public boolean handleInterfaceScrolling(MouseWheelEvent event) {
-//        int rotation = event.getWheelRotation();
-//        int mouseX = Class12.eventMouseX;
-//        int mouseY = Cache.eventMouseY;
-//        if(mouseX > 0 && mouseY > 346 && mouseX < 516 && mouseY < 505 && Class43.openChatboxWidgetId == -1) {
-//            if(rotation < 0) {
-//                if(Class12.chatboxInterface.scrollPosition >= 1) {
-//
-//                    if(Class40_Sub5_Sub15.inputType == 3) {
-//                        Class26.itemSearchScroll = Class26.itemSearchScroll - 30;
-//                        Class52.redrawChatbox = true;
-//                    } else {
-//                        GameObjectDefinition.chatboxScroll = GameObjectDefinition.chatboxScroll + 30;
-//                        Class52.redrawChatbox = true;
-//                    }
-//                }
-//            } else {
-//                if(Class40_Sub5_Sub15.inputType == 3) {
-//                    Class26.itemSearchScroll = Class26.itemSearchScroll + 30;
-//                    Class52.redrawChatbox = true;
-//                } else if(GameObjectDefinition.chatboxScroll < 1) {
-//                    Class26.itemSearchScroll = 0;
-//                    Class52.redrawChatbox = true;
-//                } else {
-//                    GameObjectDefinition.chatboxScroll = GameObjectDefinition.chatboxScroll - 30;
-//                    Class52.redrawChatbox = true;
-//                }
-//            }
-//            return true;
-//        } else {
-//            int positionX = 0;
-//            int positionY = 0;
-//            int width = 0;
-//            int height = 0;
-//            int offsetX = 0;
-//            int offsetY = 0;
-//            int childID = 0;
-//            /* Tab interface scrolling */
-//            int tabInterfaceID = Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId];
-//            if(tabInterfaceID != -1) {
-//                Widget tab = Widget.forId(tabInterfaceID);
-//                offsetX = 765 - 218;
-//                offsetY = 503 - 298;
-//                for(int index = 0; index < Widget.interfaces[tab.id].length; index++) {
-//                    if(Widget.interfaces[tab.id][index].scrollHeight > 0) {
-//                        childID = index;
-//                        positionX = Widget.interfaces[tab.id][index].currentX;
-//                        positionY = Widget.interfaces[tab.id][index].currentY;
-//                        width = Widget.interfaces[tab.id][index].originalWidth;
-//                        height = Widget.interfaces[tab.id][index].originalHeight;
-//                        break;
-//                    }
-//                }
-//                if(mouseX > offsetX + positionX && mouseY > offsetY + positionY && mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
-//                    Widget.interfaces[tab.id][childID].scrollPosition += rotation * 30;
-//                    //				client.tabAreaAltered = true;
-//                    ISAAC.redrawTabArea = true;
-//                    return true;
-//                }
-//            }
-//            /* Main interface scrolling */
-//            if(client.openScreenWidgetId != -1) {
-//                Widget widget = Widget.interfaces[client.openScreenWidgetId];
-//                offsetX = 4;
-//                offsetY = 4;
-//                for(int index = 0; index < widget.children.length; index++) {
-//                    if(Widget.interfaces[widget.children[index]].scrollLimit > 0) {
-//                        childID = index;
-//                        positionX = widget.childrenX[index];
-//                        positionY = widget.childrenY[index];
-//                        width = Widget.interfaces[widget.children[index]].width;
-//                        height = Widget.interfaces[widget.children[index]].height;
-//                        break;
-//                    }
-//                }
-//                if(mouseX > offsetX + positionX && mouseY > offsetY + positionY && mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
-//                    Widget.interfaces[widget.children[childID]].scrollPosition += rotation * 30;
-//                    return true;
-//                }
-//
-//            }
-//        }
-//        return false;
-//
-//
-//    }
+
+    public boolean handleInterfaceScrolling(MouseWheelEvent event) {
+        int rotation = event.getWheelRotation();
+        int mouseX = Class12.eventMouseX;
+        int mouseY = Cache.eventMouseY;
+        if(mouseX > 0 && mouseY > 346 && mouseX < 516 && mouseY < 505 && Class43.openChatboxWidgetId == -1) {
+            if(rotation < 0) {
+                if(Class12.chatboxInterface.scrollPosition >= 1) {
+
+                    if(Class40_Sub5_Sub15.inputType == 3) {
+                        Class26.itemSearchScroll = Class26.itemSearchScroll - 30;
+                        Class52.redrawChatbox = true;
+                    } else {
+                        GameObjectDefinition.chatboxScroll = GameObjectDefinition.chatboxScroll + 30;
+                        Class52.redrawChatbox = true;
+                    }
+                }
+            } else {
+                if(Class40_Sub5_Sub15.inputType == 3) {
+                    Class26.itemSearchScroll = Class26.itemSearchScroll + 30;
+                    Class52.redrawChatbox = true;
+                } else if(GameObjectDefinition.chatboxScroll < 1) {
+                    Class26.itemSearchScroll = 0;
+                    Class52.redrawChatbox = true;
+                } else {
+                    GameObjectDefinition.chatboxScroll = GameObjectDefinition.chatboxScroll - 30;
+                    Class52.redrawChatbox = true;
+                }
+            }
+            return true;
+        } else {
+            int positionX = 0;
+            int positionY = 0;
+            int width = 0;
+            int height = 0;
+            int offsetX = 0;
+            int offsetY = 0;
+            int childID = 0;
+            /* Tab interface scrolling */
+            int tabInterfaceID = Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId];
+            if(tabInterfaceID != -1) {
+                offsetX = 765 - 218;
+                offsetY = 503 - 298;
+                for(int index = 0; index < Widget.interfaces[tabInterfaceID].length; index++) {
+                    if(Widget.interfaces[tabInterfaceID][index].scrollHeight > 0) {
+                        childID = index;
+                        positionX = Widget.interfaces[tabInterfaceID][index].currentX;
+                        positionY = Widget.interfaces[tabInterfaceID][index].currentY;
+                        width = Widget.interfaces[tabInterfaceID][index].originalWidth;
+                        height = Widget.interfaces[tabInterfaceID][index].originalHeight;
+                        break;
+                    }
+                }
+                if(mouseX > offsetX + positionX && mouseY > offsetY + positionY && mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
+                    Widget.interfaces[tabInterfaceID][childID].scrollPosition += rotation * 30;
+                    //				client.tabAreaAltered = true;
+                    ISAAC.redrawTabArea = true;
+                    return true;
+                }
+            }
+            /* Main interface scrolling */
+            if(Class66.openScreenWidgetId != -1) {
+                Widget widget = Widget.forId(Class66.openScreenWidgetId);
+                offsetX = 4;
+                offsetY = 4;
+                for(int index = 0; index < Widget.interfaces[widget.id].length; index++) {
+                    if(Widget.interfaces[widget.id][index].scrollHeight > 0) {
+                        childID = index;
+                        positionX = Widget.interfaces[widget.id][index].currentX;
+                        positionY = Widget.interfaces[widget.id][index].currentY;
+                        width = Widget.interfaces[widget.id][index].originalWidth;
+                        height = Widget.interfaces[widget.id][index].originalHeight;
+                        break;
+                    }
+                }
+                if(mouseX > offsetX + positionX && mouseY > offsetY + positionY && mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
+                    Widget.interfaces[widget.id][childID].scrollHeight += rotation * 30;
+                    return true;
+                }
+
+            }
+        }
+        return false;
+
+
+    }
 
 
     public synchronized void mouseMoved(MouseEvent arg0) {

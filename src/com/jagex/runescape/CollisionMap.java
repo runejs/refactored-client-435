@@ -414,9 +414,9 @@ public class CollisionMap {
                     Class55.method958(UnderlayDefinition.anInt2562, -14222);
                     UnderlayDefinition.anInt2562 = -1;
                 }
-                if(Class66.anInt1560 != i_50_) {
-                    Class55.method958(Class66.anInt1560, -14222);
-                    Class66.anInt1560 = i_50_;
+                if(Class66.openScreenWidgetId != i_50_) {
+                    Class55.method958(Class66.openScreenWidgetId, -14222);
+                    Class66.openScreenWidgetId = i_50_;
                 }
                 if((i_49_ ^ 0xffffffff) != (Class29.tabAreaOverlayWidgetId ^ 0xffffffff)) {
                     Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
@@ -486,16 +486,16 @@ public class CollisionMap {
                     Class55.method958(UnderlayDefinition.anInt2562, -14222);
                     UnderlayDefinition.anInt2562 = -1;
                 }
-                if(i_55_ != Class66.anInt1560) {
-                    Class55.method958(Class66.anInt1560, -14222);
-                    Class66.anInt1560 = i_55_;
+                if(i_55_ != Class66.openScreenWidgetId) {
+                    Class55.method958(Class66.openScreenWidgetId, -14222);
+                    Class66.openScreenWidgetId = i_55_;
                 }
                 CacheIndex_Sub1.anInt1819 = -1;
                 if(Class40_Sub5_Sub15.inputType != 0) {
                     Class52.redrawChatbox = true;
                     Class40_Sub5_Sub15.inputType = 0;
                 }
-                Class64.method1012(Class66.anInt1560, 2);
+                Class64.method1012(Class66.openScreenWidgetId, 2);
                 Class57.incomingPacket = -1;
                 return true;
             }
@@ -537,9 +537,9 @@ public class CollisionMap {
                 Class42.method883((byte) -120, i_58_);
                 if(i_57_ != -1)
                     Class42.method883((byte) -124, i_57_);
-                if(Class66.anInt1560 != -1) {
-                    Class55.method958(Class66.anInt1560, -14222);
-                    Class66.anInt1560 = -1;
+                if(Class66.openScreenWidgetId != -1) {
+                    Class55.method958(Class66.openScreenWidgetId, -14222);
+                    Class66.openScreenWidgetId = -1;
                 }
                 if((Class29.tabAreaOverlayWidgetId ^ 0xffffffff) != 0) {
                     Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
@@ -584,9 +584,9 @@ public class CollisionMap {
                     Class55.method958(UnderlayDefinition.anInt2562, -14222);
                     UnderlayDefinition.anInt2562 = -1;
                 }
-                if(Class66.anInt1560 != -1) {
-                    Class55.method958(Class66.anInt1560, -14222);
-                    Class66.anInt1560 = -1;
+                if(Class66.openScreenWidgetId != -1) {
+                    Class55.method958(Class66.openScreenWidgetId, -14222);
+                    Class66.openScreenWidgetId = -1;
                 }
                 Class57.incomingPacket = -1;
                 CacheIndex_Sub1.anInt1819 = -1;
@@ -614,9 +614,9 @@ public class CollisionMap {
                     Class55.method958(UnderlayDefinition.anInt2562, -14222);
                     UnderlayDefinition.anInt2562 = -1;
                 }
-                if(Class66.anInt1560 != -1) {
-                    Class55.method958(Class66.anInt1560, -14222);
-                    Class66.anInt1560 = -1;
+                if(Class66.openScreenWidgetId != -1) {
+                    Class55.method958(Class66.openScreenWidgetId, -14222);
+                    Class66.openScreenWidgetId = -1;
                 }
                 if(Class43.openChatboxWidgetId != i_59_) {
                     Class55.method958(Class43.openChatboxWidgetId, -14222);
@@ -735,9 +735,9 @@ public class CollisionMap {
                     Class55.method958(UnderlayDefinition.anInt2562, -14222);
                     UnderlayDefinition.anInt2562 = -1;
                 }
-                if((Class66.anInt1560 ^ 0xffffffff) != 0) {
-                    Class55.method958(Class66.anInt1560, -14222);
-                    Class66.anInt1560 = -1;
+                if((Class66.openScreenWidgetId ^ 0xffffffff) != 0) {
+                    Class55.method958(Class66.openScreenWidgetId, -14222);
+                    Class66.openScreenWidgetId = -1;
                 }
                 if((i_68_ ^ 0xffffffff) != (Class29.tabAreaOverlayWidgetId ^ 0xffffffff)) {
                     Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);

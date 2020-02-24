@@ -189,7 +189,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
     public static void method587(int arg0) {
         if(arg0 == 2) {
             while(Class34.method416((byte) -125)) {
-                if(Class66.anInt1560 != -1 && (Class66.anInt1548 == Class66.anInt1560)) {
+                if(Class66.openScreenWidgetId != -1 && (Class66.anInt1548 == Class66.openScreenWidgetId)) {
                     if((ItemDefinition.anInt2854 ^ 0xffffffff) == -86 && (Class66.aClass1_1550.length() > 0))
                         Class66.aClass1_1550 = (Class66.aClass1_1550.substring(0, -1 + Class66.aClass1_1550.length()));
                     if((Class40_Sub5_Sub15.method735((byte) -37, Class59.anInt1388) || Class59.anInt1388 == 32) && Class66.aClass1_1550.length() < 12)

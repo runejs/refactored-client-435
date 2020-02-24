@@ -1040,8 +1040,8 @@ public class Main extends RSApplet {
         Class48.anInt1138 = -1;
         Class55.method958(Class43.openChatboxWidgetId, -14222);
         Class43.openChatboxWidgetId = -1;
-        Class55.method958(Class66.anInt1560, -14222);
-        Class66.anInt1560 = -1;
+        Class55.method958(Class66.openScreenWidgetId, -14222);
+        Class66.openScreenWidgetId = -1;
         Class55.method958(ActorDefinition.anInt2433, arg0 + -14222);
         ActorDefinition.anInt2433 = -1;
         Class55.method958(UnderlayDefinition.anInt2562, -14222);

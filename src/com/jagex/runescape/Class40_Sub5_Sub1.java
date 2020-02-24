@@ -249,11 +249,11 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 Class32.packetBuffer.putByte(ItemDefinition.anInt2797);
             }
             if(Class57.anInt1338 >= 412 && Class57.anInt1338 <= 512 && (RSString.anInt1668 ^ 0xffffffff) <= -468 && (RSString.anInt1668 ^ 0xffffffff) >= -500) {
-                if(Class66.anInt1560 == -1) {
+                if(Class66.openScreenWidgetId == -1) {
                     PacketBuffer.method516(127);
                     if((Class34.anInt854 ^ 0xffffffff) != 0) {
                         Class67.aBoolean1601 = false;
-                        Class66.anInt1548 = Class66.anInt1560 = Class34.anInt854;
+                        Class66.anInt1548 = Class66.openScreenWidgetId = Class34.anInt854;
                         Class66.aClass1_1550 = Class66.blank_string;
                     }
                 } else
