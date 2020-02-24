@@ -974,10 +974,10 @@ public class Class27 {
                     if((widget_24_.anInt2692 < widget.anInt2692 + i_26_))
                         i_26_ = (widget_24_.anInt2692 - widget.anInt2692);
                     if((Class10.aWidget_353.anObjectArray2669 != null) && (arg2 & 0x200) != 0)
-                        Class43.method891(widget.anObjectArray2669, 0, i, widget, i_26_, false);
+                        Widget.method891(widget.anObjectArray2669, 0, i, widget, i_26_, false);
                     if(Class40_Sub5_Sub2.anInt2302 == 0 && (arg2 & 0x400 ^ 0xffffffff) != -1) {
                         if(Class10.aWidget_353.anObjectArray2695 != null)
-                            Class43.method891((widget.anObjectArray2695), 0, i, widget, i_26_, false);
+                            Widget.method891((widget.anObjectArray2695), 0, i, widget, i_26_, false);
                         Class10.aWidget_353 = null;
                     }
                 }

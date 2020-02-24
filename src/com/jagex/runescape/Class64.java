@@ -72,7 +72,7 @@ public class Class64 implements Runnable {
             for(int i = 0; widgets.length > i; i++) {
                 Widget widget = widgets[i];
                 if(widget.anObjectArray2677 != null)
-                    Class43.method891(widget.anObjectArray2677, 0, 0, widget, 0, false);
+                    Widget.method891(widget.anObjectArray2677, 0, 0, widget, 0, false);
             }
         }
     }
