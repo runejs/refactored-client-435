@@ -7,6 +7,8 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 
+import static com.jagex.runescape.config.IncomingPackets.*;
+
 public class CollisionMap {
     public static int anInt141;
     public static int anInt158;
@@ -180,7 +182,7 @@ public class CollisionMap {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 12) {
+            if(Class57.incomingPacket == UPDATE_ALL_WIDGET_ITEMS) {
                 ISAAC.redrawTabArea = true;
                 int widgetData = Cache.outgoingbuffer.getIntBE();
                 Widget widget = Class68.method1045(widgetData, (byte) -128);
@@ -973,7 +975,7 @@ public class CollisionMap {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if((Class57.incomingPacket ^ 0xffffffff) == -141) {
+            if(Class57.incomingPacket == SET_TAB_WIDGET) {
                 int i_96_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 int i_97_ = Cache.outgoingbuffer.getUnsignedByte();
                 if(i_96_ == 65535)
@@ -1034,7 +1036,7 @@ public class CollisionMap {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 214) {
+            if(Class57.incomingPacket == UPDATE_SPECIFIC_WIDGET_ITEMS) {
                 ISAAC.redrawTabArea = true;
                 int widgetData = Cache.outgoingbuffer.getIntBE();
                 Widget widget = Class68.method1045(widgetData, (byte) -112);
