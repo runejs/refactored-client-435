@@ -85,8 +85,8 @@ public class Class44 implements Runnable {
         if((arg1.anInt3109 ^ 0xffffffff) == -1)
             arg1.anInt3074 = 0;
         else {
-            if((arg1.anInt3141 ^ 0xffffffff) != 0 && arg1.anInt3122 == 0) {
-                Class40_Sub5_Sub7 class40_sub5_sub7 = Class68_Sub1.method1050(arg1.anInt3141, 2);
+            if((arg1.playingAnimation ^ 0xffffffff) != 0 && arg1.playingAnimationDelay == 0) {
+                Class40_Sub5_Sub7 class40_sub5_sub7 = Class68_Sub1.method1050(arg1.playingAnimation, 2);
                 if((arg1.anInt3094 ^ 0xffffffff) < -1 && class40_sub5_sub7.anInt2470 == 0) {
                     arg1.anInt3074++;
                     return;
@@ -125,7 +125,7 @@ public class Class44 implements Runnable {
                     arg1.anInt3080 = 512;
                 int i_3_ = arg1.anInt3079;
                 int i_4_ = 4;
-                if(arg1.anInt3080 != arg1.anInt3118 && (arg1.anInt3137 ^ 0xffffffff) == 0 && arg1.anInt3113 != 0)
+                if(arg1.anInt3080 != arg1.anInt3118 && (arg1.facingActorIndex ^ 0xffffffff) == 0 && arg1.anInt3113 != 0)
                     i_4_ = 2;
                 if(arg1.anInt3109 > 2)
                     i_4_ = 6;

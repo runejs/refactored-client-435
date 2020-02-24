@@ -97,17 +97,17 @@ public class Class33 {
                                 Class40_Sub5_Sub9.aClass40_Sub5_Sub14_Sub4Array2567[1].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
                         }
                     }
-                    if(actor.aClass1_3090 != null && (i >= Class60.anInt1407 || (Class35.publicChatMode ^ 0xffffffff) == -1 || Class35.publicChatMode == 3 || ((Class35.publicChatMode ^ 0xffffffff) == -2 && (Class40_Sub2.hasFriend((((Player) actor).playerName), arg0 ^ 0x7f74))))) {
+                    if(actor.forcedChatMessage != null && (i >= Class60.anInt1407 || (Class35.publicChatMode ^ 0xffffffff) == -1 || Class35.publicChatMode == 3 || ((Class35.publicChatMode ^ 0xffffffff) == -2 && (Class40_Sub2.hasFriend((((Player) actor).playerName), arg0 ^ 0x7f74))))) {
                         FloorDecoration.method342(88, (actor.anInt3117), actor);
                         if((ISAAC.anInt522 ^ 0xffffffff) < 0 && Class30.anInt709 > Class32.anInt770) {
-                            Class30.anIntArray680[Class32.anInt770] = ((Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getStringWidth(actor.aClass1_3090)) / 2);
+                            Class30.anIntArray680[Class32.anInt770] = ((Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getStringWidth(actor.forcedChatMessage)) / 2);
                             Class30.anIntArray688[Class32.anInt770] = (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.characterDefaultHeight);
                             Class30.anIntArray715[Class32.anInt770] = ISAAC.anInt522;
                             Class30.anIntArray685[Class32.anInt770] = Class44.anInt1048;
                             Class30.anIntArray712[Class32.anInt770] = actor.anInt3102;
                             Class30.anIntArray695[Class32.anInt770] = actor.anInt3123;
                             Class30.anIntArray684[Class32.anInt770] = actor.anInt3078;
-                            Class30.aClass1Array697[Class32.anInt770] = actor.aClass1_3090;
+                            Class30.aClass1Array697[Class32.anInt770] = actor.forcedChatMessage;
                             Class32.anInt770++;
                         }
                     }

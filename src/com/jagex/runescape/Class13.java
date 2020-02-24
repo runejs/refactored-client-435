@@ -49,7 +49,7 @@ public class Class13 {
     public static void method241(Actor arg0, int arg1, byte arg2) {
         anInt400++;
         if((arg0.anInt3098 ^ 0xffffffff) > -129 || arg0.anInt3089 < 128 || arg0.anInt3098 >= 13184 || (arg0.anInt3089 ^ 0xffffffff) <= -13185) {
-            arg0.anInt3141 = -1;
+            arg0.playingAnimation = -1;
             arg0.anInt3112 = 0;
             arg0.anInt3107 = 0;
             arg0.anInt3091 = -1;
@@ -61,7 +61,7 @@ public class Class13 {
             arg0.anInt3091 = -1;
             arg0.anInt3107 = 0;
             arg0.anInt3112 = 0;
-            arg0.anInt3141 = -1;
+            arg0.playingAnimation = -1;
             arg0.anInt3098 = arg0.anIntArray3088[0] * 128 + (arg0.anInt3096 * 64);
             arg0.anInt3089 = 64 * arg0.anInt3096 + arg0.anIntArray3135[0] * 128;
             arg0.method790(0);
@@ -121,92 +121,90 @@ public class Class13 {
 
     }
 
-    public static void method245(int arg0) {
+    public static void parseNpcUpdateMasks() {
         for(int i = 0; i < Actor.anInt3153; i++) {
-            int i_1_ = Class24.anIntArray578[i];
-            Npc class40_sub5_sub17_sub4_sub2 = CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_1_];
-            int i_2_ = Cache.outgoingbuffer.getUnsignedByte();
-            if((0x1 & i_2_ ^ 0xffffffff) != -1) {
+            int npcIndex = Class24.anIntArray578[i];
+            Npc npc = CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[npcIndex];
+            int mask = Cache.outgoingbuffer.getUnsignedByte();
+            if((0x1 & mask ^ 0xffffffff) != -1) {
                 int i_3_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                 int i_4_ = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
-                class40_sub5_sub17_sub4_sub2.method785(i_4_, Node.anInt926, i_3_, -121);
-                class40_sub5_sub17_sub4_sub2.anInt3139 = Node.anInt926 + 300;
-                class40_sub5_sub17_sub4_sub2.anInt3130 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-                class40_sub5_sub17_sub4_sub2.anInt3101 = Cache.outgoingbuffer.getUnsignedByte();
+                npc.method785(i_4_, Node.anInt926, i_3_, -121);
+                npc.anInt3139 = Node.anInt926 + 300;
+                npc.anInt3130 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
+                npc.anInt3101 = Cache.outgoingbuffer.getUnsignedByte();
             }
-            if((0x20 & i_2_) != 0) {
-                class40_sub5_sub17_sub4_sub2.anInt3091 = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
+            if((0x20 & mask) != 0) {
+                npc.anInt3091 = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
                 int i_5_ = Cache.outgoingbuffer.getIntBE();
-                class40_sub5_sub17_sub4_sub2.anInt3129 = 0;
-                class40_sub5_sub17_sub4_sub2.anInt3093 = Node.anInt926 + (0xffff & i_5_);
-                class40_sub5_sub17_sub4_sub2.anInt3110 = i_5_ >> -1206933168;
-                class40_sub5_sub17_sub4_sub2.anInt3140 = 0;
-                if(class40_sub5_sub17_sub4_sub2.anInt3093 > Node.anInt926)
-                    class40_sub5_sub17_sub4_sub2.anInt3140 = -1;
-                if(class40_sub5_sub17_sub4_sub2.anInt3091 == 65535)
-                    class40_sub5_sub17_sub4_sub2.anInt3091 = -1;
+                npc.anInt3129 = 0;
+                npc.anInt3093 = Node.anInt926 + (0xffff & i_5_);
+                npc.anInt3110 = i_5_ >> -1206933168;
+                npc.anInt3140 = 0;
+                if(npc.anInt3093 > Node.anInt926)
+                    npc.anInt3140 = -1;
+                if(npc.anInt3091 == 65535)
+                    npc.anInt3091 = -1;
             }
-            if((i_2_ & 0x4 ^ 0xffffffff) != -1) {
-                class40_sub5_sub17_sub4_sub2.anInt3137 = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
-                if((class40_sub5_sub17_sub4_sub2.anInt3137 ^ 0xffffffff) == -65536)
-                    class40_sub5_sub17_sub4_sub2.anInt3137 = -1;
+            if((mask & 0x4 ^ 0xffffffff) != -1) {
+                npc.facingActorIndex = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
+                if((npc.facingActorIndex ^ 0xffffffff) == -65536)
+                    npc.facingActorIndex = -1;
             }
-            if((0x2 & i_2_) != 0) {
+            if((0x2 & mask) != 0) {
                 int i_6_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                 int i_7_ = Cache.outgoingbuffer.getUnsignedByte();
-                class40_sub5_sub17_sub4_sub2.method785(i_7_, Node.anInt926, i_6_, -119);
-                class40_sub5_sub17_sub4_sub2.anInt3139 = Node.anInt926 + 300;
-                class40_sub5_sub17_sub4_sub2.anInt3130 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
-                class40_sub5_sub17_sub4_sub2.anInt3101 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
+                npc.method785(i_7_, Node.anInt926, i_6_, -119);
+                npc.anInt3139 = Node.anInt926 + 300;
+                npc.anInt3130 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
+                npc.anInt3101 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
             }
-            if((0x40 & i_2_ ^ 0xffffffff) != -1) {
-                class40_sub5_sub17_sub4_sub2.aClass1_3090 = Cache.outgoingbuffer.getRSString();
-                class40_sub5_sub17_sub4_sub2.anInt3078 = 100;
+            if((0x40 & mask ^ 0xffffffff) != -1) {
+                npc.forcedChatMessage = Cache.outgoingbuffer.getRSString();
+                npc.anInt3078 = 100;
             }
-            if((i_2_ & 0x80) != 0) {
-                class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300 = ActorDefinition.getDefinition((byte) -122, Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE());
-                class40_sub5_sub17_sub4_sub2.anInt3083 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2389);
-                class40_sub5_sub17_sub4_sub2.anInt3113 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.degreesToTurn);
-                class40_sub5_sub17_sub4_sub2.anInt3075 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate90RightAnimation);
-                class40_sub5_sub17_sub4_sub2.anInt3126 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.stanceAnimation);
-                class40_sub5_sub17_sub4_sub2.anInt3131 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.walkAnimation);
-                class40_sub5_sub17_sub4_sub2.anInt3145 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.anInt2421);
-                class40_sub5_sub17_sub4_sub2.anInt3096 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.tileSpacesOccupied);
-                class40_sub5_sub17_sub4_sub2.anInt3132 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate90LeftAnimation);
-                class40_sub5_sub17_sub4_sub2.anInt3079 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate180Animation);
+            if((mask & 0x80) != 0) {
+                npc.aClass40_Sub5_Sub5_3300 = ActorDefinition.getDefinition((byte) -122, Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE());
+                npc.anInt3083 = (npc.aClass40_Sub5_Sub5_3300.anInt2389);
+                npc.anInt3113 = (npc.aClass40_Sub5_Sub5_3300.degreesToTurn);
+                npc.anInt3075 = (npc.aClass40_Sub5_Sub5_3300.rotate90RightAnimation);
+                npc.anInt3126 = (npc.aClass40_Sub5_Sub5_3300.stanceAnimation);
+                npc.anInt3131 = (npc.aClass40_Sub5_Sub5_3300.walkAnimation);
+                npc.anInt3145 = (npc.aClass40_Sub5_Sub5_3300.anInt2421);
+                npc.anInt3096 = (npc.aClass40_Sub5_Sub5_3300.tileSpacesOccupied);
+                npc.anInt3132 = (npc.aClass40_Sub5_Sub5_3300.rotate90LeftAnimation);
+                npc.anInt3079 = (npc.aClass40_Sub5_Sub5_3300.rotate180Animation);
             }
-            if((i_2_ & 0x8) != 0) {
-                class40_sub5_sub17_sub4_sub2.anInt3148 = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
-                class40_sub5_sub17_sub4_sub2.anInt3100 = Cache.outgoingbuffer.getUnsignedShortLE();
+            if((mask & 0x8) != 0) {
+                npc.facePositionX = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
+                npc.facePositionY = Cache.outgoingbuffer.getUnsignedShortLE();
             }
-            if((0x10 & i_2_ ^ 0xffffffff) != -1) {
-                int i_8_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
-                if(i_8_ == 65535)
-                    i_8_ = -1;
-                int i_9_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
-                if(i_8_ == class40_sub5_sub17_sub4_sub2.anInt3141 && i_8_ != -1) {
-                    int i_10_ = Class68_Sub1.method1050(i_8_, 2).anInt2483;
+            if((0x10 & mask ^ 0xffffffff) != -1) {
+                int animationId = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
+                if(animationId == 65535)
+                    animationId = -1;
+                int animationDelay = Cache.outgoingbuffer.getUnsignedInvertedByte();
+                if(animationId == npc.playingAnimation && animationId != -1) {
+                    int i_10_ = Class68_Sub1.method1050(animationId, 2).anInt2483;
                     if(i_10_ == 1) {
-                        class40_sub5_sub17_sub4_sub2.anInt3115 = 0;
-                        class40_sub5_sub17_sub4_sub2.anInt3095 = 0;
-                        class40_sub5_sub17_sub4_sub2.anInt3104 = 0;
-                        class40_sub5_sub17_sub4_sub2.anInt3122 = i_9_;
+                        npc.anInt3115 = 0;
+                        npc.anInt3095 = 0;
+                        npc.anInt3104 = 0;
+                        npc.playingAnimationDelay = animationDelay;
                     }
                     if((i_10_ ^ 0xffffffff) == -3)
-                        class40_sub5_sub17_sub4_sub2.anInt3095 = 0;
-                } else if(i_8_ == -1 || class40_sub5_sub17_sub4_sub2.anInt3141 == -1 || (Class68_Sub1.method1050(i_8_, 2).anInt2494 >= (Class68_Sub1.method1050(class40_sub5_sub17_sub4_sub2.anInt3141, 2).anInt2494))) {
-                    class40_sub5_sub17_sub4_sub2.anInt3141 = i_8_;
-                    class40_sub5_sub17_sub4_sub2.anInt3115 = 0;
-                    class40_sub5_sub17_sub4_sub2.anInt3122 = i_9_;
-                    class40_sub5_sub17_sub4_sub2.anInt3104 = 0;
-                    class40_sub5_sub17_sub4_sub2.anInt3095 = 0;
-                    class40_sub5_sub17_sub4_sub2.anInt3094 = class40_sub5_sub17_sub4_sub2.anInt3109;
+                        npc.anInt3095 = 0;
+                } else if(animationId == -1 || npc.playingAnimation == -1 || (Class68_Sub1.method1050(animationId, 2).anInt2494 >= (Class68_Sub1.method1050(npc.playingAnimation, 2).anInt2494))) {
+                    npc.playingAnimation = animationId;
+                    npc.anInt3115 = 0;
+                    npc.playingAnimationDelay = animationDelay;
+                    npc.anInt3104 = 0;
+                    npc.anInt3095 = 0;
+                    npc.anInt3094 = npc.anInt3109;
                 }
             }
         }
         anInt409++;
-        if(arg0 != 3799)
-            worldid = -59;
     }
 
     public static synchronized byte[] method246(int arg1) {

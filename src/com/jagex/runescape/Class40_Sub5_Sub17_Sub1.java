@@ -232,8 +232,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
 
         anInt3008++;
         if(arg0 != (arg1.anInt3113 ^ 0xffffffff)) {
-            if(arg1.anInt3137 != -1 && (arg1.anInt3137 ^ 0xffffffff) > -32769) {
-                Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[arg1.anInt3137]);
+            if(arg1.facingActorIndex != -1 && (arg1.facingActorIndex ^ 0xffffffff) > -32769) {
+                Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[arg1.facingActorIndex]);
                 if(class40_sub5_sub17_sub4_sub2 != null) {
                     int i = (-class40_sub5_sub17_sub4_sub2.anInt3089 + arg1.anInt3089);
                     int i_10_ = (-class40_sub5_sub17_sub4_sub2.anInt3098 + arg1.anInt3098);
@@ -241,8 +241,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         arg1.anInt3080 = 0x7ff & (int) (325.949 * Math.atan2((double) i_10_, (double) i));
                 }
             }
-            if((arg1.anInt3137 ^ 0xffffffff) <= -32769) {
-                int i = -32768 + arg1.anInt3137;
+            if((arg1.facingActorIndex ^ 0xffffffff) <= -32769) {
+                int i = -32768 + arg1.facingActorIndex;
                 if(i == Class30.anInt708)
                     i = 2047;
                 Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i]);
@@ -253,13 +253,13 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         arg1.anInt3080 = (int) (Math.atan2((double) i_11_, (double) i_12_) * 325.949) & 0x7ff;
                 }
             }
-            if((arg1.anInt3148 != 0 || (arg1.anInt3100 ^ 0xffffffff) != -1) && ((arg1.anInt3109 ^ 0xffffffff) == -1 || (arg1.anInt3074 ^ 0xffffffff) < -1)) {
-                int i = (arg1.anInt3089 - 64 * (arg1.anInt3100 - Class26.anInt635 - Class26.anInt635));
-                int i_13_ = (-((-Class40_Sub5_Sub2.anInt2307 + arg1.anInt3148 + -Class40_Sub5_Sub2.anInt2307) * 64) + arg1.anInt3098);
+            if((arg1.facePositionX != 0 || (arg1.facePositionY ^ 0xffffffff) != -1) && ((arg1.anInt3109 ^ 0xffffffff) == -1 || (arg1.anInt3074 ^ 0xffffffff) < -1)) {
+                int i = (arg1.anInt3089 - 64 * (arg1.facePositionY - Class26.anInt635 - Class26.anInt635));
+                int i_13_ = (-((-Class40_Sub5_Sub2.anInt2307 + arg1.facePositionX + -Class40_Sub5_Sub2.anInt2307) * 64) + arg1.anInt3098);
                 if((i_13_ ^ 0xffffffff) != -1 || (i ^ 0xffffffff) != -1)
                     arg1.anInt3080 = 0x7ff & (int) (325.949 * Math.atan2((double) i_13_, (double) i));
-                arg1.anInt3100 = 0;
-                arg1.anInt3148 = 0;
+                arg1.facePositionY = 0;
+                arg1.facePositionX = 0;
             }
             int i = 0x7ff & arg1.anInt3080 + -arg1.anInt3118;
             if((i ^ 0xffffffff) != -1) {
