@@ -8,7 +8,7 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 
-import static com.jagex.runescape.config.IncomingPackets.*;
+import static com.jagex.runescape.net.IncomingPackets.*;
 
 public class CollisionMap {
     public static int anInt141;
@@ -686,7 +686,7 @@ public class CollisionMap {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 92) {
+            if(Class57.incomingPacket == UPDATE_PLAYERS) {
                 Class27.method354((byte) 57);
                 Class57.incomingPacket = -1;
                 return true;
@@ -705,8 +705,8 @@ public class CollisionMap {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if((Class57.incomingPacket ^ 0xffffffff) == -129) {
-                GameObject.method768(89);
+            if(Class57.incomingPacket == UPDATE_NPCS) {
+                GameObject.parseNpcUpdatePacket(89);
                 Class57.incomingPacket = -1;
                 return true;
             }
@@ -990,7 +990,7 @@ public class CollisionMap {
                 ISAAC.redrawTabArea = true;
                 return true;
             }
-            if((Class57.incomingPacket ^ 0xffffffff) == -35) {
+            if(Class57.incomingPacket == UPDATE_SKILL) {
                 ISAAC.redrawTabArea = true;
                 int i_98_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                 int i_99_ = Cache.outgoingbuffer.getUnsignedByte();
@@ -1069,7 +1069,7 @@ public class CollisionMap {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 166) {
+            if(Class57.incomingPacket == SET_MAP_CHUNK) {
                 FloorDecoration.method343(false, 5688);
                 Class57.incomingPacket = -1;
                 return true;

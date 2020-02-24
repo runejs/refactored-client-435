@@ -58,7 +58,7 @@ public class GameObject extends Renderable {
         }
     }
 
-    public static void method768(int arg0) {
+    public static void parseNpcUpdatePacket(int arg0) {
         Class17.anInt460 = 0;
         Actor.anInt3153 = 0;
         Class40_Sub5_Sub17_Sub1.method759(false);
