@@ -21,9 +21,6 @@ public class Class40_Sub5_Sub11 extends SubNode {
     public int anInt2633 = 0;
 
     public static void method631(Actor arg0, boolean arg1) {
-
-        if(arg1 != false)
-            method633(-48);
         int i = arg0.anInt3125 * 128 + (64 * arg0.anInt3096);
         int i_0_ = arg0.anInt3112 + -Node.pulseCycle;
         if(arg0.anInt3073 == 0)
@@ -49,22 +46,6 @@ public class Class40_Sub5_Sub11 extends SubNode {
             aClass1_2620 = null;
             tabWidgetIds = null;
             aClass1_2622 = null;
-        }
-
-    }
-
-    public static void method633(int arg0) {
-
-        if(arg0 == -1) {
-            for(int i = 0; i < Actor.anInt3153; i++) {
-                int i_2_ = Class24.anIntArray578[i];
-                Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_2_]);
-                int i_3_ = Cache.outgoingbuffer.getUnsignedByte();
-                if((i_3_ & 0x2) != 0)
-                    i_3_ += (Cache.outgoingbuffer.getUnsignedByte() << 1874166152);
-                Class68_Sub1.parsePlayerUpdateMasks(class40_sub5_sub17_sub4_sub1, i_3_, i_2_);
-            }
-            anInt2632++;
         }
 
     }

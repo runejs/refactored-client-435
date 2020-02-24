@@ -58,29 +58,6 @@ public class GameObject extends Renderable {
         }
     }
 
-    public static void method768(int arg0) {
-        Class17.anInt460 = 0;
-        Actor.anInt3153 = 0;
-        Class40_Sub5_Sub17_Sub1.method759(false);
-        Class42.method889(48);
-        Class13.parseNpcUpdateMasks();
-        if(arg0 > 75) {
-            for(int i = 0; i < Class17.anInt460; i++) {
-                int i_0_ = CacheIndex.anIntArray225[i];
-                if(Node.pulseCycle != (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_].anInt3134)) {
-                    CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_].aClass40_Sub5_Sub5_3300 = null;
-                    CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_] = null;
-                }
-            }
-            if((Widget.packetsize ^ 0xffffffff) != (Cache.outgoingbuffer.currentPosition ^ 0xffffffff))
-                throw new RuntimeException("gnp1 pos:" + (Cache.outgoingbuffer.currentPosition) + " psize:" + Widget.packetsize);
-            for(int i = 0; GameObjectDefinition.anInt2558 > i; i++) {
-                if((CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i]]) == null)
-                    throw new RuntimeException("gnp2 pos:" + i + " size:" + (GameObjectDefinition.anInt2558));
-            }
-        }
-    }
-
     public static IndexedImage method769(int arg0, CacheIndex arg1, int arg2) {
         if(!Buffer.method472(arg1, arg2))
             return null;
