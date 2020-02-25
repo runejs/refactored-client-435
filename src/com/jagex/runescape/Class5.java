@@ -30,7 +30,7 @@ public class Class5 {
         for(int i = 0; (i ^ 0xffffffff) > -9; i++) {
             for(int i_0_ = 0; (i_0_ ^ 0xffffffff) > -9; i_0_++) {
                 if((arg5 + i ^ 0xffffffff) < -1 && (i + arg5 ^ 0xffffffff) > -104 && arg0 + i_0_ > 0 && i_0_ + arg0 < 103)
-                    arg9[arg4].anIntArrayArray150[arg5 + i][i_0_ + arg0] = Class66.method1021((arg9[arg4].anIntArrayArray150[arg5 + i][i_0_ + arg0]), -16777217);
+                    arg9[arg4].anIntArrayArray150[arg5 + i][i_0_ + arg0] = HuffmanEncoding.method1021((arg9[arg4].anIntArrayArray150[arg5 + i][i_0_ + arg0]), -16777217);
             }
         }
         Buffer class40_sub1 = new Buffer(arg8);
@@ -171,19 +171,19 @@ public class Class5 {
         if(Class12.anInt380 == 2) {
             if((i ^ 0xffffffff) == -202) {
                 Class37.anInt876 = 1;
-                Class66.aClass1_1563 = Widget.aClass1_2740;
+                HuffmanEncoding.aClass1_1563 = Widget.aClass1_2740;
                 Class19.aBoolean490 = true;
                 Class40_Sub5_Sub15.inputType = 0;
-                Class66.aClass1_1565 = Class66.blank_string;
+                HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
                 Class52.redrawChatbox = true;
             }
             if(i == 202) {
                 Class37.anInt876 = 2;
-                Class66.aClass1_1563 = Class13.aClass1_417;
+                HuffmanEncoding.aClass1_1563 = Class13.aClass1_417;
                 Class52.redrawChatbox = true;
                 Class40_Sub5_Sub15.inputType = 0;
                 Class19.aBoolean490 = true;
-                Class66.aClass1_1565 = Class66.blank_string;
+                HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
             }
         }
         if((i ^ 0xffffffff) == -206) {
@@ -194,8 +194,8 @@ public class Class5 {
             Class40_Sub5_Sub15.inputType = 0;
             Class37.anInt876 = 4;
             Class52.redrawChatbox = true;
-            Class66.aClass1_1563 = Class51.aClass1_1200;
-            Class66.aClass1_1565 = Class66.blank_string;
+            HuffmanEncoding.aClass1_1563 = Class51.aClass1_1200;
+            HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
             Class19.aBoolean490 = true;
         }
         if(i == 502) {
@@ -203,8 +203,8 @@ public class Class5 {
             Class40_Sub5_Sub15.inputType = 0;
             Class37.anInt876 = 5;
             Class19.aBoolean490 = true;
-            Class66.aClass1_1565 = Class66.blank_string;
-            Class66.aClass1_1563 = Class12.aClass1_399;
+            HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
+            HuffmanEncoding.aClass1_1563 = Class12.aClass1_399;
         }
         if((i ^ 0xffffffff) <= -301 && (i ^ 0xffffffff) >= -314) {
             int i_13_ = (-300 + i) / 2;
@@ -232,9 +232,9 @@ public class Class5 {
             Class67.aBoolean1601 = !Class67.aBoolean1601;
         if((i ^ 0xffffffff) <= -602 && (i ^ 0xffffffff) >= -614) {
             PacketBuffer.method516(123);
-            if((Class66.aClass1_1550.length() ^ 0xffffffff) < -1) {
+            if((HuffmanEncoding.aClass1_1550.length() ^ 0xffffffff) < -1) {
                 Class32.packetBuffer.putPacket(202);
-                Class32.packetBuffer.putLongBE(Class66.aClass1_1550.method58((byte) 102));
+                Class32.packetBuffer.putLongBE(HuffmanEncoding.aClass1_1550.method58((byte) 102));
                 Class32.packetBuffer.putByte(-601 + i);
                 Class32.packetBuffer.putByte(Class67.aBoolean1601 ? 1 : 0);
             }

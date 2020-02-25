@@ -185,9 +185,9 @@ public class GameObjectDefinition extends SubNode {
     public Model getGameObjectModel(int arg0, int arg1, int arg2, int arg3, int arg4, byte arg5, int arg6) {
         long l;
         if(objectTypes == null) {
-            l = (long) ((anInt2538 << 1723242090) + arg2);
+            l = (long) ((anInt2538 << 10) + arg2);
         } else {
-            l = (long) (arg2 + ((anInt2538 << -855239862) + (arg4 << 399635491)));
+            l = (long) (arg2 + ((anInt2538 << 10) + (arg4 << 3)));
         }
         if(arg5 != 124) {
             actions = null;

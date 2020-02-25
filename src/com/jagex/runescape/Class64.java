@@ -83,15 +83,15 @@ public class Class64 implements Runnable {
         if(arg0 != false)
             method1013(false);
         if((Class8.anInt301 ^ 0xffffffff) == -1 && Main.anInt1773 == 0) {
-            OverlayDefinition.method558(0, Class22_Sub2.aClass1_1876, Landscape.mouseY, -501, Class13.mouseX, 7, Class66.blank_string);
+            OverlayDefinition.method558(0, Class22_Sub2.aClass1_1876, Landscape.mouseY, -501, Class13.mouseX, 7, HuffmanEncoding.blank_string);
         }
         int i_1_ = 0;
         for(/**/; ((Model.anInt3220 > i_1_)); i_1_++) {
             int i_2_ = Model.anIntArray3211[i_1_];
             int i_3_ = 0x7f & i_2_;
-            int i_4_ = i_2_ >> -701905497 & 0x7f;
-            int i_5_ = i_2_ >> -375610243 & 0x3;
-            int i_6_ = (i_2_ & 0x1fffcccc) >> 2127666126;
+            int i_4_ = i_2_ >> 7 & 0x7f;
+            int i_5_ = i_2_ >> 29 & 0x3;
+            int i_6_ = (i_2_ & 0x1fffcccc) >> 14;
             if(i != i_2_) {
                 i = i_2_;
                 if(i_5_ == 2 && (Npc.aScene_3301.method141(Player.anInt3267, i_3_, i_4_, i_2_)) >= 0) {
@@ -127,7 +127,7 @@ public class Class64 implements Runnable {
                                 }
                             }
                         }
-                        OverlayDefinition.method558(gameObjectDefinition.anInt2538 << 2045308238, Class40_Sub5_Sub15.aClass1_2774, i_4_, -501, i_3_, 1004, (Class40_Sub5_Sub17_Sub6.method832(113, (new RSString[]{Renderable.aClass1_2862, gameObjectDefinition.name}))));
+                        OverlayDefinition.method558(gameObjectDefinition.anInt2538 << 14, Class40_Sub5_Sub15.aClass1_2774, i_4_, -501, i_3_, 1004, (Class40_Sub5_Sub17_Sub6.method832(113, (new RSString[]{Renderable.aClass1_2862, gameObjectDefinition.name}))));
                     } else if((ItemDefinition.anInt2815 & 0x4) == 4) {
                         Renderable.anInt2863++;
                         OverlayDefinition.method558(i_2_, Class38_Sub1.aClass1_1918, i_4_, -501, i_3_, 32, (Class40_Sub5_Sub17_Sub6.method832(111, (new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.name}))));
@@ -139,7 +139,7 @@ public class Class64 implements Runnable {
                         for(int i_9_ = 0; ((GameObjectDefinition.anInt2558 > i_9_)); i_9_++) {
                             Npc class40_sub5_sub17_sub4_sub2_10_ = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_9_]]);
                             if(class40_sub5_sub17_sub4_sub2_10_ != null && (class40_sub5_sub17_sub4_sub2_10_ != class40_sub5_sub17_sub4_sub2) && ((class40_sub5_sub17_sub4_sub2_10_.aClass40_Sub5_Sub5_3300.tileSpacesOccupied) ^ 0xffffffff) == -2 && ((class40_sub5_sub17_sub4_sub2.anInt3098 ^ 0xffffffff) == ((class40_sub5_sub17_sub4_sub2_10_.anInt3098) ^ 0xffffffff)) && ((class40_sub5_sub17_sub4_sub2_10_.anInt3089) == (class40_sub5_sub17_sub4_sub2.anInt3089)))
-                                Class66.method1025(0, i_3_, i_4_, Class40_Sub3.anIntArray2016[i_9_], (class40_sub5_sub17_sub4_sub2_10_.aClass40_Sub5_Sub5_3300));
+                                HuffmanEncoding.method1025(0, i_3_, i_4_, Class40_Sub3.anIntArray2016[i_9_], (class40_sub5_sub17_sub4_sub2_10_.aClass40_Sub5_Sub5_3300));
                         }
                         for(int i_11_ = 0; i_11_ < Class60.anInt1407; i_11_++) {
                             Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_11_]]);
@@ -147,7 +147,7 @@ public class Class64 implements Runnable {
                                 Class40_Sub5_Sub1.method545(i_4_, false, i_3_, class40_sub5_sub17_sub4_sub1, Class57.anIntArray1334[i_11_]);
                         }
                     }
-                    Class66.method1025(0, i_3_, i_4_, i_6_, (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300));
+                    HuffmanEncoding.method1025(0, i_3_, i_4_, i_6_, (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300));
                 }
                 if(i_5_ == 0) {
                     Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_6_]);
@@ -155,7 +155,7 @@ public class Class64 implements Runnable {
                         for(int i_12_ = 0; ((i_12_ < GameObjectDefinition.anInt2558)); i_12_++) {
                             Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_12_]]);
                             if(class40_sub5_sub17_sub4_sub2 != null && ((class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.tileSpacesOccupied) == 1) && ((class40_sub5_sub17_sub4_sub1.anInt3098 ^ 0xffffffff) == ((class40_sub5_sub17_sub4_sub2.anInt3098) ^ 0xffffffff)) && (class40_sub5_sub17_sub4_sub2.anInt3089 == (class40_sub5_sub17_sub4_sub1.anInt3089)))
-                                Class66.method1025(0, i_3_, i_4_, Class40_Sub3.anIntArray2016[i_12_], (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300));
+                                HuffmanEncoding.method1025(0, i_3_, i_4_, Class40_Sub3.anIntArray2016[i_12_], (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300));
                         }
                         for(int i_13_ = 0; ((i_13_ < Class60.anInt1407)); i_13_++) {
                             Player class40_sub5_sub17_sub4_sub1_14_ = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_13_]]);

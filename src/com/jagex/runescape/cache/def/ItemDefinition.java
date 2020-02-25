@@ -127,7 +127,7 @@ public class ItemDefinition extends SubNode {
             return false;
         }
         for(int i = 0; arg1.alternateOperators.length > i; i++) {
-            int i_10_ = Class66.method1029(i, false, arg1);
+            int i_10_ = HuffmanEncoding.method1029(i, false, arg1);
             int i_11_ = arg1.alternateRhs[i];
             if((arg1.alternateOperators[i] ^ 0xffffffff) == -3) {
                 if((i_11_ <= i_10_)) {
@@ -150,7 +150,7 @@ public class ItemDefinition extends SubNode {
 
     public static void method748(int arg1) {
         for(Renderable.anInt2866 += arg1; (Renderable.anInt2866 >= CollisionMap.anInt141); Renderable.anInt2866 -= CollisionMap.anInt141) {
-            SubNode.anInt2081 -= SubNode.anInt2081 >> -1244591038;
+            SubNode.anInt2081 -= SubNode.anInt2081 >> 2;
         }
         SubNode.anInt2081 -= 1000 * arg1;
         if((SubNode.anInt2081 ^ 0xffffffff) > -1) {
@@ -161,10 +161,10 @@ public class ItemDefinition extends SubNode {
     public static void method749(boolean arg0) {
         for(int i = 0; GameObjectDefinition.anInt2558 > i; i++) {
             Npc npc = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i]]);
-            int i_15_ = (536870912 + (Class40_Sub3.anIntArray2016[i] << 1399377262));
+            int i_15_ = (536870912 + (Class40_Sub3.anIntArray2016[i] << 14));
             if(npc != null && npc.isVisible(1) && !arg0 != (npc.aClass40_Sub5_Sub5_3300.hasRenderPriority) && npc.aClass40_Sub5_Sub5_3300.method571(-1)) {
-                int i_16_ = (npc.anInt3098 >> -1699335129);
-                int i_17_ = npc.anInt3089 >> 698755175;
+                int i_16_ = (npc.anInt3098 >> 7);
+                int i_17_ = npc.anInt3089 >> 7;
                 if((i_16_ ^ 0xffffffff) <= -1 && (i_16_ ^ 0xffffffff) > -105 && (i_17_ ^ 0xffffffff) <= -1 && i_17_ < 104) {
                     if((npc.anInt3096 ^ 0xffffffff) == -2 && (npc.anInt3098 & 0x7f ^ 0xffffffff) == -65 && ((npc.anInt3089 & 0x7f) == 64)) {
                         if((Class40_Sub5_Sub11.anInt2628 ^ 0xffffffff) == (Class61.anIntArrayArray1435[i_16_][i_17_] ^ 0xffffffff)) {

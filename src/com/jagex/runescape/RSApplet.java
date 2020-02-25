@@ -178,8 +178,8 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
     public static int method32(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
         if(arg3 != true)
             return -109;
-        int i = (65536 + -(R3D.cosinetable[1024 * arg4 / arg1]) >> 1712636353);
-        return (((65536 + -i) * arg0 >> 523531120) + (arg2 * i >> 1426525808));
+        int i = (65536 + -(R3D.cosinetable[1024 * arg4 / arg1]) >> 1);
+        return (((65536 + -i) * arg0 >> 16) + (arg2 * i >> 16));
     }
 
     public void run() {
@@ -383,7 +383,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             aLongArray4[Class30.anInt681] = l;
             if((l_11_ ^ 0xffffffffffffffffL) != -1L && ((l_11_ ^ 0xffffffffffffffffL) > (l ^ 0xffffffffffffffffL))) {
                 int i = (int) (-l_11_ + l);
-                Class52.anInt1219 = ((i >> -17114751) + 32000) / i;
+                Class52.anInt1219 = ((i >> 1) + 32000) / i;
             }
             Class30.anInt681 = Class30.anInt681 + 1 & 0x1f;
             if(Node.anInt938++ > 50) {

@@ -41,7 +41,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
         }
         anIntArray2227[anInt2229++] = -anInt2226 + arg3;
         anInt2226 = arg3;
-        anIntArray2227[anInt2229++] = (UnderlayDefinition.method619(UnderlayDefinition.method619(arg4, arg0 << -777037144), arg2 << -1978505296));
+        anIntArray2227[anInt2229++] = (UnderlayDefinition.bitWiseOR(UnderlayDefinition.bitWiseOR(arg4, arg0 << 8), arg2 << 16));
 
     }
 
@@ -91,8 +91,8 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
         else if((i_2_ & 0x80 ^ 0xffffffff) != -1) {
             int i_3_ = (int) (arg0 / (long) (1000 * aClass14_2225.anInt431));
             int i_4_ = i_2_ & 0xff;
-            int i_5_ = (0xffa8 & i_2_) >> 291798792;
-            int i_6_ = (i_2_ & 0xffb86b) >> -830248528;
+            int i_5_ = (0xffa8 & i_2_) >> 8;
+            int i_6_ = (i_2_ & 0xffb86b) >> 16;
             if(!this.method322(i_4_, i_5_, i_6_, (long) i_3_))
                 method326(i_5_, (byte) -72, i_6_, i_3_, i_4_);
         }

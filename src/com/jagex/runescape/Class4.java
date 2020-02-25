@@ -74,8 +74,8 @@ public class Class4 {
                     int i_10_;
                     if((Class38_Sub1.anIntArray1916[i] ^ 0xffffffff) != -1) {
                         int i_11_ = 128 * (Class38_Sub1.anIntArray1916[i] & 0xff);
-                        int i_12_ = (0xff & Class38_Sub1.anIntArray1916[i] >> 854878096);
-                        int i_13_ = ((Class38_Sub1.anIntArray1916[i] & 0xffb8) >> 1161269672);
+                        int i_12_ = (0xff & Class38_Sub1.anIntArray1916[i] >> 16);
+                        int i_13_ = ((Class38_Sub1.anIntArray1916[i] & 0xffb8) >> 8);
                         int i_14_ = (i_13_ * 128 + 64 + -(Player.localPlayer.anInt3089));
                         int i_15_ = (i_12_ * 128 + (64 - (Player.localPlayer.anInt3098)));
                         if(i_15_ < 0)

@@ -8,7 +8,7 @@ import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 
-public class Class66 {
+public class HuffmanEncoding {
     public static RSString blank_string = RSString.CreateString("");
     public static Class68 aClass68_1541;
     public static RSString lastItemSearchInput = blank_string;
@@ -31,24 +31,24 @@ public class Class66 {
     public static int[] chatTypes = new int[100];
     public static RSString aClass1_1572 = aClass1_1555;
 
-    public int[] anIntArray1540;
-    public int[] anIntArray1551;
-    public byte[] aByteArray1557;
+    public int[] chatDecryptKeys;
+    public int[] chatMask;
+    public byte[] chatBitSizes;
 
-    public Class66(byte[] arg0) {
+    public HuffmanEncoding(byte[] arg0) {
 
         int i = arg0.length;
-        aByteArray1557 = arg0;
-        anIntArray1551 = new int[i];
+        chatBitSizes = arg0;
+        chatMask = new int[i];
         int[] is = new int[33];
-        anIntArray1540 = new int[8];
+        chatDecryptKeys = new int[8];
         int i_29_ = 0;
         for(int i_30_ = 0; i_30_ < i; i_30_++) {
             int i_31_ = arg0[i_30_];
             if((i_31_ ^ 0xffffffff) != -1) {
                 int i_32_ = 1 << -i_31_ + 32;
                 int i_33_ = is[i_31_];
-                anIntArray1551[i_30_] = i_33_;
+                chatMask[i_30_] = i_33_;
                 int i_34_;
                 if((i_32_ & i_33_) == 0) {
                     for(int i_35_ = -1 + i_31_; (i_35_ ^ 0xffffffff) <= -2; i_35_--) {
@@ -57,7 +57,7 @@ public class Class66 {
                             break;
                         int i_37_ = 1 << -i_35_ + 32;
                         if((i_36_ & i_37_) == 0)
-                            is[i_35_] = UnderlayDefinition.method619(i_36_, i_37_);
+                            is[i_35_] = UnderlayDefinition.bitWiseOR(i_36_, i_37_);
                         else {
                             is[i_35_] = is[-1 + i_35_];
                             break;
@@ -75,22 +75,22 @@ public class Class66 {
                 for(int i_40_ = 0; (i_40_ < i_31_); i_40_++) {
                     int i_41_ = -2147483648 >>> i_40_;
                     if((i_41_ & i_33_) != 0) {
-                        if(anIntArray1540[i_39_] == 0)
-                            anIntArray1540[i_39_] = i_29_;
-                        i_39_ = anIntArray1540[i_39_];
+                        if(chatDecryptKeys[i_39_] == 0)
+                            chatDecryptKeys[i_39_] = i_29_;
+                        i_39_ = chatDecryptKeys[i_39_];
                     } else
                         i_39_++;
-                    if(anIntArray1540.length <= i_39_) {
-                        int[] is_42_ = new int[anIntArray1540.length * 2];
-                        for(int i_43_ = 0; anIntArray1540.length > i_43_; i_43_++)
-                            is_42_[i_43_] = anIntArray1540[i_43_];
-                        anIntArray1540 = is_42_;
+                    if(chatDecryptKeys.length <= i_39_) {
+                        int[] is_42_ = new int[chatDecryptKeys.length * 2];
+                        for(int i_43_ = 0; chatDecryptKeys.length > i_43_; i_43_++)
+                            is_42_[i_43_] = chatDecryptKeys[i_43_];
+                        chatDecryptKeys = is_42_;
                     }
                     i_41_ >>>= 1;
                 }
                 if((i_39_ >= i_29_))
                     i_29_ = i_39_ + 1;
-                anIntArray1540[i_39_] = i_30_ ^ 0xffffffff;
+                chatDecryptKeys[i_39_] = i_30_ ^ 0xffffffff;
             }
         }
 
@@ -240,7 +240,7 @@ public class Class66 {
                 if((i_18_ ^ 0xffffffff) == -18)
                     i_17_ = 3;
                 if((i_18_ ^ 0xffffffff) == -5) {
-                    int i_19_ = is[i_14_++] << 1814235088;
+                    int i_19_ = is[i_14_++] << 16;
                     i_19_ += is[i_14_++];
                     Widget widget = Widget.forId(i_19_);
                     int i_20_ = is[i_14_++];
@@ -266,7 +266,7 @@ public class Class66 {
                     }
                 }
                 if(i_18_ == 10) {
-                    int i_23_ = is[i_14_++] << -1588807344;
+                    int i_23_ = is[i_14_++] << 16;
                     i_23_ += is[i_14_++];
                     Widget widget = Widget.forId(i_23_);
                     int i_24_ = is[i_14_++];
@@ -293,9 +293,9 @@ public class Class66 {
                     i_16_ = Class40_Sub5_Sub6.method585(i_28_, 1369);
                 }
                 if((i_18_ ^ 0xffffffff) == -19)
-                    i_16_ = ((Player.localPlayer.anInt3098) >> -949277977) + SpotAnimDefinition.anInt2307;
+                    i_16_ = ((Player.localPlayer.anInt3098) >> 7) + SpotAnimDefinition.anInt2307;
                 if(i_18_ == 19)
-                    i_16_ = ((Player.localPlayer.anInt3089) >> 745230119) + Class26.anInt635;
+                    i_16_ = ((Player.localPlayer.anInt3089) >> 7) + Class26.anInt635;
                 if((i_18_ ^ 0xffffffff) == -21)
                     i_16_ = is[i_14_++];
                 if((i_17_ ^ 0xffffffff) != -1)
@@ -337,19 +337,19 @@ public class Class66 {
             if(i_1_ >= 0)
                 i++;
             else
-                i = anIntArray1540[i];
+                i = chatDecryptKeys[i];
             int i_2_;
-            if((i_2_ = anIntArray1540[i]) < 0) {
+            if((i_2_ = chatDecryptKeys[i]) < 0) {
                 arg3[arg2++] = (byte) (i_2_ ^ 0xffffffff);
                 if(arg1 <= arg2)
                     break;
                 i = 0;
             }
             if((0x40 & i_1_ ^ 0xffffffff) != -1)
-                i = anIntArray1540[i];
+                i = chatDecryptKeys[i];
             else
                 i++;
-            if(((i_2_ = anIntArray1540[i]) ^ 0xffffffff) > -1) {
+            if(((i_2_ = chatDecryptKeys[i]) ^ 0xffffffff) > -1) {
                 arg3[arg2++] = (byte) (i_2_ ^ 0xffffffff);
                 if(arg2 >= arg1)
                     break;
@@ -358,38 +358,38 @@ public class Class66 {
             if((0x20 & i_1_) == 0)
                 i++;
             else
-                i = anIntArray1540[i];
-            if(((i_2_ = anIntArray1540[i]) ^ 0xffffffff) > -1) {
+                i = chatDecryptKeys[i];
+            if(((i_2_ = chatDecryptKeys[i]) ^ 0xffffffff) > -1) {
                 arg3[arg2++] = (byte) (i_2_ ^ 0xffffffff);
                 if(arg1 <= arg2)
                     break;
                 i = 0;
             }
             if((0x10 & i_1_ ^ 0xffffffff) != -1)
-                i = anIntArray1540[i];
+                i = chatDecryptKeys[i];
             else
                 i++;
-            if((i_2_ = anIntArray1540[i]) < 0) {
+            if((i_2_ = chatDecryptKeys[i]) < 0) {
                 arg3[arg2++] = (byte) (i_2_ ^ 0xffffffff);
                 if(arg1 <= arg2)
                     break;
                 i = 0;
             }
             if((i_1_ & 0x8 ^ 0xffffffff) != -1)
-                i = anIntArray1540[i];
+                i = chatDecryptKeys[i];
             else
                 i++;
-            if((i_2_ = anIntArray1540[i]) < 0) {
+            if((i_2_ = chatDecryptKeys[i]) < 0) {
                 arg3[arg2++] = (byte) (i_2_ ^ 0xffffffff);
                 if(arg2 >= arg1)
                     break;
                 i = 0;
             }
             if((0x4 & i_1_ ^ 0xffffffff) != -1)
-                i = anIntArray1540[i];
+                i = chatDecryptKeys[i];
             else
                 i++;
-            if(((i_2_ = anIntArray1540[i]) ^ 0xffffffff) > -1) {
+            if(((i_2_ = chatDecryptKeys[i]) ^ 0xffffffff) > -1) {
                 arg3[arg2++] = (byte) (i_2_ ^ 0xffffffff);
                 if(arg1 <= arg2)
                     break;
@@ -398,8 +398,8 @@ public class Class66 {
             if((0x2 & i_1_) == 0)
                 i++;
             else
-                i = anIntArray1540[i];
-            if((i_2_ = anIntArray1540[i]) < 0) {
+                i = chatDecryptKeys[i];
+            if((i_2_ = chatDecryptKeys[i]) < 0) {
                 arg3[arg2++] = (byte) (i_2_ ^ 0xffffffff);
                 if(arg2 >= arg1)
                     break;
@@ -408,8 +408,8 @@ public class Class66 {
             if((i_1_ & 0x1) == 0)
                 i++;
             else
-                i = anIntArray1540[i];
-            if(((i_2_ = anIntArray1540[i]) ^ 0xffffffff) > -1) {
+                i = chatDecryptKeys[i];
+            if(((i_2_ = chatDecryptKeys[i]) ^ 0xffffffff) > -1) {
                 arg3[arg2++] = (byte) (i_2_ ^ 0xffffffff);
                 if(arg2 >= arg1)
                     break;
@@ -422,39 +422,39 @@ public class Class66 {
         return -arg4 + (i_0_ + 1);
     }
 
-    public int method1026(int arg0, int arg1, int arg2, int arg3, byte[] arg4, byte[] arg5) {
+    public int encrypt(int arg0, int arg1, int arg2, int arg3, byte[] dest, byte[] arg5) {
         arg3 += arg1;
         int i = 0;
-        int i_6_ = arg2 << -2048728797;
+        int i_6_ = arg2 << 3;
         for(/**/; arg1 < arg3; arg1++) {
-            int i_7_ = 0xff & arg4[arg1];
-            int i_8_ = anIntArray1551[i_7_];
-            int i_9_ = aByteArray1557[i_7_];
-            if((i_9_ ^ 0xffffffff) == -1)
-                throw new RuntimeException("No codeword for data value " + i_7_);
-            int i_10_ = i_6_ >> 1442246755;
-            int i_11_ = 0x7 & i_6_;
-            i_6_ += i_9_;
-            i &= -i_11_ >> -1953839681;
-            int i_12_ = i_10_ + (i_9_ + (i_11_ - 1) >> -559081565);
-            i_11_ += 24;
-            arg5[i_10_] = (byte) (i = UnderlayDefinition.method619(i, i_8_ >>> i_11_));
-            if(i_10_ < i_12_) {
-                i_10_++;
-                i_11_ -= 8;
-                arg5[i_10_] = (byte) (i = i_8_ >>> i_11_);
-                if(i_12_ > i_10_) {
-                    i_11_ -= 8;
-                    i_10_++;
-                    arg5[i_10_] = (byte) (i = i_8_ >>> i_11_);
-                    if(i_10_ < i_12_) {
-                        i_10_++;
-                        i_11_ -= 8;
-                        arg5[i_10_] = (byte) (i = i_8_ >>> i_11_);
-                        if((i_10_ < i_12_)) {
-                            i_11_ -= 8;
-                            i_10_++;
-                            arg5[i_10_] = (byte) (i = i_8_ << -i_11_);
+            int textByte = 0xff & dest[arg1];
+            int mask = chatMask[textByte];
+            int size = chatBitSizes[textByte];
+            if((size ^ 0xffffffff) == -1)
+                throw new RuntimeException("No codeword for data value " + textByte);
+            int bitOffset2 = i_6_ >> 3;
+            int bitOffset = 0x7 & i_6_;
+            i_6_ += size;
+            i &= -bitOffset >> 31;
+            int i_12_ = bitOffset2 + (size + (bitOffset - 1) >> 3);
+            bitOffset += 24;
+            arg5[bitOffset2] = (byte) (i = UnderlayDefinition.bitWiseOR(i, mask >>> bitOffset));
+            if(bitOffset2 < i_12_) {
+                bitOffset2++;
+                bitOffset -= 8;
+                arg5[bitOffset2] = (byte) (i = mask >>> bitOffset);
+                if(i_12_ > bitOffset2) {
+                    bitOffset -= 8;
+                    bitOffset2++;
+                    arg5[bitOffset2] = (byte) (i = mask >>> bitOffset);
+                    if(bitOffset2 < i_12_) {
+                        bitOffset2++;
+                        bitOffset -= 8;
+                        arg5[bitOffset2] = (byte) (i = mask >>> bitOffset);
+                        if((bitOffset2 < i_12_)) {
+                            bitOffset -= 8;
+                            bitOffset2++;
+                            arg5[bitOffset2] = (byte) (i = mask << -bitOffset);
                         }
                     }
                 }
@@ -462,6 +462,6 @@ public class Class66 {
         }
         if(arg0 != -18678)
             method1027(-98, -28);
-        return (7 + i_6_ >> -262344669) - arg2;
+        return (7 + i_6_ >> 3) - arg2;
     }
 }

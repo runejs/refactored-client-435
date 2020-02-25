@@ -72,7 +72,7 @@ public class Class10 {
                 if(Actor.chatMessages[i_0_] != null) {
                     RSString class1 = Renderable.chatPlayerNames[i_0_];
                     int i_1_ = 0;
-                    int i_2_ = Class66.chatTypes[i_0_];
+                    int i_2_ = HuffmanEncoding.chatTypes[i_0_];
                     if(class1 != null && class1.startsWith(Class51.whiteCrown)) {
                         class1 = class1.substring(5);
                         i_1_ = 1;

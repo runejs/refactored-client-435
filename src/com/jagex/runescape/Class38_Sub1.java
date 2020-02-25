@@ -46,7 +46,7 @@ public class Class38_Sub1 extends Class38 {
                 i = 1;
             for(int i_1_ = 0; i_1_ < 100; i_1_++) {
                 if(Actor.chatMessages[i_1_] != null) {
-                    int i_2_ = Class66.chatTypes[i_1_];
+                    int i_2_ = HuffmanEncoding.chatTypes[i_1_];
                     RSString class1 = Renderable.chatPlayerNames[i_1_];
                     if(class1 != null && class1.startsWith(Class51.whiteCrown))
                         class1 = class1.substring(5);
@@ -378,7 +378,7 @@ public class Class38_Sub1 extends Class38 {
         if(Player.anInt3288 == 2) {
             if(arg0 >= -28)
                 method445(-128);
-            Class22_Sub1.method312(2 * ActorDefinition.anInt2404, (Class35.anInt1730 + (-Class26.anInt635 + Class4.anInt175 << -977811321)), ((Class68.anInt1637 + -SpotAnimDefinition.anInt2307) << 1068913575) + Landscape.anInt1170, 4976905);
+            Class22_Sub1.method312(2 * ActorDefinition.anInt2404, (Class35.anInt1730 + (-Class26.anInt635 + Class4.anInt175 << 7)), ((Class68.anInt1637 + -SpotAnimDefinition.anInt2307) << 7) + Landscape.anInt1170, 4976905);
             if(ISAAC.anInt522 > -1 && Node.pulseCycle % 20 < 10)
                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
         }

@@ -118,8 +118,8 @@ public class Class40_Sub13 extends Node {
         if(arg3 > 0)
             i_11_ *= 1.04;
         R3D.aBoolean2944 = false;
-        int i_12_ = ((R3D.sinetable[class40_sub5_sub16.xan2d]) * i_11_ >> -1598852880);
-        int i_13_ = (i_11_ * (R3D.cosinetable[class40_sub5_sub16.xan2d]) >> -2129368336);
+        int i_12_ = ((R3D.sinetable[class40_sub5_sub16.xan2d]) * i_11_ >> 16);
+        int i_13_ = (i_11_ * (R3D.cosinetable[class40_sub5_sub16.xan2d]) >> 16);
         class40_sub5_sub17_sub5.method799();
         class40_sub5_sub17_sub5.method812(0, class40_sub5_sub16.yan2d, class40_sub5_sub16.zan2d, class40_sub5_sub16.xan2d, class40_sub5_sub16.xOffset2d, (class40_sub5_sub16.yOffset2d + class40_sub5_sub17_sub5.anInt2861 / 2 + i_12_), i_13_ + class40_sub5_sub16.yOffset2d);
         for(int i_14_ = 31; i_14_ >= 0; i_14_--) {
@@ -210,16 +210,16 @@ public class Class40_Sub13 extends Node {
         anInt2169++;
         int i;
         if((arg1.id ^ 0xffffffff) > -1)
-            i = arg1.parentId >> -1744237840;
+            i = arg1.parentId >> 16;
         else
-            i = arg1.id >> -462467952;
+            i = arg1.id >> 16;
         if(!Class68.method1043(i))
             return null;
         if(arg0 != -1598852880)
             method876(44, -123, -88, 35);
         if((arg1.anInt2738 ^ 0xffffffff) <= -1)
             return (Widget.interfaces[i][0xffff & arg1.anInt2738]);
-        Widget widget = (Widget.interfaces[i][(0x7fff99d9 & arg1.anInt2738) >> -88908881]);
+        Widget widget = (Widget.interfaces[i][(0x7fff99d9 & arg1.anInt2738) >> 15]);
         return (widget.aWidgetArray2713[arg1.anInt2738 & 0x7fff]);
 
     }
@@ -239,7 +239,7 @@ public class Class40_Sub13 extends Node {
         for(int i_22_ = 0; (i_22_ ^ 0xffffffff) > -21; i_22_++) {
             for(int i_23_ = 1; (-1 + i_19_ > i_23_); i_23_++) {
                 for(int i_24_ = 1; i_24_ < 127; i_24_++) {
-                    int i_25_ = (i_23_ << 2116521895) + i_24_;
+                    int i_25_ = (i_23_ << 7) + i_24_;
                     Class61.anIntArray1445[i_25_] = (Landscape.anIntArray1168[i_25_ - 128] + Landscape.anIntArray1168[i_25_ + -1] + (Landscape.anIntArray1168[i_25_ + 1] + Landscape.anIntArray1168[128 + i_25_])) / 4;
                 }
             }
@@ -254,7 +254,7 @@ public class Class40_Sub13 extends Node {
                     if((arg1.imgPixels[i_26_++] ^ 0xffffffff) != -1) {
                         int i_29_ = arg1.yDrawOffset + i_27_ + 16;
                         int i_30_ = arg1.xDrawOffset + (i_28_ + 16);
-                        int i_31_ = i_30_ + (i_29_ << 692888135);
+                        int i_31_ = i_30_ + (i_29_ << 7);
                         Landscape.anIntArray1168[i_31_] = 0;
                     }
                 }
@@ -297,7 +297,7 @@ public class Class40_Sub13 extends Node {
                             class40_sub5_sub17_sub3_34_ = class40_sub5_sub17_sub3_36_;
                     }
                 }
-                int i_37_ = 1610612736 + (arg1 << 512988999) + arg2;
+                int i_37_ = 1610612736 + (arg1 << 7) + arg2;
                 Npc.aScene_3301.method139(Player.anInt3267, arg2, arg1, Class37.method430((byte) -126, (Player.anInt3267), 64 + 128 * arg2, 64 + 128 * arg1), class40_sub5_sub17_sub3, i_37_, class40_sub5_sub17_sub3_35_, class40_sub5_sub17_sub3_34_);
             }
         }

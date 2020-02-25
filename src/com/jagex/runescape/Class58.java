@@ -65,7 +65,7 @@ public class Class58 {
                 arg1.text = Class13.aClass1_405;
                 arg1.menuType = 0;
             } else if(i == 1 && (Class12.anInt380 ^ 0xffffffff) == -2) {
-                arg1.text = Class66.aClass1_1552;
+                arg1.text = HuffmanEncoding.aClass1_1552;
                 arg1.menuType = 0;
             } else if(i == 2 && (Class12.anInt380 ^ 0xffffffff) != -3) {
                 arg1.menuType = 0;
@@ -79,7 +79,7 @@ public class Class58 {
                 if((Class12.anInt380 ^ 0xffffffff) != -3)
                     i_0_ = 0;
                 if((i_0_ <= i)) {
-                    arg1.text = Class66.blank_string;
+                    arg1.text = HuffmanEncoding.blank_string;
                     arg1.menuType = 0;
                 } else {
                     arg1.text = Class40_Sub11.aClass1Array2147[i];
@@ -95,7 +95,7 @@ public class Class58 {
             if(Class12.anInt380 != 2)
                 i_1_ = 0;
             if(i >= i_1_) {
-                arg1.text = Class66.blank_string;
+                arg1.text = HuffmanEncoding.blank_string;
                 arg1.menuType = 0;
             } else {
                 if((Class40_Sub7.anIntArray2131[i] ^ 0xffffffff) != -1) {
@@ -135,7 +135,7 @@ public class Class58 {
                         i_4_ = 0;
                     if((i_4_ <= i)) {
                         arg1.menuType = 0;
-                        arg1.text = Class66.blank_string;
+                        arg1.text = HuffmanEncoding.blank_string;
                     } else {
                         arg1.text = Class60.method991(-111, Class53.aLongArray1267[i]).method85(-4305);
                         arg1.menuType = 1;
@@ -174,7 +174,7 @@ public class Class58 {
                 arg1.modelId = 1;
                 arg1.modelType = 5;
             } else if((i ^ 0xffffffff) == -601)
-                arg1.text = (Class40_Sub5_Sub17_Sub6.method832(-128, new RSString[]{Class66.aClass1_1550, Class22_Sub2.aClass1_1878}));
+                arg1.text = (Class40_Sub5_Sub17_Sub6.method832(-128, new RSString[]{HuffmanEncoding.aClass1_1550, Class22_Sub2.aClass1_1878}));
             else if(i == 620) {
                 if((Class19.anInt493 ^ 0xffffffff) <= -2) {
                     if(!Class67.aBoolean1601) {
@@ -185,7 +185,7 @@ public class Class58 {
                         arg1.text = ActorDefinition.aClass1_2384;
                     }
                 } else
-                    arg1.text = Class66.blank_string;
+                    arg1.text = HuffmanEncoding.blank_string;
             }
         }
     }
@@ -209,7 +209,7 @@ public class Class58 {
             if((Class40_Sub5_Sub15.inputType ^ 0xffffffff) != -2) {
                 if((Class40_Sub5_Sub15.inputType ^ 0xffffffff) == -3) {
                     Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class40_Sub5_Sub6.aClass1_2446, 239, 40, 0);
-                    Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686((Class40_Sub5_Sub17_Sub6.method832(-50, new RSString[]{Class66.inputInputMessage, Class19.aClass1_478})), 239, 60, 128);
+                    Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686((Class40_Sub5_Sub17_Sub6.method832(-50, new RSString[]{HuffmanEncoding.inputInputMessage, Class19.aClass1_478})), 239, 60, 128);
                 } else if(Class40_Sub5_Sub15.inputType != 3) {
                     if(RSApplet.aClass1_8 == null) {
                         if(Class43.openChatboxWidgetId == -1) {
@@ -223,7 +223,7 @@ public class Class58 {
                                 Rasterizer.setCoordinates(0, 0, 77, 463);
                                 for(int i_8_ = 0; i_8_ < 100; i_8_++) {
                                     if((Actor.chatMessages[i_8_]) != null) {
-                                        int type = Class66.chatTypes[i_8_];
+                                        int type = HuffmanEncoding.chatTypes[i_8_];
                                         RSString name = (Renderable.chatPlayerNames[i_8_]);
                                         int y = (GameObjectDefinition.chatboxScroll + 70 + -(line * 14));
                                         int privelege = 0;
@@ -312,7 +312,7 @@ public class Class58 {
                                 else
                                     name = Class22_Sub2.username;
                                 typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(-62, (new RSString[]{name, Class43.aClass1_1027}))), 4, 90, 0);
-                                typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(71, (new RSString[]{Class66.chatboxInput, Class19.aClass1_478}))), ((typeFace.getStringWidth(Class40_Sub5_Sub17_Sub6.method832(-99, (new RSString[]{name, ISAAC.aClass1_515})))) + 6), 90, 255);
+                                typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(71, (new RSString[]{HuffmanEncoding.chatboxInput, Class19.aClass1_478}))), ((typeFace.getStringWidth(Class40_Sub5_Sub17_Sub6.method832(-99, (new RSString[]{name, ISAAC.aClass1_515})))) + 6), 90, 255);
                                 Rasterizer.drawHorizontalLine(0, 77, 479, 0);
                             }
                         } else {
@@ -325,9 +325,9 @@ public class Class58 {
                         Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class34.aClass1_829, 239, 60, 128);
                     }
                 } else {
-                    if(Class66.inputInputMessage != Class66.lastItemSearchInput) {
-                        GameObject.itemSearch(Class66.inputInputMessage);
-                        Class66.lastItemSearchInput = Class66.inputInputMessage;
+                    if(HuffmanEncoding.inputInputMessage != HuffmanEncoding.lastItemSearchInput) {
+                        GameObject.itemSearch(HuffmanEncoding.inputInputMessage);
+                        HuffmanEncoding.lastItemSearchInput = HuffmanEncoding.inputInputMessage;
                     }
                     TypeFace class40_sub5_sub14_sub1 = Class53.aClass40_Sub5_Sub14_Sub1_1268;
                     Rasterizer.setCoordinates(0, 0, 77, 463);
@@ -339,21 +339,21 @@ public class Class58 {
                     Rasterizer.resetCoordinates();
                     if((VertexNormal.itemSearchResultCount ^ 0xffffffff) < -6)
                         Class27.drawScrollBar(0, Class26.itemSearchScroll, 7 + 14 * VertexNormal.itemSearchResultCount, 463, 77, 0);
-                    if(Class66.inputInputMessage.length() != 0) {
+                    if(HuffmanEncoding.inputInputMessage.length() != 0) {
                         if((VertexNormal.itemSearchResultCount ^ 0xffffffff) == -1)
                             Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class40_Sub6.aClass1_2097, 239, 40, 0);
                     } else
                         Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class35.aClass1_1747, 239, 40, 255);
-                    class40_sub5_sub14_sub1.method686((Class40_Sub5_Sub17_Sub6.method832(-122, new RSString[]{Class66.inputInputMessage, Class19.aClass1_478})), 239, 90, 0);
+                    class40_sub5_sub14_sub1.method686((Class40_Sub5_Sub17_Sub6.method832(-122, new RSString[]{HuffmanEncoding.inputInputMessage, Class19.aClass1_478})), 239, 90, 0);
                     Rasterizer.drawHorizontalLine(0, 77, 479, 0);
                 }
             } else {
                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Landscape.aClass1_1174, 239, 40, 0);
-                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686((Class40_Sub5_Sub17_Sub6.method832(73, new RSString[]{Class66.inputInputMessage, Class19.aClass1_478})), 239, 60, 128);
+                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686((Class40_Sub5_Sub17_Sub6.method832(73, new RSString[]{HuffmanEncoding.inputInputMessage, Class19.aClass1_478})), 239, 60, 128);
             }
         } else {
-            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class66.aClass1_1563, 239, 40, 0);
-            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class40_Sub5_Sub17_Sub6.method832(-117, (new RSString[]{Class66.aClass1_1565, (Class19.aClass1_478)})), 239, 60, 128);
+            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(HuffmanEncoding.aClass1_1563, 239, 40, 0);
+            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class40_Sub5_Sub17_Sub6.method832(-117, (new RSString[]{HuffmanEncoding.aClass1_1565, (Class19.aClass1_478)})), 239, 60, 128);
         }
         anInt1357++;
         if(Class4.menuOpen && (Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -3)

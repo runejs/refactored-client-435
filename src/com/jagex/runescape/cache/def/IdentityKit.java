@@ -9,7 +9,7 @@ public class IdentityKit extends SubNode {
     public static int anInt2585;
     public static RSString aClass1_2587;
     public static RSString aClass1_2588;
-    public static Class66 aClass66_2590;
+    public static HuffmanEncoding aHuffmanEncoding_2590;
     public static int anInt2591;
     public static RSString aClass1_2592;
     public static RSString aClass1_2593;
@@ -66,7 +66,7 @@ public class IdentityKit extends SubNode {
         aClass1_2611 = null;
         aClass1_2588 = null;
         aClass6_Sub1_2609 = null;
-        aClass66_2590 = null;
+        aHuffmanEncoding_2590 = null;
         aClass1_2616 = null;
         aClass1_2614 = null;
         aClass1_2592 = null;
@@ -80,7 +80,7 @@ public class IdentityKit extends SubNode {
     }
 
     public static Class40_Sub5_Sub1 method626(int arg0, int arg1, int arg2) {
-        long l = (long) (arg0 + (arg1 << -637173104));
+        long l = (long) (arg0 + (arg1 << 16));
         anInt2612++;
         Class40_Sub5_Sub1 class40_sub5_sub1 = ((Class40_Sub5_Sub1) Class17.aClass9_449.method231(l, (byte) 72));
         if(class40_sub5_sub1 != null) {

@@ -39,7 +39,7 @@ public class HashTable {
 
     public static void method327(boolean arg0, CacheIndex_Sub1 arg1, int arg2, int arg3, byte arg4, int arg5, byte arg6) {
         int i = 14 % ((arg6 - 5) / 62);
-        long l = (long) (arg3 + (arg2 << -1726391664));
+        long l = (long) (arg3 + (arg2 << 16));
         Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class51.aClass23_1194.method331(l, 6120));
         if(class40_sub5_sub13 == null) {
             class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class37.aClass23_869.method331(l, 6120));

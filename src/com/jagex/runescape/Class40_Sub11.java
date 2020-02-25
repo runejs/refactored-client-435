@@ -37,7 +37,7 @@ public class Class40_Sub11 extends Node {
         int i = 0;
         for(int i_0_ = 0; i_0_ < 100; i_0_++) {
             if(Actor.chatMessages[i_0_] != null) {
-                int i_1_ = Class66.chatTypes[i_0_];
+                int i_1_ = HuffmanEncoding.chatTypes[i_0_];
                 int i_2_ = 4 + GameObjectDefinition.chatboxScroll + -(i * 14) + 70;
                 if(i_2_ < -20)
                     break;

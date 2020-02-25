@@ -44,20 +44,20 @@ public class Class37 {
     public static int method430(byte arg0, int arg1, int arg2, int arg3) {
 
         anInt865++;
-        int i = arg3 >> 430067431;
-        int i_0_ = arg2 >> -141886201;
+        int i = arg3 >> 7;
+        int i_0_ = arg2 >> 7;
         if((i_0_ ^ 0xffffffff) > -1 || (i ^ 0xffffffff) > -1 || (i_0_ ^ 0xffffffff) < -104 || i > 103)
             return 0;
         int i_1_ = 0x7f & arg2;
         int i_2_ = arg1;
         if(i_2_ < 3 && (OverlayDefinition.tile_flags[1][i_0_][i] & 0x2) == 2)
             i_2_++;
-        int i_3_ = (((-i_1_ + 128) * (Class40_Sub6.tile_height[i_2_][i_0_][i]) + (i_1_ * (Class40_Sub6.tile_height[i_2_][i_0_ + 1][i]))) >> -1503923001);
+        int i_3_ = (((-i_1_ + 128) * (Class40_Sub6.tile_height[i_2_][i_0_][i]) + (i_1_ * (Class40_Sub6.tile_height[i_2_][i_0_ + 1][i]))) >> 7);
         int i_4_ = arg3 & 0x7f;
         if(arg0 > -116)
             method432((byte) -86);
-        int i_5_ = ((i_1_ * (Class40_Sub6.tile_height[i_2_][1 + i_0_][1 + i]) + (Class40_Sub6.tile_height[i_2_][i_0_][1 + i] * (128 + -i_1_))) >> -820366297);
-        return (128 + -i_4_) * i_3_ + (i_5_ * i_4_) >> 2117999111;
+        int i_5_ = ((i_1_ * (Class40_Sub6.tile_height[i_2_][1 + i_0_][1 + i]) + (Class40_Sub6.tile_height[i_2_][i_0_][1 + i] * (128 + -i_1_))) >> 7);
+        return (128 + -i_4_) * i_3_ + (i_5_ * i_4_) >> 7;
 
     }
 
@@ -187,8 +187,8 @@ public class Class37 {
                 }
             }
             if((Player.anInt3288 ^ 0xffffffff) != -1 && (Node.pulseCycle % 20 ^ 0xffffffff) > -11) {
-                if(Player.anInt3288 == 1 && (Class66.anInt1545 ^ 0xffffffff) <= -1 && ((CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813).length > Class66.anInt1545)) {
-                    Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class66.anInt1545]);
+                if(Player.anInt3288 == 1 && (HuffmanEncoding.anInt1545 ^ 0xffffffff) <= -1 && ((CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813).length > HuffmanEncoding.anInt1545)) {
+                    Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[HuffmanEncoding.anInt1545]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         i = (-((Player.localPlayer.anInt3098) / 32) + (class40_sub5_sub17_sub4_sub2.anInt3098 / 32));
                         i_8_ = (class40_sub5_sub17_sub4_sub2.anInt3089 / 32 - (Player.localPlayer.anInt3089) / 32);

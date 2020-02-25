@@ -69,8 +69,8 @@ public abstract class Renderable extends SubNode {
                 }
                 if(widget.anInt2722 != 0) {
                     bool = true;
-                    int i_2_ = widget.anInt2722 >> -1999002640;
-                    int i_3_ = (widget.anInt2722 << 1943281072 >> -1142238960);
+                    int i_2_ = widget.anInt2722 >> 16;
+                    int i_3_ = (widget.anInt2722 << 16 >> 16);
                     i_2_ *= Class5.anInt199;
                     widget.rotationX = 0x7ff & i_2_ + widget.rotationX;
                     i_3_ *= Class5.anInt199;

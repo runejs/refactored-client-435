@@ -36,7 +36,7 @@ public class Class54 implements KeyListener, FocusListener {
                 if((i_6_ & 0x1) != 1)
                     i_6_ >>>= 1;
                 else
-                    i_6_ = ~0x12477cdf ^ i_6_ >>> 1162344193;
+                    i_6_ = ~0x12477cdf ^ i_6_ >>> 1;
             }
             anIntArray1282[i] = i_6_;
         }
@@ -69,9 +69,9 @@ public class Class54 implements KeyListener, FocusListener {
                 Renderable.handleSequences(29378, Class58.anInt1376);
                 Class40_Sub5_Sub6.drawInterface(0, Class58.anInt1376, 334, (byte) -5, 0, 4, 512);
             }
-            if((Class66.openScreenWidgetId ^ 0xffffffff) != 0) {
-                Renderable.handleSequences(29378, Class66.openScreenWidgetId);
-                Class40_Sub5_Sub6.drawInterface(0, Class66.openScreenWidgetId, 334, (byte) -5, 0, 0, 512);
+            if((HuffmanEncoding.openScreenWidgetId ^ 0xffffffff) != 0) {
+                Renderable.handleSequences(29378, HuffmanEncoding.openScreenWidgetId);
+                Class40_Sub5_Sub6.drawInterface(0, HuffmanEncoding.openScreenWidgetId, 334, (byte) -5, 0, 0, 512);
             }
             RSString.method71(arg0 ^ 0x3c7b);
             if(Class4.menuOpen) {
@@ -103,7 +103,7 @@ public class Class54 implements KeyListener, FocusListener {
                 Class53.aClass40_Sub5_Sub14_Sub1_1268.method687((Class40_Sub5_Sub17_Sub6.method832(81, new RSString[]{Class40_Sub7.aClass1_2129, HashTable.method334(i_2_, arg0 ^ 0x3c5d), RSCanvas.aClass1_68})), i_0_, i, i_1_);
                 i += 15;
                 if(Class38.aBoolean893) {
-                    Class53.aClass40_Sub5_Sub14_Sub1_1268.method687(Class66.aClass1_1544, i_0_, i, 16711680);
+                    Class53.aClass40_Sub5_Sub14_Sub1_1268.method687(HuffmanEncoding.aClass1_1544, i_0_, i, 16711680);
                     i += 15;
                     Class38.aBoolean893 = false;
                 }
@@ -113,7 +113,7 @@ public class Class54 implements KeyListener, FocusListener {
                     CacheIndex.aBoolean260 = false;
                 }
                 if(Class40_Sub3.aBoolean2026) {
-                    Class53.aClass40_Sub5_Sub14_Sub1_1268.method687(Class66.aClass1_1546, i_0_, i, 16711680);
+                    Class53.aClass40_Sub5_Sub14_Sub1_1268.method687(HuffmanEncoding.aClass1_1546, i_0_, i, 16711680);
                     Class40_Sub3.aBoolean2026 = false;
                     i += 15;
                 }
@@ -224,8 +224,8 @@ public class Class54 implements KeyListener, FocusListener {
         if(Class59.aClass54_1392 != null) {
             Class49.anInt1147 = 0;
             int i = arg0.getKeyCode();
-            if((i ^ 0xffffffff) <= -1 && Class66.anIntArray1564.length > i) {
-                i = Class66.anIntArray1564[i];
+            if((i ^ 0xffffffff) <= -1 && HuffmanEncoding.anIntArray1564.length > i) {
+                i = HuffmanEncoding.anIntArray1564[i];
                 if((0x80 & i ^ 0xffffffff) != -1)
                     i = -1;
             } else
@@ -259,10 +259,10 @@ public class Class54 implements KeyListener, FocusListener {
         if(Class59.aClass54_1392 != null) {
             Class49.anInt1147 = 0;
             int i = arg0.getKeyCode();
-            if(i < 0 || Class66.anIntArray1564.length <= i)
+            if(i < 0 || HuffmanEncoding.anIntArray1564.length <= i)
                 i = -1;
             else
-                i = ~0x80 & Class66.anIntArray1564[i];
+                i = ~0x80 & HuffmanEncoding.anIntArray1564[i];
             if((GameObjectDefinition.anInt2543 ^ 0xffffffff) <= -1 && i >= 0) {
                 RSString.anIntArray1706[GameObjectDefinition.anInt2543] = i ^ 0xffffffff;
                 GameObjectDefinition.anInt2543 = 0x7f & 1 + GameObjectDefinition.anInt2543;

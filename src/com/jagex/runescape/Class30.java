@@ -130,7 +130,7 @@ public class Class30 {
             return 109;
         if((anInt696 ^ 0xffffffff) != 0)
             return (ActorDefinition.getDefinition((byte) -105, anInt696).id + 305419896);
-        return (anIntArray692[1] + (anIntArray692[11] << -991626235) + ((anIntArray713[4] << -1350296556) + ((anIntArray713[0] << 1525506553) + (anIntArray692[0] << 1592541583)) + (anIntArray692[8] << 307187338)));
+        return (anIntArray692[1] + (anIntArray692[11] << 5) + ((anIntArray713[4] << 20) + ((anIntArray713[0] << 25) + (anIntArray692[0] << 15)) + (anIntArray692[8] << 10)));
 
     }
 
@@ -162,11 +162,11 @@ public class Class30 {
             for(int i = 0; i < 12; i++)
                 is[i] = anIntArray692[i];
             if(arg0.anInt2477 >= 0) {
-                l += (long) (arg0.anInt2477 + -anIntArray692[5] << 535923240);
+                l += (long) (arg0.anInt2477 + -anIntArray692[5] << 8);
                 is[5] = arg0.anInt2477;
             }
             if(arg0.anInt2489 >= 0) {
-                l += (long) (arg0.anInt2489 + -anIntArray692[3] << -1236609968);
+                l += (long) (arg0.anInt2489 + -anIntArray692[3] << 16);
                 is[3] = arg0.anInt2489;
             }
         }
@@ -247,9 +247,9 @@ public class Class30 {
                 aLong718 += (long) (anIntArray692[i_9_] + -256);
         }
         if((anIntArray692[0] ^ 0xffffffff) <= -257)
-            aLong718 += (long) (-256 + anIntArray692[0] >> -2026194140);
+            aLong718 += (long) (-256 + anIntArray692[0] >> 4);
         if((anIntArray692[1] ^ 0xffffffff) <= -257)
-            aLong718 += (long) (-256 + anIntArray692[1] >> -70019256);
+            aLong718 += (long) (-256 + anIntArray692[1] >> 8);
         for(int i_10_ = 0; i_10_ < 5; i_10_++) {
             aLong718 <<= 3;
             aLong718 += (long) anIntArray713[i_10_];

@@ -123,8 +123,8 @@ public class Class56 {
                     return null;
                 aClass67_1313.method1031(0, (long) (6 * arg0));
                 aClass67_1313.method1035(0, (byte) -49, 6, ActorDefinition.aByteArray2416);
-                int i_0_ = ((0xff00 & (ActorDefinition.aByteArray2416[4] << 2112382504)) + ((0xff & ActorDefinition.aByteArray2416[3]) << -1692209456) + (0xff & ActorDefinition.aByteArray2416[5]));
-                int i_1_ = ((0xff & ActorDefinition.aByteArray2416[2]) + (((ActorDefinition.aByteArray2416[0] & 0xff) << 2016836816) + ((0xff & ActorDefinition.aByteArray2416[1]) << 1439956072)));
+                int i_0_ = ((0xff00 & (ActorDefinition.aByteArray2416[4] << 8)) + ((0xff & ActorDefinition.aByteArray2416[3]) << 16) + (0xff & ActorDefinition.aByteArray2416[5]));
+                int i_1_ = ((0xff & ActorDefinition.aByteArray2416[2]) + (((ActorDefinition.aByteArray2416[0] & 0xff) << 16) + ((0xff & ActorDefinition.aByteArray2416[1]) << 8)));
                 if(i_1_ < 0 || (i_1_ > anInt1321))
                     return null;
                 if(i_0_ <= 0 || (((long) i_0_ ^ 0xffffffffffffffffL) < (aClass67_1309.method1032(0) / 520L ^ 0xffffffffffffffffL)))
@@ -140,9 +140,9 @@ public class Class56 {
                     if((i_4_ ^ 0xffffffff) < -513)
                         i_4_ = 512;
                     aClass67_1309.method1035(0, (byte) -14, 8 + i_4_, (ActorDefinition.aByteArray2416));
-                    int i_5_ = ((0xff00 & (ActorDefinition.aByteArray2416[0] << -1509655160)) + (0xff & ActorDefinition.aByteArray2416[1]));
-                    int i_6_ = ((ActorDefinition.aByteArray2416[6] & 0xff) + ((0xff & ActorDefinition.aByteArray2416[5]) << -109515864) + ((0xff & ActorDefinition.aByteArray2416[4]) << -873067312));
-                    int i_7_ = ((0xff00 & (ActorDefinition.aByteArray2416[2] << 52160136)) + (0xff & ActorDefinition.aByteArray2416[3]));
+                    int i_5_ = ((0xff00 & (ActorDefinition.aByteArray2416[0] << 8)) + (0xff & ActorDefinition.aByteArray2416[1]));
+                    int i_6_ = ((ActorDefinition.aByteArray2416[6] & 0xff) + ((0xff & ActorDefinition.aByteArray2416[5]) << 8) + ((0xff & ActorDefinition.aByteArray2416[4]) << 16));
+                    int i_7_ = ((0xff00 & (ActorDefinition.aByteArray2416[2] << 8)) + (0xff & ActorDefinition.aByteArray2416[3]));
                     int i_8_ = 0xff & ActorDefinition.aByteArray2416[7];
                     if((i_5_ ^ 0xffffffff) != (arg0 ^ 0xffffffff) || (i_7_ ^ 0xffffffff) != (i_3_ ^ 0xffffffff) || (i_8_ ^ 0xffffffff) != (anInt1324 ^ 0xffffffff))
                         return null;
@@ -174,7 +174,7 @@ public class Class56 {
                         return false;
                     aClass67_1313.method1031(0, (long) (arg3 * 6));
                     aClass67_1313.method1035(0, (byte) -111, 6, (ActorDefinition.aByteArray2416));
-                    i = ((ActorDefinition.aByteArray2416[5] & 0xff) + (((ActorDefinition.aByteArray2416[3] & 0xff) << 244380432) + ((ActorDefinition.aByteArray2416[4] & 0xff) << -1843041752)));
+                    i = ((ActorDefinition.aByteArray2416[5] & 0xff) + (((ActorDefinition.aByteArray2416[3] & 0xff) << 16) + ((ActorDefinition.aByteArray2416[4] & 0xff) << 8)));
                     if((i ^ 0xffffffff) >= -1 || (((long) i ^ 0xffffffffffffffffL) < (aClass67_1309.method1032(0) / 520L ^ 0xffffffffffffffffL)))
                         return false;
                 } else {
@@ -182,13 +182,13 @@ public class Class56 {
                     if(i == 0)
                         i = 1;
                 }
-                ActorDefinition.aByteArray2416[0] = (byte) (arg1 >> -897009424);
-                ActorDefinition.aByteArray2416[1] = (byte) (arg1 >> 2120801992);
+                ActorDefinition.aByteArray2416[0] = (byte) (arg1 >> 16);
+                ActorDefinition.aByteArray2416[1] = (byte) (arg1 >> 8);
                 ActorDefinition.aByteArray2416[2] = (byte) arg1;
                 int i_10_ = 0;
-                ActorDefinition.aByteArray2416[3] = (byte) (i >> -1783240816);
+                ActorDefinition.aByteArray2416[3] = (byte) (i >> 16);
                 int i_11_ = 0;
-                ActorDefinition.aByteArray2416[4] = (byte) (i >> -102164472);
+                ActorDefinition.aByteArray2416[4] = (byte) (i >> 8);
                 ActorDefinition.aByteArray2416[5] = (byte) i;
                 aClass67_1313.method1031(0, (long) (arg3 * 6));
                 aClass67_1313.method1033(0, -16777216, 6, ActorDefinition.aByteArray2416);
@@ -202,10 +202,10 @@ public class Class56 {
                         } catch(java.io.EOFException eofexception) {
                             break;
                         }
-                        i_13_ = ((ActorDefinition.aByteArray2416[6] & 0xff) + (((ActorDefinition.aByteArray2416[4] << 809811568) & 0xff0000) + (0xff00 & (ActorDefinition.aByteArray2416[5]) << -83110776)));
-                        i_12_ = ((ActorDefinition.aByteArray2416[1] & 0xff) + ((ActorDefinition.aByteArray2416[0] << 1593639048) & 0xff00));
+                        i_13_ = ((ActorDefinition.aByteArray2416[6] & 0xff) + (((ActorDefinition.aByteArray2416[4] << 16) & 0xff0000) + (0xff00 & (ActorDefinition.aByteArray2416[5]) << 8)));
+                        i_12_ = ((ActorDefinition.aByteArray2416[1] & 0xff) + ((ActorDefinition.aByteArray2416[0] << 8) & 0xff00));
                         int i_14_ = ActorDefinition.aByteArray2416[7] & 0xff;
-                        int i_15_ = ((ActorDefinition.aByteArray2416[3] & 0xff) + ((0xff & ActorDefinition.aByteArray2416[2]) << -1878865912));
+                        int i_15_ = ((ActorDefinition.aByteArray2416[3] & 0xff) + ((0xff & ActorDefinition.aByteArray2416[2]) << 8));
                         if(arg3 != i_12_ || (i_15_ ^ 0xffffffff) != (i_11_ ^ 0xffffffff) || (i_14_ ^ 0xffffffff) != (anInt1324 ^ 0xffffffff))
                             return false;
                         if(i_13_ < 0 || (aClass67_1309.method1032(0) / 520L < (long) i_13_))
@@ -219,17 +219,17 @@ public class Class56 {
                         if(i == i_13_)
                             i_13_++;
                     }
-                    ActorDefinition.aByteArray2416[0] = (byte) (arg3 >> 989037448);
+                    ActorDefinition.aByteArray2416[0] = (byte) (arg3 >> 8);
                     if(-i_10_ + arg1 <= 512)
                         i_13_ = 0;
                     ActorDefinition.aByteArray2416[1] = (byte) arg3;
                     i_12_ = -i_10_ + arg1;
                     if((i_12_ ^ 0xffffffff) < -513)
                         i_12_ = 512;
-                    ActorDefinition.aByteArray2416[2] = (byte) (i_11_ >> 436921608);
+                    ActorDefinition.aByteArray2416[2] = (byte) (i_11_ >> 8);
                     ActorDefinition.aByteArray2416[3] = (byte) i_11_;
-                    ActorDefinition.aByteArray2416[4] = (byte) (i_13_ >> 1862596560);
-                    ActorDefinition.aByteArray2416[5] = (byte) (i_13_ >> 154341896);
+                    ActorDefinition.aByteArray2416[4] = (byte) (i_13_ >> 16);
+                    ActorDefinition.aByteArray2416[5] = (byte) (i_13_ >> 8);
                     i_11_++;
                     ActorDefinition.aByteArray2416[6] = (byte) i_13_;
                     ActorDefinition.aByteArray2416[7] = (byte) anInt1324;

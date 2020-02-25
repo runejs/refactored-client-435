@@ -70,7 +70,7 @@ public class Class33 {
                             if(ISAAC.anInt522 > -1)
                                 Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204[class40_sub5_sub5.headIcon].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -30);
                         }
-                        if((Player.anInt3288 ^ 0xffffffff) == -2 && (((Class40_Sub3.anIntArray2016[-Class60.anInt1407 + i]) ^ 0xffffffff) == (Class66.anInt1545 ^ 0xffffffff)) && Node.pulseCycle % 20 < 10) {
+                        if((Player.anInt3288 ^ 0xffffffff) == -2 && (((Class40_Sub3.anIntArray2016[-Class60.anInt1407 + i]) ^ 0xffffffff) == (HuffmanEncoding.anInt1545 ^ 0xffffffff)) && Node.pulseCycle % 20 < 10) {
                             FloorDecoration.method342(107, 15 + (actor.anInt3117), actor);
                             if(ISAAC.anInt522 > -1)
                                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, Class44.anInt1048 + -28);

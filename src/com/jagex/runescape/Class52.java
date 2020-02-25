@@ -73,7 +73,7 @@ public class Class52 {
 
     public static void method943(int arg0, int arg1, TypeFace arg2, int arg3, int arg4) {
 
-        Class66.aClass68_1541.method1046((byte) 90);
+        HuffmanEncoding.aClass68_1541.method1046((byte) 90);
         anInt1224++;
         Class57.aClass40_Sub5_Sub14_Sub2_1346.drawImage(0, 0);
         arg2.method688(Class19.aClass1_495, 55, 28, 16777215, true);
@@ -103,7 +103,7 @@ public class Class52 {
         int i = -50 % ((arg1 - 82) / 38);
         try {
             Graphics graphics = GameFrame.aCanvas1469.getGraphics();
-            Class66.aClass68_1541.method1044(0, 0, graphics, 453);
+            HuffmanEncoding.aClass68_1541.method1044(0, 0, graphics, 453);
         } catch(Exception exception) {
             GameFrame.aCanvas1469.repaint();
         }
@@ -139,9 +139,9 @@ public class Class52 {
                 if((arg6 ^ 0xffffffff) == -4)
                     i_0_ = Npc.aScene_3301.method93(arg7, arg2, arg0);
                 if((i_0_ ^ 0xffffffff) != -1) {
-                    i = (i_0_ & 0x1ffff138) >> -587100850;
+                    i = (i_0_ & 0x1ffff138) >> 14;
                     int i_2_ = Npc.aScene_3301.method141(arg7, arg2, arg0, i_0_);
-                    int i_3_ = i_2_ >> -993918554 & 0x3;
+                    int i_3_ = i_2_ >> 6 & 0x3;
                     int i_4_ = 0x1f & i_2_;
                     if((arg6 ^ 0xffffffff) == -1) {
                         Npc.aScene_3301.method124(arg7, arg2, arg0);

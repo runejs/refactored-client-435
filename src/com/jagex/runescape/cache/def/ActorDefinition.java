@@ -133,7 +133,7 @@ public class ActorDefinition extends SubNode {
         int i = (class40_sub5_sub14_sub4.image_width * class40_sub5_sub14_sub4.image_height);
         class40_sub5_sub14_sub4.pixels = new int[i];
         for(int i_5_ = 0; i_5_ < i; i_5_++) {
-            class40_sub5_sub14_sub4.pixels[i_5_] = (Buffer.anIntArray1972[Class66.method1021(255, is[i_5_])]);
+            class40_sub5_sub14_sub4.pixels[i_5_] = (Buffer.anIntArray1972[HuffmanEncoding.method1021(255, is[i_5_])]);
         }
         method569();
         return class40_sub5_sub14_sub4;

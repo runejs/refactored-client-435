@@ -94,16 +94,16 @@ public class ISAAC {
         for(int i = 0; i < 4; i++) {
             byte[][] is = Class19.aByteArrayArrayArray492[i];
             int i_3_ = (int) Math.sqrt(5100.0);
-            int i_4_ = i_3_ * 768 >> 1067645288;
+            int i_4_ = i_3_ * 768 >> 8;
             for(int i_5_ = 1; (i_5_ ^ 0xffffffff) > -104; i_5_++) {
                 for(int i_6_ = 1; i_6_ < 103; i_6_++) {
                     int i_7_ = (-(Class40_Sub6.tile_height[i][i_6_ - 1][i_5_]) + (Class40_Sub6.tile_height[i][1 + i_6_][i_5_]));
                     int i_8_ = ((Class40_Sub6.tile_height[i][i_6_][i_5_ + 1]) + -(Class40_Sub6.tile_height[i][i_6_][i_5_ + -1]));
                     int i_9_ = (int) Math.sqrt((double) (i_8_ * i_8_ + i_7_ * i_7_ + 65536));
                     int i_10_ = 65536 / i_9_;
-                    int i_11_ = ((is[i_6_][i_5_] >> -552359871) + ((is[i_6_][-1 + i_5_] >> -723267166) + (is[1 + i_6_][i_5_] >> -2018462045) + (is[i_6_ - 1][i_5_] >> -175607742) + (is[i_6_][1 + i_5_] >> -178577309)));
-                    int i_12_ = (i_7_ << 705744584) / i_9_;
-                    int i_13_ = (i_8_ << -882987384) / i_9_;
+                    int i_11_ = ((is[i_6_][i_5_] >> 1) + ((is[i_6_][-1 + i_5_] >> 2) + (is[1 + i_6_][i_5_] >> 3) + (is[i_6_ - 1][i_5_] >> 2) + (is[i_6_][1 + i_5_] >> 3)));
+                    int i_12_ = (i_7_ << 8) / i_9_;
+                    int i_13_ = (i_8_ << 8) / i_9_;
                     int i_14_ = 96 + (i_12_ * -50 + (-10 * i_10_) + i_13_ * -50) / i_4_;
                     AnimationSequence.anIntArrayArray2490[i_6_][i_5_] = i_14_ + -i_11_;
                 }
@@ -202,7 +202,7 @@ public class ISAAC {
                                     if(i_31_ > 0 && !(Npc.loadFloor(-1 + i_31_, arg1 + -27320).aBoolean2338))
                                         bool = false;
                                     if(bool && ((i_33_ ^ 0xffffffff) == (i_32_ ^ 0xffffffff)) && i_34_ == i_32_ && ((i_35_ ^ 0xffffffff) == (i_32_ ^ 0xffffffff)))
-                                        CacheIndex.anIntArrayArrayArray262[i][i_16_][i_27_] = (UnderlayDefinition.method619((CacheIndex.anIntArrayArrayArray262[i][i_16_][i_27_]), 2340));
+                                        CacheIndex.anIntArrayArrayArray262[i][i_16_][i_27_] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[i][i_16_][i_27_]), 2340));
                                 }
                                 int i_45_ = 0;
                                 if(i_41_ != -1)
@@ -317,7 +317,7 @@ public class ISAAC {
                                 Scene.method116(i_61_, 1, 128 * i_64_, 128 * i_64_, 128 * i_65_, 128 + 128 * i_66_, i_73_, i_74_);
                                 for(int i_75_ = i_67_; ((i_75_ <= i_68_)); i_75_++) {
                                     for(int i_76_ = i_65_; ((i_76_ <= i_66_)); i_76_++)
-                                        CacheIndex.anIntArrayArrayArray262[i_75_][i_64_][i_76_] = (Class66.method1021((CacheIndex.anIntArrayArrayArray262[i_75_][i_64_][i_76_]), i ^ 0xffffffff));
+                                        CacheIndex.anIntArrayArrayArray262[i_75_][i_64_][i_76_] = (HuffmanEncoding.method1021((CacheIndex.anIntArrayArrayArray262[i_75_][i_64_][i_76_]), i ^ 0xffffffff));
                                 }
                             }
                         }
@@ -355,7 +355,7 @@ public class ISAAC {
                                 Scene.method116(i_61_, 2, 128 * i_77_, 128 * i_79_ + 128, 128 * i_63_, i_63_ * 128, i_86_, i_84_);
                                 for(int i_87_ = i_80_; ((i_78_ >= i_87_)); i_87_++) {
                                     for(int i_88_ = i_77_; i_88_ <= i_79_; i_88_++)
-                                        CacheIndex.anIntArrayArrayArray262[i_87_][i_88_][i_63_] = (Class66.method1021((CacheIndex.anIntArrayArrayArray262[i_87_][i_88_][i_63_]), i_59_ ^ 0xffffffff));
+                                        CacheIndex.anIntArrayArrayArray262[i_87_][i_88_][i_63_] = (HuffmanEncoding.method1021((CacheIndex.anIntArrayArrayArray262[i_87_][i_88_][i_63_]), i_59_ ^ 0xffffffff));
                                 }
                             }
                         }
@@ -391,7 +391,7 @@ public class ISAAC {
                                 Scene.method116(i_61_, 4, i_89_ * 128, i_90_ * 128 + 128, 128 * i_91_, i_92_ * 128 + 128, i_95_, i_95_);
                                 for(int i_96_ = i_89_; ((i_96_ <= i_90_)); i_96_++) {
                                     for(int i_97_ = i_91_; ((i_92_ >= i_97_)); i_97_++)
-                                        CacheIndex.anIntArrayArrayArray262[i_62_][i_96_][i_97_] = (Class66.method1021((CacheIndex.anIntArrayArrayArray262[i_62_][i_96_][i_97_]), i_60_ ^ 0xffffffff));
+                                        CacheIndex.anIntArrayArrayArray262[i_62_][i_96_][i_97_] = (HuffmanEncoding.method1021((CacheIndex.anIntArrayArrayArray262[i_62_][i_96_][i_97_]), i_60_ ^ 0xffffffff));
                                 }
                             }
                         }
@@ -468,17 +468,17 @@ public class ISAAC {
             int i_99_ = anIntArray511[i_98_];
             if((i_98_ & 0x2) == 0) {
                 if((0x1 & i_98_) == 0)
-                    anInt498 ^= anInt498 << -1775138835;
+                    anInt498 ^= anInt498 << 13;
                 else
-                    anInt498 ^= anInt498 >>> -249040506;
+                    anInt498 ^= anInt498 >>> 6;
             } else if((i_98_ & 0x1) != 0)
-                anInt498 ^= anInt498 >>> 2020813872;
+                anInt498 ^= anInt498 >>> 16;
             else
-                anInt498 ^= anInt498 << -154663678;
+                anInt498 ^= anInt498 << 2;
             anInt498 += anIntArray511[0xff & 128 + i_98_];
             int i_100_;
-            anIntArray511[i_98_] = i_100_ = anIntArray511[(Class66.method1021(i_99_, 1020) >> 107120354)] + (anInt498 + anInt513);
-            anIntArray508[i_98_] = anInt513 = (i_99_ + anIntArray511[Class66.method1021((i_100_ >> -488567000 >> -1522276318), 255)]);
+            anIntArray511[i_98_] = i_100_ = anIntArray511[(HuffmanEncoding.method1021(i_99_, 1020) >> 2)] + (anInt498 + anInt513);
+            anIntArray508[i_98_] = anInt513 = (i_99_ + anIntArray511[HuffmanEncoding.method1021((i_100_ >> -488567000 >> -1522276318), 255)]);
         }
 
     }
@@ -504,28 +504,28 @@ public class ISAAC {
         int i_107_;
         int i = (i_101_ = i_102_ = i_103_ = i_104_ = i_105_ = i_106_ = i_107_ = -1640531527);
         for(int i_108_ = 0; i_108_ < 4; i_108_++) {
-            i ^= i_101_ << -1915247189;
+            i ^= i_101_ << 11;
             i_103_ += i;
             i_101_ += i_102_;
-            i_101_ ^= i_102_ >>> -1129151966;
+            i_101_ ^= i_102_ >>> 2;
             i_102_ += i_103_;
-            i_102_ ^= i_103_ << -900908184;
+            i_102_ ^= i_103_ << 8;
             i_105_ += i_102_;
             i_104_ += i_101_;
             i_103_ += i_104_;
-            i_103_ ^= i_104_ >>> 1581552336;
+            i_103_ ^= i_104_ >>> 16;
             i_106_ += i_103_;
             i_104_ += i_105_;
-            i_104_ ^= i_105_ << 1384803626;
+            i_104_ ^= i_105_ << 10;
             i_107_ += i_104_;
             i_105_ += i_106_;
-            i_105_ ^= i_106_ >>> -1750417532;
+            i_105_ ^= i_106_ >>> 4;
             i_106_ += i_107_;
-            i_106_ ^= i_107_ << 1936636392;
+            i_106_ ^= i_107_ << 8;
             i_101_ += i_106_;
             i += i_105_;
             i_107_ += i;
-            i_107_ ^= i >>> 166072873;
+            i_107_ ^= i >>> 9;
             i_102_ += i_107_;
             i += i_101_;
         }
@@ -538,28 +538,28 @@ public class ISAAC {
             i_106_ += anIntArray508[i_109_ + 6];
             i_105_ += anIntArray508[5 + i_109_];
             i_102_ += anIntArray508[2 + i_109_];
-            i ^= i_101_ << -790042005;
+            i ^= i_101_ << 11;
             i_103_ += i;
             i_101_ += i_102_;
-            i_101_ ^= i_102_ >>> 1388196098;
+            i_101_ ^= i_102_ >>> 2;
             i_104_ += i_101_;
             i_102_ += i_103_;
-            i_102_ ^= i_103_ << 1436572424;
+            i_102_ ^= i_103_ << 8;
             i_103_ += i_104_;
             i_105_ += i_102_;
-            i_103_ ^= i_104_ >>> -835938960;
+            i_103_ ^= i_104_ >>> 16;
             i_104_ += i_105_;
             i_106_ += i_103_;
-            i_104_ ^= i_105_ << -2084310486;
+            i_104_ ^= i_105_ << 10;
             i_107_ += i_104_;
             i_105_ += i_106_;
-            i_105_ ^= i_106_ >>> -1146757436;
+            i_105_ ^= i_106_ >>> 4;
             i_106_ += i_107_;
             i += i_105_;
-            i_106_ ^= i_107_ << 603045960;
+            i_106_ ^= i_107_ << 8;
             i_107_ += i;
             i_101_ += i_106_;
-            i_107_ ^= i >>> -1011620151;
+            i_107_ ^= i >>> 9;
             i += i_101_;
             i_102_ += i_107_;
             anIntArray511[i_109_] = i;
@@ -583,27 +583,27 @@ public class ISAAC {
             i += anIntArray511[i_110_];
             i_104_ += anIntArray511[4 + i_110_];
             i_101_ += anIntArray511[i_110_ + 1];
-            i ^= i_101_ << 105759243;
+            i ^= i_101_ << 11;
             i_103_ += i;
             i_101_ += i_102_;
-            i_101_ ^= i_102_ >>> 1456202018;
+            i_101_ ^= i_102_ >>> 2;
             i_102_ += i_103_;
-            i_102_ ^= i_103_ << -2127856632;
+            i_102_ ^= i_103_ << 8;
             i_105_ += i_102_;
             i_104_ += i_101_;
             i_103_ += i_104_;
-            i_103_ ^= i_104_ >>> 1872814192;
+            i_103_ ^= i_104_ >>> 16;
             i_106_ += i_103_;
             i_104_ += i_105_;
-            i_104_ ^= i_105_ << -224288950;
+            i_104_ ^= i_105_ << 10;
             i_107_ += i_104_;
             i_105_ += i_106_;
-            i_105_ ^= i_106_ >>> 206611140;
+            i_105_ ^= i_106_ >>> 4;
             i += i_105_;
             i_106_ += i_107_;
-            i_106_ ^= i_107_ << 1636820520;
+            i_106_ ^= i_107_ << 8;
             i_107_ += i;
-            i_107_ ^= i >>> 1387696009;
+            i_107_ ^= i >>> 9;
             i_101_ += i_106_;
             i += i_101_;
             i_102_ += i_107_;

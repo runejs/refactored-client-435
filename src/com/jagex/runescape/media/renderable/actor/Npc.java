@@ -100,13 +100,13 @@ public class Npc extends Actor {
                                     if(Class22_Sub2.duplicateClickCount < 8 && differenceX >= -32 && (differenceX ^ 0xffffffff) >= -32 && (differenceY ^ 0xffffffff) <= 31 && differenceY <= 31) {
                                         differenceX += 32;
                                         differenceY += 32;
-                                        Class32.packetBuffer.putShortBE((differenceY + (differenceX << -1041963898) + (Class22_Sub2.duplicateClickCount << 164403180)));
+                                        Class32.packetBuffer.putShortBE((differenceY + (differenceX << 6) + (Class22_Sub2.duplicateClickCount << 12)));
                                         Class22_Sub2.duplicateClickCount = 0;
                                     } else if(Class22_Sub2.duplicateClickCount < 8) {
-                                        Class32.packetBuffer.putMediumBE((y + 8388608 + (Class22_Sub2.duplicateClickCount << 1170876883)));
+                                        Class32.packetBuffer.putMediumBE((y + 8388608 + (Class22_Sub2.duplicateClickCount << 19)));
                                         Class22_Sub2.duplicateClickCount = 0;
                                     } else {
-                                        Class32.packetBuffer.putIntBE(((Class22_Sub2.duplicateClickCount << 811733811) + -1073741824 + y));
+                                        Class32.packetBuffer.putIntBE(((Class22_Sub2.duplicateClickCount << 19) + -1073741824 + y));
                                         Class22_Sub2.duplicateClickCount = 0;
                                     }
                                 }
@@ -149,7 +149,7 @@ public class Npc extends Actor {
                     int i_12_ = (int) l;
                     Class32.packetBuffer.putPacket(234);
                     int i_13_ = i_10_ * 765 + i;
-                    Class32.packetBuffer.putIntLE(((i_11_ << -1245872941) + ((i_12_ << 651937044) + i_13_)));
+                    Class32.packetBuffer.putIntLE(((i_11_ << 19) + ((i_12_ << 20) + i_13_)));
                 }
                 if(Class19.anInt487 > 0)
                     Class19.anInt487--;
@@ -290,8 +290,8 @@ public class Npc extends Actor {
                         if((SpotAnimDefinition.anInt2302 ^ 0xffffffff) == -2 || (GameFrame.clickType ^ 0xffffffff) == -2)
                             anInt3294++;
                         int i = 34;
-                        if(Class66.openScreenWidgetId != -1)
-                            Class27.method360((byte) 125, 516, i, 338, Class66.openScreenWidgetId, 4, 4);
+                        if(HuffmanEncoding.openScreenWidgetId != -1)
+                            Class27.method360((byte) 125, 516, i, 338, HuffmanEncoding.openScreenWidgetId, 4, 4);
                         if(Class29.tabAreaOverlayWidgetId == -1) {
                             if(((Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]) ^ 0xffffffff) != 0)
                                 Class27.method360((byte) 125, 743, i, 466, (Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]), 205, 553);
@@ -301,8 +301,8 @@ public class Npc extends Actor {
                             Class27.method360((byte) 125, 496, i, 453, Class43.openChatboxWidgetId, 357, 17);
                         else if((Class48.anInt1138 ^ 0xffffffff) != 0)
                             Class27.method360((byte) 125, 496, i, 453, Class48.anInt1138, 357, 17);
-                        if((Class66.openScreenWidgetId ^ 0xffffffff) != 0)
-                            Class27.method360((byte) 125, 516, i ^ 0xffffffff, 338, Class66.openScreenWidgetId, 4, 4);
+                        if((HuffmanEncoding.openScreenWidgetId ^ 0xffffffff) != 0)
+                            Class27.method360((byte) 125, 516, i ^ 0xffffffff, 338, HuffmanEncoding.openScreenWidgetId, 4, 4);
                         if(Class29.tabAreaOverlayWidgetId != -1)
                             Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, Class29.tabAreaOverlayWidgetId, 205, 553);
                         else if((Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]) != -1)
@@ -448,7 +448,7 @@ public class Npc extends Actor {
                 int i_5_ = Cache.outgoingbuffer.getIntBE();
                 npc.anInt3129 = 0;
                 npc.anInt3093 = pulseCycle + (0xffff & i_5_);
-                npc.anInt3110 = i_5_ >> -1206933168;
+                npc.anInt3110 = i_5_ >> 16;
                 npc.anInt3140 = 0;
                 if(npc.anInt3093 > pulseCycle)
                     npc.anInt3140 = -1;

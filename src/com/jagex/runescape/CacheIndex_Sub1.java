@@ -71,7 +71,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
         anInt1804++;
         if(arg1 != 255)
             method203(83);
-        return (Class40_Sub5_Sub17_Sub6.method832(-110, (new RSString[]{HashTable.method334(0xff & arg0 >> 682571800, -1), Node.aClass1_975, HashTable.method334((arg0 & 0xffca88) >> 521687376, -1), Node.aClass1_975, HashTable.method334((0xfff8 & arg0) >> 1853669096, -1), Node.aClass1_975, HashTable.method334(0xff & arg0, -1)})));
+        return (Class40_Sub5_Sub17_Sub6.method832(-110, (new RSString[]{HashTable.method334(0xff & arg0 >> 24, -1), Node.aClass1_975, HashTable.method334((arg0 & 0xffca88) >> 16, -1), Node.aClass1_975, HashTable.method334((0xfff8 & arg0) >> 8, -1), Node.aClass1_975, HashTable.method334(0xff & arg0, -1)})));
 
     }
 
@@ -85,7 +85,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
             this.method178(arg4);
             method199(-124);
         } else {
-            arg4[arg4.length - 2] = (byte) (anIntArray224[arg2] >> -1152670104);
+            arg4[arg4.length - 2] = (byte) (anIntArray224[arg2] >> 8);
             arg4[arg4.length + -1] = (byte) anIntArray224[arg2];
             if(aClass56_1812 != null) {
                 RSRuntimeException.method1055(arg4, (byte) 55, aClass56_1812, arg2);
@@ -145,7 +145,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
                 Class65.aCRC32_1531.reset();
                 Class65.aCRC32_1531.update(arg2, 0, arg2.length - 2);
                 int i = (int) Class65.aCRC32_1531.getValue();
-                int i_0_ = (((arg2[-2 + arg2.length] & 0xff) << 900515176) + (0xff & arg2[arg2.length + -1]));
+                int i_0_ = (((arg2[-2 + arg2.length] & 0xff) << 8) + (0xff & arg2[arg2.length + -1]));
                 if(i != anIntArray252[arg3] || ((anIntArray224[arg3] ^ 0xffffffff) != (i_0_ ^ 0xffffffff))) {
                     aBooleanArray1796[arg3] = false;
                     if(aBoolean1811 || arg1)

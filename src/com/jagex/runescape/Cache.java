@@ -35,6 +35,8 @@ public class Cache {
             i += i;
         }
         anInt316 = arg0;
+        System.out.println("Cache: " + i);
+
         aClass23_318 = new HashTable(i);
     }
 

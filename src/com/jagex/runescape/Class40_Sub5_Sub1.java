@@ -45,9 +45,9 @@ public class Class40_Sub5_Sub1 extends SubNode {
         int i_1_ = Class40_Sub6.tile_height[arg2][arg9][1 + arg8];
         int i_2_ = (Class40_Sub6.tile_height[arg2][arg9 + 1][arg8 + 1]);
         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(arg1);
-        int i_3_ = i_2_ + i_0_ + (i + i_1_) >> 466559714;
-        int i_4_ = (arg7 << 195627366) + arg4;
-        int i_5_ = arg9 - (-(arg8 << -1503664185) - (arg1 << -1015388722) - 1073741824);
+        int i_3_ = i_2_ + i_0_ + (i + i_1_) >> 2;
+        int i_4_ = (arg7 << 6) + arg4;
+        int i_5_ = arg9 - (-(arg8 << 7) - (arg1 << 14) - 1073741824);
         if(gameObjectDefinition.hasActions == 0)
             i_5_ += -2147483648;
         if((gameObjectDefinition.supportsItems ^ 0xffffffff) == -2)
@@ -181,7 +181,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 int i_14_ = 16;
                 int i_15_ = arg5.method122(arg3, arg9, arg8);
                 if(i_15_ > 0)
-                    i_14_ = (GameObjectDefinition.getDefinition(i_15_ >> -1535148562 & 0x7fff).setDecorDisplacement);
+                    i_14_ = (GameObjectDefinition.getDefinition(i_15_ >> 14 & 0x7fff).setDecorDisplacement);
                 Renderable renderable;
                 if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
                     renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, (byte) 124, i_0_);
@@ -249,15 +249,15 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 Class32.packetBuffer.putByte(ItemDefinition.anInt2797);
             }
             if(Class57.anInt1338 >= 412 && Class57.anInt1338 <= 512 && (RSString.anInt1668 ^ 0xffffffff) <= -468 && (RSString.anInt1668 ^ 0xffffffff) >= -500) {
-                if(Class66.openScreenWidgetId == -1) {
+                if(HuffmanEncoding.openScreenWidgetId == -1) {
                     PacketBuffer.method516(127);
                     if((Class34.anInt854 ^ 0xffffffff) != 0) {
                         Class67.aBoolean1601 = false;
-                        Class66.anInt1548 = Class66.openScreenWidgetId = Class34.anInt854;
-                        Class66.aClass1_1550 = Class66.blank_string;
+                        HuffmanEncoding.anInt1548 = HuffmanEncoding.openScreenWidgetId = Class34.anInt854;
+                        HuffmanEncoding.aClass1_1550 = HuffmanEncoding.blank_string;
                     }
                 } else
-                    Class44.method895(arg0 ^ ~0x65, 0, Class37.aClass1_873, Class66.blank_string);
+                    Class44.method895(arg0 ^ ~0x65, 0, Class37.aClass1_873, HuffmanEncoding.blank_string);
             }
         }
     }
@@ -323,7 +323,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
         if(arg0 != 256)
             anInt2280 = 44;
         int i = Class37.method430((byte) -120, Player.anInt3267, Class12.cameraX, Class40_Sub5_Sub6.cameraY);
-        if(i + -Class32.cameraZ < 800 && ((OverlayDefinition.tile_flags[Player.anInt3267][Class12.cameraX >> -1116963737][Class40_Sub5_Sub6.cameraY >> -161392185]) & 0x4) != 0)
+        if(i + -Class32.cameraZ < 800 && ((OverlayDefinition.tile_flags[Player.anInt3267][Class12.cameraX >> 7][Class40_Sub5_Sub6.cameraY >> 7]) & 0x4) != 0)
             return Player.anInt3267;
         return 3;
     }

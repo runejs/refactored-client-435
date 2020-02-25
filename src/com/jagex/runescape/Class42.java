@@ -59,7 +59,7 @@ public class Class42 {
     public Class42(int[] arg0) {
 
         int i;
-        for(i = 1; (((arg0.length >> -2026619711) + arg0.length >= i)); i <<= 1) {
+        for(i = 1; (((arg0.length >> 1) + arg0.length >= i)); i <<= 1) {
             /* empty */
         }
         anIntArray996 = new int[i + i];
@@ -99,9 +99,9 @@ public class Class42 {
             method887((byte) -6);
         anInt994++;
         int i = 57 * arg1 + arg0;
-        i ^= i << 636261773;
+        i ^= i << 13;
         int i_2_ = 1376312589 + (i * i * 15731 + 789221) * i & 0x7fffffff;
-        return i_2_ >> -754459309 & 0xff;
+        return i_2_ >> 19 & 0xff;
 
     }
 
@@ -170,7 +170,7 @@ public class Class42 {
 
     public static int method888(int arg0, byte arg1, int arg2) {
 
-        int i = (-128 + Class4.method160(arg0 + 45365, 15177, 4, 91923 + arg2) - (-(Class4.method160(arg0 + 10294, 15177, 2, 37821 + arg2) - 128 >> -463135775) + -(-128 + Class4.method160(arg0, 15177, 1, arg2) >> 252161186)));
+        int i = (-128 + Class4.method160(arg0 + 45365, 15177, 4, 91923 + arg2) - (-(Class4.method160(arg0 + 10294, 15177, 2, 37821 + arg2) - 128 >> 1) + -(-128 + Class4.method160(arg0, 15177, 1, arg2) >> 2)));
         i = 35 + (int) (0.3 * (double) i);
         if(arg1 != -45)
             return -24;
@@ -238,7 +238,7 @@ public class Class42 {
             return 76;
         anInt992++;
         int i = -2 + anIntArray996.length;
-        int i_0_ = arg0 << 248589057 & i;
+        int i_0_ = arg0 << 1 & i;
         for(; ; ) {
             int i_1_ = anIntArray996[i_0_];
             if((arg0 ^ 0xffffffff) == (i_1_ ^ 0xffffffff))

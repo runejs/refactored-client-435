@@ -90,7 +90,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     public static void method833(int arg0, boolean arg1) {
 
         anInt3241++;
-        if(((VarbitDefinition.anInt2366 ^ 0xffffffff) == ((Player.localPlayer.anInt3098) >> 1533110887 ^ 0xffffffff)) && ((Class55.anInt1304 ^ 0xffffffff) == ((Player.localPlayer.anInt3089) >> -425626553 ^ 0xffffffff)))
+        if(((VarbitDefinition.anInt2366 ^ 0xffffffff) == ((Player.localPlayer.anInt3098) >> 7 ^ 0xffffffff)) && ((Class55.anInt1304 ^ 0xffffffff) == ((Player.localPlayer.anInt3089) >> 7 ^ 0xffffffff)))
             VarbitDefinition.anInt2366 = 0;
         int i = Class60.anInt1407;
         if(arg1)
@@ -103,13 +103,13 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                 i_1_ = 33538048;
                 class40_sub5_sub17_sub4_sub1 = (Player.localPlayer);
             } else {
-                i_1_ = Class57.anIntArray1334[i_0_] << -377206898;
+                i_1_ = Class57.anIntArray1334[i_0_] << 14;
                 class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_0_]]);
             }
             if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.isVisible(1)) {
                 class40_sub5_sub17_sub4_sub1.aBoolean3287 = false;
-                int i_2_ = class40_sub5_sub17_sub4_sub1.anInt3098 >> 1455652391;
-                int i_3_ = class40_sub5_sub17_sub4_sub1.anInt3089 >> -130081305;
+                int i_2_ = class40_sub5_sub17_sub4_sub1.anInt3098 >> 7;
+                int i_3_ = class40_sub5_sub17_sub4_sub1.anInt3089 >> 7;
                 if(((VertexNormal.lowMemory && (Class60.anInt1407 ^ 0xffffffff) < -51) || (Class60.anInt1407 ^ 0xffffffff) < -201) && !arg1 && ((class40_sub5_sub17_sub4_sub1.anInt3126 ^ 0xffffffff) == (class40_sub5_sub17_sub4_sub1.anInt3077 ^ 0xffffffff)))
                     class40_sub5_sub17_sub4_sub1.aBoolean3287 = true;
                 if(i_2_ >= 0 && (i_2_ ^ 0xffffffff) > -105 && i_3_ >= 0 && i_3_ < 104) {

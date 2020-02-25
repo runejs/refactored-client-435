@@ -70,14 +70,14 @@ public class CollisionMap {
     public void method143(boolean arg0, int arg1, int arg2, int arg3) {
         if(arg0 != true)
             anIntArrayArray150 = null;
-        anIntArrayArray150[arg1][arg2] = UnderlayDefinition.method619(anIntArrayArray150[arg1][arg2], arg3);
+        anIntArrayArray150[arg1][arg2] = UnderlayDefinition.bitWiseOR(anIntArrayArray150[arg1][arg2], arg3);
     }
 
     public void method145(int arg0, int arg1, int arg2) {
         arg0 -= anInt151;
         if(arg1 == 28227) {
             arg2 -= anInt140;
-            anIntArrayArray150[arg2][arg0] = Class66.method1021(anIntArrayArray150[arg2][arg0], 14680063);
+            anIntArrayArray150[arg2][arg0] = HuffmanEncoding.method1021(anIntArrayArray150[arg2][arg0], 14680063);
         }
     }
 
@@ -372,7 +372,7 @@ public class CollisionMap {
         arg2 -= anInt140;
         if(arg0 != -28)
             anInt153 = -24;
-        anIntArrayArray150[arg2][arg1] = UnderlayDefinition.method619(anIntArrayArray150[arg2][arg1], 2097152);
+        anIntArrayArray150[arg2][arg1] = UnderlayDefinition.bitWiseOR(anIntArrayArray150[arg2][arg1], 2097152);
     }
 
     public boolean method153(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
@@ -514,7 +514,7 @@ public class CollisionMap {
 
     public void method156(int arg0, int arg1, int arg2, byte arg3) {
         if(arg3 == 124) {
-            anIntArrayArray150[arg2][arg0] = Class66.method1021(anIntArrayArray150[arg2][arg0], -arg1 + 16777215);
+            anIntArrayArray150[arg2][arg0] = HuffmanEncoding.method1021(anIntArrayArray150[arg2][arg0], -arg1 + 16777215);
         }
     }
 

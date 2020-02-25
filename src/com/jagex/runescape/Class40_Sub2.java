@@ -54,7 +54,7 @@ public class Class40_Sub2 extends Node {
         if((arg0 ^ 0xffffffff) > -1 || (i_3_ < arg0))
             arg0 = 0;
         i_3_ <<= i;
-        Class58.varbitmasks[i_0_] = (UnderlayDefinition.method619(Class66.method1021(Class58.varbitmasks[i_0_], i_3_ ^ 0xffffffff), Class66.method1021(i_3_, arg0 << i)));
+        Class58.varbitmasks[i_0_] = (UnderlayDefinition.bitWiseOR(HuffmanEncoding.method1021(Class58.varbitmasks[i_0_], i_3_ ^ 0xffffffff), HuffmanEncoding.method1021(i_3_, arg0 << i)));
 
     }
 

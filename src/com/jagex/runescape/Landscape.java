@@ -138,7 +138,7 @@ public class Landscape {
                 byte[] is = Class52.aByteArrayArray1217[i];
                 if(is != null) {
                     int i_2_ = ((ISAAC.anIntArray528[i] & 0xff) * 64 - Class26.anInt635);
-                    int i_3_ = ((ISAAC.anIntArray528[i] >> 430061704) * 64 - SpotAnimDefinition.anInt2307);
+                    int i_3_ = ((ISAAC.anIntArray528[i] >> 8) * 64 - SpotAnimDefinition.anInt2307);
                     if(Class58.aBoolean1349) {
                         i_3_ = 10;
                         i_2_ = 10;
@@ -169,13 +169,13 @@ public class Landscape {
                 if(!Class58.aBoolean1349) {
                     for(int i_6_ = 0; i > i_6_; i_6_++) {
                         int i_7_ = (-Class26.anInt635 + ((0xff & ISAAC.anIntArray528[i_6_]) * 64));
-                        int i_8_ = (-SpotAnimDefinition.anInt2307 + 64 * (ISAAC.anIntArray528[i_6_] >> 1048646664));
+                        int i_8_ = (-SpotAnimDefinition.anInt2307 + 64 * (ISAAC.anIntArray528[i_6_] >> 8));
                         byte[] is = RSString.aByteArrayArray1715[i_6_];
                         if(is != null)
                             AnimationSequence.method592(aCollisionMapArray1167, (Class51.anInt1202 + -6) * 8, is, -6, i_8_, i_7_, 8 * (-6 + Class17.anInt448));
                     }
                     for(int i_9_ = 0; i > i_9_; i_9_++) {
-                        int i_10_ = (-SpotAnimDefinition.anInt2307 + (ISAAC.anIntArray528[i_9_] >> -401526520) * 64);
+                        int i_10_ = (-SpotAnimDefinition.anInt2307 + (ISAAC.anIntArray528[i_9_] >> 8) * 64);
                         byte[] is = RSString.aByteArrayArray1715[i_9_];
                         int i_11_ = (-Class26.anInt635 + 64 * (ISAAC.anIntArray528[i_9_] & 0xff));
                         if(is == null && (Class17.anInt448 ^ 0xffffffff) > -801)
@@ -196,7 +196,7 @@ public class Landscape {
                             }
                         }
                         if(is != null) {
-                            int i_13_ = (-SpotAnimDefinition.anInt2307 + (ISAAC.anIntArray528[i_12_] >> 961254632) * 64);
+                            int i_13_ = (-SpotAnimDefinition.anInt2307 + (ISAAC.anIntArray528[i_12_] >> 8) * 64);
                             int i_14_ = (64 * (0xff & ISAAC.anIntArray528[i_12_]) - Class26.anInt635);
                             GameObject.loadObjectBlock(i_13_, Npc.aScene_3301, aCollisionMapArray1167, is, i_14_);
                         }
@@ -209,11 +209,11 @@ public class Landscape {
                                 int i_18_ = (OverlayDefinition.anIntArrayArrayArray2333[i_15_][i_16_][i_17_]);
                                 boolean bool_19_ = false;
                                 if(i_18_ != -1) {
-                                    int i_20_ = (0x6 & i_18_) >> 2052754561;
-                                    int i_21_ = (i_18_ & 0xffd2c2) >> 1409268174;
-                                    int i_22_ = i_18_ >> 887936792 & 0x3;
-                                    int i_23_ = (i_18_ & 0x3ffb) >> 561664195;
-                                    int i_24_ = ((i_21_ / 8 << -954331000) + (i_23_ / 8));
+                                    int i_20_ = (0x6 & i_18_) >> 1;
+                                    int i_21_ = (i_18_ & 0xffd2c2) >> 14;
+                                    int i_22_ = i_18_ >> 24 & 0x3;
+                                    int i_23_ = (i_18_ & 0x3ffb) >> 3;
+                                    int i_24_ = ((i_21_ / 8 << 8) + (i_23_ / 8));
                                     for(int i_25_ = 0; (i_25_ < ISAAC.anIntArray528.length); i_25_++) {
                                         if(((i_24_ ^ 0xffffffff) == ((ISAAC.anIntArray528[i_25_]) ^ 0xffffffff)) && (RSString.aByteArrayArray1715[i_25_]) != null) {
                                             Class5.method162(i_17_ * 8, 13941, 8 * (i_21_ & 0x7), i_22_, i_15_, i_16_ * 8, (0x7 & i_23_) * 8, i_20_, (RSString.aByteArrayArray1715[i_25_]), aCollisionMapArray1167);
@@ -240,11 +240,11 @@ public class Landscape {
                             for(int i_31_ = 0; i_31_ < 13; i_31_++) {
                                 int i_32_ = (OverlayDefinition.anIntArrayArrayArray2333[i_29_][i_30_][i_31_]);
                                 if((i_32_ ^ 0xffffffff) != 0) {
-                                    int i_33_ = ((i_32_ & 0x3ba82fb) >> -1741203752);
-                                    int i_34_ = 0x3ff & i_32_ >> 1081885454;
-                                    int i_35_ = i_32_ >> -2102494207 & 0x3;
-                                    int i_36_ = i_32_ >> 2088702243 & 0x7ff;
-                                    int i_37_ = ((i_34_ / 8 << 1879532360) + (i_36_ / 8));
+                                    int i_33_ = ((i_32_ & 0x3ba82fb) >> 24);
+                                    int i_34_ = 0x3ff & i_32_ >> 14;
+                                    int i_35_ = i_32_ >> 1 & 0x3;
+                                    int i_36_ = i_32_ >> 3 & 0x7ff;
+                                    int i_37_ = ((i_34_ / 8 << 8) + (i_36_ / 8));
                                     for(int i_38_ = 0; (i_38_ < ISAAC.anIntArray528.length); i_38_++) {
                                         if(i_37_ == (ISAAC.anIntArray528[i_38_]) && (Class52.aByteArrayArray1217[i_38_]) != null) {
                                             Class24.method341(8 * (i_34_ & 0x7), (Npc.aScene_3301), 0, i_29_, i_35_, i_33_, (Class52.aByteArrayArray1217[i_38_]), 8 * i_31_, aCollisionMapArray1167, 8 * (i_36_ & 0x7), i_30_ * 8);

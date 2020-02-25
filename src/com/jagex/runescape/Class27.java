@@ -117,10 +117,10 @@ public class Class27 {
             i = 8;
         int i_9_ = (-32 + arg4 - i) * arg1 / (-arg4 + arg2);
         Rasterizer.drawFilledRectangle(arg3, 16 + arg5 + i_9_, 16, i, Cache.anInt321);
-        Rasterizer.drawVerticalLine(arg3, 16 + arg5 + i_9_, i, Class66.anInt1559);
-        Rasterizer.drawVerticalLine(1 + arg3, i_9_ + arg5 + 16, i, Class66.anInt1559);
-        Rasterizer.drawHorizontalLine(arg3, i_9_ + arg5 + 16, 16, Class66.anInt1559);
-        Rasterizer.drawHorizontalLine(arg3, 17 + (arg5 + i_9_), 16, Class66.anInt1559);
+        Rasterizer.drawVerticalLine(arg3, 16 + arg5 + i_9_, i, HuffmanEncoding.anInt1559);
+        Rasterizer.drawVerticalLine(1 + arg3, i_9_ + arg5 + 16, i, HuffmanEncoding.anInt1559);
+        Rasterizer.drawHorizontalLine(arg3, i_9_ + arg5 + 16, 16, HuffmanEncoding.anInt1559);
+        Rasterizer.drawHorizontalLine(arg3, 17 + (arg5 + i_9_), 16, HuffmanEncoding.anInt1559);
         Rasterizer.drawVerticalLine(arg3 + 15, arg5 + 16 + i_9_, i, Class56.anInt1318);
         Rasterizer.drawVerticalLine(arg3 + 14, i_9_ + 17 + arg5, i - 1, Class56.anInt1318);
         Rasterizer.drawHorizontalLine(arg3, i + (i_9_ + (15 + arg5)), 16, Class56.anInt1318);
@@ -173,7 +173,7 @@ public class Class27 {
                 Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                 Class52.anInt1233 = i;
                 RSRuntimeException.anInt1651 = 0;
-                if(Class66.openScreenWidgetId == i_10_ >> 16)
+                if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16)
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
                 Class30.anInt704 = i_10_;
                 if((Class43.openChatboxWidgetId ^ 0xffffffff) == (i_10_ >> 16 ^ 0xffffffff))
@@ -250,7 +250,7 @@ public class Class27 {
                         }
                     }
                     if(!bool)
-                        Class44.method895(90, 0, (Class40_Sub5_Sub17_Sub6.method832(-46, new RSString[]{Class12.aClass1_397, class1_14_})), Class66.blank_string);
+                        Class44.method895(90, 0, (Class40_Sub5_Sub17_Sub6.method832(-46, new RSString[]{Class12.aClass1_397, class1_14_})), HuffmanEncoding.blank_string);
                 }
             }
             if(action == 55) {
@@ -262,7 +262,7 @@ public class Class27 {
                 RSRuntimeException.anInt1651 = 0;
                 Class52.anInt1233 = i;
                 Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
-                if(i_10_ >> 16 == Class66.openScreenWidgetId)
+                if(i_10_ >> 16 == HuffmanEncoding.openScreenWidgetId)
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
                 if((Class43.openChatboxWidgetId ^ 0xffffffff) == (i_10_ >> 16 ^ 0xffffffff))
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
@@ -276,7 +276,7 @@ public class Class27 {
                 Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                 RSRuntimeException.anInt1651 = 0;
                 Class30.anInt704 = i_10_;
-                if((Class66.openScreenWidgetId ^ 0xffffffff) == (i_10_ >> 16 ^ 0xffffffff))
+                if((HuffmanEncoding.openScreenWidgetId ^ 0xffffffff) == (i_10_ >> 16 ^ 0xffffffff))
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
                 if((Class43.openChatboxWidgetId ^ 0xffffffff) == (i_10_ >> 16 ^ 0xffffffff))
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
@@ -303,7 +303,7 @@ public class Class27 {
                 Class30.anInt704 = i_10_;
                 RSRuntimeException.anInt1651 = 0;
                 Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
-                if((Class66.openScreenWidgetId ^ 0xffffffff) == (i_10_ >> 16 ^ 0xffffffff))
+                if((HuffmanEncoding.openScreenWidgetId ^ 0xffffffff) == (i_10_ >> 16 ^ 0xffffffff))
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
                 if((Class43.openChatboxWidgetId ^ 0xffffffff) == (i_10_ >> 16 ^ 0xffffffff))
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
@@ -409,7 +409,7 @@ public class Class27 {
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                     Class52.anInt1233 = i;
                     Class30.anInt704 = i_10_;
-                    if(Class66.openScreenWidgetId == i_10_ >> 16)
+                    if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16)
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
                     if(Class43.openChatboxWidgetId == i_10_ >> 16)
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
@@ -431,10 +431,10 @@ public class Class27 {
                             Class37.anInt876 = 3;
                             Class52.redrawChatbox = true;
                             Class40_Sub5_Sub15.inputType = 0;
-                            Class66.aClass1_1565 = Class66.blank_string;
+                            HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
                             Class19.aBoolean490 = true;
                             PacketBuffer.aLong2241 = Class59.aLongArray1397[i_19_];
-                            Class66.aClass1_1563 = (Class40_Sub5_Sub17_Sub6.method832(58, new RSString[]{Class35.aClass1_1746, (Class40_Sub11.aClass1Array2147[i_19_])}));
+                            HuffmanEncoding.aClass1_1563 = (Class40_Sub5_Sub17_Sub6.method832(58, new RSString[]{Class35.aClass1_1746, (Class40_Sub11.aClass1Array2147[i_19_])}));
                         }
                     }
                 }
@@ -525,7 +525,7 @@ public class Class27 {
                     RSRuntimeException.anInt1651 = 0;
                     Class52.anInt1233 = i;
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
-                    if((i_10_ >> 16 ^ 0xffffffff) == (Class66.openScreenWidgetId ^ 0xffffffff))
+                    if((i_10_ >> 16 ^ 0xffffffff) == (HuffmanEncoding.openScreenWidgetId ^ 0xffffffff))
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
                     if(Class43.openChatboxWidgetId == i_10_ >> 16)
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
@@ -553,7 +553,7 @@ public class Class27 {
                             Class32.packetBuffer.putPacket(151);
                             Class32.packetBuffer.putOffsetShortLE(i_12_);
                         } else
-                            Class44.method895(83, 0, (Class40_Sub5_Sub17_Sub6.method832(127, (new RSString[]{HashTable.method334((widget.anInt2734), -1), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), Class66.blank_string);
+                            Class44.method895(83, 0, (Class40_Sub5_Sub17_Sub6.method832(127, (new RSString[]{HashTable.method334((widget.anInt2734), -1), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), HuffmanEncoding.blank_string);
                     }
                     if((action ^ 0xffffffff) == -43) {
                         Widget widget = Widget.forId(i_10_);
@@ -575,7 +575,7 @@ public class Class27 {
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                         Class30.anInt704 = i_10_;
                         RSRuntimeException.anInt1651 = 0;
-                        if((i_10_ >> 16 ^ 0xffffffff) == (Class66.openScreenWidgetId ^ 0xffffffff))
+                        if((i_10_ >> 16 ^ 0xffffffff) == (HuffmanEncoding.openScreenWidgetId ^ 0xffffffff))
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
                         if((Class43.openChatboxWidgetId ^ 0xffffffff) == (i_10_ >> 16 ^ 0xffffffff))
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
@@ -676,12 +676,12 @@ public class Class27 {
                             Class32.packetBuffer.putPacket(151);
                             Class32.packetBuffer.putOffsetShortLE(i_12_);
                         } else
-                            Class44.method895(103, 0, (Class40_Sub5_Sub17_Sub6.method832(-49, (new RSString[]{HashTable.method334((widget.itemAmounts[i]), -1), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), Class66.blank_string);
+                            Class44.method895(103, 0, (Class40_Sub5_Sub17_Sub6.method832(-49, (new RSString[]{HashTable.method334((widget.itemAmounts[i]), -1), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), HuffmanEncoding.blank_string);
                         Class52.anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
                         Class30.anInt704 = i_10_;
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
-                        if(i_10_ >> 16 == Class66.openScreenWidgetId)
+                        if(i_10_ >> 16 == HuffmanEncoding.openScreenWidgetId)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
                         if(i_10_ >> 16 == Class43.openChatboxWidgetId)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
@@ -714,7 +714,7 @@ public class Class27 {
                         Class32.packetBuffer.putShortLE(i);
                         RSRuntimeException.anInt1651 = 0;
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
-                        if((i_10_ >> 16 ^ 0xffffffff) == (Class66.openScreenWidgetId ^ 0xffffffff))
+                        if((i_10_ >> 16 ^ 0xffffffff) == (HuffmanEncoding.openScreenWidgetId ^ 0xffffffff))
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
                         if((Class43.openChatboxWidgetId ^ 0xffffffff) == (i_10_ >> 16 ^ 0xffffffff))
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
@@ -729,7 +729,7 @@ public class Class27 {
                         Class52.anInt1233 = i;
                         Class30.anInt704 = i_10_;
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
-                        if((i_10_ >> 16 ^ 0xffffffff) == (Class66.openScreenWidgetId ^ 0xffffffff))
+                        if((i_10_ >> 16 ^ 0xffffffff) == (HuffmanEncoding.openScreenWidgetId ^ 0xffffffff))
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
                         if((Class43.openChatboxWidgetId ^ 0xffffffff) == (i_10_ >> 16 ^ 0xffffffff))
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
@@ -752,13 +752,13 @@ public class Class27 {
                         RSString class1 = Landscape.aClass1Array1184[arg1];
                         int i_22_ = class1.contains(Class26.aClass1_620);
                         if((i_22_ ^ 0xffffffff) != 0) {
-                            if((Class66.openScreenWidgetId ^ 0xffffffff) != 0)
-                                Class44.method895(72, 0, Class37.aClass1_873, Class66.blank_string);
+                            if((HuffmanEncoding.openScreenWidgetId ^ 0xffffffff) != 0)
+                                Class44.method895(72, 0, Class37.aClass1_873, HuffmanEncoding.blank_string);
                             else {
                                 PacketBuffer.method516(95);
                                 if((Class34.anInt854 ^ 0xffffffff) != 0) {
-                                    Class66.aClass1_1550 = class1.substring(i_22_ + 5).trim();
-                                    Class66.anInt1548 = Class66.openScreenWidgetId = Class34.anInt854;
+                                    HuffmanEncoding.aClass1_1550 = class1.substring(i_22_ + 5).trim();
+                                    HuffmanEncoding.anInt1548 = HuffmanEncoding.openScreenWidgetId = Class34.anInt854;
                                     Class67.aBoolean1601 = false;
                                 }
                             }
@@ -791,7 +791,7 @@ public class Class27 {
                         Class32.packetBuffer.putShortBE(i_12_);
                         RSRuntimeException.anInt1651 = 0;
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
-                        if(Class66.openScreenWidgetId == i_10_ >> 16)
+                        if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
                         Class52.anInt1233 = i;
                         Class30.anInt704 = i_10_;
@@ -834,7 +834,7 @@ public class Class27 {
                         RSRuntimeException.anInt1651 = 0;
                         Class52.anInt1233 = i;
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
-                        if(Class66.openScreenWidgetId == i_10_ >> 16)
+                        if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
                         if(Class43.openChatboxWidgetId == i_10_ >> 16)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
@@ -885,7 +885,7 @@ public class Class27 {
                         RSRuntimeException.anInt1651 = 0;
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                         Class30.anInt704 = i_10_;
-                        if(i_10_ >> 16 == Class66.openScreenWidgetId)
+                        if(i_10_ >> 16 == HuffmanEncoding.openScreenWidgetId)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
                         if(i_10_ >> 16 == Class43.openChatboxWidgetId)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;

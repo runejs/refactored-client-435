@@ -97,7 +97,7 @@ public class Class34 {
     public static int method415(byte arg0, int arg1, int arg2) {
 
         anInt815++;
-        long l = (long) ((arg1 << 1451454800) + arg2);
+        long l = (long) ((arg1 << 16) + arg2);
         if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null || PacketBuffer.aClass40_Sub5_Sub13_2250.key != l)
             return 0;
         int i = 34 % ((arg0 + 46) / 45);

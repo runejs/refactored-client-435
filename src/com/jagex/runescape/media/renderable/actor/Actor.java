@@ -167,12 +167,12 @@ public abstract class Actor extends Renderable {
             if(i != 0) {
                 int i_0_ = Npc.aScene_3301.method141(arg1, arg2, arg5, i);
                 int i_1_ = 0x1f & i_0_;
-                int i_2_ = 0x3 & i_0_ >> -1705964506;
+                int i_2_ = 0x3 & i_0_ >> 6;
                 int i_3_ = arg3;
                 if((i ^ 0xffffffff) < -1)
                     i_3_ = arg4;
                 int i_4_ = 4 * (-arg5 + 103) * 512 + (24624 + (4 * arg2));
-                int i_5_ = i >> -1766000082 & 0x7fff;
+                int i_5_ = i >> 14 & 0x7fff;
                 int[] is = (Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.pixels);
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_5_);
                 if(gameObjectDefinition.mapSceneID != -1) {
@@ -251,8 +251,8 @@ public abstract class Actor extends Renderable {
             i = Npc.aScene_3301.method110(arg1, arg2, arg5);
             if(i != 0) {
                 int i_8_ = Npc.aScene_3301.method141(arg1, arg2, arg5, i);
-                int i_9_ = 0x7fff & i >> 1891879118;
-                int i_10_ = (i_8_ & 0xf4) >> -474347930;
+                int i_9_ = 0x7fff & i >> 14;
+                int i_10_ = (i_8_ & 0xf4) >> 6;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_9_);
                 int i_11_ = i_8_ & 0x1f;
                 if(gameObjectDefinition.mapSceneID != -1) {
@@ -283,7 +283,7 @@ public abstract class Actor extends Renderable {
             }
             i = Npc.aScene_3301.method93(arg1, arg2, arg5);
             if((i ^ 0xffffffff) != -1) {
-                int i_16_ = (i & 0x1fffd9fb) >> 1370061614;
+                int i_16_ = (i & 0x1fffd9fb) >> 14;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_16_);
                 if((gameObjectDefinition.mapSceneID ^ 0xffffffff) != 0) {
                     IndexedImage class40_sub5_sub14_sub2 = (SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID]);

@@ -115,7 +115,7 @@ public class Class13 {
             arg0 /= 2;
         if((arg1 ^ 0xffffffff) < -244)
             arg0 /= 2;
-        int i_0_ = arg1 / 2 + ((arg0 / 32 << 906471527) + (arg3 / 4 << 1215235370));
+        int i_0_ = arg1 / 2 + ((arg0 / 32 << 7) + (arg3 / 4 << 10));
         return i_0_;
 
     }
@@ -148,9 +148,9 @@ public class Class13 {
             anInt419 = -37;
         int i;
         if(arg0.id < 0)
-            i = arg0.parentId >> 567649872;
+            i = arg0.parentId >> 16;
         else
-            i = arg0.id >> -1265498640;
+            i = arg0.id >> 16;
         anInt401++;
         if(!Class68.method1043(i))
             return null;

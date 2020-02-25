@@ -107,7 +107,7 @@ public class Class32 {
 
     public static void method399(int arg0, int arg1, int arg2) {
         anInt744++;
-        long l = (long) ((arg0 << -713372176) + arg2);
+        long l = (long) ((arg0 << 16) + arg2);
         Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.method331(l, 6120));
         if(class40_sub5_sub13 != null) {
             Class19.aClass27_485.method367(true, class40_sub5_sub13);

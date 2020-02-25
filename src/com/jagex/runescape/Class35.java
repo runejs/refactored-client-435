@@ -89,7 +89,7 @@ public class Class35 implements Interface3 {
             if(is_0_ == null)
                 bool = false;
             else {
-                int i_1_ = 0xff & is_0_[1] | (0xff & is_0_[0]) << -1471118168;
+                int i_1_ = 0xff & is_0_[1] | (0xff & is_0_[0]) << 8;
                 byte[] is_2_;
                 if(arg4)
                     is_2_ = arg3.method182(i_1_, -122, 0);

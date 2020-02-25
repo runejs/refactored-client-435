@@ -83,9 +83,9 @@ public class PacketBuffer extends Buffer {
             UnderlayDefinition.anInt2562 = -1;
         }
         if(arg0 >= 92) {
-            if(Class66.openScreenWidgetId != -1) {
-                Class55.method958(Class66.openScreenWidgetId, -14222);
-                Class66.openScreenWidgetId = -1;
+            if(HuffmanEncoding.openScreenWidgetId != -1) {
+                Class55.method958(HuffmanEncoding.openScreenWidgetId, -14222);
+                HuffmanEncoding.openScreenWidgetId = -1;
                 CacheIndex_Sub1.anInt1819 = -1;
             }
         }

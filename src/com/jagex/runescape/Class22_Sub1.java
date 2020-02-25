@@ -125,20 +125,20 @@ public class Class22_Sub1 extends Class22 {
             arg2 -= Class12.cameraX;
             int i_3_ = (Model.SINE[Class68_Sub1.anInt2210]);
             int i_4_ = (Model.COSINE[Class68_Sub1.anInt2210]);
-            int i_5_ = arg1 * i_3_ + arg2 * i_4_ >> -1348635568;
-            arg1 = i_4_ * arg1 - arg2 * i_3_ >> 1869723344;
+            int i_5_ = arg1 * i_3_ + arg2 * i_4_ >> 16;
+            arg1 = i_4_ * arg1 - arg2 * i_3_ >> 16;
             if(arg3 != 4976905)
                 aClass1_1864 = null;
             arg2 = i_5_;
-            i_5_ = i * i_1_ - arg1 * i_2_ >> -205760432;
-            arg1 = arg1 * i_1_ + i * i_2_ >> 782060560;
+            i_5_ = i * i_1_ - arg1 * i_2_ >> 16;
+            arg1 = arg1 * i_1_ + i * i_2_ >> 16;
             i = i_5_;
             if((arg1 ^ 0xffffffff) > -51) {
                 Class44.anInt1048 = -1;
                 ISAAC.anInt522 = -1;
             } else {
-                ISAAC.anInt522 = 256 + (arg2 << -1849635095) / arg1;
-                Class44.anInt1048 = (i << 4976905) / arg1 + 167;
+                ISAAC.anInt522 = 256 + (arg2 << 9) / arg1;
+                Class44.anInt1048 = (i << 9) / arg1 + 167;
             }
         }
 

@@ -84,9 +84,9 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
                             Class48.modifiedWidgetId = i_2_;
                             ItemDefinition.anInt2798 = RSString.anInt1668;
                             Class58.selectedInventorySlot = i_1_;
-                            if((Class66.openScreenWidgetId ^ 0xffffffff) == (i_2_ >> 799918864 ^ 0xffffffff))
+                            if((HuffmanEncoding.openScreenWidgetId ^ 0xffffffff) == (i_2_ >> 16 ^ 0xffffffff))
                                 SceneTile.activeInterfaceType = 1;
-                            if((i_2_ >> 1441108912 ^ 0xffffffff) == (Class43.openChatboxWidgetId ^ 0xffffffff))
+                            if((i_2_ >> 16 ^ 0xffffffff) == (Class43.openChatboxWidgetId ^ 0xffffffff))
                                 SceneTile.activeInterfaceType = 3;
                             Buffer.anInt1978 = 0;
                             return;
@@ -325,8 +325,8 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
                 }
             }
             /* Main interface scrolling */
-            if(Class66.openScreenWidgetId != -1) {
-                Widget widget = Widget.forId(Class66.openScreenWidgetId);
+            if(HuffmanEncoding.openScreenWidgetId != -1) {
+                Widget widget = Widget.forId(HuffmanEncoding.openScreenWidgetId);
                 offsetX = 4;
                 offsetY = 4;
                 for(int index = 0; index < Widget.interfaces[widget.id].length; index++) {

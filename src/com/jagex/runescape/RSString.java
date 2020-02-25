@@ -48,8 +48,8 @@ public class RSString implements Interface1 {
 
     public static void method71(int arg0) {
         Class4.anInt182 = 0;
-        int i = (((Player.localPlayer.anInt3098) >> 2067257703) + SpotAnimDefinition.anInt2307);
-        int i_10_ = (Class26.anInt635 + ((Player.localPlayer.anInt3089) >> 1064414503));
+        int i = (((Player.localPlayer.anInt3098) >> 7) + SpotAnimDefinition.anInt2307);
+        int i_10_ = (Class26.anInt635 + ((Player.localPlayer.anInt3089) >> 7));
         if((i ^ 0xffffffff) <= -3054 && i <= 3156 && i_10_ >= 3056 && i_10_ <= 3136)
             Class4.anInt182 = 1;
         if(i >= 3072 && (i ^ 0xffffffff) >= -3119 && (i_10_ ^ 0xffffffff) <= -9493 && (i_10_ ^ 0xffffffff) >= -9536)
@@ -62,7 +62,7 @@ public class RSString implements Interface1 {
     public static byte[] method74(int arg0, CacheIndex arg1, int arg2, int arg3, int arg4) {
         if(arg3 >= -98)
             method83((byte) -1);
-        long l = ((long) (arg0 + 37 * arg2 & 0xffff) + ((long) arg4 << -1686849184) + (long) (arg2 << -1491383504));
+        long l = ((long) (arg0 + 37 * arg2 & 0xffff) + ((long) arg4 << 32) + (long) (arg2 << 16));
         if(aClass9_1684 != null) {
             Class40_Sub5_Sub6 class40_sub5_sub6 = (Class40_Sub5_Sub6) aClass9_1684.method231(l, (byte) 85);
             if(class40_sub5_sub6 != null)
@@ -509,8 +509,8 @@ public class RSString implements Interface1 {
         for(int i = 0; (i < is_15_.length); i++)
             is_15_[i] = arg0.length;
         for(int i = 1; i <= arg0.length; i++) {
-            is[-1 + i] = (arg0.length << 828194177) - i;
-            is_15_[Class66.method1021(arg0.chars[-1 + i], 255)] = arg0.length - i;
+            is[-1 + i] = (arg0.length << 1) - i;
+            is_15_[HuffmanEncoding.method1021(arg0.chars[-1 + i], 255)] = arg0.length - i;
         }
         int i = 1 + arg0.length;
         for(int i_16_ = arg0.length; i_16_ > 0; i_16_--) {
@@ -610,7 +610,7 @@ public class RSString implements Interface1 {
         if(arg0 != 1544463557)
             aByteArrayArray1715 = null;
         for(int i = 0; length > i; i++)
-            l = -l + (l << 1544463557) + (long) (0xff & chars[i]);
+            l = -l + (l << 5) + (long) (0xff & chars[i]);
         return l;
     }
 

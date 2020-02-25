@@ -52,17 +52,17 @@ public class Class40_Sub6 extends Node {
         for(int i_0_ = 10; i_0_ < 117; i_0_++) {
             int i_1_ = (int) (Math.random() * 100.0);
             if((i_1_ ^ 0xffffffff) > -51)
-                Class4.anIntArray178[(i - 2 << 51975399) + i_0_] = 255;
+                Class4.anIntArray178[(i - 2 << 7) + i_0_] = 255;
         }
         for(int i_2_ = 0; (i_2_ ^ 0xffffffff) > -101; i_2_++) {
             int i_3_ = (int) (Math.random() * 124.0) + 2;
             int i_4_ = 128 + (int) (Math.random() * 128.0);
-            int i_5_ = i_3_ + (i_4_ << 1417363463);
+            int i_5_ = i_3_ + (i_4_ << 7);
             Class4.anIntArray178[i_5_] = 192;
         }
         for(int i_6_ = 1; i_6_ < i - 1; i_6_++) {
             for(int i_7_ = 1; i_7_ < 127; i_7_++) {
-                int i_8_ = i_7_ + (i_6_ << -547790809);
+                int i_8_ = i_7_ + (i_6_ << 7);
                 Class40_Sub5_Sub17_Sub6.anIntArray3255[i_8_] = (Class4.anIntArray178[i_8_ + 1] + Class4.anIntArray178[i_8_ - 1] - (-Class4.anIntArray178[-128 + i_8_] - Class4.anIntArray178[128 + i_8_])) / 4;
             }
         }
@@ -74,7 +74,7 @@ public class Class40_Sub6 extends Node {
         }
         for(int i_10_ = 1; (i_10_ < -1 + i); i_10_++) {
             for(int i_11_ = 1; i_11_ < 127; i_11_++) {
-                int i_12_ = i_11_ + (i_10_ << 1567048551);
+                int i_12_ = i_11_ + (i_10_ << 7);
                 int i_13_ = (-((Landscape.anIntArray1168[(i_12_ + RSRuntimeException.anInt1641 & -1 + Landscape.anIntArray1168.length)]) / 5) + Class40_Sub5_Sub17_Sub6.anIntArray3255[i_12_ + 128]);
                 if((i_13_ ^ 0xffffffff) > -1)
                     i_13_ = 0;

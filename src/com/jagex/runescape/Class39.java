@@ -50,8 +50,8 @@ public class Class39 implements Runnable {
         if(arg1 == 19813) {
             if((i ^ 0xffffffff) != -1) {
                 int i_3_ = (Npc.aScene_3301.method141(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038, i));
-                i_0_ = (0x1fffe692 & i) >> 1746750286;
-                i_2_ = (i_3_ & 0xde) >> 114415910;
+                i_0_ = (0x1fffe692 & i) >> 14;
+                i_2_ = (i_3_ & 0xde) >> 6;
                 i_1_ = i_3_ & 0x1f;
             }
             arg0.anInt2025 = i_2_;

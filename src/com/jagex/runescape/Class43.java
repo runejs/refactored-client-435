@@ -101,10 +101,10 @@ public class Class43 {
                 OverlayDefinition.anInt2328 = -1;
                 boolean bool = arg0;
                 if(Class13.mouseX > 4 && Landscape.mouseY > 4 && Class13.mouseX < 516 && (Landscape.mouseY ^ 0xffffffff) > -339) {
-                    if((Class66.openScreenWidgetId ^ 0xffffffff) == 0)
+                    if((HuffmanEncoding.openScreenWidgetId ^ 0xffffffff) == 0)
                         Class64.method1013(arg0);
                     else
-                        Class13.method243((byte) 89, 4, 516, 338, Class66.openScreenWidgetId, 4, Class13.mouseX, Landscape.mouseY, 0);
+                        Class13.method243((byte) 89, 4, 516, 338, HuffmanEncoding.openScreenWidgetId, 4, Class13.mouseX, Landscape.mouseY, 0);
                 }
                 HashTable.anInt573 = Class40_Sub5_Sub17_Sub3.anInt3065;
                 ItemDefinition.anInt2850 = OverlayDefinition.anInt2328;

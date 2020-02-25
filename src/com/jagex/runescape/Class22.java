@@ -75,8 +75,8 @@ public abstract class Class22 {
             }
         }
         Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.method723();
-        int i_4_ = ((-10 + (int) (Math.random() * 20.0) + 238 << -838501336) + (228 + (int) (Math.random() * 20.0) << 1375075344) + (238 + (int) (20.0 * Math.random())) + -10);
-        int i_5_ = -10 + ((int) (20.0 * Math.random()) + 238) << 2143047344;
+        int i_4_ = ((-10 + (int) (Math.random() * 20.0) + 238 << 8) + (228 + (int) (Math.random() * 20.0) << 16) + (238 + (int) (20.0 * Math.random())) + -10);
+        int i_5_ = -10 + ((int) (20.0 * Math.random()) + 238) << 16;
         for(int i_6_ = 1; i_6_ < 103; i_6_++) {
             for(int i_7_ = 1; i_7_ < 103; i_7_++) {
                 if(((OverlayDefinition.tile_flags[arg1][i_7_][i_6_]) & 0x18 ^ 0xffffffff) == -1)
@@ -92,7 +92,7 @@ public abstract class Class22 {
             for(int i_9_ = 0; i_9_ < 104; i_9_++) {
                 int i_10_ = (Npc.aScene_3301.method93(Player.anInt3267, i_8_, i_9_));
                 if(i_10_ != 0) {
-                    i_10_ = 0x7fff & i_10_ >> -1684965490;
+                    i_10_ = 0x7fff & i_10_ >> 14;
                     int i_11_ = (GameObjectDefinition.getDefinition(i_10_).icon);
                     if(i_11_ >= 0) {
                         int i_12_ = i_9_;
@@ -138,7 +138,7 @@ public abstract class Class22 {
             if(class1.length > arg2)
                 class1.length = arg2;
             class1.chars = new byte[class1.length];
-            arg0.currentPosition += (IdentityKit.aClass66_2590.method1023(arg0.buffer, class1.length, 0, class1.chars, arg0.currentPosition, -1));
+            arg0.currentPosition += (IdentityKit.aHuffmanEncoding_2590.method1023(arg0.buffer, class1.length, 0, class1.chars, arg0.currentPosition, -1));
             return class1;
         } catch(Exception exception) {
             return Class33.aClass1_777;
@@ -155,7 +155,7 @@ public abstract class Class22 {
     public static void method309(int arg0, int arg1) {
         do {
             AnimationSequence.anInt2480 = Node.pulseCycle;
-            Class66.method1030((byte) 127);
+            HuffmanEncoding.method1030((byte) 127);
             anInt531++;
             int i = (Npc.method795((byte) -70, arg1).anInt2633);
             if(i != 0) {

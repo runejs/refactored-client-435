@@ -1,12 +1,10 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.media.renderable.actor.Player;
 
 import java.awt.*;
 import java.awt.image.*;
@@ -70,13 +68,13 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             else
                 i -= 101;
             Class40_Sub7.anInt2122++;
-            OverlayDefinition.method558(0, Class66.aClass1_1572, 0, arg0 + -801, 0, 13, Class40_Sub5_Sub17_Sub6.method832(arg0 ^ ~0x103, (new RSString[]{Class26.aClass1_620, (Class40_Sub11.aClass1Array2147[i])})));
+            OverlayDefinition.method558(0, HuffmanEncoding.aClass1_1572, 0, arg0 + -801, 0, 13, Class40_Sub5_Sub17_Sub6.method832(arg0 ^ ~0x103, (new RSString[]{Class26.aClass1_620, (Class40_Sub11.aClass1Array2147[i])})));
             OverlayDefinition.method558(0, Class58.aClass1_1354, 0, -501, 0, 18, Class40_Sub5_Sub17_Sub6.method832(arg0 + -192, (new RSString[]{Class26.aClass1_620, (Class40_Sub11.aClass1Array2147[i])})));
             return true;
         }
         if(i >= 401 && (i ^ 0xffffffff) >= -501) {
             CacheIndex_Sub1.anInt1793++;
-            OverlayDefinition.method558(0, Class66.aClass1_1572, 0, -501, 0, 35, (Class40_Sub5_Sub17_Sub6.method832(115, (new RSString[]{Class26.aClass1_620, arg1.text}))));
+            OverlayDefinition.method558(0, HuffmanEncoding.aClass1_1572, 0, -501, 0, 35, (Class40_Sub5_Sub17_Sub6.method832(115, (new RSString[]{Class26.aClass1_620, arg1.text}))));
             return true;
         }
         return false;
@@ -87,7 +85,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             aClass1_2209 = null;
         int i = arg2.currentPosition;
         arg2.putSmart(arg1.length);
-        arg2.currentPosition += (IdentityKit.aClass66_2590.method1026(-18678, 0, arg2.currentPosition, arg1.length, arg1.chars, arg2.buffer));
+        arg2.currentPosition += (IdentityKit.aHuffmanEncoding_2590.encrypt(-18678, 0, arg2.currentPosition, arg1.length, arg1.chars, arg2.buffer));
         return -i + arg2.currentPosition;
 
     }

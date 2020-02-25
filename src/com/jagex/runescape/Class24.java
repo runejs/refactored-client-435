@@ -84,10 +84,10 @@ public class Class24 {
                     if((i_2_ ^ 0xffffffff) == -1)
                         break;
                     i_1_ += -1 + i_2_;
-                    int i_3_ = i_1_ >> -2138212372;
-                    int i_4_ = 0x3f & i_1_ >> 1523026630;
+                    int i_3_ = i_1_ >> 12;
+                    int i_4_ = 0x3f & i_1_ >> 6;
                     int i_5_ = class40_sub1.getUnsignedByte();
-                    int i_6_ = i_5_ >> -2057515582;
+                    int i_6_ = i_5_ >> 2;
                     int i_7_ = i_1_ & 0x3f;
                     int i_8_ = i_5_ & 0x3;
                     if(i_3_ == arg5 && (arg0 <= i_4_) && (i_4_ < 8 + arg0) && (arg9 <= i_7_) && (arg9 + 8 > i_7_)) {

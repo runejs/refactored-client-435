@@ -53,11 +53,11 @@ public class Class44 implements Runnable {
             RSApplet.aClass1_8 = arg2;
         }
         for(int i = 99; (i ^ 0xffffffff) < -1; i--) {
-            Class66.chatTypes[i] = Class66.chatTypes[i + -1];
+            HuffmanEncoding.chatTypes[i] = HuffmanEncoding.chatTypes[i + -1];
             Renderable.chatPlayerNames[i] = Renderable.chatPlayerNames[-1 + i];
             Actor.chatMessages[i] = Actor.chatMessages[-1 + i];
         }
-        Class66.chatTypes[0] = arg1;
+        HuffmanEncoding.chatTypes[0] = arg1;
         Renderable.chatPlayerNames[0] = arg3;
         if(arg0 >= 60)
             Actor.chatMessages[0] = arg2;

@@ -79,7 +79,7 @@ public class Class48 {
                 if(i <= 49) {
                     GameFrame.tile_overlayids[arg7][arg0][arg4] = arg2.getByte();
                     OverlayDefinition.tile_underlay_path[arg7][arg0][arg4] = (byte) ((i + -2) / 4);
-                    Class35.tile_overlay_rotation[arg7][arg0][arg4] = (byte) Class66.method1021(arg1 + -2 + i, 3);
+                    Class35.tile_overlay_rotation[arg7][arg0][arg4] = (byte) HuffmanEncoding.method1021(arg1 + -2 + i, 3);
                 } else if(i <= 81)
                     OverlayDefinition.tile_flags[arg7][arg0][arg4] = (byte) (-49 + i);
                 else
@@ -143,7 +143,7 @@ public class Class48 {
                                 bool = (Class68_Sub1.method1051(300, widget));
                             if(!bool) {
                                 Class32.anInt754++;
-                                OverlayDefinition.method558(0, widget.tooltip, widget.id, -501, 0, 42, Class66.blank_string);
+                                OverlayDefinition.method558(0, widget.tooltip, widget.id, -501, 0, 42, HuffmanEncoding.blank_string);
                             }
                         }
                         if(((widget.menuType ^ 0xffffffff) == -3) && (Main.anInt1773 ^ 0xffffffff) == -1 && arg8 >= i_2_ && (arg4 >= i_1_) && arg8 < widget.originalWidth + i_2_ && ((arg4 < i_1_ + widget.originalHeight))) {
@@ -157,18 +157,18 @@ public class Class48 {
                                 i_3_ = 9;
                             else
                                 i_3_ = 40;
-                            OverlayDefinition.method558(0, VertexNormal.aClass1_1090, widget.id, arg5 ^ ~0x1f4, 0, i_3_, Class66.blank_string);
+                            OverlayDefinition.method558(0, VertexNormal.aClass1_1090, widget.id, arg5 ^ ~0x1f4, 0, i_3_, HuffmanEncoding.blank_string);
                         }
                         if(((widget.menuType ^ 0xffffffff) == -5) && arg8 >= i_2_ && i_1_ <= arg4 && arg8 < widget.originalWidth + i_2_ && (widget.originalHeight + i_1_ > arg4)) {
-                            OverlayDefinition.method558(0, widget.tooltip, widget.id, -501, 0, 23, Class66.blank_string);
+                            OverlayDefinition.method558(0, widget.tooltip, widget.id, -501, 0, 23, HuffmanEncoding.blank_string);
                             Actor.anInt3128++;
                         }
                         if(widget.menuType == 5 && (i_2_ <= arg8) && i_1_ <= arg4 && arg8 < i_2_ + widget.originalWidth && (i_1_ + widget.originalHeight > arg4)) {
                             Class10.anInt345++;
-                            OverlayDefinition.method558(0, widget.tooltip, widget.id, -501, 0, 57, Class66.blank_string);
+                            OverlayDefinition.method558(0, widget.tooltip, widget.id, -501, 0, 57, HuffmanEncoding.blank_string);
                         }
                         if(widget.menuType == 6 && (CacheIndex_Sub1.anInt1819 ^ 0xffffffff) == 0 && (i_2_ <= arg8) && i_1_ <= arg4 && arg8 < i_2_ + widget.originalWidth && ((arg4 < widget.originalHeight + i_1_))) {
-                            OverlayDefinition.method558(0, widget.tooltip, widget.id, -501, 0, 54, Class66.blank_string);
+                            OverlayDefinition.method558(0, widget.tooltip, widget.id, -501, 0, 54, HuffmanEncoding.blank_string);
                         }
                         if((widget.type ^ 0xffffffff) == -3) {
                             int i_4_ = 0;
@@ -288,7 +288,7 @@ public class Class48 {
                                 OverlayDefinition.method558(class40_sub5_sub16.anInt2852, Class40_Sub5_Sub15.aClass1_2774, widget.parentId, -501, widget.id & 0x7fff, 1007, (Class40_Sub5_Sub17_Sub6.method832(68, new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)})));
                         }
                         if(widget.aBoolean2688 && widget.aClass1Array2661 != null && (i_2_ <= arg8) && (i_1_ <= arg4) && widget.originalWidth + i_2_ > arg8 && (arg4 < i_1_ + widget.originalHeight)) {
-                            RSString class1 = Class66.blank_string;
+                            RSString class1 = HuffmanEncoding.blank_string;
                             if(widget.anInt2718 != -1) {
                                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((widget.anInt2718), arg5 ^ 0xa);
                                 class1 = (Class40_Sub5_Sub17_Sub6.method832(arg5 + -67, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)})));
@@ -371,7 +371,7 @@ public class Class48 {
             }
             arg0 = new byte[i];
             for(int i_23_ = 0; i > i_23_; i_23_++) {
-                int i_24_ = 32768 + is[i_23_] >> -1925341008;
+                int i_24_ = 32768 + is[i_23_] >> 16;
                 if((i_24_ ^ 0xffffffff) <= 127) {
                     if((i_24_ ^ 0xffffffff) < -128)
                         arg0[i_23_] = (byte) 127;

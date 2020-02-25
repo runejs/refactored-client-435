@@ -152,7 +152,7 @@ public class Class55 {
         Class40_Sub5_Sub11.aClass1_2620 = Class26.aClass1_631;
         Class27.aClass1_664 = CacheIndex_Sub1.aClass1_1799;
         Class61.aClass1_1422 = Class54.aClass1_1271;
-        Landscape.aClass1_1181 = Class66.aClass1_1549;
+        Landscape.aClass1_1181 = HuffmanEncoding.aClass1_1549;
         Class40_Sub7.aClass1_2125 = Class67.aClass1_1591;
         UnderlayDefinition.aClass1_2577 = Class48.aClass1_1137;
         Renderable.aClass1_2864 = CacheIndex_Sub1.aClass1_1816;
@@ -174,7 +174,7 @@ public class Class55 {
         Class42.aClass1_1001 = Class49.aClass1_1155;
         RSRuntimeException.str_select = Buffer.aClass1_1990;
         Class51.aClass1_1200 = Class35.aClass1_1726;
-        Class66.aClass1_1572 = Class38.aClass1_896;
+        HuffmanEncoding.aClass1_1572 = Class38.aClass1_896;
         Cache.aClass1_333 = Class12.aClass1_391;
         Class51.aClass1_1208 = Class64.aClass1_1505;
         Node.aClass1_951 = Class64.aClass1_1523;
@@ -217,7 +217,7 @@ public class Class55 {
         SceneTile.aClass1_2042 = Class53.aClass1_1263;
         Node.aClass1_974 = Cache.aClass1_325;
         Class22_Sub2.aClass1_1891 = Class39.aClass1_899;
-        Class66.aClass1_1552 = SceneTile.aClass1_2046;
+        HuffmanEncoding.aClass1_1552 = SceneTile.aClass1_2046;
         Node.aClass1_976 = Class64.aClass1_1523;
         Node.aClass1_943 = Class60.aClass1_1408;
         Node.aClass1_930 = Class64.aClass1_1523;
@@ -230,7 +230,7 @@ public class Class55 {
         Class38.aClass1_883 = Class40_Sub5_Sub15.aClass1_2781;
         Class22_Sub1.aClass1_1864 = Landscape.aClass1_1160;
         Node.aClass1_956 = Class27.aClass1_647;
-        Widget.aClass1_2671 = Class66.aClass1_1558;
+        Widget.aClass1_2671 = HuffmanEncoding.aClass1_1558;
         Class43.aClass1_1019 = CacheIndex_Sub1.aClass1_1798;
         Class40_Sub5_Sub6.aClass1_2446 = Class68_Sub1.aClass1_2198;
         Widget.aClass1_2684 = SpotAnimDefinition.aClass1_2291;

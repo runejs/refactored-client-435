@@ -80,9 +80,9 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             Class60.cameraVelocityVertical += (-12 - Class60.cameraVelocityVertical) / 2;
         else
             Class60.cameraVelocityVertical /= 2;
-        int i_1_ = Class34.anInt849 >> 736593415;
+        int i_1_ = Class34.anInt849 >> 7;
         Class58.cameraHorizontal = Class10.cameraVelocityHorizontal / 2 + Class58.cameraHorizontal & 0x7ff;
-        int i_2_ = Class40_Sub5_Sub6.anInt2437 >> -470684185;
+        int i_2_ = Class40_Sub5_Sub6.anInt2437 >> 7;
         Class65.anInt1537 += Class60.cameraVelocityVertical / 2;
         int i_3_ = 0;
         if((Class65.anInt1537 ^ 0xffffffff) > -129)
@@ -129,12 +129,12 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                     int i_11_ = 0x7ff & Class43.cameraYawOffset + Class58.cameraHorizontal;
                     int i_12_ = R3D.sinetable[i_11_];
                     int i_13_ = R3D.cosinetable[i_11_];
-                    i_13_ = (Class51.mapZoomOffset + 256) * i_13_ >> 1818182472;
-                    i_12_ = (Class51.mapZoomOffset + 256) * i_12_ >> -413658424;
-                    int i_14_ = i_10_ * i_12_ + (i * i_13_) >> 843700395;
-                    int i_15_ = i_13_ * i_10_ - i * i_12_ >> -1318258005;
-                    int i_16_ = ((Player.localPlayer.anInt3098) + i_14_ >> -2121665369);
-                    int i_17_ = (-i_15_ + (Player.localPlayer.anInt3089) >> -208961177);
+                    i_13_ = (Class51.mapZoomOffset + 256) * i_13_ >> 8;
+                    i_12_ = (Class51.mapZoomOffset + 256) * i_12_ >> 8;
+                    int i_14_ = i_10_ * i_12_ + (i * i_13_) >> 11;
+                    int i_15_ = i_13_ * i_10_ - i * i_12_ >> 11;
+                    int i_16_ = ((Player.localPlayer.anInt3098) + i_14_ >> 7);
+                    int i_17_ = (-i_15_ + (Player.localPlayer.anInt3089) >> 7);
                     boolean bool = (Class38_Sub1.method448(0, 0, (Player.localPlayer.anIntArray3088[0]), i_16_, (byte) 125, 0, true, 0, 0, (Player.localPlayer.anIntArray3135[0]), i_17_, 1));
                     if(bool) {
                         Class32.packetBuffer.putByte(i);
@@ -166,8 +166,8 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
 
     }
 
-    public static void method778(boolean arg0, Class66 arg1) {
-        IdentityKit.aClass66_2590 = arg1;
+    public static void method778(boolean arg0, HuffmanEncoding arg1) {
+        IdentityKit.aHuffmanEncoding_2590 = arg1;
         anInt3063++;
         if(arg0 != true)
             method775(true);
@@ -240,7 +240,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             class40_sub5_sub14_sub4.method727(254, -171);
             Class68.aClass68_1631.method1046((byte) 90);
             class40_sub5_sub14_sub4.method727(-180, -171);
-            class40_sub5_sub14_sub4 = Class66.method1028(arg3, Main.aClass1_1762, (byte) 21, Class22_Sub2.string_blank);
+            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg3, Main.aClass1_1762, (byte) 21, Class22_Sub2.string_blank);
             Class39.aClass68_907.method1046((byte) 90);
             class40_sub5_sub14_sub4.drawImage(-128 + (382 + -(class40_sub5_sub14_sub4.image_width / 2)), 18);
             Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775 = Class27.method359(AnimationSequence.aClass1_2488, Class22_Sub2.string_blank, arg3, (byte) -64);

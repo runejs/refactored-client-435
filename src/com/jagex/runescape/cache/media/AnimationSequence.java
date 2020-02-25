@@ -62,7 +62,7 @@ public class AnimationSequence extends SubNode {
             for(int i_1_ = 0; (i_1_ ^ 0xffffffff) > -65; i_1_++) {
                 for(int i_2_ = 0; (i_2_ ^ 0xffffffff) > -65; i_2_++) {
                     if((arg4 + i_1_ ^ 0xffffffff) < -1 && (i_1_ + arg4 ^ 0xffffffff) > -104 && arg5 + i_2_ > 0 && i_2_ + arg5 < 103)
-                        arg0[i].anIntArrayArray150[i_1_ + arg4][(i_2_ + arg5)] = Class66.method1021((arg0[i].anIntArrayArray150[i_1_ + arg4][i_2_ + arg5]), -16777217);
+                        arg0[i].anIntArrayArray150[i_1_ + arg4][(i_2_ + arg5)] = HuffmanEncoding.method1021((arg0[i].anIntArrayArray150[i_1_ + arg4][i_2_ + arg5]), -16777217);
                 }
             }
         }
@@ -78,13 +78,13 @@ public class AnimationSequence extends SubNode {
     }
 
     public static boolean method596(int arg0, int arg1, byte arg2, int arg3) {
-        int i = 0x7fff & arg1 >> 559212398;
+        int i = 0x7fff & arg1 >> 14;
         if(arg2 > -9)
             method596(-4, -74, (byte) -44, -62);
         int i_14_ = (Npc.aScene_3301.method141(Player.anInt3267, arg0, arg3, arg1));
         if(i_14_ == -1)
             return false;
-        int i_15_ = 0x3 & i_14_ >> -1327198362;
+        int i_15_ = 0x3 & i_14_ >> 6;
         int i_16_ = 0x1f & i_14_;
         if(i_16_ != 10 && i_16_ != 11 && i_16_ != 22)
             Class38_Sub1.method448(0, 0, (Player.localPlayer.anIntArray3088[0]), arg0, (byte) 98, 1 + i_16_, true, i_15_, 0, (Player.localPlayer.anIntArray3135[0]), arg3, 2);
@@ -113,12 +113,12 @@ public class AnimationSequence extends SubNode {
 
     public Model method590(Model arg0, AnimationSequence arg1, int arg2, int arg3, byte arg4) {
         arg2 = anIntArray2485[arg2];
-        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, arg2 >> 1563712080);
+        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, arg2 >> 16);
         arg2 &= 0xffff;
         if(class40_sub5_sub15 == null)
             return arg1.method599(arg3, arg0, false);
         arg3 = arg1.anIntArray2485[arg3];
-        Class40_Sub5_Sub15 class40_sub5_sub15_0_ = Class55.method960((byte) -99, arg3 >> -874318832);
+        Class40_Sub5_Sub15 class40_sub5_sub15_0_ = Class55.method960((byte) -99, arg3 >> 16);
         arg3 &= 0xffff;
         if(class40_sub5_sub15_0_ == null) {
             Model class40_sub5_sub17_sub5 = arg0.method817(!class40_sub5_sub15.method737(arg2, 124));
@@ -150,7 +150,7 @@ public class AnimationSequence extends SubNode {
 
     public Model method593(int arg0, boolean arg1, Model arg2, int arg3) {
         arg0 = anIntArray2485[arg0];
-        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, arg0 >> 1269230160);
+        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, arg0 >> 16);
         if(arg1 != false)
             anIntArray2479 = null;
         arg0 &= 0xffff;
@@ -198,7 +198,7 @@ public class AnimationSequence extends SubNode {
             for(int i_7_ = 0; (i_5_ > i_7_); i_7_++)
                 anIntArray2485[i_7_] = arg2.getUnsignedShortBE();
             for(int i_8_ = 0; (i_8_ < i_5_); i_8_++)
-                anIntArray2485[i_8_] = ((arg2.getUnsignedShortBE() << -1678933328) + anIntArray2485[i_8_]);
+                anIntArray2485[i_8_] = ((arg2.getUnsignedShortBE() << 16) + anIntArray2485[i_8_]);
         } else if((arg1 ^ 0xffffffff) == -3)
             frameStep = arg2.getUnsignedShortBE();
         else if(arg1 != 3) {
@@ -220,7 +220,7 @@ public class AnimationSequence extends SubNode {
                                 for(int i_10_ = 0; ((i_10_ < i_9_)); i_10_++)
                                     anIntArray2479[i_10_] = arg2.getUnsignedShortBE();
                                 for(int i_11_ = 0; ((i_9_ > i_11_)); i_11_++)
-                                    anIntArray2479[i_11_] = ((arg2.getUnsignedShortBE() << -416587984) + anIntArray2479[i_11_]);
+                                    anIntArray2479[i_11_] = ((arg2.getUnsignedShortBE() << 16) + anIntArray2479[i_11_]);
                             }
                         } else
                             anInt2476 = arg2.getUnsignedByte();
@@ -241,7 +241,7 @@ public class AnimationSequence extends SubNode {
 
     public Model method597(byte arg0, Model arg1, int arg2) {
         arg2 = anIntArray2485[arg2];
-        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, arg2 >> 1539434320);
+        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, arg2 >> 16);
         arg2 &= 0xffff;
         if(class40_sub5_sub15 == null)
             return arg1.method806(true);
@@ -254,7 +254,7 @@ public class AnimationSequence extends SubNode {
 
     public Model method598(int arg0, Model arg1, boolean arg2) {
         int i = anIntArray2485[arg0];
-        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, i >> 189349456);
+        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, i >> 16);
         i &= 0xffff;
         if(class40_sub5_sub15 == null)
             return arg1.method817(true);
@@ -264,7 +264,7 @@ public class AnimationSequence extends SubNode {
         int i_21_ = 0;
         if(anIntArray2479 != null && arg0 < anIntArray2479.length) {
             i_21_ = anIntArray2479[arg0];
-            class40_sub5_sub15_20_ = Class55.method960((byte) -99, i_21_ >> -878340016);
+            class40_sub5_sub15_20_ = Class55.method960((byte) -99, i_21_ >> 16);
             i_21_ &= 0xffff;
         }
         if(class40_sub5_sub15_20_ == null || (i_21_ ^ 0xffffffff) == -65536) {
@@ -282,7 +282,7 @@ public class AnimationSequence extends SubNode {
         if(arg2 != false)
             method591((byte) -78);
         arg0 = anIntArray2485[arg0];
-        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, arg0 >> 1994825616);
+        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, arg0 >> 16);
         arg0 &= 0xffff;
         if(class40_sub5_sub15 == null)
             return arg1.method817(true);

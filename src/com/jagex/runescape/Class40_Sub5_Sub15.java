@@ -53,7 +53,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
         for(int i_0_ = 0; is.length > i_0_; i_0_++) {
             byte[] is_1_ = arg0.getFile(is[i_0_], arg2);
             Class40_Sub13 class40_sub13 = null;
-            int i_2_ = is_1_[1] & 0xff | is_1_[0] << 490068232 & 0xff00;
+            int i_2_ = is_1_[1] & 0xff | is_1_[0] << 8 & 0xff00;
             for(Class40_Sub13 class40_sub13_3_ = (Class40_Sub13) class45.method902((byte) -90); class40_sub13_3_ != null; class40_sub13_3_ = (Class40_Sub13) class45.method909(-4)) {
                 if(i_2_ == class40_sub13_3_.anInt2175) {
                     class40_sub13 = class40_sub13_3_;

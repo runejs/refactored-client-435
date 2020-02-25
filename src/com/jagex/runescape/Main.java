@@ -347,8 +347,8 @@ public class Main extends RSApplet {
                                 }
                             }
                             R3D.method710(i_0_ + widget.originalWidth / 2, widget.originalHeight / 2 + i_1_);
-                            int i_43_ = (i_42_ * (R3D.sinetable[i_37_]) >> -844145968);
-                            int i_44_ = (i_42_ * (R3D.cosinetable[i_37_]) >> -1486826672);
+                            int i_43_ = (i_42_ * (R3D.sinetable[i_37_]) >> 16);
+                            int i_44_ = (i_42_ * (R3D.cosinetable[i_37_]) >> 16);
                             if(class40_sub5_sub17_sub5 != null) {
                                 if(widget.isIf3) {
                                     class40_sub5_sub17_sub5.method799();
@@ -405,7 +405,7 @@ public class Main extends RSApplet {
                                         class1 = class1.substring(2 + i_52_);
                                     } else {
                                         class1_53_ = class1;
-                                        class1 = Class66.blank_string;
+                                        class1 = HuffmanEncoding.blank_string;
                                     }
                                     int i_54_ = class40_sub5_sub14_sub1.getTextDisplayedWidth(class1_53_);
                                     i_51_ += (class40_sub5_sub14_sub1.characterDefaultHeight) + 1;
@@ -432,7 +432,7 @@ public class Main extends RSApplet {
                                     RSString class1_59_;
                                     if(i_58_ == -1) {
                                         class1_59_ = class1;
-                                        class1 = Class66.blank_string;
+                                        class1 = HuffmanEncoding.blank_string;
                                     } else {
                                         class1_59_ = class1.substring(0, i_58_);
                                         class1 = class1.substring(i_58_ + 2);
@@ -508,7 +508,7 @@ public class Main extends RSApplet {
                     int i_69_ = i_67_;
                     i_67_ = Class42.anIntArray1013[i_67_];
                     int i_70_ = Class8.aClass68_298.anIntArray1621[i_62_];
-                    Class8.aClass68_298.anIntArray1621[i_62_++] = ((Class66.method1021(-16711936, (Class66.method1021(i_67_, 16711935) * i_69_ + (i_68_ * Class66.method1021(i_70_, 16711935))))) + (Class66.method1021((Class66.method1021(65280, i_70_) * i_68_ + i_69_ * Class66.method1021(65280, i_67_)), 16711680))) >> 1730944744;
+                    Class8.aClass68_298.anIntArray1621[i_62_++] = ((HuffmanEncoding.method1021(-16711936, (HuffmanEncoding.method1021(i_67_, 16711935) * i_69_ + (i_68_ * HuffmanEncoding.method1021(i_70_, 16711935))))) + (HuffmanEncoding.method1021((HuffmanEncoding.method1021(65280, i_70_) * i_68_ + i_69_ * HuffmanEncoding.method1021(65280, i_67_)), 16711680))) >> 8;
                 } else
                     i_62_++;
             }
@@ -529,7 +529,7 @@ public class Main extends RSApplet {
                     int i_78_ = (GameObject.aClass68_3042.anIntArray1621[i_62_]);
                     int i_79_ = 256 + -i_76_;
                     i_76_ = Class42.anIntArray1013[i_76_];
-                    GameObject.aClass68_3042.anIntArray1621[i_62_++] = ((Class66.method1021((i_77_ * Class66.method1021(65280, i_76_) + i_79_ * Class66.method1021(65280, i_78_)), 16711680)) + (Class66.method1021((i_79_ * Class66.method1021(16711935, i_78_) + (Class66.method1021(16711935, i_76_) * i_77_)), -16711936))) >> 1103065832;
+                    GameObject.aClass68_3042.anIntArray1621[i_62_++] = ((HuffmanEncoding.method1021((i_77_ * HuffmanEncoding.method1021(65280, i_76_) + i_79_ * HuffmanEncoding.method1021(65280, i_78_)), 16711680)) + (HuffmanEncoding.method1021((i_79_ * HuffmanEncoding.method1021(16711935, i_78_) + (HuffmanEncoding.method1021(16711935, i_76_) * i_77_)), -16711936))) >> 8;
                 } else
                     i_62_++;
             }
@@ -1040,8 +1040,8 @@ public class Main extends RSApplet {
         Class48.anInt1138 = -1;
         Class55.method958(Class43.openChatboxWidgetId, -14222);
         Class43.openChatboxWidgetId = -1;
-        Class55.method958(Class66.openScreenWidgetId, -14222);
-        Class66.openScreenWidgetId = -1;
+        Class55.method958(HuffmanEncoding.openScreenWidgetId, -14222);
+        HuffmanEncoding.openScreenWidgetId = -1;
         Class55.method958(ActorDefinition.anInt2433, arg0 + -14222);
         ActorDefinition.anInt2433 = -1;
         Class55.method958(UnderlayDefinition.anInt2562, -14222);
@@ -1389,7 +1389,7 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub11.method632(-1);
         Class35.method423((byte) -81);
         EntryTable.method871();
-        Class66.method1022(-125);
+        HuffmanEncoding.method1022(-125);
         Class59.method985((byte) -127);
         Class5.method163((byte) -94);
         Class40_Sub2.method524(-9019);

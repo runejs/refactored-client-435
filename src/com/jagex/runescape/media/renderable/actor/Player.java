@@ -180,7 +180,7 @@ public class Player extends Actor {
             if((player.anInt3091 ^ 0xffffffff) == -65536)
                 player.anInt3091 = -1;
             player.anInt3140 = 0;
-            player.anInt3110 = i >> -1354160784;
+            player.anInt3110 = i >> 16;
             if(player.anInt3093 > pulseCycle)
                 player.anInt3140 = -1;
         }
@@ -205,7 +205,7 @@ public class Player extends Actor {
             Player player = (aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_2_]);
             int i_3_ = Cache.outgoingbuffer.getUnsignedByte();
             if((i_3_ & 0x2) != 0)
-                i_3_ += (Cache.outgoingbuffer.getUnsignedByte() << 1874166152);
+                i_3_ += (Cache.outgoingbuffer.getUnsignedByte() << 8);
             parsePlayerUpdateMasks(player, i_3_, i_2_);
         }
         Class40_Sub5_Sub11.anInt2632++;
@@ -289,7 +289,7 @@ public class Player extends Actor {
                 is[i_4_] = 0;
             else {
                 int i_6_ = buffer.getUnsignedByte();
-                is[i_4_] = (i_5_ << 292869864) + i_6_;
+                is[i_4_] = (i_5_ << 8) + i_6_;
                 if((i_4_ ^ 0xffffffff) == -1 && is[0] == 65535) {
                     i_3_ = buffer.getUnsignedShortBE();
                     break;

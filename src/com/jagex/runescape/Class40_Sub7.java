@@ -66,8 +66,8 @@ public class Class40_Sub7 extends Node {
                         break;
                     i_1_ += i_4_ + -1;
                     int i_5_ = i_1_ & 0x3f;
-                    int i_6_ = class40_sub1.getUnsignedByte() >> -314035070;
-                    int i_7_ = 0x3f & i_1_ >> -1291824762;
+                    int i_6_ = class40_sub1.getUnsignedByte() >> 2;
+                    int i_7_ = 0x3f & i_1_ >> 6;
                     int i_8_ = i_7_ + arg2;
                     int i_9_ = i_5_ + arg3;
                     if((i_8_ ^ 0xffffffff) < -1 && i_9_ > 0 && i_8_ < 103 && (i_9_ ^ 0xffffffff) > -104) {

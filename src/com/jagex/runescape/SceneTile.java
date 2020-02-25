@@ -83,37 +83,37 @@ public class SceneTile extends Node {
                 int i = arg2.contains(Class38.aClass1_890);
                 if(i == -1)
                     break;
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832(-37, (new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, Class66.method1029(0, false, arg1))), arg2.substring(2 + i)})));
+                arg2 = (Class40_Sub5_Sub17_Sub6.method832(-37, (new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(0, false, arg1))), arg2.substring(2 + i)})));
             }
             for(; ; ) {
                 int i = arg2.contains(Class45.aClass1_1077);
                 if((i ^ 0xffffffff) == 0)
                     break;
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832(72, (new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, Class66.method1029(1, false, arg1))), arg2.substring(i + 2)})));
+                arg2 = (Class40_Sub5_Sub17_Sub6.method832(72, (new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(1, false, arg1))), arg2.substring(i + 2)})));
             }
             for(; ; ) {
                 int i = arg2.contains(Class67.aClass1_1610);
                 if((i ^ 0xffffffff) == 0)
                     break;
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832(-121, (new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, Class66.method1029(2, false, arg1))), arg2.substring(2 + i)})));
+                arg2 = (Class40_Sub5_Sub17_Sub6.method832(-121, (new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(2, false, arg1))), arg2.substring(2 + i)})));
             }
             for(; ; ) {
                 int i = arg2.contains(Class55.aClass1_1300);
                 if(i == -1)
                     break;
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832(125, (new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(arg0 ^ 0x3b9ac9eb, Class66.method1029(3, false, arg1))), arg2.substring(i + 2)})));
+                arg2 = (Class40_Sub5_Sub17_Sub6.method832(125, (new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(arg0 ^ 0x3b9ac9eb, HuffmanEncoding.method1029(3, false, arg1))), arg2.substring(i + 2)})));
             }
             for(; ; ) {
                 int i = arg2.contains(SubNode.aClass1_2090);
                 if(i == -1)
                     break;
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832(-43, (new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, Class66.method1029(4, false, arg1))), arg2.substring(i + 2)})));
+                arg2 = (Class40_Sub5_Sub17_Sub6.method832(-43, (new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(4, false, arg1))), arg2.substring(i + 2)})));
             }
             for(; ; ) {
                 int i = arg2.contains(GameObjectDefinition.aClass1_2526);
                 if((i ^ 0xffffffff) == 0)
                     break;
-                RSString class1 = Class66.blank_string;
+                RSString class1 = HuffmanEncoding.blank_string;
                 if(Class12.aClass15_394 != null) {
                     class1 = CacheIndex_Sub1.method204((Class12.aClass15_394.anInt432), 255);
                     if(Class12.aClass15_394.anObject437 != null) {

@@ -107,7 +107,7 @@ public class SpotAnimDefinition extends SubNode {
                 long l = (Class34.aLong853 = Class22_Sub2.username.method58((byte) 93));
                 Class32.packetBuffer.currentPosition = 0;
                 Class32.packetBuffer.putByte(14);
-                int i = (int) (0x1fL & l >> 383714384);
+                int i = (int) (0x1fL & l >> 16);
                 Class32.packetBuffer.putByte(i);
                 Class40_Sub6.aClass64_2098.method1010(2, (byte) -19, 0, (Class32.packetBuffer.buffer));
                 Class40_Sub3.anInt2032 = 3;
@@ -143,7 +143,7 @@ public class SpotAnimDefinition extends SubNode {
                 int[] seeds = new int[4];
                 seeds[0] = (int) (Math.random() * 9.9999999E7);
                 seeds[1] = (int) (Math.random() * 9.9999999E7);
-                seeds[2] = (int) (Renderable.aLong2858 >> 357599968);
+                seeds[2] = (int) (Renderable.aLong2858 >> 32);
                 seeds[3] = (int) Renderable.aLong2858;
                 Class32.packetBuffer.currentPosition = 0;
                 Class32.packetBuffer.putByte(10);

@@ -86,9 +86,9 @@ public class IncomingPackets {
                             Class40_Sub7.anIntArray2131[i_2_] = i_1_;
                             ISAAC.redrawTabArea = true;
                             if((i_1_ ^ 0xffffffff) < -1)
-                                Class44.method895(127, 5, (Class40_Sub5_Sub17_Sub6.method832(124, (new RSString[]{string, (Class42.aClass1_988)}))), Class66.blank_string);
+                                Class44.method895(127, 5, (Class40_Sub5_Sub17_Sub6.method832(124, (new RSString[]{string, (Class42.aClass1_988)}))), HuffmanEncoding.blank_string);
                             if((i_1_ ^ 0xffffffff) == -1)
-                                Class44.method895(101, 5, (Class40_Sub5_Sub17_Sub6.method832(85, (new RSString[]{string, Class38_Sub1.aClass1_1905}))), Class66.blank_string);
+                                Class44.method895(101, 5, (Class40_Sub5_Sub17_Sub6.method832(85, (new RSString[]{string, Class38_Sub1.aClass1_1905}))), HuffmanEncoding.blank_string);
                         }
                         string = null;
                         break;
@@ -172,7 +172,7 @@ public class IncomingPackets {
                         widget.itemAmounts[containerIndex] = 0;
                     }
                 } else {
-                    Widget[] widgets = (Widget.interfaces[widgetData >> -1887808688]);
+                    Widget[] widgets = (Widget.interfaces[widgetData >> 16]);
                     for(int childIndex = 0; childIndex < widgets.length; childIndex++) {
                         Widget child = widgets[childIndex];
                         if(((0xffff & child.parentId ^ 0xffffffff) == (0xffff & widget.id ^ 0xffffffff)) && (child.anInt2736 ^ 0xffffffff) < -1) {
@@ -193,7 +193,7 @@ public class IncomingPackets {
                             widget.itemAmounts[containerIndex] = itemAmount;
                         }
                     } else {
-                        Widget[] widgets = (Widget.interfaces[widgetData >> -424241648]);
+                        Widget[] widgets = (Widget.interfaces[widgetData >> 16]);
                         for(int childIndex = 0; ((childIndex < widgets.length)); childIndex++) {
                             Widget child = widgets[childIndex];
                             if(((widget.id & 0xffff) == (child.parentId & 0xffff)) && ((child.anInt2736 ^ 0xffffffff) == (1 + containerIndex ^ 0xffffffff))) {
@@ -245,7 +245,7 @@ public class IncomingPackets {
                 if(!class1.method87(103, AnimationSequence.aClass1_2472)) {
                     if(!class1.method87(104, Class40_Sub5_Sub6.aClass1_2434)) {
                         if(!class1.method87(81, Node.aClass1_948))
-                            Class44.method895(72, 0, class1, Class66.blank_string);
+                            Class44.method895(72, 0, class1, HuffmanEncoding.blank_string);
                         else {
                             RSString class1_27_ = (class1.substring(0, class1.contains(Class43.aClass1_1027)));
                             long l = class1_27_.method58((byte) 121);
@@ -308,7 +308,7 @@ public class IncomingPackets {
                 int i_36_ = Cache.outgoingbuffer.getIntME1();
                 Widget widget = Widget.forId(i_36_);
                 if(widget.isIf3) {
-                    Widget[] widgets = (Widget.interfaces[i_36_ >> -1339248816]);
+                    Widget[] widgets = (Widget.interfaces[i_36_ >> 16]);
                     for(int i_37_ = 0; i_37_ < widgets.length; i_37_++) {
                         Widget widget_38_ = widgets[i_37_];
                         if(((widget_38_.parentId & 0xffff ^ 0xffffffff) == (0xffff & widget.id ^ 0xffffffff)) && widget_38_.anInt2736 > 0) {
@@ -334,7 +334,7 @@ public class IncomingPackets {
                 int i_40_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
                 int i_41_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                 int i_42_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
-                Player.anInt3267 = i_40_ >> 2097688801;
+                Player.anInt3267 = i_40_ >> 1;
                 Player.localPlayer.method787(i_42_, -7717, (i_40_ & 0x1) == 1, i_41_);
                 Class57.incomingPacket = -1;
                 return true;
@@ -373,7 +373,7 @@ public class IncomingPackets {
                 int i_48_ = Cache.outgoingbuffer.getIntLE();
                 Widget widget = Widget.forId(i_48_);
                 Class57.incomingPacket = -1;
-                widget.anInt2722 = i_47_ + (i_46_ << -1109526864);
+                widget.anInt2722 = i_47_ + (i_46_ << 16);
                 return true;
             }
             if(Class57.incomingPacket == 84) {
@@ -393,9 +393,9 @@ public class IncomingPackets {
                     Class55.method958(UnderlayDefinition.anInt2562, -14222);
                     UnderlayDefinition.anInt2562 = -1;
                 }
-                if(Class66.openScreenWidgetId != i_50_) {
-                    Class55.method958(Class66.openScreenWidgetId, -14222);
-                    Class66.openScreenWidgetId = i_50_;
+                if(HuffmanEncoding.openScreenWidgetId != i_50_) {
+                    Class55.method958(HuffmanEncoding.openScreenWidgetId, -14222);
+                    HuffmanEncoding.openScreenWidgetId = i_50_;
                 }
                 if((i_49_ ^ 0xffffffff) != (Class29.tabAreaOverlayWidgetId ^ 0xffffffff)) {
                     Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
@@ -465,16 +465,16 @@ public class IncomingPackets {
                     Class55.method958(UnderlayDefinition.anInt2562, -14222);
                     UnderlayDefinition.anInt2562 = -1;
                 }
-                if(i_55_ != Class66.openScreenWidgetId) {
-                    Class55.method958(Class66.openScreenWidgetId, -14222);
-                    Class66.openScreenWidgetId = i_55_;
+                if(i_55_ != HuffmanEncoding.openScreenWidgetId) {
+                    Class55.method958(HuffmanEncoding.openScreenWidgetId, -14222);
+                    HuffmanEncoding.openScreenWidgetId = i_55_;
                 }
                 CacheIndex_Sub1.anInt1819 = -1;
                 if(Class40_Sub5_Sub15.inputType != 0) {
                     Class52.redrawChatbox = true;
                     Class40_Sub5_Sub15.inputType = 0;
                 }
-                Class64.method1012(Class66.openScreenWidgetId, 2);
+                Class64.method1012(HuffmanEncoding.openScreenWidgetId, 2);
                 Class57.incomingPacket = -1;
                 return true;
             }
@@ -516,9 +516,9 @@ public class IncomingPackets {
                 Class42.method883((byte) -120, i_58_);
                 if(i_57_ != -1)
                     Class42.method883((byte) -124, i_57_);
-                if(Class66.openScreenWidgetId != -1) {
-                    Class55.method958(Class66.openScreenWidgetId, -14222);
-                    Class66.openScreenWidgetId = -1;
+                if(HuffmanEncoding.openScreenWidgetId != -1) {
+                    Class55.method958(HuffmanEncoding.openScreenWidgetId, -14222);
+                    HuffmanEncoding.openScreenWidgetId = -1;
                 }
                 if((Class29.tabAreaOverlayWidgetId ^ 0xffffffff) != 0) {
                     Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
@@ -563,9 +563,9 @@ public class IncomingPackets {
                     Class55.method958(UnderlayDefinition.anInt2562, -14222);
                     UnderlayDefinition.anInt2562 = -1;
                 }
-                if(Class66.openScreenWidgetId != -1) {
-                    Class55.method958(Class66.openScreenWidgetId, -14222);
-                    Class66.openScreenWidgetId = -1;
+                if(HuffmanEncoding.openScreenWidgetId != -1) {
+                    Class55.method958(HuffmanEncoding.openScreenWidgetId, -14222);
+                    HuffmanEncoding.openScreenWidgetId = -1;
                 }
                 Class57.incomingPacket = -1;
                 CacheIndex_Sub1.anInt1819 = -1;
@@ -593,9 +593,9 @@ public class IncomingPackets {
                     Class55.method958(UnderlayDefinition.anInt2562, -14222);
                     UnderlayDefinition.anInt2562 = -1;
                 }
-                if(Class66.openScreenWidgetId != -1) {
-                    Class55.method958(Class66.openScreenWidgetId, -14222);
-                    Class66.openScreenWidgetId = -1;
+                if(HuffmanEncoding.openScreenWidgetId != -1) {
+                    Class55.method958(HuffmanEncoding.openScreenWidgetId, -14222);
+                    HuffmanEncoding.openScreenWidgetId = -1;
                 }
                 if(Class43.openChatboxWidgetId != widgetId) {
                     Class55.method958(Class43.openChatboxWidgetId, -14222);
@@ -714,9 +714,9 @@ public class IncomingPackets {
                     Class55.method958(UnderlayDefinition.anInt2562, -14222);
                     UnderlayDefinition.anInt2562 = -1;
                 }
-                if((Class66.openScreenWidgetId ^ 0xffffffff) != 0) {
-                    Class55.method958(Class66.openScreenWidgetId, -14222);
-                    Class66.openScreenWidgetId = -1;
+                if((HuffmanEncoding.openScreenWidgetId ^ 0xffffffff) != 0) {
+                    Class55.method958(HuffmanEncoding.openScreenWidgetId, -14222);
+                    HuffmanEncoding.openScreenWidgetId = -1;
                 }
                 if((i_68_ ^ 0xffffffff) != (Class29.tabAreaOverlayWidgetId ^ 0xffffffff)) {
                     Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
@@ -817,7 +817,7 @@ public class IncomingPackets {
                     Class43.openChatboxWidgetId = -1;
                 }
                 Class57.incomingPacket = -1;
-                Class66.inputInputMessage = Class66.blank_string;
+                HuffmanEncoding.inputInputMessage = HuffmanEncoding.blank_string;
                 Class40_Sub5_Sub15.inputType = 1;
                 Class52.redrawChatbox = true;
                 Class19.aBoolean490 = false;
@@ -826,7 +826,7 @@ public class IncomingPackets {
             if((Class57.incomingPacket ^ 0xffffffff) == -187) {
                 Player.anInt3288 = Cache.outgoingbuffer.getUnsignedByte();
                 if(Player.anInt3288 == 1)
-                    Class66.anInt1545 = Cache.outgoingbuffer.getUnsignedShortBE();
+                    HuffmanEncoding.anInt1545 = Cache.outgoingbuffer.getUnsignedShortBE();
                 if(((Player.anInt3288 ^ 0xffffffff) <= -3) && (Player.anInt3288 ^ 0xffffffff) >= -7) {
                     if(Player.anInt3288 == 2) {
                         Class35.anInt1730 = 64;
@@ -914,7 +914,7 @@ public class IncomingPackets {
                 long l_89_ = (long) Cache.outgoingbuffer.getMediumBE();
                 int i_90_ = Cache.outgoingbuffer.getUnsignedByte();
                 boolean bool = false;
-                long l_91_ = (l_88_ << 2124835616) + l_89_;
+                long l_91_ = (l_88_ << 32) + l_89_;
                 for(int i_92_ = 0; i_92_ < 100; i_92_++) {
                     if(l_91_ == Class40_Sub5_Sub13.aLongArray2757[i_92_]) {
                         bool = true;
@@ -1035,7 +1035,7 @@ public class IncomingPackets {
                             widget.itemAmounts[itemSlot] = i_110_;
                         }
                     } else {
-                        Widget[] widgets = (Widget.interfaces[widgetData >> 886089392]);
+                        Widget[] widgets = (Widget.interfaces[widgetData >> 16]);
                         for(int i_111_ = 0; ((i_111_ < widgets.length)); i_111_++) {
                             Widget widget_112_ = widgets[i_111_];
                             if((((widget_112_.parentId & 0xffff) ^ 0xffffffff) == (widget.id & 0xffff ^ 0xffffffff)) && 1 + itemSlot == (widget_112_.anInt2736)) {
@@ -1056,12 +1056,12 @@ public class IncomingPackets {
             if((Class57.incomingPacket ^ 0xffffffff) == -232) { // update widget text color
                 int i_113_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
                 int i_114_ = Cache.outgoingbuffer.getIntLE();
-                int i_115_ = i_113_ >> -1304618998 & 0x1f;
-                int i_116_ = 0x1f & i_113_ >> -1608786267;
+                int i_115_ = i_113_ >> 10 & 0x1f;
+                int i_116_ = 0x1f & i_113_ >> 5;
                 Widget widget = Widget.forId(i_114_);
                 Class57.incomingPacket = -1;
                 int i_117_ = i_113_ & 0x1f;
-                widget.textColor = ((i_116_ << -1232932181) + (i_115_ << -1927757997) + (i_117_ << 770125059));
+                widget.textColor = ((i_116_ << 11) + (i_115_ << 19) + (i_117_ << 3));
                 return true;
             }
             if((Class57.incomingPacket ^ 0xffffffff) == -212) {
@@ -1077,7 +1077,7 @@ public class IncomingPackets {
                     Class43.openChatboxWidgetId = -1;
                 }
                 Class52.redrawChatbox = true;
-                Class66.inputInputMessage = Class66.blank_string;
+                HuffmanEncoding.inputInputMessage = HuffmanEncoding.blank_string;
                 Class40_Sub5_Sub15.inputType = 2;
                 Class57.incomingPacket = -1;
                 Class19.aBoolean490 = false;
