@@ -324,21 +324,21 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
             }
             /* Main interface scrolling */
             if(HuffmanEncoding.openScreenWidgetId != -1) {
-                Widget widget = Widget.forId(HuffmanEncoding.openScreenWidgetId);
                 offsetX = 4;
                 offsetY = 4;
-                for(int index = 0; index < Widget.interfaces[widget.id].length; index++) {
-                    if(Widget.interfaces[widget.id][index].scrollHeight > 0) {
+                int widgetid = HuffmanEncoding.openScreenWidgetId;
+                for(int index = 0; index < Widget.interfaces[widgetid].length; index++) {
+                    if(Widget.interfaces[widgetid][index].scrollHeight > 0) {
                         childID = index;
-                        positionX = Widget.interfaces[widget.id][index].currentX;
-                        positionY = Widget.interfaces[widget.id][index].currentY;
-                        width = Widget.interfaces[widget.id][index].originalWidth;
-                        height = Widget.interfaces[widget.id][index].originalHeight;
+                        positionX = Widget.interfaces[widgetid][index].currentX;
+                        positionY = Widget.interfaces[widgetid][index].currentY;
+                        width = Widget.interfaces[widgetid][index].originalWidth;
+                        height = Widget.interfaces[widgetid][index].originalHeight;
                         break;
                     }
                 }
                 if(mouseX > offsetX + positionX && mouseY > offsetY + positionY && mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
-                    Widget.interfaces[widget.id][childID].scrollHeight += rotation * 30;
+                    Widget.interfaces[widgetid][childID].scrollPosition += rotation * 30;
                     return true;
                 }
 

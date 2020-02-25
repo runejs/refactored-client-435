@@ -215,17 +215,17 @@ public class Class42 {
                 Class24.anIntArray578[Actor.anInt3153++] = i;
             int i_7_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
             class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300 = ActorDefinition.getDefinition((byte) -121, Cache.outgoingbuffer.putBits(13, (byte) -65));
-            class40_sub5_sub17_sub4_sub2.anInt3132 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate90LeftAnimation);
-            class40_sub5_sub17_sub4_sub2.anInt3126 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.stanceAnimation);
+            class40_sub5_sub17_sub4_sub2.turnLeftAnimationId = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate90LeftAnimation);
+            class40_sub5_sub17_sub4_sub2.idleAnimation = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.stanceAnimation);
             class40_sub5_sub17_sub4_sub2.anInt3083 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotateRightAnimation);
-            class40_sub5_sub17_sub4_sub2.anInt3131 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.walkAnimation);
+            class40_sub5_sub17_sub4_sub2.walkAnimationId = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.walkAnimation);
             class40_sub5_sub17_sub4_sub2.anInt3096 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.tileSpacesOccupied);
-            class40_sub5_sub17_sub4_sub2.anInt3079 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate180Animation);
-            class40_sub5_sub17_sub4_sub2.anInt3145 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotateLeftAnimation);
+            class40_sub5_sub17_sub4_sub2.turnAroundAnimationId = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate180Animation);
+            class40_sub5_sub17_sub4_sub2.standTurnAnimationId = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotateLeftAnimation);
             class40_sub5_sub17_sub4_sub2.anInt3113 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.degreesToTurn);
             if(class40_sub5_sub17_sub4_sub2.anInt3113 == 0)
                 class40_sub5_sub17_sub4_sub2.anInt3118 = 0;
-            class40_sub5_sub17_sub4_sub2.anInt3075 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate90RightAnimation);
+            class40_sub5_sub17_sub4_sub2.turnRightAnimationId = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate90RightAnimation);
             class40_sub5_sub17_sub4_sub2.method787((Player.localPlayer.anIntArray3135[0]) + i_5_, -7717, i_7_ == 1, (Player.localPlayer.anIntArray3088[0]) + i_4_);
         }
         Cache.outgoingbuffer.finishBitAccess((byte) -110);

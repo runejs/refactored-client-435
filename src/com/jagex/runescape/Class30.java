@@ -224,7 +224,7 @@ public class Class30 {
             int i_11_ = appearance[i];
             if(i_11_ >= 256 && i_11_ < 512 && !IdentityKit.cache(i_11_ - 256).method624(false))
                 bool = true;
-            if(i_11_ >= 512 && !ItemDefinition.forId(-512 + i_11_, 10).method738(gender))
+            if(i_11_ >= 512 && !ItemDefinition.forId(-512 + i_11_, 10).headPieceReady(gender))
                 bool = true;
         }
         if(arg0 <= 20)

@@ -138,7 +138,7 @@ public class HuffmanEncoding {
             if(arg4 != null && arg4.isClickable) {
                 RSString class1 = arg4.name;
                 if(arg4.combatLevel != arg0)
-                    class1 = (Class40_Sub5_Sub17_Sub6.method832(-47, (new RSString[]{class1, (SceneTile.method536((Player.localPlayer.anInt3260), arg4.combatLevel, arg0 + -99)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(arg4.combatLevel, -1), Class51.aClass1_1199})));
+                    class1 = (Class40_Sub5_Sub17_Sub6.method832(-47, (new RSString[]{class1, (SceneTile.method536((Player.localPlayer.combatLevel), arg4.combatLevel, arg0 + -99)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(arg4.combatLevel, -1), Class51.aClass1_1199})));
                 if(Class8.anInt301 == 1) {
                     Node.anInt927++;
                     OverlayDefinition.method558(arg3, Main.aClass1_1763, arg2, -501, arg1, 49, (Class40_Sub5_Sub17_Sub6.method832(-124, (new RSString[]{Npc.aClass1_3295, SpotAnimDefinition.aClass1_2306, class1}))));
@@ -174,7 +174,7 @@ public class HuffmanEncoding {
                         for(int i = 4; i >= 0; i--) {
                             if(class1s[i] != null && class1s[i].equalsIgnoreCase((Class38_Sub1.aClass1_1917), true)) {
                                 int i_4_ = 0;
-                                if(((Player.localPlayer.anInt3260) < arg4.combatLevel))
+                                if(((Player.localPlayer.combatLevel) < arg4.combatLevel))
                                     i_4_ = 2000;
                                 int i_5_ = 0;
                                 if(i == 0)
@@ -258,7 +258,7 @@ public class HuffmanEncoding {
                 if(i_18_ == 7)
                     i_16_ = (100 * Class58.varbitmasks[is[i_14_++]] / 46875);
                 if(i_18_ == 8)
-                    i_16_ = (Player.localPlayer.anInt3260);
+                    i_16_ = (Player.localPlayer.combatLevel);
                 if(i_18_ == 9) {
                     for(int i_22_ = 0; i_22_ < 25; i_22_++) {
                         if(Class22.aBooleanArray548[i_22_])

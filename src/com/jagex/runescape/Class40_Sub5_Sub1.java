@@ -261,10 +261,10 @@ public class Class40_Sub5_Sub1 extends SubNode {
     public static void method545(int arg0, boolean arg1, int arg2, Player arg3, int arg4) {
         if(Player.localPlayer != arg3 && ActorDefinition.anInt2394 < 400) {
             RSString class1;
-            if(arg3.anInt3257 == 0)
-                class1 = (Class40_Sub5_Sub17_Sub6.method832(82, (new RSString[]{arg3.playerName, (SceneTile.method536((Player.localPlayer.anInt3260), arg3.anInt3260, -122)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(arg3.anInt3260, -1), Class51.aClass1_1199})));
+            if(arg3.skillLevel == 0)
+                class1 = (Class40_Sub5_Sub17_Sub6.method832(82, (new RSString[]{arg3.playerName, (SceneTile.method536((Player.localPlayer.combatLevel), arg3.combatLevel, -122)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(arg3.combatLevel, -1), Class51.aClass1_1199})));
             else
-                class1 = (Class40_Sub5_Sub17_Sub6.method832(-60, (new RSString[]{arg3.playerName, HashTable.aClass1_569, Class26.aClass1_619, HashTable.method334(arg3.anInt3257, -1), Class51.aClass1_1199})));
+                class1 = (Class40_Sub5_Sub17_Sub6.method832(-60, (new RSString[]{arg3.playerName, HashTable.aClass1_569, Class26.aClass1_619, HashTable.method334(arg3.skillLevel, -1), Class51.aClass1_1199})));
             if(Class8.anInt301 == 1) {
                 Node.anInt928++;
                 OverlayDefinition.method558(arg4, Main.aClass1_1763, arg0, -501, arg2, 22, (Class40_Sub5_Sub17_Sub6.method832(55, (new RSString[]{Npc.aClass1_3295, Class40_Sub5_Sub17_Sub3.aClass1_3068, class1}))));
@@ -279,10 +279,10 @@ public class Class40_Sub5_Sub1 extends SubNode {
                         int i_16_ = 0;
                         int i_17_ = 0;
                         if(Main.aClass1Array1778[i].equalsIgnoreCase(Class38_Sub1.aClass1_1917, true)) {
-                            if((Player.localPlayer.anInt3260) < arg3.anInt3260)
+                            if((Player.localPlayer.combatLevel) < arg3.combatLevel)
                                 i_17_ = 2000;
-                            if((Player.localPlayer.anInt3266) != 0 && arg3.anInt3266 != 0) {
-                                if((Player.localPlayer.anInt3266) != arg3.anInt3266)
+                            if((Player.localPlayer.teamId) != 0 && arg3.teamId != 0) {
+                                if((Player.localPlayer.teamId) != arg3.teamId)
                                     i_17_ = 0;
                                 else
                                     i_17_ = 2000;

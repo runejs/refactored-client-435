@@ -23,16 +23,16 @@ public class Player extends Actor {
     public static int anInt3288 = 0;
     public static RSString aClass1_3290 = RSString.CreateString("Spieler kann nicht gefunden werden: ");
     public static Player localPlayer;
-    public int anInt3257;
+    public int skillLevel;
     public int anInt3258;
-    public int anInt3260 = 0;
+    public int combatLevel = 0;
     public int anInt3262;
     public Model aClass40_Sub5_Sub17_Sub5_3265;
-    public int anInt3266 = 0;
-    public int anInt3268;
+    public int teamId = 0;
+    public int isSkulled;
     public int anInt3271;
     public int anInt3272;
-    public int anInt3273;
+    public int headIcon;
     public int anInt3274;
     public int anInt3276;
     public RSString playerName;
@@ -44,9 +44,9 @@ public class Player extends Actor {
     public int anInt3291;
 
     public Player() {
-        anInt3257 = 0;
-        anInt3273 = -1;
-        anInt3268 = -1;
+        skillLevel = 0;
+        headIcon = -1;
+        isSkulled = -1;
         anInt3274 = 0;
         anInt3283 = 0;
         aBoolean3287 = false;
@@ -170,7 +170,7 @@ public class Player extends Actor {
             Buffer buffer = new Buffer(is);
             Cache.outgoingbuffer.getBytes(appearanceUpdateLength, 0, is);
             Class22.aClass40_Sub1Array534[arg3] = buffer;
-            player.parsePlayerAppearanceData((byte) -85, buffer);
+            player.parsePlayerAppearanceData(buffer);
         }
         if((mask & 0x200) != 0) { // graphics?
             player.anInt3091 = Cache.outgoingbuffer.getUnsignedShortLE();
@@ -214,7 +214,7 @@ public class Player extends Actor {
             return null;
         int i = 71 % ((41 - arg0) / 47);
         AnimationSequence animationSequence = (playingAnimation == -1 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2));
-        AnimationSequence animationSequence_0_ = ((anInt3077 != -1 && !aBoolean3287 && (anInt3126 != anInt3077 || animationSequence == null)) ? Class68_Sub1.method1050(anInt3077, 2) : null);
+        AnimationSequence animationSequence_0_ = ((anInt3077 != -1 && !aBoolean3287 && (idleAnimation != anInt3077 || animationSequence == null)) ? Class68_Sub1.method1050(anInt3077, 2) : null);
         Model class40_sub5_sub17_sub5 = aClass30_3282.getAnimatedModel(animationSequence, animationSequence_0_, anInt3116, anInt3104, (byte) -128);
         if(class40_sub5_sub17_sub5 == null)
             return null;
@@ -269,68 +269,67 @@ public class Player extends Actor {
         return aClass30_3282 != null;
     }
 
-    public void parsePlayerAppearanceData(byte arg0, Buffer buffer) {
+    public void parsePlayerAppearanceData(Buffer buffer) {
         buffer.currentPosition = 0;
         int i = buffer.getUnsignedByte();
-        anInt3268 = buffer.getByte();
-        anInt3273 = buffer.getByte();
-        int i_3_ = -1;
-        anInt3266 = 0;
-        int[] is = new int[12];
-        if(arg0 >= -51)
-            aClass1_3275 = null;
-        for(int i_4_ = 0; i_4_ < 12; i_4_++) {
-            int i_5_ = buffer.getUnsignedByte();
-            if(i_5_ == 0)
-                is[i_4_] = 0;
+        isSkulled = buffer.getByte();
+        headIcon = buffer.getByte();
+        int npcDefId = -1;
+        teamId = 0;
+        int[] appearance = new int[12];
+        for(int index = 0; index < 12; index++) {
+            int upperByte = buffer.getUnsignedByte();
+            if(upperByte == 0)
+                appearance[index] = 0;
             else {
-                int i_6_ = buffer.getUnsignedByte();
-                is[i_4_] = (i_5_ << 8) + i_6_;
-                if(i_4_ == 0 && is[0] == 65535) {
-                    i_3_ = buffer.getUnsignedShortBE();
+                int lowerByte = buffer.getUnsignedByte();
+                appearance[index] = (upperByte << 8) + lowerByte;
+                System.out.println(index + " " + (upperByte << 8) + lowerByte);
+                if(index == 0 && appearance[0] == 65535) {
+                    npcDefId = buffer.getUnsignedShortBE();
                     break;
                 }
-                if(is[i_4_] >= 512) {
-                    int i_7_ = ItemDefinition.forId(-512 + is[i_4_], 10).teamIndex;
-                    if(i_7_ != 0)
-                        anInt3266 = i_7_;
+                if(appearance[index] >= 512) {
+                    int itemTeam = ItemDefinition.forId(-512 + appearance[index], 10).teamIndex;
+                    if(itemTeam != 0)
+                        teamId = itemTeam;
                 }
             }
         }
-        int[] is_8_ = new int[5];
-        for(int i_9_ = 0; i_9_ < 5; i_9_++) {
-            int i_10_ = buffer.getUnsignedByte();
-            if(i_10_ < 0 || ((Class40_Sub5_Sub17_Sub6.playerColours[i_9_]).length <= i_10_))
-                i_10_ = 0;
-            is_8_[i_9_] = i_10_;
+        int[] appearanceColors = new int[5];
+        for(int l = 0; l < 5; l++) {
+            int j1 = buffer.getUnsignedByte();
+            if(j1 < 0 || ((Class40_Sub5_Sub17_Sub6.playerColours[l]).length <= j1))
+                j1 = 0;
+            appearanceColors[l] = j1;
         }
-        anInt3126 = buffer.getUnsignedShortBE();
-        if(anInt3126 == 65535)
-            anInt3126 = -1;
-        anInt3145 = buffer.getUnsignedShortBE();
-        if(anInt3145 == 65535)
-            anInt3145 = -1;
-        anInt3083 = anInt3145;
-        anInt3131 = buffer.getUnsignedShortBE();
-        if(anInt3131 == 65535)
-            anInt3131 = -1;
-        anInt3079 = buffer.getUnsignedShortBE();
-        if(anInt3079 == 65535)
-            anInt3079 = -1;
-        anInt3075 = buffer.getUnsignedShortBE();
-        if(anInt3075 == 65535)
-            anInt3075 = -1;
-        anInt3132 = buffer.getUnsignedShortBE();
-        if(anInt3132 == 65535)
-            anInt3132 = -1;
-        anInt3082 = buffer.getUnsignedShortBE();
-        if(anInt3082 == 65535)
-            anInt3082 = -1;
+        idleAnimation = buffer.getUnsignedShortBE();
+        if(idleAnimation == 65535)
+            idleAnimation = -1;
+        standTurnAnimationId = buffer.getUnsignedShortBE();
+        if(standTurnAnimationId == 65535)
+            standTurnAnimationId = -1;
+        anInt3083 = standTurnAnimationId;
+        walkAnimationId = buffer.getUnsignedShortBE();
+        if(walkAnimationId == 65535)
+            walkAnimationId = -1;
+        turnAroundAnimationId = buffer.getUnsignedShortBE();
+        if(turnAroundAnimationId == 65535)
+            turnAroundAnimationId = -1;
+        turnRightAnimationId = buffer.getUnsignedShortBE();
+        if(turnRightAnimationId == 65535)
+            turnRightAnimationId = -1;
+        turnLeftAnimationId = buffer.getUnsignedShortBE();
+        if(turnLeftAnimationId == 65535)
+            turnLeftAnimationId = -1;
+        runAnimationId = buffer.getUnsignedShortBE();
+        if(runAnimationId == 65535)
+            runAnimationId = -1;
         playerName = Class60.method991(-127, buffer.getLongBE()).method85(-4305);
-        anInt3260 = buffer.getUnsignedByte();
-        anInt3257 = buffer.getUnsignedShortBE();
+        combatLevel = buffer.getUnsignedByte();
+        skillLevel = buffer.getUnsignedShortBE();
         if(aClass30_3282 == null)
             aClass30_3282 = new Class30();
-        aClass30_3282.method380(is, i == 1, 7, is_8_, i_3_);
+        aClass30_3282.method380(appearance, i == 1, 7, appearanceColors, npcDefId);
     }
 }

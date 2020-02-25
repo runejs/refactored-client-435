@@ -110,7 +110,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                 class40_sub5_sub17_sub4_sub1.aBoolean3287 = false;
                 int i_2_ = class40_sub5_sub17_sub4_sub1.anInt3098 >> 7;
                 int i_3_ = class40_sub5_sub17_sub4_sub1.anInt3089 >> 7;
-                if(((VertexNormal.lowMemory && Class60.anInt1407 > 50) || Class60.anInt1407 > 200) && !arg1 && (class40_sub5_sub17_sub4_sub1.anInt3077 == class40_sub5_sub17_sub4_sub1.anInt3126))
+                if(((VertexNormal.lowMemory && Class60.anInt1407 > 50) || Class60.anInt1407 > 200) && !arg1 && (class40_sub5_sub17_sub4_sub1.anInt3077 == class40_sub5_sub17_sub4_sub1.idleAnimation))
                     class40_sub5_sub17_sub4_sub1.aBoolean3287 = true;
                 if(i_2_ >= 0 && i_2_ < 104 && i_3_ >= 0 && i_3_ < 104) {
                     if((class40_sub5_sub17_sub4_sub1.aClass40_Sub5_Sub17_Sub5_3265) != null && ((class40_sub5_sub17_sub4_sub1.anInt3283 <= Node.pulseCycle)) && (Node.pulseCycle < class40_sub5_sub17_sub4_sub1.anInt3274)) {

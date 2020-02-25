@@ -11,6 +11,7 @@ import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import tech.henning.fourthreefive.OldEngine.MapDecompressor;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;

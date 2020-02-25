@@ -78,15 +78,15 @@ public class Class33 {
                     } else {
                         Player class40_sub5_sub17_sub4_sub1 = ((Player) actor);
                         int i_0_ = 30;
-                        if(class40_sub5_sub17_sub4_sub1.anInt3268 != -1 || (class40_sub5_sub17_sub4_sub1.anInt3273 != -1)) {
+                        if(class40_sub5_sub17_sub4_sub1.isSkulled != -1 || (class40_sub5_sub17_sub4_sub1.headIcon != -1)) {
                             FloorDecoration.method342(-44, 15 + (actor.anInt3117), actor);
                             if(ISAAC.anInt522 > -1) {
-                                if(class40_sub5_sub17_sub4_sub1.anInt3268 != -1) {
-                                    FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603[(class40_sub5_sub17_sub4_sub1.anInt3268)].drawImage(ISAAC.anInt522 - 12, Class44.anInt1048 - i_0_);
+                                if(class40_sub5_sub17_sub4_sub1.isSkulled != -1) {
+                                    FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603[(class40_sub5_sub17_sub4_sub1.isSkulled)].drawImage(ISAAC.anInt522 - 12, Class44.anInt1048 - i_0_);
                                     i_0_ += 25;
                                 }
-                                if(class40_sub5_sub17_sub4_sub1.anInt3273 != -1) {
-                                    Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204[(class40_sub5_sub17_sub4_sub1.anInt3273)].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
+                                if(class40_sub5_sub17_sub4_sub1.headIcon != -1) {
+                                    Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204[(class40_sub5_sub17_sub4_sub1.headIcon)].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
                                     i_0_ += 25;
                                 }
                             }

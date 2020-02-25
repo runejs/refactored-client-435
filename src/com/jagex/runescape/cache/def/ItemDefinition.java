@@ -205,7 +205,7 @@ public class ItemDefinition extends SubNode {
         return definition;
     }
 
-    public boolean method738(boolean female) {
+    public boolean headPieceReady(boolean female) {
         int primaryId = primaryMaleHeadPiece;
         int secondaryId = secondaryMaleHeadPiece;
         if(female) {
@@ -215,14 +215,14 @@ public class ItemDefinition extends SubNode {
         if(primaryId == -1) {
             return true;
         }
-        boolean bool = true;
+        boolean ready = true;
         if(!Class8.aCacheIndex_284.loaded(primaryId, 0)) {
-            bool = false;
+            ready = false;
         }
         if(secondaryId != -1 && !Class8.aCacheIndex_284.loaded(secondaryId, 0)) {
-            bool = false;
+            ready = false;
         }
-        return bool;
+        return ready;
     }
 
     public boolean equipmentReady(boolean arg0, byte arg1) {

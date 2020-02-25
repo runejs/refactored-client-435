@@ -176,7 +176,7 @@ public class Class37 {
                         }
                     }
                     boolean bool_16_ = false;
-                    if(((Player.localPlayer.anInt3266) != 0) && class40_sub5_sub17_sub4_sub1.anInt3266 != 0 && (class40_sub5_sub17_sub4_sub1.anInt3266 == (Player.localPlayer.anInt3266)))
+                    if(((Player.localPlayer.teamId) != 0) && class40_sub5_sub17_sub4_sub1.teamId != 0 && (class40_sub5_sub17_sub4_sub1.teamId == (Player.localPlayer.teamId)))
                         bool_16_ = true;
                     if(bool)
                         SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[3]);

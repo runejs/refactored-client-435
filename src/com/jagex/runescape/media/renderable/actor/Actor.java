@@ -61,13 +61,13 @@ public abstract class Actor extends Renderable {
     public boolean[] aBooleanArray3072;
     public int anInt3073;
     public int anInt3074;
-    public int anInt3075;
+    public int turnRightAnimationId;
     public int anInt3077;
     public int anInt3078;
-    public int anInt3079;
+    public int turnAroundAnimationId;
     public int anInt3080;
     public int anInt3081;
-    public int anInt3082;
+    public int runAnimationId;
     public int anInt3083;
     public int[] anIntArray3086;
     public int[] anIntArray3087;
@@ -100,12 +100,12 @@ public abstract class Actor extends Renderable {
     public int playingAnimationDelay;
     public int anInt3123;
     public int anInt3125;
-    public int anInt3126;
+    public int idleAnimation;
     public int anInt3127;
     public int anInt3129;
     public int anInt3130;
-    public int anInt3131;
-    public int anInt3132;
+    public int walkAnimationId;
+    public int turnLeftAnimationId;
     public int anInt3134;
     public int[] anIntArray3135;
     public int[] anIntArray3136;
@@ -113,18 +113,18 @@ public abstract class Actor extends Renderable {
     public int anInt3139;
     public int anInt3140;
     public int playingAnimation;
-    public int anInt3145;
+    public int standTurnAnimationId;
     public int facePositionX;
 
     public Actor() {
         anInt3083 = -1;
         facePositionY = 0;
-        anInt3082 = -1;
-        anInt3079 = -1;
+        runAnimationId = -1;
+        turnAroundAnimationId = -1;
         aBoolean3105 = false;
         anInt3096 = 1;
         forcedChatMessage = null;
-        anInt3075 = -1;
+        turnRightAnimationId = -1;
         anIntArray3086 = new int[4];
         aBooleanArray3072 = new boolean[10];
         anInt3113 = 32;
@@ -141,7 +141,7 @@ public abstract class Actor extends Renderable {
         anInt3116 = 0;
         anInt3109 = 0;
         anInt3123 = 0;
-        anInt3126 = -1;
+        idleAnimation = -1;
         anInt3074 = 0;
         anInt3097 = 0;
         anIntArray3136 = new int[4];
@@ -149,13 +149,13 @@ public abstract class Actor extends Renderable {
         facingActorIndex = -1;
         anIntArray3135 = new int[10];
         anInt3139 = -1000;
-        anInt3131 = -1;
+        walkAnimationId = -1;
         anInt3115 = 0;
         anInt3134 = 0;
         anInt3140 = 0;
         anIntArray3088 = new int[10];
-        anInt3132 = -1;
-        anInt3145 = -1;
+        turnLeftAnimationId = -1;
+        standTurnAnimationId = -1;
         facePositionX = 0;
         playingAnimation = -1;
     }

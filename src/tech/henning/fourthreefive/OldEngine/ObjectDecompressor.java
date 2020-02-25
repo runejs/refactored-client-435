@@ -1,57 +1,61 @@
-package com.jagex.runescape;/*
- * Class: com.jagex.runescape.MapDecompressor.java
+package tech.henning.fourthreefive.OldEngine;/*
+ * Class: tech.henning.fourthreefive.OldEngine.MapDecompressor.java
  * Loads decompressed maps from a subcache.
  * @ Author: Zee best
  */
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Npc;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
-public class MapDecompressor {
+public class ObjectDecompressor {
 
     public static List<Integer> mapIndices = null;
     public static Map<Integer, byte[]> mapBuffer = new HashMap<Integer, byte[]>();
+    public static File f_cache;
+    public static File f_index;
+    public static int definitionCount;
+    private static int[] bufferOffsets;
+    private static boolean loaded = false;
+    public static Buffer buffer;
 
-    public static byte[] grabMap(int id) throws IOException {
-        if(mapIndices == null)
-            loadIndex2();
-        if(mapBuffer.get(id) == null) {
-            RandomAccessFile raf_cache = new RandomAccessFile("./data/maps/MAP_CACHE.dat", "rw");
-            RandomAccessFile raf_index = new RandomAccessFile("./data/maps/MAP_CACHE.idx", "rw");
-            int pos = getIndexPosition(id);
-            if(pos == -1)
-                return null;
-            raf_index.seek(pos * 12);
-            raf_cache.seek(raf_index.readInt());
-            byte[] b = new byte[raf_index.readInt()];
-            raf_cache.readFully(b);
-            b = inflate(b, raf_index.readInt());
-            mapBuffer.put(id, b);
-            return mapBuffer.get(id);
+    public static Buffer grabObjectDef(int id) throws IOException {
+        if(!loaded){
+            f_cache = new File("./data/loc.dat");
+            f_index = new File("./data/loc.idx");
+            byte[] bytesArray = new byte[(int) f_cache.length()];
+
+            FileInputStream fis = new FileInputStream(f_cache);
+            fis.read(bytesArray); //read file into bytes[]
+            fis.close();
+
+            buffer = new Buffer(bytesArray);
+            bytesArray = new byte[(int) f_index.length()];
+
+            fis = new FileInputStream(f_index);
+            fis.read(bytesArray); //read file into bytes[]
+            fis.close();
+            Buffer buffer = new Buffer(bytesArray);
+            definitionCount = buffer.getUnsignedShortBE();
+            bufferOffsets = new int[definitionCount];
+            int offset = 2;
+            for (int index = 0; index < definitionCount; index++) {
+                bufferOffsets[index] = offset;
+                offset += buffer.getUnsignedShortBE();
+            }
         }
-        return mapBuffer.get(id);
-    }
-
-    public static void loadIndex2() throws IOException {
-        mapIndices = new ArrayList<Integer>();
-        DataInputStream dis = new DataInputStream(new FileInputStream("./data/maps/MAP_CACHE.idx2"));
-        for(int i = 0; i < (int) new File("./data/maps/MAP_CACHE.idx2").length() / 2; i++)
-            mapIndices.add((int) dis.readShort());
-    }
-
-    public static int getIndexPosition(int id) throws IOException {
-        if(mapIndices.contains(id))
-            for(int i = 0; i < mapIndices.size(); i++)
-                if(mapIndices.get(i) == id)
-                    return i;
-        return -1;
+        if(id > definitionCount){
+            return null;
+        }
+        buffer.currentPosition = bufferOffsets[id];
+        return buffer;
     }
 
     public static byte[] inflate(byte[] b, int l) throws IOException {

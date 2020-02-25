@@ -4,6 +4,9 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
+import tech.henning.fourthreefive.OldEngine.ObjectDecompressor;
+
+import java.io.IOException;
 
 public class GameObjectDefinition extends SubNode {
     public static Class68 aClass68_2524;
@@ -171,6 +174,16 @@ public class GameObjectDefinition extends SubNode {
         gameObjectDefinition.anInt2538 = arg0;
         if(is != null) {
             gameObjectDefinition.readValues(new Buffer(is));
+        } else {
+            try {
+                Buffer buffer = ObjectDecompressor.grabObjectDef(arg0);
+                if(buffer != null) {
+
+                    gameObjectDefinition.readValues(buffer);
+                }
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
         }
         gameObjectDefinition.method605(true);
         if(gameObjectDefinition.hollow) {

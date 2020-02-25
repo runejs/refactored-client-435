@@ -81,7 +81,7 @@ public class Class44 implements Runnable {
 
     public static void method898(int arg0, Actor arg1) {
         anInt1037++;
-        arg1.anInt3077 = arg1.anInt3126;
+        arg1.anInt3077 = arg1.idleAnimation;
         if(arg1.anInt3109 == 0)
             arg1.anInt3074 = 0;
         else {
@@ -123,7 +123,7 @@ public class Class44 implements Runnable {
                     arg1.anInt3080 = 256;
                 else
                     arg1.anInt3080 = 512;
-                int i_3_ = arg1.anInt3079;
+                int i_3_ = arg1.turnAroundAnimationId;
                 int i_4_ = 4;
                 if(arg1.anInt3080 != arg1.anInt3118 && arg1.facingActorIndex == -1 && arg1.anInt3113 != 0)
                     i_4_ = 2;
@@ -137,13 +137,13 @@ public class Class44 implements Runnable {
                 if((i_5_ ^ 0xffffffff) > arg0 || i_5_ > 256) {
                     if(i_5_ < 256 || i_5_ >= 768) {
                         if(i_5_ >= -768 && i_5_ <= -256)
-                            i_3_ = arg1.anInt3075;
+                            i_3_ = arg1.turnRightAnimationId;
                     } else
-                        i_3_ = arg1.anInt3132;
+                        i_3_ = arg1.turnLeftAnimationId;
                 } else
-                    i_3_ = arg1.anInt3131;
+                    i_3_ = arg1.walkAnimationId;
                 if(i_3_ == -1)
-                    i_3_ = arg1.anInt3131;
+                    i_3_ = arg1.walkAnimationId;
                 arg1.anInt3077 = i_3_;
                 if(arg1.anInt3074 > 0 && arg1.anInt3109 > 1) {
                     arg1.anInt3074--;
@@ -160,8 +160,8 @@ public class Class44 implements Runnable {
                     if((arg1.anInt3089 < i_2_))
                         arg1.anInt3089 = i_2_;
                 }
-                if(i_4_ >= 8 && arg1.anInt3077 == arg1.anInt3131 && arg1.anInt3082 != -1)
-                    arg1.anInt3077 = arg1.anInt3082;
+                if(i_4_ >= 8 && arg1.anInt3077 == arg1.walkAnimationId && arg1.runAnimationId != -1)
+                    arg1.anInt3077 = arg1.runAnimationId;
                 if(i < i_0_) {
                     arg1.anInt3098 += i_4_;
                     if((i_0_ < arg1.anInt3098))

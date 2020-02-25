@@ -168,7 +168,7 @@ public class Class34 {
             if((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_]) == null) {
                 Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_] = new Player();
                 if(Class22.aClass40_Sub1Array534[i_0_] != null)
-                    Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_].parsePlayerAppearanceData((byte) -114, Class22.aClass40_Sub1Array534[i_0_]);
+                    Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_].parsePlayerAppearanceData(Class22.aClass40_Sub1Array534[i_0_]);
                 bool = true;
             }
             Class57.anIntArray1334[Class60.anInt1407++] = i_0_;

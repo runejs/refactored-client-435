@@ -271,11 +271,11 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         bool = false;
                         arg1.anInt3118 = arg1.anInt3080;
                     }
-                    if(arg1.anInt3126 == arg1.anInt3077 && (arg1.anInt3097 > 25 || bool)) {
-                        if(arg1.anInt3145 != -1)
-                            arg1.anInt3077 = arg1.anInt3145;
+                    if(arg1.idleAnimation == arg1.anInt3077 && (arg1.anInt3097 > 25 || bool)) {
+                        if(arg1.standTurnAnimationId != -1)
+                            arg1.anInt3077 = arg1.standTurnAnimationId;
                         else
-                            arg1.anInt3077 = arg1.anInt3131;
+                            arg1.anInt3077 = arg1.walkAnimationId;
                     }
                 } else {
                     arg1.anInt3118 += arg1.anInt3113;
@@ -284,11 +284,11 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         arg1.anInt3118 = arg1.anInt3080;
                         bool = false;
                     }
-                    if(arg1.anInt3077 == arg1.anInt3126 && (arg1.anInt3097 > 25 || bool)) {
+                    if(arg1.anInt3077 == arg1.idleAnimation && (arg1.anInt3097 > 25 || bool)) {
                         if(arg1.anInt3083 != -1)
                             arg1.anInt3077 = arg1.anInt3083;
                         else
-                            arg1.anInt3077 = arg1.anInt3131;
+                            arg1.anInt3077 = arg1.walkAnimationId;
                     }
                 }
                 arg1.anInt3118 &= 0x7ff;

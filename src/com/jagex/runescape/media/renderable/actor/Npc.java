@@ -473,13 +473,13 @@ public class Npc extends Actor {
                 npc.aClass40_Sub5_Sub5_3300 = ActorDefinition.getDefinition((byte) -122, Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE());
                 npc.anInt3083 = (npc.aClass40_Sub5_Sub5_3300.rotateRightAnimation);
                 npc.anInt3113 = (npc.aClass40_Sub5_Sub5_3300.degreesToTurn);
-                npc.anInt3075 = (npc.aClass40_Sub5_Sub5_3300.rotate90RightAnimation);
-                npc.anInt3126 = (npc.aClass40_Sub5_Sub5_3300.stanceAnimation);
-                npc.anInt3131 = (npc.aClass40_Sub5_Sub5_3300.walkAnimation);
-                npc.anInt3145 = (npc.aClass40_Sub5_Sub5_3300.rotateLeftAnimation);
+                npc.turnRightAnimationId = (npc.aClass40_Sub5_Sub5_3300.rotate90RightAnimation);
+                npc.idleAnimation = (npc.aClass40_Sub5_Sub5_3300.stanceAnimation);
+                npc.walkAnimationId = (npc.aClass40_Sub5_Sub5_3300.walkAnimation);
+                npc.standTurnAnimationId = (npc.aClass40_Sub5_Sub5_3300.rotateLeftAnimation);
                 npc.anInt3096 = (npc.aClass40_Sub5_Sub5_3300.tileSpacesOccupied);
-                npc.anInt3132 = (npc.aClass40_Sub5_Sub5_3300.rotate90LeftAnimation);
-                npc.anInt3079 = (npc.aClass40_Sub5_Sub5_3300.rotate180Animation);
+                npc.turnLeftAnimationId = (npc.aClass40_Sub5_Sub5_3300.rotate90LeftAnimation);
+                npc.turnAroundAnimationId = (npc.aClass40_Sub5_Sub5_3300.rotate180Animation);
             }
             if((mask & 0x8) != 0) {
                 npc.facePositionX = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
@@ -518,7 +518,7 @@ public class Npc extends Actor {
             return null;
         int i = 25 % ((41 - arg0) / 47);
         AnimationSequence animationSequence = (playingAnimation == -1 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2));
-        AnimationSequence animationSequence_0_ = (anInt3077 != -1 && (anInt3077 != anInt3126 || animationSequence == null) ? Class68_Sub1.method1050(anInt3077, 2) : null);
+        AnimationSequence animationSequence_0_ = (anInt3077 != -1 && (anInt3077 != idleAnimation || animationSequence == null) ? Class68_Sub1.method1050(anInt3077, 2) : null);
         Model class40_sub5_sub17_sub5 = aClass40_Sub5_Sub5_3300.getChildModel((byte) -50, animationSequence, animationSequence_0_, anInt3116, anInt3104);
         if(class40_sub5_sub17_sub5 == null)
             return null;
