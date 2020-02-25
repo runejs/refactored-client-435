@@ -212,7 +212,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
 
     }
 
-    public static void method544(byte arg0) {
+    public static void method544() {
         if(GameFrame.clickType == 1) {
             if(Class57.anInt1338 >= 6 && Class57.anInt1338 <= 106 && RSString.anInt1668 >= 467 && RSString.anInt1668 <= 499) {
                 Cache.aBoolean330 = true;
@@ -253,7 +253,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                         HuffmanEncoding.aClass1_1550 = HuffmanEncoding.blank_string;
                     }
                 } else
-                    Class44.method895(arg0 ^ ~0x65, 0, Class37.aClass1_873, HuffmanEncoding.blank_string);
+                    Class44.addChatMessage(HuffmanEncoding.blank_string, Class37.aClass1_873, 0);
             }
         }
     }

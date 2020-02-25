@@ -9,26 +9,15 @@ public class Class43 {
     public static int anInt1015;
     public static int anInt1016;
     public static int anInt1018;
-    public static RSString aClass1_1019;
+    public static RSString aClass1_1019 = RSString.CreateString("flash1:");
     public static int cameraYawOffset = 0;
-    public static RSString aClass1_1021 = RSString.CreateString("flash1:");
-    public static Class45 aClass45_1022;
+    public static Class45 aClass45_1022 = new Class45();
     public static int anInt1023;
-    public static RSString aClass1_1024;
-    public static int bankInsertMode;
-    public static RSString aClass1_1026;
-    public static RSString aClass1_1027;
-    public static int openChatboxWidgetId;
-
-    static {
-        aClass1_1019 = aClass1_1021;
-        aClass45_1022 = new Class45();
-        aClass1_1024 = RSString.CreateString("backleft2");
-        aClass1_1027 = RSString.CreateString(":");
-        bankInsertMode = 0;
-        openChatboxWidgetId = -1;
-        aClass1_1026 = RSString.CreateString("Schlie-8en");
-    }
+    public static RSString aClass1_1024 = RSString.CreateString("backleft2");
+    public static int bankInsertMode = 0;
+    public static RSString aClass1_1026 = RSString.CreateString("Schlie-8en");
+    public static RSString char_colon = RSString.CreateString(":");
+    public static int openChatboxWidgetId = -1;
 
     public static void method890(long arg0, int arg1) {
 
@@ -73,11 +62,10 @@ public class Class43 {
             aClass1_1024 = null;
         aClass9_1014 = null;
         aClass1_1026 = null;
-        aClass1_1021 = null;
         aClass45_1022 = null;
         aClass1_1024 = null;
         aClass1_1019 = null;
-        aClass1_1027 = null;
+        char_colon = null;
 
     }
 

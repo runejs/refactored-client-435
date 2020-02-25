@@ -64,7 +64,7 @@ public class RSString implements Interface1 {
             method83((byte) -1);
         long l = ((long) (arg0 + 37 * arg2 & 0xffff) + ((long) arg4 << 32) + (long) (arg2 << 16));
         if(aClass9_1684 != null) {
-            Class40_Sub5_Sub6 class40_sub5_sub6 = (Class40_Sub5_Sub6) aClass9_1684.method231(l, (byte) 85);
+            Class40_Sub5_Sub6 class40_sub5_sub6 = (Class40_Sub5_Sub6) aClass9_1684.get(l, (byte) 85);
             if(class40_sub5_sub6 != null)
                 return class40_sub5_sub6.aByteArray2441;
         }
@@ -72,7 +72,7 @@ public class RSString implements Interface1 {
         if(is == null)
             return null;
         if(aClass9_1684 != null)
-            aClass9_1684.method230(-7208, l, new Class40_Sub5_Sub6(is));
+            aClass9_1684.put(-7208, l, new Class40_Sub5_Sub6(is));
         return is;
     }
 
@@ -102,7 +102,6 @@ public class RSString implements Interface1 {
     }
 
     public static RSString CreateString(String arg1) { // TODO: CreateString?
-        Class58.anInt1367++;
         byte[] is = arg1.getBytes();
         int i = is.length;
         RSString class1 = new RSString();
@@ -240,8 +239,6 @@ public class RSString implements Interface1 {
 
     public RSString method62(int arg0) {
         RSString class1 = new RSString();
-        if(arg0 != 57)
-            startsWith(null);
         class1.length = 0;
         int i = 0;
         class1.chars = new byte[12];
@@ -362,7 +359,7 @@ public class RSString implements Interface1 {
 
     public RSString substring(int arg1, int arg2) {
         RSString class1 = new RSString();
-        class1.chars = new byte[-arg1 + arg2];
+        class1.chars = new byte[arg2 - arg1];
         class1.length = -arg1 + arg2;
         Class18.method278(chars, arg1, class1.chars, 0, class1.length);
         return class1;
@@ -436,6 +433,10 @@ public class RSString implements Interface1 {
                 return false;
         }
         return true;
+    }
+
+    public boolean startsWith(String string) {
+        return this.toString().startsWith(string);
     }
 
     public int method76() {

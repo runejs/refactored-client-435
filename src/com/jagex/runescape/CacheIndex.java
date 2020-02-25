@@ -22,7 +22,7 @@ public abstract class CacheIndex {
     public static int[] anIntArray225 = new int[1000];
     public static int anInt226;
     public static int anInt228;
-    public static Cache aClass9_229 = new Cache(260);
+    public static Cache modelCache = new Cache(260);
     public static int anInt230;
     public static int anInt231;
     public static int anInt232;
@@ -116,7 +116,7 @@ public abstract class CacheIndex {
         aClass1_256 = null;
         if(arg0 != 0)
             anIntArray225 = null;
-        aClass9_229 = null;
+        modelCache = null;
         aClass1_257 = null;
         anIntArray225 = null;
         anIntArrayArrayArray262 = null;

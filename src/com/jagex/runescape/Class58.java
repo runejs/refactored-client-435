@@ -21,7 +21,6 @@ public class Class58 {
     public static RSString cmd_clientdrop;
     public static int anInt1360;
     public static Cache aClass9_1364;
-    public static int anInt1367;
     public static RSString aClass1_1365 = RSString.CreateString("Message");
     public static int anInt1368;
     public static int anInt1369;
@@ -150,7 +149,7 @@ public class Class58 {
                     Class64.anInt1511 = arg1.spriteId;
                     Main.anInt1769 = arg1.alternateSpriteId;
                 }
-                if(!Class45.aClass30_1082.aBoolean683)
+                if(!Class45.aClass30_1082.gender)
                     arg1.spriteId = Main.anInt1769;
                 else
                     arg1.spriteId = Class64.anInt1511;
@@ -159,7 +158,7 @@ public class Class58 {
                     Main.anInt1769 = arg1.alternateSpriteId;
                     Class64.anInt1511 = arg1.spriteId;
                 }
-                if(Class45.aClass30_1082.aBoolean683)
+                if(Class45.aClass30_1082.gender)
                     arg1.spriteId = Main.anInt1769;
                 else
                     arg1.spriteId = Class64.anInt1511;
@@ -272,7 +271,7 @@ public class Class58 {
                                         Class40_Sub5_Sub13.moderatorIcon[1].drawImage(x, y - 12);
                                         x += 14;
                                     }
-                                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(53, (new RSString[]{name, (Class43.aClass1_1027)}))), x, y, 0);
+                                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(53, (new RSString[]{name, (Class43.char_colon)}))), x, y, 0);
                                     x += (8 + (typeFace.getStringWidth(name)));
                                     typeFace.drawString((Actor.chatMessages[i_8_]), x, y, 255);
                                 }
@@ -293,7 +292,7 @@ public class Class58 {
                                         Class40_Sub5_Sub13.moderatorIcon[1].drawImage(i_13_, y - 12);
                                         i_13_ += 14;
                                     }
-                                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(103, (new RSString[]{name, (Class43.aClass1_1027)}))), i_13_, y, 0);
+                                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(103, (new RSString[]{name, (Class43.char_colon)}))), i_13_, y, 0);
                                     i_13_ += (8 + (typeFace.getStringWidth(name)));
                                     typeFace.drawString((Actor.chatMessages[i_8_]), i_13_, y, 8388608);
                                 }
@@ -310,7 +309,7 @@ public class Class58 {
                             }
                             if(type == 6 && CollisionMap.anInt165 == 0 && Class4.anInt185 < 2) {
                                 if(y > 0 && (y < 110)) {
-                                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(-108, (new RSString[]{(Class40_Sub5_Sub1.aClass1_2274), (Class48.aClass1_1123), name, (Class43.aClass1_1027)}))), 4, y, 0);
+                                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(-108, (new RSString[]{(Class40_Sub5_Sub1.aClass1_2274), (Class48.aClass1_1123), name, (Class43.char_colon)}))), 4, y, 0);
                                     typeFace.drawString((Actor.chatMessages[i_8_]), (typeFace.getStringWidth(Class40_Sub5_Sub17_Sub6.method832(-98, (new RSString[]{(Class40_Sub5_Sub1.aClass1_2274), (Class48.aClass1_1123), name})))) + 12, y, 8388608);
                                 }
                                 line++;
@@ -332,7 +331,7 @@ public class Class58 {
                         name = (Player.localPlayer.playerName);
                     else
                         name = Class22_Sub2.username;
-                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(-62, (new RSString[]{name, Class43.aClass1_1027}))), 4, 90, 0);
+                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(-62, (new RSString[]{name, Class43.char_colon}))), 4, 90, 0);
                     typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(71, (new RSString[]{HuffmanEncoding.chatboxInput, Class19.aClass1_478}))), ((typeFace.getStringWidth(Class40_Sub5_Sub17_Sub6.method832(-99, (new RSString[]{name, ISAAC.aClass1_515})))) + 6), 90, 255);
                     Rasterizer.drawHorizontalLine(0, 77, 479, 0);
                 } else {

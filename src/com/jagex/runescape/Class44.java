@@ -43,24 +43,23 @@ public class Class44 implements Runnable {
         anInt1048 = -1;
     }
 
-    public static void method895(int arg0, int arg1, RSString arg2, RSString arg3) {
+    public static void addChatMessage(RSString name, RSString message, int type) {
 
         anInt1029++;
         if(Class43.openChatboxWidgetId == -1)
             Class52.redrawChatbox = true;
-        if(arg1 == 0 && Class48.anInt1138 != -1) {
+        if(type == 0 && Class48.anInt1138 != -1) {
             GameFrame.clickType = 0;
-            RSApplet.aClass1_8 = arg2;
+            RSApplet.aClass1_8 = message;
         }
         for(int i = 99; i > 0; i--) {
             HuffmanEncoding.chatTypes[i] = HuffmanEncoding.chatTypes[i + -1];
             Renderable.chatPlayerNames[i] = Renderable.chatPlayerNames[-1 + i];
             Actor.chatMessages[i] = Actor.chatMessages[-1 + i];
         }
-        HuffmanEncoding.chatTypes[0] = arg1;
-        Renderable.chatPlayerNames[0] = arg3;
-        if(arg0 >= 60)
-            Actor.chatMessages[0] = arg2;
+        HuffmanEncoding.chatTypes[0] = type;
+        Renderable.chatPlayerNames[0] = name;
+        Actor.chatMessages[0] = message;
 
     }
 

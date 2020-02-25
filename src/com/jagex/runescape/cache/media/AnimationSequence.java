@@ -9,7 +9,7 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 public class AnimationSequence extends SubNode {
-    public static RSString aClass1_2472 = RSString.CreateString(":tradereq:");
+    public static RSString requestcmd_tradereq = RSString.CreateString(":tradereq:");
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2474;
     public static RSString aClass1_2475 = RSString.CreateString("Bitte versuchen Sie es erneut)3");
     public static int anInt2480 = 0;
@@ -24,19 +24,19 @@ public class AnimationSequence extends SubNode {
     public int anInt2470 = -1;
     public int[] anIntArray2473;
     public int anInt2476 = -1;
-    public int anInt2477;
+    public int shieldModel;
     public int[] anIntArray2479;
     public int anInt2483 = 2;
     public int[] anIntArray2485;
-    public int anInt2489;
+    public int weaponModel;
     public int anInt2494;
     public int anInt2495;
     public boolean aBoolean2496;
     public int frameStep;
 
     public AnimationSequence() {
-        anInt2477 = -1;
-        anInt2489 = -1;
+        shieldModel = -1;
+        weaponModel = -1;
         anInt2494 = 5;
         anInt2495 = 99;
         frameStep = -1;
@@ -50,7 +50,7 @@ public class AnimationSequence extends SubNode {
         aClass40_Sub5_Sub14_Sub4_2482 = null;
         if(arg0 < 47)
             method592(null, 56, null, 0, -91, 58, -86);
-        aClass1_2472 = null;
+        requestcmd_tradereq = null;
         aClass40_Sub5_Sub14_Sub4Array2474 = null;
         aClass1_2481 = null;
         aClass1_2487 = null;
@@ -230,9 +230,9 @@ public class AnimationSequence extends SubNode {
                     } else
                         anInt2476 = arg2.getUnsignedByte();
                 } else
-                    anInt2489 = arg2.getUnsignedShortBE();
+                    weaponModel = arg2.getUnsignedShortBE();
             } else
-                anInt2477 = arg2.getUnsignedShortBE();
+                shieldModel = arg2.getUnsignedShortBE();
         } else
             aBoolean2496 = true;
     }

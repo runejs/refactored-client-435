@@ -49,7 +49,7 @@ public class UnderlayDefinition extends SubNode {
         anInt2569++;
         if(arg0 != 0L) {
             if((Class40_Sub5_Sub17_Sub3.anInt3060 >= 100 && Class44.anInt1049 != 1) || (Class40_Sub5_Sub17_Sub3.anInt3060 >= 200)) {
-                Class44.method895(94, 0, Class59.aClass1_1399, HuffmanEncoding.blank_string);
+                Class44.addChatMessage(HuffmanEncoding.blank_string, Class59.aClass1_1399, 0);
             } else {
                 if(arg1 >= -2) {
                     aClass6_Sub1_2571 = null;
@@ -57,13 +57,13 @@ public class UnderlayDefinition extends SubNode {
                 RSString class1 = Class60.method991(-23, arg0).method85(-4305);
                 for(int i = 0; Class40_Sub5_Sub17_Sub3.anInt3060 > i; i++) {
                     if(Class59.aLongArray1397[i] == arg0) {
-                        Class44.method895(62, 0, (Class40_Sub5_Sub17_Sub6.method832(-124, (new RSString[]{class1, GameFrame.aClass1_1465}))), HuffmanEncoding.blank_string);
+                        Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832(-124, (new RSString[]{class1, GameFrame.aClass1_1465}))), 0);
                         return;
                     }
                 }
                 for(int i = 0; Class42.anInt1008 > i; i++) {
                     if(Class53.aLongArray1267[i] == arg0) {
-                        Class44.method895(126, 0, (Class40_Sub5_Sub17_Sub6.method832(75, (new RSString[]{Class44.aClass1_1038, class1, Class39.aClass1_917}))), HuffmanEncoding.blank_string);
+                        Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832(75, (new RSString[]{Class44.aClass1_1038, class1, Class39.aClass1_917}))), 0);
                         return;
                     }
                 }

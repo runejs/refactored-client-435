@@ -24,7 +24,7 @@ public class ItemDefinition extends SubNode {
     public RSString name;
     public RSString[] interfaceOptions;
     public int primaryMaleHeadPiece = -1;
-    public int[] textureReplace;
+    public int[] originalColours;
     public RSString[] groundOptions;
     public int inventoryModelId;
     public int xOffset2d;
@@ -32,7 +32,7 @@ public class ItemDefinition extends SubNode {
     public int yOffset2d;
     public int notedId;
     public int groundScaleX;
-    public int[] textureFind;
+    public int[] destColors;
     public int zoom2d;
     public int maleOffset;
     public int femaleModel1;
@@ -45,7 +45,7 @@ public class ItemDefinition extends SubNode {
     public int cost;
     public int femaleOffset;
     public int yan2d;
-    public int[] stackableIds;
+    public int[] stackIds;
     public int groundScaleZ;
     public int[] stackableAmounts;
     public int maleModel0;
@@ -56,7 +56,7 @@ public class ItemDefinition extends SubNode {
     public int femaleModel0;
     public boolean members;
     public int primaryFemaleHeadPiece;
-    public int anInt2852;
+    public int id;
     public int groundScaleY;
 
     public ItemDefinition() {
@@ -181,14 +181,14 @@ public class ItemDefinition extends SubNode {
         }
     }
 
-    public static ItemDefinition forId(int arg0, int arg1) {
-        ItemDefinition definition = ((ItemDefinition) ISAAC.aClass9_516.method231((long) arg0, (byte) 100));
+    public static ItemDefinition forId(int id, int arg1) {
+        ItemDefinition definition = ((ItemDefinition) ISAAC.aClass9_516.get((long) id, (byte) 100));
         if(definition != null) {
             return definition;
         }
-        byte[] is = Class26.aCacheIndex_632.getFile(arg0, arg1);
+        byte[] is = Class26.aCacheIndex_632.getFile(id, arg1);
         definition = new ItemDefinition();
-        definition.anInt2852 = arg0;
+        definition.id = id;
         if(is != null) {
             definition.readValues(new Buffer(is));
         }
@@ -201,34 +201,31 @@ public class ItemDefinition extends SubNode {
             definition.groundOptions = null;
             definition.name = Class40_Sub5_Sub17_Sub3.aClass1_3069;
         }
-        ISAAC.aClass9_516.method230(arg1 + -7218, (long) arg0, definition);
+        ISAAC.aClass9_516.put(arg1 + -7218, (long) id, definition);
         return definition;
     }
 
-    public boolean method738(byte arg0, boolean arg1) {
-        if(arg0 != 44) {
-            interfaceOptions = null;
+    public boolean method738(boolean female) {
+        int primaryId = primaryMaleHeadPiece;
+        int secondaryId = secondaryMaleHeadPiece;
+        if(female) {
+            secondaryId = secondaryFemaleHeadPiece;
+            primaryId = primaryFemaleHeadPiece;
         }
-        int i = primaryMaleHeadPiece;
-        int i_0_ = secondaryMaleHeadPiece;
-        if(arg1) {
-            i_0_ = secondaryFemaleHeadPiece;
-            i = primaryFemaleHeadPiece;
-        }
-        if(i == -1) {
+        if(primaryId == -1) {
             return true;
         }
         boolean bool = true;
-        if(!Class8.aCacheIndex_284.loaded(i, 0)) {
+        if(!Class8.aCacheIndex_284.loaded(primaryId, 0)) {
             bool = false;
         }
-        if(i_0_ != -1 && !Class8.aCacheIndex_284.loaded(i_0_, 0)) {
+        if(secondaryId != -1 && !Class8.aCacheIndex_284.loaded(secondaryId, 0)) {
             bool = false;
         }
         return bool;
     }
 
-    public boolean method739(boolean arg0, byte arg1) {
+    public boolean equipmentReady(boolean arg0, byte arg1) {
         int i = maleModel0;
         int i_1_ = maleModel1;
         int i_2_ = maleModel2;
@@ -256,53 +253,52 @@ public class ItemDefinition extends SubNode {
         return bool;
     }
 
-    public Model method740(boolean arg0, int arg1) {
-        int i = maleModel0;
-        int i_3_ = maleModel1;
-        int i_4_ = 11 / ((arg1 - 35) / 56);
-        int i_5_ = maleModel2;
-        if(arg0) {
-            i = femaleModel0;
-            i_3_ = femaleModel1;
-            i_5_ = femaleModel2;
+    public Model asEquipment(boolean isFemale) {
+        int primaryId = maleModel0;
+        int secondaryId = maleModel1;
+        int tertiaryId = maleModel2;
+        if(isFemale) {
+            primaryId = femaleModel0;
+            secondaryId = femaleModel1;
+            tertiaryId = femaleModel2;
         }
-        if(i == -1) {
+        if(primaryId == -1) {
             return null;
         }
-        Model model1 = Model.getModel(Class8.aCacheIndex_284, i, 0);
-        if(i_3_ != -1) {
-            Model model2 = Model.getModel(Class8.aCacheIndex_284, i_3_, 0);
-            if(i_5_ == -1) {
-                Model[] models = {model1, model2};
-                model1 = new Model(models, 2);
+        Model primary = Model.getModel(Class8.aCacheIndex_284, primaryId, 0);
+        if(secondaryId != -1) {
+            Model secondary = Model.getModel(Class8.aCacheIndex_284, secondaryId, 0);
+            if(tertiaryId == -1) {
+                Model[] tertiary = {primary, secondary};
+                primary = new Model(tertiary, 2);
             } else {
-                Model model3 = Model.getModel(Class8.aCacheIndex_284, i_5_, 0);
-                Model[] models = {model1, model2, model3};
-                model1 = new Model(models, 3);
+                Model model3 = Model.getModel(Class8.aCacheIndex_284, tertiaryId, 0);
+                Model[] models = {primary, secondary, model3};
+                primary = new Model(models, 3);
             }
         }
-        if(!arg0 && maleOffset != 0) {
-            model1.method828(0, maleOffset, 0);
+        if(!isFemale && maleOffset != 0) {
+            primary.translate(0, maleOffset, 0);
         }
-        if(arg0 && femaleOffset != 0) {
-            model1.method828(0, femaleOffset, 0);
+        if(isFemale && femaleOffset != 0) {
+            primary.translate(0, femaleOffset, 0);
         }
-        if(textureReplace != null) {
-            for(int i_8_ = 0; ((textureReplace.length > i_8_)); i_8_++) {
-                model1.replaceColor(textureReplace[i_8_], textureFind[i_8_]);
+        if(originalColours != null) {
+            for(int i_8_ = 0; ((originalColours.length > i_8_)); i_8_++) {
+                primary.replaceColor(originalColours[i_8_], destColors[i_8_]);
             }
         }
-        return model1;
+        return primary;
 
     }
 
 
     public ItemDefinition method743(int arg1) {
-        if(stackableIds != null && arg1 > 1) {
+        if(stackIds != null && arg1 > 1) {
             int i = -1;
             for(int i_9_ = 0; i_9_ < 10; i_9_++) {
                 if((arg1 >= stackableAmounts[i_9_]) && stackableAmounts[i_9_] != 0) {
-                    i = stackableIds[i_9_];
+                    i = stackIds[i_9_];
                 }
             }
             if(i != -1) {
@@ -313,31 +309,28 @@ public class ItemDefinition extends SubNode {
 
     }
 
-    public Model method747(boolean arg0, byte arg1) {
-        int i = primaryMaleHeadPiece;
-        int i_12_ = secondaryMaleHeadPiece;
-        if(arg1 != 25) {
+    public Model asHeadPiece(boolean female) {
+        int primaryId = primaryMaleHeadPiece;
+        int secondaryId = secondaryMaleHeadPiece;
+        if(female) {
+            primaryId = primaryFemaleHeadPiece;
+            secondaryId = secondaryFemaleHeadPiece;
+        }
+        if(primaryId == -1) {
             return null;
         }
-        if(arg0) {
-            i = primaryFemaleHeadPiece;
-            i_12_ = secondaryFemaleHeadPiece;
+        Model primary = Model.getModel(Class8.aCacheIndex_284, primaryId, 0);
+        if(secondaryId != -1) {
+            Model secondary = Model.getModel(Class8.aCacheIndex_284, secondaryId, 0);
+            Model[] models = {primary, secondary};
+            primary = new Model(models, 2);
         }
-        if(i == -1) {
-            return null;
-        }
-        Model model1 = Model.getModel(Class8.aCacheIndex_284, i, 0);
-        if(i_12_ != -1) {
-            Model model2 = Model.getModel(Class8.aCacheIndex_284, i_12_, 0);
-            Model[] models = {model1, model2};
-            model1 = new Model(models, 2);
-        }
-        if(textureReplace != null) {
-            for(int j = 0; ((textureReplace.length > j)); j++) {
-                model1.replaceColor(textureReplace[j], textureFind[j]);
+        if(originalColours != null) {
+            for(int j = 0; ((originalColours.length > j)); j++) {
+                primary.replaceColor(originalColours[j], destColors[j]);
             }
         }
-        return model1;
+        return primary;
 
     }
 
@@ -362,6 +355,8 @@ public class ItemDefinition extends SubNode {
             if(yOffset2d > 32767) {
                 yOffset2d -= 65536;
             }
+        } else if(opcode == 10){
+            buffer.getUnsignedShortBE(); // Dummy
         } else if(opcode == 11) {
             stackable = 1;
         } else if(opcode == 12) {
@@ -387,11 +382,11 @@ public class ItemDefinition extends SubNode {
             interfaceOptions[opcode + -35] = buffer.getRSString();
         } else if(opcode == 40) {
             int colorCount = buffer.getUnsignedByte();
-            textureFind = new int[colorCount];
-            textureReplace = new int[colorCount];
+            destColors = new int[colorCount];
+            originalColours = new int[colorCount];
             for(int colorIndex = 0; colorIndex < colorCount; colorIndex++) {
-                textureReplace[colorIndex] = buffer.getUnsignedShortBE();
-                textureFind[colorIndex] = buffer.getUnsignedShortBE();
+                originalColours[colorIndex] = buffer.getUnsignedShortBE();
+                destColors[colorIndex] = buffer.getUnsignedShortBE();
             }
         } else if(opcode == 78) {
             maleModel2 = buffer.getUnsignedShortBE();
@@ -412,11 +407,11 @@ public class ItemDefinition extends SubNode {
         } else if(opcode == 98) {
             noteTemplateId = (buffer.getUnsignedShortBE());
         } else if(opcode >= 100 && opcode < 110) {
-            if(stackableIds == null) {
+            if(stackIds == null) {
                 stackableAmounts = new int[10];
-                stackableIds = new int[10];
+                stackIds = new int[10];
             }
-            stackableIds[-100 + opcode] = (buffer.getUnsignedShortBE());
+            stackIds[-100 + opcode] = (buffer.getUnsignedShortBE());
             stackableAmounts[-100 + opcode] = (buffer.getUnsignedShortBE());
         } else if(opcode == 110) {
             groundScaleX = (buffer.getUnsignedShortBE());
@@ -452,30 +447,27 @@ public class ItemDefinition extends SubNode {
         stackable = 1;
         zoom2d = noteTemplate.zoom2d;
         members = note.members;
-        textureFind = noteTemplate.textureFind;
-        textureReplace = noteTemplate.textureReplace;
+        destColors = noteTemplate.destColors;
+        originalColours = noteTemplate.originalColours;
         yan2d = noteTemplate.yan2d;
         yOffset2d = noteTemplate.yOffset2d;
         inventoryModelId = noteTemplate.inventoryModelId;
     }
 
-    public Model method753(boolean arg0, int arg1, int arg2) {
-        if(arg2 != 26910) {
-            anIntArray2814 = null;
-        }
-        if(stackableIds != null && arg1 > 1) {
-            int i = -1;
-            for(int i_19_ = 0; i_19_ < 10; i_19_++) {
-                if(arg1 >= stackableAmounts[i_19_] && stackableAmounts[i_19_] != 0) {
-                    i = stackableIds[i_19_];
+    public Model asGroundStack(boolean arg0, int amount) {
+        if(stackIds != null && amount > 1) {
+            int id = -1;
+            for(int i = 0; i < 10; i++) {
+                if(amount >= stackableAmounts[i] && stackableAmounts[i] != 0) {
+                    id = stackIds[i];
                 }
             }
-            if(i != -1) {
-                return forId(i, 10).method753(arg0, 1, 26910);
+            if(id != -1) {
+                return forId(id, 10).asGroundStack(arg0, 1);
             }
         }
         if(arg0) {
-            Model model = ((Model) GameFrame.aClass9_1455.method231((long) anInt2852, (byte) 87));
+            Model model = ((Model) GameFrame.aClass9_1455.get((long) id, (byte) 87));
             if(model != null) {
                 return model;
             }
@@ -485,17 +477,17 @@ public class ItemDefinition extends SubNode {
             return null;
         }
         if(groundScaleX != 128 || groundScaleY != 128 || groundScaleZ != 128) {
-            model.method821(groundScaleX, groundScaleY, groundScaleZ);
+            model.scaleT(groundScaleX, groundScaleY, groundScaleZ);
         }
-        if(textureReplace != null) {
-            for(int i = 0; i < textureReplace.length; i++) {
-                model.replaceColor(textureReplace[i], textureFind[i]);
+        if(originalColours != null) {
+            for(int i = 0; i < originalColours.length; i++) {
+                model.replaceColor(originalColours[i], destColors[i]);
             }
         }
         if(arg0) {
-            model.method802(ambient + 64, 768 + contrast, -50, -10, -50, true);
-            model.aBoolean3164 = true;
-            GameFrame.aClass9_1455.method230(-7208, (long) anInt2852, model);
+            model.applyLighting(ambient + 64, 768 + contrast, -50, -10, -50, true);
+            model.singleTile = true;
+            GameFrame.aClass9_1455.put(-7208, (long) id, model);
         }
         return model;
 

@@ -226,7 +226,7 @@ public class ActorDefinition extends SubNode {
         Landscape.anInt1182++;
         if(arg0 >= -95)
             Landscape.aClass1_1160 = null;
-        ActorDefinition definition = ((ActorDefinition) ISAAC.aClass9_510.method231((long) arg1, (byte) 119));
+        ActorDefinition definition = ((ActorDefinition) ISAAC.aClass9_510.get((long) arg1, (byte) 119));
         if(definition != null)
             return definition;
         byte[] is = Class58.aCacheIndex_1375.getFile(arg1, 9);
@@ -234,12 +234,12 @@ public class ActorDefinition extends SubNode {
         definition.id = arg1;
         if(is != null)
             definition.readValues(new Buffer(is));
-        ISAAC.aClass9_510.method230(-7208, (long) arg1, definition);
+        ISAAC.aClass9_510.put(-7208, (long) arg1, definition);
         return definition;
 
     }
 
-    public Model method568(byte arg0, AnimationSequence arg1, AnimationSequence arg2, int arg3, int arg4) {
+    public Model getChildModel(byte arg0, AnimationSequence arg1, AnimationSequence arg2, int arg3, int arg4) {
         if(arg0 != -50) {
             degreesToTurn = 31;
         }
@@ -248,9 +248,9 @@ public class ActorDefinition extends SubNode {
             if(class40_sub5_sub5 == null) {
                 return null;
             }
-            return class40_sub5_sub5.method568((byte) -50, arg1, arg2, arg3, arg4);
+            return class40_sub5_sub5.getChildModel((byte) -50, arg1, arg2, arg3, arg4);
         }
-        Model class40_sub5_sub17_sub5 = ((Model) Class67.aClass9_1611.method231((long) id, (byte) 75));
+        Model class40_sub5_sub17_sub5 = ((Model) Class67.aClass9_1611.get((long) id, (byte) 75));
         if(class40_sub5_sub17_sub5 == null) {
             boolean bool = false;
             for(int i = 0; i < models.length; i++) {
@@ -275,9 +275,9 @@ public class ActorDefinition extends SubNode {
                     class40_sub5_sub17_sub5.replaceColor(modifiedModelColors[i], originalModelColors[i]);
                 }
             }
-            class40_sub5_sub17_sub5.method810();
-            class40_sub5_sub17_sub5.method802(ambient + 64, 850 + contrast, -30, -50, -30, true);
-            Class67.aClass9_1611.method230(-7208, (long) id, class40_sub5_sub17_sub5);
+            class40_sub5_sub17_sub5.createBones();
+            class40_sub5_sub17_sub5.applyLighting(ambient + 64, 850 + contrast, -30, -50, -30, true);
+            Class67.aClass9_1611.put(-7208, (long) id, class40_sub5_sub17_sub5);
         }
         Model class40_sub5_sub17_sub5_0_;
         if(arg1 != null && arg2 != null) {
@@ -290,7 +290,7 @@ public class ActorDefinition extends SubNode {
             class40_sub5_sub17_sub5_0_ = arg2.method599(arg3, class40_sub5_sub17_sub5, false);
         }
         if(resizeX != 128 || resizeY != 128) {
-            class40_sub5_sub17_sub5_0_.method821(resizeX, resizeY, resizeX);
+            class40_sub5_sub17_sub5_0_.scaleT(resizeX, resizeY, resizeX);
         }
         return class40_sub5_sub17_sub5_0_;
 

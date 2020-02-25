@@ -68,7 +68,7 @@ public class Class40_Sub13 extends Node {
 
         anInt2182++;
         if(arg3 == 0) {
-            ImageRGB class40_sub5_sub14_sub4 = ((ImageRGB) Buffer.aClass9_1933.method231((long) arg2, (byte) 56));
+            ImageRGB class40_sub5_sub14_sub4 = ((ImageRGB) Buffer.aClass9_1933.get((long) arg2, (byte) 56));
             if(class40_sub5_sub14_sub4 != null && class40_sub5_sub14_sub4.maxHeight != arg1 && class40_sub5_sub14_sub4.maxHeight != -1) {
                 class40_sub5_sub14_sub4.method457(-1);
                 class40_sub5_sub14_sub4 = null;
@@ -77,18 +77,18 @@ public class Class40_Sub13 extends Node {
                 return class40_sub5_sub14_sub4;
         }
         ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(arg2, 10);
-        if(class40_sub5_sub16.stackableIds == null)
+        if(class40_sub5_sub16.stackIds == null)
             arg1 = -1;
         if(arg1 > 1) {
             int i = -1;
             for(int i_0_ = 0; i_0_ < 10; i_0_++) {
                 if(arg1 >= class40_sub5_sub16.stackableAmounts[i_0_] && class40_sub5_sub16.stackableAmounts[i_0_] != 0)
-                    i = class40_sub5_sub16.stackableIds[i_0_];
+                    i = class40_sub5_sub16.stackIds[i_0_];
             }
             if(i != -1)
                 class40_sub5_sub16 = ItemDefinition.forId(i, 10);
         }
-        Model class40_sub5_sub17_sub5 = class40_sub5_sub16.method753(true, 1, 26910);
+        Model class40_sub5_sub17_sub5 = class40_sub5_sub16.asGroundStack(true, 1);
         if(class40_sub5_sub17_sub5 == null)
             return null;
         ImageRGB class40_sub5_sub14_sub4 = null;
@@ -171,7 +171,7 @@ public class Class40_Sub13 extends Node {
             class40_sub5_sub14_sub4.maxHeight = i_17_;
         }
         if(arg3 == 0)
-            Buffer.aClass9_1933.method230(-7208, (long) arg2, class40_sub5_sub14_sub4_10_);
+            Buffer.aClass9_1933.put(-7208, (long) arg2, class40_sub5_sub14_sub4_10_);
         Rasterizer.createRasterizer(is, i_1_, i);
         Rasterizer.setCoordinates(i_2_, i_5_, i_6_, i_4_);
         R3D.method708(is_7_);

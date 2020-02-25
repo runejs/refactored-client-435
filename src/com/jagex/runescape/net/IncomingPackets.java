@@ -72,7 +72,7 @@ public class IncomingPackets {
             if(Class57.incomingPacket == 71) {
                 long l = Cache.outgoingbuffer.getLongBE();
                 RSString class1 = KeyFocusListener.method956(82, Cache.outgoingbuffer).method53(-16315);
-                Class44.method895(70, 6, class1, Class60.method991(-42, l).method85(-4305));
+                Class44.addChatMessage(Class60.method991(-42, l).method85(-4305), class1, 6);
                 Class57.incomingPacket = -1;
                 return true;
             }
@@ -86,9 +86,9 @@ public class IncomingPackets {
                             Class40_Sub7.anIntArray2131[i_2_] = i_1_;
                             ISAAC.redrawTabArea = true;
                             if(i_1_ > 0)
-                                Class44.method895(127, 5, (Class40_Sub5_Sub17_Sub6.method832(124, (new RSString[]{string, (Class42.aClass1_988)}))), HuffmanEncoding.blank_string);
+                                Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832(124, (new RSString[]{string, (Class42.aClass1_988)}))), 5);
                             if(i_1_ == 0)
-                                Class44.method895(101, 5, (Class40_Sub5_Sub17_Sub6.method832(85, (new RSString[]{string, Class38_Sub1.aClass1_1905}))), HuffmanEncoding.blank_string);
+                                Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832(85, (new RSString[]{string, Class38_Sub1.aClass1_1905}))), 5);
                         }
                         string = null;
                         break;
@@ -239,9 +239,9 @@ public class IncomingPackets {
                 return true;
             }
             if(Class57.incomingPacket == 82) {
-                RSString class1 = Cache.outgoingbuffer.getRSString();
-                if(class1.method87(103, AnimationSequence.aClass1_2472)) {
-                    RSString class1_32_ = class1.substring(0, class1.contains((Class43.aClass1_1027)));
+                RSString message = Cache.outgoingbuffer.getRSString();
+                if(message.method87(103, AnimationSequence.requestcmd_tradereq)) {
+                    RSString class1_32_ = message.substring(0, message.contains((Class43.char_colon)));
                     long l = class1_32_.method58((byte) 98);
                     boolean bool = false;
                     for(int i_33_ = 0; i_33_ < Class42.anInt1008; i_33_++) {
@@ -251,9 +251,9 @@ public class IncomingPackets {
                         }
                     }
                     if(!bool && Class4.anInt182 == 0)
-                        Class44.method895(94, 4, Class4.aClass1_180, class1_32_);
-                } else if(class1.method87(104, Class40_Sub5_Sub6.aClass1_2434)) {
-                    RSString class1_30_ = (class1.substring(0, class1.contains(Class43.aClass1_1027)));
+                        Class44.addChatMessage(class1_32_, Class4.aClass1_180, 4);
+                } else if(message.method87(104, Class40_Sub5_Sub6.requestcmd_duelreq)) {
+                    RSString class1_30_ = (message.substring(0, message.contains(Class43.char_colon)));
                     long l = class1_30_.method58((byte) 120);
                     boolean bool = false;
                     for(int i_31_ = 0; ((Class42.anInt1008 > i_31_)); i_31_++) {
@@ -263,9 +263,9 @@ public class IncomingPackets {
                         }
                     }
                     if(!bool && Class4.anInt182 == 0)
-                        Class44.method895(120, 8, Class61.aClass1_1428, class1_30_);
-                } else if(class1.method87(81, Node.aClass1_948)) {
-                    RSString class1_27_ = (class1.substring(0, class1.contains(Class43.aClass1_1027)));
+                        Class44.addChatMessage(class1_30_, Class61.aClass1_1428, 8);
+                } else if(message.method87(81, Node.requestcmd_chalreq)) {
+                    RSString class1_27_ = (message.substring(0, message.contains(Class43.char_colon)));
                     long l = class1_27_.method58((byte) 121);
                     boolean bool = false;
                     for(int i_28_ = 0; i_28_ < Class42.anInt1008; i_28_++) {
@@ -275,11 +275,11 @@ public class IncomingPackets {
                         }
                     }
                     if(!bool && Class4.anInt182 == 0) {
-                        RSString class1_29_ = (class1.substring((1 + class1.contains((Class43.aClass1_1027))), -9 + class1.length()));
-                        Class44.method895(122, 8, class1_29_, class1_27_);
+                        RSString class1_29_ = (message.substring((1 + message.contains((Class43.char_colon))), -9 + message.length()));
+                        Class44.addChatMessage(class1_27_, class1_29_, 8);
                     }
                 } else
-                    Class44.method895(72, 0, class1, HuffmanEncoding.blank_string);
+                    Class44.addChatMessage(HuffmanEncoding.blank_string, message, 0);
                 Class57.incomingPacket = -1;
                 return true;
             }
@@ -927,11 +927,11 @@ public class IncomingPackets {
                     Class40_Sub3.anInt2021 = (1 + Class40_Sub3.anInt2021) % 100;
                     RSString class1 = KeyFocusListener.method956(67, Cache.outgoingbuffer).method53(-16315);
                     if(i_90_ == 2 || i_90_ == 3)
-                        Class44.method895(99, 7, class1, (Class40_Sub5_Sub17_Sub6.method832(88, (new RSString[]{(Widget.goldCrown), Class60.method991(-73, l).method85(-4305)}))));
+                        Class44.addChatMessage((Class40_Sub5_Sub17_Sub6.method832(88, (new RSString[]{(Widget.goldCrown), Class60.method991(-73, l).method85(-4305)}))), class1, 7);
                     else if(i_90_ == 1)
-                        Class44.method895(97, 7, class1, (Class40_Sub5_Sub17_Sub6.method832(126, (new RSString[]{Class51.whiteCrown, Class60.method991(-46, l).method85(-4305)}))));
+                        Class44.addChatMessage((Class40_Sub5_Sub17_Sub6.method832(126, (new RSString[]{Class51.whiteCrown, Class60.method991(-46, l).method85(-4305)}))), class1, 7);
                     else
-                        Class44.method895(72, 3, class1, Class60.method991(-55, l).method85(-4305));
+                        Class44.addChatMessage(Class60.method991(-55, l).method85(-4305), class1, 3);
                 }
                 Class57.incomingPacket = -1;
                 return true;

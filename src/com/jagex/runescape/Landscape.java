@@ -179,6 +179,7 @@ public class Landscape {
                     }
                     Class27.method364((byte) -34, true);
                     for(int i_12_ = 0; i > i_12_; i_12_++) {
+                        System.out.println("Requesting map: "+Class13.anIntArray421[i_12_]);
                         // load maps in here
                         byte[] is = Class52.aByteArrayArray1217[i_12_];
                         if(FileOperations.FileExists("./data/maps/" + (Class13.anIntArray421[i_12_]) + ".cmap")) {

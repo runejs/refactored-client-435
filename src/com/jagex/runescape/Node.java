@@ -28,7 +28,7 @@ public class Node {
     public static RSString aClass1_945;
     public static RSString aClass1_946;
     public static int anInt947;
-    public static RSString aClass1_948 = RSString.CreateString(":chalreq:");
+    public static RSString requestcmd_chalreq = RSString.CreateString(":chalreq:");
     public static RSString aClass1_949;
     public static RSString aClass1_951;
     public static RSString aClass1_952;
@@ -172,7 +172,7 @@ public class Node {
         aClass1_945 = null;
         aClass1_930 = null;
         aClass1_956 = null;
-        aClass1_948 = null;
+        requestcmd_chalreq = null;
         aClass1_966 = null;
         aClass1_960 = null;
         aClass1_969 = null;

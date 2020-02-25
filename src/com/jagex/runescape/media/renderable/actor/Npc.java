@@ -24,7 +24,7 @@ public class Npc extends Actor {
     public ActorDefinition aClass40_Sub5_Sub5_3300;
 
     public static Class40_Sub5_Sub11 method795(byte arg0, int arg1) {
-        Class40_Sub5_Sub11 class40_sub5_sub11 = ((Class40_Sub5_Sub11) Class13.aClass9_406.method231((long) arg1, (byte) 98));
+        Class40_Sub5_Sub11 class40_sub5_sub11 = ((Class40_Sub5_Sub11) Class13.aClass9_406.get((long) arg1, (byte) 98));
         if(arg0 >= -66)
             aClass1_3295 = null;
         if(class40_sub5_sub11 != null)
@@ -33,7 +33,7 @@ public class Npc extends Actor {
         class40_sub5_sub11 = new Class40_Sub5_Sub11();
         if(is != null)
             class40_sub5_sub11.method634(new Buffer(is), 0);
-        Class13.aClass9_406.method230(-7208, (long) arg1, class40_sub5_sub11);
+        Class13.aClass9_406.put(-7208, (long) arg1, class40_sub5_sub11);
         return class40_sub5_sub11;
     }
 
@@ -282,7 +282,7 @@ public class Npc extends Actor {
                         if(ActorDefinition.anInt2433 == -1) {
                             Class40_Sub5_Sub17_Sub3.method776((byte) -125);
                             Class38_Sub1.method447((byte) 29);
-                            Class40_Sub5_Sub1.method544((byte) -54);
+                            Class40_Sub5_Sub1.method544();
                         }
                         if(SpotAnimDefinition.anInt2302 == 1 || GameFrame.clickType == 1)
                             anInt3294++;
@@ -415,7 +415,7 @@ public class Npc extends Actor {
     }
 
     public static OverlayDefinition loadFloor(int arg0, int arg1) {
-        OverlayDefinition overlayDefinition = ((OverlayDefinition) Class33.aClass9_778.method231((long) arg0, (byte) 63));
+        OverlayDefinition overlayDefinition = ((OverlayDefinition) Class33.aClass9_778.get((long) arg0, (byte) 63));
         if(overlayDefinition != null)
             return overlayDefinition;
         byte[] is = Actor.aCacheIndex_3144.getFile(arg0, arg1);
@@ -423,7 +423,7 @@ public class Npc extends Actor {
         if(is != null)
             overlayDefinition.method553((byte) 65, arg0, new Buffer(is));
         overlayDefinition.method555((byte) 64);
-        Class33.aClass9_778.method230(-7208, (long) arg0, overlayDefinition);
+        Class33.aClass9_778.put(-7208, (long) arg0, overlayDefinition);
         return overlayDefinition;
     }
 
@@ -519,7 +519,7 @@ public class Npc extends Actor {
         int i = 25 % ((41 - arg0) / 47);
         AnimationSequence animationSequence = (playingAnimation == -1 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2));
         AnimationSequence animationSequence_0_ = (anInt3077 != -1 && (anInt3077 != anInt3126 || animationSequence == null) ? Class68_Sub1.method1050(anInt3077, 2) : null);
-        Model class40_sub5_sub17_sub5 = aClass40_Sub5_Sub5_3300.method568((byte) -50, animationSequence, animationSequence_0_, anInt3116, anInt3104);
+        Model class40_sub5_sub17_sub5 = aClass40_Sub5_Sub5_3300.getChildModel((byte) -50, animationSequence, animationSequence_0_, anInt3116, anInt3104);
         if(class40_sub5_sub17_sub5 == null)
             return null;
         class40_sub5_sub17_sub5.method799();
@@ -527,13 +527,13 @@ public class Npc extends Actor {
         if(anInt3091 != -1 && anInt3140 != -1) {
             Model class40_sub5_sub17_sub5_1_ = SpotAnimDefinition.forId(anInt3091, 13).method549(anInt3140, 2);
             if(class40_sub5_sub17_sub5_1_ != null) {
-                class40_sub5_sub17_sub5_1_.method828(0, -anInt3110, 0);
+                class40_sub5_sub17_sub5_1_.translate(0, -anInt3110, 0);
                 Model[] class40_sub5_sub17_sub5s = {class40_sub5_sub17_sub5, class40_sub5_sub17_sub5_1_};
                 class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, 2, true);
             }
         }
         if(aClass40_Sub5_Sub5_3300.tileSpacesOccupied == 1)
-            class40_sub5_sub17_sub5.aBoolean3164 = true;
+            class40_sub5_sub17_sub5.singleTile = true;
         return class40_sub5_sub17_sub5;
     }
 

@@ -181,7 +181,6 @@ public class Class27 {
             }
             if(action == 38) {
                 boolean bool = (Class38_Sub1.method448(0, 0, (Player.localPlayer.anIntArray3088[0]), i, (byte) 105, 0, false, 0, 0, (Player.localPlayer.anIntArray3135[0]), i_10_, 2));
-                Class68.anInt1622++;
                 if(!bool)
                     bool = (Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), i, (byte) 92, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), i_10_, 2));
                 OverlayDefinition.anInt2319 = 0;
@@ -249,7 +248,7 @@ public class Class27 {
                         }
                     }
                     if(!bool)
-                        Class44.method895(90, 0, (Class40_Sub5_Sub17_Sub6.method832(-46, new RSString[]{Class12.aClass1_397, class1_14_})), HuffmanEncoding.blank_string);
+                        Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832(-46, new RSString[]{Class12.aClass1_397, class1_14_})), 0);
                 }
             }
             if(action == 55) {
@@ -552,7 +551,7 @@ public class Class27 {
                             Class32.packetBuffer.putPacket(151);
                             Class32.packetBuffer.putOffsetShortLE(i_12_);
                         } else
-                            Class44.method895(83, 0, (Class40_Sub5_Sub17_Sub6.method832(127, (new RSString[]{HashTable.method334((widget.anInt2734), -1), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), HuffmanEncoding.blank_string);
+                            Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832(127, (new RSString[]{HashTable.method334((widget.anInt2734), -1), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), 0);
                     }
                     if(action == 42) {
                         Widget widget = Widget.forId(i_10_);
@@ -675,7 +674,7 @@ public class Class27 {
                             Class32.packetBuffer.putPacket(151);
                             Class32.packetBuffer.putOffsetShortLE(i_12_);
                         } else
-                            Class44.method895(103, 0, (Class40_Sub5_Sub17_Sub6.method832(-49, (new RSString[]{HashTable.method334((widget.itemAmounts[i]), -1), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), HuffmanEncoding.blank_string);
+                            Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832(-49, (new RSString[]{HashTable.method334((widget.itemAmounts[i]), -1), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), 0);
                         Class52.anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
                         Class30.anInt704 = i_10_;
@@ -759,7 +758,7 @@ public class Class27 {
                                     Class67.aBoolean1601 = false;
                                 }
                             } else {
-                                Class44.method895(72, 0, Class37.aClass1_873, HuffmanEncoding.blank_string);
+                                Class44.addChatMessage(HuffmanEncoding.blank_string, Class37.aClass1_873, 0);
                             }
                         }
                     }

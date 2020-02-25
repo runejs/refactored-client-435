@@ -155,11 +155,11 @@ public class Player extends Actor {
                     player.anInt3123 = i & 0xff;
                     player.anInt3102 = i >> 8;
                     if(i_3_ == 2 || i_3_ == 3)
-                        Class44.method895(68, 1, class1, (Class40_Sub5_Sub17_Sub6.method832(75, (new RSString[]{Widget.goldCrown, player.playerName}))));
+                        Class44.addChatMessage((Class40_Sub5_Sub17_Sub6.method832(75, (new RSString[]{Widget.goldCrown, player.playerName}))), class1, 1);
                     else if(i_3_ == 1)
-                        Class44.method895(123, 1, class1, (Class40_Sub5_Sub17_Sub6.method832(-79, (new RSString[]{Class51.whiteCrown, player.playerName}))));
+                        Class44.addChatMessage((Class40_Sub5_Sub17_Sub6.method832(-79, (new RSString[]{Class51.whiteCrown, player.playerName}))), class1, 1);
                     else
-                        Class44.method895(127, 2, class1, player.playerName);
+                        Class44.addChatMessage(player.playerName, class1, 2);
                 }
             }
             Cache.outgoingbuffer.currentPosition = i_4_ + i_5_;
@@ -188,9 +188,9 @@ public class Player extends Actor {
             player.forcedChatMessage = Cache.outgoingbuffer.getRSString();
             if(player.forcedChatMessage.method55(0, false) == 126) {
                 player.forcedChatMessage = player.forcedChatMessage.substring(1);
-                Class44.method895(120, 2, player.forcedChatMessage, player.playerName);
+                Class44.addChatMessage(player.playerName, player.forcedChatMessage, 2);
             } else if(player == localPlayer)
-                Class44.method895(99, 2, player.forcedChatMessage, player.playerName);
+                Class44.addChatMessage(player.playerName, player.forcedChatMessage, 2);
             player.anInt3078 = 150;
             player.anInt3102 = 0;
             player.anInt3123 = 0;
@@ -215,7 +215,7 @@ public class Player extends Actor {
         int i = 71 % ((41 - arg0) / 47);
         AnimationSequence animationSequence = (playingAnimation == -1 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2));
         AnimationSequence animationSequence_0_ = ((anInt3077 != -1 && !aBoolean3287 && (anInt3126 != anInt3077 || animationSequence == null)) ? Class68_Sub1.method1050(anInt3077, 2) : null);
-        Model class40_sub5_sub17_sub5 = aClass30_3282.method377(animationSequence, animationSequence_0_, anInt3116, anInt3104, (byte) -128);
+        Model class40_sub5_sub17_sub5 = aClass30_3282.getAnimatedModel(animationSequence, animationSequence_0_, anInt3116, anInt3104, (byte) -128);
         if(class40_sub5_sub17_sub5 == null)
             return null;
         class40_sub5_sub17_sub5.method799();
@@ -223,7 +223,7 @@ public class Player extends Actor {
         if(!aBoolean3287 && anInt3091 != -1 && anInt3140 != -1) {
             Model class40_sub5_sub17_sub5_1_ = SpotAnimDefinition.forId(anInt3091, 13).method549(anInt3140, 2);
             if(class40_sub5_sub17_sub5_1_ != null) {
-                class40_sub5_sub17_sub5_1_.method828(0, -anInt3110, 0);
+                class40_sub5_sub17_sub5_1_.translate(0, -anInt3110, 0);
                 Model[] class40_sub5_sub17_sub5s = {class40_sub5_sub17_sub5, class40_sub5_sub17_sub5_1_};
                 class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, 2, true);
             }
@@ -233,7 +233,7 @@ public class Player extends Actor {
                 aClass40_Sub5_Sub17_Sub5_3265 = null;
             if(anInt3283 <= Node.pulseCycle && Node.pulseCycle < anInt3274) {
                 Model class40_sub5_sub17_sub5_2_ = aClass40_Sub5_Sub17_Sub5_3265;
-                class40_sub5_sub17_sub5_2_.method828(-anInt3098 + anInt3271, -anInt3276 + anInt3272, anInt3291 + -anInt3089);
+                class40_sub5_sub17_sub5_2_.translate(-anInt3098 + anInt3271, -anInt3276 + anInt3272, anInt3291 + -anInt3089);
                 if(anInt3080 == 512) {
                     class40_sub5_sub17_sub5_2_.method813();
                     class40_sub5_sub17_sub5_2_.method813();
@@ -256,10 +256,10 @@ public class Player extends Actor {
                     }
                 } else
                     class40_sub5_sub17_sub5_2_.method813();
-                class40_sub5_sub17_sub5_2_.method828(-anInt3271 + anInt3098, -anInt3272 + anInt3276, anInt3089 - anInt3291);
+                class40_sub5_sub17_sub5_2_.translate(-anInt3271 + anInt3098, -anInt3272 + anInt3276, anInt3089 - anInt3291);
             }
         }
-        class40_sub5_sub17_sub5.aBoolean3164 = true;
+        class40_sub5_sub17_sub5.singleTile = true;
         return class40_sub5_sub17_sub5;
     }
 
@@ -300,7 +300,7 @@ public class Player extends Actor {
         int[] is_8_ = new int[5];
         for(int i_9_ = 0; i_9_ < 5; i_9_++) {
             int i_10_ = buffer.getUnsignedByte();
-            if(i_10_ < 0 || ((Class40_Sub5_Sub17_Sub6.anIntArrayArray3238[i_9_]).length <= i_10_))
+            if(i_10_ < 0 || ((Class40_Sub5_Sub17_Sub6.playerColours[i_9_]).length <= i_10_))
                 i_10_ = 0;
             is_8_[i_9_] = i_10_;
         }
