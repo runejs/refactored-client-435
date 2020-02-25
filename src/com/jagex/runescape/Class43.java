@@ -76,7 +76,7 @@ public class Class43 {
             Landscape.aClass1Array1184[0] = Class68.aClass1_1635;
             Class38.anIntArray884[0] = 1005;
             ActorDefinition.anInt2394 = 1;
-            if(ActorDefinition.anInt2433 == -1) {
+            if(ActorDefinition.openFullScreenWidgetId == -1) {
                 Class38_Sub1.method445(9767);
                 Class40_Sub5_Sub17_Sub3.anInt3065 = -1;
                 OverlayDefinition.anInt2328 = -1;
@@ -151,7 +151,7 @@ public class Class43 {
             } else {
                 Class40_Sub5_Sub17_Sub3.anInt3065 = -1;
                 OverlayDefinition.anInt2328 = -1;
-                Class13.method243((byte) 89, 0, 765, 503, ActorDefinition.anInt2433, 0, Class13.mouseX, Landscape.mouseY, 0);
+                Class13.method243((byte) 89, 0, 765, 503, ActorDefinition.openFullScreenWidgetId, 0, Class13.mouseX, Landscape.mouseY, 0);
                 ItemDefinition.anInt2850 = OverlayDefinition.anInt2328;
                 HashTable.anInt573 = Class40_Sub5_Sub17_Sub3.anInt3065;
             }

@@ -291,7 +291,7 @@ public class Landscape {
                         }
                     }
                 }
-                if(ActorDefinition.anInt2433 != -1)
+                if(ActorDefinition.openFullScreenWidgetId != -1)
                     OverlayDefinition.method559(35, -88);
                 else
                     OverlayDefinition.method559(30, -54);

@@ -279,7 +279,7 @@ public class Npc extends Actor {
                             RSApplet.aClass1_8 = null;
                         }
                         GameFrame.method1002(-77);
-                        if(ActorDefinition.anInt2433 == -1) {
+                        if(ActorDefinition.openFullScreenWidgetId == -1) {
                             Class40_Sub5_Sub17_Sub3.method776((byte) -125);
                             Class38_Sub1.method447((byte) 29);
                             Class40_Sub5_Sub1.method544();

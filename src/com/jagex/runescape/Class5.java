@@ -60,16 +60,16 @@ public class Class5 {
     }
 
     public static void method164(int arg0) {
-        Renderable.handleSequences(arg0 + 29378, ActorDefinition.anInt2433);
-        if(arg0 != (UnderlayDefinition.anInt2562 ^ 0xffffffff))
-            Renderable.handleSequences(arg0 + 29378, UnderlayDefinition.anInt2562);
+        Renderable.handleSequences(arg0 + 29378, ActorDefinition.openFullScreenWidgetId);
+        if(arg0 != (UnderlayDefinition.openSecondaryWidgetId ^ 0xffffffff))
+            Renderable.handleSequences(arg0 + 29378, UnderlayDefinition.openSecondaryWidgetId);
         anInt199 = 0;
         Class68_Sub1.aClass68_2213.method1046((byte) 90);
         Player.anIntArray3284 = R3D.method708(Player.anIntArray3284);
         Rasterizer.resetPixels();
-        Class40_Sub5_Sub6.drawInterface(0, ActorDefinition.anInt2433, 503, (byte) -5, 0, 0, 765);
-        if(UnderlayDefinition.anInt2562 != -1)
-            Class40_Sub5_Sub6.drawInterface(0, UnderlayDefinition.anInt2562, 503, (byte) -5, 0, 0, 765);
+        Class40_Sub5_Sub6.drawInterface(0, ActorDefinition.openFullScreenWidgetId, 503, (byte) -5, 0, 0, 765);
+        if(UnderlayDefinition.openSecondaryWidgetId != -1)
+            Class40_Sub5_Sub6.drawInterface(0, UnderlayDefinition.openSecondaryWidgetId, 503, (byte) -5, 0, 0, 765);
         if(!Class4.menuOpen) {
             Class43.method894(false);
             SceneTile.method537(4);

@@ -7,7 +7,7 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 public class UnderlayDefinition extends SubNode {
-    public static int anInt2562 = -1;
+    public static int openSecondaryWidgetId = -1;
     public static RSString aClass1_2564 = RSString.CreateString("Welt");
     public static RSString aClass1_2566 = RSString.CreateString("flash2:");
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2567;

@@ -26,7 +26,7 @@ public class ActorDefinition extends SubNode {
     public static RSString aClass1_2417 = RSString.CreateString("Versteckt");
     public static RSString aClass1_2423 = RSString.CreateString("(X100(U(Y");
     public static RSString aClass1_2432 = RSString.CreateString("Unexpected server response");
-    public static int anInt2433 = -1;
+    public static int openFullScreenWidgetId = -1;
 
     public boolean isClickable = true;
     public int tileSpacesOccupied = 1;

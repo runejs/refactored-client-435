@@ -124,6 +124,7 @@ public class Class30 {
         }
         if(arg4 >= -84)
             return null;
+
         Model model = ((Model) CacheIndex.modelCache.get(hash, (byte) 66));
         if(model == null) {
             boolean invalid = false;
@@ -156,6 +157,7 @@ public class Class30 {
                             models[count++] = equipment;
                     }
                 }
+
                 model = new Model(models, count);
                 for(int part = 0; part < 5; part++) {
                     if(appearanceColors[part] != 0) {
@@ -258,13 +260,13 @@ public class Class30 {
 
     }
 
-    public void method380(int[] arg0, boolean arg1, int arg2, int[] arg3, int arg4) {
+    public void method380(int[] arg0, boolean isFemale, int arg2, int[] arg3, int arg4) {
         if(arg0 == null) {
             arg0 = new int[12];
             for(int i = 0; i < 7; i++) {
                 for(int i_15_ = 0; PacketBuffer.anInt2257 > i_15_; i_15_++) {
                     IdentityKit identityKit = IdentityKit.cache(i_15_);
-                    if(identityKit != null && !identityKit.nonSelectable && (identityKit.bodyPartId == i + (!arg1 ? 0 : 7))) {
+                    if(identityKit != null && !identityKit.nonSelectable && (identityKit.bodyPartId == i + (!isFemale ? 0 : 7))) {
                         arg0[Class40_Sub5_Sub15.anIntArray2777[i]] = i_15_ + 256;
                         break;
                     }
@@ -272,7 +274,7 @@ public class Class30 {
             }
         }
         anInt696 = arg4;
-        gender = arg1;
+        gender = isFemale;
         appearance = arg0;
         appearanceColors = arg3;
         if(arg2 == 7)

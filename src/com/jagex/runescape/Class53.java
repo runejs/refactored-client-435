@@ -63,8 +63,8 @@ public class Class53 {
         anInt1256++;
         if(Class57.incomingPacket == 49) {
             int i = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-            int i_0_ = OverlayDefinition.anInt2318 + (i & 0x7);
-            int i_1_ = ((0x7b & i) >> 4) + Class40_Sub6.anInt2119;
+            int i_0_ = OverlayDefinition.placementY + (i & 0x7);
+            int i_1_ = ((0x7b & i) >> 4) + Class40_Sub6.placementX;
             int i_2_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
             int i_3_ = i_2_ >> 2;
             int i_4_ = 0x3 & i_2_;
@@ -104,22 +104,22 @@ public class Class53 {
                         floorDecoration.renderable = new GameObject((0x7fff & (floorDecoration.hash >> 14)), 22, i_4_, i_7_, i_8_, i_9_, i_10_, i_6_, false);
                 }
             }
-        } else if(Class57.incomingPacket == 241) {
+        } else if(Class57.incomingPacket == 241) { // set landscape object
             int i = Cache.outgoingbuffer.getUnsignedInvertedByte();
             int i_12_ = i & 0x3;
             int i_13_ = i >> 2;
             int i_14_ = Npc.anIntArray3304[i_13_];
             int i_15_ = Cache.outgoingbuffer.getUnsignedShortBE();
             int i_16_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-            int i_17_ = (0x7 & i_16_) + OverlayDefinition.anInt2318;
-            int i_18_ = Class40_Sub6.anInt2119 + ((i_16_ & 0x75) >> 4);
+            int i_17_ = (0x7 & i_16_) + OverlayDefinition.placementY;
+            int i_18_ = Class40_Sub6.placementX + ((i_16_ & 0x75) >> 4);
             if(i_18_ >= 0 && i_17_ >= 0 && i_18_ < 104 && i_17_ < 104)
                 GameObjectDefinition.method609(i_15_, true, i_18_, i_12_, -1, (Player.anInt3267), i_17_, i_14_, i_13_, 0);
         } else {
             if(Class57.incomingPacket == 9) {
                 int i = Cache.outgoingbuffer.getUnsignedByte();
-                int i_19_ = (i & 0x7) + OverlayDefinition.anInt2318;
-                int i_20_ = (0x7 & i >> 4) + Class40_Sub6.anInt2119;
+                int i_19_ = (i & 0x7) + OverlayDefinition.placementY;
+                int i_20_ = (0x7 & i >> 4) + Class40_Sub6.placementX;
                 int i_21_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 int i_22_ = Cache.outgoingbuffer.getUnsignedByte();
                 int i_23_ = i_22_ >> 4 & 0xf;
@@ -139,8 +139,8 @@ public class Class53 {
             }
             if(Class57.incomingPacket == 202) {
                 int i = Cache.outgoingbuffer.getUnsignedByte();
-                int i_27_ = ((0x78 & i) >> 4) + Class40_Sub6.anInt2119;
-                int i_28_ = OverlayDefinition.anInt2318 + (0x7 & i);
+                int i_27_ = ((0x78 & i) >> 4) + Class40_Sub6.placementX;
+                int i_28_ = OverlayDefinition.placementY + (0x7 & i);
                 int i_29_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 int i_30_ = Cache.outgoingbuffer.getUnsignedByte();
                 int i_31_ = Cache.outgoingbuffer.getUnsignedShortBE();
@@ -152,8 +152,8 @@ public class Class53 {
                 }
             } else if(Class57.incomingPacket == 99) {
                 int i = Cache.outgoingbuffer.getUnsignedByte();
-                int i_32_ = Class40_Sub6.anInt2119 + ((0x75 & i) >> 4);
-                int i_33_ = (i & 0x7) + OverlayDefinition.anInt2318;
+                int i_32_ = Class40_Sub6.placementX + ((0x75 & i) >> 4);
+                int i_33_ = (i & 0x7) + OverlayDefinition.placementY;
                 int i_34_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 int i_35_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 int i_36_ = Cache.outgoingbuffer.getUnsignedShortBE();
@@ -169,16 +169,16 @@ public class Class53 {
                         Class40_Sub13.method880((byte) -80, i_33_, i_32_);
                     }
                 }
-            } else if(Class57.incomingPacket == 143) {
-                int i = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-                int i_37_ = OverlayDefinition.anInt2318 + (0x7 & i);
-                int i_38_ = Class40_Sub6.anInt2119 + (i >> 4 & 0x7);
-                int i_39_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
-                int i_40_ = i_39_ & 0x3;
-                int i_41_ = i_39_ >> 2;
-                int i_42_ = Npc.anIntArray3304[i_41_];
-                if(i_38_ >= 0 && i_37_ >= 0 && i_38_ < 104 && i_37_ < 104)
-                    GameObjectDefinition.method609(-1, true, i_38_, i_40_, -1, (Player.anInt3267), i_37_, i_42_, i_41_, 0);
+            } else if(Class57.incomingPacket == 143) { // remove landscape object
+                int offset = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
+                int positionY = OverlayDefinition.placementY + (0x7 & offset);
+                int positionX = Class40_Sub6.placementX + (offset >> 4 & 0x7);
+                int objectInfo = Cache.outgoingbuffer.getUnsignedInvertedByte();
+                int orientation = objectInfo & 0x3;
+                int typeIndex = objectInfo >> 2;
+                int objectType = Npc.anIntArray3304[typeIndex];
+                if(positionX >= 0 && positionY >= 0 && positionX < 104 && positionY < 104)
+                    GameObjectDefinition.method609(-1, true, positionX, orientation, -1, (Player.anInt3267), positionY, objectType, typeIndex, 0);
             } else {
                 if(Class57.incomingPacket == 229) {
                     int i = Cache.outgoingbuffer.getNegativeOffsetByte();
@@ -190,8 +190,8 @@ public class Class53 {
                     int i_48_ = i_46_ >> 2;
                     int i_49_ = Npc.anIntArray3304[i_48_];
                     int i_50_ = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
-                    int i_51_ = (i_50_ & 0x7) + OverlayDefinition.anInt2318;
-                    int i_52_ = Class40_Sub6.anInt2119 + (i_50_ >> 4 & 0x7);
+                    int i_51_ = (i_50_ & 0x7) + OverlayDefinition.placementY;
+                    int i_52_ = Class40_Sub6.placementX + (i_50_ >> 4 & 0x7);
                     int i_53_ = Cache.outgoingbuffer.getUnsignedShortBE();
                     int i_54_ = Cache.outgoingbuffer.getInvertedByte();
                     int i_55_ = Cache.outgoingbuffer.getUnsignedShortLE();
@@ -239,10 +239,10 @@ public class Class53 {
                         }
                     }
                 }
-                if(Class57.incomingPacket == 74) {
+                if(Class57.incomingPacket == 74) { // remove world item
                     int i = Cache.outgoingbuffer.getUnsignedByte();
-                    int i_65_ = Class40_Sub6.anInt2119 + (i >> 4 & 0x7);
-                    int i_66_ = (i & 0x7) + OverlayDefinition.anInt2318;
+                    int i_65_ = Class40_Sub6.placementX + (i >> 4 & 0x7);
+                    int i_66_ = (i & 0x7) + OverlayDefinition.placementY;
                     int i_67_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
                     if(i_65_ >= 0 && i_66_ >= 0 && i_65_ < 104 && i_66_ < 104) {
                         Class45 class45 = (Class10.aClass45ArrayArrayArray357[Player.anInt3267][i_65_][i_66_]);
@@ -260,8 +260,8 @@ public class Class53 {
                     }
                 } else if(Class57.incomingPacket == 1) {
                     int i = Cache.outgoingbuffer.getUnsignedByte();
-                    int i_68_ = (i & 0x7) + OverlayDefinition.anInt2318;
-                    int i_69_ = Class40_Sub6.anInt2119 + (0x7 & i >> 4);
+                    int i_68_ = (i & 0x7) + OverlayDefinition.placementY;
+                    int i_69_ = Class40_Sub6.placementX + (0x7 & i >> 4);
                     int i_70_ = (i_69_ + Cache.outgoingbuffer.getByte());
                     int i_71_ = (i_68_ + Cache.outgoingbuffer.getByte());
                     int i_72_ = Cache.outgoingbuffer.getShortBE();
@@ -284,13 +284,13 @@ public class Class53 {
                 } else {
                     if(arg0 >= -110)
                         method952(32);
-                    if(Class57.incomingPacket == 19) {
+                    if(Class57.incomingPacket == 19) { // update world item amount
                         int i = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
                         int i_80_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
                         int i_81_ = Cache.outgoingbuffer.getUnsignedShortBE();
                         int i_82_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-                        int i_83_ = (((0x71 & i_82_) >> 4) + Class40_Sub6.anInt2119);
-                        int i_84_ = (0x7 & i_82_) + OverlayDefinition.anInt2318;
+                        int i_83_ = (((0x71 & i_82_) >> 4) + Class40_Sub6.placementX);
+                        int i_84_ = (0x7 & i_82_) + OverlayDefinition.placementY;
                         if(i_83_ >= 0 && i_84_ >= 0 && i_83_ < 104 && i_84_ < 104 && Class30.anInt708 != i_80_) {
                             Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3 = new Class40_Sub5_Sub17_Sub3();
                             class40_sub5_sub17_sub3.anInt3067 = i_81_;
@@ -300,12 +300,12 @@ public class Class53 {
                             Class10.aClass45ArrayArrayArray357[Player.anInt3267][i_83_][i_84_].method904(class40_sub5_sub17_sub3, 64);
                             Class40_Sub13.method880((byte) -80, i_84_, i_83_);
                         }
-                    } else if(Class57.incomingPacket == 175) {
+                    } else if(Class57.incomingPacket == 175) { // add world item
                         int i = Cache.outgoingbuffer.getUnsignedShortLE();
                         int i_85_ = Cache.outgoingbuffer.getUnsignedShortBE();
                         int i_86_ = Cache.outgoingbuffer.getUnsignedByte();
-                        int i_87_ = OverlayDefinition.anInt2318 + (i_86_ & 0x7);
-                        int i_88_ = (Class40_Sub6.anInt2119 + ((0x7a & i_86_) >> 4));
+                        int i_87_ = OverlayDefinition.placementY + (i_86_ & 0x7);
+                        int i_88_ = (Class40_Sub6.placementX + ((0x7a & i_86_) >> 4));
                         if(i_88_ >= 0 && i_87_ >= 0 && i_88_ < 104 && i_87_ < 104) {
                             Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3 = new Class40_Sub5_Sub17_Sub3();
                             class40_sub5_sub17_sub3.anInt3058 = i_85_;

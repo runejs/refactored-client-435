@@ -283,7 +283,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         HuffmanEncoding.inputInputMessage = HuffmanEncoding.inputInputMessage.method70(Class59.anInt1388, 0);
                         Class52.redrawChatbox = true;
                     }
-                } else if(Class43.openChatboxWidgetId == -1 && ActorDefinition.anInt2433 == -1) {
+                } else if(Class43.openChatboxWidgetId == -1 && ActorDefinition.openFullScreenWidgetId == -1) {
                     if(ItemDefinition.anInt2854 == 85 && (HuffmanEncoding.chatboxInput.length() > 0)) {
                         HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring(0, HuffmanEncoding.chatboxInput.length() - 1));
                         Class52.redrawChatbox = true;

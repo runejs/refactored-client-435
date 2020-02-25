@@ -22,7 +22,7 @@ public class Class40_Sub6 extends Node {
     public static int anInt2115;
     public static Widget aWidget_2116;
     public static int anInt2118;
-    public static int anInt2119;
+    public static int placementX;
     public static int onBuildTimePlane;
     public static RSString aClass1_2121;
 

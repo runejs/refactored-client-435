@@ -309,22 +309,23 @@ public class Main extends RSApplet {
                                 i_36_ = widget.animation;
                             else
                                 i_36_ = widget.alternateAnimation;
-                            Model class40_sub5_sub17_sub5;
+
+                            Model model;
                             if(widget.modelType != 5) {
                                 if(i_36_ == -1) {
-                                    class40_sub5_sub17_sub5 = (widget.method646((byte) 46, null, -1, bool_35_, (Player.localPlayer.aClass30_3282)));
-                                    if(class40_sub5_sub17_sub5 == null && Class40_Sub13.aBoolean2177)
+                                    model = (widget.method646((byte) 46, null, -1, bool_35_, (Player.localPlayer.aClass30_3282)));
+                                    if(model == null && Class40_Sub13.aBoolean2177)
                                         bool = false;
                                 } else {
                                     AnimationSequence animationSequence = Class68_Sub1.method1050(i_36_, 2);
-                                    class40_sub5_sub17_sub5 = (widget.method646((byte) 76, animationSequence, widget.anInt2654, bool_35_, (Player.localPlayer.aClass30_3282)));
-                                    if(class40_sub5_sub17_sub5 == null && Class40_Sub13.aBoolean2177)
+                                    model = (widget.method646((byte) 76, animationSequence, widget.anInt2654, bool_35_, (Player.localPlayer.aClass30_3282)));
+                                    if(model == null && Class40_Sub13.aBoolean2177)
                                         bool = false;
                                 }
                             } else if(widget.modelId != 0)
-                                class40_sub5_sub17_sub5 = Player.localPlayer.getRotatedModel(92);
+                                model = Player.localPlayer.getRotatedModel(92);
                             else
-                                class40_sub5_sub17_sub5 = (Class45.aClass30_1082.getAnimatedModel(null, null, -1, -1, (byte) -88));
+                                model = (Class45.aClass30_1082.getAnimatedModel(null, null, -1, -1, (byte) -88));
                             int i_37_ = widget.rotationX;
                             int i_38_ = widget.rotationY;
                             int i_39_ = widget.offsetY2d;
@@ -335,7 +336,7 @@ public class Main extends RSApplet {
                                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((widget.anInt2718), 10);
                                 if(class40_sub5_sub16 != null) {
                                     class40_sub5_sub16 = (class40_sub5_sub16.method743(widget.anInt2734));
-                                    class40_sub5_sub17_sub5 = class40_sub5_sub16.asGroundStack(true, 1);
+                                    model = class40_sub5_sub16.asGroundStack(true, 1);
                                     i_38_ = class40_sub5_sub16.zan2d;
                                     i_39_ = class40_sub5_sub16.yOffset2d;
                                     i_41_ = class40_sub5_sub16.xOffset2d;
@@ -347,17 +348,18 @@ public class Main extends RSApplet {
                                 }
                             }
                             R3D.method710(i_0_ + widget.originalWidth / 2, widget.originalHeight / 2 + i_1_);
+
                             int i_43_ = (i_42_ * (R3D.sinetable[i_37_]) >> 16);
                             int i_44_ = (i_42_ * (R3D.cosinetable[i_37_]) >> 16);
-                            if(class40_sub5_sub17_sub5 != null) {
+                            if(model != null) {
                                 if(widget.isIf3) {
-                                    class40_sub5_sub17_sub5.method799();
+                                    model.method799();
                                     if(widget.orthogonal)
-                                        class40_sub5_sub17_sub5.method801(0, i_40_, i_38_, i_37_, i_41_, (i_39_ + i_43_ + (class40_sub5_sub17_sub5.anInt2861) / 2), i_44_ + i_39_, i_42_);
+                                        model.method801(0, i_40_, i_38_, i_37_, i_41_, (i_39_ + i_43_ + (model.anInt2861) / 2), i_44_ + i_39_, i_42_);
                                     else
-                                        class40_sub5_sub17_sub5.method812(0, i_40_, i_38_, i_37_, i_41_, (i_39_ + ((class40_sub5_sub17_sub5.anInt2861) / 2 + i_43_)), i_44_ + i_39_);
+                                        model.method812(0, i_40_, i_38_, i_37_, i_41_, (i_39_ + ((model.anInt2861) / 2 + i_43_)), i_44_ + i_39_);
                                 } else
-                                    class40_sub5_sub17_sub5.method812(0, i_40_, 0, i_37_, 0, i_43_, i_44_);
+                                    model.method812(0, i_40_, 0, i_37_, 0, i_43_, i_44_);
                             }
                             R3D.method702();
                         } else {
@@ -1016,10 +1018,10 @@ public class Main extends RSApplet {
         Class43.openChatboxWidgetId = -1;
         Class55.method958(HuffmanEncoding.openScreenWidgetId, -14222);
         HuffmanEncoding.openScreenWidgetId = -1;
-        Class55.method958(ActorDefinition.anInt2433, arg0 + -14222);
-        ActorDefinition.anInt2433 = -1;
-        Class55.method958(UnderlayDefinition.anInt2562, -14222);
-        UnderlayDefinition.anInt2562 = -1;
+        Class55.method958(ActorDefinition.openFullScreenWidgetId, arg0 + -14222);
+        ActorDefinition.openFullScreenWidgetId = -1;
+        Class55.method958(UnderlayDefinition.openSecondaryWidgetId, -14222);
+        UnderlayDefinition.openSecondaryWidgetId = -1;
         Class55.method958(Class29.tabAreaOverlayWidgetId, arg0 ^ ~0x378d);
         Class29.tabAreaOverlayWidgetId = -1;
         Class55.method958(Class58.anInt1376, -14222);

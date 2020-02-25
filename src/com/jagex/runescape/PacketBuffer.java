@@ -73,14 +73,14 @@ public class PacketBuffer extends Buffer {
             Class52.redrawChatbox = true;
             Class43.openChatboxWidgetId = -1;
         }
-        if(ActorDefinition.anInt2433 != -1) {
-            Class55.method958(ActorDefinition.anInt2433, -14222);
-            ActorDefinition.anInt2433 = -1;
+        if(ActorDefinition.openFullScreenWidgetId != -1) {
+            Class55.method958(ActorDefinition.openFullScreenWidgetId, -14222);
+            ActorDefinition.openFullScreenWidgetId = -1;
             OverlayDefinition.method559(30, -47);
         }
-        if(UnderlayDefinition.anInt2562 != -1) {
-            Class55.method958(UnderlayDefinition.anInt2562, -14222);
-            UnderlayDefinition.anInt2562 = -1;
+        if(UnderlayDefinition.openSecondaryWidgetId != -1) {
+            Class55.method958(UnderlayDefinition.openSecondaryWidgetId, -14222);
+            UnderlayDefinition.openSecondaryWidgetId = -1;
         }
         if(arg0 >= 92) {
             if(HuffmanEncoding.openScreenWidgetId != -1) {

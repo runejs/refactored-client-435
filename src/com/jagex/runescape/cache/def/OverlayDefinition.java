@@ -11,7 +11,7 @@ public class OverlayDefinition extends SubNode {
     public static RSString aClass1_2315;
     public static int anInt2316;
     public static int anInt2317;
-    public static int anInt2318;
+    public static int placementY;
     public static int anInt2319 = 0;
     public static int anInt2321;
     public static byte[][][] tile_flags;
