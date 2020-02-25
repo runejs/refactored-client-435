@@ -4,11 +4,11 @@ import com.jagex.runescape.io.Buffer;
 
 public class Envelope {
     public int num_phases = 2;
-    public int[] phase_dur = new int[2];
+    public int[] phase_dur;
     public int start;
     public int form;
     public int end;
-    public int[] phase_peak = new int[2];
+    public int[] phase_peak;
     public int ticks;
     public int step;
     public int critical;
@@ -16,6 +16,8 @@ public class Envelope {
     public int amp;
 
     public Envelope() {
+        phase_dur = new int[2];
+        phase_peak = new int[2];
         phase_dur[0] = 0;
         phase_dur[1] = 65535;
         phase_peak[0] = 0;
@@ -52,7 +54,7 @@ public class Envelope {
             amp = phase_peak[phase_idx++] << 15;
             if(phase_idx >= num_phases)
                 phase_idx = num_phases - 1;
-            critical = (int) ((double) phase_dur[phase_idx] / 65536.0 * (double) period);
+            critical = (int) (phase_dur[phase_idx] / 65536.0 * period);
             if(critical > ticks)
                 step = (((phase_peak[phase_idx] << 15) - amp) / (critical - ticks));
         }

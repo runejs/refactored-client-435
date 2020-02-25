@@ -2,13 +2,16 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import tech.henning.fourthreefive.OldEngine.MapDecompressor;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
@@ -75,11 +78,11 @@ public class Landscape {
         anInt1159++;
         int i = class40_sub1.getUnsignedByte();
         int i_0_ = class40_sub1.getIntBE();
-        if(i_0_ < 0 || (Class51.anInt1195 != 0 && (Class51.anInt1195 ^ 0xffffffff) > (i_0_ ^ 0xffffffff)))
+        if(i_0_ < 0 || (Class51.anInt1195 != 0 && (Class51.anInt1195 < i_0_)))
             throw new RuntimeException();
-        if((i ^ 0xffffffff) != -1) {
+        if(i != 0) {
             int i_1_ = class40_sub1.getIntBE();
-            if(i_1_ < 0 || ((Class51.anInt1195 ^ 0xffffffff) != -1 && (i_1_ ^ 0xffffffff) < (Class51.anInt1195 ^ 0xffffffff))) {
+            if(i_1_ < 0 || (Class51.anInt1195 != 0 && (i_1_ > Class51.anInt1195))) {
                 return new byte[100];
                 //throw new RuntimeException();
             }
@@ -113,13 +116,13 @@ public class Landscape {
         boolean bool = true;
         for(int i = 0; (i < RSString.aByteArrayArray1715.length); i++) {
             if(Class45.anIntArray1071[i] != -1 && RSString.aByteArrayArray1715[i] == null) {
-                RSString.aByteArrayArray1715[i] = Renderable.aClass6_Sub1_2857.method172(0, 122, Class45.anIntArray1071[i]);
+                RSString.aByteArrayArray1715[i] = Renderable.aClass6_Sub1_2857.getFile(0, Class45.anIntArray1071[i]);
                 if(RSString.aByteArrayArray1715[i] == null) {
                     Class37.anInt874++;
                     bool = false;
                 }
             }
-            if((Class13.anIntArray421[i] ^ 0xffffffff) != 0 && Class52.aByteArrayArray1217[i] == null) {
+            if(Class13.anIntArray421[i] != -1 && Class52.aByteArrayArray1217[i] == null) {
                 Class52.aByteArrayArray1217[i] = (Renderable.aClass6_Sub1_2857.method176(Class13.anIntArray421[i], 0, Class44.anIntArrayArray1030[i], 20582));
                 if(Class52.aByteArrayArray1217[i] == null) {
                     Class37.anInt874++;
@@ -127,16 +130,14 @@ public class Landscape {
                 }
             }
         }
-        if(!bool)
-            Class68.anInt1634 = 1;
-        else {
+        if(bool) {
             bool = true;
             IdentityKit.anInt2591 = 0;
             for(int i = 0; RSString.aByteArrayArray1715.length > i; i++) {
                 byte[] is = Class52.aByteArrayArray1217[i];
                 if(is != null) {
                     int i_2_ = ((ISAAC.anIntArray528[i] & 0xff) * 64 - Class26.anInt635);
-                    int i_3_ = ((ISAAC.anIntArray528[i] >> 430061704) * 64 - Class40_Sub5_Sub2.anInt2307);
+                    int i_3_ = ((ISAAC.anIntArray528[i] >> 8) * 64 - SpotAnimDefinition.anInt2307);
                     if(Class58.aBoolean1349) {
                         i_3_ = 10;
                         i_2_ = 10;
@@ -144,20 +145,18 @@ public class Landscape {
                     bool &= Class40_Sub7.method840((byte) -67, is, i_3_, i_2_);
                 }
             }
-            if(!bool)
-                Class68.anInt1634 = 2;
-            else {
+            if(bool) {
                 if(Class68.anInt1634 != 0)
                     Class51.method940(0, Class67.aClass1_1585, true, ActorDefinition.aClass1_2423);
                 RSCanvas.method46(0);
                 Npc.aScene_3301.method98();
                 System.gc();
-                for(int i = 0; (i ^ 0xffffffff) > -5; i++)
+                for(int i = 0; i < 4; i++)
                     aCollisionMapArray1167[i].method146(16777216);
                 for(int i = 0; i < 4; i++) {
-                    for(int i_4_ = 0; (i_4_ ^ 0xffffffff) > -105; i_4_++) {
-                        for(int i_5_ = 0; (i_5_ ^ 0xffffffff) > -105; i_5_++)
-                            Floor.tile_flags[i][i_4_][i_5_] = (byte) 0;
+                    for(int i_4_ = 0; i_4_ < 104; i_4_++) {
+                        for(int i_5_ = 0; i_5_ < 104; i_5_++)
+                            OverlayDefinition.tile_flags[i][i_4_][i_5_] = (byte) 0;
                     }
                 }
                 Class65.method1020(true);
@@ -167,20 +166,21 @@ public class Landscape {
                 if(!Class58.aBoolean1349) {
                     for(int i_6_ = 0; i > i_6_; i_6_++) {
                         int i_7_ = (-Class26.anInt635 + ((0xff & ISAAC.anIntArray528[i_6_]) * 64));
-                        int i_8_ = (-Class40_Sub5_Sub2.anInt2307 + 64 * (ISAAC.anIntArray528[i_6_] >> 1048646664));
+                        int i_8_ = (-SpotAnimDefinition.anInt2307 + 64 * (ISAAC.anIntArray528[i_6_] >> 8));
                         byte[] is = RSString.aByteArrayArray1715[i_6_];
                         if(is != null)
-                            Class40_Sub5_Sub7.method592(aCollisionMapArray1167, (Class51.anInt1202 + -6) * 8, is, -6, i_8_, i_7_, 8 * (-6 + Class17.anInt448));
+                            AnimationSequence.method592(aCollisionMapArray1167, (Class51.anInt1202 + -6) * 8, is, -6, i_8_, i_7_, 8 * (-6 + Class17.anInt448));
                     }
                     for(int i_9_ = 0; i > i_9_; i_9_++) {
-                        int i_10_ = (-Class40_Sub5_Sub2.anInt2307 + (ISAAC.anIntArray528[i_9_] >> -401526520) * 64);
+                        int i_10_ = (-SpotAnimDefinition.anInt2307 + (ISAAC.anIntArray528[i_9_] >> 8) * 64);
                         byte[] is = RSString.aByteArrayArray1715[i_9_];
                         int i_11_ = (-Class26.anInt635 + 64 * (ISAAC.anIntArray528[i_9_] & 0xff));
-                        if(is == null && (Class17.anInt448 ^ 0xffffffff) > -801)
+                        if(is == null && Class17.anInt448 < 800)
                             Class61.method999(i_11_, (byte) 103, 64, 64, i_10_);
                     }
                     Class27.method364((byte) -34, true);
                     for(int i_12_ = 0; i > i_12_; i_12_++) {
+                        System.out.println("Requesting map: "+Class13.anIntArray421[i_12_]);
                         // load maps in here
                         byte[] is = Class52.aByteArrayArray1217[i_12_];
                         if(FileOperations.FileExists("./data/maps/" + (Class13.anIntArray421[i_12_]) + ".cmap")) {
@@ -194,26 +194,26 @@ public class Landscape {
                             }
                         }
                         if(is != null) {
-                            int i_13_ = (-Class40_Sub5_Sub2.anInt2307 + (ISAAC.anIntArray528[i_12_] >> 961254632) * 64);
+                            int i_13_ = (-SpotAnimDefinition.anInt2307 + (ISAAC.anIntArray528[i_12_] >> 8) * 64);
                             int i_14_ = (64 * (0xff & ISAAC.anIntArray528[i_12_]) - Class26.anInt635);
                             GameObject.loadObjectBlock(i_13_, Npc.aScene_3301, aCollisionMapArray1167, is, i_14_);
                         }
                     }
                 }
                 if(Class58.aBoolean1349) {
-                    for(int i_15_ = 0; (i_15_ ^ 0xffffffff) > -5; i_15_++) {
+                    for(int i_15_ = 0; i_15_ < 4; i_15_++) {
                         for(int i_16_ = 0; i_16_ < 13; i_16_++) {
                             for(int i_17_ = 0; i_17_ < 13; i_17_++) {
-                                int i_18_ = (Floor.anIntArrayArrayArray2333[i_15_][i_16_][i_17_]);
+                                int i_18_ = (OverlayDefinition.anIntArrayArrayArray2333[i_15_][i_16_][i_17_]);
                                 boolean bool_19_ = false;
                                 if(i_18_ != -1) {
-                                    int i_20_ = (0x6 & i_18_) >> 2052754561;
-                                    int i_21_ = (i_18_ & 0xffd2c2) >> 1409268174;
-                                    int i_22_ = i_18_ >> 887936792 & 0x3;
-                                    int i_23_ = (i_18_ & 0x3ffb) >> 561664195;
-                                    int i_24_ = ((i_21_ / 8 << -954331000) + (i_23_ / 8));
+                                    int i_20_ = (0x6 & i_18_) >> 1;
+                                    int i_21_ = (i_18_ & 0xffd2c2) >> 14;
+                                    int i_22_ = i_18_ >> 24 & 0x3;
+                                    int i_23_ = (i_18_ & 0x3ffb) >> 3;
+                                    int i_24_ = ((i_21_ / 8 << 8) + (i_23_ / 8));
                                     for(int i_25_ = 0; (i_25_ < ISAAC.anIntArray528.length); i_25_++) {
-                                        if(((i_24_ ^ 0xffffffff) == ((ISAAC.anIntArray528[i_25_]) ^ 0xffffffff)) && (RSString.aByteArrayArray1715[i_25_]) != null) {
+                                        if(((ISAAC.anIntArray528[i_25_]) == i_24_) && (RSString.aByteArrayArray1715[i_25_]) != null) {
                                             Class5.method162(i_17_ * 8, 13941, 8 * (i_21_ & 0x7), i_22_, i_15_, i_16_ * 8, (0x7 & i_23_) * 8, i_20_, (RSString.aByteArrayArray1715[i_25_]), aCollisionMapArray1167);
                                             bool_19_ = true;
                                             break;
@@ -225,24 +225,24 @@ public class Landscape {
                             }
                         }
                     }
-                    for(int i_26_ = 0; (i_26_ ^ 0xffffffff) > -14; i_26_++) {
-                        for(int i_27_ = 0; (i_27_ ^ 0xffffffff) > -14; i_27_++) {
-                            int i_28_ = (Floor.anIntArrayArrayArray2333[0][i_26_][i_27_]);
-                            if((i_28_ ^ 0xffffffff) == 0)
+                    for(int i_26_ = 0; i_26_ < 13; i_26_++) {
+                        for(int i_27_ = 0; i_27_ < 13; i_27_++) {
+                            int i_28_ = (OverlayDefinition.anIntArrayArrayArray2333[0][i_26_][i_27_]);
+                            if(i_28_ == -1)
                                 Class61.method999(i_27_ * 8, (byte) 120, 8, 8, 8 * i_26_);
                         }
                     }
                     Class27.method364((byte) -34, true);
-                    for(int i_29_ = 0; (i_29_ ^ 0xffffffff) > -5; i_29_++) {
+                    for(int i_29_ = 0; i_29_ < 4; i_29_++) {
                         for(int i_30_ = 0; i_30_ < 13; i_30_++) {
                             for(int i_31_ = 0; i_31_ < 13; i_31_++) {
-                                int i_32_ = (Floor.anIntArrayArrayArray2333[i_29_][i_30_][i_31_]);
-                                if((i_32_ ^ 0xffffffff) != 0) {
-                                    int i_33_ = ((i_32_ & 0x3ba82fb) >> -1741203752);
-                                    int i_34_ = 0x3ff & i_32_ >> 1081885454;
-                                    int i_35_ = i_32_ >> -2102494207 & 0x3;
-                                    int i_36_ = i_32_ >> 2088702243 & 0x7ff;
-                                    int i_37_ = ((i_34_ / 8 << 1879532360) + (i_36_ / 8));
+                                int i_32_ = (OverlayDefinition.anIntArrayArrayArray2333[i_29_][i_30_][i_31_]);
+                                if(i_32_ != -1) {
+                                    int i_33_ = ((i_32_ & 0x3ba82fb) >> 24);
+                                    int i_34_ = 0x3ff & i_32_ >> 14;
+                                    int i_35_ = i_32_ >> 1 & 0x3;
+                                    int i_36_ = i_32_ >> 3 & 0x7ff;
+                                    int i_37_ = ((i_34_ / 8 << 8) + (i_36_ / 8));
                                     for(int i_38_ = 0; (i_38_ < ISAAC.anIntArray528.length); i_38_++) {
                                         if(i_37_ == (ISAAC.anIntArray528[i_38_]) && (Class52.aByteArrayArray1217[i_38_]) != null) {
                                             Class24.method341(8 * (i_34_ & 0x7), (Npc.aScene_3301), 0, i_29_, i_35_, i_33_, (Class52.aByteArrayArray1217[i_38_]), 8 * i_31_, aCollisionMapArray1167, 8 * (i_36_ & 0x7), i_30_ * 8);
@@ -267,14 +267,13 @@ public class Landscape {
                     Npc.aScene_3301.method136(0);
                 else
                     Npc.aScene_3301.method136(Class64.setZ);
-                for(int i_40_ = 0; (i_40_ ^ 0xffffffff) > -105; i_40_++) {
+                for(int i_40_ = 0; i_40_ < 104; i_40_++) {
                     for(int i_41_ = 0; i_41_ < 104; i_41_++)
                         Class40_Sub13.method880((byte) -80, i_41_, i_40_);
                 }
                 ISAAC.method285((byte) 118);
                 VertexNormal.aClass9_1102.method235((byte) -43);
                 if(Class35.aFrame1732 != null) {
-                    Class62.anInt1452++;
                     Class32.packetBuffer.putPacket(121);
                     Class32.packetBuffer.putIntBE(1057001181);
                 }
@@ -285,22 +284,24 @@ public class Landscape {
                     int i_45_ = (Class51.anInt1202 + 6) / 8;
                     for(int i_46_ = -1 + i_42_; i_46_ <= 1 + i_45_; i_46_++) {
                         for(int i_47_ = -1 + i_43_; i_47_ <= i_44_ + 1; i_47_++) {
-                            if(i_42_ > i_46_ || (i_46_ ^ 0xffffffff) < (i_45_ ^ 0xffffffff) || i_47_ < i_43_ || (i_47_ ^ 0xffffffff) < (i_44_ ^ 0xffffffff)) {
+                            if(i_42_ > i_46_ || (i_46_ > i_45_) || i_47_ < i_43_ || (i_47_ > i_44_)) {
                                 Renderable.aClass6_Sub1_2857.method195(0, (Class40_Sub5_Sub17_Sub6.method832(74, (new RSString[]{Class45.aClass1_1085, HashTable.method334(i_46_, -1), Class8.aClass1_303, HashTable.method334(i_47_, -1)}))));
                                 Renderable.aClass6_Sub1_2857.method195(0, (Class40_Sub5_Sub17_Sub6.method832(-102, (new RSString[]{HashTable.aClass1_553, HashTable.method334(i_46_, -1), Class8.aClass1_303, HashTable.method334(i_47_, -1)}))));
                             }
                         }
                     }
                 }
-                if(ActorDefinition.anInt2433 != -1)
-                    Floor.method559(35, -88);
+                if(ActorDefinition.openFullScreenWidgetId != -1)
+                    OverlayDefinition.method559(35, -88);
                 else
-                    Floor.method559(30, -54);
+                    OverlayDefinition.method559(30, -54);
                 Class56.method973(-65);
                 Class32.packetBuffer.putPacket(178);
                 RSRuntimeException.method1057(126);
-            }
-        }
+            } else
+                Class68.anInt1634 = 2;
+        } else
+            Class68.anInt1634 = 1;
 
     }
 
@@ -312,15 +313,15 @@ public class Landscape {
             if(class40_sub2.anInt1997 != -1 || class40_sub2.anIntArray2005 != null) {
                 int i_48_ = 0;
                 if(arg0 <= class40_sub2.anInt2013) {
-                    if((arg0 ^ 0xffffffff) > (class40_sub2.anInt1994 ^ 0xffffffff))
+                    if((arg0 < class40_sub2.anInt1994))
                         i_48_ += class40_sub2.anInt1994 - arg0;
                 } else
                     i_48_ += -class40_sub2.anInt2013 + arg0;
                 if(arg4 > class40_sub2.anInt2007)
                     i_48_ += -class40_sub2.anInt2007 + arg4;
-                else if((arg4 ^ 0xffffffff) > (class40_sub2.anInt2003 ^ 0xffffffff))
+                else if((arg4 < class40_sub2.anInt2003))
                     i_48_ += -arg4 + class40_sub2.anInt2003;
-                if(class40_sub2.anInt2000 < -64 + i_48_ || RSCanvas.anInt65 == 0 || ((class40_sub2.anInt1993 ^ 0xffffffff) != (arg2 ^ 0xffffffff))) {
+                if(class40_sub2.anInt2000 < -64 + i_48_ || RSCanvas.anInt65 == 0 || (arg2 != class40_sub2.anInt1993)) {
                     if(class40_sub2.aClass40_Sub9_Sub2_2001 != null) {
                         Class49.aClass40_Sub9_Sub1_1152.method853(class40_sub2.aClass40_Sub9_Sub2_2001);
                         class40_sub2.aClass40_Sub9_Sub2_2001 = null;
@@ -398,12 +399,12 @@ public class Landscape {
 
     }
 
-    public static void method936(int arg0, Class6 arg1) {
+    public static void method936(int arg0, CacheIndex arg1) {
 
         if(arg0 != -17552)
             ActorDefinition.getDefinition((byte) -94, 97);
         anInt1177++;
-        RSCanvas.aClass6_61 = arg1;
+        RSCanvas.aCacheIndex_61 = arg1;
 
     }
 }

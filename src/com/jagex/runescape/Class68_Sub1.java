@@ -1,10 +1,10 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.media.renderable.actor.Player;
 
 import java.awt.*;
 import java.awt.image.*;
@@ -39,140 +39,25 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
         anIntArray2207 = null;
     }
 
-    public static void method1049(Player arg0, byte arg1, int arg2, int arg3) {
-        if(arg1 <= 14)
-            method1049(null, (byte) 8, -14, 82);
-        if((0x100 & arg2) != 0) {
-            int i = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
-            int i_0_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-            arg0.method785(i_0_, Node.anInt926, i, -122);
-            arg0.anInt3139 = 300 + Node.anInt926;
-            arg0.anInt3130 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
-            arg0.anInt3101 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-        }
-        if((arg2 & 0x10 ^ 0xffffffff) != -1) {
-            arg0.anInt3148 = Cache.outgoingbuffer.getUnsignedShortBE();
-            arg0.anInt3100 = Cache.outgoingbuffer.getUnsignedShortLE();
-        }
-        if((arg2 & 0x1 ^ 0xffffffff) != -1) {
-            int i = Cache.outgoingbuffer.getUnsignedShortLE();
-            if(i == 65535)
-                i = -1;
-            int i_1_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
-            ActorDefinition.method570(i, i_1_, arg0, -1);
-        }
-        if((arg2 & 0x4) != 0) {
-            arg0.anInt3137 = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
-            if((arg0.anInt3137 ^ 0xffffffff) == -65536)
-                arg0.anInt3137 = -1;
-        }
-        if((0x40 & arg2) != 0) {
-            int i = Cache.outgoingbuffer.getUnsignedByte();
-            int i_2_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-            arg0.method785(i_2_, Node.anInt926, i, -123);
-            arg0.anInt3139 = 300 + Node.anInt926;
-            arg0.anInt3130 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-            arg0.anInt3101 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-        }
-        if((arg2 & 0x400) != 0) {
-            arg0.anInt3125 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
-            arg0.anInt3081 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
-            arg0.anInt3099 = Cache.outgoingbuffer.getUnsignedByte();
-            arg0.anInt3127 = Cache.outgoingbuffer.getUnsignedByte();
-            arg0.anInt3112 = (Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE() + Node.anInt926);
-            arg0.anInt3107 = (Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE() + Node.anInt926);
-            arg0.anInt3073 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-            arg0.method790(0);
-        }
-        if((0x8 & arg2 ^ 0xffffffff) != -1) {
-            int i = Cache.outgoingbuffer.getUnsignedShortBE();
-            int i_3_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-            int i_4_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
-            int i_5_ = Cache.outgoingbuffer.currentPosition;
-            if(arg0.playerName != null && arg0.aClass30_3282 != null) {
-                long l = arg0.playerName.method58((byte) 101);
-                boolean bool = false;
-                if(i_3_ <= 1) {
-                    for(int i_6_ = 0; i_6_ < Class42.anInt1008; i_6_++) {
-                        if((Class53.aLongArray1267[i_6_] ^ 0xffffffffffffffffL) == (l ^ 0xffffffffffffffffL)) {
-                            bool = true;
-                            break;
-                        }
-                    }
-                }
-                if(!bool && Class4.anInt182 == 0) {
-                    Class59.aClass40_Sub1_1385.currentPosition = 0;
-                    Cache.outgoingbuffer.putNegativeOffsetBytes(0, Class59.aClass40_Sub1_1385.buffer, i_4_);
-                    Class59.aClass40_Sub1_1385.currentPosition = 0;
-                    RSString class1 = Class54.method956(124, Class59.aClass40_Sub1_1385).method53(-16315);
-                    arg0.aClass1_3090 = class1.method89(false);
-                    arg0.anInt3078 = 150;
-                    arg0.anInt3123 = i & 0xff;
-                    arg0.anInt3102 = i >> 8;
-                    if((i_3_ ^ 0xffffffff) == -3 || (i_3_ ^ 0xffffffff) == -4)
-                        Class44.method895(68, 1, class1, (Class40_Sub5_Sub17_Sub6.method832(75, (new RSString[]{Class40_Sub5_Sub12.goldCrown, arg0.playerName}))));
-                    else if((i_3_ ^ 0xffffffff) == -2)
-                        Class44.method895(123, 1, class1, (Class40_Sub5_Sub17_Sub6.method832(-79, (new RSString[]{Class51.whiteCrown, arg0.playerName}))));
-                    else
-                        Class44.method895(127, 2, class1, arg0.playerName);
-                }
-            }
-            Cache.outgoingbuffer.currentPosition = i_4_ + i_5_;
-        }
-        if((0x20 & arg2) != 0) {
-            int i = Cache.outgoingbuffer.getUnsignedByte();
-            byte[] is = new byte[i];
-            Buffer buffer = new Buffer(is);
-            Cache.outgoingbuffer.getBytes(i, 0, is);
-            Class22.aClass40_Sub1Array534[arg3] = buffer;
-            arg0.method791((byte) -85, buffer);
-        }
-        if((arg2 & 0x200) != 0) {
-            arg0.anInt3091 = Cache.outgoingbuffer.getUnsignedShortLE();
-            int i = Cache.outgoingbuffer.getIntME1();
-            arg0.anInt3129 = 0;
-            arg0.anInt3093 = Node.anInt926 + (i & 0xffff);
-            if((arg0.anInt3091 ^ 0xffffffff) == -65536)
-                arg0.anInt3091 = -1;
-            arg0.anInt3140 = 0;
-            arg0.anInt3110 = i >> -1354160784;
-            if(arg0.anInt3093 > Node.anInt926)
-                arg0.anInt3140 = -1;
-        }
-        if((0x80 & arg2 ^ 0xffffffff) != -1) {
-            arg0.aClass1_3090 = Cache.outgoingbuffer.getRSString();
-            if(arg0.aClass1_3090.method55(0, false) != 126) {
-                if(arg0 == Player.localPlayer)
-                    Class44.method895(99, 2, arg0.aClass1_3090, arg0.playerName);
-            } else {
-                arg0.aClass1_3090 = arg0.aClass1_3090.substring(1);
-                Class44.method895(120, 2, arg0.aClass1_3090, arg0.playerName);
-            }
-            arg0.anInt3078 = 150;
-            arg0.anInt3102 = 0;
-            arg0.anInt3123 = 0;
-        }
-    }
-
-    public static Class40_Sub5_Sub7 method1050(int arg0, int arg1) {
-        Class40_Sub5_Sub7 class40_sub5_sub7 = ((Class40_Sub5_Sub7) Class40_Sub5_Sub6.aClass9_2439.method231((long) arg0, (byte) 47));
+    public static AnimationSequence method1050(int arg0, int arg1) {
+        AnimationSequence animationSequence = ((AnimationSequence) Class40_Sub5_Sub6.aClass9_2439.get((long) arg0, (byte) 47));
         if(arg1 != 2)
             anInt2211 = -106;
-        if(class40_sub5_sub7 != null)
-            return class40_sub5_sub7;
-        byte[] is = Class40_Sub5_Sub7.aClass6_2484.method172(arg0, 115, 12);
-        class40_sub5_sub7 = new Class40_Sub5_Sub7();
+        if(animationSequence != null)
+            return animationSequence;
+        byte[] is = AnimationSequence.aCacheIndex_2484.getFile(arg0, 12);
+        animationSequence = new AnimationSequence();
         if(is != null)
-            class40_sub5_sub7.method594(-1, new Buffer(is));
-        class40_sub5_sub7.method591((byte) 37);
-        Class40_Sub5_Sub6.aClass9_2439.method230(arg1 + -7210, (long) arg0, class40_sub5_sub7);
-        return class40_sub5_sub7;
+            animationSequence.method594(-1, new Buffer(is));
+        animationSequence.method591((byte) 37);
+        Class40_Sub5_Sub6.aClass9_2439.put(arg1 + -7210, (long) arg0, animationSequence);
+        return animationSequence;
     }
 
-    public static boolean method1051(int arg0, Class40_Sub5_Sub12 arg1) {
+    public static boolean method1051(int arg0, Widget arg1) {
         if(arg0 != 300)
             return false;
-        int i = arg1.anInt2639;
+        int i = arg1.contentType;
         if(i >= 1 && i <= 200 || i >= 701 && i <= 900) {
             if(i >= 801)
                 i -= 701;
@@ -183,13 +68,13 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             else
                 i -= 101;
             Class40_Sub7.anInt2122++;
-            Floor.method558(0, Class66.aClass1_1572, 0, arg0 + -801, 0, 13, Class40_Sub5_Sub17_Sub6.method832(arg0 ^ ~0x103, (new RSString[]{Class26.aClass1_620, (Class40_Sub11.aClass1Array2147[i])})));
-            Floor.method558(0, Class58.aClass1_1354, 0, -501, 0, 18, Class40_Sub5_Sub17_Sub6.method832(arg0 + -192, (new RSString[]{Class26.aClass1_620, (Class40_Sub11.aClass1Array2147[i])})));
+            OverlayDefinition.method558(0, HuffmanEncoding.aClass1_1572, 0, arg0 + -801, 0, 13, Class40_Sub5_Sub17_Sub6.method832(arg0 ^ ~0x103, (new RSString[]{Class26.aClass1_620, (Class40_Sub11.aClass1Array2147[i])})));
+            OverlayDefinition.method558(0, Class58.aClass1_1354, 0, -501, 0, 18, Class40_Sub5_Sub17_Sub6.method832(arg0 + -192, (new RSString[]{Class26.aClass1_620, (Class40_Sub11.aClass1Array2147[i])})));
             return true;
         }
-        if(i >= 401 && (i ^ 0xffffffff) >= -501) {
-            Class6_Sub1.anInt1793++;
-            Floor.method558(0, Class66.aClass1_1572, 0, -501, 0, 35, (Class40_Sub5_Sub17_Sub6.method832(115, (new RSString[]{Class26.aClass1_620, arg1.aClass1_2668}))));
+        if(i >= 401 && i <= 500) {
+            CacheIndex_Sub1.anInt1793++;
+            OverlayDefinition.method558(0, HuffmanEncoding.aClass1_1572, 0, -501, 0, 35, (Class40_Sub5_Sub17_Sub6.method832(115, (new RSString[]{Class26.aClass1_620, arg1.text}))));
             return true;
         }
         return false;
@@ -200,7 +85,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             aClass1_2209 = null;
         int i = arg2.currentPosition;
         arg2.putSmart(arg1.length);
-        arg2.currentPosition += (IdentityKit.aClass66_2590.method1026(-18678, 0, arg2.currentPosition, arg1.length, arg1.chars, arg2.buffer));
+        arg2.currentPosition += (IdentityKit.aHuffmanEncoding_2590.encrypt(-18678, 0, arg2.currentPosition, arg1.length, arg1.chars, arg2.buffer));
         return -i + arg2.currentPosition;
 
     }

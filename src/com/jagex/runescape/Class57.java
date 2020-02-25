@@ -10,7 +10,7 @@ public class Class57 {
     public static int[] anIntArray1334 = new int[2048];
     public static int[][] anIntArrayArray1335;
     public static RSString aClass1_1336;
-    public static int packetid;
+    public static int incomingPacket;
     public static int anInt1338;
     public static RSString aClass1_1339;
     public static RSString aClass1_1340 = RSString.CreateString("Ihr Spielkonto wird bereits benutzt)3");
@@ -28,7 +28,7 @@ public class Class57 {
         aClass1_1341 = RSString.CreateString("This world is full)3");
         aClass1_1339 = aClass1_1341;
         aClass1_1336 = RSString.CreateString("To create a new account you need to");
-        packetid = 0;
+        incomingPacket = 0;
         anIntArrayArray1335 = new int[104][104];
         aClass1_1344 = RSString.CreateString("flash3:");
         anInt1342 = 0;
@@ -62,7 +62,7 @@ public class Class57 {
     public static void method975(int arg0, byte arg1, int arg2) {
 
         if(arg1 == 110) {
-            if((RSCanvas.anInt60 ^ 0xffffffff) != -1 && arg2 != -1) {
+            if(RSCanvas.anInt60 != 0 && arg2 != -1) {
                 Class33.method414(false, 1, arg2, RSCanvas.anInt60, 0, VertexNormal.aClass6_Sub1_1104, arg1 ^ ~0x6e);
                 Class35.anInt1733 = arg0;
             }

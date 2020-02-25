@@ -82,7 +82,7 @@ public abstract class Class38 {
             aClass68_887 = null;
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = null;
             Class4.anIntArray178 = null;
-            Class54.aClass68_1285 = null;
+            KeyFocusListener.aClass68_1285 = null;
             if(arg0 <= -65) {
                 Class17.aClass68_463 = null;
                 Class42.anIntArray1013 = null;
@@ -94,11 +94,11 @@ public abstract class Class38 {
 
     }
 
-    public static void method441(Class6 arg0, int arg1) {
+    public static void method441(CacheIndex arg0, int arg1) {
 
         anInt897++;
         int i = -109 / ((arg1 + 14) / 32);
-        Actor.aClass6_3144 = arg0;
+        Actor.aCacheIndex_3144 = arg0;
 
     }
 

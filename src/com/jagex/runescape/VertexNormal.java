@@ -8,7 +8,7 @@ public class VertexNormal {
     public static RSString aClass1_1097 = RSString.CreateString("wave:");
     public static RSString aClass1_1099 = RSString.CreateString("Loading fonts )2 ");
     public static Cache aClass9_1102 = new Cache(500);
-    public static Class6_Sub1 aClass6_Sub1_1104;
+    public static CacheIndex_Sub1 aClass6_Sub1_1104;
     public static RSString aClass1_1105 = aClass1_1093;
     public static RSString aClass1_1109 = RSString.CreateString("Ihr Spielkonto wurde deaktiviert)3");
     public static int itemSearchResultCount = 0;

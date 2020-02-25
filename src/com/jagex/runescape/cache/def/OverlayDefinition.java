@@ -1,18 +1,17 @@
-package com.jagex.runescape;
+package com.jagex.runescape.cache.def;
 
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;
 
-public class Floor extends SubNode {
+public class OverlayDefinition extends SubNode {
     public static RSString aClass1_2314;
     public static RSString aClass1_2315;
     public static int anInt2316;
     public static int anInt2317;
-    public static int anInt2318;
+    public static int placementY;
     public static int anInt2319 = 0;
     public static int anInt2321;
     public static byte[][][] tile_flags;
@@ -24,13 +23,13 @@ public class Floor extends SubNode {
     public static int anInt2329;
     public static int anInt2331;
     public static int[][][] anIntArrayArrayArray2333;
-    public static byte[][][] aByteArrayArrayArray2335;
+    public static byte[][][] tile_underlay_path;
     public static int anInt2339;
     public static int anInt2340;
     public static int anInt2341;
     public static int anInt2342;
     public static int anInt2343;
-    public static volatile long aLong2344;
+    public static volatile long lastClick;
     public static int anInt2347;
     public static int anInt2348;
 
@@ -43,21 +42,21 @@ public class Floor extends SubNode {
         tile_flags = new byte[4][104][104];
         anInt2328 = -1;
         anIntArrayArrayArray2333 = new int[4][13][13];
-        aLong2344 = 0L;
+        lastClick = 0L;
     }
 
-    public int anInt2320;
+    public int saturation;
     public int anInt2322;
     public int anInt2330;
-    public int anInt2332;
+    public int hue;
     public int anInt2334;
     public int anInt2336;
-    public int anInt2337;
+    public int lightness;
     public boolean aBoolean2338 = true;
     public int anInt2345;
     public int anInt2346;
 
-    public Floor() {
+    public OverlayDefinition() {
         anInt2322 = -1;
         anInt2336 = -1;
         anInt2345 = 0;
@@ -65,7 +64,7 @@ public class Floor extends SubNode {
 
     public static void method554(byte arg0) {
 
-        aByteArrayArrayArray2335 = null;
+        tile_underlay_path = null;
         tile_flags = null;
         anIntArrayArrayArray2333 = null;
         aClass1_2315 = null;
@@ -89,7 +88,7 @@ public class Floor extends SubNode {
     public static void method558(int arg0, RSString arg1, int arg2, int arg3, int arg4, int arg5, RSString arg6) {
 
         if((ActorDefinition.anInt2394 ^ 0xffffffff) > arg3) {
-            if((arg6.length() ^ 0xffffffff) >= -1)
+            if(arg6.length() <= 0)
                 Landscape.aClass1Array1184[ActorDefinition.anInt2394] = arg1;
             else
                 Landscape.aClass1Array1184[ActorDefinition.anInt2394] = Class40_Sub5_Sub17_Sub6.method832(-77, (new RSString[]{arg1, (VertexNormal.aClass1_1117), arg6}));
@@ -108,20 +107,20 @@ public class Floor extends SubNode {
         int i = -26 % (-arg1 / 44);
         anInt2316++;
         if(arg0 != Class51.anInt1197) {
-            if((Class51.anInt1197 ^ 0xffffffff) == -1)
+            if(Class51.anInt1197 == 0)
                 CollisionMap.method144(12433);
             if(arg0 == 20 || arg0 == 40) {
                 Main.anInt1756 = 0;
                 anInt2321 = 0;
                 Class40_Sub3.anInt2032 = 0;
             }
-            if((arg0 ^ 0xffffffff) != -21 && (arg0 ^ 0xffffffff) != -41 && Class30.aClass64_717 != null) {
+            if(arg0 != 20 && arg0 != 40 && Class30.aClass64_717 != null) {
                 Class30.aClass64_717.method1009(-106);
                 Class30.aClass64_717 = null;
             }
             if(Class51.anInt1197 == 25 || Class51.anInt1197 == 40) {
                 Class65.method1018((byte) 123);
-                Rasterizer.method663();
+                Rasterizer.resetPixels();
             }
             if(Class51.anInt1197 == 25) {
                 Class37.anInt874 = 0;
@@ -130,24 +129,24 @@ public class Floor extends SubNode {
                 GameObject.anInt3048 = 1;
                 Class68.anInt1634 = 0;
             }
-            if((arg0 ^ 0xffffffff) == -1 || arg0 == 35) {
+            if(arg0 == 0 || arg0 == 35) {
                 FloorDecoration.method344(-40);
                 Class38.method440((byte) -73);
                 if(Class68_Sub1.aClass68_2213 == null)
-                    Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649(503, 765, Class62.aCanvas1469, -4875);
+                    Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649(503, 765, GameFrame.aCanvas1469, -4875);
             }
-            if((arg0 ^ 0xffffffff) == -6 || arg0 == 10 || arg0 == 20) {
+            if(arg0 == 5 || arg0 == 10 || arg0 == 20) {
                 Class68_Sub1.aClass68_2213 = null;
                 FloorDecoration.method344(-69);
-                Class40_Sub5_Sub17_Sub3.method779(Class62.aCanvas1469, true, (RSCanvas.aClass6_Sub1_48), (ActorDefinition.aClass6_Sub1_2377));
+                Class40_Sub5_Sub17_Sub3.method779(GameFrame.aCanvas1469, true, (RSCanvas.aClass6_Sub1_48), (ActorDefinition.aClass6_Sub1_2377));
             }
-            if(arg0 == 25 || arg0 == 30 || (arg0 ^ 0xffffffff) == -41) {
+            if(arg0 == 25 || arg0 == 30 || arg0 == 40) {
                 Class68_Sub1.aClass68_2213 = null;
                 Class38.method440((byte) -98);
-                Class40_Sub5_Sub17_Sub1.method763(Class62.aCanvas1469, (byte) -128, (ActorDefinition.aClass6_Sub1_2377));
+                Class40_Sub5_Sub17_Sub1.method763(GameFrame.aCanvas1469, (byte) -128, (ActorDefinition.aClass6_Sub1_2377));
             }
             Class51.anInt1197 = arg0;
-            Class40_Sub5_Sub11.aBoolean2631 = true;
+            Class40_Sub5_Sub11.clearScreen = true;
         }
 
     }
@@ -166,7 +165,7 @@ public class Floor extends SubNode {
             double angle = Math.atan2((double) x, (double) y);
             int drawX = (int) (Math.sin(angle) * 63.0);
             int drawY = (int) (57.0 * Math.cos(angle));
-            Class40_Sub5_Sub2.minimapEdge.drawRotated(-10 + (94 + (drawX + 4)), 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
+            SpotAnimDefinition.minimapEdge.drawRotated(-10 + (94 + (drawX + 4)), 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
         } else {
             SceneTile.drawOnMinimap(mapY, mapX, sprite);
         }
@@ -177,7 +176,7 @@ public class Floor extends SubNode {
 
         for(; ; ) {
             int i = arg2.getUnsignedByte();
-            if((i ^ 0xffffffff) == -1)
+            if(i == 0)
                 break;
             method556(arg1, arg2, i, (byte) -117);
         }
@@ -188,13 +187,13 @@ public class Floor extends SubNode {
     }
 
     public void method555(byte arg0) {
-        if((anInt2336 ^ 0xffffffff) != 0) {
-            method561(anInt2336, 121);
-            anInt2330 = anInt2320;
-            anInt2346 = anInt2337;
-            anInt2334 = anInt2332;
+        if(anInt2336 != -1) {
+            calculateHsl(anInt2336);
+            anInt2330 = saturation;
+            anInt2346 = lightness;
+            anInt2334 = hue;
         }
-        method561(anInt2345, 126);
+        calculateHsl(anInt2345);
         anInt2317++;
         if(arg0 != 64)
             method559(39, 9);
@@ -205,11 +204,11 @@ public class Floor extends SubNode {
         if(arg3 != -117)
             method556(-71, null, 83, (byte) -117);
         anInt2341++;
-        if((arg2 ^ 0xffffffff) == -2)
+        if(arg2 == 1)
             anInt2345 = arg1.getMediumBE();
         else if(arg2 != 2) {
-            if((arg2 ^ 0xffffffff) != -6) {
-                if((arg2 ^ 0xffffffff) == -8)
+            if(arg2 != 5) {
+                if(arg2 == 7)
                     anInt2336 = arg1.getMediumBE();
             } else
                 aBoolean2338 = false;
@@ -218,49 +217,47 @@ public class Floor extends SubNode {
 
     }
 
-    public void method561(int arg0, int arg1) {
-        anInt2343++;
-        int i = 71 % ((64 - arg1) / 53);
-        double d = (double) (0xff & arg0 >> 58914928) / 256.0;
-        double d_8_ = (double) ((0xff2d & arg0) >> -42632536) / 256.0;
-        double d_9_ = (double) (0xff & arg0) / 256.0;
-        double d_10_ = d;
-        if(d_8_ < d_10_)
-            d_10_ = d_8_;
-        if(d_10_ > d_9_)
-            d_10_ = d_9_;
-        double d_11_ = d;
-        if(d_8_ > d_11_)
-            d_11_ = d_8_;
-        double d_12_ = 0.0;
-        double d_13_ = 0.0;
-        if(d_9_ > d_11_)
-            d_11_ = d_9_;
-        double d_14_ = (d_11_ + d_10_) / 2.0;
-        if(d_10_ != d_11_) {
-            if(d_14_ < 0.5)
-                d_13_ = (d_11_ - d_10_) / (d_11_ + d_10_);
-            if(d_14_ >= 0.5)
-                d_13_ = (-d_10_ + d_11_) / (-d_10_ + (2.0 - d_11_));
-            if(d_11_ != d) {
-                if(d_8_ == d_11_)
-                    d_12_ = 2.0 + (d_9_ - d) / (d_11_ - d_10_);
-                else if(d_11_ == d_9_)
-                    d_12_ = (-d_8_ + d) / (-d_10_ + d_11_) + 4.0;
+    public void calculateHsl(int color) {
+        double r = (double) (0xff & (color >> 16)) / 256.0;
+        double g = (double) ((0xff2d & color) >> 8) / 256.0;
+        double b = (double) (0xff & color) / 256.0;
+        double var10 = r;
+        if(g < var10)
+            var10 = g;
+        if(var10 > b)
+            var10 = b;
+        double var11 = r;
+        if(g > var11)
+            var11 = g;
+        double var12 = 0.0;
+        double var16 = 0.0;
+        if(b > var11)
+            var11 = b;
+        double var14 = (var11 + var10) / 2.0;
+        if(var10 != var11) {
+            if(var14 < 0.5)
+                var16 = (var11 - var10) / (var11 + var10);
+            if(var14 >= 0.5)
+                var16 = (-var10 + var11) / (-var10 + (2.0 - var11));
+            if(var11 != r) {
+                if(g == var11)
+                    var12 = 2.0 + (b - r) / (var11 - var10);
+                else if(var11 == b)
+                    var12 = (-g + r) / (-var10 + var11) + 4.0;
             } else
-                d_12_ = (d_8_ - d_9_) / (d_11_ - d_10_);
+                var12 = (g - b) / (var11 - var10);
         }
-        d_12_ /= 6.0;
-        anInt2332 = (int) (d_12_ * 256.0);
-        anInt2320 = (int) (256.0 * d_14_);
-        anInt2337 = (int) (d_13_ * 256.0);
-        if((anInt2337 ^ 0xffffffff) > -1)
-            anInt2337 = 0;
-        else if((anInt2337 ^ 0xffffffff) < -256)
-            anInt2337 = 255;
-        if((anInt2320 ^ 0xffffffff) > -1)
-            anInt2320 = 0;
-        else if(anInt2320 > 255)
-            anInt2320 = 255;
+        var12 /= 6.0;
+        hue = (int) (var12 * 256.0);
+        saturation = (int) (256.0 * var14);
+        lightness = (int) (var16 * 256.0);
+        if(lightness < 0)
+            lightness = 0;
+        else if(lightness > 255)
+            lightness = 255;
+        if(saturation < 0)
+            saturation = 0;
+        else if(saturation > 255)
+            saturation = 255;
     }
 }

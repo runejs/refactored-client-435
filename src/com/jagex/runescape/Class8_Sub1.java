@@ -118,7 +118,7 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
 
     public void method222(Signlink arg0, int arg1) throws Exception {
         anInt1831 = arg1;
-        method219(Class51.method937(1));
+        method219(System.currentTimeMillis());
         arg0.method394(10, 0, this);
     }
 
@@ -147,7 +147,7 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
                     aBoolean1820 = false;
                     break;
                 }
-                method212(Class51.method937(1));
+                method212(System.currentTimeMillis());
             }
             Class43.method890(5L, -86);
         }

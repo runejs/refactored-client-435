@@ -13,7 +13,7 @@ public class Class26 {
     public static RSString aClass1_629 = RSString.CreateString("Weiter");
     public static RSString aClass1_630 = RSString.CreateString("Untersuchen");
     public static RSString aClass1_631 = RSString.CreateString("gelb:");
-    public static Class6 aClass6_632;
+    public static CacheIndex aCacheIndex_632;
     public static RSString aClass1_633 = (RSString.CreateString("Moderator)2Option: Spieler f-Ur 48 Stunden stumm schalten: <OFF>"));
     public static RSString aClass1_634 = RSString.CreateString("World");
     public static int anInt635;
@@ -48,7 +48,7 @@ public class Class26 {
         aClass1_634 = null;
         aClass1_620 = null;
         aClass1_633 = null;
-        aClass6_632 = null;
+        aCacheIndex_632 = null;
         aClass1_619 = null;
         if(arg0 != 0)
             method350(15);

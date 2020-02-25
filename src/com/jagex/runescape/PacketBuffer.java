@@ -1,15 +1,14 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.audio.Effect;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.io.Buffer;
 
 import java.math.BigInteger;
 
 public class PacketBuffer extends Buffer {
     public static int anInt2231 = 1;
-    public static boolean aBoolean2236 = false;
+    public static boolean hiddenButtonTest = false;
     public static Effect[] effects = new Effect[50];
     public static RSString aClass1_2240 = RSString.CreateString("Please wait)3)3)3");
     public static long aLong2241 = 0L;
@@ -18,20 +17,21 @@ public class PacketBuffer extends Buffer {
     public static int anInt2248 = 0;
     public static Class40_Sub5_Sub13 aClass40_Sub5_Sub13_2250;
     public static boolean aBoolean2255 = false;
-    public static int anInt2256 = 0;
+    public static int lastClickX = 0;
     public static int anInt2257;
     public static int anInt2258;
     public static RSString aClass1_2259 = RSString.CreateString("oder benutzen Sie eine andere Welt)3");
     public static RSString aClass1_2260 = RSString.CreateString("da dieser Computer gegen unsere ");
 
-    public ISAAC encryption;
+    public ISAAC inCipher;
+    public ISAAC outCipher;
     public int bitoffset;
 
     public PacketBuffer(int arg0) {
         super(arg0);
     }
 
-    public static void method513(int arg0, Class6_Sub1 arg1, Class56 arg2, byte arg3) {
+    public static void method513(int arg0, CacheIndex_Sub1 arg1, Class56 arg2, byte arg3) {
         Class40_Sub6 class40_sub6 = new Class40_Sub6();
         class40_sub6.anInt2112 = 1;
         class40_sub6.key = (long) arg0;
@@ -59,34 +59,34 @@ public class PacketBuffer extends Buffer {
 
     public static void method516(int arg0) {
         Class32.packetBuffer.putPacket(176);
-        if(Class29.anInt673 != -1) {
-            Class55.method958(Class29.anInt673, -14222);
-            Class6_Sub1.anInt1819 = -1;
+        if(Class29.tabAreaOverlayWidgetId != -1) {
+            Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
+            CacheIndex_Sub1.anInt1819 = -1;
             IdentityKit.aBoolean2597 = true;
             ISAAC.redrawTabArea = true;
-            Class29.anInt673 = -1;
+            Class29.tabAreaOverlayWidgetId = -1;
         }
         Class40_Sub13.anInt2184++;
         if(Class43.openChatboxWidgetId != -1) {
             Class55.method958(Class43.openChatboxWidgetId, -14222);
-            Class6_Sub1.anInt1819 = -1;
+            CacheIndex_Sub1.anInt1819 = -1;
             Class52.redrawChatbox = true;
             Class43.openChatboxWidgetId = -1;
         }
-        if((ActorDefinition.anInt2433 ^ 0xffffffff) != 0) {
-            Class55.method958(ActorDefinition.anInt2433, -14222);
-            ActorDefinition.anInt2433 = -1;
-            Floor.method559(30, -47);
+        if(ActorDefinition.openFullScreenWidgetId != -1) {
+            Class55.method958(ActorDefinition.openFullScreenWidgetId, -14222);
+            ActorDefinition.openFullScreenWidgetId = -1;
+            OverlayDefinition.method559(30, -47);
         }
-        if((Class40_Sub5_Sub9.anInt2562 ^ 0xffffffff) != 0) {
-            Class55.method958(Class40_Sub5_Sub9.anInt2562, -14222);
-            Class40_Sub5_Sub9.anInt2562 = -1;
+        if(UnderlayDefinition.openSecondaryWidgetId != -1) {
+            Class55.method958(UnderlayDefinition.openSecondaryWidgetId, -14222);
+            UnderlayDefinition.openSecondaryWidgetId = -1;
         }
         if(arg0 >= 92) {
-            if(Class66.anInt1560 != -1) {
-                Class55.method958(Class66.anInt1560, -14222);
-                Class66.anInt1560 = -1;
-                Class6_Sub1.anInt1819 = -1;
+            if(HuffmanEncoding.openScreenWidgetId != -1) {
+                Class55.method958(HuffmanEncoding.openScreenWidgetId, -14222);
+                HuffmanEncoding.openScreenWidgetId = -1;
+                CacheIndex_Sub1.anInt1819 = -1;
             }
         }
     }
@@ -115,7 +115,7 @@ public class PacketBuffer extends Buffer {
         if(arg3 < 0 || arg0)
             i_3_++;
         byte[] is = new byte[i_3_];
-        if((arg3 ^ 0xffffffff) > -1)
+        if(arg3 < 0)
             is[0] = (byte) 45;
         else if(arg0)
             is[0] = (byte) 43;
@@ -124,7 +124,7 @@ public class PacketBuffer extends Buffer {
             arg3 /= arg2;
             if(i_5_ < 0)
                 i_5_ = -i_5_;
-            if((i_5_ ^ 0xffffffff) < -10)
+            if(i_5_ > 9)
                 i_5_ += 39;
             is[-1 + (i_3_ - i_4_)] = (byte) (48 + i_5_);
         }
@@ -149,7 +149,7 @@ public class PacketBuffer extends Buffer {
     public int getPacket(byte arg0) {
         if(arg0 != 49)
             aClass1_2260 = null;
-        return 0xff & (buffer[currentPosition++]/* + -encryption.method286(-101)*/);
+        return 0xff & (buffer[currentPosition++] - inCipher.rand());
     }
 
     public int putBits(int arg0, byte arg1) {
@@ -160,31 +160,31 @@ public class PacketBuffer extends Buffer {
         int i_1_ = 8 - (0x7 & bitoffset);
         bitoffset += arg0;
         for(/**/; i_1_ < arg0; i_1_ = 8) {
-            i_0_ += (Class40_Sub5_Sub4.anIntArray2361[i_1_] & buffer[i++]) << -i_1_ + arg0;
+            i_0_ += (VarbitDefinition.anIntArray2361[i_1_] & buffer[i++]) << -i_1_ + arg0;
             arg0 -= i_1_;
         }
-        if((i_1_ ^ 0xffffffff) != (arg0 ^ 0xffffffff))
-            i_0_ += (Class40_Sub5_Sub4.anIntArray2361[arg0] & buffer[i] >> -arg0 + i_1_);
+        if(arg0 != i_1_)
+            i_0_ += (VarbitDefinition.anIntArray2361[arg0] & buffer[i] >> -arg0 + i_1_);
         else
-            i_0_ += (buffer[i] & Class40_Sub5_Sub4.anIntArray2361[i_1_]);
+            i_0_ += (buffer[i] & VarbitDefinition.anIntArray2361[i_1_]);
         return i_0_;
     }
 
-    public void putPacket(int arg1) {
-        System.out.printf("Sending Packet: %d\n", arg1);
-        buffer[currentPosition++] = //(byte) (encryption.method286(com.jagex.runescape.RSApplet.method27(arg0, -11500)) + arg1);
-                (byte) arg1;
+    public void putPacket(int packetId) {
+        buffer[currentPosition++] = (byte) ((packetId + outCipher.rand()) & 0xff);
     }
 
-    public void initEncryption(int arg0, int[] arg1) {
-        encryption = new ISAAC(arg1);
-        if(arg0 != -1)
-            aClass1_2259 = null;
+    public void initInCipher(int[] seed) {
+        inCipher = new ISAAC(seed);
+    }
+
+    public void initOutCipher(int[] seed) {
+        outCipher = new ISAAC(seed);
     }
 
     public void initBitAccess(int arg0) {
         bitoffset = currentPosition * 8;
         if(arg0 <= 21)
-            encryption = null;
+            inCipher = null;
     }
 }

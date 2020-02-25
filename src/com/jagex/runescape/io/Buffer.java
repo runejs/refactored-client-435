@@ -1,7 +1,7 @@
 package com.jagex.runescape.io;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
 
 import java.math.BigInteger;
@@ -35,12 +35,12 @@ public class Buffer extends Node {
     }
 
     // ???
-    public static boolean method472(Class6 arg1, int arg2) {
+    public static boolean method472(CacheIndex arg1, int arg2) {
         byte[] is = arg1.method187(arg2);
         if(is == null) {
             return false;
         }
-        Class6.method184(is, 0);
+        CacheIndex.method184(is, 0);
         return true;
 
     }
@@ -52,22 +52,6 @@ public class Buffer extends Node {
         aClass1_1983 = null;
         aClass9_1933 = null;
         anIntArray1972 = null;
-    }
-
-    // ???
-    public static IdentityKit method501(int arg1) {
-        IdentityKit identityKit = ((IdentityKit) Class68.aClass9_1615.method231((long) arg1, (byte) 107));
-        if(identityKit != null) {
-            return identityKit;
-        }
-        byte[] is = Class49.aClass6_1150.method172(arg1, 114, 3);
-        identityKit = new IdentityKit();
-        if(is != null) {
-            identityKit.readValues(new Buffer(is));
-        }
-        Class68.aClass9_1615.method230(-7208, (long) arg1, identityKit);
-        return identityKit;
-
     }
 
     public int getNegativeOffsetShortBE() {
@@ -233,14 +217,14 @@ public class Buffer extends Node {
 
     public int getSmart() {
         int i = buffer[currentPosition] & 0xff;
-        if((i ^ 0xffffffff) <= -129) {
+        if(i >= 128) {
             return getUnsignedShortBE() + -32768;
         }
         return getUnsignedByte();
     }
 
     public void putSmart(int value) {
-        if((value ^ 0xffffffff) <= -1 && value < 128) {
+        if(value >= 0 && value < 128) {
             putByte(value);
         } else if(value >= 0 && value < 32768) {
             putShortBE(32768 + value);
@@ -261,7 +245,7 @@ public class Buffer extends Node {
             int i_7_ = 32;
             int i_8_ = -957401312;
             int i_9_ = -1640531527;
-            while((i_7_-- ^ 0xffffffff) < -1) {
+            while(i_7_-- > 0) {
                 i_6_ -= ((i_5_ >>> 5 ^ i_5_ << 4) + i_5_ ^ i_8_ + arg0[~0x71dffffc & i_8_ >>> 11]);
                 i_8_ -= i_9_;
                 i_5_ -= ((i_6_ >>> 5 ^ i_6_ << 4) + i_6_ ^ arg0[0x3 & i_8_] + i_8_);

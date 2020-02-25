@@ -28,6 +28,9 @@ public class ModelLoader {
     public void loadArray() {
         models = new ArrayList<Integer>();
         File[] m = new File("data/models").listFiles();
+        if(m == null || m.length < 1) {
+            return;
+        }
         for(File model : m)
             if(model.getName().contains(".dat"))
                 models.add(Integer.parseInt(model.getName().substring(0, model.getName().indexOf(".dat"))));

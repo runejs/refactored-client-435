@@ -16,7 +16,7 @@ public class Class17 {
     public static int[] anIntArray456;
     public static RSString aClass1_457 = RSString.CreateString("Willkommen auf RuneScape");
     public static int anInt460 = 0;
-    public static Font aFont461;
+    public static Font helveticaBold;
     public static Class68 aClass68_462;
     public static Class68 aClass68_463;
     public static int anInt464 = 0;
@@ -55,7 +55,7 @@ public class Class17 {
             Class42.anInt1006--;
             HashTable.anInt554++;
         }
-        if((Class8.aByte302 ^ 0xffffffff) != -1) {
+        if(Class8.aByte302 != 0) {
             try {
                 Buffer class40_sub1 = new Buffer(4);
                 class40_sub1.putByte(4);
@@ -75,11 +75,11 @@ public class Class17 {
         if(arg1 < 102)
             method273(null, 92, true);
         Class22.anInt547 = 0;
-        Class45.aLong1051 = Class51.method937(1);
+        Class45.aLong1051 = System.currentTimeMillis();
     }
 
     public static int method274(boolean arg0) {
-        if(arg0 != true)
+        if(!arg0)
             aClass68_463 = null;
         return Class49.anInt1147++;
     }
@@ -87,18 +87,18 @@ public class Class17 {
     public static void method275(int arg0, long arg1) {
         if(arg1 != 0L) {
             if(Class42.anInt1008 >= 100)
-                Class44.method895(arg0 ^ 0x603f, 0, Landscape.aClass1_1180, Class66.blank_string);
+                Class44.addChatMessage(HuffmanEncoding.blank_string, Landscape.aClass1_1180, 0);
             else {
                 RSString class1 = Class60.method991(arg0 ^ ~0x6004, arg1).method85(-4305);
                 for(int i = 0; i < Class42.anInt1008; i++) {
-                    if((Class53.aLongArray1267[i] ^ 0xffffffffffffffffL) == (arg1 ^ 0xffffffffffffffffL)) {
-                        Class44.method895(114, 0, (Class40_Sub5_Sub17_Sub6.method832(arg0 ^ ~0x604a, (new RSString[]{class1, Class68.aClass1_1628}))), Class66.blank_string);
+                    if(arg1 == Class53.aLongArray1267[i]) {
+                        Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832(arg0 ^ ~0x604a, (new RSString[]{class1, Class68.aClass1_1628}))), 0);
                         return;
                     }
                 }
                 for(int i = 0; Class40_Sub5_Sub17_Sub3.anInt3060 > i; i++) {
-                    if((arg1 ^ 0xffffffffffffffffL) == (Class59.aLongArray1397[i] ^ 0xffffffffffffffffL)) {
-                        Class44.method895(112, 0, (Class40_Sub5_Sub17_Sub6.method832(-100, (new RSString[]{Class44.aClass1_1032, class1, (Renderable.aClass1_2864)}))), Class66.blank_string);
+                    if(Class59.aLongArray1397[i] == arg1) {
+                        Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832(-100, (new RSString[]{Class44.aClass1_1032, class1, (Renderable.aClass1_2864)}))), 0);
                         return;
                     }
                 }
@@ -137,7 +137,7 @@ public class Class17 {
             aClass68_463 = null;
             aClass1_457 = null;
             anIntArray456 = null;
-            aFont461 = null;
+            helveticaBold = null;
             anIntArray466 = null;
         }
     }

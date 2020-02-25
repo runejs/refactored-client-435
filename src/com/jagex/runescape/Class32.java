@@ -13,11 +13,11 @@ public class Class32 {
     public static RSString aClass1_766;
     public static int anInt767;
     public static Class38 aClass38_768;
-    public static int anInt769;
+    public static int cameraZ;
     public static int anInt770;
     public static int anInt771;
     public static RSString aClass1_772;
-    public static Class6_Sub1 aClass6_Sub1_773;
+    public static CacheIndex_Sub1 aClass6_Sub1_773;
     public static int[] anIntArray774;
 
     static {
@@ -52,8 +52,8 @@ public class Class32 {
 
         RSString class1 = null;
         for(int i = 0; ActorDefinition.anInt2394 > i; i++) {
-            if((Landscape.aClass1Array1184[i].method60(VertexNormal.aClass1_1114) ^ 0xffffffff) != 0) {
-                class1 = (Landscape.aClass1Array1184[i].substring(Landscape.aClass1Array1184[i].method60(VertexNormal.aClass1_1114)));
+            if(Landscape.aClass1Array1184[i].contains(VertexNormal.aClass1_1114) != -1) {
+                class1 = (Landscape.aClass1Array1184[i].substring(Landscape.aClass1Array1184[i].contains(VertexNormal.aClass1_1114)));
                 break;
             }
         }
@@ -63,24 +63,24 @@ public class Class32 {
         else {
             int i = VertexNormal.anInt1086;
             int i_0_ = Class19.anInt475;
-            if((i ^ 0xffffffff) < -191)
+            if(i > 190)
                 i = 190;
             int i_1_ = CollisionMap.anInt168;
             int i_2_ = Main.anInt1758;
-            if((i_0_ ^ 0xffffffff) > -1)
+            if(i_0_ < 0)
                 i_0_ = 0;
             int i_3_ = 6116423;
-            Rasterizer.method656(i_0_, i_2_, i, i_1_, i_3_);
-            Rasterizer.method656(i_0_ + 1, i_2_ + 1, arg0 + i, 16, 0);
-            Rasterizer.method665(i_0_ + 1, 18 + i_2_, -2 + i, i_1_ + -19, 0);
-            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method683(class1, 3 + i_0_, 14 + i_2_, i_3_, false);
+            Rasterizer.drawFilledRectangle(i_0_, i_2_, i, i_1_, i_3_);
+            Rasterizer.drawFilledRectangle(i_0_ + 1, i_2_ + 1, arg0 + i, 16, 0);
+            Rasterizer.drawUnfilledRectangle(i_0_ + 1, 18 + i_2_, -2 + i, i_1_ + -19, 0);
+            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawShadowedString(class1, 3 + i_0_, 14 + i_2_, i_3_, false);
             int i_4_ = Class13.mouseX;
             int i_5_ = Landscape.mouseY;
-            if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -1) {
+            if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
                 i_4_ -= 4;
                 i_5_ -= 4;
             }
-            if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -2) {
+            if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
                 i_4_ -= 553;
                 i_5_ -= 205;
             }
@@ -88,7 +88,7 @@ public class Class32 {
                 i_5_ -= 357;
                 i_4_ -= 17;
             }
-            for(int i_6_ = 0; ((i_6_ ^ 0xffffffff) > (ActorDefinition.anInt2394 ^ 0xffffffff)); i_6_++) {
+            for(int i_6_ = 0; ((i_6_ < ActorDefinition.anInt2394)); i_6_++) {
                 int i_7_ = 31 + i_2_ + (ActorDefinition.anInt2394 + (-1 + -i_6_)) * 15;
                 RSString class1_8_ = Landscape.aClass1Array1184[i_6_];
                 int i_9_ = 16777215;
@@ -97,9 +97,9 @@ public class Class32 {
                     if(class1_8_.method87(arg0 ^ ~0x6f, VertexNormal.aClass1_1117))
                         class1_8_ = (class1_8_.substring(0, (class1_8_.length() + -VertexNormal.aClass1_1117.length())));
                 }
-                if((i_0_ ^ 0xffffffff) > (i_4_ ^ 0xffffffff) && (i_4_ ^ 0xffffffff) > (i_0_ + i ^ 0xffffffff) && -13 + i_7_ < i_5_ && 3 + i_7_ > i_5_)
+                if((i_0_ < i_4_) && (i_4_ < i_0_ + i) && -13 + i_7_ < i_5_ && 3 + i_7_ > i_5_)
                     i_9_ = 16776960;
-                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method683(class1_8_, 3 + i_0_, i_7_, i_9_, true);
+                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawShadowedString(class1_8_, 3 + i_0_, i_7_, i_9_, true);
             }
         }
 
@@ -107,7 +107,7 @@ public class Class32 {
 
     public static void method399(int arg0, int arg1, int arg2) {
         anInt744++;
-        long l = (long) ((arg0 << -713372176) + arg2);
+        long l = (long) ((arg0 << 16) + arg2);
         Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.method331(l, 6120));
         if(class40_sub5_sub13 != null) {
             Class19.aClass27_485.method367(true, class40_sub5_sub13);

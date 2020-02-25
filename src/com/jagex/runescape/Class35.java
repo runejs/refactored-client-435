@@ -24,13 +24,13 @@ public class Class35 implements Interface3 {
     public static boolean aBoolean1735;
     public static RSString aClass1_1736;
     public static int publicChatMode;
-    public static int[] anIntArray1738;
+    public static int[] SKIN_COLOURS;
     public static int anInt1739;
     public static int anInt1741;
     public static int anInt1742;
     public static RSString aClass1_1743;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1744;
-    public static byte[][][] aByteArrayArrayArray1745;
+    public static byte[][][] tile_overlay_rotation;
     public static RSString aClass1_1746;
     public static RSString aClass1_1747;
     public static int anInt1751;
@@ -38,7 +38,7 @@ public class Class35 implements Interface3 {
     static {
         aClass1_1726 = RSString.CreateString("Wen m-Ochten Sie der Liste hinzuf-Ugen?");
         anInt1733 = 0;
-        anIntArray1738 = new int[]{9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145, 58654, 5027, 1457, 16565, 34991, 25486};
+        SKIN_COLOURS = new int[]{9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145, 58654, 5027, 1457, 16565, 34991, 25486};
         aBoolean1734 = false;
         publicChatMode = 0;
         aClass1_1731 = RSString.CreateString("Handel)4Duell");
@@ -54,16 +54,16 @@ public class Class35 implements Interface3 {
     public Class45 aClass45_1727 = new Class45();
     public EntryTable[] aClass40_Sub10Array1740;
     public int anInt1748;
-    public Class6 aClass6_1749;
+    public CacheIndex aCacheIndex_1749;
     public double aDouble1750 = 1.0;
     public int anInt1752;
     public int anInt1753;
 
-    public Class35(Class6 arg0, Class6 arg1, int arg2, double arg3, int arg4) {
+    public Class35(CacheIndex arg0, CacheIndex arg1, int arg2, double arg3, int arg4) {
         anInt1748 = 128;
         anInt1753 = 0;
         anInt1752 = arg2;
-        aClass6_1749 = arg1;
+        aCacheIndex_1749 = arg1;
         aDouble1750 = arg3;
         anInt1748 = arg4;
         anInt1753 = anInt1752;
@@ -71,13 +71,13 @@ public class Class35 implements Interface3 {
         int i = is.length;
         aClass40_Sub10Array1740 = new EntryTable[arg0.method190(0, (byte) 120)];
         for(int i_4_ = 0; i > i_4_; i_4_++) {
-            Buffer class40_sub1 = new Buffer(arg0.method172(is[i_4_], 120, 0));
+            Buffer class40_sub1 = new Buffer(arg0.getFile(is[i_4_], 0));
             aClass40_Sub10Array1740[is[i_4_]] = new EntryTable(class40_sub1);
         }
 
     }
 
-    public static Class40_Sub5_Sub15 method421(Class6 arg0, byte arg1, int arg2, Class6 arg3, boolean arg4) {
+    public static Class40_Sub5_Sub15 method421(CacheIndex arg0, byte arg1, int arg2, CacheIndex arg3, boolean arg4) {
 
         if(arg1 < 40)
             return null;
@@ -89,7 +89,7 @@ public class Class35 implements Interface3 {
             if(is_0_ == null)
                 bool = false;
             else {
-                int i_1_ = 0xff & is_0_[1] | (0xff & is_0_[0]) << -1471118168;
+                int i_1_ = 0xff & is_0_[1] | (0xff & is_0_[0]) << 8;
                 byte[] is_2_;
                 if(arg4)
                     is_2_ = arg3.method182(i_1_, -122, 0);
@@ -113,11 +113,11 @@ public class Class35 implements Interface3 {
 
         if(arg0 <= -18) {
             aClass1_1720 = null;
-            aByteArrayArrayArray1745 = null;
+            tile_overlay_rotation = null;
             aClass1_1725 = null;
             aClass1_1746 = null;
             aFrame1732 = null;
-            anIntArray1738 = null;
+            SKIN_COLOURS = null;
             aClass1_1743 = null;
             aClass1_1736 = null;
             aClass40_Sub5_Sub14_Sub2_1744 = null;
@@ -131,7 +131,7 @@ public class Class35 implements Interface3 {
     public void method422(int arg0) {
 
         anInt1723++;
-        for(int i = arg0; ((aClass40_Sub10Array1740.length ^ 0xffffffff) < (i ^ 0xffffffff)); i++) {
+        for(int i = arg0; ((aClass40_Sub10Array1740.length > i)); i++) {
             if(aClass40_Sub10Array1740[i] != null)
                 aClass40_Sub10Array1740[i].method870();
         }
@@ -151,9 +151,9 @@ public class Class35 implements Interface3 {
                 class40_sub10.aBoolean2146 = true;
                 return class40_sub10.anIntArray2139;
             }
-            boolean bool = class40_sub10.method869(aDouble1750, anInt1748, aClass6_1749);
+            boolean bool = class40_sub10.method869(aDouble1750, anInt1748, aCacheIndex_1749);
             if(bool) {
-                if((anInt1753 ^ 0xffffffff) == -1) {
+                if(anInt1753 == 0) {
                     EntryTable class40_sub10_3_ = ((EntryTable) aClass45_1727.method899((byte) 87));
                     class40_sub10_3_.method870();
                 } else
@@ -170,7 +170,7 @@ public class Class35 implements Interface3 {
     public int method14(boolean arg0, int arg1) {
 
         anInt1724++;
-        if(arg0 != true)
+        if(!arg0)
             return 115;
         if(aClass40_Sub10Array1740[arg1] != null)
             return aClass40_Sub10Array1740[arg1].anInt2137;
@@ -202,9 +202,9 @@ public class Class35 implements Interface3 {
         anInt1751++;
         int i = 0;
         if(arg0 == 6) {
-            for(/**/; (i ^ 0xffffffff) > (aClass40_Sub10Array1740.length ^ 0xffffffff); i++) {
+            for(/**/; (i < aClass40_Sub10Array1740.length); i++) {
                 EntryTable class40_sub10 = aClass40_Sub10Array1740[i];
-                if(class40_sub10 != null && (class40_sub10.anInt2136 ^ 0xffffffff) != -1 && class40_sub10.aBoolean2146) {
+                if(class40_sub10 != null && class40_sub10.anInt2136 != 0 && class40_sub10.aBoolean2146) {
                     class40_sub10.method868(arg1);
                     class40_sub10.aBoolean2146 = false;
                 }

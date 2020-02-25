@@ -104,7 +104,7 @@ public class EntryTable extends Node {
         }
     }
 
-    public boolean method869(double arg0, int arg1, Class6 arg2) {
+    public boolean method869(double arg0, int arg1, CacheIndex arg2) {
         for(int i = 0; i < anIntArray2144.length; i++) {
             if(arg2.method193((byte) 93, anIntArray2144[i]) == null)
                 return false;

@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -9,10 +10,7 @@ import com.jagex.runescape.util.Signlink;
 import java.applet.Applet;
 import java.applet.AppletContext;
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.URL;
@@ -67,79 +65,79 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
     }
 
-    public static void method20(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, Class40_Sub5_Sub12[] arg7, int arg8, int arg9) {
+    public static void method20(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, Widget[] arg7, int arg8, int arg9) {
 
         if(arg6 != 1)
             providesignlink(null);
         for(int i = 0; i < arg7.length; i++) {
-            Class40_Sub5_Sub12 class40_sub5_sub12 = arg7[i];
-            if(class40_sub5_sub12 != null && (class40_sub5_sub12.anInt2683 == 0 || class40_sub5_sub12.aBoolean2688) && class40_sub5_sub12 != null && arg5 == class40_sub5_sub12.anInt2648 && (!class40_sub5_sub12.aBoolean2750 || PacketBuffer.aBoolean2236)) {
-                int i_1_ = arg4 + class40_sub5_sub12.anInt2656;
-                int i_2_ = arg0 + class40_sub5_sub12.anInt2696;
-                if(!class40_sub5_sub12.aBoolean2694)
+            Widget widget = arg7[i];
+            if(widget != null && (widget.type == 0 || widget.aBoolean2688) && widget != null && arg5 == widget.parentId && (!widget.isHidden || PacketBuffer.hiddenButtonTest)) {
+                int i_1_ = arg4 + widget.currentX;
+                int i_2_ = arg0 + widget.currentY;
+                if(!widget.aBoolean2694)
                     i_2_ -= arg9;
-                int i_3_ = i_2_ + class40_sub5_sub12.anInt2643;
+                int i_3_ = i_2_ + widget.originalHeight;
                 int i_4_ = arg0 >= i_2_ ? arg0 : i_2_;
-                if(!class40_sub5_sub12.aBoolean2694)
+                if(!widget.aBoolean2694)
                     i_1_ -= arg2;
-                int i_5_ = i_1_ + class40_sub5_sub12.anInt2692;
+                int i_5_ = i_1_ + widget.originalWidth;
                 int i_6_ = arg4 < i_1_ ? i_1_ : arg4;
                 int i_7_ = arg1 > i_3_ ? i_3_ : arg1;
                 int i_8_ = i_5_ < arg8 ? i_5_ : arg8;
-                if(class40_sub5_sub12.anInt2683 == 0) {
-                    method20(i_4_, i_7_, class40_sub5_sub12.anInt2746, arg3, i_6_, i, 1, arg7, i_8_, class40_sub5_sub12.scrollPosition);
-                    if(class40_sub5_sub12.aClass40_Sub5_Sub12Array2713 != null)
-                        method20(i_4_, i_7_, class40_sub5_sub12.anInt2746, arg3, i_6_, class40_sub5_sub12.anInt2689, 1, (class40_sub5_sub12.aClass40_Sub5_Sub12Array2713), i_8_, class40_sub5_sub12.scrollPosition);
+                if(widget.type == 0) {
+                    method20(i_4_, i_7_, widget.anInt2746, arg3, i_6_, i, 1, arg7, i_8_, widget.scrollPosition);
+                    if(widget.aWidgetArray2713 != null)
+                        method20(i_4_, i_7_, widget.anInt2746, arg3, i_6_, widget.id, 1, (widget.aWidgetArray2713), i_8_, widget.scrollPosition);
                 }
-                if(class40_sub5_sub12.aBoolean2688) {
+                if(widget.aBoolean2688) {
                     boolean bool;
-                    bool = (Class13.mouseX ^ 0xffffffff) <= (i_6_ ^ 0xffffffff) && (i_4_ ^ 0xffffffff) >= (Landscape.mouseY ^ 0xffffffff) && i_8_ > Class13.mouseX && (i_7_ ^ 0xffffffff) < (Landscape.mouseY ^ 0xffffffff);
+                    bool = (Class13.mouseX >= i_6_) && (i_4_ <= Landscape.mouseY) && i_8_ > Class13.mouseX && (i_7_ > Landscape.mouseY);
                     boolean bool_9_ = false;
-                    if(Class40_Sub5_Sub2.anInt2302 == 1 && bool)
+                    if(SpotAnimDefinition.anInt2302 == 1 && bool)
                         bool_9_ = true;
                     boolean bool_10_ = false;
-                    if((class40_sub5_sub12.anInt2738 ^ 0xffffffff) != 0 && bool_9_ && Class10.aClass40_Sub5_Sub12_353 == null) {
+                    if(widget.anInt2738 != -1 && bool_9_ && Class10.aWidget_353 == null) {
                         Class40_Sub2.anInt1996 = Class13.mouseX;
-                        Class10.aClass40_Sub5_Sub12_353 = class40_sub5_sub12;
+                        Class10.aWidget_353 = widget;
                         Class40_Sub5_Sub11.anInt2621 = Landscape.mouseY;
                     }
-                    if(Class62.anInt1470 == 1 && (i_6_ ^ 0xffffffff) >= (Class57.anInt1338 ^ 0xffffffff) && ((RSString.anInt1668 ^ 0xffffffff) <= (i_4_ ^ 0xffffffff)) && Class57.anInt1338 < i_8_ && RSString.anInt1668 < i_7_)
+                    if(GameFrame.clickType == 1 && (i_6_ <= Class57.anInt1338) && ((RSString.anInt1668 >= i_4_)) && Class57.anInt1338 < i_8_ && RSString.anInt1668 < i_7_)
                         bool_10_ = true;
-                    if(Class10.aClass40_Sub5_Sub12_353 != null) {
+                    if(Class10.aWidget_353 != null) {
                         bool_9_ = false;
                         bool = false;
                         bool_10_ = false;
                     }
-                    if(!class40_sub5_sub12.aBoolean2730 && bool_10_ && (0x1 & arg3) != 0) {
-                        class40_sub5_sub12.aBoolean2730 = true;
-                        if(class40_sub5_sub12.anObjectArray2681 != null)
-                            Class43.method891((class40_sub5_sub12.anObjectArray2681), 0, RSString.anInt1668 + -i_2_, class40_sub5_sub12, Class57.anInt1338 - i_1_, false);
+                    if(!widget.aBoolean2730 && bool_10_ && (0x1 & arg3) != 0) {
+                        widget.aBoolean2730 = true;
+                        if(widget.anObjectArray2681 != null)
+                            Widget.method891((widget.anObjectArray2681), 0, RSString.anInt1668 + -i_2_, widget, Class57.anInt1338 - i_1_, false);
                     }
-                    if(class40_sub5_sub12.aBoolean2730 && bool_9_ && (arg3 & 0x4 ^ 0xffffffff) != -1 && class40_sub5_sub12.anObjectArray2747 != null)
-                        Class43.method891((class40_sub5_sub12.anObjectArray2747), 0, -i_2_ + Landscape.mouseY, class40_sub5_sub12, -i_1_ + Class13.mouseX, false);
-                    if(class40_sub5_sub12.aBoolean2730 && !bool_9_ && (0x2 & arg3 ^ 0xffffffff) != -1) {
-                        class40_sub5_sub12.aBoolean2730 = false;
-                        if(class40_sub5_sub12.anObjectArray2707 != null)
-                            Class43.method891((class40_sub5_sub12.anObjectArray2707), 0, Landscape.mouseY - i_2_, class40_sub5_sub12, Class13.mouseX - i_1_, false);
+                    if(widget.aBoolean2730 && bool_9_ && (arg3 & 0x4) != 0 && widget.anObjectArray2747 != null)
+                        Widget.method891((widget.anObjectArray2747), 0, -i_2_ + Landscape.mouseY, widget, -i_1_ + Class13.mouseX, false);
+                    if(widget.aBoolean2730 && !bool_9_ && (0x2 & arg3) != 0) {
+                        widget.aBoolean2730 = false;
+                        if(widget.anObjectArray2707 != null)
+                            Widget.method891((widget.anObjectArray2707), 0, Landscape.mouseY - i_2_, widget, Class13.mouseX - i_1_, false);
                     }
-                    if(bool_9_ && (arg3 & 0x8 ^ 0xffffffff) != -1 && class40_sub5_sub12.anObjectArray2644 != null)
-                        Class43.method891((class40_sub5_sub12.anObjectArray2644), 0, -i_2_ + Landscape.mouseY, class40_sub5_sub12, -i_1_ + Class13.mouseX, false);
-                    if(!class40_sub5_sub12.aBoolean2682 && bool && (0x10 & arg3) != 0) {
-                        class40_sub5_sub12.aBoolean2682 = true;
-                        if(class40_sub5_sub12.anObjectArray2658 != null)
-                            Class43.method891((class40_sub5_sub12.anObjectArray2658), 0, Landscape.mouseY - i_2_, class40_sub5_sub12, Class13.mouseX - i_1_, false);
+                    if(bool_9_ && (arg3 & 0x8) != 0 && widget.anObjectArray2644 != null)
+                        Widget.method891((widget.anObjectArray2644), 0, -i_2_ + Landscape.mouseY, widget, -i_1_ + Class13.mouseX, false);
+                    if(!widget.aBoolean2682 && bool && (0x10 & arg3) != 0) {
+                        widget.aBoolean2682 = true;
+                        if(widget.anObjectArray2658 != null)
+                            Widget.method891((widget.anObjectArray2658), 0, Landscape.mouseY - i_2_, widget, Class13.mouseX - i_1_, false);
                     }
-                    if(class40_sub5_sub12.aBoolean2682 && bool && (0x40 & arg3) != 0 && class40_sub5_sub12.anObjectArray2680 != null)
-                        Class43.method891((class40_sub5_sub12.anObjectArray2680), 0, -i_2_ + Landscape.mouseY, class40_sub5_sub12, -i_1_ + Class13.mouseX, false);
-                    if(class40_sub5_sub12.aBoolean2682 && !bool && (arg3 & 0x20) != 0) {
-                        class40_sub5_sub12.aBoolean2682 = false;
-                        if(class40_sub5_sub12.anObjectArray2672 != null)
-                            Class43.method891((class40_sub5_sub12.anObjectArray2672), 0, -i_2_ + Landscape.mouseY, class40_sub5_sub12, -i_1_ + Class13.mouseX, false);
+                    if(widget.aBoolean2682 && bool && (0x40 & arg3) != 0 && widget.anObjectArray2680 != null)
+                        Widget.method891((widget.anObjectArray2680), 0, -i_2_ + Landscape.mouseY, widget, -i_1_ + Class13.mouseX, false);
+                    if(widget.aBoolean2682 && !bool && (arg3 & 0x20) != 0) {
+                        widget.aBoolean2682 = false;
+                        if(widget.anObjectArray2672 != null)
+                            Widget.method891((widget.anObjectArray2672), 0, -i_2_ + Landscape.mouseY, widget, -i_1_ + Class13.mouseX, false);
                     }
-                    if(class40_sub5_sub12.anObjectArray2712 != null && (arg3 & 0x80) != 0)
-                        Class43.method891((class40_sub5_sub12.anObjectArray2712), 0, 0, class40_sub5_sub12, 0, false);
-                    if(Class40_Sub5_Sub7.anInt2480 == Node.anInt926 && class40_sub5_sub12.anObjectArray2650 != null && (arg3 & 0x100 ^ 0xffffffff) != -1)
-                        Class43.method891((class40_sub5_sub12.anObjectArray2650), 0, 0, class40_sub5_sub12, 0, false);
+                    if(widget.anObjectArray2712 != null && (arg3 & 0x80) != 0)
+                        Widget.method891((widget.anObjectArray2712), 0, 0, widget, 0, false);
+                    if(AnimationSequence.anInt2480 == Node.pulseCycle && widget.anObjectArray2650 != null && (arg3 & 0x100) != 0)
+                        Widget.method891((widget.anObjectArray2650), 0, 0, widget, 0, false);
                 }
             }
         }
@@ -155,10 +153,10 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
     }
 
     public static void method28(long arg0, int arg1) {
-        if((arg0 ^ 0xffffffffffffffffL) != -1L) {
+        if(arg0 != 0) {
             int i = 0;
             int i_12_ = -18 % ((arg1 - 69) / 44);
-            for(/**/; ((Class40_Sub5_Sub17_Sub3.anInt3060 ^ 0xffffffff) < (i ^ 0xffffffff)); i++) {
+            for(/**/; ((Class40_Sub5_Sub17_Sub3.anInt3060 > i)); i++) {
                 if(Class59.aLongArray1397[i] == arg0) {
                     Class53.anInt1258++;
                     Class40_Sub5_Sub17_Sub3.anInt3060--;
@@ -178,18 +176,18 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
     }
 
     public static int method32(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
-        if(arg3 != true)
+        if(!arg3)
             return -109;
-        int i = (65536 + -(R3D.cosinetable[1024 * arg4 / arg1]) >> 1712636353);
-        return (((65536 + -i) * arg0 >> 523531120) + (arg2 * i >> 1426525808));
+        int i = (65536 + -(R3D.cosinetable[1024 * arg4 / arg1]) >> 1);
+        return (((65536 + -i) * arg0 >> 16) + (arg2 * i >> 16));
     }
 
     public void run() {
         try {
             if(Signlink.aString735 != null) {
                 String string = Signlink.aString735.toLowerCase();
-                if(string.indexOf("sun") == -1 && (string.indexOf("apple") ^ 0xffffffff) == 0) {
-                    if((string.indexOf("ibm") ^ 0xffffffff) != 0 && (Signlink.aString739 == null || Signlink.aString739.equals("1.4.2"))) {
+                if(string.indexOf("sun") == -1 && string.indexOf("apple") == -1) {
+                    if(string.indexOf("ibm") != -1 && (Signlink.aString739 == null || Signlink.aString739.equals("1.4.2"))) {
                         openErrorPage((byte) 27, "wrongjava");
                         return;
                     }
@@ -212,18 +210,18 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 }
             }
             setCanvas((byte) 121);
-            Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649((IdentityKit.height), Class12.width, Class62.aCanvas1469, -4875);
+            Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649((IdentityKit.height), Class12.width, GameFrame.aCanvas1469, -4875);
             method31(true);
             Class32.aClass38_768 = Class56.method972((byte) 47);
             Class32.aClass38_768.method443(-10115);
-            while(Class6.aLong219 == 0L || Class51.method937(1) < Class6.aLong219) {
+            while(CacheIndex.aLong219 == 0L || System.currentTimeMillis() < CacheIndex.aLong219) {
                 Class40_Sub3.anInt2020 = Class32.aClass38_768.method442(Class39.anInt912, (Class40_Sub3.anInt2024), 9799);
-                for(int i = 0; (i ^ 0xffffffff) > (Class40_Sub3.anInt2020 ^ 0xffffffff); i++)
+                for(int i = 0; (i < Class40_Sub3.anInt2020); i++)
                     method29(true);
                 method26((byte) 88);
             }
         } catch(Exception exception) {
-            Class6.method169(null, (byte) -121, exception);
+            CacheIndex.method169(null, (byte) -121, exception);
             openErrorPage((byte) 62, "crash");
         }
         method17(118);
@@ -238,7 +236,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 aClass1_14 = null;
             PacketBuffer.aBoolean2255 = true;
             try {
-                Class62.aCanvas1469.removeFocusListener(this);
+                GameFrame.aCanvas1469.removeFocusListener(this);
             } catch(Exception exception) {
                 /* empty */
             }
@@ -267,7 +265,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
     public void stop() {
         if(this == Class4.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255)
-            Class6.aLong219 = Class51.method937(1) + 4000L;
+            CacheIndex.aLong219 = System.currentTimeMillis() + 4000L;
     }
 
     public abstract void init();
@@ -280,7 +278,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             return true;
         if(string.endsWith("127.0.0.1"))
             return true;
-        for(/**/; ((string.length() ^ 0xffffffff) < -1 && string.charAt(string.length() - 1) >= '0' && ((string.charAt(string.length() + -1) ^ 0xffffffff) >= -58)); string = string.substring(0, string.length() - 1)) {
+        for(/**/; (string.length() > 0 && string.charAt(string.length() - 1) >= '0' && (string.charAt(string.length() + -1) <= 57)); string = string.substring(0, string.length() - 1)) {
             /* empty */
         }
         if(string.endsWith("192.168.1."))
@@ -309,7 +307,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
     public void start() {
         if(this == Class4.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255)
-            Class6.aLong219 = 0L;
+            CacheIndex.aLong219 = 0L;
     }
 
     public abstract void method23(int i);
@@ -322,18 +320,18 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
     public synchronized void paint(Graphics arg0) {
         if(this == Class4.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255) {
-            Class40_Sub5_Sub11.aBoolean2631 = true;
-            if(Signlink.aString739 == null || !Signlink.aString739.startsWith("1.5") || -Class4.aLong174 + Class51.method937(1) <= 1000L)
+            Class40_Sub5_Sub11.clearScreen = true;
+            if(Signlink.aString739 == null || !Signlink.aString739.startsWith("1.5") || -Class4.aLong174 + System.currentTimeMillis() <= 1000L)
                 return;
             Rectangle rectangle = arg0.getClipBounds();
-            if(rectangle == null || (rectangle.width >= Class12.width && ((rectangle.height ^ 0xffffffff) <= (IdentityKit.height ^ 0xffffffff))))
+            if(rectangle == null || (rectangle.width >= Class12.width && ((rectangle.height >= IdentityKit.height))))
                 Class67.aBoolean1575 = true;
         }
     }
 
     public void destroy() {
         if(Class4.anApplet_Sub1_179 == this && !PacketBuffer.aBoolean2255) {
-            Class6.aLong219 = Class51.method937(1);
+            CacheIndex.aLong219 = System.currentTimeMillis();
             Class43.method890(5000L, -123);
             Actor.aClass31_3152 = null;
             method17(121);
@@ -342,7 +340,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
     public void focusGained(FocusEvent arg0) {
         Class52.aBoolean1215 = true;
-        Class40_Sub5_Sub11.aBoolean2631 = true;
+        Class40_Sub5_Sub11.clearScreen = true;
     }
 
     public URL getDocumentBase() {
@@ -367,7 +365,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 Actor.aClass31_3152 = ISAAC.aClass31_521 = (new Signlink(false, this, InetAddress.getByName(getCodeBase().getHost()), fileStoreId, null, 0));
             ISAAC.aClass31_521.method394(1, 0, this);
         } catch(Exception exception) {
-            Class6.method169(null, (byte) -126, exception);
+            CacheIndex.method169(null, (byte) -126, exception);
             openErrorPage((byte) 31, "crash");
         }
         if(arg0 == 120)
@@ -380,24 +378,24 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
     public void method26(byte arg0) {
         if(arg0 == 88) {
-            long l = Class51.method937(1);
+            long l = System.currentTimeMillis();
             long l_11_ = aLongArray4[Class30.anInt681];
             aLongArray4[Class30.anInt681] = l;
-            if((l_11_ ^ 0xffffffffffffffffL) != -1L && ((l_11_ ^ 0xffffffffffffffffL) > (l ^ 0xffffffffffffffffL))) {
+            if(l_11_ != 0 && (l > l_11_)) {
                 int i = (int) (-l_11_ + l);
-                Class52.anInt1219 = ((i >> -17114751) + 32000) / i;
+                Class52.fps = ((i >> 1) + 32000) / i;
             }
             Class30.anInt681 = Class30.anInt681 + 1 & 0x1f;
             if(Node.anInt938++ > 50) {
                 Node.anInt938 -= 50;
-                Class40_Sub5_Sub11.aBoolean2631 = true;
-                Class62.aCanvas1469.setSize(Class12.width, IdentityKit.height);
-                Class62.aCanvas1469.setVisible(true);
+                Class40_Sub5_Sub11.clearScreen = true;
+                GameFrame.aCanvas1469.setSize(Class12.width, IdentityKit.height);
+                GameFrame.aCanvas1469.setVisible(true);
                 if(Class35.aFrame1732 == null)
-                    Class62.aCanvas1469.setLocation(0, 0);
+                    GameFrame.aCanvas1469.setLocation(0, 0);
                 else {
                     Insets insets = Class35.aFrame1732.getInsets();
-                    Class62.aCanvas1469.setLocation(insets.left, insets.top);
+                    GameFrame.aCanvas1469.setLocation(insets.left, insets.top);
                 }
             }
             method34(arg0 + -210);
@@ -413,18 +411,18 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
     }
 
     public void method29(boolean arg0) {
-        long l = Class51.method937(1);
-        long l_14_ = Class67.aLongArray1614[Class62.anInt1468];
+        long l = System.currentTimeMillis();
+        long l_14_ = Class67.aLongArray1614[GameFrame.anInt1468];
         if(l_14_ != 0L && l > l_14_) {
             /* empty */
         }
-        Class67.aLongArray1614[Class62.anInt1468] = l;
-        Class62.anInt1468 = 0x1f & Class62.anInt1468 + 1;
+        Class67.aLongArray1614[GameFrame.anInt1468] = l;
+        GameFrame.anInt1468 = 0x1f & GameFrame.anInt1468 + 1;
         synchronized(this) {
             HashTable.aBoolean571 = Class52.aBoolean1215;
         }
         method23(-22636);
-        if(arg0 == true)
+        if(arg0)
             return;
         windowIconified(null);
     }
@@ -446,7 +444,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             Actor.aClass31_3152 = ISAAC.aClass31_521 = new Signlink(true, null, inetAddress, fileStoreId, cacheFolder, cacheIndexes);
             ISAAC.aClass31_521.method394(1, 0, this);
         } catch(Exception exception) {
-            Class6.method169(null, (byte) -127, exception);
+            CacheIndex.method169(null, (byte) -127, exception);
         }
     }
 
@@ -486,26 +484,26 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             container = Class35.aFrame1732;
         else
             container = ISAAC.aClass31_521.anApplet740;
-        if(Class62.aCanvas1469 != null) {
-            Class62.aCanvas1469.removeFocusListener(this);
-            container.remove(Class62.aCanvas1469);
+        if(GameFrame.aCanvas1469 != null) {
+            GameFrame.aCanvas1469.removeFocusListener(this);
+            container.remove(GameFrame.aCanvas1469);
         }
-        Class62.aCanvas1469 = new RSCanvas(this);
-        container.add(Class62.aCanvas1469);
-        Class62.aCanvas1469.setSize(Class12.width, IdentityKit.height);
-        Class62.aCanvas1469.setVisible(true);
+        GameFrame.aCanvas1469 = new RSCanvas(this);
+        container.add(GameFrame.aCanvas1469);
+        GameFrame.aCanvas1469.setSize(Class12.width, IdentityKit.height);
+        GameFrame.aCanvas1469.setVisible(true);
         if(Class35.aFrame1732 != null) {
             Insets insets = Class35.aFrame1732.getInsets();
-            Class62.aCanvas1469.setLocation(insets.left, insets.top);
+            GameFrame.aCanvas1469.setLocation(insets.left, insets.top);
         } else
-            Class62.aCanvas1469.setLocation(0, 0);
-        Class62.aCanvas1469.addFocusListener(this);
+            GameFrame.aCanvas1469.setLocation(0, 0);
+        GameFrame.aCanvas1469.addFocusListener(this);
         if(arg0 < 85)
             run();
-        Class62.aCanvas1469.requestFocus();
-        Class40_Sub5_Sub11.aBoolean2631 = true;
+        GameFrame.aCanvas1469.requestFocus();
+        Class40_Sub5_Sub11.clearScreen = true;
         Class67.aBoolean1575 = false;
-        Class4.aLong174 = Class51.method937(1);
+        Class4.aLong174 = System.currentTimeMillis();
     }
 
     public abstract void method34(int i);

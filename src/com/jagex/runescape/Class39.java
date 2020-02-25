@@ -20,18 +20,18 @@ public class Class39 implements Runnable {
     public static int anInt916;
     public static RSString aClass1_917 = RSString.CreateString(" from your ignore list first");
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_918;
-    public static RSString aClass1_919 = RSString.CreateString("Ok");
-    public Object anObject905;
+    public static RSString str_ok = RSString.CreateString("Ok");
+    public Object objectLock;
     public boolean aBoolean913 = true;
-    public int[] anIntArray920;
-    public int anInt921;
-    public int[] anIntArray922;
+    public int[] coordsY;
+    public int coord;
+    public int[] coordsX;
 
     public Class39() {
-        anObject905 = new Object();
-        anInt921 = 0;
-        anIntArray920 = new int[500];
-        anIntArray922 = new int[500];
+        objectLock = new Object();
+        coord = 0;
+        coordsY = new int[500];
+        coordsX = new int[500];
     }
 
     public static void method451(Class40_Sub3 arg0, int arg1) {
@@ -41,17 +41,17 @@ public class Class39 implements Runnable {
         if(arg0.anInt2027 == 0)
             i = (Npc.aScene_3301.method122(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
         int i_2_ = 0;
-        if((arg0.anInt2027 ^ 0xffffffff) == -2)
+        if(arg0.anInt2027 == 1)
             i = (Npc.aScene_3301.method91(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
         if(arg0.anInt2027 == 2)
             i = (Npc.aScene_3301.method110(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
         if(arg0.anInt2027 == 3)
             i = (Npc.aScene_3301.method93(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
         if(arg1 == 19813) {
-            if((i ^ 0xffffffff) != -1) {
+            if(i != 0) {
                 int i_3_ = (Npc.aScene_3301.method141(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038, i));
-                i_0_ = (0x1fffe692 & i) >> 1746750286;
-                i_2_ = (i_3_ & 0xde) >> 114415910;
+                i_0_ = (0x1fffe692 & i) >> 14;
+                i_2_ = (i_3_ & 0xde) >> 6;
                 i_1_ = i_3_ & 0x1f;
             }
             arg0.anInt2025 = i_2_;
@@ -91,7 +91,7 @@ public class Class39 implements Runnable {
             method451(null, 36);
         aClass40_Sub5_Sub14_Sub4_918 = null;
         aClass1_904 = null;
-        aClass1_919 = null;
+        str_ok = null;
         aClass1_914 = null;
         aClass1_898 = null;
         aClass68_908 = null;
@@ -100,11 +100,11 @@ public class Class39 implements Runnable {
 
     public void run() {
         while(aBoolean913) {
-            synchronized(anObject905) {
-                if(anInt921 < 500) {
-                    anIntArray922[anInt921] = Class13.mouseX;
-                    anIntArray920[anInt921] = Landscape.mouseY;
-                    anInt921++;
+            synchronized(objectLock) {
+                if(coord < 500) {
+                    coordsX[coord] = Class13.mouseX;
+                    coordsY[coord] = Landscape.mouseY;
+                    coord++;
                 }
             }
             Class43.method890(50L, 44);

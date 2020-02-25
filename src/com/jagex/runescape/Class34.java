@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -96,7 +97,7 @@ public class Class34 {
     public static int method415(byte arg0, int arg1, int arg2) {
 
         anInt815++;
-        long l = (long) ((arg1 << 1451454800) + arg2);
+        long l = (long) ((arg1 << 16) + arg2);
         if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null || PacketBuffer.aClass40_Sub5_Sub13_2250.key != l)
             return 0;
         int i = 34 % ((arg0 + 46) / 45);
@@ -107,7 +108,7 @@ public class Class34 {
     public static boolean method416(byte arg0) {
 
         anInt836++;
-        synchronized(Class59.aClass54_1392) {
+        synchronized(Class59.aKeyFocusListener_1392) {
             if(Class59.anInt1389 == Class52.anInt1214)
                 return false;
             ItemDefinition.anInt2854 = Class40_Sub6.anIntArray2113[Class59.anInt1389];
@@ -120,20 +121,20 @@ public class Class34 {
 
     }
 
-    public static Class40_Sub5_Sub4 method417(int arg0, int arg1) {
+    public static VarbitDefinition method417(int arg0, int arg1) {
 
         anInt800++;
         if(arg0 != 0)
             return null;
-        Class40_Sub5_Sub4 class40_sub5_sub4 = ((Class40_Sub5_Sub4) Class57.aClass9_1331.method231((long) arg1, (byte) 111));
-        if(class40_sub5_sub4 != null)
-            return class40_sub5_sub4;
-        byte[] is = RSCanvas.aClass6_61.method172(arg1, 115, 14);
-        class40_sub5_sub4 = new Class40_Sub5_Sub4();
+        VarbitDefinition varbitDefinition = ((VarbitDefinition) Class57.aClass9_1331.get((long) arg1, (byte) 111));
+        if(varbitDefinition != null)
+            return varbitDefinition;
+        byte[] is = RSCanvas.aCacheIndex_61.getFile(arg1, 14);
+        varbitDefinition = new VarbitDefinition();
         if(is != null)
-            class40_sub5_sub4.method562(0, new Buffer(is));
-        Class57.aClass9_1331.method230(-7208, (long) arg1, class40_sub5_sub4);
-        return class40_sub5_sub4;
+            varbitDefinition.method562(0, new Buffer(is));
+        Class57.aClass9_1331.put(-7208, (long) arg1, varbitDefinition);
+        return varbitDefinition;
 
     }
 
@@ -159,34 +160,34 @@ public class Class34 {
 
         int i = -2 / ((-31 - arg0) / 57);
         anInt807++;
-        while((Cache.outgoingbuffer.method510(125, Class40_Sub5_Sub12.packetsize) ^ 0xffffffff) <= -12) {
+        while(Cache.outgoingbuffer.method510(125, Widget.packetsize) >= 11) {
             int i_0_ = Cache.outgoingbuffer.putBits(11, (byte) -65);
-            if((i_0_ ^ 0xffffffff) == -2048)
+            if(i_0_ == 2047)
                 break;
             boolean bool = false;
             if((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_]) == null) {
                 Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_] = new Player();
                 if(Class22.aClass40_Sub1Array534[i_0_] != null)
-                    Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_].method791((byte) -114, Class22.aClass40_Sub1Array534[i_0_]);
+                    Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_].parsePlayerAppearanceData(Class22.aClass40_Sub1Array534[i_0_]);
                 bool = true;
             }
             Class57.anIntArray1334[Class60.anInt1407++] = i_0_;
             Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_]);
-            class40_sub5_sub17_sub4_sub1.anInt3134 = Node.anInt926;
+            class40_sub5_sub17_sub4_sub1.anInt3134 = Node.pulseCycle;
             int i_1_ = Cache.outgoingbuffer.putBits(5, (byte) -65);
             int i_2_ = Cache.outgoingbuffer.putBits(5, (byte) -65);
-            if((i_1_ ^ 0xffffffff) < -16)
+            if(i_1_ > 15)
                 i_1_ -= 32;
-            if((i_2_ ^ 0xffffffff) < -16)
+            if(i_2_ > 15)
                 i_2_ -= 32;
             int i_3_ = (Class40_Sub5_Sub17_Sub1.anIntArray2987[Cache.outgoingbuffer.putBits(3, (byte) -65)]);
             if(bool)
                 class40_sub5_sub17_sub4_sub1.anInt3118 = i_3_;
             int i_4_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
             int i_5_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
-            if((i_5_ ^ 0xffffffff) == -2)
+            if(i_5_ == 1)
                 Class24.anIntArray578[Actor.anInt3153++] = i_0_;
-            class40_sub5_sub17_sub4_sub1.method787(i_2_ + (Player.localPlayer.anIntArray3135[0]), -7717, (i_4_ ^ 0xffffffff) == -2, (Player.localPlayer.anIntArray3088[0]) + i_1_);
+            class40_sub5_sub17_sub4_sub1.method787(i_2_ + (Player.localPlayer.anIntArray3135[0]), -7717, i_4_ == 1, (Player.localPlayer.anIntArray3088[0]) + i_1_);
         }
         Cache.outgoingbuffer.finishBitAccess((byte) -110);
 
@@ -198,14 +199,14 @@ public class Class34 {
         if(arg0 == -2)
             return 12345678;
         if(arg0 == -1) {
-            if((arg1 ^ 0xffffffff) > -1)
+            if(arg1 < 0)
                 arg1 = 0;
             else if(arg1 > 127)
                 arg1 = 127;
             arg1 = -arg1 + 127;
             return arg1;
         }
-        if(arg2 != true)
+        if(!arg2)
             method415((byte) -125, -124, -88);
         arg1 = arg1 * (arg0 & 0x7f) / 128;
         if(arg1 < 2)

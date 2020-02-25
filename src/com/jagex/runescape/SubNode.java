@@ -52,7 +52,7 @@ public class SubNode extends Node {
         anInt2094++;
         if(arg0 != 23721)
             aClass1_2095 = null;
-        Class54.aClass45_1278 = new Class45();
+        KeyFocusListener.aClass45_1278 = new Class45();
     }
 
     public static void method541(int arg0) {

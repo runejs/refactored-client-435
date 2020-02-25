@@ -3,7 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.media.renderable.actor.Npc;
 
-public class Class6_Sub1 extends Class6 {
+public class CacheIndex_Sub1 extends CacheIndex {
     public static int anInt1792;
     public static int anInt1793;
     public static int anInt1794;
@@ -43,7 +43,7 @@ public class Class6_Sub1 extends Class6 {
     public boolean aBoolean1811 = false;
     public Class56 aClass56_1812;
 
-    public Class6_Sub1(Class56 arg0, Class56 arg1, int arg2, boolean arg3, boolean arg4, boolean arg5) {
+    public CacheIndex_Sub1(Class56 arg0, Class56 arg1, int arg2, boolean arg3, boolean arg4, boolean arg5) {
         super(arg3, arg4);
         aClass56_1812 = arg0;
         aBoolean1811 = arg5;
@@ -71,7 +71,7 @@ public class Class6_Sub1 extends Class6 {
         anInt1804++;
         if(arg1 != 255)
             method203(83);
-        return (Class40_Sub5_Sub17_Sub6.method832(-110, (new RSString[]{HashTable.method334(0xff & arg0 >> 682571800, -1), Node.aClass1_975, HashTable.method334((arg0 & 0xffca88) >> 521687376, -1), Node.aClass1_975, HashTable.method334((0xfff8 & arg0) >> 1853669096, -1), Node.aClass1_975, HashTable.method334(0xff & arg0, -1)})));
+        return (Class40_Sub5_Sub17_Sub6.method832(-110, (new RSString[]{HashTable.method334(0xff & arg0 >> 24, -1), Node.aClass1_975, HashTable.method334((arg0 & 0xffca88) >> 16, -1), Node.aClass1_975, HashTable.method334((0xfff8 & arg0) >> 8, -1), Node.aClass1_975, HashTable.method334(0xff & arg0, -1)})));
 
     }
 
@@ -85,7 +85,7 @@ public class Class6_Sub1 extends Class6 {
             this.method178(arg4);
             method199(-124);
         } else {
-            arg4[arg4.length - 2] = (byte) (anIntArray224[arg2] >> -1152670104);
+            arg4[arg4.length - 2] = (byte) (anIntArray224[arg2] >> 8);
             arg4[arg4.length + -1] = (byte) anIntArray224[arg2];
             if(aClass56_1812 != null) {
                 RSRuntimeException.method1055(arg4, (byte) 55, aClass56_1812, arg2);
@@ -106,7 +106,7 @@ public class Class6_Sub1 extends Class6 {
         int i = Class34.method415((byte) -103, 255, anInt1807);
         if(arg0 != 100)
             return -74;
-        if((i ^ 0xffffffff) <= -101)
+        if(i >= 100)
             i = 99;
         return i;
 
@@ -136,7 +136,7 @@ public class Class6_Sub1 extends Class6 {
             } else {
                 if(!arg1 && anInt1797 == arg3)
                     aBoolean1800 = true;
-                if(arg2 == null || (arg2.length ^ 0xffffffff) >= -3) {
+                if(arg2 == null || arg2.length <= 2) {
                     aBooleanArray1796[arg3] = false;
                     if(aBoolean1811 || arg1)
                         HashTable.method327(arg1, this, anInt1807, arg3, (byte) 2, anIntArray252[arg3], (byte) -117);
@@ -145,8 +145,8 @@ public class Class6_Sub1 extends Class6 {
                 Class65.aCRC32_1531.reset();
                 Class65.aCRC32_1531.update(arg2, 0, arg2.length - 2);
                 int i = (int) Class65.aCRC32_1531.getValue();
-                int i_0_ = (((arg2[-2 + arg2.length] & 0xff) << 900515176) + (0xff & arg2[arg2.length + -1]));
-                if(i != anIntArray252[arg3] || ((anIntArray224[arg3] ^ 0xffffffff) != (i_0_ ^ 0xffffffff))) {
+                int i_0_ = (((arg2[-2 + arg2.length] & 0xff) << 8) + (0xff & arg2[arg2.length + -1]));
+                if(i != anIntArray252[arg3] || (i_0_ != anIntArray224[arg3])) {
                     aBooleanArray1796[arg3] = false;
                     if(aBoolean1811 || arg1)
                         HashTable.method327(arg1, this, anInt1807, arg3, (byte) 2, anIntArray252[arg3], (byte) -78);
@@ -185,19 +185,19 @@ public class Class6_Sub1 extends Class6 {
         aBooleanArray1796 = new boolean[aByteArrayArray212.length];
         anInt1817++;
         int i = -58 % ((-44 - arg0) / 55);
-        for(int i_1_ = 0; (i_1_ ^ 0xffffffff) > (aBooleanArray1796.length ^ 0xffffffff); i_1_++)
+        for(int i_1_ = 0; (i_1_ < aBooleanArray1796.length); i_1_++)
             aBooleanArray1796[i_1_] = false;
         if(aClass56_1812 == null)
             aBoolean1800 = true;
         else {
             anInt1797 = -1;
-            for(int i_2_ = 0; (aBooleanArray1796.length ^ 0xffffffff) < (i_2_ ^ 0xffffffff); i_2_++) {
+            for(int i_2_ = 0; (aBooleanArray1796.length > i_2_); i_2_++) {
                 if(anIntArray261[i_2_] > 0) {
                     PacketBuffer.method513(i_2_, this, aClass56_1812, (byte) -28);
                     anInt1797 = i_2_;
                 }
             }
-            if((anInt1797 ^ 0xffffffff) == 0)
+            if(anInt1797 == -1)
                 aBoolean1800 = true;
         }
     }
@@ -232,15 +232,15 @@ public class Class6_Sub1 extends Class6 {
         int i = 0;
         anInt1803++;
         int i_3_ = 0;
-        for(int i_4_ = 0; (i_4_ ^ 0xffffffff) > (aByteArrayArray212.length ^ 0xffffffff); i_4_++) {
+        for(int i_4_ = 0; (i_4_ < aByteArrayArray212.length); i_4_++) {
             if(anIntArray261[i_4_] > 0) {
                 i += 100;
                 i_3_ += method201(i_4_, 28);
             }
         }
-        if(arg0 != false)
+        if(arg0)
             method203(-91);
-        if((i ^ 0xffffffff) == -1)
+        if(i == 0)
             return 100;
         int i_5_ = i_3_ * 100 / i;
         return i_5_;

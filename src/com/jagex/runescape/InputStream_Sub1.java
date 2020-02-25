@@ -58,7 +58,7 @@ public class InputStream_Sub1 extends InputStream {
             return arg2;
         } catch(Exception exception) {
             aBoolean72 = true;
-            Class6.method169(null, (byte) -125, exception);
+            CacheIndex.method169(null, (byte) -125, exception);
             return -1;
         }
     }

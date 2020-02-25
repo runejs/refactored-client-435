@@ -24,14 +24,14 @@ public class Class38_Sub2 extends Class38 {
             long l_0_ = aLong1925 - System.nanoTime();
             if(arg2 != 9799)
                 method444(32);
-            if((l_0_ ^ 0xffffffffffffffffL) > (l ^ 0xffffffffffffffffL))
+            if(l > l_0_)
                 l_0_ = l;
             Class43.method890(l_0_ / 1000000L, -86);
             long l_1_ = System.nanoTime();
             int i_2_;
-            for(i_2_ = 0; ((i_2_ ^ 0xffffffff) > -11 && ((i_2_ ^ 0xffffffff) > -2 || aLong1925 < l_1_)); i_2_++)
+            for(i_2_ = 0; (i_2_ < 10 && (i_2_ < 1 || aLong1925 < l_1_)); i_2_++)
                 aLong1925 += (long) arg0 * 1000000L;
-            if((aLong1925 ^ 0xffffffffffffffffL) > (l_1_ ^ 0xffffffffffffffffL))
+            if(l_1_ > aLong1925)
                 aLong1925 = l_1_;
             i = i_2_;
         } catch(RuntimeException runtimeexception) {

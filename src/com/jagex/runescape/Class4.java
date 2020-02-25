@@ -2,55 +2,36 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class4 {
-    public static boolean menuOpen;
+    public static boolean menuOpen = false;
     public static volatile long aLong174 = 0L;
-    public static int anInt175;
-    public static RSString aClass1_176;
+    public static int anInt175 = 0;
     public static RSString cmd_hiddenbuttontest = RSString.CreateString("::hiddenbuttontest");
     public static int[] anIntArray178;
-    public static RSApplet anApplet_Sub1_179;
-    public static RSString aClass1_180;
-    public static RSString aClass1_181;
-    public static int anInt182;
-    public static RSString aClass1_183;
+    public static RSApplet anApplet_Sub1_179 = null;
+    public static RSString aClass1_180 = RSString.CreateString("wishes to trade with you)3");
+    public static RSString aClass1_181 = RSString.CreateString("Einloggen");
+    public static int anInt182 = 0;
+    public static RSString aClass1_183 = RSString.CreateString("mapdots");
     public static int anInt184;
-    public static int anInt185;
+    public static int anInt185 = 0;
     public static int anInt186;
     public static int anInt187;
     public static int anInt188;
 
-    static {
-        menuOpen = false;
-        anInt175 = 0;
-        aClass1_181 = RSString.CreateString("Einloggen");
-        aClass1_183 = RSString.CreateString("mapdots");
-        aClass1_176 = RSString.CreateString("wishes to trade with you)3");
-        anInt182 = 0;
-        aClass1_180 = aClass1_176;
-        anApplet_Sub1_179 = null;
-        anInt185 = 0;
-    }
-
-    public static void method159(byte arg0) {
-
+    public static void method159() {
         cmd_hiddenbuttontest = null;
         aClass1_180 = null;
-        int i = 18 % ((arg0 - 8) / 59);
         aClass1_183 = null;
         anIntArray178 = null;
-        aClass1_176 = null;
         aClass1_181 = null;
-
     }
 
     public static int method160(int arg0, int arg1, int arg2, int arg3) {
-
-        anInt186++;
         int i = arg0 & -1 + arg2;
         int i_0_ = arg3 / arg2;
         int i_1_ = arg2 - 1 & arg3;
@@ -62,7 +43,6 @@ public class Class4 {
         int i_7_ = RSApplet.method32(i_3_, arg2, i_4_, true, i);
         int i_8_ = RSApplet.method32(i_5_, arg2, i_6_, true, i);
         return RSApplet.method32(i_7_, arg2, i_8_, true, i_1_);
-
     }
 
     public static void method161(int arg0) {
@@ -73,7 +53,7 @@ public class Class4 {
             Class40_Sub3.anIntArray2023[i]--;
             if(Class40_Sub3.anIntArray2023[i] < -10) {
                 PacketBuffer.anInt2248--;
-                for(int i_9_ = i; ((PacketBuffer.anInt2248 ^ 0xffffffff) < (i_9_ ^ 0xffffffff)); i_9_++) {
+                for(int i_9_ = i; ((PacketBuffer.anInt2248 > i_9_)); i_9_++) {
                     IdentityKit.anIntArray2602[i_9_] = IdentityKit.anIntArray2602[i_9_ + 1];
                     PacketBuffer.effects[i_9_] = PacketBuffer.effects[1 + i_9_];
                     ItemDefinition.anIntArray2814[i_9_] = ItemDefinition.anIntArray2814[1 + i_9_];
@@ -87,20 +67,20 @@ public class Class4 {
                     effect = Effect.method429((Actor.aClass6_Sub1_3157), (IdentityKit.anIntArray2602[i]), 0);
                     if(effect == null)
                         continue;
-                    Class40_Sub3.anIntArray2023[i] += effect.method427();
+                    Class40_Sub3.anIntArray2023[i] += effect.delay();
                     PacketBuffer.effects[i] = effect;
                 }
-                if((Class40_Sub3.anIntArray2023[i] ^ 0xffffffff) > -1) {
+                if(Class40_Sub3.anIntArray2023[i] < 0) {
                     int i_10_;
-                    if((Class38_Sub1.anIntArray1916[i] ^ 0xffffffff) != -1) {
+                    if(Class38_Sub1.anIntArray1916[i] != 0) {
                         int i_11_ = 128 * (Class38_Sub1.anIntArray1916[i] & 0xff);
-                        int i_12_ = (0xff & Class38_Sub1.anIntArray1916[i] >> 854878096);
-                        int i_13_ = ((Class38_Sub1.anIntArray1916[i] & 0xffb8) >> 1161269672);
+                        int i_12_ = (0xff & Class38_Sub1.anIntArray1916[i] >> 16);
+                        int i_13_ = ((Class38_Sub1.anIntArray1916[i] & 0xffb8) >> 8);
                         int i_14_ = (i_13_ * 128 + 64 + -(Player.localPlayer.anInt3089));
                         int i_15_ = (i_12_ * 128 + (64 - (Player.localPlayer.anInt3098)));
                         if(i_15_ < 0)
                             i_15_ = -i_15_;
-                        if((i_14_ ^ 0xffffffff) > -1)
+                        if(i_14_ < 0)
                             i_14_ = -i_14_;
                         int i_16_ = -128 + (i_15_ + i_14_);
                         if(i_16_ > i_11_) {
@@ -120,12 +100,12 @@ public class Class4 {
                 }
             }
         }
-        if((Class35.anInt1733 ^ 0xffffffff) < -1) {
+        if(Class35.anInt1733 > 0) {
             Class35.anInt1733 -= 20;
             if(Class35.anInt1733 < 0)
                 Class35.anInt1733 = 0;
-            if((Class35.anInt1733 ^ 0xffffffff) == -1 && (RSCanvas.anInt60 ^ 0xffffffff) != -1 && (Class62.anInt1457 ^ 0xffffffff) != 0)
-                Class33.method414(false, 0, Class62.anInt1457, RSCanvas.anInt60, 0, Class55.aClass6_Sub1_1286, -1);
+            if(Class35.anInt1733 == 0 && RSCanvas.anInt60 != 0 && GameFrame.anInt1457 != -1)
+                Class33.method414(false, 0, GameFrame.anInt1457, RSCanvas.anInt60, 0, Class55.aClass6_Sub1_1286, -1);
         }
     }
 }

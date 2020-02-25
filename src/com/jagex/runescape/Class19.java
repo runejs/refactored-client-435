@@ -11,7 +11,7 @@ public class Class19 {
     public static int[] anIntArray483 = new int[500];
     public static Class27 aClass27_485 = new Class27();
     public static int anInt487 = 0;
-    public static Class6 aClass6_488;
+    public static CacheIndex aCacheIndex_488;
     public static RSString aClass1_489 = RSString.CreateString("Public chat");
     public static boolean aBoolean490 = false;
     public static byte[][][] aByteArrayArrayArray492;
@@ -49,10 +49,10 @@ public class Class19 {
         RSString class1 = new RSString();
         class1.length = 0;
         class1.chars = new byte[arg3];
-        if(arg1 != true)
+        if(!arg1)
             aClass1_495 = null;
         for(int i = arg2; arg3 + arg2 > i; i++) {
-            if((arg0[i] ^ 0xffffffff) != -1)
+            if(arg0[i] != 0)
                 class1.chars[class1.length++] = arg0[i];
         }
         return class1;
@@ -69,10 +69,10 @@ public class Class19 {
         aByteArrayArrayArray492 = null;
         aClass9_470 = null;
         aClass1_478 = null;
-        if(arg0 != true)
+        if(!arg0)
             method280(false);
         anIntArray483 = null;
-        aClass6_488 = null;
+        aCacheIndex_488 = null;
 
     }
 }

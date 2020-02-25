@@ -1,12 +1,16 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
+import com.jagex.runescape.cache.media.AnimationSequence;
+
 import java.util.zip.CRC32;
 
 public class Class65 {
     public static RSString aClass1_1530 = RSString.CreateString("Abbrechen");
     public static CRC32 aCRC32_1531 = new CRC32();
     public static int anInt1532;
-    public static Class6_Sub1 aClass6_Sub1_1533;
+    public static CacheIndex_Sub1 aClass6_Sub1_1533;
     public static int anInt1534;
     public static RSString aClass1_1535 = RSString.CreateString("Please reload this page)3");
     public static RSString aClass1_1536 = RSString.CreateString(" x ");
@@ -35,7 +39,7 @@ public class Class65 {
 
         int i = -125 % ((arg0 - 2) / 56);
         anInt1539++;
-        Class40_Sub5_Sub4.aClass68_2350.method1046((byte) 90);
+        VarbitDefinition.aClass68_2350.method1046((byte) 90);
         Class24.anIntArray577 = R3D.method708(Class24.anIntArray577);
 
     }
@@ -60,21 +64,21 @@ public class Class65 {
     public static void method1020(boolean arg0) {
 
         Class59.anIntArray1398 = new int[104];
-        Floor.aByteArrayArrayArray2335 = new byte[4][104][104];
+        OverlayDefinition.tile_underlay_path = new byte[4][104][104];
         anInt1532++;
-        Class6.anIntArrayArrayArray262 = new int[4][105][105];
-        if(arg0 != true)
+        CacheIndex.anIntArrayArrayArray262 = new int[4][105][105];
+        if(!arg0)
             aClass1_1530 = null;
         Class64.setZ = 99;
         Class19.aByteArrayArrayArray492 = new byte[4][105][105];
         FloorDecoration.anIntArray612 = new int[104];
         Class67.anIntArray1579 = new int[104];
         SceneTile.anIntArray2048 = new int[104];
-        Class40_Sub5_Sub7.anIntArrayArray2490 = new int[105][105];
-        Class62.aByteArrayArrayArray1473 = new byte[4][104][104];
+        AnimationSequence.anIntArrayArray2490 = new int[105][105];
+        GameFrame.tile_overlayids = new byte[4][104][104];
         Class40_Sub5_Sub17_Sub6.anIntArray3250 = new int[104];
-        Class35.aByteArrayArrayArray1745 = new byte[4][104][104];
-        Class42.aByteArrayArrayArray993 = new byte[4][104][104];
+        Class35.tile_overlay_rotation = new byte[4][104][104];
+        Class42.tile_underlayids = new byte[4][104][104];
 
     }
 }

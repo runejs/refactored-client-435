@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.media.IdentityKit;
+import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -59,10 +60,10 @@ public class Class45 {
         if(arg1 >= -13)
             return null;
         RSString class1 = HashTable.method334(arg0, -1);
-        for(int i = -3 + class1.length(); (i ^ 0xffffffff) < -1; i -= 3)
+        for(int i = -3 + class1.length(); i > 0; i -= 3)
             class1 = (Class40_Sub5_Sub17_Sub6.method832(113, new RSString[]{class1.substring(0, i), Class33.aClass1_795, class1.substring(i)}));
         if(class1.length() > 8)
-            class1 = (Class40_Sub5_Sub17_Sub6.method832(-69, (new RSString[]{Landscape.aClass1_1162, class1.substring(0, -8 + class1.length()), Class40_Sub5_Sub9.aClass1_2577, Class52.aClass1_1213, class1, Class51.aClass1_1199})));
+            class1 = (Class40_Sub5_Sub17_Sub6.method832(-69, (new RSString[]{Landscape.aClass1_1162, class1.substring(0, -8 + class1.length()), UnderlayDefinition.aClass1_2577, Class52.aClass1_1213, class1, Class51.aClass1_1199})));
         else if(class1.length() > 4)
             class1 = (Class40_Sub5_Sub17_Sub6.method832(-115, (new RSString[]{Renderable.aClass1_2862, class1.substring(0, class1.length() + -4), IdentityKit.aClass1_2593, Class52.aClass1_1213, class1, Class51.aClass1_1199})));
         return Class40_Sub5_Sub17_Sub6.method832(127, (new RSString[]{Class48.aClass1_1123, class1}));
@@ -76,12 +77,12 @@ public class Class45 {
 
     public static void method908(byte arg0) {
         try {
-            Graphics graphics = Class62.aCanvas1469.getGraphics();
+            Graphics graphics = GameFrame.aCanvas1469.getGraphics();
             if(arg0 <= 83)
                 method908((byte) 19);
             RSCanvas.aClass68_64.method1044(0, 17, graphics, 357);
         } catch(Exception exception) {
-            Class62.aCanvas1469.repaint();
+            GameFrame.aCanvas1469.repaint();
         }
     }
 
