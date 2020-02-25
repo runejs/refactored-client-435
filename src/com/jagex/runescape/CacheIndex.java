@@ -210,8 +210,8 @@ public abstract class CacheIndex {
     }
 
     public byte[] getFile(int arg0, int arg2) {
-        if(this instanceof CacheIndex_Sub1)
-            System.out.printf("Request cache arch: %d index: %d, file: %d\n", this.anInt1807, arg0, arg2);
+        //if(this instanceof CacheIndex_Sub1)
+        //    System.out.printf("Request cache arch: %d index: %d, file: %d\n", this.anInt1807, arg0, arg2);
         return method176(arg2, arg0, null, 20582);
     }
 

@@ -44,7 +44,7 @@ public class IncomingPackets {
                 Class57.incomingPacket = Cache.outgoingbuffer.getPacket((byte) 49);
                 Widget.packetsize = Class24.INCOMINGPACKETSIZES[Class57.incomingPacket];
             }
-             System.out.println("packet received: " + Class57.incomingPacket);
+            //System.out.println("packet received: " + Class57.incomingPacket);
             if((Widget.packetsize ^ 0xffffffff) == 0) {
                 if((i ^ 0xffffffff) < -1) {
                     Class40_Sub6.aClass64_2098.method1008(0, 1, -127, Cache.outgoingbuffer.buffer);
@@ -443,6 +443,26 @@ public class IncomingPackets {
                 return true;
             }
             if(Class57.incomingPacket == 118) {
+                /*for(int qq = 0; qq < 469; qq++) {
+                    if(Class68.method1043(qq)) {
+                        Widget[] widgets = Widget.interfaces[qq];
+                        for(int y = 0; widgets.length > y; y++) {
+                            Widget widget = widgets[y];
+                            if(widget.clientScripts != null) {
+                                System.out.println(qq + " contains " + widget.text.toString());
+                            }
+                        }
+                    }
+                }*/
+                /*if(Class68.method1043(308)) {
+                    Widget[] widgets = Widget.interfaces[308];
+                    for(int y = 0; widgets.length > y; y++) {
+                        Widget widget = widgets[y];
+                        if(widget != null && widget.alternateRhs != null) {
+                            System.out.println(y);
+                        }
+                    }
+                }*/
                 int i_55_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 Class42.method883((byte) -127, i_55_);
                 if(Class29.tabAreaOverlayWidgetId != -1) {

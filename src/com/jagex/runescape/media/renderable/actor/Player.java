@@ -94,18 +94,18 @@ public class Player extends Actor {
             player.anInt3130 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
             player.anInt3101 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
         }
-        if((mask & 0x10 ^ 0xffffffff) != -1) {
+        if((mask & 0x10 ^ 0xffffffff) != -1) { // face position
             player.facePositionX = Cache.outgoingbuffer.getUnsignedShortBE();
             player.facePositionY = Cache.outgoingbuffer.getUnsignedShortLE();
         }
-        if((mask & 0x1 ^ 0xffffffff) != -1) {
+        if((mask & 0x1 ^ 0xffffffff) != -1) { // animation?
             int i = Cache.outgoingbuffer.getUnsignedShortLE();
             if(i == 65535)
                 i = -1;
             int i_1_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
             ActorDefinition.method570(i, i_1_, player, -1);
         }
-        if((mask & 0x4) != 0) {
+        if((mask & 0x4) != 0) { // face actor
             player.facingActorIndex = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
             if((player.facingActorIndex ^ 0xffffffff) == -65536)
                 player.facingActorIndex = -1;
@@ -128,7 +128,7 @@ public class Player extends Actor {
             player.anInt3073 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
             player.method790(0);
         }
-        if((0x8 & mask ^ 0xffffffff) != -1) { // chat?...
+        if((0x8 & mask ^ 0xffffffff) != -1) { // chat
             int i = Cache.outgoingbuffer.getUnsignedShortBE();
             int i_3_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
             int i_4_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
