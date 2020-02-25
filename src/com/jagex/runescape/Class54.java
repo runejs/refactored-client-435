@@ -84,38 +84,40 @@ public class Class54 implements KeyListener, FocusListener {
             if(Class40_Sub6.anInt2118 == 1)
                 Class45.aClass40_Sub5_Sub14_Sub4_1057.drawImage(472, 296);
             if(Class19.showFps) {
-                int i = 20;
-                int i_0_ = 507;
-                int i_1_ = 16776960;
-                if(Class52.anInt1219 < 30 && VertexNormal.lowMemory)
-                    i_1_ = 16711680;
-                if((Class52.anInt1219 ^ 0xffffffff) > -21 && !VertexNormal.lowMemory)
-                    i_1_ = 16711680;
-                Class53.aClass40_Sub5_Sub14_Sub1_1268.method687((Class40_Sub5_Sub17_Sub6.method832(-88, new RSString[]{Class61.aClass1_1446, HashTable.method334(Class52.anInt1219, -1)})), i_0_, i, i_1_);
-                i_1_ = 16776960;
-                i += 15;
+                int y = 20;
+                int x = 507;
+                int colour = 0xffff00;
+                if(Class52.fps < 30 && VertexNormal.lowMemory)
+                    colour = 0xff0000;
+                if(Class52.fps < 20 && !VertexNormal.lowMemory)
+                    colour = 0xff0000;
+//                Class53.fontNormal.method687((Class40_Sub5_Sub17_Sub6.method832(-88, new RSString[]{Class61.aClass1_1446, HashTable.method334(Class52.fps, -1)})), x, y, colour);
+                Class53.fontNormal.drawStringRight("Fps: " + Class52.fps, x, y, colour);
+                colour = 0xffff00;
+                y += 15;
                 Runtime runtime = Runtime.getRuntime();
-                int i_2_ = (int) ((runtime.totalMemory() + -runtime.freeMemory()) / 1024L);
-                if(i_2_ > 32768 && VertexNormal.lowMemory)
-                    i_1_ = 16711680;
-                if((i_2_ ^ 0xffffffff) < -65537 && !VertexNormal.lowMemory)
-                    i_1_ = 16711680;
-                Class53.aClass40_Sub5_Sub14_Sub1_1268.method687((Class40_Sub5_Sub17_Sub6.method832(81, new RSString[]{Class40_Sub7.aClass1_2129, HashTable.method334(i_2_, arg0 ^ 0x3c5d), RSCanvas.aClass1_68})), i_0_, i, i_1_);
-                i += 15;
+                int memoryUsed = (int) ((runtime.totalMemory() + -runtime.freeMemory()) / 1024L);
+                if(memoryUsed > 32768 && VertexNormal.lowMemory)
+                    colour = 0xff0000;
+                if(memoryUsed < 65536 && !VertexNormal.lowMemory)
+                    colour = 0xff0000;
+//                Class53.fontNormal.method687((Class40_Sub5_Sub17_Sub6.method832(81, new RSString[]{Class40_Sub7.aClass1_2129, HashTable.method334(memoryUsed, arg0 ^ 0x3c5d), RSCanvas.aClass1_68})), x, y, colour);
+                Class53.fontNormal.drawStringRight("Mem: " + memoryUsed + "k", x, y, colour);
+                y += 15;
                 if(Class38.aBoolean893) {
-                    Class53.aClass40_Sub5_Sub14_Sub1_1268.method687(HuffmanEncoding.aClass1_1544, i_0_, i, 16711680);
-                    i += 15;
+                    Class53.fontNormal.method687(HuffmanEncoding.aClass1_1544, x, y, 16711680);
+                    y += 15;
                     Class38.aBoolean893 = false;
                 }
                 if(CacheIndex.aBoolean260) {
-                    Class53.aClass40_Sub5_Sub14_Sub1_1268.method687(Class58.aClass1_1378, i_0_, i, 16711680);
-                    i += 15;
+                    Class53.fontNormal.method687(Class58.aClass1_1378, x, y, 16711680);
+                    y += 15;
                     CacheIndex.aBoolean260 = false;
                 }
                 if(Class40_Sub3.aBoolean2026) {
-                    Class53.aClass40_Sub5_Sub14_Sub1_1268.method687(HuffmanEncoding.aClass1_1546, i_0_, i, 16711680);
+                    Class53.fontNormal.method687(HuffmanEncoding.aClass1_1546, x, y, 16711680);
                     Class40_Sub3.aBoolean2026 = false;
-                    i += 15;
+                    y += 15;
                 }
             }
             if((Class40_Sub5_Sub15.anInt2782 ^ 0xffffffff) != -1) {
@@ -123,9 +125,9 @@ public class Class54 implements KeyListener, FocusListener {
                 int i_3_ = i / 60;
                 i %= 60;
                 if(i < 10)
-                    Class53.aClass40_Sub5_Sub14_Sub1_1268.drawString((Class40_Sub5_Sub17_Sub6.method832(86, new RSString[]{Class61.aClass1_1432, HashTable.method334(i_3_, arg0 ^ 0x3c5d), Class17.aClass1_465, HashTable.method334(i, -1)})), 4, 329, 16776960);
+                    Class53.fontNormal.drawString((Class40_Sub5_Sub17_Sub6.method832(86, new RSString[]{Class61.aClass1_1432, HashTable.method334(i_3_, arg0 ^ 0x3c5d), Class17.aClass1_465, HashTable.method334(i, -1)})), 4, 329, 16776960);
                 else
-                    Class53.aClass40_Sub5_Sub14_Sub1_1268.drawString((Class40_Sub5_Sub17_Sub6.method832(70, new RSString[]{Class61.aClass1_1432, HashTable.method334(i_3_, -1), Class43.aClass1_1027, HashTable.method334(i, arg0 ^ 0x3c5d)})), 4, 329, 16776960);
+                    Class53.fontNormal.drawString((Class40_Sub5_Sub17_Sub6.method832(70, new RSString[]{Class61.aClass1_1432, HashTable.method334(i_3_, -1), Class43.aClass1_1027, HashTable.method334(i, arg0 ^ 0x3c5d)})), 4, 329, 16776960);
             }
         }
     }

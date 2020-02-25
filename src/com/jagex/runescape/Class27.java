@@ -1102,7 +1102,7 @@ public class Class27 {
             if(Cache.aBoolean330) {
                 Class40_Sub3.aBoolean2026 = true;
                 Cache.aBoolean330 = false;
-                Class52.method943(ItemDefinition.anInt2797, arg0 ^ 0x4e81, Class53.aClass40_Sub5_Sub14_Sub1_1268, Class4.anInt185, Class35.publicChatMode);
+                Class52.method943(ItemDefinition.anInt2797, arg0 ^ 0x4e81, Class53.fontNormal, Class4.anInt185, Class35.publicChatMode);
             }
             Landscape.method934((Player.localPlayer.anInt3098), -118, Player.anInt3267, Class5.anInt199, (Player.localPlayer.anInt3089));
             Class5.anInt199 = 0;

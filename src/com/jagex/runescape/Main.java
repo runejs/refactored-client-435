@@ -394,7 +394,7 @@ public class Main extends RSApplet {
                             if(widget.type == 8 && Class37.method438(arg0, i, (byte) 52) && (RSString.anInt1711 == Class53.anInt1257)) {
                                 int i_50_ = 0;
                                 int i_51_ = 0;
-                                TypeFace class40_sub5_sub14_sub1 = (Class53.aClass40_Sub5_Sub14_Sub1_1268);
+                                TypeFace class40_sub5_sub14_sub1 = (Class53.fontNormal);
                                 RSString class1 = widget.text;
                                 class1 = (SceneTile.method532((byte) 20, widget, class1));
                                 while(class1.length() > 0) {

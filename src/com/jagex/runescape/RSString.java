@@ -48,13 +48,13 @@ public class RSString implements Interface1 {
 
     public static void method71(int arg0) {
         Class4.anInt182 = 0;
-        int i = (((Player.localPlayer.anInt3098) >> 7) + SpotAnimDefinition.anInt2307);
-        int i_10_ = (Class26.anInt635 + ((Player.localPlayer.anInt3089) >> 7));
-        if((i ^ 0xffffffff) <= -3054 && i <= 3156 && i_10_ >= 3056 && i_10_ <= 3136)
+        int xPos = (((Player.localPlayer.anInt3098) >> 7) + SpotAnimDefinition.anInt2307);
+        int yPos = (Class26.anInt635 + ((Player.localPlayer.anInt3089) >> 7));
+        if(xPos >= 3053 && xPos <= 3156 && yPos >= 3056 && yPos <= 3136)
             Class4.anInt182 = 1;
-        if(i >= 3072 && (i ^ 0xffffffff) >= -3119 && (i_10_ ^ 0xffffffff) <= -9493 && (i_10_ ^ 0xffffffff) >= -9536)
+        if(xPos >= 3072 && xPos <= 3118 && yPos >= 9492 && yPos <= 9535)
             Class4.anInt182 = 1;
-        if((Class4.anInt182 ^ 0xffffffff) == -2 && (i ^ 0xffffffff) <= -3140 && i <= 3199 && i_10_ >= 3008 && (i_10_ ^ 0xffffffff) >= -3063)
+        if((Class4.anInt182 ^ 0xffffffff) == -2 && xPos >= 3139 && xPos <= 3199 && yPos >= 3008 && yPos <= 3062)
             Class4.anInt182 = 0;
         int i_11_ = 74 / ((arg0 - 42) / 38);
     }

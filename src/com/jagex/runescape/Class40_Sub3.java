@@ -127,10 +127,10 @@ public class Class40_Sub3 extends Node {
                 i++;
             else
                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236 = FloorDecoration.method347(ActorDefinition.aClass6_Sub1_2377, arg0 + 155, HuffmanEncoding.blank_string, Class40_Sub6.aClass1_2101);
-            if(Class53.aClass40_Sub5_Sub14_Sub1_1268 != null)
+            if(Class53.fontNormal != null)
                 i++;
             else
-                Class53.aClass40_Sub5_Sub14_Sub1_1268 = FloorDecoration.method347(ActorDefinition.aClass6_Sub1_2377, 255, HuffmanEncoding.blank_string, Class67.aClass1_1580);
+                Class53.fontNormal = FloorDecoration.method347(ActorDefinition.aClass6_Sub1_2377, 255, HuffmanEncoding.blank_string, Class67.aClass1_1580);
             if(Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246 != null)
                 i++;
             else

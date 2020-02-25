@@ -19,7 +19,7 @@ public class Class52 {
     public static RSString aClass1_1216 = RSString.CreateString("New User");
     public static byte[][] aByteArrayArray1217;
     public static RSString aClass1_1218;
-    public static int anInt1219;
+    public static int fps;
     public static boolean redrawChatbox = false;
     public static int anInt1222;
     public static RSString aClass1_1223;
@@ -42,7 +42,7 @@ public class Class52 {
         aClass1_1223 = aClass1_1216;
         aClass1_1228 = (RSString.CreateString("Ihre Freunde)2Liste ist voll(Q Mitglieder k-Onnen 200 Freunde hinzuf-Ugen)1 freie Spieler nur 100)3"));
         aClass1_1230 = RSString.CreateString("headicons_hint");
-        anInt1219 = 0;
+        fps = 0;
         aClass1_1234 = RSString.CreateString("Connection timed out)3");
         anInt1233 = 0;
         aClass1_1238 = RSString.CreateString("Der Server wird gerade aktualisiert)3");

@@ -84,7 +84,7 @@ public class Class51 {
             Class45.method908((byte) 114);
             Class55.method964(40);
             ActorDefinition.method574(4);
-            Class52.method943(ItemDefinition.anInt2797, -118, Class53.aClass40_Sub5_Sub14_Sub1_1268, Class4.anInt185, Class35.publicChatMode);
+            Class52.method943(ItemDefinition.anInt2797, -118, Class53.fontNormal, Class4.anInt185, Class35.publicChatMode);
             Class40_Sub2.method527(Class5.currentTabId, arg0 + 4, Class40_Sub5_Sub11.tabWidgetIds, Class29.tabAreaOverlayWidgetId == -1, -1);
             Class38.aBoolean893 = true;
             Class40_Sub3.aBoolean2026 = true;
@@ -93,16 +93,16 @@ public class Class51 {
         int i = 151;
         Class65.method1018((byte) -83);
         i -= 3;
-        Class53.aClass40_Sub5_Sub14_Sub1_1268.method686(arg1, 257, i, arg0);
-        Class53.aClass40_Sub5_Sub14_Sub1_1268.method686(arg1, 256, i + -1, 16777215);
+        Class53.fontNormal.method686(arg1, 257, i, arg0);
+        Class53.fontNormal.method686(arg1, 256, i + -1, 16777215);
         if(arg3 != null) {
             i += 15;
             if(arg2) {
-                int i_0_ = 4 + Class53.aClass40_Sub5_Sub14_Sub1_1268.getStringWidth(arg3);
+                int i_0_ = 4 + Class53.fontNormal.getStringWidth(arg3);
                 Rasterizer.drawFilledRectangle(257 - i_0_ / 2, -11 + i, i_0_, 11, 0);
             }
-            Class53.aClass40_Sub5_Sub14_Sub1_1268.method686(arg3, 257, i, 0);
-            Class53.aClass40_Sub5_Sub14_Sub1_1268.method686(arg3, 256, i - 1, 16777215);
+            Class53.fontNormal.method686(arg3, 257, i, 0);
+            Class53.fontNormal.method686(arg3, 256, i - 1, 16777215);
         }
         anInt1193++;
         Player.method792(arg0 + 107);

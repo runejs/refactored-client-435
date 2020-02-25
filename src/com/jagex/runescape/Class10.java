@@ -64,7 +64,7 @@ public class Class10 {
     public static void method238(int arg0) {
         anInt335++;
         if((CollisionMap.anInt165 ^ 0xffffffff) != -1) {
-            TypeFace class40_sub5_sub14_sub1 = Class53.aClass40_Sub5_Sub14_Sub1_1268;
+            TypeFace class40_sub5_sub14_sub1 = Class53.fontNormal;
             int i = 0;
             if(Class40_Sub5_Sub15.anInt2782 != 0)
                 i = 1;

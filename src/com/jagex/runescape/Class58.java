@@ -219,7 +219,7 @@ public class Class58 {
                                     Class52.redrawChatbox = true;
                             } else {
                                 int line = 0;
-                                TypeFace typeFace = (Class53.aClass40_Sub5_Sub14_Sub1_1268);
+                                TypeFace typeFace = (Class53.fontNormal);
                                 Rasterizer.setCoordinates(0, 0, 77, 463);
                                 for(int i_8_ = 0; i_8_ < 100; i_8_++) {
                                     if((Actor.chatMessages[i_8_]) != null) {
@@ -329,7 +329,7 @@ public class Class58 {
                         GameObject.itemSearch(HuffmanEncoding.inputInputMessage);
                         HuffmanEncoding.lastItemSearchInput = HuffmanEncoding.inputInputMessage;
                     }
-                    TypeFace class40_sub5_sub14_sub1 = Class53.aClass40_Sub5_Sub14_Sub1_1268;
+                    TypeFace class40_sub5_sub14_sub1 = Class53.fontNormal;
                     Rasterizer.setCoordinates(0, 0, 77, 463);
                     for(int i = 0; (i < VertexNormal.itemSearchResultCount); i++) {
                         int i_14_ = i * 14 + (18 - Class26.itemSearchScroll);

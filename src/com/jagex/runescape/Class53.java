@@ -31,7 +31,7 @@ public class Class53 {
     public static RSString aClass1_1265;
     public static RSString aClass1_1266;
     public static long[] aLongArray1267;
-    public static TypeFace aClass40_Sub5_Sub14_Sub1_1268;
+    public static TypeFace fontNormal;
     public static RSString aClass1_1269;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1270;
 
@@ -444,7 +444,7 @@ public class Class53 {
     public static void method952(int arg0) {
 
         aClass40_Sub5_Sub14_Sub2_1270 = null;
-        aClass40_Sub5_Sub14_Sub1_1268 = null;
+        fontNormal = null;
         aClass9_1247 = null;
         aClass1_1243 = null;
         aClass1_1251 = null;
