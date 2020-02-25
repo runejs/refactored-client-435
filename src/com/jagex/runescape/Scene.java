@@ -293,18 +293,7 @@ public class Scene {
         SceneTile sceneTile = tileArray[arg3][arg4][arg5];
         if(sceneTile != null) {
             Class52 class52 = sceneTile.aClass52_2070;
-            if(class52 != null) {
-                int i = class52.anInt1226;
-                if(i != 0) {
-                    for(int i_15_ = 0; i_15_ < 4; i_15_++) {
-                        arg0[arg1] = i;
-                        arg0[arg1 + 1] = i;
-                        arg0[arg1 + 2] = i;
-                        arg0[arg1 + 3] = i;
-                        arg1 += arg2;
-                    }
-                }
-            } else {
+            if(class52 == null) {
                 Class11 class11 = sceneTile.aClass11_2068;
                 if(class11 != null) {
                     int i = class11.anInt373;
@@ -314,15 +303,7 @@ public class Scene {
                     int[] is = anIntArrayArray129[i];
                     int[] is_19_ = anIntArrayArray121[i_16_];
                     int i_20_ = 0;
-                    if(i_17_ != 0) {
-                        for(int i_21_ = 0; i_21_ < 4; i_21_++) {
-                            arg0[arg1] = is[is_19_[i_20_++]] == 0 ? i_17_ : i_18_;
-                            arg0[arg1 + 1] = is[is_19_[i_20_++]] == 0 ? i_17_ : i_18_;
-                            arg0[arg1 + 2] = is[is_19_[i_20_++]] == 0 ? i_17_ : i_18_;
-                            arg0[arg1 + 3] = is[is_19_[i_20_++]] == 0 ? i_17_ : i_18_;
-                            arg1 += arg2;
-                        }
-                    } else {
+                    if(i_17_ == 0) {
                         for(int i_22_ = 0; i_22_ < 4; i_22_++) {
                             if(is[is_19_[i_20_++]] != 0)
                                 arg0[arg1] = i_18_;
@@ -334,6 +315,25 @@ public class Scene {
                                 arg0[arg1 + 3] = i_18_;
                             arg1 += arg2;
                         }
+                    } else {
+                        for(int i_21_ = 0; i_21_ < 4; i_21_++) {
+                            arg0[arg1] = is[is_19_[i_20_++]] == 0 ? i_17_ : i_18_;
+                            arg0[arg1 + 1] = is[is_19_[i_20_++]] == 0 ? i_17_ : i_18_;
+                            arg0[arg1 + 2] = is[is_19_[i_20_++]] == 0 ? i_17_ : i_18_;
+                            arg0[arg1 + 3] = is[is_19_[i_20_++]] == 0 ? i_17_ : i_18_;
+                            arg1 += arg2;
+                        }
+                    }
+                }
+            } else {
+                int i = class52.anInt1226;
+                if(i != 0) {
+                    for(int i_15_ = 0; i_15_ < 4; i_15_++) {
+                        arg0[arg1] = i;
+                        arg0[arg1 + 1] = i;
+                        arg0[arg1 + 2] = i;
+                        arg0[arg1 + 3] = i;
+                        arg1 += arg2;
                     }
                 }
             }
@@ -1558,15 +1558,13 @@ public class Scene {
                             if(arg0.anInt1220 == -1) {
                                 if(arg0.anInt1235 != 12345678)
                                     R3D.method706(i_205_, i_207_, i_203_, i_204_, i_206_, i_202_, arg0.anInt1235, arg0.anInt1232, arg0.anInt1225);
-                            } else if(!aBoolean88) {
-                                if(arg0.aBoolean1229)
-                                    R3D.method699(i_205_, i_207_, i_203_, i_204_, i_206_, i_202_, arg0.anInt1235, arg0.anInt1232, arg0.anInt1225, i, i_191_, i_188_, i_195_, i_196_, i_198_, i_189_, i_190_, i_194_, arg0.anInt1220);
-                                else
-                                    R3D.method699(i_205_, i_207_, i_203_, i_204_, i_206_, i_202_, arg0.anInt1235, arg0.anInt1232, arg0.anInt1225, i_192_, i_188_, i_191_, i_197_, i_198_, i_196_, i_193_, i_194_, i_190_, arg0.anInt1220);
-                            } else {
+                            } else if(aBoolean88) {
                                 int i_208_ = R3D.anInterface3_2939.method14(true, arg0.anInt1220);
                                 R3D.method706(i_205_, i_207_, i_203_, i_204_, i_206_, i_202_, method108(i_208_, arg0.anInt1235), method108(i_208_, arg0.anInt1232), method108(i_208_, arg0.anInt1225));
-                            }
+                            } else if(arg0.aBoolean1229)
+                                R3D.method699(i_205_, i_207_, i_203_, i_204_, i_206_, i_202_, arg0.anInt1235, arg0.anInt1232, arg0.anInt1225, i, i_191_, i_188_, i_195_, i_196_, i_198_, i_189_, i_190_, i_194_, arg0.anInt1220);
+                            else
+                                R3D.method699(i_205_, i_207_, i_203_, i_204_, i_206_, i_202_, arg0.anInt1235, arg0.anInt1232, arg0.anInt1225, i_192_, i_188_, i_191_, i_197_, i_198_, i_196_, i_193_, i_194_, i_190_, arg0.anInt1220);
                         }
                         if(((i_200_ - i_202_) * (i_207_ - i_203_) - (i_201_ - i_203_) * (i_206_ - i_202_)) > 0) {
                             R3D.aBoolean2947 = i_200_ < 0 || i_202_ < 0 || i_206_ < 0 || i_200_ > R3D.anInt2945 || i_202_ > R3D.anInt2945 || i_206_ > R3D.anInt2945;
@@ -1577,12 +1575,11 @@ public class Scene {
                             if(arg0.anInt1220 == -1) {
                                 if(arg0.anInt1231 != 12345678)
                                     R3D.method706(i_201_, i_203_, i_207_, i_200_, i_202_, i_206_, arg0.anInt1231, arg0.anInt1225, arg0.anInt1232);
-                            } else if(!aBoolean88)
-                                R3D.method699(i_201_, i_203_, i_207_, i_200_, i_202_, i_206_, arg0.anInt1231, arg0.anInt1225, arg0.anInt1232, i, i_191_, i_188_, i_195_, i_196_, i_198_, i_189_, i_190_, i_194_, arg0.anInt1220);
-                            else {
+                            } else if(aBoolean88) {
                                 int i_209_ = R3D.anInterface3_2939.method14(true, arg0.anInt1220);
                                 R3D.method706(i_201_, i_203_, i_207_, i_200_, i_202_, i_206_, method108(i_209_, arg0.anInt1231), method108(i_209_, arg0.anInt1225), method108(i_209_, arg0.anInt1232));
-                            }
+                            } else
+                                R3D.method699(i_201_, i_203_, i_207_, i_200_, i_202_, i_206_, arg0.anInt1231, arg0.anInt1225, arg0.anInt1232, i, i_191_, i_188_, i_195_, i_196_, i_198_, i_189_, i_190_, i_194_, arg0.anInt1220);
                         }
                     }
                 }
@@ -1773,15 +1770,13 @@ public class Scene {
                 if(arg0.anIntArray361 == null || arg0.anIntArray361[i_230_] == -1) {
                     if(arg0.anIntArray367[i_230_] != 12345678)
                         R3D.method706(i_237_, i_238_, i_239_, i_234_, i_235_, i_236_, arg0.anIntArray367[i_230_], arg0.anIntArray369[i_230_], arg0.anIntArray372[i_230_]);
-                } else if(!aBoolean88) {
-                    if(arg0.aBoolean365)
-                        R3D.method699(i_237_, i_238_, i_239_, i_234_, i_235_, i_236_, arg0.anIntArray367[i_230_], arg0.anIntArray369[i_230_], arg0.anIntArray372[i_230_], Class11.anIntArray370[0], Class11.anIntArray370[1], Class11.anIntArray370[3], Class11.anIntArray375[0], Class11.anIntArray375[1], Class11.anIntArray375[3], Class11.anIntArray360[0], Class11.anIntArray360[1], Class11.anIntArray360[3], arg0.anIntArray361[i_230_]);
-                    else
-                        R3D.method699(i_237_, i_238_, i_239_, i_234_, i_235_, i_236_, arg0.anIntArray367[i_230_], arg0.anIntArray369[i_230_], arg0.anIntArray372[i_230_], Class11.anIntArray370[i_231_], Class11.anIntArray370[i_232_], Class11.anIntArray370[i_233_], Class11.anIntArray375[i_231_], Class11.anIntArray375[i_232_], Class11.anIntArray375[i_233_], Class11.anIntArray360[i_231_], Class11.anIntArray360[i_232_], Class11.anIntArray360[i_233_], arg0.anIntArray361[i_230_]);
-                } else {
+                } else if(aBoolean88) {
                     int i_240_ = R3D.anInterface3_2939.method14(true, arg0.anIntArray361[i_230_]);
                     R3D.method706(i_237_, i_238_, i_239_, i_234_, i_235_, i_236_, method108(i_240_, arg0.anIntArray367[i_230_]), method108(i_240_, arg0.anIntArray369[i_230_]), method108(i_240_, arg0.anIntArray372[i_230_]));
-                }
+                } else if(arg0.aBoolean365)
+                    R3D.method699(i_237_, i_238_, i_239_, i_234_, i_235_, i_236_, arg0.anIntArray367[i_230_], arg0.anIntArray369[i_230_], arg0.anIntArray372[i_230_], Class11.anIntArray370[0], Class11.anIntArray370[1], Class11.anIntArray370[3], Class11.anIntArray375[0], Class11.anIntArray375[1], Class11.anIntArray375[3], Class11.anIntArray360[0], Class11.anIntArray360[1], Class11.anIntArray360[3], arg0.anIntArray361[i_230_]);
+                else
+                    R3D.method699(i_237_, i_238_, i_239_, i_234_, i_235_, i_236_, arg0.anIntArray367[i_230_], arg0.anIntArray369[i_230_], arg0.anIntArray372[i_230_], Class11.anIntArray370[i_231_], Class11.anIntArray370[i_232_], Class11.anIntArray370[i_233_], Class11.anIntArray375[i_231_], Class11.anIntArray375[i_232_], Class11.anIntArray375[i_233_], Class11.anIntArray360[i_231_], Class11.anIntArray360[i_232_], Class11.anIntArray360[i_233_], arg0.anIntArray361[i_230_]);
             }
         }
     }

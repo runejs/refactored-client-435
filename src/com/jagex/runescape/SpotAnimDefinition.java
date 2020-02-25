@@ -189,7 +189,9 @@ public class SpotAnimDefinition extends SubNode {
             if(Class40_Sub3.anInt2032 == 6 && Class40_Sub6.aClass64_2098.method1014(-126) > 0) {
                 int i = Class40_Sub6.aClass64_2098.method1016(63);
                 if(i != 21 || Class51.anInt1197 != 20) {
-                    if(i != 2) {
+                    if(i == 2) {
+                        Class40_Sub3.anInt2032 = 9;
+                    } else {
                         if(i == 15 && Class51.anInt1197 == 40) {
                             Class37.method434(0);
                             return;
@@ -201,8 +203,6 @@ public class SpotAnimDefinition extends SubNode {
                             Class27.method366(5, i);
                             return;
                         }
-                    } else {
-                        Class40_Sub3.anInt2032 = 9;
                     }
                 } else {
                     Class40_Sub3.anInt2032 = 7;
@@ -337,10 +337,10 @@ public class SpotAnimDefinition extends SubNode {
             Class34.aClass9_851.method230(-7208, (long) id, class40_sub5_sub17_sub5);
         }
         Model class40_sub5_sub17_sub5_0_;
-        if(animationId != -1 && arg0 != -1) {
-            class40_sub5_sub17_sub5_0_ = (Class68_Sub1.method1050(animationId, 2).method597((byte) -87, class40_sub5_sub17_sub5, arg0));
-        } else {
+        if(animationId == -1 || arg0 == -1) {
             class40_sub5_sub17_sub5_0_ = class40_sub5_sub17_sub5.method806(true);
+        } else {
+            class40_sub5_sub17_sub5_0_ = (Class68_Sub1.method1050(animationId, 2).method597((byte) -87, class40_sub5_sub17_sub5, arg0));
         }
         if(arg1 != 2) {
             return null;

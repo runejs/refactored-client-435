@@ -45,14 +45,7 @@ public class HashTable {
             class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class37.aClass23_869.method331(l, 6120));
             if(class40_sub5_sub13 == null) {
                 class40_sub5_sub13 = ((Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.method331(l, 6120));
-                if(class40_sub5_sub13 != null) {
-                    if(arg0) {
-                        class40_sub5_sub13.method539(0);
-                        Class51.aClass23_1194.put(class40_sub5_sub13, (byte) 116, l);
-                        anInt554--;
-                        Class68.anInt1618++;
-                    }
-                } else {
+                if(class40_sub5_sub13 == null) {
                     if(!arg0) {
                         class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class34.aClass23_841.method331(l, 6120));
                         if(class40_sub5_sub13 != null)
@@ -62,14 +55,19 @@ public class HashTable {
                     class40_sub5_sub13.anInt2763 = arg5;
                     class40_sub5_sub13.aByte2758 = arg4;
                     class40_sub5_sub13.aClass6_Sub1_2754 = arg1;
-                    if(!arg0) {
+                    if(arg0) {
+                        Class51.aClass23_1194.put(class40_sub5_sub13, (byte) 54, l);
+                        Class68.anInt1618++;
+                    } else {
                         Class19.aClass27_485.method352(126, class40_sub5_sub13);
                         GameObjectDefinition.aClass23_2545.put(class40_sub5_sub13, (byte) 109, l);
                         anInt554++;
-                    } else {
-                        Class51.aClass23_1194.put(class40_sub5_sub13, (byte) 54, l);
-                        Class68.anInt1618++;
                     }
+                } else if(arg0) {
+                    class40_sub5_sub13.method539(0);
+                    Class51.aClass23_1194.put(class40_sub5_sub13, (byte) 116, l);
+                    anInt554--;
+                    Class68.anInt1618++;
                 }
             }
         }

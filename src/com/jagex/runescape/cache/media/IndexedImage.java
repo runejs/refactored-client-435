@@ -119,12 +119,12 @@ public class IndexedImage extends Rasterizer {
         for (int heightCounter = -height; heightCounter < 0; heightCounter++) {
             for (int widthCounter = -width; widthCounter < 0; widthCounter++) {
                 color = pixels[pixel++];
-                if (color != 0) {
+                if (color == 0) {
+                    rasterizerPixel++;
+                } else {
                     int rasterizerPixelColor = rasterizerPixels[rasterizerPixel];
                     rasterizerPixels[rasterizerPixel++] = ((color & 0xff00ff) * alpha + (rasterizerPixelColor & 0xff00ff) * alphaValue & 0xff00ff00)
                             + ((color & 0xff00) * alpha + (rasterizerPixelColor & 0xff00) * alphaValue & 0xff0000) >> 8;
-                } else {
-                    rasterizerPixel++;
                 }
             }
 

@@ -110,15 +110,13 @@ public class RSString implements Interface1 {
         class1.chars = new byte[i];
         while(i > i_5_) {
             int i_6_ = 0xff & is[i_5_++];
-            if(i_6_ > 45 || i_6_ < 40) {
-                if(i_6_ != 0)
-                    class1.chars[class1.length++] = (byte) i_6_;
-            } else {
+            if(i_6_ <= 45 && i_6_ >= 40) {
                 if((i_5_ >= i))
                     break;
                 int i_7_ = 0xff & is[i_5_++];
                 class1.chars[class1.length++] = (byte) (i_7_ + -48 + 43 * (-40 + i_6_));
-            }
+            } else if(i_6_ != 0)
+                class1.chars[class1.length++] = (byte) i_6_;
         }
         class1.method77((byte) -73);
         return class1.method66();

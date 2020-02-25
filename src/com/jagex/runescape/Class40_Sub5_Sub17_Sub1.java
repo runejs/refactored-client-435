@@ -529,12 +529,12 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 if(renderable != null) {
                     int i_40_;
                     int i_41_;
-                    if(face != 1 && face != 3) {
-                        i_41_ = gameObjectDefinition.sizeX;
-                        i_40_ = gameObjectDefinition.sizeY;
-                    } else {
+                    if(face == 1 || face == 3) {
                         i_40_ = gameObjectDefinition.sizeX;
                         i_41_ = gameObjectDefinition.sizeY;
+                    } else {
+                        i_41_ = gameObjectDefinition.sizeX;
+                        i_40_ = gameObjectDefinition.sizeY;
                     }
                     int i_42_ = 0;
                     if(type == 11)
@@ -578,38 +578,34 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 else
                     renderable = new GameObject(objectId, 0, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (gameObjectDefinition.animationId), true);
                 scene.method94(plane, localX, localY, vertexMix, renderable, null, Class32.anIntArray761[face], 0, hash, objectConfig);
-                if(face != 0) {
-                    if(face == 1) {
-                        if(gameObjectDefinition.castsShadow) {
-                            Class19.aByteArrayArrayArray492[plane][localX][localY + 1] = (byte) 50;
-                            Class19.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
-                        }
-                        if(gameObjectDefinition.wall)
-                            CacheIndex.anIntArrayArrayArray262[plane][localX][localY + 1] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][localY + 1]), 1170));
-                    } else if(face != 2) {
-                        if(face == 3) {
-                            if(gameObjectDefinition.castsShadow) {
-                                Class19.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
-                                Class19.aByteArrayArrayArray492[plane][localX + 1][localY] = (byte) 50;
-                            }
-                            if(gameObjectDefinition.wall)
-                                CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][localY]), 1170));
-                        }
-                    } else {
-                        if(gameObjectDefinition.castsShadow) {
-                            Class19.aByteArrayArrayArray492[plane][1 + localX][localY] = (byte) 50;
-                            Class19.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
-                        }
-                        if(gameObjectDefinition.wall)
-                            CacheIndex.anIntArrayArrayArray262[plane][localX + 1][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX + 1][localY]), 585));
-                    }
-                } else {
+                if(face == 0) {
                     if(gameObjectDefinition.castsShadow) {
                         Class19.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
                         Class19.aByteArrayArrayArray492[plane][localX][(localY + 1)] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
                         CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][localY]), 585));
+                } else if(face == 1) {
+                    if(gameObjectDefinition.castsShadow) {
+                        Class19.aByteArrayArrayArray492[plane][localX][localY + 1] = (byte) 50;
+                        Class19.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
+                    }
+                    if(gameObjectDefinition.wall)
+                        CacheIndex.anIntArrayArrayArray262[plane][localX][localY + 1] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][localY + 1]), 1170));
+                } else if(face == 2) {
+                    if(gameObjectDefinition.castsShadow) {
+                        Class19.aByteArrayArrayArray492[plane][1 + localX][localY] = (byte) 50;
+                        Class19.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
+                    }
+                    if(gameObjectDefinition.wall)
+                        CacheIndex.anIntArrayArrayArray262[plane][localX + 1][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX + 1][localY]), 585));
+                } else if(face == 3) {
+                    if(gameObjectDefinition.castsShadow) {
+                        Class19.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
+                        Class19.aByteArrayArrayArray492[plane][localX + 1][localY] = (byte) 50;
+                    }
+                    if(gameObjectDefinition.wall)
+                        CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][localY]), 1170));
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)
                     collisionMap.method150(localY, type, face, localX, gameObjectDefinition.walkable, (byte) 95);
@@ -647,20 +643,18 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 }
                 scene.method94(plane, localX, localY, vertexMix, renderable, renderable_47_, Class32.anIntArray761[face], Class32.anIntArray761[i_46_], hash, objectConfig);
                 if(gameObjectDefinition.wall) {
-                    if(face != 0) {
-                        if(face == 1) {
-                            CacheIndex.anIntArrayArrayArray262[plane][localX][1 + localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][1 + localY]), 1170));
-                            CacheIndex.anIntArrayArrayArray262[plane][1 + localX][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][1 + localX][localY]), 585));
-                        } else if(face == 2) {
-                            CacheIndex.anIntArrayArrayArray262[plane][localX + 1][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX + 1][localY]), 585));
-                            CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][localY]), 1170));
-                        } else if(face == 3) {
-                            CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][localY]), 1170));
-                            CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][localY]), 585));
-                        }
-                    } else {
+                    if(face == 0) {
                         CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][localY]), 585));
                         CacheIndex.anIntArrayArrayArray262[plane][localX][(localY + 1)] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][localY + 1]), 1170));
+                    } else if(face == 1) {
+                        CacheIndex.anIntArrayArrayArray262[plane][localX][1 + localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][1 + localY]), 1170));
+                        CacheIndex.anIntArrayArrayArray262[plane][1 + localX][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][1 + localX][localY]), 585));
+                    } else if(face == 2) {
+                        CacheIndex.anIntArrayArrayArray262[plane][localX + 1][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX + 1][localY]), 585));
+                        CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][localY]), 1170));
+                    } else if(face == 3) {
+                        CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][localY]), 1170));
+                        CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][localY]), 585));
                     }
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)

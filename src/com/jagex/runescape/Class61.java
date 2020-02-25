@@ -60,7 +60,25 @@ public class Class61 {
     public static void method997(int arg0) {
         if(arg0 != 47)
             method999(-42, (byte) 12, 92, 18, -72);
-        if(Signlink.aString735.toLowerCase().indexOf("microsoft") != -1) {
+        if(Signlink.aString735.toLowerCase().indexOf("microsoft") == -1) {
+            HuffmanEncoding.anIntArray1564[44] = 71;
+            HuffmanEncoding.anIntArray1564[45] = 26;
+            HuffmanEncoding.anIntArray1564[46] = 72;
+            HuffmanEncoding.anIntArray1564[47] = 73;
+            HuffmanEncoding.anIntArray1564[59] = 57;
+            HuffmanEncoding.anIntArray1564[61] = 27;
+            HuffmanEncoding.anIntArray1564[91] = 42;
+            HuffmanEncoding.anIntArray1564[92] = 74;
+            HuffmanEncoding.anIntArray1564[93] = 43;
+            if(Signlink.aMethod729 == null) {
+                HuffmanEncoding.anIntArray1564[192] = 58;
+                HuffmanEncoding.anIntArray1564[222] = 59;
+            } else {
+                HuffmanEncoding.anIntArray1564[192] = 28;
+                HuffmanEncoding.anIntArray1564[222] = 58;
+                HuffmanEncoding.anIntArray1564[520] = 59;
+            }
+        } else {
             HuffmanEncoding.anIntArray1564[186] = 57;
             HuffmanEncoding.anIntArray1564[187] = 27;
             HuffmanEncoding.anIntArray1564[188] = 71;
@@ -73,24 +91,6 @@ public class Class61 {
             HuffmanEncoding.anIntArray1564[221] = 43;
             HuffmanEncoding.anIntArray1564[222] = 59;
             HuffmanEncoding.anIntArray1564[223] = 28;
-        } else {
-            HuffmanEncoding.anIntArray1564[44] = 71;
-            HuffmanEncoding.anIntArray1564[45] = 26;
-            HuffmanEncoding.anIntArray1564[46] = 72;
-            HuffmanEncoding.anIntArray1564[47] = 73;
-            HuffmanEncoding.anIntArray1564[59] = 57;
-            HuffmanEncoding.anIntArray1564[61] = 27;
-            HuffmanEncoding.anIntArray1564[91] = 42;
-            HuffmanEncoding.anIntArray1564[92] = 74;
-            HuffmanEncoding.anIntArray1564[93] = 43;
-            if(Signlink.aMethod729 != null) {
-                HuffmanEncoding.anIntArray1564[192] = 28;
-                HuffmanEncoding.anIntArray1564[222] = 58;
-                HuffmanEncoding.anIntArray1564[520] = 59;
-            } else {
-                HuffmanEncoding.anIntArray1564[192] = 58;
-                HuffmanEncoding.anIntArray1564[222] = 59;
-            }
         }
 
     }

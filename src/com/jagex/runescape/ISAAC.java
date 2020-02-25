@@ -217,7 +217,11 @@ public class ISAAC {
                                     if(i_48_ >= 0) {
                                         i_49_ = -1;
                                         i_50_ = R3D.anInterface3_2939.method14(true, i_48_);
-                                    } else if(class40_sub5_sub3.anInt2345 != 16711935) {
+                                    } else if(class40_sub5_sub3.anInt2345 == 16711935) {
+                                        i_49_ = -2;
+                                        i_48_ = -1;
+                                        i_50_ = -2;
+                                    } else {
                                         i_49_ = (Class13.method244((class40_sub5_sub3.lightness), (class40_sub5_sub3.saturation), -120, (class40_sub5_sub3.hue)));
                                         int i_51_ = (Class40_Sub5_Sub15.anInt2791 + (class40_sub5_sub3.hue)) & 0xff;
                                         int i_52_ = ((Actor.anInt3151) + (class40_sub5_sub3.saturation));
@@ -226,10 +230,6 @@ public class ISAAC {
                                         else if(i_52_ > 255)
                                             i_52_ = 255;
                                         i_50_ = (Class13.method244((class40_sub5_sub3.lightness), i_52_, arg1 ^ ~0x6acb, i_51_));
-                                    } else {
-                                        i_49_ = -2;
-                                        i_48_ = -1;
-                                        i_50_ = -2;
                                     }
                                     int i_53_ = 0;
                                     if(i_50_ != -2)
@@ -440,12 +440,11 @@ public class ISAAC {
         if(arg0 != 118)
             aBoolean519 = true;
         for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = (Class40_Sub3) Class45.aClass45_1064.method909(-4)) {
-            if(class40_sub3.anInt2031 != -1)
-                class40_sub3.method457(arg0 ^ ~0x76);
-            else {
+            if(class40_sub3.anInt2031 == -1) {
                 class40_sub3.anInt2033 = 0;
                 Class39.method451(class40_sub3, 19813);
-            }
+            } else
+                class40_sub3.method457(arg0 ^ ~0x76);
         }
 
     }

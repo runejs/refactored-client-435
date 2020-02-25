@@ -160,16 +160,14 @@ public abstract class CacheIndex {
             byte[] is = new byte[i_42_];
             Class58.aByteArrayArray1370[i_39_] = is;
             int i_43_ = class40_sub1.getUnsignedByte();
-            if(i_43_ != 0) {
-                if(i_43_ == 1) {
-                    for(int i_44_ = 0; (i_41_ > i_44_); i_44_++) {
-                        for(int i_45_ = 0; i_40_ > i_45_; i_45_++)
-                            is[i_41_ * i_45_ + i_44_] = class40_sub1.getByte();
-                    }
-                }
-            } else {
+            if(i_43_ == 0) {
                 for(int i_46_ = 0; (i_42_ > i_46_); i_46_++)
                     is[i_46_] = class40_sub1.getByte();
+            } else if(i_43_ == 1) {
+                for(int i_44_ = 0; (i_41_ > i_44_); i_44_++) {
+                    for(int i_45_ = 0; i_40_ > i_45_; i_45_++)
+                        is[i_41_ * i_45_ + i_44_] = class40_sub1.getByte();
+                }
             }
         }
     }

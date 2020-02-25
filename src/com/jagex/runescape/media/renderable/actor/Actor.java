@@ -175,14 +175,7 @@ public abstract class Actor extends Renderable {
                 int i_5_ = i >> 14 & 0x7fff;
                 int[] is = (Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.pixels);
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_5_);
-                if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage class40_sub5_sub14_sub2 = (SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID]);
-                    if(class40_sub5_sub14_sub2 != null) {
-                        int i_6_ = ((-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2);
-                        int i_7_ = ((gameObjectDefinition.sizeY * 4 + -class40_sub5_sub14_sub2.imgHeight) / 2);
-                        class40_sub5_sub14_sub2.drawImage(48 + (4 * arg2) + i_6_, i_7_ + (48 + ((104 + -arg5 - gameObjectDefinition.sizeY) * 4)));
-                    }
-                } else {
+                if(gameObjectDefinition.mapSceneID == -1) {
                     if(i_1_ == 0 || i_1_ == 2) {
                         if(i_2_ == 0) {
                             is[i_4_] = i_3_;
@@ -220,31 +213,34 @@ public abstract class Actor extends Renderable {
                             is[i_4_] = i_3_;
                     }
                     if(i_1_ == 2) {
-                        if(i_2_ != 3) {
-                            if(i_2_ != 0) {
-                                if(i_2_ == 1) {
-                                    is[i_4_ + 3] = i_3_;
-                                    is[512 + (3 + i_4_)] = i_3_;
-                                    is[i_4_ + 1027] = i_3_;
-                                    is[1536 + (3 + i_4_)] = i_3_;
-                                } else if(i_2_ == 2) {
-                                    is[1536 + i_4_] = i_3_;
-                                    is[1537 + i_4_] = i_3_;
-                                    is[i_4_ + 1538] = i_3_;
-                                    is[1536 + i_4_ + 3] = i_3_;
-                                }
-                            } else {
-                                is[i_4_] = i_3_;
-                                is[1 + i_4_] = i_3_;
-                                is[i_4_ + 2] = i_3_;
-                                is[3 + i_4_] = i_3_;
-                            }
-                        } else {
+                        if(i_2_ == 3) {
                             is[i_4_] = i_3_;
                             is[512 + i_4_] = i_3_;
                             is[i_4_ + 1024] = i_3_;
                             is[1536 + i_4_] = i_3_;
+                        } else if(i_2_ == 0) {
+                            is[i_4_] = i_3_;
+                            is[1 + i_4_] = i_3_;
+                            is[i_4_ + 2] = i_3_;
+                            is[3 + i_4_] = i_3_;
+                        } else if(i_2_ == 1) {
+                            is[i_4_ + 3] = i_3_;
+                            is[512 + (3 + i_4_)] = i_3_;
+                            is[i_4_ + 1027] = i_3_;
+                            is[1536 + (3 + i_4_)] = i_3_;
+                        } else if(i_2_ == 2) {
+                            is[1536 + i_4_] = i_3_;
+                            is[1537 + i_4_] = i_3_;
+                            is[i_4_ + 1538] = i_3_;
+                            is[1536 + i_4_ + 3] = i_3_;
                         }
+                    }
+                } else {
+                    IndexedImage class40_sub5_sub14_sub2 = (SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID]);
+                    if(class40_sub5_sub14_sub2 != null) {
+                        int i_6_ = ((-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2);
+                        int i_7_ = ((gameObjectDefinition.sizeY * 4 + -class40_sub5_sub14_sub2.imgHeight) / 2);
+                        class40_sub5_sub14_sub2.drawImage(48 + (4 * arg2) + i_6_, i_7_ + (48 + ((104 + -arg5 - gameObjectDefinition.sizeY) * 4)));
                     }
                 }
             }
@@ -268,16 +264,16 @@ public abstract class Actor extends Renderable {
                     if(i > 0)
                         i_14_ = 15597568;
                     int i_15_ = (-(arg5 * 512) + 52736) * 4 + arg2 * 4 + 24624;
-                    if(i_10_ != 0 && i_10_ != 2) {
-                        is[i_15_] = i_14_;
-                        is[513 + i_15_] = i_14_;
-                        is[2 + (i_15_ + 1024)] = i_14_;
-                        is[1536 + i_15_ + 3] = i_14_;
-                    } else {
+                    if(i_10_ == 0 || i_10_ == 2) {
                         is[1536 + i_15_] = i_14_;
                         is[1024 + (i_15_ + 1)] = i_14_;
                         is[514 + i_15_] = i_14_;
                         is[3 + i_15_] = i_14_;
+                    } else {
+                        is[i_15_] = i_14_;
+                        is[513 + i_15_] = i_14_;
+                        is[2 + (i_15_ + 1024)] = i_14_;
+                        is[1536 + i_15_ + 3] = i_14_;
                     }
                 }
             }

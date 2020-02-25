@@ -340,14 +340,13 @@ public class Model extends Renderable {
                 triangleCount += class40_sub5_sub17_sub5.triangleCount;
                 anInt3180 += class40_sub5_sub17_sub5.anInt3180;
                 bool = bool | class40_sub5_sub17_sub5.triangleDrawType != null;
-                if(class40_sub5_sub17_sub5.trianglePriorities != null)
-                    bool_305_ = true;
-                else {
+                if(class40_sub5_sub17_sub5.trianglePriorities == null) {
                     if(anInt3197 == -1)
                         anInt3197 = class40_sub5_sub17_sub5.anInt3197;
                     if(anInt3197 != class40_sub5_sub17_sub5.anInt3197)
                         bool_305_ = true;
-                }
+                } else
+                    bool_305_ = true;
                 bool_306_ = (bool_306_ | class40_sub5_sub17_sub5.triangleAlphaValues != null);
                 bool_307_ = (bool_307_ | class40_sub5_sub17_sub5.triangleSkinValues != null);
             }
@@ -440,14 +439,13 @@ public class Model extends Renderable {
                 triangleCount += class40_sub5_sub17_sub5.triangleCount;
                 anInt3180 += class40_sub5_sub17_sub5.anInt3180;
                 bool = bool | class40_sub5_sub17_sub5.triangleDrawType != null;
-                if(class40_sub5_sub17_sub5.trianglePriorities != null)
-                    bool_312_ = true;
-                else {
+                if(class40_sub5_sub17_sub5.trianglePriorities == null) {
                     if(anInt3197 == -1)
                         anInt3197 = class40_sub5_sub17_sub5.anInt3197;
                     if(anInt3197 != class40_sub5_sub17_sub5.anInt3197)
                         bool_312_ = true;
-                }
+                } else
+                    bool_312_ = true;
                 bool_313_ = (bool_313_ | class40_sub5_sub17_sub5.triangleAlphaValues != null);
                 bool_314_ = (bool_314_ | class40_sub5_sub17_sub5.triangleColorValues != null);
             }

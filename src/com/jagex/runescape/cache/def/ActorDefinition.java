@@ -430,10 +430,10 @@ public class ActorDefinition extends SubNode {
             models[i] = Model.getModel(Class67.aCacheIndex_1577, headModelIndexes[i], 0);
         }
         Model headModel;
-        if(models.length != 1) {
-            headModel = (new Model(models, models.length));
-        } else {
+        if(models.length == 1) {
             headModel = models[0];
+        } else {
+            headModel = (new Model(models, models.length));
         }
         if(modifiedModelColors != null) {
             for(int i = 0; i < modifiedModelColors.length; i++) {

@@ -85,9 +85,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                 int i = arg2.currentPosition;
                 arg2.putIntBE(class40_sub11.anInt2166);
                 for(int i_0_ = 0; class40_sub11.anInt2160 > i_0_; i_0_++) {
-                    if(class40_sub11.anIntArray2155[i_0_] != 0)
-                        arg2.putByte(class40_sub11.anIntArray2155[i_0_]);
-                    else {
+                    if(class40_sub11.anIntArray2155[i_0_] == 0) {
                         try {
                             int i_1_ = class40_sub11.anIntArray2154[i_0_];
                             if(i_1_ == 0) {
@@ -105,14 +103,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                 arg2.putByte(0);
                                 arg2.putIntBE(i_3_);
                             }
-                            if(i_1_ != 3) {
-                                if(i_1_ == 4) {
-                                    Method method = ((Method) (class40_sub11.aClass15Array2156[i_0_].anObject437));
-                                    int i_4_ = method.getModifiers();
-                                    arg2.putByte(0);
-                                    arg2.putIntBE(i_4_);
-                                }
-                            } else {
+                            if(i_1_ == 3) {
                                 Method method = ((Method) (class40_sub11.aClass15Array2156[i_0_].anObject437));
                                 byte[][] is = (class40_sub11.aByteArrayArrayArray2159[i_0_]);
                                 Object[] objects = new Object[is.length];
@@ -123,16 +114,19 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                 Object object = method.invoke(null, objects);
                                 if(object == null)
                                     arg2.putByte(0);
-                                else if(!(object instanceof Number)) {
-                                    if(object instanceof RSString) {
-                                        arg2.putByte(2);
-                                        arg2.method505((RSString) object);
-                                    } else
-                                        arg2.putByte(4);
-                                } else {
+                                else if(object instanceof Number) {
                                     arg2.putByte(1);
                                     arg2.putLongBE(((Number) object).longValue());
-                                }
+                                } else if(object instanceof RSString) {
+                                    arg2.putByte(2);
+                                    arg2.method505((RSString) object);
+                                } else
+                                    arg2.putByte(4);
+                            } else if(i_1_ == 4) {
+                                Method method = ((Method) (class40_sub11.aClass15Array2156[i_0_].anObject437));
+                                int i_4_ = method.getModifiers();
+                                arg2.putByte(0);
+                                arg2.putIntBE(i_4_);
                             }
                         } catch(ClassNotFoundException classnotfoundexception) {
                             arg2.putByte(-10);
@@ -159,7 +153,8 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         } catch(Throwable throwable) {
                             arg2.putByte(-21);
                         }
-                    }
+                    } else
+                        arg2.putByte(class40_sub11.anIntArray2155[i_0_]);
                 }
                 arg2.method473(i);
                 arg2.finishVarByte(-i + arg2.currentPosition);
@@ -195,189 +190,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         HuffmanEncoding.aClass1_1550 = (HuffmanEncoding.aClass1_1550.substring(0, -1 + HuffmanEncoding.aClass1_1550.length()));
                     if((Class40_Sub5_Sub15.method735((byte) -37, Class59.anInt1388) || Class59.anInt1388 == 32) && HuffmanEncoding.aClass1_1550.length() < 12)
                         HuffmanEncoding.aClass1_1550 = HuffmanEncoding.aClass1_1550.method70(Class59.anInt1388, 0);
-                } else if(!Class19.aBoolean490) {
-                    if(Class40_Sub5_Sub15.inputType == 1) {
-                        if((ItemDefinition.anInt2854 == 85) && HuffmanEncoding.inputInputMessage.length() > 0) {
-                            HuffmanEncoding.inputInputMessage = (HuffmanEncoding.inputInputMessage.substring(0, (HuffmanEncoding.inputInputMessage.length() - 1)));
-                            Class52.redrawChatbox = true;
-                        }
-                        if(HuffmanEncoding.method1027(Class59.anInt1388, -58) && HuffmanEncoding.inputInputMessage.length() < 10) {
-                            HuffmanEncoding.inputInputMessage = HuffmanEncoding.inputInputMessage.method70(Class59.anInt1388, 0);
-                            Class52.redrawChatbox = true;
-                        }
-                        if(ItemDefinition.anInt2854 == 84) {
-                            if(HuffmanEncoding.inputInputMessage.length() > 0) {
-                                int i = 0;
-                                if(HuffmanEncoding.inputInputMessage.method82(arg0 + 105))
-                                    i = HuffmanEncoding.inputInputMessage.method52();
-                                Class32.packetBuffer.putPacket(238);
-                                Class32.packetBuffer.putIntBE(i);
-                            }
-                            Class52.redrawChatbox = true;
-                            Class40_Sub5_Sub15.inputType = 0;
-                        }
-                    } else if(Class40_Sub5_Sub15.inputType != 2) {
-                        if(Class40_Sub5_Sub15.inputType == 3) {
-                            if(ItemDefinition.anInt2854 == 85 && HuffmanEncoding.inputInputMessage.length() > 0) {
-                                HuffmanEncoding.inputInputMessage = (HuffmanEncoding.inputInputMessage.substring(0, HuffmanEncoding.inputInputMessage.length() - 10));
-                                Class52.redrawChatbox = true;
-                            }
-                            if((Player.method793((byte) 122, Class59.anInt1388)) && HuffmanEncoding.inputInputMessage.length() < 40) {
-                                HuffmanEncoding.inputInputMessage = HuffmanEncoding.inputInputMessage.method70(Class59.anInt1388, 0);
-                                Class52.redrawChatbox = true;
-                            }
-                        } else if(Class43.openChatboxWidgetId == -1 && ActorDefinition.anInt2433 == -1) {
-                            if(ItemDefinition.anInt2854 == 85 && (HuffmanEncoding.chatboxInput.length() > 0)) {
-                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring(0, HuffmanEncoding.chatboxInput.length() - 1));
-                                Class52.redrawChatbox = true;
-                            }
-                            if((Player.method793((byte) 124, Class59.anInt1388)) && HuffmanEncoding.chatboxInput.length() < 80) {
-                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.method70(Class59.anInt1388, arg0 + -2));
-                                Class52.redrawChatbox = true;
-                            }
-                            if(ItemDefinition.anInt2854 == 84 && (HuffmanEncoding.chatboxInput.length() > 0)) {
-                                if(true) {
-                                    if(HuffmanEncoding.chatboxInput.equals(Class58.cmd_clientdrop))
-                                        Class59.dropClient(2578);
-                                    if(HuffmanEncoding.chatboxInput.equals(Class40_Sub3.cmd_fpson)) {
-                                        Class19.showFps = true;
-                                        Class40_Sub5_Sub15.inputType = 3;
-                                    }
-
-                                    if(HuffmanEncoding.chatboxInput.equals(Class40_Sub11.cmd_fpsoff))
-                                        Class19.showFps = false;
-                                    if(HuffmanEncoding.chatboxInput.equals(SpotAnimDefinition.cmd_noclip)) {
-                                        for(int i = 0; i < 4; i++) {
-                                            for(int i_9_ = 1; (i_9_ < 103); i_9_++) {
-                                                for(int i_10_ = 1; i_10_ < 103; i_10_++)
-                                                    Landscape.aCollisionMapArray1167[i].anIntArrayArray150[i_9_][i_10_] = 0;
-                                            }
-                                        }
-                                    }
-                                    if((HuffmanEncoding.chatboxInput.equals(Widget.cmd_errortest)) && Class44.modewhere == 2)
-                                        throw new RuntimeException();
-                                    if(HuffmanEncoding.chatboxInput.equals(Class4.cmd_hiddenbuttontest))
-                                        PacketBuffer.hiddenButtonTest = true;
-                                }
-                                if(!HuffmanEncoding.chatboxInput.startsWith(Class33.cmd_prefix)) {
-                                    int i = 0;
-                                    VarbitDefinition.anInt2362++;
-                                    RSString class1 = HuffmanEncoding.chatboxInput.toLowerCase();
-                                    int i_11_ = 0;
-                                    if(class1.startsWith((Class40_Sub5_Sub11.aClass1_2620))) {
-                                        i_11_ = 0;
-                                        HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring(Class40_Sub5_Sub11.aClass1_2620.length()));
-                                    } else if(!class1.startsWith(Class5.aClass1_204)) {
-                                        if(!class1.startsWith((Player.aClass1_3256))) {
-                                            if(class1.startsWith(Class45.aClass1_1076)) {
-                                                i_11_ = 3;
-                                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((Class45.aClass1_1076.length())));
-                                            } else if(!class1.startsWith((RSString.aClass1_1717))) {
-                                                if(class1.startsWith((Node.aClass1_940))) {
-                                                    HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((Node.aClass1_940.length())));
-                                                    i_11_ = 5;
-                                                } else if(!class1.startsWith((Class43.aClass1_1019))) {
-                                                    if(!class1.startsWith((UnderlayDefinition.aClass1_2566))) {
-                                                        if(!class1.startsWith((Class57.aClass1_1343))) {
-                                                            if(class1.startsWith((Landscape.aClass1_1181))) {
-                                                                i_11_ = 9;
-                                                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((Landscape.aClass1_1181.length())));
-                                                            } else if(!class1.startsWith(Widget.aClass1_2671)) {
-                                                                if(class1.startsWith((Class51.aClass1_1196))) {
-                                                                    HuffmanEncoding.chatboxInput = HuffmanEncoding.chatboxInput.substring(Class51.aClass1_1196.length());
-                                                                    i_11_ = 11;
-                                                                }
-                                                            } else {
-                                                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring(Widget.aClass1_2671.length()));
-                                                                i_11_ = 10;
-                                                            }
-                                                        } else {
-                                                            i_11_ = 8;
-                                                            HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((Class57.aClass1_1343.length())));
-                                                        }
-                                                    } else {
-                                                        i_11_ = 7;
-                                                        HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((UnderlayDefinition.aClass1_2566.length())));
-                                                    }
-                                                } else {
-                                                    i_11_ = 6;
-                                                    HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((Class43.aClass1_1019.length())));
-                                                }
-                                            } else {
-                                                i_11_ = 4;
-                                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((RSString.aClass1_1717.length())));
-                                            }
-                                        } else {
-                                            i_11_ = 2;
-                                            HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring(Player.aClass1_3256.length()));
-                                        }
-                                    } else {
-                                        HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((Class5.aClass1_204.length())));
-                                        i_11_ = 1;
-                                    }
-                                    class1 = HuffmanEncoding.chatboxInput.toLowerCase();
-                                    if(class1.startsWith((VertexNormal.aClass1_1097))) {
-                                        i = 1;
-                                        HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((VertexNormal.aClass1_1097.length())));
-                                    } else if(class1.startsWith(GameFrame.aClass1_1474)) {
-                                        i = 2;
-                                        HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring(GameFrame.aClass1_1474.length()));
-                                    } else if(class1.startsWith(RSCanvas.aClass1_51)) {
-                                        HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring(RSCanvas.aClass1_51.length()));
-                                        i = 3;
-                                    } else if(!class1.startsWith(aClass1_2438)) {
-                                        if(class1.startsWith(Class55.aClass1_1291)) {
-                                            i = 5;
-                                            HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring(Class55.aClass1_1291.length()));
-                                        }
-                                    } else {
-                                        i = 4;
-                                        HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring(aClass1_2438.length()));
-                                    }
-                                    Class32.packetBuffer.putPacket(75);
-                                    Class32.packetBuffer.putByte(0);
-                                    int i_12_ = (Class32.packetBuffer.currentPosition);
-                                    Class32.packetBuffer.putByte(i_11_);
-                                    Class32.packetBuffer.putByte(i);
-                                    Class68_Sub1.method1052(65, HuffmanEncoding.chatboxInput, Class32.packetBuffer);
-                                    Class32.packetBuffer.finishVarByte((Class32.packetBuffer.currentPosition) + -i_12_);
-                                    if(Class35.publicChatMode == 2) {
-                                        Class34.anInt821++;
-                                        Cache.aBoolean330 = true;
-                                        Class35.publicChatMode = 3;
-                                        Class32.packetBuffer.putPacket(32);
-                                        Class32.packetBuffer.putByte(Class35.publicChatMode);
-                                        Class32.packetBuffer.putByte(Class4.anInt185);
-                                        Class32.packetBuffer.putByte(ItemDefinition.anInt2797);
-                                    }
-                                } else {
-                                    Class32.packetBuffer.putPacket(248);
-                                    Class32.packetBuffer.putByte(-1 + HuffmanEncoding.chatboxInput.length());
-                                    Class32.packetBuffer.method505(HuffmanEncoding.chatboxInput.substring(2));
-                                }
-                                Class52.redrawChatbox = true;
-                                HuffmanEncoding.chatboxInput = HuffmanEncoding.blank_string;
-                            }
-                        }
-                    } else {
-                        if((ItemDefinition.anInt2854 == 85) && HuffmanEncoding.inputInputMessage.length() > 0) {
-                            HuffmanEncoding.inputInputMessage = (HuffmanEncoding.inputInputMessage.substring(0, -1 + HuffmanEncoding.inputInputMessage.length()));
-                            Class52.redrawChatbox = true;
-                        }
-                        if((Class40_Sub5_Sub15.method735((byte) -37, Class59.anInt1388) || Class59.anInt1388 == 32) && HuffmanEncoding.inputInputMessage.length() < 12) {
-                            HuffmanEncoding.inputInputMessage = (HuffmanEncoding.inputInputMessage.method70(Class59.anInt1388, arg0 ^ 0x2));
-                            Class52.redrawChatbox = true;
-                        }
-                        if(ItemDefinition.anInt2854 == 84) {
-                            if(HuffmanEncoding.inputInputMessage.length() > 0) {
-                                Class32.packetBuffer.putPacket(86);
-                                Class32.packetBuffer.putLongBE(HuffmanEncoding.inputInputMessage.method58((byte) 89));
-                            }
-                            Class40_Sub5_Sub15.inputType = 0;
-                            Class52.redrawChatbox = true;
-                        }
-                    }
-                } else {
+                } else if(Class19.aBoolean490) {
                     if(ItemDefinition.anInt2854 == 85 && (HuffmanEncoding.aClass1_1565.length() > 0)) {
                         HuffmanEncoding.aClass1_1565 = (HuffmanEncoding.aClass1_1565.substring(0, -1 + HuffmanEncoding.aClass1_1565.length()));
                         Class52.redrawChatbox = true;
@@ -423,6 +236,168 @@ public class Class40_Sub5_Sub6 extends SubNode {
                             long l = HuffmanEncoding.aClass1_1565.method58((byte) 109);
                             Class40_Sub6.method838(0, l);
                         }
+                    }
+                } else if(Class40_Sub5_Sub15.inputType == 1) {
+                    if((ItemDefinition.anInt2854 == 85) && HuffmanEncoding.inputInputMessage.length() > 0) {
+                        HuffmanEncoding.inputInputMessage = (HuffmanEncoding.inputInputMessage.substring(0, (HuffmanEncoding.inputInputMessage.length() - 1)));
+                        Class52.redrawChatbox = true;
+                    }
+                    if(HuffmanEncoding.method1027(Class59.anInt1388, -58) && HuffmanEncoding.inputInputMessage.length() < 10) {
+                        HuffmanEncoding.inputInputMessage = HuffmanEncoding.inputInputMessage.method70(Class59.anInt1388, 0);
+                        Class52.redrawChatbox = true;
+                    }
+                    if(ItemDefinition.anInt2854 == 84) {
+                        if(HuffmanEncoding.inputInputMessage.length() > 0) {
+                            int i = 0;
+                            if(HuffmanEncoding.inputInputMessage.method82(arg0 + 105))
+                                i = HuffmanEncoding.inputInputMessage.method52();
+                            Class32.packetBuffer.putPacket(238);
+                            Class32.packetBuffer.putIntBE(i);
+                        }
+                        Class52.redrawChatbox = true;
+                        Class40_Sub5_Sub15.inputType = 0;
+                    }
+                } else if(Class40_Sub5_Sub15.inputType == 2) {
+                    if((ItemDefinition.anInt2854 == 85) && HuffmanEncoding.inputInputMessage.length() > 0) {
+                        HuffmanEncoding.inputInputMessage = (HuffmanEncoding.inputInputMessage.substring(0, -1 + HuffmanEncoding.inputInputMessage.length()));
+                        Class52.redrawChatbox = true;
+                    }
+                    if((Class40_Sub5_Sub15.method735((byte) -37, Class59.anInt1388) || Class59.anInt1388 == 32) && HuffmanEncoding.inputInputMessage.length() < 12) {
+                        HuffmanEncoding.inputInputMessage = (HuffmanEncoding.inputInputMessage.method70(Class59.anInt1388, arg0 ^ 0x2));
+                        Class52.redrawChatbox = true;
+                    }
+                    if(ItemDefinition.anInt2854 == 84) {
+                        if(HuffmanEncoding.inputInputMessage.length() > 0) {
+                            Class32.packetBuffer.putPacket(86);
+                            Class32.packetBuffer.putLongBE(HuffmanEncoding.inputInputMessage.method58((byte) 89));
+                        }
+                        Class40_Sub5_Sub15.inputType = 0;
+                        Class52.redrawChatbox = true;
+                    }
+                } else if(Class40_Sub5_Sub15.inputType == 3) {
+                    if(ItemDefinition.anInt2854 == 85 && HuffmanEncoding.inputInputMessage.length() > 0) {
+                        HuffmanEncoding.inputInputMessage = (HuffmanEncoding.inputInputMessage.substring(0, HuffmanEncoding.inputInputMessage.length() - 10));
+                        Class52.redrawChatbox = true;
+                    }
+                    if((Player.method793((byte) 122, Class59.anInt1388)) && HuffmanEncoding.inputInputMessage.length() < 40) {
+                        HuffmanEncoding.inputInputMessage = HuffmanEncoding.inputInputMessage.method70(Class59.anInt1388, 0);
+                        Class52.redrawChatbox = true;
+                    }
+                } else if(Class43.openChatboxWidgetId == -1 && ActorDefinition.anInt2433 == -1) {
+                    if(ItemDefinition.anInt2854 == 85 && (HuffmanEncoding.chatboxInput.length() > 0)) {
+                        HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring(0, HuffmanEncoding.chatboxInput.length() - 1));
+                        Class52.redrawChatbox = true;
+                    }
+                    if((Player.method793((byte) 124, Class59.anInt1388)) && HuffmanEncoding.chatboxInput.length() < 80) {
+                        HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.method70(Class59.anInt1388, arg0 + -2));
+                        Class52.redrawChatbox = true;
+                    }
+                    if(ItemDefinition.anInt2854 == 84 && (HuffmanEncoding.chatboxInput.length() > 0)) {
+                        if(true) {
+                            if(HuffmanEncoding.chatboxInput.equals(Class58.cmd_clientdrop))
+                                Class59.dropClient(2578);
+                            if(HuffmanEncoding.chatboxInput.equals(Class40_Sub3.cmd_fpson)) {
+                                Class19.showFps = true;
+                                Class40_Sub5_Sub15.inputType = 3;
+                            }
+
+                            if(HuffmanEncoding.chatboxInput.equals(Class40_Sub11.cmd_fpsoff))
+                                Class19.showFps = false;
+                            if(HuffmanEncoding.chatboxInput.equals(SpotAnimDefinition.cmd_noclip)) {
+                                for(int i = 0; i < 4; i++) {
+                                    for(int i_9_ = 1; (i_9_ < 103); i_9_++) {
+                                        for(int i_10_ = 1; i_10_ < 103; i_10_++)
+                                            Landscape.aCollisionMapArray1167[i].anIntArrayArray150[i_9_][i_10_] = 0;
+                                    }
+                                }
+                            }
+                            if((HuffmanEncoding.chatboxInput.equals(Widget.cmd_errortest)) && Class44.modewhere == 2)
+                                throw new RuntimeException();
+                            if(HuffmanEncoding.chatboxInput.equals(Class4.cmd_hiddenbuttontest))
+                                PacketBuffer.hiddenButtonTest = true;
+                        }
+                        if(HuffmanEncoding.chatboxInput.startsWith(Class33.cmd_prefix)) {
+                            Class32.packetBuffer.putPacket(248);
+                            Class32.packetBuffer.putByte(-1 + HuffmanEncoding.chatboxInput.length());
+                            Class32.packetBuffer.method505(HuffmanEncoding.chatboxInput.substring(2));
+                        } else {
+                            int i = 0;
+                            VarbitDefinition.anInt2362++;
+                            RSString class1 = HuffmanEncoding.chatboxInput.toLowerCase();
+                            int i_11_ = 0;
+                            if(class1.startsWith((Class40_Sub5_Sub11.aClass1_2620))) {
+                                i_11_ = 0;
+                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring(Class40_Sub5_Sub11.aClass1_2620.length()));
+                            } else if(class1.startsWith(Class5.aClass1_204)) {
+                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((Class5.aClass1_204.length())));
+                                i_11_ = 1;
+                            } else if(class1.startsWith((Player.aClass1_3256))) {
+                                i_11_ = 2;
+                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring(Player.aClass1_3256.length()));
+                            } else if(class1.startsWith(Class45.aClass1_1076)) {
+                                i_11_ = 3;
+                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((Class45.aClass1_1076.length())));
+                            } else if(class1.startsWith((RSString.aClass1_1717))) {
+                                i_11_ = 4;
+                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((RSString.aClass1_1717.length())));
+                            } else if(class1.startsWith((Node.aClass1_940))) {
+                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((Node.aClass1_940.length())));
+                                i_11_ = 5;
+                            } else if(class1.startsWith((Class43.aClass1_1019))) {
+                                i_11_ = 6;
+                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((Class43.aClass1_1019.length())));
+                            } else if(class1.startsWith((UnderlayDefinition.aClass1_2566))) {
+                                i_11_ = 7;
+                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((UnderlayDefinition.aClass1_2566.length())));
+                            } else if(class1.startsWith((Class57.aClass1_1343))) {
+                                i_11_ = 8;
+                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((Class57.aClass1_1343.length())));
+                            } else if(class1.startsWith((Landscape.aClass1_1181))) {
+                                i_11_ = 9;
+                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((Landscape.aClass1_1181.length())));
+                            } else if(class1.startsWith(Widget.aClass1_2671)) {
+                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring(Widget.aClass1_2671.length()));
+                                i_11_ = 10;
+                            } else if(class1.startsWith((Class51.aClass1_1196))) {
+                                HuffmanEncoding.chatboxInput = HuffmanEncoding.chatboxInput.substring(Class51.aClass1_1196.length());
+                                i_11_ = 11;
+                            }
+                            class1 = HuffmanEncoding.chatboxInput.toLowerCase();
+                            if(class1.startsWith((VertexNormal.aClass1_1097))) {
+                                i = 1;
+                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((VertexNormal.aClass1_1097.length())));
+                            } else if(class1.startsWith(GameFrame.aClass1_1474)) {
+                                i = 2;
+                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring(GameFrame.aClass1_1474.length()));
+                            } else if(class1.startsWith(RSCanvas.aClass1_51)) {
+                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring(RSCanvas.aClass1_51.length()));
+                                i = 3;
+                            } else if(class1.startsWith(aClass1_2438)) {
+                                i = 4;
+                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring(aClass1_2438.length()));
+                            } else if(class1.startsWith(Class55.aClass1_1291)) {
+                                i = 5;
+                                HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring(Class55.aClass1_1291.length()));
+                            }
+                            Class32.packetBuffer.putPacket(75);
+                            Class32.packetBuffer.putByte(0);
+                            int i_12_ = (Class32.packetBuffer.currentPosition);
+                            Class32.packetBuffer.putByte(i_11_);
+                            Class32.packetBuffer.putByte(i);
+                            Class68_Sub1.method1052(65, HuffmanEncoding.chatboxInput, Class32.packetBuffer);
+                            Class32.packetBuffer.finishVarByte((Class32.packetBuffer.currentPosition) + -i_12_);
+                            if(Class35.publicChatMode == 2) {
+                                Class34.anInt821++;
+                                Cache.aBoolean330 = true;
+                                Class35.publicChatMode = 3;
+                                Class32.packetBuffer.putPacket(32);
+                                Class32.packetBuffer.putByte(Class35.publicChatMode);
+                                Class32.packetBuffer.putByte(Class4.anInt185);
+                                Class32.packetBuffer.putByte(ItemDefinition.anInt2797);
+                            }
+                        }
+                        Class52.redrawChatbox = true;
+                        HuffmanEncoding.chatboxInput = HuffmanEncoding.blank_string;
                     }
                 }
             }

@@ -90,17 +90,13 @@ public class Class21 {
             int i_10_ = (byte) (i_3_ & 0xff);
             i_3_ >>= 8;
             if(++i_1_ != i_8_) {
-                if(i_10_ != i_2_)
-                    i_2_ = i_10_;
-                else {
+                if(i_10_ == i_2_) {
                     i_0_ = 3;
                     i_3_ = is[i_3_];
                     i_10_ = (byte) (i_3_ & 0xff);
                     i_3_ >>= 8;
                     if(++i_1_ != i_8_) {
-                        if(i_10_ != i_2_)
-                            i_2_ = i_10_;
-                        else {
+                        if(i_10_ == i_2_) {
                             i_3_ = is[i_3_];
                             i_10_ = (byte) (i_3_ & 0xff);
                             i_3_ >>= 8;
@@ -110,9 +106,11 @@ public class Class21 {
                             i_2_ = (byte) (i_3_ & 0xff);
                             i_3_ >>= 8;
                             i_1_++;
-                        }
+                        } else
+                            i_2_ = i_10_;
                     }
-                }
+                } else
+                    i_2_ = i_10_;
             }
         }
         int i_11_ = arg0.anInt846;

@@ -238,9 +238,7 @@ public class Class22_Sub1 extends Class22 {
             method306((byte) 27);
         anInt1840++;
         int i = Class29.method372(120, arg1) + -arg2;
-        if(aClass15_1836 != null)
-            anInt1860 = i;
-        else {
+        if(aClass15_1836 == null) {
             do {
                 if(aBoolean1835) {
                     try {
@@ -251,7 +249,8 @@ public class Class22_Sub1 extends Class22 {
                     break;
                 }
             } while(false);
-        }
+        } else
+            anInt1860 = i;
     }
 
     public void method300(byte[] arg0, boolean arg1, int arg2, int arg3) {

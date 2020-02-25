@@ -70,36 +70,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
             int i = clickType;
             if(Main.anInt1773 == 1 && Class57.anInt1338 >= 516 && RSString.anInt1668 >= 160 && Class57.anInt1338 <= 765 && RSString.anInt1668 <= 205)
                 i = 0;
-            if(!Class4.menuOpen) {
-                if(i == 1 && ActorDefinition.anInt2394 > 0) {
-                    int i_0_ = (Class38.anIntArray884[ActorDefinition.anInt2394 - 1]);
-                    if(i_0_ == 53 || i_0_ == 25 || i_0_ == 55 || i_0_ == 48 || i_0_ == 24 || i_0_ == 52 || i_0_ == 6 || i_0_ == 31 || i_0_ == 43 || i_0_ == 11 || i_0_ == 19 || i_0_ == 1006) {
-                        int i_1_ = (Class19.anIntArray483[ActorDefinition.anInt2394 - 1]);
-                        int i_2_ = (Class59.anIntArray1393[-1 + ActorDefinition.anInt2394]);
-                        Widget widget = Widget.forId(i_2_);
-                        if(widget.itemSwapable || widget.itemDeletesDraged) {
-                            Renderable.anInt2869 = Class57.anInt1338;
-                            Class40_Sub5_Sub15.aBoolean2784 = false;
-                            SceneTile.activeInterfaceType = 2;
-                            Class48.modifiedWidgetId = i_2_;
-                            ItemDefinition.anInt2798 = RSString.anInt1668;
-                            Class58.selectedInventorySlot = i_1_;
-                            if(i_2_ >> 16 == HuffmanEncoding.openScreenWidgetId)
-                                SceneTile.activeInterfaceType = 1;
-                            if(Class43.openChatboxWidgetId == i_2_ >> 16)
-                                SceneTile.activeInterfaceType = 3;
-                            Buffer.anInt1978 = 0;
-                            return;
-                        }
-                    }
-                }
-                if(i == 1 && (Class68.anInt1630 == 1 || Class33.method409((byte) 46, -1 + ActorDefinition.anInt2394)) && ActorDefinition.anInt2394 > 2)
-                    i = 2;
-                if(i == 1 && ActorDefinition.anInt2394 > 0)
-                    Class27.method358(59, ActorDefinition.anInt2394 + -1);
-                if(i == 2 && ActorDefinition.anInt2394 > 0)
-                    Class60.method990(11451);
-            } else {
+            if(Class4.menuOpen) {
                 if(i != 1) {
                     int i_3_ = Class13.mouseX;
                     int i_4_ = Landscape.mouseY;
@@ -155,6 +126,35 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
                     if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
                         Class52.redrawChatbox = true;
                 }
+            } else {
+                if(i == 1 && ActorDefinition.anInt2394 > 0) {
+                    int i_0_ = (Class38.anIntArray884[ActorDefinition.anInt2394 - 1]);
+                    if(i_0_ == 53 || i_0_ == 25 || i_0_ == 55 || i_0_ == 48 || i_0_ == 24 || i_0_ == 52 || i_0_ == 6 || i_0_ == 31 || i_0_ == 43 || i_0_ == 11 || i_0_ == 19 || i_0_ == 1006) {
+                        int i_1_ = (Class19.anIntArray483[ActorDefinition.anInt2394 - 1]);
+                        int i_2_ = (Class59.anIntArray1393[-1 + ActorDefinition.anInt2394]);
+                        Widget widget = Widget.forId(i_2_);
+                        if(widget.itemSwapable || widget.itemDeletesDraged) {
+                            Renderable.anInt2869 = Class57.anInt1338;
+                            Class40_Sub5_Sub15.aBoolean2784 = false;
+                            SceneTile.activeInterfaceType = 2;
+                            Class48.modifiedWidgetId = i_2_;
+                            ItemDefinition.anInt2798 = RSString.anInt1668;
+                            Class58.selectedInventorySlot = i_1_;
+                            if(i_2_ >> 16 == HuffmanEncoding.openScreenWidgetId)
+                                SceneTile.activeInterfaceType = 1;
+                            if(Class43.openChatboxWidgetId == i_2_ >> 16)
+                                SceneTile.activeInterfaceType = 3;
+                            Buffer.anInt1978 = 0;
+                            return;
+                        }
+                    }
+                }
+                if(i == 1 && (Class68.anInt1630 == 1 || Class33.method409((byte) 46, -1 + ActorDefinition.anInt2394)) && ActorDefinition.anInt2394 > 2)
+                    i = 2;
+                if(i == 1 && ActorDefinition.anInt2394 > 0)
+                    Class27.method358(59, ActorDefinition.anInt2394 + -1);
+                if(i == 2 && ActorDefinition.anInt2394 > 0)
+                    Class60.method990(11451);
             }
         }
     }
@@ -281,17 +281,15 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
                         Class52.redrawChatbox = true;
                     }
                 }
+            } else if(Class40_Sub5_Sub15.inputType == 3) {
+                Class26.itemSearchScroll = Class26.itemSearchScroll + 30;
+                Class52.redrawChatbox = true;
+            } else if(GameObjectDefinition.chatboxScroll < 1) {
+                Class26.itemSearchScroll = 0;
+                Class52.redrawChatbox = true;
             } else {
-                if(Class40_Sub5_Sub15.inputType == 3) {
-                    Class26.itemSearchScroll = Class26.itemSearchScroll + 30;
-                    Class52.redrawChatbox = true;
-                } else if(GameObjectDefinition.chatboxScroll < 1) {
-                    Class26.itemSearchScroll = 0;
-                    Class52.redrawChatbox = true;
-                } else {
-                    GameObjectDefinition.chatboxScroll = GameObjectDefinition.chatboxScroll - 30;
-                    Class52.redrawChatbox = true;
-                }
+                GameObjectDefinition.chatboxScroll = GameObjectDefinition.chatboxScroll - 30;
+                Class52.redrawChatbox = true;
             }
             return true;
         } else {

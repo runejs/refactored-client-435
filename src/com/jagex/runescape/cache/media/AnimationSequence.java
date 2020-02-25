@@ -201,42 +201,40 @@ public class AnimationSequence extends SubNode {
                 anIntArray2485[i_8_] = ((arg2.getUnsignedShortBE() << 16) + anIntArray2485[i_8_]);
         } else if(arg1 == 2)
             frameStep = arg2.getUnsignedShortBE();
-        else if(arg1 != 3) {
-            if(arg1 != 4) {
-                if(arg1 == 5)
-                    anInt2494 = arg2.getUnsignedByte();
-                else if(arg1 != 6) {
-                    if(arg1 != 7) {
-                        if(arg1 == 8)
-                            anInt2495 = arg2.getUnsignedByte();
-                        else if(arg1 == 9)
-                            anInt2470 = arg2.getUnsignedByte();
-                        else if(arg1 != 10) {
-                            if(arg1 == 11)
-                                anInt2483 = arg2.getUnsignedByte();
-                            else if(arg1 == 12) {
-                                int i_9_ = arg2.getUnsignedByte();
-                                anIntArray2479 = new int[i_9_];
-                                for(int i_10_ = 0; ((i_10_ < i_9_)); i_10_++)
-                                    anIntArray2479[i_10_] = arg2.getUnsignedShortBE();
-                                for(int i_11_ = 0; ((i_9_ > i_11_)); i_11_++)
-                                    anIntArray2479[i_11_] = ((arg2.getUnsignedShortBE() << 16) + anIntArray2479[i_11_]);
-                            }
-                        } else
-                            anInt2476 = arg2.getUnsignedByte();
-                    } else
-                        anInt2489 = arg2.getUnsignedShortBE();
-                } else
-                    anInt2477 = arg2.getUnsignedShortBE();
-            } else
-                aBoolean2496 = true;
-        } else {
+        else if(arg1 == 3) {
             int i_12_ = arg2.getUnsignedByte();
             anIntArray2473 = new int[1 + i_12_];
             for(int i_13_ = 0; i_12_ > i_13_; i_13_++)
                 anIntArray2473[i_13_] = arg2.getUnsignedByte();
             anIntArray2473[i_12_] = 9999999;
-        }
+        } else if(arg1 != 4) {
+            if(arg1 == 5)
+                anInt2494 = arg2.getUnsignedByte();
+            else if(arg1 != 6) {
+                if(arg1 != 7) {
+                    if(arg1 == 8)
+                        anInt2495 = arg2.getUnsignedByte();
+                    else if(arg1 == 9)
+                        anInt2470 = arg2.getUnsignedByte();
+                    else if(arg1 != 10) {
+                        if(arg1 == 11)
+                            anInt2483 = arg2.getUnsignedByte();
+                        else if(arg1 == 12) {
+                            int i_9_ = arg2.getUnsignedByte();
+                            anIntArray2479 = new int[i_9_];
+                            for(int i_10_ = 0; ((i_10_ < i_9_)); i_10_++)
+                                anIntArray2479[i_10_] = arg2.getUnsignedShortBE();
+                            for(int i_11_ = 0; ((i_9_ > i_11_)); i_11_++)
+                                anIntArray2479[i_11_] = ((arg2.getUnsignedShortBE() << 16) + anIntArray2479[i_11_]);
+                        }
+                    } else
+                        anInt2476 = arg2.getUnsignedByte();
+                } else
+                    anInt2489 = arg2.getUnsignedShortBE();
+            } else
+                anInt2477 = arg2.getUnsignedShortBE();
+        } else
+            aBoolean2496 = true;
     }
 
     public Model method597(byte arg0, Model arg1, int arg2) {

@@ -227,32 +227,29 @@ public class Npc extends Actor {
                                             moveItemInsertionMode = 1;
                                         if((childInterface.items[Class55.mouseInvInterfaceIndex]) <= 0)
                                             moveItemInsertionMode = 0;
-                                        if(!childInterface.itemDeletesDraged) {
-                                            if(moveItemInsertionMode != 1)
-                                                childInterface.swapItems(Class55.mouseInvInterfaceIndex, false, Class58.selectedInventorySlot);
-                                            else {
-                                                int slotStart = Class58.selectedInventorySlot;
-                                                int slotEnd = Class55.mouseInvInterfaceIndex;
-                                                while(slotEnd != slotStart) {
-                                                    if(slotStart <= slotEnd) {
-                                                        if((slotStart < slotEnd)) {
-                                                            childInterface.swapItems(1 + slotStart, false, slotStart);
-                                                            slotStart++;
-                                                        }
-                                                    } else {
-                                                        childInterface.swapItems(-1 + slotStart, false, slotStart);
-                                                        slotStart--;
-                                                    }
-                                                }
-                                            }
-                                        } else {
+                                        if(childInterface.itemDeletesDraged) {
                                             int i_16_ = Class55.mouseInvInterfaceIndex;
                                             int i_17_ = Class58.selectedInventorySlot;
                                             childInterface.items[i_16_] = (childInterface.items[i_17_]);
                                             childInterface.itemAmounts[i_16_] = (childInterface.itemAmounts[i_17_]);
                                             childInterface.items[i_17_] = -1;
                                             childInterface.itemAmounts[i_17_] = 0;
-                                        }
+                                        } else if(moveItemInsertionMode == 1) {
+                                            int slotStart = Class58.selectedInventorySlot;
+                                            int slotEnd = Class55.mouseInvInterfaceIndex;
+                                            while(slotEnd != slotStart) {
+                                                if(slotStart <= slotEnd) {
+                                                    if((slotStart < slotEnd)) {
+                                                        childInterface.swapItems(1 + slotStart, false, slotStart);
+                                                        slotStart++;
+                                                    }
+                                                } else {
+                                                    childInterface.swapItems(-1 + slotStart, false, slotStart);
+                                                    slotStart--;
+                                                }
+                                            }
+                                        } else
+                                            childInterface.swapItems(Class55.mouseInvInterfaceIndex, false, Class58.selectedInventorySlot);
                                         Class32.packetBuffer.putPacket(83);
                                         Class32.packetBuffer.putDualByte(moveItemInsertionMode, 128);
                                         Class32.packetBuffer.putCustomNegativeOffsetShortBE(Class58.selectedInventorySlot, -128);

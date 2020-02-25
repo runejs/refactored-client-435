@@ -407,13 +407,11 @@ public class Class38_Sub1 extends Class38 {
         int i_5_ = anInt1915;
         anInt1915 = 300;
         aLong1914 = System.currentTimeMillis();
-        if(aLongArray1910[anInt1900] != 0L) {
-            if(aLong1914 > aLongArray1910[anInt1900])
-                anInt1915 = (int) ((long) (arg0 * 2560) / (-aLongArray1910[anInt1900] + aLong1914));
-        } else {
+        if(aLongArray1910[anInt1900] == 0L) {
             anInt1915 = i_5_;
             anInt1912 = i;
-        }
+        } else if(aLong1914 > aLongArray1910[anInt1900])
+            anInt1915 = (int) ((long) (arg0 * 2560) / (-aLongArray1910[anInt1900] + aLong1914));
         if(anInt1915 < 25)
             anInt1915 = 25;
         if(anInt1915 > 256) {

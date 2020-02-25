@@ -166,12 +166,7 @@ public class IncomingPackets {
                 ISAAC.redrawTabArea = true;
                 int widgetData = Cache.outgoingbuffer.getIntBE();
                 Widget widget = Widget.forId(widgetData);
-                if(!widget.isIf3) {
-                    for(int containerIndex = 0; widget.items.length > containerIndex; containerIndex++) {
-                        widget.items[containerIndex] = 0;
-                        widget.itemAmounts[containerIndex] = 0;
-                    }
-                } else {
+                if(widget.isIf3) {
                     Widget[] widgets = (Widget.interfaces[widgetData >> 16]);
                     for(int childIndex = 0; childIndex < widgets.length; childIndex++) {
                         Widget child = widgets[childIndex];
@@ -180,6 +175,11 @@ public class IncomingPackets {
                             child.anInt2718 = -1;
                         }
                     }
+                } else {
+                    for(int containerIndex = 0; widget.items.length > containerIndex; containerIndex++) {
+                        widget.items[containerIndex] = 0;
+                        widget.itemAmounts[containerIndex] = 0;
+                    }
                 }
                 int containerSize = Cache.outgoingbuffer.getUnsignedShortBE();
                 for(int containerIndex = 0; (containerSize > containerIndex); containerIndex++) {
@@ -187,12 +187,7 @@ public class IncomingPackets {
                     if(itemAmount == 255)
                         itemAmount = Cache.outgoingbuffer.getIntBE();
                     int itemId = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
-                    if(!widget.isIf3) {
-                        if(widget.items.length > containerIndex) {
-                            widget.items[containerIndex] = itemId;
-                            widget.itemAmounts[containerIndex] = itemAmount;
-                        }
-                    } else {
+                    if(widget.isIf3) {
                         Widget[] widgets = (Widget.interfaces[widgetData >> 16]);
                         for(int childIndex = 0; ((childIndex < widgets.length)); childIndex++) {
                             Widget child = widgets[childIndex];
@@ -201,6 +196,9 @@ public class IncomingPackets {
                                 child.anInt2718 = -1 + itemId;
                             }
                         }
+                    } else if(widget.items.length > containerIndex) {
+                        widget.items[containerIndex] = itemId;
+                        widget.itemAmounts[containerIndex] = itemAmount;
                     }
                 }
                 Class57.incomingPacket = -1;
@@ -242,39 +240,7 @@ public class IncomingPackets {
             }
             if(Class57.incomingPacket == 82) {
                 RSString class1 = Cache.outgoingbuffer.getRSString();
-                if(!class1.method87(103, AnimationSequence.aClass1_2472)) {
-                    if(!class1.method87(104, Class40_Sub5_Sub6.aClass1_2434)) {
-                        if(!class1.method87(81, Node.aClass1_948))
-                            Class44.method895(72, 0, class1, HuffmanEncoding.blank_string);
-                        else {
-                            RSString class1_27_ = (class1.substring(0, class1.contains(Class43.aClass1_1027)));
-                            long l = class1_27_.method58((byte) 121);
-                            boolean bool = false;
-                            for(int i_28_ = 0; i_28_ < Class42.anInt1008; i_28_++) {
-                                if(l == Class53.aLongArray1267[i_28_]) {
-                                    bool = true;
-                                    break;
-                                }
-                            }
-                            if(!bool && Class4.anInt182 == 0) {
-                                RSString class1_29_ = (class1.substring((1 + class1.contains((Class43.aClass1_1027))), -9 + class1.length()));
-                                Class44.method895(122, 8, class1_29_, class1_27_);
-                            }
-                        }
-                    } else {
-                        RSString class1_30_ = (class1.substring(0, class1.contains(Class43.aClass1_1027)));
-                        long l = class1_30_.method58((byte) 120);
-                        boolean bool = false;
-                        for(int i_31_ = 0; ((Class42.anInt1008 > i_31_)); i_31_++) {
-                            if(l == Class53.aLongArray1267[i_31_]) {
-                                bool = true;
-                                break;
-                            }
-                        }
-                        if(!bool && Class4.anInt182 == 0)
-                            Class44.method895(120, 8, Class61.aClass1_1428, class1_30_);
-                    }
-                } else {
+                if(class1.method87(103, AnimationSequence.aClass1_2472)) {
                     RSString class1_32_ = class1.substring(0, class1.contains((Class43.aClass1_1027)));
                     long l = class1_32_.method58((byte) 98);
                     boolean bool = false;
@@ -286,7 +252,34 @@ public class IncomingPackets {
                     }
                     if(!bool && Class4.anInt182 == 0)
                         Class44.method895(94, 4, Class4.aClass1_180, class1_32_);
-                }
+                } else if(class1.method87(104, Class40_Sub5_Sub6.aClass1_2434)) {
+                    RSString class1_30_ = (class1.substring(0, class1.contains(Class43.aClass1_1027)));
+                    long l = class1_30_.method58((byte) 120);
+                    boolean bool = false;
+                    for(int i_31_ = 0; ((Class42.anInt1008 > i_31_)); i_31_++) {
+                        if(l == Class53.aLongArray1267[i_31_]) {
+                            bool = true;
+                            break;
+                        }
+                    }
+                    if(!bool && Class4.anInt182 == 0)
+                        Class44.method895(120, 8, Class61.aClass1_1428, class1_30_);
+                } else if(class1.method87(81, Node.aClass1_948)) {
+                    RSString class1_27_ = (class1.substring(0, class1.contains(Class43.aClass1_1027)));
+                    long l = class1_27_.method58((byte) 121);
+                    boolean bool = false;
+                    for(int i_28_ = 0; i_28_ < Class42.anInt1008; i_28_++) {
+                        if(l == Class53.aLongArray1267[i_28_]) {
+                            bool = true;
+                            break;
+                        }
+                    }
+                    if(!bool && Class4.anInt182 == 0) {
+                        RSString class1_29_ = (class1.substring((1 + class1.contains((Class43.aClass1_1027))), -9 + class1.length()));
+                        Class44.method895(122, 8, class1_29_, class1_27_);
+                    }
+                } else
+                    Class44.method895(72, 0, class1, HuffmanEncoding.blank_string);
                 Class57.incomingPacket = -1;
                 return true;
             }
@@ -889,7 +882,10 @@ public class IncomingPackets {
                 if(itemId == 65535)
                     itemId = -1;
                 Widget widget = Widget.forId(i_87_);
-                if(!widget.isIf3) {
+                if(widget.isIf3) {
+                    widget.anInt2734 = 1;
+                    widget.anInt2718 = itemId;
+                } else {
                     if(itemId == -1) {
                         Class57.incomingPacket = -1;
                         widget.modelType = 0;
@@ -901,9 +897,6 @@ public class IncomingPackets {
                     widget.modelType = 4;
                     widget.modelZoom = 100 * itemDefinition.zoom2d / i_85_;
                     widget.rotationZ = itemDefinition.yan2d;
-                } else {
-                    widget.anInt2734 = 1;
-                    widget.anInt2718 = itemId;
                 }
                 Class57.incomingPacket = -1;
                 return true;
@@ -1029,12 +1022,7 @@ public class IncomingPackets {
                         if(i_110_ == 255)
                             i_110_ = Cache.outgoingbuffer.getIntBE();
                     }
-                    if(!widget.isIf3) {
-                        if(itemSlot >= 0 && (widget.items.length > itemSlot)) {
-                            widget.items[itemSlot] = i_109_;
-                            widget.itemAmounts[itemSlot] = i_110_;
-                        }
-                    } else {
+                    if(widget.isIf3) {
                         Widget[] widgets = (Widget.interfaces[widgetData >> 16]);
                         for(int i_111_ = 0; ((i_111_ < widgets.length)); i_111_++) {
                             Widget widget_112_ = widgets[i_111_];
@@ -1043,6 +1031,9 @@ public class IncomingPackets {
                                 widget_112_.anInt2718 = i_109_ + -1;
                             }
                         }
+                    } else if(itemSlot >= 0 && (widget.items.length > itemSlot)) {
+                        widget.items[itemSlot] = i_109_;
+                        widget.itemAmounts[itemSlot] = i_110_;
                     }
                 }
                 Class57.incomingPacket = -1;

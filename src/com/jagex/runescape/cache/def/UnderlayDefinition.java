@@ -127,12 +127,10 @@ public class UnderlayDefinition extends SubNode {
             }
             if(r == cmax) {
                 d_4_ = (-g + b) / (-cmin + cmax);
-            } else if(cmax != b) {
-                if(cmax == g) {
-                    d_4_ = (r - b) / (-cmin + cmax) + 4.0;
-                }
-            } else {
+            } else if(cmax == b) {
                 d_4_ = 2.0 + (g - r) / (cmax - cmin);
+            } else if(cmax == g) {
+                d_4_ = (r - b) / (-cmin + cmax) + 4.0;
             }
         }
         d_4_ /= 6.0;

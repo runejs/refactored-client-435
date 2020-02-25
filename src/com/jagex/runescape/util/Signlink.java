@@ -226,24 +226,22 @@ public class Signlink implements Runnable {
                 int i = class15.anInt433;
                 if(i == 1)
                     class15.anObject437 = new Socket(anInetAddress730, class15.anInt432);
-                else if(i != 2) {
-                    if(i == 4)
-                        class15.anObject437 = new DataInputStream(((URL) class15.anObject435).openStream());
-                    else if(i == 9) {
-                        Object[] objects = (Object[]) class15.anObject435;
-                        class15.anObject437 = (((Class) objects[0]).getDeclaredMethod((String) objects[1], (Class[]) objects[2]));
-                    } else if(i == 10) {
-                        Object[] objects = (Object[]) class15.anObject435;
-                        class15.anObject437 = ((Class) objects[0]).getDeclaredField((String) objects[1]);
-                    } else
-                        throw new Exception();
-                } else {
+                else if(i == 2) {
                     Thread thread = new Thread((Runnable) class15.anObject435);
                     thread.setDaemon(true);
                     thread.start();
                     thread.setPriority(class15.anInt432);
                     class15.anObject437 = thread;
-                }
+                } else if(i == 4)
+                    class15.anObject437 = new DataInputStream(((URL) class15.anObject435).openStream());
+                else if(i == 9) {
+                    Object[] objects = (Object[]) class15.anObject435;
+                    class15.anObject437 = (((Class) objects[0]).getDeclaredMethod((String) objects[1], (Class[]) objects[2]));
+                } else if(i == 10) {
+                    Object[] objects = (Object[]) class15.anObject435;
+                    class15.anObject437 = ((Class) objects[0]).getDeclaredField((String) objects[1]);
+                } else
+                    throw new Exception();
                 class15.anInt434 = 1;
             } catch(Exception exception) {
                 class15.anInt434 = 2;

@@ -780,16 +780,16 @@ public class TypeFace extends Rasterizer {
                         if(!symbol.equals(registeredTrademark)) {
                             if(symbol.startsWith(image, 0)) {
                                 try {
-                                    if(xmodifiers != null) {
-                                        xOff = xmodifiers[modifier];
-                                    } else {
+                                    if(xmodifiers == null) {
                                         xOff = 0;
+                                    } else {
+                                        xOff = xmodifiers[modifier];
                                     }
 
-                                    if(ymodifiers != null) {
-                                        yOffset = ymodifiers[modifier];
-                                    } else {
+                                    if(ymodifiers == null) {
                                         yOffset = 0;
+                                    } else {
+                                        yOffset = ymodifiers[modifier];
                                     }
 
                                     ++modifier;
@@ -826,16 +826,16 @@ public class TypeFace extends Rasterizer {
                 if(effect == -1) {
                     int cWidth = characterScreenWidths[character];
                     xOff = characterHeights[character];
-                    if(xmodifiers != null) {
-                        yOffset = xmodifiers[modifier];
-                    } else {
+                    if(xmodifiers == null) {
                         yOffset = 0;
+                    } else {
+                        yOffset = xmodifiers[modifier];
                     }
 
-                    if(ymodifiers != null) {
-                        symbolWidth = ymodifiers[modifier];
-                    } else {
+                    if(ymodifiers == null) {
                         symbolWidth = 0;
+                    } else {
+                        symbolWidth = ymodifiers[modifier];
                     }
 
                     ++modifier;
@@ -1107,11 +1107,11 @@ public class TypeFace extends Rasterizer {
         alpha = 256 - alpha;
         for(int heightCounter = -height; heightCounter < 0; heightCounter++) {
             for(int widthCounter = -width; widthCounter < 0; widthCounter++)
-                if(characterPixels[characterPixel++] != 0) {
+                if(characterPixels[characterPixel++] == 0) {
+                    rasterizerPixel++;
+                } else {
                     int rasterizerPixelColor = rasterizerPixels[rasterizerPixel];
                     rasterizerPixels[rasterizerPixel++] = (((rasterizerPixelColor & 0xff00ff) * alpha & 0xff00ff00) + ((rasterizerPixelColor & 0xff00) * alpha & 0xff0000) >> 8) + colour;
-                } else {
-                    rasterizerPixel++;
                 }
 
             rasterizerPixel += rasterizerPixelOffset;

@@ -105,14 +105,12 @@ public class IdentityKit extends SubNode {
         class40_sub5_sub1.anIntArray2272 = new int[i];
         while(class40_sub1.currentPosition < -12 + class40_sub1.buffer.length) {
             int i_1_ = class40_sub1.getUnsignedShortBE();
-            if(i_1_ != 3) {
-                if(i_1_ >= 100 || i_1_ == 21 || i_1_ == 38 || i_1_ == 39) {
-                    class40_sub5_sub1.anIntArray2262[i_0_] = class40_sub1.getUnsignedByte();
-                } else {
-                    class40_sub5_sub1.anIntArray2262[i_0_] = class40_sub1.getIntBE();
-                }
-            } else {
+            if(i_1_ == 3) {
                 class40_sub5_sub1.aClass1Array2270[i_0_] = class40_sub1.getRSString();
+            } else if(i_1_ >= 100 || i_1_ == 21 || i_1_ == 38 || i_1_ == 39) {
+                class40_sub5_sub1.anIntArray2262[i_0_] = class40_sub1.getUnsignedByte();
+            } else {
+                class40_sub5_sub1.anIntArray2262[i_0_] = class40_sub1.getIntBE();
             }
             class40_sub5_sub1.anIntArray2272[i_0_++] = i_1_;
         }
@@ -233,10 +231,10 @@ public class IdentityKit extends SubNode {
             class40_sub5_sub17_sub5s[i] = Model.getModel(Class27.aCacheIndex_654, modelId[i], 0);
         }
         Model class40_sub5_sub17_sub5;
-        if(class40_sub5_sub17_sub5s.length != 1) {
-            class40_sub5_sub17_sub5 = (new Model(class40_sub5_sub17_sub5s, class40_sub5_sub17_sub5s.length));
-        } else {
+        if(class40_sub5_sub17_sub5s.length == 1) {
             class40_sub5_sub17_sub5 = class40_sub5_sub17_sub5s[0];
+        } else {
+            class40_sub5_sub17_sub5 = (new Model(class40_sub5_sub17_sub5s, class40_sub5_sub17_sub5s.length));
         }
         if(arg0 != false) {
             return null;

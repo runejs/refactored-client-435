@@ -225,13 +225,7 @@ public class Main extends RSApplet {
                                 class40_sub5_sub14_sub1.method672(class1, i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_21_, widget.textShadowed, widget.xTextAlignment, widget.yTextAlignment, widget.lineHeight);
                             }
                         } else if(widget.type == 5) {
-                            if(!widget.isIf3) {
-                                ImageRGB class40_sub5_sub14_sub4 = (widget.method643(127, (ItemDefinition.method746(widget))));
-                                if(class40_sub5_sub14_sub4 != null)
-                                    class40_sub5_sub14_sub4.drawImage(i_0_, i_1_);
-                                else if(Class40_Sub13.aBoolean2177)
-                                    bool = false;
-                            } else {
+                            if(widget.isIf3) {
                                 int i_22_ = 0;
                                 int i_23_ = 0;
                                 ImageRGB class40_sub5_sub14_sub4;
@@ -247,19 +241,7 @@ public class Main extends RSApplet {
                                 if(class40_sub5_sub14_sub4 != null) {
                                     int i_24_ = (class40_sub5_sub14_sub4.image_height);
                                     int i_25_ = (class40_sub5_sub14_sub4.image_width);
-                                    if(!widget.aBoolean2641) {
-                                        int i_26_ = 4096 * (widget.originalWidth) / i_25_;
-                                        if(widget.anInt2751 == 0) {
-                                            if(i_2_ == 0) {
-                                                if(((widget.originalWidth) == i_25_) && ((widget.originalHeight) == i_24_))
-                                                    class40_sub5_sub14_sub4.drawImage(i_0_, i_1_);
-                                                else
-                                                    class40_sub5_sub14_sub4.method732(i_0_, i_1_, (widget.originalWidth), (widget.originalHeight));
-                                            } else
-                                                class40_sub5_sub14_sub4.method716(i_0_, i_1_, (widget.originalWidth), (widget.originalHeight), 256 + -(0xff & i_2_));
-                                        } else
-                                            class40_sub5_sub14_sub4.method720((widget.originalWidth) / 2 + i_0_, (widget.originalHeight) / 2 + i_1_, (widget.anInt2751), i_26_);
-                                    } else {
+                                    if(widget.aBoolean2641) {
                                         int[] is = new int[4];
                                         Rasterizer.method661(is);
                                         int i_27_ = i_0_;
@@ -289,6 +271,18 @@ public class Main extends RSApplet {
                                             }
                                         }
                                         Rasterizer.method657(is);
+                                    } else {
+                                        int i_26_ = 4096 * (widget.originalWidth) / i_25_;
+                                        if(widget.anInt2751 == 0) {
+                                            if(i_2_ == 0) {
+                                                if(((widget.originalWidth) == i_25_) && ((widget.originalHeight) == i_24_))
+                                                    class40_sub5_sub14_sub4.drawImage(i_0_, i_1_);
+                                                else
+                                                    class40_sub5_sub14_sub4.method732(i_0_, i_1_, (widget.originalWidth), (widget.originalHeight));
+                                            } else
+                                                class40_sub5_sub14_sub4.method716(i_0_, i_1_, (widget.originalWidth), (widget.originalHeight), 256 + -(0xff & i_2_));
+                                        } else
+                                            class40_sub5_sub14_sub4.method720((widget.originalWidth) / 2 + i_0_, (widget.originalHeight) / 2 + i_1_, (widget.anInt2751), i_26_);
                                     }
                                 } else if(Class40_Sub13.aBoolean2177)
                                     bool = false;
@@ -300,6 +294,12 @@ public class Main extends RSApplet {
                                     class40_sub5_sub14_sub4.maxWidth = i_22_;
                                     class40_sub5_sub14_sub4.maxHeight = i_23_;
                                 }
+                            } else {
+                                ImageRGB class40_sub5_sub14_sub4 = (widget.method643(127, (ItemDefinition.method746(widget))));
+                                if(class40_sub5_sub14_sub4 != null)
+                                    class40_sub5_sub14_sub4.drawImage(i_0_, i_1_);
+                                else if(Class40_Sub13.aBoolean2177)
+                                    bool = false;
                             }
                         } else if(widget.type == 6) {
                             boolean bool_35_ = (ItemDefinition.method746(widget));
@@ -400,12 +400,12 @@ public class Main extends RSApplet {
                                 while(class1.length() > 0) {
                                     int i_52_ = class1.contains((Class30.aClass1_686));
                                     RSString class1_53_;
-                                    if(i_52_ != -1) {
-                                        class1_53_ = class1.substring(0, i_52_);
-                                        class1 = class1.substring(2 + i_52_);
-                                    } else {
+                                    if(i_52_ == -1) {
                                         class1_53_ = class1;
                                         class1 = HuffmanEncoding.blank_string;
+                                    } else {
+                                        class1_53_ = class1.substring(0, i_52_);
+                                        class1 = class1.substring(2 + i_52_);
                                     }
                                     int i_54_ = class40_sub5_sub14_sub1.getTextDisplayedWidth(class1_53_);
                                     i_51_ += (class40_sub5_sub14_sub1.characterDefaultHeight) + 1;
@@ -454,13 +454,13 @@ public class Main extends RSApplet {
     public static void method37(CacheIndex_Sub1 arg0, byte arg1, int arg2) {
         if(arg1 != 98)
             aClass1_1777 = null;
-        if(Class48.aClass40_Sub1_1132 != null) {
+        if(Class48.aClass40_Sub1_1132 == null) {
+            HashTable.method327(true, null, 255, 255, (byte) 0, 0, (byte) 90);
+            Class24.aClass6_Sub1Array580[arg2] = arg0;
+        } else {
             Class48.aClass40_Sub1_1132.currentPosition = 5 + arg2 * 4;
             int i = Class48.aClass40_Sub1_1132.getIntBE();
             arg0.method200(i, 99);
-        } else {
-            HashTable.method327(true, null, 255, 255, (byte) 0, 0, (byte) 90);
-            Class24.aClass6_Sub1Array580[arg2] = arg0;
         }
     }
 
@@ -1095,26 +1095,20 @@ public class Main extends RSApplet {
         RSRuntimeException.method1054((byte) 125);
         Widget.method639(122);
         Class64.method1015(-656);
-        if(Class51.anInt1197 != 0) {
-            if(Class51.anInt1197 != 5) {
-                if(Class51.anInt1197 != 10) {
-                    if(Class51.anInt1197 != 20) {
-                        if(Class51.anInt1197 == 25)
-                            Landscape.method933(-95);
-                    } else {
-                        Class60.method993(-103);
-                        SpotAnimDefinition.method552(true);
-                    }
-                } else
-                    Class60.method993(-104);
-            } else {
-                Class40_Sub3.method530(100);
-                Class60.method992(75);
-            }
-        } else {
+        if(Class51.anInt1197 == 0) {
             Class40_Sub3.method530(arg0 + 22736);
             Class60.method992(75);
-        }
+        } else if(Class51.anInt1197 == 5) {
+            Class40_Sub3.method530(100);
+            Class60.method992(75);
+        } else if(Class51.anInt1197 != 10) {
+            if(Class51.anInt1197 == 20) {
+                Class60.method993(-103);
+                SpotAnimDefinition.method552(true);
+            } else if(Class51.anInt1197 == 25)
+                Landscape.method933(-95);
+        } else
+            Class60.method993(-104);
         if(Class51.anInt1197 == 30)
             Npc.method796((byte) 77);
         else if(Class51.anInt1197 == 35)

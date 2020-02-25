@@ -161,10 +161,7 @@ public class Class33 {
                 ISAAC.anInt522 = Class30.anIntArray715[i];
                 Class44.anInt1048 = Class30.anIntArray685[i] = i_4_;
                 RSString class1 = Class30.aClass1Array697[i];
-                if(Class40_Sub5_Sub1.anInt2280 != 0) {
-                    Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
-                    Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(class1, ISAAC.anInt522, Class44.anInt1048, 16776960);
-                } else {
+                if(Class40_Sub5_Sub1.anInt2280 == 0) {
                     int i_8_ = 16776960;
                     if(Class30.anIntArray712[i] < 6)
                         i_8_ = (Class40_Sub6.anIntArray2106[Class30.anIntArray712[i]]);
@@ -242,6 +239,9 @@ public class Class33 {
                         Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(class1, ISAAC.anInt522, i_14_ + Class44.anInt1048, i_8_);
                         Rasterizer.resetCoordinates();
                     }
+                } else {
+                    Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
+                    Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(class1, ISAAC.anInt522, Class44.anInt1048, 16776960);
                 }
             }
         }

@@ -296,7 +296,17 @@ public class FloorDecoration {
                     Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition += i_37_;
                     Landscape.anInt1157 += i_37_;
                     if(i_36_ == Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition) {
-                        if((PacketBuffer.aClass40_Sub5_Sub13_2250.key) != 16711935) {
+                        if((PacketBuffer.aClass40_Sub5_Sub13_2250.key) == 16711935) {
+                            Class48.aClass40_Sub1_1132 = Class40_Sub5_Sub13.aClass40_Sub1_2752;
+                            for(int i_40_ = 0; i_40_ < 256; i_40_++) {
+                                CacheIndex_Sub1 class6_sub1 = Class24.aClass6_Sub1Array580[i_40_];
+                                if(class6_sub1 != null) {
+                                    Class48.aClass40_Sub1_1132.currentPosition = 4 * i_40_ + 5;
+                                    int i_41_ = Class48.aClass40_Sub1_1132.getIntBE();
+                                    class6_sub1.method200(i_41_, 99);
+                                }
+                            }
+                        } else {
 				/*aCRC32_590.reset();
 				aCRC32_590.update((com.jagex.runescape.Class40_Sub5_Sub13
 						   .aClass40_Sub1_2752
@@ -321,16 +331,6 @@ public class FloorDecoration {
                             Class40_Sub5_Sub1.anInt2278 = 0;
                             Class34.anInt813 = 0;
                             PacketBuffer.aClass40_Sub5_Sub13_2250.aClass6_Sub1_2754.method196(((PacketBuffer.aClass40_Sub5_Sub13_2250.key) & 0xff0000L) == 16711680L, (int) ((PacketBuffer.aClass40_Sub5_Sub13_2250.key) & 0xffffL), Npc.aBoolean3298, (Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer));
-                        } else {
-                            Class48.aClass40_Sub1_1132 = Class40_Sub5_Sub13.aClass40_Sub1_2752;
-                            for(int i_40_ = 0; i_40_ < 256; i_40_++) {
-                                CacheIndex_Sub1 class6_sub1 = Class24.aClass6_Sub1Array580[i_40_];
-                                if(class6_sub1 != null) {
-                                    Class48.aClass40_Sub1_1132.currentPosition = 4 * i_40_ + 5;
-                                    int i_41_ = Class48.aClass40_Sub1_1132.getIntBE();
-                                    class6_sub1.method200(i_41_, 99);
-                                }
-                            }
                         }
                         PacketBuffer.aClass40_Sub5_Sub13_2250.method457(-1);
                         PacketBuffer.aClass40_Sub5_Sub13_2250 = null;
@@ -380,12 +380,11 @@ public class FloorDecoration {
                         Landscape.anInt1157 = 8;
                         Class45.aClass40_Sub1_1081.currentPosition = 0;
                     } else if(Landscape.anInt1157 == 0) {
-                        if(Class45.aClass40_Sub1_1081.buffer[0] != -1)
-                            PacketBuffer.aClass40_Sub5_Sub13_2250 = null;
-                        else {
+                        if(Class45.aClass40_Sub1_1081.buffer[0] == -1) {
                             Class45.aClass40_Sub1_1081.currentPosition = 0;
                             Landscape.anInt1157 = 1;
-                        }
+                        } else
+                            PacketBuffer.aClass40_Sub5_Sub13_2250 = null;
                     }
                 }
             }

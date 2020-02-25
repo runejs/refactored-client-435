@@ -186,13 +186,11 @@ public class Player extends Actor {
         }
         if((0x80 & mask) != 0) { // forced chat
             player.forcedChatMessage = Cache.outgoingbuffer.getRSString();
-            if(player.forcedChatMessage.method55(0, false) != 126) {
-                if(player == localPlayer)
-                    Class44.method895(99, 2, player.forcedChatMessage, player.playerName);
-            } else {
+            if(player.forcedChatMessage.method55(0, false) == 126) {
                 player.forcedChatMessage = player.forcedChatMessage.substring(1);
                 Class44.method895(120, 2, player.forcedChatMessage, player.playerName);
-            }
+            } else if(player == localPlayer)
+                Class44.method895(99, 2, player.forcedChatMessage, player.playerName);
             player.anInt3078 = 150;
             player.anInt3102 = 0;
             player.anInt3123 = 0;
@@ -236,17 +234,15 @@ public class Player extends Actor {
             if(anInt3283 <= Node.pulseCycle && Node.pulseCycle < anInt3274) {
                 Model class40_sub5_sub17_sub5_2_ = aClass40_Sub5_Sub17_Sub5_3265;
                 class40_sub5_sub17_sub5_2_.method828(-anInt3098 + anInt3271, -anInt3276 + anInt3272, anInt3291 + -anInt3089);
-                if(anInt3080 != 512) {
-                    if(anInt3080 == 1024) {
-                        class40_sub5_sub17_sub5_2_.method813();
-                        class40_sub5_sub17_sub5_2_.method813();
-                    } else if(anInt3080 == 1536)
-                        class40_sub5_sub17_sub5_2_.method813();
-                } else {
+                if(anInt3080 == 512) {
                     class40_sub5_sub17_sub5_2_.method813();
                     class40_sub5_sub17_sub5_2_.method813();
                     class40_sub5_sub17_sub5_2_.method813();
-                }
+                } else if(anInt3080 == 1024) {
+                    class40_sub5_sub17_sub5_2_.method813();
+                    class40_sub5_sub17_sub5_2_.method813();
+                } else if(anInt3080 == 1536)
+                    class40_sub5_sub17_sub5_2_.method813();
                 Model[] class40_sub5_sub17_sub5s = {class40_sub5_sub17_sub5, class40_sub5_sub17_sub5_2_};
                 class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, 2, true);
                 if(anInt3080 != 512) {

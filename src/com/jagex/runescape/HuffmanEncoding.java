@@ -298,9 +298,7 @@ public class HuffmanEncoding {
                     i_16_ = ((Player.localPlayer.anInt3089) >> 7) + Class26.anInt635;
                 if(i_18_ == 20)
                     i_16_ = is[i_14_++];
-                if(i_17_ != 0)
-                    i_15_ = i_17_;
-                else {
+                if(i_17_ == 0) {
                     if(i_15_ == 0)
                         i += i_16_;
                     if(i_15_ == 1)
@@ -310,7 +308,8 @@ public class HuffmanEncoding {
                     if(i_15_ == 3)
                         i *= i_16_;
                     i_15_ = 0;
-                }
+                } else
+                    i_15_ = i_17_;
             }
         } catch(Exception exception) {
             return -1;

@@ -39,12 +39,12 @@ public class Filter {
             }
             for(int i_3_ = 0; i_3_ < 2; i_3_++) {
                 for(int i_4_ = 0; i_4_ < num_pairs[i_3_]; i_4_++) {
-                    if((i_0_ & 1 << i_3_ * 4 << i_4_) != 0) {
-                        pair_phase[i_3_][1][i_4_] = buffer.getUnsignedShortBE();
-                        pair_mag[i_3_][1][i_4_] = buffer.getUnsignedShortBE();
-                    } else {
+                    if((i_0_ & 1 << i_3_ * 4 << i_4_) == 0) {
                         pair_phase[i_3_][1][i_4_] = pair_phase[i_3_][0][i_4_];
                         pair_mag[i_3_][1][i_4_] = pair_mag[i_3_][0][i_4_];
+                    } else {
+                        pair_phase[i_3_][1][i_4_] = buffer.getUnsignedShortBE();
+                        pair_mag[i_3_][1][i_4_] = buffer.getUnsignedShortBE();
                     }
                 }
             }

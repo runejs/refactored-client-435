@@ -201,17 +201,15 @@ public class Class44 implements Runnable {
                         Buffer.anInt1987--;
                     }
                 } else {
-                    if(class40_sub6.anInt2112 != 0) {
-                        if(class40_sub6.anInt2112 == 1) {
-                            class40_sub6.aByteArray2102 = (class40_sub6.aClass56_2117.method969((int) class40_sub6.key, (byte) -111));
-                            synchronized(RSCanvas.aClass45_53) {
-                                IdentityKit.aClass45_2604.method904(class40_sub6, 115);
-                            }
-                        }
-                    } else {
+                    if(class40_sub6.anInt2112 == 0) {
                         class40_sub6.aClass56_2117.method971(class40_sub6.aByteArray2102, 1862596560, class40_sub6.aByteArray2102.length, (int) class40_sub6.key);
                         synchronized(RSCanvas.aClass45_53) {
                             class40_sub6.method457(-1);
+                        }
+                    } else if(class40_sub6.anInt2112 == 1) {
+                        class40_sub6.aByteArray2102 = (class40_sub6.aClass56_2117.method969((int) class40_sub6.key, (byte) -111));
+                        synchronized(RSCanvas.aClass45_53) {
+                            IdentityKit.aClass45_2604.method904(class40_sub6, 115);
                         }
                     }
                     synchronized(CollisionMap.anObject162) {

@@ -129,9 +129,7 @@ public class Landscape {
                 }
             }
         }
-        if(!bool)
-            Class68.anInt1634 = 1;
-        else {
+        if(bool) {
             bool = true;
             IdentityKit.anInt2591 = 0;
             for(int i = 0; RSString.aByteArrayArray1715.length > i; i++) {
@@ -146,9 +144,7 @@ public class Landscape {
                     bool &= Class40_Sub7.method840((byte) -67, is, i_3_, i_2_);
                 }
             }
-            if(!bool)
-                Class68.anInt1634 = 2;
-            else {
+            if(bool) {
                 if(Class68.anInt1634 != 0)
                     Class51.method940(0, Class67.aClass1_1585, true, ActorDefinition.aClass1_2423);
                 RSCanvas.method46(0);
@@ -300,8 +296,10 @@ public class Landscape {
                 Class56.method973(-65);
                 Class32.packetBuffer.putPacket(178);
                 RSRuntimeException.method1057(126);
-            }
-        }
+            } else
+                Class68.anInt1634 = 2;
+        } else
+            Class68.anInt1634 = 1;
 
     }
 

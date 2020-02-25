@@ -423,73 +423,38 @@ public class CollisionMap {
         arg0 -= anInt140;
         arg3 -= anInt151;
         if(arg2 == 0) {
-            if(arg5 != 0) {
-                if(arg5 == 1) {
-                    if(arg6 == arg0 && 1 + arg3 == arg4)
-                        return true;
-                    if(arg0 == -1 + arg6 && arg4 == arg3 && ((anIntArrayArray150[arg0][arg4] & 0x1280108) == 0))
-                        return true;
-                    if(1 + arg6 == arg0 && arg4 == arg3 && (anIntArrayArray150[arg0][arg4] & 0x1280180) == 0)
-                        return true;
-                } else if(arg5 == 2) {
-                    if(arg0 == arg6 + 1 && arg3 == arg4)
-                        return true;
-                    if(arg0 == arg6 && arg4 == arg3 + 1 && ((anIntArrayArray150[arg0][arg4] & 0x1280120) == 0))
-                        return true;
-                    if(arg6 == arg0 && arg4 == arg3 + -1 && ((anIntArrayArray150[arg0][arg4] & 0x1280102) == 0))
-                        return true;
-                } else if(arg5 == 3) {
-                    if(arg6 == arg0 && arg3 - 1 == arg4)
-                        return true;
-                    if(-1 + arg6 == arg0 && arg3 == arg4 && ((anIntArrayArray150[arg0][arg4] & 0x1280108) == 0))
-                        return true;
-                    if(arg0 == 1 + arg6 && arg4 == arg3 && (0x1280180 & anIntArrayArray150[arg0][arg4]) == 0)
-                        return true;
-                }
-            } else {
+            if(arg5 == 0) {
                 if(arg6 + -1 == arg0 && arg4 == arg3)
                     return true;
                 if(arg6 == arg0 && arg4 == arg3 + 1 && (anIntArrayArray150[arg0][arg4] & 0x1280120) == 0)
                     return true;
                 if(arg6 == arg0 && -1 + arg3 == arg4 && (0x1280102 & anIntArrayArray150[arg0][arg4]) == 0)
                     return true;
+            } else if(arg5 == 1) {
+                if(arg6 == arg0 && 1 + arg3 == arg4)
+                    return true;
+                if(arg0 == -1 + arg6 && arg4 == arg3 && ((anIntArrayArray150[arg0][arg4] & 0x1280108) == 0))
+                    return true;
+                if(1 + arg6 == arg0 && arg4 == arg3 && (anIntArrayArray150[arg0][arg4] & 0x1280180) == 0)
+                    return true;
+            } else if(arg5 == 2) {
+                if(arg0 == arg6 + 1 && arg3 == arg4)
+                    return true;
+                if(arg0 == arg6 && arg4 == arg3 + 1 && ((anIntArrayArray150[arg0][arg4] & 0x1280120) == 0))
+                    return true;
+                if(arg6 == arg0 && arg4 == arg3 + -1 && ((anIntArrayArray150[arg0][arg4] & 0x1280102) == 0))
+                    return true;
+            } else if(arg5 == 3) {
+                if(arg6 == arg0 && arg3 - 1 == arg4)
+                    return true;
+                if(-1 + arg6 == arg0 && arg3 == arg4 && ((anIntArrayArray150[arg0][arg4] & 0x1280108) == 0))
+                    return true;
+                if(arg0 == 1 + arg6 && arg4 == arg3 && (0x1280180 & anIntArrayArray150[arg0][arg4]) == 0)
+                    return true;
             }
         }
         if(arg2 == 2) {
-            if(arg5 != 0) {
-                if(arg5 != 1) {
-                    if(arg5 != 2) {
-                        if(arg5 == 3) {
-                            if(arg0 == -1 + arg6 && arg4 == arg3)
-                                return true;
-                            if(arg0 == arg6 && (arg4 == arg3 + 1) && (0x1280120 & anIntArrayArray150[arg0][arg4]) == 0)
-                                return true;
-                            if(arg0 == arg6 + 1 && arg3 == arg4 && (0x1280180 & anIntArrayArray150[arg0][arg4]) == 0)
-                                return true;
-                            if(arg6 == arg0 && arg3 + -1 == arg4)
-                                return true;
-                        }
-                    } else {
-                        if(arg6 + -1 == arg0 && arg4 == arg3 && (anIntArrayArray150[arg0][arg4] & 0x1280108) == 0)
-                            return true;
-                        if(arg6 == arg0 && arg3 + 1 == arg4 && (0x1280120 & anIntArrayArray150[arg0][arg4]) == 0)
-                            return true;
-                        if(1 + arg6 == arg0 && arg3 == arg4)
-                            return true;
-                        if(arg0 == arg6 && arg3 + -1 == arg4)
-                            return true;
-                    }
-                } else {
-                    if(arg0 == -1 + arg6 && arg4 == arg3 && ((anIntArrayArray150[arg0][arg4] & 0x1280108) == 0))
-                        return true;
-                    if(arg0 == arg6 && arg4 == arg3 + 1)
-                        return true;
-                    if(arg0 == arg6 + 1 && arg3 == arg4)
-                        return true;
-                    if(arg0 == arg6 && arg4 == arg3 + -1 && (anIntArrayArray150[arg0][arg4] & 0x1280102) == 0)
-                        return true;
-                }
-            } else {
+            if(arg5 == 0) {
                 if(arg0 == -1 + arg6 && arg4 == arg3)
                     return true;
                 if(arg0 == arg6 && arg4 == arg3 + 1)
@@ -497,6 +462,33 @@ public class CollisionMap {
                 if(arg0 == arg6 + 1 && arg3 == arg4 && (anIntArrayArray150[arg0][arg4] & 0x1280180) == 0)
                     return true;
                 if(arg6 == arg0 && arg4 == arg3 - 1 && (0x1280102 & anIntArrayArray150[arg0][arg4]) == 0)
+                    return true;
+            } else if(arg5 == 1) {
+                if(arg0 == -1 + arg6 && arg4 == arg3 && ((anIntArrayArray150[arg0][arg4] & 0x1280108) == 0))
+                    return true;
+                if(arg0 == arg6 && arg4 == arg3 + 1)
+                    return true;
+                if(arg0 == arg6 + 1 && arg3 == arg4)
+                    return true;
+                if(arg0 == arg6 && arg4 == arg3 + -1 && (anIntArrayArray150[arg0][arg4] & 0x1280102) == 0)
+                    return true;
+            } else if(arg5 == 2) {
+                if(arg6 + -1 == arg0 && arg4 == arg3 && (anIntArrayArray150[arg0][arg4] & 0x1280108) == 0)
+                    return true;
+                if(arg6 == arg0 && arg3 + 1 == arg4 && (0x1280120 & anIntArrayArray150[arg0][arg4]) == 0)
+                    return true;
+                if(1 + arg6 == arg0 && arg3 == arg4)
+                    return true;
+                if(arg0 == arg6 && arg3 + -1 == arg4)
+                    return true;
+            } else if(arg5 == 3) {
+                if(arg0 == -1 + arg6 && arg4 == arg3)
+                    return true;
+                if(arg0 == arg6 && (arg4 == arg3 + 1) && (0x1280120 & anIntArrayArray150[arg0][arg4]) == 0)
+                    return true;
+                if(arg0 == arg6 + 1 && arg3 == arg4 && (0x1280180 & anIntArrayArray150[arg0][arg4]) == 0)
+                    return true;
+                if(arg6 == arg0 && arg3 + -1 == arg4)
                     return true;
             }
         }
@@ -534,22 +526,20 @@ public class CollisionMap {
                     return true;
                 if(arg3 == arg4 && -1 + arg0 == arg2 && (0x2 & anIntArrayArray150[arg4][arg2]) == 0)
                     return true;
-            } else if(arg1 != 1) {
-                if(arg1 == 2) {
-                    if(arg4 == arg3 + -1 && arg0 == arg2 && (anIntArrayArray150[arg4][arg2] & 0x8) == 0)
-                        return true;
-                    if(arg4 == arg3 && arg2 == 1 + arg0 && (0x20 & anIntArrayArray150[arg4][arg2]) == 0)
-                        return true;
-                } else if(arg1 == 3) {
-                    if(arg3 + 1 == arg4 && arg0 == arg2 && (anIntArrayArray150[arg4][arg2] & 0x80) == 0)
-                        return true;
-                    if(arg4 == arg3 && arg2 == arg0 + 1 && (0x20 & anIntArrayArray150[arg4][arg2]) == 0)
-                        return true;
-                }
-            } else {
+            } else if(arg1 == 1) {
                 if(arg4 == arg3 + -1 && arg0 == arg2 && ((anIntArrayArray150[arg4][arg2] & 0x8) == 0))
                     return true;
                 if(arg4 == arg3 && arg2 == arg0 + -1 && (anIntArrayArray150[arg4][arg2] & 0x2) == 0)
+                    return true;
+            } else if(arg1 == 2) {
+                if(arg4 == arg3 + -1 && arg0 == arg2 && (anIntArrayArray150[arg4][arg2] & 0x8) == 0)
+                    return true;
+                if(arg4 == arg3 && arg2 == 1 + arg0 && (0x20 & anIntArrayArray150[arg4][arg2]) == 0)
+                    return true;
+            } else if(arg1 == 3) {
+                if(arg3 + 1 == arg4 && arg0 == arg2 && (anIntArrayArray150[arg4][arg2] & 0x80) == 0)
+                    return true;
+                if(arg4 == arg3 && arg2 == arg0 + 1 && (0x20 & anIntArrayArray150[arg4][arg2]) == 0)
                     return true;
             }
         }

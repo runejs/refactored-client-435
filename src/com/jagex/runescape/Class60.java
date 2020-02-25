@@ -242,22 +242,20 @@ public class Class60 {
                                 break;
                             }
                         }
-                        if(Node.anInt947 != 0) {
-                            if(Node.anInt947 == 1) {
-                                if(ItemDefinition.anInt2854 == 85 && Class22_Sub2.password.length() > 0)
-                                    Class22_Sub2.password = (Class22_Sub2.password.substring(0, Class22_Sub2.password.length() + -1));
-                                if(ItemDefinition.anInt2854 == 84 || ItemDefinition.anInt2854 == 80)
-                                    Node.anInt947 = 0;
-                                if(bool && Class22_Sub2.password.length() < 20)
-                                    Class22_Sub2.password = Class22_Sub2.password.method70(Class59.anInt1388, 0);
-                            }
-                        } else {
+                        if(Node.anInt947 == 0) {
                             if((ItemDefinition.anInt2854 == 85) && (Class22_Sub2.username.length() > 0))
                                 Class22_Sub2.username = (Class22_Sub2.username.substring(0, -1 + Class22_Sub2.username.length()));
                             if(ItemDefinition.anInt2854 == 84 || (ItemDefinition.anInt2854 == 80))
                                 Node.anInt947 = 1;
                             if(bool && Class22_Sub2.username.length() < 12)
                                 Class22_Sub2.username = Class22_Sub2.username.method70(Class59.anInt1388, 0);
+                        } else if(Node.anInt947 == 1) {
+                            if(ItemDefinition.anInt2854 == 85 && Class22_Sub2.password.length() > 0)
+                                Class22_Sub2.password = (Class22_Sub2.password.substring(0, Class22_Sub2.password.length() + -1));
+                            if(ItemDefinition.anInt2854 == 84 || ItemDefinition.anInt2854 == 80)
+                                Node.anInt947 = 0;
+                            if(bool && Class22_Sub2.password.length() < 20)
+                                Class22_Sub2.password = Class22_Sub2.password.method70(Class59.anInt1388, 0);
                         }
                     }
                 }

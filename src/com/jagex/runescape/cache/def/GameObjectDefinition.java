@@ -106,14 +106,14 @@ public class GameObjectDefinition extends SubNode {
                 }
             }
         }
-        if(is != null) {
-            arg0.method198((byte) -115, true, is, arg1, arg2);
-        } else {
+        if(is == null) {
             if(arg3 > -91) {
                 chatboxScroll = -20;
             }
             byte[] is_6_ = arg2.method969(arg1, (byte) 103);
             arg0.method198((byte) -115, true, is_6_, arg1, arg2);
+        } else {
+            arg0.method198((byte) -115, true, is, arg1, arg2);
         }
 
     }
@@ -337,16 +337,12 @@ public class GameObjectDefinition extends SubNode {
         bool_11_ = offsetX != 0 || offsetHeight != 0 || offsetY != 0;
         Model class40_sub5_sub17_sub5_12_ = new Model(class40_sub5_sub17_sub5, arg3 == 0 && !bool && !bool_11_, recolorToFind == null, true);
         arg3 &= 0x3;
-        if(arg3 != 1) {
-            if(arg3 != 2) {
-                if(arg3 == 3) {
-                    class40_sub5_sub17_sub5_12_.method824();
-                }
-            } else {
-                class40_sub5_sub17_sub5_12_.method819();
-            }
-        } else {
+        if(arg3 == 1) {
             class40_sub5_sub17_sub5_12_.method813();
+        } else if(arg3 == 2) {
+            class40_sub5_sub17_sub5_12_.method819();
+        } else if(arg3 == 3) {
+            class40_sub5_sub17_sub5_12_.method824();
         }
         if(recolorToFind != null) {
             for(int i = 0; i < recolorToFind.length; i++) {
@@ -386,10 +382,10 @@ public class GameObjectDefinition extends SubNode {
         if(animationSequence == null && !adjustToTerrain) {
             return model;
         }
-        if(animationSequence != null) {
-            model = animationSequence.method593(arg3, false, model, arg5);
-        } else {
+        if(animationSequence == null) {
             model = model.method817(true);
+        } else {
+            model = animationSequence.method593(arg3, false, model, arg5);
         }
         if(arg1 < 54) {
             return null;
@@ -413,15 +409,15 @@ public class GameObjectDefinition extends SubNode {
         if(opcode == 1) {
             int length = buffer.getUnsignedByte();
             if(length > 0) {
-                if(objectModels != null && !Class35.aBoolean1734) {
-                    buffer.currentPosition += length * 3;
-                } else {
+                if(objectModels == null || Class35.aBoolean1734) {
                     objectTypes = new int[length];
                     objectModels = new int[length];
                     for(int index = 0; length > index; index++) {
                         objectModels[index] = buffer.getUnsignedShortBE();
                         objectTypes[index] = buffer.getUnsignedByte();
                     }
+                } else {
+                    buffer.currentPosition += length * 3;
                 }
             }
         } else if(opcode == 2) {
@@ -429,14 +425,14 @@ public class GameObjectDefinition extends SubNode {
         } else if(opcode == 5) {
             int length = buffer.getUnsignedByte();
             if(length > 0) {
-                if(objectModels != null && !Class35.aBoolean1734) {
-                    buffer.currentPosition += 2 * length;
-                } else {
+                if(objectModels == null || Class35.aBoolean1734) {
                     objectTypes = null;
                     objectModels = new int[length];
                     for(int index = 0; length > index; index++) {
                         objectModels[index] = buffer.getUnsignedShortBE();
                     }
+                } else {
+                    buffer.currentPosition += 2 * length;
                 }
             }
         } else if(opcode == 14) {

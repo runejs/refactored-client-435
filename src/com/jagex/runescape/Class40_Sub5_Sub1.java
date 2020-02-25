@@ -70,12 +70,12 @@ public class Class40_Sub5_Sub1 extends SubNode {
             if(renderable != null) {
                 int i_6_;
                 int i_7_;
-                if(arg7 != 1 && arg7 != 3) {
-                    i_7_ = gameObjectDefinition.sizeX;
-                    i_6_ = gameObjectDefinition.sizeY;
-                } else {
+                if(arg7 == 1 || arg7 == 3) {
                     i_6_ = gameObjectDefinition.sizeX;
                     i_7_ = gameObjectDefinition.sizeY;
+                } else {
+                    i_7_ = gameObjectDefinition.sizeX;
+                    i_6_ = gameObjectDefinition.sizeY;
                 }
                 int i_8_ = 0;
                 if(arg4 == 11)
@@ -145,29 +145,25 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 arg0.method154(arg9, gameObjectDefinition.walkable, -117, gameObjectDefinition.sizeY, arg7, arg8, gameObjectDefinition.sizeX);
         } else {
             if(gameObjectDefinition.adjustToTerrain) {
-                if(arg7 != 1) {
-                    if(arg7 != 2) {
-                        if(arg7 == 3) {
-                            int i_11_ = i_1_;
-                            i_1_ = i;
-                            i = i_0_;
-                            i_0_ = i_2_;
-                            i_2_ = i_11_;
-                        }
-                    } else {
-                        int i_12_ = i_1_;
-                        i_1_ = i_0_;
-                        i_0_ = i_12_;
-                        i_12_ = i_2_;
-                        i_2_ = i;
-                        i = i_12_;
-                    }
-                } else {
+                if(arg7 == 1) {
                     int i_13_ = i_1_;
                     i_1_ = i_2_;
                     i_2_ = i_0_;
                     i_0_ = i;
                     i = i_13_;
+                } else if(arg7 == 2) {
+                    int i_12_ = i_1_;
+                    i_1_ = i_0_;
+                    i_0_ = i_12_;
+                    i_12_ = i_2_;
+                    i_2_ = i;
+                    i = i_12_;
+                } else if(arg7 == 3) {
+                    int i_11_ = i_1_;
+                    i_1_ = i;
+                    i = i_0_;
+                    i_0_ = i_2_;
+                    i_2_ = i_11_;
                 }
             }
             if(arg4 == 4) {
