@@ -141,7 +141,7 @@ public class Signlink implements Runnable {
 
     public Class15 method388(boolean arg0, URL arg1) {
 
-        if(arg0 != false)
+        if(arg0)
             method397(-42);
         return method389(124, 0, 4, 0, arg1);
 
@@ -172,7 +172,7 @@ public class Signlink implements Runnable {
 
         try {
             File file = new File(aString734 + "uid.dat");
-            if(!file.exists() || (file.length() ^ 0xffffffffffffffffL) > -5L) {
+            if(!file.exists() || file.length() < 4) {
                 DataOutputStream dataoutputstream = (new DataOutputStream(new FileOutputStream(aString734 + "uid.dat")));
                 dataoutputstream.writeInt((int) (9.9999999E7 * Math.random()));
                 dataoutputstream.close();
@@ -224,26 +224,24 @@ public class Signlink implements Runnable {
             }
             try {
                 int i = class15.anInt433;
-                if((i ^ 0xffffffff) == -2)
+                if(i == 1)
                     class15.anObject437 = new Socket(anInetAddress730, class15.anInt432);
-                else if((i ^ 0xffffffff) != -3) {
-                    if((i ^ 0xffffffff) == -5)
-                        class15.anObject437 = new DataInputStream(((URL) class15.anObject435).openStream());
-                    else if(i == 9) {
-                        Object[] objects = (Object[]) class15.anObject435;
-                        class15.anObject437 = (((Class) objects[0]).getDeclaredMethod((String) objects[1], (Class[]) objects[2]));
-                    } else if((i ^ 0xffffffff) == -11) {
-                        Object[] objects = (Object[]) class15.anObject435;
-                        class15.anObject437 = ((Class) objects[0]).getDeclaredField((String) objects[1]);
-                    } else
-                        throw new Exception();
-                } else {
+                else if(i == 2) {
                     Thread thread = new Thread((Runnable) class15.anObject435);
                     thread.setDaemon(true);
                     thread.start();
                     thread.setPriority(class15.anInt432);
                     class15.anObject437 = thread;
-                }
+                } else if(i == 4)
+                    class15.anObject437 = new DataInputStream(((URL) class15.anObject435).openStream());
+                else if(i == 9) {
+                    Object[] objects = (Object[]) class15.anObject435;
+                    class15.anObject437 = (((Class) objects[0]).getDeclaredMethod((String) objects[1], (Class[]) objects[2]));
+                } else if(i == 10) {
+                    Object[] objects = (Object[]) class15.anObject435;
+                    class15.anObject437 = ((Class) objects[0]).getDeclaredField((String) objects[1]);
+                } else
+                    throw new Exception();
                 class15.anInt434 = 1;
             } catch(Exception exception) {
                 class15.anInt434 = 2;
@@ -254,7 +252,7 @@ public class Signlink implements Runnable {
 
     public Class15 method392(Class arg0, String arg1, boolean arg2) {
 
-        if(arg2 != true)
+        if(!arg2)
             aString735 = null;
         return method389(126, 0, 10, 0, new Object[]{arg0, arg1});
 

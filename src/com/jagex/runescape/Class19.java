@@ -49,10 +49,10 @@ public class Class19 {
         RSString class1 = new RSString();
         class1.length = 0;
         class1.chars = new byte[arg3];
-        if(arg1 != true)
+        if(!arg1)
             aClass1_495 = null;
         for(int i = arg2; arg3 + arg2 > i; i++) {
-            if((arg0[i] ^ 0xffffffff) != -1)
+            if(arg0[i] != 0)
                 class1.chars[class1.length++] = arg0[i];
         }
         return class1;
@@ -69,7 +69,7 @@ public class Class19 {
         aByteArrayArrayArray492 = null;
         aClass9_470 = null;
         aClass1_478 = null;
-        if(arg0 != true)
+        if(!arg0)
             method280(false);
         anIntArray483 = null;
         aCacheIndex_488 = null;

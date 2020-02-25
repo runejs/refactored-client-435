@@ -54,10 +54,10 @@ public class Class55 {
                 break;
             int i = string_2_.indexOf('(');
             int i_3_ = string_2_.indexOf(')', i + 1);
-            if((i ^ 0xffffffff) <= -1 && i_3_ >= 0) {
+            if(i >= 0 && i_3_ >= 0) {
                 String string_4_ = string_2_.substring(1 + i, i_3_);
                 int i_5_ = string_4_.indexOf(".java:");
-                if((i_5_ ^ 0xffffffff) <= -1) {
+                if(i_5_ >= 0) {
                     string_4_ = (string_4_.substring(0, i_5_) + string_4_.substring(5 + i_5_));
                     string += string_4_ + ' ';
                     continue;
@@ -77,7 +77,7 @@ public class Class55 {
         Class40_Sub5_Sub15 class40_sub5_sub15 = ((Class40_Sub5_Sub15) Class42.aClass9_998.method231((long) arg1, (byte) 101));
         if(class40_sub5_sub15 != null)
             return class40_sub5_sub15;
-        class40_sub5_sub15 = Class35.method421(Class40_Sub5_Sub4.aCacheIndex_2364, (byte) 79, arg1, Class40_Sub11.aCacheIndex_2162, false);
+        class40_sub5_sub15 = Class35.method421(VarbitDefinition.aCacheIndex_2364, (byte) 79, arg1, Class40_Sub11.aCacheIndex_2162, false);
         if(class40_sub5_sub15 != null)
             Class42.aClass9_998.method230(arg0 + -7109, (long) arg1, class40_sub5_sub15);
         if(arg0 != -99)
@@ -151,8 +151,8 @@ public class Class55 {
         IdentityKit.aClass1_2587 = Class22_Sub1.aClass1_1838;
         Class40_Sub5_Sub11.aClass1_2620 = Class26.aClass1_631;
         Class27.aClass1_664 = CacheIndex_Sub1.aClass1_1799;
-        Class61.aClass1_1422 = Class54.aClass1_1271;
-        Landscape.aClass1_1181 = Class66.aClass1_1549;
+        Class61.aClass1_1422 = KeyFocusListener.aClass1_1271;
+        Landscape.aClass1_1181 = HuffmanEncoding.aClass1_1549;
         Class40_Sub7.aClass1_2125 = Class67.aClass1_1591;
         UnderlayDefinition.aClass1_2577 = Class48.aClass1_1137;
         Renderable.aClass1_2864 = CacheIndex_Sub1.aClass1_1816;
@@ -174,7 +174,7 @@ public class Class55 {
         Class42.aClass1_1001 = Class49.aClass1_1155;
         RSRuntimeException.str_select = Buffer.aClass1_1990;
         Class51.aClass1_1200 = Class35.aClass1_1726;
-        Class66.aClass1_1572 = Class38.aClass1_896;
+        HuffmanEncoding.aClass1_1572 = Class38.aClass1_896;
         Cache.aClass1_333 = Class12.aClass1_391;
         Class51.aClass1_1208 = Class64.aClass1_1505;
         Node.aClass1_951 = Class64.aClass1_1523;
@@ -212,12 +212,12 @@ public class Class55 {
         Node.aClass1_972 = Class37.aClass1_860;
         Class26.aClass1_619 = Class40_Sub7.aClass1_2128;
         Class27.aClass1_668 = Class40_Sub2.aClass1_1995;
-        ActorDefinition.aClass1_2432 = Class40_Sub5_Sub4.aClass1_2354;
+        ActorDefinition.aClass1_2432 = VarbitDefinition.aClass1_2354;
         Class40_Sub5_Sub11.aClass1_2629 = ISAAC.aClass1_523;
         SceneTile.aClass1_2042 = Class53.aClass1_1263;
         Node.aClass1_974 = Cache.aClass1_325;
         Class22_Sub2.aClass1_1891 = Class39.aClass1_899;
-        Class66.aClass1_1552 = SceneTile.aClass1_2046;
+        HuffmanEncoding.aClass1_1552 = SceneTile.aClass1_2046;
         Node.aClass1_976 = Class64.aClass1_1523;
         Node.aClass1_943 = Class60.aClass1_1408;
         Node.aClass1_930 = Class64.aClass1_1523;
@@ -230,7 +230,7 @@ public class Class55 {
         Class38.aClass1_883 = Class40_Sub5_Sub15.aClass1_2781;
         Class22_Sub1.aClass1_1864 = Landscape.aClass1_1160;
         Node.aClass1_956 = Class27.aClass1_647;
-        Widget.aClass1_2671 = Class66.aClass1_1558;
+        Widget.aClass1_2671 = HuffmanEncoding.aClass1_1558;
         Class43.aClass1_1019 = CacheIndex_Sub1.aClass1_1798;
         Class40_Sub5_Sub6.aClass1_2446 = Class68_Sub1.aClass1_2198;
         Widget.aClass1_2684 = SpotAnimDefinition.aClass1_2291;
@@ -278,7 +278,7 @@ public class Class55 {
         Node.aClass1_941 = Class64.aClass1_1523;
         Class26.aClass1_634 = UnderlayDefinition.aClass1_2564;
         Class53.aClass1_1259 = Class12.aClass1_396;
-        Class40_Sub5_Sub4.aClass1_2351 = Class4.aClass1_181;
+        VarbitDefinition.aClass1_2351 = Class4.aClass1_181;
         Class22_Sub1.aClass1_1858 = Class12.aClass1_382;
         CacheIndex.aClass1_258 = AnimationSequence.aClass1_2475;
         Class35.aClass1_1747 = Class45.aClass1_1079;
@@ -305,7 +305,7 @@ public class Class55 {
         Class48.aClass1_1122 = Cache.aClass1_331;
         Class40_Sub5_Sub17_Sub1.aClass1_3014 = Class52.aClass1_1241;
         Class44.aClass1_1032 = Class45.aClass1_1059;
-        Class40_Sub5_Sub4.aClass1_2357 = Player.aClass1_3275;
+        VarbitDefinition.aClass1_2357 = Player.aClass1_3275;
         Class8.aClass1_294 = Class40_Sub5_Sub17_Sub6.aClass1_3245;
         Node.aClass1_964 = Class64.aClass1_1523;
     }

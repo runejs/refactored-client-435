@@ -9,7 +9,7 @@ public class IdentityKit extends SubNode {
     public static int anInt2585;
     public static RSString aClass1_2587;
     public static RSString aClass1_2588;
-    public static Class66 aClass66_2590;
+    public static HuffmanEncoding aHuffmanEncoding_2590;
     public static int anInt2591;
     public static RSString aClass1_2592;
     public static RSString aClass1_2593;
@@ -66,7 +66,7 @@ public class IdentityKit extends SubNode {
         aClass1_2611 = null;
         aClass1_2588 = null;
         aClass6_Sub1_2609 = null;
-        aClass66_2590 = null;
+        aHuffmanEncoding_2590 = null;
         aClass1_2616 = null;
         aClass1_2614 = null;
         aClass1_2592 = null;
@@ -80,7 +80,7 @@ public class IdentityKit extends SubNode {
     }
 
     public static Class40_Sub5_Sub1 method626(int arg0, int arg1, int arg2) {
-        long l = (long) (arg0 + (arg1 << -637173104));
+        long l = (long) (arg0 + (arg1 << 16));
         anInt2612++;
         Class40_Sub5_Sub1 class40_sub5_sub1 = ((Class40_Sub5_Sub1) Class17.aClass9_449.method231(l, (byte) 72));
         if(class40_sub5_sub1 != null) {
@@ -105,14 +105,12 @@ public class IdentityKit extends SubNode {
         class40_sub5_sub1.anIntArray2272 = new int[i];
         while(class40_sub1.currentPosition < -12 + class40_sub1.buffer.length) {
             int i_1_ = class40_sub1.getUnsignedShortBE();
-            if(i_1_ != 3) {
-                if(i_1_ >= 100 || i_1_ == 21 || (i_1_ ^ 0xffffffff) == -39 || i_1_ == 39) {
-                    class40_sub5_sub1.anIntArray2262[i_0_] = class40_sub1.getUnsignedByte();
-                } else {
-                    class40_sub5_sub1.anIntArray2262[i_0_] = class40_sub1.getIntBE();
-                }
-            } else {
+            if(i_1_ == 3) {
                 class40_sub5_sub1.aClass1Array2270[i_0_] = class40_sub1.getRSString();
+            } else if(i_1_ >= 100 || i_1_ == 21 || i_1_ == 38 || i_1_ == 39) {
+                class40_sub5_sub1.anIntArray2262[i_0_] = class40_sub1.getUnsignedByte();
+            } else {
+                class40_sub5_sub1.anIntArray2262[i_0_] = class40_sub1.getIntBE();
             }
             class40_sub5_sub1.anIntArray2272[i_0_++] = i_1_;
         }
@@ -170,7 +168,7 @@ public class IdentityKit extends SubNode {
         boolean bool = true;
         anInt2603++;
         int i = 0;
-        if(arg0 != false) {
+        if(arg0) {
             return false;
         }
         for(/**/; i < 5; i++) {
@@ -208,7 +206,7 @@ public class IdentityKit extends SubNode {
         if(arg0 != -100) {
             return null;
         }
-        for(int i_7_ = 0; (i_7_ ^ 0xffffffff) > -6; i_7_++) {
+        for(int i_7_ = 0; i_7_ < 5; i_7_++) {
             if(models[i_7_] != -1) {
                 class40_sub5_sub17_sub5s[i++] = Model.getModel((Class27.aCacheIndex_654), (models[i_7_]), 0);
             }
@@ -233,15 +231,15 @@ public class IdentityKit extends SubNode {
             class40_sub5_sub17_sub5s[i] = Model.getModel(Class27.aCacheIndex_654, modelId[i], 0);
         }
         Model class40_sub5_sub17_sub5;
-        if(class40_sub5_sub17_sub5s.length != 1) {
-            class40_sub5_sub17_sub5 = (new Model(class40_sub5_sub17_sub5s, class40_sub5_sub17_sub5s.length));
-        } else {
+        if(class40_sub5_sub17_sub5s.length == 1) {
             class40_sub5_sub17_sub5 = class40_sub5_sub17_sub5s[0];
+        } else {
+            class40_sub5_sub17_sub5 = (new Model(class40_sub5_sub17_sub5s, class40_sub5_sub17_sub5s.length));
         }
-        if(arg0 != false) {
+        if(arg0) {
             return null;
         }
-        for(int i = 0; (i ^ 0xffffffff) > -7; i++) {
+        for(int i = 0; i < 6; i++) {
             if(recolorToFind[i] == 0) {
                 break;
             }

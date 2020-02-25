@@ -75,7 +75,7 @@ public abstract class Class22_Sub2 extends Class22 {
             int i_4_ = (class40_sub5_sub14_sub4.image_height * class40_sub5_sub14_sub4.image_width);
             class40_sub5_sub14_sub4.pixels = new int[i_4_];
             for(int i_5_ = 0; (i_5_ < i_4_); i_5_++)
-                class40_sub5_sub14_sub4.pixels[i_5_] = (Buffer.anIntArray1972[Class66.method1021(255, is[i_5_])]);
+                class40_sub5_sub14_sub4.pixels[i_5_] = (Buffer.anIntArray1972[HuffmanEncoding.method1021(255, is[i_5_])]);
         }
         ActorDefinition.method569();
         return class40_sub5_sub14_sub4s;
@@ -118,7 +118,7 @@ public abstract class Class22_Sub2 extends Class22 {
                 Class44.anInt1040 = arg0;
                 for(int i = 0; i < 16; i++) {
                     int i_2_ = method323(i);
-                    method314(176 + i, 7, i_2_ >> -997186041, arg2);
+                    method314(176 + i, 7, i_2_ >> 7, arg2);
                     method314(176 + i, 39, i_2_ & 0x7f, arg2);
                 }
             }
@@ -137,13 +137,13 @@ public abstract class Class22_Sub2 extends Class22 {
             username = null;
         for(int i = 0; i < 16; i++) {
             int i_3_ = method323(i);
-            method314(176 + i, 7, i_3_ >> -144095193, arg1);
+            method314(176 + i, 7, i_3_ >> 7, arg1);
             method314(176 + i, 39, 0x7f & i_3_, arg1);
         }
     }
 
     public void method321(byte arg0, long arg1) {
-        for(int i = 0; (i ^ 0xffffffff) > -129; i++) {
+        for(int i = 0; i < 128; i++) {
             int i_6_ = Class38.anIntArray889[i];
             Class38.anIntArray889[i] = 0;
             for(int i_7_ = 0; i_7_ < 16; i_7_++) {
@@ -151,19 +151,19 @@ public abstract class Class22_Sub2 extends Class22 {
                     method314(144 + i_7_, i, 0, arg1);
             }
         }
-        for(int i = 0; (i ^ 0xffffffff) > -17; i++)
+        for(int i = 0; i < 16; i++)
             method314(i + 176, 123, 0, arg1);
         if(arg0 <= 101)
             aClass1_1879 = null;
-        for(int i = 0; (i ^ 0xffffffff) > -17; i++)
+        for(int i = 0; i < 16; i++)
             method314(i + 176, 120, 0, arg1);
-        for(int i = 0; (i ^ 0xffffffff) > -17; i++)
+        for(int i = 0; i < 16; i++)
             method314(i + 176, 121, 0, arg1);
-        for(int i = 0; (i ^ 0xffffffff) > -17; i++)
+        for(int i = 0; i < 16; i++)
             method314(i + 176, 0, 0, arg1);
         for(int i = 0; i < 16; i++)
             method314(176 + i, 32, 0, arg1);
-        for(int i = 0; (i ^ 0xffffffff) > -17; i++)
+        for(int i = 0; i < 16; i++)
             method314(i + 192, 0, 0, arg1);
     }
 

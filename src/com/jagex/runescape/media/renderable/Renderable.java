@@ -45,14 +45,14 @@ public abstract class Renderable extends SubNode {
         for(int i = 0; widgets.length > i; i++) {
             Widget widget = widgets[i];
             if(widget != null && widget.type == 6) {
-                if((widget.animation ^ 0xffffffff) != 0 || widget.alternateAnimation != -1) {
+                if(widget.animation != -1 || widget.alternateAnimation != -1) {
                     boolean bool_0_ = ItemDefinition.method746(widget);
                     int i_1_;
                     if(bool_0_)
                         i_1_ = widget.alternateAnimation;
                     else
                         i_1_ = widget.animation;
-                    if((i_1_ ^ 0xffffffff) != 0) {
+                    if(i_1_ != -1) {
                         AnimationSequence animationSequence = Class68_Sub1.method1050(i_1_, 2);
                         widget.anInt2660 += Class5.anInt199;
                         while((animationSequence.animationLengths[widget.anInt2654]) < widget.anInt2660) {
@@ -61,7 +61,7 @@ public abstract class Renderable extends SubNode {
                             widget.anInt2654++;
                             if((widget.anInt2654 >= animationSequence.anIntArray2485.length)) {
                                 widget.anInt2654 -= animationSequence.frameStep;
-                                if((widget.anInt2654 ^ 0xffffffff) > -1 || ((widget.anInt2654 ^ 0xffffffff) <= ((animationSequence.anIntArray2485).length ^ 0xffffffff)))
+                                if(widget.anInt2654 < 0 || ((animationSequence.anIntArray2485).length <= widget.anInt2654))
                                     widget.anInt2654 = 0;
                             }
                         }
@@ -69,8 +69,8 @@ public abstract class Renderable extends SubNode {
                 }
                 if(widget.anInt2722 != 0) {
                     bool = true;
-                    int i_2_ = widget.anInt2722 >> -1999002640;
-                    int i_3_ = (widget.anInt2722 << 1943281072 >> -1142238960);
+                    int i_2_ = widget.anInt2722 >> 16;
+                    int i_3_ = (widget.anInt2722 << 16 >> 16);
                     i_2_ *= Class5.anInt199;
                     widget.rotationX = 0x7ff & i_2_ + widget.rotationX;
                     i_3_ *= Class5.anInt199;

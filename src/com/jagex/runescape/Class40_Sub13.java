@@ -69,7 +69,7 @@ public class Class40_Sub13 extends Node {
         anInt2182++;
         if(arg3 == 0) {
             ImageRGB class40_sub5_sub14_sub4 = ((ImageRGB) Buffer.aClass9_1933.method231((long) arg2, (byte) 56));
-            if(class40_sub5_sub14_sub4 != null && class40_sub5_sub14_sub4.maxHeight != arg1 && (class40_sub5_sub14_sub4.maxHeight ^ 0xffffffff) != 0) {
+            if(class40_sub5_sub14_sub4 != null && class40_sub5_sub14_sub4.maxHeight != arg1 && class40_sub5_sub14_sub4.maxHeight != -1) {
                 class40_sub5_sub14_sub4.method457(-1);
                 class40_sub5_sub14_sub4 = null;
             }
@@ -79,9 +79,9 @@ public class Class40_Sub13 extends Node {
         ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(arg2, 10);
         if(class40_sub5_sub16.stackableIds == null)
             arg1 = -1;
-        if((arg1 ^ 0xffffffff) < -2) {
+        if(arg1 > 1) {
             int i = -1;
-            for(int i_0_ = 0; (i_0_ ^ 0xffffffff) > -11; i_0_++) {
+            for(int i_0_ = 0; i_0_ < 10; i_0_++) {
                 if(arg1 >= class40_sub5_sub16.stackableAmounts[i_0_] && class40_sub5_sub16.stackableAmounts[i_0_] != 0)
                     i = class40_sub5_sub16.stackableIds[i_0_];
             }
@@ -98,7 +98,7 @@ public class Class40_Sub13 extends Node {
                 return null;
         }
         int[] is = Rasterizer.pixels;
-        int i = Rasterizer.anInt2769;
+        int i = Rasterizer.height;
         int i_1_ = Rasterizer.width;
         int i_2_ = Rasterizer.viewport_left;
         int i_3_ = 16 / ((arg0 - 26) / 57);
@@ -109,42 +109,42 @@ public class Class40_Sub13 extends Node {
         int i_8_ = R3D.anInt2930;
         int i_9_ = R3D.anInt2945;
         ImageRGB class40_sub5_sub14_sub4_10_ = new ImageRGB(32, 32);
-        Rasterizer.method669(class40_sub5_sub14_sub4_10_.pixels, 32, 32);
+        Rasterizer.createRasterizer(class40_sub5_sub14_sub4_10_.pixels, 32, 32);
         Class40_Sub5_Sub17_Sub6.anIntArray3253 = R3D.method708(Class40_Sub5_Sub17_Sub6.anIntArray3253);
-        Rasterizer.method656(0, 0, 32, 32, 0);
+        Rasterizer.drawFilledRectangle(0, 0, 32, 32, 0);
         int i_11_ = class40_sub5_sub16.zoom2d;
-        if((arg3 ^ 0xffffffff) == 0)
+        if(arg3 == -1)
             i_11_ *= 1.5;
         if(arg3 > 0)
             i_11_ *= 1.04;
         R3D.aBoolean2944 = false;
-        int i_12_ = ((R3D.sinetable[class40_sub5_sub16.xan2d]) * i_11_ >> -1598852880);
-        int i_13_ = (i_11_ * (R3D.cosinetable[class40_sub5_sub16.xan2d]) >> -2129368336);
+        int i_12_ = ((R3D.sinetable[class40_sub5_sub16.xan2d]) * i_11_ >> 16);
+        int i_13_ = (i_11_ * (R3D.cosinetable[class40_sub5_sub16.xan2d]) >> 16);
         class40_sub5_sub17_sub5.method799();
         class40_sub5_sub17_sub5.method812(0, class40_sub5_sub16.yan2d, class40_sub5_sub16.zan2d, class40_sub5_sub16.xan2d, class40_sub5_sub16.xOffset2d, (class40_sub5_sub16.yOffset2d + class40_sub5_sub17_sub5.anInt2861 / 2 + i_12_), i_13_ + class40_sub5_sub16.yOffset2d);
         for(int i_14_ = 31; i_14_ >= 0; i_14_--) {
             for(i_13_ = 31; i_13_ >= 0; i_13_--) {
-                if(((class40_sub5_sub14_sub4_10_.pixels[i_14_ + 32 * i_13_]) ^ 0xffffffff) == -1) {
-                    if((i_14_ ^ 0xffffffff) < -1 && (class40_sub5_sub14_sub4_10_.pixels[i_13_ * 32 + (-1 + i_14_)]) > 1)
+                if((class40_sub5_sub14_sub4_10_.pixels[i_14_ + 32 * i_13_]) == 0) {
+                    if(i_14_ > 0 && (class40_sub5_sub14_sub4_10_.pixels[i_13_ * 32 + (-1 + i_14_)]) > 1)
                         class40_sub5_sub14_sub4_10_.pixels[i_13_ * 32 + i_14_] = 1;
-                    else if((i_13_ ^ 0xffffffff) < -1 && (class40_sub5_sub14_sub4_10_.pixels[i_14_ + ((i_13_ + -1) * 32)]) > 1)
+                    else if(i_13_ > 0 && (class40_sub5_sub14_sub4_10_.pixels[i_14_ + ((i_13_ + -1) * 32)]) > 1)
                         class40_sub5_sub14_sub4_10_.pixels[i_13_ * 32 + i_14_] = 1;
-                    else if((i_14_ ^ 0xffffffff) > -32 && (class40_sub5_sub14_sub4_10_.pixels[i_13_ * 32 + i_14_ + 1]) > 1)
+                    else if(i_14_ < 31 && (class40_sub5_sub14_sub4_10_.pixels[i_13_ * 32 + i_14_ + 1]) > 1)
                         class40_sub5_sub14_sub4_10_.pixels[i_14_ + i_13_ * 32] = 1;
                     else if(i_13_ < 31 && (class40_sub5_sub14_sub4_10_.pixels[(i_13_ + 1) * 32 + i_14_]) > 1)
                         class40_sub5_sub14_sub4_10_.pixels[i_14_ + 32 * i_13_] = 1;
                 }
             }
         }
-        if((arg3 ^ 0xffffffff) < -1) {
+        if(arg3 > 0) {
             for(int i_15_ = 31; i_15_ >= 0; i_15_--) {
                 for(i_13_ = 31; i_13_ >= 0; i_13_--) {
-                    if(((class40_sub5_sub14_sub4_10_.pixels[i_15_ + (i_13_ * 32)]) ^ 0xffffffff) == -1) {
-                        if(i_15_ > 0 && ((class40_sub5_sub14_sub4_10_.pixels[32 * i_13_ + (-1 + i_15_)]) ^ 0xffffffff) == -2)
+                    if((class40_sub5_sub14_sub4_10_.pixels[i_15_ + (i_13_ * 32)]) == 0) {
+                        if(i_15_ > 0 && (class40_sub5_sub14_sub4_10_.pixels[32 * i_13_ + (-1 + i_15_)]) == 1)
                             class40_sub5_sub14_sub4_10_.pixels[i_15_ + i_13_ * 32] = arg3;
-                        else if(i_13_ <= 0 || ((class40_sub5_sub14_sub4_10_.pixels[i_15_ + ((i_13_ + -1) * 32)]) ^ 0xffffffff) != -2) {
-                            if((i_15_ ^ 0xffffffff) <= -32 || ((class40_sub5_sub14_sub4_10_.pixels[1 + i_15_ + (i_13_ * 32)]) ^ 0xffffffff) != -2) {
-                                if((i_13_ ^ 0xffffffff) > -32 && ((class40_sub5_sub14_sub4_10_.pixels[i_15_ + (32 + 32 * i_13_)]) ^ 0xffffffff) == -2)
+                        else if(i_13_ <= 0 || (class40_sub5_sub14_sub4_10_.pixels[i_15_ + ((i_13_ + -1) * 32)]) != 1) {
+                            if(i_15_ >= 31 || (class40_sub5_sub14_sub4_10_.pixels[1 + i_15_ + (i_13_ * 32)]) != 1) {
+                                if(i_13_ < 31 && (class40_sub5_sub14_sub4_10_.pixels[i_15_ + (32 + 32 * i_13_)]) == 1)
                                     class40_sub5_sub14_sub4_10_.pixels[i_13_ * 32 + i_15_] = arg3;
                             } else
                                 class40_sub5_sub14_sub4_10_.pixels[i_15_ + (i_13_ * 32)] = arg3;
@@ -154,9 +154,9 @@ public class Class40_Sub13 extends Node {
                 }
             }
         } else if(arg3 == 0) {
-            for(int i_16_ = 31; (i_16_ ^ 0xffffffff) <= -1; i_16_--) {
+            for(int i_16_ = 31; i_16_ >= 0; i_16_--) {
                 for(i_13_ = 31; i_13_ >= 0; i_13_--) {
-                    if((class40_sub5_sub14_sub4_10_.pixels[i_13_ * 32 + i_16_]) == 0 && i_16_ > 0 && (i_13_ ^ 0xffffffff) < -1 && ((class40_sub5_sub14_sub4_10_.pixels[i_16_ - (1 + -((-1 + i_13_) * 32))]) ^ 0xffffffff) < -1)
+                    if((class40_sub5_sub14_sub4_10_.pixels[i_13_ * 32 + i_16_]) == 0 && i_16_ > 0 && i_13_ > 0 && (class40_sub5_sub14_sub4_10_.pixels[i_16_ - (1 + -((-1 + i_13_) * 32))]) > 0)
                         class40_sub5_sub14_sub4_10_.pixels[i_16_ + 32 * i_13_] = 3153952;
                 }
             }
@@ -172,14 +172,14 @@ public class Class40_Sub13 extends Node {
         }
         if(arg3 == 0)
             Buffer.aClass9_1933.method230(-7208, (long) arg2, class40_sub5_sub14_sub4_10_);
-        Rasterizer.method669(is, i_1_, i);
+        Rasterizer.createRasterizer(is, i_1_, i);
         Rasterizer.setCoordinates(i_2_, i_5_, i_6_, i_4_);
         R3D.method708(is_7_);
         R3D.anInt2930 = i_8_;
         R3D.anInt2945 = i_9_;
         R3D.method702();
         R3D.aBoolean2944 = true;
-        if((class40_sub5_sub16.stackable ^ 0xffffffff) == -2)
+        if(class40_sub5_sub16.stackable == 1)
             class40_sub5_sub14_sub4_10_.maxWidth = 33;
         else
             class40_sub5_sub14_sub4_10_.maxWidth = 32;
@@ -209,17 +209,17 @@ public class Class40_Sub13 extends Node {
 
         anInt2169++;
         int i;
-        if((arg1.id ^ 0xffffffff) > -1)
-            i = arg1.parentId >> -1744237840;
+        if(arg1.id < 0)
+            i = arg1.parentId >> 16;
         else
-            i = arg1.id >> -462467952;
+            i = arg1.id >> 16;
         if(!Class68.method1043(i))
             return null;
         if(arg0 != -1598852880)
             method876(44, -123, -88, 35);
-        if((arg1.anInt2738 ^ 0xffffffff) <= -1)
+        if(arg1.anInt2738 >= 0)
             return (Widget.interfaces[i][0xffff & arg1.anInt2738]);
-        Widget widget = (Widget.interfaces[i][(0x7fff99d9 & arg1.anInt2738) >> -88908881]);
+        Widget widget = (Widget.interfaces[i][(0x7fff99d9 & arg1.anInt2738) >> 15]);
         return (widget.aWidgetArray2713[arg1.anInt2738 & 0x7fff]);
 
     }
@@ -236,10 +236,10 @@ public class Class40_Sub13 extends Node {
             int i_21_ = (int) ((double) i_19_ * (128.0 * Math.random()));
             Landscape.anIntArray1168[i_21_] = (int) (256.0 * Math.random());
         }
-        for(int i_22_ = 0; (i_22_ ^ 0xffffffff) > -21; i_22_++) {
+        for(int i_22_ = 0; i_22_ < 20; i_22_++) {
             for(int i_23_ = 1; (-1 + i_19_ > i_23_); i_23_++) {
                 for(int i_24_ = 1; i_24_ < 127; i_24_++) {
-                    int i_25_ = (i_23_ << 2116521895) + i_24_;
+                    int i_25_ = (i_23_ << 7) + i_24_;
                     Class61.anIntArray1445[i_25_] = (Landscape.anIntArray1168[i_25_ - 128] + Landscape.anIntArray1168[i_25_ + -1] + (Landscape.anIntArray1168[i_25_ + 1] + Landscape.anIntArray1168[128 + i_25_])) / 4;
                 }
             }
@@ -251,10 +251,10 @@ public class Class40_Sub13 extends Node {
             int i_26_ = 0;
             for(int i_27_ = 0; arg1.imgHeight > i_27_; i_27_++) {
                 for(int i_28_ = 0; (i_28_ < arg1.imgWidth); i_28_++) {
-                    if((arg1.imgPixels[i_26_++] ^ 0xffffffff) != -1) {
+                    if(arg1.imgPixels[i_26_++] != 0) {
                         int i_29_ = arg1.yDrawOffset + i_27_ + 16;
                         int i_30_ = arg1.xDrawOffset + (i_28_ + 16);
-                        int i_31_ = i_30_ + (i_29_ << 692888135);
+                        int i_31_ = i_30_ + (i_29_ << 7);
                         Landscape.anIntArray1168[i_31_] = 0;
                     }
                 }
@@ -290,14 +290,14 @@ public class Class40_Sub13 extends Node {
                 Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3_35_ = null;
                 class45.method905(0, class40_sub5_sub17_sub3);
                 for(Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3_36_ = ((Class40_Sub5_Sub17_Sub3) class45.method902((byte) -90)); class40_sub5_sub17_sub3_36_ != null; class40_sub5_sub17_sub3_36_ = ((Class40_Sub5_Sub17_Sub3) class45.method909(-4))) {
-                    if((class40_sub5_sub17_sub3_36_.anInt3067 ^ 0xffffffff) != (class40_sub5_sub17_sub3.anInt3067 ^ 0xffffffff)) {
+                    if(class40_sub5_sub17_sub3.anInt3067 != class40_sub5_sub17_sub3_36_.anInt3067) {
                         if(class40_sub5_sub17_sub3_35_ == null)
                             class40_sub5_sub17_sub3_35_ = class40_sub5_sub17_sub3_36_;
                         if((class40_sub5_sub17_sub3_35_.anInt3067 != class40_sub5_sub17_sub3_36_.anInt3067) && class40_sub5_sub17_sub3_34_ == null)
                             class40_sub5_sub17_sub3_34_ = class40_sub5_sub17_sub3_36_;
                     }
                 }
-                int i_37_ = 1610612736 + (arg1 << 512988999) + arg2;
+                int i_37_ = 1610612736 + (arg1 << 7) + arg2;
                 Npc.aScene_3301.method139(Player.anInt3267, arg2, arg1, Class37.method430((byte) -126, (Player.anInt3267), 64 + 128 * arg2, 64 + 128 * arg1), class40_sub5_sub17_sub3, i_37_, class40_sub5_sub17_sub3_35_, class40_sub5_sub17_sub3_34_);
             }
         }

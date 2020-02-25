@@ -26,7 +26,7 @@ public class ActorDefinition extends SubNode {
     public static RSString aClass1_2417 = RSString.CreateString("Versteckt");
     public static RSString aClass1_2423 = RSString.CreateString("(X100(U(Y");
     public static RSString aClass1_2432 = RSString.CreateString("Unexpected server response");
-    public static int anInt2433 = -1;
+    public static int openFullScreenWidgetId = -1;
 
     public boolean isClickable = true;
     public int tileSpacesOccupied = 1;
@@ -34,7 +34,7 @@ public class ActorDefinition extends SubNode {
     public RSString[] options = new RSString[5];
     public int headIcon = -1;
     public int stanceAnimation = -1;
-    public int settingId = -1;
+    public int varpIndex = -1;
     public int ambient = 0;
     public int rotateRightAnimation = -1;
     public int degreesToTurn = 32;
@@ -88,7 +88,7 @@ public class ActorDefinition extends SubNode {
                 if(i == 2) {
                     arg2.anInt3095 = 0;
                 }
-            } else if((arg0 ^ 0xffffffff) == 0 || arg2.playingAnimation == -1 || (Class68_Sub1.method1050(arg0, 2).anInt2494 >= (Class68_Sub1.method1050(arg2.playingAnimation, 2).anInt2494))) {
+            } else if(arg0 == -1 || arg2.playingAnimation == -1 || (Class68_Sub1.method1050(arg0, 2).anInt2494 >= (Class68_Sub1.method1050(arg2.playingAnimation, 2).anInt2494))) {
                 arg2.anInt3094 = arg2.anInt3109;
                 arg2.anInt3104 = 0;
                 arg2.anInt3115 = 0;
@@ -112,7 +112,7 @@ public class ActorDefinition extends SubNode {
     }
 
     public static int method576(boolean arg0) {
-        if(arg0 != false) {
+        if(arg0) {
             aClass1_2432 = null;
         }
         return 19;
@@ -133,7 +133,7 @@ public class ActorDefinition extends SubNode {
         int i = (class40_sub5_sub14_sub4.image_width * class40_sub5_sub14_sub4.image_height);
         class40_sub5_sub14_sub4.pixels = new int[i];
         for(int i_5_ = 0; i_5_ < i; i_5_++) {
-            class40_sub5_sub14_sub4.pixels[i_5_] = (Buffer.anIntArray1972[Class66.method1021(255, is[i_5_])]);
+            class40_sub5_sub14_sub4.pixels[i_5_] = (Buffer.anIntArray1972[HuffmanEncoding.method1021(255, is[i_5_])]);
         }
         method569();
         return class40_sub5_sub14_sub4;
@@ -153,8 +153,8 @@ public class ActorDefinition extends SubNode {
         for(int i_6_ = 0; (i_6_ < class40_sub11.anInt2160); i_6_++) {
             try {
                 int i_7_ = arg2.getUnsignedByte();
-                if(i_7_ != 0 && i_7_ != 1 && (i_7_ ^ 0xffffffff) != -3) {
-                    if(i_7_ == 3 || (i_7_ ^ 0xffffffff) == -5) {
+                if(i_7_ != 0 && i_7_ != 1 && i_7_ != 2) {
+                    if(i_7_ == 3 || i_7_ == 4) {
                         String string = new String(arg2.getRSString().method80(0));
                         String string_8_ = new String(arg2.getRSString().method80(0));
                         int i_9_ = arg2.getUnsignedByte();
@@ -182,7 +182,7 @@ public class ActorDefinition extends SubNode {
                     int i_14_ = 0;
                     String string = new String(arg2.getRSString().method80(0));
                     String string_15_ = new String(arg2.getRSString().method80(0));
-                    if((i_7_ ^ 0xffffffff) == -2) {
+                    if(i_7_ == 1) {
                         i_14_ = arg2.getIntBE();
                     }
                     class40_sub11.anIntArray2154[i_6_] = i_7_;
@@ -201,7 +201,7 @@ public class ActorDefinition extends SubNode {
                 class40_sub11.anIntArray2155[i_6_] = -5;
             }
         }
-        Class54.aClass45_1278.method904(class40_sub11, 92);
+        KeyFocusListener.aClass45_1278.method904(class40_sub11, 92);
     }
 
     public static void method581(int arg0) {
@@ -289,7 +289,7 @@ public class ActorDefinition extends SubNode {
         } else {
             class40_sub5_sub17_sub5_0_ = arg2.method599(arg3, class40_sub5_sub17_sub5, false);
         }
-        if((resizeX ^ 0xffffffff) != -129 || resizeY != 128) {
+        if(resizeX != 128 || resizeY != 128) {
             class40_sub5_sub17_sub5_0_.method821(resizeX, resizeY, resizeX);
         }
         return class40_sub5_sub17_sub5_0_;
@@ -303,10 +303,10 @@ public class ActorDefinition extends SubNode {
         int i = arg0;
         if(varBitId != -1) {
             i = Class40_Sub5_Sub6.method585(varBitId, 1369);
-        } else if((settingId ^ 0xffffffff) != 0) {
-            i = Class58.varbitmasks[settingId];
+        } else if(varpIndex != -1) {
+            i = Class58.varbitmasks[varpIndex];
         }
-        return i >= 0 && childrenIds.length > i && (childrenIds[i] ^ 0xffffffff) != 0;
+        return i >= 0 && childrenIds.length > i && childrenIds[i] != -1;
     }
 
     public void readValue(Buffer buffer, int opcode) {
@@ -375,9 +375,9 @@ public class ActorDefinition extends SubNode {
             if(varBitId == 65535) {
                 varBitId = -1;
             }
-            settingId = (buffer.getUnsignedShortBE());
-            if(settingId == 65535) {
-                settingId = -1;
+            varpIndex = (buffer.getUnsignedShortBE());
+            if(varpIndex == 65535) {
+                varpIndex = -1;
             }
             int childrenCount = (buffer.getUnsignedByte());
             childrenIds = new int[childrenCount + 1];
@@ -430,10 +430,10 @@ public class ActorDefinition extends SubNode {
             models[i] = Model.getModel(Class67.aCacheIndex_1577, headModelIndexes[i], 0);
         }
         Model headModel;
-        if(models.length != 1) {
-            headModel = (new Model(models, models.length));
-        } else {
+        if(models.length == 1) {
             headModel = models[0];
+        } else {
+            headModel = (new Model(models, models.length));
         }
         if(modifiedModelColors != null) {
             for(int i = 0; i < modifiedModelColors.length; i++) {
@@ -447,8 +447,8 @@ public class ActorDefinition extends SubNode {
         int childId = arg0;
         if(varBitId != -1) {
             childId = Class40_Sub5_Sub6.method585(varBitId, 1369);
-        } else if(settingId != -1) {
-            childId = Class58.varbitmasks[settingId];
+        } else if(varpIndex != -1) {
+            childId = Class58.varbitmasks[varpIndex];
         }
         if(childId < 0 || childId >= childrenIds.length || childrenIds[childId] == -1) {
             return null;

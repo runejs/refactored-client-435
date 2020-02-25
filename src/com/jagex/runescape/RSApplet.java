@@ -96,7 +96,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     if(SpotAnimDefinition.anInt2302 == 1 && bool)
                         bool_9_ = true;
                     boolean bool_10_ = false;
-                    if((widget.anInt2738 ^ 0xffffffff) != 0 && bool_9_ && Class10.aWidget_353 == null) {
+                    if(widget.anInt2738 != -1 && bool_9_ && Class10.aWidget_353 == null) {
                         Class40_Sub2.anInt1996 = Class13.mouseX;
                         Class10.aWidget_353 = widget;
                         Class40_Sub5_Sub11.anInt2621 = Landscape.mouseY;
@@ -113,14 +113,14 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                         if(widget.anObjectArray2681 != null)
                             Widget.method891((widget.anObjectArray2681), 0, RSString.anInt1668 + -i_2_, widget, Class57.anInt1338 - i_1_, false);
                     }
-                    if(widget.aBoolean2730 && bool_9_ && (arg3 & 0x4 ^ 0xffffffff) != -1 && widget.anObjectArray2747 != null)
+                    if(widget.aBoolean2730 && bool_9_ && (arg3 & 0x4) != 0 && widget.anObjectArray2747 != null)
                         Widget.method891((widget.anObjectArray2747), 0, -i_2_ + Landscape.mouseY, widget, -i_1_ + Class13.mouseX, false);
-                    if(widget.aBoolean2730 && !bool_9_ && (0x2 & arg3 ^ 0xffffffff) != -1) {
+                    if(widget.aBoolean2730 && !bool_9_ && (0x2 & arg3) != 0) {
                         widget.aBoolean2730 = false;
                         if(widget.anObjectArray2707 != null)
                             Widget.method891((widget.anObjectArray2707), 0, Landscape.mouseY - i_2_, widget, Class13.mouseX - i_1_, false);
                     }
-                    if(bool_9_ && (arg3 & 0x8 ^ 0xffffffff) != -1 && widget.anObjectArray2644 != null)
+                    if(bool_9_ && (arg3 & 0x8) != 0 && widget.anObjectArray2644 != null)
                         Widget.method891((widget.anObjectArray2644), 0, -i_2_ + Landscape.mouseY, widget, -i_1_ + Class13.mouseX, false);
                     if(!widget.aBoolean2682 && bool && (0x10 & arg3) != 0) {
                         widget.aBoolean2682 = true;
@@ -136,7 +136,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     }
                     if(widget.anObjectArray2712 != null && (arg3 & 0x80) != 0)
                         Widget.method891((widget.anObjectArray2712), 0, 0, widget, 0, false);
-                    if(AnimationSequence.anInt2480 == Node.pulseCycle && widget.anObjectArray2650 != null && (arg3 & 0x100 ^ 0xffffffff) != -1)
+                    if(AnimationSequence.anInt2480 == Node.pulseCycle && widget.anObjectArray2650 != null && (arg3 & 0x100) != 0)
                         Widget.method891((widget.anObjectArray2650), 0, 0, widget, 0, false);
                 }
             }
@@ -153,7 +153,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
     }
 
     public static void method28(long arg0, int arg1) {
-        if((arg0 ^ 0xffffffffffffffffL) != -1L) {
+        if(arg0 != 0) {
             int i = 0;
             int i_12_ = -18 % ((arg1 - 69) / 44);
             for(/**/; ((Class40_Sub5_Sub17_Sub3.anInt3060 > i)); i++) {
@@ -176,18 +176,18 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
     }
 
     public static int method32(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
-        if(arg3 != true)
+        if(!arg3)
             return -109;
-        int i = (65536 + -(R3D.cosinetable[1024 * arg4 / arg1]) >> 1712636353);
-        return (((65536 + -i) * arg0 >> 523531120) + (arg2 * i >> 1426525808));
+        int i = (65536 + -(R3D.cosinetable[1024 * arg4 / arg1]) >> 1);
+        return (((65536 + -i) * arg0 >> 16) + (arg2 * i >> 16));
     }
 
     public void run() {
         try {
             if(Signlink.aString735 != null) {
                 String string = Signlink.aString735.toLowerCase();
-                if(string.indexOf("sun") == -1 && (string.indexOf("apple") ^ 0xffffffff) == 0) {
-                    if((string.indexOf("ibm") ^ 0xffffffff) != 0 && (Signlink.aString739 == null || Signlink.aString739.equals("1.4.2"))) {
+                if(string.indexOf("sun") == -1 && string.indexOf("apple") == -1) {
+                    if(string.indexOf("ibm") != -1 && (Signlink.aString739 == null || Signlink.aString739.equals("1.4.2"))) {
                         openErrorPage((byte) 27, "wrongjava");
                         return;
                     }
@@ -278,7 +278,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             return true;
         if(string.endsWith("127.0.0.1"))
             return true;
-        for(/**/; ((string.length() ^ 0xffffffff) < -1 && string.charAt(string.length() - 1) >= '0' && ((string.charAt(string.length() + -1) ^ 0xffffffff) >= -58)); string = string.substring(0, string.length() - 1)) {
+        for(/**/; (string.length() > 0 && string.charAt(string.length() - 1) >= '0' && (string.charAt(string.length() + -1) <= 57)); string = string.substring(0, string.length() - 1)) {
             /* empty */
         }
         if(string.endsWith("192.168.1."))
@@ -381,9 +381,9 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             long l = System.currentTimeMillis();
             long l_11_ = aLongArray4[Class30.anInt681];
             aLongArray4[Class30.anInt681] = l;
-            if((l_11_ ^ 0xffffffffffffffffL) != -1L && ((l_11_ ^ 0xffffffffffffffffL) > (l ^ 0xffffffffffffffffL))) {
+            if(l_11_ != 0 && (l > l_11_)) {
                 int i = (int) (-l_11_ + l);
-                Class52.anInt1219 = ((i >> -17114751) + 32000) / i;
+                Class52.fps = ((i >> 1) + 32000) / i;
             }
             Class30.anInt681 = Class30.anInt681 + 1 & 0x1f;
             if(Node.anInt938++ > 50) {
@@ -422,7 +422,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             HashTable.aBoolean571 = Class52.aBoolean1215;
         }
         method23(-22636);
-        if(arg0 == true)
+        if(arg0)
             return;
         windowIconified(null);
     }

@@ -7,7 +7,7 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 public class UnderlayDefinition extends SubNode {
-    public static int anInt2562 = -1;
+    public static int openSecondaryWidgetId = -1;
     public static RSString aClass1_2564 = RSString.CreateString("Welt");
     public static RSString aClass1_2566 = RSString.CreateString("flash2:");
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2567;
@@ -31,7 +31,7 @@ public class UnderlayDefinition extends SubNode {
         int i = 114 % ((arg0 + 28) / 59);
         anInt2572++;
         int i_7_ = 256 + -arg3;
-        return (((arg3 * (0xff00 & arg2) + i_7_ * (0xff00 & arg1) & 0xff0000) + (~0xff00ff & (0xff00ff & arg1) * i_7_ + (arg3 * (0xff00ff & arg2)))) >> -794214296);
+        return (((arg3 * (0xff00 & arg2) + i_7_ * (0xff00 & arg1) & 0xff0000) + (~0xff00ff & (0xff00ff & arg1) * i_7_ + (arg3 * (0xff00ff & arg2)))) >> 8);
 
     }
 
@@ -48,22 +48,22 @@ public class UnderlayDefinition extends SubNode {
 
         anInt2569++;
         if(arg0 != 0L) {
-            if((Class40_Sub5_Sub17_Sub3.anInt3060 >= 100 && (Class44.anInt1049 ^ 0xffffffff) != -2) || ((Class40_Sub5_Sub17_Sub3.anInt3060 ^ 0xffffffff) <= -201)) {
-                Class44.method895(94, 0, Class59.aClass1_1399, Class66.blank_string);
+            if((Class40_Sub5_Sub17_Sub3.anInt3060 >= 100 && Class44.anInt1049 != 1) || (Class40_Sub5_Sub17_Sub3.anInt3060 >= 200)) {
+                Class44.method895(94, 0, Class59.aClass1_1399, HuffmanEncoding.blank_string);
             } else {
                 if(arg1 >= -2) {
                     aClass6_Sub1_2571 = null;
                 }
                 RSString class1 = Class60.method991(-23, arg0).method85(-4305);
                 for(int i = 0; Class40_Sub5_Sub17_Sub3.anInt3060 > i; i++) {
-                    if((arg0 ^ 0xffffffffffffffffL) == (Class59.aLongArray1397[i] ^ 0xffffffffffffffffL)) {
-                        Class44.method895(62, 0, (Class40_Sub5_Sub17_Sub6.method832(-124, (new RSString[]{class1, GameFrame.aClass1_1465}))), Class66.blank_string);
+                    if(Class59.aLongArray1397[i] == arg0) {
+                        Class44.method895(62, 0, (Class40_Sub5_Sub17_Sub6.method832(-124, (new RSString[]{class1, GameFrame.aClass1_1465}))), HuffmanEncoding.blank_string);
                         return;
                     }
                 }
                 for(int i = 0; Class42.anInt1008 > i; i++) {
-                    if((arg0 ^ 0xffffffffffffffffL) == (Class53.aLongArray1267[i] ^ 0xffffffffffffffffL)) {
-                        Class44.method895(126, 0, (Class40_Sub5_Sub17_Sub6.method832(75, (new RSString[]{Class44.aClass1_1038, class1, Class39.aClass1_917}))), Class66.blank_string);
+                    if(Class53.aLongArray1267[i] == arg0) {
+                        Class44.method895(126, 0, (Class40_Sub5_Sub17_Sub6.method832(75, (new RSString[]{Class44.aClass1_1038, class1, Class39.aClass1_917}))), HuffmanEncoding.blank_string);
                         return;
                     }
                 }
@@ -81,10 +81,8 @@ public class UnderlayDefinition extends SubNode {
 
     }
 
-    public static int method619(int arg0, int arg1) {
-
+    public static int bitWiseOR(int arg0, int arg1) {
         return arg0 | arg1;
-
     }
 
     public static void method621(int arg0) {
@@ -129,12 +127,10 @@ public class UnderlayDefinition extends SubNode {
             }
             if(r == cmax) {
                 d_4_ = (-g + b) / (-cmin + cmax);
-            } else if(cmax != b) {
-                if(cmax == g) {
-                    d_4_ = (r - b) / (-cmin + cmax) + 4.0;
-                }
-            } else {
+            } else if(cmax == b) {
                 d_4_ = 2.0 + (g - r) / (cmax - cmin);
+            } else if(cmax == g) {
+                d_4_ = (r - b) / (-cmin + cmax) + 4.0;
             }
         }
         d_4_ /= 6.0;
@@ -155,7 +151,7 @@ public class UnderlayDefinition extends SubNode {
             hueMultiplier = 1;
         }
         anInt2565 = (int) (d_4_ * (double) hueMultiplier);
-        if((hue ^ 0xffffffff) <= -1) {
+        if(hue >= 0) {
             if(hue > 255) {
                 hue = 255;
             }

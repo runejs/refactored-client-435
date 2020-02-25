@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.media.renderable.Model;
@@ -52,7 +53,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
         anInt3249 = arg0;
         anInt3239 = arg1;
         int i = SpotAnimDefinition.forId(anInt3249, 13).animationId;
-        if((i ^ 0xffffffff) != 0) {
+        if(i != -1) {
             aBoolean3237 = false;
             aAnimationSequence_3242 = Class68_Sub1.method1050(i, 2);
         } else
@@ -68,7 +69,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
         if(arg2 != 73)
             anIntArrayArray3238 = null;
         arg1 = (0x7f & arg0) * arg1 / 128;
-        if((arg1 ^ 0xffffffff) > -3)
+        if(arg1 < 2)
             arg1 = 2;
         else if(arg1 > 126)
             arg1 = 126;
@@ -80,7 +81,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
 
         int i = 58 % ((7 - arg0) / 44);
         anInt3251++;
-        if((arg1.length ^ 0xffffffff) > -3)
+        if(arg1.length < 2)
             throw new IllegalArgumentException();
         return IdentityKit.method627(120, arg1.length, 0, arg1);
 
@@ -89,8 +90,8 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     public static void method833(int arg0, boolean arg1) {
 
         anInt3241++;
-        if(((Class40_Sub5_Sub4.anInt2366 ^ 0xffffffff) == ((Player.localPlayer.anInt3098) >> 1533110887 ^ 0xffffffff)) && ((Class55.anInt1304 ^ 0xffffffff) == ((Player.localPlayer.anInt3089) >> -425626553 ^ 0xffffffff)))
-            Class40_Sub5_Sub4.anInt2366 = 0;
+        if(((Player.localPlayer.anInt3098) >> 7 == VarbitDefinition.anInt2366) && ((Player.localPlayer.anInt3089) >> 7 == Class55.anInt1304))
+            VarbitDefinition.anInt2366 = 0;
         int i = Class60.anInt1407;
         if(arg1)
             i = 1;
@@ -102,22 +103,22 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                 i_1_ = 33538048;
                 class40_sub5_sub17_sub4_sub1 = (Player.localPlayer);
             } else {
-                i_1_ = Class57.anIntArray1334[i_0_] << -377206898;
+                i_1_ = Class57.anIntArray1334[i_0_] << 14;
                 class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_0_]]);
             }
             if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.isVisible(1)) {
                 class40_sub5_sub17_sub4_sub1.aBoolean3287 = false;
-                int i_2_ = class40_sub5_sub17_sub4_sub1.anInt3098 >> 1455652391;
-                int i_3_ = class40_sub5_sub17_sub4_sub1.anInt3089 >> -130081305;
-                if(((VertexNormal.lowMemory && (Class60.anInt1407 ^ 0xffffffff) < -51) || (Class60.anInt1407 ^ 0xffffffff) < -201) && !arg1 && ((class40_sub5_sub17_sub4_sub1.anInt3126 ^ 0xffffffff) == (class40_sub5_sub17_sub4_sub1.anInt3077 ^ 0xffffffff)))
+                int i_2_ = class40_sub5_sub17_sub4_sub1.anInt3098 >> 7;
+                int i_3_ = class40_sub5_sub17_sub4_sub1.anInt3089 >> 7;
+                if(((VertexNormal.lowMemory && Class60.anInt1407 > 50) || Class60.anInt1407 > 200) && !arg1 && (class40_sub5_sub17_sub4_sub1.anInt3077 == class40_sub5_sub17_sub4_sub1.anInt3126))
                     class40_sub5_sub17_sub4_sub1.aBoolean3287 = true;
-                if(i_2_ >= 0 && (i_2_ ^ 0xffffffff) > -105 && i_3_ >= 0 && i_3_ < 104) {
+                if(i_2_ >= 0 && i_2_ < 104 && i_3_ >= 0 && i_3_ < 104) {
                     if((class40_sub5_sub17_sub4_sub1.aClass40_Sub5_Sub17_Sub5_3265) != null && ((class40_sub5_sub17_sub4_sub1.anInt3283 <= Node.pulseCycle)) && (Node.pulseCycle < class40_sub5_sub17_sub4_sub1.anInt3274)) {
                         class40_sub5_sub17_sub4_sub1.aBoolean3287 = false;
                         class40_sub5_sub17_sub4_sub1.anInt3276 = (Class37.method430((byte) -117, Player.anInt3267, class40_sub5_sub17_sub4_sub1.anInt3098, class40_sub5_sub17_sub4_sub1.anInt3089));
                         Npc.aScene_3301.method112(Player.anInt3267, class40_sub5_sub17_sub4_sub1.anInt3098, class40_sub5_sub17_sub4_sub1.anInt3089, class40_sub5_sub17_sub4_sub1.anInt3276, 60, class40_sub5_sub17_sub4_sub1, class40_sub5_sub17_sub4_sub1.anInt3118, i_1_, class40_sub5_sub17_sub4_sub1.anInt3258, class40_sub5_sub17_sub4_sub1.anInt3281, class40_sub5_sub17_sub4_sub1.anInt3262, class40_sub5_sub17_sub4_sub1.anInt3289);
                     } else {
-                        if((0x7f & class40_sub5_sub17_sub4_sub1.anInt3098 ^ 0xffffffff) == -65 && ((class40_sub5_sub17_sub4_sub1.anInt3089 & 0x7f) ^ 0xffffffff) == -65) {
+                        if((0x7f & class40_sub5_sub17_sub4_sub1.anInt3098) == 64 && (class40_sub5_sub17_sub4_sub1.anInt3089 & 0x7f) == 64) {
                             if(Class40_Sub5_Sub11.anInt2628 == Class61.anIntArrayArray1435[i_2_][i_3_])
                                 continue;
                             Class61.anIntArrayArray1435[i_2_][i_3_] = Class40_Sub5_Sub11.anInt2628;

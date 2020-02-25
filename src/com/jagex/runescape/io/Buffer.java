@@ -233,14 +233,14 @@ public class Buffer extends Node {
 
     public int getSmart() {
         int i = buffer[currentPosition] & 0xff;
-        if((i ^ 0xffffffff) <= -129) {
+        if(i >= 128) {
             return getUnsignedShortBE() + -32768;
         }
         return getUnsignedByte();
     }
 
     public void putSmart(int value) {
-        if((value ^ 0xffffffff) <= -1 && value < 128) {
+        if(value >= 0 && value < 128) {
             putByte(value);
         } else if(value >= 0 && value < 32768) {
             putShortBE(32768 + value);
@@ -261,7 +261,7 @@ public class Buffer extends Node {
             int i_7_ = 32;
             int i_8_ = -957401312;
             int i_9_ = -1640531527;
-            while((i_7_-- ^ 0xffffffff) < -1) {
+            while(i_7_-- > 0) {
                 i_6_ -= ((i_5_ >>> 5 ^ i_5_ << 4) + i_5_ ^ i_8_ + arg0[~0x71dffffc & i_8_ >>> 11]);
                 i_8_ -= i_9_;
                 i_5_ -= ((i_6_ >>> 5 ^ i_6_ << 4) + i_6_ ^ arg0[0x3 & i_8_] + i_8_);

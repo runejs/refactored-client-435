@@ -34,7 +34,7 @@ public class RSRuntimeException extends RuntimeException {
     public static void method1054(byte arg0) {
         if(CollisionMap.aClass8_166 != null) {
             long l = System.currentTimeMillis();
-            if((l ^ 0xffffffffffffffffL) < (Class8.aLong288 ^ 0xffffffffffffffffL)) {
+            if(Class8.aLong288 < l) {
                 CollisionMap.aClass8_166.method212(l);
                 int i = (int) (-Class8.aLong288 + l);
                 Class8.aLong288 = l;
@@ -43,7 +43,7 @@ public class RSRuntimeException extends RuntimeException {
                         method1054((byte) -96);
                     SubNode.anInt2081 += CollisionMap.anInt141 * i;
                     int i_0_ = ((-(2000 * CollisionMap.anInt141) + SubNode.anInt2081) / 1000);
-                    if((i_0_ ^ 0xffffffff) < -1) {
+                    if(i_0_ > 0) {
                         if(FloorDecoration.aClass40_Sub9_608 != null)
                             FloorDecoration.aClass40_Sub9_608.method843(i_0_);
                         SubNode.anInt2081 -= i_0_ * 1000;

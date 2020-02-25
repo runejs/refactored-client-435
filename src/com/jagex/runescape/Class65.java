@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 
 import java.util.zip.CRC32;
@@ -38,7 +39,7 @@ public class Class65 {
 
         int i = -125 % ((arg0 - 2) / 56);
         anInt1539++;
-        Class40_Sub5_Sub4.aClass68_2350.method1046((byte) 90);
+        VarbitDefinition.aClass68_2350.method1046((byte) 90);
         Class24.anIntArray577 = R3D.method708(Class24.anIntArray577);
 
     }
@@ -66,7 +67,7 @@ public class Class65 {
         OverlayDefinition.tile_underlay_path = new byte[4][104][104];
         anInt1532++;
         CacheIndex.anIntArrayArrayArray262 = new int[4][105][105];
-        if(arg0 != true)
+        if(!arg0)
             aClass1_1530 = null;
         Class64.setZ = 99;
         Class19.aByteArrayArrayArray492 = new byte[4][105][105];

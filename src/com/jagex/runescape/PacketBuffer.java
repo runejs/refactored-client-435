@@ -1,10 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.audio.Effect;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.def.UnderlayDefinition;
-import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.io.Buffer;
 
 import java.math.BigInteger;
@@ -76,19 +73,19 @@ public class PacketBuffer extends Buffer {
             Class52.redrawChatbox = true;
             Class43.openChatboxWidgetId = -1;
         }
-        if((ActorDefinition.anInt2433 ^ 0xffffffff) != 0) {
-            Class55.method958(ActorDefinition.anInt2433, -14222);
-            ActorDefinition.anInt2433 = -1;
+        if(ActorDefinition.openFullScreenWidgetId != -1) {
+            Class55.method958(ActorDefinition.openFullScreenWidgetId, -14222);
+            ActorDefinition.openFullScreenWidgetId = -1;
             OverlayDefinition.method559(30, -47);
         }
-        if((UnderlayDefinition.anInt2562 ^ 0xffffffff) != 0) {
-            Class55.method958(UnderlayDefinition.anInt2562, -14222);
-            UnderlayDefinition.anInt2562 = -1;
+        if(UnderlayDefinition.openSecondaryWidgetId != -1) {
+            Class55.method958(UnderlayDefinition.openSecondaryWidgetId, -14222);
+            UnderlayDefinition.openSecondaryWidgetId = -1;
         }
         if(arg0 >= 92) {
-            if(Class66.openScreenWidgetId != -1) {
-                Class55.method958(Class66.openScreenWidgetId, -14222);
-                Class66.openScreenWidgetId = -1;
+            if(HuffmanEncoding.openScreenWidgetId != -1) {
+                Class55.method958(HuffmanEncoding.openScreenWidgetId, -14222);
+                HuffmanEncoding.openScreenWidgetId = -1;
                 CacheIndex_Sub1.anInt1819 = -1;
             }
         }
@@ -118,7 +115,7 @@ public class PacketBuffer extends Buffer {
         if(arg3 < 0 || arg0)
             i_3_++;
         byte[] is = new byte[i_3_];
-        if((arg3 ^ 0xffffffff) > -1)
+        if(arg3 < 0)
             is[0] = (byte) 45;
         else if(arg0)
             is[0] = (byte) 43;
@@ -127,7 +124,7 @@ public class PacketBuffer extends Buffer {
             arg3 /= arg2;
             if(i_5_ < 0)
                 i_5_ = -i_5_;
-            if((i_5_ ^ 0xffffffff) < -10)
+            if(i_5_ > 9)
                 i_5_ += 39;
             is[-1 + (i_3_ - i_4_)] = (byte) (48 + i_5_);
         }
@@ -163,13 +160,13 @@ public class PacketBuffer extends Buffer {
         int i_1_ = 8 - (0x7 & bitoffset);
         bitoffset += arg0;
         for(/**/; i_1_ < arg0; i_1_ = 8) {
-            i_0_ += (Class40_Sub5_Sub4.anIntArray2361[i_1_] & buffer[i++]) << -i_1_ + arg0;
+            i_0_ += (VarbitDefinition.anIntArray2361[i_1_] & buffer[i++]) << -i_1_ + arg0;
             arg0 -= i_1_;
         }
-        if((i_1_ ^ 0xffffffff) != (arg0 ^ 0xffffffff))
-            i_0_ += (Class40_Sub5_Sub4.anIntArray2361[arg0] & buffer[i] >> -arg0 + i_1_);
+        if(arg0 != i_1_)
+            i_0_ += (VarbitDefinition.anIntArray2361[arg0] & buffer[i] >> -arg0 + i_1_);
         else
-            i_0_ += (buffer[i] & Class40_Sub5_Sub4.anIntArray2361[i_1_]);
+            i_0_ += (buffer[i] & VarbitDefinition.anIntArray2361[i_1_]);
         return i_0_;
     }
 

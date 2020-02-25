@@ -3,6 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -43,20 +44,20 @@ public class Class37 {
     public static int method430(byte arg0, int arg1, int arg2, int arg3) {
 
         anInt865++;
-        int i = arg3 >> 430067431;
-        int i_0_ = arg2 >> -141886201;
-        if((i_0_ ^ 0xffffffff) > -1 || (i ^ 0xffffffff) > -1 || (i_0_ ^ 0xffffffff) < -104 || i > 103)
+        int i = arg3 >> 7;
+        int i_0_ = arg2 >> 7;
+        if(i_0_ < 0 || i < 0 || i_0_ > 103 || i > 103)
             return 0;
         int i_1_ = 0x7f & arg2;
         int i_2_ = arg1;
         if(i_2_ < 3 && (OverlayDefinition.tile_flags[1][i_0_][i] & 0x2) == 2)
             i_2_++;
-        int i_3_ = (((-i_1_ + 128) * (Class40_Sub6.tile_height[i_2_][i_0_][i]) + (i_1_ * (Class40_Sub6.tile_height[i_2_][i_0_ + 1][i]))) >> -1503923001);
+        int i_3_ = (((-i_1_ + 128) * (Class40_Sub6.tile_height[i_2_][i_0_][i]) + (i_1_ * (Class40_Sub6.tile_height[i_2_][i_0_ + 1][i]))) >> 7);
         int i_4_ = arg3 & 0x7f;
         if(arg0 > -116)
             method432((byte) -86);
-        int i_5_ = ((i_1_ * (Class40_Sub6.tile_height[i_2_][1 + i_0_][1 + i]) + (Class40_Sub6.tile_height[i_2_][i_0_][1 + i] * (128 + -i_1_))) >> -820366297);
-        return (128 + -i_4_) * i_3_ + (i_5_ * i_4_) >> 2117999111;
+        int i_5_ = ((i_1_ * (Class40_Sub6.tile_height[i_2_][1 + i_0_][1 + i]) + (Class40_Sub6.tile_height[i_2_][i_0_][1 + i] * (128 + -i_1_))) >> 7);
+        return (128 + -i_4_) * i_3_ + (i_5_ * i_4_) >> 7;
 
     }
 
@@ -97,7 +98,7 @@ public class Class37 {
         Cache.anInt324 = -1;
         Class35.anInt1728 = 0;
         Class49.anInt1151 = -1;
-        Class40_Sub5_Sub4.anInt2366 = 0;
+        VarbitDefinition.anInt2366 = 0;
         anInt868++;
         Class27.anInt658 = 0;
         Class40_Sub5_Sub15.anInt2782 = 0;
@@ -123,7 +124,7 @@ public class Class37 {
             byte[] is_6_ = Class34.mapBack.imgPixels;
             int i = is_6_.length;
             for(int i_7_ = 0; i > i_7_; i_7_++) {
-                if((is_6_[i_7_] ^ 0xffffffff) == -1)
+                if(is_6_[i_7_] == 0)
                     is[i_7_] = 0;
             }
             AnimationSequence.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, Class58.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
@@ -138,7 +139,7 @@ public class Class37 {
                 i_8_ = (2 + 4 * Class45.anIntArray1083[i_10_] - ((Player.localPlayer.anInt3089) / 32));
                 SceneTile.drawOnMinimap(i_8_, i, (GameFrame.aClass40_Sub5_Sub14_Sub4Array1466[i_10_]));
             }
-            for(int i_11_ = 0; (i_11_ ^ 0xffffffff) > -105; i_11_++) {
+            for(int i_11_ = 0; i_11_ < 104; i_11_++) {
                 for(int i_12_ = 0; i_12_ < 104; i_12_++) {
                     Class45 class45 = (Class10.aClass45ArrayArrayArray357[Player.anInt3267][i_11_][i_12_]);
                     if(class45 != null) {
@@ -169,13 +170,13 @@ public class Class37 {
                     boolean bool = false;
                     long l = class40_sub5_sub17_sub4_sub1.playerName.method58((byte) 122);
                     for(int i_15_ = 0; Class40_Sub5_Sub17_Sub3.anInt3060 > i_15_; i_15_++) {
-                        if(l == Class59.aLongArray1397[i_15_] && (Class40_Sub7.anIntArray2131[i_15_] ^ 0xffffffff) != -1) {
+                        if(l == Class59.aLongArray1397[i_15_] && Class40_Sub7.anIntArray2131[i_15_] != 0) {
                             bool = true;
                             break;
                         }
                     }
                     boolean bool_16_ = false;
-                    if(((Player.localPlayer.anInt3266) != 0) && (class40_sub5_sub17_sub4_sub1.anInt3266 ^ 0xffffffff) != -1 && (((Player.localPlayer.anInt3266) ^ 0xffffffff) == (class40_sub5_sub17_sub4_sub1.anInt3266 ^ 0xffffffff)))
+                    if(((Player.localPlayer.anInt3266) != 0) && class40_sub5_sub17_sub4_sub1.anInt3266 != 0 && (class40_sub5_sub17_sub4_sub1.anInt3266 == (Player.localPlayer.anInt3266)))
                         bool_16_ = true;
                     if(bool)
                         SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[3]);
@@ -185,21 +186,21 @@ public class Class37 {
                         SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[2]);
                 }
             }
-            if((Player.anInt3288 ^ 0xffffffff) != -1 && (Node.pulseCycle % 20 ^ 0xffffffff) > -11) {
-                if(Player.anInt3288 == 1 && (Class66.anInt1545 ^ 0xffffffff) <= -1 && ((CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813).length > Class66.anInt1545)) {
-                    Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class66.anInt1545]);
+            if(Player.anInt3288 != 0 && Node.pulseCycle % 20 < 10) {
+                if(Player.anInt3288 == 1 && HuffmanEncoding.anInt1545 >= 0 && ((CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813).length > HuffmanEncoding.anInt1545)) {
+                    Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[HuffmanEncoding.anInt1545]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         i = (-((Player.localPlayer.anInt3098) / 32) + (class40_sub5_sub17_sub4_sub2.anInt3098 / 32));
                         i_8_ = (class40_sub5_sub17_sub4_sub2.anInt3089 / 32 - (Player.localPlayer.anInt3089) / 32);
                         OverlayDefinition.drawMinimapMark((Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1]), i, i_8_);
                     }
                 }
-                if((Player.anInt3288 ^ 0xffffffff) == -3) {
+                if(Player.anInt3288 == 2) {
                     i_8_ = (-((Player.localPlayer.anInt3089) / 32) + 2 + 4 * (-Class26.anInt635 + Class4.anInt175));
                     i = (4 * (Class68.anInt1637 - SpotAnimDefinition.anInt2307) - (-2 + ((Player.localPlayer.anInt3098) / 32)));
                     OverlayDefinition.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], i, i_8_);
                 }
-                if(Player.anInt3288 == 10 && (Class68.anInt1623 ^ 0xffffffff) <= -1 && ((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156).length > Class68.anInt1623)) {
+                if(Player.anInt3288 == 10 && Class68.anInt1623 >= 0 && ((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156).length > Class68.anInt1623)) {
                     Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class68.anInt1623]);
                     if(class40_sub5_sub17_sub4_sub1 != null) {
                         i_8_ = (-((Player.localPlayer.anInt3089) / 32) + (class40_sub5_sub17_sub4_sub1.anInt3089 / 32));
@@ -208,14 +209,14 @@ public class Class37 {
                     }
                 }
             }
-            if((Class40_Sub5_Sub4.anInt2366 ^ 0xffffffff) != -1) {
-                i = (2 + Class40_Sub5_Sub4.anInt2366 * 4 + -((Player.localPlayer.anInt3098) / 32));
+            if(VarbitDefinition.anInt2366 != 0) {
+                i = (2 + VarbitDefinition.anInt2366 * 4 + -((Player.localPlayer.anInt3098) / 32));
                 i_8_ = 2 + (4 * Class55.anInt1304 + -((Player.localPlayer.anInt3089) / 32));
                 SceneTile.drawOnMinimap(i_8_, i, (Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[0]));
             }
-            Rasterizer.method656(97, 78, 3, 3, 16777215);
+            Rasterizer.drawFilledRectangle(97, 78, 3, 3, 16777215);
             AnimationSequence.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, Class58.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
-            if(arg0 == true)
+            if(arg0)
                 ActorDefinition.method574(4);
         }
 
@@ -244,7 +245,7 @@ public class Class37 {
         anInt866++;
         Class40_Sub2 class40_sub2 = new Class40_Sub2();
         class40_sub2.anInt2000 = 128 * arg5.anInt2502;
-        if(arg1 != true)
+        if(!arg1)
             method438(119, -54, (byte) 96);
         class40_sub2.anInt2002 = arg5.anInt2542;
         class40_sub2.anIntArray2005 = arg5.anIntArray2523;
@@ -273,11 +274,11 @@ public class Class37 {
     public static boolean method438(int arg0, int arg1, byte arg2) {
 
         anInt859++;
-        if((arg0 ^ 0xffffffff) == -1 && arg1 == HashTable.anInt573)
+        if(arg0 == 0 && arg1 == HashTable.anInt573)
             return true;
         if(arg0 == 1 && FloorDecoration.anInt614 == arg1)
             return true;
-        if(((arg0 ^ 0xffffffff) == -3 || (arg0 ^ 0xffffffff) == -4) && Class67.anInt1586 == arg1)
+        if((arg0 == 2 || arg0 == 3) && Class67.anInt1586 == arg1)
             return true;
         if(arg2 != 52)
             aClass1_860 = null;

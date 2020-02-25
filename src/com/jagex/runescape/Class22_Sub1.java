@@ -104,8 +104,8 @@ public class Class22_Sub1 extends Class22 {
     public static void method311(byte arg0, Component arg1) {
 
         anInt1854++;
-        arg1.removeKeyListener(Class59.aClass54_1392);
-        arg1.removeFocusListener(Class59.aClass54_1392);
+        arg1.removeKeyListener(Class59.aKeyFocusListener_1392);
+        arg1.removeFocusListener(Class59.aKeyFocusListener_1392);
         int i = -46 % ((75 - arg0) / 35);
 
     }
@@ -113,7 +113,7 @@ public class Class22_Sub1 extends Class22 {
     public static void method312(int arg0, int arg1, int arg2, int arg3) {
 
         anInt1859++;
-        if((arg2 ^ 0xffffffff) > -129 || (arg1 ^ 0xffffffff) > -129 || arg2 > 13056 || arg1 > 13056) {
+        if(arg2 < 128 || arg1 < 128 || arg2 > 13056 || arg1 > 13056) {
             Class44.anInt1048 = -1;
             ISAAC.anInt522 = -1;
         } else {
@@ -125,20 +125,20 @@ public class Class22_Sub1 extends Class22 {
             arg2 -= Class12.cameraX;
             int i_3_ = (Model.SINE[Class68_Sub1.anInt2210]);
             int i_4_ = (Model.COSINE[Class68_Sub1.anInt2210]);
-            int i_5_ = arg1 * i_3_ + arg2 * i_4_ >> -1348635568;
-            arg1 = i_4_ * arg1 - arg2 * i_3_ >> 1869723344;
+            int i_5_ = arg1 * i_3_ + arg2 * i_4_ >> 16;
+            arg1 = i_4_ * arg1 - arg2 * i_3_ >> 16;
             if(arg3 != 4976905)
                 aClass1_1864 = null;
             arg2 = i_5_;
-            i_5_ = i * i_1_ - arg1 * i_2_ >> -205760432;
-            arg1 = arg1 * i_1_ + i * i_2_ >> 782060560;
+            i_5_ = i * i_1_ - arg1 * i_2_ >> 16;
+            arg1 = arg1 * i_1_ + i * i_2_ >> 16;
             i = i_5_;
-            if((arg1 ^ 0xffffffff) > -51) {
+            if(arg1 < 50) {
                 Class44.anInt1048 = -1;
                 ISAAC.anInt522 = -1;
             } else {
-                ISAAC.anInt522 = 256 + (arg2 << -1849635095) / arg1;
-                Class44.anInt1048 = (i << 4976905) / arg1 + 167;
+                ISAAC.anInt522 = 256 + (arg2 << 9) / arg1;
+                Class44.anInt1048 = (i << 9) / arg1 + 167;
             }
         }
 
@@ -149,14 +149,14 @@ public class Class22_Sub1 extends Class22 {
         anInt1842++;
         for(int i = -1; Class60.anInt1407 > i; i++) {
             int i_6_;
-            if((i ^ 0xffffffff) == 0)
+            if(i == -1)
                 i_6_ = 2047;
             else
                 i_6_ = Class57.anIntArray1334[i];
             Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_6_]);
-            if(class40_sub5_sub17_sub4_sub1 != null && ((class40_sub5_sub17_sub4_sub1.anInt3078 ^ 0xffffffff) < -1)) {
+            if(class40_sub5_sub17_sub4_sub1 != null && (class40_sub5_sub17_sub4_sub1.anInt3078 > 0)) {
                 class40_sub5_sub17_sub4_sub1.anInt3078--;
-                if((class40_sub5_sub17_sub4_sub1.anInt3078 ^ 0xffffffff) == -1)
+                if(class40_sub5_sub17_sub4_sub1.anInt3078 == 0)
                     class40_sub5_sub17_sub4_sub1.forcedChatMessage = null;
             }
         }
@@ -166,7 +166,7 @@ public class Class22_Sub1 extends Class22 {
             Npc class40_sub5_sub17_sub4_sub2 = CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_8_];
             if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.anInt3078 > 0) {
                 class40_sub5_sub17_sub4_sub2.anInt3078--;
-                if((class40_sub5_sub17_sub4_sub2.anInt3078 ^ 0xffffffff) == -1)
+                if(class40_sub5_sub17_sub4_sub2.anInt3078 == 0)
                     class40_sub5_sub17_sub4_sub2.forcedChatMessage = null;
             }
         }
@@ -199,8 +199,8 @@ public class Class22_Sub1 extends Class22 {
 
     public void method302(int arg0) {
         anInt1853++;
-        if(aClass15_1836 != null && (aClass15_1836.anInt434 ^ 0xffffffff) != -1) {
-            if((aClass15_1836.anInt434 ^ 0xffffffff) == -2) {
+        if(aClass15_1836 != null && aClass15_1836.anInt434 != 0) {
+            if(aClass15_1836.anInt434 == 1) {
                 Class47 class47 = (Class47) aClass15_1836.anObject437;
                 try {
                     class47.method918(aByteArray1866, 0, aByteArray1866.length, false);
@@ -238,9 +238,7 @@ public class Class22_Sub1 extends Class22 {
             method306((byte) 27);
         anInt1840++;
         int i = Class29.method372(120, arg1) + -arg2;
-        if(aClass15_1836 != null)
-            anInt1860 = i;
-        else {
+        if(aClass15_1836 == null) {
             do {
                 if(aBoolean1835) {
                     try {
@@ -251,7 +249,8 @@ public class Class22_Sub1 extends Class22 {
                     break;
                 }
             } while(false);
-        }
+        } else
+            anInt1860 = i;
     }
 
     public void method300(byte[] arg0, boolean arg1, int arg2, int arg3) {
@@ -259,7 +258,7 @@ public class Class22_Sub1 extends Class22 {
         aClass15_1836 = aClass31_1872.method396(86);
         anInt1843++;
         if(arg2 == -15910 && aClass15_1836 != null) {
-            if((arg3 ^ 0xffffffff) == -1)
+            if(arg3 == 0)
                 arg3 = 1;
             anInt1860 = Class29.method372(arg2 ^ ~0x3e59, arg3);
             aByteArray1866 = arg0;

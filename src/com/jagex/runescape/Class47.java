@@ -13,7 +13,7 @@ public class Class47 {
 
     public Class47(File arg0, String arg1, long arg2) throws IOException {
 
-        if((arg2 ^ 0xffffffffffffffffL) == 0L)
+        if(arg2 == -1)
             arg2 = 9223372036854775807L;
         if(arg2 <= arg0.length())
             arg0.delete();
@@ -26,7 +26,7 @@ public class Class47 {
 
     public File method915(boolean arg0) {
 
-        if(arg0 != false)
+        if(arg0)
             return null;
         return aFile1121;
 
@@ -35,7 +35,7 @@ public class Class47 {
     public void method916(boolean arg0, long arg1) throws IOException {
 
         aRandomAccessFile1120.seek(arg1);
-        if(arg0 != true)
+        if(!arg0)
             aLong1118 = 112L;
         aLong1118 = arg1;
 
@@ -55,7 +55,7 @@ public class Class47 {
             aRandomAccessFile1120.write(1);
             throw new EOFException();
         }
-        if(arg3 == false) {
+        if(!arg3) {
             aRandomAccessFile1120.write(arg0, arg1, arg2);
             aLong1118 += (long) arg2;
         }
@@ -75,7 +75,7 @@ public class Class47 {
         int i = aRandomAccessFile1120.read(arg2, arg0, arg1);
         if(arg3 > -99)
             aRandomAccessFile1120 = null;
-        if((i ^ 0xffffffff) < -1)
+        if(i > 0)
             aLong1118 += (long) i;
         return i;
 

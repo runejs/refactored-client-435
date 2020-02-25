@@ -39,20 +39,13 @@ public class HashTable {
 
     public static void method327(boolean arg0, CacheIndex_Sub1 arg1, int arg2, int arg3, byte arg4, int arg5, byte arg6) {
         int i = 14 % ((arg6 - 5) / 62);
-        long l = (long) (arg3 + (arg2 << -1726391664));
+        long l = (long) (arg3 + (arg2 << 16));
         Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class51.aClass23_1194.method331(l, 6120));
         if(class40_sub5_sub13 == null) {
             class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class37.aClass23_869.method331(l, 6120));
             if(class40_sub5_sub13 == null) {
                 class40_sub5_sub13 = ((Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.method331(l, 6120));
-                if(class40_sub5_sub13 != null) {
-                    if(arg0) {
-                        class40_sub5_sub13.method539(0);
-                        Class51.aClass23_1194.put(class40_sub5_sub13, (byte) 116, l);
-                        anInt554--;
-                        Class68.anInt1618++;
-                    }
-                } else {
+                if(class40_sub5_sub13 == null) {
                     if(!arg0) {
                         class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class34.aClass23_841.method331(l, 6120));
                         if(class40_sub5_sub13 != null)
@@ -62,14 +55,19 @@ public class HashTable {
                     class40_sub5_sub13.anInt2763 = arg5;
                     class40_sub5_sub13.aByte2758 = arg4;
                     class40_sub5_sub13.aClass6_Sub1_2754 = arg1;
-                    if(!arg0) {
+                    if(arg0) {
+                        Class51.aClass23_1194.put(class40_sub5_sub13, (byte) 54, l);
+                        Class68.anInt1618++;
+                    } else {
                         Class19.aClass27_485.method352(126, class40_sub5_sub13);
                         GameObjectDefinition.aClass23_2545.put(class40_sub5_sub13, (byte) 109, l);
                         anInt554++;
-                    } else {
-                        Class51.aClass23_1194.put(class40_sub5_sub13, (byte) 54, l);
-                        Class68.anInt1618++;
                     }
+                } else if(arg0) {
+                    class40_sub5_sub13.method539(0);
+                    Class51.aClass23_1194.put(class40_sub5_sub13, (byte) 116, l);
+                    anInt554--;
+                    Class68.anInt1618++;
                 }
             }
         }
@@ -79,7 +77,7 @@ public class HashTable {
         aClass40_Sub5_Sub14_Sub2_549 = null;
         aClass1_553 = null;
         aClass1_558 = null;
-        if(arg0 != false)
+        if(arg0)
             aClass1_569 = null;
         aClass1_563 = null;
         aClass1_569 = null;
@@ -87,7 +85,7 @@ public class HashTable {
 
     public static void method332(int arg0) {
         synchronized(CollisionMap.anObject162) {
-            if((Buffer.anInt1987 ^ 0xffffffff) == -1)
+            if(Buffer.anInt1987 == 0)
                 ISAAC.aClass31_521.method394(5, 0, new Class44());
             Buffer.anInt1987 = arg0;
         }
@@ -105,12 +103,12 @@ public class HashTable {
             for(/**/; class40_sub5_sub17_sub1 != null; class40_sub5_sub17_sub1 = ((Class40_Sub5_Sub17_Sub1) Class43.aClass45_1022.method909(arg0 + -65))) {
                 if((Player.anInt3267 == class40_sub5_sub17_sub1.anInt2981) && (Node.pulseCycle <= class40_sub5_sub17_sub1.anInt2971)) {
                     if(class40_sub5_sub17_sub1.anInt2974 <= Node.pulseCycle) {
-                        if((class40_sub5_sub17_sub1.anInt2961 ^ 0xffffffff) < -1) {
+                        if(class40_sub5_sub17_sub1.anInt2961 > 0) {
                             Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[-1 + (class40_sub5_sub17_sub1.anInt2961)]);
-                            if(class40_sub5_sub17_sub4_sub2 != null && (class40_sub5_sub17_sub4_sub2.anInt3098 ^ 0xffffffff) <= -1 && (class40_sub5_sub17_sub4_sub2.anInt3098 < 13312) && (class40_sub5_sub17_sub4_sub2.anInt3089 >= 0) && (class40_sub5_sub17_sub4_sub2.anInt3089 < 13312))
+                            if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.anInt3098 >= 0 && (class40_sub5_sub17_sub4_sub2.anInt3098 < 13312) && (class40_sub5_sub17_sub4_sub2.anInt3089 >= 0) && (class40_sub5_sub17_sub4_sub2.anInt3089 < 13312))
                                 class40_sub5_sub17_sub1.method766(Node.pulseCycle, arg0 + -61, (class40_sub5_sub17_sub4_sub2.anInt3089), ((Class37.method430((byte) -127, class40_sub5_sub17_sub1.anInt2981, (class40_sub5_sub17_sub4_sub2.anInt3098), (class40_sub5_sub17_sub4_sub2.anInt3089))) - class40_sub5_sub17_sub1.anInt2960), (class40_sub5_sub17_sub4_sub2.anInt3098));
                         }
-                        if((class40_sub5_sub17_sub1.anInt2961 ^ 0xffffffff) > -1) {
+                        if(class40_sub5_sub17_sub1.anInt2961 < 0) {
                             int i = -1 + -class40_sub5_sub17_sub1.anInt2961;
                             Player class40_sub5_sub17_sub4_sub1;
                             if(i != Class30.anInt708)
@@ -131,7 +129,7 @@ public class HashTable {
 
     public Node method329(boolean arg0) {
         anInt572 = 0;
-        if(arg0 != false)
+        if(arg0)
             return null;
         return method336((byte) -38);
     }
@@ -168,7 +166,7 @@ public class HashTable {
         if(aClass40_566 == null)
             return null;
         for(Node class40 = nodes[(int) (aLong550 & (long) (-1 + size))]; class40 != aClass40_566; aClass40_566 = aClass40_566.aClass40_950) {
-            if((aClass40_566.key ^ 0xffffffffffffffffL) == (aLong550 ^ 0xffffffffffffffffL)) {
+            if(aLong550 == aClass40_566.key) {
                 Node class40_1_ = aClass40_566;
                 aClass40_566 = aClass40_566.aClass40_950;
                 return class40_1_;
@@ -181,7 +179,7 @@ public class HashTable {
     public Node method336(byte arg0) {
         if(arg0 > -26)
             aClass40_566 = null;
-        if((anInt572 ^ 0xffffffff) < -1 && aClass40_574 != nodes[anInt572 - 1]) {
+        if(anInt572 > 0 && aClass40_574 != nodes[anInt572 - 1]) {
             Node class40 = aClass40_574;
             aClass40_574 = class40.aClass40_950;
             return class40;

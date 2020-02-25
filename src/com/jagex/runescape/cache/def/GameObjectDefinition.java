@@ -100,20 +100,20 @@ public class GameObjectDefinition extends SubNode {
         byte[] is = null;
         synchronized(RSCanvas.aClass45_53) {
             for(Class40_Sub6 class40_sub6 = ((Class40_Sub6) RSCanvas.aClass45_53.method902((byte) -90)); class40_sub6 != null; class40_sub6 = ((Class40_Sub6) RSCanvas.aClass45_53.method909(-4))) {
-                if(((class40_sub6.key ^ 0xffffffffffffffffL) == ((long) arg1 ^ 0xffffffffffffffffL)) && arg2 == class40_sub6.aClass56_2117 && (class40_sub6.anInt2112 ^ 0xffffffff) == -1) {
+                if(((long) arg1 == class40_sub6.key) && arg2 == class40_sub6.aClass56_2117 && class40_sub6.anInt2112 == 0) {
                     is = class40_sub6.aByteArray2102;
                     break;
                 }
             }
         }
-        if(is != null) {
-            arg0.method198((byte) -115, true, is, arg1, arg2);
-        } else {
+        if(is == null) {
             if(arg3 > -91) {
                 chatboxScroll = -20;
             }
             byte[] is_6_ = arg2.method969(arg1, (byte) 103);
             arg0.method198((byte) -115, true, is_6_, arg1, arg2);
+        } else {
+            arg0.method198((byte) -115, true, is, arg1, arg2);
         }
 
     }
@@ -124,7 +124,7 @@ public class GameObjectDefinition extends SubNode {
         aClass1_2556 = null;
         aClass1_2560 = null;
         aClass1_2526 = null;
-        if(arg0 != true) {
+        if(!arg0) {
             aClass1_2560 = null;
         }
         aClass68_2524 = null;
@@ -135,7 +135,7 @@ public class GameObjectDefinition extends SubNode {
 
         Class40_Sub3 class40_sub3 = null;
         for(Class40_Sub3 class40_sub3_24_ = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3_24_ != null; class40_sub3_24_ = (Class40_Sub3) Class45.aClass45_1064.method909(-4)) {
-            if(class40_sub3_24_.anInt2018 == arg5 && arg2 == class40_sub3_24_.anInt2039 && (arg6 ^ 0xffffffff) == (class40_sub3_24_.anInt2038 ^ 0xffffffff) && (arg7 ^ 0xffffffff) == (class40_sub3_24_.anInt2027 ^ 0xffffffff)) {
+            if(class40_sub3_24_.anInt2018 == arg5 && arg2 == class40_sub3_24_.anInt2039 && class40_sub3_24_.anInt2038 == arg6 && class40_sub3_24_.anInt2027 == arg7) {
                 class40_sub3 = class40_sub3_24_;
                 break;
             }
@@ -152,7 +152,7 @@ public class GameObjectDefinition extends SubNode {
         class40_sub3.anInt2017 = arg0;
         class40_sub3.anInt2031 = arg4;
         class40_sub3.anInt2033 = arg9;
-        if(arg1 != true) {
+        if(!arg1) {
             method602(null, 77, null, (byte) -89);
         }
         class40_sub3.anInt2035 = arg3;
@@ -185,9 +185,9 @@ public class GameObjectDefinition extends SubNode {
     public Model getGameObjectModel(int arg0, int arg1, int arg2, int arg3, int arg4, byte arg5, int arg6) {
         long l;
         if(objectTypes == null) {
-            l = (long) ((anInt2538 << 1723242090) + arg2);
+            l = (long) ((anInt2538 << 10) + arg2);
         } else {
-            l = (long) (arg2 + ((anInt2538 << -855239862) + (arg4 << 399635491)));
+            l = (long) (arg2 + ((anInt2538 << 10) + (arg4 << 3)));
         }
         if(arg5 != 124) {
             actions = null;
@@ -221,15 +221,15 @@ public class GameObjectDefinition extends SubNode {
     public boolean method601(byte arg0) {
 
         if(configChangeDest == null) {
-            return (ambientSoundId ^ 0xffffffff) != 0 || anIntArray2523 != null;
+            return ambientSoundId != -1 || anIntArray2523 != null;
         }
         if(arg0 != 125) {
             varpID = -89;
         }
         for(int i = 0; i < configChangeDest.length; i++) {
-            if((configChangeDest[i] ^ 0xffffffff) != 0) {
+            if(configChangeDest[i] != -1) {
                 GameObjectDefinition gameObjectDefinition = getDefinition(configChangeDest[i]);
-                if((gameObjectDefinition.ambientSoundId ^ 0xffffffff) != 0 || gameObjectDefinition.anIntArray2523 != null) {
+                if(gameObjectDefinition.ambientSoundId != -1 || gameObjectDefinition.anIntArray2523 != null) {
                     return true;
                 }
             }
@@ -249,21 +249,21 @@ public class GameObjectDefinition extends SubNode {
     }
 
     public void method605(boolean arg0) {
-        if((hasActions ^ 0xffffffff) == 0) {
+        if(hasActions == -1) {
             hasActions = 0;
-            if(objectModels != null && (objectTypes == null || (objectTypes[0] ^ 0xffffffff) == -11)) {
+            if(objectModels != null && (objectTypes == null || objectTypes[0] == 10)) {
                 hasActions = 1;
             }
-            for(int i = 0; (i ^ 0xffffffff) > -6; i++) {
+            for(int i = 0; i < 5; i++) {
                 if(actions[i] != null) {
                     hasActions = 1;
                 }
             }
         }
-        if((supportsItems ^ 0xffffffff) == 0) {
+        if(supportsItems == -1) {
             supportsItems = solid ? 1 : 0;
         }
-        if(arg0 != true) {
+        if(!arg0) {
             readValues(null);
         }
     }
@@ -300,7 +300,7 @@ public class GameObjectDefinition extends SubNode {
                     Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub5Array2762[i_7_] = class40_sub5_sub17_sub5;
                 }
             }
-            if((i ^ 0xffffffff) < -2) {
+            if(i > 1) {
                 class40_sub5_sub17_sub5 = (new Model((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub5Array2762), i));
             }
         } else {
@@ -334,19 +334,15 @@ public class GameObjectDefinition extends SubNode {
         boolean bool;
         bool = modelSizeX != 128 || modelSizeHeight != 128 || modelSizeY != 128;
         boolean bool_11_;
-        bool_11_ = (offsetX ^ 0xffffffff) != -1 || offsetHeight != 0 || offsetY != 0;
+        bool_11_ = offsetX != 0 || offsetHeight != 0 || offsetY != 0;
         Model class40_sub5_sub17_sub5_12_ = new Model(class40_sub5_sub17_sub5, arg3 == 0 && !bool && !bool_11_, recolorToFind == null, true);
         arg3 &= 0x3;
-        if((arg3 ^ 0xffffffff) != -2) {
-            if((arg3 ^ 0xffffffff) != -3) {
-                if(arg3 == 3) {
-                    class40_sub5_sub17_sub5_12_.method824();
-                }
-            } else {
-                class40_sub5_sub17_sub5_12_.method819();
-            }
-        } else {
+        if(arg3 == 1) {
             class40_sub5_sub17_sub5_12_.method813();
+        } else if(arg3 == 2) {
+            class40_sub5_sub17_sub5_12_.method819();
+        } else if(arg3 == 3) {
+            class40_sub5_sub17_sub5_12_.method824();
         }
         if(recolorToFind != null) {
             for(int i = 0; i < recolorToFind.length; i++) {
@@ -386,10 +382,10 @@ public class GameObjectDefinition extends SubNode {
         if(animationSequence == null && !adjustToTerrain) {
             return model;
         }
-        if(animationSequence != null) {
-            model = animationSequence.method593(arg3, false, model, arg5);
-        } else {
+        if(animationSequence == null) {
             model = model.method817(true);
+        } else {
+            model = animationSequence.method593(arg3, false, model, arg5);
         }
         if(arg1 < 54) {
             return null;
@@ -413,15 +409,15 @@ public class GameObjectDefinition extends SubNode {
         if(opcode == 1) {
             int length = buffer.getUnsignedByte();
             if(length > 0) {
-                if(objectModels != null && !Class35.aBoolean1734) {
-                    buffer.currentPosition += length * 3;
-                } else {
+                if(objectModels == null || Class35.aBoolean1734) {
                     objectTypes = new int[length];
                     objectModels = new int[length];
                     for(int index = 0; length > index; index++) {
                         objectModels[index] = buffer.getUnsignedShortBE();
                         objectTypes[index] = buffer.getUnsignedByte();
                     }
+                } else {
+                    buffer.currentPosition += length * 3;
                 }
             }
         } else if(opcode == 2) {
@@ -429,14 +425,14 @@ public class GameObjectDefinition extends SubNode {
         } else if(opcode == 5) {
             int length = buffer.getUnsignedByte();
             if(length > 0) {
-                if(objectModels != null && !Class35.aBoolean1734) {
-                    buffer.currentPosition += 2 * length;
-                } else {
+                if(objectModels == null || Class35.aBoolean1734) {
                     objectTypes = null;
                     objectModels = new int[length];
                     for(int index = 0; length > index; index++) {
                         objectModels[index] = buffer.getUnsignedShortBE();
                     }
+                } else {
+                    buffer.currentPosition += 2 * length;
                 }
             }
         } else if(opcode == 14) {
@@ -546,7 +542,7 @@ public class GameObjectDefinition extends SubNode {
         }
         if(objectTypes != null) {
             for(int i = 0; objectTypes.length > i; i++) {
-                if((arg0 ^ 0xffffffff) == (objectTypes[i] ^ 0xffffffff)) {
+                if(objectTypes[i] == arg0) {
                     return RSString.aCacheIndex_1705.loaded((objectModels[i] & 0xffff), 0);
                 }
             }
@@ -555,7 +551,7 @@ public class GameObjectDefinition extends SubNode {
         if(objectModels == null) {
             return true;
         }
-        if((arg0 ^ 0xffffffff) != -11) {
+        if(arg0 != 10) {
             return true;
         }
         boolean bool = true;

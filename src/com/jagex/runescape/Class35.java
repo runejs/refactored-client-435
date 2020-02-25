@@ -89,7 +89,7 @@ public class Class35 implements Interface3 {
             if(is_0_ == null)
                 bool = false;
             else {
-                int i_1_ = 0xff & is_0_[1] | (0xff & is_0_[0]) << -1471118168;
+                int i_1_ = 0xff & is_0_[1] | (0xff & is_0_[0]) << 8;
                 byte[] is_2_;
                 if(arg4)
                     is_2_ = arg3.method182(i_1_, -122, 0);
@@ -153,7 +153,7 @@ public class Class35 implements Interface3 {
             }
             boolean bool = class40_sub10.method869(aDouble1750, anInt1748, aCacheIndex_1749);
             if(bool) {
-                if((anInt1753 ^ 0xffffffff) == -1) {
+                if(anInt1753 == 0) {
                     EntryTable class40_sub10_3_ = ((EntryTable) aClass45_1727.method899((byte) 87));
                     class40_sub10_3_.method870();
                 } else
@@ -170,7 +170,7 @@ public class Class35 implements Interface3 {
     public int method14(boolean arg0, int arg1) {
 
         anInt1724++;
-        if(arg0 != true)
+        if(!arg0)
             return 115;
         if(aClass40_Sub10Array1740[arg1] != null)
             return aClass40_Sub10Array1740[arg1].anInt2137;
@@ -204,7 +204,7 @@ public class Class35 implements Interface3 {
         if(arg0 == 6) {
             for(/**/; (i < aClass40_Sub10Array1740.length); i++) {
                 EntryTable class40_sub10 = aClass40_Sub10Array1740[i];
-                if(class40_sub10 != null && (class40_sub10.anInt2136 ^ 0xffffffff) != -1 && class40_sub10.aBoolean2146) {
+                if(class40_sub10 != null && class40_sub10.anInt2136 != 0 && class40_sub10.aBoolean2146) {
                     class40_sub10.method868(arg1);
                     class40_sub10.aBoolean2146 = false;
                 }

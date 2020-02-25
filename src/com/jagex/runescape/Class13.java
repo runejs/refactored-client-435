@@ -1,11 +1,10 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
-import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class13 {
@@ -48,7 +47,7 @@ public class Class13 {
 
     public static void method241(Actor arg0, int arg1, byte arg2) {
         anInt400++;
-        if((arg0.anInt3098 ^ 0xffffffff) > -129 || arg0.anInt3089 < 128 || arg0.anInt3098 >= 13184 || (arg0.anInt3089 ^ 0xffffffff) <= -13185) {
+        if(arg0.anInt3098 < 128 || arg0.anInt3089 < 128 || arg0.anInt3098 >= 13184 || arg0.anInt3089 >= 13184) {
             arg0.playingAnimation = -1;
             arg0.anInt3112 = 0;
             arg0.anInt3107 = 0;
@@ -57,7 +56,7 @@ public class Class13 {
             arg0.anInt3089 = arg0.anIntArray3135[0] * 128 + 64 * arg0.anInt3096;
             arg0.method790(0);
         }
-        if(arg0 == Player.localPlayer && ((arg0.anInt3098 ^ 0xffffffff) > -1537 || (arg0.anInt3089 ^ 0xffffffff) > -1537 || arg0.anInt3098 >= 11776 || arg0.anInt3089 >= 11776)) {
+        if(arg0 == Player.localPlayer && (arg0.anInt3098 < 1536 || arg0.anInt3089 < 1536 || arg0.anInt3098 >= 11776 || arg0.anInt3089 >= 11776)) {
             arg0.anInt3091 = -1;
             arg0.anInt3107 = 0;
             arg0.anInt3112 = 0;
@@ -108,15 +107,15 @@ public class Class13 {
 
         int i = 69 % ((-65 - arg2) / 53);
         anInt413++;
-        if((arg1 ^ 0xffffffff) < -180)
+        if(arg1 > 179)
             arg0 /= 2;
-        if((arg1 ^ 0xffffffff) < -193)
+        if(arg1 > 192)
             arg0 /= 2;
         if(arg1 > 217)
             arg0 /= 2;
-        if((arg1 ^ 0xffffffff) < -244)
+        if(arg1 > 243)
             arg0 /= 2;
-        int i_0_ = arg1 / 2 + ((arg0 / 32 << 906471527) + (arg3 / 4 << 1215235370));
+        int i_0_ = arg1 / 2 + ((arg0 / 32 << 7) + (arg3 / 4 << 10));
         return i_0_;
 
     }
@@ -134,9 +133,9 @@ public class Class13 {
             Class44.aByteArrayArray1039[Main.anInt1764] = null;
             return is;
         }
-        if((arg1 ^ 0xffffffff) == -30001 && Class40_Sub5_Sub4.anInt2359 > 0) {
-            byte[] is = (RSCanvas.aByteArrayArray47[--Class40_Sub5_Sub4.anInt2359]);
-            RSCanvas.aByteArrayArray47[Class40_Sub5_Sub4.anInt2359] = null;
+        if(arg1 == 30000 && VarbitDefinition.anInt2359 > 0) {
+            byte[] is = (RSCanvas.aByteArrayArray47[--VarbitDefinition.anInt2359]);
+            RSCanvas.aByteArrayArray47[VarbitDefinition.anInt2359] = null;
             return is;
         }
         return new byte[arg1];
@@ -149,9 +148,9 @@ public class Class13 {
             anInt419 = -37;
         int i;
         if(arg0.id < 0)
-            i = arg0.parentId >> 567649872;
+            i = arg0.parentId >> 16;
         else
-            i = arg0.id >> -1265498640;
+            i = arg0.id >> 16;
         anInt401++;
         if(!Class68.method1043(i))
             return null;
@@ -195,7 +194,7 @@ public class Class13 {
 
     public static void method249(boolean arg0) {
 
-        if(arg0 != true)
+        if(!arg0)
             method244(-58, 116, -89, 98);
         if(GameObject.frame != null) {
             synchronized(GameObject.frame) {

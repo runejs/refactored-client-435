@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 
 public class Cache {
@@ -34,12 +35,14 @@ public class Cache {
             i += i;
         }
         anInt316 = arg0;
+        System.out.println("Cache: " + i);
+
         aClass23_318 = new HashTable(i);
     }
 
     public static void method233(boolean arg0) {
         Class33.aClass9_778.method235((byte) 108);
-        if(arg0 != true)
+        if(!arg0)
             method236(true, null, null, null);
     }
 
@@ -60,16 +63,14 @@ public class Cache {
 
     public static void method236(boolean arg0, CacheIndex arg1, CacheIndex arg2, CacheIndex arg3) {
         Class40_Sub11.aCacheIndex_2162 = arg1;
-        if(arg0 != false)
+        if(arg0)
             anInt324 = -101;
-        Class40_Sub5_Sub4.aCacheIndex_2364 = arg3;
+        VarbitDefinition.aCacheIndex_2364 = arg3;
         AnimationSequence.aCacheIndex_2484 = arg2;
     }
 
     public void method230(int arg0, long arg1, SubNode arg2) {
-        if((anInt316 ^ 0xffffffff) != -1)
-            anInt316--;
-        else {
+        if(anInt316 == 0) {
             SubNode class40_sub5 = aClass27_319.method351(536857847);
             class40_sub5.method457(-1);
             class40_sub5.method539(arg0 ^ ~0x1c27);
@@ -78,7 +79,8 @@ public class Cache {
                 class40_sub5.method457(-1);
                 class40_sub5.method539(0);
             }
-        }
+        } else
+            anInt316--;
         aClass23_318.put(arg2, (byte) -115, arg1);
         if(arg0 == -7208)
             aClass27_319.method352(102, arg2);

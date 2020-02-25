@@ -59,7 +59,7 @@ public class Class42 {
     public Class42(int[] arg0) {
 
         int i;
-        for(i = 1; (((arg0.length >> -2026619711) + arg0.length >= i)); i <<= 1) {
+        for(i = 1; (((arg0.length >> 1) + arg0.length >= i)); i <<= 1) {
             /* empty */
         }
         anIntArray996 = new int[i + i];
@@ -99,9 +99,9 @@ public class Class42 {
             method887((byte) -6);
         anInt994++;
         int i = 57 * arg1 + arg0;
-        i ^= i << 636261773;
+        i ^= i << 13;
         int i_2_ = 1376312589 + (i * i * 15731 + 789221) * i & 0x7fffffff;
-        return i_2_ >> -754459309 & 0xff;
+        return i_2_ >> 19 & 0xff;
 
     }
 
@@ -121,7 +121,7 @@ public class Class42 {
 
         anInt1007++;
         if(arg0 == 0 && Class5.aClass22_189 != null) {
-            if((GameFrame.anInt1450 ^ 0xffffffff) > -1) {
+            if(GameFrame.anInt1450 < 0) {
                 if(RSCanvas.anInt54 != 0) {
                     PacketBuffer.anInt2258 = arg1;
                     Player.aByteArray3270 = arg3;
@@ -170,7 +170,7 @@ public class Class42 {
 
     public static int method888(int arg0, byte arg1, int arg2) {
 
-        int i = (-128 + Class4.method160(arg0 + 45365, 15177, 4, 91923 + arg2) - (-(Class4.method160(arg0 + 10294, 15177, 2, 37821 + arg2) - 128 >> -463135775) + -(-128 + Class4.method160(arg0, 15177, 1, arg2) >> 252161186)));
+        int i = (-128 + Class4.method160(arg0 + 45365, 15177, 4, 91923 + arg2) - (-(Class4.method160(arg0 + 10294, 15177, 2, 37821 + arg2) - 128 >> 1) + -(-128 + Class4.method160(arg0, 15177, 1, arg2) >> 2)));
         i = 35 + (int) (0.3 * (double) i);
         if(arg1 != -45)
             return -24;
@@ -191,7 +191,7 @@ public class Class42 {
             method883((byte) 24, 79);
         while(Cache.outgoingbuffer.method510(121, Widget.packetsize) >= 27) {
             int i = Cache.outgoingbuffer.putBits(15, (byte) -65);
-            if((i ^ 0xffffffff) == -32768)
+            if(i == 32767)
                 break;
             boolean bool = false;
             if(CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i] == null) {
@@ -209,9 +209,9 @@ public class Class42 {
                 i_4_ -= 32;
             int i_5_ = Cache.outgoingbuffer.putBits(5, (byte) -65);
             int i_6_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
-            if((i_5_ ^ 0xffffffff) < -16)
+            if(i_5_ > 15)
                 i_5_ -= 32;
-            if((i_6_ ^ 0xffffffff) == -2)
+            if(i_6_ == 1)
                 Class24.anIntArray578[Actor.anInt3153++] = i;
             int i_7_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
             class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300 = ActorDefinition.getDefinition((byte) -121, Cache.outgoingbuffer.putBits(13, (byte) -65));
@@ -226,7 +226,7 @@ public class Class42 {
             if(class40_sub5_sub17_sub4_sub2.anInt3113 == 0)
                 class40_sub5_sub17_sub4_sub2.anInt3118 = 0;
             class40_sub5_sub17_sub4_sub2.anInt3075 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate90RightAnimation);
-            class40_sub5_sub17_sub4_sub2.method787((Player.localPlayer.anIntArray3135[0]) + i_5_, -7717, (i_7_ ^ 0xffffffff) == -2, (Player.localPlayer.anIntArray3088[0]) + i_4_);
+            class40_sub5_sub17_sub4_sub2.method787((Player.localPlayer.anIntArray3135[0]) + i_5_, -7717, i_7_ == 1, (Player.localPlayer.anIntArray3088[0]) + i_4_);
         }
         Cache.outgoingbuffer.finishBitAccess((byte) -110);
 
@@ -238,10 +238,10 @@ public class Class42 {
             return 76;
         anInt992++;
         int i = -2 + anIntArray996.length;
-        int i_0_ = arg0 << 248589057 & i;
+        int i_0_ = arg0 << 1 & i;
         for(; ; ) {
             int i_1_ = anIntArray996[i_0_];
-            if((arg0 ^ 0xffffffff) == (i_1_ ^ 0xffffffff))
+            if(i_1_ == arg0)
                 return anIntArray996[i_0_ + 1];
             if(i_1_ == -1)
                 return -1;

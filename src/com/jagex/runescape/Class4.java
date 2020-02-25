@@ -70,17 +70,17 @@ public class Class4 {
                     Class40_Sub3.anIntArray2023[i] += effect.delay();
                     PacketBuffer.effects[i] = effect;
                 }
-                if((Class40_Sub3.anIntArray2023[i] ^ 0xffffffff) > -1) {
+                if(Class40_Sub3.anIntArray2023[i] < 0) {
                     int i_10_;
-                    if((Class38_Sub1.anIntArray1916[i] ^ 0xffffffff) != -1) {
+                    if(Class38_Sub1.anIntArray1916[i] != 0) {
                         int i_11_ = 128 * (Class38_Sub1.anIntArray1916[i] & 0xff);
-                        int i_12_ = (0xff & Class38_Sub1.anIntArray1916[i] >> 854878096);
-                        int i_13_ = ((Class38_Sub1.anIntArray1916[i] & 0xffb8) >> 1161269672);
+                        int i_12_ = (0xff & Class38_Sub1.anIntArray1916[i] >> 16);
+                        int i_13_ = ((Class38_Sub1.anIntArray1916[i] & 0xffb8) >> 8);
                         int i_14_ = (i_13_ * 128 + 64 + -(Player.localPlayer.anInt3089));
                         int i_15_ = (i_12_ * 128 + (64 - (Player.localPlayer.anInt3098)));
                         if(i_15_ < 0)
                             i_15_ = -i_15_;
-                        if((i_14_ ^ 0xffffffff) > -1)
+                        if(i_14_ < 0)
                             i_14_ = -i_14_;
                         int i_16_ = -128 + (i_15_ + i_14_);
                         if(i_16_ > i_11_) {
@@ -100,11 +100,11 @@ public class Class4 {
                 }
             }
         }
-        if((Class35.anInt1733 ^ 0xffffffff) < -1) {
+        if(Class35.anInt1733 > 0) {
             Class35.anInt1733 -= 20;
             if(Class35.anInt1733 < 0)
                 Class35.anInt1733 = 0;
-            if((Class35.anInt1733 ^ 0xffffffff) == -1 && (RSCanvas.anInt60 ^ 0xffffffff) != -1 && (GameFrame.anInt1457 ^ 0xffffffff) != 0)
+            if(Class35.anInt1733 == 0 && RSCanvas.anInt60 != 0 && GameFrame.anInt1457 != -1)
                 Class33.method414(false, 0, GameFrame.anInt1457, RSCanvas.anInt60, 0, Class55.aClass6_Sub1_1286, -1);
         }
     }

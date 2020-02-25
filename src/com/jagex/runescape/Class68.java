@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.util.Signlink;
 
@@ -95,9 +96,9 @@ public abstract class Class68 {
         anInt1627++;
         if(aBooleanArray1629[arg0])
             return true;
-        if(!Class40_Sub5_Sub4.aCacheIndex_2349.method186(123, arg0))
+        if(!VarbitDefinition.aCacheIndex_2349.method186(123, arg0))
             return false;
-        int i_4_ = Class40_Sub5_Sub4.aCacheIndex_2349.method190(arg0, (byte) 71);
+        int i_4_ = VarbitDefinition.aCacheIndex_2349.method190(arg0, (byte) 71);
         if(i_4_ == 0) {
             aBooleanArray1629[arg0] = true;
             return true;
@@ -106,7 +107,7 @@ public abstract class Class68 {
             Widget.interfaces[arg0] = new Widget[i_4_];
         for(int i_5_ = 0; (i_5_ < i_4_); i_5_++) {
             if(Widget.interfaces[arg0][i_5_] == null) {
-                byte[] is = Class40_Sub5_Sub4.aCacheIndex_2349.getFile(i_5_, arg0);
+                byte[] is = VarbitDefinition.aCacheIndex_2349.getFile(i_5_, arg0);
                 if(is != null) {
                     Widget.interfaces[arg0][i_5_] = new Widget();
                     Widget.interfaces[arg0][i_5_].id = (arg0 << 16) + i_5_;
@@ -128,7 +129,7 @@ public abstract class Class68 {
 
     public void method1046(byte arg0) {
         do {
-            Rasterizer.method669(anIntArray1621, anInt1619, anInt1617);
+            Rasterizer.createRasterizer(anIntArray1621, anInt1619, anInt1617);
             anInt1624++;
             if(arg0 == 90)
                 break;

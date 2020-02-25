@@ -29,11 +29,11 @@ public class Class29 {
     public static boolean method371(int arg0, int arg1, int arg2) {
 
         anInt669++;
-        if((arg1 ^ 0xffffffff) == -1 && ItemDefinition.anInt2850 == arg2)
+        if(arg1 == 0 && ItemDefinition.anInt2850 == arg2)
             return true;
-        if((arg1 ^ 0xffffffff) == -2 && arg2 == CollisionMap.anInt163)
+        if(arg1 == 1 && arg2 == CollisionMap.anInt163)
             return true;
-        if(((arg1 ^ 0xffffffff) == -3 || (arg1 ^ 0xffffffff) == -4) && Class55.anInt1296 == arg2)
+        if((arg1 == 2 || arg1 == 3) && Class55.anInt1296 == arg2)
             return true;
         return arg0 != 8247;
 
@@ -70,11 +70,11 @@ public class Class29 {
                 class40_sub5_sub17_sub4_sub1.anInt3134 = Node.pulseCycle;
             } else {
                 int i_4_ = Cache.outgoingbuffer.putBits(2, (byte) -65);
-                if((i_4_ ^ 0xffffffff) == -1) {
+                if(i_4_ == 0) {
                     Class57.anIntArray1334[Class60.anInt1407++] = i_2_;
                     class40_sub5_sub17_sub4_sub1.anInt3134 = Node.pulseCycle;
                     Class24.anIntArray578[Actor.anInt3153++] = i_2_;
-                } else if((i_4_ ^ 0xffffffff) == -2) {
+                } else if(i_4_ == 1) {
                     Class57.anIntArray1334[Class60.anInt1407++] = i_2_;
                     class40_sub5_sub17_sub4_sub1.anInt3134 = Node.pulseCycle;
                     int i_5_ = Cache.outgoingbuffer.putBits(3, (byte) -65);
@@ -92,7 +92,7 @@ public class Class29 {
                     int i_9_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
                     if(i_9_ == 1)
                         Class24.anIntArray578[Actor.anInt3153++] = i_2_;
-                } else if((i_4_ ^ 0xffffffff) == -4)
+                } else if(i_4_ == 3)
                     CacheIndex.anIntArray225[Class17.anInt460++] = i_2_;
             }
         }

@@ -76,6 +76,64 @@ public class IndexedImage extends Rasterizer {
             ImageRGB.shapeImageToPixels(imgPixels, Rasterizer.pixels, pixelOffset, rasterizerOffset, imageWidth, imageHeight, deviation, originalDeviation, palette);
     }
 
+    public void drawImageAlpha(int x, int y, int alpha) {
+        x += xDrawOffset;
+        y += yDrawOffset;
+        int rasterizerPixel = x + y * Rasterizer.width;
+        int pixel = 0;
+        int newHeight = imgHeight;
+        int newWidth = imgWidth;
+        int rasterizerPixelOffset = Rasterizer.width - newWidth;
+        int pixelOffset = 0;
+        if (y < Rasterizer.viewport_top) {
+            int yOffset = Rasterizer.viewport_top - y;
+            newHeight -= yOffset;
+            y = Rasterizer.viewport_top;
+            pixel += yOffset * newWidth;
+            rasterizerPixel += yOffset * Rasterizer.width;
+        }
+        if (y + newHeight > Rasterizer.viewport_bottom)
+            newHeight -= (y + newHeight) - Rasterizer.viewport_bottom;
+        if (x < Rasterizer.viewport_left) {
+            int xOffset = Rasterizer.viewport_left - x;
+            newWidth -= xOffset;
+            x = Rasterizer.viewport_left;
+            pixel += xOffset;
+            rasterizerPixel += xOffset;
+            pixelOffset += xOffset;
+            rasterizerPixelOffset += xOffset;
+        }
+        if (x + newWidth > Rasterizer.viewport_right) {
+            int xOffset = (x + newWidth) - Rasterizer.viewport_right;
+            newWidth -= xOffset;
+            pixelOffset += xOffset;
+            rasterizerPixelOffset += xOffset;
+        }
+        if (newWidth > 0 && newHeight > 0) {
+            copyPixelsAlpha(pixels, Rasterizer.pixels, pixel, rasterizerPixel, pixelOffset, rasterizerPixelOffset, newWidth, newHeight, 0, alpha);
+        }
+    }
+
+    public void copyPixelsAlpha(int[] pixels, int[] rasterizerPixels, int pixel, int rasterizerPixel, int pixelOffset, int rasterizerPixelOffset, int width, int height, int color, int alpha) {
+        int alphaValue = 256 - alpha;
+        for (int heightCounter = -height; heightCounter < 0; heightCounter++) {
+            for (int widthCounter = -width; widthCounter < 0; widthCounter++) {
+                color = pixels[pixel++];
+                if (color == 0) {
+                    rasterizerPixel++;
+                } else {
+                    int rasterizerPixelColor = rasterizerPixels[rasterizerPixel];
+                    rasterizerPixels[rasterizerPixel++] = ((color & 0xff00ff) * alpha + (rasterizerPixelColor & 0xff00ff) * alphaValue & 0xff00ff00)
+                            + ((color & 0xff00) * alpha + (rasterizerPixelColor & 0xff00) * alphaValue & 0xff0000) >> 8;
+                }
+            }
+
+            rasterizerPixel += rasterizerPixelOffset;
+            pixel += pixelOffset;
+        }
+
+    }
+
     public void resizeToLibSize() {
         if(imgWidth != maxWidth || imgHeight != maxHeight) {
             byte[] resizedPixels = new byte[maxWidth * maxHeight];

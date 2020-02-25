@@ -214,7 +214,7 @@ public class GameObject extends Renderable {
                 animationFrame++;
                 if((animationSequence.anIntArray2485.length <= animationFrame)) {
                     animationFrame -= animationSequence.frameStep;
-                    if((animationFrame ^ 0xffffffff) > -1 || (animationSequence.anIntArray2485.length <= animationFrame)) {
+                    if(animationFrame < 0 || (animationSequence.anIntArray2485.length <= animationFrame)) {
                         animationSequence = null;
                         break;
                     }
