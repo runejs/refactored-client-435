@@ -111,7 +111,7 @@ public class Class51 {
 
     public static void method941(byte arg0) {
 
-        CacheIndex.aClass9_229.method235((byte) 50);
+        CacheIndex.modelCache.method235((byte) 50);
         if(arg0 == -93)
             anInt1191++;
 

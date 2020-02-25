@@ -325,7 +325,7 @@ public class Main extends RSApplet {
                             } else if(widget.modelId != 0)
                                 model = Player.localPlayer.getRotatedModel(92);
                             else
-                                model = (Class45.aClass30_1082.method377(null, null, -1, -1, (byte) -88));
+                                model = (Class45.aClass30_1082.getAnimatedModel(null, null, -1, -1, (byte) -88));
                             int i_37_ = widget.rotationX;
                             int i_38_ = widget.rotationY;
                             int i_39_ = widget.offsetY2d;
@@ -336,7 +336,7 @@ public class Main extends RSApplet {
                                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((widget.anInt2718), 10);
                                 if(class40_sub5_sub16 != null) {
                                     class40_sub5_sub16 = (class40_sub5_sub16.method743(widget.anInt2734));
-                                    model = class40_sub5_sub16.method753(true, 1, 26910);
+                                    model = class40_sub5_sub16.asGroundStack(true, 1);
                                     i_38_ = class40_sub5_sub16.zan2d;
                                     i_39_ = class40_sub5_sub16.yOffset2d;
                                     i_41_ = class40_sub5_sub16.xOffset2d;
@@ -591,15 +591,13 @@ public class Main extends RSApplet {
         }
     }
 
-    public static void method41(boolean arg0) {
+    public static void method41() {
         aClass1_1762 = null;
         aClass1_1781 = null;
         aClass1Array1778 = null;
         aClass1_1763 = null;
         aClass1_1777 = null;
         aClass1_1788 = null;
-        if(arg0)
-            method36(-124, 5, -72, 123, 30, -52, 55, 27, null, false);
         aClass1_1761 = null;
         aClass1_1757 = null;
     }
@@ -649,7 +647,6 @@ public class Main extends RSApplet {
         Class43.anInt1018 = 0;
         Class13.anInt400 = 0;
         Class51.anInt1188 = 0;
-        Class68.anInt1616 = 0;
         Class8.anInt285 = 0;
         UnderlayDefinition.anInt2580 = 0;
         Class8.anInt282 = 0;
@@ -660,7 +657,6 @@ public class Main extends RSApplet {
         OverlayDefinition.anInt2331 = 0;
         VarbitDefinition.anInt2365 = 0;
         Class35.anInt1723 = 0;
-        IdentityKit.anInt2608 = 0;
         Class40_Sub13.anInt2169 = 0;
         SubNode.anInt2085 = 0;
         Class38.anInt891 = 0;
@@ -682,7 +678,6 @@ public class Main extends RSApplet {
         Class34.anInt815 = 0;
         Class40_Sub5_Sub17_Sub3.anInt3053 = 0;
         Class40_Sub7.anInt2126 = 0;
-        IdentityKit.anInt2601 = 0;
         Class59.anInt1384 = 0;
         Class40_Sub5_Sub17_Sub1.anInt2986 = 0;
         Class53.anInt1248 = 0;
@@ -725,10 +720,8 @@ public class Main extends RSApplet {
         Class40_Sub2.anInt2006 = 0;
         Class32.anInt744 = 0;
         Class59.anInt1382 = 0;
-        Class58.anInt1367 = 0;
         Class8.anInt275 = 0;
         Class67.anInt1587 = 0;
-        Class68.anInt1622 = 0;
         Class65.anInt1534 = 0;
         Class10.anInt345 = 0;
         Class58.anInt1368 = 0;
@@ -739,10 +732,6 @@ public class Main extends RSApplet {
         Class40_Sub3.anInt2022 = 0;
         Class42.anInt999 = 0;
         KeyFocusListener.anInt1279 = 0;
-        IdentityKit.anInt2603 = 0;
-        IdentityKit.anInt2585 = 0;
-        IdentityKit.anInt2607 = 0;
-        Class68.anInt1627 = 0;
         Node.anInt971 = 0;
         Class52.anInt1237 = 0;
         Class58.anInt1360 = 0;
@@ -781,7 +770,6 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub17_Sub1.anInt3007 = 0;
         Class58.anInt1351 = 0;
         Actor.anInt3133 = 0;
-        IdentityKit.anInt2612 = 0;
         VarbitDefinition.anInt2369 = 0;
         ISAAC.anInt503 = 0;
         Class34.anInt806 = 0;
@@ -822,7 +810,6 @@ public class Main extends RSApplet {
         Actor.anInt3103 = 0;
         Class60.anInt1410 = 0;
         Class40_Sub13.anInt2173 = 0;
-        Class68.anInt1626 = 0;
         Class51.anInt1191 = 0;
         Class40_Sub5_Sub17_Sub3.anInt3052 = 0;
         Class42.anInt991 = 0;
@@ -951,7 +938,6 @@ public class Main extends RSApplet {
         Class53.anInt1256 = 0;
         KeyFocusListener.anInt1272 = 0;
         CacheIndex.anInt230 = 0;
-        Class68.anInt1620 = 0;
         VarbitDefinition.anInt2360 = 0;
         Class42.anInt1004 = 0;
         Class35.anInt1742 = 0;
@@ -974,7 +960,6 @@ public class Main extends RSApplet {
         Class13.anInt407 = 0;
         Class40_Sub5_Sub17_Sub3.anInt3063 = 0;
         Class44.anInt1031 = arg0;
-        Class68.anInt1624 = 0;
         ISAAC.anInt504 = 0;
         Class35.aBoolean1735 = true;
         HashTable.aBoolean571 = true;
@@ -1302,7 +1287,7 @@ public class Main extends RSApplet {
     }
 
     public void method16(int arg0) {
-        method41(false);
+        method41();
         RSString.method83((byte) 121);
         RSApplet.method18();
         Class38.method439((byte) 123);

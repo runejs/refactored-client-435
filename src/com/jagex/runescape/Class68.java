@@ -7,39 +7,26 @@ import com.jagex.runescape.util.Signlink;
 import java.awt.*;
 
 public abstract class Class68 {
-    public static Cache aClass9_1615;
-    public static int anInt1616;
+    public static Cache aClass9_1615 = new Cache(64);
     public static int anInt1618 = 0;
-    public static int anInt1620;
-    public static int anInt1622;
     public static int anInt1623 = 0;
-    public static int anInt1624;
-    public static int anInt1626;
-    public static int anInt1627;
     public static RSString aClass1_1628;
     public static boolean[] aBooleanArray1629;
-    public static int anInt1630;
+    public static int anInt1630 = 0;
     public static Class68 aClass68_1631;
     public static Class15 aClass15_1632;
-    public static RSString aClass1_1633;
-    public static int anInt1634;
+    public static RSString aClass1_1633 = RSString.CreateString(" is already on your ignore list");
+    public static int anInt1634 = 0;
     public static RSString aClass1_1635;
-    public static RSString aClass1_1636;
-    public static int anInt1637;
+    public static RSString aClass1_1636 = RSString.CreateString("Loaded title screen");
+    public static int anInt1637 = 0;
     public static RSString aClass1_1638;
-    public static RSString aClass1_1639;
+    public static RSString aClass1_1639 = RSString.CreateString("@or2@");
     public static RSString aClass1_1640;
 
     static {
-        aClass9_1615 = new Cache(64);
-        anInt1630 = 0;
-        aClass1_1633 = RSString.CreateString(" is already on your ignore list");
-        anInt1634 = 0;
-        anInt1637 = 0;
-        aClass1_1636 = RSString.CreateString("Loaded title screen");
         aClass1_1638 = aClass1_1636;
         aClass1_1628 = aClass1_1633;
-        aClass1_1639 = RSString.CreateString("@or2@");
         aClass1_1640 = RSString.CreateString("Cancel");
         aClass1_1635 = aClass1_1640;
     }
@@ -50,8 +37,6 @@ public abstract class Class68 {
     public Image anImage1625;
 
     public static void method1040(Component arg0, int arg1, Signlink arg2) {
-
-        anInt1620++;
         try {
             Class8_Sub1 class8_sub1 = ((Class8_Sub1) Class.forName("com.jagex.runescape.Class8_Sub1_Sub2").newInstance());
             class8_sub1.method222(arg2, 2048);
@@ -92,8 +77,6 @@ public abstract class Class68 {
     }
 
     public static boolean method1043(int arg0) {
-
-        anInt1627++;
         if(aBooleanArray1629[arg0])
             return true;
         if(!VarbitDefinition.aCacheIndex_2349.method186(123, arg0))
@@ -130,7 +113,6 @@ public abstract class Class68 {
     public void method1046(byte arg0) {
         do {
             Rasterizer.createRasterizer(anIntArray1621, anInt1619, anInt1617);
-            anInt1624++;
             if(arg0 == 90)
                 break;
             method1046((byte) 12);

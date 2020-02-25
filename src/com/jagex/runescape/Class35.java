@@ -24,7 +24,7 @@ public class Class35 implements Interface3 {
     public static boolean aBoolean1735;
     public static RSString aClass1_1736;
     public static int publicChatMode;
-    public static int[] anIntArray1738;
+    public static int[] SKIN_COLOURS;
     public static int anInt1739;
     public static int anInt1741;
     public static int anInt1742;
@@ -38,7 +38,7 @@ public class Class35 implements Interface3 {
     static {
         aClass1_1726 = RSString.CreateString("Wen m-Ochten Sie der Liste hinzuf-Ugen?");
         anInt1733 = 0;
-        anIntArray1738 = new int[]{9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145, 58654, 5027, 1457, 16565, 34991, 25486};
+        SKIN_COLOURS = new int[]{9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145, 58654, 5027, 1457, 16565, 34991, 25486};
         aBoolean1734 = false;
         publicChatMode = 0;
         aClass1_1731 = RSString.CreateString("Handel)4Duell");
@@ -117,7 +117,7 @@ public class Class35 implements Interface3 {
             aClass1_1725 = null;
             aClass1_1746 = null;
             aFrame1732 = null;
-            anIntArray1738 = null;
+            SKIN_COLOURS = null;
             aClass1_1743 = null;
             aClass1_1736 = null;
             aClass40_Sub5_Sub14_Sub2_1744 = null;

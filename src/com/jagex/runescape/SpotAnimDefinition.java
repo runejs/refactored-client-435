@@ -280,7 +280,7 @@ public class SpotAnimDefinition extends SubNode {
         if(arg1 != 13)
             Class37.method436(-34);
         Class37.anInt861++;
-        SpotAnimDefinition spotAnimDefinition = ((SpotAnimDefinition) Class43.aClass9_1014.method231((long) arg0, (byte) 59));
+        SpotAnimDefinition spotAnimDefinition = ((SpotAnimDefinition) Class43.aClass9_1014.get((long) arg0, (byte) 59));
         if(spotAnimDefinition != null)
             return spotAnimDefinition;
         byte[] is = Class19.aCacheIndex_488.getFile(arg0, 13);
@@ -288,7 +288,7 @@ public class SpotAnimDefinition extends SubNode {
         spotAnimDefinition.id = arg0;
         if(is != null)
             spotAnimDefinition.readValues(new Buffer(is));
-        Class43.aClass9_1014.method230(-7208, (long) arg0, spotAnimDefinition);
+        Class43.aClass9_1014.put(-7208, (long) arg0, spotAnimDefinition);
         return spotAnimDefinition;
 
     }
@@ -321,7 +321,7 @@ public class SpotAnimDefinition extends SubNode {
     }
 
     public Model method549(int arg0, int arg1) {
-        Model class40_sub5_sub17_sub5 = ((Model) Class34.aClass9_851.method231((long) id, (byte) 50));
+        Model class40_sub5_sub17_sub5 = ((Model) Class34.aClass9_851.get((long) id, (byte) 50));
         if(class40_sub5_sub17_sub5 == null) {
             class40_sub5_sub17_sub5 = Model.getModel((UnderlayDefinition.aCacheIndex_2582), modelId, 0);
             if(class40_sub5_sub17_sub5 == null) {
@@ -332,9 +332,9 @@ public class SpotAnimDefinition extends SubNode {
                     class40_sub5_sub17_sub5.replaceColor(recolorToFind[i], recolorToReplace[i]);
                 }
             }
-            class40_sub5_sub17_sub5.method810();
-            class40_sub5_sub17_sub5.method802(64 + ambient, contrast + 850, -30, -50, -30, true);
-            Class34.aClass9_851.method230(-7208, (long) id, class40_sub5_sub17_sub5);
+            class40_sub5_sub17_sub5.createBones();
+            class40_sub5_sub17_sub5.applyLighting(64 + ambient, contrast + 850, -30, -50, -30, true);
+            Class34.aClass9_851.put(-7208, (long) id, class40_sub5_sub17_sub5);
         }
         Model class40_sub5_sub17_sub5_0_;
         if(animationId == -1 || arg0 == -1) {
@@ -346,7 +346,7 @@ public class SpotAnimDefinition extends SubNode {
             return null;
         }
         if(resizeX != 128 || resizeY != 128) {
-            class40_sub5_sub17_sub5_0_.method821(resizeX, resizeY, resizeX);
+            class40_sub5_sub17_sub5_0_.scaleT(resizeX, resizeY, resizeX);
         }
         if(rotaton != 0) {
             if(rotaton == 90) {

@@ -54,22 +54,6 @@ public class Buffer extends Node {
         anIntArray1972 = null;
     }
 
-    // ???
-    public static IdentityKit method501(int arg1) {
-        IdentityKit identityKit = ((IdentityKit) Class68.aClass9_1615.method231((long) arg1, (byte) 107));
-        if(identityKit != null) {
-            return identityKit;
-        }
-        byte[] is = Class49.aCacheIndex_1150.getFile(arg1, 3);
-        identityKit = new IdentityKit();
-        if(is != null) {
-            identityKit.readValues(new Buffer(is));
-        }
-        Class68.aClass9_1615.method230(-7208, (long) arg1, identityKit);
-        return identityKit;
-
-    }
-
     public int getNegativeOffsetShortBE() {
         currentPosition += 2;
         int i = ((buffer[currentPosition - 2] & 0xff) << 8) + (buffer[currentPosition - 1] - 128 & 0xff);

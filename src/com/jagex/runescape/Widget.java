@@ -866,7 +866,7 @@ public class Widget extends SubNode {
                                                 i_1_ -= 2;
                                                 RSString class1 = (Class40_Sub11.aClass1Array2153[i_1_]);
                                                 RSString class1_82_ = (Class40_Sub11.aClass1Array2153[i_1_ + 1]);
-                                                if((Player.localPlayer.aClass30_3282) == null || !(Player.localPlayer.aClass30_3282.aBoolean683)) {
+                                                if((Player.localPlayer.aClass30_3282) == null || !(Player.localPlayer.aClass30_3282.gender)) {
                                                     Class40_Sub11.aClass1Array2153[i_1_++] = class1;
                                                 } else {
                                                     Class40_Sub11.aClass1Array2153[i_1_++] = class1_82_;
@@ -884,7 +884,7 @@ public class Widget extends SubNode {
                                         }
                                     } else if(i_3_ == 3100) {
                                         RSString class1 = (Class40_Sub11.aClass1Array2153[--i_1_]);
-                                        Class44.method895(84, 0, class1, (Landscape.aClass1_1183));
+                                        Class44.addChatMessage((Landscape.aClass1_1183), class1, 0);
                                     } else {
                                         if(i_3_ != 3101) {
                                             break;
@@ -1052,8 +1052,6 @@ public class Widget extends SubNode {
     }
 
     public static Widget forId(int arg0) {
-
-        Class68.anInt1626++;
         int i = arg0 >> 16;
         int i_8_ = 0xffff & arg0;
         if(interfaces[i] == null || (interfaces[i][i_8_] == null)) {
@@ -1261,7 +1259,7 @@ public class Widget extends SubNode {
             return null;
         }
         int i_9_ = 124 % ((-15 - arg0) / 34);
-        ImageRGB class40_sub5_sub14_sub4 = ((ImageRGB) Cache.aClass9_326.method231((long) i, (byte) 121));
+        ImageRGB class40_sub5_sub14_sub4 = ((ImageRGB) Cache.aClass9_326.get((long) i, (byte) 121));
         if(class40_sub5_sub14_sub4 != null) {
             return class40_sub5_sub14_sub4;
         }
@@ -1269,7 +1267,7 @@ public class Widget extends SubNode {
         if(class40_sub5_sub14_sub4 == null) {
             Class40_Sub13.aBoolean2177 = true;
         } else {
-            Cache.aClass9_326.method230(-7208, (long) i, class40_sub5_sub14_sub4);
+            Cache.aClass9_326.put(-7208, (long) i, class40_sub5_sub14_sub4);
         }
         return class40_sub5_sub14_sub4;
     }
@@ -1285,7 +1283,7 @@ public class Widget extends SubNode {
         if(i == -1) {
             return null;
         }
-        ImageRGB class40_sub5_sub14_sub4 = ((ImageRGB) Cache.aClass9_326.method231((long) i, (byte) 103));
+        ImageRGB class40_sub5_sub14_sub4 = ((ImageRGB) Cache.aClass9_326.get((long) i, (byte) 103));
         if(arg0 != 127) {
             isIf3 = false;
         }
@@ -1296,7 +1294,7 @@ public class Widget extends SubNode {
         if(class40_sub5_sub14_sub4 == null) {
             Class40_Sub13.aBoolean2177 = true;
         } else {
-            Cache.aClass9_326.method230(-7208, (long) i, class40_sub5_sub14_sub4);
+            Cache.aClass9_326.put(-7208, (long) i, class40_sub5_sub14_sub4);
         }
         return class40_sub5_sub14_sub4;
     }
@@ -1419,7 +1417,7 @@ public class Widget extends SubNode {
         if(arg0 <= 25) {
             aBoolean2688 = true;
         }
-        Model class40_sub5_sub17_sub5 = ((Model) Class53.aClass9_1264.method231((long) ((i << 16) + i_11_), (byte) 59));
+        Model class40_sub5_sub17_sub5 = ((Model) Class53.aClass9_1264.get((long) ((i << 16) + i_11_), (byte) 59));
         if(class40_sub5_sub17_sub5 == null) {
             if(i == 1) {
                 class40_sub5_sub17_sub5 = Model.getModel(Cache.aCacheIndex_329, i_11_, 0);
@@ -1427,8 +1425,8 @@ public class Widget extends SubNode {
                     Class40_Sub13.aBoolean2177 = true;
                     return null;
                 }
-                class40_sub5_sub17_sub5.method810();
-                class40_sub5_sub17_sub5.method802(64, 768, -50, -10, -50, true);
+                class40_sub5_sub17_sub5.createBones();
+                class40_sub5_sub17_sub5.applyLighting(64, 768, -50, -10, -50, true);
             }
             if(i == 2) {
                 class40_sub5_sub17_sub5 = ActorDefinition.getDefinition((byte) -101, i_11_).getHeadModel((byte) 122);
@@ -1436,8 +1434,8 @@ public class Widget extends SubNode {
                     Class40_Sub13.aBoolean2177 = true;
                     return null;
                 }
-                class40_sub5_sub17_sub5.method810();
-                class40_sub5_sub17_sub5.method802(64, 768, -50, -10, -50, true);
+                class40_sub5_sub17_sub5.createBones();
+                class40_sub5_sub17_sub5.applyLighting(64, 768, -50, -10, -50, true);
             }
             if(i == 3) {
                 if(arg4 == null) {
@@ -1448,20 +1446,20 @@ public class Widget extends SubNode {
                     Class40_Sub13.aBoolean2177 = true;
                     return null;
                 }
-                class40_sub5_sub17_sub5.method810();
-                class40_sub5_sub17_sub5.method802(64, 768, -50, -10, -50, true);
+                class40_sub5_sub17_sub5.createBones();
+                class40_sub5_sub17_sub5.applyLighting(64, 768, -50, -10, -50, true);
             }
             if(i == 4) {
                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_11_, 10);
-                class40_sub5_sub17_sub5 = class40_sub5_sub16.method753(false, 10, 26910);
+                class40_sub5_sub17_sub5 = class40_sub5_sub16.asGroundStack(false, 10);
                 if(class40_sub5_sub17_sub5 == null) {
                     Class40_Sub13.aBoolean2177 = true;
                     return null;
                 }
-                class40_sub5_sub17_sub5.method810();
-                class40_sub5_sub17_sub5.method802(64 + (class40_sub5_sub16.ambient), 768 + (class40_sub5_sub16.contrast), -50, -10, -50, true);
+                class40_sub5_sub17_sub5.createBones();
+                class40_sub5_sub17_sub5.applyLighting(64 + (class40_sub5_sub16.ambient), 768 + (class40_sub5_sub16.contrast), -50, -10, -50, true);
             }
-            Class53.aClass9_1264.method230(-7208, (long) ((i << 16) + i_11_), class40_sub5_sub17_sub5);
+            Class53.aClass9_1264.put(-7208, (long) ((i << 16) + i_11_), class40_sub5_sub17_sub5);
         }
         if(arg1 != null) {
             class40_sub5_sub17_sub5 = arg1.method598(arg2, class40_sub5_sub17_sub5, true);
@@ -1474,7 +1472,7 @@ public class Widget extends SubNode {
         if(fontId == 65535) {
             return null;
         }
-        TypeFace class40_sub5_sub14_sub1 = ((TypeFace) Class67.aClass9_1582.method231((long) fontId, (byte) 67));
+        TypeFace class40_sub5_sub14_sub1 = ((TypeFace) Class67.aClass9_1582.get((long) fontId, (byte) 67));
         if(arg0 != 34) {
             return null;
         }
@@ -1485,7 +1483,7 @@ public class Widget extends SubNode {
         if(class40_sub5_sub14_sub1 == null) {
             Class40_Sub13.aBoolean2177 = true;
         } else {
-            Class67.aClass9_1582.method230(-7208, (long) fontId, class40_sub5_sub14_sub1);
+            Class67.aClass9_1582.put(-7208, (long) fontId, class40_sub5_sub14_sub1);
         }
         return class40_sub5_sub14_sub1;
     }

@@ -311,7 +311,7 @@ public class Class40_Sub3 extends Node {
 
     public static UnderlayDefinition method531(byte arg0, int arg1) {
 
-        UnderlayDefinition underlayDefinition = ((UnderlayDefinition) Class53.aClass9_1247.method231((long) arg1, (byte) 43));
+        UnderlayDefinition underlayDefinition = ((UnderlayDefinition) Class53.aClass9_1247.get((long) arg1, (byte) 43));
         anInt2022++;
         if(underlayDefinition != null)
             return underlayDefinition;
@@ -322,7 +322,7 @@ public class Class40_Sub3 extends Node {
         underlayDefinition.calculateHsl();
         if(arg0 >= -39)
             cmd_fpson = null;
-        Class53.aClass9_1247.method230(-7208, (long) arg1, underlayDefinition);
+        Class53.aClass9_1247.put(-7208, (long) arg1, underlayDefinition);
         return underlayDefinition;
 
     }

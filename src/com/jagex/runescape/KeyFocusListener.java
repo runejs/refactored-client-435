@@ -125,7 +125,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 if(i < 10)
                     Class53.fontNormal.drawString((Class40_Sub5_Sub17_Sub6.method832(86, new RSString[]{Class61.aClass1_1432, HashTable.method334(i_3_, arg0 ^ 0x3c5d), Class17.aClass1_465, HashTable.method334(i, -1)})), 4, 329, 16776960);
                 else
-                    Class53.fontNormal.drawString((Class40_Sub5_Sub17_Sub6.method832(70, new RSString[]{Class61.aClass1_1432, HashTable.method334(i_3_, -1), Class43.aClass1_1027, HashTable.method334(i, arg0 ^ 0x3c5d)})), 4, 329, 16776960);
+                    Class53.fontNormal.drawString((Class40_Sub5_Sub17_Sub6.method832(70, new RSString[]{Class61.aClass1_1432, HashTable.method334(i_3_, -1), Class43.char_colon, HashTable.method334(i, arg0 ^ 0x3c5d)})), 4, 329, 16776960);
             }
         }
     }

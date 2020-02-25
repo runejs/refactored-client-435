@@ -40,7 +40,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
     }
 
     public static AnimationSequence method1050(int arg0, int arg1) {
-        AnimationSequence animationSequence = ((AnimationSequence) Class40_Sub5_Sub6.aClass9_2439.method231((long) arg0, (byte) 47));
+        AnimationSequence animationSequence = ((AnimationSequence) Class40_Sub5_Sub6.aClass9_2439.get((long) arg0, (byte) 47));
         if(arg1 != 2)
             anInt2211 = -106;
         if(animationSequence != null)
@@ -50,7 +50,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
         if(is != null)
             animationSequence.method594(-1, new Buffer(is));
         animationSequence.method591((byte) 37);
-        Class40_Sub5_Sub6.aClass9_2439.method230(arg1 + -7210, (long) arg0, animationSequence);
+        Class40_Sub5_Sub6.aClass9_2439.put(arg1 + -7210, (long) arg0, animationSequence);
         return animationSequence;
     }
 

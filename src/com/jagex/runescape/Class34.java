@@ -126,14 +126,14 @@ public class Class34 {
         anInt800++;
         if(arg0 != 0)
             return null;
-        VarbitDefinition varbitDefinition = ((VarbitDefinition) Class57.aClass9_1331.method231((long) arg1, (byte) 111));
+        VarbitDefinition varbitDefinition = ((VarbitDefinition) Class57.aClass9_1331.get((long) arg1, (byte) 111));
         if(varbitDefinition != null)
             return varbitDefinition;
         byte[] is = RSCanvas.aCacheIndex_61.getFile(arg1, 14);
         varbitDefinition = new VarbitDefinition();
         if(is != null)
             varbitDefinition.method562(0, new Buffer(is));
-        Class57.aClass9_1331.method230(-7208, (long) arg1, varbitDefinition);
+        Class57.aClass9_1331.put(-7208, (long) arg1, varbitDefinition);
         return varbitDefinition;
 
     }

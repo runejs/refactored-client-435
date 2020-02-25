@@ -69,7 +69,7 @@ public class Cache {
         AnimationSequence.aCacheIndex_2484 = arg2;
     }
 
-    public void method230(int arg0, long arg1, SubNode arg2) {
+    public void put(int arg0, long arg1, SubNode arg2) {
         if(anInt316 == 0) {
             SubNode class40_sub5 = aClass27_319.method351(536857847);
             class40_sub5.method457(-1);
@@ -86,7 +86,7 @@ public class Cache {
             aClass27_319.method352(102, arg2);
     }
 
-    public SubNode method231(long arg0, byte arg1) {
+    public SubNode get(long arg0, byte arg1) {
         SubNode class40_sub5 = (SubNode) aClass23_318.method331(arg0, 6120);
         if(arg1 < 39)
             aClass1_333 = null;
@@ -97,7 +97,7 @@ public class Cache {
 
     public void removeAll(long arg0, int arg1) {
         if(arg1 <= 94)
-            method231(30L, (byte) 20);
+            get(30L, (byte) 20);
         SubNode class40_sub5 = (SubNode) aClass23_318.method331(arg0, 6120);
         if(class40_sub5 == null)
             return;

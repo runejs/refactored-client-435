@@ -12,7 +12,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class Class40_Sub5_Sub6 extends SubNode {
-    public static RSString aClass1_2434 = RSString.CreateString(":duelreq:");
+    public static RSString requestcmd_duelreq = RSString.CreateString(":duelreq:");
     public static Class67[] aClass67Array2436 = new Class67[13];
     public static int anInt2437;
     public static RSString aClass1_2438 = RSString.CreateString("scroll:");
@@ -35,7 +35,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
 
     public static void method582(boolean arg0) {
         aClass1_2446 = null;
-        aClass1_2434 = null;
+        requestcmd_duelreq = null;
         aClass1_2447 = null;
         aClass1_2438 = null;
         aClass67Array2436 = null;
@@ -299,6 +299,9 @@ public class Class40_Sub5_Sub6 extends SubNode {
                             if(HuffmanEncoding.chatboxInput.equals(Class40_Sub3.cmd_fpson)) {
                                 Class19.showFps = true;
                                 Class40_Sub5_Sub15.inputType = 3;
+                            }
+                            if(HuffmanEncoding.chatboxInput.startsWith("::region")) {
+                                Class44.addChatMessage(HuffmanEncoding.blank_string, RSString.CreateString("Hello world"),0);
                             }
 
                             if(HuffmanEncoding.chatboxInput.equals(Class40_Sub11.cmd_fpsoff))
