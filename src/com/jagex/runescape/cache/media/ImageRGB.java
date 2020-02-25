@@ -739,7 +739,7 @@ public class ImageRGB extends Rasterizer {
     }
 
     public void method723() {
-        Rasterizer.method669(pixels, image_width, image_height);
+        Rasterizer.createRasterizer(pixels, image_width, image_height);
     }
 
     public void method724(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int[] arg8, int[] arg9) {

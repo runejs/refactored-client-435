@@ -120,7 +120,7 @@ public class OverlayDefinition extends SubNode {
             }
             if(Class51.anInt1197 == 25 || Class51.anInt1197 == 40) {
                 Class65.method1018((byte) 123);
-                Rasterizer.method663();
+                Rasterizer.resetPixels();
             }
             if(Class51.anInt1197 == 25) {
                 Class37.anInt874 = 0;

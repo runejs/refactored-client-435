@@ -128,7 +128,7 @@ public abstract class Class68 {
 
     public void method1046(byte arg0) {
         do {
-            Rasterizer.method669(anIntArray1621, anInt1619, anInt1617);
+            Rasterizer.createRasterizer(anIntArray1621, anInt1619, anInt1617);
             anInt1624++;
             if(arg0 == 90)
                 break;
