@@ -189,7 +189,7 @@ public class Widget extends SubNode {
     }
 
     public static void method639(int arg0) {
-        synchronized(Class59.aClass54_1392) {
+        synchronized(Class59.aKeyFocusListener_1392) {
             Class59.anInt1389 = Class52.anInt1214;
             if(GameObjectDefinition.anInt2543 < 0) {
                 for(int i = 0; (i ^ 0xffffffff) > -113; i++) {
@@ -244,8 +244,8 @@ public class Widget extends SubNode {
                 /* empty */
             }
         }
-        arg0.addKeyListener(Class59.aClass54_1392);
-        arg0.addFocusListener(Class59.aClass54_1392);
+        arg0.addKeyListener(Class59.aKeyFocusListener_1392);
+        arg0.addFocusListener(Class59.aKeyFocusListener_1392);
     }
 
     public static void method645(byte arg0) {

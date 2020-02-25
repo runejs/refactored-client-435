@@ -111,9 +111,9 @@ public class ItemDefinition extends SubNode {
     }
 
     public static void method744() {
-        if(Class59.aClass54_1392 != null) {
-            synchronized(Class59.aClass54_1392) {
-                Class59.aClass54_1392 = null;
+        if(Class59.aKeyFocusListener_1392 != null) {
+            synchronized(Class59.aKeyFocusListener_1392) {
+                Class59.aKeyFocusListener_1392 = null;
             }
         }
     }

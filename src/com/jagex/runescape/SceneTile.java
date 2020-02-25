@@ -189,7 +189,7 @@ public class SceneTile extends Node {
             return Node.aClass1_932;
         if((i ^ 0xffffffff) < -1)
             return Class37.aClass1_877;
-        return Class54.aClass1_1283;
+        return KeyFocusListener.aClass1_1283;
 
     }
 

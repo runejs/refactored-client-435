@@ -83,7 +83,7 @@ public class Class67 {
         if(arg0 != true)
             return 39;
         for(int i_1_ = arg1; (i_1_ < arg2); i_1_++)
-            i = (Class54.anIntArray1282[0xff & (i ^ arg3[i_1_])] ^ i >>> 8);
+            i = (KeyFocusListener.anIntArray1282[0xff & (i ^ arg3[i_1_])] ^ i >>> 8);
         i ^= 0xffffffff;
         return i;
 

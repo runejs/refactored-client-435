@@ -151,7 +151,7 @@ public class Class55 {
         IdentityKit.aClass1_2587 = Class22_Sub1.aClass1_1838;
         Class40_Sub5_Sub11.aClass1_2620 = Class26.aClass1_631;
         Class27.aClass1_664 = CacheIndex_Sub1.aClass1_1799;
-        Class61.aClass1_1422 = Class54.aClass1_1271;
+        Class61.aClass1_1422 = KeyFocusListener.aClass1_1271;
         Landscape.aClass1_1181 = HuffmanEncoding.aClass1_1549;
         Class40_Sub7.aClass1_2125 = Class67.aClass1_1591;
         UnderlayDefinition.aClass1_2577 = Class48.aClass1_1137;

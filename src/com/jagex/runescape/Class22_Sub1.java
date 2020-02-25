@@ -104,8 +104,8 @@ public class Class22_Sub1 extends Class22 {
     public static void method311(byte arg0, Component arg1) {
 
         anInt1854++;
-        arg1.removeKeyListener(Class59.aClass54_1392);
-        arg1.removeFocusListener(Class59.aClass54_1392);
+        arg1.removeKeyListener(Class59.aKeyFocusListener_1392);
+        arg1.removeFocusListener(Class59.aKeyFocusListener_1392);
         int i = -46 % ((75 - arg0) / 35);
 
     }

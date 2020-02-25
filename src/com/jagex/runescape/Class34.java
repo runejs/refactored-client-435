@@ -108,7 +108,7 @@ public class Class34 {
     public static boolean method416(byte arg0) {
 
         anInt836++;
-        synchronized(Class59.aClass54_1392) {
+        synchronized(Class59.aKeyFocusListener_1392) {
             if(Class59.anInt1389 == Class52.anInt1214)
                 return false;
             ItemDefinition.anInt2854 = Class40_Sub6.anIntArray2113[Class59.anInt1389];

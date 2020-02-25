@@ -101,11 +101,11 @@ public class Class58 {
                 if((Class40_Sub7.anIntArray2131[i] ^ 0xffffffff) != -1) {
                     if((Class40_Sub7.anIntArray2131[i] ^ 0xffffffff) > -5001) {
                         if((Class13.worldid ^ 0xffffffff) != (Class40_Sub7.anIntArray2131[i] ^ 0xffffffff))
-                            arg1.text = (Class40_Sub5_Sub17_Sub6.method832(86, (new RSString[]{Class54.aClass1_1283, Class26.aClass1_634, HashTable.method334((Class40_Sub7.anIntArray2131[i]), -1)})));
+                            arg1.text = (Class40_Sub5_Sub17_Sub6.method832(86, (new RSString[]{KeyFocusListener.aClass1_1283, Class26.aClass1_634, HashTable.method334((Class40_Sub7.anIntArray2131[i]), -1)})));
                         else
                             arg1.text = (Class40_Sub5_Sub17_Sub6.method832(86, (new RSString[]{Landscape.aClass1_1162, Class26.aClass1_634, HashTable.method334((Class40_Sub7.anIntArray2131[i]), -1)})));
                     } else if((Class40_Sub7.anIntArray2131[i] ^ 0xffffffff) != (Class13.worldid ^ 0xffffffff))
-                        arg1.text = (Class40_Sub5_Sub17_Sub6.method832(53, (new RSString[]{Class54.aClass1_1283, Cache.aClass1_333, HashTable.method334(((Class40_Sub7.anIntArray2131[i]) + -5000), -1)})));
+                        arg1.text = (Class40_Sub5_Sub17_Sub6.method832(53, (new RSString[]{KeyFocusListener.aClass1_1283, Cache.aClass1_333, HashTable.method334(((Class40_Sub7.anIntArray2131[i]) + -5000), -1)})));
                     else
                         arg1.text = (Class40_Sub5_Sub17_Sub6.method832(-111, (new RSString[]{Landscape.aClass1_1162, Cache.aClass1_333, HashTable.method334(-5000 + (Class40_Sub7.anIntArray2131[i]), -1)})));
                 } else

@@ -60,7 +60,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
     public static void putHackCheckPacket(int arg0, int arg1, PacketBuffer arg2) {
         if(arg0 == -12) {
             for(; ; ) {
-                Class40_Sub11 class40_sub11 = ((Class40_Sub11) Class54.aClass45_1278.method902((byte) -90));
+                Class40_Sub11 class40_sub11 = ((Class40_Sub11) KeyFocusListener.aClass45_1278.method902((byte) -90));
                 if(class40_sub11 == null)
                     break;
                 boolean bool = false;

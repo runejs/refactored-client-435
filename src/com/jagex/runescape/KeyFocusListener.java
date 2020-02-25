@@ -12,7 +12,7 @@ import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Class54 implements KeyListener, FocusListener {
+public class KeyFocusListener implements KeyListener, FocusListener {
     public static RSString aClass1_1271 = RSString.CreateString("Benutzername: ");
     public static int anInt1272;
     public static int anInt1273;
@@ -25,8 +25,8 @@ public class Class54 implements KeyListener, FocusListener {
     public static int anInt1280;
     public static int anInt1281;
     public static int[] anIntArray1282 = new int[256];
-    public static RSString aClass1_1283;
-    public static RSString aClass1_1284;
+    public static RSString aClass1_1283 = RSString.CreateString("@yel@");
+    public static RSString aClass1_1284 = RSString.CreateString("compass");
     public static Class68 aClass68_1285;
 
     static {
@@ -40,8 +40,6 @@ public class Class54 implements KeyListener, FocusListener {
             }
             anIntArray1282[i] = i_6_;
         }
-        aClass1_1283 = RSString.CreateString("@yel@");
-        aClass1_1284 = RSString.CreateString("compass");
     }
 
     public static void method953(byte arg0) {
@@ -216,14 +214,13 @@ public class Class54 implements KeyListener, FocusListener {
 
     public synchronized void focusLost(FocusEvent arg0) {
         anInt1274++;
-        if(Class59.aClass54_1392 != null)
+        if(Class59.aKeyFocusListener_1392 != null)
             GameObjectDefinition.anInt2543 = -1;
     }
 
     public synchronized void keyPressed(KeyEvent arg0) {
-
         anInt1273++;
-        if(Class59.aClass54_1392 != null) {
+        if(Class59.aKeyFocusListener_1392 != null) {
             Class49.anInt1147 = 0;
             int i = arg0.getKeyCode();
             if((i ^ 0xffffffff) <= -1 && HuffmanEncoding.anIntArray1564.length > i) {
@@ -258,7 +255,7 @@ public class Class54 implements KeyListener, FocusListener {
 
     public synchronized void keyReleased(KeyEvent arg0) {
 
-        if(Class59.aClass54_1392 != null) {
+        if(Class59.aKeyFocusListener_1392 != null) {
             Class49.anInt1147 = 0;
             int i = arg0.getKeyCode();
             if(i < 0 || HuffmanEncoding.anIntArray1564.length <= i)

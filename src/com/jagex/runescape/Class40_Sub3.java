@@ -74,19 +74,19 @@ public class Class40_Sub3 extends Node {
             Class22_Sub2.currentLoadingText = RSCanvas.aClass1_63;
             Class40_Sub5_Sub6.anInt2451 = 30;
         } else if(Class40_Sub5_Sub6.anInt2451 == 30) {
-            FloorDecoration.aClass6_Sub1_605 = Class54.method957(0, true, false, (byte) 127, true);
-            Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000 = Class54.method957(1, true, false, (byte) 125, true);
-            IdentityKit.aClass6_Sub1_2609 = Class54.method957(2, true, true, (byte) 119, false);
-            Class65.aClass6_Sub1_1533 = Class54.method957(3, true, false, (byte) 119, true);
-            Actor.aClass6_Sub1_3157 = Class54.method957(4, true, false, (byte) 119, true);
-            Renderable.aClass6_Sub1_2857 = Class54.method957(5, true, true, (byte) 123, true);
-            Class55.aClass6_Sub1_1286 = Class54.method957(6, false, true, (byte) 117, true);
-            UnderlayDefinition.aClass6_Sub1_2571 = Class54.method957(7, true, false, (byte) 124, true);
-            ActorDefinition.aClass6_Sub1_2377 = Class54.method957(8, true, false, (byte) 127, true);
-            Class32.aClass6_Sub1_773 = Class54.method957(9, true, false, (byte) 127, true);
-            RSCanvas.aClass6_Sub1_48 = Class54.method957(10, true, false, (byte) 125, true);
-            VertexNormal.aClass6_Sub1_1104 = Class54.method957(11, true, false, (byte) 120, true);
-            Class56.aClass6_Sub1_1323 = Class54.method957(12, true, false, (byte) 118, true);
+            FloorDecoration.aClass6_Sub1_605 = KeyFocusListener.method957(0, true, false, (byte) 127, true);
+            Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000 = KeyFocusListener.method957(1, true, false, (byte) 125, true);
+            IdentityKit.aClass6_Sub1_2609 = KeyFocusListener.method957(2, true, true, (byte) 119, false);
+            Class65.aClass6_Sub1_1533 = KeyFocusListener.method957(3, true, false, (byte) 119, true);
+            Actor.aClass6_Sub1_3157 = KeyFocusListener.method957(4, true, false, (byte) 119, true);
+            Renderable.aClass6_Sub1_2857 = KeyFocusListener.method957(5, true, true, (byte) 123, true);
+            Class55.aClass6_Sub1_1286 = KeyFocusListener.method957(6, false, true, (byte) 117, true);
+            UnderlayDefinition.aClass6_Sub1_2571 = KeyFocusListener.method957(7, true, false, (byte) 124, true);
+            ActorDefinition.aClass6_Sub1_2377 = KeyFocusListener.method957(8, true, false, (byte) 127, true);
+            Class32.aClass6_Sub1_773 = KeyFocusListener.method957(9, true, false, (byte) 127, true);
+            RSCanvas.aClass6_Sub1_48 = KeyFocusListener.method957(10, true, false, (byte) 125, true);
+            VertexNormal.aClass6_Sub1_1104 = KeyFocusListener.method957(11, true, false, (byte) 120, true);
+            Class56.aClass6_Sub1_1323 = KeyFocusListener.method957(12, true, false, (byte) 118, true);
             Class40_Sub5_Sub6.anInt2451 = 40;
             Class22_Sub2.currentLoadingText = FloorDecoration.STRING_CONNECTING_UPDATE_SERVER;
             Class67.anInt1607 = 20;
@@ -180,7 +180,7 @@ public class Class40_Sub3 extends Node {
             if(AnimationSequence.aClass40_Sub5_Sub14_Sub4_2482 != null)
                 i++;
             else
-                AnimationSequence.aClass40_Sub5_Sub14_Sub4_2482 = HuffmanEncoding.method1028(ActorDefinition.aClass6_Sub1_2377, Class54.aClass1_1284, (byte) 21, HuffmanEncoding.blank_string);
+                AnimationSequence.aClass40_Sub5_Sub14_Sub4_2482 = HuffmanEncoding.method1028(ActorDefinition.aClass6_Sub1_2377, KeyFocusListener.aClass1_1284, (byte) 21, HuffmanEncoding.blank_string);
             if(SpotAnimDefinition.minimapEdge == null)
                 SpotAnimDefinition.minimapEdge = HuffmanEncoding.method1028(ActorDefinition.aClass6_Sub1_2377, Class61.aClass1_1427, (byte) 21, HuffmanEncoding.blank_string);
             else
@@ -250,7 +250,7 @@ public class Class40_Sub3 extends Node {
                 Class40_Sub5_Sub6.anInt2451 = 85;
             }
         } else if((Class40_Sub5_Sub6.anInt2451 ^ 0xffffffff) == -86) {
-            int i = Class54.method955(ActorDefinition.aClass6_Sub1_2377, (byte) -59);
+            int i = KeyFocusListener.method955(ActorDefinition.aClass6_Sub1_2377, (byte) -59);
             int i_9_ = ActorDefinition.method576(false);
             if(i < i_9_) {
                 Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(97, new RSString[]{Class27.aClass1_668, HashTable.method334(i * 100 / i_9_, -1), Class44.aClass1_1041}));

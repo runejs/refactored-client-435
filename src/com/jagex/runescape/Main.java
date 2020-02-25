@@ -740,11 +740,11 @@ public class Main extends RSApplet {
         Class58.anInt1368 = 0;
         FloorDecoration.anInt592 = 0;
         ISAAC.anInt514 = 0;
-        Class54.anInt1274 = 0;
+        KeyFocusListener.anInt1274 = 0;
         Class24.anInt586 = 0;
         Class40_Sub3.anInt2022 = 0;
         Class42.anInt999 = 0;
-        Class54.anInt1279 = 0;
+        KeyFocusListener.anInt1279 = 0;
         IdentityKit.anInt2603 = 0;
         IdentityKit.anInt2585 = 0;
         IdentityKit.anInt2607 = 0;
@@ -775,7 +775,7 @@ public class Main extends RSApplet {
         RSCanvas.anInt56 = 0;
         Class49.anInt1142 = 0;
         Class37.anInt862 = 0;
-        Class54.anInt1277 = 0;
+        KeyFocusListener.anInt1277 = 0;
         Class59.anInt1380 = 0;
         Class51.anInt1192 = 0;
         RSCanvas.anInt52 = 0;
@@ -805,7 +805,7 @@ public class Main extends RSApplet {
         Class56.anInt1326 = 0;
         VarbitDefinition.anInt2371 = 0;
         Class44.anInt1036 = 0;
-        Class54.anInt1275 = 0;
+        KeyFocusListener.anInt1275 = 0;
         Class44.anInt1044 = 0;
         Class43.anInt1016 = 0;
         Class40_Sub5_Sub17_Sub1.anInt2959 = 0;
@@ -836,10 +836,10 @@ public class Main extends RSApplet {
         Class42.anInt991 = 0;
         Landscape.anInt1182 = 0;
         Class40_Sub5_Sub15.anInt2783 = 0;
-        Class54.anInt1273 = 0;
+        KeyFocusListener.anInt1273 = 0;
         Class13.anInt409 = 0;
         Class29.anInt669 = 0;
-        Class54.anInt1281 = 0;
+        KeyFocusListener.anInt1281 = 0;
         Class22.anInt543 = 0;
         Class13.anInt401 = 0;
         Class22.anInt539 = 0;
@@ -860,7 +860,7 @@ public class Main extends RSApplet {
         Node.anInt962 = 0;
         Class52.anInt1224 = 0;
         Class52.anInt1240 = 0;
-        Class54.anInt1276 = 0;
+        KeyFocusListener.anInt1276 = 0;
         Landscape.anInt1179 = 0;
         Class40_Sub5_Sub17_Sub1.anInt2970 = 0;
         SubNode.anInt2089 = 0;
@@ -932,7 +932,7 @@ public class Main extends RSApplet {
         Class34.anInt803 = 0;
         Class58.anInt1357 = 0;
         SubNode.anInt2096 = 0;
-        Class54.anInt1280 = 0;
+        KeyFocusListener.anInt1280 = 0;
         Class56.anInt1317 = 0;
         Class40_Sub5_Sub15.anInt2785 = 0;
         Class37.anInt865 = 0;
@@ -958,7 +958,7 @@ public class Main extends RSApplet {
         Class24.anInt576 = 0;
         OverlayDefinition.anInt2343 = 0;
         Class53.anInt1256 = 0;
-        Class54.anInt1272 = 0;
+        KeyFocusListener.anInt1272 = 0;
         CacheIndex.anInt230 = 0;
         Class68.anInt1620 = 0;
         VarbitDefinition.anInt2360 = 0;
@@ -1359,7 +1359,7 @@ public class Main extends RSApplet {
         FloorDecoration.method348(arg0 + -34645);
         Class52.method946(false);
         Class11.method239();
-        Class54.method953((byte) -38);
+        KeyFocusListener.method953((byte) -38);
         GameFrame.method1001(true);
         Class51.method939(-108);
         SubNode.method541(117);

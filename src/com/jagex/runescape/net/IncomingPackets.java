@@ -71,7 +71,7 @@ public class IncomingPackets {
             RSString.anInt1690 = Class57.incomingPacket;
             if(Class57.incomingPacket == 71) {
                 long l = Cache.outgoingbuffer.getLongBE();
-                RSString class1 = Class54.method956(82, Cache.outgoingbuffer).method53(-16315);
+                RSString class1 = KeyFocusListener.method956(82, Cache.outgoingbuffer).method53(-16315);
                 Class44.method895(70, 6, class1, Class60.method991(-42, l).method85(-4305));
                 Class57.incomingPacket = -1;
                 return true;
@@ -932,7 +932,7 @@ public class IncomingPackets {
                 if(!bool && (Class4.anInt182 ^ 0xffffffff) == -1) {
                     Class40_Sub5_Sub13.aLongArray2757[(Class40_Sub3.anInt2021)] = l_91_;
                     Class40_Sub3.anInt2021 = (1 + Class40_Sub3.anInt2021) % 100;
-                    RSString class1 = Class54.method956(67, Cache.outgoingbuffer).method53(-16315);
+                    RSString class1 = KeyFocusListener.method956(67, Cache.outgoingbuffer).method53(-16315);
                     if((i_90_ ^ 0xffffffff) == -3 || (i_90_ ^ 0xffffffff) == -4)
                         Class44.method895(99, 7, class1, (Class40_Sub5_Sub17_Sub6.method832(88, (new RSString[]{(Widget.goldCrown), Class60.method991(-73, l).method85(-4305)}))));
                     else if(i_90_ == 1)

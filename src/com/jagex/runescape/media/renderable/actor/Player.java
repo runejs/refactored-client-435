@@ -149,7 +149,7 @@ public class Player extends Actor {
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
                     Cache.outgoingbuffer.putNegativeOffsetBytes(0, Class59.aClass40_Sub1_1385.buffer, i_4_);
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
-                    RSString class1 = Class54.method956(124, Class59.aClass40_Sub1_1385).method53(-16315);
+                    RSString class1 = KeyFocusListener.method956(124, Class59.aClass40_Sub1_1385).method53(-16315);
                     player.forcedChatMessage = class1.trim();
                     player.anInt3078 = 150;
                     player.anInt3123 = i & 0xff;

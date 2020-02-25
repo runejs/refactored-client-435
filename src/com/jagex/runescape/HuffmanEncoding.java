@@ -166,7 +166,7 @@ public class HuffmanEncoding {
                                     i_3_ = 34;
                                 if(i == 4)
                                     i_3_ = 20;
-                                OverlayDefinition.method558(arg3, class1s[i], arg2, arg0 + -501, arg1, i_3_, (Class40_Sub5_Sub17_Sub6.method832(arg0 + 93, new RSString[]{Class54.aClass1_1283, class1})));
+                                OverlayDefinition.method558(arg3, class1s[i], arg2, arg0 + -501, arg1, i_3_, (Class40_Sub5_Sub17_Sub6.method832(arg0 + 93, new RSString[]{KeyFocusListener.aClass1_1283, class1})));
                             }
                         }
                     }
@@ -187,11 +187,11 @@ public class HuffmanEncoding {
                                     i_5_ = i_4_ + 34;
                                 if((i ^ 0xffffffff) == -5)
                                     i_5_ = 20 + i_4_;
-                                OverlayDefinition.method558(arg3, class1s[i], arg2, arg0 ^ ~0x1f4, arg1, i_5_, (Class40_Sub5_Sub17_Sub6.method832(-64, new RSString[]{Class54.aClass1_1283, class1})));
+                                OverlayDefinition.method558(arg3, class1s[i], arg2, arg0 ^ ~0x1f4, arg1, i_5_, (Class40_Sub5_Sub17_Sub6.method832(-64, new RSString[]{KeyFocusListener.aClass1_1283, class1})));
                             }
                         }
                     }
-                    OverlayDefinition.method558(arg3, Class40_Sub5_Sub15.aClass1_2774, arg2, -501, arg1, 1001, (Class40_Sub5_Sub17_Sub6.method832(-116, new RSString[]{Class54.aClass1_1283, class1})));
+                    OverlayDefinition.method558(arg3, Class40_Sub5_Sub15.aClass1_2774, arg2, -501, arg1, 1001, (Class40_Sub5_Sub17_Sub6.method832(-116, new RSString[]{KeyFocusListener.aClass1_1283, class1})));
                 }
             }
         }

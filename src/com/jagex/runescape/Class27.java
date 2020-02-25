@@ -90,7 +90,7 @@ public class Class27 {
         Class33.method404((byte) -28);
         Class38_Sub1.method450((byte) -67);
         ((Class35) R3D.anInterface3_2939).method425((byte) 6, Class5.anInt199);
-        Class54.method954(-15454);
+        KeyFocusListener.method954(-15454);
         if(ISAAC.aBoolean519 && (method368((byte) -41, false, true) ^ 0xffffffff) == -1)
             ISAAC.aBoolean519 = false;
         if(ISAAC.aBoolean519) {

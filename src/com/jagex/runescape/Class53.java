@@ -430,7 +430,7 @@ public class Class53 {
                 Class39.aClass68_907.method1044(0, 128, graphics, 0);
                 Class51.aClass68_1206.method1044(0, 202, graphics, 371);
                 Class17.aClass68_463.method1044(0, 0, graphics, 265);
-                Class54.aClass68_1285.method1044(0, 562, graphics, 265);
+                KeyFocusListener.aClass68_1285.method1044(0, 562, graphics, 265);
                 GameObjectDefinition.aClass68_2524.method1044(0, 128, graphics, 171);
                 Class68.aClass68_1631.method1044(0, 562, graphics, 171);
             } catch(Exception exception) {

@@ -201,7 +201,7 @@ public class ActorDefinition extends SubNode {
                 class40_sub11.anIntArray2155[i_6_] = -5;
             }
         }
-        Class54.aClass45_1278.method904(class40_sub11, 92);
+        KeyFocusListener.aClass45_1278.method904(class40_sub11, 92);
     }
 
     public static void method581(int arg0) {

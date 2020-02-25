@@ -189,7 +189,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             Rasterizer.resetPixels();
             Class17.aClass68_463 = Class40_Sub5_Sub13.method649(238, 202, arg0, -4875);
             Rasterizer.resetPixels();
-            Class54.aClass68_1285 = Class40_Sub5_Sub13.method649(238, 203, arg0, -4875);
+            KeyFocusListener.aClass68_1285 = Class40_Sub5_Sub13.method649(238, 203, arg0, -4875);
             Rasterizer.resetPixels();
             GameObjectDefinition.aClass68_2524 = Class40_Sub5_Sub13.method649(94, 74, arg0, -4875);
             Rasterizer.resetPixels();
@@ -209,7 +209,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             class40_sub5_sub14_sub4.method727(-202, -171);
             Class17.aClass68_463.method1046((byte) 90);
             class40_sub5_sub14_sub4.method727(0, -265);
-            Class54.aClass68_1285.method1046((byte) 90);
+            KeyFocusListener.aClass68_1285.method1046((byte) 90);
             class40_sub5_sub14_sub4.method727(-562, -265);
             GameObjectDefinition.aClass68_2524.method1046((byte) 90);
             class40_sub5_sub14_sub4.method727(-128, -171);
@@ -234,7 +234,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             class40_sub5_sub14_sub4.method727(180, -171);
             Class17.aClass68_463.method1046((byte) 90);
             class40_sub5_sub14_sub4.method727(382, -265);
-            Class54.aClass68_1285.method1046((byte) 90);
+            KeyFocusListener.aClass68_1285.method1046((byte) 90);
             class40_sub5_sub14_sub4.method727(-180, -265);
             GameObjectDefinition.aClass68_2524.method1046((byte) 90);
             class40_sub5_sub14_sub4.method727(254, -171);
