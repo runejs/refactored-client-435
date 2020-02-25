@@ -168,7 +168,7 @@ public class IdentityKit extends SubNode {
         boolean bool = true;
         anInt2603++;
         int i = 0;
-        if(arg0 != false) {
+        if(arg0) {
             return false;
         }
         for(/**/; i < 5; i++) {
@@ -236,7 +236,7 @@ public class IdentityKit extends SubNode {
         } else {
             class40_sub5_sub17_sub5 = (new Model(class40_sub5_sub17_sub5s, class40_sub5_sub17_sub5s.length));
         }
-        if(arg0 != false) {
+        if(arg0) {
             return null;
         }
         for(int i = 0; i < 6; i++) {

@@ -176,7 +176,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
     }
 
     public static int method32(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
-        if(arg3 != true)
+        if(!arg3)
             return -109;
         int i = (65536 + -(R3D.cosinetable[1024 * arg4 / arg1]) >> 1);
         return (((65536 + -i) * arg0 >> 16) + (arg2 * i >> 16));
@@ -422,7 +422,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             HashTable.aBoolean571 = Class52.aBoolean1215;
         }
         method23(-22636);
-        if(arg0 == true)
+        if(arg0)
             return;
         windowIconified(null);
     }

@@ -312,7 +312,7 @@ public class Class48 {
     public static ImageRGB method927(int arg0, CacheIndex arg1, boolean arg2, int arg3) {
         if(!Class52.method948(arg0, arg3, arg1, -3844))
             return null;
-        if(arg2 != true)
+        if(!arg2)
             method922(3, -92, null, -95, -119, -82, -28, -32);
         return ActorDefinition.method578(-120);
     }
@@ -381,7 +381,7 @@ public class Class48 {
                     arg0[i_23_] = (byte) -128;
             }
         }
-        if(arg1 != false)
+        if(arg1)
             method927(-84, null, true, -86);
         return arg0;
     }

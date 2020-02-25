@@ -34,7 +34,7 @@ public class Class24 {
     public static int method338(int arg0, boolean arg1, int arg2, int arg3) {
 
         arg0 &= 0x3;
-        if(arg1 != false)
+        if(arg1)
             return 68;
         anInt585++;
         if(arg0 == 0)

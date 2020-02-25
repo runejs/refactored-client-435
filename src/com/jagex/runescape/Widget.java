@@ -286,7 +286,7 @@ public class Widget extends SubNode {
             Class51.aClass1Array1204 = new RSString[class40_sub5_sub1.anInt2267];
             int i_4_ = 0;
             int i_5_ = 0;
-            if(arg5 != false) {
+            if(arg5) {
                 Class43.cameraYawOffset = -119;
             }
             for(int i_6_ = 1; i_6_ < arg0.length; i_6_++) {
@@ -1071,7 +1071,7 @@ public class Widget extends SubNode {
         items[arg0] = i;
         i = itemAmounts[arg2];
         itemAmounts[arg2] = itemAmounts[arg0];
-        if(arg1 != false) {
+        if(arg1) {
             clientScripts = null;
         }
         itemAmounts[arg0] = i;

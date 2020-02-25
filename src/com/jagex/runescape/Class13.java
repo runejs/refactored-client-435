@@ -194,7 +194,7 @@ public class Class13 {
 
     public static void method249(boolean arg0) {
 
-        if(arg0 != true)
+        if(!arg0)
             method244(-58, 116, -89, 98);
         if(GameObject.frame != null) {
             synchronized(GameObject.frame) {

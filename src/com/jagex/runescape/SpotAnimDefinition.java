@@ -100,7 +100,7 @@ public class SpotAnimDefinition extends SubNode {
                     FloorDecoration.aClass15_607 = null;
                 }
             }
-            if(arg0 != true) {
+            if(!arg0) {
                 aClass1_2297 = null;
             }
             if(Class40_Sub3.anInt2032 == 2) {

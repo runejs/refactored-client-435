@@ -75,7 +75,7 @@ public class Class60 {
             CollisionMap.aClass8_166 = null;
         }
         anInt1410++;
-        if(arg0 != true)
+        if(!arg0)
             method987(-89);
     }
 
@@ -273,7 +273,7 @@ public class Class60 {
         aClass1_1401 = null;
         aClass1_1408 = null;
         aClass1_1409 = null;
-        if(arg0 != false)
+        if(arg0)
             aClass1_1408 = null;
         aClass1_1411 = null;
         aClass1_1416 = null;

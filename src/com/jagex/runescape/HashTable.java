@@ -77,7 +77,7 @@ public class HashTable {
         aClass40_Sub5_Sub14_Sub2_549 = null;
         aClass1_553 = null;
         aClass1_558 = null;
-        if(arg0 != false)
+        if(arg0)
             aClass1_569 = null;
         aClass1_563 = null;
         aClass1_569 = null;
@@ -129,7 +129,7 @@ public class HashTable {
 
     public Node method329(boolean arg0) {
         anInt572 = 0;
-        if(arg0 != false)
+        if(arg0)
             return null;
         return method336((byte) -38);
     }

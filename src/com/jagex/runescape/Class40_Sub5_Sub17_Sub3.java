@@ -57,7 +57,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
 
         anInt3064++;
         int i = ((Player.localPlayer.anInt3089) + Class48.anInt1126);
-        if(arg0 != false)
+        if(arg0)
             method778(true, null);
         int i_0_ = (Buffer.anInt1976 + (Player.localPlayer.anInt3098));
         if(Class40_Sub5_Sub6.anInt2437 - i_0_ < -500 || -i_0_ + Class40_Sub5_Sub6.anInt2437 > 500 || Class34.anInt849 + -i < -500 || -i + Class34.anInt849 > 500) {
@@ -169,7 +169,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
     public static void method778(boolean arg0, HuffmanEncoding arg1) {
         IdentityKit.aHuffmanEncoding_2590 = arg1;
         anInt3063++;
-        if(arg0 != true)
+        if(!arg0)
             method775(true);
     }
 
@@ -268,7 +268,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                 Renderable.anIntArray2865[i + 64] = 4 * i + 65280;
             for(int i = 0; i < 64; i++)
                 Renderable.anIntArray2865[128 + i] = i * 262144 + 65535;
-            if(arg1 != true)
+            if(!arg1)
                 method779(null, false, null, null);
             for(int i = 0; i < 64; i++)
                 Renderable.anIntArray2865[i + 192] = 16777215;

@@ -42,7 +42,7 @@ public class Cache {
 
     public static void method233(boolean arg0) {
         Class33.aClass9_778.method235((byte) 108);
-        if(arg0 != true)
+        if(!arg0)
             method236(true, null, null, null);
     }
 
@@ -63,7 +63,7 @@ public class Cache {
 
     public static void method236(boolean arg0, CacheIndex arg1, CacheIndex arg2, CacheIndex arg3) {
         Class40_Sub11.aCacheIndex_2162 = arg1;
-        if(arg0 != false)
+        if(arg0)
             anInt324 = -101;
         VarbitDefinition.aCacheIndex_2364 = arg3;
         AnimationSequence.aCacheIndex_2484 = arg2;

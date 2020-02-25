@@ -141,7 +141,7 @@ public class Signlink implements Runnable {
 
     public Class15 method388(boolean arg0, URL arg1) {
 
-        if(arg0 != false)
+        if(arg0)
             method397(-42);
         return method389(124, 0, 4, 0, arg1);
 
@@ -252,7 +252,7 @@ public class Signlink implements Runnable {
 
     public Class15 method392(Class arg0, String arg1, boolean arg2) {
 
-        if(arg2 != true)
+        if(!arg2)
             aString735 = null;
         return method389(126, 0, 10, 0, new Object[]{arg0, arg1});
 

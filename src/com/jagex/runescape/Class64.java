@@ -55,7 +55,7 @@ public class Class64 implements Runnable {
 
         aClass1_1505 = null;
         aClass1_1526 = null;
-        if(arg0 != true)
+        if(!arg0)
             aClass1_1502 = null;
         aClass1_1523 = null;
         aClass1_1502 = null;
@@ -80,7 +80,7 @@ public class Class64 implements Runnable {
 
     public static void method1013(boolean arg0) {
         int i = -1;
-        if(arg0 != false)
+        if(arg0)
             method1013(false);
         if(Class8.anInt301 == 0 && Main.anInt1773 == 0) {
             OverlayDefinition.method558(0, Class22_Sub2.aClass1_1876, Landscape.mouseY, -501, Class13.mouseX, 7, HuffmanEncoding.blank_string);

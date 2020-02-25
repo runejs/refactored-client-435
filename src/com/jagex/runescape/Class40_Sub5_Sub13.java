@@ -44,7 +44,7 @@ public class Class40_Sub5_Sub13 extends SubNode {
     public static void method650(boolean arg0, int arg1) {
 
         Class45.anInt1073 = arg1;
-        if(arg0 == true)
+        if(arg0)
             anInt2759++;
 
     }

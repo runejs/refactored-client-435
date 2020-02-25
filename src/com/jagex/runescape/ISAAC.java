@@ -414,7 +414,7 @@ public class ISAAC {
         aClass1_527 = null;
         aClass9_516 = null;
         aClass1_523 = null;
-        if(arg0 == true) {
+        if(arg0) {
             aClass31_521 = null;
             anIntArray528 = null;
             aClass1_517 = null;
@@ -571,7 +571,7 @@ public class ISAAC {
             anIntArray511[7 + i_109_] = i_107_;
         }
         int i_110_ = 0;
-        if(arg0 != true)
+        if(!arg0)
             aClass9_516 = null;
         for(/**/; i_110_ < 256; i_110_ += 8) {
             i_107_ += anIntArray511[7 + i_110_];

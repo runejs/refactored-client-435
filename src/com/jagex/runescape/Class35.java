@@ -170,7 +170,7 @@ public class Class35 implements Interface3 {
     public int method14(boolean arg0, int arg1) {
 
         anInt1724++;
-        if(arg0 != true)
+        if(!arg0)
             return 115;
         if(aClass40_Sub10Array1740[arg1] != null)
             return aClass40_Sub10Array1740[arg1].anInt2137;

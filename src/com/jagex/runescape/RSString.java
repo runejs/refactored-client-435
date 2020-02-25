@@ -187,7 +187,7 @@ public class RSString implements Interface1 {
     }
 
     public int method55(int arg0, boolean arg1) {
-        if(arg1 != false)
+        if(arg1)
             method80(-9);
         return 0xff & chars[arg0];
     }
@@ -231,7 +231,7 @@ public class RSString implements Interface1 {
         class1.length = length;
         class1.chars = new byte[length];
         int i = 0;
-        if(arg0 != false)
+        if(arg0)
             aClass1_1713 = null;
         for(/**/; i < length; i++)
             class1.chars[i] = (byte) 42;
@@ -261,7 +261,7 @@ public class RSString implements Interface1 {
     }
 
     public boolean equalsIgnoreCase(RSString arg0, boolean arg1) {
-        if(arg1 != true)
+        if(!arg1)
             aClass1_1713 = null;
         if(arg0 == null)
             return false;
@@ -286,7 +286,7 @@ public class RSString implements Interface1 {
             if(chars[i_5_] == i)
                 return i_5_;
         }
-        if(arg2 != true)
+        if(!arg2)
             aClass1_1703 = null;
         return -1;
     }

@@ -334,7 +334,7 @@ public abstract class Actor extends Renderable {
                 int i_29_ = Cache.outgoingbuffer.putBits(7, (byte) -65);
                 int i_30_ = Cache.outgoingbuffer.putBits(7, (byte) -65);
                 Player.localPlayer.method787(i_30_, -7717, i_27_ == 1, i_29_);
-            } else if(arg0 != true)
+            } else if(!arg0)
                 method781(-5, -11, -11, 113, 49, 123);
         }
     }

@@ -79,7 +79,7 @@ public class Player extends Actor {
         aByteArray3270 = null;
         aClass1_3285 = null;
         anIntArray3284 = null;
-        if(arg0 == false) {
+        if(!arg0) {
             aClass1_3286 = null;
             aClass1_3290 = null;
             aClass1_3256 = null;

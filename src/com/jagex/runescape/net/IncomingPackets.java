@@ -226,7 +226,7 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(arg0 != false)
+            if(arg0)
                 CollisionMap.anInt172 = -96;
             if(Class57.incomingPacket == 235) {
                 Class27.anInt658 = Cache.outgoingbuffer.getUnsignedByte();

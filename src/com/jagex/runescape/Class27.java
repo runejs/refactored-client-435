@@ -1216,7 +1216,7 @@ public class Class27 {
         arg1.aClass40_Sub5_2082 = aClass40_Sub5_660.aClass40_Sub5_2082;
         arg1.aClass40_Sub5_2087 = aClass40_Sub5_660;
         arg1.aClass40_Sub5_2087.aClass40_Sub5_2082 = arg1;
-        if(arg0 != true)
+        if(!arg0)
             method360((byte) -126, -26, -36, -4, -38, 92, -45);
         arg1.aClass40_Sub5_2082.aClass40_Sub5_2087 = arg1;
     }

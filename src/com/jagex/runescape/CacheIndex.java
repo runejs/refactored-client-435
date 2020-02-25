@@ -175,13 +175,13 @@ public abstract class CacheIndex {
     public static void method188(boolean arg0) {
         Class40_Sub5_Sub6.aClass9_2439.method235((byte) 95);
         Class42.aClass9_998.method235((byte) -90);
-        if(arg0 == true)
+        if(arg0)
             anInt211++;
     }
 
     public static void method189(boolean arg0) {
         anInt250++;
-        if(arg0 != false)
+        if(arg0)
             anIntArray225 = null;
         Class53.aClass9_1247.method235((byte) 59);
     }
@@ -478,7 +478,7 @@ public abstract class CacheIndex {
     }
 
     public int[] method192(int arg0, boolean arg1) {
-        if(arg1 != true)
+        if(!arg1)
             return null;
         anInt241++;
         return anIntArrayArray243[arg0];

@@ -52,7 +52,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
         aClass1_1471 = null;
         aClass40_Sub5_Sub14_Sub4Array1466 = null;
         aClass1_1465 = null;
-        if(arg0 != true)
+        if(!arg0)
             method1003(null, null, 31);
         aClass1_1463 = null;
         aClass9_1455 = null;

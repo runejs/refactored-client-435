@@ -596,7 +596,7 @@ public class Main extends RSApplet {
         aClass1_1763 = null;
         aClass1_1777 = null;
         aClass1_1788 = null;
-        if(arg0 != false)
+        if(arg0)
             method36(-124, 5, -72, 123, 30, -52, 55, 27, null, false);
         aClass1_1761 = null;
         aClass1_1757 = null;
@@ -619,7 +619,7 @@ public class Main extends RSApplet {
     }
 
     public static void method43(CacheIndex arg0, boolean arg1) {
-        if(arg1 == true) {
+        if(arg1) {
             Class64.aCacheIndex_1521 = arg0;
             Class59.anInt1383 = Class64.aCacheIndex_1521.method190(16, (byte) 24);
         }
@@ -1413,7 +1413,7 @@ public class Main extends RSApplet {
     public void method31(boolean arg0) {
         CollisionMap.anInt172 = Class44.modewhere == 0 ? 443 : 50000 + Class13.worldid;
         OverlayDefinition.anInt2340 = (Class44.modewhere != 0 ? Class13.worldid + 40000 : 43594);
-        if(arg0 != true)
+        if(!arg0)
             aBoolean1790 = true;
         Class10.anInt350 = OverlayDefinition.anInt2340;
         Class61.method997(47);

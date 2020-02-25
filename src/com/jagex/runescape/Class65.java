@@ -67,7 +67,7 @@ public class Class65 {
         OverlayDefinition.tile_underlay_path = new byte[4][104][104];
         anInt1532++;
         CacheIndex.anIntArrayArrayArray262 = new int[4][105][105];
-        if(arg0 != true)
+        if(!arg0)
             aClass1_1530 = null;
         Class64.setZ = 99;
         Class19.aByteArrayArrayArray492 = new byte[4][105][105];

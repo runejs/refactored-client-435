@@ -151,7 +151,7 @@ public class AnimationSequence extends SubNode {
     public Model method593(int arg0, boolean arg1, Model arg2, int arg3) {
         arg0 = anIntArray2485[arg0];
         Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, arg0 >> 16);
-        if(arg1 != false)
+        if(arg1)
             anIntArray2479 = null;
         arg0 &= 0xffff;
         if(class40_sub5_sub15 == null)
@@ -256,7 +256,7 @@ public class AnimationSequence extends SubNode {
         i &= 0xffff;
         if(class40_sub5_sub15 == null)
             return arg1.method817(true);
-        if(arg2 != true)
+        if(!arg2)
             method594(98, null);
         Class40_Sub5_Sub15 class40_sub5_sub15_20_ = null;
         int i_21_ = 0;
@@ -277,7 +277,7 @@ public class AnimationSequence extends SubNode {
     }
 
     public Model method599(int arg0, Model arg1, boolean arg2) {
-        if(arg2 != false)
+        if(arg2)
             method591((byte) -78);
         arg0 = anIntArray2485[arg0];
         Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, arg0 >> 16);

@@ -206,7 +206,7 @@ public class Class34 {
             arg1 = -arg1 + 127;
             return arg1;
         }
-        if(arg2 != true)
+        if(!arg2)
             method415((byte) -125, -124, -88);
         arg1 = arg1 * (arg0 & 0x7f) / 128;
         if(arg1 < 2)

@@ -60,7 +60,7 @@ public class Class56 {
 
     public static RSString[] method968(RSString[] arg0, boolean arg1) {
 
-        if(arg1 != false)
+        if(arg1)
             method972((byte) -104);
         RSString[] class1s = new RSString[5];
         anInt1317++;

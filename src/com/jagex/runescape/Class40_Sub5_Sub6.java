@@ -45,7 +45,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
         aClass1_2457 = null;
         aClass1_2460 = null;
         aClass1_2440 = null;
-        if(arg0 != true)
+        if(!arg0)
             method582(false);
     }
 

@@ -68,7 +68,7 @@ public class CollisionMap {
     }
 
     public void method143(boolean arg0, int arg1, int arg2, int arg3) {
-        if(arg0 != true)
+        if(!arg0)
             anIntArrayArray150 = null;
         anIntArrayArray150[arg1][arg2] = UnderlayDefinition.bitWiseOR(anIntArrayArray150[arg1][arg2], arg3);
     }
@@ -416,7 +416,7 @@ public class CollisionMap {
     public boolean method155(int arg0, boolean arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
         if(arg6 == arg0 && arg3 == arg4)
             return true;
-        if(arg1 != false)
+        if(arg1)
             parseIncomingPackets(true);
         arg4 -= anInt151;
         arg6 -= anInt140;

@@ -303,7 +303,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     }
                 }
             }
-            if(arg1 == false) {
+            if(!arg1) {
                 for(int i = 0; i < ActorDefinition.anInt2394; i++) {
                     if(Class38.anIntArray884[i] == 7) {
                         Landscape.aClass1Array1184[i] = (Class40_Sub5_Sub17_Sub6.method832(-78, new RSString[]{Class22_Sub2.aClass1_1876, VertexNormal.aClass1_1117, Class26.aClass1_620, class1}));

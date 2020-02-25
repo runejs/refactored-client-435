@@ -80,7 +80,7 @@ public class Class67 {
 
         anInt1584++;
         int i = -1;
-        if(arg0 != true)
+        if(!arg0)
             return 39;
         for(int i_1_ = arg1; (i_1_ < arg2); i_1_++)
             i = (KeyFocusListener.anIntArray1282[0xff & (i ^ arg3[i_1_])] ^ i >>> 8);
@@ -97,7 +97,7 @@ public class Class67 {
         aClass1_1612 = null;
         aClass1_1580 = null;
         aClass1_1613 = null;
-        if(arg0 != false)
+        if(arg0)
             aClass1_1590 = null;
         aClass9_1582 = null;
         aClass1_1591 = null;

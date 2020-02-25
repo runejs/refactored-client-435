@@ -238,7 +238,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
                 i_3_ += method201(i_4_, 28);
             }
         }
-        if(arg0 != false)
+        if(arg0)
             method203(-91);
         if(i == 0)
             return 100;

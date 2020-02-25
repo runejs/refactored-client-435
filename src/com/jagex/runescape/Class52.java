@@ -181,7 +181,7 @@ public class Class52 {
         aClass1_1213 = null;
         aClass1_1241 = null;
         aClass1_1228 = null;
-        if(arg0 == false) {
+        if(!arg0) {
             aClass1_1238 = null;
             aClass1_1223 = null;
             aClass1_1234 = null;

@@ -318,7 +318,7 @@ public class Class33 {
     }
 
     public static synchronized void method407(boolean arg0) {
-        if(arg0 != false)
+        if(arg0)
             aClass1_795 = null;
         Class65.method1019(104);
     }
@@ -353,7 +353,7 @@ public class Class33 {
 
     public static int method410(int arg0, int arg1, int arg2, boolean arg3) {
         arg2 &= 0x3;
-        if(arg3 != false)
+        if(arg3)
             return -80;
         if(arg2 == 0)
             return arg1;

@@ -201,7 +201,7 @@ public class Node {
         anInt962++;
         if(aClass40_968 == null)
             return false;
-        if(arg0 != false)
+        if(arg0)
             method458((byte) -21);
         return true;
     }

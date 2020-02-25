@@ -151,7 +151,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         if(GameObjectDefinition.anInt2558 < i)
             throw new RuntimeException("gnpov1");
         GameObjectDefinition.anInt2558 = 0;
-        if(arg0 == false) {
+        if(!arg0) {
             for(int i_1_ = 0; i_1_ < i; i_1_++) {
                 int i_2_ = Class40_Sub3.anIntArray2016[i_1_];
                 Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_2_]);

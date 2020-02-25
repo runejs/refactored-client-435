@@ -124,7 +124,7 @@ public class GameObjectDefinition extends SubNode {
         aClass1_2556 = null;
         aClass1_2560 = null;
         aClass1_2526 = null;
-        if(arg0 != true) {
+        if(!arg0) {
             aClass1_2560 = null;
         }
         aClass68_2524 = null;
@@ -152,7 +152,7 @@ public class GameObjectDefinition extends SubNode {
         class40_sub3.anInt2017 = arg0;
         class40_sub3.anInt2031 = arg4;
         class40_sub3.anInt2033 = arg9;
-        if(arg1 != true) {
+        if(!arg1) {
             method602(null, 77, null, (byte) -89);
         }
         class40_sub3.anInt2035 = arg3;
@@ -263,7 +263,7 @@ public class GameObjectDefinition extends SubNode {
         if(supportsItems == -1) {
             supportsItems = solid ? 1 : 0;
         }
-        if(arg0 != true) {
+        if(!arg0) {
             readValues(null);
         }
     }

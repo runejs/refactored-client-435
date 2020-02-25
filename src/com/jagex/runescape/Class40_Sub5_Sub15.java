@@ -148,7 +148,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
                 }
             }
         }
-        if(arg0 == true) {
+        if(arg0) {
             if(arg1.playingAnimation != -1 && arg1.playingAnimationDelay <= 1) {
                 AnimationSequence animationSequence = Class68_Sub1.method1050(arg1.playingAnimation, 2);
                 if(animationSequence.anInt2470 == 1 && arg1.anInt3094 > 0 && arg1.anInt3112 <= Node.pulseCycle && Node.pulseCycle > arg1.anInt3107) {

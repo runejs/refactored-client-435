@@ -216,7 +216,7 @@ public class Class37 {
             }
             Rasterizer.drawFilledRectangle(97, 78, 3, 3, 16777215);
             AnimationSequence.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, Class58.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
-            if(arg0 == true)
+            if(arg0)
                 ActorDefinition.method574(4);
         }
 
@@ -245,7 +245,7 @@ public class Class37 {
         anInt866++;
         Class40_Sub2 class40_sub2 = new Class40_Sub2();
         class40_sub2.anInt2000 = 128 * arg5.anInt2502;
-        if(arg1 != true)
+        if(!arg1)
             method438(119, -54, (byte) 96);
         class40_sub2.anInt2002 = arg5.anInt2542;
         class40_sub2.anIntArray2005 = arg5.anIntArray2523;

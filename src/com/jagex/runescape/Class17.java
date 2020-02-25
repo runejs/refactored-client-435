@@ -79,7 +79,7 @@ public class Class17 {
     }
 
     public static int method274(boolean arg0) {
-        if(arg0 != true)
+        if(!arg0)
             aClass68_463 = null;
         return Class49.anInt1147++;
     }

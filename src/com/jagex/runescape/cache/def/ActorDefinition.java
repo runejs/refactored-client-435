@@ -112,7 +112,7 @@ public class ActorDefinition extends SubNode {
     }
 
     public static int method576(boolean arg0) {
-        if(arg0 != false) {
+        if(arg0) {
             aClass1_2432 = null;
         }
         return 19;

@@ -163,13 +163,13 @@ public class Npc extends Actor {
                     Class32.packetBuffer.putShortBE(Class58.cameraHorizontal);
                     Class32.packetBuffer.putShortBE(Class65.anInt1537);
                 }
-                if(HashTable.aBoolean571 != false && !Class35.aBoolean1735 == true) {
+                if(HashTable.aBoolean571 && !Class35.aBoolean1735) {
                     Class60.anInt1406++;
                     Class35.aBoolean1735 = true;
                     Class32.packetBuffer.putPacket(160);
                     Class32.packetBuffer.putByte(1);
                 }
-                if(!HashTable.aBoolean571 != false && Class35.aBoolean1735 == true) {
+                if(!HashTable.aBoolean571 && Class35.aBoolean1735) {
                     Class35.aBoolean1735 = false;
                     Class60.anInt1406++;
                     Class32.packetBuffer.putPacket(160);

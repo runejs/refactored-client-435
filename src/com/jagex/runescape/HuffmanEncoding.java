@@ -218,7 +218,7 @@ public class HuffmanEncoding {
             int[] is = arg2.clientScripts[arg0];
             int i = 0;
             int i_14_ = 0;
-            if(arg1 != false)
+            if(arg1)
                 anInt1559 = -63;
             int i_15_ = 0;
             for(; ; ) {
