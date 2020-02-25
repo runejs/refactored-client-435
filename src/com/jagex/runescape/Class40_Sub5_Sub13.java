@@ -52,7 +52,7 @@ public class Class40_Sub5_Sub13 extends SubNode {
     public static void method651(int arg0, int arg1) {
         anInt2755++;
         if(Class5.aClass22_189 != null) {
-            if((RSCanvas.anInt54 ^ 0xffffffff) != -1) {
+            if(RSCanvas.anInt54 != 0) {
                 if(Player.aByteArray3270 != null)
                     PacketBuffer.anInt2258 = arg1;
             } else if(GameFrame.anInt1450 >= 0) {
@@ -77,14 +77,14 @@ public class Class40_Sub5_Sub13 extends SubNode {
                     class40_sub3.method457(-1);
                 }
             } else {
-                if((class40_sub3.anInt2033 ^ 0xffffffff) < -1)
+                if(class40_sub3.anInt2033 > 0)
                     class40_sub3.anInt2033--;
-                if(class40_sub3.anInt2033 == 0 && class40_sub3.anInt2039 >= 1 && class40_sub3.anInt2038 >= 1 && class40_sub3.anInt2039 <= 102 && class40_sub3.anInt2038 <= 102 && ((class40_sub3.anInt2017 ^ 0xffffffff) > -1 || Node.method459(class40_sub3.anInt2030, class40_sub3.anInt2017, (byte) 106))) {
+                if(class40_sub3.anInt2033 == 0 && class40_sub3.anInt2039 >= 1 && class40_sub3.anInt2038 >= 1 && class40_sub3.anInt2039 <= 102 && class40_sub3.anInt2038 <= 102 && (class40_sub3.anInt2017 < 0 || Node.method459(class40_sub3.anInt2030, class40_sub3.anInt2017, (byte) 106))) {
                     Class52.method945(class40_sub3.anInt2038, class40_sub3.anInt2017, class40_sub3.anInt2039, class40_sub3.anInt2030, class40_sub3.anInt2035, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
                     class40_sub3.anInt2033 = -1;
                     if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2028 == -1)
                         class40_sub3.method457(-1);
-                    else if(((class40_sub3.anInt2017 ^ 0xffffffff) == (class40_sub3.anInt2028 ^ 0xffffffff)) && ((class40_sub3.anInt2035 ^ 0xffffffff) == (class40_sub3.anInt2025 ^ 0xffffffff)) && (class40_sub3.anInt2030 == class40_sub3.anInt2036))
+                    else if((class40_sub3.anInt2028 == class40_sub3.anInt2017) && (class40_sub3.anInt2025 == class40_sub3.anInt2035) && (class40_sub3.anInt2030 == class40_sub3.anInt2036))
                         class40_sub3.method457(-1);
                 }
             }

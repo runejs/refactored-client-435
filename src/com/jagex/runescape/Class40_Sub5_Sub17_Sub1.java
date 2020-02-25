@@ -161,11 +161,11 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     class40_sub5_sub17_sub4_sub2.anInt3134 = Node.pulseCycle;
                 } else {
                     int i_4_ = Cache.outgoingbuffer.putBits(2, (byte) -65);
-                    if((i_4_ ^ 0xffffffff) == -1) {
+                    if(i_4_ == 0) {
                         Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i_2_;
                         class40_sub5_sub17_sub4_sub2.anInt3134 = Node.pulseCycle;
                         Class24.anIntArray578[Actor.anInt3153++] = i_2_;
-                    } else if((i_4_ ^ 0xffffffff) == -2) {
+                    } else if(i_4_ == 1) {
                         Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i_2_;
                         class40_sub5_sub17_sub4_sub2.anInt3134 = Node.pulseCycle;
                         int i_5_ = Cache.outgoingbuffer.putBits(3, (byte) -65);
@@ -173,7 +173,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         int i_6_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
                         if(i_6_ == 1)
                             Class24.anIntArray578[Actor.anInt3153++] = i_2_;
-                    } else if((i_4_ ^ 0xffffffff) == -3) {
+                    } else if(i_4_ == 2) {
                         Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i_2_;
                         class40_sub5_sub17_sub4_sub2.anInt3134 = Node.pulseCycle;
                         int i_7_ = Cache.outgoingbuffer.putBits(3, (byte) -65);
@@ -232,16 +232,16 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
 
         anInt3008++;
         if(arg0 != (arg1.anInt3113 ^ 0xffffffff)) {
-            if(arg1.facingActorIndex != -1 && (arg1.facingActorIndex ^ 0xffffffff) > -32769) {
+            if(arg1.facingActorIndex != -1 && arg1.facingActorIndex < 32768) {
                 Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[arg1.facingActorIndex]);
                 if(class40_sub5_sub17_sub4_sub2 != null) {
                     int i = (-class40_sub5_sub17_sub4_sub2.anInt3089 + arg1.anInt3089);
                     int i_10_ = (-class40_sub5_sub17_sub4_sub2.anInt3098 + arg1.anInt3098);
-                    if((i_10_ ^ 0xffffffff) != -1 || i != 0)
+                    if(i_10_ != 0 || i != 0)
                         arg1.anInt3080 = 0x7ff & (int) (325.949 * Math.atan2((double) i_10_, (double) i));
                 }
             }
-            if((arg1.facingActorIndex ^ 0xffffffff) <= -32769) {
+            if(arg1.facingActorIndex >= 32768) {
                 int i = -32768 + arg1.facingActorIndex;
                 if(i == Class30.anInt708)
                     i = 2047;
@@ -249,20 +249,20 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     int i_11_ = (arg1.anInt3098 - class40_sub5_sub17_sub4_sub1.anInt3098);
                     int i_12_ = (-class40_sub5_sub17_sub4_sub1.anInt3089 + arg1.anInt3089);
-                    if((i_11_ ^ 0xffffffff) != -1 || i_12_ != 0)
+                    if(i_11_ != 0 || i_12_ != 0)
                         arg1.anInt3080 = (int) (Math.atan2((double) i_11_, (double) i_12_) * 325.949) & 0x7ff;
                 }
             }
-            if((arg1.facePositionX != 0 || (arg1.facePositionY ^ 0xffffffff) != -1) && ((arg1.anInt3109 ^ 0xffffffff) == -1 || (arg1.anInt3074 ^ 0xffffffff) < -1)) {
+            if((arg1.facePositionX != 0 || arg1.facePositionY != 0) && (arg1.anInt3109 == 0 || arg1.anInt3074 > 0)) {
                 int i = (arg1.anInt3089 - 64 * (arg1.facePositionY - Class26.anInt635 - Class26.anInt635));
                 int i_13_ = (-((-SpotAnimDefinition.anInt2307 + arg1.facePositionX + -SpotAnimDefinition.anInt2307) * 64) + arg1.anInt3098);
-                if((i_13_ ^ 0xffffffff) != -1 || (i ^ 0xffffffff) != -1)
+                if(i_13_ != 0 || i != 0)
                     arg1.anInt3080 = 0x7ff & (int) (325.949 * Math.atan2((double) i_13_, (double) i));
                 arg1.facePositionY = 0;
                 arg1.facePositionX = 0;
             }
             int i = 0x7ff & arg1.anInt3080 + -arg1.anInt3118;
-            if((i ^ 0xffffffff) != -1) {
+            if(i != 0) {
                 arg1.anInt3097++;
                 if(i > 1024) {
                     arg1.anInt3118 -= arg1.anInt3113;
@@ -271,7 +271,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         bool = false;
                         arg1.anInt3118 = arg1.anInt3080;
                     }
-                    if(arg1.anInt3126 == arg1.anInt3077 && ((arg1.anInt3097 ^ 0xffffffff) < -26 || bool)) {
+                    if(arg1.anInt3126 == arg1.anInt3077 && (arg1.anInt3097 > 25 || bool)) {
                         if(arg1.anInt3145 != -1)
                             arg1.anInt3077 = arg1.anInt3145;
                         else
@@ -284,7 +284,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         arg1.anInt3118 = arg1.anInt3080;
                         bool = false;
                     }
-                    if(arg1.anInt3077 == arg1.anInt3126 && ((arg1.anInt3097 ^ 0xffffffff) < -26 || bool)) {
+                    if(arg1.anInt3077 == arg1.anInt3126 && (arg1.anInt3097 > 25 || bool)) {
                         if(arg1.anInt3083 != -1)
                             arg1.anInt3077 = arg1.anInt3083;
                         else
@@ -372,12 +372,12 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             RSCanvas.anIntArray66 = new int[33];
             RSCanvas.anIntArray62 = new int[33];
             Class34.anIntArray852 = new int[151];
-            for(int i_14_ = 0; (i_14_ ^ 0xffffffff) > -34; i_14_++) {
+            for(int i_14_ = 0; i_14_ < 33; i_14_++) {
                 int i_15_ = 0;
                 int i_16_ = 999;
                 for(int i_17_ = 0; i_17_ < 34; i_17_++) {
-                    if(((Class34.mapBack.imgPixels[(Class34.mapBack.imgWidth * i_14_) + i_17_]) ^ 0xffffffff) == -1) {
-                        if((i_16_ ^ 0xffffffff) == -1000)
+                    if((Class34.mapBack.imgPixels[(Class34.mapBack.imgWidth * i_14_) + i_17_]) == 0) {
+                        if(i_16_ == 999)
                             i_16_ = i_17_;
                     } else if(i_16_ != 999) {
                         i_15_ = i_17_;
@@ -391,12 +391,12 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 int i_19_ = 0;
                 int i_20_ = 999;
                 for(int i_21_ = 25; i_21_ < 172; i_21_++) {
-                    if((Class34.mapBack.imgPixels[i_21_ + (Class34.mapBack.imgWidth) * i_18_]) != 0 || i_21_ <= 34 && (i_18_ ^ 0xffffffff) >= -35) {
-                        if((i_20_ ^ 0xffffffff) != -1000) {
+                    if((Class34.mapBack.imgPixels[i_21_ + (Class34.mapBack.imgWidth) * i_18_]) != 0 || i_21_ <= 34 && i_18_ <= 34) {
+                        if(i_20_ != 999) {
                             i_19_ = i_21_;
                             break;
                         }
-                    } else if((i_20_ ^ 0xffffffff) == -1000)
+                    } else if(i_20_ == 999)
                         i_20_ = i_21_;
                 }
                 Landscape.anIntArray1186[-5 + i_18_] = i_20_ - 25;
@@ -411,7 +411,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
 
         anInt2956++;
         int i = 3;
-        if((Class26.anInt627 ^ 0xffffffff) > -311) {
+        if(Class26.anInt627 < 310) {
             int i_22_ = Class40_Sub5_Sub6.cameraY >> 7;
             int i_23_ = Class12.cameraX >> 7;
             if(i_22_ > 103) {
@@ -437,7 +437,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             if(i_26_ <= i_27_) {
                 int i_28_ = i_26_ * 65536 / i_27_;
                 int i_29_ = 32768;
-                while((i_25_ ^ 0xffffffff) != (i_22_ ^ 0xffffffff)) {
+                while(i_22_ != i_25_) {
                     if(i_25_ <= i_22_) {
                         if(i_22_ > i_25_)
                             i_22_--;
@@ -447,28 +447,28 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         i_22_ = 103;
                     }
                     i_29_ += i_28_;
-                    if(((OverlayDefinition.tile_flags[Player.anInt3267][i_23_][i_22_]) & 0x4 ^ 0xffffffff) != -1)
+                    if(((OverlayDefinition.tile_flags[Player.anInt3267][i_23_][i_22_]) & 0x4) != 0)
                         i = Player.anInt3267;
-                    if((i_29_ ^ 0xffffffff) <= -65537) {
+                    if(i_29_ >= 65536) {
                         if(i_23_ < i_24_)
                             i_23_++;
                         else if((i_24_ < i_23_))
                             i_23_--;
                         i_29_ -= 65536;
-                        if(((0x4 & (OverlayDefinition.tile_flags[Player.anInt3267][i_23_][i_22_])) ^ 0xffffffff) != -1)
+                        if((0x4 & (OverlayDefinition.tile_flags[Player.anInt3267][i_23_][i_22_])) != 0)
                             i = Player.anInt3267;
                     }
                 }
             } else {
                 int i_30_ = i_27_ * 65536 / i_26_;
                 int i_31_ = 32768;
-                while((i_24_ ^ 0xffffffff) != (i_23_ ^ 0xffffffff)) {
+                while(i_23_ != i_24_) {
                     if(i_23_ >= i_24_) {
                         if((i_24_ < i_23_))
                             i_23_--;
                     } else
                         i_23_++;
-                    if(((OverlayDefinition.tile_flags[Player.anInt3267][i_23_][i_22_]) & 0x4 ^ 0xffffffff) != -1)
+                    if(((OverlayDefinition.tile_flags[Player.anInt3267][i_23_][i_22_]) & 0x4) != 0)
                         i = Player.anInt3267;
                     i_31_ += i_30_;
                     if(i_31_ >= 65536) {
@@ -477,7 +477,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                             i_22_++;
                         else if(i_22_ > i_25_)
                             i_22_--;
-                        if(((OverlayDefinition.tile_flags[Player.anInt3267][i_23_][i_22_]) & 0x4 ^ 0xffffffff) != -1)
+                        if(((OverlayDefinition.tile_flags[Player.anInt3267][i_23_][i_22_]) & 0x4) != 0)
                             i = Player.anInt3267;
                     }
                 }
@@ -492,7 +492,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     }
 
     public static void addObject(int objectId, int localX, int localY, int plane, int face, int type, Scene scene, CollisionMap collisionMap) {
-        if(!VertexNormal.lowMemory || (0x2 & (OverlayDefinition.tile_flags[0][localX][localY]) ^ 0xffffffff) != -1 || ((0x10 & (OverlayDefinition.tile_flags[plane][localX][localY]) ^ 0xffffffff) == -1 && ((Class59.getVisibilityPlaneFor(plane, localY, 0, localX) ^ 0xffffffff) == (Class40_Sub6.onBuildTimePlane ^ 0xffffffff)))) {
+        if(!VertexNormal.lowMemory || (0x2 & (OverlayDefinition.tile_flags[0][localX][localY])) != 0 || ((0x10 & (OverlayDefinition.tile_flags[plane][localX][localY])) == 0 && (Class40_Sub6.onBuildTimePlane == Class59.getVisibilityPlaneFor(plane, localY, 0, localX)))) {
             if(Class64.setZ > plane)
                 Class64.setZ = plane;
             int vertexHeight = Class40_Sub6.tile_height[plane][localX][localY];
@@ -505,12 +505,12 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             int objectConfig = (byte) ((face << 6) + type);
             if(gameObjectDefinition.supportsItems == 1)
                 objectConfig += 256;
-            if((gameObjectDefinition.hasActions ^ 0xffffffff) == -1)
+            if(gameObjectDefinition.hasActions == 0)
                 hash += -2147483648;
             if(gameObjectDefinition.method601((byte) 125))
                 Class37.method437(localY, true, plane, face, localX, gameObjectDefinition);
             if(type == 22) {
-                if(!VertexNormal.lowMemory || (gameObjectDefinition.hasActions ^ 0xffffffff) != -1 || gameObjectDefinition.obstructsGround) {
+                if(!VertexNormal.lowMemory || gameObjectDefinition.hasActions != 0 || gameObjectDefinition.obstructsGround) {
                     Renderable renderable;
                     if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
                         renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 22, (byte) 124, vertexHeightRight);
@@ -529,7 +529,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 if(renderable != null) {
                     int i_40_;
                     int i_41_;
-                    if((face ^ 0xffffffff) != -2 && face != 3) {
+                    if(face != 1 && face != 3) {
                         i_41_ = gameObjectDefinition.sizeX;
                         i_40_ = gameObjectDefinition.sizeY;
                     } else {
@@ -537,7 +537,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         i_41_ = gameObjectDefinition.sizeY;
                     }
                     int i_42_ = 0;
-                    if((type ^ 0xffffffff) == -12)
+                    if(type == 11)
                         i_42_ += 256;
                     if(scene.method137(plane, localX, localY, vertexMix, i_41_, i_40_, renderable, i_42_, hash, objectConfig) && gameObjectDefinition.castsShadow) {
                         Model class40_sub5_sub17_sub5;
@@ -567,7 +567,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 else
                     renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, type, (byte) 124, vertexHeightRight);
                 scene.method137(plane, localX, localY, vertexMix, 1, 1, renderable, 0, hash, objectConfig);
-                if((type ^ 0xffffffff) <= -13 && (type ^ 0xffffffff) >= -18 && type != 13 && (plane ^ 0xffffffff) < -1)
+                if(type >= 12 && type <= 17 && type != 13 && plane > 0)
                     CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][localY]), 2340));
                 if(gameObjectDefinition.solid && collisionMap != null)
                     collisionMap.method154(localX, gameObjectDefinition.walkable, 108, gameObjectDefinition.sizeY, face, localY, gameObjectDefinition.sizeX);
@@ -578,15 +578,15 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 else
                     renderable = new GameObject(objectId, 0, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (gameObjectDefinition.animationId), true);
                 scene.method94(plane, localX, localY, vertexMix, renderable, null, Class32.anIntArray761[face], 0, hash, objectConfig);
-                if((face ^ 0xffffffff) != -1) {
-                    if((face ^ 0xffffffff) == -2) {
+                if(face != 0) {
+                    if(face == 1) {
                         if(gameObjectDefinition.castsShadow) {
                             Class19.aByteArrayArrayArray492[plane][localX][localY + 1] = (byte) 50;
                             Class19.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
                         }
                         if(gameObjectDefinition.wall)
                             CacheIndex.anIntArrayArrayArray262[plane][localX][localY + 1] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][localY + 1]), 1170));
-                    } else if((face ^ 0xffffffff) != -3) {
+                    } else if(face != 2) {
                         if(face == 3) {
                             if(gameObjectDefinition.castsShadow) {
                                 Class19.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
@@ -613,9 +613,9 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)
                     collisionMap.method150(localY, type, face, localX, gameObjectDefinition.walkable, (byte) 95);
-                if((gameObjectDefinition.setDecorDisplacement ^ 0xffffffff) != -17)
+                if(gameObjectDefinition.setDecorDisplacement != 16)
                     scene.method115(plane, localX, localY, gameObjectDefinition.setDecorDisplacement);
-            } else if((type ^ 0xffffffff) == -2) {
+            } else if(type == 1) {
                 Renderable renderable;
                 if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
                     renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 1, (byte) 124, vertexHeightRight);
@@ -627,14 +627,14 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         Class19.aByteArrayArrayArray492[plane][localX][(localY + 1)] = (byte) 50;
                     else if(face == 1)
                         Class19.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
-                    else if((face ^ 0xffffffff) == -3)
+                    else if(face == 2)
                         Class19.aByteArrayArrayArray492[plane][localX + 1][localY] = (byte) 50;
                     else if(face == 3)
                         Class19.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)
                     collisionMap.method150(localY, type, face, localX, gameObjectDefinition.walkable, (byte) 95);
-            } else if((type ^ 0xffffffff) == -3) {
+            } else if(type == 2) {
                 int i_46_ = 0x3 & face + 1;
                 Renderable renderable;
                 Renderable renderable_47_;
@@ -647,11 +647,11 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 }
                 scene.method94(plane, localX, localY, vertexMix, renderable, renderable_47_, Class32.anIntArray761[face], Class32.anIntArray761[i_46_], hash, objectConfig);
                 if(gameObjectDefinition.wall) {
-                    if((face ^ 0xffffffff) != -1) {
-                        if((face ^ 0xffffffff) == -2) {
+                    if(face != 0) {
+                        if(face == 1) {
                             CacheIndex.anIntArrayArrayArray262[plane][localX][1 + localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][1 + localY]), 1170));
                             CacheIndex.anIntArrayArrayArray262[plane][1 + localX][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][1 + localX][localY]), 585));
-                        } else if((face ^ 0xffffffff) == -3) {
+                        } else if(face == 2) {
                             CacheIndex.anIntArrayArrayArray262[plane][localX + 1][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX + 1][localY]), 585));
                             CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][localY]), 1170));
                         } else if(face == 3) {
@@ -665,9 +665,9 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)
                     collisionMap.method150(localY, type, face, localX, gameObjectDefinition.walkable, (byte) 95);
-                if((gameObjectDefinition.setDecorDisplacement ^ 0xffffffff) != -17)
+                if(gameObjectDefinition.setDecorDisplacement != 16)
                     scene.method115(plane, localX, localY, gameObjectDefinition.setDecorDisplacement);
-            } else if((type ^ 0xffffffff) == -4) {
+            } else if(type == 3) {
                 Renderable renderable;
                 if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
                     renderable = new GameObject(objectId, 3, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (gameObjectDefinition.animationId), true);
@@ -675,10 +675,10 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 3, (byte) 124, vertexHeightRight);
                 scene.method94(plane, localX, localY, vertexMix, renderable, null, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash, objectConfig);
                 if(gameObjectDefinition.castsShadow) {
-                    if((face ^ 0xffffffff) != -1) {
+                    if(face != 0) {
                         if(face == 1)
                             Class19.aByteArrayArrayArray492[plane][1 + localX][localY + 1] = (byte) 50;
-                        else if((face ^ 0xffffffff) == -3)
+                        else if(face == 2)
                             Class19.aByteArrayArrayArray492[plane][localX + 1][localY] = (byte) 50;
                         else if(face == 3)
                             Class19.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
@@ -687,7 +687,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)
                     collisionMap.method150(localY, type, face, localX, gameObjectDefinition.walkable, (byte) 95);
-            } else if((type ^ 0xffffffff) == -10) {
+            } else if(type == 9) {
                 Renderable renderable;
                 if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
                     renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, type, (byte) 124, vertexHeightRight);
@@ -711,7 +711,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         i_49_ = vertexHeightTopRight;
                         vertexHeightTopRight = vertexHeight;
                         vertexHeight = i_49_;
-                    } else if((face ^ 0xffffffff) == -4) {
+                    } else if(face == 3) {
                         int i_50_ = vertexHeightTop;
                         vertexHeightTop = vertexHeight;
                         vertexHeight = vertexHeightRight;
@@ -726,13 +726,13 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     else
                         renderable = (new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true));
                     scene.method109(plane, localX, localY, vertexMix, renderable, Class32.anIntArray761[face], 512 * face, 0, 0, hash, objectConfig);
-                } else if((type ^ 0xffffffff) == -6) {
+                } else if(type == 5) {
                     int i_51_ = scene.method122(plane, localX, localY);
                     int i_52_ = 16;
-                    if((i_51_ ^ 0xffffffff) < -1)
+                    if(i_51_ > 0)
                         i_52_ = (GameObjectDefinition.getDefinition((0x1fffedf2 & i_51_) >> 14).setDecorDisplacement);
                     Renderable renderable;
-                    if((gameObjectDefinition.animationId ^ 0xffffffff) == 0 && gameObjectDefinition.configChangeDest == null)
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
                         renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, (byte) 124, vertexHeightRight);
                     else
                         renderable = (new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true));
@@ -744,16 +744,16 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     else
                         renderable = (new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true));
                     scene.method109(plane, localX, localY, vertexMix, renderable, 256, face, 0, 0, hash, objectConfig);
-                } else if((type ^ 0xffffffff) == -8) {
+                } else if(type == 7) {
                     Renderable renderable;
-                    if((gameObjectDefinition.animationId ^ 0xffffffff) == 0 && gameObjectDefinition.configChangeDest == null)
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
                         renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, (byte) 124, vertexHeightRight);
                     else
                         renderable = (new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true));
                     scene.method109(plane, localX, localY, vertexMix, renderable, 512, face, 0, 0, hash, objectConfig);
                 } else if(type == 8) {
                     Renderable renderable;
-                    if((gameObjectDefinition.animationId ^ 0xffffffff) == 0 && gameObjectDefinition.configChangeDest == null)
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
                         renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, (byte) 124, vertexHeightRight);
                     else
                         renderable = (new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true));

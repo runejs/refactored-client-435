@@ -106,7 +106,7 @@ public class IdentityKit extends SubNode {
         while(class40_sub1.currentPosition < -12 + class40_sub1.buffer.length) {
             int i_1_ = class40_sub1.getUnsignedShortBE();
             if(i_1_ != 3) {
-                if(i_1_ >= 100 || i_1_ == 21 || (i_1_ ^ 0xffffffff) == -39 || i_1_ == 39) {
+                if(i_1_ >= 100 || i_1_ == 21 || i_1_ == 38 || i_1_ == 39) {
                     class40_sub5_sub1.anIntArray2262[i_0_] = class40_sub1.getUnsignedByte();
                 } else {
                     class40_sub5_sub1.anIntArray2262[i_0_] = class40_sub1.getIntBE();
@@ -208,7 +208,7 @@ public class IdentityKit extends SubNode {
         if(arg0 != -100) {
             return null;
         }
-        for(int i_7_ = 0; (i_7_ ^ 0xffffffff) > -6; i_7_++) {
+        for(int i_7_ = 0; i_7_ < 5; i_7_++) {
             if(models[i_7_] != -1) {
                 class40_sub5_sub17_sub5s[i++] = Model.getModel((Class27.aCacheIndex_654), (models[i_7_]), 0);
             }
@@ -241,7 +241,7 @@ public class IdentityKit extends SubNode {
         if(arg0 != false) {
             return null;
         }
-        for(int i = 0; (i ^ 0xffffffff) > -7; i++) {
+        for(int i = 0; i < 6; i++) {
             if(recolorToFind[i] == 0) {
                 break;
             }

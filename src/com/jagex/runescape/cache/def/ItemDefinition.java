@@ -129,19 +129,19 @@ public class ItemDefinition extends SubNode {
         for(int i = 0; arg1.alternateOperators.length > i; i++) {
             int i_10_ = HuffmanEncoding.method1029(i, false, arg1);
             int i_11_ = arg1.alternateRhs[i];
-            if((arg1.alternateOperators[i] ^ 0xffffffff) == -3) {
+            if(arg1.alternateOperators[i] == 2) {
                 if((i_11_ <= i_10_)) {
                     return false;
                 }
-            } else if((arg1.alternateOperators[i] ^ 0xffffffff) == -4) {
+            } else if(arg1.alternateOperators[i] == 3) {
                 if((i_11_ >= i_10_)) {
                     return false;
                 }
-            } else if((arg1.alternateOperators[i] ^ 0xffffffff) == -5) {
+            } else if(arg1.alternateOperators[i] == 4) {
                 if(i_11_ == i_10_) {
                     return false;
                 }
-            } else if((i_11_ ^ 0xffffffff) != (i_10_ ^ 0xffffffff)) {
+            } else if(i_10_ != i_11_) {
                 return false;
             }
         }
@@ -153,7 +153,7 @@ public class ItemDefinition extends SubNode {
             SubNode.anInt2081 -= SubNode.anInt2081 >> 2;
         }
         SubNode.anInt2081 -= 1000 * arg1;
-        if((SubNode.anInt2081 ^ 0xffffffff) > -1) {
+        if(SubNode.anInt2081 < 0) {
             SubNode.anInt2081 = 0;
         }
     }
@@ -165,9 +165,9 @@ public class ItemDefinition extends SubNode {
             if(npc != null && npc.isVisible(1) && !arg0 != (npc.aClass40_Sub5_Sub5_3300.hasRenderPriority) && npc.aClass40_Sub5_Sub5_3300.method571(-1)) {
                 int i_16_ = (npc.anInt3098 >> 7);
                 int i_17_ = npc.anInt3089 >> 7;
-                if((i_16_ ^ 0xffffffff) <= -1 && (i_16_ ^ 0xffffffff) > -105 && (i_17_ ^ 0xffffffff) <= -1 && i_17_ < 104) {
-                    if((npc.anInt3096 ^ 0xffffffff) == -2 && (npc.anInt3098 & 0x7f ^ 0xffffffff) == -65 && ((npc.anInt3089 & 0x7f) == 64)) {
-                        if((Class40_Sub5_Sub11.anInt2628 ^ 0xffffffff) == (Class61.anIntArrayArray1435[i_16_][i_17_] ^ 0xffffffff)) {
+                if(i_16_ >= 0 && i_16_ < 104 && i_17_ >= 0 && i_17_ < 104) {
+                    if(npc.anInt3096 == 1 && (npc.anInt3098 & 0x7f) == 64 && ((npc.anInt3089 & 0x7f) == 64)) {
+                        if(Class61.anIntArrayArray1435[i_16_][i_17_] == Class40_Sub5_Sub11.anInt2628) {
                             continue;
                         }
                         Class61.anIntArrayArray1435[i_16_][i_17_] = Class40_Sub5_Sub11.anInt2628;
@@ -237,7 +237,7 @@ public class ItemDefinition extends SubNode {
             i_1_ = femaleModel1;
             i = femaleModel0;
         }
-        if((i ^ 0xffffffff) == 0) {
+        if(i == -1) {
             return true;
         }
         boolean bool = true;
@@ -281,7 +281,7 @@ public class ItemDefinition extends SubNode {
                 model1 = new Model(models, 3);
             }
         }
-        if(!arg0 && (maleOffset ^ 0xffffffff) != -1) {
+        if(!arg0 && maleOffset != 0) {
             model1.method828(0, maleOffset, 0);
         }
         if(arg0 && femaleOffset != 0) {
@@ -298,14 +298,14 @@ public class ItemDefinition extends SubNode {
 
 
     public ItemDefinition method743(int arg1) {
-        if(stackableIds != null && (arg1 ^ 0xffffffff) < -2) {
+        if(stackableIds != null && arg1 > 1) {
             int i = -1;
-            for(int i_9_ = 0; (i_9_ ^ 0xffffffff) > -11; i_9_++) {
-                if((arg1 >= stackableAmounts[i_9_]) && (stackableAmounts[i_9_] ^ 0xffffffff) != -1) {
+            for(int i_9_ = 0; i_9_ < 10; i_9_++) {
+                if((arg1 >= stackableAmounts[i_9_]) && stackableAmounts[i_9_] != 0) {
                     i = stackableIds[i_9_];
                 }
             }
-            if((i ^ 0xffffffff) != 0) {
+            if(i != -1) {
                 return forId(i, 10);
             }
         }
@@ -465,8 +465,8 @@ public class ItemDefinition extends SubNode {
         }
         if(stackableIds != null && arg1 > 1) {
             int i = -1;
-            for(int i_19_ = 0; (i_19_ ^ 0xffffffff) > -11; i_19_++) {
-                if(arg1 >= stackableAmounts[i_19_] && (stackableAmounts[i_19_] ^ 0xffffffff) != -1) {
+            for(int i_19_ = 0; i_19_ < 10; i_19_++) {
+                if(arg1 >= stackableAmounts[i_19_] && stackableAmounts[i_19_] != 0) {
                     i = stackableIds[i_19_];
                 }
             }
@@ -484,7 +484,7 @@ public class ItemDefinition extends SubNode {
         if(model == null) {
             return null;
         }
-        if((groundScaleX ^ 0xffffffff) != -129 || groundScaleY != 128 || groundScaleZ != 128) {
+        if(groundScaleX != 128 || groundScaleY != 128 || groundScaleZ != 128) {
             model.method821(groundScaleX, groundScaleY, groundScaleZ);
         }
         if(textureReplace != null) {

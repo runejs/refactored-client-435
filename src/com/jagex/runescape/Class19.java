@@ -52,7 +52,7 @@ public class Class19 {
         if(arg1 != true)
             aClass1_495 = null;
         for(int i = arg2; arg3 + arg2 > i; i++) {
-            if((arg0[i] ^ 0xffffffff) != -1)
+            if(arg0[i] != 0)
                 class1.chars[class1.length++] = arg0[i];
         }
         return class1;

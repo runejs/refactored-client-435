@@ -54,10 +54,10 @@ public class Class55 {
                 break;
             int i = string_2_.indexOf('(');
             int i_3_ = string_2_.indexOf(')', i + 1);
-            if((i ^ 0xffffffff) <= -1 && i_3_ >= 0) {
+            if(i >= 0 && i_3_ >= 0) {
                 String string_4_ = string_2_.substring(1 + i, i_3_);
                 int i_5_ = string_4_.indexOf(".java:");
-                if((i_5_ ^ 0xffffffff) <= -1) {
+                if(i_5_ >= 0) {
                     string_4_ = (string_4_.substring(0, i_5_) + string_4_.substring(5 + i_5_));
                     string += string_4_ + ' ';
                     continue;

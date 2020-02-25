@@ -52,7 +52,7 @@ public class Class32 {
 
         RSString class1 = null;
         for(int i = 0; ActorDefinition.anInt2394 > i; i++) {
-            if((Landscape.aClass1Array1184[i].contains(VertexNormal.aClass1_1114) ^ 0xffffffff) != 0) {
+            if(Landscape.aClass1Array1184[i].contains(VertexNormal.aClass1_1114) != -1) {
                 class1 = (Landscape.aClass1Array1184[i].substring(Landscape.aClass1Array1184[i].contains(VertexNormal.aClass1_1114)));
                 break;
             }
@@ -63,11 +63,11 @@ public class Class32 {
         else {
             int i = VertexNormal.anInt1086;
             int i_0_ = Class19.anInt475;
-            if((i ^ 0xffffffff) < -191)
+            if(i > 190)
                 i = 190;
             int i_1_ = CollisionMap.anInt168;
             int i_2_ = Main.anInt1758;
-            if((i_0_ ^ 0xffffffff) > -1)
+            if(i_0_ < 0)
                 i_0_ = 0;
             int i_3_ = 6116423;
             Rasterizer.drawFilledRectangle(i_0_, i_2_, i, i_1_, i_3_);
@@ -76,11 +76,11 @@ public class Class32 {
             Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawShadowedString(class1, 3 + i_0_, 14 + i_2_, i_3_, false);
             int i_4_ = Class13.mouseX;
             int i_5_ = Landscape.mouseY;
-            if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -1) {
+            if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
                 i_4_ -= 4;
                 i_5_ -= 4;
             }
-            if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -2) {
+            if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
                 i_4_ -= 553;
                 i_5_ -= 205;
             }

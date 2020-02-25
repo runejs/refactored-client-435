@@ -96,9 +96,9 @@ public abstract class CacheIndex {
                 string = string.replace('&', '_');
                 string = string.replace('#', '_');
                 Class15 class15 = (Actor.aClass31_3152.method388(false, new URL(Actor.aClass31_3152.anApplet740.getCodeBase(), ("clienterror.ws?c=" + Class39.anInt901 + "&u=" + Class34.aLong853 + "&v1=" + Signlink.aString735 + "&v2=" + Signlink.aString739 + "&e=" + string))));
-                while((class15.anInt434 ^ 0xffffffff) == -1)
+                while(class15.anInt434 == 0)
                     Class43.method890(1L, -74);
-                if((class15.anInt434 ^ 0xffffffff) != -2)
+                if(class15.anInt434 != 1)
                     break;
                 DataInputStream datainputstream = (DataInputStream) class15.anObject437;
                 datainputstream.read();
@@ -160,8 +160,8 @@ public abstract class CacheIndex {
             byte[] is = new byte[i_42_];
             Class58.aByteArrayArray1370[i_39_] = is;
             int i_43_ = class40_sub1.getUnsignedByte();
-            if((i_43_ ^ 0xffffffff) != -1) {
-                if((i_43_ ^ 0xffffffff) == -2) {
+            if(i_43_ != 0) {
+                if(i_43_ == 1) {
                     for(int i_44_ = 0; (i_41_ > i_44_); i_44_++) {
                         for(int i_45_ = 0; i_40_ > i_45_; i_45_++)
                             is[i_41_ * i_45_ + i_44_] = class40_sub1.getByte();
@@ -217,7 +217,7 @@ public abstract class CacheIndex {
 
     public boolean loaded(int arg0, int arg2) {
         anInt234++;
-        if((arg0 ^ 0xffffffff) > -1 || (arg0 >= aByteArrayArrayArray249.length) || aByteArrayArrayArray249[arg0] == null || (arg2 ^ 0xffffffff) > -1 || arg2 >= aByteArrayArrayArray249[arg0].length)
+        if(arg0 < 0 || (arg0 >= aByteArrayArrayArray249.length) || aByteArrayArrayArray249[arg0] == null || arg2 < 0 || arg2 >= aByteArrayArrayArray249[arg0].length)
             return false;
         if(aByteArrayArrayArray249[arg0][arg2] != null)
             return true;
@@ -269,7 +269,7 @@ public abstract class CacheIndex {
         Buffer class40_sub1 = new Buffer(Landscape.method931(arg1));
         int i = class40_sub1.getUnsignedByte();
         anInt238++;
-        if((i ^ 0xffffffff) == -6) {
+        if(i == 5) {
             int i_1_ = 0;
             int i_2_ = class40_sub1.getUnsignedByte();
             anInt221 = class40_sub1.getUnsignedShortBE();
@@ -286,7 +286,7 @@ public abstract class CacheIndex {
             aByteArrayArrayArray249 = new byte[1 + i_3_][][];
             anIntArray261 = new int[1 + i_3_];
             aByteArrayArray212 = new byte[i_3_ + 1][];
-            if((i_2_ ^ 0xffffffff) != -1) {
+            if(i_2_ != 0) {
                 anIntArray239 = new int[i_3_ + 1];
                 for(int i_5_ = 0; (anInt221 > i_5_); i_5_++)
                     anIntArray239[anIntArray227[i_5_]] = class40_sub1.getIntBE();
@@ -488,9 +488,9 @@ public abstract class CacheIndex {
 
     public byte[] method193(byte arg0, int arg1) {
         anInt244++;
-        if((aByteArrayArrayArray249.length ^ 0xffffffff) == -2)
+        if(aByteArrayArrayArray249.length == 1)
             return method182(arg1, -116, 0);
-        if((aByteArrayArrayArray249[arg1].length ^ 0xffffffff) == -2)
+        if(aByteArrayArrayArray249[arg1].length == 1)
             return method182(0, -124, arg1);
         if(arg0 < 17)
             aClass1_257 = null;
@@ -513,7 +513,7 @@ public abstract class CacheIndex {
         arg1 = arg1.toLowerCase();
         int i = aClass42_254.method882(arg1.method76(), -69);
         anInt223++;
-        if(arg0 == 0 && (i ^ 0xffffffff) <= -1)
+        if(arg0 == 0 && i >= 0)
             method174(i, (byte) 2);
     }
 }

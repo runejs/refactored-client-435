@@ -85,11 +85,11 @@ public class Class43 {
     public static void method894(boolean arg0) {
 
         anInt1018++;
-        if((SceneTile.activeInterfaceType ^ 0xffffffff) == -1) {
+        if(SceneTile.activeInterfaceType == 0) {
             Landscape.aClass1Array1184[0] = Class68.aClass1_1635;
             Class38.anIntArray884[0] = 1005;
             ActorDefinition.anInt2394 = 1;
-            if((ActorDefinition.anInt2433 ^ 0xffffffff) != 0) {
+            if(ActorDefinition.anInt2433 != -1) {
                 Class40_Sub5_Sub17_Sub3.anInt3065 = -1;
                 OverlayDefinition.anInt2328 = -1;
                 Class13.method243((byte) 89, 0, 765, 503, ActorDefinition.anInt2433, 0, Class13.mouseX, Landscape.mouseY, 0);
@@ -100,8 +100,8 @@ public class Class43 {
                 Class40_Sub5_Sub17_Sub3.anInt3065 = -1;
                 OverlayDefinition.anInt2328 = -1;
                 boolean bool = arg0;
-                if(Class13.mouseX > 4 && Landscape.mouseY > 4 && Class13.mouseX < 516 && (Landscape.mouseY ^ 0xffffffff) > -339) {
-                    if((HuffmanEncoding.openScreenWidgetId ^ 0xffffffff) == 0)
+                if(Class13.mouseX > 4 && Landscape.mouseY > 4 && Class13.mouseX < 516 && Landscape.mouseY < 338) {
+                    if(HuffmanEncoding.openScreenWidgetId == -1)
                         Class64.method1013(arg0);
                     else
                         Class13.method243((byte) 89, 4, 516, 338, HuffmanEncoding.openScreenWidgetId, 4, Class13.mouseX, Landscape.mouseY, 0);
@@ -110,8 +110,8 @@ public class Class43 {
                 ItemDefinition.anInt2850 = OverlayDefinition.anInt2328;
                 Class40_Sub5_Sub17_Sub3.anInt3065 = -1;
                 OverlayDefinition.anInt2328 = -1;
-                if((Class13.mouseX ^ 0xffffffff) < -554 && Landscape.mouseY > 205 && Class13.mouseX < 743 && (Landscape.mouseY ^ 0xffffffff) > -467) {
-                    if((Class29.tabAreaOverlayWidgetId ^ 0xffffffff) != 0)
+                if(Class13.mouseX > 553 && Landscape.mouseY > 205 && Class13.mouseX < 743 && Landscape.mouseY < 466) {
+                    if(Class29.tabAreaOverlayWidgetId != -1)
                         Class13.method243((byte) 89, 205, 743, 466, Class29.tabAreaOverlayWidgetId, 553, Class13.mouseX, Landscape.mouseY, 1);
                     else if((Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]) != -1)
                         Class13.method243((byte) 89, 205, 743, 466, (Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]), 553, Class13.mouseX, Landscape.mouseY, 1);
@@ -126,9 +126,9 @@ public class Class43 {
                     ISAAC.redrawTabArea = true;
                 }
                 Class40_Sub5_Sub17_Sub3.anInt3065 = -1;
-                if(Class13.mouseX > 17 && (Landscape.mouseY ^ 0xffffffff) < -358 && Class13.mouseX < 496 && (Landscape.mouseY ^ 0xffffffff) > -454) {
-                    if((openChatboxWidgetId ^ 0xffffffff) == 0) {
-                        if((Class48.anInt1138 ^ 0xffffffff) == 0) {
+                if(Class13.mouseX > 17 && Landscape.mouseY > 357 && Class13.mouseX < 496 && Landscape.mouseY < 453) {
+                    if(openChatboxWidgetId == -1) {
+                        if(Class48.anInt1138 == -1) {
                             if(Landscape.mouseY < 434 && Class13.mouseX < 426)
                                 Class40_Sub11.method873((Landscape.mouseY + -357), 45);
                         } else
@@ -136,18 +136,18 @@ public class Class43 {
                     } else
                         Class13.method243((byte) 89, 357, 496, 453, openChatboxWidgetId, 17, Class13.mouseX, Landscape.mouseY, 2);
                 }
-                if(((openChatboxWidgetId ^ 0xffffffff) != 0 || (Class48.anInt1138 ^ 0xffffffff) != 0) && (Class55.anInt1296 != OverlayDefinition.anInt2328)) {
+                if((openChatboxWidgetId != -1 || Class48.anInt1138 != -1) && (Class55.anInt1296 != OverlayDefinition.anInt2328)) {
                     Class52.redrawChatbox = true;
                     Class55.anInt1296 = OverlayDefinition.anInt2328;
                 }
-                if(((openChatboxWidgetId ^ 0xffffffff) != 0 || Class48.anInt1138 != -1) && ((Class67.anInt1586 ^ 0xffffffff) != (Class40_Sub5_Sub17_Sub3.anInt3065 ^ 0xffffffff))) {
+                if((openChatboxWidgetId != -1 || Class48.anInt1138 != -1) && (Class40_Sub5_Sub17_Sub3.anInt3065 != Class67.anInt1586)) {
                     Class52.redrawChatbox = true;
                     Class67.anInt1586 = Class40_Sub5_Sub17_Sub3.anInt3065;
                 }
                 while(!bool) {
                     bool = true;
                     for(int i = 0; -1 + ActorDefinition.anInt2394 > i; i++) {
-                        if(Class38.anIntArray884[i] < 1000 && ((Class38.anIntArray884[1 + i] ^ 0xffffffff) < -1001)) {
+                        if(Class38.anIntArray884[i] < 1000 && (Class38.anIntArray884[1 + i] > 1000)) {
                             bool = false;
                             RSString class1 = Landscape.aClass1Array1184[i];
                             Landscape.aClass1Array1184[i] = Landscape.aClass1Array1184[i + 1];

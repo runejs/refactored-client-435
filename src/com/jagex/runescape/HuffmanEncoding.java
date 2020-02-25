@@ -45,15 +45,15 @@ public class HuffmanEncoding {
         int i_29_ = 0;
         for(int i_30_ = 0; i_30_ < i; i_30_++) {
             int i_31_ = arg0[i_30_];
-            if((i_31_ ^ 0xffffffff) != -1) {
+            if(i_31_ != 0) {
                 int i_32_ = 1 << -i_31_ + 32;
                 int i_33_ = is[i_31_];
                 chatMask[i_30_] = i_33_;
                 int i_34_;
                 if((i_32_ & i_33_) == 0) {
-                    for(int i_35_ = -1 + i_31_; (i_35_ ^ 0xffffffff) <= -2; i_35_--) {
+                    for(int i_35_ = -1 + i_31_; i_35_ >= 1; i_35_--) {
                         int i_36_ = is[i_35_];
-                        if((i_33_ ^ 0xffffffff) != (i_36_ ^ 0xffffffff))
+                        if(i_36_ != i_33_)
                             break;
                         int i_37_ = 1 << -i_35_ + 32;
                         if((i_36_ & i_37_) == 0)
@@ -132,18 +132,18 @@ public class HuffmanEncoding {
     }
 
     public static void method1025(int arg0, int arg1, int arg2, int arg3, ActorDefinition arg4) {
-        if((ActorDefinition.anInt2394 ^ 0xffffffff) > -401) {
+        if(ActorDefinition.anInt2394 < 400) {
             if(arg4.childrenIds != null)
                 arg4 = arg4.getChildDefinition(-1);
             if(arg4 != null && arg4.isClickable) {
                 RSString class1 = arg4.name;
                 if(arg4.combatLevel != arg0)
                     class1 = (Class40_Sub5_Sub17_Sub6.method832(-47, (new RSString[]{class1, (SceneTile.method536((Player.localPlayer.anInt3260), arg4.combatLevel, arg0 + -99)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(arg4.combatLevel, -1), Class51.aClass1_1199})));
-                if((Class8.anInt301 ^ 0xffffffff) == -2) {
+                if(Class8.anInt301 == 1) {
                     Node.anInt927++;
                     OverlayDefinition.method558(arg3, Main.aClass1_1763, arg2, -501, arg1, 49, (Class40_Sub5_Sub17_Sub6.method832(-124, (new RSString[]{Npc.aClass1_3295, SpotAnimDefinition.aClass1_2306, class1}))));
                 } else if(Main.anInt1773 == 1) {
-                    if((0x2 & ItemDefinition.anInt2815 ^ 0xffffffff) == -3) {
+                    if((0x2 & ItemDefinition.anInt2815) == 2) {
                         OverlayDefinition.method558(arg3, Class38_Sub1.aClass1_1918, arg2, arg0 + -501, arg1, 21, (Class40_Sub5_Sub17_Sub6.method832(arg0 + 73, (new RSString[]{FloorDecoration.aClass1_611, SpotAnimDefinition.aClass1_2306, class1}))));
                         Class58.anInt1356++;
                     }
@@ -153,16 +153,16 @@ public class HuffmanEncoding {
                     if(Class60.aBoolean1402)
                         class1s = Class56.method968(class1s, false);
                     if(class1s != null) {
-                        for(int i = 4; (i ^ 0xffffffff) <= -1; i--) {
+                        for(int i = 4; i >= 0; i--) {
                             if(class1s[i] != null && !class1s[i].equalsIgnoreCase((Class38_Sub1.aClass1_1917), true)) {
                                 int i_3_ = 0;
-                                if((i ^ 0xffffffff) == -1)
+                                if(i == 0)
                                     i_3_ = 12;
-                                if((i ^ 0xffffffff) == -2)
+                                if(i == 1)
                                     i_3_ = 30;
-                                if((i ^ 0xffffffff) == -3)
+                                if(i == 2)
                                     i_3_ = 4;
-                                if((i ^ 0xffffffff) == -4)
+                                if(i == 3)
                                     i_3_ = 34;
                                 if(i == 4)
                                     i_3_ = 20;
@@ -177,15 +177,15 @@ public class HuffmanEncoding {
                                 if(((Player.localPlayer.anInt3260) < arg4.combatLevel))
                                     i_4_ = 2000;
                                 int i_5_ = 0;
-                                if((i ^ 0xffffffff) == -1)
+                                if(i == 0)
                                     i_5_ = 12 + i_4_;
                                 if(i == 1)
                                     i_5_ = i_4_ + 30;
-                                if((i ^ 0xffffffff) == -3)
+                                if(i == 2)
                                     i_5_ = i_4_ + 4;
-                                if((i ^ 0xffffffff) == -4)
+                                if(i == 3)
                                     i_5_ = i_4_ + 34;
-                                if((i ^ 0xffffffff) == -5)
+                                if(i == 4)
                                     i_5_ = 20 + i_4_;
                                 OverlayDefinition.method558(arg3, class1s[i], arg2, arg0 ^ ~0x1f4, arg1, i_5_, (Class40_Sub5_Sub17_Sub6.method832(-64, new RSString[]{KeyFocusListener.aClass1_1283, class1})));
                             }
@@ -200,7 +200,7 @@ public class HuffmanEncoding {
     public static boolean method1027(int arg0, int arg1) {
         if(arg1 != -58)
             method1022(68);
-        return (arg0 ^ 0xffffffff) <= -49 && (arg0 ^ 0xffffffff) >= -58;
+        return arg0 >= 48 && arg0 <= 57;
     }
 
     public static ImageRGB method1028(CacheIndex arg0, RSString arg1, byte arg2, RSString arg3) {
@@ -225,21 +225,21 @@ public class HuffmanEncoding {
                 int i_16_ = 0;
                 int i_17_ = 0;
                 int i_18_ = is[i_14_++];
-                if((i_18_ ^ 0xffffffff) == -1)
+                if(i_18_ == 0)
                     return i;
-                if((i_18_ ^ 0xffffffff) == -16)
+                if(i_18_ == 15)
                     i_17_ = 1;
-                if((i_18_ ^ 0xffffffff) == -17)
+                if(i_18_ == 16)
                     i_17_ = 2;
-                if((i_18_ ^ 0xffffffff) == -2)
+                if(i_18_ == 1)
                     i_16_ = Class13.anIntArray403[is[i_14_++]];
-                if((i_18_ ^ 0xffffffff) == -3)
+                if(i_18_ == 2)
                     i_16_ = Class10.anIntArray354[is[i_14_++]];
                 if(i_18_ == 3)
                     i_16_ = (Class40_Sub5_Sub17_Sub3.anIntArray3051[is[i_14_++]]);
-                if((i_18_ ^ 0xffffffff) == -18)
+                if(i_18_ == 17)
                     i_17_ = 3;
-                if((i_18_ ^ 0xffffffff) == -5) {
+                if(i_18_ == 4) {
                     int i_19_ = is[i_14_++] << 16;
                     i_19_ += is[i_14_++];
                     Widget widget = Widget.forId(i_19_);
@@ -253,11 +253,11 @@ public class HuffmanEncoding {
                 }
                 if(i_18_ == 5)
                     i_16_ = Class58.varbitmasks[is[i_14_++]];
-                if((i_18_ ^ 0xffffffff) == -7)
+                if(i_18_ == 6)
                     i_16_ = (Class38_Sub1.anIntArray1909[-1 + Class10.anIntArray354[is[i_14_++]]]);
-                if((i_18_ ^ 0xffffffff) == -8)
+                if(i_18_ == 7)
                     i_16_ = (100 * Class58.varbitmasks[is[i_14_++]] / 46875);
-                if((i_18_ ^ 0xffffffff) == -9)
+                if(i_18_ == 8)
                     i_16_ = (Player.localPlayer.anInt3260);
                 if(i_18_ == 9) {
                     for(int i_22_ = 0; i_22_ < 25; i_22_++) {
@@ -270,7 +270,7 @@ public class HuffmanEncoding {
                     i_23_ += is[i_14_++];
                     Widget widget = Widget.forId(i_23_);
                     int i_24_ = is[i_14_++];
-                    if((i_24_ ^ 0xffffffff) != 0 && (!ItemDefinition.forId(i_24_, 10).members || Class22.aBoolean541)) {
+                    if(i_24_ != -1 && (!ItemDefinition.forId(i_24_, 10).members || Class22.aBoolean541)) {
                         for(int i_25_ = 0; (widget.items.length > i_25_); i_25_++) {
                             if(i_24_ + 1 == (widget.items[i_25_])) {
                                 i_16_ = 999999999;
@@ -279,33 +279,33 @@ public class HuffmanEncoding {
                         }
                     }
                 }
-                if((i_18_ ^ 0xffffffff) == -12)
+                if(i_18_ == 11)
                     i_16_ = Class40_Sub11.anInt2158;
-                if((i_18_ ^ 0xffffffff) == -13)
+                if(i_18_ == 12)
                     i_16_ = Class52.anInt1222;
                 if(i_18_ == 13) {
                     int i_26_ = Class58.varbitmasks[is[i_14_++]];
                     int i_27_ = is[i_14_++];
-                    i_16_ = (1 << i_27_ & i_26_ ^ 0xffffffff) != -1 ? 1 : 0;
+                    i_16_ = (1 << i_27_ & i_26_) != 0 ? 1 : 0;
                 }
-                if((i_18_ ^ 0xffffffff) == -15) {
+                if(i_18_ == 14) {
                     int i_28_ = is[i_14_++];
                     i_16_ = Class40_Sub5_Sub6.method585(i_28_, 1369);
                 }
-                if((i_18_ ^ 0xffffffff) == -19)
+                if(i_18_ == 18)
                     i_16_ = ((Player.localPlayer.anInt3098) >> 7) + SpotAnimDefinition.anInt2307;
                 if(i_18_ == 19)
                     i_16_ = ((Player.localPlayer.anInt3089) >> 7) + Class26.anInt635;
-                if((i_18_ ^ 0xffffffff) == -21)
+                if(i_18_ == 20)
                     i_16_ = is[i_14_++];
-                if((i_17_ ^ 0xffffffff) != -1)
+                if(i_17_ != 0)
                     i_15_ = i_17_;
                 else {
-                    if((i_15_ ^ 0xffffffff) == -1)
+                    if(i_15_ == 0)
                         i += i_16_;
-                    if((i_15_ ^ 0xffffffff) == -2)
+                    if(i_15_ == 1)
                         i -= i_16_;
-                    if((i_15_ ^ 0xffffffff) == -3 && (i_16_ ^ 0xffffffff) != -1)
+                    if(i_15_ == 2 && i_16_ != 0)
                         i /= i_16_;
                     if(i_15_ == 3)
                         i *= i_16_;
@@ -345,11 +345,11 @@ public class HuffmanEncoding {
                     break;
                 i = 0;
             }
-            if((0x40 & i_1_ ^ 0xffffffff) != -1)
+            if((0x40 & i_1_) != 0)
                 i = chatDecryptKeys[i];
             else
                 i++;
-            if(((i_2_ = chatDecryptKeys[i]) ^ 0xffffffff) > -1) {
+            if((i_2_ = chatDecryptKeys[i]) < 0) {
                 arg3[arg2++] = (byte) (i_2_ ^ 0xffffffff);
                 if(arg2 >= arg1)
                     break;
@@ -359,13 +359,13 @@ public class HuffmanEncoding {
                 i++;
             else
                 i = chatDecryptKeys[i];
-            if(((i_2_ = chatDecryptKeys[i]) ^ 0xffffffff) > -1) {
+            if((i_2_ = chatDecryptKeys[i]) < 0) {
                 arg3[arg2++] = (byte) (i_2_ ^ 0xffffffff);
                 if(arg1 <= arg2)
                     break;
                 i = 0;
             }
-            if((0x10 & i_1_ ^ 0xffffffff) != -1)
+            if((0x10 & i_1_) != 0)
                 i = chatDecryptKeys[i];
             else
                 i++;
@@ -375,7 +375,7 @@ public class HuffmanEncoding {
                     break;
                 i = 0;
             }
-            if((i_1_ & 0x8 ^ 0xffffffff) != -1)
+            if((i_1_ & 0x8) != 0)
                 i = chatDecryptKeys[i];
             else
                 i++;
@@ -385,11 +385,11 @@ public class HuffmanEncoding {
                     break;
                 i = 0;
             }
-            if((0x4 & i_1_ ^ 0xffffffff) != -1)
+            if((0x4 & i_1_) != 0)
                 i = chatDecryptKeys[i];
             else
                 i++;
-            if(((i_2_ = chatDecryptKeys[i]) ^ 0xffffffff) > -1) {
+            if((i_2_ = chatDecryptKeys[i]) < 0) {
                 arg3[arg2++] = (byte) (i_2_ ^ 0xffffffff);
                 if(arg1 <= arg2)
                     break;
@@ -409,7 +409,7 @@ public class HuffmanEncoding {
                 i++;
             else
                 i = chatDecryptKeys[i];
-            if(((i_2_ = chatDecryptKeys[i]) ^ 0xffffffff) > -1) {
+            if((i_2_ = chatDecryptKeys[i]) < 0) {
                 arg3[arg2++] = (byte) (i_2_ ^ 0xffffffff);
                 if(arg2 >= arg1)
                     break;
@@ -430,7 +430,7 @@ public class HuffmanEncoding {
             int textByte = 0xff & dest[arg1];
             int mask = chatMask[textByte];
             int size = chatBitSizes[textByte];
-            if((size ^ 0xffffffff) == -1)
+            if(size == 0)
                 throw new RuntimeException("No codeword for data value " + textByte);
             int bitOffset2 = i_6_ >> 3;
             int bitOffset = 0x7 & i_6_;

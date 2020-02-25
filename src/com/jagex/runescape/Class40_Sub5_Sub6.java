@@ -66,7 +66,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                 boolean bool = false;
                 for(int i = 0; ((class40_sub11.anInt2160 > i)); i++) {
                     if(class40_sub11.aClass15Array2157[i] != null) {
-                        if((class40_sub11.aClass15Array2157[i].anInt434 ^ 0xffffffff) == -3)
+                        if(class40_sub11.aClass15Array2157[i].anInt434 == 2)
                             class40_sub11.anIntArray2155[i] = -5;
                         if(class40_sub11.aClass15Array2157[i].anInt434 == 0)
                             bool = true;
@@ -85,7 +85,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                 int i = arg2.currentPosition;
                 arg2.putIntBE(class40_sub11.anInt2166);
                 for(int i_0_ = 0; class40_sub11.anInt2160 > i_0_; i_0_++) {
-                    if((class40_sub11.anIntArray2155[i_0_] ^ 0xffffffff) != -1)
+                    if(class40_sub11.anIntArray2155[i_0_] != 0)
                         arg2.putByte(class40_sub11.anIntArray2155[i_0_]);
                     else {
                         try {
@@ -95,7 +95,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                 int i_2_ = field.getInt(null);
                                 arg2.putByte(0);
                                 arg2.putIntBE(i_2_);
-                            } else if((i_1_ ^ 0xffffffff) == -2) {
+                            } else if(i_1_ == 1) {
                                 Field field = (Field) (class40_sub11.aClass15Array2157[i_0_].anObject437);
                                 field.setInt(null, (class40_sub11.anIntArray2165[i_0_]));
                                 arg2.putByte(0);
@@ -105,8 +105,8 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                 arg2.putByte(0);
                                 arg2.putIntBE(i_3_);
                             }
-                            if((i_1_ ^ 0xffffffff) != -4) {
-                                if((i_1_ ^ 0xffffffff) == -5) {
+                            if(i_1_ != 3) {
+                                if(i_1_ == 4) {
                                     Method method = ((Method) (class40_sub11.aClass15Array2156[i_0_].anObject437));
                                     int i_4_ = method.getModifiers();
                                     arg2.putByte(0);
@@ -191,13 +191,13 @@ public class Class40_Sub5_Sub6 extends SubNode {
         if(arg0 == 2) {
             while(Class34.method416((byte) -125)) {
                 if(HuffmanEncoding.openScreenWidgetId != -1 && (HuffmanEncoding.anInt1548 == HuffmanEncoding.openScreenWidgetId)) {
-                    if((ItemDefinition.anInt2854 ^ 0xffffffff) == -86 && (HuffmanEncoding.aClass1_1550.length() > 0))
+                    if(ItemDefinition.anInt2854 == 85 && (HuffmanEncoding.aClass1_1550.length() > 0))
                         HuffmanEncoding.aClass1_1550 = (HuffmanEncoding.aClass1_1550.substring(0, -1 + HuffmanEncoding.aClass1_1550.length()));
                     if((Class40_Sub5_Sub15.method735((byte) -37, Class59.anInt1388) || Class59.anInt1388 == 32) && HuffmanEncoding.aClass1_1550.length() < 12)
                         HuffmanEncoding.aClass1_1550 = HuffmanEncoding.aClass1_1550.method70(Class59.anInt1388, 0);
                 } else if(!Class19.aBoolean490) {
                     if(Class40_Sub5_Sub15.inputType == 1) {
-                        if(((ItemDefinition.anInt2854 ^ 0xffffffff) == -86) && (HuffmanEncoding.inputInputMessage.length() ^ 0xffffffff) < -1) {
+                        if((ItemDefinition.anInt2854 == 85) && HuffmanEncoding.inputInputMessage.length() > 0) {
                             HuffmanEncoding.inputInputMessage = (HuffmanEncoding.inputInputMessage.substring(0, (HuffmanEncoding.inputInputMessage.length() - 1)));
                             Class52.redrawChatbox = true;
                         }
@@ -222,12 +222,12 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                 HuffmanEncoding.inputInputMessage = (HuffmanEncoding.inputInputMessage.substring(0, HuffmanEncoding.inputInputMessage.length() - 10));
                                 Class52.redrawChatbox = true;
                             }
-                            if((Player.method793((byte) 122, Class59.anInt1388)) && (HuffmanEncoding.inputInputMessage.length() ^ 0xffffffff) > -41) {
+                            if((Player.method793((byte) 122, Class59.anInt1388)) && HuffmanEncoding.inputInputMessage.length() < 40) {
                                 HuffmanEncoding.inputInputMessage = HuffmanEncoding.inputInputMessage.method70(Class59.anInt1388, 0);
                                 Class52.redrawChatbox = true;
                             }
-                        } else if((Class43.openChatboxWidgetId ^ 0xffffffff) == 0 && (ActorDefinition.anInt2433 ^ 0xffffffff) == 0) {
-                            if((ItemDefinition.anInt2854 ^ 0xffffffff) == -86 && (HuffmanEncoding.chatboxInput.length() > 0)) {
+                        } else if(Class43.openChatboxWidgetId == -1 && ActorDefinition.anInt2433 == -1) {
+                            if(ItemDefinition.anInt2854 == 85 && (HuffmanEncoding.chatboxInput.length() > 0)) {
                                 HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring(0, HuffmanEncoding.chatboxInput.length() - 1));
                                 Class52.redrawChatbox = true;
                             }
@@ -248,13 +248,13 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                         Class19.showFps = false;
                                     if(HuffmanEncoding.chatboxInput.equals(SpotAnimDefinition.cmd_noclip)) {
                                         for(int i = 0; i < 4; i++) {
-                                            for(int i_9_ = 1; ((i_9_ ^ 0xffffffff) > -104); i_9_++) {
+                                            for(int i_9_ = 1; (i_9_ < 103); i_9_++) {
                                                 for(int i_10_ = 1; i_10_ < 103; i_10_++)
                                                     Landscape.aCollisionMapArray1167[i].anIntArrayArray150[i_9_][i_10_] = 0;
                                             }
                                         }
                                     }
-                                    if((HuffmanEncoding.chatboxInput.equals(Widget.cmd_errortest)) && (Class44.modewhere ^ 0xffffffff) == -3)
+                                    if((HuffmanEncoding.chatboxInput.equals(Widget.cmd_errortest)) && Class44.modewhere == 2)
                                         throw new RuntimeException();
                                     if(HuffmanEncoding.chatboxInput.equals(Class4.cmd_hiddenbuttontest))
                                         PacketBuffer.hiddenButtonTest = true;
@@ -341,7 +341,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                     Class32.packetBuffer.putByte(i);
                                     Class68_Sub1.method1052(65, HuffmanEncoding.chatboxInput, Class32.packetBuffer);
                                     Class32.packetBuffer.finishVarByte((Class32.packetBuffer.currentPosition) + -i_12_);
-                                    if((Class35.publicChatMode ^ 0xffffffff) == -3) {
+                                    if(Class35.publicChatMode == 2) {
                                         Class34.anInt821++;
                                         Cache.aBoolean330 = true;
                                         Class35.publicChatMode = 3;
@@ -360,7 +360,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                             }
                         }
                     } else {
-                        if(((ItemDefinition.anInt2854 ^ 0xffffffff) == -86) && HuffmanEncoding.inputInputMessage.length() > 0) {
+                        if((ItemDefinition.anInt2854 == 85) && HuffmanEncoding.inputInputMessage.length() > 0) {
                             HuffmanEncoding.inputInputMessage = (HuffmanEncoding.inputInputMessage.substring(0, -1 + HuffmanEncoding.inputInputMessage.length()));
                             Class52.redrawChatbox = true;
                         }
@@ -378,26 +378,26 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         }
                     }
                 } else {
-                    if((ItemDefinition.anInt2854 ^ 0xffffffff) == -86 && (HuffmanEncoding.aClass1_1565.length() > 0)) {
+                    if(ItemDefinition.anInt2854 == 85 && (HuffmanEncoding.aClass1_1565.length() > 0)) {
                         HuffmanEncoding.aClass1_1565 = (HuffmanEncoding.aClass1_1565.substring(0, -1 + HuffmanEncoding.aClass1_1565.length()));
                         Class52.redrawChatbox = true;
                     }
-                    if(Player.method793((byte) 120, Class59.anInt1388) && (HuffmanEncoding.aClass1_1565.length() ^ 0xffffffff) > -81) {
+                    if(Player.method793((byte) 120, Class59.anInt1388) && HuffmanEncoding.aClass1_1565.length() < 80) {
                         HuffmanEncoding.aClass1_1565 = HuffmanEncoding.aClass1_1565.method70(Class59.anInt1388, arg0 ^ 0x2);
                         Class52.redrawChatbox = true;
                     }
-                    if((ItemDefinition.anInt2854 ^ 0xffffffff) == -85) {
+                    if(ItemDefinition.anInt2854 == 84) {
                         Class19.aBoolean490 = false;
                         Class52.redrawChatbox = true;
-                        if((Class37.anInt876 ^ 0xffffffff) == -2) {
+                        if(Class37.anInt876 == 1) {
                             long l = HuffmanEncoding.aClass1_1565.method58((byte) 104);
                             UnderlayDefinition.method617(l, (byte) -99);
                         }
-                        if((Class37.anInt876 ^ 0xffffffff) == -3 && (Class40_Sub5_Sub17_Sub3.anInt3060 ^ 0xffffffff) < -1) {
+                        if(Class37.anInt876 == 2 && Class40_Sub5_Sub17_Sub3.anInt3060 > 0) {
                             long l = HuffmanEncoding.aClass1_1565.method58((byte) 121);
                             RSApplet.method28(l, 123);
                         }
-                        if((Class37.anInt876 ^ 0xffffffff) == -4 && HuffmanEncoding.aClass1_1565.length() > 0) {
+                        if(Class37.anInt876 == 3 && HuffmanEncoding.aClass1_1565.length() > 0) {
                             Class44.anInt1044++;
                             Class32.packetBuffer.putPacket(207);
                             Class32.packetBuffer.putByte(0);
@@ -415,11 +415,11 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                 Class32.packetBuffer.putByte(ItemDefinition.anInt2797);
                             }
                         }
-                        if((Class37.anInt876 ^ 0xffffffff) == -5 && (Class42.anInt1008 ^ 0xffffffff) > -101) {
+                        if(Class37.anInt876 == 4 && Class42.anInt1008 < 100) {
                             long l = HuffmanEncoding.aClass1_1565.method58((byte) 107);
                             Class17.method275(arg0 ^ 0x606c, l);
                         }
-                        if((Class37.anInt876 ^ 0xffffffff) == -6 && (Class42.anInt1008 ^ 0xffffffff) < -1) {
+                        if(Class37.anInt876 == 5 && Class42.anInt1008 > 0) {
                             long l = HuffmanEncoding.aClass1_1565.method58((byte) 109);
                             Class40_Sub6.method838(0, l);
                         }
@@ -451,7 +451,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                 i_18_ -= 205;
                 i_17_ -= 553;
             }
-            if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -3) {
+            if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
                 i_18_ -= 357;
                 i_17_ -= 17;
             }

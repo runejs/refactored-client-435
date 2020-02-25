@@ -32,7 +32,7 @@ public class Class40_Sub5_Sub11 extends SubNode {
             arg0.anInt3080 = 0;
         int i_1_ = arg0.anInt3096 * 64 + 128 * arg0.anInt3081;
         arg0.anInt3098 += (i - arg0.anInt3098) / i_0_;
-        if((arg0.anInt3073 ^ 0xffffffff) == -4)
+        if(arg0.anInt3073 == 3)
             arg0.anInt3080 = 512;
         arg0.anInt3074 = 0;
         arg0.anInt3089 += (-arg0.anInt3089 + i_1_) / i_0_;
@@ -54,7 +54,7 @@ public class Class40_Sub5_Sub11 extends SubNode {
         anInt2624++;
         for(; ; ) {
             int i = arg0.getUnsignedByte();
-            if((i ^ 0xffffffff) == -1)
+            if(i == 0)
                 break;
             method635(i, 512, arg0);
         }
@@ -66,7 +66,7 @@ public class Class40_Sub5_Sub11 extends SubNode {
 
         if(arg1 != 512)
             method631(null, true);
-        if((arg0 ^ 0xffffffff) == -6)
+        if(arg0 == 5)
             anInt2633 = arg2.getUnsignedShortBE();
         anInt2618++;
 

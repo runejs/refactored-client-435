@@ -61,7 +61,7 @@ public class Class53 {
 
     public static void method949(byte arg0) {
         anInt1256++;
-        if((Class57.incomingPacket ^ 0xffffffff) == -50) {
+        if(Class57.incomingPacket == 49) {
             int i = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
             int i_0_ = OverlayDefinition.anInt2318 + (i & 0x7);
             int i_1_ = ((0x7b & i) >> 4) + Class40_Sub6.anInt2119;
@@ -70,7 +70,7 @@ public class Class53 {
             int i_4_ = 0x3 & i_2_;
             int i_5_ = Npc.anIntArray3304[i_3_];
             int i_6_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
-            if(i_1_ >= 0 && (i_0_ ^ 0xffffffff) <= -1 && (i_1_ ^ 0xffffffff) > -104 && (i_0_ ^ 0xffffffff) > -104) {
+            if(i_1_ >= 0 && i_0_ >= 0 && i_1_ < 103 && i_0_ < 103) {
                 int i_7_ = (Class40_Sub6.tile_height[Player.anInt3267][i_1_][i_0_]);
                 int i_8_ = (Class40_Sub6.tile_height[Player.anInt3267][i_1_ + 1][i_0_]);
                 int i_9_ = (Class40_Sub6.tile_height[Player.anInt3267][1 + i_1_][1 + i_0_]);
@@ -79,19 +79,19 @@ public class Class53 {
                     Class10 class10 = (Npc.aScene_3301.method126(Player.anInt3267, i_1_, i_0_));
                     if(class10 != null) {
                         int i_11_ = 0x7fff & class10.anInt336 >> 14;
-                        if((i_3_ ^ 0xffffffff) == -3) {
+                        if(i_3_ == 2) {
                             class10.aRenderable_341 = new GameObject(i_11_, 2, 4 + i_4_, i_7_, i_8_, i_9_, i_10_, i_6_, false);
                             class10.aRenderable_340 = new GameObject(i_11_, 2, 0x3 & i_4_ + 1, i_7_, i_8_, i_9_, i_10_, i_6_, false);
                         } else
                             class10.aRenderable_341 = new GameObject(i_11_, i_3_, i_4_, i_7_, i_8_, i_9_, i_10_, i_6_, false);
                     }
                 }
-                if((i_5_ ^ 0xffffffff) == -2) {
+                if(i_5_ == 1) {
                     Class53 class53 = (Npc.aScene_3301.method100(Player.anInt3267, i_1_, i_0_));
                     if(class53 != null)
                         class53.aRenderable_1249 = (new GameObject((0x1fffe268 & class53.anInt1262) >> 14, 4, 0, i_7_, i_8_, i_9_, i_10_, i_6_, false));
                 }
-                if((i_5_ ^ 0xffffffff) == -3) {
+                if(i_5_ == 2) {
                     Class19 class19 = (Npc.aScene_3301.method107(Player.anInt3267, i_1_, i_0_));
                     if(i_3_ == 11)
                         i_3_ = 10;
@@ -104,7 +104,7 @@ public class Class53 {
                         floorDecoration.renderable = new GameObject((0x7fff & (floorDecoration.hash >> 14)), 22, i_4_, i_7_, i_8_, i_9_, i_10_, i_6_, false);
                 }
             }
-        } else if((Class57.incomingPacket ^ 0xffffffff) == -242) {
+        } else if(Class57.incomingPacket == 241) {
             int i = Cache.outgoingbuffer.getUnsignedInvertedByte();
             int i_12_ = i & 0x3;
             int i_13_ = i >> 2;
@@ -113,10 +113,10 @@ public class Class53 {
             int i_16_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
             int i_17_ = (0x7 & i_16_) + OverlayDefinition.anInt2318;
             int i_18_ = Class40_Sub6.anInt2119 + ((i_16_ & 0x75) >> 4);
-            if((i_18_ ^ 0xffffffff) <= -1 && i_17_ >= 0 && i_18_ < 104 && (i_17_ ^ 0xffffffff) > -105)
+            if(i_18_ >= 0 && i_17_ >= 0 && i_18_ < 104 && i_17_ < 104)
                 GameObjectDefinition.method609(i_15_, true, i_18_, i_12_, -1, (Player.anInt3267), i_17_, i_14_, i_13_, 0);
         } else {
-            if((Class57.incomingPacket ^ 0xffffffff) == -10) {
+            if(Class57.incomingPacket == 9) {
                 int i = Cache.outgoingbuffer.getUnsignedByte();
                 int i_19_ = (i & 0x7) + OverlayDefinition.anInt2318;
                 int i_20_ = (0x7 & i >> 4) + Class40_Sub6.anInt2119;
@@ -127,7 +127,7 @@ public class Class53 {
                 int i_25_ = Cache.outgoingbuffer.getUnsignedByte();
                 if(i_20_ >= 0 && i_19_ >= 0 && i_20_ < 104 && i_19_ < 104) {
                     int i_26_ = 1 + i_23_;
-                    if(((i_20_ + -i_26_ ^ 0xffffffff) >= ((Player.localPlayer.anIntArray3088[0]) ^ 0xffffffff)) && ((i_20_ + i_26_ ^ 0xffffffff) <= ((Player.localPlayer.anIntArray3088[0]) ^ 0xffffffff)) && (i_19_ - i_26_ <= (Player.localPlayer.anIntArray3135[0])) && (i_19_ + i_26_ >= (Player.localPlayer.anIntArray3135[0])) && RSCanvas.anInt65 != 0 && i_24_ > 0 && PacketBuffer.anInt2248 < 50) {
+                    if(((Player.localPlayer.anIntArray3088[0]) >= i_20_ + -i_26_) && ((Player.localPlayer.anIntArray3088[0]) <= i_20_ + i_26_) && (i_19_ - i_26_ <= (Player.localPlayer.anIntArray3135[0])) && (i_19_ + i_26_ >= (Player.localPlayer.anIntArray3135[0])) && RSCanvas.anInt65 != 0 && i_24_ > 0 && PacketBuffer.anInt2248 < 50) {
                         IdentityKit.anIntArray2602[(PacketBuffer.anInt2248)] = i_21_;
                         ItemDefinition.anIntArray2814[(PacketBuffer.anInt2248)] = i_24_;
                         Class40_Sub3.anIntArray2023[(PacketBuffer.anInt2248)] = i_25_;
@@ -144,7 +144,7 @@ public class Class53 {
                 int i_29_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 int i_30_ = Cache.outgoingbuffer.getUnsignedByte();
                 int i_31_ = Cache.outgoingbuffer.getUnsignedShortBE();
-                if((i_27_ ^ 0xffffffff) <= -1 && (i_28_ ^ 0xffffffff) <= -1 && (i_27_ ^ 0xffffffff) > -105 && i_28_ < 104) {
+                if(i_27_ >= 0 && i_28_ >= 0 && i_27_ < 104 && i_28_ < 104) {
                     i_28_ = 128 * i_28_ + 64;
                     i_27_ = i_27_ * 128 + 64;
                     Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (new Class40_Sub5_Sub17_Sub6(i_29_, Player.anInt3267, i_27_, i_28_, (-i_30_ + Class37.method430((byte) -124, (Player.anInt3267), i_27_, i_28_)), i_31_, Node.pulseCycle));
@@ -157,7 +157,7 @@ public class Class53 {
                 int i_34_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 int i_35_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 int i_36_ = Cache.outgoingbuffer.getUnsignedShortBE();
-                if((i_32_ ^ 0xffffffff) <= -1 && (i_33_ ^ 0xffffffff) <= -1 && i_32_ < 104 && i_33_ < 104) {
+                if(i_32_ >= 0 && i_33_ >= 0 && i_32_ < 104 && i_33_ < 104) {
                     Class45 class45 = (Class10.aClass45ArrayArrayArray357[Player.anInt3267][i_32_][i_33_]);
                     if(class45 != null) {
                         for(Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3 = ((Class40_Sub5_Sub17_Sub3) class45.method902((byte) -90)); class40_sub5_sub17_sub3 != null; class40_sub5_sub17_sub3 = ((Class40_Sub5_Sub17_Sub3) class45.method909(-4))) {
@@ -177,10 +177,10 @@ public class Class53 {
                 int i_40_ = i_39_ & 0x3;
                 int i_41_ = i_39_ >> 2;
                 int i_42_ = Npc.anIntArray3304[i_41_];
-                if((i_38_ ^ 0xffffffff) <= -1 && (i_37_ ^ 0xffffffff) <= -1 && (i_38_ ^ 0xffffffff) > -105 && i_37_ < 104)
+                if(i_38_ >= 0 && i_37_ >= 0 && i_38_ < 104 && i_37_ < 104)
                     GameObjectDefinition.method609(-1, true, i_38_, i_40_, -1, (Player.anInt3267), i_37_, i_42_, i_41_, 0);
             } else {
-                if((Class57.incomingPacket ^ 0xffffffff) == -230) {
+                if(Class57.incomingPacket == 229) {
                     int i = Cache.outgoingbuffer.getNegativeOffsetByte();
                     int i_43_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
                     int i_44_ = Cache.outgoingbuffer.getByte();
@@ -225,7 +225,7 @@ public class Class53 {
                             class40_sub5_sub17_sub4_sub1.aClass40_Sub5_Sub17_Sub5_3265 = class40_sub5_sub17_sub5;
                             class40_sub5_sub17_sub4_sub1.anInt3283 = i_53_ + Node.pulseCycle;
                             int i_64_ = gameObjectDefinition.sizeY;
-                            if((i_47_ ^ 0xffffffff) == -2 || i_47_ == 3) {
+                            if(i_47_ == 1 || i_47_ == 3) {
                                 i_64_ = gameObjectDefinition.sizeX;
                                 i_63_ = gameObjectDefinition.sizeY;
                             }
@@ -239,12 +239,12 @@ public class Class53 {
                         }
                     }
                 }
-                if((Class57.incomingPacket ^ 0xffffffff) == -75) {
+                if(Class57.incomingPacket == 74) {
                     int i = Cache.outgoingbuffer.getUnsignedByte();
                     int i_65_ = Class40_Sub6.anInt2119 + (i >> 4 & 0x7);
                     int i_66_ = (i & 0x7) + OverlayDefinition.anInt2318;
                     int i_67_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
-                    if((i_65_ ^ 0xffffffff) <= -1 && (i_66_ ^ 0xffffffff) <= -1 && (i_65_ ^ 0xffffffff) > -105 && (i_66_ ^ 0xffffffff) > -105) {
+                    if(i_65_ >= 0 && i_66_ >= 0 && i_65_ < 104 && i_66_ < 104) {
                         Class45 class45 = (Class10.aClass45ArrayArrayArray357[Player.anInt3267][i_65_][i_66_]);
                         if(class45 != null) {
                             for(Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3 = ((Class40_Sub5_Sub17_Sub3) class45.method902((byte) -90)); class40_sub5_sub17_sub3 != null; class40_sub5_sub17_sub3 = ((Class40_Sub5_Sub17_Sub3) class45.method909(-4))) {
@@ -272,7 +272,7 @@ public class Class53 {
                     int i_77_ = Cache.outgoingbuffer.getUnsignedShortBE();
                     int i_78_ = Cache.outgoingbuffer.getUnsignedByte();
                     int i_79_ = Cache.outgoingbuffer.getUnsignedByte();
-                    if(i_69_ >= 0 && i_68_ >= 0 && (i_69_ ^ 0xffffffff) > -105 && i_68_ < 104 && (i_70_ ^ 0xffffffff) <= -1 && i_71_ >= 0 && i_70_ < 104 && (i_71_ ^ 0xffffffff) > -105 && (i_73_ ^ 0xffffffff) != -65536) {
+                    if(i_69_ >= 0 && i_68_ >= 0 && i_69_ < 104 && i_68_ < 104 && i_70_ >= 0 && i_71_ >= 0 && i_70_ < 104 && i_71_ < 104 && i_73_ != 65535) {
                         i_70_ = 64 + 128 * i_70_;
                         i_69_ = 64 + 128 * i_69_;
                         i_68_ = i_68_ * 128 + 64;
@@ -284,14 +284,14 @@ public class Class53 {
                 } else {
                     if(arg0 >= -110)
                         method952(32);
-                    if((Class57.incomingPacket ^ 0xffffffff) == -20) {
+                    if(Class57.incomingPacket == 19) {
                         int i = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
                         int i_80_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
                         int i_81_ = Cache.outgoingbuffer.getUnsignedShortBE();
                         int i_82_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                         int i_83_ = (((0x71 & i_82_) >> 4) + Class40_Sub6.anInt2119);
                         int i_84_ = (0x7 & i_82_) + OverlayDefinition.anInt2318;
-                        if(i_83_ >= 0 && i_84_ >= 0 && (i_83_ ^ 0xffffffff) > -105 && i_84_ < 104 && (i_80_ ^ 0xffffffff) != (Class30.anInt708 ^ 0xffffffff)) {
+                        if(i_83_ >= 0 && i_84_ >= 0 && i_83_ < 104 && i_84_ < 104 && Class30.anInt708 != i_80_) {
                             Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3 = new Class40_Sub5_Sub17_Sub3();
                             class40_sub5_sub17_sub3.anInt3067 = i_81_;
                             class40_sub5_sub17_sub3.anInt3058 = i;
@@ -306,7 +306,7 @@ public class Class53 {
                         int i_86_ = Cache.outgoingbuffer.getUnsignedByte();
                         int i_87_ = OverlayDefinition.anInt2318 + (i_86_ & 0x7);
                         int i_88_ = (Class40_Sub6.anInt2119 + ((0x7a & i_86_) >> 4));
-                        if((i_88_ ^ 0xffffffff) <= -1 && (i_87_ ^ 0xffffffff) <= -1 && i_88_ < 104 && i_87_ < 104) {
+                        if(i_88_ >= 0 && i_87_ >= 0 && i_88_ < 104 && i_87_ < 104) {
                             Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3 = new Class40_Sub5_Sub17_Sub3();
                             class40_sub5_sub17_sub3.anInt3058 = i_85_;
                             class40_sub5_sub17_sub3.anInt3067 = i;
@@ -322,7 +322,7 @@ public class Class53 {
     }
 
     public static void method950(int arg0, byte arg1, int arg2, int arg3) {
-        if((Class5.anInt200 ^ 0xffffffff) != -1 && (arg2 ^ 0xffffffff) != -1 && PacketBuffer.anInt2248 < 50) {
+        if(Class5.anInt200 != 0 && arg2 != 0 && PacketBuffer.anInt2248 < 50) {
             IdentityKit.anIntArray2602[PacketBuffer.anInt2248] = arg0;
             ItemDefinition.anIntArray2814[PacketBuffer.anInt2248] = arg2;
             Class40_Sub3.anIntArray2023[PacketBuffer.anInt2248] = arg3;
@@ -339,7 +339,7 @@ public class Class53 {
         do {
             Class38.aClass68_887.method1046((byte) 90);
             anInt1245++;
-            if((Class51.anInt1197 ^ 0xffffffff) == -1 || Class51.anInt1197 == 5) {
+            if(Class51.anInt1197 == 0 || Class51.anInt1197 == 5) {
                 int i = 20;
                 arg1.method686(Class48.aClass1_1122, 180, 74 + -i, 16777215);
                 int i_89_ = -i + 82;
@@ -349,7 +349,7 @@ public class Class53 {
                 Rasterizer.drawFilledRectangle(3 * Class67.anInt1607 + 30, i_89_ + 2, (-(Class67.anInt1607 * 3) + 300), 30, 0);
                 arg1.method686(Class22_Sub2.currentLoadingText, 180, -i + 105, 16777215);
             }
-            if((Class51.anInt1197 ^ 0xffffffff) == -21) {
+            if(Class51.anInt1197 == 20) {
                 int i = 40;
                 Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775.drawImage(0, 0);
                 arg1.method688(Class22_Sub2.aClass1_1879, 180, i, 16776960, true);
@@ -364,7 +364,7 @@ public class Class53 {
                 arg1.drawShadowedString((Class40_Sub5_Sub17_Sub6.method832(-121, new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false)})), 92, i, 16777215, true);
                 i += 15;
             }
-            if((Class51.anInt1197 ^ 0xffffffff) == -11) {
+            if(Class51.anInt1197 == 10) {
                 Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775.drawImage(0, 0);
                 if(Class26.anInt622 != 0) {
                     if(Class26.anInt622 == 2) {
@@ -380,14 +380,14 @@ public class Class53 {
                         i += 10;
                         arg1.drawShadowedString((Class40_Sub5_Sub17_Sub6.method832(-113, (new RSString[]{Class61.aClass1_1422, Class22_Sub2.username, ((Node.pulseCycle % 40 < 20 & Node.anInt947 == 0) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 90, i, 16777215, true);
                         i += 15;
-                        arg1.drawShadowedString((Class40_Sub5_Sub17_Sub6.method832(arg0 + 18924, (new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false), (((Node.pulseCycle % 40 ^ 0xffffffff) > -21 & (Node.anInt947 ^ 0xffffffff) == -2) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 92, i, 16777215, true);
+                        arg1.drawShadowedString((Class40_Sub5_Sub17_Sub6.method832(arg0 + 18924, (new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false), ((Node.pulseCycle % 40 < 20 & Node.anInt947 == 1) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 92, i, 16777215, true);
                         Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
                         i += 15;
                         arg1.method688(VarbitDefinition.aClass1_2351, i_90_, i_91_ + 5, 16777215, true);
                         i_90_ = 260;
                         Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
                         arg1.method688(Class68.aClass1_1635, i_90_, 5 + i_91_, 16777215, true);
-                    } else if((Class26.anInt622 ^ 0xffffffff) == -4) {
+                    } else if(Class26.anInt622 == 3) {
                         arg1.method688(Class67.aClass1_1598, 180, 40, 16776960, true);
                         int i = 180;
                         int i_92_ = 150;

@@ -55,15 +55,15 @@ public class Class40_Sub3 extends Node {
         anInt2029++;
         if(Class40_Sub5_Sub6.anInt2451 == 0) {
             Npc.aScene_3301 = new Scene(4, 104, 104, Class40_Sub6.tile_height);
-            for(int i = 0; (i ^ 0xffffffff) > -5; i++)
+            for(int i = 0; i < 4; i++)
                 Landscape.aCollisionMapArray1167[i] = new CollisionMap(104, 104);
             Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765 = new ImageRGB(512, 512);
             Class67.anInt1607 = 5;
             Class40_Sub5_Sub6.anInt2451 = 20;
             Class22_Sub2.currentLoadingText = Widget.aClass1_2674;
-        } else if((Class40_Sub5_Sub6.anInt2451 ^ 0xffffffff) == -21) {
+        } else if(Class40_Sub5_Sub6.anInt2451 == 20) {
             int[] is = new int[9];
-            for(int i = 0; (i ^ 0xffffffff) > -10; i++) {
+            for(int i = 0; i < 9; i++) {
                 int i_0_ = 15 + (32 * i + 128);
                 int i_1_ = 3 * i_0_ + 600;
                 int i_2_ = R3D.sinetable[i_0_];
@@ -106,7 +106,7 @@ public class Class40_Sub3 extends Node {
             i += 5 * VertexNormal.aClass6_Sub1_1104.method197(100) / 100;
             i += 5 * Class56.aClass6_Sub1_1323.method197(100) / 100;
             if(i != 100) {
-                if((i ^ 0xffffffff) != -1)
+                if(i != 0)
                     Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(arg0 + -42, new RSString[]{ActorDefinition.aClass1_2396, HashTable.method334(i, -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 30;
             } else {
@@ -121,7 +121,7 @@ public class Class40_Sub3 extends Node {
             Class40_Sub5_Sub6.anInt2451 = 50;
             Class22_Sub2.currentLoadingText = VertexNormal.aClass1_1105;
             Class67.anInt1607 = 35;
-        } else if((Class40_Sub5_Sub6.anInt2451 ^ 0xffffffff) == -51) {
+        } else if(Class40_Sub5_Sub6.anInt2451 == 50) {
             int i = 0;
             if(Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236 != null)
                 i++;
@@ -233,7 +233,7 @@ public class Class40_Sub3 extends Node {
                 i++;
             else
                 Class40_Sub5_Sub13.moderatorIcon = SpotAnimDefinition.method550((ActorDefinition.aClass6_Sub1_2377), (byte) -55, Class38.aClass1_881, HuffmanEncoding.blank_string);
-            if((i ^ 0xffffffff) > -15) {
+            if(i < 14) {
                 Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(arg0 + -139, new RSString[]{Class17.aClass1_452, HashTable.method334(100 * i / 14, -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 70;
             } else {
@@ -249,7 +249,7 @@ public class Class40_Sub3 extends Node {
                 Class67.anInt1607 = 70;
                 Class40_Sub5_Sub6.anInt2451 = 85;
             }
-        } else if((Class40_Sub5_Sub6.anInt2451 ^ 0xffffffff) == -86) {
+        } else if(Class40_Sub5_Sub6.anInt2451 == 85) {
             int i = KeyFocusListener.method955(ActorDefinition.aClass6_Sub1_2377, (byte) -59);
             int i_9_ = ActorDefinition.method576(false);
             if(i < i_9_) {
@@ -272,13 +272,13 @@ public class Class40_Sub3 extends Node {
                 Class67.anInt1607 = 90;
                 Class22_Sub2.currentLoadingText = Actor.aClass1_3124;
             }
-        } else if((Class40_Sub5_Sub6.anInt2451 ^ 0xffffffff) == -111) {
+        } else if(Class40_Sub5_Sub6.anInt2451 == 110) {
             Class12.mouseCapturer = new Class39();
             ISAAC.aClass31_521.method394(10, 0, Class12.mouseCapturer);
             Class22_Sub2.currentLoadingText = SpotAnimDefinition.aClass1_2297;
             Class40_Sub5_Sub6.anInt2451 = 120;
             Class67.anInt1607 = 94;
-        } else if((Class40_Sub5_Sub6.anInt2451 ^ 0xffffffff) == -121) {
+        } else if(Class40_Sub5_Sub6.anInt2451 == 120) {
             if(!RSCanvas.aClass6_Sub1_48.method194(FloorDecoration.aClass1_615, HuffmanEncoding.blank_string, -1234)) {
                 Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(75, new RSString[]{Class40_Sub5_Sub17_Sub1.aClass1_3014, Class57.aClass1_1348}));
                 Class67.anInt1607 = 96;
@@ -304,7 +304,7 @@ public class Class40_Sub3 extends Node {
         } else {
             if(arg0 != 100)
                 aClass40_Sub5_Sub14_Sub4Array2019 = null;
-            if((Class40_Sub5_Sub6.anInt2451 ^ 0xffffffff) == -141)
+            if(Class40_Sub5_Sub6.anInt2451 == 140)
                 OverlayDefinition.method559(10, arg0 ^ 0x27);
         }
     }

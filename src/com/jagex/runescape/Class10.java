@@ -63,7 +63,7 @@ public class Class10 {
 
     public static void method238(int arg0) {
         anInt335++;
-        if((CollisionMap.anInt165 ^ 0xffffffff) != -1) {
+        if(CollisionMap.anInt165 != 0) {
             TypeFace class40_sub5_sub14_sub1 = Class53.fontNormal;
             int i = 0;
             if(Class40_Sub5_Sub15.anInt2782 != 0)
@@ -81,7 +81,7 @@ public class Class10 {
                         class1 = class1.substring(5);
                         i_1_ = 2;
                     }
-                    if(((i_2_ ^ 0xffffffff) == -4 || i_2_ == 7) && (i_2_ == 7 || Class4.anInt185 == 0 || ((Class4.anInt185 ^ 0xffffffff) == -2 && Class40_Sub2.hasFriend(class1, -32624)))) {
+                    if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || Class4.anInt185 == 0 || (Class4.anInt185 == 1 && Class40_Sub2.hasFriend(class1, -32624)))) {
                         int i_3_ = 329 - 13 * i;
                         int i_4_ = 4;
                         i++;
@@ -89,11 +89,11 @@ public class Class10 {
                         class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub6.aClass1_2458), i_4_, -1 + i_3_, 65535);
                         i_4_ += class40_sub5_sub14_sub1.getStringWidth(Class40_Sub5_Sub6.aClass1_2458);
                         i_4_ += class40_sub5_sub14_sub1.method689(32);
-                        if((i_1_ ^ 0xffffffff) == -2) {
+                        if(i_1_ == 1) {
                             Class40_Sub5_Sub13.moderatorIcon[0].drawImage(i_4_, i_3_ - 12);
                             i_4_ += 14;
                         }
-                        if((i_1_ ^ 0xffffffff) == -3) {
+                        if(i_1_ == 2) {
                             Class40_Sub5_Sub13.moderatorIcon[1].drawImage(i_4_, -12 + i_3_);
                             i_4_ += 14;
                         }
@@ -107,15 +107,15 @@ public class Class10 {
                         i++;
                         class40_sub5_sub14_sub1.drawString(Actor.chatMessages[i_0_], 4, i_5_, 0);
                         class40_sub5_sub14_sub1.drawString(Actor.chatMessages[i_0_], 4, i_5_ - 1, 65535);
-                        if((i ^ 0xffffffff) <= -6)
+                        if(i >= 5)
                             return;
                     }
-                    if((i_2_ ^ 0xffffffff) == -7 && Class4.anInt185 < 2) {
+                    if(i_2_ == 6 && Class4.anInt185 < 2) {
                         int i_6_ = -(13 * i) + 329;
                         i++;
                         class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub17_Sub6.method832(-58, new RSString[]{Class40_Sub5_Sub1.aClass1_2274, Class48.aClass1_1123, class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), 4, i_6_, 0);
                         class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub17_Sub6.method832(-81, new RSString[]{Class40_Sub5_Sub1.aClass1_2274, Class48.aClass1_1123, class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), 4, i_6_ + -1, 65535);
-                        if((i ^ 0xffffffff) <= -6)
+                        if(i >= 5)
                             return;
                     }
                 }

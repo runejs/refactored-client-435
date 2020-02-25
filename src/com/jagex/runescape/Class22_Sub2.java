@@ -143,7 +143,7 @@ public abstract class Class22_Sub2 extends Class22 {
     }
 
     public void method321(byte arg0, long arg1) {
-        for(int i = 0; (i ^ 0xffffffff) > -129; i++) {
+        for(int i = 0; i < 128; i++) {
             int i_6_ = Class38.anIntArray889[i];
             Class38.anIntArray889[i] = 0;
             for(int i_7_ = 0; i_7_ < 16; i_7_++) {
@@ -151,19 +151,19 @@ public abstract class Class22_Sub2 extends Class22 {
                     method314(144 + i_7_, i, 0, arg1);
             }
         }
-        for(int i = 0; (i ^ 0xffffffff) > -17; i++)
+        for(int i = 0; i < 16; i++)
             method314(i + 176, 123, 0, arg1);
         if(arg0 <= 101)
             aClass1_1879 = null;
-        for(int i = 0; (i ^ 0xffffffff) > -17; i++)
+        for(int i = 0; i < 16; i++)
             method314(i + 176, 120, 0, arg1);
-        for(int i = 0; (i ^ 0xffffffff) > -17; i++)
+        for(int i = 0; i < 16; i++)
             method314(i + 176, 121, 0, arg1);
-        for(int i = 0; (i ^ 0xffffffff) > -17; i++)
+        for(int i = 0; i < 16; i++)
             method314(i + 176, 0, 0, arg1);
         for(int i = 0; i < 16; i++)
             method314(176 + i, 32, 0, arg1);
-        for(int i = 0; (i ^ 0xffffffff) > -17; i++)
+        for(int i = 0; i < 16; i++)
             method314(i + 192, 0, 0, arg1);
     }
 

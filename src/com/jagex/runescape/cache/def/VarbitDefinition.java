@@ -47,13 +47,13 @@ public class VarbitDefinition extends SubNode {
             arg3 = arg1;
             arg1 = i;
         }
-        if((arg4 ^ 0xffffffff) == -1)
+        if(arg4 == 0)
             return arg0;
         if(arg4 == 1)
             return 1 + (-arg3 + 7 - arg2);
         if(arg6 > -64)
             method564(12, 96, -19, -17, -19, 1, (byte) -99);
-        if((arg4 ^ 0xffffffff) == -3)
+        if(arg4 == 2)
             return -arg1 + 1 + (-arg0 + 7);
         return arg2;
 
@@ -84,10 +84,10 @@ public class VarbitDefinition extends SubNode {
         if(Class5.aClass22_189 != null) {
             if(GameFrame.anInt1450 >= 0) {
                 arg2 -= 20;
-                if((arg2 ^ 0xffffffff) > -2)
+                if(arg2 < 1)
                     arg2 = 1;
                 RSCanvas.anInt54 = arg2;
-                if((GameFrame.anInt1450 ^ 0xffffffff) == -1)
+                if(GameFrame.anInt1450 == 0)
                     Buffer.anInt1982 = 0;
                 else {
                     int i = Class29.method372(113, GameFrame.anInt1450);
@@ -97,7 +97,7 @@ public class VarbitDefinition extends SubNode {
                 Player.aByteArray3270 = arg3;
                 PacketBuffer.anInt2258 = arg0;
                 Class30.aBoolean687 = arg1;
-            } else if((RSCanvas.anInt54 ^ 0xffffffff) == -1)
+            } else if(RSCanvas.anInt54 == 0)
                 RSString.method56(2037, arg1, arg3, arg0);
             else {
                 PacketBuffer.anInt2258 = arg0;

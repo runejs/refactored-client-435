@@ -70,7 +70,7 @@ public class Cache {
     }
 
     public void method230(int arg0, long arg1, SubNode arg2) {
-        if((anInt316 ^ 0xffffffff) != -1)
+        if(anInt316 != 0)
             anInt316--;
         else {
             SubNode class40_sub5 = aClass27_319.method351(536857847);

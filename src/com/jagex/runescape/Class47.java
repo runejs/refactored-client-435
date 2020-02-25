@@ -13,7 +13,7 @@ public class Class47 {
 
     public Class47(File arg0, String arg1, long arg2) throws IOException {
 
-        if((arg2 ^ 0xffffffffffffffffL) == 0L)
+        if(arg2 == -1)
             arg2 = 9223372036854775807L;
         if(arg2 <= arg0.length())
             arg0.delete();
@@ -75,7 +75,7 @@ public class Class47 {
         int i = aRandomAccessFile1120.read(arg2, arg0, arg1);
         if(arg3 > -99)
             aRandomAccessFile1120 = null;
-        if((i ^ 0xffffffff) < -1)
+        if(i > 0)
             aLong1118 += (long) i;
         return i;
 

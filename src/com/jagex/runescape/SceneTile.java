@@ -87,13 +87,13 @@ public class SceneTile extends Node {
             }
             for(; ; ) {
                 int i = arg2.contains(Class45.aClass1_1077);
-                if((i ^ 0xffffffff) == 0)
+                if(i == -1)
                     break;
                 arg2 = (Class40_Sub5_Sub17_Sub6.method832(72, (new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(1, false, arg1))), arg2.substring(i + 2)})));
             }
             for(; ; ) {
                 int i = arg2.contains(Class67.aClass1_1610);
-                if((i ^ 0xffffffff) == 0)
+                if(i == -1)
                     break;
                 arg2 = (Class40_Sub5_Sub17_Sub6.method832(-121, (new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(2, false, arg1))), arg2.substring(2 + i)})));
             }
@@ -111,7 +111,7 @@ public class SceneTile extends Node {
             }
             for(; ; ) {
                 int i = arg2.contains(GameObjectDefinition.aClass1_2526);
-                if((i ^ 0xffffffff) == 0)
+                if(i == -1)
                     break;
                 RSString class1 = HuffmanEncoding.blank_string;
                 if(Class12.aClass15_394 != null) {
@@ -173,21 +173,21 @@ public class SceneTile extends Node {
         if(arg2 >= -16)
             return null;
         int i = -arg1 + arg0;
-        if((i ^ 0xffffffff) > 8)
+        if(i < -9)
             return FloorDecoration.aClass1_610;
-        if((i ^ 0xffffffff) > 5)
+        if(i < -6)
             return Class29.aClass1_670;
         if(i < -3)
             return Class68.aClass1_1639;
-        if((i ^ 0xffffffff) > -1)
+        if(i < 0)
             return Cache.aClass1_327;
-        if((i ^ 0xffffffff) < -10)
+        if(i > 9)
             return Landscape.aClass1_1162;
         if(i > 6)
             return Class19.aClass1_494;
-        if((i ^ 0xffffffff) < -4)
+        if(i > 3)
             return Node.aClass1_932;
-        if((i ^ 0xffffffff) < -1)
+        if(i > 0)
             return Class37.aClass1_877;
         return KeyFocusListener.aClass1_1283;
 
@@ -196,15 +196,15 @@ public class SceneTile extends Node {
     public static void method537(int arg0) {
 
         anInt2041++;
-        if(ActorDefinition.anInt2394 >= 2 || (Class8.anInt301 ^ 0xffffffff) != -1 || (Main.anInt1773 ^ 0xffffffff) != -1) {
+        if(ActorDefinition.anInt2394 >= 2 || Class8.anInt301 != 0 || Main.anInt1773 != 0) {
             RSString class1;
-            if(Class8.anInt301 == 1 && (ActorDefinition.anInt2394 ^ 0xffffffff) > -3)
+            if(Class8.anInt301 == 1 && ActorDefinition.anInt2394 < 2)
                 class1 = (Class40_Sub5_Sub17_Sub6.method832(-74, (new RSString[]{Main.aClass1_1763, VertexNormal.aClass1_1117, Npc.aClass1_3295, Class38.aClass1_894})));
             else if(Main.anInt1773 != 1 || ActorDefinition.anInt2394 >= 2)
                 class1 = (Landscape.aClass1Array1184[-1 + ActorDefinition.anInt2394]);
             else
                 class1 = (Class40_Sub5_Sub17_Sub6.method832(-57, new RSString[]{Class38_Sub1.aClass1_1918, VertexNormal.aClass1_1117, FloorDecoration.aClass1_611, Class38.aClass1_894}));
-            if((ActorDefinition.anInt2394 ^ 0xffffffff) < -3)
+            if(ActorDefinition.anInt2394 > 2)
                 class1 = (Class40_Sub5_Sub17_Sub6.method832(56, new RSString[]{class1, Class53.aClass1_1243, HashTable.method334((ActorDefinition.anInt2394) + -2, -1), Class39.aClass1_904}));
             if(arg0 == 4)
                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawShadowedSeededAlphaString(class1, 4, 15, 16777215, true, Node.pulseCycle / 1000);

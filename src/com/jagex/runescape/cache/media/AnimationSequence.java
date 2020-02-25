@@ -59,9 +59,9 @@ public class AnimationSequence extends SubNode {
 
     public static void method592(CollisionMap[] arg0, int arg1, byte[] arg2, int arg3, int arg4, int arg5, int arg6) {
         for(int i = 0; i < 4; i++) {
-            for(int i_1_ = 0; (i_1_ ^ 0xffffffff) > -65; i_1_++) {
-                for(int i_2_ = 0; (i_2_ ^ 0xffffffff) > -65; i_2_++) {
-                    if((arg4 + i_1_ ^ 0xffffffff) < -1 && (i_1_ + arg4 ^ 0xffffffff) > -104 && arg5 + i_2_ > 0 && i_2_ + arg5 < 103)
+            for(int i_1_ = 0; i_1_ < 64; i_1_++) {
+                for(int i_2_ = 0; i_2_ < 64; i_2_++) {
+                    if(arg4 + i_1_ > 0 && i_1_ + arg4 < 103 && arg5 + i_2_ > 0 && i_2_ + arg5 < 103)
                         arg0[i].anIntArrayArray150[i_1_ + arg4][(i_2_ + arg5)] = HuffmanEncoding.method1021((arg0[i].anIntArrayArray150[i_1_ + arg4][i_2_ + arg5]), -16777217);
                 }
             }
@@ -70,7 +70,7 @@ public class AnimationSequence extends SubNode {
         if(arg3 == -6) {
             for(int i = 0; i < 4; i++) {
                 for(int i_3_ = 0; i_3_ < 64; i_3_++) {
-                    for(int i_4_ = 0; (i_4_ ^ 0xffffffff) > -65; i_4_++)
+                    for(int i_4_ = 0; i_4_ < 64; i_4_++)
                         Class48.method922(i_3_ + arg4, 0, class40_sub1, -99, i_4_ + arg5, arg6, arg1, i);
                 }
             }
@@ -95,7 +95,7 @@ public class AnimationSequence extends SubNode {
                 i_17_ = (i_17_ >> 4 + -i_15_) + (0xf & i_17_ << i_15_);
             int i_18_;
             int i_19_;
-            if(i_15_ == 0 || (i_15_ ^ 0xffffffff) == -3) {
+            if(i_15_ == 0 || i_15_ == 2) {
                 i_19_ = gameObjectDefinition.sizeY;
                 i_18_ = gameObjectDefinition.sizeX;
             } else {
@@ -158,15 +158,15 @@ public class AnimationSequence extends SubNode {
             return arg2.method817(true);
         arg3 &= 0x3;
         Model class40_sub5_sub17_sub5 = arg2.method817(!class40_sub5_sub15.method737(arg0, 124));
-        if((arg3 ^ 0xffffffff) == -2)
+        if(arg3 == 1)
             class40_sub5_sub17_sub5.method824();
         else if(arg3 == 2)
             class40_sub5_sub17_sub5.method819();
         else if(arg3 == 3)
             class40_sub5_sub17_sub5.method813();
         class40_sub5_sub17_sub5.method825(class40_sub5_sub15, arg0);
-        if((arg3 ^ 0xffffffff) != -2) {
-            if((arg3 ^ 0xffffffff) != -3) {
+        if(arg3 != 1) {
+            if(arg3 != 2) {
                 if(arg3 == 3)
                     class40_sub5_sub17_sub5.method824();
             } else
@@ -179,7 +179,7 @@ public class AnimationSequence extends SubNode {
     public void method594(int arg0, Buffer arg1) {
         for(; ; ) {
             int i = arg1.getUnsignedByte();
-            if((i ^ 0xffffffff) == -1)
+            if(i == 0)
                 break;
             method595(-102, i, arg1);
         }
@@ -199,22 +199,22 @@ public class AnimationSequence extends SubNode {
                 anIntArray2485[i_7_] = arg2.getUnsignedShortBE();
             for(int i_8_ = 0; (i_8_ < i_5_); i_8_++)
                 anIntArray2485[i_8_] = ((arg2.getUnsignedShortBE() << 16) + anIntArray2485[i_8_]);
-        } else if((arg1 ^ 0xffffffff) == -3)
+        } else if(arg1 == 2)
             frameStep = arg2.getUnsignedShortBE();
         else if(arg1 != 3) {
-            if((arg1 ^ 0xffffffff) != -5) {
-                if((arg1 ^ 0xffffffff) == -6)
+            if(arg1 != 4) {
+                if(arg1 == 5)
                     anInt2494 = arg2.getUnsignedByte();
                 else if(arg1 != 6) {
                     if(arg1 != 7) {
-                        if((arg1 ^ 0xffffffff) == -9)
+                        if(arg1 == 8)
                             anInt2495 = arg2.getUnsignedByte();
                         else if(arg1 == 9)
                             anInt2470 = arg2.getUnsignedByte();
                         else if(arg1 != 10) {
-                            if((arg1 ^ 0xffffffff) == -12)
+                            if(arg1 == 11)
                                 anInt2483 = arg2.getUnsignedByte();
-                            else if((arg1 ^ 0xffffffff) == -13) {
+                            else if(arg1 == 12) {
                                 int i_9_ = arg2.getUnsignedByte();
                                 anIntArray2479 = new int[i_9_];
                                 for(int i_10_ = 0; ((i_10_ < i_9_)); i_10_++)
@@ -267,7 +267,7 @@ public class AnimationSequence extends SubNode {
             class40_sub5_sub15_20_ = Class55.method960((byte) -99, i_21_ >> 16);
             i_21_ &= 0xffff;
         }
-        if(class40_sub5_sub15_20_ == null || (i_21_ ^ 0xffffffff) == -65536) {
+        if(class40_sub5_sub15_20_ == null || i_21_ == 65535) {
             Model class40_sub5_sub17_sub5 = arg1.method817(!class40_sub5_sub15.method737(i, 126));
             class40_sub5_sub17_sub5.method825(class40_sub5_sub15, i);
             return class40_sub5_sub17_sub5;

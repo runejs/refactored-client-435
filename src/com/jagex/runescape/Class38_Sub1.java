@@ -20,7 +20,7 @@ public class Class38_Sub1 extends Class38 {
 
     static {
         int i = 0;
-        for(int i_27_ = 0; (i_27_ ^ 0xffffffff) > -100; i_27_++) {
+        for(int i_27_ = 0; i_27_ < 99; i_27_++) {
             int i_28_ = i_27_ + 1;
             int i_29_ = (int) ((double) i_28_ + 300.0 * Math.pow(2.0, (double) i_28_ / 7.0));
             i += i_29_;
@@ -40,7 +40,7 @@ public class Class38_Sub1 extends Class38 {
     }
 
     public static void method445(int arg0) {
-        if((CollisionMap.anInt165 ^ 0xffffffff) != -1) {
+        if(CollisionMap.anInt165 != 0) {
             int i = 0;
             if(Class40_Sub5_Sub15.anInt2782 != 0)
                 i = 1;
@@ -52,16 +52,16 @@ public class Class38_Sub1 extends Class38 {
                         class1 = class1.substring(5);
                     if(class1 != null && class1.startsWith(Widget.goldCrown))
                         class1 = class1.substring(5);
-                    if((i_2_ == 3 || (i_2_ ^ 0xffffffff) == -8) && ((i_2_ ^ 0xffffffff) == -8 || (Class4.anInt185 ^ 0xffffffff) == -1 || ((Class4.anInt185 ^ 0xffffffff) == -2 && Class40_Sub2.hasFriend(class1, arg0 + -42391)))) {
+                    if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || Class4.anInt185 == 0 || (Class4.anInt185 == 1 && Class40_Sub2.hasFriend(class1, arg0 + -42391)))) {
                         int i_3_ = 329 + -(13 * i);
                         i++;
-                        if((Class13.mouseX ^ 0xffffffff) < -5 && ((i_3_ + -10 < Landscape.mouseY + -4)) && ((-4 + Landscape.mouseY <= i_3_ + 3))) {
+                        if(Class13.mouseX > 4 && ((i_3_ + -10 < Landscape.mouseY + -4)) && ((-4 + Landscape.mouseY <= i_3_ + 3))) {
                             int i_4_ = 25 + (Class53.fontNormal.getStringWidth(Class40_Sub5_Sub17_Sub6.method832(arg0 + -9666, (new RSString[]{Class40_Sub5_Sub6.aClass1_2458, Class12.aClass1_392, class1, (Actor.chatMessages[i_1_])}))));
                             if(i_4_ > 450)
                                 i_4_ = 450;
                             if(Class13.mouseX < 4 + i_4_) {
                                 Class60.anInt1400++;
-                                if((Class19.anInt493 ^ 0xffffffff) <= -2) {
+                                if(Class19.anInt493 >= 1) {
                                     OverlayDefinition.method558(0, Class22_Sub1.aClass1_1865, 0, -501, 0, 2028, (Class40_Sub5_Sub17_Sub6.method832(-97, new RSString[]{Class26.aClass1_620, class1})));
                                     CollisionMap.anInt158++;
                                 }
@@ -69,10 +69,10 @@ public class Class38_Sub1 extends Class38 {
                                 OverlayDefinition.method558(0, FloorDecoration.aClass1_591, 0, arg0 ^ ~0x27d3, 0, 2045, (Class40_Sub5_Sub17_Sub6.method832(arg0 ^ ~0x2660, new RSString[]{Class26.aClass1_620, class1})));
                             }
                         }
-                        if((i ^ 0xffffffff) <= -6)
+                        if(i >= 5)
                             return;
                     }
-                    if((i_2_ == 5 || i_2_ == 6) && (Class4.anInt185 ^ 0xffffffff) > -3 && (++i ^ 0xffffffff) <= -6)
+                    if((i_2_ == 5 || i_2_ == 6) && Class4.anInt185 < 2 && ++i >= 5)
                         return;
                 }
             }
@@ -86,7 +86,7 @@ public class Class38_Sub1 extends Class38 {
             method448(47, -7, 96, -97, (byte) -6, -111, true, -110, 57, -36, -84, -42);
         if(!Class39.method452(arg0, (byte) 121, arg2))
             return false;
-        if((arg1 ^ 0xffffffff) < -1)
+        if(arg1 > 0)
             RSString.aClass9_1684 = new Cache(arg1);
         return true;
     }
@@ -95,72 +95,72 @@ public class Class38_Sub1 extends Class38 {
         if(arg0 != 29)
             method448(79, 61, 50, -68, (byte) 53, -121, false, 1, 18, -15, 29, 27);
         if(GameFrame.clickType == 1) {
-            if(Class57.anInt1338 >= 539 && (Class57.anInt1338 ^ 0xffffffff) >= -574 && RSString.anInt1668 >= 169 && RSString.anInt1668 < 205 && (Class40_Sub5_Sub11.tabWidgetIds[0] ^ 0xffffffff) != 0) {
+            if(Class57.anInt1338 >= 539 && Class57.anInt1338 <= 573 && RSString.anInt1668 >= 169 && RSString.anInt1668 < 205 && Class40_Sub5_Sub11.tabWidgetIds[0] != -1) {
                 IdentityKit.aBoolean2597 = true;
                 ISAAC.redrawTabArea = true;
                 Class5.currentTabId = 0;
             }
-            if(Class57.anInt1338 >= 569 && (Class57.anInt1338 ^ 0xffffffff) >= -600 && (RSString.anInt1668 ^ 0xffffffff) <= -169 && (RSString.anInt1668 ^ 0xffffffff) > -206 && (Class40_Sub5_Sub11.tabWidgetIds[1] ^ 0xffffffff) != 0) {
+            if(Class57.anInt1338 >= 569 && Class57.anInt1338 <= 599 && RSString.anInt1668 >= 168 && RSString.anInt1668 < 205 && Class40_Sub5_Sub11.tabWidgetIds[1] != -1) {
                 Class5.currentTabId = 1;
                 ISAAC.redrawTabArea = true;
                 IdentityKit.aBoolean2597 = true;
             }
-            if(Class57.anInt1338 >= 597 && Class57.anInt1338 <= 627 && RSString.anInt1668 >= 168 && (RSString.anInt1668 ^ 0xffffffff) > -206 && Class40_Sub5_Sub11.tabWidgetIds[2] != -1) {
+            if(Class57.anInt1338 >= 597 && Class57.anInt1338 <= 627 && RSString.anInt1668 >= 168 && RSString.anInt1668 < 205 && Class40_Sub5_Sub11.tabWidgetIds[2] != -1) {
                 IdentityKit.aBoolean2597 = true;
                 Class5.currentTabId = 2;
                 ISAAC.redrawTabArea = true;
             }
-            if(Class57.anInt1338 >= 625 && (Class57.anInt1338 ^ 0xffffffff) >= -670 && (RSString.anInt1668 ^ 0xffffffff) <= -169 && (RSString.anInt1668 ^ 0xffffffff) > -204 && (Class40_Sub5_Sub11.tabWidgetIds[3] ^ 0xffffffff) != 0) {
+            if(Class57.anInt1338 >= 625 && Class57.anInt1338 <= 669 && RSString.anInt1668 >= 168 && RSString.anInt1668 < 203 && Class40_Sub5_Sub11.tabWidgetIds[3] != -1) {
                 IdentityKit.aBoolean2597 = true;
                 ISAAC.redrawTabArea = true;
                 Class5.currentTabId = 3;
             }
-            if((Class57.anInt1338 ^ 0xffffffff) <= -667 && Class57.anInt1338 <= 696 && RSString.anInt1668 >= 168 && (RSString.anInt1668 ^ 0xffffffff) > -206 && Class40_Sub5_Sub11.tabWidgetIds[4] != -1) {
+            if(Class57.anInt1338 >= 666 && Class57.anInt1338 <= 696 && RSString.anInt1668 >= 168 && RSString.anInt1668 < 205 && Class40_Sub5_Sub11.tabWidgetIds[4] != -1) {
                 Class5.currentTabId = 4;
                 ISAAC.redrawTabArea = true;
                 IdentityKit.aBoolean2597 = true;
             }
-            if(Class57.anInt1338 >= 694 && Class57.anInt1338 <= 724 && (RSString.anInt1668 ^ 0xffffffff) <= -169 && RSString.anInt1668 < 205 && (Class40_Sub5_Sub11.tabWidgetIds[5] ^ 0xffffffff) != 0) {
+            if(Class57.anInt1338 >= 694 && Class57.anInt1338 <= 724 && RSString.anInt1668 >= 168 && RSString.anInt1668 < 205 && Class40_Sub5_Sub11.tabWidgetIds[5] != -1) {
                 IdentityKit.aBoolean2597 = true;
                 ISAAC.redrawTabArea = true;
                 Class5.currentTabId = 5;
             }
-            if(Class57.anInt1338 >= 722 && (Class57.anInt1338 ^ 0xffffffff) >= -757 && (RSString.anInt1668 ^ 0xffffffff) <= -170 && (RSString.anInt1668 ^ 0xffffffff) > -206 && Class40_Sub5_Sub11.tabWidgetIds[6] != -1) {
+            if(Class57.anInt1338 >= 722 && Class57.anInt1338 <= 756 && RSString.anInt1668 >= 169 && RSString.anInt1668 < 205 && Class40_Sub5_Sub11.tabWidgetIds[6] != -1) {
                 ISAAC.redrawTabArea = true;
                 Class5.currentTabId = 6;
                 IdentityKit.aBoolean2597 = true;
             }
-            if(Class57.anInt1338 >= 540 && (Class57.anInt1338 ^ 0xffffffff) >= -575 && RSString.anInt1668 >= 466 && RSString.anInt1668 < 502 && (Class40_Sub5_Sub11.tabWidgetIds[7] ^ 0xffffffff) != 0) {
+            if(Class57.anInt1338 >= 540 && Class57.anInt1338 <= 574 && RSString.anInt1668 >= 466 && RSString.anInt1668 < 502 && Class40_Sub5_Sub11.tabWidgetIds[7] != -1) {
                 Class5.currentTabId = 7;
                 IdentityKit.aBoolean2597 = true;
                 ISAAC.redrawTabArea = true;
             }
-            if((Class57.anInt1338 ^ 0xffffffff) <= -573 && Class57.anInt1338 <= 602 && (RSString.anInt1668 ^ 0xffffffff) <= -467 && RSString.anInt1668 < 503 && (Class40_Sub5_Sub11.tabWidgetIds[8] ^ 0xffffffff) != 0) {
+            if(Class57.anInt1338 >= 572 && Class57.anInt1338 <= 602 && RSString.anInt1668 >= 466 && RSString.anInt1668 < 503 && Class40_Sub5_Sub11.tabWidgetIds[8] != -1) {
                 ISAAC.redrawTabArea = true;
                 IdentityKit.aBoolean2597 = true;
                 Class5.currentTabId = 8;
             }
-            if((Class57.anInt1338 ^ 0xffffffff) <= -600 && Class57.anInt1338 <= 629 && (RSString.anInt1668 ^ 0xffffffff) <= -467 && RSString.anInt1668 < 503 && (Class40_Sub5_Sub11.tabWidgetIds[9] ^ 0xffffffff) != 0) {
+            if(Class57.anInt1338 >= 599 && Class57.anInt1338 <= 629 && RSString.anInt1668 >= 466 && RSString.anInt1668 < 503 && Class40_Sub5_Sub11.tabWidgetIds[9] != -1) {
                 IdentityKit.aBoolean2597 = true;
                 Class5.currentTabId = 9;
                 ISAAC.redrawTabArea = true;
             }
-            if((Class57.anInt1338 ^ 0xffffffff) <= -628 && (Class57.anInt1338 ^ 0xffffffff) >= -672 && (RSString.anInt1668 ^ 0xffffffff) <= -468 && (RSString.anInt1668 ^ 0xffffffff) > -503 && Class40_Sub5_Sub11.tabWidgetIds[10] != -1) {
+            if(Class57.anInt1338 >= 627 && Class57.anInt1338 <= 671 && RSString.anInt1668 >= 467 && RSString.anInt1668 < 502 && Class40_Sub5_Sub11.tabWidgetIds[10] != -1) {
                 Class5.currentTabId = 10;
                 IdentityKit.aBoolean2597 = true;
                 ISAAC.redrawTabArea = true;
             }
-            if((Class57.anInt1338 ^ 0xffffffff) <= -670 && Class57.anInt1338 <= 699 && (RSString.anInt1668 ^ 0xffffffff) <= -467 && RSString.anInt1668 < 503 && Class40_Sub5_Sub11.tabWidgetIds[11] != -1) {
+            if(Class57.anInt1338 >= 669 && Class57.anInt1338 <= 699 && RSString.anInt1668 >= 466 && RSString.anInt1668 < 503 && Class40_Sub5_Sub11.tabWidgetIds[11] != -1) {
                 Class5.currentTabId = 11;
                 ISAAC.redrawTabArea = true;
                 IdentityKit.aBoolean2597 = true;
             }
-            if((Class57.anInt1338 ^ 0xffffffff) <= -697 && (Class57.anInt1338 ^ 0xffffffff) >= -727 && (RSString.anInt1668 ^ 0xffffffff) <= -467 && (RSString.anInt1668 ^ 0xffffffff) > -504 && Class40_Sub5_Sub11.tabWidgetIds[12] != -1) {
+            if(Class57.anInt1338 >= 696 && Class57.anInt1338 <= 726 && RSString.anInt1668 >= 466 && RSString.anInt1668 < 503 && Class40_Sub5_Sub11.tabWidgetIds[12] != -1) {
                 ISAAC.redrawTabArea = true;
                 IdentityKit.aBoolean2597 = true;
                 Class5.currentTabId = 12;
             }
-            if(Class57.anInt1338 >= 724 && Class57.anInt1338 <= 758 && (RSString.anInt1668 ^ 0xffffffff) <= -467 && RSString.anInt1668 < 502 && Class40_Sub5_Sub11.tabWidgetIds[13] != -1) {
+            if(Class57.anInt1338 >= 724 && Class57.anInt1338 <= 758 && RSString.anInt1668 >= 466 && RSString.anInt1668 < 502 && Class40_Sub5_Sub11.tabWidgetIds[13] != -1) {
                 Class5.currentTabId = 13;
                 ISAAC.redrawTabArea = true;
                 IdentityKit.aBoolean2597 = true;
@@ -169,7 +169,7 @@ public class Class38_Sub1 extends Class38 {
     }
 
     public static boolean method448(int arg0, int arg1, int arg2, int arg3, byte arg4, int arg5, boolean arg6, int arg7, int arg8, int arg9, int arg10, int arg11) {
-        for(int i = 0; (i ^ 0xffffffff) > -105; i++) {
+        for(int i = 0; i < 104; i++) {
             for(int i_8_ = 0; i_8_ < 104; i_8_++) {
                 Class57.anIntArrayArray1335[i][i_8_] = 0;
                 Landscape.anIntArrayArray1175[i][i_8_] = 99999999;
@@ -188,16 +188,16 @@ public class Class38_Sub1 extends Class38 {
         Class10.anIntArray351[i++] = arg9;
         int i_12_ = Class24.anIntArray581.length;
         int[][] is = (Landscape.aCollisionMapArray1167[Player.anInt3267].anIntArrayArray150);
-        while((i ^ 0xffffffff) != (i_10_ ^ 0xffffffff)) {
+        while(i_10_ != i) {
             i_9_ = Class10.anIntArray351[i_10_];
             i_11_ = Class24.anIntArray581[i_10_];
             i_10_ = (i_10_ + 1) % i_12_;
-            if((arg3 ^ 0xffffffff) == (i_11_ ^ 0xffffffff) && (arg10 ^ 0xffffffff) == (i_9_ ^ 0xffffffff)) {
+            if(i_11_ == arg3 && i_9_ == arg10) {
                 bool = true;
                 break;
             }
             if(arg5 != 0) {
-                if(arg5 >= 5 && (arg5 ^ 0xffffffff) != -11 || !(Landscape.aCollisionMapArray1167[Player.anInt3267].method155(i_11_, false, arg5 + -1, arg10, i_9_, arg7, arg3))) {
+                if(arg5 >= 5 && arg5 != 10 || !(Landscape.aCollisionMapArray1167[Player.anInt3267].method155(i_11_, false, arg5 + -1, arg10, i_9_, arg7, arg3))) {
                     if(arg5 < 10 && (Landscape.aCollisionMapArray1167[Player.anInt3267].method158(arg10, arg7, i_9_, arg3, i_11_, (byte) 122, -1 + arg5))) {
                         bool = true;
                         break;
@@ -207,61 +207,61 @@ public class Class38_Sub1 extends Class38 {
                     break;
                 }
             }
-            if(arg0 != 0 && (arg8 ^ 0xffffffff) != -1 && (Landscape.aCollisionMapArray1167[Player.anInt3267].method153(-24, arg8, arg3, arg0, arg10, arg1, i_9_, i_11_))) {
+            if(arg0 != 0 && arg8 != 0 && (Landscape.aCollisionMapArray1167[Player.anInt3267].method153(-24, arg8, arg3, arg0, arg10, arg1, i_9_, i_11_))) {
                 bool = true;
                 break;
             }
             int i_13_ = Landscape.anIntArrayArray1175[i_11_][i_9_] + 1;
-            if(i_11_ > 0 && (Class57.anIntArrayArray1335[-1 + i_11_][i_9_] ^ 0xffffffff) == -1 && (0x1280108 & is[i_11_ - 1][i_9_] ^ 0xffffffff) == -1) {
+            if(i_11_ > 0 && Class57.anIntArrayArray1335[-1 + i_11_][i_9_] == 0 && (0x1280108 & is[i_11_ - 1][i_9_]) == 0) {
                 Class24.anIntArray581[i] = i_11_ - 1;
                 Class10.anIntArray351[i] = i_9_;
                 i = (1 + i) % i_12_;
                 Class57.anIntArrayArray1335[-1 + i_11_][i_9_] = 2;
                 Landscape.anIntArrayArray1175[i_11_ - 1][i_9_] = i_13_;
             }
-            if((i_11_ ^ 0xffffffff) > -104 && (Class57.anIntArrayArray1335[i_11_ + 1][i_9_] ^ 0xffffffff) == -1 && (is[1 + i_11_][i_9_] & 0x1280180) == 0) {
+            if(i_11_ < 103 && Class57.anIntArrayArray1335[i_11_ + 1][i_9_] == 0 && (is[1 + i_11_][i_9_] & 0x1280180) == 0) {
                 Class24.anIntArray581[i] = i_11_ + 1;
                 Class10.anIntArray351[i] = i_9_;
                 i = (i + 1) % i_12_;
                 Class57.anIntArrayArray1335[i_11_ + 1][i_9_] = 8;
                 Landscape.anIntArrayArray1175[i_11_ + 1][i_9_] = i_13_;
             }
-            if(i_9_ > 0 && (Class57.anIntArrayArray1335[i_11_][i_9_ - 1] ^ 0xffffffff) == -1 && (is[i_11_][-1 + i_9_] & 0x1280102) == 0) {
+            if(i_9_ > 0 && Class57.anIntArrayArray1335[i_11_][i_9_ - 1] == 0 && (is[i_11_][-1 + i_9_] & 0x1280102) == 0) {
                 Class24.anIntArray581[i] = i_11_;
                 Class10.anIntArray351[i] = -1 + i_9_;
                 Class57.anIntArrayArray1335[i_11_][-1 + i_9_] = 1;
                 i = (i + 1) % i_12_;
                 Landscape.anIntArrayArray1175[i_11_][i_9_ - 1] = i_13_;
             }
-            if((i_9_ ^ 0xffffffff) > -104 && (Class57.anIntArrayArray1335[i_11_][i_9_ + 1] ^ 0xffffffff) == -1 && (is[i_11_][i_9_ + 1] & 0x1280120 ^ 0xffffffff) == -1) {
+            if(i_9_ < 103 && Class57.anIntArrayArray1335[i_11_][i_9_ + 1] == 0 && (is[i_11_][i_9_ + 1] & 0x1280120) == 0) {
                 Class24.anIntArray581[i] = i_11_;
                 Class10.anIntArray351[i] = 1 + i_9_;
                 Class57.anIntArrayArray1335[i_11_][i_9_ + 1] = 4;
                 Landscape.anIntArrayArray1175[i_11_][1 + i_9_] = i_13_;
                 i = (i + 1) % i_12_;
             }
-            if((i_11_ ^ 0xffffffff) < -1 && (i_9_ ^ 0xffffffff) < -1 && (Class57.anIntArrayArray1335[-1 + i_11_][i_9_ - 1] ^ 0xffffffff) == -1 && (is[i_11_ - 1][-1 + i_9_] & 0x128010e) == 0 && (0x1280108 & is[i_11_ + -1][i_9_] ^ 0xffffffff) == -1 && (is[i_11_][-1 + i_9_] & 0x1280102 ^ 0xffffffff) == -1) {
+            if(i_11_ > 0 && i_9_ > 0 && Class57.anIntArrayArray1335[-1 + i_11_][i_9_ - 1] == 0 && (is[i_11_ - 1][-1 + i_9_] & 0x128010e) == 0 && (0x1280108 & is[i_11_ + -1][i_9_]) == 0 && (is[i_11_][-1 + i_9_] & 0x1280102) == 0) {
                 Class24.anIntArray581[i] = -1 + i_11_;
                 Class10.anIntArray351[i] = i_9_ - 1;
                 i = (i + 1) % i_12_;
                 Class57.anIntArrayArray1335[i_11_ + -1][-1 + i_9_] = 3;
                 Landscape.anIntArrayArray1175[-1 + i_11_][i_9_ + -1] = i_13_;
             }
-            if((i_11_ ^ 0xffffffff) > -104 && i_9_ > 0 && Class57.anIntArrayArray1335[i_11_ + 1][-1 + i_9_] == 0 && ((is[1 + i_11_][-1 + i_9_] & 0x1280183 ^ 0xffffffff) == -1) && (is[i_11_ + 1][i_9_] & 0x1280180) == 0 && (0x1280102 & is[i_11_][-1 + i_9_] ^ 0xffffffff) == -1) {
+            if(i_11_ < 103 && i_9_ > 0 && Class57.anIntArrayArray1335[i_11_ + 1][-1 + i_9_] == 0 && ((is[1 + i_11_][-1 + i_9_] & 0x1280183) == 0) && (is[i_11_ + 1][i_9_] & 0x1280180) == 0 && (0x1280102 & is[i_11_][-1 + i_9_]) == 0) {
                 Class24.anIntArray581[i] = 1 + i_11_;
                 Class10.anIntArray351[i] = i_9_ - 1;
                 i = (i + 1) % i_12_;
                 Class57.anIntArrayArray1335[1 + i_11_][-1 + i_9_] = 9;
                 Landscape.anIntArrayArray1175[i_11_ + 1][-1 + i_9_] = i_13_;
             }
-            if(i_11_ > 0 && i_9_ < 103 && (Class57.anIntArrayArray1335[i_11_ + -1][i_9_ + 1] ^ 0xffffffff) == -1 && ((0x1280138 & is[-1 + i_11_][1 + i_9_] ^ 0xffffffff) == -1) && (0x1280108 & is[i_11_ - 1][i_9_] ^ 0xffffffff) == -1 && (is[i_11_][i_9_ + 1] & 0x1280120) == 0) {
+            if(i_11_ > 0 && i_9_ < 103 && Class57.anIntArrayArray1335[i_11_ + -1][i_9_ + 1] == 0 && ((0x1280138 & is[-1 + i_11_][1 + i_9_]) == 0) && (0x1280108 & is[i_11_ - 1][i_9_]) == 0 && (is[i_11_][i_9_ + 1] & 0x1280120) == 0) {
                 Class24.anIntArray581[i] = -1 + i_11_;
                 Class10.anIntArray351[i] = 1 + i_9_;
                 Class57.anIntArrayArray1335[i_11_ - 1][1 + i_9_] = 6;
                 Landscape.anIntArrayArray1175[-1 + i_11_][i_9_ + 1] = i_13_;
                 i = (1 + i) % i_12_;
             }
-            if(i_11_ < 103 && i_9_ < 103 && (Class57.anIntArrayArray1335[1 + i_11_][1 + i_9_] ^ 0xffffffff) == -1 && (0x12801e0 & is[i_11_ + 1][i_9_ + 1]) == 0 && (0x1280180 & is[1 + i_11_][i_9_]) == 0 && (is[i_11_][1 + i_9_] & 0x1280120 ^ 0xffffffff) == -1) {
+            if(i_11_ < 103 && i_9_ < 103 && Class57.anIntArrayArray1335[1 + i_11_][1 + i_9_] == 0 && (0x12801e0 & is[i_11_ + 1][i_9_ + 1]) == 0 && (0x1280180 & is[1 + i_11_][i_9_]) == 0 && (is[i_11_][1 + i_9_] & 0x1280120) == 0) {
                 Class24.anIntArray581[i] = 1 + i_11_;
                 Class10.anIntArray351[i] = i_9_ + 1;
                 i = (i + 1) % i_12_;
@@ -278,7 +278,7 @@ public class Class38_Sub1 extends Class38 {
             int i_16_ = 100;
             for(int i_17_ = arg3 + -i_15_; arg3 + i_15_ >= i_17_; i_17_++) {
                 for(int i_18_ = -i_15_ + arg10; (arg10 + i_15_ >= i_18_); i_18_++) {
-                    if((i_17_ ^ 0xffffffff) <= -1 && (i_18_ ^ 0xffffffff) <= -1 && i_17_ < 104 && i_18_ < 104 && (Landscape.anIntArrayArray1175[i_17_][i_18_] < 100)) {
+                    if(i_17_ >= 0 && i_18_ >= 0 && i_17_ < 104 && i_18_ < 104 && (Landscape.anIntArrayArray1175[i_17_][i_18_] < 100)) {
                         int i_19_ = 0;
                         int i_20_ = 0;
                         if(i_18_ < arg10)
@@ -290,7 +290,7 @@ public class Class38_Sub1 extends Class38 {
                         else if(-1 + arg0 + arg3 < i_17_)
                             i_20_ = i_17_ + (-arg0 + -arg3 + 1);
                         int i_21_ = i_19_ * i_19_ + i_20_ * i_20_;
-                        if(i_14_ > i_21_ || ((i_14_ ^ 0xffffffff) == (i_21_ ^ 0xffffffff) && (((Landscape.anIntArrayArray1175[i_17_][i_18_]) < i_16_)))) {
+                        if(i_14_ > i_21_ || (i_21_ == i_14_ && (((Landscape.anIntArrayArray1175[i_17_][i_18_]) < i_16_)))) {
                             i_9_ = i_18_;
                             i_14_ = i_21_;
                             i_11_ = i_17_;
@@ -301,7 +301,7 @@ public class Class38_Sub1 extends Class38 {
             }
             if(i_14_ == 1000)
                 return false;
-            if((i_11_ ^ 0xffffffff) == (arg2 ^ 0xffffffff) && (i_9_ ^ 0xffffffff) == (arg9 ^ 0xffffffff))
+            if(arg2 == i_11_ && arg9 == i_9_)
                 return false;
             Class40_Sub5_Sub15.anInt2778 = 1;
         }
@@ -316,24 +316,24 @@ public class Class38_Sub1 extends Class38 {
                 Class24.anIntArray581[i_10_] = i_11_;
                 Class10.anIntArray351[i_10_++] = i_9_;
             }
-            if((i_22_ & 0x1 ^ 0xffffffff) != -1)
+            if((i_22_ & 0x1) != 0)
                 i_9_++;
             else if((i_22_ & 0x4) != 0)
                 i_9_--;
-            if((i_22_ & 0x2 ^ 0xffffffff) != -1)
+            if((i_22_ & 0x2) != 0)
                 i_11_++;
             else if((i_22_ & 0x8) != 0)
                 i_11_--;
             i_22_ = Class57.anIntArrayArray1335[i_11_][i_9_];
         }
-        if((i_10_ ^ 0xffffffff) < -1) {
+        if(i_10_ > 0) {
             i_12_ = i_10_;
-            if((i_12_ ^ 0xffffffff) < -26)
+            if(i_12_ > 25)
                 i_12_ = 25;
             i_10_--;
             int i_24_ = Class10.anIntArray351[i_10_];
             int i_25_ = Class24.anIntArray581[i_10_];
-            if((arg11 ^ 0xffffffff) == -1) {
+            if(arg11 == 0) {
                 Class34.anInt838++;
                 Class32.packetBuffer.putPacket(73);
                 Class32.packetBuffer.putByte(3 + (i_12_ + i_12_));
@@ -359,7 +359,7 @@ public class Class38_Sub1 extends Class38 {
             }
             return true;
         }
-        return (arg11 ^ 0xffffffff) != -2;
+        return arg11 != 1;
     }
 
     public static void method449(int arg0) {
@@ -408,7 +408,7 @@ public class Class38_Sub1 extends Class38 {
         anInt1915 = 300;
         aLong1914 = System.currentTimeMillis();
         if(aLongArray1910[anInt1900] != 0L) {
-            if((aLongArray1910[anInt1900] ^ 0xffffffffffffffffL) > (aLong1914 ^ 0xffffffffffffffffL))
+            if(aLong1914 > aLongArray1910[anInt1900])
                 anInt1915 = (int) ((long) (arg0 * 2560) / (-aLongArray1910[anInt1900] + aLong1914));
         } else {
             anInt1915 = i_5_;
@@ -434,7 +434,7 @@ public class Class38_Sub1 extends Class38 {
             anInt1912 = arg1;
         Class43.method890((long) anInt1912, arg2 ^ ~0x2613);
         int i_7_ = 0;
-        for(/**/; (anInt1903 ^ 0xffffffff) > -257; anInt1903 += anInt1915)
+        for(/**/; anInt1903 < 256; anInt1903 += anInt1915)
             i_7_++;
         anInt1903 &= 0xff;
         return i_7_;

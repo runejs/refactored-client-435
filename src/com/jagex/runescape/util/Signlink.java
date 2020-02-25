@@ -172,7 +172,7 @@ public class Signlink implements Runnable {
 
         try {
             File file = new File(aString734 + "uid.dat");
-            if(!file.exists() || (file.length() ^ 0xffffffffffffffffL) > -5L) {
+            if(!file.exists() || file.length() < 4) {
                 DataOutputStream dataoutputstream = (new DataOutputStream(new FileOutputStream(aString734 + "uid.dat")));
                 dataoutputstream.writeInt((int) (9.9999999E7 * Math.random()));
                 dataoutputstream.close();
@@ -224,15 +224,15 @@ public class Signlink implements Runnable {
             }
             try {
                 int i = class15.anInt433;
-                if((i ^ 0xffffffff) == -2)
+                if(i == 1)
                     class15.anObject437 = new Socket(anInetAddress730, class15.anInt432);
-                else if((i ^ 0xffffffff) != -3) {
-                    if((i ^ 0xffffffff) == -5)
+                else if(i != 2) {
+                    if(i == 4)
                         class15.anObject437 = new DataInputStream(((URL) class15.anObject435).openStream());
                     else if(i == 9) {
                         Object[] objects = (Object[]) class15.anObject435;
                         class15.anObject437 = (((Class) objects[0]).getDeclaredMethod((String) objects[1], (Class[]) objects[2]));
-                    } else if((i ^ 0xffffffff) == -11) {
+                    } else if(i == 10) {
                         Object[] objects = (Object[]) class15.anObject435;
                         class15.anObject437 = ((Class) objects[0]).getDeclaredField((String) objects[1]);
                     } else

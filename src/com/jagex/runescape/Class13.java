@@ -47,7 +47,7 @@ public class Class13 {
 
     public static void method241(Actor arg0, int arg1, byte arg2) {
         anInt400++;
-        if((arg0.anInt3098 ^ 0xffffffff) > -129 || arg0.anInt3089 < 128 || arg0.anInt3098 >= 13184 || (arg0.anInt3089 ^ 0xffffffff) <= -13185) {
+        if(arg0.anInt3098 < 128 || arg0.anInt3089 < 128 || arg0.anInt3098 >= 13184 || arg0.anInt3089 >= 13184) {
             arg0.playingAnimation = -1;
             arg0.anInt3112 = 0;
             arg0.anInt3107 = 0;
@@ -56,7 +56,7 @@ public class Class13 {
             arg0.anInt3089 = arg0.anIntArray3135[0] * 128 + 64 * arg0.anInt3096;
             arg0.method790(0);
         }
-        if(arg0 == Player.localPlayer && ((arg0.anInt3098 ^ 0xffffffff) > -1537 || (arg0.anInt3089 ^ 0xffffffff) > -1537 || arg0.anInt3098 >= 11776 || arg0.anInt3089 >= 11776)) {
+        if(arg0 == Player.localPlayer && (arg0.anInt3098 < 1536 || arg0.anInt3089 < 1536 || arg0.anInt3098 >= 11776 || arg0.anInt3089 >= 11776)) {
             arg0.anInt3091 = -1;
             arg0.anInt3107 = 0;
             arg0.anInt3112 = 0;
@@ -107,13 +107,13 @@ public class Class13 {
 
         int i = 69 % ((-65 - arg2) / 53);
         anInt413++;
-        if((arg1 ^ 0xffffffff) < -180)
+        if(arg1 > 179)
             arg0 /= 2;
-        if((arg1 ^ 0xffffffff) < -193)
+        if(arg1 > 192)
             arg0 /= 2;
         if(arg1 > 217)
             arg0 /= 2;
-        if((arg1 ^ 0xffffffff) < -244)
+        if(arg1 > 243)
             arg0 /= 2;
         int i_0_ = arg1 / 2 + ((arg0 / 32 << 7) + (arg3 / 4 << 10));
         return i_0_;
@@ -133,7 +133,7 @@ public class Class13 {
             Class44.aByteArrayArray1039[Main.anInt1764] = null;
             return is;
         }
-        if((arg1 ^ 0xffffffff) == -30001 && VarbitDefinition.anInt2359 > 0) {
+        if(arg1 == 30000 && VarbitDefinition.anInt2359 > 0) {
             byte[] is = (RSCanvas.aByteArrayArray47[--VarbitDefinition.anInt2359]);
             RSCanvas.aByteArrayArray47[VarbitDefinition.anInt2359] = null;
             return is;

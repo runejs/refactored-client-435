@@ -64,13 +64,13 @@ public class Player extends Actor {
     }
 
     public static boolean method793(byte arg0, int arg1) {
-        if((arg1 ^ 0xffffffff) > -33)
+        if(arg1 < 32)
             return false;
         if(arg1 == 127)
             return false;
         if(arg0 < 118)
             aByteArray3270 = null;
-        return (arg1 ^ 0xffffffff) > -130 || arg1 > 159;
+        return arg1 < 129 || arg1 > 159;
     }
 
     public static void method794(boolean arg0) {
@@ -95,11 +95,11 @@ public class Player extends Actor {
             player.anInt3130 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
             player.anInt3101 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
         }
-        if((mask & 0x10 ^ 0xffffffff) != -1) {
+        if((mask & 0x10) != 0) {
             player.facePositionX = Cache.outgoingbuffer.getUnsignedShortBE();
             player.facePositionY = Cache.outgoingbuffer.getUnsignedShortLE();
         }
-        if((mask & 0x1 ^ 0xffffffff) != -1) {
+        if((mask & 0x1) != 0) {
             int i = Cache.outgoingbuffer.getUnsignedShortLE();
             if(i == 65535)
                 i = -1;
@@ -108,7 +108,7 @@ public class Player extends Actor {
         }
         if((mask & 0x4) != 0) {
             player.facingActorIndex = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
-            if((player.facingActorIndex ^ 0xffffffff) == -65536)
+            if(player.facingActorIndex == 65535)
                 player.facingActorIndex = -1;
         }
         if((0x40 & mask) != 0) {
@@ -129,7 +129,7 @@ public class Player extends Actor {
             player.anInt3073 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
             player.method790(0);
         }
-        if((0x8 & mask ^ 0xffffffff) != -1) { // chat?...
+        if((0x8 & mask) != 0) { // chat?...
             int i = Cache.outgoingbuffer.getUnsignedShortBE();
             int i_3_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
             int i_4_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
@@ -139,7 +139,7 @@ public class Player extends Actor {
                 boolean bool = false;
                 if(i_3_ <= 1) {
                     for(int i_6_ = 0; i_6_ < Class42.anInt1008; i_6_++) {
-                        if((Class53.aLongArray1267[i_6_] ^ 0xffffffffffffffffL) == (l ^ 0xffffffffffffffffL)) {
+                        if(l == Class53.aLongArray1267[i_6_]) {
                             bool = true;
                             break;
                         }
@@ -154,9 +154,9 @@ public class Player extends Actor {
                     player.anInt3078 = 150;
                     player.anInt3123 = i & 0xff;
                     player.anInt3102 = i >> 8;
-                    if((i_3_ ^ 0xffffffff) == -3 || (i_3_ ^ 0xffffffff) == -4)
+                    if(i_3_ == 2 || i_3_ == 3)
                         Class44.method895(68, 1, class1, (Class40_Sub5_Sub17_Sub6.method832(75, (new RSString[]{Widget.goldCrown, player.playerName}))));
-                    else if((i_3_ ^ 0xffffffff) == -2)
+                    else if(i_3_ == 1)
                         Class44.method895(123, 1, class1, (Class40_Sub5_Sub17_Sub6.method832(-79, (new RSString[]{Class51.whiteCrown, player.playerName}))));
                     else
                         Class44.method895(127, 2, class1, player.playerName);
@@ -177,14 +177,14 @@ public class Player extends Actor {
             int i = Cache.outgoingbuffer.getIntME1();
             player.anInt3129 = 0;
             player.anInt3093 = pulseCycle + (i & 0xffff);
-            if((player.anInt3091 ^ 0xffffffff) == -65536)
+            if(player.anInt3091 == 65535)
                 player.anInt3091 = -1;
             player.anInt3140 = 0;
             player.anInt3110 = i >> 16;
             if(player.anInt3093 > pulseCycle)
                 player.anInt3140 = -1;
         }
-        if((0x80 & mask ^ 0xffffffff) != -1) { // forced chat
+        if((0x80 & mask) != 0) { // forced chat
             player.forcedChatMessage = Cache.outgoingbuffer.getRSString();
             if(player.forcedChatMessage.method55(0, false) != 126) {
                 if(player == localPlayer)
@@ -215,14 +215,14 @@ public class Player extends Actor {
         if(aClass30_3282 == null)
             return null;
         int i = 71 % ((41 - arg0) / 47);
-        AnimationSequence animationSequence = (playingAnimation == -1 || (playingAnimationDelay ^ 0xffffffff) != -1 ? null : Class68_Sub1.method1050(playingAnimation, 2));
-        AnimationSequence animationSequence_0_ = (((anInt3077 ^ 0xffffffff) != 0 && !aBoolean3287 && (anInt3126 != anInt3077 || animationSequence == null)) ? Class68_Sub1.method1050(anInt3077, 2) : null);
+        AnimationSequence animationSequence = (playingAnimation == -1 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2));
+        AnimationSequence animationSequence_0_ = ((anInt3077 != -1 && !aBoolean3287 && (anInt3126 != anInt3077 || animationSequence == null)) ? Class68_Sub1.method1050(anInt3077, 2) : null);
         Model class40_sub5_sub17_sub5 = aClass30_3282.method377(animationSequence, animationSequence_0_, anInt3116, anInt3104, (byte) -128);
         if(class40_sub5_sub17_sub5 == null)
             return null;
         class40_sub5_sub17_sub5.method799();
         anInt3117 = class40_sub5_sub17_sub5.anInt2861;
-        if(!aBoolean3287 && (anInt3091 ^ 0xffffffff) != 0 && anInt3140 != -1) {
+        if(!aBoolean3287 && anInt3091 != -1 && anInt3140 != -1) {
             Model class40_sub5_sub17_sub5_1_ = SpotAnimDefinition.forId(anInt3091, 13).method549(anInt3140, 2);
             if(class40_sub5_sub17_sub5_1_ != null) {
                 class40_sub5_sub17_sub5_1_.method828(0, -anInt3110, 0);
@@ -285,38 +285,38 @@ public class Player extends Actor {
             aClass1_3275 = null;
         for(int i_4_ = 0; i_4_ < 12; i_4_++) {
             int i_5_ = buffer.getUnsignedByte();
-            if((i_5_ ^ 0xffffffff) == -1)
+            if(i_5_ == 0)
                 is[i_4_] = 0;
             else {
                 int i_6_ = buffer.getUnsignedByte();
                 is[i_4_] = (i_5_ << 8) + i_6_;
-                if((i_4_ ^ 0xffffffff) == -1 && is[0] == 65535) {
+                if(i_4_ == 0 && is[0] == 65535) {
                     i_3_ = buffer.getUnsignedShortBE();
                     break;
                 }
-                if((is[i_4_] ^ 0xffffffff) <= -513) {
+                if(is[i_4_] >= 512) {
                     int i_7_ = ItemDefinition.forId(-512 + is[i_4_], 10).teamIndex;
-                    if((i_7_ ^ 0xffffffff) != -1)
+                    if(i_7_ != 0)
                         anInt3266 = i_7_;
                 }
             }
         }
         int[] is_8_ = new int[5];
-        for(int i_9_ = 0; (i_9_ ^ 0xffffffff) > -6; i_9_++) {
+        for(int i_9_ = 0; i_9_ < 5; i_9_++) {
             int i_10_ = buffer.getUnsignedByte();
-            if((i_10_ ^ 0xffffffff) > -1 || ((Class40_Sub5_Sub17_Sub6.anIntArrayArray3238[i_9_]).length <= i_10_))
+            if(i_10_ < 0 || ((Class40_Sub5_Sub17_Sub6.anIntArrayArray3238[i_9_]).length <= i_10_))
                 i_10_ = 0;
             is_8_[i_9_] = i_10_;
         }
         anInt3126 = buffer.getUnsignedShortBE();
-        if((anInt3126 ^ 0xffffffff) == -65536)
+        if(anInt3126 == 65535)
             anInt3126 = -1;
         anInt3145 = buffer.getUnsignedShortBE();
         if(anInt3145 == 65535)
             anInt3145 = -1;
         anInt3083 = anInt3145;
         anInt3131 = buffer.getUnsignedShortBE();
-        if((anInt3131 ^ 0xffffffff) == -65536)
+        if(anInt3131 == 65535)
             anInt3131 = -1;
         anInt3079 = buffer.getUnsignedShortBE();
         if(anInt3079 == 65535)
@@ -325,7 +325,7 @@ public class Player extends Actor {
         if(anInt3075 == 65535)
             anInt3075 = -1;
         anInt3132 = buffer.getUnsignedShortBE();
-        if((anInt3132 ^ 0xffffffff) == -65536)
+        if(anInt3132 == 65535)
             anInt3132 = -1;
         anInt3082 = buffer.getUnsignedShortBE();
         if(anInt3082 == 65535)

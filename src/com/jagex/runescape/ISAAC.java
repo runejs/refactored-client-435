@@ -67,14 +67,14 @@ public class ISAAC {
 
     public static void method281(Scene arg0, int arg1, CollisionMap[] arg2) {
 
-        for(int i = 0; (i ^ 0xffffffff) > -5; i++) {
-            for(int i_0_ = 0; (i_0_ ^ 0xffffffff) > -105; i_0_++) {
+        for(int i = 0; i < 4; i++) {
+            for(int i_0_ = 0; i_0_ < 104; i_0_++) {
                 for(int i_1_ = 0; i_1_ < 104; i_1_++) {
                     if((0x1 & (OverlayDefinition.tile_flags[i][i_0_][i_1_])) == 1) {
                         int i_2_ = i;
-                        if((0x2 & (OverlayDefinition.tile_flags[1][i_0_][i_1_]) ^ 0xffffffff) == -3)
+                        if((0x2 & (OverlayDefinition.tile_flags[1][i_0_][i_1_])) == 2)
                             i_2_--;
-                        if((i_2_ ^ 0xffffffff) <= -1)
+                        if(i_2_ >= 0)
                             arg2[i_2_].markBlocked((byte) -28, i_1_, i_0_);
                     }
                 }
@@ -83,19 +83,19 @@ public class ISAAC {
         Class40_Sub5_Sub15.anInt2791 += (int) (5.0 * Math.random()) + -2;
         Actor.anInt3151 += -2 + (int) (5.0 * Math.random());
         anInt504++;
-        if((Class40_Sub5_Sub15.anInt2791 ^ 0xffffffff) > 7)
+        if(Class40_Sub5_Sub15.anInt2791 < -8)
             Class40_Sub5_Sub15.anInt2791 = -8;
         if(Class40_Sub5_Sub15.anInt2791 > 8)
             Class40_Sub5_Sub15.anInt2791 = 8;
-        if((Actor.anInt3151 ^ 0xffffffff) > 15)
+        if(Actor.anInt3151 < -16)
             Actor.anInt3151 = -16;
-        if((Actor.anInt3151 ^ 0xffffffff) < -17)
+        if(Actor.anInt3151 > 16)
             Actor.anInt3151 = 16;
         for(int i = 0; i < 4; i++) {
             byte[][] is = Class19.aByteArrayArrayArray492[i];
             int i_3_ = (int) Math.sqrt(5100.0);
             int i_4_ = i_3_ * 768 >> 8;
-            for(int i_5_ = 1; (i_5_ ^ 0xffffffff) > -104; i_5_++) {
+            for(int i_5_ = 1; i_5_ < 103; i_5_++) {
                 for(int i_6_ = 1; i_6_ < 103; i_6_++) {
                     int i_7_ = (-(Class40_Sub6.tile_height[i][i_6_ - 1][i_5_]) + (Class40_Sub6.tile_height[i][1 + i_6_][i_5_]));
                     int i_8_ = ((Class40_Sub6.tile_height[i][i_6_][i_5_ + 1]) + -(Class40_Sub6.tile_height[i][i_6_][i_5_ + -1]));
@@ -116,11 +116,11 @@ public class ISAAC {
                 FloorDecoration.anIntArray612[i_15_] = 0;
             }
             for(int i_16_ = -5; i_16_ < 109; i_16_++) {
-                for(int i_17_ = 0; (i_17_ ^ 0xffffffff) > -105; i_17_++) {
+                for(int i_17_ = 0; i_17_ < 104; i_17_++) {
                     int i_18_ = 5 + i_16_;
-                    if((i_18_ ^ 0xffffffff) <= -1 && (i_18_ ^ 0xffffffff) > -105) {
+                    if(i_18_ >= 0 && i_18_ < 104) {
                         int i_19_ = 0xff & (Class42.tile_underlayids[i][i_18_][i_17_]);
-                        if((i_19_ ^ 0xffffffff) < -1) {
+                        if(i_19_ > 0) {
                             UnderlayDefinition underlayDefinition = Class40_Sub3.method531((byte) -66, i_19_ - 1);
                             Class40_Sub5_Sub17_Sub6.anIntArray3250[i_17_] += underlayDefinition.anInt2565;
                             Class59.anIntArray1398[i_17_] += underlayDefinition.hue;
@@ -130,9 +130,9 @@ public class ISAAC {
                         }
                     }
                     int i_20_ = i_16_ - 5;
-                    if((i_20_ ^ 0xffffffff) <= -1 && (i_20_ ^ 0xffffffff) > -105) {
+                    if(i_20_ >= 0 && i_20_ < 104) {
                         int i_21_ = 0xff & (Class42.tile_underlayids[i][i_20_][i_17_]);
-                        if((i_21_ ^ 0xffffffff) < -1) {
+                        if(i_21_ > 0) {
                             UnderlayDefinition underlayDefinition = Class40_Sub3.method531((byte) -95, -1 + i_21_);
                             Class40_Sub5_Sub17_Sub6.anIntArray3250[i_17_] -= underlayDefinition.anInt2565;
                             Class59.anIntArray1398[i_17_] -= underlayDefinition.hue;
@@ -158,19 +158,19 @@ public class ISAAC {
                             i_24_ += SceneTile.anIntArray2048[i_28_];
                             i_22_ += (Class40_Sub5_Sub17_Sub6.anIntArray3250[i_28_]);
                         }
-                        if((i_29_ ^ 0xffffffff) <= -1 && i_29_ < 104) {
+                        if(i_29_ >= 0 && i_29_ < 104) {
                             i_23_ -= Class59.anIntArray1398[i_29_];
                             i_25_ -= FloorDecoration.anIntArray612[i_29_];
                             i_24_ -= SceneTile.anIntArray2048[i_29_];
                             i_26_ -= Class67.anIntArray1579[i_29_];
                             i_22_ -= (Class40_Sub5_Sub17_Sub6.anIntArray3250[i_29_]);
                         }
-                        if(i_27_ >= 1 && i_27_ < 103 && (!VertexNormal.lowMemory || (0x2 & (OverlayDefinition.tile_flags[0][i_16_][i_27_]) ^ 0xffffffff) != -1 || ((0x10 & (OverlayDefinition.tile_flags[i][i_16_][i_27_]) ^ 0xffffffff) == -1 && ((Class59.getVisibilityPlaneFor(i, i_27_, 0, i_16_) ^ 0xffffffff) == (Class40_Sub6.onBuildTimePlane ^ 0xffffffff))))) {
+                        if(i_27_ >= 1 && i_27_ < 103 && (!VertexNormal.lowMemory || (0x2 & (OverlayDefinition.tile_flags[0][i_16_][i_27_])) != 0 || ((0x10 & (OverlayDefinition.tile_flags[i][i_16_][i_27_])) == 0 && (Class40_Sub6.onBuildTimePlane == Class59.getVisibilityPlaneFor(i, i_27_, 0, i_16_))))) {
                             if(Class64.setZ > i)
                                 Class64.setZ = i;
                             int i_30_ = ((Class42.tile_underlayids[i][i_16_][i_27_]) & 0xff);
                             int i_31_ = ((GameFrame.tile_overlayids[i][i_16_][i_27_]) & 0xff);
-                            if(i_30_ > 0 || (i_31_ ^ 0xffffffff) < -1) {
+                            if(i_30_ > 0 || i_31_ > 0) {
                                 int i_32_ = (Class40_Sub6.tile_height[i][i_16_][i_27_]);
                                 int i_33_ = (Class40_Sub6.tile_height[i][i_16_ + 1][i_27_]);
                                 int i_34_ = (Class40_Sub6.tile_height[i][i_16_ + 1][1 + i_27_]);
@@ -181,7 +181,7 @@ public class ISAAC {
                                 int i_39_ = -1;
                                 int i_40_ = (AnimationSequence.anIntArrayArray2490[i_16_][i_27_ + 1]);
                                 int i_41_ = -1;
-                                if((i_30_ ^ 0xffffffff) < -1) {
+                                if(i_30_ > 0) {
                                     int i_42_ = 256 * i_22_ / i_26_;
                                     int i_43_ = i_23_ / i_25_;
                                     int i_44_ = i_24_ / i_25_;
@@ -195,13 +195,13 @@ public class ISAAC {
                                         i_44_ = 0;
                                     i_41_ = Class13.method244(i_43_, i_44_, 44, i_42_);
                                 }
-                                if((i ^ 0xffffffff) < -1) {
+                                if(i > 0) {
                                     boolean bool = true;
-                                    if(i_30_ == 0 && ((OverlayDefinition.tile_underlay_path[i][i_16_][i_27_]) ^ 0xffffffff) != -1)
+                                    if(i_30_ == 0 && (OverlayDefinition.tile_underlay_path[i][i_16_][i_27_]) != 0)
                                         bool = false;
                                     if(i_31_ > 0 && !(Npc.loadFloor(-1 + i_31_, arg1 + -27320).aBoolean2338))
                                         bool = false;
-                                    if(bool && ((i_33_ ^ 0xffffffff) == (i_32_ ^ 0xffffffff)) && i_34_ == i_32_ && ((i_35_ ^ 0xffffffff) == (i_32_ ^ 0xffffffff)))
+                                    if(bool && (i_32_ == i_33_) && i_34_ == i_32_ && (i_32_ == i_35_))
                                         CacheIndex.anIntArrayArrayArray262[i][i_16_][i_27_] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[i][i_16_][i_27_]), 2340));
                                 }
                                 int i_45_ = 0;
@@ -221,9 +221,9 @@ public class ISAAC {
                                         i_49_ = (Class13.method244((class40_sub5_sub3.lightness), (class40_sub5_sub3.saturation), -120, (class40_sub5_sub3.hue)));
                                         int i_51_ = (Class40_Sub5_Sub15.anInt2791 + (class40_sub5_sub3.hue)) & 0xff;
                                         int i_52_ = ((Actor.anInt3151) + (class40_sub5_sub3.saturation));
-                                        if((i_52_ ^ 0xffffffff) > -1)
+                                        if(i_52_ < 0)
                                             i_52_ = 0;
-                                        else if((i_52_ ^ 0xffffffff) < -256)
+                                        else if(i_52_ > 255)
                                             i_52_ = 255;
                                         i_50_ = (Class13.method244((class40_sub5_sub3.lightness), i_52_, arg1 ^ ~0x6acb, i_51_));
                                     } else {
@@ -237,7 +237,7 @@ public class ISAAC {
                                     if(class40_sub5_sub3.anInt2336 != -1) {
                                         int i_54_ = 0xff & ((Class40_Sub5_Sub15.anInt2791) + (class40_sub5_sub3.anInt2334));
                                         int i_55_ = (class40_sub5_sub3.anInt2330 + (Actor.anInt3151));
-                                        if((i_55_ ^ 0xffffffff) <= -1) {
+                                        if(i_55_ >= 0) {
                                             if(i_55_ > 255)
                                                 i_55_ = 255;
                                         } else
@@ -264,9 +264,9 @@ public class ISAAC {
             Class19.aByteArrayArrayArray492[i] = null;
         }
         arg0.method118(-50, -10, -50);
-        for(int i = 0; (i ^ 0xffffffff) > -105; i++) {
-            for(int i_58_ = 0; (i_58_ ^ 0xffffffff) > -105; i_58_++) {
-                if(((OverlayDefinition.tile_flags[1][i][i_58_]) & 0x2 ^ 0xffffffff) == -3)
+        for(int i = 0; i < 104; i++) {
+            for(int i_58_ = 0; i_58_ < 104; i_58_++) {
+                if(((OverlayDefinition.tile_flags[1][i][i_58_]) & 0x2) == 2)
                     arg0.method92(i, i_58_);
             }
         }
@@ -275,8 +275,8 @@ public class ISAAC {
         int i_60_ = 4;
         if(arg1 != 27324)
             method281(null, 6, null);
-        for(int i_61_ = 0; (i_61_ ^ 0xffffffff) > -5; i_61_++) {
-            if((i_61_ ^ 0xffffffff) < -1) {
+        for(int i_61_ = 0; i_61_ < 4; i_61_++) {
+            if(i_61_ > 0) {
                 i <<= 3;
                 i_60_ <<= 3;
                 i_59_ <<= 3;
@@ -284,13 +284,13 @@ public class ISAAC {
             for(int i_62_ = 0; (i_62_ <= i_61_); i_62_++) {
                 for(int i_63_ = 0; i_63_ <= 104; i_63_++) {
                     for(int i_64_ = 0; i_64_ <= 104; i_64_++) {
-                        if(((CacheIndex.anIntArrayArrayArray262[i_62_][i_64_][i_63_]) & i ^ 0xffffffff) != -1) {
+                        if(((CacheIndex.anIntArrayArrayArray262[i_62_][i_64_][i_63_]) & i) != 0) {
                             int i_65_;
-                            for(i_65_ = i_63_; ((i_65_ ^ 0xffffffff) < -1 && (i & (CacheIndex.anIntArrayArrayArray262[i_62_][i_64_][-1 + i_65_]) ^ 0xffffffff) != -1); i_65_--) {
+                            for(i_65_ = i_63_; (i_65_ > 0 && (i & (CacheIndex.anIntArrayArrayArray262[i_62_][i_64_][-1 + i_65_])) != 0); i_65_--) {
                                 /* empty */
                             }
                             int i_66_;
-                            for(i_66_ = i_63_; ((i_66_ ^ 0xffffffff) > -105 && ((CacheIndex.anIntArrayArrayArray262[i_62_][i_64_][i_66_ + 1]) & i) != 0); i_66_++) {
+                            for(i_66_ = i_63_; (i_66_ < 104 && ((CacheIndex.anIntArrayArrayArray262[i_62_][i_64_][i_66_ + 1]) & i) != 0); i_66_++) {
                                 /* empty */
                             }
                             int i_67_ = i_62_;
@@ -298,7 +298,7 @@ public class ISAAC {
                             while_4_:
                             for(/**/; i_67_ > 0; i_67_--) {
                                 for(int i_69_ = i_65_; ((i_69_ <= i_66_)); i_69_++) {
-                                    if(((CacheIndex.anIntArrayArrayArray262[-1 + i_67_][i_64_][i_69_]) & i ^ 0xffffffff) == -1)
+                                    if(((CacheIndex.anIntArrayArrayArray262[-1 + i_67_][i_64_][i_69_]) & i) == 0)
                                         break while_4_;
                                 }
                             }
@@ -323,18 +323,18 @@ public class ISAAC {
                         }
                         if((i_59_ & (CacheIndex.anIntArrayArrayArray262[i_62_][i_64_][i_63_])) != 0) {
                             int i_77_;
-                            for(i_77_ = i_64_; (i_77_ > 0 && (i_59_ & (CacheIndex.anIntArrayArrayArray262[i_62_][i_77_ - 1][i_63_]) ^ 0xffffffff) != -1); i_77_--) {
+                            for(i_77_ = i_64_; (i_77_ > 0 && (i_59_ & (CacheIndex.anIntArrayArrayArray262[i_62_][i_77_ - 1][i_63_])) != 0); i_77_--) {
                                 /* empty */
                             }
                             int i_78_ = i_62_;
                             int i_79_ = i_64_;
                             int i_80_ = i_62_;
-                            for(/**/; (i_79_ ^ 0xffffffff) > -105; i_79_++) {
+                            for(/**/; i_79_ < 104; i_79_++) {
                                 if((i_59_ & (CacheIndex.anIntArrayArrayArray262[i_62_][1 + i_79_][i_63_])) == 0)
                                     break;
                             }
                             while_6_:
-                            for(/**/; (i_80_ ^ 0xffffffff) < -1; i_80_--) {
+                            for(/**/; i_80_ > 0; i_80_--) {
                                 for(int i_81_ = i_77_; i_81_ <= i_79_; i_81_++) {
                                     if(((CacheIndex.anIntArrayArrayArray262[i_80_ + -1][i_81_][i_63_]) & i_59_) == 0)
                                         break while_6_;
@@ -343,7 +343,7 @@ public class ISAAC {
                             while_7_:
                             for(/**/; i_78_ < i_61_; i_78_++) {
                                 for(int i_82_ = i_77_; ((i_82_ <= i_79_)); i_82_++) {
-                                    if(((i_59_ & (CacheIndex.anIntArrayArrayArray262[1 + i_78_][i_82_][i_63_])) ^ 0xffffffff) == -1)
+                                    if((i_59_ & (CacheIndex.anIntArrayArrayArray262[1 + i_78_][i_82_][i_63_])) == 0)
                                         break while_7_;
                                 }
                             }
@@ -359,30 +359,30 @@ public class ISAAC {
                                 }
                             }
                         }
-                        if(((CacheIndex.anIntArrayArrayArray262[i_62_][i_64_][i_63_]) & i_60_ ^ 0xffffffff) != -1) {
+                        if(((CacheIndex.anIntArrayArrayArray262[i_62_][i_64_][i_63_]) & i_60_) != 0) {
                             int i_89_ = i_64_;
                             int i_90_ = i_64_;
                             int i_91_ = i_63_;
                             int i_92_ = i_63_;
-                            for(/**/; (i_91_ ^ 0xffffffff) < -1; i_91_--) {
+                            for(/**/; i_91_ > 0; i_91_--) {
                                 if(((CacheIndex.anIntArrayArrayArray262[i_62_][i_64_][-1 + i_91_]) & i_60_) == 0)
                                     break;
                             }
-                            for(/**/; (i_92_ ^ 0xffffffff) > -105; i_92_++) {
-                                if((i_60_ & (CacheIndex.anIntArrayArrayArray262[i_62_][i_64_][i_92_ + 1]) ^ 0xffffffff) == -1)
+                            for(/**/; i_92_ < 104; i_92_++) {
+                                if((i_60_ & (CacheIndex.anIntArrayArrayArray262[i_62_][i_64_][i_92_ + 1])) == 0)
                                     break;
                             }
                             while_8_:
-                            for(/**/; (i_89_ ^ 0xffffffff) < -1; i_89_--) {
+                            for(/**/; i_89_ > 0; i_89_--) {
                                 for(int i_93_ = i_91_; i_93_ <= i_92_; i_93_++) {
-                                    if(((i_60_ & (CacheIndex.anIntArrayArrayArray262[i_62_][i_89_ + -1][i_93_])) ^ 0xffffffff) == -1)
+                                    if((i_60_ & (CacheIndex.anIntArrayArrayArray262[i_62_][i_89_ + -1][i_93_])) == 0)
                                         break while_8_;
                                 }
                             }
                             while_9_:
-                            for(/**/; (i_90_ ^ 0xffffffff) > -105; i_90_++) {
+                            for(/**/; i_90_ < 104; i_90_++) {
                                 for(int i_94_ = i_91_; ((i_92_ >= i_94_)); i_94_++) {
-                                    if(((i_60_ & (CacheIndex.anIntArrayArrayArray262[i_62_][1 + i_90_][i_94_])) ^ 0xffffffff) == -1)
+                                    if((i_60_ & (CacheIndex.anIntArrayArrayArray262[i_62_][1 + i_90_][i_94_])) == 0)
                                         break while_9_;
                                 }
                             }
@@ -440,7 +440,7 @@ public class ISAAC {
         if(arg0 != 118)
             aBoolean519 = true;
         for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = (Class40_Sub3) Class45.aClass45_1064.method909(-4)) {
-            if((class40_sub3.anInt2031 ^ 0xffffffff) != 0)
+            if(class40_sub3.anInt2031 != -1)
                 class40_sub3.method457(arg0 ^ ~0x76);
             else {
                 class40_sub3.anInt2033 = 0;
@@ -464,7 +464,7 @@ public class ISAAC {
         anInt513 += ++anInt502;
         anInt501++;
         int i = -29 % ((arg0 + 18) / 58);
-        for(int i_98_ = 0; (i_98_ ^ 0xffffffff) > -257; i_98_++) {
+        for(int i_98_ = 0; i_98_ < 256; i_98_++) {
             int i_99_ = anIntArray511[i_98_];
             if((i_98_ & 0x2) == 0) {
                 if((0x1 & i_98_) == 0)
@@ -574,7 +574,7 @@ public class ISAAC {
         int i_110_ = 0;
         if(arg0 != true)
             aClass9_516 = null;
-        for(/**/; (i_110_ ^ 0xffffffff) > -257; i_110_ += 8) {
+        for(/**/; i_110_ < 256; i_110_ += 8) {
             i_107_ += anIntArray511[7 + i_110_];
             i_106_ += anIntArray511[i_110_ + 6];
             i_102_ += anIntArray511[2 + i_110_];

@@ -49,7 +49,7 @@ public class Class33 {
         if(arg0 == -28) {
             for(int i = -1; Class60.anInt1407 + GameObjectDefinition.anInt2558 > i; i++) {
                 Actor actor;
-                if((i ^ 0xffffffff) == 0)
+                if(i == -1)
                     actor = (Player.localPlayer);
                 else if(i < Class60.anInt1407)
                     actor = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i]]);
@@ -65,12 +65,12 @@ public class Class33 {
                     }
                     if(Class60.anInt1407 <= i) {
                         ActorDefinition class40_sub5_sub5 = (((Npc) actor).aClass40_Sub5_Sub5_3300);
-                        if(((class40_sub5_sub5.headIcon ^ 0xffffffff) <= -1) && (class40_sub5_sub5.headIcon < (Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204).length)) {
+                        if((class40_sub5_sub5.headIcon >= 0) && (class40_sub5_sub5.headIcon < (Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204).length)) {
                             FloorDecoration.method342(-127, (actor.anInt3117) + 15, actor);
                             if(ISAAC.anInt522 > -1)
                                 Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204[class40_sub5_sub5.headIcon].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -30);
                         }
-                        if((Player.anInt3288 ^ 0xffffffff) == -2 && (((Class40_Sub3.anIntArray2016[-Class60.anInt1407 + i]) ^ 0xffffffff) == (HuffmanEncoding.anInt1545 ^ 0xffffffff)) && Node.pulseCycle % 20 < 10) {
+                        if(Player.anInt3288 == 1 && (HuffmanEncoding.anInt1545 == (Class40_Sub3.anIntArray2016[-Class60.anInt1407 + i])) && Node.pulseCycle % 20 < 10) {
                             FloorDecoration.method342(107, 15 + (actor.anInt3117), actor);
                             if(ISAAC.anInt522 > -1)
                                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, Class44.anInt1048 + -28);
@@ -78,7 +78,7 @@ public class Class33 {
                     } else {
                         Player class40_sub5_sub17_sub4_sub1 = ((Player) actor);
                         int i_0_ = 30;
-                        if((class40_sub5_sub17_sub4_sub1.anInt3268 ^ 0xffffffff) != 0 || (class40_sub5_sub17_sub4_sub1.anInt3273 != -1)) {
+                        if(class40_sub5_sub17_sub4_sub1.anInt3268 != -1 || (class40_sub5_sub17_sub4_sub1.anInt3273 != -1)) {
                             FloorDecoration.method342(-44, 15 + (actor.anInt3117), actor);
                             if(ISAAC.anInt522 > -1) {
                                 if(class40_sub5_sub17_sub4_sub1.anInt3268 != -1) {
@@ -91,15 +91,15 @@ public class Class33 {
                                 }
                             }
                         }
-                        if(i >= 0 && (Player.anInt3288 ^ 0xffffffff) == -11 && (Class68.anInt1623 == Class57.anIntArray1334[i])) {
+                        if(i >= 0 && Player.anInt3288 == 10 && (Class68.anInt1623 == Class57.anIntArray1334[i])) {
                             FloorDecoration.method342(87, (actor.anInt3117) + 15, actor);
                             if(ISAAC.anInt522 > -1)
                                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[1].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
                         }
                     }
-                    if(actor.forcedChatMessage != null && (i >= Class60.anInt1407 || (Class35.publicChatMode ^ 0xffffffff) == -1 || Class35.publicChatMode == 3 || ((Class35.publicChatMode ^ 0xffffffff) == -2 && (Class40_Sub2.hasFriend((((Player) actor).playerName), arg0 ^ 0x7f74))))) {
+                    if(actor.forcedChatMessage != null && (i >= Class60.anInt1407 || Class35.publicChatMode == 0 || Class35.publicChatMode == 3 || (Class35.publicChatMode == 1 && (Class40_Sub2.hasFriend((((Player) actor).playerName), arg0 ^ 0x7f74))))) {
                         FloorDecoration.method342(88, (actor.anInt3117), actor);
-                        if((ISAAC.anInt522 ^ 0xffffffff) < 0 && Class30.anInt709 > Class32.anInt770) {
+                        if(ISAAC.anInt522 > -1 && 50 > Class32.anInt770) {
                             Class30.anIntArray680[Class32.anInt770] = ((Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getStringWidth(actor.forcedChatMessage)) / 2);
                             Class30.anIntArray688[Class32.anInt770] = (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.characterDefaultHeight);
                             Class30.anIntArray715[Class32.anInt770] = ISAAC.anInt522;
@@ -113,7 +113,7 @@ public class Class33 {
                     }
                     if((Node.pulseCycle < actor.anInt3139)) {
                         FloorDecoration.method342(109, (actor.anInt3117) + 15, actor);
-                        if((ISAAC.anInt522 ^ 0xffffffff) < 0) {
+                        if(ISAAC.anInt522 > -1) {
                             int i_1_ = (30 * actor.anInt3130 / actor.anInt3101);
                             if(i_1_ > 30)
                                 i_1_ = 30;
@@ -121,17 +121,17 @@ public class Class33 {
                             Rasterizer.drawFilledRectangle(-15 + ISAAC.anInt522 + i_1_, Class44.anInt1048 + -3, 30 + -i_1_, 5, 16711680);
                         }
                     }
-                    for(int i_2_ = 0; (i_2_ ^ 0xffffffff) > -5; i_2_++) {
+                    for(int i_2_ = 0; i_2_ < 4; i_2_++) {
                         if(Node.pulseCycle < (actor.anIntArray3136[i_2_])) {
                             FloorDecoration.method342(99, (actor.anInt3117) / 2, actor);
-                            if((ISAAC.anInt522 ^ 0xffffffff) < 0) {
-                                if((i_2_ ^ 0xffffffff) == -2)
+                            if(ISAAC.anInt522 > -1) {
+                                if(i_2_ == 1)
                                     Class44.anInt1048 -= 20;
-                                if((i_2_ ^ 0xffffffff) == -3) {
+                                if(i_2_ == 2) {
                                     ISAAC.anInt522 -= 15;
                                     Class44.anInt1048 -= 10;
                                 }
-                                if((i_2_ ^ 0xffffffff) == -4) {
+                                if(i_2_ == 3) {
                                     ISAAC.anInt522 += 15;
                                     Class44.anInt1048 -= 10;
                                 }
@@ -152,7 +152,7 @@ public class Class33 {
                 while(bool) {
                     bool = false;
                     for(int i_7_ = 0; (i > i_7_); i_7_++) {
-                        if(((-Class30.anIntArray688[i_7_] + Class30.anIntArray685[i_7_]) < i_4_ + 2) && ((-i_6_ + i_4_ < 2 + Class30.anIntArray685[i_7_])) && ((-i_5_ + i_3_ ^ 0xffffffff) > ((Class30.anIntArray715[i_7_] + Class30.anIntArray680[i_7_]) ^ 0xffffffff)) && (i_5_ + i_3_ > (-Class30.anIntArray680[i_7_] + Class30.anIntArray715[i_7_])) && ((i_4_ ^ 0xffffffff) < ((-Class30.anIntArray688[i_7_] + Class30.anIntArray685[i_7_]) ^ 0xffffffff))) {
+                        if(((-Class30.anIntArray688[i_7_] + Class30.anIntArray685[i_7_]) < i_4_ + 2) && ((-i_6_ + i_4_ < 2 + Class30.anIntArray685[i_7_])) && ((Class30.anIntArray715[i_7_] + Class30.anIntArray680[i_7_]) > -i_5_ + i_3_) && (i_5_ + i_3_ > (-Class30.anIntArray680[i_7_] + Class30.anIntArray715[i_7_])) && ((-Class30.anIntArray688[i_7_] + Class30.anIntArray685[i_7_]) < i_4_)) {
                             bool = true;
                             i_4_ = (-Class30.anIntArray688[i_7_] + Class30.anIntArray685[i_7_]);
                         }
@@ -166,28 +166,28 @@ public class Class33 {
                     Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(class1, ISAAC.anInt522, Class44.anInt1048, 16776960);
                 } else {
                     int i_8_ = 16776960;
-                    if((Class30.anIntArray712[i] ^ 0xffffffff) > -7)
+                    if(Class30.anIntArray712[i] < 6)
                         i_8_ = (Class40_Sub6.anIntArray2106[Class30.anIntArray712[i]]);
                     if(Class30.anIntArray712[i] == 6)
-                        i_8_ = (Class40_Sub5_Sub11.anInt2628 % 20 ^ 0xffffffff) <= -11 ? 16776960 : 16711680;
+                        i_8_ = Class40_Sub5_Sub11.anInt2628 % 20 >= 10 ? 16776960 : 16711680;
                     if(Class30.anIntArray712[i] == 7)
-                        i_8_ = (Class40_Sub5_Sub11.anInt2628 % 20 ^ 0xffffffff) > -11 ? 255 : 65535;
-                    if((Class30.anIntArray712[i] ^ 0xffffffff) == -9)
+                        i_8_ = Class40_Sub5_Sub11.anInt2628 % 20 < 10 ? 255 : 65535;
+                    if(Class30.anIntArray712[i] == 8)
                         i_8_ = (Class40_Sub5_Sub11.anInt2628 % 20 >= 10 ? 8454016 : 45056);
-                    if((Class30.anIntArray712[i] ^ 0xffffffff) == -10) {
+                    if(Class30.anIntArray712[i] == 9) {
                         int i_9_ = 150 - Class30.anIntArray684[i];
                         if(i_9_ >= 50) {
                             if(i_9_ < 100)
                                 i_8_ = -((-50 + i_9_) * 327680) + 16776960;
-                            else if((i_9_ ^ 0xffffffff) > -151)
+                            else if(i_9_ < 150)
                                 i_8_ = 65280 + (5 * (i_9_ + -100));
                         } else
                             i_8_ = 16711680 + 1280 * i_9_;
                     }
-                    if((Class30.anIntArray712[i] ^ 0xffffffff) == -11) {
+                    if(Class30.anIntArray712[i] == 10) {
                         int i_10_ = 150 + -Class30.anIntArray684[i];
-                        if((i_10_ ^ 0xffffffff) <= -51) {
-                            if((i_10_ ^ 0xffffffff) <= -101) {
+                        if(i_10_ >= 50) {
+                            if(i_10_ >= 100) {
                                 if(i_10_ < 150)
                                     i_8_ = 255 - (-(327680 * (i_10_ - 100)) - 500) + -(5 * i_10_);
                             } else
@@ -195,7 +195,7 @@ public class Class33 {
                         } else
                             i_8_ = 5 * i_10_ + 16711680;
                     }
-                    if((Class30.anIntArray712[i] ^ 0xffffffff) == -12) {
+                    if(Class30.anIntArray712[i] == 11) {
                         int i_11_ = -Class30.anIntArray684[i] + 150;
                         if(i_11_ >= 50) {
                             if(i_11_ < 100)
@@ -205,7 +205,7 @@ public class Class33 {
                         } else
                             i_8_ = -(327685 * i_11_) + 16777215;
                     }
-                    if((Class30.anIntArray695[i] ^ 0xffffffff) == -1) {
+                    if(Class30.anIntArray695[i] == 0) {
                         Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
                         Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(class1, ISAAC.anInt522, Class44.anInt1048, i_8_);
                     }
@@ -213,11 +213,11 @@ public class Class33 {
                         Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, Class40_Sub5_Sub11.anInt2628);
                         Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628);
                     }
-                    if((Class30.anIntArray695[i] ^ 0xffffffff) == -3) {
+                    if(Class30.anIntArray695[i] == 2) {
                         Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawCenteredStringWaveXY(class1, ISAAC.anInt522, 1 + Class44.anInt1048, 0, Class40_Sub5_Sub11.anInt2628);
                         Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawCenteredStringWaveXY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628);
                     }
-                    if((Class30.anIntArray695[i] ^ 0xffffffff) == -4) {
+                    if(Class30.anIntArray695[i] == 3) {
                         Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, Class40_Sub5_Sub11.anInt2628, -Class30.anIntArray684[i] + 150);
                         Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628, -Class30.anIntArray684[i] + 150);
                     }
@@ -229,12 +229,12 @@ public class Class33 {
                         Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawString(class1, 50 + ISAAC.anInt522 + -i_13_, Class44.anInt1048, i_8_);
                         Rasterizer.resetCoordinates();
                     }
-                    if((Class30.anIntArray695[i] ^ 0xffffffff) == -6) {
+                    if(Class30.anIntArray695[i] == 5) {
                         int i_14_ = 0;
                         int i_15_ = 150 + -Class30.anIntArray684[i];
                         Rasterizer.setCoordinates(0, -1 + (-(Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.characterDefaultHeight) + Class44.anInt1048), 5 + Class44.anInt1048, 512);
-                        if((i_15_ ^ 0xffffffff) <= -26) {
-                            if((i_15_ ^ 0xffffffff) < -126)
+                        if(i_15_ >= 25) {
+                            if(i_15_ > 125)
                                 i_14_ = i_15_ + -125;
                         } else
                             i_14_ = i_15_ + -25;
@@ -259,30 +259,30 @@ public class Class33 {
     }
 
     public static void method406(int arg0, int arg1, int arg2, int arg3) {
-        if((arg1 ^ 0xffffffff) == -2) {
+        if(arg1 == 1) {
             Class67.anInt1594++;
             Class32.packetBuffer.putPacket(111);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
         }
-        if((arg1 ^ 0xffffffff) == -3) {
+        if(arg1 == 2) {
             Class32.packetBuffer.putPacket(9);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
             Class56.anInt1327++;
         }
-        if((arg1 ^ 0xffffffff) == -4) {
+        if(arg1 == 3) {
             Class32.packetBuffer.putPacket(193);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
         }
-        if((arg1 ^ 0xffffffff) == -5) {
+        if(arg1 == 4) {
             Class32.packetBuffer.putPacket(53);
             Class58.anInt1369++;
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
         }
-        if((arg1 ^ 0xffffffff) == -6) {
+        if(arg1 == 5) {
             Class32.packetBuffer.putPacket(94);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
@@ -297,13 +297,13 @@ public class Class33 {
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
         }
-        if((arg1 ^ 0xffffffff) == -9) {
+        if(arg1 == 8) {
             Class32.packetBuffer.putPacket(130);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
             Class40_Sub5_Sub17_Sub1.anInt2979++;
         }
-        if((arg1 ^ 0xffffffff) == -10) {
+        if(arg1 == 9) {
             Class32.packetBuffer.putPacket(157);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
@@ -343,7 +343,7 @@ public class Class33 {
     public static boolean method409(byte arg0, int arg1) {
         if(arg0 <= 23)
             method402(true);
-        if((arg1 ^ 0xffffffff) > -1)
+        if(arg1 < 0)
             return false;
         int i = Class38.anIntArray884[arg1];
         if(i >= 2000)
@@ -387,7 +387,7 @@ public class Class33 {
             if(Class26.aBoolean618) {
                 byte[] is = RSString.method74(Class40_Sub5_Sub17_Sub1.anInt3004, Class22_Sub1.aCacheIndex_1855, Class8.anInt289, -118, Class40_Sub6.anInt2110);
                 if(is != null) {
-                    if((CacheIndex.anInt255 ^ 0xffffffff) > -1) {
+                    if(CacheIndex.anInt255 < 0) {
                         if(CacheIndex_Sub1.anInt1806 < 0)
                             RSString.method56(2037, Main.aBoolean1790, is, OverlayDefinition.anInt2342);
                         else

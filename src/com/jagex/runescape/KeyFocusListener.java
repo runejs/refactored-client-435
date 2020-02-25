@@ -32,7 +32,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
     static {
         for(int i = 0; i < 256; i++) {
             int i_6_ = i;
-            for(int i_7_ = 0; (i_7_ ^ 0xffffffff) > -9; i_7_++) {
+            for(int i_7_ = 0; i_7_ < 8; i_7_++) {
                 if((i_6_ & 0x1) != 1)
                     i_6_ >>>= 1;
                 else
@@ -59,7 +59,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         Class10.method238(4);
         if(Class45.anInt1075 == 1)
             Class37.aClass40_Sub5_Sub14_Sub4Array878[OverlayDefinition.anInt2319 / 100].drawImage(-4 + Class40_Sub11.anInt2163 + -8, -8 + (Class40_Sub5_Sub1.anInt2276 - 4));
-        if((Class45.anInt1075 ^ 0xffffffff) == -3)
+        if(Class45.anInt1075 == 2)
             Class37.aClass40_Sub5_Sub14_Sub4Array878[4 + OverlayDefinition.anInt2319 / 100].drawImage(-8 + Class40_Sub11.anInt2163 - 4, -4 + Class40_Sub5_Sub1.anInt2276 - 8);
         if(arg0 == -15454) {
             anInt1276++;
@@ -67,7 +67,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 Renderable.handleSequences(29378, Class58.anInt1376);
                 Class40_Sub5_Sub6.drawInterface(0, Class58.anInt1376, 334, (byte) -5, 0, 4, 512);
             }
-            if((HuffmanEncoding.openScreenWidgetId ^ 0xffffffff) != 0) {
+            if(HuffmanEncoding.openScreenWidgetId != -1) {
                 Renderable.handleSequences(29378, HuffmanEncoding.openScreenWidgetId);
                 Class40_Sub5_Sub6.drawInterface(0, HuffmanEncoding.openScreenWidgetId, 334, (byte) -5, 0, 0, 512);
             }
@@ -118,7 +118,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                     y += 15;
                 }
             }
-            if((Class40_Sub5_Sub15.anInt2782 ^ 0xffffffff) != -1) {
+            if(Class40_Sub5_Sub15.anInt2782 != 0) {
                 int i = Class40_Sub5_Sub15.anInt2782 / 50;
                 int i_3_ = i / 60;
                 i %= 60;
@@ -223,24 +223,24 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if(Class59.aKeyFocusListener_1392 != null) {
             Class49.anInt1147 = 0;
             int i = arg0.getKeyCode();
-            if((i ^ 0xffffffff) <= -1 && HuffmanEncoding.anIntArray1564.length > i) {
+            if(i >= 0 && HuffmanEncoding.anIntArray1564.length > i) {
                 i = HuffmanEncoding.anIntArray1564[i];
-                if((0x80 & i ^ 0xffffffff) != -1)
+                if((0x80 & i) != 0)
                     i = -1;
             } else
                 i = -1;
             int i_4_;
-            if(i == 85 || (i ^ 0xffffffff) == -81 || i == 84 || (i ^ 0xffffffff) == -1 || (i ^ 0xffffffff) == -102)
+            if(i == 85 || i == 80 || i == 84 || i == 0 || i == 101)
                 i_4_ = -1;
             else
                 i_4_ = Class51.method938(107, arg0);
-            if(GameObjectDefinition.anInt2543 >= 0 && (i ^ 0xffffffff) <= -1) {
+            if(GameObjectDefinition.anInt2543 >= 0 && i >= 0) {
                 RSString.anIntArray1706[GameObjectDefinition.anInt2543] = i;
                 GameObjectDefinition.anInt2543 = 0x7f & GameObjectDefinition.anInt2543 + 1;
                 if(GameObjectDefinition.anInt2543 == Class40_Sub13.anInt2183)
                     GameObjectDefinition.anInt2543 = -1;
             }
-            if((i ^ 0xffffffff) <= -1 || (i_4_ ^ 0xffffffff) <= -1) {
+            if(i >= 0 || i_4_ >= 0) {
                 int i_5_ = 0x7f & 1 + IdentityKit.anInt2598;
                 if(Class59.anInt1389 != i_5_) {
                     Class40_Sub6.anIntArray2113[(IdentityKit.anInt2598)] = i;
@@ -262,7 +262,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 i = -1;
             else
                 i = ~0x80 & HuffmanEncoding.anIntArray1564[i];
-            if((GameObjectDefinition.anInt2543 ^ 0xffffffff) <= -1 && i >= 0) {
+            if(GameObjectDefinition.anInt2543 >= 0 && i >= 0) {
                 RSString.anIntArray1706[GameObjectDefinition.anInt2543] = i ^ 0xffffffff;
                 GameObjectDefinition.anInt2543 = 0x7f & 1 + GameObjectDefinition.anInt2543;
                 if(Class40_Sub13.anInt2183 == GameObjectDefinition.anInt2543)

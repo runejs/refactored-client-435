@@ -160,9 +160,9 @@ public class Class34 {
 
         int i = -2 / ((-31 - arg0) / 57);
         anInt807++;
-        while((Cache.outgoingbuffer.method510(125, Widget.packetsize) ^ 0xffffffff) <= -12) {
+        while(Cache.outgoingbuffer.method510(125, Widget.packetsize) >= 11) {
             int i_0_ = Cache.outgoingbuffer.putBits(11, (byte) -65);
-            if((i_0_ ^ 0xffffffff) == -2048)
+            if(i_0_ == 2047)
                 break;
             boolean bool = false;
             if((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_]) == null) {
@@ -176,18 +176,18 @@ public class Class34 {
             class40_sub5_sub17_sub4_sub1.anInt3134 = Node.pulseCycle;
             int i_1_ = Cache.outgoingbuffer.putBits(5, (byte) -65);
             int i_2_ = Cache.outgoingbuffer.putBits(5, (byte) -65);
-            if((i_1_ ^ 0xffffffff) < -16)
+            if(i_1_ > 15)
                 i_1_ -= 32;
-            if((i_2_ ^ 0xffffffff) < -16)
+            if(i_2_ > 15)
                 i_2_ -= 32;
             int i_3_ = (Class40_Sub5_Sub17_Sub1.anIntArray2987[Cache.outgoingbuffer.putBits(3, (byte) -65)]);
             if(bool)
                 class40_sub5_sub17_sub4_sub1.anInt3118 = i_3_;
             int i_4_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
             int i_5_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
-            if((i_5_ ^ 0xffffffff) == -2)
+            if(i_5_ == 1)
                 Class24.anIntArray578[Actor.anInt3153++] = i_0_;
-            class40_sub5_sub17_sub4_sub1.method787(i_2_ + (Player.localPlayer.anIntArray3135[0]), -7717, (i_4_ ^ 0xffffffff) == -2, (Player.localPlayer.anIntArray3088[0]) + i_1_);
+            class40_sub5_sub17_sub4_sub1.method787(i_2_ + (Player.localPlayer.anIntArray3135[0]), -7717, i_4_ == 1, (Player.localPlayer.anIntArray3088[0]) + i_1_);
         }
         Cache.outgoingbuffer.finishBitAccess((byte) -110);
 
@@ -199,7 +199,7 @@ public class Class34 {
         if(arg0 == -2)
             return 12345678;
         if(arg0 == -1) {
-            if((arg1 ^ 0xffffffff) > -1)
+            if(arg1 < 0)
                 arg1 = 0;
             else if(arg1 > 127)
                 arg1 = 127;

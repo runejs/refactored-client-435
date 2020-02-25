@@ -55,7 +55,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
                 int i = aClass14_2225.method250();
                 int i_0_ = aClass14_2225.anIntArray427[i];
                 long l_1_ = aClass14_2225.method251(i_0_);
-                if((l_1_ ^ 0xffffffffffffffffL) < (l ^ 0xffffffffffffffffL))
+                if(l < l_1_)
                     break;
                 while(i_0_ == aClass14_2225.anIntArray427[i]) {
                     aClass14_2225.method265(i);
@@ -88,7 +88,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
         int i_2_ = aClass14_2225.method252(arg2);
         if(i_2_ == 1)
             aClass14_2225.method264();
-        else if((i_2_ & 0x80 ^ 0xffffffff) != -1) {
+        else if((i_2_ & 0x80) != 0) {
             int i_3_ = (int) (arg0 / (long) (1000 * aClass14_2225.anInt431));
             int i_4_ = i_2_ & 0xff;
             int i_5_ = (0xffa8 & i_2_) >> 8;

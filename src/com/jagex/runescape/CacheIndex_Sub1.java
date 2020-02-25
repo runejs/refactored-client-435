@@ -106,7 +106,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
         int i = Class34.method415((byte) -103, 255, anInt1807);
         if(arg0 != 100)
             return -74;
-        if((i ^ 0xffffffff) <= -101)
+        if(i >= 100)
             i = 99;
         return i;
 
@@ -136,7 +136,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
             } else {
                 if(!arg1 && anInt1797 == arg3)
                     aBoolean1800 = true;
-                if(arg2 == null || (arg2.length ^ 0xffffffff) >= -3) {
+                if(arg2 == null || arg2.length <= 2) {
                     aBooleanArray1796[arg3] = false;
                     if(aBoolean1811 || arg1)
                         HashTable.method327(arg1, this, anInt1807, arg3, (byte) 2, anIntArray252[arg3], (byte) -117);
@@ -146,7 +146,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
                 Class65.aCRC32_1531.update(arg2, 0, arg2.length - 2);
                 int i = (int) Class65.aCRC32_1531.getValue();
                 int i_0_ = (((arg2[-2 + arg2.length] & 0xff) << 8) + (0xff & arg2[arg2.length + -1]));
-                if(i != anIntArray252[arg3] || ((anIntArray224[arg3] ^ 0xffffffff) != (i_0_ ^ 0xffffffff))) {
+                if(i != anIntArray252[arg3] || (i_0_ != anIntArray224[arg3])) {
                     aBooleanArray1796[arg3] = false;
                     if(aBoolean1811 || arg1)
                         HashTable.method327(arg1, this, anInt1807, arg3, (byte) 2, anIntArray252[arg3], (byte) -78);
@@ -197,7 +197,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
                     anInt1797 = i_2_;
                 }
             }
-            if((anInt1797 ^ 0xffffffff) == 0)
+            if(anInt1797 == -1)
                 aBoolean1800 = true;
         }
     }
@@ -240,7 +240,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
         }
         if(arg0 != false)
             method203(-91);
-        if((i ^ 0xffffffff) == -1)
+        if(i == 0)
             return 100;
         int i_5_ = i_3_ * 100 / i;
         return i_5_;

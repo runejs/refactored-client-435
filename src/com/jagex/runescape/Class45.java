@@ -60,7 +60,7 @@ public class Class45 {
         if(arg1 >= -13)
             return null;
         RSString class1 = HashTable.method334(arg0, -1);
-        for(int i = -3 + class1.length(); (i ^ 0xffffffff) < -1; i -= 3)
+        for(int i = -3 + class1.length(); i > 0; i -= 3)
             class1 = (Class40_Sub5_Sub17_Sub6.method832(113, new RSString[]{class1.substring(0, i), Class33.aClass1_795, class1.substring(i)}));
         if(class1.length() > 8)
             class1 = (Class40_Sub5_Sub17_Sub6.method832(-69, (new RSString[]{Landscape.aClass1_1162, class1.substring(0, -8 + class1.length()), UnderlayDefinition.aClass1_2577, Class52.aClass1_1213, class1, Class51.aClass1_1199})));

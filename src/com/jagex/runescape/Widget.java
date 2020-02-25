@@ -192,15 +192,15 @@ public class Widget extends SubNode {
         synchronized(Class59.aKeyFocusListener_1392) {
             Class59.anInt1389 = Class52.anInt1214;
             if(GameObjectDefinition.anInt2543 < 0) {
-                for(int i = 0; (i ^ 0xffffffff) > -113; i++) {
+                for(int i = 0; i < 112; i++) {
                     Class40_Sub5_Sub17_Sub3.aBooleanArray3056[i] = false;
                 }
                 GameObjectDefinition.anInt2543 = Class40_Sub13.anInt2183;
             } else {
-                while((Class40_Sub13.anInt2183 ^ 0xffffffff) != (GameObjectDefinition.anInt2543 ^ 0xffffffff)) {
+                while(GameObjectDefinition.anInt2543 != Class40_Sub13.anInt2183) {
                     int i = RSString.anIntArray1706[Class40_Sub13.anInt2183];
                     Class40_Sub13.anInt2183 = 0x7f & Class40_Sub13.anInt2183 + 1;
-                    if((i ^ 0xffffffff) > -1) {
+                    if(i < 0) {
                         Class40_Sub5_Sub17_Sub3.aBooleanArray3056[i ^ 0xffffffff] = false;
                     } else {
                         Class40_Sub5_Sub17_Sub3.aBooleanArray3056[i] = true;
@@ -265,7 +265,7 @@ public class Widget extends SubNode {
         if(arg0 < 100000) {
             return HashTable.method334(arg0, -1);
         }
-        if((arg0 ^ 0xffffffff) > -10000001) {
+        if(arg0 < 10000000) {
             return (Class40_Sub5_Sub17_Sub6.method832(110, new RSString[]{HashTable.method334(arg0 / 1000, -1), IdentityKit.aClass1_2587}));
         }
         return (Class40_Sub5_Sub17_Sub6.method832(-84, new RSString[]{HashTable.method334(arg0 / 1000000, arg1 ^ 0x63), Class22.aClass1_542}));
@@ -296,7 +296,7 @@ public class Widget extends SubNode {
                     }
                 } else {
                     int i_7_ = ((Integer) arg0[i_6_]).intValue();
-                    if((i_7_ ^ 0xffffffff) == 2147483646) {
+                    if(i_7_ == -2147483647) {
                         i_7_ = arg4;
                     }
                     if(i_7_ == -2147483646) {
@@ -313,8 +313,8 @@ public class Widget extends SubNode {
             }
             for(; ; ) {
                 i_3_ = is_0_[++i_2_];
-                if((i_3_ ^ 0xffffffff) > -101) {
-                    if((i_3_ ^ 0xffffffff) == -1) {
+                if(i_3_ < 100) {
+                    if(i_3_ == 0) {
                         Class67.anIntArray1588[i++] = is[i_2_];
                         continue;
                     }
@@ -328,7 +328,7 @@ public class Widget extends SubNode {
                         Class58.varbitmasks[i_9_] = Class67.anIntArray1588[--i];
                         continue;
                     }
-                    if((i_3_ ^ 0xffffffff) == -4) {
+                    if(i_3_ == 3) {
                         Class40_Sub11.aClass1Array2153[i_1_++] = class40_sub5_sub1.aClass1Array2270[i_2_];
                         continue;
                     }
@@ -336,7 +336,7 @@ public class Widget extends SubNode {
                         i_2_ += is[i_2_];
                         continue;
                     }
-                    if((i_3_ ^ 0xffffffff) == -8) {
+                    if(i_3_ == 7) {
                         i -= 2;
                         if(Class67.anIntArray1588[i] != Class67.anIntArray1588[1 + i]) {
                             i_2_ += is[i_2_];
@@ -345,27 +345,27 @@ public class Widget extends SubNode {
                     }
                     if(i_3_ == 8) {
                         i -= 2;
-                        if((Class67.anIntArray1588[1 + i] ^ 0xffffffff) == (Class67.anIntArray1588[i] ^ 0xffffffff)) {
+                        if(Class67.anIntArray1588[i] == Class67.anIntArray1588[1 + i]) {
                             i_2_ += is[i_2_];
                         }
                         continue;
                     }
-                    if((i_3_ ^ 0xffffffff) == -10) {
+                    if(i_3_ == 9) {
                         i -= 2;
                         if(Class67.anIntArray1588[1 + i] > Class67.anIntArray1588[i]) {
                             i_2_ += is[i_2_];
                         }
                         continue;
                     }
-                    if((i_3_ ^ 0xffffffff) == -11) {
+                    if(i_3_ == 10) {
                         i -= 2;
                         if(Class67.anIntArray1588[1 + i] < Class67.anIntArray1588[i]) {
                             i_2_ += is[i_2_];
                         }
                         continue;
                     }
-                    if((i_3_ ^ 0xffffffff) == -22) {
-                        if((Class29.anInt678 ^ 0xffffffff) != -1) {
+                    if(i_3_ == 21) {
+                        if(Class29.anInt678 != 0) {
                             Class61 class61 = (Class56.aClass61Array1320[--Class29.anInt678]);
                             Class51.aClass1Array1204 = class61.aClass1Array1430;
                             anIntArray2086 = class61.anIntArray1420;
@@ -387,14 +387,14 @@ public class Widget extends SubNode {
                         Class40_Sub2.method522(Class67.anIntArray1588[--i], i_11_, (byte) 118);
                         continue;
                     }
-                    if((i_3_ ^ 0xffffffff) == -32) {
+                    if(i_3_ == 31) {
                         i -= 2;
                         if((Class67.anIntArray1588[i] <= Class67.anIntArray1588[i + 1])) {
                             i_2_ += is[i_2_];
                         }
                         continue;
                     }
-                    if((i_3_ ^ 0xffffffff) == -33) {
+                    if(i_3_ == 32) {
                         i -= 2;
                         if((Class67.anIntArray1588[1 + i] <= Class67.anIntArray1588[i])) {
                             i_2_ += is[i_2_];
@@ -413,22 +413,22 @@ public class Widget extends SubNode {
                         Class40_Sub11.aClass1Array2153[i_1_++] = Class51.aClass1Array1204[is[i_2_]];
                         continue;
                     }
-                    if((i_3_ ^ 0xffffffff) == -37) {
+                    if(i_3_ == 36) {
                         Class51.aClass1Array1204[is[i_2_]] = Class40_Sub11.aClass1Array2153[--i_1_];
                         continue;
                     }
-                    if((i_3_ ^ 0xffffffff) == -38) {
+                    if(i_3_ == 37) {
                         int i_12_ = is[i_2_];
                         i_1_ -= i_12_;
                         RSString class1 = (IdentityKit.method627(63, i_12_, i_1_, Class40_Sub11.aClass1Array2153));
                         Class40_Sub11.aClass1Array2153[i_1_++] = class1;
                         continue;
                     }
-                    if((i_3_ ^ 0xffffffff) == -39) {
+                    if(i_3_ == 38) {
                         i--;
                         continue;
                     }
-                    if((i_3_ ^ 0xffffffff) == -40) {
+                    if(i_3_ == 39) {
                         i_1_--;
                         continue;
                     }
@@ -459,19 +459,19 @@ public class Widget extends SubNode {
                         is_0_ = class40_sub5_sub1.anIntArray2272;
                         continue;
                     }
-                    if((i_3_ ^ 0xffffffff) == -43) {
+                    if(i_3_ == 42) {
                         Class67.anIntArray1588[i++] = Class22_Sub1.anIntArray1847[is[i_2_]];
                         continue;
                     }
-                    if((i_3_ ^ 0xffffffff) == -44) {
+                    if(i_3_ == 43) {
                         Class22_Sub1.anIntArray1847[is[i_2_]] = Class67.anIntArray1588[--i];
                         continue;
                     }
                 }
                 boolean bool;
-                bool = (is[i_2_] ^ 0xffffffff) == -2;
-                if((i_3_ ^ 0xffffffff) > -1001) {
-                    if((i_3_ ^ 0xffffffff) == -101) {
+                bool = is[i_2_] == 1;
+                if(i_3_ < 1000) {
+                    if(i_3_ == 100) {
                         i -= 3;
                         int i_18_ = Class67.anIntArray1588[i];
                         int i_19_ = Class67.anIntArray1588[i + 1];
@@ -480,7 +480,7 @@ public class Widget extends SubNode {
                         if(widget.aWidgetArray2713 == null) {
                             widget.aWidgetArray2713 = new Widget[1 + i_20_];
                         }
-                        if((i_20_ ^ 0xffffffff) <= ((widget.aWidgetArray2713).length ^ 0xffffffff)) {
+                        if((widget.aWidgetArray2713).length <= i_20_) {
                             Widget[] widgets = new Widget[1 + i_20_];
                             for(int i_21_ = 0; (((widget.aWidgetArray2713).length > i_21_)); i_21_++) {
                                 widgets[i_21_] = (widget.aWidgetArray2713[i_21_]);
@@ -508,7 +508,7 @@ public class Widget extends SubNode {
                         Widget widget = forId((Class67.anIntArray1588[--i]));
                         widget.aWidgetArray2713 = null;
                     }
-                } else if(((i_3_ ^ 0xffffffff) <= -1001 && (i_3_ ^ 0xffffffff) > -1101) || ((i_3_ ^ 0xffffffff) <= -2001 && i_3_ < 2100)) {
+                } else if((i_3_ >= 1000 && i_3_ < 1100) || (i_3_ >= 2000 && i_3_ < 2100)) {
                     Widget widget;
                     if(i_3_ >= 2000) {
                         widget = forId((Class67.anIntArray1588[--i]));
@@ -516,11 +516,11 @@ public class Widget extends SubNode {
                     } else {
                         widget = (bool ? Class40_Sub6.aWidget_2116 : Class22_Sub2.aWidget_1887);
                     }
-                    if((i_3_ ^ 0xffffffff) == -1001) {
+                    if(i_3_ == 1000) {
                         i -= 2;
                         widget.currentX = Class67.anIntArray1588[i];
                         widget.currentY = Class67.anIntArray1588[i + 1];
-                    } else if((i_3_ ^ 0xffffffff) == -1002) {
+                    } else if(i_3_ == 1001) {
                         i -= 2;
                         widget.originalWidth = Class67.anIntArray1588[i];
                         widget.originalHeight = Class67.anIntArray1588[1 + i];
@@ -532,9 +532,9 @@ public class Widget extends SubNode {
                         }
                         widget.aBoolean2688 = Class67.anIntArray1588[--i] == 1;
                     }
-                } else if((i_3_ ^ 0xffffffff) <= -1101 && i_3_ < 1200 || ((i_3_ ^ 0xffffffff) <= -2101 && (i_3_ ^ 0xffffffff) > -2201)) {
+                } else if(i_3_ >= 1100 && i_3_ < 1200 || (i_3_ >= 2100 && i_3_ < 2200)) {
                     Widget widget;
-                    if((i_3_ ^ 0xffffffff) > -2001) {
+                    if(i_3_ < 2000) {
                         widget = (!bool ? Class22_Sub2.aWidget_1887 : Class40_Sub6.aWidget_2116);
                     } else {
                         widget = forId((Class67.anIntArray1588[--i]));
@@ -552,20 +552,20 @@ public class Widget extends SubNode {
                         widget.textColor = ((i_27_ << 11) + (i_25_ << 19) + (i_26_ << 3));
                     } else if(i_3_ == 1102) {
                         widget.filled = Class67.anIntArray1588[--i] == 1;
-                    } else if((i_3_ ^ 0xffffffff) == -1104) {
+                    } else if(i_3_ == 1103) {
                         widget.opacity = Class67.anIntArray1588[--i];
-                    } else if((i_3_ ^ 0xffffffff) == -1105) {
+                    } else if(i_3_ == 1104) {
                         i--;
                     } else if(i_3_ == 1105) {
                         widget.spriteId = Class67.anIntArray1588[--i];
-                    } else if((i_3_ ^ 0xffffffff) == -1107) {
+                    } else if(i_3_ == 1106) {
                         widget.anInt2751 = Class67.anIntArray1588[--i];
-                    } else if((i_3_ ^ 0xffffffff) == -1108) {
-                        widget.aBoolean2641 = ((Class67.anIntArray1588[--i] ^ 0xffffffff) == -2);
+                    } else if(i_3_ == 1107) {
+                        widget.aBoolean2641 = (Class67.anIntArray1588[--i] == 1);
                     } else if(i_3_ == 1108) {
                         widget.modelType = 1;
                         widget.modelId = Class67.anIntArray1588[--i];
-                    } else if((i_3_ ^ 0xffffffff) == -1110) {
+                    } else if(i_3_ == 1109) {
                         i -= 6;
                         widget.offsetX2d = Class67.anIntArray1588[i];
                         widget.offsetY2d = Class67.anIntArray1588[1 + i];
@@ -573,27 +573,27 @@ public class Widget extends SubNode {
                         widget.rotationZ = Class67.anIntArray1588[3 + i];
                         widget.rotationY = Class67.anIntArray1588[4 + i];
                         widget.modelZoom = Class67.anIntArray1588[5 + i];
-                    } else if((i_3_ ^ 0xffffffff) == -1111) {
+                    } else if(i_3_ == 1110) {
                         widget.animation = Class67.anIntArray1588[--i];
                     } else if(i_3_ == 1111) {
-                        widget.orthogonal = ((Class67.anIntArray1588[--i] ^ 0xffffffff) == -2);
+                        widget.orthogonal = (Class67.anIntArray1588[--i] == 1);
                     } else if(i_3_ == 1112) {
                         widget.text = Class40_Sub11.aClass1Array2153[--i_1_];
                     } else if(i_3_ == 1113) {
                         widget.fontId = Class67.anIntArray1588[--i];
-                    } else if((i_3_ ^ 0xffffffff) == -1115) {
+                    } else if(i_3_ == 1114) {
                         i -= 3;
                         widget.xTextAlignment = Class67.anIntArray1588[i];
                         widget.yTextAlignment = Class67.anIntArray1588[i + 1];
                         widget.lineHeight = Class67.anIntArray1588[i + 2];
                     } else {
-                        if((i_3_ ^ 0xffffffff) != -1116) {
+                        if(i_3_ != 1115) {
                             break;
                         }
                         widget.textShadowed = Class67.anIntArray1588[--i] == 1;
                     }
-                } else if((i_3_ < 1200 || (i_3_ ^ 0xffffffff) <= -1301) && ((i_3_ ^ 0xffffffff) > -2201 || i_3_ >= 2300)) {
-                    if((i_3_ < 1300 || (i_3_ ^ 0xffffffff) <= -1401) && ((i_3_ ^ 0xffffffff) > -2301 || (i_3_ ^ 0xffffffff) <= -2401)) {
+                } else if((i_3_ < 1200 || i_3_ >= 1300) && (i_3_ < 2200 || i_3_ >= 2300)) {
+                    if((i_3_ < 1300 || i_3_ >= 1400) && (i_3_ < 2300 || i_3_ >= 2400)) {
                         if(i_3_ < 1500) {
                             if(i_3_ == 1400) {
                                 i -= 2;
@@ -610,7 +610,7 @@ public class Widget extends SubNode {
                                         Class40_Sub6.aWidget_2116 = (widget.aWidgetArray2713[i_28_]);
                                     }
                                 }
-                            } else if((i_3_ ^ 0xffffffff) == -1402) {
+                            } else if(i_3_ == 1401) {
                                 i -= 3;
                                 int i_30_ = Class67.anIntArray1588[i];
                                 int i_31_ = Class67.anIntArray1588[2 + i];
@@ -627,7 +627,7 @@ public class Widget extends SubNode {
                                     Class67.anIntArray1588[i++] = 0;
                                 }
                             } else {
-                                if((i_3_ ^ 0xffffffff) != -1403) {
+                                if(i_3_ != 1402) {
                                     break;
                                 }
                                 i -= 3;
@@ -650,23 +650,23 @@ public class Widget extends SubNode {
                             Widget widget = (bool ? Class40_Sub6.aWidget_2116 : (Class22_Sub2.aWidget_1887));
                             if(i_3_ == 1500) {
                                 Class67.anIntArray1588[i++] = widget.currentX;
-                            } else if((i_3_ ^ 0xffffffff) == -1502) {
+                            } else if(i_3_ == 1501) {
                                 Class67.anIntArray1588[i++] = widget.currentY;
-                            } else if((i_3_ ^ 0xffffffff) == -1503) {
+                            } else if(i_3_ == 1502) {
                                 Class67.anIntArray1588[i++] = widget.originalWidth;
                             } else if(i_3_ == 1503) {
                                 Class67.anIntArray1588[i++] = widget.originalHeight;
-                            } else if((i_3_ ^ 0xffffffff) == -1505) {
+                            } else if(i_3_ == 1504) {
                                 Class67.anIntArray1588[i++] = (!widget.isHidden ? 0 : 1);
                             } else {
-                                if((i_3_ ^ 0xffffffff) != -1506) {
+                                if(i_3_ != 1505) {
                                     break;
                                 }
                                 Class67.anIntArray1588[i++] = widget.parentId;
                             }
-                        } else if((i_3_ ^ 0xffffffff) <= -1701) {
-                            if((i_3_ ^ 0xffffffff) > -2501) {
-                                if((i_3_ ^ 0xffffffff) == -2402) {
+                        } else if(i_3_ >= 1700) {
+                            if(i_3_ < 2500) {
+                                if(i_3_ == 2401) {
                                     i -= 3;
                                     int i_36_ = Class67.anIntArray1588[1 + i];
                                     int i_37_ = Class67.anIntArray1588[i];
@@ -678,7 +678,7 @@ public class Widget extends SubNode {
                                         Class67.anIntArray1588[i++] = -1;
                                     }
                                 } else {
-                                    if((i_3_ ^ 0xffffffff) != -2403) {
+                                    if(i_3_ != 2402) {
                                         break;
                                     }
                                     i -= 3;
@@ -692,10 +692,10 @@ public class Widget extends SubNode {
                                         Class67.anIntArray1588[i++] = -1;
                                     }
                                 }
-                            } else if((i_3_ ^ 0xffffffff) <= -2601) {
-                                if((i_3_ ^ 0xffffffff) > -2701) {
+                            } else if(i_3_ >= 2600) {
+                                if(i_3_ < 2700) {
                                     Widget widget = (forId(Class67.anIntArray1588[--i]));
-                                    if((i_3_ ^ 0xffffffff) == -2601) {
+                                    if(i_3_ == 2600) {
                                         Class67.anIntArray1588[i++] = widget.anInt2746;
                                     } else {
                                         if(i_3_ != 2601) {
@@ -710,23 +710,23 @@ public class Widget extends SubNode {
                                     if(i_3_ < 3100) {
                                         if(i_3_ == 3000) {
                                             int i_42_ = (Class67.anIntArray1588[--i]);
-                                            if((CacheIndex_Sub1.anInt1819 ^ 0xffffffff) == 0) {
+                                            if(CacheIndex_Sub1.anInt1819 == -1) {
                                                 PacketBuffer.method517(0, i_42_, -9225);
                                                 CacheIndex_Sub1.anInt1819 = i_42_;
                                             }
-                                        } else if(((i_3_ ^ 0xffffffff) == -3002) || ((i_3_ ^ 0xffffffff) == -3004)) {
+                                        } else if((i_3_ == 3001) || (i_3_ == 3003)) {
                                             i -= 2;
                                             int i_43_ = (Class67.anIntArray1588[i]);
                                             int i_44_ = (Class67.anIntArray1588[i + 1]);
                                             Class33.method406(0, i_44_, i_43_, -128);
                                         } else if(i_3_ == 3002) {
                                             Widget widget = (!bool ? (Class22_Sub2.aWidget_1887) : (Class40_Sub6.aWidget_2116));
-                                            if((CacheIndex_Sub1.anInt1819 ^ 0xffffffff) == 0) {
+                                            if(CacheIndex_Sub1.anInt1819 == -1) {
                                                 PacketBuffer.method517((widget.id) & 0x7fff, (widget.parentId), -9225);
                                                 CacheIndex_Sub1.anInt1819 = (widget.id);
                                             }
                                         } else {
-                                            if((i_3_ ^ 0xffffffff) != -3004) {
+                                            if(i_3_ != 3003) {
                                                 break;
                                             }
                                             Widget widget = (bool ? (Class40_Sub6.aWidget_2116) : (Class22_Sub2.aWidget_1887));
@@ -734,14 +734,14 @@ public class Widget extends SubNode {
                                             Class33.method406((0x7fff & (widget.id)), i_45_, (widget.parentId), -121);
                                         }
                                     } else if(i_3_ >= 3200) {
-                                        if((i_3_ ^ 0xffffffff) > -3301) {
-                                            if((i_3_ ^ 0xffffffff) == -3201) {
+                                        if(i_3_ < 3300) {
+                                            if(i_3_ == 3200) {
                                                 i -= 3;
                                                 Class53.method950((Class67.anIntArray1588[i]), (byte) 55, (Class67.anIntArray1588[i + 1]), (Class67.anIntArray1588[2 + i]));
                                             } else if(i_3_ == 3201) {
                                                 Class51.method942(257, (Class67.anIntArray1588[--i]));
                                             } else {
-                                                if((i_3_ ^ 0xffffffff) != -3203) {
+                                                if(i_3_ != 3202) {
                                                     break;
                                                 }
                                                 i -= 2;
@@ -753,22 +753,22 @@ public class Widget extends SubNode {
                                             }
                                             Class67.anIntArray1588[i++] = pulseCycle;
                                         } else if(i_3_ < 4100) {
-                                            if((i_3_ ^ 0xffffffff) == -4001) {
+                                            if(i_3_ == 4000) {
                                                 i -= 2;
                                                 int i_46_ = (Class67.anIntArray1588[i]);
                                                 int i_47_ = (Class67.anIntArray1588[i + 1]);
                                                 Class67.anIntArray1588[i++] = i_46_ + i_47_;
-                                            } else if((i_3_ ^ 0xffffffff) == -4002) {
+                                            } else if(i_3_ == 4001) {
                                                 i -= 2;
                                                 int i_48_ = (Class67.anIntArray1588[1 + i]);
                                                 int i_49_ = (Class67.anIntArray1588[i]);
                                                 Class67.anIntArray1588[i++] = i_49_ + -i_48_;
-                                            } else if((i_3_ ^ 0xffffffff) == -4003) {
+                                            } else if(i_3_ == 4002) {
                                                 i -= 2;
                                                 int i_50_ = (Class67.anIntArray1588[i + 1]);
                                                 int i_51_ = (Class67.anIntArray1588[i]);
                                                 Class67.anIntArray1588[i++] = i_51_ * i_50_;
-                                            } else if((i_3_ ^ 0xffffffff) == -4004) {
+                                            } else if(i_3_ == 4003) {
                                                 i -= 2;
                                                 int i_52_ = (Class67.anIntArray1588[i]);
                                                 int i_53_ = (Class67.anIntArray1588[i + 1]);
@@ -776,10 +776,10 @@ public class Widget extends SubNode {
                                             } else if(i_3_ == 4004) {
                                                 int i_54_ = (Class67.anIntArray1588[--i]);
                                                 Class67.anIntArray1588[i++] = (int) (Math.random() * (double) i_54_);
-                                            } else if((i_3_ ^ 0xffffffff) == -4006) {
+                                            } else if(i_3_ == 4005) {
                                                 int i_55_ = (Class67.anIntArray1588[--i]);
                                                 Class67.anIntArray1588[i++] = (int) ((double) (1 + i_55_) * (Math.random()));
-                                            } else if((i_3_ ^ 0xffffffff) == -4007) {
+                                            } else if(i_3_ == 4006) {
                                                 i -= 5;
                                                 int i_56_ = (Class67.anIntArray1588[1 + i]);
                                                 int i_57_ = (Class67.anIntArray1588[i]);
@@ -787,17 +787,17 @@ public class Widget extends SubNode {
                                                 int i_59_ = (Class67.anIntArray1588[i + 4]);
                                                 int i_60_ = (Class67.anIntArray1588[2 + i]);
                                                 Class67.anIntArray1588[i++] = (i_57_ + ((i_59_ + -i_60_) * (-i_57_ + i_56_) / (i_58_ - i_60_)));
-                                            } else if((i_3_ ^ 0xffffffff) == -4008) {
+                                            } else if(i_3_ == 4007) {
                                                 i -= 2;
                                                 int i_61_ = (Class67.anIntArray1588[i]);
                                                 int i_62_ = (Class67.anIntArray1588[i + 1]);
                                                 Class67.anIntArray1588[i++] = i_61_ + (i_62_ * i_61_ / 100);
-                                            } else if((i_3_ ^ 0xffffffff) == -4009) {
+                                            } else if(i_3_ == 4008) {
                                                 i -= 2;
                                                 int i_63_ = (Class67.anIntArray1588[i]);
                                                 int i_64_ = (Class67.anIntArray1588[i + 1]);
                                                 Class67.anIntArray1588[i++] = (UnderlayDefinition.bitWiseOR(1 << i_64_, i_63_));
-                                            } else if((i_3_ ^ 0xffffffff) == -4010) {
+                                            } else if(i_3_ == 4009) {
                                                 i -= 2;
                                                 int i_65_ = (Class67.anIntArray1588[i]);
                                                 int i_66_ = (Class67.anIntArray1588[1 + i]);
@@ -806,13 +806,13 @@ public class Widget extends SubNode {
                                                 i -= 2;
                                                 int i_67_ = (Class67.anIntArray1588[i]);
                                                 int i_68_ = (Class67.anIntArray1588[1 + i]);
-                                                Class67.anIntArray1588[i++] = (((HuffmanEncoding.method1021(1 << i_68_, i_67_)) ^ 0xffffffff) != -1 ? 1 : 0);
+                                                Class67.anIntArray1588[i++] = ((HuffmanEncoding.method1021(1 << i_68_, i_67_)) != 0 ? 1 : 0);
                                             } else if(i_3_ == 4011) {
                                                 i -= 2;
                                                 int i_69_ = (Class67.anIntArray1588[i + 1]);
                                                 int i_70_ = (Class67.anIntArray1588[i]);
                                                 Class67.anIntArray1588[i++] = i_70_ % i_69_;
-                                            } else if((i_3_ ^ 0xffffffff) == -4013) {
+                                            } else if(i_3_ == 4012) {
                                                 i -= 2;
                                                 int i_71_ = (Class67.anIntArray1588[i]);
                                                 int i_72_ = (Class67.anIntArray1588[i + 1]);
@@ -829,7 +829,7 @@ public class Widget extends SubNode {
                                                 int i_73_ = (Class67.anIntArray1588[i]);
                                                 int i_74_ = (Class67.anIntArray1588[1 + i]);
                                                 if(i_73_ != 0) {
-                                                    if((i_74_ ^ 0xffffffff) != -1) {
+                                                    if(i_74_ != 0) {
                                                         Class67.anIntArray1588[i++] = (int) (Math.pow((double) i_73_, (1.0 / (double) i_74_)));
                                                     } else {
                                                         Class67.anIntArray1588[i++] = 2147483647;
@@ -855,10 +855,10 @@ public class Widget extends SubNode {
                                                 RSString class1 = (Class40_Sub11.aClass1Array2153[--i_1_]);
                                                 int i_77_ = (Class67.anIntArray1588[--i]);
                                                 Class40_Sub11.aClass1Array2153[i_1_++] = (Class40_Sub5_Sub17_Sub6.method832(-115, (new RSString[]{class1, (HuffmanEncoding.method1024(true, (byte) -85, i_77_))})));
-                                            } else if((i_3_ ^ 0xffffffff) == -4104) {
+                                            } else if(i_3_ == 4103) {
                                                 RSString class1 = (Class40_Sub11.aClass1Array2153[--i_1_]);
                                                 Class40_Sub11.aClass1Array2153[i_1_++] = class1.toLowerCase();
-                                            } else if((i_3_ ^ 0xffffffff) == -4105) {
+                                            } else if(i_3_ == 4104) {
                                                 int i_78_ = (Class67.anIntArray1588[--i]);
                                                 long l = (86400000L * ((long) i_78_ + 11745L));
                                                 Class8.aCalendar279.setTime(new Date(l));
@@ -866,7 +866,7 @@ public class Widget extends SubNode {
                                                 int i_80_ = Class8.aCalendar279.get(2);
                                                 int i_81_ = Class8.aCalendar279.get(1);
                                                 Class40_Sub11.aClass1Array2153[i_1_++] = (Class40_Sub5_Sub17_Sub6.method832(-55, (new RSString[]{(HashTable.method334(i_79_, -1)), (Class27.aClass1_643), (Class40_Sub5_Sub17_Sub1.aClass1Array2964[i_80_]), (Class27.aClass1_643), (HashTable.method334(i_81_, -1))})));
-                                            } else if((i_3_ ^ 0xffffffff) == -4106) {
+                                            } else if(i_3_ == 4105) {
                                                 i_1_ -= 2;
                                                 RSString class1 = (Class40_Sub11.aClass1Array2153[i_1_]);
                                                 RSString class1_82_ = (Class40_Sub11.aClass1Array2153[i_1_ + 1]);
@@ -886,7 +886,7 @@ public class Widget extends SubNode {
                                                 Class67.anIntArray1588[i++] = (Class40_Sub11.aClass1Array2153[i_1_].method84((Class40_Sub11.aClass1Array2153[i_1_ + 1]), (byte) 109));
                                             }
                                         }
-                                    } else if((i_3_ ^ 0xffffffff) == -3101) {
+                                    } else if(i_3_ == 3100) {
                                         RSString class1 = (Class40_Sub11.aClass1Array2153[--i_1_]);
                                         Class44.method895(84, 0, class1, (Landscape.aClass1_1183));
                                     } else {
@@ -899,11 +899,11 @@ public class Widget extends SubNode {
                                 }
                             } else {
                                 Widget widget = forId((Class67.anIntArray1588[--i]));
-                                if((i_3_ ^ 0xffffffff) == -2501) {
+                                if(i_3_ == 2500) {
                                     Class67.anIntArray1588[i++] = widget.currentX;
-                                } else if((i_3_ ^ 0xffffffff) == -2502) {
+                                } else if(i_3_ == 2501) {
                                     Class67.anIntArray1588[i++] = widget.currentY;
-                                } else if((i_3_ ^ 0xffffffff) == -2503) {
+                                } else if(i_3_ == 2502) {
                                     Class67.anIntArray1588[i++] = widget.originalWidth;
                                 } else if(i_3_ == 2503) {
                                     Class67.anIntArray1588[i++] = widget.originalHeight;
@@ -918,7 +918,7 @@ public class Widget extends SubNode {
                             }
                         } else {
                             Widget widget = (bool ? Class40_Sub6.aWidget_2116 : (Class22_Sub2.aWidget_1887));
-                            if((i_3_ ^ 0xffffffff) == -1601) {
+                            if(i_3_ == 1600) {
                                 Class67.anIntArray1588[i++] = widget.anInt2746;
                             } else {
                                 if(i_3_ != 1601) {
@@ -929,16 +929,16 @@ public class Widget extends SubNode {
                         }
                     } else {
                         Widget widget;
-                        if((i_3_ ^ 0xffffffff) <= -2001) {
+                        if(i_3_ >= 2000) {
                             widget = forId((Class67.anIntArray1588[--i]));
                             i_3_ -= 1000;
                         } else {
                             widget = (!bool ? Class22_Sub2.aWidget_1887 : (Class40_Sub6.aWidget_2116));
                         }
-                        if((i_3_ ^ 0xffffffff) <= -1301 && i_3_ <= 1309 || i_3_ >= 1314 && i_3_ <= 1317) {
+                        if(i_3_ >= 1300 && i_3_ <= 1309 || i_3_ >= 1314 && i_3_ <= 1317) {
                             RSString class1 = Class40_Sub11.aClass1Array2153[--i_1_];
                             Object[] objects = new Object[class1.length() + 1];
-                            for(int i_84_ = objects.length - 1; (i_84_ ^ 0xffffffff) <= -2; i_84_--) {
+                            for(int i_84_ = objects.length - 1; i_84_ >= 1; i_84_--) {
                                 if(class1.method55(-1 + i_84_, arg5) != 115) {
                                     objects[i_84_] = new Integer(Class67.anIntArray1588[--i]);
                                 } else {
@@ -952,13 +952,13 @@ public class Widget extends SubNode {
                             if(i_3_ == 1317) {
                                 widget.anObjectArray2680 = objects;
                             }
-                            if((i_3_ ^ 0xffffffff) == -1305) {
+                            if(i_3_ == 1304) {
                                 widget.anObjectArray2658 = objects;
                             }
-                            if((i_3_ ^ 0xffffffff) == -1303) {
+                            if(i_3_ == 1302) {
                                 widget.anObjectArray2644 = objects;
                             }
-                            if((i_3_ ^ 0xffffffff) == -1317) {
+                            if(i_3_ == 1316) {
                                 widget.anObjectArray2747 = objects;
                             }
                             if(i_3_ == 1301) {
@@ -967,13 +967,13 @@ public class Widget extends SubNode {
                             if(i_3_ == 1300) {
                                 widget.anObjectArray2677 = objects;
                             }
-                            if((i_3_ ^ 0xffffffff) == -1316) {
+                            if(i_3_ == 1315) {
                                 widget.anObjectArray2695 = objects;
                             }
-                            if((i_3_ ^ 0xffffffff) == -1307) {
+                            if(i_3_ == 1306) {
                                 widget.anObjectArray2669 = objects;
                             }
-                            if((i_3_ ^ 0xffffffff) == -1306) {
+                            if(i_3_ == 1305) {
                                 widget.anObjectArray2672 = objects;
                             }
                             if(i_3_ == 1309) {
@@ -982,9 +982,9 @@ public class Widget extends SubNode {
                             if(i_3_ == 1308) {
                                 widget.anObjectArray2650 = objects;
                             }
-                        } else if((i_3_ ^ 0xffffffff) == -1311) {
+                        } else if(i_3_ == 1310) {
                             int i_85_ = -1 + Class67.anIntArray1588[--i];
-                            if((i_85_ ^ 0xffffffff) > -1 || (i_85_ ^ 0xffffffff) < -10) {
+                            if(i_85_ < 0 || i_85_ > 9) {
                                 i_1_--;
                             } else {
                                 if((widget.aClass1Array2661 == null) || (((widget.aClass1Array2661).length <= i_85_))) {
@@ -998,12 +998,12 @@ public class Widget extends SubNode {
                                 }
                                 widget.aClass1Array2661[i_85_] = (Class40_Sub11.aClass1Array2153[--i_1_]);
                             }
-                        } else if((i_3_ ^ 0xffffffff) == -1312) {
+                        } else if(i_3_ == 1311) {
                             widget.anInt2738 = Class67.anIntArray1588[--i];
                         } else if(i_3_ == 1312) {
-                            widget.aBoolean2694 = (Class67.anIntArray1588[--i] ^ 0xffffffff) == -2;
+                            widget.aBoolean2694 = Class67.anIntArray1588[--i] == 1;
                         } else {
-                            if((i_3_ ^ 0xffffffff) != -1314) {
+                            if(i_3_ != 1313) {
                                 break;
                             }
                             i--;
@@ -1011,7 +1011,7 @@ public class Widget extends SubNode {
                     }
                 } else {
                     Widget widget;
-                    if((i_3_ ^ 0xffffffff) > -2001) {
+                    if(i_3_ < 2000) {
                         widget = (!bool ? Class22_Sub2.aWidget_1887 : Class40_Sub6.aWidget_2116);
                     } else {
                         widget = forId((Class67.anIntArray1588[--i]));
@@ -1021,7 +1021,7 @@ public class Widget extends SubNode {
                         i -= 3;
                         int i_87_ = Class67.anIntArray1588[i];
                         int i_88_ = Class67.anIntArray1588[i + 2];
-                        if((i_87_ ^ 0xffffffff) != 0) {
+                        if(i_87_ != -1) {
                             ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_87_, 10);
                             widget.modelType = 4;
                             widget.rotationX = class40_sub5_sub16.xan2d;
@@ -1034,7 +1034,7 @@ public class Widget extends SubNode {
                         } else {
                             widget.modelType = 0;
                         }
-                    } else if((i_3_ ^ 0xffffffff) == -1202) {
+                    } else if(i_3_ == 1201) {
                         widget.modelType = 2;
                         widget.modelId = Class67.anIntArray1588[--i];
                     } else if(i_3_ == 1202) {
@@ -1117,7 +1117,7 @@ public class Widget extends SubNode {
                 clientScripts[i_2_] = new int[i_3_];
                 for(int i_4_ = 0; (i_3_ > i_4_); i_4_++) {
                     clientScripts[i_2_][i_4_] = buffer.getUnsignedShortBE();
-                    if((clientScripts[i_2_][i_4_] ^ 0xffffffff) == -65536) {
+                    if(clientScripts[i_2_][i_4_] == 65535) {
                         clientScripts[i_2_][i_4_] = -1;
                     }
                 }
@@ -1257,11 +1257,11 @@ public class Widget extends SubNode {
 
     public ImageRGB method638(byte arg0, int arg1) {
         Class40_Sub13.aBoolean2177 = false;
-        if((arg1 ^ 0xffffffff) > -1 || imageY.length <= arg1) {
+        if(arg1 < 0 || imageY.length <= arg1) {
             return null;
         }
         int i = imageY[arg1];
-        if((i ^ 0xffffffff) == 0) {
+        if(i == -1) {
             return null;
         }
         int i_9_ = 124 % ((-15 - arg0) / 34);
@@ -1286,7 +1286,7 @@ public class Widget extends SubNode {
         } else {
             i = spriteId;
         }
-        if((i ^ 0xffffffff) == 0) {
+        if(i == -1) {
             return null;
         }
         ImageRGB class40_sub5_sub14_sub4 = ((ImageRGB) Cache.aClass9_326.method231((long) i, (byte) 103));
@@ -1322,22 +1322,22 @@ public class Widget extends SubNode {
         if(parentId == 0xFFFF) {
             parentId = -1;
         }
-        isHidden = (buffer.getUnsignedByte() ^ 0xffffffff) == -2;
-        aBoolean2688 = (buffer.getUnsignedByte() ^ 0xffffffff) == -2;
+        isHidden = buffer.getUnsignedByte() == 1;
+        aBoolean2688 = buffer.getUnsignedByte() == 1;
         if(type == 0) {
             anInt2746 = buffer.getUnsignedShortBE();
             scrollPosition = buffer.getUnsignedShortBE();
         }
-        if((type ^ 0xffffffff) == -6) {
+        if(type == 5) {
             spriteId = buffer.getIntBE();
             anInt2751 = buffer.getUnsignedShortBE();
-            aBoolean2641 = (buffer.getUnsignedByte() ^ 0xffffffff) == -2;
+            aBoolean2641 = buffer.getUnsignedByte() == 1;
             opacity = buffer.getUnsignedByte();
         }
         if(type == 6) {
             modelType = 1;
             modelId = buffer.getUnsignedShortBE();
-            if((modelId ^ 0xffffffff) == -65536) {
+            if(modelId == 65535) {
                 modelId = -1;
             }
             offsetX2d = buffer.getShortBE();
@@ -1347,7 +1347,7 @@ public class Widget extends SubNode {
             rotationY = buffer.getUnsignedShortBE();
             modelZoom = buffer.getUnsignedShortBE();
             animation = buffer.getUnsignedShortBE();
-            if((animation ^ 0xffffffff) == -65536) {
+            if(animation == 65535) {
                 animation = -1;
             }
             orthogonal = buffer.getUnsignedByte() == 1;
@@ -1361,9 +1361,9 @@ public class Widget extends SubNode {
             textShadowed = buffer.getUnsignedByte() == 1;
             textColor = buffer.getIntBE();
         }
-        if((type ^ 0xffffffff) == -4) {
+        if(type == 3) {
             textColor = buffer.getIntBE();
-            filled = (buffer.getUnsignedByte() ^ 0xffffffff) == -2;
+            filled = buffer.getUnsignedByte() == 1;
             opacity = buffer.getUnsignedByte();
         }
         if(type == 9) {
@@ -1397,7 +1397,7 @@ public class Widget extends SubNode {
                 }
             }
             anInt2738 = buffer.getUnsignedShortBE();
-            if((anInt2738 ^ 0xffffffff) == -65536) {
+            if(anInt2738 == 65535) {
                 anInt2738 = -1;
             }
         }
@@ -1414,10 +1414,10 @@ public class Widget extends SubNode {
             i = modelType;
             i_11_ = modelId;
         }
-        if((i ^ 0xffffffff) == -1) {
+        if(i == 0) {
             return null;
         }
-        if((i ^ 0xffffffff) == -2 && (i_11_ ^ 0xffffffff) == 0) {
+        if(i == 1 && i_11_ == -1) {
             return null;
         }
         if(arg0 <= 25) {
@@ -1425,7 +1425,7 @@ public class Widget extends SubNode {
         }
         Model class40_sub5_sub17_sub5 = ((Model) Class53.aClass9_1264.method231((long) ((i << 16) + i_11_), (byte) 59));
         if(class40_sub5_sub17_sub5 == null) {
-            if((i ^ 0xffffffff) == -2) {
+            if(i == 1) {
                 class40_sub5_sub17_sub5 = Model.getModel(Cache.aCacheIndex_329, i_11_, 0);
                 if(class40_sub5_sub17_sub5 == null) {
                     Class40_Sub13.aBoolean2177 = true;
@@ -1434,7 +1434,7 @@ public class Widget extends SubNode {
                 class40_sub5_sub17_sub5.method810();
                 class40_sub5_sub17_sub5.method802(64, 768, -50, -10, -50, true);
             }
-            if((i ^ 0xffffffff) == -3) {
+            if(i == 2) {
                 class40_sub5_sub17_sub5 = ActorDefinition.getDefinition((byte) -101, i_11_).getHeadModel((byte) 122);
                 if(class40_sub5_sub17_sub5 == null) {
                     Class40_Sub13.aBoolean2177 = true;
@@ -1443,7 +1443,7 @@ public class Widget extends SubNode {
                 class40_sub5_sub17_sub5.method810();
                 class40_sub5_sub17_sub5.method802(64, 768, -50, -10, -50, true);
             }
-            if((i ^ 0xffffffff) == -4) {
+            if(i == 3) {
                 if(arg4 == null) {
                     return null;
                 }
@@ -1455,7 +1455,7 @@ public class Widget extends SubNode {
                 class40_sub5_sub17_sub5.method810();
                 class40_sub5_sub17_sub5.method802(64, 768, -50, -10, -50, true);
             }
-            if((i ^ 0xffffffff) == -5) {
+            if(i == 4) {
                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_11_, 10);
                 class40_sub5_sub17_sub5 = class40_sub5_sub16.method753(false, 10, 26910);
                 if(class40_sub5_sub17_sub5 == null) {
@@ -1475,7 +1475,7 @@ public class Widget extends SubNode {
 
     public TypeFace method647(byte arg0) {
         Class40_Sub13.aBoolean2177 = false;
-        if((fontId ^ 0xffffffff) == -65536) {
+        if(fontId == 65535) {
             return null;
         }
         TypeFace class40_sub5_sub14_sub1 = ((TypeFace) Class67.aClass9_1582.method231((long) fontId, (byte) 67));

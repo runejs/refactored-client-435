@@ -60,7 +60,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
         if(arg0 != false)
             method778(true, null);
         int i_0_ = (Buffer.anInt1976 + (Player.localPlayer.anInt3098));
-        if((Class40_Sub5_Sub6.anInt2437 - i_0_ ^ 0xffffffff) > 499 || -i_0_ + Class40_Sub5_Sub6.anInt2437 > 500 || Class34.anInt849 + -i < -500 || -i + Class34.anInt849 > 500) {
+        if(Class40_Sub5_Sub6.anInt2437 - i_0_ < -500 || -i_0_ + Class40_Sub5_Sub6.anInt2437 > 500 || Class34.anInt849 + -i < -500 || -i + Class34.anInt849 > 500) {
             Class34.anInt849 = i;
             Class40_Sub5_Sub6.anInt2437 = i_0_;
         }
@@ -85,16 +85,16 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
         int i_2_ = Class40_Sub5_Sub6.anInt2437 >> 7;
         Class65.anInt1537 += Class60.cameraVelocityVertical / 2;
         int i_3_ = 0;
-        if((Class65.anInt1537 ^ 0xffffffff) > -129)
+        if(Class65.anInt1537 < 128)
             Class65.anInt1537 = 128;
         if(Class65.anInt1537 > 383)
             Class65.anInt1537 = 383;
         int i_4_ = Class37.method430((byte) -124, Player.anInt3267, Class40_Sub5_Sub6.anInt2437, Class34.anInt849);
-        if(i_2_ > 3 && (i_1_ ^ 0xffffffff) < -4 && (i_2_ ^ 0xffffffff) > -101 && (i_1_ ^ 0xffffffff) > -101) {
+        if(i_2_ > 3 && i_1_ > 3 && i_2_ < 100 && i_1_ < 100) {
             for(int i_5_ = -4 + i_2_; (i_5_ <= 4 + i_2_); i_5_++) {
                 for(int i_6_ = -4 + i_1_; 4 + i_1_ >= i_6_; i_6_++) {
                     int i_7_ = Player.anInt3267;
-                    if((i_7_ ^ 0xffffffff) > -4 && (0x2 & (OverlayDefinition.tile_flags[1][i_5_][i_6_]) ^ 0xffffffff) == -3)
+                    if(i_7_ < 3 && (0x2 & (OverlayDefinition.tile_flags[1][i_5_][i_6_])) == 2)
                         i_7_++;
                     int i_8_ = i_4_ + -(Class40_Sub6.tile_height[i_7_][i_5_][i_6_]);
                     if((i_8_ > i_3_))
@@ -103,9 +103,9 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             }
         }
         int i_9_ = i_3_ * 192;
-        if((i_9_ ^ 0xffffffff) < -98049)
+        if(i_9_ > 98048)
             i_9_ = 98048;
-        if((i_9_ ^ 0xffffffff) > -32769)
+        if(i_9_ < 32768)
             i_9_ = 32768;
         if((Class40_Sub6.anInt2107 >= i_9_)) {
             if(Class40_Sub6.anInt2107 > i_9_)
@@ -120,10 +120,10 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
         if(arg0 > -79)
             method779(null, false, null, null);
         if(Class27.anInt658 == 0) {
-            if((GameFrame.clickType ^ 0xffffffff) == -2) {
+            if(GameFrame.clickType == 1) {
                 int i = -575 + Class57.anInt1338;
                 int i_10_ = -5 + (RSString.anInt1668 - 4);
-                if((i ^ 0xffffffff) <= -1 && (i_10_ ^ 0xffffffff) <= -1 && i < 146 && i_10_ < 151) {
+                if(i >= 0 && i_10_ >= 0 && i < 146 && i_10_ < 151) {
                     i_10_ -= 75;
                     i -= 73;
                     int i_11_ = 0x7ff & Class43.cameraYawOffset + Class58.cameraHorizontal;
@@ -250,7 +250,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = new ImageRGB(128, 265);
             for(int i = 0; i < 33920; i++)
                 Class39.aClass40_Sub5_Sub14_Sub4_918.pixels[i] = Class8.aClass68_298.anIntArray1621[i];
-            for(int i = 0; (i ^ 0xffffffff) > -33921; i++)
+            for(int i = 0; i < 33920; i++)
                 SceneTile.aClass40_Sub5_Sub14_Sub4_2043.pixels[i] = (GameObject.aClass68_3042.anIntArray1621[i]);
             Class51.anIntArray1198 = new int[256];
             for(int i = 0; i < 64; i++)
@@ -259,12 +259,12 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                 Class51.anIntArray1198[64 + i] = 1024 * i + 16711680;
             for(int i = 0; i < 64; i++)
                 Class51.anIntArray1198[128 + i] = 16776960 + (i * 4);
-            for(int i = 0; (i ^ 0xffffffff) > -65; i++)
+            for(int i = 0; i < 64; i++)
                 Class51.anIntArray1198[i + 192] = 16777215;
             Renderable.anIntArray2865 = new int[256];
-            for(int i = 0; (i ^ 0xffffffff) > -65; i++)
+            for(int i = 0; i < 64; i++)
                 Renderable.anIntArray2865[i] = i * 1024;
-            for(int i = 0; (i ^ 0xffffffff) > -65; i++)
+            for(int i = 0; i < 64; i++)
                 Renderable.anIntArray2865[i + 64] = 4 * i + 65280;
             for(int i = 0; i < 64; i++)
                 Renderable.anIntArray2865[128 + i] = i * 262144 + 65535;
@@ -273,13 +273,13 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             for(int i = 0; i < 64; i++)
                 Renderable.anIntArray2865[i + 192] = 16777215;
             Class40_Sub5_Sub17_Sub6.anIntArray3248 = new int[256];
-            for(int i = 0; (i ^ 0xffffffff) > -65; i++)
+            for(int i = 0; i < 64; i++)
                 Class40_Sub5_Sub17_Sub6.anIntArray3248[i] = i * 4;
-            for(int i = 0; (i ^ 0xffffffff) > -65; i++)
+            for(int i = 0; i < 64; i++)
                 Class40_Sub5_Sub17_Sub6.anIntArray3248[64 + i] = 255 + (i * 262144);
             for(int i = 0; i < 64; i++)
                 Class40_Sub5_Sub17_Sub6.anIntArray3248[128 + i] = i * 1024 + 16711935;
-            for(int i = 0; (i ^ 0xffffffff) > -65; i++)
+            for(int i = 0; i < 64; i++)
                 Class40_Sub5_Sub17_Sub6.anIntArray3248[192 + i] = 16777215;
             Class42.anIntArray1013 = new int[256];
             Class61.anIntArray1445 = new int[32768];

@@ -64,16 +64,16 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
     }
 
     public static void method1002(int arg0) {
-        if((SceneTile.activeInterfaceType ^ 0xffffffff) == -1) {
+        if(SceneTile.activeInterfaceType == 0) {
             if(arg0 > -60)
                 clickType = -90;
             int i = clickType;
-            if((Main.anInt1773 ^ 0xffffffff) == -2 && (Class57.anInt1338 ^ 0xffffffff) <= -517 && (RSString.anInt1668 ^ 0xffffffff) <= -161 && (Class57.anInt1338 ^ 0xffffffff) >= -766 && RSString.anInt1668 <= 205)
+            if(Main.anInt1773 == 1 && Class57.anInt1338 >= 516 && RSString.anInt1668 >= 160 && Class57.anInt1338 <= 765 && RSString.anInt1668 <= 205)
                 i = 0;
             if(!Class4.menuOpen) {
-                if(i == 1 && (ActorDefinition.anInt2394 ^ 0xffffffff) < -1) {
+                if(i == 1 && ActorDefinition.anInt2394 > 0) {
                     int i_0_ = (Class38.anIntArray884[ActorDefinition.anInt2394 - 1]);
-                    if((i_0_ ^ 0xffffffff) == -54 || i_0_ == 25 || i_0_ == 55 || (i_0_ ^ 0xffffffff) == -49 || (i_0_ ^ 0xffffffff) == -25 || (i_0_ ^ 0xffffffff) == -53 || (i_0_ ^ 0xffffffff) == -7 || i_0_ == 31 || (i_0_ ^ 0xffffffff) == -44 || i_0_ == 11 || i_0_ == 19 || i_0_ == 1006) {
+                    if(i_0_ == 53 || i_0_ == 25 || i_0_ == 55 || i_0_ == 48 || i_0_ == 24 || i_0_ == 52 || i_0_ == 6 || i_0_ == 31 || i_0_ == 43 || i_0_ == 11 || i_0_ == 19 || i_0_ == 1006) {
                         int i_1_ = (Class19.anIntArray483[ActorDefinition.anInt2394 - 1]);
                         int i_2_ = (Class59.anIntArray1393[-1 + ActorDefinition.anInt2394]);
                         Widget widget = Widget.forId(i_2_);
@@ -84,61 +84,61 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
                             Class48.modifiedWidgetId = i_2_;
                             ItemDefinition.anInt2798 = RSString.anInt1668;
                             Class58.selectedInventorySlot = i_1_;
-                            if((HuffmanEncoding.openScreenWidgetId ^ 0xffffffff) == (i_2_ >> 16 ^ 0xffffffff))
+                            if(i_2_ >> 16 == HuffmanEncoding.openScreenWidgetId)
                                 SceneTile.activeInterfaceType = 1;
-                            if((i_2_ >> 16 ^ 0xffffffff) == (Class43.openChatboxWidgetId ^ 0xffffffff))
+                            if(Class43.openChatboxWidgetId == i_2_ >> 16)
                                 SceneTile.activeInterfaceType = 3;
                             Buffer.anInt1978 = 0;
                             return;
                         }
                     }
                 }
-                if((i ^ 0xffffffff) == -2 && ((Class68.anInt1630 ^ 0xffffffff) == -2 || Class33.method409((byte) 46, -1 + ActorDefinition.anInt2394)) && (ActorDefinition.anInt2394 ^ 0xffffffff) < -3)
+                if(i == 1 && (Class68.anInt1630 == 1 || Class33.method409((byte) 46, -1 + ActorDefinition.anInt2394)) && ActorDefinition.anInt2394 > 2)
                     i = 2;
                 if(i == 1 && ActorDefinition.anInt2394 > 0)
                     Class27.method358(59, ActorDefinition.anInt2394 + -1);
                 if(i == 2 && ActorDefinition.anInt2394 > 0)
                     Class60.method990(11451);
             } else {
-                if((i ^ 0xffffffff) != -2) {
+                if(i != 1) {
                     int i_3_ = Class13.mouseX;
                     int i_4_ = Landscape.mouseY;
                     if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
                         i_3_ -= 4;
                         i_4_ -= 4;
                     }
-                    if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -2) {
+                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
                         i_4_ -= 205;
                         i_3_ -= 553;
                     }
-                    if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -3) {
+                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
                         i_4_ -= 357;
                         i_3_ -= 17;
                     }
                     if((-10 + Class19.anInt475 > i_3_) || 10 + VertexNormal.anInt1086 + Class19.anInt475 < i_3_ || (i_4_ < Main.anInt1758 + -10) || ((i_4_ > Main.anInt1758 + CollisionMap.anInt168 + 10))) {
-                        if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -2)
+                        if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
                             ISAAC.redrawTabArea = true;
                         Class4.menuOpen = false;
                         if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
                             Class52.redrawChatbox = true;
                     }
                 }
-                if((i ^ 0xffffffff) == -2) {
+                if(i == 1) {
                     int i_5_ = Class19.anInt475;
                     int i_6_ = Main.anInt1758;
                     int i_7_ = VertexNormal.anInt1086;
                     int i_8_ = Class57.anInt1338;
                     int i_9_ = -1;
                     int i_10_ = RSString.anInt1668;
-                    if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -1) {
+                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
                         i_8_ -= 4;
                         i_10_ -= 4;
                     }
-                    if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -2) {
+                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
                         i_8_ -= 553;
                         i_10_ -= 205;
                     }
-                    if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -3) {
+                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
                         i_8_ -= 17;
                         i_10_ -= 357;
                     }
@@ -147,9 +147,9 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
                         if(i_8_ > i_5_ && i_8_ < i_7_ + i_5_ && i_10_ > -13 + i_12_ && i_10_ < 3 + i_12_)
                             i_9_ = i_11_;
                     }
-                    if((i_9_ ^ 0xffffffff) != 0)
+                    if(i_9_ != -1)
                         Class27.method358(109, i_9_);
-                    if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -2)
+                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
                         ISAAC.redrawTabArea = true;
                     Class4.menuOpen = false;
                     if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)

@@ -34,7 +34,7 @@ public class Class61 {
                 aClass1_1428 = null;
             if(Widget.interfaces[arg1] != null) {
                 boolean bool = true;
-                for(int i = 0; ((i ^ 0xffffffff) > ((Widget.interfaces[arg1]).length ^ 0xffffffff)); i++) {
+                for(int i = 0; ((Widget.interfaces[arg1]).length > i); i++) {
                     if(Widget.interfaces[arg1][i] != null) {
                         if((Widget.interfaces[arg1][i].type) != 2)
                             Widget.interfaces[arg1][i] = null;
@@ -117,15 +117,15 @@ public class Class61 {
         int i = -112 / ((50 - arg1) / 53);
         for(int i_0_ = arg0; (i_0_ <= arg0 + arg2); i_0_++) {
             for(int i_1_ = arg4; (arg3 + arg4 >= i_1_); i_1_++) {
-                if(i_1_ >= 0 && (i_1_ ^ 0xffffffff) > -105 && i_0_ >= 0 && (i_0_ ^ 0xffffffff) > -105) {
+                if(i_1_ >= 0 && i_1_ < 104 && i_0_ >= 0 && i_0_ < 104) {
                     Class19.aByteArrayArrayArray492[0][i_1_][i_0_] = (byte) 127;
                     if(arg4 == i_1_ && i_1_ > 0)
                         Class40_Sub6.tile_height[0][i_1_][i_0_] = (Class40_Sub6.tile_height[0][-1 + i_1_][i_0_]);
-                    if(arg4 + arg3 == i_1_ && (i_1_ ^ 0xffffffff) > -104)
+                    if(arg4 + arg3 == i_1_ && i_1_ < 103)
                         Class40_Sub6.tile_height[0][i_1_][i_0_] = (Class40_Sub6.tile_height[0][i_1_ + 1][i_0_]);
-                    if((arg0 ^ 0xffffffff) == (i_0_ ^ 0xffffffff) && i_0_ > 0)
+                    if(i_0_ == arg0 && i_0_ > 0)
                         Class40_Sub6.tile_height[0][i_1_][i_0_] = (Class40_Sub6.tile_height[0][i_1_][i_0_ + -1]);
-                    if(i_0_ == arg0 + arg2 && (i_0_ ^ 0xffffffff) > -104)
+                    if(i_0_ == arg0 + arg2 && i_0_ < 103)
                         Class40_Sub6.tile_height[0][i_1_][i_0_] = (Class40_Sub6.tile_height[0][i_1_][1 + i_0_]);
                 }
             }
@@ -135,7 +135,7 @@ public class Class61 {
     public static void method1000(boolean arg0) {
         if(arg0 == true) {
             for(Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = ((Class40_Sub5_Sub17_Sub6) Class57.aClass45_1332.method902((byte) -90)); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = ((Class40_Sub5_Sub17_Sub6) Class57.aClass45_1332.method909(-4))) {
-                if(((class40_sub5_sub17_sub6.anInt3239 ^ 0xffffffff) == (Player.anInt3267 ^ 0xffffffff)) && !class40_sub5_sub17_sub6.aBoolean3237) {
+                if((Player.anInt3267 == class40_sub5_sub17_sub6.anInt3239) && !class40_sub5_sub17_sub6.aBoolean3237) {
                     if(Node.pulseCycle >= class40_sub5_sub17_sub6.anInt3230) {
                         class40_sub5_sub17_sub6.method834(8076, Class5.anInt199);
                         if(class40_sub5_sub17_sub6.aBoolean3237)

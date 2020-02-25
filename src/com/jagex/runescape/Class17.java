@@ -55,7 +55,7 @@ public class Class17 {
             Class42.anInt1006--;
             HashTable.anInt554++;
         }
-        if((Class8.aByte302 ^ 0xffffffff) != -1) {
+        if(Class8.aByte302 != 0) {
             try {
                 Buffer class40_sub1 = new Buffer(4);
                 class40_sub1.putByte(4);
@@ -91,13 +91,13 @@ public class Class17 {
             else {
                 RSString class1 = Class60.method991(arg0 ^ ~0x6004, arg1).method85(-4305);
                 for(int i = 0; i < Class42.anInt1008; i++) {
-                    if((Class53.aLongArray1267[i] ^ 0xffffffffffffffffL) == (arg1 ^ 0xffffffffffffffffL)) {
+                    if(arg1 == Class53.aLongArray1267[i]) {
                         Class44.method895(114, 0, (Class40_Sub5_Sub17_Sub6.method832(arg0 ^ ~0x604a, (new RSString[]{class1, Class68.aClass1_1628}))), HuffmanEncoding.blank_string);
                         return;
                     }
                 }
                 for(int i = 0; Class40_Sub5_Sub17_Sub3.anInt3060 > i; i++) {
-                    if((arg1 ^ 0xffffffffffffffffL) == (Class59.aLongArray1397[i] ^ 0xffffffffffffffffL)) {
+                    if(Class59.aLongArray1397[i] == arg1) {
                         Class44.method895(112, 0, (Class40_Sub5_Sub17_Sub6.method832(-100, (new RSString[]{Class44.aClass1_1032, class1, (Renderable.aClass1_2864)}))), HuffmanEncoding.blank_string);
                         return;
                     }

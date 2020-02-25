@@ -37,9 +37,9 @@ public class Class24 {
         if(arg1 != false)
             return 68;
         anInt585++;
-        if((arg0 ^ 0xffffffff) == -1)
+        if(arg0 == 0)
             return arg2;
-        if((arg0 ^ 0xffffffff) == -2)
+        if(arg0 == 1)
             return arg3;
         if(arg0 == 2)
             return -arg2 + 7;
@@ -75,13 +75,13 @@ public class Class24 {
             int i = -1;
             for(; ; ) {
                 int i_0_ = class40_sub1.getSmart();
-                if((i_0_ ^ 0xffffffff) == -1)
+                if(i_0_ == 0)
                     break;
                 int i_1_ = 0;
                 i += i_0_;
                 for(; ; ) {
                     int i_2_ = class40_sub1.getSmart();
-                    if((i_2_ ^ 0xffffffff) == -1)
+                    if(i_2_ == 0)
                         break;
                     i_1_ += -1 + i_2_;
                     int i_3_ = i_1_ >> 12;
@@ -94,12 +94,12 @@ public class Class24 {
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                         int i_9_ = (Main.method42(arg2 ^ 0x1, i_8_, gameObjectDefinition.sizeX, i_4_ & 0x7, gameObjectDefinition.sizeY, arg4, 0x7 & i_7_) + arg10);
                         int i_10_ = ((VarbitDefinition.method564(i_7_ & 0x7, gameObjectDefinition.sizeY, i_4_ & 0x7, gameObjectDefinition.sizeX, arg4, i_8_, (byte) -123)) + arg7);
-                        if((i_9_ ^ 0xffffffff) < -1 && (i_10_ ^ 0xffffffff) < -1 && i_9_ < 103 && i_10_ < 103) {
+                        if(i_9_ > 0 && i_10_ > 0 && i_9_ < 103 && i_10_ < 103) {
                             CollisionMap collisionMap = null;
                             int i_11_ = arg3;
                             if(((OverlayDefinition.tile_flags[1][i_9_][i_10_]) & 0x2) == 2)
                                 i_11_--;
-                            if((i_11_ ^ 0xffffffff) <= -1)
+                            if(i_11_ >= 0)
                                 collisionMap = arg8[i_11_];
                             Class40_Sub5_Sub17_Sub1.addObject(i, i_9_, i_10_, arg3, (i_8_ + arg4 & 0x3), i_6_, arg1, collisionMap);
                         }
