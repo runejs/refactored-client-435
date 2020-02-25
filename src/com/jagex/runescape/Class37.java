@@ -3,6 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -97,7 +98,7 @@ public class Class37 {
         Cache.anInt324 = -1;
         Class35.anInt1728 = 0;
         Class49.anInt1151 = -1;
-        Class40_Sub5_Sub4.anInt2366 = 0;
+        VarbitDefinition.anInt2366 = 0;
         anInt868++;
         Class27.anInt658 = 0;
         Class40_Sub5_Sub15.anInt2782 = 0;
@@ -208,12 +209,12 @@ public class Class37 {
                     }
                 }
             }
-            if((Class40_Sub5_Sub4.anInt2366 ^ 0xffffffff) != -1) {
-                i = (2 + Class40_Sub5_Sub4.anInt2366 * 4 + -((Player.localPlayer.anInt3098) / 32));
+            if((VarbitDefinition.anInt2366 ^ 0xffffffff) != -1) {
+                i = (2 + VarbitDefinition.anInt2366 * 4 + -((Player.localPlayer.anInt3098) / 32));
                 i_8_ = 2 + (4 * Class55.anInt1304 + -((Player.localPlayer.anInt3089) / 32));
                 SceneTile.drawOnMinimap(i_8_, i, (Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[0]));
             }
-            Rasterizer.method656(97, 78, 3, 3, 16777215);
+            Rasterizer.drawFilledRectangle(97, 78, 3, 3, 16777215);
             AnimationSequence.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, Class58.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
             if(arg0 == true)
                 ActorDefinition.method574(4);

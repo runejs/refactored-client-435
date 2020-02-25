@@ -70,10 +70,10 @@ public class Class32 {
             if((i_0_ ^ 0xffffffff) > -1)
                 i_0_ = 0;
             int i_3_ = 6116423;
-            Rasterizer.method656(i_0_, i_2_, i, i_1_, i_3_);
-            Rasterizer.method656(i_0_ + 1, i_2_ + 1, arg0 + i, 16, 0);
-            Rasterizer.method665(i_0_ + 1, 18 + i_2_, -2 + i, i_1_ + -19, 0);
-            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method683(class1, 3 + i_0_, 14 + i_2_, i_3_, false);
+            Rasterizer.drawFilledRectangle(i_0_, i_2_, i, i_1_, i_3_);
+            Rasterizer.drawFilledRectangle(i_0_ + 1, i_2_ + 1, arg0 + i, 16, 0);
+            Rasterizer.drawUnfilledRectangle(i_0_ + 1, 18 + i_2_, -2 + i, i_1_ + -19, 0);
+            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawShadowedString(class1, 3 + i_0_, 14 + i_2_, i_3_, false);
             int i_4_ = Class13.mouseX;
             int i_5_ = Landscape.mouseY;
             if((Class40_Sub5_Sub17_Sub1.menuScreenArea ^ 0xffffffff) == -1) {
@@ -99,7 +99,7 @@ public class Class32 {
                 }
                 if((i_0_ < i_4_) && (i_4_ < i_0_ + i) && -13 + i_7_ < i_5_ && 3 + i_7_ > i_5_)
                     i_9_ = 16776960;
-                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method683(class1_8_, 3 + i_0_, i_7_, i_9_, true);
+                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawShadowedString(class1_8_, 3 + i_0_, i_7_, i_9_, true);
             }
         }
 

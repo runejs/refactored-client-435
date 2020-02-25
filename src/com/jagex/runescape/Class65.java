@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 
 import java.util.zip.CRC32;
@@ -38,7 +39,7 @@ public class Class65 {
 
         int i = -125 % ((arg0 - 2) / 56);
         anInt1539++;
-        Class40_Sub5_Sub4.aClass68_2350.method1046((byte) 90);
+        VarbitDefinition.aClass68_2350.method1046((byte) 90);
         Class24.anIntArray577 = R3D.method708(Class24.anIntArray577);
 
     }

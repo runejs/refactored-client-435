@@ -1,11 +1,10 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
-import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class13 {
@@ -134,9 +133,9 @@ public class Class13 {
             Class44.aByteArrayArray1039[Main.anInt1764] = null;
             return is;
         }
-        if((arg1 ^ 0xffffffff) == -30001 && Class40_Sub5_Sub4.anInt2359 > 0) {
-            byte[] is = (RSCanvas.aByteArrayArray47[--Class40_Sub5_Sub4.anInt2359]);
-            RSCanvas.aByteArrayArray47[Class40_Sub5_Sub4.anInt2359] = null;
+        if((arg1 ^ 0xffffffff) == -30001 && VarbitDefinition.anInt2359 > 0) {
+            byte[] is = (RSCanvas.aByteArrayArray47[--VarbitDefinition.anInt2359]);
+            RSCanvas.aByteArrayArray47[VarbitDefinition.anInt2359] = null;
             return is;
         }
         return new byte[arg1];

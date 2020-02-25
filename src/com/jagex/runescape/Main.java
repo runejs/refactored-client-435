@@ -177,13 +177,13 @@ public class Main extends RSApplet {
                             }
                             if(i_2_ == 0) {
                                 if(!widget.filled)
-                                    Rasterizer.method665(i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_20_);
+                                    Rasterizer.drawUnfilledRectangle(i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_20_);
                                 else
-                                    Rasterizer.method656(i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_20_);
+                                    Rasterizer.drawFilledRectangle(i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_20_);
                             } else if(!widget.filled)
-                                Rasterizer.method654(i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_20_, -(0xff & i_2_) + 256);
+                                Rasterizer.drawUnfilledRectangleAlpha(i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_20_, -(0xff & i_2_) + 256);
                             else
-                                Rasterizer.method664(i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_20_, -(0xff & i_2_) + 256);
+                                Rasterizer.drawFilledRectangleAlpha(i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_20_, -(0xff & i_2_) + 256);
                         } else if(widget.type == 4) {
                             TypeFace class40_sub5_sub14_sub1 = widget.method647((byte) 34);
                             if(class40_sub5_sub14_sub1 == null) {
@@ -381,7 +381,7 @@ public class Main extends RSApplet {
                                             int i_48_ = ((i_47_ * ((widget.itemSpritePadsX) + 115)) + i_0_);
                                             int i_49_ = ((i_46_ * ((widget.itemSpritePadsY) + 12)) + i_1_);
                                             if(((widget.xTextAlignment) ^ 0xffffffff) == -1)
-                                                class40_sub5_sub14_sub1.method683(class1, i_48_, i_49_, (widget.textColor), (widget.textShadowed));
+                                                class40_sub5_sub14_sub1.drawShadowedString(class1, i_48_, i_49_, (widget.textColor), (widget.textShadowed));
                                             else if((widget.xTextAlignment) == 1)
                                                 class40_sub5_sub14_sub1.method688(class1, (i_48_ + (widget.originalWidth) / 2), i_49_, (widget.textColor), (widget.textShadowed));
                                             else
@@ -407,7 +407,7 @@ public class Main extends RSApplet {
                                         class1_53_ = class1;
                                         class1 = Class66.blank_string;
                                     }
-                                    int i_54_ = class40_sub5_sub14_sub1.method681(class1_53_);
+                                    int i_54_ = class40_sub5_sub14_sub1.getTextDisplayedWidth(class1_53_);
                                     i_51_ += (class40_sub5_sub14_sub1.characterDefaultHeight) + 1;
                                     if((i_50_ < i_54_))
                                         i_50_ = i_54_;
@@ -422,8 +422,8 @@ public class Main extends RSApplet {
                                     i_56_ = 5 + i_0_;
                                 if(i_50_ + i_56_ > arg6)
                                     i_56_ = -i_50_ + arg6;
-                                Rasterizer.method656(i_56_, i_55_, i_50_, i_51_, 16777120);
-                                Rasterizer.method665(i_56_, i_55_, i_50_, i_51_, 0);
+                                Rasterizer.drawFilledRectangle(i_56_, i_55_, i_50_, i_51_, 16777120);
+                                Rasterizer.drawUnfilledRectangle(i_56_, i_55_, i_50_, i_51_, 0);
                                 class1 = widget.text;
                                 int i_57_ = (2 + (i_55_ + (class40_sub5_sub14_sub1.characterDefaultHeight)));
                                 class1 = (SceneTile.method532((byte) 20, widget, class1));
@@ -437,12 +437,12 @@ public class Main extends RSApplet {
                                         class1_59_ = class1.substring(0, i_58_);
                                         class1 = class1.substring(i_58_ + 2);
                                     }
-                                    class40_sub5_sub14_sub1.method683(class1_59_, i_56_ + 3, i_57_, 0, false);
+                                    class40_sub5_sub14_sub1.drawShadowedString(class1_59_, i_56_ + 3, i_57_, 0, false);
                                     i_57_ += 1 + (class40_sub5_sub14_sub1.characterDefaultHeight);
                                 }
                             }
                             if((widget.type ^ 0xffffffff) == -10)
-                                Rasterizer.method666(i_0_, i_1_, widget.originalWidth + i_0_, widget.originalHeight + i_1_, widget.textColor);
+                                Rasterizer.drawDiagonalLine(i_0_, i_1_, widget.originalWidth + i_0_, widget.originalHeight + i_1_, widget.textColor);
                         }
                     }
                 }
@@ -633,7 +633,7 @@ public class Main extends RSApplet {
         Class42.anInt994 = 0;
         SubNode.anInt2088 = 0;
         Class52.anInt1211 = 0;
-        Class40_Sub5_Sub4.anInt2363 = 0;
+        VarbitDefinition.anInt2363 = 0;
         Class40_Sub13.anInt2184 = 0;
         Class60.anInt1418 = 0;
         OverlayDefinition.anInt2348 = 0;
@@ -657,7 +657,7 @@ public class Main extends RSApplet {
         Class56.anInt1319 = 0;
         OverlayDefinition.anInt2341 = 0;
         OverlayDefinition.anInt2331 = 0;
-        Class40_Sub5_Sub4.anInt2365 = 0;
+        VarbitDefinition.anInt2365 = 0;
         Class35.anInt1723 = 0;
         IdentityKit.anInt2608 = 0;
         Class40_Sub13.anInt2169 = 0;
@@ -704,7 +704,7 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub11.anInt2619 = 0;
         Class30.anInt711 = 0;
         Class37.anInt864 = 0;
-        Class40_Sub5_Sub4.anInt2362 = 0;
+        VarbitDefinition.anInt2362 = 0;
         Class22_Sub1.anInt1862 = 0;
         Class30.anInt707 = 0;
         Class40_Sub5_Sub17_Sub6.anInt3232 = 0;
@@ -789,7 +789,7 @@ public class Main extends RSApplet {
         Actor.anInt3133 = 0;
         IdentityKit.anInt2612 = 0;
         Class30.anInt702 = 0;
-        Class40_Sub5_Sub4.anInt2369 = 0;
+        VarbitDefinition.anInt2369 = 0;
         ISAAC.anInt503 = 0;
         Class34.anInt806 = 0;
         Class58.anInt1369 = 0;
@@ -803,7 +803,7 @@ public class Main extends RSApplet {
         Class35.anInt1724 = 0;
         Class60.anInt1414 = 0;
         Class56.anInt1326 = 0;
-        Class40_Sub5_Sub4.anInt2371 = 0;
+        VarbitDefinition.anInt2371 = 0;
         Class44.anInt1036 = 0;
         Class54.anInt1275 = 0;
         Class44.anInt1044 = 0;
@@ -873,7 +873,7 @@ public class Main extends RSApplet {
         Class24.anInt584 = 0;
         ISAAC.anInt500 = 0;
         Class40_Sub5_Sub17_Sub1.anInt3008 = 0;
-        Class40_Sub5_Sub4.anInt2355 = 0;
+        VarbitDefinition.anInt2355 = 0;
         Class35.anInt1751 = 0;
         Class44.anInt1037 = 0;
         SubNode.anInt2094 = 0;
@@ -913,7 +913,7 @@ public class Main extends RSApplet {
         CacheIndex_Sub1.anInt1805 = 0;
         OverlayDefinition.anInt2347 = 0;
         Class56.anInt1325 = 0;
-        Class40_Sub5_Sub4.anInt2353 = 0;
+        VarbitDefinition.anInt2353 = 0;
         Actor.anInt3085 = 0;
         Class40_Sub5_Sub13.anInt2755 = 0;
         Class40_Sub2.anInt1998 = 0;
@@ -961,7 +961,7 @@ public class Main extends RSApplet {
         Class54.anInt1272 = 0;
         CacheIndex.anInt230 = 0;
         Class68.anInt1620 = 0;
-        Class40_Sub5_Sub4.anInt2360 = 0;
+        VarbitDefinition.anInt2360 = 0;
         Class42.anInt1004 = 0;
         Class35.anInt1742 = 0;
         Class35.anInt1729 = 0;
@@ -1006,7 +1006,7 @@ public class Main extends RSApplet {
         Class8.anInt301 = 0;
         Class57.anInt1342 = -40 + (int) (80.0 * Math.random());
         Class48.anInt1126 = -55 + (int) (Math.random() * 110.0);
-        Class40_Sub5_Sub4.anInt2366 = 0;
+        VarbitDefinition.anInt2366 = 0;
         Class43.cameraYawOffset = (int) (Math.random() * 120.0) + -60;
         Buffer.anInt1985 = -1;
         GameObjectDefinition.anInt2558 = 0;
@@ -1385,7 +1385,7 @@ public class Main extends RSApplet {
         ItemDefinition.method745();
         Class40_Sub5_Sub15.method734(76);
         SpotAnimDefinition.method548(-3254);
-        Class40_Sub5_Sub4.method565(-124);
+        VarbitDefinition.method565(-124);
         Class40_Sub5_Sub11.method632(-1);
         Class35.method423((byte) -81);
         EntryTable.method871();
@@ -1443,13 +1443,13 @@ public class Main extends RSApplet {
                 for(int i = 0; i < 13; i++)
                     Class40_Sub5_Sub6.aClass67Array2436[i] = new Class67((ISAAC.aClass31_521.cacheIndex[i]), 6000, 0);
                 Class30.aClass67_693 = new Class67(ISAAC.aClass31_521.aClass47_728, 6000, 0);
-                Class40_Sub5_Sub4.aClass56_2356 = new Class56(255, SpotAnimDefinition.aClass67_2298, Class30.aClass67_693, 500000);
+                VarbitDefinition.aClass56_2356 = new Class56(255, SpotAnimDefinition.aClass67_2298, Class30.aClass67_693, 500000);
                 ISAAC.aClass31_521.cacheIndex = null;
                 ISAAC.aClass31_521.aClass47_728 = null;
                 ISAAC.aClass31_521.cacheData = null;
             }
         } catch(java.io.IOException ioexception) {
-            Class40_Sub5_Sub4.aClass56_2356 = null;
+            VarbitDefinition.aClass56_2356 = null;
             SpotAnimDefinition.aClass67_2298 = null;
             Class30.aClass67_693 = null;
         }

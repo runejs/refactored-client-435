@@ -1,9 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.def.UnderlayDefinition;
-import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.TypeFace;
@@ -127,13 +124,13 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     public static void method758(CacheIndex arg0, CacheIndex arg1, CacheIndex arg2, byte arg3) {
         do {
             Cache.aCacheIndex_329 = arg2;
-            Class40_Sub5_Sub4.aCacheIndex_2349 = arg0;
+            VarbitDefinition.aCacheIndex_2349 = arg0;
             Class40_Sub5_Sub15.aCacheIndex_2779 = arg1;
             Widget.interfaces = (new Widget
-                    [Class40_Sub5_Sub4.aCacheIndex_2349.method175(-82)][]);
+                    [VarbitDefinition.aCacheIndex_2349.method175(-82)][]);
             anInt2994++;
             Class68.aBooleanArray1629 = (new boolean
-                    [Class40_Sub5_Sub4.aCacheIndex_2349.method175(-116)]);
+                    [VarbitDefinition.aCacheIndex_2349.method175(-116)]);
             if(arg3 == 90)
                 break;
             aClass6_Sub1_3000 = null;
@@ -314,12 +311,12 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             RSCanvas.aClass68_64 = Class40_Sub5_Sub13.method649(96, 479, arg0, -4875);
             Class44.aClass40_Sub5_Sub14_Sub2_1047.drawImage(0, 0);
             RSString.aClass68_1665 = Class40_Sub5_Sub13.method649(156, 172, arg0, -4875);
-            Rasterizer.method663();
+            Rasterizer.resetPixels();
             Class34.mapBack.drawImage(0, 0);
             SubNode.aClass68_2091 = Class40_Sub5_Sub13.method649(261, 190, arg0, -4875);
             FloorDecoration.aClass40_Sub5_Sub14_Sub2_593.drawImage(0, 0);
-            Class40_Sub5_Sub4.aClass68_2350 = Class40_Sub5_Sub13.method649(334, 512, arg0, -4875);
-            Rasterizer.method663();
+            VarbitDefinition.aClass68_2350 = Class40_Sub5_Sub13.method649(334, 512, arg0, -4875);
+            Rasterizer.resetPixels();
             Class66.aClass68_1541 = Class40_Sub5_Sub13.method649(50, 496, arg0, -4875);
             RSCanvas.aClass68_59 = Class40_Sub5_Sub13.method649(37, 269, arg0, -4875);
             Class19.aClass68_482 = Class40_Sub5_Sub13.method649(45, 249, arg0, -4875);

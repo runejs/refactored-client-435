@@ -77,7 +77,7 @@ public class Class55 {
         Class40_Sub5_Sub15 class40_sub5_sub15 = ((Class40_Sub5_Sub15) Class42.aClass9_998.method231((long) arg1, (byte) 101));
         if(class40_sub5_sub15 != null)
             return class40_sub5_sub15;
-        class40_sub5_sub15 = Class35.method421(Class40_Sub5_Sub4.aCacheIndex_2364, (byte) 79, arg1, Class40_Sub11.aCacheIndex_2162, false);
+        class40_sub5_sub15 = Class35.method421(VarbitDefinition.aCacheIndex_2364, (byte) 79, arg1, Class40_Sub11.aCacheIndex_2162, false);
         if(class40_sub5_sub15 != null)
             Class42.aClass9_998.method230(arg0 + -7109, (long) arg1, class40_sub5_sub15);
         if(arg0 != -99)
@@ -212,7 +212,7 @@ public class Class55 {
         Node.aClass1_972 = Class37.aClass1_860;
         Class26.aClass1_619 = Class40_Sub7.aClass1_2128;
         Class27.aClass1_668 = Class40_Sub2.aClass1_1995;
-        ActorDefinition.aClass1_2432 = Class40_Sub5_Sub4.aClass1_2354;
+        ActorDefinition.aClass1_2432 = VarbitDefinition.aClass1_2354;
         Class40_Sub5_Sub11.aClass1_2629 = ISAAC.aClass1_523;
         SceneTile.aClass1_2042 = Class53.aClass1_1263;
         Node.aClass1_974 = Cache.aClass1_325;
@@ -278,7 +278,7 @@ public class Class55 {
         Node.aClass1_941 = Class64.aClass1_1523;
         Class26.aClass1_634 = UnderlayDefinition.aClass1_2564;
         Class53.aClass1_1259 = Class12.aClass1_396;
-        Class40_Sub5_Sub4.aClass1_2351 = Class4.aClass1_181;
+        VarbitDefinition.aClass1_2351 = Class4.aClass1_181;
         Class22_Sub1.aClass1_1858 = Class12.aClass1_382;
         CacheIndex.aClass1_258 = AnimationSequence.aClass1_2475;
         Class35.aClass1_1747 = Class45.aClass1_1079;
@@ -305,7 +305,7 @@ public class Class55 {
         Class48.aClass1_1122 = Cache.aClass1_331;
         Class40_Sub5_Sub17_Sub1.aClass1_3014 = Class52.aClass1_1241;
         Class44.aClass1_1032 = Class45.aClass1_1059;
-        Class40_Sub5_Sub4.aClass1_2357 = Player.aClass1_3275;
+        VarbitDefinition.aClass1_2357 = Player.aClass1_3275;
         Class8.aClass1_294 = Class40_Sub5_Sub17_Sub6.aClass1_3245;
         Node.aClass1_964 = Class64.aClass1_1523;
     }

@@ -2,6 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.TypeFace;
@@ -189,7 +190,7 @@ public class FloorDecoration {
             Buffer.aClass40_Sub5_Sub14_Sub2_1959 = null;
             SubNode.aClass68_2091 = null;
             Class56.aClass40_Sub5_Sub14_Sub2_1315 = null;
-            Class40_Sub5_Sub4.aClass68_2350 = null;
+            VarbitDefinition.aClass68_2350 = null;
             ISAAC.aClass40_Sub5_Sub14_Sub2_524 = null;
             RSCanvas.aClass68_64 = null;
             Class40_Sub7.aClass68_2123 = null;

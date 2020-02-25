@@ -3,6 +3,7 @@ package com.jagex.runescape.media.renderable.actor;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -445,8 +446,8 @@ public abstract class Actor extends Renderable {
                     class40_sub3.method457(-1);
             }
             Buffer.anInt1985 = -1;
-            if(Class40_Sub5_Sub4.anInt2366 != 0) {
-                Class40_Sub5_Sub4.anInt2366 -= i_34_;
+            if(VarbitDefinition.anInt2366 != 0) {
+                VarbitDefinition.anInt2366 -= i_34_;
                 Class55.anInt1304 -= i_35_;
             }
             Class39.aBoolean906 = false;

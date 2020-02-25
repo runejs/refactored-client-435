@@ -84,7 +84,7 @@ public class Class27 {
         Model.aBoolean3207 = true;
         Model.anInt3229 = Class13.mouseX + -4;
         Model.anInt3220 = 0;
-        Rasterizer.method663();
+        Rasterizer.resetPixels();
         Npc.aScene_3301.method97(Class12.cameraX, Class32.cameraZ, Class40_Sub5_Sub6.cameraY, Class26.anInt627, Class68_Sub1.anInt2210, i);
         Npc.aScene_3301.method104();
         Class33.method404((byte) -28);
@@ -95,7 +95,7 @@ public class Class27 {
             ISAAC.aBoolean519 = false;
         if(ISAAC.aBoolean519) {
             Class65.method1018((byte) -125);
-            Rasterizer.method663();
+            Rasterizer.resetPixels();
             Class51.method940(0, Class67.aClass1_1585, false, null);
         }
         Player.method792(110);
@@ -112,19 +112,19 @@ public class Class27 {
         int i = (-32 + arg4) * arg4 / arg2;
         CacheIndex.aClass40_Sub5_Sub14_Sub2Array215[arg0].drawImage(arg3, arg5);
         CacheIndex.aClass40_Sub5_Sub14_Sub2Array215[1].drawImage(arg3, arg5 - (-arg4 + 16));
-        Rasterizer.method656(arg3, arg5 + 16, 16, arg4 + -32, Class55.anInt1299);
+        Rasterizer.drawFilledRectangle(arg3, arg5 + 16, 16, arg4 + -32, Class55.anInt1299);
         if((i ^ 0xffffffff) > -9)
             i = 8;
         int i_9_ = (-32 + arg4 - i) * arg1 / (-arg4 + arg2);
-        Rasterizer.method656(arg3, 16 + arg5 + i_9_, 16, i, Cache.anInt321);
-        Rasterizer.method668(arg3, 16 + arg5 + i_9_, i, Class66.anInt1559);
-        Rasterizer.method668(1 + arg3, i_9_ + arg5 + 16, i, Class66.anInt1559);
-        Rasterizer.method659(arg3, i_9_ + arg5 + 16, 16, Class66.anInt1559);
-        Rasterizer.method659(arg3, 17 + (arg5 + i_9_), 16, Class66.anInt1559);
-        Rasterizer.method668(arg3 + 15, arg5 + 16 + i_9_, i, Class56.anInt1318);
-        Rasterizer.method668(arg3 + 14, i_9_ + 17 + arg5, i - 1, Class56.anInt1318);
-        Rasterizer.method659(arg3, i + (i_9_ + (15 + arg5)), 16, Class56.anInt1318);
-        Rasterizer.method659(arg3 + 1, 14 + (arg5 + i_9_ + i), 15, Class56.anInt1318);
+        Rasterizer.drawFilledRectangle(arg3, 16 + arg5 + i_9_, 16, i, Cache.anInt321);
+        Rasterizer.drawVerticalLine(arg3, 16 + arg5 + i_9_, i, Class66.anInt1559);
+        Rasterizer.drawVerticalLine(1 + arg3, i_9_ + arg5 + 16, i, Class66.anInt1559);
+        Rasterizer.drawHorizontalLine(arg3, i_9_ + arg5 + 16, 16, Class66.anInt1559);
+        Rasterizer.drawHorizontalLine(arg3, 17 + (arg5 + i_9_), 16, Class66.anInt1559);
+        Rasterizer.drawVerticalLine(arg3 + 15, arg5 + 16 + i_9_, i, Class56.anInt1318);
+        Rasterizer.drawVerticalLine(arg3 + 14, i_9_ + 17 + arg5, i - 1, Class56.anInt1318);
+        Rasterizer.drawHorizontalLine(arg3, i + (i_9_ + (15 + arg5)), 16, Class56.anInt1318);
+        Rasterizer.drawHorizontalLine(arg3 + 1, 14 + (arg5 + i_9_ + i), 15, Class56.anInt1318);
     }
 
     public static void method356(int arg0) {
@@ -213,7 +213,7 @@ public class Class27 {
             if(action == 1) {
                 Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
                 if(class40_sub5_sub17_sub4_sub1 != null) {
-                    Class40_Sub5_Sub4.anInt2355++;
+                    VarbitDefinition.anInt2355++;
                     Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), class40_sub5_sub17_sub4_sub1.anIntArray3088[0], (byte) 112, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), class40_sub5_sub17_sub4_sub1.anIntArray3135[0], 2);
                     Class40_Sub11.anInt2163 = Class57.anInt1338;
                     OverlayDefinition.anInt2319 = 0;
@@ -586,7 +586,7 @@ public class Class27 {
                             Class38_Sub1.method448(1, 0, (Player.localPlayer.anIntArray3088[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3088[0]), (byte) 113, 0, false, 0, 1, (Player.localPlayer.anIntArray3135[0]), (class40_sub5_sub17_sub4_sub2.anIntArray3135[0]), 2);
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
                             Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
-                            Class40_Sub5_Sub4.anInt2369++;
+                            VarbitDefinition.anInt2369++;
                             OverlayDefinition.anInt2319 = 0;
                             Class45.anInt1075 = 2;
                             Class32.packetBuffer.putPacket(63);
@@ -1133,7 +1133,7 @@ public class Class27 {
                 else if((arg1 ^ 0xffffffff) == -12)
                     Class33.method411(Node.aClass1_943, Class42.aClass1_1001, Class40_Sub6.aClass1_2111, (byte) 110);
                 else if((arg1 ^ 0xffffffff) == -13)
-                    Class33.method411(Node.aClass1_931, Class40_Sub13.aClass1_2188, Class40_Sub5_Sub4.aClass1_2357, (byte) 115);
+                    Class33.method411(Node.aClass1_931, Class40_Sub13.aClass1_2188, VarbitDefinition.aClass1_2357, (byte) 115);
                 else if((arg1 ^ 0xffffffff) == -14)
                     Class33.method411(Node.aClass1_972, Class40_Sub5_Sub17_Sub3.aClass1_3066, SceneTile.aClass1_2042, (byte) -53);
                 else if(arg1 != 14) {

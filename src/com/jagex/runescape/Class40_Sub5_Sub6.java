@@ -1,8 +1,9 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 import java.io.ByteArrayInputStream;
@@ -169,12 +170,12 @@ public class Class40_Sub5_Sub6 extends SubNode {
     }
 
     public static int method585(int arg0, int arg1) {
-        Class40_Sub5_Sub4 class40_sub5_sub4 = Class34.method417(0, arg0);
+        VarbitDefinition varbitDefinition = Class34.method417(0, arg0);
         if(arg1 != 1369)
             return 27;
-        int i = class40_sub5_sub4.anInt2370;
-        int i_6_ = class40_sub5_sub4.anInt2358;
-        int i_7_ = class40_sub5_sub4.anInt2368;
+        int i = varbitDefinition.mostSignificantBit;
+        int i_6_ = varbitDefinition.index;
+        int i_7_ = varbitDefinition.leastSignificantBit;
         int i_8_ = Class68_Sub1.anIntArray2199[i - i_7_];
         return Class58.varbitmasks[i_6_] >> i_7_ & i_8_;
     }
@@ -242,6 +243,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                         Class19.showFps = true;
                                         Class40_Sub5_Sub15.inputType = 3;
                                     }
+
                                     if(Class66.chatboxInput.equals(Class40_Sub11.cmd_fpsoff))
                                         Class19.showFps = false;
                                     if(Class66.chatboxInput.equals(SpotAnimDefinition.cmd_noclip)) {
@@ -259,7 +261,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                 }
                                 if(!Class66.chatboxInput.startsWith(Class33.cmd_prefix)) {
                                     int i = 0;
-                                    Class40_Sub5_Sub4.anInt2362++;
+                                    VarbitDefinition.anInt2362++;
                                     RSString class1 = Class66.chatboxInput.toLowerCase();
                                     int i_11_ = 0;
                                     if(class1.startsWith((Class40_Sub5_Sub11.aClass1_2620))) {
@@ -435,9 +437,9 @@ public class Class40_Sub5_Sub6 extends SubNode {
             int i_14_ = Main.anInt1758;
             int i_15_ = VertexNormal.anInt1086;
             int i_16_ = 6116423;
-            Rasterizer.method656(i, i_14_, i_15_, i_13_, i_16_);
-            Rasterizer.method656(1 + i, 1 + i_14_, -2 + i_15_, 16, 0);
-            Rasterizer.method665(i + 1, 18 + i_14_, -2 + i_15_, -19 + i_13_, 0);
+            Rasterizer.drawFilledRectangle(i, i_14_, i_15_, i_13_, i_16_);
+            Rasterizer.drawFilledRectangle(1 + i, 1 + i_14_, -2 + i_15_, 16, 0);
+            Rasterizer.drawUnfilledRectangle(i + 1, 18 + i_14_, -2 + i_15_, -19 + i_13_, 0);
             Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawString(Widget.aClass1_2684, i + 3, 14 + i_14_, i_16_);
             int i_17_ = Class13.mouseX;
             int i_18_ = Landscape.mouseY;
@@ -458,7 +460,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                 int i_21_ = 16777215;
                 if((i_17_ > i) && i + i_15_ > i_17_ && (i_18_ > -13 + i_20_) && (i_20_ + 3 > i_18_))
                     i_21_ = 16776960;
-                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method683(Landscape.aClass1Array1184[i_19_], i + 3, i_20_, i_21_, true);
+                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawShadowedString(Landscape.aClass1Array1184[i_19_], i + 3, i_20_, i_21_, true);
             }
         }
     }

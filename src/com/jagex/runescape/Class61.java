@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.util.Signlink;
@@ -28,7 +29,7 @@ public class Class61 {
 
     public static void method995(byte arg0, int arg1) {
         if(arg1 != -1 && Class68.aBooleanArray1629[arg1]) {
-            Class40_Sub5_Sub4.aCacheIndex_2349.method171(1, arg1);
+            VarbitDefinition.aCacheIndex_2349.method171(1, arg1);
             if(arg0 < 31)
                 aClass1_1428 = null;
             if(Widget.interfaces[arg1] != null) {

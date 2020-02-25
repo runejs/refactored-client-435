@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 
 public class Cache {
@@ -62,7 +63,7 @@ public class Cache {
         Class40_Sub11.aCacheIndex_2162 = arg1;
         if(arg0 != false)
             anInt324 = -101;
-        Class40_Sub5_Sub4.aCacheIndex_2364 = arg3;
+        VarbitDefinition.aCacheIndex_2364 = arg3;
         AnimationSequence.aCacheIndex_2484 = arg2;
     }
 

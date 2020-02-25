@@ -313,7 +313,7 @@ public class Class58 {
                                     name = Class22_Sub2.username;
                                 typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(-62, (new RSString[]{name, Class43.aClass1_1027}))), 4, 90, 0);
                                 typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832(71, (new RSString[]{Class66.chatboxInput, Class19.aClass1_478}))), ((typeFace.getStringWidth(Class40_Sub5_Sub17_Sub6.method832(-99, (new RSString[]{name, ISAAC.aClass1_515})))) + 6), 90, 255);
-                                Rasterizer.method659(0, 77, 479, 0);
+                                Rasterizer.drawHorizontalLine(0, 77, 479, 0);
                             }
                         } else {
                             boolean bool = Class40_Sub5_Sub6.drawInterface(0, (Class43.openChatboxWidgetId), 96, (byte) -5, 0, 2, 479);
@@ -345,7 +345,7 @@ public class Class58 {
                     } else
                         Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class35.aClass1_1747, 239, 40, 255);
                     class40_sub5_sub14_sub1.method686((Class40_Sub5_Sub17_Sub6.method832(-122, new RSString[]{Class66.inputInputMessage, Class19.aClass1_478})), 239, 90, 0);
-                    Rasterizer.method659(0, 77, 479, 0);
+                    Rasterizer.drawHorizontalLine(0, 77, 479, 0);
                 }
             } else {
                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Landscape.aClass1_1174, 239, 40, 0);

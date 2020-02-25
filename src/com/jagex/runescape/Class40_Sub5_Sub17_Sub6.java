@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.media.renderable.Model;
@@ -89,8 +90,8 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     public static void method833(int arg0, boolean arg1) {
 
         anInt3241++;
-        if(((Class40_Sub5_Sub4.anInt2366 ^ 0xffffffff) == ((Player.localPlayer.anInt3098) >> 1533110887 ^ 0xffffffff)) && ((Class55.anInt1304 ^ 0xffffffff) == ((Player.localPlayer.anInt3089) >> -425626553 ^ 0xffffffff)))
-            Class40_Sub5_Sub4.anInt2366 = 0;
+        if(((VarbitDefinition.anInt2366 ^ 0xffffffff) == ((Player.localPlayer.anInt3098) >> 1533110887 ^ 0xffffffff)) && ((Class55.anInt1304 ^ 0xffffffff) == ((Player.localPlayer.anInt3089) >> -425626553 ^ 0xffffffff)))
+            VarbitDefinition.anInt2366 = 0;
         int i = Class60.anInt1407;
         if(arg1)
             i = 1;

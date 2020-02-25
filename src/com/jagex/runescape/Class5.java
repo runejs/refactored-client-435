@@ -66,7 +66,7 @@ public class Class5 {
         anInt199 = 0;
         Class68_Sub1.aClass68_2213.method1046((byte) 90);
         Player.anIntArray3284 = R3D.method708(Player.anIntArray3284);
-        Rasterizer.method663();
+        Rasterizer.resetPixels();
         Class40_Sub5_Sub6.drawInterface(0, ActorDefinition.anInt2433, 503, (byte) -5, 0, 0, 765);
         if(UnderlayDefinition.anInt2562 != -1)
             Class40_Sub5_Sub6.drawInterface(0, UnderlayDefinition.anInt2562, 503, (byte) -5, 0, 0, 765);

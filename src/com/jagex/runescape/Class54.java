@@ -3,6 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
 
@@ -194,7 +195,7 @@ public class Class54 implements KeyListener, FocusListener {
             class56 = new Class56(arg0, SpotAnimDefinition.aClass67_2298, Class40_Sub5_Sub6.aClass67Array2436[arg0], 1000000);
         if(arg3 < 116)
             method955(null, (byte) -86);
-        return new CacheIndex_Sub1(class56, Class40_Sub5_Sub4.aClass56_2356, arg0, arg2, arg4, arg1);
+        return new CacheIndex_Sub1(class56, VarbitDefinition.aClass56_2356, arg0, arg2, arg4, arg1);
 
     }
 

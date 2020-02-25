@@ -1,9 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.def.UnderlayDefinition;
-import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -353,7 +350,7 @@ public class Class38_Sub1 extends Class38 {
             Class32.packetBuffer.putShortLE(i_24_ + Class26.anInt635);
             Class32.packetBuffer.putInvertedByte(Class40_Sub5_Sub17_Sub3.aBooleanArray3056[82] ? 1 : 0);
             Class32.packetBuffer.putShortLE(SpotAnimDefinition.anInt2307 + i_25_);
-            Class40_Sub5_Sub4.anInt2366 = Class24.anIntArray581[0];
+            VarbitDefinition.anInt2366 = Class24.anIntArray581[0];
             Class55.anInt1304 = Class10.anIntArray351[0];
             for(int i_26_ = 1; i_12_ > i_26_; i_26_++) {
                 i_10_--;

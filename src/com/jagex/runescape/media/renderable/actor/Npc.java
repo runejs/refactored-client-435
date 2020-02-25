@@ -1,10 +1,7 @@
 package com.jagex.runescape.media.renderable.actor;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
@@ -129,7 +126,7 @@ public class Npc extends Actor {
                     }
                 }
                 if(GameFrame.clickType != 0) {
-                    Class40_Sub5_Sub4.anInt2363++;
+                    VarbitDefinition.anInt2363++;
                     long l = ((GameObjectDefinition.aLong2561 - Class51.aLong1203) / 50L);
                     int i = Class57.anInt1338;
                     int i_10_ = RSString.anInt1668;

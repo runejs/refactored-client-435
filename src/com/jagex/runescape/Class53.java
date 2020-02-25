@@ -1,9 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.IdentityKit;
-import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -346,10 +343,10 @@ public class Class53 {
                 int i = 20;
                 arg1.method686(Class48.aClass1_1122, 180, 74 + -i, 16777215);
                 int i_89_ = -i + 82;
-                Rasterizer.method665(28, i_89_, 304, 34, 9179409);
-                Rasterizer.method665(29, 1 + i_89_, 302, 32, 0);
-                Rasterizer.method656(30, 2 + i_89_, Class67.anInt1607 * 3, 30, 9179409);
-                Rasterizer.method656(3 * Class67.anInt1607 + 30, i_89_ + 2, (-(Class67.anInt1607 * 3) + 300), 30, 0);
+                Rasterizer.drawUnfilledRectangle(28, i_89_, 304, 34, 9179409);
+                Rasterizer.drawUnfilledRectangle(29, 1 + i_89_, 302, 32, 0);
+                Rasterizer.drawFilledRectangle(30, 2 + i_89_, Class67.anInt1607 * 3, 30, 9179409);
+                Rasterizer.drawFilledRectangle(3 * Class67.anInt1607 + 30, i_89_ + 2, (-(Class67.anInt1607 * 3) + 300), 30, 0);
                 arg1.method686(Class22_Sub2.currentLoadingText, 180, -i + 105, 16777215);
             }
             if((Class51.anInt1197 ^ 0xffffffff) == -21) {
@@ -362,9 +359,9 @@ public class Class53 {
                 arg1.method688(Class22_Sub2.aClass1_1881, 180, i, 16776960, true);
                 i += 15;
                 i += 10;
-                arg1.method683((Class40_Sub5_Sub17_Sub6.method832(126, (new RSString[]{Class61.aClass1_1422, Class22_Sub2.username}))), 90, i, 16777215, true);
+                arg1.drawShadowedString((Class40_Sub5_Sub17_Sub6.method832(126, (new RSString[]{Class61.aClass1_1422, Class22_Sub2.username}))), 90, i, 16777215, true);
                 i += 15;
-                arg1.method683((Class40_Sub5_Sub17_Sub6.method832(-121, new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false)})), 92, i, 16777215, true);
+                arg1.drawShadowedString((Class40_Sub5_Sub17_Sub6.method832(-121, new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false)})), 92, i, 16777215, true);
                 i += 15;
             }
             if((Class51.anInt1197 ^ 0xffffffff) == -11) {
@@ -381,12 +378,12 @@ public class Class53 {
                         arg1.method688(Class22_Sub2.aClass1_1881, 180, i, 16776960, true);
                         i += 15;
                         i += 10;
-                        arg1.method683((Class40_Sub5_Sub17_Sub6.method832(-113, (new RSString[]{Class61.aClass1_1422, Class22_Sub2.username, ((Node.pulseCycle % 40 < 20 & Node.anInt947 == 0) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 90, i, 16777215, true);
+                        arg1.drawShadowedString((Class40_Sub5_Sub17_Sub6.method832(-113, (new RSString[]{Class61.aClass1_1422, Class22_Sub2.username, ((Node.pulseCycle % 40 < 20 & Node.anInt947 == 0) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 90, i, 16777215, true);
                         i += 15;
-                        arg1.method683((Class40_Sub5_Sub17_Sub6.method832(arg0 + 18924, (new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false), (((Node.pulseCycle % 40 ^ 0xffffffff) > -21 & (Node.anInt947 ^ 0xffffffff) == -2) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 92, i, 16777215, true);
+                        arg1.drawShadowedString((Class40_Sub5_Sub17_Sub6.method832(arg0 + 18924, (new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false), (((Node.pulseCycle % 40 ^ 0xffffffff) > -21 & (Node.anInt947 ^ 0xffffffff) == -2) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 92, i, 16777215, true);
                         Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
                         i += 15;
-                        arg1.method688(Class40_Sub5_Sub4.aClass1_2351, i_90_, i_91_ + 5, 16777215, true);
+                        arg1.method688(VarbitDefinition.aClass1_2351, i_90_, i_91_ + 5, 16777215, true);
                         i_90_ = 260;
                         Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
                         arg1.method688(Class68.aClass1_1635, i_90_, 5 + i_91_, 16777215, true);

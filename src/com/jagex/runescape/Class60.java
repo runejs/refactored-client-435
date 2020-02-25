@@ -83,7 +83,7 @@ public class Class60 {
         anInt1405++;
         int i = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getStringWidth(Widget.aClass1_2684);
         for(int i_1_ = 0; i_1_ < ActorDefinition.anInt2394; i_1_++) {
-            int i_2_ = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method681(Landscape.aClass1Array1184[i_1_]);
+            int i_2_ = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getTextDisplayedWidth(Landscape.aClass1Array1184[i_1_]);
             if((i < i_2_))
                 i = i_2_;
         }

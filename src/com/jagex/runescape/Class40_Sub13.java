@@ -98,7 +98,7 @@ public class Class40_Sub13 extends Node {
                 return null;
         }
         int[] is = Rasterizer.pixels;
-        int i = Rasterizer.anInt2769;
+        int i = Rasterizer.height;
         int i_1_ = Rasterizer.width;
         int i_2_ = Rasterizer.viewport_left;
         int i_3_ = 16 / ((arg0 - 26) / 57);
@@ -109,9 +109,9 @@ public class Class40_Sub13 extends Node {
         int i_8_ = R3D.anInt2930;
         int i_9_ = R3D.anInt2945;
         ImageRGB class40_sub5_sub14_sub4_10_ = new ImageRGB(32, 32);
-        Rasterizer.method669(class40_sub5_sub14_sub4_10_.pixels, 32, 32);
+        Rasterizer.createRasterizer(class40_sub5_sub14_sub4_10_.pixels, 32, 32);
         Class40_Sub5_Sub17_Sub6.anIntArray3253 = R3D.method708(Class40_Sub5_Sub17_Sub6.anIntArray3253);
-        Rasterizer.method656(0, 0, 32, 32, 0);
+        Rasterizer.drawFilledRectangle(0, 0, 32, 32, 0);
         int i_11_ = class40_sub5_sub16.zoom2d;
         if((arg3 ^ 0xffffffff) == 0)
             i_11_ *= 1.5;
@@ -172,7 +172,7 @@ public class Class40_Sub13 extends Node {
         }
         if(arg3 == 0)
             Buffer.aClass9_1933.method230(-7208, (long) arg2, class40_sub5_sub14_sub4_10_);
-        Rasterizer.method669(is, i_1_, i);
+        Rasterizer.createRasterizer(is, i_1_, i);
         Rasterizer.setCoordinates(i_2_, i_5_, i_6_, i_4_);
         R3D.method708(is_7_);
         R3D.anInt2930 = i_8_;

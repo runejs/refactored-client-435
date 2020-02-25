@@ -125,7 +125,7 @@ public class IncomingPackets {
             }
             if((Class57.incomingPacket ^ 0xffffffff) == -234) {
                 Class57.incomingPacket = -1;
-                Class40_Sub5_Sub4.anInt2366 = 0;
+                VarbitDefinition.anInt2366 = 0;
                 return true;
             }
             if((Class57.incomingPacket ^ 0xffffffff) == -8) {

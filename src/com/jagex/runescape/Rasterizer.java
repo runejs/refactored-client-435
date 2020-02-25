@@ -4,7 +4,7 @@ public class Rasterizer extends SubNode {
     public static int[] pixels;
     public static int viewport_top = 0;
     public static int width;
-    public static int anInt2769;
+    public static int height;
     public static int viewport_bottom;
     public static int viewport_left;
     public static int viewport_right = 0;
@@ -14,12 +14,12 @@ public class Rasterizer extends SubNode {
         viewport_bottom = 0;
     }
 
-    public static void method654(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        method658(arg0, arg1, arg2, arg4, arg5);
-        method658(arg0, arg1 + arg3 - 1, arg2, arg4, arg5);
-        if(arg3 >= 3) {
-            method660(arg0, arg1 + 1, arg3 - 2, arg4, arg5);
-            method660(arg0 + arg2 - 1, arg1 + 1, arg3 - 2, arg4, arg5);
+    public static void drawUnfilledRectangleAlpha(int x, int y, int width, int height, int colour, int alpha) {
+        drawHorizontalLineAlpha(x, y, width, colour, alpha);
+        drawHorizontalLineAlpha(x, y + height - 1, width, colour, alpha);
+        if(height >= 3) {
+            drawVerticalLineAlpha(x, y + 1, height - 2, colour, alpha);
+            drawVerticalLineAlpha(x + width - 1, y + 1, height - 2, colour, alpha);
         }
     }
 
@@ -30,33 +30,33 @@ public class Rasterizer extends SubNode {
             arg1 = 0;
         if(width > width)
             width = width;
-        if(height > anInt2769)
-            height = anInt2769;
+        if(height > Rasterizer.height)
+            height = Rasterizer.height;
         viewport_left = arg0;
         viewport_top = arg1;
         viewport_right = width;
         viewport_bottom = height;
     }
 
-    public static void method656(int arg0, int arg1, int arg2, int arg3, int arg4) {
-        if(arg0 < viewport_left) {
-            arg2 -= viewport_left - arg0;
-            arg0 = viewport_left;
+    public static void drawFilledRectangle(int x, int y, int width, int height, int colour) {
+        if(x < viewport_left) {
+            width -= viewport_left - x;
+            x = viewport_left;
         }
-        if(arg1 < viewport_top) {
-            arg3 -= viewport_top - arg1;
-            arg1 = viewport_top;
+        if(y < viewport_top) {
+            height -= viewport_top - y;
+            y = viewport_top;
         }
-        if(arg0 + arg2 > viewport_right)
-            arg2 = viewport_right - arg0;
-        if(arg1 + arg3 > viewport_bottom)
-            arg3 = viewport_bottom - arg1;
-        int i = width - arg2;
-        int i_0_ = arg0 + arg1 * width;
-        for(int i_1_ = -arg3; i_1_ < 0; i_1_++) {
-            for(int i_2_ = -arg2; i_2_ < 0; i_2_++)
-                pixels[i_0_++] = arg4;
-            i_0_ += i;
+        if(x + width > viewport_right)
+            width = viewport_right - x;
+        if(y + height > viewport_bottom)
+            height = viewport_bottom - y;
+        int pixelOffset = Rasterizer.width - width;
+        int pixel = x + y * Rasterizer.width;
+        for(int heightCounter = -height; heightCounter < 0; heightCounter++) {
+            for(int widthCounter = -width; widthCounter < 0; widthCounter++)
+                pixels[pixel++] = colour;
+            pixel += pixelOffset;
         }
     }
 
@@ -67,64 +67,67 @@ public class Rasterizer extends SubNode {
         viewport_bottom = arg0[3];
     }
 
-    public static void method658(int arg0, int arg1, int arg2, int arg3, int arg4) {
-        if(arg1 >= viewport_top && arg1 < viewport_bottom) {
-            if(arg0 < viewport_left) {
-                arg2 -= viewport_left - arg0;
-                arg0 = viewport_left;
-            }
-            if(arg0 + arg2 > viewport_right)
-                arg2 = viewport_right - arg0;
-            int i = 256 - arg4;
-            int i_3_ = (arg3 >> 16 & 0xff) * arg4;
-            int i_4_ = (arg3 >> 8 & 0xff) * arg4;
-            int i_5_ = (arg3 & 0xff) * arg4;
-            int i_6_ = arg0 + arg1 * width;
-            for(int i_7_ = 0; i_7_ < arg2; i_7_++) {
-                int i_8_ = (pixels[i_6_] >> 16 & 0xff) * i;
-                int i_9_ = (pixels[i_6_] >> 8 & 0xff) * i;
-                int i_10_ = (pixels[i_6_] & 0xff) * i;
-                int i_11_ = ((i_3_ + i_8_ >> 8 << 16) + (i_4_ + i_9_ >> 8 << 8) + (i_5_ + i_10_ >> 8));
-                pixels[i_6_++] = i_11_;
-            }
+    public static void drawHorizontalLineAlpha(int x, int y, int length, int arg3, int alpha) {
+        if(y < viewport_top || y >= viewport_bottom) {
+            return;
+        }
+        if(x < viewport_left) {
+            length -= viewport_left - x;
+            x = viewport_left;
+        }
+        if(x + length > viewport_right)
+            length = viewport_right - x;
+        int a = 256 - alpha;
+        int r = (arg3 >> 16 & 0xff) * alpha;
+        int g = (arg3 >> 8 & 0xff) * alpha;
+        int b = (arg3 & 0xff) * alpha;
+        int pixelOffset = x + y * width;
+        for(int lengthCounter = 0; lengthCounter < length; lengthCounter++) {
+            int red = (pixels[pixelOffset] >> 16 & 0xff) * a;
+            int green = (pixels[pixelOffset] >> 8 & 0xff) * a;
+            int blue = (pixels[pixelOffset] & 0xff) * a;
+            int rgba = ((r + red >> 8 << 16) + (g + green >> 8 << 8) + (b + blue >> 8));
+            pixels[pixelOffset++] = rgba;
         }
     }
 
-    public static void method659(int arg0, int arg1, int arg2, int arg3) {
-        if(arg1 >= viewport_top && arg1 < viewport_bottom) {
-            if(arg0 < viewport_left) {
-                arg2 -= viewport_left - arg0;
-                arg0 = viewport_left;
-            }
-            if(arg0 + arg2 > viewport_right)
-                arg2 = viewport_right - arg0;
-            int i = arg0 + arg1 * width;
-            for(int i_12_ = 0; i_12_ < arg2; i_12_++)
-                pixels[i + i_12_] = arg3;
+    public static void drawHorizontalLine(int x, int y, int length, int colour) {
+        if(y < viewport_top || y >= viewport_bottom) {
+            return;
         }
+        if(x < viewport_left) {
+            length -= viewport_left - x;
+            x = viewport_left;
+        }
+        if(x + length > viewport_right)
+            length = viewport_right - x;
+        int pixelOffset = x + y * width;
+        for(int pixel = 0; pixel < length; pixel++)
+            pixels[pixelOffset + pixel] = colour;
     }
 
-    public static void method660(int arg0, int arg1, int arg2, int arg3, int arg4) {
-        if(arg0 >= viewport_left && arg0 < viewport_right) {
-            if(arg1 < viewport_top) {
-                arg2 -= viewport_top - arg1;
-                arg1 = viewport_top;
-            }
-            if(arg1 + arg2 > viewport_bottom)
-                arg2 = viewport_bottom - arg1;
-            int i = 256 - arg4;
-            int i_13_ = (arg3 >> 16 & 0xff) * arg4;
-            int i_14_ = (arg3 >> 8 & 0xff) * arg4;
-            int i_15_ = (arg3 & 0xff) * arg4;
-            int i_16_ = arg0 + arg1 * width;
-            for(int i_17_ = 0; i_17_ < arg2; i_17_++) {
-                int i_18_ = (pixels[i_16_] >> 16 & 0xff) * i;
-                int i_19_ = (pixels[i_16_] >> 8 & 0xff) * i;
-                int i_20_ = (pixels[i_16_] & 0xff) * i;
-                int i_21_ = ((i_13_ + i_18_ >> 8 << 16) + (i_14_ + i_19_ >> 8 << 8) + (i_15_ + i_20_ >> 8));
-                pixels[i_16_] = i_21_;
-                i_16_ += width;
-            }
+    public static void drawVerticalLineAlpha(int x, int y, int length, int colour, int alpha) {
+        if(x < viewport_left || x >= viewport_right) {
+            return;
+        }
+        if(y < viewport_top) {
+            length -= viewport_top - y;
+            y = viewport_top;
+        }
+        if(y + length > viewport_bottom)
+            length = viewport_bottom - y;
+        int a = 256 - alpha;
+        int r = (colour >> 16 & 0xff) * alpha;
+        int g = (colour >> 8 & 0xff) * alpha;
+        int b = (colour & 0xff) * alpha;
+        int pixelOffset = x + y * width;
+        for(int lengthCounter = 0; lengthCounter < length; lengthCounter++) {
+            int red = (pixels[pixelOffset] >> 16 & 0xff) * a;
+            int green = (pixels[pixelOffset] >> 8 & 0xff) * a;
+            int blue = (pixels[pixelOffset] & 0xff) * a;
+            int rgba = ((r + red >> 8 << 16) + (g + green >> 8 << 8) + (b + blue >> 8));
+            pixels[pixelOffset] = rgba;
+            pixelOffset += width;
         }
     }
 
@@ -139,120 +142,108 @@ public class Rasterizer extends SubNode {
         viewport_left = 0;
         viewport_top = 0;
         viewport_right = width;
-        viewport_bottom = anInt2769;
+        viewport_bottom = height;
     }
 
-    public static void method663() {
-        int i = 0;
-        int i_22_ = width * anInt2769 - 7;
-        while(i < i_22_) {
-            pixels[i++] = 0;
-            pixels[i++] = 0;
-            pixels[i++] = 0;
-            pixels[i++] = 0;
-            pixels[i++] = 0;
-            pixels[i++] = 0;
-            pixels[i++] = 0;
-            pixels[i++] = 0;
-        }
-        i_22_ += 7;
-        while(i < i_22_)
-            pixels[i++] = 0;
+    public static void resetPixels() {
+        int pixelCount = width * height;
+        for (int pixel = 0; pixel < pixelCount; pixel++)
+            pixels[pixel] = 0;
     }
 
-    public static void method664(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        if(arg0 < viewport_left) {
-            arg2 -= viewport_left - arg0;
-            arg0 = viewport_left;
+    public static void drawFilledRectangleAlpha(int x, int y, int width, int height, int colour, int alpha) {
+        if(x < viewport_left) {
+            width -= viewport_left - x;
+            x = viewport_left;
         }
-        if(arg1 < viewport_top) {
-            arg3 -= viewport_top - arg1;
-            arg1 = viewport_top;
+        if(y < viewport_top) {
+            height -= viewport_top - y;
+            y = viewport_top;
         }
-        if(arg0 + arg2 > viewport_right)
-            arg2 = viewport_right - arg0;
-        if(arg1 + arg3 > viewport_bottom)
-            arg3 = viewport_bottom - arg1;
-        int i = 256 - arg5;
-        int i_23_ = (arg4 >> 16 & 0xff) * arg5;
-        int i_24_ = (arg4 >> 8 & 0xff) * arg5;
-        int i_25_ = (arg4 & 0xff) * arg5;
-        int i_26_ = width - arg2;
-        int i_27_ = arg0 + arg1 * width;
-        for(int i_28_ = 0; i_28_ < arg3; i_28_++) {
-            for(int i_29_ = -arg2; i_29_ < 0; i_29_++) {
-                int i_30_ = (pixels[i_27_] >> 16 & 0xff) * i;
-                int i_31_ = (pixels[i_27_] >> 8 & 0xff) * i;
-                int i_32_ = (pixels[i_27_] & 0xff) * i;
-                int i_33_ = ((i_23_ + i_30_ >> 8 << 16) + (i_24_ + i_31_ >> 8 << 8) + (i_25_ + i_32_ >> 8));
-                pixels[i_27_++] = i_33_;
+        if(x + width > viewport_right)
+            width = viewport_right - x;
+        if(y + height > viewport_bottom)
+            height = viewport_bottom - y;
+        int a = 256 - alpha;
+        int r = (colour >> 16 & 0xff) * alpha;
+        int g = (colour >> 8 & 0xff) * alpha;
+        int b = (colour & 0xff) * alpha;
+        int widthOffset = Rasterizer.width - width;
+        int pixel = x + y * Rasterizer.width;
+        for(int heightCounter = 0; heightCounter < height; heightCounter++) {
+            for(int widthCounter = -width; widthCounter < 0; widthCounter++) {
+                int red = (pixels[pixel] >> 16 & 0xff) * a;
+                int green = (pixels[pixel] >> 8 & 0xff) * a;
+                int blue = (pixels[pixel] & 0xff) * a;
+                int rgba = ((r + red >> 8 << 16) + (g + green >> 8 << 8) + (b + blue >> 8));
+                pixels[pixel++] = rgba;
             }
-            i_27_ += i_26_;
+            pixel += widthOffset;
         }
     }
 
-    public static void method665(int arg0, int arg1, int arg2, int arg3, int arg4) {
-        method659(arg0, arg1, arg2, arg4);
-        method659(arg0, arg1 + arg3 - 1, arg2, arg4);
-        method668(arg0, arg1, arg3, arg4);
-        method668(arg0 + arg2 - 1, arg1, arg3, arg4);
+    public static void drawUnfilledRectangle(int x, int y, int width, int height, int colour) {
+        drawHorizontalLine(x, y, width, colour);
+        drawHorizontalLine(x, y + height - 1, width, colour);
+        drawVerticalLine(x, y, height, colour);
+        drawVerticalLine(x + width - 1, y, height, colour);
     }
 
-    public static void method666(int arg0, int arg1, int arg2, int arg3, int arg4) {
-        arg2 -= arg0;
-        arg3 -= arg1;
-        if(arg3 == 0) {
-            if(arg2 >= 0)
-                method659(arg0, arg1, arg2 + 1, arg4);
+    public static void drawDiagonalLine(int x, int y, int destX, int destY, int colour) {
+        destX -= x;
+        destY -= y;
+        if(destY == 0) {
+            if(destX >= 0)
+                drawHorizontalLine(x, y, destX + 1, colour);
             else
-                method659(arg0 + arg2, arg1, -arg2 + 1, arg4);
-        } else if(arg2 == 0) {
-            if(arg3 >= 0)
-                method668(arg0, arg1, arg3 + 1, arg4);
+                drawHorizontalLine(x + destX, y, -destX + 1, colour);
+        } else if(destX == 0) {
+            if(destY >= 0)
+                drawVerticalLine(x, y, destY + 1, colour);
             else
-                method668(arg0, arg1 + arg3, -arg3 + 1, arg4);
+                drawVerticalLine(x, y + destY, -destY + 1, colour);
         } else {
-            if(arg2 + arg3 < 0) {
-                arg0 += arg2;
-                arg2 = -arg2;
-                arg1 += arg3;
-                arg3 = -arg3;
+            if(destX + destY < 0) {
+                x += destX;
+                destX = -destX;
+                y += destY;
+                destY = -destY;
             }
-            if(arg2 > arg3) {
-                arg1 <<= 16;
-                arg1 += 32768;
-                arg3 <<= 16;
-                int i = (int) Math.floor((double) arg3 / (double) arg2 + 0.5);
-                arg2 += arg0;
-                if(arg0 < viewport_left) {
-                    arg1 += i * (viewport_left - arg0);
-                    arg0 = viewport_left;
+            if(destX > destY) {
+                y <<= 16;
+                y += 32768;
+                destY <<= 16;
+                int i = (int) Math.floor((double) destY / (double) destX + 0.5);
+                destX += x;
+                if(x < viewport_left) {
+                    y += i * (viewport_left - x);
+                    x = viewport_left;
                 }
-                if(arg2 >= viewport_right)
-                    arg2 = viewport_right - 1;
-                for(/**/; arg0 <= arg2; arg0++) {
-                    int i_34_ = arg1 >> 16;
+                if(destX >= viewport_right)
+                    destX = viewport_right - 1;
+                for(/**/; x <= destX; x++) {
+                    int i_34_ = y >> 16;
                     if(i_34_ >= viewport_top && i_34_ < viewport_bottom)
-                        pixels[arg0 + i_34_ * width] = arg4;
-                    arg1 += i;
+                        pixels[x + i_34_ * width] = colour;
+                    y += i;
                 }
             } else {
-                arg0 <<= 16;
-                arg0 += 32768;
-                arg2 <<= 16;
-                int i = (int) Math.floor((double) arg2 / (double) arg3 + 0.5);
-                arg3 += arg1;
-                if(arg1 < viewport_top) {
-                    arg0 += i * (viewport_top - arg1);
-                    arg1 = viewport_top;
+                x <<= 16;
+                x += 32768;
+                destX <<= 16;
+                int i = (int) Math.floor((double) destX / (double) destY + 0.5);
+                destY += y;
+                if(y < viewport_top) {
+                    x += i * (viewport_top - y);
+                    y = viewport_top;
                 }
-                if(arg3 >= viewport_bottom)
-                    arg3 = viewport_bottom - 1;
-                for(/**/; arg1 <= arg3; arg1++) {
-                    int i_35_ = arg0 >> 16;
+                if(destY >= viewport_bottom)
+                    destY = viewport_bottom - 1;
+                for(/**/; y <= destY; y++) {
+                    int i_35_ = x >> 16;
                     if(i_35_ >= viewport_left && i_35_ < viewport_right)
-                        pixels[i_35_ + arg1 * width] = arg4;
-                    arg0 += i;
+                        pixels[i_35_ + y * width] = colour;
+                    x += i;
                 }
             }
         }
@@ -262,24 +253,25 @@ public class Rasterizer extends SubNode {
         pixels = null;
     }
 
-    public static void method668(int arg0, int arg1, int arg2, int arg3) {
-        if(arg0 >= viewport_left && arg0 < viewport_right) {
-            if(arg1 < viewport_top) {
-                arg2 -= viewport_top - arg1;
-                arg1 = viewport_top;
-            }
-            if(arg1 + arg2 > viewport_bottom)
-                arg2 = viewport_bottom - arg1;
-            int i = arg0 + arg1 * width;
-            for(int i_36_ = 0; i_36_ < arg2; i_36_++)
-                pixels[i + i_36_ * width] = arg3;
+    public static void drawVerticalLine(int x, int y, int length, int colour) {
+        if(x < viewport_left || x >= viewport_right) {
+            return;
         }
+        if(y < viewport_top) {
+            length -= viewport_top - y;
+            y = viewport_top;
+        }
+        if(y + length > viewport_bottom)
+            length = viewport_bottom - y;
+        int pixelOffset = x + y * width;
+        for(int i_36_ = 0; i_36_ < length; i_36_++)
+            pixels[pixelOffset + i_36_ * width] = colour;
     }
 
-    public static void method669(int[] arg0, int arg1, int arg2) {
-        pixels = arg0;
-        width = arg1;
-        anInt2769 = arg2;
-        setCoordinates(0, 0, arg2, arg1);
+    public static void createRasterizer(int[] pixels, int width, int height) {
+        Rasterizer.pixels = pixels;
+        Rasterizer.width = width;
+        Rasterizer.height = height;
+        setCoordinates(0, 0, height, width);
     }
 }

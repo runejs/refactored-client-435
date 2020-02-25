@@ -2,6 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -44,10 +45,10 @@ public class Class40_Sub2 extends Node {
     public static void method522(int arg0, int arg1, byte arg2) {
 
         anInt2006++;
-        Class40_Sub5_Sub4 class40_sub5_sub4 = Class34.method417(0, arg1);
-        int i = class40_sub5_sub4.anInt2368;
-        int i_0_ = class40_sub5_sub4.anInt2358;
-        int i_1_ = class40_sub5_sub4.anInt2370;
+        VarbitDefinition varbitDefinition = Class34.method417(0, arg1);
+        int i = varbitDefinition.leastSignificantBit;
+        int i_0_ = varbitDefinition.index;
+        int i_1_ = varbitDefinition.mostSignificantBit;
         int i_2_ = -115 % ((arg2 - 46) / 57);
         int i_3_ = Class68_Sub1.anIntArray2199[i_1_ + -i];
         if((arg0 ^ 0xffffffff) > -1 || (i_3_ < arg0))

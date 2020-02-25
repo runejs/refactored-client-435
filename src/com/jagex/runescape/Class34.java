@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -120,20 +121,20 @@ public class Class34 {
 
     }
 
-    public static Class40_Sub5_Sub4 method417(int arg0, int arg1) {
+    public static VarbitDefinition method417(int arg0, int arg1) {
 
         anInt800++;
         if(arg0 != 0)
             return null;
-        Class40_Sub5_Sub4 class40_sub5_sub4 = ((Class40_Sub5_Sub4) Class57.aClass9_1331.method231((long) arg1, (byte) 111));
-        if(class40_sub5_sub4 != null)
-            return class40_sub5_sub4;
+        VarbitDefinition varbitDefinition = ((VarbitDefinition) Class57.aClass9_1331.method231((long) arg1, (byte) 111));
+        if(varbitDefinition != null)
+            return varbitDefinition;
         byte[] is = RSCanvas.aCacheIndex_61.getFile(arg1, 14);
-        class40_sub5_sub4 = new Class40_Sub5_Sub4();
+        varbitDefinition = new VarbitDefinition();
         if(is != null)
-            class40_sub5_sub4.method562(0, new Buffer(is));
-        Class57.aClass9_1331.method230(-7208, (long) arg1, class40_sub5_sub4);
-        return class40_sub5_sub4;
+            varbitDefinition.method562(0, new Buffer(is));
+        Class57.aClass9_1331.method230(-7208, (long) arg1, varbitDefinition);
+        return varbitDefinition;
 
     }
 

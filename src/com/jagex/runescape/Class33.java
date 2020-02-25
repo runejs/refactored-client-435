@@ -1,9 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -120,8 +117,8 @@ public class Class33 {
                             int i_1_ = (30 * actor.anInt3130 / actor.anInt3101);
                             if(i_1_ > 30)
                                 i_1_ = 30;
-                            Rasterizer.method656(-15 + (ISAAC.anInt522), (Class44.anInt1048 + -3), i_1_, 5, 65280);
-                            Rasterizer.method656(-15 + ISAAC.anInt522 + i_1_, Class44.anInt1048 + -3, 30 + -i_1_, 5, 16711680);
+                            Rasterizer.drawFilledRectangle(-15 + (ISAAC.anInt522), (Class44.anInt1048 + -3), i_1_, 5, 65280);
+                            Rasterizer.drawFilledRectangle(-15 + ISAAC.anInt522 + i_1_, Class44.anInt1048 + -3, 30 + -i_1_, 5, 16711680);
                         }
                     }
                     for(int i_2_ = 0; (i_2_ ^ 0xffffffff) > -5; i_2_++) {
@@ -213,16 +210,16 @@ public class Class33 {
                         Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(class1, ISAAC.anInt522, Class44.anInt1048, i_8_);
                     }
                     if(Class30.anIntArray695[i] == 1) {
-                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method673(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, Class40_Sub5_Sub11.anInt2628);
-                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method673(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628);
+                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, Class40_Sub5_Sub11.anInt2628);
+                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628);
                     }
                     if((Class30.anIntArray695[i] ^ 0xffffffff) == -3) {
-                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method675(class1, ISAAC.anInt522, 1 + Class44.anInt1048, 0, Class40_Sub5_Sub11.anInt2628);
-                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method675(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628);
+                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawCenteredStringWaveXY(class1, ISAAC.anInt522, 1 + Class44.anInt1048, 0, Class40_Sub5_Sub11.anInt2628);
+                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawCenteredStringWaveXY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628);
                     }
                     if((Class30.anIntArray695[i] ^ 0xffffffff) == -4) {
-                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method678(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, Class40_Sub5_Sub11.anInt2628, -Class30.anIntArray684[i] + 150);
-                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method678(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628, -Class30.anIntArray684[i] + 150);
+                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, Class40_Sub5_Sub11.anInt2628, -Class30.anIntArray684[i] + 150);
+                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628, -Class30.anIntArray684[i] + 150);
                     }
                     if(Class30.anIntArray695[i] == 4) {
                         int i_12_ = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getStringWidth(class1);
@@ -394,7 +391,7 @@ public class Class33 {
                         if(CacheIndex_Sub1.anInt1806 < 0)
                             RSString.method56(2037, Main.aBoolean1790, is, OverlayDefinition.anInt2342);
                         else
-                            Class40_Sub5_Sub4.method566((OverlayDefinition.anInt2342), Main.aBoolean1790, CacheIndex_Sub1.anInt1806, is, -27520);
+                            VarbitDefinition.method566((OverlayDefinition.anInt2342), Main.aBoolean1790, CacheIndex_Sub1.anInt1806, is, -27520);
                     } else
                         Class42.method886(0, OverlayDefinition.anInt2342, Main.aBoolean1790, is, CacheIndex.anInt255);
                     Class26.aBoolean618 = false;

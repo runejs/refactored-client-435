@@ -34,7 +34,7 @@ public class ActorDefinition extends SubNode {
     public RSString[] options = new RSString[5];
     public int headIcon = -1;
     public int stanceAnimation = -1;
-    public int settingId = -1;
+    public int varpIndex = -1;
     public int ambient = 0;
     public int rotateRightAnimation = -1;
     public int degreesToTurn = 32;
@@ -303,8 +303,8 @@ public class ActorDefinition extends SubNode {
         int i = arg0;
         if(varBitId != -1) {
             i = Class40_Sub5_Sub6.method585(varBitId, 1369);
-        } else if((settingId ^ 0xffffffff) != 0) {
-            i = Class58.varbitmasks[settingId];
+        } else if((varpIndex ^ 0xffffffff) != 0) {
+            i = Class58.varbitmasks[varpIndex];
         }
         return i >= 0 && childrenIds.length > i && (childrenIds[i] ^ 0xffffffff) != 0;
     }
@@ -375,9 +375,9 @@ public class ActorDefinition extends SubNode {
             if(varBitId == 65535) {
                 varBitId = -1;
             }
-            settingId = (buffer.getUnsignedShortBE());
-            if(settingId == 65535) {
-                settingId = -1;
+            varpIndex = (buffer.getUnsignedShortBE());
+            if(varpIndex == 65535) {
+                varpIndex = -1;
             }
             int childrenCount = (buffer.getUnsignedByte());
             childrenIds = new int[childrenCount + 1];
@@ -447,8 +447,8 @@ public class ActorDefinition extends SubNode {
         int childId = arg0;
         if(varBitId != -1) {
             childId = Class40_Sub5_Sub6.method585(varBitId, 1369);
-        } else if(settingId != -1) {
-            childId = Class58.varbitmasks[settingId];
+        } else if(varpIndex != -1) {
+            childId = Class58.varbitmasks[varpIndex];
         }
         if(childId < 0 || childId >= childrenIds.length || childrenIds[childId] == -1) {
             return null;
