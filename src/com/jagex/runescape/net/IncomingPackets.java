@@ -25,6 +25,8 @@ public class IncomingPackets {
             SHOW_FULLSCREEN_WIDGET = 195,
             CLOSE_ALL_WIDGETS = 180,
 
+            UPDATE_CARRY_WEIGHT = 171,
+            UPDATE_RUN_ENERGY = 18,
             UPDATE_SKILL = 34,
 
             UPDATE_REFERENCE_POSITION = 254,
@@ -504,7 +506,7 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 18) {
+            if(Class57.incomingPacket == UPDATE_RUN_ENERGY) {
                 if(Class5.currentTabId == 12)
                     ISAAC.redrawTabArea = true;
                 Class40_Sub11.anInt2158 = Cache.outgoingbuffer.getUnsignedByte();
@@ -802,7 +804,7 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 171) {
+            if(Class57.incomingPacket == UPDATE_CARRY_WEIGHT) { // update carry weight
                 if(Class5.currentTabId == 12)
                     ISAAC.redrawTabArea = true;
                 Class52.anInt1222 = Cache.outgoingbuffer.getShortBE();
