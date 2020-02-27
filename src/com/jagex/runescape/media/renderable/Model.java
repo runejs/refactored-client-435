@@ -715,14 +715,15 @@ public class Model extends Renderable {
             if(ModelLoader.models == null) {
                 new ModelLoader();
             }
+
+            byte[] is = arg0.getFile(arg2, arg1);
+            if(is == null)
+                return null;
             for(int modelStored : ModelLoader.models) {
                 if(modelStored == arg1) {
                     return new Model(ModelLoader.loadNewModel(modelStored));
                 }
             }
-            byte[] is = arg0.getFile(arg2, arg1);
-            if(is == null)
-                return null;
             return new Model(is);
         } catch(Exception e) {
             e.printStackTrace();

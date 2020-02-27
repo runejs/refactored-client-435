@@ -191,7 +191,7 @@ public class HuffmanEncoding {
                             }
                         }
                     }
-                    OverlayDefinition.method558(arg3, Class40_Sub5_Sub15.aClass1_2774, arg2, -501, arg1, 1001, (Class40_Sub5_Sub17_Sub6.method832(-116, new RSString[]{KeyFocusListener.aClass1_1283, class1})));
+                    OverlayDefinition.method558(arg3, Class40_Sub5_Sub15.prefix_examine, arg2, -501, arg1, 1001, (Class40_Sub5_Sub17_Sub6.method832(-116, new RSString[]{KeyFocusListener.aClass1_1283, class1})));
                 }
             }
         }

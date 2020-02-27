@@ -284,7 +284,6 @@ public class Player extends Actor {
             else {
                 int lowerByte = buffer.getUnsignedByte();
                 appearance[index] = (upperByte << 8) + lowerByte;
-                System.out.println(index + " " + (upperByte << 8) + lowerByte);
                 if(index == 0 && appearance[0] == 65535) {
                     npcDefId = buffer.getUnsignedShortBE();
                     break;

@@ -183,15 +183,15 @@ public class Class48 {
                                         RSRuntimeException.lastActiveInvInterface = widget.id;
                                         Class55.mouseInvInterfaceIndex = i_4_;
                                         if((widget.items[i_4_]) > 0) {
-                                            ItemDefinition class40_sub5_sub16 = (ItemDefinition.forId((-1 + (widget.items[i_4_])), 10));
+                                            ItemDefinition itemDefinition = (ItemDefinition.forId((-1 + (widget.items[i_4_])), 10));
                                             if(Class8.anInt301 != 1 || !(widget.isInventory)) {
                                                 if(Main.anInt1773 == 1 && (widget.isInventory)) {
                                                     if(((ItemDefinition.anInt2815) & 0x10) == 16) {
-                                                        OverlayDefinition.method558((class40_sub5_sub16.id), (Class38_Sub1.aClass1_1918), (widget.id), -501, i_4_, 37, (Class40_Sub5_Sub17_Sub6.method832(107, (new RSString[]{(FloorDecoration.aClass1_611), (Class5.aClass1_206), (class40_sub5_sub16.name)}))));
+                                                        OverlayDefinition.method558((itemDefinition.id), (Class38_Sub1.aClass1_1918), (widget.id), -501, i_4_, 37, (Class40_Sub5_Sub17_Sub6.method832(107, (new RSString[]{(FloorDecoration.aClass1_611), (Class5.aClass1_206), (itemDefinition.name)}))));
                                                     }
                                                 } else {
                                                     Class67.anInt1576++;
-                                                    RSString[] class1s = (class40_sub5_sub16.interfaceOptions);
+                                                    RSString[] class1s = (itemDefinition.interfaceOptions);
                                                     if(Class60.aBoolean1402)
                                                         class1s = (Class56.method968(class1s, false));
                                                     if(widget.isInventory) {
@@ -202,15 +202,15 @@ public class Class48 {
                                                                     i_10_ = 11;
                                                                 else
                                                                     i_10_ = 43;
-                                                                OverlayDefinition.method558((class40_sub5_sub16.id), (class1s[i_9_]), (widget.id), (arg5 ^ ~0x1f4), i_4_, i_10_, (Class40_Sub5_Sub17_Sub6.method832(-128, (new RSString[]{VertexNormal.aClass1_1114, class40_sub5_sub16.name}))));
+                                                                OverlayDefinition.method558((itemDefinition.id), (class1s[i_9_]), (widget.id), (arg5 ^ ~0x1f4), i_4_, i_10_, (Class40_Sub5_Sub17_Sub6.method832(-128, (new RSString[]{VertexNormal.aClass1_1114, itemDefinition.name}))));
                                                             } else if(i_9_ == 4) {
-                                                                OverlayDefinition.method558((class40_sub5_sub16.id), (Cache.dropStringInstance), (widget.id), -501, i_4_, 11, (Class40_Sub5_Sub17_Sub6.method832(94, (new RSString[]{VertexNormal.aClass1_1114, class40_sub5_sub16.name}))));
+                                                                OverlayDefinition.method558((itemDefinition.id), (Cache.dropStringInstance), (widget.id), -501, i_4_, 11, (Class40_Sub5_Sub17_Sub6.method832(94, (new RSString[]{VertexNormal.aClass1_1114, itemDefinition.name}))));
                                                                 Class4.anInt184++;
                                                             }
                                                         }
                                                     }
                                                     if(widget.itemUsable) {
-                                                        OverlayDefinition.method558((class40_sub5_sub16.id), (Main.aClass1_1763), (widget.id), -501, i_4_, 19, (Class40_Sub5_Sub17_Sub6.method832(58, (new RSString[]{(VertexNormal.aClass1_1114), (class40_sub5_sub16.name)}))));
+                                                        OverlayDefinition.method558((itemDefinition.id), (Main.aClass1_1763), (widget.id), -501, i_4_, 19, (Class40_Sub5_Sub17_Sub6.method832(58, (new RSString[]{(VertexNormal.aClass1_1114), (itemDefinition.name)}))));
                                                     }
                                                     if((widget.isInventory) && (class1s != null)) {
                                                         for(int i_11_ = 2; i_11_ >= 0; i_11_--) {
@@ -223,7 +223,7 @@ public class Class48 {
                                                                     i_12_ = 6;
                                                                 if(i_11_ == 2)
                                                                     i_12_ = 31;
-                                                                OverlayDefinition.method558((class40_sub5_sub16.id), (class1s[i_11_]), (widget.id), -501, i_4_, i_12_, (Class40_Sub5_Sub17_Sub6.method832(-66, (new RSString[]{VertexNormal.aClass1_1114, class40_sub5_sub16.name}))));
+                                                                OverlayDefinition.method558((itemDefinition.id), (class1s[i_11_]), (widget.id), -501, i_4_, i_12_, (Class40_Sub5_Sub17_Sub6.method832(-66, (new RSString[]{VertexNormal.aClass1_1114, itemDefinition.name}))));
                                                             }
                                                         }
                                                     }
@@ -245,14 +245,14 @@ public class Class48 {
                                                                     i_14_ = 48;
                                                                 if(i_13_ == 4)
                                                                     i_14_ = 24;
-                                                                OverlayDefinition.method558((class40_sub5_sub16.id), (class1s[i_13_]), (widget.id), (arg5 + -501), i_4_, i_14_, (Class40_Sub5_Sub17_Sub6.method832(68, (new RSString[]{VertexNormal.aClass1_1114, class40_sub5_sub16.name}))));
+                                                                OverlayDefinition.method558((itemDefinition.id), (class1s[i_13_]), (widget.id), (arg5 + -501), i_4_, i_14_, (Class40_Sub5_Sub17_Sub6.method832(68, (new RSString[]{VertexNormal.aClass1_1114, itemDefinition.name}))));
                                                             }
                                                         }
                                                     }
-                                                    OverlayDefinition.method558((class40_sub5_sub16.id), (Class40_Sub5_Sub15.aClass1_2774), (widget.id), -501, i_4_, 1006, (Class40_Sub5_Sub17_Sub6.method832(118, (new RSString[]{(VertexNormal.aClass1_1114), (class40_sub5_sub16.name)}))));
+                                                    OverlayDefinition.method558((itemDefinition.id), (Class40_Sub5_Sub15.prefix_examine), (widget.id), -501, i_4_, 1006, (Class40_Sub5_Sub17_Sub6.method832(118, (new RSString[]{(VertexNormal.aClass1_1114), (itemDefinition.name)}))));
                                                 }
                                             } else if(((ISAAC.anInt525) != (widget.id)) || (i_4_ != (Class45.anInt1061))) {
-                                                OverlayDefinition.method558((class40_sub5_sub16.id), Main.aClass1_1763, (widget.id), -501, i_4_, 56, (Class40_Sub5_Sub17_Sub6.method832(arg5 ^ 0x53, (new RSString[]{(Npc.aClass1_3295), (Class5.aClass1_206), (class40_sub5_sub16.name)}))));
+                                                OverlayDefinition.method558((itemDefinition.id), Main.aClass1_1763, (widget.id), -501, i_4_, 56, (Class40_Sub5_Sub17_Sub6.method832(arg5 ^ 0x53, (new RSString[]{(Npc.aClass1_3295), (Class5.aClass1_206), (itemDefinition.name)}))));
                                                 Class37.anInt863++;
                                             }
                                         }
@@ -263,28 +263,28 @@ public class Class48 {
                         }
                         if(widget.isIf3 && (widget.anInt2718 != -1) && (arg8 >= i_2_) && (arg4 >= i_1_) && ((arg8 < widget.originalWidth + i_2_)) && ((arg4 < i_1_ + widget.originalHeight))) {
                             Class67.anInt1576++;
-                            ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((widget.anInt2718), 10);
+                            ItemDefinition itemDefinition = ItemDefinition.forId((widget.anInt2718), 10);
                             if(widget.isInventory) {
-                                RSString[] class1s = class40_sub5_sub16.interfaceOptions;
+                                RSString[] class1s = itemDefinition.interfaceOptions;
                                 if(Class60.aBoolean1402)
                                     class1s = Class56.method968(class1s, false);
                                 if(class1s == null || class1s[4] == null)
-                                    OverlayDefinition.method558(class40_sub5_sub16.id, Cache.dropStringInstance, widget.id, -501, -1 + widget.anInt2736, 11, (Class40_Sub5_Sub17_Sub6.method832(107, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)}))));
+                                    OverlayDefinition.method558(itemDefinition.id, Cache.dropStringInstance, widget.id, -501, -1 + widget.anInt2736, 11, (Class40_Sub5_Sub17_Sub6.method832(107, (new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)}))));
                                 else
-                                    OverlayDefinition.method558(class40_sub5_sub16.id, class1s[4], widget.id, -501, widget.anInt2736 + -1, 11, (Class40_Sub5_Sub17_Sub6.method832(-41, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)}))));
+                                    OverlayDefinition.method558(itemDefinition.id, class1s[4], widget.id, -501, widget.anInt2736 + -1, 11, (Class40_Sub5_Sub17_Sub6.method832(-41, (new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)}))));
                                 if(class1s != null && class1s[3] != null)
-                                    OverlayDefinition.method558(class40_sub5_sub16.id, class1s[3], widget.id, -501, -1 + widget.anInt2736, 43, (Class40_Sub5_Sub17_Sub6.method832(57, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)}))));
+                                    OverlayDefinition.method558(itemDefinition.id, class1s[3], widget.id, -501, -1 + widget.anInt2736, 43, (Class40_Sub5_Sub17_Sub6.method832(57, (new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)}))));
                                 if(class1s != null && class1s[2] != null)
-                                    OverlayDefinition.method558(class40_sub5_sub16.id, class1s[2], widget.id, -501, widget.anInt2736 - 1, 31, (Class40_Sub5_Sub17_Sub6.method832(-113, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)}))));
+                                    OverlayDefinition.method558(itemDefinition.id, class1s[2], widget.id, -501, widget.anInt2736 - 1, 31, (Class40_Sub5_Sub17_Sub6.method832(-113, (new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)}))));
                                 if(class1s != null && class1s[1] != null)
-                                    OverlayDefinition.method558(class40_sub5_sub16.id, class1s[1], widget.id, -501, -1 + widget.anInt2736, 6, (Class40_Sub5_Sub17_Sub6.method832(74, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)}))));
+                                    OverlayDefinition.method558(itemDefinition.id, class1s[1], widget.id, -501, -1 + widget.anInt2736, 6, (Class40_Sub5_Sub17_Sub6.method832(74, (new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)}))));
                                 if(class1s != null && class1s[0] != null)
-                                    OverlayDefinition.method558(class40_sub5_sub16.id, class1s[0], widget.id, -501, -1 + widget.anInt2736, 52, (Class40_Sub5_Sub17_Sub6.method832(73, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)}))));
+                                    OverlayDefinition.method558(itemDefinition.id, class1s[0], widget.id, -501, -1 + widget.anInt2736, 52, (Class40_Sub5_Sub17_Sub6.method832(73, (new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)}))));
                             }
                             if(widget.id >= 0)
-                                OverlayDefinition.method558(class40_sub5_sub16.id, Class40_Sub5_Sub15.aClass1_2774, widget.id, -501, -1, 1007, (Class40_Sub5_Sub17_Sub6.method832(98, new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)})));
+                                OverlayDefinition.method558(itemDefinition.id, Class40_Sub5_Sub15.prefix_examine, widget.id, -501, -1, 1007, (Class40_Sub5_Sub17_Sub6.method832(98, new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)})));
                             else
-                                OverlayDefinition.method558(class40_sub5_sub16.id, Class40_Sub5_Sub15.aClass1_2774, widget.parentId, -501, widget.id & 0x7fff, 1007, (Class40_Sub5_Sub17_Sub6.method832(68, new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)})));
+                                OverlayDefinition.method558(itemDefinition.id, Class40_Sub5_Sub15.prefix_examine, widget.parentId, -501, widget.id & 0x7fff, 1007, (Class40_Sub5_Sub17_Sub6.method832(68, new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)})));
                         }
                         if(widget.aBoolean2688 && widget.aClass1Array2661 != null && (i_2_ <= arg8) && (i_1_ <= arg4) && widget.originalWidth + i_2_ > arg8 && (arg4 < i_1_ + widget.originalHeight)) {
                             RSString class1 = HuffmanEncoding.blank_string;

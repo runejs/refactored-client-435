@@ -247,16 +247,13 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
     }
 
     public void mouseWheelMoved(MouseWheelEvent event) {
-        System.out.println(cameraZoom);
         int rotation = event.getWheelRotation();
         if(!handleInterfaceScrolling(event)) {
             if((cameraZoom <= 300 && rotation <= 0) || (cameraZoom >= 1200 && rotation >= 0)) {
                 return;
             }
-            //                    }
             int diff = rotation * 8;
             cameraZoom = cameraZoom + diff;
-            //
         }
     }
 

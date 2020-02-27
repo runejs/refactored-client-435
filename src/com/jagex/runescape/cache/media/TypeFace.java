@@ -191,7 +191,7 @@ public class TypeFace extends Rasterizer {
                     }
                 }
             }
-            if(class1.length() > i_3_)
+            if(this.getStringTextWidth(class1.toString()) > i_3_)
                 aClass1Array2897[i_7_++] = class1.substring(i_3_, class1.length()).trim();
             if(arg8 == 3 && i_7_ == 1)
                 arg8 = 1;
@@ -404,6 +404,68 @@ public class TypeFace extends Rasterizer {
 
                 if(index == -1) {
                     width += characterScreenWidths[character];
+                }
+            }
+        }
+
+        return width;
+
+    }
+
+    public final int getStringTextWidth(String string) {
+        if(string == null) {
+            return 0;
+        }
+        int index = -1;
+        int width = 0;
+        int length = string.length();
+
+        for(int idx = 0; idx < length; ++idx) {
+            int character = string.charAt(idx);
+            if(character == 60) {
+
+                index = idx;
+            } else {
+                if(character == 62 && index != -1) {
+                    String effect = string.substring(index + 1, idx);
+                    index = -1;
+                    if(effect.equals(lessThan)) {
+                        character = 60;
+                    } else if(effect.equals(greaterThan)) {
+                        character = 62;
+                    } else if(effect.equals(nonBreakingSpace)) {
+                        character = 160;
+                    } else if(effect.equals(softHyphen)) {
+                        character = 173;
+                    } else if(effect.equals(multiplicationSymbol)) {
+                        character = 215;
+                    } else if(effect.equals(euroSymbol)) {
+                        character = 128;
+                    } else if(effect.equals(copyright)) {
+                        character = 169;
+                    } else {
+                        if(!effect.equals(registeredTrademark)) {
+                            if(effect.startsWith(image, 0)) {
+                                try {
+                                    int icon = Integer.parseInt(effect.substring(4));
+                                    width += moderatorIcon[icon].maxWidth;
+                                } catch(Exception var10) {
+
+                                }
+                            }
+                            continue;
+                        }
+
+                        character = 174;
+                    }
+                }
+                if(character == '@' && idx + 4 < string.length() && string.charAt(idx + 4) == '@') {
+                    idx += 4;
+                    continue;
+                }
+
+                if(index == -1 && character != 0) {
+                    width += 1;
                 }
             }
         }

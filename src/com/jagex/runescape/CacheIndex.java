@@ -503,7 +503,6 @@ public abstract class CacheIndex {
         arg1 = arg1.toLowerCase();
         int i = aClass42_254.method882(arg0.method76(), -66);
         int i_49_ = aClass42Array217[i].method882(arg1.method76(), arg2 ^ 0x483);
-        System.out.println("Loaded: " + i_49_);
         return loaded(i, i_49_);
     }
 

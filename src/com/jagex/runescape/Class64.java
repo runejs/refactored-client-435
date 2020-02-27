@@ -127,7 +127,7 @@ public class Class64 implements Runnable {
                                 }
                             }
                         }
-                        OverlayDefinition.method558(gameObjectDefinition.anInt2538 << 14, Class40_Sub5_Sub15.aClass1_2774, i_4_, -501, i_3_, 1004, (Class40_Sub5_Sub17_Sub6.method832(113, (new RSString[]{Renderable.aClass1_2862, gameObjectDefinition.name}))));
+                        OverlayDefinition.method558(gameObjectDefinition.anInt2538 << 14, Class40_Sub5_Sub15.prefix_examine, i_4_, -501, i_3_, 1004, (Class40_Sub5_Sub17_Sub6.method832(113, (new RSString[]{Renderable.aClass1_2862, gameObjectDefinition.name}))));
                     } else if((ItemDefinition.anInt2815 & 0x4) == 4) {
                         Renderable.anInt2863++;
                         OverlayDefinition.method558(i_2_, Class38_Sub1.aClass1_1918, i_4_, -501, i_3_, 32, (Class40_Sub5_Sub17_Sub6.method832(111, (new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.name}))));
@@ -200,7 +200,7 @@ public class Class64 implements Runnable {
                                         OverlayDefinition.method558((class40_sub5_sub17_sub3.anInt3067), class1s[i_15_], i_4_, -501, i_3_, i_16_, (Class40_Sub5_Sub17_Sub6.method832(-97, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)}))));
                                     }
                                 }
-                                OverlayDefinition.method558(class40_sub5_sub17_sub3.anInt3067, Class40_Sub5_Sub15.aClass1_2774, i_4_, -501, i_3_, 1003, (Class40_Sub5_Sub17_Sub6.method832(89, new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)})));
+                                OverlayDefinition.method558(class40_sub5_sub17_sub3.anInt3067, Class40_Sub5_Sub15.prefix_examine, i_4_, -501, i_3_, 1003, (Class40_Sub5_Sub17_Sub6.method832(89, new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)})));
                             } else if((0x1 & ItemDefinition.anInt2815) == 1) {
                                 OverlayDefinition.method558(class40_sub5_sub17_sub3.anInt3067, Class38_Sub1.aClass1_1918, i_4_, -501, i_3_, 15, (Class40_Sub5_Sub17_Sub6.method832(-67, new RSString[]{FloorDecoration.aClass1_611, Class5.aClass1_206, (class40_sub5_sub16.name)})));
                                 Class58.anInt1368++;

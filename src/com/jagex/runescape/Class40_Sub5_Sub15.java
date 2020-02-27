@@ -6,7 +6,7 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 
 public class Class40_Sub5_Sub15 extends SubNode {
     public static RSString aClass1_2773 = (RSString.CreateString("Um ein neues Spielkonto zu erstellen)1 m-Ussen Sie"));
-    public static RSString aClass1_2774;
+    public static RSString prefix_examine = RSString.CreateString("Examine");
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2775;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2776;
     public static int[] anIntArray2777 = {8, 11, 4, 6, 9, 7, 10};
@@ -24,7 +24,6 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public static int anInt2789;
     public static RSString aClass1_2790;
     public static int anInt2791;
-    public static RSString aClass1_2792;
     public static RSString aClass1_2793;
 
     static {
@@ -35,11 +34,9 @@ public class Class40_Sub5_Sub15 extends SubNode {
         aClass1_2787 = RSString.CreateString("sideicons");
         aBoolean2784 = false;
         aClass1_2790 = RSString.CreateString("Friends");
-        aClass1_2792 = RSString.CreateString("Examine");
         aClass1_2786 = aClass1_2790;
         aClass1_2793 = RSString.CreateString("Ihr Charakter)2Profil wird in:");
         anInt2791 = -8 + (int) (17.0 * Math.random());
-        aClass1_2774 = aClass1_2792;
     }
 
     public Class41[] aClass41Array2794;
@@ -76,7 +73,6 @@ public class Class40_Sub5_Sub15 extends SubNode {
 
     public static void method734(int arg0) {
 
-        aClass1_2792 = null;
         aClass40_Sub5_Sub14_Sub2_2775 = null;
         aClass1_2790 = null;
         aClass40_Sub5_Sub14_Sub2Array2776 = null;
@@ -89,7 +85,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
         aClass1_2793 = null;
         aClass1_2786 = null;
         aClass1_2781 = null;
-        aClass1_2774 = null;
+        prefix_examine = null;
 
     }
 

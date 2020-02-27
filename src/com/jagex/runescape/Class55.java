@@ -143,7 +143,7 @@ public class Class55 {
         Node.aClass1_942 = Class64.aClass1_1523;
         Class22_Sub2.aClass1_1876 = Npc.aClass1_3309;
         Node.aClass1_952 = Class64.aClass1_1523;
-        Class40_Sub5_Sub15.aClass1_2774 = Class26.aClass1_630;
+        Class40_Sub5_Sub15.prefix_examine = Class26.aClass1_630;
         Node.aClass1_954 = Class64.aClass1_1523;
         Npc.aClass1_3311 = Class49.aClass1_1146;
         Class68.aClass1_1628 = Class40_Sub5_Sub6.aClass1_2457;

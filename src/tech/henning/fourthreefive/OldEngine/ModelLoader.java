@@ -21,7 +21,7 @@ public class ModelLoader {
         byte[] buffer = new byte[(int) new File("data/models/" + i + ".dat").length()];
         dis.readFully(buffer);
         dis.close();
-        System.out.println("Loading model: " + i + ", lenght: "+ buffer.length);
+//        System.out.println("Loading model: " + i + ", lenght: "+ buffer.length);
         return buffer;
     }
 
