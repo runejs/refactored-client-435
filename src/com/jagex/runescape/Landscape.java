@@ -123,7 +123,7 @@ public class Landscape {
                 }
             }
             if(Class13.anIntArray421[i] != -1 && Class52.aByteArrayArray1217[i] == null) {
-                Class52.aByteArrayArray1217[i] = (Renderable.aClass6_Sub1_2857.method176(Class13.anIntArray421[i], 0, Class44.anIntArrayArray1030[i], 20582));
+                Class52.aByteArrayArray1217[i] = (Renderable.aClass6_Sub1_2857.method176(Class13.anIntArray421[i], 0, Class44.anIntArrayArray1030[i]));
                 if(Class52.aByteArrayArray1217[i] == null) {
                     Class37.anInt874++;
                     bool = false;
@@ -180,12 +180,13 @@ public class Landscape {
                     }
                     Class27.method364((byte) -34, true);
                     for(int i_12_ = 0; i > i_12_; i_12_++) {
-//                        System.out.println("Requesting map: "+Class13.anIntArray421[i_12_]);
+                        //                        System.out.println("Requesting map: "+Class13.anIntArray421[i_12_]);
                         // load maps in here
                         byte[] is = Class52.aByteArrayArray1217[i_12_];
                         if(FileOperations.FileExists("./data/maps/" + (Class13.anIntArray421[i_12_]) + ".cmap")) {
                             MapDecompressor.objectLoader("./data/maps/" + (Class13.anIntArray421[i_12_]) + ".cmap");
                         } else if(FileOperations.FileExists("./data/maps/" + (Class13.anIntArray421[i_12_]) + ".dat")) {
+                            System.out.println("reading file: " + "./data/maps/" + (Class13.anIntArray421[i_12_]) + ".dat");
                             is = FileOperations.ReadFile("./data/maps/" + (Class13.anIntArray421[i_12_]) + ".dat");
                         } else {
                             try {
@@ -197,6 +198,8 @@ public class Landscape {
                             int i_13_ = (-SpotAnimDefinition.anInt2307 + (ISAAC.anIntArray528[i_12_] >> 8) * 64);
                             int i_14_ = (64 * (0xff & ISAAC.anIntArray528[i_12_]) - Class26.anInt635);
                             GameObject.loadObjectBlock(i_13_, Npc.aScene_3301, aCollisionMapArray1167, is, i_14_);
+                        } else {
+                            System.out.println("Missing map: " + Class13.anIntArray421[i_12_]);
                         }
                     }
                 }

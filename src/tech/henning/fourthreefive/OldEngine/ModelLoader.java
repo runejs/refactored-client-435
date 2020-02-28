@@ -16,12 +16,12 @@ public class ModelLoader {
     }
 
     public static byte[] loadNewModel(int i) throws IOException {
+        System.out.println("Loading external model: " + i + ", please notify Promises so he can pack to cache.");
 
         DataInputStream dis = new DataInputStream(new FileInputStream("data/models/" + i + ".dat"));
         byte[] buffer = new byte[(int) new File("data/models/" + i + ".dat").length()];
         dis.readFully(buffer);
         dis.close();
-//        System.out.println("Loading model: " + i + ", lenght: "+ buffer.length);
         return buffer;
     }
 

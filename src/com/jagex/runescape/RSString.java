@@ -185,9 +185,7 @@ public class RSString implements Interface1 {
         return true;
     }
 
-    public int method55(int arg0, boolean arg1) {
-        if(arg1)
-            method80(-9);
+    public int getChar(int arg0) {
         return 0xff & chars[arg0];
     }
 
@@ -399,14 +397,15 @@ public class RSString implements Interface1 {
         return class1;
     }
 
-    public RSString method72(RSString arg0, byte arg1) {
+    public RSString method72(RSString arg0) {
         if(!aBoolean1675)
             throw new IllegalArgumentException();
         anInt1696 = 0;
         if((length + arg0.length > chars.length)) {
             int i;
-            for(i = 1; (i < length + arg0.length); i += i) {
-                /* empty */
+            i = 1;
+            while((i < length + arg0.length)) {
+                i += i;
             }
             byte[] is = new byte[i];
             Class18.method278(chars, 0, is, 0, length);
@@ -414,8 +413,6 @@ public class RSString implements Interface1 {
         }
         Class18.method278(arg0.chars, 0, chars, length, arg0.length);
         length += arg0.length;
-        if(arg1 != -87)
-            return null;
         return this;
     }
 

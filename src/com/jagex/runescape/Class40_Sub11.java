@@ -11,7 +11,7 @@ import com.jagex.runescape.media.renderable.actor.Player;
 public class Class40_Sub11 extends Node {
     public static RSString[] aClass1Array2147 = new RSString[200];
     public static RSString[] aClass1Array2153 = new RSString[1000];
-    public static int anInt2158 = 0;
+    public static int runEnergy = 0;
     public static RSString aClass1_2161 = RSString.CreateString("headicons_pk");
     public static CacheIndex aCacheIndex_2162;
     public static int anInt2163 = 0;
@@ -33,7 +33,7 @@ public class Class40_Sub11 extends Node {
 
     public static void method873(int arg1, int arg2) {
         if(arg2 != 45)
-            anInt2158 = 53;
+            runEnergy = 53;
         int i = 0;
         for(int i_0_ = 0; i_0_ < 100; i_0_++) {
             if(Actor.chatMessages[i_0_] != null) {

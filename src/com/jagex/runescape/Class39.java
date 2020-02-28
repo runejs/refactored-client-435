@@ -64,7 +64,7 @@ public class Class39 implements Runnable {
         RSCanvas.anInt54 = 20;
         anInt916++;
         try {
-            Class5.aClass22_189 = ((Class22) Class.forName("com.jagex.runescape.Class22_Sub2_Sub1").newInstance()); // Java Midi Based
+            Class5.aClass22_189 = new Class22_Sub2_Sub1(); // Java Midi Based
             return true;
         } catch(Throwable throwable) {
             Runnable_Impl1 runnable_impl1 = arg0.method391(1048576);

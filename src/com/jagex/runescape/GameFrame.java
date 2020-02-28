@@ -210,6 +210,8 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
     }
 
     private void mouseWheelDragged(int i, int j) {
+        Class45.anInt1073 = 0;
+
         if(!mouseWheelDown)
             return;
         Class10.cameraVelocityHorizontal += i * 3;
@@ -248,6 +250,8 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
 
     public void mouseWheelMoved(MouseWheelEvent event) {
         int rotation = event.getWheelRotation();
+        Class45.anInt1073 = 0;
+
         if(!handleInterfaceScrolling(event)) {
             if((cameraZoom <= 300 && rotation <= 0) || (cameraZoom >= 1200 && rotation >= 0)) {
                 return;

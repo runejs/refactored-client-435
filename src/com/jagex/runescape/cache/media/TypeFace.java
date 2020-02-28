@@ -145,6 +145,7 @@ public class TypeFace extends Rasterizer {
 
 
     public void method672(RSString arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, int arg7, int arg8, int arg9) {
+        // this function seems like a general draw all, mostly used for interfaces
         if(arg0 != null) {
             int i = 0;
             int i_3_ = 0;
@@ -159,23 +160,79 @@ public class TypeFace extends Rasterizer {
                 bool = false;
             int i_7_ = 0;
             int i_8_ = arg0.length();
-            for(int i_9_ = 0; i_9_ < i_8_; i_9_++) {
-                int i_10_ = arg0.method55(i_9_, false);
-                if(i_10_ == 64 && i_9_ + 4 < i_8_ && arg0.method55(i_9_ + 4, false) == 64) {
-                    class1_6_ = arg0.substring(i_9_, i_9_ + 5);
-                    class1.method72(class1_6_, (byte) -87);
-                    i_9_ += 4;
-                } else if(i_10_ == 92 && i_9_ + 1 < i_8_ && arg0.method55(i_9_ + 1, false) == 110) {
+            int index = -1;
+            for(int idx = 0; idx < i_8_; idx++) {
+                int character = arg0.getChar(idx);
+                if(character == 60) { // 60 = <
+
+                    index = idx;
+                } else if(character == 62 && index != -1) { // 62 == >
+                    String effect = arg0.toString().substring(index + 1, idx);
+                    int oldindex= index;
+                    index = -1;
+
+                    if(effect.equals(lessThan)) {
+                        character = 60;
+                    } else if(effect.equals(greaterThan)) {
+                        character = 62;
+                    } else if(effect.equals(nonBreakingSpace)) {
+                        character = 160;
+                    } else if(effect.equals(softHyphen)) {
+                        character = 173;
+                    } else if(effect.equals(multiplicationSymbol)) {
+                        character = 215;
+                    } else if(effect.equals(euroSymbol)) {
+                        character = 128;
+                    } else if(effect.equals(copyright)) {
+                        character = 169;
+                    } else {
+                        if(!effect.equals(registeredTrademark)) {
+                            if(effect.startsWith(image, 0)) {
+                                try {
+                                    int icon = Integer.parseInt(effect.substring(4));
+                                    width += moderatorIcon[icon].maxWidth;
+                                } catch(Exception var10) {
+
+                                }
+                            }
+                            if(effect.startsWith(startColor, 0)) {
+                                try {
+                                    class1_6_ = arg0.substring(oldindex, idx + 1);
+                                    class1.method72(class1_6_);
+                                } catch(Exception var10) {
+
+                                }
+                            }
+                            if(effect.startsWith(endColor, 0)) {
+                                try {
+                                    class1_6_ = arg0.substring(oldindex, idx + 1);
+                                    class1.method72(class1_6_);
+                                    class1_6_= null;
+                                } catch(Exception var10) {
+
+                                }
+                            } continue;
+                        }
+
+                        character = 174;
+                    }
+
+                }
+                if(character == 64 && idx + 4 < i_8_ && arg0.getChar(idx + 4) == 64) { // 64 = @
+                    class1_6_ = arg0.substring(idx, idx + 5);
+                    class1.method72(class1_6_);
+                    idx += 4;
+                } else if(character == 92 && idx + 1 < i_8_ && arg0.getChar(idx + 1) == 110) { // 92 = \ 110 = n
                     class1_6_ = null;
                     aClass1Array2897[i_7_++] = class1.substring(i_3_, class1.length()).trim();
                     i_3_ = class1.length();
                     i = 0;
                     i_4_ = -1;
-                    i_9_++;
-                } else {
-                    class1.method78(-62, i_10_);
-                    i += method689(i_10_);
-                    if(i_10_ == 32 || i_10_ == 45) {
+                    idx++;
+                } else if(index == -1) {
+                    class1.method78(-62, character);
+                    i += method689(character);
+                    if(character == 32 || character == 45) { // 32 = Space 45 == -
                         i_4_ = class1.length();
                         i_5_ = i;
                     }
@@ -190,8 +247,8 @@ public class TypeFace extends Rasterizer {
                         }
                     }
                 }
-            }
-            if(this.getStringTextWidth(class1.toString()) > i_3_)
+            } int strlenght = this.getStringTextWidth(class1.toString());
+            if(strlenght > i_3_)
                 aClass1Array2897[i_7_++] = class1.substring(i_3_, class1.length()).trim();
             if(arg8 == 3 && i_7_ == 1)
                 arg8 = 1;
@@ -246,7 +303,7 @@ public class TypeFace extends Rasterizer {
         arg0 = arg0.trim();
         int i = 0;
         for(int i_25_ = 0; i_25_ < arg0.length(); i_25_++) {
-            if(arg0.method55(i_25_, false) == 32)
+            if(arg0.getChar(i_25_) == 32)
                 i++;
         }
         int i_26_ = 0;
@@ -360,11 +417,11 @@ public class TypeFace extends Rasterizer {
 
         for(int idx = 0; idx < length; ++idx) {
             int character = string.charAt(idx);
-            if(character == 60) {
+            if(character == 60) { // 60 = <
 
                 index = idx;
             } else {
-                if(character == 62 && index != -1) {
+                if(character == 62 && index != -1) { // 62 == >
                     String effect = string.substring(index + 1, idx);
                     index = -1;
                     if(effect.equals(lessThan)) {
@@ -476,15 +533,15 @@ public class TypeFace extends Rasterizer {
 
     public void drawString(String string, int x, int y, int colour) {
         this.drawString(string, x, y, colour, -1);
-//        if(string == null)
-//            return;
-//        y -= characterDefaultHeight;
-//        for(int index = 0; index < string.length(); index++) {
-//            char character = string.charAt(index);
-//            if(character != ' ')
-//                drawCharacterLegacy(characterPixels[character], x, y + characterYOffsets[character], characterScreenWidths[character], characterHeights[character], colour);
-//            x += characterScreenWidths[character];
-//        }
+        //        if(string == null)
+        //            return;
+        //        y -= characterDefaultHeight;
+        //        for(int index = 0; index < string.length(); index++) {
+        //            char character = string.charAt(index);
+        //            if(character != ' ')
+        //                drawCharacterLegacy(characterPixels[character], x, y + characterYOffsets[character], characterScreenWidths[character], characterHeights[character], colour);
+        //            x += characterScreenWidths[character];
+        //        }
 
 
     }

@@ -186,7 +186,7 @@ public class Player extends Actor {
         }
         if((0x80 & mask) != 0) { // forced chat
             player.forcedChatMessage = Cache.outgoingbuffer.getRSString();
-            if(player.forcedChatMessage.method55(0, false) == 126) {
+            if(player.forcedChatMessage.getChar(0) == 126) {
                 player.forcedChatMessage = player.forcedChatMessage.substring(1);
                 Class44.addChatMessage(player.playerName, player.forcedChatMessage, 2);
             } else if(player == localPlayer)

@@ -935,7 +935,7 @@ public class Widget extends SubNode {
                             RSString class1 = Class40_Sub11.aClass1Array2153[--i_1_];
                             Object[] objects = new Object[class1.length() + 1];
                             for(int i_84_ = objects.length - 1; i_84_ >= 1; i_84_--) {
-                                if(class1.method55(-1 + i_84_, arg5) == 115) {
+                                if(class1.getChar(-1 + i_84_) == 115) {
                                     objects[i_84_] = (Class40_Sub11.aClass1Array2153[--i_1_]);
                                 } else {
                                     objects[i_84_] = new Integer(Class67.anIntArray1588[--i]);

@@ -717,12 +717,13 @@ public class Model extends Renderable {
             }
 
             byte[] is = arg0.getFile(arg2, arg1);
-            if(is == null)
-                return null;
-            for(int modelStored : ModelLoader.models) {
-                if(modelStored == arg1) {
-                    return new Model(ModelLoader.loadNewModel(modelStored));
+            if(is == null) {
+                for(int modelStored : ModelLoader.models) {
+                    if(modelStored == arg1) {
+                        return new Model(ModelLoader.loadNewModel(modelStored));
+                    }
                 }
+                return null;
             }
             return new Model(is);
         } catch(Exception e) {

@@ -301,7 +301,20 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                 Class40_Sub5_Sub15.inputType = 3;
                             }
                             if(HuffmanEncoding.chatboxInput.startsWith("::region")) {
-                                Class44.addChatMessage(HuffmanEncoding.blank_string, RSString.CreateString("Hello world"),0);
+                                for(int qq = 0; qq < 469; qq++) {
+                                    if(Class68.method1043(qq)) {
+                                        Widget[] widgets = Widget.interfaces[qq];
+                                        for(int y = 0; widgets.length > y; y++) {
+                                            Widget widget = widgets[y];
+                                            if(widget.text != null) {
+                                                String text = widget.text.toString().toLowerCase();
+                                                if(widget.text.toString().toLowerCase().contains("cook")) {
+                                                    System.out.println(qq + " contains " + text);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
 
                             if(HuffmanEncoding.chatboxInput.equals(Class40_Sub11.cmd_fpsoff))

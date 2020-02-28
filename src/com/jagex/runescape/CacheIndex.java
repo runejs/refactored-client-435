@@ -210,7 +210,7 @@ public abstract class CacheIndex {
     public byte[] getFile(int arg0, int arg2) {
         //if(this instanceof CacheIndex_Sub1)
         //    System.out.printf("Request cache arch: %d index: %d, file: %d\n", this.anInt1807, arg0, arg2);
-        return method176(arg2, arg0, null, 20582);
+        return method176(arg2, arg0, null);
     }
 
     public boolean loaded(int arg0, int arg2) {
@@ -237,7 +237,7 @@ public abstract class CacheIndex {
         return aByteArrayArrayArray249.length;
     }
 
-    public byte[] method176(int arg0, int arg1, int[] arg2, int arg3) {
+    public byte[] method176(int arg0, int arg1, int[] arg2) {
         anInt246++;
         if(arg0 < 0 || (arg0 >= aByteArrayArrayArray249.length) || aByteArrayArrayArray249[arg0] == null || arg1 < 0 || arg1 >= aByteArrayArrayArray249[arg0].length)
             return null;

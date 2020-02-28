@@ -237,7 +237,7 @@ public class Class60 {
                     while(Class34.method416((byte) -104)) {
                         boolean bool = false;
                         for(int i_19_ = 0; (Class22_Sub2.aClass1_1893.length() > i_19_); i_19_++) {
-                            if(Class22_Sub2.aClass1_1893.method55(i_19_, false) == Class59.anInt1388) {
+                            if(Class22_Sub2.aClass1_1893.getChar(i_19_) == Class59.anInt1388) {
                                 bool = true;
                                 break;
                             }

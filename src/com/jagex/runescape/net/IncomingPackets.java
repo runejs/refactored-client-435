@@ -509,7 +509,7 @@ public class IncomingPackets {
             if(Class57.incomingPacket == UPDATE_RUN_ENERGY) {
                 if(Class5.currentTabId == 12)
                     ISAAC.redrawTabArea = true;
-                Class40_Sub11.anInt2158 = Cache.outgoingbuffer.getUnsignedByte();
+                Class40_Sub11.runEnergy = Cache.outgoingbuffer.getUnsignedByte();
                 Class57.incomingPacket = -1;
                 return true;
             }
@@ -629,6 +629,7 @@ public class IncomingPackets {
                     Class55.method958(Class43.openChatboxWidgetId, -14222);
                     Class43.openChatboxWidgetId = widgetId;
                 }
+
                 Class52.redrawChatbox = true;
                 Class57.incomingPacket = -1;
                 CacheIndex_Sub1.anInt1819 = -1;
@@ -1073,6 +1074,15 @@ public class IncomingPackets {
                     } else if(itemSlot >= 0 && (widget.items.length > itemSlot)) {
                         widget.items[itemSlot] = i_109_;
                         widget.itemAmounts[itemSlot] = i_110_;
+                    }
+                }
+                if(Class68.method1043(307)) {
+                    Widget[] widgets = Widget.interfaces[307];
+                    for(int y = 0; widgets.length > y; y++) {
+                        Widget widget2 = widgets[y];
+                        if(widget2 != null && widget2.items != null) {
+                            System.out.println("Container ID: " + y);
+                        }
                     }
                 }
                 Class57.incomingPacket = -1;
