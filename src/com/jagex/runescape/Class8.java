@@ -67,7 +67,7 @@ public class Class8 {
             int i_0_ = Class40_Sub3.anIntArray2016[i];
             Npc class40_sub5_sub17_sub4_sub2 = CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_];
             if(class40_sub5_sub17_sub4_sub2 != null)
-                Class13.method241(class40_sub5_sub17_sub4_sub2, (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.tileSpacesOccupied), (byte) 107);
+                Class13.method241(class40_sub5_sub17_sub4_sub2, (class40_sub5_sub17_sub4_sub2.actorDefinition.tileSpacesOccupied), (byte) 107);
         }
 
     }

@@ -8,7 +8,6 @@ import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
-import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 
 public class Class33 {
@@ -62,14 +61,14 @@ public class Class33 {
                     actor = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[(Class40_Sub3.anIntArray2016[i + -Class60.anInt1407])]);
                 if(actor != null && actor.isVisible(1)) {
                     if(actor instanceof Npc) {
-                        ActorDefinition class40_sub5_sub5 = (((Npc) actor).aClass40_Sub5_Sub5_3300);
+                        ActorDefinition class40_sub5_sub5 = (((Npc) actor).actorDefinition);
                         if(class40_sub5_sub5.childrenIds != null)
                             class40_sub5_sub5 = class40_sub5_sub5.getChildDefinition(arg0 + 27);
                         if(class40_sub5_sub5 == null)
                             continue;
                     }
                     if(Class60.anInt1407 <= i) {
-                        ActorDefinition class40_sub5_sub5 = (((Npc) actor).aClass40_Sub5_Sub5_3300);
+                        ActorDefinition class40_sub5_sub5 = (((Npc) actor).actorDefinition);
                         if((class40_sub5_sub5.headIcon >= 0) && (class40_sub5_sub5.headIcon < (Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204).length)) {
                             FloorDecoration.method342(-127, (actor.anInt3117) + 15, actor);
                             if(ISAAC.anInt522 > -1)

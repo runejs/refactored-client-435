@@ -222,20 +222,20 @@ public class ActorDefinition extends SubNode {
 
     }
 
-    public static ActorDefinition getDefinition(byte arg0, int arg1) {
+    public static ActorDefinition getDefinition(byte arg0, int id) {
 
         Landscape.anInt1182++;
         if(arg0 >= -95)
             Landscape.aClass1_1160 = null;
-        ActorDefinition definition = ((ActorDefinition) ISAAC.aClass9_510.get((long) arg1, (byte) 119));
+        ActorDefinition definition = ((ActorDefinition) ISAAC.aClass9_510.get((long) id, (byte) 119));
         if(definition != null)
             return definition;
-        byte[] is = GroundItemTile.aCacheIndex_1375.getFile(arg1, 9);
+        byte[] is = GroundItemTile.aCacheIndex_1375.getFile(id, 9);
         definition = new ActorDefinition();
-        definition.id = arg1;
+        definition.id = id;
         if(is != null)
             definition.readValues(new Buffer(is));
-        ISAAC.aClass9_510.put(-7208, (long) arg1, definition);
+        ISAAC.aClass9_510.put(-7208, (long) id, definition);
         return definition;
 
     }

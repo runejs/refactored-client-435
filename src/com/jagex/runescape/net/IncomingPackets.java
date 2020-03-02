@@ -1154,7 +1154,7 @@ public class IncomingPackets {
             for(int i = 0; i < Class17.anInt460; i++) {
                 int i_0_ = CacheIndex.anIntArray225[i];
                 if(Node.pulseCycle != (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_].anInt3134)) {
-                    CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_].aClass40_Sub5_Sub5_3300 = null;
+                    CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_].actorDefinition = null;
                     CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_] = null;
                 }
             }

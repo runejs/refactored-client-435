@@ -128,8 +128,6 @@ public class WallDecoration {
                 int radius = soundData >> 4 & 0xf;
                 int volume = 0x7 & soundData;
                 int delay = Cache.outgoingbuffer.getUnsignedByte();
-                System.out.println(localX + ", " + localY + ", " + soundId + ", " + radius + ", " + volume + ", " + delay);
-                System.out.println(Player.localPlayer.pathX[0] + ", " + Player.localPlayer.pathY[0]);
                 if(localY >= 0 && localX >= 0 && localY < 104 && localX < 104) {
                     int i_26_ = 1 + radius;
                     if(((Player.localPlayer.pathY[0]) >= localY - i_26_) && ((Player.localPlayer.pathY[0]) <= localY + i_26_) && (localX - i_26_ <= (Player.localPlayer.pathX[0])) && (localX + i_26_ >= (Player.localPlayer.pathX[0])) && RSCanvas.anInt65 != 0 && volume > 0 && PacketBuffer.currentSound < 50) {
