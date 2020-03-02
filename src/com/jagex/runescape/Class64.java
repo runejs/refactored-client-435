@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -9,6 +12,7 @@ import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.util.Signlink;
 
 import java.io.EOFException;
@@ -94,14 +98,14 @@ public class Class64 implements Runnable {
             int i_6_ = (i_2_ & 0x1fffcccc) >> 14;
             if(i != i_2_) {
                 i = i_2_;
-                if(i_5_ == 2 && (Npc.aScene_3301.method141(Player.anInt3267, i_3_, i_4_, i_2_)) >= 0) {
+                if(i_5_ == 2 && (Npc.aScene_3301.getArrangement(Player.anInt3267, i_3_, i_4_, i_2_)) >= 0) {
                     GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_6_);
                     if(gameObjectDefinition.configChangeDest != null)
                         gameObjectDefinition = gameObjectDefinition.method611(-20);
                     if(gameObjectDefinition == null)
                         continue;
                     if(Class8.anInt301 == 1) {
-                        OverlayDefinition.method558(i_2_, Main.aClass1_1763, i_4_, -501, i_3_, 5, (Class40_Sub5_Sub17_Sub6.method832(106, (new RSString[]{(Npc.aClass1_3295), Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.name}))));
+                        OverlayDefinition.method558(i_2_, Main.aClass1_1763, i_4_, -501, i_3_, 5, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{(Npc.aClass1_3295), Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.name}))));
                         Class44.anInt1045++;
                     } else if(Main.anInt1773 != 1) {
                         RSString[] class1s = gameObjectDefinition.actions;
@@ -123,14 +127,14 @@ public class Class64 implements Runnable {
                                         i_8_ = 27;
                                     if(i_7_ == 4)
                                         i_8_ = 1002;
-                                    OverlayDefinition.method558(i_2_, class1s[i_7_], i_4_, -501, i_3_, i_8_, (Class40_Sub5_Sub17_Sub6.method832(-91, (new RSString[]{(Renderable.aClass1_2862), (gameObjectDefinition.name)}))));
+                                    OverlayDefinition.method558(i_2_, class1s[i_7_], i_4_, -501, i_3_, i_8_, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{(Renderable.aClass1_2862), (gameObjectDefinition.name)}))));
                                 }
                             }
                         }
-                        OverlayDefinition.method558(gameObjectDefinition.anInt2538 << 14, Class40_Sub5_Sub15.prefix_examine, i_4_, -501, i_3_, 1004, (Class40_Sub5_Sub17_Sub6.method832(113, (new RSString[]{Renderable.aClass1_2862, gameObjectDefinition.name}))));
+                        OverlayDefinition.method558(gameObjectDefinition.anInt2538 << 14, Class40_Sub5_Sub15.prefix_examine, i_4_, -501, i_3_, 1004, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Renderable.aClass1_2862, gameObjectDefinition.name}))));
                     } else if((ItemDefinition.anInt2815 & 0x4) == 4) {
                         Renderable.anInt2863++;
-                        OverlayDefinition.method558(i_2_, Class38_Sub1.aClass1_1918, i_4_, -501, i_3_, 32, (Class40_Sub5_Sub17_Sub6.method832(111, (new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.name}))));
+                        OverlayDefinition.method558(i_2_, Class38_Sub1.aClass1_1918, i_4_, -501, i_3_, 32, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.name}))));
                     }
                 }
                 if(i_5_ == 1) {
@@ -166,13 +170,13 @@ public class Class64 implements Runnable {
                     Class40_Sub5_Sub1.method545(i_4_, false, i_3_, class40_sub5_sub17_sub4_sub1, i_6_);
                 }
                 if(i_5_ == 3) {
-                    Class45 class45 = (Class10.aClass45ArrayArrayArray357[Player.anInt3267][i_3_][i_4_]);
+                    Class45 class45 = (Wall.aClass45ArrayArrayArray357[Player.anInt3267][i_3_][i_4_]);
                     if(class45 != null) {
                         for(Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3 = ((Class40_Sub5_Sub17_Sub3) class45.method901((byte) -95)); class40_sub5_sub17_sub3 != null; class40_sub5_sub17_sub3 = ((Class40_Sub5_Sub17_Sub3) class45.method912(4))) {
                             ItemDefinition class40_sub5_sub16 = (ItemDefinition.forId(class40_sub5_sub17_sub3.anInt3067, 10));
                             if(Class8.anInt301 == 1) {
                                 Class44.anInt1036++;
-                                OverlayDefinition.method558(class40_sub5_sub17_sub3.anInt3067, Main.aClass1_1763, i_4_, -501, i_3_, 47, (Class40_Sub5_Sub17_Sub6.method832(115, (new RSString[]{(Npc.aClass1_3295), Class5.aClass1_206, (class40_sub5_sub16.name)}))));
+                                OverlayDefinition.method558(class40_sub5_sub17_sub3.anInt3067, Main.aClass1_1763, i_4_, -501, i_3_, 47, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{(Npc.aClass1_3295), Class5.aClass1_206, (class40_sub5_sub16.name)}))));
                             } else if(Main.anInt1773 != 1) {
                                 RSString[] class1s = class40_sub5_sub16.groundOptions;
                                 Class56.anInt1319++;
@@ -181,8 +185,8 @@ public class Class64 implements Runnable {
                                 for(int i_15_ = 4; i_15_ >= 0; i_15_--) {
                                     if(class1s == null || class1s[i_15_] == null) {
                                         if(i_15_ == 2) {
-                                            Class10.anInt339++;
-                                            OverlayDefinition.method558((class40_sub5_sub17_sub3.anInt3067), Class27.takeStringInstance, i_4_, -501, i_3_, 3, (Class40_Sub5_Sub17_Sub6.method832(123, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)}))));
+                                            Wall.anInt339++;
+                                            OverlayDefinition.method558((class40_sub5_sub17_sub3.anInt3067), Class27.takeStringInstance, i_4_, -501, i_3_, 3, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)}))));
                                         }
                                     } else {
                                         OverlayDefinition.anInt2331++;
@@ -197,13 +201,12 @@ public class Class64 implements Runnable {
                                             i_16_ = 8;
                                         if(i_15_ == 4)
                                             i_16_ = 36;
-                                        OverlayDefinition.method558((class40_sub5_sub17_sub3.anInt3067), class1s[i_15_], i_4_, -501, i_3_, i_16_, (Class40_Sub5_Sub17_Sub6.method832(-97, (new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)}))));
+                                        OverlayDefinition.method558((class40_sub5_sub17_sub3.anInt3067), class1s[i_15_], i_4_, -501, i_3_, i_16_, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)}))));
                                     }
                                 }
-                                OverlayDefinition.method558(class40_sub5_sub17_sub3.anInt3067, Class40_Sub5_Sub15.prefix_examine, i_4_, -501, i_3_, 1003, (Class40_Sub5_Sub17_Sub6.method832(89, new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)})));
+                                OverlayDefinition.method558(class40_sub5_sub17_sub3.anInt3067, Class40_Sub5_Sub15.prefix_examine, i_4_, -501, i_3_, 1003, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)})));
                             } else if((0x1 & ItemDefinition.anInt2815) == 1) {
-                                OverlayDefinition.method558(class40_sub5_sub17_sub3.anInt3067, Class38_Sub1.aClass1_1918, i_4_, -501, i_3_, 15, (Class40_Sub5_Sub17_Sub6.method832(-67, new RSString[]{FloorDecoration.aClass1_611, Class5.aClass1_206, (class40_sub5_sub16.name)})));
-                                Class58.anInt1368++;
+                                OverlayDefinition.method558(class40_sub5_sub17_sub3.anInt3067, Class38_Sub1.aClass1_1918, i_4_, -501, i_3_, 15, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{FloorDecoration.aClass1_611, Class5.aClass1_206, (class40_sub5_sub16.name)})));
                             }
                         }
                     }

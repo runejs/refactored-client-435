@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
 
 public abstract class Class8_Sub1 extends Class8 implements Runnable {

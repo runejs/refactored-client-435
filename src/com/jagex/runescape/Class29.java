@@ -1,8 +1,11 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class29 {
     public static int anInt669;

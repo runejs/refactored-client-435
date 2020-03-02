@@ -1,10 +1,14 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.awt.*;
 import java.util.Calendar;

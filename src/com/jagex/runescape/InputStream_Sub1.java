@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.CacheIndex;
+
 import java.io.InputStream;
 
 public class InputStream_Sub1 extends InputStream {

@@ -1,5 +1,6 @@
-package com.jagex.runescape;
+package com.jagex.runescape.cache;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 

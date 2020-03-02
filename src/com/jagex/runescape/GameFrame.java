@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
@@ -9,6 +10,8 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
 
 import java.awt.*;
@@ -86,7 +89,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
                         i_4_ -= 357;
                         i_3_ -= 17;
                     }
-                    if((-10 + Class19.anInt475 > i_3_) || 10 + VertexNormal.anInt1086 + Class19.anInt475 < i_3_ || (i_4_ < Main.anInt1758 + -10) || ((i_4_ > Main.anInt1758 + CollisionMap.anInt168 + 10))) {
+                    if((-10 + InteractiveObject.anInt475 > i_3_) || 10 + VertexNormal.anInt1086 + InteractiveObject.anInt475 < i_3_ || (i_4_ < Main.anInt1758 + -10) || ((i_4_ > Main.anInt1758 + CollisionMap.anInt168 + 10))) {
                         if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
                             ISAAC.redrawTabArea = true;
                         Class4.menuOpen = false;
@@ -95,7 +98,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
                     }
                 }
                 if(i == 1) {
-                    int i_5_ = Class19.anInt475;
+                    int i_5_ = InteractiveObject.anInt475;
                     int i_6_ = Main.anInt1758;
                     int i_7_ = VertexNormal.anInt1086;
                     int i_8_ = Class57.anInt1338;
@@ -130,7 +133,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
                 if(i == 1 && ActorDefinition.anInt2394 > 0) {
                     int i_0_ = (Class38.anIntArray884[ActorDefinition.anInt2394 - 1]);
                     if(i_0_ == 53 || i_0_ == 25 || i_0_ == 55 || i_0_ == 48 || i_0_ == 24 || i_0_ == 52 || i_0_ == 6 || i_0_ == 31 || i_0_ == 43 || i_0_ == 11 || i_0_ == 19 || i_0_ == 1006) {
-                        int i_1_ = (Class19.anIntArray483[ActorDefinition.anInt2394 - 1]);
+                        int i_1_ = (InteractiveObject.anIntArray483[ActorDefinition.anInt2394 - 1]);
                         int i_2_ = (Class59.anIntArray1393[-1 + ActorDefinition.anInt2394]);
                         Widget widget = Widget.forId(i_2_);
                         if(widget.itemSwapable || widget.itemDeletesDraged) {
@@ -139,7 +142,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
                             SceneTile.activeInterfaceType = 2;
                             Class48.modifiedWidgetId = i_2_;
                             ItemDefinition.anInt2798 = RSString.anInt1668;
-                            Class58.selectedInventorySlot = i_1_;
+                            GroundItemTile.selectedInventorySlot = i_1_;
                             if(i_2_ >> 16 == HuffmanEncoding.openScreenWidgetId)
                                 SceneTile.activeInterfaceType = 1;
                             if(Class43.openChatboxWidgetId == i_2_ >> 16)
@@ -210,9 +213,11 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
     }
 
     private void mouseWheelDragged(int i, int j) {
+        Class45.anInt1073 = 0;
+
         if(!mouseWheelDown)
             return;
-        Class10.cameraVelocityHorizontal += i * 3;
+        Wall.cameraVelocityHorizontal += i * 3;
         Class60.cameraVelocityVertical += (j << 1);
     }
 
@@ -248,6 +253,8 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
 
     public void mouseWheelMoved(MouseWheelEvent event) {
         int rotation = event.getWheelRotation();
+        Class45.anInt1073 = 0;
+
         if(!handleInterfaceScrolling(event)) {
             if((cameraZoom <= 300 && rotation <= 0) || (cameraZoom >= 1200 && rotation >= 0)) {
                 return;

@@ -44,12 +44,12 @@ public class Class39 implements Runnable {
         if(arg0.anInt2027 == 1)
             i = (Npc.aScene_3301.method91(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
         if(arg0.anInt2027 == 2)
-            i = (Npc.aScene_3301.method110(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
+            i = (Npc.aScene_3301.getLocationHash(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
         if(arg0.anInt2027 == 3)
-            i = (Npc.aScene_3301.method93(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
+            i = (Npc.aScene_3301.getFloorDecorationHash(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
         if(arg1 == 19813) {
             if(i != 0) {
-                int i_3_ = (Npc.aScene_3301.method141(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038, i));
+                int i_3_ = (Npc.aScene_3301.getArrangement(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038, i));
                 i_0_ = (0x1fffe692 & i) >> 14;
                 i_2_ = (i_3_ & 0xde) >> 6;
                 i_1_ = i_3_ & 0x1f;
@@ -64,7 +64,7 @@ public class Class39 implements Runnable {
         RSCanvas.anInt54 = 20;
         anInt916++;
         try {
-            Class5.aClass22_189 = ((Class22) Class.forName("com.jagex.runescape.Class22_Sub2_Sub1").newInstance()); // Java Midi Based
+            Class5.aClass22_189 = new Class22_Sub2_Sub1(); // Java Midi Based
             return true;
         } catch(Throwable throwable) {
             Runnable_Impl1 runnable_impl1 = arg0.method391(1048576);

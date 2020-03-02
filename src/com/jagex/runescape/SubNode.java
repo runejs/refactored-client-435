@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.scene.GroundItemTile;
 
 public class SubNode extends Node {
     public static int anInt2081;
@@ -43,7 +44,7 @@ public class SubNode extends Node {
         class40_sub5_sub14_sub2.imgWidth = Class17.anIntArray456[0];
         class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[0];
         class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
-        class40_sub5_sub14_sub2.imgPixels = Class58.aByteArrayArray1370[arg0];
+        class40_sub5_sub14_sub2.imgPixels = GroundItemTile.aByteArrayArray1370[arg0];
         ActorDefinition.method569();
         return class40_sub5_sub14_sub2;
     }

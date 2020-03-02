@@ -1,11 +1,15 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
 
 public class ISAAC {
@@ -92,7 +96,7 @@ public class ISAAC {
         if(Actor.anInt3151 > 16)
             Actor.anInt3151 = 16;
         for(int i = 0; i < 4; i++) {
-            byte[][] is = Class19.aByteArrayArrayArray492[i];
+            byte[][] is = InteractiveObject.aByteArrayArrayArray492[i];
             int i_3_ = (int) Math.sqrt(5100.0);
             int i_4_ = i_3_ * 768 >> 8;
             for(int i_5_ = 1; i_5_ < 103; i_5_++) {
@@ -261,7 +265,7 @@ public class ISAAC {
             GameFrame.tile_overlayids[i] = null;
             OverlayDefinition.tile_underlay_path[i] = null;
             Class35.tile_overlay_rotation[i] = null;
-            Class19.aByteArrayArrayArray492[i] = null;
+            InteractiveObject.aByteArrayArrayArray492[i] = null;
         }
         arg0.method118(-50, -10, -50);
         for(int i = 0; i < 104; i++) {

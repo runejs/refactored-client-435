@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -50,7 +51,7 @@ public class Class17 {
             Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class34.aClass23_841.method329(false));
             if(class40_sub5_sub13 == null)
                 break;
-            Class19.aClass27_485.method367(true, class40_sub5_sub13);
+            InteractiveObject.aClass27_485.method367(true, class40_sub5_sub13);
             GameObjectDefinition.aClass23_2545.put(class40_sub5_sub13, (byte) -121, (class40_sub5_sub13.key));
             Class42.anInt1006--;
             HashTable.anInt554++;
@@ -84,28 +85,26 @@ public class Class17 {
         return Class49.anInt1147++;
     }
 
-    public static void method275(int arg0, long arg1) {
+    public static void method275(long arg1) {
         if(arg1 != 0L) {
             if(Class42.anInt1008 >= 100)
                 Class44.addChatMessage(HuffmanEncoding.blank_string, Landscape.aClass1_1180, 0);
             else {
-                RSString class1 = Class60.method991(arg0 ^ ~0x6004, arg1).method85(-4305);
+                RSString class1 = Class60.method991((2 ^ 0x606c) ^ ~0x6004, arg1).method85(-4305);
                 for(int i = 0; i < Class42.anInt1008; i++) {
-                    if(arg1 == Class53.aLongArray1267[i]) {
-                        Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832(arg0 ^ ~0x604a, (new RSString[]{class1, Class68.aClass1_1628}))), 0);
+                    if(arg1 == WallDecoration.ignores[i]) {
+                        Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{class1, Class68.aClass1_1628}))), 0);
                         return;
                     }
                 }
-                for(int i = 0; Class40_Sub5_Sub17_Sub3.anInt3060 > i; i++) {
+                for(int i = 0; Class40_Sub5_Sub17_Sub3.friendsCount > i; i++) {
                     if(Class59.aLongArray1397[i] == arg1) {
-                        Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832(-100, (new RSString[]{Class44.aClass1_1032, class1, (Renderable.aClass1_2864)}))), 0);
+                        Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class44.aClass1_1032, class1, (Renderable.aClass1_2864)}))), 0);
                         return;
                     }
                 }
                 if(!class1.equals((Player.localPlayer.playerName))) {
-                    if(arg0 != 24686)
-                        aClass68_462 = null;
-                    Class53.aLongArray1267[Class42.anInt1008++] = arg1;
+                    WallDecoration.ignores[Class42.anInt1008++] = arg1;
                     ISAAC.redrawTabArea = true;
                     Class32.packetBuffer.putPacket(251);
                     Class32.packetBuffer.putLongBE(arg1);

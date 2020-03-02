@@ -7,6 +7,7 @@ package tech.henning.fourthreefive.OldEngine;/*
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.io.*;
 import java.util.ArrayList;

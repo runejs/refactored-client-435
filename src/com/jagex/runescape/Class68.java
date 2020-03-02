@@ -1,7 +1,9 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
 
 import java.awt.*;
@@ -38,7 +40,7 @@ public abstract class Class68 {
 
     public static void method1040(Component arg0, int arg1, Signlink arg2) {
         try {
-            Class8_Sub1 class8_sub1 = ((Class8_Sub1) Class.forName("com.jagex.runescape.Class8_Sub1_Sub2").newInstance());
+            Class8_Sub1 class8_sub1 = new Class8_Sub1_Sub2();
             class8_sub1.method222(arg2, 2048);
             CollisionMap.aClass8_166 = class8_sub1;
         } catch(Throwable throwable) {

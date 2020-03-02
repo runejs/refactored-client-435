@@ -1,10 +1,15 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.tile.FloorDecoration;
 
 public class Class33 {
     public static RSString aClass1_777 = RSString.CreateString("Cabbage");
@@ -278,7 +283,6 @@ public class Class33 {
         }
         if(arg1 == 4) {
             Class32.packetBuffer.putPacket(53);
-            Class58.anInt1369++;
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
         }

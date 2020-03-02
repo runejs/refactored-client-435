@@ -1,6 +1,7 @@
 package com.jagex.runescape.media.renderable;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;

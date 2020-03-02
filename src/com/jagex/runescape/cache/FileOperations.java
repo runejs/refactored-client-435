@@ -1,5 +1,5 @@
-package com.jagex.runescape;/*
- * Class: com.jagex.runescape.FileOperations.java
+package com.jagex.runescape.cache;/*
+ * Class: com.jagex.runescape.cache.FileOperations.java
  * Reads a separate file.
  * */
 

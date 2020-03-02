@@ -1,10 +1,13 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class24 {
     public static RSString aClass1_575 = RSString.CreateString("Freund hinzuf-Ugen");

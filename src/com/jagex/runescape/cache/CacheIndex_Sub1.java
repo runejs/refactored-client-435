@@ -1,5 +1,6 @@
-package com.jagex.runescape;
+package com.jagex.runescape.cache;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.media.renderable.actor.Npc;
 
@@ -71,7 +72,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
         anInt1804++;
         if(arg1 != 255)
             method203(83);
-        return (Class40_Sub5_Sub17_Sub6.method832(-110, (new RSString[]{HashTable.method334(0xff & arg0 >> 24, -1), Node.aClass1_975, HashTable.method334((arg0 & 0xffca88) >> 16, -1), Node.aClass1_975, HashTable.method334((0xfff8 & arg0) >> 8, -1), Node.aClass1_975, HashTable.method334(0xff & arg0, -1)})));
+        return (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{HashTable.method334(0xff & arg0 >> 24, -1), Node.aClass1_975, HashTable.method334((arg0 & 0xffca88) >> 16, -1), Node.aClass1_975, HashTable.method334((0xfff8 & arg0) >> 8, -1), Node.aClass1_975, HashTable.method334(0xff & arg0, -1)})));
 
     }
 

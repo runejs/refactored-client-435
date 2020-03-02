@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
@@ -10,6 +12,8 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -89,7 +93,7 @@ public class SpotAnimDefinition extends SubNode {
             }
             if(Class40_Sub3.anInt2032 == 1) {
                 if(FloorDecoration.aClass15_607 == null) {
-                    FloorDecoration.aClass15_607 = ISAAC.aClass31_521.method395(3, Class10.anInt350);
+                    FloorDecoration.aClass15_607 = ISAAC.aClass31_521.method395(3, Wall.anInt350);
                 }
                 if(FloorDecoration.aClass15_607.anInt434 == 2) {
                     throw new IOException();
@@ -214,13 +218,13 @@ public class SpotAnimDefinition extends SubNode {
             }
             if(Class40_Sub3.anInt2032 == 8) {
                 Main.anInt1756 = 0;
-                Class33.method411((Class40_Sub5_Sub17_Sub6.method832(-83, (new RSString[]{HashTable.method334(Class33.anInt784 / 60, -1), Class38.aClass1_883}))), Class8.aClass1_294, RSCanvas.aClass1_67, (byte) -82);
+                Class33.method411((Class40_Sub5_Sub17_Sub6.method832((new RSString[]{HashTable.method334(Class33.anInt784 / 60, -1), Class38.aClass1_883}))), Class8.aClass1_294, RSCanvas.aClass1_67, (byte) -82);
                 if(--Class33.anInt784 <= 0) {
                     Class40_Sub3.anInt2032 = 0;
                 }
             } else {
                 if(Class40_Sub3.anInt2032 == 9 && Class40_Sub6.aClass64_2098.method1014(-121) >= 8) {
-                    Class19.anInt493 = Class40_Sub6.aClass64_2098.method1016(99);
+                    InteractiveObject.playerRights = Class40_Sub6.aClass64_2098.method1016(99);
                     Class22.accountFlagged = Class40_Sub6.aClass64_2098.method1016(38) == 1;
                     Class30.anInt708 = Class40_Sub6.aClass64_2098.method1016(86);
                     Class30.anInt708 <<= 8;
@@ -248,10 +252,10 @@ public class SpotAnimDefinition extends SubNode {
                     if(Main.anInt1756 > 2000) {
                         if(OverlayDefinition.anInt2321 < 1) {
                             OverlayDefinition.anInt2321++;
-                            if(OverlayDefinition.anInt2340 == Class10.anInt350) {
-                                Class10.anInt350 = CollisionMap.anInt172;
+                            if(OverlayDefinition.anInt2340 == Wall.anInt350) {
+                                Wall.anInt350 = CollisionMap.anInt172;
                             } else {
-                                Class10.anInt350 = OverlayDefinition.anInt2340;
+                                Wall.anInt350 = OverlayDefinition.anInt2340;
                             }
                             Class40_Sub3.anInt2032 = 0;
                         } else {
@@ -262,10 +266,10 @@ public class SpotAnimDefinition extends SubNode {
             }
         } catch(IOException ioexception) {
             if(OverlayDefinition.anInt2321 < 1) {
-                if(Class10.anInt350 == OverlayDefinition.anInt2340) {
-                    Class10.anInt350 = CollisionMap.anInt172;
+                if(Wall.anInt350 == OverlayDefinition.anInt2340) {
+                    Wall.anInt350 = CollisionMap.anInt172;
                 } else {
-                    Class10.anInt350 = OverlayDefinition.anInt2340;
+                    Wall.anInt350 = OverlayDefinition.anInt2340;
                 }
                 OverlayDefinition.anInt2321++;
                 Class40_Sub3.anInt2032 = 0;
@@ -283,7 +287,7 @@ public class SpotAnimDefinition extends SubNode {
         SpotAnimDefinition spotAnimDefinition = ((SpotAnimDefinition) Class43.aClass9_1014.get((long) arg0, (byte) 59));
         if(spotAnimDefinition != null)
             return spotAnimDefinition;
-        byte[] is = Class19.aCacheIndex_488.getFile(arg0, 13);
+        byte[] is = InteractiveObject.aCacheIndex_488.getFile(arg0, 13);
         spotAnimDefinition = new SpotAnimDefinition();
         spotAnimDefinition.id = arg0;
         if(is != null)

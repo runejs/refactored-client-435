@@ -1,6 +1,8 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.audio.Effect;
+import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.FileOperations;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -11,6 +13,8 @@ import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.util.CollisionMap;
 import tech.henning.fourthreefive.OldEngine.MapDecompressor;
 
 import java.io.ByteArrayInputStream;
@@ -123,7 +127,7 @@ public class Landscape {
                 }
             }
             if(Class13.anIntArray421[i] != -1 && Class52.aByteArrayArray1217[i] == null) {
-                Class52.aByteArrayArray1217[i] = (Renderable.aClass6_Sub1_2857.method176(Class13.anIntArray421[i], 0, Class44.anIntArrayArray1030[i], 20582));
+                Class52.aByteArrayArray1217[i] = (Renderable.aClass6_Sub1_2857.method176(Class13.anIntArray421[i], 0, Class44.anIntArrayArray1030[i]));
                 if(Class52.aByteArrayArray1217[i] == null) {
                     Class37.anInt874++;
                     bool = false;
@@ -138,7 +142,7 @@ public class Landscape {
                 if(is != null) {
                     int i_2_ = ((ISAAC.anIntArray528[i] & 0xff) * 64 - Class26.anInt635);
                     int i_3_ = ((ISAAC.anIntArray528[i] >> 8) * 64 - SpotAnimDefinition.anInt2307);
-                    if(Class58.aBoolean1349) {
+                    if(GroundItemTile.aBoolean1349) {
                         i_3_ = 10;
                         i_2_ = 10;
                     }
@@ -163,7 +167,7 @@ public class Landscape {
                 int i = RSString.aByteArrayArray1715.length;
                 Class37.method436(118);
                 Class27.method364((byte) -34, true);
-                if(!Class58.aBoolean1349) {
+                if(!GroundItemTile.aBoolean1349) {
                     for(int i_6_ = 0; i > i_6_; i_6_++) {
                         int i_7_ = (-Class26.anInt635 + ((0xff & ISAAC.anIntArray528[i_6_]) * 64));
                         int i_8_ = (-SpotAnimDefinition.anInt2307 + 64 * (ISAAC.anIntArray528[i_6_] >> 8));
@@ -180,12 +184,13 @@ public class Landscape {
                     }
                     Class27.method364((byte) -34, true);
                     for(int i_12_ = 0; i > i_12_; i_12_++) {
-//                        System.out.println("Requesting map: "+Class13.anIntArray421[i_12_]);
+                        //                        System.out.println("Requesting map: "+Class13.anIntArray421[i_12_]);
                         // load maps in here
                         byte[] is = Class52.aByteArrayArray1217[i_12_];
                         if(FileOperations.FileExists("./data/maps/" + (Class13.anIntArray421[i_12_]) + ".cmap")) {
                             MapDecompressor.objectLoader("./data/maps/" + (Class13.anIntArray421[i_12_]) + ".cmap");
                         } else if(FileOperations.FileExists("./data/maps/" + (Class13.anIntArray421[i_12_]) + ".dat")) {
+                            System.out.println("reading file: " + "./data/maps/" + (Class13.anIntArray421[i_12_]) + ".dat");
                             is = FileOperations.ReadFile("./data/maps/" + (Class13.anIntArray421[i_12_]) + ".dat");
                         } else {
                             try {
@@ -197,10 +202,12 @@ public class Landscape {
                             int i_13_ = (-SpotAnimDefinition.anInt2307 + (ISAAC.anIntArray528[i_12_] >> 8) * 64);
                             int i_14_ = (64 * (0xff & ISAAC.anIntArray528[i_12_]) - Class26.anInt635);
                             GameObject.loadObjectBlock(i_13_, Npc.aScene_3301, aCollisionMapArray1167, is, i_14_);
+                        } else {
+                            System.out.println("Missing map: " + Class13.anIntArray421[i_12_]);
                         }
                     }
                 }
-                if(Class58.aBoolean1349) {
+                if(GroundItemTile.aBoolean1349) {
                     for(int i_15_ = 0; i_15_ < 4; i_15_++) {
                         for(int i_16_ = 0; i_16_ < 13; i_16_++) {
                             for(int i_17_ = 0; i_17_ < 13; i_17_++) {
@@ -277,7 +284,7 @@ public class Landscape {
                     Class32.packetBuffer.putPacket(121);
                     Class32.packetBuffer.putIntBE(1057001181);
                 }
-                if(!Class58.aBoolean1349) {
+                if(!GroundItemTile.aBoolean1349) {
                     int i_42_ = (-6 + Class51.anInt1202) / 8;
                     int i_43_ = (Class17.anInt448 - 6) / 8;
                     int i_44_ = (6 + Class17.anInt448) / 8;
@@ -285,8 +292,8 @@ public class Landscape {
                     for(int i_46_ = -1 + i_42_; i_46_ <= 1 + i_45_; i_46_++) {
                         for(int i_47_ = -1 + i_43_; i_47_ <= i_44_ + 1; i_47_++) {
                             if(i_42_ > i_46_ || (i_46_ > i_45_) || i_47_ < i_43_ || (i_47_ > i_44_)) {
-                                Renderable.aClass6_Sub1_2857.method195(0, (Class40_Sub5_Sub17_Sub6.method832(74, (new RSString[]{Class45.aClass1_1085, HashTable.method334(i_46_, -1), Class8.aClass1_303, HashTable.method334(i_47_, -1)}))));
-                                Renderable.aClass6_Sub1_2857.method195(0, (Class40_Sub5_Sub17_Sub6.method832(-102, (new RSString[]{HashTable.aClass1_553, HashTable.method334(i_46_, -1), Class8.aClass1_303, HashTable.method334(i_47_, -1)}))));
+                                Renderable.aClass6_Sub1_2857.method195(0, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class45.aClass1_1085, HashTable.method334(i_46_, -1), Class8.aClass1_303, HashTable.method334(i_47_, -1)}))));
+                                Renderable.aClass6_Sub1_2857.method195(0, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{HashTable.aClass1_553, HashTable.method334(i_46_, -1), Class8.aClass1_303, HashTable.method334(i_47_, -1)}))));
                             }
                         }
                     }

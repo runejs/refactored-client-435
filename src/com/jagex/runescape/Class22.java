@@ -10,6 +10,8 @@ import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.util.CollisionMap;
 
 public abstract class Class22 {
     public static int anInt531;
@@ -90,7 +92,7 @@ public abstract class Class22 {
             aClass40_Sub1Array534 = null;
         for(int i_8_ = 0; i_8_ < 104; i_8_++) {
             for(int i_9_ = 0; i_9_ < 104; i_9_++) {
-                int i_10_ = (Npc.aScene_3301.method93(Player.anInt3267, i_8_, i_9_));
+                int i_10_ = (Npc.aScene_3301.getFloorDecorationHash(Player.anInt3267, i_8_, i_9_));
                 if(i_10_ != 0) {
                     i_10_ = 0x7fff & i_10_ >> 14;
                     int i_11_ = (GameObjectDefinition.getDefinition(i_10_).icon);
@@ -159,7 +161,7 @@ public abstract class Class22 {
             anInt531++;
             int i = (Npc.method795((byte) -70, arg1).anInt2633);
             if(i != 0) {
-                int i_21_ = Class58.varbitmasks[arg1];
+                int i_21_ = GroundItemTile.varbitmasks[arg1];
                 if(i == 1) {
                     if(i_21_ == 1) {
                         R3D.method711(0.9);

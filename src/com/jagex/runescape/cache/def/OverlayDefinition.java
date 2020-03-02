@@ -5,6 +5,9 @@ import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.util.CollisionMap;
 
 public class OverlayDefinition extends SubNode {
     public static RSString aClass1_2314;
@@ -91,10 +94,10 @@ public class OverlayDefinition extends SubNode {
             if(arg6.length() <= 0)
                 Landscape.aClass1Array1184[ActorDefinition.anInt2394] = arg1;
             else
-                Landscape.aClass1Array1184[ActorDefinition.anInt2394] = Class40_Sub5_Sub17_Sub6.method832(-77, (new RSString[]{arg1, (VertexNormal.aClass1_1117), arg6}));
+                Landscape.aClass1Array1184[ActorDefinition.anInt2394] = Class40_Sub5_Sub17_Sub6.method832((new RSString[]{arg1, (VertexNormal.aClass1_1117), arg6}));
             Class38.anIntArray884[ActorDefinition.anInt2394] = arg5;
             Class33.anIntArray791[ActorDefinition.anInt2394] = arg0;
-            Class19.anIntArray483[ActorDefinition.anInt2394] = arg4;
+            InteractiveObject.anIntArray483[ActorDefinition.anInt2394] = arg4;
             Class59.anIntArray1393[ActorDefinition.anInt2394] = arg2;
             ActorDefinition.anInt2394++;
         }
@@ -155,7 +158,7 @@ public class OverlayDefinition extends SubNode {
 
         int len = mapX * mapX + (mapY * mapY);
         if(len > 4225 && len < 90000) {
-            int theta = 0x7ff & Class58.cameraHorizontal + Class43.cameraYawOffset;
+            int theta = 0x7ff & GroundItemTile.cameraHorizontal + Class43.cameraYawOffset;
             int sine = Model.SINE[theta];
             int cosine = Model.COSINE[theta];
             sine = (sine * 256) / (Class51.mapZoomOffset + 256);

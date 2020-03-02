@@ -1,10 +1,13 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
 
 public class Class38_Sub1 extends Class38 {
@@ -56,17 +59,17 @@ public class Class38_Sub1 extends Class38 {
                         int i_3_ = 329 + -(13 * i);
                         i++;
                         if(Class13.mouseX > 4 && ((i_3_ + -10 < Landscape.mouseY + -4)) && ((-4 + Landscape.mouseY <= i_3_ + 3))) {
-                            int i_4_ = 25 + (Class53.fontNormal.getStringWidth(Class40_Sub5_Sub17_Sub6.method832(arg0 + -9666, (new RSString[]{Class40_Sub5_Sub6.aClass1_2458, Class12.aClass1_392, class1, (Actor.chatMessages[i_1_])}))));
+                            int i_4_ = 25 + (WallDecoration.fontNormal.getStringWidth(Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class40_Sub5_Sub6.aClass1_2458, Class12.aClass1_392, class1, (Actor.chatMessages[i_1_])}))));
                             if(i_4_ > 450)
                                 i_4_ = 450;
                             if(Class13.mouseX < 4 + i_4_) {
                                 Class60.anInt1400++;
-                                if(Class19.anInt493 >= 1) {
-                                    OverlayDefinition.method558(0, Class22_Sub1.aClass1_1865, 0, -501, 0, 2028, (Class40_Sub5_Sub17_Sub6.method832(-97, new RSString[]{Class26.aClass1_620, class1})));
+                                if(InteractiveObject.playerRights >= 1) {
+                                    OverlayDefinition.method558(0, Class22_Sub1.aClass1_1865, 0, -501, 0, 2028, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class26.aClass1_620, class1})));
                                     CollisionMap.anInt158++;
                                 }
-                                OverlayDefinition.method558(0, Class38.aClass1_885, 0, -501, 0, 2051, (Class40_Sub5_Sub17_Sub6.method832(arg0 ^ 0x2613, new RSString[]{Class26.aClass1_620, class1})));
-                                OverlayDefinition.method558(0, FloorDecoration.aClass1_591, 0, arg0 ^ ~0x27d3, 0, 2045, (Class40_Sub5_Sub17_Sub6.method832(arg0 ^ ~0x2660, new RSString[]{Class26.aClass1_620, class1})));
+                                OverlayDefinition.method558(0, Class38.aClass1_885, 0, -501, 0, 2051, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class26.aClass1_620, class1})));
+                                OverlayDefinition.method558(0, FloorDecoration.aClass1_591, 0, arg0 ^ ~0x27d3, 0, 2045, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class26.aClass1_620, class1})));
                             }
                         }
                         if(i >= 5)
@@ -185,11 +188,11 @@ public class Class38_Sub1 extends Class38 {
         Class24.anIntArray581[i] = arg2;
         if(arg4 < 91)
             return false;
-        Class10.anIntArray351[i++] = arg9;
+        Wall.anIntArray351[i++] = arg9;
         int i_12_ = Class24.anIntArray581.length;
         int[][] is = (Landscape.aCollisionMapArray1167[Player.anInt3267].anIntArrayArray150);
         while(i_10_ != i) {
-            i_9_ = Class10.anIntArray351[i_10_];
+            i_9_ = Wall.anIntArray351[i_10_];
             i_11_ = Class24.anIntArray581[i_10_];
             i_10_ = (i_10_ + 1) % i_12_;
             if(i_11_ == arg3 && i_9_ == arg10) {
@@ -214,56 +217,56 @@ public class Class38_Sub1 extends Class38 {
             int i_13_ = Landscape.anIntArrayArray1175[i_11_][i_9_] + 1;
             if(i_11_ > 0 && Class57.anIntArrayArray1335[-1 + i_11_][i_9_] == 0 && (0x1280108 & is[i_11_ - 1][i_9_]) == 0) {
                 Class24.anIntArray581[i] = i_11_ - 1;
-                Class10.anIntArray351[i] = i_9_;
+                Wall.anIntArray351[i] = i_9_;
                 i = (1 + i) % i_12_;
                 Class57.anIntArrayArray1335[-1 + i_11_][i_9_] = 2;
                 Landscape.anIntArrayArray1175[i_11_ - 1][i_9_] = i_13_;
             }
             if(i_11_ < 103 && Class57.anIntArrayArray1335[i_11_ + 1][i_9_] == 0 && (is[1 + i_11_][i_9_] & 0x1280180) == 0) {
                 Class24.anIntArray581[i] = i_11_ + 1;
-                Class10.anIntArray351[i] = i_9_;
+                Wall.anIntArray351[i] = i_9_;
                 i = (i + 1) % i_12_;
                 Class57.anIntArrayArray1335[i_11_ + 1][i_9_] = 8;
                 Landscape.anIntArrayArray1175[i_11_ + 1][i_9_] = i_13_;
             }
             if(i_9_ > 0 && Class57.anIntArrayArray1335[i_11_][i_9_ - 1] == 0 && (is[i_11_][-1 + i_9_] & 0x1280102) == 0) {
                 Class24.anIntArray581[i] = i_11_;
-                Class10.anIntArray351[i] = -1 + i_9_;
+                Wall.anIntArray351[i] = -1 + i_9_;
                 Class57.anIntArrayArray1335[i_11_][-1 + i_9_] = 1;
                 i = (i + 1) % i_12_;
                 Landscape.anIntArrayArray1175[i_11_][i_9_ - 1] = i_13_;
             }
             if(i_9_ < 103 && Class57.anIntArrayArray1335[i_11_][i_9_ + 1] == 0 && (is[i_11_][i_9_ + 1] & 0x1280120) == 0) {
                 Class24.anIntArray581[i] = i_11_;
-                Class10.anIntArray351[i] = 1 + i_9_;
+                Wall.anIntArray351[i] = 1 + i_9_;
                 Class57.anIntArrayArray1335[i_11_][i_9_ + 1] = 4;
                 Landscape.anIntArrayArray1175[i_11_][1 + i_9_] = i_13_;
                 i = (i + 1) % i_12_;
             }
             if(i_11_ > 0 && i_9_ > 0 && Class57.anIntArrayArray1335[-1 + i_11_][i_9_ - 1] == 0 && (is[i_11_ - 1][-1 + i_9_] & 0x128010e) == 0 && (0x1280108 & is[i_11_ + -1][i_9_]) == 0 && (is[i_11_][-1 + i_9_] & 0x1280102) == 0) {
                 Class24.anIntArray581[i] = -1 + i_11_;
-                Class10.anIntArray351[i] = i_9_ - 1;
+                Wall.anIntArray351[i] = i_9_ - 1;
                 i = (i + 1) % i_12_;
                 Class57.anIntArrayArray1335[i_11_ + -1][-1 + i_9_] = 3;
                 Landscape.anIntArrayArray1175[-1 + i_11_][i_9_ + -1] = i_13_;
             }
             if(i_11_ < 103 && i_9_ > 0 && Class57.anIntArrayArray1335[i_11_ + 1][-1 + i_9_] == 0 && ((is[1 + i_11_][-1 + i_9_] & 0x1280183) == 0) && (is[i_11_ + 1][i_9_] & 0x1280180) == 0 && (0x1280102 & is[i_11_][-1 + i_9_]) == 0) {
                 Class24.anIntArray581[i] = 1 + i_11_;
-                Class10.anIntArray351[i] = i_9_ - 1;
+                Wall.anIntArray351[i] = i_9_ - 1;
                 i = (i + 1) % i_12_;
                 Class57.anIntArrayArray1335[1 + i_11_][-1 + i_9_] = 9;
                 Landscape.anIntArrayArray1175[i_11_ + 1][-1 + i_9_] = i_13_;
             }
             if(i_11_ > 0 && i_9_ < 103 && Class57.anIntArrayArray1335[i_11_ + -1][i_9_ + 1] == 0 && ((0x1280138 & is[-1 + i_11_][1 + i_9_]) == 0) && (0x1280108 & is[i_11_ - 1][i_9_]) == 0 && (is[i_11_][i_9_ + 1] & 0x1280120) == 0) {
                 Class24.anIntArray581[i] = -1 + i_11_;
-                Class10.anIntArray351[i] = 1 + i_9_;
+                Wall.anIntArray351[i] = 1 + i_9_;
                 Class57.anIntArrayArray1335[i_11_ - 1][1 + i_9_] = 6;
                 Landscape.anIntArrayArray1175[-1 + i_11_][i_9_ + 1] = i_13_;
                 i = (1 + i) % i_12_;
             }
             if(i_11_ < 103 && i_9_ < 103 && Class57.anIntArrayArray1335[1 + i_11_][1 + i_9_] == 0 && (0x12801e0 & is[i_11_ + 1][i_9_ + 1]) == 0 && (0x1280180 & is[1 + i_11_][i_9_]) == 0 && (is[i_11_][1 + i_9_] & 0x1280120) == 0) {
                 Class24.anIntArray581[i] = 1 + i_11_;
-                Class10.anIntArray351[i] = i_9_ + 1;
+                Wall.anIntArray351[i] = i_9_ + 1;
                 i = (i + 1) % i_12_;
                 Class57.anIntArrayArray1335[1 + i_11_][1 + i_9_] = 12;
                 Landscape.anIntArrayArray1175[1 + i_11_][1 + i_9_] = i_13_;
@@ -307,14 +310,14 @@ public class Class38_Sub1 extends Class38 {
         }
         i_10_ = 0;
         Class24.anIntArray581[i_10_] = i_11_;
-        Class10.anIntArray351[i_10_++] = i_9_;
+        Wall.anIntArray351[i_10_++] = i_9_;
         int i_23_;
         int i_22_ = i_23_ = Class57.anIntArrayArray1335[i_11_][i_9_];
         while(i_11_ != arg2 || arg9 != i_9_) {
             if(i_22_ != i_23_) {
                 i_23_ = i_22_;
                 Class24.anIntArray581[i_10_] = i_11_;
-                Class10.anIntArray351[i_10_++] = i_9_;
+                Wall.anIntArray351[i_10_++] = i_9_;
             }
             if((i_22_ & 0x1) != 0)
                 i_9_++;
@@ -331,7 +334,7 @@ public class Class38_Sub1 extends Class38 {
             if(i_12_ > 25)
                 i_12_ = 25;
             i_10_--;
-            int i_24_ = Class10.anIntArray351[i_10_];
+            int i_24_ = Wall.anIntArray351[i_10_];
             int i_25_ = Class24.anIntArray581[i_10_];
             if(arg11 == 0) {
                 Class34.anInt838++;
@@ -351,11 +354,11 @@ public class Class38_Sub1 extends Class38 {
             Class32.packetBuffer.putInvertedByte(Class40_Sub5_Sub17_Sub3.aBooleanArray3056[82] ? 1 : 0);
             Class32.packetBuffer.putShortLE(SpotAnimDefinition.anInt2307 + i_25_);
             VarbitDefinition.anInt2366 = Class24.anIntArray581[0];
-            Class55.anInt1304 = Class10.anIntArray351[0];
+            Class55.anInt1304 = Wall.anIntArray351[0];
             for(int i_26_ = 1; i_12_ > i_26_; i_26_++) {
                 i_10_--;
                 Class32.packetBuffer.putDualByte(Class24.anIntArray581[i_10_] - i_25_, 128);
-                Class32.packetBuffer.putInvertedByte(-i_24_ + Class10.anIntArray351[i_10_]);
+                Class32.packetBuffer.putInvertedByte(-i_24_ + Wall.anIntArray351[i_10_]);
             }
             return true;
         }

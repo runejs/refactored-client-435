@@ -1,9 +1,12 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.scene.tile.FloorDecoration;
 
 public class Class56 {
     public static int anInt1310;
@@ -65,9 +68,9 @@ public class Class56 {
         RSString[] class1s = new RSString[5];
         anInt1317++;
         for(int i = 0; i < 5; i++) {
-            class1s[i] = (Class40_Sub5_Sub17_Sub6.method832(-69, new RSString[]{HashTable.method334(i, -1), ISAAC.aClass1_515}));
+            class1s[i] = (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{HashTable.method334(i, -1), ISAAC.aClass1_515}));
             if(arg0 != null && arg0[i] != null)
-                class1s[i] = Class40_Sub5_Sub17_Sub6.method832(117, (new RSString[]{class1s[i], arg0[i]}));
+                class1s[i] = Class40_Sub5_Sub17_Sub6.method832((new RSString[]{class1s[i], arg0[i]}));
         }
         return class1s;
 
@@ -97,7 +100,7 @@ public class Class56 {
         AnimationSequence.anIntArrayArray2490 = null;
         Class35.tile_overlay_rotation = null;
         Class59.anIntArray1398 = null;
-        Class19.aByteArrayArrayArray492 = null;
+        InteractiveObject.aByteArrayArrayArray492 = null;
         OverlayDefinition.tile_underlay_path = null;
         GameFrame.tile_overlayids = null;
         anInt1312++;
@@ -109,7 +112,7 @@ public class Class56 {
     public String toString() {
 
         anInt1326++;
-        return "com.jagex.runescape.Cache:" + anInt1324;
+        return "com.jagex.runescape.cache.Cache:" + anInt1324;
 
     }
 

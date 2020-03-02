@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.scene.util.CollisionMap;
+
 public class Class40_Sub9_Sub1 extends Class40_Sub9 {
     public int anInt2872 = 16;
     public Class45[] aClass45Array2873 = new Class45[8];

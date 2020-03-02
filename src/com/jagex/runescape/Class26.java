@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.CacheIndex;
+
 import java.awt.*;
 
 public class Class26 {

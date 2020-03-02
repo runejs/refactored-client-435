@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
@@ -7,6 +8,7 @@ import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.GroundItemTile;
 
 import java.awt.*;
 
@@ -54,7 +56,7 @@ public class Class40_Sub2 extends Node {
         if(arg0 < 0 || (i_3_ < arg0))
             arg0 = 0;
         i_3_ <<= i;
-        Class58.varbitmasks[i_0_] = (UnderlayDefinition.bitWiseOR(HuffmanEncoding.method1021(Class58.varbitmasks[i_0_], i_3_ ^ 0xffffffff), HuffmanEncoding.method1021(i_3_, arg0 << i)));
+        GroundItemTile.varbitmasks[i_0_] = (UnderlayDefinition.bitWiseOR(HuffmanEncoding.method1021(GroundItemTile.varbitmasks[i_0_], i_3_ ^ 0xffffffff), HuffmanEncoding.method1021(i_3_, arg0 << i)));
 
     }
 
@@ -63,8 +65,8 @@ public class Class40_Sub2 extends Node {
         anInt1992++;
         if(arg0 == null)
             return false;
-        for(int i = 0; i < Class40_Sub5_Sub17_Sub3.anInt3060; i++) {
-            if(arg0.equalsIgnoreCase(Class40_Sub11.aClass1Array2147[i], true))
+        for(int i = 0; i < Class40_Sub5_Sub17_Sub3.friendsCount; i++) {
+            if(arg0.equalsIgnoreCase(Class40_Sub11.friendUsernames[i], true))
                 return true;
         }
         if(arg1 != -32624)
@@ -105,7 +107,7 @@ public class Class40_Sub2 extends Node {
 
     public static void method527(int arg0, int arg1, int[] arg2, boolean arg3, int arg4) {
 
-        Class19.aClass68_482.method1046((byte) 90);
+        InteractiveObject.aClass68_482.method1046((byte) 90);
         anInt1999++;
         Buffer.aClass40_Sub5_Sub14_Sub2_1959.drawImage(0, 0);
         if(arg3) {
@@ -119,9 +121,9 @@ public class Class40_Sub2 extends Node {
                 if(arg0 == 3)
                     Class35.aClass40_Sub5_Sub14_Sub2_1744.drawImage(110, 8);
                 if(arg0 == 4)
-                    Class53.aClass40_Sub5_Sub14_Sub2_1270.drawImage(153, 8);
+                    WallDecoration.aClass40_Sub5_Sub14_Sub2_1270.drawImage(153, 8);
                 if(arg0 == 5)
-                    Class53.aClass40_Sub5_Sub14_Sub2_1270.drawImage(181, 8);
+                    WallDecoration.aClass40_Sub5_Sub14_Sub2_1270.drawImage(181, 8);
                 if(arg0 == 6)
                     Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105.drawImage(209, 9);
             }
@@ -176,7 +178,7 @@ public class Class40_Sub2 extends Node {
         }
         try {
             Graphics graphics = GameFrame.aCanvas1469.getGraphics();
-            Class19.aClass68_482.method1044(0, 516, graphics, 160);
+            InteractiveObject.aClass68_482.method1044(0, 516, graphics, 160);
             RSCanvas.aClass68_59.method1044(0, 496, graphics, 466);
         } catch(Exception exception) {
             GameFrame.aCanvas1469.repaint();

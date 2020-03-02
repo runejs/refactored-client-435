@@ -1,12 +1,18 @@
 package com.jagex.runescape.net;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.util.CollisionMap;
 
 public class IncomingPackets {
 
@@ -92,39 +98,39 @@ public class IncomingPackets {
                 long l = Cache.outgoingbuffer.getLongBE();
                 int i_1_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 RSString string = Class60.method991(-64, l).method85(-4305);
-                for(int i_2_ = 0; i_2_ < Class40_Sub5_Sub17_Sub3.anInt3060; i_2_++) {
+                for(int i_2_ = 0; i_2_ < Class40_Sub5_Sub17_Sub3.friendsCount; i_2_++) {
                     if(l == Class59.aLongArray1397[i_2_]) {
-                        if(i_1_ != Class40_Sub7.anIntArray2131[i_2_]) {
-                            Class40_Sub7.anIntArray2131[i_2_] = i_1_;
+                        if(i_1_ != Class40_Sub7.friendWorlds[i_2_]) {
+                            Class40_Sub7.friendWorlds[i_2_] = i_1_;
                             ISAAC.redrawTabArea = true;
                             if(i_1_ > 0)
-                                Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832(124, (new RSString[]{string, (Class42.aClass1_988)}))), 5);
+                                Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{string, (Class42.aClass1_988)}))), 5);
                             if(i_1_ == 0)
-                                Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832(85, (new RSString[]{string, Class38_Sub1.aClass1_1905}))), 5);
+                                Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{string, Class38_Sub1.aClass1_1905}))), 5);
                         }
                         string = null;
                         break;
                     }
                 }
                 boolean bool = false;
-                if(string != null && Class40_Sub5_Sub17_Sub3.anInt3060 < 200) {
-                    Class59.aLongArray1397[(Class40_Sub5_Sub17_Sub3.anInt3060)] = l;
-                    Class40_Sub11.aClass1Array2147[(Class40_Sub5_Sub17_Sub3.anInt3060)] = string;
-                    Class40_Sub7.anIntArray2131[(Class40_Sub5_Sub17_Sub3.anInt3060)] = i_1_;
-                    Class40_Sub5_Sub17_Sub3.anInt3060++;
+                if(string != null && Class40_Sub5_Sub17_Sub3.friendsCount < 200) {
+                    Class59.aLongArray1397[(Class40_Sub5_Sub17_Sub3.friendsCount)] = l;
+                    Class40_Sub11.friendUsernames[(Class40_Sub5_Sub17_Sub3.friendsCount)] = string;
+                    Class40_Sub7.friendWorlds[(Class40_Sub5_Sub17_Sub3.friendsCount)] = i_1_;
+                    Class40_Sub5_Sub17_Sub3.friendsCount++;
                     ISAAC.redrawTabArea = true;
                 }
                 while(!bool) {
                     bool = true;
-                    for(int i_3_ = 0; Class40_Sub5_Sub17_Sub3.anInt3060 - 1 > i_3_; i_3_++) {
-                        if(((Class13.worldid != Class40_Sub7.anIntArray2131[i_3_]) && (Class40_Sub7.anIntArray2131[1 + i_3_] == Class13.worldid)) || (Class40_Sub7.anIntArray2131[i_3_] == 0 && Class40_Sub7.anIntArray2131[i_3_ + 1] != 0)) {
+                    for(int i_3_ = 0; Class40_Sub5_Sub17_Sub3.friendsCount - 1 > i_3_; i_3_++) {
+                        if(((Class13.worldid != Class40_Sub7.friendWorlds[i_3_]) && (Class40_Sub7.friendWorlds[1 + i_3_] == Class13.worldid)) || (Class40_Sub7.friendWorlds[i_3_] == 0 && Class40_Sub7.friendWorlds[i_3_ + 1] != 0)) {
                             bool = false;
-                            int i_4_ = Class40_Sub7.anIntArray2131[i_3_];
-                            Class40_Sub7.anIntArray2131[i_3_] = Class40_Sub7.anIntArray2131[i_3_ + 1];
-                            Class40_Sub7.anIntArray2131[1 + i_3_] = i_4_;
-                            RSString class1_5_ = Class40_Sub11.aClass1Array2147[i_3_];
-                            Class40_Sub11.aClass1Array2147[i_3_] = Class40_Sub11.aClass1Array2147[1 + i_3_];
-                            Class40_Sub11.aClass1Array2147[1 + i_3_] = class1_5_;
+                            int i_4_ = Class40_Sub7.friendWorlds[i_3_];
+                            Class40_Sub7.friendWorlds[i_3_] = Class40_Sub7.friendWorlds[i_3_ + 1];
+                            Class40_Sub7.friendWorlds[1 + i_3_] = i_4_;
+                            RSString class1_5_ = Class40_Sub11.friendUsernames[i_3_];
+                            Class40_Sub11.friendUsernames[i_3_] = Class40_Sub11.friendUsernames[1 + i_3_];
+                            Class40_Sub11.friendUsernames[1 + i_3_] = class1_5_;
                             long l_6_ = Class59.aLongArray1397[i_3_];
                             Class59.aLongArray1397[i_3_] = Class59.aLongArray1397[i_3_ + 1];
                             Class59.aLongArray1397[1 + i_3_] = l_6_;
@@ -156,8 +162,8 @@ public class IncomingPackets {
                 int i_8_ = Cache.outgoingbuffer.getOffsetInvertedByte();
                 int i_9_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
                 Buffer.anIntArray1984[i_9_] = i_8_;
-                if(Class58.varbitmasks[i_9_] != i_8_) {
-                    Class58.varbitmasks[i_9_] = i_8_;
+                if(GroundItemTile.varbitmasks[i_9_] != i_8_) {
+                    GroundItemTile.varbitmasks[i_9_] = i_8_;
                     Class22.method309(-1, i_9_);
                     ISAAC.redrawTabArea = true;
                     if(Class48.anInt1138 != -1)
@@ -273,7 +279,7 @@ public class IncomingPackets {
                 Class40_Sub5_Sub17_Sub1.aBooleanArray2975[i_23_] = true;
                 Class8.anIntArray297[i_23_] = i_24_;
                 RSApplet.anIntArray2[i_23_] = i_25_;
-                Class58.anIntArray1358[i_23_] = i_26_;
+                GroundItemTile.anIntArray1358[i_23_] = i_26_;
                 Class22_Sub1.anIntArray1846[i_23_] = 0;
                 Class57.incomingPacket = -1;
                 return true;
@@ -297,7 +303,7 @@ public class IncomingPackets {
                     long l = class1_32_.method58((byte) 98);
                     boolean bool = false;
                     for(int i_33_ = 0; i_33_ < Class42.anInt1008; i_33_++) {
-                        if(l == Class53.aLongArray1267[i_33_]) {
+                        if(l == WallDecoration.ignores[i_33_]) {
                             bool = true;
                             break;
                         }
@@ -309,7 +315,7 @@ public class IncomingPackets {
                     long l = class1_30_.method58((byte) 120);
                     boolean bool = false;
                     for(int i_31_ = 0; ((Class42.anInt1008 > i_31_)); i_31_++) {
-                        if(l == Class53.aLongArray1267[i_31_]) {
+                        if(l == WallDecoration.ignores[i_31_]) {
                             bool = true;
                             break;
                         }
@@ -321,7 +327,7 @@ public class IncomingPackets {
                     long l = class1_27_.method58((byte) 121);
                     boolean bool = false;
                     for(int i_28_ = 0; i_28_ < Class42.anInt1008; i_28_++) {
-                        if(l == Class53.aLongArray1267[i_28_]) {
+                        if(l == WallDecoration.ignores[i_28_]) {
                             bool = true;
                             break;
                         }
@@ -405,9 +411,9 @@ public class IncomingPackets {
                 int i_45_ = Cache.outgoingbuffer.getNegativeOffsetShortBE();
                 if(i_45_ >= 0)
                     Class42.method883((byte) -121, i_45_);
-                if(i_45_ != Class58.anInt1376) {
-                    Class55.method958(Class58.anInt1376, -14222);
-                    Class58.anInt1376 = i_45_;
+                if(i_45_ != GroundItemTile.anInt1376) {
+                    Class55.method958(GroundItemTile.anInt1376, -14222);
+                    GroundItemTile.anInt1376 = i_45_;
                 }
                 Class57.incomingPacket = -1;
                 return true;
@@ -461,8 +467,8 @@ public class IncomingPackets {
                 Class40_Sub6.placementX = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
                 for(int i_51_ = Class40_Sub6.placementX; ((i_51_ < 8 + Class40_Sub6.placementX)); i_51_++) {
                     for(int i_52_ = OverlayDefinition.placementY; ((8 + OverlayDefinition.placementY > i_52_)); i_52_++) {
-                        if((Class10.aClass45ArrayArrayArray357[Player.anInt3267][i_51_][i_52_]) != null) {
-                            Class10.aClass45ArrayArrayArray357[Player.anInt3267][i_51_][i_52_] = null;
+                        if((Wall.aClass45ArrayArrayArray357[Player.anInt3267][i_51_][i_52_]) != null) {
+                            Wall.aClass45ArrayArrayArray357[Player.anInt3267][i_51_][i_52_] = null;
                             Class40_Sub13.method880((byte) -80, i_52_, i_51_);
                         }
                     }
@@ -526,7 +532,7 @@ public class IncomingPackets {
             if(Class57.incomingPacket == UPDATE_RUN_ENERGY) {
                 if(Class5.currentTabId == 12)
                     ISAAC.redrawTabArea = true;
-                Class40_Sub11.anInt2158 = Cache.outgoingbuffer.getUnsignedByte();
+                Class40_Sub11.runEnergy = Cache.outgoingbuffer.getUnsignedByte();
                 Class57.incomingPacket = -1;
                 return true;
             }
@@ -646,6 +652,7 @@ public class IncomingPackets {
                     Class55.method958(Class43.openChatboxWidgetId, -14222);
                     Class43.openChatboxWidgetId = widgetId;
                 }
+
                 Class52.redrawChatbox = true;
                 Class57.incomingPacket = -1;
                 CacheIndex_Sub1.anInt1819 = -1;
@@ -691,7 +698,7 @@ public class IncomingPackets {
                 OverlayDefinition.placementY = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
                 while(Cache.outgoingbuffer.currentPosition < Widget.packetsize) {
                     Class57.incomingPacket = Cache.outgoingbuffer.getUnsignedByte();
-                    Class53.method949((byte) -125);
+                    WallDecoration.method949((byte) -125);
                 }
                 Class57.incomingPacket = -1;
                 return true;
@@ -719,8 +726,8 @@ public class IncomingPackets {
                 int i_63_ = Cache.outgoingbuffer.getIntME1();
                 int i_64_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 Buffer.anIntArray1984[i_64_] = i_63_;
-                if(i_63_ != Class58.varbitmasks[i_64_]) {
-                    Class58.varbitmasks[i_64_] = i_63_;
+                if(i_63_ != GroundItemTile.varbitmasks[i_64_]) {
+                    GroundItemTile.varbitmasks[i_64_] = i_63_;
                     Class22.method309(-1, i_64_);
                     if(Class48.anInt1138 != -1)
                         Class52.redrawChatbox = true;
@@ -735,10 +742,10 @@ public class IncomingPackets {
                 return true;
             }
             if(Class57.incomingPacket == PLAY_SOUND) {
-                int i_65_ = Cache.outgoingbuffer.getUnsignedShortBE();
-                int i_66_ = Cache.outgoingbuffer.getUnsignedByte();
-                int i_67_ = Cache.outgoingbuffer.getUnsignedShortBE();
-                Class53.method950(i_65_, (byte) 118, i_66_, i_67_);
+                int soundId = Cache.outgoingbuffer.getUnsignedShortBE();
+                int volume = Cache.outgoingbuffer.getUnsignedByte();
+                int delay = Cache.outgoingbuffer.getUnsignedShortBE();
+                WallDecoration.method950(soundId, volume, delay);
                 Class57.incomingPacket = -1;
                 return true;
             }
@@ -833,7 +840,7 @@ public class IncomingPackets {
                     Class57.incomingPacket == 19 || Class57.incomingPacket == 202 || Class57.incomingPacket == 1 ||
                     Class57.incomingPacket == 74 || Class57.incomingPacket == 175 || Class57.incomingPacket == 49 ||
                     Class57.incomingPacket == 143 || Class57.incomingPacket == 241) {
-                Class53.method949((byte) -112);
+                WallDecoration.method949((byte) -112);
                 Class57.incomingPacket = -1;
                 return true;
             }
@@ -842,7 +849,7 @@ public class IncomingPackets {
                     Class40_Sub5_Sub11 class40_sub5_sub11 = Npc.method795((byte) -114, i_80_);
                     if(class40_sub5_sub11 != null && class40_sub5_sub11.anInt2633 == 0) {
                         Buffer.anIntArray1984[i_80_] = 0;
-                        Class58.varbitmasks[i_80_] = 0;
+                        GroundItemTile.varbitmasks[i_80_] = 0;
                     }
                 }
                 if(Class48.anInt1138 != -1)
@@ -869,7 +876,7 @@ public class IncomingPackets {
                 HuffmanEncoding.inputInputMessage = HuffmanEncoding.blank_string;
                 Class40_Sub5_Sub15.inputType = 1;
                 Class52.redrawChatbox = true;
-                Class19.aBoolean490 = false;
+                InteractiveObject.messagePromptRaised = false;
                 return true;
             }
             if(Class57.incomingPacket == 186) {
@@ -919,14 +926,14 @@ public class IncomingPackets {
                 int widgetData = Cache.outgoingbuffer.getIntLE();
                 RSString class1 = Cache.outgoingbuffer.getRSString();
                 Widget widget = Widget.forId(widgetData);
-                widget.text = class1;
+                widget.disabledText = class1;
                 if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] == widgetData >> 16)
                     ISAAC.redrawTabArea = true;
                 Class57.incomingPacket = -1;
                 return true;
             }
             if(Class57.incomingPacket == 70) {
-                Class12.anInt380 = Cache.outgoingbuffer.getUnsignedByte();
+                Class12.friendListStatus = Cache.outgoingbuffer.getUnsignedByte();
                 ISAAC.redrawTabArea = true;
                 Class57.incomingPacket = -1;
                 return true;
@@ -972,7 +979,7 @@ public class IncomingPackets {
                 }
                 if(i_90_ <= 1) {
                     for(int i_93_ = 0; ((i_93_ < Class42.anInt1008)); i_93_++) {
-                        if(l == Class53.aLongArray1267[i_93_]) {
+                        if(l == WallDecoration.ignores[i_93_]) {
                             bool = true;
                             break;
                         }
@@ -983,9 +990,9 @@ public class IncomingPackets {
                     Class40_Sub3.anInt2021 = (1 + Class40_Sub3.anInt2021) % 100;
                     RSString class1 = KeyFocusListener.method956(67, Cache.outgoingbuffer).method53(-16315);
                     if(i_90_ == 2 || i_90_ == 3)
-                        Class44.addChatMessage((Class40_Sub5_Sub17_Sub6.method832(88, (new RSString[]{(Widget.goldCrown), Class60.method991(-73, l).method85(-4305)}))), class1, 7);
+                        Class44.addChatMessage((Class40_Sub5_Sub17_Sub6.method832((new RSString[]{(Widget.goldCrown), Class60.method991(-73, l).method85(-4305)}))), class1, 7);
                     else if(i_90_ == 1)
-                        Class44.addChatMessage((Class40_Sub5_Sub17_Sub6.method832(126, (new RSString[]{Class51.whiteCrown, Class60.method991(-46, l).method85(-4305)}))), class1, 7);
+                        Class44.addChatMessage((Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class51.whiteCrown, Class60.method991(-46, l).method85(-4305)}))), class1, 7);
                     else
                         Class44.addChatMessage(Class60.method991(-55, l).method85(-4305), class1, 3);
                 }
@@ -1025,10 +1032,10 @@ public class IncomingPackets {
                 int i_100_ = Cache.outgoingbuffer.getIntME1();
                 Class40_Sub5_Sub17_Sub3.anIntArray3051[i_99_] = i_100_;
                 Class13.anIntArray403[i_99_] = i_98_;
-                Class10.anIntArray354[i_99_] = 1;
+                Wall.anIntArray354[i_99_] = 1;
                 for(int i_101_ = 0; i_101_ < 98; i_101_++) {
                     if((Class38_Sub1.anIntArray1909[i_101_] <= i_100_))
-                        Class10.anIntArray354[i_99_] = i_101_ + 2;
+                        Wall.anIntArray354[i_99_] = i_101_ + 2;
                 }
                 Class57.incomingPacket = -1;
                 return true;
@@ -1044,9 +1051,9 @@ public class IncomingPackets {
                 return true;
             }
             if(Class57.incomingPacket == 72) {
-                for(int i_105_ = 0; ((i_105_ < Class58.varbitmasks.length)); i_105_++) {
-                    if(Buffer.anIntArray1984[i_105_] != Class58.varbitmasks[i_105_]) {
-                        Class58.varbitmasks[i_105_] = Buffer.anIntArray1984[i_105_];
+                for(int i_105_ = 0; ((i_105_ < GroundItemTile.varbitmasks.length)); i_105_++) {
+                    if(Buffer.anIntArray1984[i_105_] != GroundItemTile.varbitmasks[i_105_]) {
+                        GroundItemTile.varbitmasks[i_105_] = Buffer.anIntArray1984[i_105_];
                         Class22.method309(-1, i_105_);
                         ISAAC.redrawTabArea = true;
                     }
@@ -1092,6 +1099,15 @@ public class IncomingPackets {
                         widget.itemAmounts[itemSlot] = i_110_;
                     }
                 }
+                if(Class68.method1043(307)) {
+                    Widget[] widgets = Widget.interfaces[307];
+                    for(int y = 0; widgets.length > y; y++) {
+                        Widget widget2 = widgets[y];
+                        if(widget2 != null && widget2.items != null) {
+                            System.out.println("Container ID: " + y);
+                        }
+                    }
+                }
                 Class57.incomingPacket = -1;
                 return true;
             }
@@ -1114,7 +1130,7 @@ public class IncomingPackets {
             if(Class57.incomingPacket == 211) {
                 Class42.anInt1008 = Widget.packetsize / 8;
                 for(int i_118_ = 0; ((Class42.anInt1008 > i_118_)); i_118_++)
-                    Class53.aLongArray1267[i_118_] = Cache.outgoingbuffer.getLongBE();
+                    WallDecoration.ignores[i_118_] = Cache.outgoingbuffer.getLongBE();
                 Class57.incomingPacket = -1;
                 return true;
             }
@@ -1127,7 +1143,7 @@ public class IncomingPackets {
                 HuffmanEncoding.inputInputMessage = HuffmanEncoding.blank_string;
                 Class40_Sub5_Sub15.inputType = 2;
                 Class57.incomingPacket = -1;
-                Class19.aBoolean490 = false;
+                InteractiveObject.messagePromptRaised = false;
                 return true;
             }
             CacheIndex.method169(("T1 - " + Class57.incomingPacket + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + Widget.packetsize), (byte) -121, null);
@@ -1135,7 +1151,7 @@ public class IncomingPackets {
         } catch(java.io.IOException ioexception) {
             Class59.dropClient(2578);
         } catch(Exception exception) {
-            String string = ("T2 - " + Class57.incomingPacket + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + Widget.packetsize + "," + (SpotAnimDefinition.anInt2307 + (Player.localPlayer.anIntArray3088[0])) + "," + ((Player.localPlayer.anIntArray3135[0]) + Class26.anInt635) + " - ");
+            String string = ("T2 - " + Class57.incomingPacket + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + Widget.packetsize + "," + (SpotAnimDefinition.anInt2307 + (Player.localPlayer.pathY[0])) + "," + ((Player.localPlayer.pathX[0]) + Class26.anInt635) + " - ");
             for(int i = 0; (((Widget.packetsize > i)) && i < 50); i++)
                 string += (Cache.outgoingbuffer.buffer[i] + ",");
             CacheIndex.method169(string, (byte) -120, exception);

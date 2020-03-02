@@ -1,6 +1,8 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -48,30 +50,30 @@ public class UnderlayDefinition extends SubNode {
 
         anInt2569++;
         if(arg0 != 0L) {
-            if((Class40_Sub5_Sub17_Sub3.anInt3060 >= 100 && Class44.anInt1049 != 1) || (Class40_Sub5_Sub17_Sub3.anInt3060 >= 200)) {
+            if((Class40_Sub5_Sub17_Sub3.friendsCount >= 100 && Class44.anInt1049 != 1) || (Class40_Sub5_Sub17_Sub3.friendsCount >= 200)) {
                 Class44.addChatMessage(HuffmanEncoding.blank_string, Class59.aClass1_1399, 0);
             } else {
                 if(arg1 >= -2) {
                     aClass6_Sub1_2571 = null;
                 }
                 RSString class1 = Class60.method991(-23, arg0).method85(-4305);
-                for(int i = 0; Class40_Sub5_Sub17_Sub3.anInt3060 > i; i++) {
+                for(int i = 0; Class40_Sub5_Sub17_Sub3.friendsCount > i; i++) {
                     if(Class59.aLongArray1397[i] == arg0) {
-                        Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832(-124, (new RSString[]{class1, GameFrame.aClass1_1465}))), 0);
+                        Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{class1, GameFrame.aClass1_1465}))), 0);
                         return;
                     }
                 }
                 for(int i = 0; Class42.anInt1008 > i; i++) {
-                    if(Class53.aLongArray1267[i] == arg0) {
-                        Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832(75, (new RSString[]{Class44.aClass1_1038, class1, Class39.aClass1_917}))), 0);
+                    if(WallDecoration.ignores[i] == arg0) {
+                        Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class44.aClass1_1038, class1, Class39.aClass1_917}))), 0);
                         return;
                     }
                 }
                 if(!class1.equals((Player.localPlayer.playerName))) {
-                    Class40_Sub11.aClass1Array2147[(Class40_Sub5_Sub17_Sub3.anInt3060)] = class1;
-                    Class59.aLongArray1397[(Class40_Sub5_Sub17_Sub3.anInt3060)] = arg0;
-                    Class40_Sub7.anIntArray2131[(Class40_Sub5_Sub17_Sub3.anInt3060)] = 0;
-                    Class40_Sub5_Sub17_Sub3.anInt3060++;
+                    Class40_Sub11.friendUsernames[(Class40_Sub5_Sub17_Sub3.friendsCount)] = class1;
+                    Class59.aLongArray1397[(Class40_Sub5_Sub17_Sub3.friendsCount)] = arg0;
+                    Class40_Sub7.friendWorlds[(Class40_Sub5_Sub17_Sub3.friendsCount)] = 0;
+                    Class40_Sub5_Sub17_Sub3.friendsCount++;
                     ISAAC.redrawTabArea = true;
                     Class32.packetBuffer.putPacket(114);
                     Class32.packetBuffer.putLongBE(arg0);

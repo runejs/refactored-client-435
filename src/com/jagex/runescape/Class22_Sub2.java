@@ -8,6 +8,7 @@ import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.scene.GroundItemTile;
 
 public abstract class Class22_Sub2 extends Class22 {
     public static RSString string_blank = RSString.CreateString("");
@@ -41,7 +42,7 @@ public abstract class Class22_Sub2 extends Class22 {
             class40_sub5_sub14_sub2.imgWidth = Class17.anIntArray456[i];
             class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[i];
             class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
-            class40_sub5_sub14_sub2.imgPixels = Class58.aByteArrayArray1370[i];
+            class40_sub5_sub14_sub2.imgPixels = GroundItemTile.aByteArrayArray1370[i];
         }
         ActorDefinition.method569();
         return class40_sub5_sub14_sub2s;
@@ -71,7 +72,7 @@ public abstract class Class22_Sub2 extends Class22 {
             class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[i];
             class40_sub5_sub14_sub4.image_width = Class17.anIntArray456[i];
             class40_sub5_sub14_sub4.image_height = Npc.anIntArray3312[i];
-            byte[] is = Class58.aByteArrayArray1370[i];
+            byte[] is = GroundItemTile.aByteArrayArray1370[i];
             int i_4_ = (class40_sub5_sub14_sub4.image_height * class40_sub5_sub14_sub4.image_width);
             class40_sub5_sub14_sub4.pixels = new int[i_4_];
             for(int i_5_ = 0; (i_5_ < i_4_); i_5_++)

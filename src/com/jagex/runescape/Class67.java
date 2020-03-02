@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.CacheIndex;
+
 import java.io.EOFException;
 import java.io.IOException;
 
@@ -23,7 +26,7 @@ public class Class67 {
     public static int anInt1597;
     public static RSString aClass1_1598;
     public static int anInt1599;
-    public static boolean aBoolean1601 = false;
+    public static boolean reportMutePlayer = false;
     public static RSString aClass1_1605;
     public static int anInt1606;
     public static int anInt1607;

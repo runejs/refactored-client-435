@@ -1,6 +1,7 @@
 package com.jagex.runescape.media.renderable.actor;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
@@ -139,7 +140,7 @@ public class Player extends Actor {
                 boolean bool = false;
                 if(i_3_ <= 1) {
                     for(int i_6_ = 0; i_6_ < Class42.anInt1008; i_6_++) {
-                        if(l == Class53.aLongArray1267[i_6_]) {
+                        if(l == WallDecoration.ignores[i_6_]) {
                             bool = true;
                             break;
                         }
@@ -155,9 +156,9 @@ public class Player extends Actor {
                     player.anInt3123 = i & 0xff;
                     player.anInt3102 = i >> 8;
                     if(i_3_ == 2 || i_3_ == 3)
-                        Class44.addChatMessage((Class40_Sub5_Sub17_Sub6.method832(75, (new RSString[]{Widget.goldCrown, player.playerName}))), class1, 1);
+                        Class44.addChatMessage((Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Widget.goldCrown, player.playerName}))), class1, 1);
                     else if(i_3_ == 1)
-                        Class44.addChatMessage((Class40_Sub5_Sub17_Sub6.method832(-79, (new RSString[]{Class51.whiteCrown, player.playerName}))), class1, 1);
+                        Class44.addChatMessage((Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class51.whiteCrown, player.playerName}))), class1, 1);
                     else
                         Class44.addChatMessage(player.playerName, class1, 2);
                 }
@@ -186,7 +187,7 @@ public class Player extends Actor {
         }
         if((0x80 & mask) != 0) { // forced chat
             player.forcedChatMessage = Cache.outgoingbuffer.getRSString();
-            if(player.forcedChatMessage.method55(0, false) == 126) {
+            if(player.forcedChatMessage.getChar(0) == 126) {
                 player.forcedChatMessage = player.forcedChatMessage.substring(1);
                 Class44.addChatMessage(player.playerName, player.forcedChatMessage, 2);
             } else if(player == localPlayer)

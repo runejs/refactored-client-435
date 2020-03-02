@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 import java.awt.*;
@@ -185,9 +187,7 @@ public class RSString implements Interface1 {
         return true;
     }
 
-    public int method55(int arg0, boolean arg1) {
-        if(arg1)
-            method80(-9);
+    public int getChar(int arg0) {
         return 0xff & chars[arg0];
     }
 
@@ -388,8 +388,8 @@ public class RSString implements Interface1 {
         return this;
     }
 
-    public RSString method70(int arg0, int arg1) {
-        if(arg0 <= arg1 || arg0 > 255)
+    public RSString method70(int arg0) {
+        if(arg0 > 255)
             throw new IllegalArgumentException("invalid char");
         RSString class1 = new RSString();
         class1.chars = new byte[length + 1];
@@ -399,14 +399,15 @@ public class RSString implements Interface1 {
         return class1;
     }
 
-    public RSString method72(RSString arg0, byte arg1) {
+    public RSString method72(RSString arg0) {
         if(!aBoolean1675)
             throw new IllegalArgumentException();
         anInt1696 = 0;
         if((length + arg0.length > chars.length)) {
             int i;
-            for(i = 1; (i < length + arg0.length); i += i) {
-                /* empty */
+            i = 1;
+            while((i < length + arg0.length)) {
+                i += i;
             }
             byte[] is = new byte[i];
             Class18.method278(chars, 0, is, 0, length);
@@ -414,8 +415,6 @@ public class RSString implements Interface1 {
         }
         Class18.method278(arg0.chars, 0, chars, length, arg0.length);
         length += arg0.length;
-        if(arg1 != -87)
-            return null;
         return this;
     }
 
@@ -550,9 +549,7 @@ public class RSString implements Interface1 {
         return -1;
     }
 
-    public boolean method82(int arg0) {
-        if(arg0 < 101)
-            anInt1668 = 12;
+    public boolean method82() {
         return method67(90, 10);
     }
 
@@ -617,7 +614,7 @@ public class RSString implements Interface1 {
         if(length < arg1.length)
             return false;
         if(arg0 <= 62)
-            method82(-116);
+            method82();
         int i = length + -arg1.length;
         for(int i_26_ = 0; arg1.length > i_26_; i_26_++) {
             if(chars[i_26_ + i] != arg1.chars[i_26_])
