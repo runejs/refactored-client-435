@@ -139,6 +139,7 @@ public class ActorDefinition extends SubNode {
         return class40_sub5_sub14_sub4;
     }
 
+    // run client script???
     public static void method580(Signlink arg0, byte arg1, Buffer arg2, int arg3) {
         Class40_Sub11 class40_sub11 = new Class40_Sub11();
         class40_sub11.anInt2160 = arg2.getUnsignedByte();

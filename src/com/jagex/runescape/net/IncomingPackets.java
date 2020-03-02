@@ -12,6 +12,8 @@ public class IncomingPackets {
 
     private static final int
 
+            SET_WIDGET_ITEM_MODEL = 120,
+            MOVE_WIDGET_CHILD = 3,
             UPDATE_SPECIFIC_WIDGET_ITEMS = 214,
             UPDATE_ALL_WIDGET_ITEMS = 12,
             UPDATE_WIDGET_TEXT = 110,
@@ -23,6 +25,7 @@ public class IncomingPackets {
             SHOW_CHATBOX_WIDGET = 208,
             SHOW_SCREEN_WIDGET = 118,
             SHOW_FULLSCREEN_WIDGET = 195,
+            SHOW_TAB_AND_SCREEN_WIDGETS = 84,
             CLOSE_ALL_WIDGETS = 180,
 
             UPDATE_CARRY_WEIGHT = 171,
@@ -85,7 +88,7 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 156) {
+            if(Class57.incomingPacket == 156) { // friend logged in
                 long l = Cache.outgoingbuffer.getLongBE();
                 int i_1_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 RSString string = Class60.method991(-64, l).method85(-4305);
@@ -172,32 +175,46 @@ public class IncomingPackets {
                 return true;
             }
             if(Class57.incomingPacket == UPDATE_ALL_WIDGET_ITEMS) {
+                /*for(int qq = 0; qq < Class58.varbitmasks.length; qq++) {
+                    int value = (Npc.method795((byte) -70, qq).anInt2633);
+
+                    if(value != 0) {
+                        System.out.println(qq + " = " + value);
+                    }
+                }*/
                 /*for(int qq = 0; qq < 469; qq++) {
                     if(Class68.method1043(qq)) {
                         Widget[] widgets = Widget.interfaces[qq];
                         for(int y = 0; widgets.length > y; y++) {
                             Widget widget = widgets[y];
-                            if(widget.text != null) {
-                                String text = widget.text.toString().toLowerCase();
-                                if(text.contains("welcome")) {
-                                    System.out.println(qq + " contains " + text);
+                            if(widget.items != null && widget.alternateRhs != null) {
+                                System.out.println(qq + " contains alternateOperators");
+                            }*/
+                            /*if(widget.configActions != null) {
+                                for(int jj = 0; jj < widget.configActions.length; jj++) {
+                                    if(widget.configActions[jj] != null) {
+                                        System.out.println(qq + " contains " + widget.configActions[jj]);
+                                    }
                                 }
-                            }
-                        }
+                            }*/
+                            //if(widget.items != null && widget.items.length == 28) {
+                            //    System.out.println(qq + " contains inventory");
+                            //}
+                        /*}
                     }
                 }*/
-                /*if(Class68.method1043(308)) {
-                    Widget[] widgets = Widget.interfaces[308];
+                if(Class68.method1043(149)) {
+                    Widget[] widgets = Widget.interfaces[149];
                     for(int y = 0; widgets.length > y; y++) {
                         Widget widget = widgets[y];
-                        if(widget != null && widget.text != null) {
+                        if(widget != null && widget.clientScripts != null) {
                             String widgetText = widget.text.toString();
                             if(widgetText.contains("Members")) {
                                 System.out.println(y);
                             }
                         }
                     }
-                }*/
+                }
                 ISAAC.redrawTabArea = true;
                 int widgetData = Cache.outgoingbuffer.getIntBE();
                 Widget widget = Widget.forId(widgetData);
@@ -404,7 +421,7 @@ public class IncomingPackets {
                 widget.anInt2722 = i_47_ + (i_46_ << 16);
                 return true;
             }
-            if(Class57.incomingPacket == 84) { // show tab and screen widget
+            if(Class57.incomingPacket == SHOW_TAB_AND_SCREEN_WIDGETS) { // show tab and screen widget
                 int i_49_ = Cache.outgoingbuffer.getUnsignedShortBE();
                 int i_50_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
                 if(Class43.openChatboxWidgetId != -1) {
@@ -457,7 +474,7 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 223) {
+            if(Class57.incomingPacket == 223) { // set player options
                 RSString class1 = Cache.outgoingbuffer.getRSString();
                 int i_53_ = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
                 int i_54_ = Cache.outgoingbuffer.getUnsignedByte();
@@ -679,7 +696,7 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 196) {
+            if(Class57.incomingPacket == 196) { // set chat mode configs
                 Class35.publicChatMode = Cache.outgoingbuffer.getUnsignedByte();
                 Class4.anInt185 = Cache.outgoingbuffer.getUnsignedByte();
                 ItemDefinition.anInt2797 = Cache.outgoingbuffer.getUnsignedByte();
@@ -820,7 +837,7 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 14) {
+            if(Class57.incomingPacket == 14) { // reset client configs?
                 for(int i_80_ = 0; Class59.anInt1383 > i_80_; i_80_++) {
                     Class40_Sub5_Sub11 class40_sub5_sub11 = Npc.method795((byte) -114, i_80_);
                     if(class40_sub5_sub11 != null && class40_sub5_sub11.anInt2633 == 0) {
@@ -843,7 +860,7 @@ public class IncomingPackets {
                 widget.modelId = npcId;
                 return true;
             }
-            if(Class57.incomingPacket == 132) {
+            if(Class57.incomingPacket == 132) { // open chatbox input widget
                 if(Class43.openChatboxWidgetId != -1) {
                     Class55.method958(Class43.openChatboxWidgetId, -14222);
                     Class43.openChatboxWidgetId = -1;
@@ -914,13 +931,13 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 120) { // item model on interface
-                int i_85_ = Cache.outgoingbuffer.getUnsignedShortBE();
+            if(Class57.incomingPacket == SET_WIDGET_ITEM_MODEL) { // item model on interface
+                int zoom = Cache.outgoingbuffer.getUnsignedShortBE();
                 int itemId = Cache.outgoingbuffer.getUnsignedShortLE();
-                int i_87_ = Cache.outgoingbuffer.getIntLE();
+                int widgetData = Cache.outgoingbuffer.getIntLE();
                 if(itemId == 65535)
                     itemId = -1;
-                Widget widget = Widget.forId(i_87_);
+                Widget widget = Widget.forId(widgetData);
                 if(widget.isIf3) {
                     widget.anInt2734 = 1;
                     widget.anInt2718 = itemId;
@@ -934,13 +951,13 @@ public class IncomingPackets {
                     widget.rotationX = itemDefinition.xan2d;
                     widget.modelId = itemId;
                     widget.modelType = 4;
-                    widget.modelZoom = 100 * itemDefinition.zoom2d / i_85_;
+                    widget.modelZoom = 100 * itemDefinition.zoom2d / zoom;
                     widget.rotationZ = itemDefinition.yan2d;
                 }
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 51) {
+            if(Class57.incomingPacket == 51) { // friend login???
                 long l = Cache.outgoingbuffer.getLongBE();
                 long l_88_ = (long) Cache.outgoingbuffer.getUnsignedShortBE();
                 long l_89_ = (long) Cache.outgoingbuffer.getMediumBE();
@@ -975,7 +992,7 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 27) {
+            if(Class57.incomingPacket == 27) { // reset actor animations
                 for(int i_94_ = 0; (i_94_ < (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156).length); i_94_++) {
                     if((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_94_]) != null)
                         Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_94_].playingAnimation = -1;
@@ -1016,7 +1033,7 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 3) { // move widget position
+            if(Class57.incomingPacket == MOVE_WIDGET_CHILD) { // move widget position
                 int i_102_ = Cache.outgoingbuffer.getIntBE();
                 int i_103_ = Cache.outgoingbuffer.getNegativeOffsetShortLE();
                 int i_104_ = Cache.outgoingbuffer.getNegativeOffsetShortLE();
