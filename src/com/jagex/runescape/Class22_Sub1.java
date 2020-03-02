@@ -66,7 +66,7 @@ public class Class22_Sub1 extends Class22 {
     }
 
     public boolean aBoolean1835;
-    public Class15 aClass15_1836;
+    public SignlinkNode aSignlinkNode_1836;
     public boolean aBoolean1852;
     public int anInt1860;
     public byte[] aByteArray1866;
@@ -195,15 +195,15 @@ public class Class22_Sub1 extends Class22 {
             aBoolean1835 = false;
         }
         if(arg0 == -96)
-            aClass15_1836 = null;
+            aSignlinkNode_1836 = null;
 
     }
 
     public void method302(int arg0) {
         anInt1853++;
-        if(aClass15_1836 != null && aClass15_1836.anInt434 != 0) {
-            if(aClass15_1836.anInt434 == 1) {
-                Class47 class47 = (Class47) aClass15_1836.anObject437;
+        if(aSignlinkNode_1836 != null && aSignlinkNode_1836.anInt434 != 0) {
+            if(aSignlinkNode_1836.anInt434 == 1) {
+                Class47 class47 = (Class47) aSignlinkNode_1836.value;
                 try {
                     class47.method918(aByteArray1866, 0, aByteArray1866.length, false);
                     class47.method917(1);
@@ -221,7 +221,7 @@ public class Class22_Sub1 extends Class22 {
                     }
                 }
             }
-            aClass15_1836 = null;
+            aSignlinkNode_1836 = null;
             if(arg0 != 0)
                 aCacheIndex_1855 = null;
         }
@@ -240,7 +240,7 @@ public class Class22_Sub1 extends Class22 {
             method306((byte) 27);
         anInt1840++;
         int i = Class29.method372(120, arg1) + -arg2;
-        if(aClass15_1836 == null) {
+        if(aSignlinkNode_1836 == null) {
             do {
                 if(aBoolean1835) {
                     try {
@@ -257,9 +257,9 @@ public class Class22_Sub1 extends Class22 {
 
     public void method300(byte[] arg0, boolean arg1, int arg2, int arg3) {
 
-        aClass15_1836 = aClass31_1872.method396(86);
+        aSignlinkNode_1836 = aClass31_1872.method396(86);
         anInt1843++;
-        if(arg2 == -15910 && aClass15_1836 != null) {
+        if(arg2 == -15910 && aSignlinkNode_1836 != null) {
             if(arg3 == 0)
                 arg3 = 1;
             anInt1860 = Class29.method372(arg2 ^ ~0x3e59, arg3);

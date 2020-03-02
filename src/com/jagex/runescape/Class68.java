@@ -16,7 +16,7 @@ public abstract class Class68 {
     public static boolean[] aBooleanArray1629;
     public static int anInt1630 = 0;
     public static Class68 aClass68_1631;
-    public static Class15 aClass15_1632;
+    public static SignlinkNode aSignlinkNode_1632;
     public static RSString aClass1_1633 = RSString.CreateString(" is already on your ignore list");
     public static int anInt1634 = 0;
     public static RSString aClass1_1635;
@@ -68,7 +68,7 @@ public abstract class Class68 {
         aClass1_1639 = null;
         aBooleanArray1629 = null;
         aClass68_1631 = null;
-        aClass15_1632 = null;
+        aSignlinkNode_1632 = null;
         aClass1_1636 = null;
         aClass9_1615 = null;
         aClass1_1640 = null;

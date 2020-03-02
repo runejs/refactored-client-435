@@ -834,7 +834,7 @@ public class Widget extends SubNode {
                                                 if(i_73_ == 0) {
                                                     Class67.anIntArray1588[i++] = 0;
                                                 } else if(i_74_ == 0) {
-                                                    Class67.anIntArray1588[i++] = 2147483647;
+                                                    Class67.anIntArray1588[i++] = Integer.MAX_VALUE;
                                                 } else {
                                                     Class67.anIntArray1588[i++] = (int) (Math.pow((double) i_73_, (1.0 / (double) i_74_)));
                                                 }

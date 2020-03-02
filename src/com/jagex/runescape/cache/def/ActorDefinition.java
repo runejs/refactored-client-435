@@ -141,16 +141,15 @@ public class ActorDefinition extends SubNode {
         return class40_sub5_sub14_sub4;
     }
 
-    public static void method580(Signlink arg0, byte arg1, Buffer arg2, int arg3) {
+    public static void method580(Signlink arg0, Buffer arg2) {
         Class40_Sub11 class40_sub11 = new Class40_Sub11();
         class40_sub11.anInt2160 = arg2.getUnsignedByte();
         class40_sub11.anInt2166 = arg2.getIntBE();
         class40_sub11.anIntArray2154 = new int[class40_sub11.anInt2160];
-        int i = 123 / ((-34 - arg1) / 43);
-        class40_sub11.aClass15Array2157 = new Class15[class40_sub11.anInt2160];
+        class40_sub11.aSignlinkNodeArray2157 = new SignlinkNode[class40_sub11.anInt2160];
         class40_sub11.anIntArray2165 = new int[class40_sub11.anInt2160];
         class40_sub11.aByteArrayArrayArray2159 = new byte[class40_sub11.anInt2160][][];
-        class40_sub11.aClass15Array2156 = new Class15[class40_sub11.anInt2160];
+        class40_sub11.aSignlinkNodeArray2156 = new SignlinkNode[class40_sub11.anInt2160];
         class40_sub11.anIntArray2155 = new int[class40_sub11.anInt2160];
         for(int i_6_ = 0; (i_6_ < class40_sub11.anInt2160); i_6_++) {
             try {
@@ -177,7 +176,7 @@ public class ActorDefinition extends SubNode {
                         for(int i_13_ = 0; (i_13_ < i_9_); i_13_++) {
                             var_classes[i_13_] = Class26.method349((byte) 91, strings[i_13_]);
                         }
-                        class40_sub11.aClass15Array2156[i_6_] = arg0.method386(var_classes, string_8_, Class26.method349((byte) 91, string), (byte) -64);
+                        class40_sub11.aSignlinkNodeArray2156[i_6_] = arg0.method386(var_classes, string_8_, Class26.method349((byte) 91, string), (byte) -64);
                         class40_sub11.aByteArrayArrayArray2159[i_6_] = is;
                     }
                 } else {
@@ -189,7 +188,7 @@ public class ActorDefinition extends SubNode {
                     }
                     class40_sub11.anIntArray2154[i_6_] = i_7_;
                     class40_sub11.anIntArray2165[i_6_] = i_14_;
-                    class40_sub11.aClass15Array2157[i_6_] = arg0.method392(Class26.method349((byte) 91, string), string_15_, true);
+                    class40_sub11.aSignlinkNodeArray2157[i_6_] = arg0.method392(Class26.method349((byte) 91, string), string_15_, true);
                 }
             } catch(ClassNotFoundException classnotfoundexception) {
                 class40_sub11.anIntArray2155[i_6_] = -1;

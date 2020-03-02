@@ -51,7 +51,7 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
     public void method221(long arg0) {
         if(aLong1821 != 0L) {
             for(/**/; aLong1832 < arg0; aLong1832 += (long) (256000 / CollisionMap.anInt141))
-                Class8.method217(256, (byte) 58);
+                Class8.method217(256);
             if(arg0 < aLong1821)
                 return;
             try {

@@ -1045,13 +1045,13 @@ public class IncomingPackets {
                 return true;
             }
             if(Class57.incomingPacket == 240) {
-                ActorDefinition.method580(ISAAC.aClass31_521, (byte) -98, Cache.outgoingbuffer, Widget.packetsize);
+                ActorDefinition.method580(ISAAC.aClass31_521, Cache.outgoingbuffer);
                 Class57.incomingPacket = -1;
                 return true;
             }
             if(Class57.incomingPacket == 58) {
                 int i_106_ = Cache.outgoingbuffer.getIntME2();
-                Class12.aClass15_394 = ISAAC.aClass31_521.method393(11545, i_106_);
+                Class12.aSignlinkNode_394 = ISAAC.aClass31_521.method393(11545, i_106_);
                 Class57.incomingPacket = -1;
                 return true;
             }

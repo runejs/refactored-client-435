@@ -37,7 +37,7 @@ public class Class64 implements Runnable {
     public Socket aSocket1508;
     public int anInt1509 = 0;
     public boolean aBoolean1510;
-    public Class15 aClass15_1512;
+    public SignlinkNode aSignlinkNode_1512;
     public boolean aBoolean1513;
     public Signlink aClass31_1515;
     public int anInt1520 = 0;
@@ -251,18 +251,18 @@ public class Class64 implements Runnable {
                 aBoolean1513 = true;
                 this.notifyAll();
             }
-            if(aClass15_1512 != null) {
-                while(aClass15_1512.anInt434 == 0)
+            if(aSignlinkNode_1512 != null) {
+                while(aSignlinkNode_1512.anInt434 == 0)
                     Class43.method890(1L, 115);
-                if(aClass15_1512.anInt434 == 1) {
+                if(aSignlinkNode_1512.anInt434 == 1) {
                     try {
-                        ((Thread) aClass15_1512.anObject437).join();
+                        ((Thread) aSignlinkNode_1512.value).join();
                     } catch(InterruptedException interruptedexception) {
                         /* empty */
                     }
                 }
             }
-            aClass15_1512 = null;
+            aSignlinkNode_1512 = null;
         }
     }
 
@@ -281,8 +281,8 @@ public class Class64 implements Runnable {
                     if(anInt1509 == (4900 + anInt1520) % 5000)
                         throw new IOException();
                 }
-                if(aClass15_1512 == null)
-                    aClass15_1512 = aClass31_1515.method394(3, 0, this);
+                if(aSignlinkNode_1512 == null)
+                    aSignlinkNode_1512 = aClass31_1515.method394(3, 0, this);
                 this.notifyAll();
                 if(arg1 != -19)
                     run();

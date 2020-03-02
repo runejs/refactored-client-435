@@ -89,19 +89,19 @@ public class SpotAnimDefinition extends SubNode {
                 Class37.aBoolean871 = false;
                 Class40_Sub3.anInt2032 = 1;
                 Main.anInt1756 = 0;
-                FloorDecoration.aClass15_607 = null;
+                FloorDecoration.aSignlinkNode_607 = null;
             }
             if(Class40_Sub3.anInt2032 == 1) {
-                if(FloorDecoration.aClass15_607 == null) {
-                    FloorDecoration.aClass15_607 = ISAAC.aClass31_521.method395(3, Wall.anInt350);
+                if(FloorDecoration.aSignlinkNode_607 == null) {
+                    FloorDecoration.aSignlinkNode_607 = ISAAC.aClass31_521.method395(3, Wall.anInt350);
                 }
-                if(FloorDecoration.aClass15_607.anInt434 == 2) {
+                if(FloorDecoration.aSignlinkNode_607.anInt434 == 2) {
                     throw new IOException();
                 }
-                if(FloorDecoration.aClass15_607.anInt434 == 1) {
-                    Class40_Sub6.aClass64_2098 = new Class64(((Socket) FloorDecoration.aClass15_607.anObject437), ISAAC.aClass31_521);
+                if(FloorDecoration.aSignlinkNode_607.anInt434 == 1) {
+                    Class40_Sub6.aClass64_2098 = new Class64(((Socket) FloorDecoration.aSignlinkNode_607.value), ISAAC.aClass31_521);
                     Class40_Sub3.anInt2032 = 2;
-                    FloorDecoration.aClass15_607 = null;
+                    FloorDecoration.aSignlinkNode_607 = null;
                 }
             }
             if(!arg0) {
