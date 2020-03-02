@@ -6,6 +6,7 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.awt.*;
 
@@ -168,11 +169,11 @@ public class Class5 {
 
     public static boolean method166(byte arg0, Widget arg1) {
         int i = arg1.contentType;
-        if(Class12.anInt380 == 2) {
+        if(Class12.friendListStatus == 2) {
             if(i == 201) {
                 Class37.anInt876 = 1;
                 HuffmanEncoding.aClass1_1563 = Widget.aClass1_2740;
-                Class19.aBoolean490 = true;
+                InteractiveObject.messagePromptRaised = true;
                 Class40_Sub5_Sub15.inputType = 0;
                 HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
                 Class52.redrawChatbox = true;
@@ -182,7 +183,7 @@ public class Class5 {
                 HuffmanEncoding.aClass1_1563 = Class13.aClass1_417;
                 Class52.redrawChatbox = true;
                 Class40_Sub5_Sub15.inputType = 0;
-                Class19.aBoolean490 = true;
+                InteractiveObject.messagePromptRaised = true;
                 HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
             }
         }
@@ -196,13 +197,13 @@ public class Class5 {
             Class52.redrawChatbox = true;
             HuffmanEncoding.aClass1_1563 = Class51.aClass1_1200;
             HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
-            Class19.aBoolean490 = true;
+            InteractiveObject.messagePromptRaised = true;
         }
         if(i == 502) {
             Class52.redrawChatbox = true;
             Class40_Sub5_Sub15.inputType = 0;
             Class37.anInt876 = 5;
-            Class19.aBoolean490 = true;
+            InteractiveObject.messagePromptRaised = true;
             HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
             HuffmanEncoding.aClass1_1563 = Class12.aClass1_399;
         }
@@ -229,14 +230,14 @@ public class Class5 {
             return true;
         }
         if(i == 620)
-            Class67.aBoolean1601 = !Class67.aBoolean1601;
+            Class67.reportMutePlayer = !Class67.reportMutePlayer;
         if(i >= 601 && i <= 613) {
             PacketBuffer.method516(123);
             if(HuffmanEncoding.aClass1_1550.length() > 0) {
                 Class32.packetBuffer.putPacket(202);
                 Class32.packetBuffer.putLongBE(HuffmanEncoding.aClass1_1550.method58((byte) 102));
                 Class32.packetBuffer.putByte(-601 + i);
-                Class32.packetBuffer.putByte(Class67.aBoolean1601 ? 1 : 0);
+                Class32.packetBuffer.putByte(Class67.reportMutePlayer ? 1 : 0);
             }
         }
         return false;

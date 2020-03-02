@@ -1,7 +1,7 @@
 package com.jagex.runescape.audio;
 
 import com.jagex.runescape.Class40_Sub12_Sub1;
-import com.jagex.runescape.CacheIndex;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.io.Buffer;
 
 public class Effect {

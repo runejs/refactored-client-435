@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
@@ -11,6 +12,7 @@ import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.GroundItemTile;
 
 import java.awt.*;
 
@@ -25,7 +27,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
     public static boolean[] aBooleanArray3056 = new boolean[112];
     public static int anInt3057;
     public static RSString aClass1_3059;
-    public static int anInt3060;
+    public static int friendsCount;
     public static int anInt3061;
     public static RSString aClass1_3062;
     public static int anInt3063;
@@ -40,7 +42,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
     static {
         aClass1_3054 = RSString.CreateString("Members object");
         aClass1_3059 = RSString.CreateString("Too many connections from your address)3");
-        anInt3060 = 0;
+        friendsCount = 0;
         aClass1_3050 = aClass1_3059;
         anInt3065 = -1;
         aClass1_3062 = RSString.CreateString("Lade Eingabe)2Steuerungsprogramm)3)3)3");
@@ -69,11 +71,11 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
         if(Class34.anInt849 != i)
             Class34.anInt849 += (-Class34.anInt849 + i) / 16;
         if(aBooleanArray3056[96])
-            Class10.cameraVelocityHorizontal += (-24 - Class10.cameraVelocityHorizontal) / 2;
+            Wall.cameraVelocityHorizontal += (-24 - Wall.cameraVelocityHorizontal) / 2;
         else if(aBooleanArray3056[97])
-            Class10.cameraVelocityHorizontal += (24 - Class10.cameraVelocityHorizontal) / 2;
+            Wall.cameraVelocityHorizontal += (24 - Wall.cameraVelocityHorizontal) / 2;
         else
-            Class10.cameraVelocityHorizontal /= 2;
+            Wall.cameraVelocityHorizontal /= 2;
         if(aBooleanArray3056[98])
             Class60.cameraVelocityVertical += (12 + -Class60.cameraVelocityVertical) / 2;
         else if(aBooleanArray3056[99])
@@ -81,7 +83,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
         else
             Class60.cameraVelocityVertical /= 2;
         int i_1_ = Class34.anInt849 >> 7;
-        Class58.cameraHorizontal = Class10.cameraVelocityHorizontal / 2 + Class58.cameraHorizontal & 0x7ff;
+        GroundItemTile.cameraHorizontal = Wall.cameraVelocityHorizontal / 2 + GroundItemTile.cameraHorizontal & 0x7ff;
         int i_2_ = Class40_Sub5_Sub6.anInt2437 >> 7;
         Class65.anInt1537 += Class60.cameraVelocityVertical / 2;
         int i_3_ = 0;
@@ -126,7 +128,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                 if(i >= 0 && i_10_ >= 0 && i < 146 && i_10_ < 151) {
                     i_10_ -= 75;
                     i -= 73;
-                    int i_11_ = 0x7ff & Class43.cameraYawOffset + Class58.cameraHorizontal;
+                    int i_11_ = 0x7ff & Class43.cameraYawOffset + GroundItemTile.cameraHorizontal;
                     int i_12_ = R3D.sinetable[i_11_];
                     int i_13_ = R3D.cosinetable[i_11_];
                     i_13_ = (Class51.mapZoomOffset + 256) * i_13_ >> 8;
@@ -135,11 +137,11 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                     int i_15_ = i_13_ * i_10_ - i * i_12_ >> 11;
                     int i_16_ = ((Player.localPlayer.anInt3098) + i_14_ >> 7);
                     int i_17_ = (-i_15_ + (Player.localPlayer.anInt3089) >> 7);
-                    boolean bool = (Class38_Sub1.method448(0, 0, (Player.localPlayer.anIntArray3088[0]), i_16_, (byte) 125, 0, true, 0, 0, (Player.localPlayer.anIntArray3135[0]), i_17_, 1));
+                    boolean bool = (Class38_Sub1.method448(0, 0, (Player.localPlayer.pathY[0]), i_16_, (byte) 125, 0, true, 0, 0, (Player.localPlayer.pathX[0]), i_17_, 1));
                     if(bool) {
                         Class32.packetBuffer.putByte(i);
                         Class32.packetBuffer.putByte(i_10_);
-                        Class32.packetBuffer.putShortBE(Class58.cameraHorizontal);
+                        Class32.packetBuffer.putShortBE(GroundItemTile.cameraHorizontal);
                         Class32.packetBuffer.putByte(57);
                         Class32.packetBuffer.putByte(Class43.cameraYawOffset);
                         Class32.packetBuffer.putByte(Class51.mapZoomOffset);

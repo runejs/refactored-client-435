@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -10,6 +12,8 @@ import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.tile.FloorDecoration;
 
 public class Class37 {
     public static int anInt859;
@@ -127,12 +131,12 @@ public class Class37 {
                 if(is_6_[i_7_] == 0)
                     is[i_7_] = 0;
             }
-            AnimationSequence.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, Class58.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
+            AnimationSequence.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
             ActorDefinition.method574(4);
         } else {
             int i = 48 + ((Player.localPlayer.anInt3098) / 32);
             int i_8_ = 464 + -((Player.localPlayer.anInt3089) / 32);
-            int i_9_ = Class58.cameraHorizontal + Class43.cameraYawOffset & 0x7ff;
+            int i_9_ = GroundItemTile.cameraHorizontal + Class43.cameraYawOffset & 0x7ff;
             Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.method724(25, 5, 146, 151, i, i_8_, i_9_, Class51.mapZoomOffset + 256, Landscape.anIntArray1186, Class34.anIntArray852);
             for(int i_10_ = 0; GameObject.anInt3040 > i_10_; i_10_++) {
                 i = 2 + (4 * Actor.anIntArray3149[i_10_] + -((Player.localPlayer.anInt3098) / 32));
@@ -141,7 +145,7 @@ public class Class37 {
             }
             for(int i_11_ = 0; i_11_ < 104; i_11_++) {
                 for(int i_12_ = 0; i_12_ < 104; i_12_++) {
-                    Class45 class45 = (Class10.aClass45ArrayArrayArray357[Player.anInt3267][i_11_][i_12_]);
+                    Class45 class45 = (Wall.aClass45ArrayArrayArray357[Player.anInt3267][i_11_][i_12_]);
                     if(class45 != null) {
                         i_8_ = -((Player.localPlayer.anInt3089) / 32) + 2 + i_12_ * 4;
                         i = -((Player.localPlayer.anInt3098) / 32) + 2 + i_11_ * 4;
@@ -169,8 +173,8 @@ public class Class37 {
                     i_8_ = (-((Player.localPlayer.anInt3089) / 32) + class40_sub5_sub17_sub4_sub1.anInt3089 / 32);
                     boolean bool = false;
                     long l = class40_sub5_sub17_sub4_sub1.playerName.method58((byte) 122);
-                    for(int i_15_ = 0; Class40_Sub5_Sub17_Sub3.anInt3060 > i_15_; i_15_++) {
-                        if(l == Class59.aLongArray1397[i_15_] && Class40_Sub7.anIntArray2131[i_15_] != 0) {
+                    for(int i_15_ = 0; Class40_Sub5_Sub17_Sub3.friendsCount > i_15_; i_15_++) {
+                        if(l == Class59.aLongArray1397[i_15_] && Class40_Sub7.friendWorlds[i_15_] != 0) {
                             bool = true;
                             break;
                         }
@@ -215,7 +219,7 @@ public class Class37 {
                 SceneTile.drawOnMinimap(i_8_, i, (Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[0]));
             }
             Rasterizer.drawFilledRectangle(97, 78, 3, 3, 16777215);
-            AnimationSequence.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, Class58.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
+            AnimationSequence.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
             if(arg0)
                 ActorDefinition.method574(4);
         }

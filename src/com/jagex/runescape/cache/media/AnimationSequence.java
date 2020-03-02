@@ -1,12 +1,14 @@
 package com.jagex.runescape.cache.media;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.util.CollisionMap;
 
 public class AnimationSequence extends SubNode {
     public static RSString requestcmd_tradereq = RSString.CreateString(":tradereq:");
@@ -81,13 +83,13 @@ public class AnimationSequence extends SubNode {
         int i = 0x7fff & arg1 >> 14;
         if(arg2 > -9)
             method596(-4, -74, (byte) -44, -62);
-        int i_14_ = (Npc.aScene_3301.method141(Player.anInt3267, arg0, arg3, arg1));
+        int i_14_ = (Npc.aScene_3301.getArrangement(Player.anInt3267, arg0, arg3, arg1));
         if(i_14_ == -1)
             return false;
         int i_15_ = 0x3 & i_14_ >> 6;
         int i_16_ = 0x1f & i_14_;
         if(i_16_ != 10 && i_16_ != 11 && i_16_ != 22)
-            Class38_Sub1.method448(0, 0, (Player.localPlayer.anIntArray3088[0]), arg0, (byte) 98, 1 + i_16_, true, i_15_, 0, (Player.localPlayer.anIntArray3135[0]), arg3, 2);
+            Class38_Sub1.method448(0, 0, (Player.localPlayer.pathY[0]), arg0, (byte) 98, 1 + i_16_, true, i_15_, 0, (Player.localPlayer.pathX[0]), arg3, 2);
         else {
             GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
             int i_17_ = gameObjectDefinition.blockingMask;
@@ -102,7 +104,7 @@ public class AnimationSequence extends SubNode {
                 i_18_ = gameObjectDefinition.sizeY;
                 i_19_ = gameObjectDefinition.sizeX;
             }
-            Class38_Sub1.method448(i_18_, i_17_, (Player.localPlayer.anIntArray3088[0]), arg0, (byte) 94, 0, true, 0, i_19_, (Player.localPlayer.anIntArray3135[0]), arg3, 2);
+            Class38_Sub1.method448(i_18_, i_17_, (Player.localPlayer.pathY[0]), arg0, (byte) 94, 0, true, 0, i_19_, (Player.localPlayer.pathX[0]), arg3, 2);
         }
         Class40_Sub11.anInt2163 = Class57.anInt1338;
         Class45.anInt1075 = 2;

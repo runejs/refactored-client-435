@@ -1,6 +1,8 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.awt.*;
 

@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.media.IndexedImage;
 
 public class Class57 {

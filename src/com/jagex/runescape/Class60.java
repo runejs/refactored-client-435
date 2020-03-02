@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -8,6 +9,8 @@ import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class60 {
     public static int anInt1400;
@@ -42,7 +45,7 @@ public class Class60 {
     public static TypeFace method987(int arg0) {
 
         anInt1414++;
-        TypeFace class40_sub5_sub14_sub1 = new TypeFace((Actor.anIntArray3111), Class17.anIntArray456, (Npc.anIntArray3312), Buffer.anIntArray1972, Class58.aByteArrayArray1370);
+        TypeFace class40_sub5_sub14_sub1 = new TypeFace((Actor.anIntArray3111), Class17.anIntArray456, (Npc.anIntArray3312), Buffer.anIntArray1972, GroundItemTile.aByteArrayArray1370);
         ActorDefinition.method569();
         if(arg0 < 4)
             return null;
@@ -99,7 +102,7 @@ public class Class60 {
                 i_4_ = -i + 512;
             if(i_4_ < 0)
                 i_4_ = 0;
-            Class19.anInt475 = i_4_;
+            InteractiveObject.anInt475 = i_4_;
             int i_5_ = RSString.anInt1668 + -4;
             if(i_5_ + i_3_ > 334)
                 i_5_ = -i_3_ + 334;
@@ -118,7 +121,7 @@ public class Class60 {
                 else if(i + i_7_ > 190)
                     i_7_ = 190 - i;
                 Class4.menuOpen = true;
-                Class19.anInt475 = i_7_;
+                InteractiveObject.anInt475 = i_7_;
                 if(i_6_ >= 0) {
                     if(i_3_ + i_6_ > 261)
                         i_6_ = -i_3_ + 261;
@@ -144,7 +147,7 @@ public class Class60 {
                     i_9_ = 0;
                 else if(i_9_ + i > 479)
                     i_9_ = -i + 479;
-                Class19.anInt475 = i_9_;
+                InteractiveObject.anInt475 = i_9_;
             }
         }
     }
@@ -162,8 +165,6 @@ public class Class60 {
             l /= 37L;
             i++;
         }
-        if(arg0 >= -3)
-            aClass1_1416 = null;
         byte[] is = new byte[i];
         while(arg1 != 0) {
             long l_10_ = arg1;
@@ -248,14 +249,14 @@ public class Class60 {
                             if(ItemDefinition.anInt2854 == 84 || (ItemDefinition.anInt2854 == 80))
                                 Node.anInt947 = 1;
                             if(bool && Class22_Sub2.username.length() < 12)
-                                Class22_Sub2.username = Class22_Sub2.username.method70(Class59.anInt1388, 0);
+                                Class22_Sub2.username = Class22_Sub2.username.method70(Class59.anInt1388);
                         } else if(Node.anInt947 == 1) {
                             if(ItemDefinition.anInt2854 == 85 && Class22_Sub2.password.length() > 0)
                                 Class22_Sub2.password = (Class22_Sub2.password.substring(0, Class22_Sub2.password.length() + -1));
                             if(ItemDefinition.anInt2854 == 84 || ItemDefinition.anInt2854 == 80)
                                 Node.anInt947 = 0;
                             if(bool && Class22_Sub2.password.length() < 20)
-                                Class22_Sub2.password = Class22_Sub2.password.method70(Class59.anInt1388, 0);
+                                Class22_Sub2.password = Class22_Sub2.password.method70(Class59.anInt1388);
                         }
                     }
                 }

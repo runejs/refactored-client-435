@@ -1,12 +1,16 @@
 package com.jagex.runescape.media.renderable.actor;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.net.IncomingPackets;
+import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.tile.FloorDecoration;
 
 public class Npc extends Actor {
     public static int anInt3294 = 0;
@@ -151,16 +155,16 @@ public class Npc extends Actor {
                     int i_13_ = i_10_ * 765 + i;
                     Class32.packetBuffer.putIntLE(((i_11_ << 19) + ((i_12_ << 20) + i_13_)));
                 }
-                if(Class19.anInt487 > 0)
-                    Class19.anInt487--;
+                if(InteractiveObject.anInt487 > 0)
+                    InteractiveObject.anInt487--;
                 if(Class40_Sub5_Sub17_Sub3.aBooleanArray3056[96] || Class40_Sub5_Sub17_Sub3.aBooleanArray3056[97] || Class40_Sub5_Sub17_Sub3.aBooleanArray3056[98] || Class40_Sub5_Sub17_Sub3.aBooleanArray3056[99])
                     HashTable.aBoolean565 = true;
-                if(HashTable.aBoolean565 && Class19.anInt487 <= 0) {
+                if(HashTable.aBoolean565 && InteractiveObject.anInt487 <= 0) {
                     Class13.anInt415++;
-                    Class19.anInt487 = 20;
+                    InteractiveObject.anInt487 = 20;
                     HashTable.aBoolean565 = false;
                     Class32.packetBuffer.putPacket(58);
-                    Class32.packetBuffer.putShortBE(Class58.cameraHorizontal);
+                    Class32.packetBuffer.putShortBE(GroundItemTile.cameraHorizontal);
                     Class32.packetBuffer.putShortBE(Class65.anInt1537);
                 }
                 if(HashTable.aBoolean571 && !Class35.aBoolean1735) {
@@ -220,7 +224,7 @@ public class Npc extends Actor {
                                 } else {
                                     RSRuntimeException.lastActiveInvInterface = -1;
                                     Class43.method894(false);
-                                    if((RSRuntimeException.lastActiveInvInterface == Class48.modifiedWidgetId) && (Class55.mouseInvInterfaceIndex != Class58.selectedInventorySlot)) {
+                                    if((RSRuntimeException.lastActiveInvInterface == Class48.modifiedWidgetId) && (Class55.mouseInvInterfaceIndex != GroundItemTile.selectedInventorySlot)) {
                                         Widget childInterface = Widget.forId((Class48.modifiedWidgetId));
                                         int moveItemInsertionMode = 0;
                                         if((Class43.bankInsertMode == 1) && (childInterface.contentType == 206))
@@ -229,13 +233,13 @@ public class Npc extends Actor {
                                             moveItemInsertionMode = 0;
                                         if(childInterface.itemDeletesDraged) {
                                             int i_16_ = Class55.mouseInvInterfaceIndex;
-                                            int i_17_ = Class58.selectedInventorySlot;
+                                            int i_17_ = GroundItemTile.selectedInventorySlot;
                                             childInterface.items[i_16_] = (childInterface.items[i_17_]);
                                             childInterface.itemAmounts[i_16_] = (childInterface.itemAmounts[i_17_]);
                                             childInterface.items[i_17_] = -1;
                                             childInterface.itemAmounts[i_17_] = 0;
                                         } else if(moveItemInsertionMode == 1) {
-                                            int slotStart = Class58.selectedInventorySlot;
+                                            int slotStart = GroundItemTile.selectedInventorySlot;
                                             int slotEnd = Class55.mouseInvInterfaceIndex;
                                             while(slotEnd != slotStart) {
                                                 if(slotStart <= slotEnd) {
@@ -249,10 +253,10 @@ public class Npc extends Actor {
                                                 }
                                             }
                                         } else
-                                            childInterface.swapItems(Class55.mouseInvInterfaceIndex, false, Class58.selectedInventorySlot);
+                                            childInterface.swapItems(Class55.mouseInvInterfaceIndex, false, GroundItemTile.selectedInventorySlot);
                                         Class32.packetBuffer.putPacket(83);
                                         Class32.packetBuffer.putDualByte(moveItemInsertionMode, 128);
-                                        Class32.packetBuffer.putCustomNegativeOffsetShortBE(Class58.selectedInventorySlot, -128);
+                                        Class32.packetBuffer.putCustomNegativeOffsetShortBE(GroundItemTile.selectedInventorySlot, -128);
                                         Class32.packetBuffer.putOffsetShortLE(Class55.mouseInvInterfaceIndex);
                                         Class32.packetBuffer.putIntME2(Class48.modifiedWidgetId);
                                     }
@@ -264,7 +268,7 @@ public class Npc extends Actor {
                         if(Scene.anInt78 != -1) {
                             int i = Scene.anInt78;
                             int i_18_ = Scene.anInt81;
-                            boolean bool = (Class38_Sub1.method448(0, 0, (Player.localPlayer.anIntArray3088[0]), i, (byte) 119, 0, true, 0, 0, (Player.localPlayer.anIntArray3135[0]), i_18_, 0));
+                            boolean bool = (Class38_Sub1.method448(0, 0, (Player.localPlayer.pathY[0]), i, (byte) 119, 0, true, 0, 0, (Player.localPlayer.pathX[0]), i_18_, 0));
                             if(bool) {
                                 Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                                 OverlayDefinition.anInt2319 = 0;
@@ -309,23 +313,23 @@ public class Npc extends Actor {
                         else if(Class48.anInt1138 != -1)
                             Class27.method360((byte) 125, 496, i ^ 0xffffffff, 453, Class48.anInt1138, 357, 17);
                         if(Class67.anInt1586 != -1 || FloorDecoration.anInt614 != -1 || HashTable.anInt573 != -1) {
-                            if(RSString.anInt1711 > Class53.anInt1257) {
-                                Class53.anInt1257++;
-                                if(RSString.anInt1711 == Class53.anInt1257) {
+                            if(RSString.anInt1711 > WallDecoration.anInt1257) {
+                                WallDecoration.anInt1257++;
+                                if(RSString.anInt1711 == WallDecoration.anInt1257) {
                                     if(Class67.anInt1586 != -1)
                                         Class52.redrawChatbox = true;
                                     if(FloorDecoration.anInt614 != -1)
                                         ISAAC.redrawTabArea = true;
                                 }
                             }
-                        } else if(Class53.anInt1257 > 0)
-                            Class53.anInt1257--;
+                        } else if(WallDecoration.anInt1257 > 0)
+                            WallDecoration.anInt1257--;
                         Class40_Sub5_Sub17_Sub3.method775(false);
                         if(Class39.aBoolean906)
                             Class5.method165(35);
                         for(int i_19_ = 0; i_19_ < 5; i_19_++)
                             Class22_Sub1.anIntArray1846[i_19_]++;
-                        Class40_Sub5_Sub6.method587(2);
+                        Class40_Sub5_Sub6.manageTextInputs();
                         int i_20_ = Class32.method400(-1);
                         int i_21_ = Class17.method274(true);
                         if(i_20_ > 4500 && i_21_ > 4500) {

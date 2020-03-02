@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class4 {
     public static boolean menuOpen = false;
@@ -49,28 +50,28 @@ public class Class4 {
         anInt187++;
         if(arg0 != 128)
             menuOpen = false;
-        for(int i = 0; i < PacketBuffer.anInt2248; i++) {
-            Class40_Sub3.anIntArray2023[i]--;
-            if(Class40_Sub3.anIntArray2023[i] < -10) {
-                PacketBuffer.anInt2248--;
-                for(int i_9_ = i; ((PacketBuffer.anInt2248 > i_9_)); i_9_++) {
-                    IdentityKit.anIntArray2602[i_9_] = IdentityKit.anIntArray2602[i_9_ + 1];
+        for(int i = 0; i < PacketBuffer.currentSound; i++) {
+            Class40_Sub3.soundDelay[i]--;
+            if(Class40_Sub3.soundDelay[i] < -10) {
+                PacketBuffer.currentSound--;
+                for(int i_9_ = i; ((PacketBuffer.currentSound > i_9_)); i_9_++) {
+                    IdentityKit.sound[i_9_] = IdentityKit.sound[i_9_ + 1];
                     PacketBuffer.effects[i_9_] = PacketBuffer.effects[1 + i_9_];
-                    ItemDefinition.anIntArray2814[i_9_] = ItemDefinition.anIntArray2814[1 + i_9_];
-                    Class40_Sub3.anIntArray2023[i_9_] = Class40_Sub3.anIntArray2023[1 + i_9_];
+                    ItemDefinition.soundVolume[i_9_] = ItemDefinition.soundVolume[1 + i_9_];
+                    Class40_Sub3.soundDelay[i_9_] = Class40_Sub3.soundDelay[1 + i_9_];
                     Class38_Sub1.anIntArray1916[i_9_] = Class38_Sub1.anIntArray1916[1 + i_9_];
                 }
                 i--;
             } else {
                 Effect effect = PacketBuffer.effects[i];
                 if(effect == null) {
-                    effect = Effect.method429((Actor.aClass6_Sub1_3157), (IdentityKit.anIntArray2602[i]), 0);
+                    effect = Effect.method429((Actor.aClass6_Sub1_3157), (IdentityKit.sound[i]), 0);
                     if(effect == null)
                         continue;
-                    Class40_Sub3.anIntArray2023[i] += effect.delay();
+                    Class40_Sub3.soundDelay[i] += effect.delay();
                     PacketBuffer.effects[i] = effect;
                 }
-                if(Class40_Sub3.anIntArray2023[i] < 0) {
+                if(Class40_Sub3.soundDelay[i] < 0) {
                     int i_10_;
                     if(Class38_Sub1.anIntArray1916[i] != 0) {
                         int i_11_ = 128 * (Class38_Sub1.anIntArray1916[i] & 0xff);
@@ -84,7 +85,7 @@ public class Class4 {
                             i_14_ = -i_14_;
                         int i_16_ = -128 + (i_15_ + i_14_);
                         if(i_16_ > i_11_) {
-                            Class40_Sub3.anIntArray2023[i] = -100;
+                            Class40_Sub3.soundDelay[i] = -100;
                             continue;
                         }
                         if(i_16_ < 0)
@@ -94,9 +95,9 @@ public class Class4 {
                         i_10_ = Class5.anInt200;
                     Class40_Sub12_Sub1 class40_sub12_sub1 = effect.method428().method875(Class55.aClass48_1289);
                     Class40_Sub9_Sub2 class40_sub9_sub2 = Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_10_);
-                    class40_sub9_sub2.method860(-1 + ItemDefinition.anIntArray2814[i]);
+                    class40_sub9_sub2.method860(-1 + ItemDefinition.soundVolume[i]);
                     Class49.aClass40_Sub9_Sub1_1152.method846(class40_sub9_sub2);
-                    Class40_Sub3.anIntArray2023[i] = -100;
+                    Class40_Sub3.soundDelay[i] = -100;
                 }
             }
         }

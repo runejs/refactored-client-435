@@ -1,7 +1,8 @@
 package com.jagex.runescape.io;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.media.IndexedImage;
 
 import java.math.BigInteger;
@@ -88,7 +89,7 @@ public class Buffer extends Node {
         while(buffer[currentPosition++] != 0) {
             /* empty */
         }
-        return Class19.method279(buffer, true, i, -1 + currentPosition + -i);
+        return InteractiveObject.method279(buffer, true, i, -1 + currentPosition + -i);
     }
 
     public void putByte(int value) {

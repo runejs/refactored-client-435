@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -7,6 +8,8 @@ import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.tile.FloorDecoration;
 
 public class HuffmanEncoding {
     public static RSString blank_string = RSString.CreateString("");
@@ -19,7 +22,7 @@ public class HuffmanEncoding {
     public static int anInt1548 = -1;
     public static RSString aClass1_1549 = RSString.CreateString("leuchten1:");
     public static RSString aClass1_1550 = blank_string;
-    public static RSString aClass1_1552 = RSString.CreateString("Connecting to friendserver");
+    public static RSString str_Connecting_to_friendserver = RSString.CreateString("Connecting to friendserver");
     public static RSString aClass1_1555 = RSString.CreateString("Remove");
     public static RSString chatboxInput = blank_string;
     public static RSString aClass1_1558 = RSString.CreateString("leuchten2:");
@@ -115,7 +118,7 @@ public class HuffmanEncoding {
         chatTypes = null;
         aClass1_1546 = null;
         aClass1_1550 = null;
-        aClass1_1552 = null;
+        str_Connecting_to_friendserver = null;
         aClass1_1549 = null;
         aClass1_1572 = null;
         anIntArray1564 = null;
@@ -127,7 +130,7 @@ public class HuffmanEncoding {
 
     public static RSString method1024(boolean arg0, byte arg1, int arg2) {
         if(arg1 > -30)
-            aClass1_1552 = null;
+            str_Connecting_to_friendserver = null;
         return PacketBuffer.method521(arg0, (byte) 8, 10, arg2);
     }
 
@@ -138,14 +141,13 @@ public class HuffmanEncoding {
             if(arg4 != null && arg4.isClickable) {
                 RSString class1 = arg4.name;
                 if(arg4.combatLevel != arg0)
-                    class1 = (Class40_Sub5_Sub17_Sub6.method832(-47, (new RSString[]{class1, (SceneTile.method536((Player.localPlayer.combatLevel), arg4.combatLevel, arg0 + -99)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(arg4.combatLevel, -1), Class51.aClass1_1199})));
+                    class1 = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{class1, (SceneTile.method536((Player.localPlayer.combatLevel), arg4.combatLevel, arg0 + -99)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(arg4.combatLevel, -1), Class51.aClass1_1199})));
                 if(Class8.anInt301 == 1) {
                     Node.anInt927++;
-                    OverlayDefinition.method558(arg3, Main.aClass1_1763, arg2, -501, arg1, 49, (Class40_Sub5_Sub17_Sub6.method832(-124, (new RSString[]{Npc.aClass1_3295, SpotAnimDefinition.aClass1_2306, class1}))));
+                    OverlayDefinition.method558(arg3, Main.aClass1_1763, arg2, -501, arg1, 49, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Npc.aClass1_3295, SpotAnimDefinition.aClass1_2306, class1}))));
                 } else if(Main.anInt1773 == 1) {
                     if((0x2 & ItemDefinition.anInt2815) == 2) {
-                        OverlayDefinition.method558(arg3, Class38_Sub1.aClass1_1918, arg2, arg0 + -501, arg1, 21, (Class40_Sub5_Sub17_Sub6.method832(arg0 + 73, (new RSString[]{FloorDecoration.aClass1_611, SpotAnimDefinition.aClass1_2306, class1}))));
-                        Class58.anInt1356++;
+                        OverlayDefinition.method558(arg3, Class38_Sub1.aClass1_1918, arg2, arg0 + -501, arg1, 21, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{FloorDecoration.aClass1_611, SpotAnimDefinition.aClass1_2306, class1}))));
                     }
                 } else {
                     RSString[] class1s = arg4.options;
@@ -166,7 +168,7 @@ public class HuffmanEncoding {
                                     i_3_ = 34;
                                 if(i == 4)
                                     i_3_ = 20;
-                                OverlayDefinition.method558(arg3, class1s[i], arg2, arg0 + -501, arg1, i_3_, (Class40_Sub5_Sub17_Sub6.method832(arg0 + 93, new RSString[]{KeyFocusListener.aClass1_1283, class1})));
+                                OverlayDefinition.method558(arg3, class1s[i], arg2, arg0 + -501, arg1, i_3_, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{KeyFocusListener.aClass1_1283, class1})));
                             }
                         }
                     }
@@ -187,11 +189,11 @@ public class HuffmanEncoding {
                                     i_5_ = i_4_ + 34;
                                 if(i == 4)
                                     i_5_ = 20 + i_4_;
-                                OverlayDefinition.method558(arg3, class1s[i], arg2, arg0 ^ ~0x1f4, arg1, i_5_, (Class40_Sub5_Sub17_Sub6.method832(-64, new RSString[]{KeyFocusListener.aClass1_1283, class1})));
+                                OverlayDefinition.method558(arg3, class1s[i], arg2, arg0 ^ ~0x1f4, arg1, i_5_, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{KeyFocusListener.aClass1_1283, class1})));
                             }
                         }
                     }
-                    OverlayDefinition.method558(arg3, Class40_Sub5_Sub15.prefix_examine, arg2, -501, arg1, 1001, (Class40_Sub5_Sub17_Sub6.method832(-116, new RSString[]{KeyFocusListener.aClass1_1283, class1})));
+                    OverlayDefinition.method558(arg3, Class40_Sub5_Sub15.prefix_examine, arg2, -501, arg1, 1001, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{KeyFocusListener.aClass1_1283, class1})));
                 }
             }
         }
@@ -234,7 +236,7 @@ public class HuffmanEncoding {
                 if(i_18_ == 1)
                     i_16_ = Class13.anIntArray403[is[i_14_++]];
                 if(i_18_ == 2)
-                    i_16_ = Class10.anIntArray354[is[i_14_++]];
+                    i_16_ = Wall.anIntArray354[is[i_14_++]];
                 if(i_18_ == 3)
                     i_16_ = (Class40_Sub5_Sub17_Sub3.anIntArray3051[is[i_14_++]]);
                 if(i_18_ == 17)
@@ -252,17 +254,17 @@ public class HuffmanEncoding {
                     }
                 }
                 if(i_18_ == 5)
-                    i_16_ = Class58.varbitmasks[is[i_14_++]];
+                    i_16_ = GroundItemTile.varbitmasks[is[i_14_++]];
                 if(i_18_ == 6)
-                    i_16_ = (Class38_Sub1.anIntArray1909[-1 + Class10.anIntArray354[is[i_14_++]]]);
+                    i_16_ = (Class38_Sub1.anIntArray1909[-1 + Wall.anIntArray354[is[i_14_++]]]);
                 if(i_18_ == 7)
-                    i_16_ = (100 * Class58.varbitmasks[is[i_14_++]] / 46875);
+                    i_16_ = (100 * GroundItemTile.varbitmasks[is[i_14_++]] / 46875);
                 if(i_18_ == 8)
                     i_16_ = (Player.localPlayer.combatLevel);
                 if(i_18_ == 9) {
                     for(int i_22_ = 0; i_22_ < 25; i_22_++) {
                         if(Class22.aBooleanArray548[i_22_])
-                            i_16_ += Class10.anIntArray354[i_22_];
+                            i_16_ += Wall.anIntArray354[i_22_];
                     }
                 }
                 if(i_18_ == 10) {
@@ -284,7 +286,7 @@ public class HuffmanEncoding {
                 if(i_18_ == 12)
                     i_16_ = Class52.anInt1222;
                 if(i_18_ == 13) {
-                    int i_26_ = Class58.varbitmasks[is[i_14_++]];
+                    int i_26_ = GroundItemTile.varbitmasks[is[i_14_++]];
                     int i_27_ = is[i_14_++];
                     i_16_ = (1 << i_27_ & i_26_) != 0 ? 1 : 0;
                 }

@@ -4,6 +4,7 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.util.Signlink;
 
 public class Class61 {
@@ -118,7 +119,7 @@ public class Class61 {
         for(int i_0_ = arg0; (i_0_ <= arg0 + arg2); i_0_++) {
             for(int i_1_ = arg4; (arg3 + arg4 >= i_1_); i_1_++) {
                 if(i_1_ >= 0 && i_1_ < 104 && i_0_ >= 0 && i_0_ < 104) {
-                    Class19.aByteArrayArrayArray492[0][i_1_][i_0_] = (byte) 127;
+                    InteractiveObject.aByteArrayArrayArray492[0][i_1_][i_0_] = (byte) 127;
                     if(arg4 == i_1_ && i_1_ > 0)
                         Class40_Sub6.tile_height[0][i_1_][i_0_] = (Class40_Sub6.tile_height[0][-1 + i_1_][i_0_]);
                     if(arg4 + arg3 == i_1_ && i_1_ < 103)

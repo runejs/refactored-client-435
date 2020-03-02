@@ -1,11 +1,13 @@
-package com.jagex.runescape;
+package com.jagex.runescape.cache;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.util.Signlink;
 
 import java.io.DataInputStream;
@@ -129,7 +131,7 @@ public abstract class CacheIndex {
         class40_sub1.currentPosition = -2 + arg0.length;
         UnderlayDefinition.anInt2581 = class40_sub1.getUnsignedShortBE();
         Actor.anIntArray3111 = new int[UnderlayDefinition.anInt2581];
-        Class58.aByteArrayArray1370 = new byte[UnderlayDefinition.anInt2581][];
+        GroundItemTile.aByteArrayArray1370 = new byte[UnderlayDefinition.anInt2581][];
         Class17.anIntArray456 = new int[UnderlayDefinition.anInt2581];
         Npc.anIntArray3312 = new int[UnderlayDefinition.anInt2581];
         Class57.anIntArray1347 = new int[UnderlayDefinition.anInt2581];
@@ -158,7 +160,7 @@ public abstract class CacheIndex {
             int i_41_ = Class17.anIntArray456[i_39_];
             int i_42_ = i_40_ * i_41_;
             byte[] is = new byte[i_42_];
-            Class58.aByteArrayArray1370[i_39_] = is;
+            GroundItemTile.aByteArrayArray1370[i_39_] = is;
             int i_43_ = class40_sub1.getUnsignedByte();
             if(i_43_ == 0) {
                 for(int i_46_ = 0; (i_42_ > i_46_); i_46_++)
@@ -183,7 +185,7 @@ public abstract class CacheIndex {
         anInt250++;
         if(arg0)
             anIntArray225 = null;
-        Class53.aClass9_1247.method235((byte) 59);
+        WallDecoration.aClass9_1247.method235((byte) 59);
     }
 
     public byte[] method170(RSString arg0, RSString arg1, int arg2) {

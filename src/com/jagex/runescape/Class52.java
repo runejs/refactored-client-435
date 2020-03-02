@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
@@ -7,6 +8,7 @@ import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.awt.*;
 
@@ -76,7 +78,7 @@ public class Class52 {
         HuffmanEncoding.aClass68_1541.method1046((byte) 90);
         anInt1224++;
         Class57.aClass40_Sub5_Sub14_Sub2_1346.drawImage(0, 0);
-        arg2.method688(Class19.aClass1_495, 55, 28, 16777215, true);
+        arg2.method688(InteractiveObject.aClass1_495, 55, 28, 16777215, true);
         if(arg4 == 0)
             arg2.method688(Npc.aClass1_3311, 55, 41, 65280, true);
         if(arg4 == 1)
@@ -135,12 +137,12 @@ public class Class52 {
                 if(arg6 == 1)
                     i_0_ = Npc.aScene_3301.method91(arg7, arg2, arg0);
                 if(arg6 == 2)
-                    i_0_ = Npc.aScene_3301.method110(arg7, arg2, arg0);
+                    i_0_ = Npc.aScene_3301.getLocationHash(arg7, arg2, arg0);
                 if(arg6 == 3)
-                    i_0_ = Npc.aScene_3301.method93(arg7, arg2, arg0);
+                    i_0_ = Npc.aScene_3301.getFloorDecorationHash(arg7, arg2, arg0);
                 if(i_0_ != 0) {
                     i = (i_0_ & 0x1ffff138) >> 14;
-                    int i_2_ = Npc.aScene_3301.method141(arg7, arg2, arg0, i_0_);
+                    int i_2_ = Npc.aScene_3301.getArrangement(arg7, arg2, arg0, i_0_);
                     int i_3_ = i_2_ >> 6 & 0x3;
                     int i_4_ = 0x1f & i_2_;
                     if(arg6 == 0) {

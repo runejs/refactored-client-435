@@ -1,5 +1,9 @@
-package com.jagex.runescape;
+package com.jagex.runescape.scene.tile;
 
+import com.jagex.runescape.*;
+import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
@@ -11,6 +15,7 @@ import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.scene.GroundItemTile;
 
 import java.io.IOException;
 import java.util.zip.CRC32;
@@ -59,8 +64,8 @@ public class FloorDecoration {
     }
 
     public static void method343(boolean arg0, int arg1) {
-        Class58.aBoolean1349 = arg0;
-        if(Class58.aBoolean1349) {
+        GroundItemTile.aBoolean1349 = arg0;
+        if(GroundItemTile.aBoolean1349) {
             int i = Cache.outgoingbuffer.getUnsignedShortBE();
             int i_0_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
             int i_1_ = Cache.outgoingbuffer.getUnsignedShortBE();
@@ -109,8 +114,8 @@ public class FloorDecoration {
                                 ISAAC.anIntArray528[i_8_] = i_17_;
                                 int i_19_ = i_17_ & 0xff;
                                 int i_20_ = (0xffbe & i_17_) >> 8;
-                                Class45.anIntArray1071[i_8_] = (Renderable.aClass6_Sub1_2857.method183(RSApplet.method27(arg1, 5688), (Class40_Sub5_Sub17_Sub6.method832(85, (new RSString[]{Class45.aClass1_1085, (HashTable.method334(i_20_, RSApplet.method27(arg1, -5689))), Class8.aClass1_303, HashTable.method334(i_19_, -1)})))));
-                                Class13.anIntArray421[i_8_] = (Renderable.aClass6_Sub1_2857.method183(0, (Class40_Sub5_Sub17_Sub6.method832(118, (new RSString[]{HashTable.aClass1_553, HashTable.method334(i_20_, -1), Class8.aClass1_303, HashTable.method334(i_19_, -1)})))));
+                                Class45.anIntArray1071[i_8_] = (Renderable.aClass6_Sub1_2857.method183(RSApplet.method27(arg1, 5688), (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class45.aClass1_1085, (HashTable.method334(i_20_, RSApplet.method27(arg1, -5689))), Class8.aClass1_303, HashTable.method334(i_19_, -1)})))));
+                                Class13.anIntArray421[i_8_] = (Renderable.aClass6_Sub1_2857.method183(0, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{HashTable.aClass1_553, HashTable.method334(i_20_, -1), Class8.aClass1_303, HashTable.method334(i_19_, -1)})))));
                                 i_8_++;
                             }
                         }
@@ -146,8 +151,8 @@ public class FloorDecoration {
                     int i_30_ = i_29_ + (i_28_ << 8);
                     if(!bool || (i_29_ != 49 && i_29_ != 149 && i_29_ != 147 && i_28_ != 50 && (i_28_ != 49 || i_29_ != 47))) {
                         ISAAC.anIntArray528[i_25_] = i_30_;
-                        Class45.anIntArray1071[i_25_] = (Renderable.aClass6_Sub1_2857.method183(0, (Class40_Sub5_Sub17_Sub6.method832(RSApplet.method27(arg1, -5655), new RSString[]{Class45.aClass1_1085, HashTable.method334(i_28_, -1), Class8.aClass1_303, HashTable.method334(i_29_, -1)}))));
-                        Class13.anIntArray421[i_25_] = (Renderable.aClass6_Sub1_2857.method183(0, (Class40_Sub5_Sub17_Sub6.method832(-84, (new RSString[]{HashTable.aClass1_553, HashTable.method334(i_28_, -1), Class8.aClass1_303, HashTable.method334(i_29_, (RSApplet.method27(arg1, -5689)))})))));
+                        Class45.anIntArray1071[i_25_] = (Renderable.aClass6_Sub1_2857.method183(0, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class45.aClass1_1085, HashTable.method334(i_28_, -1), Class8.aClass1_303, HashTable.method334(i_29_, -1)}))));
+                        Class13.anIntArray421[i_25_] = (Renderable.aClass6_Sub1_2857.method183(0, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{HashTable.aClass1_553, HashTable.method334(i_28_, -1), Class8.aClass1_303, HashTable.method334(i_29_, (RSApplet.method27(arg1, -5689)))})))));
                         i_25_++;
                     }
                 }
@@ -173,7 +178,7 @@ public class FloorDecoration {
             GameObject.aClass68_3045 = null;
             Class57.aClass40_Sub5_Sub14_Sub2_1346 = null;
             aClass40_Sub5_Sub14_Sub2_593 = null;
-            Class53.aClass40_Sub5_Sub14_Sub2_1270 = null;
+            WallDecoration.aClass40_Sub5_Sub14_Sub2_1270 = null;
             Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776 = null;
             Class13.aClass40_Sub5_Sub14_Sub2_418 = null;
             RSString.aClass68_1665 = null;
@@ -194,7 +199,7 @@ public class FloorDecoration {
             ISAAC.aClass40_Sub5_Sub14_Sub2_524 = null;
             RSCanvas.aClass68_64 = null;
             Class40_Sub7.aClass68_2123 = null;
-            Class19.aClass68_482 = null;
+            InteractiveObject.aClass68_482 = null;
             if(arg0 < -28) {
                 Class40_Sub5_Sub1.aClass68_2275 = null;
                 Class61.aClass68_1441 = null;
@@ -260,7 +265,7 @@ public class FloorDecoration {
                 Class68.anInt1618--;
             }
             for(/**/; Class42.anInt1006 < 20 && HashTable.anInt554 > 0; HashTable.anInt554--) {
-                Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class19.aClass27_485.method362(-113));
+                Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) InteractiveObject.aClass27_485.method362(-113));
                 Buffer class40_sub1 = new Buffer(4);
                 class40_sub1.putByte(0);
                 class40_sub1.putMediumBE((int) class40_sub5_sub13.key);

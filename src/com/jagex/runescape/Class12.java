@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 public class Class12 {
-    public static int anInt380;
+    public static int friendListStatus;
     public static RSString aClass1_381;
     public static RSString aClass1_382 = RSString.CreateString("Benutzeroberfl-=che geladen)3");
     public static Widget chatboxInterface;
@@ -23,7 +23,7 @@ public class Class12 {
     public static RSString aClass1_399;
 
     static {
-        anInt380 = 0;
+        friendListStatus = 0;
         aClass1_386 = RSString.CreateString("Sprites geladen)3");
         aClass1_392 = RSString.CreateString(":  ");
         aClass1_384 = RSString.CreateString("Enter name of player to delete from list");

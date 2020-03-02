@@ -1,11 +1,13 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.GroundItemTile;
 
 public class Class13 {
     public static int anInt400;
@@ -13,14 +15,13 @@ public class Class13 {
     public static int worldid;
     public static int[] anIntArray403 = new int[25];
     public static RSString aClass1_404 = RSString.CreateString("Enter name of friend to delete from list");
-    public static RSString aClass1_405;
+    public static RSString str_Loading_Friend_List = RSString.CreateString("Loading friend list");
     public static Cache aClass9_406;
     public static int anInt407;
     public static int anInt408;
     public static int anInt409;
     public static int anInt410;
     public static RSString aClass1_411;
-    public static RSString aClass1_412;
     public static int anInt413;
     public static boolean[] aBooleanArray414;
     public static int anInt415;
@@ -37,8 +38,6 @@ public class Class13 {
         aClass1_411 = RSString.CreateString("Unerwartete Antwort vom Anmelde)2Server)3");
         aBooleanArray414 = new boolean[5];
         aClass1_417 = aClass1_404;
-        aClass1_412 = RSString.CreateString("Loading friend list");
-        aClass1_405 = aClass1_412;
         aClass9_406 = new Cache(64);
         anInt419 = 2;
         aClass1_422 = RSString.CreateString("oder ung-Ultiges Passwort)3");
@@ -52,8 +51,8 @@ public class Class13 {
             arg0.anInt3112 = 0;
             arg0.anInt3107 = 0;
             arg0.anInt3091 = -1;
-            arg0.anInt3098 = arg0.anInt3096 * 64 + 128 * arg0.anIntArray3088[0];
-            arg0.anInt3089 = arg0.anIntArray3135[0] * 128 + 64 * arg0.anInt3096;
+            arg0.anInt3098 = arg0.anInt3096 * 64 + 128 * arg0.pathY[0];
+            arg0.anInt3089 = arg0.pathX[0] * 128 + 64 * arg0.anInt3096;
             arg0.method790(0);
         }
         if(arg0 == Player.localPlayer && (arg0.anInt3098 < 1536 || arg0.anInt3089 < 1536 || arg0.anInt3098 >= 11776 || arg0.anInt3089 >= 11776)) {
@@ -61,8 +60,8 @@ public class Class13 {
             arg0.anInt3107 = 0;
             arg0.anInt3112 = 0;
             arg0.playingAnimation = -1;
-            arg0.anInt3098 = arg0.anIntArray3088[0] * 128 + (arg0.anInt3096 * 64);
-            arg0.anInt3089 = 64 * arg0.anInt3096 + arg0.anIntArray3135[0] * 128;
+            arg0.anInt3098 = arg0.pathY[0] * 128 + (arg0.anInt3096 * 64);
+            arg0.anInt3089 = 64 * arg0.anInt3096 + arg0.pathX[0] * 128;
             arg0.method790(0);
         }
         if(arg0.anInt3112 > Node.pulseCycle)
@@ -99,7 +98,7 @@ public class Class13 {
         if(Class68.method1043(arg4)) {
             Class48.method925(arg3, Widget.interfaces[arg4], arg5, 0, arg7, 0, -1, arg8, arg6, arg1, 0, arg2);
             if(arg0 != 89)
-                aClass1_405 = null;
+                str_Loading_Friend_List = null;
         }
     }
 
@@ -123,9 +122,9 @@ public class Class13 {
     public static synchronized byte[] method246(int arg1) {
 
         anInt408++;
-        if(arg1 == 100 && Class10.anInt356 > 0) {
-            byte[] is = Class58.aByteArrayArray1377[--Class10.anInt356];
-            Class58.aByteArrayArray1377[Class10.anInt356] = null;
+        if(arg1 == 100 && Wall.anInt356 > 0) {
+            byte[] is = GroundItemTile.aByteArrayArray1377[--Wall.anInt356];
+            GroundItemTile.aByteArrayArray1377[Wall.anInt356] = null;
             return is;
         }
         if(arg1 == 5000 && Main.anInt1764 > 0) {
@@ -180,7 +179,7 @@ public class Class13 {
         aClass1_422 = null;
         aClass1_404 = null;
         aClass40_Sub5_Sub14_Sub2_418 = null;
-        aClass1_405 = null;
+        str_Loading_Friend_List = null;
         aClass1_411 = null;
         aClass1_417 = null;
         anIntArray403 = null;
@@ -188,7 +187,6 @@ public class Class13 {
         aClass9_406 = null;
         if(arg0 != 65535)
             method244(11, 13, 49, 49);
-        aClass1_412 = null;
 
     }
 

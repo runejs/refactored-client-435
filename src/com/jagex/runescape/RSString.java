@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 import java.awt.*;
@@ -386,8 +388,8 @@ public class RSString implements Interface1 {
         return this;
     }
 
-    public RSString method70(int arg0, int arg1) {
-        if(arg0 <= arg1 || arg0 > 255)
+    public RSString method70(int arg0) {
+        if(arg0 > 255)
             throw new IllegalArgumentException("invalid char");
         RSString class1 = new RSString();
         class1.chars = new byte[length + 1];
@@ -547,9 +549,7 @@ public class RSString implements Interface1 {
         return -1;
     }
 
-    public boolean method82(int arg0) {
-        if(arg0 < 101)
-            anInt1668 = 12;
+    public boolean method82() {
         return method67(90, 10);
     }
 
@@ -614,7 +614,7 @@ public class RSString implements Interface1 {
         if(length < arg1.length)
             return false;
         if(arg0 <= 62)
-            method82(-116);
+            method82();
         int i = length + -arg1.length;
         for(int i_26_ = 0; arg1.length > i_26_; i_26_++) {
             if(chars[i_26_ + i] != arg1.chars[i_26_])

@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
@@ -96,14 +97,14 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     if(SpotAnimDefinition.anInt2302 == 1 && bool)
                         bool_9_ = true;
                     boolean bool_10_ = false;
-                    if(widget.anInt2738 != -1 && bool_9_ && Class10.aWidget_353 == null) {
+                    if(widget.anInt2738 != -1 && bool_9_ && Wall.aWidget_353 == null) {
                         Class40_Sub2.anInt1996 = Class13.mouseX;
-                        Class10.aWidget_353 = widget;
+                        Wall.aWidget_353 = widget;
                         Class40_Sub5_Sub11.anInt2621 = Landscape.mouseY;
                     }
                     if(GameFrame.clickType == 1 && (i_6_ <= Class57.anInt1338) && ((RSString.anInt1668 >= i_4_)) && Class57.anInt1338 < i_8_ && RSString.anInt1668 < i_7_)
                         bool_10_ = true;
-                    if(Class10.aWidget_353 != null) {
+                    if(Wall.aWidget_353 != null) {
                         bool_9_ = false;
                         bool = false;
                         bool_10_ = false;
@@ -156,14 +157,14 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
         if(arg0 != 0) {
             int i = 0;
             int i_12_ = -18 % ((arg1 - 69) / 44);
-            for(/**/; ((Class40_Sub5_Sub17_Sub3.anInt3060 > i)); i++) {
+            for(/**/; ((Class40_Sub5_Sub17_Sub3.friendsCount > i)); i++) {
                 if(Class59.aLongArray1397[i] == arg0) {
-                    Class53.anInt1258++;
-                    Class40_Sub5_Sub17_Sub3.anInt3060--;
+                    WallDecoration.anInt1258++;
+                    Class40_Sub5_Sub17_Sub3.friendsCount--;
                     ISAAC.redrawTabArea = true;
-                    for(int i_13_ = i; i_13_ < Class40_Sub5_Sub17_Sub3.anInt3060; i_13_++) {
-                        Class40_Sub11.aClass1Array2147[i_13_] = Class40_Sub11.aClass1Array2147[1 + i_13_];
-                        Class40_Sub7.anIntArray2131[i_13_] = Class40_Sub7.anIntArray2131[i_13_ + 1];
+                    for(int i_13_ = i; i_13_ < Class40_Sub5_Sub17_Sub3.friendsCount; i_13_++) {
+                        Class40_Sub11.friendUsernames[i_13_] = Class40_Sub11.friendUsernames[1 + i_13_];
+                        Class40_Sub7.friendWorlds[i_13_] = Class40_Sub7.friendWorlds[i_13_ + 1];
                         Class59.aLongArray1397[i_13_] = Class59.aLongArray1397[1 + i_13_];
                     }
                     Class32.packetBuffer.putPacket(255);

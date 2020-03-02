@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
@@ -8,6 +9,8 @@ import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class40_Sub5_Sub1 extends SubNode {
     public static Class45 aClass45_2268 = new Class45();
@@ -99,7 +102,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 renderable = new GameObject(arg1, 0, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
             else
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, 0, (byte) 124, i_0_);
-            arg5.method94(arg3, arg9, arg8, i_3_, renderable, null, Class32.anIntArray761[arg7], 0, i_5_, i_4_);
+            arg5.addWall(arg9, arg8, arg3, i_3_, Class32.anIntArray761[arg7], 0, i_5_, renderable, null, i_4_);
             if(gameObjectDefinition.solid)
                 arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.walkable, (byte) 95);
         } else if(arg4 == 1) {
@@ -108,7 +111,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, 1, (byte) 124, i_0_);
             else
                 renderable = new GameObject(arg1, 1, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
-            arg5.method94(arg3, arg9, arg8, i_3_, renderable, null, Class40_Sub5_Sub15.anIntArray2788[arg7], 0, i_5_, i_4_);
+            arg5.addWall(arg9, arg8, arg3, i_3_, Class40_Sub5_Sub15.anIntArray2788[arg7], 0, i_5_, renderable, null, i_4_);
             if(gameObjectDefinition.solid)
                 arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.walkable, (byte) 95);
         } else if(arg4 == 2) {
@@ -122,7 +125,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7 + 4, i, 2, (byte) 124, i_0_);
                 renderable_10_ = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, i_9_, i, 2, (byte) 124, i_0_);
             }
-            arg5.method94(arg3, arg9, arg8, i_3_, renderable, renderable_10_, Class32.anIntArray761[arg7], Class32.anIntArray761[i_9_], i_5_, i_4_);
+            arg5.addWall(arg9, arg8, arg3, i_3_, Class32.anIntArray761[arg7], Class32.anIntArray761[i_9_], i_5_, renderable, renderable_10_, i_4_);
             if(gameObjectDefinition.solid)
                 arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.walkable, (byte) 95);
         } else if(arg4 == 3) {
@@ -131,7 +134,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 renderable = new GameObject(arg1, 3, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
             else
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, 3, (byte) 124, i_0_);
-            arg5.method94(arg3, arg9, arg8, i_3_, renderable, null, Class40_Sub5_Sub15.anIntArray2788[arg7], 0, i_5_, i_4_);
+            arg5.addWall(arg9, arg8, arg3, i_3_, Class40_Sub5_Sub15.anIntArray2788[arg7], 0, i_5_, renderable, null, i_4_);
             if(gameObjectDefinition.solid)
                 arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.walkable, (byte) 95);
         } else if(arg4 == 9) {
@@ -172,7 +175,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
                 else
                     renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, (byte) 124, i_0_);
-                arg5.method109(arg3, arg9, arg8, i_3_, renderable, Class32.anIntArray761[arg7], 512 * arg7, 0, 0, i_5_, i_4_);
+                arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, 512 * arg7, i_5_, renderable, i_4_, Class32.anIntArray761[arg7]);
             } else if(arg4 == 5) {
                 int i_14_ = 16;
                 int i_15_ = arg5.method122(arg3, arg9, arg8);
@@ -183,7 +186,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, (byte) 124, i_0_);
                 else
                     renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
-                arg5.method109(arg3, arg9, arg8, i_3_, renderable, Class32.anIntArray761[arg7], 512 * arg7, Class27.anIntArray666[arg7] * i_14_, Class68_Sub1.anIntArray2207[arg7] * i_14_, i_5_, i_4_);
+                arg5.addWallDecoration(arg9, arg8, arg3, i_3_, Class27.anIntArray666[arg7] * i_14_, Class68_Sub1.anIntArray2207[arg7] * i_14_, 512 * arg7, i_5_, renderable, i_4_, Class32.anIntArray761[arg7]);
             } else if(arg6 == -22078) {
                 if(arg4 == 6) {
                     Renderable renderable;
@@ -191,21 +194,21 @@ public class Class40_Sub5_Sub1 extends SubNode {
                         renderable = (new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true));
                     else
                         renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, (byte) 124, i_0_);
-                    arg5.method109(arg3, arg9, arg8, i_3_, renderable, 256, arg7, 0, 0, i_5_, i_4_);
+                    arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, arg7, i_5_, renderable, i_4_, 256);
                 } else if(arg4 == 7) {
                     Renderable renderable;
                     if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
                         renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, (byte) 124, i_0_);
                     else
                         renderable = (new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true));
-                    arg5.method109(arg3, arg9, arg8, i_3_, renderable, 512, arg7, 0, 0, i_5_, i_4_);
+                    arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, arg7, i_5_, renderable, i_4_, 512);
                 } else if(arg4 == 8) {
                     Renderable renderable;
                     if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
                         renderable = (new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true));
                     else
                         renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, (byte) 124, i_0_);
-                    arg5.method109(arg3, arg9, arg8, i_3_, renderable, 768, arg7, 0, 0, i_5_, i_4_);
+                    arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, arg7, i_5_, renderable, i_4_, 768);
                 }
             }
         }
@@ -248,7 +251,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 if(HuffmanEncoding.openScreenWidgetId == -1) {
                     PacketBuffer.method516(127);
                     if(Class34.anInt854 != -1) {
-                        Class67.aBoolean1601 = false;
+                        Class67.reportMutePlayer = false;
                         HuffmanEncoding.anInt1548 = HuffmanEncoding.openScreenWidgetId = Class34.anInt854;
                         HuffmanEncoding.aClass1_1550 = HuffmanEncoding.blank_string;
                     }
@@ -262,15 +265,15 @@ public class Class40_Sub5_Sub1 extends SubNode {
         if(Player.localPlayer != arg3 && ActorDefinition.anInt2394 < 400) {
             RSString class1;
             if(arg3.skillLevel == 0)
-                class1 = (Class40_Sub5_Sub17_Sub6.method832(82, (new RSString[]{arg3.playerName, (SceneTile.method536((Player.localPlayer.combatLevel), arg3.combatLevel, -122)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(arg3.combatLevel, -1), Class51.aClass1_1199})));
+                class1 = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{arg3.playerName, (SceneTile.method536((Player.localPlayer.combatLevel), arg3.combatLevel, -122)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(arg3.combatLevel, -1), Class51.aClass1_1199})));
             else
-                class1 = (Class40_Sub5_Sub17_Sub6.method832(-60, (new RSString[]{arg3.playerName, HashTable.aClass1_569, Class26.aClass1_619, HashTable.method334(arg3.skillLevel, -1), Class51.aClass1_1199})));
+                class1 = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{arg3.playerName, HashTable.aClass1_569, Class26.aClass1_619, HashTable.method334(arg3.skillLevel, -1), Class51.aClass1_1199})));
             if(Class8.anInt301 == 1) {
                 Node.anInt928++;
-                OverlayDefinition.method558(arg4, Main.aClass1_1763, arg0, -501, arg2, 22, (Class40_Sub5_Sub17_Sub6.method832(55, (new RSString[]{Npc.aClass1_3295, Class40_Sub5_Sub17_Sub3.aClass1_3068, class1}))));
+                OverlayDefinition.method558(arg4, Main.aClass1_1763, arg0, -501, arg2, 22, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Npc.aClass1_3295, Class40_Sub5_Sub17_Sub3.aClass1_3068, class1}))));
             } else if(Main.anInt1773 == 1) {
                 if((ItemDefinition.anInt2815 & 0x8) == 8) {
-                    OverlayDefinition.method558(arg4, Class38_Sub1.aClass1_1918, arg0, -501, arg2, 1, (Class40_Sub5_Sub17_Sub6.method832(124, (new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub17_Sub3.aClass1_3068, class1}))));
+                    OverlayDefinition.method558(arg4, Class38_Sub1.aClass1_1918, arg0, -501, arg2, 1, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub17_Sub3.aClass1_3068, class1}))));
                     Class22_Sub1.anInt1850++;
                 }
             } else {
@@ -299,14 +302,14 @@ public class Class40_Sub5_Sub1 extends SubNode {
                             i_16_ = i_17_ + 14;
                         if(i == 4)
                             i_16_ = 41 + i_17_;
-                        OverlayDefinition.method558(arg4, Main.aClass1Array1778[i], arg0, -501, arg2, i_16_, (Class40_Sub5_Sub17_Sub6.method832(79, new RSString[]{Class26.aClass1_620, class1})));
+                        OverlayDefinition.method558(arg4, Main.aClass1Array1778[i], arg0, -501, arg2, i_16_, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class26.aClass1_620, class1})));
                     }
                 }
             }
             if(!arg1) {
                 for(int i = 0; i < ActorDefinition.anInt2394; i++) {
                     if(Class38.anIntArray884[i] == 7) {
-                        Landscape.aClass1Array1184[i] = (Class40_Sub5_Sub17_Sub6.method832(-78, new RSString[]{Class22_Sub2.aClass1_1876, VertexNormal.aClass1_1117, Class26.aClass1_620, class1}));
+                        Landscape.aClass1Array1184[i] = (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class22_Sub2.aClass1_1876, VertexNormal.aClass1_1117, Class26.aClass1_620, class1}));
                         break;
                     }
                 }

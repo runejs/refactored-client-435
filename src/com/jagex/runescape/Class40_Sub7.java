@@ -13,12 +13,12 @@ public class Class40_Sub7 extends Node {
     public static RSString aClass1_2128 = RSString.CreateString("Fertigkeit)2");
     public static RSString aClass1_2129 = RSString.CreateString("Mem:");
     public static RSString aClass1_2130 = RSString.CreateString("Loaded update list");
-    public static int[] anIntArray2131;
+    public static int[] friendWorlds;
     public static RSString aClass1_2132;
 
     static {
         aClass1_2125 = aClass1_2130;
-        anIntArray2131 = new int[200];
+        friendWorlds = new int[200];
         aClass1_2132 = aClass1_2127;
     }
 
@@ -28,7 +28,7 @@ public class Class40_Sub7 extends Node {
 
         aClass68_2123 = null;
         aClass1_2132 = null;
-        anIntArray2131 = null;
+        friendWorlds = null;
         aClass1_2128 = null;
         aClass1_2129 = null;
         if(arg0 == 63) {

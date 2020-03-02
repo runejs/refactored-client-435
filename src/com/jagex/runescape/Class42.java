@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
@@ -226,7 +229,7 @@ public class Class42 {
             if(class40_sub5_sub17_sub4_sub2.anInt3113 == 0)
                 class40_sub5_sub17_sub4_sub2.anInt3118 = 0;
             class40_sub5_sub17_sub4_sub2.turnRightAnimationId = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate90RightAnimation);
-            class40_sub5_sub17_sub4_sub2.method787((Player.localPlayer.anIntArray3135[0]) + i_5_, -7717, i_7_ == 1, (Player.localPlayer.anIntArray3088[0]) + i_4_);
+            class40_sub5_sub17_sub4_sub2.method787((Player.localPlayer.pathX[0]) + i_5_, -7717, i_7_ == 1, (Player.localPlayer.pathY[0]) + i_4_);
         }
         Cache.outgoingbuffer.finishBitAccess((byte) -110);
 

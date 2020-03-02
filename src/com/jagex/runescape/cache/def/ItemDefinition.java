@@ -1,19 +1,22 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.awt.*;
 
 public class ItemDefinition extends SubNode {
     public static int anInt2797 = 0;
     public static int anInt2798 = 0;
-    public static int[] anIntArray2814 = new int[50];
+    public static int[] soundVolume = new int[50];
     public static int anInt2815;
     public static int anInt2846;
     public static int anInt2850 = -1;
@@ -119,7 +122,7 @@ public class ItemDefinition extends SubNode {
     }
 
     public static void method745() {
-        anIntArray2814 = null;
+        soundVolume = null;
     }
 
     public static boolean method746(Widget arg1) {

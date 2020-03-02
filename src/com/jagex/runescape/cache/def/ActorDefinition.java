@@ -1,6 +1,7 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
@@ -8,13 +9,14 @@ import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.util.Signlink;
 
 import java.awt.*;
 
 public class ActorDefinition extends SubNode {
     public static CacheIndex_Sub1 aClass6_Sub1_2377;
-    public static RSString aClass1_2384 = (RSString.CreateString("Moderator option: Mute player for 48 hours: <ON>"));
+    public static RSString str_Moderator_mute_option_ON = (RSString.CreateString("Moderator option: Mute player for 48 hours: <ON>"));
     public static int[] anIntArray2386;
     public static RSString aClass1_2392 = RSString.CreateString("Loaded fonts");
     public static int anInt2394 = 0;
@@ -68,7 +70,7 @@ public class ActorDefinition extends SubNode {
 
     public static void method569() {
         Class17.anIntArray456 = null;
-        Class58.aByteArrayArray1370 = null;
+        GroundItemTile.aByteArrayArray1370 = null;
         Npc.anIntArray3312 = null;
         Actor.anIntArray3111 = null;
         Buffer.anIntArray1972 = null;
@@ -129,7 +131,7 @@ public class ActorDefinition extends SubNode {
         }
         class40_sub5_sub14_sub4.image_width = Class17.anIntArray456[0];
         class40_sub5_sub14_sub4.image_height = Npc.anIntArray3312[0];
-        byte[] is = Class58.aByteArrayArray1370[0];
+        byte[] is = GroundItemTile.aByteArrayArray1370[0];
         int i = (class40_sub5_sub14_sub4.image_width * class40_sub5_sub14_sub4.image_height);
         class40_sub5_sub14_sub4.pixels = new int[i];
         for(int i_5_ = 0; i_5_ < i; i_5_++) {
@@ -216,7 +218,7 @@ public class ActorDefinition extends SubNode {
             aByteArray2416 = null;
             aClass1_2401 = null;
             aClass1_2392 = null;
-            aClass1_2384 = null;
+            str_Moderator_mute_option_ON = null;
         }
 
     }
@@ -229,7 +231,7 @@ public class ActorDefinition extends SubNode {
         ActorDefinition definition = ((ActorDefinition) ISAAC.aClass9_510.get((long) arg1, (byte) 119));
         if(definition != null)
             return definition;
-        byte[] is = Class58.aCacheIndex_1375.getFile(arg1, 9);
+        byte[] is = GroundItemTile.aCacheIndex_1375.getFile(arg1, 9);
         definition = new ActorDefinition();
         definition.id = arg1;
         if(is != null)
@@ -304,7 +306,7 @@ public class ActorDefinition extends SubNode {
         if(varBitId != -1) {
             i = Class40_Sub5_Sub6.method585(varBitId, 1369);
         } else if(varpIndex != -1) {
-            i = Class58.varbitmasks[varpIndex];
+            i = GroundItemTile.varbitmasks[varpIndex];
         }
         return i >= 0 && childrenIds.length > i && childrenIds[i] != -1;
     }
@@ -448,7 +450,7 @@ public class ActorDefinition extends SubNode {
         if(varBitId != -1) {
             childId = Class40_Sub5_Sub6.method585(varBitId, 1369);
         } else if(varpIndex != -1) {
-            childId = Class58.varbitmasks[varpIndex];
+            childId = GroundItemTile.varbitmasks[varpIndex];
         }
         if(childId < 0 || childId >= childrenIds.length || childrenIds[childId] == -1) {
             return null;

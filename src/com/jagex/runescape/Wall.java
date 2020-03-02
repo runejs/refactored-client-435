@@ -3,8 +3,9 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.scene.util.CollisionMap;
 
-public class Class10 {
+public class Wall {
     public static int anInt335;
     public static RSString aClass1_338 = RSString.CreateString("backhmid1");
     public static int anInt339;
@@ -33,18 +34,18 @@ public class Class10 {
         aClass45ArrayArrayArray357 = new Class45[4][104][104];
     }
 
-    public int anInt334;
-    public int anInt336;
-    public int anInt337;
-    public Renderable aRenderable_340;
-    public Renderable aRenderable_341;
-    public int anInt342;
-    public int anInt347;
-    public int anInt348 = 0;
-    public int anInt355;
+    public int x;
+    public int hash;
+    public int orientation;
+    public Renderable secondary;
+    public Renderable primary;
+    public int z;
+    public int orientation2;
+    public int config = 0;
+    public int y;
 
-    public Class10() {
-        anInt336 = 0;
+    public Wall() {
+        hash = 0;
     }
 
     public static void method237(int arg0) {
@@ -64,7 +65,7 @@ public class Class10 {
     public static void method238(int arg0) {
         anInt335++;
         if(CollisionMap.anInt165 != 0) {
-            TypeFace class40_sub5_sub14_sub1 = Class53.fontNormal;
+            TypeFace class40_sub5_sub14_sub1 = WallDecoration.fontNormal;
             int i = 0;
             if(Class40_Sub5_Sub15.anInt2782 != 0)
                 i = 1;
@@ -97,8 +98,8 @@ public class Class10 {
                             Class40_Sub5_Sub13.moderatorIcon[1].drawImage(i_4_, -12 + i_3_);
                             i_4_ += 14;
                         }
-                        class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub17_Sub6.method832(-44, new RSString[]{class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), i_4_, i_3_, 0);
-                        class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub17_Sub6.method832(56, new RSString[]{class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), i_4_, -1 + i_3_, 65535);
+                        class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub17_Sub6.method832(new RSString[]{class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), i_4_, i_3_, 0);
+                        class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub17_Sub6.method832(new RSString[]{class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), i_4_, -1 + i_3_, 65535);
                         if(i >= 5)
                             return;
                     }
@@ -113,8 +114,8 @@ public class Class10 {
                     if(i_2_ == 6 && Class4.anInt185 < 2) {
                         int i_6_ = -(13 * i) + 329;
                         i++;
-                        class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub17_Sub6.method832(-58, new RSString[]{Class40_Sub5_Sub1.aClass1_2274, Class48.aClass1_1123, class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), 4, i_6_, 0);
-                        class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub17_Sub6.method832(-81, new RSString[]{Class40_Sub5_Sub1.aClass1_2274, Class48.aClass1_1123, class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), 4, i_6_ + -1, 65535);
+                        class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class40_Sub5_Sub1.aClass1_2274, Class48.aClass1_1123, class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), 4, i_6_, 0);
+                        class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class40_Sub5_Sub1.aClass1_2274, Class48.aClass1_1123, class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), 4, i_6_ + -1, 65535);
                         if(i >= 5)
                             return;
                     }

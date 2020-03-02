@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.audio.Effect;
+import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.io.Buffer;
 
@@ -10,11 +11,11 @@ public class PacketBuffer extends Buffer {
     public static int anInt2231 = 1;
     public static boolean hiddenButtonTest = false;
     public static Effect[] effects = new Effect[50];
-    public static RSString aClass1_2240 = RSString.CreateString("Please wait)3)3)3");
+    public static RSString str_Please_Wait = RSString.CreateString("Please wait)3)3)3");
     public static long aLong2241 = 0L;
     public static RSString aClass1_2245 = RSString.CreateString("Aus");
     public static BigInteger rsaKey = (new BigInteger("65537"));
-    public static int anInt2248 = 0;
+    public static int currentSound = 0;
     public static Class40_Sub5_Sub13 aClass40_Sub5_Sub13_2250;
     public static boolean aBoolean2255 = false;
     public static int lastClickX = 0;
@@ -52,7 +53,7 @@ public class PacketBuffer extends Buffer {
             rsaKey = null;
             effects = null;
             aClass1_2245 = null;
-            aClass1_2240 = null;
+            str_Please_Wait = null;
             aClass1_2259 = null;
         }
     }
@@ -155,7 +156,7 @@ public class PacketBuffer extends Buffer {
     public int putBits(int arg0, byte arg1) {
         int i = bitoffset >> 3;
         if(arg1 != -65)
-            aClass1_2240 = null;
+            str_Please_Wait = null;
         int i_0_ = 0;
         int i_1_ = 8 - (0x7 & bitoffset);
         bitoffset += arg0;

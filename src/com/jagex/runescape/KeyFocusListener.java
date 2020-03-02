@@ -1,11 +1,14 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.scene.GroundItemTile;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -56,16 +59,16 @@ public class KeyFocusListener implements KeyListener, FocusListener {
     }
 
     public static void method954(int arg0) {
-        Class10.method238(4);
+        Wall.method238(4);
         if(Class45.anInt1075 == 1)
             Class37.aClass40_Sub5_Sub14_Sub4Array878[OverlayDefinition.anInt2319 / 100].drawImage(-4 + Class40_Sub11.anInt2163 + -8, -8 + (Class40_Sub5_Sub1.anInt2276 - 4));
         if(Class45.anInt1075 == 2)
             Class37.aClass40_Sub5_Sub14_Sub4Array878[4 + OverlayDefinition.anInt2319 / 100].drawImage(-8 + Class40_Sub11.anInt2163 - 4, -4 + Class40_Sub5_Sub1.anInt2276 - 8);
         if(arg0 == -15454) {
             anInt1276++;
-            if(Class58.anInt1376 != -1) {
-                Renderable.handleSequences(29378, Class58.anInt1376);
-                Class40_Sub5_Sub6.drawInterface(0, Class58.anInt1376, 334, (byte) -5, 0, 4, 512);
+            if(GroundItemTile.anInt1376 != -1) {
+                Renderable.handleSequences(29378, GroundItemTile.anInt1376);
+                Class40_Sub5_Sub6.drawInterface(0, GroundItemTile.anInt1376, 334, (byte) -5, 0, 4, 512);
             }
             if(HuffmanEncoding.openScreenWidgetId != -1) {
                 Renderable.handleSequences(29378, HuffmanEncoding.openScreenWidgetId);
@@ -81,7 +84,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             }
             if(Class40_Sub6.anInt2118 == 1)
                 Class45.aClass40_Sub5_Sub14_Sub4_1057.drawImage(472, 296);
-            if(Class19.showFps) {
+            if(InteractiveObject.showFps) {
                 int y = 20;
                 int x = 507;
                 int colour = 0xffff00;
@@ -90,7 +93,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 if(Class52.fps < 20 && !VertexNormal.lowMemory)
                     colour = 0xff0000;
 //                Class53.fontNormal.method687((Class40_Sub5_Sub17_Sub6.method832(-88, new RSString[]{Class61.aClass1_1446, HashTable.method334(Class52.fps, -1)})), x, y, colour);
-                Class53.fontNormal.drawStringRight("Fps: " + Class52.fps, x, y, colour);
+                WallDecoration.fontNormal.drawStringRight("Fps: " + Class52.fps, x, y, colour);
                 colour = 0xffff00;
                 y += 15;
                 Runtime runtime = Runtime.getRuntime();
@@ -100,20 +103,20 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 if(memoryUsed < 65536 && !VertexNormal.lowMemory)
                     colour = 0xff0000;
 //                Class53.fontNormal.method687((Class40_Sub5_Sub17_Sub6.method832(81, new RSString[]{Class40_Sub7.aClass1_2129, HashTable.method334(memoryUsed, arg0 ^ 0x3c5d), RSCanvas.aClass1_68})), x, y, colour);
-                Class53.fontNormal.drawStringRight("Mem: " + memoryUsed + "k", x, y, colour);
+                WallDecoration.fontNormal.drawStringRight("Mem: " + memoryUsed + "k", x, y, colour);
                 y += 15;
                 if(Class38.aBoolean893) {
-                    Class53.fontNormal.method687(HuffmanEncoding.aClass1_1544, x, y, 16711680);
+                    WallDecoration.fontNormal.method687(HuffmanEncoding.aClass1_1544, x, y, 16711680);
                     y += 15;
                     Class38.aBoolean893 = false;
                 }
                 if(CacheIndex.aBoolean260) {
-                    Class53.fontNormal.method687(Class58.aClass1_1378, x, y, 16711680);
+                    WallDecoration.fontNormal.method687(GroundItemTile.aClass1_1378, x, y, 16711680);
                     y += 15;
                     CacheIndex.aBoolean260 = false;
                 }
                 if(Class40_Sub3.aBoolean2026) {
-                    Class53.fontNormal.method687(HuffmanEncoding.aClass1_1546, x, y, 16711680);
+                    WallDecoration.fontNormal.method687(HuffmanEncoding.aClass1_1546, x, y, 16711680);
                     Class40_Sub3.aBoolean2026 = false;
                     y += 15;
                 }
@@ -123,9 +126,9 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 int i_3_ = i / 60;
                 i %= 60;
                 if(i < 10)
-                    Class53.fontNormal.drawString((Class40_Sub5_Sub17_Sub6.method832(86, new RSString[]{Class61.aClass1_1432, HashTable.method334(i_3_, arg0 ^ 0x3c5d), Class17.aClass1_465, HashTable.method334(i, -1)})), 4, 329, 16776960);
+                    WallDecoration.fontNormal.drawString((Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class61.aClass1_1432, HashTable.method334(i_3_, arg0 ^ 0x3c5d), Class17.aClass1_465, HashTable.method334(i, -1)})), 4, 329, 16776960);
                 else
-                    Class53.fontNormal.drawString((Class40_Sub5_Sub17_Sub6.method832(70, new RSString[]{Class61.aClass1_1432, HashTable.method334(i_3_, -1), Class43.char_colon, HashTable.method334(i, arg0 ^ 0x3c5d)})), 4, 329, 16776960);
+                    WallDecoration.fontNormal.drawString((Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class61.aClass1_1432, HashTable.method334(i_3_, -1), Class43.char_colon, HashTable.method334(i, arg0 ^ 0x3c5d)})), 4, 329, 16776960);
             }
         }
     }
@@ -144,7 +147,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             i++;
         if(arg0.method194(CacheIndex.aClass1_256, Class8.aClass1_305, arg1 ^ 0x4eb))
             i++;
-        if(arg0.method194(Class10.aClass1_338, Class8.aClass1_305, -1234))
+        if(arg0.method194(Wall.aClass1_338, Class8.aClass1_305, -1234))
             i++;
         if(arg0.method194(Class61.aClass1_1440, Class8.aClass1_305, -1234))
             i++;
@@ -152,11 +155,11 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             i++;
         if(arg0.method194(Class8.aClass1_281, Class8.aClass1_305, -1234))
             i++;
-        if(arg0.method194(Class53.aClass1_1266, Class8.aClass1_305, -1234))
+        if(arg0.method194(WallDecoration.aClass1_1266, Class8.aClass1_305, -1234))
             i++;
         if(arg0.method194(Main.aClass1_1788, Class8.aClass1_305, -1234))
             i++;
-        if(arg0.method194(Class58.aClass1_1374, Class8.aClass1_305, arg1 ^ 0x4eb))
+        if(arg0.method194(GroundItemTile.aClass1_1374, Class8.aClass1_305, arg1 ^ 0x4eb))
             i++;
         if(arg0.method194(IdentityKit.aClass1_2588, Class8.aClass1_305, -1234))
             i++;

@@ -77,9 +77,8 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
 
     }
 
-    public static RSString method832(int arg0, RSString[] arg1) {
+    public static RSString method832(RSString[] arg1) {
 
-        int i = 58 % ((7 - arg0) / 44);
         anInt3251++;
         if(arg1.length < 2)
             throw new IllegalArgumentException();

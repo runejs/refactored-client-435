@@ -1,5 +1,6 @@
-package com.jagex.runescape;
+package com.jagex.runescape.scene.util;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.*;
 
 import static com.jagex.runescape.net.IncomingPackets.*;

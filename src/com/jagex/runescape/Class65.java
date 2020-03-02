@@ -1,8 +1,11 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
+import com.jagex.runescape.scene.tile.FloorDecoration;
 
 import java.util.zip.CRC32;
 
@@ -70,7 +73,7 @@ public class Class65 {
         if(!arg0)
             aClass1_1530 = null;
         Class64.setZ = 99;
-        Class19.aByteArrayArrayArray492 = new byte[4][105][105];
+        InteractiveObject.aByteArrayArrayArray492 = new byte[4][105][105];
         FloorDecoration.anIntArray612 = new int[104];
         Class67.anIntArray1579 = new int[104];
         SceneTile.anIntArray2048 = new int[104];

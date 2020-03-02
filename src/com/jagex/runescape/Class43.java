@@ -1,8 +1,11 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class43 {
     public static Cache aClass9_1014 = new Cache(64);
@@ -136,9 +139,9 @@ public class Class43 {
                             int i_90_ = Class38.anIntArray884[i];
                             Class38.anIntArray884[i] = Class38.anIntArray884[i + 1];
                             Class38.anIntArray884[i + 1] = i_90_;
-                            i_90_ = Class19.anIntArray483[i];
-                            Class19.anIntArray483[i] = Class19.anIntArray483[1 + i];
-                            Class19.anIntArray483[1 + i] = i_90_;
+                            i_90_ = InteractiveObject.anIntArray483[i];
+                            InteractiveObject.anIntArray483[i] = InteractiveObject.anIntArray483[1 + i];
+                            InteractiveObject.anIntArray483[1 + i] = i_90_;
                             i_90_ = Class59.anIntArray1393[i];
                             Class59.anIntArray1393[i] = Class59.anIntArray1393[1 + i];
                             Class59.anIntArray1393[i + 1] = i_90_;

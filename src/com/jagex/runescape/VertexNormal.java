@@ -1,8 +1,11 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.CacheIndex_Sub1;
+
 public class VertexNormal {
     public static int anInt1086;
-    public static RSString aClass1_1088 = (RSString.CreateString("Moderator option: Mute player for 48 hours: <OFF>"));
+    public static RSString str_Moderator_mute_option_OFF = (RSString.CreateString("Moderator option: Mute player for 48 hours: <OFF>"));
     public static RSString aClass1_1090 = RSString.CreateString("Close");
     public static RSString aClass1_1093 = RSString.CreateString("Prepared sound engine");
     public static RSString aClass1_1097 = RSString.CreateString("wave:");
@@ -33,7 +36,7 @@ public class VertexNormal {
         aClass1_1090 = null;
         aClass1_1093 = null;
         aClass1_1116 = null;
-        aClass1_1088 = null;
+        str_Moderator_mute_option_OFF = null;
         aClass1_1099 = null;
         aClass1_1105 = null;
         aClass9_1102 = null;

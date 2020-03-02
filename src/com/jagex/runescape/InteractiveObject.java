@@ -1,8 +1,10 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.media.renderable.Renderable;
 
-public class Class19 {
+public class InteractiveObject {
     public static int anInt467;
     public static Cache aClass9_470 = new Cache(10);
     public static int anInt475;
@@ -13,9 +15,9 @@ public class Class19 {
     public static int anInt487 = 0;
     public static CacheIndex aCacheIndex_488;
     public static RSString aClass1_489 = RSString.CreateString("Public chat");
-    public static boolean aBoolean490 = false;
+    public static boolean messagePromptRaised = false;
     public static byte[][][] aByteArrayArrayArray492;
-    public static int anInt493 = 0;
+    public static int playerRights = 0;
     public static RSString aClass1_494;
     public static RSString aClass1_495 = aClass1_489;
     public static boolean showFps = false;
@@ -25,22 +27,22 @@ public class Class19 {
     }
 
     public int anInt468;
-    public int anInt469;
+    public int hash;
     public int anInt471 = 0;
     public int anInt472;
-    public int anInt473;
-    public Renderable aRenderable_474;
+    public int tileLeft;
+    public Renderable renderable;
     public int anInt476;
     public int anInt477;
     public int anInt479;
     public int anInt480;
-    public int anInt481;
+    public int tileTop;
     public int anInt484;
     public int anInt486;
     public int anInt491;
 
-    public Class19() {
-        anInt469 = 0;
+    public InteractiveObject() {
+        hash = 0;
     }
 
     public static RSString method279(byte[] arg0, boolean arg1, int arg2, int arg3) {

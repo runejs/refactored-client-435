@@ -1,11 +1,13 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.util.CollisionMap;
 
 public class HashTable {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_549;
@@ -59,7 +61,7 @@ public class HashTable {
                         Class51.aClass23_1194.put(class40_sub5_sub13, (byte) 54, l);
                         Class68.anInt1618++;
                     } else {
-                        Class19.aClass27_485.method352(126, class40_sub5_sub13);
+                        InteractiveObject.aClass27_485.method352(126, class40_sub5_sub13);
                         GameObjectDefinition.aClass23_2545.put(class40_sub5_sub13, (byte) 109, l);
                         anInt554++;
                     }

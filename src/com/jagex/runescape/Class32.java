@@ -1,7 +1,9 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class32 {
     public static int anInt744;
@@ -62,7 +64,7 @@ public class Class32 {
             Class40_Sub5_Sub6.method588(-1);
         else {
             int i = VertexNormal.anInt1086;
-            int i_0_ = Class19.anInt475;
+            int i_0_ = InteractiveObject.anInt475;
             if(i > 190)
                 i = 190;
             int i_1_ = CollisionMap.anInt168;
@@ -110,7 +112,7 @@ public class Class32 {
         long l = (long) ((arg0 << 16) + arg2);
         Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.method331(l, 6120));
         if(class40_sub5_sub13 != null) {
-            Class19.aClass27_485.method367(true, class40_sub5_sub13);
+            InteractiveObject.aClass27_485.method367(true, class40_sub5_sub13);
             if(arg1 <= 11)
                 aClass1_766 = null;
         }

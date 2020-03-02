@@ -1,9 +1,11 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.scene.GroundItemTile;
 import tech.henning.fourthreefive.OldEngine.ObjectDecompressor;
 
 import java.io.IOException;
@@ -164,7 +166,7 @@ public class GameObjectDefinition extends SubNode {
     }
 
     public static GameObjectDefinition getDefinition(int arg0) {
-        GameObjectDefinition gameObjectDefinition = ((GameObjectDefinition) Class58.aClass9_1364.get((long) arg0, (byte) 61));
+        GameObjectDefinition gameObjectDefinition = ((GameObjectDefinition) GroundItemTile.aClass9_1364.get((long) arg0, (byte) 61));
         SceneTile.anInt2040++;
         if(gameObjectDefinition != null) {
             return gameObjectDefinition;
@@ -190,7 +192,7 @@ public class GameObjectDefinition extends SubNode {
             gameObjectDefinition.solid = false;
             gameObjectDefinition.walkable = false;
         }
-        Class58.aClass9_1364.put(-7208, (long) arg0, gameObjectDefinition);
+        GroundItemTile.aClass9_1364.put(-7208, (long) arg0, gameObjectDefinition);
         return gameObjectDefinition;
 
     }
@@ -205,13 +207,13 @@ public class GameObjectDefinition extends SubNode {
         if(arg5 != 124) {
             actions = null;
         }
-        Model model = ((Model) Class19.aClass9_470.get(l, (byte) 87));
+        Model model = ((Model) InteractiveObject.aClass9_470.get(l, (byte) 87));
         if(model == null) {
             model = method606(!nonFlatShading, (byte) -61, false, arg2, arg4);
             if(model == null) {
                 return null;
             }
-            Class19.aClass9_470.put(-7208, l, model);
+            InteractiveObject.aClass9_470.put(-7208, l, model);
         }
         if(adjustToTerrain || nonFlatShading) {
             model = new Model(adjustToTerrain, nonFlatShading, model);
@@ -583,7 +585,7 @@ public class GameObjectDefinition extends SubNode {
         }
         if(varpID == -1) {
             if(configId != -1) {
-                i = Class58.varbitmasks[configId];
+                i = GroundItemTile.varbitmasks[configId];
             }
         } else {
             i = Class40_Sub5_Sub6.method585(varpID, 1369);

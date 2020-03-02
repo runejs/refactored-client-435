@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.util.Signlink;
 
