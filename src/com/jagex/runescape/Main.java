@@ -572,7 +572,7 @@ public class Main extends RSApplet {
             if(arg0[3].equals("lowmem"))
                 Class59.method983(120);
             else if(arg0[3].equals("highmem"))
-                Class8.method210(0);
+                Class8.method210();
             else
                 Class37.method432((byte) 121);
             if(!arg0[4].equals("free")) {
@@ -653,9 +653,7 @@ public class Main extends RSApplet {
         Class43.anInt1018 = 0;
         Class13.anInt400 = 0;
         Class51.anInt1188 = 0;
-        Class8.anInt285 = 0;
         UnderlayDefinition.anInt2580 = 0;
-        Class8.anInt282 = 0;
         Class37.anInt866 = 0;
         Class40_Sub3.anInt2034 = 0;
         Class56.anInt1319 = 0;
@@ -708,7 +706,6 @@ public class Main extends RSApplet {
         Class22_Sub1.anInt1862 = 0;
         Class40_Sub5_Sub17_Sub6.anInt3232 = 0;
         Class22_Sub1.anInt1859 = 0;
-        Class8.anInt283 = 0;
         Class40_Sub3.anInt2029 = 0;
         Class40_Sub13.anInt2170 = 0;
         Class22_Sub1.anInt1843 = 0;
@@ -726,7 +723,6 @@ public class Main extends RSApplet {
         Class40_Sub2.anInt2006 = 0;
         Class32.anInt744 = 0;
         Class59.anInt1382 = 0;
-        Class8.anInt275 = 0;
         Class67.anInt1587 = 0;
         Class65.anInt1534 = 0;
         Wall.anInt345 = 0;
@@ -800,14 +796,12 @@ public class Main extends RSApplet {
         CacheIndex.anInt263 = 0;
         Class37.anInt870 = 0;
         Class60.anInt1400 = 0;
-        Class8.anInt287 = 0;
         Class40_Sub2.anInt1992 = 0;
         Class37.anInt863 = 0;
         Class67.anInt1574 = 0;
         FloorDecoration.anInt597 = 0;
         Renderable.anInt2855 = 0;
         Class40_Sub7.anInt2122 = 0;
-        Class8.anInt277 = 0;
         Actor.anInt3103 = 0;
         Class60.anInt1410 = 0;
         Class40_Sub13.anInt2173 = 0;
@@ -856,7 +850,6 @@ public class Main extends RSApplet {
         Class35.anInt1751 = 0;
         Class44.anInt1037 = 0;
         SubNode.anInt2094 = 0;
-        Class8.anInt280 = 0;
         Class52.anInt1212 = 0;
         Class40_Sub5_Sub17_Sub1.anInt3005 = 0;
         SceneTile.anInt2040 = 0;
@@ -920,7 +913,6 @@ public class Main extends RSApplet {
         Class56.anInt1328 = 0;
         Class4.anInt186 = 0;
         SubNode.anInt2092 = 0;
-        Class8.anInt276 = 0;
         CacheIndex_Sub1.anInt1794 = 0;
         Node.anInt928 = 0;
         Class13.anInt416 = 0;
@@ -1047,7 +1039,7 @@ public class Main extends RSApplet {
         else
             Wall.anInt350 = CollisionMap.anInt172;
         Class29.aClass64_676 = null;
-        Class68.aClass15_1632 = null;
+        Class68.aSignlinkNode_1632 = null;
         Class8.anInt292++;
         Class8.anInt290 = 0;
         if(Class8.anInt292 < 2 || arg1 != 7 && arg1 != 9) {
@@ -1176,19 +1168,19 @@ public class Main extends RSApplet {
                 do {
                     try {
                         if(Class8.anInt290 == 0) {
-                            Class68.aClass15_1632 = ISAAC.aClass31_521.method395(arg0 ^ 0x6, Wall.anInt350);
+                            Class68.aSignlinkNode_1632 = ISAAC.aClass31_521.method395(arg0 ^ 0x6, Wall.anInt350);
                             Class8.anInt290++;
                         }
                         if(Class8.anInt290 == 1) {
-                            if(Class68.aClass15_1632.anInt434 == 2) {
+                            if(Class68.aSignlinkNode_1632.anInt434 == 2) {
                                 method35(-1);
                                 break;
                             }
-                            if(Class68.aClass15_1632.anInt434 == 1)
+                            if(Class68.aSignlinkNode_1632.anInt434 == 1)
                                 Class8.anInt290++;
                         }
                         if(Class8.anInt290 == 2) {
-                            Class29.aClass64_676 = new Class64((Socket) (Class68.aClass15_1632.anObject437), ISAAC.aClass31_521);
+                            Class29.aClass64_676 = new Class64((Socket) (Class68.aSignlinkNode_1632.value), ISAAC.aClass31_521);
                             Buffer class40_sub1 = new Buffer(5);
                             class40_sub1.putByte(15);
                             class40_sub1.putIntBE(435);
@@ -1214,7 +1206,7 @@ public class Main extends RSApplet {
                         if(Class8.anInt290 != 4)
                             break;
                         Class17.method273(Class29.aClass64_676, 105, Class51.anInt1197 > 20);
-                        Class68.aClass15_1632 = null;
+                        Class68.aSignlinkNode_1632 = null;
                         Class8.anInt290 = 0;
                         Class29.aClass64_676 = null;
                         Class8.anInt292 = 0;
@@ -1273,7 +1265,7 @@ public class Main extends RSApplet {
             if(string != null && string.equals("1"))
                 Class59.method983(-111);
             else
-                Class8.method210(0);
+                Class8.method210();
             String string_80_ = this.getParameter("members");
             Class22.aBoolean541 = string_80_ != null && string_80_.equals("1");
             String string_81_ = this.getParameter("lang");
@@ -1335,7 +1327,7 @@ public class Main extends RSApplet {
         CacheIndex.method180(arg0 ^ arg0);
         Class44.method896(arg0 ^ ~0x6da1);
         Class33.method408(arg0 + -6046);
-        Class8.method214(arg0 ^ ~0x6dea);
+        Class8.method214();
         Class55.method961(1);
         Class60.method994(false);
         Class65.method1017((byte) -25);

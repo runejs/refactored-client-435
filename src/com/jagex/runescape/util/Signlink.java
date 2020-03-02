@@ -1,6 +1,6 @@
 package com.jagex.runescape.util;
 
-import com.jagex.runescape.Class15;
+import com.jagex.runescape.SignlinkNode;
 import com.jagex.runescape.Class47;
 import com.jagex.runescape.Interface2;
 import com.jagex.runescape.Runnable_Impl1;
@@ -22,11 +22,11 @@ public class Signlink implements Runnable {
     public boolean aBoolean721;
     public int anInt722 = 0;
     public Class47[] cacheIndex;
-    public Class15 aClass15_725 = null;
+    public SignlinkNode current = null;
     public Runnable_Impl1 aRunnable_Impl1_727;
     public Class47 aClass47_728;
     public InetAddress anInetAddress730;
-    public Class15 aClass15_731 = null;
+    public SignlinkNode next = null;
     public Interface2 anInterface2_732;
     public Thread aThread733;
     public String aString734 = null;
@@ -124,10 +124,10 @@ public class Signlink implements Runnable {
         }
     }
 
-    public Class15 method386(Class[] arg0, String arg1, Class arg2, byte arg3) {
+    public SignlinkNode method386(Class[] arg0, String arg1, Class arg2, byte arg3) {
         if(arg3 > -5)
-            method389(-96, -109, 81, -55, null);
-        return method389(106, 0, 9, 0, new Object[]{arg2, arg1, arg0});
+            putNode(-109, 81, null);
+        return putNode(0, 9, new Object[]{arg2, arg1, arg0});
 
     }
 
@@ -139,32 +139,30 @@ public class Signlink implements Runnable {
 
     }
 
-    public Class15 method388(boolean arg0, URL arg1) {
+    public SignlinkNode method388(boolean arg0, URL arg1) {
 
         if(arg0)
             method397(-42);
-        return method389(124, 0, 4, 0, arg1);
+        return putNode(0, 4, arg1);
 
     }
 
-    public Class15 method389(int arg0, int arg1, int arg2, int arg3, Object arg4) {
+    public SignlinkNode putNode(int arg1, int arg2, Object arg4) {
 
-        Class15 class15 = new Class15();
-        class15.anObject435 = arg4;
-        if(arg0 < 100)
-            homeDirectory = null;
-        class15.anInt432 = arg1;
-        class15.anInt433 = arg2;
+        SignlinkNode signlinkNode = new SignlinkNode();
+        signlinkNode.objectData = arg4;
+        signlinkNode.integerData = arg1;
+        signlinkNode.type = arg2;
         synchronized(this) {
-            if(aClass15_731 == null)
-                aClass15_731 = aClass15_725 = class15;
+            if(next == null)
+                next = current = signlinkNode;
             else {
-                aClass15_731.aClass15_436 = class15;
-                aClass15_731 = class15;
+                next.prev = signlinkNode;
+                next = signlinkNode;
             }
             this.notify();
         }
-        return class15;
+        return signlinkNode;
 
     }
 
@@ -203,16 +201,16 @@ public class Signlink implements Runnable {
     public void run() {
 
         for(; ; ) {
-            Class15 class15;
+            SignlinkNode currentNode;
             synchronized(this) {
                 for(; ; ) {
                     if(aBoolean721)
                         return;
-                    if(aClass15_725 != null) {
-                        class15 = aClass15_725;
-                        aClass15_725 = aClass15_725.aClass15_436;
-                        if(aClass15_725 == null)
-                            aClass15_731 = null;
+                    if(current != null) {
+                        currentNode = current;
+                        current = current.prev;
+                        if(current == null)
+                            next = null;
                         break;
                     }
                     try {
@@ -223,66 +221,63 @@ public class Signlink implements Runnable {
                 }
             }
             try {
-                int i = class15.anInt433;
-                if(i == 1)
-                    class15.anObject437 = new Socket(anInetAddress730, class15.anInt432);
-                else if(i == 2) {
-                    Thread thread = new Thread((Runnable) class15.anObject435);
+                int type = currentNode.type;
+                if(type == 1)
+                    currentNode.value = new Socket(anInetAddress730, currentNode.integerData);
+                else if(type == 2) {
+                    Thread thread = new Thread((Runnable) currentNode.objectData);
                     thread.setDaemon(true);
                     thread.start();
-                    thread.setPriority(class15.anInt432);
-                    class15.anObject437 = thread;
-                } else if(i == 4)
-                    class15.anObject437 = new DataInputStream(((URL) class15.anObject435).openStream());
-                else if(i == 9) {
-                    Object[] objects = (Object[]) class15.anObject435;
-                    class15.anObject437 = (((Class) objects[0]).getDeclaredMethod((String) objects[1], (Class[]) objects[2]));
-                } else if(i == 10) {
-                    Object[] objects = (Object[]) class15.anObject435;
-                    class15.anObject437 = ((Class) objects[0]).getDeclaredField((String) objects[1]);
+                    thread.setPriority(currentNode.integerData);
+                    currentNode.value = thread;
+                } else if(type == 4)
+                    currentNode.value = new DataInputStream(((URL) currentNode.objectData).openStream());
+                else if(type == 9) {
+                    Object[] objects = (Object[]) currentNode.objectData;
+                    currentNode.value = (((Class) objects[0]).getDeclaredMethod((String) objects[1], (Class[]) objects[2]));
+                } else if(type == 10) {
+                    Object[] objects = (Object[]) currentNode.objectData;
+                    currentNode.value = ((Class) objects[0]).getDeclaredField((String) objects[1]);
                 } else
                     throw new Exception();
-                class15.anInt434 = 1;
+                currentNode.anInt434 = 1;
             } catch(Exception exception) {
-                class15.anInt434 = 2;
+                currentNode.anInt434 = 2;
             }
         }
 
     }
 
-    public Class15 method392(Class arg0, String arg1, boolean arg2) {
+    public SignlinkNode method392(Class arg0, String arg1, boolean arg2) {
 
         if(!arg2)
             aString735 = null;
-        return method389(126, 0, 10, 0, new Object[]{arg0, arg1});
+        return putNode(0, 10, new Object[]{arg0, arg1});
 
     }
 
-    public Class15 method393(int arg0, int arg1) {
-
-        if(arg0 != 11545)
-            return null;
-        return method389(122, arg1, 3, 0, null);
+    public SignlinkNode method393(int arg0, int arg1) {
+        return putNode(arg1, 3, null);
 
     }
 
-    public Class15 method394(int arg0, int arg1, Runnable arg2) {
+    public SignlinkNode method394(int arg0, int arg1, Runnable arg2) {
 
         if(arg1 != 0)
             method392(null, null, false);
-        return method389(114, arg0, 2, 0, arg2);
+        return putNode(arg0, 2, arg2);
 
     }
 
-    public Class15 method395(int arg0, int arg1) {
+    public SignlinkNode method395(int arg0, int arg1) {
 
         if(arg0 != 3)
             method397(-29);
-        return method389(125, arg1, 1, 0, null);
+        return putNode(arg1, 1, null);
 
     }
 
-    public Class15 method396(int arg0) {
+    public SignlinkNode method396(int arg0) {
 
         if(arg0 < 81)
             return null;

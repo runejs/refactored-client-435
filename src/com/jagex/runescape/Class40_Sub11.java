@@ -21,8 +21,8 @@ public class Class40_Sub11 extends Node {
     public static RSString cmd_fpsoff = RSString.CreateString("::fpsoff");
     public int[] anIntArray2154;
     public int[] anIntArray2155;
-    public Class15[] aClass15Array2156;
-    public Class15[] aClass15Array2157;
+    public SignlinkNode[] aSignlinkNodeArray2156;
+    public SignlinkNode[] aSignlinkNodeArray2157;
     public byte[][][] aByteArrayArrayArray2159;
     public int anInt2160;
     public int[] anIntArray2165;

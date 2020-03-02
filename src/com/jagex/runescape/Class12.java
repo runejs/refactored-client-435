@@ -15,7 +15,7 @@ public class Class12 {
     public static RSString aClass1_391;
     public static RSString aClass1_392;
     public static RSString aClass1_393;
-    public static Class15 aClass15_394;
+    public static SignlinkNode aSignlinkNode_394;
     public static RSString aClass1_395;
     public static RSString aClass1_396;
     public static RSString aClass1_397;
@@ -45,7 +45,7 @@ public class Class12 {
             method240((byte) -27);
         aClass1_391 = null;
         aClass1_386 = null;
-        aClass15_394 = null;
+        aSignlinkNode_394 = null;
         chatboxInterface = null;
         aClass1_382 = null;
         aClass1_398 = null;

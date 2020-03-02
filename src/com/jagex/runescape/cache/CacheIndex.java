@@ -97,12 +97,12 @@ public abstract class CacheIndex {
                     method189(true);
                 string = string.replace('&', '_');
                 string = string.replace('#', '_');
-                Class15 class15 = (Actor.aClass31_3152.method388(false, new URL(Actor.aClass31_3152.anApplet740.getCodeBase(), ("clienterror.ws?c=" + Class39.anInt901 + "&u=" + Class34.aLong853 + "&v1=" + Signlink.aString735 + "&v2=" + Signlink.aString739 + "&e=" + string))));
-                while(class15.anInt434 == 0)
+                SignlinkNode signlinkNode = (Actor.aClass31_3152.method388(false, new URL(Actor.aClass31_3152.anApplet740.getCodeBase(), ("clienterror.ws?c=" + Class39.anInt901 + "&u=" + Class34.aLong853 + "&v1=" + Signlink.aString735 + "&v2=" + Signlink.aString739 + "&e=" + string))));
+                while(signlinkNode.anInt434 == 0)
                     Class43.method890(1L, -74);
-                if(class15.anInt434 != 1)
+                if(signlinkNode.anInt434 != 1)
                     break;
-                DataInputStream datainputstream = (DataInputStream) class15.anObject437;
+                DataInputStream datainputstream = (DataInputStream) signlinkNode.value;
                 datainputstream.read();
                 datainputstream.close();
             } catch(Exception exception) {

@@ -188,7 +188,7 @@ public class Npc extends Actor {
                         Class59.dropClient(2578);
                     else {
                         Class17.method276(-1);
-                        Class8.method209(69);
+                        Class8.method209();
                         Class22_Sub1.method313(54);
                         if(Class45.anInt1075 != 0) {
                             OverlayDefinition.anInt2319 += 20;

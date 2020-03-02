@@ -86,8 +86,8 @@ public class TypeFace extends Rasterizer {
                 i = (byte) i_47_;
         }
         characterPixels = arg4;
-        int i_48_ = 2147483647;
-        int i_49_ = -2147483648;
+        int i_48_ = Integer.MAX_VALUE;
+        int i_49_ = Integer.MIN_VALUE;
         for(int i_50_ = 0; i_50_ < 256; i_50_++) {
             if(characterYOffsets[i_50_] < i_48_)
                 i_48_ = characterYOffsets[i_50_];

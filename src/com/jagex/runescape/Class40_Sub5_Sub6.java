@@ -68,16 +68,16 @@ public class Class40_Sub5_Sub6 extends SubNode {
                     break;
                 boolean bool = false;
                 for(int i = 0; ((class40_sub11.anInt2160 > i)); i++) {
-                    if(class40_sub11.aClass15Array2157[i] != null) {
-                        if(class40_sub11.aClass15Array2157[i].anInt434 == 2)
+                    if(class40_sub11.aSignlinkNodeArray2157[i] != null) {
+                        if(class40_sub11.aSignlinkNodeArray2157[i].anInt434 == 2)
                             class40_sub11.anIntArray2155[i] = -5;
-                        if(class40_sub11.aClass15Array2157[i].anInt434 == 0)
+                        if(class40_sub11.aSignlinkNodeArray2157[i].anInt434 == 0)
                             bool = true;
                     }
-                    if(class40_sub11.aClass15Array2156[i] != null) {
-                        if(class40_sub11.aClass15Array2156[i].anInt434 == 2)
+                    if(class40_sub11.aSignlinkNodeArray2156[i] != null) {
+                        if(class40_sub11.aSignlinkNodeArray2156[i].anInt434 == 2)
                             class40_sub11.anIntArray2155[i] = -6;
-                        if(class40_sub11.aClass15Array2156[i].anInt434 == 0)
+                        if(class40_sub11.aSignlinkNodeArray2156[i].anInt434 == 0)
                             bool = true;
                     }
                 }
@@ -92,22 +92,22 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         try {
                             int i_1_ = class40_sub11.anIntArray2154[i_0_];
                             if(i_1_ == 0) {
-                                Field field = (Field) (class40_sub11.aClass15Array2157[i_0_].anObject437);
+                                Field field = (Field) (class40_sub11.aSignlinkNodeArray2157[i_0_].value);
                                 int i_2_ = field.getInt(null);
                                 arg2.putByte(0);
                                 arg2.putIntBE(i_2_);
                             } else if(i_1_ == 1) {
-                                Field field = (Field) (class40_sub11.aClass15Array2157[i_0_].anObject437);
+                                Field field = (Field) (class40_sub11.aSignlinkNodeArray2157[i_0_].value);
                                 field.setInt(null, (class40_sub11.anIntArray2165[i_0_]));
                                 arg2.putByte(0);
                             } else if(i_1_ == 2) {
-                                Field field = (Field) (class40_sub11.aClass15Array2157[i_0_].anObject437);
+                                Field field = (Field) (class40_sub11.aSignlinkNodeArray2157[i_0_].value);
                                 int i_3_ = field.getModifiers();
                                 arg2.putByte(0);
                                 arg2.putIntBE(i_3_);
                             }
                             if(i_1_ == 3) {
-                                Method method = ((Method) (class40_sub11.aClass15Array2156[i_0_].anObject437));
+                                Method method = ((Method) (class40_sub11.aSignlinkNodeArray2156[i_0_].value));
                                 byte[][] is = (class40_sub11.aByteArrayArrayArray2159[i_0_]);
                                 Object[] objects = new Object[is.length];
                                 for(int i_5_ = 0; ((is.length > i_5_)); i_5_++) {
@@ -126,7 +126,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                 } else
                                     arg2.putByte(4);
                             } else if(i_1_ == 4) {
-                                Method method = ((Method) (class40_sub11.aClass15Array2156[i_0_].anObject437));
+                                Method method = ((Method) (class40_sub11.aSignlinkNodeArray2156[i_0_].value));
                                 int i_4_ = method.getModifiers();
                                 arg2.putByte(0);
                                 arg2.putIntBE(i_4_);

@@ -20,7 +20,7 @@ public class Class14 {
     public int method250() {
         int i = anIntArray425.length;
         int i_0_ = -1;
-        int i_1_ = 2147483647;
+        int i_1_ = Integer.MAX_VALUE;
         for(int i_2_ = 0; i_2_ < i; i_2_++) {
             if(anIntArray425[i_2_] >= 0 && anIntArray427[i_2_] < i_1_) {
                 i_0_ = i_2_;

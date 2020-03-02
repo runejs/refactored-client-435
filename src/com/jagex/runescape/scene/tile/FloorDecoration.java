@@ -34,7 +34,7 @@ public class FloorDecoration {
     public static int anInt604;
     public static CacheIndex_Sub1 aClass6_Sub1_605;
     public static RSString aClass1_606 = RSString.CreateString("Add friend");
-    public static Class15 aClass15_607;
+    public static SignlinkNode aSignlinkNode_607;
     public static Class40_Sub9 aClass40_Sub9_608;
     public static RSString aClass1_609 = RSString.CreateString("blinken2:");
     public static RSString aClass1_610 = RSString.CreateString("@red@");
@@ -435,7 +435,7 @@ public class FloorDecoration {
             STRING_CONNECTING_UPDATE_SERVER = null;
         aClass1_615 = null;
         aClass1_609 = null;
-        aClass15_607 = null;
+        aSignlinkNode_607 = null;
         aClass40_Sub9_608 = null;
 
     }
