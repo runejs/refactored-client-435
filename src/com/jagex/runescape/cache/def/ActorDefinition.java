@@ -11,6 +11,7 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.util.Signlink;
+import com.jagex.runescape.util.SignlinkNode;
 
 import java.awt.*;
 
@@ -202,7 +203,7 @@ public class ActorDefinition extends SubNode {
                 class40_sub11.anIntArray2155[i_6_] = -5;
             }
         }
-        KeyFocusListener.aClass45_1278.method904(class40_sub11, 92);
+        KeyFocusListener.aClass45_1278.pushBack(class40_sub11, 92);
     }
 
     public static void method581(int arg0) {

@@ -1,6 +1,8 @@
-package com.jagex.runescape;
+package com.jagex.runescape.scene.tile;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.media.TypeFace;
+import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.scene.util.CollisionMap;

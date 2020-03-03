@@ -2,7 +2,9 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.GameObject;
 
 public class EntryTable extends Node {
@@ -130,7 +132,7 @@ public class EntryTable extends Node {
                 }
             }
             for(int i_19_ = 0; i_19_ < is_13_.length; i_19_++)
-                is_13_[i_19_] = R3D.method707(is_13_[i_19_], arg0);
+                is_13_[i_19_] = Rasterizer3D.method707(is_13_[i_19_], arg0);
             int i_20_;
             if(i_12_ == 0)
                 i_20_ = 0;

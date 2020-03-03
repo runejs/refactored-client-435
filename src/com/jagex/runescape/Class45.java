@@ -3,7 +3,9 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -130,7 +132,7 @@ public class Class45 {
         return class40;
     }
 
-    public void method904(Node arg0, int arg1) {
+    public void pushBack(Node arg0, int arg1) {
         if(arg0.aClass40_968 != null)
             arg0.method457(-1);
         arg0.aClass40_968 = aClass40_1056.aClass40_968;

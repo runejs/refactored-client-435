@@ -3,10 +3,15 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.Rasterizer3D;
+import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.tile.Wall;
 
 public class Class40_Sub13 extends Node {
     public static int anInt2169;
@@ -105,23 +110,23 @@ public class Class40_Sub13 extends Node {
         int i_4_ = Rasterizer.viewport_right;
         int i_5_ = Rasterizer.viewport_top;
         int i_6_ = Rasterizer.viewport_bottom;
-        int[] is_7_ = R3D.method713();
-        int i_8_ = R3D.anInt2930;
-        int i_9_ = R3D.anInt2945;
+        int[] is_7_ = Rasterizer3D.method713();
+        int i_8_ = Rasterizer3D.anInt2930;
+        int i_9_ = Rasterizer3D.anInt2945;
         ImageRGB class40_sub5_sub14_sub4_10_ = new ImageRGB(32, 32);
         Rasterizer.createRasterizer(class40_sub5_sub14_sub4_10_.pixels, 32, 32);
-        Class40_Sub5_Sub17_Sub6.anIntArray3253 = R3D.method708(Class40_Sub5_Sub17_Sub6.anIntArray3253);
+        Class40_Sub5_Sub17_Sub6.anIntArray3253 = Rasterizer3D.method708(Class40_Sub5_Sub17_Sub6.anIntArray3253);
         Rasterizer.drawFilledRectangle(0, 0, 32, 32, 0);
         int i_11_ = class40_sub5_sub16.zoom2d;
         if(arg3 == -1)
             i_11_ *= 1.5;
         if(arg3 > 0)
             i_11_ *= 1.04;
-        R3D.aBoolean2944 = false;
-        int i_12_ = ((R3D.sinetable[class40_sub5_sub16.xan2d]) * i_11_ >> 16);
-        int i_13_ = (i_11_ * (R3D.cosinetable[class40_sub5_sub16.xan2d]) >> 16);
+        Rasterizer3D.aBoolean2944 = false;
+        int i_12_ = ((Rasterizer3D.sinetable[class40_sub5_sub16.xan2d]) * i_11_ >> 16);
+        int i_13_ = (i_11_ * (Rasterizer3D.cosinetable[class40_sub5_sub16.xan2d]) >> 16);
         class40_sub5_sub17_sub5.method799();
-        class40_sub5_sub17_sub5.method812(0, class40_sub5_sub16.yan2d, class40_sub5_sub16.zan2d, class40_sub5_sub16.xan2d, class40_sub5_sub16.xOffset2d, (class40_sub5_sub16.yOffset2d + class40_sub5_sub17_sub5.anInt2861 / 2 + i_12_), i_13_ + class40_sub5_sub16.yOffset2d);
+        class40_sub5_sub17_sub5.method812(0, class40_sub5_sub16.yan2d, class40_sub5_sub16.zan2d, class40_sub5_sub16.xan2d, class40_sub5_sub16.xOffset2d, (class40_sub5_sub16.yOffset2d + class40_sub5_sub17_sub5.modelHeight / 2 + i_12_), i_13_ + class40_sub5_sub16.yOffset2d);
         for(int i_14_ = 31; i_14_ >= 0; i_14_--) {
             for(i_13_ = 31; i_13_ >= 0; i_13_--) {
                 if((class40_sub5_sub14_sub4_10_.pixels[i_14_ + 32 * i_13_]) == 0) {
@@ -174,11 +179,11 @@ public class Class40_Sub13 extends Node {
             Buffer.aClass9_1933.put(-7208, (long) arg2, class40_sub5_sub14_sub4_10_);
         Rasterizer.createRasterizer(is, i_1_, i);
         Rasterizer.setCoordinates(i_2_, i_5_, i_6_, i_4_);
-        R3D.method708(is_7_);
-        R3D.anInt2930 = i_8_;
-        R3D.anInt2945 = i_9_;
-        R3D.method702();
-        R3D.aBoolean2944 = true;
+        Rasterizer3D.method708(is_7_);
+        Rasterizer3D.anInt2930 = i_8_;
+        Rasterizer3D.anInt2945 = i_9_;
+        Rasterizer3D.method702();
+        Rasterizer3D.aBoolean2944 = true;
         if(class40_sub5_sub16.stackable == 1)
             class40_sub5_sub14_sub4_10_.maxWidth = 33;
         else

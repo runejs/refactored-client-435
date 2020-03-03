@@ -5,7 +5,9 @@ import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -127,7 +129,7 @@ public abstract class Class22 {
         RSCanvas.aClass68_64.method1046((byte) 90);
         Class44.aClass40_Sub5_Sub14_Sub2_1047.drawImage(0, 0);
         anInt539++;
-        Class5.anIntArray198 = R3D.method708(Class5.anIntArray198);
+        Class5.anIntArray198 = Rasterizer3D.method708(Class5.anIntArray198);
     }
 
     public static RSString method307(Buffer arg0, int arg1, int arg2) {
@@ -164,20 +166,20 @@ public abstract class Class22 {
                 int i_21_ = GroundItemTile.varbitmasks[arg1];
                 if(i == 1) {
                     if(i_21_ == 1) {
-                        R3D.method711(0.9);
-                        ((Class35) R3D.anInterface3_2939).method424(108, 0.9);
+                        Rasterizer3D.method711(0.9);
+                        ((Class35) Rasterizer3D.anInterface3_2939).method424(108, 0.9);
                     }
                     if(i_21_ == 2) {
-                        R3D.method711(0.8);
-                        ((Class35) R3D.anInterface3_2939).method424(97, 0.8);
+                        Rasterizer3D.method711(0.8);
+                        ((Class35) Rasterizer3D.anInterface3_2939).method424(97, 0.8);
                     }
                     if(i_21_ == 3) {
-                        R3D.method711(0.7);
-                        ((Class35) R3D.anInterface3_2939).method424(99, 0.7);
+                        Rasterizer3D.method711(0.7);
+                        ((Class35) Rasterizer3D.anInterface3_2939).method424(99, 0.7);
                     }
                     if(i_21_ == 4) {
-                        R3D.method711(0.6);
-                        ((Class35) R3D.anInterface3_2939).method424(arg0 ^ ~0x6a, 0.6);
+                        Rasterizer3D.method711(0.6);
+                        ((Class35) Rasterizer3D.anInterface3_2939).method424(arg0 ^ ~0x6a, 0.6);
                     }
                     GameObject.method774((byte) -96);
                     Class40_Sub5_Sub11.clearScreen = true;

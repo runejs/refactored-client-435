@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.util.SignlinkNode;
+
 public class Class12 {
     public static int friendListStatus;
     public static RSString aClass1_381;

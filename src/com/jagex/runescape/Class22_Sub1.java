@@ -8,6 +8,7 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.util.Signlink;
+import com.jagex.runescape.util.SignlinkNode;
 
 import java.awt.*;
 

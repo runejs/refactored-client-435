@@ -1,5 +1,8 @@
-package com.jagex.runescape;
+package com.jagex.runescape.scene;
 
+import com.jagex.runescape.Class27;
+import com.jagex.runescape.Class68;
+import com.jagex.runescape.RSString;
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -26,19 +29,19 @@ public class InteractiveObject {
         aClass1_494 = RSString.CreateString("@gr3@");
     }
 
-    public int anInt468;
+    public int z;
     public int hash;
-    public int anInt471 = 0;
-    public int anInt472;
+    public int config = 0;
+    public int worldY;
     public int tileLeft;
     public Renderable renderable;
-    public int anInt476;
-    public int anInt477;
-    public int anInt479;
-    public int anInt480;
+    public int worldX;
+    public int tileBottom;
+    public int worldZ;
+    public int rotation;
     public int tileTop;
-    public int anInt484;
-    public int anInt486;
+    public int tileRight;
+    public int cycle;
     public int anInt491;
 
     public InteractiveObject() {

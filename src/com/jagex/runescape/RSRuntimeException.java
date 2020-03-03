@@ -63,7 +63,7 @@ public class RSRuntimeException extends RuntimeException {
         class40_sub6.anInt2112 = 0;
         class40_sub6.aClass56_2117 = arg2;
         synchronized(RSCanvas.aClass45_53) {
-            RSCanvas.aClass45_53.method904(class40_sub6, -82);
+            RSCanvas.aClass45_53.pushBack(class40_sub6, -82);
         }
         HashTable.method332(600);
     }

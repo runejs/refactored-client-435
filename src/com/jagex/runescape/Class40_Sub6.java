@@ -3,6 +3,9 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.scene.tile.WallDecoration;
 
 public class Class40_Sub6 extends Node {
     public static RSString aClass1_2097;

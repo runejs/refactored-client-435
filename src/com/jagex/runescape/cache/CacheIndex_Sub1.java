@@ -2,6 +2,7 @@ package com.jagex.runescape.cache;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.media.renderable.actor.Npc;
 
 public class CacheIndex_Sub1 extends CacheIndex {

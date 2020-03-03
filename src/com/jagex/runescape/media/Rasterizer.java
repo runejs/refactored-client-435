@@ -1,4 +1,6 @@
-package com.jagex.runescape;
+package com.jagex.runescape.media;
+
+import com.jagex.runescape.SubNode;
 
 public class Rasterizer extends SubNode {
     public static int[] pixels;

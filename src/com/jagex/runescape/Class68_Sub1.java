@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.scene.GroundItemTile;
 

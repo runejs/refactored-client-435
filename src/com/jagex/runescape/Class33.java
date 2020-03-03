@@ -5,6 +5,8 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
+import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -264,7 +266,6 @@ public class Class33 {
 
     public static void method406(int arg0, int arg1, int arg2, int arg3) {
         if(arg1 == 1) {
-            Class67.anInt1594++;
             Class32.packetBuffer.putPacket(111);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);

@@ -7,53 +7,30 @@ import java.io.EOFException;
 import java.io.IOException;
 
 public class Class67 {
-    public static int anInt1574;
-    public static volatile boolean aBoolean1575;
-    public static int anInt1576;
+    public static volatile boolean aBoolean1575 = false;
     public static CacheIndex aCacheIndex_1577;
     public static int[] anIntArray1579;
-    public static RSString aClass1_1580;
-    public static int anInt1581;
-    public static Cache aClass9_1582;
-    public static int anInt1584;
+    public static RSString aClass1_1580 = RSString.CreateString("p12_full");
+    public static Cache aClass9_1582 = new Cache(20);
     public static RSString aClass1_1585;
-    public static int anInt1586;
-    public static int anInt1587;
+    public static int anInt1586 = -1;
     public static int[] anIntArray1588 = new int[1000];
-    public static RSString aClass1_1590;
+    public static RSString aClass1_1590 = RSString.CreateString("Create a free account");
     public static RSString aClass1_1591 = RSString.CreateString("Update)2Liste geladen)3");
-    public static int anInt1594;
-    public static int anInt1597;
     public static RSString aClass1_1598;
-    public static int anInt1599;
     public static boolean reportMutePlayer = false;
-    public static RSString aClass1_1605;
-    public static int anInt1606;
-    public static int anInt1607;
-    public static int anInt1608;
-    public static RSString aClass1_1609;
-    public static RSString aClass1_1610;
-    public static Cache aClass9_1611;
-    public static RSString aClass1_1612;
-    public static RSString aClass1_1613;
-    public static long[] aLongArray1614;
+    public static RSString aClass1_1605 = RSString.CreateString("Loading )2 please wait)3");
+    public static int anInt1607 = 10;
+    public static RSString aClass1_1609 = RSString.CreateString("gleiten:");
+    public static RSString aClass1_1610 = RSString.CreateString("(U3");
+    public static Cache aClass9_1611 = new Cache(50);
+    public static RSString aClass1_1612 = RSString.CreateString("Lade Texturen )2 ");
+    public static RSString aClass1_1613 = RSString.CreateString("60 Sekunden noch einmal)3)3)3");
+    public static long[] aLongArray1614 = new long[32];
 
     static {
-        aClass1_1580 = RSString.CreateString("p12_full");
-        aBoolean1575 = false;
-        anInt1607 = 10;
-        aClass1_1605 = RSString.CreateString("Loading )2 please wait)3");
-        anInt1586 = -1;
         aClass1_1585 = aClass1_1605;
-        aClass1_1609 = RSString.CreateString("gleiten:");
-        aClass1_1590 = RSString.CreateString("Create a free account");
-        aClass1_1610 = RSString.CreateString("(U3");
         aClass1_1598 = aClass1_1590;
-        aClass9_1582 = new Cache(20);
-        aClass9_1611 = new Cache(50);
-        aLongArray1614 = new long[32];
-        aClass1_1613 = RSString.CreateString("60 Sekunden noch einmal)3)3)3");
-        aClass1_1612 = RSString.CreateString("Lade Texturen )2 ");
     }
 
     public long aLong1578;
@@ -76,12 +53,9 @@ public class Class67 {
         aByteArray1592 = new byte[arg2];
         aByteArray1583 = new byte[arg1];
         aLong1578 = 0L;
-
     }
 
     public static int method1034(boolean arg0, int arg1, int arg2, byte[] arg3) {
-
-        anInt1584++;
         int i = -1;
         if(!arg0)
             return 39;
@@ -89,11 +63,9 @@ public class Class67 {
             i = (KeyFocusListener.anIntArray1282[0xff & (i ^ arg3[i_1_])] ^ i >>> 8);
         i ^= 0xffffffff;
         return i;
-
     }
 
     public static void method1037(boolean arg0) {
-
         anIntArray1579 = null;
         aClass1_1598 = null;
         aLongArray1614 = null;
@@ -112,28 +84,20 @@ public class Class67 {
         aClass1_1585 = null;
         aClass1_1609 = null;
         aCacheIndex_1577 = null;
-
     }
 
     public void method1031(int arg0, long arg1) {
-
-        anInt1587++;
         if(arg0 == 0 && arg1 >= 0)
             aLong1578 = arg1;
-
     }
 
     public long method1032(int arg0) {
-
         if(arg0 != 0)
             return -105L;
-        anInt1581++;
         return aLong1602;
-
     }
 
     public void method1033(int arg0, int arg1, int arg2, byte[] arg3) throws IOException {
-        anInt1606++;
         try {
             if(arg1 != -16777216)
                 method1034(false, 109, -94, null);
@@ -189,7 +153,6 @@ public class Class67 {
     }
 
     public void method1035(int arg0, byte arg1, int arg2, byte[] arg3) throws IOException {
-        anInt1599++;
         try {
             if((arg0 + arg2 > arg3.length))
                 throw new ArrayIndexOutOfBoundsException(arg2 + (arg0 - arg3.length));
@@ -276,18 +239,13 @@ public class Class67 {
     }
 
     public void method1036(int arg0) throws IOException {
-
-        anInt1574++;
         if(arg0 == 841617512) {
             method1039(arg0 ^ ~0x322a1068);
             aClass47_1603.method917(arg0 + -841617511);
         }
-
     }
 
     public void method1038(byte arg0) throws IOException {
-
-        anInt1608++;
         if(arg0 == 50) {
             anInt1589 = 0;
             if(aLong1578 != aLong1600) {
@@ -303,11 +261,9 @@ public class Class67 {
                 aLong1600 += (long) i;
             }
         }
-
     }
 
     public void method1039(int arg0) throws IOException {
-        anInt1597++;
         if(arg0 == -1) {
             if(aLong1593 != -1) {
                 if(aLong1593 != aLong1600) {

@@ -3,6 +3,8 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.media.renderable.actor.Actor;
 
 public class Class40_Sub5_Sub15 extends SubNode {
@@ -65,7 +67,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
                 else
                     is_4_ = arg1.method182(i_2_, -122, 0);
                 class40_sub13 = new Class40_Sub13(i_2_, is_4_);
-                class45.method904(class40_sub13, 60);
+                class45.pushBack(class40_sub13, 60);
             }
             aClass41Array2794[is[i_0_]] = new Class41(is_1_, class40_sub13);
         }

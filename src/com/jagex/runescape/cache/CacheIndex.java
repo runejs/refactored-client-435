@@ -8,7 +8,9 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.util.Signlink;
+import com.jagex.runescape.util.SignlinkNode;
 
 import java.io.DataInputStream;
 import java.net.URL;

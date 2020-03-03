@@ -6,9 +6,14 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.media.Rasterizer3D;
+import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.scene.InteractiveObject;
+import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
 
@@ -210,7 +215,7 @@ public class ISAAC {
                                 }
                                 int i_45_ = 0;
                                 if(i_41_ != -1)
-                                    i_45_ = (R3D.anIntArray2932[(Class40_Sub5_Sub17_Sub6.method831(i_41_, 96, (byte) 73))]);
+                                    i_45_ = (Rasterizer3D.anIntArray2932[(Class40_Sub5_Sub17_Sub6.method831(i_41_, 96, (byte) 73))]);
                                 if(i_31_ != 0) {
                                     int i_46_ = 1 + (OverlayDefinition.tile_underlay_path[i][i_16_][i_27_]);
                                     byte i_47_ = (Class35.tile_overlay_rotation[i][i_16_][i_27_]);
@@ -220,7 +225,7 @@ public class ISAAC {
                                     int i_50_;
                                     if(i_48_ >= 0) {
                                         i_49_ = -1;
-                                        i_50_ = R3D.anInterface3_2939.method14(true, i_48_);
+                                        i_50_ = Rasterizer3D.anInterface3_2939.method14(true, i_48_);
                                     } else if(class40_sub5_sub3.anInt2345 == 16711935) {
                                         i_49_ = -2;
                                         i_48_ = -1;
@@ -237,7 +242,7 @@ public class ISAAC {
                                     }
                                     int i_53_ = 0;
                                     if(i_50_ != -2)
-                                        i_53_ = (R3D.anIntArray2932[Class34.method420(i_50_, 96, true)]);
+                                        i_53_ = (Rasterizer3D.anIntArray2932[Class34.method420(i_50_, 96, true)]);
                                     if(class40_sub5_sub3.anInt2336 != -1) {
                                         int i_54_ = 0xff & ((Class40_Sub5_Sub15.anInt2791) + (class40_sub5_sub3.anInt2334));
                                         int i_55_ = (class40_sub5_sub3.anInt2330 + (Actor.anInt3151));
@@ -247,7 +252,7 @@ public class ISAAC {
                                         } else
                                             i_55_ = 0;
                                         i_50_ = (Class13.method244((class40_sub5_sub3.anInt2346), i_55_, arg1 + -27445, i_54_));
-                                        i_53_ = (R3D.anIntArray2932[Class34.method420(i_50_, 96, true)]);
+                                        i_53_ = (Rasterizer3D.anIntArray2932[Class34.method420(i_50_, 96, true)]);
                                     }
                                     arg0.method99(i, i_16_, i_27_, i_46_, i_47_, i_48_, i_32_, i_33_, i_34_, i_35_, (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_36_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_37_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_38_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_40_, (byte) 73)), Class34.method420(i_49_, i_36_, true), Class34.method420(i_49_, i_37_, true), Class34.method420(i_49_, i_38_, true), Class34.method420(i_49_, i_40_, true), i_45_, i_53_);
                                 } else

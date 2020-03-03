@@ -1,5 +1,6 @@
-package com.jagex.runescape;
+package com.jagex.runescape.collection;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 

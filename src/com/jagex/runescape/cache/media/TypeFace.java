@@ -2,7 +2,7 @@ package com.jagex.runescape.cache.media;
 
 import com.jagex.runescape.Class40_Sub5_Sub17_Sub3;
 import com.jagex.runescape.RSString;
-import com.jagex.runescape.Rasterizer;
+import com.jagex.runescape.media.Rasterizer;
 
 import java.awt.*;
 import java.util.Random;
