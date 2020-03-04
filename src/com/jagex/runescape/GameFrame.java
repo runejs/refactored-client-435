@@ -261,7 +261,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
         Class45.anInt1073 = 0;
 
         if(!handleInterfaceScrolling(event)) {
-            if((cameraZoom <= 300 && rotation <= 0) || (cameraZoom >= 1200 && rotation >= 0)) {
+            if((cameraZoom <= 150 && rotation <= 0) || (cameraZoom >= 1600 && rotation >= 0)) {
                 return;
             }
             int diff = rotation * 8;
