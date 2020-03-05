@@ -25,7 +25,7 @@ public class Npc extends Actor {
     public static RSString aClass1_3309 = RSString.CreateString("Hierhin gehen");
     public static RSString aClass1_3311 = RSString.CreateString("On");
     public static int[] anIntArray3312;
-    public ActorDefinition aClass40_Sub5_Sub5_3300;
+    public ActorDefinition actorDefinition;
 
     public static Class40_Sub5_Sub11 method795(byte arg0, int arg1) {
         Class40_Sub5_Sub11 class40_sub5_sub11 = ((Class40_Sub5_Sub11) Class13.aClass9_406.get((long) arg1, (byte) 98));
@@ -474,16 +474,16 @@ public class Npc extends Actor {
                 npc.anInt3078 = 100;
             }
             if((mask & 0x80) != 0) {
-                npc.aClass40_Sub5_Sub5_3300 = ActorDefinition.getDefinition((byte) -122, Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE());
-                npc.anInt3083 = (npc.aClass40_Sub5_Sub5_3300.rotateRightAnimation);
-                npc.anInt3113 = (npc.aClass40_Sub5_Sub5_3300.degreesToTurn);
-                npc.turnRightAnimationId = (npc.aClass40_Sub5_Sub5_3300.rotate90RightAnimation);
-                npc.idleAnimation = (npc.aClass40_Sub5_Sub5_3300.stanceAnimation);
-                npc.walkAnimationId = (npc.aClass40_Sub5_Sub5_3300.walkAnimation);
-                npc.standTurnAnimationId = (npc.aClass40_Sub5_Sub5_3300.rotateLeftAnimation);
-                npc.anInt3096 = (npc.aClass40_Sub5_Sub5_3300.tileSpacesOccupied);
-                npc.turnLeftAnimationId = (npc.aClass40_Sub5_Sub5_3300.rotate90LeftAnimation);
-                npc.turnAroundAnimationId = (npc.aClass40_Sub5_Sub5_3300.rotate180Animation);
+                npc.actorDefinition = ActorDefinition.getDefinition((byte) -122, Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE());
+                npc.anInt3083 = (npc.actorDefinition.rotateRightAnimation);
+                npc.anInt3113 = (npc.actorDefinition.degreesToTurn);
+                npc.turnRightAnimationId = (npc.actorDefinition.rotate90RightAnimation);
+                npc.idleAnimation = (npc.actorDefinition.stanceAnimation);
+                npc.walkAnimationId = (npc.actorDefinition.walkAnimation);
+                npc.standTurnAnimationId = (npc.actorDefinition.rotateLeftAnimation);
+                npc.anInt3096 = (npc.actorDefinition.tileSpacesOccupied);
+                npc.turnLeftAnimationId = (npc.actorDefinition.rotate90LeftAnimation);
+                npc.turnAroundAnimationId = (npc.actorDefinition.rotate180Animation);
             }
             if((mask & 0x8) != 0) {
                 npc.facePositionX = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
@@ -518,12 +518,12 @@ public class Npc extends Actor {
     }
 
     public Model getRotatedModel(int arg0) {
-        if(aClass40_Sub5_Sub5_3300 == null)
+        if(actorDefinition == null)
             return null;
         int i = 25 % ((41 - arg0) / 47);
         AnimationSequence animationSequence = (playingAnimation == -1 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2));
         AnimationSequence animationSequence_0_ = (anInt3077 != -1 && (anInt3077 != idleAnimation || animationSequence == null) ? Class68_Sub1.method1050(anInt3077, 2) : null);
-        Model class40_sub5_sub17_sub5 = aClass40_Sub5_Sub5_3300.getChildModel((byte) -50, animationSequence, animationSequence_0_, anInt3116, anInt3104);
+        Model class40_sub5_sub17_sub5 = actorDefinition.getChildModel((byte) -50, animationSequence, animationSequence_0_, anInt3116, anInt3104);
         if(class40_sub5_sub17_sub5 == null)
             return null;
         class40_sub5_sub17_sub5.method799();
@@ -536,13 +536,13 @@ public class Npc extends Actor {
                 class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, 2, true);
             }
         }
-        if(aClass40_Sub5_Sub5_3300.tileSpacesOccupied == 1)
+        if(actorDefinition.tileSpacesOccupied == 1)
             class40_sub5_sub17_sub5.singleTile = true;
         return class40_sub5_sub17_sub5;
     }
 
     public boolean isVisible(int arg0) {
-        if(aClass40_Sub5_Sub5_3300 == null)
+        if(actorDefinition == null)
             return false;
         return arg0 == 1;
 

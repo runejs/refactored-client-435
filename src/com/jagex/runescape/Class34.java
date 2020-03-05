@@ -157,7 +157,7 @@ public class Class34 {
 
     }
 
-    public static void method419(byte arg0) {
+    public static void registerNewPlayers(byte arg0) {
 
         int i = -2 / ((-31 - arg0) / 57);
         anInt807++;
@@ -173,22 +173,23 @@ public class Class34 {
                 bool = true;
             }
             Class57.anIntArray1334[Class60.anInt1407++] = i_0_;
-            Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_]);
-            class40_sub5_sub17_sub4_sub1.anInt3134 = Node.pulseCycle;
+            Player player = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_]);
+            player.anInt3134 = Node.pulseCycle;
             int i_1_ = Cache.outgoingbuffer.putBits(5, (byte) -65);
             int i_2_ = Cache.outgoingbuffer.putBits(5, (byte) -65);
             if(i_1_ > 15)
                 i_1_ -= 32;
             if(i_2_ > 15)
                 i_2_ -= 32;
-            int i_3_ = (Class40_Sub5_Sub17_Sub1.anIntArray2987[Cache.outgoingbuffer.putBits(3, (byte) -65)]);
+            int dir = Cache.outgoingbuffer.putBits(3, (byte) -65);
+            int faceDirection = (Class40_Sub5_Sub17_Sub1.anIntArray2987[dir]);
             if(bool)
-                class40_sub5_sub17_sub4_sub1.anInt3118 = i_3_;
+                player.anInt3080 = faceDirection;
             int i_4_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
             int i_5_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
             if(i_5_ == 1)
                 Class24.anIntArray578[Actor.anInt3153++] = i_0_;
-            class40_sub5_sub17_sub4_sub1.method787(i_2_ + (Player.localPlayer.pathX[0]), -7717, i_4_ == 1, (Player.localPlayer.pathY[0]) + i_1_);
+            player.method787(i_2_ + (Player.localPlayer.pathX[0]), -7717, i_4_ == 1, (Player.localPlayer.pathY[0]) + i_1_);
         }
         Cache.outgoingbuffer.finishBitAccess((byte) -110);
 

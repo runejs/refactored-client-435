@@ -209,7 +209,7 @@ public class IncomingPackets {
                         /*}
                     }
                 }*/
-                if(Class68.method1043(149)) {
+                /*if(Class68.method1043(149)) {
                     Widget[] widgets = Widget.interfaces[149];
                     for(int y = 0; widgets.length > y; y++) {
                         Widget widget = widgets[y];
@@ -220,7 +220,7 @@ public class IncomingPackets {
                             }
                         }
                     }
-                }
+                }*/
                 ISAAC.redrawTabArea = true;
                 int widgetData = Cache.outgoingbuffer.getIntBE();
                 Widget widget = Widget.forId(widgetData);
@@ -1171,7 +1171,7 @@ public class IncomingPackets {
             for(int i = 0; i < Class17.anInt460; i++) {
                 int i_0_ = CacheIndex.anIntArray225[i];
                 if(Node.pulseCycle != (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_].anInt3134)) {
-                    CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_].aClass40_Sub5_Sub5_3300 = null;
+                    CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_].actorDefinition = null;
                     CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_] = null;
                 }
             }
@@ -1189,7 +1189,7 @@ public class IncomingPackets {
         Class17.anInt460 = 0;
         Actor.method786(true);
         Class29.method373((byte) -5);
-        Class34.method419((byte) 108);
+        Class34.registerNewPlayers((byte) 108);
         Player.parseTrackedPlayerUpdateMasks();
         for(int i = 0; Class17.anInt460 > i; i++) {
             int i_8_ = CacheIndex.anIntArray225[i];

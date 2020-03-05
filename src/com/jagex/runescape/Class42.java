@@ -201,12 +201,12 @@ public class Class42 {
                 CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i] = new Npc();
                 bool = true;
             }
-            Npc class40_sub5_sub17_sub4_sub2 = CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i];
+            Npc npc = CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i];
             Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i;
-            class40_sub5_sub17_sub4_sub2.anInt3134 = Node.pulseCycle;
-            int i_3_ = (Class40_Sub5_Sub17_Sub1.anIntArray2987[Cache.outgoingbuffer.putBits(3, (byte) -65)]);
+            npc.anInt3134 = Node.pulseCycle;
+            int faceDirection = (Class40_Sub5_Sub17_Sub1.anIntArray2987[Cache.outgoingbuffer.putBits(3, (byte) -65)]);
             if(bool)
-                class40_sub5_sub17_sub4_sub2.anInt3118 = i_3_;
+                npc.anInt3080 = faceDirection;
             int i_4_ = Cache.outgoingbuffer.putBits(5, (byte) -65);
             if(i_4_ > 15)
                 i_4_ -= 32;
@@ -217,19 +217,19 @@ public class Class42 {
             if(i_6_ == 1)
                 Class24.anIntArray578[Actor.anInt3153++] = i;
             int i_7_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
-            class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300 = ActorDefinition.getDefinition((byte) -121, Cache.outgoingbuffer.putBits(13, (byte) -65));
-            class40_sub5_sub17_sub4_sub2.turnLeftAnimationId = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate90LeftAnimation);
-            class40_sub5_sub17_sub4_sub2.idleAnimation = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.stanceAnimation);
-            class40_sub5_sub17_sub4_sub2.anInt3083 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotateRightAnimation);
-            class40_sub5_sub17_sub4_sub2.walkAnimationId = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.walkAnimation);
-            class40_sub5_sub17_sub4_sub2.anInt3096 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.tileSpacesOccupied);
-            class40_sub5_sub17_sub4_sub2.turnAroundAnimationId = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate180Animation);
-            class40_sub5_sub17_sub4_sub2.standTurnAnimationId = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotateLeftAnimation);
-            class40_sub5_sub17_sub4_sub2.anInt3113 = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.degreesToTurn);
-            if(class40_sub5_sub17_sub4_sub2.anInt3113 == 0)
-                class40_sub5_sub17_sub4_sub2.anInt3118 = 0;
-            class40_sub5_sub17_sub4_sub2.turnRightAnimationId = (class40_sub5_sub17_sub4_sub2.aClass40_Sub5_Sub5_3300.rotate90RightAnimation);
-            class40_sub5_sub17_sub4_sub2.method787((Player.localPlayer.pathX[0]) + i_5_, -7717, i_7_ == 1, (Player.localPlayer.pathY[0]) + i_4_);
+            npc.actorDefinition = ActorDefinition.getDefinition((byte) -121, Cache.outgoingbuffer.putBits(13, (byte) -65));
+            npc.turnLeftAnimationId = (npc.actorDefinition.rotate90LeftAnimation);
+            npc.idleAnimation = (npc.actorDefinition.stanceAnimation);
+            npc.anInt3083 = (npc.actorDefinition.rotateRightAnimation);
+            npc.walkAnimationId = (npc.actorDefinition.walkAnimation);
+            npc.anInt3096 = (npc.actorDefinition.tileSpacesOccupied);
+            npc.turnAroundAnimationId = (npc.actorDefinition.rotate180Animation);
+            npc.standTurnAnimationId = (npc.actorDefinition.rotateLeftAnimation);
+            npc.anInt3113 = (npc.actorDefinition.degreesToTurn);
+            if(npc.anInt3113 == 0)
+                npc.anInt3118 = 0;
+            npc.turnRightAnimationId = (npc.actorDefinition.rotate90RightAnimation);
+            npc.method787((Player.localPlayer.pathX[0]) + i_5_, -7717, i_7_ == 1, (Player.localPlayer.pathY[0]) + i_4_);
         }
         Cache.outgoingbuffer.finishBitAccess((byte) -110);
 
