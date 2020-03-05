@@ -6,6 +6,8 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.InteractiveObject;
+import com.jagex.runescape.scene.tile.WallDecoration;
 
 import java.awt.*;
 

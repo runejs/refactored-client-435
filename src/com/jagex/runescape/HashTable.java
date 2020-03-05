@@ -3,10 +3,12 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class HashTable {

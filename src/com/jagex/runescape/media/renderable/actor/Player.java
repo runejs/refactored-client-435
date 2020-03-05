@@ -6,8 +6,12 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
+import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.scene.tile.WallDecoration;
 
 import java.awt.*;
 
@@ -220,7 +224,7 @@ public class Player extends Actor {
         if(class40_sub5_sub17_sub5 == null)
             return null;
         class40_sub5_sub17_sub5.method799();
-        anInt3117 = class40_sub5_sub17_sub5.anInt2861;
+        anInt3117 = class40_sub5_sub17_sub5.modelHeight;
         if(!aBoolean3287 && anInt3091 != -1 && anInt3140 != -1) {
             Model class40_sub5_sub17_sub5_1_ = SpotAnimDefinition.forId(anInt3091, 13).method549(anInt3140, 2);
             if(class40_sub5_sub17_sub5_1_ != null) {

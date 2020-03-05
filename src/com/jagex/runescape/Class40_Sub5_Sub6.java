@@ -5,8 +5,14 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
+import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.media.Rasterizer;
+import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.io.ByteArrayInputStream;

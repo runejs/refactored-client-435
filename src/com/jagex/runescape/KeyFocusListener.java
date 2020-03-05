@@ -6,9 +6,15 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
+import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.InteractiveObject;
+import com.jagex.runescape.scene.tile.SceneTile;
+import com.jagex.runescape.scene.tile.Wall;
+import com.jagex.runescape.scene.tile.WallDecoration;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;

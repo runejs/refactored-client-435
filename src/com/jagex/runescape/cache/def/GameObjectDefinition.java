@@ -4,8 +4,11 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.InteractiveObject;
+import com.jagex.runescape.scene.tile.SceneTile;
 import tech.henning.fourthreefive.OldEngine.ObjectDecompressor;
 
 import java.io.IOException;
@@ -152,7 +155,7 @@ public class GameObjectDefinition extends SubNode {
             class40_sub3.anInt2018 = arg5;
             class40_sub3.anInt2038 = arg6;
             Class39.method451(class40_sub3, 19813);
-            Class45.aClass45_1064.method904(class40_sub3, 97);
+            Class45.aClass45_1064.pushBack(class40_sub3, 97);
         }
         class40_sub3.anInt2017 = arg0;
         class40_sub3.anInt2031 = arg4;

@@ -8,12 +8,19 @@ import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.Rasterizer3D;
+import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class40_Sub3 extends Node {
@@ -70,7 +77,7 @@ public class Class40_Sub3 extends Node {
             for(int i = 0; i < 9; i++) {
                 int i_0_ = 15 + (32 * i + 128);
                 int i_1_ = 3 * i_0_ + 600;
-                int i_2_ = R3D.sinetable[i_0_];
+                int i_2_ = Rasterizer3D.sinetable[i_0_];
                 is[i] = i_2_ * i_1_ >> 16;
             }
             Scene.method95(is, 500, 800, 512, 334);
@@ -267,8 +274,8 @@ public class Class40_Sub3 extends Node {
         } else if(Class40_Sub5_Sub6.anInt2451 == 90) {
             if(Class32.aClass6_Sub1_773.method185((byte) 62)) {
                 Class35 class35 = new Class35(Class32.aClass6_Sub1_773, ActorDefinition.aClass6_Sub1_2377, 20, 0.8, !VertexNormal.lowMemory ? 128 : 64);
-                R3D.method703(class35);
-                R3D.method711(0.8);
+                Rasterizer3D.method703(class35);
+                Rasterizer3D.method711(0.8);
                 Class40_Sub5_Sub6.anInt2451 = 110;
                 Class67.anInt1607 = 90;
                 Class22_Sub2.currentLoadingText = Actor.aClass1_3124;

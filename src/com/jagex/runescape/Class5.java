@@ -2,10 +2,15 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.Rasterizer3D;
+import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.InteractiveObject;
+import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.awt.*;
@@ -66,7 +71,7 @@ public class Class5 {
             Renderable.handleSequences(arg0 + 29378, UnderlayDefinition.openSecondaryWidgetId);
         anInt199 = 0;
         Class68_Sub1.aClass68_2213.method1046((byte) 90);
-        Player.anIntArray3284 = R3D.method708(Player.anIntArray3284);
+        Player.anIntArray3284 = Rasterizer3D.method708(Player.anIntArray3284);
         Rasterizer.resetPixels();
         Class40_Sub5_Sub6.drawInterface(0, ActorDefinition.openFullScreenWidgetId, 503, (byte) -5, 0, 0, 765);
         if(UnderlayDefinition.openSecondaryWidgetId != -1)

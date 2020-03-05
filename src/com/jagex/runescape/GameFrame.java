@@ -6,11 +6,16 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.InteractiveObject;
+import com.jagex.runescape.scene.tile.SceneTile;
+import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
 
@@ -256,7 +261,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
         Class45.anInt1073 = 0;
 
         if(!handleInterfaceScrolling(event)) {
-            if((cameraZoom <= 300 && rotation <= 0) || (cameraZoom >= 1200 && rotation >= 0)) {
+            if((cameraZoom <= 150 && rotation <= 0) || (cameraZoom >= 1600 && rotation >= 0)) {
                 return;
             }
             int diff = rotation * 8;

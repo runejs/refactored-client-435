@@ -1,5 +1,6 @@
-package com.jagex.runescape;
+package com.jagex.runescape.cache.media;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.ActorDefinition;
@@ -7,14 +8,14 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
-import com.jagex.runescape.cache.media.AnimationSequence;
-import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
 

@@ -1,4 +1,4 @@
-package com.jagex.runescape;
+package com.jagex.runescape.util;
 
 public class SignlinkNode {
     public int integerData;

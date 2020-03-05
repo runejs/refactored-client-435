@@ -1,16 +1,19 @@
-package com.jagex.runescape;
+package com.jagex.runescape.scene.tile;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.TypeFace;
+import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
-import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.InteractiveObject;
 
 import java.awt.*;
 
@@ -128,8 +131,6 @@ public class WallDecoration {
                 int radius = soundData >> 4 & 0xf;
                 int volume = 0x7 & soundData;
                 int delay = Cache.outgoingbuffer.getUnsignedByte();
-                System.out.println(localX + ", " + localY + ", " + soundId + ", " + radius + ", " + volume + ", " + delay);
-                System.out.println(Player.localPlayer.pathX[0] + ", " + Player.localPlayer.pathY[0]);
                 if(localY >= 0 && localX >= 0 && localY < 104 && localX < 104) {
                     int i_26_ = 1 + radius;
                     if(((Player.localPlayer.pathY[0]) >= localY - i_26_) && ((Player.localPlayer.pathY[0]) <= localY + i_26_) && (localX - i_26_ <= (Player.localPlayer.pathX[0])) && (localX + i_26_ >= (Player.localPlayer.pathX[0])) && RSCanvas.anInt65 != 0 && volume > 0 && PacketBuffer.currentSound < 50) {
@@ -153,7 +154,7 @@ public class WallDecoration {
                     i_28_ = 128 * i_28_ + 64;
                     i_27_ = i_27_ * 128 + 64;
                     Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (new Class40_Sub5_Sub17_Sub6(i_29_, Player.anInt3267, i_27_, i_28_, (-i_30_ + Class37.method430((byte) -124, (Player.anInt3267), i_27_, i_28_)), i_31_, Node.pulseCycle));
-                    Class57.aClass45_1332.method904(class40_sub5_sub17_sub6, -111);
+                    Class57.aClass45_1332.pushBack(class40_sub5_sub17_sub6, -111);
                 }
             } else if(Class57.incomingPacket == 99) {
                 int i = Cache.outgoingbuffer.getUnsignedByte();
@@ -284,7 +285,7 @@ public class WallDecoration {
                         Class40_Sub5_Sub17_Sub1 class40_sub5_sub17_sub1 = (new Class40_Sub5_Sub17_Sub1(i_73_, Player.anInt3267, i_69_, i_68_, Class37.method430((byte) -121, (Player.anInt3267), i_69_, i_68_) + -i_74_, i_76_ + Node.pulseCycle, i_77_ + Node.pulseCycle, i_78_, i_79_, i_72_, i_75_));
                         i_71_ = 128 * i_71_ + 64;
                         class40_sub5_sub17_sub1.method766(i_76_ + Node.pulseCycle, 0, i_71_, (-i_75_ + Class37.method430((byte) -124, (Player.anInt3267), i_70_, i_71_)), i_70_);
-                        Class43.aClass45_1022.method904(class40_sub5_sub17_sub1, -73);
+                        Class43.aClass45_1022.pushBack(class40_sub5_sub17_sub1, -73);
                     }
                 } else {
                     if(arg0 >= -110)
@@ -302,7 +303,7 @@ public class WallDecoration {
                             class40_sub5_sub17_sub3.anInt3058 = i;
                             if((Wall.aClass45ArrayArrayArray357[Player.anInt3267][i_83_][i_84_]) == null)
                                 Wall.aClass45ArrayArrayArray357[Player.anInt3267][i_83_][i_84_] = new Class45();
-                            Wall.aClass45ArrayArrayArray357[Player.anInt3267][i_83_][i_84_].method904(class40_sub5_sub17_sub3, 64);
+                            Wall.aClass45ArrayArrayArray357[Player.anInt3267][i_83_][i_84_].pushBack(class40_sub5_sub17_sub3, 64);
                             Class40_Sub13.method880((byte) -80, i_84_, i_83_);
                         }
                     } else if(Class57.incomingPacket == 175) { // add world item
@@ -317,7 +318,7 @@ public class WallDecoration {
                             class40_sub5_sub17_sub3.anInt3067 = i;
                             if((Wall.aClass45ArrayArrayArray357[Player.anInt3267][i_88_][i_87_]) == null)
                                 Wall.aClass45ArrayArrayArray357[Player.anInt3267][i_88_][i_87_] = new Class45();
-                            Wall.aClass45ArrayArrayArray357[Player.anInt3267][i_88_][i_87_].method904(class40_sub5_sub17_sub3, -118);
+                            Wall.aClass45ArrayArrayArray357[Player.anInt3267][i_88_][i_87_].pushBack(class40_sub5_sub17_sub3, -118);
                             Class40_Sub13.method880((byte) -80, i_87_, i_88_);
                         }
                     }

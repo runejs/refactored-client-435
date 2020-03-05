@@ -1,6 +1,9 @@
-package com.jagex.runescape;
+package com.jagex.runescape.media;
 
-public class R3D extends Rasterizer {
+import com.jagex.runescape.Interface3;
+import com.jagex.runescape.media.Rasterizer;
+
+public class Rasterizer3D extends Rasterizer {
     public static int[] anIntArray2929 = new int[2048];
     public static int anInt2930;
     public static int anInt2931;

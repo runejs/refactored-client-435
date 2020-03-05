@@ -1,16 +1,21 @@
-package com.jagex.runescape;
+package com.jagex.runescape.scene;
 
+import com.jagex.runescape.*;
+import com.jagex.runescape.media.Rasterizer3D;
+import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
-import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.tile.SceneTile;
+import com.jagex.runescape.scene.tile.Wall;
+import com.jagex.runescape.scene.tile.WallDecoration;
 
 public class Scene {
     public static int cameraPosX;
     public static int anInt77 = 0;
     public static int anInt78 = -1;
-    public static int anInt79;
-    public static int[] anIntArray80 = new int[]{53, -53, -53, 53};
+    public static int cameraPositionTileX;
+    public static int[] faceOffsetX2 = new int[]{53, -53, -53, 53};
     public static int anInt81 = -1;
     public static int anInt82;
     public static int anInt84;
@@ -21,22 +26,22 @@ public class Scene {
     public static int anInt89;
     public static int anInt90 = 4;
     public static int anInt91 = 0;
-    public static int[] anIntArray94 = new int[]{-45, 45, 45, -45};
+    public static int[] faceOffsetX3 = new int[]{-45, 45, 45, -45};
     public static int anInt95;
     public static int anInt96 = 0;
     public static int cameraPosY;
     public static int anInt99;
-    public static int anInt100;
+    public static int cameraPositionTileY;
     public static int[] anIntArray101 = new int[anInt90];
-    public static int[] anIntArray102 = new int[]{45, 45, -45, -45};
+    public static int[] faceOffsetY3 = new int[]{45, 45, -45, -45};
     public static int anInt104;
-    public static InteractiveObject[] aInteractiveObjectArray106 = new InteractiveObject[100];
+    public static InteractiveObject[] sceneSpawnRequestsCache = new InteractiveObject[100];
     public static Class32[] aClass32Array107 = new Class32[500];
-    public static Class45 aClass45_108 = new Class45();
+    public static Class45 tileList = new Class45();
     public static int anInt109 = 0;
     public static int anInt110;
     public static int anInt111;
-    public static int[] anIntArray112 = new int[]{-53, -53, 53, 53};
+    public static int[] faceOffsetY2 = new int[]{-53, -53, 53, 53};
     public static Class32[][] aClass32ArrayArray113 = new Class32[anInt90][500];
     public static boolean aBoolean114 = false;
     public static int[] anIntArray117 = new int[]{160, 192, 80, 96, 0, 144, 80, 48, 160};
@@ -59,11 +64,11 @@ public class Scene {
     public int[][][] anIntArrayArrayArray83;
     public int anInt92;
     public InteractiveObject[] aInteractiveObjectArray93 = new InteractiveObject[5000];
-    public int anInt97;
+    public int mapSizeX;
     public int anInt103 = 0;
     public int[][][] heightMap;
     public int anInt115;
-    public int anInt116;
+    public int mapSizeY;
     public int[][] anIntArrayArray121;
     public int[] anIntArray123;
     public int anInt126;
@@ -78,8 +83,8 @@ public class Scene {
         anIntArray127 = new int[10000];
         anIntArrayArray129 = new int[][]{new int[16], {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1}, {0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1}, {1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1}};
         anInt115 = arg0;
-        anInt97 = arg1;
-        anInt116 = arg2;
+        mapSizeX = arg1;
+        mapSizeY = arg2;
         tileArray = new SceneTile[arg0][arg1][arg2];
         anIntArrayArrayArray83 = new int[arg0][arg1 + 1][arg2 + 1];
         heightMap = arg3;
@@ -175,15 +180,15 @@ public class Scene {
     }
 
     public static void method114() {
-        aInteractiveObjectArray106 = null;
-        anIntArray80 = null;
-        anIntArray112 = null;
-        anIntArray94 = null;
-        anIntArray102 = null;
+        sceneSpawnRequestsCache = null;
+        faceOffsetX2 = null;
+        faceOffsetY2 = null;
+        faceOffsetX3 = null;
+        faceOffsetY3 = null;
         anIntArray101 = null;
         aClass32ArrayArray113 = null;
         aClass32Array107 = null;
-        aClass45_108 = null;
+        tileList = null;
         anIntArray120 = null;
         anIntArray117 = null;
         anIntArray130 = null;
@@ -228,7 +233,7 @@ public class Scene {
                 for(int i_1_ = 0; i_1_ < sceneTile_0_.entityCount; i_1_++) {
                     InteractiveObject interactiveObject = sceneTile_0_.interactiveObjects[i_1_];
                     if((interactiveObject.hash >> 29 & 0x3) == 2 && interactiveObject.tileLeft == arg0 && interactiveObject.tileTop == arg1) {
-                        interactiveObject.anInt468--;
+                        interactiveObject.z--;
                     }
                 }
             }
@@ -327,13 +332,13 @@ public class Scene {
     public void method97(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
         if(arg0 < 0) {
             arg0 = 0;
-        } else if(arg0 >= anInt97 * 128) {
-            arg0 = anInt97 * 128 - 1;
+        } else if(arg0 >= mapSizeX * 128) {
+            arg0 = mapSizeX * 128 - 1;
         }
         if(arg2 < 0) {
             arg2 = 0;
-        } else if(arg2 >= anInt116 * 128) {
-            arg2 = anInt116 * 128 - 1;
+        } else if(arg2 >= mapSizeY * 128) {
+            arg2 = mapSizeY * 128 - 1;
         }
         cycle++;
         anInt82 = Model.SINE[arg3];
@@ -344,24 +349,24 @@ public class Scene {
         cameraPosX = arg0;
         anInt89 = arg1;
         cameraPosY = arg2;
-        anInt79 = arg0 / 128;
-        anInt100 = arg2 / 128;
+        cameraPositionTileX = arg0 / 128;
+        cameraPositionTileY = arg2 / 128;
         anInt85 = arg5;
-        anInt95 = anInt79 - 25;
+        anInt95 = cameraPositionTileX - 25;
         if(anInt95 < 0) {
             anInt95 = 0;
         }
-        anInt87 = anInt100 - 25;
+        anInt87 = cameraPositionTileY - 25;
         if(anInt87 < 0) {
             anInt87 = 0;
         }
-        anInt84 = anInt79 + 25;
-        if(anInt84 > anInt97) {
-            anInt84 = anInt97;
+        anInt84 = cameraPositionTileX + 25;
+        if(anInt84 > mapSizeX) {
+            anInt84 = mapSizeX;
         }
-        anInt111 = anInt100 + 25;
-        if(anInt111 > anInt116) {
-            anInt111 = anInt116;
+        anInt111 = cameraPositionTileY + 25;
+        if(anInt111 > mapSizeY) {
+            anInt111 = mapSizeY;
         }
         method123();
         anInt109 = 0;
@@ -371,14 +376,14 @@ public class Scene {
                 for(int i_24_ = anInt87; i_24_ < anInt111; i_24_++) {
                     SceneTile sceneTile = sceneTiles[i_23_][i_24_];
                     if(sceneTile != null) {
-                        if(sceneTile.anInt2063 > arg5 || (!(aBooleanArrayArray133[i_23_ - anInt79 + 25][i_24_ - anInt100 + 25]) && (heightMap[i][i_23_][i_24_] - arg1) < 2000)) {
-                            sceneTile.aBoolean2071 = false;
-                            sceneTile.aBoolean2077 = false;
-                            sceneTile.anInt2067 = 0;
+                        if(sceneTile.anInt2063 > arg5 || (!(aBooleanArrayArray133[i_23_ - cameraPositionTileX + 25][i_24_ - cameraPositionTileY + 25]) && (heightMap[i][i_23_][i_24_] - arg1) < 2000)) {
+                            sceneTile.draw = false;
+                            sceneTile.visible = false;
+                            sceneTile.wallCullDirection = 0;
                         } else {
-                            sceneTile.aBoolean2071 = true;
-                            sceneTile.aBoolean2077 = true;
-                            sceneTile.aBoolean2062 = sceneTile.entityCount > 0;
+                            sceneTile.draw = true;
+                            sceneTile.visible = true;
+                            sceneTile.drawEntities = sceneTile.entityCount > 0;
                             anInt109++;
                         }
                     }
@@ -388,22 +393,22 @@ public class Scene {
         for(int i = anInt103; i < anInt115; i++) {
             SceneTile[][] sceneTiles = tileArray[i];
             for(int i_25_ = -25; i_25_ <= 0; i_25_++) {
-                int i_26_ = anInt79 + i_25_;
-                int i_27_ = anInt79 - i_25_;
+                int i_26_ = cameraPositionTileX + i_25_;
+                int i_27_ = cameraPositionTileX - i_25_;
                 if(i_26_ >= anInt95 || i_27_ < anInt84) {
                     for(int i_28_ = -25; i_28_ <= 0; i_28_++) {
-                        int i_29_ = anInt100 + i_28_;
-                        int i_30_ = anInt100 - i_28_;
+                        int i_29_ = cameraPositionTileY + i_28_;
+                        int i_30_ = cameraPositionTileY - i_28_;
                         if(i_26_ >= anInt95) {
                             if(i_29_ >= anInt87) {
                                 SceneTile sceneTile = sceneTiles[i_26_][i_29_];
-                                if(sceneTile != null && sceneTile.aBoolean2071) {
+                                if(sceneTile != null && sceneTile.draw) {
                                     method106(sceneTile, true);
                                 }
                             }
                             if(i_30_ < anInt111) {
                                 SceneTile sceneTile = sceneTiles[i_26_][i_30_];
-                                if(sceneTile != null && sceneTile.aBoolean2071) {
+                                if(sceneTile != null && sceneTile.draw) {
                                     method106(sceneTile, true);
                                 }
                             }
@@ -411,13 +416,13 @@ public class Scene {
                         if(i_27_ < anInt84) {
                             if(i_29_ >= anInt87) {
                                 SceneTile sceneTile = sceneTiles[i_27_][i_29_];
-                                if(sceneTile != null && sceneTile.aBoolean2071) {
+                                if(sceneTile != null && sceneTile.draw) {
                                     method106(sceneTile, true);
                                 }
                             }
                             if(i_30_ < anInt111) {
                                 SceneTile sceneTile = sceneTiles[i_27_][i_30_];
-                                if(sceneTile != null && sceneTile.aBoolean2071) {
+                                if(sceneTile != null && sceneTile.draw) {
                                     method106(sceneTile, true);
                                 }
                             }
@@ -433,22 +438,22 @@ public class Scene {
         for(int i = anInt103; i < anInt115; i++) {
             SceneTile[][] sceneTiles = tileArray[i];
             for(int i_31_ = -25; i_31_ <= 0; i_31_++) {
-                int i_32_ = anInt79 + i_31_;
-                int i_33_ = anInt79 - i_31_;
+                int i_32_ = cameraPositionTileX + i_31_;
+                int i_33_ = cameraPositionTileX - i_31_;
                 if(i_32_ >= anInt95 || i_33_ < anInt84) {
                     for(int i_34_ = -25; i_34_ <= 0; i_34_++) {
-                        int i_35_ = anInt100 + i_34_;
-                        int i_36_ = anInt100 - i_34_;
+                        int i_35_ = cameraPositionTileY + i_34_;
+                        int i_36_ = cameraPositionTileY - i_34_;
                         if(i_32_ >= anInt95) {
                             if(i_35_ >= anInt87) {
                                 SceneTile sceneTile = sceneTiles[i_32_][i_35_];
-                                if(sceneTile != null && sceneTile.aBoolean2071) {
+                                if(sceneTile != null && sceneTile.draw) {
                                     method106(sceneTile, false);
                                 }
                             }
                             if(i_36_ < anInt111) {
                                 SceneTile sceneTile = sceneTiles[i_32_][i_36_];
-                                if(sceneTile != null && sceneTile.aBoolean2071) {
+                                if(sceneTile != null && sceneTile.draw) {
                                     method106(sceneTile, false);
                                 }
                             }
@@ -456,13 +461,13 @@ public class Scene {
                         if(i_33_ < anInt84) {
                             if(i_35_ >= anInt87) {
                                 SceneTile sceneTile = sceneTiles[i_33_][i_35_];
-                                if(sceneTile != null && sceneTile.aBoolean2071) {
+                                if(sceneTile != null && sceneTile.draw) {
                                     method106(sceneTile, false);
                                 }
                             }
                             if(i_36_ < anInt111) {
                                 SceneTile sceneTile = sceneTiles[i_33_][i_36_];
-                                if(sceneTile != null && sceneTile.aBoolean2071) {
+                                if(sceneTile != null && sceneTile.draw) {
                                     method106(sceneTile, false);
                                 }
                             }
@@ -480,8 +485,8 @@ public class Scene {
 
     public void method98() {
         for(int i = 0; i < anInt115; i++) {
-            for(int i_37_ = 0; i_37_ < anInt97; i_37_++) {
-                for(int i_38_ = 0; i_38_ < anInt116; i_38_++) {
+            for(int i_37_ = 0; i_37_ < mapSizeX; i_37_++) {
+                for(int i_38_ = 0; i_38_ < mapSizeY; i_38_++) {
                     tileArray[i][i_37_][i_38_] = null;
                 }
             }
@@ -496,8 +501,8 @@ public class Scene {
             aInteractiveObjectArray93[i] = null;
         }
         anInt92 = 0;
-        for(int i = 0; i < aInteractiveObjectArray106.length; i++) {
-            aInteractiveObjectArray106[i] = null;
+        for(int i = 0; i < sceneSpawnRequestsCache.length; i++) {
+            sceneSpawnRequestsCache[i] = null;
         }
     }
 
@@ -746,24 +751,24 @@ public class Scene {
     }
 
     public void method105(InteractiveObject arg0) {
-        for(int i = arg0.tileLeft; i <= arg0.anInt484; i++) {
-            for(int i_72_ = arg0.tileTop; i_72_ <= arg0.anInt477; i_72_++) {
-                SceneTile sceneTile = tileArray[arg0.anInt468][i][i_72_];
+        for(int i = arg0.tileLeft; i <= arg0.tileRight; i++) {
+            for(int i_72_ = arg0.tileTop; i_72_ <= arg0.tileBottom; i_72_++) {
+                SceneTile sceneTile = tileArray[arg0.z][i][i_72_];
                 if(sceneTile != null) {
                     for(int i_73_ = 0; i_73_ < sceneTile.entityCount; i_73_++) {
                         if(sceneTile.interactiveObjects[i_73_] == arg0) {
                             sceneTile.entityCount--;
                             for(int i_74_ = i_73_; i_74_ < sceneTile.entityCount; i_74_++) {
                                 sceneTile.interactiveObjects[i_74_] = (sceneTile.interactiveObjects[i_74_ + 1]);
-                                sceneTile.anIntArray2074[i_74_] = sceneTile.anIntArray2074[i_74_ + 1];
+                                sceneTile.sceneSpawnRequestsSize[i_74_] = sceneTile.sceneSpawnRequestsSize[i_74_ + 1];
                             }
                             sceneTile.interactiveObjects[(sceneTile.entityCount)] = null;
                             break;
                         }
                     }
-                    sceneTile.anInt2073 = 0;
+                    sceneTile.interactiveObjectsSizeOR = 0;
                     for(int i_75_ = 0; i_75_ < sceneTile.entityCount; i_75_++) {
-                        sceneTile.anInt2073 |= sceneTile.anIntArray2074[i_75_];
+                        sceneTile.interactiveObjectsSizeOR |= sceneTile.sceneSpawnRequestsSize[i_75_];
                     }
                 }
             }
@@ -771,56 +776,56 @@ public class Scene {
     }
 
     public void method106(SceneTile arg0, boolean arg1) {
-        aClass45_108.method904(arg0, -69);
+        tileList.pushBack(arg0, -69);
         for(; ; ) {
-            SceneTile sceneTile = (SceneTile) aClass45_108.method913(25447);
-            if(sceneTile == null) {
+            SceneTile groundTile = (SceneTile) tileList.method913(25447);
+            if(groundTile == null) {
                 break;
             }
-            if(sceneTile.aBoolean2077) {
-                int i = sceneTile.anInt2061;
-                int i_76_ = sceneTile.anInt2078;
-                int i_77_ = sceneTile.anInt2066;
-                int i_78_ = sceneTile.anInt2069;
+            if(groundTile.visible) {
+                int i = groundTile.anInt2061;
+                int i_76_ = groundTile.anInt2078;
+                int i_77_ = groundTile.anInt2066;
+                int i_78_ = groundTile.anInt2069;
                 SceneTile[][] sceneTiles = tileArray[i_77_];
-                if(sceneTile.aBoolean2071) {
+                if(groundTile.draw) {
                     if(arg1) {
                         if(i_77_ > 0) {
                             SceneTile sceneTile_79_ = (tileArray[i_77_ - 1][i][i_76_]);
-                            if(sceneTile_79_ != null && sceneTile_79_.aBoolean2077) {
+                            if(sceneTile_79_ != null && sceneTile_79_.visible) {
                                 continue;
                             }
                         }
-                        if(i <= anInt79 && i > anInt95) {
+                        if(i <= cameraPositionTileX && i > anInt95) {
                             SceneTile sceneTile_80_ = sceneTiles[i - 1][i_76_];
-                            if(sceneTile_80_ != null && sceneTile_80_.aBoolean2077 && (sceneTile_80_.aBoolean2071 || (sceneTile.anInt2073 & 0x1) == 0)) {
+                            if(sceneTile_80_ != null && sceneTile_80_.visible && (sceneTile_80_.draw || (groundTile.interactiveObjectsSizeOR & 0x1) == 0)) {
                                 continue;
                             }
                         }
-                        if(i >= anInt79 && i < anInt84 - 1) {
+                        if(i >= cameraPositionTileX && i < anInt84 - 1) {
                             SceneTile sceneTile_81_ = sceneTiles[i + 1][i_76_];
-                            if(sceneTile_81_ != null && sceneTile_81_.aBoolean2077 && (sceneTile_81_.aBoolean2071 || (sceneTile.anInt2073 & 0x4) == 0)) {
+                            if(sceneTile_81_ != null && sceneTile_81_.visible && (sceneTile_81_.draw || (groundTile.interactiveObjectsSizeOR & 0x4) == 0)) {
                                 continue;
                             }
                         }
-                        if(i_76_ <= anInt100 && i_76_ > anInt87) {
+                        if(i_76_ <= cameraPositionTileY && i_76_ > anInt87) {
                             SceneTile sceneTile_82_ = sceneTiles[i][i_76_ - 1];
-                            if(sceneTile_82_ != null && sceneTile_82_.aBoolean2077 && (sceneTile_82_.aBoolean2071 || (sceneTile.anInt2073 & 0x8) == 0)) {
+                            if(sceneTile_82_ != null && sceneTile_82_.visible && (sceneTile_82_.draw || (groundTile.interactiveObjectsSizeOR & 0x8) == 0)) {
                                 continue;
                             }
                         }
-                        if(i_76_ >= anInt100 && i_76_ < anInt111 - 1) {
+                        if(i_76_ >= cameraPositionTileY && i_76_ < anInt111 - 1) {
                             SceneTile sceneTile_83_ = sceneTiles[i][i_76_ + 1];
-                            if(sceneTile_83_ != null && sceneTile_83_.aBoolean2077 && (sceneTile_83_.aBoolean2071 || (sceneTile.anInt2073 & 0x2) == 0)) {
+                            if(sceneTile_83_ != null && sceneTile_83_.visible && (sceneTile_83_.draw || (groundTile.interactiveObjectsSizeOR & 0x2) == 0)) {
                                 continue;
                             }
                         }
                     } else {
                         arg1 = true;
                     }
-                    sceneTile.aBoolean2071 = false;
-                    if(sceneTile.aSceneTile_2058 != null) {
-                        SceneTile sceneTile_84_ = sceneTile.aSceneTile_2058;
+                    groundTile.draw = false;
+                    if(groundTile.aSceneTile_2058 != null) {
+                        SceneTile sceneTile_84_ = groundTile.aSceneTile_2058;
                         if(sceneTile_84_.aClass52_2070 != null) {
                             if(!isTileOccluded(i, i_76_, 0)) {
                                 method128(sceneTile_84_.aClass52_2070, 0, anInt82, anInt110, anInt104, anInt99, i, i_76_);
@@ -830,75 +835,75 @@ public class Scene {
                         }
                         Wall wall = sceneTile_84_.wall;
                         if(wall != null) {
-                            wall.primary.method755(0, anInt82, anInt110, anInt104, anInt99, wall.x - cameraPosX, wall.z - anInt89, wall.y - cameraPosY, wall.hash);
+                            wall.primary.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, wall.x - cameraPosX, wall.z - anInt89, wall.y - cameraPosY, wall.hash);
                         }
                         for(int i_85_ = 0; i_85_ < sceneTile_84_.entityCount; i_85_++) {
                             InteractiveObject interactiveObject = sceneTile_84_.interactiveObjects[i_85_];
                             if(interactiveObject != null) {
-                                interactiveObject.renderable.method755(interactiveObject.anInt480, anInt82, anInt110, anInt104, anInt99, interactiveObject.anInt476 - cameraPosX, interactiveObject.anInt479 - anInt89, interactiveObject.anInt472 - cameraPosY, interactiveObject.hash);
+                                interactiveObject.renderable.renderAtPoint(interactiveObject.rotation, anInt82, anInt110, anInt104, anInt99, interactiveObject.worldX - cameraPosX, interactiveObject.worldZ - anInt89, interactiveObject.worldY - cameraPosY, interactiveObject.hash);
                             }
                         }
                     }
                     boolean bool = false;
-                    if(sceneTile.aClass52_2070 != null) {
+                    if(groundTile.aClass52_2070 != null) {
                         if(!isTileOccluded(i, i_76_, i_78_)) {
                             bool = true;
-                            method128(sceneTile.aClass52_2070, i_78_, anInt82, anInt110, anInt104, anInt99, i, i_76_);
+                            method128(groundTile.aClass52_2070, i_78_, anInt82, anInt110, anInt104, anInt99, i, i_76_);
                         }
-                    } else if(sceneTile.aClass11_2068 != null && !isTileOccluded(i, i_76_, i_78_)) {
+                    } else if(groundTile.aClass11_2068 != null && !isTileOccluded(i, i_76_, i_78_)) {
                         bool = true;
-                        method138(sceneTile.aClass11_2068, anInt82, anInt110, anInt104, anInt99, i, i_76_);
+                        method138(groundTile.aClass11_2068, anInt82, anInt110, anInt104, anInt99, i, i_76_);
                     }
                     int i_86_ = 0;
                     int i_87_ = 0;
-                    Wall wall = sceneTile.wall;
-                    WallDecoration wallDecoration = sceneTile.wallDecoration;
+                    Wall wall = groundTile.wall;
+                    WallDecoration wallDecoration = groundTile.wallDecoration;
                     if(wall != null || wallDecoration != null) {
-                        if(anInt79 == i) {
+                        if(cameraPositionTileX == i) {
                             i_86_++;
-                        } else if(anInt79 < i) {
+                        } else if(cameraPositionTileX < i) {
                             i_86_ += 2;
                         }
-                        if(anInt100 == i_76_) {
+                        if(cameraPositionTileY == i_76_) {
                             i_86_ += 3;
-                        } else if(anInt100 > i_76_) {
+                        } else if(cameraPositionTileY > i_76_) {
                             i_86_ += 6;
                         }
                         i_87_ = anIntArray120[i_86_];
-                        sceneTile.anInt2064 = anIntArray130[i_86_];
+                        groundTile.anInt2064 = anIntArray130[i_86_];
                     }
                     if(wall != null) {
                         if((wall.orientation & anIntArray117[i_86_]) != 0) {
                             if(wall.orientation == 16) {
-                                sceneTile.anInt2067 = 3;
-                                sceneTile.anInt2076 = anIntArray119[i_86_];
-                                sceneTile.anInt2059 = 3 - sceneTile.anInt2076;
+                                groundTile.wallCullDirection = 3;
+                                groundTile.wallUncullDirection = anIntArray119[i_86_];
+                                groundTile.wallCullOppositeDirection = 3 - groundTile.wallUncullDirection;
                             } else if(wall.orientation == 32) {
-                                sceneTile.anInt2067 = 6;
-                                sceneTile.anInt2076 = anIntArray125[i_86_];
-                                sceneTile.anInt2059 = 6 - sceneTile.anInt2076;
+                                groundTile.wallCullDirection = 6;
+                                groundTile.wallUncullDirection = anIntArray125[i_86_];
+                                groundTile.wallCullOppositeDirection = 6 - groundTile.wallUncullDirection;
                             } else if(wall.orientation == 64) {
-                                sceneTile.anInt2067 = 12;
-                                sceneTile.anInt2076 = anIntArray132[i_86_];
-                                sceneTile.anInt2059 = 12 - sceneTile.anInt2076;
+                                groundTile.wallCullDirection = 12;
+                                groundTile.wallUncullDirection = anIntArray132[i_86_];
+                                groundTile.wallCullOppositeDirection = 12 - groundTile.wallUncullDirection;
                             } else {
-                                sceneTile.anInt2067 = 9;
-                                sceneTile.anInt2076 = anIntArray131[i_86_];
-                                sceneTile.anInt2059 = 9 - sceneTile.anInt2076;
+                                groundTile.wallCullDirection = 9;
+                                groundTile.wallUncullDirection = anIntArray131[i_86_];
+                                groundTile.wallCullOppositeDirection = 9 - groundTile.wallUncullDirection;
                             }
                         } else {
-                            sceneTile.anInt2067 = 0;
+                            groundTile.wallCullDirection = 0;
                         }
                         if((wall.orientation & i_87_) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientation)) {
-                            wall.primary.method755(0, anInt82, anInt110, anInt104, anInt99, wall.x - cameraPosX, wall.z - anInt89, wall.y - cameraPosY, wall.hash);
+                            wall.primary.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, wall.x - cameraPosX, wall.z - anInt89, wall.y - cameraPosY, wall.hash);
                         }
                         if((wall.orientation2 & i_87_) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientation2)) {
-                            wall.secondary.method755(0, anInt82, anInt110, anInt104, anInt99, wall.x - cameraPosX, wall.z - anInt89, wall.y - cameraPosY, wall.hash);
+                            wall.secondary.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, wall.x - cameraPosX, wall.z - anInt89, wall.y - cameraPosY, wall.hash);
                         }
                     }
-                    if(wallDecoration != null && !isOccluded(i_78_, i, i_76_, (wallDecoration.renderable.anInt2861))) {
+                    if(wallDecoration != null && !isOccluded(i_78_, i, i_76_, (wallDecoration.renderable.modelHeight))) {
                         if((wallDecoration.configBits & i_87_) != 0) {
-                            wallDecoration.renderable.method755(wallDecoration.face, anInt82, anInt110, anInt104, anInt99, wallDecoration.x - cameraPosX, wallDecoration.z - anInt89, wallDecoration.y - cameraPosY, wallDecoration.hash);
+                            wallDecoration.renderable.renderAtPoint(wallDecoration.face, anInt82, anInt110, anInt104, anInt99, wallDecoration.x - cameraPosX, wallDecoration.z - anInt89, wallDecoration.y - cameraPosY, wallDecoration.hash);
                         } else if((wallDecoration.configBits & 0x300) != 0) {
                             int i_88_ = wallDecoration.x - cameraPosX;
                             int i_89_ = wallDecoration.z - anInt89;
@@ -917,128 +922,128 @@ public class Scene {
                                 i_93_ = i_90_;
                             }
                             if((wallDecoration.configBits & 0x100) != 0 && i_93_ < i_92_) {
-                                int i_94_ = i_88_ + anIntArray80[i_91_];
-                                int i_95_ = i_90_ + anIntArray112[i_91_];
-                                wallDecoration.renderable.method755(i_91_ * 512 + 256, anInt82, anInt110, anInt104, anInt99, i_94_, i_89_, i_95_, wallDecoration.hash);
+                                int i_94_ = i_88_ + faceOffsetX2[i_91_];
+                                int i_95_ = i_90_ + faceOffsetY2[i_91_];
+                                wallDecoration.renderable.renderAtPoint(i_91_ * 512 + 256, anInt82, anInt110, anInt104, anInt99, i_94_, i_89_, i_95_, wallDecoration.hash);
                             }
                             if((wallDecoration.configBits & 0x200) != 0 && i_93_ > i_92_) {
-                                int i_96_ = i_88_ + anIntArray94[i_91_];
-                                int i_97_ = i_90_ + anIntArray102[i_91_];
-                                wallDecoration.renderable.method755(i_91_ * 512 + 1280 & 0x7ff, anInt82, anInt110, anInt104, anInt99, i_96_, i_89_, i_97_, wallDecoration.hash);
+                                int i_96_ = i_88_ + faceOffsetX3[i_91_];
+                                int i_97_ = i_90_ + faceOffsetY3[i_91_];
+                                wallDecoration.renderable.renderAtPoint(i_91_ * 512 + 1280 & 0x7ff, anInt82, anInt110, anInt104, anInt99, i_96_, i_89_, i_97_, wallDecoration.hash);
                             }
                         }
                     }
                     if(bool) {
-                        FloorDecoration floorDecoration = sceneTile.floorDecoration;
+                        FloorDecoration floorDecoration = groundTile.floorDecoration;
                         if(floorDecoration != null) {
-                            floorDecoration.renderable.method755(0, anInt82, anInt110, anInt104, anInt99, floorDecoration.x - cameraPosX, floorDecoration.z - anInt89, floorDecoration.y - cameraPosY, floorDecoration.hash);
+                            floorDecoration.renderable.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, floorDecoration.x - cameraPosX, floorDecoration.z - anInt89, floorDecoration.y - cameraPosY, floorDecoration.hash);
                         }
-                        GroundItemTile groundItemTile = sceneTile.groundItemTile;
+                        GroundItemTile groundItemTile = groundTile.groundItemTile;
                         if(groundItemTile != null && groundItemTile.anInt1371 == 0) {
                             if(groundItemTile.secondGroundItem != null) {
-                                groundItemTile.secondGroundItem.method755(0, anInt82, anInt110, anInt104, anInt99, groundItemTile.x - cameraPosX, groundItemTile.z - anInt89, groundItemTile.y - cameraPosY, groundItemTile.hash);
+                                groundItemTile.secondGroundItem.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, groundItemTile.x - cameraPosX, groundItemTile.z - anInt89, groundItemTile.y - cameraPosY, groundItemTile.hash);
                             }
                             if(groundItemTile.thirdGroundItem != null) {
-                                groundItemTile.thirdGroundItem.method755(0, anInt82, anInt110, anInt104, anInt99, groundItemTile.x - cameraPosX, groundItemTile.z - anInt89, groundItemTile.y - cameraPosY, groundItemTile.hash);
+                                groundItemTile.thirdGroundItem.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, groundItemTile.x - cameraPosX, groundItemTile.z - anInt89, groundItemTile.y - cameraPosY, groundItemTile.hash);
                             }
                             if(groundItemTile.firstGroundItem != null) {
-                                groundItemTile.firstGroundItem.method755(0, anInt82, anInt110, anInt104, anInt99, groundItemTile.x - cameraPosX, groundItemTile.z - anInt89, groundItemTile.y - cameraPosY, groundItemTile.hash);
+                                groundItemTile.firstGroundItem.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, groundItemTile.x - cameraPosX, groundItemTile.z - anInt89, groundItemTile.y - cameraPosY, groundItemTile.hash);
                             }
                         }
                     }
-                    int i_98_ = sceneTile.anInt2073;
+                    int i_98_ = groundTile.interactiveObjectsSizeOR;
                     if(i_98_ != 0) {
-                        if(i < anInt79 && (i_98_ & 0x4) != 0) {
+                        if(i < cameraPositionTileX && (i_98_ & 0x4) != 0) {
                             SceneTile sceneTile_99_ = sceneTiles[i + 1][i_76_];
-                            if(sceneTile_99_ != null && sceneTile_99_.aBoolean2077) {
-                                aClass45_108.method904(sceneTile_99_, -115);
+                            if(sceneTile_99_ != null && sceneTile_99_.visible) {
+                                tileList.pushBack(sceneTile_99_, -115);
                             }
                         }
-                        if(i_76_ < anInt100 && (i_98_ & 0x2) != 0) {
+                        if(i_76_ < cameraPositionTileY && (i_98_ & 0x2) != 0) {
                             SceneTile sceneTile_100_ = sceneTiles[i][i_76_ + 1];
-                            if(sceneTile_100_ != null && sceneTile_100_.aBoolean2077) {
-                                aClass45_108.method904(sceneTile_100_, 127);
+                            if(sceneTile_100_ != null && sceneTile_100_.visible) {
+                                tileList.pushBack(sceneTile_100_, 127);
                             }
                         }
-                        if(i > anInt79 && (i_98_ & 0x1) != 0) {
+                        if(i > cameraPositionTileX && (i_98_ & 0x1) != 0) {
                             SceneTile sceneTile_101_ = sceneTiles[i - 1][i_76_];
-                            if(sceneTile_101_ != null && sceneTile_101_.aBoolean2077) {
-                                aClass45_108.method904(sceneTile_101_, -106);
+                            if(sceneTile_101_ != null && sceneTile_101_.visible) {
+                                tileList.pushBack(sceneTile_101_, -106);
                             }
                         }
-                        if(i_76_ > anInt100 && (i_98_ & 0x8) != 0) {
-                            SceneTile sceneTile_102_ = sceneTiles[i][i_76_ - 1];
-                            if(sceneTile_102_ != null && sceneTile_102_.aBoolean2077) {
-                                aClass45_108.method904(sceneTile_102_, -81);
+                        if(i_76_ > cameraPositionTileY && (i_98_ & 0x8) != 0) {
+                            SceneTile tile = sceneTiles[i][i_76_ - 1];
+                            if(tile != null && tile.visible) {
+                                tileList.pushBack(tile, -81);
                             }
                         }
                     }
                 }
-                if(sceneTile.anInt2067 != 0) {
+                if(groundTile.wallCullDirection != 0) {
                     boolean bool = true;
-                    for(int i_103_ = 0; i_103_ < sceneTile.entityCount; i_103_++) {
-                        if((sceneTile.interactiveObjects[i_103_].anInt486 != cycle) && ((sceneTile.anIntArray2074[i_103_] & sceneTile.anInt2067) == sceneTile.anInt2076)) {
+                    for(int i_103_ = 0; i_103_ < groundTile.entityCount; i_103_++) {
+                        if((groundTile.interactiveObjects[i_103_].cycle != cycle) && ((groundTile.sceneSpawnRequestsSize[i_103_] & groundTile.wallCullDirection) == groundTile.wallUncullDirection)) {
                             bool = false;
                             break;
                         }
                     }
                     if(bool) {
-                        Wall wall = sceneTile.wall;
+                        Wall wall = groundTile.wall;
                         if(!isWallOccluded(i_78_, i, i_76_, wall.orientation)) {
-                            wall.primary.method755(0, anInt82, anInt110, anInt104, anInt99, wall.x - cameraPosX, wall.z - anInt89, wall.y - cameraPosY, wall.hash);
+                            wall.primary.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, wall.x - cameraPosX, wall.z - anInt89, wall.y - cameraPosY, wall.hash);
                         }
-                        sceneTile.anInt2067 = 0;
+                        groundTile.wallCullDirection = 0;
                     }
                 }
-                if(sceneTile.aBoolean2062) {
+                if(groundTile.drawEntities) {
                     try {
-                        int i_104_ = sceneTile.entityCount;
-                        sceneTile.aBoolean2062 = false;
+                        int i_104_ = groundTile.entityCount;
+                        groundTile.drawEntities = false;
                         int i_105_ = 0;
                         while_2_:
                         for(int i_106_ = 0; i_106_ < i_104_; i_106_++) {
-                            InteractiveObject interactiveObject = sceneTile.interactiveObjects[i_106_];
-                            if(interactiveObject.anInt486 != cycle) {
-                                for(int i_107_ = interactiveObject.tileLeft; i_107_ <= interactiveObject.anInt484; i_107_++) {
-                                    for(int i_108_ = interactiveObject.tileTop; i_108_ <= interactiveObject.anInt477; i_108_++) {
-                                        SceneTile sceneTile_109_ = sceneTiles[i_107_][i_108_];
-                                        if(sceneTile_109_.aBoolean2071) {
-                                            sceneTile.aBoolean2062 = true;
+                            InteractiveObject entity = groundTile.interactiveObjects[i_106_];
+                            if(entity.cycle != cycle) {
+                                for(int i_107_ = entity.tileLeft; i_107_ <= entity.tileRight; i_107_++) {
+                                    for(int i_108_ = entity.tileTop; i_108_ <= entity.tileBottom; i_108_++) {
+                                        SceneTile tile = sceneTiles[i_107_][i_108_];
+                                        if(tile.draw) {
+                                            groundTile.drawEntities = true;
                                             continue while_2_;
                                         }
-                                        if(sceneTile_109_.anInt2067 != 0) {
+                                        if(tile.wallCullDirection != 0) {
                                             int i_110_ = 0;
-                                            if(i_107_ > interactiveObject.tileLeft) {
+                                            if(i_107_ > entity.tileLeft) {
                                                 i_110_++;
                                             }
-                                            if(i_107_ < interactiveObject.anInt484) {
+                                            if(i_107_ < entity.tileRight) {
                                                 i_110_ += 4;
                                             }
-                                            if(i_108_ > interactiveObject.tileTop) {
+                                            if(i_108_ > entity.tileTop) {
                                                 i_110_ += 8;
                                             }
-                                            if(i_108_ < interactiveObject.anInt477) {
+                                            if(i_108_ < entity.tileBottom) {
                                                 i_110_ += 2;
                                             }
-                                            if((i_110_ & sceneTile_109_.anInt2067) == sceneTile.anInt2059) {
-                                                sceneTile.aBoolean2062 = true;
+                                            if((i_110_ & tile.wallCullDirection) == groundTile.wallCullOppositeDirection) {
+                                                groundTile.drawEntities = true;
                                                 continue while_2_;
                                             }
                                         }
                                     }
                                 }
-                                aInteractiveObjectArray106[i_105_++] = interactiveObject;
-                                int i_111_ = anInt79 - interactiveObject.tileLeft;
-                                int i_112_ = interactiveObject.anInt484 - anInt79;
+                                sceneSpawnRequestsCache[i_105_++] = entity;
+                                int i_111_ = cameraPositionTileX - entity.tileLeft;
+                                int i_112_ = entity.tileRight - cameraPositionTileX;
                                 if(i_112_ > i_111_) {
                                     i_111_ = i_112_;
                                 }
-                                int i_113_ = anInt100 - interactiveObject.tileTop;
-                                int i_114_ = interactiveObject.anInt477 - anInt100;
+                                int i_113_ = cameraPositionTileY - entity.tileTop;
+                                int i_114_ = entity.tileBottom - cameraPositionTileY;
                                 if(i_114_ > i_113_) {
-                                    interactiveObject.anInt491 = i_111_ + i_114_;
+                                    entity.anInt491 = i_111_ + i_114_;
                                 } else {
-                                    interactiveObject.anInt491 = i_111_ + i_113_;
+                                    entity.anInt491 = i_111_ + i_113_;
                                 }
                             }
                         }
@@ -1046,16 +1051,16 @@ public class Scene {
                             int i_115_ = -50;
                             int i_116_ = -1;
                             for(int i_117_ = 0; i_117_ < i_105_; i_117_++) {
-                                InteractiveObject interactiveObject = aInteractiveObjectArray106[i_117_];
-                                if(interactiveObject.anInt486 != cycle) {
+                                InteractiveObject interactiveObject = sceneSpawnRequestsCache[i_117_];
+                                if(interactiveObject.cycle != cycle) {
                                     if(interactiveObject.anInt491 > i_115_) {
                                         i_115_ = interactiveObject.anInt491;
                                         i_116_ = i_117_;
                                     } else if(interactiveObject.anInt491 == i_115_) {
-                                        int i_118_ = interactiveObject.anInt476 - cameraPosX;
-                                        int i_119_ = interactiveObject.anInt472 - cameraPosY;
-                                        int i_120_ = ((aInteractiveObjectArray106[i_116_].anInt476) - cameraPosX);
-                                        int i_121_ = ((aInteractiveObjectArray106[i_116_].anInt472) - cameraPosY);
+                                        int i_118_ = interactiveObject.worldX - cameraPosX;
+                                        int i_119_ = interactiveObject.worldY - cameraPosY;
+                                        int i_120_ = ((sceneSpawnRequestsCache[i_116_].worldX) - cameraPosX);
+                                        int i_121_ = ((sceneSpawnRequestsCache[i_116_].worldY) - cameraPosY);
                                         if(i_118_ * i_118_ + i_119_ * i_119_ > (i_120_ * i_120_ + i_121_ * i_121_)) {
                                             i_116_ = i_117_;
                                         }
@@ -1065,74 +1070,74 @@ public class Scene {
                             if(i_116_ == -1) {
                                 break;
                             }
-                            InteractiveObject interactiveObject = aInteractiveObjectArray106[i_116_];
-                            interactiveObject.anInt486 = cycle;
-                            if(!isAreaOccluded(i_78_, interactiveObject.tileLeft, interactiveObject.anInt484, interactiveObject.tileTop, interactiveObject.anInt477, (interactiveObject.renderable.anInt2861))) {
-                                interactiveObject.renderable.method755(interactiveObject.anInt480, anInt82, anInt110, anInt104, anInt99, interactiveObject.anInt476 - cameraPosX, interactiveObject.anInt479 - anInt89, interactiveObject.anInt472 - cameraPosY, interactiveObject.hash);
+                            InteractiveObject interactiveObject = sceneSpawnRequestsCache[i_116_];
+                            interactiveObject.cycle = cycle;
+                            if(!isAreaOccluded(i_78_, interactiveObject.tileLeft, interactiveObject.tileRight, interactiveObject.tileTop, interactiveObject.tileBottom, (interactiveObject.renderable.modelHeight))) {
+                                interactiveObject.renderable.renderAtPoint(interactiveObject.rotation, anInt82, anInt110, anInt104, anInt99, interactiveObject.worldX - cameraPosX, interactiveObject.worldZ - anInt89, interactiveObject.worldY - cameraPosY, interactiveObject.hash);
                             }
-                            for(int i_122_ = interactiveObject.tileLeft; i_122_ <= interactiveObject.anInt484; i_122_++) {
-                                for(int i_123_ = interactiveObject.tileTop; i_123_ <= interactiveObject.anInt477; i_123_++) {
+                            for(int i_122_ = interactiveObject.tileLeft; i_122_ <= interactiveObject.tileRight; i_122_++) {
+                                for(int i_123_ = interactiveObject.tileTop; i_123_ <= interactiveObject.tileBottom; i_123_++) {
                                     SceneTile sceneTile_124_ = sceneTiles[i_122_][i_123_];
-                                    if(sceneTile_124_.anInt2067 != 0) {
-                                        aClass45_108.method904(sceneTile_124_, 108);
-                                    } else if((i_122_ != i || i_123_ != i_76_) && sceneTile_124_.aBoolean2077) {
-                                        aClass45_108.method904(sceneTile_124_, 92);
+                                    if(sceneTile_124_.wallCullDirection != 0) {
+                                        tileList.pushBack(sceneTile_124_, 108);
+                                    } else if((i_122_ != i || i_123_ != i_76_) && sceneTile_124_.visible) {
+                                        tileList.pushBack(sceneTile_124_, 92);
                                     }
                                 }
                             }
                         }
-                        if(sceneTile.aBoolean2062) {
+                        if(groundTile.drawEntities) {
                             continue;
                         }
                     } catch(Exception exception) {
-                        sceneTile.aBoolean2062 = false;
+                        groundTile.drawEntities = false;
                     }
                 }
-                if(sceneTile.aBoolean2077) {
-                    if(sceneTile.anInt2067 == 0) {
-                        if(i <= anInt79 && i > anInt95) {
+                if(groundTile.visible) {
+                    if(groundTile.wallCullDirection == 0) {
+                        if(i <= cameraPositionTileX && i > anInt95) {
                             SceneTile sceneTile_125_ = sceneTiles[i - 1][i_76_];
-                            if(sceneTile_125_ != null && sceneTile_125_.aBoolean2077) {
+                            if(sceneTile_125_ != null && sceneTile_125_.visible) {
                                 continue;
                             }
                         }
-                        if(i >= anInt79 && i < anInt84 - 1) {
+                        if(i >= cameraPositionTileX && i < anInt84 - 1) {
                             SceneTile sceneTile_126_ = sceneTiles[i + 1][i_76_];
-                            if(sceneTile_126_ != null && sceneTile_126_.aBoolean2077) {
+                            if(sceneTile_126_ != null && sceneTile_126_.visible) {
                                 continue;
                             }
                         }
-                        if(i_76_ <= anInt100 && i_76_ > anInt87) {
+                        if(i_76_ <= cameraPositionTileY && i_76_ > anInt87) {
                             SceneTile sceneTile_127_ = sceneTiles[i][i_76_ - 1];
-                            if(sceneTile_127_ != null && sceneTile_127_.aBoolean2077) {
+                            if(sceneTile_127_ != null && sceneTile_127_.visible) {
                                 continue;
                             }
                         }
-                        if(i_76_ >= anInt100 && i_76_ < anInt111 - 1) {
+                        if(i_76_ >= cameraPositionTileY && i_76_ < anInt111 - 1) {
                             SceneTile sceneTile_128_ = sceneTiles[i][i_76_ + 1];
-                            if(sceneTile_128_ != null && sceneTile_128_.aBoolean2077) {
+                            if(sceneTile_128_ != null && sceneTile_128_.visible) {
                                 continue;
                             }
                         }
-                        sceneTile.aBoolean2077 = false;
+                        groundTile.visible = false;
                         anInt109--;
-                        GroundItemTile groundItemTile = sceneTile.groundItemTile;
+                        GroundItemTile groundItemTile = groundTile.groundItemTile;
                         if(groundItemTile != null && groundItemTile.anInt1371 != 0) {
                             if(groundItemTile.secondGroundItem != null) {
-                                groundItemTile.secondGroundItem.method755(0, anInt82, anInt110, anInt104, anInt99, groundItemTile.x - cameraPosX, (groundItemTile.z - anInt89 - groundItemTile.anInt1371), groundItemTile.y - cameraPosY, groundItemTile.hash);
+                                groundItemTile.secondGroundItem.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, groundItemTile.x - cameraPosX, (groundItemTile.z - anInt89 - groundItemTile.anInt1371), groundItemTile.y - cameraPosY, groundItemTile.hash);
                             }
                             if(groundItemTile.thirdGroundItem != null) {
-                                groundItemTile.thirdGroundItem.method755(0, anInt82, anInt110, anInt104, anInt99, groundItemTile.x - cameraPosX, (groundItemTile.z - anInt89 - groundItemTile.anInt1371), groundItemTile.y - cameraPosY, groundItemTile.hash);
+                                groundItemTile.thirdGroundItem.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, groundItemTile.x - cameraPosX, (groundItemTile.z - anInt89 - groundItemTile.anInt1371), groundItemTile.y - cameraPosY, groundItemTile.hash);
                             }
                             if(groundItemTile.firstGroundItem != null) {
-                                groundItemTile.firstGroundItem.method755(0, anInt82, anInt110, anInt104, anInt99, groundItemTile.x - cameraPosX, (groundItemTile.z - anInt89 - groundItemTile.anInt1371), groundItemTile.y - cameraPosY, groundItemTile.hash);
+                                groundItemTile.firstGroundItem.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, groundItemTile.x - cameraPosX, (groundItemTile.z - anInt89 - groundItemTile.anInt1371), groundItemTile.y - cameraPosY, groundItemTile.hash);
                             }
                         }
-                        if(sceneTile.anInt2064 != 0) {
-                            WallDecoration wallDecoration = sceneTile.wallDecoration;
-                            if(wallDecoration != null && !isOccluded(i_78_, i, i_76_, (wallDecoration.renderable.anInt2861))) {
-                                if((wallDecoration.configBits & sceneTile.anInt2064) != 0) {
-                                    wallDecoration.renderable.method755(wallDecoration.face, anInt82, anInt110, anInt104, anInt99, wallDecoration.x - cameraPosX, wallDecoration.z - anInt89, wallDecoration.y - cameraPosY, wallDecoration.hash);
+                        if(groundTile.anInt2064 != 0) {
+                            WallDecoration wallDecoration = groundTile.wallDecoration;
+                            if(wallDecoration != null && !isOccluded(i_78_, i, i_76_, (wallDecoration.renderable.modelHeight))) {
+                                if((wallDecoration.configBits & groundTile.anInt2064) != 0) {
+                                    wallDecoration.renderable.renderAtPoint(wallDecoration.face, anInt82, anInt110, anInt104, anInt99, wallDecoration.x - cameraPosX, wallDecoration.z - anInt89, wallDecoration.y - cameraPosY, wallDecoration.hash);
                                 } else if((wallDecoration.configBits & 0x300) != 0) {
                                     int i_129_ = wallDecoration.x - cameraPosX;
                                     int i_130_ = wallDecoration.z - anInt89;
@@ -1151,55 +1156,55 @@ public class Scene {
                                         i_134_ = i_131_;
                                     }
                                     if((wallDecoration.configBits & 0x100) != 0 && i_134_ >= i_133_) {
-                                        int i_135_ = i_129_ + anIntArray80[i_132_];
-                                        int i_136_ = i_131_ + anIntArray112[i_132_];
-                                        wallDecoration.renderable.method755(i_132_ * 512 + 256, anInt82, anInt110, anInt104, anInt99, i_135_, i_130_, i_136_, wallDecoration.hash);
+                                        int i_135_ = i_129_ + faceOffsetX2[i_132_];
+                                        int i_136_ = i_131_ + faceOffsetY2[i_132_];
+                                        wallDecoration.renderable.renderAtPoint(i_132_ * 512 + 256, anInt82, anInt110, anInt104, anInt99, i_135_, i_130_, i_136_, wallDecoration.hash);
                                     }
                                     if((wallDecoration.configBits & 0x200) != 0 && i_134_ <= i_133_) {
-                                        int i_137_ = i_129_ + anIntArray94[i_132_];
-                                        int i_138_ = i_131_ + anIntArray102[i_132_];
-                                        wallDecoration.renderable.method755(i_132_ * 512 + 1280 & 0x7ff, anInt82, anInt110, anInt104, anInt99, i_137_, i_130_, i_138_, wallDecoration.hash);
+                                        int i_137_ = i_129_ + faceOffsetX3[i_132_];
+                                        int i_138_ = i_131_ + faceOffsetY3[i_132_];
+                                        wallDecoration.renderable.renderAtPoint(i_132_ * 512 + 1280 & 0x7ff, anInt82, anInt110, anInt104, anInt99, i_137_, i_130_, i_138_, wallDecoration.hash);
                                     }
                                 }
                             }
-                            Wall wall = sceneTile.wall;
+                            Wall wall = groundTile.wall;
                             if(wall != null) {
-                                if((wall.orientation2 & sceneTile.anInt2064) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientation2)) {
-                                    wall.secondary.method755(0, anInt82, anInt110, anInt104, anInt99, wall.x - cameraPosX, wall.z - anInt89, wall.y - cameraPosY, wall.hash);
+                                if((wall.orientation2 & groundTile.anInt2064) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientation2)) {
+                                    wall.secondary.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, wall.x - cameraPosX, wall.z - anInt89, wall.y - cameraPosY, wall.hash);
                                 }
-                                if((wall.orientation & sceneTile.anInt2064) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientation)) {
-                                    wall.primary.method755(0, anInt82, anInt110, anInt104, anInt99, wall.x - cameraPosX, wall.z - anInt89, wall.y - cameraPosY, wall.hash);
+                                if((wall.orientation & groundTile.anInt2064) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientation)) {
+                                    wall.primary.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, wall.x - cameraPosX, wall.z - anInt89, wall.y - cameraPosY, wall.hash);
                                 }
                             }
                         }
                         if(i_77_ < anInt115 - 1) {
                             SceneTile sceneTile_139_ = (tileArray[i_77_ + 1][i][i_76_]);
-                            if(sceneTile_139_ != null && sceneTile_139_.aBoolean2077) {
-                                aClass45_108.method904(sceneTile_139_, -88);
+                            if(sceneTile_139_ != null && sceneTile_139_.visible) {
+                                tileList.pushBack(sceneTile_139_, -88);
                             }
                         }
-                        if(i < anInt79) {
+                        if(i < cameraPositionTileX) {
                             SceneTile sceneTile_140_ = sceneTiles[i + 1][i_76_];
-                            if(sceneTile_140_ != null && sceneTile_140_.aBoolean2077) {
-                                aClass45_108.method904(sceneTile_140_, 63);
+                            if(sceneTile_140_ != null && sceneTile_140_.visible) {
+                                tileList.pushBack(sceneTile_140_, 63);
                             }
                         }
-                        if(i_76_ < anInt100) {
+                        if(i_76_ < cameraPositionTileY) {
                             SceneTile sceneTile_141_ = sceneTiles[i][i_76_ + 1];
-                            if(sceneTile_141_ != null && sceneTile_141_.aBoolean2077) {
-                                aClass45_108.method904(sceneTile_141_, -81);
+                            if(sceneTile_141_ != null && sceneTile_141_.visible) {
+                                tileList.pushBack(sceneTile_141_, -81);
                             }
                         }
-                        if(i > anInt79) {
+                        if(i > cameraPositionTileX) {
                             SceneTile sceneTile_142_ = sceneTiles[i - 1][i_76_];
-                            if(sceneTile_142_ != null && sceneTile_142_.aBoolean2077) {
-                                aClass45_108.method904(sceneTile_142_, 89);
+                            if(sceneTile_142_ != null && sceneTile_142_.visible) {
+                                tileList.pushBack(sceneTile_142_, 89);
                             }
                         }
-                        if(i_76_ > anInt100) {
+                        if(i_76_ > cameraPositionTileY) {
                             SceneTile sceneTile_143_ = sceneTiles[i][i_76_ - 1];
-                            if(sceneTile_143_ != null && sceneTile_143_.aBoolean2077) {
-                                aClass45_108.method904(sceneTile_143_, -125);
+                            if(sceneTile_143_ != null && sceneTile_143_.visible) {
+                                tileList.pushBack(sceneTile_143_, -125);
                             }
                         }
                     }
@@ -1269,7 +1274,7 @@ public class Scene {
         if(arg5 == null) {
             return true;
         }
-        return method140(arg0, arg8, arg9, arg10 - arg8 + 1, arg11 - arg9 + 1, arg1, arg2, arg3, arg5, arg6, true, arg7, 0);
+        return addRenderableC(arg0, arg8, arg9, arg10 - arg8 + 1, arg11 - arg9 + 1, arg1, arg2, arg3, arg5, arg6, true, arg7, 0);
     }
 
     public void method115(int arg0, int arg1, int arg2, int arg3) {
@@ -1286,7 +1291,7 @@ public class Scene {
     }
 
     public void method117(Model arg0, int arg1, int arg2, int arg3) {
-        if(arg2 < anInt97) {
+        if(arg2 < mapSizeX) {
             SceneTile sceneTile = tileArray[arg1][arg2 + 1][arg3];
             if(sceneTile != null && sceneTile.floorDecoration != null && (sceneTile.floorDecoration.renderable instanceof Model)) {
                 Model class40_sub5_sub17_sub5 = ((Model) sceneTile.floorDecoration.renderable);
@@ -1295,7 +1300,7 @@ public class Scene {
                 }
             }
         }
-        if(arg3 < anInt97) {
+        if(arg3 < mapSizeX) {
             SceneTile sceneTile = tileArray[arg1][arg2][arg3 + 1];
             if(sceneTile != null && sceneTile.floorDecoration != null && (sceneTile.floorDecoration.renderable instanceof Model)) {
                 Model class40_sub5_sub17_sub5 = ((Model) sceneTile.floorDecoration.renderable);
@@ -1304,7 +1309,7 @@ public class Scene {
                 }
             }
         }
-        if(arg2 < anInt97 && arg3 < anInt116) {
+        if(arg2 < mapSizeX && arg3 < mapSizeY) {
             SceneTile sceneTile = tileArray[arg1][arg2 + 1][arg3 + 1];
             if(sceneTile != null && sceneTile.floorDecoration != null && (sceneTile.floorDecoration.renderable instanceof Model)) {
                 Model class40_sub5_sub17_sub5 = ((Model) sceneTile.floorDecoration.renderable);
@@ -1313,7 +1318,7 @@ public class Scene {
                 }
             }
         }
-        if(arg2 < anInt97 && arg3 > 0) {
+        if(arg2 < mapSizeX && arg3 > 0) {
             SceneTile sceneTile = tileArray[arg1][arg2 + 1][arg3 - 1];
             if(sceneTile != null && sceneTile.floorDecoration != null && (sceneTile.floorDecoration.renderable instanceof Model)) {
                 Model class40_sub5_sub17_sub5 = ((Model) sceneTile.floorDecoration.renderable);
@@ -1326,8 +1331,8 @@ public class Scene {
 
     public void method118(int arg0, int arg1, int arg2) {
         for(int i = 0; i < anInt115; i++) {
-            for(int i_151_ = 0; i_151_ < anInt97; i_151_++) {
-                for(int i_152_ = 0; i_152_ < anInt116; i_152_++) {
+            for(int i_151_ = 0; i_151_ < mapSizeX; i_151_++) {
+                for(int i_152_ = 0; i_152_ < mapSizeY; i_152_++) {
                     SceneTile sceneTile = tileArray[i][i_151_][i_152_];
                     if(sceneTile != null) {
                         Wall wall = sceneTile.wall;
@@ -1351,7 +1356,7 @@ public class Scene {
                             if(interactiveObject != null && (interactiveObject.renderable instanceof Model)) {
                                 Model class40_sub5_sub17_sub5 = ((Model) interactiveObject.renderable);
                                 if(class40_sub5_sub17_sub5.verticesNormal != null) {
-                                    method129(class40_sub5_sub17_sub5, i, i_151_, i_152_, (interactiveObject.anInt484 - interactiveObject.tileLeft + 1), (interactiveObject.anInt477 - interactiveObject.tileTop + 1));
+                                    method129(class40_sub5_sub17_sub5, i, i_151_, i_152_, (interactiveObject.tileRight - interactiveObject.tileLeft + 1), (interactiveObject.tileBottom - interactiveObject.tileTop + 1));
                                     class40_sub5_sub17_sub5.method826(arg0, arg1, arg2);
                                 }
                             }
@@ -1478,13 +1483,13 @@ public class Scene {
         for(int i_172_ = 0; i_172_ < i; i_172_++) {
             Class32 class32 = class32s[i_172_];
             if(class32.anInt756 == 1) {
-                int i_173_ = class32.anInt757 - anInt79 + 25;
+                int i_173_ = class32.anInt757 - cameraPositionTileX + 25;
                 if(i_173_ >= 0 && i_173_ <= 50) {
-                    int i_174_ = class32.anInt745 - anInt100 + 25;
+                    int i_174_ = class32.anInt745 - cameraPositionTileY + 25;
                     if(i_174_ < 0) {
                         i_174_ = 0;
                     }
-                    int i_175_ = class32.anInt746 - anInt100 + 25;
+                    int i_175_ = class32.anInt746 - cameraPositionTileY + 25;
                     if(i_175_ > 50) {
                         i_175_ = 50;
                     }
@@ -1514,13 +1519,13 @@ public class Scene {
                     }
                 }
             } else if(class32.anInt756 == 2) {
-                int i_177_ = class32.anInt745 - anInt100 + 25;
+                int i_177_ = class32.anInt745 - cameraPositionTileY + 25;
                 if(i_177_ >= 0 && i_177_ <= 50) {
-                    int i_178_ = class32.anInt757 - anInt79 + 25;
+                    int i_178_ = class32.anInt757 - cameraPositionTileX + 25;
                     if(i_178_ < 0) {
                         i_178_ = 0;
                     }
-                    int i_179_ = class32.anInt762 - anInt79 + 25;
+                    int i_179_ = class32.anInt762 - cameraPositionTileX + 25;
                     if(i_179_ > 50) {
                         i_179_ = 50;
                     }
@@ -1552,20 +1557,20 @@ public class Scene {
             } else if(class32.anInt756 == 4) {
                 int i_181_ = class32.anInt763 - anInt89;
                 if(i_181_ > 128) {
-                    int i_182_ = class32.anInt745 - anInt100 + 25;
+                    int i_182_ = class32.anInt745 - cameraPositionTileY + 25;
                     if(i_182_ < 0) {
                         i_182_ = 0;
                     }
-                    int i_183_ = class32.anInt746 - anInt100 + 25;
+                    int i_183_ = class32.anInt746 - cameraPositionTileY + 25;
                     if(i_183_ > 50) {
                         i_183_ = 50;
                     }
                     if(i_182_ <= i_183_) {
-                        int i_184_ = class32.anInt757 - anInt79 + 25;
+                        int i_184_ = class32.anInt757 - cameraPositionTileX + 25;
                         if(i_184_ < 0) {
                             i_184_ = 0;
                         }
-                        int i_185_ = class32.anInt762 - anInt79 + 25;
+                        int i_185_ = class32.anInt762 - cameraPositionTileX + 25;
                         if(i_185_ > 50) {
                             i_185_ = 50;
                         }
@@ -1663,49 +1668,49 @@ public class Scene {
                     i_194_ = i_198_ * arg2 + i_194_ * arg3 >> 16;
                     i_198_ = i_199_;
                     if(i_194_ >= 50) {
-                        int i_200_ = (R3D.anInt2937 + (i << 9) / i_189_);
-                        int i_201_ = (R3D.anInt2931 + (i_195_ << 9) / i_189_);
-                        int i_202_ = (R3D.anInt2937 + (i_191_ << 9) / i_190_);
-                        int i_203_ = (R3D.anInt2931 + (i_196_ << 9) / i_190_);
-                        int i_204_ = (R3D.anInt2937 + (i_192_ << 9) / i_193_);
-                        int i_205_ = (R3D.anInt2931 + (i_197_ << 9) / i_193_);
-                        int i_206_ = (R3D.anInt2937 + (i_188_ << 9) / i_194_);
-                        int i_207_ = (R3D.anInt2931 + (i_198_ << 9) / i_194_);
-                        R3D.anInt2933 = 0;
+                        int i_200_ = (Rasterizer3D.anInt2937 + (i << 9) / i_189_);
+                        int i_201_ = (Rasterizer3D.anInt2931 + (i_195_ << 9) / i_189_);
+                        int i_202_ = (Rasterizer3D.anInt2937 + (i_191_ << 9) / i_190_);
+                        int i_203_ = (Rasterizer3D.anInt2931 + (i_196_ << 9) / i_190_);
+                        int i_204_ = (Rasterizer3D.anInt2937 + (i_192_ << 9) / i_193_);
+                        int i_205_ = (Rasterizer3D.anInt2931 + (i_197_ << 9) / i_193_);
+                        int i_206_ = (Rasterizer3D.anInt2937 + (i_188_ << 9) / i_194_);
+                        int i_207_ = (Rasterizer3D.anInt2931 + (i_198_ << 9) / i_194_);
+                        Rasterizer3D.anInt2933 = 0;
                         if(((i_204_ - i_206_) * (i_203_ - i_207_) - (i_205_ - i_207_) * (i_202_ - i_206_)) > 0) {
-                            R3D.aBoolean2947 = i_204_ < 0 || i_206_ < 0 || i_202_ < 0 || i_204_ > R3D.anInt2945 || i_206_ > R3D.anInt2945 || i_202_ > R3D.anInt2945;
+                            Rasterizer3D.aBoolean2947 = i_204_ < 0 || i_206_ < 0 || i_202_ < 0 || i_204_ > Rasterizer3D.anInt2945 || i_206_ > Rasterizer3D.anInt2945 || i_202_ > Rasterizer3D.anInt2945;
                             if(aBoolean114 && method142(anInt91, anInt77, i_205_, i_207_, i_203_, i_204_, i_206_, i_202_)) {
                                 anInt78 = arg6;
                                 anInt81 = arg7;
                             }
                             if(arg0.anInt1220 == -1) {
                                 if(arg0.anInt1235 != 12345678) {
-                                    R3D.method706(i_205_, i_207_, i_203_, i_204_, i_206_, i_202_, arg0.anInt1235, arg0.anInt1232, arg0.anInt1225);
+                                    Rasterizer3D.method706(i_205_, i_207_, i_203_, i_204_, i_206_, i_202_, arg0.anInt1235, arg0.anInt1232, arg0.anInt1225);
                                 }
                             } else if(aBoolean88) {
-                                int i_208_ = R3D.anInterface3_2939.method14(true, arg0.anInt1220);
-                                R3D.method706(i_205_, i_207_, i_203_, i_204_, i_206_, i_202_, method108(i_208_, arg0.anInt1235), method108(i_208_, arg0.anInt1232), method108(i_208_, arg0.anInt1225));
+                                int i_208_ = Rasterizer3D.anInterface3_2939.method14(true, arg0.anInt1220);
+                                Rasterizer3D.method706(i_205_, i_207_, i_203_, i_204_, i_206_, i_202_, method108(i_208_, arg0.anInt1235), method108(i_208_, arg0.anInt1232), method108(i_208_, arg0.anInt1225));
                             } else if(arg0.aBoolean1229) {
-                                R3D.method699(i_205_, i_207_, i_203_, i_204_, i_206_, i_202_, arg0.anInt1235, arg0.anInt1232, arg0.anInt1225, i, i_191_, i_188_, i_195_, i_196_, i_198_, i_189_, i_190_, i_194_, arg0.anInt1220);
+                                Rasterizer3D.method699(i_205_, i_207_, i_203_, i_204_, i_206_, i_202_, arg0.anInt1235, arg0.anInt1232, arg0.anInt1225, i, i_191_, i_188_, i_195_, i_196_, i_198_, i_189_, i_190_, i_194_, arg0.anInt1220);
                             } else {
-                                R3D.method699(i_205_, i_207_, i_203_, i_204_, i_206_, i_202_, arg0.anInt1235, arg0.anInt1232, arg0.anInt1225, i_192_, i_188_, i_191_, i_197_, i_198_, i_196_, i_193_, i_194_, i_190_, arg0.anInt1220);
+                                Rasterizer3D.method699(i_205_, i_207_, i_203_, i_204_, i_206_, i_202_, arg0.anInt1235, arg0.anInt1232, arg0.anInt1225, i_192_, i_188_, i_191_, i_197_, i_198_, i_196_, i_193_, i_194_, i_190_, arg0.anInt1220);
                             }
                         }
                         if(((i_200_ - i_202_) * (i_207_ - i_203_) - (i_201_ - i_203_) * (i_206_ - i_202_)) > 0) {
-                            R3D.aBoolean2947 = i_200_ < 0 || i_202_ < 0 || i_206_ < 0 || i_200_ > R3D.anInt2945 || i_202_ > R3D.anInt2945 || i_206_ > R3D.anInt2945;
+                            Rasterizer3D.aBoolean2947 = i_200_ < 0 || i_202_ < 0 || i_206_ < 0 || i_200_ > Rasterizer3D.anInt2945 || i_202_ > Rasterizer3D.anInt2945 || i_206_ > Rasterizer3D.anInt2945;
                             if(aBoolean114 && method142(anInt91, anInt77, i_201_, i_203_, i_207_, i_200_, i_202_, i_206_)) {
                                 anInt78 = arg6;
                                 anInt81 = arg7;
                             }
                             if(arg0.anInt1220 == -1) {
                                 if(arg0.anInt1231 != 12345678) {
-                                    R3D.method706(i_201_, i_203_, i_207_, i_200_, i_202_, i_206_, arg0.anInt1231, arg0.anInt1225, arg0.anInt1232);
+                                    Rasterizer3D.method706(i_201_, i_203_, i_207_, i_200_, i_202_, i_206_, arg0.anInt1231, arg0.anInt1225, arg0.anInt1232);
                                 }
                             } else if(aBoolean88) {
-                                int i_209_ = R3D.anInterface3_2939.method14(true, arg0.anInt1220);
-                                R3D.method706(i_201_, i_203_, i_207_, i_200_, i_202_, i_206_, method108(i_209_, arg0.anInt1231), method108(i_209_, arg0.anInt1225), method108(i_209_, arg0.anInt1232));
+                                int i_209_ = Rasterizer3D.anInterface3_2939.method14(true, arg0.anInt1220);
+                                Rasterizer3D.method706(i_201_, i_203_, i_207_, i_200_, i_202_, i_206_, method108(i_209_, arg0.anInt1231), method108(i_209_, arg0.anInt1225), method108(i_209_, arg0.anInt1232));
                             } else {
-                                R3D.method699(i_201_, i_203_, i_207_, i_200_, i_202_, i_206_, arg0.anInt1231, arg0.anInt1225, arg0.anInt1232, i, i_191_, i_188_, i_195_, i_196_, i_198_, i_189_, i_190_, i_194_, arg0.anInt1220);
+                                Rasterizer3D.method699(i_201_, i_203_, i_207_, i_200_, i_202_, i_206_, arg0.anInt1231, arg0.anInt1225, arg0.anInt1232, i, i_191_, i_188_, i_195_, i_196_, i_198_, i_189_, i_190_, i_194_, arg0.anInt1220);
                             }
                         }
                     }
@@ -1723,9 +1728,9 @@ public class Scene {
         for(int i_213_ = arg1; i_213_ <= arg1 + 1; i_213_++) {
             if(i_213_ != anInt115) {
                 for(int i_214_ = i; i_214_ <= i_210_; i_214_++) {
-                    if(i_214_ >= 0 && i_214_ < anInt97) {
+                    if(i_214_ >= 0 && i_214_ < mapSizeX) {
                         for(int i_215_ = i_211_; i_215_ <= i_212_; i_215_++) {
-                            if(i_215_ >= 0 && i_215_ < anInt116 && (!bool || i_214_ >= i_210_ || i_215_ >= i_212_ || i_215_ < arg3 && i_214_ != arg2)) {
+                            if(i_215_ >= 0 && i_215_ < mapSizeY && (!bool || i_214_ >= i_210_ || i_215_ >= i_212_ || i_215_ < arg3 && i_214_ != arg2)) {
                                 SceneTile sceneTile = (tileArray[i_213_][i_214_][i_215_]);
                                 if(sceneTile != null) {
                                     int i_216_ = (((heightMap[i_213_][i_214_][i_215_]) + (heightMap[i_213_][i_214_ + 1][i_215_]) + (heightMap[i_213_][i_214_][i_215_ + 1]) + (heightMap[i_213_][i_214_ + 1][i_215_ + 1])) / 4 - ((heightMap[arg1][arg2][arg3]) + (heightMap[arg1][arg2 + 1][arg3]) + (heightMap[arg1][arg2][arg3 + 1]) + (heightMap[arg1][arg2 + 1][arg3 + 1])) / 4);
@@ -1749,8 +1754,8 @@ public class Scene {
                                         if(interactiveObject != null && (interactiveObject.renderable instanceof Model)) {
                                             Model class40_sub5_sub17_sub5 = ((Model) (interactiveObject.renderable));
                                             if((class40_sub5_sub17_sub5.verticesNormal) != null) {
-                                                int i_218_ = (interactiveObject.anInt484 - interactiveObject.tileLeft + 1);
-                                                int i_219_ = (interactiveObject.anInt477 - interactiveObject.tileTop + 1);
+                                                int i_218_ = (interactiveObject.tileRight - interactiveObject.tileLeft + 1);
+                                                int i_219_ = (interactiveObject.tileBottom - interactiveObject.tileTop + 1);
                                                 method121(arg0, class40_sub5_sub17_sub5, ((interactiveObject.tileLeft - arg2) * 128 + (i_218_ - arg4) * 64), i_216_, ((interactiveObject.tileTop - arg3) * 128 + (i_219_ - arg5) * 64), bool);
                                             }
                                         }
@@ -1830,7 +1835,7 @@ public class Scene {
         i_220_ /= 128;
         i_221_ /= 128;
         i_222_ /= 128;
-        return method140(arg0, i, i_220_, i_221_ - i + 1, i_222_ - i_220_ + 1, arg1, arg2, arg3, arg5, arg6, true, arg7, 0);
+        return addRenderableC(arg0, i, i_220_, i_221_ - i + 1, i_222_ - i_220_ + 1, arg1, arg2, arg3, arg5, arg6, true, arg7, 0);
     }
 
     public void method135(int arg0, int arg1, int arg2) {
@@ -1848,8 +1853,8 @@ public class Scene {
 
     public void method136(int arg0) {
         anInt103 = arg0;
-        for(int i = 0; i < anInt97; i++) {
-            for(int i_223_ = 0; i_223_ < anInt116; i_223_++) {
+        for(int i = 0; i < mapSizeX; i++) {
+            for(int i_223_ = 0; i_223_ < mapSizeY; i_223_++) {
                 if(tileArray[arg0][i][i_223_] == null) {
                     tileArray[arg0][i][i_223_] = new SceneTile(arg0, i, i_223_);
                 }
@@ -1863,7 +1868,7 @@ public class Scene {
         }
         int i = arg1 * 128 + 64 * arg4;
         int i_224_ = arg2 * 128 + 64 * arg5;
-        return method140(arg0, arg1, arg2, arg4, arg5, i, i_224_, arg3, arg6, arg7, false, arg8, arg9);
+        return addRenderableC(arg0, arg1, arg2, arg4, arg5, i, i_224_, arg3, arg6, arg7, false, arg8, arg9);
     }
 
     public void method138(Class11 arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
@@ -1886,10 +1891,10 @@ public class Scene {
                 Class11.anIntArray375[i_225_] = i_227_;
                 Class11.anIntArray360[i_225_] = i_228_;
             }
-            Class11.anIntArray363[i_225_] = R3D.anInt2937 + (i_226_ << 9) / i_228_;
-            Class11.anIntArray358[i_225_] = R3D.anInt2931 + (i_227_ << 9) / i_228_;
+            Class11.anIntArray363[i_225_] = Rasterizer3D.anInt2937 + (i_226_ << 9) / i_228_;
+            Class11.anIntArray358[i_225_] = Rasterizer3D.anInt2931 + (i_227_ << 9) / i_228_;
         }
-        R3D.anInt2933 = 0;
+        Rasterizer3D.anInt2933 = 0;
         i = arg0.anIntArray374.length;
         for(int i_230_ = 0; i_230_ < i; i_230_++) {
             int i_231_ = arg0.anIntArray374[i_230_];
@@ -1902,22 +1907,22 @@ public class Scene {
             int i_238_ = Class11.anIntArray358[i_232_];
             int i_239_ = Class11.anIntArray358[i_233_];
             if(((i_234_ - i_235_) * (i_239_ - i_238_) - (i_237_ - i_238_) * (i_236_ - i_235_)) > 0) {
-                R3D.aBoolean2947 = i_234_ < 0 || i_235_ < 0 || i_236_ < 0 || i_234_ > R3D.anInt2945 || i_235_ > R3D.anInt2945 || i_236_ > R3D.anInt2945;
+                Rasterizer3D.aBoolean2947 = i_234_ < 0 || i_235_ < 0 || i_236_ < 0 || i_234_ > Rasterizer3D.anInt2945 || i_235_ > Rasterizer3D.anInt2945 || i_236_ > Rasterizer3D.anInt2945;
                 if(aBoolean114 && method142(anInt91, anInt77, i_237_, i_238_, i_239_, i_234_, i_235_, i_236_)) {
                     anInt78 = arg5;
                     anInt81 = arg6;
                 }
                 if(arg0.anIntArray361 == null || arg0.anIntArray361[i_230_] == -1) {
                     if(arg0.anIntArray367[i_230_] != 12345678) {
-                        R3D.method706(i_237_, i_238_, i_239_, i_234_, i_235_, i_236_, arg0.anIntArray367[i_230_], arg0.anIntArray369[i_230_], arg0.anIntArray372[i_230_]);
+                        Rasterizer3D.method706(i_237_, i_238_, i_239_, i_234_, i_235_, i_236_, arg0.anIntArray367[i_230_], arg0.anIntArray369[i_230_], arg0.anIntArray372[i_230_]);
                     }
                 } else if(aBoolean88) {
-                    int i_240_ = R3D.anInterface3_2939.method14(true, arg0.anIntArray361[i_230_]);
-                    R3D.method706(i_237_, i_238_, i_239_, i_234_, i_235_, i_236_, method108(i_240_, arg0.anIntArray367[i_230_]), method108(i_240_, arg0.anIntArray369[i_230_]), method108(i_240_, arg0.anIntArray372[i_230_]));
+                    int i_240_ = Rasterizer3D.anInterface3_2939.method14(true, arg0.anIntArray361[i_230_]);
+                    Rasterizer3D.method706(i_237_, i_238_, i_239_, i_234_, i_235_, i_236_, method108(i_240_, arg0.anIntArray367[i_230_]), method108(i_240_, arg0.anIntArray369[i_230_]), method108(i_240_, arg0.anIntArray372[i_230_]));
                 } else if(arg0.aBoolean365) {
-                    R3D.method699(i_237_, i_238_, i_239_, i_234_, i_235_, i_236_, arg0.anIntArray367[i_230_], arg0.anIntArray369[i_230_], arg0.anIntArray372[i_230_], Class11.anIntArray370[0], Class11.anIntArray370[1], Class11.anIntArray370[3], Class11.anIntArray375[0], Class11.anIntArray375[1], Class11.anIntArray375[3], Class11.anIntArray360[0], Class11.anIntArray360[1], Class11.anIntArray360[3], arg0.anIntArray361[i_230_]);
+                    Rasterizer3D.method699(i_237_, i_238_, i_239_, i_234_, i_235_, i_236_, arg0.anIntArray367[i_230_], arg0.anIntArray369[i_230_], arg0.anIntArray372[i_230_], Class11.anIntArray370[0], Class11.anIntArray370[1], Class11.anIntArray370[3], Class11.anIntArray375[0], Class11.anIntArray375[1], Class11.anIntArray375[3], Class11.anIntArray360[0], Class11.anIntArray360[1], Class11.anIntArray360[3], arg0.anIntArray361[i_230_]);
                 } else {
-                    R3D.method699(i_237_, i_238_, i_239_, i_234_, i_235_, i_236_, arg0.anIntArray367[i_230_], arg0.anIntArray369[i_230_], arg0.anIntArray372[i_230_], Class11.anIntArray370[i_231_], Class11.anIntArray370[i_232_], Class11.anIntArray370[i_233_], Class11.anIntArray375[i_231_], Class11.anIntArray375[i_232_], Class11.anIntArray375[i_233_], Class11.anIntArray360[i_231_], Class11.anIntArray360[i_232_], Class11.anIntArray360[i_233_], arg0.anIntArray361[i_230_]);
+                    Rasterizer3D.method699(i_237_, i_238_, i_239_, i_234_, i_235_, i_236_, arg0.anIntArray367[i_230_], arg0.anIntArray369[i_230_], arg0.anIntArray372[i_230_], Class11.anIntArray370[i_231_], Class11.anIntArray370[i_232_], Class11.anIntArray370[i_233_], Class11.anIntArray375[i_231_], Class11.anIntArray375[i_232_], Class11.anIntArray375[i_233_], Class11.anIntArray360[i_231_], Class11.anIntArray360[i_232_], Class11.anIntArray360[i_233_], arg0.anIntArray361[i_230_]);
                 }
             }
         }
@@ -1936,11 +1941,11 @@ public class Scene {
         SceneTile sceneTile = tileArray[z][x][y];
         if(sceneTile != null) {
             for(int e = 0; e < sceneTile.entityCount; e++) {
-                if(((sceneTile.interactiveObjects[e].anInt471 & 0x100) == 256) && ((sceneTile.interactiveObjects[e].renderable) instanceof Model)) {
+                if(((sceneTile.interactiveObjects[e].config & 0x100) == 256) && ((sceneTile.interactiveObjects[e].renderable) instanceof Model)) {
                     Model model = ((Model) (sceneTile.interactiveObjects[e].renderable));
                     model.method799();
-                    if(model.anInt2861 > i) {
-                        i = model.anInt2861;
+                    if(model.modelHeight > i) {
+                        i = model.modelHeight;
                     }
                 }
             }
@@ -1952,55 +1957,55 @@ public class Scene {
         tileArray[z][x][y].groundItemTile = groundItemTile;
     }
 
-    public boolean method140(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, Renderable arg8, int arg9, boolean arg10, int arg11, int arg12) {
-        for(int i = arg1; i < arg1 + arg3; i++) {
-            for(int i_242_ = arg2; i_242_ < arg2 + arg4; i_242_++) {
-                if(i < 0 || i_242_ < 0 || i >= anInt97 || i_242_ >= anInt116) {
+    public boolean addRenderableC(int z, int minX, int minY, int tileHeight, int tileWidth, int worldX, int worldY, int worldZ, Renderable arg8, int arg9, boolean arg10, int hash, int config) {
+        for(int x = minX; x < minX + tileHeight; x++) {
+            for(int y = minY; y < minY + tileWidth; y++) {
+                if(x < 0 || y < 0 || x >= mapSizeX || y >= mapSizeY) {
                     return false;
                 }
-                SceneTile sceneTile = tileArray[arg0][i][i_242_];
+                SceneTile sceneTile = tileArray[z][x][y];
                 if(sceneTile != null && sceneTile.entityCount >= 5) {
                     return false;
                 }
             }
         }
         InteractiveObject interactiveObject = new InteractiveObject();
-        interactiveObject.hash = arg11;
-        interactiveObject.anInt471 = arg12;
-        interactiveObject.anInt468 = arg0;
-        interactiveObject.anInt476 = arg5;
-        interactiveObject.anInt472 = arg6;
-        interactiveObject.anInt479 = arg7;
+        interactiveObject.hash = hash;
+        interactiveObject.config = config;
+        interactiveObject.z = z;
+        interactiveObject.worldX = worldX;
+        interactiveObject.worldY = worldY;
+        interactiveObject.worldZ = worldZ;
         interactiveObject.renderable = arg8;
-        interactiveObject.anInt480 = arg9;
-        interactiveObject.tileLeft = arg1;
-        interactiveObject.tileTop = arg2;
-        interactiveObject.anInt484 = arg1 + arg3 - 1;
-        interactiveObject.anInt477 = arg2 + arg4 - 1;
-        for(int i = arg1; i < arg1 + arg3; i++) {
-            for(int i_243_ = arg2; i_243_ < arg2 + arg4; i_243_++) {
+        interactiveObject.rotation = arg9;
+        interactiveObject.tileLeft = minX;
+        interactiveObject.tileTop = minY;
+        interactiveObject.tileRight = minX + tileHeight - 1;
+        interactiveObject.tileBottom = minY + tileWidth - 1;
+        for(int i = minX; i < minX + tileHeight; i++) {
+            for(int i_243_ = minY; i_243_ < minY + tileWidth; i_243_++) {
                 int i_244_ = 0;
-                if(i > arg1) {
+                if(i > minX) {
                     i_244_++;
                 }
-                if(i < arg1 + arg3 - 1) {
+                if(i < minX + tileHeight - 1) {
                     i_244_ += 4;
                 }
-                if(i_243_ > arg2) {
+                if(i_243_ > minY) {
                     i_244_ += 8;
                 }
-                if(i_243_ < arg2 + arg4 - 1) {
+                if(i_243_ < minY + tileWidth - 1) {
                     i_244_ += 2;
                 }
-                for(int i_245_ = arg0; i_245_ >= 0; i_245_--) {
+                for(int i_245_ = z; i_245_ >= 0; i_245_--) {
                     if(tileArray[i_245_][i][i_243_] == null) {
                         tileArray[i_245_][i][i_243_] = new SceneTile(i_245_, i, i_243_);
                     }
                 }
-                SceneTile sceneTile = tileArray[arg0][i][i_243_];
+                SceneTile sceneTile = tileArray[z][i][i_243_];
                 sceneTile.interactiveObjects[sceneTile.entityCount] = interactiveObject;
-                sceneTile.anIntArray2074[sceneTile.entityCount] = i_244_;
-                sceneTile.anInt2073 |= i_244_;
+                sceneTile.sceneSpawnRequestsSize[sceneTile.entityCount] = i_244_;
+                sceneTile.interactiveObjectsSizeOR |= i_244_;
                 sceneTile.entityCount++;
             }
         }
@@ -2026,7 +2031,7 @@ public class Scene {
         }
         for(int i = 0; i < sceneTile.entityCount; i++) {
             if(sceneTile.interactiveObjects[i].hash == hash) {
-                return sceneTile.interactiveObjects[i].anInt471 & 0xff;
+                return sceneTile.interactiveObjects[i].config & 0xff;
             }
         }
         return -1;

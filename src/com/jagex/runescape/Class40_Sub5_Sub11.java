@@ -1,8 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
-import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class40_Sub5_Sub11 extends SubNode {
     public static int anInt2618;

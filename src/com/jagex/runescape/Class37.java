@@ -8,12 +8,18 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.tile.SceneTile;
+import com.jagex.runescape.scene.tile.Wall;
 
 public class Class37 {
     public static int anInt859;
@@ -270,7 +276,7 @@ public class Class37 {
             class40_sub2.aGameObjectDefinition_2011 = arg5;
             class40_sub2.method528(57);
         }
-        Class40_Sub5_Sub1.aClass45_2268.method904(class40_sub2, -126);
+        Class40_Sub5_Sub1.aClass45_2268.pushBack(class40_sub2, -126);
         if(class40_sub2.anIntArray2005 != null)
             class40_sub2.anInt2014 = (int) ((double) (class40_sub2.anInt2002 - class40_sub2.anInt2012) * Math.random()) + class40_sub2.anInt2012;
     }

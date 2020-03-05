@@ -7,10 +7,13 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.tile.Wall;
 
 public class Class48 {
     public static RSString aClass1_1122 = RSString.CreateString("RuneScape is loading )2 please wait)3)3)3");
@@ -194,7 +197,6 @@ public class Class48 {
                                                         OverlayDefinition.method558((itemDefinition.id), (Class38_Sub1.aClass1_1918), (widget.id), -501, i_4_, 37, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{(FloorDecoration.aClass1_611), (Class5.aClass1_206), (itemDefinition.name)}))));
                                                     }
                                                 } else {
-                                                    Class67.anInt1576++;
                                                     RSString[] class1s = (itemDefinition.interfaceOptions);
                                                     if(Class60.aBoolean1402)
                                                         class1s = (Class56.method968(class1s, false));
@@ -266,7 +268,6 @@ public class Class48 {
                             }
                         }
                         if(widget.isIf3 && (widget.anInt2718 != -1) && (arg8 >= i_2_) && (arg4 >= i_1_) && ((arg8 < widget.originalWidth + i_2_)) && ((arg4 < i_1_ + widget.originalHeight))) {
-                            Class67.anInt1576++;
                             ItemDefinition itemDefinition = ItemDefinition.forId((widget.anInt2718), 10);
                             if(widget.isInventory) {
                                 RSString[] class1s = itemDefinition.interfaceOptions;

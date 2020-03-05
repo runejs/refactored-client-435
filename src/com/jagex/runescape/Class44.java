@@ -210,7 +210,7 @@ public class Class44 implements Runnable {
                     } else if(class40_sub6.anInt2112 == 1) {
                         class40_sub6.aByteArray2102 = (class40_sub6.aClass56_2117.method969((int) class40_sub6.key, (byte) -111));
                         synchronized(RSCanvas.aClass45_53) {
-                            IdentityKit.aClass45_2604.method904(class40_sub6, 115);
+                            IdentityKit.aClass45_2604.pushBack(class40_sub6, 115);
                         }
                     }
                     synchronized(CollisionMap.anObject162) {

@@ -2,6 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 import java.awt.*;

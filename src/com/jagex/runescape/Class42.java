@@ -7,6 +7,8 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -193,7 +195,7 @@ public class Class42 {
         if(arg0 < 3)
             method883((byte) 24, 79);
         while(Cache.outgoingbuffer.method510(121, Widget.packetsize) >= 27) {
-            int i = Cache.outgoingbuffer.putBits(15, (byte) -65);
+            int i = Cache.outgoingbuffer.getBits(15, (byte) -65);
             if(i == 32767)
                 break;
             boolean bool = false;
@@ -204,20 +206,21 @@ public class Class42 {
             Npc npc = CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i];
             Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i;
             npc.anInt3134 = Node.pulseCycle;
-            int faceDirection = (Class40_Sub5_Sub17_Sub1.anIntArray2987[Cache.outgoingbuffer.putBits(3, (byte) -65)]);
+            int faceDirection = (Class40_Sub5_Sub17_Sub1.anIntArray2987[Cache.outgoingbuffer.getBits(3, (byte) -65)]);
             if(bool)
                 npc.anInt3080 = faceDirection;
-            int i_4_ = Cache.outgoingbuffer.putBits(5, (byte) -65);
+            int i_4_ = Cache.outgoingbuffer.getBits(5, (byte) -65);
             if(i_4_ > 15)
                 i_4_ -= 32;
-            int i_5_ = Cache.outgoingbuffer.putBits(5, (byte) -65);
-            int i_6_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
+            int i_5_ = Cache.outgoingbuffer.getBits(5, (byte) -65);
+            int i_6_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
             if(i_5_ > 15)
                 i_5_ -= 32;
             if(i_6_ == 1)
                 Class24.anIntArray578[Actor.anInt3153++] = i;
-            int i_7_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
-            npc.actorDefinition = ActorDefinition.getDefinition((byte) -121, Cache.outgoingbuffer.putBits(13, (byte) -65));
+            int i_7_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
+
+            npc.actorDefinition = ActorDefinition.getDefinition((byte) -121, Cache.outgoingbuffer.getBits(13, (byte) -65));
             npc.turnLeftAnimationId = (npc.actorDefinition.rotate90LeftAnimation);
             npc.idleAnimation = (npc.actorDefinition.stanceAnimation);
             npc.anInt3083 = (npc.actorDefinition.rotateRightAnimation);

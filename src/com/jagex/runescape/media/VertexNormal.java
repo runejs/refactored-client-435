@@ -1,5 +1,6 @@
-package com.jagex.runescape;
+package com.jagex.runescape.media;
 
+import com.jagex.runescape.RSString;
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 

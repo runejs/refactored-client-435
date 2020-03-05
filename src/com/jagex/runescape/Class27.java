@@ -4,18 +4,24 @@ import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
-import com.jagex.runescape.cache.media.AnimationSequence;
-import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.cache.media.*;
+import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.Rasterizer3D;
+import com.jagex.runescape.media.Rasterizer;
+import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.tile.SceneTile;
+import com.jagex.runescape.scene.tile.Wall;
+import com.jagex.runescape.scene.tile.WallDecoration;
 
 public class Class27 {
     public static RSString aClass1_638 = RSString.CreateString("invback");
@@ -95,7 +101,7 @@ public class Class27 {
         Npc.aScene_3301.method104();
         Class33.method404((byte) -28);
         Class38_Sub1.method450((byte) -67);
-        ((Class35) R3D.anInterface3_2939).method425((byte) 6, Class5.anInt199);
+        ((Class35) Rasterizer3D.anInterface3_2939).method425((byte) 6, Class5.anInt199);
         KeyFocusListener.method954(-15454);
         if(ISAAC.aBoolean519 && method368((byte) -41, false, true) == 0)
             ISAAC.aBoolean519 = false;

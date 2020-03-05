@@ -7,12 +7,18 @@ import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.Rasterizer3D;
+import com.jagex.runescape.media.Rasterizer;
+import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.tile.SceneTile;
+import com.jagex.runescape.scene.tile.Wall;
 
 import java.awt.*;
 
@@ -129,8 +135,8 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                     i_10_ -= 75;
                     i -= 73;
                     int i_11_ = 0x7ff & Class43.cameraYawOffset + GroundItemTile.cameraHorizontal;
-                    int i_12_ = R3D.sinetable[i_11_];
-                    int i_13_ = R3D.cosinetable[i_11_];
+                    int i_12_ = Rasterizer3D.sinetable[i_11_];
+                    int i_13_ = Rasterizer3D.cosinetable[i_11_];
                     i_13_ = (Class51.mapZoomOffset + 256) * i_13_ >> 8;
                     i_12_ = (Class51.mapZoomOffset + 256) * i_12_ >> 8;
                     int i_14_ = i_10_ * i_12_ + (i * i_13_) >> 11;

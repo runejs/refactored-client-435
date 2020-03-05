@@ -8,8 +8,12 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.scene.tile.Wall;
+import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.util.Signlink;
 
 import java.math.BigInteger;
@@ -309,33 +313,33 @@ public abstract class Actor extends Renderable {
     public static void method786(boolean arg0) {
         Cache.outgoingbuffer.initBitAccess(127);
         anInt3121++;
-        int i = Cache.outgoingbuffer.putBits(1, (byte) -65);
+        int i = Cache.outgoingbuffer.getBits(1, (byte) -65);
         if(i != 0) {
-            int i_21_ = Cache.outgoingbuffer.putBits(2, (byte) -65);
+            int i_21_ = Cache.outgoingbuffer.getBits(2, (byte) -65);
             if(i_21_ == 0)
                 Class24.anIntArray578[anInt3153++] = 2047;
             else if(i_21_ == 1) {
-                int i_22_ = Cache.outgoingbuffer.putBits(3, (byte) -65);
+                int i_22_ = Cache.outgoingbuffer.getBits(3, (byte) -65);
                 Player.localPlayer.method782(i_22_, (byte) -96, false);
-                int i_23_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
+                int i_23_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
                 if(i_23_ == 1)
                     Class24.anIntArray578[anInt3153++] = 2047;
             } else if(i_21_ == 2) {
-                int i_24_ = Cache.outgoingbuffer.putBits(3, (byte) -65);
+                int i_24_ = Cache.outgoingbuffer.getBits(3, (byte) -65);
                 Player.localPlayer.method782(i_24_, (byte) -96, true);
-                int i_25_ = Cache.outgoingbuffer.putBits(3, (byte) -65);
+                int i_25_ = Cache.outgoingbuffer.getBits(3, (byte) -65);
                 Player.localPlayer.method782(i_25_, (byte) -96, true);
-                int i_26_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
+                int i_26_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
                 if(i_26_ == 1)
                     Class24.anIntArray578[anInt3153++] = 2047;
             } else if(i_21_ == 3) {
-                int i_27_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
-                Player.anInt3267 = Cache.outgoingbuffer.putBits(2, (byte) -65);
-                int i_28_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
+                int i_27_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
+                Player.anInt3267 = Cache.outgoingbuffer.getBits(2, (byte) -65);
+                int i_28_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
                 if(i_28_ == 1)
                     Class24.anIntArray578[anInt3153++] = 2047;
-                int i_29_ = Cache.outgoingbuffer.putBits(7, (byte) -65);
-                int i_30_ = Cache.outgoingbuffer.putBits(7, (byte) -65);
+                int i_29_ = Cache.outgoingbuffer.getBits(7, (byte) -65);
+                int i_30_ = Cache.outgoingbuffer.getBits(7, (byte) -65);
                 Player.localPlayer.method787(i_30_, -7717, i_27_ == 1, i_29_);
             } else if(!arg0)
                 method781(-5, -11, -11, 113, 49, 123);

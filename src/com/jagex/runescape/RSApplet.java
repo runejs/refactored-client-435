@@ -4,8 +4,14 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.scene.tile.Wall;
+import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.util.Signlink;
 
 import java.applet.Applet;
@@ -179,7 +185,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
     public static int method32(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
         if(!arg3)
             return -109;
-        int i = (65536 + -(R3D.cosinetable[1024 * arg4 / arg1]) >> 1);
+        int i = (65536 + -(Rasterizer3D.cosinetable[1024 * arg4 / arg1]) >> 1);
         return (((65536 + -i) * arg0 >> 16) + (arg2 * i >> 16));
     }
 

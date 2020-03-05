@@ -41,7 +41,7 @@ public class PacketBuffer extends Buffer {
         synchronized(RSCanvas.aClass45_53) {
             if(arg3 != -28)
                 method521(false, (byte) -113, -84, -120);
-            RSCanvas.aClass45_53.method904(class40_sub6, -72);
+            RSCanvas.aClass45_53.pushBack(class40_sub6, -72);
         }
         HashTable.method332(600);
     }
@@ -153,7 +153,7 @@ public class PacketBuffer extends Buffer {
         return 0xff & (buffer[currentPosition++] - inCipher.rand());
     }
 
-    public int putBits(int arg0, byte arg1) {
+    public int getBits(int arg0, byte arg1) {
         int i = bitoffset >> 3;
         if(arg1 != -65)
             str_Please_Wait = null;

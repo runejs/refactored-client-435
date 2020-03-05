@@ -5,10 +5,12 @@ import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
-import com.jagex.runescape.cache.media.AnimationSequence;
-import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.cache.media.TypeFace;
+import com.jagex.runescape.cache.media.*;
+import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.Rasterizer3D;
+import com.jagex.runescape.media.Rasterizer;
+import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -16,7 +18,12 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.InteractiveObject;
+import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.tile.SceneTile;
+import com.jagex.runescape.scene.tile.Wall;
+import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
 
@@ -353,21 +360,21 @@ public class Main extends RSApplet {
                                         i_42_ = (32 * i_42_ / (widget.originalWidth));
                                 }
                             }
-                            R3D.method710(i_0_ + widget.originalWidth / 2, widget.originalHeight / 2 + i_1_);
+                            Rasterizer3D.method710(i_0_ + widget.originalWidth / 2, widget.originalHeight / 2 + i_1_);
 
-                            int i_43_ = (i_42_ * (R3D.sinetable[i_37_]) >> 16);
-                            int i_44_ = (i_42_ * (R3D.cosinetable[i_37_]) >> 16);
+                            int i_43_ = (i_42_ * (Rasterizer3D.sinetable[i_37_]) >> 16);
+                            int i_44_ = (i_42_ * (Rasterizer3D.cosinetable[i_37_]) >> 16);
                             if(model != null) {
                                 if(widget.isIf3) {
                                     model.method799();
                                     if(widget.orthogonal)
-                                        model.method801(0, i_40_, i_38_, i_37_, i_41_, (i_39_ + i_43_ + (model.anInt2861) / 2), i_44_ + i_39_, i_42_);
+                                        model.method801(0, i_40_, i_38_, i_37_, i_41_, (i_39_ + i_43_ + (model.modelHeight) / 2), i_44_ + i_39_, i_42_);
                                     else
-                                        model.method812(0, i_40_, i_38_, i_37_, i_41_, (i_39_ + ((model.anInt2861) / 2 + i_43_)), i_44_ + i_39_);
+                                        model.method812(0, i_40_, i_38_, i_37_, i_41_, (i_39_ + ((model.modelHeight) / 2 + i_43_)), i_44_ + i_39_);
                                 } else
                                     model.method812(0, i_40_, 0, i_37_, 0, i_43_, i_44_);
                             }
-                            R3D.method702();
+                            Rasterizer3D.method702();
                         } else {
                             if(widget.type == 7) {
                                 TypeFace class40_sub5_sub14_sub1 = widget.method647((byte) 34);
@@ -668,8 +675,6 @@ public class Main extends RSApplet {
         Class32.anInt765 = 0;
         SceneTile.anInt2041 = 0;
         Class52.anInt1227 = 0;
-        Class67.anInt1584 = 0;
-        Class67.anInt1606 = 0;
         CacheIndex_Sub1.anInt1793 = 0;
         Class40_Sub5_Sub17_Sub3.anInt3061 = 0;
         Class57.anInt1330 = 0;
@@ -685,7 +690,6 @@ public class Main extends RSApplet {
         Class59.anInt1384 = 0;
         Class40_Sub5_Sub17_Sub1.anInt2986 = 0;
         WallDecoration.anInt1248 = 0;
-        Class67.anInt1599 = 0;
         Class40_Sub5_Sub11.anInt2632 = 0;
         WallDecoration.anInt1250 = 0;
         Class40_Sub6.anInt2100 = 0;
@@ -714,7 +718,6 @@ public class Main extends RSApplet {
         Actor.anInt3106 = 0;
         Node.anInt927 = 0;
         Class24.anInt579 = 0;
-        Class67.anInt1594 = 0;
         Actor.anInt3108 = 0;
         OverlayDefinition.anInt2316 = 0;
         CacheIndex_Sub1.anInt1815 = 0;
@@ -723,7 +726,6 @@ public class Main extends RSApplet {
         Class40_Sub2.anInt2006 = 0;
         Class32.anInt744 = 0;
         Class59.anInt1382 = 0;
-        Class67.anInt1587 = 0;
         Class65.anInt1534 = 0;
         Wall.anInt345 = 0;
         FloorDecoration.anInt592 = 0;
@@ -735,14 +737,12 @@ public class Main extends RSApplet {
         KeyFocusListener.anInt1279 = 0;
         Node.anInt971 = 0;
         Class52.anInt1237 = 0;
-        Class67.anInt1576 = 0;
         Class44.anInt1050 = 0;
         Class42.anInt1007 = 0;
         Actor.anInt3146 = 0;
         Class43.anInt1023 = 0;
         Class56.anInt1310 = 0;
         Class13.anInt415 = 0;
-        Class67.anInt1581 = 0;
         Class24.anInt585 = 0;
         Class40_Sub6.anInt2108 = 0;
         CacheIndex_Sub1.anInt1817 = 0;
@@ -771,7 +771,6 @@ public class Main extends RSApplet {
         VarbitDefinition.anInt2369 = 0;
         ISAAC.anInt503 = 0;
         Class34.anInt806 = 0;
-        Class67.anInt1597 = 0;
         Class39.anInt916 = 0;
         Class34.anInt838 = 0;
         Class40_Sub5_Sub13.anInt2756 = 0;
@@ -798,7 +797,6 @@ public class Main extends RSApplet {
         Class60.anInt1400 = 0;
         Class40_Sub2.anInt1992 = 0;
         Class37.anInt863 = 0;
-        Class67.anInt1574 = 0;
         FloorDecoration.anInt597 = 0;
         Renderable.anInt2855 = 0;
         Class40_Sub7.anInt2122 = 0;
@@ -826,7 +824,6 @@ public class Main extends RSApplet {
         CacheIndex_Sub1.anInt1792 = 0;
         Class35.anInt1741 = 0;
         Node.anInt961 = 0;
-        Class67.anInt1608 = 0;
         Class13.anInt408 = 0;
         Actor.anInt3084 = 0;
         Class22_Sub1.anInt1842 = 0;
@@ -1334,7 +1331,7 @@ public class Main extends RSApplet {
         Class27.method356(arg0 ^ ~0x6ced);
         Class40_Sub5_Sub13.method653(-1);
         Landscape.method935(10582);
-        R3D.method704();
+        Rasterizer3D.method704();
         Rasterizer.method667();
         Class42.method887((byte) -108);
         Class24.method339((byte) -41);

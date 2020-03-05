@@ -5,7 +5,10 @@ import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
+import com.jagex.runescape.media.Rasterizer3D;
+import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.tile.SceneTile;
 
 import java.util.zip.CRC32;
 
@@ -43,7 +46,7 @@ public class Class65 {
         int i = -125 % ((arg0 - 2) / 56);
         anInt1539++;
         VarbitDefinition.aClass68_2350.method1046((byte) 90);
-        Class24.anIntArray577 = R3D.method708(Class24.anIntArray577);
+        Class24.anIntArray577 = Rasterizer3D.method708(Class24.anIntArray577);
 
     }
 

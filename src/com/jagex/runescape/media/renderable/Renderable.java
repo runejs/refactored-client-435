@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.cache.media.Widget;
 
 public abstract class Renderable extends SubNode {
     public static int anInt2855;
@@ -32,7 +33,7 @@ public abstract class Renderable extends SubNode {
         aClass1_2871 = RSString.CreateString("Bitte versuchen Sie)1");
     }
 
-    public int anInt2861 = 1000;
+    public int modelHeight = 1000;
 
     public static boolean handleSequences(int arg0, int arg1) {
 
@@ -98,12 +99,12 @@ public abstract class Renderable extends SubNode {
 
     }
 
-    public void method755(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
+    public void renderAtPoint(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
         anInt2868++;
         Model class40_sub5_sub17_sub5 = getRotatedModel(-38);
         if(class40_sub5_sub17_sub5 != null) {
-            anInt2861 = class40_sub5_sub17_sub5.anInt2861;
-            class40_sub5_sub17_sub5.method755(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
+            modelHeight = class40_sub5_sub17_sub5.modelHeight;
+            class40_sub5_sub17_sub5.renderAtPoint(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
         }
     }
 

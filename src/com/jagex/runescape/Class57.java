@@ -2,6 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.media.VertexNormal;
 
 public class Class57 {
     public static int anInt1330;

@@ -3,6 +3,7 @@ package com.jagex.runescape.cache.def;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
+import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;

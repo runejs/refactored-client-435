@@ -7,6 +7,7 @@ import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.tile.WallDecoration;
 
 public class UnderlayDefinition extends SubNode {
     public static int openSecondaryWidgetId = -1;

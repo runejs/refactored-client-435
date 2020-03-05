@@ -2,8 +2,12 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
+import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.util.Signlink;
 
@@ -55,7 +59,7 @@ public class Class61 {
             aClass1_1432 = null;
         SubNode.aClass68_2091.method1046((byte) 90);
         FloorDecoration.aClass40_Sub5_Sub14_Sub2_593.drawImage(0, 0);
-        ActorDefinition.anIntArray2386 = R3D.method708(ActorDefinition.anIntArray2386);
+        ActorDefinition.anIntArray2386 = Rasterizer3D.method708(ActorDefinition.anIntArray2386);
     }
 
     public static void method997(int arg0) {

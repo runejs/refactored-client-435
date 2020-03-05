@@ -5,10 +5,15 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.TypeFace;
+import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.media.Rasterizer;
+import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.InteractiveObject;
+import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class ChatBox {

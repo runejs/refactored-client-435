@@ -2,9 +2,12 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.VarbitDefinition;
+import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
+import com.jagex.runescape.util.SignlinkNode;
 
 import java.awt.*;
 
@@ -24,12 +27,11 @@ public abstract class Class68 {
     public static int anInt1637 = 0;
     public static RSString aClass1_1638;
     public static RSString aClass1_1639 = RSString.CreateString("@or2@");
-    public static RSString aClass1_1640;
+    public static RSString aClass1_1640 = RSString.CreateString("Cancel");
 
     static {
         aClass1_1638 = aClass1_1636;
         aClass1_1628 = aClass1_1633;
-        aClass1_1640 = RSString.CreateString("Cancel");
         aClass1_1635 = aClass1_1640;
     }
 
