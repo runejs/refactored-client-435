@@ -67,8 +67,8 @@ public class Npc extends Actor {
                     while(Class34.method416((byte) -104)) {
                         /* empty */
                     }
-                    for(int i = 0; i < Class40_Sub5_Sub17_Sub3.aBooleanArray3056.length; i++)
-                        Class40_Sub5_Sub17_Sub3.aBooleanArray3056[i] = false;
+                    for(int i = 0; i < Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus.length; i++)
+                        Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[i] = false;
                 }
                 Class40_Sub5_Sub6.putHackCheckPacket(-12, 205, Class32.packetBuffer);
                 synchronized(Class12.mouseCapturer.objectLock) {
@@ -163,7 +163,7 @@ public class Npc extends Actor {
                 }
                 if(InteractiveObject.anInt487 > 0)
                     InteractiveObject.anInt487--;
-                if(Class40_Sub5_Sub17_Sub3.aBooleanArray3056[96] || Class40_Sub5_Sub17_Sub3.aBooleanArray3056[97] || Class40_Sub5_Sub17_Sub3.aBooleanArray3056[98] || Class40_Sub5_Sub17_Sub3.aBooleanArray3056[99])
+                if(Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[96] || Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[97] || Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[98] || Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[99])
                     HashTable.aBoolean565 = true;
                 if(HashTable.aBoolean565 && InteractiveObject.anInt487 <= 0) {
                     Class13.anInt415++;

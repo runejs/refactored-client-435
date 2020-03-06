@@ -23,16 +23,7 @@ import java.awt.event.KeyListener;
 
 public class KeyFocusListener implements KeyListener, FocusListener {
     public static RSString aClass1_1271 = RSString.CreateString("Benutzername: ");
-    public static int anInt1272;
-    public static int anInt1273;
-    public static int anInt1274;
-    public static int anInt1275;
-    public static int anInt1276;
-    public static int anInt1277;
     public static Class45 aClass45_1278 = new Class45();
-    public static int anInt1279;
-    public static int anInt1280;
-    public static int anInt1281;
     public static int[] anIntArray1282 = new int[256];
     public static RSString aClass1_1283 = RSString.CreateString("@yel@");
     public static RSString aClass1_1284 = RSString.CreateString("compass");
@@ -71,7 +62,6 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if(Class45.anInt1075 == 2)
             Class37.aClass40_Sub5_Sub14_Sub4Array878[4 + OverlayDefinition.anInt2319 / 100].drawImage(-8 + Class40_Sub11.anInt2163 - 4, -4 + Class40_Sub5_Sub1.anInt2276 - 8);
         if(arg0 == -15454) {
-            anInt1276++;
             if(GroundItemTile.anInt1376 != -1) {
                 Renderable.handleSequences(29378, GroundItemTile.anInt1376);
                 Class40_Sub5_Sub6.drawInterface(0, GroundItemTile.anInt1376, 334, (byte) -5, 0, 4, 512);
@@ -98,7 +88,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                     colour = 0xff0000;
                 if(Class52.fps < 20 && !VertexNormal.lowMemory)
                     colour = 0xff0000;
-//                Class53.fontNormal.method687((Class40_Sub5_Sub17_Sub6.method832(-88, new RSString[]{Class61.aClass1_1446, HashTable.method334(Class52.fps, -1)})), x, y, colour);
+                //                Class53.fontNormal.method687((Class40_Sub5_Sub17_Sub6.method832(-88, new RSString[]{Class61.aClass1_1446, HashTable.method334(Class52.fps, -1)})), x, y, colour);
                 WallDecoration.fontNormal.drawStringRight("Fps: " + Class52.fps, x, y, colour);
                 colour = 0xffff00;
                 y += 15;
@@ -108,7 +98,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                     colour = 0xff0000;
                 if(memoryUsed < 65536 && !VertexNormal.lowMemory)
                     colour = 0xff0000;
-//                Class53.fontNormal.method687((Class40_Sub5_Sub17_Sub6.method832(81, new RSString[]{Class40_Sub7.aClass1_2129, HashTable.method334(memoryUsed, arg0 ^ 0x3c5d), RSCanvas.aClass1_68})), x, y, colour);
+                //                Class53.fontNormal.method687((Class40_Sub5_Sub17_Sub6.method832(81, new RSString[]{Class40_Sub7.aClass1_2129, HashTable.method334(memoryUsed, arg0 ^ 0x3c5d), RSCanvas.aClass1_68})), x, y, colour);
                 WallDecoration.fontNormal.drawStringRight("Mem: " + memoryUsed + "k", x, y, colour);
                 y += 15;
                 if(Class38.aBoolean893) {
@@ -140,8 +130,6 @@ public class KeyFocusListener implements KeyListener, FocusListener {
     }
 
     public static int method955(CacheIndex arg0, byte arg1) {
-
-        anInt1277++;
         int i = 0;
         if(arg0.method194(Class27.aClass1_638, Class8.aClass1_305, -1234))
             i++;
@@ -188,98 +176,87 @@ public class KeyFocusListener implements KeyListener, FocusListener {
     }
 
     public static RSString method956(int arg0, Buffer arg1) {
-
         if(arg0 < 62)
             aClass45_1278 = null;
-        anInt1279++;
         return Class22.method307(arg1, -1, 32767);
-
     }
 
     public static CacheIndex_Sub1 method957(int arg0, boolean arg1, boolean arg2, byte arg3, boolean arg4) {
-
-        anInt1272++;
         Class56 class56 = null;
         if(SpotAnimDefinition.aClass67_2298 != null)
             class56 = new Class56(arg0, SpotAnimDefinition.aClass67_2298, Class40_Sub5_Sub6.aClass67Array2436[arg0], 1000000);
         if(arg3 < 116)
             method955(null, (byte) -86);
         return new CacheIndex_Sub1(class56, VarbitDefinition.aClass56_2356, arg0, arg2, arg4, arg1);
-
     }
 
     public void keyTyped(KeyEvent arg0) {
-
         arg0.consume();
-        anInt1275++;
-
     }
 
     public void focusGained(FocusEvent arg0) {
-
-        anInt1281++;
-
     }
 
     public synchronized void focusLost(FocusEvent arg0) {
-        anInt1274++;
-        if(Class59.aKeyFocusListener_1392 != null)
+        if(Class59.keyFocusListener != null)
             GameObjectDefinition.anInt2543 = -1;
     }
 
-    public synchronized void keyPressed(KeyEvent arg0) {
-        anInt1273++;
-        if(Class59.aKeyFocusListener_1392 != null) {
+    public synchronized void keyPressed(KeyEvent keyEvent) {
+        if(Class59.keyFocusListener != null) {
             Class49.anInt1147 = 0;
-            int i = arg0.getKeyCode();
-            if(i >= 0 && HuffmanEncoding.anIntArray1564.length > i) {
-                i = HuffmanEncoding.anIntArray1564[i];
-                if((0x80 & i) != 0)
-                    i = -1;
+            int obfuscatedKeyCode = keyEvent.getKeyCode();
+            int eventKeyCode = keyEvent.getKeyCode();
+            if(obfuscatedKeyCode >= 0 && HuffmanEncoding.anIntArray1564.length > obfuscatedKeyCode) {
+                obfuscatedKeyCode = HuffmanEncoding.anIntArray1564[obfuscatedKeyCode];
+                if((0x80 & obfuscatedKeyCode) != 0)
+                    obfuscatedKeyCode = -1;
             } else
-                i = -1;
-            int i_4_;
-            if(i == 85 || i == 80 || i == 84 || i == 0 || i == 101)
-                i_4_ = -1;
+                obfuscatedKeyCode = -1;
+            int keyChar;
+            for(int i = 0; i < HuffmanEncoding.anIntArray1564.length; i++) {
+                System.out.println(HuffmanEncoding.anIntArray1564[i] + ": " + i);
+                System.out.println((int)'\n');
+            }
+
+            if(eventKeyCode == KeyEvent.VK_BACK_SPACE || eventKeyCode == KeyEvent.VK_TAB || eventKeyCode == 0xA /* Unused key */ || eventKeyCode == KeyEvent.VK_ESCAPE || eventKeyCode == KeyEvent.VK_DELETE)
+                keyChar = -1;
             else
-                i_4_ = Class51.method938(107, arg0);
-            if(GameObjectDefinition.anInt2543 >= 0 && i >= 0) {
-                RSString.anIntArray1706[GameObjectDefinition.anInt2543] = i;
+                keyChar = Class51.getKeyChar(keyEvent);
+            if(GameObjectDefinition.anInt2543 >= 0 && obfuscatedKeyCode >= 0) {
+                RSString.keyCodes[GameObjectDefinition.anInt2543] = obfuscatedKeyCode;
                 GameObjectDefinition.anInt2543 = 0x7f & GameObjectDefinition.anInt2543 + 1;
                 if(GameObjectDefinition.anInt2543 == Class40_Sub13.anInt2183)
                     GameObjectDefinition.anInt2543 = -1;
             }
-            if(i >= 0 || i_4_ >= 0) {
+            if(obfuscatedKeyCode >= 0 || keyChar >= 0) {
                 int i_5_ = 0x7f & 1 + IdentityKit.anInt2598;
                 if(Class59.anInt1389 != i_5_) {
-                    Class40_Sub6.anIntArray2113[(IdentityKit.anInt2598)] = i;
-                    Class40_Sub5_Sub13.anIntArray2764[(IdentityKit.anInt2598)] = i_4_;
+                    Class40_Sub6.anIntArray2113[(IdentityKit.anInt2598)] = obfuscatedKeyCode;
+                    Class40_Sub5_Sub13.anIntArray2764[(IdentityKit.anInt2598)] = keyChar;
                     IdentityKit.anInt2598 = i_5_;
                 }
             }
         }
-        arg0.consume();
-
+        keyEvent.consume();
     }
 
     public synchronized void keyReleased(KeyEvent arg0) {
-
-        if(Class59.aKeyFocusListener_1392 != null) {
+        if(Class59.keyFocusListener != null) {
             Class49.anInt1147 = 0;
             int i = arg0.getKeyCode();
+
             if(i < 0 || HuffmanEncoding.anIntArray1564.length <= i)
                 i = -1;
             else
                 i = ~0x80 & HuffmanEncoding.anIntArray1564[i];
             if(GameObjectDefinition.anInt2543 >= 0 && i >= 0) {
-                RSString.anIntArray1706[GameObjectDefinition.anInt2543] = i ^ 0xffffffff;
+                RSString.keyCodes[GameObjectDefinition.anInt2543] = i ^ 0xffffffff;
                 GameObjectDefinition.anInt2543 = 0x7f & 1 + GameObjectDefinition.anInt2543;
                 if(Class40_Sub13.anInt2183 == GameObjectDefinition.anInt2543)
                     GameObjectDefinition.anInt2543 = -1;
             }
         }
-        anInt1280++;
         arg0.consume();
-
     }
 }

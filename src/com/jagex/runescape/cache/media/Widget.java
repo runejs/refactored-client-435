@@ -195,21 +195,21 @@ public class Widget extends SubNode {
     }
 
     public static void method639(int arg0) {
-        synchronized(Class59.aKeyFocusListener_1392) {
+        synchronized(Class59.keyFocusListener) {
             Class59.anInt1389 = Class52.anInt1214;
             if(GameObjectDefinition.anInt2543 < 0) {
                 for(int i = 0; i < 112; i++) {
-                    Class40_Sub5_Sub17_Sub3.aBooleanArray3056[i] = false;
+                    Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[i] = false;
                 }
                 GameObjectDefinition.anInt2543 = Class40_Sub13.anInt2183;
             } else {
                 while(GameObjectDefinition.anInt2543 != Class40_Sub13.anInt2183) {
-                    int i = RSString.anIntArray1706[Class40_Sub13.anInt2183];
+                    int i = RSString.keyCodes[Class40_Sub13.anInt2183];
                     Class40_Sub13.anInt2183 = 0x7f & Class40_Sub13.anInt2183 + 1;
                     if(i < 0) {
-                        Class40_Sub5_Sub17_Sub3.aBooleanArray3056[i ^ 0xffffffff] = false;
+                        Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[i ^ 0xffffffff] = false;
                     } else {
-                        Class40_Sub5_Sub17_Sub3.aBooleanArray3056[i] = true;
+                        Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[i] = true;
                     }
                 }
             }
@@ -250,8 +250,8 @@ public class Widget extends SubNode {
                 /* empty */
             }
         }
-        arg0.addKeyListener(Class59.aKeyFocusListener_1392);
-        arg0.addFocusListener(Class59.aKeyFocusListener_1392);
+        arg0.addKeyListener(Class59.keyFocusListener);
+        arg0.addFocusListener(Class59.keyFocusListener);
     }
 
     public static void method645(byte arg0) {

@@ -11,7 +11,6 @@ import java.awt.event.KeyEvent;
 
 public class Class51 {
     public static int mapZoomOffset = 0;
-    public static int anInt1188;
     public static int anInt1189;
     public static int anInt1190;
     public static int anInt1191;
@@ -49,16 +48,11 @@ public class Class51 {
         aClass1_1196 = aClass1_1209;
     }
 
-    public static int method938(int arg0, KeyEvent arg1) {
-
-        anInt1188++;
-        if(arg0 <= 86)
-            method940(-15, null, false, null);
-        int i = arg1.getKeyChar();
-        if(i <= 0 || i >= 256)
-            i = -1;
-        return i;
-
+    public static int getKeyChar(KeyEvent arg1) {
+        int keyChar = arg1.getKeyChar();
+        if(keyChar <= 0 || keyChar >= 256)
+            keyChar = -1;
+        return keyChar;
     }
 
     public static void method939(int arg0) {

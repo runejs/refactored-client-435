@@ -316,7 +316,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                         Widget widget = widgets[y];
                                         if(widget.disabledText != null) {
                                             String text = widget.disabledText.toString().toLowerCase();
-                                            if(widget.disabledText.toString().toLowerCase().contains("spin")) {
+                                            if(widget.disabledText.toString().toLowerCase().contains("bank")) {
                                                 System.out.println(qq + " contains " + text);
                                             }
                                         }

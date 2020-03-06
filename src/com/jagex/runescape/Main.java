@@ -659,7 +659,6 @@ public class Main extends RSApplet {
         Renderable.anInt2868 = 0;
         Class43.anInt1018 = 0;
         Class13.anInt400 = 0;
-        Class51.anInt1188 = 0;
         UnderlayDefinition.anInt2580 = 0;
         Class37.anInt866 = 0;
         Class40_Sub3.anInt2034 = 0;
@@ -730,11 +729,9 @@ public class Main extends RSApplet {
         Wall.anInt345 = 0;
         FloorDecoration.anInt592 = 0;
         ISAAC.anInt514 = 0;
-        KeyFocusListener.anInt1274 = 0;
         Class24.anInt586 = 0;
         Class40_Sub3.anInt2022 = 0;
         Class42.anInt999 = 0;
-        KeyFocusListener.anInt1279 = 0;
         Node.anInt971 = 0;
         Class52.anInt1237 = 0;
         Class44.anInt1050 = 0;
@@ -757,7 +754,6 @@ public class Main extends RSApplet {
         RSCanvas.anInt56 = 0;
         Class49.anInt1142 = 0;
         Class37.anInt862 = 0;
-        KeyFocusListener.anInt1277 = 0;
         Class59.anInt1380 = 0;
         Class51.anInt1192 = 0;
         RSCanvas.anInt52 = 0;
@@ -782,7 +778,6 @@ public class Main extends RSApplet {
         Class56.anInt1326 = 0;
         VarbitDefinition.anInt2371 = 0;
         Class44.anInt1036 = 0;
-        KeyFocusListener.anInt1275 = 0;
         Class44.anInt1044 = 0;
         Class43.anInt1016 = 0;
         Class40_Sub5_Sub17_Sub1.anInt2959 = 0;
@@ -808,10 +803,8 @@ public class Main extends RSApplet {
         Class42.anInt991 = 0;
         Landscape.anInt1182 = 0;
         Class40_Sub5_Sub15.anInt2783 = 0;
-        KeyFocusListener.anInt1273 = 0;
         Class13.anInt409 = 0;
         Class29.anInt669 = 0;
-        KeyFocusListener.anInt1281 = 0;
         Class22.anInt543 = 0;
         Class13.anInt401 = 0;
         Class22.anInt539 = 0;
@@ -830,7 +823,6 @@ public class Main extends RSApplet {
         Node.anInt962 = 0;
         Class52.anInt1224 = 0;
         Class52.anInt1240 = 0;
-        KeyFocusListener.anInt1276 = 0;
         Landscape.anInt1179 = 0;
         Class40_Sub5_Sub17_Sub1.anInt2970 = 0;
         SubNode.anInt2089 = 0;
@@ -899,7 +891,6 @@ public class Main extends RSApplet {
         Class37.anInt861 = 0;
         Class34.anInt803 = 0;
         SubNode.anInt2096 = 0;
-        KeyFocusListener.anInt1280 = 0;
         Class56.anInt1317 = 0;
         Class40_Sub5_Sub15.anInt2785 = 0;
         Class37.anInt865 = 0;
@@ -924,7 +915,6 @@ public class Main extends RSApplet {
         Class24.anInt576 = 0;
         OverlayDefinition.anInt2343 = 0;
         WallDecoration.anInt1256 = 0;
-        KeyFocusListener.anInt1272 = 0;
         CacheIndex.anInt230 = 0;
         VarbitDefinition.anInt2360 = 0;
         Class42.anInt1004 = 0;

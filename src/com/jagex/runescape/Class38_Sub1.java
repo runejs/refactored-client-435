@@ -357,7 +357,7 @@ public class Class38_Sub1 extends Class38 {
                 Class32.packetBuffer.putByte(3 + (i_12_ + i_12_));
             }
             Class32.packetBuffer.putShortLE(i_24_ + Class26.anInt635);
-            Class32.packetBuffer.putInvertedByte(Class40_Sub5_Sub17_Sub3.aBooleanArray3056[82] ? 1 : 0);
+            Class32.packetBuffer.putInvertedByte(Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[82] ? 1 : 0);
             Class32.packetBuffer.putShortLE(SpotAnimDefinition.anInt2307 + i_25_);
             VarbitDefinition.anInt2366 = Class24.anIntArray581[0];
             Class55.anInt1304 = Wall.anIntArray351[0];

@@ -14,7 +14,7 @@ public class RSString implements Interface1 {
     public static Cache aClass9_1684;
     public static int anInt1690 = 0;
     public static CacheIndex aCacheIndex_1705;
-    public static int[] anIntArray1706 = new int[128];
+    public static int[] keyCodes = new int[128];
     public static int anInt1711 = 50;
     public static byte[][] aByteArrayArray1715;
     public static RSString aClass1_1717 = CreateString("purple:");
@@ -92,7 +92,7 @@ public class RSString implements Interface1 {
         aClass68_1665 = null;
         aClass1_1716 = null;
         aClass1_1703 = null;
-        anIntArray1706 = null;
+        keyCodes = null;
     }
 
     /*synthetic*/
@@ -585,7 +585,7 @@ public class RSString implements Interface1 {
         class1.length = length;
         class1.chars = new byte[length];
         if(arg0 != -4305)
-            anIntArray1706 = null;
+            keyCodes = null;
         for(int i = 0; i < length; i++) {
             byte i_25_ = chars[i];
             if(i_25_ == 95) {
