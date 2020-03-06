@@ -78,11 +78,11 @@ public class FloorDecoration {
             for(int i_4_ = 0; i_4_ < 4; i_4_++) {
                 for(int i_5_ = 0; i_5_ < 13; i_5_++) {
                     for(int i_6_ = 0; i_6_ < 13; i_6_++) {
-                        int i_7_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
+                        int i_7_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
                         if(i_7_ != 1)
                             OverlayDefinition.anIntArrayArrayArray2333[i_4_][i_5_][i_6_] = -1;
                         else
-                            OverlayDefinition.anIntArrayArrayArray2333[i_4_][i_5_][i_6_] = Cache.outgoingbuffer.putBits(26, (byte) -65);
+                            OverlayDefinition.anIntArrayArrayArray2333[i_4_][i_5_][i_6_] = Cache.outgoingbuffer.getBits(26, (byte) -65);
                     }
                 }
             }

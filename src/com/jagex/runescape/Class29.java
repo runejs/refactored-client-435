@@ -55,7 +55,7 @@ public class Class29 {
     public static void method373(byte arg0) {
 
         anInt679++;
-        int i = Cache.outgoingbuffer.putBits(8, (byte) -65);
+        int i = Cache.outgoingbuffer.getBits(8, (byte) -65);
         if(i < Class60.anInt1407) {
             for(int i_0_ = i; Class60.anInt1407 > i_0_; i_0_++)
                 CacheIndex.anIntArray225[Class17.anInt460++] = Class57.anIntArray1334[i_0_];
@@ -68,12 +68,12 @@ public class Class29 {
         for(int i_1_ = 0; (i > i_1_); i_1_++) {
             int i_2_ = Class57.anIntArray1334[i_1_];
             Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_2_]);
-            int i_3_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
+            int i_3_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
             if(i_3_ == 0) {
                 Class57.anIntArray1334[Class60.anInt1407++] = i_2_;
                 class40_sub5_sub17_sub4_sub1.anInt3134 = Node.pulseCycle;
             } else {
-                int i_4_ = Cache.outgoingbuffer.putBits(2, (byte) -65);
+                int i_4_ = Cache.outgoingbuffer.getBits(2, (byte) -65);
                 if(i_4_ == 0) {
                     Class57.anIntArray1334[Class60.anInt1407++] = i_2_;
                     class40_sub5_sub17_sub4_sub1.anInt3134 = Node.pulseCycle;
@@ -81,19 +81,19 @@ public class Class29 {
                 } else if(i_4_ == 1) {
                     Class57.anIntArray1334[Class60.anInt1407++] = i_2_;
                     class40_sub5_sub17_sub4_sub1.anInt3134 = Node.pulseCycle;
-                    int i_5_ = Cache.outgoingbuffer.putBits(3, (byte) -65);
+                    int i_5_ = Cache.outgoingbuffer.getBits(3, (byte) -65);
                     class40_sub5_sub17_sub4_sub1.method782(i_5_, (byte) -96, false);
-                    int i_6_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
+                    int i_6_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
                     if(i_6_ == 1)
                         Class24.anIntArray578[Actor.anInt3153++] = i_2_;
                 } else if(i_4_ == 2) {
                     Class57.anIntArray1334[Class60.anInt1407++] = i_2_;
                     class40_sub5_sub17_sub4_sub1.anInt3134 = Node.pulseCycle;
-                    int i_7_ = Cache.outgoingbuffer.putBits(3, (byte) -65);
+                    int i_7_ = Cache.outgoingbuffer.getBits(3, (byte) -65);
                     class40_sub5_sub17_sub4_sub1.method782(i_7_, (byte) -96, true);
-                    int i_8_ = Cache.outgoingbuffer.putBits(3, (byte) -65);
+                    int i_8_ = Cache.outgoingbuffer.getBits(3, (byte) -65);
                     class40_sub5_sub17_sub4_sub1.method782(i_8_, (byte) -96, true);
-                    int i_9_ = Cache.outgoingbuffer.putBits(1, (byte) -65);
+                    int i_9_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
                     if(i_9_ == 1)
                         Class24.anIntArray578[Actor.anInt3153++] = i_2_;
                 } else if(i_4_ == 3)
