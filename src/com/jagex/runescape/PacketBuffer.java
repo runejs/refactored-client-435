@@ -153,7 +153,7 @@ public class PacketBuffer extends Buffer {
         return 0xff & (buffer[currentPosition++] - inCipher.rand());
     }
 
-    public int putBits(int arg0, byte arg1) {
+    public int getBits(int arg0, byte arg1) {
         int i = bitoffset >> 3;
         if(arg1 != -65)
             str_Please_Wait = null;

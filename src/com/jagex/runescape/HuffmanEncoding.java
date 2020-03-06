@@ -218,6 +218,7 @@ public class HuffmanEncoding {
         return Class48.method927(i_13_, arg0, true, i);
     }
 
+    // parse client scripts
     public static int method1029(int arg0, boolean arg1, Widget arg2) {
         if(arg2.clientScripts == null || (arg0 >= arg2.clientScripts.length))
             return -2;
