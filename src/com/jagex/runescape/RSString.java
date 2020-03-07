@@ -373,11 +373,9 @@ public class RSString implements Interface1 {
         return class1;
     }
 
-    public RSString prepend(RSString arg0, int arg1, int arg2) {
+    public RSString prepend(RSString arg0, int arg2) {
         if(!aBoolean1675)
             throw new IllegalArgumentException();
-        if(arg1 != 16039)
-            method58((byte) -74);
         if(arg2 > length)
             throw new IllegalArgumentException();
         anInt1696 = 0;
@@ -502,7 +500,7 @@ public class RSString implements Interface1 {
 
     public byte[] method80(int arg0) {
         if(arg0 != 0)
-            prepend(null, -108, -121);
+            prepend(null, -121);
         byte[] is = new byte[length];
         Class18.method278(chars, 0, is, 0, length);
         return is;

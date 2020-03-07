@@ -18,4 +18,16 @@ public class TextTagNode {
     public void setNext(TextTagNode node) {
         this.next = node;
     }
+
+    public TextTagNode getNext() {
+        return this.next;
+    }
+
+    public TextTagNode getPrevious() {
+        return this.previous;
+    }
+
+    public void setPrevious(TextTagNode node) {
+        this.previous = node;
+    }
 }

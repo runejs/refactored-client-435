@@ -199,6 +199,7 @@ public class TypeFace extends Rasterizer {
                             if(effect.startsWith(endColor, 0)) {
                                 stylingTag = text.substring(oldindex, idx + 1);
                                 resultText.add(stylingTag);
+                                stylingQueue.pop();
                                 stylingTag = null;
                             }
                             continue;
@@ -229,9 +230,11 @@ public class TypeFace extends Rasterizer {
                         i_3_ = i_4_;
                         i_4_ = -1;
                         i -= i_5_;
-                        if(stylingTag != null && i_3_ > 4) {
+                        if(!stylingQueue.isEmpty() && i_3_ > 4) {
+                            stylingQueue.applyAll(resultText);
+                        } else if(stylingTag != null && i_3_ > 4) {
                             i_3_ -= 5;
-                            resultText.prepend(stylingTag, 16039, i_3_);
+                            resultText.prepend(stylingTag, i_3_);
                         }
                     }
                 }
