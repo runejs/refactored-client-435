@@ -377,10 +377,10 @@ public class WallDecoration {
                     i += 30;
                     int i_95_ = 120;
                     Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(i_94_ - 73, i_95_ - 20);
-                    arg1.method672(Class52.aClass1_1223, i_94_ + -73, -20 + i_95_, 144, 40, 16777215, true, 1, 1, 0);
+                    arg1.drawText(Class52.aClass1_1223, i_94_ + -73, -20 + i_95_, 144, 40, 16777215, true, 1, 1, 0);
                     i_94_ = 260;
                     Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(i_94_ - 73, i_95_ + -20);
-                    arg1.method672(Class42.aClass1_1011, -73 + i_94_, -20 + i_95_, 144, 40, 16777215, true, 1, 1, 0);
+                    arg1.drawText(Class42.aClass1_1011, -73 + i_94_, -20 + i_95_, 144, 40, 16777215, true, 1, 1, 0);
                 } else if(Class26.anInt622 == 2) {
                     int i = 40;
                     int i_90_ = 100;

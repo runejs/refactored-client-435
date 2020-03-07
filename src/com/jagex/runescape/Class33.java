@@ -27,7 +27,7 @@ public class Class33 {
 
 
     public static synchronized void method402(boolean arg0) {
-        if(Class24.method340(-122)) {
+        if(Class24.method340()) {
             Class22.method308(-110);
             Class26.aBoolean618 = arg0;
             Class22_Sub1.aCacheIndex_1855 = null;
@@ -36,7 +36,7 @@ public class Class33 {
     }
 
     public static synchronized void method403(int arg0, boolean arg1, int arg2, int arg3, CacheIndex arg4, int arg5, int arg6, boolean arg7) {
-        if(Class24.method340(5)) {
+        if(Class24.method340()) {
             Main.aBoolean1790 = arg7;
             CacheIndex.anInt255 = arg2;
             Class40_Sub5_Sub17_Sub1.anInt3004 = arg5;
@@ -255,12 +255,12 @@ public class Class33 {
     }
 
     public static synchronized void method405(int arg0, int arg1) {
-        if(Class24.method340(arg0 + -16923)) {
+        if(Class24.method340()) {
             OverlayDefinition.method557(arg1, 17098);
             Class22_Sub1.aCacheIndex_1855 = null;
             Class26.aBoolean618 = false;
             if(arg0 != 16969)
-                method414(false, -11, -36, -55, 122, null, 102);
+                method414(false, -11, -36, -55, 122, null);
         }
     }
 
@@ -377,7 +377,7 @@ public class Class33 {
     }
 
     public static synchronized void method412(boolean arg0, CacheIndex arg1, int arg2, byte arg3, RSString arg4, int arg5, RSString arg6, int arg7) {
-        if(Class24.method340(70)) {
+        if(Class24.method340()) {
             if(arg3 != 66)
                 method412(false, null, 120, (byte) -44, null, 71, null, -13);
             int i = arg1.method183(0, arg4);
@@ -387,7 +387,7 @@ public class Class33 {
     }
 
     public static synchronized void method413(byte arg0) {
-        if(Class24.method340(-124)) {
+        if(Class24.method340()) {
             if(Class26.aBoolean618) {
                 byte[] is = RSString.method74(Class40_Sub5_Sub17_Sub1.anInt3004, Class22_Sub1.aCacheIndex_1855, Class8.anInt289, -118, Class40_Sub6.anInt2110);
                 if(is != null) {
@@ -408,10 +408,10 @@ public class Class33 {
         }
     }
 
-    public static synchronized void method414(boolean arg0, int arg1, int arg2, int arg3, int arg4, CacheIndex arg5, int arg6) {
-        if(Class24.method340(arg6 ^ ~0xf)) {
+    public static synchronized void method414(boolean arg0, int arg1, int arg2, int arg3, int arg4, CacheIndex arg5) {
+        if(Class24.method340()) {
             Class26.aBoolean618 = true;
-            CacheIndex_Sub1.anInt1806 = arg6;
+            CacheIndex_Sub1.anInt1806 = -1;
             CacheIndex.anInt255 = -1;
             OverlayDefinition.anInt2342 = arg3;
             Class40_Sub5_Sub17_Sub1.anInt3004 = arg4;

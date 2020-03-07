@@ -162,18 +162,6 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
         }
     }
 
-    public static RSString method777(int arg0, int arg1) {
-
-        anInt3070++;
-        RSString class1 = new RSString();
-        class1.chars = new byte[arg1];
-        if(arg0 != -18596)
-            anInt3065 = 36;
-        class1.length = 0;
-        return class1;
-
-    }
-
     public static void method778(boolean arg0, HuffmanEncoding arg1) {
         IdentityKit.aHuffmanEncoding_2590 = arg1;
         anInt3063++;

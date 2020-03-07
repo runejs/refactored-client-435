@@ -124,6 +124,13 @@ public class RSString implements Interface1 {
         return class1.method66();
     }
 
+    public static RSString createString(int length) {
+        RSString string = new RSString();
+        string.chars = new byte[length];
+        string.length = 0;
+        return string;
+    }
+
     public RSString substring(int arg1) {
         return substring(arg1, length);
     }
@@ -366,7 +373,7 @@ public class RSString implements Interface1 {
         return class1;
     }
 
-    public RSString method69(RSString arg0, int arg1, int arg2) {
+    public RSString prepend(RSString arg0, int arg1, int arg2) {
         if(!aBoolean1675)
             throw new IllegalArgumentException();
         if(arg1 != 16039)
@@ -400,7 +407,7 @@ public class RSString implements Interface1 {
         return class1;
     }
 
-    public RSString method72(RSString arg0) {
+    public RSString add(RSString arg0) {
         if(!aBoolean1675)
             throw new IllegalArgumentException();
         anInt1696 = 0;
@@ -410,9 +417,9 @@ public class RSString implements Interface1 {
             while((i < length + arg0.length)) {
                 i += i;
             }
-            byte[] is = new byte[i];
-            Class18.method278(chars, 0, is, 0, length);
-            chars = is;
+            byte[] newChars = new byte[i];
+            Class18.method278(chars, 0, newChars, 0, length);
+            chars = newChars;
         }
         Class18.method278(arg0.chars, 0, chars, length, arg0.length);
         length += arg0.length;
@@ -495,7 +502,7 @@ public class RSString implements Interface1 {
 
     public byte[] method80(int arg0) {
         if(arg0 != 0)
-            method69(null, -108, -121);
+            prepend(null, -108, -121);
         byte[] is = new byte[length];
         Class18.method278(chars, 0, is, 0, length);
         return is;

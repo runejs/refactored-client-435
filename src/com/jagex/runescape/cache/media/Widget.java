@@ -749,7 +749,7 @@ public class Widget extends SubNode {
                                                     break;
                                                 }
                                                 i -= 2;
-                                                Class57.method975((Class67.anIntArray1588[i + 1]), (byte) 110, (Class67.anIntArray1588[i]));
+                                                Class57.method975((Class67.anIntArray1588[i + 1]), (Class67.anIntArray1588[i]));
                                             }
                                         } else if(i_3_ < 3400) {
                                             if(i_3_ != 3300) {

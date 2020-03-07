@@ -235,7 +235,7 @@ public class Main extends RSApplet {
                                         i_21_ = 16777215;
                                 }
                                 class1 = (SceneTile.method532((byte) 20, widget, class1));
-                                class40_sub5_sub14_sub1.method672(class1, i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_21_, widget.textShadowed, widget.xTextAlignment, widget.yTextAlignment, widget.lineHeight);
+                                class40_sub5_sub14_sub1.drawText(class1, i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_21_, widget.textShadowed, widget.xTextAlignment, widget.yTextAlignment, widget.lineHeight);
                             }
                         } else if(widget.type == 5) {
                             if(widget.isIf3) {
@@ -1358,7 +1358,7 @@ public class Main extends RSApplet {
         Class68_Sub1.method1047();
         GroundItemTile.method981();
         Filter.method268();
-        Class57.method974(arg0 + -28128);
+        Class57.method974();
         Class41.method881();
         Class40_Sub13.method877(0);
         Class21.method289();

@@ -64,10 +64,7 @@ public class Class24 {
 
     }
 
-    public static boolean method340(int arg0) {
-
-        int i = -98 % ((-50 - arg0) / 51);
-        anInt584++;
+    public static boolean method340() {
         return Class5.aClass22_189 != null;
 
     }

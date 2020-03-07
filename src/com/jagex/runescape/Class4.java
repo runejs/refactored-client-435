@@ -106,7 +106,7 @@ public class Class4 {
             if(Class35.anInt1733 < 0)
                 Class35.anInt1733 = 0;
             if(Class35.anInt1733 == 0 && RSCanvas.anInt60 != 0 && GameFrame.anInt1457 != -1)
-                Class33.method414(false, 0, GameFrame.anInt1457, RSCanvas.anInt60, 0, Class55.aClass6_Sub1_1286, -1);
+                Class33.method414(false, 0, GameFrame.anInt1457, RSCanvas.anInt60, 0, Class55.aClass6_Sub1_1286);
         }
     }
 }

@@ -103,7 +103,7 @@ public class Class52 {
             arg2.method688(Class40_Sub5_Sub15.aClass1_2786, 324, 41, 16776960, true);
         if(arg0 == 2)
             arg2.method688(Class30.aClass1_682, 324, 41, 16711680, true);
-        arg2.method672(Class22_Sub1.aClass1_1865, 417, 17, 85, 25, 16777215, true, 1, 1, 0);
+        arg2.drawText(Class22_Sub1.aClass1_1865, 417, 17, 85, 25, 16777215, true, 1, 1, 0);
         int i = -50 % ((arg1 - 82) / 38);
         try {
             Graphics graphics = GameFrame.aCanvas1469.getGraphics();

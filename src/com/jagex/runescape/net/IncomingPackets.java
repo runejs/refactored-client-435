@@ -673,11 +673,11 @@ public class IncomingPackets {
                 return true;
             }
             if(Class57.incomingPacket == 40) {
-                int i_61_ = Cache.outgoingbuffer.getMediumBE();
-                int i_62_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
-                if(i_62_ == 65535)
-                    i_62_ = -1;
-                Class57.method975(i_61_, (byte) 110, i_62_);
+                int previousSongId = Cache.outgoingbuffer.getMediumBE();
+                int songId = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
+                if(songId == 65535)
+                    songId = -1;
+                Class57.method975(previousSongId, songId);
                 Class57.incomingPacket = -1;
                 return true;
             }
