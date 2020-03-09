@@ -1,6 +1,8 @@
 package com.jagex.runescape.cache.media;
 
 import com.jagex.runescape.RSString;
+import com.jagex.runescape.cache.media.TextUtils.TextColourNode;
+import com.jagex.runescape.cache.media.TextUtils.TextColourQueue;
 import com.jagex.runescape.cache.media.TextUtils.TextTagNode;
 import com.jagex.runescape.cache.media.TextUtils.TextTagQueue;
 import com.jagex.runescape.media.Rasterizer;
@@ -73,6 +75,7 @@ public class TypeFace extends Rasterizer {
     private boolean strikethrough;
     private int anInt2919;
     private int anInt2920;
+    private TextColourQueue textcolour;
 
     public TypeFace(int[] arg0, int[] arg1, int[] arg2, int[] arg3, byte[][] arg4) {
         characterDefaultHeight = 0;
@@ -809,50 +812,48 @@ public class TypeFace extends Rasterizer {
     }
 
     public void parseStringForEffects(String string) {
-        do {
-            try {
-                if(string.startsWith(startColor)) {
-                    String color = string.substring(4);
-                    textColor = color.length() < 6 ? Color.decode(color).getRGB() : Integer.parseInt(color, 16);
-
-                } else if(string.equals(endColor)) {
-                    textColor = defaultTextColor;
-                } else if(string.startsWith(startTrans)) {
-                    opacity = Integer.valueOf(string.substring(6));
-                } else if(string.equals(endTrans)) {
-                    opacity = defaultOpacity;
-                } else if(string.startsWith(startStrikethrough)) {
-                    String color = string.substring(4);
-                    strikethroughColor = color.length() < 6 ? Color.decode(color).getRGB() : Integer.parseInt(color, 16);
-                } else if(string.equals(startDefaultStrikeThrough)) {
-                    strikethroughColor = 8388608;
-                } else if(string.equals(endStrikeThrough)) {
-                    strikethroughColor = -1;
-                } else if(string.startsWith(startUnderline)) {
-                    String color = string.substring(2);
-                    underlineColor = color.length() < 6 ? Color.decode(color).getRGB() : Integer.parseInt(color, 16);
-                } else if(string.equals(startDefaultUnderline)) {
-                    underlineColor = 0;
-                } else if(string.equals(endUnderline)) {
-                    underlineColor = -1;
-                } else if(string.startsWith(startShadow)) {
-                    String color = string.substring(5);
-                    shadowColor = color.length() < 6 ? Color.decode(color).getRGB() : Integer.parseInt(color, 16);
-                } else if(string.equals(startDefaultShadow)) {
-                    shadowColor = 0;
-                } else if(string.equals(endShadow)) {
-                    shadowColor = defaultShadowColor;
-                } else {
-                    if(!string.equals(lineBreak)) {
-                        break;
-                    }
-                    setEffectsAlpha(defaultTextColor, defaultShadowColor, defaultOpacity);
+        try {
+            if(string.startsWith(startColor)) {
+                String color = string.substring(4);
+                textColor = color.length() < 6 ? Color.decode(color).getRGB() : Integer.parseInt(color, 16);
+                this.textcolour.push(new TextColourNode(textColor));
+            } else if(string.equals(endColor)) {
+                this.textcolour.pop();
+                textColor = this.textcolour.getColour();
+            } else if(string.startsWith(startTrans)) {
+                opacity = Integer.valueOf(string.substring(6));
+            } else if(string.equals(endTrans)) {
+                opacity = defaultOpacity;
+            } else if(string.startsWith(startStrikethrough)) {
+                String color = string.substring(4);
+                strikethroughColor = color.length() < 6 ? Color.decode(color).getRGB() : Integer.parseInt(color, 16);
+            } else if(string.equals(startDefaultStrikeThrough)) {
+                strikethroughColor = 8388608;
+            } else if(string.equals(endStrikeThrough)) {
+                strikethroughColor = -1;
+            } else if(string.startsWith(startUnderline)) {
+                String color = string.substring(2);
+                underlineColor = color.length() < 6 ? Color.decode(color).getRGB() : Integer.parseInt(color, 16);
+            } else if(string.equals(startDefaultUnderline)) {
+                underlineColor = 0;
+            } else if(string.equals(endUnderline)) {
+                underlineColor = -1;
+            } else if(string.startsWith(startShadow)) {
+                String color = string.substring(5);
+                shadowColor = color.length() < 6 ? Color.decode(color).getRGB() : Integer.parseInt(color, 16);
+            } else if(string.equals(startDefaultShadow)) {
+                shadowColor = 0;
+            } else if(string.equals(endShadow)) {
+                shadowColor = defaultShadowColor;
+            } else {
+                if(!string.equals(lineBreak)) {
+                    return;
                 }
-            } catch(Exception exception) {
-                break;
+                setEffectsAlpha(defaultTextColor, defaultShadowColor, defaultOpacity);
             }
-            break;
-        } while(false);
+        } catch(Exception exception) {
+            return;
+        }
     }
 
     public final void drawBasicStringXYMods(String string, int drawX, int drawY, int[] xmodifiers, int[] ymodifiers) {
@@ -956,13 +957,13 @@ public class TypeFace extends Rasterizer {
                                 drawCharacter(character, drawX + 1 + yOffset, drawY + characterYOffsets[character] + 1 + symbolWidth, cWidth, xOff, shadowColor);
                             }
 
-                            drawCharacter(character, drawX + yOffset, drawY + characterYOffsets[character] + symbolWidth, cWidth, xOff, textColor);
+                            drawCharacter(character, drawX + yOffset, drawY + characterYOffsets[character] + symbolWidth, cWidth, xOff, this.textcolour.getColour());
                         } else {
                             if(shadowColor != -1) {
                                 drawCharacterAlpha(character, drawX + 1 + yOffset, drawY + characterYOffsets[character] + 1 + symbolWidth, cWidth, xOff, shadowColor, opacity);
                             }
 
-                            drawCharacterAlpha(character, drawX + yOffset, drawY + characterYOffsets[character] + symbolWidth, cWidth, xOff, textColor, opacity);
+                            drawCharacterAlpha(character, drawX + yOffset, drawY + characterYOffsets[character] + symbolWidth, cWidth, xOff, this.textcolour.getColour(), opacity);
                         }
                     }
 
@@ -1077,6 +1078,7 @@ public class TypeFace extends Rasterizer {
         int effectIndex = -1;
         int var5 = 0;
         int textLength = string.length();
+        this.textcolour = new TextColourQueue(defaultTextColor);
 
         for(int character = 0; character < textLength; ++character) {
             int c = string.charAt(character);
@@ -1133,8 +1135,10 @@ public class TypeFace extends Rasterizer {
                 }
                 if(c == '@' && character + 4 < string.length() && string.charAt(character + 4) == '@') {
                     int stringColour = getColour(string.substring(character + 1, character + 4));
-                    if(stringColour != -1)
+                    if(stringColour != -1) {
                         textColor = stringColour;
+                        this.textcolour.push(new TextColourNode(textColor));
+                    }
                     character += 4;
                     continue;
                 }
@@ -1148,14 +1152,14 @@ public class TypeFace extends Rasterizer {
                                 drawCharacter(c, x + 1, y + characterYOffsets[c] + 1, width, height, shadowColor);
                             }
 
-                            drawCharacter(c, x, y + characterYOffsets[c], width, height, textColor);
+                            drawCharacter(c, x, y + characterYOffsets[c], width, height, this.textcolour.getColour());
                         } else {
 
                             if(shadowColor != -1) {
                                 drawCharacterAlpha(c, x + 1, y + characterYOffsets[c] + 1, width, height, shadowColor, opacity);
 
                             }
-                            drawCharacterAlpha(c, x, y + characterYOffsets[c], width, height, textColor, opacity);
+                            drawCharacterAlpha(c, x, y + characterYOffsets[c], width, height, this.textcolour.getColour(), opacity);
                         }
                     }
 
