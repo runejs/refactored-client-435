@@ -20,7 +20,7 @@ public class Class59 {
     public static int anInt1388;
     public static int anInt1389 = 0;
     public static RSString aClass1_1391;
-    public static KeyFocusListener aKeyFocusListener_1392;
+    public static KeyFocusListener keyFocusListener;
     public static int[] anIntArray1393;
     public static RSString aClass1_1395 = RSString.CreateString("backbase1");
     public static RSString string_Hidden = RSString.CreateString("Hidden");
@@ -33,7 +33,7 @@ public class Class59 {
         aClass1_1391 = (RSString.CreateString("Your friendlist is full)3 Max of 100 for free users)1 and 200 for members"));
         aClass1_1399 = aClass1_1391;
         aLongArray1397 = new long[200];
-        aKeyFocusListener_1392 = new KeyFocusListener();
+        keyFocusListener = new KeyFocusListener();
     }
 
     public static void dropClient(int arg0) {
@@ -104,7 +104,7 @@ public class Class59 {
         aClass1_1399 = null;
         aLongArray1397 = null;
         aClass1_1395 = null;
-        aKeyFocusListener_1392 = null;
+        keyFocusListener = null;
         aClass1_1391 = null;
         string_Hidden = null;
         anIntArray1393 = null;

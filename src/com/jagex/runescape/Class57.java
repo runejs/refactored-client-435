@@ -40,8 +40,7 @@ public class Class57 {
         aClass1_1348 = RSString.CreateString("0(U");
     }
 
-    public static void method974(int arg0) {
-
+    public static void method974() {
         aClass45_1332 = null;
         aClass1_1348 = null;
         aClass40_Sub5_Sub14_Sub2_1346 = null;
@@ -57,19 +56,12 @@ public class Class57 {
         anIntArray1334 = null;
         aClass1_1341 = null;
         aClass1_1333 = null;
-        int i = -39 % ((70 - arg0) / 56);
-
     }
 
-    public static void method975(int arg0, byte arg1, int arg2) {
-
-        if(arg1 == 110) {
-            if(RSCanvas.anInt60 != 0 && arg2 != -1) {
-                Class33.method414(false, 1, arg2, RSCanvas.anInt60, 0, VertexNormal.aClass6_Sub1_1104, arg1 ^ ~0x6e);
-                Class35.anInt1733 = arg0;
-            }
-            anInt1330++;
+    public static void method975(int previousSongId, int songId) {
+        if(RSCanvas.anInt60 != 0 && songId != -1) {
+            Class33.method414(false, 1, songId, RSCanvas.anInt60, 0, VertexNormal.aClass6_Sub1_1104);
+            Class35.anInt1733 = previousSongId;
         }
-
     }
 }

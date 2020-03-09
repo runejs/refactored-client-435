@@ -132,7 +132,7 @@ public class Node {
         anInt961++;
         if(arg1 < 79)
             aClass1_965 = null;
-        if(Class24.method340(61)) {
+        if(Class24.method340()) {
             if(Class26.aBoolean618)
                 OverlayDefinition.anInt2342 = arg0;
             else

@@ -1,7 +1,8 @@
 package com.jagex.runescape.cache.media;
 
-import com.jagex.runescape.Class40_Sub5_Sub17_Sub3;
 import com.jagex.runescape.RSString;
+import com.jagex.runescape.cache.media.TextUtils.TextTagNode;
+import com.jagex.runescape.cache.media.TextUtils.TextTagQueue;
 import com.jagex.runescape.media.Rasterizer;
 
 import java.awt.*;
@@ -144,33 +145,32 @@ public class TypeFace extends Rasterizer {
     }
 
 
-    public void method672(RSString arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, int arg7, int arg8, int arg9) {
+    public void drawText(RSString text, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, int arg7, int arg8, int arg9) {
         // this function seems like a general draw all, mostly used for interfaces
-        if(arg0 != null) {
+        if(text != null) {
             int i = 0;
             int i_3_ = 0;
-            RSString class1 = Class40_Sub5_Sub17_Sub3.method777(-18596, 100);
+            RSString resultText = RSString.createString(100);
             int i_4_ = -1;
             int i_5_ = 0;
-            RSString class1_6_ = null;
+            RSString stylingTag = null;
+            TextTagQueue stylingQueue = new TextTagQueue();
             if(arg9 == 0)
                 arg9 = anInt2920;
             boolean bool = true;
             if(arg4 < anInt2920 + anInt2919 + arg9 && arg4 < arg9 + arg9)
                 bool = false;
             int i_7_ = 0;
-            int i_8_ = arg0.length();
+            int length = text.length();
             int index = -1;
-            for(int idx = 0; idx < i_8_; idx++) {
-                int character = arg0.getChar(idx);
+            for(int idx = 0; idx < length; idx++) {
+                int character = text.getChar(idx);
                 if(character == 60) { // 60 = <
-
                     index = idx;
                 } else if(character == 62 && index != -1) { // 62 == >
-                    String effect = arg0.toString().substring(index + 1, idx);
-                    int oldindex= index;
+                    String effect = text.toString().substring(index + 1, idx);
+                    int oldindex = index;
                     index = -1;
-
                     if(effect.equals(lessThan)) {
                         character = 60;
                     } else if(effect.equals(greaterThan)) {
@@ -188,68 +188,60 @@ public class TypeFace extends Rasterizer {
                     } else {
                         if(!effect.equals(registeredTrademark)) {
                             if(effect.startsWith(image, 0)) {
-                                try {
-                                    int icon = Integer.parseInt(effect.substring(4));
-                                    width += moderatorIcon[icon].maxWidth;
-                                } catch(Exception var10) {
-
-                                }
+                                int icon = Integer.parseInt(effect.substring(4));
+                                width += moderatorIcon[icon].maxWidth;
                             }
                             if(effect.startsWith(startColor, 0)) {
-                                try {
-                                    class1_6_ = arg0.substring(oldindex, idx + 1);
-                                    class1.method72(class1_6_);
-                                } catch(Exception var10) {
-
-                                }
+                                TextTagNode stylingNode = new TextTagNode(text.substring(oldindex, idx + 1));
+                                stylingNode.applyTo(resultText);
+                                stylingQueue.push(stylingNode);
                             }
                             if(effect.startsWith(endColor, 0)) {
-                                try {
-                                    class1_6_ = arg0.substring(oldindex, idx + 1);
-                                    class1.method72(class1_6_);
-                                    class1_6_= null;
-                                } catch(Exception var10) {
-
-                                }
-                            } continue;
+                                stylingTag = text.substring(oldindex, idx + 1);
+                                resultText.add(stylingTag);
+                                stylingQueue.pop();
+                                stylingTag = null;
+                            }
+                            continue;
                         }
-
                         character = 174;
                     }
-
                 }
-                if(character == 64 && idx + 4 < i_8_ && arg0.getChar(idx + 4) == 64) { // 64 = @
-                    class1_6_ = arg0.substring(idx, idx + 5);
-                    class1.method72(class1_6_);
+                if(character == 64 && idx + 4 < length && text.getChar(idx + 4) == 64) { // 64 = @
+                    stylingTag = text.substring(idx, idx + 5);
+                    resultText.add(stylingTag);
                     idx += 4;
-                } else if(character == 92 && idx + 1 < i_8_ && arg0.getChar(idx + 1) == 110) { // 92 = \ 110 = n
-                    class1_6_ = null;
-                    aClass1Array2897[i_7_++] = class1.substring(i_3_, class1.length()).trim();
-                    i_3_ = class1.length();
+                } else if(character == 92 && idx + 1 < length && text.getChar(idx + 1) == 110) { // 92 = \ 110 = n
+                    stylingTag = null;
+                    aClass1Array2897[i_7_++] = resultText.substring(i_3_, resultText.length()).trim();
+                    i_3_ = resultText.length();
                     i = 0;
                     i_4_ = -1;
                     idx++;
                 } else if(index == -1) {
-                    class1.method78(-62, character);
+                    resultText.method78(-62, character);
                     i += method689(character);
                     if(character == 32 || character == 45) { // 32 = Space 45 == -
-                        i_4_ = class1.length();
+                        i_4_ = resultText.length();
                         i_5_ = i;
                     }
                     if(bool && i > arg3 && i_4_ >= 0) {
-                        aClass1Array2897[i_7_++] = class1.substring(i_3_, i_4_).trim();
+                        aClass1Array2897[i_7_++] = resultText.substring(i_3_, i_4_).trim();
                         i_3_ = i_4_;
                         i_4_ = -1;
                         i -= i_5_;
-                        if(class1_6_ != null && i_3_ > 4) {
+                        if(!stylingQueue.isEmpty() && i_3_ > 4) {
+                            stylingQueue.applyAll(resultText);
+                        } else if(stylingTag != null && i_3_ > 4) {
                             i_3_ -= 5;
-                            class1.method69(class1_6_, 16039, i_3_);
+                            resultText.prepend(stylingTag, i_3_);
                         }
                     }
                 }
-            } int strlenght = this.getStringTextWidth(class1.toString());
+            }
+            int strlenght = this.getStringTextWidth(resultText.toString());
             if(strlenght > i_3_)
-                aClass1Array2897[i_7_++] = class1.substring(i_3_, class1.length()).trim();
+                aClass1Array2897[i_7_++] = resultText.substring(i_3_, resultText.length()).trim();
             if(arg8 == 3 && i_7_ == 1)
                 arg8 = 1;
             int i_11_;

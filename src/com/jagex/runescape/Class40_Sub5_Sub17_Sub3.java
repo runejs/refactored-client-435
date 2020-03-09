@@ -30,7 +30,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
     public static int anInt3053;
     public static RSString aClass1_3054;
     public static RSString aClass1_3055 = (RSString.CreateString("Ung-Ultige Verbindung mit einem Anmelde)2Server)3"));
-    public static boolean[] aBooleanArray3056 = new boolean[112];
+    public static boolean[] obfuscatedKeyStatus = new boolean[112];
     public static int anInt3057;
     public static RSString aClass1_3059;
     public static int friendsCount;
@@ -76,15 +76,15 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             Class40_Sub5_Sub6.anInt2437 += (-Class40_Sub5_Sub6.anInt2437 + i_0_) / 16;
         if(Class34.anInt849 != i)
             Class34.anInt849 += (-Class34.anInt849 + i) / 16;
-        if(aBooleanArray3056[96])
+        if(obfuscatedKeyStatus[96])
             Wall.cameraVelocityHorizontal += (-24 - Wall.cameraVelocityHorizontal) / 2;
-        else if(aBooleanArray3056[97])
+        else if(obfuscatedKeyStatus[97])
             Wall.cameraVelocityHorizontal += (24 - Wall.cameraVelocityHorizontal) / 2;
         else
             Wall.cameraVelocityHorizontal /= 2;
-        if(aBooleanArray3056[98])
+        if(obfuscatedKeyStatus[98])
             Class60.cameraVelocityVertical += (12 + -Class60.cameraVelocityVertical) / 2;
-        else if(aBooleanArray3056[99])
+        else if(obfuscatedKeyStatus[99])
             Class60.cameraVelocityVertical += (-12 - Class60.cameraVelocityVertical) / 2;
         else
             Class60.cameraVelocityVertical /= 2;
@@ -160,18 +160,6 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                 }
             }
         }
-    }
-
-    public static RSString method777(int arg0, int arg1) {
-
-        anInt3070++;
-        RSString class1 = new RSString();
-        class1.chars = new byte[arg1];
-        if(arg0 != -18596)
-            anInt3065 = 36;
-        class1.length = 0;
-        return class1;
-
     }
 
     public static void method778(boolean arg0, HuffmanEncoding arg1) {
@@ -313,7 +301,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
 
         if(arg0 != 24399)
             method779(null, false, null, null);
-        aBooleanArray3056 = null;
+        obfuscatedKeyStatus = null;
         aClass1_3054 = null;
         aClass1_3050 = null;
         aClass1_3059 = null;

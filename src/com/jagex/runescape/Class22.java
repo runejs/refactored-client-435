@@ -204,7 +204,7 @@ public abstract class Class22 {
                             } else
                                 Node.method456(i_22_, (byte) 81);
                         } else {
-                            Class33.method414(false, 0, GameFrame.anInt1457, i_22_, 0, Class55.aClass6_Sub1_1286, arg0);
+                            Class33.method414(false, 0, GameFrame.anInt1457, i_22_, 0, Class55.aClass6_Sub1_1286);
                             Class35.anInt1733 = 0;
                         }
                         RSCanvas.anInt60 = i_22_;
