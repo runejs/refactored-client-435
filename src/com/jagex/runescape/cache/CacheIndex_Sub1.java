@@ -120,19 +120,19 @@ public class CacheIndex_Sub1 extends CacheIndex {
             if(aClass56_1802 == arg4) {
                 if(aBoolean1800)
                     throw new RuntimeException();
-                    /*if(arg2 == null) {
-                        com.jagex.runescape.HashTable.method327(true, this, 255, anInt1807, (byte) 0,
-                                anInt1810, (byte) 85);
-                        break;
-                    }
-                    com.jagex.runescape.Class65.aCRC32_1531.reset();
-                    com.jagex.runescape.Class65.aCRC32_1531.update(arg2, 0, arg2.length);
-                    int i = (int) com.jagex.runescape.Class65.aCRC32_1531.getValue();
-                    if(i != anInt1810) {
-                        com.jagex.runescape.HashTable.method327(true, this, 255, anInt1807, (byte) 0,
-                                anInt1810, (byte) -121);
-                        break;
-                    }*/
+                if(arg2 == null) {
+                    com.jagex.runescape.HashTable.method327(true, this, 255, anInt1807, (byte) 0,
+                            anInt1810, (byte) 85);
+                    break;
+                }
+                com.jagex.runescape.Class65.aCRC32_1531.reset();
+                com.jagex.runescape.Class65.aCRC32_1531.update(arg2, 0, arg2.length);
+                int i = (int) com.jagex.runescape.Class65.aCRC32_1531.getValue();
+                if(i != anInt1810) {
+                    com.jagex.runescape.HashTable.method327(true, this, 255, anInt1807, (byte) 0,
+                            anInt1810, (byte) -121);
+                    break;
+                }
                 this.method178(arg2);
                 method199(-112);
             } else {

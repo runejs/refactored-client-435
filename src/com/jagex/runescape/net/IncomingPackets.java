@@ -29,6 +29,7 @@ public class IncomingPackets {
             UPDATE_SPECIFIC_WIDGET_ITEMS = 214,
             UPDATE_ALL_WIDGET_ITEMS = 12,
             UPDATE_WIDGET_TEXT = 110,
+            UPDATE_WIDGET_TEXT_COLOR = 231,
             SET_WIDGET_PLAYER_HEAD = 210,
             SET_WIDGET_NPC_HEAD = 160,
             PLAY_WIDGET_ANIMATION = 24,
@@ -52,7 +53,9 @@ public class IncomingPackets {
             UPDATE_NPCS = 128,
             LOGOUT = 181,
 
-            PLAY_SOUND = 131;
+            PLAY_SOUND = 131,
+            PLAY_SONG = 217,
+            PLAY_QUICK_SONG = 40;
 
     public static boolean parseIncomingPackets(boolean arg0) {
         if(Class40_Sub6.aClass64_2098 == null)
@@ -664,7 +667,7 @@ public class IncomingPackets {
                 CacheIndex_Sub1.anInt1819 = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 217) {
+            if(Class57.incomingPacket == PLAY_SONG) {
                 int i_60_ = Cache.outgoingbuffer.getUnsignedShortLE();
                 if(i_60_ == 65535)
                     i_60_ = -1;
@@ -672,7 +675,7 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 40) {
+            if(Class57.incomingPacket == PLAY_QUICK_SONG) {
                 int previousSongId = Cache.outgoingbuffer.getMediumBE();
                 int songId = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
                 if(songId == 65535)
@@ -1122,7 +1125,7 @@ public class IncomingPackets {
                 Class57.incomingPacket = -1;
                 return true;
             }
-            if(Class57.incomingPacket == 231) { // update widget text color
+            if(Class57.incomingPacket == UPDATE_WIDGET_TEXT_COLOR) { // update widget text color
                 int i_113_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
                 int i_114_ = Cache.outgoingbuffer.getIntLE();
                 int i_115_ = i_113_ >> 10 & 0x1f;

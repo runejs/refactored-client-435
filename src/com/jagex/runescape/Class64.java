@@ -263,6 +263,7 @@ public class Class64 implements Runnable {
                     try {
                         ((Thread) aSignlinkNode_1512.value).join();
                     } catch(InterruptedException interruptedexception) {
+                        interruptedexception.printStackTrace();
                         /* empty */
                     }
                 }
@@ -307,12 +308,14 @@ public class Class64 implements Runnable {
                 int i_0_;
                 synchronized(this) {
                     if(anInt1509 == anInt1520) {
-                        if(aBoolean1513)
+                        if(aBoolean1513) {
                             break;
+                        }
                         try {
                             this.wait();
                         } catch(InterruptedException interruptedexception) {
                             /* empty */
+                            interruptedexception.printStackTrace();
                         }
                     }
                     if(anInt1509 >= anInt1520)
@@ -332,6 +335,7 @@ public class Class64 implements Runnable {
                         if(anInt1520 == anInt1509)
                             anOutputStream1528.flush();
                     } catch(IOException ioexception) {
+                        ioexception.printStackTrace();
                         aBoolean1510 = true;
                     }
                 }
@@ -345,6 +349,7 @@ public class Class64 implements Runnable {
                     aSocket1508.close();
             } catch(IOException ioexception) {
                 /* empty */
+                ioexception.printStackTrace();
             }
             aByteArray1504 = null;
         } catch(Exception exception) {

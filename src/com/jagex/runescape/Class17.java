@@ -31,6 +31,7 @@ public class Class17 {
             try {
                 Class57.aClass64_1345.method1009(-127);
             } catch(Exception exception) {
+                exception.printStackTrace();
                 /* empty */
             }
             Class57.aClass64_1345 = null;
@@ -66,9 +67,11 @@ public class Class17 {
                 class40_sub1.putShortBE(0);
                 Class57.aClass64_1345.method1010(4, (byte) -19, 0, (class40_sub1.buffer));
             } catch(java.io.IOException ioexception) {
+                ioexception.printStackTrace();
                 try {
                     Class57.aClass64_1345.method1009(-123);
                 } catch(Exception exception) {
+                    exception.printStackTrace();
                     /* empty */
                 }
                 Class57.aClass64_1345 = null;

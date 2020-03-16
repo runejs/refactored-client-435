@@ -60,9 +60,11 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 class40_sub1.putMediumBE(0);
                 Class57.aClass64_1345.method1010(4, (byte) -19, 0, (class40_sub1.buffer));
             } catch(java.io.IOException ioexception) {
+                ioexception.printStackTrace();
                 try {
                     Class57.aClass64_1345.method1009(-18);
                 } catch(Exception exception) {
+                    exception.printStackTrace();
                     /* empty */
                 }
                 Class57.aClass64_1345 = null;
