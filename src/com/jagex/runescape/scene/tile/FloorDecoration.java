@@ -315,27 +315,26 @@ public class FloorDecoration {
                                 }
                             }
                         } else {
-				/*aCRC32_590.reset();
-				aCRC32_590.update((com.jagex.runescape.Class40_Sub5_Sub13
-						   .aClass40_Sub1_2752
-						   .buffer),
-						  0, i_36_);*/
-				/*int i_39_ = (int) aCRC32_590.getValue();
-				if (((com.jagex.runescape.PacketBuffer
-				      .aClass40_Sub5_Sub13_2250.anInt2763)
-				     ^ 0xffffffff)
-				    != (i_39_ ^ 0xffffffff)) {
-				    try {
-					com.jagex.runescape.Class57.aClass64_1345.method1009(54);
-				    } catch (Exception exception) {
-				    }
-				    com.jagex.runescape.Class8.aByte302
-					= (byte) (int) (Math.random() * 255.0
-							+ 1.0);
-				    com.jagex.runescape.Class57.aClass64_1345 = null;
-				    com.jagex.runescape.Class34.anInt813++;
-				    return false;
-				}*/
+                            aCRC32_590.reset();
+                            aCRC32_590.update((com.jagex.runescape.Class40_Sub5_Sub13
+                                            .aClass40_Sub1_2752
+                                            .buffer),
+                                    0, i_36_);
+                            int i_39_ = (int) aCRC32_590.getValue();
+                            if((~(PacketBuffer
+                                    .aClass40_Sub5_Sub13_2250.anInt2763))
+                                    != (~i_39_)) {
+                                try {
+                                    com.jagex.runescape.Class57.aClass64_1345.method1009(54);
+                                } catch(Exception exception) {
+                                }
+                                com.jagex.runescape.Class8.aByte302
+                                        = (byte) (int) (Math.random() * 255.0
+                                        + 1.0);
+                                com.jagex.runescape.Class57.aClass64_1345 = null;
+                                com.jagex.runescape.Class34.anInt813++;
+                                return false;
+                            }
                             Class40_Sub5_Sub1.anInt2278 = 0;
                             Class34.anInt813 = 0;
                             PacketBuffer.aClass40_Sub5_Sub13_2250.aClass6_Sub1_2754.method196(((PacketBuffer.aClass40_Sub5_Sub13_2250.key) & 0xff0000L) == 16711680L, (int) ((PacketBuffer.aClass40_Sub5_Sub13_2250.key) & 0xffffL), Npc.aBoolean3298, (Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer));
@@ -398,9 +397,11 @@ public class FloorDecoration {
             }
             return true;
         } catch(IOException ioexception) {
+            ioexception.printStackTrace();
             try {
                 Class57.aClass64_1345.method1009(-104);
             } catch(Exception exception) {
+                exception.printStackTrace();
                 /* empty */
             }
             Class40_Sub5_Sub1.anInt2278++;

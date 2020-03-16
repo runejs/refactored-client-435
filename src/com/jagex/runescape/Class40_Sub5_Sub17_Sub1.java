@@ -457,6 +457,9 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     if(i_22_ > 103) {
                         i_22_ = 103;
                     }
+                    if(i_23_ > 103) {
+                        i_23_ = 103;
+                    }
                     i_29_ += i_28_;
                     if(((OverlayDefinition.tile_flags[Player.anInt3267][i_23_][i_22_]) & 0x4) != 0)
                         i = Player.anInt3267;
@@ -466,6 +469,12 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         else if((i_24_ < i_23_))
                             i_23_--;
                         i_29_ -= 65536;
+                        if(i_22_ > 103) {
+                            i_22_ = 103;
+                        }
+                        if(i_23_ > 103) {
+                            i_23_ = 103;
+                        }
                         if((0x4 & (OverlayDefinition.tile_flags[Player.anInt3267][i_23_][i_22_])) != 0)
                             i = Player.anInt3267;
                     }

@@ -1198,6 +1198,7 @@ public class Main extends RSApplet {
                         Class29.aClass64_676 = null;
                         Class8.anInt292 = 0;
                     } catch(java.io.IOException ioexception) {
+                        ioexception.printStackTrace();
                         method35(-3);
                         break;
                     }
