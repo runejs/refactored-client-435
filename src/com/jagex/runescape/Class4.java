@@ -46,37 +46,34 @@ public class Class4 {
         return RSApplet.method32(i_7_, arg2, i_8_, true, i_1_);
     }
 
-    public static void method161(int arg0) {
-        anInt187++;
-        if(arg0 != 128)
-            menuOpen = false;
-        for(int i = 0; i < PacketBuffer.currentSound; i++) {
-            Class40_Sub3.soundDelay[i]--;
-            if(Class40_Sub3.soundDelay[i] < -10) {
+    public static void processAudio() {
+        for(int index = 0; index < PacketBuffer.currentSound; index++) {
+            Class40_Sub3.soundDelay[index]--;
+            if(Class40_Sub3.soundDelay[index] < -10) {
                 PacketBuffer.currentSound--;
-                for(int i_9_ = i; ((PacketBuffer.currentSound > i_9_)); i_9_++) {
-                    IdentityKit.sound[i_9_] = IdentityKit.sound[i_9_ + 1];
-                    PacketBuffer.effects[i_9_] = PacketBuffer.effects[1 + i_9_];
-                    ItemDefinition.soundVolume[i_9_] = ItemDefinition.soundVolume[1 + i_9_];
-                    Class40_Sub3.soundDelay[i_9_] = Class40_Sub3.soundDelay[1 + i_9_];
-                    Class38_Sub1.anIntArray1916[i_9_] = Class38_Sub1.anIntArray1916[1 + i_9_];
+                for(int j = index; ((PacketBuffer.currentSound > j)); j++) {
+                    IdentityKit.sound[j] = IdentityKit.sound[j + 1];
+                    PacketBuffer.effects[j] = PacketBuffer.effects[1 + j];
+                    ItemDefinition.soundVolume[j] = ItemDefinition.soundVolume[1 + j];
+                    Class40_Sub3.soundDelay[j] = Class40_Sub3.soundDelay[1 + j];
+                    Class38_Sub1.anIntArray1916[j] = Class38_Sub1.anIntArray1916[1 + j];
                 }
-                i--;
+                index--;
             } else {
-                Effect effect = PacketBuffer.effects[i];
+                Effect effect = PacketBuffer.effects[index];
                 if(effect == null) {
-                    effect = Effect.method429((Actor.aClass6_Sub1_3157), (IdentityKit.sound[i]), 0);
+                    effect = Effect.method429((Actor.aClass6_Sub1_3157), (IdentityKit.sound[index]), 0);
                     if(effect == null)
                         continue;
-                    Class40_Sub3.soundDelay[i] += effect.delay();
-                    PacketBuffer.effects[i] = effect;
+                    Class40_Sub3.soundDelay[index] += effect.delay();
+                    PacketBuffer.effects[index] = effect;
                 }
-                if(Class40_Sub3.soundDelay[i] < 0) {
+                if(Class40_Sub3.soundDelay[index] < 0) {
                     int i_10_;
-                    if(Class38_Sub1.anIntArray1916[i] != 0) {
-                        int i_11_ = 128 * (Class38_Sub1.anIntArray1916[i] & 0xff);
-                        int i_12_ = (0xff & Class38_Sub1.anIntArray1916[i] >> 16);
-                        int i_13_ = ((Class38_Sub1.anIntArray1916[i] & 0xffb8) >> 8);
+                    if(Class38_Sub1.anIntArray1916[index] != 0) {
+                        int i_11_ = 128 * (Class38_Sub1.anIntArray1916[index] & 0xff);
+                        int i_12_ = (0xff & Class38_Sub1.anIntArray1916[index] >> 16);
+                        int i_13_ = ((Class38_Sub1.anIntArray1916[index] & 0xffb8) >> 8);
                         int i_14_ = (i_13_ * 128 + 64 + -(Player.localPlayer.anInt3089));
                         int i_15_ = (i_12_ * 128 + (64 - (Player.localPlayer.anInt3098)));
                         if(i_15_ < 0)
@@ -85,7 +82,7 @@ public class Class4 {
                             i_14_ = -i_14_;
                         int i_16_ = -128 + (i_15_ + i_14_);
                         if(i_16_ > i_11_) {
-                            Class40_Sub3.soundDelay[i] = -100;
+                            Class40_Sub3.soundDelay[index] = -100;
                             continue;
                         }
                         if(i_16_ < 0)
@@ -95,17 +92,17 @@ public class Class4 {
                         i_10_ = Class5.anInt200;
                     Class40_Sub12_Sub1 class40_sub12_sub1 = effect.method428().method875(Class55.aClass48_1289);
                     Class40_Sub9_Sub2 class40_sub9_sub2 = Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_10_);
-                    class40_sub9_sub2.method860(-1 + ItemDefinition.soundVolume[i]);
+                    class40_sub9_sub2.method860(-1 + ItemDefinition.soundVolume[index]);
                     Class49.aClass40_Sub9_Sub1_1152.method846(class40_sub9_sub2);
-                    Class40_Sub3.soundDelay[i] = -100;
+                    Class40_Sub3.soundDelay[index] = -100;
                 }
             }
         }
-        if(Class35.anInt1733 > 0) {
-            Class35.anInt1733 -= 20;
-            if(Class35.anInt1733 < 0)
-                Class35.anInt1733 = 0;
-            if(Class35.anInt1733 == 0 && RSCanvas.anInt60 != 0 && GameFrame.anInt1457 != -1)
+        if(Class35.previousSong > 0) {
+            Class35.previousSong -= 20;
+            if(Class35.previousSong < 0)
+                Class35.previousSong = 0;
+            if(Class35.previousSong == 0 && RSCanvas.anInt60 != 0 && GameFrame.anInt1457 != -1)
                 Class33.method414(false, 0, GameFrame.anInt1457, RSCanvas.anInt60, 0, Class55.aClass6_Sub1_1286);
         }
     }

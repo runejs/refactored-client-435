@@ -20,7 +20,7 @@ public class Class35 implements Interface3 {
     public static int anInt1730 = 0;
     public static RSString aClass1_1731;
     public static Frame aFrame1732;
-    public static int anInt1733;
+    public static int previousSong;
     public static boolean aBoolean1734;
     public static boolean aBoolean1735;
     public static RSString aClass1_1736;
@@ -38,7 +38,7 @@ public class Class35 implements Interface3 {
 
     static {
         aClass1_1726 = RSString.CreateString("Wen m-Ochten Sie der Liste hinzuf-Ugen?");
-        anInt1733 = 0;
+        previousSong = 0;
         SKIN_COLOURS = new int[]{9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145, 58654, 5027, 1457, 16565, 34991, 25486};
         aBoolean1734 = false;
         publicChatMode = 0;

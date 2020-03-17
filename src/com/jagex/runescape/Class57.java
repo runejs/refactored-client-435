@@ -61,7 +61,7 @@ public class Class57 {
     public static void method975(int previousSongId, int songId) {
         if(RSCanvas.anInt60 != 0 && songId != -1) {
             Class33.method414(false, 1, songId, RSCanvas.anInt60, 0, VertexNormal.aClass6_Sub1_1104);
-            Class35.anInt1733 = previousSongId;
+            Class35.previousSong = previousSongId;
         }
     }
 }

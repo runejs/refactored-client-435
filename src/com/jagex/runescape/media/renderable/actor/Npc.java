@@ -188,7 +188,7 @@ public class Npc extends Actor {
                 Class45.method910(-32322);
                 if(Class51.anInt1197 == 30 || Class51.anInt1197 == 35) {
                     Class40_Sub5_Sub13.method652((byte) 0);
-                    Class4.method161(128);
+                    Class4.processAudio();
                     Class35.anInt1728++;
                     if(Class35.anInt1728 > 750)
                         Class59.dropClient(2578);

@@ -116,9 +116,9 @@ public class Class51 {
 
     public static void method942(int arg0, int arg1) {
         anInt1190++;
-        if(arg1 == -1 && Class35.anInt1733 == 0)
+        if(arg1 == -1 && Class35.previousSong == 0)
             Class33.method402(false);
-        else if(arg1 != -1 && arg1 != GameFrame.anInt1457 && RSCanvas.anInt60 != 0 && Class35.anInt1733 == 0)
+        else if(arg1 != -1 && arg1 != GameFrame.anInt1457 && RSCanvas.anInt60 != 0 && Class35.previousSong == 0)
             Class33.method403(RSCanvas.anInt60, true, 10, arg1, Class55.aClass6_Sub1_1286, 0, 0, false);
         GameFrame.anInt1457 = arg1;
         if(arg0 != 257)

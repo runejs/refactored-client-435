@@ -335,7 +335,7 @@ public class Class48 {
             Landscape.aCollisionMapArray1167[i].method146(arg0 + 16784441);
         System.gc();
         Class33.method405(arg0 ^ ~0x5e71, 10);
-        Class35.anInt1733 = 0;
+        Class35.previousSong = 0;
         GameFrame.anInt1457 = -1;
         Class37.method436(arg0 + 7352);
         OverlayDefinition.method559(10, -76);

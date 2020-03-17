@@ -408,7 +408,7 @@ public class Class33 {
         }
     }
 
-    public static synchronized void method414(boolean arg0, int arg1, int arg2, int arg3, int arg4, CacheIndex arg5) {
+    public static synchronized void method414(boolean arg0, int arg1, int songid, int arg3, int arg4, CacheIndex arg5) {
         if(Class24.method340()) {
             Class26.aBoolean618 = true;
             CacheIndex_Sub1.anInt1806 = -1;
@@ -418,7 +418,7 @@ public class Class33 {
             Main.aBoolean1790 = arg0;
             Class40_Sub6.anInt2110 = arg1;
             Class22_Sub1.aCacheIndex_1855 = arg5;
-            Class8.anInt289 = arg2;
+            Class8.anInt289 = songid;
         }
     }
 }
