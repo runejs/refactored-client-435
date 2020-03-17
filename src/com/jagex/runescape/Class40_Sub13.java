@@ -14,19 +14,13 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.tile.Wall;
 
 public class Class40_Sub13 extends Node {
-    public static int anInt2169;
-    public static int anInt2170;
     public static RSString aClass1_2172 = RSString.CreateString("Service unavailable)3");
-    public static int anInt2173;
     public static RSString aClass1_2174;
     public static RSString aClass1_2176;
     public static boolean aBoolean2177;
     public static RSString aClass1_2179 = RSString.CreateString("cross");
-    public static int anInt2180;
     public static RSString aClass1_2181;
-    public static int anInt2182;
     public static int anInt2183;
-    public static int anInt2184;
     public static RSString aClass1_2185;
     public static RSString aClass1_2186;
     public static RSString aClass1_2187;
@@ -70,8 +64,6 @@ public class Class40_Sub13 extends Node {
     }
 
     public static ImageRGB method876(int arg0, int arg1, int arg2, int arg3) {
-
-        anInt2182++;
         if(arg3 == 0) {
             ImageRGB class40_sub5_sub14_sub4 = ((ImageRGB) Buffer.aClass9_1933.get((long) arg2, (byte) 56));
             if(class40_sub5_sub14_sub4 != null && class40_sub5_sub14_sub4.maxHeight != arg1 && class40_sub5_sub14_sub4.maxHeight != -1) {
@@ -211,8 +203,6 @@ public class Class40_Sub13 extends Node {
     }
 
     public static Widget method878(int arg0, Widget arg1) {
-
-        anInt2169++;
         int i;
         if(arg1.id < 0)
             i = arg1.parentId >> 16;
@@ -226,11 +216,9 @@ public class Class40_Sub13 extends Node {
             return (Widget.interfaces[i][0xffff & arg1.anInt2738]);
         Widget widget = (Widget.interfaces[i][(0x7fff99d9 & arg1.anInt2738) >> 15]);
         return (widget.aWidgetArray2713[arg1.anInt2738 & 0x7fff]);
-
     }
 
     public static void method879(int arg0, IndexedImage arg1) {
-        anInt2170++;
         int i = 0;
         if(arg0 != -4487)
             method876(112, -38, -90, -56);
@@ -268,8 +256,6 @@ public class Class40_Sub13 extends Node {
     }
 
     public static void method880(byte arg0, int arg1, int arg2) {
-
-        anInt2173++;
         Class45 class45 = (Wall.aClass45ArrayArrayArray357[Player.anInt3267][arg2][arg1]);
         if(class45 == null)
             Npc.aScene_3301.method125(Player.anInt3267, arg2, arg1);

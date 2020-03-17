@@ -69,7 +69,6 @@ public class Class38_Sub1 extends Class38 {
                             if(i_4_ > 450)
                                 i_4_ = 450;
                             if(Class13.mouseX < 4 + i_4_) {
-                                Class60.anInt1400++;
                                 if(InteractiveObject.playerRights >= 1) {
                                     OverlayDefinition.method558(0, Class22_Sub1.aClass1_1865, 0, -501, 0, 2028, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class26.aClass1_620, class1})));
                                     CollisionMap.anInt158++;
@@ -349,7 +348,6 @@ public class Class38_Sub1 extends Class38 {
             }
             if(arg11 == 1) {
                 Class32.packetBuffer.putPacket(236);
-                SubNode.anInt2096++;
                 Class32.packetBuffer.putByte(14 + i_12_ + i_12_ + 3);
             }
             if(arg11 == 2) {

@@ -15,8 +15,6 @@ import com.jagex.runescape.scene.util.CollisionMap;
 import java.awt.*;
 
 public class Class52 {
-    public static int anInt1211;
-    public static int anInt1212;
     public static RSString aClass1_1213 = RSString.CreateString(" @whi@(X");
     public static int anInt1214;
     public static volatile boolean aBoolean1215;
@@ -27,17 +25,11 @@ public class Class52 {
     public static boolean redrawChatbox = false;
     public static int anInt1222;
     public static RSString aClass1_1223;
-    public static int anInt1224;
-    public static int anInt1227;
     public static RSString aClass1_1228;
     public static RSString aClass1_1230;
     public static int anInt1233;
     public static RSString aClass1_1234;
-    public static int anInt1236;
-    public static int anInt1237;
     public static RSString aClass1_1238;
-    public static int anInt1239;
-    public static int anInt1240;
     public static RSString aClass1_1241;
 
     static {
@@ -64,7 +56,6 @@ public class Class52 {
     public int anInt1235;
 
     public Class52(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6) {
-
         anInt1231 = arg0;
         aBoolean1229 = arg6;
         anInt1225 = arg1;
@@ -72,13 +63,10 @@ public class Class52 {
         anInt1220 = arg4;
         anInt1232 = arg3;
         anInt1226 = arg5;
-
     }
 
     public static void method943(int arg0, int arg1, TypeFace arg2, int arg3, int arg4) {
-
         HuffmanEncoding.aClass68_1541.method1046((byte) 90);
-        anInt1224++;
         Class57.aClass40_Sub5_Sub14_Sub2_1346.drawImage(0, 0);
         arg2.method688(InteractiveObject.aClass1_495, 55, 28, 16777215, true);
         if(arg4 == 0)
@@ -111,21 +99,16 @@ public class Class52 {
         } catch(Exception exception) {
             GameFrame.aCanvas1469.repaint();
         }
-
     }
 
     public static ImageRGB[] method944(byte arg0, int arg1, CacheIndex arg2, int arg3) {
-
-        anInt1237++;
         if(!method948(arg3, arg1, arg2, -3844))
             return null;
         int i = -59 % ((-60 - arg0) / 34);
         return Class22_Sub2.method319((byte) -62);
-
     }
 
     public static void method945(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
-        anInt1211++;
         if(arg5 != 103)
             anInt1214 = -81;
         if(arg2 >= 1 && arg0 >= 1 && arg2 <= 102 && arg0 <= 102) {
@@ -181,7 +164,6 @@ public class Class52 {
     }
 
     public static void method946(boolean arg0) {
-
         aClass1_1213 = null;
         aClass1_1241 = null;
         aClass1_1228 = null;
@@ -194,11 +176,9 @@ public class Class52 {
             aClass1_1216 = null;
             aClass1_1230 = null;
         }
-
     }
 
     public static void method947(int arg0) {
-
         synchronized(CollisionMap.anObject162) {
             if((Buffer.anInt1987 ^ 0xffffffff) != arg0) {
                 Buffer.anInt1987 = 1;
@@ -209,20 +189,15 @@ public class Class52 {
                 }
             }
         }
-        anInt1212++;
-
     }
 
     public static boolean method948(int arg0, int arg1, CacheIndex arg2, int arg3) {
-
         if(arg3 != -3844)
             method948(14, -28, null, -69);
         byte[] is = arg2.getFile(arg0, arg1);
-        anInt1239++;
         if(is == null)
             return false;
         CacheIndex.method184(is, 0);
         return true;
-
     }
 }

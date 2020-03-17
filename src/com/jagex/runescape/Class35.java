@@ -7,38 +7,28 @@ import com.jagex.runescape.io.Buffer;
 import java.awt.*;
 
 public class Class35 implements Interface3 {
-    public static int anInt1719;
     public static RSString aClass1_1720 = RSString.CreateString("Enter object name");
-    public static int anInt1721;
-    public static int anInt1722;
-    public static int anInt1723;
-    public static int anInt1724;
     public static RSString aClass1_1725;
     public static RSString aClass1_1726;
     public static int anInt1728;
-    public static int anInt1729;
     public static int anInt1730 = 0;
     public static RSString aClass1_1731;
     public static Frame aFrame1732;
-    public static int previousSong;
+    public static int songTimeout;
     public static boolean aBoolean1734;
     public static boolean aBoolean1735;
     public static RSString aClass1_1736;
     public static int publicChatMode;
     public static int[] SKIN_COLOURS;
-    public static int anInt1739;
-    public static int anInt1741;
-    public static int anInt1742;
     public static RSString aClass1_1743;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1744;
     public static byte[][][] tile_overlay_rotation;
     public static RSString aClass1_1746;
     public static RSString aClass1_1747;
-    public static int anInt1751;
 
     static {
         aClass1_1726 = RSString.CreateString("Wen m-Ochten Sie der Liste hinzuf-Ugen?");
-        previousSong = 0;
+        songTimeout = 0;
         SKIN_COLOURS = new int[]{9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145, 58654, 5027, 1457, 16565, 34991, 25486};
         aBoolean1734 = false;
         publicChatMode = 0;
@@ -79,10 +69,8 @@ public class Class35 implements Interface3 {
     }
 
     public static Class40_Sub5_Sub15 method421(CacheIndex arg0, byte arg1, int arg2, CacheIndex arg3, boolean arg4) {
-
         if(arg1 < 40)
             return null;
-        anInt1739++;
         boolean bool = true;
         int[] is = arg0.method192(arg2, true);
         for(int i = 0; is.length > i; i++) {
@@ -107,11 +95,9 @@ public class Class35 implements Interface3 {
         } catch(Exception exception) {
             return null;
         }
-
     }
 
     public static void method423(byte arg0) {
-
         if(arg0 <= -18) {
             aClass1_1720 = null;
             tile_overlay_rotation = null;
@@ -126,24 +112,18 @@ public class Class35 implements Interface3 {
             aClass1_1726 = null;
             aClass1_1731 = null;
         }
-
     }
 
     public void method422(int arg0) {
-
-        anInt1723++;
         for(int i = arg0; ((aClass40_Sub10Array1740.length > i)); i++) {
             if(aClass40_Sub10Array1740[i] != null)
                 aClass40_Sub10Array1740[i].method870();
         }
         aClass45_1727 = new Class45();
         anInt1753 = anInt1752;
-
     }
 
     public int[] method12(int arg0, int arg1) {
-
-        anInt1742++;
         EntryTable class40_sub10 = aClass40_Sub10Array1740[arg1];
         int i = -68 / ((-75 - arg0) / 33);
         if(class40_sub10 != null) {
@@ -165,42 +145,30 @@ public class Class35 implements Interface3 {
             }
         }
         return null;
-
     }
 
     public int method14(boolean arg0, int arg1) {
-
-        anInt1724++;
         if(!arg0)
             return 115;
         if(aClass40_Sub10Array1740[arg1] != null)
             return aClass40_Sub10Array1740[arg1].anInt2137;
         return 0;
-
     }
 
     public boolean method13(byte arg0, int arg1) {
-
-        anInt1729++;
         if(arg0 > -99)
             return true;
         return aClass40_Sub10Array1740[arg1].aBoolean2143;
-
     }
 
     public void method424(int arg0, double arg1) {
-
-        anInt1722++;
         if(arg0 < 68)
             aClass1_1731 = null;
         aDouble1750 = arg1;
         method422(0);
-
     }
 
     public void method425(byte arg0, int arg1) {
-
-        anInt1751++;
         int i = 0;
         if(arg0 == 6) {
             for(/**/; (i < aClass40_Sub10Array1740.length); i++) {
@@ -211,15 +179,11 @@ public class Class35 implements Interface3 {
                 }
             }
         }
-
     }
 
     public boolean method15(int arg0, byte arg1) {
-
-        anInt1721++;
         if(arg1 != -90)
             return false;
         return anInt1748 == 64;
-
     }
 }

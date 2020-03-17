@@ -67,7 +67,6 @@ public class PacketBuffer extends Buffer {
             ISAAC.redrawTabArea = true;
             Class29.tabAreaOverlayWidgetId = -1;
         }
-        Class40_Sub13.anInt2184++;
         if(Class43.openChatboxWidgetId != -1) {
             Class55.method958(Class43.openChatboxWidgetId, -14222);
             CacheIndex_Sub1.anInt1819 = -1;
@@ -77,7 +76,7 @@ public class PacketBuffer extends Buffer {
         if(ActorDefinition.openFullScreenWidgetId != -1) {
             Class55.method958(ActorDefinition.openFullScreenWidgetId, -14222);
             ActorDefinition.openFullScreenWidgetId = -1;
-            OverlayDefinition.method559(30, -47);
+            OverlayDefinition.method559(30);
         }
         if(UnderlayDefinition.openSecondaryWidgetId != -1) {
             Class55.method958(UnderlayDefinition.openSecondaryWidgetId, -14222);

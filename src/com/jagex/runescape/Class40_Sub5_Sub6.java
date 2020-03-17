@@ -346,7 +346,6 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         Class32.packetBuffer.method505(HuffmanEncoding.chatboxInput.substring(2));
                     } else {
                         int i = 0;
-                        VarbitDefinition.anInt2362++;
                         RSString class1 = HuffmanEncoding.chatboxInput.toLowerCase();
                         int i_11_ = 0;
                         if(class1.startsWith((Class40_Sub5_Sub11.aClass1_2620))) {

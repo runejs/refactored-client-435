@@ -194,7 +194,7 @@ public class ISAAC {
                                     int i_42_ = 256 * i_22_ / i_26_;
                                     int i_43_ = i_23_ / i_25_;
                                     int i_44_ = i_24_ / i_25_;
-                                    i_39_ = Class13.method244(i_43_, i_44_, arg1 + -27260, i_42_);
+                                    i_39_ = Class13.method244(i_43_, i_44_, i_42_);
                                     i_44_ += (Actor.anInt3151);
                                     i_42_ = i_42_ + (Class40_Sub5_Sub15.anInt2791) & 0xff;
                                     if(i_44_ >= 0) {
@@ -202,7 +202,7 @@ public class ISAAC {
                                             i_44_ = 255;
                                     } else
                                         i_44_ = 0;
-                                    i_41_ = Class13.method244(i_43_, i_44_, 44, i_42_);
+                                    i_41_ = Class13.method244(i_43_, i_44_, i_42_);
                                 }
                                 if(i > 0) {
                                     boolean bool = true;
@@ -231,14 +231,14 @@ public class ISAAC {
                                         i_48_ = -1;
                                         i_50_ = -2;
                                     } else {
-                                        i_49_ = (Class13.method244((class40_sub5_sub3.lightness), (class40_sub5_sub3.saturation), -120, (class40_sub5_sub3.hue)));
+                                        i_49_ = (Class13.method244((class40_sub5_sub3.lightness), (class40_sub5_sub3.saturation), (class40_sub5_sub3.hue)));
                                         int i_51_ = (Class40_Sub5_Sub15.anInt2791 + (class40_sub5_sub3.hue)) & 0xff;
                                         int i_52_ = ((Actor.anInt3151) + (class40_sub5_sub3.saturation));
                                         if(i_52_ < 0)
                                             i_52_ = 0;
                                         else if(i_52_ > 255)
                                             i_52_ = 255;
-                                        i_50_ = (Class13.method244((class40_sub5_sub3.lightness), i_52_, arg1 ^ ~0x6acb, i_51_));
+                                        i_50_ = (Class13.method244((class40_sub5_sub3.lightness), i_52_, i_51_));
                                     }
                                     int i_53_ = 0;
                                     if(i_50_ != -2)
@@ -251,7 +251,7 @@ public class ISAAC {
                                                 i_55_ = 255;
                                         } else
                                             i_55_ = 0;
-                                        i_50_ = (Class13.method244((class40_sub5_sub3.anInt2346), i_55_, arg1 + -27445, i_54_));
+                                        i_50_ = (Class13.method244((class40_sub5_sub3.anInt2346), i_55_, i_54_));
                                         i_53_ = (Rasterizer3D.anIntArray2932[Class34.method420(i_50_, 96, true)]);
                                     }
                                     arg0.method99(i, i_16_, i_27_, i_46_, i_47_, i_48_, i_32_, i_33_, i_34_, i_35_, (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_36_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_37_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_38_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_40_, (byte) 73)), Class34.method420(i_49_, i_36_, true), Class34.method420(i_49_, i_37_, true), Class34.method420(i_49_, i_38_, true), Class34.method420(i_49_, i_40_, true), i_45_, i_53_);

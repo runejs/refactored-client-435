@@ -18,13 +18,11 @@ public abstract class Class38 {
     public static RSString aClass1_888;
     public static int[] anIntArray889;
     public static RSString aClass1_890;
-    public static int anInt891;
     public static int anInt892;
     public static boolean aBoolean893;
     public static RSString aClass1_894;
     public static RSString aClass1_895;
     public static RSString aClass1_896;
-    public static int anInt897;
 
     static {
         aClass1_883 = aClass1_886;
@@ -42,7 +40,6 @@ public abstract class Class38 {
     }
 
     public static void method439(byte arg0) {
-
         aClass1_882 = null;
         aClass1_895 = null;
         if(arg0 <= 120)
@@ -58,12 +55,9 @@ public abstract class Class38 {
         aClass68_887 = null;
         aClass1_886 = null;
         aClass1_888 = null;
-
     }
 
     public static void method440(byte arg0) {
-
-        anInt891++;
         if(ISAAC.aBoolean512) {
             Class51.anIntArray1198 = null;
             GameObject.aClass68_3042 = null;
@@ -93,15 +87,10 @@ public abstract class Class38 {
                 ISAAC.aBoolean512 = false;
             }
         }
-
     }
 
-    public static void method441(CacheIndex arg0, int arg1) {
-
-        anInt897++;
-        int i = -109 / ((arg1 + 14) / 32);
+    public static void method441(CacheIndex arg0) {
         Actor.aCacheIndex_3144 = arg0;
-
     }
 
     public abstract int method442(int i, int i_0_, int i_1_);

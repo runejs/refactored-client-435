@@ -17,29 +17,19 @@ import com.jagex.runescape.scene.util.CollisionMap;
 public class OverlayDefinition extends SubNode {
     public static RSString aClass1_2314;
     public static RSString aClass1_2315;
-    public static int anInt2316;
-    public static int anInt2317;
     public static int placementY;
     public static int anInt2319 = 0;
     public static int anInt2321;
     public static byte[][][] tile_flags;
     public static int[] anIntArray2324;
     public static RSString aClass1_2325;
-    public static int anInt2326;
     public static RSString aClass1_2327;
     public static int anInt2328;
-    public static int anInt2329;
-    public static int anInt2331;
     public static int[][][] anIntArrayArrayArray2333;
     public static byte[][][] tile_underlay_path;
-    public static int anInt2339;
     public static int anInt2340;
-    public static int anInt2341;
     public static int anInt2342;
-    public static int anInt2343;
     public static volatile long lastClick;
-    public static int anInt2347;
-    public static int anInt2348;
 
     static {
         aClass1_2315 = (RSString.CreateString("Zu viele Anmelde)2Versuche von Ihrer Adresse"));
@@ -85,16 +75,12 @@ public class OverlayDefinition extends SubNode {
     }
 
     public static void method557(int arg0, int arg1) {
-
         Class42.method886(0, 0, false, null, arg0);
         if(arg1 != 17098)
             method557(-14, 72);
-        anInt2329++;
-
     }
 
     public static void method558(int arg0, RSString arg1, int arg2, int arg3, int arg4, int arg5, RSString arg6) {
-
         if((ActorDefinition.anInt2394 ^ 0xffffffff) > arg3) {
             if(arg6.length() <= 0)
                 Landscape.aClass1Array1184[ActorDefinition.anInt2394] = arg1;
@@ -106,14 +92,9 @@ public class OverlayDefinition extends SubNode {
             Class59.anIntArray1393[ActorDefinition.anInt2394] = arg2;
             ActorDefinition.anInt2394++;
         }
-        anInt2339++;
-
     }
 
-    public static void method559(int arg0, int arg1) {
-
-        int i = -26 % (-arg1 / 44);
-        anInt2316++;
+    public static void method559(int arg0) {
         if(arg0 != Class51.anInt1197) {
             if(Class51.anInt1197 == 0)
                 CollisionMap.method144(12433);
@@ -156,11 +137,9 @@ public class OverlayDefinition extends SubNode {
             Class51.anInt1197 = arg0;
             Class40_Sub5_Sub11.clearScreen = true;
         }
-
     }
 
     public static void drawMinimapMark(ImageRGB sprite, int mapX, int mapY) {
-
         int len = mapX * mapX + (mapY * mapY);
         if(len > 4225 && len < 90000) {
             int theta = 0x7ff & GroundItemTile.cameraHorizontal + Class43.cameraYawOffset;
@@ -177,21 +156,17 @@ public class OverlayDefinition extends SubNode {
         } else {
             SceneTile.drawOnMinimap(mapY, mapX, sprite);
         }
-
     }
 
-    public void method553(byte arg0, int arg1, Buffer arg2) {
-
+    public void method553(byte arg0, Buffer arg2) {
         for(; ; ) {
             int i = arg2.getUnsignedByte();
             if(i == 0)
                 break;
-            method556(arg1, arg2, i, (byte) -117);
+            method556(arg2, i, (byte) -117);
         }
         if(arg0 < 1)
             aClass1_2325 = null;
-        anInt2348++;
-
     }
 
     public void method555(byte arg0) {
@@ -202,16 +177,13 @@ public class OverlayDefinition extends SubNode {
             anInt2334 = hue;
         }
         calculateHsl(anInt2345);
-        anInt2317++;
         if(arg0 != 64)
-            method559(39, 9);
+            method559(39);
     }
 
-    public void method556(int arg0, Buffer arg1, int arg2, byte arg3) {
-
+    public void method556(Buffer arg1, int arg2, byte arg3) {
         if(arg3 != -117)
-            method556(-71, null, 83, (byte) -117);
-        anInt2341++;
+            method556(null, 83, (byte) -117);
         if(arg2 == 1)
             anInt2345 = arg1.getMediumBE();
         else if(arg2 != 2) {
@@ -222,7 +194,6 @@ public class OverlayDefinition extends SubNode {
                 aBoolean2338 = false;
         } else
             anInt2322 = arg1.getUnsignedByte();
-
     }
 
     public void calculateHsl(int color) {

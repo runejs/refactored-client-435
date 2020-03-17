@@ -136,7 +136,6 @@ public class Npc extends Actor {
                     }
                 }
                 if(GameFrame.clickType != 0) {
-                    VarbitDefinition.anInt2363++;
                     long l = ((GameObjectDefinition.aLong2561 - Class51.aLong1203) / 50L);
                     int i = Class57.anInt1338;
                     int i_10_ = RSString.anInt1668;
@@ -166,7 +165,6 @@ public class Npc extends Actor {
                 if(Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[96] || Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[97] || Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[98] || Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[99])
                     HashTable.aBoolean565 = true;
                 if(HashTable.aBoolean565 && InteractiveObject.anInt487 <= 0) {
-                    Class13.anInt415++;
                     InteractiveObject.anInt487 = 20;
                     HashTable.aBoolean565 = false;
                     Class32.packetBuffer.putPacket(58);
@@ -174,14 +172,12 @@ public class Npc extends Actor {
                     Class32.packetBuffer.putShortBE(Class65.anInt1537);
                 }
                 if(HashTable.aBoolean571 && !Class35.aBoolean1735) {
-                    Class60.anInt1406++;
                     Class35.aBoolean1735 = true;
                     Class32.packetBuffer.putPacket(160);
                     Class32.packetBuffer.putByte(1);
                 }
                 if(!HashTable.aBoolean571 && Class35.aBoolean1735) {
                     Class35.aBoolean1735 = false;
-                    Class60.anInt1406++;
                     Class32.packetBuffer.putPacket(160);
                     Class32.packetBuffer.putByte(0);
                 }
@@ -431,7 +427,7 @@ public class Npc extends Actor {
         byte[] is = Actor.aCacheIndex_3144.getFile(arg0, arg1);
         overlayDefinition = new OverlayDefinition();
         if(is != null)
-            overlayDefinition.method553((byte) 65, arg0, new Buffer(is));
+            overlayDefinition.method553((byte) 65, new Buffer(is));
         overlayDefinition.method555((byte) 64);
         Class33.aClass9_778.put(-7208, (long) arg0, overlayDefinition);
         return overlayDefinition;
@@ -520,7 +516,6 @@ public class Npc extends Actor {
                 }
             }
         }
-        Class13.anInt409++;
     }
 
     public Model getRotatedModel(int arg0) {

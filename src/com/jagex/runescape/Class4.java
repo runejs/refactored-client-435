@@ -18,10 +18,7 @@ public class Class4 {
     public static RSString aClass1_181 = RSString.CreateString("Einloggen");
     public static int anInt182 = 0;
     public static RSString aClass1_183 = RSString.CreateString("mapdots");
-    public static int anInt184;
     public static int anInt185 = 0;
-    public static int anInt186;
-    public static int anInt187;
     public static int anInt188;
 
     public static void method159() {
@@ -98,11 +95,11 @@ public class Class4 {
                 }
             }
         }
-        if(Class35.previousSong > 0) {
-            Class35.previousSong -= 20;
-            if(Class35.previousSong < 0)
-                Class35.previousSong = 0;
-            if(Class35.previousSong == 0 && RSCanvas.anInt60 != 0 && GameFrame.anInt1457 != -1)
+        if(Class35.songTimeout > 0) {
+            Class35.songTimeout -= 20;
+            if(Class35.songTimeout < 0)
+                Class35.songTimeout = 0;
+            if(Class35.songTimeout == 0 && RSCanvas.anInt60 != 0 && GameFrame.anInt1457 != -1)
                 Class33.method414(false, 0, GameFrame.anInt1457, RSCanvas.anInt60, 0, Class55.aClass6_Sub1_1286);
         }
     }

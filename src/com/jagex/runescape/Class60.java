@@ -17,25 +17,16 @@ import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class60 {
-    public static int anInt1400;
     public static RSString aClass1_1401;
     public static boolean aBoolean1402 = false;
-    public static int anInt1403;
-    public static int anInt1404;
-    public static int anInt1405;
-    public static int anInt1406;
     public static int anInt1407;
     public static RSString aClass1_1408 = RSString.CreateString("auf der Hautpseite)3");
     public static RSString aClass1_1409;
-    public static int anInt1410;
     public static RSString aClass1_1411;
-    public static int anInt1412;
     public static int anInt1413;
-    public static int anInt1414;
     public static int cameraVelocityVertical;
     public static RSString aClass1_1416;
     public static int anInt1417;
-    public static int anInt1418;
 
     static {
         aClass1_1401 = RSString.CreateString(",Zffentlicher Chat");
@@ -47,19 +38,14 @@ public class Class60 {
     }
 
     public static TypeFace method987(int arg0) {
-
-        anInt1414++;
         TypeFace class40_sub5_sub14_sub1 = new TypeFace((Actor.anIntArray3111), Class17.anIntArray456, (Npc.anIntArray3312), Buffer.anIntArray1972, GroundItemTile.aByteArrayArray1370);
         ActorDefinition.method569();
         if(arg0 < 4)
             return null;
         return class40_sub5_sub14_sub1;
-
     }
 
-    public static int method988(CacheIndex arg0, CacheIndex arg1, int arg2) {
-
-        anInt1412++;
+    public static int method988(CacheIndex arg0, CacheIndex arg1) {
         int i = 0;
         if(arg0.method194(Class32.aClass1_772, Class22_Sub2.string_blank, -1234))
             i++;
@@ -71,9 +57,7 @@ public class Class60 {
             i++;
         if(arg1.method194(Class8.aClass1_299, Class22_Sub2.string_blank, -1234))
             i++;
-        int i_0_ = 84 % ((11 - arg2) / 47);
         return i;
-
     }
 
     public static void method989(boolean arg0) {
@@ -81,13 +65,11 @@ public class Class60 {
             CollisionMap.aClass8_166.method213();
             CollisionMap.aClass8_166 = null;
         }
-        anInt1410++;
         if(!arg0)
             method987(-89);
     }
 
     public static void method990(int arg0) {
-        anInt1405++;
         int i = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getStringWidth(Widget.aClass1_2684);
         for(int i_1_ = 0; i_1_ < ActorDefinition.anInt2394; i_1_++) {
             int i_2_ = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getTextDisplayedWidth(Landscape.aClass1Array1184[i_1_]);
@@ -157,8 +139,6 @@ public class Class60 {
     }
 
     public static RSString method991(int arg0, long arg1) {
-
-        anInt1403++;
         if(arg1 <= 0L || arg1 >= 6582952005840035281L)
             return null;
         if(arg1 % 37L == 0)
@@ -179,11 +159,9 @@ public class Class60 {
         class1.chars = is;
         class1.length = is.length;
         return class1;
-
     }
 
     public static void method992(int arg0) {
-        anInt1418++;
         Class32.aClass38_768.method443(-10115);
         for(int i = 0; i < 32; i++)
             RSApplet.aLongArray4[i] = 0L;
@@ -195,7 +173,6 @@ public class Class60 {
     }
 
     public static void method993(int arg0) {
-        anInt1404++;
         Class40_Sub6.method836(1);
         if(Class51.anInt1197 == 10) {
             int i = Class57.anInt1338 + -202;
@@ -231,7 +208,7 @@ public class Class60 {
                 if(i_11_ == 1 && i_17_ + -75 <= i && i <= i_17_ + 75 && (i_12_ >= i_18_ + -20) && (i_12_ <= i_18_ + 20)) {
                     Class22_Sub2.username = Class22_Sub2.username.method62(57).method85(-4305);
                     Class33.method411(Node.aClass1_964, Node.aClass1_958, Class40_Sub5_Sub17_Sub1.aClass1_3009, (byte) 106);
-                    OverlayDefinition.method559(20, 70);
+                    OverlayDefinition.method559(20);
                 } else {
                     i_17_ = 260;
                     if(i_11_ == 1 && i >= -75 + i_17_ && (i_17_ + 75 >= i) && (i_12_ >= -20 + i_18_) && (i_12_ <= i_18_ + 20)) {

@@ -8,19 +8,14 @@ import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.Widget;
 
 public abstract class Renderable extends SubNode {
-    public static int anInt2855;
     public static RSString[] chatPlayerNames;
     public static CacheIndex_Sub1 aClass6_Sub1_2857;
     public static long aLong2858 = 0L;
-    public static int anInt2859;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2860;
     public static RSString aClass1_2862 = RSString.CreateString("@cya@");
-    public static int anInt2863;
     public static RSString aClass1_2864;
     public static int[] anIntArray2865;
     public static int anInt2866;
-    public static int anInt2867;
-    public static int anInt2868;
     public static int anInt2869;
     public static RSString aClass1_2870;
     public static RSString aClass1_2871;
@@ -36,8 +31,6 @@ public abstract class Renderable extends SubNode {
     public int modelHeight = 1000;
 
     public static boolean handleSequences(int arg0, int arg1) {
-
-        anInt2859++;
         if(!Class68.method1043(arg1))
             return false;
         Widget[] widgets = Widget.interfaces[arg1];
@@ -81,11 +74,9 @@ public abstract class Renderable extends SubNode {
             }
         }
         return bool;
-
     }
 
     public static void method757(byte arg0) {
-
         aClass1_2871 = null;
         chatPlayerNames = null;
         if(arg0 > -112)
@@ -96,11 +87,9 @@ public abstract class Renderable extends SubNode {
         anIntArray2865 = null;
         aClass1_2862 = null;
         aClass1_2864 = null;
-
     }
 
     public void renderAtPoint(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
-        anInt2868++;
         Model class40_sub5_sub17_sub5 = getRotatedModel(-38);
         if(class40_sub5_sub17_sub5 != null) {
             modelHeight = class40_sub5_sub17_sub5.modelHeight;
@@ -109,10 +98,6 @@ public abstract class Renderable extends SubNode {
     }
 
     public Model getRotatedModel(int arg0) {
-
-        int i = 87 / ((arg0 - 41) / 47);
-        anInt2855++;
         return null;
-
     }
 }

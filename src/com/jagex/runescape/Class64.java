@@ -121,7 +121,6 @@ public class Class64 implements Runnable {
                             for(int i_7_ = 4; i_7_ >= 0; i_7_--) {
                                 if(class1s[i_7_] != null) {
                                     int i_8_ = 0;
-                                    Class35.anInt1741++;
                                     if(i_7_ == 0)
                                         i_8_ = 16;
                                     if(i_7_ == 1)
@@ -138,7 +137,6 @@ public class Class64 implements Runnable {
                         }
                         OverlayDefinition.method558(gameObjectDefinition.anInt2538 << 14, Class40_Sub5_Sub15.prefix_examine, i_4_, -501, i_3_, 1004, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Renderable.aClass1_2862, gameObjectDefinition.name}))));
                     } else if((ItemDefinition.anInt2815 & 0x4) == 4) {
-                        Renderable.anInt2863++;
                         OverlayDefinition.method558(i_2_, Class38_Sub1.aClass1_1918, i_4_, -501, i_3_, 32, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.name}))));
                     }
                 }
@@ -190,11 +188,9 @@ public class Class64 implements Runnable {
                                 for(int i_15_ = 4; i_15_ >= 0; i_15_--) {
                                     if(class1s == null || class1s[i_15_] == null) {
                                         if(i_15_ == 2) {
-                                            Wall.anInt339++;
                                             OverlayDefinition.method558((class40_sub5_sub17_sub3.anInt3067), Class27.takeStringInstance, i_4_, -501, i_3_, 3, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)}))));
                                         }
                                     } else {
-                                        OverlayDefinition.anInt2331++;
                                         int i_16_ = 0;
                                         if(i_15_ == 0)
                                             i_16_ = 2;

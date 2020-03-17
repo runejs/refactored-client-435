@@ -13,7 +13,6 @@ import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.scene.tile.FloorDecoration;
-import com.jagex.runescape.scene.tile.Wall;
 
 public class Class48 {
     public static RSString aClass1_1122 = RSString.CreateString("RuneScape is loading )2 please wait)3)3)3");
@@ -157,7 +156,6 @@ public class Class48 {
                             OverlayDefinition.method558(0, widget.targetVerb, widget.id, -501, 0, 33, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Landscape.aClass1_1162, (widget.spellName)})));
                         }
                         if((widget.actionType == 3) && (arg8 >= i_2_) && (arg4 >= i_1_) && i_2_ + widget.originalWidth > arg8 && (arg4 < i_1_ + widget.originalHeight)) {
-                            OverlayDefinition.anInt2347++;
                             int i_3_;
                             if(arg7 != 3)
                                 i_3_ = 9;
@@ -170,7 +168,6 @@ public class Class48 {
                             Actor.anInt3128++;
                         }
                         if(widget.actionType == 5 && (i_2_ <= arg8) && i_1_ <= arg4 && arg8 < i_2_ + widget.originalWidth && (i_1_ + widget.originalHeight > arg4)) {
-                            Wall.anInt345++;
                             OverlayDefinition.method558(0, widget.tooltip, widget.id, -501, 0, 57, HuffmanEncoding.blank_string);
                         }
                         if(widget.actionType == 6 && CacheIndex_Sub1.anInt1819 == -1 && (i_2_ <= arg8) && i_1_ <= arg4 && arg8 < i_2_ + widget.originalWidth && ((arg4 < widget.originalHeight + i_1_))) {
@@ -211,7 +208,6 @@ public class Class48 {
                                                                 OverlayDefinition.method558((itemDefinition.id), (class1s[i_9_]), (widget.id), (arg5 ^ ~0x1f4), i_4_, i_10_, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{VertexNormal.aClass1_1114, itemDefinition.name}))));
                                                             } else if(i_9_ == 4) {
                                                                 OverlayDefinition.method558((itemDefinition.id), (Cache.dropStringInstance), (widget.id), -501, i_4_, 11, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{VertexNormal.aClass1_1114, itemDefinition.name}))));
-                                                                Class4.anInt184++;
                                                             }
                                                         }
                                                     }
@@ -335,10 +331,10 @@ public class Class48 {
             Landscape.aCollisionMapArray1167[i].method146(arg0 + 16784441);
         System.gc();
         Class33.method405(arg0 ^ ~0x5e71, 10);
-        Class35.previousSong = 0;
+        Class35.songTimeout = 0;
         GameFrame.anInt1457 = -1;
         Class37.method436(arg0 + 7352);
-        OverlayDefinition.method559(10, -76);
+        OverlayDefinition.method559(10);
     }
 
     public int method921(int arg0, int arg1) {

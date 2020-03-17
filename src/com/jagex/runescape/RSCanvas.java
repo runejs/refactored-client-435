@@ -17,15 +17,11 @@ import java.awt.*;
 public class RSCanvas extends Canvas {
     public static byte[][] aByteArrayArray47 = new byte[50][];
     public static CacheIndex_Sub1 aClass6_Sub1_48;
-    public static int anInt50;
     public static RSString aClass1_51;
-    public static int anInt52;
     public static Class45 aClass45_53;
     public static int anInt54;
     public static RSString aClass1_55 = RSString.CreateString("shake:");
-    public static int anInt56;
     public static int anInt57;
-    public static int anInt58;
     public static Class68 aClass68_59;
     public static int anInt60;
     public static CacheIndex aCacheIndex_61;
@@ -55,23 +51,18 @@ public class RSCanvas extends Canvas {
     public Component aComponent49;
 
     public RSCanvas(Component arg0) {
-
         aComponent49 = arg0;
-
     }
 
     public static void method45(byte arg0) {
         RSString.aClass68_1665.method1046((byte) 90);
-        anInt50++;
         if(arg0 > -12)
             method47((byte) 69);
     }
 
     public static void method46(int arg0) {
-
         Cache.method233(true);
         CacheIndex.method189(false);
-        anInt58++;
         Widget.method640((byte) -90);
         Widget.method645((byte) -37);
         Class40_Sub5_Sub6.method586(64);
@@ -96,11 +87,9 @@ public class RSCanvas extends Canvas {
         aClass6_Sub1_48.method191(arg0 + 1120);
         VertexNormal.aClass6_Sub1_1104.method191(1120);
         Class56.aClass6_Sub1_1323.method191(1120);
-
     }
 
     public static void method47(byte arg0) {
-
         aClass1_68 = null;
         if(arg0 != -46)
             method45((byte) -3);
@@ -118,20 +107,13 @@ public class RSCanvas extends Canvas {
         anIntArray66 = null;
         aClass1_67 = null;
         aClass68_59 = null;
-
     }
 
     public void paint(Graphics arg0) {
-
-        anInt56++;
         aComponent49.paint(arg0);
-
     }
 
     public void update(Graphics arg0) {
-
-        anInt52++;
         aComponent49.update(arg0);
-
     }
 }

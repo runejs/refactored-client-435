@@ -13,17 +13,11 @@ public class SubNode extends Node {
     public static int anInt2081;
     public static boolean aBoolean2083;
     public static RSString aClass1_2084;
-    public static int anInt2085;
     public static int[] anIntArray2086;
-    public static int anInt2088;
-    public static int anInt2089;
     public static RSString aClass1_2090 = RSString.CreateString("(U5");
     public static Class68 aClass68_2091;
-    public static int anInt2092;
     public static RSString aClass1_2093;
-    public static int anInt2094;
     public static RSString aClass1_2095;
-    public static int anInt2096;
 
     static {
         aBoolean2083 = false;
@@ -36,7 +30,6 @@ public class SubNode extends Node {
     public SubNode aClass40_Sub5_2087;
 
     public static IndexedImage method538(int arg0) {
-        anInt2088++;
         IndexedImage class40_sub5_sub14_sub2 = new IndexedImage();
         class40_sub5_sub14_sub2.maxWidth = ItemDefinition.anInt2846;
         class40_sub5_sub14_sub2.maxHeight = RSApplet.anInt31;
@@ -51,7 +44,6 @@ public class SubNode extends Node {
     }
 
     public static void method540(int arg0) {
-        anInt2094++;
         if(arg0 != 23721)
             aClass1_2095 = null;
         KeyFocusListener.aClass45_1278 = new Class45();
@@ -71,7 +63,6 @@ public class SubNode extends Node {
     public void method539(int arg0) {
         if(arg0 != 0)
             method538(16);
-        anInt2092++;
         if(aClass40_Sub5_2087 != null) {
             aClass40_Sub5_2087.aClass40_Sub5_2082 = aClass40_Sub5_2082;
             aClass40_Sub5_2082.aClass40_Sub5_2087 = aClass40_Sub5_2087;

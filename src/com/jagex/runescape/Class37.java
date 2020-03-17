@@ -121,7 +121,7 @@ public class Class37 {
             if(CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i] != null)
                 CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i].facingActorIndex = -1;
         }
-        OverlayDefinition.method559(30, -88);
+        OverlayDefinition.method559(30);
 
     }
 

@@ -10,22 +10,14 @@ public class VarbitDefinition extends SubNode {
     public static Class68 aClass68_2350;
     public static RSString aClass1_2351;
     public static RSString aClass1_2352 = RSString.CreateString("Login");
-    public static int anInt2353;
     public static RSString aClass1_2354;
-    public static int anInt2355;
     public static Class56 aClass56_2356;
     public static RSString aClass1_2357;
     public static int anInt2359 = 0;
-    public static int anInt2360;
     public static int[] anIntArray2361;
-    public static int anInt2362;
-    public static int anInt2363;
     public static CacheIndex aCacheIndex_2364;
-    public static int anInt2365;
     public static int anInt2366;
     public static RSString aClass1_2367 = RSString.CreateString("Please subscribe)1 or use a different world)3");
-    public static int anInt2369;
-    public static int anInt2371;
 
     static {
         aClass1_2357 = aClass1_2367;
@@ -40,9 +32,7 @@ public class VarbitDefinition extends SubNode {
     public int mostSignificantBit;
 
     public static int method564(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, byte arg6) {
-
         arg4 &= 0x3;
-        anInt2371++;
         if((arg5 & 0x1) == 1) {
             int i = arg3;
             arg3 = arg1;
@@ -57,11 +47,9 @@ public class VarbitDefinition extends SubNode {
         if(arg4 == 2)
             return -arg1 + 1 + (-arg0 + 7);
         return arg2;
-
     }
 
     public static void method565(int arg0) {
-
         aClass1_2351 = null;
         if(arg0 <= -120) {
             aCacheIndex_2364 = null;
@@ -74,12 +62,9 @@ public class VarbitDefinition extends SubNode {
             aClass1_2367 = null;
             aClass1_2352 = null;
         }
-
     }
 
     public static void method566(int arg0, boolean arg1, int arg2, byte[] arg3, int arg4) {
-
-        anInt2365++;
         if(arg4 != -27520)
             method565(49);
         if(Class5.aClass22_189 != null) {
@@ -106,11 +91,9 @@ public class VarbitDefinition extends SubNode {
                 Player.aByteArray3270 = arg3;
             }
         }
-
     }
 
     public void method562(int arg0, Buffer arg1) {
-        anInt2353++;
         for(; ; ) {
             int i = arg1.getUnsignedByte();
             if(i == 0)
@@ -122,7 +105,6 @@ public class VarbitDefinition extends SubNode {
     }
 
     public void method563(Buffer buffer, int arg1, int arg2) {
-        anInt2360++;
         if(arg2 == 1) {
             index = buffer.getUnsignedShortBE();
             leastSignificantBit = buffer.getUnsignedByte();

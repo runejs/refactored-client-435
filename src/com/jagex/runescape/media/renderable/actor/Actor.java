@@ -378,7 +378,7 @@ public abstract class Actor extends Renderable {
             if(!VertexNormal.lowMemory)
                 Class40_Sub6.onBuildTimePlane = 0;
             Class17.anInt448 = arg2;
-            OverlayDefinition.method559(25, 88);
+            OverlayDefinition.method559(25);
             Class51.method940(0, Class67.aClass1_1585, false, null);
             int i = Class26.anInt635;
             int i_33_ = SpotAnimDefinition.anInt2307;

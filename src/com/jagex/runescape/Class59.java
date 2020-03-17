@@ -9,11 +9,7 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.Scene;
 
 public class Class59 {
-    public static int anInt1380;
-    public static int anInt1381;
-    public static int anInt1382;
     public static int anInt1383;
-    public static int anInt1384;
     public static Buffer aClass40_Sub1_1385 = new Buffer(new byte[5000]);
     public static int anInt1386;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1387;
@@ -37,11 +33,10 @@ public class Class59 {
     }
 
     public static void dropClient(int arg0) {
-        anInt1384++;
         if(Class32.anInt771 > 0)
             Class48.method928(-7225);
         else {
-            OverlayDefinition.method559(40, 99);
+            OverlayDefinition.method559(40);
             Class30.aClass64_717 = Class40_Sub6.aClass64_2098;
             Class40_Sub6.aClass64_2098 = null;
             if(arg0 != 2578)
@@ -49,19 +44,13 @@ public class Class59 {
         }
     }
 
-    public static void method983(int arg0) {
-
-        anInt1381++;
-        int i = 70 / ((62 - arg0) / 55);
+    public static void method983() {
         Scene.aBoolean88 = true;
         VertexNormal.lowMemory = true;
-
     }
 
     public static void method984(int arg0) {
-
         if(arg0 == 0) {
-            anInt1380++;
             if(Class5.aClass22_189 != null) {
                 if(GameFrame.anInt1450 >= 0) {
                     if(RSCanvas.anInt54 > 0) {
@@ -91,13 +80,10 @@ public class Class59 {
                 Class5.aClass22_189.method302(0);
             }
         }
-
     }
 
-    public static void method985(byte arg0) {
-
+    public static void method985() {
         aClass40_Sub1_1385 = null;
-        int i = 84 / ((arg0 + 74) / 47);
         Widget.interfaces = null;
         anIntArray1398 = null;
         aClass40_Sub5_Sub14_Sub2_1387 = null;
@@ -108,19 +94,15 @@ public class Class59 {
         aClass1_1391 = null;
         string_Hidden = null;
         anIntArray1393 = null;
-
     }
 
     public static int getVisibilityPlaneFor(int arg0, int arg1, int arg2, int arg3) {
-
         if(arg2 != 0)
             getVisibilityPlaneFor(-73, 123, 115, 98);
-        anInt1382++;
         if((OverlayDefinition.tile_flags[arg0][arg3][arg1] & 0x8) != 0)
             return 0;
         if(arg0 > 0 && (OverlayDefinition.tile_flags[1][arg3][arg1] & 0x2) != 0)
             return -1 + arg0;
         return arg0;
-
     }
 }

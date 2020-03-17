@@ -743,7 +743,7 @@ public class Widget extends SubNode {
                                                 i -= 3;
                                                 WallDecoration.method950((Class67.anIntArray1588[i]), (Class67.anIntArray1588[i + 1]), (Class67.anIntArray1588[2 + i]));
                                             } else if(i_3_ == 3201) {
-                                                Class51.method942(257, (Class67.anIntArray1588[--i]));
+                                                Class51.method942((Class67.anIntArray1588[--i]));
                                             } else {
                                                 if(i_3_ != 3202) {
                                                     break;

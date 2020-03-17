@@ -223,7 +223,6 @@ public class Class27 {
             if(action == 1) {
                 Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
                 if(class40_sub5_sub17_sub4_sub1 != null) {
-                    VarbitDefinition.anInt2355++;
                     Class38_Sub1.method448(1, 0, (Player.localPlayer.pathY[0]), class40_sub5_sub17_sub4_sub1.pathY[0], (byte) 112, 0, false, 0, 1, (Player.localPlayer.pathX[0]), class40_sub5_sub17_sub4_sub1.pathX[0], 2);
                     Class40_Sub11.anInt2163 = Class57.anInt1338;
                     OverlayDefinition.anInt2319 = 0;
@@ -254,7 +253,6 @@ public class Class27 {
                             if(action == 46) {
                                 Class32.packetBuffer.putPacket(68);
                                 Class32.packetBuffer.putShortLE(Class57.anIntArray1334[i_15_]);
-                                Class52.anInt1227++;
                             }
                             break;
                         }
@@ -323,7 +321,6 @@ public class Class27 {
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     Class38_Sub1.method448(1, 0, (Player.localPlayer.pathY[0]), class40_sub5_sub17_sub4_sub1.pathY[0], (byte) 109, 0, false, 0, 1, (Player.localPlayer.pathX[0]), class40_sub5_sub17_sub4_sub1.pathX[0], 2);
                     Class40_Sub11.anInt2163 = Class57.anInt1338;
-                    Class52.anInt1227++;
                     Class45.anInt1075 = 2;
                     Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                     OverlayDefinition.anInt2319 = 0;
@@ -458,7 +455,6 @@ public class Class27 {
                 }
                 if(action == 1002) {
                     AnimationSequence.method596(i, i_12_, (byte) -11, i_10_);
-                    SubNode.anInt2089++;
                     Class32.packetBuffer.putPacket(62);
                     Class32.packetBuffer.putShortBE((0x1fffd05d & i_12_) >> 14);
                     Class32.packetBuffer.putShortLE(i_10_ + Class26.anInt635);
@@ -467,7 +463,6 @@ public class Class27 {
                 if(action == 30) {
                     Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
-                        Class40_Sub13.anInt2180++;
                         Class38_Sub1.method448(1, 0, (Player.localPlayer.pathY[0]), class40_sub5_sub17_sub4_sub2.pathY[0], (byte) 107, 0, false, 0, 1, (Player.localPlayer.pathX[0]), class40_sub5_sub17_sub4_sub2.pathX[0], 2);
                         OverlayDefinition.anInt2319 = 0;
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
@@ -481,7 +476,6 @@ public class Class27 {
                     Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_12_]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Class38_Sub1.method448(1, 0, (Player.localPlayer.pathY[0]), class40_sub5_sub17_sub4_sub2.pathY[0], (byte) 112, 0, false, 0, 1, (Player.localPlayer.pathX[0]), class40_sub5_sub17_sub4_sub2.pathX[0], 2);
-                        Class35.anInt1719++;
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
                         Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                         OverlayDefinition.anInt2319 = 0;
@@ -501,7 +495,6 @@ public class Class27 {
                     Class32.packetBuffer.putOffsetShortLE(i_12_ >> 14 & 0x7fff);
                 }
                 if(action == 5 && AnimationSequence.method596(i, i_12_, (byte) -104, i_10_)) {
-                    SubNode.anInt2085++;
                     Class32.packetBuffer.putPacket(24);
                     Class32.packetBuffer.putOffsetShortLE(i_10_ + Class26.anInt635);
                     Class32.packetBuffer.putCustomNegativeOffsetShortBE(Class49.anInt1154, -128);
@@ -577,7 +570,6 @@ public class Class27 {
                     }
                     if(action == 31) {
                         Class32.packetBuffer.putPacket(163);
-                        Class52.anInt1236++;
                         Class32.packetBuffer.putOffsetShortLE(i);
                         Class32.packetBuffer.putOffsetShortLE(i_12_);
                         Class32.packetBuffer.putIntBE(i_10_);
@@ -596,7 +588,6 @@ public class Class27 {
                             Class38_Sub1.method448(1, 0, (Player.localPlayer.pathY[0]), (class40_sub5_sub17_sub4_sub2.pathY[0]), (byte) 113, 0, false, 0, 1, (Player.localPlayer.pathX[0]), (class40_sub5_sub17_sub4_sub2.pathX[0]), 2);
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
                             Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
-                            VarbitDefinition.anInt2369++;
                             OverlayDefinition.anInt2319 = 0;
                             Class45.anInt1075 = 2;
                             Class32.packetBuffer.putPacket(63);
@@ -1179,7 +1170,7 @@ public class Class27 {
                 Class33.method411(Node.aClass1_937, Class42.aClass1_997, Class68_Sub1.aClass1_2209, (byte) -76);
         } else
             Class33.method411(Node.aClass1_966, Class22.aClass1_532, Player.aClass1_3286, (byte) -101);
-        OverlayDefinition.method559(10, -83);
+        OverlayDefinition.method559(10);
     }
 
     public static int method368(byte arg0, boolean arg1, boolean arg2) {

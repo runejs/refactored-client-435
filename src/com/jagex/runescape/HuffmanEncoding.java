@@ -156,7 +156,6 @@ public class HuffmanEncoding {
                     }
                 } else {
                     RSString[] class1s = arg4.options;
-                    Class52.anInt1240++;
                     if(Class60.aBoolean1402)
                         class1s = Class56.method968(class1s, false);
                     if(class1s != null) {

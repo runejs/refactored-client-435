@@ -302,9 +302,9 @@ public class Landscape {
                     }
                 }
                 if(ActorDefinition.openFullScreenWidgetId != -1)
-                    OverlayDefinition.method559(35, -88);
+                    OverlayDefinition.method559(35);
                 else
-                    OverlayDefinition.method559(30, -54);
+                    OverlayDefinition.method559(30);
                 Class56.method973(-65);
                 Class32.packetBuffer.putPacket(178);
                 RSRuntimeException.method1057(126);

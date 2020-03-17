@@ -8,12 +8,9 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Wall {
-    public static int anInt335;
     public static RSString aClass1_338 = RSString.CreateString("backhmid1");
-    public static int anInt339;
     public static RSString aClass1_343;
     public static RSString aClass1_344;
-    public static int anInt345;
     public static RSString aClass1_346;
     public static int cameraVelocityHorizontal = 0;
     public static int anInt350;
@@ -65,7 +62,6 @@ public class Wall {
     }
 
     public static void method238(int arg0) {
-        anInt335++;
         if(CollisionMap.anInt165 != 0) {
             TypeFace class40_sub5_sub14_sub1 = WallDecoration.fontNormal;
             int i = 0;

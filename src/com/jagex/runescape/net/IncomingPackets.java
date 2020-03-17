@@ -447,7 +447,7 @@ public class IncomingPackets {
                 if(ActorDefinition.openFullScreenWidgetId != -1) {
                     Class55.method958(ActorDefinition.openFullScreenWidgetId, -14222);
                     ActorDefinition.openFullScreenWidgetId = -1;
-                    OverlayDefinition.method559(30, 91);
+                    OverlayDefinition.method559(30);
                 }
                 if(UnderlayDefinition.openSecondaryWidgetId != -1) {
                     Class55.method958(UnderlayDefinition.openSecondaryWidgetId, -14222);
@@ -519,7 +519,7 @@ public class IncomingPackets {
                 if(ActorDefinition.openFullScreenWidgetId != -1) {
                     Class55.method958(ActorDefinition.openFullScreenWidgetId, -14222);
                     ActorDefinition.openFullScreenWidgetId = -1;
-                    OverlayDefinition.method559(30, -117);
+                    OverlayDefinition.method559(30);
                 }
                 if(UnderlayDefinition.openSecondaryWidgetId != -1) {
                     Class55.method958(UnderlayDefinition.openSecondaryWidgetId, -14222);
@@ -591,7 +591,7 @@ public class IncomingPackets {
                 if(fullscreenWidgetId != ActorDefinition.openFullScreenWidgetId) {
                     Class55.method958(ActorDefinition.openFullScreenWidgetId, -14222);
                     ActorDefinition.openFullScreenWidgetId = fullscreenWidgetId;
-                    OverlayDefinition.method559(35, -57);
+                    OverlayDefinition.method559(35);
                 }
                 if(fullscreenWidgetId != UnderlayDefinition.openSecondaryWidgetId) {
                     Class55.method958(UnderlayDefinition.openSecondaryWidgetId, -14222);
@@ -617,7 +617,7 @@ public class IncomingPackets {
                 if(ActorDefinition.openFullScreenWidgetId != -1) {
                     Class55.method958(ActorDefinition.openFullScreenWidgetId, -14222);
                     ActorDefinition.openFullScreenWidgetId = -1;
-                    OverlayDefinition.method559(30, -84);
+                    OverlayDefinition.method559(30);
                 }
                 if(UnderlayDefinition.openSecondaryWidgetId != -1) {
                     Class55.method958(UnderlayDefinition.openSecondaryWidgetId, -14222);
@@ -647,7 +647,7 @@ public class IncomingPackets {
                 if(ActorDefinition.openFullScreenWidgetId != -1) {
                     Class55.method958(ActorDefinition.openFullScreenWidgetId, -14222);
                     ActorDefinition.openFullScreenWidgetId = -1;
-                    OverlayDefinition.method559(30, -53);
+                    OverlayDefinition.method559(30);
                 }
                 if(UnderlayDefinition.openSecondaryWidgetId != -1) {
                     Class55.method958(UnderlayDefinition.openSecondaryWidgetId, -14222);
@@ -668,19 +668,19 @@ public class IncomingPackets {
                 return true;
             }
             if(Class57.incomingPacket == PLAY_SONG) {
-                int i_60_ = Cache.outgoingbuffer.getUnsignedShortLE();
-                if(i_60_ == 65535)
-                    i_60_ = -1;
-                Class51.method942(257, i_60_);
+                int songId = Cache.outgoingbuffer.getUnsignedShortLE();
+                if(songId == 65535)
+                    songId = -1;
+                Class51.method942(songId);
                 Class57.incomingPacket = -1;
                 return true;
             }
             if(Class57.incomingPacket == PLAY_QUICK_SONG) {
-                int previousSongId = Cache.outgoingbuffer.getMediumBE();
+                int songTimeout = Cache.outgoingbuffer.getMediumBE();
                 int songId = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
                 if(songId == 65535)
                     songId = -1;
-                Class57.method975(previousSongId, songId);
+                Class57.method975(songTimeout, songId);
                 Class57.incomingPacket = -1;
                 return true;
             }
@@ -769,7 +769,7 @@ public class IncomingPackets {
                 if(ActorDefinition.openFullScreenWidgetId != -1) {
                     Class55.method958(ActorDefinition.openFullScreenWidgetId, -14222);
                     ActorDefinition.openFullScreenWidgetId = -1;
-                    OverlayDefinition.method559(30, 81);
+                    OverlayDefinition.method559(30);
                 }
                 if(UnderlayDefinition.openSecondaryWidgetId != -1) {
                     Class55.method958(UnderlayDefinition.openSecondaryWidgetId, -14222);

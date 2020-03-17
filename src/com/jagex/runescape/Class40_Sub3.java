@@ -155,7 +155,7 @@ public class Class40_Sub3 extends Node {
                 Class22_Sub2.currentLoadingText = ActorDefinition.aClass1_2392;
             }
         } else if(Class40_Sub5_Sub6.anInt2451 == 60) {
-            int i = Class60.method988(RSCanvas.aClass6_Sub1_48, ActorDefinition.aClass6_Sub1_2377, arg0 ^ ~0x14);
+            int i = Class60.method988(RSCanvas.aClass6_Sub1_48, ActorDefinition.aClass6_Sub1_2377);
             int i_3_ = ISAAC.method288((byte) 119);
             if(i < i_3_) {
                 Class22_Sub2.currentLoadingText = (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class48.aClass1_1124, HashTable.method334(100 * i / i_3_, -1), Class44.aClass1_1041}));
@@ -163,12 +163,12 @@ public class Class40_Sub3 extends Node {
             } else {
                 Class22_Sub2.currentLoadingText = Class68.aClass1_1638;
                 Class67.anInt1607 = 50;
-                OverlayDefinition.method559(5, 80);
+                OverlayDefinition.method559(5);
                 Class40_Sub5_Sub6.anInt2451 = 70;
             }
         } else if(Class40_Sub5_Sub6.anInt2451 == 70) {
             if(IdentityKit.aClass6_Sub1_2609.method185((byte) 98)) {
-                Class38.method441(IdentityKit.aClass6_Sub1_2609, -76);
+                Class38.method441(IdentityKit.aClass6_Sub1_2609);
                 UnderlayDefinition.method616((IdentityKit.aClass6_Sub1_2609), (byte) 85);
                 method977(3, IdentityKit.aClass6_Sub1_2609, UnderlayDefinition.aClass6_Sub1_2571);
                 method980(28987, UnderlayDefinition.aClass6_Sub1_2571, VertexNormal.lowMemory, IdentityKit.aClass6_Sub1_2609);
@@ -316,7 +316,7 @@ public class Class40_Sub3 extends Node {
             if(arg0 != 100)
                 aClass40_Sub5_Sub14_Sub4Array2019 = null;
             if(Class40_Sub5_Sub6.anInt2451 == 140)
-                OverlayDefinition.method559(10, arg0 ^ 0x27);
+                OverlayDefinition.method559(10);
         }
     }
 
