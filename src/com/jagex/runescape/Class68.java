@@ -63,9 +63,7 @@ public abstract class Class68 {
 
     }
 
-    public static void method1042(int arg0) {
-
-        int i = -77 % ((arg0 - 74) / 46);
+    public static void method1042() {
         aClass1_1638 = null;
         aClass1_1639 = null;
         aBooleanArray1629 = null;
@@ -77,7 +75,6 @@ public abstract class Class68 {
         aClass1_1635 = null;
         aClass1_1628 = null;
         aClass1_1633 = null;
-
     }
 
     public static boolean method1043(int arg0) {

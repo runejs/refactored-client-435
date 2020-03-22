@@ -59,12 +59,10 @@ public class Class64 implements Runnable {
 
     }
 
-    public static void method1011(boolean arg0) {
+    public static void method1011() {
 
         aClass1_1505 = null;
         aClass1_1526 = null;
-        if(!arg0)
-            aClass1_1502 = null;
         aClass1_1523 = null;
         aClass1_1502 = null;
         aCacheIndex_1521 = null;

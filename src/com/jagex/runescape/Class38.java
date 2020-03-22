@@ -39,11 +39,9 @@ public abstract class Class38 {
         aClass1_885 = aClass1_895;
     }
 
-    public static void method439(byte arg0) {
+    public static void method439() {
         aClass1_882 = null;
         aClass1_895 = null;
-        if(arg0 <= 120)
-            aClass1_883 = null;
         aClass1_890 = null;
         aClass1_881 = null;
         aClass1_885 = null;

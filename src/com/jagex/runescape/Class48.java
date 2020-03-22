@@ -108,15 +108,12 @@ public class Class48 {
             aClass1_1124 = null;
     }
 
-    public static void method924(byte arg0) {
-
+    public static void method924() {
         aClass1_1137 = null;
         aClass40_Sub1_1132 = null;
         aClass1_1123 = null;
-        int i = -6 % ((-6 - arg0) / 49);
         aClass1_1122 = null;
         aClass1_1124 = null;
-
     }
 
     public static void method925(int arg0, Widget[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11) {
@@ -310,7 +307,7 @@ public class Class48 {
     }
 
     public static ImageRGB method927(int arg0, CacheIndex arg1, boolean arg2, int arg3) {
-        if(!Class52.method948(arg0, arg3, arg1, -3844))
+        if(!ImageRGB.spriteExists(arg0, arg3, arg1))
             return null;
         if(!arg2)
             method922(3, -92, null, -95, -119, -82, -28, -32);

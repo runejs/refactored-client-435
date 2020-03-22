@@ -46,17 +46,13 @@ public class CollisionMap {
 
     }
 
-    public static void method152(int arg0) {
-
+    public static void method152() {
         aByteArray169 = null;
         anObject162 = null;
         str_continue = null;
-        if(arg0 == -19156) {
-            aClass1_170 = null;
-            aClass1_164 = null;
-            aClass8_166 = null;
-        }
-
+        aClass1_170 = null;
+        aClass1_164 = null;
+        aClass8_166 = null;
     }
 
     public static int method157(int arg0, int arg1, int arg2) {

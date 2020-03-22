@@ -63,7 +63,7 @@ public class RSCanvas extends Canvas {
     public static void method46(int arg0) {
         Cache.method233(true);
         CacheIndex.method189(false);
-        Widget.method640((byte) -90);
+        Widget.method640();
         Widget.method645((byte) -37);
         Class40_Sub5_Sub6.method586(64);
         Class8.method211();

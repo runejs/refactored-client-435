@@ -83,13 +83,11 @@ public class Class39 implements Runnable {
 //        return false;
     }
 
-    public static void method453(byte arg0) {
+    public static void method453() {
         aClass68_907 = null;
         aClass1_899 = null;
         aClass1_917 = null;
         aClass1_911 = null;
-        if(arg0 > -69)
-            method451(null, 36);
         aClass40_Sub5_Sub14_Sub4_918 = null;
         aClass1_904 = null;
         str_ok = null;

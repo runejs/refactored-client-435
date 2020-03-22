@@ -39,12 +39,10 @@ public class Class30 {
     public long appearanceHash;
     public long cachedModel;
 
-    public static void method376(int arg0) {
+    public static void method376() {
         anIntArray712 = null;
         anIntArray688 = null;
         aClass64_717 = null;
-        if(arg0 != 13429)
-            method381(-90, null);
         anIntArray695 = null;
         anIntArray685 = null;
         anIntArray715 = null;
@@ -62,7 +60,7 @@ public class Class30 {
 
     public static void method381(int arg0, Actor arg1) {
         if(arg0 != 22378)
-            method376(90);
+            method376();
         if(Node.pulseCycle == arg1.anInt3107 || arg1.playingAnimation == -1 || arg1.playingAnimationDelay != 0 || arg1.anInt3115 + 1 > (Class68_Sub1.method1050(arg1.playingAnimation, 2).animationLengths[arg1.anInt3104])) {
             int i = -arg1.anInt3112 + arg1.anInt3107;
             int i_16_ = -arg1.anInt3112 + Node.pulseCycle;

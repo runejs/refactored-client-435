@@ -309,8 +309,7 @@ public abstract class Actor extends Renderable {
 
     }
 
-    public static void method788(int arg0) {
-
+    public static void method788() {
         aClass1_3158 = null;
         aClass6_Sub1_3157 = null;
         aClass1_3092 = null;
@@ -323,13 +322,11 @@ public abstract class Actor extends Renderable {
         aClass1_3155 = null;
         aCacheIndex_3144 = null;
         aClass31_3152 = null;
-        int i = -42 / ((arg0 - 20) / 50);
         anIntArray3111 = null;
         aClass1_3124 = null;
         anIntArray3149 = null;
         rsaModulus = null;
         aClass1_3159 = null;
-
     }
 
     public static void method789(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {

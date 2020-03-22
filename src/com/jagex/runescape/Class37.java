@@ -79,8 +79,7 @@ public class Class37 {
 
     }
 
-    public static void method433(int arg0) {
-
+    public static void method433() {
         aClass1_872 = null;
         aClass23_869 = null;
         aClass1_875 = null;
@@ -89,11 +88,8 @@ public class Class37 {
         aClass1_879 = null;
         aClass1_880 = null;
         aClass1_873 = null;
-        if(arg0 == -29013) {
-            aClass1_867 = null;
-            aClass1_877 = null;
-        }
-
+        aClass1_867 = null;
+        aClass1_877 = null;
     }
 
     public static void method434(int arg0) {

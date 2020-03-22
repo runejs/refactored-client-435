@@ -50,17 +50,13 @@ public class Class56 {
 
     }
 
-    public static void method967(int arg0) {
-
+    public static void method967() {
         aClass1_1314 = null;
         aClass61Array1320 = null;
         aClass40_Sub5_Sub14_Sub2_1315 = null;
         aClass6_Sub1_1323 = null;
-        if(arg0 <= 20)
-            method967(97);
         aClass1_1316 = null;
         aClass40_Sub5_Sub14_Sub2_1329 = null;
-
     }
 
     public static RSString[] method968(RSString[] arg0, boolean arg1) {

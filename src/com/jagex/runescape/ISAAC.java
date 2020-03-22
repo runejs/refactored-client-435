@@ -411,8 +411,7 @@ public class ISAAC {
 
     }
 
-    public static void method282(boolean arg0) {
-
+    public static void method282() {
         aClass1_529 = null;
         aClass1_515 = null;
         aClass1_518 = null;
@@ -423,12 +422,9 @@ public class ISAAC {
         aClass1_527 = null;
         aClass9_516 = null;
         aClass1_523 = null;
-        if(arg0) {
-            aClass31_521 = null;
-            anIntArray528 = null;
-            aClass1_517 = null;
-        }
-
+        aClass31_521 = null;
+        anIntArray528 = null;
+        aClass1_517 = null;
     }
 
     public static void method283(long arg0, int arg1) {

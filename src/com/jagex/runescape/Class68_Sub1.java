@@ -76,7 +76,6 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             return true;
         }
         if(i >= 401 && i <= 500) {
-            CacheIndex_Sub1.anInt1793++;
             OverlayDefinition.method558(0, HuffmanEncoding.aClass1_1572, 0, -501, 0, 35, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class26.aClass1_620, arg1.disabledText}))));
             return true;
         }

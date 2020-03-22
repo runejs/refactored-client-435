@@ -45,13 +45,11 @@ public class AnimationSequence extends SubNode {
         aBoolean2496 = false;
     }
 
-    public static void method589(int arg0) {
+    public static void method589() {
         aClass1_2488 = null;
         aCacheIndex_2484 = null;
         aClass1_2475 = null;
         aClass40_Sub5_Sub14_Sub4_2482 = null;
-        if(arg0 < 47)
-            method592(null, 56, null, 0, -91, 58, -86);
         requestcmd_tradereq = null;
         aClass40_Sub5_Sub14_Sub4Array2474 = null;
         aClass1_2481 = null;

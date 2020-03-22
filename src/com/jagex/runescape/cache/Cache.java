@@ -46,12 +46,11 @@ public class Cache {
             method236(true, null, null, null);
     }
 
-    public static void method234(int arg0) {
+    public static void method234() {
         dropStringInstance = null;
         aClass1_333 = null;
         dropString = null;
         aClass1_332 = null;
-        int i = -70 % ((32 - arg0) / 43);
         aClass1_331 = null;
         IncomingPackets.incomingPacketBuffer = null;
         aClass1_325 = null;

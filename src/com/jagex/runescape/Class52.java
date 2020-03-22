@@ -102,7 +102,7 @@ public class Class52 {
     }
 
     public static ImageRGB[] method944(byte arg0, int arg1, CacheIndex arg2, int arg3) {
-        if(!method948(arg3, arg1, arg2, -3844))
+        if(!ImageRGB.spriteExists(arg3, arg1, arg2))
             return null;
         int i = -59 % ((-60 - arg0) / 34);
         return Class22_Sub2.method319((byte) -62);
@@ -191,13 +191,4 @@ public class Class52 {
         }
     }
 
-    public static boolean method948(int arg0, int arg1, CacheIndex arg2, int arg3) {
-        if(arg3 != -3844)
-            method948(14, -28, null, -69);
-        byte[] is = arg2.getFile(arg0, arg1);
-        if(is == null)
-            return false;
-        CacheIndex.method184(is, 0);
-        return true;
-    }
 }

@@ -46,16 +46,14 @@ public class PacketBuffer extends Buffer {
         HashTable.method332(600);
     }
 
-    public static void method514(int arg0) {
+    public static void method514() {
         aClass40_Sub5_Sub13_2250 = null;
         aClass1_2260 = null;
-        if(arg0 == 1) {
-            rsaKey = null;
-            effects = null;
-            aClass1_2245 = null;
-            str_Please_Wait = null;
-            aClass1_2259 = null;
-        }
+        rsaKey = null;
+        effects = null;
+        aClass1_2245 = null;
+        str_Please_Wait = null;
+        aClass1_2259 = null;
     }
 
     public static void method516(int arg0) {

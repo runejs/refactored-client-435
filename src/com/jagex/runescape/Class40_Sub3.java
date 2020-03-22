@@ -50,16 +50,12 @@ public class Class40_Sub3 extends Node {
     public int anInt2038;
     public int anInt2039;
 
-    public static void method529(int arg0) {
-
-        if(arg0 != -10)
-            cmd_fpson = null;
+    public static void method529() {
         soundDelay = null;
         aCacheIndex_2037 = null;
         Player.trackedNpcIndices = null;
         cmd_fpson = null;
         aClass40_Sub5_Sub14_Sub4Array2019 = null;
-
     }
 
     public static void method530(int arg0) {

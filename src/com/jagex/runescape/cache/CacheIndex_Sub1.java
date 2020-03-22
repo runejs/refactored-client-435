@@ -7,24 +7,12 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 public class CacheIndex_Sub1 extends CacheIndex {
-    public static int anInt1792;
-    public static int anInt1793;
-    public static int anInt1794;
-    public static int anInt1795;
     public static RSString aClass1_1798;
     public static RSString aClass1_1799;
     public static RSString aClass1_1801 = RSString.CreateString("Freunde");
-    public static int anInt1803;
-    public static int anInt1804;
-    public static int anInt1805;
     public static int anInt1806;
-    public static int anInt1808;
-    public static int anInt1809;
     public static RSString aClass1_1814;
-    public static int anInt1815;
     public static RSString aClass1_1816;
-    public static int anInt1817;
-    public static int anInt1818;
     public static int anInt1819;
 
     static {
@@ -55,37 +43,29 @@ public class CacheIndex_Sub1 extends CacheIndex {
 
     }
 
-    public static void method203(int arg0) {
-
+    public static void method203() {
         aClass1_1799 = null;
         Player.trackedNpcs = null;
         aClass1_1801 = null;
-        if(arg0 != 99)
-            method203(24);
         aClass1_1798 = null;
         aClass1_1816 = null;
         aClass1_1814 = null;
-
     }
 
     public static RSString method204(int arg0, int arg1) {
-
-        anInt1804++;
         if(arg1 != 255)
-            method203(83);
+            method203();
         return (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{HashTable.method334(0xff & arg0 >> 24, -1), Node.aClass1_975, HashTable.method334((arg0 & 0xffca88) >> 16, -1), Node.aClass1_975, HashTable.method334((0xfff8 & arg0) >> 8, -1), Node.aClass1_975, HashTable.method334(0xff & arg0, -1)})));
-
     }
 
     public void method196(boolean arg0, int arg2, boolean arg3, byte[] arg4) {
-        anInt1815++;
         if(arg0) {
             if(aBoolean1800)
                 throw new RuntimeException();
             if(aClass56_1802 != null)
                 RSRuntimeException.method1055(arg4, (byte) -54, aClass56_1802, anInt1807);
             this.method178(arg4);
-            method199(-124);
+            method199();
         } else {
             arg4[arg4.length - 2] = (byte) (anIntArray224[arg2] >> 8);
             arg4[arg4.length + -1] = (byte) anIntArray224[arg2];
@@ -99,8 +79,6 @@ public class CacheIndex_Sub1 extends CacheIndex {
     }
 
     public int method197(int arg0) {
-
-        anInt1808++;
         if(aBoolean1800)
             return 100;
         if(aByteArrayArray212 != null)
@@ -116,7 +94,6 @@ public class CacheIndex_Sub1 extends CacheIndex {
 
     public void method198(byte arg0, boolean arg1, byte[] arg2, int arg3, Class56 arg4) {
         do {
-            anInt1794++;
             if(aClass56_1802 == arg4) {
                 if(aBoolean1800)
                     throw new RuntimeException();
@@ -134,7 +111,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
                     break;
                 }
                 this.method178(arg2);
-                method199(-112);
+                method199();
             } else {
                 if(!arg1 && anInt1797 == arg3)
                     aBoolean1800 = true;
@@ -167,7 +144,6 @@ public class CacheIndex_Sub1 extends CacheIndex {
     }
 
     public void method177(int arg0, int arg1) {
-        anInt1809++;
         if(aClass56_1812 != null && aBooleanArray1796 != null && aBooleanArray1796[arg1])
             GameObjectDefinition.method602(this, arg1, aClass56_1812, (byte) -125);
         else
@@ -178,15 +154,12 @@ public class CacheIndex_Sub1 extends CacheIndex {
 
     public void method174(int arg0, byte arg1) {
         Class32.method399(anInt1807, 33, arg0);
-        anInt1805++;
         if(arg1 != 2)
             method174(13, (byte) 101);
     }
 
-    public void method199(int arg0) {
+    public void method199() {
         aBooleanArray1796 = new boolean[aByteArrayArray212.length];
-        anInt1817++;
-        int i = -58 % ((-44 - arg0) / 55);
         for(int i_1_ = 0; (i_1_ < aBooleanArray1796.length); i_1_++)
             aBooleanArray1796[i_1_] = false;
         if(aClass56_1812 == null)
@@ -205,47 +178,36 @@ public class CacheIndex_Sub1 extends CacheIndex {
     }
 
     public void method200(int arg0, int arg1) {
-
         if(arg1 >= 41) {
-            anInt1818++;
             anInt1810 = arg0;
             if(aClass56_1802 == null)
                 HashTable.method327(true, this, 255, anInt1807, (byte) 0, anInt1810, (byte) -118);
             else
                 GameObjectDefinition.method602(this, anInt1807, aClass56_1802, (byte) -124);
         }
-
     }
 
-    public int method201(int arg0, int arg1) {
-
-        anInt1795++;
-        int i = 124 / ((-6 - arg1) / 34);
+    public int method201(int arg0) {
         if(aByteArrayArray212[arg0] != null)
             return 100;
         if(aBooleanArray1796[arg0])
             return 100;
         return Class34.method415((byte) 88, anInt1807, arg0);
-
     }
 
     public int method202(boolean arg0) {
-
         int i = 0;
-        anInt1803++;
         int i_3_ = 0;
         for(int i_4_ = 0; (i_4_ < aByteArrayArray212.length); i_4_++) {
             if(anIntArray261[i_4_] > 0) {
                 i += 100;
-                i_3_ += method201(i_4_, 28);
+                i_3_ += method201(i_4_);
             }
         }
         if(arg0)
-            method203(-91);
+            method203();
         if(i == 0)
             return 100;
-        int i_5_ = i_3_ * 100 / i;
-        return i_5_;
-
+        return i_3_ * 100 / i;
     }
 }

@@ -58,20 +58,16 @@ public class Class49 {
         Class40_Sub5_Sub6.cameraY = y + -yOffset;
     }
 
-    public static void method930(int arg0) {
-
+    public static void method930() {
         aClass1_1153 = null;
         aClass9_1145 = null;
         aClass40_Sub9_Sub1_1152 = null;
         aClass1_1155 = null;
         aClass1_1149 = null;
-        if(arg0 > 11) {
-            aClass1_1148 = null;
-            aClass1_1146 = null;
-            aClass1_1143 = null;
-            aClass1_1156 = null;
-            aCacheIndex_1150 = null;
-        }
-
+        aClass1_1148 = null;
+        aClass1_1146 = null;
+        aClass1_1143 = null;
+        aClass1_1156 = null;
+        aCacheIndex_1150 = null;
     }
 }
