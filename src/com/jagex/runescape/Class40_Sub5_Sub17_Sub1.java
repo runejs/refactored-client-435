@@ -5,7 +5,6 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.*;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.VertexNormal;
@@ -42,7 +41,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     public static int menuScreenArea;
     public static RSString aClass1_2985;
     public static int anInt2986;
-    public static int[] anIntArray2987;
+    public static int[] directions;
     public static RSString aClass1_2988;
     public static RSString aClass1_2990;
     public static RSString aClass1_2991;
@@ -74,7 +73,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         aClass1_2991 = RSString.CreateString("Jul");
         aClass1_3010 = RSString.CreateString("Connecting to server)3)3)3");
         aClass1_3009 = aClass1_3010;
-        anIntArray2987 = new int[]{768, 1024, 1280, 512, 1536, 256, 0, 1792};
+        directions = new int[]{768, 1024, 1280, 512, 1536, 256, 0, 1792};
         aClass1_3012 = RSString.CreateString("Jan");
         aClass1_2966 = RSString.CreateString("Sep");
         aClass1_2988 = RSString.CreateString("Nov");
@@ -150,58 +149,6 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         } while(false);
     }
 
-    public static void method759(boolean arg0) {
-
-        anInt2959++;
-        Cache.outgoingbuffer.initBitAccess(114);
-        int i = Cache.outgoingbuffer.getBits(8, (byte) -65);
-        if(GameObjectDefinition.anInt2558 > i) {
-            for(int i_0_ = i; i_0_ < GameObjectDefinition.anInt2558; i_0_++)
-                CacheIndex.anIntArray225[Class17.anInt460++] = Class40_Sub3.anIntArray2016[i_0_];
-        }
-        if(GameObjectDefinition.anInt2558 < i)
-            throw new RuntimeException("gnpov1");
-        GameObjectDefinition.anInt2558 = 0;
-        if(!arg0) {
-            for(int i_1_ = 0; i_1_ < i; i_1_++) {
-                int i_2_ = Class40_Sub3.anIntArray2016[i_1_];
-                Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_2_]);
-                int i_3_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
-                if(i_3_ == 0) {
-                    Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i_2_;
-                    class40_sub5_sub17_sub4_sub2.anInt3134 = Node.pulseCycle;
-                } else {
-                    int i_4_ = Cache.outgoingbuffer.getBits(2, (byte) -65);
-                    if(i_4_ == 0) {
-                        Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i_2_;
-                        class40_sub5_sub17_sub4_sub2.anInt3134 = Node.pulseCycle;
-                        Class24.anIntArray578[Actor.anInt3153++] = i_2_;
-                    } else if(i_4_ == 1) {
-                        Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i_2_;
-                        class40_sub5_sub17_sub4_sub2.anInt3134 = Node.pulseCycle;
-                        int i_5_ = Cache.outgoingbuffer.getBits(3, (byte) -65);
-                        class40_sub5_sub17_sub4_sub2.method782(i_5_, (byte) -96, false);
-                        int i_6_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
-                        if(i_6_ == 1)
-                            Class24.anIntArray578[Actor.anInt3153++] = i_2_;
-                    } else if(i_4_ == 2) {
-                        Class40_Sub3.anIntArray2016[GameObjectDefinition.anInt2558++] = i_2_;
-                        class40_sub5_sub17_sub4_sub2.anInt3134 = Node.pulseCycle;
-                        int i_7_ = Cache.outgoingbuffer.getBits(3, (byte) -65);
-                        class40_sub5_sub17_sub4_sub2.method782(i_7_, (byte) -96, true);
-                        int i_8_ = Cache.outgoingbuffer.getBits(3, (byte) -65);
-                        class40_sub5_sub17_sub4_sub2.method782(i_8_, (byte) -96, true);
-                        int i_9_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
-                        if(i_9_ == 1)
-                            Class24.anIntArray578[Actor.anInt3153++] = i_2_;
-                    } else if(i_4_ == 3)
-                        CacheIndex.anIntArray225[Class17.anInt460++] = i_2_;
-                }
-            }
-        }
-
-    }
-
     public static TypeFace method760(int arg0, byte arg1, CacheIndex arg2, int arg3) {
 
         anInt2978++;
@@ -229,7 +176,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         aClass1_2969 = null;
         aClass1_2965 = null;
         aClass1_3014 = null;
-        anIntArray2987 = null;
+        directions = null;
         aClass1_3015 = null;
         aClass1_2967 = null;
         aClass1_2998 = null;
@@ -244,7 +191,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         anInt3008++;
         if(arg0 != (actor.anInt3113 ^ 0xffffffff)) {
             if(actor.facingActorIndex != -1 && actor.facingActorIndex < 32768) {
-                Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[actor.facingActorIndex]);
+                Npc class40_sub5_sub17_sub4_sub2 = (Player.trackedNpcs[actor.facingActorIndex]);
                 if(class40_sub5_sub17_sub4_sub2 != null) {
                     int i = (-class40_sub5_sub17_sub4_sub2.anInt3089 + actor.anInt3089);
                     int i_10_ = (-class40_sub5_sub17_sub4_sub2.anInt3098 + actor.anInt3098);
@@ -256,7 +203,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 int i = -32768 + actor.facingActorIndex;
                 if(i == Class30.anInt708)
                     i = 2047;
-                Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i]);
+                Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[i]);
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     int i_11_ = (actor.anInt3098 - class40_sub5_sub17_sub4_sub1.anInt3098);
                     int i_12_ = (-class40_sub5_sub17_sub4_sub1.anInt3089 + actor.anInt3089);
@@ -431,8 +378,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             if(i_23_ > 103) {
                 i_23_ = 103;
             }
-            if(((OverlayDefinition.tile_flags[Player.anInt3267][i_23_][i_22_]) & 0x4) != 0)
-                i = Player.anInt3267;
+            if(((OverlayDefinition.tile_flags[Player.worldLevel][i_23_][i_22_]) & 0x4) != 0)
+                i = Player.worldLevel;
             int i_24_ = ((Player.localPlayer.anInt3098) >> 7);
             int i_25_ = ((Player.localPlayer.anInt3089) >> 7);
             int i_26_;
@@ -461,8 +408,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         i_23_ = 103;
                     }
                     i_29_ += i_28_;
-                    if(((OverlayDefinition.tile_flags[Player.anInt3267][i_23_][i_22_]) & 0x4) != 0)
-                        i = Player.anInt3267;
+                    if(((OverlayDefinition.tile_flags[Player.worldLevel][i_23_][i_22_]) & 0x4) != 0)
+                        i = Player.worldLevel;
                     if(i_29_ >= 65536) {
                         if(i_23_ < i_24_)
                             i_23_++;
@@ -475,8 +422,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         if(i_23_ > 103) {
                             i_23_ = 103;
                         }
-                        if((0x4 & (OverlayDefinition.tile_flags[Player.anInt3267][i_23_][i_22_])) != 0)
-                            i = Player.anInt3267;
+                        if((0x4 & (OverlayDefinition.tile_flags[Player.worldLevel][i_23_][i_22_])) != 0)
+                            i = Player.worldLevel;
                     }
                 }
             } else {
@@ -488,8 +435,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                             i_23_--;
                     } else
                         i_23_++;
-                    if(((OverlayDefinition.tile_flags[Player.anInt3267][i_23_][i_22_]) & 0x4) != 0)
-                        i = Player.anInt3267;
+                    if(((OverlayDefinition.tile_flags[Player.worldLevel][i_23_][i_22_]) & 0x4) != 0)
+                        i = Player.worldLevel;
                     i_31_ += i_30_;
                     if(i_31_ >= 65536) {
                         i_31_ -= 65536;
@@ -497,16 +444,16 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                             i_22_++;
                         else if(i_22_ > i_25_)
                             i_22_--;
-                        if(((OverlayDefinition.tile_flags[Player.anInt3267][i_23_][i_22_]) & 0x4) != 0)
-                            i = Player.anInt3267;
+                        if(((OverlayDefinition.tile_flags[Player.worldLevel][i_23_][i_22_]) & 0x4) != 0)
+                            i = Player.worldLevel;
                     }
                 }
             }
         }
         if(arg0 > -101)
             aClass6_Sub1_3000 = null;
-        if(((OverlayDefinition.tile_flags[Player.anInt3267][(Player.localPlayer.anInt3098) >> 7][(Player.localPlayer.anInt3089) >> 7]) & 0x4) != 0)
-            i = Player.anInt3267;
+        if(((OverlayDefinition.tile_flags[Player.worldLevel][(Player.localPlayer.anInt3098) >> 7][(Player.localPlayer.anInt3089) >> 7]) & 0x4) != 0)
+            i = Player.worldLevel;
         return i;
 
     }
@@ -831,6 +778,6 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             aDouble2972 = -aDouble2995 * Math.tan((double) anInt2997 * 0.02454369);
         aDouble2996 = (-aDouble2992 + (double) arg3 - aDouble2972 * d) * 2.0 / (d * d);
         if(arg1 != 0)
-            method759(true);
+            Npc.parseTrackedNpcs();
     }
 }

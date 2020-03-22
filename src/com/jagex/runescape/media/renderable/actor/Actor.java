@@ -43,10 +43,9 @@ public abstract class Actor extends Renderable {
     public static CacheIndex aCacheIndex_3150;
     public static int anInt3151;
     public static Signlink aClass31_3152;
-    public static int anInt3153;
+    public static int actorUpdatingIndex;
     public static RSString aClass1_3154;
     public static RSString aClass1_3155;
-    public static Player[] aClass40_Sub5_Sub17_Sub4_Sub1Array3156;
     public static CacheIndex_Sub1 aClass6_Sub1_3157;
     public static RSString aClass1_3158;
     public static RSString aClass1_3159;
@@ -55,8 +54,8 @@ public abstract class Actor extends Renderable {
     static {
         rsaModulus = (new BigInteger("119568088839203297999728368933573315070738693395974011872885408638642676871679245723887367232256427712869170521351089799352546294030059890127723509653145359924771433131004387212857375068629466435244653901851504845054452735390701003613803443469723435116497545687393297329052988014281948392136928774011011998343"));
         anInt3151 = -16 + (int) (Math.random() * 33.0);
-        aClass40_Sub5_Sub17_Sub4_Sub1Array3156 = new Player[2048];
-        anInt3153 = 0;
+        Player.trackedPlayers = new Player[2048];
+        actorUpdatingIndex = 0;
         aClass1_3154 = RSString.CreateString("Lade Schrifts-=tze )2 ");
         aClass1_3155 = RSString.CreateString("Please wait )2 attempting to reestablish");
         aClass1_3159 = aClass1_3155;
@@ -91,7 +90,7 @@ public abstract class Actor extends Renderable {
     public int anInt3099;
     public int facePositionY;
     public int anInt3101;
-    public int anInt3102;
+    public int chatcolor;
     public int anInt3104;
     public boolean aBoolean3105;
     public int anInt3107;
@@ -105,7 +104,7 @@ public abstract class Actor extends Renderable {
     public int anInt3118;
     public int anInt3120;
     public int playingAnimationDelay;
-    public int anInt3123;
+    public int chatEffects;
     public int anInt3125;
     public int idleAnimation;
     public int anInt3127;
@@ -136,7 +135,7 @@ public abstract class Actor extends Renderable {
         aBooleanArray3072 = new boolean[10];
         anInt3113 = 32;
         anInt3094 = 0;
-        anInt3102 = 0;
+        chatcolor = 0;
         anInt3104 = 0;
         anInt3091 = -1;
         anInt3117 = 200;
@@ -147,7 +146,7 @@ public abstract class Actor extends Renderable {
         anIntArray3087 = new int[4];
         anInt3116 = 0;
         anInt3109 = 0;
-        anInt3123 = 0;
+        chatEffects = 0;
         idleAnimation = -1;
         anInt3074 = 0;
         anInt3097 = 0;
@@ -310,42 +309,6 @@ public abstract class Actor extends Renderable {
 
     }
 
-    public static void method786(boolean arg0) {
-        Cache.outgoingbuffer.initBitAccess(127);
-        anInt3121++;
-        int i = Cache.outgoingbuffer.getBits(1, (byte) -65);
-        if(i != 0) {
-            int i_21_ = Cache.outgoingbuffer.getBits(2, (byte) -65);
-            if(i_21_ == 0)
-                Class24.anIntArray578[anInt3153++] = 2047;
-            else if(i_21_ == 1) {
-                int i_22_ = Cache.outgoingbuffer.getBits(3, (byte) -65);
-                Player.localPlayer.method782(i_22_, (byte) -96, false);
-                int i_23_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
-                if(i_23_ == 1)
-                    Class24.anIntArray578[anInt3153++] = 2047;
-            } else if(i_21_ == 2) {
-                int i_24_ = Cache.outgoingbuffer.getBits(3, (byte) -65);
-                Player.localPlayer.method782(i_24_, (byte) -96, true);
-                int i_25_ = Cache.outgoingbuffer.getBits(3, (byte) -65);
-                Player.localPlayer.method782(i_25_, (byte) -96, true);
-                int i_26_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
-                if(i_26_ == 1)
-                    Class24.anIntArray578[anInt3153++] = 2047;
-            } else if(i_21_ == 3) {
-                int i_27_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
-                Player.anInt3267 = Cache.outgoingbuffer.getBits(2, (byte) -65);
-                int i_28_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
-                if(i_28_ == 1)
-                    Class24.anIntArray578[anInt3153++] = 2047;
-                int i_29_ = Cache.outgoingbuffer.getBits(7, (byte) -65);
-                int i_30_ = Cache.outgoingbuffer.getBits(7, (byte) -65);
-                Player.localPlayer.method787(i_30_, -7717, i_27_ == 1, i_29_);
-            } else if(!arg0)
-                method781(-5, -11, -11, 113, 49, 123);
-        }
-    }
-
     public static void method788(int arg0) {
 
         aClass1_3158 = null;
@@ -355,7 +318,7 @@ public abstract class Actor extends Renderable {
         aClass1_3138 = null;
         aClass1_3114 = null;
         chatMessages = null;
-        aClass40_Sub5_Sub17_Sub4_Sub1Array3156 = null;
+        Player.trackedPlayers = null;
         aCacheIndex_3150 = null;
         aClass1_3155 = null;
         aCacheIndex_3144 = null;
@@ -391,7 +354,7 @@ public abstract class Actor extends Renderable {
             int i_35_ = Class26.anInt635 + -i;
             i = Class26.anInt635;
             for(int i_36_ = 0; i_36_ < 32768; i_36_++) {
-                Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_36_]);
+                Npc class40_sub5_sub17_sub4_sub2 = (Player.trackedNpcs[i_36_]);
                 if(class40_sub5_sub17_sub4_sub2 != null) {
                     for(int i_37_ = 0; i_37_ < 10; i_37_++) {
                         class40_sub5_sub17_sub4_sub2.pathY[i_37_] -= i_34_;
@@ -402,7 +365,7 @@ public abstract class Actor extends Renderable {
                 }
             }
             for(int i_38_ = 0; i_38_ < 2048; i_38_++) {
-                Player class40_sub5_sub17_sub4_sub1 = aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_38_];
+                Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_38_];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     for(int i_39_ = 0; i_39_ < 10; i_39_++) {
                         class40_sub5_sub17_sub4_sub1.pathY[i_39_] -= i_34_;
@@ -412,7 +375,7 @@ public abstract class Actor extends Renderable {
                     class40_sub5_sub17_sub4_sub1.anInt3098 -= 128 * i_34_;
                 }
             }
-            Player.anInt3267 = arg5;
+            Player.worldLevel = arg5;
             int i_40_ = 0;
             Player.localPlayer.method787(arg4, -7717, false, arg0);
             int i_41_ = 104;

@@ -3,14 +3,13 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.media.VertexNormal;
+import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class57 {
     public static Cache aClass9_1331 = new Cache(64);
     public static Class45 aClass45_1332 = new Class45();
     public static RSString aClass1_1333 = RSString.CreateString("To create a new account you need to");
-    public static int[] anIntArray1334 = new int[2048];
     public static int[][] anIntArrayArray1335 = new int[104][104];
-    public static int incomingPacket = 0;
     public static int anInt1338 = 0;
     public static RSString aClass1_1339 = RSString.CreateString("This world is full)3");
     public static RSString aClass1_1340 = RSString.CreateString("Ihr Spielkonto wird bereits benutzt)3");
@@ -32,7 +31,7 @@ public class Class57 {
         aClass1_1340 = null;
         aClass1_1343 = null;
         anIntArray1347 = null;
-        anIntArray1334 = null;
+        Player.trackedPlayerIndices = null;
         aClass1_1333 = null;
     }
 

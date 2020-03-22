@@ -2,7 +2,6 @@ package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.Cache;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -163,9 +162,9 @@ public class ItemDefinition extends SubNode {
     }
 
     public static void method749(boolean arg0) {
-        for(int i = 0; GameObjectDefinition.anInt2558 > i; i++) {
-            Npc npc = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i]]);
-            int i_15_ = (536870912 + (Class40_Sub3.anIntArray2016[i] << 14));
+        for(int i = 0; Player.trackedNpcIndex > i; i++) {
+            Npc npc = (Player.trackedNpcs[Player.trackedNpcIndices[i]]);
+            int i_15_ = (536870912 + (Player.trackedNpcIndices[i] << 14));
             if(npc != null && npc.isVisible(1) && !arg0 != (npc.actorDefinition.hasRenderPriority) && npc.actorDefinition.method571(-1)) {
                 int i_16_ = (npc.anInt3098 >> 7);
                 int i_17_ = npc.anInt3089 >> 7;
@@ -179,7 +178,7 @@ public class ItemDefinition extends SubNode {
                     if(!npc.actorDefinition.isClickable) {
                         i_15_ += -2147483648;
                     }
-                    Npc.aScene_3301.method134(Player.anInt3267, npc.anInt3098, npc.anInt3089, (Class37.method430((byte) -126, Player.anInt3267, (npc.anInt3098 + ((-1 + npc.anInt3096) * 64)), (npc.anInt3096 * 64 + (-64 + (npc.anInt3089))))), -64 + (npc.anInt3096 * 64 + 60), npc, npc.anInt3118, i_15_, npc.aBoolean3105);
+                    Npc.aScene_3301.method134(Player.worldLevel, npc.anInt3098, npc.anInt3089, (Class37.method430((byte) -126, Player.worldLevel, (npc.anInt3098 + ((-1 + npc.anInt3096) * 64)), (npc.anInt3096 * 64 + (-64 + (npc.anInt3089))))), -64 + (npc.anInt3096 * 64 + 60), npc, npc.anInt3118, i_15_, npc.aBoolean3105);
                 }
             }
         }

@@ -256,9 +256,9 @@ public class Class40_Sub13 extends Node {
     }
 
     public static void method880(byte arg0, int arg1, int arg2) {
-        Class45 class45 = (Wall.aClass45ArrayArrayArray357[Player.anInt3267][arg2][arg1]);
+        Class45 class45 = (Wall.aClass45ArrayArrayArray357[Player.worldLevel][arg2][arg1]);
         if(class45 == null)
-            Npc.aScene_3301.method125(Player.anInt3267, arg2, arg1);
+            Npc.aScene_3301.method125(Player.worldLevel, arg2, arg1);
         else {
             int i = -99999999;
             Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3 = null;
@@ -273,7 +273,7 @@ public class Class40_Sub13 extends Node {
                 }
             }
             if(class40_sub5_sub17_sub3 == null)
-                Npc.aScene_3301.method125(Player.anInt3267, arg2, arg1);
+                Npc.aScene_3301.method125(Player.worldLevel, arg2, arg1);
             else {
                 if(arg0 != -80)
                     aClass1_2187 = null;
@@ -289,7 +289,7 @@ public class Class40_Sub13 extends Node {
                     }
                 }
                 int i_37_ = 1610612736 + (arg1 << 7) + arg2;
-                Npc.aScene_3301.addGroundItemTile(arg2, arg1, Player.anInt3267, Class37.method430((byte) -126, (Player.anInt3267), 64 + 128 * arg2, 64 + 128 * arg1), i_37_, class40_sub5_sub17_sub3, class40_sub5_sub17_sub3_35_, class40_sub5_sub17_sub3_34_);
+                Npc.aScene_3301.addGroundItemTile(arg2, arg1, Player.worldLevel, Class37.method430((byte) -126, (Player.worldLevel), 64 + 128 * arg2, 64 + 128 * arg1), i_37_, class40_sub5_sub17_sub3, class40_sub5_sub17_sub3_35_, class40_sub5_sub17_sub3_34_);
             }
         }
 

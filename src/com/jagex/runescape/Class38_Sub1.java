@@ -195,7 +195,7 @@ public class Class38_Sub1 extends Class38 {
             return false;
         Wall.anIntArray351[i++] = arg9;
         int i_12_ = Class24.anIntArray581.length;
-        int[][] is = (Landscape.aCollisionMapArray1167[Player.anInt3267].anIntArrayArray150);
+        int[][] is = (Landscape.aCollisionMapArray1167[Player.worldLevel].anIntArrayArray150);
         while(i_10_ != i) {
             i_9_ = Wall.anIntArray351[i_10_];
             i_11_ = Class24.anIntArray581[i_10_];
@@ -205,8 +205,8 @@ public class Class38_Sub1 extends Class38 {
                 break;
             }
             if(arg5 != 0) {
-                if(arg5 >= 5 && arg5 != 10 || !(Landscape.aCollisionMapArray1167[Player.anInt3267].method155(i_11_, false, arg5 + -1, arg10, i_9_, arg7, arg3))) {
-                    if(arg5 < 10 && (Landscape.aCollisionMapArray1167[Player.anInt3267].method158(arg10, arg7, i_9_, arg3, i_11_, (byte) 122, -1 + arg5))) {
+                if(arg5 >= 5 && arg5 != 10 || !(Landscape.aCollisionMapArray1167[Player.worldLevel].method155(i_11_, false, arg5 + -1, arg10, i_9_, arg7, arg3))) {
+                    if(arg5 < 10 && (Landscape.aCollisionMapArray1167[Player.worldLevel].method158(arg10, arg7, i_9_, arg3, i_11_, (byte) 122, -1 + arg5))) {
                         bool = true;
                         break;
                     }
@@ -215,7 +215,7 @@ public class Class38_Sub1 extends Class38 {
                     break;
                 }
             }
-            if(arg0 != 0 && arg8 != 0 && (Landscape.aCollisionMapArray1167[Player.anInt3267].method153(-24, arg8, arg3, arg0, arg10, arg1, i_9_, i_11_))) {
+            if(arg0 != 0 && arg8 != 0 && (Landscape.aCollisionMapArray1167[Player.worldLevel].method153(-24, arg8, arg3, arg0, arg10, arg1, i_9_, i_11_))) {
                 bool = true;
                 break;
             }
@@ -355,14 +355,14 @@ public class Class38_Sub1 extends Class38 {
                 Class32.packetBuffer.putByte(3 + (i_12_ + i_12_));
             }
             Class32.packetBuffer.putShortLE(i_24_ + Class26.anInt635);
-            Class32.packetBuffer.putInvertedByte(Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[82] ? 1 : 0);
+            Class32.packetBuffer.putByte(Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[82] ? 1 : 0);
             Class32.packetBuffer.putShortLE(SpotAnimDefinition.anInt2307 + i_25_);
             VarbitDefinition.anInt2366 = Class24.anIntArray581[0];
             Class55.anInt1304 = Wall.anIntArray351[0];
             for(int i_26_ = 1; i_12_ > i_26_; i_26_++) {
                 i_10_--;
-                Class32.packetBuffer.putDualByte(Class24.anIntArray581[i_10_] - i_25_, 128);
-                Class32.packetBuffer.putInvertedByte(-i_24_ + Wall.anIntArray351[i_10_]);
+                Class32.packetBuffer.putByte(Class24.anIntArray581[i_10_] - i_25_);
+                Class32.packetBuffer.putByte(-i_24_ + Wall.anIntArray351[i_10_]);
             }
             return true;
         }

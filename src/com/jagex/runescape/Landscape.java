@@ -269,10 +269,10 @@ public class Landscape {
                 ISAAC.method281((Npc.aScene_3301), 27324, aCollisionMapArray1167);
                 Class27.method364((byte) -34, true);
                 int i_39_ = Class64.setZ;
-                if(Player.anInt3267 < i_39_)
-                    i_39_ = Player.anInt3267;
-                if(i_39_ < -1 + Player.anInt3267)
-                    i_39_ = -1 + Player.anInt3267;
+                if(Player.worldLevel < i_39_)
+                    i_39_ = Player.worldLevel;
+                if(i_39_ < -1 + Player.worldLevel)
+                    i_39_ = -1 + Player.worldLevel;
                 if(!VertexNormal.lowMemory)
                     Npc.aScene_3301.method136(0);
                 else

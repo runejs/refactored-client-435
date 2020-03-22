@@ -32,7 +32,6 @@ public class Widget extends SubNode {
     public static RSString aClass1_2716 = RSString.CreateString("Fehler beim Laden Ihres Charakter)2Profils");
     public static RSString goldCrown = RSString.CreateString("@cr2@");
     public static RSString aClass1_2740 = RSString.CreateString("Enter name of friend to add to list");
-    public static int packetsize = 0;
     public static Widget[][] interfaces;
 
     public boolean isIf3 = false;

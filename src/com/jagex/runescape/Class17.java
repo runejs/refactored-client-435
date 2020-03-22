@@ -4,7 +4,6 @@ import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
-import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.WallDecoration;
@@ -18,7 +17,7 @@ public class Class17 {
     public static RSString aClass1_455 = RSString.CreateString("as it was used to break our rules)3");
     public static int[] anIntArray456;
     public static RSString aClass1_457 = RSString.CreateString("Willkommen auf RuneScape");
-    public static int anInt460 = 0;
+    public static int deregisterActorCount = 0;
     public static Font helveticaBold;
     public static Class68 aClass68_462;
     public static Class68 aClass68_463;
@@ -119,13 +118,13 @@ public class Class17 {
     }
 
     public static void method276(int arg0) {
-        for(int i = arg0; Class60.anInt1407 > i; i++) {
+        for(int i = arg0; Player.trackedPlayerIndex > i; i++) {
             int i_0_;
             if(i == -1)
                 i_0_ = 2047;
             else
-                i_0_ = Class57.anIntArray1334[i];
-            Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_]);
+                i_0_ = Player.trackedPlayerIndices[i];
+            Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[i_0_]);
             if(class40_sub5_sub17_sub4_sub1 != null)
                 Class13.method241(class40_sub5_sub17_sub4_sub1, 1, (byte) 107);
         }

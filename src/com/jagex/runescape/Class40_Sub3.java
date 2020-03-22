@@ -18,6 +18,7 @@ import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.WallDecoration;
@@ -25,7 +26,6 @@ import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class40_Sub3 extends Node {
     public static RSString cmd_fpson = RSString.CreateString("::fpson");
-    public static int[] anIntArray2016 = new int[32768];
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2019;
     public static int anInt2020;
     public static int anInt2021 = 0;
@@ -56,7 +56,7 @@ public class Class40_Sub3 extends Node {
             cmd_fpson = null;
         soundDelay = null;
         aCacheIndex_2037 = null;
-        anIntArray2016 = null;
+        Player.trackedNpcIndices = null;
         cmd_fpson = null;
         aClass40_Sub5_Sub14_Sub4Array2019 = null;
 

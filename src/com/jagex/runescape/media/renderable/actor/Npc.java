@@ -1,12 +1,11 @@
 package com.jagex.runescape.media.renderable.actor;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.Cache;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -257,9 +256,9 @@ public class Npc extends Actor {
                                         } else
                                             childInterface.swapItems(Class55.mouseInvInterfaceIndex, false, GroundItemTile.selectedInventorySlot);
                                         Class32.packetBuffer.putPacket(83);
-                                        Class32.packetBuffer.putDualByte(moveItemInsertionMode, 128);
-                                        Class32.packetBuffer.putCustomNegativeOffsetShortBE(GroundItemTile.selectedInventorySlot, -128);
-                                        Class32.packetBuffer.putOffsetShortLE(Class55.mouseInvInterfaceIndex);
+                                        Class32.packetBuffer.putByte(moveItemInsertionMode);
+                                        Class32.packetBuffer.putShortBE(GroundItemTile.selectedInventorySlot);
+                                        Class32.packetBuffer.putShortLE(Class55.mouseInvInterfaceIndex);
                                         Class32.packetBuffer.putIntME2(Class48.modifiedWidgetId);
                                     }
                                 }
@@ -434,21 +433,21 @@ public class Npc extends Actor {
     }
 
     public static void parseNpcUpdateMasks() {
-        for(int i = 0; i < anInt3153; i++) {
-            int npcIndex = Class24.anIntArray578[i];
-            Npc npc = CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[npcIndex];
-            int mask = Cache.outgoingbuffer.getUnsignedByte();
+        for(int i = 0; i < actorUpdatingIndex; i++) {
+            int npcIndex = Player.actorUpdatingIndices[i];
+            Npc npc = Player.trackedNpcs[npcIndex];
+            int mask = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             if((0x1 & mask) != 0) {
-                int i_3_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-                int i_4_ = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
+                int i_3_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+                int i_4_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
                 npc.method785(i_4_, pulseCycle, i_3_, -121);
                 npc.anInt3139 = pulseCycle + 300;
-                npc.anInt3130 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-                npc.anInt3101 = Cache.outgoingbuffer.getUnsignedByte();
+                npc.anInt3130 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+                npc.anInt3101 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             }
             if((0x20 & mask) != 0) {
-                npc.anInt3091 = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
-                int i_5_ = Cache.outgoingbuffer.getIntBE();
+                npc.anInt3091 = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
+                int i_5_ = IncomingPackets.incomingPacketBuffer.getIntBE();
                 npc.anInt3129 = 0;
                 npc.anInt3093 = pulseCycle + (0xffff & i_5_);
                 npc.anInt3110 = i_5_ >> 16;
@@ -459,24 +458,24 @@ public class Npc extends Actor {
                     npc.anInt3091 = -1;
             }
             if((mask & 0x4) != 0) {
-                npc.facingActorIndex = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
+                npc.facingActorIndex = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
                 if(npc.facingActorIndex == 65535)
                     npc.facingActorIndex = -1;
             }
             if((0x2 & mask) != 0) {
-                int i_6_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-                int i_7_ = Cache.outgoingbuffer.getUnsignedByte();
+                int i_6_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+                int i_7_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
                 npc.method785(i_7_, pulseCycle, i_6_, -119);
                 npc.anInt3139 = pulseCycle + 300;
-                npc.anInt3130 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
-                npc.anInt3101 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
+                npc.anInt3130 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+                npc.anInt3101 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             }
             if((0x40 & mask) != 0) {
-                npc.forcedChatMessage = Cache.outgoingbuffer.getRSString();
+                npc.forcedChatMessage = IncomingPackets.incomingPacketBuffer.getRSString();
                 npc.anInt3078 = 100;
             }
             if((mask & 0x80) != 0) {
-                npc.actorDefinition = ActorDefinition.getDefinition((byte) -122, Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE());
+                npc.actorDefinition = ActorDefinition.getDefinition((byte) -122, IncomingPackets.incomingPacketBuffer.getUnsignedShortBE());
                 npc.anInt3083 = (npc.actorDefinition.rotateRightAnimation);
                 npc.anInt3113 = (npc.actorDefinition.degreesToTurn);
                 npc.turnRightAnimationId = (npc.actorDefinition.rotate90RightAnimation);
@@ -488,14 +487,14 @@ public class Npc extends Actor {
                 npc.turnAroundAnimationId = (npc.actorDefinition.rotate180Animation);
             }
             if((mask & 0x8) != 0) {
-                npc.facePositionX = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
-                npc.facePositionY = Cache.outgoingbuffer.getUnsignedShortLE();
+                npc.facePositionX = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+                npc.facePositionY = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
             }
             if((0x10 & mask) != 0) {
-                int animationId = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
+                int animationId = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
                 if(animationId == 65535)
                     animationId = -1;
-                int animationDelay = Cache.outgoingbuffer.getUnsignedInvertedByte();
+                int animationDelay = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
                 if(animationId == npc.playingAnimation && animationId != -1) {
                     int i_10_ = Class68_Sub1.method1050(animationId, 2).anInt2483;
                     if(i_10_ == 1) {
@@ -518,28 +517,120 @@ public class Npc extends Actor {
         }
     }
 
+    public static void parseTrackedNpcs() {
+        Class40_Sub5_Sub17_Sub1.anInt2959++;
+        IncomingPackets.incomingPacketBuffer.initBitAccess(114);
+        int trackedNpcCount = IncomingPackets.incomingPacketBuffer.getBits(8);
+        if(Player.trackedNpcIndex > trackedNpcCount) {
+            for(int i = trackedNpcCount; i < Player.trackedNpcIndex; i++)
+                Player.deregisterActorIndices[Class17.deregisterActorCount++] = Player.trackedNpcIndices[i];
+        }
+        if(Player.trackedNpcIndex < trackedNpcCount)
+            throw new RuntimeException("gnpov1");
+        Player.trackedNpcIndex = 0;
+        for(int i = 0; i < trackedNpcCount; i++) {
+            int trackedNpcIndex = Player.trackedNpcIndices[i];
+            Npc npc = (Player.trackedNpcs[trackedNpcIndex]);
+            int updateRequired = IncomingPackets.incomingPacketBuffer.getBits(1);
+            if(updateRequired == 0) {
+                Player.trackedNpcIndices[Player.trackedNpcIndex++] = trackedNpcIndex;
+                npc.anInt3134 = Node.pulseCycle;
+            } else {
+                int movementType = IncomingPackets.incomingPacketBuffer.getBits(2);
+                if(movementType == 0) { // No movement
+                    Player.trackedNpcIndices[Player.trackedNpcIndex++] = trackedNpcIndex;
+                    npc.anInt3134 = Node.pulseCycle;
+                    Player.actorUpdatingIndices[actorUpdatingIndex++] = trackedNpcIndex;
+                } else if(movementType == 1) { // Walking
+                    Player.trackedNpcIndices[Player.trackedNpcIndex++] = trackedNpcIndex;
+                    npc.anInt3134 = Node.pulseCycle;
+                    int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
+                    npc.method782(walkDirection, (byte) -96, false);
+                    int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
+                    if(runUpdateBlock == 1)
+                        Player.actorUpdatingIndices[actorUpdatingIndex++] = trackedNpcIndex;
+                } else if(movementType == 2) { // Running
+                    Player.trackedNpcIndices[Player.trackedNpcIndex++] = trackedNpcIndex;
+                    npc.anInt3134 = Node.pulseCycle;
+                    int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
+                    npc.method782(walkDirection, (byte) -96, true);
+                    int runDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
+                    npc.method782(runDirection, (byte) -96, true);
+                    int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
+                    if(runUpdateBlock == 1)
+                        Player.actorUpdatingIndices[actorUpdatingIndex++] = trackedNpcIndex;
+                } else if(movementType == 3) // Yeet
+                    Player.deregisterActorIndices[Class17.deregisterActorCount++] = trackedNpcIndex;
+            }
+        }
+    }
+
+    public static void registerNewNpcs() {
+        while(IncomingPackets.incomingPacketBuffer.method510(121, IncomingPackets.incomingPacketSize) >= 27) {
+            int i = IncomingPackets.incomingPacketBuffer.getBits(15);
+            if(i == 32767)
+                break;
+            boolean bool = false;
+            if(Player.trackedNpcs[i] == null) {
+                Player.trackedNpcs[i] = new Npc();
+                bool = true;
+            }
+            Npc npc = Player.trackedNpcs[i];
+            Player.trackedNpcIndices[Player.trackedNpcIndex++] = i;
+            npc.anInt3134 = pulseCycle;
+            int initialFaceDirection = (Class40_Sub5_Sub17_Sub1.directions[IncomingPackets.incomingPacketBuffer.getBits(3)]);
+            if(bool)
+                npc.anInt3080 = initialFaceDirection;
+            int offsetX = IncomingPackets.incomingPacketBuffer.getBits(5);
+            if(offsetX > 15)
+                offsetX -= 32;
+            int offsetY = IncomingPackets.incomingPacketBuffer.getBits(5);
+            int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
+            if(offsetY > 15)
+                offsetY -= 32;
+            if(runUpdateBlock == 1)
+                Player.actorUpdatingIndices[actorUpdatingIndex++] = i;
+            int discardWalkingQueue = IncomingPackets.incomingPacketBuffer.getBits(1);
+
+            npc.actorDefinition = ActorDefinition.getDefinition((byte) -121, IncomingPackets.incomingPacketBuffer.getBits(13));
+            npc.turnLeftAnimationId = (npc.actorDefinition.rotate90LeftAnimation);
+            npc.idleAnimation = (npc.actorDefinition.stanceAnimation);
+            npc.anInt3083 = (npc.actorDefinition.rotateRightAnimation);
+            npc.walkAnimationId = (npc.actorDefinition.walkAnimation);
+            npc.anInt3096 = (npc.actorDefinition.tileSpacesOccupied);
+            npc.turnAroundAnimationId = (npc.actorDefinition.rotate180Animation);
+            npc.standTurnAnimationId = (npc.actorDefinition.rotateLeftAnimation);
+            npc.anInt3113 = (npc.actorDefinition.degreesToTurn);
+            if(npc.anInt3113 == 0)
+                npc.anInt3118 = 0;
+            npc.turnRightAnimationId = (npc.actorDefinition.rotate90RightAnimation);
+            npc.method787((Player.localPlayer.pathX[0]) + offsetY, -7717, discardWalkingQueue == 1, (Player.localPlayer.pathY[0]) + offsetX);
+        }
+        IncomingPackets.incomingPacketBuffer.finishBitAccess((byte) -110);
+    }
+
     public Model getRotatedModel(int arg0) {
         if(actorDefinition == null)
             return null;
         int i = 25 % ((41 - arg0) / 47);
         AnimationSequence animationSequence = (playingAnimation == -1 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2));
         AnimationSequence animationSequence_0_ = (anInt3077 != -1 && (anInt3077 != idleAnimation || animationSequence == null) ? Class68_Sub1.method1050(anInt3077, 2) : null);
-        Model class40_sub5_sub17_sub5 = actorDefinition.getChildModel((byte) -50, animationSequence, animationSequence_0_, anInt3116, anInt3104);
-        if(class40_sub5_sub17_sub5 == null)
+        Model model = actorDefinition.getChildModel((byte) -50, animationSequence, animationSequence_0_, anInt3116, anInt3104);
+        if(model == null)
             return null;
-        class40_sub5_sub17_sub5.method799();
-        anInt3117 = class40_sub5_sub17_sub5.modelHeight;
+        model.method799();
+        anInt3117 = model.modelHeight;
         if(anInt3091 != -1 && anInt3140 != -1) {
-            Model class40_sub5_sub17_sub5_1_ = SpotAnimDefinition.forId(anInt3091, 13).method549(anInt3140, 2);
-            if(class40_sub5_sub17_sub5_1_ != null) {
-                class40_sub5_sub17_sub5_1_.translate(0, -anInt3110, 0);
-                Model[] class40_sub5_sub17_sub5s = {class40_sub5_sub17_sub5, class40_sub5_sub17_sub5_1_};
-                class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, 2, true);
+            Model model1 = SpotAnimDefinition.forId(anInt3091, 13).method549(anInt3140, 2);
+            if(model1 != null) {
+                model1.translate(0, -anInt3110, 0);
+                Model[] models = {model, model1};
+                model = new Model(models, 2, true);
             }
         }
         if(actorDefinition.tileSpacesOccupied == 1)
-            class40_sub5_sub17_sub5.singleTile = true;
-        return class40_sub5_sub17_sub5;
+            model.singleTile = true;
+        return model;
     }
 
     public boolean isVisible(int arg0) {

@@ -7,6 +7,8 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.util.CollisionMap;
 
@@ -14,12 +16,10 @@ public class Class24 {
     public static RSString aClass1_575 = RSString.CreateString("Freund hinzuf-Ugen");
     public static int anInt576;
     public static int[] anIntArray577;
-    public static int[] anIntArray578 = new int[2048];
     public static int anInt579;
     public static CacheIndex_Sub1[] aClass6_Sub1Array580 = new CacheIndex_Sub1[256];
     public static int[] anIntArray581 = new int[4000];
     public static int anInt582;
-    public static int[] INCOMINGPACKETSIZES = (new int[]{0, 15, 6, 8, 0, 0, 1, 0, 0, 5, 0, 0, -2, 0, 0, 0, 0, 0, 1, 7, 0, 0, 0, -2, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 1, 4, 0, -1, 0, 0, 0, 0, 2, 0, 4, 0, 0, 0, 0, -2, 2, 0, 0, 0, 0, 0, 1, -1, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, -1, 0, 4, 0, 0, 0, 1, 0, 0, 0, -2, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 5, 2, 8, 2, 0, 8, 0, 0, 0, 0, 0, 0, 0, -2, 3, 2, 5, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 10, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 6, 0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 2, 0, 0, 4, 5, 0, 0, 0, 0, 0, 0, 6, 0, 0, 2, 6, 0, 0, 0, 0, 0, 0, 0, 6, 4, 3, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 2, 0, 4, -2, 0, 0, -2, 0, 0, 2, 0, 0, 0, 0, 3, -1, 0, 0, 0, 0, 0, 14, 0, 6, 0, 0, 6, 1, 0, 2, 0, 0, -2, 4, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 6, 2, 4});
     public static int anInt584;
     public static int anInt585;
     public static int anInt586;
@@ -30,7 +30,7 @@ public class Class24 {
         if(!Class52.method948(arg2, arg3, arg1, arg0 ^ ~0x1132))
             return null;
         if(arg0 != 7729)
-            INCOMINGPACKETSIZES = null;
+            IncomingPackets.INCOMING_PACKET_SIZES = null;
         return Class22_Sub2.method315(arg0 ^ 0x1e31);
 
     }
@@ -54,8 +54,8 @@ public class Class24 {
     public static void method339(byte arg0) {
 
         anIntArray577 = null;
-        INCOMINGPACKETSIZES = null;
-        anIntArray578 = null;
+        IncomingPackets.INCOMING_PACKET_SIZES = null;
+        Player.actorUpdatingIndices = null;
         aClass6_Sub1Array580 = null;
         if(arg0 != -41)
             aClass6_Sub1Array580 = null;
