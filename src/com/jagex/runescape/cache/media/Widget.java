@@ -220,16 +220,13 @@ public class Widget extends SubNode {
         }
     }
 
-    public static void method640(byte arg0) {
+    public static void method640() {
         Class68.aClass9_1615.method235((byte) 49);
     }
 
-    public static void method641(int arg0) {
+    public static void method641() {
         aClass1_2716 = null;
         aClass1_2671 = null;
-        if(arg0 > -88) {
-            method648(85, (byte) 24);
-        }
         cmd_errortest = null;
         goldCrown = null;
         aClass1_2637 = null;
@@ -1615,7 +1612,7 @@ public class Widget extends SubNode {
         if(class40_sub5_sub14_sub1 != null) {
             return class40_sub5_sub14_sub1;
         }
-        class40_sub5_sub14_sub1 = Class40_Sub5_Sub17_Sub1.method760(0, (byte) 36, (Class40_Sub5_Sub15.aCacheIndex_2779), fontId);
+        class40_sub5_sub14_sub1 = TypeFace.getFont((Class40_Sub5_Sub15.aCacheIndex_2779), 0, fontId);
         if(class40_sub5_sub14_sub1 == null) {
             Class40_Sub13.aBoolean2177 = true;
         } else {

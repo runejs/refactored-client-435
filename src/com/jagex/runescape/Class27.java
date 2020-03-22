@@ -614,7 +614,6 @@ public class Class27 {
                             bool = (Class38_Sub1.method448(1, 0, (Player.localPlayer.pathY[0]), i, (byte) 100, 0, false, 0, 1, (Player.localPlayer.pathX[0]), i_10_, 2));
                         OverlayDefinition.anInt2319 = 0;
                         Class40_Sub11.anInt2163 = Class57.anInt1338;
-                        CacheIndex_Sub1.anInt1792++;
                         Class45.anInt1075 = 2;
                         Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                         Class32.packetBuffer.putPacket(85);
@@ -815,7 +814,6 @@ public class Class27 {
                     if(action == 39) {
                         Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_12_]);
                         if(class40_sub5_sub17_sub4_sub1 != null) {
-                            Landscape.anInt1164++;
                             Class38_Sub1.method448(1, 0, (Player.localPlayer.pathY[0]), (class40_sub5_sub17_sub4_sub1.pathY[0]), (byte) 97, 0, false, 0, 1, (Player.localPlayer.pathX[0]), (class40_sub5_sub17_sub4_sub1.pathX[0]), 2);
                             OverlayDefinition.anInt2319 = 0;
                             Class40_Sub11.anInt2163 = Class57.anInt1338;
@@ -989,7 +987,7 @@ public class Class27 {
 
     public static IndexedImage method363(CacheIndex arg0, byte arg1, int arg2, int arg3) {
         int i = 106 % ((arg1 - 66) / 53);
-        if(!Class52.method948(arg2, arg3, arg0, -3844))
+        if(!ImageRGB.spriteExists(arg2, arg3, arg0))
             return null;
         return SubNode.method538(0);
 
@@ -1105,7 +1103,7 @@ public class Class27 {
                 Cache.aBoolean330 = false;
                 Class52.method943(ItemDefinition.anInt2797, arg0 ^ 0x4e81, WallDecoration.fontNormal, Class4.anInt185, Class35.publicChatMode);
             }
-            Landscape.method934((Player.localPlayer.anInt3098), -118, Player.anInt3267, Class5.anInt199, (Player.localPlayer.anInt3089));
+            Landscape.method934((Player.localPlayer.anInt3098), Player.anInt3267, Class5.anInt199, (Player.localPlayer.anInt3089));
             Class5.anInt199 = 0;
         }
     }

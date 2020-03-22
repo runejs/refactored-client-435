@@ -28,13 +28,10 @@ import java.util.zip.GZIPInputStream;
 public class Landscape {
     public static int anInt1157 = 0;
     public static RSString aClass1_1158;
-    public static int anInt1159;
     public static RSString aClass1_1160;
     public static RSString aClass1_1161;
     public static RSString aClass1_1162;
     public static RSString aClass1_1163;
-    public static int anInt1164;
-    public static int anInt1165;
     public static int mouseY = 0;
     public static CollisionMap[] aCollisionMapArray1167;
     public static int[] anIntArray1168;
@@ -46,12 +43,9 @@ public class Landscape {
     public static RSString aClass1_1174;
     public static int[][] anIntArrayArray1175;
     public static RSString aClass1_1176;
-    public static int anInt1177;
     public static RSString aClass1_1178;
-    public static int anInt1179;
     public static RSString aClass1_1180;
     public static RSString aClass1_1181;
-    public static int anInt1182;
     public static RSString aClass1_1183;
     public static RSString[] aClass1Array1184;
     public static Class68 aClass68_1185;
@@ -80,9 +74,7 @@ public class Landscape {
     }
 
     public static byte[] method931(byte[] arg0) {
-
         Buffer class40_sub1 = new Buffer(arg0);
-        anInt1159++;
         int i = class40_sub1.getUnsignedByte();
         int i_0_ = class40_sub1.getIntBE();
         if(i_0_ < 0 || (Class51.anInt1195 != 0 && (Class51.anInt1195 < i_0_)))
@@ -112,12 +104,9 @@ public class Landscape {
         byte[] is = new byte[i_0_];
         class40_sub1.getBytes(i_0_, 0, is);
         return is;
-
     }
 
-    public static void method933(int arg0) {
-
-        anInt1179++;
+    public static void method933() {
         Class27.method364((byte) -34, false);
         Class37.anInt874 = 0;
         boolean bool = true;
@@ -315,10 +304,7 @@ public class Landscape {
 
     }
 
-    public static void method934(int arg0, int arg1, int arg2, int arg3, int arg4) {
-
-        anInt1165++;
-        int i = 63 % ((arg1 + 53) / 57);
+    public static void method934(int arg0, int arg2, int arg3, int arg4) {
         for(Class40_Sub2 class40_sub2 = ((Class40_Sub2) Class40_Sub5_Sub1.aClass45_2268.method902((byte) -90)); class40_sub2 != null; class40_sub2 = (Class40_Sub2) Class40_Sub5_Sub1.aClass45_2268.method909(-4)) {
             if(class40_sub2.anInt1997 != -1 || class40_sub2.anIntArray2005 != null) {
                 int i_48_ = 0;
@@ -379,11 +365,9 @@ public class Landscape {
                 }
             }
         }
-
     }
 
-    public static void method935(int arg0) {
-
+    public static void method935() {
         anIntArrayArray1175 = null;
         aClass1_1163 = null;
         aClass1_1160 = null;
@@ -399,21 +383,16 @@ public class Landscape {
         aClass1_1172 = null;
         aClass1_1180 = null;
         aClass68_1185 = null;
-        if(arg0 != 10582)
-            aClass1_1158 = null;
         aClass1_1173 = null;
         anIntArray1186 = null;
         aClass1Array1184 = null;
         aClass1_1169 = null;
         aClass1_1174 = null;
-
     }
 
     public static void method936(int arg0, CacheIndex arg1) {
-
         if(arg0 != -17552)
             ActorDefinition.getDefinition((byte) -94, 97);
-        anInt1177++;
         RSCanvas.aCacheIndex_61 = arg1;
 
     }

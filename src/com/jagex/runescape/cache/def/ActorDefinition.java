@@ -207,26 +207,21 @@ public class ActorDefinition extends SubNode {
         KeyFocusListener.aClass45_1278.pushBack(class40_sub11, 92);
     }
 
-    public static void method581(int arg0) {
+    public static void method581() {
         anIntArray2386 = null;
         aClass6_Sub1_2377 = null;
         aClass1_2432 = null;
         aClass1_2396 = null;
         aClass1_2423 = null;
         aClass1_2417 = null;
-        if(arg0 == -96) {
-            aClass1_2410 = null;
-            aByteArray2416 = null;
-            aClass1_2401 = null;
-            aClass1_2392 = null;
-            str_Moderator_mute_option_ON = null;
-        }
-
+        aClass1_2410 = null;
+        aByteArray2416 = null;
+        aClass1_2401 = null;
+        aClass1_2392 = null;
+        str_Moderator_mute_option_ON = null;
     }
 
     public static ActorDefinition getDefinition(byte arg0, int id) {
-
-        Landscape.anInt1182++;
         if(arg0 >= -95)
             Landscape.aClass1_1160 = null;
         ActorDefinition definition = ((ActorDefinition) ISAAC.aClass9_510.get((long) id, (byte) 119));
@@ -239,7 +234,6 @@ public class ActorDefinition extends SubNode {
             definition.readValues(new Buffer(is));
         ISAAC.aClass9_510.put(-7208, (long) id, definition);
         return definition;
-
     }
 
     public Model getChildModel(byte arg0, AnimationSequence arg1, AnimationSequence arg2, int arg3, int arg4) {

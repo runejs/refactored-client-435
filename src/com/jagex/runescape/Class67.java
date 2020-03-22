@@ -65,15 +65,13 @@ public class Class67 {
         return i;
     }
 
-    public static void method1037(boolean arg0) {
+    public static void method1037() {
         anIntArray1579 = null;
         aClass1_1598 = null;
         aLongArray1614 = null;
         aClass1_1612 = null;
         aClass1_1580 = null;
         aClass1_1613 = null;
-        if(arg0)
-            aClass1_1590 = null;
         aClass9_1582 = null;
         aClass1_1591 = null;
         aClass1_1605 = null;

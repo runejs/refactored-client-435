@@ -405,7 +405,7 @@ public class Npc extends Actor {
         }
     }
 
-    public static void method797(int arg0) {
+    public static void method797() {
         aClass1_3307 = null;
         anIntArray3304 = null;
         aClass1_3305 = null;
@@ -416,8 +416,6 @@ public class Npc extends Actor {
         aClass1_3302 = null;
         aScene_3301 = null;
         aClass1_3309 = null;
-        if(arg0 != 210)
-            aClass1_3307 = null;
     }
 
     public static OverlayDefinition loadFloor(int arg0, int arg1) {

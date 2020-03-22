@@ -202,18 +202,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
 
     }
 
-    public static TypeFace method760(int arg0, byte arg1, CacheIndex arg2, int arg3) {
-
-        anInt2978++;
-        int i = -104 / ((-22 - arg1) / 53);
-        if(!Class52.method948(arg0, arg3, arg2, -3844))
-            return null;
-        return Class60.method987(114);
-
-    }
-
-    public static void method761(byte arg0) {
-
+    public static void method761() {
         aClass1Array2964 = null;
         aClass1_2966 = null;
         aClass1_2963 = null;
@@ -224,7 +213,6 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         aClass1_2991 = null;
         aClass1_3002 = null;
         aClass1_3012 = null;
-        int i = -48 % ((46 - arg0) / 37);
         aClass1_2985 = null;
         aClass1_2969 = null;
         aClass1_2965 = null;
@@ -236,7 +224,6 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         aClass1_2988 = null;
         aClass1_3010 = null;
         aClass1_3009 = null;
-
     }
 
     public static void method762(int arg0, Actor actor) {

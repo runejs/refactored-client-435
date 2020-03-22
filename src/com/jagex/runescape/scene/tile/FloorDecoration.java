@@ -418,7 +418,7 @@ public class FloorDecoration {
         if(arg1 != 255)
             aClass1_591 = null;
         int i_50_ = arg0.method179(arg1 ^ 0xe3, i, arg2);
-        return Class40_Sub5_Sub17_Sub1.method760(i_50_, (byte) -124, arg0, i);
+        return TypeFace.getFont(arg0, i_50_, i);
 
     }
 

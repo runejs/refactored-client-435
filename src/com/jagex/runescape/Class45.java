@@ -40,12 +40,10 @@ public class Class45 {
 
     }
 
-    public static void method900(int arg0) {
+    public static void method900() {
         anIntArray1083 = null;
         aClass45_1064 = null;
         aClass30_1082 = null;
-        if(arg0 != 29690)
-            aClass40_Sub1_1081 = null;
         aClass1_1077 = null;
         aClass40_Sub5_Sub14_Sub4_1057 = null;
         aClass1_1085 = null;

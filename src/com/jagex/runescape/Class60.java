@@ -37,14 +37,6 @@ public class Class60 {
         cameraVelocityVertical = 0;
     }
 
-    public static TypeFace method987(int arg0) {
-        TypeFace class40_sub5_sub14_sub1 = new TypeFace((Actor.anIntArray3111), Class17.anIntArray456, (Npc.anIntArray3312), Buffer.anIntArray1972, GroundItemTile.aByteArrayArray1370);
-        ActorDefinition.method569();
-        if(arg0 < 4)
-            return null;
-        return class40_sub5_sub14_sub1;
-    }
-
     public static int method988(CacheIndex arg0, CacheIndex arg1) {
         int i = 0;
         if(arg0.method194(Class32.aClass1_772, Class22_Sub2.string_blank, -1234))
@@ -65,8 +57,6 @@ public class Class60 {
             CollisionMap.aClass8_166.method213();
             CollisionMap.aClass8_166 = null;
         }
-        if(!arg0)
-            method987(-89);
     }
 
     public static void method990(int arg0) {

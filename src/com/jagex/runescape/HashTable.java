@@ -77,12 +77,10 @@ public class HashTable {
         }
     }
 
-    public static void method328(boolean arg0) {
+    public static void method328() {
         aClass40_Sub5_Sub14_Sub2_549 = null;
         aClass1_553 = null;
         aClass1_558 = null;
-        if(arg0)
-            aClass1_569 = null;
         aClass1_563 = null;
         aClass1_569 = null;
     }

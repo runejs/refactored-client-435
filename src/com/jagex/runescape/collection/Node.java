@@ -140,7 +140,7 @@ public class Node {
         }
     }
 
-    public static void method458(byte arg0) {
+    public static void method458() {
         aClass1_952 = null;
         aClass1_939 = null;
         aClass1_964 = null;
@@ -164,8 +164,6 @@ public class Node {
         aClass1_963 = null;
         aClass1_942 = null;
         aClass1_946 = null;
-        if(arg0 <= 60)
-            method459(69, 126, (byte) 94);
         aClass1_929 = null;
         aClass1_955 = null;
         aClass1_931 = null;
@@ -203,7 +201,7 @@ public class Node {
         if(aClass40_968 == null)
             return false;
         if(arg0)
-            method458((byte) -21);
+            method458();
         return true;
     }
 

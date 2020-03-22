@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
+import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.scene.Scene;
@@ -27,7 +28,7 @@ public class Class24 {
     public static IndexedImage[] method337(int arg0, CacheIndex arg1, int arg2, int arg3) {
 
         anInt582++;
-        if(!Class52.method948(arg2, arg3, arg1, arg0 ^ ~0x1132))
+        if(!ImageRGB.spriteExists(arg2, arg3, arg1))
             return null;
         if(arg0 != 7729)
             INCOMINGPACKETSIZES = null;

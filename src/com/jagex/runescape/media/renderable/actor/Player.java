@@ -78,17 +78,15 @@ public class Player extends Actor {
         return arg1 < 129 || arg1 > 159;
     }
 
-    public static void method794(boolean arg0) {
+    public static void method794() {
         aClass1_3275 = null;
         aClass1_3269 = null;
         aByteArray3270 = null;
         aClass1_3285 = null;
         anIntArray3284 = null;
-        if(!arg0) {
-            aClass1_3286 = null;
-            aClass1_3290 = null;
-            aClass1_3256 = null;
-        }
+        aClass1_3286 = null;
+        aClass1_3290 = null;
+        aClass1_3256 = null;
     }
 
     public static void parsePlayerUpdateMasks(Player player, int mask, int arg3) {

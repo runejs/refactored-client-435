@@ -1,11 +1,18 @@
 package com.jagex.runescape.cache.media;
 
+import com.jagex.runescape.Class17;
 import com.jagex.runescape.RSString;
+import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.TextUtils.TextColourNode;
 import com.jagex.runescape.cache.media.TextUtils.TextColourQueue;
 import com.jagex.runescape.cache.media.TextUtils.TextTagNode;
 import com.jagex.runescape.cache.media.TextUtils.TextTagQueue;
+import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.Rasterizer;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.scene.GroundItemTile;
 
 import java.awt.*;
 import java.util.Random;
@@ -105,6 +112,18 @@ public class TypeFace extends Rasterizer {
         characterDefaultHeight = characterYOffsets[32] + characterHeights[32];
         anInt2920 = characterDefaultHeight - i_48_;
         anInt2919 = i_49_ - characterDefaultHeight;
+    }
+
+    public static TypeFace constructFont() {
+        TypeFace class40_sub5_sub14_sub1 = new TypeFace((Actor.anIntArray3111), Class17.anIntArray456, (Npc.anIntArray3312), Buffer.anIntArray1972, GroundItemTile.aByteArrayArray1370);
+        ActorDefinition.method569();
+        return class40_sub5_sub14_sub1;
+    }
+
+    public static TypeFace getFont(CacheIndex arg2, int arg0, int arg3) {
+        if(!ImageRGB.spriteExists(arg0, arg3, arg2))
+            return null;
+        return constructFont();
     }
 
     private int getColour(RSString getColour) {

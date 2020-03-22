@@ -237,7 +237,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
     }
 
-    public abstract void method16(int i);
+    public abstract void reset();
 
     public synchronized void method17(int arg0) {
         if(!PacketBuffer.aBoolean2255) {
@@ -268,7 +268,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     /* empty */
                 }
             }
-            method16(28065);
+            reset();
         }
     }
 
