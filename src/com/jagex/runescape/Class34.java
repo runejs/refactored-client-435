@@ -159,44 +159,6 @@ public class Class34 {
 
     }
 
-    public static void registerNewPlayers(byte arg0) {
-
-        int i = -2 / ((-31 - arg0) / 57);
-        anInt807++;
-        while(Cache.outgoingbuffer.method510(125, Widget.packetsize) >= 11) {
-            int i_0_ = Cache.outgoingbuffer.getBits(11, (byte) -65);
-            if(i_0_ == 2047)
-                break;
-            boolean bool = false;
-            if((Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_]) == null) {
-                Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_] = new Player();
-                if(Class22.aClass40_Sub1Array534[i_0_] != null)
-                    Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_].parsePlayerAppearanceData(Class22.aClass40_Sub1Array534[i_0_]);
-                bool = true;
-            }
-            Class57.anIntArray1334[Class60.anInt1407++] = i_0_;
-            Player player = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_0_]);
-            player.anInt3134 = Node.pulseCycle;
-            int i_1_ = Cache.outgoingbuffer.getBits(5, (byte) -65);
-            int i_2_ = Cache.outgoingbuffer.getBits(5, (byte) -65);
-            if(i_1_ > 15)
-                i_1_ -= 32;
-            if(i_2_ > 15)
-                i_2_ -= 32;
-            int dir = Cache.outgoingbuffer.getBits(3, (byte) -65);
-            int faceDirection = (Class40_Sub5_Sub17_Sub1.anIntArray2987[dir]);
-            if(bool)
-                player.anInt3080 = faceDirection;
-            int i_4_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
-            int i_5_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
-            if(i_5_ == 1)
-                Class24.anIntArray578[Actor.anInt3153++] = i_0_;
-            player.method787(i_2_ + (Player.localPlayer.pathX[0]), -7717, i_4_ == 1, (Player.localPlayer.pathY[0]) + i_1_);
-        }
-        Cache.outgoingbuffer.finishBitAccess((byte) -110);
-
-    }
-
     public static int method420(int arg0, int arg1, boolean arg2) {
 
         anInt806++;

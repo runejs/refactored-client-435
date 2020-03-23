@@ -8,13 +8,16 @@ import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.media.VertexNormal;
+import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class60 {
     public static RSString aClass1_1401;
     public static boolean aBoolean1402 = false;
-    public static int anInt1407;
     public static RSString aClass1_1408 = RSString.CreateString("auf der Hautpseite)3");
     public static RSString aClass1_1409;
     public static RSString aClass1_1411;
@@ -27,7 +30,7 @@ public class Class60 {
         aClass1_1401 = RSString.CreateString(",Zffentlicher Chat");
         aClass1_1411 = RSString.CreateString("Error loading your profile)3");
         aClass1_1409 = RSString.CreateString("Wen m-Ochten Sie von der Liste entfernen?");
-        anInt1407 = 0;
+        Player.trackedPlayerIndex = 0;
         aClass1_1416 = aClass1_1411;
         cameraVelocityVertical = 0;
     }

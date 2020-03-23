@@ -1,7 +1,6 @@
 package com.jagex.runescape.scene.tile;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.ActorDefinition;
@@ -10,12 +9,12 @@ import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.TypeFace;
-import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.util.SignlinkNode;
@@ -69,29 +68,29 @@ public class FloorDecoration {
     public static void method343(boolean arg0, int arg1) {
         GroundItemTile.aBoolean1349 = arg0;
         if(GroundItemTile.aBoolean1349) {
-            int i = Cache.outgoingbuffer.getUnsignedShortBE();
-            int i_0_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
-            int i_1_ = Cache.outgoingbuffer.getUnsignedShortBE();
-            int i_2_ = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
-            int i_3_ = Cache.outgoingbuffer.getUnsignedShortBE();
-            Cache.outgoingbuffer.initBitAccess(arg1 ^ 0x1625);
+            int i = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+            int i_0_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
+            int i_1_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+            int i_2_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            int i_3_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+            IncomingPackets.incomingPacketBuffer.initBitAccess(arg1 ^ 0x1625);
             for(int i_4_ = 0; i_4_ < 4; i_4_++) {
                 for(int i_5_ = 0; i_5_ < 13; i_5_++) {
                     for(int i_6_ = 0; i_6_ < 13; i_6_++) {
-                        int i_7_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
+                        int i_7_ = IncomingPackets.incomingPacketBuffer.getBits(1);
                         if(i_7_ != 1)
                             OverlayDefinition.anIntArrayArrayArray2333[i_4_][i_5_][i_6_] = -1;
                         else
-                            OverlayDefinition.anIntArrayArrayArray2333[i_4_][i_5_][i_6_] = Cache.outgoingbuffer.getBits(26, (byte) -65);
+                            OverlayDefinition.anIntArrayArrayArray2333[i_4_][i_5_][i_6_] = IncomingPackets.incomingPacketBuffer.getBits(26);
                     }
                 }
             }
-            Cache.outgoingbuffer.finishBitAccess((byte) -110);
-            int i_8_ = ((-Cache.outgoingbuffer.currentPosition + Widget.packetsize) / 16);
+            IncomingPackets.incomingPacketBuffer.finishBitAccess((byte) -110);
+            int i_8_ = ((-IncomingPackets.incomingPacketBuffer.currentPosition + IncomingPackets.incomingPacketSize) / 16);
             Class44.anIntArrayArray1030 = new int[i_8_][4];
             for(int i_9_ = 0; i_8_ > i_9_; i_9_++) {
                 for(int i_10_ = 0; i_10_ < 4; i_10_++)
-                    Class44.anIntArrayArray1030[i_9_][i_10_] = Cache.outgoingbuffer.getIntME2();
+                    Class44.anIntArrayArray1030[i_9_][i_10_] = IncomingPackets.incomingPacketBuffer.getIntBE();
             }
             Class45.anIntArray1071 = new int[i_8_];
             RSString.aByteArrayArray1715 = new byte[i_8_][];
@@ -127,16 +126,16 @@ public class FloorDecoration {
             }
             Actor.method789(i_0_, arg1 + -6688, i_3_, i_1_, i, i_2_);
         } else {
-            int i = Cache.outgoingbuffer.getUnsignedShortBE();
-            int i_21_ = Cache.outgoingbuffer.getUnsignedShortLE();
-            int i_22_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
-            int i_23_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
-            int i_24_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
-            int i_25_ = ((Widget.packetsize - Cache.outgoingbuffer.currentPosition) / 16);
+            int i = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+            int i_21_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
+            int i_22_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+            int i_23_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
+            int i_24_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            int i_25_ = ((IncomingPackets.incomingPacketSize - IncomingPackets.incomingPacketBuffer.currentPosition) / 16);
             Class44.anIntArrayArray1030 = new int[i_25_][4];
             for(int i_26_ = 0; (i_25_ > i_26_); i_26_++) {
                 for(int i_27_ = 0; i_27_ < 4; i_27_++)
-                    Class44.anIntArrayArray1030[i_26_][i_27_] = Cache.outgoingbuffer.getIntME1();
+                    Class44.anIntArrayArray1030[i_26_][i_27_] = IncomingPackets.incomingPacketBuffer.getIntBE();
             }
             ISAAC.anIntArray528 = new int[i_25_];
             RSString.aByteArrayArray1715 = new byte[i_25_][];

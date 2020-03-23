@@ -4,13 +4,13 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
 
 public class CacheIndex_Sub1 extends CacheIndex {
     public static RSString aClass1_1798;
     public static RSString aClass1_1799;
     public static RSString aClass1_1801 = RSString.CreateString("Freunde");
     public static int anInt1806;
-    public static Npc[] aClass40_Sub5_Sub17_Sub4_Sub2Array1813;
     public static RSString aClass1_1814;
     public static RSString aClass1_1816;
     public static int anInt1819;
@@ -21,7 +21,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
         aClass1_1799 = RSString.CreateString("Offline");
         aClass1_1816 = RSString.CreateString(" zuerst von Ihrer Freunde)2Liste(Q");
         anInt1819 = -1;
-        aClass40_Sub5_Sub17_Sub4_Sub2Array1813 = new Npc[32768];
+        Player.trackedNpcs = new Npc[32768];
     }
 
     public volatile boolean[] aBooleanArray1796;
@@ -45,7 +45,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
 
     public static void method203() {
         aClass1_1799 = null;
-        aClass40_Sub5_Sub17_Sub4_Sub2Array1813 = null;
+        Player.trackedNpcs = null;
         aClass1_1801 = null;
         aClass1_1798 = null;
         aClass1_1816 = null;

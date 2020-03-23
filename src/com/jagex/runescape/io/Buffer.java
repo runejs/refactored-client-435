@@ -57,26 +57,6 @@ public class Buffer extends Node {
         anIntArray1972 = null;
     }
 
-    public int getNegativeOffsetShortBE() {
-        currentPosition += 2;
-        int i = ((buffer[currentPosition - 2] & 0xff) << 8) + (buffer[currentPosition - 1] - 128 & 0xff);
-        if(i > 32767) {
-            i -= 65536;
-        }
-        return i;
-    }
-
-    public int getUnsignedNegativeOffsetShortBE() {
-        currentPosition += 2;
-        return ((buffer[currentPosition - 2] & 0xff) << 8) + (buffer[currentPosition - 1] - 128 & 0xff);
-    }
-
-    public void putNegativeOffsetBytes(int arg1, byte[] arg2, int arg3) {
-        for(int i = arg1; i < arg3 + arg1; i++) {
-            arg2[i] = (byte) (buffer[currentPosition++] - 128);
-        }
-    }
-
     public int getShortBE() {
         currentPosition += 2;
         int i = ((buffer[currentPosition - 2] & 0xff) << 8) + (buffer[currentPosition - 1] & 0xff);
@@ -109,10 +89,6 @@ public class Buffer extends Node {
         currentPosition = 0;
         putByte(rsaBytes.length);
         putBytes(0, rsaBytes.length, rsaBytes);
-    }
-
-    public byte getInvertedByte() {
-        return (byte) -buffer[currentPosition++];
     }
 
     public int getUnsignedByte() {
@@ -148,10 +124,6 @@ public class Buffer extends Node {
         buffer[currentPosition++] = (byte) (value >> 16);
     }
 
-    public int getUnsignedInvertedByte() {
-        return 0xff & -buffer[currentPosition++];
-    }
-
     // ???
     public int method473(int value) {
         int i = Class67.method1034(true, value, currentPosition, buffer);
@@ -176,27 +148,14 @@ public class Buffer extends Node {
         }
     }
 
-    public int getUnsignedNegativeOffsetByte() {
-        return 0xff & buffer[currentPosition++] - 128;
-    }
-
     public void putMediumBE(int value) {
         buffer[currentPosition++] = (byte) (value >> 16);
         buffer[currentPosition++] = (byte) (value >> 8);
         buffer[currentPosition++] = (byte) value;
     }
 
-    public void putOffsetShortLE(int value) {
-        buffer[currentPosition++] = (byte) (128 + value);
-        buffer[currentPosition++] = (byte) (value >> 8);
-    }
-
     public void finishVarByte(int value) {
         buffer[-1 + (currentPosition + -value)] = (byte) value;
-    }
-
-    public int putUnsignedPreNegativeOffsetByte() {
-        return 0xff & 128 - buffer[currentPosition++];
     }
 
     public void putLongBE(long arg0) {
@@ -260,20 +219,6 @@ public class Buffer extends Node {
         currentPosition = i_3_;
     }
 
-    public int getNegativeOffsetShortLE() {
-        currentPosition += 2;
-        int i = ((0xff & -128 + buffer[currentPosition - 2]) + (0xff00 & buffer[currentPosition - 1] << 8));
-        if(i > 32767) {
-            i -= 65536;
-        }
-        return i;
-    }
-
-    public int getUnsignedNegativeOffsetShortLE() {
-        currentPosition += 2;
-        return ((0xff & buffer[currentPosition - 2] - 128) + (0xff00 & buffer[currentPosition - 1] << 8));
-    }
-
     public int getIntLE() {
         currentPosition += 4;
         return ((buffer[currentPosition - 3] << 8 & 0xff00) + (((0xff & buffer[currentPosition - 1]) << 24) + (0xff0000 & buffer[currentPosition - 2] << 16)) + (buffer[currentPosition - 4] & 0xff));
@@ -289,10 +234,6 @@ public class Buffer extends Node {
         return (((buffer[currentPosition - 3] & 0xff) << 16) + ((buffer[currentPosition - 2] & 0xff) << 8) + (0xff & buffer[currentPosition - 1]));
     }
 
-    public void putDualByte(int value1, int value2) {
-        buffer[currentPosition++] = (byte) (value1 + value2);
-    }
-
     public int getUnsignedShortLE() {
         currentPosition += 2;
         return ((0xff00 & buffer[currentPosition - 1] << 8) + (0xff & buffer[currentPosition - 2]));
@@ -303,28 +244,11 @@ public class Buffer extends Node {
         return ((0xff & buffer[currentPosition - 1]) + (buffer[currentPosition - 2] << 8 & 0xff00) + (buffer[currentPosition - 3] << 16 & 0xff0000) + (~0xffffff & buffer[currentPosition - 4] << 24));
     }
 
-    public byte getOffsetInvertedByte() {
-        return (byte) (-buffer[currentPosition++] + 128);
-    }
-
-    public void putCustomNegativeOffsetShortBE(int value, int offset) {
-        buffer[currentPosition++] = (byte) (value >> 8);
-        buffer[currentPosition++] = (byte) (value + -offset);
-    }
-
     public void putIntLE(int value) {
         buffer[currentPosition++] = (byte) value;
         buffer[currentPosition++] = (byte) (value >> 8);
         buffer[currentPosition++] = (byte) (value >> 16);
         buffer[currentPosition++] = (byte) (value >> 24);
-    }
-
-    public byte getNegativeOffsetByte() {
-        return (byte) (buffer[currentPosition++] - 128);
-    }
-
-    public void putInvertedByte(int value) {
-        buffer[currentPosition++] = (byte) -value;
     }
 
     public long getLongBE() {

@@ -19,7 +19,6 @@ public abstract class Class22 {
     public static int anInt531;
     public static RSString aClass1_532;
     public static RSString aClass1_533;
-    public static Buffer[] aClass40_Sub1Array534;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array535;
     public static int anInt536;
     public static int anInt537;
@@ -37,7 +36,7 @@ public abstract class Class22 {
 
     static {
         anInt537 = 0;
-        aClass40_Sub1Array534 = new Buffer[2048];
+        Player.trackedPlayerAppearanceCache = new Buffer[2048];
         aClass1_533 = RSString.CreateString("M");
         aClass1_542 = aClass1_533;
         aBoolean541 = false;
@@ -54,7 +53,7 @@ public abstract class Class22 {
         aClass1_538 = null;
         aClass40_Sub5_Sub14_Sub2Array535 = null;
         if(arg0 > 116) {
-            aClass40_Sub1Array534 = null;
+            Player.trackedPlayerAppearanceCache = null;
             aClass1_542 = null;
             aClass1_533 = null;
             aBooleanArray548 = null;
@@ -91,10 +90,10 @@ public abstract class Class22 {
         }
         GameObject.anInt3040 = 0;
         if(arg0 < 24)
-            aClass40_Sub1Array534 = null;
+            Player.trackedPlayerAppearanceCache = null;
         for(int i_8_ = 0; i_8_ < 104; i_8_++) {
             for(int i_9_ = 0; i_9_ < 104; i_9_++) {
-                int i_10_ = (Npc.aScene_3301.getFloorDecorationHash(Player.anInt3267, i_8_, i_9_));
+                int i_10_ = (Npc.aScene_3301.getFloorDecorationHash(Player.worldLevel, i_8_, i_9_));
                 if(i_10_ != 0) {
                     i_10_ = 0x7fff & i_10_ >> 14;
                     int i_11_ = (GameObjectDefinition.getDefinition(i_10_).icon);
@@ -102,7 +101,7 @@ public abstract class Class22 {
                         int i_12_ = i_9_;
                         int i_13_ = i_8_;
                         if(i_11_ != 22 && i_11_ != 29 && i_11_ != 34 && i_11_ != 36 && i_11_ != 46 && i_11_ != 47 && i_11_ != 48) {
-                            int[][] is_14_ = (Landscape.aCollisionMapArray1167[Player.anInt3267].anIntArrayArray150);
+                            int[][] is_14_ = (Landscape.aCollisionMapArray1167[Player.worldLevel].anIntArrayArray150);
                             for(int i_15_ = 0; i_15_ < 10; i_15_++) {
                                 int i_16_ = (int) (Math.random() * 4.0);
                                 if(i_16_ == 0 && i_13_ > 0 && i_13_ > -3 + i_8_ && (is_14_[-1 + i_13_][i_12_] & 0x1280108) == 0)

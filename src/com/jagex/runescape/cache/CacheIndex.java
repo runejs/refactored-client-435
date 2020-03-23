@@ -7,6 +7,7 @@ import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.util.Signlink;
@@ -23,7 +24,6 @@ public abstract class CacheIndex {
     public static long aLong219 = 0L;
     public static int anInt222;
     public static int anInt223;
-    public static int[] anIntArray225 = new int[1000];
     public static int anInt226;
     public static int anInt228;
     public static Cache modelCache = new Cache(260);
@@ -120,7 +120,7 @@ public abstract class CacheIndex {
         aClass1_256 = null;
         modelCache = null;
         aClass1_257 = null;
-        anIntArray225 = null;
+        Player.deregisterActorIndices = null;
         anIntArrayArrayArray262 = null;
         aClass1_258 = null;
     }
@@ -184,7 +184,7 @@ public abstract class CacheIndex {
     public static void method189(boolean arg0) {
         anInt250++;
         if(arg0)
-            anIntArray225 = null;
+            Player.deregisterActorIndices = null;
         WallDecoration.aClass9_1247.method235((byte) 59);
     }
 

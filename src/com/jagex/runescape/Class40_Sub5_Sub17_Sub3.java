@@ -97,11 +97,11 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             Class65.anInt1537 = 128;
         if(Class65.anInt1537 > 383)
             Class65.anInt1537 = 383;
-        int i_4_ = Class37.method430((byte) -124, Player.anInt3267, Class40_Sub5_Sub6.anInt2437, Class34.anInt849);
+        int i_4_ = Class37.method430((byte) -124, Player.worldLevel, Class40_Sub5_Sub6.anInt2437, Class34.anInt849);
         if(i_2_ > 3 && i_1_ > 3 && i_2_ < 100 && i_1_ < 100) {
             for(int i_5_ = -4 + i_2_; (i_5_ <= 4 + i_2_); i_5_++) {
                 for(int i_6_ = -4 + i_1_; 4 + i_1_ >= i_6_; i_6_++) {
-                    int i_7_ = Player.anInt3267;
+                    int i_7_ = Player.worldLevel;
                     if(i_7_ < 3 && (0x2 & (OverlayDefinition.tile_flags[1][i_5_][i_6_])) == 2)
                         i_7_++;
                     int i_8_ = i_4_ + -(Class40_Sub6.tile_height[i_7_][i_5_][i_6_]);

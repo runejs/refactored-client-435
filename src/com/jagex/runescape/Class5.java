@@ -92,7 +92,7 @@ public class Class5 {
     public static void method165(int arg0) {
         int i = 64 + Class32.anInt767 * 128;
         int i_3_ = 64 + 128 * Class22.anInt545;
-        int i_4_ = (Class37.method430((byte) -121, Player.anInt3267, i_3_, i) + -anInt194);
+        int i_4_ = (Class37.method430((byte) -121, Player.worldLevel, i_3_, i) + -anInt194);
         if((i_3_ > Class12.cameraX)) {
             Class12.cameraX += (Class59.anInt1386 * (i_3_ + -Class12.cameraX) / 1000 + Class4.anInt188);
             if(Class12.cameraX > i_3_) {
@@ -127,7 +127,7 @@ public class Class5 {
                 Class40_Sub5_Sub6.cameraY = i;
         }
         i = UnderlayDefinition.anInt2576 * 128 + 64;
-        i_4_ = Class37.method430((byte) -125, Player.anInt3267, i_3_, i) - Class38.anInt892;
+        i_4_ = Class37.method430((byte) -125, Player.worldLevel, i_3_, i) - Class38.anInt892;
         int i_5_ = -Class32.cameraZ + i_4_;
         int i_6_ = i - Class40_Sub5_Sub6.cameraY;
         int i_7_ = i_3_ - Class12.cameraX;

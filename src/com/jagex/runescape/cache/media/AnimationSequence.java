@@ -81,7 +81,7 @@ public class AnimationSequence extends SubNode {
         int i = 0x7fff & arg1 >> 14;
         if(arg2 > -9)
             method596(-4, -74, (byte) -44, -62);
-        int i_14_ = (Npc.aScene_3301.getArrangement(Player.anInt3267, arg0, arg3, arg1));
+        int i_14_ = (Npc.aScene_3301.getArrangement(Player.worldLevel, arg0, arg3, arg1));
         if(i_14_ == -1)
             return false;
         int i_15_ = 0x3 & i_14_ >> 6;

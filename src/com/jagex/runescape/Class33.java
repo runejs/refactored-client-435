@@ -53,14 +53,14 @@ public class Class33 {
     public static void method404(byte arg0) {
         Class32.anInt770 = 0;
         if(arg0 == -28) {
-            for(int i = -1; Class60.anInt1407 + GameObjectDefinition.anInt2558 > i; i++) {
+            for(int i = -1; Player.trackedPlayerIndex + Player.trackedNpcIndex > i; i++) {
                 Actor actor;
                 if(i == -1)
                     actor = (Player.localPlayer);
-                else if(i < Class60.anInt1407)
-                    actor = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i]]);
+                else if(i < Player.trackedPlayerIndex)
+                    actor = (Player.trackedPlayers[Player.trackedPlayerIndices[i]]);
                 else
-                    actor = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[(Class40_Sub3.anIntArray2016[i + -Class60.anInt1407])]);
+                    actor = (Player.trackedNpcs[(Player.trackedNpcIndices[i + -Player.trackedPlayerIndex])]);
                 if(actor != null && actor.isVisible(1)) {
                     if(actor instanceof Npc) {
                         ActorDefinition class40_sub5_sub5 = (((Npc) actor).actorDefinition);
@@ -69,14 +69,14 @@ public class Class33 {
                         if(class40_sub5_sub5 == null)
                             continue;
                     }
-                    if(Class60.anInt1407 <= i) {
+                    if(Player.trackedPlayerIndex <= i) {
                         ActorDefinition class40_sub5_sub5 = (((Npc) actor).actorDefinition);
                         if((class40_sub5_sub5.headIcon >= 0) && (class40_sub5_sub5.headIcon < (Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204).length)) {
                             FloorDecoration.method342(-127, (actor.anInt3117) + 15, actor);
                             if(ISAAC.anInt522 > -1)
                                 Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204[class40_sub5_sub5.headIcon].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -30);
                         }
-                        if(Player.anInt3288 == 1 && (HuffmanEncoding.anInt1545 == (Class40_Sub3.anIntArray2016[-Class60.anInt1407 + i])) && Node.pulseCycle % 20 < 10) {
+                        if(Player.anInt3288 == 1 && (HuffmanEncoding.anInt1545 == (Player.trackedNpcIndices[-Player.trackedPlayerIndex + i])) && Node.pulseCycle % 20 < 10) {
                             FloorDecoration.method342(107, 15 + (actor.anInt3117), actor);
                             if(ISAAC.anInt522 > -1)
                                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, Class44.anInt1048 + -28);
@@ -97,21 +97,21 @@ public class Class33 {
                                 }
                             }
                         }
-                        if(i >= 0 && Player.anInt3288 == 10 && (Class68.anInt1623 == Class57.anIntArray1334[i])) {
+                        if(i >= 0 && Player.anInt3288 == 10 && (Class68.anInt1623 == Player.trackedPlayerIndices[i])) {
                             FloorDecoration.method342(87, (actor.anInt3117) + 15, actor);
                             if(ISAAC.anInt522 > -1)
                                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[1].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
                         }
                     }
-                    if(actor.forcedChatMessage != null && (i >= Class60.anInt1407 || Class35.publicChatMode == 0 || Class35.publicChatMode == 3 || (Class35.publicChatMode == 1 && (Class40_Sub2.hasFriend((((Player) actor).playerName), arg0 ^ 0x7f74))))) {
+                    if(actor.forcedChatMessage != null && (i >= Player.trackedPlayerIndex || Class35.publicChatMode == 0 || Class35.publicChatMode == 3 || (Class35.publicChatMode == 1 && (Class40_Sub2.hasFriend((((Player) actor).playerName), arg0 ^ 0x7f74))))) {
                         FloorDecoration.method342(88, (actor.anInt3117), actor);
                         if(ISAAC.anInt522 > -1 && 50 > Class32.anInt770) {
                             Class30.anIntArray680[Class32.anInt770] = ((Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getStringWidth(actor.forcedChatMessage)) / 2);
                             Class30.anIntArray688[Class32.anInt770] = (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.characterDefaultHeight);
                             Class30.anIntArray715[Class32.anInt770] = ISAAC.anInt522;
                             Class30.anIntArray685[Class32.anInt770] = Class44.anInt1048;
-                            Class30.anIntArray712[Class32.anInt770] = actor.anInt3102;
-                            Class30.anIntArray695[Class32.anInt770] = actor.anInt3123;
+                            Class30.anIntArray712[Class32.anInt770] = actor.chatcolor;
+                            Class30.anIntArray695[Class32.anInt770] = actor.chatEffects;
                             Class30.anIntArray684[Class32.anInt770] = actor.anInt3078;
                             Class30.aClass1Array697[Class32.anInt770] = actor.forcedChatMessage;
                             Class32.anInt770++;

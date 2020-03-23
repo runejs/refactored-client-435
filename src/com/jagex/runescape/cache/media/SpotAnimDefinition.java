@@ -1,7 +1,6 @@
 package com.jagex.runescape.cache.media;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -12,6 +11,7 @@ import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.Wall;
@@ -112,7 +112,7 @@ public class SpotAnimDefinition extends SubNode {
                 Class32.packetBuffer.putByte(i);
                 Class40_Sub6.aClass64_2098.method1010(2, (byte) -19, 0, (Class32.packetBuffer.buffer));
                 Class40_Sub3.anInt2032 = 3;
-                Cache.outgoingbuffer.currentPosition = 0;
+                IncomingPackets.incomingPacketBuffer.currentPosition = 0;
             }
             if(Class40_Sub3.anInt2032 == 3) {
                 int i = Class40_Sub6.aClass64_2098.method1016(52);
@@ -120,23 +120,23 @@ public class SpotAnimDefinition extends SubNode {
                     Class27.method366(5, i);
                     return;
                 }
-                Cache.outgoingbuffer.currentPosition = 0;
+                IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                 Class40_Sub3.anInt2032 = 4;
             }
             if(Class40_Sub3.anInt2032 == 4) {
-                if(Cache.outgoingbuffer.currentPosition < 8) {
+                if(IncomingPackets.incomingPacketBuffer.currentPosition < 8) {
                     int i = Class40_Sub6.aClass64_2098.method1014(-127);
-                    if((i > -Cache.outgoingbuffer.currentPosition + 8)) {
-                        i = -Cache.outgoingbuffer.currentPosition + 8;
+                    if((i > -IncomingPackets.incomingPacketBuffer.currentPosition + 8)) {
+                        i = -IncomingPackets.incomingPacketBuffer.currentPosition + 8;
                     }
                     if(i > 0) {
-                        Class40_Sub6.aClass64_2098.method1008(Cache.outgoingbuffer.currentPosition, i, -128, Cache.outgoingbuffer.buffer);
-                        Cache.outgoingbuffer.currentPosition += i;
+                        Class40_Sub6.aClass64_2098.method1008(IncomingPackets.incomingPacketBuffer.currentPosition, i, -128, IncomingPackets.incomingPacketBuffer.buffer);
+                        IncomingPackets.incomingPacketBuffer.currentPosition += i;
                     }
                 }
-                if(Cache.outgoingbuffer.currentPosition == 8) {
-                    Cache.outgoingbuffer.currentPosition = 0;
-                    Renderable.aLong2858 = Cache.outgoingbuffer.getLongBE();
+                if(IncomingPackets.incomingPacketBuffer.currentPosition == 8) {
+                    IncomingPackets.incomingPacketBuffer.currentPosition = 0;
+                    Renderable.aLong2858 = IncomingPackets.incomingPacketBuffer.getLongBE();
                     Class40_Sub3.anInt2032 = 5;
                 }
             }
@@ -184,7 +184,7 @@ public class SpotAnimDefinition extends SubNode {
                 for(int i = 0; i < 4; i++) {
                     seeds[i] += 50;
                 }
-                Cache.outgoingbuffer.initInCipher(seeds);
+                IncomingPackets.incomingPacketBuffer.initInCipher(seeds);
                 Class40_Sub3.anInt2032 = 6;
             }
             if(Class40_Sub3.anInt2032 == 6 && Class40_Sub6.aClass64_2098.method1014(-126) > 0) {
@@ -227,22 +227,22 @@ public class SpotAnimDefinition extends SubNode {
                     Class30.anInt708 <<= 8;
                     Class30.anInt708 += Class40_Sub6.aClass64_2098.method1016(16);
                     Class44.anInt1049 = Class40_Sub6.aClass64_2098.method1016(37);
-                    Class40_Sub6.aClass64_2098.method1008(0, 1, -127, Cache.outgoingbuffer.buffer);
-                    Cache.outgoingbuffer.currentPosition = 0;
-                    Class57.incomingPacket = Cache.outgoingbuffer.getPacket((byte) 49);
-                    Class40_Sub6.aClass64_2098.method1008(0, 2, -127, Cache.outgoingbuffer.buffer);
-                    Cache.outgoingbuffer.currentPosition = 0;
-                    Widget.packetsize = Cache.outgoingbuffer.getUnsignedShortBE();
+                    Class40_Sub6.aClass64_2098.method1008(0, 1, -127, IncomingPackets.incomingPacketBuffer.buffer);
+                    IncomingPackets.incomingPacketBuffer.currentPosition = 0;
+                    IncomingPackets.incomingPacket = IncomingPackets.incomingPacketBuffer.getPacket((byte) 49);
+                    Class40_Sub6.aClass64_2098.method1008(0, 2, -127, IncomingPackets.incomingPacketBuffer.buffer);
+                    IncomingPackets.incomingPacketBuffer.currentPosition = 0;
+                    IncomingPackets.incomingPacketSize = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
                     Class40_Sub3.anInt2032 = 10;
                 }
                 if(Class40_Sub3.anInt2032 == 10) {
-                    if((Class40_Sub6.aClass64_2098.method1014(-124) >= Widget.packetsize)) {
-                        Cache.outgoingbuffer.currentPosition = 0;
-                        Class40_Sub6.aClass64_2098.method1008(0, Widget.packetsize, -128, Cache.outgoingbuffer.buffer);
+                    if((Class40_Sub6.aClass64_2098.method1014(-124) >= IncomingPackets.incomingPacketSize)) {
+                        IncomingPackets.incomingPacketBuffer.currentPosition = 0;
+                        Class40_Sub6.aClass64_2098.method1008(0, IncomingPackets.incomingPacketSize, -128, IncomingPackets.incomingPacketBuffer.buffer);
                         Main.method44(0);
                         Class51.anInt1202 = -1;
                         FloorDecoration.method343(false, 5688);
-                        Class57.incomingPacket = -1;
+                        IncomingPackets.incomingPacket = -1;
                     }
                 } else {
                     Main.anInt1756++;

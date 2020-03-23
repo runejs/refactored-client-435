@@ -88,11 +88,11 @@ public class Class45 {
 
     public static void method910(int arg0) {
         if(arg0 == -32322) {
-            if(VertexNormal.lowMemory && (Class40_Sub6.onBuildTimePlane != Player.anInt3267))
-                Actor.method789((Player.localPlayer.pathY[0]), -1000, Class17.anInt448, Class51.anInt1202, (Player.localPlayer.pathX[0]), Player.anInt3267);
-            else if(Buffer.anInt1985 != Player.anInt3267) {
-                Buffer.anInt1985 = Player.anInt3267;
-                Class22.method299((byte) 53, Player.anInt3267);
+            if(VertexNormal.lowMemory && (Class40_Sub6.onBuildTimePlane != Player.worldLevel))
+                Actor.method789((Player.localPlayer.pathY[0]), -1000, Class17.anInt448, Class51.anInt1202, (Player.localPlayer.pathX[0]), Player.worldLevel);
+            else if(Buffer.anInt1985 != Player.worldLevel) {
+                Buffer.anInt1985 = Player.worldLevel;
+                Class22.method299((byte) 53, Player.worldLevel);
             }
         }
     }

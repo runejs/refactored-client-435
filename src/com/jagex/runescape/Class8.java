@@ -1,13 +1,12 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -65,9 +64,9 @@ public class Class8 {
     }
 
     public static void method209() {
-        for(int i = 0; i < GameObjectDefinition.anInt2558; i++) {
-            int i_0_ = Class40_Sub3.anIntArray2016[i];
-            Npc class40_sub5_sub17_sub4_sub2 = CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_];
+        for(int i = 0; i < Player.trackedNpcIndex; i++) {
+            int i_0_ = Player.trackedNpcIndices[i];
+            Npc class40_sub5_sub17_sub4_sub2 = Player.trackedNpcs[i_0_];
             if(class40_sub5_sub17_sub4_sub2 != null)
                 Class13.method241(class40_sub5_sub17_sub4_sub2, (class40_sub5_sub17_sub4_sub2.actorDefinition.tileSpacesOccupied), (byte) 107);
         }
