@@ -23,7 +23,7 @@ import java.awt.event.KeyListener;
 
 public class KeyFocusListener implements KeyListener, FocusListener {
     public static RSString aClass1_1271 = RSString.CreateString("Benutzername: ");
-    public static Class45 aClass45_1278 = new Class45();
+    public static LinkedList aLinkedList_1278 = new LinkedList();
     public static int[] anIntArray1282 = new int[256];
     public static RSString aClass1_1283 = RSString.CreateString("@yel@");
     public static RSString aClass1_1284 = RSString.CreateString("compass");
@@ -46,16 +46,16 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         aClass1_1271 = null;
         aClass1_1283 = null;
         aClass68_1285 = null;
-        aClass45_1278 = null;
+        aLinkedList_1278 = null;
         anIntArray1282 = null;
         aClass1_1284 = null;
     }
 
     public static void method954(int arg0) {
         Wall.method238(4);
-        if(Class45.anInt1075 == 1)
+        if(LinkedList.anInt1075 == 1)
             Class37.aClass40_Sub5_Sub14_Sub4Array878[OverlayDefinition.anInt2319 / 100].drawImage(-4 + Class40_Sub11.anInt2163 + -8, -8 + (Class40_Sub5_Sub1.anInt2276 - 4));
-        if(Class45.anInt1075 == 2)
+        if(LinkedList.anInt1075 == 2)
             Class37.aClass40_Sub5_Sub14_Sub4Array878[4 + OverlayDefinition.anInt2319 / 100].drawImage(-8 + Class40_Sub11.anInt2163 - 4, -4 + Class40_Sub5_Sub1.anInt2276 - 8);
         if(arg0 == -15454) {
             if(GroundItemTile.anInt1376 != -1) {
@@ -75,7 +75,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 SceneTile.method537(4);
             }
             if(Class40_Sub6.anInt2118 == 1)
-                Class45.aClass40_Sub5_Sub14_Sub4_1057.drawImage(472, 296);
+                LinkedList.aClass40_Sub5_Sub14_Sub4_1057.drawImage(472, 296);
             if(InteractiveObject.showFps) {
                 int y = 20;
                 int x = 507;
@@ -118,9 +118,9 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 int i_3_ = i / 60;
                 i %= 60;
                 if(i < 10)
-                    WallDecoration.fontNormal.drawString((Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class61.aClass1_1432, HashTable.method334(i_3_, arg0 ^ 0x3c5d), Class17.aClass1_465, HashTable.method334(i, -1)})), 4, 329, 16776960);
+                    WallDecoration.fontNormal.drawString((RSString.linkRSStrings(new RSString[]{Class61.aClass1_1432, HashTable.method334(i_3_, arg0 ^ 0x3c5d), Class17.aClass1_465, HashTable.method334(i, -1)})), 4, 329, 16776960);
                 else
-                    WallDecoration.fontNormal.drawString((Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class61.aClass1_1432, HashTable.method334(i_3_, -1), Class43.char_colon, HashTable.method334(i, arg0 ^ 0x3c5d)})), 4, 329, 16776960);
+                    WallDecoration.fontNormal.drawString((RSString.linkRSStrings(new RSString[]{Class61.aClass1_1432, HashTable.method334(i_3_, -1), Class43.char_colon, HashTable.method334(i, arg0 ^ 0x3c5d)})), 4, 329, 16776960);
             }
         }
     }
@@ -173,7 +173,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
 
     public static RSString method956(int arg0, Buffer arg1) {
         if(arg0 < 62)
-            aClass45_1278 = null;
+            aLinkedList_1278 = null;
         return Class22.method307(arg1, -1, 32767);
     }
 

@@ -21,7 +21,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
         aClass1_1799 = RSString.CreateString("Offline");
         aClass1_1816 = RSString.CreateString(" zuerst von Ihrer Freunde)2Liste(Q");
         anInt1819 = -1;
-        Player.trackedNpcs = new Npc[32768];
+        Player.npcs = new Npc[32768];
     }
 
     public volatile boolean[] aBooleanArray1796;
@@ -45,7 +45,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
 
     public static void method203() {
         aClass1_1799 = null;
-        Player.trackedNpcs = null;
+        Player.npcs = null;
         aClass1_1801 = null;
         aClass1_1798 = null;
         aClass1_1816 = null;
@@ -55,7 +55,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
     public static RSString method204(int arg0, int arg1) {
         if(arg1 != 255)
             method203();
-        return (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{HashTable.method334(0xff & arg0 >> 24, -1), Node.aClass1_975, HashTable.method334((arg0 & 0xffca88) >> 16, -1), Node.aClass1_975, HashTable.method334((0xfff8 & arg0) >> 8, -1), Node.aClass1_975, HashTable.method334(0xff & arg0, -1)})));
+        return (RSString.linkRSStrings((new RSString[]{HashTable.method334(0xff & arg0 >> 24, -1), Node.aClass1_975, HashTable.method334((arg0 & 0xffca88) >> 16, -1), Node.aClass1_975, HashTable.method334((0xfff8 & arg0) >> 8, -1), Node.aClass1_975, HashTable.method334(0xff & arg0, -1)})));
     }
 
     public void method196(boolean arg0, int arg2, boolean arg3, byte[] arg4) {

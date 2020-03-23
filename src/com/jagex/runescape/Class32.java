@@ -51,9 +51,9 @@ public class Class32 {
 
     public static void method398(int arg0) {
         RSString class1 = null;
-        for(int i = 0; ActorDefinition.anInt2394 > i; i++) {
-            if(Landscape.aClass1Array1184[i].contains(VertexNormal.aClass1_1114) != -1) {
-                class1 = (Landscape.aClass1Array1184[i].substring(Landscape.aClass1Array1184[i].contains(VertexNormal.aClass1_1114)));
+        for(int i = 0; ActorDefinition.menuActionRow > i; i++) {
+            if(Landscape.menuActionTexts[i].contains(VertexNormal.aClass1_1114) != -1) {
+                class1 = (Landscape.menuActionTexts[i].substring(Landscape.menuActionTexts[i].contains(VertexNormal.aClass1_1114)));
                 break;
             }
         }
@@ -87,9 +87,9 @@ public class Class32 {
                 i_5_ -= 357;
                 i_4_ -= 17;
             }
-            for(int i_6_ = 0; ((i_6_ < ActorDefinition.anInt2394)); i_6_++) {
-                int i_7_ = 31 + i_2_ + (ActorDefinition.anInt2394 + (-1 + -i_6_)) * 15;
-                RSString class1_8_ = Landscape.aClass1Array1184[i_6_];
+            for(int i_6_ = 0; ((i_6_ < ActorDefinition.menuActionRow)); i_6_++) {
+                int i_7_ = 31 + i_2_ + (ActorDefinition.menuActionRow + (-1 + -i_6_)) * 15;
+                RSString class1_8_ = Landscape.menuActionTexts[i_6_];
                 int i_9_ = 16777215;
                 if(class1_8_.method87(arg0 + 112, class1)) {
                     class1_8_ = class1_8_.substring(0, (class1_8_.length() - class1.length()));
@@ -116,7 +116,7 @@ public class Class32 {
     public static int method400(int arg0) {
         if(arg0 != -1)
             packetBuffer = null;
-        return Class45.anInt1073++;
+        return LinkedList.anInt1073++;
 
     }
 

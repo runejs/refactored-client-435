@@ -9,6 +9,7 @@ import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.Wall;
@@ -65,15 +66,15 @@ public class Class38_Sub1 extends Class38 {
                         int i_3_ = 329 + -(13 * i);
                         i++;
                         if(Class13.mouseX > 4 && ((i_3_ + -10 < Landscape.mouseY + -4)) && ((-4 + Landscape.mouseY <= i_3_ + 3))) {
-                            int i_4_ = 25 + (WallDecoration.fontNormal.getStringWidth(Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class40_Sub5_Sub6.aClass1_2458, Class12.aClass1_392, class1, (Actor.chatMessages[i_1_])}))));
+                            int i_4_ = 25 + (WallDecoration.fontNormal.getStringWidth(RSString.linkRSStrings((new RSString[]{Class40_Sub5_Sub6.aClass1_2458, Class12.aClass1_392, class1, (Actor.chatMessages[i_1_])}))));
                             if(i_4_ > 450)
                                 i_4_ = 450;
                             if(Class13.mouseX < 4 + i_4_) {
                                 if(InteractiveObject.playerRights >= 1) {
-                                    OverlayDefinition.method558(0, Class22_Sub1.aClass1_1865, 0, -501, 0, 2028, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class26.aClass1_620, class1})));
+                                    OverlayDefinition.addActionRow(Class22_Sub1.aClass1_1865, 0, 0, 0, 2028, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));
                                 }
-                                OverlayDefinition.method558(0, Class38.aClass1_885, 0, -501, 0, 2051, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class26.aClass1_620, class1})));
-                                OverlayDefinition.method558(0, FloorDecoration.aClass1_591, 0, arg0 ^ ~0x27d3, 0, 2045, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class26.aClass1_620, class1})));
+                                OverlayDefinition.addActionRow(Class38.aClass1_885, 0, 0, 0, 2051, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));
+                                OverlayDefinition.addActionRow(FloorDecoration.aClass1_591, 0, 0, 0, 2045, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));
                             }
                         }
                         if(i >= 5)
@@ -353,7 +354,7 @@ public class Class38_Sub1 extends Class38 {
                 Class32.packetBuffer.putByte(3 + (i_12_ + i_12_));
             }
             Class32.packetBuffer.putShortLE(i_24_ + Class26.anInt635);
-            Class32.packetBuffer.putByte(Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[82] ? 1 : 0);
+            Class32.packetBuffer.putByte(Item.obfuscatedKeyStatus[82] ? 1 : 0);
             Class32.packetBuffer.putShortLE(SpotAnimDefinition.anInt2307 + i_25_);
             VarbitDefinition.anInt2366 = Class24.anIntArray581[0];
             Class55.anInt1304 = Wall.anIntArray351[0];

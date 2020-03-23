@@ -77,17 +77,17 @@ public class OverlayDefinition extends SubNode {
             method557(-14, 72);
     }
 
-    public static void method558(int arg0, RSString arg1, int arg2, int arg3, int arg4, int arg5, RSString arg6) {
-        if((ActorDefinition.anInt2394 ^ 0xffffffff) > arg3) {
+    public static void addActionRow(RSString string, int menuAction, int firstMenuOperand, int secondMenuOperand, int actionType, RSString arg6) {
+        if(ActorDefinition.menuActionRow < 500) {
             if(arg6.length() <= 0)
-                Landscape.aClass1Array1184[ActorDefinition.anInt2394] = arg1;
+                Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string;
             else
-                Landscape.aClass1Array1184[ActorDefinition.anInt2394] = Class40_Sub5_Sub17_Sub6.method832((new RSString[]{arg1, (VertexNormal.aClass1_1117), arg6}));
-            Class38.anIntArray884[ActorDefinition.anInt2394] = arg5;
-            Class33.anIntArray791[ActorDefinition.anInt2394] = arg0;
-            InteractiveObject.anIntArray483[ActorDefinition.anInt2394] = arg4;
-            Class59.anIntArray1393[ActorDefinition.anInt2394] = arg2;
-            ActorDefinition.anInt2394++;
+                Landscape.menuActionTexts[ActorDefinition.menuActionRow] = RSString.linkRSStrings((new RSString[]{string, (VertexNormal.aClass1_1117), arg6}));
+            Class38.menuActionTypes[ActorDefinition.menuActionRow] = actionType;
+            Class33.selectedMenuActions[ActorDefinition.menuActionRow] = menuAction;
+            InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow] = firstMenuOperand;
+            Class59.secondMenuOperand[ActorDefinition.menuActionRow] = secondMenuOperand;
+            ActorDefinition.menuActionRow++;
         }
     }
 
@@ -124,7 +124,7 @@ public class OverlayDefinition extends SubNode {
             if(arg0 == 5 || arg0 == 10 || arg0 == 20) {
                 Class68_Sub1.aClass68_2213 = null;
                 FloorDecoration.method344(-69);
-                Class40_Sub5_Sub17_Sub3.method779(GameFrame.aCanvas1469, true, (RSCanvas.aClass6_Sub1_48), (ActorDefinition.aClass6_Sub1_2377));
+                Item.method779(GameFrame.aCanvas1469, true, (RSCanvas.aClass6_Sub1_48), (ActorDefinition.aClass6_Sub1_2377));
             }
             if(arg0 == 25 || arg0 == 30 || arg0 == 40) {
                 Class68_Sub1.aClass68_2213 = null;

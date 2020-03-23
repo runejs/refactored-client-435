@@ -66,7 +66,7 @@ public abstract class Actor extends Renderable {
     public int[] anIntArray3086;
     public int[] anIntArray3087;
     public int[] pathY;
-    public int anInt3089;
+    public int worldY;
     public RSString forcedChatMessage;
     public int anInt3091;
     public int anInt3093;
@@ -74,7 +74,7 @@ public abstract class Actor extends Renderable {
     public int anInt3095 = 0;
     public int anInt3096;
     public int anInt3097;
-    public int anInt3098;
+    public int worldX;
     public int anInt3099;
     public int facePositionY;
     public int anInt3101;
@@ -156,9 +156,9 @@ public abstract class Actor extends Renderable {
 
     public static void method781(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
         if(arg0 == 1850) {
-            int i = Npc.aScene_3301.method122(arg1, arg2, arg5);
+            int i = Npc.currentScene.method122(arg1, arg2, arg5);
             if(i != 0) {
-                int i_0_ = Npc.aScene_3301.getArrangement(arg1, arg2, arg5, i);
+                int i_0_ = Npc.currentScene.getArrangement(arg1, arg2, arg5, i);
                 int i_1_ = 0x1f & i_0_;
                 int i_2_ = 0x3 & i_0_ >> 6;
                 int i_3_ = arg3;
@@ -237,9 +237,9 @@ public abstract class Actor extends Renderable {
                     }
                 }
             }
-            i = Npc.aScene_3301.getLocationHash(arg1, arg2, arg5);
+            i = Npc.currentScene.getLocationHash(arg1, arg2, arg5);
             if(i != 0) {
-                int i_8_ = Npc.aScene_3301.getArrangement(arg1, arg2, arg5, i);
+                int i_8_ = Npc.currentScene.getArrangement(arg1, arg2, arg5, i);
                 int i_9_ = 0x7fff & i >> 14;
                 int i_10_ = (i_8_ & 0xf4) >> 6;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_9_);
@@ -270,7 +270,7 @@ public abstract class Actor extends Renderable {
                     }
                 }
             }
-            i = Npc.aScene_3301.getFloorDecorationHash(arg1, arg2, arg5);
+            i = Npc.currentScene.getFloorDecorationHash(arg1, arg2, arg5);
             if(i != 0) {
                 int i_16_ = (i & 0x1fffd9fb) >> 14;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_16_);
@@ -332,14 +332,14 @@ public abstract class Actor extends Renderable {
             int i_35_ = Class26.anInt635 + -i;
             i = Class26.anInt635;
             for(int i_36_ = 0; i_36_ < 32768; i_36_++) {
-                Npc class40_sub5_sub17_sub4_sub2 = (Player.trackedNpcs[i_36_]);
+                Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[i_36_]);
                 if(class40_sub5_sub17_sub4_sub2 != null) {
                     for(int i_37_ = 0; i_37_ < 10; i_37_++) {
                         class40_sub5_sub17_sub4_sub2.pathY[i_37_] -= i_34_;
                         class40_sub5_sub17_sub4_sub2.pathX[i_37_] -= i_35_;
                     }
-                    class40_sub5_sub17_sub4_sub2.anInt3098 -= 128 * i_34_;
-                    class40_sub5_sub17_sub4_sub2.anInt3089 -= i_35_ * 128;
+                    class40_sub5_sub17_sub4_sub2.worldX -= 128 * i_34_;
+                    class40_sub5_sub17_sub4_sub2.worldY -= i_35_ * 128;
                 }
             }
             for(int i_38_ = 0; i_38_ < 2048; i_38_++) {
@@ -349,8 +349,8 @@ public abstract class Actor extends Renderable {
                         class40_sub5_sub17_sub4_sub1.pathY[i_39_] -= i_34_;
                         class40_sub5_sub17_sub4_sub1.pathX[i_39_] -= i_35_;
                     }
-                    class40_sub5_sub17_sub4_sub1.anInt3089 -= 128 * i_35_;
-                    class40_sub5_sub17_sub4_sub1.anInt3098 -= 128 * i_34_;
+                    class40_sub5_sub17_sub4_sub1.worldY -= 128 * i_35_;
+                    class40_sub5_sub17_sub4_sub1.worldX -= 128 * i_34_;
                 }
             }
             Player.worldLevel = arg5;
@@ -377,13 +377,13 @@ public abstract class Actor extends Renderable {
                     int i_49_ = i_35_ + i_47_;
                     for(int i_50_ = 0; i_50_ < 4; i_50_++) {
                         if(i_48_ < 0 || i_49_ < 0 || i_48_ >= 104 || i_49_ >= 104)
-                            Wall.aClass45ArrayArrayArray357[i_50_][i_46_][i_47_] = null;
+                            Wall.groundItems[i_50_][i_46_][i_47_] = null;
                         else
-                            Wall.aClass45ArrayArrayArray357[i_50_][i_46_][i_47_] = (Wall.aClass45ArrayArrayArray357[i_50_][i_48_][i_49_]);
+                            Wall.groundItems[i_50_][i_46_][i_47_] = (Wall.groundItems[i_50_][i_48_][i_49_]);
                     }
                 }
             }
-            for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = ((Class40_Sub3) Class45.aClass45_1064.method909(-4))) {
+            for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = ((Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4))) {
                 class40_sub3.anInt2038 -= i_35_;
                 class40_sub3.anInt2039 -= i_34_;
                 if(class40_sub3.anInt2039 < 0 || class40_sub3.anInt2038 < 0 || class40_sub3.anInt2039 >= 104 || class40_sub3.anInt2038 >= 104)
@@ -396,8 +396,8 @@ public abstract class Actor extends Renderable {
             }
             Class39.aBoolean906 = false;
             PacketBuffer.currentSound = 0;
-            Class57.aClass45_1332.method906(0);
-            Class43.aClass45_1022.method906(0);
+            Class57.aLinkedList_1332.method906(0);
+            Class43.aLinkedList_1022.method906(0);
         }
     }
 
@@ -408,7 +408,7 @@ public abstract class Actor extends Renderable {
             i_19_++;
             i--;
         }
-        if(playingAnimation != -1 && (Class68_Sub1.method1050(playingAnimation, arg1 ^ ~0x5d).anInt2476 == 1))
+        if(playingAnimation != -1 && (Class68_Sub1.method1050(playingAnimation, arg1 ^ -94).anInt2476 == 1))
             playingAnimation = -1;
         if(anInt3109 < 9)
             anInt3109++;
@@ -488,8 +488,8 @@ public abstract class Actor extends Renderable {
         anInt3094 = 0;
         pathY[0] = arg3;
         pathX[0] = arg0;
-        anInt3098 = anInt3096 * 64 + pathY[0] * 128;
-        anInt3089 = anInt3096 * 64 + pathX[0] * 128;
+        worldX = anInt3096 * 64 + pathY[0] * 128;
+        worldY = anInt3096 * 64 + pathX[0] * 128;
     }
 
     public void method790(int arg0) {

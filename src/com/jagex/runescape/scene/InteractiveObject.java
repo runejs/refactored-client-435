@@ -12,7 +12,7 @@ public class InteractiveObject {
     public static int anInt475;
     public static RSString aClass1_478 = RSString.CreateString("(Z");
     public static Class68 aClass68_482;
-    public static int[] anIntArray483 = new int[500];
+    public static int[] firstMenuOperand = new int[500];
     public static Class27 aClass27_485 = new Class27();
     public static int anInt487 = 0;
     public static CacheIndex aCacheIndex_488;
@@ -69,7 +69,7 @@ public class InteractiveObject {
         aByteArrayArrayArray492 = null;
         aClass9_470 = null;
         aClass1_478 = null;
-        anIntArray483 = null;
+        firstMenuOperand = null;
         aCacheIndex_488 = null;
     }
 }

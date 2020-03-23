@@ -11,6 +11,7 @@ import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -67,7 +68,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
     public static void putHackCheckPacket(int arg0, int arg1, PacketBuffer arg2) {
         if(arg0 == -12) {
             for(; ; ) {
-                Class40_Sub11 class40_sub11 = ((Class40_Sub11) KeyFocusListener.aClass45_1278.method902((byte) -90));
+                Class40_Sub11 class40_sub11 = ((Class40_Sub11) KeyFocusListener.aLinkedList_1278.method902((byte) -90));
                 if(class40_sub11 == null)
                     break;
                 boolean bool = false;
@@ -212,7 +213,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         long l = HuffmanEncoding.aClass1_1565.method58((byte) 104);
                         UnderlayDefinition.method617(l, (byte) -99);
                     }
-                    if(Class37.anInt876 == 2 && Class40_Sub5_Sub17_Sub3.friendsCount > 0) {
+                    if(Class37.anInt876 == 2 && Item.friendsCount > 0) {
                         long l = HuffmanEncoding.aClass1_1565.method58((byte) 121);
                         RSApplet.method28(l);
                     }
@@ -354,9 +355,9 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         } else if(class1.startsWith((Player.aClass1_3256))) {
                             i_11_ = 2;
                             HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring(Player.aClass1_3256.length()));
-                        } else if(class1.startsWith(Class45.aClass1_1076)) {
+                        } else if(class1.startsWith(LinkedList.aClass1_1076)) {
                             i_11_ = 3;
-                            HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((Class45.aClass1_1076.length())));
+                            HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((LinkedList.aClass1_1076.length())));
                         } else if(class1.startsWith((RSString.aClass1_1717))) {
                             i_11_ = 4;
                             HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((RSString.aClass1_1717.length())));
@@ -449,12 +450,12 @@ public class Class40_Sub5_Sub6 extends SubNode {
                 i_18_ -= 357;
                 i_17_ -= 17;
             }
-            for(int i_19_ = 0; i_19_ < ActorDefinition.anInt2394; i_19_++) {
-                int i_20_ = (15 * (-i_19_ + ActorDefinition.anInt2394 + -1) + i_14_ + 31);
+            for(int i_19_ = 0; i_19_ < ActorDefinition.menuActionRow; i_19_++) {
+                int i_20_ = (15 * (-i_19_ + ActorDefinition.menuActionRow + -1) + i_14_ + 31);
                 int i_21_ = 16777215;
                 if((i_17_ > i) && i + i_15_ > i_17_ && (i_18_ > -13 + i_20_) && (i_20_ + 3 > i_18_))
                     i_21_ = 16776960;
-                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawShadowedString(Landscape.aClass1Array1184[i_19_], i + 3, i_20_, i_21_, true);
+                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawShadowedString(Landscape.menuActionTexts[i_19_], i + 3, i_20_, i_21_, true);
             }
         }
     }

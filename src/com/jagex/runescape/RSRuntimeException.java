@@ -60,8 +60,8 @@ public class RSRuntimeException extends RuntimeException {
         class40_sub6.aByteArray2102 = arg0;
         class40_sub6.anInt2112 = 0;
         class40_sub6.aClass56_2117 = arg2;
-        synchronized(RSCanvas.aClass45_53) {
-            RSCanvas.aClass45_53.pushBack(class40_sub6, -82);
+        synchronized(RSCanvas.aLinkedList_53) {
+            RSCanvas.aLinkedList_53.pushBack(class40_sub6, -82);
         }
         HashTable.method332(600);
     }

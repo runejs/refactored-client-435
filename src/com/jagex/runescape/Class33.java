@@ -10,6 +10,7 @@ import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 
 public class Class33 {
@@ -19,7 +20,7 @@ public class Class33 {
     public static RSString aClass1_783 = RSString.CreateString("Loading config )2 ");
     public static int anInt784 = 0;
     public static RSString cmd_prefix = RSString.CreateString("::");
-    public static int[] anIntArray791 = new int[500];
+    public static int[] selectedMenuActions = new int[500];
     public static RSString aClass1_795 = RSString.CreateString(")1");
     public static RSString aClass1_797 = RSString.CreateString("Spiel)2Engine wird gestartet)3)3)3");
     public static RSString aClass1_798 = RSString.CreateString("No response from server)3");
@@ -51,14 +52,14 @@ public class Class33 {
     public static void method404(byte arg0) {
         Class32.anInt770 = 0;
         if(arg0 == -28) {
-            for(int i = -1; Player.trackedPlayerIndex + Player.trackedNpcIndex > i; i++) {
+            for(int i = -1; Player.localPlayerCount + Player.npcCount > i; i++) {
                 Actor actor;
                 if(i == -1)
                     actor = (Player.localPlayer);
-                else if(i < Player.trackedPlayerIndex)
+                else if(i < Player.localPlayerCount)
                     actor = (Player.trackedPlayers[Player.trackedPlayerIndices[i]]);
                 else
-                    actor = (Player.trackedNpcs[(Player.trackedNpcIndices[i + -Player.trackedPlayerIndex])]);
+                    actor = (Player.npcs[(Player.npcIds[i + -Player.localPlayerCount])]);
                 if(actor != null && actor.isVisible(1)) {
                     if(actor instanceof Npc) {
                         ActorDefinition class40_sub5_sub5 = (((Npc) actor).actorDefinition);
@@ -67,14 +68,14 @@ public class Class33 {
                         if(class40_sub5_sub5 == null)
                             continue;
                     }
-                    if(Player.trackedPlayerIndex <= i) {
+                    if(Player.localPlayerCount <= i) {
                         ActorDefinition class40_sub5_sub5 = (((Npc) actor).actorDefinition);
                         if((class40_sub5_sub5.headIcon >= 0) && (class40_sub5_sub5.headIcon < (Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204).length)) {
                             FloorDecoration.method342((actor.anInt3117) + 15, actor);
                             if(ISAAC.anInt522 > -1)
                                 Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204[class40_sub5_sub5.headIcon].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -30);
                         }
-                        if(Player.anInt3288 == 1 && (HuffmanEncoding.anInt1545 == (Player.trackedNpcIndices[-Player.trackedPlayerIndex + i])) && Node.pulseCycle % 20 < 10) {
+                        if(Player.anInt3288 == 1 && (HuffmanEncoding.anInt1545 == (Player.npcIds[-Player.localPlayerCount + i])) && Node.pulseCycle % 20 < 10) {
                             FloorDecoration.method342(15 + (actor.anInt3117), actor);
                             if(ISAAC.anInt522 > -1)
                                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, Class44.anInt1048 + -28);
@@ -101,7 +102,7 @@ public class Class33 {
                                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[1].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
                         }
                     }
-                    if(actor.forcedChatMessage != null && (i >= Player.trackedPlayerIndex || Class35.publicChatMode == 0 || Class35.publicChatMode == 3 || (Class35.publicChatMode == 1 && (Class40_Sub2.hasFriend((((Player) actor).playerName), arg0 ^ 0x7f74))))) {
+                    if(actor.forcedChatMessage != null && (i >= Player.localPlayerCount || Class35.publicChatMode == 0 || Class35.publicChatMode == 3 || (Class35.publicChatMode == 1 && (Class40_Sub2.hasFriend((((Player) actor).playerName), arg0 ^ 0x7f74))))) {
                         FloorDecoration.method342((actor.anInt3117), actor);
                         if(ISAAC.anInt522 > -1 && 50 > Class32.anInt770) {
                             Class30.anIntArray680[Class32.anInt770] = ((Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getStringWidth(actor.forcedChatMessage)) / 2);
@@ -326,7 +327,7 @@ public class Class33 {
         aClass1_779 = null;
         aClass1_799 = null;
         cmd_prefix = null;
-        anIntArray791 = null;
+        selectedMenuActions = null;
         aClass1_795 = null;
         aClass1_777 = null;
         aClass1_797 = null;
@@ -340,7 +341,7 @@ public class Class33 {
             method402(true);
         if(arg1 < 0)
             return false;
-        int i = Class38.anIntArray884[arg1];
+        int i = Class38.menuActionTypes[arg1];
         if(i >= 2000)
             i -= 2000;
         return i == 45;
@@ -371,7 +372,7 @@ public class Class33 {
         if(Class24.method340()) {
             if(arg3 != 66)
                 method412(false, null, 120, (byte) -44, null, 71, null, -13);
-            int i = arg1.method183(0, arg4);
+            int i = arg1.getHash(arg4);
             int i_16_ = arg1.method179(i, arg6);
             method403(arg7, true, arg5, i, arg1, i_16_, arg2, arg0);
         }

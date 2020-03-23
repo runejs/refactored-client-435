@@ -7,7 +7,7 @@ import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.Rasterizer;
@@ -16,13 +16,14 @@ import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.Wall;
 
 import java.awt.*;
 
-public class Class40_Sub5_Sub17_Sub3 extends Renderable {
+public class Item extends Renderable {
     public static RSString aClass1_3049 = RSString.CreateString("Could not complete login)3");
     public static RSString aClass1_3050;
     public static int[] anIntArray3051 = new int[25];
@@ -52,13 +53,13 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
     }
 
     public int anInt3058;
-    public int anInt3067;
+    public int itemId;
 
     public static void method775(boolean arg0) {
-        int i = ((Player.localPlayer.anInt3089) + Class48.anInt1126);
+        int i = ((Player.localPlayer.worldY) + Class48.anInt1126);
         if(arg0)
             method778(true, null);
-        int i_0_ = (Buffer.anInt1976 + (Player.localPlayer.anInt3098));
+        int i_0_ = (Buffer.anInt1976 + (Player.localPlayer.worldX));
         if(Class40_Sub5_Sub6.anInt2437 - i_0_ < -500 || -i_0_ + Class40_Sub5_Sub6.anInt2437 > 500 || Class34.anInt849 + -i < -500 || -i + Class34.anInt849 > 500) {
             Class34.anInt849 = i;
             Class40_Sub5_Sub6.anInt2437 = i_0_;
@@ -130,8 +131,8 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                     i_12_ = (Class51.mapZoomOffset + 256) * i_12_ >> 8;
                     int i_14_ = i_10_ * i_12_ + (i * i_13_) >> 11;
                     int i_15_ = i_13_ * i_10_ - i * i_12_ >> 11;
-                    int i_16_ = ((Player.localPlayer.anInt3098) + i_14_ >> 7);
-                    int i_17_ = (-i_15_ + (Player.localPlayer.anInt3089) >> 7);
+                    int i_16_ = ((Player.localPlayer.worldX) + i_14_ >> 7);
+                    int i_17_ = (-i_15_ + (Player.localPlayer.worldY) >> 7);
                     boolean bool = (Class38_Sub1.method448(0, 0, (Player.localPlayer.pathY[0]), i_16_, (byte) 125, 0, true, 0, 0, (Player.localPlayer.pathX[0]), i_17_, 1));
                     if(bool) {
                         Class32.packetBuffer.putByte(i);
@@ -141,8 +142,8 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
                         Class32.packetBuffer.putByte(Class43.cameraYawOffset);
                         Class32.packetBuffer.putByte(Class51.mapZoomOffset);
                         Class32.packetBuffer.putByte(89);
-                        Class32.packetBuffer.putShortBE((Player.localPlayer.anInt3098));
-                        Class32.packetBuffer.putShortBE((Player.localPlayer.anInt3089));
+                        Class32.packetBuffer.putShortBE((Player.localPlayer.worldX));
+                        Class32.packetBuffer.putShortBE((Player.localPlayer.worldY));
                         Class32.packetBuffer.putByte(Class40_Sub5_Sub15.anInt2778);
                         Class32.packetBuffer.putByte(63);
                     }
@@ -227,7 +228,7 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
             class40_sub5_sub14_sub4.drawImage(-128 + (382 + -(class40_sub5_sub14_sub4.image_width / 2)), 18);
             Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775 = Class27.method359(AnimationSequence.aClass1_2488, Class22_Sub2.string_blank, arg3, (byte) -64);
             Class59.aClass40_Sub5_Sub14_Sub2_1387 = Class27.method359(ISAAC.aClass1_506, Class22_Sub2.string_blank, arg3, (byte) -64);
-            Class22.aClass40_Sub5_Sub14_Sub2Array535 = SpotAnimDefinition.method550(arg3, (byte) -114, Class8.aClass1_299, Class22_Sub2.string_blank);
+            Class22.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(arg3, Class8.aClass1_299, Class22_Sub2.string_blank);
             Class39.aClass40_Sub5_Sub14_Sub4_918 = new ImageRGB(128, 265);
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = new ImageRGB(128, 265);
             for(int i = 0; i < 33920; i++)
@@ -298,6 +299,6 @@ public class Class40_Sub5_Sub17_Sub3 extends Renderable {
     }
 
     public Model getRotatedModel(int arg0) {
-        return ItemDefinition.forId(anInt3067, 10).asGroundStack(true, anInt3058);
+        return ItemDefinition.forId(itemId, 10).asGroundStack(true, anInt3058);
     }
 }

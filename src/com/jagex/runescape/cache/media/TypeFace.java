@@ -126,6 +126,12 @@ public class TypeFace extends Rasterizer {
         return constructFont();
     }
 
+    public static TypeFace loadTypeFace(CacheIndex arg0, RSString arg2, RSString arg3) {
+        int i = arg0.getHash(arg3);
+        int i_50_ = arg0.method179(i, arg2);
+        return getFont(arg0, i_50_, i);
+    }
+
     private int getColour(RSString getColour) {
         if(getColour.equals(col_red))
             return 0xff0000;

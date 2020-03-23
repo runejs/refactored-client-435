@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.SceneTile;
@@ -54,9 +55,9 @@ public class Class56 {
             method972((byte) -104);
         RSString[] class1s = new RSString[5];
         for(int i = 0; i < 5; i++) {
-            class1s[i] = (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{HashTable.method334(i, -1), ISAAC.aClass1_515}));
+            class1s[i] = (RSString.linkRSStrings(new RSString[]{HashTable.method334(i, -1), ISAAC.aClass1_515}));
             if(arg0 != null && arg0[i] != null)
-                class1s[i] = Class40_Sub5_Sub17_Sub6.method832((new RSString[]{class1s[i], arg0[i]}));
+                class1s[i] = RSString.linkRSStrings((new RSString[]{class1s[i], arg0[i]}));
         }
         return class1s;
     }

@@ -118,28 +118,28 @@ public class Class52 {
                 boolean bool = false;
                 boolean bool_1_ = false;
                 if(arg6 == 0)
-                    i_0_ = Npc.aScene_3301.method122(arg7, arg2, arg0);
+                    i_0_ = Npc.currentScene.method122(arg7, arg2, arg0);
                 if(arg6 == 1)
-                    i_0_ = Npc.aScene_3301.method91(arg7, arg2, arg0);
+                    i_0_ = Npc.currentScene.method91(arg7, arg2, arg0);
                 if(arg6 == 2)
-                    i_0_ = Npc.aScene_3301.getLocationHash(arg7, arg2, arg0);
+                    i_0_ = Npc.currentScene.getLocationHash(arg7, arg2, arg0);
                 if(arg6 == 3)
-                    i_0_ = Npc.aScene_3301.getFloorDecorationHash(arg7, arg2, arg0);
+                    i_0_ = Npc.currentScene.getFloorDecorationHash(arg7, arg2, arg0);
                 if(i_0_ != 0) {
                     i = (i_0_ & 0x1ffff138) >> 14;
-                    int i_2_ = Npc.aScene_3301.getArrangement(arg7, arg2, arg0, i_0_);
+                    int i_2_ = Npc.currentScene.getArrangement(arg7, arg2, arg0, i_0_);
                     int i_3_ = i_2_ >> 6 & 0x3;
                     int i_4_ = 0x1f & i_2_;
                     if(arg6 == 0) {
-                        Npc.aScene_3301.method124(arg7, arg2, arg0);
+                        Npc.currentScene.method124(arg7, arg2, arg0);
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                         if(gameObjectDefinition.solid)
                             Landscape.aCollisionMapArray1167[arg7].method148(-4, arg2, i_3_, gameObjectDefinition.walkable, arg0, i_4_);
                     }
                     if(arg6 == 1)
-                        Npc.aScene_3301.method127(arg7, arg2, arg0);
+                        Npc.currentScene.method127(arg7, arg2, arg0);
                     if(arg6 == 2) {
-                        Npc.aScene_3301.method135(arg7, arg2, arg0);
+                        Npc.currentScene.method135(arg7, arg2, arg0);
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                         if((arg2 + gameObjectDefinition.sizeX > 103) || arg0 + gameObjectDefinition.sizeX > 103 || arg2 + gameObjectDefinition.sizeY > 103 || gameObjectDefinition.sizeY + arg0 > 103)
                             return;
@@ -147,7 +147,7 @@ public class Class52 {
                             Landscape.aCollisionMapArray1167[arg7].method149(gameObjectDefinition.walkable, arg0, arg2, i_3_, gameObjectDefinition.sizeX, (byte) -55, gameObjectDefinition.sizeY);
                     }
                     if(arg6 == 3) {
-                        Npc.aScene_3301.method131(arg7, arg2, arg0);
+                        Npc.currentScene.method131(arg7, arg2, arg0);
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                         if(gameObjectDefinition.solid && gameObjectDefinition.hasActions == 1)
                             Landscape.aCollisionMapArray1167[arg7].method145(arg0, arg5 + 28124, arg2);
@@ -157,7 +157,7 @@ public class Class52 {
                     int i_5_ = arg7;
                     if(i_5_ < 3 && ((OverlayDefinition.tile_flags[1][arg2][arg0]) & 0x2) == 2)
                         i_5_++;
-                    Class40_Sub5_Sub1.method543(Landscape.aCollisionMapArray1167[arg7], arg1, i_5_, arg7, arg3, (Npc.aScene_3301), -22078, arg4, arg0, arg2);
+                    Class40_Sub5_Sub1.method543(Landscape.aCollisionMapArray1167[arg7], arg1, i_5_, arg7, arg3, (Npc.currentScene), -22078, arg4, arg0, arg2);
                 }
             }
         }

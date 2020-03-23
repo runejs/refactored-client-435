@@ -31,12 +31,12 @@ public class Player extends Actor {
     public static int[] actorUpdatingIndices = new int[2048];
     public static Buffer[] trackedPlayerAppearanceCache;
     public static int[] deregisterActorIndices = new int[1000];
-    public static Npc[] trackedNpcs;
+    public static Npc[] npcs;
     public static Player[] trackedPlayers;
-    public static int[] trackedNpcIndices = new int[32768];
+    public static int[] npcIds = new int[32768];
     public static int[] trackedPlayerIndices = new int[2048];
-    public static int trackedNpcIndex = 0;
-    public static int trackedPlayerIndex;
+    public static int npcCount = 0;
+    public static int localPlayerCount;
     public int skillLevel;
     public int anInt3258;
     public int combatLevel = 0;
@@ -167,9 +167,9 @@ public class Player extends Actor {
                     player.chatEffects = chatEffectsAndColors & 0xff;
                     player.chatcolor = chatEffectsAndColors >> 8;
                     if(playerRights == 2 || playerRights == 3)
-                        Class44.addChatMessage((Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Widget.goldCrown, player.playerName}))), class1, 1);
+                        Class44.addChatMessage((RSString.linkRSStrings((new RSString[]{Widget.goldCrown, player.playerName}))), class1, 1);
                     else if(playerRights == 1)
-                        Class44.addChatMessage((Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class51.whiteCrown, player.playerName}))), class1, 1);
+                        Class44.addChatMessage((RSString.linkRSStrings((new RSString[]{Class51.whiteCrown, player.playerName}))), class1, 1);
                     else
                         Class44.addChatMessage(player.playerName, class1, 2);
                 }
@@ -256,13 +256,13 @@ public class Player extends Actor {
 
     public static void parseTrackedPlayerMovement() {
         int trackedPlayerCount = IncomingPackets.incomingPacketBuffer.getBits(8);
-        if(trackedPlayerCount < trackedPlayerIndex) {
-            for(int i = trackedPlayerCount; trackedPlayerIndex > i; i++)
+        if(trackedPlayerCount < localPlayerCount) {
+            for(int i = trackedPlayerCount; localPlayerCount > i; i++)
                 deregisterActorIndices[Class17.deregisterActorCount++] = trackedPlayerIndices[i];
         }
-        if(trackedPlayerIndex < trackedPlayerCount)
+        if(localPlayerCount < trackedPlayerCount)
             throw new RuntimeException("gppov1");
-        trackedPlayerIndex = 0;
+        localPlayerCount = 0;
         for(int i = 0; (trackedPlayerCount > i); i++) {
             int trackedPlayerIndex = trackedPlayerIndices[i];
             Player player = (trackedPlayers[trackedPlayerIndex]);
@@ -312,7 +312,7 @@ public class Player extends Actor {
                     trackedPlayers[newPlayerIndex].parsePlayerAppearanceData(trackedPlayerAppearanceCache[newPlayerIndex]);
                 bool = true;
             }
-            trackedPlayerIndices[trackedPlayerIndex++] = newPlayerIndex;
+            trackedPlayerIndices[localPlayerCount++] = newPlayerIndex;
             Player player = (trackedPlayers[newPlayerIndex]);
             player.anInt3134 = pulseCycle;
             int offsetX = IncomingPackets.incomingPacketBuffer.getBits(5);
@@ -358,7 +358,7 @@ public class Player extends Actor {
                 aClass40_Sub5_Sub17_Sub5_3265 = null;
             if(anInt3283 <= Node.pulseCycle && Node.pulseCycle < anInt3274) {
                 Model class40_sub5_sub17_sub5_2_ = aClass40_Sub5_Sub17_Sub5_3265;
-                class40_sub5_sub17_sub5_2_.translate(-anInt3098 + anInt3271, -anInt3276 + anInt3272, anInt3291 + -anInt3089);
+                class40_sub5_sub17_sub5_2_.translate(-worldX + anInt3271, -anInt3276 + anInt3272, anInt3291 + -worldY);
                 if(anInt3080 == 512) {
                     class40_sub5_sub17_sub5_2_.method813();
                     class40_sub5_sub17_sub5_2_.method813();
@@ -381,7 +381,7 @@ public class Player extends Actor {
                     }
                 } else
                     class40_sub5_sub17_sub5_2_.method813();
-                class40_sub5_sub17_sub5_2_.translate(-anInt3271 + anInt3098, -anInt3272 + anInt3276, anInt3089 - anInt3291);
+                class40_sub5_sub17_sub5_2_.translate(-anInt3271 + worldX, -anInt3272 + anInt3276, worldY - anInt3291);
             }
         }
         class40_sub5_sub17_sub5.singleTile = true;

@@ -26,11 +26,11 @@ public class Class40_Sub5_Sub11 extends SubNode {
         if(arg0.anInt3073 == 2)
             arg0.anInt3080 = 0;
         int i_1_ = arg0.anInt3096 * 64 + 128 * arg0.anInt3081;
-        arg0.anInt3098 += (i - arg0.anInt3098) / i_0_;
+        arg0.worldX += (i - arg0.worldX) / i_0_;
         if(arg0.anInt3073 == 3)
             arg0.anInt3080 = 512;
         arg0.anInt3074 = 0;
-        arg0.anInt3089 += (-arg0.anInt3089 + i_1_) / i_0_;
+        arg0.worldY += (-arg0.worldY + i_1_) / i_0_;
     }
 
     public static void method632() {

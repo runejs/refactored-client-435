@@ -37,7 +37,7 @@ public class Scene {
     public static int anInt104;
     public static InteractiveObject[] sceneSpawnRequestsCache = new InteractiveObject[100];
     public static Class32[] aClass32Array107 = new Class32[500];
-    public static Class45 tileList = new Class45();
+    public static LinkedList tileList = new LinkedList();
     public static int anInt109 = 0;
     public static int anInt110;
     public static int anInt111;

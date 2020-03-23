@@ -1,7 +1,6 @@
 package com.jagex.runescape.cache.media;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
@@ -11,6 +10,7 @@ import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.FloorDecoration;
@@ -68,12 +68,6 @@ public class SpotAnimDefinition extends SubNode {
         str_prefix_level = null;
         aClass1_2296 = null;
         aClass1_2292 = null;
-    }
-
-    public static IndexedImage[] method550(CacheIndex arg0, byte arg1, RSString arg2, RSString arg3) {
-        int i = arg0.method183(0, arg2);
-        int i_1_ = arg0.method179(i, arg3);
-        return Class24.method337(7729, arg0, i_1_, i);
     }
 
     public static void method552(boolean arg0) {
@@ -215,7 +209,7 @@ public class SpotAnimDefinition extends SubNode {
             }
             if(Class40_Sub3.anInt2032 == 8) {
                 Main.anInt1756 = 0;
-                Class33.method411((Class40_Sub5_Sub17_Sub6.method832((new RSString[]{HashTable.method334(Class33.anInt784 / 60, -1), Class38.aClass1_883}))), Class8.aClass1_294, RSCanvas.aClass1_67, (byte) -82);
+                Class33.method411((RSString.linkRSStrings((new RSString[]{HashTable.method334(Class33.anInt784 / 60, -1), Class38.aClass1_883}))), Class8.aClass1_294, RSCanvas.aClass1_67, (byte) -82);
                 if(--Class33.anInt784 <= 0) {
                     Class40_Sub3.anInt2032 = 0;
                 }

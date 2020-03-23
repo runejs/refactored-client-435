@@ -12,6 +12,7 @@ import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -23,13 +24,13 @@ public class ChatBox {
         Class22.method305((byte) 124);
         if(InteractiveObject.messagePromptRaised) {
             Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(HuffmanEncoding.aClass1_1563, 239, 40, 0);
-            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class40_Sub5_Sub17_Sub6.method832((new RSString[]{HuffmanEncoding.aClass1_1565, (InteractiveObject.aClass1_478)})), 239, 60, 128);
+            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(RSString.linkRSStrings((new RSString[]{HuffmanEncoding.aClass1_1565, (InteractiveObject.aClass1_478)})), 239, 60, 128);
         } else if(Class40_Sub5_Sub15.inputType == 1) {
             Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Landscape.aClass1_1174, 239, 40, 0);
-            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686((Class40_Sub5_Sub17_Sub6.method832(new RSString[]{HuffmanEncoding.inputInputMessage, InteractiveObject.aClass1_478})), 239, 60, 128);
+            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686((RSString.linkRSStrings(new RSString[]{HuffmanEncoding.inputInputMessage, InteractiveObject.aClass1_478})), 239, 60, 128);
         } else if(Class40_Sub5_Sub15.inputType == 2) {
             Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class40_Sub5_Sub6.aClass1_2446, 239, 40, 0);
-            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686((Class40_Sub5_Sub17_Sub6.method832(new RSString[]{HuffmanEncoding.inputInputMessage, InteractiveObject.aClass1_478})), 239, 60, 128);
+            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686((RSString.linkRSStrings(new RSString[]{HuffmanEncoding.inputInputMessage, InteractiveObject.aClass1_478})), 239, 60, 128);
         } else if(Class40_Sub5_Sub15.inputType == 3) {
             if(HuffmanEncoding.inputInputMessage != HuffmanEncoding.lastItemSearchInput) {
                 GameObject.itemSearch(HuffmanEncoding.inputInputMessage);
@@ -50,7 +51,7 @@ public class ChatBox {
                     Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class40_Sub6.aClass1_2097, 239, 40, 0);
             } else
                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(Class35.aClass1_1747, 239, 40, 255);
-            class40_sub5_sub14_sub1.method686((Class40_Sub5_Sub17_Sub6.method832(new RSString[]{HuffmanEncoding.inputInputMessage, InteractiveObject.aClass1_478})), 239, 90, 0);
+            class40_sub5_sub14_sub1.method686((RSString.linkRSStrings(new RSString[]{HuffmanEncoding.inputInputMessage, InteractiveObject.aClass1_478})), 239, 90, 0);
             Rasterizer.drawHorizontalLine(0, 77, 479, 0);
         } else if(RSApplet.aClass1_8 == null) {
             if(Class43.openChatboxWidgetId == -1) {
@@ -88,7 +89,7 @@ public class ChatBox {
                                         Class40_Sub5_Sub13.moderatorIcon[1].drawImage(x, y - 12);
                                         x += 14;
                                     }
-                                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832((new RSString[]{name, (Class43.char_colon)}))), x, y, 0);
+                                    typeFace.drawString((RSString.linkRSStrings((new RSString[]{name, (Class43.char_colon)}))), x, y, 0);
                                     x += (8 + (typeFace.getStringWidth(name)));
                                     typeFace.drawString((Actor.chatMessages[i_8_]), x, y, 255);
                                 }
@@ -109,7 +110,7 @@ public class ChatBox {
                                         Class40_Sub5_Sub13.moderatorIcon[1].drawImage(i_13_, y - 12);
                                         i_13_ += 14;
                                     }
-                                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832((new RSString[]{name, (Class43.char_colon)}))), i_13_, y, 0);
+                                    typeFace.drawString((RSString.linkRSStrings((new RSString[]{name, (Class43.char_colon)}))), i_13_, y, 0);
                                     i_13_ += (8 + (typeFace.getStringWidth(name)));
                                     typeFace.drawString((Actor.chatMessages[i_8_]), i_13_, y, 8388608);
                                 }
@@ -117,7 +118,7 @@ public class ChatBox {
                             if(type == 4 && ((ItemDefinition.anInt2797) == 0 || ((ItemDefinition.anInt2797) == 1 && (Class40_Sub2.hasFriend(name, -32624))))) {
                                 line++;
                                 if(y > 0 && y < 110)
-                                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832((new RSString[]{name, (Class48.aClass1_1123), (Actor.chatMessages[i_8_])}))), 4, y, 8388736);
+                                    typeFace.drawString((RSString.linkRSStrings((new RSString[]{name, (Class48.aClass1_1123), (Actor.chatMessages[i_8_])}))), 4, y, 8388736);
                             }
                             if(type == 5 && CollisionMap.anInt165 == 0 && Class4.anInt185 < 2) {
                                 if(y > 0 && y < 110)
@@ -126,15 +127,15 @@ public class ChatBox {
                             }
                             if(type == 6 && CollisionMap.anInt165 == 0 && Class4.anInt185 < 2) {
                                 if(y > 0 && (y < 110)) {
-                                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832((new RSString[]{(Class40_Sub5_Sub1.aClass1_2274), (Class48.aClass1_1123), name, (Class43.char_colon)}))), 4, y, 0);
-                                    typeFace.drawString((Actor.chatMessages[i_8_]), (typeFace.getStringWidth(Class40_Sub5_Sub17_Sub6.method832((new RSString[]{(Class40_Sub5_Sub1.aClass1_2274), (Class48.aClass1_1123), name})))) + 12, y, 8388608);
+                                    typeFace.drawString((RSString.linkRSStrings((new RSString[]{(Class40_Sub5_Sub1.aClass1_2274), (Class48.aClass1_1123), name, (Class43.char_colon)}))), 4, y, 0);
+                                    typeFace.drawString((Actor.chatMessages[i_8_]), (typeFace.getStringWidth(RSString.linkRSStrings((new RSString[]{(Class40_Sub5_Sub1.aClass1_2274), (Class48.aClass1_1123), name})))) + 12, y, 8388608);
                                 }
                                 line++;
                             }
                             if(type == 8 && ((ItemDefinition.anInt2797) == 0 || ((ItemDefinition.anInt2797) == 1 && (Class40_Sub2.hasFriend(name, -32624))))) {
                                 line++;
                                 if(y > 0 && (y < 110))
-                                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832((new RSString[]{name, (Class48.aClass1_1123), (Actor.chatMessages[i_8_])}))), 4, y, 8270336);
+                                    typeFace.drawString((RSString.linkRSStrings((new RSString[]{name, (Class48.aClass1_1123), (Actor.chatMessages[i_8_])}))), 4, y, 8270336);
                             }
                         }
                     }
@@ -148,8 +149,8 @@ public class ChatBox {
                         name = (Player.localPlayer.playerName);
                     else
                         name = Class22_Sub2.username;
-                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832((new RSString[]{name, Class43.char_colon}))), 4, 90, 0);
-                    typeFace.drawString((Class40_Sub5_Sub17_Sub6.method832((new RSString[]{HuffmanEncoding.chatboxInput, InteractiveObject.aClass1_478}))), ((typeFace.getStringWidth(Class40_Sub5_Sub17_Sub6.method832((new RSString[]{name, ISAAC.aClass1_515})))) + 6), 90, 255);
+                    typeFace.drawString((RSString.linkRSStrings((new RSString[]{name, Class43.char_colon}))), 4, 90, 0);
+                    typeFace.drawString((RSString.linkRSStrings((new RSString[]{HuffmanEncoding.chatboxInput, InteractiveObject.aClass1_478}))), ((typeFace.getStringWidth(RSString.linkRSStrings((new RSString[]{name, ISAAC.aClass1_515})))) + 6), 90, 255);
                     Rasterizer.drawHorizontalLine(0, 77, 479, 0);
                 } else {
                     boolean bool = (Class40_Sub5_Sub6.drawInterface(0, Class48.anInt1138, 96, (byte) -5, 0, 3, 479));
@@ -167,7 +168,7 @@ public class ChatBox {
         }
         if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
             Class40_Sub5_Sub6.method588(-1);
-        Class45.method908((byte) 122);
+        LinkedList.method908((byte) 122);
 
     }
 }

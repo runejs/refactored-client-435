@@ -37,7 +37,7 @@ public class Class40_Sub5_Sub13 extends SubNode {
     }
 
     public static void method650(int arg1) {
-        Class45.anInt1073 = arg1;
+        LinkedList.anInt1073 = arg1;
     }
 
     public static void method651(int arg0, int arg1) {
@@ -55,7 +55,7 @@ public class Class40_Sub5_Sub13 extends SubNode {
     }
 
     public static void method652() {
-        for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = (Class40_Sub3) Class45.aClass45_1064.method909(-4)) {
+        for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4)) {
             if(class40_sub3.anInt2031 > 0)
                 class40_sub3.anInt2031--;
             if(class40_sub3.anInt2031 == 0) {

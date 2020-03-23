@@ -9,6 +9,7 @@ import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.WallDecoration;
@@ -57,7 +58,7 @@ public class Class40_Sub2 extends Node {
     public static boolean hasFriend(RSString arg0, int arg1) {
         if(arg0 == null)
             return false;
-        for(int i = 0; i < Class40_Sub5_Sub17_Sub3.friendsCount; i++) {
+        for(int i = 0; i < Item.friendsCount; i++) {
             if(arg0.equalsIgnoreCase(Class40_Sub11.friendUsernames[i], true))
                 return true;
         }
@@ -81,7 +82,7 @@ public class Class40_Sub2 extends Node {
     public static ImageRGB[] method526(CacheIndex arg0, int arg1, RSString arg2, RSString arg3) {
         if(arg1 != 0)
             aClass1_2008 = null;
-        int i = arg0.method183(0, arg2);
+        int i = arg0.getHash(arg2);
         int i_4_ = arg0.method179(i, arg3);
         return Class52.method944((byte) -3, i, arg0, i_4_);
     }
@@ -166,7 +167,7 @@ public class Class40_Sub2 extends Node {
 
     public void method528() {
         int i = anInt1997;
-        GameObjectDefinition gameObjectDefinition = aGameObjectDefinition_2011.method611(-20);
+        GameObjectDefinition gameObjectDefinition = aGameObjectDefinition_2011.getChildDefinition(-20);
         if(gameObjectDefinition == null) {
             anInt2000 = 0;
             anInt2012 = 0;

@@ -9,6 +9,7 @@ import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.util.Signlink;
 import com.jagex.runescape.util.SignlinkNode;
@@ -20,7 +21,7 @@ public class ActorDefinition extends SubNode {
     public static RSString str_Moderator_mute_option_ON = (RSString.CreateString("Moderator option: Mute player for 48 hours: <ON>"));
     public static int[] anIntArray2386;
     public static RSString aClass1_2392 = RSString.CreateString("Loaded fonts");
-    public static int anInt2394 = 0;
+    public static int menuActionRow = 0;
     public static RSString aClass1_2396 = RSString.CreateString("Checking for updates )2 ");
     public static RSString aClass1_2401 = RSString.CreateString("Please wait 1 minute and try again)3");
     public static int anInt2404 = 0;
@@ -32,7 +33,7 @@ public class ActorDefinition extends SubNode {
     public static int openFullScreenWidgetId = -1;
 
     public boolean isClickable = true;
-    public int tileSpacesOccupied = 1;
+    public int boundaryDimension = 1;
     public int[] headModelIndexes;
     public RSString[] options = new RSString[5];
     public int headIcon = -1;
@@ -204,7 +205,7 @@ public class ActorDefinition extends SubNode {
                 class40_sub11.anIntArray2155[i_6_] = -5;
             }
         }
-        KeyFocusListener.aClass45_1278.pushBack(class40_sub11, 92);
+        KeyFocusListener.aLinkedList_1278.pushBack(class40_sub11, 92);
     }
 
     public static void method581() {
@@ -316,7 +317,7 @@ public class ActorDefinition extends SubNode {
         } else if(opcode == 2) {
             name = buffer.getRSString();
         } else if(opcode == 12) {
-            tileSpacesOccupied = buffer.getUnsignedByte();
+            boundaryDimension = buffer.getUnsignedByte();
         } else if(opcode == 13) {
             stanceAnimation = buffer.getUnsignedShortBE();
         } else if(opcode == 14) {

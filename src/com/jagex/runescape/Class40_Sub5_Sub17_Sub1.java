@@ -14,6 +14,7 @@ import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.Scene;
@@ -165,10 +166,10 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     public static void method762(int arg0, Actor actor) {
         if(arg0 != (actor.anInt3113 ^ 0xffffffff)) {
             if(actor.facingActorIndex != -1 && actor.facingActorIndex < 32768) {
-                Npc class40_sub5_sub17_sub4_sub2 = (Player.trackedNpcs[actor.facingActorIndex]);
+                Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[actor.facingActorIndex]);
                 if(class40_sub5_sub17_sub4_sub2 != null) {
-                    int i = (-class40_sub5_sub17_sub4_sub2.anInt3089 + actor.anInt3089);
-                    int i_10_ = (-class40_sub5_sub17_sub4_sub2.anInt3098 + actor.anInt3098);
+                    int i = (-class40_sub5_sub17_sub4_sub2.worldY + actor.worldY);
+                    int i_10_ = (-class40_sub5_sub17_sub4_sub2.worldX + actor.worldX);
                     if(i_10_ != 0 || i != 0)
                         actor.anInt3080 = 0x7ff & (int) (325.949 * Math.atan2((double) i_10_, (double) i));
                 }
@@ -179,15 +180,15 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     i = 2047;
                 Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[i]);
                 if(class40_sub5_sub17_sub4_sub1 != null) {
-                    int i_11_ = (actor.anInt3098 - class40_sub5_sub17_sub4_sub1.anInt3098);
-                    int i_12_ = (-class40_sub5_sub17_sub4_sub1.anInt3089 + actor.anInt3089);
+                    int i_11_ = (actor.worldX - class40_sub5_sub17_sub4_sub1.worldX);
+                    int i_12_ = (-class40_sub5_sub17_sub4_sub1.worldY + actor.worldY);
                     if(i_11_ != 0 || i_12_ != 0)
                         actor.anInt3080 = (int) (Math.atan2((double) i_11_, (double) i_12_) * 325.949) & 0x7ff;
                 }
             }
             if((actor.facePositionX != 0 || actor.facePositionY != 0) && (actor.anInt3109 == 0 || actor.anInt3074 > 0)) {
-                int i = (actor.anInt3089 - 64 * (actor.facePositionY - Class26.anInt635 - Class26.anInt635));
-                int i_13_ = (-((-SpotAnimDefinition.anInt2307 + actor.facePositionX + -SpotAnimDefinition.anInt2307) * 64) + actor.anInt3098);
+                int i = (actor.worldY - 64 * (actor.facePositionY - Class26.anInt635 - Class26.anInt635));
+                int i_13_ = (-((-SpotAnimDefinition.anInt2307 + actor.facePositionX + -SpotAnimDefinition.anInt2307) * 64) + actor.worldX);
                 if(i_13_ != 0 || i != 0)
                     actor.anInt3080 = 0x7ff & (int) (325.949 * Math.atan2((double) i_13_, (double) i));
                 actor.facePositionY = 0;
@@ -296,7 +297,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             Class13.aClass40_Sub5_Sub14_Sub2_418 = RSApplet.aClass40_Sub5_Sub14_Sub2_1.method691();
             Class13.aClass40_Sub5_Sub14_Sub2_418.flipHorizontal();
             Class13.aClass40_Sub5_Sub14_Sub2_418.flipVertical();
-            Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776 = SpotAnimDefinition.method550(arg2, (byte) -78, (Class40_Sub5_Sub15.aClass1_2787), Class8.aClass1_305);
+            Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776 = IndexedImage.getMultipleIndexedImages(arg2, (Class40_Sub5_Sub15.aClass1_2787), Class8.aClass1_305);
             Landscape.anIntArray1186 = new int[151];
             RSCanvas.anIntArray66 = new int[33];
             RSCanvas.anIntArray62 = new int[33];
@@ -348,8 +349,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             }
             if(((OverlayDefinition.tile_flags[Player.worldLevel][i_23_][i_22_]) & 0x4) != 0)
                 i = Player.worldLevel;
-            int i_24_ = ((Player.localPlayer.anInt3098) >> 7);
-            int i_25_ = ((Player.localPlayer.anInt3089) >> 7);
+            int i_24_ = ((Player.localPlayer.worldX) >> 7);
+            int i_25_ = ((Player.localPlayer.worldY) >> 7);
             int i_26_;
             if(i_24_ <= i_23_)
                 i_26_ = -i_24_ + i_23_;
@@ -420,7 +421,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         }
         if(arg0 > -101)
             aClass6_Sub1_3000 = null;
-        if(((OverlayDefinition.tile_flags[Player.worldLevel][(Player.localPlayer.anInt3098) >> 7][(Player.localPlayer.anInt3089) >> 7]) & 0x4) != 0)
+        if(((OverlayDefinition.tile_flags[Player.worldLevel][(Player.localPlayer.worldX) >> 7][(Player.localPlayer.worldY) >> 7]) & 0x4) != 0)
             i = Player.worldLevel;
         return i;
 

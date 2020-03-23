@@ -84,31 +84,31 @@ public class SceneTile extends Node {
                 int i = arg2.contains(Class38.aClass1_890);
                 if(i == -1)
                     break;
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(0, false, arg1))), arg2.substring(2 + i)})));
+                arg2 = (RSString.linkRSStrings((new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(0, false, arg1))), arg2.substring(2 + i)})));
             }
             for(; ; ) {
-                int i = arg2.contains(Class45.aClass1_1077);
+                int i = arg2.contains(LinkedList.aClass1_1077);
                 if(i == -1)
                     break;
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(1, false, arg1))), arg2.substring(i + 2)})));
+                arg2 = (RSString.linkRSStrings((new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(1, false, arg1))), arg2.substring(i + 2)})));
             }
             for(; ; ) {
                 int i = arg2.contains(Class67.aClass1_1610);
                 if(i == -1)
                     break;
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(2, false, arg1))), arg2.substring(2 + i)})));
+                arg2 = (RSString.linkRSStrings((new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(2, false, arg1))), arg2.substring(2 + i)})));
             }
             for(; ; ) {
                 int i = arg2.contains(Class55.aClass1_1300);
                 if(i == -1)
                     break;
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(arg0 ^ 0x3b9ac9eb, HuffmanEncoding.method1029(3, false, arg1))), arg2.substring(i + 2)})));
+                arg2 = (RSString.linkRSStrings((new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(arg0 ^ 0x3b9ac9eb, HuffmanEncoding.method1029(3, false, arg1))), arg2.substring(i + 2)})));
             }
             for(; ; ) {
                 int i = arg2.contains(SubNode.aClass1_2090);
                 if(i == -1)
                     break;
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(4, false, arg1))), arg2.substring(i + 2)})));
+                arg2 = (RSString.linkRSStrings((new RSString[]{arg2.substring(0, i), (Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(4, false, arg1))), arg2.substring(i + 2)})));
             }
             for(; ; ) {
                 int i = arg2.contains(GameObjectDefinition.aClass1_2526);
@@ -122,7 +122,7 @@ public class SceneTile extends Node {
                         class1 = InteractiveObject.method279(is, true, 0, is.length);
                     }
                 }
-                arg2 = (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{arg2.substring(0, i), class1, arg2.substring(i + 4)}));
+                arg2 = (RSString.linkRSStrings(new RSString[]{arg2.substring(0, i), class1, arg2.substring(i + 4)}));
             }
         }
         return arg2;
@@ -164,7 +164,7 @@ public class SceneTile extends Node {
         aClass40_Sub5_Sub14_Sub4_2043 = null;
     }
 
-    public static RSString method536(int arg0, int arg1, int arg2) {
+    public static RSString getCombatLevelColour(int arg0, int arg1, int arg2) {
         if(arg2 >= -16)
             return null;
         int i = -arg1 + arg0;
@@ -188,16 +188,16 @@ public class SceneTile extends Node {
     }
 
     public static void method537(int arg0) {
-        if(ActorDefinition.anInt2394 >= 2 || Class8.anInt301 != 0 || Main.anInt1773 != 0) {
+        if(ActorDefinition.menuActionRow >= 2 || Class8.itemSelected != 0 || Main.widgetSelected != 0) {
             RSString class1;
-            if(Class8.anInt301 == 1 && ActorDefinition.anInt2394 < 2)
-                class1 = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Main.aClass1_1763, VertexNormal.aClass1_1117, Npc.aClass1_3295, Class38.aClass1_894})));
-            else if(Main.anInt1773 != 1 || ActorDefinition.anInt2394 >= 2)
-                class1 = (Landscape.aClass1Array1184[-1 + ActorDefinition.anInt2394]);
+            if(Class8.itemSelected == 1 && ActorDefinition.menuActionRow < 2)
+                class1 = (RSString.linkRSStrings((new RSString[]{Main.aClass1_1763, VertexNormal.aClass1_1117, Npc.aClass1_3295, Class38.aClass1_894})));
+            else if(Main.widgetSelected != 1 || ActorDefinition.menuActionRow >= 2)
+                class1 = (Landscape.menuActionTexts[-1 + ActorDefinition.menuActionRow]);
             else
-                class1 = (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class38_Sub1.aClass1_1918, VertexNormal.aClass1_1117, FloorDecoration.aClass1_611, Class38.aClass1_894}));
-            if(ActorDefinition.anInt2394 > 2)
-                class1 = (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{class1, WallDecoration.aClass1_1243, HashTable.method334((ActorDefinition.anInt2394) + -2, -1), Class39.aClass1_904}));
+                class1 = (RSString.linkRSStrings(new RSString[]{Class38_Sub1.aClass1_1918, VertexNormal.aClass1_1117, FloorDecoration.aClass1_611, Class38.aClass1_894}));
+            if(ActorDefinition.menuActionRow > 2)
+                class1 = (RSString.linkRSStrings(new RSString[]{class1, WallDecoration.aClass1_1243, HashTable.method334((ActorDefinition.menuActionRow) + -2, -1), Class39.aClass1_904}));
             if(arg0 == 4)
                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawShadowedSeededAlphaString(class1, 4, 15, 16777215, true, Node.pulseCycle / 1000);
         }

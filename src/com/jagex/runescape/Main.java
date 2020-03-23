@@ -8,8 +8,8 @@ import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.*;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.Rasterizer;
+import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;
@@ -17,6 +17,7 @@ import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
@@ -41,9 +42,9 @@ public class Main extends RSApplet {
     public static int anInt1764 = 0;
     public static int anInt1766 = 1;
     public static int anInt1769 = -1;
-    public static int anInt1773 = 0;
+    public static int widgetSelected = 0;
     public static RSString aClass1_1777 = RSString.CreateString("Verbinde mit Server)3)3)3");
-    public static RSString[] aClass1Array1778 = new RSString[5];
+    public static RSString[] playerActions = new RSString[5];
     public static RSString aClass1_1781 = (RSString.CreateString("Account locked as we suspect it has been stolen)3"));
     public static RSString aClass1_1788 = RSString.CreateString("backtop1");
     public static boolean aBoolean1790;
@@ -124,7 +125,7 @@ public class Main extends RSApplet {
                                         int i_14_ = 0;
                                         if((-32 + (Rasterizer.viewport_left) < i_10_ && ((Rasterizer.viewport_right) > i_10_) && (((Rasterizer.viewport_top) + -32 < i_11_)) && (Rasterizer.viewport_bottom) > i_11_) || (SceneTile.activeInterfaceType != 0 && (GroundItemTile.selectedInventorySlot == i_7_))) {
                                             int i_15_ = 0;
-                                            if(Class8.anInt301 == 1 && (i_7_ == Class45.anInt1061) && ((widget.id) == ISAAC.anInt525))
+                                            if(Class8.itemSelected == 1 && (i_7_ == LinkedList.anInt1061) && ((widget.id) == ISAAC.anInt525))
                                                 i_15_ = 16777215;
                                             ImageRGB class40_sub5_sub14_sub4 = (Class40_Sub13.method876(117, (widget.itemAmounts[i_7_]), i_13_, i_15_));
                                             if(class40_sub5_sub14_sub4 == null)
@@ -223,7 +224,7 @@ public class Main extends RSApplet {
                                     if(class1 == null)
                                         class1 = RSApplet.aClass1_34;
                                     if(class40_sub5_sub16.stackable == 1 || widget.anInt2734 != 1)
-                                        class1 = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{class1, Class29.aClass1_674, (Class45.method903((widget.anInt2734), (byte) -109))})));
+                                        class1 = (RSString.linkRSStrings((new RSString[]{class1, Class29.aClass1_674, (LinkedList.method903((widget.anInt2734), (byte) -109))})));
                                 }
                                 if(widget.actionType == 6 && (CacheIndex_Sub1.anInt1819 == widget.id)) {
                                     i_21_ = widget.textColor;
@@ -339,7 +340,7 @@ public class Main extends RSApplet {
                             } else if(widget.modelId != 0)
                                 model = Player.localPlayer.getRotatedModel(92);
                             else
-                                model = (Class45.aClass30_1082.getAnimatedModel(null, null, -1, -1, (byte) -88));
+                                model = (LinkedList.aClass30_1082.getAnimatedModel(null, null, -1, -1, (byte) -88));
                             int i_37_ = widget.rotationX;
                             int i_38_ = widget.rotationY;
                             int i_39_ = widget.offsetY2d;
@@ -393,7 +394,7 @@ public class Main extends RSApplet {
                                             if(class1 == null)
                                                 class1 = (RSApplet.aClass1_34);
                                             if((class40_sub5_sub16.stackable) == 1 || (widget.itemAmounts[i_45_]) != 1)
-                                                class1 = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{class1, (Class29.aClass1_674), (Class45.method903((widget.itemAmounts[i_45_]), (byte) -105))})));
+                                                class1 = (RSString.linkRSStrings((new RSString[]{class1, (Class29.aClass1_674), (LinkedList.method903((widget.itemAmounts[i_45_]), (byte) -105))})));
                                             int i_48_ = ((i_47_ * ((widget.itemSpritePadsX) + 115)) + i_0_);
                                             int i_49_ = ((i_46_ * ((widget.itemSpritePadsY) + 12)) + i_1_);
                                             if((widget.xTextAlignment) == 0)
@@ -606,7 +607,7 @@ public class Main extends RSApplet {
     public static void method41() {
         aClass1_1762 = null;
         aClass1_1781 = null;
-        aClass1Array1778 = null;
+        playerActions = null;
         aClass1_1763 = null;
         aClass1_1777 = null;
         aClass1_1788 = null;
@@ -630,11 +631,9 @@ public class Main extends RSApplet {
         return 7 + (-arg6 + 1) + -arg4;
     }
 
-    public static void method43(CacheIndex arg0, boolean arg1) {
-        if(arg1) {
-            Class64.aCacheIndex_1521 = arg0;
-            Class59.anInt1383 = Class64.aCacheIndex_1521.method190(16, (byte) 24);
-        }
+    public static void method43(CacheIndex arg0) {
+        Class64.aCacheIndex_1521 = arg0;
+        Class59.anInt1383 = Class64.aCacheIndex_1521.method190(16, (byte) 24);
     }
 
     public static void method44() {
@@ -655,42 +654,42 @@ public class Main extends RSApplet {
         Class32.anInt771 = 0;
         Class49.anInt1151 = -1;
         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-        ActorDefinition.anInt2394 = 0;
+        ActorDefinition.menuActionRow = 0;
         Class40_Sub5_Sub13.method650(0);
         for(int i = 0; i < 100; i++)
             Actor.chatMessages[i] = null;
-        Class8.anInt301 = 0;
+        Class8.itemSelected = 0;
         Class57.anInt1342 = -40 + (int) (80.0 * Math.random());
         Class48.anInt1126 = -55 + (int) (Math.random() * 110.0);
         VarbitDefinition.anInt2366 = 0;
         Class43.cameraYawOffset = (int) (Math.random() * 120.0) + -60;
         Buffer.anInt1985 = -1;
-        Player.trackedNpcIndex = 0;
+        Player.npcCount = 0;
         PacketBuffer.currentSound = 0;
-        anInt1773 = 0;
+        widgetSelected = 0;
         GroundItemTile.cameraHorizontal = 0x7ff & -10 + (int) (20.0 * Math.random());
         Class51.mapZoomOffset = -20 + (int) (Math.random() * 30.0);
         Class27.anInt658 = 0;
         Buffer.anInt1976 = -50 + (int) (Math.random() * 100.0);
-        Player.trackedPlayerIndex = 0;
+        Player.localPlayerCount = 0;
         Class55.anInt1304 = 0;
         for(int i = 0; i < 2048; i++) {
             Player.trackedPlayers[i] = null;
             Player.trackedPlayerAppearanceCache[i] = null;
         }
         for(int i = 0; i < 32768; i++)
-            Player.trackedNpcs[i] = null;
+            Player.npcs[i] = null;
         Player.localPlayer = Player.trackedPlayers[2047] = new Player();
-        Class43.aClass45_1022.method906(0);
-        Class57.aClass45_1332.method906(0);
+        Class43.aLinkedList_1022.method906(0);
+        Class57.aLinkedList_1332.method906(0);
         for(int i = 0; i < 4; i++) {
             for(int i_82_ = 0; i_82_ < 104; i_82_++) {
                 for(int i_83_ = 0; i_83_ < 104; i_83_++)
-                    Wall.aClass45ArrayArrayArray357[i][i_82_][i_83_] = null;
+                    Wall.groundItems[i][i_82_][i_83_] = null;
             }
         }
-        Class45.aClass45_1064 = new Class45();
-        Class40_Sub5_Sub17_Sub3.friendsCount = 0;
+        LinkedList.aLinkedList_1064 = new LinkedList();
+        Item.friendsCount = 0;
         Class12.friendListStatus = 0;
         Class55.method958(Class48.anInt1138);
         Class48.anInt1138 = -1;
@@ -714,10 +713,10 @@ public class Main extends RSApplet {
         Class51.anInt1205 = -1;
         Class40_Sub6.anInt2118 = 0;
         Class5.currentTabId = 3;
-        Class45.aClass30_1082.method380(null, false, 7, new int[5], -1);
+        LinkedList.aClass30_1082.method380(null, false, 7, new int[5], -1);
         for(int i = 0; i < 5; i++) {
-            aClass1Array1778[i] = null;
-            Class13.aBooleanArray414[i] = false;
+            playerActions[i] = null;
+            Class13.playerArray[i] = false;
         }
         ISAAC.aBoolean519 = true;
     }
@@ -752,18 +751,16 @@ public class Main extends RSApplet {
         }
     }
 
-    public void method23(int arg0) {
+    public void method23() {
         Node.pulseCycle++;
-        method39(arg0 + 23636);
+        method39();
         Class13.method242((byte) -91);
-        if(arg0 != -22636)
-            method43(null, false);
         Class33.method413((byte) -116);
         RSRuntimeException.method1054((byte) 125);
         Widget.method639(122);
         Class64.method1015(-656);
         if(Class51.anInt1197 == 0) {
-            Class40_Sub3.method530(arg0 + 22736);
+            Class40_Sub3.method530(100);
             Class60.method992(75);
         } else if(Class51.anInt1197 == 5) {
             Class40_Sub3.method530(100);
@@ -777,18 +774,18 @@ public class Main extends RSApplet {
         } else
             Class60.method993(-104);
         if(Class51.anInt1197 == 30)
-            Npc.method796((byte) 77);
+            Npc.processMenuClick();
         else if(Class51.anInt1197 == 35)
-            Npc.method796((byte) 98);
+            Npc.processMenuClick();
         else if(Class51.anInt1197 == 40)
             SpotAnimDefinition.method552(true);
     }
 
-    public void method39(int arg0) {
-        if(arg0 != Class51.anInt1197) {
+    public void method39() {
+        if(1000 != Class51.anInt1197) {
             boolean bool = FloorDecoration.method346((byte) 48);
             if(!bool)
-                method40(arg0 ^ 0x3ed);
+                method40();
         }
     }
 
@@ -810,12 +807,12 @@ public class Main extends RSApplet {
                             if(Class37.anInt874 > PacketBuffer.anInt2231)
                                 PacketBuffer.anInt2231 = Class37.anInt874;
                             int i = ((-Class37.anInt874 + PacketBuffer.anInt2231) * 50 / PacketBuffer.anInt2231);
-                            Class51.method940(0, Class67.aClass1_1585, true, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{CollisionMap.aClass1_170, HashTable.method334(i, -1), Class30.aClass1_698})));
+                            Class51.method940(0, Class67.aClass1_1585, true, (RSString.linkRSStrings(new RSString[]{CollisionMap.aClass1_170, HashTable.method334(i, -1), Class30.aClass1_698})));
                         } else if(Class68.anInt1634 == 2) {
                             if(IdentityKit.anInt2591 > GameObject.anInt3048)
                                 GameObject.anInt3048 = IdentityKit.anInt2591;
                             int i = ((50 * (-IdentityKit.anInt2591 + GameObject.anInt3048) / GameObject.anInt3048) + 50);
-                            Class51.method940(0, Class67.aClass1_1585, true, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{CollisionMap.aClass1_170, HashTable.method334(i, -1), Class30.aClass1_698})));
+                            Class51.method940(0, Class67.aClass1_1585, true, (RSString.linkRSStrings(new RSString[]{CollisionMap.aClass1_170, HashTable.method334(i, -1), Class30.aClass1_698})));
                         } else
                             Class51.method940(0, Class67.aClass1_1585, false, null);
                     } else if(Class51.anInt1197 != 30) {
@@ -836,9 +833,7 @@ public class Main extends RSApplet {
         int i = -22 / ((arg0 - 6) / 50);
     }
 
-    public void method40(int arg0) {
-        if(arg0 != 5)
-            aClass1_1781 = null;
+    public void method40() {
         if(Class34.anInt813 >= 4) {
             this.openErrorPage((byte) 120, "js5crc");
             Class51.anInt1197 = 1000;
@@ -857,7 +852,7 @@ public class Main extends RSApplet {
                 do {
                     try {
                         if(Class8.anInt290 == 0) {
-                            Class68.aSignlinkNode_1632 = ISAAC.aClass31_521.method395(arg0 ^ 0x6, Wall.anInt350);
+                            Class68.aSignlinkNode_1632 = ISAAC.aClass31_521.method395(5 ^ 0x6, Wall.anInt350);
                             Class8.anInt290++;
                         }
                         if(Class8.anInt290 == 1) {
@@ -878,7 +873,7 @@ public class Main extends RSApplet {
                             Class22_Sub1.aLong1841 = System.currentTimeMillis();
                         }
                         if(Class8.anInt290 == 3) {
-                            if(Class51.anInt1197 > 5 && Class29.aClass64_676.method1014(arg0 + -131) <= 0) {
+                            if(Class51.anInt1197 > 5 && Class29.aClass64_676.method1014(5 + -131) <= 0) {
                                 if((System.currentTimeMillis() + -Class22_Sub1.aLong1841) > 30000L) {
                                     method35(-2);
                                     break;
@@ -910,7 +905,7 @@ public class Main extends RSApplet {
         }
     }
 
-    public void method24(int arg0) {
+    public void method24() {
         if(Class12.mouseCapturer != null)
             Class12.mouseCapturer.aBoolean913 = false;
         Class12.mouseCapturer = null;
@@ -922,18 +917,16 @@ public class Main extends RSApplet {
         Class13.method249(true);
         Class33.method407(false);
         Class60.method989(true);
-        ActorDefinition.method567(arg0 ^ 0x1);
+        ActorDefinition.method567(0x1);
         Class52.method947(-1);
         do {
             try {
                 if(SpotAnimDefinition.aClass67_2298 != null)
                     SpotAnimDefinition.aClass67_2298.method1036(841617512);
-                if(arg0 != 0)
-                    method31(false);
                 if(Class40_Sub5_Sub6.aClass67Array2436 != null) {
                     for(int i = 0; i < Class40_Sub5_Sub6.aClass67Array2436.length; i++) {
                         if(Class40_Sub5_Sub6.aClass67Array2436[i] != null)
-                            Class40_Sub5_Sub6.aClass67Array2436[i].method1036(arg0 ^ 0x322a1068);
+                            Class40_Sub5_Sub6.aClass67Array2436[i].method1036(0x322a1068);
                     }
                 }
                 if(Class30.aClass67_693 == null)
@@ -968,6 +961,7 @@ public class Main extends RSApplet {
     }
 
     public void reset() {
+        // TODO: Should all these also be "reset"
         method41();
         RSString.method83();
         RSApplet.method18();
@@ -984,7 +978,7 @@ public class Main extends RSApplet {
         Scene.method114();
         CollisionMap.method152();
         Player.method794();
-        Class45.method900();
+        LinkedList.method900();
         Widget.method641();
         Class48.method924();
         Class30.method376();
@@ -1053,7 +1047,7 @@ public class Main extends RSApplet {
         Class43.method893();
         Class61.method998();
         GameObject.method770();
-        Class40_Sub5_Sub17_Sub3.method780();
+        Item.method780();
         Class40_Sub7.method839();
         Class13.method248();
         RSCanvas.method47();

@@ -7,6 +7,7 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -33,7 +34,7 @@ public class Class8 {
     public static Class68 aClass68_298;
     public static RSString aClass1_299;
     public static RSString aClass1_300;
-    public static int anInt301;
+    public static int itemSelected;
     public static byte aByte302;
     public static RSString aClass1_303;
     public static RSString aClass1_304;
@@ -52,7 +53,7 @@ public class Class8 {
         anIntArray297 = new int[5];
         aClass1_291 = RSString.CreateString("You have only just left another world)3");
         aClass1_294 = aClass1_291;
-        anInt301 = 0;
+        itemSelected = 0;
         aClass1_305 = RSString.CreateString("");
         aClass1_304 = RSString.CreateString("backhmid2");
     }
@@ -64,11 +65,11 @@ public class Class8 {
     }
 
     public static void method209() {
-        for(int i = 0; i < Player.trackedNpcIndex; i++) {
-            int i_0_ = Player.trackedNpcIndices[i];
-            Npc class40_sub5_sub17_sub4_sub2 = Player.trackedNpcs[i_0_];
+        for(int i = 0; i < Player.npcCount; i++) {
+            int i_0_ = Player.npcIds[i];
+            Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_0_];
             if(class40_sub5_sub17_sub4_sub2 != null)
-                Class13.method241(class40_sub5_sub17_sub4_sub2, (class40_sub5_sub17_sub4_sub2.actorDefinition.tileSpacesOccupied), (byte) 107);
+                Class13.method241(class40_sub5_sub17_sub4_sub2, (class40_sub5_sub17_sub4_sub2.actorDefinition.boundaryDimension), (byte) 107);
         }
 
     }

@@ -42,7 +42,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public Class41[] aClass41Array2794;
 
     public Class40_Sub5_Sub15(CacheIndex arg0, CacheIndex arg1, int arg2, boolean arg3) {
-        Class45 class45 = new Class45();
+        LinkedList linkedList = new LinkedList();
         int i = arg0.method190(arg2, (byte) 16);
         aClass41Array2794 = new Class41[i];
         int[] is = arg0.method192(arg2, true);
@@ -50,7 +50,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
             byte[] is_1_ = arg0.getFile(is[i_0_], arg2);
             Class40_Sub13 class40_sub13 = null;
             int i_2_ = is_1_[1] & 0xff | is_1_[0] << 8 & 0xff00;
-            for(Class40_Sub13 class40_sub13_3_ = (Class40_Sub13) class45.method902((byte) -90); class40_sub13_3_ != null; class40_sub13_3_ = (Class40_Sub13) class45.method909(-4)) {
+            for(Class40_Sub13 class40_sub13_3_ = (Class40_Sub13) linkedList.method902((byte) -90); class40_sub13_3_ != null; class40_sub13_3_ = (Class40_Sub13) linkedList.method909(-4)) {
                 if(i_2_ == class40_sub13_3_.anInt2175) {
                     class40_sub13 = class40_sub13_3_;
                     break;
@@ -63,7 +63,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
                 else
                     is_4_ = arg1.method182(i_2_, 0);
                 class40_sub13 = new Class40_Sub13(i_2_, is_4_);
-                class45.pushBack(class40_sub13, 60);
+                linkedList.pushBack(class40_sub13, 60);
             }
             aClass41Array2794[is[i_0_]] = new Class41(is_1_, class40_sub13);
         }

@@ -198,7 +198,7 @@ public class Widget extends SubNode {
             Class59.anInt1389 = Class52.anInt1214;
             if(GameObjectDefinition.anInt2543 < 0) {
                 for(int i = 0; i < 112; i++) {
-                    Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[i] = false;
+                    Item.obfuscatedKeyStatus[i] = false;
                 }
                 GameObjectDefinition.anInt2543 = Class40_Sub13.anInt2183;
             } else {
@@ -206,9 +206,9 @@ public class Widget extends SubNode {
                     int i = RSString.keyCodes[Class40_Sub13.anInt2183];
                     Class40_Sub13.anInt2183 = 0x7f & Class40_Sub13.anInt2183 + 1;
                     if(i < 0) {
-                        Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[i ^ 0xffffffff] = false;
+                        Item.obfuscatedKeyStatus[i ^ 0xffffffff] = false;
                     } else {
-                        Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[i] = true;
+                        Item.obfuscatedKeyStatus[i] = true;
                     }
                 }
             }
@@ -268,9 +268,9 @@ public class Widget extends SubNode {
             return HashTable.method334(arg0, -1);
         }
         if(arg0 < 10000000) {
-            return (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{HashTable.method334(arg0 / 1000, -1), IdentityKit.aClass1_2587}));
+            return (RSString.linkRSStrings(new RSString[]{HashTable.method334(arg0 / 1000, -1), IdentityKit.aClass1_2587}));
         }
-        return (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{HashTable.method334(arg0 / 1000000, arg1 ^ 0x63), Class22.aClass1_542}));
+        return (RSString.linkRSStrings(new RSString[]{HashTable.method334(arg0 / 1000000, arg1 ^ 0x63), Class22.aClass1_542}));
     }
 
     public static void method891(Object[] arg0, int arg1, int arg2, Widget arg3, int arg4, boolean arg5) {
@@ -841,16 +841,16 @@ public class Widget extends SubNode {
                                             if(i_3_ == 4100) {
                                                 RSString class1 = (Class40_Sub11.aClass1Array2153[--i_1_]);
                                                 int i_75_ = (Class67.anIntArray1588[--i]);
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{class1, (HashTable.method334(i_75_, -1))})));
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = (RSString.linkRSStrings((new RSString[]{class1, (HashTable.method334(i_75_, -1))})));
                                             } else if(i_3_ == 4101) {
                                                 i_1_ -= 2;
                                                 RSString class1 = (Class40_Sub11.aClass1Array2153[i_1_ + 1]);
                                                 RSString class1_76_ = (Class40_Sub11.aClass1Array2153[i_1_]);
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{class1_76_, class1})));
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = (RSString.linkRSStrings((new RSString[]{class1_76_, class1})));
                                             } else if(i_3_ == 4102) {
                                                 RSString class1 = (Class40_Sub11.aClass1Array2153[--i_1_]);
                                                 int i_77_ = (Class67.anIntArray1588[--i]);
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{class1, (HuffmanEncoding.method1024(true, (byte) -85, i_77_))})));
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = (RSString.linkRSStrings((new RSString[]{class1, (HuffmanEncoding.method1024(true, (byte) -85, i_77_))})));
                                             } else if(i_3_ == 4103) {
                                                 RSString class1 = (Class40_Sub11.aClass1Array2153[--i_1_]);
                                                 Class40_Sub11.aClass1Array2153[i_1_++] = class1.toLowerCase();
@@ -861,7 +861,7 @@ public class Widget extends SubNode {
                                                 int i_79_ = Class8.aCalendar279.get(5);
                                                 int i_80_ = Class8.aCalendar279.get(2);
                                                 int i_81_ = Class8.aCalendar279.get(1);
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{(HashTable.method334(i_79_, -1)), (Class27.aClass1_643), (Class40_Sub5_Sub17_Sub1.aClass1Array2964[i_80_]), (Class27.aClass1_643), (HashTable.method334(i_81_, -1))})));
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = (RSString.linkRSStrings((new RSString[]{(HashTable.method334(i_79_, -1)), (Class27.aClass1_643), (Class40_Sub5_Sub17_Sub1.aClass1Array2964[i_80_]), (Class27.aClass1_643), (HashTable.method334(i_81_, -1))})));
                                             } else if(i_3_ == 4105) {
                                                 i_1_ -= 2;
                                                 RSString class1 = (Class40_Sub11.aClass1Array2153[i_1_]);
@@ -1076,7 +1076,7 @@ public class Widget extends SubNode {
                 widget.actionType = 0;
                 widget.disabledText = PacketBuffer.str_Please_Wait;
             } else {
-                int fCount = Class40_Sub5_Sub17_Sub3.friendsCount;
+                int fCount = Item.friendsCount;
                 if(type > 700)
                     type -= 601;
                 else
@@ -1096,7 +1096,7 @@ public class Widget extends SubNode {
                 type -= 101;
             else
                 type -= 701;
-            int count = Class40_Sub5_Sub17_Sub3.friendsCount;
+            int count = Item.friendsCount;
             if(Class12.friendListStatus != 2)
                 count = 0;
             if(type >= count) {
@@ -1104,22 +1104,22 @@ public class Widget extends SubNode {
                 widget.actionType = 0;
             } else {
                 if(Class40_Sub7.friendWorlds[type] == 0) {
-                    widget.disabledText = (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{FloorDecoration.aClass1_610, Class27.aClass1_664}));
+                    widget.disabledText = (RSString.linkRSStrings(new RSString[]{FloorDecoration.aClass1_610, Class27.aClass1_664}));
                 } else if(Class40_Sub7.friendWorlds[type] < 5000) {
                     if(Class40_Sub7.friendWorlds[type] == Class13.worldid) {
-                        widget.disabledText = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Landscape.aClass1_1162, Class26.aClass1_634, HashTable.method334((Class40_Sub7.friendWorlds[type]), -1)})));
+                        widget.disabledText = (RSString.linkRSStrings((new RSString[]{Landscape.aClass1_1162, Class26.aClass1_634, HashTable.method334((Class40_Sub7.friendWorlds[type]), -1)})));
                     } else {
-                        widget.disabledText = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{KeyFocusListener.aClass1_1283, Class26.aClass1_634, HashTable.method334((Class40_Sub7.friendWorlds[type]), -1)})));
+                        widget.disabledText = (RSString.linkRSStrings((new RSString[]{KeyFocusListener.aClass1_1283, Class26.aClass1_634, HashTable.method334((Class40_Sub7.friendWorlds[type]), -1)})));
                     }
                 } else if(Class13.worldid == Class40_Sub7.friendWorlds[type]) {
-                    widget.disabledText = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Landscape.aClass1_1162, Cache.aClass1_333, HashTable.method334(-5000 + (Class40_Sub7.friendWorlds[type]), -1)})));
+                    widget.disabledText = (RSString.linkRSStrings((new RSString[]{Landscape.aClass1_1162, Cache.aClass1_333, HashTable.method334(-5000 + (Class40_Sub7.friendWorlds[type]), -1)})));
                 } else {
-                    widget.disabledText = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{KeyFocusListener.aClass1_1283, Cache.aClass1_333, HashTable.method334(((Class40_Sub7.friendWorlds[type]) + -5000), -1)})));
+                    widget.disabledText = (RSString.linkRSStrings((new RSString[]{KeyFocusListener.aClass1_1283, Cache.aClass1_333, HashTable.method334(((Class40_Sub7.friendWorlds[type]) + -5000), -1)})));
                 }
                 widget.actionType = 1;
             }
         } else if(type == 203) {
-            int count = Class40_Sub5_Sub17_Sub3.friendsCount;
+            int count = Item.friendsCount;
             if(Class12.friendListStatus != 2)
                 count = 0;
             widget.scrollHeight = 20 + 15 * count;
@@ -1154,7 +1154,7 @@ public class Widget extends SubNode {
                 Class64.anInt1511 = widget.spriteId;
                 Main.anInt1769 = widget.alternateSpriteId;
             }
-            if(!Class45.aClass30_1082.gender)
+            if(!LinkedList.aClass30_1082.gender)
                 widget.spriteId = Main.anInt1769;
             else
                 widget.spriteId = Class64.anInt1511;
@@ -1163,7 +1163,7 @@ public class Widget extends SubNode {
                 Main.anInt1769 = widget.alternateSpriteId;
                 Class64.anInt1511 = widget.spriteId;
             }
-            if(Class45.aClass30_1082.gender)
+            if(LinkedList.aClass30_1082.gender)
                 widget.spriteId = Main.anInt1769;
             else
                 widget.spriteId = Class64.anInt1511;
@@ -1178,7 +1178,7 @@ public class Widget extends SubNode {
             widget.modelId = 1;
             widget.modelType = 5;
         } else if(type == 600)
-            widget.disabledText = (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{HuffmanEncoding.aClass1_1550, Class22_Sub2.aClass1_1878}));
+            widget.disabledText = (RSString.linkRSStrings(new RSString[]{HuffmanEncoding.aClass1_1550, Class22_Sub2.aClass1_1878}));
         else if(type == 620) {
             if(InteractiveObject.playerRights >= 1) {
                 if(Class67.reportMutePlayer) {

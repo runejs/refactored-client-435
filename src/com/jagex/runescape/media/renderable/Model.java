@@ -24,7 +24,7 @@ public class Model extends Renderable {
     public static int[][] anIntArrayArray3208;
     public static int[] anIntArray3209;
     public static int[][] anIntArrayArray3210;
-    public static int[] anIntArray3211;
+    public static int[] hoveredHash;
     public static int[] anIntArray3212;
     public static int anInt3213;
     public static int[] anIntArray3214;
@@ -33,7 +33,7 @@ public class Model extends Renderable {
     public static int[] COSINE;
     public static int anInt3218;
     public static int[] anIntArray3219;
-    public static int anInt3220;
+    public static int resourceCount;
     public static int[] anIntArray3221;
     public static int[] anIntArray3222;
     public static int[] anIntArray3223;
@@ -49,7 +49,7 @@ public class Model extends Renderable {
         anInt3198 = 0;
         anIntArray3205 = new int[10];
         anIntArray3203 = new int[4096];
-        anIntArray3211 = new int[1000];
+        hoveredHash = new int[1000];
         anIntArrayArray3208 = new int[12][2000];
         anIntArray3204 = new int[4096];
         anIntArrayArray3210 = new int[1600][512];
@@ -65,7 +65,7 @@ public class Model extends Renderable {
         anIntArray3223 = new int[4096];
         SINE = Rasterizer3D.sinetable;
         anIntArray3225 = new int[4096];
-        anInt3220 = 0;
+        resourceCount = 0;
         anIntArray3227 = new int[10];
         anIntArray3221 = new int[12];
         COSINE = Rasterizer3D.cosinetable;
@@ -688,7 +688,7 @@ public class Model extends Renderable {
         anIntArray3227 = null;
         anIntArray3205 = null;
         anIntArray3222 = null;
-        anIntArray3211 = null;
+        hoveredHash = null;
         SINE = null;
         COSINE = null;
         anIntArray3202 = null;
@@ -814,7 +814,7 @@ public class Model extends Renderable {
                                 int i_21_ = (anInt3198 - Rasterizer3D.anInt2931);
                                 if(i_20_ > i_8_ && i_20_ < i_9_ && i_21_ > i_14_ && i_21_ < i_12_) {
                                     if(singleTile)
-                                        anIntArray3211[anInt3220++] = arg8;
+                                        hoveredHash[resourceCount++] = arg8;
                                     else
                                         bool_18_ = true;
                                 }
@@ -1538,7 +1538,7 @@ public class Model extends Renderable {
                         }
                     } else {
                         if(arg1 && method807(anInt3229, anInt3198, anIntArray3204[i_196_], anIntArray3204[i_197_], anIntArray3204[i_198_], i_199_, i_200_, i_201_)) {
-                            anIntArray3211[anInt3220++] = arg2;
+                            hoveredHash[resourceCount++] = arg2;
                             arg1 = false;
                         }
                         if(((i_199_ - i_200_) * (anIntArray3204[i_198_] - anIntArray3204[i_197_]) - (anIntArray3204[i_196_] - anIntArray3204[i_197_]) * (i_201_ - i_200_)) > 0) {

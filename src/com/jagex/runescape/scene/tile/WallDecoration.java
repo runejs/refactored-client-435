@@ -75,7 +75,7 @@ public class WallDecoration {
                 int i_9_ = (Class40_Sub6.tile_height[Player.worldLevel][1 + i_1_][1 + i_0_]);
                 int i_10_ = (Class40_Sub6.tile_height[Player.worldLevel][i_1_][i_0_ + 1]);
                 if(i_5_ == 0) {
-                    Wall wall = (Npc.aScene_3301.method126(Player.worldLevel, i_1_, i_0_));
+                    Wall wall = (Npc.currentScene.method126(Player.worldLevel, i_1_, i_0_));
                     if(wall != null) {
                         int i_11_ = 0x7fff & wall.hash >> 14;
                         if(i_3_ == 2) {
@@ -86,19 +86,19 @@ public class WallDecoration {
                     }
                 }
                 if(i_5_ == 1) {
-                    WallDecoration wallDecoration = (Npc.aScene_3301.method100(Player.worldLevel, i_1_, i_0_));
+                    WallDecoration wallDecoration = (Npc.currentScene.method100(Player.worldLevel, i_1_, i_0_));
                     if(wallDecoration != null)
                         wallDecoration.renderable = (new GameObject((0x1fffe268 & wallDecoration.hash) >> 14, 4, 0, i_7_, i_8_, i_9_, i_10_, i_6_, false));
                 }
                 if(i_5_ == 2) {
-                    InteractiveObject interactiveObject = (Npc.aScene_3301.method107(Player.worldLevel, i_1_, i_0_));
+                    InteractiveObject interactiveObject = (Npc.currentScene.method107(Player.worldLevel, i_1_, i_0_));
                     if(i_3_ == 11)
                         i_3_ = 10;
                     if(interactiveObject != null)
                         interactiveObject.renderable = new GameObject(((interactiveObject.hash >> 14) & 0x7fff), i_3_, i_4_, i_7_, i_8_, i_9_, i_10_, i_6_, false);
                 }
                 if(i_5_ == 3) {
-                    FloorDecoration floorDecoration = (Npc.aScene_3301.getFloorDecoration(Player.worldLevel, i_1_, i_0_));
+                    FloorDecoration floorDecoration = (Npc.currentScene.getFloorDecoration(Player.worldLevel, i_1_, i_0_));
                     if(floorDecoration != null)
                         floorDecoration.renderable = new GameObject((0x7fff & (floorDecoration.hash >> 14)), 22, i_4_, i_7_, i_8_, i_9_, i_10_, i_6_, false);
                 }
@@ -148,7 +148,7 @@ public class WallDecoration {
                     i_28_ = 128 * i_28_ + 64;
                     i_27_ = i_27_ * 128 + 64;
                     Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (new Class40_Sub5_Sub17_Sub6(i_29_, Player.worldLevel, i_27_, i_28_, (-i_30_ + Class37.method430((byte) -124, (Player.worldLevel), i_27_, i_28_)), i_31_, Node.pulseCycle));
-                    Class57.aClass45_1332.pushBack(class40_sub5_sub17_sub6, -111);
+                    Class57.aLinkedList_1332.pushBack(class40_sub5_sub17_sub6, -111);
                 }
             } else if(IncomingPackets.incomingPacket == 99) {
                 int i = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
@@ -158,11 +158,11 @@ public class WallDecoration {
                 int i_35_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
                 int i_36_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
                 if(i_32_ >= 0 && i_33_ >= 0 && i_32_ < 104 && i_33_ < 104) {
-                    Class45 class45 = (Wall.aClass45ArrayArrayArray357[Player.worldLevel][i_32_][i_33_]);
-                    if(class45 != null) {
-                        for(Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3 = ((Class40_Sub5_Sub17_Sub3) class45.method902((byte) -90)); class40_sub5_sub17_sub3 != null; class40_sub5_sub17_sub3 = ((Class40_Sub5_Sub17_Sub3) class45.method909(-4))) {
-                            if(class40_sub5_sub17_sub3.anInt3067 == (i_34_ & 0x7fff) && (i_35_ == class40_sub5_sub17_sub3.anInt3058)) {
-                                class40_sub5_sub17_sub3.anInt3058 = i_36_;
+                    LinkedList linkedList = (Wall.groundItems[Player.worldLevel][i_32_][i_33_]);
+                    if(linkedList != null) {
+                        for(Item item = ((Item) linkedList.method902((byte) -90)); item != null; item = ((Item) linkedList.method909(-4))) {
+                            if(item.itemId == (i_34_ & 0x7fff) && (i_35_ == item.anInt3058)) {
+                                item.anInt3058 = i_36_;
                                 break;
                             }
                         }
@@ -245,16 +245,16 @@ public class WallDecoration {
                     int i_66_ = (i & 0x7) + OverlayDefinition.placementY;
                     int i_67_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
                     if(i_65_ >= 0 && i_66_ >= 0 && i_65_ < 104 && i_66_ < 104) {
-                        Class45 class45 = (Wall.aClass45ArrayArrayArray357[Player.worldLevel][i_65_][i_66_]);
-                        if(class45 != null) {
-                            for(Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3 = ((Class40_Sub5_Sub17_Sub3) class45.method902((byte) -90)); class40_sub5_sub17_sub3 != null; class40_sub5_sub17_sub3 = ((Class40_Sub5_Sub17_Sub3) class45.method909(-4))) {
-                                if((0x7fff & i_67_) == class40_sub5_sub17_sub3.anInt3067) {
-                                    class40_sub5_sub17_sub3.method457(-1);
+                        LinkedList linkedList = (Wall.groundItems[Player.worldLevel][i_65_][i_66_]);
+                        if(linkedList != null) {
+                            for(Item item = ((Item) linkedList.method902((byte) -90)); item != null; item = ((Item) linkedList.method909(-4))) {
+                                if((0x7fff & i_67_) == item.itemId) {
+                                    item.method457(-1);
                                     break;
                                 }
                             }
-                            if(class45.method902((byte) -90) == null)
-                                Wall.aClass45ArrayArrayArray357[Player.worldLevel][i_65_][i_66_] = null;
+                            if(linkedList.method902((byte) -90) == null)
+                                Wall.groundItems[Player.worldLevel][i_65_][i_66_] = null;
                             Class40_Sub13.method880((byte) -80, i_66_, i_65_);
                         }
                     }
@@ -279,7 +279,7 @@ public class WallDecoration {
                         Class40_Sub5_Sub17_Sub1 class40_sub5_sub17_sub1 = (new Class40_Sub5_Sub17_Sub1(i_73_, Player.worldLevel, i_69_, i_68_, Class37.method430((byte) -121, (Player.worldLevel), i_69_, i_68_) + -i_74_, i_76_ + Node.pulseCycle, i_77_ + Node.pulseCycle, i_78_, i_79_, i_72_, i_75_));
                         i_71_ = 128 * i_71_ + 64;
                         class40_sub5_sub17_sub1.method766(i_76_ + Node.pulseCycle, 0, i_71_, (-i_75_ + Class37.method430((byte) -124, (Player.worldLevel), i_70_, i_71_)), i_70_);
-                        Class43.aClass45_1022.pushBack(class40_sub5_sub17_sub1, -73);
+                        Class43.aLinkedList_1022.pushBack(class40_sub5_sub17_sub1, -73);
                     }
                 } else {
                     if(arg0 >= -110)
@@ -292,12 +292,12 @@ public class WallDecoration {
                         int i_83_ = (((0x71 & i_82_) >> 4) + Class40_Sub6.placementX);
                         int i_84_ = (0x7 & i_82_) + OverlayDefinition.placementY;
                         if(i_83_ >= 0 && i_84_ >= 0 && i_83_ < 104 && i_84_ < 104 && Class30.anInt708 != i_80_) {
-                            Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3 = new Class40_Sub5_Sub17_Sub3();
-                            class40_sub5_sub17_sub3.anInt3067 = i_81_;
-                            class40_sub5_sub17_sub3.anInt3058 = i;
-                            if((Wall.aClass45ArrayArrayArray357[Player.worldLevel][i_83_][i_84_]) == null)
-                                Wall.aClass45ArrayArrayArray357[Player.worldLevel][i_83_][i_84_] = new Class45();
-                            Wall.aClass45ArrayArrayArray357[Player.worldLevel][i_83_][i_84_].pushBack(class40_sub5_sub17_sub3, 64);
+                            Item item = new Item();
+                            item.itemId = i_81_;
+                            item.anInt3058 = i;
+                            if((Wall.groundItems[Player.worldLevel][i_83_][i_84_]) == null)
+                                Wall.groundItems[Player.worldLevel][i_83_][i_84_] = new LinkedList();
+                            Wall.groundItems[Player.worldLevel][i_83_][i_84_].pushBack(item, 64);
                             Class40_Sub13.method880((byte) -80, i_84_, i_83_);
                         }
                     } else if(IncomingPackets.incomingPacket == 175) { // add world item
@@ -307,12 +307,12 @@ public class WallDecoration {
                         int i_87_ = OverlayDefinition.placementY + (i_86_ & 0x7);
                         int i_88_ = (Class40_Sub6.placementX + ((0x7a & i_86_) >> 4));
                         if(i_88_ >= 0 && i_87_ >= 0 && i_88_ < 104 && i_87_ < 104) {
-                            Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3 = new Class40_Sub5_Sub17_Sub3();
-                            class40_sub5_sub17_sub3.anInt3058 = i_85_;
-                            class40_sub5_sub17_sub3.anInt3067 = i;
-                            if((Wall.aClass45ArrayArrayArray357[Player.worldLevel][i_88_][i_87_]) == null)
-                                Wall.aClass45ArrayArrayArray357[Player.worldLevel][i_88_][i_87_] = new Class45();
-                            Wall.aClass45ArrayArrayArray357[Player.worldLevel][i_88_][i_87_].pushBack(class40_sub5_sub17_sub3, -118);
+                            Item item = new Item();
+                            item.anInt3058 = i_85_;
+                            item.itemId = i;
+                            if((Wall.groundItems[Player.worldLevel][i_88_][i_87_]) == null)
+                                Wall.groundItems[Player.worldLevel][i_88_][i_87_] = new LinkedList();
+                            Wall.groundItems[Player.worldLevel][i_88_][i_87_].pushBack(item, -118);
                             Class40_Sub13.method880((byte) -80, i_87_, i_88_);
                         }
                     }
@@ -355,9 +355,9 @@ public class WallDecoration {
                 arg1.method688(Class22_Sub2.aClass1_1881, 180, i, 16776960, true);
                 i += 15;
                 i += 10;
-                arg1.drawShadowedString((Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class61.aClass1_1422, Class22_Sub2.username}))), 90, i, 16777215, true);
+                arg1.drawShadowedString((RSString.linkRSStrings((new RSString[]{Class61.aClass1_1422, Class22_Sub2.username}))), 90, i, 16777215, true);
                 i += 15;
-                arg1.drawShadowedString((Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false)})), 92, i, 16777215, true);
+                arg1.drawShadowedString((RSString.linkRSStrings(new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false)})), 92, i, 16777215, true);
                 i += 15;
             }
             if(Class51.anInt1197 == 10) {
@@ -384,9 +384,9 @@ public class WallDecoration {
                     arg1.method688(Class22_Sub2.aClass1_1881, 180, i, 16776960, true);
                     i += 15;
                     i += 10;
-                    arg1.drawShadowedString((Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class61.aClass1_1422, Class22_Sub2.username, ((Node.pulseCycle % 40 < 20 & Node.anInt947 == 0) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 90, i, 16777215, true);
+                    arg1.drawShadowedString((RSString.linkRSStrings((new RSString[]{Class61.aClass1_1422, Class22_Sub2.username, ((Node.pulseCycle % 40 < 20 & Node.anInt947 == 0) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 90, i, 16777215, true);
                     i += 15;
-                    arg1.drawShadowedString((Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false), ((Node.pulseCycle % 40 < 20 & Node.anInt947 == 1) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 92, i, 16777215, true);
+                    arg1.drawShadowedString((RSString.linkRSStrings((new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false), ((Node.pulseCycle % 40 < 20 & Node.anInt947 == 1) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 92, i, 16777215, true);
                     Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
                     i += 15;
                     arg1.method688(VarbitDefinition.aClass1_2351, i_90_, i_91_ + 5, 16777215, true);

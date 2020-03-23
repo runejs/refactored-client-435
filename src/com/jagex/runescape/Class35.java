@@ -42,7 +42,7 @@ public class Class35 implements Interface3 {
         aClass1_1746 = aClass1_1736;
     }
 
-    public Class45 aClass45_1727 = new Class45();
+    public LinkedList aLinkedList_1727 = new LinkedList();
     public EntryTable[] aClass40_Sub10Array1740;
     public int anInt1748;
     public CacheIndex aCacheIndex_1749;
@@ -117,7 +117,7 @@ public class Class35 implements Interface3 {
             if(aClass40_Sub10Array1740[i] != null)
                 aClass40_Sub10Array1740[i].method870();
         }
-        aClass45_1727 = new Class45();
+        aLinkedList_1727 = new LinkedList();
         anInt1753 = anInt1752;
     }
 
@@ -126,18 +126,18 @@ public class Class35 implements Interface3 {
         int i = -68 / ((-75 - arg0) / 33);
         if(class40_sub10 != null) {
             if(class40_sub10.anIntArray2139 != null) {
-                aClass45_1727.method905(0, class40_sub10);
+                aLinkedList_1727.method905(0, class40_sub10);
                 class40_sub10.aBoolean2146 = true;
                 return class40_sub10.anIntArray2139;
             }
             boolean bool = class40_sub10.method869(aDouble1750, anInt1748, aCacheIndex_1749);
             if(bool) {
                 if(anInt1753 == 0) {
-                    EntryTable class40_sub10_3_ = ((EntryTable) aClass45_1727.method899((byte) 87));
+                    EntryTable class40_sub10_3_ = ((EntryTable) aLinkedList_1727.method899((byte) 87));
                     class40_sub10_3_.method870();
                 } else
                     anInt1753--;
-                aClass45_1727.method905(0, class40_sub10);
+                aLinkedList_1727.method905(0, class40_sub10);
                 class40_sub10.aBoolean2146 = true;
                 return class40_sub10.anIntArray2139;
             }

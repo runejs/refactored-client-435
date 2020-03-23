@@ -1,6 +1,5 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
@@ -70,12 +69,12 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
                 i--;
             else
                 i -= 101;
-            OverlayDefinition.method558(0, HuffmanEncoding.aClass1_1572, 0, arg0 + -801, 0, 13, Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class26.aClass1_620, (Class40_Sub11.friendUsernames[i])})));
-            OverlayDefinition.method558(0, GroundItemTile.aClass1_1354, 0, -501, 0, 18, Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class26.aClass1_620, (Class40_Sub11.friendUsernames[i])})));
+            OverlayDefinition.addActionRow(HuffmanEncoding.aClass1_1572, 0, 0, 0, 13, RSString.linkRSStrings((new RSString[]{Class26.aClass1_620, (Class40_Sub11.friendUsernames[i])})));
+            OverlayDefinition.addActionRow(GroundItemTile.aClass1_1354, 0, 0, 0, 18, RSString.linkRSStrings((new RSString[]{Class26.aClass1_620, (Class40_Sub11.friendUsernames[i])})));
             return true;
         }
         if(i >= 401 && i <= 500) {
-            OverlayDefinition.method558(0, HuffmanEncoding.aClass1_1572, 0, -501, 0, 35, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class26.aClass1_620, arg1.disabledText}))));
+            OverlayDefinition.addActionRow(HuffmanEncoding.aClass1_1572, 0, 0, 0, 35, (RSString.linkRSStrings((new RSString[]{Class26.aClass1_620, arg1.disabledText}))));
             return true;
         }
         return false;

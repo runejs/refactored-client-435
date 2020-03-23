@@ -7,7 +7,7 @@ import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class57 {
     public static Cache aClass9_1331 = new Cache(64);
-    public static Class45 aClass45_1332 = new Class45();
+    public static LinkedList aLinkedList_1332 = new LinkedList();
     public static RSString aClass1_1333 = RSString.CreateString("To create a new account you need to");
     public static int[][] anIntArrayArray1335 = new int[104][104];
     public static int anInt1338 = 0;
@@ -21,7 +21,7 @@ public class Class57 {
     public static RSString aClass1_1348 = RSString.CreateString("0(U");
 
     public static void method974() {
-        aClass45_1332 = null;
+        aLinkedList_1332 = null;
         aClass1_1348 = null;
         aClass40_Sub5_Sub14_Sub2_1346 = null;
         anIntArrayArray1335 = null;

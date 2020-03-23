@@ -136,7 +136,7 @@ public class ObjectDecompressor {
             class20 = groundData[plane];
         }
         if(localY > 0 && localX > 0 && localY < 103 && localX < 103) {
-            Class40_Sub5_Sub17_Sub1.addObject(objectId, localX, localY, z, rotation, type, Npc.aScene_3301, class20);
+            Class40_Sub5_Sub17_Sub1.addObject(objectId, localX, localY, z, rotation, type, Npc.currentScene, class20);
         }
     }
 

@@ -9,6 +9,7 @@ import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -213,22 +214,22 @@ public class Class5 {
         if(i >= 300 && i <= 313) {
             int i_13_ = (-300 + i) / 2;
             int i_14_ = 0x1 & i;
-            Class45.aClass30_1082.method382(i_13_, i_14_ == 1, 14);
+            LinkedList.aClass30_1082.method382(i_13_, i_14_ == 1, 14);
         }
         if(i >= 314 && i <= 323) {
             int i_15_ = (i + -314) / 2;
             int i_16_ = i & 0x1;
-            Class45.aClass30_1082.method384(-94, i_16_ == 1, i_15_);
+            LinkedList.aClass30_1082.method384(-94, i_16_ == 1, i_15_);
         }
         if(arg0 != 88)
             method163();
         if(i == 324)
-            Class45.aClass30_1082.method383(false, (byte) -110);
+            LinkedList.aClass30_1082.method383(false, (byte) -110);
         if(i == 325)
-            Class45.aClass30_1082.method383(true, (byte) -110);
+            LinkedList.aClass30_1082.method383(true, (byte) -110);
         if(i == 326) {
             Class32.packetBuffer.putPacket(231);
-            Class45.aClass30_1082.method375(arg0 ^ 0x58, Class32.packetBuffer);
+            LinkedList.aClass30_1082.method375(arg0 ^ 0x58, Class32.packetBuffer);
             return true;
         }
         if(i == 620)

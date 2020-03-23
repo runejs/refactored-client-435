@@ -4,6 +4,7 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.util.Signlink;
 import com.jagex.runescape.util.SignlinkNode;
 
@@ -125,7 +126,7 @@ public class Class22_Sub1 extends Class22 {
     }
 
     public static void method313(int arg0) {
-        for(int i = -1; Player.trackedPlayerIndex > i; i++) {
+        for(int i = -1; Player.localPlayerCount > i; i++) {
             int i_6_;
             if(i == -1)
                 i_6_ = 2047;
@@ -138,9 +139,9 @@ public class Class22_Sub1 extends Class22 {
                     class40_sub5_sub17_sub4_sub1.forcedChatMessage = null;
             }
         }
-        for(int i_7_ = 0; i_7_ < Player.trackedNpcIndex; i_7_++) {
-            int i_8_ = Player.trackedNpcIndices[i_7_];
-            Npc class40_sub5_sub17_sub4_sub2 = Player.trackedNpcs[i_8_];
+        for(int i_7_ = 0; i_7_ < Player.npcCount; i_7_++) {
+            int i_8_ = Player.npcIds[i_7_];
+            Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_8_];
             if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.anInt3078 > 0) {
                 class40_sub5_sub17_sub4_sub2.anInt3078--;
                 if(class40_sub5_sub17_sub4_sub2.anInt3078 == 0)

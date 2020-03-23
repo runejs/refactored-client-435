@@ -62,9 +62,9 @@ public abstract class Class22 {
             int i_2_ = 24628 + ((-(512 * i_1_) + 52736) * 4);
             for(int i_3_ = 1; i_3_ < 103; i_3_++) {
                 if((0x18 & (OverlayDefinition.tile_flags[arg1][i_3_][i_1_])) == 0)
-                    Npc.aScene_3301.method96(is, i_2_, 512, arg1, i_3_, i_1_);
+                    Npc.currentScene.method96(is, i_2_, 512, arg1, i_3_, i_1_);
                 if(arg1 < 3 && ((OverlayDefinition.tile_flags[1 + arg1][i_3_][i_1_]) & 0x8) != 0)
-                    Npc.aScene_3301.method96(is, i_2_, 512, 1 + arg1, i_3_, i_1_);
+                    Npc.currentScene.method96(is, i_2_, 512, 1 + arg1, i_3_, i_1_);
                 i_2_ += 4;
             }
         }
@@ -84,7 +84,7 @@ public abstract class Class22 {
             Player.trackedPlayerAppearanceCache = null;
         for(int i_8_ = 0; i_8_ < 104; i_8_++) {
             for(int i_9_ = 0; i_9_ < 104; i_9_++) {
-                int i_10_ = (Npc.aScene_3301.getFloorDecorationHash(Player.worldLevel, i_8_, i_9_));
+                int i_10_ = (Npc.currentScene.getFloorDecorationHash(Player.worldLevel, i_8_, i_9_));
                 if(i_10_ != 0) {
                     i_10_ = 0x7fff & i_10_ >> 14;
                     int i_11_ = (GameObjectDefinition.getDefinition(i_10_).icon);
@@ -107,7 +107,7 @@ public abstract class Class22 {
                         }
                         GameFrame.aClass40_Sub5_Sub14_Sub4Array1466[GameObject.anInt3040] = (Class8.aClass40_Sub5_Sub14_Sub4Array296[i_11_]);
                         Actor.anIntArray3149[GameObject.anInt3040] = i_13_;
-                        Class45.anIntArray1083[(GameObject.anInt3040)] = i_12_;
+                        LinkedList.anIntArray1083[(GameObject.anInt3040)] = i_12_;
                         GameObject.anInt3040++;
                     }
                 }

@@ -10,8 +10,8 @@ import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.tile.Wall;
-import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.util.Signlink;
 
 import java.applet.Applet;
@@ -164,11 +164,11 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
     public static void method28(long arg0) {
         if(arg0 != 0) {
             int i = 0;
-            for(/**/; ((Class40_Sub5_Sub17_Sub3.friendsCount > i)); i++) {
+            for(/**/; ((Item.friendsCount > i)); i++) {
                 if(Class59.aLongArray1397[i] == arg0) {
-                    Class40_Sub5_Sub17_Sub3.friendsCount--;
+                    Item.friendsCount--;
                     ISAAC.redrawTabArea = true;
-                    for(int i_13_ = i; i_13_ < Class40_Sub5_Sub17_Sub3.friendsCount; i_13_++) {
+                    for(int i_13_ = i; i_13_ < Item.friendsCount; i_13_++) {
                         Class40_Sub11.friendUsernames[i_13_] = Class40_Sub11.friendUsernames[1 + i_13_];
                         Class40_Sub7.friendWorlds[i_13_] = Class40_Sub7.friendWorlds[i_13_ + 1];
                         Class59.aLongArray1397[i_13_] = Class59.aLongArray1397[1 + i_13_];
@@ -247,7 +247,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 /* empty */
             }
             try {
-                method24(0);
+                method24();
             } catch(Exception exception) {
                 /* empty */
             }
@@ -316,13 +316,13 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             CacheIndex.aLong219 = 0L;
     }
 
-    public abstract void method23(int i);
+    public abstract void method23();
 
     public void focusLost(FocusEvent arg0) {
         Class52.aBoolean1215 = false;
     }
 
-    public abstract void method24(int i);
+    public abstract void method24();
 
     public synchronized void paint(Graphics arg0) {
         if(this == Class4.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255) {
@@ -427,7 +427,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
         synchronized(this) {
             HashTable.aBoolean571 = Class52.aBoolean1215;
         }
-        method23(-22636);
+        method23();
         if(arg0)
             return;
         windowIconified(null);

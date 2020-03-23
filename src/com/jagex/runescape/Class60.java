@@ -8,10 +8,8 @@ import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.media.VertexNormal;
-import com.jagex.runescape.media.renderable.actor.Actor;
-import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
-import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.util.CollisionMap;
 
@@ -30,7 +28,7 @@ public class Class60 {
         aClass1_1401 = RSString.CreateString(",Zffentlicher Chat");
         aClass1_1411 = RSString.CreateString("Error loading your profile)3");
         aClass1_1409 = RSString.CreateString("Wen m-Ochten Sie von der Liste entfernen?");
-        Player.trackedPlayerIndex = 0;
+        Player.localPlayerCount = 0;
         aClass1_1416 = aClass1_1411;
         cameraVelocityVertical = 0;
     }
@@ -59,16 +57,16 @@ public class Class60 {
 
     public static void method990(int arg0) {
         int i = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getStringWidth(Widget.aClass1_2684);
-        for(int i_1_ = 0; i_1_ < ActorDefinition.anInt2394; i_1_++) {
-            int i_2_ = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getTextDisplayedWidth(Landscape.aClass1Array1184[i_1_]);
+        for(int i_1_ = 0; i_1_ < ActorDefinition.menuActionRow; i_1_++) {
+            int i_2_ = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getTextDisplayedWidth(Landscape.menuActionTexts[i_1_]);
             if((i < i_2_))
                 i = i_2_;
         }
         i += 8;
-        int i_3_ = ActorDefinition.anInt2394 * 15 + 21;
+        int i_3_ = ActorDefinition.menuActionRow * 15 + 21;
         if(Class57.anInt1338 > 4 && RSString.anInt1668 > 4 && Class57.anInt1338 < 516 && RSString.anInt1668 < 338) {
             Class40_Sub5_Sub17_Sub1.menuScreenArea = 0;
-            CollisionMap.anInt168 = ActorDefinition.anInt2394 * 15 + 22;
+            CollisionMap.anInt168 = ActorDefinition.menuActionRow * 15 + 22;
             Class4.menuOpen = true;
             int i_4_ = -(i / 2) + -4 + Class57.anInt1338;
             VertexNormal.anInt1086 = i;
@@ -86,7 +84,7 @@ public class Class60 {
         }
         if(arg0 == 11451) {
             if(Class57.anInt1338 > 553 && RSString.anInt1668 > 205 && Class57.anInt1338 < 743 && RSString.anInt1668 < 466) {
-                CollisionMap.anInt168 = 22 + 15 * ActorDefinition.anInt2394;
+                CollisionMap.anInt168 = 22 + 15 * ActorDefinition.menuActionRow;
                 Class40_Sub5_Sub17_Sub1.menuScreenArea = 1;
                 int i_6_ = -205 + RSString.anInt1668;
                 int i_7_ = -(i / 2) + (-553 + Class57.anInt1338);
@@ -107,7 +105,7 @@ public class Class60 {
             if(Class57.anInt1338 > 17 && RSString.anInt1668 > 357 && Class57.anInt1338 < 496 && RSString.anInt1668 < 453) {
                 VertexNormal.anInt1086 = i;
                 Class40_Sub5_Sub17_Sub1.menuScreenArea = 2;
-                CollisionMap.anInt168 = ActorDefinition.anInt2394 * 15 + 22;
+                CollisionMap.anInt168 = ActorDefinition.menuActionRow * 15 + 22;
                 int i_8_ = RSString.anInt1668 + -357;
                 if(i_8_ >= 0) {
                     if(i_3_ + i_8_ > 96)

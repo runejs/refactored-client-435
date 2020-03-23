@@ -19,12 +19,10 @@ public class Class24 {
     public static CacheIndex_Sub1[] aClass6_Sub1Array580 = new CacheIndex_Sub1[256];
     public static int[] anIntArray581 = new int[4000];
 
-    public static IndexedImage[] method337(int arg0, CacheIndex arg1, int arg2, int arg3) {
+    public static IndexedImage[] method337(CacheIndex arg1, int arg2, int arg3) {
         if(!ImageRGB.spriteExists(arg2, arg3, arg1))
             return null;
-        if(arg0 != 7729)
-            IncomingPackets.INCOMING_PACKET_SIZES = null;
-        return Class22_Sub2.method315(arg0 ^ 0x1e31);
+        return Class22_Sub2.method315();
     }
 
     public static int method338(int arg0, boolean arg1, int arg2, int arg3) {

@@ -2,6 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.media.renderable.actor.Player;
 
@@ -51,8 +52,8 @@ public class RSString implements Interface1 {
 
     public static void method71(int arg0) {
         Class4.anInt182 = 0;
-        int xPos = (((Player.localPlayer.anInt3098) >> 7) + SpotAnimDefinition.anInt2307);
-        int yPos = (Class26.anInt635 + ((Player.localPlayer.anInt3089) >> 7));
+        int xPos = (((Player.localPlayer.worldX) >> 7) + SpotAnimDefinition.anInt2307);
+        int yPos = (Class26.anInt635 + ((Player.localPlayer.worldY) >> 7));
         if(xPos >= 3053 && xPos <= 3156 && yPos >= 3056 && yPos <= 3136)
             Class4.anInt182 = 1;
         if(xPos >= 3072 && xPos <= 3118 && yPos >= 9492 && yPos <= 9535)
@@ -127,6 +128,12 @@ public class RSString implements Interface1 {
         string.chars = new byte[length];
         string.length = 0;
         return string;
+    }
+
+    public static RSString linkRSStrings(RSString[] arg1) {
+        if(arg1.length < 2)
+            throw new IllegalArgumentException();
+        return IdentityKit.method627(120, arg1.length, 0, arg1);
     }
 
     public RSString substring(int arg1) {

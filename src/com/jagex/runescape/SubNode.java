@@ -44,7 +44,7 @@ public class SubNode extends Node {
     }
 
     public static void method540() {
-        KeyFocusListener.aClass45_1278 = new Class45();
+        KeyFocusListener.aLinkedList_1278 = new LinkedList();
     }
 
     public static void method541() {

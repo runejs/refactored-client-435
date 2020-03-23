@@ -12,12 +12,12 @@ import com.jagex.runescape.media.renderable.actor.Player;
 
 import java.awt.*;
 
-public class Class45 {
+public class LinkedList {
     public static long aLong1051;
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_1057;
     public static RSString aClass1_1059 = RSString.CreateString("Bitte entfernen Sie ");
     public static int anInt1061;
-    public static Class45 aClass45_1064 = new Class45();
+    public static LinkedList aLinkedList_1064 = new LinkedList();
     public static int[] anIntArray1071;
     public static volatile int anInt1073 = 0;
     public static int anInt1075 = 0;
@@ -33,7 +33,7 @@ public class Class45 {
     public Node aClass40_1056 = new Node();
     public Node aClass40_1068;
 
-    public Class45() {
+    public LinkedList() {
 
         aClass40_1056.aClass40_968 = aClass40_1056;
         aClass40_1056.aClass40_950 = aClass40_1056;
@@ -42,7 +42,7 @@ public class Class45 {
 
     public static void method900() {
         anIntArray1083 = null;
-        aClass45_1064 = null;
+        aLinkedList_1064 = null;
         aClass30_1082 = null;
         aClass1_1077 = null;
         aClass40_Sub5_Sub14_Sub4_1057 = null;
@@ -61,18 +61,18 @@ public class Class45 {
             return null;
         RSString class1 = HashTable.method334(arg0, -1);
         for(int i = -3 + class1.length(); i > 0; i -= 3)
-            class1 = (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{class1.substring(0, i), Class33.aClass1_795, class1.substring(i)}));
+            class1 = (RSString.linkRSStrings(new RSString[]{class1.substring(0, i), Class33.aClass1_795, class1.substring(i)}));
         if(class1.length() > 8)
-            class1 = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Landscape.aClass1_1162, class1.substring(0, -8 + class1.length()), UnderlayDefinition.aClass1_2577, Class52.aClass1_1213, class1, Class51.aClass1_1199})));
+            class1 = (RSString.linkRSStrings((new RSString[]{Landscape.aClass1_1162, class1.substring(0, -8 + class1.length()), UnderlayDefinition.aClass1_2577, Class52.aClass1_1213, class1, Class51.aClass1_1199})));
         else if(class1.length() > 4)
-            class1 = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Renderable.aClass1_2862, class1.substring(0, class1.length() + -4), IdentityKit.aClass1_2593, Class52.aClass1_1213, class1, Class51.aClass1_1199})));
-        return Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class48.aClass1_1123, class1}));
+            class1 = (RSString.linkRSStrings((new RSString[]{Renderable.aClass1_2862, class1.substring(0, class1.length() + -4), IdentityKit.aClass1_2593, Class52.aClass1_1213, class1, Class51.aClass1_1199})));
+        return RSString.linkRSStrings((new RSString[]{Class48.aClass1_1123, class1}));
     }
 
     public static void method907(int arg0) {
         Class57.aClass9_1331.method235((byte) 94);
         if(arg0 >= -36)
-            aClass45_1064 = null;
+            aLinkedList_1064 = null;
     }
 
     public static void method908(byte arg0) {
@@ -106,7 +106,7 @@ public class Class45 {
         return class40;
     }
 
-    public Node method901(byte arg0) {
+    public Node last(byte arg0) {
         Node class40 = aClass40_1056.aClass40_968;
         if(class40 == aClass40_1056) {
             aClass40_1068 = null;
@@ -120,7 +120,7 @@ public class Class45 {
 
     public Node method902(byte arg0) {
         if(arg0 != -90)
-            method901((byte) 0);
+            last((byte) 0);
         Node class40 = aClass40_1056.aClass40_950;
         if(aClass40_1056 == class40) {
             aClass40_1068 = null;
@@ -185,7 +185,7 @@ public class Class45 {
         }
     }
 
-    public Node method912(int arg0) {
+    public Node previous(int arg0) {
         if(arg0 != 4)
             return null;
         Node class40 = aClass40_1068;

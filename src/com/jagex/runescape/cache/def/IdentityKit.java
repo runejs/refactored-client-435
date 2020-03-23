@@ -17,7 +17,7 @@ public class IdentityKit extends SubNode {
     public static boolean aBoolean2597 = false;
     public static int anInt2598 = 0;
     public static int[] sound = new int[50];
-    public static Class45 aClass45_2604 = new Class45();
+    public static LinkedList aLinkedList_2604 = new LinkedList();
     public static int height;
     public static CacheIndex_Sub1 aClass6_Sub1_2609;
     public static RSString aClass1_2611 = RSString.CreateString("Bitte versuchen Sie es in ");
@@ -55,7 +55,7 @@ public class IdentityKit extends SubNode {
         aClass1_2614 = null;
         aClass1_2592 = null;
         aClass1_2587 = null;
-        aClass45_2604 = null;
+        aLinkedList_2604 = null;
         sound = null;
         aClass1_2593 = null;
     }
@@ -66,7 +66,7 @@ public class IdentityKit extends SubNode {
         if(class40_sub5_sub1 != null) {
             return class40_sub5_sub1;
         }
-        byte[] is = (Class56.aClass6_Sub1_1323.method170(GameObject.aClass1_3044, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{HashTable.method334(arg1, -1), SubNode.aClass1_2084, HashTable.method334(arg0, -1)})), 1));
+        byte[] is = (Class56.aClass6_Sub1_1323.method170(GameObject.aClass1_3044, (RSString.linkRSStrings(new RSString[]{HashTable.method334(arg1, -1), SubNode.aClass1_2084, HashTable.method334(arg0, -1)})), 1));
         if(arg2 <= 4) {
             return null;
         }

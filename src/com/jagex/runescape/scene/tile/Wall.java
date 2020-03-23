@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Wall {
@@ -19,7 +20,7 @@ public class Wall {
     public static Widget aWidget_353;
     public static int[] anIntArray354;
     public static int anInt356;
-    public static Class45[][][] aClass45ArrayArrayArray357;
+    public static LinkedList[][][] groundItems;
 
     static {
         aClass1_346 = RSString.CreateString("The server is being updated)3");
@@ -30,7 +31,7 @@ public class Wall {
         anIntArray354 = new int[25];
         aWidget_353 = null;
         anInt356 = 0;
-        aClass45ArrayArrayArray357 = new Class45[4][104][104];
+        groundItems = new LinkedList[4][104][104];
     }
 
     public int x;
@@ -52,7 +53,7 @@ public class Wall {
         aClass1_344 = null;
         aClass1_338 = null;
         anIntArray354 = null;
-        aClass45ArrayArrayArray357 = null;
+        groundItems = null;
         aClass1_343 = null;
         aClass1_346 = null;
         anIntArray351 = null;
@@ -94,8 +95,8 @@ public class Wall {
                             Class40_Sub5_Sub13.moderatorIcon[1].drawImage(i_4_, -12 + i_3_);
                             i_4_ += 14;
                         }
-                        class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub17_Sub6.method832(new RSString[]{class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), i_4_, i_3_, 0);
-                        class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub17_Sub6.method832(new RSString[]{class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), i_4_, -1 + i_3_, 65535);
+                        class40_sub5_sub14_sub1.drawString((RSString.linkRSStrings(new RSString[]{class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), i_4_, i_3_, 0);
+                        class40_sub5_sub14_sub1.drawString((RSString.linkRSStrings(new RSString[]{class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), i_4_, -1 + i_3_, 65535);
                         if(i >= 5)
                             return;
                     }
@@ -110,8 +111,8 @@ public class Wall {
                     if(i_2_ == 6 && Class4.anInt185 < 2) {
                         int i_6_ = -(13 * i) + 329;
                         i++;
-                        class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class40_Sub5_Sub1.aClass1_2274, Class48.aClass1_1123, class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), 4, i_6_, 0);
-                        class40_sub5_sub14_sub1.drawString((Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class40_Sub5_Sub1.aClass1_2274, Class48.aClass1_1123, class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), 4, i_6_ + -1, 65535);
+                        class40_sub5_sub14_sub1.drawString((RSString.linkRSStrings(new RSString[]{Class40_Sub5_Sub1.aClass1_2274, Class48.aClass1_1123, class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), 4, i_6_, 0);
+                        class40_sub5_sub14_sub1.drawString((RSString.linkRSStrings(new RSString[]{Class40_Sub5_Sub1.aClass1_2274, Class48.aClass1_1123, class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), 4, i_6_ + -1, 65535);
                         if(i >= 5)
                             return;
                     }

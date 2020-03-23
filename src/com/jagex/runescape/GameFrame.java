@@ -12,6 +12,7 @@ import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.SceneTile;
@@ -72,7 +73,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
             if(arg0 > -60)
                 clickType = -90;
             int i = clickType;
-            if(Main.anInt1773 == 1 && Class57.anInt1338 >= 516 && RSString.anInt1668 >= 160 && Class57.anInt1338 <= 765 && RSString.anInt1668 <= 205)
+            if(Main.widgetSelected == 1 && Class57.anInt1338 >= 516 && RSString.anInt1668 >= 160 && Class57.anInt1338 <= 765 && RSString.anInt1668 <= 205)
                 i = 0;
             if(Class4.menuOpen) {
                 if(i != 1) {
@@ -117,13 +118,13 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
                         i_8_ -= 17;
                         i_10_ -= 357;
                     }
-                    for(int i_11_ = 0; ((i_11_ < ActorDefinition.anInt2394)); i_11_++) {
-                        int i_12_ = 31 + i_6_ + 15 * (ActorDefinition.anInt2394 + -1 - i_11_);
+                    for(int i_11_ = 0; ((i_11_ < ActorDefinition.menuActionRow)); i_11_++) {
+                        int i_12_ = 31 + i_6_ + 15 * (ActorDefinition.menuActionRow + -1 - i_11_);
                         if(i_8_ > i_5_ && i_8_ < i_7_ + i_5_ && i_10_ > -13 + i_12_ && i_10_ < 3 + i_12_)
                             i_9_ = i_11_;
                     }
                     if(i_9_ != -1)
-                        Class27.method358(109, i_9_);
+                        Class27.doAction(109, i_9_);
                     if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
                         ISAAC.redrawTabArea = true;
                     Class4.menuOpen = false;
@@ -131,11 +132,11 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
                         Class52.redrawChatbox = true;
                 }
             } else {
-                if(i == 1 && ActorDefinition.anInt2394 > 0) {
-                    int i_0_ = (Class38.anIntArray884[ActorDefinition.anInt2394 - 1]);
+                if(i == 1 && ActorDefinition.menuActionRow > 0) {
+                    int i_0_ = (Class38.menuActionTypes[ActorDefinition.menuActionRow - 1]);
                     if(i_0_ == 53 || i_0_ == 25 || i_0_ == 55 || i_0_ == 48 || i_0_ == 24 || i_0_ == 52 || i_0_ == 6 || i_0_ == 31 || i_0_ == 43 || i_0_ == 11 || i_0_ == 19 || i_0_ == 1006) {
-                        int i_1_ = (InteractiveObject.anIntArray483[ActorDefinition.anInt2394 - 1]);
-                        int i_2_ = (Class59.anIntArray1393[-1 + ActorDefinition.anInt2394]);
+                        int i_1_ = (InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow - 1]);
+                        int i_2_ = (Class59.secondMenuOperand[-1 + ActorDefinition.menuActionRow]);
                         Widget widget = Widget.forId(i_2_);
                         if(widget.itemSwapable || widget.itemDeletesDraged) {
                             Renderable.anInt2869 = Class57.anInt1338;
@@ -153,11 +154,11 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
                         }
                     }
                 }
-                if(i == 1 && (Class68.anInt1630 == 1 || Class33.method409((byte) 46, -1 + ActorDefinition.anInt2394)) && ActorDefinition.anInt2394 > 2)
+                if(i == 1 && (Class68.anInt1630 == 1 || Class33.method409((byte) 46, -1 + ActorDefinition.menuActionRow)) && ActorDefinition.menuActionRow > 2)
                     i = 2;
-                if(i == 1 && ActorDefinition.anInt2394 > 0)
-                    Class27.method358(59, ActorDefinition.anInt2394 + -1);
-                if(i == 2 && ActorDefinition.anInt2394 > 0)
+                if(i == 1 && ActorDefinition.menuActionRow > 0)
+                    Class27.doAction(59, ActorDefinition.menuActionRow + -1);
+                if(i == 2 && ActorDefinition.menuActionRow > 0)
                     Class60.method990(11451);
             }
         }
@@ -176,7 +177,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
 
     public synchronized void mouseEntered(MouseEvent arg0) {
         if(GameObject.frame != null) {
-            Class45.anInt1073 = 0;
+            LinkedList.anInt1073 = 0;
             Class12.eventMouseX = arg0.getX();
             Cache.eventMouseY = arg0.getY();
         }
@@ -184,7 +185,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
 
     public synchronized void mouseExited(MouseEvent arg0) {
         if(GameObject.frame != null) {
-            Class45.anInt1073 = 0;
+            LinkedList.anInt1073 = 0;
             Class12.eventMouseX = -1;
             Cache.eventMouseY = -1;
         }
@@ -199,7 +200,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
         int mouseX = mouseEvent.getX();
         int mouseY = mouseEvent.getY();
         if(GameObject.frame != null) {
-            Class45.anInt1073 = 0;
+            LinkedList.anInt1073 = 0;
         }
         if(mouseWheelDown) {
             mouseY = mouseWheelX - mouseEvent.getX();
@@ -214,7 +215,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
     }
 
     private void mouseWheelDragged(int i, int j) {
-        Class45.anInt1073 = 0;
+        LinkedList.anInt1073 = 0;
 
         if(!mouseWheelDown)
             return;
@@ -230,7 +231,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
 
             int mouseX = event.getX();
             int mouseY = event.getY();
-            Class45.anInt1073 = 0;
+            LinkedList.anInt1073 = 0;
             Class55.eventClickX = event.getX();
             Class40_Sub5_Sub11.eventClickY = event.getY();
             OverlayDefinition.lastClick = System.currentTimeMillis();
@@ -254,7 +255,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
 
     public void mouseWheelMoved(MouseWheelEvent event) {
         int rotation = event.getWheelRotation();
-        Class45.anInt1073 = 0;
+        LinkedList.anInt1073 = 0;
 
         if(!handleInterfaceScrolling(event)) {
             if((cameraZoom <= 150 && rotation <= 0) || (cameraZoom >= 1600 && rotation >= 0)) {
@@ -357,7 +358,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
 
     public synchronized void mouseMoved(MouseEvent arg0) {
         if(GameObject.frame != null) {
-            Class45.anInt1073 = 0;
+            LinkedList.anInt1073 = 0;
             Class12.eventMouseX = arg0.getX();
             Cache.eventMouseY = arg0.getY();
         }
@@ -365,7 +366,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
 
     public synchronized void mouseReleased(MouseEvent arg0) {
         if(GameObject.frame != null) {
-            Class45.anInt1073 = 0;
+            LinkedList.anInt1073 = 0;
             Cache.mouseButtonPressed = 0;
             mouseWheelDown = false;
         }

@@ -162,8 +162,8 @@ public abstract class CacheIndex {
             method186(-26, 53);
         arg1 = arg1.toLowerCase();
         arg0 = arg0.toLowerCase();
-        int i = aClass42_254.method882(arg1.method76(), arg2 + -126);
-        int i_0_ = aClass42Array217[i].method882(arg0.method76(), -112);
+        int i = aClass42_254.method882(arg1.method76());
+        int i_0_ = aClass42Array217[i].method882(arg0.method76());
 
         return getFile(i_0_, i);
     }
@@ -288,7 +288,7 @@ public abstract class CacheIndex {
 
     public int method179(int arg1, RSString arg2) {
         arg2 = arg2.toLowerCase();
-        return aClass42Array217[arg1].method882(arg2.method76(), -70);
+        return aClass42Array217[arg1].method882(arg2.method76());
     }
 
     public boolean method181(int arg0, int[] arg2) {
@@ -370,11 +370,9 @@ public abstract class CacheIndex {
         return is;
     }
 
-    public int method183(int arg0, RSString arg1) {
-        if(arg0 != 0)
-            method183(58, null);
+    public int getHash(RSString arg1) {
         arg1 = arg1.toLowerCase();
-        return aClass42_254.method882(arg1.method76(), arg0 + -80);
+        return aClass42_254.method882(arg1.method76());
     }
 
     public boolean method185(byte arg0) {
@@ -449,14 +447,14 @@ public abstract class CacheIndex {
             anIntArray261 = null;
         arg0 = arg0.toLowerCase();
         arg1 = arg1.toLowerCase();
-        int i = aClass42_254.method882(arg0.method76(), -66);
-        int i_49_ = aClass42Array217[i].method882(arg1.method76(), arg2 ^ 0x483);
+        int i = aClass42_254.method882(arg0.method76());
+        int i_49_ = aClass42Array217[i].method882(arg1.method76());
         return loaded(i, i_49_);
     }
 
     public void method195(int arg0, RSString arg1) {
         arg1 = arg1.toLowerCase();
-        int i = aClass42_254.method882(arg1.method76(), -69);
+        int i = aClass42_254.method882(arg1.method76());
         if(arg0 == 0 && i >= 0)
             method174(i, (byte) 2);
     }

@@ -16,6 +16,7 @@ import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 import tech.henning.fourthreefive.OldEngine.MapDecompressor;
@@ -47,7 +48,7 @@ public class Landscape {
     public static RSString aClass1_1180;
     public static RSString aClass1_1181;
     public static RSString aClass1_1183;
-    public static RSString[] aClass1Array1184;
+    public static RSString[] menuActionTexts;
     public static Class68 aClass68_1185;
     public static int[] anIntArray1186;
 
@@ -70,7 +71,7 @@ public class Landscape {
         aClass1_1169 = RSString.CreateString("Your ignore list is full)3 Max of 100 hit");
         aClass1_1181 = aClass1_1163;
         aClass1_1180 = aClass1_1169;
-        aClass1Array1184 = new RSString[500];
+        menuActionTexts = new RSString[500];
     }
 
     public static byte[] method931(byte[] arg0) {
@@ -111,8 +112,8 @@ public class Landscape {
         Class37.anInt874 = 0;
         boolean bool = true;
         for(int i = 0; (i < RSString.aByteArrayArray1715.length); i++) {
-            if(Class45.anIntArray1071[i] != -1 && RSString.aByteArrayArray1715[i] == null) {
-                RSString.aByteArrayArray1715[i] = Renderable.aClass6_Sub1_2857.getFile(0, Class45.anIntArray1071[i]);
+            if(LinkedList.anIntArray1071[i] != -1 && RSString.aByteArrayArray1715[i] == null) {
+                RSString.aByteArrayArray1715[i] = Renderable.aClass6_Sub1_2857.getFile(0, LinkedList.anIntArray1071[i]);
                 if(RSString.aByteArrayArray1715[i] == null) {
                     Class37.anInt874++;
                     bool = false;
@@ -145,7 +146,7 @@ public class Landscape {
                 if(Class68.anInt1634 != 0)
                     Class51.method940(0, Class67.aClass1_1585, true, ActorDefinition.aClass1_2423);
                 RSCanvas.method46(0);
-                Npc.aScene_3301.method98();
+                Npc.currentScene.method98();
                 System.gc();
                 for(int i = 0; i < 4; i++)
                     aCollisionMapArray1167[i].method146(16777216);
@@ -193,7 +194,7 @@ public class Landscape {
                         if(is != null) {
                             int i_13_ = (-SpotAnimDefinition.anInt2307 + (ISAAC.anIntArray528[i_12_] >> 8) * 64);
                             int i_14_ = (64 * (0xff & ISAAC.anIntArray528[i_12_]) - Class26.anInt635);
-                            GameObject.loadObjectBlock(i_13_, Npc.aScene_3301, aCollisionMapArray1167, is, i_14_);
+                            GameObject.loadObjectBlock(i_13_, Npc.currentScene, aCollisionMapArray1167, is, i_14_);
                         } else {
                             System.out.println("Missing map: " + Class13.anIntArray421[i_12_]);
                         }
@@ -244,7 +245,7 @@ public class Landscape {
                                     int i_37_ = ((i_34_ / 8 << 8) + (i_36_ / 8));
                                     for(int i_38_ = 0; (i_38_ < ISAAC.anIntArray528.length); i_38_++) {
                                         if(i_37_ == (ISAAC.anIntArray528[i_38_]) && (Class52.aByteArrayArray1217[i_38_]) != null) {
-                                            Class24.method341(8 * (i_34_ & 0x7), (Npc.aScene_3301), 0, i_29_, i_35_, i_33_, (Class52.aByteArrayArray1217[i_38_]), 8 * i_31_, aCollisionMapArray1167, 8 * (i_36_ & 0x7), i_30_ * 8);
+                                            Class24.method341(8 * (i_34_ & 0x7), (Npc.currentScene), 0, i_29_, i_35_, i_33_, (Class52.aByteArrayArray1217[i_38_]), 8 * i_31_, aCollisionMapArray1167, 8 * (i_36_ & 0x7), i_30_ * 8);
                                             break;
                                         }
                                     }
@@ -255,7 +256,7 @@ public class Landscape {
                 }
                 Class27.method364((byte) -34, true);
                 RSCanvas.method46(0);
-                ISAAC.method281((Npc.aScene_3301), 27324, aCollisionMapArray1167);
+                ISAAC.method281((Npc.currentScene), 27324, aCollisionMapArray1167);
                 Class27.method364((byte) -34, true);
                 int i_39_ = Class64.setZ;
                 if(Player.worldLevel < i_39_)
@@ -263,9 +264,9 @@ public class Landscape {
                 if(i_39_ < -1 + Player.worldLevel)
                     i_39_ = -1 + Player.worldLevel;
                 if(!VertexNormal.lowMemory)
-                    Npc.aScene_3301.method136(0);
+                    Npc.currentScene.method136(0);
                 else
-                    Npc.aScene_3301.method136(Class64.setZ);
+                    Npc.currentScene.method136(Class64.setZ);
                 for(int i_40_ = 0; i_40_ < 104; i_40_++) {
                     for(int i_41_ = 0; i_41_ < 104; i_41_++)
                         Class40_Sub13.method880((byte) -80, i_41_, i_40_);
@@ -284,8 +285,8 @@ public class Landscape {
                     for(int i_46_ = -1 + i_42_; i_46_ <= 1 + i_45_; i_46_++) {
                         for(int i_47_ = -1 + i_43_; i_47_ <= i_44_ + 1; i_47_++) {
                             if(i_42_ > i_46_ || (i_46_ > i_45_) || i_47_ < i_43_ || (i_47_ > i_44_)) {
-                                Renderable.aClass6_Sub1_2857.method195(0, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class45.aClass1_1085, HashTable.method334(i_46_, -1), Class8.aClass1_303, HashTable.method334(i_47_, -1)}))));
-                                Renderable.aClass6_Sub1_2857.method195(0, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{HashTable.aClass1_553, HashTable.method334(i_46_, -1), Class8.aClass1_303, HashTable.method334(i_47_, -1)}))));
+                                Renderable.aClass6_Sub1_2857.method195(0, (RSString.linkRSStrings((new RSString[]{LinkedList.aClass1_1085, HashTable.method334(i_46_, -1), Class8.aClass1_303, HashTable.method334(i_47_, -1)}))));
+                                Renderable.aClass6_Sub1_2857.method195(0, (RSString.linkRSStrings((new RSString[]{HashTable.aClass1_553, HashTable.method334(i_46_, -1), Class8.aClass1_303, HashTable.method334(i_47_, -1)}))));
                             }
                         }
                     }
@@ -305,7 +306,7 @@ public class Landscape {
     }
 
     public static void method934(int arg0, int arg2, int arg3, int arg4) {
-        for(Class40_Sub2 class40_sub2 = ((Class40_Sub2) Class40_Sub5_Sub1.aClass45_2268.method902((byte) -90)); class40_sub2 != null; class40_sub2 = (Class40_Sub2) Class40_Sub5_Sub1.aClass45_2268.method909(-4)) {
+        for(Class40_Sub2 class40_sub2 = ((Class40_Sub2) Class40_Sub5_Sub1.aLinkedList_2268.method902((byte) -90)); class40_sub2 != null; class40_sub2 = (Class40_Sub2) Class40_Sub5_Sub1.aLinkedList_2268.method909(-4)) {
             if(class40_sub2.anInt1997 != -1 || class40_sub2.anIntArray2005 != null) {
                 int i_48_ = 0;
                 if(arg0 <= class40_sub2.anInt2013) {
@@ -385,7 +386,7 @@ public class Landscape {
         aClass68_1185 = null;
         aClass1_1173 = null;
         anIntArray1186 = null;
-        aClass1Array1184 = null;
+        menuActionTexts = null;
         aClass1_1169 = null;
         aClass1_1174 = null;
     }

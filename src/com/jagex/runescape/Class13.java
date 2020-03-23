@@ -19,7 +19,7 @@ public class Class13 {
     public static RSString str_Loading_Friend_List = RSString.CreateString("Loading friend list");
     public static Cache aClass9_406;
     public static RSString aClass1_411;
-    public static boolean[] aBooleanArray414;
+    public static boolean[] playerArray;
     public static RSString aClass1_417;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_418;
     public static int anInt419;
@@ -30,7 +30,7 @@ public class Class13 {
     static {
         worldid = 1;
         aClass1_411 = RSString.CreateString("Unerwartete Antwort vom Anmelde)2Server)3");
-        aBooleanArray414 = new boolean[5];
+        playerArray = new boolean[5];
         aClass1_417 = aClass1_404;
         aClass9_406 = new Cache(64);
         anInt419 = 2;
@@ -39,22 +39,22 @@ public class Class13 {
     }
 
     public static void method241(Actor arg0, int arg1, byte arg2) {
-        if(arg0.anInt3098 < 128 || arg0.anInt3089 < 128 || arg0.anInt3098 >= 13184 || arg0.anInt3089 >= 13184) {
+        if(arg0.worldX < 128 || arg0.worldY < 128 || arg0.worldX >= 13184 || arg0.worldY >= 13184) {
             arg0.playingAnimation = -1;
             arg0.anInt3112 = 0;
             arg0.anInt3107 = 0;
             arg0.anInt3091 = -1;
-            arg0.anInt3098 = arg0.anInt3096 * 64 + 128 * arg0.pathY[0];
-            arg0.anInt3089 = arg0.pathX[0] * 128 + 64 * arg0.anInt3096;
+            arg0.worldX = arg0.anInt3096 * 64 + 128 * arg0.pathY[0];
+            arg0.worldY = arg0.pathX[0] * 128 + 64 * arg0.anInt3096;
             arg0.method790(0);
         }
-        if(arg0 == Player.localPlayer && (arg0.anInt3098 < 1536 || arg0.anInt3089 < 1536 || arg0.anInt3098 >= 11776 || arg0.anInt3089 >= 11776)) {
+        if(arg0 == Player.localPlayer && (arg0.worldX < 1536 || arg0.worldY < 1536 || arg0.worldX >= 11776 || arg0.worldY >= 11776)) {
             arg0.anInt3091 = -1;
             arg0.anInt3107 = 0;
             arg0.anInt3112 = 0;
             arg0.playingAnimation = -1;
-            arg0.anInt3098 = arg0.pathY[0] * 128 + (arg0.anInt3096 * 64);
-            arg0.anInt3089 = 64 * arg0.anInt3096 + arg0.pathX[0] * 128;
+            arg0.worldX = arg0.pathY[0] * 128 + (arg0.anInt3096 * 64);
+            arg0.worldY = 64 * arg0.anInt3096 + arg0.pathX[0] * 128;
             arg0.method790(0);
         }
         if(arg0.anInt3112 > Node.pulseCycle)
@@ -74,8 +74,8 @@ public class Class13 {
             method247(null, (byte) 34);
         for(; ; ) {
             Class40_Sub6 class40_sub6;
-            synchronized(RSCanvas.aClass45_53) {
-                class40_sub6 = ((Class40_Sub6) IdentityKit.aClass45_2604.method913(25447));
+            synchronized(RSCanvas.aLinkedList_53) {
+                class40_sub6 = ((Class40_Sub6) IdentityKit.aLinkedList_2604.method913(25447));
             }
             if(class40_sub6 == null)
                 break;
@@ -160,7 +160,7 @@ public class Class13 {
         aClass1_411 = null;
         aClass1_417 = null;
         anIntArray403 = null;
-        aBooleanArray414 = null;
+        playerArray = null;
         aClass9_406 = null;
     }
 

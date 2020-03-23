@@ -5,13 +5,14 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.tile.SceneTile;
 
 public abstract class Class38 {
     public static RSString aClass1_881;
     public static RSString aClass1_882;
     public static RSString aClass1_883;
-    public static int[] anIntArray884;
+    public static int[] menuActionTypes;
     public static RSString aClass1_885;
     public static RSString aClass1_886 = RSString.CreateString(" seconds)3");
     public static Class68 aClass68_887;
@@ -33,7 +34,7 @@ public abstract class Class38 {
         aClass1_882 = aClass1_888;
         aClass1_896 = RSString.CreateString("Entfernen");
         anIntArray889 = new int[128];
-        anIntArray884 = new int[500];
+        menuActionTypes = new int[500];
         aClass1_894 = RSString.CreateString(" )2>");
         aClass1_895 = RSString.CreateString("Add ignore");
         aClass1_885 = aClass1_895;
@@ -45,7 +46,7 @@ public abstract class Class38 {
         aClass1_890 = null;
         aClass1_881 = null;
         aClass1_885 = null;
-        anIntArray884 = null;
+        menuActionTypes = null;
         anIntArray889 = null;
         aClass1_896 = null;
         aClass1_883 = null;

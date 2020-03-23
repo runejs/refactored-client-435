@@ -252,40 +252,40 @@ public class Class40_Sub13 extends Node {
     }
 
     public static void method880(byte arg0, int arg1, int arg2) {
-        Class45 class45 = (Wall.aClass45ArrayArrayArray357[Player.worldLevel][arg2][arg1]);
-        if(class45 == null)
-            Npc.aScene_3301.method125(Player.worldLevel, arg2, arg1);
+        LinkedList linkedList = (Wall.groundItems[Player.worldLevel][arg2][arg1]);
+        if(linkedList == null)
+            Npc.currentScene.method125(Player.worldLevel, arg2, arg1);
         else {
             int i = -99999999;
-            Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3 = null;
-            for(Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3_32_ = ((Class40_Sub5_Sub17_Sub3) class45.method902((byte) -90)); class40_sub5_sub17_sub3_32_ != null; class40_sub5_sub17_sub3_32_ = (Class40_Sub5_Sub17_Sub3) class45.method909(-4)) {
-                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((class40_sub5_sub17_sub3_32_.anInt3067), 10);
+            Item item = null;
+            for(Item item_32_ = ((Item) linkedList.method902((byte) -90)); item_32_ != null; item_32_ = (Item) linkedList.method909(-4)) {
+                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((item_32_.itemId), 10);
                 int i_33_ = class40_sub5_sub16.cost;
                 if(class40_sub5_sub16.stackable == 1)
-                    i_33_ *= class40_sub5_sub17_sub3_32_.anInt3058 + 1;
+                    i_33_ *= item_32_.anInt3058 + 1;
                 if((i_33_ > i)) {
                     i = i_33_;
-                    class40_sub5_sub17_sub3 = class40_sub5_sub17_sub3_32_;
+                    item = item_32_;
                 }
             }
-            if(class40_sub5_sub17_sub3 == null)
-                Npc.aScene_3301.method125(Player.worldLevel, arg2, arg1);
+            if(item == null)
+                Npc.currentScene.method125(Player.worldLevel, arg2, arg1);
             else {
                 if(arg0 != -80)
                     aClass1_2187 = null;
-                Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3_34_ = null;
-                Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3_35_ = null;
-                class45.method905(0, class40_sub5_sub17_sub3);
-                for(Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3_36_ = ((Class40_Sub5_Sub17_Sub3) class45.method902((byte) -90)); class40_sub5_sub17_sub3_36_ != null; class40_sub5_sub17_sub3_36_ = ((Class40_Sub5_Sub17_Sub3) class45.method909(-4))) {
-                    if(class40_sub5_sub17_sub3.anInt3067 != class40_sub5_sub17_sub3_36_.anInt3067) {
-                        if(class40_sub5_sub17_sub3_35_ == null)
-                            class40_sub5_sub17_sub3_35_ = class40_sub5_sub17_sub3_36_;
-                        if((class40_sub5_sub17_sub3_35_.anInt3067 != class40_sub5_sub17_sub3_36_.anInt3067) && class40_sub5_sub17_sub3_34_ == null)
-                            class40_sub5_sub17_sub3_34_ = class40_sub5_sub17_sub3_36_;
+                Item item_34_ = null;
+                Item item_35_ = null;
+                linkedList.method905(0, item);
+                for(Item item_36_ = ((Item) linkedList.method902((byte) -90)); item_36_ != null; item_36_ = ((Item) linkedList.method909(-4))) {
+                    if(item.itemId != item_36_.itemId) {
+                        if(item_35_ == null)
+                            item_35_ = item_36_;
+                        if((item_35_.itemId != item_36_.itemId) && item_34_ == null)
+                            item_34_ = item_36_;
                     }
                 }
                 int i_37_ = 1610612736 + (arg1 << 7) + arg2;
-                Npc.aScene_3301.addGroundItemTile(arg2, arg1, Player.worldLevel, Class37.method430((byte) -126, (Player.worldLevel), 64 + 128 * arg2, 64 + 128 * arg1), i_37_, class40_sub5_sub17_sub3, class40_sub5_sub17_sub3_35_, class40_sub5_sub17_sub3_34_);
+                Npc.currentScene.addGroundItemTile(arg2, arg1, Player.worldLevel, Class37.method430((byte) -126, (Player.worldLevel), 64 + 128 * arg2, 64 + 128 * arg1), i_37_, item, item_35_, item_34_);
             }
         }
 

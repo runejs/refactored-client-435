@@ -68,8 +68,8 @@ public class Class30 {
             int i_18_ = arg1.anInt3096 * 64 + 128 * arg1.anInt3081;
             int i_19_ = arg1.anInt3096 * 64 + 128 * arg1.anInt3099;
             int i_20_ = 128 * arg1.anInt3127 + arg1.anInt3096 * 64;
-            arg1.anInt3098 = ((i - i_16_) * i_17_ + i_16_ * i_19_) / i;
-            arg1.anInt3089 = (i_18_ * (i + -i_16_) + i_16_ * i_20_) / i;
+            arg1.worldX = ((i - i_16_) * i_17_ + i_16_ * i_19_) / i;
+            arg1.worldY = (i_18_ * (i + -i_16_) + i_16_ * i_20_) / i;
         }
         if(arg1.anInt3073 == 0)
             arg1.anInt3080 = 1024;

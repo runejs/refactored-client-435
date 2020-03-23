@@ -17,7 +17,7 @@ public class Class59 {
     public static int anInt1389 = 0;
     public static RSString aClass1_1391;
     public static KeyFocusListener keyFocusListener;
-    public static int[] anIntArray1393;
+    public static int[] secondMenuOperand;
     public static RSString aClass1_1395 = RSString.CreateString("backbase1");
     public static RSString string_Hidden = RSString.CreateString("Hidden");
     public static long[] aLongArray1397;
@@ -25,7 +25,7 @@ public class Class59 {
     public static RSString aClass1_1399;
 
     static {
-        anIntArray1393 = new int[500];
+        secondMenuOperand = new int[500];
         aClass1_1391 = (RSString.CreateString("Your friendlist is full)3 Max of 100 for free users)1 and 200 for members"));
         aClass1_1399 = aClass1_1391;
         aLongArray1397 = new long[200];
@@ -93,7 +93,7 @@ public class Class59 {
         keyFocusListener = null;
         aClass1_1391 = null;
         string_Hidden = null;
-        anIntArray1393 = null;
+        secondMenuOperand = null;
     }
 
     public static int getVisibilityPlaneFor(int arg0, int arg1, int arg2, int arg3) {

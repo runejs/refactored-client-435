@@ -9,6 +9,7 @@ import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
@@ -21,7 +22,7 @@ public class Npc extends Actor {
     public static int anInt3294 = 0;
     public static RSString aClass1_3295 = null;
     public static boolean aBoolean3298;
-    public static Scene aScene_3301;
+    public static Scene currentScene;
     public static RSString aClass1_3302 = RSString.CreateString("Sichtbare Karte vorbereitet)3");
     public static int[] anIntArray3304 = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
     public static RSString aClass1_3305 = RSString.CreateString("Connection lost");
@@ -46,7 +47,7 @@ public class Npc extends Actor {
         return class40_sub5_sub11;
     }
 
-    public static void method796(byte arg0) {
+    public static void processMenuClick() {
         if(Class40_Sub5_Sub15.anInt2782 > 1)
             Class40_Sub5_Sub15.anInt2782--;
         if(Class32.anInt771 > 0)
@@ -66,8 +67,8 @@ public class Npc extends Actor {
                     while(Class34.method416((byte) -104)) {
                         /* empty */
                     }
-                    for(int i = 0; i < Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus.length; i++)
-                        Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[i] = false;
+                    for(int i = 0; i < Item.obfuscatedKeyStatus.length; i++)
+                        Item.obfuscatedKeyStatus[i] = false;
                 }
                 Class40_Sub5_Sub6.putHackCheckPacket(-12, 205, Class32.packetBuffer);
                 synchronized(Class12.mouseCapturer.objectLock) {
@@ -161,7 +162,7 @@ public class Npc extends Actor {
                 }
                 if(InteractiveObject.anInt487 > 0)
                     InteractiveObject.anInt487--;
-                if(Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[96] || Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[97] || Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[98] || Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[99])
+                if(Item.obfuscatedKeyStatus[96] || Item.obfuscatedKeyStatus[97] || Item.obfuscatedKeyStatus[98] || Item.obfuscatedKeyStatus[99])
                     HashTable.aBoolean565 = true;
                 if(HashTable.aBoolean565 && InteractiveObject.anInt487 <= 0) {
                     InteractiveObject.anInt487 = 20;
@@ -180,7 +181,7 @@ public class Npc extends Actor {
                     Class32.packetBuffer.putPacket(160);
                     Class32.packetBuffer.putByte(0);
                 }
-                Class45.method910(-32322);
+                LinkedList.method910(-32322);
                 if(Class51.anInt1197 == 30 || Class51.anInt1197 == 35) {
                     Class40_Sub5_Sub13.method652();
                     Class4.processAudio();
@@ -191,10 +192,10 @@ public class Npc extends Actor {
                         Class17.method276(-1);
                         Class8.method209();
                         Class22_Sub1.method313(54);
-                        if(Class45.anInt1075 != 0) {
+                        if(LinkedList.anInt1075 != 0) {
                             OverlayDefinition.anInt2319 += 20;
                             if(OverlayDefinition.anInt2319 >= 400)
-                                Class45.anInt1075 = 0;
+                                LinkedList.anInt1075 = 0;
                         }
                         if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType != 0) {
                             RSRuntimeException.anInt1651++;
@@ -218,10 +219,10 @@ public class Npc extends Actor {
                                     ISAAC.redrawTabArea = true;
                                 SceneTile.activeInterfaceType = 0;
                                 if(!Class40_Sub5_Sub15.aBoolean2784 || Buffer.anInt1978 < 5) {
-                                    if((Class68.anInt1630 == 1 || (Class33.method409((byte) 63, (ActorDefinition.anInt2394 - 1)))) && ActorDefinition.anInt2394 > 2)
+                                    if((Class68.anInt1630 == 1 || (Class33.method409((byte) 63, (ActorDefinition.menuActionRow - 1)))) && ActorDefinition.menuActionRow > 2)
                                         Class60.method990(11451);
-                                    else if(ActorDefinition.anInt2394 > 0)
-                                        Class27.method358(123, (-1 + (ActorDefinition.anInt2394)));
+                                    else if(ActorDefinition.menuActionRow > 0)
+                                        Class27.doAction(123, (-1 + (ActorDefinition.menuActionRow)));
                                 } else {
                                     RSRuntimeException.lastActiveInvInterface = -1;
                                     Class43.method894(false);
@@ -274,7 +275,7 @@ public class Npc extends Actor {
                                 Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
                                 OverlayDefinition.anInt2319 = 0;
                                 Class40_Sub11.anInt2163 = Class57.anInt1338;
-                                Class45.anInt1075 = 1;
+                                LinkedList.anInt1075 = 1;
                             }
                             Scene.anInt78 = -1;
                         }
@@ -285,7 +286,7 @@ public class Npc extends Actor {
                         }
                         GameFrame.method1002(-77);
                         if(ActorDefinition.openFullScreenWidgetId == -1) {
-                            Class40_Sub5_Sub17_Sub3.method776((byte) -125);
+                            Item.method776((byte) -125);
                             Class38_Sub1.method447((byte) 29);
                             Class40_Sub5_Sub1.method544();
                         }
@@ -325,7 +326,7 @@ public class Npc extends Actor {
                             }
                         } else if(WallDecoration.anInt1257 > 0)
                             WallDecoration.anInt1257--;
-                        Class40_Sub5_Sub17_Sub3.method775(false);
+                        Item.method775(false);
                         if(Class39.aBoolean906)
                             Class5.method165(35);
                         for(int i_19_ = 0; i_19_ < 5; i_19_++)
@@ -340,8 +341,6 @@ public class Npc extends Actor {
                         }
                         Player.anInt3264++;
                         Class38_Sub1.anInt1923++;
-                        if(arg0 <= 6)
-                            loadFloor(-34, 97);
                         if(Class38_Sub1.anInt1923 > 500) {
                             int i_22_ = (int) (8.0 * Math.random());
                             if((0x2 & i_22_) == 2)
@@ -412,7 +411,7 @@ public class Npc extends Actor {
         aClass1_3308 = null;
         anIntArray3312 = null;
         aClass1_3302 = null;
-        aScene_3301 = null;
+        currentScene = null;
         aClass1_3309 = null;
     }
 
@@ -432,7 +431,7 @@ public class Npc extends Actor {
     public static void parseNpcUpdateMasks() {
         for(int i = 0; i < actorUpdatingIndex; i++) {
             int npcIndex = Player.actorUpdatingIndices[i];
-            Npc npc = Player.trackedNpcs[npcIndex];
+            Npc npc = Player.npcs[npcIndex];
             int mask = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             if((0x1 & mask) != 0) {
                 int i_3_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
@@ -479,7 +478,7 @@ public class Npc extends Actor {
                 npc.idleAnimation = (npc.actorDefinition.stanceAnimation);
                 npc.walkAnimationId = (npc.actorDefinition.walkAnimation);
                 npc.standTurnAnimationId = (npc.actorDefinition.rotateLeftAnimation);
-                npc.anInt3096 = (npc.actorDefinition.tileSpacesOccupied);
+                npc.anInt3096 = (npc.actorDefinition.boundaryDimension);
                 npc.turnLeftAnimationId = (npc.actorDefinition.rotate90LeftAnimation);
                 npc.turnAroundAnimationId = (npc.actorDefinition.rotate180Animation);
             }
@@ -517,28 +516,28 @@ public class Npc extends Actor {
     public static void parseTrackedNpcs() {
         IncomingPackets.incomingPacketBuffer.initBitAccess(114);
         int trackedNpcCount = IncomingPackets.incomingPacketBuffer.getBits(8);
-        if(Player.trackedNpcIndex > trackedNpcCount) {
-            for(int i = trackedNpcCount; i < Player.trackedNpcIndex; i++)
-                Player.deregisterActorIndices[Class17.deregisterActorCount++] = Player.trackedNpcIndices[i];
+        if(Player.npcCount > trackedNpcCount) {
+            for(int i = trackedNpcCount; i < Player.npcCount; i++)
+                Player.deregisterActorIndices[Class17.deregisterActorCount++] = Player.npcIds[i];
         }
-        if(Player.trackedNpcIndex < trackedNpcCount)
+        if(Player.npcCount < trackedNpcCount)
             throw new RuntimeException("gnpov1");
-        Player.trackedNpcIndex = 0;
+        Player.npcCount = 0;
         for(int i = 0; i < trackedNpcCount; i++) {
-            int trackedNpcIndex = Player.trackedNpcIndices[i];
-            Npc npc = (Player.trackedNpcs[trackedNpcIndex]);
+            int trackedNpcIndex = Player.npcIds[i];
+            Npc npc = (Player.npcs[trackedNpcIndex]);
             int updateRequired = IncomingPackets.incomingPacketBuffer.getBits(1);
             if(updateRequired == 0) {
-                Player.trackedNpcIndices[Player.trackedNpcIndex++] = trackedNpcIndex;
+                Player.npcIds[Player.npcCount++] = trackedNpcIndex;
                 npc.anInt3134 = Node.pulseCycle;
             } else {
                 int movementType = IncomingPackets.incomingPacketBuffer.getBits(2);
                 if(movementType == 0) { // No movement
-                    Player.trackedNpcIndices[Player.trackedNpcIndex++] = trackedNpcIndex;
+                    Player.npcIds[Player.npcCount++] = trackedNpcIndex;
                     npc.anInt3134 = Node.pulseCycle;
                     Player.actorUpdatingIndices[actorUpdatingIndex++] = trackedNpcIndex;
                 } else if(movementType == 1) { // Walking
-                    Player.trackedNpcIndices[Player.trackedNpcIndex++] = trackedNpcIndex;
+                    Player.npcIds[Player.npcCount++] = trackedNpcIndex;
                     npc.anInt3134 = Node.pulseCycle;
                     int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
                     npc.method782(walkDirection, (byte) -96, false);
@@ -546,7 +545,7 @@ public class Npc extends Actor {
                     if(runUpdateBlock == 1)
                         Player.actorUpdatingIndices[actorUpdatingIndex++] = trackedNpcIndex;
                 } else if(movementType == 2) { // Running
-                    Player.trackedNpcIndices[Player.trackedNpcIndex++] = trackedNpcIndex;
+                    Player.npcIds[Player.npcCount++] = trackedNpcIndex;
                     npc.anInt3134 = Node.pulseCycle;
                     int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
                     npc.method782(walkDirection, (byte) -96, true);
@@ -567,12 +566,12 @@ public class Npc extends Actor {
             if(i == 32767)
                 break;
             boolean bool = false;
-            if(Player.trackedNpcs[i] == null) {
-                Player.trackedNpcs[i] = new Npc();
+            if(Player.npcs[i] == null) {
+                Player.npcs[i] = new Npc();
                 bool = true;
             }
-            Npc npc = Player.trackedNpcs[i];
-            Player.trackedNpcIndices[Player.trackedNpcIndex++] = i;
+            Npc npc = Player.npcs[i];
+            Player.npcIds[Player.npcCount++] = i;
             npc.anInt3134 = pulseCycle;
             int initialFaceDirection = (Class40_Sub5_Sub17_Sub1.directions[IncomingPackets.incomingPacketBuffer.getBits(3)]);
             if(bool)
@@ -593,7 +592,7 @@ public class Npc extends Actor {
             npc.idleAnimation = (npc.actorDefinition.stanceAnimation);
             npc.anInt3083 = (npc.actorDefinition.rotateRightAnimation);
             npc.walkAnimationId = (npc.actorDefinition.walkAnimation);
-            npc.anInt3096 = (npc.actorDefinition.tileSpacesOccupied);
+            npc.anInt3096 = (npc.actorDefinition.boundaryDimension);
             npc.turnAroundAnimationId = (npc.actorDefinition.rotate180Animation);
             npc.standTurnAnimationId = (npc.actorDefinition.rotateLeftAnimation);
             npc.anInt3113 = (npc.actorDefinition.degreesToTurn);
@@ -624,7 +623,7 @@ public class Npc extends Actor {
                 model = new Model(models, 2, true);
             }
         }
-        if(actorDefinition.tileSpacesOccupied == 1)
+        if(actorDefinition.boundaryDimension == 1)
             model.singleTile = true;
         return model;
     }

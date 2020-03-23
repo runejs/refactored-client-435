@@ -161,9 +161,7 @@ public class Class42 {
         return i;
     }
 
-    public int method882(int arg0, int arg1) {
-        if(arg1 > -56)
-            return 76;
+    public int method882(int arg0) {
         int i = -2 + anIntArray996.length;
         int i_0_ = arg0 << 1 & i;
         for(; ; ) {

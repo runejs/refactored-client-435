@@ -6,7 +6,6 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -18,7 +17,7 @@ import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class40_Sub5_Sub1 extends SubNode {
-    public static Class45 aClass45_2268 = new Class45();
+    public static LinkedList aLinkedList_2268 = new LinkedList();
     public static RSString aClass1_2274 = RSString.CreateString("To");
     public static Class68 aClass68_2275;
     public static int anInt2276 = 0;
@@ -40,7 +39,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
         aClass1_2277 = null;
         aClass1_2274 = null;
         aClass68_2275 = null;
-        aClass45_2268 = null;
+        aLinkedList_2268 = null;
     }
 
     public static void method543(CollisionMap arg0, int arg1, int arg2, int arg3, int arg4, Scene arg5, int arg6, int arg7, int arg8, int arg9) {
@@ -262,34 +261,34 @@ public class Class40_Sub5_Sub1 extends SubNode {
         }
     }
 
-    public static void method545(int arg0, boolean arg1, int arg2, Player arg3, int arg4) {
-        if(Player.localPlayer != arg3 && ActorDefinition.anInt2394 < 400) {
-            RSString class1;
-            if(arg3.skillLevel == 0)
-                class1 = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{arg3.playerName, (SceneTile.method536((Player.localPlayer.combatLevel), arg3.combatLevel, -122)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(arg3.combatLevel, -1), Class51.aClass1_1199})));
+    public static void processPlayerMenuOptions(Player player, int x, int y, int index) {
+        if(Player.localPlayer != player && ActorDefinition.menuActionRow < 400) {
+            RSString rsString;
+            if(player.skillLevel == 0)
+                rsString = (RSString.linkRSStrings((new RSString[]{player.playerName, (SceneTile.getCombatLevelColour((Player.localPlayer.combatLevel), player.combatLevel, -122)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(player.combatLevel, -1), Class51.aClass1_1199})));
             else
-                class1 = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{arg3.playerName, HashTable.aClass1_569, Class26.aClass1_619, HashTable.method334(arg3.skillLevel, -1), Class51.aClass1_1199})));
-            if(Class8.anInt301 == 1) {
-                OverlayDefinition.method558(arg4, Main.aClass1_1763, arg0, -501, arg2, 22, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Npc.aClass1_3295, Class40_Sub5_Sub17_Sub3.aClass1_3068, class1}))));
-            } else if(Main.anInt1773 == 1) {
-                if((ItemDefinition.anInt2815 & 0x8) == 8) {
-                    OverlayDefinition.method558(arg4, Class38_Sub1.aClass1_1918, arg0, -501, arg2, 1, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub17_Sub3.aClass1_3068, class1}))));
+                rsString = (RSString.linkRSStrings((new RSString[]{player.playerName, HashTable.aClass1_569, Class26.aClass1_619, HashTable.method334(player.skillLevel, -1), Class51.aClass1_1199})));
+            if(Class8.itemSelected == 1) {
+                OverlayDefinition.addActionRow(Main.aClass1_1763, index, x, y, 22, (RSString.linkRSStrings((new RSString[]{Npc.aClass1_3295, Item.aClass1_3068, rsString}))));
+            } else if(Main.widgetSelected == 1) {
+                if((ItemDefinition.selectedMask & 0x8) == 8) {
+                    OverlayDefinition.addActionRow(Class38_Sub1.aClass1_1918, index, x, y, 1, (RSString.linkRSStrings((new RSString[]{FloorDecoration.aClass1_611, Item.aClass1_3068, rsString}))));
                 }
             } else {
                 for(int i = 4; i >= 0; i--) {
-                    if(Main.aClass1Array1778[i] != null) {
+                    if(Main.playerActions[i] != null) {
                         int i_16_ = 0;
                         int i_17_ = 0;
-                        if(Main.aClass1Array1778[i].equalsIgnoreCase(Class38_Sub1.aClass1_1917, true)) {
-                            if((Player.localPlayer.combatLevel) < arg3.combatLevel)
+                        if(Main.playerActions[i].equalsIgnoreCase(Class38_Sub1.aClass1_1917, true)) {
+                            if((Player.localPlayer.combatLevel) < player.combatLevel)
                                 i_17_ = 2000;
-                            if((Player.localPlayer.teamId) != 0 && arg3.teamId != 0) {
-                                if((Player.localPlayer.teamId) != arg3.teamId)
+                            if((Player.localPlayer.teamId) != 0 && player.teamId != 0) {
+                                if((Player.localPlayer.teamId) != player.teamId)
                                     i_17_ = 0;
                                 else
                                     i_17_ = 2000;
                             }
-                        } else if(Class13.aBooleanArray414[i])
+                        } else if(Class13.playerArray[i])
                             i_17_ = 2000;
                         if(i == 0)
                             i_16_ = 10 + i_17_;
@@ -301,16 +300,14 @@ public class Class40_Sub5_Sub1 extends SubNode {
                             i_16_ = i_17_ + 14;
                         if(i == 4)
                             i_16_ = 41 + i_17_;
-                        OverlayDefinition.method558(arg4, Main.aClass1Array1778[i], arg0, -501, arg2, i_16_, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class26.aClass1_620, class1})));
+                        OverlayDefinition.addActionRow(Main.playerActions[i], index, x, y, i_16_, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, rsString})));
                     }
                 }
             }
-            if(!arg1) {
-                for(int i = 0; i < ActorDefinition.anInt2394; i++) {
-                    if(Class38.anIntArray884[i] == 7) {
-                        Landscape.aClass1Array1184[i] = (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class22_Sub2.aClass1_1876, VertexNormal.aClass1_1117, Class26.aClass1_620, class1}));
-                        break;
-                    }
+            for(int i = 0; i < ActorDefinition.menuActionRow; i++) {
+                if(Class38.menuActionTypes[i] == 7) {
+                    Landscape.menuActionTexts[i] = (RSString.linkRSStrings(new RSString[]{Class22_Sub2.aClass1_1876, VertexNormal.aClass1_1117, Class26.aClass1_620, rsString}));
+                    break;
                 }
             }
         }

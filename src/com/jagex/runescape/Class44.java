@@ -83,13 +83,13 @@ public class Class44 implements Runnable {
                     return;
                 }
             }
-            int i = arg1.anInt3098;
+            int i = arg1.worldX;
             int i_0_ = (arg1.pathY[-1 + arg1.anInt3109] * 128 + (64 * arg1.anInt3096));
-            int i_1_ = arg1.anInt3089;
+            int i_1_ = arg1.worldY;
             int i_2_ = (64 * arg1.anInt3096 + arg1.pathX[arg1.anInt3109 + -1] * 128);
             if(-i + i_0_ > 256 || -i + i_0_ < -256 || -i_1_ + i_2_ > 256 || i_2_ + -i_1_ < -256) {
-                arg1.anInt3098 = i_0_;
-                arg1.anInt3089 = i_2_;
+                arg1.worldX = i_0_;
+                arg1.worldY = i_2_;
             } else {
                 if((i < i_0_)) {
                     if((i_1_ < i_2_))
@@ -139,26 +139,26 @@ public class Class44 implements Runnable {
                 if(arg1.aBooleanArray3072[-1 + arg1.anInt3109])
                     i_4_ <<= 1;
                 if((i_1_ < i_2_)) {
-                    arg1.anInt3089 += i_4_;
-                    if(arg1.anInt3089 > i_2_)
-                        arg1.anInt3089 = i_2_;
+                    arg1.worldY += i_4_;
+                    if(arg1.worldY > i_2_)
+                        arg1.worldY = i_2_;
                 } else if(i_1_ > i_2_) {
-                    arg1.anInt3089 -= i_4_;
-                    if((arg1.anInt3089 < i_2_))
-                        arg1.anInt3089 = i_2_;
+                    arg1.worldY -= i_4_;
+                    if((arg1.worldY < i_2_))
+                        arg1.worldY = i_2_;
                 }
                 if(i_4_ >= 8 && arg1.anInt3077 == arg1.walkAnimationId && arg1.runAnimationId != -1)
                     arg1.anInt3077 = arg1.runAnimationId;
                 if(i < i_0_) {
-                    arg1.anInt3098 += i_4_;
-                    if((i_0_ < arg1.anInt3098))
-                        arg1.anInt3098 = i_0_;
+                    arg1.worldX += i_4_;
+                    if((i_0_ < arg1.worldX))
+                        arg1.worldX = i_0_;
                 } else if(i_0_ < i) {
-                    arg1.anInt3098 -= i_4_;
-                    if(i_0_ > arg1.anInt3098)
-                        arg1.anInt3098 = i_0_;
+                    arg1.worldX -= i_4_;
+                    if(i_0_ > arg1.worldX)
+                        arg1.worldX = i_0_;
                 }
-                if(arg1.anInt3098 == i_0_ && i_2_ == arg1.anInt3089) {
+                if(arg1.worldX == i_0_ && i_2_ == arg1.worldY) {
                     if(arg1.anInt3094 > 0)
                         arg1.anInt3094--;
                     arg1.anInt3109--;
@@ -171,8 +171,8 @@ public class Class44 implements Runnable {
         try {
             for(; ; ) {
                 Class40_Sub6 class40_sub6;
-                synchronized(RSCanvas.aClass45_53) {
-                    class40_sub6 = ((Class40_Sub6) RSCanvas.aClass45_53.method902((byte) -90));
+                synchronized(RSCanvas.aLinkedList_53) {
+                    class40_sub6 = ((Class40_Sub6) RSCanvas.aLinkedList_53.method902((byte) -90));
                 }
                 if(class40_sub6 == null) {
                     Class43.method890(100L, 113);
@@ -187,13 +187,13 @@ public class Class44 implements Runnable {
                 } else {
                     if(class40_sub6.anInt2112 == 0) {
                         class40_sub6.aClass56_2117.method971(class40_sub6.aByteArray2102, 1862596560, class40_sub6.aByteArray2102.length, (int) class40_sub6.key);
-                        synchronized(RSCanvas.aClass45_53) {
+                        synchronized(RSCanvas.aLinkedList_53) {
                             class40_sub6.method457(-1);
                         }
                     } else if(class40_sub6.anInt2112 == 1) {
                         class40_sub6.aByteArray2102 = (class40_sub6.aClass56_2117.method969((int) class40_sub6.key));
-                        synchronized(RSCanvas.aClass45_53) {
-                            IdentityKit.aClass45_2604.pushBack(class40_sub6, 115);
+                        synchronized(RSCanvas.aLinkedList_53) {
+                            IdentityKit.aLinkedList_2604.pushBack(class40_sub6, 115);
                         }
                     }
                     synchronized(CollisionMap.anObject162) {

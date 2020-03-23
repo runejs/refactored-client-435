@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.tile.WallDecoration;
 
 public class Class40_Sub6 extends Node {

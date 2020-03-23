@@ -69,7 +69,7 @@ public class Class51 {
         if(Class40_Sub5_Sub11.clearScreen) {
             Class40_Sub5_Sub11.clearScreen = false;
             ItemDefinition.method742(205);
-            Class45.method908((byte) 114);
+            LinkedList.method908((byte) 114);
             Class55.method964(40);
             ActorDefinition.method574(4);
             Class52.method943(ItemDefinition.anInt2797, -118, WallDecoration.fontNormal, Class4.anInt185, Class35.publicChatMode);

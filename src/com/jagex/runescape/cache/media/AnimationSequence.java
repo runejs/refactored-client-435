@@ -81,7 +81,7 @@ public class AnimationSequence extends SubNode {
         int i = 0x7fff & arg1 >> 14;
         if(arg2 > -9)
             method596(-4, -74, (byte) -44, -62);
-        int i_14_ = (Npc.aScene_3301.getArrangement(Player.worldLevel, arg0, arg3, arg1));
+        int i_14_ = (Npc.currentScene.getArrangement(Player.worldLevel, arg0, arg3, arg1));
         if(i_14_ == -1)
             return false;
         int i_15_ = 0x3 & i_14_ >> 6;
@@ -105,7 +105,7 @@ public class AnimationSequence extends SubNode {
             Class38_Sub1.method448(i_18_, i_17_, (Player.localPlayer.pathY[0]), arg0, (byte) 94, 0, true, 0, i_19_, (Player.localPlayer.pathX[0]), arg3, 2);
         }
         Class40_Sub11.anInt2163 = Class57.anInt1338;
-        Class45.anInt1075 = 2;
+        LinkedList.anInt1075 = 2;
         Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
         OverlayDefinition.anInt2319 = 0;
         return true;

@@ -4,6 +4,7 @@ import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.net.ISAAC;
 
 import java.math.BigInteger;
 
@@ -38,10 +39,10 @@ public class PacketBuffer extends Buffer {
         class40_sub6.key = (long) arg0;
         class40_sub6.aClass56_2117 = arg2;
         class40_sub6.aClass6_Sub1_2104 = arg1;
-        synchronized(RSCanvas.aClass45_53) {
+        synchronized(RSCanvas.aLinkedList_53) {
             if(arg3 != -28)
                 method521(false, (byte) -113, -84, -120);
-            RSCanvas.aClass45_53.pushBack(class40_sub6, -72);
+            RSCanvas.aLinkedList_53.pushBack(class40_sub6, -72);
         }
         HashTable.method332(600);
     }
@@ -146,7 +147,7 @@ public class PacketBuffer extends Buffer {
     public int getPacket(byte arg0) {
         if(arg0 != 49)
             aClass1_2260 = null;
-        return 0xff & (buffer[currentPosition++] - inCipher.rand());
+        return 0xff & (buffer[currentPosition++] - inCipher.nextInt());
     }
 
     public int getBits(int arg0) {
@@ -166,7 +167,7 @@ public class PacketBuffer extends Buffer {
     }
 
     public void putPacket(int packetId) {
-        buffer[currentPosition++] = (byte) ((packetId + outCipher.rand()) & 0xff);
+        buffer[currentPosition++] = (byte) ((packetId + outCipher.nextInt()) & 0xff);
     }
 
     public void initInCipher(int[] seed) {

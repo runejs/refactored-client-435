@@ -9,6 +9,7 @@ import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.awt.*;
@@ -17,7 +18,7 @@ public class ItemDefinition extends SubNode {
     public static int anInt2797 = 0;
     public static int anInt2798 = 0;
     public static int[] soundVolume = new int[50];
-    public static int anInt2815;
+    public static int selectedMask;
     public static int anInt2846;
     public static int anInt2850 = -1;
     public static int anInt2854;
@@ -162,14 +163,14 @@ public class ItemDefinition extends SubNode {
     }
 
     public static void method749(boolean arg0) {
-        for(int i = 0; Player.trackedNpcIndex > i; i++) {
-            Npc npc = (Player.trackedNpcs[Player.trackedNpcIndices[i]]);
-            int i_15_ = (536870912 + (Player.trackedNpcIndices[i] << 14));
+        for(int i = 0; Player.npcCount > i; i++) {
+            Npc npc = (Player.npcs[Player.npcIds[i]]);
+            int i_15_ = (536870912 + (Player.npcIds[i] << 14));
             if(npc != null && npc.isVisible(1) && !arg0 != (npc.actorDefinition.hasRenderPriority) && npc.actorDefinition.method571(-1)) {
-                int i_16_ = (npc.anInt3098 >> 7);
-                int i_17_ = npc.anInt3089 >> 7;
+                int i_16_ = (npc.worldX >> 7);
+                int i_17_ = npc.worldY >> 7;
                 if(i_16_ >= 0 && i_16_ < 104 && i_17_ >= 0 && i_17_ < 104) {
-                    if(npc.anInt3096 == 1 && (npc.anInt3098 & 0x7f) == 64 && ((npc.anInt3089 & 0x7f) == 64)) {
+                    if(npc.anInt3096 == 1 && (npc.worldX & 0x7f) == 64 && ((npc.worldY & 0x7f) == 64)) {
                         if(Class61.anIntArrayArray1435[i_16_][i_17_] == Class40_Sub5_Sub11.anInt2628) {
                             continue;
                         }
@@ -178,7 +179,7 @@ public class ItemDefinition extends SubNode {
                     if(!npc.actorDefinition.isClickable) {
                         i_15_ += -2147483648;
                     }
-                    Npc.aScene_3301.method134(Player.worldLevel, npc.anInt3098, npc.anInt3089, (Class37.method430((byte) -126, Player.worldLevel, (npc.anInt3098 + ((-1 + npc.anInt3096) * 64)), (npc.anInt3096 * 64 + (-64 + (npc.anInt3089))))), -64 + (npc.anInt3096 * 64 + 60), npc, npc.anInt3118, i_15_, npc.aBoolean3105);
+                    Npc.currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY, (Class37.method430((byte) -126, Player.worldLevel, (npc.worldX + ((-1 + npc.anInt3096) * 64)), (npc.anInt3096 * 64 + (-64 + (npc.worldY))))), -64 + (npc.anInt3096 * 64 + 60), npc, npc.anInt3118, i_15_, npc.aBoolean3105);
                 }
             }
         }
@@ -202,7 +203,7 @@ public class ItemDefinition extends SubNode {
             definition.interfaceOptions = null;
             definition.teamIndex = 0;
             definition.groundOptions = null;
-            definition.name = Class40_Sub5_Sub17_Sub3.aClass1_3069;
+            definition.name = Item.aClass1_3069;
         }
         ISAAC.aClass9_516.put(arg1 + -7218, (long) id, definition);
         return definition;

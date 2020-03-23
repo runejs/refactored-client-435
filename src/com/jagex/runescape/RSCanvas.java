@@ -18,7 +18,7 @@ public class RSCanvas extends Canvas {
     public static byte[][] aByteArrayArray47 = new byte[50][];
     public static CacheIndex_Sub1 aClass6_Sub1_48;
     public static RSString aClass1_51;
-    public static Class45 aClass45_53;
+    public static LinkedList aLinkedList_53;
     public static int anInt54;
     public static RSString aClass1_55 = RSString.CreateString("shake:");
     public static int anInt57;
@@ -38,7 +38,7 @@ public class RSCanvas extends Canvas {
     static {
         aClass1_51 = aClass1_55;
         anInt54 = 0;
-        aClass45_53 = new Class45();
+        aLinkedList_53 = new LinkedList();
         anInt60 = 255;
         anInt65 = 127;
         aClass1_69 = RSString.CreateString("Your profile will be transferred in:");
@@ -69,7 +69,7 @@ public class RSCanvas extends Canvas {
         Class8.method211();
         CacheIndex.method188();
         Class22_Sub2.method316(-11965);
-        Class45.method907(-99);
+        LinkedList.method907(-99);
         Class5.method167(1023);
         Class51.method941();
         Actor.method783();
@@ -97,7 +97,7 @@ public class RSCanvas extends Canvas {
         aClass1_63 = null;
         aClass1_55 = null;
         anIntArray62 = null;
-        aClass45_53 = null;
+        aLinkedList_53 = null;
         aClass1_51 = null;
         aClass1_69 = null;
         aCacheIndex_61 = null;

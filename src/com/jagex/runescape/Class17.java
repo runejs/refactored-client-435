@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.WallDecoration;
 
@@ -37,7 +38,7 @@ public class Class17 {
         }
         Class57.aClass64_1345 = arg0;
         RSApplet.method19(arg2, 24041);
-        Class45.aClass40_Sub1_1081.currentPosition = 0;
+        LinkedList.aClass40_Sub1_1081.currentPosition = 0;
         Class40_Sub5_Sub13.aClass40_Sub1_2752 = null;
         Landscape.anInt1157 = 0;
         PacketBuffer.aClass40_Sub5_Sub13_2250 = null;
@@ -80,7 +81,7 @@ public class Class17 {
         if(arg1 < 102)
             method273(null, 92, true);
         Class22.anInt547 = 0;
-        Class45.aLong1051 = System.currentTimeMillis();
+        LinkedList.aLong1051 = System.currentTimeMillis();
     }
 
     public static int method274(boolean arg0) {
@@ -94,16 +95,16 @@ public class Class17 {
             if(Class42.anInt1008 >= 100)
                 Class44.addChatMessage(HuffmanEncoding.blank_string, Landscape.aClass1_1180, 0);
             else {
-                RSString class1 = Class60.method991((2 ^ 0x606c) ^ ~0x6004, arg1).method85(-4305);
+                RSString class1 = Class60.method991(-107, arg1).method85(-4305);
                 for(int i = 0; i < Class42.anInt1008; i++) {
                     if(arg1 == WallDecoration.ignores[i]) {
-                        Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{class1, Class68.aClass1_1628}))), 0);
+                        Class44.addChatMessage(HuffmanEncoding.blank_string, (RSString.linkRSStrings((new RSString[]{class1, Class68.aClass1_1628}))), 0);
                         return;
                     }
                 }
-                for(int i = 0; Class40_Sub5_Sub17_Sub3.friendsCount > i; i++) {
+                for(int i = 0; Item.friendsCount > i; i++) {
                     if(Class59.aLongArray1397[i] == arg1) {
-                        Class44.addChatMessage(HuffmanEncoding.blank_string, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class44.aClass1_1032, class1, (Renderable.aClass1_2864)}))), 0);
+                        Class44.addChatMessage(HuffmanEncoding.blank_string, (RSString.linkRSStrings((new RSString[]{Class44.aClass1_1032, class1, (Renderable.aClass1_2864)}))), 0);
                         return;
                     }
                 }
@@ -118,7 +119,7 @@ public class Class17 {
     }
 
     public static void method276(int arg0) {
-        for(int i = arg0; Player.trackedPlayerIndex > i; i++) {
+        for(int i = arg0; Player.localPlayerCount > i; i++) {
             int i_0_;
             if(i == -1)
                 i_0_ = 2047;
