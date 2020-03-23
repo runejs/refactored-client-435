@@ -426,7 +426,7 @@ public class IncomingPackets {
                 if(i_45_ >= 0)
                     Class42.method883((byte) -121, i_45_);
                 if(i_45_ != GroundItemTile.anInt1376) {
-                    Class55.method958(GroundItemTile.anInt1376, -14222);
+                    Class55.method958(GroundItemTile.anInt1376);
                     GroundItemTile.anInt1376 = i_45_;
                 }
                 incomingPacket = -1;
@@ -445,25 +445,25 @@ public class IncomingPackets {
                 int i_49_ = incomingPacketBuffer.getUnsignedShortBE();
                 int i_50_ = incomingPacketBuffer.getUnsignedShortLE();
                 if(Class43.openChatboxWidgetId != -1) {
-                    Class55.method958(Class43.openChatboxWidgetId, -14222);
+                    Class55.method958(Class43.openChatboxWidgetId);
                     Class52.redrawChatbox = true;
                     Class43.openChatboxWidgetId = -1;
                 }
                 if(ActorDefinition.openFullScreenWidgetId != -1) {
-                    Class55.method958(ActorDefinition.openFullScreenWidgetId, -14222);
+                    Class55.method958(ActorDefinition.openFullScreenWidgetId);
                     ActorDefinition.openFullScreenWidgetId = -1;
                     OverlayDefinition.method559(30);
                 }
                 if(UnderlayDefinition.openSecondaryWidgetId != -1) {
-                    Class55.method958(UnderlayDefinition.openSecondaryWidgetId, -14222);
+                    Class55.method958(UnderlayDefinition.openSecondaryWidgetId);
                     UnderlayDefinition.openSecondaryWidgetId = -1;
                 }
                 if(HuffmanEncoding.openScreenWidgetId != i_50_) {
-                    Class55.method958(HuffmanEncoding.openScreenWidgetId, -14222);
+                    Class55.method958(HuffmanEncoding.openScreenWidgetId);
                     HuffmanEncoding.openScreenWidgetId = i_50_;
                 }
                 if(Class29.tabAreaOverlayWidgetId != i_49_) {
-                    Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
+                    Class55.method958(Class29.tabAreaOverlayWidgetId);
                     Class29.tabAreaOverlayWidgetId = i_49_;
                 }
                 CacheIndex_Sub1.anInt1819 = -1;
@@ -511,27 +511,27 @@ public class IncomingPackets {
                 int i_55_ = incomingPacketBuffer.getUnsignedShortBE();
                 Class42.method883((byte) -127, i_55_);
                 if(Class29.tabAreaOverlayWidgetId != -1) {
-                    Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
+                    Class55.method958(Class29.tabAreaOverlayWidgetId);
                     IdentityKit.aBoolean2597 = true;
                     Class29.tabAreaOverlayWidgetId = -1;
                     ISAAC.redrawTabArea = true;
                 }
                 if(Class43.openChatboxWidgetId != -1) {
-                    Class55.method958(Class43.openChatboxWidgetId, -14222);
+                    Class55.method958(Class43.openChatboxWidgetId);
                     Class52.redrawChatbox = true;
                     Class43.openChatboxWidgetId = -1;
                 }
                 if(ActorDefinition.openFullScreenWidgetId != -1) {
-                    Class55.method958(ActorDefinition.openFullScreenWidgetId, -14222);
+                    Class55.method958(ActorDefinition.openFullScreenWidgetId);
                     ActorDefinition.openFullScreenWidgetId = -1;
                     OverlayDefinition.method559(30);
                 }
                 if(UnderlayDefinition.openSecondaryWidgetId != -1) {
-                    Class55.method958(UnderlayDefinition.openSecondaryWidgetId, -14222);
+                    Class55.method958(UnderlayDefinition.openSecondaryWidgetId);
                     UnderlayDefinition.openSecondaryWidgetId = -1;
                 }
                 if(i_55_ != HuffmanEncoding.openScreenWidgetId) {
-                    Class55.method958(HuffmanEncoding.openScreenWidgetId, -14222);
+                    Class55.method958(HuffmanEncoding.openScreenWidgetId);
                     HuffmanEncoding.openScreenWidgetId = i_55_;
                 }
                 CacheIndex_Sub1.anInt1819 = -1;
@@ -568,7 +568,7 @@ public class IncomingPackets {
             if(incomingPacket == 185) {
                 int i_56_ = incomingPacketBuffer.getShortBE();
                 if(Class48.anInt1138 != i_56_) {
-                    Class55.method958(Class48.anInt1138, -14222);
+                    Class55.method958(Class48.anInt1138);
                     Class48.anInt1138 = i_56_;
                 }
                 incomingPacket = -1;
@@ -582,24 +582,24 @@ public class IncomingPackets {
                 if(secondaryWidgetId != -1)
                     Class42.method883((byte) -124, secondaryWidgetId);
                 if(HuffmanEncoding.openScreenWidgetId != -1) {
-                    Class55.method958(HuffmanEncoding.openScreenWidgetId, -14222);
+                    Class55.method958(HuffmanEncoding.openScreenWidgetId);
                     HuffmanEncoding.openScreenWidgetId = -1;
                 }
                 if(Class29.tabAreaOverlayWidgetId != -1) {
-                    Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
+                    Class55.method958(Class29.tabAreaOverlayWidgetId);
                     Class29.tabAreaOverlayWidgetId = -1;
                 }
                 if(Class43.openChatboxWidgetId != -1) {
-                    Class55.method958(Class43.openChatboxWidgetId, -14222);
+                    Class55.method958(Class43.openChatboxWidgetId);
                     Class43.openChatboxWidgetId = -1;
                 }
                 if(fullscreenWidgetId != ActorDefinition.openFullScreenWidgetId) {
-                    Class55.method958(ActorDefinition.openFullScreenWidgetId, -14222);
+                    Class55.method958(ActorDefinition.openFullScreenWidgetId);
                     ActorDefinition.openFullScreenWidgetId = fullscreenWidgetId;
                     OverlayDefinition.method559(35);
                 }
                 if(fullscreenWidgetId != UnderlayDefinition.openSecondaryWidgetId) {
-                    Class55.method958(UnderlayDefinition.openSecondaryWidgetId, -14222);
+                    Class55.method958(UnderlayDefinition.openSecondaryWidgetId);
                     UnderlayDefinition.openSecondaryWidgetId = secondaryWidgetId;
                 }
                 CacheIndex_Sub1.anInt1819 = -1;
@@ -609,27 +609,27 @@ public class IncomingPackets {
             }
             if(incomingPacket == CLOSE_ALL_WIDGETS) {
                 if(Class29.tabAreaOverlayWidgetId != -1) {
-                    Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
+                    Class55.method958(Class29.tabAreaOverlayWidgetId);
                     ISAAC.redrawTabArea = true;
                     IdentityKit.aBoolean2597 = true;
                     Class29.tabAreaOverlayWidgetId = -1;
                 }
                 if(Class43.openChatboxWidgetId != -1) {
-                    Class55.method958(Class43.openChatboxWidgetId, -14222);
+                    Class55.method958(Class43.openChatboxWidgetId);
                     Class52.redrawChatbox = true;
                     Class43.openChatboxWidgetId = -1;
                 }
                 if(ActorDefinition.openFullScreenWidgetId != -1) {
-                    Class55.method958(ActorDefinition.openFullScreenWidgetId, -14222);
+                    Class55.method958(ActorDefinition.openFullScreenWidgetId);
                     ActorDefinition.openFullScreenWidgetId = -1;
                     OverlayDefinition.method559(30);
                 }
                 if(UnderlayDefinition.openSecondaryWidgetId != -1) {
-                    Class55.method958(UnderlayDefinition.openSecondaryWidgetId, -14222);
+                    Class55.method958(UnderlayDefinition.openSecondaryWidgetId);
                     UnderlayDefinition.openSecondaryWidgetId = -1;
                 }
                 if(HuffmanEncoding.openScreenWidgetId != -1) {
-                    Class55.method958(HuffmanEncoding.openScreenWidgetId, -14222);
+                    Class55.method958(HuffmanEncoding.openScreenWidgetId);
                     HuffmanEncoding.openScreenWidgetId = -1;
                 }
                 incomingPacket = -1;
@@ -644,26 +644,26 @@ public class IncomingPackets {
                 int widgetId = incomingPacketBuffer.getUnsignedShortBE();
                 Class42.method883((byte) -119, widgetId);
                 if(Class29.tabAreaOverlayWidgetId != -1) {
-                    Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
+                    Class55.method958(Class29.tabAreaOverlayWidgetId);
                     IdentityKit.aBoolean2597 = true;
                     Class29.tabAreaOverlayWidgetId = -1;
                     ISAAC.redrawTabArea = true;
                 }
                 if(ActorDefinition.openFullScreenWidgetId != -1) {
-                    Class55.method958(ActorDefinition.openFullScreenWidgetId, -14222);
+                    Class55.method958(ActorDefinition.openFullScreenWidgetId);
                     ActorDefinition.openFullScreenWidgetId = -1;
                     OverlayDefinition.method559(30);
                 }
                 if(UnderlayDefinition.openSecondaryWidgetId != -1) {
-                    Class55.method958(UnderlayDefinition.openSecondaryWidgetId, -14222);
+                    Class55.method958(UnderlayDefinition.openSecondaryWidgetId);
                     UnderlayDefinition.openSecondaryWidgetId = -1;
                 }
                 if(HuffmanEncoding.openScreenWidgetId != -1) {
-                    Class55.method958(HuffmanEncoding.openScreenWidgetId, -14222);
+                    Class55.method958(HuffmanEncoding.openScreenWidgetId);
                     HuffmanEncoding.openScreenWidgetId = -1;
                 }
                 if(Class43.openChatboxWidgetId != widgetId) {
-                    Class55.method958(Class43.openChatboxWidgetId, -14222);
+                    Class55.method958(Class43.openChatboxWidgetId);
                     Class43.openChatboxWidgetId = widgetId;
                 }
 
@@ -767,25 +767,25 @@ public class IncomingPackets {
                 int i_68_ = incomingPacketBuffer.getUnsignedShortBE();
                 Class42.method883((byte) 107, i_68_);
                 if(Class43.openChatboxWidgetId != -1) {
-                    Class55.method958(Class43.openChatboxWidgetId, -14222);
+                    Class55.method958(Class43.openChatboxWidgetId);
                     Class43.openChatboxWidgetId = -1;
                     Class52.redrawChatbox = true;
                 }
                 if(ActorDefinition.openFullScreenWidgetId != -1) {
-                    Class55.method958(ActorDefinition.openFullScreenWidgetId, -14222);
+                    Class55.method958(ActorDefinition.openFullScreenWidgetId);
                     ActorDefinition.openFullScreenWidgetId = -1;
                     OverlayDefinition.method559(30);
                 }
                 if(UnderlayDefinition.openSecondaryWidgetId != -1) {
-                    Class55.method958(UnderlayDefinition.openSecondaryWidgetId, -14222);
+                    Class55.method958(UnderlayDefinition.openSecondaryWidgetId);
                     UnderlayDefinition.openSecondaryWidgetId = -1;
                 }
                 if(HuffmanEncoding.openScreenWidgetId != -1) {
-                    Class55.method958(HuffmanEncoding.openScreenWidgetId, -14222);
+                    Class55.method958(HuffmanEncoding.openScreenWidgetId);
                     HuffmanEncoding.openScreenWidgetId = -1;
                 }
                 if(Class29.tabAreaOverlayWidgetId != i_68_) {
-                    Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
+                    Class55.method958(Class29.tabAreaOverlayWidgetId);
                     Class29.tabAreaOverlayWidgetId = i_68_;
                 }
                 IdentityKit.aBoolean2597 = true;
@@ -883,7 +883,7 @@ public class IncomingPackets {
             }
             if(incomingPacket == 132) { // open chatbox input widget
                 if(Class43.openChatboxWidgetId != -1) {
-                    Class55.method958(Class43.openChatboxWidgetId, -14222);
+                    Class55.method958(Class43.openChatboxWidgetId);
                     Class43.openChatboxWidgetId = -1;
                 }
                 incomingPacket = -1;
@@ -1031,7 +1031,7 @@ public class IncomingPackets {
                 if(i_96_ == 65535)
                     i_96_ = -1;
                 if(i_96_ != Class40_Sub5_Sub11.tabWidgetIds[i_97_]) {
-                    Class55.method958((Class40_Sub5_Sub11.tabWidgetIds[i_97_]), -14222);
+                    Class55.method958((Class40_Sub5_Sub11.tabWidgetIds[i_97_]));
                     Class40_Sub5_Sub11.tabWidgetIds[i_97_] = i_96_;
                 }
                 IdentityKit.aBoolean2597 = true;
@@ -1150,7 +1150,7 @@ public class IncomingPackets {
             }
             if(incomingPacket == 124) {
                 if(Class43.openChatboxWidgetId != -1) {
-                    Class55.method958(Class43.openChatboxWidgetId, -14222);
+                    Class55.method958(Class43.openChatboxWidgetId);
                     Class43.openChatboxWidgetId = -1;
                 }
                 Class52.redrawChatbox = true;

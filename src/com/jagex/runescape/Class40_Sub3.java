@@ -29,13 +29,10 @@ public class Class40_Sub3 extends Node {
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2019;
     public static int anInt2020;
     public static int anInt2021 = 0;
-    public static int anInt2022;
     public static int[] soundDelay = new int[50];
     public static int anInt2024 = 1;
     public static boolean aBoolean2026 = false;
-    public static int anInt2029;
     public static int anInt2032 = 0;
-    public static int anInt2034;
     public static CacheIndex aCacheIndex_2037;
     public int anInt2017;
     public int anInt2018;
@@ -59,7 +56,6 @@ public class Class40_Sub3 extends Node {
     }
 
     public static void method530(int arg0) {
-        anInt2029++;
         if(Class40_Sub5_Sub6.anInt2451 == 0) {
             Npc.aScene_3301 = new Scene(4, 104, 104, Class40_Sub6.tile_height);
             for(int i = 0; i < 4; i++)
@@ -165,7 +161,7 @@ public class Class40_Sub3 extends Node {
         } else if(Class40_Sub5_Sub6.anInt2451 == 70) {
             if(IdentityKit.aClass6_Sub1_2609.method185((byte) 98)) {
                 Class38.method441(IdentityKit.aClass6_Sub1_2609);
-                UnderlayDefinition.method616((IdentityKit.aClass6_Sub1_2609), (byte) 85);
+                UnderlayDefinition.method616((IdentityKit.aClass6_Sub1_2609));
                 method977(3, IdentityKit.aClass6_Sub1_2609, UnderlayDefinition.aClass6_Sub1_2571);
                 method980(28987, UnderlayDefinition.aClass6_Sub1_2571, VertexNormal.lowMemory, IdentityKit.aClass6_Sub1_2609);
                 Class27.method357(UnderlayDefinition.aClass6_Sub1_2571, arg0 ^ ~0x2a85, IdentityKit.aClass6_Sub1_2609);
@@ -317,9 +313,7 @@ public class Class40_Sub3 extends Node {
     }
 
     public static UnderlayDefinition method531(byte arg0, int arg1) {
-
         UnderlayDefinition underlayDefinition = ((UnderlayDefinition) WallDecoration.aClass9_1247.get((long) arg1, (byte) 43));
-        anInt2022++;
         if(underlayDefinition != null)
             return underlayDefinition;
         byte[] is = Actor.aCacheIndex_3150.getFile(arg1, 1);
@@ -331,25 +325,20 @@ public class Class40_Sub3 extends Node {
             cmd_fpson = null;
         WallDecoration.aClass9_1247.put(-7208, (long) arg1, underlayDefinition);
         return underlayDefinition;
-
     }
 
     public static void method977(int arg0, CacheIndex arg1, CacheIndex arg2) {
-
         Class27.aCacheIndex_654 = arg2;
         if(arg0 == 3) {
             Class49.aCacheIndex_1150 = arg1;
             PacketBuffer.anInt2257 = Class49.aCacheIndex_1150.method190(3, (byte) 8);
         }
-
     }
 
     public static void method980(int arg0, CacheIndex arg1, boolean arg2, CacheIndex arg3) {
-
         aCacheIndex_2037 = arg3;
         Class35.aBoolean1734 = arg2;
         if(arg0 == 28987)
             RSString.aCacheIndex_1705 = arg1;
-
     }
 }

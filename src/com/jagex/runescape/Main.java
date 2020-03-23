@@ -485,11 +485,11 @@ public class Main extends RSApplet {
             if(IdentityKit.anInt2613 > 0) {
                 for(int i = 0; i < 256; i++) {
                     if(IdentityKit.anInt2613 > 768)
-                        Class42.anIntArray1013[i] = (UnderlayDefinition.method614((byte) -112, Class51.anIntArray1198[i], Class40_Sub5_Sub17_Sub6.anIntArray3248[i], -IdentityKit.anInt2613 + 1024));
+                        Class42.anIntArray1013[i] = (UnderlayDefinition.method614(Class51.anIntArray1198[i], Class40_Sub5_Sub17_Sub6.anIntArray3248[i], -IdentityKit.anInt2613 + 1024));
                     else if(IdentityKit.anInt2613 > 256)
                         Class42.anIntArray1013[i] = Class40_Sub5_Sub17_Sub6.anIntArray3248[i];
                     else
-                        Class42.anIntArray1013[i] = (UnderlayDefinition.method614((byte) -124, Class40_Sub5_Sub17_Sub6.anIntArray3248[i], Class51.anIntArray1198[i], -IdentityKit.anInt2613 + 256));
+                        Class42.anIntArray1013[i] = (UnderlayDefinition.method614(Class40_Sub5_Sub17_Sub6.anIntArray3248[i], Class51.anIntArray1198[i], -IdentityKit.anInt2613 + 256));
                 }
             } else {
                 System.arraycopy(Class51.anIntArray1198, 0, Class42.anIntArray1013, 0, 256);
@@ -500,9 +500,9 @@ public class Main extends RSApplet {
                     if(Class40_Sub5_Sub6.anInt2452 > 256)
                         Class42.anIntArray1013[i] = Renderable.anIntArray2865[i];
                     else
-                        Class42.anIntArray1013[i] = (UnderlayDefinition.method614((byte) 93, Renderable.anIntArray2865[i], Class51.anIntArray1198[i], -Class40_Sub5_Sub6.anInt2452 + 256));
+                        Class42.anIntArray1013[i] = (UnderlayDefinition.method614(Renderable.anIntArray2865[i], Class51.anIntArray1198[i], -Class40_Sub5_Sub6.anInt2452 + 256));
                 } else
-                    Class42.anIntArray1013[i] = (UnderlayDefinition.method614((byte) 81, Class51.anIntArray1198[i], Renderable.anIntArray2865[i], -Class40_Sub5_Sub6.anInt2452 + 1024));
+                    Class42.anIntArray1013[i] = (UnderlayDefinition.method614(Class51.anIntArray1198[i], Renderable.anIntArray2865[i], -Class40_Sub5_Sub6.anInt2452 + 1024));
             }
         }
         int i = 256;
@@ -555,7 +555,7 @@ public class Main extends RSApplet {
     public static void main(String[] arg0) {
         try {
             if(arg0.length != 6)
-                Class37.method432((byte) 37);
+                Class37.method432();
             Class13.worldid = Integer.parseInt(arg0[0]);
             if(!arg0[1].equals("live")) {
                 if(arg0[1].equals("office"))
@@ -563,7 +563,7 @@ public class Main extends RSApplet {
                 else if(arg0[1].equals("local"))
                     Class44.modewhere = 2;
                 else
-                    Class37.method432((byte) 118);
+                    Class37.method432();
             } else
                 Class44.modewhere = 0;
             if(arg0[2].equals("live"))
@@ -572,7 +572,7 @@ public class Main extends RSApplet {
                 if(arg0[2].equals("wip"))
                     Class44.modewhat = 2;
                 else
-                    Class37.method432((byte) 34);
+                    Class37.method432();
             } else
                 Class44.modewhat = 1;
             if(arg0[3].equals("lowmem"))
@@ -580,12 +580,12 @@ public class Main extends RSApplet {
             else if(arg0[3].equals("highmem"))
                 Class8.method210();
             else
-                Class37.method432((byte) 121);
+                Class37.method432();
             if(!arg0[4].equals("free")) {
                 if(arg0[4].equals("members"))
                     Class22.aBoolean541 = true;
                 else
-                    Class37.method432((byte) 93);
+                    Class37.method432();
             } else
                 Class22.aBoolean541 = false;
             if(arg0[5].equals("english")) {
@@ -594,7 +594,7 @@ public class Main extends RSApplet {
                 Class55.setGerman();
                 Class34.anInt848 = 1;
             } else {
-                Class37.method432((byte) 106);
+                Class37.method432();
             }
             Main main = new Main();
             main.openClientApplet("runescape", 13, 503, 32 + Class44.modewhat, InetAddress.getLocalHost(), 435, 765);
@@ -637,193 +637,13 @@ public class Main extends RSApplet {
         }
     }
 
-    public static void method44(int arg0) {
+    public static void method44() {
         Class51.aLong1203 = 0L;
         Class12.mouseCapturer.coord = 0;
         Class22_Sub2.duplicateClickCount = 0;
-        Class43.anInt1018 = 0;
-        UnderlayDefinition.anInt2580 = 0;
-        Class37.anInt866 = 0;
-        Class40_Sub3.anInt2034 = 0;
-        Class56.anInt1319 = 0;
-        SceneTile.anInt2041 = 0;
-        Class40_Sub5_Sub17_Sub3.anInt3061 = 0;
-        FloorDecoration.anInt599 = 0;
-        Class29.anInt677 = 0;
-        Class40_Sub6.anInt2115 = 0;
-        FloorDecoration.anInt596 = 0;
-        Class37.anInt859 = 0;
-        Actor.anInt3128 = 0;
-        Class34.anInt815 = 0;
-        Class40_Sub5_Sub17_Sub3.anInt3053 = 0;
-        Class40_Sub7.anInt2126 = 0;
-        Class40_Sub5_Sub17_Sub1.anInt2986 = 0;
-        WallDecoration.anInt1248 = 0;
-        Class40_Sub5_Sub11.anInt2632 = 0;
-        WallDecoration.anInt1250 = 0;
-        Class40_Sub6.anInt2100 = 0;
-        Class22_Sub1.anInt1839 = 0;
-        Class65.anInt1532 = 0;
-        Class40_Sub5_Sub17_Sub1.anInt2979 = 0;
-        FloorDecoration.anInt598 = 0;
-        Class22_Sub1.anInt1840 = 0;
-        Class40_Sub5_Sub11.anInt2619 = 0;
-        Class37.anInt864 = 0;
-        Class22_Sub1.anInt1862 = 0;
-        Class40_Sub5_Sub17_Sub6.anInt3232 = 0;
-        Class22_Sub1.anInt1859 = 0;
-        Class40_Sub3.anInt2029 = 0;
-        Class22_Sub1.anInt1843 = 0;
-        Actor.anInt3106 = 0;
-        Node.anInt927 = 0;
-        Class24.anInt579 = 0;
-        Actor.anInt3108 = 0;
-        Class40_Sub5_Sub17_Sub3.anInt3064 = 0;
-        Class44.anInt1045 = 0;
-        Class40_Sub2.anInt2006 = 0;
-        Class65.anInt1534 = 0;
-        FloorDecoration.anInt592 = 0;
-        ISAAC.anInt514 = 0;
-        Class24.anInt586 = 0;
-        Class40_Sub3.anInt2022 = 0;
-        Node.anInt971 = 0;
-        Class44.anInt1050 = 0;
-        Actor.anInt3146 = 0;
-        Class43.anInt1023 = 0;
-        Class56.anInt1310 = 0;
-        Class24.anInt585 = 0;
-        Class40_Sub6.anInt2108 = 0;
-        Class22.anInt536 = 0;
-        Actor.anInt3147 = 0;
-        Actor.anInt3076 = 0;
-        Class22_Sub1.anInt1854 = 0;
-        Class49.anInt1142 = 0;
-        Class37.anInt862 = 0;
-        Class51.anInt1192 = 0;
-        ISAAC.anInt520 = 0;
-        Class40_Sub5_Sub17_Sub1.anInt2994 = 0;
-        Class40_Sub2.anInt1999 = 0;
-        Class40_Sub5_Sub17_Sub1.anInt3007 = 0;
-        Actor.anInt3133 = 0;
-        ISAAC.anInt503 = 0;
-        Class34.anInt806 = 0;
-        Class39.anInt916 = 0;
-        Class34.anInt838 = 0;
-        Class40_Sub5_Sub13.anInt2756 = 0;
-        Class22_Sub1.anInt1853 = 0;
-        Node.anInt935 = 0;
-        Class37.anInt868 = 0;
-        Class56.anInt1326 = 0;
-        Class44.anInt1036 = 0;
-        Class44.anInt1044 = 0;
-        Class43.anInt1016 = 0;
-        Class40_Sub5_Sub17_Sub1.anInt2959 = 0;
-        Class40_Sub5_Sub17_Sub1.anInt2956 = 0;
-        Class56.anInt1322 = 0;
-        Class22.anInt531 = 0;
-        CacheIndex.anInt211 = 0;
-        CacheIndex.anInt263 = 0;
-        Class37.anInt870 = 0;
-        Class40_Sub2.anInt1992 = 0;
-        Class37.anInt863 = 0;
-        FloorDecoration.anInt597 = 0;
-        Class40_Sub7.anInt2122 = 0;
-        Actor.anInt3103 = 0;
-        Class51.anInt1191 = 0;
-        Class40_Sub5_Sub17_Sub3.anInt3052 = 0;
-        Class40_Sub5_Sub15.anInt2783 = 0;
-        Class29.anInt669 = 0;
-        Class22.anInt543 = 0;
-        Class22.anInt539 = 0;
-        Class34.anInt821 = 0;
-        UnderlayDefinition.anInt2569 = 0;
-        Class40_Sub5_Sub13.anInt2759 = 0;
-        Class22.anInt540 = 0;
-        CacheIndex.anInt234 = 0;
-        Node.anInt961 = 0;
-        Actor.anInt3084 = 0;
-        Class22_Sub1.anInt1842 = 0;
-        Node.anInt962 = 0;
-        Class40_Sub5_Sub17_Sub1.anInt2970 = 0;
-        Class29.anInt675 = 0;
-        Actor.anInt3142 = 0;
-        Class56.anInt1327 = 0;
-        Actor.anInt3121 = 0;
-        Class24.anInt584 = 0;
-        ISAAC.anInt500 = 0;
-        Class40_Sub5_Sub17_Sub1.anInt3008 = 0;
-        Class44.anInt1037 = 0;
-        Class40_Sub5_Sub17_Sub1.anInt3005 = 0;
-        SceneTile.anInt2040 = 0;
-        Class22_Sub1.anInt1850 = 0;
-        CacheIndex.anInt245 = 0;
-        CacheIndex.anInt240 = 0;
-        Class44.anInt1029 = 0;
-        Class40_Sub5_Sub13.anInt2761 = 0;
-        Class22_Sub1.anInt1837 = 0;
-        CacheIndex.anInt222 = 0;
-        Class24.anInt582 = 0;
-        SceneTile.anInt2052 = 0;
-        Class40_Sub5_Sub17_Sub6.anInt3234 = 0;
-        Class40_Sub5_Sub17_Sub3.anInt3070 = 0;
-        Class34.anInt836 = 0;
-        Class40_Sub2.anInt2004 = 0;
-        Class65.anInt1539 = 0;
-        WallDecoration.anInt1245 = 0;
-        CacheIndex.anInt237 = 0;
-        CollisionMap.anInt158 = 0;
-        Class40_Sub5_Sub11.anInt2624 = 0;
-        FloorDecoration.anInt604 = 0;
-        Class40_Sub5_Sub17_Sub1.anInt2978 = 0;
-        Class34.anInt800 = 0;
-        Class43.anInt1015 = 0;
-        Class56.anInt1325 = 0;
-        Actor.anInt3085 = 0;
-        Class40_Sub5_Sub13.anInt2755 = 0;
-        Class40_Sub2.anInt1998 = 0;
-        Class40_Sub5_Sub17_Sub6.anInt3241 = 0;
-        Class22_Sub1.anInt1869 = 0;
-        CacheIndex.anInt235 = 0;
-        Class51.anInt1189 = 0;
-        Class40_Sub5_Sub15.anInt2789 = 0;
-        SceneTile.anInt2056 = 0;
-        Class40_Sub5_Sub17_Sub6.anInt3252 = 0;
-        Class34.anInt807 = 0;
-        Class37.anInt861 = 0;
-        Class34.anInt803 = 0;
-        Class56.anInt1317 = 0;
-        Class40_Sub5_Sub15.anInt2785 = 0;
-        Class37.anInt865 = 0;
-        Class40_Sub5_Sub17_Sub3.anInt3057 = 0;
-        InteractiveObject.anInt467 = 0;
-        Class56.anInt1328 = 0;
-        Node.anInt928 = 0;
-        CacheIndex.anInt242 = 0;
-        Class56.anInt1312 = 0;
-        ISAAC.anInt499 = 0;
-        Class40_Sub5_Sub17_Sub6.anInt3251 = 0;
-        Class40_Sub5_Sub11.anInt2618 = 0;
-        Node.anInt970 = 0;
-        Class24.anInt576 = 0;
-        WallDecoration.anInt1256 = 0;
-        CacheIndex.anInt230 = 0;
-        UnderlayDefinition.anInt2572 = 0;
-        Class51.anInt1190 = 0;
-        Class29.anInt679 = 0;
-        Class56.anInt1311 = 0;
-        ISAAC.anInt501 = 0;
-        SceneTile.anInt2045 = 0;
-        Class29.anInt672 = 0;
-        Class51.anInt1193 = 0;
-        ISAAC.anInt507 = 0;
-        WallDecoration.anInt1258 = 0;
-        Class40_Sub2.anInt2009 = 0;
-        Class40_Sub5_Sub17_Sub3.anInt3063 = 0;
-        Class44.anInt1031 = arg0;
-        ISAAC.anInt504 = 0;
         Class35.aBoolean1735 = true;
         HashTable.aBoolean571 = true;
-        SubNode.method540(arg0 + 23721);
+        SubNode.method540();
         Cache.anInt324 = -1;
         Class4.menuOpen = false;
         RSString.anInt1690 = -1;
@@ -836,7 +656,7 @@ public class Main extends RSApplet {
         Class49.anInt1151 = -1;
         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
         ActorDefinition.anInt2394 = 0;
-        Class40_Sub5_Sub13.method650(true, 0);
+        Class40_Sub5_Sub13.method650(0);
         for(int i = 0; i < 100; i++)
             Actor.chatMessages[i] = null;
         Class8.anInt301 = 0;
@@ -872,19 +692,19 @@ public class Main extends RSApplet {
         Class45.aClass45_1064 = new Class45();
         Class40_Sub5_Sub17_Sub3.friendsCount = 0;
         Class12.friendListStatus = 0;
-        Class55.method958(Class48.anInt1138, arg0 ^ ~0x378d);
+        Class55.method958(Class48.anInt1138);
         Class48.anInt1138 = -1;
-        Class55.method958(Class43.openChatboxWidgetId, -14222);
+        Class55.method958(Class43.openChatboxWidgetId);
         Class43.openChatboxWidgetId = -1;
-        Class55.method958(HuffmanEncoding.openScreenWidgetId, -14222);
+        Class55.method958(HuffmanEncoding.openScreenWidgetId);
         HuffmanEncoding.openScreenWidgetId = -1;
-        Class55.method958(ActorDefinition.openFullScreenWidgetId, arg0 + -14222);
+        Class55.method958(ActorDefinition.openFullScreenWidgetId);
         ActorDefinition.openFullScreenWidgetId = -1;
-        Class55.method958(UnderlayDefinition.openSecondaryWidgetId, -14222);
+        Class55.method958(UnderlayDefinition.openSecondaryWidgetId);
         UnderlayDefinition.openSecondaryWidgetId = -1;
-        Class55.method958(Class29.tabAreaOverlayWidgetId, arg0 ^ ~0x378d);
+        Class55.method958(Class29.tabAreaOverlayWidgetId);
         Class29.tabAreaOverlayWidgetId = -1;
-        Class55.method958(GroundItemTile.anInt1376, -14222);
+        Class55.method958(GroundItemTile.anInt1376);
         Class40_Sub5_Sub15.inputType = 0;
         InteractiveObject.messagePromptRaised = false;
         Class4.menuOpen = false;
@@ -1222,40 +1042,40 @@ public class Main extends RSApplet {
         EntryTable.method871();
         HuffmanEncoding.method1022();
         Class59.method985();
-        Class5.method163((byte) -94);
-        Class40_Sub2.method524(-9019);
-        Class40_Sub5_Sub1.method542(-27934);
+        Class5.method163();
+        Class40_Sub2.method524();
+        Class40_Sub5_Sub1.method542();
         Class4.method159();
-        VertexNormal.method914(28065 + -28113);
+        VertexNormal.method914();
         Class40_Sub5_Sub17_Sub1.method761();
-        Class40_Sub5_Sub17_Sub6.method835((byte) 98);
-        Class12.method240((byte) -76);
-        Class43.method893((byte) 127);
-        Class61.method998(-128);
+        Class40_Sub5_Sub17_Sub6.method835();
+        Class12.method240();
+        Class43.method893();
+        Class61.method998();
         GameObject.method770();
-        Class40_Sub5_Sub17_Sub3.method780(24399);
-        Class40_Sub7.method839(28065 ^ 0x6d9e);
-        Class13.method248(28065 ^ 0x925e);
-        RSCanvas.method47((byte) -46);
-        Class38_Sub1.method449(28065 + -50848);
+        Class40_Sub5_Sub17_Sub3.method780();
+        Class40_Sub7.method839();
+        Class13.method248();
+        RSCanvas.method47();
+        Class38_Sub1.method449();
         Class68_Sub1.method1047();
         GroundItemTile.method981();
         Filter.method268();
         Class57.method974();
         Class41.method881();
-        Class40_Sub13.method877(0);
+        Class40_Sub13.method877();
         Class21.method289();
-        Class34.method418(7679);
-        Class40_Sub6.method837((byte) 59);
-        Class22.method298(120);
-        Class40_Sub5_Sub6.method582(true);
+        Class34.method418();
+        Class40_Sub6.method837();
+        Class22.method298();
+        Class40_Sub5_Sub6.method582();
         Class8_Sub1.method220();
         Class8_Sub1_Sub1.method228();
-        Class29.method370(8);
-        Class40_Sub11.method874((byte) 101);
-        Class22_Sub2.method320(39);
+        Class29.method370();
+        Class40_Sub11.method874();
+        Class22_Sub2.method320();
         Class14.method266();
-        Class22_Sub1.method310(77);
+        Class22_Sub1.method310();
     }
 
     public void method31(boolean arg0) {

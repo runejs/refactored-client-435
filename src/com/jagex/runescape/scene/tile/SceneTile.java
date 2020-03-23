@@ -17,23 +17,18 @@ import com.jagex.runescape.scene.InteractiveObject;
 import java.nio.charset.StandardCharsets;
 
 public class SceneTile extends Node {
-    public static int anInt2040;
-    public static int anInt2041;
     public static RSString aClass1_2042;
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_2043;
     public static RSString aClass1_2044;
-    public static int anInt2045;
     public static RSString aClass1_2046 = RSString.CreateString("Verbindung mit Freunde)2Server)3)3)3");
     public static RSString aClass1_2047;
     public static int[] anIntArray2048;
     public static int activeInterfaceType;
     public static RSString aClass1_2050;
     public static RSString aClass1_2051;
-    public static int anInt2052;
     public static RSString aClass1_2053;
     public static RSString aClass1_2054;
     public static RSString aClass1_2055;
-    public static int anInt2056;
     public static RSString aClass1_2057;
 
     static {
@@ -82,8 +77,6 @@ public class SceneTile extends Node {
     }
 
     public static RSString method532(byte arg0, Widget arg1, RSString arg2) {
-
-        anInt2045++;
         if(arg0 != 20)
             aClass1_2047 = null;
         if(arg2.contains(Class44.aClass1_1041) != -1) {
@@ -133,7 +126,6 @@ public class SceneTile extends Node {
             }
         }
         return arg2;
-
     }
 
     public static void drawOnMinimap(int arg0, int arg1, ImageRGB sprite) {
@@ -173,8 +165,6 @@ public class SceneTile extends Node {
     }
 
     public static RSString method536(int arg0, int arg1, int arg2) {
-
-        anInt2056++;
         if(arg2 >= -16)
             return null;
         int i = -arg1 + arg0;
@@ -195,12 +185,9 @@ public class SceneTile extends Node {
         if(i > 0)
             return Class37.aClass1_877;
         return KeyFocusListener.aClass1_1283;
-
     }
 
     public static void method537(int arg0) {
-
-        anInt2041++;
         if(ActorDefinition.anInt2394 >= 2 || Class8.anInt301 != 0 || Main.anInt1773 != 0) {
             RSString class1;
             if(Class8.anInt301 == 1 && ActorDefinition.anInt2394 < 2)
@@ -214,6 +201,5 @@ public class SceneTile extends Node {
             if(arg0 == 4)
                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawShadowedSeededAlphaString(class1, 4, 15, 16777215, true, Node.pulseCycle / 1000);
         }
-
     }
 }

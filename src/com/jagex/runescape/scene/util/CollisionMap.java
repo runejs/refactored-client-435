@@ -7,7 +7,6 @@ import static com.jagex.runescape.net.IncomingPackets.*;
 
 public class CollisionMap {
     public static int anInt141;
-    public static int anInt158;
     public static Object anObject162 = new Object();
     public static int anInt163 = -1;
     public static RSString aClass1_164 = RSString.CreateString("Konfig geladen)3");

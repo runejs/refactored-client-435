@@ -83,7 +83,7 @@ public abstract class Class22_Sub2 extends Class22 {
         return class40_sub5_sub14_sub4s;
     }
 
-    public static void method320(int arg0) {
+    public static void method320() {
         aClass1_1877 = null;
         aClass1_1885 = null;
         currentLoadingText = null;
@@ -97,8 +97,6 @@ public abstract class Class22_Sub2 extends Class22 {
         aClass1_1891 = null;
         aClass1_1876 = null;
         aClass1_1875 = null;
-        if(arg0 != 39)
-            duplicateClickCount = 56;
         aClass1_1889 = null;
         aClass1_1896 = null;
         password = null;

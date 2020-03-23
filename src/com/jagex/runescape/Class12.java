@@ -42,10 +42,7 @@ public class Class12 {
         aClass1_398 = RSString.CreateString("lila:");
     }
 
-    public static void method240(byte arg0) {
-
-        if(arg0 > -31)
-            method240((byte) -27);
+    public static void method240() {
         aClass1_391 = null;
         aClass1_386 = null;
         aSignlinkNode_394 = null;
@@ -62,6 +59,5 @@ public class Class12 {
         aClass1_393 = null;
         aClass1_392 = null;
         aClass1_397 = null;
-
     }
 }

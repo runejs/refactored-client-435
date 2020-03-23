@@ -11,11 +11,6 @@ import java.awt.event.KeyEvent;
 
 public class Class51 {
     public static int mapZoomOffset = 0;
-    public static int anInt1189;
-    public static int anInt1190;
-    public static int anInt1191;
-    public static int anInt1192;
-    public static int anInt1193;
     public static HashTable aClass23_1194 = new HashTable(4096);
     public static int anInt1195;
     public static RSString aClass1_1196;
@@ -71,7 +66,6 @@ public class Class51 {
     }
 
     public static void method940(int arg0, RSString arg1, boolean arg2, RSString arg3) {
-
         if(Class40_Sub5_Sub11.clearScreen) {
             Class40_Sub5_Sub11.clearScreen = false;
             ItemDefinition.method742(205);
@@ -85,7 +79,7 @@ public class Class51 {
             CacheIndex.aBoolean260 = true;
         }
         int i = 151;
-        Class65.method1018((byte) -83);
+        Class65.method1018();
         i -= 3;
         WallDecoration.fontNormal.method686(arg1, 257, i, arg0);
         WallDecoration.fontNormal.method686(arg1, 256, i + -1, 16777215);
@@ -98,17 +92,11 @@ public class Class51 {
             WallDecoration.fontNormal.method686(arg3, 257, i, 0);
             WallDecoration.fontNormal.method686(arg3, 256, i - 1, 16777215);
         }
-        anInt1193++;
         Player.method792(arg0 + 107);
-
     }
 
-    public static void method941(byte arg0) {
-
+    public static void method941() {
         CacheIndex.modelCache.method235((byte) 50);
-        if(arg0 == -93)
-            anInt1191++;
-
     }
 
     public static void method942(int arg1) {

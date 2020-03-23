@@ -19,16 +19,11 @@ import java.awt.*;
 
 public class WallDecoration {
     public static RSString aClass1_1243 = RSString.CreateString("@whi@ )4 ");
-    public static int anInt1245;
     public static RSString aClass1_1246;
     public static Cache aClass9_1247;
-    public static int anInt1248;
-    public static int anInt1250;
     public static RSString aClass1_1251;
     public static RSString aClass1_1255;
-    public static int anInt1256;
     public static int anInt1257 = 0;
-    public static int anInt1258;
     public static RSString aClass1_1259;
     public static RSString aClass1_1260;
     public static RSString aClass1_1263;
@@ -65,7 +60,6 @@ public class WallDecoration {
     public int hash = 0;
 
     public static void method949(byte arg0) {
-        anInt1256++;
         if(IncomingPackets.incomingPacket == 49) {
             int i = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             int i_0_ = OverlayDefinition.placementY + (i & 0x7);
@@ -289,7 +283,7 @@ public class WallDecoration {
                     }
                 } else {
                     if(arg0 >= -110)
-                        method952(32);
+                        method952();
                     if(IncomingPackets.incomingPacket == 19) { // update world item amount
                         int i = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
                         int i_80_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
@@ -336,13 +330,11 @@ public class WallDecoration {
             Class38_Sub1.anIntArray1916[PacketBuffer.currentSound] = 0;
             PacketBuffer.currentSound++;
         }
-        anInt1248++;
     }
 
     public static void method951(int arg0, TypeFace arg1, TypeFace arg2) {
         do {
             Class38.aClass68_887.method1046((byte) 90);
-            anInt1245++;
             if(Class51.anInt1197 == 0 || Class51.anInt1197 == 5) {
                 int i = 20;
                 arg1.method686(Class48.aClass1_1122, 180, 74 + -i, 16777215);

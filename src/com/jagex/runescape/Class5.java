@@ -52,17 +52,15 @@ public class Class5 {
         }
     }
 
-    public static void method163(byte arg0) {
+    public static void method163() {
         aClass1_196 = null;
-        if(arg0 == -94) {
-            aClass1_204 = null;
-            aClass1_206 = null;
-            itemSearchResultIds = null;
-            aClass22_189 = null;
-            aClass1_203 = null;
-            aClass1_193 = null;
-            anIntArray198 = null;
-        }
+        aClass1_204 = null;
+        aClass1_206 = null;
+        itemSearchResultIds = null;
+        aClass22_189 = null;
+        aClass1_203 = null;
+        aClass1_193 = null;
+        anIntArray198 = null;
     }
 
     public static void method164(int arg0) {
@@ -223,13 +221,12 @@ public class Class5 {
             Class45.aClass30_1082.method384(-94, i_16_ == 1, i_15_);
         }
         if(arg0 != 88)
-            method163((byte) 42);
+            method163();
         if(i == 324)
             Class45.aClass30_1082.method383(false, (byte) -110);
         if(i == 325)
             Class45.aClass30_1082.method383(true, (byte) -110);
         if(i == 326) {
-            Class22_Sub1.anInt1869++;
             Class32.packetBuffer.putPacket(231);
             Class45.aClass30_1082.method375(arg0 ^ 0x58, Class32.packetBuffer);
             return true;

@@ -7,10 +7,8 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.VertexNormal;
 
 public class Class40_Sub7 extends Node {
-    public static int anInt2122;
     public static Class68 aClass68_2123;
     public static RSString aClass1_2125;
-    public static int anInt2126;
     public static RSString aClass1_2127 = RSString.CreateString("Loading interfaces )2 ");
     public static RSString aClass1_2128 = RSString.CreateString("Fertigkeit)2");
     public static RSString aClass1_2129 = RSString.CreateString("Mem:");
@@ -26,24 +24,18 @@ public class Class40_Sub7 extends Node {
 
     public RSString aClass1_2124;
 
-    public static void method839(int arg0) {
-
+    public static void method839() {
         aClass68_2123 = null;
         aClass1_2132 = null;
         friendWorlds = null;
         aClass1_2128 = null;
         aClass1_2129 = null;
-        if(arg0 == 63) {
-            aClass1_2127 = null;
-            aClass1_2130 = null;
-            aClass1_2125 = null;
-        }
-
+        aClass1_2127 = null;
+        aClass1_2130 = null;
+        aClass1_2125 = null;
     }
 
     public static boolean method840(byte arg0, byte[] arg1, int arg2, int arg3) {
-
-        anInt2126++;
         boolean bool = true;
         Buffer class40_sub1 = new Buffer(arg1);
         int i = -1;
@@ -86,6 +78,5 @@ public class Class40_Sub7 extends Node {
             }
         }
         return bool;
-
     }
 }

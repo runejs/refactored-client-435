@@ -21,18 +21,9 @@ import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.Wall;
 
 public class Class37 {
-    public static int anInt859;
     public static RSString aClass1_860 = RSString.CreateString("Bitte benutzen Sie eine andere Welt)3");
-    public static int anInt861;
-    public static int anInt862;
-    public static int anInt863;
-    public static int anInt864;
-    public static int anInt865;
-    public static int anInt866;
     public static RSString aClass1_867 = RSString.CreateString("Ein kostenloses Spielkonto erstellen)3");
-    public static int anInt868;
     public static HashTable aClass23_869 = new HashTable(32);
-    public static int anInt870;
     public static boolean aBoolean871 = false;
     public static RSString aClass1_872 = RSString.CreateString("Ihre Nachricht an: ");
     public static RSString aClass1_873;
@@ -51,8 +42,6 @@ public class Class37 {
     }
 
     public static int method430(byte arg0, int arg1, int arg2, int arg3) {
-
-        anInt865++;
         int i = arg3 >> 7;
         int i_0_ = arg2 >> 7;
         if(i_0_ < 0 || i < 0 || i_0_ > 103 || i > 103)
@@ -64,19 +53,14 @@ public class Class37 {
         int i_3_ = (((-i_1_ + 128) * (Class40_Sub6.tile_height[i_2_][i_0_][i]) + (i_1_ * (Class40_Sub6.tile_height[i_2_][i_0_ + 1][i]))) >> 7);
         int i_4_ = arg3 & 0x7f;
         if(arg0 > -116)
-            method432((byte) -86);
+            method432();
         int i_5_ = ((i_1_ * (Class40_Sub6.tile_height[i_2_][1 + i_0_][1 + i]) + (Class40_Sub6.tile_height[i_2_][i_0_][1 + i] * (128 + -i_1_))) >> 7);
         return (128 + -i_4_) * i_3_ + (i_5_ * i_4_) >> 7;
-
     }
 
-    public static void method432(byte arg0) {
-
+    public static void method432() {
         System.out.println("Usage: worldid, [live/office/local], [live/rc/wip], [lowmem/highmem], [free/members], [english/german]");
         System.exit(1);
-        if(arg0 > 0)
-            anInt870++;
-
     }
 
     public static void method433() {
@@ -93,7 +77,6 @@ public class Class37 {
     }
 
     public static void method434(int arg0) {
-
         Class4.menuOpen = false;
         IncomingPackets.incomingPacket = -1;
         ActorDefinition.anInt2394 = 0;
@@ -104,7 +87,6 @@ public class Class37 {
         Class35.anInt1728 = 0;
         Class49.anInt1151 = -1;
         VarbitDefinition.anInt2366 = 0;
-        anInt868++;
         Class27.anInt658 = 0;
         Class40_Sub5_Sub15.anInt2782 = 0;
         IncomingPackets.incomingPacketBuffer.currentPosition = arg0;
@@ -117,13 +99,10 @@ public class Class37 {
                 Player.trackedNpcs[i].facingActorIndex = -1;
         }
         OverlayDefinition.method559(30);
-
     }
 
     public static void method435(boolean arg0) {
-
         RSCanvas.method45((byte) -106);
-        anInt864++;
         if(Class27.anInt658 == 2) {
             int[] is = Rasterizer.pixels;
             byte[] is_6_ = Class34.mapBack.imgPixels;
@@ -224,12 +203,9 @@ public class Class37 {
             if(arg0)
                 ActorDefinition.method574(4);
         }
-
     }
 
     public static void method436(int arg0) {
-
-        anInt862++;
         if(arg0 < 95)
             method436(25);
         for(Class40_Sub2 class40_sub2 = ((Class40_Sub2) Class40_Sub5_Sub1.aClass45_2268.method902((byte) -90)); class40_sub2 != null; class40_sub2 = (Class40_Sub2) Class40_Sub5_Sub1.aClass45_2268.method909(-4)) {
@@ -243,11 +219,9 @@ public class Class37 {
             }
         }
         Class40_Sub5_Sub1.aClass45_2268.method906(0);
-
     }
 
     public static void method437(int arg0, boolean arg1, int arg2, int arg3, int arg4, GameObjectDefinition arg5) {
-        anInt866++;
         Class40_Sub2 class40_sub2 = new Class40_Sub2();
         class40_sub2.anInt2000 = 128 * arg5.anInt2502;
         if(!arg1)
@@ -269,7 +243,7 @@ public class Class37 {
         class40_sub2.anInt1997 = arg5.ambientSoundId;
         if(arg5.configChangeDest != null) {
             class40_sub2.aGameObjectDefinition_2011 = arg5;
-            class40_sub2.method528(57);
+            class40_sub2.method528();
         }
         Class40_Sub5_Sub1.aClass45_2268.pushBack(class40_sub2, -126);
         if(class40_sub2.anIntArray2005 != null)
@@ -277,8 +251,6 @@ public class Class37 {
     }
 
     public static boolean method438(int arg0, int arg1, byte arg2) {
-
-        anInt859++;
         if(arg0 == 0 && arg1 == HashTable.anInt573)
             return true;
         if(arg0 == 1 && FloorDecoration.anInt614 == arg1)
@@ -288,6 +260,5 @@ public class Class37 {
         if(arg2 != 52)
             aClass1_860 = null;
         return false;
-
     }
 }

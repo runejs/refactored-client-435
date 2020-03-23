@@ -11,13 +11,9 @@ import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class43 {
     public static Cache aClass9_1014 = new Cache(64);
-    public static int anInt1015;
-    public static int anInt1016;
-    public static int anInt1018;
     public static RSString aClass1_1019 = RSString.CreateString("flash1:");
     public static int cameraYawOffset = 0;
     public static Class45 aClass45_1022 = new Class45();
-    public static int anInt1023;
     public static RSString aClass1_1024 = RSString.CreateString("backleft2");
     public static int bankInsertMode = 0;
     public static RSString aClass1_1026 = RSString.CreateString("Schlie-8en");
@@ -25,8 +21,6 @@ public class Class43 {
     public static int openChatboxWidgetId = -1;
 
     public static void method890(long arg0, int arg1) {
-
-        anInt1023++;
         if(arg0 > 0L) {
             int i = 81 / ((arg1 + 20) / 42);
             if(arg0 % 10L == 0L) {
@@ -35,7 +29,6 @@ public class Class43 {
             } else
                 ISAAC.method283(arg0, -103);
         }
-
     }
 
     public static void drawTabArea(int arg0) {
@@ -61,22 +54,16 @@ public class Class43 {
         Class55.method964(40);
     }
 
-    public static void method893(byte arg0) {
-
-        if(arg0 <= 104)
-            aClass1_1024 = null;
+    public static void method893() {
         aClass9_1014 = null;
         aClass1_1026 = null;
         aClass45_1022 = null;
         aClass1_1024 = null;
         aClass1_1019 = null;
         char_colon = null;
-
     }
 
     public static void method894(boolean arg0) {
-
-        anInt1018++;
         if(SceneTile.activeInterfaceType == 0) {
             Landscape.aClass1Array1184[0] = Class68.aClass1_1635;
             Class38.anIntArray884[0] = 1005;
@@ -161,6 +148,5 @@ public class Class43 {
                 HashTable.anInt573 = Class40_Sub5_Sub17_Sub3.anInt3065;
             }
         }
-
     }
 }

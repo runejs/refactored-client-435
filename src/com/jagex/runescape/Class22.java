@@ -16,18 +16,13 @@ import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public abstract class Class22 {
-    public static int anInt531;
     public static RSString aClass1_532;
     public static RSString aClass1_533;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array535;
-    public static int anInt536;
     public static int anInt537;
     public static RSString aClass1_538 = RSString.CreateString("Angreifen");
-    public static int anInt539;
-    public static int anInt540;
     public static boolean aBoolean541;
     public static RSString aClass1_542;
-    public static int anInt543;
     public static boolean accountFlagged;
     public static int anInt545;
     public static RSString aClass1_546;
@@ -47,22 +42,18 @@ public abstract class Class22 {
         aBooleanArray548 = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, false, false};
     }
 
-    public static void method298(int arg0) {
+    public static void method298() {
         aClass1_546 = null;
         aClass1_532 = null;
         aClass1_538 = null;
         aClass40_Sub5_Sub14_Sub2Array535 = null;
-        if(arg0 > 116) {
-            Player.trackedPlayerAppearanceCache = null;
-            aClass1_542 = null;
-            aClass1_533 = null;
-            aBooleanArray548 = null;
-        }
-
+        Player.trackedPlayerAppearanceCache = null;
+        aClass1_542 = null;
+        aClass1_533 = null;
+        aBooleanArray548 = null;
     }
 
     public static void method299(byte arg0, int arg1) {
-        anInt543++;
         int[] is = (Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.pixels);
         int i = is.length;
         for(int i_0_ = 0; i > i_0_; i_0_++)
@@ -127,12 +118,10 @@ public abstract class Class22 {
     public static void method305(byte arg0) {
         RSCanvas.aClass68_64.method1046((byte) 90);
         Class44.aClass40_Sub5_Sub14_Sub2_1047.drawImage(0, 0);
-        anInt539++;
         Class5.anIntArray198 = Rasterizer3D.method708(Class5.anIntArray198);
     }
 
     public static RSString method307(Buffer arg0, int arg1, int arg2) {
-        anInt536++;
         try {
             if(arg1 != -1)
                 aBooleanArray548 = null;
@@ -148,18 +137,14 @@ public abstract class Class22 {
         }
     }
 
-    public static void method308(int arg0) {
-        anInt540++;
-        int i = -39 % ((arg0 - 33) / 58);
+    public static void method308() {
         RSString.method56(2037, false, null, 0);
-
     }
 
     public static void method309(int arg0, int arg1) {
         do {
             AnimationSequence.anInt2480 = Node.pulseCycle;
             HuffmanEncoding.method1030((byte) 127);
-            anInt531++;
             int i = (Npc.method795((byte) -70, arg1).anInt2633);
             if(i != 0) {
                 int i_21_ = GroundItemTile.varbitmasks[arg1];

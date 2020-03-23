@@ -8,7 +8,6 @@ import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.GroundItemTile;
@@ -145,7 +144,6 @@ public class HuffmanEncoding {
                 if(arg4.combatLevel != arg0)
                     class1 = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{class1, (SceneTile.method536((Player.localPlayer.combatLevel), arg4.combatLevel, arg0 + -99)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(arg4.combatLevel, -1), Class51.aClass1_1199})));
                 if(Class8.anInt301 == 1) {
-                    Node.anInt927++;
                     OverlayDefinition.method558(arg3, Main.aClass1_1763, arg2, -501, arg1, 49, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Npc.aClass1_3295, SpotAnimDefinition.aClass1_2306, class1}))));
                 } else if(Main.anInt1773 == 1) {
                     if((0x2 & ItemDefinition.anInt2815) == 2) {
@@ -208,7 +206,7 @@ public class HuffmanEncoding {
 
     public static ImageRGB method1028(CacheIndex arg0, RSString arg1, byte arg2, RSString arg3) {
         int i = arg0.method183(0, arg1);
-        int i_13_ = arg0.method179(arg2 ^ ~0x6f, i, arg3);
+        int i_13_ = arg0.method179(i, arg3);
         if(arg2 != 21)
             chatTypes = null;
         return Class48.method927(i_13_, arg0, true, i);
@@ -325,7 +323,7 @@ public class HuffmanEncoding {
             method1030((byte) -24);
         for(Class40_Sub2 class40_sub2 = ((Class40_Sub2) Class40_Sub5_Sub1.aClass45_2268.method902((byte) -90)); class40_sub2 != null; class40_sub2 = (Class40_Sub2) Class40_Sub5_Sub1.aClass45_2268.method909(-4)) {
             if(class40_sub2.aGameObjectDefinition_2011 != null)
-                class40_sub2.method528(48);
+                class40_sub2.method528();
         }
     }
 

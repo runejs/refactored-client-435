@@ -121,13 +121,13 @@ public class AnimationSequence extends SubNode {
         Class40_Sub5_Sub15 class40_sub5_sub15_0_ = Class55.method960((byte) -99, arg3 >> 16);
         arg3 &= 0xffff;
         if(class40_sub5_sub15_0_ == null) {
-            Model class40_sub5_sub17_sub5 = arg0.method817(!class40_sub5_sub15.method737(arg2, 124));
+            Model class40_sub5_sub17_sub5 = arg0.method817(!class40_sub5_sub15.method737(arg2));
             class40_sub5_sub17_sub5.method825(class40_sub5_sub15, arg2);
             return class40_sub5_sub17_sub5;
         }
         if(arg4 != 63)
             return null;
-        Model class40_sub5_sub17_sub5 = arg0.method817(!class40_sub5_sub15.method737(arg2, 122) & !class40_sub5_sub15_0_.method737(arg3, 123));
+        Model class40_sub5_sub17_sub5 = arg0.method817(!class40_sub5_sub15.method737(arg2) & !class40_sub5_sub15_0_.method737(arg3));
         class40_sub5_sub17_sub5.method809(class40_sub5_sub15, arg2, class40_sub5_sub15_0_, arg3, anIntArray2473);
         return class40_sub5_sub17_sub5;
     }
@@ -157,7 +157,7 @@ public class AnimationSequence extends SubNode {
         if(class40_sub5_sub15 == null)
             return arg2.method817(true);
         arg3 &= 0x3;
-        Model class40_sub5_sub17_sub5 = arg2.method817(!class40_sub5_sub15.method737(arg0, 124));
+        Model class40_sub5_sub17_sub5 = arg2.method817(!class40_sub5_sub15.method737(arg0));
         if(arg3 == 1)
             class40_sub5_sub17_sub5.method824();
         else if(arg3 == 2)
@@ -245,7 +245,7 @@ public class AnimationSequence extends SubNode {
             return arg1.method806(true);
         if(arg0 != -87)
             return null;
-        Model class40_sub5_sub17_sub5 = arg1.method806(!class40_sub5_sub15.method737(arg2, 124));
+        Model class40_sub5_sub17_sub5 = arg1.method806(!class40_sub5_sub15.method737(arg2));
         class40_sub5_sub17_sub5.method825(class40_sub5_sub15, arg2);
         return class40_sub5_sub17_sub5;
     }
@@ -266,11 +266,11 @@ public class AnimationSequence extends SubNode {
             i_21_ &= 0xffff;
         }
         if(class40_sub5_sub15_20_ == null || i_21_ == 65535) {
-            Model class40_sub5_sub17_sub5 = arg1.method817(!class40_sub5_sub15.method737(i, 126));
+            Model class40_sub5_sub17_sub5 = arg1.method817(!class40_sub5_sub15.method737(i));
             class40_sub5_sub17_sub5.method825(class40_sub5_sub15, i);
             return class40_sub5_sub17_sub5;
         }
-        Model class40_sub5_sub17_sub5 = arg1.method817(!class40_sub5_sub15.method737(i, 121) & !class40_sub5_sub15_20_.method737(i_21_, 123));
+        Model class40_sub5_sub17_sub5 = arg1.method817(!class40_sub5_sub15.method737(i) & !class40_sub5_sub15_20_.method737(i_21_));
         class40_sub5_sub17_sub5.method825(class40_sub5_sub15, i);
         class40_sub5_sub17_sub5.method825(class40_sub5_sub15_20_, i_21_);
         return class40_sub5_sub17_sub5;
@@ -284,7 +284,7 @@ public class AnimationSequence extends SubNode {
         arg0 &= 0xffff;
         if(class40_sub5_sub15 == null)
             return arg1.method817(true);
-        Model class40_sub5_sub17_sub5 = arg1.method817(!class40_sub5_sub15.method737(arg0, 126));
+        Model class40_sub5_sub17_sub5 = arg1.method817(!class40_sub5_sub15.method737(arg0));
         class40_sub5_sub17_sub5.method825(class40_sub5_sub15, arg0);
         return class40_sub5_sub17_sub5;
     }

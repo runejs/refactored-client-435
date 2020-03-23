@@ -274,8 +274,6 @@ public class Widget extends SubNode {
     }
 
     public static void method891(Object[] arg0, int arg1, int arg2, Widget arg3, int arg4, boolean arg5) {
-
-        Class43.anInt1015++;
         int i = 0;
         Class40_Sub5_Sub1 class40_sub5_sub1 = IdentityKit.method626(((Integer) arg0[0]).intValue(), 76, 27);
         int[] is = class40_sub5_sub1.anIntArray2262;

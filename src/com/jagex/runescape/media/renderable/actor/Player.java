@@ -218,12 +218,10 @@ public class Player extends Actor {
                 mask += (IncomingPackets.incomingPacketBuffer.getUnsignedByte() << 8);
             parsePlayerUpdateMasks(player, mask, trackedPlayerIndex);
         }
-        Class40_Sub5_Sub11.anInt2632++;
     }
 
     public static void parsePlayerMovement() {
         IncomingPackets.incomingPacketBuffer.initBitAccess(127);
-        anInt3121++;
         int updateRequired = IncomingPackets.incomingPacketBuffer.getBits(1);
         if(updateRequired != 0) {
             int movementType = IncomingPackets.incomingPacketBuffer.getBits(2);
@@ -257,7 +255,6 @@ public class Player extends Actor {
     }
 
     public static void parseTrackedPlayerMovement() {
-        Class29.anInt679++;
         int trackedPlayerCount = IncomingPackets.incomingPacketBuffer.getBits(8);
         if(trackedPlayerCount < trackedPlayerIndex) {
             for(int i = trackedPlayerCount; trackedPlayerIndex > i; i++)
@@ -304,7 +301,6 @@ public class Player extends Actor {
     }
 
     public static void registerNewPlayers() {
-        Class34.anInt807++;
         while(IncomingPackets.incomingPacketBuffer.method510(125, IncomingPackets.incomingPacketSize) >= 11) {
             int newPlayerIndex = IncomingPackets.incomingPacketBuffer.getBits(11);
             if(newPlayerIndex == 2047)
@@ -342,7 +338,6 @@ public class Player extends Actor {
     public Model getRotatedModel(int arg0) {
         if(aClass30_3282 == null)
             return null;
-        int i = 71 % ((41 - arg0) / 47);
         AnimationSequence animationSequence = (playingAnimation == -1 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2));
         AnimationSequence animationSequence_0_ = ((anInt3077 != -1 && !aBoolean3287 && (idleAnimation != anInt3077 || animationSequence == null)) ? Class68_Sub1.method1050(anInt3077, 2) : null);
         Model class40_sub5_sub17_sub5 = aClass30_3282.getAnimatedModel(animationSequence, animationSequence_0_, anInt3116, anInt3104, (byte) -128);

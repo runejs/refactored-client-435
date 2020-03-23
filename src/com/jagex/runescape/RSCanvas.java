@@ -57,7 +57,7 @@ public class RSCanvas extends Canvas {
     public static void method45(byte arg0) {
         RSString.aClass68_1665.method1046((byte) 90);
         if(arg0 > -12)
-            method47((byte) 69);
+            method47();
     }
 
     public static void method46(int arg0) {
@@ -67,12 +67,12 @@ public class RSCanvas extends Canvas {
         Widget.method645((byte) -37);
         Class40_Sub5_Sub6.method586(64);
         Class8.method211();
-        CacheIndex.method188(true);
+        CacheIndex.method188();
         Class22_Sub2.method316(-11965);
         Class45.method907(-99);
         Class5.method167(1023);
-        Class51.method941((byte) -93);
-        Actor.method783(109);
+        Class51.method941();
+        Actor.method783();
         ((Class35) Rasterizer3D.anInterface3_2939).method422(arg0);
         Class17.aClass9_449.method235((byte) 96);
         FloorDecoration.aClass6_Sub1_605.method191(1120);
@@ -89,10 +89,8 @@ public class RSCanvas extends Canvas {
         Class56.aClass6_Sub1_1323.method191(1120);
     }
 
-    public static void method47(byte arg0) {
+    public static void method47() {
         aClass1_68 = null;
-        if(arg0 != -46)
-            method45((byte) -3);
         aClass1_70 = null;
         aByteArrayArray47 = null;
         aClass6_Sub1_48 = null;

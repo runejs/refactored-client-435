@@ -18,24 +18,16 @@ import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
 
 public class ISAAC {
-    public static int anInt499;
-    public static int anInt500;
-    public static int anInt501;
-    public static int anInt503;
-    public static int anInt504;
     public static boolean redrawTabArea = false;
     public static RSString aClass1_506 = RSString.CreateString("titlebutton");
-    public static int anInt507;
     public static int anInt509 = 0;
     public static Cache aClass9_510 = new Cache(64);
     public static boolean aBoolean512;
-    public static int anInt514;
     public static RSString aClass1_515 = RSString.CreateString(": ");
     public static Cache aClass9_516;
     public static RSString aClass1_517;
     public static RSString aClass1_518;
     public static boolean aBoolean519 = true;
-    public static int anInt520;
     public static Signlink aClass31_521;
     public static int anInt522;
     public static RSString aClass1_523;
@@ -65,17 +57,14 @@ public class ISAAC {
     public int anInt513;
 
     public ISAAC(int[] arg0) {
-
         anIntArray511 = new int[256];
         anIntArray508 = new int[256];
         for(int i = 0; arg0.length > i; i++)
             anIntArray508[i] = arg0[i];
         method287(true);
-
     }
 
     public static void method281(Scene arg0, int arg1, CollisionMap[] arg2) {
-
         for(int i = 0; i < 4; i++) {
             for(int i_0_ = 0; i_0_ < 104; i_0_++) {
                 for(int i_1_ = 0; i_1_ < 104; i_1_++) {
@@ -91,7 +80,6 @@ public class ISAAC {
         }
         Class40_Sub5_Sub15.anInt2791 += (int) (5.0 * Math.random()) + -2;
         Actor.anInt3151 += -2 + (int) (5.0 * Math.random());
-        anInt504++;
         if(Class40_Sub5_Sub15.anInt2791 < -8)
             Class40_Sub5_Sub15.anInt2791 = -8;
         if(Class40_Sub5_Sub15.anInt2791 > 8)
@@ -428,20 +416,15 @@ public class ISAAC {
     }
 
     public static void method283(long arg0, int arg1) {
-
         try {
             int i = -93 / ((-50 - arg1) / 45);
             Thread.sleep(arg0);
         } catch(InterruptedException interruptedexception) {
             /* empty */
         }
-        anInt507++;
-
     }
 
     public static void method285(byte arg0) {
-
-        anInt514++;
         if(arg0 != 118)
             aBoolean519 = true;
         for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = (Class40_Sub3) Class45.aClass45_1064.method909(-4)) {
@@ -451,22 +434,16 @@ public class ISAAC {
             } else
                 class40_sub3.method457(arg0 ^ ~0x76);
         }
-
     }
 
     public static int method288(byte arg0) {
-
         if(arg0 < 117)
             method288((byte) 125);
-        anInt500++;
         return 5;
-
     }
 
     public void method284(byte arg0) {
-
         anInt513 += ++anInt502;
-        anInt501++;
         int i = -29 % ((arg0 + 18) / 58);
         for(int i_98_ = 0; i_98_ < 256; i_98_++) {
             int i_99_ = anIntArray511[i_98_];
@@ -484,11 +461,9 @@ public class ISAAC {
             anIntArray511[i_98_] = i_100_ = anIntArray511[(HuffmanEncoding.method1021(i_99_, 1020) >> 2)] + (anInt498 + anInt513);
             anIntArray508[i_98_] = anInt513 = (i_99_ + anIntArray511[HuffmanEncoding.method1021((i_100_ >> -488567000 >> -1522276318), 255)]);
         }
-
     }
 
     public int rand() {
-        anInt520++;
         if(anInt497-- == 0) {
             method284((byte) -92);
             anInt497 = 255;
@@ -497,8 +472,6 @@ public class ISAAC {
     }
 
     public void method287(boolean arg0) {
-
-        anInt503++;
         int i_101_;
         int i_102_;
         int i_103_;
@@ -622,6 +595,5 @@ public class ISAAC {
         }
         method284((byte) -90);
         anInt497 = 256;
-
     }
 }

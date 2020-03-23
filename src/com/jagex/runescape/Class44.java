@@ -10,27 +10,20 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class44 implements Runnable {
-    public static int anInt1029;
     public static int[][] anIntArrayArray1030;
-    public static int anInt1031;
     public static RSString aClass1_1032;
     public static RSString aClass1_1033;
     public static RSString aClass1_1034;
     public static int modewhat;
-    public static int anInt1036;
-    public static int anInt1037;
     public static RSString aClass1_1038;
     public static byte[][] aByteArrayArray1039 = new byte[250][];
     public static int anInt1040;
     public static RSString aClass1_1041;
     public static int modewhere = 0;
     public static RSString aClass1_1043;
-    public static int anInt1044;
-    public static int anInt1045;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1047;
     public static int anInt1048;
     public static int anInt1049;
-    public static int anInt1050;
 
     static {
         anInt1040 = 256;
@@ -46,8 +39,6 @@ public class Class44 implements Runnable {
     }
 
     public static void addChatMessage(RSString name, RSString message, int type) {
-
-        anInt1029++;
         if(Class43.openChatboxWidgetId == -1)
             Class52.redrawChatbox = true;
         if(type == 0 && Class48.anInt1138 != -1) {
@@ -62,7 +53,6 @@ public class Class44 implements Runnable {
         HuffmanEncoding.chatTypes[0] = type;
         Renderable.chatPlayerNames[0] = name;
         Actor.chatMessages[0] = message;
-
     }
 
     public static void method896() {
@@ -78,7 +68,6 @@ public class Class44 implements Runnable {
     }
 
     public static void method898(int arg0, Actor arg1) {
-        anInt1037++;
         arg1.anInt3077 = arg1.idleAnimation;
         if(arg1.anInt3109 == 0)
             arg1.anInt3074 = 0;
@@ -179,8 +168,6 @@ public class Class44 implements Runnable {
     }
 
     public void run() {
-
-        anInt1031++;
         try {
             for(; ; ) {
                 Class40_Sub6 class40_sub6;
@@ -204,7 +191,7 @@ public class Class44 implements Runnable {
                             class40_sub6.method457(-1);
                         }
                     } else if(class40_sub6.anInt2112 == 1) {
-                        class40_sub6.aByteArray2102 = (class40_sub6.aClass56_2117.method969((int) class40_sub6.key, (byte) -111));
+                        class40_sub6.aByteArray2102 = (class40_sub6.aClass56_2117.method969((int) class40_sub6.key));
                         synchronized(RSCanvas.aClass45_53) {
                             IdentityKit.aClass45_2604.pushBack(class40_sub6, 115);
                         }
@@ -222,6 +209,5 @@ public class Class44 implements Runnable {
         } catch(Exception exception) {
             CacheIndex.method169(null, (byte) -127, exception);
         }
-
     }
 }

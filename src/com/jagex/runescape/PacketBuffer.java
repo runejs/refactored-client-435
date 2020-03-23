@@ -59,30 +59,30 @@ public class PacketBuffer extends Buffer {
     public static void method516(int arg0) {
         Class32.packetBuffer.putPacket(176);
         if(Class29.tabAreaOverlayWidgetId != -1) {
-            Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
+            Class55.method958(Class29.tabAreaOverlayWidgetId);
             CacheIndex_Sub1.anInt1819 = -1;
             IdentityKit.aBoolean2597 = true;
             ISAAC.redrawTabArea = true;
             Class29.tabAreaOverlayWidgetId = -1;
         }
         if(Class43.openChatboxWidgetId != -1) {
-            Class55.method958(Class43.openChatboxWidgetId, -14222);
+            Class55.method958(Class43.openChatboxWidgetId);
             CacheIndex_Sub1.anInt1819 = -1;
             Class52.redrawChatbox = true;
             Class43.openChatboxWidgetId = -1;
         }
         if(ActorDefinition.openFullScreenWidgetId != -1) {
-            Class55.method958(ActorDefinition.openFullScreenWidgetId, -14222);
+            Class55.method958(ActorDefinition.openFullScreenWidgetId);
             ActorDefinition.openFullScreenWidgetId = -1;
             OverlayDefinition.method559(30);
         }
         if(UnderlayDefinition.openSecondaryWidgetId != -1) {
-            Class55.method958(UnderlayDefinition.openSecondaryWidgetId, -14222);
+            Class55.method958(UnderlayDefinition.openSecondaryWidgetId);
             UnderlayDefinition.openSecondaryWidgetId = -1;
         }
         if(arg0 >= 92) {
             if(HuffmanEncoding.openScreenWidgetId != -1) {
-                Class55.method958(HuffmanEncoding.openScreenWidgetId, -14222);
+                Class55.method958(HuffmanEncoding.openScreenWidgetId);
                 HuffmanEncoding.openScreenWidgetId = -1;
                 CacheIndex_Sub1.anInt1819 = -1;
             }
@@ -92,7 +92,6 @@ public class PacketBuffer extends Buffer {
     public static void method517(int arg0, int arg1, int arg2) {
         if(arg2 == -9225) {
             Class32.packetBuffer.putPacket(132);
-            ISAAC.anInt499++;
             Class32.packetBuffer.putIntME2(arg1);
             Class32.packetBuffer.putShortLE(arg0);
         }

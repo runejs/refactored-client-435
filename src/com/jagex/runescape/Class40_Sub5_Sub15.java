@@ -18,13 +18,10 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public static int inputType;
     public static RSString aClass1_2781 = RSString.CreateString(" Sekunde(Xn(Y -Ubertragen)3");
     public static int anInt2782;
-    public static int anInt2783;
     public static boolean aBoolean2784;
-    public static int anInt2785;
     public static RSString aClass1_2786;
     public static RSString aClass1_2787;
     public static int[] anIntArray2788;
-    public static int anInt2789;
     public static RSString aClass1_2790;
     public static int anInt2791;
     public static RSString aClass1_2793;
@@ -45,7 +42,6 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public Class41[] aClass41Array2794;
 
     public Class40_Sub5_Sub15(CacheIndex arg0, CacheIndex arg1, int arg2, boolean arg3) {
-
         Class45 class45 = new Class45();
         int i = arg0.method190(arg2, (byte) 16);
         aClass41Array2794 = new Class41[i];
@@ -63,15 +59,14 @@ public class Class40_Sub5_Sub15 extends SubNode {
             if(class40_sub13 == null) {
                 byte[] is_4_;
                 if(!arg3)
-                    is_4_ = arg1.method182(0, -16, i_2_);
+                    is_4_ = arg1.method182(0, i_2_);
                 else
-                    is_4_ = arg1.method182(i_2_, -122, 0);
+                    is_4_ = arg1.method182(i_2_, 0);
                 class40_sub13 = new Class40_Sub13(i_2_, is_4_);
                 class45.pushBack(class40_sub13, 60);
             }
             aClass41Array2794[is[i_0_]] = new Class41(is_1_, class40_sub13);
         }
-
     }
 
     public static void method734() {
@@ -90,8 +85,6 @@ public class Class40_Sub5_Sub15 extends SubNode {
     }
 
     public static boolean method735(byte arg0, int arg1) {
-
-        anInt2783++;
         if(arg1 >= 97 && arg1 <= 122)
             return true;
         if(arg1 >= 65 && arg1 <= 90)
@@ -101,11 +94,9 @@ public class Class40_Sub5_Sub15 extends SubNode {
         if(arg0 != -37)
             method734();
         return false;
-
     }
 
     public static void method736(boolean arg0, Actor arg1) {
-        anInt2789++;
         arg1.aBoolean3105 = false;
         if(arg1.anInt3077 != -1) {
             AnimationSequence animationSequence = Class68_Sub1.method1050(arg1.anInt3077, 2);
@@ -177,11 +168,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
         }
     }
 
-    public boolean method737(int arg0, int arg1) {
-
-        int i = 104 % ((58 - arg1) / 61);
-        anInt2785++;
+    public boolean method737(int arg0) {
         return aClass41Array2794[arg0].aBoolean985;
-
     }
 }

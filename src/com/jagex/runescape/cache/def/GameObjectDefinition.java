@@ -117,7 +117,7 @@ public class GameObjectDefinition extends SubNode {
             if(arg3 > -91) {
                 chatboxScroll = -20;
             }
-            byte[] is_6_ = arg2.method969(arg1, (byte) 103);
+            byte[] is_6_ = arg2.method969(arg1);
             arg0.method198((byte) -115, true, is_6_, arg1, arg2);
         } else {
             arg0.method198((byte) -115, true, is, arg1, arg2);
@@ -164,7 +164,6 @@ public class GameObjectDefinition extends SubNode {
 
     public static GameObjectDefinition getDefinition(int arg0) {
         GameObjectDefinition gameObjectDefinition = ((GameObjectDefinition) GroundItemTile.aClass9_1364.get((long) arg0, (byte) 61));
-        SceneTile.anInt2040++;
         if(gameObjectDefinition != null) {
             return gameObjectDefinition;
         }

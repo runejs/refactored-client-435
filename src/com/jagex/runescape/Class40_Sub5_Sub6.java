@@ -42,7 +42,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
         aByteArray2441 = arg0;
     }
 
-    public static void method582(boolean arg0) {
+    public static void method582() {
         aClass1_2446 = null;
         requestcmd_duelreq = null;
         aClass1_2447 = null;
@@ -54,8 +54,6 @@ public class Class40_Sub5_Sub6 extends SubNode {
         aClass1_2457 = null;
         aClass1_2460 = null;
         aClass1_2440 = null;
-        if(!arg0)
-            method582(false);
     }
 
     public static boolean drawInterface(int arg0, int arg1, int arg2, byte arg3, int arg4, int arg5, int arg6) {
@@ -216,10 +214,9 @@ public class Class40_Sub5_Sub6 extends SubNode {
                     }
                     if(Class37.anInt876 == 2 && Class40_Sub5_Sub17_Sub3.friendsCount > 0) {
                         long l = HuffmanEncoding.aClass1_1565.method58((byte) 121);
-                        RSApplet.method28(l, 123);
+                        RSApplet.method28(l);
                     }
                     if(Class37.anInt876 == 3 && HuffmanEncoding.aClass1_1565.length() > 0) {
-                        Class44.anInt1044++;
                         Class32.packetBuffer.putPacket(207);
                         Class32.packetBuffer.putByte(0);
                         int i = Class32.packetBuffer.currentPosition;

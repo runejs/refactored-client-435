@@ -182,7 +182,7 @@ public class Npc extends Actor {
                 }
                 Class45.method910(-32322);
                 if(Class51.anInt1197 == 30 || Class51.anInt1197 == 35) {
-                    Class40_Sub5_Sub13.method652((byte) 0);
+                    Class40_Sub5_Sub13.method652();
                     Class4.processAudio();
                     Class35.anInt1728++;
                     if(Class35.anInt1728 > 750)
@@ -335,7 +335,7 @@ public class Npc extends Actor {
                         int i_21_ = Class17.method274(true);
                         if(i_20_ > 4500 && i_21_ > 4500) {
                             Class32.anInt771 = 250;
-                            Class40_Sub5_Sub13.method650(true, 4000);
+                            Class40_Sub5_Sub13.method650(4000);
                             Class32.packetBuffer.putPacket(216);
                         }
                         Player.anInt3264++;
@@ -383,7 +383,6 @@ public class Npc extends Actor {
                             Main.anInt1766 = -1;
                         if(Class22.anInt537 > 50) {
                             Class32.packetBuffer.putPacket(13);
-                            Class49.anInt1142++;
                         }
                         do {
                             try {
@@ -516,7 +515,6 @@ public class Npc extends Actor {
     }
 
     public static void parseTrackedNpcs() {
-        Class40_Sub5_Sub17_Sub1.anInt2959++;
         IncomingPackets.incomingPacketBuffer.initBitAccess(114);
         int trackedNpcCount = IncomingPackets.incomingPacketBuffer.getBits(8);
         if(Player.trackedNpcIndex > trackedNpcCount) {

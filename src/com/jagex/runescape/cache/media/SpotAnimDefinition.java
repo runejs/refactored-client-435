@@ -72,7 +72,7 @@ public class SpotAnimDefinition extends SubNode {
 
     public static IndexedImage[] method550(CacheIndex arg0, byte arg1, RSString arg2, RSString arg3) {
         int i = arg0.method183(0, arg2);
-        int i_1_ = arg0.method179(-118, i, arg3);
+        int i_1_ = arg0.method179(i, arg3);
         return Class24.method337(7729, arg0, i_1_, i);
     }
 
@@ -117,7 +117,7 @@ public class SpotAnimDefinition extends SubNode {
             if(Class40_Sub3.anInt2032 == 3) {
                 int i = Class40_Sub6.aClass64_2098.method1016(52);
                 if(i != 0) {
-                    Class27.method366(5, i);
+                    Class27.method366(i);
                     return;
                 }
                 IncomingPackets.incomingPacketBuffer.currentPosition = 0;
@@ -201,7 +201,7 @@ public class SpotAnimDefinition extends SubNode {
                             OverlayDefinition.anInt2321++;
                             Class40_Sub3.anInt2032 = 0;
                         } else {
-                            Class27.method366(5, i);
+                            Class27.method366(i);
                             return;
                         }
                     }
@@ -239,7 +239,7 @@ public class SpotAnimDefinition extends SubNode {
                     if((Class40_Sub6.aClass64_2098.method1014(-124) >= IncomingPackets.incomingPacketSize)) {
                         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                         Class40_Sub6.aClass64_2098.method1008(0, IncomingPackets.incomingPacketSize, -128, IncomingPackets.incomingPacketBuffer.buffer);
-                        Main.method44(0);
+                        Main.method44();
                         Class51.anInt1202 = -1;
                         FloorDecoration.method343(false, 5688);
                         IncomingPackets.incomingPacket = -1;
@@ -256,7 +256,7 @@ public class SpotAnimDefinition extends SubNode {
                             }
                             Class40_Sub3.anInt2032 = 0;
                         } else {
-                            Class27.method366(5, -3);
+                            Class27.method366(-3);
                         }
                     }
                 }
@@ -271,16 +271,14 @@ public class SpotAnimDefinition extends SubNode {
                 OverlayDefinition.anInt2321++;
                 Class40_Sub3.anInt2032 = 0;
             } else {
-                Class27.method366(5, -2);
+                Class27.method366(-2);
             }
         }
     }
 
     public static SpotAnimDefinition forId(int arg0, int arg1) {
-
         if(arg1 != 13)
             Class37.method436(-34);
-        Class37.anInt861++;
         SpotAnimDefinition spotAnimDefinition = ((SpotAnimDefinition) Class43.aClass9_1014.get((long) arg0, (byte) 59));
         if(spotAnimDefinition != null)
             return spotAnimDefinition;
@@ -291,11 +289,9 @@ public class SpotAnimDefinition extends SubNode {
             spotAnimDefinition.readValues(new Buffer(is));
         Class43.aClass9_1014.put(-7208, (long) arg0, spotAnimDefinition);
         return spotAnimDefinition;
-
     }
 
     public void readValue(int opcode, byte arg1, Buffer buffer) {
-
         if(arg1 > -100) {
             rotaton = -55;
         }
@@ -318,7 +314,6 @@ public class SpotAnimDefinition extends SubNode {
         } else if(opcode >= 50 && opcode < 60) {
             recolorToReplace[-50 + opcode] = buffer.getUnsignedShortBE();
         }
-
     }
 
     public Model method549(int arg0, int arg1) {

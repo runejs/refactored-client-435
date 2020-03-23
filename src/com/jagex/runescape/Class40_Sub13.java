@@ -185,21 +185,17 @@ public class Class40_Sub13 extends Node {
 
     }
 
-    public static void method877(int arg0) {
-
+    public static void method877() {
         aClass1_2188 = null;
         aClass1_2181 = null;
         aClass1_2179 = null;
         aClass1_2186 = null;
         aClass1_2185 = null;
         aClass1_2176 = null;
-        if(arg0 == 0) {
-            aClass1_2172 = null;
-            aClass1_2174 = null;
-            aClass1_2189 = null;
-            aClass1_2187 = null;
-        }
-
+        aClass1_2172 = null;
+        aClass1_2174 = null;
+        aClass1_2189 = null;
+        aClass1_2187 = null;
     }
 
     public static Widget method878(int arg0, Widget arg1) {

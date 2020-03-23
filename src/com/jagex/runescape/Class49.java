@@ -5,7 +5,6 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.media.renderable.Model;
 
 public class Class49 {
-    public static int anInt1142;
     public static RSString aClass1_1143;
     public static Cache aClass9_1145;
     public static RSString aClass1_1146 = RSString.CreateString("An");

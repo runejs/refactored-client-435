@@ -105,7 +105,7 @@ public class OverlayDefinition extends SubNode {
                 Class30.aClass64_717 = null;
             }
             if(Class51.anInt1197 == 25 || Class51.anInt1197 == 40) {
-                Class65.method1018((byte) 123);
+                Class65.method1018();
                 Rasterizer.resetPixels();
             }
             if(Class51.anInt1197 == 25) {

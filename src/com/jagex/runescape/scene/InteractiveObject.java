@@ -8,7 +8,6 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.media.renderable.Renderable;
 
 public class InteractiveObject {
-    public static int anInt467;
     public static Cache aClass9_470 = new Cache(10);
     public static int anInt475;
     public static RSString aClass1_478 = RSString.CreateString("(Z");
@@ -49,8 +48,6 @@ public class InteractiveObject {
     }
 
     public static RSString method279(byte[] arg0, boolean arg1, int arg2, int arg3) {
-
-        anInt467++;
         RSString class1 = new RSString();
         class1.length = 0;
         class1.chars = new byte[arg3];
@@ -61,7 +58,6 @@ public class InteractiveObject {
                 class1.chars[class1.length++] = arg0[i];
         }
         return class1;
-
     }
 
     public static void method280() {

@@ -11,19 +11,16 @@ public class Class40_Sub6 extends Node {
     public static RSString aClass1_2097;
     public static Class64 aClass64_2098;
     public static int[][][] tile_height;
-    public static int anInt2100;
     public static RSString aClass1_2101;
     public static RSString aClass1_2103;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2105;
     public static int[] anIntArray2106 = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
     public static int anInt2107;
-    public static int anInt2108;
     public static RSString aClass1_2109;
     public static int anInt2110;
     public static RSString aClass1_2111;
     public static int[] anIntArray2113;
     public static RSString aClass1_2114;
-    public static int anInt2115;
     public static Widget aWidget_2116;
     public static int anInt2118;
     public static int placementX;
@@ -51,7 +48,6 @@ public class Class40_Sub6 extends Node {
     public Class56 aClass56_2117;
 
     public static void method836(int arg0) {
-        anInt2108++;
         int i = 256;
         for(int i_0_ = 10; i_0_ < 117; i_0_++) {
             int i_1_ = (int) (Math.random() * 100.0);
@@ -101,8 +97,7 @@ public class Class40_Sub6 extends Node {
         }
     }
 
-    public static void method837(byte arg0) {
-
+    public static void method837() {
         aClass1_2111 = null;
         tile_height = null;
         aClass1_2114 = null;
@@ -115,15 +110,10 @@ public class Class40_Sub6 extends Node {
         aClass1_2101 = null;
         anIntArray2106 = null;
         aClass40_Sub5_Sub14_Sub2_2105 = null;
-        if(arg0 < 23)
-            method838(-95, -33L);
         anIntArray2113 = null;
-
     }
 
     public static void method838(int arg0, long arg1) {
-
-        anInt2100++;
         if(arg1 != 0) {
             for(int i = arg0; i < Class42.anInt1008; i++) {
                 if(WallDecoration.ignores[i] == arg1) {
@@ -137,6 +127,5 @@ public class Class40_Sub6 extends Node {
                 }
             }
         }
-
     }
 }

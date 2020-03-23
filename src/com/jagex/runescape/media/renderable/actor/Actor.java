@@ -19,26 +19,14 @@ import com.jagex.runescape.util.Signlink;
 import java.math.BigInteger;
 
 public abstract class Actor extends Renderable {
-    public static int anInt3076;
-    public static int anInt3084;
-    public static int anInt3085;
     public static RSString aClass1_3092 = RSString.CreateString("Loaded textures");
-    public static int anInt3103;
-    public static int anInt3106;
-    public static int anInt3108;
     public static int[] anIntArray3111;
     public static RSString aClass1_3114 = RSString.CreateString("Login limit exceeded)3");
     public static BigInteger rsaModulus;
-    public static int anInt3121;
     public static RSString aClass1_3124 = aClass1_3092;
-    public static int anInt3128;
-    public static int anInt3133;
     public static RSString aClass1_3138 = aClass1_3114;
-    public static int anInt3142;
     public static volatile int eventMouseButtonPressed = 0;
     public static CacheIndex aCacheIndex_3144;
-    public static int anInt3146;
-    public static int anInt3147;
     public static int[] anIntArray3149;
     public static CacheIndex aCacheIndex_3150;
     public static int anInt3151;
@@ -168,7 +156,6 @@ public abstract class Actor extends Renderable {
 
     public static void method781(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
         if(arg0 == 1850) {
-            anInt3084++;
             int i = Npc.aScene_3301.method122(arg1, arg2, arg5);
             if(i != 0) {
                 int i_0_ = Npc.aScene_3301.getArrangement(arg1, arg2, arg5, i);
@@ -299,14 +286,10 @@ public abstract class Actor extends Renderable {
         }
     }
 
-    public static void method783(int arg0) {
-
-        anInt3085++;
+    public static void method783() {
         Cache.aClass9_326.method235((byte) -126);
-        int i = 12 / ((-12 - arg0) / 50);
         WallDecoration.aClass9_1264.method235((byte) -96);
         Class67.aClass9_1582.method235((byte) 34);
-
     }
 
     public static void method788() {
@@ -330,8 +313,6 @@ public abstract class Actor extends Renderable {
     }
 
     public static void method789(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-
-        anInt3147++;
         if(arg3 != Class51.anInt1202 || arg2 != Class17.anInt448 || (Class40_Sub6.onBuildTimePlane != arg5 && VertexNormal.lowMemory)) {
             Class40_Sub6.onBuildTimePlane = arg5;
             Class51.anInt1202 = arg3;
@@ -418,12 +399,9 @@ public abstract class Actor extends Renderable {
             Class57.aClass45_1332.method906(0);
             Class43.aClass45_1022.method906(0);
         }
-
     }
 
     public void method782(int arg0, byte arg1, boolean arg2) {
-
-        anInt3103++;
         int i = pathY[0];
         int i_19_ = pathX[0];
         if(arg0 == 0) {
@@ -442,7 +420,7 @@ public abstract class Actor extends Renderable {
         if(arg0 == 1)
             i_19_++;
         if(arg1 != -96)
-            method783(125);
+            method783();
         if(arg0 == 2) {
             i_19_++;
             i++;
@@ -464,7 +442,6 @@ public abstract class Actor extends Renderable {
         pathY[0] = i;
         pathX[0] = i_19_;
         aBooleanArray3072[0] = arg2;
-
     }
 
     public boolean isVisible(int arg0) {
@@ -472,7 +449,6 @@ public abstract class Actor extends Renderable {
     }
 
     public void method785(int arg0, int arg1, int arg2, int arg3) {
-        anInt3142++;
         for(int i = 0; i < 4; i++) {
             if((arg1 >= anIntArray3136[i])) {
                 anIntArray3087[i] = arg2;
@@ -486,10 +462,8 @@ public abstract class Actor extends Renderable {
     }
 
     public void method787(int arg0, int arg1, boolean arg2, int arg3) {
-
         if(playingAnimation != -1 && Class68_Sub1.method1050(playingAnimation, 2).anInt2476 == 1)
             playingAnimation = -1;
-        anInt3076++;
         if(!arg2) {
             int i = -pathY[0] + arg3;
             int i_31_ = -pathX[0] + arg0;
@@ -516,14 +490,10 @@ public abstract class Actor extends Renderable {
         pathX[0] = arg0;
         anInt3098 = anInt3096 * 64 + pathY[0] * 128;
         anInt3089 = anInt3096 * 64 + pathX[0] * 128;
-
     }
 
     public void method790(int arg0) {
-
-        anInt3106++;
         anInt3094 = arg0;
         anInt3109 = 0;
-
     }
 }

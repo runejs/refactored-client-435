@@ -35,16 +35,12 @@ public class Class40_Sub5_Sub1 extends SubNode {
     public int anInt2271;
     public int[] anIntArray2272;
 
-    public static void method542(int arg0) {
-
+    public static void method542() {
         aClass1_2279 = null;
         aClass1_2277 = null;
-        if(arg0 == -27934) {
-            aClass1_2274 = null;
-            aClass68_2275 = null;
-            aClass45_2268 = null;
-        }
-
+        aClass1_2274 = null;
+        aClass68_2275 = null;
+        aClass45_2268 = null;
     }
 
     public static void method543(CollisionMap arg0, int arg1, int arg2, int arg3, int arg4, Scene arg5, int arg6, int arg7, int arg8, int arg9) {
@@ -274,12 +270,10 @@ public class Class40_Sub5_Sub1 extends SubNode {
             else
                 class1 = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{arg3.playerName, HashTable.aClass1_569, Class26.aClass1_619, HashTable.method334(arg3.skillLevel, -1), Class51.aClass1_1199})));
             if(Class8.anInt301 == 1) {
-                Node.anInt928++;
                 OverlayDefinition.method558(arg4, Main.aClass1_1763, arg0, -501, arg2, 22, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Npc.aClass1_3295, Class40_Sub5_Sub17_Sub3.aClass1_3068, class1}))));
             } else if(Main.anInt1773 == 1) {
                 if((ItemDefinition.anInt2815 & 0x8) == 8) {
                     OverlayDefinition.method558(arg4, Class38_Sub1.aClass1_1918, arg0, -501, arg2, 1, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub17_Sub3.aClass1_3068, class1}))));
-                    Class22_Sub1.anInt1850++;
                 }
             } else {
                 for(int i = 4; i >= 0; i--) {

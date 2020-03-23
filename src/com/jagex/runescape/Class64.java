@@ -108,12 +108,10 @@ public class Class64 implements Runnable {
                         continue;
                     if(Class8.anInt301 == 1) {
                         OverlayDefinition.method558(i_2_, Main.aClass1_1763, i_4_, -501, i_3_, 5, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{(Npc.aClass1_3295), Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.name}))));
-                        Class44.anInt1045++;
                     } else if(Main.anInt1773 != 1) {
                         RSString[] class1s = gameObjectDefinition.actions;
                         if(Class60.aBoolean1402)
                             class1s = Class56.method968(class1s, arg0);
-                        Class29.anInt675++;
                         if(class1s != null) {
                             for(int i_7_ = 4; i_7_ >= 0; i_7_--) {
                                 if(class1s[i_7_] != null) {
@@ -175,11 +173,9 @@ public class Class64 implements Runnable {
                         for(Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3 = ((Class40_Sub5_Sub17_Sub3) class45.method901((byte) -95)); class40_sub5_sub17_sub3 != null; class40_sub5_sub17_sub3 = ((Class40_Sub5_Sub17_Sub3) class45.method912(4))) {
                             ItemDefinition class40_sub5_sub16 = (ItemDefinition.forId(class40_sub5_sub17_sub3.anInt3067, 10));
                             if(Class8.anInt301 == 1) {
-                                Class44.anInt1036++;
                                 OverlayDefinition.method558(class40_sub5_sub17_sub3.anInt3067, Main.aClass1_1763, i_4_, -501, i_3_, 47, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{(Npc.aClass1_3295), Class5.aClass1_206, (class40_sub5_sub16.name)}))));
                             } else if(Main.anInt1773 != 1) {
                                 RSString[] class1s = class40_sub5_sub16.groundOptions;
-                                Class56.anInt1319++;
                                 if(Class60.aBoolean1402)
                                     class1s = Class56.method968(class1s, arg0);
                                 for(int i_15_ = 4; i_15_ >= 0; i_15_--) {

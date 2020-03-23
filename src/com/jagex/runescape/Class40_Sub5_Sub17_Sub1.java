@@ -25,35 +25,25 @@ import com.jagex.runescape.scene.util.CollisionMap;
 import java.awt.*;
 
 public class Class40_Sub5_Sub17_Sub1 extends Renderable {
-    public static int anInt2956;
-    public static int anInt2959;
     public static RSString aClass1_2963 = RSString.CreateString("Feb");
     public static RSString[] aClass1Array2964;
     public static RSString aClass1_2965;
     public static RSString aClass1_2966;
     public static RSString aClass1_2967;
     public static RSString aClass1_2969 = RSString.CreateString("Aug");
-    public static int anInt2970;
     public static boolean[] aBooleanArray2975;
     public static RSString aClass1_2977;
-    public static int anInt2978;
-    public static int anInt2979;
     public static int menuScreenArea;
     public static RSString aClass1_2985;
-    public static int anInt2986;
     public static int[] directions;
     public static RSString aClass1_2988;
     public static RSString aClass1_2990;
     public static RSString aClass1_2991;
-    public static int anInt2994;
     public static RSString aClass1_2998;
     public static int atInventoryInterfaceType;
     public static CacheIndex_Sub1 aClass6_Sub1_3000;
     public static RSString aClass1_3002;
     public static int anInt3004;
-    public static int anInt3005;
-    public static int anInt3007;
-    public static int anInt3008;
     public static RSString aClass1_3009;
     public static RSString aClass1_3010;
     public static RSString aClass1_3012;
@@ -138,7 +128,6 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             Class40_Sub5_Sub15.aCacheIndex_2779 = arg1;
             Widget.interfaces = (new Widget
                     [VarbitDefinition.aCacheIndex_2349.method175(-82)][]);
-            anInt2994++;
             Class68.aBooleanArray1629 = (new boolean
                     [VarbitDefinition.aCacheIndex_2349.method175(-116)]);
             if(arg3 == 90)
@@ -174,8 +163,6 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     }
 
     public static void method762(int arg0, Actor actor) {
-
-        anInt3008++;
         if(arg0 != (actor.anInt3113 ^ 0xffffffff)) {
             if(actor.facingActorIndex != -1 && actor.facingActorIndex < 32768) {
                 Npc class40_sub5_sub17_sub4_sub2 = (Player.trackedNpcs[actor.facingActorIndex]);
@@ -240,12 +227,9 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             } else
                 actor.anInt3097 = 0;
         }
-
     }
 
     public static void method763(Component arg0, byte arg1, CacheIndex arg2) {
-
-        anInt2970++;
         if(!SubNode.aBoolean2083) {
             FloorDecoration.aClass40_Sub5_Sub14_Sub2_593 = Class27.method359(Class27.aClass1_638, Class8.aClass1_305, arg2, (byte) -64);
             Class44.aClass40_Sub5_Sub14_Sub2_1047 = Class27.method359(RSString.aClass1_1716, Class8.aClass1_305, arg2, (byte) -64);
@@ -349,12 +333,9 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             }
             SubNode.aBoolean2083 = true;
         }
-
     }
 
     public static int method764(byte arg0) {
-
-        anInt2956++;
         int i = 3;
         if(Class26.anInt627 < 310) {
             int i_22_ = Class40_Sub5_Sub6.cameraY >> 7;
@@ -713,20 +694,15 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     }
 
     public Model getRotatedModel(int arg0) {
-
-        anInt2986++;
-        int i = 119 / ((arg0 - 41) / 47);
         SpotAnimDefinition spotAnimDefinition = SpotAnimDefinition.forId(anInt2962, 13);
         Model class40_sub5_sub17_sub5 = spotAnimDefinition.method549(anInt2982, 2);
         if(class40_sub5_sub17_sub5 == null)
             return null;
         class40_sub5_sub17_sub5.method804(anInt2976);
         return class40_sub5_sub17_sub5;
-
     }
 
     public void method765(int arg0, int arg1) {
-        anInt3007++;
         aBoolean2968 = true;
         aDouble2993 += (double) arg1 * aDouble3001;
         aDouble2980 += aDouble3011 * (double) arg1;
@@ -760,7 +736,6 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         aDouble3001 = ((double) arg2 - aDouble2993) / d;
         aDouble3011 = ((double) arg4 - aDouble2980) / d;
         aDouble2995 = Math.sqrt(aDouble3001 * aDouble3001 + aDouble3011 * aDouble3011);
-        anInt3005++;
         if(!aBoolean2968)
             aDouble2972 = -aDouble2995 * Math.tan((double) anInt2997 * 0.02454369);
         aDouble2996 = (-aDouble2992 + (double) arg3 - aDouble2972 * d) * 2.0 / (d * d);

@@ -17,7 +17,6 @@ public class Class39 implements Runnable {
     public static RSString aClass1_911 = RSString.CreateString("Spiel)2Fenster geladen)3");
     public static int anInt912 = 20;
     public static RSString aClass1_914 = RSString.CreateString("Stufe)2");
-    public static int anInt916;
     public static RSString aClass1_917 = RSString.CreateString(" from your ignore list first");
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_918;
     public static RSString str_ok = RSString.CreateString("Ok");
@@ -62,7 +61,6 @@ public class Class39 implements Runnable {
 
     public static boolean method452(Signlink arg0, byte arg1, boolean arg2) {
         RSCanvas.anInt54 = 20;
-        anInt916++;
         try {
             Class5.aClass22_189 = new Class22_Sub2_Sub1(); // Java Midi Based
             return true;

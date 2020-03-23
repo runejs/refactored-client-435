@@ -26,14 +26,8 @@ public class FloorDecoration {
     public static RSString STRING_CONNECTING_UPDATE_SERVER = RSString.CreateString("Connecting to update server");
     public static CRC32 aCRC32_590 = new CRC32();
     public static RSString aClass1_591;
-    public static int anInt592;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_593;
-    public static int anInt596;
-    public static int anInt597;
-    public static int anInt598;
-    public static int anInt599;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
-    public static int anInt604;
     public static CacheIndex_Sub1 aClass6_Sub1_605;
     public static RSString aClass1_606 = RSString.CreateString("Add friend");
     public static SignlinkNode aSignlinkNode_607;
@@ -57,12 +51,8 @@ public class FloorDecoration {
     public int y;
     public int z;
 
-    public static void method342(int arg0, int arg1, Actor arg2) {
-
+    public static void method342(int arg1, Actor arg2) {
         Class22_Sub1.method312(arg1, arg2.anInt3089, arg2.anInt3098, 4976905);
-        int i = -63 % ((41 - arg0) / 41);
-        anInt598++;
-
     }
 
     public static void method343(boolean arg0, int arg1) {
@@ -161,14 +151,11 @@ public class FloorDecoration {
             }
             Actor.method789(i_22_, -1000, i_23_, i_21_, i, i_24_);
         }
-        anInt596++;
         if(arg1 != 5688)
             aClass40_Sub5_Sub14_Sub4Array603 = null;
     }
 
     public static void method344(int arg0) {
-
-        anInt592++;
         if(SubNode.aBoolean2083) {
             Class5.anIntArray198 = null;
             SubNode.aBoolean2083 = false;
@@ -214,13 +201,10 @@ public class FloorDecoration {
                 Class44.aClass40_Sub5_Sub14_Sub2_1047 = null;
             }
         }
-
     }
 
     public static Object[] method345(byte arg0, Buffer arg1) {
-
         int i = arg1.getUnsignedByte();
-        anInt604++;
         if(i == 0)
             return null;
         Object[] objects = new Object[i];
@@ -234,12 +218,9 @@ public class FloorDecoration {
         if(arg0 != 89)
             aClass40_Sub9_608 = null;
         return objects;
-
     }
 
     public static boolean method346(byte arg0) {
-
-        anInt597++;
         long l = System.currentTimeMillis();
         int i = (int) (l - Class45.aLong1051);
         Class45.aLong1051 = l;
@@ -407,18 +388,14 @@ public class FloorDecoration {
             Class57.aClass64_1345 = null;
             return false;
         }
-
     }
 
     public static TypeFace method347(CacheIndex arg0, int arg1, RSString arg2, RSString arg3) {
-
-        anInt599++;
         int i = arg0.method183(0, arg3);
         if(arg1 != 255)
             aClass1_591 = null;
-        int i_50_ = arg0.method179(arg1 ^ 0xe3, i, arg2);
+        int i_50_ = arg0.method179(i, arg2);
         return TypeFace.getFont(arg0, i_50_, i);
-
     }
 
     public static void method348() {

@@ -161,13 +161,11 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
         return arg0 ^ arg1;
     }
 
-    public static void method28(long arg0, int arg1) {
+    public static void method28(long arg0) {
         if(arg0 != 0) {
             int i = 0;
-            int i_12_ = -18 % ((arg1 - 69) / 44);
             for(/**/; ((Class40_Sub5_Sub17_Sub3.friendsCount > i)); i++) {
                 if(Class59.aLongArray1397[i] == arg0) {
-                    WallDecoration.anInt1258++;
                     Class40_Sub5_Sub17_Sub3.friendsCount--;
                     ISAAC.redrawTabArea = true;
                     for(int i_13_ = i; i_13_ < Class40_Sub5_Sub17_Sub3.friendsCount; i_13_++) {
@@ -181,7 +179,6 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 }
             }
         }
-
     }
 
     public static int method32(int arg0, int arg1, int arg2, boolean arg3, int arg4) {

@@ -10,36 +10,25 @@ import com.jagex.runescape.util.SignlinkNode;
 import java.awt.*;
 
 public class Class22_Sub1 extends Class22 {
-    public static int anInt1837;
     public static RSString aClass1_1838;
-    public static int anInt1839;
-    public static int anInt1840;
     public static long aLong1841;
-    public static int anInt1842;
-    public static int anInt1843;
     public static RSString[] itemSearchResultNames = new RSString[100];
     public static RSString aClass1_1845;
     public static int[] anIntArray1846;
     public static int[] anIntArray1847;
     public static RSString aClass1_1848 = RSString.CreateString("This computers address has been blocked");
     public static RSString aClass1_1849;
-    public static int anInt1850;
     public static RSString aClass1_1851 = aClass1_1848;
-    public static int anInt1853;
-    public static int anInt1854;
     public static CacheIndex aCacheIndex_1855;
     public static int anInt1856;
     public static RSString aClass1_1857;
     public static RSString aClass1_1858;
-    public static int anInt1859;
     public static RSString aClass1_1861;
-    public static int anInt1862;
     public static RSString aClass1_1863;
     public static RSString aClass1_1864;
     public static RSString aClass1_1865;
     public static RSString aClass1_1867;
     public static RSString aClass1_1868;
-    public static int anInt1869;
     public static RSString aClass1_1870;
     public static RSString aClass1_1871;
     public static RSString aClass1_1873;
@@ -76,7 +65,7 @@ public class Class22_Sub1 extends Class22 {
 
     }
 
-    public static void method310(int arg0) {
+    public static void method310() {
         aClass1_1858 = null;
         aClass1_1861 = null;
         aClass1_1848 = null;
@@ -97,22 +86,14 @@ public class Class22_Sub1 extends Class22 {
         itemSearchResultNames = null;
         aClass1_1849 = null;
         aCacheIndex_1855 = null;
-        if(arg0 <= 56)
-            anInt1856 = 74;
     }
 
     public static void method311(byte arg0, Component arg1) {
-
-        anInt1854++;
         arg1.removeKeyListener(Class59.keyFocusListener);
         arg1.removeFocusListener(Class59.keyFocusListener);
-        int i = -46 % ((75 - arg0) / 35);
-
     }
 
     public static void method312(int arg0, int arg1, int arg2, int arg3) {
-
-        anInt1859++;
         if(arg2 < 128 || arg1 < 128 || arg2 > 13056 || arg1 > 13056) {
             Class44.anInt1048 = -1;
             ISAAC.anInt522 = -1;
@@ -141,12 +122,9 @@ public class Class22_Sub1 extends Class22 {
                 Class44.anInt1048 = (i << 9) / arg1 + 167;
             }
         }
-
     }
 
     public static void method313(int arg0) {
-
-        anInt1842++;
         for(int i = -1; Player.trackedPlayerIndex > i; i++) {
             int i_6_;
             if(i == -1)
@@ -160,7 +138,6 @@ public class Class22_Sub1 extends Class22 {
                     class40_sub5_sub17_sub4_sub1.forcedChatMessage = null;
             }
         }
-        int i = 18 % ((-46 - arg0) / 58);
         for(int i_7_ = 0; i_7_ < Player.trackedNpcIndex; i_7_++) {
             int i_8_ = Player.trackedNpcIndices[i_7_];
             Npc class40_sub5_sub17_sub4_sub2 = Player.trackedNpcs[i_8_];
@@ -170,20 +147,14 @@ public class Class22_Sub1 extends Class22 {
                     class40_sub5_sub17_sub4_sub2.forcedChatMessage = null;
             }
         }
-
     }
 
     public void method301(int arg0, int arg1) {
-
         if(arg1 != 0)
             aClass1_1848 = null;
-        anInt1862++;
-
     }
 
     public void method303(byte arg0) {
-
-        anInt1839++;
         if(aBoolean1835) {
             try {
                 Class28.method369(aClass31_1872.anApplet740, "midibox.src=\"c:/silence.mid\";", arg0 ^ 0x6f0f);
@@ -194,11 +165,9 @@ public class Class22_Sub1 extends Class22 {
         }
         if(arg0 == -96)
             aSignlinkNode_1836 = null;
-
     }
 
     public void method302(int arg0) {
-        anInt1853++;
         if(aSignlinkNode_1836 != null && aSignlinkNode_1836.anInt434 != 0) {
             if(aSignlinkNode_1836.anInt434 == 1) {
                 Class47 class47 = (Class47) aSignlinkNode_1836.value;
@@ -226,7 +195,6 @@ public class Class22_Sub1 extends Class22 {
     }
 
     public void method306(byte arg0) {
-        anInt1837++;
         if(arg0 < 100)
             aClass1_1861 = null;
     }
@@ -236,7 +204,6 @@ public class Class22_Sub1 extends Class22 {
             arg1 = 1;
         if(arg0 > -82)
             method306((byte) 27);
-        anInt1840++;
         int i = Class29.method372(120, arg1) + -arg2;
         if(aSignlinkNode_1836 == null) {
             do {
@@ -254,9 +221,7 @@ public class Class22_Sub1 extends Class22 {
     }
 
     public void method300(byte[] arg0, boolean arg1, int arg2, int arg3) {
-
         aSignlinkNode_1836 = aClass31_1872.method396(86);
-        anInt1843++;
         if(arg2 == -15910 && aSignlinkNode_1836 != null) {
             if(arg3 == 0)
                 arg3 = 1;
@@ -264,6 +229,5 @@ public class Class22_Sub1 extends Class22 {
             aByteArray1866 = arg0;
             aBoolean1852 = arg1;
         }
-
     }
 }

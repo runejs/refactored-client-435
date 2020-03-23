@@ -9,15 +9,12 @@ public class Node {
     public static RSString aClass1_924;
     public static RSString aClass1_925;
     public static int pulseCycle;
-    public static int anInt927;
-    public static int anInt928;
     public static RSString aClass1_929;
     public static RSString aClass1_930;
     public static RSString aClass1_931;
     public static RSString aClass1_932;
     public static RSString aClass1_933 = RSString.CreateString(" zuerst von Ihrer Ignorieren)2Liste(Q");
     public static RSString aClass1_934;
-    public static int anInt935;
     public static RSString aClass1_937;
     public static int anInt938;
     public static RSString aClass1_939 = RSString.CreateString("white:");
@@ -41,16 +38,12 @@ public class Node {
     public static RSString aClass1_958;
     public static RSString aClass1_959;
     public static RSString aClass1_960;
-    public static int anInt961;
-    public static int anInt962;
     public static RSString aClass1_963;
     public static RSString aClass1_964;
     public static RSString aClass1_965;
     public static RSString aClass1_966;
     public static RSString aClass1_967;
     public static RSString aClass1_969;
-    public static int anInt970;
-    public static int anInt971;
     public static RSString aClass1_972;
     public static RSString aClass1_973;
     public static RSString aClass1_974;
@@ -111,7 +104,6 @@ public class Node {
             for(int i_0_ = 0; i_0_ < 8; i_0_++)
                 Class40_Sub6.tile_height[arg1][arg3 + i][arg0 + i_0_] = 0;
         }
-        anInt935++;
         if(arg3 > 0) {
             for(int i = 1; i < 8; i++)
                 Class40_Sub6.tile_height[arg1][arg3][arg0 + i] = (Class40_Sub6.tile_height[arg1][-1 + arg3][i + arg0]);
@@ -129,7 +121,6 @@ public class Node {
     }
 
     public static void method456(int arg0, byte arg1) {
-        anInt961++;
         if(arg1 < 79)
             aClass1_965 = null;
         if(Class24.method340()) {
@@ -189,7 +180,6 @@ public class Node {
             arg0 = 10;
         if(arg2 < 83)
             method459(125, 22, (byte) 101);
-        anInt971++;
         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(arg1);
         if(arg0 >= 5 && arg0 <= 8)
             arg0 = 4;
@@ -197,7 +187,6 @@ public class Node {
     }
 
     public boolean method454(boolean arg0) {
-        anInt962++;
         if(aClass40_968 == null)
             return false;
         if(arg0)
@@ -206,7 +195,6 @@ public class Node {
     }
 
     public void method457(int arg0) {
-        anInt970++;
         if(aClass40_968 != null) {
             aClass40_968.aClass40_950 = aClass40_950;
             if(arg0 == -1) {
@@ -215,6 +203,5 @@ public class Node {
                 aClass40_950 = null;
             }
         }
-
     }
 }

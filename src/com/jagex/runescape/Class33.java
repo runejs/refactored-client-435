@@ -28,11 +28,10 @@ public class Class33 {
 
     public static synchronized void method402(boolean arg0) {
         if(Class24.method340()) {
-            Class22.method308(-110);
+            Class22.method308();
             Class26.aBoolean618 = arg0;
             Class22_Sub1.aCacheIndex_1855 = null;
         }
-
     }
 
     public static synchronized void method403(int arg0, boolean arg1, int arg2, int arg3, CacheIndex arg4, int arg5, int arg6, boolean arg7) {
@@ -47,7 +46,6 @@ public class Class33 {
             Class40_Sub6.anInt2110 = arg6;
             Class8.anInt289 = arg3;
         }
-
     }
 
     public static void method404(byte arg0) {
@@ -72,12 +70,12 @@ public class Class33 {
                     if(Player.trackedPlayerIndex <= i) {
                         ActorDefinition class40_sub5_sub5 = (((Npc) actor).actorDefinition);
                         if((class40_sub5_sub5.headIcon >= 0) && (class40_sub5_sub5.headIcon < (Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204).length)) {
-                            FloorDecoration.method342(-127, (actor.anInt3117) + 15, actor);
+                            FloorDecoration.method342((actor.anInt3117) + 15, actor);
                             if(ISAAC.anInt522 > -1)
                                 Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204[class40_sub5_sub5.headIcon].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -30);
                         }
                         if(Player.anInt3288 == 1 && (HuffmanEncoding.anInt1545 == (Player.trackedNpcIndices[-Player.trackedPlayerIndex + i])) && Node.pulseCycle % 20 < 10) {
-                            FloorDecoration.method342(107, 15 + (actor.anInt3117), actor);
+                            FloorDecoration.method342(15 + (actor.anInt3117), actor);
                             if(ISAAC.anInt522 > -1)
                                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, Class44.anInt1048 + -28);
                         }
@@ -85,7 +83,7 @@ public class Class33 {
                         Player class40_sub5_sub17_sub4_sub1 = ((Player) actor);
                         int i_0_ = 30;
                         if(class40_sub5_sub17_sub4_sub1.isSkulled != -1 || (class40_sub5_sub17_sub4_sub1.headIcon != -1)) {
-                            FloorDecoration.method342(-44, 15 + (actor.anInt3117), actor);
+                            FloorDecoration.method342(15 + (actor.anInt3117), actor);
                             if(ISAAC.anInt522 > -1) {
                                 if(class40_sub5_sub17_sub4_sub1.isSkulled != -1) {
                                     FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603[(class40_sub5_sub17_sub4_sub1.isSkulled)].drawImage(ISAAC.anInt522 - 12, Class44.anInt1048 - i_0_);
@@ -98,13 +96,13 @@ public class Class33 {
                             }
                         }
                         if(i >= 0 && Player.anInt3288 == 10 && (Class68.anInt1623 == Player.trackedPlayerIndices[i])) {
-                            FloorDecoration.method342(87, (actor.anInt3117) + 15, actor);
+                            FloorDecoration.method342((actor.anInt3117) + 15, actor);
                             if(ISAAC.anInt522 > -1)
                                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[1].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
                         }
                     }
                     if(actor.forcedChatMessage != null && (i >= Player.trackedPlayerIndex || Class35.publicChatMode == 0 || Class35.publicChatMode == 3 || (Class35.publicChatMode == 1 && (Class40_Sub2.hasFriend((((Player) actor).playerName), arg0 ^ 0x7f74))))) {
-                        FloorDecoration.method342(88, (actor.anInt3117), actor);
+                        FloorDecoration.method342((actor.anInt3117), actor);
                         if(ISAAC.anInt522 > -1 && 50 > Class32.anInt770) {
                             Class30.anIntArray680[Class32.anInt770] = ((Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getStringWidth(actor.forcedChatMessage)) / 2);
                             Class30.anIntArray688[Class32.anInt770] = (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.characterDefaultHeight);
@@ -118,7 +116,7 @@ public class Class33 {
                         }
                     }
                     if((Node.pulseCycle < actor.anInt3139)) {
-                        FloorDecoration.method342(109, (actor.anInt3117) + 15, actor);
+                        FloorDecoration.method342((actor.anInt3117) + 15, actor);
                         if(ISAAC.anInt522 > -1) {
                             int i_1_ = (30 * actor.anInt3130 / actor.anInt3101);
                             if(i_1_ > 30)
@@ -129,7 +127,7 @@ public class Class33 {
                     }
                     for(int i_2_ = 0; i_2_ < 4; i_2_++) {
                         if(Node.pulseCycle < (actor.anIntArray3136[i_2_])) {
-                            FloorDecoration.method342(99, (actor.anInt3117) / 2, actor);
+                            FloorDecoration.method342((actor.anInt3117) / 2, actor);
                             if(ISAAC.anInt522 > -1) {
                                 if(i_2_ == 1)
                                     Class44.anInt1048 -= 20;
@@ -251,7 +249,6 @@ public class Class33 {
                 }
             }
         }
-
     }
 
     public static synchronized void method405(int arg0, int arg1) {
@@ -274,7 +271,6 @@ public class Class33 {
             Class32.packetBuffer.putPacket(9);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
-            Class56.anInt1327++;
         }
         if(arg1 == 3) {
             Class32.packetBuffer.putPacket(193);
@@ -305,7 +301,6 @@ public class Class33 {
             Class32.packetBuffer.putPacket(130);
             Class32.packetBuffer.putIntBE(arg2);
             Class32.packetBuffer.putShortBE(arg0);
-            Class40_Sub5_Sub17_Sub1.anInt2979++;
         }
         if(arg1 == 9) {
             Class32.packetBuffer.putPacket(157);
@@ -377,7 +372,7 @@ public class Class33 {
             if(arg3 != 66)
                 method412(false, null, 120, (byte) -44, null, 71, null, -13);
             int i = arg1.method183(0, arg4);
-            int i_16_ = arg1.method179(arg3 + -176, i, arg6);
+            int i_16_ = arg1.method179(i, arg6);
             method403(arg7, true, arg5, i, arg1, i_16_, arg2, arg0);
         }
     }

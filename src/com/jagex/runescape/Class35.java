@@ -74,16 +74,16 @@ public class Class35 implements Interface3 {
         boolean bool = true;
         int[] is = arg0.method192(arg2, true);
         for(int i = 0; is.length > i; i++) {
-            byte[] is_0_ = arg0.method182(is[i], -114, arg2);
+            byte[] is_0_ = arg0.method182(is[i], arg2);
             if(is_0_ == null)
                 bool = false;
             else {
                 int i_1_ = 0xff & is_0_[1] | (0xff & is_0_[0]) << 8;
                 byte[] is_2_;
                 if(arg4)
-                    is_2_ = arg3.method182(i_1_, -122, 0);
+                    is_2_ = arg3.method182(i_1_, 0);
                 else
-                    is_2_ = arg3.method182(0, -123, i_1_);
+                    is_2_ = arg3.method182(0, i_1_);
                 if(is_2_ == null)
                     bool = false;
             }

@@ -59,7 +59,6 @@ public class Class40_Sub11 extends Node {
                     if(arg1 > i_2_ - 14 && arg1 <= i_2_ && !(class1.equals((Player.localPlayer.playerName)))) {
                         if(InteractiveObject.playerRights >= 1) {
                             OverlayDefinition.method558(0, Class22_Sub1.aClass1_1865, 0, -501, 0, 28, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class26.aClass1_620, class1})));
-                            CollisionMap.anInt158++;
                         }
                         OverlayDefinition.method558(0, Class38.aClass1_885, 0, -501, 0, 51, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class26.aClass1_620, class1})));
                         OverlayDefinition.method558(0, FloorDecoration.aClass1_591, 0, -501, 0, 45, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class26.aClass1_620, class1})));
@@ -70,7 +69,6 @@ public class Class40_Sub11 extends Node {
                     i++;
                     if(arg1 > -14 + i_2_ && (arg1 <= i_2_)) {
                         if(InteractiveObject.playerRights >= 1) {
-                            CollisionMap.anInt158++;
                             OverlayDefinition.method558(0, Class22_Sub1.aClass1_1865, 0, -501, 0, 28, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class26.aClass1_620, class1})));
                         }
                         OverlayDefinition.method558(0, Class38.aClass1_885, 0, -501, 0, 51, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class26.aClass1_620, class1})));
@@ -88,7 +86,6 @@ public class Class40_Sub11 extends Node {
                 if(i_1_ == 8 && (ItemDefinition.anInt2797 == 0 || ((ItemDefinition.anInt2797 == 1) && Class40_Sub2.hasFriend(class1, -32624)))) {
                     if((i_2_ + -14 < arg1) && (arg1 <= i_2_)) {
                         OverlayDefinition.method558(0, GameObject.aClass1_3039, 0, -501, 0, 46, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class26.aClass1_620, class1})));
-                        Actor.anInt3133++;
                     }
                     i++;
                 }
@@ -96,12 +93,10 @@ public class Class40_Sub11 extends Node {
         }
     }
 
-    public static void method874(byte arg0) {
+    public static void method874() {
         aClass1Array2153 = null;
         aCacheIndex_2162 = null;
         cmd_fpsoff = null;
-        if(arg0 != 101)
-            method873(-35, -55);
         aClass1_2161 = null;
         friendUsernames = null;
     }

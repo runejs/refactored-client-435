@@ -43,9 +43,7 @@ public class SubNode extends Node {
         return class40_sub5_sub14_sub2;
     }
 
-    public static void method540(int arg0) {
-        if(arg0 != 23721)
-            aClass1_2095 = null;
+    public static void method540() {
         KeyFocusListener.aClass45_1278 = new Class45();
     }
 

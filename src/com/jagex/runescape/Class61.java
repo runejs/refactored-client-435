@@ -100,7 +100,7 @@ public class Class61 {
 
     }
 
-    public static void method998(int arg0) {
+    public static void method998() {
         anIntArrayArray1435 = null;
         aClass1_1446 = null;
         anIntArray1445 = null;
@@ -110,8 +110,6 @@ public class Class61 {
         aClass1_1426 = null;
         aClass1_1437 = null;
         aClass1_1421 = null;
-        if(arg0 > -8)
-            packetBuffer = null;
         aClass1_1432 = null;
         aClass1_1428 = null;
         aClass1_1440 = null;

@@ -11,20 +11,13 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class34 {
-    public static int anInt800;
-    public static int anInt803;
     public static HashTable aClass23_805;
     public static RSString aClass1_804 = RSString.CreateString("m-Ochte mit Ihnen handeln)3");
-    public static int anInt806;
-    public static int anInt807;
     public static int anInt813;
-    public static int anInt815;
     public static RSString aClass1_817;
     public static int anInt821;
     public static RSString aClass1_826 = RSString.CreateString("Click to continue");
     public static RSString aClass1_829 = aClass1_826;
-    public static int anInt836;
-    public static int anInt838;
     public static HashTable aClass23_841;
     public static RSString aClass1_844;
     public static int anInt848;
@@ -98,19 +91,13 @@ public class Class34 {
     }
 
     public static int method415(byte arg0, int arg1, int arg2) {
-
-        anInt815++;
         long l = (long) ((arg1 << 16) + arg2);
         if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null || PacketBuffer.aClass40_Sub5_Sub13_2250.key != l)
             return 0;
-        int i = 34 % ((arg0 + 46) / 45);
         return 1 + (Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition * 99 / ((Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer).length + -(PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758)));
-
     }
 
     public static boolean method416(byte arg0) {
-
-        anInt836++;
         synchronized(Class59.keyFocusListener) {
             if(Class59.anInt1389 == Class52.anInt1214)
                 return false;
@@ -121,12 +108,9 @@ public class Class34 {
             Class59.anInt1389 = Class59.anInt1389 + 1 & 0x7f;
             return true;
         }
-
     }
 
     public static VarbitDefinition method417(int arg0, int arg1) {
-
-        anInt800++;
         if(arg0 != 0)
             return null;
         VarbitDefinition varbitDefinition = ((VarbitDefinition) Class57.aClass9_1331.get((long) arg1, (byte) 111));
@@ -138,14 +122,10 @@ public class Class34 {
             varbitDefinition.method562(0, new Buffer(is));
         Class57.aClass9_1331.put(-7208, (long) arg1, varbitDefinition);
         return varbitDefinition;
-
     }
 
-    public static void method418(int arg0) {
-
+    public static void method418() {
         aClass1_826 = null;
-        if(arg0 != 7679)
-            method420(-90, 8, false);
         aClass1_817 = null;
         aClass1_804 = null;
         aClass1_844 = null;
@@ -156,12 +136,9 @@ public class Class34 {
         aClass23_805 = null;
         aClass1_850 = null;
         mapBack = null;
-
     }
 
     public static int method420(int arg0, int arg1, boolean arg2) {
-
-        anInt806++;
         if(arg0 == -2)
             return 12345678;
         if(arg0 == -1) {
@@ -180,6 +157,5 @@ public class Class34 {
         else if(arg1 > 126)
             arg1 = 126;
         return (0xff80 & arg0) + arg1;
-
     }
 }

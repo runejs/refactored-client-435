@@ -28,8 +28,7 @@ public class VertexNormal {
     public int z;
     public int magnitude;
 
-    public static void method914(int arg0) {
-
+    public static void method914() {
         aClass1_1115 = null;
         aClass1_1114 = null;
         aClass1_1109 = null;
@@ -44,6 +43,5 @@ public class VertexNormal {
         aClass1_1113 = null;
         aClass1_1097 = null;
         aClass6_Sub1_1104 = null;
-        int i = 49 / ((arg0 - 2) / 50);
     }
 }

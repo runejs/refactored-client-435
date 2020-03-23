@@ -13,11 +13,7 @@ import java.awt.*;
 public class Class40_Sub5_Sub13 extends SubNode {
     public static Buffer aClass40_Sub1_2752;
     public static IndexedImage[] moderatorIcon;
-    public static int anInt2755;
-    public static int anInt2756;
     public static long[] aLongArray2757 = new long[100];
-    public static int anInt2759;
-    public static int anInt2761;
     public static Model[] aClass40_Sub5_Sub17_Sub5Array2762 = new Model[4];
     public static int[] anIntArray2764 = new int[128];
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_2765;
@@ -26,8 +22,6 @@ public class Class40_Sub5_Sub13 extends SubNode {
     public int anInt2763;
 
     public static Class68 method649(int arg0, int arg1, Component arg2, int arg3) {
-
-        anInt2756++;
         if(arg3 != -4875)
             aClass40_Sub5_Sub14_Sub4_2765 = null;
         try {
@@ -40,19 +34,13 @@ public class Class40_Sub5_Sub13 extends SubNode {
             class68_sub1.method1041(44, arg1, arg2, arg0);
             return class68_sub1;
         }
-
     }
 
-    public static void method650(boolean arg0, int arg1) {
-
+    public static void method650(int arg1) {
         Class45.anInt1073 = arg1;
-        if(arg0)
-            anInt2759++;
-
     }
 
     public static void method651(int arg0, int arg1) {
-        anInt2755++;
         if(Class5.aClass22_189 != null) {
             if(RSCanvas.anInt54 != 0) {
                 if(Player.aByteArray3270 != null)
@@ -62,14 +50,11 @@ public class Class40_Sub5_Sub13 extends SubNode {
                 Class5.aClass22_189.method304((byte) -111, arg1, 0);
             }
             if(arg0 != 22741)
-                method652((byte) 61);
+                method652();
         }
     }
 
-    public static void method652(byte arg0) {
-
-        anInt2761++;
-        int i = 72 / ((arg0 - 64) / 52);
+    public static void method652() {
         for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = (Class40_Sub3) Class45.aClass45_1064.method909(-4)) {
             if(class40_sub3.anInt2031 > 0)
                 class40_sub3.anInt2031--;
@@ -91,7 +76,6 @@ public class Class40_Sub5_Sub13 extends SubNode {
                 }
             }
         }
-
     }
 
     public static void method653() {

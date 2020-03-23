@@ -11,22 +11,12 @@ import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.SceneTile;
 
 public class Class56 {
-    public static int anInt1310;
-    public static int anInt1311;
-    public static int anInt1312;
     public static RSString aClass1_1314;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1315;
     public static RSString aClass1_1316 = RSString.CreateString("Zu viele Verbindungen von Ihrer Adresse)3");
-    public static int anInt1317;
     public static int anInt1318;
-    public static int anInt1319;
     public static Class61[] aClass61Array1320;
-    public static int anInt1322;
     public static CacheIndex_Sub1 aClass6_Sub1_1323;
-    public static int anInt1325;
-    public static int anInt1326;
-    public static int anInt1327;
-    public static int anInt1328;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1329;
 
     static {
@@ -60,35 +50,28 @@ public class Class56 {
     }
 
     public static RSString[] method968(RSString[] arg0, boolean arg1) {
-
         if(arg1)
             method972((byte) -104);
         RSString[] class1s = new RSString[5];
-        anInt1317++;
         for(int i = 0; i < 5; i++) {
             class1s[i] = (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{HashTable.method334(i, -1), ISAAC.aClass1_515}));
             if(arg0 != null && arg0[i] != null)
                 class1s[i] = Class40_Sub5_Sub17_Sub6.method832((new RSString[]{class1s[i], arg0[i]}));
         }
         return class1s;
-
     }
 
     public static Class38 method972(byte arg0) {
-
         if(arg0 != 47)
             method968(null, true);
-        anInt1310++;
         try {
             return (Class38) Class.forName("com.jagex.runescape.Class38_Sub2").newInstance();
         } catch(Throwable throwable) {
             return new Class38_Sub1();
         }
-
     }
 
     public static void method973(int arg0) {
-
         Class67.anIntArray1579 = null;
         SceneTile.anIntArray2048 = null;
         if(arg0 >= -57)
@@ -101,23 +84,15 @@ public class Class56 {
         InteractiveObject.aByteArrayArrayArray492 = null;
         OverlayDefinition.tile_underlay_path = null;
         GameFrame.tile_overlayids = null;
-        anInt1312++;
         Class42.tile_underlayids = null;
         Class40_Sub5_Sub17_Sub6.anIntArray3250 = null;
-
     }
 
     public String toString() {
-
-        anInt1326++;
         return "com.jagex.runescape.cache.Cache:" + anInt1324;
-
     }
 
-    public byte[] method969(int arg0, byte arg1) {
-
-        anInt1322++;
-        int i = -83 / ((-49 - arg1) / 47);
+    public byte[] method969(int arg0) {
         synchronized(aClass67_1309) {
             try {
                 if(aClass67_1313.method1032(0) < (long) (6 + arg0 * 6))
@@ -159,16 +134,13 @@ public class Class56 {
                 return null;
             }
         }
-
     }
 
     public boolean method970(byte[] arg0, int arg1, boolean arg2, int arg3, byte arg4) {
-
-        anInt1325++;
         synchronized(aClass67_1309) {
             try {
                 if(arg4 >= -80)
-                    method969(91, (byte) 63);
+                    method969(91);
                 int i;
                 if(arg2) {
                     if(aClass67_1313.method1032(0) < (long) (6 + 6 * arg3))
@@ -244,12 +216,9 @@ public class Class56 {
                 return false;
             }
         }
-
     }
 
     public boolean method971(byte[] arg0, int arg1, int arg2, int arg3) {
-
-        anInt1328++;
         synchronized(aClass67_1309) {
             if(arg2 < 0 || arg2 > anInt1321)
                 throw new IllegalArgumentException();
@@ -260,6 +229,5 @@ public class Class56 {
                 bool = method970(arg0, arg2, false, arg3, (byte) -114);
             return bool;
         }
-
     }
 }

@@ -151,7 +151,7 @@ public class Class13 {
         return is;
     }
 
-    public static void method248(int arg0) {
+    public static void method248() {
         anIntArray421 = null;
         aClass1_422 = null;
         aClass1_404 = null;
@@ -162,8 +162,6 @@ public class Class13 {
         anIntArray403 = null;
         aBooleanArray414 = null;
         aClass9_406 = null;
-        if(arg0 != 65535)
-            method244(11, 13, 49);
     }
 
     public static void method249(boolean arg0) {

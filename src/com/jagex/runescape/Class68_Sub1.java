@@ -70,7 +70,6 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
                 i--;
             else
                 i -= 101;
-            Class40_Sub7.anInt2122++;
             OverlayDefinition.method558(0, HuffmanEncoding.aClass1_1572, 0, arg0 + -801, 0, 13, Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class26.aClass1_620, (Class40_Sub11.friendUsernames[i])})));
             OverlayDefinition.method558(0, GroundItemTile.aClass1_1354, 0, -501, 0, 18, Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class26.aClass1_620, (Class40_Sub11.friendUsernames[i])})));
             return true;

@@ -14,12 +14,9 @@ public class UnderlayDefinition extends SubNode {
     public static RSString aClass1_2564 = RSString.CreateString("Welt");
     public static RSString aClass1_2566 = RSString.CreateString("flash2:");
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2567;
-    public static int anInt2569;
     public static CacheIndex_Sub1 aClass6_Sub1_2571;
-    public static int anInt2572;
     public static int anInt2576;
     public static RSString aClass1_2577 = RSString.CreateString(" million");
-    public static int anInt2580;
     public static int anInt2581;
     public static CacheIndex aCacheIndex_2582;
 
@@ -29,27 +26,16 @@ public class UnderlayDefinition extends SubNode {
     public int hue;
     public int color = 0;
 
-    public static int method614(byte arg0, int arg1, int arg2, int arg3) {
-
-        int i = 114 % ((arg0 + 28) / 59);
-        anInt2572++;
+    public static int method614(int arg1, int arg2, int arg3) {
         int i_7_ = 256 + -arg3;
         return (((arg3 * (0xff00 & arg2) + i_7_ * (0xff00 & arg1) & 0xff0000) + (~0xff00ff & (0xff00ff & arg1) * i_7_ + (arg3 * (0xff00ff & arg2)))) >> 8);
-
     }
 
-    public static void method616(CacheIndex arg0, byte arg1) {
-
-        anInt2580++;
-        if(arg1 == 85) {
-            Actor.aCacheIndex_3150 = arg0;
-        }
-
+    public static void method616(CacheIndex arg0) {
+        Actor.aCacheIndex_3150 = arg0;
     }
 
     public static void method617(long arg0, byte arg1) {
-
-        anInt2569++;
         if(arg0 != 0L) {
             if((Class40_Sub5_Sub17_Sub3.friendsCount >= 100 && Class44.anInt1049 != 1) || (Class40_Sub5_Sub17_Sub3.friendsCount >= 200)) {
                 Class44.addChatMessage(HuffmanEncoding.blank_string, Class59.aClass1_1399, 0);
@@ -81,7 +67,6 @@ public class UnderlayDefinition extends SubNode {
                 }
             }
         }
-
     }
 
     public static int bitWiseOR(int arg0, int arg1) {

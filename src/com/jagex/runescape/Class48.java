@@ -10,7 +10,6 @@ import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.VertexNormal;
-import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 
@@ -161,7 +160,6 @@ public class Class48 {
                         }
                         if((widget.actionType == 4) && arg8 >= i_2_ && i_1_ <= arg4 && arg8 < widget.originalWidth + i_2_ && (widget.originalHeight + i_1_ > arg4)) {
                             OverlayDefinition.method558(0, widget.tooltip, widget.id, -501, 0, 23, HuffmanEncoding.blank_string);
-                            Actor.anInt3128++;
                         }
                         if(widget.actionType == 5 && (i_2_ <= arg8) && i_1_ <= arg4 && arg8 < i_2_ + widget.originalWidth && (i_1_ + widget.originalHeight > arg4)) {
                             OverlayDefinition.method558(0, widget.tooltip, widget.id, -501, 0, 57, HuffmanEncoding.blank_string);
@@ -216,7 +214,6 @@ public class Class48 {
                                                                 int i_12_ = 0;
                                                                 if(i_11_ == 0)
                                                                     i_12_ = 52;
-                                                                Class44.anInt1050++;
                                                                 if(i_11_ == 1)
                                                                     i_12_ = 6;
                                                                 if(i_11_ == 2)
@@ -231,7 +228,6 @@ public class Class48 {
                                                     if(class1s != null) {
                                                         for(int i_13_ = 4; i_13_ >= 0; i_13_--) {
                                                             if((class1s[i_13_]) != null) {
-                                                                Actor.anInt3146++;
                                                                 int i_14_ = 0;
                                                                 if(i_13_ == 0)
                                                                     i_14_ = 53;
@@ -251,7 +247,6 @@ public class Class48 {
                                                 }
                                             } else if(((ISAAC.anInt525) != (widget.id)) || (i_4_ != (Class45.anInt1061))) {
                                                 OverlayDefinition.method558((itemDefinition.id), Main.aClass1_1763, (widget.id), -501, i_4_, 56, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{(Npc.aClass1_3295), (Class5.aClass1_206), (itemDefinition.name)}))));
-                                                Class37.anInt863++;
                                             }
                                         }
                                     }

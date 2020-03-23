@@ -71,7 +71,6 @@ public class Class38_Sub1 extends Class38 {
                             if(Class13.mouseX < 4 + i_4_) {
                                 if(InteractiveObject.playerRights >= 1) {
                                     OverlayDefinition.method558(0, Class22_Sub1.aClass1_1865, 0, -501, 0, 2028, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class26.aClass1_620, class1})));
-                                    CollisionMap.anInt158++;
                                 }
                                 OverlayDefinition.method558(0, Class38.aClass1_885, 0, -501, 0, 2051, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class26.aClass1_620, class1})));
                                 OverlayDefinition.method558(0, FloorDecoration.aClass1_591, 0, arg0 ^ ~0x27d3, 0, 2045, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{Class26.aClass1_620, class1})));
@@ -342,7 +341,6 @@ public class Class38_Sub1 extends Class38 {
             int i_24_ = Wall.anIntArray351[i_10_];
             int i_25_ = Class24.anIntArray581[i_10_];
             if(arg11 == 0) {
-                Class34.anInt838++;
                 Class32.packetBuffer.putPacket(73);
                 Class32.packetBuffer.putByte(3 + (i_12_ + i_12_));
             }
@@ -369,7 +367,7 @@ public class Class38_Sub1 extends Class38 {
         return arg11 != 1;
     }
 
-    public static void method449(int arg0) {
+    public static void method449() {
         anIntArray1916 = null;
         aClass1_1918 = null;
         aClass1_1917 = null;
@@ -377,8 +375,7 @@ public class Class38_Sub1 extends Class38 {
         aClass40_Sub5_Sub14_Sub2_1919 = null;
         aClass1_1905 = null;
         aClass1_1922 = null;
-        if(arg0 == -22783)
-            aClass1_1921 = null;
+        aClass1_1921 = null;
     }
 
     public static void method450(byte arg0) {
