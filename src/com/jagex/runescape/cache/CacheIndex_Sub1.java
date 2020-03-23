@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
 
 public class CacheIndex_Sub1 extends CacheIndex {
@@ -57,6 +58,16 @@ public class CacheIndex_Sub1 extends CacheIndex {
         if(arg1 != 255)
             method203();
         return (RSString.linkRSStrings((new RSString[]{HashTable.method334(0xff & arg0 >> 24, -1), Node.aClass1_975, HashTable.method334((arg0 & 0xffca88) >> 16, -1), Node.aClass1_975, HashTable.method334((0xfff8 & arg0) >> 8, -1), Node.aClass1_975, HashTable.method334(0xff & arg0, -1)})));
+    }
+
+    public static void method399(int arg0, int arg1, int arg2) {
+        long l = (arg0 << 16) + arg2;
+        Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.method331(l, 6120));
+        if(class40_sub5_sub13 != null) {
+            InteractiveObject.aClass27_485.method367(true, class40_sub5_sub13);
+            if(arg1 <= 11)
+                SceneCluster.aClass1_766 = null;
+        }
     }
 
     public void method196(boolean arg0, int arg2, boolean arg3, byte[] arg4) {
@@ -154,7 +165,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
     }
 
     public void method174(int arg0, byte arg1) {
-        SceneCluster.method399(anInt1807, 33, arg0);
+        method399(anInt1807, 33, arg0);
         if(arg1 != 2)
             method174(13, (byte) 101);
     }

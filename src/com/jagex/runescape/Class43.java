@@ -4,9 +4,10 @@ import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.media.Rasterizer;
+import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
-import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -47,7 +48,7 @@ public class Class43 {
         }
         if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
             if(Class34.anInt848 == 1)
-                SceneCluster.method398(-2);
+                method398(-2);
             else
                 Class40_Sub5_Sub6.method588(-1);
         }
@@ -148,6 +149,60 @@ public class Class43 {
                 Class13.method243((byte) 89, 0, 765, 503, ActorDefinition.openFullScreenWidgetId, 0, Class13.mouseX, Landscape.mouseY, 0);
                 ItemDefinition.anInt2850 = OverlayDefinition.anInt2328;
                 HashTable.anInt573 = Item.anInt3065;
+            }
+        }
+    }
+
+    public static void method398(int arg0) {
+        RSString class1 = null;
+        for(int i = 0; ActorDefinition.menuActionRow > i; i++) {
+            if(Landscape.menuActionTexts[i].contains(VertexNormal.aClass1_1114) != -1) {
+                class1 = (Landscape.menuActionTexts[i].substring(Landscape.menuActionTexts[i].contains(VertexNormal.aClass1_1114)));
+                break;
+            }
+        }
+        if(class1 == null)
+            Class40_Sub5_Sub6.method588(-1);
+        else {
+            int i = VertexNormal.anInt1086;
+            int i_0_ = InteractiveObject.anInt475;
+            if(i > 190)
+                i = 190;
+            int i_1_ = CollisionMap.anInt168;
+            int i_2_ = Main.anInt1758;
+            if(i_0_ < 0)
+                i_0_ = 0;
+            int i_3_ = 6116423;
+            Rasterizer.drawFilledRectangle(i_0_, i_2_, i, i_1_, i_3_);
+            Rasterizer.drawFilledRectangle(i_0_ + 1, i_2_ + 1, arg0 + i, 16, 0);
+            Rasterizer.drawUnfilledRectangle(i_0_ + 1, 18 + i_2_, -2 + i, i_1_ + -19, 0);
+            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawShadowedString(class1, 3 + i_0_, 14 + i_2_, i_3_, false);
+            int i_4_ = Class13.mouseX;
+            int i_5_ = Landscape.mouseY;
+            if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
+                i_4_ -= 4;
+                i_5_ -= 4;
+            }
+            if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
+                i_4_ -= 553;
+                i_5_ -= 205;
+            }
+            if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
+                i_5_ -= 357;
+                i_4_ -= 17;
+            }
+            for(int i_6_ = 0; ((i_6_ < ActorDefinition.menuActionRow)); i_6_++) {
+                int i_7_ = 31 + i_2_ + (ActorDefinition.menuActionRow + (-1 + -i_6_)) * 15;
+                RSString class1_8_ = Landscape.menuActionTexts[i_6_];
+                int i_9_ = 16777215;
+                if(class1_8_.method87(arg0 + 112, class1)) {
+                    class1_8_ = class1_8_.substring(0, (class1_8_.length() - class1.length()));
+                    if(class1_8_.method87(arg0 ^ ~0x6f, VertexNormal.aClass1_1117))
+                        class1_8_ = (class1_8_.substring(0, (class1_8_.length() + -VertexNormal.aClass1_1117.length())));
+                }
+                if((i_0_ < i_4_) && (i_4_ < i_0_ + i) && -13 + i_7_ < i_5_ && 3 + i_7_ > i_5_)
+                    i_9_ = 16776960;
+                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawShadowedString(class1_8_, 3 + i_0_, i_7_, i_9_, true);
             }
         }
     }

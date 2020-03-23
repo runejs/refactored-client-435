@@ -333,7 +333,7 @@ public class Npc extends Actor {
                         for(int i_19_ = 0; i_19_ < 5; i_19_++)
                             Class22_Sub1.anIntArray1846[i_19_]++;
                         Class40_Sub5_Sub6.manageTextInputs();
-                        int i_20_ = SceneCluster.method400(-1);
+                        int i_20_ = method400(-1);
                         int i_21_ = Class17.method274(true);
                         if(i_20_ > 4500 && i_21_ > 4500) {
                             SceneCluster.anInt771 = 250;
@@ -603,6 +603,13 @@ public class Npc extends Actor {
             npc.method787((Player.localPlayer.pathX[0]) + offsetY, -7717, discardWalkingQueue == 1, (Player.localPlayer.pathY[0]) + offsetX);
         }
         IncomingPackets.incomingPacketBuffer.finishBitAccess((byte) -110);
+    }
+
+    public static int method400(int arg0) {
+        if(arg0 != -1)
+            SceneCluster.packetBuffer = null;
+        return LinkedList.anInt1073++;
+
     }
 
     public Model getRotatedModel(int arg0) {
