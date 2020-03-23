@@ -49,24 +49,22 @@ public class VarbitDefinition extends SubNode {
         return arg2;
     }
 
-    public static void method565(int arg0) {
+    public static void method565() {
         aClass1_2351 = null;
-        if(arg0 <= -120) {
-            aCacheIndex_2364 = null;
-            aClass68_2350 = null;
-            aCacheIndex_2349 = null;
-            aClass1_2357 = null;
-            anIntArray2361 = null;
-            aClass56_2356 = null;
-            aClass1_2354 = null;
-            aClass1_2367 = null;
-            aClass1_2352 = null;
-        }
+        aCacheIndex_2364 = null;
+        aClass68_2350 = null;
+        aCacheIndex_2349 = null;
+        aClass1_2357 = null;
+        anIntArray2361 = null;
+        aClass56_2356 = null;
+        aClass1_2354 = null;
+        aClass1_2367 = null;
+        aClass1_2352 = null;
     }
 
     public static void method566(int arg0, boolean arg1, int arg2, byte[] arg3, int arg4) {
         if(arg4 != -27520)
-            method565(49);
+            method565();
         if(Class5.aClass22_189 != null) {
             if(GameFrame.anInt1450 >= 0) {
                 arg2 -= 20;

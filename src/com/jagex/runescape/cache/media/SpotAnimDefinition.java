@@ -55,11 +55,7 @@ public class SpotAnimDefinition extends SubNode {
         recolorToReplace = new int[6];
     }
 
-    public static void method548(int arg0) {
-
-        if(arg0 != -3254) {
-            method548(-111);
-        }
+    public static void method548() {
         aClass1_2291 = null;
         aClass67_2298 = null;
         aClass1_2297 = null;
@@ -72,7 +68,6 @@ public class SpotAnimDefinition extends SubNode {
         str_prefix_level = null;
         aClass1_2296 = null;
         aClass1_2292 = null;
-
     }
 
     public static IndexedImage[] method550(CacheIndex arg0, byte arg1, RSString arg2, RSString arg3) {

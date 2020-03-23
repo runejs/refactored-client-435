@@ -52,17 +52,13 @@ public class Class24 {
 
     }
 
-    public static void method339(byte arg0) {
-
+    public static void method339() {
         anIntArray577 = null;
         INCOMINGPACKETSIZES = null;
         anIntArray578 = null;
         aClass6_Sub1Array580 = null;
-        if(arg0 != -41)
-            aClass6_Sub1Array580 = null;
         anIntArray581 = null;
         aClass1_575 = null;
-
     }
 
     public static boolean method340() {

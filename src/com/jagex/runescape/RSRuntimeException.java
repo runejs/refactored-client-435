@@ -25,11 +25,9 @@ public class RSRuntimeException extends RuntimeException {
 
     }
 
-    public static void method1053(int arg0) {
+    public static void method1053() {
         aClass1_1644 = null;
         aClass1_1647 = null;
-        if(arg0 >= -39)
-            lastActiveInvInterface = 95;
         str_select = null;
     }
 

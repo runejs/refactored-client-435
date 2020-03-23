@@ -9,12 +9,8 @@ import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class32 {
-    public static int anInt744;
     public static PacketBuffer packetBuffer;
-    public static int anInt753;
-    public static int anInt754;
     public static int[] anIntArray761 = {1, 2, 4, 8};
-    public static int anInt765;
     public static RSString aClass1_766;
     public static int anInt767;
     public static Class38 aClass38_768;
@@ -54,7 +50,6 @@ public class Class32 {
     public int anInt764;
 
     public static void method398(int arg0) {
-
         RSString class1 = null;
         for(int i = 0; ActorDefinition.anInt2394 > i; i++) {
             if(Landscape.aClass1Array1184[i].contains(VertexNormal.aClass1_1114) != -1) {
@@ -62,7 +57,6 @@ public class Class32 {
                 break;
             }
         }
-        anInt765++;
         if(class1 == null)
             Class40_Sub5_Sub6.method588(-1);
         else {
@@ -107,12 +101,10 @@ public class Class32 {
                 Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawShadowedString(class1_8_, 3 + i_0_, i_7_, i_9_, true);
             }
         }
-
     }
 
     public static void method399(int arg0, int arg1, int arg2) {
-        anInt744++;
-        long l = (long) ((arg0 << 16) + arg2);
+        long l = (arg0 << 16) + arg2;
         Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.method331(l, 6120));
         if(class40_sub5_sub13 != null) {
             InteractiveObject.aClass27_485.method367(true, class40_sub5_sub13);
@@ -122,24 +114,19 @@ public class Class32 {
     }
 
     public static int method400(int arg0) {
-
         if(arg0 != -1)
             packetBuffer = null;
-        anInt753++;
         return Class45.anInt1073++;
 
     }
 
-    public static void method401(int arg0) {
-
+    public static void method401() {
         anIntArray774 = null;
         aClass38_768 = null;
         aClass1_766 = null;
         aClass1_772 = null;
         anIntArray761 = null;
         packetBuffer = null;
-        if(arg0 >= 29)
-            aClass6_Sub1_773 = null;
-
+        aClass6_Sub1_773 = null;
     }
 }

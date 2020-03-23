@@ -422,8 +422,7 @@ public class FloorDecoration {
 
     }
 
-    public static void method348(int arg0) {
-
+    public static void method348() {
         aClass40_Sub5_Sub14_Sub2_593 = null;
         aCRC32_590 = null;
         aClass1_610 = null;
@@ -435,12 +434,9 @@ public class FloorDecoration {
         aClass40_Sub5_Sub14_Sub4Array603 = null;
         aClass6_Sub1_605 = null;
         STRING_CONNECTING_UPDATE_SERVER = null;
-        if(arg0 != -6580)
-            STRING_CONNECTING_UPDATE_SERVER = null;
         aClass1_615 = null;
         aClass1_609 = null;
         aSignlinkNode_607 = null;
         aClass40_Sub9_608 = null;
-
     }
 }

@@ -49,13 +49,11 @@ public class SubNode extends Node {
         KeyFocusListener.aClass45_1278 = new Class45();
     }
 
-    public static void method541(int arg0) {
+    public static void method541() {
         aClass1_2090 = null;
         aClass1_2095 = null;
         aClass1_2084 = null;
         aClass1_2093 = null;
-        if(arg0 < 35)
-            method541(109);
         aClass68_2091 = null;
         anIntArray2086 = null;
     }

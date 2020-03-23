@@ -89,7 +89,7 @@ public class Class42 {
 
     public static int method884(int arg0, int arg1, int arg2) {
         if(arg2 != 37821)
-            method887((byte) -6);
+            method887();
         int i = 57 * arg1 + arg0;
         i ^= i << 13;
         int i_2_ = 1376312589 + (i * i * 15731 + 789221) * i & 0x7fffffff;
@@ -131,7 +131,7 @@ public class Class42 {
         }
     }
 
-    public static void method887(byte arg0) {
+    public static void method887() {
         aClass1_988 = null;
         aClass1_1003 = null;
         aClass1_1001 = null;
@@ -143,8 +143,6 @@ public class Class42 {
         aClass1_995 = null;
         aClass1_990 = null;
         aClass1_1005 = null;
-        if(arg0 != -108)
-            aClass1_1003 = null;
         aClass1_997 = null;
         aClass1_1011 = null;
         aClass1_1002 = null;

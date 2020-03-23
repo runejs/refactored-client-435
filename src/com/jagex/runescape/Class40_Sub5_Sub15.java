@@ -74,13 +74,11 @@ public class Class40_Sub5_Sub15 extends SubNode {
 
     }
 
-    public static void method734(int arg0) {
-
+    public static void method734() {
         aClass40_Sub5_Sub14_Sub2_2775 = null;
         aClass1_2790 = null;
         aClass40_Sub5_Sub14_Sub2Array2776 = null;
         anIntArray2777 = null;
-        int i = -41 % ((32 - arg0) / 40);
         aClass1_2787 = null;
         aClass1_2773 = null;
         aCacheIndex_2779 = null;
@@ -89,7 +87,6 @@ public class Class40_Sub5_Sub15 extends SubNode {
         aClass1_2786 = null;
         aClass1_2781 = null;
         prefix_examine = null;
-
     }
 
     public static boolean method735(byte arg0, int arg1) {
@@ -102,7 +99,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
         if(arg1 >= 48 && arg1 <= 57)
             return true;
         if(arg0 != -37)
-            method734(31);
+            method734();
         return false;
 
     }

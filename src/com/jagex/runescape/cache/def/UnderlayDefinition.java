@@ -88,15 +88,13 @@ public class UnderlayDefinition extends SubNode {
         return arg0 | arg1;
     }
 
-    public static void method621(int arg0) {
-        if(arg0 == 0) {
-            aClass1_2566 = null;
-            aClass40_Sub5_Sub14_Sub4Array2567 = null;
-            aClass1_2564 = null;
-            aCacheIndex_2582 = null;
-            aClass1_2577 = null;
-            aClass6_Sub1_2571 = null;
-        }
+    public static void method621() {
+        aClass1_2566 = null;
+        aClass40_Sub5_Sub14_Sub4Array2567 = null;
+        aClass1_2564 = null;
+        aCacheIndex_2582 = null;
+        aClass1_2577 = null;
+        aClass6_Sub1_2571 = null;
     }
 
     public void calculateHsl() {

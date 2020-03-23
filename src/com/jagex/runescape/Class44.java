@@ -65,20 +65,16 @@ public class Class44 implements Runnable {
 
     }
 
-    public static void method896(int arg0) {
-
+    public static void method896() {
         aClass1_1034 = null;
         aClass40_Sub5_Sub14_Sub2_1047 = null;
         aClass1_1033 = null;
         aByteArrayArray1039 = null;
-        if(arg0 == -1) {
-            aClass1_1041 = null;
-            aClass1_1032 = null;
-            aClass1_1038 = null;
-            anIntArrayArray1030 = null;
-            aClass1_1043 = null;
-        }
-
+        aClass1_1041 = null;
+        aClass1_1032 = null;
+        aClass1_1038 = null;
+        anIntArrayArray1030 = null;
+        aClass1_1043 = null;
     }
 
     public static void method898(int arg0, Actor arg1) {

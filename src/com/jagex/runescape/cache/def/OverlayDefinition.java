@@ -60,8 +60,7 @@ public class OverlayDefinition extends SubNode {
         anInt2345 = 0;
     }
 
-    public static void method554(byte arg0) {
-
+    public static void method554() {
         tile_underlay_path = null;
         tile_flags = null;
         anIntArrayArrayArray2333 = null;
@@ -70,8 +69,6 @@ public class OverlayDefinition extends SubNode {
         aClass1_2327 = null;
         aClass1_2325 = null;
         anIntArray2324 = null;
-        int i = -25 % ((arg0 - 68) / 49);
-
     }
 
     public static void method557(int arg0, int arg1) {

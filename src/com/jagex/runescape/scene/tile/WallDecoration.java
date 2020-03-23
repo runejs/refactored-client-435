@@ -289,7 +289,7 @@ public class WallDecoration {
                     }
                 } else {
                     if(arg0 >= -110)
-                        method952(32);
+                        method952();
                     if(Class57.incomingPacket == 19) { // update world item amount
                         int i = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
                         int i_80_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE();
@@ -443,8 +443,7 @@ public class WallDecoration {
         } while(false);
     }
 
-    public static void method952(int arg0) {
-
+    public static void method952() {
         aClass40_Sub5_Sub14_Sub2_1270 = null;
         fontNormal = null;
         aClass9_1247 = null;
@@ -455,13 +454,10 @@ public class WallDecoration {
         aClass1_1269 = null;
         aClass1_1266 = null;
         aClass1_1255 = null;
-        if(arg0 != 0)
-            method950(-77, -36, 56);
         aClass9_1264 = null;
         aClass1_1259 = null;
         ignores = null;
         aClass1_1263 = null;
         aClass1_1260 = null;
-
     }
 }

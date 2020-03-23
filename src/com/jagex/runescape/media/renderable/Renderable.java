@@ -76,11 +76,9 @@ public abstract class Renderable extends SubNode {
         return bool;
     }
 
-    public static void method757(byte arg0) {
+    public static void method757() {
         aClass1_2871 = null;
         chatPlayerNames = null;
-        if(arg0 > -112)
-            method757((byte) 59);
         aClass40_Sub5_Sub14_Sub2_2860 = null;
         aClass6_Sub1_2857 = null;
         aClass1_2870 = null;

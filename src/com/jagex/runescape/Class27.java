@@ -139,20 +139,18 @@ public class Class27 {
         Rasterizer.drawHorizontalLine(arg3 + 1, 14 + (arg5 + i_9_ + i), 15, Class56.anInt1318);
     }
 
-    public static void method356(int arg0) {
+    public static void method356() {
         aClass1_647 = null;
-        if(arg0 == -333) {
-            aClass40_Sub5_Sub14_Sub4Array649 = null;
-            takeString = null;
-            aCacheIndex_654 = null;
-            aClass1_638 = null;
-            aClass1_652 = null;
-            aClass1_668 = null;
-            takeStringInstance = null;
-            anIntArray666 = null;
-            aClass1_664 = null;
-            aClass1_643 = null;
-        }
+        aClass40_Sub5_Sub14_Sub4Array649 = null;
+        takeString = null;
+        aCacheIndex_654 = null;
+        aClass1_638 = null;
+        aClass1_652 = null;
+        aClass1_668 = null;
+        takeStringInstance = null;
+        anIntArray666 = null;
+        aClass1_664 = null;
+        aClass1_643 = null;
     }
 
     public static void method357(CacheIndex arg0, int arg1, CacheIndex arg2) {

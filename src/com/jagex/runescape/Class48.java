@@ -145,7 +145,6 @@ public class Class48 {
                             if(widget.contentType != 0)
                                 bool = (Class68_Sub1.method1051(300, widget));
                             if(!bool) {
-                                Class32.anInt754++;
                                 OverlayDefinition.method558(0, widget.tooltip, widget.id, -501, 0, 42, HuffmanEncoding.blank_string);
                             }
                         }

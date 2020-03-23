@@ -44,7 +44,7 @@ public class IdentityKit extends SubNode {
         recolorToReplace = new int[6];
     }
 
-    public static void method625(int arg0) {
+    public static void method625() {
         aClass1_2595 = null;
         aClass1_2615 = null;
         aClass1_2611 = null;
@@ -54,9 +54,6 @@ public class IdentityKit extends SubNode {
         aClass1_2616 = null;
         aClass1_2614 = null;
         aClass1_2592 = null;
-        if(arg0 != 0) {
-            method625(-67);
-        }
         aClass1_2587 = null;
         aClass45_2604 = null;
         sound = null;

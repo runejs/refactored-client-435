@@ -42,17 +42,13 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         }
     }
 
-    public static void method953(byte arg0) {
-
-        if(arg0 > -32)
-            method957(75, false, false, (byte) 125, true);
+    public static void method953() {
         aClass1_1271 = null;
         aClass1_1283 = null;
         aClass68_1285 = null;
         aClass45_1278 = null;
         anIntArray1282 = null;
         aClass1_1284 = null;
-
     }
 
     public static void method954(int arg0) {

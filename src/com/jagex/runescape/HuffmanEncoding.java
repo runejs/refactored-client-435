@@ -110,8 +110,7 @@ public class HuffmanEncoding {
 
     }
 
-    public static void method1022(int arg0) {
-
+    public static void method1022() {
         aClass1_1565 = null;
         aClass68_1541 = null;
         aClass1_1558 = null;
@@ -127,10 +126,8 @@ public class HuffmanEncoding {
         aClass1_1549 = null;
         aClass1_1572 = null;
         anIntArray1564 = null;
-        int i = -11 / ((-68 - arg0) / 55);
         blank_string = null;
         chatboxInput = null;
-
     }
 
     public static RSString method1024(boolean arg0, byte arg1, int arg2) {
@@ -205,7 +202,7 @@ public class HuffmanEncoding {
 
     public static boolean method1027(int arg0, int arg1) {
         if(arg1 != -58)
-            method1022(68);
+            method1022();
         return arg0 >= 48 && arg0 <= 57;
     }
 

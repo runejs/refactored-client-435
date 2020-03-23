@@ -95,18 +95,16 @@ public class Class55 {
         if(class40_sub5_sub15 != null)
             Class42.aClass9_998.put(arg0 + -7109, (long) arg1, class40_sub5_sub15);
         if(arg0 != -99)
-            method961(34);
+            method961();
         return class40_sub5_sub15;
     }
 
-    public static void method961(int arg0) {
+    public static void method961() {
         aClass1_1292 = null;
         aClass1_1300 = null;
         aClass1_1291 = null;
         aClass6_Sub1_1286 = null;
         aClass48_1289 = null;
-        if(arg0 != 1)
-            method964(120);
         aClass1_1298 = null;
     }
 

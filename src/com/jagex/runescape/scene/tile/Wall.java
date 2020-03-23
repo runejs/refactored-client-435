@@ -47,7 +47,7 @@ public class Wall {
         hash = 0;
     }
 
-    public static void method237(int arg0) {
+    public static void method237() {
         aClass1_352 = null;
         aClass1_344 = null;
         aClass1_338 = null;
@@ -57,8 +57,6 @@ public class Wall {
         aClass1_346 = null;
         anIntArray351 = null;
         aWidget_353 = null;
-        if(arg0 <= 54)
-            method237(102);
     }
 
     public static void method238(int arg0) {

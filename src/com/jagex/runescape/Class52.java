@@ -163,19 +163,17 @@ public class Class52 {
         }
     }
 
-    public static void method946(boolean arg0) {
+    public static void method946() {
         aClass1_1213 = null;
         aClass1_1241 = null;
         aClass1_1228 = null;
-        if(!arg0) {
-            aClass1_1238 = null;
-            aClass1_1223 = null;
-            aClass1_1234 = null;
-            aByteArrayArray1217 = null;
-            aClass1_1218 = null;
-            aClass1_1216 = null;
-            aClass1_1230 = null;
-        }
+        aClass1_1238 = null;
+        aClass1_1223 = null;
+        aClass1_1234 = null;
+        aByteArrayArray1217 = null;
+        aClass1_1218 = null;
+        aClass1_1216 = null;
+        aClass1_1230 = null;
     }
 
     public static void method947(int arg0) {

@@ -28,17 +28,13 @@ public class Class65 {
         anInt1537 = 128;
     }
 
-    public static void method1017(byte arg0) {
-
+    public static void method1017() {
         aClass6_Sub1_1533 = null;
         aCRC32_1531 = null;
         aClass1_1530 = null;
         aClass1_1538 = null;
-        if(arg0 >= -10)
-            anInt1537 = 31;
         aClass1_1536 = null;
         aClass1_1535 = null;
-
     }
 
     public static void method1018(byte arg0) {

@@ -97,21 +97,19 @@ public class Class35 implements Interface3 {
         }
     }
 
-    public static void method423(byte arg0) {
-        if(arg0 <= -18) {
-            aClass1_1720 = null;
-            tile_overlay_rotation = null;
-            aClass1_1725 = null;
-            aClass1_1746 = null;
-            aFrame1732 = null;
-            SKIN_COLOURS = null;
-            aClass1_1743 = null;
-            aClass1_1736 = null;
-            aClass40_Sub5_Sub14_Sub2_1744 = null;
-            aClass1_1747 = null;
-            aClass1_1726 = null;
-            aClass1_1731 = null;
-        }
+    public static void method423() {
+        aClass1_1720 = null;
+        tile_overlay_rotation = null;
+        aClass1_1725 = null;
+        aClass1_1746 = null;
+        aFrame1732 = null;
+        SKIN_COLOURS = null;
+        aClass1_1743 = null;
+        aClass1_1736 = null;
+        aClass40_Sub5_Sub14_Sub2_1744 = null;
+        aClass1_1747 = null;
+        aClass1_1726 = null;
+        aClass1_1731 = null;
     }
 
     public void method422(int arg0) {

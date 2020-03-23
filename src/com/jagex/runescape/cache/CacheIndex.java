@@ -114,12 +114,10 @@ public abstract class CacheIndex {
         } while(false);
     }
 
-    public static void method180(int arg0) {
+    public static void method180() {
         aClass1_259 = null;
         aClass40_Sub5_Sub14_Sub2Array215 = null;
         aClass1_256 = null;
-        if(arg0 != 0)
-            anIntArray225 = null;
         modelCache = null;
         aClass1_257 = null;
         anIntArray225 = null;

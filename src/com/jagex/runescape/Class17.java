@@ -131,18 +131,16 @@ public class Class17 {
         }
     }
 
-    public static void method277(byte arg0) {
+    public static void method277() {
         aClass68_462 = null;
         aClass9_449 = null;
-        if(arg0 >= 75) {
-            aClass1_465 = null;
-            aClass1_452 = null;
-            aClass1_455 = null;
-            aClass68_463 = null;
-            aClass1_457 = null;
-            anIntArray456 = null;
-            helveticaBold = null;
-            anIntArray466 = null;
-        }
+        aClass1_465 = null;
+        aClass1_452 = null;
+        aClass1_455 = null;
+        aClass68_463 = null;
+        aClass1_457 = null;
+        anIntArray456 = null;
+        helveticaBold = null;
+        anIntArray466 = null;
     }
 }

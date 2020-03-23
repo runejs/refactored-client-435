@@ -20,7 +20,7 @@ public class Class26 {
     public static RSString aClass1_634 = RSString.CreateString("World");
     public static int anInt635;
 
-    public static Class method349(byte arg0, String arg1) throws ClassNotFoundException {
+    public static Class method349(String arg1) throws ClassNotFoundException {
         if(arg1.equals("B"))
             return Byte.TYPE;
         if(arg1.equals("I"))
@@ -35,14 +35,12 @@ public class Class26 {
             return Float.TYPE;
         if(arg1.equals("D"))
             return Double.TYPE;
-        if(arg0 != 91)
-            method350(-66);
         if(arg1.equals("C"))
             return Character.TYPE;
         return Class.forName(arg1);
     }
 
-    public static void method350(int arg0) {
+    public static void method350() {
         aClass1_631 = null;
         aClass1_630 = null;
         aClass1_629 = null;
@@ -52,7 +50,5 @@ public class Class26 {
         aClass1_633 = null;
         aCacheIndex_632 = null;
         aClass1_619 = null;
-        if(arg0 != 0)
-            method350(15);
     }
 }

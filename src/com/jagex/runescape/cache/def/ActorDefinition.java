@@ -176,9 +176,9 @@ public class ActorDefinition extends SubNode {
                         class40_sub11.anIntArray2154[i_6_] = i_7_;
                         Class[] var_classes = new Class[i_9_];
                         for(int i_13_ = 0; (i_13_ < i_9_); i_13_++) {
-                            var_classes[i_13_] = Class26.method349((byte) 91, strings[i_13_]);
+                            var_classes[i_13_] = Class26.method349(strings[i_13_]);
                         }
-                        class40_sub11.aSignlinkNodeArray2156[i_6_] = arg0.method386(var_classes, string_8_, Class26.method349((byte) 91, string), (byte) -64);
+                        class40_sub11.aSignlinkNodeArray2156[i_6_] = arg0.method386(var_classes, string_8_, Class26.method349(string), (byte) -64);
                         class40_sub11.aByteArrayArrayArray2159[i_6_] = is;
                     }
                 } else {
@@ -190,7 +190,7 @@ public class ActorDefinition extends SubNode {
                     }
                     class40_sub11.anIntArray2154[i_6_] = i_7_;
                     class40_sub11.anIntArray2165[i_6_] = i_14_;
-                    class40_sub11.aSignlinkNodeArray2157[i_6_] = arg0.method392(Class26.method349((byte) 91, string), string_15_, true);
+                    class40_sub11.aSignlinkNodeArray2157[i_6_] = arg0.method392(Class26.method349(string), string_15_, true);
                 }
             } catch(ClassNotFoundException classnotfoundexception) {
                 class40_sub11.anIntArray2155[i_6_] = -1;

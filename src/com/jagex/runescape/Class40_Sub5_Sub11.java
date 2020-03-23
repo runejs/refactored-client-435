@@ -39,15 +39,11 @@ public class Class40_Sub5_Sub11 extends SubNode {
 
     }
 
-    public static void method632(int arg0) {
-
-        if(arg0 == -1) {
-            aClass1_2629 = null;
-            aClass1_2620 = null;
-            tabWidgetIds = null;
-            aClass1_2622 = null;
-        }
-
+    public static void method632() {
+        aClass1_2629 = null;
+        aClass1_2620 = null;
+        tabWidgetIds = null;
+        aClass1_2622 = null;
     }
 
     public void method634(Buffer arg0, int arg1) {
@@ -59,7 +55,7 @@ public class Class40_Sub5_Sub11 extends SubNode {
             method635(i, 512, arg0);
         }
         if(arg1 != 0)
-            method632(6);
+            method632();
     }
 
     public void method635(int arg0, int arg1, Buffer arg2) {

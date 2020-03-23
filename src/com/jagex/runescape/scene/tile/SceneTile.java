@@ -157,8 +157,7 @@ public class SceneTile extends Node {
             sprite.drawImage(4 + -(sprite.maxWidth / 2) + (i_3_ + 94), -4 + (-i_4_ + (83 + -(sprite.maxHeight / 2))));
     }
 
-    public static void method534(int arg0) {
-
+    public static void method534() {
         aClass1_2042 = null;
         aClass1_2055 = null;
         aClass1_2050 = null;
@@ -166,13 +165,11 @@ public class SceneTile extends Node {
         aClass1_2044 = null;
         aClass1_2051 = null;
         aClass1_2057 = null;
-        int i = -102 % ((arg0 - 14) / 51);
         aClass1_2053 = null;
         anIntArray2048 = null;
         aClass1_2054 = null;
         aClass1_2046 = null;
         aClass40_Sub5_Sub14_Sub4_2043 = null;
-
     }
 
     public static RSString method536(int arg0, int arg1, int arg2) {

@@ -327,21 +327,17 @@ public class Class33 {
         Class65.method1019(104);
     }
 
-    public static void method408(int arg0) {
-
+    public static void method408() {
         aClass1_779 = null;
         aClass1_799 = null;
         cmd_prefix = null;
         anIntArray791 = null;
         aClass1_795 = null;
-        if(arg0 == 22019) {
-            aClass1_777 = null;
-            aClass1_797 = null;
-            aClass9_778 = null;
-            aClass1_783 = null;
-            aClass1_798 = null;
-        }
-
+        aClass1_777 = null;
+        aClass1_797 = null;
+        aClass9_778 = null;
+        aClass1_783 = null;
+        aClass1_798 = null;
     }
 
     public static boolean method409(byte arg0, int arg1) {

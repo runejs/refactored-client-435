@@ -126,17 +126,12 @@ public class GameObjectDefinition extends SubNode {
 
     }
 
-    public static void method604(boolean arg0) {
-
+    public static void method604() {
         aClass23_2545 = null;
         aClass1_2556 = null;
         aClass1_2560 = null;
         aClass1_2526 = null;
-        if(!arg0) {
-            aClass1_2560 = null;
-        }
         aClass68_2524 = null;
-
     }
 
     public static void method609(int arg0, boolean arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {

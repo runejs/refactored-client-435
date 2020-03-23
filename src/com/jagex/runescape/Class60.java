@@ -5,14 +5,9 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
-import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
-import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.VertexNormal;
-import com.jagex.runescape.media.renderable.actor.Actor;
-import com.jagex.runescape.media.renderable.actor.Npc;
-import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.util.CollisionMap;
 
@@ -159,7 +154,7 @@ public class Class60 {
             Class67.aLongArray1614[i] = 0L;
         Class40_Sub3.anInt2020 = 0;
         if(arg0 != 75)
-            method994(false);
+            method994();
     }
 
     public static void method993(int arg0) {
@@ -240,15 +235,11 @@ public class Class60 {
         }
     }
 
-    public static void method994(boolean arg0) {
-
+    public static void method994() {
         aClass1_1401 = null;
         aClass1_1408 = null;
         aClass1_1409 = null;
-        if(arg0)
-            aClass1_1408 = null;
         aClass1_1411 = null;
         aClass1_1416 = null;
-
     }
 }

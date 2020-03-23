@@ -64,8 +64,7 @@ public class InteractiveObject {
 
     }
 
-    public static void method280(boolean arg0) {
-
+    public static void method280() {
         aClass1_495 = null;
         aClass1_494 = null;
         aClass68_482 = null;
@@ -74,10 +73,7 @@ public class InteractiveObject {
         aByteArrayArrayArray492 = null;
         aClass9_470 = null;
         aClass1_478 = null;
-        if(!arg0)
-            method280(false);
         anIntArray483 = null;
         aCacheIndex_488 = null;
-
     }
 }

@@ -55,8 +55,7 @@ public class Class51 {
         return keyChar;
     }
 
-    public static void method939(int arg0) {
-
+    public static void method939() {
         aClass1_1207 = null;
         aClass1_1200 = null;
         aClass1_1196 = null;
@@ -68,9 +67,7 @@ public class Class51 {
         aClass1Array1204 = null;
         aClass68_1206 = null;
         aClass1_1199 = null;
-        int i = -41 / ((arg0 - 53) / 57);
         aClass1_1209 = null;
-
     }
 
     public static void method940(int arg0, RSString arg1, boolean arg2, RSString arg3) {
