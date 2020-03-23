@@ -70,7 +70,7 @@ public class PacketBuffer extends Buffer {
         if(Class43.openChatboxWidgetId != -1) {
             Class55.method958(Class43.openChatboxWidgetId);
             CacheIndex_Sub1.anInt1819 = -1;
-            Class52.redrawChatbox = true;
+            GenericTile.redrawChatbox = true;
             Class43.openChatboxWidgetId = -1;
         }
         if(ActorDefinition.openFullScreenWidgetId != -1) {

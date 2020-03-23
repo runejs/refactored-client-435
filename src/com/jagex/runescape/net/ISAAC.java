@@ -160,7 +160,7 @@ public class ISAAC {
                             if(Class64.setZ > i)
                                 Class64.setZ = i;
                             int i_30_ = ((Class42.tile_underlayids[i][i_16_][i_27_]) & 0xff);
-                            int i_31_ = ((GameFrame.tile_overlayids[i][i_16_][i_27_]) & 0xff);
+                            int i_31_ = ((MouseHandler.tile_overlayids[i][i_16_][i_27_]) & 0xff);
                             if(i_30_ > 0 || i_31_ > 0) {
                                 int i_32_ = (Class40_Sub6.tile_height[i][i_16_][i_27_]);
                                 int i_33_ = (Class40_Sub6.tile_height[i][i_16_ + 1][i_27_]);
@@ -197,7 +197,7 @@ public class ISAAC {
                                 }
                                 int i_45_ = 0;
                                 if(i_41_ != -1)
-                                    i_45_ = (Rasterizer3D.anIntArray2932[(Class40_Sub5_Sub17_Sub6.method831(i_41_, 96, (byte) 73))]);
+                                    i_45_ = (Rasterizer3D.hsl2rgb[(Class40_Sub5_Sub17_Sub6.method831(i_41_, 96, (byte) 73))]);
                                 if(i_31_ != 0) {
                                     int i_46_ = 1 + (OverlayDefinition.tile_underlay_path[i][i_16_][i_27_]);
                                     byte i_47_ = (Class35.tile_overlay_rotation[i][i_16_][i_27_]);
@@ -224,7 +224,7 @@ public class ISAAC {
                                     }
                                     int i_53_ = 0;
                                     if(i_50_ != -2)
-                                        i_53_ = (Rasterizer3D.anIntArray2932[Class34.method420(i_50_, 96, true)]);
+                                        i_53_ = (Rasterizer3D.hsl2rgb[Class34.method420(i_50_, 96, true)]);
                                     if(class40_sub5_sub3.anInt2336 != -1) {
                                         int i_54_ = 0xff & ((Class40_Sub5_Sub15.anInt2791) + (class40_sub5_sub3.anInt2334));
                                         int i_55_ = (class40_sub5_sub3.anInt2330 + (Actor.anInt3151));
@@ -234,7 +234,7 @@ public class ISAAC {
                                         } else
                                             i_55_ = 0;
                                         i_50_ = (Class13.method244((class40_sub5_sub3.anInt2346), i_55_, i_54_));
-                                        i_53_ = (Rasterizer3D.anIntArray2932[Class34.method420(i_50_, 96, true)]);
+                                        i_53_ = (Rasterizer3D.hsl2rgb[Class34.method420(i_50_, 96, true)]);
                                     }
                                     arg0.method99(i, i_16_, i_27_, i_46_, i_47_, i_48_, i_32_, i_33_, i_34_, i_35_, (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_36_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_37_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_38_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_40_, (byte) 73)), Class34.method420(i_49_, i_36_, true), Class34.method420(i_49_, i_37_, true), Class34.method420(i_49_, i_38_, true), Class34.method420(i_49_, i_40_, true), i_45_, i_53_);
                                 } else
@@ -249,7 +249,7 @@ public class ISAAC {
                     arg0.method130(i, i_57_, i_56_, Class59.getVisibilityPlaneFor(i, i_56_, 0, i_57_));
             }
             Class42.tile_underlayids[i] = null;
-            GameFrame.tile_overlayids[i] = null;
+            MouseHandler.tile_overlayids[i] = null;
             OverlayDefinition.tile_underlay_path[i] = null;
             Class35.tile_overlay_rotation[i] = null;
             InteractiveObject.aByteArrayArrayArray492[i] = null;

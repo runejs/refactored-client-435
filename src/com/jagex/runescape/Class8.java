@@ -76,13 +76,13 @@ public class Class8 {
 
     public static void method210() {
         VertexNormal.lowMemory = false;
-        Scene.aBoolean88 = false;
+        Scene.lowMemory = false;
 
     }
 
     public static void method211() {
         ISAAC.aClass9_516.method235((byte) 78);
-        GameFrame.aClass9_1455.method235((byte) 36);
+        MouseHandler.aClass9_1455.method235((byte) 36);
         Buffer.aClass9_1933.method235((byte) 72);
 
     }

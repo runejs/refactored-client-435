@@ -40,9 +40,9 @@ public class Class44 implements Runnable {
 
     public static void addChatMessage(RSString name, RSString message, int type) {
         if(Class43.openChatboxWidgetId == -1)
-            Class52.redrawChatbox = true;
+            GenericTile.redrawChatbox = true;
         if(type == 0 && Class48.anInt1138 != -1) {
-            GameFrame.clickType = 0;
+            MouseHandler.clickType = 0;
             RSApplet.aClass1_8 = message;
         }
         for(int i = 99; i > 0; i--) {

@@ -165,7 +165,7 @@ public class Main extends RSApplet {
                                                             widget_16_.scrollPosition += i_18_;
                                                         }
                                                     }
-                                                } else if((Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType) == 0 || ((Class52.anInt1233) != i_7_) || ((widget.id) != (Class30.anInt704)))
+                                                } else if((Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType) == 0 || ((GenericTile.anInt1233) != i_7_) || ((widget.id) != (Class30.anInt704)))
                                                     class40_sub5_sub14_sub4.drawImage(i_10_, i_11_);
                                                 else
                                                     class40_sub5_sub14_sub4.method728(i_10_, i_11_, 128);
@@ -792,11 +792,11 @@ public class Main extends RSApplet {
 
     public void method34(int arg0) { // TODO: Might be Startup
         if(Class67.aBoolean1575) {
-            Class22_Sub1.method311((byte) -80, GameFrame.aCanvas1469);
-            Class55.method965(32, GameFrame.aCanvas1469);
+            Class22_Sub1.method311((byte) -80, MouseHandler.aCanvas1469);
+            Class55.method965(32, MouseHandler.aCanvas1469);
             this.setCanvas((byte) 86);
-            Widget.method642(GameFrame.aCanvas1469, -10);
-            RSRuntimeException.method1056(GameFrame.aCanvas1469, (byte) 33);
+            Widget.method642(MouseHandler.aCanvas1469, -10);
+            RSRuntimeException.method1056(MouseHandler.aCanvas1469, (byte) 33);
         }
         if(Class51.anInt1197 == 0)
             GameObject.drawLoadingText(Class67.anInt1607, null, Class22_Sub2.currentLoadingText);
@@ -919,7 +919,7 @@ public class Main extends RSApplet {
         Class33.method407(false);
         Class60.method989(true);
         ActorDefinition.method567(0x1);
-        Class52.method947(-1);
+        GenericTile.method947(-1);
         do {
             try {
                 if(SpotAnimDefinition.aClass67_2298 != null)
@@ -1003,10 +1003,10 @@ public class Main extends RSApplet {
         Wall.method237();
         WallDecoration.method952();
         FloorDecoration.method348();
-        Class52.method946();
-        Class11.method239();
+        GenericTile.method946();
+        ComplexTile.method239();
         KeyFocusListener.method953();
-        GameFrame.method1001();
+        MouseHandler.method1001();
         Class51.method939();
         SubNode.method541();
         CacheIndex.method180();
@@ -1080,8 +1080,8 @@ public class Main extends RSApplet {
             aBoolean1790 = true;
         Wall.anInt350 = OverlayDefinition.anInt2340;
         Class61.method997(47);
-        Widget.method642(GameFrame.aCanvas1469, -10);
-        RSRuntimeException.method1056(GameFrame.aCanvas1469, (byte) 70);
+        Widget.method642(MouseHandler.aCanvas1469, -10);
+        RSRuntimeException.method1056(MouseHandler.aCanvas1469, (byte) 70);
         RSCanvas.anInt57 = Signlink.anInt737;
         try {
             if(ISAAC.aClass31_521.cacheData != null) {

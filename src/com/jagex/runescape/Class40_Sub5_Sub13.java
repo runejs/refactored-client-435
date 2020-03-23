@@ -45,8 +45,8 @@ public class Class40_Sub5_Sub13 extends SubNode {
             if(RSCanvas.anInt54 != 0) {
                 if(Player.aByteArray3270 != null)
                     PacketBuffer.anInt2258 = arg1;
-            } else if(GameFrame.anInt1450 >= 0) {
-                GameFrame.anInt1450 = arg1;
+            } else if(MouseHandler.anInt1450 >= 0) {
+                MouseHandler.anInt1450 = arg1;
                 Class5.aClass22_189.method304((byte) -111, arg1, 0);
             }
             if(arg0 != 22741)
@@ -60,14 +60,14 @@ public class Class40_Sub5_Sub13 extends SubNode {
                 class40_sub3.anInt2031--;
             if(class40_sub3.anInt2031 == 0) {
                 if(class40_sub3.anInt2028 < 0 || Node.method459(class40_sub3.anInt2036, class40_sub3.anInt2028, (byte) 103)) {
-                    Class52.method945(class40_sub3.anInt2038, class40_sub3.anInt2028, class40_sub3.anInt2039, class40_sub3.anInt2036, class40_sub3.anInt2025, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
+                    GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2028, class40_sub3.anInt2039, class40_sub3.anInt2036, class40_sub3.anInt2025, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
                     class40_sub3.method457(-1);
                 }
             } else {
                 if(class40_sub3.anInt2033 > 0)
                     class40_sub3.anInt2033--;
                 if(class40_sub3.anInt2033 == 0 && class40_sub3.anInt2039 >= 1 && class40_sub3.anInt2038 >= 1 && class40_sub3.anInt2039 <= 102 && class40_sub3.anInt2038 <= 102 && (class40_sub3.anInt2017 < 0 || Node.method459(class40_sub3.anInt2030, class40_sub3.anInt2017, (byte) 106))) {
-                    Class52.method945(class40_sub3.anInt2038, class40_sub3.anInt2017, class40_sub3.anInt2039, class40_sub3.anInt2030, class40_sub3.anInt2035, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
+                    GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2017, class40_sub3.anInt2039, class40_sub3.anInt2030, class40_sub3.anInt2035, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
                     class40_sub3.anInt2033 = -1;
                     if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2028 == -1)
                         class40_sub3.method457(-1);

@@ -36,7 +36,7 @@ public class Class49 {
         int yawDifference = 0x7ff & -yaw + 2048;
         int zOffset = 0;
         int pitchDifference = 2048 - pitch & 0x7ff;
-        int yOffset = GameFrame.cameraZoom + pitch * 3;
+        int yOffset = MouseHandler.cameraZoom + pitch * 3;
         if(pitchDifference != 0) {
             int cosine = Model.COSINE[pitchDifference];
             int sine = Model.SINE[pitchDifference];

@@ -118,7 +118,7 @@ public class Class40_Sub3 extends Node {
             }
         } else if(Class40_Sub5_Sub6.anInt2451 == 45) {
             Class38_Sub1.method446(ISAAC.aClass31_521, 0, !VertexNormal.lowMemory, (byte) 30);
-            Class49.aClass40_Sub9_Sub1_1152 = GameFrame.method1003(ISAAC.aClass31_521, GameFrame.aCanvas1469, arg0 ^ 0x74be);
+            Class49.aClass40_Sub9_Sub1_1152 = MouseHandler.method1003(ISAAC.aClass31_521, MouseHandler.aCanvas1469, arg0 ^ 0x74be);
             Class55.aClass48_1289 = new Class48(22050, CollisionMap.anInt141);
             Class40_Sub5_Sub6.anInt2451 = 50;
             Class22_Sub2.currentLoadingText = VertexNormal.aClass1_1105;
@@ -207,7 +207,7 @@ public class Class40_Sub3 extends Node {
             else
                 Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Class22_Sub1.aClass1_1861, HuffmanEncoding.blank_string);
             if(UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567 == null)
-                UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Class52.aClass1_1230, HuffmanEncoding.blank_string);
+                UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, GenericTile.aClass1_1230, HuffmanEncoding.blank_string);
             else
                 i++;
             if(LinkedList.aClass40_Sub5_Sub14_Sub4_1057 == null)

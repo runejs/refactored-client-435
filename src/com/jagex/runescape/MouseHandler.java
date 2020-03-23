@@ -23,7 +23,7 @@ import com.jagex.runescape.util.Signlink;
 import java.awt.*;
 import java.awt.event.*;
 
-public class GameFrame implements MouseListener, MouseMotionListener, FocusListener, MouseWheelListener {
+public class MouseHandler implements MouseListener, MouseMotionListener, FocusListener, MouseWheelListener {
     public static int anInt1450;
     public static Cache aClass9_1455;
     public static int anInt1457 = -1;
@@ -96,7 +96,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
                             ISAAC.redrawTabArea = true;
                         Class4.menuOpen = false;
                         if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
-                            Class52.redrawChatbox = true;
+                            GenericTile.redrawChatbox = true;
                     }
                 }
                 if(i == 1) {
@@ -129,7 +129,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
                         ISAAC.redrawTabArea = true;
                     Class4.menuOpen = false;
                     if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
-                        Class52.redrawChatbox = true;
+                        GenericTile.redrawChatbox = true;
                 }
             } else {
                 if(i == 1 && ActorDefinition.menuActionRow > 0) {
@@ -281,21 +281,21 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
 
                     if(Class40_Sub5_Sub15.inputType == 3) {
                         Class26.itemSearchScroll = Class26.itemSearchScroll - 30;
-                        Class52.redrawChatbox = true;
+                        GenericTile.redrawChatbox = true;
                     } else {
                         GameObjectDefinition.chatboxScroll = GameObjectDefinition.chatboxScroll + 30;
-                        Class52.redrawChatbox = true;
+                        GenericTile.redrawChatbox = true;
                     }
                 }
             } else if(Class40_Sub5_Sub15.inputType == 3) {
                 Class26.itemSearchScroll = Class26.itemSearchScroll + 30;
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
             } else if(GameObjectDefinition.chatboxScroll < 1) {
                 Class26.itemSearchScroll = 0;
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
             } else {
                 GameObjectDefinition.chatboxScroll = GameObjectDefinition.chatboxScroll - 30;
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
             }
             return true;
         } else {

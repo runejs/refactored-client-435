@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-public class Class11 {
+public class ComplexTile {
     public static int[] anIntArray358;
     public static int[] anIntArray360 = new int[6];
     public static int[] anIntArray363;
@@ -33,7 +33,7 @@ public class Class11 {
     public int[] anIntArray378;
     public int anInt379;
 
-    public Class11(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, int arg12, int arg13, int arg14, int arg15, int arg16, int arg17, int arg18) {
+    public ComplexTile(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, int arg12, int arg13, int arg14, int arg15, int arg16, int arg17, int arg18) {
         if(arg5 != arg6 || arg5 != arg7 || arg5 != arg8)
             aBoolean365 = false;
         anInt373 = arg0;

@@ -140,10 +140,10 @@ public class ChatBox {
                         }
                     }
                     Rasterizer.resetCoordinates();
-                    GameFrame.chatboxScrollMax = line * 14 + 7;
-                    if(GameFrame.chatboxScrollMax < 78)
-                        GameFrame.chatboxScrollMax = 78;
-                    Class27.drawScrollBar(0, (-(GameObjectDefinition.chatboxScroll) + GameFrame.chatboxScrollMax - 77), GameFrame.chatboxScrollMax, 463, 77, 0);
+                    MouseHandler.chatboxScrollMax = line * 14 + 7;
+                    if(MouseHandler.chatboxScrollMax < 78)
+                        MouseHandler.chatboxScrollMax = 78;
+                    Class27.drawScrollBar(0, (-(GameObjectDefinition.chatboxScroll) + MouseHandler.chatboxScrollMax - 77), MouseHandler.chatboxScrollMax, 463, 77, 0);
                     RSString name;
                     if(((Player.localPlayer) != null) && (Player.localPlayer.playerName) != null)
                         name = (Player.localPlayer.playerName);
@@ -155,12 +155,12 @@ public class ChatBox {
                 } else {
                     boolean bool = (Class40_Sub5_Sub6.drawInterface(0, Class48.anInt1138, 96, (byte) -5, 0, 3, 479));
                     if(!bool)
-                        Class52.redrawChatbox = true;
+                        GenericTile.redrawChatbox = true;
                 }
             } else {
                 boolean bool = Class40_Sub5_Sub6.drawInterface(0, (Class43.openChatboxWidgetId), 96, (byte) -5, 0, 2, 479);
                 if(!bool)
-                    Class52.redrawChatbox = true;
+                    GenericTile.redrawChatbox = true;
             }
         } else {
             Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(RSApplet.aClass1_8, 239, 40, 0);

@@ -99,7 +99,7 @@ public class ItemDefinition extends SubNode {
 
     public static void method742(int arg0) {
         try {
-            Graphics graphics = GameFrame.aCanvas1469.getGraphics();
+            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
             Landscape.aClass68_1185.method1044(arg0 ^ arg0, 0, graphics, 4);
             Class40_Sub5_Sub1.aClass68_2275.method1044(arg0 + -205, 0, graphics, 357);
             Class39.aClass68_908.method1044(0, 722, graphics, 4);
@@ -110,7 +110,7 @@ public class ItemDefinition extends SubNode {
             Class30.aClass68_714.method1044(0, 496, graphics, 357);
             Class17.aClass68_462.method1044(0, 0, graphics, 338);
         } catch(Exception exception) {
-            GameFrame.aCanvas1469.repaint();
+            MouseHandler.aCanvas1469.repaint();
         }
     }
 
@@ -471,7 +471,7 @@ public class ItemDefinition extends SubNode {
             }
         }
         if(arg0) {
-            Model model = ((Model) GameFrame.aClass9_1455.get((long) id, (byte) 87));
+            Model model = ((Model) MouseHandler.aClass9_1455.get((long) id, (byte) 87));
             if(model != null) {
                 return model;
             }
@@ -491,7 +491,7 @@ public class ItemDefinition extends SubNode {
         if(arg0) {
             model.applyLighting(ambient + 64, 768 + contrast, -50, -10, -50, true);
             model.singleTile = true;
-            GameFrame.aClass9_1455.put(-7208, (long) id, model);
+            MouseHandler.aClass9_1455.put(-7208, (long) id, model);
         }
         return model;
 

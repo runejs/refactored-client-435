@@ -2,15 +2,10 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.Widget;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.media.renderable.actor.Actor;
-import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class42 {
@@ -106,7 +101,7 @@ public class Class42 {
 
     public static void method886(int arg0, int arg1, boolean arg2, byte[] arg3, int arg4) {
         if(arg0 == 0 && Class5.aClass22_189 != null) {
-            if(GameFrame.anInt1450 < 0) {
+            if(MouseHandler.anInt1450 < 0) {
                 if(RSCanvas.anInt54 != 0) {
                     PacketBuffer.anInt2258 = arg1;
                     Player.aByteArray3270 = arg3;
@@ -115,8 +110,8 @@ public class Class42 {
                     RSString.method56(2037, arg2, arg3, arg1);
             } else {
                 Buffer.anInt1982 = arg4;
-                if(GameFrame.anInt1450 != 0) {
-                    int i = Class29.method372(arg0 ^ 0x60, GameFrame.anInt1450);
+                if(MouseHandler.anInt1450 != 0) {
+                    int i = Class29.method372(arg0 ^ 0x60, MouseHandler.anInt1450);
                     i -= Class39.anInt909;
                     RSCanvas.anInt54 = (i + 3600) / arg4;
                     if(RSCanvas.anInt54 < 1)

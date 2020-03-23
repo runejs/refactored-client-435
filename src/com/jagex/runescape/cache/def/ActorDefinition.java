@@ -108,10 +108,10 @@ public class ActorDefinition extends SubNode {
             method576(true);
         }
         try {
-            Graphics graphics = GameFrame.aCanvas1469.getGraphics();
+            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
             RSString.aClass68_1665.method1044(0, 550, graphics, 4);
         } catch(Exception exception) {
-            GameFrame.aCanvas1469.repaint();
+            MouseHandler.aCanvas1469.repaint();
         }
     }
 

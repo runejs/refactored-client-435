@@ -54,9 +54,9 @@ public class SceneTile extends Node {
     public InteractiveObject[] interactiveObjects = new InteractiveObject[5];
     public int anInt2066;
     public int wallCullDirection;
-    public Class11 aClass11_2068;
+    public ComplexTile shapedTile;
     public int anInt2069;
-    public Class52 aClass52_2070;
+    public GenericTile plainTile;
     public boolean draw;
     public Wall wall;
     public int interactiveObjectsSizeOR;

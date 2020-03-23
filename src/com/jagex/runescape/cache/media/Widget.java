@@ -195,7 +195,7 @@ public class Widget extends SubNode {
 
     public static void method639(int arg0) {
         synchronized(Class59.keyFocusListener) {
-            Class59.anInt1389 = Class52.anInt1214;
+            Class59.anInt1389 = GenericTile.anInt1214;
             if(GameObjectDefinition.anInt2543 < 0) {
                 for(int i = 0; i < 112; i++) {
                     Item.obfuscatedKeyStatus[i] = false;
@@ -212,7 +212,7 @@ public class Widget extends SubNode {
                     }
                 }
             }
-            Class52.anInt1214 = IdentityKit.anInt2598;
+            GenericTile.anInt1214 = IdentityKit.anInt2598;
         }
         if(arg0 <= 121) {
             aClass1_2674 = null;

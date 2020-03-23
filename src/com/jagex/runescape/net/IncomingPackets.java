@@ -182,7 +182,7 @@ public class IncomingPackets {
                     Class22.method309(-1, i_9_);
                     ISAAC.redrawTabArea = true;
                     if(Class48.anInt1138 != -1)
-                        Class52.redrawChatbox = true;
+                        GenericTile.redrawChatbox = true;
                 }
                 incomingPacket = -1;
                 return true;
@@ -447,7 +447,7 @@ public class IncomingPackets {
                 int i_50_ = incomingPacketBuffer.getUnsignedShortLE();
                 if(Class43.openChatboxWidgetId != -1) {
                     Class55.method958(Class43.openChatboxWidgetId);
-                    Class52.redrawChatbox = true;
+                    GenericTile.redrawChatbox = true;
                     Class43.openChatboxWidgetId = -1;
                 }
                 if(ActorDefinition.openFullScreenWidgetId != -1) {
@@ -469,7 +469,7 @@ public class IncomingPackets {
                 }
                 CacheIndex_Sub1.anInt1819 = -1;
                 if(Class40_Sub5_Sub15.inputType != 0) {
-                    Class52.redrawChatbox = true;
+                    GenericTile.redrawChatbox = true;
                     Class40_Sub5_Sub15.inputType = 0;
                 }
                 ISAAC.redrawTabArea = true;
@@ -519,7 +519,7 @@ public class IncomingPackets {
                 }
                 if(Class43.openChatboxWidgetId != -1) {
                     Class55.method958(Class43.openChatboxWidgetId);
-                    Class52.redrawChatbox = true;
+                    GenericTile.redrawChatbox = true;
                     Class43.openChatboxWidgetId = -1;
                 }
                 if(ActorDefinition.openFullScreenWidgetId != -1) {
@@ -537,7 +537,7 @@ public class IncomingPackets {
                 }
                 CacheIndex_Sub1.anInt1819 = -1;
                 if(Class40_Sub5_Sub15.inputType != 0) {
-                    Class52.redrawChatbox = true;
+                    GenericTile.redrawChatbox = true;
                     Class40_Sub5_Sub15.inputType = 0;
                 }
                 Class64.method1012(HuffmanEncoding.openScreenWidgetId, 2);
@@ -573,7 +573,7 @@ public class IncomingPackets {
                     Class48.anInt1138 = i_56_;
                 }
                 incomingPacket = -1;
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
                 return true;
             }
             if(incomingPacket == SHOW_FULLSCREEN_WIDGET) { // fullscreen widget?
@@ -617,7 +617,7 @@ public class IncomingPackets {
                 }
                 if(Class43.openChatboxWidgetId != -1) {
                     Class55.method958(Class43.openChatboxWidgetId);
-                    Class52.redrawChatbox = true;
+                    GenericTile.redrawChatbox = true;
                     Class43.openChatboxWidgetId = -1;
                 }
                 if(ActorDefinition.openFullScreenWidgetId != -1) {
@@ -636,7 +636,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 CacheIndex_Sub1.anInt1819 = -1;
                 if(Class40_Sub5_Sub15.inputType != 0) {
-                    Class52.redrawChatbox = true;
+                    GenericTile.redrawChatbox = true;
                     Class40_Sub5_Sub15.inputType = 0;
                 }
                 return true;
@@ -668,7 +668,7 @@ public class IncomingPackets {
                     Class43.openChatboxWidgetId = widgetId;
                 }
 
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
                 incomingPacket = -1;
                 CacheIndex_Sub1.anInt1819 = -1;
                 return true;
@@ -722,7 +722,7 @@ public class IncomingPackets {
                 Class35.publicChatMode = incomingPacketBuffer.getUnsignedByte();
                 Class4.anInt185 = incomingPacketBuffer.getUnsignedByte();
                 ItemDefinition.anInt2797 = incomingPacketBuffer.getUnsignedByte();
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
                 Cache.aBoolean330 = true;
                 incomingPacket = -1;
                 return true;
@@ -745,7 +745,7 @@ public class IncomingPackets {
                     GroundItemTile.varbitmasks[configId] = configValue;
                     Class22.method309(-1, configId);
                     if(Class48.anInt1138 != -1)
-                        Class52.redrawChatbox = true;
+                        GenericTile.redrawChatbox = true;
                     ISAAC.redrawTabArea = true;
                 }
                 incomingPacket = -1;
@@ -770,7 +770,7 @@ public class IncomingPackets {
                 if(Class43.openChatboxWidgetId != -1) {
                     Class55.method958(Class43.openChatboxWidgetId);
                     Class43.openChatboxWidgetId = -1;
-                    Class52.redrawChatbox = true;
+                    GenericTile.redrawChatbox = true;
                 }
                 if(ActorDefinition.openFullScreenWidgetId != -1) {
                     Class55.method958(ActorDefinition.openFullScreenWidgetId);
@@ -791,7 +791,7 @@ public class IncomingPackets {
                 }
                 IdentityKit.aBoolean2597 = true;
                 if(Class40_Sub5_Sub15.inputType != 0) {
-                    Class52.redrawChatbox = true;
+                    GenericTile.redrawChatbox = true;
                     Class40_Sub5_Sub15.inputType = 0;
                 }
                 CacheIndex_Sub1.anInt1819 = -1;
@@ -846,7 +846,7 @@ public class IncomingPackets {
             if(incomingPacket == UPDATE_CARRY_WEIGHT) { // update carry weight
                 if(Class5.currentTabId == 12)
                     ISAAC.redrawTabArea = true;
-                Class52.anInt1222 = incomingPacketBuffer.getShortBE();
+                GenericTile.anInt1222 = incomingPacketBuffer.getShortBE();
                 incomingPacket = -1;
                 return true;
             }
@@ -868,7 +868,7 @@ public class IncomingPackets {
                     }
                 }
                 if(Class48.anInt1138 != -1)
-                    Class52.redrawChatbox = true;
+                    GenericTile.redrawChatbox = true;
                 ISAAC.redrawTabArea = true;
                 incomingPacket = -1;
                 return true;
@@ -890,7 +890,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 HuffmanEncoding.inputInputMessage = HuffmanEncoding.blank_string;
                 Class40_Sub5_Sub15.inputType = 1;
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
                 InteractiveObject.messagePromptRaised = false;
                 return true;
             }
@@ -1154,7 +1154,7 @@ public class IncomingPackets {
                     Class55.method958(Class43.openChatboxWidgetId);
                     Class43.openChatboxWidgetId = -1;
                 }
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
                 HuffmanEncoding.inputInputMessage = HuffmanEncoding.blank_string;
                 Class40_Sub5_Sub15.inputType = 2;
                 incomingPacket = -1;

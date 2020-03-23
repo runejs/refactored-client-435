@@ -48,7 +48,7 @@ public class UnderlayDefinition extends SubNode {
                 RSString class1 = Class60.method991(-23, arg0).method85(-4305);
                 for(int i = 0; Item.friendsCount > i; i++) {
                     if(Class59.aLongArray1397[i] == arg0) {
-                        Class44.addChatMessage(HuffmanEncoding.blank_string, (RSString.linkRSStrings((new RSString[]{class1, GameFrame.aClass1_1465}))), 0);
+                        Class44.addChatMessage(HuffmanEncoding.blank_string, (RSString.linkRSStrings((new RSString[]{class1, MouseHandler.aClass1_1465}))), 0);
                         return;
                     }
                 }

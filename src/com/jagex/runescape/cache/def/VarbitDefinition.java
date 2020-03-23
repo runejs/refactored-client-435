@@ -66,15 +66,15 @@ public class VarbitDefinition extends SubNode {
         if(arg4 != -27520)
             method565();
         if(Class5.aClass22_189 != null) {
-            if(GameFrame.anInt1450 >= 0) {
+            if(MouseHandler.anInt1450 >= 0) {
                 arg2 -= 20;
                 if(arg2 < 1)
                     arg2 = 1;
                 RSCanvas.anInt54 = arg2;
-                if(GameFrame.anInt1450 == 0)
+                if(MouseHandler.anInt1450 == 0)
                     Buffer.anInt1982 = 0;
                 else {
-                    int i = Class29.method372(113, GameFrame.anInt1450);
+                    int i = Class29.method372(113, MouseHandler.anInt1450);
                     i -= Class39.anInt909;
                     Buffer.anInt1982 = (-1 + (arg2 + 3600 + i)) / arg2;
                 }

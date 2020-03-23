@@ -84,7 +84,7 @@ public class Class56 {
         Class59.anIntArray1398 = null;
         InteractiveObject.aByteArrayArrayArray492 = null;
         OverlayDefinition.tile_underlay_path = null;
-        GameFrame.tile_overlayids = null;
+        MouseHandler.tile_overlayids = null;
         Class42.tile_underlayids = null;
         Class40_Sub5_Sub17_Sub6.anIntArray3250 = null;
     }

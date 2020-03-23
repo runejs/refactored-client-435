@@ -80,12 +80,12 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 int y = 20;
                 int x = 507;
                 int colour = 0xffff00;
-                if(Class52.fps < 30 && VertexNormal.lowMemory)
+                if(GenericTile.fps < 30 && VertexNormal.lowMemory)
                     colour = 0xff0000;
-                if(Class52.fps < 20 && !VertexNormal.lowMemory)
+                if(GenericTile.fps < 20 && !VertexNormal.lowMemory)
                     colour = 0xff0000;
                 //                Class53.fontNormal.method687((Class40_Sub5_Sub17_Sub6.method832(-88, new RSString[]{Class61.aClass1_1446, HashTable.method334(Class52.fps, -1)})), x, y, colour);
-                WallDecoration.fontNormal.drawStringRight("Fps: " + Class52.fps, x, y, colour);
+                WallDecoration.fontNormal.drawStringRight("Fps: " + GenericTile.fps, x, y, colour);
                 colour = 0xffff00;
                 y += 15;
                 Runtime runtime = Runtime.getRuntime();

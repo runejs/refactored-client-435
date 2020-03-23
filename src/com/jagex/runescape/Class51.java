@@ -72,7 +72,7 @@ public class Class51 {
             LinkedList.method908((byte) 114);
             Class55.method964(40);
             ActorDefinition.method574(4);
-            Class52.method943(ItemDefinition.anInt2797, -118, WallDecoration.fontNormal, Class4.anInt185, Class35.publicChatMode);
+            GenericTile.method943(ItemDefinition.anInt2797, -118, WallDecoration.fontNormal, Class4.anInt185, Class35.publicChatMode);
             Class40_Sub2.method527(Class5.currentTabId, arg0 + 4, Class40_Sub5_Sub11.tabWidgetIds, Class29.tabAreaOverlayWidgetId == -1, -1);
             Class38.aBoolean893 = true;
             Class40_Sub3.aBoolean2026 = true;
@@ -102,8 +102,8 @@ public class Class51 {
     public static void method942(int arg1) {
         if(arg1 == -1 && Class35.songTimeout == 0)
             Class33.method402(false);
-        else if(arg1 != -1 && arg1 != GameFrame.anInt1457 && RSCanvas.anInt60 != 0 && Class35.songTimeout == 0)
+        else if(arg1 != -1 && arg1 != MouseHandler.anInt1457 && RSCanvas.anInt60 != 0 && Class35.songTimeout == 0)
             Class33.method403(RSCanvas.anInt60, true, 10, arg1, Class55.aClass6_Sub1_1286, 0, 0, false);
-        GameFrame.anInt1457 = arg1;
+        MouseHandler.anInt1457 = arg1;
     }
 }

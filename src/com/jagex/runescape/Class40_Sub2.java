@@ -84,7 +84,7 @@ public class Class40_Sub2 extends Node {
             aClass1_2008 = null;
         int i = arg0.getHash(arg2);
         int i_4_ = arg0.method179(i, arg3);
-        return Class52.method944((byte) -3, i, arg0, i_4_);
+        return GenericTile.method944((byte) -3, i, arg0, i_4_);
     }
 
     public static void method527(int arg0, int arg1, int[] arg2, boolean arg3, int arg4) {
@@ -157,11 +157,11 @@ public class Class40_Sub2 extends Node {
                 Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776[12].drawImage(226, 2);
         }
         try {
-            Graphics graphics = GameFrame.aCanvas1469.getGraphics();
+            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
             InteractiveObject.aClass68_482.method1044(0, 516, graphics, 160);
             RSCanvas.aClass68_59.method1044(0, 496, graphics, 466);
         } catch(Exception exception) {
-            GameFrame.aCanvas1469.repaint();
+            MouseHandler.aCanvas1469.repaint();
         }
     }
 

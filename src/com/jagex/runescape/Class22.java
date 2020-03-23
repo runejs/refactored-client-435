@@ -105,7 +105,7 @@ public abstract class Class22 {
                                     i_12_++;
                             }
                         }
-                        GameFrame.aClass40_Sub5_Sub14_Sub4Array1466[GameObject.anInt3040] = (Class8.aClass40_Sub5_Sub14_Sub4Array296[i_11_]);
+                        MouseHandler.aClass40_Sub5_Sub14_Sub4Array1466[GameObject.anInt3040] = (Class8.aClass40_Sub5_Sub14_Sub4Array296[i_11_]);
                         Actor.anIntArray3149[GameObject.anInt3040] = i_13_;
                         LinkedList.anIntArray1083[(GameObject.anInt3040)] = i_12_;
                         GameObject.anInt3040++;
@@ -181,14 +181,14 @@ public abstract class Class22 {
                     if(i_21_ == 4)
                         i_22_ = 0;
                     if(i_22_ != RSCanvas.anInt60) {
-                        if(RSCanvas.anInt60 != 0 || GameFrame.anInt1457 == -1) {
+                        if(RSCanvas.anInt60 != 0 || MouseHandler.anInt1457 == -1) {
                             if(i_22_ == 0) {
                                 Class33.method402(false);
                                 Class35.songTimeout = 0;
                             } else
                                 Node.method456(i_22_, (byte) 81);
                         } else {
-                            Class33.method414(false, 0, GameFrame.anInt1457, i_22_, 0, Class55.aClass6_Sub1_1286);
+                            Class33.method414(false, 0, MouseHandler.anInt1457, i_22_, 0, Class55.aClass6_Sub1_1286);
                             Class35.songTimeout = 0;
                         }
                         RSCanvas.anInt60 = i_22_;
@@ -209,7 +209,7 @@ public abstract class Class22 {
                         RSCanvas.anInt65 = 0;
                 }
                 if(i == 8) {
-                    Class52.redrawChatbox = true;
+                    GenericTile.redrawChatbox = true;
                     CollisionMap.anInt165 = i_21_;
                 }
                 if(i == 4) {

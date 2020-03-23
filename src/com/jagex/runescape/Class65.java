@@ -65,7 +65,7 @@ public class Class65 {
         Class67.anIntArray1579 = new int[104];
         SceneTile.anIntArray2048 = new int[104];
         AnimationSequence.anIntArrayArray2490 = new int[105][105];
-        GameFrame.tile_overlayids = new byte[4][104][104];
+        MouseHandler.tile_overlayids = new byte[4][104][104];
         Class40_Sub5_Sub17_Sub6.anIntArray3250 = new int[104];
         Class35.tile_overlay_rotation = new byte[4][104][104];
         Class42.tile_underlayids = new byte[4][104][104];

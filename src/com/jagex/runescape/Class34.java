@@ -4,11 +4,7 @@ import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.Widget;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.media.renderable.actor.Actor;
-import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class34 {
     public static HashTable aClass23_805;
@@ -99,7 +95,7 @@ public class Class34 {
 
     public static boolean method416(byte arg0) {
         synchronized(Class59.keyFocusListener) {
-            if(Class59.anInt1389 == Class52.anInt1214)
+            if(Class59.anInt1389 == GenericTile.anInt1214)
                 return false;
             ItemDefinition.anInt2854 = Class40_Sub6.anIntArray2113[Class59.anInt1389];
             Class59.anInt1388 = Class40_Sub5_Sub13.anIntArray2764[Class59.anInt1389];

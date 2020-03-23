@@ -63,9 +63,9 @@ public class LinkedList {
         for(int i = -3 + class1.length(); i > 0; i -= 3)
             class1 = (RSString.linkRSStrings(new RSString[]{class1.substring(0, i), Class33.aClass1_795, class1.substring(i)}));
         if(class1.length() > 8)
-            class1 = (RSString.linkRSStrings((new RSString[]{Landscape.aClass1_1162, class1.substring(0, -8 + class1.length()), UnderlayDefinition.aClass1_2577, Class52.aClass1_1213, class1, Class51.aClass1_1199})));
+            class1 = (RSString.linkRSStrings((new RSString[]{Landscape.aClass1_1162, class1.substring(0, -8 + class1.length()), UnderlayDefinition.aClass1_2577, GenericTile.aClass1_1213, class1, Class51.aClass1_1199})));
         else if(class1.length() > 4)
-            class1 = (RSString.linkRSStrings((new RSString[]{Renderable.aClass1_2862, class1.substring(0, class1.length() + -4), IdentityKit.aClass1_2593, Class52.aClass1_1213, class1, Class51.aClass1_1199})));
+            class1 = (RSString.linkRSStrings((new RSString[]{Renderable.aClass1_2862, class1.substring(0, class1.length() + -4), IdentityKit.aClass1_2593, GenericTile.aClass1_1213, class1, Class51.aClass1_1199})));
         return RSString.linkRSStrings((new RSString[]{Class48.aClass1_1123, class1}));
     }
 
@@ -77,12 +77,12 @@ public class LinkedList {
 
     public static void method908(byte arg0) {
         try {
-            Graphics graphics = GameFrame.aCanvas1469.getGraphics();
+            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
             if(arg0 <= 83)
                 method908((byte) 19);
             RSCanvas.aClass68_64.method1044(0, 17, graphics, 357);
         } catch(Exception exception) {
-            GameFrame.aCanvas1469.repaint();
+            MouseHandler.aCanvas1469.repaint();
         }
     }
 

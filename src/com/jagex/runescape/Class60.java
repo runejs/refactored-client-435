@@ -163,7 +163,7 @@ public class Class60 {
         Class40_Sub6.method836(1);
         if(Class51.anInt1197 == 10) {
             int i = Class57.anInt1338 + -202;
-            int i_11_ = GameFrame.clickType;
+            int i_11_ = MouseHandler.clickType;
             int i_12_ = -171 + RSString.anInt1668;
             int i_13_ = -58 % ((-38 - arg0) / 59);
             if(Class26.anInt622 == 0) {

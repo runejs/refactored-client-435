@@ -217,11 +217,11 @@ public class Class40_Sub5_Sub1 extends SubNode {
     }
 
     public static void method544() {
-        if(GameFrame.clickType == 1) {
+        if(MouseHandler.clickType == 1) {
             if(Class57.anInt1338 >= 6 && Class57.anInt1338 <= 106 && RSString.anInt1668 >= 467 && RSString.anInt1668 <= 499) {
                 Cache.aBoolean330 = true;
                 Class35.publicChatMode = (1 + Class35.publicChatMode) % 4;
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
                 SceneCluster.packetBuffer.putPacket(32);
                 Class34.anInt821++;
                 SceneCluster.packetBuffer.putByte(Class35.publicChatMode);
@@ -229,7 +229,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 SceneCluster.packetBuffer.putByte(ItemDefinition.anInt2797);
             }
             if(Class57.anInt1338 >= 135 && Class57.anInt1338 <= 235 && RSString.anInt1668 >= 467 && RSString.anInt1668 <= 499) {
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
                 Class4.anInt185 = (Class4.anInt185 + 1) % 3;
                 Cache.aBoolean330 = true;
                 Class34.anInt821++;
@@ -241,7 +241,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
             if(Class57.anInt1338 >= 273 && Class57.anInt1338 <= 373 && RSString.anInt1668 >= 467 && RSString.anInt1668 <= 499) {
                 ItemDefinition.anInt2797 = (ItemDefinition.anInt2797 + 1) % 3;
                 Cache.aBoolean330 = true;
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
                 SceneCluster.packetBuffer.putPacket(32);
                 Class34.anInt821++;
                 SceneCluster.packetBuffer.putByte(Class35.publicChatMode);

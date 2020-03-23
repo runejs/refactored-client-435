@@ -64,7 +64,7 @@ public class Npc extends Actor {
             if(Class51.anInt1197 == 30 || Class51.anInt1197 == 35) {
                 if(ISAAC.aBoolean519 && Class51.anInt1197 == 30) {
                     SpotAnimDefinition.anInt2302 = 0;
-                    GameFrame.clickType = 0;
+                    MouseHandler.clickType = 0;
                     while(Class34.method416((byte) -104)) {
                         /* empty */
                     }
@@ -74,7 +74,7 @@ public class Npc extends Actor {
                 Class40_Sub5_Sub6.putHackCheckPacket(-12, 205, SceneCluster.packetBuffer);
                 synchronized(Class12.mouseCapturer.objectLock) {
                     if(Class22.accountFlagged) {
-                        if(GameFrame.clickType != 0 || Class12.mouseCapturer.coord >= 40) {
+                        if(MouseHandler.clickType != 0 || Class12.mouseCapturer.coord >= 40) {
                             int coordinateCount = 0;
                             SceneCluster.packetBuffer.putPacket(210);
                             SceneCluster.packetBuffer.putByte(0);
@@ -136,7 +136,7 @@ public class Npc extends Actor {
                         Class12.mouseCapturer.coord = 0;
                     }
                 }
-                if(GameFrame.clickType != 0) {
+                if(MouseHandler.clickType != 0) {
                     long l = ((GameObjectDefinition.aLong2561 - Class51.aLong1203) / 50L);
                     int i = Class57.anInt1338;
                     int i_10_ = RSString.anInt1668;
@@ -152,7 +152,7 @@ public class Npc extends Actor {
                     } else
                         i_10_ = 0;
                     int i_11_ = 0;
-                    if(GameFrame.clickType == 2)
+                    if(MouseHandler.clickType == 2)
                         i_11_ = 1;
                     if(l > 4095)
                         l = 4095L;
@@ -204,7 +204,7 @@ public class Npc extends Actor {
                                 if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 2)
                                     ISAAC.redrawTabArea = true;
                                 if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 3)
-                                    Class52.redrawChatbox = true;
+                                    GenericTile.redrawChatbox = true;
                                 Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 0;
                             }
                         }
@@ -215,7 +215,7 @@ public class Npc extends Actor {
                                 Class40_Sub5_Sub15.aBoolean2784 = true;
                             if(SpotAnimDefinition.anInt2302 == 0) {
                                 if(SceneTile.activeInterfaceType == 3)
-                                    Class52.redrawChatbox = true;
+                                    GenericTile.redrawChatbox = true;
                                 if(SceneTile.activeInterfaceType == 2)
                                     ISAAC.redrawTabArea = true;
                                 SceneTile.activeInterfaceType = 0;
@@ -265,12 +265,12 @@ public class Npc extends Actor {
                                     }
                                 }
                                 RSRuntimeException.anInt1651 = 10;
-                                GameFrame.clickType = 0;
+                                MouseHandler.clickType = 0;
                             }
                         }
-                        if(Scene.anInt78 != -1) {
-                            int i = Scene.anInt78;
-                            int i_18_ = Scene.anInt81;
+                        if(Scene.clickedTileX != -1) {
+                            int i = Scene.clickedTileX;
+                            int i_18_ = Scene.clickedTileY;
                             boolean bool = (Class38_Sub1.method448(0, 0, (Player.localPlayer.pathY[0]), i, (byte) 119, 0, true, 0, 0, (Player.localPlayer.pathX[0]), i_18_, 0));
                             if(bool) {
                                 Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
@@ -278,20 +278,20 @@ public class Npc extends Actor {
                                 Class40_Sub11.anInt2163 = Class57.anInt1338;
                                 LinkedList.anInt1075 = 1;
                             }
-                            Scene.anInt78 = -1;
+                            Scene.clickedTileX = -1;
                         }
-                        if(GameFrame.clickType == 1 && RSApplet.aClass1_8 != null) {
-                            GameFrame.clickType = 0;
-                            Class52.redrawChatbox = true;
+                        if(MouseHandler.clickType == 1 && RSApplet.aClass1_8 != null) {
+                            MouseHandler.clickType = 0;
+                            GenericTile.redrawChatbox = true;
                             RSApplet.aClass1_8 = null;
                         }
-                        GameFrame.method1002(-77);
+                        MouseHandler.method1002(-77);
                         if(ActorDefinition.openFullScreenWidgetId == -1) {
                             Item.method776((byte) -125);
                             Class38_Sub1.method447((byte) 29);
                             Class40_Sub5_Sub1.method544();
                         }
-                        if(SpotAnimDefinition.anInt2302 == 1 || GameFrame.clickType == 1)
+                        if(SpotAnimDefinition.anInt2302 == 1 || MouseHandler.clickType == 1)
                             anInt3294++;
                         int i = 34;
                         if(HuffmanEncoding.openScreenWidgetId != -1)
@@ -320,7 +320,7 @@ public class Npc extends Actor {
                                 WallDecoration.anInt1257++;
                                 if(RSString.anInt1711 == WallDecoration.anInt1257) {
                                     if(Class67.anInt1586 != -1)
-                                        Class52.redrawChatbox = true;
+                                        GenericTile.redrawChatbox = true;
                                     if(FloorDecoration.anInt614 != -1)
                                         ISAAC.redrawTabArea = true;
                                 }

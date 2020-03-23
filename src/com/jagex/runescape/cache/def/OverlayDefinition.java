@@ -119,17 +119,17 @@ public class OverlayDefinition extends SubNode {
                 FloorDecoration.method344(-40);
                 Class38.method440((byte) -73);
                 if(Class68_Sub1.aClass68_2213 == null)
-                    Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649(503, 765, GameFrame.aCanvas1469, -4875);
+                    Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649(503, 765, MouseHandler.aCanvas1469, -4875);
             }
             if(arg0 == 5 || arg0 == 10 || arg0 == 20) {
                 Class68_Sub1.aClass68_2213 = null;
                 FloorDecoration.method344(-69);
-                Item.method779(GameFrame.aCanvas1469, true, (RSCanvas.aClass6_Sub1_48), (ActorDefinition.aClass6_Sub1_2377));
+                Item.method779(MouseHandler.aCanvas1469, true, (RSCanvas.aClass6_Sub1_48), (ActorDefinition.aClass6_Sub1_2377));
             }
             if(arg0 == 25 || arg0 == 30 || arg0 == 40) {
                 Class68_Sub1.aClass68_2213 = null;
                 Class38.method440((byte) -98);
-                Class40_Sub5_Sub17_Sub1.method763(GameFrame.aCanvas1469, (byte) -128, (ActorDefinition.aClass6_Sub1_2377));
+                Class40_Sub5_Sub17_Sub1.method763(MouseHandler.aCanvas1469, (byte) -128, (ActorDefinition.aClass6_Sub1_2377));
             }
             Class51.anInt1197 = arg0;
             Class40_Sub5_Sub11.clearScreen = true;

@@ -111,7 +111,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                         Wall.aWidget_353 = widget;
                         Class40_Sub5_Sub11.anInt2621 = Landscape.mouseY;
                     }
-                    if(GameFrame.clickType == 1 && (i_6_ <= Class57.anInt1338) && ((RSString.anInt1668 >= i_4_)) && Class57.anInt1338 < i_8_ && RSString.anInt1668 < i_7_)
+                    if(MouseHandler.clickType == 1 && (i_6_ <= Class57.anInt1338) && ((RSString.anInt1668 >= i_4_)) && Class57.anInt1338 < i_8_ && RSString.anInt1668 < i_7_)
                         bool_10_ = true;
                     if(Wall.aWidget_353 != null) {
                         bool_9_ = false;
@@ -217,7 +217,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 }
             }
             setCanvas((byte) 121);
-            Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649((IdentityKit.height), Class12.width, GameFrame.aCanvas1469, -4875);
+            Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649((IdentityKit.height), Class12.width, MouseHandler.aCanvas1469, -4875);
             method31(true);
             SceneCluster.aClass38_768 = Class56.method972((byte) 47);
             SceneCluster.aClass38_768.method443(-10115);
@@ -243,7 +243,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 aClass1_14 = null;
             PacketBuffer.aBoolean2255 = true;
             try {
-                GameFrame.aCanvas1469.removeFocusListener(this);
+                MouseHandler.aCanvas1469.removeFocusListener(this);
             } catch(Exception exception) {
                 /* empty */
             }
@@ -320,7 +320,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
     public abstract void method23();
 
     public void focusLost(FocusEvent arg0) {
-        Class52.aBoolean1215 = false;
+        GenericTile.aBoolean1215 = false;
     }
 
     public abstract void method24();
@@ -346,7 +346,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
     }
 
     public void focusGained(FocusEvent arg0) {
-        Class52.aBoolean1215 = true;
+        GenericTile.aBoolean1215 = true;
         Class40_Sub5_Sub11.clearScreen = true;
     }
 
@@ -390,19 +390,19 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             aLongArray4[Class30.anInt681] = l;
             if(l_11_ != 0 && (l > l_11_)) {
                 int i = (int) (-l_11_ + l);
-                Class52.fps = ((i >> 1) + 32000) / i;
+                GenericTile.fps = ((i >> 1) + 32000) / i;
             }
             Class30.anInt681 = Class30.anInt681 + 1 & 0x1f;
             if(Node.anInt938++ > 50) {
                 Node.anInt938 -= 50;
                 Class40_Sub5_Sub11.clearScreen = true;
-                GameFrame.aCanvas1469.setSize(Class12.width, IdentityKit.height);
-                GameFrame.aCanvas1469.setVisible(true);
+                MouseHandler.aCanvas1469.setSize(Class12.width, IdentityKit.height);
+                MouseHandler.aCanvas1469.setVisible(true);
                 if(Class35.aFrame1732 == null)
-                    GameFrame.aCanvas1469.setLocation(0, 0);
+                    MouseHandler.aCanvas1469.setLocation(0, 0);
                 else {
                     Insets insets = Class35.aFrame1732.getInsets();
-                    GameFrame.aCanvas1469.setLocation(insets.left, insets.top);
+                    MouseHandler.aCanvas1469.setLocation(insets.left, insets.top);
                 }
             }
             method34(arg0 + -210);
@@ -419,14 +419,14 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
 
     public void method29(boolean arg0) {
         long l = System.currentTimeMillis();
-        long l_14_ = Class67.aLongArray1614[GameFrame.anInt1468];
+        long l_14_ = Class67.aLongArray1614[MouseHandler.anInt1468];
         if(l_14_ != 0L && l > l_14_) {
             /* empty */
         }
-        Class67.aLongArray1614[GameFrame.anInt1468] = l;
-        GameFrame.anInt1468 = 0x1f & GameFrame.anInt1468 + 1;
+        Class67.aLongArray1614[MouseHandler.anInt1468] = l;
+        MouseHandler.anInt1468 = 0x1f & MouseHandler.anInt1468 + 1;
         synchronized(this) {
-            HashTable.aBoolean571 = Class52.aBoolean1215;
+            HashTable.aBoolean571 = GenericTile.aBoolean1215;
         }
         method23();
         if(arg0)
@@ -491,23 +491,23 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             container = Class35.aFrame1732;
         else
             container = ISAAC.aClass31_521.anApplet740;
-        if(GameFrame.aCanvas1469 != null) {
-            GameFrame.aCanvas1469.removeFocusListener(this);
-            container.remove(GameFrame.aCanvas1469);
+        if(MouseHandler.aCanvas1469 != null) {
+            MouseHandler.aCanvas1469.removeFocusListener(this);
+            container.remove(MouseHandler.aCanvas1469);
         }
-        GameFrame.aCanvas1469 = new RSCanvas(this);
-        container.add(GameFrame.aCanvas1469);
-        GameFrame.aCanvas1469.setSize(Class12.width, IdentityKit.height);
-        GameFrame.aCanvas1469.setVisible(true);
+        MouseHandler.aCanvas1469 = new RSCanvas(this);
+        container.add(MouseHandler.aCanvas1469);
+        MouseHandler.aCanvas1469.setSize(Class12.width, IdentityKit.height);
+        MouseHandler.aCanvas1469.setVisible(true);
         if(Class35.aFrame1732 != null) {
             Insets insets = Class35.aFrame1732.getInsets();
-            GameFrame.aCanvas1469.setLocation(insets.left, insets.top);
+            MouseHandler.aCanvas1469.setLocation(insets.left, insets.top);
         } else
-            GameFrame.aCanvas1469.setLocation(0, 0);
-        GameFrame.aCanvas1469.addFocusListener(this);
+            MouseHandler.aCanvas1469.setLocation(0, 0);
+        MouseHandler.aCanvas1469.addFocusListener(this);
         if(arg0 < 85)
             run();
-        GameFrame.aCanvas1469.requestFocus();
+        MouseHandler.aCanvas1469.requestFocus();
         Class40_Sub5_Sub11.clearScreen = true;
         Class67.aBoolean1575 = false;
         Class4.aLong174 = System.currentTimeMillis();

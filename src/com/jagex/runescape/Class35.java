@@ -121,7 +121,7 @@ public class Class35 implements Interface3 {
         anInt1753 = anInt1752;
     }
 
-    public int[] method12(int arg0, int arg1) {
+    public int[] getTexturePixels(int arg0, int arg1) {
         EntryTable class40_sub10 = aClass40_Sub10Array1740[arg1];
         int i = -68 / ((-75 - arg0) / 33);
         if(class40_sub10 != null) {

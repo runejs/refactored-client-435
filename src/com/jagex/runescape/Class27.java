@@ -174,7 +174,7 @@ public class Class27 {
             int i_12_ = Class33.selectedMenuActions[arg1];
             if(Class40_Sub5_Sub15.inputType != 0 && action != 1005) {
                 Class40_Sub5_Sub15.inputType = 0;
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
             }
             if(action == 37) {
                 SceneCluster.packetBuffer.putPacket(21);
@@ -183,7 +183,7 @@ public class Class27 {
                 SceneCluster.packetBuffer.putShortBE(i_12_);
                 SceneCluster.packetBuffer.putShortBE(i);
                 Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
-                Class52.anInt1233 = i;
+                GenericTile.anInt1233 = i;
                 RSRuntimeException.anInt1651 = 0;
                 if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16)
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
@@ -266,7 +266,7 @@ public class Class27 {
                 SceneCluster.packetBuffer.putShortBE(i_12_);
                 Class30.anInt704 = i_10_;
                 RSRuntimeException.anInt1651 = 0;
-                Class52.anInt1233 = i;
+                GenericTile.anInt1233 = i;
                 Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                 if(i_10_ >> 16 == HuffmanEncoding.openScreenWidgetId)
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
@@ -278,7 +278,7 @@ public class Class27 {
                 SceneCluster.packetBuffer.putShortBE(i_12_);
                 SceneCluster.packetBuffer.putShortLE(i);
                 SceneCluster.packetBuffer.putIntME1(i_10_);
-                Class52.anInt1233 = i;
+                GenericTile.anInt1233 = i;
                 Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                 RSRuntimeException.anInt1651 = 0;
                 Class30.anInt704 = i_10_;
@@ -305,7 +305,7 @@ public class Class27 {
                 SceneCluster.packetBuffer.putShortLE(i);
                 SceneCluster.packetBuffer.putShortLE(i_12_);
                 SceneCluster.packetBuffer.putIntME2(i_10_);
-                Class52.anInt1233 = i;
+                GenericTile.anInt1233 = i;
                 Class30.anInt704 = i_10_;
                 RSRuntimeException.anInt1651 = 0;
                 Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
@@ -411,7 +411,7 @@ public class Class27 {
                     SceneCluster.packetBuffer.putShortLE(i);
                     SceneCluster.packetBuffer.putIntLE(i_10_);
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
-                    Class52.anInt1233 = i;
+                    GenericTile.anInt1233 = i;
                     Class30.anInt704 = i_10_;
                     if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16)
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
@@ -433,7 +433,7 @@ public class Class27 {
                         }
                         if(i_19_ != -1 && Class40_Sub7.friendWorlds[i_19_] > 0) {
                             Class37.anInt876 = 3;
-                            Class52.redrawChatbox = true;
+                            GenericTile.redrawChatbox = true;
                             Class40_Sub5_Sub15.inputType = 0;
                             HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
                             InteractiveObject.messagePromptRaised = true;
@@ -522,7 +522,7 @@ public class Class27 {
                     SceneCluster.packetBuffer.putShortBE(LinkedList.anInt1061);
                     Class30.anInt704 = i_10_;
                     RSRuntimeException.anInt1651 = 0;
-                    Class52.anInt1233 = i;
+                    GenericTile.anInt1233 = i;
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                     if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16)
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
@@ -569,7 +569,7 @@ public class Class27 {
                         SceneCluster.packetBuffer.putShortLE(i);
                         SceneCluster.packetBuffer.putShortLE(i_12_);
                         SceneCluster.packetBuffer.putIntBE(i_10_);
-                        Class52.anInt1233 = i;
+                        GenericTile.anInt1233 = i;
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                         Class30.anInt704 = i_10_;
                         RSRuntimeException.anInt1651 = 0;
@@ -671,7 +671,7 @@ public class Class27 {
                             SceneCluster.packetBuffer.putShortLE(i_12_);
                         } else
                             Class44.addChatMessage(HuffmanEncoding.blank_string, (RSString.linkRSStrings((new RSString[]{HashTable.method334((widget.itemAmounts[i]), -1), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), 0);
-                        Class52.anInt1233 = i;
+                        GenericTile.anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
                         Class30.anInt704 = i_10_;
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
@@ -692,7 +692,7 @@ public class Class27 {
                     if(action == 40) {
                         Class55.method958(Class48.anInt1138);
                         Class48.anInt1138 = -1;
-                        Class52.redrawChatbox = true;
+                        GenericTile.redrawChatbox = true;
                     }
                     if(action == 32 && AnimationSequence.method596(i, i_12_, (byte) -27, i_10_)) {
                         SceneCluster.packetBuffer.putPacket(225);
@@ -713,14 +713,14 @@ public class Class27 {
                         if(i_10_ >> 16 == Class43.openChatboxWidgetId)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                         Class30.anInt704 = i_10_;
-                        Class52.anInt1233 = i;
+                        GenericTile.anInt1233 = i;
                     }
                     if(action == 11) {
                         SceneCluster.packetBuffer.putPacket(29);
                         SceneCluster.packetBuffer.putIntME1(i_10_);
                         SceneCluster.packetBuffer.putShortBE(i);
                         SceneCluster.packetBuffer.putShortLE(i_12_);
-                        Class52.anInt1233 = i;
+                        GenericTile.anInt1233 = i;
                         Class30.anInt704 = i_10_;
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                         if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16)
@@ -785,7 +785,7 @@ public class Class27 {
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                         if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
-                        Class52.anInt1233 = i;
+                        GenericTile.anInt1233 = i;
                         Class30.anInt704 = i_10_;
                         if(i_10_ >> 16 == Class43.openChatboxWidgetId)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
@@ -822,7 +822,7 @@ public class Class27 {
                         SceneCluster.packetBuffer.putShortBE(i_12_);
                         Class30.anInt704 = i_10_;
                         RSRuntimeException.anInt1651 = 0;
-                        Class52.anInt1233 = i;
+                        GenericTile.anInt1233 = i;
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                         if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
@@ -869,7 +869,7 @@ public class Class27 {
                         SceneCluster.packetBuffer.putIntLE(i_10_);
                         SceneCluster.packetBuffer.putShortLE(i);
                         SceneCluster.packetBuffer.putShortBE(i_12_);
-                        Class52.anInt1233 = i;
+                        GenericTile.anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                         Class30.anInt704 = i_10_;
@@ -1005,7 +1005,7 @@ public class Class27 {
             Class40_Sub5_Sub11.clearScreen = false;
             ItemDefinition.method742(arg0 ^ ~0x4e29);
             IdentityKit.aBoolean2597 = true;
-            Class52.redrawChatbox = true;
+            GenericTile.redrawChatbox = true;
             ISAAC.redrawTabArea = true;
             Cache.aBoolean330 = true;
         }
@@ -1026,17 +1026,17 @@ public class Class27 {
             Class43.drawTabArea(-29);
         }
         if(Class43.openChatboxWidgetId == -1) {
-            Class12.chatboxInterface.scrollPosition = -77 + (-GameObjectDefinition.chatboxScroll + GameFrame.chatboxScrollMax);
+            Class12.chatboxInterface.scrollPosition = -77 + (-GameObjectDefinition.chatboxScroll + MouseHandler.chatboxScrollMax);
             if(Class13.mouseX > 448 && Class13.mouseX < 560 && Landscape.mouseY > 332)
-                Class5.scrollInterface(77, Landscape.mouseY + -357, -17 + Class13.mouseX, GameFrame.chatboxScrollMax, (byte) 114, Class12.chatboxInterface, 463, -1, 0);
-            int currentScroll = (GameFrame.chatboxScrollMax - 77 - Class12.chatboxInterface.scrollPosition);
+                Class5.scrollInterface(77, Landscape.mouseY + -357, -17 + Class13.mouseX, MouseHandler.chatboxScrollMax, (byte) 114, Class12.chatboxInterface, 463, -1, 0);
+            int currentScroll = (MouseHandler.chatboxScrollMax - 77 - Class12.chatboxInterface.scrollPosition);
             if(currentScroll < 0)
                 currentScroll = 0;
-            if(currentScroll > GameFrame.chatboxScrollMax + -77)
-                currentScroll = -77 + GameFrame.chatboxScrollMax;
+            if(currentScroll > MouseHandler.chatboxScrollMax + -77)
+                currentScroll = -77 + MouseHandler.chatboxScrollMax;
             if(currentScroll != GameObjectDefinition.chatboxScroll) {
                 GameObjectDefinition.chatboxScroll = currentScroll;
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
             }
         }
         if(Class43.openChatboxWidgetId == -1 && Class40_Sub5_Sub15.inputType == 3) {
@@ -1051,25 +1051,25 @@ public class Class27 {
                 currentScroll = scrollMax - 77;
             if(currentScroll != Class26.itemSearchScroll) {
                 Class26.itemSearchScroll = currentScroll;
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
             }
         }
         if(arg0 == -20197) {
             if(Class43.openChatboxWidgetId != -1) {
                 boolean bool = Renderable.handleSequences(29378, Class43.openChatboxWidgetId);
                 if(bool)
-                    Class52.redrawChatbox = true;
+                    GenericTile.redrawChatbox = true;
             }
             if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 3)
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
             if(SceneTile.activeInterfaceType == 3)
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
             if(RSApplet.aClass1_8 != null)
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
             if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
-                Class52.redrawChatbox = true;
-            if(Class52.redrawChatbox) {
-                Class52.redrawChatbox = false;
+                GenericTile.redrawChatbox = true;
+            if(GenericTile.redrawChatbox) {
+                GenericTile.redrawChatbox = false;
                 ChatBox.renderChatbox(true);
             }
             Class37.method435(true);
@@ -1088,7 +1088,7 @@ public class Class27 {
             if(Cache.aBoolean330) {
                 Class40_Sub3.aBoolean2026 = true;
                 Cache.aBoolean330 = false;
-                Class52.method943(ItemDefinition.anInt2797, arg0 ^ 0x4e81, WallDecoration.fontNormal, Class4.anInt185, Class35.publicChatMode);
+                GenericTile.method943(ItemDefinition.anInt2797, arg0 ^ 0x4e81, WallDecoration.fontNormal, Class4.anInt185, Class35.publicChatMode);
             }
             Landscape.method934((Player.localPlayer.worldX), Player.worldLevel, Class5.anInt199, (Player.localPlayer.worldY));
             Class5.anInt199 = 0;
@@ -1097,7 +1097,7 @@ public class Class27 {
 
     public static void method366(int arg1) {
         if(arg1 == -3)
-            Class33.method411(Node.aClass1_956, Class52.aClass1_1218, SceneTile.aClass1_2057, (byte) -121);
+            Class33.method411(Node.aClass1_956, GenericTile.aClass1_1218, SceneTile.aClass1_2057, (byte) -121);
         else if(arg1 == -2)
             Class33.method411(Node.aClass1_934, Node.aClass1_969, Class40_Sub5_Sub6.aClass1_2462, (byte) 93);
         else if(arg1 == -1)

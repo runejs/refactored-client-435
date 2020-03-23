@@ -112,11 +112,11 @@ public class Class43 {
                         Class13.method243((byte) 89, 357, 496, 453, openChatboxWidgetId, 17, Class13.mouseX, Landscape.mouseY, 2);
                 }
                 if((openChatboxWidgetId != -1 || Class48.anInt1138 != -1) && (Class55.anInt1296 != OverlayDefinition.anInt2328)) {
-                    Class52.redrawChatbox = true;
+                    GenericTile.redrawChatbox = true;
                     Class55.anInt1296 = OverlayDefinition.anInt2328;
                 }
                 if((openChatboxWidgetId != -1 || Class48.anInt1138 != -1) && (Item.anInt3065 != Class67.anInt1586)) {
-                    Class52.redrawChatbox = true;
+                    GenericTile.redrawChatbox = true;
                     Class67.anInt1586 = Item.anInt3065;
                 }
                 while(!bool) {

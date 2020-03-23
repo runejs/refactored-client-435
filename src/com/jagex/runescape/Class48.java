@@ -83,7 +83,7 @@ public class Class48 {
                     break;
                 }
                 if(i <= 49) {
-                    GameFrame.tile_overlayids[arg7][arg0][arg4] = arg2.getByte();
+                    MouseHandler.tile_overlayids[arg7][arg0][arg4] = arg2.getByte();
                     OverlayDefinition.tile_underlay_path[arg7][arg0][arg4] = (byte) ((i + -2) / 4);
                     Class35.tile_overlay_rotation[arg7][arg0][arg4] = (byte) HuffmanEncoding.method1021(arg1 + -2 + i, 3);
                 } else if(i <= 81)
@@ -324,7 +324,7 @@ public class Class48 {
         System.gc();
         Class33.method405(arg0 ^ ~0x5e71, 10);
         Class35.songTimeout = 0;
-        GameFrame.anInt1457 = -1;
+        MouseHandler.anInt1457 = -1;
         Class37.method436(arg0 + 7352);
         OverlayDefinition.method559(10);
     }

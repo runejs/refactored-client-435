@@ -32,19 +32,19 @@ public class RSString implements Interface1 {
 
     public static void method56(int arg0, boolean arg1, byte[] arg2, int arg3) {
         if(arg0 == 2037 && Class5.aClass22_189 != null) {
-            if(GameFrame.anInt1450 >= 0) {
+            if(MouseHandler.anInt1450 >= 0) {
                 Class5.aClass22_189.method303((byte) -96);
                 Class39.anInt909 = 0;
                 Player.aByteArray3270 = null;
                 RSCanvas.anInt54 = 20;
-                GameFrame.anInt1450 = -1;
+                MouseHandler.anInt1450 = -1;
             }
             if(arg2 != null) {
                 if(RSCanvas.anInt54 > 0) {
                     Class5.aClass22_189.method301(arg3, 0);
                     RSCanvas.anInt54 = 0;
                 }
-                GameFrame.anInt1450 = arg3;
+                MouseHandler.anInt1450 = arg3;
                 Class5.aClass22_189.method300(arg2, arg1, -15910, arg3);
             }
         }

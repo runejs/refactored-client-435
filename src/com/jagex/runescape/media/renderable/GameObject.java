@@ -17,7 +17,7 @@ import com.jagex.runescape.scene.util.CollisionMap;
 import java.awt.*;
 
 public class GameObject extends Renderable {
-    public static GameFrame frame = new GameFrame();
+    public static MouseHandler frame = new MouseHandler();
     public static RSString aClass1_3037 = RSString.CreateString("Okay");
     public static RSString aClass1_3038 = RSString.CreateString("Loaded gamescreen");
     public static RSString aClass1_3039 = RSString.CreateString("Accept challenge");
@@ -118,10 +118,10 @@ public class GameObject extends Renderable {
 
     public static void drawLoadingText(int percent, Color color, RSString rsString) {
         try {
-            Graphics graphics = GameFrame.aCanvas1469.getGraphics();
+            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
             if(Class17.helveticaBold == null) {
                 Class17.helveticaBold = new Font("Helvetica", Font.BOLD, 13);
-                Class8.fontMetrics = GameFrame.aCanvas1469.getFontMetrics(Class17.helveticaBold);
+                Class8.fontMetrics = MouseHandler.aCanvas1469.getFontMetrics(Class17.helveticaBold);
             }
             if(Class40_Sub5_Sub11.clearScreen) {
                 Class40_Sub5_Sub11.clearScreen = false;
@@ -132,7 +132,7 @@ public class GameObject extends Renderable {
                 color = new Color(140, 17, 17);
             try {
                 if(Class26.anImage624 == null)
-                    Class26.anImage624 = GameFrame.aCanvas1469.createImage(304, 34);
+                    Class26.anImage624 = MouseHandler.aCanvas1469.createImage(304, 34);
                 Graphics graphics1 = Class26.anImage624.getGraphics();
                 graphics1.setColor(color);
                 graphics1.drawRect(0, 0, 303, 33);
@@ -158,7 +158,7 @@ public class GameObject extends Renderable {
                 rsString.method65((-rsString.method73(Class8.fontMetrics) + 304) / 2 + centerWidth, 22 + centerHeight, graphics);
             }
         } catch(Exception exception) {
-            GameFrame.aCanvas1469.repaint();
+            MouseHandler.aCanvas1469.repaint();
         }
     }
 

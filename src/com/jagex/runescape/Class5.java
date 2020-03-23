@@ -82,10 +82,10 @@ public class Class5 {
         } else
             Class40_Sub5_Sub6.method588(-1);
         try {
-            Graphics graphics = GameFrame.aCanvas1469.getGraphics();
+            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
             Class68_Sub1.aClass68_2213.method1044(0, 0, graphics, 0);
         } catch(Exception exception) {
-            GameFrame.aCanvas1469.repaint();
+            MouseHandler.aCanvas1469.repaint();
         }
     }
 
@@ -181,12 +181,12 @@ public class Class5 {
                 InteractiveObject.messagePromptRaised = true;
                 Class40_Sub5_Sub15.inputType = 0;
                 HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
             }
             if(i == 202) {
                 Class37.anInt876 = 2;
                 HuffmanEncoding.aClass1_1563 = Class13.aClass1_417;
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
                 Class40_Sub5_Sub15.inputType = 0;
                 InteractiveObject.messagePromptRaised = true;
                 HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
@@ -199,13 +199,13 @@ public class Class5 {
         if(i == 501) {
             Class40_Sub5_Sub15.inputType = 0;
             Class37.anInt876 = 4;
-            Class52.redrawChatbox = true;
+            GenericTile.redrawChatbox = true;
             HuffmanEncoding.aClass1_1563 = Class51.aClass1_1200;
             HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
             InteractiveObject.messagePromptRaised = true;
         }
         if(i == 502) {
-            Class52.redrawChatbox = true;
+            GenericTile.redrawChatbox = true;
             Class40_Sub5_Sub15.inputType = 0;
             Class37.anInt876 = 5;
             InteractiveObject.messagePromptRaised = true;
@@ -264,13 +264,13 @@ public class Class5 {
             if(arg7 == 1)
                 ISAAC.redrawTabArea = true;
             if(arg7 == 2 || arg7 == 3)
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
         } else if(arg6 > arg2 || (arg6 + 16 <= arg2) || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
             if(-Landscape.anInt1171 + arg6 <= arg2 && 16 + (arg6 + Landscape.anInt1171) > arg2 && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && Npc.anInt3294 > 0) {
                 Class61.aBoolean1444 = true;
                 int i = (-32 + arg0) * arg0 / arg3;
                 if(arg7 == 2 || arg7 == 3)
-                    Class52.redrawChatbox = true;
+                    GenericTile.redrawChatbox = true;
                 if(arg7 == 1)
                     ISAAC.redrawTabArea = true;
                 if(i < 8)
@@ -282,7 +282,7 @@ public class Class5 {
         } else {
             arg5.scrollPosition += 4 * Npc.anInt3294;
             if(arg7 == 2 || arg7 == 3)
-                Class52.redrawChatbox = true;
+                GenericTile.redrawChatbox = true;
             if(arg7 == 1)
                 ISAAC.redrawTabArea = true;
         }

@@ -369,7 +369,7 @@ public class WallDecoration {
                     i += 30;
                     int i_95_ = 120;
                     Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(i_94_ - 73, i_95_ - 20);
-                    arg1.drawText(Class52.aClass1_1223, i_94_ + -73, -20 + i_95_, 144, 40, 16777215, true, 1, 1, 0);
+                    arg1.drawText(GenericTile.aClass1_1223, i_94_ + -73, -20 + i_95_, 144, 40, 16777215, true, 1, 1, 0);
                     i_94_ = 260;
                     Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(i_94_ - 73, i_95_ + -20);
                     arg1.drawText(Class42.aClass1_1011, -73 + i_94_, -20 + i_95_, 144, 40, 16777215, true, 1, 1, 0);
@@ -412,7 +412,7 @@ public class WallDecoration {
             }
             Main.renderFlames(0);
             try {
-                Graphics graphics = GameFrame.aCanvas1469.getGraphics();
+                Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
                 Class38.aClass68_887.method1044(0, 202, graphics, 171);
                 if(arg0 != -19010)
                     method949((byte) 41);
@@ -428,7 +428,7 @@ public class WallDecoration {
                 GameObjectDefinition.aClass68_2524.method1044(0, 128, graphics, 171);
                 Class68.aClass68_1631.method1044(0, 562, graphics, 171);
             } catch(Exception exception) {
-                GameFrame.aCanvas1469.repaint();
+                MouseHandler.aCanvas1469.repaint();
             }
             break;
 

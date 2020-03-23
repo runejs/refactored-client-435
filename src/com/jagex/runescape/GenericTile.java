@@ -14,7 +14,7 @@ import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.awt.*;
 
-public class Class52 {
+public class GenericTile {
     public static RSString aClass1_1213 = RSString.CreateString(" @whi@(X");
     public static int anInt1214;
     public static volatile boolean aBoolean1215;
@@ -47,20 +47,20 @@ public class Class52 {
         aClass1_1241 = RSString.CreateString("Lade Wordpack )2 ");
     }
 
-    public int anInt1220;
+    public int texture;
     public int anInt1225;
     public int anInt1226;
-    public boolean aBoolean1229 = true;
+    public boolean flat = true;
     public int anInt1231;
     public int anInt1232;
-    public int anInt1235;
+    public int colourD;
 
-    public Class52(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6) {
+    public GenericTile(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6) {
         anInt1231 = arg0;
-        aBoolean1229 = arg6;
+        flat = arg6;
         anInt1225 = arg1;
-        anInt1235 = arg2;
-        anInt1220 = arg4;
+        colourD = arg2;
+        texture = arg4;
         anInt1232 = arg3;
         anInt1226 = arg5;
     }
@@ -94,10 +94,10 @@ public class Class52 {
         arg2.drawText(Class22_Sub1.aClass1_1865, 417, 17, 85, 25, 16777215, true, 1, 1, 0);
         int i = -50 % ((arg1 - 82) / 38);
         try {
-            Graphics graphics = GameFrame.aCanvas1469.getGraphics();
+            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
             HuffmanEncoding.aClass68_1541.method1044(0, 0, graphics, 453);
         } catch(Exception exception) {
-            GameFrame.aCanvas1469.repaint();
+            MouseHandler.aCanvas1469.repaint();
         }
     }
 

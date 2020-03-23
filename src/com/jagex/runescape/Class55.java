@@ -138,15 +138,15 @@ public class Class55 {
         SpotAnimDefinition.aClass1_2294 = Class67.aClass1_1612;
         VertexNormal.aClass1_1117 = GameObjectDefinition.aClass1_2560;
         Cache.aClass1_323 = OverlayDefinition.aClass1_2327;
-        GameFrame.aClass1_1465 = Class39.aClass1_898;
+        MouseHandler.aClass1_1465 = Class39.aClass1_898;
         WallDecoration.aClass1_1251 = HashTable.aClass1_563;
         Node.aClass1_960 = Class40_Sub5_Sub17_Sub1.aClass1_2977;
         Node.aClass1_946 = Class64.aClass1_1523;
-        Class52.aClass1_1223 = Wall.aClass1_352;
+        GenericTile.aClass1_1223 = Wall.aClass1_352;
         OverlayDefinition.aClass1_2325 = Class40_Sub2.aClass1_1991;
         SceneTile.aClass1_2047 = Class37.aClass1_860;
         Class13.aClass1_417 = IdentityKit.aClass1_2614;
-        Wall.aClass1_344 = Class52.aClass1_1238;
+        Wall.aClass1_344 = GenericTile.aClass1_1238;
         Class12.aClass1_399 = Class60.aClass1_1409;
         Class40_Sub5_Sub6.aClass1_2458 = GameObject.aClass1_3046;
         Actor.aClass1_3138 = RSApplet.aClass1_14;
@@ -208,9 +208,9 @@ public class Class55 {
         Player.aClass1_3256 = Npc.aClass1_3308;
         Class40_Sub5_Sub1.aClass1_2274 = Class49.aClass1_1149;
         Class8.aClass1_278 = Class13.aClass1_411;
-        Class52.aClass1_1218 = IdentityKit.aClass1_2592;
+        GenericTile.aClass1_1218 = IdentityKit.aClass1_2592;
         Node.aClass1_955 = Class64.aClass1_1523;
-        Class59.aClass1_1399 = Class52.aClass1_1228;
+        Class59.aClass1_1399 = GenericTile.aClass1_1228;
         Class22_Sub1.aClass1_1851 = RSApplet.aClass1_35;
         Node.aClass1_949 = Class27.aClass1_647;
         Class40_Sub5_Sub6.aClass1_2462 = Class22_Sub2.aClass1_1883;
@@ -247,7 +247,7 @@ public class Class55 {
         Class40_Sub5_Sub6.aClass1_2446 = Class68_Sub1.aClass1_2198;
         Widget.aClass1_2684 = SpotAnimDefinition.aClass1_2291;
         Class27.takeStringInstance = SpotAnimDefinition.aClass1_2296;
-        Class48.aClass1_1124 = GameFrame.aClass1_1471;
+        Class48.aClass1_1124 = MouseHandler.aClass1_1471;
         Class5.aClass1_193 = Landscape.aClass1_1161;
         Class49.aClass1_1148 = Class40_Sub5_Sub1.aClass1_2279;
         Class33.aClass1_799 = Npc.aClass1_3307;
@@ -270,7 +270,7 @@ public class Class55 {
         VertexNormal.aClass1_1105 = Class40_Sub13.aClass1_2181;
         Class42.aClass1_1011 = Actor.aClass1_3158;
         Class22_Sub1.aClass1_1870 = Class49.aClass1_1143;
-        GameFrame.aClass1_1474 = Class8.aClass1_300;
+        MouseHandler.aClass1_1474 = Class8.aClass1_300;
         Node.aClass1_937 = Class64.aClass1_1523;
         VertexNormal.aClass1_1090 = Class43.aClass1_1026;
         ActorDefinition.aClass1_2401 = RSApplet.aClass1_21;
@@ -315,7 +315,7 @@ public class Class55 {
         Node.aClass1_963 = LinkedList.aClass1_1078;
         Item.aClass1_3069 = ISAAC.aClass1_517;
         Class48.aClass1_1122 = Cache.aClass1_331;
-        Class40_Sub5_Sub17_Sub1.aClass1_3014 = Class52.aClass1_1241;
+        Class40_Sub5_Sub17_Sub1.aClass1_3014 = GenericTile.aClass1_1241;
         Class44.aClass1_1032 = LinkedList.aClass1_1059;
         VarbitDefinition.aClass1_2357 = Player.aClass1_3275;
         Class8.aClass1_294 = Class40_Sub5_Sub17_Sub6.aClass1_3245;
@@ -340,10 +340,10 @@ public class Class55 {
 
     public static void method964(int arg0) {
         try {
-            Graphics graphics = GameFrame.aCanvas1469.getGraphics();
+            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
             SubNode.aClass68_2091.method1044(0, 553, graphics, 205);
         } catch(Exception exception) {
-            GameFrame.aCanvas1469.repaint();
+            MouseHandler.aCanvas1469.repaint();
         }
         if(arg0 != 40)
             anInt1296 = 7;

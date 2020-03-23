@@ -119,7 +119,7 @@ public class Item extends Renderable {
         if(arg0 > -79)
             method779(null, false, null, null);
         if(Class27.anInt658 == 0) {
-            if(GameFrame.clickType == 1) {
+            if(MouseHandler.clickType == 1) {
                 int i = -575 + Class57.anInt1338;
                 int i_10_ = -5 + (RSString.anInt1668 - 4);
                 if(i >= 0 && i_10_ >= 0 && i < 146 && i_10_ < 151) {

@@ -120,9 +120,9 @@ public class Landscape {
                     bool = false;
                 }
             }
-            if(Class13.anIntArray421[i] != -1 && Class52.aByteArrayArray1217[i] == null) {
-                Class52.aByteArrayArray1217[i] = (Renderable.aClass6_Sub1_2857.method176(Class13.anIntArray421[i], 0, Class44.anIntArrayArray1030[i]));
-                if(Class52.aByteArrayArray1217[i] == null) {
+            if(Class13.anIntArray421[i] != -1 && GenericTile.aByteArrayArray1217[i] == null) {
+                GenericTile.aByteArrayArray1217[i] = (Renderable.aClass6_Sub1_2857.method176(Class13.anIntArray421[i], 0, Class44.anIntArrayArray1030[i]));
+                if(GenericTile.aByteArrayArray1217[i] == null) {
                     Class37.anInt874++;
                     bool = false;
                 }
@@ -132,7 +132,7 @@ public class Landscape {
             bool = true;
             IdentityKit.anInt2591 = 0;
             for(int i = 0; RSString.aByteArrayArray1715.length > i; i++) {
-                byte[] is = Class52.aByteArrayArray1217[i];
+                byte[] is = GenericTile.aByteArrayArray1217[i];
                 if(is != null) {
                     int i_2_ = ((ISAAC.anIntArray528[i] & 0xff) * 64 - Class26.anInt635);
                     int i_3_ = ((ISAAC.anIntArray528[i] >> 8) * 64 - SpotAnimDefinition.anInt2307);
@@ -180,7 +180,7 @@ public class Landscape {
                     for(int i_12_ = 0; i > i_12_; i_12_++) {
                         //                        System.out.println("Requesting map: "+Class13.anIntArray421[i_12_]);
                         // load maps in here
-                        byte[] is = Class52.aByteArrayArray1217[i_12_];
+                        byte[] is = GenericTile.aByteArrayArray1217[i_12_];
                         if(FileOperations.FileExists("./data/maps/" + (Class13.anIntArray421[i_12_]) + ".cmap")) {
                             MapDecompressor.objectLoader("./data/maps/" + (Class13.anIntArray421[i_12_]) + ".cmap");
                         } else if(FileOperations.FileExists("./data/maps/" + (Class13.anIntArray421[i_12_]) + ".dat")) {
@@ -245,8 +245,8 @@ public class Landscape {
                                     int i_36_ = i_32_ >> 3 & 0x7ff;
                                     int i_37_ = ((i_34_ / 8 << 8) + (i_36_ / 8));
                                     for(int i_38_ = 0; (i_38_ < ISAAC.anIntArray528.length); i_38_++) {
-                                        if(i_37_ == (ISAAC.anIntArray528[i_38_]) && (Class52.aByteArrayArray1217[i_38_]) != null) {
-                                            Class24.method341(8 * (i_34_ & 0x7), (Npc.currentScene), 0, i_29_, i_35_, i_33_, (Class52.aByteArrayArray1217[i_38_]), 8 * i_31_, aCollisionMapArray1167, 8 * (i_36_ & 0x7), i_30_ * 8);
+                                        if(i_37_ == (ISAAC.anIntArray528[i_38_]) && (GenericTile.aByteArrayArray1217[i_38_]) != null) {
+                                            Class24.method341(8 * (i_34_ & 0x7), (Npc.currentScene), 0, i_29_, i_35_, i_33_, (GenericTile.aByteArrayArray1217[i_38_]), 8 * i_31_, aCollisionMapArray1167, 8 * (i_36_ & 0x7), i_30_ * 8);
                                             break;
                                         }
                                     }

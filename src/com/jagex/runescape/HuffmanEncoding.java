@@ -284,7 +284,7 @@ public class HuffmanEncoding {
                 if(i_18_ == 11)
                     i_16_ = Class40_Sub11.runEnergy;
                 if(i_18_ == 12)
-                    i_16_ = Class52.anInt1222;
+                    i_16_ = GenericTile.anInt1222;
                 if(i_18_ == 13) {
                     int i_26_ = GroundItemTile.varbitmasks[is[i_14_++]];
                     int i_27_ = is[i_14_++];

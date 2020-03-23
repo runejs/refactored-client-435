@@ -103,7 +103,7 @@ public class Class38_Sub1 extends Class38 {
     public static void method447(byte arg0) {
         if(arg0 != 29)
             method448(79, 61, 50, -68, (byte) 53, -121, false, 1, 18, -15, 29, 27);
-        if(GameFrame.clickType == 1) {
+        if(MouseHandler.clickType == 1) {
             if(Class57.anInt1338 >= 539 && Class57.anInt1338 <= 573 && RSString.anInt1668 >= 169 && RSString.anInt1668 < 205 && Class40_Sub5_Sub11.tabWidgetIds[0] != -1) {
                 IdentityKit.aBoolean2597 = true;
                 ISAAC.redrawTabArea = true;

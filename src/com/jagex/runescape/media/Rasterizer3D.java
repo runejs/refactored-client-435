@@ -1,40 +1,40 @@
 package com.jagex.runescape.media;
 
 import com.jagex.runescape.Interface3;
-import com.jagex.runescape.media.Rasterizer;
 
 public class Rasterizer3D extends Rasterizer {
     public static int[] anIntArray2929 = new int[2048];
-    public static int anInt2930;
-    public static int anInt2931;
-    public static int[] anIntArray2932;
-    public static int anInt2933;
+    public static int bottomY;
+    public static int center_y;
+    public static int[] hsl2rgb;
+    public static int alpha;
     public static int anInt2934;
     public static int anInt2935;
     public static boolean aBoolean2936 = false;
-    public static int anInt2937;
-    public static int[] anIntArray2938;
+    public static int center_x;
+    public static int[] lineOffsets;
     public static Interface3 anInterface3_2939;
-    public static int[] anIntArray2940;
+    public static int[] shadowDecay;
     public static int anInt2941;
     public static int anInt2942;
     public static int[] sinetable = new int[2048];
-    public static boolean aBoolean2944;
-    public static int anInt2945;
+    public static boolean notTextured;
+    public static int viewportRx;
     public static int[] cosinetable;
-    public static boolean aBoolean2947;
+    public static boolean restrict_edges;
     public static boolean aBoolean2948;
+    private static boolean useLatestShadeLine = true;
 
     static {
-        anInt2933 = 0;
-        anIntArray2932 = new int[65536];
-        aBoolean2944 = true;
-        anIntArray2940 = new int[512];
+        alpha = 0;
+        hsl2rgb = new int[65536];
+        notTextured = true;
+        shadowDecay = new int[512];
         cosinetable = new int[2048];
-        aBoolean2947 = false;
+        restrict_edges = false;
         aBoolean2948 = false;
         for(int i = 1; i < 512; i++)
-            anIntArray2940[i] = 32768 / i;
+            shadowDecay[i] = 32768 / i;
         for(int i = 1; i < 2048; i++)
             anIntArray2929[i] = 65536 / i;
         for(int i = 0; i < 2048; i++) {
@@ -44,16 +44,16 @@ public class Rasterizer3D extends Rasterizer {
     }
 
     public static void method698(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        if(aBoolean2947) {
-            if(arg5 > anInt2945)
-                arg5 = anInt2945;
+        if(restrict_edges) {
+            if(arg5 > viewportRx)
+                arg5 = viewportRx;
             if(arg4 < 0)
                 arg4 = 0;
         }
         if(arg4 < arg5) {
             arg1 += arg4;
             arg3 = arg5 - arg4 >> 2;
-            if(anInt2933 == 0) {
+            if(alpha == 0) {
                 while(--arg3 >= 0) {
                     arg0[arg1++] = arg2;
                     arg0[arg1++] = arg2;
@@ -64,8 +64,8 @@ public class Rasterizer3D extends Rasterizer {
                 while(--arg3 >= 0)
                     arg0[arg1++] = arg2;
             } else {
-                int i = anInt2933;
-                int i_0_ = 256 - anInt2933;
+                int i = alpha;
+                int i_0_ = 256 - alpha;
                 arg2 = (((arg2 & 0xff00ff) * i_0_ >> 8 & 0xff00ff) + ((arg2 & 0xff00) * i_0_ >> 8 & 0xff00));
                 while(--arg3 >= 0) {
                     arg0[arg1++] = (arg2 + ((arg0[arg1] & 0xff00ff) * i >> 8 & 0xff00ff) + ((arg0[arg1] & 0xff00) * i >> 8 & 0xff00));
@@ -80,11 +80,11 @@ public class Rasterizer3D extends Rasterizer {
         }
     }
 
-    public static void method699(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, int arg12, int arg13, int arg14, int arg15, int arg16, int arg17, int arg18) {
-        int[] is = anInterface3_2939.method12(56, arg18);
-        if(is == null) {
+    public static void drawTexturedTriangle(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, int arg12, int arg13, int arg14, int arg15, int arg16, int arg17, int arg18) {
+        int[] texture = anInterface3_2939.getTexturePixels(56, arg18);
+        if(texture == null) {
             int i = anInterface3_2939.method14(true, arg18);
-            method706(arg0, arg1, arg2, arg3, arg4, arg5, method709(i, arg6), method709(i, arg7), method709(i, arg8));
+            drawShadedTriangle(arg0, arg1, arg2, arg3, arg4, arg5, method709(i, arg6), method709(i, arg7), method709(i, arg8));
         } else {
             aBoolean2948 = anInterface3_2939.method15(arg18, (byte) -90);
             aBoolean2936 = anInterface3_2939.method13((byte) -109, arg18);
@@ -122,11 +122,11 @@ public class Rasterizer3D extends Rasterizer {
                 i_14_ = (arg6 - arg8 << 16) / (arg0 - arg2);
             }
             if(arg0 <= arg1 && arg0 <= arg2) {
-                if(arg0 < anInt2930) {
-                    if(arg1 > anInt2930)
-                        arg1 = anInt2930;
-                    if(arg2 > anInt2930)
-                        arg2 = anInt2930;
+                if(arg0 < bottomY) {
+                    if(arg1 > bottomY)
+                        arg1 = bottomY;
+                    if(arg2 > bottomY)
+                        arg2 = bottomY;
                     if(arg1 < arg2) {
                         arg5 = arg3 <<= 16;
                         arg8 = arg6 <<= 16;
@@ -144,16 +144,16 @@ public class Rasterizer3D extends Rasterizer {
                             arg7 -= i_12_ * arg1;
                             arg1 = 0;
                         }
-                        int i_15_ = arg0 - anInt2931;
+                        int i_15_ = arg0 - center_y;
                         i += i_2_ * i_15_;
                         i_3_ += i_5_ * i_15_;
                         i_6_ += i_8_ * i_15_;
                         if(arg0 != arg1 && i_13_ < i_9_ || arg0 == arg1 && i_13_ > i_11_) {
                             arg2 -= arg1;
                             arg1 -= arg0;
-                            arg0 = anIntArray2938[arg0];
+                            arg0 = lineOffsets[arg0];
                             while(--arg1 >= 0) {
-                                method701(Rasterizer.pixels, is, 0, 0, arg0, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, texture, 0, 0, arg0, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg5 += i_13_;
                                 arg3 += i_9_;
                                 arg8 += i_14_;
@@ -164,7 +164,7 @@ public class Rasterizer3D extends Rasterizer {
                                 i_6_ += i_8_;
                             }
                             while(--arg2 >= 0) {
-                                method701(Rasterizer.pixels, is, 0, 0, arg0, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, texture, 0, 0, arg0, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg5 += i_13_;
                                 arg4 += i_11_;
                                 arg8 += i_14_;
@@ -177,9 +177,9 @@ public class Rasterizer3D extends Rasterizer {
                         } else {
                             arg2 -= arg1;
                             arg1 -= arg0;
-                            arg0 = anIntArray2938[arg0];
+                            arg0 = lineOffsets[arg0];
                             while(--arg1 >= 0) {
-                                method701(Rasterizer.pixels, is, 0, 0, arg0, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, texture, 0, 0, arg0, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg5 += i_13_;
                                 arg3 += i_9_;
                                 arg8 += i_14_;
@@ -190,7 +190,7 @@ public class Rasterizer3D extends Rasterizer {
                                 i_6_ += i_8_;
                             }
                             while(--arg2 >= 0) {
-                                method701(Rasterizer.pixels, is, 0, 0, arg0, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, texture, 0, 0, arg0, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg5 += i_13_;
                                 arg4 += i_11_;
                                 arg8 += i_14_;
@@ -218,16 +218,16 @@ public class Rasterizer3D extends Rasterizer {
                             arg8 -= i_12_ * arg2;
                             arg2 = 0;
                         }
-                        int i_16_ = arg0 - anInt2931;
+                        int i_16_ = arg0 - center_y;
                         i += i_2_ * i_16_;
                         i_3_ += i_5_ * i_16_;
                         i_6_ += i_8_ * i_16_;
                         if(arg0 != arg2 && i_13_ < i_9_ || arg0 == arg2 && i_11_ > i_9_) {
                             arg1 -= arg2;
                             arg2 -= arg0;
-                            arg0 = anIntArray2938[arg0];
+                            arg0 = lineOffsets[arg0];
                             while(--arg2 >= 0) {
-                                method701(Rasterizer.pixels, is, 0, 0, arg0, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, texture, 0, 0, arg0, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg4 += i_13_;
                                 arg3 += i_9_;
                                 arg7 += i_14_;
@@ -238,7 +238,7 @@ public class Rasterizer3D extends Rasterizer {
                                 i_6_ += i_8_;
                             }
                             while(--arg1 >= 0) {
-                                method701(Rasterizer.pixels, is, 0, 0, arg0, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, texture, 0, 0, arg0, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg5 += i_11_;
                                 arg3 += i_9_;
                                 arg8 += i_12_;
@@ -251,9 +251,9 @@ public class Rasterizer3D extends Rasterizer {
                         } else {
                             arg1 -= arg2;
                             arg2 -= arg0;
-                            arg0 = anIntArray2938[arg0];
+                            arg0 = lineOffsets[arg0];
                             while(--arg2 >= 0) {
-                                method701(Rasterizer.pixels, is, 0, 0, arg0, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, texture, 0, 0, arg0, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg4 += i_13_;
                                 arg3 += i_9_;
                                 arg7 += i_14_;
@@ -264,7 +264,7 @@ public class Rasterizer3D extends Rasterizer {
                                 i_6_ += i_8_;
                             }
                             while(--arg1 >= 0) {
-                                method701(Rasterizer.pixels, is, 0, 0, arg0, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, texture, 0, 0, arg0, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg5 += i_11_;
                                 arg3 += i_9_;
                                 arg8 += i_12_;
@@ -278,11 +278,11 @@ public class Rasterizer3D extends Rasterizer {
                     }
                 }
             } else if(arg1 <= arg2) {
-                if(arg1 < anInt2930) {
-                    if(arg2 > anInt2930)
-                        arg2 = anInt2930;
-                    if(arg0 > anInt2930)
-                        arg0 = anInt2930;
+                if(arg1 < bottomY) {
+                    if(arg2 > bottomY)
+                        arg2 = bottomY;
+                    if(arg0 > bottomY)
+                        arg0 = bottomY;
                     if(arg2 < arg0) {
                         arg3 = arg4 <<= 16;
                         arg6 = arg7 <<= 16;
@@ -300,16 +300,16 @@ public class Rasterizer3D extends Rasterizer {
                             arg8 -= i_14_ * arg2;
                             arg2 = 0;
                         }
-                        int i_17_ = arg1 - anInt2931;
+                        int i_17_ = arg1 - center_y;
                         i += i_2_ * i_17_;
                         i_3_ += i_5_ * i_17_;
                         i_6_ += i_8_ * i_17_;
                         if(arg1 != arg2 && i_9_ < i_11_ || arg1 == arg2 && i_9_ > i_13_) {
                             arg0 -= arg2;
                             arg2 -= arg1;
-                            arg1 = anIntArray2938[arg1];
+                            arg1 = lineOffsets[arg1];
                             while(--arg2 >= 0) {
-                                method701(Rasterizer.pixels, is, 0, 0, arg1, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, texture, 0, 0, arg1, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg3 += i_9_;
                                 arg4 += i_11_;
                                 arg6 += i_10_;
@@ -320,7 +320,7 @@ public class Rasterizer3D extends Rasterizer {
                                 i_6_ += i_8_;
                             }
                             while(--arg0 >= 0) {
-                                method701(Rasterizer.pixels, is, 0, 0, arg1, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, texture, 0, 0, arg1, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg3 += i_9_;
                                 arg5 += i_13_;
                                 arg6 += i_10_;
@@ -333,9 +333,9 @@ public class Rasterizer3D extends Rasterizer {
                         } else {
                             arg0 -= arg2;
                             arg2 -= arg1;
-                            arg1 = anIntArray2938[arg1];
+                            arg1 = lineOffsets[arg1];
                             while(--arg2 >= 0) {
-                                method701(Rasterizer.pixels, is, 0, 0, arg1, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, texture, 0, 0, arg1, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg3 += i_9_;
                                 arg4 += i_11_;
                                 arg6 += i_10_;
@@ -346,7 +346,7 @@ public class Rasterizer3D extends Rasterizer {
                                 i_6_ += i_8_;
                             }
                             while(--arg0 >= 0) {
-                                method701(Rasterizer.pixels, is, 0, 0, arg1, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, texture, 0, 0, arg1, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg3 += i_9_;
                                 arg5 += i_13_;
                                 arg6 += i_10_;
@@ -374,16 +374,16 @@ public class Rasterizer3D extends Rasterizer {
                             arg6 -= i_14_ * arg0;
                             arg0 = 0;
                         }
-                        int i_18_ = arg1 - anInt2931;
+                        int i_18_ = arg1 - center_y;
                         i += i_2_ * i_18_;
                         i_3_ += i_5_ * i_18_;
                         i_6_ += i_8_ * i_18_;
                         if(i_9_ < i_11_) {
                             arg2 -= arg0;
                             arg0 -= arg1;
-                            arg1 = anIntArray2938[arg1];
+                            arg1 = lineOffsets[arg1];
                             while(--arg0 >= 0) {
-                                method701(Rasterizer.pixels, is, 0, 0, arg1, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, texture, 0, 0, arg1, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg5 += i_9_;
                                 arg4 += i_11_;
                                 arg8 += i_10_;
@@ -394,7 +394,7 @@ public class Rasterizer3D extends Rasterizer {
                                 i_6_ += i_8_;
                             }
                             while(--arg2 >= 0) {
-                                method701(Rasterizer.pixels, is, 0, 0, arg1, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, texture, 0, 0, arg1, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg3 += i_13_;
                                 arg4 += i_11_;
                                 arg6 += i_14_;
@@ -407,9 +407,9 @@ public class Rasterizer3D extends Rasterizer {
                         } else {
                             arg2 -= arg0;
                             arg0 -= arg1;
-                            arg1 = anIntArray2938[arg1];
+                            arg1 = lineOffsets[arg1];
                             while(--arg0 >= 0) {
-                                method701(Rasterizer.pixels, is, 0, 0, arg1, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, texture, 0, 0, arg1, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg5 += i_9_;
                                 arg4 += i_11_;
                                 arg8 += i_10_;
@@ -420,7 +420,7 @@ public class Rasterizer3D extends Rasterizer {
                                 i_6_ += i_8_;
                             }
                             while(--arg2 >= 0) {
-                                method701(Rasterizer.pixels, is, 0, 0, arg1, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                                method701(Rasterizer.pixels, texture, 0, 0, arg1, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                                 arg3 += i_13_;
                                 arg4 += i_11_;
                                 arg6 += i_14_;
@@ -433,11 +433,11 @@ public class Rasterizer3D extends Rasterizer {
                         }
                     }
                 }
-            } else if(arg2 < anInt2930) {
-                if(arg0 > anInt2930)
-                    arg0 = anInt2930;
-                if(arg1 > anInt2930)
-                    arg1 = anInt2930;
+            } else if(arg2 < bottomY) {
+                if(arg0 > bottomY)
+                    arg0 = bottomY;
+                if(arg1 > bottomY)
+                    arg1 = bottomY;
                 if(arg0 < arg1) {
                     arg4 = arg5 <<= 16;
                     arg7 = arg8 <<= 16;
@@ -455,16 +455,16 @@ public class Rasterizer3D extends Rasterizer {
                         arg6 -= i_10_ * arg0;
                         arg0 = 0;
                     }
-                    int i_19_ = arg2 - anInt2931;
+                    int i_19_ = arg2 - center_y;
                     i += i_2_ * i_19_;
                     i_3_ += i_5_ * i_19_;
                     i_6_ += i_8_ * i_19_;
                     if(i_11_ < i_13_) {
                         arg1 -= arg0;
                         arg0 -= arg2;
-                        arg2 = anIntArray2938[arg2];
+                        arg2 = lineOffsets[arg2];
                         while(--arg0 >= 0) {
-                            method701(Rasterizer.pixels, is, 0, 0, arg2, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                            method701(Rasterizer.pixels, texture, 0, 0, arg2, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                             arg4 += i_11_;
                             arg5 += i_13_;
                             arg7 += i_12_;
@@ -475,7 +475,7 @@ public class Rasterizer3D extends Rasterizer {
                             i_6_ += i_8_;
                         }
                         while(--arg1 >= 0) {
-                            method701(Rasterizer.pixels, is, 0, 0, arg2, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                            method701(Rasterizer.pixels, texture, 0, 0, arg2, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                             arg4 += i_11_;
                             arg3 += i_9_;
                             arg7 += i_12_;
@@ -488,9 +488,9 @@ public class Rasterizer3D extends Rasterizer {
                     } else {
                         arg1 -= arg0;
                         arg0 -= arg2;
-                        arg2 = anIntArray2938[arg2];
+                        arg2 = lineOffsets[arg2];
                         while(--arg0 >= 0) {
-                            method701(Rasterizer.pixels, is, 0, 0, arg2, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                            method701(Rasterizer.pixels, texture, 0, 0, arg2, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                             arg4 += i_11_;
                             arg5 += i_13_;
                             arg7 += i_12_;
@@ -501,7 +501,7 @@ public class Rasterizer3D extends Rasterizer {
                             i_6_ += i_8_;
                         }
                         while(--arg1 >= 0) {
-                            method701(Rasterizer.pixels, is, 0, 0, arg2, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                            method701(Rasterizer.pixels, texture, 0, 0, arg2, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                             arg4 += i_11_;
                             arg3 += i_9_;
                             arg7 += i_12_;
@@ -529,16 +529,16 @@ public class Rasterizer3D extends Rasterizer {
                         arg7 -= i_10_ * arg1;
                         arg1 = 0;
                     }
-                    int i_20_ = arg2 - anInt2931;
+                    int i_20_ = arg2 - center_y;
                     i += i_2_ * i_20_;
                     i_3_ += i_5_ * i_20_;
                     i_6_ += i_8_ * i_20_;
                     if(i_11_ < i_13_) {
                         arg0 -= arg1;
                         arg1 -= arg2;
-                        arg2 = anIntArray2938[arg2];
+                        arg2 = lineOffsets[arg2];
                         while(--arg1 >= 0) {
-                            method701(Rasterizer.pixels, is, 0, 0, arg2, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                            method701(Rasterizer.pixels, texture, 0, 0, arg2, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                             arg3 += i_11_;
                             arg5 += i_13_;
                             arg6 += i_12_;
@@ -549,7 +549,7 @@ public class Rasterizer3D extends Rasterizer {
                             i_6_ += i_8_;
                         }
                         while(--arg0 >= 0) {
-                            method701(Rasterizer.pixels, is, 0, 0, arg2, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                            method701(Rasterizer.pixels, texture, 0, 0, arg2, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                             arg4 += i_9_;
                             arg5 += i_13_;
                             arg7 += i_10_;
@@ -562,9 +562,9 @@ public class Rasterizer3D extends Rasterizer {
                     } else {
                         arg0 -= arg1;
                         arg1 -= arg2;
-                        arg2 = anIntArray2938[arg2];
+                        arg2 = lineOffsets[arg2];
                         while(--arg1 >= 0) {
-                            method701(Rasterizer.pixels, is, 0, 0, arg2, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                            method701(Rasterizer.pixels, texture, 0, 0, arg2, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                             arg3 += i_11_;
                             arg5 += i_13_;
                             arg6 += i_12_;
@@ -575,7 +575,7 @@ public class Rasterizer3D extends Rasterizer {
                             i_6_ += i_8_;
                         }
                         while(--arg0 >= 0) {
-                            method701(Rasterizer.pixels, is, 0, 0, arg2, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
+                            method701(Rasterizer.pixels, texture, 0, 0, arg2, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, i, i_3_, i_6_, i_1_, i_4_, i_7_);
                             arg4 += i_9_;
                             arg5 += i_13_;
                             arg7 += i_10_;
@@ -592,29 +592,29 @@ public class Rasterizer3D extends Rasterizer {
     }
 
     public static int[] method700(int arg0, int arg1, int arg2, int arg3, int[] arg4) {
-        anInt2945 = arg2 - arg0;
-        anInt2930 = arg3 - arg1;
+        viewportRx = arg2 - arg0;
+        bottomY = arg3 - arg1;
         if(arg4 == null) {
-            int i = anInt2930;
+            int i = bottomY;
             if(i == 0)
                 i++;
-            anIntArray2938 = new int[i];
+            lineOffsets = new int[i];
             for(int i_21_ = 0; i_21_ < i; i_21_++)
-                anIntArray2938[i_21_] = (arg1 + i_21_) * Rasterizer.width + arg0;
+                lineOffsets[i_21_] = (arg1 + i_21_) * Rasterizer.width + arg0;
         } else
-            anIntArray2938 = arg4;
+            lineOffsets = arg4;
         method702();
-        return anIntArray2938;
+        return lineOffsets;
     }
 
     public static void method701(int[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, int arg12, int arg13, int arg14) {
         if(arg5 < arg6) {
             int i;
             int i_22_;
-            if(aBoolean2947) {
+            if(restrict_edges) {
                 i_22_ = (arg8 - arg7) / (arg6 - arg5);
-                if(arg6 > anInt2945)
-                    arg6 = anInt2945;
+                if(arg6 > viewportRx)
+                    arg6 = viewportRx;
                 if(arg5 < 0) {
                     arg7 -= arg5 * i_22_;
                     arg5 = 0;
@@ -627,7 +627,7 @@ public class Rasterizer3D extends Rasterizer {
             } else {
                 if(arg6 - arg5 > 7) {
                     i = arg6 - arg5 >> 3;
-                    i_22_ = (arg8 - arg7) * anIntArray2940[i] >> 6;
+                    i_22_ = (arg8 - arg7) * shadowDecay[i] >> 6;
                 } else {
                     i = 0;
                     i_22_ = 0;
@@ -638,7 +638,7 @@ public class Rasterizer3D extends Rasterizer {
             if(aBoolean2948) {
                 int i_23_ = 0;
                 int i_24_ = 0;
-                int i_25_ = arg5 - anInt2937;
+                int i_25_ = arg5 - center_x;
                 arg9 += (arg12 >> 3) * i_25_;
                 arg10 += (arg13 >> 3) * i_25_;
                 arg11 += (arg14 >> 3) * i_25_;
@@ -791,7 +791,7 @@ public class Rasterizer3D extends Rasterizer {
             } else {
                 int i_32_ = 0;
                 int i_33_ = 0;
-                int i_34_ = arg5 - anInt2937;
+                int i_34_ = arg5 - center_x;
                 arg9 += (arg12 >> 3) * i_34_;
                 arg10 += (arg13 >> 3) * i_34_;
                 arg11 += (arg14 >> 3) * i_34_;
@@ -946,12 +946,12 @@ public class Rasterizer3D extends Rasterizer {
     }
 
     public static void method702() {
-        anInt2937 = anInt2945 / 2;
-        anInt2931 = anInt2930 / 2;
-        anInt2942 = -anInt2937;
-        anInt2934 = anInt2945 - anInt2937;
-        anInt2935 = -anInt2931;
-        anInt2941 = anInt2930 - anInt2931;
+        center_x = viewportRx / 2;
+        center_y = bottomY / 2;
+        anInt2942 = -center_x;
+        anInt2934 = viewportRx - center_x;
+        anInt2935 = -center_y;
+        anInt2941 = bottomY - center_y;
     }
 
     public static void method703(Interface3 arg0) {
@@ -959,498 +959,600 @@ public class Rasterizer3D extends Rasterizer {
     }
 
     public static void method704() {
-        anIntArray2938 = null;
-        anIntArray2932 = null;
+        lineOffsets = null;
+        hsl2rgb = null;
         anInterface3_2939 = null;
-        anIntArray2940 = null;
+        shadowDecay = null;
         anIntArray2929 = null;
         sinetable = null;
         cosinetable = null;
     }
 
-    public static void method705(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
-        if(aBoolean2944) {
-            int i;
-            if(aBoolean2947) {
-                if(arg5 - arg4 > 3)
-                    i = (arg7 - arg6) / (arg5 - arg4);
+    //562 drawshadedline
+    //has vertex blending :O
+    public static void drawShadedLine562(int dest[], int dest_off, int startX, int endX, int colorIndex, int grad) {
+        int off = 0;
+        int color;
+        int loops;
+        if (restrict_edges) {
+            if (endX > viewportRx)
+                endX = viewportRx;
+            if (startX < 0) {
+                //colorIndex -= startX * off;//not sure if needed
+                startX = 0;
+            }
+        }
+        if (startX < endX) {
+            dest_off += startX - 1;
+            colorIndex += off * startX;
+            if (notTextured) {
+                loops = endX - startX >> 2;
+                if (loops > 0)
+                    off = (grad - colorIndex) * shadowDecay[loops] >> 15;
                 else
-                    i = 0;
-                if(arg5 > anInt2945)
-                    arg5 = anInt2945;
-                if(arg4 < 0) {
-                    arg6 -= arg4 * i;
-                    arg4 = 0;
+                    off = 0;
+                if (alpha == 0) {
+                    if (loops > 0) {
+                        do {
+                            color = hsl2rgb[colorIndex >> 8];
+                            colorIndex += off;
+                            dest[++dest_off] = color;
+                            dest[++dest_off] = color;
+                            dest[++dest_off] = color;
+                            dest[++dest_off] = color;
+                        } while (--loops > 0);
+                    }
+                    loops = endX - startX & 0x3;
+                    if (loops > 0) {
+                        color = hsl2rgb[colorIndex >> 8];
+                        do
+                            dest[++dest_off] = color;
+                        while (--loops > 0);
+                    }
+                } else {
+                    int src_alpha = alpha;
+                    int dest_alpha = 256 - alpha;
+                    if (loops > 0) {
+                        do {
+                            color = hsl2rgb[colorIndex >> 8];
+                            colorIndex += off;
+                            color = (((color & 0xff00ff) * dest_alpha >> 8 & 0xff00ff) + ((color & 0xff00) * dest_alpha >> 8 & 0xff00));
+                            int i_169_ = dest[++dest_off];
+                            dest[dest_off] = (color + ((i_169_ & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((i_169_ & 0xff00) * src_alpha >> 8 & 0xff00));
+                            i_169_ = dest[++dest_off];
+                            dest[dest_off] = (color + ((i_169_ & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((i_169_ & 0xff00) * src_alpha >> 8 & 0xff00));
+                            i_169_ = dest[++dest_off];
+                            dest[dest_off] = (color + ((i_169_ & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((i_169_ & 0xff00) * src_alpha >> 8 & 0xff00));
+                            i_169_ = dest[++dest_off];
+                            dest[dest_off] = (color + ((i_169_ & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((i_169_ & 0xff00) * src_alpha >> 8 & 0xff00));
+                        } while (--loops > 0);
+                    }
+                    loops = endX - startX & 0x3;
+                    if (loops > 0) {
+                        color = hsl2rgb[colorIndex >> 8];
+                        color = (((color & 0xff00ff) * dest_alpha >> 8 & 0xff00ff) + ((color & 0xff00) * dest_alpha >> 8 & 0xff00));
+                        do {
+                            int i_170_ = dest[++dest_off];
+                            dest[dest_off] = (color + ((i_170_ & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((i_170_ & 0xff00) * src_alpha >> 8 & 0xff00));
+                        } while (--loops > 0);
+                    }
                 }
-                if(arg4 >= arg5)
-                    return;
-                arg1 += arg4;
-                arg3 = arg5 - arg4 >> 2;
-                i <<= 2;
             } else {
-                if(arg4 >= arg5)
-                    return;
-                arg1 += arg4;
-                arg3 = arg5 - arg4 >> 2;
-                if(arg3 > 0)
-                    i = (arg7 - arg6) * anIntArray2940[arg3] >> 15;
-                else
-                    i = 0;
-            }
-            if(anInt2933 == 0) {
-                while(--arg3 >= 0) {
-                    arg2 = anIntArray2932[arg6 >> 8];
-                    arg6 += i;
-                    arg0[arg1++] = arg2;
-                    arg0[arg1++] = arg2;
-                    arg0[arg1++] = arg2;
-                    arg0[arg1++] = arg2;
+                loops = endX - startX;
+                if (alpha == 0) {
+                    do {
+                        dest[++dest_off] = hsl2rgb[colorIndex >> 8];
+                        colorIndex += off;
+                    } while (--loops > 0);
+                } else {
+                    int i = alpha;
+                    int i_171_ = 256 - alpha;
+                    do {
+                        color = hsl2rgb[colorIndex >> 8];
+                        colorIndex += off;
+                        color = (((color & 0xff00ff) * i_171_ >> 8 & 0xff00ff) + ((color & 0xff00) * i_171_ >> 8 & 0xff00));
+                        int i_ = dest[++dest_off];
+                        dest[dest_off] = (color + ((i_ & 0xff00ff) * i >> 8 & 0xff00ff) + ((i_ & 0xff00) * i >> 8 & 0xff00));
+                    } while (--loops > 0);
                 }
-                arg3 = arg5 - arg4 & 0x3;
-                if(arg3 > 0) {
-                    arg2 = anIntArray2932[arg6 >> 8];
-                    do
-                        arg0[arg1++] = arg2; while(--arg3 > 0);
-                }
-            } else {
-                int i_41_ = anInt2933;
-                int i_42_ = 256 - anInt2933;
-                while(--arg3 >= 0) {
-                    arg2 = anIntArray2932[arg6 >> 8];
-                    arg6 += i;
-                    arg2 = (((arg2 & 0xff00ff) * i_42_ >> 8 & 0xff00ff) + ((arg2 & 0xff00) * i_42_ >> 8 & 0xff00));
-                    arg0[arg1++] = (arg2 + ((arg0[arg1] & 0xff00ff) * i_41_ >> 8 & 0xff00ff) + ((arg0[arg1] & 0xff00) * i_41_ >> 8 & 0xff00));
-                    arg0[arg1++] = (arg2 + ((arg0[arg1] & 0xff00ff) * i_41_ >> 8 & 0xff00ff) + ((arg0[arg1] & 0xff00) * i_41_ >> 8 & 0xff00));
-                    arg0[arg1++] = (arg2 + ((arg0[arg1] & 0xff00ff) * i_41_ >> 8 & 0xff00ff) + ((arg0[arg1] & 0xff00) * i_41_ >> 8 & 0xff00));
-                    arg0[arg1++] = (arg2 + ((arg0[arg1] & 0xff00ff) * i_41_ >> 8 & 0xff00ff) + ((arg0[arg1] & 0xff00) * i_41_ >> 8 & 0xff00));
-                }
-                arg3 = arg5 - arg4 & 0x3;
-                if(arg3 > 0) {
-                    arg2 = anIntArray2932[arg6 >> 8];
-                    arg2 = (((arg2 & 0xff00ff) * i_42_ >> 8 & 0xff00ff) + ((arg2 & 0xff00) * i_42_ >> 8 & 0xff00));
-                    do
-                        arg0[arg1++] = (arg2 + ((arg0[arg1] & 0xff00ff) * i_41_ >> 8 & 0xff00ff) + ((arg0[arg1] & 0xff00) * i_41_ >> 8 & 0xff00));
-                    while(--arg3 > 0);
-                }
-            }
-        } else if(arg4 < arg5) {
-            int i = (arg7 - arg6) / (arg5 - arg4);
-            if(aBoolean2947) {
-                if(arg5 > anInt2945)
-                    arg5 = anInt2945;
-                if(arg4 < 0) {
-                    arg6 -= arg4 * i;
-                    arg4 = 0;
-                }
-                if(arg4 >= arg5)
-                    return;
-            }
-            arg1 += arg4;
-            arg3 = arg5 - arg4;
-            if(anInt2933 == 0) {
-                do {
-                    arg0[arg1++] = anIntArray2932[arg6 >> 8];
-                    arg6 += i;
-                } while(--arg3 > 0);
-            } else {
-                int i_43_ = anInt2933;
-                int i_44_ = 256 - anInt2933;
-                do {
-                    arg2 = anIntArray2932[arg6 >> 8];
-                    arg6 += i;
-                    arg2 = (((arg2 & 0xff00ff) * i_44_ >> 8 & 0xff00ff) + ((arg2 & 0xff00) * i_44_ >> 8 & 0xff00));
-                    arg0[arg1++] = (arg2 + ((arg0[arg1] & 0xff00ff) * i_43_ >> 8 & 0xff00ff) + ((arg0[arg1] & 0xff00) * i_43_ >> 8 & 0xff00));
-                } while(--arg3 > 0);
             }
         }
     }
 
-    public static void method706(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
-        int i = 0;
-        int i_45_ = 0;
-        if(arg1 != arg0) {
-            i = (arg4 - arg3 << 16) / (arg1 - arg0);
-            i_45_ = (arg7 - arg6 << 15) / (arg1 - arg0);
+    public static void drawShadedLine(int[] dest, int dest_off, int start_x, int end_x, int color_index, int grad) {
+        if (!useLatestShadeLine) {//divert all calls to the new method as its better
+            drawShadedLine562(dest, dest_off, start_x, end_x, color_index, grad);
+            return;
         }
-        int i_46_ = 0;
-        int i_47_ = 0;
-        if(arg2 != arg1) {
-            i_46_ = (arg5 - arg4 << 16) / (arg2 - arg1);
-            i_47_ = (arg8 - arg7 << 15) / (arg2 - arg1);
-        }
-        int i_48_ = 0;
-        int i_49_ = 0;
-        if(arg2 != arg0) {
-            i_48_ = (arg3 - arg5 << 16) / (arg0 - arg2);
-            i_49_ = (arg6 - arg8 << 15) / (arg0 - arg2);
-        }
-        if(arg0 <= arg1 && arg0 <= arg2) {
-            if(arg0 < anInt2930) {
-                if(arg1 > anInt2930)
-                    arg1 = anInt2930;
-                if(arg2 > anInt2930)
-                    arg2 = anInt2930;
-                if(arg1 < arg2) {
-                    arg5 = arg3 <<= 16;
-                    arg8 = arg6 <<= 15;
-                    if(arg0 < 0) {
-                        arg5 -= i_48_ * arg0;
-                        arg3 -= i * arg0;
-                        arg8 -= i_49_ * arg0;
-                        arg6 -= i_45_ * arg0;
-                        arg0 = 0;
-                    }
-                    arg4 <<= 16;
-                    arg7 <<= 15;
-                    if(arg1 < 0) {
-                        arg4 -= i_46_ * arg1;
-                        arg7 -= i_47_ * arg1;
-                        arg1 = 0;
-                    }
-                    if(arg0 != arg1 && i_48_ < i || arg0 == arg1 && i_48_ > i_46_) {
-                        arg2 -= arg1;
-                        arg1 -= arg0;
-                        arg0 = anIntArray2938[arg0];
-                        while(--arg1 >= 0) {
-                            method705(Rasterizer.pixels, arg0, 0, 0, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
-                            arg5 += i_48_;
-                            arg3 += i;
-                            arg8 += i_49_;
-                            arg6 += i_45_;
-                            arg0 += Rasterizer.width;
-                        }
-                        while(--arg2 >= 0) {
-                            method705(Rasterizer.pixels, arg0, 0, 0, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
-                            arg5 += i_48_;
-                            arg4 += i_46_;
-                            arg8 += i_49_;
-                            arg7 += i_47_;
-                            arg0 += Rasterizer.width;
-                        }
-                    } else {
-                        arg2 -= arg1;
-                        arg1 -= arg0;
-                        arg0 = anIntArray2938[arg0];
-                        while(--arg1 >= 0) {
-                            method705(Rasterizer.pixels, arg0, 0, 0, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
-                            arg5 += i_48_;
-                            arg3 += i;
-                            arg8 += i_49_;
-                            arg6 += i_45_;
-                            arg0 += Rasterizer.width;
-                        }
-                        while(--arg2 >= 0) {
-                            method705(Rasterizer.pixels, arg0, 0, 0, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
-                            arg5 += i_48_;
-                            arg4 += i_46_;
-                            arg8 += i_49_;
-                            arg7 += i_47_;
-                            arg0 += Rasterizer.width;
-                        }
-                    }
-                } else {
-                    arg4 = arg3 <<= 16;
-                    arg7 = arg6 <<= 15;
-                    if(arg0 < 0) {
-                        arg4 -= i_48_ * arg0;
-                        arg3 -= i * arg0;
-                        arg7 -= i_49_ * arg0;
-                        arg6 -= i_45_ * arg0;
-                        arg0 = 0;
-                    }
-                    arg5 <<= 16;
-                    arg8 <<= 15;
-                    if(arg2 < 0) {
-                        arg5 -= i_46_ * arg2;
-                        arg8 -= i_47_ * arg2;
-                        arg2 = 0;
-                    }
-                    if(arg0 != arg2 && i_48_ < i || arg0 == arg2 && i_46_ > i) {
-                        arg1 -= arg2;
-                        arg2 -= arg0;
-                        arg0 = anIntArray2938[arg0];
-                        while(--arg2 >= 0) {
-                            method705(Rasterizer.pixels, arg0, 0, 0, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
-                            arg4 += i_48_;
-                            arg3 += i;
-                            arg7 += i_49_;
-                            arg6 += i_45_;
-                            arg0 += Rasterizer.width;
-                        }
-                        while(--arg1 >= 0) {
-                            method705(Rasterizer.pixels, arg0, 0, 0, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
-                            arg5 += i_46_;
-                            arg3 += i;
-                            arg8 += i_47_;
-                            arg6 += i_45_;
-                            arg0 += Rasterizer.width;
-                        }
-                    } else {
-                        arg1 -= arg2;
-                        arg2 -= arg0;
-                        arg0 = anIntArray2938[arg0];
-                        while(--arg2 >= 0) {
-                            method705(Rasterizer.pixels, arg0, 0, 0, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
-                            arg4 += i_48_;
-                            arg3 += i;
-                            arg7 += i_49_;
-                            arg6 += i_45_;
-                            arg0 += Rasterizer.width;
-                        }
-                        while(--arg1 >= 0) {
-                            method705(Rasterizer.pixels, arg0, 0, 0, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
-                            arg5 += i_46_;
-                            arg3 += i;
-                            arg8 += i_47_;
-                            arg6 += i_45_;
-                            arg0 += Rasterizer.width;
-                        }
-                    }
+        int color;
+        int loops;
+        if(notTextured) {
+            int off;
+            if(restrict_edges) {
+                if(end_x - start_x > 3)
+                    off = (grad - color_index) / (end_x - start_x);
+                else
+                    off = 0;
+                if(end_x > viewportRx)
+                    end_x = viewportRx;
+                if(start_x < 0) {
+                    color_index -= start_x * off;
+                    start_x = 0;
+                }
+                if(start_x >= end_x)
+                    return;
+                dest_off += start_x;
+                loops = end_x - start_x >> 2;
+                off <<= 2;
+            } else {
+                if(start_x >= end_x)
+                    return;
+                dest_off += start_x;
+                loops = end_x - start_x >> 2;
+                if(loops > 0)
+                    off = (grad - color_index) * shadowDecay[loops] >> 15;
+                else
+                    off = 0;
+            }
+            if(alpha == 0) {
+                while(--loops >= 0) {
+                    color = hsl2rgb[color_index >> 8];
+                    color_index += off;
+                    dest[dest_off++] = color;
+                    dest[dest_off++] = color;
+                    dest[dest_off++] = color;
+                    dest[dest_off++] = color;
+                }
+                loops = end_x - start_x & 0x3;
+                if(loops > 0) {
+                    color = hsl2rgb[color_index >> 8];
+                    do
+                        dest[dest_off++] = color; while(--loops > 0);
+                }
+            } else {
+                int src_alpha = alpha;
+                int dest_alpha = 256 - alpha;
+                while(--loops >= 0) {
+                    color = hsl2rgb[color_index >> 8];
+                    color_index += off;
+                    color = (((color & 0xff00ff) * dest_alpha >> 8 & 0xff00ff) + ((color & 0xff00) * dest_alpha >> 8 & 0xff00));
+                    dest[dest_off++] = (color + ((dest[dest_off] & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * src_alpha >> 8 & 0xff00));
+                    dest[dest_off++] = (color + ((dest[dest_off] & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * src_alpha >> 8 & 0xff00));
+                    dest[dest_off++] = (color + ((dest[dest_off] & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * src_alpha >> 8 & 0xff00));
+                    dest[dest_off++] = (color + ((dest[dest_off] & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * src_alpha >> 8 & 0xff00));
+                }
+                loops = end_x - start_x & 0x3;
+                if(loops > 0) {
+                    color = hsl2rgb[color_index >> 8];
+                    color = (((color & 0xff00ff) * dest_alpha >> 8 & 0xff00ff) + ((color & 0xff00) * dest_alpha >> 8 & 0xff00));
+                    do
+                        dest[dest_off++] = (color + ((dest[dest_off] & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * src_alpha >> 8 & 0xff00));
+                    while(--loops > 0);
                 }
             }
-        } else if(arg1 <= arg2) {
-            if(arg1 < anInt2930) {
-                if(arg2 > anInt2930)
-                    arg2 = anInt2930;
-                if(arg0 > anInt2930)
-                    arg0 = anInt2930;
-                if(arg2 < arg0) {
-                    arg3 = arg4 <<= 16;
-                    arg6 = arg7 <<= 15;
-                    if(arg1 < 0) {
-                        arg3 -= i * arg1;
-                        arg4 -= i_46_ * arg1;
-                        arg6 -= i_45_ * arg1;
-                        arg7 -= i_47_ * arg1;
-                        arg1 = 0;
+        } else {
+            if(start_x < end_x) {
+                int i = (grad - color_index) / (end_x - start_x);
+                if(restrict_edges) {
+                    if(end_x > viewportRx)
+                        end_x = viewportRx;
+                    if(start_x < 0) {
+                        color_index -= start_x * i;
+                        start_x = 0;
                     }
-                    arg5 <<= 16;
-                    arg8 <<= 15;
-                    if(arg2 < 0) {
-                        arg5 -= i_48_ * arg2;
-                        arg8 -= i_49_ * arg2;
-                        arg2 = 0;
-                    }
-                    if(arg1 != arg2 && i < i_46_ || arg1 == arg2 && i > i_48_) {
-                        arg0 -= arg2;
-                        arg2 -= arg1;
-                        arg1 = anIntArray2938[arg1];
-                        while(--arg2 >= 0) {
-                            method705(Rasterizer.pixels, arg1, 0, 0, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
-                            arg3 += i;
-                            arg4 += i_46_;
-                            arg6 += i_45_;
-                            arg7 += i_47_;
-                            arg1 += Rasterizer.width;
-                        }
-                        while(--arg0 >= 0) {
-                            method705(Rasterizer.pixels, arg1, 0, 0, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
-                            arg3 += i;
-                            arg5 += i_48_;
-                            arg6 += i_45_;
-                            arg8 += i_49_;
-                            arg1 += Rasterizer.width;
-                        }
-                    } else {
-                        arg0 -= arg2;
-                        arg2 -= arg1;
-                        arg1 = anIntArray2938[arg1];
-                        while(--arg2 >= 0) {
-                            method705(Rasterizer.pixels, arg1, 0, 0, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
-                            arg3 += i;
-                            arg4 += i_46_;
-                            arg6 += i_45_;
-                            arg7 += i_47_;
-                            arg1 += Rasterizer.width;
-                        }
-                        while(--arg0 >= 0) {
-                            method705(Rasterizer.pixels, arg1, 0, 0, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
-                            arg3 += i;
-                            arg5 += i_48_;
-                            arg6 += i_45_;
-                            arg8 += i_49_;
-                            arg1 += Rasterizer.width;
-                        }
-                    }
+                    if(start_x >= end_x)
+                        return;
+                }
+                dest_off += start_x;
+                loops = end_x - start_x;
+                if(alpha == 0) {
+                    do {
+                        dest[dest_off++] = hsl2rgb[color_index >> 8];
+                        color_index += i;
+                    } while(--loops > 0);
                 } else {
-                    arg5 = arg4 <<= 16;
-                    arg8 = arg7 <<= 15;
-                    if(arg1 < 0) {
-                        arg5 -= i * arg1;
-                        arg4 -= i_46_ * arg1;
-                        arg8 -= i_45_ * arg1;
-                        arg7 -= i_47_ * arg1;
-                        arg1 = 0;
-                    }
-                    arg3 <<= 16;
-                    arg6 <<= 15;
-                    if(arg0 < 0) {
-                        arg3 -= i_48_ * arg0;
-                        arg6 -= i_49_ * arg0;
-                        arg0 = 0;
-                    }
-                    if(i < i_46_) {
-                        arg2 -= arg0;
-                        arg0 -= arg1;
-                        arg1 = anIntArray2938[arg1];
-                        while(--arg0 >= 0) {
-                            method705(Rasterizer.pixels, arg1, 0, 0, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
-                            arg5 += i;
-                            arg4 += i_46_;
-                            arg8 += i_45_;
-                            arg7 += i_47_;
-                            arg1 += Rasterizer.width;
-                        }
-                        while(--arg2 >= 0) {
-                            method705(Rasterizer.pixels, arg1, 0, 0, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
-                            arg3 += i_48_;
-                            arg4 += i_46_;
-                            arg6 += i_49_;
-                            arg7 += i_47_;
-                            arg1 += Rasterizer.width;
-                        }
-                    } else {
-                        arg2 -= arg0;
-                        arg0 -= arg1;
-                        arg1 = anIntArray2938[arg1];
-                        while(--arg0 >= 0) {
-                            method705(Rasterizer.pixels, arg1, 0, 0, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
-                            arg5 += i;
-                            arg4 += i_46_;
-                            arg8 += i_45_;
-                            arg7 += i_47_;
-                            arg1 += Rasterizer.width;
-                        }
-                        while(--arg2 >= 0) {
-                            method705(Rasterizer.pixels, arg1, 0, 0, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
-                            arg3 += i_48_;
-                            arg4 += i_46_;
-                            arg6 += i_49_;
-                            arg7 += i_47_;
-                            arg1 += Rasterizer.width;
-                        }
-                    }
+                    int i_43_ = alpha;
+                    int i_44_ = 256 - alpha;
+                    do {
+                        color = hsl2rgb[color_index >> 8];
+                        color_index += i;
+                        color = (((color & 0xff00ff) * i_44_ >> 8 & 0xff00ff) + ((color & 0xff00) * i_44_ >> 8 & 0xff00));
+                        dest[dest_off++] = (color + ((dest[dest_off] & 0xff00ff) * i_43_ >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * i_43_ >> 8 & 0xff00));
+                    } while(--loops > 0);
                 }
             }
-        } else if(arg2 < anInt2930) {
-            if(arg0 > anInt2930)
-                arg0 = anInt2930;
-            if(arg1 > anInt2930)
-                arg1 = anInt2930;
-            if(arg0 < arg1) {
-                arg4 = arg5 <<= 16;
-                arg7 = arg8 <<= 15;
-                if(arg2 < 0) {
-                    arg4 -= i_46_ * arg2;
-                    arg5 -= i_48_ * arg2;
-                    arg7 -= i_47_ * arg2;
-                    arg8 -= i_49_ * arg2;
-                    arg2 = 0;
+        }
+    }
+
+    public static void drawShadedTriangle(int y_a, int y_b, int y_c, int x_a, int x_b, int x_c, int z_a, int z_b, int z_c) {
+        int x_a_off = 0;
+        int z_a_off = 0;
+        if(y_b != y_a) {
+            x_a_off = (x_b - x_a << 16) / (y_b - y_a);
+            z_a_off = (z_b - z_a << 15) / (y_b - y_a);
+        }
+        int x_b_off = 0;
+        int z_b_off = 0;
+        if(y_c != y_b) {
+            x_b_off = (x_c - x_b << 16) / (y_c - y_b);
+            z_b_off = (z_c - z_b << 15) / (y_c - y_b);
+        }
+        int x_c_off = 0;
+        int z_c_off = 0;
+        if(y_c != y_a) {
+            x_c_off = (x_a - x_c << 16) / (y_a - y_c);
+            z_c_off = (z_a - z_c << 15) / (y_a - y_c);
+        }
+        if(y_a <= y_b && y_a <= y_c) {
+            if(y_a >= bottomY) {
+                return;
+            }
+            if(y_b > bottomY)
+                y_b = bottomY;
+            if(y_c > bottomY)
+                y_c = bottomY;
+            if(y_b < y_c) {
+                x_c = x_a <<= 16;
+                z_c = z_a <<= 15;
+                if(y_a < 0) {
+                    x_c -= x_c_off * y_a;
+                    x_a -= x_a_off * y_a;
+                    z_c -= z_c_off * y_a;
+                    z_a -= z_a_off * y_a;
+                    y_a = 0;
                 }
-                arg3 <<= 16;
-                arg6 <<= 15;
-                if(arg0 < 0) {
-                    arg3 -= i * arg0;
-                    arg6 -= i_45_ * arg0;
-                    arg0 = 0;
+                x_b <<= 16;
+                z_b <<= 15;
+                if(y_b < 0) {
+                    x_b -= x_b_off * y_b;
+                    z_b -= z_b_off * y_b;
+                    y_b = 0;
                 }
-                if(i_46_ < i_48_) {
-                    arg1 -= arg0;
-                    arg0 -= arg2;
-                    arg2 = anIntArray2938[arg2];
-                    while(--arg0 >= 0) {
-                        method705(Rasterizer.pixels, arg2, 0, 0, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
-                        arg4 += i_46_;
-                        arg5 += i_48_;
-                        arg7 += i_47_;
-                        arg8 += i_49_;
-                        arg2 += Rasterizer.width;
+                if(y_a != y_b && x_c_off < x_a_off || y_a == y_b && x_c_off > x_b_off) {
+                    y_c -= y_b;
+                    y_b -= y_a;
+                    y_a = lineOffsets[y_a];
+                    while(--y_b >= 0) {
+                        drawShadedLine(Rasterizer.pixels, y_a, x_c >> 16, x_a >> 16, z_c >> 7, z_a >> 7);
+                        x_c += x_c_off;
+                        x_a += x_a_off;
+                        z_c += z_c_off;
+                        z_a += z_a_off;
+                        y_a += Rasterizer.width;
                     }
-                    while(--arg1 >= 0) {
-                        method705(Rasterizer.pixels, arg2, 0, 0, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
-                        arg4 += i_46_;
-                        arg3 += i;
-                        arg7 += i_47_;
-                        arg6 += i_45_;
-                        arg2 += Rasterizer.width;
+                    while(--y_c >= 0) {
+                        drawShadedLine(Rasterizer.pixels, y_a, x_c >> 16, x_b >> 16, z_c >> 7, z_b >> 7);
+                        x_c += x_c_off;
+                        x_b += x_b_off;
+                        z_c += z_c_off;
+                        z_b += z_b_off;
+                        y_a += Rasterizer.width;
                     }
                 } else {
-                    arg1 -= arg0;
-                    arg0 -= arg2;
-                    arg2 = anIntArray2938[arg2];
-                    while(--arg0 >= 0) {
-                        method705(Rasterizer.pixels, arg2, 0, 0, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
-                        arg4 += i_46_;
-                        arg5 += i_48_;
-                        arg7 += i_47_;
-                        arg8 += i_49_;
-                        arg2 += Rasterizer.width;
+                    y_c -= y_b;
+                    y_b -= y_a;
+                    y_a = lineOffsets[y_a];
+                    while(--y_b >= 0) {
+                        drawShadedLine(Rasterizer.pixels, y_a, x_a >> 16, x_c >> 16, z_a >> 7, z_c >> 7);
+                        x_c += x_c_off;
+                        x_a += x_a_off;
+                        z_c += z_c_off;
+                        z_a += z_a_off;
+                        y_a += Rasterizer.width;
                     }
-                    while(--arg1 >= 0) {
-                        method705(Rasterizer.pixels, arg2, 0, 0, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
-                        arg4 += i_46_;
-                        arg3 += i;
-                        arg7 += i_47_;
-                        arg6 += i_45_;
-                        arg2 += Rasterizer.width;
+                    while(--y_c >= 0) {
+                        drawShadedLine(Rasterizer.pixels, y_a, x_b >> 16, x_c >> 16, z_b >> 7, z_c >> 7);
+                        x_c += x_c_off;
+                        x_b += x_b_off;
+                        z_c += z_c_off;
+                        z_b += z_b_off;
+                        y_a += Rasterizer.width;
                     }
                 }
             } else {
-                arg3 = arg5 <<= 16;
-                arg6 = arg8 <<= 15;
-                if(arg2 < 0) {
-                    arg3 -= i_46_ * arg2;
-                    arg5 -= i_48_ * arg2;
-                    arg6 -= i_47_ * arg2;
-                    arg8 -= i_49_ * arg2;
-                    arg2 = 0;
+                x_b = x_a <<= 16;
+                z_b = z_a <<= 15;
+                if(y_a < 0) {
+                    x_b -= x_c_off * y_a;
+                    x_a -= x_a_off * y_a;
+                    z_b -= z_c_off * y_a;
+                    z_a -= z_a_off * y_a;
+                    y_a = 0;
                 }
-                arg4 <<= 16;
-                arg7 <<= 15;
-                if(arg1 < 0) {
-                    arg4 -= i * arg1;
-                    arg7 -= i_45_ * arg1;
-                    arg1 = 0;
+                x_c <<= 16;
+                z_c <<= 15;
+                if(y_c < 0) {
+                    x_c -= x_b_off * y_c;
+                    z_c -= z_b_off * y_c;
+                    y_c = 0;
                 }
-                if(i_46_ < i_48_) {
-                    arg0 -= arg1;
-                    arg1 -= arg2;
-                    arg2 = anIntArray2938[arg2];
-                    while(--arg1 >= 0) {
-                        method705(Rasterizer.pixels, arg2, 0, 0, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
-                        arg3 += i_46_;
-                        arg5 += i_48_;
-                        arg6 += i_47_;
-                        arg8 += i_49_;
-                        arg2 += Rasterizer.width;
+                if(y_a != y_c && x_c_off < x_a_off || y_a == y_c && x_b_off > x_a_off) {
+                    y_b -= y_c;
+                    y_c -= y_a;
+                    y_a = lineOffsets[y_a];
+                    while(--y_c >= 0) {
+                        drawShadedLine(Rasterizer.pixels, y_a, x_b >> 16, x_a >> 16, z_b >> 7, z_a >> 7);
+                        x_b += x_c_off;
+                        x_a += x_a_off;
+                        z_b += z_c_off;
+                        z_a += z_a_off;
+                        y_a += Rasterizer.width;
                     }
-                    while(--arg0 >= 0) {
-                        method705(Rasterizer.pixels, arg2, 0, 0, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
-                        arg4 += i;
-                        arg5 += i_48_;
-                        arg7 += i_45_;
-                        arg8 += i_49_;
-                        arg2 += Rasterizer.width;
+                    while(--y_b >= 0) {
+                        drawShadedLine(Rasterizer.pixels, y_a, x_c >> 16, x_a >> 16, z_c >> 7, z_a >> 7);
+                        x_c += x_b_off;
+                        x_a += x_a_off;
+                        z_c += z_b_off;
+                        z_a += z_a_off;
+                        y_a += Rasterizer.width;
                     }
                 } else {
-                    arg0 -= arg1;
-                    arg1 -= arg2;
-                    arg2 = anIntArray2938[arg2];
-                    while(--arg1 >= 0) {
-                        method705(Rasterizer.pixels, arg2, 0, 0, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
-                        arg3 += i_46_;
-                        arg5 += i_48_;
-                        arg6 += i_47_;
-                        arg8 += i_49_;
-                        arg2 += Rasterizer.width;
+                    y_b -= y_c;
+                    y_c -= y_a;
+                    y_a = lineOffsets[y_a];
+                    while(--y_c >= 0) {
+                        drawShadedLine(Rasterizer.pixels, y_a, x_a >> 16, x_b >> 16, z_a >> 7, z_b >> 7);
+                        x_b += x_c_off;
+                        x_a += x_a_off;
+                        z_b += z_c_off;
+                        z_a += z_a_off;
+                        y_a += Rasterizer.width;
                     }
-                    while(--arg0 >= 0) {
-                        method705(Rasterizer.pixels, arg2, 0, 0, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
-                        arg4 += i;
-                        arg5 += i_48_;
-                        arg7 += i_45_;
-                        arg8 += i_49_;
-                        arg2 += Rasterizer.width;
+                    while(--y_b >= 0) {
+                        drawShadedLine(Rasterizer.pixels, y_a, x_a >> 16, x_c >> 16, z_a >> 7, z_c >> 7);
+                        x_c += x_b_off;
+                        x_a += x_a_off;
+                        z_c += z_b_off;
+                        z_a += z_a_off;
+                        y_a += Rasterizer.width;
+                    }
+                }
+            }
+        } else {
+            if(y_b <= y_c) {
+                if(y_b < bottomY) {
+                    if(y_c > bottomY)
+                        y_c = bottomY;
+                    if(y_a > bottomY)
+                        y_a = bottomY;
+                    if(y_c < y_a) {
+                        x_a = x_b <<= 16;
+                        z_a = z_b <<= 15;
+                        if(y_b < 0) {
+                            x_a -= x_a_off * y_b;
+                            x_b -= x_b_off * y_b;
+                            z_a -= z_a_off * y_b;
+                            z_b -= z_b_off * y_b;
+                            y_b = 0;
+                        }
+                        x_c <<= 16;
+                        z_c <<= 15;
+                        if(y_c < 0) {
+                            x_c -= x_c_off * y_c;
+                            z_c -= z_c_off * y_c;
+                            y_c = 0;
+                        }
+                        if(y_b != y_c && x_a_off < x_b_off || y_b == y_c && x_a_off > x_c_off) {
+                            y_a -= y_c;
+                            y_c -= y_b;
+                            y_b = lineOffsets[y_b];
+                            while(--y_c >= 0) {
+                                drawShadedLine(Rasterizer.pixels, y_b, x_a >> 16, x_b >> 16, z_a >> 7, z_b >> 7);
+                                x_a += x_a_off;
+                                x_b += x_b_off;
+                                z_a += z_a_off;
+                                z_b += z_b_off;
+                                y_b += Rasterizer.width;
+                            }
+                            while(--y_a >= 0) {
+                                drawShadedLine(Rasterizer.pixels, y_b, x_a >> 16, x_c >> 16, z_a >> 7, z_c >> 7);
+                                x_a += x_a_off;
+                                x_c += x_c_off;
+                                z_a += z_a_off;
+                                z_c += z_c_off;
+                                y_b += Rasterizer.width;
+                            }
+                        } else {
+                            y_a -= y_c;
+                            y_c -= y_b;
+                            y_b = lineOffsets[y_b];
+                            while(--y_c >= 0) {
+                                drawShadedLine(Rasterizer.pixels, y_b, x_b >> 16, x_a >> 16, z_b >> 7, z_a >> 7);
+                                x_a += x_a_off;
+                                x_b += x_b_off;
+                                z_a += z_a_off;
+                                z_b += z_b_off;
+                                y_b += Rasterizer.width;
+                            }
+                            while(--y_a >= 0) {
+                                drawShadedLine(Rasterizer.pixels, y_b, x_c >> 16, x_a >> 16, z_c >> 7, z_a >> 7);
+                                x_a += x_a_off;
+                                x_c += x_c_off;
+                                z_a += z_a_off;
+                                z_c += z_c_off;
+                                y_b += Rasterizer.width;
+                            }
+                        }
+                    } else {
+                        x_c = x_b <<= 16;
+                        z_c = z_b <<= 15;
+                        if(y_b < 0) {
+                            x_c -= x_a_off * y_b;
+                            x_b -= x_b_off * y_b;
+                            z_c -= z_a_off * y_b;
+                            z_b -= z_b_off * y_b;
+                            y_b = 0;
+                        }
+                        x_a <<= 16;
+                        z_a <<= 15;
+                        if(y_a < 0) {
+                            x_a -= x_c_off * y_a;
+                            z_a -= z_c_off * y_a;
+                            y_a = 0;
+                        }
+                        if(x_a_off < x_b_off) {
+                            y_c -= y_a;
+                            y_a -= y_b;
+                            y_b = lineOffsets[y_b];
+                            while(--y_a >= 0) {
+                                drawShadedLine(Rasterizer.pixels, y_b, x_c >> 16, x_b >> 16, z_c >> 7, z_b >> 7);
+                                x_c += x_a_off;
+                                x_b += x_b_off;
+                                z_c += z_a_off;
+                                z_b += z_b_off;
+                                y_b += Rasterizer.width;
+                            }
+                            while(--y_c >= 0) {
+                                drawShadedLine(Rasterizer.pixels, y_b, x_a >> 16, x_b >> 16, z_a >> 7, z_b >> 7);
+                                x_a += x_c_off;
+                                x_b += x_b_off;
+                                z_a += z_c_off;
+                                z_b += z_b_off;
+                                y_b += Rasterizer.width;
+                            }
+                        } else {
+                            y_c -= y_a;
+                            y_a -= y_b;
+                            y_b = lineOffsets[y_b];
+                            while(--y_a >= 0) {
+                                drawShadedLine(Rasterizer.pixels, y_b, x_b >> 16, x_c >> 16, z_b >> 7, z_c >> 7);
+                                x_c += x_a_off;
+                                x_b += x_b_off;
+                                z_c += z_a_off;
+                                z_b += z_b_off;
+                                y_b += Rasterizer.width;
+                            }
+                            while(--y_c >= 0) {
+                                drawShadedLine(Rasterizer.pixels, y_b, x_b >> 16, x_a >> 16, z_b >> 7, z_a >> 7);
+                                x_a += x_c_off;
+                                x_b += x_b_off;
+                                z_a += z_c_off;
+                                z_b += z_b_off;
+                                y_b += Rasterizer.width;
+                            }
+                        }
+                    }
+                }
+            } else if(y_c < bottomY) {
+                if(y_a > bottomY)
+                    y_a = bottomY;
+                if(y_b > bottomY)
+                    y_b = bottomY;
+                if(y_a < y_b) {
+                    x_b = x_c <<= 16;
+                    z_b = z_c <<= 15;
+                    if(y_c < 0) {
+                        x_b -= x_b_off * y_c;
+                        x_c -= x_c_off * y_c;
+                        z_b -= z_b_off * y_c;
+                        z_c -= z_c_off * y_c;
+                        y_c = 0;
+                    }
+                    x_a <<= 16;
+                    z_a <<= 15;
+                    if(y_a < 0) {
+                        x_a -= x_a_off * y_a;
+                        z_a -= z_a_off * y_a;
+                        y_a = 0;
+                    }
+                    if(x_b_off < x_c_off) {
+                        y_b -= y_a;
+                        y_a -= y_c;
+                        y_c = lineOffsets[y_c];
+                        while(--y_a >= 0) {
+                            drawShadedLine(Rasterizer.pixels, y_c, x_b >> 16, x_c >> 16, z_b >> 7, z_c >> 7);
+                            x_b += x_b_off;
+                            x_c += x_c_off;
+                            z_b += z_b_off;
+                            z_c += z_c_off;
+                            y_c += Rasterizer.width;
+                        }
+                        while(--y_b >= 0) {
+                            drawShadedLine(Rasterizer.pixels, y_c, x_b >> 16, x_a >> 16, z_b >> 7, z_a >> 7);
+                            x_b += x_b_off;
+                            x_a += x_a_off;
+                            z_b += z_b_off;
+                            z_a += z_a_off;
+                            y_c += Rasterizer.width;
+                        }
+                    } else {
+                        y_b -= y_a;
+                        y_a -= y_c;
+                        y_c = lineOffsets[y_c];
+                        while(--y_a >= 0) {
+                            drawShadedLine(Rasterizer.pixels, y_c, x_c >> 16, x_b >> 16, z_c >> 7, z_b >> 7);
+                            x_b += x_b_off;
+                            x_c += x_c_off;
+                            z_b += z_b_off;
+                            z_c += z_c_off;
+                            y_c += Rasterizer.width;
+                        }
+                        while(--y_b >= 0) {
+                            drawShadedLine(Rasterizer.pixels, y_c, x_a >> 16, x_b >> 16, z_a >> 7, z_b >> 7);
+                            x_b += x_b_off;
+                            x_a += x_a_off;
+                            z_b += z_b_off;
+                            z_a += z_a_off;
+                            y_c += Rasterizer.width;
+                        }
+                    }
+                } else {
+                    x_a = x_c <<= 16;
+                    z_a = z_c <<= 15;
+                    if(y_c < 0) {
+                        x_a -= x_b_off * y_c;
+                        x_c -= x_c_off * y_c;
+                        z_a -= z_b_off * y_c;
+                        z_c -= z_c_off * y_c;
+                        y_c = 0;
+                    }
+                    x_b <<= 16;
+                    z_b <<= 15;
+                    if(y_b < 0) {
+                        x_b -= x_a_off * y_b;
+                        z_b -= z_a_off * y_b;
+                        y_b = 0;
+                    }
+                    if(x_b_off < x_c_off) {
+                        y_a -= y_b;
+                        y_b -= y_c;
+                        y_c = lineOffsets[y_c];
+                        while(--y_b >= 0) {
+                            drawShadedLine(Rasterizer.pixels, y_c, x_a >> 16, x_c >> 16, z_a >> 7, z_c >> 7);
+                            x_a += x_b_off;
+                            x_c += x_c_off;
+                            z_a += z_b_off;
+                            z_c += z_c_off;
+                            y_c += Rasterizer.width;
+                        }
+                        while(--y_a >= 0) {
+                            drawShadedLine(Rasterizer.pixels, y_c, x_b >> 16, x_c >> 16, z_b >> 7, z_c >> 7);
+                            x_b += x_a_off;
+                            x_c += x_c_off;
+                            z_b += z_a_off;
+                            z_c += z_c_off;
+                            y_c += Rasterizer.width;
+                        }
+                    } else {
+                        y_a -= y_b;
+                        y_b -= y_c;
+                        y_c = lineOffsets[y_c];
+                        while(--y_b >= 0) {
+                            drawShadedLine(Rasterizer.pixels, y_c, x_c >> 16, x_a >> 16, z_c >> 7, z_a >> 7);
+                            x_a += x_b_off;
+                            x_c += x_c_off;
+                            z_a += z_b_off;
+                            z_c += z_c_off;
+                            y_c += Rasterizer.width;
+                        }
+                        while(--y_a >= 0) {
+                            drawShadedLine(Rasterizer.pixels, y_c, x_c >> 16, x_b >> 16, z_c >> 7, z_b >> 7);
+                            x_b += x_a_off;
+                            x_c += x_c_off;
+                            z_b += z_a_off;
+                            z_c += z_c_off;
+                            y_c += Rasterizer.width;
+                        }
                     }
                 }
             }
@@ -1484,15 +1586,15 @@ public class Rasterizer3D extends Rasterizer {
     }
 
     public static void method710(int arg0, int arg1) {
-        int i = anIntArray2938[0];
+        int i = lineOffsets[0];
         int i_54_ = i / Rasterizer.width;
         int i_55_ = i - i_54_ * Rasterizer.width;
-        anInt2937 = arg0 - i_55_;
-        anInt2931 = arg1 - i_54_;
-        anInt2942 = -anInt2937;
-        anInt2934 = anInt2945 - anInt2937;
-        anInt2935 = -anInt2931;
-        anInt2941 = anInt2930 - anInt2931;
+        center_x = arg0 - i_55_;
+        center_y = arg1 - i_54_;
+        anInt2942 = -center_x;
+        anInt2934 = viewportRx - center_x;
+        anInt2935 = -center_y;
+        anInt2941 = bottomY - center_y;
     }
 
     public static void method711(double arg0) {
@@ -1510,11 +1612,11 @@ public class Rasterizer3D extends Rasterizer {
         if(arg2 != arg0)
             i_57_ = (arg3 - arg5 << 16) / (arg0 - arg2);
         if(arg0 <= arg1 && arg0 <= arg2) {
-            if(arg0 < anInt2930) {
-                if(arg1 > anInt2930)
-                    arg1 = anInt2930;
-                if(arg2 > anInt2930)
-                    arg2 = anInt2930;
+            if(arg0 < bottomY) {
+                if(arg1 > bottomY)
+                    arg1 = bottomY;
+                if(arg2 > bottomY)
+                    arg2 = bottomY;
                 if(arg1 < arg2) {
                     arg5 = arg3 <<= 16;
                     if(arg0 < 0) {
@@ -1530,7 +1632,7 @@ public class Rasterizer3D extends Rasterizer {
                     if(arg0 != arg1 && i_57_ < i || arg0 == arg1 && i_57_ > i_56_) {
                         arg2 -= arg1;
                         arg1 -= arg0;
-                        arg0 = anIntArray2938[arg0];
+                        arg0 = lineOffsets[arg0];
                         while(--arg1 >= 0) {
                             method698(Rasterizer.pixels, arg0, arg6, 0, arg5 >> 16, arg3 >> 16);
                             arg5 += i_57_;
@@ -1546,7 +1648,7 @@ public class Rasterizer3D extends Rasterizer {
                     } else {
                         arg2 -= arg1;
                         arg1 -= arg0;
-                        arg0 = anIntArray2938[arg0];
+                        arg0 = lineOffsets[arg0];
                         while(--arg1 >= 0) {
                             method698(Rasterizer.pixels, arg0, arg6, 0, arg3 >> 16, arg5 >> 16);
                             arg5 += i_57_;
@@ -1575,7 +1677,7 @@ public class Rasterizer3D extends Rasterizer {
                     if(arg0 != arg2 && i_57_ < i || arg0 == arg2 && i_56_ > i) {
                         arg1 -= arg2;
                         arg2 -= arg0;
-                        arg0 = anIntArray2938[arg0];
+                        arg0 = lineOffsets[arg0];
                         while(--arg2 >= 0) {
                             method698(Rasterizer.pixels, arg0, arg6, 0, arg4 >> 16, arg3 >> 16);
                             arg4 += i_57_;
@@ -1591,7 +1693,7 @@ public class Rasterizer3D extends Rasterizer {
                     } else {
                         arg1 -= arg2;
                         arg2 -= arg0;
-                        arg0 = anIntArray2938[arg0];
+                        arg0 = lineOffsets[arg0];
                         while(--arg2 >= 0) {
                             method698(Rasterizer.pixels, arg0, arg6, 0, arg3 >> 16, arg4 >> 16);
                             arg4 += i_57_;
@@ -1608,11 +1710,11 @@ public class Rasterizer3D extends Rasterizer {
                 }
             }
         } else if(arg1 <= arg2) {
-            if(arg1 < anInt2930) {
-                if(arg2 > anInt2930)
-                    arg2 = anInt2930;
-                if(arg0 > anInt2930)
-                    arg0 = anInt2930;
+            if(arg1 < bottomY) {
+                if(arg2 > bottomY)
+                    arg2 = bottomY;
+                if(arg0 > bottomY)
+                    arg0 = bottomY;
                 if(arg2 < arg0) {
                     arg3 = arg4 <<= 16;
                     if(arg1 < 0) {
@@ -1628,7 +1730,7 @@ public class Rasterizer3D extends Rasterizer {
                     if(arg1 != arg2 && i < i_56_ || arg1 == arg2 && i > i_57_) {
                         arg0 -= arg2;
                         arg2 -= arg1;
-                        arg1 = anIntArray2938[arg1];
+                        arg1 = lineOffsets[arg1];
                         while(--arg2 >= 0) {
                             method698(Rasterizer.pixels, arg1, arg6, 0, arg3 >> 16, arg4 >> 16);
                             arg3 += i;
@@ -1644,7 +1746,7 @@ public class Rasterizer3D extends Rasterizer {
                     } else {
                         arg0 -= arg2;
                         arg2 -= arg1;
-                        arg1 = anIntArray2938[arg1];
+                        arg1 = lineOffsets[arg1];
                         while(--arg2 >= 0) {
                             method698(Rasterizer.pixels, arg1, arg6, 0, arg4 >> 16, arg3 >> 16);
                             arg3 += i;
@@ -1673,7 +1775,7 @@ public class Rasterizer3D extends Rasterizer {
                     if(i < i_56_) {
                         arg2 -= arg0;
                         arg0 -= arg1;
-                        arg1 = anIntArray2938[arg1];
+                        arg1 = lineOffsets[arg1];
                         while(--arg0 >= 0) {
                             method698(Rasterizer.pixels, arg1, arg6, 0, arg5 >> 16, arg4 >> 16);
                             arg5 += i;
@@ -1689,7 +1791,7 @@ public class Rasterizer3D extends Rasterizer {
                     } else {
                         arg2 -= arg0;
                         arg0 -= arg1;
-                        arg1 = anIntArray2938[arg1];
+                        arg1 = lineOffsets[arg1];
                         while(--arg0 >= 0) {
                             method698(Rasterizer.pixels, arg1, arg6, 0, arg4 >> 16, arg5 >> 16);
                             arg5 += i;
@@ -1705,11 +1807,11 @@ public class Rasterizer3D extends Rasterizer {
                     }
                 }
             }
-        } else if(arg2 < anInt2930) {
-            if(arg0 > anInt2930)
-                arg0 = anInt2930;
-            if(arg1 > anInt2930)
-                arg1 = anInt2930;
+        } else if(arg2 < bottomY) {
+            if(arg0 > bottomY)
+                arg0 = bottomY;
+            if(arg1 > bottomY)
+                arg1 = bottomY;
             if(arg0 < arg1) {
                 arg4 = arg5 <<= 16;
                 if(arg2 < 0) {
@@ -1725,7 +1827,7 @@ public class Rasterizer3D extends Rasterizer {
                 if(i_56_ < i_57_) {
                     arg1 -= arg0;
                     arg0 -= arg2;
-                    arg2 = anIntArray2938[arg2];
+                    arg2 = lineOffsets[arg2];
                     while(--arg0 >= 0) {
                         method698(Rasterizer.pixels, arg2, arg6, 0, arg4 >> 16, arg5 >> 16);
                         arg4 += i_56_;
@@ -1741,7 +1843,7 @@ public class Rasterizer3D extends Rasterizer {
                 } else {
                     arg1 -= arg0;
                     arg0 -= arg2;
-                    arg2 = anIntArray2938[arg2];
+                    arg2 = lineOffsets[arg2];
                     while(--arg0 >= 0) {
                         method698(Rasterizer.pixels, arg2, arg6, 0, arg5 >> 16, arg4 >> 16);
                         arg4 += i_56_;
@@ -1770,7 +1872,7 @@ public class Rasterizer3D extends Rasterizer {
                 if(i_56_ < i_57_) {
                     arg0 -= arg1;
                     arg1 -= arg2;
-                    arg2 = anIntArray2938[arg2];
+                    arg2 = lineOffsets[arg2];
                     while(--arg1 >= 0) {
                         method698(Rasterizer.pixels, arg2, arg6, 0, arg3 >> 16, arg5 >> 16);
                         arg3 += i_56_;
@@ -1786,7 +1888,7 @@ public class Rasterizer3D extends Rasterizer {
                 } else {
                     arg0 -= arg1;
                     arg1 -= arg2;
-                    arg2 = anIntArray2938[arg2];
+                    arg2 = lineOffsets[arg2];
                     while(--arg1 >= 0) {
                         method698(Rasterizer.pixels, arg2, arg6, 0, arg5 >> 16, arg3 >> 16);
                         arg3 += i_56_;
@@ -1805,7 +1907,7 @@ public class Rasterizer3D extends Rasterizer {
     }
 
     public static int[] method713() {
-        return anIntArray2938;
+        return lineOffsets;
     }
 
     public static void method714(double arg0, int arg1, int arg2) {
@@ -1865,7 +1967,7 @@ public class Rasterizer3D extends Rasterizer {
                 i_73_ = method707(i_73_, arg0);
                 if(i_73_ == 0)
                     i_73_ = 1;
-                anIntArray2932[i++] = i_73_;
+                hsl2rgb[i++] = i_73_;
             }
         }
     }

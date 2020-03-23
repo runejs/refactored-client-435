@@ -84,7 +84,7 @@ public class FloorDecoration {
             LinkedList.anIntArray1071 = new int[i_8_];
             RSString.aByteArrayArray1715 = new byte[i_8_][];
             Class13.anIntArray421 = new int[i_8_];
-            Class52.aByteArrayArray1217 = new byte[i_8_][];
+            GenericTile.aByteArrayArray1217 = new byte[i_8_][];
             ISAAC.anIntArray528 = new int[i_8_];
             i_8_ = 0;
             for(int i_11_ = 0; i_11_ < 4; i_11_++) {
@@ -129,7 +129,7 @@ public class FloorDecoration {
             ISAAC.anIntArray528 = new int[i_25_];
             RSString.aByteArrayArray1715 = new byte[i_25_][];
             boolean bool = false;
-            Class52.aByteArrayArray1217 = new byte[i_25_][];
+            GenericTile.aByteArrayArray1217 = new byte[i_25_][];
             if((i_21_ / 8 == 48 || i_21_ / 8 == 49) && i_23_ / 8 == 48)
                 bool = true;
             LinkedList.anIntArray1071 = new int[i_25_];
