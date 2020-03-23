@@ -10,6 +10,7 @@ import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 
 import java.awt.*;
@@ -83,7 +84,7 @@ public class RSCanvas extends Canvas {
         Class55.aClass6_Sub1_1286.method191(1120);
         UnderlayDefinition.aClass6_Sub1_2571.method191(1120);
         ActorDefinition.aClass6_Sub1_2377.method191(arg0 ^ 0x460);
-        Class32.aClass6_Sub1_773.method191(1120);
+        SceneCluster.aClass6_Sub1_773.method191(1120);
         aClass6_Sub1_48.method191(arg0 + 1120);
         VertexNormal.aClass6_Sub1_1104.method191(1120);
         Class56.aClass6_Sub1_1323.method191(1120);

@@ -12,6 +12,7 @@ import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.Scene;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -102,7 +103,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 renderable = new GameObject(arg1, 0, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
             else
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, 0, (byte) 124, i_0_);
-            arg5.addWall(arg9, arg8, arg3, i_3_, Class32.anIntArray761[arg7], 0, i_5_, renderable, null, i_4_);
+            arg5.addWall(arg9, arg8, arg3, i_3_, SceneCluster.anIntArray761[arg7], 0, i_5_, renderable, null, i_4_);
             if(gameObjectDefinition.solid)
                 arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.walkable, (byte) 95);
         } else if(arg4 == 1) {
@@ -125,7 +126,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7 + 4, i, 2, (byte) 124, i_0_);
                 renderable_10_ = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, i_9_, i, 2, (byte) 124, i_0_);
             }
-            arg5.addWall(arg9, arg8, arg3, i_3_, Class32.anIntArray761[arg7], Class32.anIntArray761[i_9_], i_5_, renderable, renderable_10_, i_4_);
+            arg5.addWall(arg9, arg8, arg3, i_3_, SceneCluster.anIntArray761[arg7], SceneCluster.anIntArray761[i_9_], i_5_, renderable, renderable_10_, i_4_);
             if(gameObjectDefinition.solid)
                 arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.walkable, (byte) 95);
         } else if(arg4 == 3) {
@@ -175,7 +176,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
                 else
                     renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, (byte) 124, i_0_);
-                arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, 512 * arg7, i_5_, renderable, i_4_, Class32.anIntArray761[arg7]);
+                arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, 512 * arg7, i_5_, renderable, i_4_, SceneCluster.anIntArray761[arg7]);
             } else if(arg4 == 5) {
                 int i_14_ = 16;
                 int i_15_ = arg5.method122(arg3, arg9, arg8);
@@ -186,7 +187,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, (byte) 124, i_0_);
                 else
                     renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
-                arg5.addWallDecoration(arg9, arg8, arg3, i_3_, Class27.anIntArray666[arg7] * i_14_, Class68_Sub1.anIntArray2207[arg7] * i_14_, 512 * arg7, i_5_, renderable, i_4_, Class32.anIntArray761[arg7]);
+                arg5.addWallDecoration(arg9, arg8, arg3, i_3_, Class27.anIntArray666[arg7] * i_14_, Class68_Sub1.anIntArray2207[arg7] * i_14_, 512 * arg7, i_5_, renderable, i_4_, SceneCluster.anIntArray761[arg7]);
             } else if(arg6 == -22078) {
                 if(arg4 == 6) {
                     Renderable renderable;
@@ -221,31 +222,31 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 Cache.aBoolean330 = true;
                 Class35.publicChatMode = (1 + Class35.publicChatMode) % 4;
                 Class52.redrawChatbox = true;
-                Class32.packetBuffer.putPacket(32);
+                SceneCluster.packetBuffer.putPacket(32);
                 Class34.anInt821++;
-                Class32.packetBuffer.putByte(Class35.publicChatMode);
-                Class32.packetBuffer.putByte(Class4.anInt185);
-                Class32.packetBuffer.putByte(ItemDefinition.anInt2797);
+                SceneCluster.packetBuffer.putByte(Class35.publicChatMode);
+                SceneCluster.packetBuffer.putByte(Class4.anInt185);
+                SceneCluster.packetBuffer.putByte(ItemDefinition.anInt2797);
             }
             if(Class57.anInt1338 >= 135 && Class57.anInt1338 <= 235 && RSString.anInt1668 >= 467 && RSString.anInt1668 <= 499) {
                 Class52.redrawChatbox = true;
                 Class4.anInt185 = (Class4.anInt185 + 1) % 3;
                 Cache.aBoolean330 = true;
                 Class34.anInt821++;
-                Class32.packetBuffer.putPacket(32);
-                Class32.packetBuffer.putByte(Class35.publicChatMode);
-                Class32.packetBuffer.putByte(Class4.anInt185);
-                Class32.packetBuffer.putByte(ItemDefinition.anInt2797);
+                SceneCluster.packetBuffer.putPacket(32);
+                SceneCluster.packetBuffer.putByte(Class35.publicChatMode);
+                SceneCluster.packetBuffer.putByte(Class4.anInt185);
+                SceneCluster.packetBuffer.putByte(ItemDefinition.anInt2797);
             }
             if(Class57.anInt1338 >= 273 && Class57.anInt1338 <= 373 && RSString.anInt1668 >= 467 && RSString.anInt1668 <= 499) {
                 ItemDefinition.anInt2797 = (ItemDefinition.anInt2797 + 1) % 3;
                 Cache.aBoolean330 = true;
                 Class52.redrawChatbox = true;
-                Class32.packetBuffer.putPacket(32);
+                SceneCluster.packetBuffer.putPacket(32);
                 Class34.anInt821++;
-                Class32.packetBuffer.putByte(Class35.publicChatMode);
-                Class32.packetBuffer.putByte(Class4.anInt185);
-                Class32.packetBuffer.putByte(ItemDefinition.anInt2797);
+                SceneCluster.packetBuffer.putByte(Class35.publicChatMode);
+                SceneCluster.packetBuffer.putByte(Class4.anInt185);
+                SceneCluster.packetBuffer.putByte(ItemDefinition.anInt2797);
             }
             if(Class57.anInt1338 >= 412 && Class57.anInt1338 <= 512 && RSString.anInt1668 >= 467 && RSString.anInt1668 <= 499) {
                 if(HuffmanEncoding.openScreenWidgetId == -1) {
@@ -318,7 +319,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
         if(arg0 != 256)
             anInt2280 = 44;
         int i = Class37.method430((byte) -120, Player.worldLevel, Class12.cameraX, Class40_Sub5_Sub6.cameraY);
-        if(i + -Class32.cameraZ < 800 && ((OverlayDefinition.tile_flags[Player.worldLevel][Class12.cameraX >> 7][Class40_Sub5_Sub6.cameraY >> 7]) & 0x4) != 0)
+        if(i + -SceneCluster.cameraZ < 800 && ((OverlayDefinition.tile_flags[Player.worldLevel][Class12.cameraX >> 7][Class40_Sub5_Sub6.cameraY >> 7]) & 0x4) != 0)
             return Player.worldLevel;
         return 3;
     }

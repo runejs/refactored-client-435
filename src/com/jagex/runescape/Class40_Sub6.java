@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.net.ISAAC;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.WallDecoration;
 
 public class Class40_Sub6 extends Node {
@@ -122,8 +123,8 @@ public class Class40_Sub6 extends Node {
                     Class42.anInt1008--;
                     for(int i_16_ = i; Class42.anInt1008 > i_16_; i_16_++)
                         WallDecoration.ignores[i_16_] = WallDecoration.ignores[1 + i_16_];
-                    Class32.packetBuffer.putPacket(28);
-                    Class32.packetBuffer.putLongBE(arg1);
+                    SceneCluster.packetBuffer.putPacket(28);
+                    SceneCluster.packetBuffer.putLongBE(arg1);
                     break;
                 }
             }

@@ -18,6 +18,7 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.Scene;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -84,7 +85,7 @@ public class Class40_Sub3 extends Node {
             Class55.aClass6_Sub1_1286 = KeyFocusListener.method957(6, false, true, (byte) 117, true);
             UnderlayDefinition.aClass6_Sub1_2571 = KeyFocusListener.method957(7, true, false, (byte) 124, true);
             ActorDefinition.aClass6_Sub1_2377 = KeyFocusListener.method957(8, true, false, (byte) 127, true);
-            Class32.aClass6_Sub1_773 = KeyFocusListener.method957(9, true, false, (byte) 127, true);
+            SceneCluster.aClass6_Sub1_773 = KeyFocusListener.method957(9, true, false, (byte) 127, true);
             RSCanvas.aClass6_Sub1_48 = KeyFocusListener.method957(10, true, false, (byte) 125, true);
             VertexNormal.aClass6_Sub1_1104 = KeyFocusListener.method957(11, true, false, (byte) 120, true);
             Class56.aClass6_Sub1_1323 = KeyFocusListener.method957(12, true, false, (byte) 118, true);
@@ -102,7 +103,7 @@ public class Class40_Sub3 extends Node {
             i += Class55.aClass6_Sub1_1286.method197(100) * 5 / 100;
             i += 40 * UnderlayDefinition.aClass6_Sub1_2571.method197(100) / 100;
             i += ActorDefinition.aClass6_Sub1_2377.method197(100) * 5 / 100;
-            i += Class32.aClass6_Sub1_773.method197(arg0) * 5 / 100;
+            i += SceneCluster.aClass6_Sub1_773.method197(arg0) * 5 / 100;
             i += 5 * RSCanvas.aClass6_Sub1_48.method197(100) / 100;
             i += 5 * VertexNormal.aClass6_Sub1_1104.method197(100) / 100;
             i += 5 * Class56.aClass6_Sub1_1323.method197(100) / 100;
@@ -261,15 +262,15 @@ public class Class40_Sub3 extends Node {
                 Class67.anInt1607 = 80;
             }
         } else if(Class40_Sub5_Sub6.anInt2451 == 90) {
-            if(Class32.aClass6_Sub1_773.method185((byte) 62)) {
-                Class35 class35 = new Class35(Class32.aClass6_Sub1_773, ActorDefinition.aClass6_Sub1_2377, 20, 0.8, !VertexNormal.lowMemory ? 128 : 64);
+            if(SceneCluster.aClass6_Sub1_773.method185((byte) 62)) {
+                Class35 class35 = new Class35(SceneCluster.aClass6_Sub1_773, ActorDefinition.aClass6_Sub1_2377, 20, 0.8, !VertexNormal.lowMemory ? 128 : 64);
                 Rasterizer3D.method703(class35);
                 Rasterizer3D.method711(0.8);
                 Class40_Sub5_Sub6.anInt2451 = 110;
                 Class67.anInt1607 = 90;
                 Class22_Sub2.currentLoadingText = Actor.aClass1_3124;
             } else {
-                Class22_Sub2.currentLoadingText = (RSString.linkRSStrings(new RSString[]{SpotAnimDefinition.aClass1_2294, HashTable.method334(Class32.aClass6_Sub1_773.method202(false), -1), Class44.aClass1_1041}));
+                Class22_Sub2.currentLoadingText = (RSString.linkRSStrings(new RSString[]{SpotAnimDefinition.aClass1_2294, HashTable.method334(SceneCluster.aClass6_Sub1_773.method202(false), -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 90;
             }
         } else if(Class40_Sub5_Sub6.anInt2451 == 110) {

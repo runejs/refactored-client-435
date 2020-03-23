@@ -18,6 +18,7 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.util.CollisionMap;
 import tech.henning.fourthreefive.OldEngine.MapDecompressor;
 
@@ -274,8 +275,8 @@ public class Landscape {
                 ISAAC.method285((byte) 118);
                 VertexNormal.aClass9_1102.method235((byte) -43);
                 if(Class35.aFrame1732 != null) {
-                    Class32.packetBuffer.putPacket(121);
-                    Class32.packetBuffer.putIntBE(1057001181);
+                    SceneCluster.packetBuffer.putPacket(121);
+                    SceneCluster.packetBuffer.putIntBE(1057001181);
                 }
                 if(!GroundItemTile.aBoolean1349) {
                     int i_42_ = (-6 + Class51.anInt1202) / 8;
@@ -296,7 +297,7 @@ public class Landscape {
                 else
                     OverlayDefinition.method559(30);
                 Class56.method973(-65);
-                Class32.packetBuffer.putPacket(178);
+                SceneCluster.packetBuffer.putPacket(178);
                 RSRuntimeException.method1057(126);
             } else
                 Class68.anInt1634 = 2;

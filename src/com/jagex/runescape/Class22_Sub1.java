@@ -5,6 +5,7 @@ import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.util.Signlink;
 import com.jagex.runescape.util.SignlinkNode;
 
@@ -101,7 +102,7 @@ public class Class22_Sub1 extends Class22 {
         } else {
             int i = Class37.method430((byte) -122, Player.worldLevel, arg2, arg1) + -arg0;
             arg1 -= Class40_Sub5_Sub6.cameraY;
-            i -= Class32.cameraZ;
+            i -= SceneCluster.cameraZ;
             int i_1_ = Model.COSINE[Class26.anInt627];
             int i_2_ = Model.SINE[Class26.anInt627];
             arg2 -= Class12.cameraX;

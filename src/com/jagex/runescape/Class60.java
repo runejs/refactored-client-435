@@ -11,6 +11,7 @@ import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class60 {
@@ -35,7 +36,7 @@ public class Class60 {
 
     public static int method988(CacheIndex arg0, CacheIndex arg1) {
         int i = 0;
-        if(arg0.method194(Class32.aClass1_772, Class22_Sub2.string_blank, -1234))
+        if(arg0.method194(SceneCluster.aClass1_772, Class22_Sub2.string_blank, -1234))
             i++;
         if(arg1.method194(Main.aClass1_1762, Class22_Sub2.string_blank, -1234))
             i++;
@@ -148,7 +149,7 @@ public class Class60 {
     }
 
     public static void method992(int arg0) {
-        Class32.aClass38_768.method443(-10115);
+        SceneCluster.aClass38_768.method443(-10115);
         for(int i = 0; i < 32; i++)
             RSApplet.aLongArray4[i] = 0L;
         for(int i = 0; i < 32; i++)

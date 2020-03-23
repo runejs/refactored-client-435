@@ -11,6 +11,7 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 
 public class Class33 {
@@ -50,7 +51,7 @@ public class Class33 {
     }
 
     public static void method404(byte arg0) {
-        Class32.anInt770 = 0;
+        SceneCluster.anInt770 = 0;
         if(arg0 == -28) {
             for(int i = -1; Player.localPlayerCount + Player.npcCount > i; i++) {
                 Actor actor;
@@ -104,16 +105,16 @@ public class Class33 {
                     }
                     if(actor.forcedChatMessage != null && (i >= Player.localPlayerCount || Class35.publicChatMode == 0 || Class35.publicChatMode == 3 || (Class35.publicChatMode == 1 && (Class40_Sub2.hasFriend((((Player) actor).playerName), arg0 ^ 0x7f74))))) {
                         FloorDecoration.method342((actor.anInt3117), actor);
-                        if(ISAAC.anInt522 > -1 && 50 > Class32.anInt770) {
-                            Class30.anIntArray680[Class32.anInt770] = ((Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getStringWidth(actor.forcedChatMessage)) / 2);
-                            Class30.anIntArray688[Class32.anInt770] = (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.characterDefaultHeight);
-                            Class30.anIntArray715[Class32.anInt770] = ISAAC.anInt522;
-                            Class30.anIntArray685[Class32.anInt770] = Class44.anInt1048;
-                            Class30.anIntArray712[Class32.anInt770] = actor.chatcolor;
-                            Class30.anIntArray695[Class32.anInt770] = actor.chatEffects;
-                            Class30.anIntArray684[Class32.anInt770] = actor.anInt3078;
-                            Class30.aClass1Array697[Class32.anInt770] = actor.forcedChatMessage;
-                            Class32.anInt770++;
+                        if(ISAAC.anInt522 > -1 && 50 > SceneCluster.anInt770) {
+                            Class30.anIntArray680[SceneCluster.anInt770] = ((Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getStringWidth(actor.forcedChatMessage)) / 2);
+                            Class30.anIntArray688[SceneCluster.anInt770] = (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.characterDefaultHeight);
+                            Class30.anIntArray715[SceneCluster.anInt770] = ISAAC.anInt522;
+                            Class30.anIntArray685[SceneCluster.anInt770] = Class44.anInt1048;
+                            Class30.anIntArray712[SceneCluster.anInt770] = actor.chatcolor;
+                            Class30.anIntArray695[SceneCluster.anInt770] = actor.chatEffects;
+                            Class30.anIntArray684[SceneCluster.anInt770] = actor.anInt3078;
+                            Class30.aClass1Array697[SceneCluster.anInt770] = actor.forcedChatMessage;
+                            SceneCluster.anInt770++;
                         }
                     }
                     if((Node.pulseCycle < actor.anInt3139)) {
@@ -148,7 +149,7 @@ public class Class33 {
                     }
                 }
             }
-            for(int i = 0; Class32.anInt770 > i; i++) {
+            for(int i = 0; SceneCluster.anInt770 > i; i++) {
                 int i_3_ = Class30.anIntArray715[i];
                 int i_4_ = Class30.anIntArray685[i];
                 int i_5_ = Class30.anIntArray680[i];
@@ -264,54 +265,54 @@ public class Class33 {
 
     public static void method406(int arg0, int arg1, int arg2, int arg3) {
         if(arg1 == 1) {
-            Class32.packetBuffer.putPacket(111);
-            Class32.packetBuffer.putIntBE(arg2);
-            Class32.packetBuffer.putShortBE(arg0);
+            SceneCluster.packetBuffer.putPacket(111);
+            SceneCluster.packetBuffer.putIntBE(arg2);
+            SceneCluster.packetBuffer.putShortBE(arg0);
         }
         if(arg1 == 2) {
-            Class32.packetBuffer.putPacket(9);
-            Class32.packetBuffer.putIntBE(arg2);
-            Class32.packetBuffer.putShortBE(arg0);
+            SceneCluster.packetBuffer.putPacket(9);
+            SceneCluster.packetBuffer.putIntBE(arg2);
+            SceneCluster.packetBuffer.putShortBE(arg0);
         }
         if(arg1 == 3) {
-            Class32.packetBuffer.putPacket(193);
-            Class32.packetBuffer.putIntBE(arg2);
-            Class32.packetBuffer.putShortBE(arg0);
+            SceneCluster.packetBuffer.putPacket(193);
+            SceneCluster.packetBuffer.putIntBE(arg2);
+            SceneCluster.packetBuffer.putShortBE(arg0);
         }
         if(arg1 == 4) {
-            Class32.packetBuffer.putPacket(53);
-            Class32.packetBuffer.putIntBE(arg2);
-            Class32.packetBuffer.putShortBE(arg0);
+            SceneCluster.packetBuffer.putPacket(53);
+            SceneCluster.packetBuffer.putIntBE(arg2);
+            SceneCluster.packetBuffer.putShortBE(arg0);
         }
         if(arg1 == 5) {
-            Class32.packetBuffer.putPacket(94);
-            Class32.packetBuffer.putIntBE(arg2);
-            Class32.packetBuffer.putShortBE(arg0);
+            SceneCluster.packetBuffer.putPacket(94);
+            SceneCluster.packetBuffer.putIntBE(arg2);
+            SceneCluster.packetBuffer.putShortBE(arg0);
         }
         if(arg1 == 6) {
-            Class32.packetBuffer.putPacket(213);
-            Class32.packetBuffer.putIntBE(arg2);
-            Class32.packetBuffer.putShortBE(arg0);
+            SceneCluster.packetBuffer.putPacket(213);
+            SceneCluster.packetBuffer.putIntBE(arg2);
+            SceneCluster.packetBuffer.putShortBE(arg0);
         }
         if(arg1 == 7) {
-            Class32.packetBuffer.putPacket(46);
-            Class32.packetBuffer.putIntBE(arg2);
-            Class32.packetBuffer.putShortBE(arg0);
+            SceneCluster.packetBuffer.putPacket(46);
+            SceneCluster.packetBuffer.putIntBE(arg2);
+            SceneCluster.packetBuffer.putShortBE(arg0);
         }
         if(arg1 == 8) {
-            Class32.packetBuffer.putPacket(130);
-            Class32.packetBuffer.putIntBE(arg2);
-            Class32.packetBuffer.putShortBE(arg0);
+            SceneCluster.packetBuffer.putPacket(130);
+            SceneCluster.packetBuffer.putIntBE(arg2);
+            SceneCluster.packetBuffer.putShortBE(arg0);
         }
         if(arg1 == 9) {
-            Class32.packetBuffer.putPacket(157);
-            Class32.packetBuffer.putIntBE(arg2);
-            Class32.packetBuffer.putShortBE(arg0);
+            SceneCluster.packetBuffer.putPacket(157);
+            SceneCluster.packetBuffer.putIntBE(arg2);
+            SceneCluster.packetBuffer.putShortBE(arg0);
         }
         if(arg1 == 10) {
-            Class32.packetBuffer.putPacket(84);
-            Class32.packetBuffer.putIntBE(arg2);
-            Class32.packetBuffer.putShortBE(arg0);
+            SceneCluster.packetBuffer.putPacket(84);
+            SceneCluster.packetBuffer.putIntBE(arg2);
+            SceneCluster.packetBuffer.putShortBE(arg0);
         }
         if(arg3 > -112)
             aClass9_778 = null;

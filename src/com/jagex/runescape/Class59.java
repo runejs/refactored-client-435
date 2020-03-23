@@ -7,6 +7,7 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.Scene;
+import com.jagex.runescape.scene.SceneCluster;
 
 public class Class59 {
     public static int anInt1383;
@@ -33,7 +34,7 @@ public class Class59 {
     }
 
     public static void dropClient(int arg0) {
-        if(Class32.anInt771 > 0)
+        if(SceneCluster.anInt771 > 0)
             Class48.method928(-7225);
         else {
             OverlayDefinition.method559(40);

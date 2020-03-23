@@ -11,6 +11,7 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 
@@ -89,7 +90,7 @@ public class Class5 {
     }
 
     public static void method165(int arg0) {
-        int i = 64 + Class32.anInt767 * 128;
+        int i = 64 + SceneCluster.anInt767 * 128;
         int i_3_ = 64 + 128 * Class22.anInt545;
         int i_4_ = (Class37.method430((byte) -121, Player.worldLevel, i_3_, i) + -anInt194);
         if((i_3_ > Class12.cameraX)) {
@@ -98,10 +99,10 @@ public class Class5 {
                 Class12.cameraX = i_3_;
             }
         }
-        if((i_4_ > Class32.cameraZ)) {
-            Class32.cameraZ += (Class59.anInt1386 * (i_4_ - Class32.cameraZ) / 1000 + Class4.anInt188);
-            if((i_4_ < Class32.cameraZ))
-                Class32.cameraZ = i_4_;
+        if((i_4_ > SceneCluster.cameraZ)) {
+            SceneCluster.cameraZ += (Class59.anInt1386 * (i_4_ - SceneCluster.cameraZ) / 1000 + Class4.anInt188);
+            if((i_4_ < SceneCluster.cameraZ))
+                SceneCluster.cameraZ = i_4_;
         }
         if((Class12.cameraX > i_3_)) {
             Class12.cameraX -= Class4.anInt188 + (Class59.anInt1386 * (Class12.cameraX + -i_3_) / 1000);
@@ -114,10 +115,10 @@ public class Class5 {
             if((Class40_Sub5_Sub6.cameraY > i))
                 Class40_Sub5_Sub6.cameraY = i;
         }
-        if(Class32.cameraZ > i_4_) {
-            Class32.cameraZ -= ((Class32.cameraZ + -i_4_) * Class59.anInt1386 / 1000 + Class4.anInt188);
-            if((i_4_ > Class32.cameraZ))
-                Class32.cameraZ = i_4_;
+        if(SceneCluster.cameraZ > i_4_) {
+            SceneCluster.cameraZ -= ((SceneCluster.cameraZ + -i_4_) * Class59.anInt1386 / 1000 + Class4.anInt188);
+            if((i_4_ > SceneCluster.cameraZ))
+                SceneCluster.cameraZ = i_4_;
         }
         i_3_ = 64 + HashTable.anInt564 * 128;
         if(Class40_Sub5_Sub6.cameraY > i) {
@@ -127,7 +128,7 @@ public class Class5 {
         }
         i = UnderlayDefinition.anInt2576 * 128 + 64;
         i_4_ = Class37.method430((byte) -125, Player.worldLevel, i_3_, i) - Class38.anInt892;
-        int i_5_ = -Class32.cameraZ + i_4_;
+        int i_5_ = -SceneCluster.cameraZ + i_4_;
         int i_6_ = i - Class40_Sub5_Sub6.cameraY;
         int i_7_ = i_3_ - Class12.cameraX;
         int i_8_ = (int) Math.sqrt((double) (i_7_ * i_7_ + (i_6_ * i_6_)));
@@ -192,7 +193,7 @@ public class Class5 {
             }
         }
         if(i == 205) {
-            Class32.anInt771 = 250;
+            SceneCluster.anInt771 = 250;
             return true;
         }
         if(i == 501) {
@@ -228,8 +229,8 @@ public class Class5 {
         if(i == 325)
             LinkedList.aClass30_1082.method383(true, (byte) -110);
         if(i == 326) {
-            Class32.packetBuffer.putPacket(231);
-            LinkedList.aClass30_1082.method375(arg0 ^ 0x58, Class32.packetBuffer);
+            SceneCluster.packetBuffer.putPacket(231);
+            LinkedList.aClass30_1082.method375(arg0 ^ 0x58, SceneCluster.packetBuffer);
             return true;
         }
         if(i == 620)
@@ -237,10 +238,10 @@ public class Class5 {
         if(i >= 601 && i <= 613) {
             PacketBuffer.method516(123);
             if(HuffmanEncoding.aClass1_1550.length() > 0) {
-                Class32.packetBuffer.putPacket(202);
-                Class32.packetBuffer.putLongBE(HuffmanEncoding.aClass1_1550.method58((byte) 102));
-                Class32.packetBuffer.putByte(-601 + i);
-                Class32.packetBuffer.putByte(Class67.reportMutePlayer ? 1 : 0);
+                SceneCluster.packetBuffer.putPacket(202);
+                SceneCluster.packetBuffer.putLongBE(HuffmanEncoding.aClass1_1550.method58((byte) 102));
+                SceneCluster.packetBuffer.putByte(-601 + i);
+                SceneCluster.packetBuffer.putByte(Class67.reportMutePlayer ? 1 : 0);
             }
         }
         return false;

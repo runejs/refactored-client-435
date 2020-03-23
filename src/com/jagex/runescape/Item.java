@@ -18,6 +18,7 @@ import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.Wall;
 
@@ -135,17 +136,17 @@ public class Item extends Renderable {
                     int i_17_ = (-i_15_ + (Player.localPlayer.worldY) >> 7);
                     boolean bool = (Class38_Sub1.method448(0, 0, (Player.localPlayer.pathY[0]), i_16_, (byte) 125, 0, true, 0, 0, (Player.localPlayer.pathX[0]), i_17_, 1));
                     if(bool) {
-                        Class32.packetBuffer.putByte(i);
-                        Class32.packetBuffer.putByte(i_10_);
-                        Class32.packetBuffer.putShortBE(GroundItemTile.cameraHorizontal);
-                        Class32.packetBuffer.putByte(57);
-                        Class32.packetBuffer.putByte(Class43.cameraYawOffset);
-                        Class32.packetBuffer.putByte(Class51.mapZoomOffset);
-                        Class32.packetBuffer.putByte(89);
-                        Class32.packetBuffer.putShortBE((Player.localPlayer.worldX));
-                        Class32.packetBuffer.putShortBE((Player.localPlayer.worldY));
-                        Class32.packetBuffer.putByte(Class40_Sub5_Sub15.anInt2778);
-                        Class32.packetBuffer.putByte(63);
+                        SceneCluster.packetBuffer.putByte(i);
+                        SceneCluster.packetBuffer.putByte(i_10_);
+                        SceneCluster.packetBuffer.putShortBE(GroundItemTile.cameraHorizontal);
+                        SceneCluster.packetBuffer.putByte(57);
+                        SceneCluster.packetBuffer.putByte(Class43.cameraYawOffset);
+                        SceneCluster.packetBuffer.putByte(Class51.mapZoomOffset);
+                        SceneCluster.packetBuffer.putByte(89);
+                        SceneCluster.packetBuffer.putShortBE((Player.localPlayer.worldX));
+                        SceneCluster.packetBuffer.putShortBE((Player.localPlayer.worldY));
+                        SceneCluster.packetBuffer.putByte(Class40_Sub5_Sub15.anInt2778);
+                        SceneCluster.packetBuffer.putByte(63);
                     }
                 }
             }
@@ -178,7 +179,7 @@ public class Item extends Renderable {
             Rasterizer.resetPixels();
             Class68.aClass68_1631 = Class40_Sub5_Sub13.method649(94, 75, arg0, -4875);
             Rasterizer.resetPixels();
-            byte[] is = arg2.method170(Class22_Sub2.string_blank, Class32.aClass1_772, 1);
+            byte[] is = arg2.method170(Class22_Sub2.string_blank, SceneCluster.aClass1_772, 1);
             ImageRGB class40_sub5_sub14_sub4 = new ImageRGB(is, arg0);
             Class8.aClass68_298.method1046((byte) 90);
             class40_sub5_sub14_sub4.method727(0, 0);

@@ -1,5 +1,6 @@
-package com.jagex.runescape;
+package com.jagex.runescape.scene;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
@@ -8,7 +9,7 @@ import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.util.CollisionMap;
 
-public class Class32 {
+public class SceneCluster {
     public static PacketBuffer packetBuffer;
     public static int[] anIntArray761 = {1, 2, 4, 8};
     public static RSString aClass1_766;
@@ -30,24 +31,24 @@ public class Class32 {
         anInt771 = 0;
     }
 
-    public int anInt742;
-    public int anInt743;
-    public int anInt745;
-    public int anInt746;
-    public int anInt748;
-    public int anInt749;
-    public int anInt750;
-    public int anInt751;
-    public int anInt752;
-    public int anInt755;
-    public int anInt756;
-    public int anInt757;
-    public int anInt758;
-    public int anInt759;
-    public int anInt760;
-    public int anInt762;
-    public int anInt763;
-    public int anInt764;
+    public int worldDistanceFromCameraStartX;
+    public int worldDistanceFromCameraEndY;
+    public int tileStartY;
+    public int tileEndY;
+    public int worldEndX;
+    public int tileDistanceEnum;
+    public int worldDistanceFromCameraStartZ;
+    public int worldStartY;
+    public int worldDistanceFromCameraStartY;
+    public int worldStartX;
+    public int searchMask;
+    public int tileStartX;
+    public int worldEndY;
+    public int worldStartZ;
+    public int worldDistanceFromCameraEndZ;
+    public int tileEndX;
+    public int worldEndZ;
+    public int worldDistanceFromCameraEndX;
 
     public static void method398(int arg0) {
         RSString class1 = null;

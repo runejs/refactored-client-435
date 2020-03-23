@@ -3,6 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.scene.SceneCluster;
 
 public class Class49 {
     public static RSString aClass1_1143;
@@ -51,7 +52,7 @@ public class Class49 {
             xOffset = temp;
         }
         Class68_Sub1.anInt2210 = yaw;
-        Class32.cameraZ = -zOffset + z;
+        SceneCluster.cameraZ = -zOffset + z;
         Class12.cameraX = -xOffset + x;
         Class26.anInt627 = pitch;
         Class40_Sub5_Sub6.cameraY = y + -yOffset;

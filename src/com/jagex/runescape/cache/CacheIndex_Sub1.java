@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.SceneCluster;
 
 public class CacheIndex_Sub1 extends CacheIndex {
     public static RSString aClass1_1798;
@@ -153,7 +154,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
     }
 
     public void method174(int arg0, byte arg1) {
-        Class32.method399(anInt1807, 33, arg0);
+        SceneCluster.method399(anInt1807, 33, arg0);
         if(arg1 != 2)
             method174(13, (byte) 101);
     }

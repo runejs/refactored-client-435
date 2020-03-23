@@ -18,6 +18,7 @@ import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.Scene;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.scene.tile.WallDecoration;
@@ -513,7 +514,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 0, (byte) 124, vertexHeightRight);
                 else
                     renderable = new GameObject(objectId, 0, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (gameObjectDefinition.animationId), true);
-                scene.addWall(localX, localY, plane, vertexMix, Class32.anIntArray761[face], 0, hash, renderable, null, objectConfig);
+                scene.addWall(localX, localY, plane, vertexMix, SceneCluster.anIntArray761[face], 0, hash, renderable, null, objectConfig);
                 if(face == 0) {
                     if(gameObjectDefinition.castsShadow) {
                         InteractiveObject.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
@@ -577,7 +578,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     renderable = new GameObject(objectId, 2, 4 + face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (gameObjectDefinition.animationId), true);
                     renderable_47_ = new GameObject(objectId, 2, i_46_, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (gameObjectDefinition.animationId), true);
                 }
-                scene.addWall(localX, localY, plane, vertexMix, Class32.anIntArray761[face], Class32.anIntArray761[i_46_], hash, renderable, renderable_47_, objectConfig);
+                scene.addWall(localX, localY, plane, vertexMix, SceneCluster.anIntArray761[face], SceneCluster.anIntArray761[i_46_], hash, renderable, renderable_47_, objectConfig);
                 if(gameObjectDefinition.wall) {
                     if(face == 0) {
                         CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][localY]), 585));
@@ -655,7 +656,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, (byte) 124, vertexHeightRight);
                     else
                         renderable = (new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true));
-                    scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, 512 * face, hash, renderable, objectConfig, Class32.anIntArray761[face]);
+                    scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, 512 * face, hash, renderable, objectConfig, SceneCluster.anIntArray761[face]);
                 } else if(type == 5) {
                     int i_51_ = scene.method122(plane, localX, localY);
                     int i_52_ = 16;
@@ -666,7 +667,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, (byte) 124, vertexHeightRight);
                     else
                         renderable = (new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true));
-                    scene.addWallDecoration(localX, localY, plane, vertexMix, i_52_ * Class27.anIntArray666[face], (Class68_Sub1.anIntArray2207[face] * i_52_), face * 512, hash, renderable, objectConfig, Class32.anIntArray761[face]);
+                    scene.addWallDecoration(localX, localY, plane, vertexMix, i_52_ * Class27.anIntArray666[face], (Class68_Sub1.anIntArray2207[face] * i_52_), face * 512, hash, renderable, objectConfig, SceneCluster.anIntArray761[face]);
                 } else if(type == 6) {
                     Renderable renderable;
                     if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)

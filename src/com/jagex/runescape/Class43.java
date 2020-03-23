@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -46,7 +47,7 @@ public class Class43 {
         }
         if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
             if(Class34.anInt848 == 1)
-                Class32.method398(-2);
+                SceneCluster.method398(-2);
             else
                 Class40_Sub5_Sub6.method588(-1);
         }

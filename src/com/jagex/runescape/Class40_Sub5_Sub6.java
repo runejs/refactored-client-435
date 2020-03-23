@@ -14,6 +14,7 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.io.ByteArrayInputStream;
@@ -218,20 +219,20 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         RSApplet.method28(l);
                     }
                     if(Class37.anInt876 == 3 && HuffmanEncoding.aClass1_1565.length() > 0) {
-                        Class32.packetBuffer.putPacket(207);
-                        Class32.packetBuffer.putByte(0);
-                        int i = Class32.packetBuffer.currentPosition;
-                        Class32.packetBuffer.putLongBE(PacketBuffer.aLong2241);
-                        Class68_Sub1.method1052(119, HuffmanEncoding.aClass1_1565, Class32.packetBuffer);
-                        Class32.packetBuffer.finishVarByte(-i + (Class32.packetBuffer.currentPosition));
+                        SceneCluster.packetBuffer.putPacket(207);
+                        SceneCluster.packetBuffer.putByte(0);
+                        int i = SceneCluster.packetBuffer.currentPosition;
+                        SceneCluster.packetBuffer.putLongBE(PacketBuffer.aLong2241);
+                        Class68_Sub1.method1052(119, HuffmanEncoding.aClass1_1565, SceneCluster.packetBuffer);
+                        SceneCluster.packetBuffer.finishVarByte(-i + (SceneCluster.packetBuffer.currentPosition));
                         if(Class4.anInt185 == 2) {
                             Class4.anInt185 = 1;
                             Cache.aBoolean330 = true;
                             Class34.anInt821++;
-                            Class32.packetBuffer.putPacket(32);
-                            Class32.packetBuffer.putByte(Class35.publicChatMode);
-                            Class32.packetBuffer.putByte(Class4.anInt185);
-                            Class32.packetBuffer.putByte(ItemDefinition.anInt2797);
+                            SceneCluster.packetBuffer.putPacket(32);
+                            SceneCluster.packetBuffer.putByte(Class35.publicChatMode);
+                            SceneCluster.packetBuffer.putByte(Class4.anInt185);
+                            SceneCluster.packetBuffer.putByte(ItemDefinition.anInt2797);
                         }
                     }
                     if(Class37.anInt876 == 4 && Class42.anInt1008 < 100) {
@@ -257,8 +258,8 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         int i = 0;
                         if(HuffmanEncoding.inputInputMessage.method82())
                             i = HuffmanEncoding.inputInputMessage.method52();
-                        Class32.packetBuffer.putPacket(238);
-                        Class32.packetBuffer.putIntBE(i);
+                        SceneCluster.packetBuffer.putPacket(238);
+                        SceneCluster.packetBuffer.putIntBE(i);
                     }
                     Class52.redrawChatbox = true;
                     Class40_Sub5_Sub15.inputType = 0;
@@ -274,8 +275,8 @@ public class Class40_Sub5_Sub6 extends SubNode {
                 }
                 if(ItemDefinition.anInt2854 == 84) {
                     if(HuffmanEncoding.inputInputMessage.length() > 0) {
-                        Class32.packetBuffer.putPacket(86);
-                        Class32.packetBuffer.putLongBE(HuffmanEncoding.inputInputMessage.method58((byte) 89));
+                        SceneCluster.packetBuffer.putPacket(86);
+                        SceneCluster.packetBuffer.putLongBE(HuffmanEncoding.inputInputMessage.method58((byte) 89));
                     }
                     Class40_Sub5_Sub15.inputType = 0;
                     Class52.redrawChatbox = true;
@@ -339,9 +340,9 @@ public class Class40_Sub5_Sub6 extends SubNode {
                             PacketBuffer.hiddenButtonTest = true;
                     }
                     if(HuffmanEncoding.chatboxInput.startsWith(Class33.cmd_prefix)) {
-                        Class32.packetBuffer.putPacket(248);
-                        Class32.packetBuffer.putByte(-1 + HuffmanEncoding.chatboxInput.length());
-                        Class32.packetBuffer.method505(HuffmanEncoding.chatboxInput.substring(2));
+                        SceneCluster.packetBuffer.putPacket(248);
+                        SceneCluster.packetBuffer.putByte(-1 + HuffmanEncoding.chatboxInput.length());
+                        SceneCluster.packetBuffer.method505(HuffmanEncoding.chatboxInput.substring(2));
                     } else {
                         int i = 0;
                         RSString class1 = HuffmanEncoding.chatboxInput.toLowerCase();
@@ -400,21 +401,21 @@ public class Class40_Sub5_Sub6 extends SubNode {
                             i = 5;
                             HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring(Class55.aClass1_1291.length()));
                         }
-                        Class32.packetBuffer.putPacket(75);
-                        Class32.packetBuffer.putByte(0);
-                        int i_12_ = (Class32.packetBuffer.currentPosition);
-                        Class32.packetBuffer.putByte(i_11_);
-                        Class32.packetBuffer.putByte(i);
-                        Class68_Sub1.method1052(65, HuffmanEncoding.chatboxInput, Class32.packetBuffer);
-                        Class32.packetBuffer.finishVarByte((Class32.packetBuffer.currentPosition) + -i_12_);
+                        SceneCluster.packetBuffer.putPacket(75);
+                        SceneCluster.packetBuffer.putByte(0);
+                        int i_12_ = (SceneCluster.packetBuffer.currentPosition);
+                        SceneCluster.packetBuffer.putByte(i_11_);
+                        SceneCluster.packetBuffer.putByte(i);
+                        Class68_Sub1.method1052(65, HuffmanEncoding.chatboxInput, SceneCluster.packetBuffer);
+                        SceneCluster.packetBuffer.finishVarByte((SceneCluster.packetBuffer.currentPosition) + -i_12_);
                         if(Class35.publicChatMode == 2) {
                             Class34.anInt821++;
                             Cache.aBoolean330 = true;
                             Class35.publicChatMode = 3;
-                            Class32.packetBuffer.putPacket(32);
-                            Class32.packetBuffer.putByte(Class35.publicChatMode);
-                            Class32.packetBuffer.putByte(Class4.anInt185);
-                            Class32.packetBuffer.putByte(ItemDefinition.anInt2797);
+                            SceneCluster.packetBuffer.putPacket(32);
+                            SceneCluster.packetBuffer.putByte(Class35.publicChatMode);
+                            SceneCluster.packetBuffer.putByte(Class4.anInt185);
+                            SceneCluster.packetBuffer.putByte(ItemDefinition.anInt2797);
                         }
                     }
                     Class52.redrawChatbox = true;

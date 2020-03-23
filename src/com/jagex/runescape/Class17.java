@@ -7,6 +7,7 @@ import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.WallDecoration;
 
 import java.awt.*;
@@ -111,8 +112,8 @@ public class Class17 {
                 if(!class1.equals((Player.localPlayer.playerName))) {
                     WallDecoration.ignores[Class42.anInt1008++] = arg1;
                     ISAAC.redrawTabArea = true;
-                    Class32.packetBuffer.putPacket(251);
-                    Class32.packetBuffer.putLongBE(arg1);
+                    SceneCluster.packetBuffer.putPacket(251);
+                    SceneCluster.packetBuffer.putLongBE(arg1);
                 }
             }
         }

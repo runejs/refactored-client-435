@@ -13,6 +13,7 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.scene.InteractiveObject;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -100,11 +101,11 @@ public class SpotAnimDefinition extends SubNode {
             }
             if(Class40_Sub3.anInt2032 == 2) {
                 long l = (Class34.aLong853 = Class22_Sub2.username.method58((byte) 93));
-                Class32.packetBuffer.currentPosition = 0;
-                Class32.packetBuffer.putByte(14);
+                SceneCluster.packetBuffer.currentPosition = 0;
+                SceneCluster.packetBuffer.putByte(14);
                 int i = (int) (0x1fL & l >> 16);
-                Class32.packetBuffer.putByte(i);
-                Class40_Sub6.aClass64_2098.method1010(2, (byte) -19, 0, (Class32.packetBuffer.buffer));
+                SceneCluster.packetBuffer.putByte(i);
+                Class40_Sub6.aClass64_2098.method1010(2, (byte) -19, 0, (SceneCluster.packetBuffer.buffer));
                 Class40_Sub3.anInt2032 = 3;
                 IncomingPackets.incomingPacketBuffer.currentPosition = 0;
             }
@@ -140,23 +141,23 @@ public class SpotAnimDefinition extends SubNode {
                 seeds[1] = (int) (Math.random() * 9.9999999E7);
                 seeds[2] = (int) (Renderable.aLong2858 >> 32);
                 seeds[3] = (int) Renderable.aLong2858;
-                Class32.packetBuffer.currentPosition = 0;
-                Class32.packetBuffer.putByte(10);
-                Class32.packetBuffer.putIntBE(seeds[0]);
-                Class32.packetBuffer.putIntBE(seeds[1]);
-                Class32.packetBuffer.putIntBE(seeds[2]);
-                Class32.packetBuffer.putIntBE(seeds[3]);
-                Class32.packetBuffer.putIntBE(ISAAC.aClass31_521.anInt722);
-                Class32.packetBuffer.putLongBE(Class22_Sub2.username.method58((byte) 97));
-                Class32.packetBuffer.method505(Class22_Sub2.password);
-                Class32.packetBuffer.applyRSA(Actor.rsaModulus, PacketBuffer.rsaKey);
+                SceneCluster.packetBuffer.currentPosition = 0;
+                SceneCluster.packetBuffer.putByte(10);
+                SceneCluster.packetBuffer.putIntBE(seeds[0]);
+                SceneCluster.packetBuffer.putIntBE(seeds[1]);
+                SceneCluster.packetBuffer.putIntBE(seeds[2]);
+                SceneCluster.packetBuffer.putIntBE(seeds[3]);
+                SceneCluster.packetBuffer.putIntBE(ISAAC.aClass31_521.anInt722);
+                SceneCluster.packetBuffer.putLongBE(Class22_Sub2.username.method58((byte) 97));
+                SceneCluster.packetBuffer.method505(Class22_Sub2.password);
+                SceneCluster.packetBuffer.applyRSA(Actor.rsaModulus, PacketBuffer.rsaKey);
                 Class61.packetBuffer.currentPosition = 0;
                 if(Class51.anInt1197 == 40) {
                     Class61.packetBuffer.putByte(18);
                 } else {
                     Class61.packetBuffer.putByte(16);
                 }
-                Class61.packetBuffer.putByte(57 + Class32.packetBuffer.currentPosition);
+                Class61.packetBuffer.putByte(57 + SceneCluster.packetBuffer.currentPosition);
                 Class61.packetBuffer.putIntBE(435);
                 Class61.packetBuffer.putByte(VertexNormal.lowMemory ? 1 : 0);
                 Class61.packetBuffer.putIntBE(FloorDecoration.aClass6_Sub1_605.anInt216);
@@ -168,13 +169,13 @@ public class SpotAnimDefinition extends SubNode {
                 Class61.packetBuffer.putIntBE(Class55.aClass6_Sub1_1286.anInt216);
                 Class61.packetBuffer.putIntBE((UnderlayDefinition.aClass6_Sub1_2571.anInt216));
                 Class61.packetBuffer.putIntBE((ActorDefinition.aClass6_Sub1_2377.anInt216));
-                Class61.packetBuffer.putIntBE(Class32.aClass6_Sub1_773.anInt216);
+                Class61.packetBuffer.putIntBE(SceneCluster.aClass6_Sub1_773.anInt216);
                 Class61.packetBuffer.putIntBE(RSCanvas.aClass6_Sub1_48.anInt216);
                 Class61.packetBuffer.putIntBE(VertexNormal.aClass6_Sub1_1104.anInt216);
                 Class61.packetBuffer.putIntBE(Class56.aClass6_Sub1_1323.anInt216);
-                Class61.packetBuffer.putBytes(0, Class32.packetBuffer.currentPosition, Class32.packetBuffer.buffer);
+                Class61.packetBuffer.putBytes(0, SceneCluster.packetBuffer.currentPosition, SceneCluster.packetBuffer.buffer);
                 Class40_Sub6.aClass64_2098.method1010(Class61.packetBuffer.currentPosition, (byte) -19, 0, Class61.packetBuffer.buffer);
-                Class32.packetBuffer.initOutCipher(seeds);
+                SceneCluster.packetBuffer.initOutCipher(seeds);
                 for(int i = 0; i < 4; i++) {
                     seeds[i] += 50;
                 }

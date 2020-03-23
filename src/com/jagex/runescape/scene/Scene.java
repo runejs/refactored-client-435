@@ -36,13 +36,13 @@ public class Scene {
     public static int[] faceOffsetY3 = new int[]{45, 45, -45, -45};
     public static int anInt104;
     public static InteractiveObject[] sceneSpawnRequestsCache = new InteractiveObject[100];
-    public static Class32[] aClass32Array107 = new Class32[500];
+    public static SceneCluster[] processedCullingClusters = new SceneCluster[500];
     public static LinkedList tileList = new LinkedList();
     public static int anInt109 = 0;
     public static int anInt110;
     public static int anInt111;
     public static int[] faceOffsetY2 = new int[]{-53, -53, 53, 53};
-    public static Class32[][] aClass32ArrayArray113 = new Class32[anInt90][500];
+    public static SceneCluster[][] cullingClusters = new SceneCluster[anInt90][500];
     public static boolean aBoolean114 = false;
     public static int[] anIntArray117 = new int[]{160, 192, 80, 96, 0, 144, 80, 48, 160};
     public static int anInt118;
@@ -186,8 +186,8 @@ public class Scene {
         faceOffsetX3 = null;
         faceOffsetY3 = null;
         anIntArray101 = null;
-        aClass32ArrayArray113 = null;
-        aClass32Array107 = null;
+        cullingClusters = null;
+        processedCullingClusters = null;
         tileList = null;
         anIntArray120 = null;
         anIntArray117 = null;
@@ -200,20 +200,20 @@ public class Scene {
         aBooleanArrayArray133 = null;
     }
 
-    public static void method116(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
-        Class32 class32 = new Class32();
-        class32.anInt757 = arg2 / 128;
-        class32.anInt762 = arg3 / 128;
-        class32.anInt745 = arg4 / 128;
-        class32.anInt746 = arg5 / 128;
-        class32.anInt756 = arg1;
-        class32.anInt755 = arg2;
-        class32.anInt748 = arg3;
-        class32.anInt751 = arg4;
-        class32.anInt758 = arg5;
-        class32.anInt763 = arg6;
-        class32.anInt759 = arg7;
-        aClass32ArrayArray113[arg0][anIntArray101[arg0]++] = class32;
+    public static void method116(int z, int searchMask, int lowestX, int highestX, int lowestY, int highestY, int highestZ, int lowestZ) {
+        SceneCluster sceneCluster = new SceneCluster();
+        sceneCluster.tileStartX = lowestX / 128;
+        sceneCluster.tileEndX = highestX / 128;
+        sceneCluster.tileStartY = lowestY / 128;
+        sceneCluster.tileEndY = highestY / 128;
+        sceneCluster.searchMask = searchMask;
+        sceneCluster.worldStartX = lowestX;
+        sceneCluster.worldEndX = highestX;
+        sceneCluster.worldStartY = lowestY;
+        sceneCluster.worldEndY = highestY;
+        sceneCluster.worldEndZ = highestZ;
+        sceneCluster.worldStartZ = lowestZ;
+        cullingClusters[z][anIntArray101[z]++] = sceneCluster;
     }
 
     public int method91(int arg0, int arg1, int arg2) {
@@ -493,7 +493,7 @@ public class Scene {
         }
         for(int i = 0; i < anInt90; i++) {
             for(int i_39_ = 0; i_39_ < anIntArray101[i]; i_39_++) {
-                aClass32ArrayArray113[i][i_39_] = null;
+                cullingClusters[i][i_39_] = null;
             }
             anIntArray101[i] = 0;
         }
@@ -678,61 +678,61 @@ public class Scene {
         return true;
     }
 
-    public boolean method103(int arg0, int arg1, int arg2) {
+    public boolean method103(int posX, int posZ, int posY) {
         for(int i = 0; i < anInt96; i++) {
-            Class32 class32 = aClass32Array107[i];
-            if(class32.anInt749 == 1) {
-                int i_47_ = class32.anInt755 - arg0;
+            SceneCluster sceneCluster = processedCullingClusters[i];
+            if(sceneCluster.tileDistanceEnum == 1) {
+                int i_47_ = sceneCluster.worldStartX - posX;
                 if(i_47_ > 0) {
-                    int i_48_ = class32.anInt751 + (class32.anInt752 * i_47_ >> 8);
-                    int i_49_ = class32.anInt758 + (class32.anInt743 * i_47_ >> 8);
-                    int i_50_ = class32.anInt763 + (class32.anInt750 * i_47_ >> 8);
-                    int i_51_ = class32.anInt759 + (class32.anInt760 * i_47_ >> 8);
-                    if(arg2 >= i_48_ && arg2 <= i_49_ && arg1 >= i_50_ && arg1 <= i_51_) {
+                    int i_48_ = sceneCluster.worldStartY + (sceneCluster.worldDistanceFromCameraStartY * i_47_ >> 8);
+                    int i_49_ = sceneCluster.worldEndY + (sceneCluster.worldDistanceFromCameraEndY * i_47_ >> 8);
+                    int i_50_ = sceneCluster.worldEndZ + (sceneCluster.worldDistanceFromCameraStartZ * i_47_ >> 8);
+                    int i_51_ = sceneCluster.worldStartZ + (sceneCluster.worldDistanceFromCameraEndZ * i_47_ >> 8);
+                    if(posY >= i_48_ && posY <= i_49_ && posZ >= i_50_ && posZ <= i_51_) {
                         return true;
                     }
                 }
-            } else if(class32.anInt749 == 2) {
-                int i_52_ = arg0 - class32.anInt755;
+            } else if(sceneCluster.tileDistanceEnum == 2) {
+                int i_52_ = posX - sceneCluster.worldStartX;
                 if(i_52_ > 0) {
-                    int i_53_ = class32.anInt751 + (class32.anInt752 * i_52_ >> 8);
-                    int i_54_ = class32.anInt758 + (class32.anInt743 * i_52_ >> 8);
-                    int i_55_ = class32.anInt763 + (class32.anInt750 * i_52_ >> 8);
-                    int i_56_ = class32.anInt759 + (class32.anInt760 * i_52_ >> 8);
-                    if(arg2 >= i_53_ && arg2 <= i_54_ && arg1 >= i_55_ && arg1 <= i_56_) {
+                    int i_53_ = sceneCluster.worldStartY + (sceneCluster.worldDistanceFromCameraStartY * i_52_ >> 8);
+                    int i_54_ = sceneCluster.worldEndY + (sceneCluster.worldDistanceFromCameraEndY * i_52_ >> 8);
+                    int i_55_ = sceneCluster.worldEndZ + (sceneCluster.worldDistanceFromCameraStartZ * i_52_ >> 8);
+                    int i_56_ = sceneCluster.worldStartZ + (sceneCluster.worldDistanceFromCameraEndZ * i_52_ >> 8);
+                    if(posY >= i_53_ && posY <= i_54_ && posZ >= i_55_ && posZ <= i_56_) {
                         return true;
                     }
                 }
-            } else if(class32.anInt749 == 3) {
-                int i_57_ = class32.anInt751 - arg2;
+            } else if(sceneCluster.tileDistanceEnum == 3) {
+                int i_57_ = sceneCluster.worldStartY - posY;
                 if(i_57_ > 0) {
-                    int i_58_ = class32.anInt755 + (class32.anInt742 * i_57_ >> 8);
-                    int i_59_ = class32.anInt748 + (class32.anInt764 * i_57_ >> 8);
-                    int i_60_ = class32.anInt763 + (class32.anInt750 * i_57_ >> 8);
-                    int i_61_ = class32.anInt759 + (class32.anInt760 * i_57_ >> 8);
-                    if(arg0 >= i_58_ && arg0 <= i_59_ && arg1 >= i_60_ && arg1 <= i_61_) {
+                    int i_58_ = sceneCluster.worldStartX + (sceneCluster.worldDistanceFromCameraStartX * i_57_ >> 8);
+                    int i_59_ = sceneCluster.worldEndX + (sceneCluster.worldDistanceFromCameraEndX * i_57_ >> 8);
+                    int i_60_ = sceneCluster.worldEndZ + (sceneCluster.worldDistanceFromCameraStartZ * i_57_ >> 8);
+                    int i_61_ = sceneCluster.worldStartZ + (sceneCluster.worldDistanceFromCameraEndZ * i_57_ >> 8);
+                    if(posX >= i_58_ && posX <= i_59_ && posZ >= i_60_ && posZ <= i_61_) {
                         return true;
                     }
                 }
-            } else if(class32.anInt749 == 4) {
-                int i_62_ = arg2 - class32.anInt751;
+            } else if(sceneCluster.tileDistanceEnum == 4) {
+                int i_62_ = posY - sceneCluster.worldStartY;
                 if(i_62_ > 0) {
-                    int i_63_ = class32.anInt755 + (class32.anInt742 * i_62_ >> 8);
-                    int i_64_ = class32.anInt748 + (class32.anInt764 * i_62_ >> 8);
-                    int i_65_ = class32.anInt763 + (class32.anInt750 * i_62_ >> 8);
-                    int i_66_ = class32.anInt759 + (class32.anInt760 * i_62_ >> 8);
-                    if(arg0 >= i_63_ && arg0 <= i_64_ && arg1 >= i_65_ && arg1 <= i_66_) {
+                    int i_63_ = sceneCluster.worldStartX + (sceneCluster.worldDistanceFromCameraStartX * i_62_ >> 8);
+                    int i_64_ = sceneCluster.worldEndX + (sceneCluster.worldDistanceFromCameraEndX * i_62_ >> 8);
+                    int i_65_ = sceneCluster.worldEndZ + (sceneCluster.worldDistanceFromCameraStartZ * i_62_ >> 8);
+                    int i_66_ = sceneCluster.worldStartZ + (sceneCluster.worldDistanceFromCameraEndZ * i_62_ >> 8);
+                    if(posX >= i_63_ && posX <= i_64_ && posZ >= i_65_ && posZ <= i_66_) {
                         return true;
                     }
                 }
-            } else if(class32.anInt749 == 5) {
-                int i_67_ = arg1 - class32.anInt763;
+            } else if(sceneCluster.tileDistanceEnum == 5) {
+                int i_67_ = posZ - sceneCluster.worldEndZ;
                 if(i_67_ > 0) {
-                    int i_68_ = class32.anInt755 + (class32.anInt742 * i_67_ >> 8);
-                    int i_69_ = class32.anInt748 + (class32.anInt764 * i_67_ >> 8);
-                    int i_70_ = class32.anInt751 + (class32.anInt752 * i_67_ >> 8);
-                    int i_71_ = class32.anInt758 + (class32.anInt743 * i_67_ >> 8);
-                    if(arg0 >= i_68_ && arg0 <= i_69_ && arg2 >= i_70_ && arg2 <= i_71_) {
+                    int i_68_ = sceneCluster.worldStartX + (sceneCluster.worldDistanceFromCameraStartX * i_67_ >> 8);
+                    int i_69_ = sceneCluster.worldEndX + (sceneCluster.worldDistanceFromCameraEndX * i_67_ >> 8);
+                    int i_70_ = sceneCluster.worldStartY + (sceneCluster.worldDistanceFromCameraStartY * i_67_ >> 8);
+                    int i_71_ = sceneCluster.worldEndY + (sceneCluster.worldDistanceFromCameraEndY * i_67_ >> 8);
+                    if(posX >= i_68_ && posX <= i_69_ && posY >= i_70_ && posY <= i_71_) {
                         return true;
                     }
                 }
@@ -1478,18 +1478,18 @@ public class Scene {
 
     public void method123() {
         int i = anIntArray101[anInt85];
-        Class32[] class32s = aClass32ArrayArray113[anInt85];
+        SceneCluster[] sceneClusters = cullingClusters[anInt85];
         anInt96 = 0;
         for(int i_172_ = 0; i_172_ < i; i_172_++) {
-            Class32 class32 = class32s[i_172_];
-            if(class32.anInt756 == 1) {
-                int i_173_ = class32.anInt757 - cameraPositionTileX + 25;
+            SceneCluster sceneCluster = sceneClusters[i_172_];
+            if(sceneCluster.searchMask == 1) {
+                int i_173_ = sceneCluster.tileStartX - cameraPositionTileX + 25;
                 if(i_173_ >= 0 && i_173_ <= 50) {
-                    int i_174_ = class32.anInt745 - cameraPositionTileY + 25;
+                    int i_174_ = sceneCluster.tileStartY - cameraPositionTileY + 25;
                     if(i_174_ < 0) {
                         i_174_ = 0;
                     }
-                    int i_175_ = class32.anInt746 - cameraPositionTileY + 25;
+                    int i_175_ = sceneCluster.tileEndY - cameraPositionTileY + 25;
                     if(i_175_ > 50) {
                         i_175_ = 50;
                     }
@@ -1501,31 +1501,31 @@ public class Scene {
                         }
                     }
                     if(bool) {
-                        int i_176_ = cameraPosX - class32.anInt755;
+                        int i_176_ = cameraPosX - sceneCluster.worldStartX;
                         if(i_176_ > 32) {
-                            class32.anInt749 = 1;
+                            sceneCluster.tileDistanceEnum = 1;
                         } else {
                             if(i_176_ >= -32) {
                                 continue;
                             }
-                            class32.anInt749 = 2;
+                            sceneCluster.tileDistanceEnum = 2;
                             i_176_ = -i_176_;
                         }
-                        class32.anInt752 = (class32.anInt751 - cameraPosY << 8) / i_176_;
-                        class32.anInt743 = (class32.anInt758 - cameraPosY << 8) / i_176_;
-                        class32.anInt750 = (class32.anInt763 - anInt89 << 8) / i_176_;
-                        class32.anInt760 = (class32.anInt759 - anInt89 << 8) / i_176_;
-                        aClass32Array107[anInt96++] = class32;
+                        sceneCluster.worldDistanceFromCameraStartY = (sceneCluster.worldStartY - cameraPosY << 8) / i_176_;
+                        sceneCluster.worldDistanceFromCameraEndY = (sceneCluster.worldEndY - cameraPosY << 8) / i_176_;
+                        sceneCluster.worldDistanceFromCameraStartZ = (sceneCluster.worldEndZ - anInt89 << 8) / i_176_;
+                        sceneCluster.worldDistanceFromCameraEndZ = (sceneCluster.worldStartZ - anInt89 << 8) / i_176_;
+                        processedCullingClusters[anInt96++] = sceneCluster;
                     }
                 }
-            } else if(class32.anInt756 == 2) {
-                int i_177_ = class32.anInt745 - cameraPositionTileY + 25;
+            } else if(sceneCluster.searchMask == 2) {
+                int i_177_ = sceneCluster.tileStartY - cameraPositionTileY + 25;
                 if(i_177_ >= 0 && i_177_ <= 50) {
-                    int i_178_ = class32.anInt757 - cameraPositionTileX + 25;
+                    int i_178_ = sceneCluster.tileStartX - cameraPositionTileX + 25;
                     if(i_178_ < 0) {
                         i_178_ = 0;
                     }
-                    int i_179_ = class32.anInt762 - cameraPositionTileX + 25;
+                    int i_179_ = sceneCluster.tileEndX - cameraPositionTileX + 25;
                     if(i_179_ > 50) {
                         i_179_ = 50;
                     }
@@ -1537,40 +1537,40 @@ public class Scene {
                         }
                     }
                     if(bool) {
-                        int i_180_ = cameraPosY - class32.anInt751;
+                        int i_180_ = cameraPosY - sceneCluster.worldStartY;
                         if(i_180_ > 32) {
-                            class32.anInt749 = 3;
+                            sceneCluster.tileDistanceEnum = 3;
                         } else {
                             if(i_180_ >= -32) {
                                 continue;
                             }
-                            class32.anInt749 = 4;
+                            sceneCluster.tileDistanceEnum = 4;
                             i_180_ = -i_180_;
                         }
-                        class32.anInt742 = (class32.anInt755 - cameraPosX << 8) / i_180_;
-                        class32.anInt764 = (class32.anInt748 - cameraPosX << 8) / i_180_;
-                        class32.anInt750 = (class32.anInt763 - anInt89 << 8) / i_180_;
-                        class32.anInt760 = (class32.anInt759 - anInt89 << 8) / i_180_;
-                        aClass32Array107[anInt96++] = class32;
+                        sceneCluster.worldDistanceFromCameraStartX = (sceneCluster.worldStartX - cameraPosX << 8) / i_180_;
+                        sceneCluster.worldDistanceFromCameraEndX = (sceneCluster.worldEndX - cameraPosX << 8) / i_180_;
+                        sceneCluster.worldDistanceFromCameraStartZ = (sceneCluster.worldEndZ - anInt89 << 8) / i_180_;
+                        sceneCluster.worldDistanceFromCameraEndZ = (sceneCluster.worldStartZ - anInt89 << 8) / i_180_;
+                        processedCullingClusters[anInt96++] = sceneCluster;
                     }
                 }
-            } else if(class32.anInt756 == 4) {
-                int i_181_ = class32.anInt763 - anInt89;
+            } else if(sceneCluster.searchMask == 4) {
+                int i_181_ = sceneCluster.worldEndZ - anInt89;
                 if(i_181_ > 128) {
-                    int i_182_ = class32.anInt745 - cameraPositionTileY + 25;
+                    int i_182_ = sceneCluster.tileStartY - cameraPositionTileY + 25;
                     if(i_182_ < 0) {
                         i_182_ = 0;
                     }
-                    int i_183_ = class32.anInt746 - cameraPositionTileY + 25;
+                    int i_183_ = sceneCluster.tileEndY - cameraPositionTileY + 25;
                     if(i_183_ > 50) {
                         i_183_ = 50;
                     }
                     if(i_182_ <= i_183_) {
-                        int i_184_ = class32.anInt757 - cameraPositionTileX + 25;
+                        int i_184_ = sceneCluster.tileStartX - cameraPositionTileX + 25;
                         if(i_184_ < 0) {
                             i_184_ = 0;
                         }
-                        int i_185_ = class32.anInt762 - cameraPositionTileX + 25;
+                        int i_185_ = sceneCluster.tileEndX - cameraPositionTileX + 25;
                         if(i_185_ > 50) {
                             i_185_ = 50;
                         }
@@ -1585,12 +1585,12 @@ public class Scene {
                             }
                         }
                         if(bool) {
-                            class32.anInt749 = 5;
-                            class32.anInt742 = (class32.anInt755 - cameraPosX << 8) / i_181_;
-                            class32.anInt764 = (class32.anInt748 - cameraPosX << 8) / i_181_;
-                            class32.anInt752 = (class32.anInt751 - cameraPosY << 8) / i_181_;
-                            class32.anInt743 = (class32.anInt758 - cameraPosY << 8) / i_181_;
-                            aClass32Array107[anInt96++] = class32;
+                            sceneCluster.tileDistanceEnum = 5;
+                            sceneCluster.worldDistanceFromCameraStartX = (sceneCluster.worldStartX - cameraPosX << 8) / i_181_;
+                            sceneCluster.worldDistanceFromCameraEndX = (sceneCluster.worldEndX - cameraPosX << 8) / i_181_;
+                            sceneCluster.worldDistanceFromCameraStartY = (sceneCluster.worldStartY - cameraPosY << 8) / i_181_;
+                            sceneCluster.worldDistanceFromCameraEndY = (sceneCluster.worldEndY - cameraPosY << 8) / i_181_;
+                            processedCullingClusters[anInt96++] = sceneCluster;
                         }
                     }
                 }

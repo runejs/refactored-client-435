@@ -16,6 +16,7 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.Wall;
@@ -81,7 +82,7 @@ public class Class37 {
         IncomingPackets.incomingPacket = -1;
         ActorDefinition.menuActionRow = 0;
         IncomingPackets.incomingPacketSize = 0;
-        Class32.packetBuffer.currentPosition = 0;
+        SceneCluster.packetBuffer.currentPosition = 0;
         RSString.anInt1690 = -1;
         Cache.anInt324 = -1;
         Class35.anInt1728 = 0;

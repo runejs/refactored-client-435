@@ -14,6 +14,7 @@ import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.Scene;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.WallDecoration;
@@ -50,8 +51,8 @@ public class Npc extends Actor {
     public static void processMenuClick() {
         if(Class40_Sub5_Sub15.anInt2782 > 1)
             Class40_Sub5_Sub15.anInt2782--;
-        if(Class32.anInt771 > 0)
-            Class32.anInt771--;
+        if(SceneCluster.anInt771 > 0)
+            SceneCluster.anInt771--;
         if(Class37.aBoolean871) {
             Class37.aBoolean871 = false;
             Class59.dropClient(2578);
@@ -70,16 +71,16 @@ public class Npc extends Actor {
                     for(int i = 0; i < Item.obfuscatedKeyStatus.length; i++)
                         Item.obfuscatedKeyStatus[i] = false;
                 }
-                Class40_Sub5_Sub6.putHackCheckPacket(-12, 205, Class32.packetBuffer);
+                Class40_Sub5_Sub6.putHackCheckPacket(-12, 205, SceneCluster.packetBuffer);
                 synchronized(Class12.mouseCapturer.objectLock) {
                     if(Class22.accountFlagged) {
                         if(GameFrame.clickType != 0 || Class12.mouseCapturer.coord >= 40) {
                             int coordinateCount = 0;
-                            Class32.packetBuffer.putPacket(210);
-                            Class32.packetBuffer.putByte(0);
-                            int originalOffset = Class32.packetBuffer.currentPosition;
+                            SceneCluster.packetBuffer.putPacket(210);
+                            SceneCluster.packetBuffer.putByte(0);
+                            int originalOffset = SceneCluster.packetBuffer.currentPosition;
                             for(int c = 0; c < Class12.mouseCapturer.coord; c++) {
-                                if((-originalOffset + Class32.packetBuffer.currentPosition) >= 240)
+                                if((-originalOffset + SceneCluster.packetBuffer.currentPosition) >= 240)
                                     break;
                                 coordinateCount++;
                                 int pixelOffset = Class12.mouseCapturer.coordsY[c];
@@ -110,18 +111,18 @@ public class Npc extends Actor {
                                     if(Class22_Sub2.duplicateClickCount < 8 && differenceX >= -32 && differenceX <= 31 && differenceY >= -32 && differenceY <= 31) {
                                         differenceX += 32;
                                         differenceY += 32;
-                                        Class32.packetBuffer.putShortBE((differenceY + (differenceX << 6) + (Class22_Sub2.duplicateClickCount << 12)));
+                                        SceneCluster.packetBuffer.putShortBE((differenceY + (differenceX << 6) + (Class22_Sub2.duplicateClickCount << 12)));
                                         Class22_Sub2.duplicateClickCount = 0;
                                     } else if(Class22_Sub2.duplicateClickCount < 8) {
-                                        Class32.packetBuffer.putMediumBE((y + 8388608 + (Class22_Sub2.duplicateClickCount << 19)));
+                                        SceneCluster.packetBuffer.putMediumBE((y + 8388608 + (Class22_Sub2.duplicateClickCount << 19)));
                                         Class22_Sub2.duplicateClickCount = 0;
                                     } else {
-                                        Class32.packetBuffer.putIntBE(((Class22_Sub2.duplicateClickCount << 19) + -1073741824 + y));
+                                        SceneCluster.packetBuffer.putIntBE(((Class22_Sub2.duplicateClickCount << 19) + -1073741824 + y));
                                         Class22_Sub2.duplicateClickCount = 0;
                                     }
                                 }
                             }
-                            Class32.packetBuffer.finishVarByte(Class32.packetBuffer.currentPosition + -originalOffset);
+                            SceneCluster.packetBuffer.finishVarByte(SceneCluster.packetBuffer.currentPosition + -originalOffset);
                             if(coordinateCount < Class12.mouseCapturer.coord) {
                                 Class12.mouseCapturer.coord -= coordinateCount;
                                 for(int i_9_ = 0; ((Class12.mouseCapturer.coord > i_9_)); i_9_++) {
@@ -156,9 +157,9 @@ public class Npc extends Actor {
                     if(l > 4095)
                         l = 4095L;
                     int i_12_ = (int) l;
-                    Class32.packetBuffer.putPacket(234);
+                    SceneCluster.packetBuffer.putPacket(234);
                     int i_13_ = i_10_ * 765 + i;
-                    Class32.packetBuffer.putIntLE(((i_11_ << 19) + ((i_12_ << 20) + i_13_)));
+                    SceneCluster.packetBuffer.putIntLE(((i_11_ << 19) + ((i_12_ << 20) + i_13_)));
                 }
                 if(InteractiveObject.anInt487 > 0)
                     InteractiveObject.anInt487--;
@@ -167,19 +168,19 @@ public class Npc extends Actor {
                 if(HashTable.aBoolean565 && InteractiveObject.anInt487 <= 0) {
                     InteractiveObject.anInt487 = 20;
                     HashTable.aBoolean565 = false;
-                    Class32.packetBuffer.putPacket(58);
-                    Class32.packetBuffer.putShortBE(GroundItemTile.cameraHorizontal);
-                    Class32.packetBuffer.putShortBE(Class65.anInt1537);
+                    SceneCluster.packetBuffer.putPacket(58);
+                    SceneCluster.packetBuffer.putShortBE(GroundItemTile.cameraHorizontal);
+                    SceneCluster.packetBuffer.putShortBE(Class65.anInt1537);
                 }
                 if(HashTable.aBoolean571 && !Class35.aBoolean1735) {
                     Class35.aBoolean1735 = true;
-                    Class32.packetBuffer.putPacket(160);
-                    Class32.packetBuffer.putByte(1);
+                    SceneCluster.packetBuffer.putPacket(160);
+                    SceneCluster.packetBuffer.putByte(1);
                 }
                 if(!HashTable.aBoolean571 && Class35.aBoolean1735) {
                     Class35.aBoolean1735 = false;
-                    Class32.packetBuffer.putPacket(160);
-                    Class32.packetBuffer.putByte(0);
+                    SceneCluster.packetBuffer.putPacket(160);
+                    SceneCluster.packetBuffer.putByte(0);
                 }
                 LinkedList.method910(-32322);
                 if(Class51.anInt1197 == 30 || Class51.anInt1197 == 35) {
@@ -256,11 +257,11 @@ public class Npc extends Actor {
                                             }
                                         } else
                                             childInterface.swapItems(Class55.mouseInvInterfaceIndex, false, GroundItemTile.selectedInventorySlot);
-                                        Class32.packetBuffer.putPacket(83);
-                                        Class32.packetBuffer.putByte(moveItemInsertionMode);
-                                        Class32.packetBuffer.putShortBE(GroundItemTile.selectedInventorySlot);
-                                        Class32.packetBuffer.putShortLE(Class55.mouseInvInterfaceIndex);
-                                        Class32.packetBuffer.putIntME2(Class48.modifiedWidgetId);
+                                        SceneCluster.packetBuffer.putPacket(83);
+                                        SceneCluster.packetBuffer.putByte(moveItemInsertionMode);
+                                        SceneCluster.packetBuffer.putShortBE(GroundItemTile.selectedInventorySlot);
+                                        SceneCluster.packetBuffer.putShortLE(Class55.mouseInvInterfaceIndex);
+                                        SceneCluster.packetBuffer.putIntME2(Class48.modifiedWidgetId);
                                     }
                                 }
                                 RSRuntimeException.anInt1651 = 10;
@@ -332,12 +333,12 @@ public class Npc extends Actor {
                         for(int i_19_ = 0; i_19_ < 5; i_19_++)
                             Class22_Sub1.anIntArray1846[i_19_]++;
                         Class40_Sub5_Sub6.manageTextInputs();
-                        int i_20_ = Class32.method400(-1);
+                        int i_20_ = SceneCluster.method400(-1);
                         int i_21_ = Class17.method274(true);
                         if(i_20_ > 4500 && i_21_ > 4500) {
-                            Class32.anInt771 = 250;
+                            SceneCluster.anInt771 = 250;
                             Class40_Sub5_Sub13.method650(4000);
-                            Class32.packetBuffer.putPacket(216);
+                            SceneCluster.packetBuffer.putPacket(216);
                         }
                         Player.anInt3264++;
                         Class38_Sub1.anInt1923++;
@@ -381,15 +382,15 @@ public class Npc extends Actor {
                         if(Class51.mapZoomOffset > 10)
                             Main.anInt1766 = -1;
                         if(Class22.anInt537 > 50) {
-                            Class32.packetBuffer.putPacket(13);
+                            SceneCluster.packetBuffer.putPacket(13);
                         }
                         do {
                             try {
-                                if(Class40_Sub6.aClass64_2098 == null || (Class32.packetBuffer.currentPosition) <= 0)
+                                if(Class40_Sub6.aClass64_2098 == null || (SceneCluster.packetBuffer.currentPosition) <= 0)
                                     break;
-                                Class40_Sub6.aClass64_2098.method1010(Class32.packetBuffer.currentPosition, (byte) -19, 0, (Class32.packetBuffer.buffer));
+                                Class40_Sub6.aClass64_2098.method1010(SceneCluster.packetBuffer.currentPosition, (byte) -19, 0, (SceneCluster.packetBuffer.buffer));
                                 Class22.anInt537 = 0;
-                                Class32.packetBuffer.currentPosition = 0;
+                                SceneCluster.packetBuffer.currentPosition = 0;
                             } catch(java.io.IOException ioexception) {
                                 Class59.dropClient(2578);
                                 break;

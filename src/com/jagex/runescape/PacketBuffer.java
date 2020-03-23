@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.net.ISAAC;
+import com.jagex.runescape.scene.SceneCluster;
 
 import java.math.BigInteger;
 
@@ -58,7 +59,7 @@ public class PacketBuffer extends Buffer {
     }
 
     public static void method516(int arg0) {
-        Class32.packetBuffer.putPacket(176);
+        SceneCluster.packetBuffer.putPacket(176);
         if(Class29.tabAreaOverlayWidgetId != -1) {
             Class55.method958(Class29.tabAreaOverlayWidgetId);
             CacheIndex_Sub1.anInt1819 = -1;
@@ -92,9 +93,9 @@ public class PacketBuffer extends Buffer {
 
     public static void method517(int arg0, int arg1, int arg2) {
         if(arg2 == -9225) {
-            Class32.packetBuffer.putPacket(132);
-            Class32.packetBuffer.putIntME2(arg1);
-            Class32.packetBuffer.putShortLE(arg0);
+            SceneCluster.packetBuffer.putPacket(132);
+            SceneCluster.packetBuffer.putIntME2(arg1);
+            SceneCluster.packetBuffer.putShortLE(arg0);
         }
     }
 

@@ -8,6 +8,7 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.WallDecoration;
 
 public class UnderlayDefinition extends SubNode {
@@ -63,8 +64,8 @@ public class UnderlayDefinition extends SubNode {
                     Class40_Sub7.friendWorlds[(Item.friendsCount)] = 0;
                     Item.friendsCount++;
                     ISAAC.redrawTabArea = true;
-                    Class32.packetBuffer.putPacket(114);
-                    Class32.packetBuffer.putLongBE(arg0);
+                    SceneCluster.packetBuffer.putPacket(114);
+                    SceneCluster.packetBuffer.putLongBE(arg0);
                 }
             }
         }

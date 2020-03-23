@@ -10,6 +10,7 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.SceneCluster;
 
 public abstract class Class22_Sub2 extends Class22 {
     public static RSString string_blank = RSString.CreateString("");
@@ -104,7 +105,7 @@ public abstract class Class22_Sub2 extends Class22 {
     }
 
     public static int method323(int arg0) {
-        int i = Class32.anIntArray774[arg0];
+        int i = SceneCluster.anIntArray774[arg0];
         i = (i * Class44.anInt1040 >> 8) * i;
         return (int) (Math.sqrt((double) i) + 0.5);
     }
@@ -132,7 +133,7 @@ public abstract class Class22_Sub2 extends Class22 {
     public void method318(int arg0, long arg1, int arg2) {
         Class44.anInt1040 = arg2;
         for(int i = 0; i < 16; i++)
-            Class32.anIntArray774[i] = 12800;
+            SceneCluster.anIntArray774[i] = 12800;
         if(arg0 >= -80)
             username = null;
         for(int i = 0; i < 16; i++) {
@@ -184,7 +185,7 @@ public abstract class Class22_Sub2 extends Class22 {
             if(arg1 == 121) {
                 method314(arg0, arg1, arg2, arg3);
                 int i = arg0 & 0xf;
-                Class32.anIntArray774[i] = 12800;
+                SceneCluster.anIntArray774[i] = 12800;
                 int i_9_ = method323(i);
                 method314(arg0, 7, i_9_ >> 7, arg3);
                 method314(arg0, 39, i_9_ & 0x7f, arg3);
@@ -193,9 +194,9 @@ public abstract class Class22_Sub2 extends Class22 {
             if(arg1 == 7 || arg1 == 39) {
                 int i = arg0 & 0xf;
                 if(arg1 == 7)
-                    Class32.anIntArray774[i] = (Class32.anIntArray774[i] & 0x7f) + (arg2 << 7);
+                    SceneCluster.anIntArray774[i] = (SceneCluster.anIntArray774[i] & 0x7f) + (arg2 << 7);
                 else
-                    Class32.anIntArray774[i] = (Class32.anIntArray774[i] & 0x3f80) + arg2;
+                    SceneCluster.anIntArray774[i] = (SceneCluster.anIntArray774[i] & 0x3f80) + arg2;
                 int i_10_ = method323(i);
                 method314(arg0, 7, i_10_ >> 7, arg3);
                 method314(arg0, 39, i_10_ & 0x7f, arg3);

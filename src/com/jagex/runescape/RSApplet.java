@@ -11,6 +11,7 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.net.ISAAC;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.util.Signlink;
 
@@ -173,8 +174,8 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                         Class40_Sub7.friendWorlds[i_13_] = Class40_Sub7.friendWorlds[i_13_ + 1];
                         Class59.aLongArray1397[i_13_] = Class59.aLongArray1397[1 + i_13_];
                     }
-                    Class32.packetBuffer.putPacket(255);
-                    Class32.packetBuffer.putLongBE(arg0);
+                    SceneCluster.packetBuffer.putPacket(255);
+                    SceneCluster.packetBuffer.putLongBE(arg0);
                     break;
                 }
             }
@@ -218,10 +219,10 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             setCanvas((byte) 121);
             Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649((IdentityKit.height), Class12.width, GameFrame.aCanvas1469, -4875);
             method31(true);
-            Class32.aClass38_768 = Class56.method972((byte) 47);
-            Class32.aClass38_768.method443(-10115);
+            SceneCluster.aClass38_768 = Class56.method972((byte) 47);
+            SceneCluster.aClass38_768.method443(-10115);
             while(CacheIndex.aLong219 == 0L || System.currentTimeMillis() < CacheIndex.aLong219) {
-                Class40_Sub3.anInt2020 = Class32.aClass38_768.method442(Class39.anInt912, (Class40_Sub3.anInt2024), 9799);
+                Class40_Sub3.anInt2020 = SceneCluster.aClass38_768.method442(Class39.anInt912, (Class40_Sub3.anInt2024), 9799);
                 for(int i = 0; (i < Class40_Sub3.anInt2020); i++)
                     method29(true);
                 method26((byte) 88);

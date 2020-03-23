@@ -22,6 +22,7 @@ import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.Scene;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.Wall;
@@ -650,8 +651,8 @@ public class Main extends RSApplet {
         Class40_Sub5_Sub15.anInt2782 = 0;
         Class35.anInt1728 = 0;
         Player.anInt3288 = 0;
-        Class32.packetBuffer.currentPosition = 0;
-        Class32.anInt771 = 0;
+        SceneCluster.packetBuffer.currentPosition = 0;
+        SceneCluster.anInt771 = 0;
         Class49.anInt1151 = -1;
         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
         ActorDefinition.menuActionRow = 0;
@@ -997,7 +998,7 @@ public class Main extends RSApplet {
         Class26.method350();
         SceneTile.method534();
         InteractiveObject.method280();
-        Class32.method401();
+        SceneCluster.method401();
         Renderable.method757();
         Wall.method237();
         WallDecoration.method952();

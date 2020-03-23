@@ -18,6 +18,7 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.Wall;
@@ -217,7 +218,7 @@ public class Class55 {
         Class42.aClass1_1002 = SpotAnimDefinition.aClass1_2292;
         Class38_Sub1.aClass1_1905 = WallDecoration.aClass1_1246;
         Node.aClass1_957 = Class27.aClass1_652;
-        Class38.aClass1_885 = Class32.aClass1_766;
+        Class38.aClass1_885 = SceneCluster.aClass1_766;
         Class22_Sub1.aClass1_1857 = Class12.aClass1_381;
         RSCanvas.aClass1_67 = Class40_Sub5_Sub15.aClass1_2793;
         Node.aClass1_972 = Class37.aClass1_860;

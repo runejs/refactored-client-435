@@ -11,6 +11,7 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.scene.tile.WallDecoration;
@@ -342,26 +343,26 @@ public class Class38_Sub1 extends Class38 {
             int i_24_ = Wall.anIntArray351[i_10_];
             int i_25_ = Class24.anIntArray581[i_10_];
             if(arg11 == 0) {
-                Class32.packetBuffer.putPacket(73);
-                Class32.packetBuffer.putByte(3 + (i_12_ + i_12_));
+                SceneCluster.packetBuffer.putPacket(73);
+                SceneCluster.packetBuffer.putByte(3 + (i_12_ + i_12_));
             }
             if(arg11 == 1) {
-                Class32.packetBuffer.putPacket(236);
-                Class32.packetBuffer.putByte(14 + i_12_ + i_12_ + 3);
+                SceneCluster.packetBuffer.putPacket(236);
+                SceneCluster.packetBuffer.putByte(14 + i_12_ + i_12_ + 3);
             }
             if(arg11 == 2) {
-                Class32.packetBuffer.putPacket(89);
-                Class32.packetBuffer.putByte(3 + (i_12_ + i_12_));
+                SceneCluster.packetBuffer.putPacket(89);
+                SceneCluster.packetBuffer.putByte(3 + (i_12_ + i_12_));
             }
-            Class32.packetBuffer.putShortLE(i_24_ + Class26.anInt635);
-            Class32.packetBuffer.putByte(Item.obfuscatedKeyStatus[82] ? 1 : 0);
-            Class32.packetBuffer.putShortLE(SpotAnimDefinition.anInt2307 + i_25_);
+            SceneCluster.packetBuffer.putShortLE(i_24_ + Class26.anInt635);
+            SceneCluster.packetBuffer.putByte(Item.obfuscatedKeyStatus[82] ? 1 : 0);
+            SceneCluster.packetBuffer.putShortLE(SpotAnimDefinition.anInt2307 + i_25_);
             VarbitDefinition.anInt2366 = Class24.anIntArray581[0];
             Class55.anInt1304 = Wall.anIntArray351[0];
             for(int i_26_ = 1; i_12_ > i_26_; i_26_++) {
                 i_10_--;
-                Class32.packetBuffer.putByte(Class24.anIntArray581[i_10_] - i_25_);
-                Class32.packetBuffer.putByte(-i_24_ + Wall.anIntArray351[i_10_]);
+                SceneCluster.packetBuffer.putByte(Class24.anIntArray581[i_10_] - i_25_);
+                SceneCluster.packetBuffer.putByte(-i_24_ + Wall.anIntArray351[i_10_]);
             }
             return true;
         }

@@ -15,6 +15,7 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.scene.tile.WallDecoration;
@@ -553,14 +554,14 @@ public class IncomingPackets {
             if(incomingPacket == 253) {
                 Class39.aBoolean906 = true;
                 Class22.anInt545 = incomingPacketBuffer.getUnsignedByte();
-                Class32.anInt767 = incomingPacketBuffer.getUnsignedByte();
+                SceneCluster.anInt767 = incomingPacketBuffer.getUnsignedByte();
                 Class5.anInt194 = incomingPacketBuffer.getUnsignedShortBE();
                 Class4.anInt188 = incomingPacketBuffer.getUnsignedByte();
                 Class59.anInt1386 = incomingPacketBuffer.getUnsignedByte();
                 if(Class59.anInt1386 >= 100) {
-                    Class40_Sub5_Sub6.cameraY = 64 + Class32.anInt767 * 128;
+                    Class40_Sub5_Sub6.cameraY = 64 + SceneCluster.anInt767 * 128;
                     Class12.cameraX = Class22.anInt545 * 128 + 64;
-                    Class32.cameraZ = (Class37.method430((byte) -125, (Player.worldLevel), Class12.cameraX, Class40_Sub5_Sub6.cameraY) - Class5.anInt194);
+                    SceneCluster.cameraZ = (Class37.method430((byte) -125, (Player.worldLevel), Class12.cameraX, Class40_Sub5_Sub6.cameraY) - Class5.anInt194);
                 }
                 incomingPacket = -1;
                 return true;
@@ -811,7 +812,7 @@ public class IncomingPackets {
                     int i_71_ = (Class37.method430((byte) -120, (Player.worldLevel), i_69_, i_70_) - Class38.anInt892);
                     int i_72_ = i_69_ + -Class12.cameraX;
                     int i_73_ = i_70_ + -Class40_Sub5_Sub6.cameraY;
-                    int i_74_ = -Class32.cameraZ + i_71_;
+                    int i_74_ = -SceneCluster.cameraZ + i_71_;
                     int i_75_ = (int) Math.sqrt((double) (i_73_ * i_73_ + i_72_ * i_72_));
                     Class26.anInt627 = ((int) (325.949 * Math.atan2((double) i_74_, (double) i_75_)) & 0x7ff);
                     Class68_Sub1.anInt2210 = (int) (Math.atan2((double) i_72_, (double) i_73_) * -325.949) & 0x7ff;

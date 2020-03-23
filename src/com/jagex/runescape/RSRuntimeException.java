@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
 
@@ -75,7 +76,7 @@ public class RSRuntimeException extends RuntimeException {
     }
 
     public static void method1057(int arg0) {
-        Class32.aClass38_768.method444(10);
+        SceneCluster.aClass38_768.method444(10);
         for(int i = 0; i < 32; i++)
             RSApplet.aLongArray4[i] = 0L;
         for(int i = 0; i < 32; i++)
