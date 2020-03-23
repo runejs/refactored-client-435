@@ -1,7 +1,6 @@
 package com.jagex.runescape.media.renderable.actor;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
@@ -11,6 +10,7 @@ import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.scene.tile.WallDecoration;
 
 import java.awt.*;
@@ -18,7 +18,7 @@ import java.awt.*;
 public class Player extends Actor {
     public static RSString aClass1_3256 = RSString.CreateString("green:");
     public static int anInt3264 = 0;
-    public static int anInt3267;
+    public static int worldLevel;
     public static RSString aClass1_3269 = RSString.CreateString("Mitteilung");
     public static byte[] aByteArray3270;
     public static RSString aClass1_3275 = RSString.CreateString("Bitte starten Sie eine Mitgliedschaft");
@@ -28,6 +28,15 @@ public class Player extends Actor {
     public static int anInt3288 = 0;
     public static RSString aClass1_3290 = RSString.CreateString("Spieler kann nicht gefunden werden: ");
     public static Player localPlayer;
+    public static int[] actorUpdatingIndices = new int[2048];
+    public static Buffer[] trackedPlayerAppearanceCache;
+    public static int[] deregisterActorIndices = new int[1000];
+    public static Npc[] trackedNpcs;
+    public static Player[] trackedPlayers;
+    public static int[] trackedNpcIndices = new int[32768];
+    public static int[] trackedPlayerIndices = new int[2048];
+    public static int trackedNpcIndex = 0;
+    public static int trackedPlayerIndex;
     public int skillLevel;
     public int anInt3258;
     public int combatLevel = 0;
@@ -89,58 +98,58 @@ public class Player extends Actor {
         aClass1_3256 = null;
     }
 
-    public static void parsePlayerUpdateMasks(Player player, int mask, int arg3) {
+    public static void parsePlayerUpdateMasks(Player player, int mask, int playerIndex) {
         if((0x100 & mask) != 0) {
-            int i = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
-            int i_0_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
+            int i = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            int i_0_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             player.method785(i_0_, pulseCycle, i, -122);
             player.anInt3139 = 300 + pulseCycle;
-            player.anInt3130 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
-            player.anInt3101 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
+            player.anInt3130 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            player.anInt3101 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
         }
         if((mask & 0x10) != 0) { // face position
-            player.facePositionX = Cache.outgoingbuffer.getUnsignedShortBE();
-            player.facePositionY = Cache.outgoingbuffer.getUnsignedShortLE();
+            player.facePositionX = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+            player.facePositionY = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
         }
         if((mask & 0x1) != 0) { // animation
-            int i = Cache.outgoingbuffer.getUnsignedShortLE();
+            int i = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
             if(i == 65535)
                 i = -1;
-            int i_1_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
+            int i_1_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             ActorDefinition.method570(i, i_1_, player, -1);
         }
         if((mask & 0x4) != 0) { // face actor
-            player.facingActorIndex = Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE();
+            player.facingActorIndex = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
             if(player.facingActorIndex == 65535)
                 player.facingActorIndex = -1;
         }
         if((0x40 & mask) != 0) {
-            int i = Cache.outgoingbuffer.getUnsignedByte();
-            int i_2_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
+            int i = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            int i_2_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             player.method785(i_2_, pulseCycle, i, -123);
             player.anInt3139 = 300 + pulseCycle;
-            player.anInt3130 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-            player.anInt3101 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
+            player.anInt3130 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            player.anInt3101 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
         }
         if((mask & 0x400) != 0) {
-            player.anInt3125 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
-            player.anInt3081 = Cache.outgoingbuffer.putUnsignedPreNegativeOffsetByte();
-            player.anInt3099 = Cache.outgoingbuffer.getUnsignedByte();
-            player.anInt3127 = Cache.outgoingbuffer.getUnsignedByte();
-            player.anInt3112 = (Cache.outgoingbuffer.getUnsignedNegativeOffsetShortBE() + pulseCycle);
-            player.anInt3107 = (Cache.outgoingbuffer.getUnsignedNegativeOffsetShortLE() + pulseCycle);
-            player.anInt3073 = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
+            player.anInt3125 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            player.anInt3081 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            player.anInt3099 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            player.anInt3127 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            player.anInt3112 = (IncomingPackets.incomingPacketBuffer.getUnsignedShortBE() + pulseCycle);
+            player.anInt3107 = (IncomingPackets.incomingPacketBuffer.getUnsignedShortLE() + pulseCycle);
+            player.anInt3073 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             player.method790(0);
         }
         if((0x8 & mask) != 0) { // chat
-            int i = Cache.outgoingbuffer.getUnsignedShortBE();
-            int i_3_ = Cache.outgoingbuffer.getUnsignedNegativeOffsetByte();
-            int i_4_ = Cache.outgoingbuffer.getUnsignedInvertedByte();
-            int i_5_ = Cache.outgoingbuffer.currentPosition;
+            int chatEffectsAndColors = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+            int playerRights = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            int messageLength = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            int i_5_ = IncomingPackets.incomingPacketBuffer.currentPosition;
             if(player.playerName != null && player.aClass30_3282 != null) {
                 long l = player.playerName.method58((byte) 101);
                 boolean bool = false;
-                if(i_3_ <= 1) {
+                if(playerRights <= 1) {
                     for(int i_6_ = 0; i_6_ < Class42.anInt1008; i_6_++) {
                         if(l == WallDecoration.ignores[i_6_]) {
                             bool = true;
@@ -150,34 +159,34 @@ public class Player extends Actor {
                 }
                 if(!bool && Class4.anInt182 == 0) {
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
-                    Cache.outgoingbuffer.putNegativeOffsetBytes(0, Class59.aClass40_Sub1_1385.buffer, i_4_);
+                    IncomingPackets.incomingPacketBuffer.putBytes(0, messageLength, Class59.aClass40_Sub1_1385.buffer);
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
                     RSString class1 = KeyFocusListener.method956(124, Class59.aClass40_Sub1_1385).method53(-16315);
                     player.forcedChatMessage = class1.trim();
                     player.anInt3078 = 150;
-                    player.anInt3123 = i & 0xff;
-                    player.anInt3102 = i >> 8;
-                    if(i_3_ == 2 || i_3_ == 3)
+                    player.chatEffects = chatEffectsAndColors & 0xff;
+                    player.chatcolor = chatEffectsAndColors >> 8;
+                    if(playerRights == 2 || playerRights == 3)
                         Class44.addChatMessage((Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Widget.goldCrown, player.playerName}))), class1, 1);
-                    else if(i_3_ == 1)
+                    else if(playerRights == 1)
                         Class44.addChatMessage((Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class51.whiteCrown, player.playerName}))), class1, 1);
                     else
                         Class44.addChatMessage(player.playerName, class1, 2);
                 }
             }
-            Cache.outgoingbuffer.currentPosition = i_4_ + i_5_;
+            IncomingPackets.incomingPacketBuffer.currentPosition = messageLength + i_5_;
         }
         if((0x20 & mask) != 0) { // appearance
-            int appearanceUpdateLength = Cache.outgoingbuffer.getUnsignedByte();
+            int appearanceUpdateLength = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             byte[] is = new byte[appearanceUpdateLength];
             Buffer buffer = new Buffer(is);
-            Cache.outgoingbuffer.getBytes(appearanceUpdateLength, 0, is);
-            Class22.aClass40_Sub1Array534[arg3] = buffer;
+            IncomingPackets.incomingPacketBuffer.getBytes(appearanceUpdateLength, 0, is);
+            trackedPlayerAppearanceCache[playerIndex] = buffer;
             player.parsePlayerAppearanceData(buffer);
         }
         if((mask & 0x200) != 0) { // graphics?
-            player.anInt3091 = Cache.outgoingbuffer.getUnsignedShortLE();
-            int i = Cache.outgoingbuffer.getIntME1();
+            player.anInt3091 = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
+            int i = IncomingPackets.incomingPacketBuffer.getIntBE();
             player.anInt3129 = 0;
             player.anInt3093 = pulseCycle + (i & 0xffff);
             if(player.anInt3091 == 65535)
@@ -188,28 +197,146 @@ public class Player extends Actor {
                 player.anInt3140 = -1;
         }
         if((0x80 & mask) != 0) { // forced chat
-            player.forcedChatMessage = Cache.outgoingbuffer.getRSString();
+            player.forcedChatMessage = IncomingPackets.incomingPacketBuffer.getRSString();
             if(player.forcedChatMessage.getChar(0) == 126) {
                 player.forcedChatMessage = player.forcedChatMessage.substring(1);
                 Class44.addChatMessage(player.playerName, player.forcedChatMessage, 2);
             } else if(player == localPlayer)
                 Class44.addChatMessage(player.playerName, player.forcedChatMessage, 2);
             player.anInt3078 = 150;
-            player.anInt3102 = 0;
-            player.anInt3123 = 0;
+            player.chatcolor = 0;
+            player.chatEffects = 0;
         }
     }
 
     public static void parseTrackedPlayerUpdateMasks() {
-        for(int i = 0; i < anInt3153; i++) {
-            int i_2_ = Class24.anIntArray578[i];
-            Player player = (aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_2_]);
-            int i_3_ = Cache.outgoingbuffer.getUnsignedByte();
-            if((i_3_ & 0x2) != 0)
-                i_3_ += (Cache.outgoingbuffer.getUnsignedByte() << 8);
-            parsePlayerUpdateMasks(player, i_3_, i_2_);
+        for(int i = 0; i < actorUpdatingIndex; i++) {
+            int trackedPlayerIndex = actorUpdatingIndices[i];
+            Player player = (trackedPlayers[trackedPlayerIndex]);
+            int mask = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            if((mask & 0x2) != 0)
+                mask += (IncomingPackets.incomingPacketBuffer.getUnsignedByte() << 8);
+            parsePlayerUpdateMasks(player, mask, trackedPlayerIndex);
         }
         Class40_Sub5_Sub11.anInt2632++;
+    }
+
+    public static void parsePlayerMovement() {
+        IncomingPackets.incomingPacketBuffer.initBitAccess(127);
+        anInt3121++;
+        int updateRequired = IncomingPackets.incomingPacketBuffer.getBits(1);
+        if(updateRequired != 0) {
+            int movementType = IncomingPackets.incomingPacketBuffer.getBits(2);
+            if(movementType == 0) // No movement
+                actorUpdatingIndices[actorUpdatingIndex++] = 2047;
+            else if(movementType == 1) { // Walking
+                int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
+                localPlayer.method782(walkDirection, (byte) -96, false);
+                int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
+                if(runUpdateBlock == 1)
+                    actorUpdatingIndices[actorUpdatingIndex++] = 2047;
+            } else if(movementType == 2) { // Running
+                int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
+                localPlayer.method782(walkDirection, (byte) -96, true);
+                int runDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
+                localPlayer.method782(runDirection, (byte) -96, true);
+                int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
+                if(runUpdateBlock == 1)
+                    actorUpdatingIndices[actorUpdatingIndex++] = 2047;
+            } else if(movementType == 3) { // Map region changed
+                int teleporting = IncomingPackets.incomingPacketBuffer.getBits(1);
+                worldLevel = IncomingPackets.incomingPacketBuffer.getBits(2);
+                int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
+                if(runUpdateBlock == 1)
+                    actorUpdatingIndices[actorUpdatingIndex++] = 2047;
+                int localChunkX = IncomingPackets.incomingPacketBuffer.getBits(7);
+                int localChunkY = IncomingPackets.incomingPacketBuffer.getBits(7);
+                localPlayer.method787(localChunkY, -7717, teleporting == 1, localChunkX);
+            }
+        }
+    }
+
+    public static void parseTrackedPlayerMovement() {
+        Class29.anInt679++;
+        int trackedPlayerCount = IncomingPackets.incomingPacketBuffer.getBits(8);
+        if(trackedPlayerCount < trackedPlayerIndex) {
+            for(int i = trackedPlayerCount; trackedPlayerIndex > i; i++)
+                deregisterActorIndices[Class17.deregisterActorCount++] = trackedPlayerIndices[i];
+        }
+        if(trackedPlayerIndex < trackedPlayerCount)
+            throw new RuntimeException("gppov1");
+        trackedPlayerIndex = 0;
+        for(int i = 0; (trackedPlayerCount > i); i++) {
+            int trackedPlayerIndex = trackedPlayerIndices[i];
+            Player player = (trackedPlayers[trackedPlayerIndex]);
+            int updateRequired = IncomingPackets.incomingPacketBuffer.getBits(1);
+            if(updateRequired == 0) {
+                trackedPlayerIndices[trackedPlayerIndex++] = trackedPlayerIndex;
+                player.anInt3134 = pulseCycle;
+            } else {
+                int movementType = IncomingPackets.incomingPacketBuffer.getBits(2);
+                if(movementType == 0) { // No movement
+                    trackedPlayerIndices[trackedPlayerIndex++] = trackedPlayerIndex;
+                    player.anInt3134 = pulseCycle;
+                    actorUpdatingIndices[actorUpdatingIndex++] = trackedPlayerIndex;
+                } else if(movementType == 1) { // Walking
+                    trackedPlayerIndices[trackedPlayerIndex++] = trackedPlayerIndex;
+                    player.anInt3134 = pulseCycle;
+                    int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
+                    player.method782(walkDirection, (byte) -96, false);
+                    int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
+                    if(runUpdateBlock == 1)
+                        actorUpdatingIndices[actorUpdatingIndex++] = trackedPlayerIndex;
+                } else if(movementType == 2) { // Running
+                    trackedPlayerIndices[trackedPlayerIndex++] = trackedPlayerIndex;
+                    player.anInt3134 = pulseCycle;
+                    int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
+                    player.method782(walkDirection, (byte) -96, true);
+                    int runDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
+                    player.method782(runDirection, (byte) -96, true);
+                    int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
+                    if(runUpdateBlock == 1)
+                        actorUpdatingIndices[actorUpdatingIndex++] = trackedPlayerIndex;
+                } else if(movementType == 3)
+                    deregisterActorIndices[Class17.deregisterActorCount++] = trackedPlayerIndex;
+            }
+        }
+    }
+
+    public static void registerNewPlayers() {
+        Class34.anInt807++;
+        while(IncomingPackets.incomingPacketBuffer.method510(125, IncomingPackets.incomingPacketSize) >= 11) {
+            int newPlayerIndex = IncomingPackets.incomingPacketBuffer.getBits(11);
+            if(newPlayerIndex == 2047)
+                break;
+            boolean bool = false;
+            if((trackedPlayers[newPlayerIndex]) == null) {
+                trackedPlayers[newPlayerIndex] = new Player();
+                if(trackedPlayerAppearanceCache[newPlayerIndex] != null)
+                    trackedPlayers[newPlayerIndex].parsePlayerAppearanceData(trackedPlayerAppearanceCache[newPlayerIndex]);
+                bool = true;
+            }
+            trackedPlayerIndices[trackedPlayerIndex++] = newPlayerIndex;
+            Player player = (trackedPlayers[newPlayerIndex]);
+            player.anInt3134 = pulseCycle;
+            int offsetX = IncomingPackets.incomingPacketBuffer.getBits(5);
+            int offsetY = IncomingPackets.incomingPacketBuffer.getBits(5);
+            if(offsetX > 15)
+                offsetX -= 32;
+            if(offsetY > 15)
+                offsetY -= 32;
+            int initialFaceDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
+            int faceDirection = (Class40_Sub5_Sub17_Sub1.directions[initialFaceDirection]);
+            if(bool)
+                player.anInt3080 = faceDirection;
+            int updateRequired = IncomingPackets.incomingPacketBuffer.getBits(1);
+            int discardWalkingQueue = IncomingPackets.incomingPacketBuffer.getBits(1);
+            if(discardWalkingQueue == 1)
+                actorUpdatingIndices[actorUpdatingIndex++] = newPlayerIndex;
+            player.method787(offsetY + (localPlayer.pathX[0]), -7717, updateRequired == 1, (localPlayer.pathY[0]) + offsetX);
+        }
+        IncomingPackets.incomingPacketBuffer.finishBitAccess((byte) -110);
+
     }
 
     public Model getRotatedModel(int arg0) {

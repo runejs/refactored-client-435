@@ -3,11 +3,11 @@ package com.jagex.runescape.cache;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
+import com.jagex.runescape.net.IncomingPackets;
 
 public class Cache {
     public static RSString dropString = RSString.CreateString("Drop");
     public static RSString dropStringInstance = dropString;
-    public static PacketBuffer outgoingbuffer = new PacketBuffer(5000);
     public static volatile int mouseButtonPressed = 0;
     public static int anInt321 = 5063219;
     public static volatile int eventMouseY = -1;
@@ -52,7 +52,7 @@ public class Cache {
         dropString = null;
         aClass1_332 = null;
         aClass1_331 = null;
-        outgoingbuffer = null;
+        IncomingPackets.incomingPacketBuffer = null;
         aClass1_325 = null;
         aClass9_326 = null;
         aCacheIndex_329 = null;

@@ -140,7 +140,7 @@ public class Class61 {
     public static void method1000(boolean arg0) {
         if(arg0) {
             for(Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = ((Class40_Sub5_Sub17_Sub6) Class57.aClass45_1332.method902((byte) -90)); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = ((Class40_Sub5_Sub17_Sub6) Class57.aClass45_1332.method909(-4))) {
-                if((Player.anInt3267 == class40_sub5_sub17_sub6.anInt3239) && !class40_sub5_sub17_sub6.aBoolean3237) {
+                if((Player.worldLevel == class40_sub5_sub17_sub6.anInt3239) && !class40_sub5_sub17_sub6.aBoolean3237) {
                     if(Node.pulseCycle >= class40_sub5_sub17_sub6.anInt3230) {
                         class40_sub5_sub17_sub6.method834(8076, Class5.anInt199);
                         if(class40_sub5_sub17_sub6.aBoolean3237)

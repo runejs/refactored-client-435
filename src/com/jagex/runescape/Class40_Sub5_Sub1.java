@@ -326,9 +326,9 @@ public class Class40_Sub5_Sub1 extends SubNode {
     public static int method546(int arg0) {
         if(arg0 != 256)
             anInt2280 = 44;
-        int i = Class37.method430((byte) -120, Player.anInt3267, Class12.cameraX, Class40_Sub5_Sub6.cameraY);
-        if(i + -Class32.cameraZ < 800 && ((OverlayDefinition.tile_flags[Player.anInt3267][Class12.cameraX >> 7][Class40_Sub5_Sub6.cameraY >> 7]) & 0x4) != 0)
-            return Player.anInt3267;
+        int i = Class37.method430((byte) -120, Player.worldLevel, Class12.cameraX, Class40_Sub5_Sub6.cameraY);
+        if(i + -Class32.cameraZ < 800 && ((OverlayDefinition.tile_flags[Player.worldLevel][Class12.cameraX >> 7][Class40_Sub5_Sub6.cameraY >> 7]) & 0x4) != 0)
+            return Player.worldLevel;
         return 3;
     }
 }

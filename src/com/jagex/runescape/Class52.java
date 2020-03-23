@@ -112,7 +112,7 @@ public class Class52 {
         if(arg5 != 103)
             anInt1214 = -81;
         if(arg2 >= 1 && arg0 >= 1 && arg2 <= 102 && arg0 <= 102) {
-            if(!VertexNormal.lowMemory || Player.anInt3267 == arg7) {
+            if(!VertexNormal.lowMemory || Player.worldLevel == arg7) {
                 int i = -1;
                 int i_0_ = 0;
                 boolean bool = false;

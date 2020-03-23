@@ -17,6 +17,7 @@ import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.Scene;
@@ -830,14 +831,14 @@ public class Main extends RSApplet {
         Cache.anInt324 = -1;
         Class4.menuOpen = false;
         RSString.anInt1690 = -1;
-        Class57.incomingPacket = -1;
+        IncomingPackets.incomingPacket = -1;
         Class40_Sub5_Sub15.anInt2782 = 0;
         Class35.anInt1728 = 0;
         Player.anInt3288 = 0;
         Class32.packetBuffer.currentPosition = 0;
         Class32.anInt771 = 0;
         Class49.anInt1151 = -1;
-        Cache.outgoingbuffer.currentPosition = 0;
+        IncomingPackets.incomingPacketBuffer.currentPosition = 0;
         ActorDefinition.anInt2394 = 0;
         Class40_Sub5_Sub13.method650(true, 0);
         for(int i = 0; i < 100; i++)
@@ -848,22 +849,22 @@ public class Main extends RSApplet {
         VarbitDefinition.anInt2366 = 0;
         Class43.cameraYawOffset = (int) (Math.random() * 120.0) + -60;
         Buffer.anInt1985 = -1;
-        GameObjectDefinition.anInt2558 = 0;
+        Player.trackedNpcIndex = 0;
         PacketBuffer.currentSound = 0;
         anInt1773 = 0;
         GroundItemTile.cameraHorizontal = 0x7ff & -10 + (int) (20.0 * Math.random());
         Class51.mapZoomOffset = -20 + (int) (Math.random() * 30.0);
         Class27.anInt658 = 0;
         Buffer.anInt1976 = -50 + (int) (Math.random() * 100.0);
-        Class60.anInt1407 = 0;
+        Player.trackedPlayerIndex = 0;
         Class55.anInt1304 = 0;
         for(int i = 0; i < 2048; i++) {
-            Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i] = null;
-            Class22.aClass40_Sub1Array534[i] = null;
+            Player.trackedPlayers[i] = null;
+            Player.trackedPlayerAppearanceCache[i] = null;
         }
         for(int i = 0; i < 32768; i++)
-            CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i] = null;
-        Player.localPlayer = Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[2047] = new Player();
+            Player.trackedNpcs[i] = null;
+        Player.localPlayer = Player.trackedPlayers[2047] = new Player();
         Class43.aClass45_1022.method906(0);
         Class57.aClass45_1332.method906(0);
         for(int i = 0; i < 4; i++) {

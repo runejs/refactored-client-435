@@ -1,10 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.media.renderable.Model;
-import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.util.Signlink;
@@ -120,7 +117,7 @@ public class Class22_Sub1 extends Class22 {
             Class44.anInt1048 = -1;
             ISAAC.anInt522 = -1;
         } else {
-            int i = Class37.method430((byte) -122, Player.anInt3267, arg2, arg1) + -arg0;
+            int i = Class37.method430((byte) -122, Player.worldLevel, arg2, arg1) + -arg0;
             arg1 -= Class40_Sub5_Sub6.cameraY;
             i -= Class32.cameraZ;
             int i_1_ = Model.COSINE[Class26.anInt627];
@@ -150,13 +147,13 @@ public class Class22_Sub1 extends Class22 {
     public static void method313(int arg0) {
 
         anInt1842++;
-        for(int i = -1; Class60.anInt1407 > i; i++) {
+        for(int i = -1; Player.trackedPlayerIndex > i; i++) {
             int i_6_;
             if(i == -1)
                 i_6_ = 2047;
             else
-                i_6_ = Class57.anIntArray1334[i];
-            Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_6_]);
+                i_6_ = Player.trackedPlayerIndices[i];
+            Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[i_6_]);
             if(class40_sub5_sub17_sub4_sub1 != null && (class40_sub5_sub17_sub4_sub1.anInt3078 > 0)) {
                 class40_sub5_sub17_sub4_sub1.anInt3078--;
                 if(class40_sub5_sub17_sub4_sub1.anInt3078 == 0)
@@ -164,9 +161,9 @@ public class Class22_Sub1 extends Class22 {
             }
         }
         int i = 18 % ((-46 - arg0) / 58);
-        for(int i_7_ = 0; i_7_ < GameObjectDefinition.anInt2558; i_7_++) {
-            int i_8_ = Class40_Sub3.anIntArray2016[i_7_];
-            Npc class40_sub5_sub17_sub4_sub2 = CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_8_];
+        for(int i_7_ = 0; i_7_ < Player.trackedNpcIndex; i_7_++) {
+            int i_8_ = Player.trackedNpcIndices[i_7_];
+            Npc class40_sub5_sub17_sub4_sub2 = Player.trackedNpcs[i_8_];
             if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.anInt3078 > 0) {
                 class40_sub5_sub17_sub4_sub2.anInt3078--;
                 if(class40_sub5_sub17_sub4_sub2.anInt3078 == 0)
