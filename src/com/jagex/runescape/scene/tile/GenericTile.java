@@ -1,5 +1,6 @@
-package com.jagex.runescape;
+package com.jagex.runescape.scene.tile;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -50,13 +51,13 @@ public class GenericTile {
     public int texture;
     public int anInt1225;
     public int anInt1226;
-    public boolean flat = true;
-    public int anInt1231;
+    public boolean flat;
+    public int colourA;
     public int anInt1232;
     public int colourD;
 
     public GenericTile(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6) {
-        anInt1231 = arg0;
+        colourA = arg0;
         flat = arg6;
         anInt1225 = arg1;
         colourD = arg2;

@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -359,7 +360,7 @@ public class ItemDefinition extends SubNode {
             if(yOffset2d > 32767) {
                 yOffset2d -= 65536;
             }
-        } else if(opcode == 10){
+        } else if(opcode == 10) {
             buffer.getUnsignedShortBE(); // Dummy
         } else if(opcode == 11) {
             stackable = 1;
@@ -470,13 +471,11 @@ public class ItemDefinition extends SubNode {
                 return forId(id, 10).asGroundStack(arg0, 1);
             }
         }
-        if(arg0) {
-            Model model = ((Model) MouseHandler.aClass9_1455.get((long) id, (byte) 87));
-            if(model != null) {
-                return model;
-            }
+        Model model = ((Model) MouseHandler.modelCache.get((long) id, (byte) 87));
+        if(model != null) {
+            return model;
         }
-        Model model = Model.getModel(Class8.aCacheIndex_284, inventoryModelId, 0);
+        model = Model.getModel(Class8.aCacheIndex_284, inventoryModelId, 0);
         if(model == null) {
             return null;
         }
@@ -491,7 +490,7 @@ public class ItemDefinition extends SubNode {
         if(arg0) {
             model.applyLighting(ambient + 64, 768 + contrast, -50, -10, -50, true);
             model.singleTile = true;
-            MouseHandler.aClass9_1455.put(-7208, (long) id, model);
+            MouseHandler.modelCache.put(-7208, (long) id, model);
         }
         return model;
 

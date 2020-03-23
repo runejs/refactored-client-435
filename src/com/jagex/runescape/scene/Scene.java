@@ -5,10 +5,7 @@ import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
-import com.jagex.runescape.scene.tile.FloorDecoration;
-import com.jagex.runescape.scene.tile.SceneTile;
-import com.jagex.runescape.scene.tile.Wall;
-import com.jagex.runescape.scene.tile.WallDecoration;
+import com.jagex.runescape.scene.tile.*;
 
 public class Scene {
     public static int cameraPosX;
@@ -1711,14 +1708,14 @@ public class Scene {
                 clickedTileY = tileY;
             }
             if(plainTile.texture == -1) {
-                if(plainTile.anInt1231 != 12345678) {
-                    Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, plainTile.anInt1231, plainTile.anInt1225, plainTile.anInt1232);
+                if(plainTile.colourA != 12345678) {
+                    Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, plainTile.colourA, plainTile.anInt1225, plainTile.anInt1232);
                 }
             } else if(lowMemory) {
                 int i_209_ = Rasterizer3D.anInterface3_2939.method14(true, plainTile.texture);
-                Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, method108(i_209_, plainTile.anInt1231), method108(i_209_, plainTile.anInt1225), method108(i_209_, plainTile.anInt1232));
+                Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, method108(i_209_, plainTile.colourA), method108(i_209_, plainTile.anInt1225), method108(i_209_, plainTile.anInt1232));
             } else {
-                Rasterizer3D.drawTexturedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, plainTile.anInt1231, plainTile.anInt1225, plainTile.anInt1232, xA, xB, xC, zA, zB, zD, yA, yB, yC, plainTile.texture);
+                Rasterizer3D.drawTexturedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, plainTile.colourA, plainTile.anInt1225, plainTile.anInt1232, xA, xB, xC, zA, zB, zD, yA, yB, yC, plainTile.texture);
             }
         }
     }

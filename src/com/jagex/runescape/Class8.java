@@ -82,7 +82,7 @@ public class Class8 {
 
     public static void method211() {
         ISAAC.aClass9_516.method235((byte) 78);
-        MouseHandler.aClass9_1455.method235((byte) 36);
+        MouseHandler.modelCache.method235((byte) 36);
         Buffer.aClass9_1933.method235((byte) 72);
 
     }

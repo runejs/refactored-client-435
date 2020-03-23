@@ -1,4 +1,4 @@
-package com.jagex.runescape;
+package com.jagex.runescape.scene.tile;
 
 public class ComplexTile {
     public static int[] anIntArray358;

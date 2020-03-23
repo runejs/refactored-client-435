@@ -1,5 +1,6 @@
-package com.jagex.runescape;
+package com.jagex.runescape.media.renderable;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
@@ -53,7 +54,7 @@ public class Item extends Renderable {
         aClass1_3071 = RSString.CreateString("Wen m-Ochten Sie hinzuf-Ugen?");
     }
 
-    public int anInt3058;
+    public int itemCount;
     public int itemId;
 
     public static void method775(boolean arg0) {
@@ -300,6 +301,6 @@ public class Item extends Renderable {
     }
 
     public Model getRotatedModel(int arg0) {
-        return ItemDefinition.forId(itemId, 10).asGroundStack(true, anInt3058);
+        return ItemDefinition.forId(itemId, 10).asGroundStack(true, itemCount);
     }
 }

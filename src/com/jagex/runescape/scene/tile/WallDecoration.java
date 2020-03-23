@@ -8,6 +8,7 @@ import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -161,8 +162,8 @@ public class WallDecoration {
                     LinkedList linkedList = (Wall.groundItems[Player.worldLevel][i_32_][i_33_]);
                     if(linkedList != null) {
                         for(Item item = ((Item) linkedList.method902((byte) -90)); item != null; item = ((Item) linkedList.method909(-4))) {
-                            if(item.itemId == (i_34_ & 0x7fff) && (i_35_ == item.anInt3058)) {
-                                item.anInt3058 = i_36_;
+                            if(item.itemId == (i_34_ & 0x7fff) && (i_35_ == item.itemCount)) {
+                                item.itemCount = i_36_;
                                 break;
                             }
                         }
@@ -294,7 +295,7 @@ public class WallDecoration {
                         if(i_83_ >= 0 && i_84_ >= 0 && i_83_ < 104 && i_84_ < 104 && Class30.anInt708 != i_80_) {
                             Item item = new Item();
                             item.itemId = i_81_;
-                            item.anInt3058 = i;
+                            item.itemCount = i;
                             if((Wall.groundItems[Player.worldLevel][i_83_][i_84_]) == null)
                                 Wall.groundItems[Player.worldLevel][i_83_][i_84_] = new LinkedList();
                             Wall.groundItems[Player.worldLevel][i_83_][i_84_].pushBack(item, 64);
@@ -308,7 +309,7 @@ public class WallDecoration {
                         int i_88_ = (Class40_Sub6.placementX + ((0x7a & i_86_) >> 4));
                         if(i_88_ >= 0 && i_87_ >= 0 && i_88_ < 104 && i_87_ < 104) {
                             Item item = new Item();
-                            item.anInt3058 = i_85_;
+                            item.itemCount = i_85_;
                             item.itemId = i;
                             if((Wall.groundItems[Player.worldLevel][i_88_][i_87_]) == null)
                                 Wall.groundItems[Player.worldLevel][i_88_][i_87_] = new LinkedList();

@@ -15,6 +15,7 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
+import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -25,7 +26,7 @@ import java.awt.event.*;
 
 public class MouseHandler implements MouseListener, MouseMotionListener, FocusListener, MouseWheelListener {
     public static int anInt1450;
-    public static Cache aClass9_1455;
+    public static Cache modelCache;
     public static int anInt1457 = -1;
     public static RSString aClass1_1463;
     public static RSString aClass1_1464;
@@ -45,7 +46,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
 
     static {
         anInt1450 = -1;
-        aClass9_1455 = new Cache(50);
+        modelCache = new Cache(50);
         aClass1_1464 = RSString.CreateString(" is already on your friend list");
         aClass1_1465 = aClass1_1464;
         aClass40_Sub5_Sub14_Sub4Array1466 = new ImageRGB[1000];
@@ -61,7 +62,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         aClass40_Sub5_Sub14_Sub4Array1466 = null;
         aClass1_1465 = null;
         aClass1_1463 = null;
-        aClass9_1455 = null;
+        modelCache = null;
         aCanvas1469 = null;
         aClass1_1464 = null;
         aClass1_1474 = null;

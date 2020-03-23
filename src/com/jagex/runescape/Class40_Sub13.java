@@ -8,6 +8,7 @@ import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.Rasterizer;
+import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -262,7 +263,7 @@ public class Class40_Sub13 extends Node {
                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((item_32_.itemId), 10);
                 int i_33_ = class40_sub5_sub16.cost;
                 if(class40_sub5_sub16.stackable == 1)
-                    i_33_ *= item_32_.anInt3058 + 1;
+                    i_33_ *= item_32_.itemCount + 1;
                 if((i_33_ > i)) {
                     i = i_33_;
                     item = item_32_;
