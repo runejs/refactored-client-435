@@ -1,6 +1,6 @@
 package com.jagex.runescape.scene;
 
-import com.jagex.runescape.*;
+import com.jagex.runescape.LinkedList;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
@@ -506,9 +506,9 @@ public class Scene {
         Arrays.fill(interactiveObjects, null);
     }
 
-    public void addTile(int plane, int x, int y, int shape, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, int arg12, int arg13, int arg14, int arg15, int arg16, int arg17, int arg18, int arg19) {
+    public void addTile(int plane, int x, int y, int shape, int clippingPathRotation, int textureId, int vertexHeightSW, int vertexHeightSE, int vertexHeightNE, int vertexHeightNW, int cA, int cB, int cD, int cC, int colourA, int colourB, int colourD, int colourC, int underlayRGB, int overlayRGB) {
         if(shape == 0) {
-            GenericTile genericTile = new GenericTile(arg10, arg11, arg13, arg12, -1, arg18, false);
+            GenericTile genericTile = new GenericTile(cA, cB, cC, cD, -1, underlayRGB, false);
             for(int _z = plane; _z >= 0; _z--) {
                 if(tileArray[_z][x][y] == null) {
                     tileArray[_z][x][y] = new SceneTile(_z, x, y);
@@ -516,7 +516,7 @@ public class Scene {
             }
             tileArray[plane][x][y].plainTile = genericTile;
         } else if(shape == 1) {
-            GenericTile genericTile = new GenericTile(arg14, arg15, arg17, arg16, arg5, arg19, arg6 == arg7 && arg6 == arg8 && arg6 == arg9);
+            GenericTile genericTile = new GenericTile(colourA, colourB, colourC, colourD, textureId, overlayRGB, vertexHeightSW == vertexHeightSE && vertexHeightSW == vertexHeightNE && vertexHeightSW == vertexHeightNW);
             for(int _z = plane; _z >= 0; _z--) {
                 if(tileArray[_z][x][y] == null) {
                     tileArray[_z][x][y] = new SceneTile(_z, x, y);
@@ -524,7 +524,7 @@ public class Scene {
             }
             tileArray[plane][x][y].plainTile = genericTile;
         } else {
-            ComplexTile complexTile = new ComplexTile(x, arg6, arg7, arg9, arg8, y, arg4, arg5, shape, arg10, arg14, arg11, arg15, arg12, arg16, arg13, arg17, arg19, arg18);
+            ComplexTile complexTile = new ComplexTile(x, vertexHeightSW, vertexHeightSE, vertexHeightNW, vertexHeightNE, y, clippingPathRotation, textureId, shape, cA, colourA, cB, colourB, cD, colourD, cC, colourC, overlayRGB, underlayRGB);
             for(int _z = plane; _z >= 0; _z--) {
                 if(tileArray[_z][x][y] == null) {
                     tileArray[_z][x][y] = new SceneTile(_z, x, y);
