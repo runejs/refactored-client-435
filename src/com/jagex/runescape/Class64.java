@@ -214,7 +214,7 @@ public class Class64 implements Runnable {
     public static void method1015(int arg0) {
 
         synchronized(GameObject.frame) {
-            SpotAnimDefinition.anInt2302 = Cache.mouseButtonPressed;
+            SpotAnimDefinition.mouseButtonPressed = Cache.mouseButtonPressed;
             Class13.mouseX = Class12.eventMouseX;
             if(arg0 != -656)
                 aClass1_1524 = null;

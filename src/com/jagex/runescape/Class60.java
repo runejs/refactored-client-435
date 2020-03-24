@@ -56,7 +56,7 @@ public class Class60 {
         }
     }
 
-    public static void determineMenuSize(int arg0) {
+    public static void determineMenuSize() {
         int width = Class40_Sub5_Sub17_Sub6.fontBold.getStringWidth(Widget.str_Choose_Option);
         for(int i = 0; i < ActorDefinition.menuActionRow; i++) {
             int rowWidth = Class40_Sub5_Sub17_Sub6.fontBold.getTextDisplayedWidth(Landscape.menuActionTexts[i]);
@@ -106,20 +106,20 @@ public class Class60 {
             VertexNormal.menuWidth = width;
             Class40_Sub5_Sub17_Sub1.menuScreenArea = 2;
             CollisionMap.menuHeight = ActorDefinition.menuActionRow * 15 + 22;
-            int i_8_ = RSString.clickY + -357;
-            if(i_8_ >= 0) {
-                if(height + i_8_ > 96)
-                    i_8_ = -height + 96;
+            int y = RSString.clickY + -357;
+            if(y >= 0) {
+                if(height + y > 96)
+                    y = -height + 96;
             } else
-                i_8_ = 0;
-            int i_9_ = -(width / 2) + -17 + Class57.clickX;
+                y = 0;
+            int x = -(width / 2) + -17 + Class57.clickX;
             Class4.menuOpen = true;
-            Main.menuOffsetY = i_8_;
-            if(i_9_ < 0)
-                i_9_ = 0;
-            else if(i_9_ + width > 479)
-                i_9_ = -width + 479;
-            InteractiveObject.menuOffsetX = i_9_;
+            Main.menuOffsetY = y;
+            if(x < 0)
+                x = 0;
+            else if(x + width > 479)
+                x = -width + 479;
+            InteractiveObject.menuOffsetX = x;
         }
     }
 

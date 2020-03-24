@@ -1,7 +1,10 @@
 package com.jagex.runescape.media.renderable.actor;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget;
@@ -42,6 +45,9 @@ public class Npc extends Actor {
             aClass1_3295 = null;
         if(class40_sub5_sub11 != null)
             return class40_sub5_sub11;
+        if(Class64.aCacheIndex_1521 == null) {
+            System.out.println("ISA NULL");
+        }
         byte[] is = Class64.aCacheIndex_1521.getFile(arg1, 16);
         class40_sub5_sub11 = new Class40_Sub5_Sub11();
         if(is != null)
@@ -65,7 +71,7 @@ public class Npc extends Actor {
             }
             if(Class51.anInt1197 == 30 || Class51.anInt1197 == 35) {
                 if(ISAAC.aBoolean519 && Class51.anInt1197 == 30) {
-                    SpotAnimDefinition.anInt2302 = 0;
+                    SpotAnimDefinition.mouseButtonPressed = 0;
                     MouseHandler.clickType = 0;
                     while(Class34.method416((byte) -104)) {
                         /* empty */
@@ -215,7 +221,7 @@ public class Npc extends Actor {
                             Buffer.lastItemDragTime++;
                             if(((Class13.mouseX > Renderable.anInt2869 + 5)) || ((Renderable.anInt2869 + -5 > Class13.mouseX)) || ((ItemDefinition.anInt2798 + 5 < Landscape.mouseY)) || (ItemDefinition.anInt2798 - 5 > Landscape.mouseY))
                                 Class40_Sub5_Sub15.lastItemDragged = true;
-                            if(SpotAnimDefinition.anInt2302 == 0) {
+                            if(SpotAnimDefinition.mouseButtonPressed == 0) {
                                 if(SceneTile.activeInterfaceType == 3)
                                     GenericTile.redrawChatbox = true;
                                 if(SceneTile.activeInterfaceType == 2)
@@ -223,7 +229,7 @@ public class Npc extends Actor {
                                 SceneTile.activeInterfaceType = 0;
                                 if(!Class40_Sub5_Sub15.lastItemDragged || Buffer.lastItemDragTime < 5) {
                                     if((Class68.oneMouseButton == 1 || (Class33.menuHasAddFriend((byte) 63, (ActorDefinition.menuActionRow - 1)))) && ActorDefinition.menuActionRow > 2)
-                                        Class60.determineMenuSize(11451);
+                                        Class60.determineMenuSize();
                                     else if(ActorDefinition.menuActionRow > 0)
                                         Class27.processMenuActions(123, (-1 + (ActorDefinition.menuActionRow)));
                                 } else {
@@ -293,7 +299,7 @@ public class Npc extends Actor {
                             Class38_Sub1.method447();
                             Class40_Sub5_Sub1.method544();
                         }
-                        if(SpotAnimDefinition.anInt2302 == 1 || MouseHandler.clickType == 1)
+                        if(SpotAnimDefinition.mouseButtonPressed == 1 || MouseHandler.clickType == 1)
                             anInt3294++;
                         int i = 34;
                         if(HuffmanEncoding.openScreenWidgetId != -1)

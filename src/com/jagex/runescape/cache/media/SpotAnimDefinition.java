@@ -32,7 +32,7 @@ public class SpotAnimDefinition extends SubNode {
     public static RSString aClass1_2297 = RSString.CreateString("Loaded input handler");
     public static Class67 aClass67_2298;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2301;
-    public static int anInt2302 = 0;
+    public static int mouseButtonPressed = 0;
     public static RSString aClass1_2306 = RSString.CreateString(" )2> @yel@");
     public static int anInt2307;
     public static RSString aClass1_2311 = RSString.CreateString("leuchten3:");

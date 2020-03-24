@@ -160,7 +160,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             if(meta == 1 && ActorDefinition.menuActionRow > 0)
                 Class27.processMenuActions(59, ActorDefinition.menuActionRow + -1);
             if(meta == 2 && ActorDefinition.menuActionRow > 0)
-                Class60.determineMenuSize(11451);
+                Class60.determineMenuSize();
         }
     }
 

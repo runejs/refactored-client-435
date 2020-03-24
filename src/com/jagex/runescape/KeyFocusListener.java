@@ -211,10 +211,10 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             } else
                 obfuscatedKeyCode = -1;
             int keyChar;
-            for(int i = 0; i < HuffmanEncoding.anIntArray1564.length; i++) {
-                System.out.println(HuffmanEncoding.anIntArray1564[i] + ": " + i);
-                System.out.println((int)'\n');
-            }
+//            for(int i = 0; i < HuffmanEncoding.anIntArray1564.length; i++) {
+//                System.out.println(HuffmanEncoding.anIntArray1564[i] + ": " + i);
+//                System.out.println((int)'\n');
+//            }
 
             if(eventKeyCode == KeyEvent.VK_BACK_SPACE || eventKeyCode == KeyEvent.VK_TAB || eventKeyCode == 0xA /* Unused key */ || eventKeyCode == KeyEvent.VK_ESCAPE || eventKeyCode == KeyEvent.VK_DELETE)
                 keyChar = -1;

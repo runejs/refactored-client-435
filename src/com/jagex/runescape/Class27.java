@@ -932,7 +932,7 @@ public class Class27 {
                         i_26_ = (widget_24_.originalWidth - widget.originalWidth);
                     if((Wall.aWidget_353.anObjectArray2669 != null) && (arg2 & 0x200) != 0)
                         Widget.method891(widget.anObjectArray2669, 0, i, widget, i_26_, false);
-                    if(SpotAnimDefinition.anInt2302 == 0 && (arg2 & 0x400) != 0) {
+                    if(SpotAnimDefinition.mouseButtonPressed == 0 && (arg2 & 0x400) != 0) {
                         if(Wall.aWidget_353.anObjectArray2695 != null)
                             Widget.method891((widget.anObjectArray2695), 0, i, widget, i_26_, false);
                         Wall.aWidget_353 = null;

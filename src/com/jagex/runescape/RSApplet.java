@@ -105,7 +105,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     boolean bool;
                     bool = (Class13.mouseX >= i_6_) && (i_4_ <= Landscape.mouseY) && i_8_ > Class13.mouseX && (i_7_ > Landscape.mouseY);
                     boolean bool_9_ = false;
-                    if(SpotAnimDefinition.anInt2302 == 1 && bool)
+                    if(SpotAnimDefinition.mouseButtonPressed == 1 && bool)
                         bool_9_ = true;
                     boolean bool_10_ = false;
                     if(widget.anInt2738 != -1 && bool_9_ && Wall.aWidget_353 == null) {
