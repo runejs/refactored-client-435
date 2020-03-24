@@ -17,12 +17,12 @@ public class Model extends Renderable {
     public static boolean[] aBooleanArray3201;
     public static int[] anIntArray3202;
     public static int[] anIntArray3203;
-    public static int[] anIntArray3204;
+    public static int[] vertexScreenY;
     public static int[] anIntArray3205;
     public static int anInt3206;
     public static boolean aBoolean3207;
     public static int[][] anIntArrayArray3208;
-    public static int[] anIntArray3209;
+    public static int[] vertexScreenX;
     public static int[][] anIntArrayArray3210;
     public static int[] hoveredHash;
     public static int[] anIntArray3212;
@@ -51,7 +51,7 @@ public class Model extends Renderable {
         anIntArray3203 = new int[4096];
         hoveredHash = new int[1000];
         anIntArrayArray3208 = new int[12][2000];
-        anIntArray3204 = new int[4096];
+        vertexScreenY = new int[4096];
         anIntArrayArray3210 = new int[1600][512];
         aBooleanArray3201 = new boolean[4096];
         anIntArray3212 = new int[4096];
@@ -59,7 +59,7 @@ public class Model extends Renderable {
         aBoolean3207 = false;
         anIntArray3216 = new int[2000];
         anIntArray3202 = Rasterizer3D.hsl2rgb;
-        anIntArray3209 = new int[4096];
+        vertexScreenX = new int[4096];
         anIntArray3222 = new int[10];
         anIntArray3219 = new int[2000];
         anIntArray3223 = new int[4096];
@@ -95,7 +95,7 @@ public class Model extends Renderable {
 
     public int[][] vectorSkin;
     public int[] verticesZ;
-    public int anInt3163;
+    public int diagonal3D;
     public boolean singleTile;
     public int[] trianglePointsZ;
     public int[] triangleSkinValues;
@@ -106,7 +106,7 @@ public class Model extends Renderable {
     public VertexNormal[] vertexNormalOffset;
     public int[] vertexSkins;
     public VertexNormal[] verticesNormal;
-    public int anInt3175;
+    public int maxY;
     public int[][] triangleSkin;
     public int anInt3177;
     public int[] triangleDrawType;
@@ -672,8 +672,8 @@ public class Model extends Renderable {
         anIntArray3214 = null;
         aBooleanArray3201 = null;
         aBooleanArray3224 = null;
-        anIntArray3209 = null;
-        anIntArray3204 = null;
+        vertexScreenX = null;
+        vertexScreenY = null;
         anIntArray3212 = null;
         anIntArray3225 = null;
         anIntArray3203 = null;
@@ -745,7 +745,7 @@ public class Model extends Renderable {
         if(anInt3169 != 1) {
             anInt3169 = 1;
             modelHeight = 0;
-            anInt3175 = 0;
+            maxY = 0;
             anInt3171 = 0;
             for(int i = 0; i < vertexCount; i++) {
                 int i_0_ = verticesX[i];
@@ -753,15 +753,15 @@ public class Model extends Renderable {
                 int i_2_ = verticesZ[i];
                 if(-i_1_ > modelHeight)
                     modelHeight = -i_1_;
-                if(i_1_ > anInt3175)
-                    anInt3175 = i_1_;
+                if(i_1_ > maxY)
+                    maxY = i_1_;
                 int i_3_ = i_0_ * i_0_ + i_2_ * i_2_;
                 if(i_3_ > anInt3171)
                     anInt3171 = i_3_;
             }
             anInt3171 = (int) (Math.sqrt((double) anInt3171) + 0.99);
             anInt3189 = (int) (Math.sqrt((double) (anInt3171 * anInt3171 + modelHeight * modelHeight)) + 0.99);
-            anInt3163 = (anInt3189 + (int) (Math.sqrt((double) (anInt3171 * anInt3171 + anInt3175 * anInt3175)) + 0.99));
+            diagonal3D = (anInt3189 + (int) (Math.sqrt((double) (anInt3171 * anInt3171 + maxY * maxY)) + 0.99));
         }
     }
 
@@ -847,10 +847,10 @@ public class Model extends Renderable {
                                 i_28_ = i_31_;
                                 anIntArray3212[i_26_] = i_29_ - i_4_;
                                 if(i_29_ >= 50) {
-                                    anIntArray3209[i_26_] = i_22_ + (i_27_ << 9) / i_29_;
-                                    anIntArray3204[i_26_] = i_23_ + (i_28_ << 9) / i_29_;
+                                    vertexScreenX[i_26_] = i_22_ + (i_27_ << 9) / i_29_;
+                                    vertexScreenY[i_26_] = i_23_ + (i_28_ << 9) / i_29_;
                                 } else {
-                                    anIntArray3209[i_26_] = -5000;
+                                    vertexScreenX[i_26_] = -5000;
                                     bool = true;
                                 }
                                 if(bool_17_) {
@@ -911,8 +911,8 @@ public class Model extends Renderable {
             i_45_ = i_44_ * i_39_ + i_45_ * i_40_ >> 16;
             i_44_ = i_49_;
             anIntArray3212[i_42_] = i_45_ - i_41_;
-            anIntArray3209[i_42_] = i + (i_43_ << 9) / arg7;
-            anIntArray3204[i_42_] = i_32_ + (i_44_ << 9) / arg7;
+            vertexScreenX[i_42_] = i + (i_43_ << 9) / arg7;
+            vertexScreenY[i_42_] = i_32_ + (i_44_ << 9) / arg7;
             if(texturedTriangleCount > 0) {
                 anIntArray3225[i_42_] = i_43_;
                 anIntArray3203[i_42_] = i_44_;
@@ -984,7 +984,7 @@ public class Model extends Renderable {
             }
         }
         if(arg5)
-            method808(arg0, i_50_, arg2, arg3, arg4);
+            handleShading(arg0, i_50_, arg2, arg3, arg4);
         else {
             vertexNormalOffset = new VertexNormal[vertexCount];
             for(int i_67_ = 0; i_67_ < vertexCount; i_67_++) {
@@ -1039,7 +1039,7 @@ public class Model extends Renderable {
         return arg0 <= arg5 || arg0 <= arg6 || arg0 <= arg7;
     }
 
-    public void method808(int arg0, int arg1, int arg2, int arg3, int arg4) {
+    public void handleShading(int arg0, int arg1, int arg2, int arg3, int arg4) {
         for(int i = 0; i < triangleCount; i++) {
             int i_72_ = trianglePointsX[i];
             int i_73_ = trianglePointsY[i];
@@ -1332,8 +1332,8 @@ public class Model extends Renderable {
             i_142_ = i_141_ * i_136_ + i_142_ * i_137_ >> 16;
             i_141_ = i_146_;
             anIntArray3212[i_139_] = i_142_ - i_138_;
-            anIntArray3209[i_139_] = i + (i_140_ << 9) / i_142_;
-            anIntArray3204[i_139_] = i_129_ + (i_141_ << 9) / i_142_;
+            vertexScreenX[i_139_] = i + (i_140_ << 9) / i_142_;
+            vertexScreenY[i_139_] = i_129_ + (i_141_ << 9) / i_142_;
             if(texturedTriangleCount > 0) {
                 anIntArray3225[i_139_] = i_140_;
                 anIntArray3203[i_139_] = i_141_;
@@ -1372,8 +1372,8 @@ public class Model extends Renderable {
         else
             Rasterizer3D.alpha = triangleAlphaValues[arg0];
         if(i_153_ >= 50) {
-            anIntArray3227[i_149_] = anIntArray3209[i_150_];
-            anIntArray3205[i_149_] = anIntArray3204[i_150_];
+            anIntArray3227[i_149_] = vertexScreenX[i_150_];
+            anIntArray3205[i_149_] = vertexScreenY[i_150_];
             anIntArray3222[i_149_++] = triangleHSLA[arg0];
         } else {
             int i_156_ = anIntArray3225[i_150_];
@@ -1393,8 +1393,8 @@ public class Model extends Renderable {
             }
         }
         if(i_154_ >= 50) {
-            anIntArray3227[i_149_] = anIntArray3209[i_151_];
-            anIntArray3205[i_149_] = anIntArray3204[i_151_];
+            anIntArray3227[i_149_] = vertexScreenX[i_151_];
+            anIntArray3205[i_149_] = vertexScreenY[i_151_];
             anIntArray3222[i_149_++] = triangleHSLB[arg0];
         } else {
             int i_161_ = anIntArray3225[i_151_];
@@ -1414,8 +1414,8 @@ public class Model extends Renderable {
             }
         }
         if(i_155_ >= 50) {
-            anIntArray3227[i_149_] = anIntArray3209[i_152_];
-            anIntArray3205[i_149_] = anIntArray3204[i_152_];
+            anIntArray3227[i_149_] = vertexScreenX[i_152_];
+            anIntArray3205[i_149_] = vertexScreenY[i_152_];
             anIntArray3222[i_149_++] = triangleHSLC[arg0];
         } else {
             int i_166_ = anIntArray3225[i_152_];
@@ -1452,7 +1452,7 @@ public class Model extends Renderable {
             if(i_177_ == 0)
                 Rasterizer3D.drawShadedTriangle(i_174_, i_175_, i_176_, i_171_, i_172_, i_173_, anIntArray3222[0], anIntArray3222[1], anIntArray3222[2]);
             else if(i_177_ == 1)
-                Rasterizer3D.method712(i_174_, i_175_, i_176_, i_171_, i_172_, i_173_, (anIntArray3202[triangleHSLA[arg0]]));
+                Rasterizer3D.drawFlatTriangle(i_174_, i_175_, i_176_, i_171_, i_172_, i_173_, (anIntArray3202[triangleHSLA[arg0]]));
             else if(i_177_ == 2) {
                 int i_178_ = triangleDrawType[arg0] >> 2;
                 int i_179_ = texturedTrianglePointsX[i_178_];
@@ -1480,8 +1480,8 @@ public class Model extends Renderable {
                 Rasterizer3D.drawShadedTriangle(i_174_, i_176_, anIntArray3205[3], i_171_, i_173_, anIntArray3227[3], anIntArray3222[0], anIntArray3222[2], anIntArray3222[3]);
             } else if(i_186_ == 1) {
                 int i_187_ = anIntArray3202[triangleHSLA[arg0]];
-                Rasterizer3D.method712(i_174_, i_175_, i_176_, i_171_, i_172_, i_173_, i_187_);
-                Rasterizer3D.method712(i_174_, i_176_, anIntArray3205[3], i_171_, i_173_, anIntArray3227[3], i_187_);
+                Rasterizer3D.drawFlatTriangle(i_174_, i_175_, i_176_, i_171_, i_172_, i_173_, i_187_);
+                Rasterizer3D.drawFlatTriangle(i_174_, i_176_, anIntArray3205[3], i_171_, i_173_, anIntArray3227[3], i_187_);
             } else if(i_186_ == 2) {
                 int i_188_ = triangleDrawType[arg0] >> 2;
                 int i_189_ = texturedTrianglePointsX[i_188_];
@@ -1500,19 +1500,19 @@ public class Model extends Renderable {
         }
     }
 
-    public void method815(boolean arg0, boolean arg1, int arg2) {
-        if(anInt3163 < 1600) {
-            for(int i = 0; i < anInt3163; i++)
+    public void method815(boolean flag, boolean arg1, int arg2) {
+        if(diagonal3D < 1600) {
+            for(int i = 0; i < diagonal3D; i++)
                 anIntArray3200[i] = 0;
             for(int i = 0; i < triangleCount; i++) {
                 if(triangleDrawType == null || triangleDrawType[i] != -1) {
                     int i_196_ = trianglePointsX[i];
                     int i_197_ = trianglePointsY[i];
                     int i_198_ = trianglePointsZ[i];
-                    int i_199_ = anIntArray3209[i_196_];
-                    int i_200_ = anIntArray3209[i_197_];
-                    int i_201_ = anIntArray3209[i_198_];
-                    if(arg0 && (i_199_ == -5000 || i_200_ == -5000 || i_201_ == -5000)) {
+                    int i_199_ = vertexScreenX[i_196_];
+                    int i_200_ = vertexScreenX[i_197_];
+                    int i_201_ = vertexScreenX[i_198_];
+                    if(flag && (i_199_ == -5000 || i_200_ == -5000 || i_201_ == -5000)) {
                         int i_202_ = anIntArray3225[i_196_];
                         int i_203_ = anIntArray3225[i_197_];
                         int i_204_ = anIntArray3225[i_198_];
@@ -1537,11 +1537,11 @@ public class Model extends Renderable {
                             anIntArrayArray3210[i_214_][anIntArray3200[i_214_]++] = i;
                         }
                     } else {
-                        if(arg1 && method807(anInt3229, anInt3198, anIntArray3204[i_196_], anIntArray3204[i_197_], anIntArray3204[i_198_], i_199_, i_200_, i_201_)) {
+                        if(arg1 && method807(anInt3229, anInt3198, vertexScreenY[i_196_], vertexScreenY[i_197_], vertexScreenY[i_198_], i_199_, i_200_, i_201_)) {
                             hoveredHash[resourceCount++] = arg2;
                             arg1 = false;
                         }
-                        if(((i_199_ - i_200_) * (anIntArray3204[i_198_] - anIntArray3204[i_197_]) - (anIntArray3204[i_196_] - anIntArray3204[i_197_]) * (i_201_ - i_200_)) > 0) {
+                        if(((i_199_ - i_200_) * (vertexScreenY[i_198_] - vertexScreenY[i_197_]) - (vertexScreenY[i_196_] - vertexScreenY[i_197_]) * (i_201_ - i_200_)) > 0) {
                             aBooleanArray3224[i] = false;
                             aBooleanArray3201[i] = i_199_ < 0 || i_200_ < 0 || i_201_ < 0 || i_199_ > Rasterizer3D.viewportRx || i_200_ > Rasterizer3D.viewportRx || i_201_ > Rasterizer3D.viewportRx;
                             int i_215_ = ((anIntArray3212[i_196_] + anIntArray3212[i_197_] + anIntArray3212[i_198_]) / 3 + anInt3189);
@@ -1551,7 +1551,7 @@ public class Model extends Renderable {
                 }
             }
             if(trianglePriorities == null) {
-                for(int i = anInt3163 - 1; i >= 0; i--) {
+                for(int i = diagonal3D - 1; i >= 0; i--) {
                     int i_216_ = anIntArray3200[i];
                     if(i_216_ > 0) {
                         int[] is = anIntArrayArray3210[i];
@@ -1564,7 +1564,7 @@ public class Model extends Renderable {
                     anIntArray3226[i] = 0;
                     anIntArray3221[i] = 0;
                 }
-                for(int i = anInt3163 - 1; i >= 0; i--) {
+                for(int i = diagonal3D - 1; i >= 0; i--) {
                     int i_218_ = anIntArray3200[i];
                     if(i_218_ > 0) {
                         int[] is = anIntArrayArray3210[i];
@@ -1759,9 +1759,9 @@ public class Model extends Renderable {
         if(anInt3169 != 3) {
             anInt3169 = 3;
             modelHeight = 0;
-            anInt3175 = 0;
+            maxY = 0;
             anInt3171 = 999999;
-            anInt3163 = -999999;
+            diagonal3D = -999999;
             anInt3189 = -99999;
             anInt3177 = 99999;
             for(int i = 0; i < vertexCount; i++) {
@@ -1770,16 +1770,16 @@ public class Model extends Renderable {
                 int i_236_ = verticesZ[i];
                 if(i_234_ < anInt3171)
                     anInt3171 = i_234_;
-                if(i_234_ > anInt3163)
-                    anInt3163 = i_234_;
+                if(i_234_ > diagonal3D)
+                    diagonal3D = i_234_;
                 if(i_236_ < anInt3177)
                     anInt3177 = i_236_;
                 if(i_236_ > anInt3189)
                     anInt3189 = i_236_;
                 if(-i_235_ > modelHeight)
                     modelHeight = -i_235_;
-                if(i_235_ > anInt3175)
-                    anInt3175 = i_235_;
+                if(i_235_ > maxY)
+                    maxY = i_235_;
             }
         }
     }
@@ -1802,21 +1802,21 @@ public class Model extends Renderable {
             else
                 i_239_ = triangleDrawType[arg0] & 0x3;
             if(i_239_ == 0)
-                Rasterizer3D.drawShadedTriangle(anIntArray3204[i], anIntArray3204[i_237_], anIntArray3204[i_238_], anIntArray3209[i], anIntArray3209[i_237_], anIntArray3209[i_238_], triangleHSLA[arg0], triangleHSLB[arg0], triangleHSLC[arg0]);
+                Rasterizer3D.drawShadedTriangle(vertexScreenY[i], vertexScreenY[i_237_], vertexScreenY[i_238_], vertexScreenX[i], vertexScreenX[i_237_], vertexScreenX[i_238_], triangleHSLA[arg0], triangleHSLB[arg0], triangleHSLC[arg0]);
             else if(i_239_ == 1)
-                Rasterizer3D.method712(anIntArray3204[i], anIntArray3204[i_237_], anIntArray3204[i_238_], anIntArray3209[i], anIntArray3209[i_237_], anIntArray3209[i_238_], (anIntArray3202[triangleHSLA[arg0]]));
+                Rasterizer3D.drawFlatTriangle(vertexScreenY[i], vertexScreenY[i_237_], vertexScreenY[i_238_], vertexScreenX[i], vertexScreenX[i_237_], vertexScreenX[i_238_], (anIntArray3202[triangleHSLA[arg0]]));
             else if(i_239_ == 2) {
                 int i_240_ = triangleDrawType[arg0] >> 2;
                 int i_241_ = texturedTrianglePointsX[i_240_];
                 int i_242_ = texturedTrianglePointsY[i_240_];
                 int i_243_ = texturedTrianglePointsZ[i_240_];
-                Rasterizer3D.drawTexturedTriangle(anIntArray3204[i], anIntArray3204[i_237_], anIntArray3204[i_238_], anIntArray3209[i], anIntArray3209[i_237_], anIntArray3209[i_238_], triangleHSLA[arg0], triangleHSLB[arg0], triangleHSLC[arg0], anIntArray3225[i_241_], anIntArray3225[i_242_], anIntArray3225[i_243_], anIntArray3203[i_241_], anIntArray3203[i_242_], anIntArray3203[i_243_], anIntArray3223[i_241_], anIntArray3223[i_242_], anIntArray3223[i_243_], triangleColorValues[arg0]);
+                Rasterizer3D.drawTexturedTriangle(vertexScreenY[i], vertexScreenY[i_237_], vertexScreenY[i_238_], vertexScreenX[i], vertexScreenX[i_237_], vertexScreenX[i_238_], triangleHSLA[arg0], triangleHSLB[arg0], triangleHSLC[arg0], anIntArray3225[i_241_], anIntArray3225[i_242_], anIntArray3225[i_243_], anIntArray3203[i_241_], anIntArray3203[i_242_], anIntArray3203[i_243_], anIntArray3223[i_241_], anIntArray3223[i_242_], anIntArray3223[i_243_], triangleColorValues[arg0]);
             } else if(i_239_ == 3) {
                 int i_244_ = triangleDrawType[arg0] >> 2;
                 int i_245_ = texturedTrianglePointsX[i_244_];
                 int i_246_ = texturedTrianglePointsY[i_244_];
                 int i_247_ = texturedTrianglePointsZ[i_244_];
-                Rasterizer3D.drawTexturedTriangle(anIntArray3204[i], anIntArray3204[i_237_], anIntArray3204[i_238_], anIntArray3209[i], anIntArray3209[i_237_], anIntArray3209[i_238_], triangleHSLA[arg0], triangleHSLA[arg0], triangleHSLA[arg0], anIntArray3225[i_245_], anIntArray3225[i_246_], anIntArray3225[i_247_], anIntArray3203[i_245_], anIntArray3203[i_246_], anIntArray3203[i_247_], anIntArray3223[i_245_], anIntArray3223[i_246_], anIntArray3223[i_247_], triangleColorValues[arg0]);
+                Rasterizer3D.drawTexturedTriangle(vertexScreenY[i], vertexScreenY[i_237_], vertexScreenY[i_238_], vertexScreenX[i], vertexScreenX[i_237_], vertexScreenX[i_238_], triangleHSLA[arg0], triangleHSLA[arg0], triangleHSLA[arg0], anIntArray3225[i_245_], anIntArray3225[i_246_], anIntArray3225[i_247_], anIntArray3203[i_245_], anIntArray3203[i_246_], anIntArray3203[i_247_], anIntArray3223[i_245_], anIntArray3223[i_246_], anIntArray3223[i_247_], triangleColorValues[arg0]);
             }
         }
     }
@@ -1847,10 +1847,10 @@ public class Model extends Renderable {
         }
     }
 
-    public void method826(int arg0, int arg1, int arg2) {
+    public void handleShading(int arg0, int arg1, int arg2) {
         int i = anInt3193 >> 16;
         int i_250_ = anInt3193 << 16 >> 16;
-        method808(i, i_250_, arg0, arg1, arg2);
+        handleShading(i, i_250_, arg0, arg1, arg2);
     }
 
     public void method827() {
@@ -1867,7 +1867,7 @@ public class Model extends Renderable {
             }
             anInt3171 = (int) (Math.sqrt((double) anInt3171) + 0.99);
             anInt3189 = anInt3171;
-            anInt3163 = anInt3171 + anInt3171;
+            diagonal3D = anInt3171 + anInt3171;
         }
     }
 
