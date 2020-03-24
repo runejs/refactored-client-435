@@ -316,7 +316,7 @@ public class Class48 {
             Class40_Sub6.aClass64_2098 = null;
         }
         RSCanvas.method46(0);
-        Npc.currentScene.method98();
+        Npc.currentScene.initToNull();
         int i = 0;
         if(arg0 != -7225)
             aClass40_Sub1_1132 = null;

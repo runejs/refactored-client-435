@@ -148,7 +148,7 @@ public class Landscape {
                 if(Class68.anInt1634 != 0)
                     Class51.method940(0, Class67.aClass1_1585, true, ActorDefinition.aClass1_2423);
                 RSCanvas.method46(0);
-                Npc.currentScene.method98();
+                Npc.currentScene.initToNull();
                 System.gc();
                 for(int i = 0; i < 4; i++)
                     aCollisionMapArray1167[i].method146(16777216);

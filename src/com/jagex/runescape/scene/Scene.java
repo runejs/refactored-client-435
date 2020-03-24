@@ -7,6 +7,8 @@ import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.scene.tile.*;
 
+import java.util.Arrays;
+
 public class Scene {
     public static int cameraPosX;
     public static int clickY = 0;
@@ -29,7 +31,7 @@ public class Scene {
     public static int cameraPosY;
     public static int anInt99;
     public static int cameraPositionTileY;
-    public static int[] anIntArray101 = new int[anInt90];
+    public static int[] cullingClusterPointer = new int[anInt90];
     public static int[] faceOffsetY3 = new int[]{45, 45, -45, -45};
     public static int anInt104;
     public static InteractiveObject[] interactiveObjects = new InteractiveObject[100];
@@ -72,20 +74,23 @@ public class Scene {
     public int[] anIntArray127;
     public int[][] anIntArrayArray129;
 
-    public Scene(int arg0, int arg1, int arg2, int[][][] arg3) {
+    public Scene(int[][][] heightMap) {
+        final int length = 104;// was parameter
+        final int width = 104;// was parameter
+        final int height = 4;// was parameter
         sceneSpawnRequestsCacheCurrentPos = 0;
         anIntArrayArray121 = (new int[][]{{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, {12, 8, 4, 0, 13, 9, 5, 1, 14, 10, 6, 2, 15, 11, 7, 3}, {15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0}, {3, 7, 11, 15, 2, 6, 10, 14, 1, 5, 9, 13, 0, 4, 8, 12}});
         anIntArray123 = new int[10000];
         anInt126 = 0;
         anIntArray127 = new int[10000];
         anIntArrayArray129 = new int[][]{new int[16], {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1}, {0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1}, {1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1}};
-        mapSizeZ = arg0;
-        mapSizeX = arg1;
-        mapSizeY = arg2;
-        tileArray = new SceneTile[arg0][arg1][arg2];
-        anIntArrayArrayArray83 = new int[arg0][arg1 + 1][arg2 + 1];
-        heightMap = arg3;
-        method98();
+        mapSizeZ = height;
+        mapSizeX = width;
+        mapSizeY = length;
+        tileArray = new SceneTile[height][width][length];
+        anIntArrayArrayArray83 = new int[height][width + 1][length + 1];
+        this.heightMap = heightMap;
+        initToNull();
     }
 
     public static void method95(int[] arg0, int arg1, int arg2, int arg3, int arg4) {
@@ -182,7 +187,7 @@ public class Scene {
         faceOffsetY2 = null;
         faceOffsetX3 = null;
         faceOffsetY3 = null;
-        anIntArray101 = null;
+        cullingClusterPointer = null;
         cullingClusters = null;
         processedCullingClusters = null;
         tileList = null;
@@ -210,7 +215,7 @@ public class Scene {
         sceneCluster.worldEndY = highestY;
         sceneCluster.worldEndZ = highestZ;
         sceneCluster.worldStartZ = lowestZ;
-        cullingClusters[z][anIntArray101[z]++] = sceneCluster;
+        cullingClusters[z][cullingClusterPointer[z]++] = sceneCluster;
     }
 
     public int method91(int arg0, int arg1, int arg2) {
@@ -480,27 +485,25 @@ public class Scene {
         clicked = false;
     }
 
-    public void method98() {
-        for(int i = 0; i < mapSizeZ; i++) {
-            for(int i_37_ = 0; i_37_ < mapSizeX; i_37_++) {
-                for(int i_38_ = 0; i_38_ < mapSizeY; i_38_++) {
-                    tileArray[i][i_37_][i_38_] = null;
+    public void initToNull() {
+        for(int z = 0; z < mapSizeZ; z++) {
+            for(int x = 0; x < mapSizeX; x++) {
+                for(int y = 0; y < mapSizeY; y++) {
+                    tileArray[z][x][y] = null;
                 }
             }
         }
         for(int i = 0; i < anInt90; i++) {
-            for(int i_39_ = 0; i_39_ < anIntArray101[i]; i_39_++) {
+            for(int i_39_ = 0; i_39_ < cullingClusterPointer[i]; i_39_++) {
                 cullingClusters[i][i_39_] = null;
             }
-            anIntArray101[i] = 0;
+            cullingClusterPointer[i] = 0;
         }
         for(int i = 0; i < sceneSpawnRequestsCacheCurrentPos; i++) {
             sceneSpawnRequestsCache[i] = null;
         }
         sceneSpawnRequestsCacheCurrentPos = 0;
-        for(int i = 0; i < interactiveObjects.length; i++) {
-            interactiveObjects[i] = null;
-        }
+        Arrays.fill(interactiveObjects, null);
     }
 
     public void addTile(int plane, int x, int y, int shape, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, int arg12, int arg13, int arg14, int arg15, int arg16, int arg17, int arg18, int arg19) {
@@ -1474,7 +1477,7 @@ public class Scene {
     }
 
     public void method123() {
-        int i = anIntArray101[anInt85];
+        int i = cullingClusterPointer[anInt85];
         SceneCluster[] sceneClusters = cullingClusters[anInt85];
         anInt96 = 0;
         for(int i_172_ = 0; i_172_ < i; i_172_++) {
