@@ -312,8 +312,7 @@ public class Class30 {
         }
     }
 
-    public void method384(int arg0, boolean arg1, int arg2) {
-        int i = -67 % ((-30 - arg0) / 56);
+    public void method384(boolean arg1, int arg2) {
         int i_21_ = appearanceColors[arg2];
         if(!arg1) {
             if(--i_21_ < 0)

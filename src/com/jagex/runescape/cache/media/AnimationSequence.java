@@ -127,9 +127,9 @@ public class AnimationSequence extends SubNode {
         }
         if(arg4 != 63)
             return null;
-        Model class40_sub5_sub17_sub5 = arg0.method817(!class40_sub5_sub15.method737(arg2) & !class40_sub5_sub15_0_.method737(arg3));
-        class40_sub5_sub17_sub5.method809(class40_sub5_sub15, arg2, class40_sub5_sub15_0_, arg3, anIntArray2473);
-        return class40_sub5_sub17_sub5;
+        Model model = arg0.method817(!class40_sub5_sub15.method737(arg2) & !class40_sub5_sub15_0_.method737(arg3));
+        model.method809(class40_sub5_sub15, arg2, class40_sub5_sub15_0_, arg3, anIntArray2473);
+        return model;
     }
 
     public void method591(byte arg0) {

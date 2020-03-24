@@ -221,7 +221,7 @@ public class Class5 {
         if(i >= 314 && i <= 323) {
             int i_15_ = (i + -314) / 2;
             int i_16_ = i & 0x1;
-            LinkedList.aClass30_1082.method384(-94, i_16_ == 1, i_15_);
+            LinkedList.aClass30_1082.method384(i_16_ == 1, i_15_);
         }
         if(arg0 != 88)
             method163();
