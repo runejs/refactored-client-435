@@ -266,9 +266,9 @@ public class Landscape {
                 if(i_39_ < -1 + Player.worldLevel)
                     i_39_ = -1 + Player.worldLevel;
                 if(!VertexNormal.lowMemory)
-                    Npc.currentScene.method136(0);
+                    Npc.currentScene.setHeightLevel(0);
                 else
-                    Npc.currentScene.method136(Class64.setZ);
+                    Npc.currentScene.setHeightLevel(Class64.setZ);
                 for(int i_40_ = 0; i_40_ < 104; i_40_++) {
                     for(int i_41_ = 0; i_41_ < 104; i_41_++)
                         Class40_Sub13.method880((byte) -80, i_41_, i_40_);

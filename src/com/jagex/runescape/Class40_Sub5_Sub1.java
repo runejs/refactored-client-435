@@ -86,7 +86,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 int i_8_ = 0;
                 if(arg4 == 11)
                     i_8_ += 256;
-                arg5.method137(arg3, arg9, arg8, i_3_, i_7_, i_6_, renderable, i_8_, i_5_, i_4_);
+                arg5.addEntityB(arg9, arg8, arg3, i_3_, i_8_, i_6_, i_7_, i_5_, renderable, i_4_);
             }
             if(gameObjectDefinition.solid)
                 arg0.method154(arg9, gameObjectDefinition.walkable, arg6 ^ ~0x5644, gameObjectDefinition.sizeY, arg7, arg8, gameObjectDefinition.sizeX);
@@ -96,7 +96,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 renderable = new GameObject(arg1, arg4, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
             else
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, arg4, (byte) 124, i_0_);
-            arg5.method137(arg3, arg9, arg8, i_3_, 1, 1, renderable, 0, i_5_, i_4_);
+            arg5.addEntityB(arg9, arg8, arg3, i_3_, 0, 1, 1, i_5_, renderable, i_4_);
             if(gameObjectDefinition.solid)
                 arg0.method154(arg9, gameObjectDefinition.walkable, arg6 ^ ~0x5648, gameObjectDefinition.sizeY, arg7, arg8, gameObjectDefinition.sizeX);
         } else if(arg4 == 0) {
@@ -146,7 +146,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 renderable = new GameObject(arg1, arg4, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
             else
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, arg4, (byte) 124, i_0_);
-            arg5.method137(arg3, arg9, arg8, i_3_, 1, 1, renderable, 0, i_5_, i_4_);
+            arg5.addEntityB(arg9, arg8, arg3, i_3_, 0, 1, 1, i_5_, renderable, i_4_);
             if(gameObjectDefinition.solid)
                 arg0.method154(arg9, gameObjectDefinition.walkable, -117, gameObjectDefinition.sizeY, arg7, arg8, gameObjectDefinition.sizeX);
         } else {

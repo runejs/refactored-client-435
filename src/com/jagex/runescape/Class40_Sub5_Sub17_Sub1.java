@@ -476,7 +476,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     int i_42_ = 0;
                     if(type == 11)
                         i_42_ += 256;
-                    if(scene.method137(plane, localX, localY, vertexMix, i_41_, i_40_, renderable, i_42_, hash, objectConfig) && gameObjectDefinition.castsShadow) {
+                    if(scene.addEntityB(localX, localY, plane, vertexMix, i_42_, i_40_, i_41_, hash, renderable, objectConfig) && gameObjectDefinition.castsShadow) {
                         Model class40_sub5_sub17_sub5;
                         if(renderable instanceof Model)
                             class40_sub5_sub17_sub5 = ((Model) renderable);
@@ -503,7 +503,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     renderable = new GameObject(objectId, type, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (gameObjectDefinition.animationId), true);
                 else
                     renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, type, (byte) 124, vertexHeightRight);
-                scene.method137(plane, localX, localY, vertexMix, 1, 1, renderable, 0, hash, objectConfig);
+                scene.addEntityB(localX, localY, plane, vertexMix, 0, 1, 1, hash, renderable, objectConfig);
                 if(type >= 12 && type <= 17 && type != 13 && plane > 0)
                     CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][localY]), 2340));
                 if(gameObjectDefinition.solid && collisionMap != null)
@@ -624,7 +624,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, type, (byte) 124, vertexHeightRight);
                 else
                     renderable = new GameObject(objectId, type, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (gameObjectDefinition.animationId), true);
-                scene.method137(plane, localX, localY, vertexMix, 1, 1, renderable, 0, hash, objectConfig);
+                scene.addEntityB(localX, localY, plane, vertexMix, 0, 1, 1, hash, renderable, objectConfig);
                 if(gameObjectDefinition.solid && collisionMap != null)
                     collisionMap.method154(localX, gameObjectDefinition.walkable, -36, gameObjectDefinition.sizeY, face, localY, gameObjectDefinition.sizeX);
             } else {

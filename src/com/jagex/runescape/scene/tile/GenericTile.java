@@ -49,21 +49,21 @@ public class GenericTile {
     }
 
     public int texture;
-    public int anInt1225;
-    public int anInt1226;
+    public int colourB;
+    public int rgbColor;
     public boolean flat;
     public int colourA;
-    public int anInt1232;
+    public int colourC;
     public int colourD;
 
-    public GenericTile(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6) {
-        colourA = arg0;
-        flat = arg6;
-        anInt1225 = arg1;
-        colourD = arg2;
-        texture = arg4;
-        anInt1232 = arg3;
-        anInt1226 = arg5;
+    public GenericTile(int colourA, int colourB, int colourC, int colourD, int texture, int rgbColor, boolean flat) {
+        this.colourA = colourA;
+        this.colourB = colourB;
+        this.colourC = colourC;
+        this.colourD = colourD;
+        this.texture = texture;
+        this.rgbColor = rgbColor;
+        this.flat = flat;
     }
 
     public static void method943(int arg0, int arg1, TypeFace arg2, int arg3, int arg4) {
@@ -140,7 +140,7 @@ public class GenericTile {
                     if(arg6 == 1)
                         Npc.currentScene.method127(arg7, arg2, arg0);
                     if(arg6 == 2) {
-                        Npc.currentScene.method135(arg7, arg2, arg0);
+                        Npc.currentScene.removeInteractiveObject(arg7, arg2, arg0);
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                         if((arg2 + gameObjectDefinition.sizeX > 103) || arg0 + gameObjectDefinition.sizeX > 103 || arg2 + gameObjectDefinition.sizeY > 103 || gameObjectDefinition.sizeY + arg0 > 103)
                             return;

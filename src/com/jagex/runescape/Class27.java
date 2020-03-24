@@ -98,7 +98,7 @@ public class Class27 {
         Model.resourceCount = 0;
         Rasterizer.resetPixels();
         Npc.currentScene.method97(Class12.cameraX, SceneCluster.cameraZ, Class40_Sub5_Sub6.cameraY, Class26.anInt627, Class68_Sub1.anInt2210, i);
-        Npc.currentScene.method104();
+        Npc.currentScene.clearInteractiveObjectCache();
         Class33.method404((byte) -28);
         Class38_Sub1.method450((byte) -67);
         ((Class35) Rasterizer3D.anInterface3_2939).method425((byte) 6, Class5.anInt199);

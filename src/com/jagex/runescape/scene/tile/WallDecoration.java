@@ -87,7 +87,7 @@ public class WallDecoration {
                     }
                 }
                 if(i_5_ == 1) {
-                    WallDecoration wallDecoration = (Npc.currentScene.method100(Player.worldLevel, i_1_, i_0_));
+                    WallDecoration wallDecoration = (Npc.currentScene.getWallDecoration(Player.worldLevel, i_1_, i_0_));
                     if(wallDecoration != null)
                         wallDecoration.renderable = (new GameObject((0x1fffe268 & wallDecoration.hash) >> 14, 4, 0, i_7_, i_8_, i_9_, i_10_, i_6_, false));
                 }
