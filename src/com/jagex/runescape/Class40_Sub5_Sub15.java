@@ -18,7 +18,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public static int inputType;
     public static RSString aClass1_2781 = RSString.CreateString(" Sekunde(Xn(Y -Ubertragen)3");
     public static int anInt2782;
-    public static boolean aBoolean2784;
+    public static boolean lastItemDragged;
     public static RSString aClass1_2786;
     public static RSString aClass1_2787;
     public static int[] anIntArray2788;
@@ -32,7 +32,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
         anInt2778 = 0;
         anIntArray2788 = new int[]{16, 32, 64, 128};
         aClass1_2787 = RSString.CreateString("sideicons");
-        aBoolean2784 = false;
+        lastItemDragged = false;
         aClass1_2790 = RSString.CreateString("Friends");
         aClass1_2786 = aClass1_2790;
         aClass1_2793 = RSString.CreateString("Ihr Charakter)2Profil wird in:");

@@ -19,7 +19,7 @@ public class Class48 {
     public static RSString aClass1_1122 = RSString.CreateString("RuneScape is loading )2 please wait)3)3)3");
     public static RSString aClass1_1123 = RSString.CreateString(" ");
     public static RSString aClass1_1124 = RSString.CreateString("Loading title screen )2 ");
-    public static int anInt1126 = 0;
+    public static int cameraOffsetY = 0;
     public static int modifiedWidgetId = 0;
     public static Buffer aClass40_Sub1_1132;
     public static RSString aClass1_1137 = RSString.CreateString("M");

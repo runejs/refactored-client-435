@@ -79,7 +79,7 @@ public class Wall {
                         class1 = class1.substring(5);
                         i_1_ = 2;
                     }
-                    if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || Class4.anInt185 == 0 || (Class4.anInt185 == 1 && Class40_Sub2.hasFriend(class1, -32624)))) {
+                    if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || Class4.privateChatMode == 0 || (Class4.privateChatMode == 1 && Class40_Sub2.hasFriend(class1, -32624)))) {
                         int i_3_ = 329 - 13 * i;
                         int i_4_ = 4;
                         i++;
@@ -100,7 +100,7 @@ public class Wall {
                         if(i >= 5)
                             return;
                     }
-                    if(i_2_ == 5 && Class4.anInt185 < 2) {
+                    if(i_2_ == 5 && Class4.privateChatMode < 2) {
                         int i_5_ = -(i * 13) + 329;
                         i++;
                         class40_sub5_sub14_sub1.drawString(Actor.chatMessages[i_0_], 4, i_5_, 0);
@@ -108,7 +108,7 @@ public class Wall {
                         if(i >= 5)
                             return;
                     }
-                    if(i_2_ == 6 && Class4.anInt185 < 2) {
+                    if(i_2_ == 6 && Class4.privateChatMode < 2) {
                         int i_6_ = -(13 * i) + 329;
                         i++;
                         class40_sub5_sub14_sub1.drawString((RSString.linkRSStrings(new RSString[]{Class40_Sub5_Sub1.aClass1_2274, Class48.aClass1_1123, class1, ISAAC.aClass1_515, (Actor.chatMessages[i_0_])})), 4, i_6_, 0);

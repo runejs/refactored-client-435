@@ -25,9 +25,9 @@ public class HuffmanEncoding {
     public static RSString aClass1_1544 = RSString.CreateString("Side panel redrawn");
     public static int anInt1545 = 0;
     public static RSString aClass1_1546 = RSString.CreateString("Icons redrawn");
-    public static int anInt1548 = -1;
+    public static int reportAbuseInterfaceID = -1;
     public static RSString aClass1_1549 = RSString.CreateString("leuchten1:");
-    public static RSString aClass1_1550 = blank_string;
+    public static RSString reportedName = blank_string;
     public static RSString str_Connecting_to_friendserver = RSString.CreateString("Connecting to friendserver");
     public static RSString aClass1_1555 = RSString.CreateString("Remove");
     public static RSString chatboxInput = blank_string;
@@ -122,7 +122,7 @@ public class HuffmanEncoding {
         inputInputMessage = null;
         chatTypes = null;
         aClass1_1546 = null;
-        aClass1_1550 = null;
+        reportedName = null;
         str_Connecting_to_friendserver = null;
         aClass1_1549 = null;
         aClass1_1572 = null;

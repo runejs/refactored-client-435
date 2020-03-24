@@ -18,11 +18,11 @@ public class Class65 {
     public static CacheIndex_Sub1 aClass6_Sub1_1533;
     public static RSString aClass1_1535 = RSString.CreateString("Please reload this page)3");
     public static RSString aClass1_1536 = RSString.CreateString(" x ");
-    public static int anInt1537;
+    public static int cameraVertical;
     public static RSString aClass1_1538 = aClass1_1535;
 
     static {
-        anInt1537 = 128;
+        cameraVertical = 128;
     }
 
     public static void method1017() {

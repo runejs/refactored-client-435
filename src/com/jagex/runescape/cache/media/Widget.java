@@ -29,7 +29,7 @@ public class Widget extends SubNode {
     public static RSString aClass1_2637 = RSString.CreateString("glow2:");
     public static RSString aClass1_2671 = aClass1_2637;
     public static RSString aClass1_2674 = RSString.CreateString("Starting game engine)3)3)3");
-    public static RSString aClass1_2684 = RSString.CreateString("Choose Option");
+    public static RSString str_Choose_Option = RSString.CreateString("Choose Option");
     public static RSString cmd_errortest = RSString.CreateString("::errortest");
     public static RSString aClass1_2716 = RSString.CreateString("Fehler beim Laden Ihres Charakter)2Profils");
     public static RSString goldCrown = RSString.CreateString("@cr2@");
@@ -233,7 +233,7 @@ public class Widget extends SubNode {
         aClass1_2637 = null;
         aClass1_2674 = null;
         aClass1_2740 = null;
-        aClass1_2684 = null;
+        str_Choose_Option = null;
     }
 
     public static void method642(Component arg0, int arg1) {
@@ -1180,7 +1180,7 @@ public class Widget extends SubNode {
             widget.modelId = 1;
             widget.modelType = 5;
         } else if(type == 600)
-            widget.disabledText = (RSString.linkRSStrings(new RSString[]{HuffmanEncoding.aClass1_1550, Class22_Sub2.aClass1_1878}));
+            widget.disabledText = (RSString.linkRSStrings(new RSString[]{HuffmanEncoding.reportedName, Class22_Sub2.aClass1_1878}));
         else if(type == 620) {
             if(InteractiveObject.playerRights >= 1) {
                 if(Class67.reportMutePlayer) {

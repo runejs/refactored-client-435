@@ -243,7 +243,7 @@ public class Class55 {
         Widget.aClass1_2671 = HuffmanEncoding.aClass1_1558;
         Class43.aClass1_1019 = CacheIndex_Sub1.aClass1_1798;
         Class40_Sub5_Sub6.aClass1_2446 = Class68_Sub1.aClass1_2198;
-        Widget.aClass1_2684 = SpotAnimDefinition.aClass1_2291;
+        Widget.str_Choose_Option = SpotAnimDefinition.aClass1_2291;
         Class27.takeStringInstance = SpotAnimDefinition.aClass1_2296;
         Class48.aClass1_1124 = MouseHandler.aClass1_1471;
         Class5.aClass1_193 = Landscape.aClass1_1161;

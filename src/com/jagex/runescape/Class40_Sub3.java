@@ -135,10 +135,10 @@ public class Class40_Sub3 extends Node {
                 i++;
             else
                 WallDecoration.fontNormal = TypeFace.loadTypeFace(ActorDefinition.aClass6_Sub1_2377, HuffmanEncoding.blank_string, Class67.aClass1_1580);
-            if(Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246 != null)
+            if(Class40_Sub5_Sub17_Sub6.fontBold != null)
                 i++;
             else
-                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246 = TypeFace.loadTypeFace(ActorDefinition.aClass6_Sub1_2377, HuffmanEncoding.blank_string, Class38_Sub1.aClass1_1921);
+                Class40_Sub5_Sub17_Sub6.fontBold = TypeFace.loadTypeFace(ActorDefinition.aClass6_Sub1_2377, HuffmanEncoding.blank_string, Class38_Sub1.aClass1_1921);
             if(i < 3) {
                 Class22_Sub2.currentLoadingText = (RSString.linkRSStrings(new RSString[]{VertexNormal.aClass1_1099, HashTable.method334(i * 100 / 3, -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 40;
@@ -284,7 +284,7 @@ public class Class40_Sub3 extends Node {
         } else if(Class40_Sub5_Sub6.anInt2451 == 120) {
             if(RSCanvas.aClass6_Sub1_48.method194(FloorDecoration.aClass1_615, HuffmanEncoding.blank_string, -1234)) {
                 HuffmanEncoding huffmanEncoding = new HuffmanEncoding(RSCanvas.aClass6_Sub1_48.method170(HuffmanEncoding.blank_string, FloorDecoration.aClass1_615, arg0 + -99));
-                Item.method778(true, huffmanEncoding);
+                Item.method778(huffmanEncoding);
                 Class40_Sub5_Sub6.anInt2451 = 130;
                 Class22_Sub2.currentLoadingText = Landscape.aClass1_1173;
                 Class67.anInt1607 = 96;

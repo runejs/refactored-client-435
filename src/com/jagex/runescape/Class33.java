@@ -106,8 +106,8 @@ public class Class33 {
                     if(actor.forcedChatMessage != null && (i >= Player.localPlayerCount || Class35.publicChatMode == 0 || Class35.publicChatMode == 3 || (Class35.publicChatMode == 1 && (Class40_Sub2.hasFriend((((Player) actor).playerName), arg0 ^ 0x7f74))))) {
                         FloorDecoration.method342((actor.anInt3117), actor);
                         if(ISAAC.anInt522 > -1 && 50 > SceneCluster.anInt770) {
-                            Class30.anIntArray680[SceneCluster.anInt770] = ((Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getStringWidth(actor.forcedChatMessage)) / 2);
-                            Class30.anIntArray688[SceneCluster.anInt770] = (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.characterDefaultHeight);
+                            Class30.anIntArray680[SceneCluster.anInt770] = ((Class40_Sub5_Sub17_Sub6.fontBold.getStringWidth(actor.forcedChatMessage)) / 2);
+                            Class30.anIntArray688[SceneCluster.anInt770] = (Class40_Sub5_Sub17_Sub6.fontBold.characterDefaultHeight);
                             Class30.anIntArray715[SceneCluster.anInt770] = ISAAC.anInt522;
                             Class30.anIntArray685[SceneCluster.anInt770] = Class44.anInt1048;
                             Class30.anIntArray712[SceneCluster.anInt770] = actor.chatcolor;
@@ -209,45 +209,45 @@ public class Class33 {
                             i_8_ = -(327685 * i_11_) + 16777215;
                     }
                     if(Class30.anIntArray695[i] == 0) {
-                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
-                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(class1, ISAAC.anInt522, Class44.anInt1048, i_8_);
+                        Class40_Sub5_Sub17_Sub6.fontBold.method686(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
+                        Class40_Sub5_Sub17_Sub6.fontBold.method686(class1, ISAAC.anInt522, Class44.anInt1048, i_8_);
                     }
                     if(Class30.anIntArray695[i] == 1) {
-                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, Class40_Sub5_Sub11.anInt2628);
-                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628);
+                        Class40_Sub5_Sub17_Sub6.fontBold.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, Class40_Sub5_Sub11.anInt2628);
+                        Class40_Sub5_Sub17_Sub6.fontBold.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628);
                     }
                     if(Class30.anIntArray695[i] == 2) {
-                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawCenteredStringWaveXY(class1, ISAAC.anInt522, 1 + Class44.anInt1048, 0, Class40_Sub5_Sub11.anInt2628);
-                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawCenteredStringWaveXY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628);
+                        Class40_Sub5_Sub17_Sub6.fontBold.drawCenteredStringWaveXY(class1, ISAAC.anInt522, 1 + Class44.anInt1048, 0, Class40_Sub5_Sub11.anInt2628);
+                        Class40_Sub5_Sub17_Sub6.fontBold.drawCenteredStringWaveXY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628);
                     }
                     if(Class30.anIntArray695[i] == 3) {
-                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, Class40_Sub5_Sub11.anInt2628, -Class30.anIntArray684[i] + 150);
-                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628, -Class30.anIntArray684[i] + 150);
+                        Class40_Sub5_Sub17_Sub6.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, Class40_Sub5_Sub11.anInt2628, -Class30.anIntArray684[i] + 150);
+                        Class40_Sub5_Sub17_Sub6.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628, -Class30.anIntArray684[i] + 150);
                     }
                     if(Class30.anIntArray695[i] == 4) {
-                        int i_12_ = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getStringWidth(class1);
+                        int i_12_ = Class40_Sub5_Sub17_Sub6.fontBold.getStringWidth(class1);
                         int i_13_ = ((i_12_ + 100) * (150 + -Class30.anIntArray684[i]) / 150);
                         Rasterizer.setCoordinates((ISAAC.anInt522 + -50), 0, 334, 50 + ISAAC.anInt522);
-                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawString(class1, -i_13_ + ISAAC.anInt522 + 50, Class44.anInt1048 + 1, 0);
-                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawString(class1, 50 + ISAAC.anInt522 + -i_13_, Class44.anInt1048, i_8_);
+                        Class40_Sub5_Sub17_Sub6.fontBold.drawString(class1, -i_13_ + ISAAC.anInt522 + 50, Class44.anInt1048 + 1, 0);
+                        Class40_Sub5_Sub17_Sub6.fontBold.drawString(class1, 50 + ISAAC.anInt522 + -i_13_, Class44.anInt1048, i_8_);
                         Rasterizer.resetCoordinates();
                     }
                     if(Class30.anIntArray695[i] == 5) {
                         int i_14_ = 0;
                         int i_15_ = 150 + -Class30.anIntArray684[i];
-                        Rasterizer.setCoordinates(0, -1 + (-(Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.characterDefaultHeight) + Class44.anInt1048), 5 + Class44.anInt1048, 512);
+                        Rasterizer.setCoordinates(0, -1 + (-(Class40_Sub5_Sub17_Sub6.fontBold.characterDefaultHeight) + Class44.anInt1048), 5 + Class44.anInt1048, 512);
                         if(i_15_ >= 25) {
                             if(i_15_ > 125)
                                 i_14_ = i_15_ + -125;
                         } else
                             i_14_ = i_15_ + -25;
-                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(class1, ISAAC.anInt522, i_14_ + (Class44.anInt1048 + 1), 0);
-                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(class1, ISAAC.anInt522, i_14_ + Class44.anInt1048, i_8_);
+                        Class40_Sub5_Sub17_Sub6.fontBold.method686(class1, ISAAC.anInt522, i_14_ + (Class44.anInt1048 + 1), 0);
+                        Class40_Sub5_Sub17_Sub6.fontBold.method686(class1, ISAAC.anInt522, i_14_ + Class44.anInt1048, i_8_);
                         Rasterizer.resetCoordinates();
                     }
                 } else {
-                    Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
-                    Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.method686(class1, ISAAC.anInt522, Class44.anInt1048, 16776960);
+                    Class40_Sub5_Sub17_Sub6.fontBold.method686(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
+                    Class40_Sub5_Sub17_Sub6.fontBold.method686(class1, ISAAC.anInt522, Class44.anInt1048, 16776960);
                 }
             }
         }
@@ -337,7 +337,7 @@ public class Class33 {
         aClass1_798 = null;
     }
 
-    public static boolean method409(byte arg0, int arg1) {
+    public static boolean menuHasAddFriend(byte arg0, int arg1) {
         if(arg0 <= 23)
             method402(true);
         if(arg1 < 0)

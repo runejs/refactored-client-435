@@ -34,7 +34,7 @@ import java.net.Socket;
 public class Main extends RSApplet {
     public static int anInt1756 = 0;
     public static RSString aClass1_1757 = RSString.CreateString("Runescape wurde aktualisiert(Q");
-    public static int anInt1758;
+    public static int menuOffsetY;
     public static RSString aClass1_1761 = RSString.CreateString("Welcome to Runescape");
     public static RSString aClass1_1762 = RSString.CreateString("logo");
     public static RSString aClass1_1763 = RSString.CreateString("Use");
@@ -137,7 +137,7 @@ public class Main extends RSApplet {
                                                         i_12_ = 0;
                                                     if(i_14_ < 5 && (i_14_ > -5))
                                                         i_14_ = 0;
-                                                    if((Buffer.anInt1978) < 5) {
+                                                    if((Buffer.lastItemDragTime) < 5) {
                                                         i_14_ = 0;
                                                         i_12_ = 0;
                                                     }
@@ -659,7 +659,7 @@ public class Main extends RSApplet {
             Actor.chatMessages[i] = null;
         Class8.itemSelected = 0;
         Class57.anInt1342 = -40 + (int) (80.0 * Math.random());
-        Class48.anInt1126 = -55 + (int) (Math.random() * 110.0);
+        Class48.cameraOffsetY = -55 + (int) (Math.random() * 110.0);
         VarbitDefinition.anInt2366 = 0;
         Class43.cameraYawOffset = (int) (Math.random() * 120.0) + -60;
         Buffer.anInt1985 = -1;
@@ -668,8 +668,8 @@ public class Main extends RSApplet {
         widgetSelected = 0;
         GroundItemTile.cameraHorizontal = 0x7ff & -10 + (int) (20.0 * Math.random());
         Class51.mapZoomOffset = -20 + (int) (Math.random() * 30.0);
-        Class27.anInt658 = 0;
-        Buffer.anInt1976 = -50 + (int) (Math.random() * 100.0);
+        Class27.minimapState = 0;
+        Buffer.cameraOffsetX = -50 + (int) (Math.random() * 100.0);
         Player.localPlayerCount = 0;
         Class55.anInt1304 = 0;
         for(int i = 0; i < 2048; i++) {
@@ -823,11 +823,11 @@ public class Main extends RSApplet {
                     } else
                         Class27.method365(-20197);
                 } else
-                    WallDecoration.method951(-19010, (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246), (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236));
+                    WallDecoration.method951(-19010, (Class40_Sub5_Sub17_Sub6.fontBold), (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236));
             } else
-                WallDecoration.method951(-19010, (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246), (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236));
+                WallDecoration.method951(-19010, (Class40_Sub5_Sub17_Sub6.fontBold), (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236));
         } else
-            WallDecoration.method951(-19010, (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246), (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236));
+            WallDecoration.method951(-19010, (Class40_Sub5_Sub17_Sub6.fontBold), (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236));
         Npc.anInt3294 = 0;
         int i = -22 / ((arg0 - 6) / 50);
     }

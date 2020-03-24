@@ -140,8 +140,8 @@ public class Npc extends Actor {
                 }
                 if(MouseHandler.clickType != 0) {
                     long l = ((GameObjectDefinition.aLong2561 - Class51.aLong1203) / 50L);
-                    int i = Class57.anInt1338;
-                    int i_10_ = RSString.anInt1668;
+                    int i = Class57.clickX;
+                    int i_10_ = RSString.clickY;
                     Class51.aLong1203 = GameObjectDefinition.aLong2561;
                     if(i >= 0) {
                         if(i > 764)
@@ -172,7 +172,7 @@ public class Npc extends Actor {
                     HashTable.aBoolean565 = false;
                     SceneCluster.packetBuffer.putPacket(58);
                     SceneCluster.packetBuffer.putShortBE(GroundItemTile.cameraHorizontal);
-                    SceneCluster.packetBuffer.putShortBE(Class65.anInt1537);
+                    SceneCluster.packetBuffer.putShortBE(Class65.cameraVertical);
                 }
                 if(HashTable.aBoolean571 && !Class35.aBoolean1735) {
                     Class35.aBoolean1735 = true;
@@ -212,20 +212,20 @@ public class Npc extends Actor {
                         }
                         Class5.anInt199++;
                         if(SceneTile.activeInterfaceType != 0) {
-                            Buffer.anInt1978++;
+                            Buffer.lastItemDragTime++;
                             if(((Class13.mouseX > Renderable.anInt2869 + 5)) || ((Renderable.anInt2869 + -5 > Class13.mouseX)) || ((ItemDefinition.anInt2798 + 5 < Landscape.mouseY)) || (ItemDefinition.anInt2798 - 5 > Landscape.mouseY))
-                                Class40_Sub5_Sub15.aBoolean2784 = true;
+                                Class40_Sub5_Sub15.lastItemDragged = true;
                             if(SpotAnimDefinition.anInt2302 == 0) {
                                 if(SceneTile.activeInterfaceType == 3)
                                     GenericTile.redrawChatbox = true;
                                 if(SceneTile.activeInterfaceType == 2)
                                     ISAAC.redrawTabArea = true;
                                 SceneTile.activeInterfaceType = 0;
-                                if(!Class40_Sub5_Sub15.aBoolean2784 || Buffer.anInt1978 < 5) {
-                                    if((Class68.anInt1630 == 1 || (Class33.method409((byte) 63, (ActorDefinition.menuActionRow - 1)))) && ActorDefinition.menuActionRow > 2)
-                                        Class60.method990(11451);
+                                if(!Class40_Sub5_Sub15.lastItemDragged || Buffer.lastItemDragTime < 5) {
+                                    if((Class68.oneMouseButton == 1 || (Class33.menuHasAddFriend((byte) 63, (ActorDefinition.menuActionRow - 1)))) && ActorDefinition.menuActionRow > 2)
+                                        Class60.determineMenuSize(11451);
                                     else if(ActorDefinition.menuActionRow > 0)
-                                        Class27.doAction(123, (-1 + (ActorDefinition.menuActionRow)));
+                                        Class27.processMenuActions(123, (-1 + (ActorDefinition.menuActionRow)));
                                 } else {
                                     RSRuntimeException.lastActiveInvInterface = -1;
                                     Class43.method894(false);
@@ -275,9 +275,9 @@ public class Npc extends Actor {
                             int i_18_ = Scene.clickedTileY;
                             boolean bool = (Class38_Sub1.method448(0, 0, (Player.localPlayer.pathY[0]), i, (byte) 119, 0, true, 0, 0, (Player.localPlayer.pathX[0]), i_18_, 0));
                             if(bool) {
-                                Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
+                                Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
                                 OverlayDefinition.anInt2319 = 0;
-                                Class40_Sub11.anInt2163 = Class57.anInt1338;
+                                Class40_Sub11.anInt2163 = Class57.clickX;
                                 LinkedList.anInt1075 = 1;
                             }
                             Scene.clickedTileX = -1;
@@ -287,10 +287,10 @@ public class Npc extends Actor {
                             GenericTile.redrawChatbox = true;
                             RSApplet.aClass1_8 = null;
                         }
-                        MouseHandler.method1002(-77);
+                        MouseHandler.processMenuClick();
                         if(ActorDefinition.openFullScreenWidgetId == -1) {
-                            Item.method776((byte) -125);
-                            Class38_Sub1.method447((byte) 29);
+                            Item.handleMinimapMouse();
+                            Class38_Sub1.method447();
                             Class40_Sub5_Sub1.method544();
                         }
                         if(SpotAnimDefinition.anInt2302 == 1 || MouseHandler.clickType == 1)
@@ -329,7 +329,7 @@ public class Npc extends Actor {
                             }
                         } else if(WallDecoration.anInt1257 > 0)
                             WallDecoration.anInt1257--;
-                        Item.method775(false);
+                        Item.calculateCameraPosition();
                         if(Class39.aBoolean906)
                             Class5.method165(35);
                         for(int i_19_ = 0; i_19_ < 5; i_19_++)
@@ -347,14 +347,14 @@ public class Npc extends Actor {
                         if(Class38_Sub1.anInt1923 > 500) {
                             int i_22_ = (int) (8.0 * Math.random());
                             if((0x2 & i_22_) == 2)
-                                Class48.anInt1126 += Class68_Sub1.anInt2211;
+                                Class48.cameraOffsetY += Class68_Sub1.anInt2211;
                             if((i_22_ & 0x1) == 1)
-                                Buffer.anInt1976 += Class42.anInt1010;
+                                Buffer.cameraOffsetX += Class42.anInt1010;
                             Class38_Sub1.anInt1923 = 0;
                             if((0x4 & i_22_) == 4)
                                 Class57.anInt1342 += Class5.anInt195;
                         }
-                        if(Class48.anInt1126 < -55)
+                        if(Class48.cameraOffsetY < -55)
                             Class68_Sub1.anInt2211 = 2;
                         if(Player.anInt3264 > 500) {
                             int i_23_ = (int) (Math.random() * 8.0);
@@ -364,14 +364,14 @@ public class Npc extends Actor {
                                 Class51.mapZoomOffset += Main.anInt1766;
                             Player.anInt3264 = 0;
                         }
-                        if(Class48.anInt1126 > 55)
+                        if(Class48.cameraOffsetY > 55)
                             Class68_Sub1.anInt2211 = -2;
-                        if(Buffer.anInt1976 < -50)
+                        if(Buffer.cameraOffsetX < -50)
                             Class42.anInt1010 = 2;
                         if(Class43.cameraYawOffset < -60)
                             Class13.anInt419 = 2;
                         Class22.anInt537++;
-                        if(Buffer.anInt1976 > 50)
+                        if(Buffer.cameraOffsetX > 50)
                             Class42.anInt1010 = -2;
                         if(Class43.cameraYawOffset > 60)
                             Class13.anInt419 = -2;

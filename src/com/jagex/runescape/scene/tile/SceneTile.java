@@ -199,7 +199,7 @@ public class SceneTile extends Node {
             if(ActorDefinition.menuActionRow > 2)
                 class1 = (RSString.linkRSStrings(new RSString[]{class1, WallDecoration.aClass1_1243, HashTable.method334((ActorDefinition.menuActionRow) + -2, -1), Class39.aClass1_904}));
             if(arg0 == 4)
-                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawShadowedSeededAlphaString(class1, 4, 15, 16777215, true, Node.pulseCycle / 1000);
+                Class40_Sub5_Sub17_Sub6.fontBold.drawShadowedSeededAlphaString(class1, 4, 15, 16777215, true, Node.pulseCycle / 1000);
         }
     }
 }

@@ -64,7 +64,7 @@ public class PacketBuffer extends Buffer {
         if(Class29.tabAreaOverlayWidgetId != -1) {
             Class55.method958(Class29.tabAreaOverlayWidgetId);
             CacheIndex_Sub1.anInt1819 = -1;
-            IdentityKit.aBoolean2597 = true;
+            IdentityKit.drawTabIcons = true;
             ISAAC.redrawTabArea = true;
             Class29.tabAreaOverlayWidgetId = -1;
         }

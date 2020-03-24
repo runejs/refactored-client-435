@@ -148,7 +148,7 @@ public class WallDecoration {
                 if(i_27_ >= 0 && i_28_ >= 0 && i_27_ < 104 && i_28_ < 104) {
                     i_28_ = 128 * i_28_ + 64;
                     i_27_ = i_27_ * 128 + 64;
-                    Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (new Class40_Sub5_Sub17_Sub6(i_29_, Player.worldLevel, i_27_, i_28_, (-i_30_ + Class37.method430((byte) -124, (Player.worldLevel), i_27_, i_28_)), i_31_, Node.pulseCycle));
+                    Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (new Class40_Sub5_Sub17_Sub6(i_29_, Player.worldLevel, i_27_, i_28_, (-i_30_ + Class37.getFloorDrawHeight((Player.worldLevel), i_27_, i_28_)), i_31_, Node.pulseCycle));
                     Class57.aLinkedList_1332.pushBack(class40_sub5_sub17_sub6, -111);
                 }
             } else if(IncomingPackets.incomingPacket == 99) {
@@ -232,7 +232,7 @@ public class WallDecoration {
                             }
                             class40_sub5_sub17_sub4_sub1.anInt3271 = i_52_ * 128 + 64 * i_63_;
                             class40_sub5_sub17_sub4_sub1.anInt3291 = i_51_ * 128 + (64 * i_64_);
-                            class40_sub5_sub17_sub4_sub1.anInt3272 = (Class37.method430((byte) -127, Player.worldLevel, class40_sub5_sub17_sub4_sub1.anInt3271, class40_sub5_sub17_sub4_sub1.anInt3291));
+                            class40_sub5_sub17_sub4_sub1.anInt3272 = (Class37.getFloorDrawHeight(Player.worldLevel, class40_sub5_sub17_sub4_sub1.anInt3271, class40_sub5_sub17_sub4_sub1.anInt3291));
                             class40_sub5_sub17_sub4_sub1.anInt3281 = i_45_ + i_51_;
                             class40_sub5_sub17_sub4_sub1.anInt3258 = i_52_ + i_54_;
                             class40_sub5_sub17_sub4_sub1.anInt3262 = i_52_ + i;
@@ -277,9 +277,9 @@ public class WallDecoration {
                         i_70_ = 64 + 128 * i_70_;
                         i_69_ = 64 + 128 * i_69_;
                         i_68_ = i_68_ * 128 + 64;
-                        Class40_Sub5_Sub17_Sub1 class40_sub5_sub17_sub1 = (new Class40_Sub5_Sub17_Sub1(i_73_, Player.worldLevel, i_69_, i_68_, Class37.method430((byte) -121, (Player.worldLevel), i_69_, i_68_) + -i_74_, i_76_ + Node.pulseCycle, i_77_ + Node.pulseCycle, i_78_, i_79_, i_72_, i_75_));
+                        Class40_Sub5_Sub17_Sub1 class40_sub5_sub17_sub1 = (new Class40_Sub5_Sub17_Sub1(i_73_, Player.worldLevel, i_69_, i_68_, Class37.getFloorDrawHeight((Player.worldLevel), i_69_, i_68_) + -i_74_, i_76_ + Node.pulseCycle, i_77_ + Node.pulseCycle, i_78_, i_79_, i_72_, i_75_));
                         i_71_ = 128 * i_71_ + 64;
-                        class40_sub5_sub17_sub1.method766(i_76_ + Node.pulseCycle, 0, i_71_, (-i_75_ + Class37.method430((byte) -124, (Player.worldLevel), i_70_, i_71_)), i_70_);
+                        class40_sub5_sub17_sub1.method766(i_76_ + Node.pulseCycle, 0, i_71_, (-i_75_ + Class37.getFloorDrawHeight((Player.worldLevel), i_70_, i_71_)), i_70_);
                         Class43.aLinkedList_1022.pushBack(class40_sub5_sub17_sub1, -73);
                     }
                 } else {

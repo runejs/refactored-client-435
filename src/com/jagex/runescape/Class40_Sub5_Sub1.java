@@ -220,43 +220,40 @@ public class Class40_Sub5_Sub1 extends SubNode {
 
     public static void method544() {
         if(MouseHandler.clickType == 1) {
-            if(Class57.anInt1338 >= 6 && Class57.anInt1338 <= 106 && RSString.anInt1668 >= 467 && RSString.anInt1668 <= 499) {
-                Cache.aBoolean330 = true;
+            if(Class57.clickX >= 6 && Class57.clickX <= 106 && RSString.clickY >= 467 && RSString.clickY <= 499) {
+                Cache.redrawChatbox = true;
                 Class35.publicChatMode = (1 + Class35.publicChatMode) % 4;
                 GenericTile.redrawChatbox = true;
                 SceneCluster.packetBuffer.putPacket(32);
-                Class34.anInt821++;
                 SceneCluster.packetBuffer.putByte(Class35.publicChatMode);
-                SceneCluster.packetBuffer.putByte(Class4.anInt185);
-                SceneCluster.packetBuffer.putByte(ItemDefinition.anInt2797);
+                SceneCluster.packetBuffer.putByte(Class4.privateChatMode);
+                SceneCluster.packetBuffer.putByte(ItemDefinition.tradeMode);
             }
-            if(Class57.anInt1338 >= 135 && Class57.anInt1338 <= 235 && RSString.anInt1668 >= 467 && RSString.anInt1668 <= 499) {
+            if(Class57.clickX >= 135 && Class57.clickX <= 235 && RSString.clickY >= 467 && RSString.clickY <= 499) {
                 GenericTile.redrawChatbox = true;
-                Class4.anInt185 = (Class4.anInt185 + 1) % 3;
-                Cache.aBoolean330 = true;
-                Class34.anInt821++;
+                Class4.privateChatMode = (Class4.privateChatMode + 1) % 3;
+                Cache.redrawChatbox = true;
                 SceneCluster.packetBuffer.putPacket(32);
                 SceneCluster.packetBuffer.putByte(Class35.publicChatMode);
-                SceneCluster.packetBuffer.putByte(Class4.anInt185);
-                SceneCluster.packetBuffer.putByte(ItemDefinition.anInt2797);
+                SceneCluster.packetBuffer.putByte(Class4.privateChatMode);
+                SceneCluster.packetBuffer.putByte(ItemDefinition.tradeMode);
             }
-            if(Class57.anInt1338 >= 273 && Class57.anInt1338 <= 373 && RSString.anInt1668 >= 467 && RSString.anInt1668 <= 499) {
-                ItemDefinition.anInt2797 = (ItemDefinition.anInt2797 + 1) % 3;
-                Cache.aBoolean330 = true;
+            if(Class57.clickX >= 273 && Class57.clickX <= 373 && RSString.clickY >= 467 && RSString.clickY <= 499) {
+                ItemDefinition.tradeMode = (ItemDefinition.tradeMode + 1) % 3;
+                Cache.redrawChatbox = true;
                 GenericTile.redrawChatbox = true;
                 SceneCluster.packetBuffer.putPacket(32);
-                Class34.anInt821++;
                 SceneCluster.packetBuffer.putByte(Class35.publicChatMode);
-                SceneCluster.packetBuffer.putByte(Class4.anInt185);
-                SceneCluster.packetBuffer.putByte(ItemDefinition.anInt2797);
+                SceneCluster.packetBuffer.putByte(Class4.privateChatMode);
+                SceneCluster.packetBuffer.putByte(ItemDefinition.tradeMode);
             }
-            if(Class57.anInt1338 >= 412 && Class57.anInt1338 <= 512 && RSString.anInt1668 >= 467 && RSString.anInt1668 <= 499) {
+            if(Class57.clickX >= 412 && Class57.clickX <= 512 && RSString.clickY >= 467 && RSString.clickY <= 499) {
                 if(HuffmanEncoding.openScreenWidgetId == -1) {
                     PacketBuffer.method516(127);
                     if(Class34.anInt854 != -1) {
                         Class67.reportMutePlayer = false;
-                        HuffmanEncoding.anInt1548 = HuffmanEncoding.openScreenWidgetId = Class34.anInt854;
-                        HuffmanEncoding.aClass1_1550 = HuffmanEncoding.blank_string;
+                        HuffmanEncoding.reportAbuseInterfaceID = HuffmanEncoding.openScreenWidgetId = Class34.anInt854;
+                        HuffmanEncoding.reportedName = HuffmanEncoding.blank_string;
                     }
                 } else
                     Class44.addChatMessage(HuffmanEncoding.blank_string, Class37.aClass1_873, 0);
@@ -320,7 +317,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
     public static int method546(int arg0) {
         if(arg0 != 256)
             anInt2280 = 44;
-        int i = Class37.method430((byte) -120, Player.worldLevel, Class12.cameraX, Class40_Sub5_Sub6.cameraY);
+        int i = Class37.getFloorDrawHeight(Player.worldLevel, Class12.cameraX, Class40_Sub5_Sub6.cameraY);
         if(i + -SceneCluster.cameraZ < 800 && ((OverlayDefinition.tile_flags[Player.worldLevel][Class12.cameraX >> 7][Class40_Sub5_Sub6.cameraY >> 7]) & 0x4) != 0)
             return Player.worldLevel;
         return 3;

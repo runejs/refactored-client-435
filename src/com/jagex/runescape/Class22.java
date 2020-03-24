@@ -231,7 +231,7 @@ public abstract class Class22 {
                     method309(74, -85);
                 if(i != 5)
                     break;
-                Class68.anInt1630 = i_21_;
+                Class68.oneMouseButton = i_21_;
             }
 
             break;

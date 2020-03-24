@@ -100,7 +100,7 @@ public class Class22_Sub1 extends Class22 {
             Class44.anInt1048 = -1;
             ISAAC.anInt522 = -1;
         } else {
-            int i = Class37.method430((byte) -122, Player.worldLevel, arg2, arg1) + -arg0;
+            int i = Class37.getFloorDrawHeight(Player.worldLevel, arg2, arg1) + -arg0;
             arg1 -= Class40_Sub5_Sub6.cameraY;
             i -= SceneCluster.cameraZ;
             int i_1_ = Model.COSINE[Class26.anInt627];

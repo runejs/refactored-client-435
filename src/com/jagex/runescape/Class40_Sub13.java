@@ -286,7 +286,7 @@ public class Class40_Sub13 extends Node {
                     }
                 }
                 int i_37_ = 1610612736 + (arg1 << 7) + arg2;
-                Npc.currentScene.addGroundItemTile(arg2, arg1, Player.worldLevel, Class37.method430((byte) -126, (Player.worldLevel), 64 + 128 * arg2, 64 + 128 * arg1), i_37_, item, item_35_, item_34_);
+                Npc.currentScene.addGroundItemTile(arg2, arg1, Player.worldLevel, Class37.getFloorDrawHeight((Player.worldLevel), 64 + 128 * arg2, 64 + 128 * arg1), i_37_, item, item_35_, item_34_);
             }
         }
 

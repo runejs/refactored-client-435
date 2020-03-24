@@ -16,7 +16,7 @@ import com.jagex.runescape.scene.util.CollisionMap;
 import java.awt.*;
 
 public class ItemDefinition extends SubNode {
-    public static int anInt2797 = 0;
+    public static int tradeMode = 0;
     public static int anInt2798 = 0;
     public static int[] soundVolume = new int[50];
     public static int selectedMask;
@@ -180,7 +180,7 @@ public class ItemDefinition extends SubNode {
                     if(!npc.actorDefinition.isClickable) {
                         i_15_ += -2147483648;
                     }
-                    Npc.currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY, (Class37.method430((byte) -126, Player.worldLevel, (npc.worldX + ((-1 + npc.anInt3096) * 64)), (npc.anInt3096 * 64 + (-64 + (npc.worldY))))), -64 + (npc.anInt3096 * 64 + 60), npc, npc.anInt3118, i_15_, npc.aBoolean3105);
+                    Npc.currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY, (Class37.getFloorDrawHeight(Player.worldLevel, (npc.worldX + ((-1 + npc.anInt3096) * 64)), (npc.anInt3096 * 64 + (-64 + (npc.worldY))))), -64 + (npc.anInt3096 * 64 + 60), npc, npc.anInt3118, i_15_, npc.aBoolean3105);
                 }
             }
         }

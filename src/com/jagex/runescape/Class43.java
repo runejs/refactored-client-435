@@ -166,19 +166,19 @@ public class Class43 {
         if(class1 == null)
             Class40_Sub5_Sub6.method588(-1);
         else {
-            int i = VertexNormal.anInt1086;
-            int i_0_ = InteractiveObject.anInt475;
+            int i = VertexNormal.menuWidth;
+            int i_0_ = InteractiveObject.menuOffsetX;
             if(i > 190)
                 i = 190;
-            int i_1_ = CollisionMap.anInt168;
-            int i_2_ = Main.anInt1758;
+            int i_1_ = CollisionMap.menuHeight;
+            int i_2_ = Main.menuOffsetY;
             if(i_0_ < 0)
                 i_0_ = 0;
             int i_3_ = 6116423;
             Rasterizer.drawFilledRectangle(i_0_, i_2_, i, i_1_, i_3_);
             Rasterizer.drawFilledRectangle(i_0_ + 1, i_2_ + 1, arg0 + i, 16, 0);
             Rasterizer.drawUnfilledRectangle(i_0_ + 1, 18 + i_2_, -2 + i, i_1_ + -19, 0);
-            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawShadowedString(class1, 3 + i_0_, 14 + i_2_, i_3_, false);
+            Class40_Sub5_Sub17_Sub6.fontBold.drawShadowedString(class1, 3 + i_0_, 14 + i_2_, i_3_, false);
             int i_4_ = Class13.mouseX;
             int i_5_ = Landscape.mouseY;
             if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
@@ -204,7 +204,7 @@ public class Class43 {
                 }
                 if((i_0_ < i_4_) && (i_4_ < i_0_ + i) && -13 + i_7_ < i_5_ && 3 + i_7_ > i_5_)
                     i_9_ = 16776960;
-                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawShadowedString(class1_8_, 3 + i_0_, i_7_, i_9_, true);
+                Class40_Sub5_Sub17_Sub6.fontBold.drawShadowedString(class1_8_, 3 + i_0_, i_7_, i_9_, true);
             }
         }
     }

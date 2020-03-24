@@ -27,7 +27,7 @@ import java.lang.reflect.Method;
 public class Class40_Sub5_Sub6 extends SubNode {
     public static RSString requestcmd_duelreq = RSString.CreateString(":duelreq:");
     public static Class67[] aClass67Array2436 = new Class67[13];
-    public static int anInt2437;
+    public static int currentCameraPositionH;
     public static RSString aClass1_2438 = RSString.CreateString("scroll:");
     public static Cache aClass9_2439 = new Cache(64);
     public static RSString aClass1_2440 = RSString.CreateString("Enter name:");
@@ -195,11 +195,11 @@ public class Class40_Sub5_Sub6 extends SubNode {
 
     public static void manageTextInputs() {
         while(Class34.method416((byte) -125)) {
-            if(HuffmanEncoding.openScreenWidgetId != -1 && (HuffmanEncoding.anInt1548 == HuffmanEncoding.openScreenWidgetId)) {
-                if(ItemDefinition.anInt2854 == 85 && (HuffmanEncoding.aClass1_1550.length() > 0))
-                    HuffmanEncoding.aClass1_1550 = (HuffmanEncoding.aClass1_1550.substring(0, -1 + HuffmanEncoding.aClass1_1550.length()));
-                if((Class40_Sub5_Sub15.method735((byte) -37, Class59.anInt1388) || Class59.anInt1388 == 32) && HuffmanEncoding.aClass1_1550.length() < 12)
-                    HuffmanEncoding.aClass1_1550 = HuffmanEncoding.aClass1_1550.method70(Class59.anInt1388);
+            if(HuffmanEncoding.openScreenWidgetId != -1 && (HuffmanEncoding.reportAbuseInterfaceID == HuffmanEncoding.openScreenWidgetId)) {
+                if(ItemDefinition.anInt2854 == 85 && (HuffmanEncoding.reportedName.length() > 0))
+                    HuffmanEncoding.reportedName = (HuffmanEncoding.reportedName.substring(0, -1 + HuffmanEncoding.reportedName.length()));
+                if((Class40_Sub5_Sub15.method735((byte) -37, Class59.anInt1388) || Class59.anInt1388 == 32) && HuffmanEncoding.reportedName.length() < 12)
+                    HuffmanEncoding.reportedName = HuffmanEncoding.reportedName.method70(Class59.anInt1388);
             } else if(InteractiveObject.messagePromptRaised) {
                 if(ItemDefinition.anInt2854 == 85 && (HuffmanEncoding.aClass1_1565.length() > 0)) {
                     HuffmanEncoding.aClass1_1565 = (HuffmanEncoding.aClass1_1565.substring(0, -1 + HuffmanEncoding.aClass1_1565.length()));
@@ -227,14 +227,13 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         SceneCluster.packetBuffer.putLongBE(PacketBuffer.aLong2241);
                         Class68_Sub1.method1052(119, HuffmanEncoding.aClass1_1565, SceneCluster.packetBuffer);
                         SceneCluster.packetBuffer.finishVarByte(-i + (SceneCluster.packetBuffer.currentPosition));
-                        if(Class4.anInt185 == 2) {
-                            Class4.anInt185 = 1;
-                            Cache.aBoolean330 = true;
-                            Class34.anInt821++;
+                        if(Class4.privateChatMode == 2) {
+                            Class4.privateChatMode = 1;
+                            Cache.redrawChatbox = true;
                             SceneCluster.packetBuffer.putPacket(32);
                             SceneCluster.packetBuffer.putByte(Class35.publicChatMode);
-                            SceneCluster.packetBuffer.putByte(Class4.anInt185);
-                            SceneCluster.packetBuffer.putByte(ItemDefinition.anInt2797);
+                            SceneCluster.packetBuffer.putByte(Class4.privateChatMode);
+                            SceneCluster.packetBuffer.putByte(ItemDefinition.tradeMode);
                         }
                     }
                     if(Class37.anInt876 == 4 && Class42.anInt1008 < 100) {
@@ -411,13 +410,12 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         Class68_Sub1.method1052(65, HuffmanEncoding.chatboxInput, SceneCluster.packetBuffer);
                         SceneCluster.packetBuffer.finishVarByte((SceneCluster.packetBuffer.currentPosition) + -i_12_);
                         if(Class35.publicChatMode == 2) {
-                            Class34.anInt821++;
-                            Cache.aBoolean330 = true;
+                            Cache.redrawChatbox = true;
                             Class35.publicChatMode = 3;
                             SceneCluster.packetBuffer.putPacket(32);
                             SceneCluster.packetBuffer.putByte(Class35.publicChatMode);
-                            SceneCluster.packetBuffer.putByte(Class4.anInt185);
-                            SceneCluster.packetBuffer.putByte(ItemDefinition.anInt2797);
+                            SceneCluster.packetBuffer.putByte(Class4.privateChatMode);
+                            SceneCluster.packetBuffer.putByte(ItemDefinition.tradeMode);
                         }
                     }
                     GenericTile.redrawChatbox = true;
@@ -430,15 +428,15 @@ public class Class40_Sub5_Sub6 extends SubNode {
 
     public static void method588(int arg0) {
         if(arg0 == -1) {
-            int i = InteractiveObject.anInt475;
-            int i_13_ = CollisionMap.anInt168;
-            int i_14_ = Main.anInt1758;
-            int i_15_ = VertexNormal.anInt1086;
+            int i = InteractiveObject.menuOffsetX;
+            int i_13_ = CollisionMap.menuHeight;
+            int i_14_ = Main.menuOffsetY;
+            int i_15_ = VertexNormal.menuWidth;
             int i_16_ = 6116423;
             Rasterizer.drawFilledRectangle(i, i_14_, i_15_, i_13_, i_16_);
             Rasterizer.drawFilledRectangle(1 + i, 1 + i_14_, -2 + i_15_, 16, 0);
             Rasterizer.drawUnfilledRectangle(i + 1, 18 + i_14_, -2 + i_15_, -19 + i_13_, 0);
-            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawString(Widget.aClass1_2684, i + 3, 14 + i_14_, i_16_);
+            Class40_Sub5_Sub17_Sub6.fontBold.drawString(Widget.str_Choose_Option, i + 3, 14 + i_14_, i_16_);
             int i_17_ = Class13.mouseX;
             int i_18_ = Landscape.mouseY;
             if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
@@ -458,7 +456,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                 int i_21_ = 16777215;
                 if((i_17_ > i) && i + i_15_ > i_17_ && (i_18_ > -13 + i_20_) && (i_20_ + 3 > i_18_))
                     i_21_ = 16776960;
-                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.drawShadowedString(Landscape.menuActionTexts[i_19_], i + 3, i_20_, i_21_, true);
+                Class40_Sub5_Sub17_Sub6.fontBold.drawShadowedString(Landscape.menuActionTexts[i_19_], i + 3, i_20_, i_21_, true);
             }
         }
     }

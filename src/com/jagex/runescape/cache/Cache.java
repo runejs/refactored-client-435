@@ -17,7 +17,7 @@ public class Cache {
     public static Cache aClass9_326 = new Cache(200);
     public static RSString aClass1_327 = RSString.CreateString("@or1@");
     public static CacheIndex aCacheIndex_329;
-    public static boolean aBoolean330 = false;
+    public static boolean redrawChatbox = false;
     public static RSString aClass1_331 = (RSString.CreateString("RuneScape wird geladen )2 bitte warten)3)3)3"));
     public static RSString aClass1_332 = RSString.CreateString("Classic");
     public static RSString aClass1_333 = aClass1_332;

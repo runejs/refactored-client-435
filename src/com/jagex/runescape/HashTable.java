@@ -108,7 +108,7 @@ public class HashTable {
                         if(class40_sub5_sub17_sub1.anInt2961 > 0) {
                             Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[-1 + (class40_sub5_sub17_sub1.anInt2961)]);
                             if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.worldX >= 0 && (class40_sub5_sub17_sub4_sub2.worldX < 13312) && (class40_sub5_sub17_sub4_sub2.worldY >= 0) && (class40_sub5_sub17_sub4_sub2.worldY < 13312))
-                                class40_sub5_sub17_sub1.method766(Node.pulseCycle, arg0 + -61, (class40_sub5_sub17_sub4_sub2.worldY), ((Class37.method430((byte) -127, class40_sub5_sub17_sub1.anInt2981, (class40_sub5_sub17_sub4_sub2.worldX), (class40_sub5_sub17_sub4_sub2.worldY))) - class40_sub5_sub17_sub1.anInt2960), (class40_sub5_sub17_sub4_sub2.worldX));
+                                class40_sub5_sub17_sub1.method766(Node.pulseCycle, arg0 + -61, (class40_sub5_sub17_sub4_sub2.worldY), ((Class37.getFloorDrawHeight(class40_sub5_sub17_sub1.anInt2981, (class40_sub5_sub17_sub4_sub2.worldX), (class40_sub5_sub17_sub4_sub2.worldY))) - class40_sub5_sub17_sub1.anInt2960), (class40_sub5_sub17_sub4_sub2.worldX));
                         }
                         if(class40_sub5_sub17_sub1.anInt2961 < 0) {
                             int i = -1 + -class40_sub5_sub17_sub1.anInt2961;
@@ -118,7 +118,7 @@ public class HashTable {
                             else
                                 class40_sub5_sub17_sub4_sub1 = (Player.localPlayer);
                             if(class40_sub5_sub17_sub4_sub1 != null && (class40_sub5_sub17_sub4_sub1.worldX >= 0) && (class40_sub5_sub17_sub4_sub1.worldX < 13312) && (class40_sub5_sub17_sub4_sub1.worldY >= 0) && (class40_sub5_sub17_sub4_sub1.worldY < 13312))
-                                class40_sub5_sub17_sub1.method766(Node.pulseCycle, 0, (class40_sub5_sub17_sub4_sub1.worldY), ((Class37.method430((byte) -127, class40_sub5_sub17_sub1.anInt2981, (class40_sub5_sub17_sub4_sub1.worldX), (class40_sub5_sub17_sub4_sub1.worldY))) - class40_sub5_sub17_sub1.anInt2960), (class40_sub5_sub17_sub4_sub1.worldX));
+                                class40_sub5_sub17_sub1.method766(Node.pulseCycle, 0, (class40_sub5_sub17_sub4_sub1.worldY), ((Class37.getFloorDrawHeight(class40_sub5_sub17_sub1.anInt2981, (class40_sub5_sub17_sub4_sub1.worldX), (class40_sub5_sub17_sub4_sub1.worldY))) - class40_sub5_sub17_sub1.anInt2960), (class40_sub5_sub17_sub4_sub1.worldX));
                         }
                         class40_sub5_sub17_sub1.method765(51, Class5.anInt199);
                         Npc.currentScene.method134(Player.worldLevel, (int) class40_sub5_sub17_sub1.aDouble2980, (int) class40_sub5_sub17_sub1.aDouble2993, (int) class40_sub5_sub17_sub1.aDouble2992, 60, class40_sub5_sub17_sub1, class40_sub5_sub17_sub1.anInt3013, -1, false);

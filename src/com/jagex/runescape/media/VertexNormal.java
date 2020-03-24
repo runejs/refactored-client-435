@@ -5,7 +5,7 @@ import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 
 public class VertexNormal {
-    public static int anInt1086;
+    public static int menuWidth;
     public static RSString str_Moderator_mute_option_OFF = (RSString.CreateString("Moderator option: Mute player for 48 hours: <OFF>"));
     public static RSString aClass1_1090 = RSString.CreateString("Close");
     public static RSString aClass1_1093 = RSString.CreateString("Prepared sound engine");

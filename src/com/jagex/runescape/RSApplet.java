@@ -113,7 +113,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                         Wall.aWidget_353 = widget;
                         Class40_Sub5_Sub11.anInt2621 = Landscape.mouseY;
                     }
-                    if(MouseHandler.clickType == 1 && (i_6_ <= Class57.anInt1338) && ((RSString.anInt1668 >= i_4_)) && Class57.anInt1338 < i_8_ && RSString.anInt1668 < i_7_)
+                    if(MouseHandler.clickType == 1 && (i_6_ <= Class57.clickX) && ((RSString.clickY >= i_4_)) && Class57.clickX < i_8_ && RSString.clickY < i_7_)
                         bool_10_ = true;
                     if(Wall.aWidget_353 != null) {
                         bool_9_ = false;
@@ -123,7 +123,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                     if(!widget.aBoolean2730 && bool_10_ && (0x1 & arg3) != 0) {
                         widget.aBoolean2730 = true;
                         if(widget.anObjectArray2681 != null)
-                            Widget.method891((widget.anObjectArray2681), 0, RSString.anInt1668 + -i_2_, widget, Class57.anInt1338 - i_1_, false);
+                            Widget.method891((widget.anObjectArray2681), 0, RSString.clickY + -i_2_, widget, Class57.clickX - i_1_, false);
                     }
                     if(widget.aBoolean2730 && bool_9_ && (arg3 & 0x4) != 0 && widget.anObjectArray2747 != null)
                         Widget.method891((widget.anObjectArray2747), 0, -i_2_ + Landscape.mouseY, widget, -i_1_ + Class13.mouseX, false);

@@ -18,7 +18,7 @@ public class Class4 {
     public static RSString aClass1_181 = RSString.CreateString("Einloggen");
     public static int anInt182 = 0;
     public static RSString aClass1_183 = RSString.CreateString("mapdots");
-    public static int anInt185 = 0;
+    public static int privateChatMode = 0;
     public static int anInt188;
 
     public static void method159() {

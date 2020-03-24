@@ -14,7 +14,7 @@ public class IdentityKit extends SubNode {
     public static RSString aClass1_2592 = RSString.CreateString("Anmelde)2Zeitlimit -Uberschritten)3");
     public static RSString aClass1_2593;
     public static RSString aClass1_2595 = RSString.CreateString("K");
-    public static boolean aBoolean2597 = false;
+    public static boolean drawTabIcons = false;
     public static int anInt2598 = 0;
     public static int[] sound = new int[50];
     public static LinkedList aLinkedList_2604 = new LinkedList();

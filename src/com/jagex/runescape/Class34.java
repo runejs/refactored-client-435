@@ -12,13 +12,12 @@ public class Class34 {
     public static RSString aClass1_804 = RSString.CreateString("m-Ochte mit Ihnen handeln)3");
     public static int anInt813;
     public static RSString aClass1_817;
-    public static int anInt821;
     public static RSString aClass1_826 = RSString.CreateString("Click to continue");
     public static RSString aClass1_829 = aClass1_826;
     public static HashTable aClass23_841;
     public static RSString aClass1_844;
     public static int anInt848;
-    public static int anInt849;
+    public static int currentCameraPositionV;
     public static RSString aClass1_850;
     public static Cache aClass9_851;
     public static int[] anIntArray852;

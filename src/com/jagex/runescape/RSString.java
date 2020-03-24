@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 
 public class RSString implements Interface1 {
     public static Class68 aClass68_1665;
-    public static int anInt1668 = 0;
+    public static int clickY = 0;
     public static Cache aClass9_1684;
     public static int anInt1690 = 0;
     public static CacheIndex aCacheIndex_1705;

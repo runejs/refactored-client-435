@@ -304,7 +304,7 @@ public class IncomingPackets {
             if(arg0)
                 CollisionMap.anInt172 = -96;
             if(incomingPacket == 235) {
-                Class27.anInt658 = incomingPacketBuffer.getUnsignedByte();
+                Class27.minimapState = incomingPacketBuffer.getUnsignedByte();
                 incomingPacket = -1;
                 return true;
             }
@@ -475,7 +475,7 @@ public class IncomingPackets {
                     Class40_Sub5_Sub15.inputType = 0;
                 }
                 ISAAC.redrawTabArea = true;
-                IdentityKit.aBoolean2597 = true;
+                IdentityKit.drawTabIcons = true;
                 incomingPacket = -1;
                 return true;
             }
@@ -515,7 +515,7 @@ public class IncomingPackets {
                 Class42.method883((byte) -127, i_55_);
                 if(Class29.tabAreaOverlayWidgetId != -1) {
                     Class55.method958(Class29.tabAreaOverlayWidgetId);
-                    IdentityKit.aBoolean2597 = true;
+                    IdentityKit.drawTabIcons = true;
                     Class29.tabAreaOverlayWidgetId = -1;
                     ISAAC.redrawTabArea = true;
                 }
@@ -563,7 +563,7 @@ public class IncomingPackets {
                 if(Class59.anInt1386 >= 100) {
                     Class40_Sub5_Sub6.cameraY = 64 + SceneCluster.anInt767 * 128;
                     Class12.cameraX = Class22.anInt545 * 128 + 64;
-                    SceneCluster.cameraZ = (Class37.method430((byte) -125, (Player.worldLevel), Class12.cameraX, Class40_Sub5_Sub6.cameraY) - Class5.anInt194);
+                    SceneCluster.cameraZ = (Class37.getFloorDrawHeight((Player.worldLevel), Class12.cameraX, Class40_Sub5_Sub6.cameraY) - Class5.anInt194);
                 }
                 incomingPacket = -1;
                 return true;
@@ -614,7 +614,7 @@ public class IncomingPackets {
                 if(Class29.tabAreaOverlayWidgetId != -1) {
                     Class55.method958(Class29.tabAreaOverlayWidgetId);
                     ISAAC.redrawTabArea = true;
-                    IdentityKit.aBoolean2597 = true;
+                    IdentityKit.drawTabIcons = true;
                     Class29.tabAreaOverlayWidgetId = -1;
                 }
                 if(Class43.openChatboxWidgetId != -1) {
@@ -648,7 +648,7 @@ public class IncomingPackets {
                 Class42.method883((byte) -119, widgetId);
                 if(Class29.tabAreaOverlayWidgetId != -1) {
                     Class55.method958(Class29.tabAreaOverlayWidgetId);
-                    IdentityKit.aBoolean2597 = true;
+                    IdentityKit.drawTabIcons = true;
                     Class29.tabAreaOverlayWidgetId = -1;
                     ISAAC.redrawTabArea = true;
                 }
@@ -722,10 +722,10 @@ public class IncomingPackets {
             }
             if(incomingPacket == 196) { // set chat mode configs
                 Class35.publicChatMode = incomingPacketBuffer.getUnsignedByte();
-                Class4.anInt185 = incomingPacketBuffer.getUnsignedByte();
-                ItemDefinition.anInt2797 = incomingPacketBuffer.getUnsignedByte();
+                Class4.privateChatMode = incomingPacketBuffer.getUnsignedByte();
+                ItemDefinition.tradeMode = incomingPacketBuffer.getUnsignedByte();
                 GenericTile.redrawChatbox = true;
-                Cache.aBoolean330 = true;
+                Cache.redrawChatbox = true;
                 incomingPacket = -1;
                 return true;
             }
@@ -791,7 +791,7 @@ public class IncomingPackets {
                     Class55.method958(Class29.tabAreaOverlayWidgetId);
                     Class29.tabAreaOverlayWidgetId = i_68_;
                 }
-                IdentityKit.aBoolean2597 = true;
+                IdentityKit.drawTabIcons = true;
                 if(Class40_Sub5_Sub15.inputType != 0) {
                     GenericTile.redrawChatbox = true;
                     Class40_Sub5_Sub15.inputType = 0;
@@ -811,7 +811,7 @@ public class IncomingPackets {
                 if(Class22_Sub1.anInt1856 >= 100) {
                     int i_69_ = 128 * HashTable.anInt564 + 64;
                     int i_70_ = 128 * UnderlayDefinition.anInt2576 + 64;
-                    int i_71_ = (Class37.method430((byte) -120, (Player.worldLevel), i_69_, i_70_) - Class38.anInt892);
+                    int i_71_ = (Class37.getFloorDrawHeight((Player.worldLevel), i_69_, i_70_) - Class38.anInt892);
                     int i_72_ = i_69_ + -Class12.cameraX;
                     int i_73_ = i_70_ + -Class40_Sub5_Sub6.cameraY;
                     int i_74_ = -SceneCluster.cameraZ + i_71_;
@@ -840,7 +840,7 @@ public class IncomingPackets {
             }
             if(incomingPacket == 6) {
                 Class5.currentTabId = incomingPacketBuffer.getUnsignedByte();
-                IdentityKit.aBoolean2597 = true;
+                IdentityKit.drawTabIcons = true;
                 ISAAC.redrawTabArea = true;
                 incomingPacket = -1;
                 return true;
@@ -1037,7 +1037,7 @@ public class IncomingPackets {
                     Class55.method958((Class40_Sub5_Sub11.tabWidgetIds[i_97_]));
                     Class40_Sub5_Sub11.tabWidgetIds[i_97_] = i_96_;
                 }
-                IdentityKit.aBoolean2597 = true;
+                IdentityKit.drawTabIcons = true;
                 incomingPacket = -1;
                 ISAAC.redrawTabArea = true;
                 return true;

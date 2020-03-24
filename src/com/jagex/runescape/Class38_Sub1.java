@@ -64,7 +64,7 @@ public class Class38_Sub1 extends Class38 {
                         class1 = class1.substring(5);
                     if(class1 != null && class1.startsWith(Widget.goldCrown))
                         class1 = class1.substring(5);
-                    if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || Class4.anInt185 == 0 || (Class4.anInt185 == 1 && Class40_Sub2.hasFriend(class1, arg0 + -42391)))) {
+                    if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || Class4.privateChatMode == 0 || (Class4.privateChatMode == 1 && Class40_Sub2.hasFriend(class1, arg0 + -42391)))) {
                         int i_3_ = 329 + -(13 * i);
                         i++;
                         if(Class13.mouseX > 4 && ((i_3_ + -10 < Landscape.mouseY + -4)) && ((-4 + Landscape.mouseY <= i_3_ + 3))) {
@@ -82,7 +82,7 @@ public class Class38_Sub1 extends Class38 {
                         if(i >= 5)
                             return;
                     }
-                    if((i_2_ == 5 || i_2_ == 6) && Class4.anInt185 < 2 && ++i >= 5)
+                    if((i_2_ == 5 || i_2_ == 6) && Class4.privateChatMode < 2 && ++i >= 5)
                         return;
                 }
             }
@@ -101,79 +101,77 @@ public class Class38_Sub1 extends Class38 {
         return true;
     }
 
-    public static void method447(byte arg0) {
-        if(arg0 != 29)
-            method448(79, 61, 50, -68, (byte) 53, -121, false, 1, 18, -15, 29, 27);
+    public static void method447() {
         if(MouseHandler.clickType == 1) {
-            if(Class57.anInt1338 >= 539 && Class57.anInt1338 <= 573 && RSString.anInt1668 >= 169 && RSString.anInt1668 < 205 && Class40_Sub5_Sub11.tabWidgetIds[0] != -1) {
-                IdentityKit.aBoolean2597 = true;
+            if(Class57.clickX >= 539 && Class57.clickX <= 573 && RSString.clickY >= 169 && RSString.clickY < 205 && Class40_Sub5_Sub11.tabWidgetIds[0] != -1) {
+                IdentityKit.drawTabIcons = true;
                 ISAAC.redrawTabArea = true;
                 Class5.currentTabId = 0;
             }
-            if(Class57.anInt1338 >= 569 && Class57.anInt1338 <= 599 && RSString.anInt1668 >= 168 && RSString.anInt1668 < 205 && Class40_Sub5_Sub11.tabWidgetIds[1] != -1) {
+            if(Class57.clickX >= 569 && Class57.clickX <= 599 && RSString.clickY >= 168 && RSString.clickY < 205 && Class40_Sub5_Sub11.tabWidgetIds[1] != -1) {
                 Class5.currentTabId = 1;
                 ISAAC.redrawTabArea = true;
-                IdentityKit.aBoolean2597 = true;
+                IdentityKit.drawTabIcons = true;
             }
-            if(Class57.anInt1338 >= 597 && Class57.anInt1338 <= 627 && RSString.anInt1668 >= 168 && RSString.anInt1668 < 205 && Class40_Sub5_Sub11.tabWidgetIds[2] != -1) {
-                IdentityKit.aBoolean2597 = true;
+            if(Class57.clickX >= 597 && Class57.clickX <= 627 && RSString.clickY >= 168 && RSString.clickY < 205 && Class40_Sub5_Sub11.tabWidgetIds[2] != -1) {
+                IdentityKit.drawTabIcons = true;
                 Class5.currentTabId = 2;
                 ISAAC.redrawTabArea = true;
             }
-            if(Class57.anInt1338 >= 625 && Class57.anInt1338 <= 669 && RSString.anInt1668 >= 168 && RSString.anInt1668 < 203 && Class40_Sub5_Sub11.tabWidgetIds[3] != -1) {
-                IdentityKit.aBoolean2597 = true;
+            if(Class57.clickX >= 625 && Class57.clickX <= 669 && RSString.clickY >= 168 && RSString.clickY < 203 && Class40_Sub5_Sub11.tabWidgetIds[3] != -1) {
+                IdentityKit.drawTabIcons = true;
                 ISAAC.redrawTabArea = true;
                 Class5.currentTabId = 3;
             }
-            if(Class57.anInt1338 >= 666 && Class57.anInt1338 <= 696 && RSString.anInt1668 >= 168 && RSString.anInt1668 < 205 && Class40_Sub5_Sub11.tabWidgetIds[4] != -1) {
+            if(Class57.clickX >= 666 && Class57.clickX <= 696 && RSString.clickY >= 168 && RSString.clickY < 205 && Class40_Sub5_Sub11.tabWidgetIds[4] != -1) {
                 Class5.currentTabId = 4;
                 ISAAC.redrawTabArea = true;
-                IdentityKit.aBoolean2597 = true;
+                IdentityKit.drawTabIcons = true;
             }
-            if(Class57.anInt1338 >= 694 && Class57.anInt1338 <= 724 && RSString.anInt1668 >= 168 && RSString.anInt1668 < 205 && Class40_Sub5_Sub11.tabWidgetIds[5] != -1) {
-                IdentityKit.aBoolean2597 = true;
+            if(Class57.clickX >= 694 && Class57.clickX <= 724 && RSString.clickY >= 168 && RSString.clickY < 205 && Class40_Sub5_Sub11.tabWidgetIds[5] != -1) {
+                IdentityKit.drawTabIcons = true;
                 ISAAC.redrawTabArea = true;
                 Class5.currentTabId = 5;
             }
-            if(Class57.anInt1338 >= 722 && Class57.anInt1338 <= 756 && RSString.anInt1668 >= 169 && RSString.anInt1668 < 205 && Class40_Sub5_Sub11.tabWidgetIds[6] != -1) {
+            if(Class57.clickX >= 722 && Class57.clickX <= 756 && RSString.clickY >= 169 && RSString.clickY < 205 && Class40_Sub5_Sub11.tabWidgetIds[6] != -1) {
                 ISAAC.redrawTabArea = true;
                 Class5.currentTabId = 6;
-                IdentityKit.aBoolean2597 = true;
+                IdentityKit.drawTabIcons = true;
             }
-            if(Class57.anInt1338 >= 540 && Class57.anInt1338 <= 574 && RSString.anInt1668 >= 466 && RSString.anInt1668 < 502 && Class40_Sub5_Sub11.tabWidgetIds[7] != -1) {
+            if(Class57.clickX >= 540 && Class57.clickX <= 574 && RSString.clickY >= 466 && RSString.clickY < 502 && Class40_Sub5_Sub11.tabWidgetIds[7] != -1) {
                 Class5.currentTabId = 7;
-                IdentityKit.aBoolean2597 = true;
+                IdentityKit.drawTabIcons = true;
                 ISAAC.redrawTabArea = true;
             }
-            if(Class57.anInt1338 >= 572 && Class57.anInt1338 <= 602 && RSString.anInt1668 >= 466 && RSString.anInt1668 < 503 && Class40_Sub5_Sub11.tabWidgetIds[8] != -1) {
+            if(Class57.clickX >= 572 && Class57.clickX <= 602 && RSString.clickY >= 466 && RSString.clickY < 503 && Class40_Sub5_Sub11.tabWidgetIds[8] != -1) {
                 ISAAC.redrawTabArea = true;
-                IdentityKit.aBoolean2597 = true;
+                IdentityKit.drawTabIcons = true;
                 Class5.currentTabId = 8;
             }
-            if(Class57.anInt1338 >= 599 && Class57.anInt1338 <= 629 && RSString.anInt1668 >= 466 && RSString.anInt1668 < 503 && Class40_Sub5_Sub11.tabWidgetIds[9] != -1) {
-                IdentityKit.aBoolean2597 = true;
+            if(Class57.clickX >= 599 && Class57.clickX <= 629 && RSString.clickY >= 466 && RSString.clickY < 503 && Class40_Sub5_Sub11.tabWidgetIds[9] != -1) {
+                IdentityKit.drawTabIcons = true;
                 Class5.currentTabId = 9;
                 ISAAC.redrawTabArea = true;
             }
-            if(Class57.anInt1338 >= 627 && Class57.anInt1338 <= 671 && RSString.anInt1668 >= 467 && RSString.anInt1668 < 502 && Class40_Sub5_Sub11.tabWidgetIds[10] != -1) {
+            if(Class57.clickX >= 627 && Class57.clickX <= 671 && RSString.clickY >= 467 && RSString.clickY < 502 && Class40_Sub5_Sub11.tabWidgetIds[10] != -1) {
                 Class5.currentTabId = 10;
-                IdentityKit.aBoolean2597 = true;
+                IdentityKit.drawTabIcons = true;
                 ISAAC.redrawTabArea = true;
             }
-            if(Class57.anInt1338 >= 669 && Class57.anInt1338 <= 699 && RSString.anInt1668 >= 466 && RSString.anInt1668 < 503 && Class40_Sub5_Sub11.tabWidgetIds[11] != -1) {
+            if(Class57.clickX >= 669 && Class57.clickX <= 699 && RSString.clickY >= 466 && RSString.clickY < 503 && Class40_Sub5_Sub11.tabWidgetIds[11] != -1) {
                 Class5.currentTabId = 11;
                 ISAAC.redrawTabArea = true;
-                IdentityKit.aBoolean2597 = true;
+                IdentityKit.drawTabIcons = true;
             }
-            if(Class57.anInt1338 >= 696 && Class57.anInt1338 <= 726 && RSString.anInt1668 >= 466 && RSString.anInt1668 < 503 && Class40_Sub5_Sub11.tabWidgetIds[12] != -1) {
+            if(Class57.clickX >= 696 && Class57.clickX <= 726 && RSString.clickY >= 466 && RSString.clickY < 503 && Class40_Sub5_Sub11.tabWidgetIds[12] != -1) {
                 ISAAC.redrawTabArea = true;
-                IdentityKit.aBoolean2597 = true;
+                IdentityKit.drawTabIcons = true;
                 Class5.currentTabId = 12;
             }
-            if(Class57.anInt1338 >= 724 && Class57.anInt1338 <= 758 && RSString.anInt1668 >= 466 && RSString.anInt1668 < 502 && Class40_Sub5_Sub11.tabWidgetIds[13] != -1) {
+            if(Class57.clickX >= 724 && Class57.clickX <= 758 && RSString.clickY >= 466 && RSString.clickY < 502 && Class40_Sub5_Sub11.tabWidgetIds[13] != -1) {
                 Class5.currentTabId = 13;
                 ISAAC.redrawTabArea = true;
-                IdentityKit.aBoolean2597 = true;
+                IdentityKit.drawTabIcons = true;
             }
         }
     }

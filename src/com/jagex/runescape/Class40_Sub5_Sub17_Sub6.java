@@ -16,7 +16,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     public static int[][] playerColours = {{6798, 107, 10283, 16, 4797, 7744, 5799, 4634, 33697, 22433, 2983, 54193}, {8741, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003, 25239}, {25238, 8742, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003}, {4626, 11146, 6439, 12, 4758, 10270}, {4550, 4537, 5681, 5673, 5790, 6806, 8076, 4574}};
     public static Class68 aClass68_3243;
     public static RSString aClass1_3245 = RSString.CreateString("Sie haben gerade eine andere Welt verlassen)3");
-    public static TypeFace aClass40_Sub5_Sub14_Sub1_3246;
+    public static TypeFace fontBold;
     public static RSString aClass1_3247;
     public static int[] anIntArray3248;
     public static int[] anIntArray3250;
@@ -96,7 +96,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                 if(i_2_ >= 0 && i_2_ < 104 && i_3_ >= 0 && i_3_ < 104) {
                     if((player.aClass40_Sub5_Sub17_Sub5_3265) != null && ((player.anInt3283 <= Node.pulseCycle)) && (Node.pulseCycle < player.anInt3274)) {
                         player.aBoolean3287 = false;
-                        player.anInt3276 = (Class37.method430((byte) -117, Player.worldLevel, player.worldX, player.worldY));
+                        player.anInt3276 = (Class37.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY));
                         Npc.currentScene.method112(Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player, player.anInt3118, i_1_, player.anInt3258, player.anInt3281, player.anInt3262, player.anInt3289);
                     } else {
                         if((0x7f & player.worldX) == 64 && (player.worldY & 0x7f) == 64) {
@@ -104,7 +104,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                                 continue;
                             Class61.anIntArrayArray1435[i_2_][i_3_] = Class40_Sub5_Sub11.anInt2628;
                         }
-                        player.anInt3276 = (Class37.method430((byte) -120, Player.worldLevel, player.worldX, player.worldY));
+                        player.anInt3276 = (Class37.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY));
                         Npc.currentScene.method134(Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player, player.anInt3118, i_1_, player.aBoolean3105);
                     }
                 }
@@ -118,7 +118,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
         aClass68_3243 = null;
         anIntArray3250 = null;
         playerColours = null;
-        aClass40_Sub5_Sub14_Sub1_3246 = null;
+        fontBold = null;
         anIntArray3253 = null;
         aClass1_3245 = null;
         aClass1_3254 = null;

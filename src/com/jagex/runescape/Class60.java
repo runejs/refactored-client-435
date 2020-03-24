@@ -1,8 +1,8 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.Widget;
@@ -56,72 +56,70 @@ public class Class60 {
         }
     }
 
-    public static void method990(int arg0) {
-        int i = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getStringWidth(Widget.aClass1_2684);
-        for(int i_1_ = 0; i_1_ < ActorDefinition.menuActionRow; i_1_++) {
-            int i_2_ = Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3246.getTextDisplayedWidth(Landscape.menuActionTexts[i_1_]);
-            if((i < i_2_))
-                i = i_2_;
+    public static void determineMenuSize(int arg0) {
+        int width = Class40_Sub5_Sub17_Sub6.fontBold.getStringWidth(Widget.str_Choose_Option);
+        for(int i = 0; i < ActorDefinition.menuActionRow; i++) {
+            int rowWidth = Class40_Sub5_Sub17_Sub6.fontBold.getTextDisplayedWidth(Landscape.menuActionTexts[i]);
+            if((width < rowWidth))
+                width = rowWidth;
         }
-        i += 8;
-        int i_3_ = ActorDefinition.menuActionRow * 15 + 21;
-        if(Class57.anInt1338 > 4 && RSString.anInt1668 > 4 && Class57.anInt1338 < 516 && RSString.anInt1668 < 338) {
+        width += 8;
+        int height = ActorDefinition.menuActionRow * 15 + 21;
+        if(Class57.clickX > 4 && RSString.clickY > 4 && Class57.clickX < 516 && RSString.clickY < 338) {
             Class40_Sub5_Sub17_Sub1.menuScreenArea = 0;
-            CollisionMap.anInt168 = ActorDefinition.menuActionRow * 15 + 22;
+            CollisionMap.menuHeight = ActorDefinition.menuActionRow * 15 + 22;
             Class4.menuOpen = true;
-            int i_4_ = -(i / 2) + -4 + Class57.anInt1338;
-            VertexNormal.anInt1086 = i;
-            if(i + i_4_ > 512)
-                i_4_ = -i + 512;
-            if(i_4_ < 0)
-                i_4_ = 0;
-            InteractiveObject.anInt475 = i_4_;
-            int i_5_ = RSString.anInt1668 + -4;
-            if(i_5_ + i_3_ > 334)
-                i_5_ = -i_3_ + 334;
-            if(i_5_ < 0)
-                i_5_ = 0;
-            Main.anInt1758 = i_5_;
+            int x = -(width / 2) + -4 + Class57.clickX;
+            VertexNormal.menuWidth = width;
+            if(width + x > 512)
+                x = 512 - width;
+            if(x < 0)
+                x = 0;
+            InteractiveObject.menuOffsetX = x;
+            int y = RSString.clickY + -4;
+            if(y + height > 334)
+                y = 334 - height;
+            if(y < 0)
+                y = 0;
+            Main.menuOffsetY = y;
         }
-        if(arg0 == 11451) {
-            if(Class57.anInt1338 > 553 && RSString.anInt1668 > 205 && Class57.anInt1338 < 743 && RSString.anInt1668 < 466) {
-                CollisionMap.anInt168 = 22 + 15 * ActorDefinition.menuActionRow;
-                Class40_Sub5_Sub17_Sub1.menuScreenArea = 1;
-                int i_6_ = -205 + RSString.anInt1668;
-                int i_7_ = -(i / 2) + (-553 + Class57.anInt1338);
-                if(i_7_ < 0)
-                    i_7_ = 0;
-                else if(i + i_7_ > 190)
-                    i_7_ = 190 - i;
-                Class4.menuOpen = true;
-                InteractiveObject.anInt475 = i_7_;
-                if(i_6_ >= 0) {
-                    if(i_3_ + i_6_ > 261)
-                        i_6_ = -i_3_ + 261;
-                } else
-                    i_6_ = 0;
-                VertexNormal.anInt1086 = i;
-                Main.anInt1758 = i_6_;
-            }
-            if(Class57.anInt1338 > 17 && RSString.anInt1668 > 357 && Class57.anInt1338 < 496 && RSString.anInt1668 < 453) {
-                VertexNormal.anInt1086 = i;
-                Class40_Sub5_Sub17_Sub1.menuScreenArea = 2;
-                CollisionMap.anInt168 = ActorDefinition.menuActionRow * 15 + 22;
-                int i_8_ = RSString.anInt1668 + -357;
-                if(i_8_ >= 0) {
-                    if(i_3_ + i_8_ > 96)
-                        i_8_ = -i_3_ + 96;
-                } else
-                    i_8_ = 0;
-                int i_9_ = -(i / 2) + -17 + Class57.anInt1338;
-                Class4.menuOpen = true;
-                Main.anInt1758 = i_8_;
-                if(i_9_ < 0)
-                    i_9_ = 0;
-                else if(i_9_ + i > 479)
-                    i_9_ = -i + 479;
-                InteractiveObject.anInt475 = i_9_;
-            }
+        if(Class57.clickX > 553 && RSString.clickY > 205 && Class57.clickX < 743 && RSString.clickY < 466) {
+            CollisionMap.menuHeight = 22 + 15 * ActorDefinition.menuActionRow;
+            Class40_Sub5_Sub17_Sub1.menuScreenArea = 1;
+            int y = -205 + RSString.clickY;
+            int x = -(width / 2) + (-553 + Class57.clickX);
+            if(x < 0)
+                x = 0;
+            else if(width + x > 190)
+                x = 190 - width;
+            Class4.menuOpen = true;
+            InteractiveObject.menuOffsetX = x;
+            if(y >= 0) {
+                if(height + y > 261)
+                    y = -height + 261;
+            } else
+                y = 0;
+            VertexNormal.menuWidth = width;
+            Main.menuOffsetY = y;
+        }
+        if(Class57.clickX > 17 && RSString.clickY > 357 && Class57.clickX < 496 && RSString.clickY < 453) {
+            VertexNormal.menuWidth = width;
+            Class40_Sub5_Sub17_Sub1.menuScreenArea = 2;
+            CollisionMap.menuHeight = ActorDefinition.menuActionRow * 15 + 22;
+            int i_8_ = RSString.clickY + -357;
+            if(i_8_ >= 0) {
+                if(height + i_8_ > 96)
+                    i_8_ = -height + 96;
+            } else
+                i_8_ = 0;
+            int i_9_ = -(width / 2) + -17 + Class57.clickX;
+            Class4.menuOpen = true;
+            Main.menuOffsetY = i_8_;
+            if(i_9_ < 0)
+                i_9_ = 0;
+            else if(i_9_ + width > 479)
+                i_9_ = -width + 479;
+            InteractiveObject.menuOffsetX = i_9_;
         }
     }
 
@@ -162,9 +160,9 @@ public class Class60 {
     public static void method993(int arg0) {
         Class40_Sub6.method836(1);
         if(Class51.anInt1197 == 10) {
-            int i = Class57.anInt1338 + -202;
+            int i = Class57.clickX + -202;
             int i_11_ = MouseHandler.clickType;
-            int i_12_ = -171 + RSString.anInt1668;
+            int i_12_ = -171 + RSString.clickY;
             int i_13_ = -58 % ((-38 - arg0) / 59);
             if(Class26.anInt622 == 0) {
                 int i_14_ = 100;

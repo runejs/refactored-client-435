@@ -43,21 +43,19 @@ public class Class37 {
         anInt874 = 0;
     }
 
-    public static int method430(byte arg0, int arg1, int arg2, int arg3) {
-        int i = arg3 >> 7;
-        int i_0_ = arg2 >> 7;
-        if(i_0_ < 0 || i < 0 || i_0_ > 103 || i > 103)
+    public static int getFloorDrawHeight(int plane, int x, int y) {
+        int groundX = x >> 7;
+        int groundY = y >> 7;
+        if(groundX < 0 || groundY < 0 || groundX > 103 || groundY > 103)
             return 0;
-        int i_1_ = 0x7f & arg2;
-        int i_2_ = arg1;
-        if(i_2_ < 3 && (OverlayDefinition.tile_flags[1][i_0_][i] & 0x2) == 2)
-            i_2_++;
-        int i_3_ = (((-i_1_ + 128) * (Class40_Sub6.tile_height[i_2_][i_0_][i]) + (i_1_ * (Class40_Sub6.tile_height[i_2_][i_0_ + 1][i]))) >> 7);
-        int i_4_ = arg3 & 0x7f;
-        if(arg0 > -116)
-            method432();
-        int i_5_ = ((i_1_ * (Class40_Sub6.tile_height[i_2_][1 + i_0_][1 + i]) + (Class40_Sub6.tile_height[i_2_][i_0_][1 + i] * (128 + -i_1_))) >> 7);
-        return (128 + -i_4_) * i_3_ + (i_5_ * i_4_) >> 7;
+        int groundZ = plane;
+        if(groundZ < 3 && (OverlayDefinition.tile_flags[1][groundX][groundY] & 0x2) == 2)
+            groundZ++;
+        int _x = 0x7f & x;
+        int _y = y & 0x7f;
+        int i2 = (((-_x + 128) * (Class40_Sub6.tile_height[groundZ][groundX][groundY]) + (_x * (Class40_Sub6.tile_height[groundZ][groundX + 1][groundY]))) >> 7);
+        int j2 = ((_x * (Class40_Sub6.tile_height[groundZ][1 + groundX][1 + groundY]) + (Class40_Sub6.tile_height[groundZ][groundX][1 + groundY] * (128 + -_x))) >> 7);
+        return (128 + -_y) * i2 + (j2 * _y) >> 7;
     }
 
     public static void method432() {
@@ -89,7 +87,7 @@ public class Class37 {
         Class35.anInt1728 = 0;
         Class49.anInt1151 = -1;
         VarbitDefinition.anInt2366 = 0;
-        Class27.anInt658 = 0;
+        Class27.minimapState = 0;
         Class40_Sub5_Sub15.anInt2782 = 0;
         IncomingPackets.incomingPacketBuffer.currentPosition = arg0;
         for(int i = 0; ((Player.trackedPlayers).length > i); i++) {
@@ -105,7 +103,7 @@ public class Class37 {
 
     public static void method435(boolean arg0) {
         RSCanvas.method45((byte) -106);
-        if(Class27.anInt658 == 2) {
+        if(Class27.minimapState == 2) {
             int[] is = Rasterizer.pixels;
             byte[] is_6_ = Class34.mapBack.imgPixels;
             int i = is_6_.length;

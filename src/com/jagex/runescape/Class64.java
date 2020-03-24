@@ -220,8 +220,8 @@ public class Class64 implements Runnable {
                 aClass1_1524 = null;
             Landscape.mouseY = Cache.eventMouseY;
             MouseHandler.clickType = Actor.eventMouseButtonPressed;
-            Class57.anInt1338 = Class55.eventClickX;
-            RSString.anInt1668 = Class40_Sub5_Sub11.eventClickY;
+            Class57.clickX = Class55.eventClickX;
+            RSString.clickY = Class40_Sub5_Sub11.eventClickY;
             GameObjectDefinition.aLong2561 = OverlayDefinition.lastClick;
             Actor.eventMouseButtonPressed = 0;
         }

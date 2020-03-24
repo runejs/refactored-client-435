@@ -69,99 +69,98 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         tile_overlayids = null;
     }
 
-    public static void method1002(int arg0) {
-        if(SceneTile.activeInterfaceType == 0) {
-            if(arg0 > -60)
-                clickType = -90;
-            int i = clickType;
-            if(Main.widgetSelected == 1 && Class57.anInt1338 >= 516 && RSString.anInt1668 >= 160 && Class57.anInt1338 <= 765 && RSString.anInt1668 <= 205)
-                i = 0;
-            if(Class4.menuOpen) {
-                if(i != 1) {
-                    int i_3_ = Class13.mouseX;
-                    int i_4_ = Landscape.mouseY;
-                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
-                        i_3_ -= 4;
-                        i_4_ -= 4;
-                    }
-                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
-                        i_4_ -= 205;
-                        i_3_ -= 553;
-                    }
-                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
-                        i_4_ -= 357;
-                        i_3_ -= 17;
-                    }
-                    if((-10 + InteractiveObject.anInt475 > i_3_) || 10 + VertexNormal.anInt1086 + InteractiveObject.anInt475 < i_3_ || (i_4_ < Main.anInt1758 + -10) || ((i_4_ > Main.anInt1758 + CollisionMap.anInt168 + 10))) {
-                        if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
-                            ISAAC.redrawTabArea = true;
-                        Class4.menuOpen = false;
-                        if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
-                            GenericTile.redrawChatbox = true;
-                    }
+    public static void processMenuClick() {
+        if(SceneTile.activeInterfaceType != 0) {
+            return;
+        }
+        int meta = clickType;
+        if(Main.widgetSelected == 1 && Class57.clickX >= 516 && RSString.clickY >= 160 && Class57.clickX <= 765 && RSString.clickY <= 205)
+            meta = 0;
+        if(Class4.menuOpen) {
+            if(meta != 1) {
+                int x = Class13.mouseX;
+                int y = Landscape.mouseY;
+                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
+                    x -= 4;
+                    y -= 4;
                 }
-                if(i == 1) {
-                    int i_5_ = InteractiveObject.anInt475;
-                    int i_6_ = Main.anInt1758;
-                    int i_7_ = VertexNormal.anInt1086;
-                    int i_8_ = Class57.anInt1338;
-                    int i_9_ = -1;
-                    int i_10_ = RSString.anInt1668;
-                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
-                        i_8_ -= 4;
-                        i_10_ -= 4;
-                    }
-                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
-                        i_8_ -= 553;
-                        i_10_ -= 205;
-                    }
-                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
-                        i_8_ -= 17;
-                        i_10_ -= 357;
-                    }
-                    for(int i_11_ = 0; ((i_11_ < ActorDefinition.menuActionRow)); i_11_++) {
-                        int i_12_ = 31 + i_6_ + 15 * (ActorDefinition.menuActionRow + -1 - i_11_);
-                        if(i_8_ > i_5_ && i_8_ < i_7_ + i_5_ && i_10_ > -13 + i_12_ && i_10_ < 3 + i_12_)
-                            i_9_ = i_11_;
-                    }
-                    if(i_9_ != -1)
-                        Class27.doAction(109, i_9_);
+                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
+                    y -= 205;
+                    x -= 553;
+                }
+                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
+                    y -= 357;
+                    x -= 17;
+                }
+                if((-10 + InteractiveObject.menuOffsetX > x) || 10 + VertexNormal.menuWidth + InteractiveObject.menuOffsetX < x || (y < Main.menuOffsetY + -10) || ((y > Main.menuOffsetY + CollisionMap.menuHeight + 10))) {
                     if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
                         ISAAC.redrawTabArea = true;
                     Class4.menuOpen = false;
                     if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
                         GenericTile.redrawChatbox = true;
                 }
-            } else {
-                if(i == 1 && ActorDefinition.menuActionRow > 0) {
-                    int i_0_ = (Class38.menuActionTypes[ActorDefinition.menuActionRow - 1]);
-                    if(i_0_ == 53 || i_0_ == 25 || i_0_ == 55 || i_0_ == 48 || i_0_ == 24 || i_0_ == 52 || i_0_ == 6 || i_0_ == 31 || i_0_ == 43 || i_0_ == 11 || i_0_ == 19 || i_0_ == 1006) {
-                        int i_1_ = (InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow - 1]);
-                        int i_2_ = (Class59.secondMenuOperand[-1 + ActorDefinition.menuActionRow]);
-                        Widget widget = Widget.forId(i_2_);
-                        if(widget.itemSwapable || widget.itemDeletesDraged) {
-                            Renderable.anInt2869 = Class57.anInt1338;
-                            Class40_Sub5_Sub15.aBoolean2784 = false;
-                            SceneTile.activeInterfaceType = 2;
-                            Class48.modifiedWidgetId = i_2_;
-                            ItemDefinition.anInt2798 = RSString.anInt1668;
-                            GroundItemTile.selectedInventorySlot = i_1_;
-                            if(i_2_ >> 16 == HuffmanEncoding.openScreenWidgetId)
-                                SceneTile.activeInterfaceType = 1;
-                            if(Class43.openChatboxWidgetId == i_2_ >> 16)
-                                SceneTile.activeInterfaceType = 3;
-                            Buffer.anInt1978 = 0;
-                            return;
-                        }
+            }
+            if(meta == 1) {
+                int menuX = InteractiveObject.menuOffsetX;
+                int menuY = Main.menuOffsetY;
+                int dx = VertexNormal.menuWidth;
+                int x = Class57.clickX;
+                int y = RSString.clickY;
+                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
+                    x -= 4;
+                    y -= 4;
+                }
+                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
+                    x -= 553;
+                    y -= 205;
+                }
+                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
+                    x -= 17;
+                    y -= 357;
+                }
+                int id = -1;
+                for(int row = 0; ((row < ActorDefinition.menuActionRow)); row++) {
+                    int k3 = 31 + menuY + 15 * (ActorDefinition.menuActionRow + -1 - row);
+                    if(x > menuX && x < dx + menuX && y > -13 + k3 && y < 3 + k3)
+                        id = row;
+                }
+                if(id != -1)
+                    Class27.processMenuActions(109, id);
+                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
+                    ISAAC.redrawTabArea = true;
+                Class4.menuOpen = false;
+                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
+                    GenericTile.redrawChatbox = true;
+            }
+        } else {
+            if(meta == 1 && ActorDefinition.menuActionRow > 0) {
+                int action = (Class38.menuActionTypes[ActorDefinition.menuActionRow - 1]);
+                if(action == 53 || action == 25 || action == 55 || action == 48 || action == 24 || action == 52 || action == 6 || action == 31 || action == 43 || action == 11 || action == 19 || action == 1006) {
+                    int item = (InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow - 1]);
+                    int id = (Class59.secondMenuOperand[-1 + ActorDefinition.menuActionRow]);
+                    Widget widget = Widget.forId(id);
+                    if(widget.itemSwapable || widget.itemDeletesDraged) {
+                        Renderable.anInt2869 = Class57.clickX;
+                        Class40_Sub5_Sub15.lastItemDragged = false;
+                        SceneTile.activeInterfaceType = 2;
+                        Class48.modifiedWidgetId = id;
+                        ItemDefinition.anInt2798 = RSString.clickY;
+                        GroundItemTile.selectedInventorySlot = item;
+                        if(id >> 16 == HuffmanEncoding.openScreenWidgetId)
+                            SceneTile.activeInterfaceType = 1;
+                        if(Class43.openChatboxWidgetId == id >> 16)
+                            SceneTile.activeInterfaceType = 3;
+                        Buffer.lastItemDragTime = 0;
+                        return;
                     }
                 }
-                if(i == 1 && (Class68.anInt1630 == 1 || Class33.method409((byte) 46, -1 + ActorDefinition.menuActionRow)) && ActorDefinition.menuActionRow > 2)
-                    i = 2;
-                if(i == 1 && ActorDefinition.menuActionRow > 0)
-                    Class27.doAction(59, ActorDefinition.menuActionRow + -1);
-                if(i == 2 && ActorDefinition.menuActionRow > 0)
-                    Class60.method990(11451);
             }
+            if(meta == 1 && (Class68.oneMouseButton == 1 || Class33.menuHasAddFriend((byte) 46, -1 + ActorDefinition.menuActionRow)) && ActorDefinition.menuActionRow > 2)
+                meta = 2;
+            if(meta == 1 && ActorDefinition.menuActionRow > 0)
+                Class27.processMenuActions(59, ActorDefinition.menuActionRow + -1);
+            if(meta == 2 && ActorDefinition.menuActionRow > 0)
+                Class60.determineMenuSize(11451);
         }
     }
 
