@@ -1,41 +1,41 @@
 package com.jagex.runescape.scene.tile;
 
 public class ComplexTile {
-    public static int[] anIntArray358;
-    public static int[] anIntArray360 = new int[6];
-    public static int[] anIntArray363;
-    public static int[] anIntArray370;
+    public static int[] screenY;
+    public static int[] viewspaceZ = new int[6];
+    public static int[] screenX;
+    public static int[] viewspaceX;
     public static int[][] anIntArrayArray371;
-    public static int[] anIntArray375 = new int[6];
+    public static int[] viewspaceY = new int[6];
     public static int[][] anIntArrayArray377;
 
     static {
-        anIntArray363 = new int[6];
-        anIntArray358 = new int[6];
+        screenX = new int[6];
+        screenY = new int[6];
         anIntArrayArray371 = new int[][]{{0, 1, 2, 3, 0, 0, 1, 3}, {1, 1, 2, 3, 1, 0, 1, 3}, {0, 1, 2, 3, 1, 0, 1, 3}, {0, 0, 1, 2, 0, 0, 2, 4, 1, 0, 4, 3}, {0, 0, 1, 4, 0, 0, 4, 3, 1, 1, 2, 4}, {0, 0, 4, 3, 1, 0, 1, 2, 1, 0, 2, 4}, {0, 1, 2, 4, 1, 0, 1, 4, 1, 0, 4, 3}, {0, 4, 1, 2, 0, 4, 2, 5, 1, 0, 4, 5, 1, 0, 5, 3}, {0, 4, 1, 2, 0, 4, 2, 3, 0, 4, 3, 5, 1, 0, 4, 5}, {0, 0, 4, 5, 1, 4, 1, 2, 1, 4, 2, 3, 1, 4, 3, 5}, {0, 0, 1, 5, 0, 1, 4, 5, 0, 1, 2, 4, 1, 0, 5, 3, 1, 5, 4, 3, 1, 4, 2, 3}, {1, 0, 1, 5, 1, 1, 4, 5, 1, 1, 2, 4, 0, 0, 5, 3, 0, 5, 4, 3, 0, 4, 2, 3}, {1, 0, 5, 4, 1, 0, 1, 5, 0, 0, 4, 3, 0, 4, 5, 3, 0, 5, 2, 3, 0, 1, 2, 5}};
         anIntArrayArray377 = new int[][]{{1, 3, 5, 7}, {1, 3, 5, 7}, {1, 3, 5, 7}, {1, 3, 5, 7, 6}, {1, 3, 5, 7, 6}, {1, 3, 5, 7, 6}, {1, 3, 5, 7, 6}, {1, 3, 5, 7, 2, 6}, {1, 3, 5, 7, 2, 8}, {1, 3, 5, 7, 2, 8}, {1, 3, 5, 7, 11, 12}, {1, 3, 5, 7, 11, 12}, {1, 3, 5, 7, 13, 14}};
-        anIntArray370 = new int[6];
+        viewspaceX = new int[6];
     }
 
     public int[] anIntArray359;
-    public int[] anIntArray361;
-    public int[] anIntArray362;
+    public int[] triangleTexture;
+    public int[] triangleB;
     public int anInt364;
-    public boolean aBoolean365 = true;
+    public boolean flat = true;
     public int anInt366;
-    public int[] anIntArray367;
-    public int[] anIntArray368;
-    public int[] anIntArray369;
-    public int[] anIntArray372;
+    public int[] triangleHSLA;
+    public int[] triangleC;
+    public int[] triangleHSLB;
+    public int[] triangleHSLC;
     public int anInt373;
-    public int[] anIntArray374;
+    public int[] triangleA;
     public int[] anIntArray376;
     public int[] anIntArray378;
     public int anInt379;
 
     public ComplexTile(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, int arg12, int arg13, int arg14, int arg15, int arg16, int arg17, int arg18) {
         if(arg5 != arg6 || arg5 != arg7 || arg5 != arg8)
-            aBoolean365 = false;
+            flat = false;
         anInt373 = arg0;
         anInt364 = arg1;
         anInt379 = arg17;
@@ -171,14 +171,14 @@ public class ComplexTile {
         }
         int[] is_15_ = anIntArrayArray371[arg0];
         int i_16_ = is_15_.length / 4;
-        anIntArray374 = new int[i_16_];
-        anIntArray362 = new int[i_16_];
-        anIntArray368 = new int[i_16_];
-        anIntArray367 = new int[i_16_];
-        anIntArray369 = new int[i_16_];
-        anIntArray372 = new int[i_16_];
+        triangleA = new int[i_16_];
+        triangleB = new int[i_16_];
+        triangleC = new int[i_16_];
+        triangleHSLA = new int[i_16_];
+        triangleHSLB = new int[i_16_];
+        triangleHSLC = new int[i_16_];
         if(arg2 != -1)
-            anIntArray361 = new int[i_16_];
+            triangleTexture = new int[i_16_];
         int i_17_ = 0;
         for(int i_18_ = 0; i_18_ < i_16_; i_18_++) {
             int i_19_ = is_15_[i_17_];
@@ -192,21 +192,21 @@ public class ComplexTile {
                 i_21_ = i_21_ - arg1 & 0x3;
             if(i_22_ < 4)
                 i_22_ = i_22_ - arg1 & 0x3;
-            anIntArray374[i_18_] = i_20_;
-            anIntArray362[i_18_] = i_21_;
-            anIntArray368[i_18_] = i_22_;
+            triangleA[i_18_] = i_20_;
+            triangleB[i_18_] = i_21_;
+            triangleC[i_18_] = i_22_;
             if(i_19_ == 0) {
-                anIntArray367[i_18_] = is_4_[i_20_];
-                anIntArray369[i_18_] = is_4_[i_21_];
-                anIntArray372[i_18_] = is_4_[i_22_];
-                if(anIntArray361 != null)
-                    anIntArray361[i_18_] = -1;
+                triangleHSLA[i_18_] = is_4_[i_20_];
+                triangleHSLB[i_18_] = is_4_[i_21_];
+                triangleHSLC[i_18_] = is_4_[i_22_];
+                if(triangleTexture != null)
+                    triangleTexture[i_18_] = -1;
             } else {
-                anIntArray367[i_18_] = is_5_[i_20_];
-                anIntArray369[i_18_] = is_5_[i_21_];
-                anIntArray372[i_18_] = is_5_[i_22_];
-                if(anIntArray361 != null)
-                    anIntArray361[i_18_] = arg2;
+                triangleHSLA[i_18_] = is_5_[i_20_];
+                triangleHSLB[i_18_] = is_5_[i_21_];
+                triangleHSLC[i_18_] = is_5_[i_22_];
+                if(triangleTexture != null)
+                    triangleTexture[i_18_] = arg2;
             }
         }
         int i_23_ = arg5;
@@ -228,11 +228,11 @@ public class ComplexTile {
     }
 
     public static void method239() {
-        anIntArray363 = null;
-        anIntArray358 = null;
-        anIntArray370 = null;
-        anIntArray375 = null;
-        anIntArray360 = null;
+        screenX = null;
+        screenY = null;
+        viewspaceX = null;
+        viewspaceY = null;
+        viewspaceZ = null;
         anIntArrayArray377 = null;
         anIntArrayArray371 = null;
     }

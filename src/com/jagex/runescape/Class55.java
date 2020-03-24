@@ -122,7 +122,7 @@ public class Class55 {
         Class40_Sub5_Sub11.aClass1_2622 = ActorDefinition.aClass1_2417;
         Item.aClass1_3066 = Class40_Sub5_Sub17_Sub6.aClass1_3247;
         Class59.string_Hidden = ActorDefinition.aClass1_2417;
-        Class68.aClass1_1635 = Class65.aClass1_1530;
+        Class68.str_Cancel = Class65.aClass1_1530;
         Node.aClass1_966 = Class67.aClass1_1613;
         InteractiveObject.aClass1_495 = Class60.aClass1_1401;
         ActorDefinition.aClass1_2396 = Class34.aClass1_850;

@@ -76,7 +76,7 @@ public class Class64 implements Runnable {
         if(Class68.method1043(arg0)) {
             Widget[] widgets = Widget.interfaces[arg0];
             if(arg1 != 2)
-                method1013(true);
+                method1013();
             for(int i = 0; widgets.length > i; i++) {
                 Widget widget = widgets[i];
                 if(widget.anObjectArray2677 != null)
@@ -85,10 +85,8 @@ public class Class64 implements Runnable {
         }
     }
 
-    public static void method1013(boolean arg0) {
+    public static void method1013() {
         int lasthash = -1;
-        if(arg0)
-            method1013(false);
         if(Class8.itemSelected == 0 && Main.widgetSelected == 0) {
             OverlayDefinition.addActionRow(Class22_Sub2.aClass1_1876, 0, Class13.mouseX, Landscape.mouseY, 7, HuffmanEncoding.blank_string);
         }
@@ -112,7 +110,7 @@ public class Class64 implements Runnable {
                     } else if(Main.widgetSelected != 1) {
                         RSString[] class1s = gameObjectDefinition.actions;
                         if(Class60.aBoolean1402)
-                            class1s = Class56.method968(class1s, arg0);
+                            class1s = Class56.method968(class1s, false);
                         if(class1s != null) {
                             for(int i_7_ = 4; i_7_ >= 0; i_7_--) {
                                 if(class1s[i_7_] != null) {
@@ -178,7 +176,7 @@ public class Class64 implements Runnable {
                             } else if(Main.widgetSelected != 1) {
                                 RSString[] class1s = itemDefinition.groundOptions;
                                 if(Class60.aBoolean1402)
-                                    class1s = Class56.method968(class1s, arg0);
+                                    class1s = Class56.method968(class1s, false);
                                 for(int i_15_ = 4; i_15_ >= 0; i_15_--) {
                                     if(class1s == null || class1s[i_15_] == null) {
                                         if(i_15_ == 2) {

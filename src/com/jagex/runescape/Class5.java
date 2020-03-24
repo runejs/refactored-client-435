@@ -78,7 +78,7 @@ public class Class5 {
         if(UnderlayDefinition.openSecondaryWidgetId != -1)
             Class40_Sub5_Sub6.drawInterface(0, UnderlayDefinition.openSecondaryWidgetId, 503, (byte) -5, 0, 0, 765);
         if(!Class4.menuOpen) {
-            Class43.method894(false);
+            Class43.processRightClick();
             SceneTile.method537(4);
         } else
             Class40_Sub5_Sub6.method588(-1);

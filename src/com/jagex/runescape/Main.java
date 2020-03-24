@@ -960,7 +960,7 @@ public class Main extends RSApplet {
     }
 
     public void reset() {
-        // TODO: Should all these also be "reset"
+        // TODO: Should all these also be "reset"?
         method41();
         RSString.method83();
         RSApplet.method18();

@@ -227,14 +227,9 @@ public class Npc extends Actor {
                                 if(SceneTile.activeInterfaceType == 2)
                                     ISAAC.redrawTabArea = true;
                                 SceneTile.activeInterfaceType = 0;
-                                if(!Class40_Sub5_Sub15.lastItemDragged || Buffer.lastItemDragTime < 5) {
-                                    if((Class68.oneMouseButton == 1 || (Class33.menuHasAddFriend((byte) 63, (ActorDefinition.menuActionRow - 1)))) && ActorDefinition.menuActionRow > 2)
-                                        Class60.determineMenuSize();
-                                    else if(ActorDefinition.menuActionRow > 0)
-                                        Class27.processMenuActions(123, (-1 + (ActorDefinition.menuActionRow)));
-                                } else {
+                                if(Class40_Sub5_Sub15.lastItemDragged && Buffer.lastItemDragTime >= 5) {
                                     RSRuntimeException.lastActiveInvInterface = -1;
-                                    Class43.method894(false);
+                                    Class43.processRightClick();
                                     if((RSRuntimeException.lastActiveInvInterface == Class48.modifiedWidgetId) && (Class55.mouseInvInterfaceIndex != GroundItemTile.selectedInventorySlot)) {
                                         Widget childInterface = Widget.forId((Class48.modifiedWidgetId));
                                         int moveItemInsertionMode = 0;
@@ -271,6 +266,11 @@ public class Npc extends Actor {
                                         SceneCluster.packetBuffer.putShortLE(Class55.mouseInvInterfaceIndex);
                                         SceneCluster.packetBuffer.putIntME2(Class48.modifiedWidgetId);
                                     }
+                                } else {
+                                    if((Class68.oneMouseButton == 1 || (Class33.menuHasAddFriend((byte) 63, (ActorDefinition.menuActionRow - 1)))) && ActorDefinition.menuActionRow > 2)
+                                        Class60.determineMenuSize();
+                                    else if(ActorDefinition.menuActionRow > 0)
+                                        Class27.processMenuActions(123, (-1 + (ActorDefinition.menuActionRow)));
                                 }
                                 RSRuntimeException.anInt1651 = 10;
                                 MouseHandler.clickType = 0;

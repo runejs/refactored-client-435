@@ -22,7 +22,7 @@ public abstract class Class68 {
     public static SignlinkNode aSignlinkNode_1632;
     public static RSString aClass1_1633 = RSString.CreateString(" is already on your ignore list");
     public static int anInt1634 = 0;
-    public static RSString aClass1_1635;
+    public static RSString str_Cancel;
     public static RSString aClass1_1636 = RSString.CreateString("Loaded title screen");
     public static int anInt1637 = 0;
     public static RSString aClass1_1638;
@@ -32,7 +32,7 @@ public abstract class Class68 {
     static {
         aClass1_1638 = aClass1_1636;
         aClass1_1628 = aClass1_1633;
-        aClass1_1635 = aClass1_1640;
+        str_Cancel = aClass1_1640;
     }
 
     public int anInt1617;
@@ -72,7 +72,7 @@ public abstract class Class68 {
         aClass1_1636 = null;
         aClass9_1615 = null;
         aClass1_1640 = null;
-        aClass1_1635 = null;
+        str_Cancel = null;
         aClass1_1628 = null;
         aClass1_1633 = null;
     }

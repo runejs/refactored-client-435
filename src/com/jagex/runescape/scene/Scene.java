@@ -828,7 +828,7 @@ public class Scene {
                                 renderPlainTile(sceneTile_84_.plainTile, 0, anInt82, anInt110, anInt104, anInt99, i, i_76_);
                             }
                         } else if(sceneTile_84_.shapedTile != null && !isTileOccluded(i, i_76_, 0)) {
-                            method138(sceneTile_84_.shapedTile, anInt82, anInt110, anInt104, anInt99, i, i_76_);
+                            renderShapedTile(sceneTile_84_.shapedTile, i, i_76_, anInt104, anInt99, anInt82, anInt110);
                         }
                         Wall wall = sceneTile_84_.wall;
                         if(wall != null) {
@@ -849,7 +849,7 @@ public class Scene {
                         }
                     } else if(groundTile.shapedTile != null && !isTileOccluded(i, i_76_, i_78_)) {
                         bool = true;
-                        method138(groundTile.shapedTile, anInt82, anInt110, anInt104, anInt99, i, i_76_);
+                        renderShapedTile(groundTile.shapedTile, i, i_76_, anInt104, anInt99, anInt82, anInt110);
                     }
                     int i_86_ = 0;
                     int i_87_ = 0;
@@ -1863,67 +1863,67 @@ public class Scene {
         }
     }
 
-    public boolean method137(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, Renderable arg6, int arg7, int arg8, int arg9) {
-        if(arg6 == null) {
+    public boolean method137(int arg0, int x, int y, int arg3, int tileHeight, int tileWidth, Renderable entity, int arg7, int arg8, int arg9) {
+        if(entity == null) {
             return true;
         }
-        int i = arg1 * 128 + 64 * arg4;
-        int i_224_ = arg2 * 128 + 64 * arg5;
-        return addRenderableC(arg0, arg1, arg2, arg4, arg5, i, i_224_, arg3, arg6, arg7, false, arg8, arg9);
+        int worldX = x * 128 + 64 * tileHeight;
+        int worldY = y * 128 + 64 * tileWidth;
+        return addRenderableC(arg0, x, y, tileHeight, tileWidth, worldX, worldY, arg3, entity, arg7, false, arg8, arg9);
     }
 
-    public void method138(ComplexTile arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
-        int i = arg0.anIntArray359.length;
-        for(int i_225_ = 0; i_225_ < i; i_225_++) {
-            int i_226_ = arg0.anIntArray359[i_225_] - cameraPosX;
-            int i_227_ = arg0.anIntArray376[i_225_] - cameraPosZ;
-            int i_228_ = arg0.anIntArray378[i_225_] - cameraPosY;
-            int i_229_ = i_228_ * arg3 + i_226_ * arg4 >> 16;
-            i_228_ = i_228_ * arg4 - i_226_ * arg3 >> 16;
-            i_226_ = i_229_;
-            i_229_ = i_227_ * arg2 - i_228_ * arg1 >> 16;
-            i_228_ = i_227_ * arg1 + i_228_ * arg2 >> 16;
-            i_227_ = i_229_;
-            if(i_228_ < 50) {
+    public void renderShapedTile(ComplexTile shapedTile, int tileX, int tileY, int sineX, int cosineX, int sineY, int cosineY) {
+        int triangleCount = shapedTile.anIntArray359.length;
+        for(int triangle = 0; triangle < triangleCount; triangle++) {
+            int viewspaceX = shapedTile.anIntArray359[triangle] - cameraPosX;
+            int viewspaceY = shapedTile.anIntArray376[triangle] - cameraPosZ;
+            int viewspaceZ = shapedTile.anIntArray378[triangle] - cameraPosY;
+            int temp = viewspaceZ * sineX + viewspaceX * cosineX >> 16;
+            viewspaceZ = viewspaceZ * cosineX - viewspaceX * sineX >> 16;
+            viewspaceX = temp;
+            temp = viewspaceY * cosineY - viewspaceZ * sineY >> 16;
+            viewspaceZ = viewspaceY * sineY + viewspaceZ * cosineY >> 16;
+            viewspaceY = temp;
+            if(viewspaceZ < 50) {
                 return;
             }
-            if(arg0.anIntArray361 != null) {
-                ComplexTile.anIntArray370[i_225_] = i_226_;
-                ComplexTile.anIntArray375[i_225_] = i_227_;
-                ComplexTile.anIntArray360[i_225_] = i_228_;
+            if(shapedTile.triangleTexture != null) {
+                ComplexTile.viewspaceX[triangle] = viewspaceX;
+                ComplexTile.viewspaceY[triangle] = viewspaceY;
+                ComplexTile.viewspaceZ[triangle] = viewspaceZ;
             }
-            ComplexTile.anIntArray363[i_225_] = Rasterizer3D.center_x + (i_226_ << 9) / i_228_;
-            ComplexTile.anIntArray358[i_225_] = Rasterizer3D.center_y + (i_227_ << 9) / i_228_;
+            ComplexTile.screenX[triangle] = Rasterizer3D.center_x + (viewspaceX << 9) / viewspaceZ;
+            ComplexTile.screenY[triangle] = Rasterizer3D.center_y + (viewspaceY << 9) / viewspaceZ;
         }
         Rasterizer3D.alpha = 0;
-        i = arg0.anIntArray374.length;
-        for(int i_230_ = 0; i_230_ < i; i_230_++) {
-            int i_231_ = arg0.anIntArray374[i_230_];
-            int i_232_ = arg0.anIntArray362[i_230_];
-            int i_233_ = arg0.anIntArray368[i_230_];
-            int i_234_ = ComplexTile.anIntArray363[i_231_];
-            int i_235_ = ComplexTile.anIntArray363[i_232_];
-            int i_236_ = ComplexTile.anIntArray363[i_233_];
-            int i_237_ = ComplexTile.anIntArray358[i_231_];
-            int i_238_ = ComplexTile.anIntArray358[i_232_];
-            int i_239_ = ComplexTile.anIntArray358[i_233_];
-            if(((i_234_ - i_235_) * (i_239_ - i_238_) - (i_237_ - i_238_) * (i_236_ - i_235_)) > 0) {
-                Rasterizer3D.restrict_edges = i_234_ < 0 || i_235_ < 0 || i_236_ < 0 || i_234_ > Rasterizer3D.viewportRx || i_235_ > Rasterizer3D.viewportRx || i_236_ > Rasterizer3D.viewportRx;
-                if(clicked && isMouseWithinTriangle(clickX, clickY, i_237_, i_238_, i_239_, i_234_, i_235_, i_236_)) {
-                    clickedTileX = arg5;
-                    clickedTileY = arg6;
+        triangleCount = shapedTile.triangleA.length;
+        for(int triangle = 0; triangle < triangleCount; triangle++) {
+            int a = shapedTile.triangleA[triangle];
+            int b = shapedTile.triangleB[triangle];
+            int c = shapedTile.triangleC[triangle];
+            int screenXA = ComplexTile.screenX[a];
+            int screenXB = ComplexTile.screenX[b];
+            int screenXC = ComplexTile.screenX[c];
+            int screenYA = ComplexTile.screenY[a];
+            int screenYB = ComplexTile.screenY[b];
+            int screenYC = ComplexTile.screenY[c];
+            if(((screenXA - screenXB) * (screenYC - screenYB) - (screenYA - screenYB) * (screenXC - screenXB)) > 0) {
+                Rasterizer3D.restrict_edges = screenXA < 0 || screenXB < 0 || screenXC < 0 || screenXA > Rasterizer3D.viewportRx || screenXB > Rasterizer3D.viewportRx || screenXC > Rasterizer3D.viewportRx;
+                if(clicked && isMouseWithinTriangle(clickX, clickY, screenYA, screenYB, screenYC, screenXA, screenXB, screenXC)) {
+                    clickedTileX = tileX;
+                    clickedTileY = tileY;
                 }
-                if(arg0.anIntArray361 == null || arg0.anIntArray361[i_230_] == -1) {
-                    if(arg0.anIntArray367[i_230_] != 12345678) {
-                        Rasterizer3D.drawShadedTriangle(i_237_, i_238_, i_239_, i_234_, i_235_, i_236_, arg0.anIntArray367[i_230_], arg0.anIntArray369[i_230_], arg0.anIntArray372[i_230_]);
+                if(shapedTile.triangleTexture == null || shapedTile.triangleTexture[triangle] == -1) {
+                    if(shapedTile.triangleHSLA[triangle] != 0xbc614e) {
+                        Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, shapedTile.triangleHSLA[triangle], shapedTile.triangleHSLB[triangle], shapedTile.triangleHSLC[triangle]);
                     }
                 } else if(lowMemory) {
-                    int i_240_ = Rasterizer3D.anInterface3_2939.method14(true, arg0.anIntArray361[i_230_]);
-                    Rasterizer3D.drawShadedTriangle(i_237_, i_238_, i_239_, i_234_, i_235_, i_236_, method108(i_240_, arg0.anIntArray367[i_230_]), method108(i_240_, arg0.anIntArray369[i_230_]), method108(i_240_, arg0.anIntArray372[i_230_]));
-                } else if(arg0.aBoolean365) {
-                    Rasterizer3D.drawTexturedTriangle(i_237_, i_238_, i_239_, i_234_, i_235_, i_236_, arg0.anIntArray367[i_230_], arg0.anIntArray369[i_230_], arg0.anIntArray372[i_230_], ComplexTile.anIntArray370[0], ComplexTile.anIntArray370[1], ComplexTile.anIntArray370[3], ComplexTile.anIntArray375[0], ComplexTile.anIntArray375[1], ComplexTile.anIntArray375[3], ComplexTile.anIntArray360[0], ComplexTile.anIntArray360[1], ComplexTile.anIntArray360[3], arg0.anIntArray361[i_230_]);
+                    int i_240_ = Rasterizer3D.anInterface3_2939.method14(true, shapedTile.triangleTexture[triangle]);
+                    Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, method108(i_240_, shapedTile.triangleHSLA[triangle]), method108(i_240_, shapedTile.triangleHSLB[triangle]), method108(i_240_, shapedTile.triangleHSLC[triangle]));
+                } else if(shapedTile.flat) {
+                    Rasterizer3D.drawTexturedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, shapedTile.triangleHSLA[triangle], shapedTile.triangleHSLB[triangle], shapedTile.triangleHSLC[triangle], ComplexTile.viewspaceX[0], ComplexTile.viewspaceX[1], ComplexTile.viewspaceX[3], ComplexTile.viewspaceY[0], ComplexTile.viewspaceY[1], ComplexTile.viewspaceY[3], ComplexTile.viewspaceZ[0], ComplexTile.viewspaceZ[1], ComplexTile.viewspaceZ[3], shapedTile.triangleTexture[triangle]);
                 } else {
-                    Rasterizer3D.drawTexturedTriangle(i_237_, i_238_, i_239_, i_234_, i_235_, i_236_, arg0.anIntArray367[i_230_], arg0.anIntArray369[i_230_], arg0.anIntArray372[i_230_], ComplexTile.anIntArray370[i_231_], ComplexTile.anIntArray370[i_232_], ComplexTile.anIntArray370[i_233_], ComplexTile.anIntArray375[i_231_], ComplexTile.anIntArray375[i_232_], ComplexTile.anIntArray375[i_233_], ComplexTile.anIntArray360[i_231_], ComplexTile.anIntArray360[i_232_], ComplexTile.anIntArray360[i_233_], arg0.anIntArray361[i_230_]);
+                    Rasterizer3D.drawTexturedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, shapedTile.triangleHSLA[triangle], shapedTile.triangleHSLB[triangle], shapedTile.triangleHSLC[triangle], ComplexTile.viewspaceX[a], ComplexTile.viewspaceX[b], ComplexTile.viewspaceX[c], ComplexTile.viewspaceY[a], ComplexTile.viewspaceY[b], ComplexTile.viewspaceY[c], ComplexTile.viewspaceZ[a], ComplexTile.viewspaceZ[b], ComplexTile.viewspaceZ[c], shapedTile.triangleTexture[triangle]);
                 }
             }
         }

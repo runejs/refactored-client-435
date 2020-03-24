@@ -72,7 +72,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0)
                     Class40_Sub5_Sub6.method588(-1);
             } else {
-                Class43.method894(false);
+                Class43.processRightClick();
                 SceneTile.method537(4);
             }
             if(Class40_Sub6.anInt2118 == 1)

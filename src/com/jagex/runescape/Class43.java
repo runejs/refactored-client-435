@@ -68,19 +68,19 @@ public class Class43 {
         char_colon = null;
     }
 
-    public static void method894(boolean arg0) {
+    public static void processRightClick() {
         if(SceneTile.activeInterfaceType == 0) {
-            Landscape.menuActionTexts[0] = Class68.aClass1_1635;
+            Landscape.menuActionTexts[0] = Class68.str_Cancel;
             Class38.menuActionTypes[0] = 1005;
             ActorDefinition.menuActionRow = 1;
             if(ActorDefinition.openFullScreenWidgetId == -1) {
                 Class38_Sub1.method445(9767);
                 Item.anInt3065 = -1;
                 OverlayDefinition.anInt2328 = -1;
-                boolean bool = arg0;
+                boolean bool = false;
                 if(Class13.mouseX > 4 && Landscape.mouseY > 4 && Class13.mouseX < 516 && Landscape.mouseY < 338) {
                     if(HuffmanEncoding.openScreenWidgetId == -1)
-                        Class64.method1013(arg0);
+                        Class64.method1013();
                     else
                         Class13.method243((byte) 89, 4, 516, 338, HuffmanEncoding.openScreenWidgetId, 4, Class13.mouseX, Landscape.mouseY, 0);
                 }
