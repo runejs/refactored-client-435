@@ -382,11 +382,11 @@ public class Class33 {
     public static synchronized void method413(byte arg0) {
         if(Class24.method340()) {
             if(Class26.aBoolean618) {
-                byte[] is = RSString.method74(Class40_Sub5_Sub17_Sub1.anInt3004, Class22_Sub1.aCacheIndex_1855, Class8.anInt289, -118, Class40_Sub6.anInt2110);
+                byte[] is = RSString.method74(Class40_Sub5_Sub17_Sub1.anInt3004, Class22_Sub1.aCacheIndex_1855, Class8.anInt289, Class40_Sub6.anInt2110);
                 if(is != null) {
                     if(CacheIndex.anInt255 < 0) {
                         if(CacheIndex_Sub1.anInt1806 < 0)
-                            RSString.method56(2037, Main.aBoolean1790, is, OverlayDefinition.anInt2342);
+                            RSString.method56(Main.aBoolean1790, is, OverlayDefinition.anInt2342);
                         else
                             VarbitDefinition.method566((OverlayDefinition.anInt2342), Main.aBoolean1790, CacheIndex_Sub1.anInt1806, is, -27520);
                     } else

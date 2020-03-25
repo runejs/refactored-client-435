@@ -197,9 +197,9 @@ public class Class43 {
                 int i_7_ = 31 + i_2_ + (ActorDefinition.menuActionRow + (-1 + -i_6_)) * 15;
                 RSString class1_8_ = Landscape.menuActionTexts[i_6_];
                 int i_9_ = 16777215;
-                if(class1_8_.method87(arg0 + 112, class1)) {
+                if(class1_8_.method87(class1)) {
                     class1_8_ = class1_8_.substring(0, (class1_8_.length() - class1.length()));
-                    if(class1_8_.method87(arg0 ^ ~0x6f, VertexNormal.aClass1_1117))
+                    if(class1_8_.method87(VertexNormal.aClass1_1117))
                         class1_8_ = (class1_8_.substring(0, (class1_8_.length() + -VertexNormal.aClass1_1117.length())));
                 }
                 if((i_0_ < i_4_) && (i_4_ < i_0_ + i) && -13 + i_7_ < i_5_ && 3 + i_7_ > i_5_)

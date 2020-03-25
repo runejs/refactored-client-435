@@ -161,12 +161,12 @@ public class ActorDefinition extends SubNode {
                 int i_7_ = arg2.getUnsignedByte();
                 if(i_7_ != 0 && i_7_ != 1 && i_7_ != 2) {
                     if(i_7_ == 3 || i_7_ == 4) {
-                        String string = new String(arg2.getRSString().method80(0));
-                        String string_8_ = new String(arg2.getRSString().method80(0));
+                        String string = new String(arg2.getRSString().method80());
+                        String string_8_ = new String(arg2.getRSString().method80());
                         int i_9_ = arg2.getUnsignedByte();
                         String[] strings = new String[i_9_];
                         for(int i_10_ = 0; i_9_ > i_10_; i_10_++) {
-                            strings[i_10_] = new String(arg2.getRSString().method80(0));
+                            strings[i_10_] = new String(arg2.getRSString().method80());
                         }
                         byte[][] is = new byte[i_9_][];
                         if(i_7_ == 3) {
@@ -186,8 +186,8 @@ public class ActorDefinition extends SubNode {
                     }
                 } else {
                     int i_14_ = 0;
-                    String string = new String(arg2.getRSString().method80(0));
-                    String string_15_ = new String(arg2.getRSString().method80(0));
+                    String string = new String(arg2.getRSString().method80());
+                    String string_15_ = new String(arg2.getRSString().method80());
                     if(i_7_ == 1) {
                         i_14_ = arg2.getIntBE();
                     }

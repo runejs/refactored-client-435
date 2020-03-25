@@ -107,15 +107,15 @@ public class IncomingPackets {
             RSString.anInt1690 = incomingPacket;
             if(incomingPacket == 71) {
                 long l = incomingPacketBuffer.getLongBE();
-                RSString class1 = KeyFocusListener.method956(82, incomingPacketBuffer).method53(-16315);
-                Class44.addChatMessage(Class60.method991(-42, l).method85(-4305), class1, 6);
+                RSString class1 = KeyFocusListener.method956(82, incomingPacketBuffer).method53();
+                Class44.addChatMessage(Class60.method991(-42, l).method85(), class1, 6);
                 incomingPacket = -1;
                 return true;
             }
             if(incomingPacket == 156) { // friend logged in
                 long l = incomingPacketBuffer.getLongBE();
                 int i_1_ = incomingPacketBuffer.getUnsignedShortBE();
-                RSString string = Class60.method991(-64, l).method85(-4305);
+                RSString string = Class60.method991(-64, l).method85();
                 for(int i_2_ = 0; i_2_ < Item.friendsCount; i_2_++) {
                     if(l == Class59.aLongArray1397[i_2_]) {
                         if(i_1_ != Class40_Sub7.friendWorlds[i_2_]) {
@@ -316,7 +316,7 @@ public class IncomingPackets {
             }
             if(incomingPacket == 82) {
                 RSString message = incomingPacketBuffer.getRSString();
-                if(message.method87(103, AnimationSequence.requestcmd_tradereq)) {
+                if(message.method87(AnimationSequence.requestcmd_tradereq)) {
                     RSString class1_32_ = message.substring(0, message.contains((Class43.char_colon)));
                     long l = class1_32_.method58((byte) 98);
                     boolean bool = false;
@@ -328,7 +328,7 @@ public class IncomingPackets {
                     }
                     if(!bool && Class4.anInt182 == 0)
                         Class44.addChatMessage(class1_32_, Class4.aClass1_180, 4);
-                } else if(message.method87(104, Class40_Sub5_Sub6.requestcmd_duelreq)) {
+                } else if(message.method87(Class40_Sub5_Sub6.requestcmd_duelreq)) {
                     RSString class1_30_ = (message.substring(0, message.contains(Class43.char_colon)));
                     long l = class1_30_.method58((byte) 120);
                     boolean bool = false;
@@ -340,7 +340,7 @@ public class IncomingPackets {
                     }
                     if(!bool && Class4.anInt182 == 0)
                         Class44.addChatMessage(class1_30_, Class61.aClass1_1428, 8);
-                } else if(message.method87(81, Node.requestcmd_chalreq)) {
+                } else if(message.method87(Node.requestcmd_chalreq)) {
                     RSString class1_27_ = (message.substring(0, message.contains(Class43.char_colon)));
                     long l = class1_27_.method58((byte) 121);
                     boolean bool = false;
@@ -1006,13 +1006,13 @@ public class IncomingPackets {
                 if(!bool && Class4.anInt182 == 0) {
                     Class40_Sub5_Sub13.aLongArray2757[(Class40_Sub3.anInt2021)] = l_91_;
                     Class40_Sub3.anInt2021 = (1 + Class40_Sub3.anInt2021) % 100;
-                    RSString class1 = KeyFocusListener.method956(67, incomingPacketBuffer).method53(-16315);
+                    RSString class1 = KeyFocusListener.method956(67, incomingPacketBuffer).method53();
                     if(i_90_ == 2 || i_90_ == 3)
-                        Class44.addChatMessage((RSString.linkRSStrings((new RSString[]{(Widget.goldCrown), Class60.method991(-73, l).method85(-4305)}))), class1, 7);
+                        Class44.addChatMessage((RSString.linkRSStrings((new RSString[]{(Widget.goldCrown), Class60.method991(-73, l).method85()}))), class1, 7);
                     else if(i_90_ == 1)
-                        Class44.addChatMessage((RSString.linkRSStrings((new RSString[]{Class51.whiteCrown, Class60.method991(-46, l).method85(-4305)}))), class1, 7);
+                        Class44.addChatMessage((RSString.linkRSStrings((new RSString[]{Class51.whiteCrown, Class60.method991(-46, l).method85()}))), class1, 7);
                     else
-                        Class44.addChatMessage(Class60.method991(-55, l).method85(-4305), class1, 3);
+                        Class44.addChatMessage(Class60.method991(-55, l).method85(), class1, 3);
                 }
                 incomingPacket = -1;
                 return true;

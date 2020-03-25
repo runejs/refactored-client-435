@@ -98,7 +98,7 @@ public class Class17 {
             if(Class42.anInt1008 >= 100)
                 Class44.addChatMessage(HuffmanEncoding.blank_string, Landscape.aClass1_1180, 0);
             else {
-                RSString class1 = Class60.method991(-107, arg1).method85(-4305);
+                RSString class1 = Class60.method991(-107, arg1).method85();
                 for(int i = 0; i < Class42.anInt1008; i++) {
                     if(arg1 == WallDecoration.ignores[i]) {
                         Class44.addChatMessage(HuffmanEncoding.blank_string, (RSString.linkRSStrings((new RSString[]{class1, Class68.aClass1_1628}))), 0);

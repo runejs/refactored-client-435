@@ -140,7 +140,7 @@ public abstract class Class22 {
     }
 
     public static void method308() {
-        RSString.method56(2037, false, null, 0);
+        RSString.method56(false, null, 0);
     }
 
     public static void method309(int arg0, int arg1) {

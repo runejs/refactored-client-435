@@ -192,7 +192,7 @@ public class Class60 {
                     Node.anInt947 = 1;
                 i_16_ += 15;
                 if(i_11_ == 1 && i_17_ + -75 <= i && i <= i_17_ + 75 && (i_12_ >= i_18_ + -20) && (i_12_ <= i_18_ + 20)) {
-                    Class22_Sub2.username = Class22_Sub2.username.method62(57).method85(-4305);
+                    Class22_Sub2.username = Class22_Sub2.username.method62().method85();
                     Class33.method411(Node.aClass1_964, Node.aClass1_958, Class40_Sub5_Sub17_Sub1.aClass1_3009, (byte) 106);
                     OverlayDefinition.method559(20);
                 } else {

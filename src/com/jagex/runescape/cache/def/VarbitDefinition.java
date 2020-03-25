@@ -84,7 +84,7 @@ public class VarbitDefinition extends SubNode {
                 PacketBuffer.anInt2258 = arg0;
                 Class30.aBoolean687 = arg1;
             } else if(RSCanvas.anInt54 == 0)
-                RSString.method56(2037, arg1, arg3, arg0);
+                RSString.method56(arg1, arg3, arg0);
             else {
                 PacketBuffer.anInt2258 = arg0;
                 Class30.aBoolean687 = arg1;

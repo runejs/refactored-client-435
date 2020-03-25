@@ -238,7 +238,7 @@ public class Class27 {
                 int i_13_ = class1.contains(Class26.aClass1_620);
                 if(i_13_ != -1) {
                     class1 = class1.substring(i_13_ + 5).trim();
-                    RSString class1_14_ = class1.method62(57).method85(-4305);
+                    RSString class1_14_ = class1.method62().method85();
                     boolean bool = false;
                     for(int i_15_ = 0; i_15_ < Player.localPlayerCount; i_15_++) {
                         Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[Player.trackedPlayerIndices[i_15_]]);

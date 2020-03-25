@@ -163,7 +163,7 @@ public class Player extends Actor {
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
                     IncomingPackets.incomingPacketBuffer.putBytes(0, messageLength, Class59.aClass40_Sub1_1385.buffer);
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
-                    RSString class1 = KeyFocusListener.method956(124, Class59.aClass40_Sub1_1385).method53(-16315);
+                    RSString class1 = KeyFocusListener.method956(124, Class59.aClass40_Sub1_1385).method53();
                     player.forcedChatMessage = class1.trim();
                     player.anInt3078 = 150;
                     player.chatEffects = chatEffectsAndColors & 0xff;
@@ -451,7 +451,7 @@ public class Player extends Actor {
         runAnimationId = buffer.getUnsignedShortBE();
         if(runAnimationId == 65535)
             runAnimationId = -1;
-        playerName = Class60.method991(-127, buffer.getLongBE()).method85(-4305);
+        playerName = Class60.method991(-127, buffer.getLongBE()).method85();
         combatLevel = buffer.getUnsignedByte();
         skillLevel = buffer.getUnsignedShortBE();
         if(aClass30_3282 == null)

@@ -247,7 +247,7 @@ public class TypeFace extends Rasterizer {
                     i_4_ = -1;
                     idx++;
                 } else if(index == -1) {
-                    resultText.method78(-62, character);
+                    resultText.method78(character);
                     i += method689(character);
                     if(character == 32 || character == 45) { // 32 = Space 45 == -
                         i_4_ = resultText.length();

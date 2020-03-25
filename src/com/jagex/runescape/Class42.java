@@ -109,7 +109,7 @@ public class Class42 {
                     Player.aByteArray3270 = arg3;
                     Class30.aBoolean687 = arg2;
                 } else
-                    RSString.method56(2037, arg2, arg3, arg1);
+                    RSString.method56(arg2, arg3, arg1);
             } else {
                 Buffer.anInt1982 = arg4;
                 if(MouseHandler.anInt1450 != 0) {

@@ -883,7 +883,7 @@ public class Widget extends SubNode {
                                                     break;
                                                 }
                                                 i_1_ -= 2;
-                                                Class67.anIntArray1588[i++] = (Class40_Sub11.aClass1Array2153[i_1_].method84((Class40_Sub11.aClass1Array2153[i_1_ + 1]), (byte) 109));
+                                                Class67.anIntArray1588[i++] = (Class40_Sub11.aClass1Array2153[i_1_].method84((Class40_Sub11.aClass1Array2153[i_1_ + 1])));
                                             }
                                         }
                                     } else if(i_3_ == 3100) {
@@ -1145,7 +1145,7 @@ public class Widget extends SubNode {
                     widget.actionType = 0;
                     widget.disabledText = HuffmanEncoding.blank_string;
                 } else {
-                    widget.disabledText = Class60.method991(-111, WallDecoration.ignores[type]).method85(-4305);
+                    widget.disabledText = Class60.method991(-111, WallDecoration.ignores[type]).method85();
                     widget.actionType = 1;
                 }
             }
