@@ -115,8 +115,8 @@ public class Class55 {
         Main.aClass1_1781 = Class37.aClass1_880;
         RSString.aClass1_1717 = Class12.aClass1_398;
         Class34.aClass1_817 = Class35.aClass1_1743;
-        Actor.aClass1_3159 = Class40_Sub13.aClass1_2176;
-        Class5.aClass1_204 = Class40_Sub13.aClass1_2174;
+        Actor.aClass1_3159 = FramemapDefinition.aClass1_2176;
+        Class5.aClass1_204 = FramemapDefinition.aClass1_2174;
         Class57.aClass1_1333 = Class40_Sub5_Sub15.aClass1_2773;
         Class35.aClass1_1746 = Class37.aClass1_872;
         Class51.aClass1_1196 = SpotAnimDefinition.aClass1_2311;
@@ -133,7 +133,7 @@ public class Class55 {
         Node.aClass1_958 = Class64.aClass1_1523;
         RSCanvas.aClass1_51 = AnimationSequence.aClass1_2487;
         aClass1_1291 = Class67.aClass1_1609;
-        Class68.aClass1_1638 = Class40_Sub13.aClass1_2185;
+        Class68.aClass1_1638 = FramemapDefinition.aClass1_2185;
         Class37.aClass1_873 = Class33.aClass1_779;
         Node.aClass1_959 = WallDecoration.aClass1_1265;
         SpotAnimDefinition.aClass1_2294 = Class67.aClass1_1612;
@@ -215,7 +215,7 @@ public class Class55 {
         Class22_Sub1.aClass1_1851 = RSApplet.aClass1_35;
         Node.aClass1_949 = Class27.aClass1_647;
         Class40_Sub5_Sub6.aClass1_2462 = Class22_Sub2.aClass1_1883;
-        Class40_Sub13.aClass1_2188 = CacheIndex_Sub1.aClass1_1814;
+        FramemapDefinition.aClass1_2188 = CacheIndex_Sub1.aClass1_1814;
         Class42.aClass1_1002 = SpotAnimDefinition.aClass1_2292;
         Class38_Sub1.aClass1_1905 = WallDecoration.aClass1_1246;
         Node.aClass1_957 = Class27.aClass1_652;
@@ -258,7 +258,7 @@ public class Class55 {
         Class40_Sub5_Sub17_Sub1.aClass1_3009 = Main.aClass1_1777;
         GameObject.aClass1_3038 = Class39.aClass1_911;
         Class17.aClass1_452 = RSRuntimeException.aClass1_1644;
-        Class42.aClass1_988 = Class40_Sub13.aClass1_2186;
+        Class42.aClass1_988 = FramemapDefinition.aClass1_2186;
         GroundItemTile.aClass1_1354 = Player.aClass1_3269;
         Class22_Sub1.aClass1_1865 = RSRuntimeException.aClass1_1647;
         Class61.aClass1_1428 = SceneTile.aClass1_2051;
@@ -268,7 +268,7 @@ public class Class55 {
         UnderlayDefinition.aClass1_2566 = FloorDecoration.aClass1_609;
         Node.aClass1_944 = Class64.aClass1_1523;
         PacketBuffer.str_Please_Wait = Class49.aClass1_1153;
-        VertexNormal.aClass1_1105 = Class40_Sub13.aClass1_2181;
+        VertexNormal.aClass1_1105 = FramemapDefinition.aClass1_2181;
         Class42.aClass1_1011 = Actor.aClass1_3158;
         Class22_Sub1.aClass1_1870 = Class49.aClass1_1143;
         MouseHandler.aClass1_1474 = Class8.aClass1_300;

@@ -2,10 +2,7 @@ package com.jagex.runescape.media.renderable;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.IdentityKit;
-import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
@@ -262,7 +259,7 @@ public class Item extends Renderable {
             Class42.anIntArray1013 = new int[256];
             Class61.anIntArray1445 = new int[32768];
             Landscape.anIntArray1168 = new int[32768];
-            Class40_Sub13.method879(-4487, null);
+            FramemapDefinition.method879(-4487, null);
             Class40_Sub5_Sub17_Sub6.anIntArray3255 = new int[32768];
             Class22_Sub2.password = Class22_Sub2.string_blank;
             Class22_Sub2.username = Class22_Sub2.string_blank;

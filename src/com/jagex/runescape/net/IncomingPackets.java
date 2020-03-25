@@ -487,7 +487,7 @@ public class IncomingPackets {
                     for(int i_52_ = OverlayDefinition.placementY; ((8 + OverlayDefinition.placementY > i_52_)); i_52_++) {
                         if((Wall.groundItems[Player.worldLevel][i_51_][i_52_]) != null) {
                             Wall.groundItems[Player.worldLevel][i_51_][i_52_] = null;
-                            Class40_Sub13.spawnGroundItem((byte) -80, i_52_, i_51_);
+                            FramemapDefinition.spawnGroundItem((byte) -80, i_52_, i_51_);
                         }
                     }
                 }

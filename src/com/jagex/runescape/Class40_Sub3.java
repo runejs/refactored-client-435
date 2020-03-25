@@ -2,10 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.def.UnderlayDefinition;
-import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.*;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.KeyFocusListener;
@@ -227,7 +224,7 @@ public class Class40_Sub3 extends Node {
             if(Class37.aClass40_Sub5_Sub14_Sub4Array878 != null)
                 i++;
             else
-                Class37.aClass40_Sub5_Sub14_Sub4Array878 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Class40_Sub13.aClass1_2179, HuffmanEncoding.blank_string);
+                Class37.aClass40_Sub5_Sub14_Sub4Array878 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, FramemapDefinition.aClass1_2179, HuffmanEncoding.blank_string);
             if(Class27.aClass40_Sub5_Sub14_Sub4Array649 == null)
                 Class27.aClass40_Sub5_Sub14_Sub4Array649 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Class4.aClass1_183, HuffmanEncoding.blank_string);
             else

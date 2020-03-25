@@ -3,11 +3,7 @@ package com.jagex.runescape.cache.media;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.UnderlayDefinition;
-import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.VertexNormal;
@@ -204,11 +200,11 @@ public class Widget extends SubNode {
                 for(int i = 0; i < 112; i++) {
                     Item.obfuscatedKeyStatus[i] = false;
                 }
-                GameObjectDefinition.anInt2543 = Class40_Sub13.anInt2183;
+                GameObjectDefinition.anInt2543 = FramemapDefinition.anInt2183;
             } else {
-                while(GameObjectDefinition.anInt2543 != Class40_Sub13.anInt2183) {
-                    int i = RSString.keyCodes[Class40_Sub13.anInt2183];
-                    Class40_Sub13.anInt2183 = 0x7f & Class40_Sub13.anInt2183 + 1;
+                while(GameObjectDefinition.anInt2543 != FramemapDefinition.anInt2183) {
+                    int i = RSString.keyCodes[FramemapDefinition.anInt2183];
+                    FramemapDefinition.anInt2183 = 0x7f & FramemapDefinition.anInt2183 + 1;
                     if(i < 0) {
                         Item.obfuscatedKeyStatus[i ^ 0xffffffff] = false;
                     } else {
@@ -1384,7 +1380,7 @@ public class Widget extends SubNode {
     }
 
     public ImageRGB method638(byte arg0, int arg1) {
-        Class40_Sub13.aBoolean2177 = false;
+        FramemapDefinition.aBoolean2177 = false;
         if(arg1 < 0 || imageY.length <= arg1) {
             return null;
         }
@@ -1399,7 +1395,7 @@ public class Widget extends SubNode {
         }
         class40_sub5_sub14_sub4 = Class48.method927(0, Class40_Sub5_Sub15.aCacheIndex_2779, true, i);
         if(class40_sub5_sub14_sub4 == null) {
-            Class40_Sub13.aBoolean2177 = true;
+            FramemapDefinition.aBoolean2177 = true;
         } else {
             Cache.aClass9_326.put(-7208, (long) i, class40_sub5_sub14_sub4);
         }
@@ -1407,7 +1403,7 @@ public class Widget extends SubNode {
     }
 
     public ImageRGB method643(int arg0, boolean arg1) {
-        Class40_Sub13.aBoolean2177 = false;
+        FramemapDefinition.aBoolean2177 = false;
         int i;
         if(arg1) {
             i = alternateSpriteId;
@@ -1426,7 +1422,7 @@ public class Widget extends SubNode {
         }
         class40_sub5_sub14_sub4 = Class48.method927(0, Class40_Sub5_Sub15.aCacheIndex_2779, true, i);
         if(class40_sub5_sub14_sub4 == null) {
-            Class40_Sub13.aBoolean2177 = true;
+            FramemapDefinition.aBoolean2177 = true;
         } else {
             Cache.aClass9_326.put(-7208, (long) i, class40_sub5_sub14_sub4);
         }
@@ -1532,7 +1528,7 @@ public class Widget extends SubNode {
     }
 
     public Model method646(byte arg0, AnimationSequence arg1, int arg2, boolean arg3, Class30 arg4) {
-        Class40_Sub13.aBoolean2177 = false;
+        FramemapDefinition.aBoolean2177 = false;
         int i;
         int i_11_;
         if(arg3) {
@@ -1556,7 +1552,7 @@ public class Widget extends SubNode {
             if(i == 1) {
                 class40_sub5_sub17_sub5 = Model.getModel(Cache.aCacheIndex_329, i_11_, 0);
                 if(class40_sub5_sub17_sub5 == null) {
-                    Class40_Sub13.aBoolean2177 = true;
+                    FramemapDefinition.aBoolean2177 = true;
                     return null;
                 }
                 class40_sub5_sub17_sub5.createBones();
@@ -1565,7 +1561,7 @@ public class Widget extends SubNode {
             if(i == 2) {
                 class40_sub5_sub17_sub5 = ActorDefinition.getDefinition((byte) -101, i_11_).getHeadModel((byte) 122);
                 if(class40_sub5_sub17_sub5 == null) {
-                    Class40_Sub13.aBoolean2177 = true;
+                    FramemapDefinition.aBoolean2177 = true;
                     return null;
                 }
                 class40_sub5_sub17_sub5.createBones();
@@ -1577,7 +1573,7 @@ public class Widget extends SubNode {
                 }
                 class40_sub5_sub17_sub5 = arg4.method379(30);
                 if(class40_sub5_sub17_sub5 == null) {
-                    Class40_Sub13.aBoolean2177 = true;
+                    FramemapDefinition.aBoolean2177 = true;
                     return null;
                 }
                 class40_sub5_sub17_sub5.createBones();
@@ -1587,7 +1583,7 @@ public class Widget extends SubNode {
                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_11_, 10);
                 class40_sub5_sub17_sub5 = class40_sub5_sub16.asGroundStack(false, 10);
                 if(class40_sub5_sub17_sub5 == null) {
-                    Class40_Sub13.aBoolean2177 = true;
+                    FramemapDefinition.aBoolean2177 = true;
                     return null;
                 }
                 class40_sub5_sub17_sub5.createBones();
@@ -1602,7 +1598,7 @@ public class Widget extends SubNode {
     }
 
     public TypeFace method647(byte arg0) {
-        Class40_Sub13.aBoolean2177 = false;
+        FramemapDefinition.aBoolean2177 = false;
         if(fontId == 65535) {
             return null;
         }
@@ -1615,7 +1611,7 @@ public class Widget extends SubNode {
         }
         class40_sub5_sub14_sub1 = TypeFace.getFont((Class40_Sub5_Sub15.aCacheIndex_2779), 0, fontId);
         if(class40_sub5_sub14_sub1 == null) {
-            Class40_Sub13.aBoolean2177 = true;
+            FramemapDefinition.aBoolean2177 = true;
         } else {
             Class67.aClass9_1582.put(-7208, (long) fontId, class40_sub5_sub14_sub1);
         }

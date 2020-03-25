@@ -170,7 +170,7 @@ public class WallDecoration {
                                 break;
                             }
                         }
-                        Class40_Sub13.spawnGroundItem((byte) -80, i_33_, i_32_);
+                        FramemapDefinition.spawnGroundItem((byte) -80, i_33_, i_32_);
                     }
                 }
             } else if(IncomingPackets.incomingPacket == 143) { // remove landscape object
@@ -259,7 +259,7 @@ public class WallDecoration {
                             }
                             if(linkedList.method902((byte) -90) == null)
                                 Wall.groundItems[Player.worldLevel][i_65_][i_66_] = null;
-                            Class40_Sub13.spawnGroundItem((byte) -80, i_66_, i_65_);
+                            FramemapDefinition.spawnGroundItem((byte) -80, i_66_, i_65_);
                         }
                     }
                 } else if(IncomingPackets.incomingPacket == 1) {
@@ -302,7 +302,7 @@ public class WallDecoration {
                             if((Wall.groundItems[Player.worldLevel][i_83_][i_84_]) == null)
                                 Wall.groundItems[Player.worldLevel][i_83_][i_84_] = new LinkedList();
                             Wall.groundItems[Player.worldLevel][i_83_][i_84_].pushBack(item, 64);
-                            Class40_Sub13.spawnGroundItem((byte) -80, i_84_, i_83_);
+                            FramemapDefinition.spawnGroundItem((byte) -80, i_84_, i_83_);
                         }
                     } else if(IncomingPackets.incomingPacket == 175) { // add world item
                         int i = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
@@ -317,7 +317,7 @@ public class WallDecoration {
                             if((Wall.groundItems[Player.worldLevel][i_88_][i_87_]) == null)
                                 Wall.groundItems[Player.worldLevel][i_88_][i_87_] = new LinkedList();
                             Wall.groundItems[Player.worldLevel][i_88_][i_87_].pushBack(item, -118);
-                            Class40_Sub13.spawnGroundItem((byte) -80, i_87_, i_88_);
+                            FramemapDefinition.spawnGroundItem((byte) -80, i_87_, i_88_);
                         }
                     }
                 }

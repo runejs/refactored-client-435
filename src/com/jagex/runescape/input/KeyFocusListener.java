@@ -3,10 +3,7 @@ package com.jagex.runescape.input;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.IdentityKit;
-import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.def.VarbitDefinition;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.VertexNormal;
@@ -224,7 +221,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             if(GameObjectDefinition.anInt2543 >= 0 && obfuscatedKeyCode >= 0) {
                 RSString.keyCodes[GameObjectDefinition.anInt2543] = obfuscatedKeyCode;
                 GameObjectDefinition.anInt2543 = 0x7f & GameObjectDefinition.anInt2543 + 1;
-                if(GameObjectDefinition.anInt2543 == Class40_Sub13.anInt2183)
+                if(GameObjectDefinition.anInt2543 == FramemapDefinition.anInt2183)
                     GameObjectDefinition.anInt2543 = -1;
             }
             if(obfuscatedKeyCode >= 0 || keyChar >= 0) {
@@ -251,7 +248,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             if(GameObjectDefinition.anInt2543 >= 0 && i >= 0) {
                 RSString.keyCodes[GameObjectDefinition.anInt2543] = i ^ 0xffffffff;
                 GameObjectDefinition.anInt2543 = 0x7f & 1 + GameObjectDefinition.anInt2543;
-                if(Class40_Sub13.anInt2183 == GameObjectDefinition.anInt2543)
+                if(FramemapDefinition.anInt2183 == GameObjectDefinition.anInt2543)
                     GameObjectDefinition.anInt2543 = -1;
             }
         }

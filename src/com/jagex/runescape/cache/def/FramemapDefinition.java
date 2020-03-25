@@ -1,20 +1,21 @@
-package com.jagex.runescape;
+package com.jagex.runescape.cache.def;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.Rasterizer;
+import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.tile.Wall;
 
-public class Class40_Sub13 extends Node {
+public class FramemapDefinition extends Node {
     public static RSString aClass1_2172 = RSString.CreateString("Service unavailable)3");
     public static RSString aClass1_2174;
     public static RSString aClass1_2176;
@@ -41,25 +42,24 @@ public class Class40_Sub13 extends Node {
         aClass1_2189 = aClass1_2172;
     }
 
-    public int[][] anIntArrayArray2168;
-    public int anInt2171;
-    public int anInt2175;
-    public int[] anIntArray2178;
+    public int[][] frameMaps;
+    public int length;
+    public int id;
+    public int[] types;
 
-    public Class40_Sub13(int arg0, byte[] arg1) {
-
-        anInt2175 = arg0;
-        Buffer class40_sub1 = new Buffer(arg1);
-        anInt2171 = class40_sub1.getUnsignedByte();
-        anIntArrayArray2168 = new int[anInt2171][];
-        anIntArray2178 = new int[anInt2171];
-        for(int i = 0; i < anInt2171; i++)
-            anIntArray2178[i] = class40_sub1.getUnsignedByte();
-        for(int i = 0; anInt2171 > i; i++)
-            anIntArrayArray2168[i] = new int[class40_sub1.getUnsignedByte()];
-        for(int i = 0; i < anInt2171; i++) {
-            for(int i_38_ = 0; anIntArrayArray2168[i].length > i_38_; i_38_++)
-                anIntArrayArray2168[i][i_38_] = class40_sub1.getUnsignedByte();
+    public FramemapDefinition(int id, byte[] data) {
+        this.id = id;
+        Buffer buffer = new Buffer(data);
+        length = buffer.getUnsignedByte();
+        types = new int[length];
+        frameMaps = new int[length][];
+        for(int i = 0; i < length; i++)
+            types[i] = buffer.getUnsignedByte();
+        for(int i = 0; length > i; i++)
+            frameMaps[i] = new int[buffer.getUnsignedByte()];
+        for(int i = 0; i < length; i++) {
+            for(int i_38_ = 0; frameMaps[i].length > i_38_; i_38_++)
+                frameMaps[i][i_38_] = buffer.getUnsignedByte();
         }
 
     }

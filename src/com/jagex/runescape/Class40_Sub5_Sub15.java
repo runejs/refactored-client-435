@@ -1,6 +1,8 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.def.FrameDefinition;
+import com.jagex.runescape.cache.def.FramemapDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
@@ -39,33 +41,33 @@ public class Class40_Sub5_Sub15 extends SubNode {
         anInt2791 = -8 + (int) (17.0 * Math.random());
     }
 
-    public Class41[] aClass41Array2794;
+    public FrameDefinition[] aFrameDefinitionArray2794;
 
     public Class40_Sub5_Sub15(CacheIndex arg0, CacheIndex arg1, int arg2, boolean arg3) {
         LinkedList linkedList = new LinkedList();
         int i = arg0.method190(arg2, (byte) 16);
-        aClass41Array2794 = new Class41[i];
+        aFrameDefinitionArray2794 = new FrameDefinition[i];
         int[] is = arg0.method192(arg2, true);
         for(int i_0_ = 0; is.length > i_0_; i_0_++) {
             byte[] is_1_ = arg0.getFile(is[i_0_], arg2);
-            Class40_Sub13 class40_sub13 = null;
+            FramemapDefinition framemapDefinition = null;
             int i_2_ = is_1_[1] & 0xff | is_1_[0] << 8 & 0xff00;
-            for(Class40_Sub13 class40_sub13_3_ = (Class40_Sub13) linkedList.method902((byte) -90); class40_sub13_3_ != null; class40_sub13_3_ = (Class40_Sub13) linkedList.method909(-4)) {
-                if(i_2_ == class40_sub13_3_.anInt2175) {
-                    class40_sub13 = class40_sub13_3_;
+            for(FramemapDefinition framemapDefinition_3_ = (FramemapDefinition) linkedList.method902((byte) -90); framemapDefinition_3_ != null; framemapDefinition_3_ = (FramemapDefinition) linkedList.method909(-4)) {
+                if(i_2_ == framemapDefinition_3_.id) {
+                    framemapDefinition = framemapDefinition_3_;
                     break;
                 }
             }
-            if(class40_sub13 == null) {
+            if(framemapDefinition == null) {
                 byte[] is_4_;
                 if(!arg3)
                     is_4_ = arg1.method182(0, i_2_);
                 else
                     is_4_ = arg1.method182(i_2_, 0);
-                class40_sub13 = new Class40_Sub13(i_2_, is_4_);
-                linkedList.pushBack(class40_sub13, 60);
+                framemapDefinition = new FramemapDefinition(i_2_, is_4_);
+                linkedList.pushBack(framemapDefinition, 60);
             }
-            aClass41Array2794[is[i_0_]] = new Class41(is_1_, class40_sub13);
+            aFrameDefinitionArray2794[is[i_0_]] = new FrameDefinition(is_1_, framemapDefinition);
         }
     }
 
@@ -169,6 +171,6 @@ public class Class40_Sub5_Sub15 extends SubNode {
     }
 
     public boolean method737(int arg0) {
-        return aClass41Array2794[arg0].aBoolean985;
+        return aFrameDefinitionArray2794[arg0].aBoolean985;
     }
 }

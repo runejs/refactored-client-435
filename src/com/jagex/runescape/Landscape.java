@@ -4,6 +4,7 @@ import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.FileOperations;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.FramemapDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
@@ -271,7 +272,7 @@ public class Landscape {
                     Npc.currentScene.setHeightLevel(Class64.lowestPlane);
                 for(int x = 0; x < 104; x++) {
                     for(int y = 0; y < 104; y++)
-                        Class40_Sub13.spawnGroundItem((byte) -80, y, x);
+                        FramemapDefinition.spawnGroundItem((byte) -80, y, x);
                 }
                 ISAAC.method285((byte) 118);
                 VertexNormal.aClass9_1102.method235((byte) -43);

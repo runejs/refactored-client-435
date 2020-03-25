@@ -68,7 +68,7 @@ public class Main extends RSApplet {
                 int i_2_ = widget.opacity;
                 if(widget == Wall.aWidget_353) {
                     i_2_ = 128;
-                    Widget widget_3_ = Class40_Sub13.method878(-1598852880, widget);
+                    Widget widget_3_ = FramemapDefinition.method878(-1598852880, widget);
                     int[] is = Class13.method247(widget_3_, (byte) 117);
                     int[] is_4_ = Class13.method247(widget, (byte) 97);
                     int i_5_ = (Landscape.mouseY + (-Class40_Sub5_Sub11.anInt2621 + (is_4_[1] - is[1])));
@@ -116,7 +116,7 @@ public class Main extends RSApplet {
                                         if((widget.imageY) != null && i_7_ < 20) {
                                             ImageRGB class40_sub5_sub14_sub4 = (widget.method638((byte) 78, i_7_));
                                             if(class40_sub5_sub14_sub4 == null) {
-                                                if(Class40_Sub13.aBoolean2177)
+                                                if(FramemapDefinition.aBoolean2177)
                                                     bool = false;
                                             } else
                                                 class40_sub5_sub14_sub4.drawImage(i_10_, i_11_);
@@ -129,7 +129,7 @@ public class Main extends RSApplet {
                                             int i_15_ = 0;
                                             if(Class8.itemSelected == 1 && (i_7_ == LinkedList.anInt1061) && ((widget.id) == ISAAC.anInt525))
                                                 i_15_ = 16777215;
-                                            ImageRGB class40_sub5_sub14_sub4 = (Class40_Sub13.method876(117, (widget.itemAmounts[i_7_]), i_13_, i_15_));
+                                            ImageRGB class40_sub5_sub14_sub4 = (FramemapDefinition.method876(117, (widget.itemAmounts[i_7_]), i_13_, i_15_));
                                             if(class40_sub5_sub14_sub4 == null)
                                                 bool = false;
                                             else {
@@ -204,7 +204,7 @@ public class Main extends RSApplet {
                         } else if(widget.type == 4) {
                             TypeFace class40_sub5_sub14_sub1 = widget.method647((byte) 34);
                             if(class40_sub5_sub14_sub1 == null) {
-                                if(Class40_Sub13.aBoolean2177)
+                                if(FramemapDefinition.aBoolean2177)
                                     bool = false;
                             } else {
                                 RSString class1 = widget.disabledText;
@@ -249,7 +249,7 @@ public class Main extends RSApplet {
                                 if(widget.anInt2718 == -1)
                                     class40_sub5_sub14_sub4 = widget.method643(127, false);
                                 else {
-                                    class40_sub5_sub14_sub4 = (Class40_Sub13.method876(99, widget.anInt2734, widget.anInt2718, 0));
+                                    class40_sub5_sub14_sub4 = (FramemapDefinition.method876(99, widget.anInt2734, widget.anInt2718, 0));
                                     i_22_ = (class40_sub5_sub14_sub4.maxWidth);
                                     i_23_ = (class40_sub5_sub14_sub4.maxHeight);
                                     class40_sub5_sub14_sub4.maxHeight = 32;
@@ -301,7 +301,7 @@ public class Main extends RSApplet {
                                         } else
                                             class40_sub5_sub14_sub4.method720((widget.originalWidth) / 2 + i_0_, (widget.originalHeight) / 2 + i_1_, (widget.anInt2751), i_26_);
                                     }
-                                } else if(Class40_Sub13.aBoolean2177)
+                                } else if(FramemapDefinition.aBoolean2177)
                                     bool = false;
                                 if(widget.anInt2718 != -1) {
                                     if(widget.anInt2734 != 1 || i_22_ == 33) {
@@ -315,7 +315,7 @@ public class Main extends RSApplet {
                                 ImageRGB class40_sub5_sub14_sub4 = (widget.method643(127, (ItemDefinition.method746(widget))));
                                 if(class40_sub5_sub14_sub4 != null)
                                     class40_sub5_sub14_sub4.drawImage(i_0_, i_1_);
-                                else if(Class40_Sub13.aBoolean2177)
+                                else if(FramemapDefinition.aBoolean2177)
                                     bool = false;
                             }
                         } else if(widget.type == 6) {
@@ -331,12 +331,12 @@ public class Main extends RSApplet {
                             if(widget.modelType != 5) {
                                 if(i_36_ == -1) {
                                     model = (widget.method646((byte) 46, null, -1, bool_35_, (Player.localPlayer.aClass30_3282)));
-                                    if(model == null && Class40_Sub13.aBoolean2177)
+                                    if(model == null && FramemapDefinition.aBoolean2177)
                                         bool = false;
                                 } else {
                                     AnimationSequence animationSequence = Class68_Sub1.method1050(i_36_, 2);
                                     model = (widget.method646((byte) 76, animationSequence, widget.anInt2654, bool_35_, (Player.localPlayer.aClass30_3282)));
-                                    if(model == null && Class40_Sub13.aBoolean2177)
+                                    if(model == null && FramemapDefinition.aBoolean2177)
                                         bool = false;
                                 }
                             } else if(widget.modelId != 0)
@@ -383,7 +383,7 @@ public class Main extends RSApplet {
                             if(widget.type == 7) {
                                 TypeFace class40_sub5_sub14_sub1 = widget.method647((byte) 34);
                                 if(class40_sub5_sub14_sub1 == null) {
-                                    if(Class40_Sub13.aBoolean2177)
+                                    if(FramemapDefinition.aBoolean2177)
                                         bool = false;
                                     continue;
                                 }
@@ -1058,8 +1058,8 @@ public class Main extends RSApplet {
         GroundItemTile.method981();
         Filter.method268();
         Class57.method974();
-        Class41.method881();
-        Class40_Sub13.method877();
+        FrameDefinition.method881();
+        FramemapDefinition.method877();
         Class21.method289();
         Class34.method418();
         Class40_Sub6.method837();

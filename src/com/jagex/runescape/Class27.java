@@ -919,7 +919,7 @@ public class Class27 {
             RSApplet.method20(arg5, arg3, 0, arg2, arg6, -1, 1, (Widget.interfaces[arg4]), arg1, 0);
             if(Wall.aWidget_353 != null) {
                 Widget widget = Wall.aWidget_353;
-                Widget widget_24_ = Class40_Sub13.method878(-1598852880, widget);
+                Widget widget_24_ = FramemapDefinition.method878(-1598852880, widget);
                 if(widget_24_ != null) {
                     int[] is = Class13.method247(widget_24_, (byte) 97);
                     int[] is_25_ = Class13.method247(widget, (byte) 110);
@@ -1029,7 +1029,7 @@ public class Class27 {
         if(Class43.openChatboxWidgetId == -1) {
             Class12.chatboxInterface.scrollPosition = -77 + (-GameObjectDefinition.chatboxScroll + MouseHandler.chatboxScrollMax);
             if(Class13.mouseX > 448 && Class13.mouseX < 560 && Landscape.mouseY > 332)
-                Class5.scrollInterface(77, Landscape.mouseY + -357, -17 + Class13.mouseX, MouseHandler.chatboxScrollMax, (byte) 114, Class12.chatboxInterface, 463, -1, 0);
+                Class5.scrollInterface(77, Landscape.mouseY + -357, -17 + Class13.mouseX, MouseHandler.chatboxScrollMax, Class12.chatboxInterface, 463, -1, 0);
             int currentScroll = (MouseHandler.chatboxScrollMax - 77 - Class12.chatboxInterface.scrollPosition);
             if(currentScroll < 0)
                 currentScroll = 0;
@@ -1044,7 +1044,7 @@ public class Class27 {
             Class12.chatboxInterface.scrollPosition = Class26.itemSearchScroll;
             int scrollMax = 14 * VertexNormal.itemSearchResultCount + 7;
             if(Class13.mouseX > 448 && Class13.mouseX < 560 && Landscape.mouseY > 332)
-                Class5.scrollInterface(77, Landscape.mouseY - 357, -17 + Class13.mouseX, scrollMax, (byte) -128, Class12.chatboxInterface, 463, -1, 0);
+                Class5.scrollInterface(77, Landscape.mouseY - 357, -17 + Class13.mouseX, scrollMax, Class12.chatboxInterface, 463, -1, 0);
             int currentScroll = Class12.chatboxInterface.scrollPosition;
             if(currentScroll < 0)
                 currentScroll = 0;
@@ -1120,7 +1120,7 @@ public class Class27 {
                 else if(arg1 == 11)
                     Class33.method411(Node.aClass1_943, Class42.aClass1_1001, Class40_Sub6.aClass1_2111, (byte) 110);
                 else if(arg1 == 12)
-                    Class33.method411(Node.aClass1_931, Class40_Sub13.aClass1_2188, VarbitDefinition.aClass1_2357, (byte) 115);
+                    Class33.method411(Node.aClass1_931, FramemapDefinition.aClass1_2188, VarbitDefinition.aClass1_2357, (byte) 115);
                 else if(arg1 == 13)
                     Class33.method411(Node.aClass1_972, Item.aClass1_3066, SceneTile.aClass1_2042, (byte) -53);
                 else if(arg1 != 14) {
@@ -1141,7 +1141,7 @@ public class Class27 {
                                     else if(arg1 != 27)
                                         Class33.method411(Node.aClass1_946, (ActorDefinition.aClass1_2432), SceneTile.aClass1_2054, (byte) 123);
                                     else
-                                        Class33.method411(Node.aClass1_945, Node.aClass1_925, Class40_Sub13.aClass1_2189, (byte) 103);
+                                        Class33.method411(Node.aClass1_945, Node.aClass1_925, FramemapDefinition.aClass1_2189, (byte) 103);
                                 } else
                                     Class33.method411(Node.aClass1_954, Class60.aClass1_1416, Class5.aClass1_193, (byte) 117);
                             } else

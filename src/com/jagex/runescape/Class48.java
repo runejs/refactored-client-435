@@ -138,7 +138,7 @@ public class Class48 {
                             if((widget.aWidgetArray2713) != null)
                                 method925(i_1_ + widget.originalHeight, (widget.aWidgetArray2713), i_2_, widget.scrollPosition, arg4, 0, widget.id, arg7, arg8, i_1_, widget.anInt2746, widget.originalWidth + i_2_);
                             if((widget.originalHeight < widget.scrollHeight))
-                                Class5.scrollInterface(widget.originalHeight, arg4, arg8, widget.scrollHeight, (byte) 69, widget, widget.originalWidth + i_2_, arg7, i_1_);
+                                Class5.scrollInterface(widget.originalHeight, arg4, arg8, widget.scrollHeight, widget, widget.originalWidth + i_2_, arg7, i_1_);
                         }
                     } else {
                         if(widget.actionType == 1 && (i_2_ <= arg8) && (i_1_ <= arg4) && (widget.originalWidth + i_2_ > arg8) && (widget.originalHeight + i_1_ > arg4)) {

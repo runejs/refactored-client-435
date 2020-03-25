@@ -2,6 +2,8 @@ package com.jagex.runescape.media.renderable;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.def.FrameDefinition;
+import com.jagex.runescape.cache.def.FramemapDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.VertexNormal;
@@ -1089,34 +1091,34 @@ public class Model extends Renderable {
             else {
                 verticesNormal = null;
                 anInt3169 = 0;
-                Class41 class41 = arg0.aClass41Array2794[arg1];
-                Class41 class41_80_ = arg2.aClass41Array2794[arg3];
-                Class40_Sub13 class40_sub13 = class41.aClass40_Sub13_983;
+                FrameDefinition frameDefinition = arg0.aFrameDefinitionArray2794[arg1];
+                FrameDefinition frameDefinition_80_ = arg2.aFrameDefinitionArray2794[arg3];
+                FramemapDefinition framemapDefinition = frameDefinition.framemap;
                 anInt3218 = 0;
                 anInt3213 = 0;
                 anInt3206 = 0;
                 int i = 0;
                 int i_81_ = arg4[i++];
-                for(int i_82_ = 0; i_82_ < class41.anInt981; i_82_++) {
+                for(int i_82_ = 0; i_82_ < frameDefinition.translatorCount; i_82_++) {
                     int i_83_;
-                    for(i_83_ = class41.anIntArray984[i_82_]; i_83_ > i_81_; i_81_ = arg4[i++]) {
+                    for(i_83_ = frameDefinition.index_frame_ids[i_82_]; i_83_ > i_81_; i_81_ = arg4[i++]) {
                         /* empty */
                     }
-                    if(i_83_ != i_81_ || class40_sub13.anIntArray2178[i_83_] == 0)
-                        method811(class40_sub13.anIntArray2178[i_83_], class40_sub13.anIntArrayArray2168[i_83_], class41.anIntArray982[i_82_], class41.anIntArray987[i_82_], class41.anIntArray986[i_82_]);
+                    if(i_83_ != i_81_ || framemapDefinition.types[i_83_] == 0)
+                        method811(framemapDefinition.types[i_83_], framemapDefinition.frameMaps[i_83_], frameDefinition.translator_x[i_82_], frameDefinition.translator_y[i_82_], frameDefinition.translator_z[i_82_]);
                 }
                 anInt3218 = 0;
                 anInt3213 = 0;
                 anInt3206 = 0;
                 i = 0;
                 i_81_ = arg4[i++];
-                for(int i_84_ = 0; i_84_ < class41_80_.anInt981; i_84_++) {
+                for(int i_84_ = 0; i_84_ < frameDefinition_80_.translatorCount; i_84_++) {
                     int i_85_;
-                    for(i_85_ = class41_80_.anIntArray984[i_84_]; i_85_ > i_81_; i_81_ = arg4[i++]) {
+                    for(i_85_ = frameDefinition_80_.index_frame_ids[i_84_]; i_85_ > i_81_; i_81_ = arg4[i++]) {
                         /* empty */
                     }
-                    if(i_85_ == i_81_ || class40_sub13.anIntArray2178[i_85_] == 0)
-                        method811(class40_sub13.anIntArray2178[i_85_], class40_sub13.anIntArrayArray2168[i_85_], class41_80_.anIntArray982[i_84_], class41_80_.anIntArray987[i_84_], class41_80_.anIntArray986[i_84_]);
+                    if(i_85_ == i_81_ || framemapDefinition.types[i_85_] == 0)
+                        method811(framemapDefinition.types[i_85_], framemapDefinition.frameMaps[i_85_], frameDefinition_80_.translator_x[i_84_], frameDefinition_80_.translator_y[i_84_], frameDefinition_80_.translator_z[i_84_]);
                 }
             }
         }
@@ -1835,14 +1837,14 @@ public class Model extends Renderable {
         if(vectorSkin != null && arg1 != -1) {
             verticesNormal = null;
             anInt3169 = 0;
-            Class41 class41 = arg0.aClass41Array2794[arg1];
-            Class40_Sub13 class40_sub13 = class41.aClass40_Sub13_983;
+            FrameDefinition frameDefinition = arg0.aFrameDefinitionArray2794[arg1];
+            FramemapDefinition framemapDefinition = frameDefinition.framemap;
             anInt3218 = 0;
             anInt3213 = 0;
             anInt3206 = 0;
-            for(int i = 0; i < class41.anInt981; i++) {
-                int i_249_ = class41.anIntArray984[i];
-                method811(class40_sub13.anIntArray2178[i_249_], class40_sub13.anIntArrayArray2168[i_249_], class41.anIntArray982[i], class41.anIntArray987[i], class41.anIntArray986[i]);
+            for(int i = 0; i < frameDefinition.translatorCount; i++) {
+                int i_249_ = frameDefinition.index_frame_ids[i];
+                method811(framemapDefinition.types[i_249_], framemapDefinition.frameMaps[i_249_], frameDefinition.translator_x[i], frameDefinition.translator_y[i], frameDefinition.translator_z[i]);
             }
         }
     }
