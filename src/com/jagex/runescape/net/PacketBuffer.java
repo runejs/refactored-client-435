@@ -133,7 +133,6 @@ public class PacketBuffer extends Buffer {
     }
 
     public void finishBitAccess() {
-        bitoffset = -12;
         currentPosition = (7 + bitoffset) / 8;
     }
 
