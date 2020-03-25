@@ -252,7 +252,7 @@ public class Class40_Sub13 extends Node {
         }
     }
 
-    public static void method880(byte arg0, int arg1, int arg2) {
+    public static void spawnGroundItem(byte arg0, int arg1, int arg2) {
         LinkedList linkedList = (Wall.groundItems[Player.worldLevel][arg2][arg1]);
         if(linkedList == null)
             Npc.currentScene.method125(Player.worldLevel, arg2, arg1);

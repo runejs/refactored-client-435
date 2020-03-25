@@ -9,7 +9,7 @@ public class Class57 {
     public static Cache aClass9_1331 = new Cache(64);
     public static LinkedList aLinkedList_1332 = new LinkedList();
     public static RSString aClass1_1333 = RSString.CreateString("To create a new account you need to");
-    public static int[][] anIntArrayArray1335 = new int[104][104];
+    public static int[][] wayPoints = new int[104][104];
     public static int clickX = 0;
     public static RSString aClass1_1339 = RSString.CreateString("This world is full)3");
     public static RSString aClass1_1340 = RSString.CreateString("Ihr Spielkonto wird bereits benutzt)3");
@@ -24,7 +24,7 @@ public class Class57 {
         aLinkedList_1332 = null;
         aClass1_1348 = null;
         aClass40_Sub5_Sub14_Sub2_1346 = null;
-        anIntArrayArray1335 = null;
+        wayPoints = null;
         aClass9_1331 = null;
         aClass64_1345 = null;
         aClass1_1339 = null;

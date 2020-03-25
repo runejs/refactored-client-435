@@ -297,9 +297,9 @@ public class HuffmanEncoding {
                     i_16_ = Class40_Sub5_Sub6.method585(i_28_, 1369);
                 }
                 if(i_18_ == 18)
-                    i_16_ = ((Player.localPlayer.worldX) >> 7) + SpotAnimDefinition.anInt2307;
+                    i_16_ = ((Player.localPlayer.worldX) >> 7) + SpotAnimDefinition.baseX;
                 if(i_18_ == 19)
-                    i_16_ = ((Player.localPlayer.worldY) >> 7) + Class26.anInt635;
+                    i_16_ = ((Player.localPlayer.worldY) >> 7) + Class26.baseY;
                 if(i_18_ == 20)
                     i_16_ = is[i_14_++];
                 if(i_17_ == 0) {

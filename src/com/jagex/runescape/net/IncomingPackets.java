@@ -160,7 +160,7 @@ public class IncomingPackets {
             }
             if(incomingPacket == 233) {
                 incomingPacket = -1;
-                VarbitDefinition.anInt2366 = 0;
+                VarbitDefinition.destinationX = 0;
                 return true;
             }
             if(incomingPacket == 7) {
@@ -486,7 +486,7 @@ public class IncomingPackets {
                     for(int i_52_ = OverlayDefinition.placementY; ((8 + OverlayDefinition.placementY > i_52_)); i_52_++) {
                         if((Wall.groundItems[Player.worldLevel][i_51_][i_52_]) != null) {
                             Wall.groundItems[Player.worldLevel][i_51_][i_52_] = null;
-                            Class40_Sub13.method880((byte) -80, i_52_, i_51_);
+                            Class40_Sub13.spawnGroundItem((byte) -80, i_52_, i_51_);
                         }
                     }
                 }
@@ -1168,7 +1168,7 @@ public class IncomingPackets {
         } catch(java.io.IOException ioexception) {
             Class59.dropClient(2578);
         } catch(Exception exception) {
-            String string = ("T2 - " + incomingPacket + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + incomingPacketSize + "," + (SpotAnimDefinition.anInt2307 + (Player.localPlayer.pathY[0])) + "," + ((Player.localPlayer.pathX[0]) + Class26.anInt635) + " - ");
+            String string = ("T2 - " + incomingPacket + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + incomingPacketSize + "," + (SpotAnimDefinition.baseX + (Player.localPlayer.pathY[0])) + "," + ((Player.localPlayer.pathX[0]) + Class26.baseY) + " - ");
             for(int i = 0; (((incomingPacketSize > i)) && i < 50); i++)
                 string += (incomingPacketBuffer.buffer[i] + ",");
             CacheIndex.method169(string, (byte) -120, exception);

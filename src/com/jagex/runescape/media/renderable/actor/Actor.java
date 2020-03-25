@@ -313,24 +313,24 @@ public abstract class Actor extends Renderable {
     }
 
     public static void method789(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        if(arg3 != Class51.anInt1202 || arg2 != Class17.anInt448 || (Class40_Sub6.onBuildTimePlane != arg5 && VertexNormal.lowMemory)) {
+        if(arg3 != Class51.regionX || arg2 != Class17.regionY || (Class40_Sub6.onBuildTimePlane != arg5 && VertexNormal.lowMemory)) {
             Class40_Sub6.onBuildTimePlane = arg5;
-            Class51.anInt1202 = arg3;
+            Class51.regionX = arg3;
             if(!VertexNormal.lowMemory)
                 Class40_Sub6.onBuildTimePlane = 0;
-            Class17.anInt448 = arg2;
+            Class17.regionY = arg2;
             OverlayDefinition.method559(25);
             Class51.method940(0, Class67.aClass1_1585, false, null);
-            int i = Class26.anInt635;
-            int i_33_ = SpotAnimDefinition.anInt2307;
-            SpotAnimDefinition.anInt2307 = (arg3 - 6) * 8;
-            int i_34_ = SpotAnimDefinition.anInt2307 + -i_33_;
+            int i = Class26.baseY;
+            int i_33_ = SpotAnimDefinition.baseX;
+            SpotAnimDefinition.baseX = (arg3 - 6) * 8;
+            int i_34_ = SpotAnimDefinition.baseX + -i_33_;
             if(arg1 != -1000)
                 method781(14, 98, 96, -85, -118, 89);
-            i_33_ = SpotAnimDefinition.anInt2307;
-            Class26.anInt635 = (-6 + arg2) * 8;
-            int i_35_ = Class26.anInt635 + -i;
-            i = Class26.anInt635;
+            i_33_ = SpotAnimDefinition.baseX;
+            Class26.baseY = (-6 + arg2) * 8;
+            int i_35_ = Class26.baseY + -i;
+            i = Class26.baseY;
             for(int i_36_ = 0; i_36_ < 32768; i_36_++) {
                 Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[i_36_]);
                 if(class40_sub5_sub17_sub4_sub2 != null) {
@@ -390,9 +390,9 @@ public abstract class Actor extends Renderable {
                     class40_sub3.method457(-1);
             }
             Buffer.anInt1985 = -1;
-            if(VarbitDefinition.anInt2366 != 0) {
-                VarbitDefinition.anInt2366 -= i_34_;
-                Class55.anInt1304 -= i_35_;
+            if(VarbitDefinition.destinationX != 0) {
+                VarbitDefinition.destinationX -= i_34_;
+                Class55.destinationY -= i_35_;
             }
             Class39.aBoolean906 = false;
             PacketBuffer.currentSound = 0;

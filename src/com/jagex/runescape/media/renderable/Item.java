@@ -129,7 +129,7 @@ public class Item extends Renderable {
                 int i_15_ = cos * y - x * sin >> 11;
                 int destX = ((Player.localPlayer.worldX) + i_14_ >> 7);
                 int destY = (-i_15_ + (Player.localPlayer.worldY) >> 7);
-                boolean bool = (Class38_Sub1.method448(0, 0, (Player.localPlayer.pathY[0]), destX, (byte) 125, 0, true, 0, 0, (Player.localPlayer.pathX[0]), destY, 1));
+                boolean bool = (Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), destX, 0, true, 0, 0, (Player.localPlayer.pathX[0]), destY, 1));
                 if(bool) {
                     SceneCluster.packetBuffer.putByte(x);
                     SceneCluster.packetBuffer.putByte(y);
@@ -140,7 +140,7 @@ public class Item extends Renderable {
                     SceneCluster.packetBuffer.putByte(89);
                     SceneCluster.packetBuffer.putShortBE((Player.localPlayer.worldX));
                     SceneCluster.packetBuffer.putShortBE((Player.localPlayer.worldY));
-                    SceneCluster.packetBuffer.putByte(Class40_Sub5_Sub15.anInt2778);
+                    SceneCluster.packetBuffer.putByte(Class40_Sub5_Sub15.arbitraryDestination);
                     SceneCluster.packetBuffer.putByte(63);
                 }
             }

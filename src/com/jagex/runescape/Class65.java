@@ -59,7 +59,7 @@ public class Class65 {
         CacheIndex.anIntArrayArrayArray262 = new int[4][105][105];
         if(!arg0)
             aClass1_1530 = null;
-        Class64.setZ = 99;
+        Class64.lowestPlane = 99;
         InteractiveObject.aByteArrayArrayArray492 = new byte[4][105][105];
         FloorDecoration.anIntArray612 = new int[104];
         Class67.anIntArray1579 = new int[104];

@@ -118,9 +118,9 @@ public class MapDecompressor {
      * @param type     what kind, floor, wall, etc. (list coming soon, I have one, just too lazy ;))
      */
     public static void spawnObject(int objectId, int x, int y, int z, int rotation, int type) {
-        final CollisionMap[] groundData = Landscape.aCollisionMapArray1167;
-        int localX = x - SpotAnimDefinition.anInt2307;
-        int localY = y - Class26.anInt635; // ??? is this correct?
+        final CollisionMap[] groundData = Landscape.currentCollisionMap;
+        int localX = x - SpotAnimDefinition.baseX;
+        int localY = y - Class26.baseY; // ??? is this correct?
         int plane = z;
         if(localX > -1 && localY > -1) {
             if((OverlayDefinition.tile_flags[1][localY][localX] & 2) == 2) {

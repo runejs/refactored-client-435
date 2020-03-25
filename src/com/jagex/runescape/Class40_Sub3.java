@@ -60,7 +60,7 @@ public class Class40_Sub3 extends Node {
         if(Class40_Sub5_Sub6.anInt2451 == 0) {
             Npc.currentScene = new Scene(Class40_Sub6.tile_height);
             for(int i = 0; i < 4; i++)
-                Landscape.aCollisionMapArray1167[i] = new CollisionMap(104, 104);
+                Landscape.currentCollisionMap[i] = new CollisionMap(104, 104);
             Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765 = new ImageRGB(512, 512);
             Class67.anInt1607 = 5;
             Class40_Sub5_Sub6.anInt2451 = 20;

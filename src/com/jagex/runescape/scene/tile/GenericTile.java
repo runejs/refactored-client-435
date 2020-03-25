@@ -20,7 +20,7 @@ public class GenericTile {
     public static int anInt1214;
     public static volatile boolean aBoolean1215;
     public static RSString aClass1_1216 = RSString.CreateString("New User");
-    public static byte[][] aByteArrayArray1217;
+    public static byte[][] objectData;
     public static RSString aClass1_1218;
     public static int fps;
     public static boolean redrawChatbox = false;
@@ -135,7 +135,7 @@ public class GenericTile {
                         Npc.currentScene.method124(arg7, arg2, arg0);
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                         if(gameObjectDefinition.solid)
-                            Landscape.aCollisionMapArray1167[arg7].method148(-4, arg2, i_3_, gameObjectDefinition.walkable, arg0, i_4_);
+                            Landscape.currentCollisionMap[arg7].markWall(arg2, i_3_, gameObjectDefinition.walkable, arg0, i_4_);
                     }
                     if(arg6 == 1)
                         Npc.currentScene.method127(arg7, arg2, arg0);
@@ -145,20 +145,20 @@ public class GenericTile {
                         if((arg2 + gameObjectDefinition.sizeX > 103) || arg0 + gameObjectDefinition.sizeX > 103 || arg2 + gameObjectDefinition.sizeY > 103 || gameObjectDefinition.sizeY + arg0 > 103)
                             return;
                         if(gameObjectDefinition.solid)
-                            Landscape.aCollisionMapArray1167[arg7].method149(gameObjectDefinition.walkable, arg0, arg2, i_3_, gameObjectDefinition.sizeX, (byte) -55, gameObjectDefinition.sizeY);
+                            Landscape.currentCollisionMap[arg7].markSolidOccupant(arg2, arg0, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, i_3_, gameObjectDefinition.walkable);
                     }
                     if(arg6 == 3) {
                         Npc.currentScene.method131(arg7, arg2, arg0);
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                         if(gameObjectDefinition.solid && gameObjectDefinition.hasActions == 1)
-                            Landscape.aCollisionMapArray1167[arg7].method145(arg0, arg5 + 28124, arg2);
+                            Landscape.currentCollisionMap[arg7].unmarkConcealed(arg2, arg0);
                     }
                 }
                 if(arg1 >= 0) {
                     int i_5_ = arg7;
                     if(i_5_ < 3 && ((OverlayDefinition.tile_flags[1][arg2][arg0]) & 0x2) == 2)
                         i_5_++;
-                    Class40_Sub5_Sub1.method543(Landscape.aCollisionMapArray1167[arg7], arg1, i_5_, arg7, arg3, (Npc.currentScene), -22078, arg4, arg0, arg2);
+                    Class40_Sub5_Sub1.method543(Landscape.currentCollisionMap[arg7], arg1, i_5_, arg7, arg3, (Npc.currentScene), -22078, arg4, arg0, arg2);
                 }
             }
         }
@@ -171,7 +171,7 @@ public class GenericTile {
         aClass1_1238 = null;
         aClass1_1223 = null;
         aClass1_1234 = null;
-        aByteArrayArray1217 = null;
+        objectData = null;
         aClass1_1218 = null;
         aClass1_1216 = null;
         aClass1_1230 = null;

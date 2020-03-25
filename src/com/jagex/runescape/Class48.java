@@ -61,7 +61,7 @@ public class Class48 {
 
     }
 
-    public static void method922(int arg0, int arg1, Buffer arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public static void method922(int arg0, int arg1, Buffer arg2, int arg4, int arg5, int arg6, int arg7) {
         if(arg0 >= 0 && arg0 < 104 && arg4 >= 0 && arg4 < 104) {
             OverlayDefinition.tile_flags[arg7][arg0][arg4] = (byte) 0;
             for(; ; ) {
@@ -105,8 +105,6 @@ public class Class48 {
                     arg2.getUnsignedByte();
             }
         }
-        if(arg3 > -62)
-            aClass1_1124 = null;
     }
 
     public static void method924() {
@@ -306,7 +304,7 @@ public class Class48 {
         if(!ImageRGB.spriteExists(arg0, arg3, arg1))
             return null;
         if(!arg2)
-            method922(3, -92, null, -95, -119, -82, -28, -32);
+            method922(3, -92, null, -119, -82, -28, -32);
         return ActorDefinition.method578(-120);
     }
 
@@ -321,7 +319,7 @@ public class Class48 {
         if(arg0 != -7225)
             aClass40_Sub1_1132 = null;
         for(/**/; i < 4; i++)
-            Landscape.aCollisionMapArray1167[i].method146(arg0 + 16784441);
+            Landscape.currentCollisionMap[i].reset();
         System.gc();
         Class33.method405(arg0 ^ ~0x5e71, 10);
         Class35.songTimeout = 0;

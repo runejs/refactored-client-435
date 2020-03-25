@@ -36,7 +36,7 @@ public class Landscape {
     public static RSString aClass1_1162;
     public static RSString aClass1_1163;
     public static int mouseY = 0;
-    public static CollisionMap[] aCollisionMapArray1167;
+    public static CollisionMap[] currentCollisionMap;
     public static int[] anIntArray1168;
     public static RSString aClass1_1169;
     public static int anInt1170;
@@ -44,7 +44,7 @@ public class Landscape {
     public static RSString aClass1_1172;
     public static RSString aClass1_1173;
     public static RSString aClass1_1174;
-    public static int[][] anIntArrayArray1175;
+    public static int[][] distanceValues;
     public static RSString aClass1_1176;
     public static RSString aClass1_1178;
     public static RSString aClass1_1180;
@@ -61,9 +61,9 @@ public class Landscape {
         aClass1_1174 = aClass1_1158;
         aClass1_1162 = RSString.CreateString("@gre@");
         aClass1_1176 = RSString.CreateString("Loaded wordpack");
-        aCollisionMapArray1167 = new CollisionMap[4];
+        currentCollisionMap = new CollisionMap[4];
         aClass1_1173 = aClass1_1176;
-        anIntArrayArray1175 = new int[104][104];
+        distanceValues = new int[104][104];
         anInt1170 = 0;
         aClass1_1172 = RSString.CreateString("You are standing in a members)2only area)3");
         aClass1_1178 = aClass1_1172;
@@ -109,21 +109,21 @@ public class Landscape {
         return is;
     }
 
-    public static void method933() {
+    public static void loadRegion() {
         Class27.method364((byte) -34, false);
         Class37.anInt874 = 0;
         boolean bool = true;
-        for(int i = 0; (i < RSString.aByteArrayArray1715.length); i++) {
-            if(LinkedList.anIntArray1071[i] != -1 && RSString.aByteArrayArray1715[i] == null) {
-                RSString.aByteArrayArray1715[i] = Renderable.aClass6_Sub1_2857.getFile(0, LinkedList.anIntArray1071[i]);
-                if(RSString.aByteArrayArray1715[i] == null) {
+        for(int i = 0; (i < RSString.terrainData.length); i++) {
+            if(LinkedList.anIntArray1071[i] != -1 && RSString.terrainData[i] == null) {
+                RSString.terrainData[i] = Renderable.aClass6_Sub1_2857.getFile(0, LinkedList.anIntArray1071[i]);
+                if(RSString.terrainData[i] == null) {
                     Class37.anInt874++;
                     bool = false;
                 }
             }
-            if(Class13.anIntArray421[i] != -1 && GenericTile.aByteArrayArray1217[i] == null) {
-                GenericTile.aByteArrayArray1217[i] = (Renderable.aClass6_Sub1_2857.method176(Class13.anIntArray421[i], 0, Class44.anIntArrayArray1030[i]));
-                if(GenericTile.aByteArrayArray1217[i] == null) {
+            if(Class13.anIntArray421[i] != -1 && GenericTile.objectData[i] == null) {
+                GenericTile.objectData[i] = (Renderable.aClass6_Sub1_2857.method176(Class13.anIntArray421[i], 0, Class44.anIntArrayArray1030[i]));
+                if(GenericTile.objectData[i] == null) {
                     Class37.anInt874++;
                     bool = false;
                 }
@@ -132,12 +132,12 @@ public class Landscape {
         if(bool) {
             bool = true;
             IdentityKit.anInt2591 = 0;
-            for(int i = 0; RSString.aByteArrayArray1715.length > i; i++) {
-                byte[] is = GenericTile.aByteArrayArray1217[i];
+            for(int i = 0; RSString.terrainData.length > i; i++) {
+                byte[] is = GenericTile.objectData[i];
                 if(is != null) {
-                    int i_2_ = ((ISAAC.anIntArray528[i] & 0xff) * 64 - Class26.anInt635);
-                    int i_3_ = ((ISAAC.anIntArray528[i] >> 8) * 64 - SpotAnimDefinition.anInt2307);
-                    if(GroundItemTile.aBoolean1349) {
+                    int i_2_ = ((ISAAC.mapCoordinates[i] & 0xff) * 64 - Class26.baseY);
+                    int i_3_ = ((ISAAC.mapCoordinates[i] >> 8) * 64 - SpotAnimDefinition.baseX);
+                    if(GroundItemTile.loadGeneratedMap) {
                         i_3_ = 10;
                         i_2_ = 10;
                     }
@@ -150,104 +150,104 @@ public class Landscape {
                 RSCanvas.method46(0);
                 Npc.currentScene.initToNull();
                 System.gc();
-                for(int i = 0; i < 4; i++)
-                    aCollisionMapArray1167[i].method146(16777216);
-                for(int i = 0; i < 4; i++) {
-                    for(int i_4_ = 0; i_4_ < 104; i_4_++) {
-                        for(int i_5_ = 0; i_5_ < 104; i_5_++)
-                            OverlayDefinition.tile_flags[i][i_4_][i_5_] = (byte) 0;
+                for(int z = 0; z < 4; z++)
+                    currentCollisionMap[z].reset();
+                for(int z = 0; z < 4; z++) {
+                    for(int x = 0; x < 104; x++) {
+                        for(int y = 0; y < 104; y++)
+                            OverlayDefinition.tile_flags[z][x][y] = (byte) 0;
                     }
                 }
                 Class65.method1020(true);
-                int i = RSString.aByteArrayArray1715.length;
+                int dataLength = RSString.terrainData.length;
                 Class37.method436(118);
                 Class27.method364((byte) -34, true);
-                if(!GroundItemTile.aBoolean1349) {
-                    for(int i_6_ = 0; i > i_6_; i_6_++) {
-                        int i_7_ = (-Class26.anInt635 + ((0xff & ISAAC.anIntArray528[i_6_]) * 64));
-                        int i_8_ = (-SpotAnimDefinition.anInt2307 + 64 * (ISAAC.anIntArray528[i_6_] >> 8));
-                        byte[] is = RSString.aByteArrayArray1715[i_6_];
+                if(!GroundItemTile.loadGeneratedMap) {
+                    for(int pointer = 0; dataLength > pointer; pointer++) {
+                        int offsetY = (-Class26.baseY + ((0xff & ISAAC.mapCoordinates[pointer]) * 64));
+                        int offsetX = (-SpotAnimDefinition.baseX + 64 * (ISAAC.mapCoordinates[pointer] >> 8));
+                        byte[] is = RSString.terrainData[pointer];
                         if(is != null)
-                            AnimationSequence.method592(aCollisionMapArray1167, (Class51.anInt1202 + -6) * 8, is, -6, i_8_, i_7_, 8 * (-6 + Class17.anInt448));
+                            AnimationSequence.loadTerrainBlock(currentCollisionMap, (Class51.regionX - 6) * 8, is, -6, offsetX, offsetY, 8 * (-6 + Class17.regionY));
                     }
-                    for(int i_9_ = 0; i > i_9_; i_9_++) {
-                        int i_10_ = (-SpotAnimDefinition.anInt2307 + (ISAAC.anIntArray528[i_9_] >> 8) * 64);
-                        byte[] is = RSString.aByteArrayArray1715[i_9_];
-                        int i_11_ = (-Class26.anInt635 + 64 * (ISAAC.anIntArray528[i_9_] & 0xff));
-                        if(is == null && Class17.anInt448 < 800)
-                            Class61.method999(i_11_, (byte) 103, 64, 64, i_10_);
+                    for(int pointer = 0; dataLength > pointer; pointer++) {
+                        int offsetX = (-SpotAnimDefinition.baseX + (ISAAC.mapCoordinates[pointer] >> 8) * 64);
+                        int offsetY = (-Class26.baseY + 64 * (ISAAC.mapCoordinates[pointer] & 0xff));
+                        byte[] data = RSString.terrainData[pointer];
+                        if(data == null && Class17.regionY < 800)
+                            Class61.initiateVertexHeights(offsetY, (byte) 103, 64, 64, offsetX);
                     }
                     Class27.method364((byte) -34, true);
-                    for(int i_12_ = 0; i > i_12_; i_12_++) {
+                    for(int region = 0; dataLength > region; region++) {
                         //                        System.out.println("Requesting map: "+Class13.anIntArray421[i_12_]);
                         // load maps in here
-                        byte[] is = GenericTile.aByteArrayArray1217[i_12_];
-                        if(FileOperations.FileExists("./data/maps/" + (Class13.anIntArray421[i_12_]) + ".cmap")) {
-                            MapDecompressor.objectLoader("./data/maps/" + (Class13.anIntArray421[i_12_]) + ".cmap");
-                        } else if(FileOperations.FileExists("./data/maps/" + (Class13.anIntArray421[i_12_]) + ".dat")) {
-                            System.out.println("reading file: " + "./data/maps/" + (Class13.anIntArray421[i_12_]) + ".dat");
-                            is = FileOperations.ReadFile("./data/maps/" + (Class13.anIntArray421[i_12_]) + ".dat");
+                        byte[] data = GenericTile.objectData[region];
+                        if(FileOperations.FileExists("./data/maps/" + (Class13.anIntArray421[region]) + ".cmap")) {
+                            MapDecompressor.objectLoader("./data/maps/" + (Class13.anIntArray421[region]) + ".cmap");
+                        } else if(FileOperations.FileExists("./data/maps/" + (Class13.anIntArray421[region]) + ".dat")) {
+                            System.out.println("reading file: " + "./data/maps/" + (Class13.anIntArray421[region]) + ".dat");
+                            data = FileOperations.ReadFile("./data/maps/" + (Class13.anIntArray421[region]) + ".dat");
                         } else {
                             try {
-                                is = MapDecompressor.grabMap(Class13.anIntArray421[i_12_]);
+                                data = MapDecompressor.grabMap(Class13.anIntArray421[region]);
                             } catch(IOException e) {
                             }
                         }
-                        if(is != null) {
-                            int i_13_ = (-SpotAnimDefinition.anInt2307 + (ISAAC.anIntArray528[i_12_] >> 8) * 64);
-                            int i_14_ = (64 * (0xff & ISAAC.anIntArray528[i_12_]) - Class26.anInt635);
-                            GameObject.loadObjectBlock(i_13_, Npc.currentScene, aCollisionMapArray1167, is, i_14_);
+                        if(data != null) {
+                            int offsetX = (-SpotAnimDefinition.baseX + (ISAAC.mapCoordinates[region] >> 8) * 64);
+                            int offsetY = (64 * (0xff & ISAAC.mapCoordinates[region]) - Class26.baseY);
+                            GameObject.loadObjectBlock(offsetX, Npc.currentScene, currentCollisionMap, data, offsetY);
                         } else {
-                            System.out.println("Missing map: " + Class13.anIntArray421[i_12_]);
+                            System.out.println("Missing map: " + Class13.anIntArray421[region]);
                         }
                     }
                 }
-                if(GroundItemTile.aBoolean1349) {
-                    for(int i_15_ = 0; i_15_ < 4; i_15_++) {
-                        for(int i_16_ = 0; i_16_ < 13; i_16_++) {
-                            for(int i_17_ = 0; i_17_ < 13; i_17_++) {
-                                int i_18_ = (OverlayDefinition.anIntArrayArrayArray2333[i_15_][i_16_][i_17_]);
+                if(GroundItemTile.loadGeneratedMap) {
+                    for(int z = 0; z < 4; z++) {
+                        for(int x = 0; x < 13; x++) {
+                            for(int y = 0; y < 13; y++) {
+                                int data = (OverlayDefinition.constructMapTiles[z][x][y]);
                                 boolean bool_19_ = false;
-                                if(i_18_ != -1) {
-                                    int i_20_ = (0x6 & i_18_) >> 1;
-                                    int i_21_ = (i_18_ & 0xffd2c2) >> 14;
-                                    int i_22_ = i_18_ >> 24 & 0x3;
-                                    int i_23_ = (i_18_ & 0x3ffb) >> 3;
-                                    int i_24_ = ((i_21_ / 8 << 8) + (i_23_ / 8));
-                                    for(int i_25_ = 0; (i_25_ < ISAAC.anIntArray528.length); i_25_++) {
-                                        if(((ISAAC.anIntArray528[i_25_]) == i_24_) && (RSString.aByteArrayArray1715[i_25_]) != null) {
-                                            Class5.method162(i_17_ * 8, 13941, 8 * (i_21_ & 0x7), i_22_, i_15_, i_16_ * 8, (0x7 & i_23_) * 8, i_20_, (RSString.aByteArrayArray1715[i_25_]), aCollisionMapArray1167);
+                                if(data != -1) {
+                                    int tileRotation = (0x6 & data) >> 1;
+                                    int tileX = (data & 0xffd2c2) >> 14;
+                                    int tileZ = data >> 24 & 0x3;
+                                    int tileY = (data & 0x3ffb) >> 3;
+                                    int tileCoordinates = ((tileX / 8 << 8) + (tileY / 8));
+                                    for(int pointer = 0; (pointer < ISAAC.mapCoordinates.length); pointer++) {
+                                        if(((ISAAC.mapCoordinates[pointer]) == tileCoordinates) && (RSString.terrainData[pointer]) != null) {
+                                            Class5.loadTerrainSubblock(y * 8, 8 * (tileX & 0x7), tileZ, z, x * 8, (0x7 & tileY) * 8, tileRotation, (RSString.terrainData[pointer]), currentCollisionMap);
                                             bool_19_ = true;
                                             break;
                                         }
                                     }
                                 }
                                 if(!bool_19_)
-                                    Node.method455(8 * i_17_, i_15_, 1, i_16_ * 8);
+                                    Node.method455(8 * y, z, 1, x * 8);
                             }
                         }
                     }
-                    for(int i_26_ = 0; i_26_ < 13; i_26_++) {
-                        for(int i_27_ = 0; i_27_ < 13; i_27_++) {
-                            int i_28_ = (OverlayDefinition.anIntArrayArrayArray2333[0][i_26_][i_27_]);
-                            if(i_28_ == -1)
-                                Class61.method999(i_27_ * 8, (byte) 120, 8, 8, 8 * i_26_);
+                    for(int x = 0; x < 13; x++) {
+                        for(int y = 0; y < 13; y++) {
+                            int displayMap = (OverlayDefinition.constructMapTiles[0][x][y]);
+                            if(displayMap == -1)
+                                Class61.initiateVertexHeights(y * 8, (byte) 120, 8, 8, 8 * x);
                         }
                     }
                     Class27.method364((byte) -34, true);
-                    for(int i_29_ = 0; i_29_ < 4; i_29_++) {
-                        for(int i_30_ = 0; i_30_ < 13; i_30_++) {
-                            for(int i_31_ = 0; i_31_ < 13; i_31_++) {
-                                int i_32_ = (OverlayDefinition.anIntArrayArrayArray2333[i_29_][i_30_][i_31_]);
-                                if(i_32_ != -1) {
-                                    int i_33_ = ((i_32_ & 0x3ba82fb) >> 24);
-                                    int i_34_ = 0x3ff & i_32_ >> 14;
-                                    int i_35_ = i_32_ >> 1 & 0x3;
-                                    int i_36_ = i_32_ >> 3 & 0x7ff;
-                                    int i_37_ = ((i_34_ / 8 << 8) + (i_36_ / 8));
-                                    for(int i_38_ = 0; (i_38_ < ISAAC.anIntArray528.length); i_38_++) {
-                                        if(i_37_ == (ISAAC.anIntArray528[i_38_]) && (GenericTile.aByteArrayArray1217[i_38_]) != null) {
-                                            Class24.method341(8 * (i_34_ & 0x7), (Npc.currentScene), 0, i_29_, i_35_, i_33_, (GenericTile.aByteArrayArray1217[i_38_]), 8 * i_31_, aCollisionMapArray1167, 8 * (i_36_ & 0x7), i_30_ * 8);
+                    for(int z = 0; z < 4; z++) {
+                        for(int x = 0; x < 13; x++) {
+                            for(int y = 0; y < 13; y++) {
+                                int bits = (OverlayDefinition.constructMapTiles[z][x][y]);
+                                if(bits != -1) {
+                                    int tileZ = ((bits & 0x3ba82fb) >> 24);
+                                    int tileX = 0x3ff & bits >> 14;
+                                    int tileRotation = bits >> 1 & 0x3;
+                                    int tileY = bits >> 3 & 0x7ff;
+                                    int tileCoordinates = ((tileX / 8 << 8) + (tileY / 8));
+                                    for(int i_38_ = 0; (i_38_ < ISAAC.mapCoordinates.length); i_38_++) {
+                                        if(tileCoordinates == (ISAAC.mapCoordinates[i_38_]) && (GenericTile.objectData[i_38_]) != null) {
+                                            Class24.method341(8 * (tileX & 0x7), (Npc.currentScene), 0, z, tileRotation, tileZ, (GenericTile.objectData[i_38_]), 8 * y, currentCollisionMap, 8 * (tileY & 0x7), x * 8);
                                             break;
                                         }
                                     }
@@ -258,20 +258,20 @@ public class Landscape {
                 }
                 Class27.method364((byte) -34, true);
                 RSCanvas.method46(0);
-                ISAAC.method281((Npc.currentScene), 27324, aCollisionMapArray1167);
+                ISAAC.method281((Npc.currentScene), 27324, currentCollisionMap);
                 Class27.method364((byte) -34, true);
-                int i_39_ = Class64.setZ;
-                if(Player.worldLevel < i_39_)
-                    i_39_ = Player.worldLevel;
-                if(i_39_ < -1 + Player.worldLevel)
-                    i_39_ = -1 + Player.worldLevel;
+                int z = Class64.lowestPlane;
+                if(Player.worldLevel < z)
+                    z = Player.worldLevel;
+                if(z < -1 + Player.worldLevel)
+                    z = -1 + Player.worldLevel;
                 if(!VertexNormal.lowMemory)
                     Npc.currentScene.setHeightLevel(0);
                 else
-                    Npc.currentScene.setHeightLevel(Class64.setZ);
-                for(int i_40_ = 0; i_40_ < 104; i_40_++) {
-                    for(int i_41_ = 0; i_41_ < 104; i_41_++)
-                        Class40_Sub13.method880((byte) -80, i_41_, i_40_);
+                    Npc.currentScene.setHeightLevel(Class64.lowestPlane);
+                for(int x = 0; x < 104; x++) {
+                    for(int y = 0; y < 104; y++)
+                        Class40_Sub13.spawnGroundItem((byte) -80, y, x);
                 }
                 ISAAC.method285((byte) 118);
                 VertexNormal.aClass9_1102.method235((byte) -43);
@@ -279,11 +279,11 @@ public class Landscape {
                     SceneCluster.packetBuffer.putPacket(121);
                     SceneCluster.packetBuffer.putIntBE(1057001181);
                 }
-                if(!GroundItemTile.aBoolean1349) {
-                    int i_42_ = (-6 + Class51.anInt1202) / 8;
-                    int i_43_ = (Class17.anInt448 - 6) / 8;
-                    int i_44_ = (6 + Class17.anInt448) / 8;
-                    int i_45_ = (Class51.anInt1202 + 6) / 8;
+                if(!GroundItemTile.loadGeneratedMap) {
+                    int i_42_ = (-6 + Class51.regionX) / 8;
+                    int i_43_ = (Class17.regionY - 6) / 8;
+                    int i_44_ = (6 + Class17.regionY) / 8;
+                    int i_45_ = (Class51.regionX + 6) / 8;
                     for(int i_46_ = -1 + i_42_; i_46_ <= 1 + i_45_; i_46_++) {
                         for(int i_47_ = -1 + i_43_; i_47_ <= i_44_ + 1; i_47_++) {
                             if(i_42_ > i_46_ || (i_46_ > i_45_) || i_47_ < i_43_ || (i_47_ > i_44_)) {
@@ -371,12 +371,12 @@ public class Landscape {
     }
 
     public static void method935() {
-        anIntArrayArray1175 = null;
+        distanceValues = null;
         aClass1_1163 = null;
         aClass1_1160 = null;
         aClass1_1158 = null;
         aClass1_1162 = null;
-        aCollisionMapArray1167 = null;
+        currentCollisionMap = null;
         aClass1_1181 = null;
         aClass1_1176 = null;
         anIntArray1168 = null;

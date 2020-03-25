@@ -331,7 +331,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                             for(int i = 0; i < 4; i++) {
                                 for(int i_9_ = 1; (i_9_ < 103); i_9_++) {
                                     for(int i_10_ = 1; i_10_ < 103; i_10_++)
-                                        Landscape.aCollisionMapArray1167[i].anIntArrayArray150[i_9_][i_10_] = 0;
+                                        Landscape.currentCollisionMap[i].clippingData[i_9_][i_10_] = 0;
                                 }
                             }
                         }

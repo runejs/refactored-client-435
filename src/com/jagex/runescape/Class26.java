@@ -18,7 +18,7 @@ public class Class26 {
     public static CacheIndex aCacheIndex_632;
     public static RSString aClass1_633 = (RSString.CreateString("Moderator)2Option: Spieler f-Ur 48 Stunden stumm schalten: <OFF>"));
     public static RSString aClass1_634 = RSString.CreateString("World");
-    public static int anInt635;
+    public static int baseY;
 
     public static Class method349(String arg1) throws ClassNotFoundException {
         if(arg1.equals("B"))

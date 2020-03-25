@@ -57,12 +57,12 @@ public class AnimationSequence extends SubNode {
         anIntArrayArray2490 = null;
     }
 
-    public static void method592(CollisionMap[] arg0, int arg1, byte[] arg2, int arg3, int arg4, int arg5, int arg6) {
+    public static void loadTerrainBlock(CollisionMap[] arg0, int arg1, byte[] arg2, int arg3, int arg4, int arg5, int arg6) {
         for(int i = 0; i < 4; i++) {
             for(int i_1_ = 0; i_1_ < 64; i_1_++) {
                 for(int i_2_ = 0; i_2_ < 64; i_2_++) {
                     if(arg4 + i_1_ > 0 && i_1_ + arg4 < 103 && arg5 + i_2_ > 0 && i_2_ + arg5 < 103)
-                        arg0[i].anIntArrayArray150[i_1_ + arg4][(i_2_ + arg5)] = HuffmanEncoding.method1021((arg0[i].anIntArrayArray150[i_1_ + arg4][i_2_ + arg5]), -16777217);
+                        arg0[i].clippingData[i_1_ + arg4][(i_2_ + arg5)] = HuffmanEncoding.method1021((arg0[i].clippingData[i_1_ + arg4][i_2_ + arg5]), -16777217);
                 }
             }
         }
@@ -71,7 +71,7 @@ public class AnimationSequence extends SubNode {
             for(int i = 0; i < 4; i++) {
                 for(int i_3_ = 0; i_3_ < 64; i_3_++) {
                     for(int i_4_ = 0; i_4_ < 64; i_4_++)
-                        Class48.method922(i_3_ + arg4, 0, class40_sub1, -99, i_4_ + arg5, arg6, arg1, i);
+                        Class48.method922(i_3_ + arg4, 0, class40_sub1, i_4_ + arg5, arg6, arg1, i);
                 }
             }
         }
@@ -87,7 +87,7 @@ public class AnimationSequence extends SubNode {
         int i_15_ = 0x3 & i_14_ >> 6;
         int i_16_ = 0x1f & i_14_;
         if(i_16_ != 10 && i_16_ != 11 && i_16_ != 22)
-            Class38_Sub1.method448(0, 0, (Player.localPlayer.pathY[0]), arg0, (byte) 98, 1 + i_16_, true, i_15_, 0, (Player.localPlayer.pathX[0]), arg3, 2);
+            Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), arg0, 1 + i_16_, true, i_15_, 0, (Player.localPlayer.pathX[0]), arg3, 2);
         else {
             GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
             int i_17_ = gameObjectDefinition.blockingMask;
@@ -102,7 +102,7 @@ public class AnimationSequence extends SubNode {
                 i_18_ = gameObjectDefinition.sizeY;
                 i_19_ = gameObjectDefinition.sizeX;
             }
-            Class38_Sub1.method448(i_18_, i_17_, (Player.localPlayer.pathY[0]), arg0, (byte) 94, 0, true, 0, i_19_, (Player.localPlayer.pathX[0]), arg3, 2);
+            Class38_Sub1.doWalkTo(i_18_, i_17_, (Player.localPlayer.pathY[0]), arg0, 0, true, 0, i_19_, (Player.localPlayer.pathX[0]), arg3, 2);
         }
         Class40_Sub11.anInt2163 = Class57.clickX;
         LinkedList.anInt1075 = 2;

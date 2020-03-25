@@ -13,7 +13,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2775;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2776;
     public static int[] anIntArray2777 = {8, 11, 4, 6, 9, 7, 10};
-    public static int anInt2778;
+    public static int arbitraryDestination;
     public static CacheIndex aCacheIndex_2779;
     public static int inputType;
     public static RSString aClass1_2781 = RSString.CreateString(" Sekunde(Xn(Y -Ubertragen)3");
@@ -29,7 +29,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
     static {
         inputType = 0;
         anInt2782 = 0;
-        anInt2778 = 0;
+        arbitraryDestination = 0;
         anIntArray2788 = new int[]{16, 32, 64, 128};
         aClass1_2787 = RSString.CreateString("sideicons");
         lastItemDragged = false;

@@ -86,7 +86,7 @@ public class Class37 {
         Cache.anInt324 = -1;
         Class35.anInt1728 = 0;
         Class49.anInt1151 = -1;
-        VarbitDefinition.anInt2366 = 0;
+        VarbitDefinition.destinationX = 0;
         Class27.minimapState = 0;
         Class40_Sub5_Sub15.anInt2782 = 0;
         IncomingPackets.incomingPacketBuffer.currentPosition = arg0;
@@ -180,8 +180,8 @@ public class Class37 {
                     }
                 }
                 if(Player.anInt3288 == 2) {
-                    i_8_ = (-((Player.localPlayer.worldY) / 32) + 2 + 4 * (-Class26.anInt635 + Class4.anInt175));
-                    i = (4 * (Class68.anInt1637 - SpotAnimDefinition.anInt2307) - (-2 + ((Player.localPlayer.worldX) / 32)));
+                    i_8_ = (-((Player.localPlayer.worldY) / 32) + 2 + 4 * (-Class26.baseY + Class4.anInt175));
+                    i = (4 * (Class68.anInt1637 - SpotAnimDefinition.baseX) - (-2 + ((Player.localPlayer.worldX) / 32)));
                     OverlayDefinition.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], i, i_8_);
                 }
                 if(Player.anInt3288 == 10 && Class68.anInt1623 >= 0 && ((Player.trackedPlayers).length > Class68.anInt1623)) {
@@ -193,9 +193,9 @@ public class Class37 {
                     }
                 }
             }
-            if(VarbitDefinition.anInt2366 != 0) {
-                i = (2 + VarbitDefinition.anInt2366 * 4 + -((Player.localPlayer.worldX) / 32));
-                i_8_ = 2 + (4 * Class55.anInt1304 + -((Player.localPlayer.worldY) / 32));
+            if(VarbitDefinition.destinationX != 0) {
+                i = (2 + VarbitDefinition.destinationX * 4 + -((Player.localPlayer.worldX) / 32));
+                i_8_ = 2 + (4 * Class55.destinationY + -((Player.localPlayer.worldY) / 32));
                 SceneTile.drawOnMinimap(i_8_, i, (Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[0]));
             }
             Rasterizer.drawFilledRectangle(97, 78, 3, 3, 16777215);

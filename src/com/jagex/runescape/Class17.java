@@ -14,7 +14,7 @@ import com.jagex.runescape.scene.tile.WallDecoration;
 import java.awt.*;
 
 public class Class17 {
-    public static int anInt448;
+    public static int regionY;
     public static Cache aClass9_449 = new Cache(128);
     public static RSString aClass1_452 = RSString.CreateString("Loading sprites )2 ");
     public static RSString aClass1_455 = RSString.CreateString("as it was used to break our rules)3");

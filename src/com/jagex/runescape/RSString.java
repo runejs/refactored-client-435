@@ -17,7 +17,7 @@ public class RSString implements Interface1 {
     public static CacheIndex aCacheIndex_1705;
     public static int[] keyCodes = new int[128];
     public static int anInt1711 = 50;
-    public static byte[][] aByteArrayArray1715;
+    public static byte[][] terrainData;
     public static RSString aClass1_1717 = CreateString("purple:");
     /*synthetic*/ public static Class aClass1718;
     public static RSString aClass1_1677 = CreateString("scrollbar");
@@ -52,8 +52,8 @@ public class RSString implements Interface1 {
 
     public static void method71(int arg0) {
         Class4.anInt182 = 0;
-        int xPos = (((Player.localPlayer.worldX) >> 7) + SpotAnimDefinition.anInt2307);
-        int yPos = (Class26.anInt635 + ((Player.localPlayer.worldY) >> 7));
+        int xPos = (((Player.localPlayer.worldX) >> 7) + SpotAnimDefinition.baseX);
+        int yPos = (Class26.baseY + ((Player.localPlayer.worldY) >> 7));
         if(xPos >= 3053 && xPos <= 3156 && yPos >= 3056 && yPos <= 3136)
             Class4.anInt182 = 1;
         if(xPos >= 3072 && xPos <= 3118 && yPos >= 9492 && yPos <= 9535)
@@ -83,7 +83,7 @@ public class RSString implements Interface1 {
     public static void method83() {
         aClass9_1684 = null;
         aClass1_1713 = null;
-        aByteArrayArray1715 = null;
+        terrainData = null;
         aClass1_1677 = null;
         aCacheIndex_1705 = null;
         aClass1_1702 = null;
@@ -615,7 +615,7 @@ public class RSString implements Interface1 {
     public long method86(int arg0) {
         long l = 0L;
         if(arg0 != 1544463557)
-            aByteArrayArray1715 = null;
+            terrainData = null;
         for(int i = 0; length > i; i++)
             l = -l + (l << 5) + (long) (0xff & chars[i]);
         return l;

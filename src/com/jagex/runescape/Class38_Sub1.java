@@ -93,7 +93,7 @@ public class Class38_Sub1 extends Class38 {
 
     public static boolean method446(Signlink arg0, int arg1, boolean arg2, byte arg3) {
         if(arg3 != 30)
-            method448(47, -7, 96, -97, (byte) -6, -111, true, -110, 57, -36, -84, -42);
+            doWalkTo(47, -7, 96, -97, -111, true, -110, 57, -36, -84, -42);
         if(!Class39.method452(arg0, (byte) 121, arg2))
             return false;
         if(arg1 > 0)
@@ -176,196 +176,196 @@ public class Class38_Sub1 extends Class38 {
         }
     }
 
-    public static boolean method448(int arg0, int arg1, int arg2, int arg3, byte arg4, int arg5, boolean arg6, int arg7, int arg8, int arg9, int arg10, int arg11) {
-        for(int i = 0; i < 104; i++) {
-            for(int i_8_ = 0; i_8_ < 104; i_8_++) {
-                Class57.anIntArrayArray1335[i][i_8_] = 0;
-                Landscape.anIntArrayArray1175[i][i_8_] = 99999999;
+    public static boolean doWalkTo(int arg0, int arg1, int startX, int endX, int objectType, boolean flag, int arg7, int arg8, int startY, int endY, int clickType) {
+        for(int x = 0; x < 104; x++) {
+            for(int y = 0; y < 104; y++) {
+                Class57.wayPoints[x][y] = 0;
+                Landscape.distanceValues[x][y] = 99999999;
             }
         }
-        Class57.anIntArrayArray1335[arg2][arg9] = 99;
-        int i = 0;
-        int i_9_ = arg9;
-        boolean bool = false;
-        int i_10_ = 0;
-        Landscape.anIntArrayArray1175[arg2][arg9] = 0;
-        int i_11_ = arg2;
-        Class24.anIntArray581[i] = arg2;
-        if(arg4 < 91)
-            return false;
-        Wall.anIntArray351[i++] = arg9;
-        int i_12_ = Class24.anIntArray581.length;
-        int[][] is = (Landscape.aCollisionMapArray1167[Player.worldLevel].anIntArrayArray150);
-        while(i_10_ != i) {
-            i_9_ = Wall.anIntArray351[i_10_];
-            i_11_ = Class24.anIntArray581[i_10_];
-            i_10_ = (i_10_ + 1) % i_12_;
-            if(i_11_ == arg3 && i_9_ == arg10) {
-                bool = true;
+        int currentX = startX;
+        int currentY = startY;
+        Class57.wayPoints[startX][startY] = 99;
+        Landscape.distanceValues[startX][startY] = 0;
+        int nextIndex = 0;
+        int currentIndex = 0;
+        Class24.walkingQueueX[nextIndex] = startX;
+        Wall.walkingQueueY[nextIndex++] = startY;
+        boolean foundDestination = false;
+        int maxPathSize = Class24.walkingQueueX.length;
+        int[][] clippingPaths = (Landscape.currentCollisionMap[Player.worldLevel].clippingData);
+        while(currentIndex != nextIndex) {
+            currentY = Wall.walkingQueueY[currentIndex];
+            currentX = Class24.walkingQueueX[currentIndex];
+            currentIndex = (currentIndex + 1) % maxPathSize;
+            if(currentX == endX && currentY == endY) {
+                foundDestination = true;
                 break;
             }
-            if(arg5 != 0) {
-                if(arg5 >= 5 && arg5 != 10 || !(Landscape.aCollisionMapArray1167[Player.worldLevel].method155(i_11_, false, arg5 + -1, arg10, i_9_, arg7, arg3))) {
-                    if(arg5 < 10 && (Landscape.aCollisionMapArray1167[Player.worldLevel].method158(arg10, arg7, i_9_, arg3, i_11_, (byte) 122, -1 + arg5))) {
-                        bool = true;
+            if(objectType != 0) {
+                if(objectType >= 5 && objectType != 10 || !(Landscape.currentCollisionMap[Player.worldLevel].reachedWall(currentX, currentY, endX, endY, objectType + -1, arg7))) {
+                    if(objectType < 10 && (Landscape.currentCollisionMap[Player.worldLevel].reachedWallDecoration(currentX, currentY, endX, endY, -1 + objectType, arg7))) {
+                        foundDestination = true;
                         break;
                     }
                 } else {
-                    bool = true;
+                    foundDestination = true;
                     break;
                 }
             }
-            if(arg0 != 0 && arg8 != 0 && (Landscape.aCollisionMapArray1167[Player.worldLevel].method153(-24, arg8, arg3, arg0, arg10, arg1, i_9_, i_11_))) {
-                bool = true;
+            if(arg0 != 0 && arg8 != 0 && (Landscape.currentCollisionMap[Player.worldLevel].reachedFacingObject(currentX, currentY, endX, endY, arg0, arg8, arg1))) {
+                foundDestination = true;
                 break;
             }
-            int i_13_ = Landscape.anIntArrayArray1175[i_11_][i_9_] + 1;
-            if(i_11_ > 0 && Class57.anIntArrayArray1335[-1 + i_11_][i_9_] == 0 && (0x1280108 & is[i_11_ - 1][i_9_]) == 0) {
-                Class24.anIntArray581[i] = i_11_ - 1;
-                Wall.anIntArray351[i] = i_9_;
-                i = (1 + i) % i_12_;
-                Class57.anIntArrayArray1335[-1 + i_11_][i_9_] = 2;
-                Landscape.anIntArrayArray1175[i_11_ - 1][i_9_] = i_13_;
+            int newDistanceValue = Landscape.distanceValues[currentX][currentY] + 1;
+            if(currentX > 0 && Class57.wayPoints[-1 + currentX][currentY] == 0 && (0x1280108 & clippingPaths[currentX - 1][currentY]) == 0) {
+                Class24.walkingQueueX[nextIndex] = currentX - 1;
+                Wall.walkingQueueY[nextIndex] = currentY;
+                nextIndex = (1 + nextIndex) % maxPathSize;
+                Class57.wayPoints[-1 + currentX][currentY] = 2;
+                Landscape.distanceValues[currentX - 1][currentY] = newDistanceValue;
             }
-            if(i_11_ < 103 && Class57.anIntArrayArray1335[i_11_ + 1][i_9_] == 0 && (is[1 + i_11_][i_9_] & 0x1280180) == 0) {
-                Class24.anIntArray581[i] = i_11_ + 1;
-                Wall.anIntArray351[i] = i_9_;
-                i = (i + 1) % i_12_;
-                Class57.anIntArrayArray1335[i_11_ + 1][i_9_] = 8;
-                Landscape.anIntArrayArray1175[i_11_ + 1][i_9_] = i_13_;
+            if(currentX < 103 && Class57.wayPoints[currentX + 1][currentY] == 0 && (clippingPaths[1 + currentX][currentY] & 0x1280180) == 0) {
+                Class24.walkingQueueX[nextIndex] = currentX + 1;
+                Wall.walkingQueueY[nextIndex] = currentY;
+                nextIndex = (nextIndex + 1) % maxPathSize;
+                Class57.wayPoints[currentX + 1][currentY] = 8;
+                Landscape.distanceValues[currentX + 1][currentY] = newDistanceValue;
             }
-            if(i_9_ > 0 && Class57.anIntArrayArray1335[i_11_][i_9_ - 1] == 0 && (is[i_11_][-1 + i_9_] & 0x1280102) == 0) {
-                Class24.anIntArray581[i] = i_11_;
-                Wall.anIntArray351[i] = -1 + i_9_;
-                Class57.anIntArrayArray1335[i_11_][-1 + i_9_] = 1;
-                i = (i + 1) % i_12_;
-                Landscape.anIntArrayArray1175[i_11_][i_9_ - 1] = i_13_;
+            if(currentY > 0 && Class57.wayPoints[currentX][currentY - 1] == 0 && (clippingPaths[currentX][-1 + currentY] & 0x1280102) == 0) {
+                Class24.walkingQueueX[nextIndex] = currentX;
+                Wall.walkingQueueY[nextIndex] = -1 + currentY;
+                Class57.wayPoints[currentX][-1 + currentY] = 1;
+                nextIndex = (nextIndex + 1) % maxPathSize;
+                Landscape.distanceValues[currentX][currentY - 1] = newDistanceValue;
             }
-            if(i_9_ < 103 && Class57.anIntArrayArray1335[i_11_][i_9_ + 1] == 0 && (is[i_11_][i_9_ + 1] & 0x1280120) == 0) {
-                Class24.anIntArray581[i] = i_11_;
-                Wall.anIntArray351[i] = 1 + i_9_;
-                Class57.anIntArrayArray1335[i_11_][i_9_ + 1] = 4;
-                Landscape.anIntArrayArray1175[i_11_][1 + i_9_] = i_13_;
-                i = (i + 1) % i_12_;
+            if(currentY < 103 && Class57.wayPoints[currentX][currentY + 1] == 0 && (clippingPaths[currentX][currentY + 1] & 0x1280120) == 0) {
+                Class24.walkingQueueX[nextIndex] = currentX;
+                Wall.walkingQueueY[nextIndex] = 1 + currentY;
+                Class57.wayPoints[currentX][currentY + 1] = 4;
+                Landscape.distanceValues[currentX][1 + currentY] = newDistanceValue;
+                nextIndex = (nextIndex + 1) % maxPathSize;
             }
-            if(i_11_ > 0 && i_9_ > 0 && Class57.anIntArrayArray1335[-1 + i_11_][i_9_ - 1] == 0 && (is[i_11_ - 1][-1 + i_9_] & 0x128010e) == 0 && (0x1280108 & is[i_11_ + -1][i_9_]) == 0 && (is[i_11_][-1 + i_9_] & 0x1280102) == 0) {
-                Class24.anIntArray581[i] = -1 + i_11_;
-                Wall.anIntArray351[i] = i_9_ - 1;
-                i = (i + 1) % i_12_;
-                Class57.anIntArrayArray1335[i_11_ + -1][-1 + i_9_] = 3;
-                Landscape.anIntArrayArray1175[-1 + i_11_][i_9_ + -1] = i_13_;
+            if(currentX > 0 && currentY > 0 && Class57.wayPoints[-1 + currentX][currentY - 1] == 0 && (clippingPaths[currentX - 1][-1 + currentY] & 0x128010e) == 0 && (0x1280108 & clippingPaths[currentX + -1][currentY]) == 0 && (clippingPaths[currentX][-1 + currentY] & 0x1280102) == 0) {
+                Class24.walkingQueueX[nextIndex] = -1 + currentX;
+                Wall.walkingQueueY[nextIndex] = currentY - 1;
+                nextIndex = (nextIndex + 1) % maxPathSize;
+                Class57.wayPoints[currentX + -1][-1 + currentY] = 3;
+                Landscape.distanceValues[-1 + currentX][currentY + -1] = newDistanceValue;
             }
-            if(i_11_ < 103 && i_9_ > 0 && Class57.anIntArrayArray1335[i_11_ + 1][-1 + i_9_] == 0 && ((is[1 + i_11_][-1 + i_9_] & 0x1280183) == 0) && (is[i_11_ + 1][i_9_] & 0x1280180) == 0 && (0x1280102 & is[i_11_][-1 + i_9_]) == 0) {
-                Class24.anIntArray581[i] = 1 + i_11_;
-                Wall.anIntArray351[i] = i_9_ - 1;
-                i = (i + 1) % i_12_;
-                Class57.anIntArrayArray1335[1 + i_11_][-1 + i_9_] = 9;
-                Landscape.anIntArrayArray1175[i_11_ + 1][-1 + i_9_] = i_13_;
+            if(currentX < 103 && currentY > 0 && Class57.wayPoints[currentX + 1][-1 + currentY] == 0 && ((clippingPaths[1 + currentX][-1 + currentY] & 0x1280183) == 0) && (clippingPaths[currentX + 1][currentY] & 0x1280180) == 0 && (0x1280102 & clippingPaths[currentX][-1 + currentY]) == 0) {
+                Class24.walkingQueueX[nextIndex] = 1 + currentX;
+                Wall.walkingQueueY[nextIndex] = currentY - 1;
+                nextIndex = (nextIndex + 1) % maxPathSize;
+                Class57.wayPoints[1 + currentX][-1 + currentY] = 9;
+                Landscape.distanceValues[currentX + 1][-1 + currentY] = newDistanceValue;
             }
-            if(i_11_ > 0 && i_9_ < 103 && Class57.anIntArrayArray1335[i_11_ + -1][i_9_ + 1] == 0 && ((0x1280138 & is[-1 + i_11_][1 + i_9_]) == 0) && (0x1280108 & is[i_11_ - 1][i_9_]) == 0 && (is[i_11_][i_9_ + 1] & 0x1280120) == 0) {
-                Class24.anIntArray581[i] = -1 + i_11_;
-                Wall.anIntArray351[i] = 1 + i_9_;
-                Class57.anIntArrayArray1335[i_11_ - 1][1 + i_9_] = 6;
-                Landscape.anIntArrayArray1175[-1 + i_11_][i_9_ + 1] = i_13_;
-                i = (1 + i) % i_12_;
+            if(currentX > 0 && currentY < 103 && Class57.wayPoints[currentX + -1][currentY + 1] == 0 && ((0x1280138 & clippingPaths[-1 + currentX][1 + currentY]) == 0) && (0x1280108 & clippingPaths[currentX - 1][currentY]) == 0 && (clippingPaths[currentX][currentY + 1] & 0x1280120) == 0) {
+                Class24.walkingQueueX[nextIndex] = -1 + currentX;
+                Wall.walkingQueueY[nextIndex] = 1 + currentY;
+                Class57.wayPoints[currentX - 1][1 + currentY] = 6;
+                Landscape.distanceValues[-1 + currentX][currentY + 1] = newDistanceValue;
+                nextIndex = (1 + nextIndex) % maxPathSize;
             }
-            if(i_11_ < 103 && i_9_ < 103 && Class57.anIntArrayArray1335[1 + i_11_][1 + i_9_] == 0 && (0x12801e0 & is[i_11_ + 1][i_9_ + 1]) == 0 && (0x1280180 & is[1 + i_11_][i_9_]) == 0 && (is[i_11_][1 + i_9_] & 0x1280120) == 0) {
-                Class24.anIntArray581[i] = 1 + i_11_;
-                Wall.anIntArray351[i] = i_9_ + 1;
-                i = (i + 1) % i_12_;
-                Class57.anIntArrayArray1335[1 + i_11_][1 + i_9_] = 12;
-                Landscape.anIntArrayArray1175[1 + i_11_][1 + i_9_] = i_13_;
+            if(currentX < 103 && currentY < 103 && Class57.wayPoints[1 + currentX][1 + currentY] == 0 && (0x12801e0 & clippingPaths[currentX + 1][currentY + 1]) == 0 && (0x1280180 & clippingPaths[1 + currentX][currentY]) == 0 && (clippingPaths[currentX][1 + currentY] & 0x1280120) == 0) {
+                Class24.walkingQueueX[nextIndex] = 1 + currentX;
+                Wall.walkingQueueY[nextIndex] = currentY + 1;
+                nextIndex = (nextIndex + 1) % maxPathSize;
+                Class57.wayPoints[1 + currentX][1 + currentY] = 12;
+                Landscape.distanceValues[1 + currentX][1 + currentY] = newDistanceValue;
             }
         }
-        Class40_Sub5_Sub15.anInt2778 = 0;
-        if(!bool) {
-            if(!arg6)
-                return false;
-            int i_14_ = 1000;
-            int i_15_ = 10;
-            int i_16_ = 100;
-            for(int i_17_ = arg3 + -i_15_; arg3 + i_15_ >= i_17_; i_17_++) {
-                for(int i_18_ = -i_15_ + arg10; (arg10 + i_15_ >= i_18_); i_18_++) {
-                    if(i_17_ >= 0 && i_18_ >= 0 && i_17_ < 104 && i_18_ < 104 && (Landscape.anIntArrayArray1175[i_17_][i_18_] < 100)) {
-                        int i_19_ = 0;
-                        int i_20_ = 0;
-                        if(i_18_ < arg10)
-                            i_19_ = arg10 - i_18_;
-                        else if(i_18_ > arg10 - (-arg8 + 1))
-                            i_19_ = i_18_ + -arg8 + -arg10 + 1;
-                        if(i_17_ < arg3)
-                            i_20_ = -i_17_ + arg3;
-                        else if(-1 + arg0 + arg3 < i_17_)
-                            i_20_ = i_17_ + (-arg0 + -arg3 + 1);
-                        int i_21_ = i_19_ * i_19_ + i_20_ * i_20_;
-                        if(i_14_ > i_21_ || (i_21_ == i_14_ && (((Landscape.anIntArrayArray1175[i_17_][i_18_]) < i_16_)))) {
-                            i_9_ = i_18_;
-                            i_14_ = i_21_;
-                            i_11_ = i_17_;
-                            i_16_ = (Landscape.anIntArrayArray1175[i_17_][i_18_]);
+        Class40_Sub5_Sub15.arbitraryDestination = 0;
+        if(!foundDestination) {
+            if(flag) {
+                int i_14_ = 1000;
+                int deviation = 10;
+                int maxStepsNonInclusive = 100;
+                for(int deviationX = endX + -deviation; endX + deviation >= deviationX; deviationX++) {
+                    for(int deviationY = -deviation + endY; (endY + deviation >= deviationY); deviationY++) {
+                        if(deviationX >= 0 && deviationY >= 0 && deviationX < 104 && deviationY < 104 && (Landscape.distanceValues[deviationX][deviationY] < 100)) {
+                            int i_19_ = 0;
+                            int i_20_ = 0;
+                            if(deviationY < endY)
+                                i_19_ = endY - deviationY;
+                            else if(deviationY > endY - (-arg8 + 1))
+                                i_19_ = deviationY + -arg8 + -endY + 1;
+                            if(deviationX < endX)
+                                i_20_ = -deviationX + endX;
+                            else if(-1 + arg0 + endX < deviationX)
+                                i_20_ = deviationX + (-arg0 + -endX + 1);
+                            int i_21_ = i_19_ * i_19_ + i_20_ * i_20_;
+                            if(i_14_ > i_21_ || (i_21_ == i_14_ && (((Landscape.distanceValues[deviationX][deviationY]) < maxStepsNonInclusive)))) {
+                                currentY = deviationY;
+                                i_14_ = i_21_;
+                                currentX = deviationX;
+                                maxStepsNonInclusive = (Landscape.distanceValues[deviationX][deviationY]);
+                            }
                         }
                     }
                 }
-            }
-            if(i_14_ == 1000)
+                if(i_14_ == 1000)
+                    return false;
+                if(startX == currentX && startY == currentY)
+                    return false;
+                Class40_Sub5_Sub15.arbitraryDestination = 1;
+            } else {
                 return false;
-            if(arg2 == i_11_ && arg9 == i_9_)
-                return false;
-            Class40_Sub5_Sub15.anInt2778 = 1;
-        }
-        i_10_ = 0;
-        Class24.anIntArray581[i_10_] = i_11_;
-        Wall.anIntArray351[i_10_++] = i_9_;
-        int i_23_;
-        int i_22_ = i_23_ = Class57.anIntArrayArray1335[i_11_][i_9_];
-        while(i_11_ != arg2 || arg9 != i_9_) {
-            if(i_22_ != i_23_) {
-                i_23_ = i_22_;
-                Class24.anIntArray581[i_10_] = i_11_;
-                Wall.anIntArray351[i_10_++] = i_9_;
             }
-            if((i_22_ & 0x1) != 0)
-                i_9_++;
-            else if((i_22_ & 0x4) != 0)
-                i_9_--;
-            if((i_22_ & 0x2) != 0)
-                i_11_++;
-            else if((i_22_ & 0x8) != 0)
-                i_11_--;
-            i_22_ = Class57.anIntArrayArray1335[i_11_][i_9_];
         }
-        if(i_10_ > 0) {
-            i_12_ = i_10_;
-            if(i_12_ > 25)
-                i_12_ = 25;
-            i_10_--;
-            int i_24_ = Wall.anIntArray351[i_10_];
-            int i_25_ = Class24.anIntArray581[i_10_];
-            if(arg11 == 0) {
+        currentIndex = 0;
+        Class24.walkingQueueX[currentIndex] = currentX;
+        Wall.walkingQueueY[currentIndex++] = currentY;
+        int initialSkipCheck;
+        int waypoint = initialSkipCheck = Class57.wayPoints[currentX][currentY];
+        while(currentX != startX || startY != currentY) {
+            if(waypoint != initialSkipCheck) {
+                initialSkipCheck = waypoint;
+                Class24.walkingQueueX[currentIndex] = currentX;
+                Wall.walkingQueueY[currentIndex++] = currentY;
+            }
+            if((waypoint & 0x1) != 0)
+                currentY++;
+            else if((waypoint & 0x4) != 0)
+                currentY--;
+            if((waypoint & 0x2) != 0)
+                currentX++;
+            else if((waypoint & 0x8) != 0)
+                currentX--;
+            waypoint = Class57.wayPoints[currentX][currentY];
+        }
+        if(currentIndex > 0) {
+            maxPathSize = currentIndex;
+            if(maxPathSize > 25)
+                maxPathSize = 25;
+            currentIndex--;
+            int x = Class24.walkingQueueX[currentIndex];
+            int y = Wall.walkingQueueY[currentIndex];
+            if(clickType == 0) {
                 SceneCluster.packetBuffer.putPacket(73);
-                SceneCluster.packetBuffer.putByte(3 + (i_12_ + i_12_));
+                SceneCluster.packetBuffer.putByte(3 + (maxPathSize + maxPathSize));
             }
-            if(arg11 == 1) {
+            if(clickType == 1) {
                 SceneCluster.packetBuffer.putPacket(236);
-                SceneCluster.packetBuffer.putByte(14 + i_12_ + i_12_ + 3);
+                SceneCluster.packetBuffer.putByte(14 + maxPathSize + maxPathSize + 3);
             }
-            if(arg11 == 2) {
+            if(clickType == 2) {
                 SceneCluster.packetBuffer.putPacket(89);
-                SceneCluster.packetBuffer.putByte(3 + (i_12_ + i_12_));
+                SceneCluster.packetBuffer.putByte(3 + (maxPathSize + maxPathSize));
             }
-            SceneCluster.packetBuffer.putShortLE(i_24_ + Class26.anInt635);
+            SceneCluster.packetBuffer.putShortLE(y + Class26.baseY);
             SceneCluster.packetBuffer.putByte(Item.obfuscatedKeyStatus[82] ? 1 : 0);
-            SceneCluster.packetBuffer.putShortLE(SpotAnimDefinition.anInt2307 + i_25_);
-            VarbitDefinition.anInt2366 = Class24.anIntArray581[0];
-            Class55.anInt1304 = Wall.anIntArray351[0];
-            for(int i_26_ = 1; i_12_ > i_26_; i_26_++) {
-                i_10_--;
-                SceneCluster.packetBuffer.putByte(Class24.anIntArray581[i_10_] - i_25_);
-                SceneCluster.packetBuffer.putByte(-i_24_ + Wall.anIntArray351[i_10_]);
+            SceneCluster.packetBuffer.putShortLE(SpotAnimDefinition.baseX + x);
+            VarbitDefinition.destinationX = Class24.walkingQueueX[0];
+            Class55.destinationY = Wall.walkingQueueY[0];
+            for(int counter = 1; maxPathSize > counter; counter++) {
+                currentIndex--;
+                SceneCluster.packetBuffer.putByte(Class24.walkingQueueX[currentIndex] - x);
+                SceneCluster.packetBuffer.putByte(-y + Wall.walkingQueueY[currentIndex]);
             }
             return true;
         }
-        return arg11 != 1;
+        return clickType != 1;
     }
 
     public static void method449() {
@@ -383,7 +383,7 @@ public class Class38_Sub1 extends Class38 {
         if(Player.anInt3288 == 2) {
             if(arg0 >= -28)
                 method445(-128);
-            Class22_Sub1.method312(2 * ActorDefinition.anInt2404, (Class35.anInt1730 + (-Class26.anInt635 + Class4.anInt175 << 7)), ((Class68.anInt1637 + -SpotAnimDefinition.anInt2307) << 7) + Landscape.anInt1170, 4976905);
+            Class22_Sub1.method312(2 * ActorDefinition.anInt2404, (Class35.anInt1730 + (-Class26.baseY + Class4.anInt175 << 7)), ((Class68.anInt1637 + -SpotAnimDefinition.baseX) << 7) + Landscape.anInt1170, 4976905);
             if(ISAAC.anInt522 > -1 && Node.pulseCycle % 20 < 10)
                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
         }

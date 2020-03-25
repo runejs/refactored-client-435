@@ -66,7 +66,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, 22, (byte) 124, i_0_);
             arg5.addGroundDecoration(arg9, arg8, arg3, i_3_, i_5_, renderable, i_4_);
             if(gameObjectDefinition.solid && gameObjectDefinition.hasActions == 1)
-                arg0.markBlocked((byte) -28, arg8, arg9);
+                arg0.markBlocked(arg8, arg9);
         } else if(arg4 == 10 || arg4 == 11) {
             Renderable renderable;
             if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
@@ -89,7 +89,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 arg5.addEntityB(arg9, arg8, arg3, i_3_, i_8_, i_6_, i_7_, i_5_, renderable, i_4_);
             }
             if(gameObjectDefinition.solid)
-                arg0.method154(arg9, gameObjectDefinition.walkable, arg6 ^ ~0x5644, gameObjectDefinition.sizeY, arg7, arg8, gameObjectDefinition.sizeX);
+                arg0.unmarkSolidOccupant(arg9, arg8, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, arg7, gameObjectDefinition.walkable);
         } else if(arg4 >= 12) {
             Renderable renderable;
             if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
@@ -98,7 +98,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, arg4, (byte) 124, i_0_);
             arg5.addEntityB(arg9, arg8, arg3, i_3_, 0, 1, 1, i_5_, renderable, i_4_);
             if(gameObjectDefinition.solid)
-                arg0.method154(arg9, gameObjectDefinition.walkable, arg6 ^ ~0x5648, gameObjectDefinition.sizeY, arg7, arg8, gameObjectDefinition.sizeX);
+                arg0.unmarkSolidOccupant(arg9, arg8, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, arg7, gameObjectDefinition.walkable);
         } else if(arg4 == 0) {
             Renderable renderable;
             if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
@@ -107,7 +107,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, 0, (byte) 124, i_0_);
             arg5.addWall(arg9, arg8, arg3, i_3_, SceneCluster.anIntArray761[arg7], 0, i_5_, renderable, null, i_4_);
             if(gameObjectDefinition.solid)
-                arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.walkable, (byte) 95);
+                arg0.unmarkWall(arg9, arg8, arg4, arg7, gameObjectDefinition.walkable);
         } else if(arg4 == 1) {
             Renderable renderable;
             if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
@@ -116,7 +116,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 renderable = new GameObject(arg1, 1, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
             arg5.addWall(arg9, arg8, arg3, i_3_, Class40_Sub5_Sub15.anIntArray2788[arg7], 0, i_5_, renderable, null, i_4_);
             if(gameObjectDefinition.solid)
-                arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.walkable, (byte) 95);
+                arg0.unmarkWall(arg9, arg8, arg4, arg7, gameObjectDefinition.walkable);
         } else if(arg4 == 2) {
             int i_9_ = arg7 + 1 & 0x3;
             Renderable renderable;
@@ -130,7 +130,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
             }
             arg5.addWall(arg9, arg8, arg3, i_3_, SceneCluster.anIntArray761[arg7], SceneCluster.anIntArray761[i_9_], i_5_, renderable, renderable_10_, i_4_);
             if(gameObjectDefinition.solid)
-                arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.walkable, (byte) 95);
+                arg0.unmarkWall(arg9, arg8, arg4, arg7, gameObjectDefinition.walkable);
         } else if(arg4 == 3) {
             Renderable renderable;
             if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
@@ -139,7 +139,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, 3, (byte) 124, i_0_);
             arg5.addWall(arg9, arg8, arg3, i_3_, Class40_Sub5_Sub15.anIntArray2788[arg7], 0, i_5_, renderable, null, i_4_);
             if(gameObjectDefinition.solid)
-                arg0.method150(arg8, arg4, arg7, arg9, gameObjectDefinition.walkable, (byte) 95);
+                arg0.unmarkWall(arg9, arg8, arg4, arg7, gameObjectDefinition.walkable);
         } else if(arg4 == 9) {
             Renderable renderable;
             if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
@@ -148,7 +148,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, arg4, (byte) 124, i_0_);
             arg5.addEntityB(arg9, arg8, arg3, i_3_, 0, 1, 1, i_5_, renderable, i_4_);
             if(gameObjectDefinition.solid)
-                arg0.method154(arg9, gameObjectDefinition.walkable, -117, gameObjectDefinition.sizeY, arg7, arg8, gameObjectDefinition.sizeX);
+                arg0.unmarkSolidOccupant(arg9, arg8, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, arg7, gameObjectDefinition.walkable);
         } else {
             if(gameObjectDefinition.adjustToTerrain) {
                 if(arg7 == 1) {

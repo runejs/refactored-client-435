@@ -13,7 +13,7 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class GroundItemTile {
-    public static boolean aBoolean1349 = false;
+    public static boolean loadGeneratedMap = false;
     public static int selectedInventorySlot = 0;
     public static RSString aClass1_1354 = RSString.CreateString("Message");
     public static int[] anIntArray1358 = new int[5];

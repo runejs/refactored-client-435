@@ -93,7 +93,7 @@ public abstract class Class22 {
                         int i_12_ = i_9_;
                         int i_13_ = i_8_;
                         if(i_11_ != 22 && i_11_ != 29 && i_11_ != 34 && i_11_ != 36 && i_11_ != 46 && i_11_ != 47 && i_11_ != 48) {
-                            int[][] is_14_ = (Landscape.aCollisionMapArray1167[Player.worldLevel].anIntArrayArray150);
+                            int[][] is_14_ = (Landscape.currentCollisionMap[Player.worldLevel].clippingData);
                             for(int i_15_ = 0; i_15_ < 10; i_15_++) {
                                 int i_16_ = (int) (Math.random() * 4.0);
                                 if(i_16_ == 0 && i_13_ > 0 && i_13_ > -3 + i_8_ && (is_14_[-1 + i_13_][i_12_] & 0x1280108) == 0)

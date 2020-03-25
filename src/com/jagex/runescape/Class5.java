@@ -33,13 +33,11 @@ public class Class5 {
     public static RSString aClass1_206 = RSString.CreateString(" )2> @lre@");
     public static int currentTabId = 3;
 
-    public static void method162(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, byte[] arg8, CollisionMap[] arg9) {
-        if(arg1 != 13941)
-            method162(53, -59, 8, -121, -68, -3, -42, -91, null, null);
+    public static void loadTerrainSubblock(int arg0, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, byte[] arg8, CollisionMap[] arg9) {
         for(int i = 0; i < 8; i++) {
             for(int i_0_ = 0; i_0_ < 8; i_0_++) {
                 if(arg5 + i > 0 && i + arg5 < 103 && arg0 + i_0_ > 0 && i_0_ + arg0 < 103)
-                    arg9[arg4].anIntArrayArray150[arg5 + i][i_0_ + arg0] = HuffmanEncoding.method1021((arg9[arg4].anIntArrayArray150[arg5 + i][i_0_ + arg0]), -16777217);
+                    arg9[arg4].clippingData[arg5 + i][i_0_ + arg0] = HuffmanEncoding.method1021((arg9[arg4].clippingData[arg5 + i][i_0_ + arg0]), -16777217);
             }
         }
         Buffer class40_sub1 = new Buffer(arg8);
@@ -47,9 +45,9 @@ public class Class5 {
             for(int i_1_ = 0; i_1_ < 64; i_1_++) {
                 for(int i_2_ = 0; i_2_ < 64; i_2_++) {
                     if(i == arg3 && i_1_ >= arg2 && 8 + arg2 > i_1_ && i_2_ >= arg6 && 8 + arg6 > i_2_)
-                        Class48.method922(arg5 + Class24.method338(arg7, false, i_1_ & 0x7, i_2_ & 0x7), arg7, class40_sub1, arg1 ^ ~0x363e, arg0 + Class33.method410(i_1_ & 0x7, 0x7 & i_2_, arg7, false), 0, 0, arg4);
+                        Class48.method922(arg5 + Class24.method338(arg7, false, i_1_ & 0x7, i_2_ & 0x7), arg7, class40_sub1, arg0 + Class33.method410(i_1_ & 0x7, 0x7 & i_2_, arg7, false), 0, 0, arg4);
                     else
-                        Class48.method922(-1, 0, class40_sub1, -116, -1, 0, 0, 0);
+                        Class48.method922(-1, 0, class40_sub1, -1, 0, 0, 0);
                 }
             }
         }

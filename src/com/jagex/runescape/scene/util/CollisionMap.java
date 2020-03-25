@@ -1,9 +1,7 @@
 package com.jagex.runescape.scene.util;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.def.*;
-
-import static com.jagex.runescape.net.IncomingPackets.*;
+import com.jagex.runescape.cache.def.UnderlayDefinition;
 
 public class CollisionMap {
     public static int anInt141;
@@ -19,20 +17,20 @@ public class CollisionMap {
     public static int anInt172;
 
 
-    public int anInt140;
-    public int anInt145;
-    public int[][] anIntArrayArray150;
-    public int anInt151;
-    public int anInt153;
+    public int insetX;
+    public int height;
+    public int[][] clippingData;
+    public int insetY;
+    public int width;
 
     public CollisionMap(int arg0, int arg1) {
 
-        anInt145 = arg1;
-        anInt151 = 0;
-        anInt140 = 0;
-        anInt153 = arg0;
-        anIntArrayArray150 = new int[anInt153][anInt145];
-        method146(16777216);
+        height = arg1;
+        insetY = 0;
+        insetX = 0;
+        width = arg0;
+        clippingData = new int[width][height];
+        reset();
 
     }
 
@@ -63,490 +61,468 @@ public class CollisionMap {
         return i / 16 - (-(i_126_ / 8) - i_127_ / 4);
     }
 
-    public void method143(boolean arg0, int arg1, int arg2, int arg3) {
-        if(!arg0)
-            anIntArrayArray150 = null;
-        anIntArrayArray150[arg1][arg2] = UnderlayDefinition.bitWiseOR(anIntArrayArray150[arg1][arg2], arg3);
+    public void unset(int x, int y, int i) {
+        clippingData[x][y] = UnderlayDefinition.bitWiseOR(clippingData[x][y], i);
     }
 
-    public void method145(int arg0, int arg1, int arg2) {
-        arg0 -= anInt151;
-        if(arg1 == 28227) {
-            arg2 -= anInt140;
-            anIntArrayArray150[arg2][arg0] = HuffmanEncoding.method1021(anIntArrayArray150[arg2][arg0], 14680063);
-        }
+    public void unmarkConcealed(int x, int y) {
+        x -= insetX;
+        y -= insetY;
+        clippingData[x][y] = HuffmanEncoding.method1021(clippingData[x][y], 0xdfffff);
     }
 
-    public void method146(int arg0) {
-        if(arg0 == 16777216) {
-            for(int i = 0; anInt153 > i; i++) {
-                for(int i_0_ = 0; (anInt145 > i_0_); i_0_++) {
-                    if(i != 0 && i_0_ != 0 && i != anInt153 - 1 && i_0_ != -1 + anInt145)
-                        anIntArrayArray150[i][i_0_] = 16777216;
-                    else
-                        anIntArrayArray150[i][i_0_] = 16777215;
-                }
+    public void reset() {
+        for(int i = 0; width > i; i++) {
+            for(int i_0_ = 0; (height > i_0_); i_0_++) {
+                if(i != 0 && i_0_ != 0 && i != width - 1 && i_0_ != -1 + height)
+                    clippingData[i][i_0_] = 16777216;
+                else
+                    clippingData[i][i_0_] = 16777215;
             }
         }
     }
 
-    public void method148(int arg0, int arg1, int arg2, boolean arg3, int arg4, int arg5) {
-        arg4 -= anInt151;
-        if(arg0 != -4)
-            anInt165 = 110;
-        arg1 -= anInt140;
-        if(arg5 == 0) {
-            if(arg2 == 0) {
-                method156(arg4, 128, arg1, (byte) 124);
-                method156(arg4, 8, -1 + arg1, (byte) 124);
+    public void markWall(int x, int orientation, boolean impenetrable, int y, int position) {
+        x -= insetX;
+        y -= insetY;
+        if(position == 0) {
+            if(orientation == 0) {
+                orClipTable(x, y, 128);
+                orClipTable(-1 + x, y, 8);
             }
-            if(arg2 == 1) {
-                method156(arg4, 2, arg1, (byte) 124);
-                method156(arg4 + 1, 32, arg1, (byte) 124);
+            if(orientation == 1) {
+                orClipTable(x, y, 2);
+                orClipTable(x, y + 1, 32);
             }
-            if(arg2 == 2) {
-                method156(arg4, 8, arg1, (byte) 124);
-                method156(arg4, 128, 1 + arg1, (byte) 124);
+            if(orientation == 2) {
+                orClipTable(x, y, 8);
+                orClipTable(1 + x, y, 128);
             }
-            if(arg2 == 3) {
-                method156(arg4, 32, arg1, (byte) 124);
-                method156(-1 + arg4, 2, arg1, (byte) 124);
+            if(orientation == 3) {
+                orClipTable(x, y, 32);
+                orClipTable(x, -1 + y, 2);
             }
         }
-        if(arg5 == 1 || arg5 == 3) {
-            if(arg2 == 0) {
-                method156(arg4, 1, arg1, (byte) 124);
-                method156(arg4 + 1, 16, -1 + arg1, (byte) 124);
+        if(position == 1 || position == 3) {
+            if(orientation == 0) {
+                orClipTable(x, y, 1);
+                orClipTable(-1 + x, y + 1, 16);
             }
-            if(arg2 == 1) {
-                method156(arg4, 4, arg1, (byte) 124);
-                method156(1 + arg4, 64, 1 + arg1, (byte) 124);
+            if(orientation == 1) {
+                orClipTable(x, y, 4);
+                orClipTable(1 + x, 1 + y, 64);
             }
-            if(arg2 == 2) {
-                method156(arg4, 16, arg1, (byte) 124);
-                method156(-1 + arg4, 1, arg1 + 1, (byte) 124);
+            if(orientation == 2) {
+                orClipTable(x, y, 16);
+                orClipTable(x + 1, -1 + y, 1);
             }
-            if(arg2 == 3) {
-                method156(arg4, 64, arg1, (byte) 124);
-                method156(arg4 - 1, 4, -1 + arg1, (byte) 124);
-            }
-        }
-        if(arg5 == 2) {
-            if(arg2 == 0) {
-                method156(arg4, 130, arg1, (byte) 124);
-                method156(arg4, 8, -1 + arg1, (byte) 124);
-                method156(arg4 + 1, 32, arg1, (byte) 124);
-            }
-            if(arg2 == 1) {
-                method156(arg4, 10, arg1, (byte) 124);
-                method156(1 + arg4, 32, arg1, (byte) 124);
-                method156(arg4, 128, 1 + arg1, (byte) 124);
-            }
-            if(arg2 == 2) {
-                method156(arg4, 40, arg1, (byte) 124);
-                method156(arg4, 128, arg1 + 1, (byte) 124);
-                method156(-1 + arg4, 2, arg1, (byte) 124);
-            }
-            if(arg2 == 3) {
-                method156(arg4, 160, arg1, (byte) 124);
-                method156(-1 + arg4, 2, arg1, (byte) 124);
-                method156(arg4, 8, arg1 + -1, (byte) 124);
+            if(orientation == 3) {
+                orClipTable(x, y, 64);
+                orClipTable(-1 + x, y - 1, 4);
             }
         }
-        if(arg3) {
-            if(arg5 == 0) {
-                if(arg2 == 0) {
-                    method156(arg4, 65536, arg1, (byte) 124);
-                    method156(arg4, 4096, arg1 + -1, (byte) 124);
+        if(position == 2) {
+            if(orientation == 0) {
+                orClipTable(x, y, 130);
+                orClipTable(-1 + x, y, 8);
+                orClipTable(x, y + 1, 32);
+            }
+            if(orientation == 1) {
+                orClipTable(x, y, 10);
+                orClipTable(x, 1 + y, 32);
+                orClipTable(1 + x, y, 128);
+            }
+            if(orientation == 2) {
+                orClipTable(x, y, 40);
+                orClipTable(x + 1, y, 128);
+                orClipTable(x, -1 + y, 2);
+            }
+            if(orientation == 3) {
+                orClipTable(x, y, 160);
+                orClipTable(x, -1 + y, 2);
+                orClipTable(x + -1, y, 8);
+            }
+        }
+        if(impenetrable) {
+            if(position == 0) {
+                if(orientation == 0) {
+                    orClipTable(x, y, 65536);
+                    orClipTable(x + -1, y, 4096);
                 }
-                if(arg2 == 1) {
-                    method156(arg4, 1024, arg1, (byte) 124);
-                    method156(1 + arg4, 16384, arg1, (byte) 124);
+                if(orientation == 1) {
+                    orClipTable(x, y, 1024);
+                    orClipTable(x, 1 + y, 16384);
                 }
-                if(arg2 == 2) {
-                    method156(arg4, 4096, arg1, (byte) 124);
-                    method156(arg4, 65536, 1 + arg1, (byte) 124);
+                if(orientation == 2) {
+                    orClipTable(x, y, 4096);
+                    orClipTable(1 + x, y, 65536);
                 }
-                if(arg2 == 3) {
-                    method156(arg4, 16384, arg1, (byte) 124);
-                    method156(-1 + arg4, 1024, arg1, (byte) 124);
+                if(orientation == 3) {
+                    orClipTable(x, y, 16384);
+                    orClipTable(x, -1 + y, 1024);
                 }
             }
-            if(arg5 == 1 || arg5 == 3) {
-                if(arg2 == 0) {
-                    method156(arg4, 512, arg1, (byte) 124);
-                    method156(arg4 + 1, 8192, arg1 + -1, (byte) 124);
+            if(position == 1 || position == 3) {
+                if(orientation == 0) {
+                    orClipTable(x, y, 512);
+                    orClipTable(x + -1, y + 1, 8192);
                 }
-                if(arg2 == 1) {
-                    method156(arg4, 2048, arg1, (byte) 124);
-                    method156(1 + arg4, 32768, 1 + arg1, (byte) 124);
+                if(orientation == 1) {
+                    orClipTable(x, y, 2048);
+                    orClipTable(1 + x, 1 + y, 32768);
                 }
-                if(arg2 == 2) {
-                    method156(arg4, 8192, arg1, (byte) 124);
-                    method156(arg4 - 1, 512, 1 + arg1, (byte) 124);
+                if(orientation == 2) {
+                    orClipTable(x, y, 8192);
+                    orClipTable(1 + x, y - 1, 512);
                 }
-                if(arg2 == 3) {
-                    method156(arg4, 32768, arg1, (byte) 124);
-                    method156(arg4 - 1, 2048, arg1 + -1, (byte) 124);
+                if(orientation == 3) {
+                    orClipTable(x, y, 32768);
+                    orClipTable(x + -1, y - 1, 2048);
                 }
             }
-            if(arg5 == 2) {
-                if(arg2 == 0) {
-                    method156(arg4, 66560, arg1, (byte) 124);
-                    method156(arg4, 4096, arg1 + -1, (byte) 124);
-                    method156(arg4 + 1, 16384, arg1, (byte) 124);
+            if(position == 2) {
+                if(orientation == 0) {
+                    orClipTable(x, y, 66560);
+                    orClipTable(x + -1, y, 4096);
+                    orClipTable(x, y + 1, 16384);
                 }
-                if(arg2 == 1) {
-                    method156(arg4, 5120, arg1, (byte) 124);
-                    method156(arg4 + 1, 16384, arg1, (byte) 124);
-                    method156(arg4, 65536, 1 + arg1, (byte) 124);
+                if(orientation == 1) {
+                    orClipTable(x, y, 5120);
+                    orClipTable(x, y + 1, 16384);
+                    orClipTable(1 + x, y, 65536);
                 }
-                if(arg2 == 2) {
-                    method156(arg4, 20480, arg1, (byte) 124);
-                    method156(arg4, 65536, 1 + arg1, (byte) 124);
-                    method156(arg4 - 1, 1024, arg1, (byte) 124);
+                if(orientation == 2) {
+                    orClipTable(x, y, 20480);
+                    orClipTable(1 + x, y, 65536);
+                    orClipTable(x, y - 1, 1024);
                 }
-                if(arg2 == 3) {
-                    method156(arg4, 81920, arg1, (byte) 124);
-                    method156(-1 + arg4, 1024, arg1, (byte) 124);
-                    method156(arg4, 4096, -1 + arg1, (byte) 124);
+                if(orientation == 3) {
+                    orClipTable(x, y, 81920);
+                    orClipTable(x, -1 + y, 1024);
+                    orClipTable(-1 + x, y, 4096);
                 }
             }
         }
     }
 
-    public void method149(boolean arg0, int arg1, int arg2, int arg3, int arg4, byte arg5, int arg6) {
-        arg1 -= anInt151;
-        if(arg3 == 1 || arg3 == 3) {
-            int i = arg4;
-            arg4 = arg6;
-            arg6 = i;
+    public void markSolidOccupant(int objectX, int objectY, int objectSizeX, int objectSizeY, int orient, boolean impenetrable) {
+        int occupied = 256;
+        if(impenetrable)
+            occupied += 0x20000;
+        objectX -= insetX;
+        objectY -= insetY;
+        if(orient == 1 || orient == 3) {
+            int temp = objectSizeX;
+            objectSizeX = objectSizeY;
+            objectSizeY = temp;
         }
-        int i = 256;
-        if(arg0)
-            i += 131072;
-        arg2 -= anInt140;
-        for(int i_119_ = arg2; (arg4 + arg2 > i_119_); i_119_++) {
-            if(i_119_ >= 0 && (i_119_ < anInt153)) {
-                for(int i_120_ = arg1; (arg6 + arg1 > i_120_); i_120_++) {
-                    if(i_120_ >= 0 && anInt145 > i_120_)
-                        method156(i_120_, i, i_119_, (byte) 124);
-                }
-            }
-        }
-        if(arg5 != -55)
-            menuHeight = 102;
-    }
-
-    public void method150(int arg0, int arg1, int arg2, int arg3, boolean arg4, byte arg5) {
-        arg0 -= anInt151;
-        arg3 -= anInt140;
-        if(arg5 != 95)
-            anInt163 = 47;
-        if(arg1 == 0) {
-            if(arg2 == 0) {
-                method143(true, arg3, arg0, 128);
-                method143(true, arg3 - 1, arg0, 8);
-            }
-            if(arg2 == 1) {
-                method143(true, arg3, arg0, 2);
-                method143(true, arg3, 1 + arg0, 32);
-            }
-            if(arg2 == 2) {
-                method143(true, arg3, arg0, 8);
-                method143(true, 1 + arg3, arg0, 128);
-            }
-            if(arg2 == 3) {
-                method143(true, arg3, arg0, 32);
-                method143(true, arg3, arg0 + -1, 2);
-            }
-        }
-        if(arg1 == 1 || arg1 == 3) {
-            if(arg2 == 0) {
-                method143(true, arg3, arg0, 1);
-                method143(true, -1 + arg3, arg0 + 1, 16);
-            }
-            if(arg2 == 1) {
-                method143(true, arg3, arg0, 4);
-                method143(true, 1 + arg3, 1 + arg0, 64);
-            }
-            if(arg2 == 2) {
-                method143(true, arg3, arg0, 16);
-                method143(true, 1 + arg3, -1 + arg0, 1);
-            }
-            if(arg2 == 3) {
-                method143(true, arg3, arg0, 64);
-                method143(true, -1 + arg3, arg0 + -1, 4);
-            }
-        }
-        if(arg1 == 2) {
-            if(arg2 == 0) {
-                method143(true, arg3, arg0, 130);
-                method143(true, -1 + arg3, arg0, 8);
-                method143(true, arg3, 1 + arg0, 32);
-            }
-            if(arg2 == 1) {
-                method143(true, arg3, arg0, 10);
-                method143(true, arg3, 1 + arg0, 32);
-                method143(true, 1 + arg3, arg0, 128);
-            }
-            if(arg2 == 2) {
-                method143(true, arg3, arg0, 40);
-                method143(true, arg3 + 1, arg0, 128);
-                method143(true, arg3, -1 + arg0, 2);
-            }
-            if(arg2 == 3) {
-                method143(true, arg3, arg0, 160);
-                method143(true, arg3, arg0 - 1, 2);
-                method143(true, arg3 + -1, arg0, 8);
-            }
-        }
-        if(arg4) {
-            if(arg1 == 0) {
-                if(arg2 == 0) {
-                    method143(true, arg3, arg0, 65536);
-                    method143(true, -1 + arg3, arg0, 4096);
-                }
-                if(arg2 == 1) {
-                    method143(true, arg3, arg0, 1024);
-                    method143(true, arg3, 1 + arg0, 16384);
-                }
-                if(arg2 == 2) {
-                    method143(true, arg3, arg0, 4096);
-                    method143(true, 1 + arg3, arg0, 65536);
-                }
-                if(arg2 == 3) {
-                    method143(true, arg3, arg0, 16384);
-                    method143(true, arg3, -1 + arg0, 1024);
-                }
-            }
-            if(arg1 == 1 || arg1 == 3) {
-                if(arg2 == 0) {
-                    method143(true, arg3, arg0, 512);
-                    method143(true, -1 + arg3, 1 + arg0, 8192);
-                }
-                if(arg2 == 1) {
-                    method143(true, arg3, arg0, 2048);
-                    method143(true, arg3 + 1, arg0 + 1, 32768);
-                }
-                if(arg2 == 2) {
-                    method143(true, arg3, arg0, 8192);
-                    method143(true, 1 + arg3, arg0 - 1, 512);
-                }
-                if(arg2 == 3) {
-                    method143(true, arg3, arg0, 32768);
-                    method143(true, arg3 - 1, -1 + arg0, 2048);
-                }
-            }
-            if(arg1 == 2) {
-                if(arg2 == 0) {
-                    method143(true, arg3, arg0, 66560);
-                    method143(true, -1 + arg3, arg0, 4096);
-                    method143(true, arg3, 1 + arg0, 16384);
-                }
-                if(arg2 == 1) {
-                    method143(true, arg3, arg0, 5120);
-                    method143(true, arg3, arg0 + 1, 16384);
-                    method143(true, 1 + arg3, arg0, 65536);
-                }
-                if(arg2 == 2) {
-                    method143(true, arg3, arg0, 20480);
-                    method143(true, 1 + arg3, arg0, 65536);
-                    method143(true, arg3, -1 + arg0, 1024);
-                }
-                if(arg2 == 3) {
-                    method143(true, arg3, arg0, 81920);
-                    method143(true, arg3, arg0 + -1, 1024);
-                    method143(true, arg3 - 1, arg0, 4096);
+        for(int x = objectX; (objectSizeX + objectX > x); x++) {
+            if(x >= 0 && (x < width)) {
+                for(int y = objectY; (objectSizeY + objectY > y); y++) {
+                    if(y >= 0 && height > y)
+                        orClipTable(x, y, occupied);
                 }
             }
         }
     }
 
-    public void markBlocked(byte arg0, int arg1, int arg2) {
-        arg1 -= anInt151;
-        arg2 -= anInt140;
-        if(arg0 != -28)
-            anInt153 = -24;
-        anIntArrayArray150[arg2][arg1] = UnderlayDefinition.bitWiseOR(anIntArrayArray150[arg2][arg1], 2097152);
+    public void unmarkWall(int x, int y, int position, int orientation, boolean impenetrable) {
+        x -= insetX;
+        y -= insetY;
+        if(position == 0) {
+            if(orientation == 0) {
+                unset(x, y, 128);
+                unset(x - 1, y, 8);
+            }
+            if(orientation == 1) {
+                unset(x, y, 2);
+                unset(x, 1 + y, 32);
+            }
+            if(orientation == 2) {
+                unset(x, y, 8);
+                unset(1 + x, y, 128);
+            }
+            if(orientation == 3) {
+                unset(x, y, 32);
+                unset(x, y + -1, 2);
+            }
+        }
+        if(position == 1 || position == 3) {
+            if(orientation == 0) {
+                unset(x, y, 1);
+                unset(-1 + x, y + 1, 16);
+            }
+            if(orientation == 1) {
+                unset(x, y, 4);
+                unset(1 + x, 1 + y, 64);
+            }
+            if(orientation == 2) {
+                unset(x, y, 16);
+                unset(1 + x, -1 + y, 1);
+            }
+            if(orientation == 3) {
+                unset(x, y, 64);
+                unset(-1 + x, y + -1, 4);
+            }
+        }
+        if(position == 2) {
+            if(orientation == 0) {
+                unset(x, y, 130);
+                unset(-1 + x, y, 8);
+                unset(x, 1 + y, 32);
+            }
+            if(orientation == 1) {
+                unset(x, y, 10);
+                unset(x, 1 + y, 32);
+                unset(1 + x, y, 128);
+            }
+            if(orientation == 2) {
+                unset(x, y, 40);
+                unset(x + 1, y, 128);
+                unset(x, -1 + y, 2);
+            }
+            if(orientation == 3) {
+                unset(x, y, 160);
+                unset(x, y - 1, 2);
+                unset(x + -1, y, 8);
+            }
+        }
+        if(impenetrable) {
+            if(position == 0) {
+                if(orientation == 0) {
+                    unset(x, y, 65536);
+                    unset(-1 + x, y, 4096);
+                }
+                if(orientation == 1) {
+                    unset(x, y, 1024);
+                    unset(x, 1 + y, 16384);
+                }
+                if(orientation == 2) {
+                    unset(x, y, 4096);
+                    unset(1 + x, y, 65536);
+                }
+                if(orientation == 3) {
+                    unset(x, y, 16384);
+                    unset(x, -1 + y, 1024);
+                }
+            }
+            if(position == 1 || position == 3) {
+                if(orientation == 0) {
+                    unset(x, y, 512);
+                    unset(-1 + x, 1 + y, 8192);
+                }
+                if(orientation == 1) {
+                    unset(x, y, 2048);
+                    unset(x + 1, y + 1, 32768);
+                }
+                if(orientation == 2) {
+                    unset(x, y, 8192);
+                    unset(1 + x, y - 1, 512);
+                }
+                if(orientation == 3) {
+                    unset(x, y, 32768);
+                    unset(x - 1, -1 + y, 2048);
+                }
+            }
+            if(position == 2) {
+                if(orientation == 0) {
+                    unset(x, y, 66560);
+                    unset(-1 + x, y, 4096);
+                    unset(x, 1 + y, 16384);
+                }
+                if(orientation == 1) {
+                    unset(x, y, 5120);
+                    unset(x, y + 1, 16384);
+                    unset(1 + x, y, 65536);
+                }
+                if(orientation == 2) {
+                    unset(x, y, 20480);
+                    unset(1 + x, y, 65536);
+                    unset(x, -1 + y, 1024);
+                }
+                if(orientation == 3) {
+                    unset(x, y, 81920);
+                    unset(x, y + -1, 1024);
+                    unset(x - 1, y, 4096);
+                }
+            }
+        }
     }
 
-    public boolean method153(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
-        if(arg0 > -3)
-            method153(67, -89, 45, -123, -39, -109, -38, -78);
-        int i = arg2 + arg3 + -1;
-        int i_121_ = -1 + arg4 + arg1;
-        if(arg2 <= arg7 && i >= arg7 && arg4 <= arg6 && i_121_ >= arg6)
+    public void markBlocked(int y, int x) {
+        x -= insetX;
+        y -= insetY;
+        clippingData[x][y] = UnderlayDefinition.bitWiseOR(clippingData[x][y], 2097152);
+    }
+
+    public boolean reachedFacingObject(int currentX, int currentY, int goalX, int goalY, int goalDX, int goalDY, int surroundings) {
+        int goalX2 = goalX + goalDX + -1;
+        int goalY2 = -1 + goalY + goalDY;
+        if(goalX <= currentX && goalX2 >= currentX && goalY <= currentY && goalY2 >= currentY)
             return true;
-        if(arg2 + -1 == arg7 && arg4 <= arg6 && (i_121_ >= arg6) && (anIntArrayArray150[-anInt140 + arg7][-anInt151 + arg6] & 0x8) == 0 && (arg5 & 0x8) == 0)
+        if(goalX + -1 == currentX && goalY <= currentY && (goalY2 >= currentY) && (clippingData[-insetX + currentX][-insetY + currentY] & 0x8) == 0 && (surroundings & 0x8) == 0)
             return true;
-        if(arg7 == i + 1 && arg4 <= arg6 && arg6 <= i_121_ && (anIntArrayArray150[arg7 - anInt140][arg6 + -anInt151] & 0x80) == 0 && (0x2 & arg5) == 0)
+        if(currentX == goalX2 + 1 && goalY <= currentY && currentY <= goalY2 && (clippingData[currentX - insetX][currentY + -insetY] & 0x80) == 0 && (0x2 & surroundings) == 0)
             return true;
-        if(arg4 - 1 == arg6 && arg2 <= arg7 && i >= arg7 && (anIntArrayArray150[arg7 - anInt140][arg6 - anInt151] & 0x2) == 0 && (arg5 & 0x4) == 0)
+        if(goalY - 1 == currentY && goalX <= currentX && goalX2 >= currentX && (clippingData[currentX - insetX][currentY - insetY] & 0x2) == 0 && (surroundings & 0x4) == 0)
             return true;
-        return arg6 == 1 + i_121_ && arg7 >= arg2 && arg7 <= i && (anIntArrayArray150[-anInt140 + arg7][arg6 - anInt151] & 0x20) == 0 && (0x1 & arg5) == 0;
+        return currentY == 1 + goalY2 && currentX >= goalX && currentX <= goalX2 && (clippingData[-insetX + currentX][currentY - insetY] & 0x20) == 0 && (0x1 & surroundings) == 0;
     }
 
-    public void method154(int arg0, boolean arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
-        arg5 -= anInt151;
-        int i = 62 % ((arg2 - 5) / 40);
-        if(arg4 == 1 || arg4 == 3) {
-            int i_122_ = arg6;
-            arg6 = arg3;
-            arg3 = i_122_;
+    public void unmarkSolidOccupant(int x, int y, int width, int height, int orientation, boolean impenetrable) {
+        int occupied = 256;
+        x -= insetX;
+        y -= insetY;
+        if(impenetrable)
+            occupied += 0x20000;
+        if(orientation == 1 || orientation == 3) {
+            int temp = width;
+            width = height;
+            height = temp;
         }
-        arg0 -= anInt140;
-        int i_123_ = 256;
-        if(arg1)
-            i_123_ += 131072;
-        for(int i_124_ = arg0; i_124_ < arg0 + arg6; i_124_++) {
-            if(i_124_ >= 0 && i_124_ < anInt153) {
-                for(int i_125_ = arg5; (i_125_ < arg3 + arg5); i_125_++) {
-                    if(i_125_ >= 0 && i_125_ < anInt145)
-                        method143(true, i_124_, i_125_, i_123_);
+        for(int _x = x; _x < x + width; _x++) {
+            if(_x >= 0 && _x < this.width) {
+                for(int _y = y; (_y < height + y); _y++) {
+                    if(_y >= 0 && _y < this.height)
+                        unset(_x, _y, occupied);
                 }
             }
         }
     }
 
-    public boolean method155(int arg0, boolean arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
-        if(arg6 == arg0 && arg3 == arg4)
+    public boolean reachedWall(int currentX, int currentY, int goalX, int goalY, int goalPosition, int goalOrientation) {
+        if(goalX == currentX && goalY == currentY)
             return true;
-        if(arg1)
-            parseIncomingPackets(true);
-        arg4 -= anInt151;
-        arg6 -= anInt140;
-        arg0 -= anInt140;
-        arg3 -= anInt151;
-        if(arg2 == 0) {
-            if(arg5 == 0) {
-                if(arg6 + -1 == arg0 && arg4 == arg3)
+        currentX -= insetX;
+        goalX -= insetX;
+        currentY -= insetY;
+        goalY -= insetY;
+        if(goalPosition == 0) {
+            if(goalOrientation == 0) {
+                if(goalX + -1 == currentX && currentY == goalY)
                     return true;
-                if(arg6 == arg0 && arg4 == arg3 + 1 && (anIntArrayArray150[arg0][arg4] & 0x1280120) == 0)
+                if(goalX == currentX && currentY == goalY + 1 && (clippingData[currentX][currentY] & 0x1280120) == 0)
                     return true;
-                if(arg6 == arg0 && -1 + arg3 == arg4 && (0x1280102 & anIntArrayArray150[arg0][arg4]) == 0)
+                if(goalX == currentX && -1 + goalY == currentY && (0x1280102 & clippingData[currentX][currentY]) == 0)
                     return true;
-            } else if(arg5 == 1) {
-                if(arg6 == arg0 && 1 + arg3 == arg4)
+            } else if(goalOrientation == 1) {
+                if(goalX == currentX && 1 + goalY == currentY)
                     return true;
-                if(arg0 == -1 + arg6 && arg4 == arg3 && ((anIntArrayArray150[arg0][arg4] & 0x1280108) == 0))
+                if(currentX == -1 + goalX && currentY == goalY && ((clippingData[currentX][currentY] & 0x1280108) == 0))
                     return true;
-                if(1 + arg6 == arg0 && arg4 == arg3 && (anIntArrayArray150[arg0][arg4] & 0x1280180) == 0)
+                if(1 + goalX == currentX && currentY == goalY && (clippingData[currentX][currentY] & 0x1280180) == 0)
                     return true;
-            } else if(arg5 == 2) {
-                if(arg0 == arg6 + 1 && arg3 == arg4)
+            } else if(goalOrientation == 2) {
+                if(currentX == goalX + 1 && goalY == currentY)
                     return true;
-                if(arg0 == arg6 && arg4 == arg3 + 1 && ((anIntArrayArray150[arg0][arg4] & 0x1280120) == 0))
+                if(currentX == goalX && currentY == goalY + 1 && ((clippingData[currentX][currentY] & 0x1280120) == 0))
                     return true;
-                if(arg6 == arg0 && arg4 == arg3 + -1 && ((anIntArrayArray150[arg0][arg4] & 0x1280102) == 0))
+                if(goalX == currentX && currentY == goalY + -1 && ((clippingData[currentX][currentY] & 0x1280102) == 0))
                     return true;
-            } else if(arg5 == 3) {
-                if(arg6 == arg0 && arg3 - 1 == arg4)
+            } else if(goalOrientation == 3) {
+                if(goalX == currentX && goalY - 1 == currentY)
                     return true;
-                if(-1 + arg6 == arg0 && arg3 == arg4 && ((anIntArrayArray150[arg0][arg4] & 0x1280108) == 0))
+                if(-1 + goalX == currentX && goalY == currentY && ((clippingData[currentX][currentY] & 0x1280108) == 0))
                     return true;
-                if(arg0 == 1 + arg6 && arg4 == arg3 && (0x1280180 & anIntArrayArray150[arg0][arg4]) == 0)
+                if(currentX == 1 + goalX && currentY == goalY && (0x1280180 & clippingData[currentX][currentY]) == 0)
                     return true;
             }
         }
-        if(arg2 == 2) {
-            if(arg5 == 0) {
-                if(arg0 == -1 + arg6 && arg4 == arg3)
+        if(goalPosition == 2) {
+            if(goalOrientation == 0) {
+                if(currentX == -1 + goalX && currentY == goalY)
                     return true;
-                if(arg0 == arg6 && arg4 == arg3 + 1)
+                if(currentX == goalX && currentY == goalY + 1)
                     return true;
-                if(arg0 == arg6 + 1 && arg3 == arg4 && (anIntArrayArray150[arg0][arg4] & 0x1280180) == 0)
+                if(currentX == goalX + 1 && goalY == currentY && (clippingData[currentX][currentY] & 0x1280180) == 0)
                     return true;
-                if(arg6 == arg0 && arg4 == arg3 - 1 && (0x1280102 & anIntArrayArray150[arg0][arg4]) == 0)
+                if(goalX == currentX && currentY == goalY - 1 && (0x1280102 & clippingData[currentX][currentY]) == 0)
                     return true;
-            } else if(arg5 == 1) {
-                if(arg0 == -1 + arg6 && arg4 == arg3 && ((anIntArrayArray150[arg0][arg4] & 0x1280108) == 0))
+            } else if(goalOrientation == 1) {
+                if(currentX == -1 + goalX && currentY == goalY && ((clippingData[currentX][currentY] & 0x1280108) == 0))
                     return true;
-                if(arg0 == arg6 && arg4 == arg3 + 1)
+                if(currentX == goalX && currentY == goalY + 1)
                     return true;
-                if(arg0 == arg6 + 1 && arg3 == arg4)
+                if(currentX == goalX + 1 && goalY == currentY)
                     return true;
-                if(arg0 == arg6 && arg4 == arg3 + -1 && (anIntArrayArray150[arg0][arg4] & 0x1280102) == 0)
+                if(currentX == goalX && currentY == goalY + -1 && (clippingData[currentX][currentY] & 0x1280102) == 0)
                     return true;
-            } else if(arg5 == 2) {
-                if(arg6 + -1 == arg0 && arg4 == arg3 && (anIntArrayArray150[arg0][arg4] & 0x1280108) == 0)
+            } else if(goalOrientation == 2) {
+                if(goalX + -1 == currentX && currentY == goalY && (clippingData[currentX][currentY] & 0x1280108) == 0)
                     return true;
-                if(arg6 == arg0 && arg3 + 1 == arg4 && (0x1280120 & anIntArrayArray150[arg0][arg4]) == 0)
+                if(goalX == currentX && goalY + 1 == currentY && (0x1280120 & clippingData[currentX][currentY]) == 0)
                     return true;
-                if(1 + arg6 == arg0 && arg3 == arg4)
+                if(1 + goalX == currentX && goalY == currentY)
                     return true;
-                if(arg0 == arg6 && arg3 + -1 == arg4)
+                if(currentX == goalX && goalY + -1 == currentY)
                     return true;
-            } else if(arg5 == 3) {
-                if(arg0 == -1 + arg6 && arg4 == arg3)
+            } else if(goalOrientation == 3) {
+                if(currentX == -1 + goalX && currentY == goalY)
                     return true;
-                if(arg0 == arg6 && (arg4 == arg3 + 1) && (0x1280120 & anIntArrayArray150[arg0][arg4]) == 0)
+                if(currentX == goalX && (currentY == goalY + 1) && (0x1280120 & clippingData[currentX][currentY]) == 0)
                     return true;
-                if(arg0 == arg6 + 1 && arg3 == arg4 && (0x1280180 & anIntArrayArray150[arg0][arg4]) == 0)
+                if(currentX == goalX + 1 && goalY == currentY && (0x1280180 & clippingData[currentX][currentY]) == 0)
                     return true;
-                if(arg6 == arg0 && arg3 + -1 == arg4)
+                if(goalX == currentX && goalY + -1 == currentY)
                     return true;
             }
         }
-        if(arg2 == 9) {
-            if(arg6 == arg0 && arg4 == 1 + arg3 && ((0x20 & anIntArrayArray150[arg0][arg4]) == 0))
+        if(goalPosition == 9) {
+            if(goalX == currentX && currentY == 1 + goalY && ((0x20 & clippingData[currentX][currentY]) == 0))
                 return true;
-            if(arg0 == arg6 && arg4 == -1 + arg3 && (0x2 & anIntArrayArray150[arg0][arg4]) == 0)
+            if(currentX == goalX && currentY == -1 + goalY && (0x2 & clippingData[currentX][currentY]) == 0)
                 return true;
-            if(arg0 == -1 + arg6 && arg4 == arg3 && ((0x8 & anIntArrayArray150[arg0][arg4]) == 0))
+            if(currentX == -1 + goalX && currentY == goalY && ((0x8 & clippingData[currentX][currentY]) == 0))
                 return true;
-            return 1 + arg6 == arg0 && arg3 == arg4 && ((anIntArrayArray150[arg0][arg4] & 0x80) == 0);
+            return 1 + goalX == currentX && goalY == currentY && ((clippingData[currentX][currentY] & 0x80) == 0);
         }
         return false;
     }
 
-    public void method156(int arg0, int arg1, int arg2, byte arg3) {
-        if(arg3 == 124) {
-            anIntArrayArray150[arg2][arg0] = HuffmanEncoding.method1021(anIntArrayArray150[arg2][arg0], -arg1 + 16777215);
-        }
+    public void orClipTable(int x, int y, int flag) {
+        clippingData[x][y] = HuffmanEncoding.method1021(clippingData[x][y], -flag + 16777215);
     }
 
-    public boolean method158(int arg0, int arg1, int arg2, int arg3, int arg4, byte arg5, int arg6) {
-        if(arg3 == arg4 && arg2 == arg0)
+    public boolean reachedWallDecoration(int currentX, int currentY, int goalX, int goalY, int goalPosition, int goalOrientation) {
+        if(goalX == currentX && currentY == goalY)
             return true;
-        arg2 -= anInt151;
-        arg3 -= anInt140;
-        int i = -23 / ((37 - arg5) / 56);
-        arg4 -= anInt140;
-        arg0 -= anInt151;
-        if(arg6 == 6 || arg6 == 7) {
-            if(arg6 == 7)
-                arg1 = arg1 + 2 & 0x3;
-            if(arg1 == 0) {
-                if(1 + arg3 == arg4 && arg2 == arg0 && (anIntArrayArray150[arg4][arg2] & 0x80) == 0)
+        currentX -= insetX;
+        goalX -= insetX;
+        currentY -= insetY;
+        goalY -= insetY;
+        if(goalPosition == 6 || goalPosition == 7) {
+            if(goalPosition == 7)
+                goalOrientation = goalOrientation + 2 & 0x3;
+            if(goalOrientation == 0) {
+                if(1 + goalX == currentX && currentY == goalY && (clippingData[currentX][currentY] & 0x80) == 0)
                     return true;
-                if(arg3 == arg4 && -1 + arg0 == arg2 && (0x2 & anIntArrayArray150[arg4][arg2]) == 0)
+                if(goalX == currentX && -1 + goalY == currentY && (0x2 & clippingData[currentX][currentY]) == 0)
                     return true;
-            } else if(arg1 == 1) {
-                if(arg4 == arg3 + -1 && arg0 == arg2 && ((anIntArrayArray150[arg4][arg2] & 0x8) == 0))
+            } else if(goalOrientation == 1) {
+                if(currentX == goalX + -1 && goalY == currentY && ((clippingData[currentX][currentY] & 0x8) == 0))
                     return true;
-                if(arg4 == arg3 && arg2 == arg0 + -1 && (anIntArrayArray150[arg4][arg2] & 0x2) == 0)
+                if(currentX == goalX && currentY == goalY + -1 && (clippingData[currentX][currentY] & 0x2) == 0)
                     return true;
-            } else if(arg1 == 2) {
-                if(arg4 == arg3 + -1 && arg0 == arg2 && (anIntArrayArray150[arg4][arg2] & 0x8) == 0)
+            } else if(goalOrientation == 2) {
+                if(currentX == goalX + -1 && goalY == currentY && (clippingData[currentX][currentY] & 0x8) == 0)
                     return true;
-                if(arg4 == arg3 && arg2 == 1 + arg0 && (0x20 & anIntArrayArray150[arg4][arg2]) == 0)
+                if(currentX == goalX && currentY == 1 + goalY && (0x20 & clippingData[currentX][currentY]) == 0)
                     return true;
-            } else if(arg1 == 3) {
-                if(arg3 + 1 == arg4 && arg0 == arg2 && (anIntArrayArray150[arg4][arg2] & 0x80) == 0)
+            } else if(goalOrientation == 3) {
+                if(goalX + 1 == currentX && goalY == currentY && (clippingData[currentX][currentY] & 0x80) == 0)
                     return true;
-                if(arg4 == arg3 && arg2 == arg0 + 1 && (0x20 & anIntArrayArray150[arg4][arg2]) == 0)
+                if(currentX == goalX && currentY == goalY + 1 && (0x20 & clippingData[currentX][currentY]) == 0)
                     return true;
             }
         }
-        if(arg6 == 8) {
-            if(arg4 == arg3 && arg2 == arg0 + 1 && (anIntArrayArray150[arg4][arg2] & 0x20) == 0)
+        if(goalPosition == 8) {
+            if(currentX == goalX && currentY == goalY + 1 && (clippingData[currentX][currentY] & 0x20) == 0)
                 return true;
-            if(arg3 == arg4 && arg2 == arg0 + -1 && (anIntArrayArray150[arg4][arg2] & 0x2) == 0)
+            if(goalX == currentX && currentY == goalY + -1 && (clippingData[currentX][currentY] & 0x2) == 0)
                 return true;
-            if(arg4 == arg3 - 1 && arg0 == arg2 && (anIntArrayArray150[arg4][arg2] & 0x8) == 0)
+            if(currentX == goalX - 1 && goalY == currentY && (clippingData[currentX][currentY] & 0x8) == 0)
                 return true;
-            return 1 + arg3 == arg4 && arg2 == arg0 && ((0x80 & anIntArrayArray150[arg4][arg2]) == 0);
+            return 1 + goalX == currentX && currentY == goalY && ((0x80 & clippingData[currentX][currentY]) == 0);
         }
         return false;
     }

@@ -64,7 +64,7 @@ public class Class61 {
 
     public static void method997(int arg0) {
         if(arg0 != 47)
-            method999(-42, (byte) 12, 92, 18, -72);
+            initiateVertexHeights(-42, (byte) 12, 92, 18, -72);
         if(Signlink.aString735.toLowerCase().indexOf("microsoft") == -1) {
             HuffmanEncoding.anIntArray1564[44] = 71;
             HuffmanEncoding.anIntArray1564[45] = 26;
@@ -116,7 +116,7 @@ public class Class61 {
         aClass1_1427 = null;
     }
 
-    public static void method999(int arg0, byte arg1, int arg2, int arg3, int arg4) {
+    public static void initiateVertexHeights(int arg0, byte arg1, int arg2, int arg3, int arg4) {
         int i = -112 / ((50 - arg1) / 53);
         for(int i_0_ = arg0; (i_0_ <= arg0 + arg2); i_0_++) {
             for(int i_1_ = arg4; (arg3 + arg4 >= i_1_); i_1_++) {

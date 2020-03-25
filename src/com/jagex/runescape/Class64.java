@@ -35,7 +35,7 @@ public class Class64 implements Runnable {
     public static RSString aClass1_1523 = RSString.CreateString("");
     public static RSString aClass1_1524 = RSString.CreateString("Menge eingeben:");
     public static RSString aClass1_1526 = RSString.CreateString("Your account has been disabled)3");
-    public static int setZ = 99;
+    public static int lowestPlane = 99;
 
     public InputStream anInputStream1503;
     public byte[] aByteArray1504;

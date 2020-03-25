@@ -34,7 +34,7 @@ public class SpotAnimDefinition extends SubNode {
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2301;
     public static int mouseButtonPressed = 0;
     public static RSString aClass1_2306 = RSString.CreateString(" )2> @yel@");
-    public static int anInt2307;
+    public static int baseX;
     public static RSString aClass1_2311 = RSString.CreateString("leuchten3:");
 
     public int animationId;
@@ -235,7 +235,7 @@ public class SpotAnimDefinition extends SubNode {
                         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                         Class40_Sub6.aClass64_2098.method1008(0, IncomingPackets.incomingPacketSize, -128, IncomingPackets.incomingPacketBuffer.buffer);
                         Main.method44();
-                        Class51.anInt1202 = -1;
+                        Class51.regionX = -1;
                         FloorDecoration.method343(false, 5688);
                         IncomingPackets.incomingPacket = -1;
                     }

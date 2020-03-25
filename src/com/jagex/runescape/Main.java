@@ -660,7 +660,7 @@ public class Main extends RSApplet {
         Class8.itemSelected = 0;
         Class57.anInt1342 = -40 + (int) (80.0 * Math.random());
         Class48.cameraOffsetY = -55 + (int) (Math.random() * 110.0);
-        VarbitDefinition.anInt2366 = 0;
+        VarbitDefinition.destinationX = 0;
         Class43.cameraYawOffset = (int) (Math.random() * 120.0) + -60;
         Buffer.anInt1985 = -1;
         Player.npcCount = 0;
@@ -671,7 +671,7 @@ public class Main extends RSApplet {
         Class27.minimapState = 0;
         Buffer.cameraOffsetX = -50 + (int) (Math.random() * 100.0);
         Player.localPlayerCount = 0;
-        Class55.anInt1304 = 0;
+        Class55.destinationY = 0;
         for(int i = 0; i < 2048; i++) {
             Player.trackedPlayers[i] = null;
             Player.trackedPlayerAppearanceCache[i] = null;
@@ -769,7 +769,7 @@ public class Main extends RSApplet {
                 Class60.method993(-103);
                 SpotAnimDefinition.method552(true);
             } else if(Class51.anInt1197 == 25)
-                Landscape.method933();
+                Landscape.loadRegion();
         } else
             Class60.method993(-104);
         if(Class51.anInt1197 == 30)

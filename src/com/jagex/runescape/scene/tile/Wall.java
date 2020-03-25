@@ -15,7 +15,7 @@ public class Wall {
     public static RSString aClass1_346;
     public static int cameraVelocityHorizontal = 0;
     public static int anInt350;
-    public static int[] anIntArray351;
+    public static int[] walkingQueueY;
     public static RSString aClass1_352;
     public static Widget aWidget_353;
     public static int[] anIntArray354;
@@ -26,7 +26,7 @@ public class Wall {
         aClass1_346 = RSString.CreateString("The server is being updated)3");
         aClass1_344 = aClass1_346;
         aClass1_352 = RSString.CreateString("Neuer Benutzer");
-        anIntArray351 = new int[4000];
+        walkingQueueY = new int[4000];
         aClass1_343 = RSString.CreateString("Geben Sie Ihren Benutzernamen");
         anIntArray354 = new int[25];
         aWidget_353 = null;
@@ -56,7 +56,7 @@ public class Wall {
         groundItems = null;
         aClass1_343 = null;
         aClass1_346 = null;
-        anIntArray351 = null;
+        walkingQueueY = null;
         aWidget_353 = null;
     }
 

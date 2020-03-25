@@ -17,7 +17,7 @@ public class Class24 {
     public static RSString aClass1_575 = RSString.CreateString("Freund hinzuf-Ugen");
     public static int[] anIntArray577;
     public static CacheIndex_Sub1[] aClass6_Sub1Array580 = new CacheIndex_Sub1[256];
-    public static int[] anIntArray581 = new int[4000];
+    public static int[] walkingQueueX = new int[4000];
 
     public static IndexedImage[] method337(CacheIndex arg1, int arg2, int arg3) {
         if(!ImageRGB.spriteExists(arg2, arg3, arg1))
@@ -43,7 +43,7 @@ public class Class24 {
         IncomingPackets.INCOMING_PACKET_SIZES = null;
         Player.actorUpdatingIndices = null;
         aClass6_Sub1Array580 = null;
-        anIntArray581 = null;
+        walkingQueueX = null;
         aClass1_575 = null;
     }
 

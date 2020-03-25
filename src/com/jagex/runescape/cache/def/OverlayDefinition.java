@@ -26,7 +26,7 @@ public class OverlayDefinition extends SubNode {
     public static RSString aClass1_2325;
     public static RSString aClass1_2327;
     public static int anInt2328;
-    public static int[][][] anIntArrayArrayArray2333;
+    public static int[][][] constructMapTiles;
     public static byte[][][] tile_underlay_path;
     public static int anInt2340;
     public static int anInt2342;
@@ -40,7 +40,7 @@ public class OverlayDefinition extends SubNode {
         aClass1_2325 = aClass1_2314;
         tile_flags = new byte[4][104][104];
         anInt2328 = -1;
-        anIntArrayArrayArray2333 = new int[4][13][13];
+        constructMapTiles = new int[4][13][13];
         lastClick = 0L;
     }
 
@@ -64,7 +64,7 @@ public class OverlayDefinition extends SubNode {
     public static void method554() {
         tile_underlay_path = null;
         tile_flags = null;
-        anIntArrayArrayArray2333 = null;
+        constructMapTiles = null;
         aClass1_2315 = null;
         aClass1_2314 = null;
         aClass1_2327 = null;

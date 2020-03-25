@@ -40,7 +40,7 @@ public class ISAAC {
     public static int anInt525;
     public static RSString aClass1_526 = RSString.CreateString("Invalid username or password)3");
     public static RSString aClass1_527 = RSString.CreateString("blinken3:");
-    public static int[] anIntArray528;
+    public static int[] mapCoordinates;
     public static RSString aClass1_529 = RSString.CreateString("Begeben Sie sich in ein freies Gebiet)1 um");
 
     public int count;
@@ -67,7 +67,7 @@ public class ISAAC {
                         if((0x2 & (OverlayDefinition.tile_flags[1][i_0_][i_1_])) == 2)
                             i_2_--;
                         if(i_2_ >= 0)
-                            arg2[i_2_].markBlocked((byte) -28, i_1_, i_0_);
+                            arg2[i_2_].markBlocked(i_1_, i_0_);
                     }
                 }
             }
@@ -157,8 +157,8 @@ public class ISAAC {
                             i_22_ -= (Class40_Sub5_Sub17_Sub6.anIntArray3250[i_29_]);
                         }
                         if(i_27_ >= 1 && i_27_ < 103 && (!VertexNormal.lowMemory || (0x2 & (OverlayDefinition.tile_flags[0][i_16_][i_27_])) != 0 || ((0x10 & (OverlayDefinition.tile_flags[i][i_16_][i_27_])) == 0 && (Class40_Sub6.onBuildTimePlane == Class59.getVisibilityPlaneFor(i, i_27_, 0, i_16_))))) {
-                            if(Class64.setZ > i)
-                                Class64.setZ = i;
+                            if(Class64.lowestPlane > i)
+                                Class64.lowestPlane = i;
                             int i_30_ = ((Class42.tile_underlayids[i][i_16_][i_27_]) & 0xff);
                             int i_31_ = ((MouseHandler.tile_overlayids[i][i_16_][i_27_]) & 0xff);
                             if(i_30_ > 0 || i_31_ > 0) {
@@ -404,7 +404,7 @@ public class ISAAC {
         aClass9_516 = null;
         aClass1_523 = null;
         aClass31_521 = null;
-        anIntArray528 = null;
+        mapCoordinates = null;
         aClass1_517 = null;
     }
 

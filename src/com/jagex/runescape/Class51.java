@@ -20,7 +20,7 @@ public class Class51 {
     public static RSString aClass1_1199 = RSString.CreateString("(Y");
     public static RSString aClass1_1200;
     public static RSString aClass1_1201;
-    public static int anInt1202;
+    public static int regionX;
     public static long aLong1203;
     public static RSString[] aClass1Array1204;
     public static int anInt1205;

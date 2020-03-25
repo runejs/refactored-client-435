@@ -55,8 +55,8 @@ public class FloorDecoration {
     }
 
     public static void method343(boolean arg0, int arg1) {
-        GroundItemTile.aBoolean1349 = arg0;
-        if(GroundItemTile.aBoolean1349) {
+        GroundItemTile.loadGeneratedMap = arg0;
+        if(GroundItemTile.loadGeneratedMap) {
             int i = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
             int i_0_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
             int i_1_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
@@ -68,9 +68,9 @@ public class FloorDecoration {
                     for(int i_6_ = 0; i_6_ < 13; i_6_++) {
                         int i_7_ = IncomingPackets.incomingPacketBuffer.getBits(1);
                         if(i_7_ != 1)
-                            OverlayDefinition.anIntArrayArrayArray2333[i_4_][i_5_][i_6_] = -1;
+                            OverlayDefinition.constructMapTiles[i_4_][i_5_][i_6_] = -1;
                         else
-                            OverlayDefinition.anIntArrayArrayArray2333[i_4_][i_5_][i_6_] = IncomingPackets.incomingPacketBuffer.getBits(26);
+                            OverlayDefinition.constructMapTiles[i_4_][i_5_][i_6_] = IncomingPackets.incomingPacketBuffer.getBits(26);
                     }
                 }
             }
@@ -82,27 +82,27 @@ public class FloorDecoration {
                     Class44.anIntArrayArray1030[i_9_][i_10_] = IncomingPackets.incomingPacketBuffer.getIntBE();
             }
             LinkedList.anIntArray1071 = new int[i_8_];
-            RSString.aByteArrayArray1715 = new byte[i_8_][];
+            RSString.terrainData = new byte[i_8_][];
             Class13.anIntArray421 = new int[i_8_];
-            GenericTile.aByteArrayArray1217 = new byte[i_8_][];
-            ISAAC.anIntArray528 = new int[i_8_];
+            GenericTile.objectData = new byte[i_8_][];
+            ISAAC.mapCoordinates = new int[i_8_];
             i_8_ = 0;
             for(int i_11_ = 0; i_11_ < 4; i_11_++) {
                 for(int i_12_ = 0; i_12_ < 13; i_12_++) {
                     for(int i_13_ = 0; i_13_ < 13; i_13_++) {
-                        int i_14_ = (OverlayDefinition.anIntArrayArrayArray2333[i_11_][i_12_][i_13_]);
+                        int i_14_ = (OverlayDefinition.constructMapTiles[i_11_][i_12_][i_13_]);
                         if(i_14_ != -1) {
                             int i_15_ = i_14_ >> 14 & 0x3ff;
                             int i_16_ = i_14_ >> 3 & 0x7ff;
                             int i_17_ = i_16_ / 8 + (i_15_ / 8 << 8);
                             for(int i_18_ = 0; i_8_ > i_18_; i_18_++) {
-                                if(ISAAC.anIntArray528[i_18_] == i_17_) {
+                                if(ISAAC.mapCoordinates[i_18_] == i_17_) {
                                     i_17_ = -1;
                                     break;
                                 }
                             }
                             if(i_17_ != -1) {
-                                ISAAC.anIntArray528[i_8_] = i_17_;
+                                ISAAC.mapCoordinates[i_8_] = i_17_;
                                 int i_19_ = i_17_ & 0xff;
                                 int i_20_ = (0xffbe & i_17_) >> 8;
                                 LinkedList.anIntArray1071[i_8_] = (Renderable.aClass6_Sub1_2857.getHash((RSString.linkRSStrings((new RSString[]{LinkedList.aClass1_1085, (HashTable.method334(i_20_, RSApplet.method27(arg1, -5689))), Class8.aClass1_303, HashTable.method334(i_19_, -1)})))));
@@ -126,10 +126,10 @@ public class FloorDecoration {
                 for(int i_27_ = 0; i_27_ < 4; i_27_++)
                     Class44.anIntArrayArray1030[i_26_][i_27_] = IncomingPackets.incomingPacketBuffer.getIntBE();
             }
-            ISAAC.anIntArray528 = new int[i_25_];
-            RSString.aByteArrayArray1715 = new byte[i_25_][];
+            ISAAC.mapCoordinates = new int[i_25_];
+            RSString.terrainData = new byte[i_25_][];
             boolean bool = false;
-            GenericTile.aByteArrayArray1217 = new byte[i_25_][];
+            GenericTile.objectData = new byte[i_25_][];
             if((i_21_ / 8 == 48 || i_21_ / 8 == 49) && i_23_ / 8 == 48)
                 bool = true;
             LinkedList.anIntArray1071 = new int[i_25_];
@@ -141,7 +141,7 @@ public class FloorDecoration {
                 for(int i_29_ = (-6 + i_23_) / 8; (6 + i_23_) / 8 >= i_29_; i_29_++) {
                     int i_30_ = i_29_ + (i_28_ << 8);
                     if(!bool || (i_29_ != 49 && i_29_ != 149 && i_29_ != 147 && i_28_ != 50 && (i_28_ != 49 || i_29_ != 47))) {
-                        ISAAC.anIntArray528[i_25_] = i_30_;
+                        ISAAC.mapCoordinates[i_25_] = i_30_;
                         LinkedList.anIntArray1071[i_25_] = (Renderable.aClass6_Sub1_2857.getHash((RSString.linkRSStrings(new RSString[]{LinkedList.aClass1_1085, HashTable.method334(i_28_, -1), Class8.aClass1_303, HashTable.method334(i_29_, -1)}))));
                         Class13.anIntArray421[i_25_] = (Renderable.aClass6_Sub1_2857.getHash((RSString.linkRSStrings((new RSString[]{HashTable.aClass1_553, HashTable.method334(i_28_, -1), Class8.aClass1_303, HashTable.method334(i_29_, (RSApplet.method27(arg1, -5689)))})))));
                         i_25_++;

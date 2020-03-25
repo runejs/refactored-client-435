@@ -37,7 +37,7 @@ public class Class55 {
     public static RSString aClass1_1298 = RSString.CreateString("Invalid loginserver requested)3");
     public static int anInt1299 = 2301979;
     public static RSString aClass1_1300 = RSString.CreateString("(U4");
-    public static int anInt1304 = 0;
+    public static int destinationY = 0;
 
     public static void method958(int arg0) {
         Class61.method995((byte) 85, arg0);
