@@ -747,7 +747,7 @@ public class Class27 {
                         int i_22_ = class1.contains(Class26.aClass1_620);
                         if(i_22_ != -1) {
                             if(HuffmanEncoding.openScreenWidgetId == -1) {
-                                PacketBuffer.method516(95);
+                                PacketBuffer.method516();
                                 if(Class34.anInt854 != -1) {
                                     HuffmanEncoding.reportedName = class1.substring(i_22_ + 5).trim();
                                     HuffmanEncoding.reportAbuseInterfaceID = HuffmanEncoding.openScreenWidgetId = Class34.anInt854;
@@ -772,9 +772,9 @@ public class Class27 {
                         SceneCluster.packetBuffer.putShortLE(SpotAnimDefinition.baseX + i);
                     }
                     if(action == 9)
-                        PacketBuffer.method516(106);
+                        PacketBuffer.method516();
                     if(action == 54 && CacheIndex_Sub1.anInt1819 == -1) {
-                        PacketBuffer.method517(0, i_10_, -9225);
+                        PacketBuffer.method517(0, i_10_);
                         CacheIndex_Sub1.anInt1819 = i_10_;
                     }
                     if(action == 43) {

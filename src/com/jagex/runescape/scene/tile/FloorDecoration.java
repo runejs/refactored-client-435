@@ -63,7 +63,7 @@ public class FloorDecoration {
             int i_1_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
             int i_2_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             int i_3_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
-            IncomingPackets.incomingPacketBuffer.initBitAccess(arg1 ^ 0x1625);
+            IncomingPackets.incomingPacketBuffer.initBitAccess();
             for(int i_4_ = 0; i_4_ < 4; i_4_++) {
                 for(int i_5_ = 0; i_5_ < 13; i_5_++) {
                     for(int i_6_ = 0; i_6_ < 13; i_6_++) {
@@ -75,7 +75,7 @@ public class FloorDecoration {
                     }
                 }
             }
-            IncomingPackets.incomingPacketBuffer.finishBitAccess((byte) -110);
+            IncomingPackets.incomingPacketBuffer.finishBitAccess();
             int i_8_ = ((-IncomingPackets.incomingPacketBuffer.currentPosition + IncomingPackets.incomingPacketSize) / 16);
             Class44.anIntArrayArray1030 = new int[i_8_][4];
             for(int i_9_ = 0; i_8_ > i_9_; i_9_++) {

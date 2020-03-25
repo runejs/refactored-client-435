@@ -77,7 +77,7 @@ public class IncomingPackets {
                 Class40_Sub6.aClass64_2098.method1008(0, 1, -127, incomingPacketBuffer.buffer);
                 incomingPacketBuffer.currentPosition = 0;
                 i--;
-                incomingPacket = incomingPacketBuffer.getPacket((byte) 49);
+                incomingPacket = incomingPacketBuffer.getPacket();
                 incomingPacketSize = INCOMING_PACKET_SIZES[incomingPacket];
             }
             //System.out.println("packet received: " + Class57.incomingPacket);

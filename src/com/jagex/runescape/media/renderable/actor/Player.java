@@ -223,7 +223,7 @@ public class Player extends Actor {
     }
 
     public static void parsePlayerMovement() {
-        IncomingPackets.incomingPacketBuffer.initBitAccess(127);
+        IncomingPackets.incomingPacketBuffer.initBitAccess();
         int updateRequired = IncomingPackets.incomingPacketBuffer.getBits(1);
         if(updateRequired != 0) {
             int movementType = IncomingPackets.incomingPacketBuffer.getBits(2);
@@ -303,7 +303,7 @@ public class Player extends Actor {
     }
 
     public static void registerNewPlayers() {
-        while(IncomingPackets.incomingPacketBuffer.method510(125, IncomingPackets.incomingPacketSize) >= 11) {
+        while(IncomingPackets.incomingPacketBuffer.method510(IncomingPackets.incomingPacketSize) >= 11) {
             int newPlayerIndex = IncomingPackets.incomingPacketBuffer.getBits(11);
             if(newPlayerIndex == 2047)
                 break;
@@ -333,7 +333,7 @@ public class Player extends Actor {
                 actorUpdatingIndices[actorUpdatingIndex++] = newPlayerIndex;
             player.method787(offsetY + (localPlayer.pathX[0]), -7717, updateRequired == 1, (localPlayer.pathY[0]) + offsetX);
         }
-        IncomingPackets.incomingPacketBuffer.finishBitAccess((byte) -110);
+        IncomingPackets.incomingPacketBuffer.finishBitAccess();
 
     }
 

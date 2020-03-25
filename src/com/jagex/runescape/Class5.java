@@ -237,7 +237,7 @@ public class Class5 {
         if(i == 620)
             Class67.reportMutePlayer = !Class67.reportMutePlayer;
         if(i >= 601 && i <= 613) {
-            PacketBuffer.method516(123);
+            PacketBuffer.method516();
             if(HuffmanEncoding.reportedName.length() > 0) {
                 SceneCluster.packetBuffer.putPacket(202);
                 SceneCluster.packetBuffer.putLongBE(HuffmanEncoding.reportedName.method58((byte) 102));

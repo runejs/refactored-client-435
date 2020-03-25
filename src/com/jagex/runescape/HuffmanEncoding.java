@@ -136,7 +136,7 @@ public class HuffmanEncoding {
     public static RSString method1024(boolean arg0, byte arg1, int arg2) {
         if(arg1 > -30)
             str_Connecting_to_friendserver = null;
-        return PacketBuffer.method521(arg0, (byte) 8, 10, arg2);
+        return PacketBuffer.method521(arg0, 10, arg2);
     }
 
     public static void processNpcMenuOptions(ActorDefinition actorDefinition, int x, int y, int index) {

@@ -225,7 +225,7 @@ public class SpotAnimDefinition extends SubNode {
                     Class44.anInt1049 = Class40_Sub6.aClass64_2098.method1016(37);
                     Class40_Sub6.aClass64_2098.method1008(0, 1, -127, IncomingPackets.incomingPacketBuffer.buffer);
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                    IncomingPackets.incomingPacket = IncomingPackets.incomingPacketBuffer.getPacket((byte) 49);
+                    IncomingPackets.incomingPacket = IncomingPackets.incomingPacketBuffer.getPacket();
                     Class40_Sub6.aClass64_2098.method1008(0, 2, -127, IncomingPackets.incomingPacketBuffer.buffer);
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                     IncomingPackets.incomingPacketSize = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();

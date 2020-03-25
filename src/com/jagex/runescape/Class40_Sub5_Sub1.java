@@ -251,7 +251,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
             }
             if(Class57.clickX >= 412 && Class57.clickX <= 512 && RSString.clickY >= 467 && RSString.clickY <= 499) {
                 if(HuffmanEncoding.openScreenWidgetId == -1) {
-                    PacketBuffer.method516(127);
+                    PacketBuffer.method516();
                     if(Class34.anInt854 != -1) {
                         Class67.reportMutePlayer = false;
                         HuffmanEncoding.reportAbuseInterfaceID = HuffmanEncoding.openScreenWidgetId = Class34.anInt854;

@@ -525,7 +525,7 @@ public class Npc extends Actor {
     }
 
     public static void parseTrackedNpcs() {
-        IncomingPackets.incomingPacketBuffer.initBitAccess(114);
+        IncomingPackets.incomingPacketBuffer.initBitAccess();
         int trackedNpcCount = IncomingPackets.incomingPacketBuffer.getBits(8);
         if(Player.npcCount > trackedNpcCount) {
             for(int i = trackedNpcCount; i < Player.npcCount; i++)
@@ -572,7 +572,7 @@ public class Npc extends Actor {
     }
 
     public static void registerNewNpcs() {
-        while(IncomingPackets.incomingPacketBuffer.method510(121, IncomingPackets.incomingPacketSize) >= 27) {
+        while(IncomingPackets.incomingPacketBuffer.method510(IncomingPackets.incomingPacketSize) >= 27) {
             int i = IncomingPackets.incomingPacketBuffer.getBits(15);
             if(i == 32767)
                 break;
@@ -612,7 +612,7 @@ public class Npc extends Actor {
             npc.turnRightAnimationId = (npc.actorDefinition.rotate90RightAnimation);
             npc.method787((Player.localPlayer.pathX[0]) + offsetY, -7717, discardWalkingQueue == 1, (Player.localPlayer.pathY[0]) + offsetX);
         }
-        IncomingPackets.incomingPacketBuffer.finishBitAccess((byte) -110);
+        IncomingPackets.incomingPacketBuffer.finishBitAccess();
     }
 
     public static int method400(int arg0) {

@@ -97,7 +97,7 @@ public class HashTable {
     public static RSString method334(int arg0, int arg1) {
         if(arg1 != -1)
             return null;
-        return PacketBuffer.method521(false, (byte) 8, 10, arg0);
+        return PacketBuffer.method521(false, 10, arg0);
     }
 
     public static void method335(byte arg0) {
