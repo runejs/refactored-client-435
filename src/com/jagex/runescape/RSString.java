@@ -4,6 +4,7 @@ import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 import java.awt.*;

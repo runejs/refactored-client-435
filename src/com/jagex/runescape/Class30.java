@@ -9,6 +9,7 @@ import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.net.PacketBuffer;
 
 public class Class30 {
     public static int[] anIntArray680 = new int[50];

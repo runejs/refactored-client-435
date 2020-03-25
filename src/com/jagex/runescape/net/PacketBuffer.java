@@ -1,5 +1,6 @@
-package com.jagex.runescape;
+package com.jagex.runescape.net;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;

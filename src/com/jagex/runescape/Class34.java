@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.tile.GenericTile;
 
 public class Class34 {

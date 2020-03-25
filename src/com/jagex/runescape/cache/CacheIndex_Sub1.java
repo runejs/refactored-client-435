@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
 

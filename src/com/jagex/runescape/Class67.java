@@ -2,6 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.input.KeyFocusListener;
 
 import java.io.EOFException;
 import java.io.IOException;

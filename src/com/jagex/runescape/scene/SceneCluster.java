@@ -2,6 +2,7 @@ package com.jagex.runescape.scene;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
+import com.jagex.runescape.net.PacketBuffer;
 
 public class SceneCluster {
     public static PacketBuffer packetBuffer = new PacketBuffer(5000);

@@ -1,5 +1,6 @@
-package com.jagex.runescape;
+package com.jagex.runescape.input;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.GameObjectDefinition;

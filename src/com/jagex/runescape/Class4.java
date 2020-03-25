@@ -3,8 +3,10 @@ package com.jagex.runescape;
 import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class4 {
