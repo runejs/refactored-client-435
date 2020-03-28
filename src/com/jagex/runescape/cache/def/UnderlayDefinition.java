@@ -39,14 +39,11 @@ public class UnderlayDefinition extends SubNode {
         Actor.aCacheIndex_3150 = arg0;
     }
 
-    public static void method617(long arg0, byte arg1) {
+    public static void method617(long arg0) {
         if(arg0 != 0L) {
             if((Item.friendsCount >= 100 && Class44.anInt1049 != 1) || (Item.friendsCount >= 200)) {
                 Class44.addChatMessage(HuffmanEncoding.blank_string, Class59.aClass1_1399, 0);
             } else {
-                if(arg1 >= -2) {
-                    aClass6_Sub1_2571 = null;
-                }
                 RSString class1 = Class60.method991(-23, arg0).method85();
                 for(int i = 0; Item.friendsCount > i; i++) {
                     if(Class59.aLongArray1397[i] == arg0) {

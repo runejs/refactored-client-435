@@ -636,7 +636,7 @@ public class Class27 {
                         if(i_21_ != -1) {
                             long l = class1.substring(i_21_ + 5).trim().method58((byte) 96);
                             if(action == 45)
-                                UnderlayDefinition.method617(l, (byte) -104);
+                                UnderlayDefinition.method617(l);
                             if(action == 51)
                                 Class17.method275(l);
                             if(action == 13)

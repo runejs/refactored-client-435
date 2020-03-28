@@ -217,7 +217,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                     GenericTile.redrawChatbox = true;
                     if(Class37.anInt876 == 1) {
                         long l = HuffmanEncoding.aClass1_1565.method58((byte) 104);
-                        UnderlayDefinition.method617(l, (byte) -99);
+                        UnderlayDefinition.method617(l);
                     }
                     if(Class37.anInt876 == 2 && Item.friendsCount > 0) {
                         long l = HuffmanEncoding.aClass1_1565.method58((byte) 121);
