@@ -133,7 +133,7 @@ public class Class30 {
                 int appearanceModel = appearance[bodyPart];
                 if(appearanceModel >= 256 && appearanceModel < 512 && !IdentityKit.cache(-256 + appearanceModel).isBodyModelCached())
                     invalid = true;
-                if(appearanceModel >= 512 && !ItemDefinition.forId(appearanceModel + -512, 10).equipmentReady(gender, (byte) 127))
+                if(appearanceModel >= 512 && !ItemDefinition.forId(appearanceModel + -512, 10).equipmentReady(gender))
                     invalid = true;
             }
             if(invalid) {
@@ -169,7 +169,7 @@ public class Class30 {
                 }
                 model.createBones();
                 model.applyLighting(64, 850, -30, -50, -30, true);
-                CacheIndex.modelCache.put(-7208, hash, model);
+                CacheIndex.modelCache.put(hash, model);
                 cachedModel = hash;
             }
         }

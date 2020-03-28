@@ -177,7 +177,7 @@ public class GameObjectDefinition extends SubNode {
             gameObjectDefinition.solid = false;
             gameObjectDefinition.walkable = false;
         }
-        GroundItemTile.aClass9_1364.put(-7208, arg0, gameObjectDefinition);
+        GroundItemTile.aClass9_1364.put(arg0, gameObjectDefinition);
         return gameObjectDefinition;
     }
 
@@ -194,7 +194,7 @@ public class GameObjectDefinition extends SubNode {
             if(model == null) {
                 return null;
             }
-            InteractiveObject.aClass9_470.put(-7208, l, model);
+            InteractiveObject.aClass9_470.put(l, model);
         }
         if(adjustToTerrain || nonFlatShading) {
             model = new Model(adjustToTerrain, nonFlatShading, model);
@@ -281,7 +281,7 @@ public class GameObjectDefinition extends SubNode {
                     if(bool) {
                         class40_sub5_sub17_sub5.method818();
                     }
-                    VertexNormal.aClass9_1102.put(-7208, i_8_, class40_sub5_sub17_sub5);
+                    VertexNormal.aClass9_1102.put(i_8_, class40_sub5_sub17_sub5);
                 }
                 if(i > 1) {
                     Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub5Array2762[i_7_] = class40_sub5_sub17_sub5;
@@ -315,7 +315,7 @@ public class GameObjectDefinition extends SubNode {
                 if(bool) {
                     class40_sub5_sub17_sub5.method818();
                 }
-                VertexNormal.aClass9_1102.put(-7208, i_10_, class40_sub5_sub17_sub5);
+                VertexNormal.aClass9_1102.put(i_10_, class40_sub5_sub17_sub5);
             }
         }
         boolean bool;
@@ -362,7 +362,7 @@ public class GameObjectDefinition extends SubNode {
             if(model == null) {
                 return null;
             }
-            Class49.aClass9_1145.put(-7208, l, model);
+            Class49.aClass9_1145.put(l, model);
         }
         if(animationSequence == null && !adjustToTerrain) {
             return model;

@@ -103,7 +103,7 @@ public class ActorDefinition extends SubNode {
     public static void method574() {
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            RSString.aClass68_1665.method1044(0, 550, graphics, 4);
+            RSString.aClass68_1665.method1044(550, graphics, 4);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }
@@ -219,7 +219,7 @@ public class ActorDefinition extends SubNode {
         definition.id = id;
         if(is != null)
             definition.readValues(new Buffer(is));
-        ISAAC.aClass9_510.put(-7208, id, definition);
+        ISAAC.aClass9_510.put(id, definition);
         return definition;
     }
 
@@ -258,7 +258,7 @@ public class ActorDefinition extends SubNode {
             }
             class40_sub5_sub17_sub5.createBones();
             class40_sub5_sub17_sub5.applyLighting(ambient + 64, 850 + contrast, -30, -50, -30, true);
-            Class67.aClass9_1611.put(-7208, id, class40_sub5_sub17_sub5);
+            Class67.aClass9_1611.put(id, class40_sub5_sub17_sub5);
         }
         Model class40_sub5_sub17_sub5_0_;
         if(arg1 != null && arg2 != null) {

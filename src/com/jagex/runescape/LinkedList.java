@@ -82,7 +82,7 @@ public class LinkedList {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
             if(arg0 <= 83)
                 method908((byte) 19);
-            RSCanvas.aClass68_64.method1044(0, 17, graphics, 357);
+            RSCanvas.aClass68_64.method1044(17, graphics, 357);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }

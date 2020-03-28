@@ -253,7 +253,7 @@ public class FloorDecoration {
                 class40_sub1.putByte(0);
                 class40_sub1.putMediumBE((int) class40_sub5_sub13.key);
                 Class57.aClass64_1345.method1010(4, (byte) -19, 0, (class40_sub1.buffer));
-                class40_sub5_sub13.method539(0);
+                class40_sub5_sub13.method539();
                 Class34.aClass23_841.put(class40_sub5_sub13, (byte) -122, (class40_sub5_sub13.key));
                 Class42.anInt1006++;
             }

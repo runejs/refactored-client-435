@@ -97,7 +97,7 @@ public class GenericTile {
         int i = -50 % ((arg1 - 82) / 38);
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            HuffmanEncoding.aClass68_1541.method1044(0, 0, graphics, 453);
+            HuffmanEncoding.aClass68_1541.method1044(0, graphics, 453);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }

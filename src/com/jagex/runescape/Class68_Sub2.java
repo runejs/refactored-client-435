@@ -7,9 +7,8 @@ import java.util.Hashtable;
 public class Class68_Sub2 extends Class68 {
     public Component aComponent2214;
 
-    public void method1044(int arg0, int arg1, Graphics arg2, int arg3) {
-        if(arg0 == 0)
-            arg2.drawImage(anImage1625, arg1, arg3, aComponent2214);
+    public void method1044(int arg1, Graphics arg2, int arg3) {
+        arg2.drawImage(anImage1625, arg1, arg3, aComponent2214);
     }
 
     public void method1041(int arg0, int arg1, Component arg2, int arg3) {

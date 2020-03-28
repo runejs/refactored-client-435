@@ -117,7 +117,7 @@ public class Class34 {
         varbitDefinition = new VarbitDefinition();
         if(is != null)
             varbitDefinition.method562(0, new Buffer(is));
-        Class57.aClass9_1331.put(-7208, (long) arg1, varbitDefinition);
+        Class57.aClass9_1331.put((long) arg1, varbitDefinition);
         return varbitDefinition;
     }
 

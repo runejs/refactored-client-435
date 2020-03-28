@@ -1004,7 +1004,7 @@ public class Class27 {
     public static void method365(int arg0) {
         if(Class40_Sub5_Sub11.clearScreen) {
             Class40_Sub5_Sub11.clearScreen = false;
-            ItemDefinition.method742(arg0 ^ ~0x4e29);
+            ItemDefinition.method742();
             IdentityKit.drawTabIcons = true;
             GenericTile.redrawChatbox = true;
             ISAAC.redrawTabArea = true;
@@ -1170,17 +1170,17 @@ public class Class27 {
         return i;
     }
 
-    public SubNode method351(int arg0) {
+    public SubNode method351() {
         SubNode class40_sub5 = aClass40_Sub5_660.aClass40_Sub5_2082;
         if(class40_sub5 == aClass40_Sub5_660)
             return null;
-        class40_sub5.method539(arg0 ^ 0x1fffccf7);
+        class40_sub5.method539();
         return class40_sub5;
     }
 
     public void method352(int arg0, SubNode arg1) {
         if(arg1.aClass40_Sub5_2087 != null)
-            arg1.method539(0);
+            arg1.method539();
         arg1.aClass40_Sub5_2082 = aClass40_Sub5_660;
         arg1.aClass40_Sub5_2087 = aClass40_Sub5_660.aClass40_Sub5_2087;
         arg1.aClass40_Sub5_2087.aClass40_Sub5_2082 = arg1;
@@ -1200,7 +1200,7 @@ public class Class27 {
 
     public void method367(boolean arg0, SubNode arg1) {
         if(arg1.aClass40_Sub5_2087 != null)
-            arg1.method539(0);
+            arg1.method539();
         arg1.aClass40_Sub5_2082 = aClass40_Sub5_660.aClass40_Sub5_2082;
         arg1.aClass40_Sub5_2087 = aClass40_Sub5_660;
         arg1.aClass40_Sub5_2087.aClass40_Sub5_2082 = arg1;

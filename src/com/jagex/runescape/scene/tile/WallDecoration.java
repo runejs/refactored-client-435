@@ -417,20 +417,20 @@ public class WallDecoration {
             Main.renderFlames(0);
             try {
                 Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-                Class38.aClass68_887.method1044(0, 202, graphics, 171);
+                Class38.aClass68_887.method1044(202, graphics, 171);
                 if(arg0 != -19010)
                     method949((byte) 41);
-                Class8.aClass68_298.method1044(arg0 ^ ~0x4a41, 0, graphics, 0);
-                GameObject.aClass68_3042.method1044(0, 637, graphics, 0);
+                Class8.aClass68_298.method1044(0, graphics, 0);
+                GameObject.aClass68_3042.method1044(637, graphics, 0);
                 if(!Class40_Sub5_Sub11.clearScreen)
                     break;
                 Class40_Sub5_Sub11.clearScreen = false;
-                Class39.aClass68_907.method1044(0, 128, graphics, 0);
-                Class51.aClass68_1206.method1044(0, 202, graphics, 371);
-                Class17.aClass68_463.method1044(0, 0, graphics, 265);
-                KeyFocusListener.aClass68_1285.method1044(0, 562, graphics, 265);
-                GameObjectDefinition.aClass68_2524.method1044(0, 128, graphics, 171);
-                Class68.aClass68_1631.method1044(0, 562, graphics, 171);
+                Class39.aClass68_907.method1044(128, graphics, 0);
+                Class51.aClass68_1206.method1044(202, graphics, 371);
+                Class17.aClass68_463.method1044(0, graphics, 265);
+                KeyFocusListener.aClass68_1285.method1044(562, graphics, 265);
+                GameObjectDefinition.aClass68_2524.method1044(128, graphics, 171);
+                Class68.aClass68_1631.method1044(562, graphics, 171);
             } catch(Exception exception) {
                 MouseHandler.aCanvas1469.repaint();
             }

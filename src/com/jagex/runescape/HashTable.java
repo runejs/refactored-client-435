@@ -69,7 +69,7 @@ public class HashTable {
                         anInt554++;
                     }
                 } else if(arg0) {
-                    class40_sub5_sub13.method539(0);
+                    class40_sub5_sub13.method539();
                     Class51.aClass23_1194.put(class40_sub5_sub13, (byte) 116, l);
                     anInt554--;
                     Class68.anInt1618++;

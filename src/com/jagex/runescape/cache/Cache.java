@@ -68,21 +68,20 @@ public class Cache {
         AnimationSequence.aCacheIndex_2484 = arg2;
     }
 
-    public void put(int arg0, long arg1, SubNode arg2) {
+    public void put(long arg1, SubNode arg2) {
         if(anInt316 == 0) {
-            SubNode class40_sub5 = aClass27_319.method351(536857847);
+            SubNode class40_sub5 = aClass27_319.method351();
             class40_sub5.method457(-1);
-            class40_sub5.method539(arg0 ^ ~0x1c27);
+            class40_sub5.method539();
             if(class40_sub5 == aClass40_Sub5_309) {
-                class40_sub5 = aClass27_319.method351(536857847);
+                class40_sub5 = aClass27_319.method351();
                 class40_sub5.method457(-1);
-                class40_sub5.method539(0);
+                class40_sub5.method539();
             }
         } else
             anInt316--;
         aClass23_318.put(arg2, (byte) -115, arg1);
-        if(arg0 == -7208)
-            aClass27_319.method352(102, arg2);
+        aClass27_319.method352(102, arg2);
     }
 
     public SubNode get(long arg0, byte arg1) {
@@ -101,17 +100,17 @@ public class Cache {
         if(class40_sub5 == null)
             return;
         class40_sub5.method457(-1);
-        class40_sub5.method539(0);
+        class40_sub5.method539();
         anInt316++;
     }
 
     public void method235(byte arg0) {
         for(; ; ) {
-            SubNode class40_sub5 = aClass27_319.method351(536857847);
+            SubNode class40_sub5 = aClass27_319.method351();
             if(class40_sub5 == null)
                 break;
             class40_sub5.method457(-1);
-            class40_sub5.method539(0);
+            class40_sub5.method539();
         }
         anInt316 = anInt317;
         int i = 115 / ((-2 - arg0) / 33);

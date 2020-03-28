@@ -84,7 +84,7 @@ public class Class5 {
             Class40_Sub5_Sub6.method588(-1);
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            Class68_Sub1.aClass68_2213.method1044(0, 0, graphics, 0);
+            Class68_Sub1.aClass68_2213.method1044(0, graphics, 0);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }

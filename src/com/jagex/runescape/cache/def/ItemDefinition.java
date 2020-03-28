@@ -99,18 +99,18 @@ public class ItemDefinition extends SubNode {
         maleModel0 = -1;
     }
 
-    public static void method742(int arg0) {
+    public static void method742() {
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            Landscape.aClass68_1185.method1044(arg0 ^ arg0, 0, graphics, 4);
-            Class40_Sub5_Sub1.aClass68_2275.method1044(arg0 + -205, 0, graphics, 357);
-            Class39.aClass68_908.method1044(0, 722, graphics, 4);
-            GameObject.aClass68_3045.method1044(arg0 + -205, 743, graphics, 205);
-            Class40_Sub5_Sub17_Sub6.aClass68_3243.method1044(0, 0, graphics, 0);
-            Class40_Sub7.aClass68_2123.method1044(0, 516, graphics, 4);
-            Class61.aClass68_1441.method1044(0, 516, graphics, 205);
-            Class30.aClass68_714.method1044(0, 496, graphics, 357);
-            Class17.aClass68_462.method1044(0, 0, graphics, 338);
+            Landscape.aClass68_1185.method1044(0, graphics, 4);
+            Class40_Sub5_Sub1.aClass68_2275.method1044(0, graphics, 357);
+            Class39.aClass68_908.method1044(722, graphics, 4);
+            GameObject.aClass68_3045.method1044(743, graphics, 205);
+            Class40_Sub5_Sub17_Sub6.aClass68_3243.method1044(0, graphics, 0);
+            Class40_Sub7.aClass68_2123.method1044(516, graphics, 4);
+            Class61.aClass68_1441.method1044(516, graphics, 205);
+            Class30.aClass68_714.method1044(496, graphics, 357);
+            Class17.aClass68_462.method1044(0, graphics, 338);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }
@@ -168,7 +168,7 @@ public class ItemDefinition extends SubNode {
         for(int i = 0; Player.npcCount > i; i++) {
             Npc npc = (Player.npcs[Player.npcIds[i]]);
             int i_15_ = (536870912 + (Player.npcIds[i] << 14));
-            if(npc != null && npc.isVisible(1) && !arg0 != (npc.actorDefinition.hasRenderPriority) && npc.actorDefinition.method571(-1)) {
+            if(npc != null && npc.isVisible(1) && arg0 == (npc.actorDefinition.hasRenderPriority) && npc.actorDefinition.method571(-1)) {
                 int i_16_ = (npc.worldX >> 7);
                 int i_17_ = npc.worldY >> 7;
                 if(i_16_ >= 0 && i_16_ < 104 && i_17_ >= 0 && i_17_ < 104) {
@@ -188,7 +188,7 @@ public class ItemDefinition extends SubNode {
     }
 
     public static ItemDefinition forId(int id, int arg1) {
-        ItemDefinition definition = ((ItemDefinition) ISAAC.aClass9_516.get((long) id, (byte) 100));
+        ItemDefinition definition = ((ItemDefinition) ISAAC.aClass9_516.get(id, (byte) 100));
         if(definition != null) {
             return definition;
         }
@@ -207,7 +207,7 @@ public class ItemDefinition extends SubNode {
             definition.groundOptions = null;
             definition.name = Item.aClass1_3069;
         }
-        ISAAC.aClass9_516.put(arg1 + -7218, (long) id, definition);
+        ISAAC.aClass9_516.put(id, definition);
         return definition;
     }
 
@@ -231,7 +231,7 @@ public class ItemDefinition extends SubNode {
         return ready;
     }
 
-    public boolean equipmentReady(boolean arg0, byte arg1) {
+    public boolean equipmentReady(boolean arg0) {
         int i = maleModel0;
         int i_1_ = maleModel1;
         int i_2_ = maleModel2;
@@ -244,9 +244,6 @@ public class ItemDefinition extends SubNode {
             return true;
         }
         boolean bool = true;
-        if(arg1 <= 126) {
-            return false;
-        }
         if(!Class8.aCacheIndex_284.loaded(i, 0)) {
             bool = false;
         }
@@ -435,7 +432,7 @@ public class ItemDefinition extends SubNode {
     }
 
     public void readValues(Buffer itemDefinitionBuffer) {
-        for(; ; ) {
+        while(true) {
             int opcode = itemDefinitionBuffer.getUnsignedByte();
             if(opcode == 0) {
                 break;
@@ -472,7 +469,7 @@ public class ItemDefinition extends SubNode {
                 return forId(id, 10).asGroundStack(arg0, 1);
             }
         }
-        Model model = ((Model) MouseHandler.modelCache.get((long) id, (byte) 87));
+        Model model = ((Model) MouseHandler.modelCache.get(id, (byte) 87));
         if(model != null) {
             return model;
         }
@@ -491,7 +488,7 @@ public class ItemDefinition extends SubNode {
         if(arg0) {
             model.applyLighting(ambient + 64, 768 + contrast, -50, -10, -50, true);
             model.singleTile = true;
-            MouseHandler.modelCache.put(-7208, (long) id, model);
+            MouseHandler.modelCache.put(id, model);
         }
         return model;
 

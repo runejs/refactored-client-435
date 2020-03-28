@@ -324,7 +324,7 @@ public class Class40_Sub3 extends Node {
         underlayDefinition.calculateHsl();
         if(arg0 >= -39)
             cmd_fpson = null;
-        WallDecoration.aClass9_1247.put(-7208, (long) arg1, underlayDefinition);
+        WallDecoration.aClass9_1247.put((long) arg1, underlayDefinition);
         return underlayDefinition;
     }
 

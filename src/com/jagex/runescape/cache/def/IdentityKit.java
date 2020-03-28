@@ -81,7 +81,7 @@ public class IdentityKit extends SubNode {
             }
             class40_sub5_sub1.anIntArray2272[i_0_++] = i_1_;
         }
-        Class17.aClass9_449.put(-7208, l, class40_sub5_sub1);
+        Class17.aClass9_449.put(l, class40_sub5_sub1);
         return class40_sub5_sub1;
     }
 
@@ -117,7 +117,7 @@ public class IdentityKit extends SubNode {
         if(is != null) {
             identityKit.readValues(new Buffer(is));
         }
-        Class68.aClass9_1615.put(-7208, arg1, identityKit);
+        Class68.aClass9_1615.put(arg1, identityKit);
         return identityKit;
     }
 

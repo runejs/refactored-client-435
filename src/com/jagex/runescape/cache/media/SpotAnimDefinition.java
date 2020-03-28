@@ -283,7 +283,7 @@ public class SpotAnimDefinition extends SubNode {
         spotAnimDefinition.id = arg0;
         if(is != null)
             spotAnimDefinition.readValues(new Buffer(is));
-        Class43.aClass9_1014.put(-7208, (long) arg0, spotAnimDefinition);
+        Class43.aClass9_1014.put((long) arg0, spotAnimDefinition);
         return spotAnimDefinition;
     }
 
@@ -326,7 +326,7 @@ public class SpotAnimDefinition extends SubNode {
             }
             class40_sub5_sub17_sub5.createBones();
             class40_sub5_sub17_sub5.applyLighting(64 + ambient, contrast + 850, -30, -50, -30, true);
-            Class34.aClass9_851.put(-7208, (long) id, class40_sub5_sub17_sub5);
+            Class34.aClass9_851.put((long) id, class40_sub5_sub17_sub5);
         }
         Model class40_sub5_sub17_sub5_0_;
         if(animationId == -1 || arg0 == -1) {

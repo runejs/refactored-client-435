@@ -161,8 +161,8 @@ public class Class40_Sub2 extends Node {
         }
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            InteractiveObject.aClass68_482.method1044(0, 516, graphics, 160);
-            RSCanvas.aClass68_59.method1044(0, 496, graphics, 466);
+            InteractiveObject.aClass68_482.method1044(516, graphics, 160);
+            RSCanvas.aClass68_59.method1044(496, graphics, 466);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }

@@ -70,7 +70,7 @@ public class Class51 {
     public static void method940(int arg0, RSString arg1, boolean arg2, RSString arg3) {
         if(Class40_Sub5_Sub11.clearScreen) {
             Class40_Sub5_Sub11.clearScreen = false;
-            ItemDefinition.method742(205);
+            ItemDefinition.method742();
             LinkedList.method908((byte) 114);
             Class55.method964(40);
             ActorDefinition.method574();

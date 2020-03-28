@@ -57,9 +57,7 @@ public class SubNode extends Node {
         anIntArray2086 = null;
     }
 
-    public void method539(int arg0) {
-        if(arg0 != 0)
-            method538(16);
+    public void method539() {
         if(aClass40_Sub5_2087 != null) {
             aClass40_Sub5_2087.aClass40_Sub5_2082 = aClass40_Sub5_2082;
             aClass40_Sub5_2082.aClass40_Sub5_2087 = aClass40_Sub5_2087;

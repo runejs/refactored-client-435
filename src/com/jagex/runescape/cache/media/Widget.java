@@ -1397,7 +1397,7 @@ public class Widget extends SubNode {
         if(class40_sub5_sub14_sub4 == null) {
             FramemapDefinition.aBoolean2177 = true;
         } else {
-            Cache.aClass9_326.put(-7208, (long) i, class40_sub5_sub14_sub4);
+            Cache.aClass9_326.put((long) i, class40_sub5_sub14_sub4);
         }
         return class40_sub5_sub14_sub4;
     }
@@ -1424,7 +1424,7 @@ public class Widget extends SubNode {
         if(class40_sub5_sub14_sub4 == null) {
             FramemapDefinition.aBoolean2177 = true;
         } else {
-            Cache.aClass9_326.put(-7208, (long) i, class40_sub5_sub14_sub4);
+            Cache.aClass9_326.put((long) i, class40_sub5_sub14_sub4);
         }
         return class40_sub5_sub14_sub4;
     }
@@ -1589,7 +1589,7 @@ public class Widget extends SubNode {
                 class40_sub5_sub17_sub5.createBones();
                 class40_sub5_sub17_sub5.applyLighting(64 + (class40_sub5_sub16.ambient), 768 + (class40_sub5_sub16.contrast), -50, -10, -50, true);
             }
-            WallDecoration.aClass9_1264.put(-7208, (long) ((i << 16) + i_11_), class40_sub5_sub17_sub5);
+            WallDecoration.aClass9_1264.put((long) ((i << 16) + i_11_), class40_sub5_sub17_sub5);
         }
         if(arg1 != null) {
             class40_sub5_sub17_sub5 = arg1.method598(arg2, class40_sub5_sub17_sub5, true);
@@ -1613,7 +1613,7 @@ public class Widget extends SubNode {
         if(class40_sub5_sub14_sub1 == null) {
             FramemapDefinition.aBoolean2177 = true;
         } else {
-            Class67.aClass9_1582.put(-7208, (long) fontId, class40_sub5_sub14_sub1);
+            Class67.aClass9_1582.put((long) fontId, class40_sub5_sub14_sub1);
         }
         return class40_sub5_sub14_sub1;
     }

@@ -94,7 +94,7 @@ public class Class55 {
             return class40_sub5_sub15;
         class40_sub5_sub15 = Class35.method421(VarbitDefinition.aCacheIndex_2364, (byte) 79, arg1, Class40_Sub11.aCacheIndex_2162, false);
         if(class40_sub5_sub15 != null)
-            Class42.aClass9_998.put(arg0 + -7109, (long) arg1, class40_sub5_sub15);
+            Class42.aClass9_998.put((long) arg1, class40_sub5_sub15);
         if(arg0 != -99)
             method961();
         return class40_sub5_sub15;
@@ -342,7 +342,7 @@ public class Class55 {
     public static void method964(int arg0) {
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            SubNode.aClass68_2091.method1044(0, 553, graphics, 205);
+            SubNode.aClass68_2091.method1044(553, graphics, 205);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }

@@ -54,7 +54,7 @@ public class Npc extends Actor {
         class40_sub5_sub11 = new Class40_Sub5_Sub11();
         if(is != null)
             class40_sub5_sub11.method634(new Buffer(is), 0);
-        Class13.aClass9_406.put(-7208, (long) arg1, class40_sub5_sub11);
+        Class13.aClass9_406.put((long) arg1, class40_sub5_sub11);
         return class40_sub5_sub11;
     }
 
@@ -435,7 +435,7 @@ public class Npc extends Actor {
         if(is != null)
             overlayDefinition.method553((byte) 65, new Buffer(is));
         overlayDefinition.method555((byte) 64);
-        Class33.aClass9_778.put(-7208, (long) arg0, overlayDefinition);
+        Class33.aClass9_778.put((long) arg0, overlayDefinition);
         return overlayDefinition;
     }
 

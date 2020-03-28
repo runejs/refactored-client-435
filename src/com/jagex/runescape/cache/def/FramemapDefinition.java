@@ -153,7 +153,7 @@ public class FramemapDefinition extends Node {
             class40_sub5_sub14_sub4.maxHeight = i_17_;
         }
         if(arg3 == 0)
-            Buffer.aClass9_1933.put(-7208, (long) arg2, class40_sub5_sub14_sub4_10_);
+            Buffer.aClass9_1933.put((long) arg2, class40_sub5_sub14_sub4_10_);
         Rasterizer.createRasterizer(is, i_1_, i);
         Rasterizer.setCoordinates(i_2_, i_5_, i_6_, i_4_);
         Rasterizer3D.method708(is_7_);

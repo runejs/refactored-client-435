@@ -74,7 +74,7 @@ public class RSString implements Interface1 {
         if(is == null)
             return null;
         if(aClass9_1684 != null)
-            aClass9_1684.put(-7208, l, new Class40_Sub5_Sub6(is));
+            aClass9_1684.put(l, new Class40_Sub5_Sub6(is));
         return is;
     }
 

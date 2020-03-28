@@ -109,7 +109,7 @@ public abstract class Class68 {
 
     public abstract void method1041(int i, int i_2_, Component component, int i_3_);
 
-    public abstract void method1044(int i, int i_6_, Graphics graphics, int i_7_);
+    public abstract void method1044(int i_6_, Graphics graphics, int i_7_);
 
     public void method1046(byte arg0) {
         do {
