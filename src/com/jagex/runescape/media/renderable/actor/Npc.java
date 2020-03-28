@@ -433,8 +433,8 @@ public class Npc extends Actor {
         byte[] is = Actor.aCacheIndex_3144.getFile(arg0, arg1);
         overlayDefinition = new OverlayDefinition();
         if(is != null)
-            overlayDefinition.method553((byte) 65, new Buffer(is));
-        overlayDefinition.method555((byte) 64);
+            overlayDefinition.method553(new Buffer(is));
+        overlayDefinition.method555();
         Class33.aClass9_778.put((long) arg0, overlayDefinition);
         return overlayDefinition;
     }

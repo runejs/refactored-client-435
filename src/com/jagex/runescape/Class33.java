@@ -255,7 +255,7 @@ public class Class33 {
 
     public static synchronized void method405(int arg0, int arg1) {
         if(Class24.method340()) {
-            OverlayDefinition.method557(arg1, 17098);
+            OverlayDefinition.method557(arg1);
             Class22_Sub1.aCacheIndex_1855 = null;
             Class26.aBoolean618 = false;
             if(arg0 != 16969)

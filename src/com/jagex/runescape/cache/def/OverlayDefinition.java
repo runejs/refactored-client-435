@@ -18,33 +18,20 @@ import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class OverlayDefinition extends SubNode {
-    public static RSString aClass1_2314;
-    public static RSString aClass1_2315;
+    public static RSString aClass1_2315 = RSString.CreateString("Zu viele Anmelde)2Versuche von Ihrer Adresse");
     public static int placementY;
     public static int anInt2319 = 0;
-    public static int anInt2321;
-    public static byte[][][] tile_flags;
+    public static int anInt2321 = 0;
+    public static byte[][][] tile_flags = new byte[4][104][104];
     public static int[] anIntArray2324;
-    public static RSString aClass1_2325;
-    public static RSString aClass1_2327;
-    public static int anInt2328;
-    public static int[][][] constructMapTiles;
+    public static RSString aClass1_2325 = RSString.CreateString("Malformed login packet)3");
+    public static RSString aClass1_2327 = RSString.CreateString("-5berpr-Ufen Sie Ihr Mitteilungsfach)3");
+    public static int anInt2328 = -1;
+    public static int[][][] constructMapTiles = new int[4][13][13];
     public static byte[][][] tile_underlay_path;
     public static int anInt2340;
     public static int anInt2342;
-    public static volatile long lastClick;
-
-    static {
-        aClass1_2315 = (RSString.CreateString("Zu viele Anmelde)2Versuche von Ihrer Adresse"));
-        aClass1_2314 = RSString.CreateString("Malformed login packet)3");
-        aClass1_2327 = RSString.CreateString("-5berpr-Ufen Sie Ihr Mitteilungsfach)3");
-        anInt2321 = 0;
-        aClass1_2325 = aClass1_2314;
-        tile_flags = new byte[4][104][104];
-        anInt2328 = -1;
-        constructMapTiles = new int[4][13][13];
-        lastClick = 0L;
-    }
+    public static volatile long lastClick = 0L;
 
     public int saturation;
     public int anInt2322;
@@ -68,16 +55,13 @@ public class OverlayDefinition extends SubNode {
         tile_flags = null;
         constructMapTiles = null;
         aClass1_2315 = null;
-        aClass1_2314 = null;
         aClass1_2327 = null;
         aClass1_2325 = null;
         anIntArray2324 = null;
     }
 
-    public static void method557(int arg0, int arg1) {
+    public static void method557(int arg0) {
         Class42.method886(0, 0, false, null, arg0);
-        if(arg1 != 17098)
-            method557(-14, 72);
     }
 
     public static void addActionRow(RSString string, int menuAction, int firstMenuOperand, int secondMenuOperand, int actionType, RSString arg6) {
@@ -149,7 +133,7 @@ public class OverlayDefinition extends SubNode {
             cosine = (cosine * 256) / (Class51.mapZoomOffset + 256);
             int y = cosine * mapY - sine * mapX >> 16;
             int x = mapX * cosine + mapY * sine >> 16;
-            double angle = Math.atan2((double) x, (double) y);
+            double angle = Math.atan2(x, y);
             int drawX = (int) (Math.sin(angle) * 63.0);
             int drawY = (int) (57.0 * Math.cos(angle));
             SpotAnimDefinition.minimapEdge.drawRotated(-10 + (94 + (drawX + 4)), 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
@@ -158,18 +142,16 @@ public class OverlayDefinition extends SubNode {
         }
     }
 
-    public void method553(byte arg0, Buffer arg2) {
-        for(; ; ) {
+    public void method553(Buffer arg2) {
+        while(true) {
             int i = arg2.getUnsignedByte();
             if(i == 0)
                 break;
-            method556(arg2, i, (byte) -117);
+            method556(arg2, i);
         }
-        if(arg0 < 1)
-            aClass1_2325 = null;
     }
 
-    public void method555(byte arg0) {
+    public void method555() {
         if(anInt2336 != -1) {
             calculateHsl(anInt2336);
             anInt2330 = saturation;
@@ -177,13 +159,9 @@ public class OverlayDefinition extends SubNode {
             anInt2334 = hue;
         }
         calculateHsl(anInt2345);
-        if(arg0 != 64)
-            method559(39);
     }
 
-    public void method556(Buffer arg1, int arg2, byte arg3) {
-        if(arg3 != -117)
-            method556(null, 83, (byte) -117);
+    public void method556(Buffer arg1, int arg2) {
         if(arg2 == 1)
             anInt2345 = arg1.getMediumBE();
         else if(arg2 != 2) {
