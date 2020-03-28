@@ -113,7 +113,7 @@ public class Class37 {
                     is[i_7_] = 0;
             }
             AnimationSequence.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
-            ActorDefinition.method574(4);
+            ActorDefinition.method574();
         } else {
             int i = 48 + ((Player.localPlayer.worldX) / 32);
             int i_8_ = 464 + -((Player.localPlayer.worldY) / 32);
@@ -202,7 +202,7 @@ public class Class37 {
             Rasterizer.drawFilledRectangle(97, 78, 3, 3, 16777215);
             AnimationSequence.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
             if(arg0)
-                ActorDefinition.method574(4);
+                ActorDefinition.method574();
         }
     }
 

@@ -88,7 +88,7 @@ public class Class30 {
         if(arg0 != -20874)
             return 109;
         if(anInt696 != -1)
-            return (ActorDefinition.getDefinition((byte) -105, anInt696).id + 305419896);
+            return (ActorDefinition.getDefinition(anInt696).id + 305419896);
         return (appearance[1] + (appearance[11] << 5) + ((appearanceColors[4] << 20) + ((appearanceColors[0] << 25) + (appearance[0] << 15)) + (appearance[8] << 10)));
     }
 
@@ -107,7 +107,7 @@ public class Class30 {
 
     public Model getAnimatedModel(AnimationSequence arg0, AnimationSequence arg1, int arg2, int arg3, byte arg4) {
         if(anInt696 != -1)
-            return ActorDefinition.getDefinition((byte) -101, anInt696).getChildModel((byte) -50, arg0, arg1, arg2, arg3);
+            return ActorDefinition.getDefinition(anInt696).getChildModel(arg0, arg1, arg2, arg3);
         long hash = appearanceHash;
         int[] appearance = this.appearance;
         if(arg0 != null && (arg0.shieldModel >= 0 || arg0.weaponModel >= 0)) {
@@ -221,7 +221,7 @@ public class Class30 {
 
     public Model method379(int arg0) {
         if(anInt696 != -1)
-            return ActorDefinition.getDefinition((byte) -117, anInt696).getHeadModel((byte) 111);
+            return ActorDefinition.getDefinition(anInt696).getHeadModel();
         boolean bool = false;
         for(int i = 0; i < 12; i++) {
             int i_11_ = appearance[i];

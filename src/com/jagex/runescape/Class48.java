@@ -307,7 +307,7 @@ public class Class48 {
             return null;
         if(!arg2)
             method922(3, -92, null, -119, -82, -28, -32);
-        return ActorDefinition.method578(-120);
+        return ActorDefinition.method578();
     }
 
     public static void method928(int arg0) {

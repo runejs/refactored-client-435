@@ -890,7 +890,7 @@ public class Widget extends SubNode {
                                             break;
                                         }
                                         i -= 2;
-                                        ActorDefinition.method570(Class67.anIntArray1588[i], (Class67.anIntArray1588[i + 1]), (Player.localPlayer), -1);
+                                        ActorDefinition.method570(Class67.anIntArray1588[i], (Class67.anIntArray1588[i + 1]), (Player.localPlayer));
                                     }
                                 }
                             } else {
@@ -1559,7 +1559,7 @@ public class Widget extends SubNode {
                 class40_sub5_sub17_sub5.applyLighting(64, 768, -50, -10, -50, true);
             }
             if(i == 2) {
-                class40_sub5_sub17_sub5 = ActorDefinition.getDefinition((byte) -101, i_11_).getHeadModel((byte) 122);
+                class40_sub5_sub17_sub5 = ActorDefinition.getDefinition(i_11_).getHeadModel();
                 if(class40_sub5_sub17_sub5 == null) {
                     FramemapDefinition.aBoolean2177 = true;
                     return null;

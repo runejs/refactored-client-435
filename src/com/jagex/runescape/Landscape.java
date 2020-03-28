@@ -394,9 +394,7 @@ public class Landscape {
         aClass1_1174 = null;
     }
 
-    public static void method936(int arg0, CacheIndex arg1) {
-        if(arg0 != -17552)
-            ActorDefinition.getDefinition((byte) -94, 97);
+    public static void method936(CacheIndex arg1) {
         RSCanvas.aCacheIndex_61 = arg1;
 
     }

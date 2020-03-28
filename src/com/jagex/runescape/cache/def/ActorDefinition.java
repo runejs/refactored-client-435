@@ -63,10 +63,7 @@ public class ActorDefinition extends SubNode {
     public int[] modifiedModelColors;
     public boolean renderOnMinimap = true;
 
-    public static void method567(int arg0) {
-        if(arg0 != 1) {
-            aClass1_2432 = null;
-        }
+    public static void method567() {
         if(Class57.aClass64_1345 != null) {
             Class57.aClass64_1345.method1009(90);
         }
@@ -81,34 +78,29 @@ public class ActorDefinition extends SubNode {
         Class57.anIntArray1347 = null;
     }
 
-    public static void method570(int arg0, int arg1, Player arg2, int arg3) {
-        if(arg3 == -1) {
-            if(arg2.playingAnimation == arg0 && arg0 != -1) {
-                int i = Class68_Sub1.method1050(arg0, 2).anInt2483;
-                if(i == 1) {
-                    arg2.anInt3104 = 0;
-                    arg2.anInt3095 = 0;
-                    arg2.playingAnimationDelay = arg1;
-                    arg2.anInt3115 = 0;
-                }
-                if(i == 2) {
-                    arg2.anInt3095 = 0;
-                }
-            } else if(arg0 == -1 || arg2.playingAnimation == -1 || (Class68_Sub1.method1050(arg0, 2).anInt2494 >= (Class68_Sub1.method1050(arg2.playingAnimation, 2).anInt2494))) {
-                arg2.anInt3094 = arg2.anInt3109;
-                arg2.anInt3104 = 0;
-                arg2.anInt3115 = 0;
-                arg2.anInt3095 = 0;
-                arg2.playingAnimationDelay = arg1;
-                arg2.playingAnimation = arg0;
+    public static void method570(int arg0, int arg1, Player player) {
+        if(player.playingAnimation == arg0 && arg0 != -1) {
+            int i = Class68_Sub1.method1050(arg0, 2).anInt2483;
+            if(i == 1) {
+                player.anInt3104 = 0;
+                player.anInt3095 = 0;
+                player.playingAnimationDelay = arg1;
+                player.anInt3115 = 0;
             }
+            if(i == 2) {
+                player.anInt3095 = 0;
+            }
+        } else if(arg0 == -1 || player.playingAnimation == -1 || (Class68_Sub1.method1050(arg0, 2).anInt2494 >= (Class68_Sub1.method1050(player.playingAnimation, 2).anInt2494))) {
+            player.anInt3094 = player.anInt3109;
+            player.anInt3104 = 0;
+            player.anInt3115 = 0;
+            player.anInt3095 = 0;
+            player.playingAnimationDelay = arg1;
+            player.playingAnimation = arg0;
         }
     }
 
-    public static void method574(int arg0) {
-        if(arg0 != 4) {
-            method576(true);
-        }
+    public static void method574() {
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
             RSString.aClass68_1665.method1044(0, 550, graphics, 4);
@@ -117,22 +109,16 @@ public class ActorDefinition extends SubNode {
         }
     }
 
-    public static int method576(boolean arg0) {
-        if(arg0) {
-            aClass1_2432 = null;
-        }
+    public static int method576() {
         return 19;
     }
 
-    public static ImageRGB method578(int arg0) {
+    public static ImageRGB method578() {
         ImageRGB class40_sub5_sub14_sub4 = new ImageRGB();
         class40_sub5_sub14_sub4.maxWidth = ItemDefinition.anInt2846;
         class40_sub5_sub14_sub4.maxHeight = RSApplet.anInt31;
         class40_sub5_sub14_sub4.offsetX = Class57.anIntArray1347[0];
         class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[0];
-        if(arg0 > -85) {
-            method578(79);
-        }
         class40_sub5_sub14_sub4.image_width = Class17.anIntArray456[0];
         class40_sub5_sub14_sub4.image_height = Npc.anIntArray3312[0];
         byte[] is = GroundItemTile.aByteArrayArray1370[0];
@@ -224,10 +210,8 @@ public class ActorDefinition extends SubNode {
         str_Moderator_mute_option_ON = null;
     }
 
-    public static ActorDefinition getDefinition(byte arg0, int id) {
-        if(arg0 >= -95)
-            Landscape.aClass1_1160 = null;
-        ActorDefinition definition = ((ActorDefinition) ISAAC.aClass9_510.get((long) id, (byte) 119));
+    public static ActorDefinition getDefinition(int id) {
+        ActorDefinition definition = ((ActorDefinition) ISAAC.aClass9_510.get(id, (byte) 119));
         if(definition != null)
             return definition;
         byte[] is = GroundItemTile.aCacheIndex_1375.getFile(id, 9);
@@ -235,22 +219,19 @@ public class ActorDefinition extends SubNode {
         definition.id = id;
         if(is != null)
             definition.readValues(new Buffer(is));
-        ISAAC.aClass9_510.put(-7208, (long) id, definition);
+        ISAAC.aClass9_510.put(-7208, id, definition);
         return definition;
     }
 
-    public Model getChildModel(byte arg0, AnimationSequence arg1, AnimationSequence arg2, int arg3, int arg4) {
-        if(arg0 != -50) {
-            degreesToTurn = 31;
-        }
+    public Model getChildModel(AnimationSequence arg1, AnimationSequence arg2, int arg3, int arg4) {
         if(childrenIds != null) {
-            ActorDefinition class40_sub5_sub5 = getChildDefinition(arg0 ^ 0x31);
+            ActorDefinition class40_sub5_sub5 = getChildDefinition(-1);
             if(class40_sub5_sub5 == null) {
                 return null;
             }
-            return class40_sub5_sub5.getChildModel((byte) -50, arg1, arg2, arg3, arg4);
+            return class40_sub5_sub5.getChildModel(arg1, arg2, arg3, arg4);
         }
-        Model class40_sub5_sub17_sub5 = ((Model) Class67.aClass9_1611.get((long) id, (byte) 75));
+        Model class40_sub5_sub17_sub5 = ((Model) Class67.aClass9_1611.get(id, (byte) 75));
         if(class40_sub5_sub17_sub5 == null) {
             boolean bool = false;
             for(int i = 0; i < models.length; i++) {
@@ -277,7 +258,7 @@ public class ActorDefinition extends SubNode {
             }
             class40_sub5_sub17_sub5.createBones();
             class40_sub5_sub17_sub5.applyLighting(ambient + 64, 850 + contrast, -30, -50, -30, true);
-            Class67.aClass9_1611.put(-7208, (long) id, class40_sub5_sub17_sub5);
+            Class67.aClass9_1611.put(-7208, id, class40_sub5_sub17_sub5);
         }
         Model class40_sub5_sub17_sub5_0_;
         if(arg1 != null && arg2 != null) {
@@ -402,13 +383,13 @@ public class ActorDefinition extends SubNode {
         }
     }
 
-    public Model getHeadModel(byte arg0) {
+    public Model getHeadModel() {
         if(childrenIds != null) {
             ActorDefinition definition = getChildDefinition(-1);
             if(definition == null) {
                 return null;
             }
-            return definition.getHeadModel((byte) 112);
+            return definition.getHeadModel();
         }
         if(headModelIndexes == null) {
             return null;
@@ -418,9 +399,6 @@ public class ActorDefinition extends SubNode {
             if(!Class67.aCacheIndex_1577.loaded(headModelIndexes[headModel], 0)) {
                 cached = true;
             }
-        }
-        if(arg0 < 108) {
-            method570(-116, 79, null, -61);
         }
         if(cached) {
             return null;
@@ -453,6 +431,6 @@ public class ActorDefinition extends SubNode {
         if(childId < 0 || childId >= childrenIds.length || childrenIds[childId] == -1) {
             return null;
         }
-        return getDefinition((byte) -114, childrenIds[childId]);
+        return getDefinition(childrenIds[childId]);
     }
 }

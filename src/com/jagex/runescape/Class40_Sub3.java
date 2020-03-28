@@ -169,7 +169,7 @@ public class Class40_Sub3 extends Node {
                 Class42.method885(IdentityKit.aClass6_Sub1_2609, Class22.aBoolean541, UnderlayDefinition.aClass6_Sub1_2571, -313);
                 Cache.method236(false, Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000, IdentityKit.aClass6_Sub1_2609, FloorDecoration.aClass6_Sub1_605);
                 Class55.method966(arg0 ^ 0x38, UnderlayDefinition.aClass6_Sub1_2571, IdentityKit.aClass6_Sub1_2609);
-                Landscape.method936(-17552, IdentityKit.aClass6_Sub1_2609);
+                Landscape.method936(IdentityKit.aClass6_Sub1_2609);
                 Main.method43(IdentityKit.aClass6_Sub1_2609);
                 Class40_Sub5_Sub17_Sub1.method758(Class65.aClass6_Sub1_1533, (ActorDefinition.aClass6_Sub1_2377), (UnderlayDefinition.aClass6_Sub1_2571), (byte) 90);
                 Class40_Sub5_Sub6.anInt2451 = 80;
@@ -255,7 +255,7 @@ public class Class40_Sub3 extends Node {
             }
         } else if(Class40_Sub5_Sub6.anInt2451 == 85) {
             int i = KeyFocusListener.method955(ActorDefinition.aClass6_Sub1_2377, (byte) -59);
-            int i_9_ = ActorDefinition.method576(false);
+            int i_9_ = ActorDefinition.method576();
             if(i < i_9_) {
                 Class22_Sub2.currentLoadingText = (RSString.linkRSStrings(new RSString[]{Class27.aClass1_668, HashTable.method334(i * 100 / i_9_, -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 80;

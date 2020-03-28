@@ -482,7 +482,7 @@ public class Npc extends Actor {
                 npc.anInt3078 = 100;
             }
             if((mask & 0x80) != 0) {
-                npc.actorDefinition = ActorDefinition.getDefinition((byte) -122, IncomingPackets.incomingPacketBuffer.getUnsignedShortBE());
+                npc.actorDefinition = ActorDefinition.getDefinition(IncomingPackets.incomingPacketBuffer.getUnsignedShortBE());
                 npc.anInt3083 = (npc.actorDefinition.rotateRightAnimation);
                 npc.anInt3113 = (npc.actorDefinition.degreesToTurn);
                 npc.turnRightAnimationId = (npc.actorDefinition.rotate90RightAnimation);
@@ -598,7 +598,7 @@ public class Npc extends Actor {
                 Player.actorUpdatingIndices[actorUpdatingIndex++] = i;
             int discardWalkingQueue = IncomingPackets.incomingPacketBuffer.getBits(1);
 
-            npc.actorDefinition = ActorDefinition.getDefinition((byte) -121, IncomingPackets.incomingPacketBuffer.getBits(13));
+            npc.actorDefinition = ActorDefinition.getDefinition(IncomingPackets.incomingPacketBuffer.getBits(13));
             npc.turnLeftAnimationId = (npc.actorDefinition.rotate90LeftAnimation);
             npc.idleAnimation = (npc.actorDefinition.stanceAnimation);
             npc.anInt3083 = (npc.actorDefinition.rotateRightAnimation);
@@ -628,7 +628,7 @@ public class Npc extends Actor {
         int i = 25 % ((41 - arg0) / 47);
         AnimationSequence animationSequence = (playingAnimation == -1 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2));
         AnimationSequence animationSequence_0_ = (anInt3077 != -1 && (anInt3077 != idleAnimation || animationSequence == null) ? Class68_Sub1.method1050(anInt3077, 2) : null);
-        Model model = actorDefinition.getChildModel((byte) -50, animationSequence, animationSequence_0_, anInt3116, anInt3104);
+        Model model = actorDefinition.getChildModel(animationSequence, animationSequence_0_, anInt3116, anInt3104);
         if(model == null)
             return null;
         model.method799();

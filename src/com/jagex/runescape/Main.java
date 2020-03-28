@@ -919,7 +919,7 @@ public class Main extends RSApplet {
         Class13.method249(true);
         Class33.method407(false);
         Class60.method989(true);
-        ActorDefinition.method567(0x1);
+        ActorDefinition.method567();
         GenericTile.method947(-1);
         do {
             try {

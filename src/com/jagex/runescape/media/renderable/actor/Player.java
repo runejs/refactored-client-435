@@ -118,7 +118,7 @@ public class Player extends Actor {
             if(i == 65535)
                 i = -1;
             int i_1_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            ActorDefinition.method570(i, i_1_, player, -1);
+            ActorDefinition.method570(i, i_1_, player);
         }
         if((mask & 0x4) != 0) { // face actor
             player.facingActorIndex = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
