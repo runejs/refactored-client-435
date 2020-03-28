@@ -919,7 +919,7 @@ public class Class27 {
             RSApplet.method20(arg5, arg3, 0, arg2, arg6, -1, 1, (Widget.interfaces[arg4]), arg1, 0);
             if(Wall.aWidget_353 != null) {
                 Widget widget = Wall.aWidget_353;
-                Widget widget_24_ = FramemapDefinition.method878(-1598852880, widget);
+                Widget widget_24_ = FramemapDefinition.method878(widget);
                 if(widget_24_ != null) {
                     int[] is = Class13.method247(widget_24_, (byte) 97);
                     int[] is_25_ = Class13.method247(widget, (byte) 110);

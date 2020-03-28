@@ -259,7 +259,7 @@ public class Item extends Renderable {
             Class42.anIntArray1013 = new int[256];
             Class61.anIntArray1445 = new int[32768];
             Landscape.anIntArray1168 = new int[32768];
-            FramemapDefinition.method879(-4487, null);
+            FramemapDefinition.method879(null);
             Class40_Sub5_Sub17_Sub6.anIntArray3255 = new int[32768];
             Class22_Sub2.password = Class22_Sub2.string_blank;
             Class22_Sub2.username = Class22_Sub2.string_blank;

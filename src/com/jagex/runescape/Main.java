@@ -68,7 +68,7 @@ public class Main extends RSApplet {
                 int i_2_ = widget.opacity;
                 if(widget == Wall.aWidget_353) {
                     i_2_ = 128;
-                    Widget widget_3_ = FramemapDefinition.method878(-1598852880, widget);
+                    Widget widget_3_ = FramemapDefinition.method878(widget);
                     int[] is = Class13.method247(widget_3_, (byte) 117);
                     int[] is_4_ = Class13.method247(widget, (byte) 97);
                     int i_5_ = (Landscape.mouseY + (-Class40_Sub5_Sub11.anInt2621 + (is_4_[1] - is[1])));
@@ -129,7 +129,7 @@ public class Main extends RSApplet {
                                             int i_15_ = 0;
                                             if(Class8.itemSelected == 1 && (i_7_ == LinkedList.anInt1061) && ((widget.id) == ISAAC.anInt525))
                                                 i_15_ = 16777215;
-                                            ImageRGB class40_sub5_sub14_sub4 = (FramemapDefinition.method876(117, (widget.itemAmounts[i_7_]), i_13_, i_15_));
+                                            ImageRGB class40_sub5_sub14_sub4 = (FramemapDefinition.method876((widget.itemAmounts[i_7_]), i_13_, i_15_));
                                             if(class40_sub5_sub14_sub4 == null)
                                                 bool = false;
                                             else {
@@ -249,7 +249,7 @@ public class Main extends RSApplet {
                                 if(widget.anInt2718 == -1)
                                     class40_sub5_sub14_sub4 = widget.method643(127, false);
                                 else {
-                                    class40_sub5_sub14_sub4 = (FramemapDefinition.method876(99, widget.anInt2734, widget.anInt2718, 0));
+                                    class40_sub5_sub14_sub4 = (FramemapDefinition.method876(widget.anInt2734, widget.anInt2718, 0));
                                     i_22_ = (class40_sub5_sub14_sub4.maxWidth);
                                     i_23_ = (class40_sub5_sub14_sub4.maxHeight);
                                     class40_sub5_sub14_sub4.maxHeight = 32;

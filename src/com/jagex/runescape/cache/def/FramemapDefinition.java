@@ -1,7 +1,6 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.Widget;
@@ -16,31 +15,17 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.tile.Wall;
 
 public class FramemapDefinition extends Node {
-    public static RSString aClass1_2172 = RSString.CreateString("Service unavailable)3");
-    public static RSString aClass1_2174;
-    public static RSString aClass1_2176;
-    public static boolean aBoolean2177;
+    public static RSString aClass1_2174 = RSString.CreateString("rot:");
+    public static RSString aClass1_2176 = (RSString.CreateString("Bitte warten Sie )2 es wird versucht)1 die Verbindung wiederherzustellen)3"));
+    public static boolean aBoolean2177 = false;
     public static RSString aClass1_2179 = RSString.CreateString("cross");
-    public static RSString aClass1_2181;
-    public static int anInt2183;
-    public static RSString aClass1_2185;
-    public static RSString aClass1_2186;
-    public static RSString aClass1_2187;
-    public static RSString aClass1_2188;
-    public static RSString aClass1_2189;
+    public static RSString aClass1_2181 = RSString.CreateString("Musik)2Engine vorbereitet)3");
+    public static int anInt2183 = 0;
+    public static RSString aClass1_2185 = RSString.CreateString("Titelbild geladen)3");
+    public static RSString aClass1_2186 = RSString.CreateString(" hat sich eingeloggt)3");
+    public static RSString aClass1_2188 = RSString.CreateString("You need a members account to login to this world)3");
+    public static RSString aClass1_2189 = RSString.CreateString("Service unavailable)3");
 
-    static {
-        aBoolean2177 = false;
-        aClass1_2181 = RSString.CreateString("Musik)2Engine vorbereitet)3");
-        aClass1_2176 = (RSString.CreateString("Bitte warten Sie )2 es wird versucht)1 die Verbindung wiederherzustellen)3"));
-        anInt2183 = 0;
-        aClass1_2185 = RSString.CreateString("Titelbild geladen)3");
-        aClass1_2174 = RSString.CreateString("rot:");
-        aClass1_2187 = (RSString.CreateString("You need a members account to login to this world)3"));
-        aClass1_2188 = aClass1_2187;
-        aClass1_2186 = RSString.CreateString(" hat sich eingeloggt)3");
-        aClass1_2189 = aClass1_2172;
-    }
 
     public int[][] frameMaps;
     public int length;
@@ -64,7 +49,7 @@ public class FramemapDefinition extends Node {
 
     }
 
-    public static ImageRGB method876(int arg0, int arg1, int arg2, int arg3) {
+    public static ImageRGB method876(int arg1, int arg2, int arg3) {
         if(arg3 == 0) {
             ImageRGB class40_sub5_sub14_sub4 = ((ImageRGB) Buffer.aClass9_1933.get((long) arg2, (byte) 56));
             if(class40_sub5_sub14_sub4 != null && class40_sub5_sub14_sub4.maxHeight != arg1 && class40_sub5_sub14_sub4.maxHeight != -1) {
@@ -91,7 +76,7 @@ public class FramemapDefinition extends Node {
             return null;
         ImageRGB class40_sub5_sub14_sub4 = null;
         if(class40_sub5_sub16.noteTemplateId != -1) {
-            class40_sub5_sub14_sub4 = method876(-56, 10, class40_sub5_sub16.notedId, -1);
+            class40_sub5_sub14_sub4 = method876(10, class40_sub5_sub16.notedId, -1);
             if(class40_sub5_sub14_sub4 == null)
                 return null;
         }
@@ -99,7 +84,6 @@ public class FramemapDefinition extends Node {
         int i = Rasterizer.height;
         int i_1_ = Rasterizer.width;
         int i_2_ = Rasterizer.viewport_left;
-        int i_3_ = 16 / ((arg0 - 26) / 57);
         int i_4_ = Rasterizer.viewport_right;
         int i_5_ = Rasterizer.viewport_top;
         int i_6_ = Rasterizer.viewport_bottom;
@@ -193,13 +177,11 @@ public class FramemapDefinition extends Node {
         aClass1_2186 = null;
         aClass1_2185 = null;
         aClass1_2176 = null;
-        aClass1_2172 = null;
         aClass1_2174 = null;
         aClass1_2189 = null;
-        aClass1_2187 = null;
     }
 
-    public static Widget method878(int arg0, Widget arg1) {
+    public static Widget method878(Widget arg1) {
         int i;
         if(arg1.id < 0)
             i = arg1.parentId >> 16;
@@ -207,18 +189,14 @@ public class FramemapDefinition extends Node {
             i = arg1.id >> 16;
         if(!Class68.method1043(i))
             return null;
-        if(arg0 != -1598852880)
-            method876(44, -123, -88, 35);
         if(arg1.anInt2738 >= 0)
             return (Widget.interfaces[i][0xffff & arg1.anInt2738]);
         Widget widget = (Widget.interfaces[i][(0x7fff99d9 & arg1.anInt2738) >> 15]);
         return (widget.aWidgetArray2713[arg1.anInt2738 & 0x7fff]);
     }
 
-    public static void method879(int arg0, IndexedImage arg1) {
+    public static void method879(IndexedImage arg1) {
         int i = 0;
-        if(arg0 != -4487)
-            method876(112, -38, -90, -56);
         for(/**/; i < Landscape.anIntArray1168.length; i++)
             Landscape.anIntArray1168[i] = 0;
         int i_19_ = 256;
@@ -252,7 +230,7 @@ public class FramemapDefinition extends Node {
         }
     }
 
-    public static void spawnGroundItem(byte arg0, int arg1, int arg2) {
+    public static void spawnGroundItem(int arg1, int arg2) {
         LinkedList linkedList = (Wall.groundItems[Player.worldLevel][arg2][arg1]);
         if(linkedList == null)
             Npc.currentScene.method125(Player.worldLevel, arg2, arg1);
@@ -272,8 +250,6 @@ public class FramemapDefinition extends Node {
             if(item == null)
                 Npc.currentScene.method125(Player.worldLevel, arg2, arg1);
             else {
-                if(arg0 != -80)
-                    aClass1_2187 = null;
                 Item item_34_ = null;
                 Item item_35_ = null;
                 linkedList.method905(0, item);

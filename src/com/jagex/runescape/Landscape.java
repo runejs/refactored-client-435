@@ -272,7 +272,7 @@ public class Landscape {
                     Npc.currentScene.setHeightLevel(Class64.lowestPlane);
                 for(int x = 0; x < 104; x++) {
                     for(int y = 0; y < 104; y++)
-                        FramemapDefinition.spawnGroundItem((byte) -80, y, x);
+                        FramemapDefinition.spawnGroundItem(y, x);
                 }
                 ISAAC.method285((byte) 118);
                 VertexNormal.aClass9_1102.method235((byte) -43);

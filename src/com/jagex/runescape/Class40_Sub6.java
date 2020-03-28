@@ -73,7 +73,7 @@ public class Class40_Sub6 extends Node {
         if(RSRuntimeException.anInt1641 > Landscape.anIntArray1168.length) {
             RSRuntimeException.anInt1641 -= Landscape.anIntArray1168.length;
             int i_9_ = (int) (12.0 * Math.random());
-            FramemapDefinition.method879(-4487, (Class22.aClass40_Sub5_Sub14_Sub2Array535[i_9_]));
+            FramemapDefinition.method879((Class22.aClass40_Sub5_Sub14_Sub2Array535[i_9_]));
         }
         for(int i_10_ = 1; (i_10_ < -1 + i); i_10_++) {
             for(int i_11_ = 1; i_11_ < 127; i_11_++) {
