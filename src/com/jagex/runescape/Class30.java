@@ -148,7 +148,7 @@ public class Class30 {
                 for(int index = 0; index < 12; index++) {
                     int part = appearance[index];
                     if(part >= 256 && part < 512) {
-                        Model bodyModel = IdentityKit.cache(part - 256).getBodyModel(false);
+                        Model bodyModel = IdentityKit.cache(part - 256).getBodyModel();
                         if(bodyModel != null)
                             models[count++] = bodyModel;
                     }
@@ -225,7 +225,7 @@ public class Class30 {
         boolean bool = false;
         for(int i = 0; i < 12; i++) {
             int i_11_ = appearance[i];
-            if(i_11_ >= 256 && i_11_ < 512 && !IdentityKit.cache(i_11_ - 256).method624(false))
+            if(i_11_ >= 256 && i_11_ < 512 && !IdentityKit.cache(i_11_ - 256).method624())
                 bool = true;
             if(i_11_ >= 512 && !ItemDefinition.forId(-512 + i_11_, 10).headPieceReady(gender))
                 bool = true;
@@ -239,7 +239,7 @@ public class Class30 {
         for(int i_12_ = 0; i_12_ < 12; i_12_++) {
             int i_13_ = appearance[i_12_];
             if(i_13_ >= 256 && i_13_ < 512) {
-                Model class40_sub5_sub17_sub5 = IdentityKit.cache(-256 + i_13_).method629((byte) -100);
+                Model class40_sub5_sub17_sub5 = IdentityKit.cache(-256 + i_13_).method629();
                 if(class40_sub5_sub17_sub5 != null)
                     class40_sub5_sub17_sub5s[i++] = class40_sub5_sub17_sub5;
             }

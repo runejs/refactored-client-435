@@ -275,7 +275,7 @@ public class Widget extends SubNode {
 
     public static void method891(Object[] arg0, int arg1, int arg2, Widget arg3, int arg4, boolean arg5) {
         int i = 0;
-        Class40_Sub5_Sub1 class40_sub5_sub1 = IdentityKit.method626(((Integer) arg0[0]).intValue(), 76, 27);
+        Class40_Sub5_Sub1 class40_sub5_sub1 = IdentityKit.method626(((Integer) arg0[0]).intValue(), 76);
         int[] is = class40_sub5_sub1.anIntArray2262;
         int[] is_0_ = class40_sub5_sub1.anIntArray2272;
         int i_1_ = 0;
@@ -418,7 +418,7 @@ public class Widget extends SubNode {
                     if(i_3_ == 37) {
                         int i_12_ = is[i_2_];
                         i_1_ -= i_12_;
-                        RSString class1 = (IdentityKit.method627(63, i_12_, i_1_, Class40_Sub11.aClass1Array2153));
+                        RSString class1 = (IdentityKit.method627(i_12_, i_1_, Class40_Sub11.aClass1Array2153));
                         Class40_Sub11.aClass1Array2153[i_1_++] = class1;
                         continue;
                     }
@@ -432,7 +432,7 @@ public class Widget extends SubNode {
                     }
                     if(i_3_ == 40) {
                         int i_13_ = is[i_2_];
-                        Class40_Sub5_Sub1 class40_sub5_sub1_14_ = IdentityKit.method626(i_13_, 73, 65);
+                        Class40_Sub5_Sub1 class40_sub5_sub1_14_ = IdentityKit.method626(i_13_, 73);
                         int[] is_15_ = new int[class40_sub5_sub1_14_.anInt2271];
                         RSString[] class1s = new RSString[class40_sub5_sub1_14_.anInt2267];
                         for(int i_16_ = 0; ((class40_sub5_sub1_14_.anInt2263 > i_16_)); i_16_++) {

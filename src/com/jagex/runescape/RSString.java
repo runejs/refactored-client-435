@@ -131,7 +131,7 @@ public class RSString implements Interface1 {
     public static RSString linkRSStrings(RSString[] arg1) {
         if(arg1.length < 2)
             throw new IllegalArgumentException();
-        return IdentityKit.method627(120, arg1.length, 0, arg1);
+        return IdentityKit.method627(arg1.length, 0, arg1);
     }
 
     public RSString substring(int arg1) {
