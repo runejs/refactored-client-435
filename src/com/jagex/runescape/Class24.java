@@ -76,7 +76,7 @@ public class Class24 {
                     if(i_3_ == arg5 && (arg0 <= i_4_) && (i_4_ < 8 + arg0) && (arg9 <= i_7_) && (arg9 + 8 > i_7_)) {
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                         int i_9_ = (Main.method42(arg2 ^ 0x1, i_8_, gameObjectDefinition.sizeX, i_4_ & 0x7, gameObjectDefinition.sizeY, arg4, 0x7 & i_7_) + arg10);
-                        int i_10_ = ((VarbitDefinition.method564(i_7_ & 0x7, gameObjectDefinition.sizeY, i_4_ & 0x7, gameObjectDefinition.sizeX, arg4, i_8_, (byte) -123)) + arg7);
+                        int i_10_ = ((VarbitDefinition.method564(i_7_ & 0x7, gameObjectDefinition.sizeY, i_4_ & 0x7, gameObjectDefinition.sizeX, arg4, i_8_)) + arg7);
                         if(i_9_ > 0 && i_10_ > 0 && i_9_ < 103 && i_10_ < 103) {
                             CollisionMap collisionMap = null;
                             int i_11_ = arg3;

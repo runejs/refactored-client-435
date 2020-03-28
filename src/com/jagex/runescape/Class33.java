@@ -388,7 +388,7 @@ public class Class33 {
                         if(CacheIndex_Sub1.anInt1806 < 0)
                             RSString.method56(Main.aBoolean1790, is, OverlayDefinition.anInt2342);
                         else
-                            VarbitDefinition.method566((OverlayDefinition.anInt2342), Main.aBoolean1790, CacheIndex_Sub1.anInt1806, is, -27520);
+                            VarbitDefinition.method566((OverlayDefinition.anInt2342), Main.aBoolean1790, CacheIndex_Sub1.anInt1806, is);
                     } else
                         Class42.method886(0, OverlayDefinition.anInt2342, Main.aBoolean1790, is, CacheIndex.anInt255);
                     Class26.aBoolean618 = false;

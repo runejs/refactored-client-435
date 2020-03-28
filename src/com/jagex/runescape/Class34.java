@@ -116,7 +116,7 @@ public class Class34 {
         byte[] is = RSCanvas.aCacheIndex_61.getFile(arg1, 14);
         varbitDefinition = new VarbitDefinition();
         if(is != null)
-            varbitDefinition.method562(0, new Buffer(is));
+            varbitDefinition.method562(new Buffer(is));
         Class57.aClass9_1331.put((long) arg1, varbitDefinition);
         return varbitDefinition;
     }
