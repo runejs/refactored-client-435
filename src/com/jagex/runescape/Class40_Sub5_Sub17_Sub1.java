@@ -444,13 +444,13 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 objectConfig += 256;
             if(gameObjectDefinition.hasActions == 0)
                 hash += -2147483648;
-            if(gameObjectDefinition.method601((byte) 125))
+            if(gameObjectDefinition.method601())
                 Class37.method437(localY, true, plane, face, localX, gameObjectDefinition);
             if(type == 22) {
                 if(!VertexNormal.lowMemory || gameObjectDefinition.hasActions != 0 || gameObjectDefinition.obstructsGround) {
                     Renderable renderable;
                     if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
-                        renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 22, (byte) 124, vertexHeightRight);
+                        renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 22, vertexHeightRight);
                     else
                         renderable = new GameObject(objectId, 22, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
                     scene.addGroundDecoration(localX, localY, plane, vertexMix, hash, renderable, objectConfig);
@@ -460,7 +460,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             } else if(type == 10 || type == 11) {
                 Renderable renderable;
                 if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
-                    renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 10, (byte) 124, vertexHeightRight);
+                    renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 10, vertexHeightRight);
                 else
                     renderable = new GameObject(objectId, 10, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (gameObjectDefinition.animationId), true);
                 if(renderable != null) {
@@ -481,7 +481,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         if(renderable instanceof Model)
                             class40_sub5_sub17_sub5 = ((Model) renderable);
                         else
-                            class40_sub5_sub17_sub5 = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 10, (byte) 124, vertexHeightRight);
+                            class40_sub5_sub17_sub5 = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 10, vertexHeightRight);
                         if(class40_sub5_sub17_sub5 != null) {
                             for(int i_43_ = 0; ((i_43_ <= i_41_)); i_43_++) {
                                 for(int i_44_ = 0; i_40_ >= i_44_; i_44_++) {
@@ -502,7 +502,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
                     renderable = new GameObject(objectId, type, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (gameObjectDefinition.animationId), true);
                 else
-                    renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, type, (byte) 124, vertexHeightRight);
+                    renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, type, vertexHeightRight);
                 scene.addEntityB(localX, localY, plane, vertexMix, 0, 1, 1, hash, renderable, objectConfig);
                 if(type >= 12 && type <= 17 && type != 13 && plane > 0)
                     CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = (UnderlayDefinition.bitWiseOR((CacheIndex.anIntArrayArrayArray262[plane][localX][localY]), 2340));
@@ -511,7 +511,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             } else if(type == 0) {
                 Renderable renderable;
                 if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
-                    renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 0, (byte) 124, vertexHeightRight);
+                    renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 0, vertexHeightRight);
                 else
                     renderable = new GameObject(objectId, 0, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (gameObjectDefinition.animationId), true);
                 scene.addWall(localX, localY, plane, vertexMix, SceneCluster.anIntArray761[face], 0, hash, renderable, null, objectConfig);
@@ -551,7 +551,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             } else if(type == 1) {
                 Renderable renderable;
                 if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
-                    renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 1, (byte) 124, vertexHeightRight);
+                    renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 1, vertexHeightRight);
                 else
                     renderable = new GameObject(objectId, 1, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (gameObjectDefinition.animationId), true);
                 scene.addWall(localX, localY, plane, vertexMix, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash, renderable, null, objectConfig);
@@ -572,8 +572,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 Renderable renderable;
                 Renderable renderable_47_;
                 if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null) {
-                    renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face + 4, vertexHeight, 2, (byte) 124, vertexHeightRight);
-                    renderable_47_ = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, i_46_, vertexHeight, 2, (byte) 124, vertexHeightRight);
+                    renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face + 4, vertexHeight, 2, vertexHeightRight);
+                    renderable_47_ = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, i_46_, vertexHeight, 2, vertexHeightRight);
                 } else {
                     renderable = new GameObject(objectId, 2, 4 + face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (gameObjectDefinition.animationId), true);
                     renderable_47_ = new GameObject(objectId, 2, i_46_, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (gameObjectDefinition.animationId), true);
@@ -603,7 +603,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
                     renderable = new GameObject(objectId, 3, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (gameObjectDefinition.animationId), true);
                 else
-                    renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 3, (byte) 124, vertexHeightRight);
+                    renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 3, vertexHeightRight);
                 scene.addWall(localX, localY, plane, vertexMix, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash, renderable, null, objectConfig);
                 if(gameObjectDefinition.castsShadow) {
                     if(face != 0) {
@@ -621,7 +621,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             } else if(type == 9) {
                 Renderable renderable;
                 if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
-                    renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, type, (byte) 124, vertexHeightRight);
+                    renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, type, vertexHeightRight);
                 else
                     renderable = new GameObject(objectId, type, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, (gameObjectDefinition.animationId), true);
                 scene.addEntityB(localX, localY, plane, vertexMix, 0, 1, 1, hash, renderable, objectConfig);
@@ -653,7 +653,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 if(type == 4) {
                     Renderable renderable;
                     if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
-                        renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, (byte) 124, vertexHeightRight);
+                        renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
                     else
                         renderable = (new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true));
                     scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, 512 * face, hash, renderable, objectConfig, SceneCluster.anIntArray761[face]);
@@ -664,28 +664,28 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         i_52_ = (GameObjectDefinition.getDefinition((0x1fffedf2 & i_51_) >> 14).setDecorDisplacement);
                     Renderable renderable;
                     if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
-                        renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, (byte) 124, vertexHeightRight);
+                        renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
                     else
                         renderable = (new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true));
                     scene.addWallDecoration(localX, localY, plane, vertexMix, i_52_ * Class27.anIntArray666[face], (Class68_Sub1.anIntArray2207[face] * i_52_), face * 512, hash, renderable, objectConfig, SceneCluster.anIntArray761[face]);
                 } else if(type == 6) {
                     Renderable renderable;
                     if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
-                        renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, (byte) 124, vertexHeightRight);
+                        renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
                     else
                         renderable = (new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true));
                     scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, face, hash, renderable, objectConfig, 256);
                 } else if(type == 7) {
                     Renderable renderable;
                     if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
-                        renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, (byte) 124, vertexHeightRight);
+                        renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
                     else
                         renderable = (new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true));
                     scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, face, hash, renderable, objectConfig, 512);
                 } else if(type == 8) {
                     Renderable renderable;
                     if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
-                        renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, (byte) 124, vertexHeightRight);
+                        renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
                     else
                         renderable = (new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true));
                     scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, face, hash, renderable, objectConfig, 768);

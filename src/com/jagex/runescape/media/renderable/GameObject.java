@@ -232,6 +232,6 @@ public class GameObject extends Renderable {
             gameObjectDefinition = gameObjectDefinition.getChildDefinition(-20);
         if(gameObjectDefinition == null)
             return null;
-        return gameObjectDefinition.getGameObjectModel(vertexHeight, 103, vertexHeightRight, animationFrame, anInt3021, anInt3018, animationSequence, vertexHeightTop, vertexHeightTopRight);
+        return gameObjectDefinition.getGameObjectModel(vertexHeight, vertexHeightRight, animationFrame, anInt3021, anInt3018, animationSequence, vertexHeightTop, vertexHeightTopRight);
     }
 }

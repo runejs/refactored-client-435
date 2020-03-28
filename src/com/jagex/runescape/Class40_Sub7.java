@@ -68,7 +68,7 @@ public class Class40_Sub7 extends Node {
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                         if(i_6_ != 22 || !VertexNormal.lowMemory || (gameObjectDefinition.hasActions != 0) || gameObjectDefinition.obstructsGround) {
                             bool_2_ = true;
-                            if(!gameObjectDefinition.method612((byte) 8)) {
+                            if(!gameObjectDefinition.method612()) {
                                 bool = false;
                                 IdentityKit.anInt2591++;
                             }

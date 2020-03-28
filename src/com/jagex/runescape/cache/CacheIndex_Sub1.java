@@ -158,7 +158,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
 
     public void method177(int arg0, int arg1) {
         if(aClass56_1812 != null && aBooleanArray1796 != null && aBooleanArray1796[arg1])
-            GameObjectDefinition.method602(this, arg1, aClass56_1812, (byte) -125);
+            GameObjectDefinition.method602(this, arg1, aClass56_1812);
         else
             HashTable.method327(true, this, anInt1807, arg1, (byte) 2, anIntArray252[arg1], (byte) -127);
         if(arg0 <= 1)
@@ -196,7 +196,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
             if(aClass56_1802 == null)
                 HashTable.method327(true, this, 255, anInt1807, (byte) 0, anInt1810, (byte) -118);
             else
-                GameObjectDefinition.method602(this, anInt1807, aClass56_1802, (byte) -124);
+                GameObjectDefinition.method602(this, anInt1807, aClass56_1802);
         }
     }
 

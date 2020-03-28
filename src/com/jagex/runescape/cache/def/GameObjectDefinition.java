@@ -101,8 +101,7 @@ public class GameObjectDefinition extends SubNode {
         modelSizeY = 128;
     }
 
-    public static void method602(CacheIndex_Sub1 arg0, int arg1, Class56 arg2, byte arg3) {
-
+    public static void method602(CacheIndex_Sub1 arg0, int arg1, Class56 arg2) {
         byte[] is = null;
         synchronized(RSCanvas.aLinkedList_53) {
             for(Class40_Sub6 class40_sub6 = ((Class40_Sub6) RSCanvas.aLinkedList_53.method902((byte) -90)); class40_sub6 != null; class40_sub6 = ((Class40_Sub6) RSCanvas.aLinkedList_53.method909(-4))) {
@@ -113,15 +112,11 @@ public class GameObjectDefinition extends SubNode {
             }
         }
         if(is == null) {
-            if(arg3 > -91) {
-                chatboxScroll = -20;
-            }
             byte[] is_6_ = arg2.method969(arg1);
             arg0.method198((byte) -115, true, is_6_, arg1, arg2);
         } else {
             arg0.method198((byte) -115, true, is, arg1, arg2);
         }
-
     }
 
     public static void method604() {
@@ -132,8 +127,7 @@ public class GameObjectDefinition extends SubNode {
         aClass68_2524 = null;
     }
 
-    public static void method609(int arg0, boolean arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
-
+    public static void method609(int arg0, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
         Class40_Sub3 class40_sub3 = null;
         for(Class40_Sub3 class40_sub3_24_ = ((Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90)); class40_sub3_24_ != null; class40_sub3_24_ = (Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4)) {
             if(class40_sub3_24_.anInt2018 == arg5 && arg2 == class40_sub3_24_.anInt2039 && class40_sub3_24_.anInt2038 == arg6 && class40_sub3_24_.anInt2027 == arg7) {
@@ -153,25 +147,19 @@ public class GameObjectDefinition extends SubNode {
         class40_sub3.anInt2017 = arg0;
         class40_sub3.anInt2031 = arg4;
         class40_sub3.anInt2033 = arg9;
-        if(!arg1) {
-            method602(null, 77, null, (byte) -89);
-        }
         class40_sub3.anInt2035 = arg3;
         class40_sub3.anInt2030 = arg8;
-
     }
 
     public static GameObjectDefinition getDefinition(int arg0) {
-        GameObjectDefinition gameObjectDefinition = ((GameObjectDefinition) GroundItemTile.aClass9_1364.get((long) arg0, (byte) 61));
+        GameObjectDefinition gameObjectDefinition = ((GameObjectDefinition) GroundItemTile.aClass9_1364.get(arg0, (byte) 61));
         if(gameObjectDefinition != null) {
             return gameObjectDefinition;
         }
         byte[] is = Class40_Sub3.aCacheIndex_2037.getFile(arg0, 6);
         gameObjectDefinition = new GameObjectDefinition();
         gameObjectDefinition.anInt2538 = arg0;
-        if(is != null) {
-            gameObjectDefinition.readValues(new Buffer(is));
-        } else {
+        if(is == null) {
             try {
                 Buffer buffer = ObjectDecompressor.grabObjectDef(arg0);
                 if(buffer != null) {
@@ -181,30 +169,28 @@ public class GameObjectDefinition extends SubNode {
             } catch(IOException e) {
                 e.printStackTrace();
             }
+        } else {
+            gameObjectDefinition.readValues(new Buffer(is));
         }
-        gameObjectDefinition.method605(true);
+        gameObjectDefinition.method605();
         if(gameObjectDefinition.hollow) {
             gameObjectDefinition.solid = false;
             gameObjectDefinition.walkable = false;
         }
-        GroundItemTile.aClass9_1364.put(-7208, (long) arg0, gameObjectDefinition);
+        GroundItemTile.aClass9_1364.put(-7208, arg0, gameObjectDefinition);
         return gameObjectDefinition;
-
     }
 
-    public Model getGameObjectModel(int arg0, int arg1, int arg2, int arg3, int arg4, byte arg5, int arg6) {
+    public Model getGameObjectModel(int arg0, int arg1, int arg2, int arg3, int arg4, int arg6) {
         long l;
         if(objectTypes == null) {
-            l = (long) ((anInt2538 << 10) + arg2);
+            l = (anInt2538 << 10) + arg2;
         } else {
-            l = (long) (arg2 + ((anInt2538 << 10) + (arg4 << 3)));
-        }
-        if(arg5 != 124) {
-            actions = null;
+            l = arg2 + ((anInt2538 << 10) + (arg4 << 3));
         }
         Model model = ((Model) InteractiveObject.aClass9_470.get(l, (byte) 87));
         if(model == null) {
-            model = method606(!nonFlatShading, (byte) -61, false, arg2, arg4);
+            model = method606(!nonFlatShading, false, arg2, arg4);
             if(model == null) {
                 return null;
             }
@@ -225,16 +211,11 @@ public class GameObjectDefinition extends SubNode {
             }
         }
         return model;
-
     }
 
-    public boolean method601(byte arg0) {
-
+    public boolean method601() {
         if(configChangeDest == null) {
             return ambientSoundId != -1 || anIntArray2523 != null;
-        }
-        if(arg0 != 125) {
-            varpID = -89;
         }
         for(int i = 0; i < configChangeDest.length; i++) {
             if(configChangeDest[i] != -1) {
@@ -245,7 +226,6 @@ public class GameObjectDefinition extends SubNode {
             }
         }
         return false;
-
     }
 
     public void readValues(Buffer gameObjectDefinitionBuffer) {
@@ -258,7 +238,7 @@ public class GameObjectDefinition extends SubNode {
         }
     }
 
-    public void method605(boolean arg0) {
+    public void method605() {
         if(hasActions == -1) {
             hasActions = 0;
             if(objectModels != null && (objectTypes == null || objectTypes[0] == 10)) {
@@ -267,19 +247,16 @@ public class GameObjectDefinition extends SubNode {
             for(int i = 0; i < 5; i++) {
                 if(actions[i] != null) {
                     hasActions = 1;
+                    break;
                 }
             }
         }
         if(supportsItems == -1) {
             supportsItems = solid ? 1 : 0;
         }
-        if(!arg0) {
-            readValues(null);
-        }
     }
 
-    public Model method606(boolean arg0, byte arg1, boolean arg2, int arg3, int arg4) {
-
+    public Model method606(boolean arg0, boolean hasBones, int arg3, int arg4) {
         Model class40_sub5_sub17_sub5 = null;
         if(objectTypes == null) {
             if(arg4 != 10) {
@@ -295,7 +272,7 @@ public class GameObjectDefinition extends SubNode {
                 if(bool) {
                     i_8_ += 65536;
                 }
-                class40_sub5_sub17_sub5 = ((Model) VertexNormal.aClass9_1102.get((long) i_8_, (byte) 122));
+                class40_sub5_sub17_sub5 = ((Model) VertexNormal.aClass9_1102.get(i_8_, (byte) 122));
                 if(class40_sub5_sub17_sub5 == null) {
                     class40_sub5_sub17_sub5 = (Model.getModel(RSString.aCacheIndex_1705, i_8_ & 0xffff, 0));
                     if(class40_sub5_sub17_sub5 == null) {
@@ -304,7 +281,7 @@ public class GameObjectDefinition extends SubNode {
                     if(bool) {
                         class40_sub5_sub17_sub5.method818();
                     }
-                    VertexNormal.aClass9_1102.put(-7208, (long) i_8_, class40_sub5_sub17_sub5);
+                    VertexNormal.aClass9_1102.put(-7208, i_8_, class40_sub5_sub17_sub5);
                 }
                 if(i > 1) {
                     Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub5Array2762[i_7_] = class40_sub5_sub17_sub5;
@@ -329,7 +306,7 @@ public class GameObjectDefinition extends SubNode {
             if(bool) {
                 i_10_ += 65536;
             }
-            class40_sub5_sub17_sub5 = ((Model) VertexNormal.aClass9_1102.get((long) i_10_, (byte) 48));
+            class40_sub5_sub17_sub5 = ((Model) VertexNormal.aClass9_1102.get(i_10_, (byte) 48));
             if(class40_sub5_sub17_sub5 == null) {
                 class40_sub5_sub17_sub5 = Model.getModel((RSString.aCacheIndex_1705), 0xffff & i_10_, 0);
                 if(class40_sub5_sub17_sub5 == null) {
@@ -338,7 +315,7 @@ public class GameObjectDefinition extends SubNode {
                 if(bool) {
                     class40_sub5_sub17_sub5.method818();
                 }
-                VertexNormal.aClass9_1102.put(-7208, (long) i_10_, class40_sub5_sub17_sub5);
+                VertexNormal.aClass9_1102.put(-7208, i_10_, class40_sub5_sub17_sub5);
             }
         }
         boolean bool;
@@ -359,31 +336,29 @@ public class GameObjectDefinition extends SubNode {
                 class40_sub5_sub17_sub5_12_.replaceColor(recolorToFind[i], recolorToReplace[i]);
             }
         }
-        int i = -128 % ((53 - arg1) / 35);
         if(bool) {
             class40_sub5_sub17_sub5_12_.scaleT(modelSizeX, modelSizeHeight, modelSizeY);
         }
         if(bool_11_) {
             class40_sub5_sub17_sub5_12_.translate(offsetX, offsetHeight, offsetY);
         }
-        if(arg2) {
+        if(hasBones) {
             class40_sub5_sub17_sub5_12_.createBones();
         }
         class40_sub5_sub17_sub5_12_.applyLighting(ambient + 64, 768 + (contrast * 5), -50, -10, -50, arg0);
         return class40_sub5_sub17_sub5_12_;
-
     }
 
-    public Model getGameObjectModel(int vertexHeight, int arg1, int vertexHeightRight, int arg3, int arg4, int arg5, AnimationSequence animationSequence, int vertexHeightTop, int vertexHeightTopRight) {
+    public Model getGameObjectModel(int vertexHeight, int vertexHeightRight, int arg3, int arg4, int arg5, AnimationSequence animationSequence, int vertexHeightTop, int vertexHeightTopRight) {
         long l;
         if(objectTypes == null) {
-            l = (long) (arg5 + (anInt2538 << 10));
+            l = arg5 + (anInt2538 << 10);
         } else {
-            l = (long) (arg5 + ((anInt2538 << 10) + (arg4 << 3)));
+            l = arg5 + ((anInt2538 << 10) + (arg4 << 3));
         }
         Model model = ((Model) Class49.aClass9_1145.get(l, (byte) 70));
         if(model == null) {
-            model = method606(true, (byte) -25, true, arg5, arg4);
+            model = method606(true, true, arg5, arg4);
             if(model == null) {
                 return null;
             }
@@ -396,9 +371,6 @@ public class GameObjectDefinition extends SubNode {
             model = model.method817(true);
         } else {
             model = animationSequence.method593(arg3, false, model, arg5);
-        }
-        if(arg1 < 54) {
-            return null;
         }
         if(adjustToTerrain) {
             int i = (vertexHeightRight + vertexHeight - (-vertexHeightTopRight + -vertexHeightTop)) / 4;
@@ -546,10 +518,6 @@ public class GameObjectDefinition extends SubNode {
     }
 
     public boolean method610(int arg0, int arg1) {
-
-        if(arg1 != 7533) {
-            anInt2543 = -28;
-        }
         if(objectTypes != null) {
             for(int i = 0; objectTypes.length > i; i++) {
                 if(objectTypes[i] == arg0) {
@@ -569,14 +537,12 @@ public class GameObjectDefinition extends SubNode {
             bool &= RSString.aCacheIndex_1705.loaded((0xffff & objectModels[i]), 0);
         }
         return bool;
-
     }
 
     public GameObjectDefinition getChildDefinition(int arg0) {
-
         int i = -1;
         if(arg0 != -20) {
-            method606(true, (byte) -93, false, 40, -55);
+            method606(true, false, 40, -55);
         }
         if(varpID == -1) {
             if(configId != -1) {
@@ -589,11 +555,9 @@ public class GameObjectDefinition extends SubNode {
             return null;
         }
         return getDefinition(configChangeDest[i]);
-
     }
 
-    public boolean method612(byte arg0) {
-
+    public boolean method612() {
         if(objectModels == null) {
             return true;
         }
@@ -601,8 +565,6 @@ public class GameObjectDefinition extends SubNode {
         for(int i = 0; objectModels.length > i; i++) {
             bool &= RSString.aCacheIndex_1705.loaded((0xffff & objectModels[i]), 0);
         }
-        int i = -67 % ((-65 - arg0) / 50);
         return bool;
-
     }
 }

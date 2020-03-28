@@ -117,7 +117,7 @@ public class WallDecoration {
             int i_17_ = (0x7 & i_16_) + OverlayDefinition.placementY;
             int i_18_ = Class40_Sub6.placementX + ((i_16_ & 0x75) >> 4);
             if(i_18_ >= 0 && i_17_ >= 0 && i_18_ < 104 && i_17_ < 104)
-                GameObjectDefinition.method609(i_15_, true, i_18_, i_12_, -1, (Player.worldLevel), i_17_, i_14_, i_13_, 0);
+                GameObjectDefinition.method609(i_15_, i_18_, i_12_, -1, (Player.worldLevel), i_17_, i_14_, i_13_, 0);
         } else {
             if(IncomingPackets.incomingPacket == 9) {
                 int offset = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
@@ -182,7 +182,7 @@ public class WallDecoration {
                 int typeIndex = objectInfo >> 2;
                 int objectType = Npc.anIntArray3304[typeIndex];
                 if(positionX >= 0 && positionY >= 0 && positionX < 104 && positionY < 104)
-                    GameObjectDefinition.method609(-1, true, positionX, orientation, -1, (Player.worldLevel), positionY, objectType, typeIndex, 0);
+                    GameObjectDefinition.method609(-1, positionX, orientation, -1, (Player.worldLevel), positionY, objectType, typeIndex, 0);
             } else {
                 if(IncomingPackets.incomingPacket == 229) {
                     int i = IncomingPackets.incomingPacketBuffer.getByte();
@@ -211,7 +211,7 @@ public class WallDecoration {
                         int i_58_ = (Class40_Sub6.tile_height[Player.worldLevel][i_52_][1 + i_51_]);
                         int i_59_ = (Class40_Sub6.tile_height[Player.worldLevel][1 + i_52_][1 + i_51_]);
                         int i_60_ = (Class40_Sub6.tile_height[Player.worldLevel][i_52_ + 1][i_51_]);
-                        Model class40_sub5_sub17_sub5 = gameObjectDefinition.getGameObjectModel(i_59_, i_58_, i_47_, i_57_, i_48_, (byte) 124, i_60_);
+                        Model class40_sub5_sub17_sub5 = gameObjectDefinition.getGameObjectModel(i_59_, i_58_, i_47_, i_57_, i_48_, i_60_);
                         if(class40_sub5_sub17_sub5 != null) {
                             if((i < i_54_)) {
                                 int i_61_ = i_54_;
@@ -223,7 +223,7 @@ public class WallDecoration {
                                 i_45_ = i_44_;
                                 i_44_ = i_62_;
                             }
-                            GameObjectDefinition.method609(-1, true, i_52_, 0, 1 + i_56_, Player.worldLevel, i_51_, i_49_, 0, 1 + i_53_);
+                            GameObjectDefinition.method609(-1, i_52_, 0, 1 + i_56_, Player.worldLevel, i_51_, i_49_, 0, 1 + i_53_);
                             class40_sub5_sub17_sub4_sub1.anInt3274 = i_56_ + Node.pulseCycle;
                             int i_63_ = gameObjectDefinition.sizeX;
                             class40_sub5_sub17_sub4_sub1.aClass40_Sub5_Sub17_Sub5_3265 = class40_sub5_sub17_sub5;
