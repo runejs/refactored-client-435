@@ -145,32 +145,7 @@ public class ActorDefinition extends SubNode {
         for(int i_6_ = 0; (i_6_ < class40_sub11.anInt2160); i_6_++) {
             try {
                 int i_7_ = arg2.getUnsignedByte();
-                if(i_7_ != 0 && i_7_ != 1 && i_7_ != 2) {
-                    if(i_7_ == 3 || i_7_ == 4) {
-                        String string = new String(arg2.getRSString().method80());
-                        String string_8_ = new String(arg2.getRSString().method80());
-                        int i_9_ = arg2.getUnsignedByte();
-                        String[] strings = new String[i_9_];
-                        for(int i_10_ = 0; i_9_ > i_10_; i_10_++) {
-                            strings[i_10_] = new String(arg2.getRSString().method80());
-                        }
-                        byte[][] is = new byte[i_9_][];
-                        if(i_7_ == 3) {
-                            for(int i_11_ = 0; ((i_11_ < i_9_)); i_11_++) {
-                                int i_12_ = arg2.getIntBE();
-                                is[i_11_] = new byte[i_12_];
-                                arg2.getBytes(i_12_, 0, is[i_11_]);
-                            }
-                        }
-                        class40_sub11.anIntArray2154[i_6_] = i_7_;
-                        Class[] var_classes = new Class[i_9_];
-                        for(int i_13_ = 0; (i_13_ < i_9_); i_13_++) {
-                            var_classes[i_13_] = Class26.method349(strings[i_13_]);
-                        }
-                        class40_sub11.aSignlinkNodeArray2156[i_6_] = arg0.method386(var_classes, string_8_, Class26.method349(string), (byte) -64);
-                        class40_sub11.aByteArrayArrayArray2159[i_6_] = is;
-                    }
-                } else {
+                if(i_7_ == 0 || i_7_ == 1 || i_7_ == 2) {
                     int i_14_ = 0;
                     String string = new String(arg2.getRSString().method80());
                     String string_15_ = new String(arg2.getRSString().method80());
@@ -180,6 +155,29 @@ public class ActorDefinition extends SubNode {
                     class40_sub11.anIntArray2154[i_6_] = i_7_;
                     class40_sub11.anIntArray2165[i_6_] = i_14_;
                     class40_sub11.aSignlinkNodeArray2157[i_6_] = arg0.method392(Class26.method349(string), string_15_, true);
+                } else if(i_7_ == 3 || i_7_ == 4) {
+                    String string = new String(arg2.getRSString().method80());
+                    String string_8_ = new String(arg2.getRSString().method80());
+                    int i_9_ = arg2.getUnsignedByte();
+                    String[] strings = new String[i_9_];
+                    for(int i_10_ = 0; i_9_ > i_10_; i_10_++) {
+                        strings[i_10_] = new String(arg2.getRSString().method80());
+                    }
+                    byte[][] is = new byte[i_9_][];
+                    if(i_7_ == 3) {
+                        for(int i_11_ = 0; ((i_11_ < i_9_)); i_11_++) {
+                            int i_12_ = arg2.getIntBE();
+                            is[i_11_] = new byte[i_12_];
+                            arg2.getBytes(i_12_, 0, is[i_11_]);
+                        }
+                    }
+                    class40_sub11.anIntArray2154[i_6_] = i_7_;
+                    Class[] var_classes = new Class[i_9_];
+                    for(int i_13_ = 0; (i_13_ < i_9_); i_13_++) {
+                        var_classes[i_13_] = Class26.method349(strings[i_13_]);
+                    }
+                    class40_sub11.aSignlinkNodeArray2156[i_6_] = arg0.method386(var_classes, string_8_, Class26.method349(string), (byte) -64);
+                    class40_sub11.aByteArrayArrayArray2159[i_6_] = is;
                 }
             } catch(ClassNotFoundException classnotfoundexception) {
                 class40_sub11.anIntArray2155[i_6_] = -1;
@@ -234,8 +232,8 @@ public class ActorDefinition extends SubNode {
         Model class40_sub5_sub17_sub5 = ((Model) Class67.aClass9_1611.get(id, (byte) 75));
         if(class40_sub5_sub17_sub5 == null) {
             boolean bool = false;
-            for(int i = 0; i < models.length; i++) {
-                if(!Class67.aCacheIndex_1577.loaded(models[i], 0)) {
+            for(int model : models) {
+                if(!Class67.aCacheIndex_1577.loaded(model, 0)) {
                     bool = true;
                 }
             }
@@ -253,9 +251,11 @@ public class ActorDefinition extends SubNode {
             }
             if(modifiedModelColors != null) {
                 for(int i = 0; (i < modifiedModelColors.length); i++) {
+                    assert class40_sub5_sub17_sub5 != null;
                     class40_sub5_sub17_sub5.replaceColor(modifiedModelColors[i], originalModelColors[i]);
                 }
             }
+            assert class40_sub5_sub17_sub5 != null;
             class40_sub5_sub17_sub5.createBones();
             class40_sub5_sub17_sub5.applyLighting(ambient + 64, 850 + contrast, -30, -50, -30, true);
             Class67.aClass9_1611.put(id, class40_sub5_sub17_sub5);
@@ -395,8 +395,8 @@ public class ActorDefinition extends SubNode {
             return null;
         }
         boolean cached = false;
-        for(int headModel = 0; headModel < headModelIndexes.length; headModel++) {
-            if(!Class67.aCacheIndex_1577.loaded(headModelIndexes[headModel], 0)) {
+        for(int headModelIndex : headModelIndexes) {
+            if(!Class67.aCacheIndex_1577.loaded(headModelIndex, 0)) {
                 cached = true;
             }
         }
@@ -415,6 +415,7 @@ public class ActorDefinition extends SubNode {
         }
         if(modifiedModelColors != null) {
             for(int i = 0; i < modifiedModelColors.length; i++) {
+                assert headModel != null;
                 headModel.replaceColor(modifiedModelColors[i], originalModelColors[i]);
             }
         }

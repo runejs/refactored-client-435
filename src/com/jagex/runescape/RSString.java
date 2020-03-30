@@ -102,20 +102,20 @@ public class RSString implements Interface1 {
     }
 
     public static RSString CreateString(String arg1) {
-        byte[] is = arg1.getBytes();
-        int i = is.length;
+        byte[] charBytes = arg1.getBytes();
+        int length = charBytes.length;
         RSString class1 = new RSString();
-        int i_5_ = 0;
-        class1.chars = new byte[i];
-        while(i > i_5_) {
-            int i_6_ = 0xff & is[i_5_++];
-            if(i_6_ <= 45 && i_6_ >= 40) {
-                if((i_5_ >= i))
+        int index = 0;
+        class1.chars = new byte[length];
+        while(length > index) {
+            int character = 0xff & charBytes[index++];
+            if(character <= 45 && character >= 40) {
+                if((index >= length))
                     break;
-                int i_7_ = 0xff & is[i_5_++];
-                class1.chars[class1.length++] = (byte) (i_7_ + -48 + 43 * (-40 + i_6_));
-            } else if(i_6_ != 0)
-                class1.chars[class1.length++] = (byte) i_6_;
+                int next = 0xff & charBytes[index++];
+                class1.chars[class1.length++] = (byte) (next + -48 + 43 * (-40 + character));
+            } else if(character != 0)
+                class1.chars[class1.length++] = (byte) character;
         }
         class1.method77();
         return class1.method66();

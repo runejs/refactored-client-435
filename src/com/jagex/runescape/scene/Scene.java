@@ -1,5 +1,7 @@
 package com.jagex.runescape.scene;
 
+import com.jagex.runescape.Class13;
+import com.jagex.runescape.Landscape;
 import com.jagex.runescape.LinkedList;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.VertexNormal;
@@ -16,6 +18,8 @@ public class Scene {
     public static int cameraPositionTileX;
     public static int[] faceOffsetX2 = new int[]{53, -53, -53, 53};
     public static int clickedTileY = -1;
+    public static int hoveredTileY = -1;
+    public static int hoveredTileX = -1;
     public static int anInt82;
     public static int anInt84;
     public static int anInt85 = 0;
@@ -1691,6 +1695,10 @@ public class Scene {
                 clickedTileX = tileX;
                 clickedTileY = tileY;
             }
+            if(isMouseWithinTriangle(Class13.mouseX, Landscape.mouseY, screenYD, screenYC, screenYB, screenXD, screenXC, screenXB)) {
+                hoveredTileX = tileX;
+                hoveredTileY = tileY;
+            }
             if(plainTile.texture == -1) {
                 if(plainTile.colourD != 12345678) {
                     Rasterizer3D.drawShadedTriangle(screenYD, screenYC, screenYB, screenXD, screenXC, screenXB, plainTile.colourD, plainTile.colourC, plainTile.colourB);
@@ -1709,6 +1717,11 @@ public class Scene {
             if(clicked && isMouseWithinTriangle(clickX, clickY, screenYA, screenYB, screenYC, screenXA, screenXB, screenXC)) {
                 clickedTileX = tileX;
                 clickedTileY = tileY;
+            }
+
+            if(isMouseWithinTriangle(Class13.mouseX, Landscape.mouseY, screenYA, screenYB, screenYC, screenXA, screenXB, screenXC)) {
+                hoveredTileX = tileX;
+                hoveredTileY = tileY;
             }
             if(plainTile.texture == -1) {
                 if(plainTile.colourA != 12345678) {
@@ -1917,6 +1930,12 @@ public class Scene {
                     clickedTileX = tileX;
                     clickedTileY = tileY;
                 }
+
+                if(isMouseWithinTriangle(Class13.mouseX, Landscape.mouseY, screenYA, screenYB, screenYC, screenXA, screenXB, screenXC)) {
+                    hoveredTileX = tileX;
+                    hoveredTileY = tileY;
+                }
+
                 if(shapedTile.triangleTexture == null || shapedTile.triangleTexture[triangle] == -1) {
                     if(shapedTile.triangleHSLA[triangle] != 0xbc614e) {
                         Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, shapedTile.triangleHSLA[triangle], shapedTile.triangleHSLB[triangle], shapedTile.triangleHSLC[triangle]);

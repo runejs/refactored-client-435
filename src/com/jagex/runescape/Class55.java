@@ -154,7 +154,7 @@ public class Class55 {
         Class57.aClass1_1343 = ISAAC.aClass1_527;
         Node.aClass1_953 = Class64.aClass1_1523;
         Node.aClass1_942 = Class64.aClass1_1523;
-        Class22_Sub2.aClass1_1876 = Npc.aClass1_3309;
+        Class22_Sub2.str_walk_here = Npc.aClass1_3309;
         Node.aClass1_952 = Class64.aClass1_1523;
         Class40_Sub5_Sub15.prefix_examine = Class26.aClass1_630;
         Node.aClass1_954 = Class64.aClass1_1523;

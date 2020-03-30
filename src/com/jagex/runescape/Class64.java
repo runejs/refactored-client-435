@@ -16,6 +16,7 @@ import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.util.Signlink;
@@ -26,6 +27,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.text.MessageFormat;
 
 public class Class64 implements Runnable {
     public static RSString aClass1_1502 = RSString.CreateString("Wordpack geladen)3");
@@ -89,10 +91,12 @@ public class Class64 implements Runnable {
     public static void method1013() {
         int lasthash = -1;
         if(Class8.itemSelected == 0 && Main.widgetSelected == 0) {
-            OverlayDefinition.addActionRow(Class22_Sub2.aClass1_1876, 0, Class13.mouseX, Landscape.mouseY, 7, HuffmanEncoding.blank_string);
+            String examineText = MessageFormat.format("<col=8F8FFF>(X{0})1 {1}(Y</col>", Integer.toString(Scene.hoveredTileX + SpotAnimDefinition.baseX), Integer.toString(Scene.hoveredTileY + Class26.baseY));
+
+            OverlayDefinition.addActionRow(Class22_Sub2.str_walk_here, 0, Class13.mouseX, Landscape.mouseY, 7, RSString.CreateString(examineText.toString()));
         }
-        int idx = 0;
-        for(/**/; ((Model.resourceCount > idx)); idx++) {
+
+        for(int idx = 0; ((Model.resourceCount > idx)); idx++) {
             int hash = Model.hoveredHash[idx];
             int x = 0x7f & hash;
             int y = hash >> 7 & 0x7f;
@@ -109,28 +113,28 @@ public class Class64 implements Runnable {
                     if(Class8.itemSelected == 1) {
                         OverlayDefinition.addActionRow(Main.aClass1_1763, hash, x, y, 5, (RSString.linkRSStrings((new RSString[]{(Npc.aClass1_3295), Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.name}))));
                     } else if(Main.widgetSelected != 1) {
-                        RSString[] class1s = gameObjectDefinition.actions;
+                        RSString[] options = gameObjectDefinition.actions;
                         if(Class60.aBoolean1402)
-                            class1s = Class56.method968(class1s, false);
-                        if(class1s != null) {
+                            options = Class56.method968(options, false);
+                        if(options != null) {
                             for(int i_7_ = 4; i_7_ >= 0; i_7_--) {
-                                if(class1s[i_7_] != null) {
-                                    int i_8_ = 0;
+                                if(options[i_7_] != null) {
+                                    int actionType = 0;
                                     if(i_7_ == 0)
-                                        i_8_ = 16;
+                                        actionType = 16;
                                     if(i_7_ == 1)
-                                        i_8_ = 29;
+                                        actionType = 29;
                                     if(i_7_ == 2)
-                                        i_8_ = 17;
+                                        actionType = 17;
                                     if(i_7_ == 3)
-                                        i_8_ = 27;
+                                        actionType = 27;
                                     if(i_7_ == 4)
-                                        i_8_ = 1002;
-                                    OverlayDefinition.addActionRow(class1s[i_7_], hash, x, y, i_8_, (RSString.linkRSStrings((new RSString[]{(Renderable.aClass1_2862), (gameObjectDefinition.name)}))));
+                                        actionType = 1002;
+                                    OverlayDefinition.addActionRow(options[i_7_], hash, x, y, actionType, (RSString.linkRSStrings((new RSString[]{(Renderable.aClass1_2862), (gameObjectDefinition.name)}))));
                                 }
                             }
                         }
-                        OverlayDefinition.addActionRow(Class40_Sub5_Sub15.prefix_examine, gameObjectDefinition.anInt2538 << 14, x, y, 1004, (RSString.linkRSStrings((new RSString[]{Renderable.aClass1_2862, gameObjectDefinition.name}))));
+                        OverlayDefinition.addActionRow(Class40_Sub5_Sub15.prefix_examine, gameObjectDefinition.id << 14, x, y, 1004, (RSString.linkRSStrings((new RSString[]{Renderable.aClass1_2862, gameObjectDefinition.name}))));
                     } else if((ItemDefinition.selectedMask & 0x4) == 4) {
                         OverlayDefinition.addActionRow(Class38_Sub1.aClass1_1918, hash, x, y, 32, (RSString.linkRSStrings((new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.name}))));
                     }

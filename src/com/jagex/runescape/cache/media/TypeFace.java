@@ -619,33 +619,40 @@ public class TypeFace extends Rasterizer {
     }
 
     public void drawShadowedString(String string, int x, int y, boolean shadow, int colour) {
-        if(!shadow) {
-            drawString(string, x, y, colour);
-            return;
+        if(shadow) {
+            setEffects(colour, 0);
+        } else {
+            setEffects(colour, -1);
         }
-        strikethroughColor = -1;
-        int originalX = x;
-        if(string == null)
-            return;
-        y -= characterDefaultHeight;
-        for(int character = 0; character < string.length(); character++)
-            if(string.charAt(character) == '@' && character + 4 < string.length() && string.charAt(character + 4) == '@') {
-                int stringColour = getColour(string.substring(character + 1, character + 4));
-                if(stringColour != -1)
-                    colour = stringColour;
-                character += 4;
-            } else {
-                char c = string.charAt(character);
-                if(c != ' ') {
-                    if(shadow)
-                        drawCharacterLegacy(characterPixels[c], x + 1, y + characterYOffsets[c] + 1, characterScreenWidths[c], characterHeights[c], 0);
-                    drawCharacterLegacy(characterPixels[c], x, y + characterYOffsets[c], characterScreenWidths[c], characterHeights[c], colour);
-                }
-                x += characterScreenWidths[c];
-            }
-
-        if(strikethroughColor != -1)
-            Rasterizer.drawHorizontalLine(originalX, y + (int) (characterDefaultHeight * 0.69999999999999996D), x - originalX, strikethroughColor);
+        drawBasicString(string, x, y);
+        //        if(!shadow) {
+        //            drawString(string, x, y, colour);
+        //            return;
+        //        }
+        //        strikethroughColor = -1;
+        //        int originalX = x;
+        //        if(string == null)
+        //            return;
+        //        y -= characterDefaultHeight;
+        //        for(int character = 0; character < string.length(); character++)
+        //        for(int character = 0; character < string.length(); character++)
+        //            if(string.charAt(character) == '@' && character + 4 < string.length() && string.charAt(character + 4) == '@') {
+        //                int stringColour = getColour(string.substring(character + 1, character + 4));
+        //                if(stringColour != -1)
+        //                    colour = stringColour;
+        //                character += 4;
+        //            } else {
+        //                char c = string.charAt(character);
+        //                if(c != ' ') {
+        //                    if(shadow)
+        //                        drawCharacterLegacy(characterPixels[c], x + 1, y + characterYOffsets[c] + 1, characterScreenWidths[c], characterHeights[c], 0);
+        //                    drawCharacterLegacy(characterPixels[c], x, y + characterYOffsets[c], characterScreenWidths[c], characterHeights[c], colour);
+        //                }
+        //                x += characterScreenWidths[c];
+        //            }
+        //
+        //        if(strikethroughColor != -1)
+        //            Rasterizer.drawHorizontalLine(originalX, y + (int) (characterDefaultHeight * 0.69999999999999996D), x - originalX, strikethroughColor);
     }
 
     public void drawShadowedSeededAlphaString(String string, int x, int y, int colour, boolean shadowed, int seed) {
@@ -653,27 +660,34 @@ public class TypeFace extends Rasterizer {
             return;
         random.setSeed(seed);
         int alpha = 192 + (random.nextInt() & 0x1f);
-        y -= characterDefaultHeight;
-        for(int index = 0; index < string.length(); index++)
-            if(string.charAt(index) == '@' && index + 4 < string.length() && string.charAt(index + 4) == '@') {
-                int stringColour = getColour(string.substring(index + 1, index + 4));
-                if(stringColour != -1)
-                    colour = stringColour;
-                index += 4;
-            } else {
-                char c = string.charAt(index);
-                if(c != ' ') {
-                    if(shadowed) {
-                        drawAlphaCharacter(characterPixels[c], x + 1, y + characterYOffsets[c] + 1, characterScreenWidths[c], characterHeights[c], 0, 192);
-                    }
-                    drawAlphaCharacter(characterPixels[c], x, y + characterYOffsets[c], characterScreenWidths[c], characterHeights[c], colour, alpha);
-                }
-                x += characterScreenWidths[c];
-                if((random.nextInt() & 3) == 0)
-                    x++;
-            }
+        if(shadowed) {
+            setEffectsAlpha(colour, 0, alpha);
+        } else {
+            setEffectsAlpha(colour, -1, alpha);
+        }
+        drawBasicString(string, x, y);
+        //        y -= characterDefaultHeight;
+        //        for(int index = 0; index < string.length(); index++)
+        //            if(string.charAt(index) == '@' && index + 4 < string.length() && string.charAt(index + 4) == '@') {
+        //                int stringColour = getColour(string.substring(index + 1, index + 4));
+        //                if(stringColour != -1)
+        //                    colour = stringColour;
+        //                index += 4;
+        //            } else {
+        //                char c = string.charAt(index);
+        //                if(c != ' ') {
+        //                    if(shadowed) {
+        //                        drawAlphaCharacter(characterPixels[c], x + 1, y + characterYOffsets[c] + 1, characterScreenWidths[c], characterHeights[c], 0, 192);
+        //                    }
+        //                    drawAlphaCharacter(characterPixels[c], x, y + characterYOffsets[c], characterScreenWidths[c], characterHeights[c], colour, alpha);
+        //                }
+        //                x += characterScreenWidths[c];
+        //                if((random.nextInt() & 3) == 0)
+        //                    x++;
+        //            }
 
     }
+
 
     public int getColour(String code) {
         if(code.equals("red"))

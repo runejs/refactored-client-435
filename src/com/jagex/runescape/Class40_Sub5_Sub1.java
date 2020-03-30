@@ -308,7 +308,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
             }
             for(int i = 0; i < ActorDefinition.menuActionRow; i++) {
                 if(Class38.menuActionTypes[i] == 7) {
-                    Landscape.menuActionTexts[i] = (RSString.linkRSStrings(new RSString[]{Class22_Sub2.aClass1_1876, VertexNormal.aClass1_1117, Class26.aClass1_620, rsString}));
+                    Landscape.menuActionTexts[i] = (RSString.linkRSStrings(new RSString[]{Class22_Sub2.str_walk_here, VertexNormal.aClass1_1117, Class26.aClass1_620, rsString}));
                     break;
                 }
             }

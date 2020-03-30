@@ -15,7 +15,7 @@ public abstract class Class22_Sub2 extends Class22 {
     public static RSString string_blank = RSString.CreateString("");
     public static RSString password = string_blank;
     public static RSString aClass1_1875 = RSString.CreateString("Please use a different world)3");
-    public static RSString aClass1_1876 = RSString.CreateString("Walk here");
+    public static RSString str_walk_here = RSString.CreateString("Walk here");
     public static RSString aClass1_1877 = RSString.CreateString("");
     public static RSString aClass1_1878 = RSString.CreateString("@yel@*V");
     public static RSString aClass1_1879 = string_blank;
@@ -97,7 +97,7 @@ public abstract class Class22_Sub2 extends Class22 {
         username = null;
         aClass1_1893 = null;
         aClass1_1891 = null;
-        aClass1_1876 = null;
+        str_walk_here = null;
         aClass1_1875 = null;
         aClass1_1889 = null;
         aClass1_1896 = null;

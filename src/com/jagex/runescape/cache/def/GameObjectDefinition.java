@@ -54,7 +54,7 @@ public class GameObjectDefinition extends SubNode {
     public int[] configChangeDest;
     public int configId;
     public int mapSceneID;
-    public int anInt2538;
+    public int id;
     public int modelSizeHeight;
     public boolean castsShadow;
     public int anInt2542;
@@ -158,7 +158,7 @@ public class GameObjectDefinition extends SubNode {
         }
         byte[] is = Class40_Sub3.aCacheIndex_2037.getFile(arg0, 6);
         gameObjectDefinition = new GameObjectDefinition();
-        gameObjectDefinition.anInt2538 = arg0;
+        gameObjectDefinition.id = arg0;
         if(is == null) {
             try {
                 Buffer buffer = ObjectDecompressor.grabObjectDef(arg0);
@@ -184,9 +184,9 @@ public class GameObjectDefinition extends SubNode {
     public Model getGameObjectModel(int arg0, int arg1, int arg2, int arg3, int arg4, int arg6) {
         long l;
         if(objectTypes == null) {
-            l = (anInt2538 << 10) + arg2;
+            l = (id << 10) + arg2;
         } else {
-            l = arg2 + ((anInt2538 << 10) + (arg4 << 3));
+            l = arg2 + ((id << 10) + (arg4 << 3));
         }
         Model model = ((Model) InteractiveObject.aClass9_470.get(l, (byte) 87));
         if(model == null) {
@@ -352,9 +352,9 @@ public class GameObjectDefinition extends SubNode {
     public Model getGameObjectModel(int vertexHeight, int vertexHeightRight, int arg3, int arg4, int arg5, AnimationSequence animationSequence, int vertexHeightTop, int vertexHeightTopRight) {
         long l;
         if(objectTypes == null) {
-            l = arg5 + (anInt2538 << 10);
+            l = arg5 + (id << 10);
         } else {
-            l = arg5 + ((anInt2538 << 10) + (arg4 << 3));
+            l = arg5 + ((id << 10) + (arg4 << 3));
         }
         Model model = ((Model) Class49.aClass9_1145.get(l, (byte) 70));
         if(model == null) {
