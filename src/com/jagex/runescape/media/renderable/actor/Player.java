@@ -270,16 +270,16 @@ public class Player extends Actor {
             Player player = (trackedPlayers[trackedPlayerIndex]);
             int updateRequired = IncomingPackets.incomingPacketBuffer.getBits(1);
             if(updateRequired == 0) {
-                trackedPlayerIndices[trackedPlayerIndex++] = trackedPlayerIndex;
+                trackedPlayerIndices[localPlayerCount++] = trackedPlayerIndex;
                 player.anInt3134 = pulseCycle;
             } else {
                 int movementType = IncomingPackets.incomingPacketBuffer.getBits(2);
                 if(movementType == 0) { // No movement
-                    trackedPlayerIndices[trackedPlayerIndex++] = trackedPlayerIndex;
+                    trackedPlayerIndices[localPlayerCount++] = trackedPlayerIndex;
                     player.anInt3134 = pulseCycle;
                     actorUpdatingIndices[actorUpdatingIndex++] = trackedPlayerIndex;
                 } else if(movementType == 1) { // Walking
-                    trackedPlayerIndices[trackedPlayerIndex++] = trackedPlayerIndex;
+                    trackedPlayerIndices[localPlayerCount++] = trackedPlayerIndex;
                     player.anInt3134 = pulseCycle;
                     int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
                     player.method782(walkDirection, (byte) -96, false);
@@ -287,7 +287,7 @@ public class Player extends Actor {
                     if(runUpdateBlock == 1)
                         actorUpdatingIndices[actorUpdatingIndex++] = trackedPlayerIndex;
                 } else if(movementType == 2) { // Running
-                    trackedPlayerIndices[trackedPlayerIndex++] = trackedPlayerIndex;
+                    trackedPlayerIndices[localPlayerCount++] = trackedPlayerIndex;
                     player.anInt3134 = pulseCycle;
                     int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
                     player.method782(walkDirection, (byte) -96, true);
