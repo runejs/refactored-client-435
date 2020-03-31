@@ -254,7 +254,7 @@ public class Class27 {
                         }
                     }
                     if(!bool)
-                        Class44.addChatMessage(HuffmanEncoding.blank_string, (RSString.linkRSStrings(new RSString[]{Class12.aClass1_397, class1_14_})), 0);
+                        Class44.addChatMessage(HuffmanEncoding.blank_string, (RSString.linkRSStrings(new RSString[]{English.unableToFind, class1_14_})), 0);
                 }
             }
             if(action == 55) {
@@ -1106,7 +1106,7 @@ public class Class27 {
             if(arg1 == 6)
                 Class33.method411(Node.aClass1_930, Class40_Sub5_Sub6.aClass1_2460, Class65.aClass1_1538, (byte) 112);
             else if(arg1 == 7)
-                Class33.method411(Node.aClass1_953, Class57.aClass1_1339, Class22_Sub2.aClass1_1891, (byte) 105);
+                Class33.method411(Node.aClass1_953, Class57.aClass1_1339, English.pleaseUseADifferentWorld, (byte) 105);
             else if(arg1 != 8) {
                 if(arg1 == 9)
                     Class33.method411(Node.aClass1_942, Actor.aClass1_3138, Item.aClass1_3050, (byte) 104);
@@ -1132,7 +1132,7 @@ public class Class27 {
                                     if(arg1 == 25)
                                         Class33.method411(Node.aClass1_973, Class8.aClass1_278, SceneTile.aClass1_2050, (byte) -84);
                                     else if(arg1 == 26)
-                                        Class33.method411(Node.aClass1_960, Class22_Sub1.aClass1_1851, Class17.aClass1_455, (byte) 103);
+                                        Class33.method411(Node.aClass1_960, English.thisComputersAddressHasBeenBlocked, English.asItWasUsedToBreakOurRules, (byte) 103);
                                     else if(arg1 != 27)
                                         Class33.method411(Node.aClass1_946, (English.unexpectedServerResponse), SceneTile.aClass1_2054, (byte) 123);
                                     else
@@ -1144,13 +1144,13 @@ public class Class27 {
                         } else
                             Class33.method411(Node.aClass1_959, Landscape.aClass1_1178, Class61.aClass1_1421, (byte) -85);
                     } else
-                        Class33.method411(Node.aClass1_924, Buffer.aClass1_1983, Class22_Sub1.aClass1_1870, (byte) -29);
+                        Class33.method411(Node.aClass1_924, Buffer.aClass1_1983, English.pleaseWait5MinutesBeforeTryingAgain, (byte) -29);
                 } else
                     Class33.method411(Node.aClass1_929, Wall.aClass1_344, ActorDefinition.aClass1_2401, (byte) -68);
             } else
                 Class33.method411(Node.aClass1_937, Class42.aClass1_997, Class68_Sub1.aClass1_2209, (byte) -76);
         } else
-            Class33.method411(Node.aClass1_966, Class22.aClass1_532, Player.aClass1_3286, (byte) -101);
+            Class33.method411(Node.aClass1_966, English.yourAccountIsAlreadyLoggedIn, Player.aClass1_3286, (byte) -101);
         OverlayDefinition.method559(10);
     }
 

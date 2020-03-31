@@ -79,27 +79,6 @@ public class IdentityKit extends SubNode {
         return class40_sub5_sub1;
     }
 
-    public static RSString method627(int arg1, int arg2, RSString[] arg3) {
-        int i = 0;
-        for(int i_3_ = 0; i_3_ < arg1; i_3_++) {
-            if(arg3[arg2 + i_3_] == null) {
-                arg3[i_3_ + arg2] = RSApplet.aClass1_28;
-            }
-            i += arg3[i_3_ + arg2].length;
-        }
-        byte[] is = new byte[i];
-        int i_4_ = 0;
-        for(int i_5_ = 0; i_5_ < arg1; i_5_++) {
-            RSString class1 = arg3[arg2 + i_5_];
-            Class18.method278(class1.chars, 0, is, i_4_, class1.length);
-            i_4_ += class1.length;
-        }
-        RSString class1 = new RSString();
-        class1.length = i;
-        class1.chars = is;
-        return class1;
-    }
-
     // ???
     public static IdentityKit cache(int arg1) {
         IdentityKit identityKit = ((IdentityKit) Class68.aClass9_1615.get(arg1, (byte) 107));

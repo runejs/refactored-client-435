@@ -7,6 +7,7 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.input.MouseHandler;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Item;
@@ -306,7 +307,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
             }
             for(int i = 0; i < ActorDefinition.menuActionRow; i++) {
                 if(Class38.menuActionTypes[i] == 7) {
-                    Landscape.menuActionTexts[i] = (RSString.linkRSStrings(new RSString[]{Class22_Sub2.str_walk_here, VertexNormal.aClass1_1117, Class26.aClass1_620, rsString}));
+                    Landscape.menuActionTexts[i] = (RSString.linkRSStrings(new RSString[]{English.walkHere, VertexNormal.aClass1_1117, Class26.aClass1_620, rsString}));
                     break;
                 }
             }

@@ -18,26 +18,8 @@ public class Class22_Sub1 extends Class22 {
     public static RSString[] itemSearchResultNames = new RSString[100];
     public static int[] anIntArray1846 = new int[5];
     public static int[] anIntArray1847 = new int[2000];
-    public static RSString aClass1_1848 = RSString.CreateString("This computers address has been blocked");
-    public static RSString aClass1_1851 = aClass1_1848;
     public static CacheIndex aCacheIndex_1855;
     public static int anInt1856;
-    public static RSString aClass1_1857 = English.enterYourUsernameAndPassword;
-    public static RSString aClass1_1858;
-    public static RSString aClass1_1863 = RSString.CreateString("Please wait 5 minutes before trying again)3");
-    public static RSString aClass1_1864;
-    public static RSString aClass1_1865;
-    public static RSString aClass1_1867 = RSString.CreateString("Loaded interfaces");
-    public static RSString aClass1_1868 = RSString.CreateString("Report abuse");
-    public static RSString aClass1_1870;
-    public static RSString aClass1_1873 = RSString.CreateString("Password: ");
-
-    static {
-        aClass1_1858 = aClass1_1867;
-        aClass1_1870 = aClass1_1863;
-        aClass1_1865 = aClass1_1868;
-        aClass1_1864 = aClass1_1873;
-    }
 
     public boolean aBoolean1835;
     public SignlinkNode aSignlinkNode_1836;
@@ -53,26 +35,21 @@ public class Class22_Sub1 extends Class22 {
     }
 
     public static void method310() {
-        aClass1_1858 = null;
+        English.loadedInterfaces = null;
         Native.headiconsPrayer = null;
-        aClass1_1848 = null;
         anIntArray1846 = null;
-        aClass1_1868 = null;
-        aClass1_1863 = null;
         anIntArray1847 = null;
-        aClass1_1851 = null;
-        aClass1_1870 = null;
-        aClass1_1864 = null;
-        aClass1_1867 = null;
-        aClass1_1873 = null;
-        aClass1_1857 = null;
-        aClass1_1865 = null;
+        English.thisComputersAddressHasBeenBlocked = null;
+        English.pleaseWait5MinutesBeforeTryingAgain = null;
+        English.password = null;
+        English.enterYourUsernameAndPassword = null;
+        English.reportAbuse = null;
         English.enterYourUsernameAndPassword = null;
         itemSearchResultNames = null;
         aCacheIndex_1855 = null;
     }
 
-    public static void method311(byte arg0, Component arg1) {
+    public static void method311(Component arg1) {
         arg1.removeKeyListener(Class59.keyFocusListener);
         arg1.removeFocusListener(Class59.keyFocusListener);
     }
@@ -93,7 +70,7 @@ public class Class22_Sub1 extends Class22 {
             int i_5_ = arg1 * i_3_ + arg2 * i_4_ >> 16;
             arg1 = i_4_ * arg1 - arg2 * i_3_ >> 16;
             if(arg3 != 4976905)
-                aClass1_1864 = null;
+                English.password = null;
             arg2 = i_5_;
             i_5_ = i * i_1_ - arg1 * i_2_ >> 16;
             arg1 = arg1 * i_1_ + i * i_2_ >> 16;
@@ -134,8 +111,6 @@ public class Class22_Sub1 extends Class22 {
     }
 
     public void method301(int arg0, int arg1) {
-        if(arg1 != 0)
-            aClass1_1848 = null;
     }
 
     public void method303(byte arg0) {

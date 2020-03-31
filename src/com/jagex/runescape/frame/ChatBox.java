@@ -7,6 +7,7 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.input.MouseHandler;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -150,7 +151,7 @@ public class ChatBox {
                     if(((Player.localPlayer) != null) && (Player.localPlayer.playerName) != null)
                         name = (Player.localPlayer.playerName);
                     else
-                        name = Class22_Sub2.username;
+                        name = Native.username;
                     typeFace.drawString((RSString.linkRSStrings((new RSString[]{name, Class43.char_colon}))), 4, 90, 0);
                     typeFace.drawString((RSString.linkRSStrings((new RSString[]{HuffmanEncoding.chatboxInput, InteractiveObject.aClass1_478}))), ((typeFace.getStringWidth(RSString.linkRSStrings((new RSString[]{name, ISAAC.aClass1_515})))) + 6), 90, 255);
                     Rasterizer.drawHorizontalLine(0, 77, 479, 0);

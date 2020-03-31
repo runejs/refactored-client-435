@@ -3,6 +3,8 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -17,15 +19,12 @@ import java.awt.*;
 public class Class17 {
     public static int regionY;
     public static Cache aClass9_449 = new Cache(128);
-    public static RSString aClass1_452 = RSString.CreateString("Loading sprites )2 ");
-    public static RSString aClass1_455 = RSString.CreateString("as it was used to break our rules)3");
     public static int[] anIntArray456;
     public static int deregisterActorCount = 0;
     public static Font helveticaBold;
     public static Class68 aClass68_462;
     public static Class68 aClass68_463;
     public static int anInt464 = 0;
-    public static RSString aClass1_465 = RSString.CreateString(":0");
     public static int[] anIntArray466 = new int[256];
 
     public static void method273(Class64 arg0, int arg1, boolean arg2) {
@@ -136,9 +135,9 @@ public class Class17 {
     public static void method277() {
         aClass68_462 = null;
         aClass9_449 = null;
-        aClass1_465 = null;
-        aClass1_452 = null;
-        aClass1_455 = null;
+        Native.prefixColonZero = null;
+        English.loadingSprites = null;
+        English.asItWasUsedToBreakOurRules = null;
         aClass68_463 = null;
         anIntArray456 = null;
         helveticaBold = null;

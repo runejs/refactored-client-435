@@ -83,7 +83,7 @@ public class Class64 implements Runnable {
         if(Class8.itemSelected == 0 && Main.widgetSelected == 0) {
             String examineText = MessageFormat.format("<col=8F8FFF>(X{0})1 {1}(Y</col>", Integer.toString(Scene.hoveredTileX + SpotAnimDefinition.baseX), Integer.toString(Scene.hoveredTileY + Class26.baseY));
 
-            OverlayDefinition.addActionRow(Class22_Sub2.str_walk_here, 0, Class13.mouseX, Landscape.mouseY, 7, RSString.CreateString(examineText.toString()));
+            OverlayDefinition.addActionRow(English.walkHere, 0, Class13.mouseX, Landscape.mouseY, 7, RSString.CreateString(examineText.toString()));
         }
 
         for(int idx = 0; ((Model.resourceCount > idx)); idx++) {

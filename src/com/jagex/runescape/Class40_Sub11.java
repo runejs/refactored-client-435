@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -58,7 +59,7 @@ public class Class40_Sub11 extends Node {
                 if((i_1_ == 1 || i_1_ == 2) && (i_1_ == 1 || Class35.publicChatMode == 0 || (Class35.publicChatMode == 1 && Class40_Sub2.hasFriend(class1)))) {
                     if(arg1 > i_2_ - 14 && arg1 <= i_2_ && !(class1.equals((Player.localPlayer.playerName)))) {
                         if(InteractiveObject.playerRights >= 1) {
-                            OverlayDefinition.addActionRow(Class22_Sub1.aClass1_1865, 0, 0, 0, 28, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));
+                            OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 28, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));
                         }
                         OverlayDefinition.addActionRow(Class38.aClass1_885, 0, 0, 0, 51, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));
                         OverlayDefinition.addActionRow(FloorDecoration.aClass1_591, 0, 0, 0, 45, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));
@@ -69,7 +70,7 @@ public class Class40_Sub11 extends Node {
                     i++;
                     if(arg1 > -14 + i_2_ && (arg1 <= i_2_)) {
                         if(InteractiveObject.playerRights >= 1) {
-                            OverlayDefinition.addActionRow(Class22_Sub1.aClass1_1865, 0, 0, 0, 28, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));
+                            OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 28, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));
                         }
                         OverlayDefinition.addActionRow(Class38.aClass1_885, 0, 0, 0, 51, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));
                         OverlayDefinition.addActionRow(FloorDecoration.aClass1_591, 0, 0, 0, 45, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));

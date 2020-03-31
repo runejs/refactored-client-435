@@ -10,6 +10,7 @@ import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.VertexNormal;
@@ -779,14 +780,14 @@ public class Main extends RSApplet {
 
     public void method34(int arg0) { // TODO: Might be Startup
         if(Class67.aBoolean1575) {
-            Class22_Sub1.method311((byte) -80, MouseHandler.aCanvas1469);
+            Class22_Sub1.method311(MouseHandler.aCanvas1469);
             Class55.method965(32, MouseHandler.aCanvas1469);
             this.setCanvas((byte) 86);
             Widget.method642(MouseHandler.aCanvas1469, -10);
             RSRuntimeException.method1056(MouseHandler.aCanvas1469, (byte) 33);
         }
         if(Class51.anInt1197 == 0)
-            GameObject.drawLoadingText(Class67.anInt1607, null, Class22_Sub2.currentLoadingText);
+            GameObject.drawLoadingText(Class67.anInt1607, null, Native.currentLoadingText);
         else if(Class51.anInt1197 != 5) {
             if(Class51.anInt1197 != 10) {
                 if(Class51.anInt1197 != 20) {

@@ -10,6 +10,7 @@ import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
@@ -361,9 +362,9 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         } else if(class1.startsWith(LinkedList.aClass1_1076)) {
                             i_11_ = 3;
                             HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((LinkedList.aClass1_1076.length())));
-                        } else if(class1.startsWith((RSString.aClass1_1717))) {
+                        } else if(class1.startsWith((Native.prefixPurple))) {
                             i_11_ = 4;
-                            HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((RSString.aClass1_1717.length())));
+                            HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((Native.prefixPurple.length())));
                         } else if(class1.startsWith((Node.aClass1_940))) {
                             HuffmanEncoding.chatboxInput = (HuffmanEncoding.chatboxInput.substring((Node.aClass1_940.length())));
                             i_11_ = 5;

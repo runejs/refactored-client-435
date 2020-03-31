@@ -7,6 +7,7 @@ import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.MouseHandler;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -75,7 +76,7 @@ public class Class38_Sub1 extends Class38 {
                                 i_4_ = 450;
                             if(Class13.mouseX < 4 + i_4_) {
                                 if(InteractiveObject.playerRights >= 1) {
-                                    OverlayDefinition.addActionRow(Class22_Sub1.aClass1_1865, 0, 0, 0, 2028, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));
+                                    OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 2028, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));
                                 }
                                 OverlayDefinition.addActionRow(Class38.aClass1_885, 0, 0, 0, 2051, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));
                                 OverlayDefinition.addActionRow(FloorDecoration.aClass1_591, 0, 0, 0, 2045, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));

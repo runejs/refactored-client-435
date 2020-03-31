@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.scene.GroundItemTile;
@@ -115,7 +116,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 int i_3_ = i / 60;
                 i %= 60;
                 if(i < 10)
-                    WallDecoration.fontNormal.drawString((RSString.linkRSStrings(new RSString[]{Class61.aClass1_1432, HashTable.method334(i_3_, arg0 ^ 0x3c5d), Class17.aClass1_465, HashTable.method334(i, -1)})), 4, 329, 16776960);
+                    WallDecoration.fontNormal.drawString((RSString.linkRSStrings(new RSString[]{Class61.aClass1_1432, HashTable.method334(i_3_, arg0 ^ 0x3c5d), Native.prefixColonZero, HashTable.method334(i, -1)})), 4, 329, 16776960);
                 else
                     WallDecoration.fontNormal.drawString((RSString.linkRSStrings(new RSString[]{Class61.aClass1_1432, HashTable.method334(i_3_, -1), Class43.char_colon, HashTable.method334(i, arg0 ^ 0x3c5d)})), 4, 329, 16776960);
             }
@@ -126,7 +127,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         int i = 0;
         if(arg0.method194(Class27.aClass1_638, Class8.aClass1_305, -1234))
             i++;
-        if(arg0.method194(RSString.aClass1_1716, Class8.aClass1_305, arg1 + -1175))
+        if(arg0.method194(Native.chatback, Class8.aClass1_305, arg1 + -1175))
             i++;
         if(arg0.method194(VertexNormal.aClass1_1113, Class8.aClass1_305, -1234))
             i++;

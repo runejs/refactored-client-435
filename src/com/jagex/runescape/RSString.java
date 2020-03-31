@@ -2,10 +2,10 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 import java.awt.*;
@@ -20,10 +20,7 @@ public class RSString implements Interface1 {
     public static int[] keyCodes = new int[128];
     public static int anInt1711 = 50;
     public static byte[][] terrainData;
-    public static RSString aClass1_1717 = CreateString("purple:");
     /*synthetic*/ public static Class aClass1718;
-    public static RSString aClass1_1677 = CreateString("scrollbar");
-    public static RSString aClass1_1716 = CreateString("chatback");
     public boolean aBoolean1675 = true;
     public int length;
     public byte[] chars;
@@ -79,11 +76,11 @@ public class RSString implements Interface1 {
     public static void method83() {
         aClass9_1684 = null;
         terrainData = null;
-        aClass1_1677 = null;
+        Native.scrollbar = null;
         aCacheIndex_1705 = null;
-        aClass1_1717 = null;
+        Native.prefixPurple = null;
         aClass68_1665 = null;
-        aClass1_1716 = null;
+        Native.chatback = null;
         English.privateChat = null;
         keyCodes = null;
     }
@@ -127,7 +124,28 @@ public class RSString implements Interface1 {
     public static RSString linkRSStrings(RSString[] arg1) {
         if(arg1.length < 2)
             throw new IllegalArgumentException();
-        return IdentityKit.method627(arg1.length, 0, arg1);
+        return method627(arg1.length, 0, arg1);
+    }
+
+    public static RSString method627(int arg1, int arg2, RSString[] arg3) {
+        int i = 0;
+        for(int i_3_ = 0; i_3_ < arg1; i_3_++) {
+            if(arg3[arg2 + i_3_] == null) {
+                arg3[i_3_ + arg2] = RSApplet.aClass1_28;
+            }
+            i += arg3[i_3_ + arg2].length;
+        }
+        byte[] is = new byte[i];
+        int i_4_ = 0;
+        for(int i_5_ = 0; i_5_ < arg1; i_5_++) {
+            RSString class1 = arg3[arg2 + i_5_];
+            Class18.method278(class1.chars, 0, is, i_4_, class1.length);
+            i_4_ += class1.length;
+        }
+        RSString class1 = new RSString();
+        class1.length = i;
+        class1.chars = is;
+        return class1;
     }
 
     public RSString substring(int arg1) {

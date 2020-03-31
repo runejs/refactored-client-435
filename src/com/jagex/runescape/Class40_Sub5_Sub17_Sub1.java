@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.*;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -231,7 +232,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     public static void method763(Component arg0, byte arg1, CacheIndex arg2) {
         if(!SubNode.aBoolean2083) {
             FloorDecoration.aClass40_Sub5_Sub14_Sub2_593 = Class27.method359(Class27.aClass1_638, Class8.aClass1_305, arg2);
-            Class44.aClass40_Sub5_Sub14_Sub2_1047 = Class27.method359(RSString.aClass1_1716, Class8.aClass1_305, arg2);
+            Class44.aClass40_Sub5_Sub14_Sub2_1047 = Class27.method359(Native.chatback, Class8.aClass1_305, arg2);
             Class34.mapBack = Class27.method359(VertexNormal.aClass1_1113, Class8.aClass1_305, arg2);
             Class57.aClass40_Sub5_Sub14_Sub2_1346 = Class27.method359(Class59.aClass1_1395, Class8.aClass1_305, arg2);
             Class56.aClass40_Sub5_Sub14_Sub2_1329 = Class27.method359(CacheIndex.aClass1_256, Class8.aClass1_305, arg2);

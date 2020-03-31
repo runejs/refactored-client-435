@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -93,7 +94,7 @@ public class SpotAnimDefinition extends SubNode {
                 aClass1_2297 = null;
             }
             if(Class40_Sub3.anInt2032 == 2) {
-                long l = (Class34.aLong853 = Class22_Sub2.username.method58((byte) 93));
+                long l = (Class34.aLong853 = Native.username.method58((byte) 93));
                 SceneCluster.packetBuffer.currentPosition = 0;
                 SceneCluster.packetBuffer.putByte(14);
                 int i = (int) (0x1fL & l >> 16);
@@ -141,8 +142,8 @@ public class SpotAnimDefinition extends SubNode {
                 SceneCluster.packetBuffer.putIntBE(seeds[2]);
                 SceneCluster.packetBuffer.putIntBE(seeds[3]);
                 SceneCluster.packetBuffer.putIntBE(ISAAC.aClass31_521.anInt722);
-                SceneCluster.packetBuffer.putLongBE(Class22_Sub2.username.method58((byte) 97));
-                SceneCluster.packetBuffer.method505(Class22_Sub2.password);
+                SceneCluster.packetBuffer.putLongBE(Native.username.method58((byte) 97));
+                SceneCluster.packetBuffer.method505(Native.password);
                 SceneCluster.packetBuffer.applyRSA(Actor.rsaModulus, PacketBuffer.rsaKey);
                 Class61.packetBuffer.currentPosition = 0;
                 if(Class51.anInt1197 == 40) {

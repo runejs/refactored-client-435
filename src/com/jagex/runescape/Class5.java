@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -186,7 +187,7 @@ public class Class5 {
             }
             if(i == 202) {
                 Class37.anInt876 = 2;
-                HuffmanEncoding.aClass1_1563 = Class13.aClass1_417;
+                HuffmanEncoding.aClass1_1563 = English.enterNameOfFriendToDeleteFromList;
                 GenericTile.redrawChatbox = true;
                 Class40_Sub5_Sub15.inputType = 0;
                 InteractiveObject.messagePromptRaised = true;
@@ -211,7 +212,7 @@ public class Class5 {
             Class37.anInt876 = 5;
             InteractiveObject.messagePromptRaised = true;
             HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
-            HuffmanEncoding.aClass1_1563 = Class12.aClass1_399;
+            HuffmanEncoding.aClass1_1563 = English.enterNameOfPlayerToDeleteFromList;
         }
         if(i >= 300 && i <= 313) {
             int i_13_ = (-300 + i) / 2;

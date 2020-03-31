@@ -9,6 +9,7 @@ import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.VertexNormal;
@@ -159,7 +160,7 @@ public class Item extends Renderable {
             Rasterizer.resetPixels();
             Class68.aClass68_1631 = Class40_Sub5_Sub13.method649(94, 75, arg0, -4875);
             Rasterizer.resetPixels();
-            byte[] is = arg2.method170(Class22_Sub2.string_blank, SceneCluster.aClass1_772, 1);
+            byte[] is = arg2.method170(Native.string_blank, SceneCluster.aClass1_772, 1);
             ImageRGB class40_sub5_sub14_sub4 = new ImageRGB(is, arg0);
             Class8.aClass68_298.method1046((byte) 90);
             class40_sub5_sub14_sub4.method727(0, 0);
@@ -204,12 +205,12 @@ public class Item extends Renderable {
             class40_sub5_sub14_sub4.method727(254, -171);
             Class68.aClass68_1631.method1046((byte) 90);
             class40_sub5_sub14_sub4.method727(-180, -171);
-            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg3, Main.aClass1_1762, (byte) 21, Class22_Sub2.string_blank);
+            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg3, Main.aClass1_1762, (byte) 21, Native.string_blank);
             Class39.aClass68_907.method1046((byte) 90);
             class40_sub5_sub14_sub4.drawImage(-128 + (382 + -(class40_sub5_sub14_sub4.image_width / 2)), 18);
-            Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775 = Class27.method359(AnimationSequence.aClass1_2488, Class22_Sub2.string_blank, arg3);
-            Class59.aClass40_Sub5_Sub14_Sub2_1387 = Class27.method359(ISAAC.aClass1_506, Class22_Sub2.string_blank, arg3);
-            Class22.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(arg3, Class8.aClass1_299, Class22_Sub2.string_blank);
+            Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775 = Class27.method359(AnimationSequence.aClass1_2488, Native.string_blank, arg3);
+            Class59.aClass40_Sub5_Sub14_Sub2_1387 = Class27.method359(ISAAC.aClass1_506, Native.string_blank, arg3);
+            Class22.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(arg3, Class8.aClass1_299, Native.string_blank);
             Class39.aClass40_Sub5_Sub14_Sub4_918 = new ImageRGB(128, 265);
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = new ImageRGB(128, 265);
             for(int i = 0; i < 33920; i++)
@@ -250,12 +251,12 @@ public class Item extends Renderable {
             Landscape.anIntArray1168 = new int[32768];
             FramemapDefinition.method879(null);
             Class40_Sub5_Sub17_Sub6.anIntArray3255 = new int[32768];
-            Class22_Sub2.password = Class22_Sub2.string_blank;
-            Class22_Sub2.username = Class22_Sub2.string_blank;
+            Native.password = Native.string_blank;
+            Native.username = Native.string_blank;
             Class4.anIntArray178 = new int[32768];
             Class26.anInt622 = 0;
             if(RSCanvas.anInt60 != 0 && !VertexNormal.lowMemory)
-                Class33.method412(false, Class55.aClass6_Sub1_1286, 0, (byte) 66, Class30.aClass1_716, 10, Class22_Sub2.string_blank, RSCanvas.anInt60);
+                Class33.method412(false, Class55.aClass6_Sub1_1286, 0, (byte) 66, Class30.aClass1_716, 10, Native.string_blank, RSCanvas.anInt60);
             else
                 Class33.method405(16969, 10);
             RSApplet.method19(false, 24041);

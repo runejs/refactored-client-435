@@ -8,6 +8,8 @@ import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -18,29 +20,19 @@ import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public abstract class Class22 {
-    public static RSString aClass1_532;
-    public static RSString aClass1_533 = RSString.CreateString("M");
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array535;
     public static int anInt537 = 0;
     public static boolean aBoolean541 = false;
-    public static RSString aClass1_542 = aClass1_533;
     public static boolean accountFlagged = false;
     public static int anInt545;
-    public static RSString aClass1_546 = RSString.CreateString("Your account is already logged in)3");
     public static int anInt547 = 0;
     public static boolean[] aBooleanArray548 = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, false, false};
 
-    static {
-        aClass1_532 = aClass1_546;
-    }
-
     public static void method298() {
-        aClass1_546 = null;
-        aClass1_532 = null;
+        English.yourAccountIsAlreadyLoggedIn = null;
         aClass40_Sub5_Sub14_Sub2Array535 = null;
         Player.trackedPlayerAppearanceCache = null;
-        aClass1_542 = null;
-        aClass1_533 = null;
+        Native.suffixM = null;
         aBooleanArray548 = null;
     }
 
