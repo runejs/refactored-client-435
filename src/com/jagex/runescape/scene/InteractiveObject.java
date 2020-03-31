@@ -17,7 +17,6 @@ public class InteractiveObject {
     public static int anInt487 = 0;
     public static CacheIndex aCacheIndex_488;
     public static RSString aClass1_489 = RSString.CreateString("Public chat");
-    public static boolean messagePromptRaised = false;
     public static byte[][][] aByteArrayArrayArray492;
     public static int playerRights = 0;
     public static RSString aClass1_494;

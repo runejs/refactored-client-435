@@ -2,12 +2,14 @@ package com.jagex.runescape.cache.media;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
+import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
@@ -1191,6 +1193,25 @@ public class Widget extends SubNode {
             } else
                 widget.disabledText = HuffmanEncoding.blank_string;
         }
+    }
+
+    public static void drawScrollBar(int x, int y, int height, int scrollPosition, int scrollMaximum, int unknownArrayIndex) {
+        int length = (-32 + height) * height / scrollMaximum;
+        CacheIndex.aClass40_Sub5_Sub14_Sub2Array215[unknownArrayIndex].drawImage(x, y);
+        CacheIndex.aClass40_Sub5_Sub14_Sub2Array215[1].drawImage(x, y - (-height + 16));
+        Rasterizer.drawFilledRectangle(x, y + 16, 16, height + -32, Class55.anInt1299);
+        if(length < 8)
+            length = 8;
+        int scrollCurrent = (-32 + height - length) * scrollPosition / (-height + scrollMaximum);
+        Rasterizer.drawFilledRectangle(x, 16 + y + scrollCurrent, 16, length, Cache.anInt321);
+        Rasterizer.drawVerticalLine(x, 16 + y + scrollCurrent, length, HuffmanEncoding.anInt1559);
+        Rasterizer.drawVerticalLine(1 + x, scrollCurrent + y + 16, length, HuffmanEncoding.anInt1559);
+        Rasterizer.drawHorizontalLine(x, scrollCurrent + y + 16, 16, HuffmanEncoding.anInt1559);
+        Rasterizer.drawHorizontalLine(x, 17 + (y + scrollCurrent), 16, HuffmanEncoding.anInt1559);
+        Rasterizer.drawVerticalLine(x + 15, y + 16 + scrollCurrent, length, Class56.anInt1318);
+        Rasterizer.drawVerticalLine(x + 14, scrollCurrent + 17 + y, length - 1, Class56.anInt1318);
+        Rasterizer.drawHorizontalLine(x, length + (scrollCurrent + (15 + y)), 16, Class56.anInt1318);
+        Rasterizer.drawHorizontalLine(x + 1, 14 + (y + scrollCurrent + length), 15, Class56.anInt1318);
     }
 
     public void swapItems(int arg0, boolean arg1, int arg2) {

@@ -7,6 +7,7 @@ import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.*;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
@@ -98,7 +99,7 @@ public class Main extends RSApplet {
                             bool &= (method36(arg0, i_1_, i_0_, widget.anInt2746, widget.id, i_1_ + widget.originalHeight, widget.originalWidth + i_0_, widget.scrollPosition, (widget.aWidgetArray2713), true));
                         Rasterizer.setCoordinates(arg2, arg1, arg5, arg6);
                         if((widget.originalHeight < widget.scrollHeight))
-                            Class27.drawScrollBar(0, widget.scrollPosition, widget.scrollHeight, i_0_ + (widget.originalWidth), widget.originalHeight, i_1_);
+                            Widget.drawScrollBar(i_0_ + (widget.originalWidth), i_1_, widget.originalHeight, widget.scrollPosition, widget.scrollHeight, 0);
                     }
                     if(widget.type != 1) {
                         if(widget.type == 2) {
@@ -622,7 +623,7 @@ public class Main extends RSApplet {
 
     public static void method43(CacheIndex arg0) {
         Class64.aCacheIndex_1521 = arg0;
-        Class59.anInt1383 = Class64.aCacheIndex_1521.method190(16, (byte) 24);
+        Class59.anInt1383 = Class64.aCacheIndex_1521.method190(16);
     }
 
     public static void method44() {
@@ -646,7 +647,7 @@ public class Main extends RSApplet {
         ActorDefinition.menuActionRow = 0;
         Class40_Sub5_Sub13.method650(0);
         for(int i = 0; i < 100; i++)
-            Actor.chatMessages[i] = null;
+            ChatBox.chatMessages[i] = null;
         Class8.itemSelected = 0;
         Class57.anInt1342 = -40 + (int) (80.0 * Math.random());
         Class48.cameraOffsetY = -55 + (int) (Math.random() * 110.0);
@@ -680,10 +681,10 @@ public class Main extends RSApplet {
         LinkedList.aLinkedList_1064 = new LinkedList();
         Item.friendsCount = 0;
         Class12.friendListStatus = 0;
-        Class55.method958(Class48.anInt1138);
-        Class48.anInt1138 = -1;
-        Class55.method958(Class43.openChatboxWidgetId);
-        Class43.openChatboxWidgetId = -1;
+        Class55.method958(ChatBox.dialogueId);
+        ChatBox.dialogueId = -1;
+        Class55.method958(ChatBox.openChatboxWidgetId);
+        ChatBox.openChatboxWidgetId = -1;
         Class55.method958(HuffmanEncoding.openScreenWidgetId);
         HuffmanEncoding.openScreenWidgetId = -1;
         Class55.method958(ActorDefinition.openFullScreenWidgetId);
@@ -693,11 +694,11 @@ public class Main extends RSApplet {
         Class55.method958(Class29.tabAreaOverlayWidgetId);
         Class29.tabAreaOverlayWidgetId = -1;
         Class55.method958(GroundItemTile.walkableWidgetId);
-        Class40_Sub5_Sub15.inputType = 0;
-        InteractiveObject.messagePromptRaised = false;
+        ChatBox.inputType = 0;
+        ChatBox.messagePromptRaised = false;
         Class4.menuOpen = false;
         GroundItemTile.walkableWidgetId = -1;
-        RSApplet.aClass1_8 = null;
+        RSApplet.clickToContinueString = null;
         CacheIndex_Sub1.anInt1819 = -1;
         Class51.anInt1205 = -1;
         Class40_Sub6.anInt2118 = 0;

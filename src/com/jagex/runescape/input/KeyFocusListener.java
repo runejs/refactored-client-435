@@ -5,15 +5,13 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.frame.Console;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.Native;
-import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
-import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.Wall;
@@ -30,9 +28,6 @@ public class KeyFocusListener implements KeyListener, FocusListener {
     public static RSString aClass1_1283 = RSString.CreateString("@yel@");
     public static RSString aClass1_1284 = RSString.CreateString("compass");
     public static Class68 aClass68_1285;
-    public static String consoleInput = "";
-    public static boolean consoleOpen = false;
-    private static final String[] consoleMessages = new String[17];
 
     static {
         for(int i = 0; i < 256; i++) {
@@ -54,60 +49,6 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         aLinkedList_1278 = null;
         anIntArray1282 = null;
         aClass1_1284 = null;
-    }
-
-    public static void drawConsole() {
-        if(consoleOpen) {
-            Rasterizer.drawFilledRectangleAlpha(0, 0, 512, 334, 5320850, 97);
-            Rasterizer.drawHorizontalLine(1, 315, 512, 16777215);
-            Class40_Sub5_Sub17_Sub6.fontBold.setEffects(16777215, 0);
-            Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString("-->", 11, 328);
-            if(Node.pulseCycle % 20 < 10) {
-                Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(consoleInput + "|", 38, 328);
-                return;
-            } else {
-                Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(consoleInput, 38, 328);
-                return;
-            }
-        }
-    }
-
-    public static void drawConsoleArea() {
-        if(consoleOpen) {
-            WallDecoration.fontNormal.setEffects(16777215, 0);
-            for(int i = 0, j = 308; i < 17; i++, j -= 18) {
-                if(consoleMessages[i] != null) {
-                    WallDecoration.fontNormal.drawBasicString(consoleMessages[i], 9, j);
-                }
-            }
-        }
-    }
-
-    public static void printConsoleMessage(String s, int i) {
-        if(Class43.openChatboxWidgetId == -1)
-            GenericTile.redrawChatbox = true;
-        for(int j = 16; j > 0; j--) {
-            consoleMessages[j] = consoleMessages[j - 1];
-        }
-        if(i == 0)
-            consoleMessages[0] = "--> " + s;
-        else
-            consoleMessages[0] = s;
-    }
-
-    public static void sendCommandPacket(String cmd) {
-        switch(cmd.toLowerCase()) {
-            case "cls":
-            case "clear":
-                for(int j = 0; j < 17; j++)
-                    consoleMessages[j] = null;
-                break;
-            default:
-                SceneCluster.packetBuffer.putPacket(248);
-                SceneCluster.packetBuffer.putByte(cmd.length()+1);
-                SceneCluster.packetBuffer.putString(cmd);
-                break;
-        }
     }
 
     public static void draw3dScreen() {
@@ -308,7 +249,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 keyChar = Class51.getKeyChar(keyEvent);
             }
             if(eventKeyCode == 192) {
-                KeyFocusListener.consoleOpen = !KeyFocusListener.consoleOpen;
+                Console.console.consoleOpen = !Console.console.consoleOpen;
             }
             if(GameObjectDefinition.anInt2543 >= 0 && obfuscatedKeyCode >= 0) {
                 RSString.keyCodes[GameObjectDefinition.anInt2543] = obfuscatedKeyCode;

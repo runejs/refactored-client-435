@@ -329,13 +329,13 @@ public class WallDecoration {
             Class38.aClass68_887.method1046((byte) 90);
             if(Class51.anInt1197 == 0 || Class51.anInt1197 == 5) {
                 int i = 20;
-                arg1.method686(Class48.aClass1_1122, 180, 74 + -i, 16777215);
+                arg1.drawStringLeft(Class48.aClass1_1122, 180, 74 + -i, 16777215);
                 int i_89_ = -i + 82;
                 Rasterizer.drawUnfilledRectangle(28, i_89_, 304, 34, 9179409);
                 Rasterizer.drawUnfilledRectangle(29, 1 + i_89_, 302, 32, 0);
                 Rasterizer.drawFilledRectangle(30, 2 + i_89_, Class67.anInt1607 * 3, 30, 9179409);
                 Rasterizer.drawFilledRectangle(3 * Class67.anInt1607 + 30, i_89_ + 2, (-(Class67.anInt1607 * 3) + 300), 30, 0);
-                arg1.method686(Native.currentLoadingText, 180, -i + 105, 16777215);
+                arg1.drawStringLeft(Native.currentLoadingText, 180, -i + 105, 16777215);
             }
             if(Class51.anInt1197 == 20) {
                 int i = 40;

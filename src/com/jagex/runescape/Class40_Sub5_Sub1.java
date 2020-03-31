@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
@@ -18,7 +19,6 @@ import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
-import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 
@@ -223,30 +223,30 @@ public class Class40_Sub5_Sub1 extends SubNode {
         if(MouseHandler.clickType == 1) {
             if(Class57.clickX >= 6 && Class57.clickX <= 106 && RSString.clickY >= 467 && RSString.clickY <= 499) {
                 Cache.redrawChatbox = true;
-                Class35.publicChatMode = (1 + Class35.publicChatMode) % 4;
-                GenericTile.redrawChatbox = true;
+                ChatBox.publicChatMode = (1 + ChatBox.publicChatMode) % 4;
+                ChatBox.redrawChatbox = true;
                 SceneCluster.packetBuffer.putPacket(32);
-                SceneCluster.packetBuffer.putByte(Class35.publicChatMode);
-                SceneCluster.packetBuffer.putByte(Class4.privateChatMode);
-                SceneCluster.packetBuffer.putByte(ItemDefinition.tradeMode);
+                SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
+                SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
+                SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
             }
             if(Class57.clickX >= 135 && Class57.clickX <= 235 && RSString.clickY >= 467 && RSString.clickY <= 499) {
-                GenericTile.redrawChatbox = true;
-                Class4.privateChatMode = (Class4.privateChatMode + 1) % 3;
+                ChatBox.redrawChatbox = true;
+                ChatBox.privateChatMode = (ChatBox.privateChatMode + 1) % 3;
                 Cache.redrawChatbox = true;
                 SceneCluster.packetBuffer.putPacket(32);
-                SceneCluster.packetBuffer.putByte(Class35.publicChatMode);
-                SceneCluster.packetBuffer.putByte(Class4.privateChatMode);
-                SceneCluster.packetBuffer.putByte(ItemDefinition.tradeMode);
+                SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
+                SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
+                SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
             }
             if(Class57.clickX >= 273 && Class57.clickX <= 373 && RSString.clickY >= 467 && RSString.clickY <= 499) {
-                ItemDefinition.tradeMode = (ItemDefinition.tradeMode + 1) % 3;
+                ChatBox.tradeMode = (ChatBox.tradeMode + 1) % 3;
                 Cache.redrawChatbox = true;
-                GenericTile.redrawChatbox = true;
+                ChatBox.redrawChatbox = true;
                 SceneCluster.packetBuffer.putPacket(32);
-                SceneCluster.packetBuffer.putByte(Class35.publicChatMode);
-                SceneCluster.packetBuffer.putByte(Class4.privateChatMode);
-                SceneCluster.packetBuffer.putByte(ItemDefinition.tradeMode);
+                SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
+                SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
+                SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
             }
             if(Class57.clickX >= 412 && Class57.clickX <= 512 && RSString.clickY >= 467 && RSString.clickY <= 499) {
                 if(HuffmanEncoding.openScreenWidgetId == -1) {

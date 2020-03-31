@@ -9,6 +9,7 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -36,7 +37,6 @@ public abstract class Actor extends Renderable {
     public static RSString aClass1_3155 = RSString.CreateString("Please wait )2 attempting to reestablish");
     public static CacheIndex_Sub1 aClass6_Sub1_3157;
     public static RSString aClass1_3159 = aClass1_3155;
-    public static RSString[] chatMessages = new RSString[100];
 
     public boolean[] aBooleanArray3072;
     public int anInt3073;
@@ -283,7 +283,7 @@ public abstract class Actor extends Renderable {
         aClass1_3092 = null;
         aClass1_3138 = null;
         aClass1_3114 = null;
-        chatMessages = null;
+        ChatBox.chatMessages = null;
         Player.trackedPlayers = null;
         aCacheIndex_3150 = null;
         aClass1_3155 = null;

@@ -5,7 +5,6 @@ import com.jagex.runescape.cache.CacheIndex;
 import java.awt.*;
 
 public class Class26 {
-    public static int itemSearchScroll = 0;
     public static boolean aBoolean618 = false;
     public static RSString aClass1_619 = RSString.CreateString("skill)2");
     public static RSString aClass1_620 = RSString.CreateString("@whi@");

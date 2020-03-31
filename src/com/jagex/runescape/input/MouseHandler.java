@@ -3,11 +3,12 @@ package com.jagex.runescape.input;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.frame.ChatBox;
+import com.jagex.runescape.frame.Console;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -16,7 +17,6 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
-import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -36,7 +36,6 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public static int anInt1468;
     public static Canvas aCanvas1469;
     public static int clickType = 0;
-    public static int chatboxScrollMax = 78;
     public static byte[][][] tile_overlayids;
     public static RSString aClass1_1474;
     public static int cameraZoom = 600;
@@ -88,7 +87,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                         ISAAC.redrawTabArea = true;
                     Class4.menuOpen = false;
                     if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
-                        GenericTile.redrawChatbox = true;
+                        ChatBox.redrawChatbox = true;
                 }
             }
             if(meta == 1) {
@@ -121,7 +120,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     ISAAC.redrawTabArea = true;
                 Class4.menuOpen = false;
                 if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
-                    GenericTile.redrawChatbox = true;
+                    ChatBox.redrawChatbox = true;
             }
         } else {
             if(meta == 1 && ActorDefinition.menuActionRow > 0) {
@@ -139,7 +138,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                         GroundItemTile.selectedInventorySlot = item;
                         if(id >> 16 == HuffmanEncoding.openScreenWidgetId)
                             SceneTile.activeInterfaceType = 1;
-                        if(Class43.openChatboxWidgetId == id >> 16)
+                        if(ChatBox.openChatboxWidgetId == id >> 16)
                             SceneTile.activeInterfaceType = 3;
                         Buffer.lastItemDragTime = 0;
                         return;
@@ -266,27 +265,27 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         int rotation = event.getWheelRotation();
         int mouseX = Class12.eventMouseX;
         int mouseY = Cache.eventMouseY;
-        if(mouseX > 0 && mouseY > 346 && mouseX < 516 && mouseY < 505 && Class43.openChatboxWidgetId == -1) {
+        if(mouseX > 0 && mouseY > 346 && mouseX < 516 && mouseY < 505 && ChatBox.openChatboxWidgetId == -1) {
             if(rotation < 0) {
                 if(Class12.chatboxInterface.scrollPosition >= 1) {
 
-                    if(Class40_Sub5_Sub15.inputType == 3) {
-                        Class26.itemSearchScroll = Class26.itemSearchScroll - 30;
-                        GenericTile.redrawChatbox = true;
+                    if(ChatBox.inputType == 3) {
+                        ChatBox.itemSearchScroll = ChatBox.itemSearchScroll - 30;
+                        ChatBox.redrawChatbox = true;
                     } else {
-                        GameObjectDefinition.chatboxScroll = GameObjectDefinition.chatboxScroll + 30;
-                        GenericTile.redrawChatbox = true;
+                        ChatBox.chatboxScroll = ChatBox.chatboxScroll + 30;
+                        ChatBox.redrawChatbox = true;
                     }
                 }
-            } else if(Class40_Sub5_Sub15.inputType == 3) {
-                Class26.itemSearchScroll = Class26.itemSearchScroll + 30;
-                GenericTile.redrawChatbox = true;
-            } else if(GameObjectDefinition.chatboxScroll < 1) {
-                Class26.itemSearchScroll = 0;
-                GenericTile.redrawChatbox = true;
+            } else if(ChatBox.inputType == 3) {
+                ChatBox.itemSearchScroll = ChatBox.itemSearchScroll + 30;
+                ChatBox.redrawChatbox = true;
+            } else if(ChatBox.chatboxScroll < 1) {
+                ChatBox.itemSearchScroll = 0;
+                ChatBox.redrawChatbox = true;
             } else {
-                GameObjectDefinition.chatboxScroll = GameObjectDefinition.chatboxScroll - 30;
-                GenericTile.redrawChatbox = true;
+                ChatBox.chatboxScroll = ChatBox.chatboxScroll - 30;
+                ChatBox.redrawChatbox = true;
             }
             return true;
         } else {
@@ -339,6 +338,15 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     return true;
                 }
 
+            } else if(Console.console.consoleOpen) {
+                Console.console.currentScroll -= rotation * 18;
+                if(Console.console.currentScroll < 0) {
+                    Console.console.currentScroll = 0;
+                }
+                if(Console.console.currentScroll > Console.console.getMaxScroll() - 308) {
+                    Console.console.currentScroll = Console.console.getMaxScroll() - 308;
+                }
+                return true;
             }
         }
         return false;

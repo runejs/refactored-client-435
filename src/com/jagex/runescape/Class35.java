@@ -16,7 +16,6 @@ public class Class35 implements Interface3 {
     public static boolean aBoolean1734 = false;
     public static boolean aBoolean1735 = true;
     public static RSString aClass1_1736 = RSString.CreateString("Enter message to send to ");
-    public static int publicChatMode = 0;
     public static int[] SKIN_COLOURS = new int[]{9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145, 58654, 5027, 1457, 16565, 34991, 25486};
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1744;
     public static byte[][][] tile_overlay_rotation;
@@ -45,7 +44,7 @@ public class Class35 implements Interface3 {
         anInt1753 = anInt1752;
         int[] is = arg0.method192(0, true);
         int i = is.length;
-        aClass40_Sub10Array1740 = new EntryTable[arg0.method190(0, (byte) 120)];
+        aClass40_Sub10Array1740 = new EntryTable[arg0.method190(0)];
         for(int i_4_ = 0; i > i_4_; i_4_++) {
             Buffer class40_sub1 = new Buffer(arg0.getFile(is[i_4_], 0));
             aClass40_Sub10Array1740[is[i_4_]] = new EntryTable(class40_sub1);

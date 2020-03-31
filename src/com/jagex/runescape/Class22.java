@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
@@ -16,7 +17,6 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.GroundItemTile;
-import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public abstract class Class22 {
@@ -192,7 +192,7 @@ public abstract class Class22 {
                         RSCanvas.anInt65 = 0;
                 }
                 if(i == 8) {
-                    GenericTile.redrawChatbox = true;
+                    ChatBox.redrawChatbox = true;
                     CollisionMap.anInt165 = i_21_;
                 }
                 if(i == 4) {

@@ -92,23 +92,23 @@ public class Class37 {
         OverlayDefinition.method559(30);
     }
 
-    public static void method435(boolean arg0) {
+    public static void renderMinimap(boolean arg0) {
         RSCanvas.method45((byte) -106);
         if(Class27.minimapState == 2) {
-            int[] is = Rasterizer.pixels;
-            byte[] is_6_ = Class34.mapBack.imgPixels;
-            int i = is_6_.length;
-            for(int i_7_ = 0; i > i_7_; i_7_++) {
-                if(is_6_[i_7_] == 0)
-                    is[i_7_] = 0;
+            byte[] mmBackgroundPixels = Class34.mapBack.imgPixels;
+            int[] rasterPixels = Rasterizer.pixels;
+            int pixelCount = mmBackgroundPixels.length;
+            for(int i = 0; i < pixelCount; i++) {
+                if(mmBackgroundPixels[i] == 0)
+                    rasterPixels[i] = 0;
             }
-            AnimationSequence.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
+            AnimationSequence.minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
             ActorDefinition.method574();
         } else {
             int i = 48 + ((Player.localPlayer.worldX) / 32);
             int i_8_ = 464 + -((Player.localPlayer.worldY) / 32);
             int i_9_ = GroundItemTile.cameraHorizontal + Class43.cameraYawOffset & 0x7ff;
-            Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.method724(25, 5, 146, 151, i, i_8_, i_9_, Class51.mapZoomOffset + 256, Landscape.anIntArray1186, Class34.anIntArray852);
+            Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.shapeImageToPixels(25, 5, 146, 151, i, i_8_, i_9_, Class51.mapZoomOffset + 256, Landscape.anIntArray1186, Class34.anIntArray852);
             for(int i_10_ = 0; GameObject.anInt3040 > i_10_; i_10_++) {
                 i = 2 + (4 * Actor.anIntArray3149[i_10_] + -((Player.localPlayer.worldX) / 32));
                 i_8_ = (2 + 4 * LinkedList.anIntArray1083[i_10_] - ((Player.localPlayer.worldY) / 32));
@@ -190,7 +190,7 @@ public class Class37 {
                 SceneTile.drawOnMinimap(i_8_, i, (Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[0]));
             }
             Rasterizer.drawFilledRectangle(97, 78, 3, 3, 16777215);
-            AnimationSequence.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
+            AnimationSequence.minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
             if(arg0)
                 ActorDefinition.method574();
         }

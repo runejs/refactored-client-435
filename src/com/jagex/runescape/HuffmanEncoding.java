@@ -8,6 +8,7 @@ import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.Item;
@@ -23,8 +24,6 @@ import com.jagex.runescape.scene.tile.Wall;
 public class HuffmanEncoding {
     public static RSString blank_string = RSString.CreateString("");
     public static Class68 aClass68_1541;
-    public static RSString lastItemSearchInput = blank_string;
-    public static RSString inputInputMessage = blank_string;
     public static RSString aClass1_1544 = RSString.CreateString("Side panel redrawn");
     public static int anInt1545 = 0;
     public static RSString aClass1_1546 = RSString.CreateString("Icons redrawn");
@@ -38,7 +37,6 @@ public class HuffmanEncoding {
     public static RSString aClass1_1563 = blank_string;
     public static int[] anIntArray1564 = (new int[]{-1, -1, -1, -1, -1, -1, -1, -1, 85, 80, 84, -1, 91, -1, -1, -1, 81, 82, 86, -1, -1, -1, -1, -1, -1, -1, -1, 0, -1, -1, -1, -1, 83, 104, 105, 103, 102, 96, 98, 97, 99, -1, -1, -1, -1, -1, -1, -1, 25, 16, 17, 18, 19, 20, 21, 22, 23, 24, -1, -1, -1, -1, -1, -1, -1, 48, 68, 66, 50, 34, 51, 52, 53, 39, 54, 55, 56, 70, 69, 40, 41, 32, 35, 49, 36, 38, 67, 33, 65, 37, 64, -1, -1, -1, -1, -1, 228, 231, 227, 233, 224, 219, 225, 230, 226, 232, 89, 87, -1, 88, 229, 90, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, -1, -1, -1, 101, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1});
     public static RSString chatMessage = blank_string;
-    public static int[] chatTypes = new int[100];
     public static RSString aClass1_1572 = aClass1_1555;
 
     public int[] chatDecryptKeys;
@@ -118,9 +116,9 @@ public class HuffmanEncoding {
         aClass1_1555 = null;
         aClass1_1563 = null;
         aClass1_1544 = null;
-        lastItemSearchInput = null;
-        inputInputMessage = null;
-        chatTypes = null;
+        ChatBox.lastItemSearchInput = null;
+        ChatBox.inputMessage = null;
+        ChatBox.chatTypes = null;
         aClass1_1546 = null;
         reportedName = null;
         str_Connecting_to_friendserver = null;
@@ -209,7 +207,7 @@ public class HuffmanEncoding {
         int i = arg0.getHash(arg1);
         int i_13_ = arg0.method179(i, arg3);
         if(arg2 != 21)
-            chatTypes = null;
+            ChatBox.chatTypes = null;
         return Class48.method927(i_13_, arg0, true, i);
     }
 
@@ -420,7 +418,7 @@ public class HuffmanEncoding {
             i_0_++;
         }
         if(arg5 != -1)
-            lastItemSearchInput = null;
+            ChatBox.lastItemSearchInput = null;
         return -arg4 + (i_0_ + 1);
     }
 

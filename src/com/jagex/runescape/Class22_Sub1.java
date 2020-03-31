@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Model;
@@ -15,7 +16,6 @@ import java.awt.*;
 
 public class Class22_Sub1 extends Class22 {
     public static long aLong1841;
-    public static RSString[] itemSearchResultNames = new RSString[100];
     public static int[] anIntArray1846 = new int[5];
     public static int[] anIntArray1847 = new int[2000];
     public static CacheIndex aCacheIndex_1855;
@@ -45,7 +45,7 @@ public class Class22_Sub1 extends Class22 {
         English.enterYourUsernameAndPassword = null;
         English.reportAbuse = null;
         English.enterYourUsernameAndPassword = null;
-        itemSearchResultNames = null;
+        ChatBox.itemSearchResultNames = null;
         aCacheIndex_1855 = null;
     }
 

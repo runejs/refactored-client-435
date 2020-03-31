@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.frame.Console;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
@@ -54,15 +55,16 @@ public class Item extends Renderable {
             Class40_Sub5_Sub6.currentCameraPositionH += (-Class40_Sub5_Sub6.currentCameraPositionH + sceneX) / 16;
         if(Class34.currentCameraPositionV != sceneY)
             Class34.currentCameraPositionV += (-Class34.currentCameraPositionV + sceneY) / 16;
-        if(obfuscatedKeyStatus[96])
+
+        if(obfuscatedKeyStatus[96] && !Console.console.consoleOpen)
             Wall.cameraVelocityHorizontal += (-24 - Wall.cameraVelocityHorizontal) / 2;
-        else if(obfuscatedKeyStatus[97])
+        else if(obfuscatedKeyStatus[97] && !Console.console.consoleOpen)
             Wall.cameraVelocityHorizontal += (24 - Wall.cameraVelocityHorizontal) / 2;
         else
             Wall.cameraVelocityHorizontal /= 2;
-        if(obfuscatedKeyStatus[98])
+        if(obfuscatedKeyStatus[98] && !Console.console.consoleOpen)
             Class60.cameraVelocityVertical += (12 + -Class60.cameraVelocityVertical) / 2;
-        else if(obfuscatedKeyStatus[99])
+        else if(obfuscatedKeyStatus[99] && !Console.console.consoleOpen)
             Class60.cameraVelocityVertical += (-12 - Class60.cameraVelocityVertical) / 2;
         else
             Class60.cameraVelocityVertical /= 2;

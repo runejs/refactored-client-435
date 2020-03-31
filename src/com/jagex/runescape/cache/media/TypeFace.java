@@ -377,7 +377,7 @@ public class TypeFace extends Rasterizer {
         return this.getDisplayedWidth(string.toString());
     }
 
-    public void method686(RSString arg0, int arg1, int arg2, int arg3) {
+    public void drawStringLeft(RSString arg0, int arg1, int arg2, int arg3) {
         drawString(arg0, arg1 - getStringWidth(arg0) / 2, arg2, arg3);
     }
 

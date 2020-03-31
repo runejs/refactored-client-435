@@ -25,7 +25,6 @@ public class GenericTile {
     public static byte[][] objectData;
     public static RSString aClass1_1218;
     public static int fps = 0;
-    public static boolean redrawChatbox = false;
     public static int anInt1222 = 0;
     public static RSString aClass1_1223 = aClass1_1216;
     public static RSString aClass1_1230 = RSString.CreateString("headicons_hint");

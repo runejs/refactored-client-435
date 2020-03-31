@@ -9,6 +9,8 @@ import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.frame.ChatBox;
+import com.jagex.runescape.frame.Console;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Item;
@@ -16,7 +18,6 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.GroundItemTile;
-import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.GenericTile;
@@ -163,8 +164,8 @@ public class IncomingPackets {
                     GroundItemTile.varbitmasks[i_9_] = i_8_;
                     Class22.method309(-1, i_9_);
                     ISAAC.redrawTabArea = true;
-                    if(Class48.anInt1138 != -1)
-                        GenericTile.redrawChatbox = true;
+                    if(ChatBox.dialogueId != -1)
+                        ChatBox.redrawChatbox = true;
                 }
                 incomingPacket = -1;
                 return true;
@@ -333,8 +334,8 @@ public class IncomingPackets {
                         RSString class1_29_ = (message.substring((1 + message.contains((Class43.char_colon))), -9 + message.length()));
                         Class44.addChatMessage(class1_27_, class1_29_, 8);
                     }
-                } else if(KeyFocusListener.consoleOpen) {
-                    KeyFocusListener.printConsoleMessage("<col=FFFF00>"+message.toString()+"</col>", 1);
+                } else if(Console.console.consoleOpen) {
+                    Console.console.printConsoleMessage("<col=FFFF00>"+message.toString()+"</col>", false);
                 } else {
                     Class44.addChatMessage(HuffmanEncoding.blank_string, message, 0);
                 }
@@ -430,10 +431,10 @@ public class IncomingPackets {
             if(incomingPacket == SHOW_TAB_AND_SCREEN_WIDGETS) { // show tab and screen widget
                 int i_49_ = incomingPacketBuffer.getUnsignedShortBE();
                 int i_50_ = incomingPacketBuffer.getUnsignedShortLE();
-                if(Class43.openChatboxWidgetId != -1) {
-                    Class55.method958(Class43.openChatboxWidgetId);
-                    GenericTile.redrawChatbox = true;
-                    Class43.openChatboxWidgetId = -1;
+                if(ChatBox.openChatboxWidgetId != -1) {
+                    Class55.method958(ChatBox.openChatboxWidgetId);
+                    ChatBox.redrawChatbox = true;
+                    ChatBox.openChatboxWidgetId = -1;
                 }
                 if(ActorDefinition.openFullScreenWidgetId != -1) {
                     Class55.method958(ActorDefinition.openFullScreenWidgetId);
@@ -453,9 +454,9 @@ public class IncomingPackets {
                     Class29.tabAreaOverlayWidgetId = i_49_;
                 }
                 CacheIndex_Sub1.anInt1819 = -1;
-                if(Class40_Sub5_Sub15.inputType != 0) {
-                    GenericTile.redrawChatbox = true;
-                    Class40_Sub5_Sub15.inputType = 0;
+                if(ChatBox.inputType != 0) {
+                    ChatBox.redrawChatbox = true;
+                    ChatBox.inputType = 0;
                 }
                 ISAAC.redrawTabArea = true;
                 IdentityKit.drawTabIcons = true;
@@ -502,10 +503,10 @@ public class IncomingPackets {
                     Class29.tabAreaOverlayWidgetId = -1;
                     ISAAC.redrawTabArea = true;
                 }
-                if(Class43.openChatboxWidgetId != -1) {
-                    Class55.method958(Class43.openChatboxWidgetId);
-                    GenericTile.redrawChatbox = true;
-                    Class43.openChatboxWidgetId = -1;
+                if(ChatBox.openChatboxWidgetId != -1) {
+                    Class55.method958(ChatBox.openChatboxWidgetId);
+                    ChatBox.redrawChatbox = true;
+                    ChatBox.openChatboxWidgetId = -1;
                 }
                 if(ActorDefinition.openFullScreenWidgetId != -1) {
                     Class55.method958(ActorDefinition.openFullScreenWidgetId);
@@ -521,9 +522,9 @@ public class IncomingPackets {
                     HuffmanEncoding.openScreenWidgetId = i_55_;
                 }
                 CacheIndex_Sub1.anInt1819 = -1;
-                if(Class40_Sub5_Sub15.inputType != 0) {
-                    GenericTile.redrawChatbox = true;
-                    Class40_Sub5_Sub15.inputType = 0;
+                if(ChatBox.inputType != 0) {
+                    ChatBox.redrawChatbox = true;
+                    ChatBox.inputType = 0;
                 }
                 Class64.method1012(HuffmanEncoding.openScreenWidgetId, 2);
                 incomingPacket = -1;
@@ -553,12 +554,12 @@ public class IncomingPackets {
             }
             if(incomingPacket == 185) {
                 int i_56_ = incomingPacketBuffer.getShortBE();
-                if(Class48.anInt1138 != i_56_) {
-                    Class55.method958(Class48.anInt1138);
-                    Class48.anInt1138 = i_56_;
+                if(ChatBox.dialogueId != i_56_) {
+                    Class55.method958(ChatBox.dialogueId);
+                    ChatBox.dialogueId = i_56_;
                 }
                 incomingPacket = -1;
-                GenericTile.redrawChatbox = true;
+                ChatBox.redrawChatbox = true;
                 return true;
             }
             if(incomingPacket == SHOW_FULLSCREEN_WIDGET) { // fullscreen widget?
@@ -575,9 +576,9 @@ public class IncomingPackets {
                     Class55.method958(Class29.tabAreaOverlayWidgetId);
                     Class29.tabAreaOverlayWidgetId = -1;
                 }
-                if(Class43.openChatboxWidgetId != -1) {
-                    Class55.method958(Class43.openChatboxWidgetId);
-                    Class43.openChatboxWidgetId = -1;
+                if(ChatBox.openChatboxWidgetId != -1) {
+                    Class55.method958(ChatBox.openChatboxWidgetId);
+                    ChatBox.openChatboxWidgetId = -1;
                 }
                 if(fullscreenWidgetId != ActorDefinition.openFullScreenWidgetId) {
                     Class55.method958(ActorDefinition.openFullScreenWidgetId);
@@ -589,7 +590,7 @@ public class IncomingPackets {
                     UnderlayDefinition.openSecondaryWidgetId = secondaryWidgetId;
                 }
                 CacheIndex_Sub1.anInt1819 = -1;
-                Class40_Sub5_Sub15.inputType = 0;
+                ChatBox.inputType = 0;
                 incomingPacket = -1;
                 return true;
             }
@@ -600,10 +601,10 @@ public class IncomingPackets {
                     IdentityKit.drawTabIcons = true;
                     Class29.tabAreaOverlayWidgetId = -1;
                 }
-                if(Class43.openChatboxWidgetId != -1) {
-                    Class55.method958(Class43.openChatboxWidgetId);
-                    GenericTile.redrawChatbox = true;
-                    Class43.openChatboxWidgetId = -1;
+                if(ChatBox.openChatboxWidgetId != -1) {
+                    Class55.method958(ChatBox.openChatboxWidgetId);
+                    ChatBox.redrawChatbox = true;
+                    ChatBox.openChatboxWidgetId = -1;
                 }
                 if(ActorDefinition.openFullScreenWidgetId != -1) {
                     Class55.method958(ActorDefinition.openFullScreenWidgetId);
@@ -620,9 +621,9 @@ public class IncomingPackets {
                 }
                 incomingPacket = -1;
                 CacheIndex_Sub1.anInt1819 = -1;
-                if(Class40_Sub5_Sub15.inputType != 0) {
-                    GenericTile.redrawChatbox = true;
-                    Class40_Sub5_Sub15.inputType = 0;
+                if(ChatBox.inputType != 0) {
+                    ChatBox.redrawChatbox = true;
+                    ChatBox.inputType = 0;
                 }
                 return true;
             }
@@ -648,12 +649,12 @@ public class IncomingPackets {
                     Class55.method958(HuffmanEncoding.openScreenWidgetId);
                     HuffmanEncoding.openScreenWidgetId = -1;
                 }
-                if(Class43.openChatboxWidgetId != widgetId) {
-                    Class55.method958(Class43.openChatboxWidgetId);
-                    Class43.openChatboxWidgetId = widgetId;
+                if(ChatBox.openChatboxWidgetId != widgetId) {
+                    Class55.method958(ChatBox.openChatboxWidgetId);
+                    ChatBox.openChatboxWidgetId = widgetId;
                 }
 
-                GenericTile.redrawChatbox = true;
+                ChatBox.redrawChatbox = true;
                 incomingPacket = -1;
                 CacheIndex_Sub1.anInt1819 = -1;
                 return true;
@@ -704,10 +705,10 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == 196) { // set chat mode configs
-                Class35.publicChatMode = incomingPacketBuffer.getUnsignedByte();
-                Class4.privateChatMode = incomingPacketBuffer.getUnsignedByte();
-                ItemDefinition.tradeMode = incomingPacketBuffer.getUnsignedByte();
-                GenericTile.redrawChatbox = true;
+                ChatBox.publicChatMode = incomingPacketBuffer.getUnsignedByte();
+                ChatBox.privateChatMode = incomingPacketBuffer.getUnsignedByte();
+                ChatBox.tradeMode = incomingPacketBuffer.getUnsignedByte();
+                ChatBox.redrawChatbox = true;
                 Cache.redrawChatbox = true;
                 incomingPacket = -1;
                 return true;
@@ -729,8 +730,8 @@ public class IncomingPackets {
                 if(configValue != GroundItemTile.varbitmasks[configId]) {
                     GroundItemTile.varbitmasks[configId] = configValue;
                     Class22.method309(-1, configId);
-                    if(Class48.anInt1138 != -1)
-                        GenericTile.redrawChatbox = true;
+                    if(ChatBox.dialogueId != -1)
+                        ChatBox.redrawChatbox = true;
                     ISAAC.redrawTabArea = true;
                 }
                 incomingPacket = -1;
@@ -752,10 +753,10 @@ public class IncomingPackets {
             if(incomingPacket == 237) { // show tab overlay widget
                 int i_68_ = incomingPacketBuffer.getUnsignedShortBE();
                 Class42.method883((byte) 107, i_68_);
-                if(Class43.openChatboxWidgetId != -1) {
-                    Class55.method958(Class43.openChatboxWidgetId);
-                    Class43.openChatboxWidgetId = -1;
-                    GenericTile.redrawChatbox = true;
+                if(ChatBox.openChatboxWidgetId != -1) {
+                    Class55.method958(ChatBox.openChatboxWidgetId);
+                    ChatBox.openChatboxWidgetId = -1;
+                    ChatBox.redrawChatbox = true;
                 }
                 if(ActorDefinition.openFullScreenWidgetId != -1) {
                     Class55.method958(ActorDefinition.openFullScreenWidgetId);
@@ -775,9 +776,9 @@ public class IncomingPackets {
                     Class29.tabAreaOverlayWidgetId = i_68_;
                 }
                 IdentityKit.drawTabIcons = true;
-                if(Class40_Sub5_Sub15.inputType != 0) {
-                    GenericTile.redrawChatbox = true;
-                    Class40_Sub5_Sub15.inputType = 0;
+                if(ChatBox.inputType != 0) {
+                    ChatBox.redrawChatbox = true;
+                    ChatBox.inputType = 0;
                 }
                 CacheIndex_Sub1.anInt1819 = -1;
                 incomingPacket = -1;
@@ -849,8 +850,8 @@ public class IncomingPackets {
                         GroundItemTile.varbitmasks[i_80_] = 0;
                     }
                 }
-                if(Class48.anInt1138 != -1)
-                    GenericTile.redrawChatbox = true;
+                if(ChatBox.dialogueId != -1)
+                    ChatBox.redrawChatbox = true;
                 ISAAC.redrawTabArea = true;
                 incomingPacket = -1;
                 return true;
@@ -865,15 +866,15 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == 132) { // open chatbox input widget
-                if(Class43.openChatboxWidgetId != -1) {
-                    Class55.method958(Class43.openChatboxWidgetId);
-                    Class43.openChatboxWidgetId = -1;
+                if(ChatBox.openChatboxWidgetId != -1) {
+                    Class55.method958(ChatBox.openChatboxWidgetId);
+                    ChatBox.openChatboxWidgetId = -1;
                 }
                 incomingPacket = -1;
-                HuffmanEncoding.inputInputMessage = HuffmanEncoding.blank_string;
-                Class40_Sub5_Sub15.inputType = 1;
-                GenericTile.redrawChatbox = true;
-                InteractiveObject.messagePromptRaised = false;
+                ChatBox.inputMessage = HuffmanEncoding.blank_string;
+                ChatBox.inputType = 1;
+                ChatBox.redrawChatbox = true;
+                ChatBox.messagePromptRaised = false;
                 return true;
             }
             if(incomingPacket == 186) {
@@ -1132,15 +1133,15 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == 124) {
-                if(Class43.openChatboxWidgetId != -1) {
-                    Class55.method958(Class43.openChatboxWidgetId);
-                    Class43.openChatboxWidgetId = -1;
+                if(ChatBox.openChatboxWidgetId != -1) {
+                    Class55.method958(ChatBox.openChatboxWidgetId);
+                    ChatBox.openChatboxWidgetId = -1;
                 }
-                GenericTile.redrawChatbox = true;
-                HuffmanEncoding.inputInputMessage = HuffmanEncoding.blank_string;
-                Class40_Sub5_Sub15.inputType = 2;
+                ChatBox.redrawChatbox = true;
+                ChatBox.inputMessage = HuffmanEncoding.blank_string;
+                ChatBox.inputType = 2;
                 incomingPacket = -1;
-                InteractiveObject.messagePromptRaised = false;
+                ChatBox.messagePromptRaised = false;
                 return true;
             }
             CacheIndex.method169(("T1 - " + incomingPacket + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + incomingPacketSize), (byte) -121, null);

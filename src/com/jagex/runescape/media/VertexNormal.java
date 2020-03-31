@@ -14,7 +14,6 @@ public class VertexNormal {
     public static Cache aClass9_1102 = new Cache(500);
     public static CacheIndex_Sub1 aClass6_Sub1_1104;
     public static RSString aClass1_1105 = aClass1_1093;
-    public static int itemSearchResultCount = 0;
     public static boolean lowMemory = false;
     public static RSString aClass1_1113 = RSString.CreateString("mapback");
     public static RSString aClass1_1114 = RSString.CreateString("@lre@");

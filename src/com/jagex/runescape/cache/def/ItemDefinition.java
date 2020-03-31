@@ -17,8 +17,7 @@ import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.awt.*;
 
-public class ItemDefinition extends SubNode {
-    public static int tradeMode = 0;
+public class ItemDefinition extends SubNode implements EntityDefinition {
     public static int anInt2798 = 0;
     public static int[] soundVolume = new int[50];
     public static int selectedMask;
@@ -493,5 +492,10 @@ public class ItemDefinition extends SubNode {
         }
         return model;
 
+    }
+
+    @Override
+    public RSString getName() {
+        return name;
     }
 }

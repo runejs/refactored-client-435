@@ -3,6 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -74,7 +75,7 @@ public class Class51 {
             LinkedList.method908((byte) 114);
             Class55.method964(40);
             ActorDefinition.method574();
-            GenericTile.method943(ItemDefinition.tradeMode, WallDecoration.fontNormal, Class4.privateChatMode, Class35.publicChatMode);
+            GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             Class40_Sub2.method527(Class5.currentTabId, arg0 + 4, Class40_Sub5_Sub11.tabWidgetIds, Class29.tabAreaOverlayWidgetId == -1, -1);
             Class38.aBoolean893 = true;
             Class40_Sub3.aBoolean2026 = true;
@@ -83,16 +84,16 @@ public class Class51 {
         int i = 151;
         Class65.method1018();
         i -= 3;
-        WallDecoration.fontNormal.method686(arg1, 257, i, arg0);
-        WallDecoration.fontNormal.method686(arg1, 256, i + -1, 16777215);
+        WallDecoration.fontNormal.drawStringLeft(arg1, 257, i, arg0);
+        WallDecoration.fontNormal.drawStringLeft(arg1, 256, i + -1, 16777215);
         if(arg3 != null) {
             i += 15;
             if(arg2) {
                 int i_0_ = 4 + WallDecoration.fontNormal.getStringWidth(arg3);
                 Rasterizer.drawFilledRectangle(257 - i_0_ / 2, -11 + i, i_0_, 11, 0);
             }
-            WallDecoration.fontNormal.method686(arg3, 257, i, 0);
-            WallDecoration.fontNormal.method686(arg3, 256, i - 1, 16777215);
+            WallDecoration.fontNormal.drawStringLeft(arg3, 257, i, 0);
+            WallDecoration.fontNormal.drawStringLeft(arg3, 256, i - 1, 16777215);
         }
         Player.method792(arg0 + 107);
     }

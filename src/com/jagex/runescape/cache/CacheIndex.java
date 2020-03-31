@@ -403,9 +403,7 @@ public abstract class CacheIndex {
         throw new RuntimeException();
     }
 
-    public int method190(int arg0, byte arg1) {
-        if(arg1 < 4)
-            return 17;
+    public int method190(int arg0) {
         return aByteArrayArrayArray249[arg0].length;
     }
 

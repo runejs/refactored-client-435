@@ -4,9 +4,9 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.scene.SceneCluster;
-import com.jagex.runescape.scene.tile.GenericTile;
 
 import java.math.BigInteger;
 
@@ -62,11 +62,11 @@ public class PacketBuffer extends Buffer {
             ISAAC.redrawTabArea = true;
             Class29.tabAreaOverlayWidgetId = -1;
         }
-        if(Class43.openChatboxWidgetId != -1) {
-            Class55.method958(Class43.openChatboxWidgetId);
+        if(ChatBox.openChatboxWidgetId != -1) {
+            Class55.method958(ChatBox.openChatboxWidgetId);
             CacheIndex_Sub1.anInt1819 = -1;
-            GenericTile.redrawChatbox = true;
-            Class43.openChatboxWidgetId = -1;
+            ChatBox.redrawChatbox = true;
+            ChatBox.openChatboxWidgetId = -1;
         }
         if(ActorDefinition.openFullScreenWidgetId != -1) {
             Class55.method958(ActorDefinition.openFullScreenWidgetId);

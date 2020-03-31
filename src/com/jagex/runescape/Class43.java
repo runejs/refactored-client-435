@@ -4,13 +4,13 @@ import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.FloorDecoration;
-import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 
@@ -22,7 +22,6 @@ public class Class43 {
     public static RSString aClass1_1024 = RSString.CreateString("backleft2");
     public static int bankInsertMode = 0;
     public static RSString char_colon = RSString.CreateString(":");
-    public static int openChatboxWidgetId = -1;
 
     public static void method890(long arg0, int arg1) {
         if(arg0 > 0L) {
@@ -103,21 +102,21 @@ public class Class43 {
                 }
                 Item.anInt3065 = -1;
                 if(Class13.mouseX > 17 && Landscape.mouseY > 357 && Class13.mouseX < 496 && Landscape.mouseY < 453) {
-                    if(openChatboxWidgetId == -1) {
-                        if(Class48.anInt1138 == -1) {
+                    if(ChatBox.openChatboxWidgetId == -1) {
+                        if(ChatBox.dialogueId == -1) {
                             if(Landscape.mouseY < 434 && Class13.mouseX < 426)
                                 Class40_Sub11.method873((Landscape.mouseY + -357), 45);
                         } else
-                            Class13.method243((byte) 89, 357, 496, 453, Class48.anInt1138, 17, Class13.mouseX, Landscape.mouseY, 3);
+                            Class13.method243((byte) 89, 357, 496, 453, ChatBox.dialogueId, 17, Class13.mouseX, Landscape.mouseY, 3);
                     } else
-                        Class13.method243((byte) 89, 357, 496, 453, openChatboxWidgetId, 17, Class13.mouseX, Landscape.mouseY, 2);
+                        Class13.method243((byte) 89, 357, 496, 453, ChatBox.openChatboxWidgetId, 17, Class13.mouseX, Landscape.mouseY, 2);
                 }
-                if((openChatboxWidgetId != -1 || Class48.anInt1138 != -1) && (Class55.anInt1296 != OverlayDefinition.anInt2328)) {
-                    GenericTile.redrawChatbox = true;
+                if((ChatBox.openChatboxWidgetId != -1 || ChatBox.dialogueId != -1) && (Class55.anInt1296 != OverlayDefinition.anInt2328)) {
+                    ChatBox.redrawChatbox = true;
                     Class55.anInt1296 = OverlayDefinition.anInt2328;
                 }
-                if((openChatboxWidgetId != -1 || Class48.anInt1138 != -1) && (Item.anInt3065 != Class67.anInt1586)) {
-                    GenericTile.redrawChatbox = true;
+                if((ChatBox.openChatboxWidgetId != -1 || ChatBox.dialogueId != -1) && (Item.anInt3065 != Class67.anInt1586)) {
+                    ChatBox.redrawChatbox = true;
                     Class67.anInt1586 = Item.anInt3065;
                 }
                 while(!bool) {

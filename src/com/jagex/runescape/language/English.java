@@ -27,4 +27,5 @@ public class English {
     public static RSString pleaseWait5MinutesBeforeTryingAgain = RSString.CreateString("Please wait 5 minutes before trying again)3");
     public static RSString pleaseUseADifferentWorld = RSString.CreateString("Please use a different world)3");
     public static RSString walkHere = RSString.CreateString("Walk here");
+    public static RSString loadedTitleScreen = RSString.CreateString("Loaded title screen");
 }
