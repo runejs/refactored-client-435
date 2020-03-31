@@ -503,7 +503,7 @@ public class IncomingPackets {
                 int i_53_ = incomingPacketBuffer.getUnsignedByte();
                 int i_54_ = incomingPacketBuffer.getUnsignedByte();
                 if(i_54_ >= 1 && i_54_ <= 5) {
-                    if(class1.equalsIgnoreCase(RSApplet.aClass1_34, !arg0))
+                    if(class1.equalsIgnoreCase(RSApplet.aClass1_34))
                         class1 = null;
                     Main.playerActions[i_54_ + -1] = class1;
                     Class13.playerArray[i_54_ + -1] = i_53_ == 0;

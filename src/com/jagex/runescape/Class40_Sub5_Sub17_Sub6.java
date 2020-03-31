@@ -15,18 +15,12 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     public static TypeFace aClass40_Sub5_Sub14_Sub1_3236;
     public static int[][] playerColours = {{6798, 107, 10283, 16, 4797, 7744, 5799, 4634, 33697, 22433, 2983, 54193}, {8741, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003, 25239}, {25238, 8742, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003}, {4626, 11146, 6439, 12, 4758, 10270}, {4550, 4537, 5681, 5673, 5790, 6806, 8076, 4574}};
     public static Class68 aClass68_3243;
-    public static RSString aClass1_3245 = RSString.CreateString("Sie haben gerade eine andere Welt verlassen)3");
     public static TypeFace fontBold;
-    public static RSString aClass1_3247;
     public static int[] anIntArray3248;
     public static int[] anIntArray3250;
     public static int[] anIntArray3253;
     public static RSString aClass1_3254 = RSString.CreateString("redstone2");
     public static int[] anIntArray3255;
-
-    static {
-        aClass1_3247 = RSString.CreateString("Die Verbindung konnte");
-    }
 
     public int anInt3230;
     public int anInt3231;
@@ -114,13 +108,11 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     }
 
     public static void method835() {
-        aClass1_3247 = null;
         aClass68_3243 = null;
         anIntArray3250 = null;
         playerColours = null;
         fontBold = null;
         anIntArray3253 = null;
-        aClass1_3245 = null;
         aClass1_3254 = null;
         anIntArray3248 = null;
         anIntArray3255 = null;

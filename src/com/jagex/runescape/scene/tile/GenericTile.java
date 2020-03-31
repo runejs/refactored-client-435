@@ -8,6 +8,7 @@ import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -18,35 +19,21 @@ import java.awt.*;
 
 public class GenericTile {
     public static RSString aClass1_1213 = RSString.CreateString(" @whi@(X");
-    public static int anInt1214;
-    public static volatile boolean aBoolean1215;
+    public static int anInt1214 = 0;
+    public static volatile boolean aBoolean1215 = true;
     public static RSString aClass1_1216 = RSString.CreateString("New User");
     public static byte[][] objectData;
     public static RSString aClass1_1218;
-    public static int fps;
+    public static int fps = 0;
     public static boolean redrawChatbox = false;
-    public static int anInt1222;
-    public static RSString aClass1_1223;
-    public static RSString aClass1_1228;
-    public static RSString aClass1_1230;
-    public static int anInt1233;
-    public static RSString aClass1_1234;
-    public static RSString aClass1_1238;
-    public static RSString aClass1_1241;
+    public static int anInt1222 = 0;
+    public static RSString aClass1_1223 = aClass1_1216;
+    public static RSString aClass1_1230 = RSString.CreateString("headicons_hint");
+    public static int anInt1233 = 0;
+    public static RSString aClass1_1234 = RSString.CreateString("Connection timed out)3");
 
     static {
-        aBoolean1215 = true;
-        anInt1222 = 0;
-        aClass1_1223 = aClass1_1216;
-        aClass1_1228 = (RSString.CreateString("Ihre Freunde)2Liste ist voll(Q Mitglieder k-Onnen 200 Freunde hinzuf-Ugen)1 freie Spieler nur 100)3"));
-        aClass1_1230 = RSString.CreateString("headicons_hint");
-        fps = 0;
-        aClass1_1234 = RSString.CreateString("Connection timed out)3");
-        anInt1233 = 0;
-        aClass1_1238 = RSString.CreateString("Der Server wird gerade aktualisiert)3");
         aClass1_1218 = aClass1_1234;
-        anInt1214 = 0;
-        aClass1_1241 = RSString.CreateString("Lade Wordpack )2 ");
     }
 
     public int texture;
@@ -79,7 +66,7 @@ public class GenericTile {
             arg2.method688(Class30.aClass1_682, 55, 41, 16711680, true);
         if(arg4 == 3)
             arg2.method688(Class40_Sub5_Sub11.aClass1_2622, 55, 41, 65535, true);
-        arg2.method688(RSString.aClass1_1703, 184, 28, 16777215, true);
+        arg2.method688(English.privateChat, 184, 28, 16777215, true);
         if(arg3 == 0)
             arg2.method688(Npc.aClass1_3311, 184, 41, 65280, true);
         if(arg3 == 1)
@@ -93,7 +80,7 @@ public class GenericTile {
             arg2.method688(Class40_Sub5_Sub15.aClass1_2786, 324, 41, 16776960, true);
         if(arg0 == 2)
             arg2.method688(Class30.aClass1_682, 324, 41, 16711680, true);
-        arg2.drawText(Class22_Sub1.aClass1_1865, 417, 17, 85, 25, 16777215, true, 1, 1, 0);
+        arg2.drawText(English.reportAbuse, 417, 17, 85, 25, 16777215, true, 1, 1, 0);
         int i = -50 % ((arg1 - 82) / 38);
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
@@ -167,9 +154,6 @@ public class GenericTile {
 
     public static void method946() {
         aClass1_1213 = null;
-        aClass1_1241 = null;
-        aClass1_1228 = null;
-        aClass1_1238 = null;
         aClass1_1223 = null;
         aClass1_1234 = null;
         objectData = null;

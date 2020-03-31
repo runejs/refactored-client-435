@@ -32,26 +32,18 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
     public static int[] anIntArray2 = new int[5];
     public static long[] aLongArray4 = new long[32];
     public static RSString aClass1_8 = null;
-    public static RSString aClass1_14 = RSString.CreateString("Anmelde)2Limit -Uberschritten)3");
-    public static RSString aClass1_21 = RSString.CreateString("Bitte warten Sie eine Minute");
-    public static RSString aClass1_25 = RSString.CreateString("Hier klicken)1 um fortzufahren)3)3)3");
     public static RSString aClass1_28 = RSString.CreateString("null");
     public static int anInt31;
     public static RSString aClass1_34 = RSString.CreateString("null");
-    public static RSString aClass1_35 = (RSString.CreateString("Die Adresse dieses Computers wurde gesperrt)1"));
     public boolean aBoolean43 = false;
 
     public static void method18() {
-        aClass1_35 = null;
         aClass1_8 = null;
         aClass1_34 = null;
         aClass1_28 = null;
         aLongArray4 = null;
-        aClass1_14 = null;
         aClass40_Sub5_Sub14_Sub2_1 = null;
-        aClass1_21 = null;
         anIntArray2 = null;
-        aClass1_25 = null;
     }
 
     public static void method19(boolean arg0, int arg1) {
@@ -67,7 +59,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             } catch(java.io.IOException ioexception) {
                 ioexception.printStackTrace();
                 try {
-                    Class57.aClass64_1345.method1009(-18);
+                    Class57.aClass64_1345.method1009();
                 } catch(Exception exception) {
                     exception.printStackTrace();
                     /* empty */
@@ -235,16 +227,14 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             CacheIndex.method169(null, (byte) -121, exception);
             openErrorPage((byte) 62, "crash");
         }
-        method17(118);
+        method17();
 
     }
 
     public abstract void reset();
 
-    public synchronized void method17(int arg0) {
+    public synchronized void method17() {
         if(!PacketBuffer.aBoolean2255) {
-            if(arg0 <= 86)
-                aClass1_14 = null;
             PacketBuffer.aBoolean2255 = true;
             try {
                 MouseHandler.aCanvas1469.removeFocusListener(this);
@@ -345,7 +335,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             CacheIndex.aLong219 = System.currentTimeMillis();
             Class43.method890(5000L, -123);
             Actor.aClass31_3152 = null;
-            method17(121);
+            method17();
         }
     }
 

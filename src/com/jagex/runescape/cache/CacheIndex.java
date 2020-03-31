@@ -24,13 +24,8 @@ public abstract class CacheIndex {
     public static RSString aClass1_256 = RSString.CreateString("backbase2");
     public static RSString aClass1_257 = RSString.CreateString("Please try again)3");
     public static RSString aClass1_258 = aClass1_257;
-    public static RSString aClass1_259;
     public static boolean aBoolean260 = false;
     public static int[][][] anIntArrayArrayArray262;
-
-    static {
-        aClass1_259 = (RSString.CreateString("Sie befinden sich in einem Mitglieder)2Gebiet(Q"));
-    }
 
     public byte[][] aByteArrayArray212;
     public int anInt216;
@@ -88,7 +83,6 @@ public abstract class CacheIndex {
     }
 
     public static void method180() {
-        aClass1_259 = null;
         aClass40_Sub5_Sub14_Sub2Array215 = null;
         aClass1_256 = null;
         modelCache = null;

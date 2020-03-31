@@ -8,6 +8,7 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.input.MouseHandler;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Item;
@@ -30,13 +31,9 @@ import java.net.Socket;
 import java.text.MessageFormat;
 
 public class Class64 implements Runnable {
-    public static RSString aClass1_1502 = RSString.CreateString("Wordpack geladen)3");
-    public static RSString aClass1_1505 = RSString.CreateString("Handel akzeptieren");
     public static int anInt1511 = -1;
     public static RSString aClass1_1517 = RSString.CreateString("redstone3");
     public static CacheIndex aCacheIndex_1521;
-    public static RSString aClass1_1523 = RSString.CreateString("");
-    public static RSString aClass1_1524 = RSString.CreateString("Menge eingeben:");
     public static RSString aClass1_1526 = RSString.CreateString("Your account has been disabled)3");
     public static int lowestPlane = 99;
 
@@ -60,19 +57,12 @@ public class Class64 implements Runnable {
         aSocket1508.setTcpNoDelay(true);
         anInputStream1503 = aSocket1508.getInputStream();
         anOutputStream1528 = aSocket1508.getOutputStream();
-
     }
 
     public static void method1011() {
-
-        aClass1_1505 = null;
         aClass1_1526 = null;
-        aClass1_1523 = null;
-        aClass1_1502 = null;
         aCacheIndex_1521 = null;
-        aClass1_1524 = null;
         aClass1_1517 = null;
-
     }
 
     public static void method1012(int arg0, int arg1) {
@@ -93,7 +83,7 @@ public class Class64 implements Runnable {
         if(Class8.itemSelected == 0 && Main.widgetSelected == 0) {
             String examineText = MessageFormat.format("<col=8F8FFF>(X{0})1 {1}(Y</col>", Integer.toString(Scene.hoveredTileX + SpotAnimDefinition.baseX), Integer.toString(Scene.hoveredTileY + Class26.baseY));
 
-            OverlayDefinition.addActionRow(Class22_Sub2.str_walk_here, 0, Class13.mouseX, Landscape.mouseY, 7, RSString.CreateString(examineText.toString()));
+            OverlayDefinition.addActionRow(English.walkHere, 0, Class13.mouseX, Landscape.mouseY, 7, RSString.CreateString(examineText.toString()));
         }
 
         for(int idx = 0; ((Model.resourceCount > idx)); idx++) {
@@ -134,7 +124,7 @@ public class Class64 implements Runnable {
                                 }
                             }
                         }
-                        OverlayDefinition.addActionRow(Class40_Sub5_Sub15.prefix_examine, gameObjectDefinition.id << 14, x, y, 1004, (RSString.linkRSStrings((new RSString[]{Renderable.aClass1_2862, gameObjectDefinition.name}))));
+                        OverlayDefinition.addActionRow(English.examine, gameObjectDefinition.id << 14, x, y, 1004, (RSString.linkRSStrings((new RSString[]{Renderable.aClass1_2862, gameObjectDefinition.name}))));
                     } else if((ItemDefinition.selectedMask & 0x4) == 4) {
                         OverlayDefinition.addActionRow(Class38_Sub1.aClass1_1918, hash, x, y, 32, (RSString.linkRSStrings((new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.name}))));
                     }
@@ -202,7 +192,7 @@ public class Class64 implements Runnable {
                                         OverlayDefinition.addActionRow(class1s[i_15_], (item.itemId), x, y, i_16_, (RSString.linkRSStrings((new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)}))));
                                     }
                                 }
-                                OverlayDefinition.addActionRow(Class40_Sub5_Sub15.prefix_examine, item.itemId, x, y, 1003, (RSString.linkRSStrings(new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)})));
+                                OverlayDefinition.addActionRow(English.examine, item.itemId, x, y, 1003, (RSString.linkRSStrings(new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)})));
                             } else if((0x1 & ItemDefinition.selectedMask) == 1) {
                                 OverlayDefinition.addActionRow(Class38_Sub1.aClass1_1918, item.itemId, x, y, 15, (RSString.linkRSStrings(new RSString[]{FloorDecoration.aClass1_611, Class5.aClass1_206, (itemDefinition.name)})));
                             }
@@ -214,13 +204,10 @@ public class Class64 implements Runnable {
 
     }
 
-    public static void method1015(int arg0) {
-
+    public static void method1015() {
         synchronized(GameObject.frame) {
             SpotAnimDefinition.mouseButtonPressed = Cache.mouseButtonPressed;
             Class13.mouseX = Class12.eventMouseX;
-            if(arg0 != -656)
-                aClass1_1524 = null;
             Landscape.mouseY = Cache.eventMouseY;
             MouseHandler.clickType = Actor.eventMouseButtonPressed;
             Class57.clickX = Class55.eventClickX;
@@ -242,8 +229,7 @@ public class Class64 implements Runnable {
         }
     }
 
-    public void method1009(int arg0) {
-        int i = 27 / ((-54 - arg0) / 32);
+    public void method1009() {
         if(!aBoolean1513) {
             synchronized(this) {
                 aBoolean1513 = true;
@@ -287,11 +273,10 @@ public class Class64 implements Runnable {
                     run();
             }
         }
-
     }
 
     public void finalize() {
-        method1009(-4);
+        method1009();
     }
 
     public void run() {
@@ -358,9 +343,7 @@ public class Class64 implements Runnable {
         return anInputStream1503.available();
     }
 
-    public int method1016(int arg0) throws IOException {
-        if(arg0 < 14)
-            aClass1_1524 = null;
+    public int method1016() throws IOException {
         if(aBoolean1513)
             return 0;
         return anInputStream1503.read();

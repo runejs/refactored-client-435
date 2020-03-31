@@ -9,6 +9,7 @@ import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.input.KeyFocusListener;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -28,12 +29,10 @@ public class HuffmanEncoding {
     public static int anInt1545 = 0;
     public static RSString aClass1_1546 = RSString.CreateString("Icons redrawn");
     public static int reportAbuseInterfaceID = -1;
-    public static RSString aClass1_1549 = RSString.CreateString("leuchten1:");
     public static RSString reportedName = blank_string;
     public static RSString str_Connecting_to_friendserver = RSString.CreateString("Connecting to friendserver");
     public static RSString aClass1_1555 = RSString.CreateString("Remove");
     public static RSString chatboxInput = blank_string;
-    public static RSString aClass1_1558 = RSString.CreateString("leuchten2:");
     public static int anInt1559 = 7759444;
     public static int openScreenWidgetId = -1;
     public static RSString aClass1_1563 = blank_string;
@@ -116,7 +115,6 @@ public class HuffmanEncoding {
     public static void method1022() {
         aClass1_1565 = null;
         aClass68_1541 = null;
-        aClass1_1558 = null;
         aClass1_1555 = null;
         aClass1_1563 = null;
         aClass1_1544 = null;
@@ -126,7 +124,6 @@ public class HuffmanEncoding {
         aClass1_1546 = null;
         reportedName = null;
         str_Connecting_to_friendserver = null;
-        aClass1_1549 = null;
         aClass1_1572 = null;
         anIntArray1564 = null;
         blank_string = null;
@@ -159,7 +156,7 @@ public class HuffmanEncoding {
                         class1s = Class56.method968(class1s, false);
                     if(class1s != null) {
                         for(int i = 4; i >= 0; i--) {
-                            if(class1s[i] != null && !class1s[i].equalsIgnoreCase((Class38_Sub1.aClass1_1917), true)) {
+                            if(class1s[i] != null && !class1s[i].equalsIgnoreCase((Class38_Sub1.aClass1_1917))) {
                                 int i_3_ = 0;
                                 if(i == 0)
                                     i_3_ = 12;
@@ -177,7 +174,7 @@ public class HuffmanEncoding {
                     }
                     if(class1s != null) {
                         for(int i = 4; i >= 0; i--) {
-                            if(class1s[i] != null && class1s[i].equalsIgnoreCase((Class38_Sub1.aClass1_1917), true)) {
+                            if(class1s[i] != null && class1s[i].equalsIgnoreCase((Class38_Sub1.aClass1_1917))) {
                                 int i_4_ = 0;
                                 if(((Player.localPlayer.combatLevel) < actorDefinition.combatLevel))
                                     i_4_ = 2000;
@@ -196,7 +193,7 @@ public class HuffmanEncoding {
                             }
                         }
                     }
-                    OverlayDefinition.addActionRow(Class40_Sub5_Sub15.prefix_examine, index, x, y, 1001, (RSString.linkRSStrings(new RSString[]{KeyFocusListener.aClass1_1283, class1})));
+                    OverlayDefinition.addActionRow(English.examine, index, x, y, 1001, (RSString.linkRSStrings(new RSString[]{KeyFocusListener.aClass1_1283, class1})));
                 }
             }
         }

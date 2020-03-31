@@ -4,6 +4,7 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.scene.GroundItemTile;
@@ -17,10 +18,8 @@ public class GameObjectDefinition extends SubNode {
     public static RSString aClass1_2526 = RSString.CreateString("(Udns");
     public static int anInt2543 = 0;
     public static HashTable aClass23_2545 = new HashTable(4096);
-    public static RSString aClass1_2556 = RSString.CreateString("blaugr-Un:");
     public static int chatboxScroll = 0;
     public static int lastClickY = 0;
-    public static RSString aClass1_2560 = RSString.CreateString(": ");
     public static long aLong2561 = 0L;
 
     public int anInt2499;
@@ -121,8 +120,6 @@ public class GameObjectDefinition extends SubNode {
 
     public static void method604() {
         aClass23_2545 = null;
-        aClass1_2556 = null;
-        aClass1_2560 = null;
         aClass1_2526 = null;
         aClass68_2524 = null;
     }
@@ -446,7 +443,7 @@ public class GameObjectDefinition extends SubNode {
             contrast = 5 * buffer.getByte();
         } else if(opcode >= 30 && opcode < 35) {
             actions[opcode - 30] = buffer.getRSString();
-            if(actions[opcode + -30].equalsIgnoreCase(Class59.string_Hidden, true)) {
+            if(actions[opcode + -30].equalsIgnoreCase(English.hidden)) {
                 actions[(opcode + -30)] = null;
             }
         } else if(opcode == 40) {

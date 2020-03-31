@@ -16,8 +16,6 @@ public class HashTable {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_549;
     public static RSString aClass1_553 = RSString.CreateString("l");
     public static int anInt554 = 0;
-    public static RSString aClass1_558 = RSString.CreateString("Ung-Ultige Session)2ID)3");
-    public static RSString aClass1_563 = (RSString.CreateString("und die Schaltfl-=che (WSpielkonto erstellen(W am"));
     public static int anInt564;
     public static boolean aBoolean565 = false;
     public static RSString aClass1_569 = RSString.CreateString(" (X");
@@ -81,8 +79,6 @@ public class HashTable {
     public static void method328() {
         aClass40_Sub5_Sub14_Sub2_549 = null;
         aClass1_553 = null;
-        aClass1_558 = null;
-        aClass1_563 = null;
         aClass1_569 = null;
     }
 

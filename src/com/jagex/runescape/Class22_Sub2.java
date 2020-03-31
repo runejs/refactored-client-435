@@ -7,29 +7,18 @@ import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.scene.GroundItemTile;
 
 public abstract class Class22_Sub2 extends Class22 {
-    public static RSString string_blank = RSString.CreateString("");
-    public static RSString password = string_blank;
-    public static RSString aClass1_1875 = RSString.CreateString("Please use a different world)3");
-    public static RSString str_walk_here = RSString.CreateString("Walk here");
-    public static RSString aClass1_1877 = RSString.CreateString("");
-    public static RSString aClass1_1878 = RSString.CreateString("@yel@*V");
-    public static RSString aClass1_1879 = string_blank;
-    public static RSString aClass1_1881 = string_blank;
-    public static RSString aClass1_1883 = RSString.CreateString("Fehler bei der Verbindung zum Server)3");
-    public static RSString aClass1_1885 = (RSString.CreateString("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789(Q(R+R(T(U^(V(Z(X(Y)2_=)0[*U]*W;:(W@(S*X)1<)3>)4?*6*V "));
+    public static RSString aClass1_1879 = Native.string_blank;
+    public static RSString aClass1_1881 = Native.string_blank;
     public static Widget aWidget_1887;
     public static int duplicateClickCount = 0;
-    public static RSString aClass1_1889 = RSString.CreateString("Benutzen");
-    public static RSString username = string_blank;
-    public static RSString aClass1_1891 = aClass1_1875;
-    public static RSString aClass1_1893 = aClass1_1885;
-    public static RSString aClass1_1896 = string_blank;
-    public static RSString currentLoadingText = string_blank;
+    public static RSString aClass1_1896 = Native.string_blank;
     public static int[] anIntArray774 = new int[]{12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800};
 
 
@@ -86,23 +75,19 @@ public abstract class Class22_Sub2 extends Class22 {
 
     public static void method320() {
         anIntArray774 = null;
-        aClass1_1877 = null;
-        aClass1_1885 = null;
-        currentLoadingText = null;
-        string_blank = null;
+        Native.supportedCharacters = null;
+        Native.currentLoadingText = null;
+        Native.string_blank = null;
         aClass1_1881 = null;
         aWidget_1887 = null;
         aClass1_1879 = null;
-        aClass1_1878 = null;
-        username = null;
-        aClass1_1893 = null;
-        aClass1_1891 = null;
-        str_walk_here = null;
-        aClass1_1875 = null;
-        aClass1_1889 = null;
+        Native.prefixYellowSTARV = null;
+        Native.username = null;
+        Native.supportedCharacters = null;
+        English.pleaseUseADifferentWorld = null;
+        English.walkHere = null;
         aClass1_1896 = null;
-        password = null;
-        aClass1_1883 = null;
+        Native.password = null;
     }
 
     public static int method323(int arg0) {
@@ -136,7 +121,7 @@ public abstract class Class22_Sub2 extends Class22 {
         for(int i = 0; i < 16; i++)
             anIntArray774[i] = 12800;
         if(arg0 >= -80)
-            username = null;
+            Native.username = null;
         for(int i = 0; i < 16; i++) {
             int i_3_ = method323(i);
             method314(176 + i, 7, i_3_ >> 7, arg1);

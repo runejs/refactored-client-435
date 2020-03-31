@@ -11,7 +11,6 @@ public class VarbitDefinition extends SubNode {
     public static CacheIndex aCacheIndex_2349;
     public static Class68 aClass68_2350;
     public static RSString aClass1_2351 = RSString.CreateString("Login");
-    public static RSString aClass1_2354 = RSString.CreateString("Unerwartete Antwort vom Anmelde)2Server");
     public static Class56 aClass56_2356;
     public static RSString aClass1_2357 = RSString.CreateString("Please subscribe)1 or use a different world)3");
     public static int anInt2359 = 0;
@@ -47,7 +46,6 @@ public class VarbitDefinition extends SubNode {
         aClass1_2357 = null;
         anIntArray2361 = null;
         aClass56_2356 = null;
-        aClass1_2354 = null;
     }
 
     public static void method566(int arg0, boolean arg1, int arg2, byte[] arg3) {

@@ -21,20 +21,16 @@ public class Player extends Actor {
     public static RSString aClass1_3256 = RSString.CreateString("green:");
     public static int anInt3264 = 0;
     public static int worldLevel;
-    public static RSString aClass1_3269 = RSString.CreateString("Mitteilung");
     public static byte[] aByteArray3270;
-    public static RSString aClass1_3275 = RSString.CreateString("Bitte starten Sie eine Mitgliedschaft");
     public static int[] anIntArray3284;
-    public static RSString aClass1_3285 = RSString.CreateString("Keine Antwort vom Anmelde)2Server)3");
     public static RSString aClass1_3286 = RSString.CreateString("Try again in 60 secs)3)3)3");
     public static int anInt3288 = 0;
-    public static RSString aClass1_3290 = RSString.CreateString("Spieler kann nicht gefunden werden: ");
     public static Player localPlayer;
     public static int[] actorUpdatingIndices = new int[2048];
-    public static Buffer[] trackedPlayerAppearanceCache;
+    public static Buffer[] trackedPlayerAppearanceCache = new Buffer[2048];
     public static int[] deregisterActorIndices = new int[1000];
     public static Npc[] npcs;
-    public static Player[] trackedPlayers;
+    public static Player[] trackedPlayers = new Player[2048];
     public static int[] npcIds = new int[32768];
     public static int[] trackedPlayerIndices = new int[2048];
     public static int npcCount = 0;
@@ -90,13 +86,9 @@ public class Player extends Actor {
     }
 
     public static void method794() {
-        aClass1_3275 = null;
-        aClass1_3269 = null;
         aByteArray3270 = null;
-        aClass1_3285 = null;
         anIntArray3284 = null;
         aClass1_3286 = null;
-        aClass1_3290 = null;
         aClass1_3256 = null;
     }
 

@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
@@ -378,7 +379,7 @@ public class ItemDefinition extends SubNode {
             femaleModel1 = buffer.getUnsignedShortBE();
         } else if(opcode >= 30 && opcode < 35) {
             groundOptions[-30 + opcode] = buffer.getRSString();
-            if(groundOptions[opcode + -30].equalsIgnoreCase(Class59.string_Hidden, true)) {
+            if(groundOptions[opcode + -30].equalsIgnoreCase(English.hidden)) {
                 groundOptions[opcode + -30] = null;
             }
         } else if(opcode >= 35 && opcode < 40) {

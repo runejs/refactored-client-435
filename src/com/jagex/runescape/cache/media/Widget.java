@@ -6,6 +6,8 @@ import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
@@ -29,7 +31,6 @@ public class Widget extends SubNode {
     public static RSString aClass1_2674 = RSString.CreateString("Starting game engine)3)3)3");
     public static RSString str_Choose_Option = RSString.CreateString("Choose Option");
     public static RSString cmd_errortest = RSString.CreateString("::errortest");
-    public static RSString aClass1_2716 = RSString.CreateString("Fehler beim Laden Ihres Charakter)2Profils");
     public static RSString goldCrown = RSString.CreateString("@cr2@");
     public static RSString aClass1_2740 = RSString.CreateString("Enter name of friend to add to list");
     public static Widget[][] interfaces;
@@ -131,7 +132,7 @@ public class Widget extends SubNode {
         rotationZ = 0;
         textShadowed = false;
         aBoolean2641 = false;
-        targetVerb = Class22_Sub2.aClass1_1877;
+        targetVerb = Native.string_blank;
         anInt2654 = 0;
         tooltip = Class39.str_ok;
         itemSpritePadsY = 0;
@@ -152,17 +153,17 @@ public class Widget extends SubNode {
         alternateModelId = -1;
         originalX = 0;
         isInventory = false;
-        alternateText = Class22_Sub2.aClass1_1877;
+        alternateText = Native.string_blank;
         itemSwapable = false;
         hoveredTextColor = 0;
         originalWidth = 0;
         animation = -1;
         xTextAlignment = 0;
         hoveredSiblingId = -1;
-        spellName = Class22_Sub2.aClass1_1877;
+        spellName = Native.string_blank;
         offsetY2d = 0;
         anInt2734 = 0;
-        disabledText = Class22_Sub2.aClass1_1877;
+        disabledText = Native.string_blank;
         id = -1;
         lineHeight = 0;
         itemUsable = false;
@@ -224,7 +225,6 @@ public class Widget extends SubNode {
     }
 
     public static void method641() {
-        aClass1_2716 = null;
         aClass1_2671 = null;
         cmd_errortest = null;
         goldCrown = null;
@@ -270,7 +270,7 @@ public class Widget extends SubNode {
         if(arg0 < 10000000) {
             return (RSString.linkRSStrings(new RSString[]{HashTable.method334(arg0 / 1000, -1), IdentityKit.aClass1_2587}));
         }
-        return (RSString.linkRSStrings(new RSString[]{HashTable.method334(arg0 / 1000000, arg1 ^ 0x63), Class22.aClass1_542}));
+        return (RSString.linkRSStrings(new RSString[]{HashTable.method334(arg0 / 1000000, arg1 ^ 0x63), Native.suffixM}));
     }
 
     public static void method891(Object[] arg0, int arg1, int arg2, Widget arg3, int arg4, boolean arg5) {
@@ -418,7 +418,7 @@ public class Widget extends SubNode {
                     if(i_3_ == 37) {
                         int i_12_ = is[i_2_];
                         i_1_ -= i_12_;
-                        RSString class1 = (IdentityKit.method627(i_12_, i_1_, Class40_Sub11.aClass1Array2153));
+                        RSString class1 = (RSString.method627(i_12_, i_1_, Class40_Sub11.aClass1Array2153));
                         Class40_Sub11.aClass1Array2153[i_1_++] = class1;
                         continue;
                     }
@@ -1067,7 +1067,7 @@ public class Widget extends SubNode {
         int type = widget.contentType;
         if(type >= 1 && type <= 100 || type >= 701 && type <= 800) {
             if(type == 1 && Class12.friendListStatus == 0) {
-                widget.disabledText = Class13.str_Loading_Friend_List;
+                widget.disabledText = English.loadingFriendList;
                 widget.actionType = 0;
             } else if(type == 1 && Class12.friendListStatus == 1) {
                 widget.disabledText = HuffmanEncoding.str_Connecting_to_friendserver;
@@ -1178,15 +1178,15 @@ public class Widget extends SubNode {
             widget.modelId = 1;
             widget.modelType = 5;
         } else if(type == 600)
-            widget.disabledText = (RSString.linkRSStrings(new RSString[]{HuffmanEncoding.reportedName, Class22_Sub2.aClass1_1878}));
+            widget.disabledText = (RSString.linkRSStrings(new RSString[]{HuffmanEncoding.reportedName, Native.prefixYellowSTARV}));
         else if(type == 620) {
             if(InteractiveObject.playerRights >= 1) {
                 if(Class67.reportMutePlayer) {
                     widget.textColor = 0xff0000;
-                    widget.disabledText = ActorDefinition.str_Moderator_mute_option_ON;
+                    widget.disabledText = English.moderatorOptionMutePlayerFor48HoursON;
                 } else {
                     widget.textColor = 0xffffff;
-                    widget.disabledText = VertexNormal.str_Moderator_mute_option_OFF;
+                    widget.disabledText = English.moderatorOptionMutePlayerFor48HoursOFF;
                 }
             } else
                 widget.disabledText = HuffmanEncoding.blank_string;

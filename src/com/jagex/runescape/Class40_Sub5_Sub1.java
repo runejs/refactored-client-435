@@ -7,6 +7,7 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.input.MouseHandler;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Item;
@@ -28,7 +29,6 @@ public class Class40_Sub5_Sub1 extends SubNode {
     public static int anInt2276 = 0;
     public static RSString aClass1_2277 = RSString.CreateString(" )2> @cya@");
     public static int anInt2278 = 0;
-    public static RSString aClass1_2279 = RSString.CreateString("Lade Ignorieren)2Liste)3)3)3");
     public static int anInt2280 = 0;
 
     public int[] anIntArray2262;
@@ -40,7 +40,6 @@ public class Class40_Sub5_Sub1 extends SubNode {
     public int[] anIntArray2272;
 
     public static void method542() {
-        aClass1_2279 = null;
         aClass1_2277 = null;
         aClass1_2274 = null;
         aClass68_2275 = null;
@@ -281,7 +280,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     if(Main.playerActions[i] != null) {
                         int i_16_ = 0;
                         int i_17_ = 0;
-                        if(Main.playerActions[i].equalsIgnoreCase(Class38_Sub1.aClass1_1917, true)) {
+                        if(Main.playerActions[i].equalsIgnoreCase(Class38_Sub1.aClass1_1917)) {
                             if((Player.localPlayer.combatLevel) < player.combatLevel)
                                 i_17_ = 2000;
                             if((Player.localPlayer.teamId) != 0 && player.teamId != 0) {
@@ -308,7 +307,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
             }
             for(int i = 0; i < ActorDefinition.menuActionRow; i++) {
                 if(Class38.menuActionTypes[i] == 7) {
-                    Landscape.menuActionTexts[i] = (RSString.linkRSStrings(new RSString[]{Class22_Sub2.str_walk_here, VertexNormal.aClass1_1117, Class26.aClass1_620, rsString}));
+                    Landscape.menuActionTexts[i] = (RSString.linkRSStrings(new RSString[]{English.walkHere, VertexNormal.aClass1_1117, Class26.aClass1_620, rsString}));
                     break;
                 }
             }

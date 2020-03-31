@@ -17,7 +17,6 @@ import java.awt.*;
 public class LinkedList {
     public static long aLong1051;
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_1057;
-    public static RSString aClass1_1059 = RSString.CreateString("Bitte entfernen Sie ");
     public static int anInt1061;
     public static LinkedList aLinkedList_1064 = new LinkedList();
     public static int[] anIntArray1071;
@@ -25,12 +24,9 @@ public class LinkedList {
     public static int anInt1075 = 0;
     public static RSString aClass1_1076 = RSString.CreateString("cyan:");
     public static RSString aClass1_1077 = RSString.CreateString("(U2");
-    public static RSString aClass1_1078 = (RSString.CreateString("(WSpielkonto wiederherstellen(W Option auf der Hauptseite)3"));
-    public static RSString aClass1_1079 = RSString.CreateString("Name des Gegenstands eingeben:");
     public static Buffer aClass40_Sub1_1081 = new Buffer(8);
     public static Class30 aClass30_1082 = new Class30();
     public static int[] anIntArray1083 = new int[1000];
-    public static RSString aClass1_1084 = RSString.CreateString("Texturen geladen)3");
     public static RSString aClass1_1085 = RSString.CreateString("m");
     public Node aClass40_1056 = new Node();
     public Node aClass40_1068;
@@ -51,11 +47,7 @@ public class LinkedList {
         aClass1_1085 = null;
         aClass40_Sub1_1081 = null;
         anIntArray1071 = null;
-        aClass1_1084 = null;
-        aClass1_1079 = null;
         aClass1_1076 = null;
-        aClass1_1059 = null;
-        aClass1_1078 = null;
     }
 
     public static RSString method903(int arg0, byte arg1) {

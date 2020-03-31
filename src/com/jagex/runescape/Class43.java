@@ -21,7 +21,6 @@ public class Class43 {
     public static LinkedList aLinkedList_1022 = new LinkedList();
     public static RSString aClass1_1024 = RSString.CreateString("backleft2");
     public static int bankInsertMode = 0;
-    public static RSString aClass1_1026 = RSString.CreateString("Schlie-8en");
     public static RSString char_colon = RSString.CreateString(":");
     public static int openChatboxWidgetId = -1;
 
@@ -61,7 +60,6 @@ public class Class43 {
 
     public static void method893() {
         aClass9_1014 = null;
-        aClass1_1026 = null;
         aLinkedList_1022 = null;
         aClass1_1024 = null;
         aClass1_1019 = null;

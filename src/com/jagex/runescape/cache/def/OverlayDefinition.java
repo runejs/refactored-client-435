@@ -18,14 +18,12 @@ import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class OverlayDefinition extends SubNode {
-    public static RSString aClass1_2315 = RSString.CreateString("Zu viele Anmelde)2Versuche von Ihrer Adresse");
     public static int placementY;
     public static int anInt2319 = 0;
     public static int anInt2321 = 0;
     public static byte[][][] tile_flags = new byte[4][104][104];
     public static int[] anIntArray2324;
     public static RSString aClass1_2325 = RSString.CreateString("Malformed login packet)3");
-    public static RSString aClass1_2327 = RSString.CreateString("-5berpr-Ufen Sie Ihr Mitteilungsfach)3");
     public static int anInt2328 = -1;
     public static int[][][] constructMapTiles = new int[4][13][13];
     public static byte[][][] tile_underlay_path;
@@ -54,8 +52,6 @@ public class OverlayDefinition extends SubNode {
         tile_underlay_path = null;
         tile_flags = null;
         constructMapTiles = null;
-        aClass1_2315 = null;
-        aClass1_2327 = null;
         aClass1_2325 = null;
         anIntArray2324 = null;
     }
@@ -88,7 +84,7 @@ public class OverlayDefinition extends SubNode {
                 Class40_Sub3.anInt2032 = 0;
             }
             if(arg0 != 20 && arg0 != 40 && Class30.aClass64_717 != null) {
-                Class30.aClass64_717.method1009(-106);
+                Class30.aClass64_717.method1009();
                 Class30.aClass64_717 = null;
             }
             if(Class51.anInt1197 == 25 || Class51.anInt1197 == 40) {

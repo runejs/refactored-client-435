@@ -10,6 +10,7 @@ import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.VertexNormal;
@@ -36,7 +37,6 @@ import java.net.Socket;
 
 public class Main extends RSApplet {
     public static int anInt1756 = 0;
-    public static RSString aClass1_1757 = RSString.CreateString("Runescape wurde aktualisiert(Q");
     public static int menuOffsetY;
     public static RSString aClass1_1761 = RSString.CreateString("Welcome to Runescape");
     public static RSString aClass1_1762 = RSString.CreateString("logo");
@@ -45,7 +45,6 @@ public class Main extends RSApplet {
     public static int anInt1766 = 1;
     public static int anInt1769 = -1;
     public static int widgetSelected = 0;
-    public static RSString aClass1_1777 = RSString.CreateString("Verbinde mit Server)3)3)3");
     public static RSString[] playerActions = new RSString[5];
     public static RSString aClass1_1781 = (RSString.CreateString("Account locked as we suspect it has been stolen)3"));
     public static RSString aClass1_1788 = RSString.CreateString("backtop1");
@@ -410,7 +409,7 @@ public class Main extends RSApplet {
                                     }
                                 }
                             }
-                            if(widget.type == 8 && Class37.method438(arg0, i, (byte) 52) && (RSString.anInt1711 == WallDecoration.anInt1257)) {
+                            if(widget.type == 8 && Class37.method438(arg0, i) && (RSString.anInt1711 == WallDecoration.anInt1257)) {
                                 int i_50_ = 0;
                                 int i_51_ = 0;
                                 TypeFace class40_sub5_sub14_sub1 = (WallDecoration.fontNormal);
@@ -470,9 +469,7 @@ public class Main extends RSApplet {
         return bool;
     }
 
-    public static void method37(CacheIndex_Sub1 arg0, byte arg1, int arg2) {
-        if(arg1 != 98)
-            aClass1_1777 = null;
+    public static void method37(CacheIndex_Sub1 arg0, int arg2) {
         if(Class48.aClass40_Sub1_1132 == null) {
             HashTable.method327(true, null, 255, 255, (byte) 0, 0, (byte) 90);
             Class24.aClass6_Sub1Array580[arg2] = arg0;
@@ -557,7 +554,7 @@ public class Main extends RSApplet {
 
     public static void main(String[] arg0) {
         try {
-            if(arg0.length != 6)
+            if(arg0.length != 5)
                 Class37.method432();
             Class13.worldid = Integer.parseInt(arg0[0]);
             if(!arg0[1].equals("live")) {
@@ -591,14 +588,6 @@ public class Main extends RSApplet {
                     Class37.method432();
             } else
                 Class22.aBoolean541 = false;
-            if(arg0[5].equals("english")) {
-                Class34.anInt848 = 0;
-            } else if(arg0[5].equals("german")) {
-                Class55.setGerman();
-                Class34.anInt848 = 1;
-            } else {
-                Class37.method432();
-            }
             Main main = new Main();
             main.openClientApplet("runescape", 13, 503, 32 + Class44.modewhat, InetAddress.getLocalHost(), 435, 765);
         } catch(Exception exception) {
@@ -611,10 +600,8 @@ public class Main extends RSApplet {
         aClass1_1781 = null;
         playerActions = null;
         aClass1_1763 = null;
-        aClass1_1777 = null;
         aClass1_1788 = null;
         aClass1_1761 = null;
-        aClass1_1757 = null;
     }
 
     public static int method42(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
@@ -760,7 +747,7 @@ public class Main extends RSApplet {
         Class33.method413((byte) -116);
         RSRuntimeException.method1054((byte) 125);
         Widget.method639(122);
-        Class64.method1015(-656);
+        Class64.method1015();
         if(Class51.anInt1197 == 0) {
             Class40_Sub3.method530(100);
             Class60.method992(75);
@@ -793,14 +780,14 @@ public class Main extends RSApplet {
 
     public void method34(int arg0) { // TODO: Might be Startup
         if(Class67.aBoolean1575) {
-            Class22_Sub1.method311((byte) -80, MouseHandler.aCanvas1469);
+            Class22_Sub1.method311(MouseHandler.aCanvas1469);
             Class55.method965(32, MouseHandler.aCanvas1469);
             this.setCanvas((byte) 86);
             Widget.method642(MouseHandler.aCanvas1469, -10);
             RSRuntimeException.method1056(MouseHandler.aCanvas1469, (byte) 33);
         }
         if(Class51.anInt1197 == 0)
-            GameObject.drawLoadingText(Class67.anInt1607, null, Class22_Sub2.currentLoadingText);
+            GameObject.drawLoadingText(Class67.anInt1607, null, Native.currentLoadingText);
         else if(Class51.anInt1197 != 5) {
             if(Class51.anInt1197 != 10) {
                 if(Class51.anInt1197 != 20) {
@@ -881,7 +868,7 @@ public class Main extends RSApplet {
                                     break;
                                 }
                             } else {
-                                int i = Class29.aClass64_676.method1016(112);
+                                int i = Class29.aClass64_676.method1016();
                                 if(i != 0) {
                                     method35(i);
                                     break;
@@ -912,7 +899,7 @@ public class Main extends RSApplet {
             Class12.mouseCapturer.aBoolean913 = false;
         Class12.mouseCapturer = null;
         if(Class40_Sub6.aClass64_2098 != null) {
-            Class40_Sub6.aClass64_2098.method1009(-100);
+            Class40_Sub6.aClass64_2098.method1009();
             Class40_Sub6.aClass64_2098 = null;
         }
         ItemDefinition.method744();
@@ -954,10 +941,6 @@ public class Main extends RSApplet {
             String string_80_ = this.getParameter("members");
             Class22.aBoolean541 = string_80_ != null && string_80_.equals("1");
             String string_81_ = this.getParameter("lang");
-            if(string_81_ != null && string_81_.equals("1")) {
-                Class55.setGerman();
-                Class34.anInt848 = 1;
-            }
             this.displayClientFrame((byte) 120, 435, 503, 765, Class44.modewhat + 32);
         }
     }
@@ -1039,7 +1022,6 @@ public class Main extends RSApplet {
         HuffmanEncoding.method1022();
         Class59.method985();
         Class5.method163();
-        Class40_Sub2.method524();
         Class40_Sub5_Sub1.method542();
         Class4.method159();
         VertexNormal.method914();

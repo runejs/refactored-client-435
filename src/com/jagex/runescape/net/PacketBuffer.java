@@ -16,7 +16,6 @@ public class PacketBuffer extends Buffer {
     public static Effect[] effects = new Effect[50];
     public static RSString str_Please_Wait = RSString.CreateString("Please wait)3)3)3");
     public static long aLong2241 = 0L;
-    public static RSString aClass1_2245 = RSString.CreateString("Aus");
     public static BigInteger rsaKey = (new BigInteger("65537"));
     public static int currentSound = 0;
     public static Class40_Sub5_Sub13 aClass40_Sub5_Sub13_2250;
@@ -24,8 +23,6 @@ public class PacketBuffer extends Buffer {
     public static int lastClickX = 0;
     public static int anInt2257;
     public static int anInt2258;
-    public static RSString aClass1_2259 = RSString.CreateString("oder benutzen Sie eine andere Welt)3");
-    public static RSString aClass1_2260 = RSString.CreateString("da dieser Computer gegen unsere ");
 
     public ISAAC inCipher;
     public ISAAC outCipher;
@@ -51,12 +48,9 @@ public class PacketBuffer extends Buffer {
 
     public static void method514() {
         aClass40_Sub5_Sub13_2250 = null;
-        aClass1_2260 = null;
         rsaKey = null;
         effects = null;
-        aClass1_2245 = null;
         str_Please_Wait = null;
-        aClass1_2259 = null;
     }
 
     public static void method516() {

@@ -7,7 +7,6 @@ public class CollisionMap {
     public static int anInt141;
     public static Object anObject162 = new Object();
     public static int anInt163 = -1;
-    public static RSString aClass1_164 = RSString.CreateString("Konfig geladen)3");
     public static int anInt165 = 0;
     public static Class8 aClass8_166;
     public static RSString str_continue = RSString.CreateString("Continue");
@@ -48,7 +47,6 @@ public class CollisionMap {
         anObject162 = null;
         str_continue = null;
         aClass1_170 = null;
-        aClass1_164 = null;
         aClass8_166 = null;
     }
 

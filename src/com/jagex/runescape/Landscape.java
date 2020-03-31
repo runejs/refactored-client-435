@@ -31,50 +31,34 @@ import java.util.zip.GZIPInputStream;
 
 public class Landscape {
     public static int anInt1157 = 0;
-    public static RSString aClass1_1158;
-    public static RSString aClass1_1160;
-    public static RSString aClass1_1161;
-    public static RSString aClass1_1162;
-    public static RSString aClass1_1163;
+    public static RSString aClass1_1158 = RSString.CreateString("Enter amount:");
+    public static RSString aClass1_1162 = RSString.CreateString("@gre@");
+    public static RSString aClass1_1163 = RSString.CreateString("glow1:");
     public static int mouseY = 0;
-    public static CollisionMap[] currentCollisionMap;
+    public static CollisionMap[] currentCollisionMap = new CollisionMap[4];
     public static int[] anIntArray1168;
-    public static RSString aClass1_1169;
-    public static int anInt1170;
-    public static int anInt1171;
-    public static RSString aClass1_1172;
+    public static RSString aClass1_1169 = RSString.CreateString("Your ignore list is full)3 Max of 100 hit");
+    public static int anInt1170 = 0;
+    public static int anInt1171 = 0;
+    public static RSString aClass1_1172 = RSString.CreateString("You are standing in a members)2only area)3");
     public static RSString aClass1_1173;
     public static RSString aClass1_1174;
-    public static int[][] distanceValues;
-    public static RSString aClass1_1176;
+    public static int[][] distanceValues = new int[104][104];
+    public static RSString aClass1_1176 = RSString.CreateString("Loaded wordpack");
     public static RSString aClass1_1178;
     public static RSString aClass1_1180;
     public static RSString aClass1_1181;
-    public static RSString aClass1_1183;
-    public static RSString[] menuActionTexts;
+    public static RSString aClass1_1183 = RSString.CreateString("");
+    public static RSString[] menuActionTexts = new RSString[500];
     public static Class68 aClass68_1185;
     public static int[] anIntArray1186;
 
     static {
-        aClass1_1163 = RSString.CreateString("glow1:");
-        aClass1_1158 = RSString.CreateString("Enter amount:");
-        aClass1_1160 = RSString.CreateString("Passwort: ");
         aClass1_1174 = aClass1_1158;
-        aClass1_1162 = RSString.CreateString("@gre@");
-        aClass1_1176 = RSString.CreateString("Loaded wordpack");
-        currentCollisionMap = new CollisionMap[4];
         aClass1_1173 = aClass1_1176;
-        distanceValues = new int[104][104];
-        anInt1170 = 0;
-        aClass1_1172 = RSString.CreateString("You are standing in a members)2only area)3");
         aClass1_1178 = aClass1_1172;
-        aClass1_1161 = RSString.CreateString("Bitte wenden Sie sich an den Kundendienst)3");
-        aClass1_1183 = RSString.CreateString("");
-        anInt1171 = 0;
-        aClass1_1169 = RSString.CreateString("Your ignore list is full)3 Max of 100 hit");
         aClass1_1181 = aClass1_1163;
         aClass1_1180 = aClass1_1169;
-        menuActionTexts = new RSString[500];
     }
 
     public static byte[] method931(byte[] arg0) {
@@ -159,7 +143,7 @@ public class Landscape {
                             OverlayDefinition.tile_flags[z][x][y] = (byte) 0;
                     }
                 }
-                Class65.method1020(true);
+                Class65.method1020();
                 int dataLength = RSString.terrainData.length;
                 Class37.method436(118);
                 Class27.method364((byte) -34, true);
@@ -298,7 +282,7 @@ public class Landscape {
                     OverlayDefinition.method559(35);
                 else
                     OverlayDefinition.method559(30);
-                Class56.method973(-65);
+                Class56.method973();
                 SceneCluster.packetBuffer.putPacket(178);
                 RSRuntimeException.method1057(126);
             } else
@@ -374,7 +358,6 @@ public class Landscape {
     public static void method935() {
         distanceValues = null;
         aClass1_1163 = null;
-        aClass1_1160 = null;
         aClass1_1158 = null;
         aClass1_1162 = null;
         currentCollisionMap = null;
@@ -383,7 +366,6 @@ public class Landscape {
         anIntArray1168 = null;
         aClass1_1178 = null;
         aClass1_1183 = null;
-        aClass1_1161 = null;
         aClass1_1172 = null;
         aClass1_1180 = null;
         aClass68_1185 = null;

@@ -7,6 +7,8 @@ import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.MouseHandler;
+import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -65,16 +67,16 @@ public class Class38_Sub1 extends Class38 {
                         class1 = class1.substring(5);
                     if(class1 != null && class1.startsWith(Widget.goldCrown))
                         class1 = class1.substring(5);
-                    if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || Class4.privateChatMode == 0 || (Class4.privateChatMode == 1 && Class40_Sub2.hasFriend(class1, arg0 + -42391)))) {
+                    if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || Class4.privateChatMode == 0 || (Class4.privateChatMode == 1 && Class40_Sub2.hasFriend(class1)))) {
                         int i_3_ = 329 + -(13 * i);
                         i++;
                         if(Class13.mouseX > 4 && ((i_3_ + -10 < Landscape.mouseY + -4)) && ((-4 + Landscape.mouseY <= i_3_ + 3))) {
-                            int i_4_ = 25 + (WallDecoration.fontNormal.getStringWidth(RSString.linkRSStrings((new RSString[]{Class40_Sub5_Sub6.aClass1_2458, Class12.aClass1_392, class1, (Actor.chatMessages[i_1_])}))));
+                            int i_4_ = 25 + (WallDecoration.fontNormal.getStringWidth(RSString.linkRSStrings((new RSString[]{Class40_Sub5_Sub6.aClass1_2458, Native.prefixColon, class1, (Actor.chatMessages[i_1_])}))));
                             if(i_4_ > 450)
                                 i_4_ = 450;
                             if(Class13.mouseX < 4 + i_4_) {
                                 if(InteractiveObject.playerRights >= 1) {
-                                    OverlayDefinition.addActionRow(Class22_Sub1.aClass1_1865, 0, 0, 0, 2028, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));
+                                    OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 2028, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));
                                 }
                                 OverlayDefinition.addActionRow(Class38.aClass1_885, 0, 0, 0, 2051, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));
                                 OverlayDefinition.addActionRow(FloorDecoration.aClass1_591, 0, 0, 0, 2045, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));
@@ -95,7 +97,7 @@ public class Class38_Sub1 extends Class38 {
     public static boolean method446(Signlink arg0, int arg1, boolean arg2, byte arg3) {
         if(arg3 != 30)
             doWalkTo(47, -7, 96, -97, -111, true, -110, 57, -36, -84, -42);
-        if(!Class39.method452(arg0, (byte) 121, arg2))
+        if(!Class39.method452(arg0, arg2))
             return false;
         if(arg1 > 0)
             RSString.aClass9_1684 = new Cache(arg1);

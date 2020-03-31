@@ -23,35 +23,20 @@ public abstract class Actor extends Renderable {
     public static RSString aClass1_3092 = RSString.CreateString("Loaded textures");
     public static int[] anIntArray3111;
     public static RSString aClass1_3114 = RSString.CreateString("Login limit exceeded)3");
-    public static BigInteger rsaModulus;
+    public static BigInteger rsaModulus = (new BigInteger("119568088839203297999728368933573315070738693395974011872885408638642676871679245723887367232256427712869170521351089799352546294030059890127723509653145359924771433131004387212857375068629466435244653901851504845054452735390701003613803443469723435116497545687393297329052988014281948392136928774011011998343"));
     public static RSString aClass1_3124 = aClass1_3092;
     public static RSString aClass1_3138 = aClass1_3114;
     public static volatile int eventMouseButtonPressed = 0;
     public static CacheIndex aCacheIndex_3144;
-    public static int[] anIntArray3149;
+    public static int[] anIntArray3149 = new int[1000];
     public static CacheIndex aCacheIndex_3150;
-    public static int anInt3151;
+    public static int anInt3151 = -16 + (int) (Math.random() * 33.0);
     public static Signlink aClass31_3152;
-    public static int actorUpdatingIndex;
-    public static RSString aClass1_3154;
-    public static RSString aClass1_3155;
+    public static int actorUpdatingIndex = 0;
+    public static RSString aClass1_3155 = RSString.CreateString("Please wait )2 attempting to reestablish");
     public static CacheIndex_Sub1 aClass6_Sub1_3157;
-    public static RSString aClass1_3158;
-    public static RSString aClass1_3159;
-    public static RSString[] chatMessages;
-
-    static {
-        rsaModulus = (new BigInteger("119568088839203297999728368933573315070738693395974011872885408638642676871679245723887367232256427712869170521351089799352546294030059890127723509653145359924771433131004387212857375068629466435244653901851504845054452735390701003613803443469723435116497545687393297329052988014281948392136928774011011998343"));
-        anInt3151 = -16 + (int) (Math.random() * 33.0);
-        Player.trackedPlayers = new Player[2048];
-        actorUpdatingIndex = 0;
-        aClass1_3154 = RSString.CreateString("Lade Schrifts-=tze )2 ");
-        aClass1_3155 = RSString.CreateString("Please wait )2 attempting to reestablish");
-        aClass1_3159 = aClass1_3155;
-        anIntArray3149 = new int[1000];
-        aClass1_3158 = RSString.CreateString("Registrierter Benutzer");
-        chatMessages = new RSString[100];
-    }
+    public static RSString aClass1_3159 = aClass1_3155;
+    public static RSString[] chatMessages = new RSString[100];
 
     public boolean[] aBooleanArray3072;
     public int anInt3073;
@@ -294,10 +279,8 @@ public abstract class Actor extends Renderable {
     }
 
     public static void method788() {
-        aClass1_3158 = null;
         aClass6_Sub1_3157 = null;
         aClass1_3092 = null;
-        aClass1_3154 = null;
         aClass1_3138 = null;
         aClass1_3114 = null;
         chatMessages = null;

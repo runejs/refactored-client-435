@@ -8,37 +8,22 @@ import java.awt.*;
 
 public class Class35 implements Interface3 {
     public static RSString aClass1_1720 = RSString.CreateString("Enter object name");
-    public static RSString aClass1_1725;
-    public static RSString aClass1_1726;
-    public static int anInt1728;
+    public static RSString aClass1_1725 = RSString.CreateString("null");
+    public static int anInt1728 = 0;
     public static int anInt1730 = 0;
-    public static RSString aClass1_1731;
     public static Frame aFrame1732;
-    public static int songTimeout;
-    public static boolean aBoolean1734;
-    public static boolean aBoolean1735;
-    public static RSString aClass1_1736;
-    public static int publicChatMode;
-    public static int[] SKIN_COLOURS;
-    public static RSString aClass1_1743;
+    public static int songTimeout = 0;
+    public static boolean aBoolean1734 = false;
+    public static boolean aBoolean1735 = true;
+    public static RSString aClass1_1736 = RSString.CreateString("Enter message to send to ");
+    public static int publicChatMode = 0;
+    public static int[] SKIN_COLOURS = new int[]{9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145, 58654, 5027, 1457, 16565, 34991, 25486};
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1744;
     public static byte[][][] tile_overlay_rotation;
     public static RSString aClass1_1746;
-    public static RSString aClass1_1747;
+    public static RSString aClass1_1747 = aClass1_1720;
 
     static {
-        aClass1_1726 = RSString.CreateString("Wen m-Ochten Sie der Liste hinzuf-Ugen?");
-        songTimeout = 0;
-        SKIN_COLOURS = new int[]{9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145, 58654, 5027, 1457, 16565, 34991, 25486};
-        aBoolean1734 = false;
-        publicChatMode = 0;
-        aClass1_1731 = RSString.CreateString("Handel)4Duell");
-        anInt1728 = 0;
-        aClass1_1725 = RSString.CreateString("null");
-        aBoolean1735 = true;
-        aClass1_1747 = aClass1_1720;
-        aClass1_1736 = RSString.CreateString("Enter message to send to ");
-        aClass1_1743 = RSString.CreateString("und haben es deaktiviert)3 Benutzen Sie die");
         aClass1_1746 = aClass1_1736;
     }
 
@@ -104,12 +89,9 @@ public class Class35 implements Interface3 {
         aClass1_1746 = null;
         aFrame1732 = null;
         SKIN_COLOURS = null;
-        aClass1_1743 = null;
         aClass1_1736 = null;
         aClass40_Sub5_Sub14_Sub2_1744 = null;
         aClass1_1747 = null;
-        aClass1_1726 = null;
-        aClass1_1731 = null;
     }
 
     public void method422(int arg0) {
@@ -159,9 +141,7 @@ public class Class35 implements Interface3 {
         return aClass40_Sub10Array1740[arg1].aBoolean2143;
     }
 
-    public void method424(int arg0, double arg1) {
-        if(arg0 < 68)
-            aClass1_1731 = null;
+    public void method424(double arg1) {
         aDouble1750 = arg1;
         method422(0);
     }

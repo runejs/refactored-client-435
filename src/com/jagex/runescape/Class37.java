@@ -24,19 +24,14 @@ import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.Wall;
 
 public class Class37 {
-    public static RSString aClass1_860 = RSString.CreateString("Bitte benutzen Sie eine andere Welt)3");
-    public static RSString aClass1_867 = RSString.CreateString("Ein kostenloses Spielkonto erstellen)3");
     public static HashTable aClass23_869 = new HashTable(32);
     public static boolean aBoolean871 = false;
-    public static RSString aClass1_872 = RSString.CreateString("Ihre Nachricht an: ");
     public static RSString aClass1_873;
     public static int anInt874;
     public static RSString aClass1_875;
     public static int anInt876 = 0;
     public static RSString aClass1_877 = RSString.CreateString("@gr1@");
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array878;
-    public static RSString aClass1_879 = RSString.CreateString("weiss:");
-    public static RSString aClass1_880 = RSString.CreateString("Wir vermuten ihr Spielkonto wurde gestohlen");
 
     static {
         aClass1_875 = (RSString.CreateString("Please close the interface you have open before using (Wreport abuse(W"));
@@ -65,15 +60,10 @@ public class Class37 {
     }
 
     public static void method433() {
-        aClass1_872 = null;
         aClass23_869 = null;
         aClass1_875 = null;
-        aClass1_860 = null;
         aClass40_Sub5_Sub14_Sub4Array878 = null;
-        aClass1_879 = null;
-        aClass1_880 = null;
         aClass1_873 = null;
-        aClass1_867 = null;
         aClass1_877 = null;
     }
 
@@ -226,7 +216,7 @@ public class Class37 {
         Class40_Sub2 class40_sub2 = new Class40_Sub2();
         class40_sub2.anInt2000 = 128 * arg5.anInt2502;
         if(!arg1)
-            method438(119, -54, (byte) 96);
+            method438(119, -54);
         class40_sub2.anInt2002 = arg5.anInt2542;
         class40_sub2.anIntArray2005 = arg5.anIntArray2523;
         class40_sub2.anInt2012 = arg5.anInt2499;
@@ -251,15 +241,13 @@ public class Class37 {
             class40_sub2.anInt2014 = (int) ((double) (class40_sub2.anInt2002 - class40_sub2.anInt2012) * Math.random()) + class40_sub2.anInt2012;
     }
 
-    public static boolean method438(int arg0, int arg1, byte arg2) {
+    public static boolean method438(int arg0, int arg1) {
         if(arg0 == 0 && arg1 == HashTable.anInt573)
             return true;
         if(arg0 == 1 && FloorDecoration.anInt614 == arg1)
             return true;
         if((arg0 == 2 || arg0 == 3) && Class67.anInt1586 == arg1)
             return true;
-        if(arg2 != 52)
-            aClass1_860 = null;
         return false;
     }
 }

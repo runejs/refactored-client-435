@@ -10,28 +10,19 @@ import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Wall {
     public static RSString aClass1_338 = RSString.CreateString("backhmid1");
-    public static RSString aClass1_343;
     public static RSString aClass1_344;
     public static RSString aClass1_346;
     public static int cameraVelocityHorizontal = 0;
     public static int anInt350;
-    public static int[] walkingQueueY;
-    public static RSString aClass1_352;
-    public static Widget aWidget_353;
-    public static int[] anIntArray354;
-    public static int anInt356;
-    public static LinkedList[][][] groundItems;
+    public static int[] walkingQueueY = new int[4000];
+    public static Widget aWidget_353 = null;
+    public static int[] anIntArray354 = new int[25];
+    public static int anInt356 = 0;
+    public static LinkedList[][][] groundItems = new LinkedList[4][104][104];
 
     static {
         aClass1_346 = RSString.CreateString("The server is being updated)3");
         aClass1_344 = aClass1_346;
-        aClass1_352 = RSString.CreateString("Neuer Benutzer");
-        walkingQueueY = new int[4000];
-        aClass1_343 = RSString.CreateString("Geben Sie Ihren Benutzernamen");
-        anIntArray354 = new int[25];
-        aWidget_353 = null;
-        anInt356 = 0;
-        groundItems = new LinkedList[4][104][104];
     }
 
     public int x;
@@ -49,12 +40,10 @@ public class Wall {
     }
 
     public static void method237() {
-        aClass1_352 = null;
         aClass1_344 = null;
         aClass1_338 = null;
         anIntArray354 = null;
         groundItems = null;
-        aClass1_343 = null;
         aClass1_346 = null;
         walkingQueueY = null;
         aWidget_353 = null;
@@ -79,7 +68,7 @@ public class Wall {
                         class1 = class1.substring(5);
                         i_1_ = 2;
                     }
-                    if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || Class4.privateChatMode == 0 || (Class4.privateChatMode == 1 && Class40_Sub2.hasFriend(class1, -32624)))) {
+                    if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || Class4.privateChatMode == 0 || (Class4.privateChatMode == 1 && Class40_Sub2.hasFriend(class1)))) {
                         int i_3_ = 329 - 13 * i;
                         int i_4_ = 4;
                         i++;

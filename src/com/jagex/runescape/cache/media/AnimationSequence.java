@@ -13,12 +13,9 @@ import com.jagex.runescape.scene.util.CollisionMap;
 public class AnimationSequence extends SubNode {
     public static RSString requestcmd_tradereq = RSString.CreateString(":tradereq:");
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2474;
-    public static RSString aClass1_2475 = RSString.CreateString("Bitte versuchen Sie es erneut)3");
     public static int anInt2480 = 0;
-    public static RSString aClass1_2481 = (RSString.CreateString("Gegenstand konnte nicht gefunden werden)1 verk-Urzen Sie den Suchbegriff)3"));
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_2482;
     public static CacheIndex aCacheIndex_2484;
-    public static RSString aClass1_2487 = RSString.CreateString("sch-Utteln:");
     public static RSString aClass1_2488 = RSString.CreateString("titlebox");
     public static int[][] anIntArrayArray2490;
 
@@ -48,12 +45,9 @@ public class AnimationSequence extends SubNode {
     public static void method589() {
         aClass1_2488 = null;
         aCacheIndex_2484 = null;
-        aClass1_2475 = null;
         aClass40_Sub5_Sub14_Sub4_2482 = null;
         requestcmd_tradereq = null;
         aClass40_Sub5_Sub14_Sub4Array2474 = null;
-        aClass1_2481 = null;
-        aClass1_2487 = null;
         anIntArrayArray2490 = null;
     }
 

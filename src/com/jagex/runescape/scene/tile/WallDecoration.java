@@ -8,6 +8,8 @@ import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
+import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Item;
@@ -23,35 +25,21 @@ import java.awt.*;
 
 public class WallDecoration {
     public static RSString aClass1_1243 = RSString.CreateString("@whi@ )4 ");
-    public static RSString aClass1_1246;
-    public static Cache aClass9_1247;
+    public static Cache aClass9_1247 = new Cache(64);
     public static RSString aClass1_1251;
-    public static RSString aClass1_1255;
+    public static RSString aClass1_1255 = RSString.CreateString("and choose the (Wcreate account(W");
     public static int anInt1257 = 0;
     public static RSString aClass1_1259;
-    public static RSString aClass1_1260;
-    public static RSString aClass1_1263;
-    public static Cache aClass9_1264;
-    public static RSString aClass1_1265;
-    public static RSString aClass1_1266;
-    public static long[] ignores;
+    public static RSString aClass1_1260 = RSString.CreateString("go back to the main RuneScape webpage");
+    public static Cache aClass9_1264 = new Cache(50);
+    public static RSString aClass1_1266 = RSString.CreateString("backright2");
+    public static long[] ignores = new long[100];
     public static TypeFace fontNormal;
-    public static RSString aClass1_1269;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1270;
 
     static {
-        aClass1_1246 = RSString.CreateString(" hat sich ausgeloggt)3");
-        aClass1_1260 = RSString.CreateString("go back to the main RuneScape webpage");
-        aClass1_1263 = RSString.CreateString("nicht hergestellt werden)3");
-        aClass1_1255 = RSString.CreateString("and choose the (Wcreate account(W");
         aClass1_1259 = aClass1_1260;
         aClass1_1251 = aClass1_1255;
-        aClass9_1247 = new Cache(64);
-        aClass9_1264 = new Cache(50);
-        aClass1_1266 = RSString.CreateString("backright2");
-        ignores = new long[100];
-        aClass1_1265 = RSString.CreateString("auf einer freien Welt zu spielen)3");
-        aClass1_1269 = (RSString.CreateString("Moderator)2Option: Spieler f-Ur 48 Stunden stumm schalten: <ON>"));
     }
 
     public int configBits;
@@ -347,7 +335,7 @@ public class WallDecoration {
                 Rasterizer.drawUnfilledRectangle(29, 1 + i_89_, 302, 32, 0);
                 Rasterizer.drawFilledRectangle(30, 2 + i_89_, Class67.anInt1607 * 3, 30, 9179409);
                 Rasterizer.drawFilledRectangle(3 * Class67.anInt1607 + 30, i_89_ + 2, (-(Class67.anInt1607 * 3) + 300), 30, 0);
-                arg1.method686(Class22_Sub2.currentLoadingText, 180, -i + 105, 16777215);
+                arg1.method686(Native.currentLoadingText, 180, -i + 105, 16777215);
             }
             if(Class51.anInt1197 == 20) {
                 int i = 40;
@@ -359,9 +347,9 @@ public class WallDecoration {
                 arg1.method688(Class22_Sub2.aClass1_1881, 180, i, 16776960, true);
                 i += 15;
                 i += 10;
-                arg1.drawShadowedString((RSString.linkRSStrings((new RSString[]{Class61.aClass1_1422, Class22_Sub2.username}))), 90, i, 16777215, true);
+                arg1.drawShadowedString((RSString.linkRSStrings((new RSString[]{Class61.aClass1_1422, Native.username}))), 90, i, 16777215, true);
                 i += 15;
-                arg1.drawShadowedString((RSString.linkRSStrings(new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false)})), 92, i, 16777215, true);
+                arg1.drawShadowedString((RSString.linkRSStrings(new RSString[]{English.password, Native.password.method61()})), 92, i, 16777215, true);
                 i += 15;
             }
             if(Class51.anInt1197 == 10) {
@@ -388,9 +376,9 @@ public class WallDecoration {
                     arg1.method688(Class22_Sub2.aClass1_1881, 180, i, 16776960, true);
                     i += 15;
                     i += 10;
-                    arg1.drawShadowedString((RSString.linkRSStrings((new RSString[]{Class61.aClass1_1422, Class22_Sub2.username, ((Node.pulseCycle % 40 < 20 & Node.anInt947 == 0) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 90, i, 16777215, true);
+                    arg1.drawShadowedString((RSString.linkRSStrings((new RSString[]{Class61.aClass1_1422, Native.username, ((Node.pulseCycle % 40 < 20 & Node.anInt947 == 0) ? (Class40_Sub5_Sub6.aClass1_2447) : (Native.string_blank))}))), 90, i, 16777215, true);
                     i += 15;
-                    arg1.drawShadowedString((RSString.linkRSStrings((new RSString[]{Class22_Sub1.aClass1_1864, Class22_Sub2.password.method61(false), ((Node.pulseCycle % 40 < 20 & Node.anInt947 == 1) ? (Class40_Sub5_Sub6.aClass1_2447) : (Class22_Sub2.string_blank))}))), 92, i, 16777215, true);
+                    arg1.drawShadowedString((RSString.linkRSStrings((new RSString[]{English.password, Native.password.method61(), ((Node.pulseCycle % 40 < 20 & Node.anInt947 == 1) ? (Class40_Sub5_Sub6.aClass1_2447) : (Native.string_blank))}))), 92, i, 16777215, true);
                     Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
                     i += 15;
                     arg1.method688(VarbitDefinition.aClass1_2351, i_90_, i_91_ + 5, 16777215, true);
@@ -402,7 +390,7 @@ public class WallDecoration {
                     int i = 180;
                     int i_92_ = 150;
                     int i_93_ = 65;
-                    arg1.method688(Class57.aClass1_1333, 180, i_93_, 16777215, true);
+                    arg1.method688(English.toCreateANewAccountYouNeedTo, 180, i_93_, 16777215, true);
                     i_93_ += 15;
                     arg1.method688(aClass1_1259, 180, i_93_, 16777215, true);
                     i_93_ += 15;
@@ -445,15 +433,11 @@ public class WallDecoration {
         aClass9_1247 = null;
         aClass1_1243 = null;
         aClass1_1251 = null;
-        aClass1_1246 = null;
-        aClass1_1265 = null;
-        aClass1_1269 = null;
         aClass1_1266 = null;
         aClass1_1255 = null;
         aClass9_1264 = null;
         aClass1_1259 = null;
         ignores = null;
-        aClass1_1263 = null;
         aClass1_1260 = null;
     }
 }

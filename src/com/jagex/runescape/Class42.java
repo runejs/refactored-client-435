@@ -12,39 +12,29 @@ import com.jagex.runescape.net.PacketBuffer;
 
 public class Class42 {
     public static RSString aClass1_988;
-    public static RSString aClass1_989;
-    public static RSString aClass1_990;
+    public static RSString aClass1_989 = RSString.CreateString("We suspect someone knows your password)3");
+    public static RSString aClass1_990 = RSString.CreateString("Unable to connect)3");
     public static byte[][][] tile_underlayids;
-    public static RSString aClass1_995;
+    public static RSString aClass1_995 = RSString.CreateString(" has logged in)3");
     public static RSString aClass1_997;
-    public static Cache aClass9_998;
+    public static Cache aClass9_998 = new Cache(100);
     public static RSString aClass1_1000;
     public static RSString aClass1_1001;
     public static RSString aClass1_1002;
-    public static RSString aClass1_1003 = RSString.CreateString("Lade Konfiguration )2 ");
-    public static RSString aClass1_1005;
-    public static int anInt1006;
-    public static int anInt1008;
-    public static int anInt1010;
+    public static RSString aClass1_1005 = RSString.CreateString("Loaded config");
+    public static int anInt1006 = 0;
+    public static int anInt1008 = 0;
+    public static int anInt1010 = 2;
     public static RSString aClass1_1011;
-    public static RSString aClass1_1012;
+    public static RSString aClass1_1012 = RSString.CreateString("Existing user");
     public static int[] anIntArray1013;
 
     static {
-        aClass1_995 = RSString.CreateString(" has logged in)3");
-        aClass1_989 = RSString.CreateString("We suspect someone knows your password)3");
         aClass1_1001 = aClass1_989;
-        aClass1_1005 = RSString.CreateString("Loaded config");
         aClass1_1000 = aClass1_1005;
         aClass1_988 = aClass1_995;
-        anInt1008 = 0;
-        anInt1006 = 0;
-        aClass1_990 = RSString.CreateString("Unable to connect)3");
         aClass1_1002 = aClass1_990;
         aClass1_997 = aClass1_990;
-        aClass9_998 = new Cache(100);
-        anInt1010 = 2;
-        aClass1_1012 = RSString.CreateString("Existing user");
         aClass1_1011 = aClass1_1012;
     }
 
@@ -129,7 +119,6 @@ public class Class42 {
 
     public static void method887() {
         aClass1_988 = null;
-        aClass1_1003 = null;
         aClass1_1001 = null;
         aClass1_989 = null;
         aClass1_1012 = null;

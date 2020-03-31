@@ -16,7 +16,6 @@ public class Class61 {
     public static RSString aClass1_1421 = (RSString.CreateString("To play on this world move to a free area first"));
     public static RSString aClass1_1422 = RSString.CreateString("Username: ");
     public static PacketBuffer packetBuffer = new PacketBuffer(5000);
-    public static RSString aClass1_1426 = RSString.CreateString("Ladevorgang )2 bitte warten Sie)3");
     public static RSString aClass1_1427 = RSString.CreateString("mapedge");
     public static RSString aClass1_1428 = RSString.CreateString("wishes to duel with you)3");
     public static RSString aClass1_1432 = RSString.CreateString("System update in: ");
@@ -108,7 +107,6 @@ public class Class61 {
         aClass68_1441 = null;
         packetBuffer = null;
         aClass1_1422 = null;
-        aClass1_1426 = null;
         aClass1_1437 = null;
         aClass1_1421 = null;
         aClass1_1432 = null;

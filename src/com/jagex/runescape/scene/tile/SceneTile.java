@@ -20,28 +20,21 @@ import java.nio.charset.StandardCharsets;
 public class SceneTile extends Node {
     public static RSString aClass1_2042;
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_2043;
-    public static RSString aClass1_2044;
-    public static RSString aClass1_2046 = RSString.CreateString("Verbindung mit Freunde)2Server)3)3)3");
     public static RSString aClass1_2047;
     public static int[] anIntArray2048;
-    public static int activeInterfaceType;
+    public static int activeInterfaceType = 0;
     public static RSString aClass1_2050;
-    public static RSString aClass1_2051;
     public static RSString aClass1_2053;
     public static RSString aClass1_2054;
-    public static RSString aClass1_2055;
+    public static RSString aClass1_2055 = RSString.CreateString("Please try using a different world)3");
     public static RSString aClass1_2057;
 
     static {
-        aClass1_2044 = RSString.CreateString("Schrifts-=tze geladen)3");
-        aClass1_2051 = RSString.CreateString("m-Ochte sich mit Ihnen duellieren)3");
-        aClass1_2055 = RSString.CreateString("Please try using a different world)3");
         aClass1_2050 = aClass1_2055;
         aClass1_2047 = aClass1_2055;
         aClass1_2053 = aClass1_2055;
         aClass1_2057 = aClass1_2055;
         aClass1_2042 = aClass1_2055;
-        activeInterfaceType = 0;
         aClass1_2054 = aClass1_2055;
     }
 
@@ -155,13 +148,10 @@ public class SceneTile extends Node {
         aClass1_2055 = null;
         aClass1_2050 = null;
         aClass1_2047 = null;
-        aClass1_2044 = null;
-        aClass1_2051 = null;
         aClass1_2057 = null;
         aClass1_2053 = null;
         anIntArray2048 = null;
         aClass1_2054 = null;
-        aClass1_2046 = null;
         aClass40_Sub5_Sub14_Sub4_2043 = null;
     }
 

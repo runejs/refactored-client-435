@@ -7,7 +7,6 @@ import com.jagex.runescape.net.PacketBuffer;
 public class SceneCluster {
     public static PacketBuffer packetBuffer = new PacketBuffer(5000);
     public static int[] anIntArray761 = {1, 2, 4, 8};
-    public static RSString aClass1_766 = RSString.CreateString("Ignorieren");
     public static int anInt767;
     public static Class38 aClass38_768;
     public static int cameraZ;
@@ -37,7 +36,6 @@ public class SceneCluster {
 
     public static void method401() {
         aClass38_768 = null;
-        aClass1_766 = null;
         aClass1_772 = null;
         anIntArray761 = null;
         packetBuffer = null;

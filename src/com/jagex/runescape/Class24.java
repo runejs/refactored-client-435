@@ -14,7 +14,6 @@ import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class24 {
-    public static RSString aClass1_575 = RSString.CreateString("Freund hinzuf-Ugen");
     public static int[] anIntArray577;
     public static CacheIndex_Sub1[] aClass6_Sub1Array580 = new CacheIndex_Sub1[256];
     public static int[] walkingQueueX = new int[4000];
@@ -44,7 +43,6 @@ public class Class24 {
         Player.actorUpdatingIndices = null;
         aClass6_Sub1Array580 = null;
         walkingQueueX = null;
-        aClass1_575 = null;
     }
 
     public static boolean method340() {

@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -26,17 +27,13 @@ public class SpotAnimDefinition extends SubNode {
     public static ImageRGB minimapEdge;
     public static RSString str_prefix_level = RSString.CreateString("level)2");
     public static RSString cmd_noclip = RSString.CreateString("::noclip");
-    public static RSString aClass1_2291 = RSString.CreateString("W-=hlen Sie eine Option");
-    public static RSString aClass1_2292 = (RSString.CreateString("Verbindung konnte nicht hergestellt werden)3"));
     public static RSString aClass1_2294 = RSString.CreateString("Loading textures )2 ");
-    public static RSString aClass1_2296 = RSString.CreateString("Nehmen");
     public static RSString aClass1_2297 = RSString.CreateString("Loaded input handler");
     public static Class67 aClass67_2298;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2301;
     public static int mouseButtonPressed = 0;
     public static RSString aClass1_2306 = RSString.CreateString(" )2> @yel@");
     public static int baseX;
-    public static RSString aClass1_2311 = RSString.CreateString("leuchten3:");
 
     public int animationId;
     public int modelId;
@@ -58,25 +55,21 @@ public class SpotAnimDefinition extends SubNode {
     }
 
     public static void method548() {
-        aClass1_2291 = null;
         aClass67_2298 = null;
         aClass1_2297 = null;
         aClass40_Sub5_Sub14_Sub2Array2301 = null;
         minimapEdge = null;
         aClass1_2306 = null;
         aClass1_2294 = null;
-        aClass1_2311 = null;
         cmd_noclip = null;
         str_prefix_level = null;
-        aClass1_2296 = null;
-        aClass1_2292 = null;
     }
 
     public static void method552(boolean arg0) {
         try {
             if(Class40_Sub3.anInt2032 == 0) {
                 if(Class40_Sub6.aClass64_2098 != null) {
-                    Class40_Sub6.aClass64_2098.method1009(63);
+                    Class40_Sub6.aClass64_2098.method1009();
                     Class40_Sub6.aClass64_2098 = null;
                 }
                 Class37.aBoolean871 = false;
@@ -101,7 +94,7 @@ public class SpotAnimDefinition extends SubNode {
                 aClass1_2297 = null;
             }
             if(Class40_Sub3.anInt2032 == 2) {
-                long l = (Class34.aLong853 = Class22_Sub2.username.method58((byte) 93));
+                long l = (Class34.aLong853 = Native.username.method58((byte) 93));
                 SceneCluster.packetBuffer.currentPosition = 0;
                 SceneCluster.packetBuffer.putByte(14);
                 int i = (int) (0x1fL & l >> 16);
@@ -111,7 +104,7 @@ public class SpotAnimDefinition extends SubNode {
                 IncomingPackets.incomingPacketBuffer.currentPosition = 0;
             }
             if(Class40_Sub3.anInt2032 == 3) {
-                int i = Class40_Sub6.aClass64_2098.method1016(52);
+                int i = Class40_Sub6.aClass64_2098.method1016();
                 if(i != 0) {
                     Class27.method366(i);
                     return;
@@ -149,8 +142,8 @@ public class SpotAnimDefinition extends SubNode {
                 SceneCluster.packetBuffer.putIntBE(seeds[2]);
                 SceneCluster.packetBuffer.putIntBE(seeds[3]);
                 SceneCluster.packetBuffer.putIntBE(ISAAC.aClass31_521.anInt722);
-                SceneCluster.packetBuffer.putLongBE(Class22_Sub2.username.method58((byte) 97));
-                SceneCluster.packetBuffer.method505(Class22_Sub2.password);
+                SceneCluster.packetBuffer.putLongBE(Native.username.method58((byte) 97));
+                SceneCluster.packetBuffer.method505(Native.password);
                 SceneCluster.packetBuffer.applyRSA(Actor.rsaModulus, PacketBuffer.rsaKey);
                 Class61.packetBuffer.currentPosition = 0;
                 if(Class51.anInt1197 == 40) {
@@ -184,7 +177,7 @@ public class SpotAnimDefinition extends SubNode {
                 Class40_Sub3.anInt2032 = 6;
             }
             if(Class40_Sub3.anInt2032 == 6 && Class40_Sub6.aClass64_2098.method1014(-126) > 0) {
-                int i = Class40_Sub6.aClass64_2098.method1016(63);
+                int i = Class40_Sub6.aClass64_2098.method1016();
                 if(i != 21 || Class51.anInt1197 != 20) {
                     if(i == 2) {
                         Class40_Sub3.anInt2032 = 9;
@@ -206,7 +199,7 @@ public class SpotAnimDefinition extends SubNode {
                 }
             }
             if(Class40_Sub3.anInt2032 == 7 && (Class40_Sub6.aClass64_2098.method1014(-128) > 0)) {
-                Class33.anInt784 = 180 + Class40_Sub6.aClass64_2098.method1016(85) * 60;
+                Class33.anInt784 = 180 + Class40_Sub6.aClass64_2098.method1016() * 60;
                 Class40_Sub3.anInt2032 = 8;
             }
             if(Class40_Sub3.anInt2032 == 8) {
@@ -217,12 +210,12 @@ public class SpotAnimDefinition extends SubNode {
                 }
             } else {
                 if(Class40_Sub3.anInt2032 == 9 && Class40_Sub6.aClass64_2098.method1014(-121) >= 8) {
-                    InteractiveObject.playerRights = Class40_Sub6.aClass64_2098.method1016(99);
-                    Class22.accountFlagged = Class40_Sub6.aClass64_2098.method1016(38) == 1;
-                    Class30.anInt708 = Class40_Sub6.aClass64_2098.method1016(86);
+                    InteractiveObject.playerRights = Class40_Sub6.aClass64_2098.method1016();
+                    Class22.accountFlagged = Class40_Sub6.aClass64_2098.method1016() == 1;
+                    Class30.anInt708 = Class40_Sub6.aClass64_2098.method1016();
                     Class30.anInt708 <<= 8;
-                    Class30.anInt708 += Class40_Sub6.aClass64_2098.method1016(16);
-                    Class44.anInt1049 = Class40_Sub6.aClass64_2098.method1016(37);
+                    Class30.anInt708 += Class40_Sub6.aClass64_2098.method1016();
+                    Class44.anInt1049 = Class40_Sub6.aClass64_2098.method1016();
                     Class40_Sub6.aClass64_2098.method1008(0, 1, -127, IncomingPackets.incomingPacketBuffer.buffer);
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                     IncomingPackets.incomingPacket = IncomingPackets.incomingPacketBuffer.getPacket();

@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -13,30 +14,14 @@ import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.tile.Wall;
 
 public class Class13 {
-    public static int worldid;
+    public static int worldid = 1;
     public static int[] anIntArray403 = new int[25];
-    public static RSString aClass1_404 = RSString.CreateString("Enter name of friend to delete from list");
-    public static RSString str_Loading_Friend_List = RSString.CreateString("Loading friend list");
-    public static Cache aClass9_406;
-    public static RSString aClass1_411;
-    public static boolean[] playerArray;
-    public static RSString aClass1_417;
+    public static Cache aClass9_406 = new Cache(64);
+    public static boolean[] playerArray = new boolean[5];
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_418;
-    public static int anInt419;
-    public static int mouseX;
+    public static int anInt419 = 2;
+    public static int mouseX = 0;
     public static int[] anIntArray421;
-    public static RSString aClass1_422;
-
-    static {
-        worldid = 1;
-        aClass1_411 = RSString.CreateString("Unerwartete Antwort vom Anmelde)2Server)3");
-        playerArray = new boolean[5];
-        aClass1_417 = aClass1_404;
-        aClass9_406 = new Cache(64);
-        anInt419 = 2;
-        aClass1_422 = RSString.CreateString("oder ung-Ultiges Passwort)3");
-        mouseX = 0;
-    }
 
     public static void method241(Actor arg0, int arg1, byte arg2) {
         if(arg0.worldX < 128 || arg0.worldY < 128 || arg0.worldX >= 13184 || arg0.worldY >= 13184) {
@@ -87,7 +72,7 @@ public class Class13 {
         if(Class68.method1043(arg4)) {
             Class48.method925(arg3, Widget.interfaces[arg4], arg5, 0, arg7, 0, -1, arg8, arg6, arg1, 0, arg2);
             if(arg0 != 89)
-                str_Loading_Friend_List = null;
+                English.loadingFriendList = null;
         }
     }
 
@@ -153,12 +138,9 @@ public class Class13 {
 
     public static void method248() {
         anIntArray421 = null;
-        aClass1_422 = null;
-        aClass1_404 = null;
         aClass40_Sub5_Sub14_Sub2_418 = null;
-        str_Loading_Friend_List = null;
-        aClass1_411 = null;
-        aClass1_417 = null;
+        English.loadingFriendList = null;
+        English.enterNameOfFriendToDeleteFromList = null;
         anIntArray403 = null;
         playerArray = null;
         aClass9_406 = null;

@@ -9,6 +9,7 @@ import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.VertexNormal;
@@ -25,29 +26,18 @@ public class Item extends Renderable {
     public static RSString aClass1_3049 = RSString.CreateString("Could not complete login)3");
     public static RSString aClass1_3050;
     public static int[] anIntArray3051 = new int[25];
-    public static RSString aClass1_3054;
-    public static RSString aClass1_3055 = (RSString.CreateString("Ung-Ultige Verbindung mit einem Anmelde)2Server)3"));
+    public static RSString aClass1_3054 = RSString.CreateString("Members object");
     public static boolean[] obfuscatedKeyStatus = new boolean[112];
-    public static RSString aClass1_3059;
-    public static int friendsCount;
-    public static RSString aClass1_3062;
-    public static int anInt3065;
-    public static RSString aClass1_3066;
-    public static RSString aClass1_3068;
+    public static RSString aClass1_3059 = RSString.CreateString("Too many connections from your address)3");
+    public static int friendsCount = 0;
+    public static int anInt3065 = -1;
+    public static RSString aClass1_3066 = aClass1_3049;
+    public static RSString aClass1_3068 = RSString.CreateString(" )2> @whi@");
     public static RSString aClass1_3069;
-    public static RSString aClass1_3071;
 
     static {
-        aClass1_3054 = RSString.CreateString("Members object");
-        aClass1_3059 = RSString.CreateString("Too many connections from your address)3");
-        friendsCount = 0;
         aClass1_3050 = aClass1_3059;
-        anInt3065 = -1;
-        aClass1_3062 = RSString.CreateString("Lade Eingabe)2Steuerungsprogramm)3)3)3");
-        aClass1_3068 = RSString.CreateString(" )2> @whi@");
-        aClass1_3066 = aClass1_3049;
         aClass1_3069 = aClass1_3054;
-        aClass1_3071 = RSString.CreateString("Wen m-Ochten Sie hinzuf-Ugen?");
     }
 
     public int itemCount;
@@ -170,7 +160,7 @@ public class Item extends Renderable {
             Rasterizer.resetPixels();
             Class68.aClass68_1631 = Class40_Sub5_Sub13.method649(94, 75, arg0, -4875);
             Rasterizer.resetPixels();
-            byte[] is = arg2.method170(Class22_Sub2.string_blank, SceneCluster.aClass1_772, 1);
+            byte[] is = arg2.method170(Native.string_blank, SceneCluster.aClass1_772, 1);
             ImageRGB class40_sub5_sub14_sub4 = new ImageRGB(is, arg0);
             Class8.aClass68_298.method1046((byte) 90);
             class40_sub5_sub14_sub4.method727(0, 0);
@@ -215,12 +205,12 @@ public class Item extends Renderable {
             class40_sub5_sub14_sub4.method727(254, -171);
             Class68.aClass68_1631.method1046((byte) 90);
             class40_sub5_sub14_sub4.method727(-180, -171);
-            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg3, Main.aClass1_1762, (byte) 21, Class22_Sub2.string_blank);
+            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg3, Main.aClass1_1762, (byte) 21, Native.string_blank);
             Class39.aClass68_907.method1046((byte) 90);
             class40_sub5_sub14_sub4.drawImage(-128 + (382 + -(class40_sub5_sub14_sub4.image_width / 2)), 18);
-            Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775 = Class27.method359(AnimationSequence.aClass1_2488, Class22_Sub2.string_blank, arg3, (byte) -64);
-            Class59.aClass40_Sub5_Sub14_Sub2_1387 = Class27.method359(ISAAC.aClass1_506, Class22_Sub2.string_blank, arg3, (byte) -64);
-            Class22.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(arg3, Class8.aClass1_299, Class22_Sub2.string_blank);
+            Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775 = Class27.method359(AnimationSequence.aClass1_2488, Native.string_blank, arg3);
+            Class59.aClass40_Sub5_Sub14_Sub2_1387 = Class27.method359(ISAAC.aClass1_506, Native.string_blank, arg3);
+            Class22.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(arg3, Class8.aClass1_299, Native.string_blank);
             Class39.aClass40_Sub5_Sub14_Sub4_918 = new ImageRGB(128, 265);
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = new ImageRGB(128, 265);
             for(int i = 0; i < 33920; i++)
@@ -261,12 +251,12 @@ public class Item extends Renderable {
             Landscape.anIntArray1168 = new int[32768];
             FramemapDefinition.method879(null);
             Class40_Sub5_Sub17_Sub6.anIntArray3255 = new int[32768];
-            Class22_Sub2.password = Class22_Sub2.string_blank;
-            Class22_Sub2.username = Class22_Sub2.string_blank;
+            Native.password = Native.string_blank;
+            Native.username = Native.string_blank;
             Class4.anIntArray178 = new int[32768];
             Class26.anInt622 = 0;
             if(RSCanvas.anInt60 != 0 && !VertexNormal.lowMemory)
-                Class33.method412(false, Class55.aClass6_Sub1_1286, 0, (byte) 66, Class30.aClass1_716, 10, Class22_Sub2.string_blank, RSCanvas.anInt60);
+                Class33.method412(false, Class55.aClass6_Sub1_1286, 0, (byte) 66, Class30.aClass1_716, 10, Native.string_blank, RSCanvas.anInt60);
             else
                 Class33.method405(16969, 10);
             RSApplet.method19(false, 24041);
@@ -281,13 +271,10 @@ public class Item extends Renderable {
         aClass1_3050 = null;
         aClass1_3059 = null;
         aClass1_3069 = null;
-        aClass1_3062 = null;
         aClass1_3066 = null;
         aClass1_3068 = null;
         anIntArray3051 = null;
-        aClass1_3055 = null;
         aClass1_3049 = null;
-        aClass1_3071 = null;
     }
 
     public Model getRotatedModel(int arg0) {
