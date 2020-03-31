@@ -7,6 +7,8 @@ import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.German;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -20,18 +22,13 @@ import java.awt.*;
 
 public class ActorDefinition extends SubNode {
     public static CacheIndex_Sub1 aClass6_Sub1_2377;
-    public static RSString str_Moderator_mute_option_ON = (RSString.CreateString("Moderator option: Mute player for 48 hours: <ON>"));
     public static int[] anIntArray2386;
-    public static RSString aClass1_2392 = RSString.CreateString("Loaded fonts");
     public static int menuActionRow = 0;
-    public static RSString aClass1_2396 = RSString.CreateString("Checking for updates )2 ");
     public static RSString aClass1_2401 = RSString.CreateString("Please wait 1 minute and try again)3");
     public static int anInt2404 = 0;
     public static RSString aClass1_2410 = RSString.CreateString("Please wait 1 minute and try again)3");
     public static byte[] aByteArray2416 = new byte[520];
-    public static RSString aClass1_2417 = RSString.CreateString("Versteckt");
     public static RSString aClass1_2423 = RSString.CreateString("(X100(U(Y");
-    public static RSString aClass1_2432 = RSString.CreateString("Unexpected server response");
     public static int openFullScreenWidgetId = -1;
 
     public boolean isClickable = true;
@@ -197,15 +194,15 @@ public class ActorDefinition extends SubNode {
     public static void method581() {
         anIntArray2386 = null;
         aClass6_Sub1_2377 = null;
-        aClass1_2432 = null;
-        aClass1_2396 = null;
+        English.unexpectedServerResponse = null;
+        English.checkingForUpdates = null;
         aClass1_2423 = null;
-        aClass1_2417 = null;
+        German.hidden = null;
         aClass1_2410 = null;
         aByteArray2416 = null;
         aClass1_2401 = null;
-        aClass1_2392 = null;
-        str_Moderator_mute_option_ON = null;
+        English.loadedFonts = null;
+        English.moderatorOptionMutePlayerFor48HoursON = null;
     }
 
     public static ActorDefinition getDefinition(int id) {
@@ -316,7 +313,7 @@ public class ActorDefinition extends SubNode {
             rotate90LeftAnimation = buffer.getUnsignedShortBE();
         } else if(opcode >= 30 && opcode < 35) {
             options[opcode - 30] = buffer.getRSString();
-            if(options[opcode - 30].equalsIgnoreCase(Class59.string_Hidden, true)) {
+            if(options[opcode - 30].equalsIgnoreCase(English.hidden, true)) {
                 options[-30 + opcode] = null;
             }
         } else if(opcode == 40) {

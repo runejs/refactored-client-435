@@ -9,6 +9,7 @@ import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.input.KeyFocusListener;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -196,7 +197,7 @@ public class HuffmanEncoding {
                             }
                         }
                     }
-                    OverlayDefinition.addActionRow(Class40_Sub5_Sub15.prefix_examine, index, x, y, 1001, (RSString.linkRSStrings(new RSString[]{KeyFocusListener.aClass1_1283, class1})));
+                    OverlayDefinition.addActionRow(English.examine, index, x, y, 1001, (RSString.linkRSStrings(new RSString[]{KeyFocusListener.aClass1_1283, class1})));
                 }
             }
         }

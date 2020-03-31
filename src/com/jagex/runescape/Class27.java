@@ -10,6 +10,7 @@ import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.VertexNormal;
@@ -1139,7 +1140,7 @@ public class Class27 {
                                     else if(arg1 == 26)
                                         Class33.method411(Node.aClass1_960, Class22_Sub1.aClass1_1851, Class17.aClass1_455, (byte) 103);
                                     else if(arg1 != 27)
-                                        Class33.method411(Node.aClass1_946, (ActorDefinition.aClass1_2432), SceneTile.aClass1_2054, (byte) 123);
+                                        Class33.method411(Node.aClass1_946, (English.unexpectedServerResponse), SceneTile.aClass1_2054, (byte) 123);
                                     else
                                         Class33.method411(Node.aClass1_945, Node.aClass1_925, FramemapDefinition.aClass1_2189, (byte) 103);
                                 } else

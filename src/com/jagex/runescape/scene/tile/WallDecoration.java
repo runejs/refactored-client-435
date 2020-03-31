@@ -8,6 +8,7 @@ import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Item;
@@ -402,7 +403,7 @@ public class WallDecoration {
                     int i = 180;
                     int i_92_ = 150;
                     int i_93_ = 65;
-                    arg1.method688(Class57.aClass1_1333, 180, i_93_, 16777215, true);
+                    arg1.method688(English.toCreateANewAccountYouNeedTo, 180, i_93_, 16777215, true);
                     i_93_ += 15;
                     arg1.method688(aClass1_1259, 180, i_93_, 16777215, true);
                     i_93_ += 15;

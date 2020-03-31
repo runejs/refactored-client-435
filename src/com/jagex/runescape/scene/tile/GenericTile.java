@@ -8,6 +8,7 @@ import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -79,7 +80,7 @@ public class GenericTile {
             arg2.method688(Class30.aClass1_682, 55, 41, 16711680, true);
         if(arg4 == 3)
             arg2.method688(Class40_Sub5_Sub11.aClass1_2622, 55, 41, 65535, true);
-        arg2.method688(RSString.aClass1_1703, 184, 28, 16777215, true);
+        arg2.method688(English.privateChat, 184, 28, 16777215, true);
         if(arg3 == 0)
             arg2.method688(Npc.aClass1_3311, 184, 41, 65280, true);
         if(arg3 == 1)

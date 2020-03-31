@@ -8,6 +8,7 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.input.MouseHandler;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Item;
@@ -134,7 +135,7 @@ public class Class64 implements Runnable {
                                 }
                             }
                         }
-                        OverlayDefinition.addActionRow(Class40_Sub5_Sub15.prefix_examine, gameObjectDefinition.id << 14, x, y, 1004, (RSString.linkRSStrings((new RSString[]{Renderable.aClass1_2862, gameObjectDefinition.name}))));
+                        OverlayDefinition.addActionRow(English.examine, gameObjectDefinition.id << 14, x, y, 1004, (RSString.linkRSStrings((new RSString[]{Renderable.aClass1_2862, gameObjectDefinition.name}))));
                     } else if((ItemDefinition.selectedMask & 0x4) == 4) {
                         OverlayDefinition.addActionRow(Class38_Sub1.aClass1_1918, hash, x, y, 32, (RSString.linkRSStrings((new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.name}))));
                     }
@@ -202,7 +203,7 @@ public class Class64 implements Runnable {
                                         OverlayDefinition.addActionRow(class1s[i_15_], (item.itemId), x, y, i_16_, (RSString.linkRSStrings((new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)}))));
                                     }
                                 }
-                                OverlayDefinition.addActionRow(Class40_Sub5_Sub15.prefix_examine, item.itemId, x, y, 1003, (RSString.linkRSStrings(new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)})));
+                                OverlayDefinition.addActionRow(English.examine, item.itemId, x, y, 1003, (RSString.linkRSStrings(new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)})));
                             } else if((0x1 & ItemDefinition.selectedMask) == 1) {
                                 OverlayDefinition.addActionRow(Class38_Sub1.aClass1_1918, item.itemId, x, y, 15, (RSString.linkRSStrings(new RSString[]{FloorDecoration.aClass1_611, Class5.aClass1_206, (itemDefinition.name)})));
                             }

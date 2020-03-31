@@ -10,6 +10,7 @@ import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -245,7 +246,7 @@ public class Class48 {
                                                             }
                                                         }
                                                     }
-                                                    OverlayDefinition.addActionRow((Class40_Sub5_Sub15.prefix_examine), (itemDefinition.id), i_4_, (widget.id), 1006, (RSString.linkRSStrings((new RSString[]{(VertexNormal.aClass1_1114), (itemDefinition.name)}))));
+                                                    OverlayDefinition.addActionRow((English.examine), (itemDefinition.id), i_4_, (widget.id), 1006, (RSString.linkRSStrings((new RSString[]{(VertexNormal.aClass1_1114), (itemDefinition.name)}))));
                                                 }
                                             } else if(((ISAAC.anInt525) != (widget.id)) || (i_4_ != (LinkedList.anInt1061))) {
                                                 OverlayDefinition.addActionRow(Main.aClass1_1763, (itemDefinition.id), i_4_, (widget.id), 56, (RSString.linkRSStrings((new RSString[]{(Npc.aClass1_3295), (Class5.aClass1_206), (itemDefinition.name)}))));
@@ -276,9 +277,9 @@ public class Class48 {
                                     OverlayDefinition.addActionRow(class1s[0], itemDefinition.id, -1 + widget.anInt2736, widget.id, 52, (RSString.linkRSStrings((new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)}))));
                             }
                             if(widget.id >= 0)
-                                OverlayDefinition.addActionRow(Class40_Sub5_Sub15.prefix_examine, itemDefinition.id, -1, widget.id, 1007, (RSString.linkRSStrings(new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)})));
+                                OverlayDefinition.addActionRow(English.examine, itemDefinition.id, -1, widget.id, 1007, (RSString.linkRSStrings(new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)})));
                             else
-                                OverlayDefinition.addActionRow(Class40_Sub5_Sub15.prefix_examine, itemDefinition.id, widget.id & 0x7fff, widget.parentId, 1007, (RSString.linkRSStrings(new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)})));
+                                OverlayDefinition.addActionRow(English.examine, itemDefinition.id, widget.id & 0x7fff, widget.parentId, 1007, (RSString.linkRSStrings(new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)})));
                         }
                         if(widget.aBoolean2688 && widget.aClass1Array2661 != null && (i_2_ <= arg8) && (i_1_ <= arg4) && widget.originalWidth + i_2_ > arg8 && (arg4 < i_1_ + widget.originalHeight)) {
                             RSString class1 = HuffmanEncoding.blank_string;

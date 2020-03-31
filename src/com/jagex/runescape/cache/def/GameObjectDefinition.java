@@ -4,6 +4,7 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.scene.GroundItemTile;
@@ -446,7 +447,7 @@ public class GameObjectDefinition extends SubNode {
             contrast = 5 * buffer.getByte();
         } else if(opcode >= 30 && opcode < 35) {
             actions[opcode - 30] = buffer.getRSString();
-            if(actions[opcode + -30].equalsIgnoreCase(Class59.string_Hidden, true)) {
+            if(actions[opcode + -30].equalsIgnoreCase(English.hidden, true)) {
                 actions[(opcode + -30)] = null;
             }
         } else if(opcode == 40) {

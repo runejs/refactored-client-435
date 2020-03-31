@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.input.MouseHandler;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 import java.awt.*;
@@ -23,7 +24,6 @@ public class RSString implements Interface1 {
     /*synthetic*/ public static Class aClass1718;
     public static RSString aClass1_1677 = CreateString("scrollbar");
     public static RSString aClass1_1702 = CreateString("Der Anmelde)2Server ist offline)3");
-    public static RSString aClass1_1703 = CreateString("Private chat");
     public static RSString aClass1_1713 = CreateString("Diese Welt ist voll)3");
     public static RSString aClass1_1716 = CreateString("chatback");
     public boolean aBoolean1675 = true;
@@ -88,7 +88,7 @@ public class RSString implements Interface1 {
         aClass1_1717 = null;
         aClass68_1665 = null;
         aClass1_1716 = null;
-        aClass1_1703 = null;
+        English.privateChat = null;
         keyCodes = null;
     }
 

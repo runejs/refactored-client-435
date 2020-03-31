@@ -8,6 +8,8 @@ import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -115,7 +117,7 @@ public class Class40_Sub3 extends Node {
                 Class67.anInt1607 = 30;
             } else {
                 if(i != 0)
-                    Class22_Sub2.currentLoadingText = (RSString.linkRSStrings(new RSString[]{ActorDefinition.aClass1_2396, HashTable.method334(i, -1), Class44.aClass1_1041}));
+                    Class22_Sub2.currentLoadingText = (RSString.linkRSStrings(new RSString[]{English.checkingForUpdates, HashTable.method334(i, -1), Class44.aClass1_1041}));
                 Class67.anInt1607 = 30;
             }
         } else if(Class40_Sub5_Sub6.anInt2451 == 45) {
@@ -145,7 +147,7 @@ public class Class40_Sub3 extends Node {
             } else {
                 Class40_Sub5_Sub6.anInt2451 = 60;
                 Class67.anInt1607 = 40;
-                Class22_Sub2.currentLoadingText = ActorDefinition.aClass1_2392;
+                Class22_Sub2.currentLoadingText = English.loadedFonts;
             }
         } else if(Class40_Sub5_Sub6.anInt2451 == 60) {
             int i = Class60.method988(RSCanvas.aClass6_Sub1_48, ActorDefinition.aClass6_Sub1_2377);
@@ -208,7 +210,7 @@ public class Class40_Sub3 extends Node {
             if(Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 != null)
                 i++;
             else
-                Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Class22_Sub1.aClass1_1861, HuffmanEncoding.blank_string);
+                Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Native.headiconsPrayer, HuffmanEncoding.blank_string);
             if(UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567 == null)
                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, GenericTile.aClass1_1230, HuffmanEncoding.blank_string);
             else

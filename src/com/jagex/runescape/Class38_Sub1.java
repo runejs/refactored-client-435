@@ -7,6 +7,7 @@ import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.MouseHandler;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -69,7 +70,7 @@ public class Class38_Sub1 extends Class38 {
                         int i_3_ = 329 + -(13 * i);
                         i++;
                         if(Class13.mouseX > 4 && ((i_3_ + -10 < Landscape.mouseY + -4)) && ((-4 + Landscape.mouseY <= i_3_ + 3))) {
-                            int i_4_ = 25 + (WallDecoration.fontNormal.getStringWidth(RSString.linkRSStrings((new RSString[]{Class40_Sub5_Sub6.aClass1_2458, Class12.aClass1_392, class1, (Actor.chatMessages[i_1_])}))));
+                            int i_4_ = 25 + (WallDecoration.fontNormal.getStringWidth(RSString.linkRSStrings((new RSString[]{Class40_Sub5_Sub6.aClass1_2458, Native.prefixColon, class1, (Actor.chatMessages[i_1_])}))));
                             if(i_4_ > 450)
                                 i_4_ = 450;
                             if(Class13.mouseX < 4 + i_4_) {

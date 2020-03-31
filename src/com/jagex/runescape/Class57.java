@@ -2,13 +2,13 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class57 {
     public static Cache aClass9_1331 = new Cache(64);
     public static LinkedList aLinkedList_1332 = new LinkedList();
-    public static RSString aClass1_1333 = RSString.CreateString("To create a new account you need to");
     public static int[][] wayPoints = new int[104][104];
     public static int clickX = 0;
     public static RSString aClass1_1339 = RSString.CreateString("This world is full)3");
@@ -32,7 +32,7 @@ public class Class57 {
         aClass1_1343 = null;
         anIntArray1347 = null;
         Player.trackedPlayerIndices = null;
-        aClass1_1333 = null;
+        English.toCreateANewAccountYouNeedTo = null;
     }
 
     public static void method975(int songTimeout, int songId) {

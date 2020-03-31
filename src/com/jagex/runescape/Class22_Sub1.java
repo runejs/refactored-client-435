@@ -1,6 +1,8 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -12,46 +14,32 @@ import com.jagex.runescape.util.SignlinkNode;
 import java.awt.*;
 
 public class Class22_Sub1 extends Class22 {
-    public static RSString aClass1_1838;
+    public static RSString aClass1_1838 = RSString.CreateString("T");
     public static long aLong1841;
     public static RSString[] itemSearchResultNames = new RSString[100];
-    public static RSString aClass1_1845;
-    public static int[] anIntArray1846;
-    public static int[] anIntArray1847;
+    public static int[] anIntArray1846 = new int[5];
+    public static int[] anIntArray1847 = new int[2000];
     public static RSString aClass1_1848 = RSString.CreateString("This computers address has been blocked");
-    public static RSString aClass1_1849;
+    public static RSString aClass1_1849 = RSString.CreateString("welle:");
     public static RSString aClass1_1851 = aClass1_1848;
     public static CacheIndex aCacheIndex_1855;
     public static int anInt1856;
-    public static RSString aClass1_1857;
+    public static RSString aClass1_1857 = English.enterYourUsernameAndPassword;
     public static RSString aClass1_1858;
-    public static RSString aClass1_1861;
-    public static RSString aClass1_1863;
+    public static RSString aClass1_1863 = RSString.CreateString("Please wait 5 minutes before trying again)3");
     public static RSString aClass1_1864;
     public static RSString aClass1_1865;
-    public static RSString aClass1_1867;
-    public static RSString aClass1_1868;
+    public static RSString aClass1_1867 = RSString.CreateString("Loaded interfaces");
+    public static RSString aClass1_1868 = RSString.CreateString("Report abuse");
     public static RSString aClass1_1870;
-    public static RSString aClass1_1871;
-    public static RSString aClass1_1873;
+    public static RSString aClass1_1871 = RSString.CreateString("Verbindung abgebrochen)3");
+    public static RSString aClass1_1873 = RSString.CreateString("Password: ");
 
     static {
-        aClass1_1845 = RSString.CreateString("Enter your username (V password)3");
-        aClass1_1849 = RSString.CreateString("welle:");
-        aClass1_1857 = aClass1_1845;
-        aClass1_1867 = RSString.CreateString("Loaded interfaces");
-        aClass1_1838 = RSString.CreateString("T");
-        aClass1_1863 = RSString.CreateString("Please wait 5 minutes before trying again)3");
-        aClass1_1861 = RSString.CreateString("headicons_prayer");
-        anIntArray1846 = new int[5];
-        aClass1_1868 = RSString.CreateString("Report abuse");
         aClass1_1858 = aClass1_1867;
         aClass1_1870 = aClass1_1863;
         aClass1_1865 = aClass1_1868;
-        aClass1_1873 = RSString.CreateString("Password: ");
         aClass1_1864 = aClass1_1873;
-        aClass1_1871 = RSString.CreateString("Verbindung abgebrochen)3");
-        anIntArray1847 = new int[2000];
     }
 
     public boolean aBoolean1835;
@@ -69,7 +57,7 @@ public class Class22_Sub1 extends Class22 {
 
     public static void method310() {
         aClass1_1858 = null;
-        aClass1_1861 = null;
+        Native.headiconsPrayer = null;
         aClass1_1848 = null;
         anIntArray1846 = null;
         aClass1_1868 = null;
@@ -84,7 +72,7 @@ public class Class22_Sub1 extends Class22 {
         aClass1_1838 = null;
         aClass1_1857 = null;
         aClass1_1865 = null;
-        aClass1_1845 = null;
+        English.enterYourUsernameAndPassword = null;
         itemSearchResultNames = null;
         aClass1_1849 = null;
         aCacheIndex_1855 = null;
@@ -198,7 +186,7 @@ public class Class22_Sub1 extends Class22 {
 
     public void method306(byte arg0) {
         if(arg0 < 100)
-            aClass1_1861 = null;
+            Native.headiconsPrayer = null;
     }
 
     public void method304(byte arg0, int arg1, int arg2) {

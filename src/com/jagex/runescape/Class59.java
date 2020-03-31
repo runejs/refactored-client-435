@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.PacketBuffer;
@@ -23,7 +24,6 @@ public class Class59 {
     public static KeyFocusListener keyFocusListener;
     public static int[] secondMenuOperand;
     public static RSString aClass1_1395 = RSString.CreateString("backbase1");
-    public static RSString string_Hidden = RSString.CreateString("Hidden");
     public static long[] aLongArray1397;
     public static int[] anIntArray1398;
     public static RSString aClass1_1399;
@@ -96,7 +96,7 @@ public class Class59 {
         aClass1_1395 = null;
         keyFocusListener = null;
         aClass1_1391 = null;
-        string_Hidden = null;
+        English.hidden = null;
         secondMenuOperand = null;
     }
 

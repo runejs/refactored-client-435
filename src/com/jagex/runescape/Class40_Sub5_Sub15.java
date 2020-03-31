@@ -7,11 +7,11 @@ import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.German;
 import com.jagex.runescape.media.renderable.actor.Actor;
 
 public class Class40_Sub5_Sub15 extends SubNode {
-    public static RSString aClass1_2773 = (RSString.CreateString("Um ein neues Spielkonto zu erstellen)1 m-Ussen Sie"));
-    public static RSString prefix_examine = RSString.CreateString("Examine");
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2775;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2776;
     public static int[] anIntArray2777 = {8, 11, 4, 6, 9, 7, 10};
@@ -77,13 +77,13 @@ public class Class40_Sub5_Sub15 extends SubNode {
         aClass40_Sub5_Sub14_Sub2Array2776 = null;
         anIntArray2777 = null;
         aClass1_2787 = null;
-        aClass1_2773 = null;
+        German.toCreateANewAccountYouNeedTo = null;
         aCacheIndex_2779 = null;
         anIntArray2788 = null;
         aClass1_2793 = null;
         aClass1_2786 = null;
         aClass1_2781 = null;
-        prefix_examine = null;
+        English.examine = null;
     }
 
     public static boolean method735(byte arg0, int arg1) {

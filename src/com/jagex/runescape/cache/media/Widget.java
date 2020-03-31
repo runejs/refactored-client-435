@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
@@ -1183,10 +1184,10 @@ public class Widget extends SubNode {
             if(InteractiveObject.playerRights >= 1) {
                 if(Class67.reportMutePlayer) {
                     widget.textColor = 0xff0000;
-                    widget.disabledText = ActorDefinition.str_Moderator_mute_option_ON;
+                    widget.disabledText = English.moderatorOptionMutePlayerFor48HoursON;
                 } else {
                     widget.textColor = 0xffffff;
-                    widget.disabledText = VertexNormal.str_Moderator_mute_option_OFF;
+                    widget.disabledText = English.moderatorOptionMutePlayerFor48HoursOFF;
                 }
             } else
                 widget.disabledText = HuffmanEncoding.blank_string;
