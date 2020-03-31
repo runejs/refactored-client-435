@@ -20,15 +20,7 @@ import com.jagex.runescape.scene.tile.WallDecoration;
 import java.awt.*;
 
 public class Class40_Sub2 extends Node {
-    public static RSString aClass1_1991;
-    public static RSString aClass1_1995 = RSString.CreateString("Lade Spiel)2Fenster )2 ");
     public static int anInt1996 = 0;
-    public static RSString aClass1_2008;
-
-    static {
-        aClass1_1991 = RSString.CreateString("Ung-Ultiges Anmelde)2Paket)3");
-        aClass1_2008 = (RSString.CreateString("Ihre Ignorieren)2Liste ist voll)1 Sie k-Onnen nur 100 Spieler darauf eintragen)3"));
-    }
 
     public int anInt1993;
     public int anInt1994;
@@ -58,23 +50,16 @@ public class Class40_Sub2 extends Node {
         GroundItemTile.varbitmasks[i_0_] = (UnderlayDefinition.bitWiseOR(HuffmanEncoding.method1021(GroundItemTile.varbitmasks[i_0_], i_3_ ^ 0xffffffff), HuffmanEncoding.method1021(i_3_, arg0 << i)));
     }
 
-    public static boolean hasFriend(RSString arg0, int arg1) {
+    public static boolean hasFriend(RSString arg0) {
         if(arg0 == null)
             return false;
         for(int i = 0; i < Item.friendsCount; i++) {
-            if(arg0.equalsIgnoreCase(Class40_Sub11.friendUsernames[i], true))
+            if(arg0.equalsIgnoreCase(Class40_Sub11.friendUsernames[i]))
                 return true;
         }
-        if(arg1 != -32624)
-            aClass1_1991 = null;
-        return arg0.equalsIgnoreCase((Player.localPlayer.playerName), true);
+        return arg0.equalsIgnoreCase((Player.localPlayer.playerName));
     }
 
-    public static void method524() {
-        aClass1_1995 = null;
-        aClass1_2008 = null;
-        aClass1_1991 = null;
-    }
 
     public static int method525(byte[] arg0, int arg1, byte arg2) {
         if(arg2 != -68)
@@ -82,9 +67,7 @@ public class Class40_Sub2 extends Node {
         return Class67.method1034(true, 0, arg1, arg0);
     }
 
-    public static ImageRGB[] method526(CacheIndex arg0, int arg1, RSString arg2, RSString arg3) {
-        if(arg1 != 0)
-            aClass1_2008 = null;
+    public static ImageRGB[] method526(CacheIndex arg0, RSString arg2, RSString arg3) {
         int i = arg0.getHash(arg2);
         int i_4_ = arg0.method179(i, arg3);
         return GenericTile.method944((byte) -3, i, arg0, i_4_);
@@ -128,7 +111,7 @@ public class Class40_Sub2 extends Node {
         RSCanvas.aClass68_59.method1046((byte) 90);
         Class56.aClass40_Sub5_Sub14_Sub2_1329.drawImage(0, 0);
         if(arg1 != 4)
-            hasFriend(null, -128);
+            hasFriend(null);
         if(arg3) {
             if(arg2[arg0] != -1) {
                 if(arg0 == 7)

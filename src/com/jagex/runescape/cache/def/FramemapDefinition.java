@@ -15,14 +15,9 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.tile.Wall;
 
 public class FramemapDefinition extends Node {
-    public static RSString aClass1_2174 = RSString.CreateString("rot:");
-    public static RSString aClass1_2176 = (RSString.CreateString("Bitte warten Sie )2 es wird versucht)1 die Verbindung wiederherzustellen)3"));
     public static boolean aBoolean2177 = false;
     public static RSString aClass1_2179 = RSString.CreateString("cross");
-    public static RSString aClass1_2181 = RSString.CreateString("Musik)2Engine vorbereitet)3");
     public static int anInt2183 = 0;
-    public static RSString aClass1_2185 = RSString.CreateString("Titelbild geladen)3");
-    public static RSString aClass1_2186 = RSString.CreateString(" hat sich eingeloggt)3");
     public static RSString aClass1_2188 = RSString.CreateString("You need a members account to login to this world)3");
     public static RSString aClass1_2189 = RSString.CreateString("Service unavailable)3");
 
@@ -172,12 +167,7 @@ public class FramemapDefinition extends Node {
 
     public static void method877() {
         aClass1_2188 = null;
-        aClass1_2181 = null;
         aClass1_2179 = null;
-        aClass1_2186 = null;
-        aClass1_2185 = null;
-        aClass1_2176 = null;
-        aClass1_2174 = null;
         aClass1_2189 = null;
     }
 

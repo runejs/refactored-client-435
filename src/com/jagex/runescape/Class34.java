@@ -10,31 +10,22 @@ import com.jagex.runescape.scene.tile.GenericTile;
 
 public class Class34 {
     public static HashTable aClass23_805;
-    public static RSString aClass1_804 = RSString.CreateString("m-Ochte mit Ihnen handeln)3");
-    public static int anInt813;
+    public static int anInt813 = 0;
     public static RSString aClass1_817;
     public static RSString aClass1_826 = RSString.CreateString("Click to continue");
     public static RSString aClass1_829 = aClass1_826;
-    public static HashTable aClass23_841;
-    public static RSString aClass1_844;
-    public static int anInt848;
+    public static HashTable aClass23_841 = new HashTable(4096);
+    public static RSString aClass1_844 = (RSString.CreateString("Press (Wrecover a locked account(W on front page)3"));
+    public static int anInt848 = 0;
     public static int currentCameraPositionV;
-    public static RSString aClass1_850;
-    public static Cache aClass9_851;
+    public static Cache aClass9_851 = new Cache(30);
     public static int[] anIntArray852;
     public static long aLong853;
-    public static int anInt854;
+    public static int anInt854 = -1;
     public static IndexedImage mapBack;
 
     static {
-        anInt813 = 0;
-        aClass1_844 = (RSString.CreateString("Press (Wrecover a locked account(W on front page)3"));
         aClass1_817 = aClass1_844;
-        aClass23_841 = new HashTable(4096);
-        aClass1_850 = RSString.CreateString("Suche nach Updates )2 ");
-        anInt848 = 0;
-        aClass9_851 = new Cache(30);
-        anInt854 = -1;
     }
 
     public int anInt801;
@@ -124,14 +115,12 @@ public class Class34 {
     public static void method418() {
         aClass1_826 = null;
         aClass1_817 = null;
-        aClass1_804 = null;
         aClass1_844 = null;
         aClass9_851 = null;
         aClass23_841 = null;
         aClass1_829 = null;
         anIntArray852 = null;
         aClass23_805 = null;
-        aClass1_850 = null;
         mapBack = null;
     }
 

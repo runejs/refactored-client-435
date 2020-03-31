@@ -12,20 +12,12 @@ import com.jagex.runescape.scene.GroundItemTile;
 
 public class SubNode extends Node {
     public static int anInt2081;
-    public static boolean aBoolean2083;
-    public static RSString aClass1_2084;
+    public static boolean aBoolean2083 = false;
+    public static RSString aClass1_2084 = RSString.CreateString(")1");
     public static int[] anIntArray2086;
     public static RSString aClass1_2090 = RSString.CreateString("(U5");
     public static Class68 aClass68_2091;
-    public static RSString aClass1_2093;
-    public static RSString aClass1_2095;
-
-    static {
-        aBoolean2083 = false;
-        aClass1_2084 = RSString.CreateString(")1");
-        aClass1_2093 = RSString.CreateString("redstone1");
-        aClass1_2095 = RSString.CreateString("Fallen lassen");
-    }
+    public static RSString aClass1_2093 = RSString.CreateString("redstone1");
 
     public SubNode aClass40_Sub5_2082;
     public SubNode aClass40_Sub5_2087;
@@ -50,7 +42,6 @@ public class SubNode extends Node {
 
     public static void method541() {
         aClass1_2090 = null;
-        aClass1_2095 = null;
         aClass1_2084 = null;
         aClass1_2093 = null;
         aClass68_2091 = null;

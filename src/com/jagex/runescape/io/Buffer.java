@@ -21,7 +21,6 @@ public class Buffer extends Node {
     public static int[] anIntArray1984 = new int[2000];
     public static int anInt1985 = -1;
     public static int anInt1987 = 0;
-    public static RSString aClass1_1990 = RSString.CreateString("Ausw-=hlen");
 
     public int currentPosition;
     public byte[] buffer;
@@ -49,7 +48,6 @@ public class Buffer extends Node {
     }
 
     public static void method499() {
-        aClass1_1990 = null;
         anIntArray1984 = null;
         aClass40_Sub5_Sub14_Sub2_1959 = null;
         aClass1_1983 = null;

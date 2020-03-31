@@ -10,7 +10,6 @@ public class Class40_Sub7 extends Node {
     public static Class68 aClass68_2123;
     public static RSString aClass1_2125;
     public static RSString aClass1_2127 = RSString.CreateString("Loading interfaces )2 ");
-    public static RSString aClass1_2128 = RSString.CreateString("Fertigkeit)2");
     public static RSString aClass1_2129 = RSString.CreateString("Mem:");
     public static RSString aClass1_2130 = RSString.CreateString("Loaded update list");
     public static int[] friendWorlds;
@@ -28,7 +27,6 @@ public class Class40_Sub7 extends Node {
         aClass68_2123 = null;
         aClass1_2132 = null;
         friendWorlds = null;
-        aClass1_2128 = null;
         aClass1_2129 = null;
         aClass1_2127 = null;
         aClass1_2130 = null;

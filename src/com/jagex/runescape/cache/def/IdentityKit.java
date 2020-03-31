@@ -11,7 +11,6 @@ public class IdentityKit extends SubNode {
     public static RSString aClass1_2588 = RSString.CreateString("backvmid2");
     public static HuffmanEncoding aHuffmanEncoding_2590;
     public static int anInt2591 = 0;
-    public static RSString aClass1_2592 = RSString.CreateString("Anmelde)2Zeitlimit -Uberschritten)3");
     public static RSString aClass1_2593 = RSString.CreateString("K");
     public static boolean drawTabIcons = false;
     public static int anInt2598 = 0;
@@ -19,9 +18,7 @@ public class IdentityKit extends SubNode {
     public static LinkedList aLinkedList_2604 = new LinkedList();
     public static int height;
     public static CacheIndex_Sub1 aClass6_Sub1_2609;
-    public static RSString aClass1_2611 = RSString.CreateString("Bitte versuchen Sie es in ");
     public static int anInt2613 = 0;
-    public static RSString aClass1_2614 = RSString.CreateString("Wen m-Ochten Sie entfernen?");
     public static RSString aClass1_2615 = RSString.CreateString("Bad session id)3");
     public static boolean membersServer;
 
@@ -38,12 +35,9 @@ public class IdentityKit extends SubNode {
 
     public static void method625() {
         aClass1_2615 = null;
-        aClass1_2611 = null;
         aClass1_2588 = null;
         aClass6_Sub1_2609 = null;
         aHuffmanEncoding_2590 = null;
-        aClass1_2614 = null;
-        aClass1_2592 = null;
         aClass1_2587 = null;
         aLinkedList_2604 = null;
         sound = null;

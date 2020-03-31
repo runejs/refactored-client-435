@@ -30,7 +30,6 @@ public class Widget extends SubNode {
     public static RSString aClass1_2674 = RSString.CreateString("Starting game engine)3)3)3");
     public static RSString str_Choose_Option = RSString.CreateString("Choose Option");
     public static RSString cmd_errortest = RSString.CreateString("::errortest");
-    public static RSString aClass1_2716 = RSString.CreateString("Fehler beim Laden Ihres Charakter)2Profils");
     public static RSString goldCrown = RSString.CreateString("@cr2@");
     public static RSString aClass1_2740 = RSString.CreateString("Enter name of friend to add to list");
     public static Widget[][] interfaces;
@@ -225,7 +224,6 @@ public class Widget extends SubNode {
     }
 
     public static void method641() {
-        aClass1_2716 = null;
         aClass1_2671 = null;
         cmd_errortest = null;
         goldCrown = null;

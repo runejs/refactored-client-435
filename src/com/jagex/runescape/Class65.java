@@ -14,7 +14,6 @@ import com.jagex.runescape.scene.tile.SceneTile;
 import java.util.zip.CRC32;
 
 public class Class65 {
-    public static RSString aClass1_1530 = RSString.CreateString("Abbrechen");
     public static CRC32 aCRC32_1531 = new CRC32();
     public static CacheIndex_Sub1 aClass6_Sub1_1533;
     public static RSString aClass1_1535 = RSString.CreateString("Please reload this page)3");
@@ -29,7 +28,6 @@ public class Class65 {
     public static void method1017() {
         aClass6_Sub1_1533 = null;
         aCRC32_1531 = null;
-        aClass1_1530 = null;
         aClass1_1538 = null;
         aClass1_1536 = null;
         aClass1_1535 = null;
@@ -54,12 +52,10 @@ public class Class65 {
         }
     }
 
-    public static void method1020(boolean arg0) {
+    public static void method1020() {
         Class59.anIntArray1398 = new int[104];
         OverlayDefinition.tile_underlay_path = new byte[4][104][104];
         CacheIndex.anIntArrayArrayArray262 = new int[4][105][105];
-        if(!arg0)
-            aClass1_1530 = null;
         Class64.lowestPlane = 99;
         InteractiveObject.aByteArrayArrayArray492 = new byte[4][105][105];
         FloorDecoration.anIntArray612 = new int[104];

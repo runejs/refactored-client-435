@@ -34,7 +34,6 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     public static RSString aClass1_2967;
     public static RSString aClass1_2969 = RSString.CreateString("Aug");
     public static boolean[] aBooleanArray2975;
-    public static RSString aClass1_2977;
     public static int menuScreenArea;
     public static RSString aClass1_2985;
     public static int[] directions;
@@ -56,7 +55,6 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         aClass1_2967 = RSString.CreateString("Dec");
         aBooleanArray2975 = new boolean[5];
         aClass1_2990 = RSString.CreateString("Mar");
-        aClass1_2977 = RSString.CreateString("Regeln versto-8en hat)3");
         atInventoryInterfaceType = 0;
         aClass1_2998 = RSString.CreateString("May");
         aClass1_3002 = RSString.CreateString("Loading wordpack )2 ");
@@ -147,7 +145,6 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         aClass6_Sub1_3000 = null;
         aBooleanArray2975 = null;
         aClass1_2990 = null;
-        aClass1_2977 = null;
         aClass1_2991 = null;
         aClass1_3002 = null;
         aClass1_3012 = null;
@@ -233,12 +230,12 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
 
     public static void method763(Component arg0, byte arg1, CacheIndex arg2) {
         if(!SubNode.aBoolean2083) {
-            FloorDecoration.aClass40_Sub5_Sub14_Sub2_593 = Class27.method359(Class27.aClass1_638, Class8.aClass1_305, arg2, (byte) -64);
-            Class44.aClass40_Sub5_Sub14_Sub2_1047 = Class27.method359(RSString.aClass1_1716, Class8.aClass1_305, arg2, (byte) -64);
-            Class34.mapBack = Class27.method359(VertexNormal.aClass1_1113, Class8.aClass1_305, arg2, (byte) -64);
-            Class57.aClass40_Sub5_Sub14_Sub2_1346 = Class27.method359(Class59.aClass1_1395, Class8.aClass1_305, arg2, (byte) -64);
-            Class56.aClass40_Sub5_Sub14_Sub2_1329 = Class27.method359(CacheIndex.aClass1_256, Class8.aClass1_305, arg2, (byte) -64);
-            Buffer.aClass40_Sub5_Sub14_Sub2_1959 = Class27.method359(Wall.aClass1_338, Class8.aClass1_305, arg2, (byte) -64);
+            FloorDecoration.aClass40_Sub5_Sub14_Sub2_593 = Class27.method359(Class27.aClass1_638, Class8.aClass1_305, arg2);
+            Class44.aClass40_Sub5_Sub14_Sub2_1047 = Class27.method359(RSString.aClass1_1716, Class8.aClass1_305, arg2);
+            Class34.mapBack = Class27.method359(VertexNormal.aClass1_1113, Class8.aClass1_305, arg2);
+            Class57.aClass40_Sub5_Sub14_Sub2_1346 = Class27.method359(Class59.aClass1_1395, Class8.aClass1_305, arg2);
+            Class56.aClass40_Sub5_Sub14_Sub2_1329 = Class27.method359(CacheIndex.aClass1_256, Class8.aClass1_305, arg2);
+            Buffer.aClass40_Sub5_Sub14_Sub2_1959 = Class27.method359(Wall.aClass1_338, Class8.aClass1_305, arg2);
             RSCanvas.aClass68_64 = Class40_Sub5_Sub13.method649(96, 479, arg0, -4875);
             Class44.aClass40_Sub5_Sub14_Sub2_1047.drawImage(0, 0);
             RSString.aClass68_1665 = Class40_Sub5_Sub13.method649(156, 172, arg0, -4875);
@@ -279,9 +276,9 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             Class17.aClass68_462 = Class40_Sub5_Sub13.method649((class40_sub5_sub14_sub4.image_height), (class40_sub5_sub14_sub4.image_width), arg0, -4875);
             int i = -80 % ((arg1 - 9) / 40);
             class40_sub5_sub14_sub4.method727(0, 0);
-            Class56.aClass40_Sub5_Sub14_Sub2_1315 = Class27.method359(SubNode.aClass1_2093, Class8.aClass1_305, arg2, (byte) -64);
-            RSApplet.aClass40_Sub5_Sub14_Sub2_1 = Class27.method359(Class40_Sub5_Sub17_Sub6.aClass1_3254, Class8.aClass1_305, arg2, (byte) -64);
-            Class35.aClass40_Sub5_Sub14_Sub2_1744 = Class27.method359(Class64.aClass1_1517, Class8.aClass1_305, arg2, (byte) -64);
+            Class56.aClass40_Sub5_Sub14_Sub2_1315 = Class27.method359(SubNode.aClass1_2093, Class8.aClass1_305, arg2);
+            RSApplet.aClass40_Sub5_Sub14_Sub2_1 = Class27.method359(Class40_Sub5_Sub17_Sub6.aClass1_3254, Class8.aClass1_305, arg2);
+            Class35.aClass40_Sub5_Sub14_Sub2_1744 = Class27.method359(Class64.aClass1_1517, Class8.aClass1_305, arg2);
             Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105 = Class56.aClass40_Sub5_Sub14_Sub2_1315.method691();
             Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105.flipHorizontal();
             WallDecoration.aClass40_Sub5_Sub14_Sub2_1270 = RSApplet.aClass40_Sub5_Sub14_Sub2_1.method691();

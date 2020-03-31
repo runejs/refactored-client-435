@@ -379,7 +379,7 @@ public class ItemDefinition extends SubNode {
             femaleModel1 = buffer.getUnsignedShortBE();
         } else if(opcode >= 30 && opcode < 35) {
             groundOptions[-30 + opcode] = buffer.getRSString();
-            if(groundOptions[opcode + -30].equalsIgnoreCase(English.hidden, true)) {
+            if(groundOptions[opcode + -30].equalsIgnoreCase(English.hidden)) {
                 groundOptions[opcode + -30] = null;
             }
         } else if(opcode >= 35 && opcode < 40) {

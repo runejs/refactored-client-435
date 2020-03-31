@@ -8,7 +8,6 @@ import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
-import com.jagex.runescape.language.German;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -62,7 +61,7 @@ public class ActorDefinition extends SubNode {
 
     public static void method567() {
         if(Class57.aClass64_1345 != null) {
-            Class57.aClass64_1345.method1009(90);
+            Class57.aClass64_1345.method1009();
         }
     }
 
@@ -197,7 +196,6 @@ public class ActorDefinition extends SubNode {
         English.unexpectedServerResponse = null;
         English.checkingForUpdates = null;
         aClass1_2423 = null;
-        German.hidden = null;
         aClass1_2410 = null;
         aByteArray2416 = null;
         aClass1_2401 = null;
@@ -313,7 +311,7 @@ public class ActorDefinition extends SubNode {
             rotate90LeftAnimation = buffer.getUnsignedShortBE();
         } else if(opcode >= 30 && opcode < 35) {
             options[opcode - 30] = buffer.getRSString();
-            if(options[opcode - 30].equalsIgnoreCase(English.hidden, true)) {
+            if(options[opcode - 30].equalsIgnoreCase(English.hidden)) {
                 options[-30 + opcode] = null;
             }
         } else if(opcode == 40) {

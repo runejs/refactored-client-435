@@ -14,13 +14,10 @@ public class VertexNormal {
     public static Cache aClass9_1102 = new Cache(500);
     public static CacheIndex_Sub1 aClass6_Sub1_1104;
     public static RSString aClass1_1105 = aClass1_1093;
-    public static RSString aClass1_1109 = RSString.CreateString("Ihr Spielkonto wurde deaktiviert)3");
     public static int itemSearchResultCount = 0;
     public static boolean lowMemory = false;
     public static RSString aClass1_1113 = RSString.CreateString("mapback");
     public static RSString aClass1_1114 = RSString.CreateString("@lre@");
-    public static RSString aClass1_1115 = RSString.CreateString("Lade Freunde)2Liste)3)3)3");
-    public static RSString aClass1_1116 = (RSString.CreateString("Benutzen Sie die (WPasswort -=ndern(W Option"));
     public static RSString aClass1_1117 = RSString.CreateString(" ");
 
     public int y;
@@ -29,13 +26,10 @@ public class VertexNormal {
     public int magnitude;
 
     public static void method914() {
-        aClass1_1115 = null;
         aClass1_1114 = null;
-        aClass1_1109 = null;
         aClass1_1117 = null;
         aClass1_1090 = null;
         aClass1_1093 = null;
-        aClass1_1116 = null;
         English.moderatorOptionMutePlayerFor48HoursOFF = null;
         aClass1_1099 = null;
         aClass1_1105 = null;

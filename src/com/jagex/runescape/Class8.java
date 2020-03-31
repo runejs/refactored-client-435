@@ -18,45 +18,30 @@ import java.util.Calendar;
 
 public class Class8 {
     public static RSString aClass1_278;
-    public static Calendar aCalendar279;
+    public static Calendar aCalendar279 = Calendar.getInstance();
     public static RSString aClass1_281 = RSString.CreateString("backright1");
     public static CacheIndex aCacheIndex_284;
     public static RSString aClass1_286 = RSString.CreateString("Unexpected loginserver response)3");
     public static long aLong288;
     public static int anInt289;
-    public static int anInt290;
-    public static RSString aClass1_291;
-    public static int anInt292;
-    public static RSString aClass1_293;
+    public static int anInt290 = 0;
+    public static RSString aClass1_291 = RSString.CreateString("You have only just left another world)3");
+    public static int anInt292 = 0;
     public static RSString aClass1_294;
     public static FontMetrics fontMetrics;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array296;
-    public static int[] anIntArray297;
+    public static int[] anIntArray297 = new int[5];
     public static Class68 aClass68_298;
-    public static RSString aClass1_299;
-    public static RSString aClass1_300;
-    public static int itemSelected;
-    public static byte aByte302;
-    public static RSString aClass1_303;
-    public static RSString aClass1_304;
-    public static RSString aClass1_305;
+    public static RSString aClass1_299 = RSString.CreateString("runes");
+    public static int itemSelected = 0;
+    public static byte aByte302 = (byte) 0;
+    public static RSString aClass1_303 = RSString.CreateString("_");
+    public static RSString aClass1_304 = RSString.CreateString("backhmid2");
+    public static RSString aClass1_305 = RSString.CreateString("");
 
     static {
         aClass1_278 = aClass1_286;
-        aCalendar279 = Calendar.getInstance();
-        aClass1_299 = RSString.CreateString("runes");
-        anInt290 = 0;
-        aByte302 = (byte) 0;
-        aClass1_303 = RSString.CreateString("_");
-        anInt292 = 0;
-        aClass1_293 = RSString.CreateString("Duell akzeptieren");
-        aClass1_300 = RSString.CreateString("welle2:");
-        anIntArray297 = new int[5];
-        aClass1_291 = RSString.CreateString("You have only just left another world)3");
         aClass1_294 = aClass1_291;
-        itemSelected = 0;
-        aClass1_305 = RSString.CreateString("");
-        aClass1_304 = RSString.CreateString("backhmid2");
     }
 
     public Class8(int arg0) {
@@ -102,11 +87,8 @@ public class Class8 {
         aClass68_298 = null;
         aClass1_304 = null;
         aClass40_Sub5_Sub14_Sub4Array296 = null;
-        aClass1_300 = null;
-        aClass1_293 = null;
         aClass1_294 = null;
         aClass1_281 = null;
-
     }
 
     public static synchronized void method215(int[] arg0, int arg1) {

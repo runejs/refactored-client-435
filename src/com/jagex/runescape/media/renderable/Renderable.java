@@ -18,14 +18,12 @@ public abstract class Renderable extends SubNode {
     public static int anInt2866;
     public static int anInt2869;
     public static RSString aClass1_2870;
-    public static RSString aClass1_2871;
 
     static {
         chatPlayerNames = new RSString[100];
         anInt2869 = 0;
         aClass1_2870 = RSString.CreateString(" from your friend list first");
         aClass1_2864 = aClass1_2870;
-        aClass1_2871 = RSString.CreateString("Bitte versuchen Sie)1");
     }
 
     public int modelHeight = 1000;
@@ -77,7 +75,6 @@ public abstract class Renderable extends SubNode {
     }
 
     public static void method757() {
-        aClass1_2871 = null;
         chatPlayerNames = null;
         aClass40_Sub5_Sub14_Sub2_2860 = null;
         aClass6_Sub1_2857 = null;

@@ -32,17 +32,13 @@ public class ISAAC {
     public static boolean aBoolean512;
     public static RSString aClass1_515 = RSString.CreateString(": ");
     public static Cache aClass9_516 = new Cache(64);
-    public static RSString aClass1_517 = RSString.CreateString("Gegenstand f-Ur Mitglieder");
     public static boolean aBoolean519 = true;
     public static Signlink aClass31_521;
     public static int anInt522 = -1;
-    public static RSString aClass1_523 = RSString.CreateString("oberen Rand der Webseite ausw-=hlen)3");
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_524;
     public static int anInt525;
     public static RSString aClass1_526 = RSString.CreateString("Invalid username or password)3");
-    public static RSString aClass1_527 = RSString.CreateString("blinken3:");
     public static int[] mapCoordinates;
-    public static RSString aClass1_529 = RSString.CreateString("Begeben Sie sich in ein freies Gebiet)1 um");
 
     public int count;
     public int accumulator;
@@ -395,18 +391,14 @@ public class ISAAC {
     }
 
     public static void method282() {
-        aClass1_529 = null;
         aClass1_515 = null;
         aClass1_526 = null;
         aClass40_Sub5_Sub14_Sub2_524 = null;
         aClass1_506 = null;
         aClass9_510 = null;
-        aClass1_527 = null;
         aClass9_516 = null;
-        aClass1_523 = null;
         aClass31_521 = null;
         mapCoordinates = null;
-        aClass1_517 = null;
     }
 
     public static void method283(long arg0, int arg1) {

@@ -16,10 +16,7 @@ import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class60 {
-    public static RSString aClass1_1401;
     public static boolean aBoolean1402 = false;
-    public static RSString aClass1_1408 = RSString.CreateString("auf der Hautpseite)3");
-    public static RSString aClass1_1409;
     public static RSString aClass1_1411;
     public static int anInt1413;
     public static int cameraVelocityVertical;
@@ -27,9 +24,7 @@ public class Class60 {
     public static int anInt1417;
 
     static {
-        aClass1_1401 = RSString.CreateString(",Zffentlicher Chat");
         aClass1_1411 = RSString.CreateString("Error loading your profile)3");
-        aClass1_1409 = RSString.CreateString("Wen m-Ochten Sie von der Liste entfernen?");
         Player.localPlayerCount = 0;
         aClass1_1416 = aClass1_1411;
         cameraVelocityVertical = 0;
@@ -237,9 +232,6 @@ public class Class60 {
     }
 
     public static void method994() {
-        aClass1_1401 = null;
-        aClass1_1408 = null;
-        aClass1_1409 = null;
         aClass1_1411 = null;
         aClass1_1416 = null;
     }

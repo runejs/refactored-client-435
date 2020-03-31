@@ -15,7 +15,6 @@ import com.jagex.runescape.scene.tile.WallDecoration;
 
 public class UnderlayDefinition extends SubNode {
     public static int openSecondaryWidgetId = -1;
-    public static RSString aClass1_2564 = RSString.CreateString("Welt");
     public static RSString aClass1_2566 = RSString.CreateString("flash2:");
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2567;
     public static CacheIndex_Sub1 aClass6_Sub1_2571;
@@ -77,7 +76,6 @@ public class UnderlayDefinition extends SubNode {
     public static void method621() {
         aClass1_2566 = null;
         aClass40_Sub5_Sub14_Sub4Array2567 = null;
-        aClass1_2564 = null;
         aCacheIndex_2582 = null;
         aClass1_2577 = null;
         aClass6_Sub1_2571 = null;

@@ -23,8 +23,6 @@ public class RSString implements Interface1 {
     public static RSString aClass1_1717 = CreateString("purple:");
     /*synthetic*/ public static Class aClass1718;
     public static RSString aClass1_1677 = CreateString("scrollbar");
-    public static RSString aClass1_1702 = CreateString("Der Anmelde)2Server ist offline)3");
-    public static RSString aClass1_1713 = CreateString("Diese Welt ist voll)3");
     public static RSString aClass1_1716 = CreateString("chatback");
     public boolean aBoolean1675 = true;
     public int length;
@@ -80,11 +78,9 @@ public class RSString implements Interface1 {
 
     public static void method83() {
         aClass9_1684 = null;
-        aClass1_1713 = null;
         terrainData = null;
         aClass1_1677 = null;
         aCacheIndex_1705 = null;
-        aClass1_1702 = null;
         aClass1_1717 = null;
         aClass68_1665 = null;
         aClass1_1716 = null;
@@ -234,13 +230,11 @@ public class RSString implements Interface1 {
         return method81(arg0, 0);
     }
 
-    public RSString method61(boolean arg0) {
+    public RSString method61() {
         RSString class1 = new RSString();
         class1.length = length;
         class1.chars = new byte[length];
         int i = 0;
-        if(arg0)
-            aClass1_1713 = null;
         for(/**/; i < length; i++)
             class1.chars[i] = (byte) 42;
         return class1;
@@ -266,9 +260,7 @@ public class RSString implements Interface1 {
         return class1;
     }
 
-    public boolean equalsIgnoreCase(RSString arg0, boolean arg1) {
-        if(!arg1)
-            aClass1_1713 = null;
+    public boolean equalsIgnoreCase(RSString arg0) {
         if(arg0 == null)
             return false;
         if(arg0.length != length)

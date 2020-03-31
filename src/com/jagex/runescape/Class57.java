@@ -12,7 +12,6 @@ public class Class57 {
     public static int[][] wayPoints = new int[104][104];
     public static int clickX = 0;
     public static RSString aClass1_1339 = RSString.CreateString("This world is full)3");
-    public static RSString aClass1_1340 = RSString.CreateString("Ihr Spielkonto wird bereits benutzt)3");
     public static int anInt1342 = 0;
     public static RSString aClass1_1343 = RSString.CreateString("flash3:");
     public static Class64 aClass64_1345;
@@ -28,7 +27,6 @@ public class Class57 {
         aClass9_1331 = null;
         aClass64_1345 = null;
         aClass1_1339 = null;
-        aClass1_1340 = null;
         aClass1_1343 = null;
         anIntArray1347 = null;
         Player.trackedPlayerIndices = null;

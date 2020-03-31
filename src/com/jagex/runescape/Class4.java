@@ -17,7 +17,6 @@ public class Class4 {
     public static int[] anIntArray178;
     public static RSApplet anApplet_Sub1_179 = null;
     public static RSString aClass1_180 = RSString.CreateString("wishes to trade with you)3");
-    public static RSString aClass1_181 = RSString.CreateString("Einloggen");
     public static int anInt182 = 0;
     public static RSString aClass1_183 = RSString.CreateString("mapdots");
     public static int privateChatMode = 0;
@@ -28,7 +27,6 @@ public class Class4 {
         aClass1_180 = null;
         aClass1_183 = null;
         anIntArray178 = null;
-        aClass1_181 = null;
     }
 
     public static int method160(int arg0, int arg1, int arg2, int arg3) {

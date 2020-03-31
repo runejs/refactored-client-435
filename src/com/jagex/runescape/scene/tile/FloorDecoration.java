@@ -32,11 +32,9 @@ public class FloorDecoration {
     public static RSString aClass1_606 = RSString.CreateString("Add friend");
     public static SignlinkNode aSignlinkNode_607;
     public static Class40_Sub9 aClass40_Sub9_608;
-    public static RSString aClass1_609 = RSString.CreateString("blinken2:");
     public static RSString aClass1_610 = RSString.CreateString("@red@");
     public static RSString aClass1_611 = null;
     public static int[] anIntArray612;
-    public static RSString aClass1_613 = RSString.CreateString("Verbindung mit Update)2Server)3)3)3");
     public static int anInt614 = -1;
     public static RSString aClass1_615 = RSString.CreateString("huffman");
 
@@ -305,7 +303,7 @@ public class FloorDecoration {
                                     .aClass40_Sub5_Sub13_2250.anInt2763))
                                     != (~i_39_)) {
                                 try {
-                                    com.jagex.runescape.Class57.aClass64_1345.method1009(54);
+                                    com.jagex.runescape.Class57.aClass64_1345.method1009();
                                 } catch(Exception exception) {
                                 }
                                 com.jagex.runescape.Class8.aByte302
@@ -379,7 +377,7 @@ public class FloorDecoration {
         } catch(IOException ioexception) {
             ioexception.printStackTrace();
             try {
-                Class57.aClass64_1345.method1009(-104);
+                Class57.aClass64_1345.method1009();
             } catch(Exception exception) {
                 exception.printStackTrace();
                 /* empty */
@@ -395,7 +393,6 @@ public class FloorDecoration {
         aCRC32_590 = null;
         aClass1_610 = null;
         aClass1_611 = null;
-        aClass1_613 = null;
         aClass1_606 = null;
         anIntArray612 = null;
         aClass1_591 = null;
@@ -403,7 +400,6 @@ public class FloorDecoration {
         aClass6_Sub1_605 = null;
         STRING_CONNECTING_UPDATE_SERVER = null;
         aClass1_615 = null;
-        aClass1_609 = null;
         aSignlinkNode_607 = null;
         aClass40_Sub9_608 = null;
     }

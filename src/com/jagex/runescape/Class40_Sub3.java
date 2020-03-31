@@ -196,23 +196,23 @@ public class Class40_Sub3 extends Node {
             else
                 SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301 = IndexedImage.getMultipleIndexedImages((ActorDefinition.aClass6_Sub1_2377), Class29.aClass1_671, HuffmanEncoding.blank_string);
             if(Class8.aClass40_Sub5_Sub14_Sub4Array296 == null)
-                Class8.aClass40_Sub5_Sub14_Sub4Array296 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, (GameObject.aClass1_3047), HuffmanEncoding.blank_string);
+                Class8.aClass40_Sub5_Sub14_Sub4Array296 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), (GameObject.aClass1_3047), HuffmanEncoding.blank_string);
             else
                 i++;
             if(AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 != null)
                 i++;
             else
-                AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Class40_Sub6.aClass1_2114, HuffmanEncoding.blank_string);
+                AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), Class40_Sub6.aClass1_2114, HuffmanEncoding.blank_string);
             if(FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 == null)
-                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Class40_Sub11.aClass1_2161, HuffmanEncoding.blank_string);
+                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), Class40_Sub11.aClass1_2161, HuffmanEncoding.blank_string);
             else
                 i++;
             if(Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 != null)
                 i++;
             else
-                Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Native.headiconsPrayer, HuffmanEncoding.blank_string);
+                Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), Native.headiconsPrayer, HuffmanEncoding.blank_string);
             if(UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567 == null)
-                UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, GenericTile.aClass1_1230, HuffmanEncoding.blank_string);
+                UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), GenericTile.aClass1_1230, HuffmanEncoding.blank_string);
             else
                 i++;
             if(LinkedList.aClass40_Sub5_Sub14_Sub4_1057 == null)
@@ -220,15 +220,15 @@ public class Class40_Sub3 extends Node {
             else
                 i++;
             if(aClass40_Sub5_Sub14_Sub4Array2019 == null)
-                aClass40_Sub5_Sub14_Sub4Array2019 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Class5.aClass1_203, HuffmanEncoding.blank_string);
+                aClass40_Sub5_Sub14_Sub4Array2019 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), Class5.aClass1_203, HuffmanEncoding.blank_string);
             else
                 i++;
             if(Class37.aClass40_Sub5_Sub14_Sub4Array878 != null)
                 i++;
             else
-                Class37.aClass40_Sub5_Sub14_Sub4Array878 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, FramemapDefinition.aClass1_2179, HuffmanEncoding.blank_string);
+                Class37.aClass40_Sub5_Sub14_Sub4Array878 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), FramemapDefinition.aClass1_2179, HuffmanEncoding.blank_string);
             if(Class27.aClass40_Sub5_Sub14_Sub4Array649 == null)
-                Class27.aClass40_Sub5_Sub14_Sub4Array649 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), 0, Class4.aClass1_183, HuffmanEncoding.blank_string);
+                Class27.aClass40_Sub5_Sub14_Sub4Array649 = Class40_Sub2.method526((ActorDefinition.aClass6_Sub1_2377), Class4.aClass1_183, HuffmanEncoding.blank_string);
             else
                 i++;
             if(CacheIndex.aClass40_Sub5_Sub14_Sub2Array215 == null)

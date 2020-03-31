@@ -80,7 +80,7 @@ public class ChatBox {
                                 if(y > 0 && (y < 110))
                                     typeFace.drawString((Actor.chatMessages[i_8_]), 4, y, 0);
                             }
-                            if((type == 1 || type == 2) && (type == 1 || Class35.publicChatMode == 0 || Class35.publicChatMode == 1 && (Class40_Sub2.hasFriend(name, -32624)))) {
+                            if((type == 1 || type == 2) && (type == 1 || Class35.publicChatMode == 0 || Class35.publicChatMode == 1 && (Class40_Sub2.hasFriend(name)))) {
                                 if(y > 0 && y < 110) {
                                     int x = 4;
                                     if(privelege == 1) {
@@ -97,7 +97,7 @@ public class ChatBox {
                                 }
                                 line++;
                             }
-                            if((type == 3 || type == 7) && CollisionMap.anInt165 == 0 && (type == 7 || Class4.privateChatMode == 0 || (Class4.privateChatMode == 1 && (Class40_Sub2.hasFriend(name, -32624))))) {
+                            if((type == 3 || type == 7) && CollisionMap.anInt165 == 0 && (type == 7 || Class4.privateChatMode == 0 || (Class4.privateChatMode == 1 && (Class40_Sub2.hasFriend(name))))) {
                                 line++;
                                 if(y > 0 && y < 110) {
                                     int i_13_ = 4;
@@ -117,7 +117,7 @@ public class ChatBox {
                                     typeFace.drawString((Actor.chatMessages[i_8_]), i_13_, y, 8388608);
                                 }
                             }
-                            if(type == 4 && ((ItemDefinition.tradeMode) == 0 || ((ItemDefinition.tradeMode) == 1 && (Class40_Sub2.hasFriend(name, -32624))))) {
+                            if(type == 4 && ((ItemDefinition.tradeMode) == 0 || ((ItemDefinition.tradeMode) == 1 && (Class40_Sub2.hasFriend(name))))) {
                                 line++;
                                 if(y > 0 && y < 110)
                                     typeFace.drawString((RSString.linkRSStrings((new RSString[]{name, (Class48.aClass1_1123), (Actor.chatMessages[i_8_])}))), 4, y, 8388736);
@@ -134,7 +134,7 @@ public class ChatBox {
                                 }
                                 line++;
                             }
-                            if(type == 8 && ((ItemDefinition.tradeMode) == 0 || ((ItemDefinition.tradeMode) == 1 && (Class40_Sub2.hasFriend(name, -32624))))) {
+                            if(type == 8 && ((ItemDefinition.tradeMode) == 0 || ((ItemDefinition.tradeMode) == 1 && (Class40_Sub2.hasFriend(name))))) {
                                 line++;
                                 if(y > 0 && (y < 110))
                                     typeFace.drawString((RSString.linkRSStrings((new RSString[]{name, (Class48.aClass1_1123), (Actor.chatMessages[i_8_])}))), 4, y, 8270336);

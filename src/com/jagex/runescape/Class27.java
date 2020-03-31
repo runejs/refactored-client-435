@@ -30,9 +30,7 @@ import com.jagex.runescape.scene.tile.*;
 public class Class27 {
     public static RSString aClass1_638 = RSString.CreateString("invback");
     public static RSString aClass1_643 = RSString.CreateString(")2");
-    public static RSString aClass1_647 = RSString.CreateString("sich mit einer anderen Welt zu verbinden)3");
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array649;
-    public static RSString aClass1_652 = RSString.CreateString("und loggen sich dann erneut ein)3");
     public static CacheIndex aCacheIndex_654;
     public static int minimapState = 0;
     public static RSString takeString = RSString.CreateString("Take");
@@ -144,12 +142,10 @@ public class Class27 {
     }
 
     public static void method356() {
-        aClass1_647 = null;
         aClass40_Sub5_Sub14_Sub4Array649 = null;
         takeString = null;
         aCacheIndex_654 = null;
         aClass1_638 = null;
-        aClass1_652 = null;
         aClass1_668 = null;
         takeStringInstance = null;
         anIntArray666 = null;
@@ -243,7 +239,7 @@ public class Class27 {
                     boolean bool = false;
                     for(int i_15_ = 0; i_15_ < Player.localPlayerCount; i_15_++) {
                         Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[Player.trackedPlayerIndices[i_15_]]);
-                        if(class40_sub5_sub17_sub4_sub1 != null && (class40_sub5_sub17_sub4_sub1.playerName != null) && class40_sub5_sub17_sub4_sub1.playerName.equalsIgnoreCase(class1_14_, true)) {
+                        if(class40_sub5_sub17_sub4_sub1 != null && (class40_sub5_sub17_sub4_sub1.playerName != null) && class40_sub5_sub17_sub4_sub1.playerName.equalsIgnoreCase(class1_14_)) {
                             bool = true;
                             Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), (class40_sub5_sub17_sub4_sub1.pathY[0]), 0, false, 0, 1, (Player.localPlayer.pathX[0]), (class40_sub5_sub17_sub4_sub1.pathX[0]), 2);
                             if(action == 26) {
@@ -905,9 +901,7 @@ public class Class27 {
         }
     }
 
-    public static IndexedImage method359(RSString arg0, RSString arg1, CacheIndex arg2, byte arg3) {
-        if(arg3 != -64)
-            aClass1_652 = null;
+    public static IndexedImage method359(RSString arg0, RSString arg1, CacheIndex arg2) {
         int i = arg2.getHash(arg0);
         int i_23_ = arg2.method179(i, arg1);
         return method363(arg2, (byte) -42, i_23_, i);

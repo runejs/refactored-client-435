@@ -25,29 +25,18 @@ public class Item extends Renderable {
     public static RSString aClass1_3049 = RSString.CreateString("Could not complete login)3");
     public static RSString aClass1_3050;
     public static int[] anIntArray3051 = new int[25];
-    public static RSString aClass1_3054;
-    public static RSString aClass1_3055 = (RSString.CreateString("Ung-Ultige Verbindung mit einem Anmelde)2Server)3"));
+    public static RSString aClass1_3054 = RSString.CreateString("Members object");
     public static boolean[] obfuscatedKeyStatus = new boolean[112];
-    public static RSString aClass1_3059;
-    public static int friendsCount;
-    public static RSString aClass1_3062;
-    public static int anInt3065;
-    public static RSString aClass1_3066;
-    public static RSString aClass1_3068;
+    public static RSString aClass1_3059 = RSString.CreateString("Too many connections from your address)3");
+    public static int friendsCount = 0;
+    public static int anInt3065 = -1;
+    public static RSString aClass1_3066 = aClass1_3049;
+    public static RSString aClass1_3068 = RSString.CreateString(" )2> @whi@");
     public static RSString aClass1_3069;
-    public static RSString aClass1_3071;
 
     static {
-        aClass1_3054 = RSString.CreateString("Members object");
-        aClass1_3059 = RSString.CreateString("Too many connections from your address)3");
-        friendsCount = 0;
         aClass1_3050 = aClass1_3059;
-        anInt3065 = -1;
-        aClass1_3062 = RSString.CreateString("Lade Eingabe)2Steuerungsprogramm)3)3)3");
-        aClass1_3068 = RSString.CreateString(" )2> @whi@");
-        aClass1_3066 = aClass1_3049;
         aClass1_3069 = aClass1_3054;
-        aClass1_3071 = RSString.CreateString("Wen m-Ochten Sie hinzuf-Ugen?");
     }
 
     public int itemCount;
@@ -218,8 +207,8 @@ public class Item extends Renderable {
             class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg3, Main.aClass1_1762, (byte) 21, Class22_Sub2.string_blank);
             Class39.aClass68_907.method1046((byte) 90);
             class40_sub5_sub14_sub4.drawImage(-128 + (382 + -(class40_sub5_sub14_sub4.image_width / 2)), 18);
-            Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775 = Class27.method359(AnimationSequence.aClass1_2488, Class22_Sub2.string_blank, arg3, (byte) -64);
-            Class59.aClass40_Sub5_Sub14_Sub2_1387 = Class27.method359(ISAAC.aClass1_506, Class22_Sub2.string_blank, arg3, (byte) -64);
+            Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775 = Class27.method359(AnimationSequence.aClass1_2488, Class22_Sub2.string_blank, arg3);
+            Class59.aClass40_Sub5_Sub14_Sub2_1387 = Class27.method359(ISAAC.aClass1_506, Class22_Sub2.string_blank, arg3);
             Class22.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(arg3, Class8.aClass1_299, Class22_Sub2.string_blank);
             Class39.aClass40_Sub5_Sub14_Sub4_918 = new ImageRGB(128, 265);
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = new ImageRGB(128, 265);
@@ -281,13 +270,10 @@ public class Item extends Renderable {
         aClass1_3050 = null;
         aClass1_3059 = null;
         aClass1_3069 = null;
-        aClass1_3062 = null;
         aClass1_3066 = null;
         aClass1_3068 = null;
         anIntArray3051 = null;
-        aClass1_3055 = null;
         aClass1_3049 = null;
-        aClass1_3071 = null;
     }
 
     public Model getRotatedModel(int arg0) {

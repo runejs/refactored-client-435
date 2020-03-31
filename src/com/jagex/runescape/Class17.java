@@ -20,7 +20,6 @@ public class Class17 {
     public static RSString aClass1_452 = RSString.CreateString("Loading sprites )2 ");
     public static RSString aClass1_455 = RSString.CreateString("as it was used to break our rules)3");
     public static int[] anIntArray456;
-    public static RSString aClass1_457 = RSString.CreateString("Willkommen auf RuneScape");
     public static int deregisterActorCount = 0;
     public static Font helveticaBold;
     public static Class68 aClass68_462;
@@ -32,7 +31,7 @@ public class Class17 {
     public static void method273(Class64 arg0, int arg1, boolean arg2) {
         if(Class57.aClass64_1345 != null) {
             try {
-                Class57.aClass64_1345.method1009(-127);
+                Class57.aClass64_1345.method1009();
             } catch(Exception exception) {
                 exception.printStackTrace();
                 /* empty */
@@ -72,7 +71,7 @@ public class Class17 {
             } catch(java.io.IOException ioexception) {
                 ioexception.printStackTrace();
                 try {
-                    Class57.aClass64_1345.method1009(-123);
+                    Class57.aClass64_1345.method1009();
                 } catch(Exception exception) {
                     exception.printStackTrace();
                     /* empty */
@@ -141,7 +140,6 @@ public class Class17 {
         aClass1_452 = null;
         aClass1_455 = null;
         aClass68_463 = null;
-        aClass1_457 = null;
         anIntArray456 = null;
         helveticaBold = null;
         anIntArray466 = null;

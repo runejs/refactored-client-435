@@ -17,13 +17,11 @@ import com.jagex.runescape.scene.tile.FloorDecoration;
 public class Class33 {
     public static RSString aClass1_777 = RSString.CreateString("Cabbage");
     public static Cache aClass9_778 = new Cache(64);
-    public static RSString aClass1_779 = (RSString.CreateString("Bitte schlie-8en Sie die momentan ge-Offnete Benutzeroberfl-=che)1 bevor Sie die (WRegelversto-8 melden(W Option benutzen"));
     public static RSString aClass1_783 = RSString.CreateString("Loading config )2 ");
     public static int anInt784 = 0;
     public static RSString cmd_prefix = RSString.CreateString("::");
     public static int[] selectedMenuActions = new int[500];
     public static RSString aClass1_795 = RSString.CreateString(")1");
-    public static RSString aClass1_797 = RSString.CreateString("Spiel)2Engine wird gestartet)3)3)3");
     public static RSString aClass1_798 = RSString.CreateString("No response from server)3");
     public static RSString aClass1_799 = aClass1_798;
 
@@ -103,7 +101,7 @@ public class Class33 {
                                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[1].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
                         }
                     }
-                    if(actor.forcedChatMessage != null && (i >= Player.localPlayerCount || Class35.publicChatMode == 0 || Class35.publicChatMode == 3 || (Class35.publicChatMode == 1 && (Class40_Sub2.hasFriend((((Player) actor).playerName), arg0 ^ 0x7f74))))) {
+                    if(actor.forcedChatMessage != null && (i >= Player.localPlayerCount || Class35.publicChatMode == 0 || Class35.publicChatMode == 3 || (Class35.publicChatMode == 1 && (Class40_Sub2.hasFriend((((Player) actor).playerName)))))) {
                         FloorDecoration.method342((actor.anInt3117), actor);
                         if(ISAAC.anInt522 > -1 && 50 > SceneCluster.anInt770) {
                             Class30.anIntArray680[SceneCluster.anInt770] = ((Class40_Sub5_Sub17_Sub6.fontBold.getStringWidth(actor.forcedChatMessage)) / 2);
@@ -325,13 +323,11 @@ public class Class33 {
     }
 
     public static void method408() {
-        aClass1_779 = null;
         aClass1_799 = null;
         cmd_prefix = null;
         selectedMenuActions = null;
         aClass1_795 = null;
         aClass1_777 = null;
-        aClass1_797 = null;
         aClass9_778 = null;
         aClass1_783 = null;
         aClass1_798 = null;

@@ -7,23 +7,12 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.InteractiveObject;
-import com.jagex.runescape.scene.SceneCluster;
 
 public class CacheIndex_Sub1 extends CacheIndex {
-    public static RSString aClass1_1798;
-    public static RSString aClass1_1799;
-    public static RSString aClass1_1801 = RSString.CreateString("Freunde");
     public static int anInt1806;
-    public static RSString aClass1_1814;
-    public static RSString aClass1_1816;
-    public static int anInt1819;
+    public static int anInt1819 = -1;
 
     static {
-        aClass1_1798 = RSString.CreateString("blinken1:");
-        aClass1_1814 = RSString.CreateString("Das ist eine Mitglieder)2Welt(Q");
-        aClass1_1799 = RSString.CreateString("Offline");
-        aClass1_1816 = RSString.CreateString(" zuerst von Ihrer Freunde)2Liste(Q");
-        anInt1819 = -1;
         Player.npcs = new Npc[32768];
     }
 
@@ -42,17 +31,12 @@ public class CacheIndex_Sub1 extends CacheIndex {
         aBoolean1811 = arg5;
         aClass56_1802 = arg1;
         anInt1807 = arg2;
-        Main.method37(this, (byte) 98, anInt1807);
+        Main.method37(this, anInt1807);
 
     }
 
     public static void method203() {
-        aClass1_1799 = null;
         Player.npcs = null;
-        aClass1_1801 = null;
-        aClass1_1798 = null;
-        aClass1_1816 = null;
-        aClass1_1814 = null;
     }
 
     public static RSString method204(int arg0, int arg1) {
@@ -61,13 +45,11 @@ public class CacheIndex_Sub1 extends CacheIndex {
         return (RSString.linkRSStrings((new RSString[]{HashTable.method334(0xff & arg0 >> 24, -1), Node.aClass1_975, HashTable.method334((arg0 & 0xffca88) >> 16, -1), Node.aClass1_975, HashTable.method334((0xfff8 & arg0) >> 8, -1), Node.aClass1_975, HashTable.method334(0xff & arg0, -1)})));
     }
 
-    public static void method399(int arg0, int arg1, int arg2) {
+    public static void method399(int arg0, int arg2) {
         long l = (arg0 << 16) + arg2;
         Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.method331(l, 6120));
         if(class40_sub5_sub13 != null) {
             InteractiveObject.aClass27_485.method367(true, class40_sub5_sub13);
-            if(arg1 <= 11)
-                SceneCluster.aClass1_766 = null;
         }
     }
 
@@ -76,14 +58,14 @@ public class CacheIndex_Sub1 extends CacheIndex {
             if(aBoolean1800)
                 throw new RuntimeException();
             if(aClass56_1802 != null)
-                RSRuntimeException.method1055(arg4, (byte) -54, aClass56_1802, anInt1807);
+                RSRuntimeException.method1055(arg4, aClass56_1802, anInt1807);
             this.method178(arg4);
             method199();
         } else {
             arg4[arg4.length - 2] = (byte) (anIntArray224[arg2] >> 8);
             arg4[arg4.length + -1] = (byte) anIntArray224[arg2];
             if(aClass56_1812 != null) {
-                RSRuntimeException.method1055(arg4, (byte) 55, aClass56_1812, arg2);
+                RSRuntimeException.method1055(arg4, aClass56_1812, arg2);
                 aBooleanArray1796[arg2] = true;
             }
             if(arg3)
@@ -166,7 +148,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
     }
 
     public void method174(int arg0, byte arg1) {
-        method399(anInt1807, 33, arg0);
+        method399(anInt1807, arg0);
         if(arg1 != 2)
             method174(13, (byte) 101);
     }

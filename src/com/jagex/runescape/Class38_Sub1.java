@@ -66,7 +66,7 @@ public class Class38_Sub1 extends Class38 {
                         class1 = class1.substring(5);
                     if(class1 != null && class1.startsWith(Widget.goldCrown))
                         class1 = class1.substring(5);
-                    if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || Class4.privateChatMode == 0 || (Class4.privateChatMode == 1 && Class40_Sub2.hasFriend(class1, arg0 + -42391)))) {
+                    if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || Class4.privateChatMode == 0 || (Class4.privateChatMode == 1 && Class40_Sub2.hasFriend(class1)))) {
                         int i_3_ = 329 + -(13 * i);
                         i++;
                         if(Class13.mouseX > 4 && ((i_3_ + -10 < Landscape.mouseY + -4)) && ((-4 + Landscape.mouseY <= i_3_ + 3))) {
@@ -96,7 +96,7 @@ public class Class38_Sub1 extends Class38 {
     public static boolean method446(Signlink arg0, int arg1, boolean arg2, byte arg3) {
         if(arg3 != 30)
             doWalkTo(47, -7, 96, -97, -111, true, -110, 57, -36, -84, -42);
-        if(!Class39.method452(arg0, (byte) 121, arg2))
+        if(!Class39.method452(arg0, arg2))
             return false;
         if(arg1 > 0)
             RSString.aClass9_1684 = new Cache(arg1);

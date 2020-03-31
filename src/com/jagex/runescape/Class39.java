@@ -5,8 +5,6 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.util.Signlink;
 
 public class Class39 implements Runnable {
-    public static RSString aClass1_898 = RSString.CreateString(" steht bereits auf Ihrer Freunde)2Liste(Q");
-    public static RSString aClass1_899 = RSString.CreateString("Benutzen Sie bitte eine andere Welt)3");
     public static int anInt901;
     public static RSString aClass1_904 = RSString.CreateString(" more options");
     public static boolean aBoolean906 = false;
@@ -14,9 +12,7 @@ public class Class39 implements Runnable {
     public static Class68 aClass68_908;
     public static int anInt909 = 0;
     public static RSString aClass1_910;
-    public static RSString aClass1_911 = RSString.CreateString("Spiel)2Fenster geladen)3");
     public static int anInt912 = 20;
-    public static RSString aClass1_914 = RSString.CreateString("Stufe)2");
     public static RSString aClass1_917 = RSString.CreateString(" from your ignore list first");
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_918;
     public static RSString str_ok = RSString.CreateString("Ok");
@@ -59,7 +55,7 @@ public class Class39 implements Runnable {
         }
     }
 
-    public static boolean method452(Signlink arg0, byte arg1, boolean arg2) {
+    public static boolean method452(Signlink arg0, boolean arg2) {
         RSCanvas.anInt54 = 20;
         try {
             Class5.aClass22_189 = new Class22_Sub2_Sub1(); // Java Midi Based
@@ -70,8 +66,6 @@ public class Class39 implements Runnable {
                 Class5.aClass22_189 = new Class22_Sub2_Sub2(arg0, runnable_impl1); // ???
                 return true;
             }
-            if(arg1 < 6)
-                aClass1_911 = null;
             if(arg2) {
                 Class5.aClass22_189 = new Class22_Sub1(arg0); // JS based
                 return true;
@@ -83,14 +77,10 @@ public class Class39 implements Runnable {
 
     public static void method453() {
         aClass68_907 = null;
-        aClass1_899 = null;
         aClass1_917 = null;
-        aClass1_911 = null;
         aClass40_Sub5_Sub14_Sub4_918 = null;
         aClass1_904 = null;
         str_ok = null;
-        aClass1_914 = null;
-        aClass1_898 = null;
         aClass68_908 = null;
         aClass1_910 = null;
     }

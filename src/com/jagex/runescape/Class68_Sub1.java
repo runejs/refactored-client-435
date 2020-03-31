@@ -12,7 +12,6 @@ import java.awt.*;
 import java.awt.image.*;
 
 public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserver {
-    public static RSString aClass1_2198 = RSString.CreateString("Name eingeben:");
     public static int[] anIntArray2199 = new int[32];
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2204;
     public static int[] anIntArray2207 = {0, -1, 0, 1};
@@ -36,7 +35,6 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
         aClass68_2213 = null;
         aClass40_Sub5_Sub14_Sub4Array2204 = null;
         aClass1_2209 = null;
-        aClass1_2198 = null;
         anIntArray2199 = null;
         anIntArray2207 = null;
     }

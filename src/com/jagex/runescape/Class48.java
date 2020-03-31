@@ -25,7 +25,6 @@ public class Class48 {
     public static int cameraOffsetY = 0;
     public static int modifiedWidgetId = 0;
     public static Buffer aClass40_Sub1_1132;
-    public static RSString aClass1_1137 = RSString.CreateString("M");
     public static int anInt1138 = -1;
 
     public int[][] anIntArrayArray1128;
@@ -111,7 +110,6 @@ public class Class48 {
     }
 
     public static void method924() {
-        aClass1_1137 = null;
         aClass40_Sub1_1132 = null;
         aClass1_1123 = null;
         aClass1_1122 = null;
@@ -313,7 +311,7 @@ public class Class48 {
 
     public static void method928(int arg0) {
         if(Class40_Sub6.aClass64_2098 != null) {
-            Class40_Sub6.aClass64_2098.method1009(75);
+            Class40_Sub6.aClass64_2098.method1009();
             Class40_Sub6.aClass64_2098 = null;
         }
         RSCanvas.method46(0);

@@ -31,13 +31,9 @@ import java.net.Socket;
 import java.text.MessageFormat;
 
 public class Class64 implements Runnable {
-    public static RSString aClass1_1502 = RSString.CreateString("Wordpack geladen)3");
-    public static RSString aClass1_1505 = RSString.CreateString("Handel akzeptieren");
     public static int anInt1511 = -1;
     public static RSString aClass1_1517 = RSString.CreateString("redstone3");
     public static CacheIndex aCacheIndex_1521;
-    public static RSString aClass1_1523 = RSString.CreateString("");
-    public static RSString aClass1_1524 = RSString.CreateString("Menge eingeben:");
     public static RSString aClass1_1526 = RSString.CreateString("Your account has been disabled)3");
     public static int lowestPlane = 99;
 
@@ -61,19 +57,12 @@ public class Class64 implements Runnable {
         aSocket1508.setTcpNoDelay(true);
         anInputStream1503 = aSocket1508.getInputStream();
         anOutputStream1528 = aSocket1508.getOutputStream();
-
     }
 
     public static void method1011() {
-
-        aClass1_1505 = null;
         aClass1_1526 = null;
-        aClass1_1523 = null;
-        aClass1_1502 = null;
         aCacheIndex_1521 = null;
-        aClass1_1524 = null;
         aClass1_1517 = null;
-
     }
 
     public static void method1012(int arg0, int arg1) {
@@ -215,13 +204,10 @@ public class Class64 implements Runnable {
 
     }
 
-    public static void method1015(int arg0) {
-
+    public static void method1015() {
         synchronized(GameObject.frame) {
             SpotAnimDefinition.mouseButtonPressed = Cache.mouseButtonPressed;
             Class13.mouseX = Class12.eventMouseX;
-            if(arg0 != -656)
-                aClass1_1524 = null;
             Landscape.mouseY = Cache.eventMouseY;
             MouseHandler.clickType = Actor.eventMouseButtonPressed;
             Class57.clickX = Class55.eventClickX;
@@ -243,8 +229,7 @@ public class Class64 implements Runnable {
         }
     }
 
-    public void method1009(int arg0) {
-        int i = 27 / ((-54 - arg0) / 32);
+    public void method1009() {
         if(!aBoolean1513) {
             synchronized(this) {
                 aBoolean1513 = true;
@@ -288,11 +273,10 @@ public class Class64 implements Runnable {
                     run();
             }
         }
-
     }
 
     public void finalize() {
-        method1009(-4);
+        method1009();
     }
 
     public void run() {
@@ -359,9 +343,7 @@ public class Class64 implements Runnable {
         return anInputStream1503.available();
     }
 
-    public int method1016(int arg0) throws IOException {
-        if(arg0 < 14)
-            aClass1_1524 = null;
+    public int method1016() throws IOException {
         if(aBoolean1513)
             return 0;
         return anInputStream1503.read();

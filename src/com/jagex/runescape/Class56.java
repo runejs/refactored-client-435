@@ -13,19 +13,11 @@ import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.SceneTile;
 
 public class Class56 {
-    public static RSString aClass1_1314;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1315;
-    public static RSString aClass1_1316 = RSString.CreateString("Zu viele Verbindungen von Ihrer Adresse)3");
-    public static int anInt1318;
-    public static Class61[] aClass61Array1320;
+    public static int anInt1318 = 3353893;
+    public static Class61[] aClass61Array1320 = new Class61[50];
     public static CacheIndex_Sub1 aClass6_Sub1_1323;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1329;
-
-    static {
-        aClass1_1314 = RSString.CreateString(" weitere Optionen");
-        anInt1318 = 3353893;
-        aClass61Array1320 = new Class61[50];
-    }
 
     public Class67 aClass67_1309;
     public Class67 aClass67_1313 = null;
@@ -43,11 +35,9 @@ public class Class56 {
     }
 
     public static void method967() {
-        aClass1_1314 = null;
         aClass61Array1320 = null;
         aClass40_Sub5_Sub14_Sub2_1315 = null;
         aClass6_Sub1_1323 = null;
-        aClass1_1316 = null;
         aClass40_Sub5_Sub14_Sub2_1329 = null;
     }
 
@@ -73,11 +63,9 @@ public class Class56 {
         }
     }
 
-    public static void method973(int arg0) {
+    public static void method973() {
         Class67.anIntArray1579 = null;
         SceneTile.anIntArray2048 = null;
-        if(arg0 >= -57)
-            aClass1_1314 = null;
         FloorDecoration.anIntArray612 = null;
         CacheIndex.anIntArrayArrayArray262 = null;
         AnimationSequence.anIntArrayArray2490 = null;

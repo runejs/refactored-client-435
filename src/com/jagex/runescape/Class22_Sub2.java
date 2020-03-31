@@ -20,11 +20,9 @@ public abstract class Class22_Sub2 extends Class22 {
     public static RSString aClass1_1878 = RSString.CreateString("@yel@*V");
     public static RSString aClass1_1879 = string_blank;
     public static RSString aClass1_1881 = string_blank;
-    public static RSString aClass1_1883 = RSString.CreateString("Fehler bei der Verbindung zum Server)3");
     public static RSString aClass1_1885 = (RSString.CreateString("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789(Q(R+R(T(U^(V(Z(X(Y)2_=)0[*U]*W;:(W@(S*X)1<)3>)4?*6*V "));
     public static Widget aWidget_1887;
     public static int duplicateClickCount = 0;
-    public static RSString aClass1_1889 = RSString.CreateString("Benutzen");
     public static RSString username = string_blank;
     public static RSString aClass1_1891 = aClass1_1875;
     public static RSString aClass1_1893 = aClass1_1885;
@@ -99,10 +97,8 @@ public abstract class Class22_Sub2 extends Class22 {
         aClass1_1891 = null;
         str_walk_here = null;
         aClass1_1875 = null;
-        aClass1_1889 = null;
         aClass1_1896 = null;
         password = null;
-        aClass1_1883 = null;
     }
 
     public static int method323(int arg0) {

@@ -19,15 +19,12 @@ import java.awt.*;
 
 public class GameObject extends Renderable {
     public static MouseHandler frame = new MouseHandler();
-    public static RSString aClass1_3037 = RSString.CreateString("Okay");
     public static RSString aClass1_3038 = RSString.CreateString("Loaded gamescreen");
     public static RSString aClass1_3039 = RSString.CreateString("Accept challenge");
     public static int anInt3040 = 0;
     public static Class68 aClass68_3042;
-    public static RSString aClass1_3043 = RSString.CreateString("Bitte laden Sie die Seite neu)3");
     public static RSString aClass1_3044 = RSString.CreateString("");
     public static Class68 aClass68_3045;
-    public static RSString aClass1_3046 = RSString.CreateString("Absender:");
     public static RSString aClass1_3047 = RSString.CreateString("mapfunction");
     public static int anInt3048 = 1;
 
@@ -70,16 +67,13 @@ public class GameObject extends Renderable {
     }
 
     public static void method770() {
-        aClass1_3037 = null;
         aClass1_3047 = null;
         aClass68_3042 = null;
-        aClass1_3046 = null;
         aClass1_3044 = null;
         aClass68_3045 = null;
         frame = null;
         aClass1_3038 = null;
         aClass1_3039 = null;
-        aClass1_3043 = null;
     }
 
     public static void loadObjectBlock(int block_x, Scene scene, CollisionMap[] collisionMaps, byte[] block_data, int block_z) {

@@ -31,12 +31,8 @@ public class Npc extends Actor {
     public static RSString aClass1_3295 = null;
     public static boolean aBoolean3298;
     public static Scene currentScene;
-    public static RSString aClass1_3302 = RSString.CreateString("Sichtbare Karte vorbereitet)3");
     public static int[] anIntArray3304 = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
     public static RSString aClass1_3305 = RSString.CreateString("Connection lost");
-    public static RSString aClass1_3307 = RSString.CreateString("Keine Antwort vom Server)3");
-    public static RSString aClass1_3308 = RSString.CreateString("gr-Un:");
-    public static RSString aClass1_3309 = RSString.CreateString("Hierhin gehen");
     public static RSString aClass1_3311 = RSString.CreateString("On");
     public static int[] anIntArray3312;
     public ActorDefinition actorDefinition;
@@ -414,16 +410,12 @@ public class Npc extends Actor {
     }
 
     public static void method797() {
-        aClass1_3307 = null;
         anIntArray3304 = null;
         aClass1_3305 = null;
         aClass1_3295 = null;
         aClass1_3311 = null;
-        aClass1_3308 = null;
         anIntArray3312 = null;
-        aClass1_3302 = null;
         currentScene = null;
-        aClass1_3309 = null;
     }
 
     public static OverlayDefinition loadFloor(int arg0, int arg1) {

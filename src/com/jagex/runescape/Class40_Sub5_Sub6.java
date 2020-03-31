@@ -39,7 +39,6 @@ public class Class40_Sub5_Sub6 extends SubNode {
     public static RSString aClass1_2447 = RSString.CreateString("@yel@*V");
     public static int anInt2451 = 0;
     public static int anInt2452 = 0;
-    public static RSString aClass1_2457 = (RSString.CreateString(" steht bereits auf Ihrer Ignorieren)2Liste(Q"));
     public static RSString aClass1_2458 = RSString.CreateString("From");
     public static RSString aClass1_2460 = RSString.CreateString("RuneScape has been updated(Q");
     public static RSString aClass1_2462 = RSString.CreateString("Error connecting to server)3");
@@ -58,7 +57,6 @@ public class Class40_Sub5_Sub6 extends SubNode {
         aClass1_2458 = null;
         aClass1_2462 = null;
         aClass9_2439 = null;
-        aClass1_2457 = null;
         aClass1_2460 = null;
         aClass1_2440 = null;
     }

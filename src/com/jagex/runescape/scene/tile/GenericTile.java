@@ -19,35 +19,21 @@ import java.awt.*;
 
 public class GenericTile {
     public static RSString aClass1_1213 = RSString.CreateString(" @whi@(X");
-    public static int anInt1214;
-    public static volatile boolean aBoolean1215;
+    public static int anInt1214 = 0;
+    public static volatile boolean aBoolean1215 = true;
     public static RSString aClass1_1216 = RSString.CreateString("New User");
     public static byte[][] objectData;
     public static RSString aClass1_1218;
-    public static int fps;
+    public static int fps = 0;
     public static boolean redrawChatbox = false;
-    public static int anInt1222;
-    public static RSString aClass1_1223;
-    public static RSString aClass1_1228;
-    public static RSString aClass1_1230;
-    public static int anInt1233;
-    public static RSString aClass1_1234;
-    public static RSString aClass1_1238;
-    public static RSString aClass1_1241;
+    public static int anInt1222 = 0;
+    public static RSString aClass1_1223 = aClass1_1216;
+    public static RSString aClass1_1230 = RSString.CreateString("headicons_hint");
+    public static int anInt1233 = 0;
+    public static RSString aClass1_1234 = RSString.CreateString("Connection timed out)3");
 
     static {
-        aBoolean1215 = true;
-        anInt1222 = 0;
-        aClass1_1223 = aClass1_1216;
-        aClass1_1228 = (RSString.CreateString("Ihre Freunde)2Liste ist voll(Q Mitglieder k-Onnen 200 Freunde hinzuf-Ugen)1 freie Spieler nur 100)3"));
-        aClass1_1230 = RSString.CreateString("headicons_hint");
-        fps = 0;
-        aClass1_1234 = RSString.CreateString("Connection timed out)3");
-        anInt1233 = 0;
-        aClass1_1238 = RSString.CreateString("Der Server wird gerade aktualisiert)3");
         aClass1_1218 = aClass1_1234;
-        anInt1214 = 0;
-        aClass1_1241 = RSString.CreateString("Lade Wordpack )2 ");
     }
 
     public int texture;
@@ -168,9 +154,6 @@ public class GenericTile {
 
     public static void method946() {
         aClass1_1213 = null;
-        aClass1_1241 = null;
-        aClass1_1228 = null;
-        aClass1_1238 = null;
         aClass1_1223 = null;
         aClass1_1234 = null;
         objectData = null;

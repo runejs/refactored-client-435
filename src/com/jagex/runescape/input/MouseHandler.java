@@ -26,18 +26,17 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class MouseHandler implements MouseListener, MouseMotionListener, FocusListener, MouseWheelListener {
-    public static int anInt1450;
-    public static Cache modelCache;
+    public static int anInt1450 = -1;
+    public static Cache modelCache = new Cache(50);
     public static int anInt1457 = -1;
-    public static RSString aClass1_1463;
-    public static RSString aClass1_1464;
+    public static RSString aClass1_1463 = RSString.CreateString("wave2:");
+    public static RSString aClass1_1464 = RSString.CreateString(" is already on your friend list");
     public static RSString aClass1_1465;
-    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array1466;
+    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array1466 = new ImageRGB[1000];
     public static int anInt1468;
     public static Canvas aCanvas1469;
-    public static int clickType;
-    public static RSString aClass1_1471;
-    public static int chatboxScrollMax;
+    public static int clickType = 0;
+    public static int chatboxScrollMax = 78;
     public static byte[][][] tile_overlayids;
     public static RSString aClass1_1474;
     public static int cameraZoom = 600;
@@ -46,20 +45,11 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public int mouseWheelY;
 
     static {
-        anInt1450 = -1;
-        modelCache = new Cache(50);
-        aClass1_1464 = RSString.CreateString(" is already on your friend list");
         aClass1_1465 = aClass1_1464;
-        aClass40_Sub5_Sub14_Sub4Array1466 = new ImageRGB[1000];
-        aClass1_1463 = RSString.CreateString("wave2:");
-        clickType = 0;
-        chatboxScrollMax = 78;
-        aClass1_1471 = RSString.CreateString("Lade Titelbild )2 ");
         aClass1_1474 = aClass1_1463;
     }
 
     public static void method1001() {
-        aClass1_1471 = null;
         aClass40_Sub5_Sub14_Sub4Array1466 = null;
         aClass1_1465 = null;
         aClass1_1463 = null;

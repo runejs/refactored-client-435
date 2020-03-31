@@ -14,13 +14,11 @@ import com.jagex.runescape.util.SignlinkNode;
 import java.awt.*;
 
 public class Class22_Sub1 extends Class22 {
-    public static RSString aClass1_1838 = RSString.CreateString("T");
     public static long aLong1841;
     public static RSString[] itemSearchResultNames = new RSString[100];
     public static int[] anIntArray1846 = new int[5];
     public static int[] anIntArray1847 = new int[2000];
     public static RSString aClass1_1848 = RSString.CreateString("This computers address has been blocked");
-    public static RSString aClass1_1849 = RSString.CreateString("welle:");
     public static RSString aClass1_1851 = aClass1_1848;
     public static CacheIndex aCacheIndex_1855;
     public static int anInt1856;
@@ -32,7 +30,6 @@ public class Class22_Sub1 extends Class22 {
     public static RSString aClass1_1867 = RSString.CreateString("Loaded interfaces");
     public static RSString aClass1_1868 = RSString.CreateString("Report abuse");
     public static RSString aClass1_1870;
-    public static RSString aClass1_1871 = RSString.CreateString("Verbindung abgebrochen)3");
     public static RSString aClass1_1873 = RSString.CreateString("Password: ");
 
     static {
@@ -66,15 +63,12 @@ public class Class22_Sub1 extends Class22 {
         aClass1_1851 = null;
         aClass1_1870 = null;
         aClass1_1864 = null;
-        aClass1_1871 = null;
         aClass1_1867 = null;
         aClass1_1873 = null;
-        aClass1_1838 = null;
         aClass1_1857 = null;
         aClass1_1865 = null;
         English.enterYourUsernameAndPassword = null;
         itemSearchResultNames = null;
-        aClass1_1849 = null;
         aCacheIndex_1855 = null;
     }
 

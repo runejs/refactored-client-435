@@ -21,7 +21,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyFocusListener implements KeyListener, FocusListener {
-    public static RSString aClass1_1271 = RSString.CreateString("Benutzername: ");
     public static LinkedList aLinkedList_1278 = new LinkedList();
     public static int[] anIntArray1282 = new int[256];
     public static RSString aClass1_1283 = RSString.CreateString("@yel@");
@@ -42,7 +41,6 @@ public class KeyFocusListener implements KeyListener, FocusListener {
     }
 
     public static void method953() {
-        aClass1_1271 = null;
         aClass1_1283 = null;
         aClass68_1285 = null;
         aLinkedList_1278 = null;
@@ -152,8 +150,6 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             i++;
         if(arg0.method194(IdentityKit.aClass1_2588, Class8.aClass1_305, -1234))
             i++;
-        if(arg1 != -59)
-            aClass1_1271 = null;
         if(arg0.method194(Class5.aClass1_196, Class8.aClass1_305, -1234))
             i++;
         if(arg0.method194(Class8.aClass1_304, Class8.aClass1_305, -1234))
