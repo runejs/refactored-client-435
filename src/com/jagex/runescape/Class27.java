@@ -105,8 +105,8 @@ public class Class27 {
         Class38_Sub1.method450((byte) -67);
         ((Class35) Rasterizer3D.anInterface3_2939).method425((byte) 6, Class5.anInt199);
         KeyFocusListener.draw3dScreen();
-        Console.console.drawConsoleArea();
         Console.console.drawConsole();
+        Console.console.drawConsoleArea();
         if(ISAAC.aBoolean519 && method368((byte) -41, false, true) == 0)
             ISAAC.aBoolean519 = false;
         if(ISAAC.aBoolean519) {

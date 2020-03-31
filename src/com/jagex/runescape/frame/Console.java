@@ -25,6 +25,7 @@ public class Console {
     private int previousCommandIndex;
     private int previousCommandCount;
     public int currentScroll = 0;
+    private boolean alpha = true;
 
     public Console() {
         this.messageCount = 0;
@@ -35,6 +36,7 @@ public class Console {
         this.consoleOpen = false;
         this.previousCommandCount = 1;
         this.previousCommandIndex = 1;
+        this.printConsoleMessage("Welcome to the RuneJS console, type help for help.", false);
     }
 
     public int getMaxScroll() {
@@ -47,10 +49,15 @@ public class Console {
             if(messageCount > 17) {
                 Widget.drawScrollBar(494, 0, 313, scrollpos, getMaxScroll(), 0);
             }
-            Rasterizer.drawFilledRectangleAlpha(0, 0, 512, 334, 0x513092, 97);
+            if(alpha) {
+                Rasterizer.drawFilledRectangleAlpha(0, 0, 512, 334, 0x513092, 97);
+            } else {
+                Rasterizer.drawFilledRectangle(0, 0, 512, 334, 0x513092);
+            }
             Rasterizer.drawHorizontalLine(1, 315, 512, 0xffffff);
             Class40_Sub5_Sub17_Sub6.fontBold.setEffects(0xffffff, -1);
             Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString("-->", 11, 330);
+            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.drawBasicString("RuneJS #435", 420, 308);
 
             if(Node.pulseCycle % 20 < 10) {
                 Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(consoleInput + "|", 38, 330);
@@ -62,7 +69,7 @@ public class Console {
 
     public void drawConsoleArea() {
         if(consoleOpen) {
-            WallDecoration.fontNormal.setEffects(0xffffff, -1);
+            WallDecoration.fontNormal.setEffectsAlpha(0xffffff, -1, 178);
             for(int i = messageCount, j = 308; i > 0; i--, j -= 18) {
                 if(consoleMessages[i] == null) {
                     break;
@@ -105,6 +112,9 @@ public class Console {
                 messageCount = 0;
                 printConsoleMessage("<col=FFFFFF>Cleared</col>", false);
                 break;
+            case "alpha":
+                this.alpha = !this.alpha;
+                break;
             case "rights":
             case "playerrights":
                 printConsoleMessage("<col=FFFFFF>Your player rights level: <col=00FF00>" + InteractiveObject.playerRights + "</col></col>", false);
@@ -131,12 +141,28 @@ public class Console {
             case "s":
                 searchObjects(cmdInput);
                 break;
+            case "help":
+            case "commands":
+                printCommands();
             default:
                 SceneCluster.packetBuffer.putPacket(248);
                 SceneCluster.packetBuffer.putByte(cmd.length() + 1);
                 SceneCluster.packetBuffer.putString(cmd);
                 break;
         }
+    }
+
+    private void printCommands() {
+        printConsoleMessage("<col=FFFF00>Commands:</col>", false);
+        printConsoleMessage("<col=00FF00>help | commands</col> - <col=FFFF00>Returns this list</col>", false);
+        printConsoleMessage("<col=00FF00>alpha</col> - <col=FFFF00>Toggles console background transparency</col>", false);
+        printConsoleMessage("<col=00FF00>clear | cls</col> - <col=FFFF00>Clears console output</col>", false);
+        printConsoleMessage("<col=00FF00>rights | playerrights</col> - <col=FFFF00>Returns current player rights</col>", false);
+        printConsoleMessage("<col=00FF00>fps | toggle_fps</col> - <col=FFFF00>Toggles the FPS counter</col>", false);
+        printConsoleMessage("<col=00FF00>show_fps</col> - <col=FFFF00>Shows FPS counter</col>", false);
+        printConsoleMessage("<col=00FF00>hide_fps</col> - <col=FFFF00>Hides FPS counter</col>", false);
+        printConsoleMessage("<col=00FF00>search [item | npc | object] [name]</col> - <col=FFFF00>Returns list of results</col>", false);
+
     }
 
     private void searchObjects(String[] cmdInput) {
