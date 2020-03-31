@@ -98,10 +98,10 @@ public class AnimationSequence extends SubNode {
             }
             Class38_Sub1.doWalkTo(i_18_, i_17_, (Player.localPlayer.pathY[0]), arg0, 0, true, 0, i_19_, (Player.localPlayer.pathX[0]), arg3, 2);
         }
-        Class40_Sub11.anInt2163 = Class57.clickX;
-        LinkedList.anInt1075 = 2;
-        Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
-        OverlayDefinition.anInt2319 = 0;
+        Class40_Sub11.crossX = Class57.clickX;
+        LinkedList.crossType = 2;
+        Class40_Sub5_Sub1.crossY = RSString.clickY;
+        OverlayDefinition.crossIndex = 0;
         return true;
     }
 

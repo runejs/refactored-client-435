@@ -304,8 +304,8 @@ public class Main extends RSApplet {
                                     bool = false;
                                 if(widget.anInt2718 != -1) {
                                     if(widget.anInt2734 != 1 || i_22_ == 33) {
-                                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.drawString((HashTable.method334((widget.anInt2734), -1)), i_0_ + 1, i_1_ + 10, 0);
-                                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.drawString((HashTable.method334((widget.anInt2734), -1)), i_0_, 9 + i_1_, 16776960);
+                                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.drawString((HashTable.method334((widget.anInt2734))), i_0_ + 1, i_1_ + 10, 0);
+                                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.drawString((HashTable.method334((widget.anInt2734))), i_0_, 9 + i_1_, 16776960);
                                     }
                                     class40_sub5_sub14_sub4.maxWidth = i_22_;
                                     class40_sub5_sub14_sub4.maxHeight = i_23_;
@@ -636,7 +636,7 @@ public class Main extends RSApplet {
         Class4.menuOpen = false;
         RSString.anInt1690 = -1;
         IncomingPackets.incomingPacket = -1;
-        Class40_Sub5_Sub15.anInt2782 = 0;
+        Class40_Sub5_Sub15.systemUpdateTime = 0;
         Class35.anInt1728 = 0;
         Player.anInt3288 = 0;
         SceneCluster.packetBuffer.currentPosition = 0;
@@ -692,11 +692,11 @@ public class Main extends RSApplet {
         UnderlayDefinition.openSecondaryWidgetId = -1;
         Class55.method958(Class29.tabAreaOverlayWidgetId);
         Class29.tabAreaOverlayWidgetId = -1;
-        Class55.method958(GroundItemTile.anInt1376);
+        Class55.method958(GroundItemTile.walkableWidgetId);
         Class40_Sub5_Sub15.inputType = 0;
         InteractiveObject.messagePromptRaised = false;
         Class4.menuOpen = false;
-        GroundItemTile.anInt1376 = -1;
+        GroundItemTile.walkableWidgetId = -1;
         RSApplet.aClass1_8 = null;
         CacheIndex_Sub1.anInt1819 = -1;
         Class51.anInt1205 = -1;
@@ -796,12 +796,12 @@ public class Main extends RSApplet {
                             if(Class37.anInt874 > PacketBuffer.anInt2231)
                                 PacketBuffer.anInt2231 = Class37.anInt874;
                             int i = ((-Class37.anInt874 + PacketBuffer.anInt2231) * 50 / PacketBuffer.anInt2231);
-                            Class51.method940(0, Class67.aClass1_1585, true, (RSString.linkRSStrings(new RSString[]{CollisionMap.aClass1_170, HashTable.method334(i, -1), Class30.aClass1_698})));
+                            Class51.method940(0, Class67.aClass1_1585, true, (RSString.linkRSStrings(new RSString[]{CollisionMap.aClass1_170, HashTable.method334(i), Class30.aClass1_698})));
                         } else if(Class68.anInt1634 == 2) {
                             if(IdentityKit.anInt2591 > GameObject.anInt3048)
                                 GameObject.anInt3048 = IdentityKit.anInt2591;
                             int i = ((50 * (-IdentityKit.anInt2591 + GameObject.anInt3048) / GameObject.anInt3048) + 50);
-                            Class51.method940(0, Class67.aClass1_1585, true, (RSString.linkRSStrings(new RSString[]{CollisionMap.aClass1_170, HashTable.method334(i, -1), Class30.aClass1_698})));
+                            Class51.method940(0, Class67.aClass1_1585, true, (RSString.linkRSStrings(new RSString[]{CollisionMap.aClass1_170, HashTable.method334(i), Class30.aClass1_698})));
                         } else
                             Class51.method940(0, Class67.aClass1_1585, false, null);
                     } else if(Class51.anInt1197 != 30) {
@@ -809,9 +809,9 @@ public class Main extends RSApplet {
                             if(Class51.anInt1197 == 40)
                                 Class51.method940(0, (Npc.aClass1_3305), false, Actor.aClass1_3159);
                         } else
-                            Class5.method164(0);
+                            Class5.method164();
                     } else
-                        Class27.method365(-20197);
+                        Class27.drawGameScreen();
                 } else
                     WallDecoration.method951(-19010, (Class40_Sub5_Sub17_Sub6.fontBold), (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236));
             } else

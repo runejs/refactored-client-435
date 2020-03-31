@@ -55,8 +55,8 @@ public class Npc extends Actor {
     }
 
     public static void processMenuClick() {
-        if(Class40_Sub5_Sub15.anInt2782 > 1)
-            Class40_Sub5_Sub15.anInt2782--;
+        if(Class40_Sub5_Sub15.systemUpdateTime > 1)
+            Class40_Sub5_Sub15.systemUpdateTime--;
         if(SceneCluster.anInt771 > 0)
             SceneCluster.anInt771--;
         if(Class37.aBoolean871) {
@@ -199,10 +199,10 @@ public class Npc extends Actor {
                         Class17.method276(-1);
                         Class8.method209();
                         Class22_Sub1.method313(54);
-                        if(LinkedList.anInt1075 != 0) {
-                            OverlayDefinition.anInt2319 += 20;
-                            if(OverlayDefinition.anInt2319 >= 400)
-                                LinkedList.anInt1075 = 0;
+                        if(LinkedList.crossType != 0) {
+                            OverlayDefinition.crossIndex += 20;
+                            if(OverlayDefinition.crossIndex >= 400)
+                                LinkedList.crossType = 0;
                         }
                         if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType != 0) {
                             RSRuntimeException.anInt1651++;
@@ -279,10 +279,10 @@ public class Npc extends Actor {
                             int i_18_ = Scene.clickedTileY;
                             boolean bool = (Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), i, 0, true, 0, 0, (Player.localPlayer.pathX[0]), i_18_, 0));
                             if(bool) {
-                                Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
-                                OverlayDefinition.anInt2319 = 0;
-                                Class40_Sub11.anInt2163 = Class57.clickX;
-                                LinkedList.anInt1075 = 1;
+                                Class40_Sub5_Sub1.crossY = RSString.clickY;
+                                OverlayDefinition.crossIndex = 0;
+                                Class40_Sub11.crossX = Class57.clickX;
+                                LinkedList.crossType = 1;
                             }
                             Scene.clickedTileX = -1;
                         }

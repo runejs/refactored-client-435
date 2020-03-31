@@ -54,7 +54,7 @@ public class GenericTile {
         this.flat = flat;
     }
 
-    public static void method943(int arg0, int arg1, TypeFace arg2, int arg3, int arg4) {
+    public static void method943(int arg0, TypeFace arg2, int arg3, int arg4) {
         HuffmanEncoding.aClass68_1541.method1046((byte) 90);
         Class57.aClass40_Sub5_Sub14_Sub2_1346.drawImage(0, 0);
         arg2.method688(InteractiveObject.aClass1_495, 55, 28, 16777215, true);
@@ -81,7 +81,6 @@ public class GenericTile {
         if(arg0 == 2)
             arg2.method688(Class30.aClass1_682, 324, 41, 16711680, true);
         arg2.drawText(English.reportAbuse, 417, 17, 85, 25, 16777215, true, 1, 1, 0);
-        int i = -50 % ((arg1 - 82) / 38);
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
             HuffmanEncoding.aClass68_1541.method1044(0, graphics, 453);

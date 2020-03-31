@@ -272,8 +272,8 @@ public class Landscape {
                     for(int i_46_ = -1 + i_42_; i_46_ <= 1 + i_45_; i_46_++) {
                         for(int i_47_ = -1 + i_43_; i_47_ <= i_44_ + 1; i_47_++) {
                             if(i_42_ > i_46_ || (i_46_ > i_45_) || i_47_ < i_43_ || (i_47_ > i_44_)) {
-                                Renderable.aClass6_Sub1_2857.method195(0, (RSString.linkRSStrings((new RSString[]{LinkedList.aClass1_1085, HashTable.method334(i_46_, -1), Class8.aClass1_303, HashTable.method334(i_47_, -1)}))));
-                                Renderable.aClass6_Sub1_2857.method195(0, (RSString.linkRSStrings((new RSString[]{HashTable.aClass1_553, HashTable.method334(i_46_, -1), Class8.aClass1_303, HashTable.method334(i_47_, -1)}))));
+                                Renderable.aClass6_Sub1_2857.method195(0, (RSString.linkRSStrings((new RSString[]{LinkedList.aClass1_1085, HashTable.method334(i_46_), Class8.aClass1_303, HashTable.method334(i_47_)}))));
+                                Renderable.aClass6_Sub1_2857.method195(0, (RSString.linkRSStrings((new RSString[]{HashTable.aClass1_553, HashTable.method334(i_46_), Class8.aClass1_303, HashTable.method334(i_47_)}))));
                             }
                         }
                     }

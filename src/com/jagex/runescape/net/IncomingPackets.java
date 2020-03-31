@@ -28,38 +28,17 @@ public class IncomingPackets {
 
     private static final int
 
-            SET_WIDGET_ITEM_MODEL = 120,
-            MOVE_WIDGET_CHILD = 3,
-            UPDATE_SPECIFIC_WIDGET_ITEMS = 214,
-            UPDATE_ALL_WIDGET_ITEMS = 12,
-            UPDATE_WIDGET_TEXT = 110,
-            UPDATE_WIDGET_TEXT_COLOR = 231,
-            SET_WIDGET_PLAYER_HEAD = 210,
-            SET_WIDGET_NPC_HEAD = 160,
-            PLAY_WIDGET_ANIMATION = 24,
-            SET_TAB_WIDGET = 140,
+            SET_WIDGET_ITEM_MODEL = 120, MOVE_WIDGET_CHILD = 3, UPDATE_SPECIFIC_WIDGET_ITEMS = 214, UPDATE_ALL_WIDGET_ITEMS = 12, UPDATE_WIDGET_TEXT = 110, UPDATE_WIDGET_TEXT_COLOR = 231, SET_WIDGET_PLAYER_HEAD = 210, SET_WIDGET_NPC_HEAD = 160, PLAY_WIDGET_ANIMATION = 24, SET_TAB_WIDGET = 140,
 
-            SHOW_CHATBOX_WIDGET = 208,
-            SHOW_SCREEN_WIDGET = 118,
-            SHOW_FULLSCREEN_WIDGET = 195,
-            SHOW_TAB_AND_SCREEN_WIDGETS = 84,
-            CLOSE_ALL_WIDGETS = 180,
+    SHOW_CHATBOX_WIDGET = 208, SHOW_SCREEN_WIDGET = 118, SHOW_FULLSCREEN_WIDGET = 195, SHOW_TAB_AND_SCREEN_WIDGETS = 84, CLOSE_ALL_WIDGETS = 180,
 
-            UPDATE_CARRY_WEIGHT = 171,
-            UPDATE_RUN_ENERGY = 18,
-            UPDATE_SKILL = 34,
+    UPDATE_CARRY_WEIGHT = 171, UPDATE_RUN_ENERGY = 18, UPDATE_SKILL = 34,
 
-            UPDATE_REFERENCE_POSITION = 254,
-            SET_MAP_CHUNK = 166,
-            CLEAR_MAP_CHUNK = 64,
+    UPDATE_REFERENCE_POSITION = 254, SET_MAP_CHUNK = 166, CLEAR_MAP_CHUNK = 64,
 
-            UPDATE_PLAYERS = 92,
-            UPDATE_NPCS = 128,
-            LOGOUT = 181,
+    UPDATE_PLAYERS = 92, UPDATE_NPCS = 128, LOGOUT = 181,
 
-            PLAY_SOUND = 131,
-            PLAY_SONG = 217,
-            PLAY_QUICK_SONG = 40;
+    PLAY_SOUND = 131, PLAY_SONG = 217, PLAY_QUICK_SONG = 40;
 
     public static int incomingPacketSize = 0;
     public static PacketBuffer incomingPacketBuffer = new PacketBuffer(5000);
@@ -221,9 +200,9 @@ public class IncomingPackets {
                                     }
                                 }
                             }*/
-                            //if(widget.items != null && widget.items.length == 28) {
-                            //    System.out.println(qq + " contains inventory");
-                            //}
+                //if(widget.items != null && widget.items.length == 28) {
+                //    System.out.println(qq + " contains inventory");
+                //}
                         /*}
                     }
                 }*/
@@ -354,8 +333,11 @@ public class IncomingPackets {
                         RSString class1_29_ = (message.substring((1 + message.contains((Class43.char_colon))), -9 + message.length()));
                         Class44.addChatMessage(class1_27_, class1_29_, 8);
                     }
-                } else
+                } else if(KeyFocusListener.consoleOpen) {
+                    KeyFocusListener.printConsoleMessage("<col=FFFF00>"+message.toString()+"</col>", 1);
+                } else {
                     Class44.addChatMessage(HuffmanEncoding.blank_string, message, 0);
+                }
                 incomingPacket = -1;
                 return true;
             }
@@ -429,9 +411,9 @@ public class IncomingPackets {
                 int i_45_ = incomingPacketBuffer.getShortBE();
                 if(i_45_ >= 0)
                     Class42.method883((byte) -121, i_45_);
-                if(i_45_ != GroundItemTile.anInt1376) {
-                    Class55.method958(GroundItemTile.anInt1376);
-                    GroundItemTile.anInt1376 = i_45_;
+                if(i_45_ != GroundItemTile.walkableWidgetId) {
+                    Class55.method958(GroundItemTile.walkableWidgetId);
+                    GroundItemTile.walkableWidgetId = i_45_;
                 }
                 incomingPacket = -1;
                 return true;
@@ -731,7 +713,7 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == 116) {
-                Class40_Sub5_Sub15.anInt2782 = (incomingPacketBuffer.getUnsignedShortLE() * 30);
+                Class40_Sub5_Sub15.systemUpdateTime = (incomingPacketBuffer.getUnsignedShortLE() * 30);
                 incomingPacket = -1;
                 return true;
             }
@@ -854,10 +836,7 @@ public class IncomingPackets {
                 return true;
             }
             // object/ground item update packets?
-            if(incomingPacket == 9 || incomingPacket == 99 || incomingPacket == 229 ||
-                    incomingPacket == 19 || incomingPacket == 202 || incomingPacket == 1 ||
-                    incomingPacket == 74 || incomingPacket == 175 || incomingPacket == 49 ||
-                    incomingPacket == 143 || incomingPacket == 241) {
+            if(incomingPacket == 9 || incomingPacket == 99 || incomingPacket == 229 || incomingPacket == 19 || incomingPacket == 202 || incomingPacket == 1 || incomingPacket == 74 || incomingPacket == 175 || incomingPacket == 49 || incomingPacket == 143 || incomingPacket == 241) {
                 WallDecoration.method949((byte) -112);
                 incomingPacket = -1;
                 return true;

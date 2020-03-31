@@ -140,8 +140,8 @@ public class Class33 {
                                     Class44.anInt1048 -= 10;
                                 }
                                 AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474[(actor.anIntArray3086[i_2_])].drawImage(ISAAC.anInt522 + -12, -12 + Class44.anInt1048);
-                                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.method686((HashTable.method334((actor.anIntArray3087[i_2_]), -1)), ISAAC.anInt522, 4 + Class44.anInt1048, 0);
-                                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.method686((HashTable.method334((actor.anIntArray3087[i_2_]), -1)), ISAAC.anInt522 - 1, Class44.anInt1048 + 3, 16777215);
+                                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.method686((HashTable.method334((actor.anIntArray3087[i_2_]))), ISAAC.anInt522, 4 + Class44.anInt1048, 0);
+                                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.method686((HashTable.method334((actor.anIntArray3087[i_2_]))), ISAAC.anInt522 - 1, Class44.anInt1048 + 3, 16777215);
                             }
                         }
                     }

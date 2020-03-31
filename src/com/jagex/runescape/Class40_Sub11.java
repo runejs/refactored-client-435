@@ -22,7 +22,7 @@ public class Class40_Sub11 extends Node {
     public static int runEnergy = 0;
     public static RSString aClass1_2161 = RSString.CreateString("headicons_pk");
     public static CacheIndex aCacheIndex_2162;
-    public static int anInt2163 = 0;
+    public static int crossX = 0;
     public static RSString cmd_fpsoff = RSString.CreateString("::fpsoff");
     public int[] anIntArray2154;
     public int[] anIntArray2155;
@@ -35,7 +35,7 @@ public class Class40_Sub11 extends Node {
 
     public static RSString method872(int arg0, int arg1) {
         if(arg0 > arg1)
-            return HashTable.method334(arg1, -1);
+            return HashTable.method334(arg1);
         return InteractiveObject.aClass1_478;
     }
 

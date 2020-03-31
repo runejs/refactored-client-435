@@ -28,12 +28,10 @@ public abstract class Renderable extends SubNode {
 
     public int modelHeight = 1000;
 
-    public static boolean handleSequences(int arg0, int arg1) {
+    public static boolean handleSequences(int arg1) {
         if(!Class68.method1043(arg1))
             return false;
         Widget[] widgets = Widget.interfaces[arg1];
-        if(arg0 != 29378)
-            anInt2866 = 125;
         boolean bool = false;
         for(int i = 0; widgets.length > i; i++) {
             Widget widget = widgets[i];

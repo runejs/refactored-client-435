@@ -1100,7 +1100,7 @@ public class TypeFace extends Rasterizer {
     }
 
 
-    private void setEffects(int color, int shadow) {
+    public void setEffects(int color, int shadow) {
         strikethroughColor = -1;
         underlineColor = -1;
         defaultShadowColor = shadow;

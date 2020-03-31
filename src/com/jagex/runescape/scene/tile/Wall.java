@@ -49,11 +49,11 @@ public class Wall {
         aWidget_353 = null;
     }
 
-    public static void method238(int arg0) {
+    public static void renderSplitPrivateMessages() {
         if(CollisionMap.anInt165 != 0) {
             TypeFace class40_sub5_sub14_sub1 = WallDecoration.fontNormal;
             int i = 0;
-            if(Class40_Sub5_Sub15.anInt2782 != 0)
+            if(Class40_Sub5_Sub15.systemUpdateTime != 0)
                 i = 1;
             for(int i_0_ = 0; i_0_ < 100; i_0_++) {
                 if(Actor.chatMessages[i_0_] != null) {
@@ -107,8 +107,6 @@ public class Wall {
                     }
                 }
             }
-            if(arg0 != 4)
-                method238(-13);
         }
     }
 }

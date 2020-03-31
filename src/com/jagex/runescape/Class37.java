@@ -31,7 +31,7 @@ public class Class37 {
     public static RSString aClass1_875;
     public static int anInt876 = 0;
     public static RSString aClass1_877 = RSString.CreateString("@gr1@");
-    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array878;
+    public static ImageRGB[] cursorCross;
 
     static {
         aClass1_875 = (RSString.CreateString("Please close the interface you have open before using (Wreport abuse(W"));
@@ -62,7 +62,7 @@ public class Class37 {
     public static void method433() {
         aClass23_869 = null;
         aClass1_875 = null;
-        aClass40_Sub5_Sub14_Sub4Array878 = null;
+        cursorCross = null;
         aClass1_873 = null;
         aClass1_877 = null;
     }
@@ -79,7 +79,7 @@ public class Class37 {
         Class49.anInt1151 = -1;
         VarbitDefinition.destinationX = 0;
         Class27.minimapState = 0;
-        Class40_Sub5_Sub15.anInt2782 = 0;
+        Class40_Sub5_Sub15.systemUpdateTime = 0;
         IncomingPackets.incomingPacketBuffer.currentPosition = arg0;
         for(int i = 0; ((Player.trackedPlayers).length > i); i++) {
             if((Player.trackedPlayers[i]) != null)

@@ -57,7 +57,7 @@ public class Class38_Sub1 extends Class38 {
     public static void method445(int arg0) {
         if(CollisionMap.anInt165 != 0) {
             int i = 0;
-            if(Class40_Sub5_Sub15.anInt2782 != 0)
+            if(Class40_Sub5_Sub15.systemUpdateTime != 0)
                 i = 1;
             for(int i_1_ = 0; i_1_ < 100; i_1_++) {
                 if(Actor.chatMessages[i_1_] != null) {

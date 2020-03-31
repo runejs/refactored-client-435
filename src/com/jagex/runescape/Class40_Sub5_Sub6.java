@@ -197,37 +197,55 @@ public class Class40_Sub5_Sub6 extends SubNode {
 
     public static void manageTextInputs() {
         while(Class34.method416((byte) -125)) {
+            if(ItemDefinition.anInt2854 == 28) {
+                break;
+            }
+            if(KeyFocusListener.consoleOpen) {
+                if(ItemDefinition.anInt2854 == 85 && (KeyFocusListener.consoleInput.length() > 0)) {
+                    KeyFocusListener.consoleInput = KeyFocusListener.consoleInput.substring(0, KeyFocusListener.consoleInput.length()-1);
+                }
+                if(Player.method793((byte) 120, Class59.anInt1388) && KeyFocusListener.consoleInput.length() < 80) {
+                    KeyFocusListener.consoleInput += (char)Class59.anInt1388;
+                }
+                if(ItemDefinition.anInt2854 == 84 && (KeyFocusListener.consoleInput.length() > 0)) {
+                    KeyFocusListener.printConsoleMessage(KeyFocusListener.consoleInput, 0);
+                    KeyFocusListener.sendCommandPacket(KeyFocusListener.consoleInput);
+                    KeyFocusListener.consoleInput = "";
+                }
+                GenericTile.redrawChatbox = true;
+                break;
+            }
             if(HuffmanEncoding.openScreenWidgetId != -1 && (HuffmanEncoding.reportAbuseInterfaceID == HuffmanEncoding.openScreenWidgetId)) {
                 if(ItemDefinition.anInt2854 == 85 && (HuffmanEncoding.reportedName.length() > 0))
                     HuffmanEncoding.reportedName = (HuffmanEncoding.reportedName.substring(0, -1 + HuffmanEncoding.reportedName.length()));
                 if((Class40_Sub5_Sub15.method735((byte) -37, Class59.anInt1388) || Class59.anInt1388 == 32) && HuffmanEncoding.reportedName.length() < 12)
                     HuffmanEncoding.reportedName = HuffmanEncoding.reportedName.method70(Class59.anInt1388);
             } else if(InteractiveObject.messagePromptRaised) {
-                if(ItemDefinition.anInt2854 == 85 && (HuffmanEncoding.aClass1_1565.length() > 0)) {
-                    HuffmanEncoding.aClass1_1565 = (HuffmanEncoding.aClass1_1565.substring(0, -1 + HuffmanEncoding.aClass1_1565.length()));
+                if(ItemDefinition.anInt2854 == 85 && (HuffmanEncoding.chatMessage.length() > 0)) {
+                    HuffmanEncoding.chatMessage = (HuffmanEncoding.chatMessage.substring(0, -1 + HuffmanEncoding.chatMessage.length()));
                     GenericTile.redrawChatbox = true;
                 }
-                if(Player.method793((byte) 120, Class59.anInt1388) && HuffmanEncoding.aClass1_1565.length() < 80) {
-                    HuffmanEncoding.aClass1_1565 = HuffmanEncoding.aClass1_1565.method70(Class59.anInt1388);
+                if(Player.method793((byte) 120, Class59.anInt1388) && HuffmanEncoding.chatMessage.length() < 80) {
+                    HuffmanEncoding.chatMessage = HuffmanEncoding.chatMessage.method70(Class59.anInt1388);
                     GenericTile.redrawChatbox = true;
                 }
                 if(ItemDefinition.anInt2854 == 84) {
                     InteractiveObject.messagePromptRaised = false;
                     GenericTile.redrawChatbox = true;
                     if(Class37.anInt876 == 1) {
-                        long l = HuffmanEncoding.aClass1_1565.method58((byte) 104);
+                        long l = HuffmanEncoding.chatMessage.method58((byte) 104);
                         UnderlayDefinition.method617(l);
                     }
                     if(Class37.anInt876 == 2 && Item.friendsCount > 0) {
-                        long l = HuffmanEncoding.aClass1_1565.method58((byte) 121);
+                        long l = HuffmanEncoding.chatMessage.method58((byte) 121);
                         RSApplet.method28(l);
                     }
-                    if(Class37.anInt876 == 3 && HuffmanEncoding.aClass1_1565.length() > 0) {
+                    if(Class37.anInt876 == 3 && HuffmanEncoding.chatMessage.length() > 0) {
                         SceneCluster.packetBuffer.putPacket(207);
                         SceneCluster.packetBuffer.putByte(0);
                         int i = SceneCluster.packetBuffer.currentPosition;
                         SceneCluster.packetBuffer.putLongBE(PacketBuffer.aLong2241);
-                        Class68_Sub1.method1052(119, HuffmanEncoding.aClass1_1565, SceneCluster.packetBuffer);
+                        Class68_Sub1.method1052(119, HuffmanEncoding.chatMessage, SceneCluster.packetBuffer);
                         SceneCluster.packetBuffer.finishVarByte(-i + (SceneCluster.packetBuffer.currentPosition));
                         if(Class4.privateChatMode == 2) {
                             Class4.privateChatMode = 1;
@@ -239,11 +257,11 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         }
                     }
                     if(Class37.anInt876 == 4 && Class42.anInt1008 < 100) {
-                        long l = HuffmanEncoding.aClass1_1565.method58((byte) 107);
+                        long l = HuffmanEncoding.chatMessage.method58((byte) 107);
                         Class17.method275(l);
                     }
                     if(Class37.anInt876 == 5 && Class42.anInt1008 > 0) {
-                        long l = HuffmanEncoding.aClass1_1565.method58((byte) 109);
+                        long l = HuffmanEncoding.chatMessage.method58((byte) 109);
                         Class40_Sub6.method838(0, l);
                     }
                 }
@@ -428,7 +446,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
 
     }
 
-    public static void method588(int arg0) {
+    public static void drawMenu(int arg0) {
         if(arg0 == -1) {
             int i = InteractiveObject.menuOffsetX;
             int i_13_ = CollisionMap.menuHeight;

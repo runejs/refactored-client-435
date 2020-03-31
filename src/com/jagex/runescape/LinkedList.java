@@ -21,7 +21,7 @@ public class LinkedList {
     public static LinkedList aLinkedList_1064 = new LinkedList();
     public static int[] anIntArray1071;
     public static volatile int anInt1073 = 0;
-    public static int anInt1075 = 0;
+    public static int crossType = 0;
     public static RSString aClass1_1076 = RSString.CreateString("cyan:");
     public static RSString aClass1_1077 = RSString.CreateString("(U2");
     public static Buffer aClass40_Sub1_1081 = new Buffer(8);
@@ -53,7 +53,7 @@ public class LinkedList {
     public static RSString method903(int arg0, byte arg1) {
         if(arg1 >= -13)
             return null;
-        RSString class1 = HashTable.method334(arg0, -1);
+        RSString class1 = HashTable.method334(arg0);
         for(int i = -3 + class1.length(); i > 0; i -= 3)
             class1 = (RSString.linkRSStrings(new RSString[]{class1.substring(0, i), Class33.aClass1_795, class1.substring(i)}));
         if(class1.length() > 8)

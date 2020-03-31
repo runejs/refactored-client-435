@@ -74,7 +74,7 @@ public class Class51 {
             LinkedList.method908((byte) 114);
             Class55.method964(40);
             ActorDefinition.method574();
-            GenericTile.method943(ItemDefinition.tradeMode, -118, WallDecoration.fontNormal, Class4.privateChatMode, Class35.publicChatMode);
+            GenericTile.method943(ItemDefinition.tradeMode, WallDecoration.fontNormal, Class4.privateChatMode, Class35.publicChatMode);
             Class40_Sub2.method527(Class5.currentTabId, arg0 + 4, Class40_Sub5_Sub11.tabWidgetIds, Class29.tabAreaOverlayWidgetId == -1, -1);
             Class38.aBoolean893 = true;
             Class40_Sub3.aBoolean2026 = true;

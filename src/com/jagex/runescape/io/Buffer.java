@@ -271,6 +271,21 @@ public class Buffer extends Node {
         buffer[currentPosition++] = (byte) 0;
     }
 
+    public void putString(String str) {
+//        if(str == null) {
+//            str = "";
+//        }
+//
+//        byte[] bytes = new byte[str.length()];
+//        for (int i = 0; i < bytes.length; i++) {
+//            bytes[i] = (byte) str.charAt(i);
+//        }
+//        System.arraycopy(bytes, 0, buffer, currentPosition, bytes.length);
+//        currentPosition += str.length();
+//        buffer[currentPosition++] = 10;
+        method505(RSString.CreateString(str));
+    }
+
     public void putIntBE(int value) {
         buffer[currentPosition++] = (byte) (value >> 24);
         buffer[currentPosition++] = (byte) (value >> 16);

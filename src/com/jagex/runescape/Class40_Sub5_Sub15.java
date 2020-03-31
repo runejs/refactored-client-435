@@ -17,7 +17,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public static int arbitraryDestination = 0;
     public static CacheIndex aCacheIndex_2779;
     public static int inputType = 0;
-    public static int anInt2782 = 0;
+    public static int systemUpdateTime = 0;
     public static boolean lastItemDragged = false;
     public static RSString aClass1_2786;
     public static RSString aClass1_2787 = RSString.CreateString("sideicons");

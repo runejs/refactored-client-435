@@ -67,10 +67,10 @@ public class Class5 {
         anIntArray198 = null;
     }
 
-    public static void method164(int arg0) {
-        Renderable.handleSequences(arg0 + 29378, ActorDefinition.openFullScreenWidgetId);
-        if(arg0 != (UnderlayDefinition.openSecondaryWidgetId ^ 0xffffffff))
-            Renderable.handleSequences(arg0 + 29378, UnderlayDefinition.openSecondaryWidgetId);
+    public static void method164() {
+        Renderable.handleSequences(ActorDefinition.openFullScreenWidgetId);
+        if(UnderlayDefinition.openSecondaryWidgetId != -1)
+            Renderable.handleSequences(UnderlayDefinition.openSecondaryWidgetId);
         anInt199 = 0;
         Class68_Sub1.aClass68_2213.method1046((byte) 90);
         Player.anIntArray3284 = Rasterizer3D.method708(Player.anIntArray3284);
@@ -80,9 +80,9 @@ public class Class5 {
             Class40_Sub5_Sub6.drawInterface(0, UnderlayDefinition.openSecondaryWidgetId, 503, (byte) -5, 0, 0, 765);
         if(!Class4.menuOpen) {
             Class43.processRightClick();
-            SceneTile.method537(4);
+            SceneTile.drawMenuTooltip(4);
         } else
-            Class40_Sub5_Sub6.method588(-1);
+            Class40_Sub5_Sub6.drawMenu(-1);
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
             Class68_Sub1.aClass68_2213.method1044(0, graphics, 0);
@@ -182,7 +182,7 @@ public class Class5 {
                 HuffmanEncoding.aClass1_1563 = Widget.aClass1_2740;
                 InteractiveObject.messagePromptRaised = true;
                 Class40_Sub5_Sub15.inputType = 0;
-                HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
+                HuffmanEncoding.chatMessage = HuffmanEncoding.blank_string;
                 GenericTile.redrawChatbox = true;
             }
             if(i == 202) {
@@ -191,7 +191,7 @@ public class Class5 {
                 GenericTile.redrawChatbox = true;
                 Class40_Sub5_Sub15.inputType = 0;
                 InteractiveObject.messagePromptRaised = true;
-                HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
+                HuffmanEncoding.chatMessage = HuffmanEncoding.blank_string;
             }
         }
         if(i == 205) {
@@ -203,7 +203,7 @@ public class Class5 {
             Class37.anInt876 = 4;
             GenericTile.redrawChatbox = true;
             HuffmanEncoding.aClass1_1563 = Class51.aClass1_1200;
-            HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
+            HuffmanEncoding.chatMessage = HuffmanEncoding.blank_string;
             InteractiveObject.messagePromptRaised = true;
         }
         if(i == 502) {
@@ -211,7 +211,7 @@ public class Class5 {
             Class40_Sub5_Sub15.inputType = 0;
             Class37.anInt876 = 5;
             InteractiveObject.messagePromptRaised = true;
-            HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
+            HuffmanEncoding.chatMessage = HuffmanEncoding.blank_string;
             HuffmanEncoding.aClass1_1563 = English.enterNameOfPlayerToDeleteFromList;
         }
         if(i >= 300 && i <= 313) {
@@ -251,7 +251,7 @@ public class Class5 {
 
     public static void method167(int arg0) {
         if(arg0 != 1023)
-            method164(89);
+            method164();
         Class13.aClass9_406.method235((byte) -56);
     }
 

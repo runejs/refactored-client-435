@@ -19,7 +19,7 @@ import com.jagex.runescape.scene.util.CollisionMap;
 
 public class OverlayDefinition extends SubNode {
     public static int placementY;
-    public static int anInt2319 = 0;
+    public static int crossIndex = 0;
     public static int anInt2321 = 0;
     public static byte[][][] tile_flags = new byte[4][104][104];
     public static int[] anIntArray2324;

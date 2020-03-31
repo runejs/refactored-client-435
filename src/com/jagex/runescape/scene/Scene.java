@@ -335,7 +335,7 @@ public class Scene {
         }
     }
 
-    public void method97(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public void render(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
         if(arg0 < 0) {
             arg0 = 0;
         } else if(arg0 >= mapSizeX * 128) {

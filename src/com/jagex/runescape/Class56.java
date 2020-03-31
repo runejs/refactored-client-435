@@ -46,7 +46,7 @@ public class Class56 {
             method972((byte) -104);
         RSString[] class1s = new RSString[5];
         for(int i = 0; i < 5; i++) {
-            class1s[i] = (RSString.linkRSStrings(new RSString[]{HashTable.method334(i, -1), ISAAC.aClass1_515}));
+            class1s[i] = (RSString.linkRSStrings(new RSString[]{HashTable.method334(i), ISAAC.aClass1_515}));
             if(arg0 != null && arg0[i] != null)
                 class1s[i] = RSString.linkRSStrings((new RSString[]{class1s[i], arg0[i]}));
         }

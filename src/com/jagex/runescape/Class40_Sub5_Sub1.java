@@ -26,7 +26,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
     public static LinkedList aLinkedList_2268 = new LinkedList();
     public static RSString aClass1_2274 = RSString.CreateString("To");
     public static Class68 aClass68_2275;
-    public static int anInt2276 = 0;
+    public static int crossY = 0;
     public static RSString aClass1_2277 = RSString.CreateString(" )2> @cya@");
     public static int anInt2278 = 0;
     public static int anInt2280 = 0;
@@ -266,9 +266,9 @@ public class Class40_Sub5_Sub1 extends SubNode {
         if(Player.localPlayer != player && ActorDefinition.menuActionRow < 400) {
             RSString rsString;
             if(player.skillLevel == 0)
-                rsString = (RSString.linkRSStrings((new RSString[]{player.playerName, (SceneTile.getCombatLevelColour((Player.localPlayer.combatLevel), player.combatLevel, -122)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(player.combatLevel, -1), Class51.aClass1_1199})));
+                rsString = (RSString.linkRSStrings((new RSString[]{player.playerName, (SceneTile.getCombatLevelColour((Player.localPlayer.combatLevel), player.combatLevel, -122)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(player.combatLevel), Class51.aClass1_1199})));
             else
-                rsString = (RSString.linkRSStrings((new RSString[]{player.playerName, HashTable.aClass1_569, Class26.aClass1_619, HashTable.method334(player.skillLevel, -1), Class51.aClass1_1199})));
+                rsString = (RSString.linkRSStrings((new RSString[]{player.playerName, HashTable.aClass1_569, Class26.aClass1_619, HashTable.method334(player.skillLevel), Class51.aClass1_1199})));
             if(Class8.itemSelected == 1) {
                 OverlayDefinition.addActionRow(Main.aClass1_1763, index, x, y, 22, (RSString.linkRSStrings((new RSString[]{Npc.aClass1_3295, Item.aClass1_3068, rsString}))));
             } else if(Main.widgetSelected == 1) {

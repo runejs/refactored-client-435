@@ -27,7 +27,7 @@ public class ChatBox {
         Class22.method305((byte) 124);
         if(InteractiveObject.messagePromptRaised) {
             Class40_Sub5_Sub17_Sub6.fontBold.method686(HuffmanEncoding.aClass1_1563, 239, 40, 0);
-            Class40_Sub5_Sub17_Sub6.fontBold.method686(RSString.linkRSStrings((new RSString[]{HuffmanEncoding.aClass1_1565, (InteractiveObject.aClass1_478)})), 239, 60, 128);
+            Class40_Sub5_Sub17_Sub6.fontBold.method686(RSString.linkRSStrings((new RSString[]{HuffmanEncoding.chatMessage, (InteractiveObject.aClass1_478)})), 239, 60, 128);
         } else if(Class40_Sub5_Sub15.inputType == 1) {
             Class40_Sub5_Sub17_Sub6.fontBold.method686(Landscape.aClass1_1174, 239, 40, 0);
             Class40_Sub5_Sub17_Sub6.fontBold.method686((RSString.linkRSStrings(new RSString[]{HuffmanEncoding.inputInputMessage, InteractiveObject.aClass1_478})), 239, 60, 128);
@@ -170,7 +170,7 @@ public class ChatBox {
             Class40_Sub5_Sub17_Sub6.fontBold.method686(Class34.aClass1_829, 239, 60, 128);
         }
         if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
-            Class40_Sub5_Sub6.method588(-1);
+            Class40_Sub5_Sub6.drawMenu(-1);
         LinkedList.method908((byte) 122);
 
     }

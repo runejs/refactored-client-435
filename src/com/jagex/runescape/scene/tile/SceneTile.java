@@ -178,7 +178,7 @@ public class SceneTile extends Node {
         return KeyFocusListener.aClass1_1283;
     }
 
-    public static void method537(int arg0) {
+    public static void drawMenuTooltip(int arg0) {
         if(ActorDefinition.menuActionRow >= 2 || Class8.itemSelected != 0 || Main.widgetSelected != 0) {
             RSString class1;
             if(Class8.itemSelected == 1 && ActorDefinition.menuActionRow < 2)
@@ -188,7 +188,7 @@ public class SceneTile extends Node {
             else
                 class1 = (RSString.linkRSStrings(new RSString[]{Class38_Sub1.aClass1_1918, VertexNormal.aClass1_1117, FloorDecoration.aClass1_611, Class38.aClass1_894}));
             if(ActorDefinition.menuActionRow > 2)
-                class1 = (RSString.linkRSStrings(new RSString[]{class1, WallDecoration.aClass1_1243, HashTable.method334((ActorDefinition.menuActionRow) + -2, -1), Class39.aClass1_904}));
+                class1 = (RSString.linkRSStrings(new RSString[]{class1, WallDecoration.aClass1_1243, HashTable.method334((ActorDefinition.menuActionRow) + -2), Class39.aClass1_904}));
             if(arg0 == 4)
                 Class40_Sub5_Sub17_Sub6.fontBold.drawShadowedSeededAlphaString(class1, 4, 15, 16777215, true, Node.pulseCycle / 1000);
         }

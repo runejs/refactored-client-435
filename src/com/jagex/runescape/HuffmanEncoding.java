@@ -37,7 +37,7 @@ public class HuffmanEncoding {
     public static int openScreenWidgetId = -1;
     public static RSString aClass1_1563 = blank_string;
     public static int[] anIntArray1564 = (new int[]{-1, -1, -1, -1, -1, -1, -1, -1, 85, 80, 84, -1, 91, -1, -1, -1, 81, 82, 86, -1, -1, -1, -1, -1, -1, -1, -1, 0, -1, -1, -1, -1, 83, 104, 105, 103, 102, 96, 98, 97, 99, -1, -1, -1, -1, -1, -1, -1, 25, 16, 17, 18, 19, 20, 21, 22, 23, 24, -1, -1, -1, -1, -1, -1, -1, 48, 68, 66, 50, 34, 51, 52, 53, 39, 54, 55, 56, 70, 69, 40, 41, 32, 35, 49, 36, 38, 67, 33, 65, 37, 64, -1, -1, -1, -1, -1, 228, 231, 227, 233, 224, 219, 225, 230, 226, 232, 89, 87, -1, 88, 229, 90, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, -1, -1, -1, 101, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1});
-    public static RSString aClass1_1565 = blank_string;
+    public static RSString chatMessage = blank_string;
     public static int[] chatTypes = new int[100];
     public static RSString aClass1_1572 = aClass1_1555;
 
@@ -113,7 +113,7 @@ public class HuffmanEncoding {
     }
 
     public static void method1022() {
-        aClass1_1565 = null;
+        chatMessage = null;
         aClass68_1541 = null;
         aClass1_1555 = null;
         aClass1_1563 = null;
@@ -143,7 +143,7 @@ public class HuffmanEncoding {
             if(actorDefinition != null && actorDefinition.isClickable) {
                 RSString class1 = actorDefinition.name;
                 if(actorDefinition.combatLevel != 0)
-                    class1 = (RSString.linkRSStrings((new RSString[]{class1, (SceneTile.getCombatLevelColour((Player.localPlayer.combatLevel), actorDefinition.combatLevel, -99)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(actorDefinition.combatLevel, -1), Class51.aClass1_1199})));
+                    class1 = (RSString.linkRSStrings((new RSString[]{class1, (SceneTile.getCombatLevelColour((Player.localPlayer.combatLevel), actorDefinition.combatLevel, -99)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(actorDefinition.combatLevel), Class51.aClass1_1199})));
                 if(Class8.itemSelected == 1) {
                     OverlayDefinition.addActionRow(Main.aClass1_1763, index, x, y, 49, (RSString.linkRSStrings((new RSString[]{Npc.aClass1_3295, SpotAnimDefinition.aClass1_2306, class1}))));
                 } else if(Main.widgetSelected == 1) {
