@@ -56,7 +56,7 @@ public class Class37 {
     }
 
     public static void method432() {
-        System.out.println("Usage: worldid, [live/office/local], [live/rc/wip], [lowmem/highmem], [free/members], [english/german]");
+        System.out.println("Usage: worldid, [live/office/local], [live/rc/wip], [lowmem/highmem], [free/members]");
         System.exit(1);
     }
 
