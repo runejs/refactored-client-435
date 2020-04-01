@@ -23,7 +23,7 @@ public class GroundItemTile {
     public static int cameraHorizontal = 0;
     public static RSString aClass1_1374 = RSString.CreateString("backvmid1");
     public static CacheIndex aCacheIndex_1375;
-    public static int anInt1376 = -1;
+    public static int walkableWidgetId = -1;
     public static byte[][] aByteArrayArray1377 = new byte[1000][];
     public static RSString aClass1_1378 = RSString.CreateString("Chat panel redrawn");
     public static int[] varbitmasks = new int[2000];

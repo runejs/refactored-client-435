@@ -9,6 +9,7 @@ import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.frame.Console;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -31,7 +32,7 @@ public class Class37 {
     public static RSString aClass1_875;
     public static int anInt876 = 0;
     public static RSString aClass1_877 = RSString.CreateString("@gr1@");
-    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array878;
+    public static ImageRGB[] cursorCross;
 
     static {
         aClass1_875 = (RSString.CreateString("Please close the interface you have open before using (Wreport abuse(W"));
@@ -55,14 +56,14 @@ public class Class37 {
     }
 
     public static void method432() {
-        System.out.println("Usage: worldid, [live/office/local], [live/rc/wip], [lowmem/highmem], [free/members], [english/german]");
+        System.out.println("Usage: worldid, [live/office/local], [live/rc/wip], [lowmem/highmem], [free/members]");
         System.exit(1);
     }
 
     public static void method433() {
         aClass23_869 = null;
         aClass1_875 = null;
-        aClass40_Sub5_Sub14_Sub4Array878 = null;
+        cursorCross = null;
         aClass1_873 = null;
         aClass1_877 = null;
     }
@@ -79,7 +80,7 @@ public class Class37 {
         Class49.anInt1151 = -1;
         VarbitDefinition.destinationX = 0;
         Class27.minimapState = 0;
-        Class40_Sub5_Sub15.anInt2782 = 0;
+        Class40_Sub5_Sub15.systemUpdateTime = 0;
         IncomingPackets.incomingPacketBuffer.currentPosition = arg0;
         for(int i = 0; ((Player.trackedPlayers).length > i); i++) {
             if((Player.trackedPlayers[i]) != null)
@@ -92,23 +93,23 @@ public class Class37 {
         OverlayDefinition.method559(30);
     }
 
-    public static void method435(boolean arg0) {
+    public static void renderMinimap(boolean arg0) {
         RSCanvas.method45((byte) -106);
         if(Class27.minimapState == 2) {
-            int[] is = Rasterizer.pixels;
-            byte[] is_6_ = Class34.mapBack.imgPixels;
-            int i = is_6_.length;
-            for(int i_7_ = 0; i > i_7_; i_7_++) {
-                if(is_6_[i_7_] == 0)
-                    is[i_7_] = 0;
+            byte[] mmBackgroundPixels = Class34.mapBack.imgPixels;
+            int[] rasterPixels = Rasterizer.pixels;
+            int pixelCount = mmBackgroundPixels.length;
+            for(int i = 0; i < pixelCount; i++) {
+                if(mmBackgroundPixels[i] == 0)
+                    rasterPixels[i] = 0;
             }
-            AnimationSequence.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
+            AnimationSequence.minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
             ActorDefinition.method574();
         } else {
             int i = 48 + ((Player.localPlayer.worldX) / 32);
             int i_8_ = 464 + -((Player.localPlayer.worldY) / 32);
             int i_9_ = GroundItemTile.cameraHorizontal + Class43.cameraYawOffset & 0x7ff;
-            Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.method724(25, 5, 146, 151, i, i_8_, i_9_, Class51.mapZoomOffset + 256, Landscape.anIntArray1186, Class34.anIntArray852);
+            Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.shapeImageToPixels(25, 5, 146, 151, i, i_8_, i_9_, Class51.mapZoomOffset + 256, Landscape.anIntArray1186, Class34.anIntArray852);
             for(int i_10_ = 0; GameObject.anInt3040 > i_10_; i_10_++) {
                 i = 2 + (4 * Actor.anIntArray3149[i_10_] + -((Player.localPlayer.worldX) / 32));
                 i_8_ = (2 + 4 * LinkedList.anIntArray1083[i_10_] - ((Player.localPlayer.worldY) / 32));
@@ -190,10 +191,11 @@ public class Class37 {
                 SceneTile.drawOnMinimap(i_8_, i, (Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[0]));
             }
             Rasterizer.drawFilledRectangle(97, 78, 3, 3, 16777215);
-            AnimationSequence.aClass40_Sub5_Sub14_Sub4_2482.method724(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
+            AnimationSequence.minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
             if(arg0)
                 ActorDefinition.method574();
         }
+
     }
 
     public static void method436(int arg0) {

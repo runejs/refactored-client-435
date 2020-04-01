@@ -2,12 +2,14 @@ package com.jagex.runescape.cache.media;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
+import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
@@ -265,12 +267,12 @@ public class Widget extends SubNode {
             return null;
         }
         if(arg0 < 100000) {
-            return HashTable.method334(arg0, -1);
+            return HashTable.method334(arg0);
         }
         if(arg0 < 10000000) {
-            return (RSString.linkRSStrings(new RSString[]{HashTable.method334(arg0 / 1000, -1), IdentityKit.aClass1_2587}));
+            return (RSString.linkRSStrings(new RSString[]{HashTable.method334(arg0 / 1000), IdentityKit.aClass1_2587}));
         }
-        return (RSString.linkRSStrings(new RSString[]{HashTable.method334(arg0 / 1000000, arg1 ^ 0x63), Native.suffixM}));
+        return (RSString.linkRSStrings(new RSString[]{HashTable.method334(arg0 / 1000000), Native.suffixM}));
     }
 
     public static void method891(Object[] arg0, int arg1, int arg2, Widget arg3, int arg4, boolean arg5) {
@@ -841,7 +843,7 @@ public class Widget extends SubNode {
                                             if(i_3_ == 4100) {
                                                 RSString class1 = (Class40_Sub11.aClass1Array2153[--i_1_]);
                                                 int i_75_ = (Class67.anIntArray1588[--i]);
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = (RSString.linkRSStrings((new RSString[]{class1, (HashTable.method334(i_75_, -1))})));
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = (RSString.linkRSStrings((new RSString[]{class1, (HashTable.method334(i_75_))})));
                                             } else if(i_3_ == 4101) {
                                                 i_1_ -= 2;
                                                 RSString class1 = (Class40_Sub11.aClass1Array2153[i_1_ + 1]);
@@ -861,7 +863,7 @@ public class Widget extends SubNode {
                                                 int i_79_ = Class8.aCalendar279.get(5);
                                                 int i_80_ = Class8.aCalendar279.get(2);
                                                 int i_81_ = Class8.aCalendar279.get(1);
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = (RSString.linkRSStrings((new RSString[]{(HashTable.method334(i_79_, -1)), (Class27.aClass1_643), (Class40_Sub5_Sub17_Sub1.aClass1Array2964[i_80_]), (Class27.aClass1_643), (HashTable.method334(i_81_, -1))})));
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = (RSString.linkRSStrings((new RSString[]{(HashTable.method334(i_79_)), (Class27.aClass1_643), (Class40_Sub5_Sub17_Sub1.aClass1Array2964[i_80_]), (Class27.aClass1_643), (HashTable.method334(i_81_))})));
                                             } else if(i_3_ == 4105) {
                                                 i_1_ -= 2;
                                                 RSString class1 = (Class40_Sub11.aClass1Array2153[i_1_]);
@@ -873,7 +875,7 @@ public class Widget extends SubNode {
                                                 }
                                             } else if(i_3_ == 4106) {
                                                 int i_83_ = (Class67.anIntArray1588[--i]);
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = (HashTable.method334(i_83_, -1));
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = (HashTable.method334(i_83_));
                                             } else {
                                                 if(i_3_ != 4107) {
                                                     break;
@@ -1107,14 +1109,14 @@ public class Widget extends SubNode {
                     widget.disabledText = (RSString.linkRSStrings(new RSString[]{FloorDecoration.aClass1_610, Class27.aClass1_664}));
                 } else if(Class40_Sub7.friendWorlds[type] < 5000) {
                     if(Class40_Sub7.friendWorlds[type] == Class13.worldid) {
-                        widget.disabledText = (RSString.linkRSStrings((new RSString[]{Landscape.aClass1_1162, Class26.aClass1_634, HashTable.method334((Class40_Sub7.friendWorlds[type]), -1)})));
+                        widget.disabledText = (RSString.linkRSStrings((new RSString[]{Landscape.aClass1_1162, Class26.aClass1_634, HashTable.method334((Class40_Sub7.friendWorlds[type]))})));
                     } else {
-                        widget.disabledText = (RSString.linkRSStrings((new RSString[]{KeyFocusListener.aClass1_1283, Class26.aClass1_634, HashTable.method334((Class40_Sub7.friendWorlds[type]), -1)})));
+                        widget.disabledText = (RSString.linkRSStrings((new RSString[]{KeyFocusListener.aClass1_1283, Class26.aClass1_634, HashTable.method334((Class40_Sub7.friendWorlds[type]))})));
                     }
                 } else if(Class13.worldid == Class40_Sub7.friendWorlds[type]) {
-                    widget.disabledText = (RSString.linkRSStrings((new RSString[]{Landscape.aClass1_1162, Cache.aClass1_333, HashTable.method334(-5000 + (Class40_Sub7.friendWorlds[type]), -1)})));
+                    widget.disabledText = (RSString.linkRSStrings((new RSString[]{Landscape.aClass1_1162, Cache.aClass1_333, HashTable.method334(-5000 + (Class40_Sub7.friendWorlds[type]))})));
                 } else {
-                    widget.disabledText = (RSString.linkRSStrings((new RSString[]{KeyFocusListener.aClass1_1283, Cache.aClass1_333, HashTable.method334(((Class40_Sub7.friendWorlds[type]) + -5000), -1)})));
+                    widget.disabledText = (RSString.linkRSStrings((new RSString[]{KeyFocusListener.aClass1_1283, Cache.aClass1_333, HashTable.method334(((Class40_Sub7.friendWorlds[type]) + -5000))})));
                 }
                 widget.actionType = 1;
             }
@@ -1191,6 +1193,25 @@ public class Widget extends SubNode {
             } else
                 widget.disabledText = HuffmanEncoding.blank_string;
         }
+    }
+
+    public static void drawScrollBar(int x, int y, int height, int scrollPosition, int scrollMaximum, int unknownArrayIndex) {
+        int length = (-32 + height) * height / scrollMaximum;
+        CacheIndex.aClass40_Sub5_Sub14_Sub2Array215[unknownArrayIndex].drawImage(x, y);
+        CacheIndex.aClass40_Sub5_Sub14_Sub2Array215[1].drawImage(x, y - (-height + 16));
+        Rasterizer.drawFilledRectangle(x, y + 16, 16, height + -32, Class55.anInt1299);
+        if(length < 8)
+            length = 8;
+        int scrollCurrent = (-32 + height - length) * scrollPosition / (-height + scrollMaximum);
+        Rasterizer.drawFilledRectangle(x, 16 + y + scrollCurrent, 16, length, Cache.anInt321);
+        Rasterizer.drawVerticalLine(x, 16 + y + scrollCurrent, length, HuffmanEncoding.anInt1559);
+        Rasterizer.drawVerticalLine(1 + x, scrollCurrent + y + 16, length, HuffmanEncoding.anInt1559);
+        Rasterizer.drawHorizontalLine(x, scrollCurrent + y + 16, 16, HuffmanEncoding.anInt1559);
+        Rasterizer.drawHorizontalLine(x, 17 + (y + scrollCurrent), 16, HuffmanEncoding.anInt1559);
+        Rasterizer.drawVerticalLine(x + 15, y + 16 + scrollCurrent, length, Class56.anInt1318);
+        Rasterizer.drawVerticalLine(x + 14, scrollCurrent + 17 + y, length - 1, Class56.anInt1318);
+        Rasterizer.drawHorizontalLine(x, length + (scrollCurrent + (15 + y)), 16, Class56.anInt1318);
+        Rasterizer.drawHorizontalLine(x + 1, 14 + (y + scrollCurrent + length), 15, Class56.anInt1318);
     }
 
     public void swapItems(int arg0, boolean arg1, int arg2) {

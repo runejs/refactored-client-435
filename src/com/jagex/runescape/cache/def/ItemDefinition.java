@@ -17,8 +17,7 @@ import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.awt.*;
 
-public class ItemDefinition extends SubNode {
-    public static int tradeMode = 0;
+public class ItemDefinition extends SubNode implements EntityDefinition {
     public static int anInt2798 = 0;
     public static int[] soundVolume = new int[50];
     public static int selectedMask;
@@ -103,15 +102,15 @@ public class ItemDefinition extends SubNode {
     public static void method742() {
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            Landscape.aClass68_1185.method1044(0, graphics, 4);
-            Class40_Sub5_Sub1.aClass68_2275.method1044(0, graphics, 357);
-            Class39.aClass68_908.method1044(722, graphics, 4);
-            GameObject.aClass68_3045.method1044(743, graphics, 205);
-            Class40_Sub5_Sub17_Sub6.aClass68_3243.method1044(0, graphics, 0);
-            Class40_Sub7.aClass68_2123.method1044(516, graphics, 4);
-            Class61.aClass68_1441.method1044(516, graphics, 205);
-            Class30.aClass68_714.method1044(496, graphics, 357);
-            Class17.aClass68_462.method1044(0, graphics, 338);
+            Landscape.aClass68_1185.drawGraphics(0, 4, graphics);
+            Class40_Sub5_Sub1.aClass68_2275.drawGraphics(0, 357, graphics);
+            Class39.aClass68_908.drawGraphics(722, 4, graphics);
+            GameObject.aClass68_3045.drawGraphics(743, 205, graphics);
+            Class40_Sub5_Sub17_Sub6.aClass68_3243.drawGraphics(0, 0, graphics);
+            Class40_Sub7.aClass68_2123.drawGraphics(516, 4, graphics);
+            Class61.aClass68_1441.drawGraphics(516, 205, graphics);
+            Class30.aClass68_714.drawGraphics(496, 357, graphics);
+            Class17.aClass68_462.drawGraphics(0, 338, graphics);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }
@@ -493,5 +492,10 @@ public class ItemDefinition extends SubNode {
         }
         return model;
 
+    }
+
+    @Override
+    public RSString getName() {
+        return name;
     }
 }

@@ -7,12 +7,12 @@ import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.*;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
+import com.jagex.runescape.frame.Console;
 import com.jagex.runescape.input.KeyFocusListener;
-import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
-import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.Rasterizer;
+import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
@@ -94,17 +94,19 @@ public class Class27 {
             }
         }
         Class65.method1018();
-        Model.anInt3198 = Landscape.mouseY - 4;
-        Model.aBoolean3207 = true;
-        Model.anInt3229 = Class13.mouseX + -4;
+        Model.cursorY = Landscape.mouseY - 4;
+        Model.gameScreenClickable = true;
+        Model.cursorX = Class13.mouseX - 4;
         Model.resourceCount = 0;
         Rasterizer.resetPixels();
-        Npc.currentScene.method97(Class12.cameraX, SceneCluster.cameraZ, Class40_Sub5_Sub6.cameraY, Class26.anInt627, Class68_Sub1.anInt2210, i);
+        Npc.currentScene.render(Class12.cameraX, SceneCluster.cameraZ, Class40_Sub5_Sub6.cameraY, Class26.anInt627, Class68_Sub1.anInt2210, i);
         Npc.currentScene.clearInteractiveObjectCache();
         Class33.method404((byte) -28);
         Class38_Sub1.method450((byte) -67);
         ((Class35) Rasterizer3D.anInterface3_2939).method425((byte) 6, Class5.anInt199);
-        KeyFocusListener.method954(-15454);
+        KeyFocusListener.draw3dScreen();
+        Console.console.drawConsole();
+        Console.console.drawConsoleArea();
         if(ISAAC.aBoolean519 && method368((byte) -41, false, true) == 0)
             ISAAC.aBoolean519 = false;
         if(ISAAC.aBoolean519) {
@@ -112,6 +114,7 @@ public class Class27 {
             Rasterizer.resetPixels();
             Class51.method940(0, Class67.aClass1_1585, false, null);
         }
+
         Player.method792(110);
         Class12.cameraX = i_1_;
         Class40_Sub5_Sub6.cameraY = i_5_;
@@ -119,26 +122,7 @@ public class Class27 {
         Class26.anInt627 = i_4_;
         SceneCluster.cameraZ = i_3_;
         if(arg0 >= -98)
-            drawScrollBar(-36, 10, 23, 0, 3, -27);
-    }
-
-    public static void drawScrollBar(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        int i = (-32 + arg4) * arg4 / arg2;
-        CacheIndex.aClass40_Sub5_Sub14_Sub2Array215[arg0].drawImage(arg3, arg5);
-        CacheIndex.aClass40_Sub5_Sub14_Sub2Array215[1].drawImage(arg3, arg5 - (-arg4 + 16));
-        Rasterizer.drawFilledRectangle(arg3, arg5 + 16, 16, arg4 + -32, Class55.anInt1299);
-        if(i < 8)
-            i = 8;
-        int i_9_ = (-32 + arg4 - i) * arg1 / (-arg4 + arg2);
-        Rasterizer.drawFilledRectangle(arg3, 16 + arg5 + i_9_, 16, i, Cache.anInt321);
-        Rasterizer.drawVerticalLine(arg3, 16 + arg5 + i_9_, i, HuffmanEncoding.anInt1559);
-        Rasterizer.drawVerticalLine(1 + arg3, i_9_ + arg5 + 16, i, HuffmanEncoding.anInt1559);
-        Rasterizer.drawHorizontalLine(arg3, i_9_ + arg5 + 16, 16, HuffmanEncoding.anInt1559);
-        Rasterizer.drawHorizontalLine(arg3, 17 + (arg5 + i_9_), 16, HuffmanEncoding.anInt1559);
-        Rasterizer.drawVerticalLine(arg3 + 15, arg5 + 16 + i_9_, i, Class56.anInt1318);
-        Rasterizer.drawVerticalLine(arg3 + 14, i_9_ + 17 + arg5, i - 1, Class56.anInt1318);
-        Rasterizer.drawHorizontalLine(arg3, i + (i_9_ + (15 + arg5)), 16, Class56.anInt1318);
-        Rasterizer.drawHorizontalLine(arg3 + 1, 14 + (arg5 + i_9_ + i), 15, Class56.anInt1318);
+            Widget.drawScrollBar(0, -27, 3, 10, 23, -36);
     }
 
     public static void method356() {
@@ -155,10 +139,12 @@ public class Class27 {
 
     public static void method357(CacheIndex arg0, int arg1, CacheIndex arg2) {
         GroundItemTile.aCacheIndex_1375 = arg2;
+        ActorDefinition.count = GroundItemTile.aCacheIndex_1375.method190(9);
+
         Class67.aCacheIndex_1577 = arg0;
         if(arg1 == -10978)
             return;
-        method365(-3);
+        drawGameScreen();
 
     }
 
@@ -170,9 +156,9 @@ public class Class27 {
             if(action >= 2000)
                 action -= 2000;
             int i_12_ = Class33.selectedMenuActions[arg1];
-            if(Class40_Sub5_Sub15.inputType != 0 && action != 1005) {
-                Class40_Sub5_Sub15.inputType = 0;
-                GenericTile.redrawChatbox = true;
+            if(ChatBox.inputType != 0 && action != 1005) {
+                ChatBox.inputType = 0;
+                ChatBox.redrawChatbox = true;
             }
             if(action == 37) {
                 SceneCluster.packetBuffer.putPacket(21);
@@ -186,27 +172,27 @@ public class Class27 {
                 if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16)
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
                 Class30.anInt704 = i_10_;
-                if(i_10_ >> 16 == Class43.openChatboxWidgetId)
+                if(i_10_ >> 16 == ChatBox.openChatboxWidgetId)
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
             }
             if(action == 38) {
                 boolean bool = (Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 0, (Player.localPlayer.pathX[0]), i_10_, 2));
                 if(!bool)
                     bool = (Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 1, (Player.localPlayer.pathX[0]), i_10_, 2));
-                OverlayDefinition.anInt2319 = 0;
-                Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
-                Class40_Sub11.anInt2163 = Class57.clickX;
-                LinkedList.anInt1075 = 2;
+                OverlayDefinition.crossIndex = 0;
+                Class40_Sub5_Sub1.crossY = RSString.clickY;
+                Class40_Sub11.crossX = Class57.clickX;
+                LinkedList.crossType = 2;
                 SceneCluster.packetBuffer.putPacket(190);
                 SceneCluster.packetBuffer.putShortLE(i + SpotAnimDefinition.baseX);
                 SceneCluster.packetBuffer.putShortBE(i_12_);
                 SceneCluster.packetBuffer.putShortBE(i_10_ + Class26.baseY);
             }
             if(action == 1004) {
-                Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
-                Class40_Sub11.anInt2163 = Class57.clickX;
-                LinkedList.anInt1075 = 2;
-                OverlayDefinition.anInt2319 = 0;
+                Class40_Sub5_Sub1.crossY = RSString.clickY;
+                Class40_Sub11.crossX = Class57.clickX;
+                LinkedList.crossType = 2;
+                OverlayDefinition.crossIndex = 0;
                 SceneCluster.packetBuffer.putPacket(148);
                 SceneCluster.packetBuffer.putShortLE(i_12_ >> 14 & 0x7fff);
             }
@@ -221,10 +207,10 @@ public class Class27 {
                 Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[i_12_]);
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, (Player.localPlayer.pathX[0]), class40_sub5_sub17_sub4_sub1.pathX[0], 2);
-                    Class40_Sub11.anInt2163 = Class57.clickX;
-                    OverlayDefinition.anInt2319 = 0;
-                    LinkedList.anInt1075 = 2;
-                    Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
+                    Class40_Sub11.crossX = Class57.clickX;
+                    OverlayDefinition.crossIndex = 0;
+                    LinkedList.crossType = 2;
+                    Class40_Sub5_Sub1.crossY = RSString.clickY;
                     SceneCluster.packetBuffer.putPacket(221);
                     SceneCluster.packetBuffer.putIntME1(Class60.anInt1417);
                     SceneCluster.packetBuffer.putShortLE(i_12_);
@@ -268,7 +254,7 @@ public class Class27 {
                 Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                 if(i_10_ >> 16 == HuffmanEncoding.openScreenWidgetId)
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
-                if(i_10_ >> 16 == Class43.openChatboxWidgetId)
+                if(i_10_ >> 16 == ChatBox.openChatboxWidgetId)
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
             }
             if(action == 53) {
@@ -282,7 +268,7 @@ public class Class27 {
                 Class30.anInt704 = i_10_;
                 if(i_10_ >> 16 == HuffmanEncoding.openScreenWidgetId)
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
-                if(i_10_ >> 16 == Class43.openChatboxWidgetId)
+                if(i_10_ >> 16 == ChatBox.openChatboxWidgetId)
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
             }
             if(action == 57) {
@@ -309,17 +295,17 @@ public class Class27 {
                 Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                 if(i_10_ >> 16 == HuffmanEncoding.openScreenWidgetId)
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
-                if(i_10_ >> 16 == Class43.openChatboxWidgetId)
+                if(i_10_ >> 16 == ChatBox.openChatboxWidgetId)
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
             }
             if(action == 10) {
                 Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[i_12_]);
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, (Player.localPlayer.pathX[0]), class40_sub5_sub17_sub4_sub1.pathX[0], 2);
-                    Class40_Sub11.anInt2163 = Class57.clickX;
-                    LinkedList.anInt1075 = 2;
-                    Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
-                    OverlayDefinition.anInt2319 = 0;
+                    Class40_Sub11.crossX = Class57.clickX;
+                    LinkedList.crossType = 2;
+                    Class40_Sub5_Sub1.crossY = RSString.clickY;
+                    OverlayDefinition.crossIndex = 0;
                     SceneCluster.packetBuffer.putPacket(68);
                     SceneCluster.packetBuffer.putShortLE(i_12_);
                 }
@@ -328,19 +314,19 @@ public class Class27 {
                 Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[i_12_]);
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, (Player.localPlayer.pathX[0]), class40_sub5_sub17_sub4_sub1.pathX[0], 2);
-                    OverlayDefinition.anInt2319 = 0;
-                    LinkedList.anInt1075 = 2;
-                    Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
-                    Class40_Sub11.anInt2163 = Class57.clickX;
+                    OverlayDefinition.crossIndex = 0;
+                    LinkedList.crossType = 2;
+                    Class40_Sub5_Sub1.crossY = RSString.clickY;
+                    Class40_Sub11.crossX = Class57.clickX;
                     SceneCluster.packetBuffer.putPacket(96);
                     SceneCluster.packetBuffer.putShortBE(i_12_);
                 }
             }
             if(action == 1001) {
-                Class40_Sub11.anInt2163 = Class57.clickX;
-                LinkedList.anInt1075 = 2;
-                Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
-                OverlayDefinition.anInt2319 = 0;
+                Class40_Sub11.crossX = Class57.clickX;
+                LinkedList.crossType = 2;
+                Class40_Sub5_Sub1.crossY = RSString.clickY;
+                OverlayDefinition.crossIndex = 0;
                 Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[i_12_]);
                 if(class40_sub5_sub17_sub4_sub2 != null) {
                     ActorDefinition class40_sub5_sub5 = class40_sub5_sub17_sub4_sub2.actorDefinition;
@@ -356,10 +342,10 @@ public class Class27 {
                 Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[i_12_]);
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, (Player.localPlayer.pathX[0]), class40_sub5_sub17_sub4_sub1.pathX[0], 2);
-                    Class40_Sub11.anInt2163 = Class57.clickX;
-                    LinkedList.anInt1075 = 2;
-                    Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
-                    OverlayDefinition.anInt2319 = 0;
+                    Class40_Sub11.crossX = Class57.clickX;
+                    LinkedList.crossType = 2;
+                    Class40_Sub5_Sub1.crossY = RSString.clickY;
+                    OverlayDefinition.crossIndex = 0;
                     SceneCluster.packetBuffer.putPacket(110);
                     SceneCluster.packetBuffer.putShortLE(i_12_);
                     SceneCluster.packetBuffer.putIntME1(ISAAC.anInt525);
@@ -382,10 +368,10 @@ public class Class27 {
                     boolean bool = (Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 0, (Player.localPlayer.pathX[0]), i_10_, 2));
                     if(!bool)
                         bool = (Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 1, (Player.localPlayer.pathX[0]), i_10_, 2));
-                    OverlayDefinition.anInt2319 = 0;
-                    LinkedList.anInt1075 = 2;
-                    Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
-                    Class40_Sub11.anInt2163 = Class57.clickX;
+                    OverlayDefinition.crossIndex = 0;
+                    LinkedList.crossType = 2;
+                    Class40_Sub5_Sub1.crossY = RSString.clickY;
+                    Class40_Sub11.crossX = Class57.clickX;
                     SceneCluster.packetBuffer.putPacket(168);
                     SceneCluster.packetBuffer.putShortLE(i_12_);
                     SceneCluster.packetBuffer.putShortBE(SpotAnimDefinition.baseX + i);
@@ -413,7 +399,7 @@ public class Class27 {
                     Class30.anInt704 = i_10_;
                     if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16)
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
-                    if(Class43.openChatboxWidgetId == i_10_ >> 16)
+                    if(ChatBox.openChatboxWidgetId == i_10_ >> 16)
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                     RSRuntimeException.anInt1651 = 0;
                 }
@@ -431,20 +417,20 @@ public class Class27 {
                         }
                         if(i_19_ != -1 && Class40_Sub7.friendWorlds[i_19_] > 0) {
                             Class37.anInt876 = 3;
-                            GenericTile.redrawChatbox = true;
-                            Class40_Sub5_Sub15.inputType = 0;
-                            HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
-                            InteractiveObject.messagePromptRaised = true;
+                            ChatBox.redrawChatbox = true;
+                            ChatBox.inputType = 0;
+                            HuffmanEncoding.chatMessage = HuffmanEncoding.blank_string;
+                            ChatBox.messagePromptRaised = true;
                             PacketBuffer.aLong2241 = Class59.aLongArray1397[i_19_];
                             HuffmanEncoding.aClass1_1563 = (RSString.linkRSStrings(new RSString[]{Class35.aClass1_1746, (Class40_Sub11.friendUsernames[i_19_])}));
                         }
                     }
                 }
                 if(action == 1003) {
-                    OverlayDefinition.anInt2319 = 0;
-                    LinkedList.anInt1075 = 2;
-                    Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
-                    Class40_Sub11.anInt2163 = Class57.clickX;
+                    OverlayDefinition.crossIndex = 0;
+                    LinkedList.crossType = 2;
+                    Class40_Sub5_Sub1.crossY = RSString.clickY;
+                    Class40_Sub11.crossX = Class57.clickX;
                     SceneCluster.packetBuffer.putPacket(151);
                     SceneCluster.packetBuffer.putShortLE(i_12_);
                 }
@@ -459,10 +445,10 @@ public class Class27 {
                     Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[i_12_]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, (Player.localPlayer.pathX[0]), class40_sub5_sub17_sub4_sub2.pathX[0], 2);
-                        OverlayDefinition.anInt2319 = 0;
-                        Class40_Sub11.anInt2163 = Class57.clickX;
-                        Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
-                        LinkedList.anInt1075 = 2;
+                        OverlayDefinition.crossIndex = 0;
+                        Class40_Sub11.crossX = Class57.clickX;
+                        Class40_Sub5_Sub1.crossY = RSString.clickY;
+                        LinkedList.crossType = 2;
                         SceneCluster.packetBuffer.putPacket(57);
                         SceneCluster.packetBuffer.putShortBE(i_12_);
                     }
@@ -471,10 +457,10 @@ public class Class27 {
                     Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[i_12_]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, (Player.localPlayer.pathX[0]), class40_sub5_sub17_sub4_sub2.pathX[0], 2);
-                        Class40_Sub11.anInt2163 = Class57.clickX;
-                        Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
-                        OverlayDefinition.anInt2319 = 0;
-                        LinkedList.anInt1075 = 2;
+                        Class40_Sub11.crossX = Class57.clickX;
+                        Class40_Sub5_Sub1.crossY = RSString.clickY;
+                        OverlayDefinition.crossIndex = 0;
+                        LinkedList.crossType = 2;
                         SceneCluster.packetBuffer.putPacket(208);
                         SceneCluster.packetBuffer.putShortBE(i_12_);
                         SceneCluster.packetBuffer.putShortBE(Class49.anInt1154);
@@ -502,10 +488,10 @@ public class Class27 {
                     Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[i_12_]);
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, (Player.localPlayer.pathX[0]), class40_sub5_sub17_sub4_sub2.pathX[0], 2);
-                        OverlayDefinition.anInt2319 = 0;
-                        LinkedList.anInt1075 = 2;
-                        Class40_Sub11.anInt2163 = Class57.clickX;
-                        Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
+                        OverlayDefinition.crossIndex = 0;
+                        LinkedList.crossType = 2;
+                        Class40_Sub11.crossX = Class57.clickX;
+                        Class40_Sub5_Sub1.crossY = RSString.clickY;
                         SceneCluster.packetBuffer.putPacket(0);
                         SceneCluster.packetBuffer.putShortBE(i_12_);
                     }
@@ -524,7 +510,7 @@ public class Class27 {
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                     if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16)
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
-                    if(Class43.openChatboxWidgetId == i_10_ >> 16)
+                    if(ChatBox.openChatboxWidgetId == i_10_ >> 16)
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                 }
                 if(action == 33) {
@@ -550,7 +536,7 @@ public class Class27 {
                             SceneCluster.packetBuffer.putPacket(151);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
                         } else
-                            Class44.addChatMessage(HuffmanEncoding.blank_string, (RSString.linkRSStrings((new RSString[]{HashTable.method334((widget.anInt2734), -1), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), 0);
+                            Class44.addChatMessage(HuffmanEncoding.blank_string, (RSString.linkRSStrings((new RSString[]{HashTable.method334((widget.anInt2734)), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), 0);
                     }
                     if(action == 42) {
                         Widget widget = Widget.forId(i_10_);
@@ -573,17 +559,17 @@ public class Class27 {
                         RSRuntimeException.anInt1651 = 0;
                         if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
-                        if(i_10_ >> 16 == Class43.openChatboxWidgetId)
+                        if(i_10_ >> 16 == ChatBox.openChatboxWidgetId)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                     }
                     if(action == 12) {
                         Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[i_12_]);
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), (class40_sub5_sub17_sub4_sub2.pathY[0]), 0, false, 0, 1, (Player.localPlayer.pathX[0]), (class40_sub5_sub17_sub4_sub2.pathX[0]), 2);
-                            Class40_Sub11.anInt2163 = Class57.clickX;
-                            Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
-                            OverlayDefinition.anInt2319 = 0;
-                            LinkedList.anInt1075 = 2;
+                            Class40_Sub11.crossX = Class57.clickX;
+                            Class40_Sub5_Sub1.crossY = RSString.clickY;
+                            OverlayDefinition.crossIndex = 0;
+                            LinkedList.crossType = 2;
                             SceneCluster.packetBuffer.putPacket(63);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
                         }
@@ -592,10 +578,10 @@ public class Class27 {
                         boolean bool = (Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 0, (Player.localPlayer.pathX[0]), i_10_, 2));
                         if(!bool)
                             bool = (Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 1, (Player.localPlayer.pathX[0]), i_10_, 2));
-                        LinkedList.anInt1075 = 2;
-                        OverlayDefinition.anInt2319 = 0;
-                        Class40_Sub11.anInt2163 = Class57.clickX;
-                        Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
+                        LinkedList.crossType = 2;
+                        OverlayDefinition.crossIndex = 0;
+                        Class40_Sub11.crossX = Class57.clickX;
+                        Class40_Sub5_Sub1.crossY = RSString.clickY;
                         SceneCluster.packetBuffer.putPacket(244);
                         SceneCluster.packetBuffer.putShortLE(i + SpotAnimDefinition.baseX);
                         SceneCluster.packetBuffer.putShortBE(Class26.baseY + i_10_);
@@ -605,10 +591,10 @@ public class Class27 {
                         boolean bool = (Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 0, (Player.localPlayer.pathX[0]), i_10_, 2));
                         if(!bool)
                             bool = (Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 1, (Player.localPlayer.pathX[0]), i_10_, 2));
-                        OverlayDefinition.anInt2319 = 0;
-                        Class40_Sub11.anInt2163 = Class57.clickX;
-                        LinkedList.anInt1075 = 2;
-                        Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
+                        OverlayDefinition.crossIndex = 0;
+                        Class40_Sub11.crossX = Class57.clickX;
+                        LinkedList.crossType = 2;
+                        Class40_Sub5_Sub1.crossY = RSString.clickY;
                         SceneCluster.packetBuffer.putPacket(85);
                         SceneCluster.packetBuffer.putShortBE(Class26.baseY + i_10_);
                         SceneCluster.packetBuffer.putShortBE(i_12_);
@@ -618,10 +604,10 @@ public class Class27 {
                         Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[i_12_]);
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), (class40_sub5_sub17_sub4_sub2.pathY[0]), 0, false, 0, 1, (Player.localPlayer.pathX[0]), (class40_sub5_sub17_sub4_sub2.pathX[0]), 2);
-                            Class40_Sub11.anInt2163 = Class57.clickX;
-                            Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
-                            OverlayDefinition.anInt2319 = 0;
-                            LinkedList.anInt1075 = 2;
+                            Class40_Sub11.crossX = Class57.clickX;
+                            Class40_Sub5_Sub1.crossY = RSString.clickY;
+                            OverlayDefinition.crossIndex = 0;
+                            LinkedList.crossType = 2;
                             SceneCluster.packetBuffer.putPacket(253);
                             SceneCluster.packetBuffer.putShortBE(i_12_);
                             SceneCluster.packetBuffer.putIntME1(Class60.anInt1417);
@@ -646,10 +632,10 @@ public class Class27 {
                         Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[i_12_]);
                         if(class40_sub5_sub17_sub4_sub1 != null) {
                             Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), (class40_sub5_sub17_sub4_sub1.pathY[0]), 0, false, 0, 1, (Player.localPlayer.pathX[0]), (class40_sub5_sub17_sub4_sub1.pathX[0]), 2);
-                            LinkedList.anInt1075 = 2;
-                            OverlayDefinition.anInt2319 = 0;
-                            Class40_Sub11.anInt2163 = Class57.clickX;
-                            Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
+                            LinkedList.crossType = 2;
+                            OverlayDefinition.crossIndex = 0;
+                            Class40_Sub11.crossX = Class57.clickX;
+                            Class40_Sub5_Sub1.crossY = RSString.clickY;
                             SceneCluster.packetBuffer.putPacket(220);
                             SceneCluster.packetBuffer.putShortBE(i_12_);
                         }
@@ -668,14 +654,14 @@ public class Class27 {
                             SceneCluster.packetBuffer.putPacket(151);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
                         } else
-                            Class44.addChatMessage(HuffmanEncoding.blank_string, (RSString.linkRSStrings((new RSString[]{HashTable.method334((widget.itemAmounts[i]), -1), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), 0);
+                            Class44.addChatMessage(HuffmanEncoding.blank_string, (RSString.linkRSStrings((new RSString[]{HashTable.method334((widget.itemAmounts[i])), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), 0);
                         GenericTile.anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
                         Class30.anInt704 = i_10_;
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                         if(i_10_ >> 16 == HuffmanEncoding.openScreenWidgetId)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
-                        if(i_10_ >> 16 == Class43.openChatboxWidgetId)
+                        if(i_10_ >> 16 == ChatBox.openChatboxWidgetId)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                     }
                     if(action == 17) {
@@ -688,9 +674,9 @@ public class Class27 {
                     if(action == 50)
                         Class33.method406(i, i_12_, i_10_, -121);
                     if(action == 40) {
-                        Class55.method958(Class48.anInt1138);
-                        Class48.anInt1138 = -1;
-                        GenericTile.redrawChatbox = true;
+                        Class55.method958(ChatBox.dialogueId);
+                        ChatBox.dialogueId = -1;
+                        ChatBox.redrawChatbox = true;
                     }
                     if(action == 32 && AnimationSequence.method596(i, i_12_, (byte) -27, i_10_)) {
                         SceneCluster.packetBuffer.putPacket(225);
@@ -708,7 +694,7 @@ public class Class27 {
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                         if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
-                        if(i_10_ >> 16 == Class43.openChatboxWidgetId)
+                        if(i_10_ >> 16 == ChatBox.openChatboxWidgetId)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                         Class30.anInt704 = i_10_;
                         GenericTile.anInt1233 = i;
@@ -723,7 +709,7 @@ public class Class27 {
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                         if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
-                        if(i_10_ >> 16 == Class43.openChatboxWidgetId)
+                        if(i_10_ >> 16 == ChatBox.openChatboxWidgetId)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                         RSRuntimeException.anInt1651 = 0;
                     }
@@ -731,10 +717,10 @@ public class Class27 {
                         Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[i_12_]);
                         if(class40_sub5_sub17_sub4_sub1 != null) {
                             Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), (class40_sub5_sub17_sub4_sub1.pathY[0]), 0, false, 0, 1, (Player.localPlayer.pathX[0]), (class40_sub5_sub17_sub4_sub1.pathX[0]), 2);
-                            LinkedList.anInt1075 = 2;
-                            Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
-                            Class40_Sub11.anInt2163 = Class57.clickX;
-                            OverlayDefinition.anInt2319 = 0;
+                            LinkedList.crossType = 2;
+                            Class40_Sub5_Sub1.crossY = RSString.clickY;
+                            Class40_Sub11.crossX = Class57.clickX;
+                            OverlayDefinition.crossIndex = 0;
                             SceneCluster.packetBuffer.putPacket(187);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
                         }
@@ -759,10 +745,10 @@ public class Class27 {
                         boolean bool = (Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 0, (Player.localPlayer.pathX[0]), i_10_, 2));
                         if(!bool)
                             bool = (Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 1, (Player.localPlayer.pathX[0]), i_10_, 2));
-                        Class40_Sub11.anInt2163 = Class57.clickX;
-                        OverlayDefinition.anInt2319 = 0;
-                        LinkedList.anInt1075 = 2;
-                        Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
+                        Class40_Sub11.crossX = Class57.clickX;
+                        OverlayDefinition.crossIndex = 0;
+                        LinkedList.crossType = 2;
+                        Class40_Sub5_Sub1.crossY = RSString.clickY;
                         SceneCluster.packetBuffer.putPacket(65);
                         SceneCluster.packetBuffer.putShortBE(i_12_);
                         SceneCluster.packetBuffer.putShortBE(i_10_ + Class26.baseY);
@@ -785,17 +771,17 @@ public class Class27 {
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
                         GenericTile.anInt1233 = i;
                         Class30.anInt704 = i_10_;
-                        if(i_10_ >> 16 == Class43.openChatboxWidgetId)
+                        if(i_10_ >> 16 == ChatBox.openChatboxWidgetId)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                     }
                     if(action == 36) {
                         boolean bool = (Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 0, (Player.localPlayer.pathX[0]), i_10_, 2));
                         if(!bool)
                             bool = (Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 1, (Player.localPlayer.pathX[0]), i_10_, 2));
-                        Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
-                        LinkedList.anInt1075 = 2;
-                        OverlayDefinition.anInt2319 = 0;
-                        Class40_Sub11.anInt2163 = Class57.clickX;
+                        Class40_Sub5_Sub1.crossY = RSString.clickY;
+                        LinkedList.crossType = 2;
+                        OverlayDefinition.crossIndex = 0;
+                        Class40_Sub11.crossX = Class57.clickX;
                         SceneCluster.packetBuffer.putPacket(27);
                         SceneCluster.packetBuffer.putShortBE(SpotAnimDefinition.baseX + i);
                         SceneCluster.packetBuffer.putShortBE(i_12_);
@@ -805,10 +791,10 @@ public class Class27 {
                         Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[i_12_]);
                         if(class40_sub5_sub17_sub4_sub1 != null) {
                             Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), (class40_sub5_sub17_sub4_sub1.pathY[0]), 0, false, 0, 1, (Player.localPlayer.pathX[0]), (class40_sub5_sub17_sub4_sub1.pathX[0]), 2);
-                            OverlayDefinition.anInt2319 = 0;
-                            Class40_Sub11.anInt2163 = Class57.clickX;
-                            LinkedList.anInt1075 = 2;
-                            Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
+                            OverlayDefinition.crossIndex = 0;
+                            Class40_Sub11.crossX = Class57.clickX;
+                            LinkedList.crossType = 2;
+                            Class40_Sub5_Sub1.crossY = RSString.clickY;
                             SceneCluster.packetBuffer.putPacket(211);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
                         }
@@ -824,7 +810,7 @@ public class Class27 {
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                         if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
-                        if(Class43.openChatboxWidgetId == i_10_ >> 16)
+                        if(ChatBox.openChatboxWidgetId == i_10_ >> 16)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                     }
                     if(action == 16) {
@@ -838,10 +824,10 @@ public class Class27 {
                         Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[i_12_]);
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), (class40_sub5_sub17_sub4_sub2.pathY[0]), 0, false, 0, 1, (Player.localPlayer.pathX[0]), (class40_sub5_sub17_sub4_sub2.pathX[0]), 2);
-                            LinkedList.anInt1075 = 2;
-                            Class40_Sub11.anInt2163 = Class57.clickX;
-                            Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
-                            OverlayDefinition.anInt2319 = 0;
+                            LinkedList.crossType = 2;
+                            Class40_Sub11.crossX = Class57.clickX;
+                            Class40_Sub5_Sub1.crossY = RSString.clickY;
+                            OverlayDefinition.crossIndex = 0;
                             SceneCluster.packetBuffer.putPacket(153);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
                         }
@@ -850,10 +836,10 @@ public class Class27 {
                         boolean bool = (Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 0, (Player.localPlayer.pathX[0]), i_10_, 2));
                         if(!bool)
                             bool = (Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 1, (Player.localPlayer.pathX[0]), i_10_, 2));
-                        Class40_Sub11.anInt2163 = Class57.clickX;
-                        Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
-                        OverlayDefinition.anInt2319 = 0;
-                        LinkedList.anInt1075 = 2;
+                        Class40_Sub11.crossX = Class57.clickX;
+                        Class40_Sub5_Sub1.crossY = RSString.clickY;
+                        OverlayDefinition.crossIndex = 0;
+                        LinkedList.crossType = 2;
                         SceneCluster.packetBuffer.putPacket(172);
                         SceneCluster.packetBuffer.putShortBE(i + SpotAnimDefinition.baseX);
                         SceneCluster.packetBuffer.putShortBE(LinkedList.anInt1061);
@@ -873,17 +859,17 @@ public class Class27 {
                         Class30.anInt704 = i_10_;
                         if(i_10_ >> 16 == HuffmanEncoding.openScreenWidgetId)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
-                        if(i_10_ >> 16 == Class43.openChatboxWidgetId)
+                        if(i_10_ >> 16 == ChatBox.openChatboxWidgetId)
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                     }
                     if(action == 4) {
                         Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[i_12_]);
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), (class40_sub5_sub17_sub4_sub2.pathY[0]), 0, false, 0, 1, (Player.localPlayer.pathX[0]), (class40_sub5_sub17_sub4_sub2.pathX[0]), 2);
-                            LinkedList.anInt1075 = 2;
-                            Class40_Sub11.anInt2163 = Class57.clickX;
-                            OverlayDefinition.anInt2319 = 0;
-                            Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
+                            LinkedList.crossType = 2;
+                            Class40_Sub11.crossX = Class57.clickX;
+                            OverlayDefinition.crossIndex = 0;
+                            Class40_Sub5_Sub1.crossY = RSString.clickY;
                             SceneCluster.packetBuffer.putPacket(116);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
                         }
@@ -910,7 +896,7 @@ public class Class27 {
     public static void method360(byte arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
         if(Class68.method1043(arg4)) {
             if(arg0 != 125)
-                drawScrollBar(-24, -60, 59, -118, 65, 12);
+                Widget.drawScrollBar(-118, 12, 65, -60, 59, -24);
             RSApplet.method20(arg5, arg3, 0, arg2, arg6, -1, 1, (Widget.interfaces[arg4]), arg1, 0);
             if(Wall.aWidget_353 != null) {
                 Widget widget = Wall.aWidget_353;
@@ -996,20 +982,21 @@ public class Class27 {
         }
     }
 
-    public static void method365(int arg0) {
+    public static void drawGameScreen() {
         if(Class40_Sub5_Sub11.clearScreen) {
             Class40_Sub5_Sub11.clearScreen = false;
             ItemDefinition.method742();
             IdentityKit.drawTabIcons = true;
-            GenericTile.redrawChatbox = true;
+            ChatBox.redrawChatbox = true;
             ISAAC.redrawTabArea = true;
             Cache.redrawChatbox = true;
         }
         method353((byte) -114);
+
         if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
             ISAAC.redrawTabArea = true;
         if(Class29.tabAreaOverlayWidgetId != -1) {
-            boolean bool = Renderable.handleSequences(29378, Class29.tabAreaOverlayWidgetId);
+            boolean bool = Renderable.handleSequences(Class29.tabAreaOverlayWidgetId);
             if(bool)
                 ISAAC.redrawTabArea = true;
         }
@@ -1021,23 +1008,23 @@ public class Class27 {
             ISAAC.redrawTabArea = false;
             Class43.drawTabArea(-29);
         }
-        if(Class43.openChatboxWidgetId == -1) {
-            Class12.chatboxInterface.scrollPosition = -77 + (-GameObjectDefinition.chatboxScroll + MouseHandler.chatboxScrollMax);
+        if(ChatBox.openChatboxWidgetId == -1) {
+            Class12.chatboxInterface.scrollPosition = -77 + (-ChatBox.chatboxScroll + ChatBox.chatboxScrollMax);
             if(Class13.mouseX > 448 && Class13.mouseX < 560 && Landscape.mouseY > 332)
-                Class5.scrollInterface(77, Landscape.mouseY + -357, -17 + Class13.mouseX, MouseHandler.chatboxScrollMax, Class12.chatboxInterface, 463, -1, 0);
-            int currentScroll = (MouseHandler.chatboxScrollMax - 77 - Class12.chatboxInterface.scrollPosition);
+                Class5.scrollInterface(77, Landscape.mouseY + -357, -17 + Class13.mouseX, ChatBox.chatboxScrollMax, Class12.chatboxInterface, 463, -1, 0);
+            int currentScroll = (ChatBox.chatboxScrollMax - 77 - Class12.chatboxInterface.scrollPosition);
             if(currentScroll < 0)
                 currentScroll = 0;
-            if(currentScroll > MouseHandler.chatboxScrollMax + -77)
-                currentScroll = -77 + MouseHandler.chatboxScrollMax;
-            if(currentScroll != GameObjectDefinition.chatboxScroll) {
-                GameObjectDefinition.chatboxScroll = currentScroll;
-                GenericTile.redrawChatbox = true;
+            if(currentScroll > ChatBox.chatboxScrollMax + -77)
+                currentScroll = -77 + ChatBox.chatboxScrollMax;
+            if(currentScroll != ChatBox.chatboxScroll) {
+                ChatBox.chatboxScroll = currentScroll;
+                ChatBox.redrawChatbox = true;
             }
         }
-        if(Class43.openChatboxWidgetId == -1 && Class40_Sub5_Sub15.inputType == 3) {
-            Class12.chatboxInterface.scrollPosition = Class26.itemSearchScroll;
-            int scrollMax = 14 * VertexNormal.itemSearchResultCount + 7;
+        if(ChatBox.openChatboxWidgetId == -1 && ChatBox.inputType == 3) {
+            Class12.chatboxInterface.scrollPosition = ChatBox.itemSearchScroll;
+            int scrollMax = 14 * ChatBox.itemSearchResultCount + 7;
             if(Class13.mouseX > 448 && Class13.mouseX < 560 && Landscape.mouseY > 332)
                 Class5.scrollInterface(77, Landscape.mouseY - 357, -17 + Class13.mouseX, scrollMax, Class12.chatboxInterface, 463, -1, 0);
             int currentScroll = Class12.chatboxInterface.scrollPosition;
@@ -1045,50 +1032,53 @@ public class Class27 {
                 currentScroll = 0;
             if(currentScroll > scrollMax - 77)
                 currentScroll = scrollMax - 77;
-            if(currentScroll != Class26.itemSearchScroll) {
-                Class26.itemSearchScroll = currentScroll;
-                GenericTile.redrawChatbox = true;
+            if(currentScroll != ChatBox.itemSearchScroll) {
+                ChatBox.itemSearchScroll = currentScroll;
+                ChatBox.redrawChatbox = true;
             }
         }
-        if(arg0 == -20197) {
-            if(Class43.openChatboxWidgetId != -1) {
-                boolean bool = Renderable.handleSequences(29378, Class43.openChatboxWidgetId);
-                if(bool)
-                    GenericTile.redrawChatbox = true;
-            }
-            if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 3)
-                GenericTile.redrawChatbox = true;
-            if(SceneTile.activeInterfaceType == 3)
-                GenericTile.redrawChatbox = true;
-            if(RSApplet.aClass1_8 != null)
-                GenericTile.redrawChatbox = true;
-            if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
-                GenericTile.redrawChatbox = true;
-            if(GenericTile.redrawChatbox) {
-                GenericTile.redrawChatbox = false;
-                ChatBox.renderChatbox(true);
-            }
-            Class37.method435(true);
-            if(Class51.anInt1205 != -1)
-                IdentityKit.drawTabIcons = true;
-            if(IdentityKit.drawTabIcons) {
-                if(Class51.anInt1205 != -1 && Class51.anInt1205 == Class5.currentTabId) {
-                    Class51.anInt1205 = -1;
-                    SceneCluster.packetBuffer.putPacket(44);
-                    SceneCluster.packetBuffer.putByte(Class5.currentTabId);
-                }
-                IdentityKit.drawTabIcons = false;
-                Class40_Sub3.aBoolean2026 = true;
-                Class40_Sub2.method527(Class5.currentTabId, 4, Class40_Sub5_Sub11.tabWidgetIds, (Class29.tabAreaOverlayWidgetId == -1), (Node.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1));
-            }
-            if(Cache.redrawChatbox) {
-                Class40_Sub3.aBoolean2026 = true;
-                Cache.redrawChatbox = false;
-                GenericTile.method943(ItemDefinition.tradeMode, arg0 ^ 0x4e81, WallDecoration.fontNormal, Class4.privateChatMode, Class35.publicChatMode);
-            }
-            Landscape.method934((Player.localPlayer.worldX), Player.worldLevel, Class5.anInt199, (Player.localPlayer.worldY));
-            Class5.anInt199 = 0;
+        if(ChatBox.openChatboxWidgetId != -1) {
+            boolean bool = Renderable.handleSequences(ChatBox.openChatboxWidgetId);
+            if(bool)
+                ChatBox.redrawChatbox = true;
         }
+        if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 3)
+            ChatBox.redrawChatbox = true;
+        if(SceneTile.activeInterfaceType == 3)
+            ChatBox.redrawChatbox = true;
+        if(RSApplet.clickToContinueString != null)
+            ChatBox.redrawChatbox = true;
+        if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
+            ChatBox.redrawChatbox = true;
+        if(ChatBox.redrawChatbox) {
+            ChatBox.redrawChatbox = false;
+            ChatBox.renderChatbox(true);
+            Console.console.drawConsoleArea();
+        }
+        Class37.renderMinimap(true);
+
+
+        if(Class51.anInt1205 != -1)
+            IdentityKit.drawTabIcons = true;
+        if(IdentityKit.drawTabIcons) {
+            if(Class51.anInt1205 != -1 && Class51.anInt1205 == Class5.currentTabId) {
+                Class51.anInt1205 = -1;
+                SceneCluster.packetBuffer.putPacket(44);
+                SceneCluster.packetBuffer.putByte(Class5.currentTabId);
+            }
+            IdentityKit.drawTabIcons = false;
+            Class40_Sub3.aBoolean2026 = true;
+            Class40_Sub2.method527(Class5.currentTabId, 4, Class40_Sub5_Sub11.tabWidgetIds, (Class29.tabAreaOverlayWidgetId == -1), (Node.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1));
+        }
+        if(Cache.redrawChatbox) {
+            Class40_Sub3.aBoolean2026 = true;
+            Cache.redrawChatbox = false;
+            GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
+        }
+
+        Landscape.method934((Player.localPlayer.worldX), Player.worldLevel, Class5.anInt199, (Player.localPlayer.worldY));
+        Class5.anInt199 = 0;
+
     }
 
     public static void method366(int arg1) {

@@ -9,6 +9,7 @@ import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Item;
@@ -22,7 +23,6 @@ import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
-import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.WallDecoration;
 
@@ -55,8 +55,8 @@ public class Npc extends Actor {
     }
 
     public static void processMenuClick() {
-        if(Class40_Sub5_Sub15.anInt2782 > 1)
-            Class40_Sub5_Sub15.anInt2782--;
+        if(Class40_Sub5_Sub15.systemUpdateTime > 1)
+            Class40_Sub5_Sub15.systemUpdateTime--;
         if(SceneCluster.anInt771 > 0)
             SceneCluster.anInt771--;
         if(Class37.aBoolean871) {
@@ -199,10 +199,10 @@ public class Npc extends Actor {
                         Class17.method276(-1);
                         Class8.method209();
                         Class22_Sub1.method313(54);
-                        if(LinkedList.anInt1075 != 0) {
-                            OverlayDefinition.anInt2319 += 20;
-                            if(OverlayDefinition.anInt2319 >= 400)
-                                LinkedList.anInt1075 = 0;
+                        if(LinkedList.crossType != 0) {
+                            OverlayDefinition.crossIndex += 20;
+                            if(OverlayDefinition.crossIndex >= 400)
+                                LinkedList.crossType = 0;
                         }
                         if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType != 0) {
                             RSRuntimeException.anInt1651++;
@@ -210,7 +210,7 @@ public class Npc extends Actor {
                                 if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 2)
                                     ISAAC.redrawTabArea = true;
                                 if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 3)
-                                    GenericTile.redrawChatbox = true;
+                                    ChatBox.redrawChatbox = true;
                                 Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 0;
                             }
                         }
@@ -221,7 +221,7 @@ public class Npc extends Actor {
                                 Class40_Sub5_Sub15.lastItemDragged = true;
                             if(SpotAnimDefinition.mouseButtonPressed == 0) {
                                 if(SceneTile.activeInterfaceType == 3)
-                                    GenericTile.redrawChatbox = true;
+                                    ChatBox.redrawChatbox = true;
                                 if(SceneTile.activeInterfaceType == 2)
                                     ISAAC.redrawTabArea = true;
                                 SceneTile.activeInterfaceType = 0;
@@ -279,17 +279,17 @@ public class Npc extends Actor {
                             int i_18_ = Scene.clickedTileY;
                             boolean bool = (Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), i, 0, true, 0, 0, (Player.localPlayer.pathX[0]), i_18_, 0));
                             if(bool) {
-                                Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
-                                OverlayDefinition.anInt2319 = 0;
-                                Class40_Sub11.anInt2163 = Class57.clickX;
-                                LinkedList.anInt1075 = 1;
+                                Class40_Sub5_Sub1.crossY = RSString.clickY;
+                                OverlayDefinition.crossIndex = 0;
+                                Class40_Sub11.crossX = Class57.clickX;
+                                LinkedList.crossType = 1;
                             }
                             Scene.clickedTileX = -1;
                         }
-                        if(MouseHandler.clickType == 1 && RSApplet.aClass1_8 != null) {
+                        if(MouseHandler.clickType == 1 && RSApplet.clickToContinueString != null) {
                             MouseHandler.clickType = 0;
-                            GenericTile.redrawChatbox = true;
-                            RSApplet.aClass1_8 = null;
+                            ChatBox.redrawChatbox = true;
+                            RSApplet.clickToContinueString = null;
                         }
                         MouseHandler.processMenuClick();
                         if(ActorDefinition.openFullScreenWidgetId == -1) {
@@ -307,26 +307,26 @@ public class Npc extends Actor {
                                 Class27.method360((byte) 125, 743, i, 466, (Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]), 205, 553);
                         } else
                             Class27.method360((byte) 125, 743, i, 466, Class29.tabAreaOverlayWidgetId, 205, 553);
-                        if(Class43.openChatboxWidgetId != -1)
-                            Class27.method360((byte) 125, 496, i, 453, Class43.openChatboxWidgetId, 357, 17);
-                        else if(Class48.anInt1138 != -1)
-                            Class27.method360((byte) 125, 496, i, 453, Class48.anInt1138, 357, 17);
+                        if(ChatBox.openChatboxWidgetId != -1)
+                            Class27.method360((byte) 125, 496, i, 453, ChatBox.openChatboxWidgetId, 357, 17);
+                        else if(ChatBox.dialogueId != -1)
+                            Class27.method360((byte) 125, 496, i, 453, ChatBox.dialogueId, 357, 17);
                         if(HuffmanEncoding.openScreenWidgetId != -1)
                             Class27.method360((byte) 125, 516, i ^ 0xffffffff, 338, HuffmanEncoding.openScreenWidgetId, 4, 4);
                         if(Class29.tabAreaOverlayWidgetId != -1)
                             Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, Class29.tabAreaOverlayWidgetId, 205, 553);
                         else if((Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]) != -1)
                             Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, (Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]), 205, 553);
-                        if(Class43.openChatboxWidgetId != -1)
-                            Class27.method360((byte) 125, 496, i ^ 0xffffffff, 453, Class43.openChatboxWidgetId, 357, 17);
-                        else if(Class48.anInt1138 != -1)
-                            Class27.method360((byte) 125, 496, i ^ 0xffffffff, 453, Class48.anInt1138, 357, 17);
+                        if(ChatBox.openChatboxWidgetId != -1)
+                            Class27.method360((byte) 125, 496, i ^ 0xffffffff, 453, ChatBox.openChatboxWidgetId, 357, 17);
+                        else if(ChatBox.dialogueId != -1)
+                            Class27.method360((byte) 125, 496, i ^ 0xffffffff, 453, ChatBox.dialogueId, 357, 17);
                         if(Class67.anInt1586 != -1 || FloorDecoration.anInt614 != -1 || HashTable.anInt573 != -1) {
                             if(RSString.anInt1711 > WallDecoration.anInt1257) {
                                 WallDecoration.anInt1257++;
                                 if(RSString.anInt1711 == WallDecoration.anInt1257) {
                                     if(Class67.anInt1586 != -1)
-                                        GenericTile.redrawChatbox = true;
+                                        ChatBox.redrawChatbox = true;
                                     if(FloorDecoration.anInt614 != -1)
                                         ISAAC.redrawTabArea = true;
                                 }

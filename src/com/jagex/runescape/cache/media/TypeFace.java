@@ -377,7 +377,7 @@ public class TypeFace extends Rasterizer {
         return this.getDisplayedWidth(string.toString());
     }
 
-    public void method686(RSString arg0, int arg1, int arg2, int arg3) {
+    public void drawStringLeft(RSString arg0, int arg1, int arg2, int arg3) {
         drawString(arg0, arg1 - getStringWidth(arg0) / 2, arg2, arg3);
     }
 
@@ -838,7 +838,7 @@ public class TypeFace extends Rasterizer {
 
     }
 
-    private void setEffectsAlpha(int color, int shadow, int opac) {
+    public void setEffectsAlpha(int color, int shadow, int opac) {
         strikethroughColor = -1;
         underlineColor = -1;
         defaultShadowColor = shadow;
@@ -1100,7 +1100,7 @@ public class TypeFace extends Rasterizer {
     }
 
 
-    private void setEffects(int color, int shadow) {
+    public void setEffects(int color, int shadow) {
         strikethroughColor = -1;
         underlineColor = -1;
         defaultShadowColor = shadow;

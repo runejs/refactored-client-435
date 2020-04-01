@@ -16,8 +16,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public static int[] anIntArray2777 = {8, 11, 4, 6, 9, 7, 10};
     public static int arbitraryDestination = 0;
     public static CacheIndex aCacheIndex_2779;
-    public static int inputType = 0;
-    public static int anInt2782 = 0;
+    public static int systemUpdateTime = 0;
     public static boolean lastItemDragged = false;
     public static RSString aClass1_2786;
     public static RSString aClass1_2787 = RSString.CreateString("sideicons");
@@ -33,7 +32,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
 
     public Class40_Sub5_Sub15(CacheIndex arg0, CacheIndex arg1, int arg2, boolean arg3) {
         LinkedList linkedList = new LinkedList();
-        int i = arg0.method190(arg2, (byte) 16);
+        int i = arg0.method190(arg2);
         aFrameDefinitionArray2794 = new FrameDefinition[i];
         int[] is = arg0.method192(arg2, true);
         for(int i_0_ = 0; is.length > i_0_; i_0_++) {

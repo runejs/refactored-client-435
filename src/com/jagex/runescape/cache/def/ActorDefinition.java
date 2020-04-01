@@ -19,7 +19,7 @@ import com.jagex.runescape.util.SignlinkNode;
 
 import java.awt.*;
 
-public class ActorDefinition extends SubNode {
+public class ActorDefinition extends SubNode implements EntityDefinition {
     public static CacheIndex_Sub1 aClass6_Sub1_2377;
     public static int[] anIntArray2386;
     public static int menuActionRow = 0;
@@ -29,6 +29,7 @@ public class ActorDefinition extends SubNode {
     public static byte[] aByteArray2416 = new byte[520];
     public static RSString aClass1_2423 = RSString.CreateString("(X100(U(Y");
     public static int openFullScreenWidgetId = -1;
+    public static int count;
 
     public boolean isClickable = true;
     public int boundaryDimension = 1;
@@ -99,7 +100,7 @@ public class ActorDefinition extends SubNode {
     public static void method574() {
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            RSString.aClass68_1665.method1044(550, graphics, 4);
+            RSString.aClass68_1665.drawGraphics(550, 4, graphics);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }
@@ -207,11 +208,11 @@ public class ActorDefinition extends SubNode {
         ActorDefinition definition = ((ActorDefinition) ISAAC.aClass9_510.get(id, (byte) 119));
         if(definition != null)
             return definition;
-        byte[] is = GroundItemTile.aCacheIndex_1375.getFile(id, 9);
+        byte[] data = GroundItemTile.aCacheIndex_1375.getFile(id, 9);
         definition = new ActorDefinition();
         definition.id = id;
-        if(is != null)
-            definition.readValues(new Buffer(is));
+        if(data != null)
+            definition.readValues(new Buffer(data));
         ISAAC.aClass9_510.put(id, definition);
         return definition;
     }
@@ -428,5 +429,10 @@ public class ActorDefinition extends SubNode {
             return null;
         }
         return getDefinition(childrenIds[childId]);
+    }
+
+    @Override
+    public RSString getName() {
+        return name;
     }
 }

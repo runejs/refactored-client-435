@@ -6,9 +6,9 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.frame.ChatBox;
 
 public abstract class Renderable extends SubNode {
-    public static RSString[] chatPlayerNames;
     public static CacheIndex_Sub1 aClass6_Sub1_2857;
     public static long aLong2858 = 0L;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2860;
@@ -20,7 +20,7 @@ public abstract class Renderable extends SubNode {
     public static RSString aClass1_2870;
 
     static {
-        chatPlayerNames = new RSString[100];
+        ChatBox.chatPlayerNames = new RSString[100];
         anInt2869 = 0;
         aClass1_2870 = RSString.CreateString(" from your friend list first");
         aClass1_2864 = aClass1_2870;
@@ -28,12 +28,10 @@ public abstract class Renderable extends SubNode {
 
     public int modelHeight = 1000;
 
-    public static boolean handleSequences(int arg0, int arg1) {
+    public static boolean handleSequences(int arg1) {
         if(!Class68.method1043(arg1))
             return false;
         Widget[] widgets = Widget.interfaces[arg1];
-        if(arg0 != 29378)
-            anInt2866 = 125;
         boolean bool = false;
         for(int i = 0; widgets.length > i; i++) {
             Widget widget = widgets[i];
@@ -75,7 +73,7 @@ public abstract class Renderable extends SubNode {
     }
 
     public static void method757() {
-        chatPlayerNames = null;
+        ChatBox.chatPlayerNames = null;
         aClass40_Sub5_Sub14_Sub2_2860 = null;
         aClass6_Sub1_2857 = null;
         aClass1_2870 = null;

@@ -88,7 +88,7 @@ public class Class42 {
             aClass1_1012 = null;
         Class8.aCacheIndex_284 = arg2;
         Class26.aCacheIndex_632 = arg0;
-        ItemDefinition.count = Class26.aCacheIndex_632.method190(10, (byte) 109);
+        ItemDefinition.count = Class26.aCacheIndex_632.method190(10);
     }
 
     public static void method886(int arg0, int arg1, boolean arg2, byte[] arg3, int arg4) {

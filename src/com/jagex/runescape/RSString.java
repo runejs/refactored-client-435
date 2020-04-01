@@ -46,7 +46,7 @@ public class RSString implements Interface1 {
         }
     }
 
-    public static void method71() {
+    public static void setTutorialIslandFlag() {
         Class4.anInt182 = 0;
         int xPos = (((Player.localPlayer.worldX) >> 7) + SpotAnimDefinition.baseX);
         int yPos = (Class26.baseY + ((Player.localPlayer.worldY) >> 7));

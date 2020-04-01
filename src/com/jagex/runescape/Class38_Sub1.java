@@ -6,12 +6,11 @@ import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Item;
-import com.jagex.runescape.media.renderable.Renderable;
-import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
@@ -57,21 +56,21 @@ public class Class38_Sub1 extends Class38 {
     public static void method445(int arg0) {
         if(CollisionMap.anInt165 != 0) {
             int i = 0;
-            if(Class40_Sub5_Sub15.anInt2782 != 0)
+            if(Class40_Sub5_Sub15.systemUpdateTime != 0)
                 i = 1;
             for(int i_1_ = 0; i_1_ < 100; i_1_++) {
-                if(Actor.chatMessages[i_1_] != null) {
-                    int i_2_ = HuffmanEncoding.chatTypes[i_1_];
-                    RSString class1 = Renderable.chatPlayerNames[i_1_];
+                if(ChatBox.chatMessages[i_1_] != null) {
+                    int i_2_ = ChatBox.chatTypes[i_1_];
+                    RSString class1 = ChatBox.chatPlayerNames[i_1_];
                     if(class1 != null && class1.startsWith(Class51.whiteCrown))
                         class1 = class1.substring(5);
                     if(class1 != null && class1.startsWith(Widget.goldCrown))
                         class1 = class1.substring(5);
-                    if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || Class4.privateChatMode == 0 || (Class4.privateChatMode == 1 && Class40_Sub2.hasFriend(class1)))) {
+                    if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || ChatBox.privateChatMode == 0 || (ChatBox.privateChatMode == 1 && Class40_Sub2.hasFriend(class1)))) {
                         int i_3_ = 329 + -(13 * i);
                         i++;
                         if(Class13.mouseX > 4 && ((i_3_ + -10 < Landscape.mouseY + -4)) && ((-4 + Landscape.mouseY <= i_3_ + 3))) {
-                            int i_4_ = 25 + (WallDecoration.fontNormal.getStringWidth(RSString.linkRSStrings((new RSString[]{Class40_Sub5_Sub6.aClass1_2458, Native.prefixColon, class1, (Actor.chatMessages[i_1_])}))));
+                            int i_4_ = 25 + (WallDecoration.fontNormal.getStringWidth(RSString.linkRSStrings((new RSString[]{Class40_Sub5_Sub6.aClass1_2458, Native.prefixColon, class1, (ChatBox.chatMessages[i_1_])}))));
                             if(i_4_ > 450)
                                 i_4_ = 450;
                             if(Class13.mouseX < 4 + i_4_) {
@@ -85,7 +84,7 @@ public class Class38_Sub1 extends Class38 {
                         if(i >= 5)
                             return;
                     }
-                    if((i_2_ == 5 || i_2_ == 6) && Class4.privateChatMode < 2 && ++i >= 5)
+                    if((i_2_ == 5 || i_2_ == 6) && ChatBox.privateChatMode < 2 && ++i >= 5)
                         return;
                 }
             }

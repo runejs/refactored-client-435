@@ -31,14 +31,14 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1;
     public static int[] anIntArray2 = new int[5];
     public static long[] aLongArray4 = new long[32];
-    public static RSString aClass1_8 = null;
+    public static RSString clickToContinueString = null;
     public static RSString aClass1_28 = RSString.CreateString("null");
     public static int anInt31;
     public static RSString aClass1_34 = RSString.CreateString("null");
     public boolean aBoolean43 = false;
 
     public static void method18() {
-        aClass1_8 = null;
+        clickToContinueString = null;
         aClass1_34 = null;
         aClass1_28 = null;
         aLongArray4 = null;

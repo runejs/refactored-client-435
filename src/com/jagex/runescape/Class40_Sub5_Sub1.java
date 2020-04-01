@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
@@ -18,7 +19,6 @@ import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
-import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 
@@ -26,7 +26,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
     public static LinkedList aLinkedList_2268 = new LinkedList();
     public static RSString aClass1_2274 = RSString.CreateString("To");
     public static Class68 aClass68_2275;
-    public static int anInt2276 = 0;
+    public static int crossY = 0;
     public static RSString aClass1_2277 = RSString.CreateString(" )2> @cya@");
     public static int anInt2278 = 0;
     public static int anInt2280 = 0;
@@ -223,30 +223,30 @@ public class Class40_Sub5_Sub1 extends SubNode {
         if(MouseHandler.clickType == 1) {
             if(Class57.clickX >= 6 && Class57.clickX <= 106 && RSString.clickY >= 467 && RSString.clickY <= 499) {
                 Cache.redrawChatbox = true;
-                Class35.publicChatMode = (1 + Class35.publicChatMode) % 4;
-                GenericTile.redrawChatbox = true;
+                ChatBox.publicChatMode = (1 + ChatBox.publicChatMode) % 4;
+                ChatBox.redrawChatbox = true;
                 SceneCluster.packetBuffer.putPacket(32);
-                SceneCluster.packetBuffer.putByte(Class35.publicChatMode);
-                SceneCluster.packetBuffer.putByte(Class4.privateChatMode);
-                SceneCluster.packetBuffer.putByte(ItemDefinition.tradeMode);
+                SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
+                SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
+                SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
             }
             if(Class57.clickX >= 135 && Class57.clickX <= 235 && RSString.clickY >= 467 && RSString.clickY <= 499) {
-                GenericTile.redrawChatbox = true;
-                Class4.privateChatMode = (Class4.privateChatMode + 1) % 3;
+                ChatBox.redrawChatbox = true;
+                ChatBox.privateChatMode = (ChatBox.privateChatMode + 1) % 3;
                 Cache.redrawChatbox = true;
                 SceneCluster.packetBuffer.putPacket(32);
-                SceneCluster.packetBuffer.putByte(Class35.publicChatMode);
-                SceneCluster.packetBuffer.putByte(Class4.privateChatMode);
-                SceneCluster.packetBuffer.putByte(ItemDefinition.tradeMode);
+                SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
+                SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
+                SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
             }
             if(Class57.clickX >= 273 && Class57.clickX <= 373 && RSString.clickY >= 467 && RSString.clickY <= 499) {
-                ItemDefinition.tradeMode = (ItemDefinition.tradeMode + 1) % 3;
+                ChatBox.tradeMode = (ChatBox.tradeMode + 1) % 3;
                 Cache.redrawChatbox = true;
-                GenericTile.redrawChatbox = true;
+                ChatBox.redrawChatbox = true;
                 SceneCluster.packetBuffer.putPacket(32);
-                SceneCluster.packetBuffer.putByte(Class35.publicChatMode);
-                SceneCluster.packetBuffer.putByte(Class4.privateChatMode);
-                SceneCluster.packetBuffer.putByte(ItemDefinition.tradeMode);
+                SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
+                SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
+                SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
             }
             if(Class57.clickX >= 412 && Class57.clickX <= 512 && RSString.clickY >= 467 && RSString.clickY <= 499) {
                 if(HuffmanEncoding.openScreenWidgetId == -1) {
@@ -266,9 +266,9 @@ public class Class40_Sub5_Sub1 extends SubNode {
         if(Player.localPlayer != player && ActorDefinition.menuActionRow < 400) {
             RSString rsString;
             if(player.skillLevel == 0)
-                rsString = (RSString.linkRSStrings((new RSString[]{player.playerName, (SceneTile.getCombatLevelColour((Player.localPlayer.combatLevel), player.combatLevel, -122)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(player.combatLevel, -1), Class51.aClass1_1199})));
+                rsString = (RSString.linkRSStrings((new RSString[]{player.playerName, (SceneTile.getCombatLevelColour((Player.localPlayer.combatLevel), player.combatLevel, -122)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(player.combatLevel), Class51.aClass1_1199})));
             else
-                rsString = (RSString.linkRSStrings((new RSString[]{player.playerName, HashTable.aClass1_569, Class26.aClass1_619, HashTable.method334(player.skillLevel, -1), Class51.aClass1_1199})));
+                rsString = (RSString.linkRSStrings((new RSString[]{player.playerName, HashTable.aClass1_569, Class26.aClass1_619, HashTable.method334(player.skillLevel), Class51.aClass1_1199})));
             if(Class8.itemSelected == 1) {
                 OverlayDefinition.addActionRow(Main.aClass1_1763, index, x, y, 22, (RSString.linkRSStrings((new RSString[]{Npc.aClass1_3295, Item.aClass1_3068, rsString}))));
             } else if(Main.widgetSelected == 1) {

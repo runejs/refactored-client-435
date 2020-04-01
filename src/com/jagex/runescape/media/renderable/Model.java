@@ -13,7 +13,7 @@ public class Model extends Renderable {
     public static Model aClass40_Sub5_Sub17_Sub5_3170 = new Model();
     public static int[] anIntArray3192 = new int[1];
     public static Model aClass40_Sub5_Sub17_Sub5_3195 = new Model();
-    public static int anInt3198;
+    public static int cursorY;
     public static int[] anIntArray3199;
     public static int[] anIntArray3200 = new int[1600];
     public static boolean[] aBooleanArray3201;
@@ -22,7 +22,7 @@ public class Model extends Renderable {
     public static int[] vertexScreenY;
     public static int[] anIntArray3205;
     public static int anInt3206;
-    public static boolean aBoolean3207;
+    public static boolean gameScreenClickable;
     public static int[][] anIntArrayArray3208;
     public static int[] vertexScreenX;
     public static int[][] anIntArrayArray3210;
@@ -44,11 +44,11 @@ public class Model extends Renderable {
     public static int[] anIntArray3226;
     public static int[] anIntArray3227;
     public static int[] anIntArray3228;
-    public static int anInt3229;
+    public static int cursorX;
 
     static {
         anIntArray3199 = new int[128];
-        anInt3198 = 0;
+        cursorY = 0;
         anIntArray3205 = new int[10];
         anIntArray3203 = new int[4096];
         hoveredHash = new int[1000];
@@ -58,7 +58,7 @@ public class Model extends Renderable {
         aBooleanArray3201 = new boolean[4096];
         anIntArray3212 = new int[4096];
         anIntArray3214 = new int[1];
-        aBoolean3207 = false;
+        gameScreenClickable = false;
         anIntArray3216 = new int[2000];
         anIntArray3202 = Rasterizer3D.hsl2rgb;
         vertexScreenX = new int[4096];
@@ -73,7 +73,7 @@ public class Model extends Renderable {
         COSINE = Rasterizer3D.cosinetable;
         aBooleanArray3224 = new boolean[4096];
         anIntArray3228 = Rasterizer3D.anIntArray2929;
-        anInt3229 = 0;
+        cursorX = 0;
         anIntArray3226 = new int[12];
         int i = 0;
         int i_322_ = 248;
@@ -794,7 +794,7 @@ public class Model extends Renderable {
                                 bool_16_ = true;
                             boolean bool_17_ = bool_16_ || texturedTriangleCount > 0;
                             boolean bool_18_ = false;
-                            if(arg8 > 0 && aBoolean3207) {
+                            if(arg8 > 0 && gameScreenClickable) {
                                 int i_19_ = i_4_ - i_5_;
                                 if(i_19_ <= 50)
                                     i_19_ = 50;
@@ -812,8 +812,8 @@ public class Model extends Renderable {
                                     i_12_ /= i_6_;
                                     i_14_ /= i_19_;
                                 }
-                                int i_20_ = (anInt3229 - Rasterizer3D.center_x);
-                                int i_21_ = (anInt3198 - Rasterizer3D.center_y);
+                                int i_20_ = (cursorX - Rasterizer3D.center_x);
+                                int i_21_ = (cursorY - Rasterizer3D.center_y);
                                 if(i_20_ > i_8_ && i_20_ < i_9_ && i_21_ > i_14_ && i_21_ < i_12_) {
                                     if(singleTile)
                                         hoveredHash[resourceCount++] = arg8;
@@ -1539,7 +1539,7 @@ public class Model extends Renderable {
                             anIntArrayArray3210[i_214_][anIntArray3200[i_214_]++] = i;
                         }
                     } else {
-                        if(arg1 && method807(anInt3229, anInt3198, vertexScreenY[i_196_], vertexScreenY[i_197_], vertexScreenY[i_198_], i_199_, i_200_, i_201_)) {
+                        if(arg1 && method807(cursorX, cursorY, vertexScreenY[i_196_], vertexScreenY[i_197_], vertexScreenY[i_198_], i_199_, i_200_, i_201_)) {
                             hoveredHash[resourceCount++] = arg2;
                             arg1 = false;
                         }

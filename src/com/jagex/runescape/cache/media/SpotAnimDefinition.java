@@ -204,7 +204,7 @@ public class SpotAnimDefinition extends SubNode {
             }
             if(Class40_Sub3.anInt2032 == 8) {
                 Main.anInt1756 = 0;
-                Class33.method411((RSString.linkRSStrings((new RSString[]{HashTable.method334(Class33.anInt784 / 60, -1), Class38.aClass1_883}))), Class8.aClass1_294, RSCanvas.aClass1_67, (byte) -82);
+                Class33.method411((RSString.linkRSStrings((new RSString[]{HashTable.method334(Class33.anInt784 / 60), Class38.aClass1_883}))), Class8.aClass1_294, RSCanvas.aClass1_67, (byte) -82);
                 if(--Class33.anInt784 <= 0) {
                     Class40_Sub3.anInt2032 = 0;
                 }

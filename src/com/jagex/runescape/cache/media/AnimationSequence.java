@@ -14,7 +14,7 @@ public class AnimationSequence extends SubNode {
     public static RSString requestcmd_tradereq = RSString.CreateString(":tradereq:");
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2474;
     public static int anInt2480 = 0;
-    public static ImageRGB aClass40_Sub5_Sub14_Sub4_2482;
+    public static ImageRGB minimapCompass;
     public static CacheIndex aCacheIndex_2484;
     public static RSString aClass1_2488 = RSString.CreateString("titlebox");
     public static int[][] anIntArrayArray2490;
@@ -45,7 +45,7 @@ public class AnimationSequence extends SubNode {
     public static void method589() {
         aClass1_2488 = null;
         aCacheIndex_2484 = null;
-        aClass40_Sub5_Sub14_Sub4_2482 = null;
+        minimapCompass = null;
         requestcmd_tradereq = null;
         aClass40_Sub5_Sub14_Sub4Array2474 = null;
         anIntArrayArray2490 = null;
@@ -98,10 +98,10 @@ public class AnimationSequence extends SubNode {
             }
             Class38_Sub1.doWalkTo(i_18_, i_17_, (Player.localPlayer.pathY[0]), arg0, 0, true, 0, i_19_, (Player.localPlayer.pathX[0]), arg3, 2);
         }
-        Class40_Sub11.anInt2163 = Class57.clickX;
-        LinkedList.anInt1075 = 2;
-        Class40_Sub5_Sub1.anInt2276 = RSString.clickY;
-        OverlayDefinition.anInt2319 = 0;
+        Class40_Sub11.crossX = Class57.clickX;
+        LinkedList.crossType = 2;
+        Class40_Sub5_Sub1.crossY = RSString.clickY;
+        OverlayDefinition.crossIndex = 0;
         return true;
     }
 

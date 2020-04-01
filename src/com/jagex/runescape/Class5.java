@@ -3,6 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
@@ -13,9 +14,7 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
-import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
-import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 
@@ -23,7 +22,6 @@ import java.awt.*;
 
 public class Class5 {
     public static Class22 aClass22_189;
-    public static int[] itemSearchResultIds = new int[100];
     public static RSString aClass1_193 = RSString.CreateString("Please contact customer support)3");
     public static int anInt194;
     public static int anInt195 = 1;
@@ -60,17 +58,17 @@ public class Class5 {
         aClass1_196 = null;
         aClass1_204 = null;
         aClass1_206 = null;
-        itemSearchResultIds = null;
+        ChatBox.itemSearchResultIds = null;
         aClass22_189 = null;
         aClass1_203 = null;
         aClass1_193 = null;
         anIntArray198 = null;
     }
 
-    public static void method164(int arg0) {
-        Renderable.handleSequences(arg0 + 29378, ActorDefinition.openFullScreenWidgetId);
-        if(arg0 != (UnderlayDefinition.openSecondaryWidgetId ^ 0xffffffff))
-            Renderable.handleSequences(arg0 + 29378, UnderlayDefinition.openSecondaryWidgetId);
+    public static void method164() {
+        Renderable.handleSequences(ActorDefinition.openFullScreenWidgetId);
+        if(UnderlayDefinition.openSecondaryWidgetId != -1)
+            Renderable.handleSequences(UnderlayDefinition.openSecondaryWidgetId);
         anInt199 = 0;
         Class68_Sub1.aClass68_2213.method1046((byte) 90);
         Player.anIntArray3284 = Rasterizer3D.method708(Player.anIntArray3284);
@@ -80,12 +78,12 @@ public class Class5 {
             Class40_Sub5_Sub6.drawInterface(0, UnderlayDefinition.openSecondaryWidgetId, 503, (byte) -5, 0, 0, 765);
         if(!Class4.menuOpen) {
             Class43.processRightClick();
-            SceneTile.method537(4);
+            SceneTile.drawMenuTooltip(4);
         } else
-            Class40_Sub5_Sub6.method588(-1);
+            Class40_Sub5_Sub6.drawMenu();
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            Class68_Sub1.aClass68_2213.method1044(0, graphics, 0);
+            Class68_Sub1.aClass68_2213.drawGraphics(0, 0, graphics);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }
@@ -180,18 +178,18 @@ public class Class5 {
             if(i == 201) {
                 Class37.anInt876 = 1;
                 HuffmanEncoding.aClass1_1563 = Widget.aClass1_2740;
-                InteractiveObject.messagePromptRaised = true;
-                Class40_Sub5_Sub15.inputType = 0;
-                HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
-                GenericTile.redrawChatbox = true;
+                ChatBox.messagePromptRaised = true;
+                ChatBox.inputType = 0;
+                HuffmanEncoding.chatMessage = HuffmanEncoding.blank_string;
+                ChatBox.redrawChatbox = true;
             }
             if(i == 202) {
                 Class37.anInt876 = 2;
                 HuffmanEncoding.aClass1_1563 = English.enterNameOfFriendToDeleteFromList;
-                GenericTile.redrawChatbox = true;
-                Class40_Sub5_Sub15.inputType = 0;
-                InteractiveObject.messagePromptRaised = true;
-                HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
+                ChatBox.redrawChatbox = true;
+                ChatBox.inputType = 0;
+                ChatBox.messagePromptRaised = true;
+                HuffmanEncoding.chatMessage = HuffmanEncoding.blank_string;
             }
         }
         if(i == 205) {
@@ -199,19 +197,19 @@ public class Class5 {
             return true;
         }
         if(i == 501) {
-            Class40_Sub5_Sub15.inputType = 0;
+            ChatBox.inputType = 0;
             Class37.anInt876 = 4;
-            GenericTile.redrawChatbox = true;
+            ChatBox.redrawChatbox = true;
             HuffmanEncoding.aClass1_1563 = Class51.aClass1_1200;
-            HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
-            InteractiveObject.messagePromptRaised = true;
+            HuffmanEncoding.chatMessage = HuffmanEncoding.blank_string;
+            ChatBox.messagePromptRaised = true;
         }
         if(i == 502) {
-            GenericTile.redrawChatbox = true;
-            Class40_Sub5_Sub15.inputType = 0;
+            ChatBox.redrawChatbox = true;
+            ChatBox.inputType = 0;
             Class37.anInt876 = 5;
-            InteractiveObject.messagePromptRaised = true;
-            HuffmanEncoding.aClass1_1565 = HuffmanEncoding.blank_string;
+            ChatBox.messagePromptRaised = true;
+            HuffmanEncoding.chatMessage = HuffmanEncoding.blank_string;
             HuffmanEncoding.aClass1_1563 = English.enterNameOfPlayerToDeleteFromList;
         }
         if(i >= 300 && i <= 313) {
@@ -251,7 +249,7 @@ public class Class5 {
 
     public static void method167(int arg0) {
         if(arg0 != 1023)
-            method164(89);
+            method164();
         Class13.aClass9_406.method235((byte) -56);
     }
 
@@ -266,13 +264,13 @@ public class Class5 {
             if(arg7 == 1)
                 ISAAC.redrawTabArea = true;
             if(arg7 == 2 || arg7 == 3)
-                GenericTile.redrawChatbox = true;
+                ChatBox.redrawChatbox = true;
         } else if(arg6 > arg2 || (arg6 + 16 <= arg2) || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
             if(-Landscape.anInt1171 + arg6 <= arg2 && 16 + (arg6 + Landscape.anInt1171) > arg2 && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && Npc.anInt3294 > 0) {
                 Class61.aBoolean1444 = true;
                 int i = (-32 + arg0) * arg0 / arg3;
                 if(arg7 == 2 || arg7 == 3)
-                    GenericTile.redrawChatbox = true;
+                    ChatBox.redrawChatbox = true;
                 if(arg7 == 1)
                     ISAAC.redrawTabArea = true;
                 if(i < 8)
@@ -284,7 +282,7 @@ public class Class5 {
         } else {
             arg5.scrollPosition += 4 * Npc.anInt3294;
             if(arg7 == 2 || arg7 == 3)
-                GenericTile.redrawChatbox = true;
+                ChatBox.redrawChatbox = true;
             if(arg7 == 1)
                 ISAAC.redrawTabArea = true;
         }

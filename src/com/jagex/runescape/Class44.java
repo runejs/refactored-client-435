@@ -4,11 +4,10 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
-import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class44 implements Runnable {
@@ -32,20 +31,20 @@ public class Class44 implements Runnable {
     }
 
     public static void addChatMessage(RSString name, RSString message, int type) {
-        if(Class43.openChatboxWidgetId == -1)
-            GenericTile.redrawChatbox = true;
-        if(type == 0 && Class48.anInt1138 != -1) {
+        if(ChatBox.openChatboxWidgetId == -1)
+            ChatBox.redrawChatbox = true;
+        if(type == 0 && ChatBox.dialogueId != -1) {
             MouseHandler.clickType = 0;
-            RSApplet.aClass1_8 = message;
+            RSApplet.clickToContinueString = message;
         }
         for(int i = 99; i > 0; i--) {
-            HuffmanEncoding.chatTypes[i] = HuffmanEncoding.chatTypes[i + -1];
-            Renderable.chatPlayerNames[i] = Renderable.chatPlayerNames[-1 + i];
-            Actor.chatMessages[i] = Actor.chatMessages[-1 + i];
+            ChatBox.chatTypes[i] = ChatBox.chatTypes[i + -1];
+            ChatBox.chatPlayerNames[i] = ChatBox.chatPlayerNames[-1 + i];
+            ChatBox.chatMessages[i] = ChatBox.chatMessages[-1 + i];
         }
-        HuffmanEncoding.chatTypes[0] = type;
-        Renderable.chatPlayerNames[0] = name;
-        Actor.chatMessages[0] = message;
+        ChatBox.chatTypes[0] = type;
+        ChatBox.chatPlayerNames[0] = name;
+        ChatBox.chatMessages[0] = message;
     }
 
     public static void method896() {

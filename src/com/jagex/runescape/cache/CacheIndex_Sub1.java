@@ -42,7 +42,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
     public static RSString method204(int arg0, int arg1) {
         if(arg1 != 255)
             method203();
-        return (RSString.linkRSStrings((new RSString[]{HashTable.method334(0xff & arg0 >> 24, -1), Node.aClass1_975, HashTable.method334((arg0 & 0xffca88) >> 16, -1), Node.aClass1_975, HashTable.method334((0xfff8 & arg0) >> 8, -1), Node.aClass1_975, HashTable.method334(0xff & arg0, -1)})));
+        return (RSString.linkRSStrings((new RSString[]{HashTable.method334(0xff & arg0 >> 24), Node.aClass1_975, HashTable.method334((arg0 & 0xffca88) >> 16), Node.aClass1_975, HashTable.method334((0xfff8 & arg0) >> 8), Node.aClass1_975, HashTable.method334(0xff & arg0)})));
     }
 
     public static void method399(int arg0, int arg2) {

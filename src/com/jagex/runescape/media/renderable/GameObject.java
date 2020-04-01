@@ -157,46 +157,6 @@ public class GameObject extends Renderable {
         }
     }
 
-    public static void itemSearch(RSString input) {
-        if(input == null || input.length() == 0)
-            VertexNormal.itemSearchResultCount = 0;
-        else {
-            RSString searchTerm = input;
-            RSString[] splitString = new RSString[100];
-            int i = 0;
-            while(true) {
-                int spaceIndex = searchTerm.indexOf(' ');
-                if(spaceIndex == -1) {
-                    searchTerm = searchTerm.trim();
-                    if(searchTerm.length() > 0)
-                        splitString[i++] = searchTerm.toLowerCase();
-                    break;
-                }
-                RSString first = searchTerm.substring(0, spaceIndex).trim();
-                if(first.length() > 0)
-                    splitString[i++] = first.toLowerCase();
-                searchTerm = searchTerm.substring(1 + spaceIndex);
-            }
-            VertexNormal.itemSearchResultCount = 0;
-            while_12_:
-            for(int itemId = 0; ItemDefinition.count > itemId; itemId++) {
-                ItemDefinition definition = ItemDefinition.forId(itemId, 10);
-                if(definition.noteTemplateId == -1 && definition.name != null) {
-                    RSString itemName = definition.name.toLowerCase();
-                    for(int indx = 0; indx < i; indx++) {
-                        if(itemName.contains(splitString[indx]) == -1)
-                            continue while_12_;
-                    }
-                    Class22_Sub1.itemSearchResultNames[VertexNormal.itemSearchResultCount] = itemName;
-                    Class5.itemSearchResultIds[VertexNormal.itemSearchResultCount] = itemId;
-                    VertexNormal.itemSearchResultCount++;
-                    if((VertexNormal.itemSearchResultCount >= Class22_Sub1.itemSearchResultNames.length))
-                        break;
-                }
-            }
-        }
-    }
-
     public static void method774(byte arg0) {
         Buffer.aClass9_1933.method235((byte) -88);
         if(arg0 != -96)

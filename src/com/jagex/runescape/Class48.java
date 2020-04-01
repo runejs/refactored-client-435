@@ -25,7 +25,6 @@ public class Class48 {
     public static int cameraOffsetY = 0;
     public static int modifiedWidgetId = 0;
     public static Buffer aClass40_Sub1_1132;
-    public static int anInt1138 = -1;
 
     public int[][] anIntArrayArray1128;
     public int anInt1131;

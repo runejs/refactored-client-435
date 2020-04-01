@@ -19,7 +19,6 @@ public class Class4 {
     public static RSString aClass1_180 = RSString.CreateString("wishes to trade with you)3");
     public static int anInt182 = 0;
     public static RSString aClass1_183 = RSString.CreateString("mapdots");
-    public static int privateChatMode = 0;
     public static int anInt188;
 
     public static void method159() {

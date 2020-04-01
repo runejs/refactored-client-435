@@ -4,6 +4,7 @@ import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
@@ -23,22 +24,19 @@ public abstract class Class68 {
     public static RSString aClass1_1633 = RSString.CreateString(" is already on your ignore list");
     public static int anInt1634 = 0;
     public static RSString str_Cancel;
-    public static RSString aClass1_1636 = RSString.CreateString("Loaded title screen");
     public static int anInt1637 = 0;
-    public static RSString aClass1_1638;
     public static RSString aClass1_1639 = RSString.CreateString("@or2@");
     public static RSString aClass1_1640 = RSString.CreateString("Cancel");
 
     static {
-        aClass1_1638 = aClass1_1636;
         aClass1_1628 = aClass1_1633;
         str_Cancel = aClass1_1640;
     }
 
-    public int anInt1617;
-    public int anInt1619;
-    public int[] anIntArray1621;
-    public Image anImage1625;
+    public int height;
+    public int width;
+    public int[] pixels;
+    public Image image;
 
     public static void method1040(Component arg0, int arg1, Signlink arg2) {
         try {
@@ -64,12 +62,11 @@ public abstract class Class68 {
     }
 
     public static void method1042() {
-        aClass1_1638 = null;
+        English.loadedTitleScreen = null;
         aClass1_1639 = null;
         aBooleanArray1629 = null;
         aClass68_1631 = null;
         aSignlinkNode_1632 = null;
-        aClass1_1636 = null;
         aClass9_1615 = null;
         aClass1_1640 = null;
         str_Cancel = null;
@@ -82,7 +79,7 @@ public abstract class Class68 {
             return true;
         if(!VarbitDefinition.aCacheIndex_2349.method186(123, arg0))
             return false;
-        int i_4_ = VarbitDefinition.aCacheIndex_2349.method190(arg0, (byte) 71);
+        int i_4_ = VarbitDefinition.aCacheIndex_2349.method190(arg0);
         if(i_4_ == 0) {
             aBooleanArray1629[arg0] = true;
             return true;
@@ -109,11 +106,11 @@ public abstract class Class68 {
 
     public abstract void method1041(int i, int i_2_, Component component, int i_3_);
 
-    public abstract void method1044(int i_6_, Graphics graphics, int i_7_);
+    public abstract void drawGraphics(int x, int y, Graphics graphics);
 
     public void method1046(byte arg0) {
         do {
-            Rasterizer.createRasterizer(anIntArray1621, anInt1619, anInt1617);
+            Rasterizer.createRasterizer(pixels, width, height);
             if(arg0 == 90)
                 break;
             method1046((byte) 12);

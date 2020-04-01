@@ -13,14 +13,14 @@ import tech.henning.fourthreefive.OldEngine.ObjectDecompressor;
 
 import java.io.IOException;
 
-public class GameObjectDefinition extends SubNode {
+public class GameObjectDefinition extends SubNode implements EntityDefinition {
     public static Class68 aClass68_2524;
     public static RSString aClass1_2526 = RSString.CreateString("(Udns");
     public static int anInt2543 = 0;
     public static HashTable aClass23_2545 = new HashTable(4096);
-    public static int chatboxScroll = 0;
     public static int lastClickY = 0;
     public static long aLong2561 = 0L;
+    public static int count;
 
     public int anInt2499;
     public int offsetX;
@@ -563,5 +563,10 @@ public class GameObjectDefinition extends SubNode {
             bool &= RSString.aCacheIndex_1705.loaded((0xffff & objectModels[i]), 0);
         }
         return bool;
+    }
+
+    @Override
+    public RSString getName() {
+        return name;
     }
 }
