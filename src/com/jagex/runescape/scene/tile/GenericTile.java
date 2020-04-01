@@ -82,7 +82,7 @@ public class GenericTile {
         arg2.drawText(English.reportAbuse, 417, 17, 85, 25, 16777215, true, 1, 1, 0);
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            HuffmanEncoding.aClass68_1541.method1044(0, graphics, 453);
+            HuffmanEncoding.aClass68_1541.drawGraphics(0, 453, graphics);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }

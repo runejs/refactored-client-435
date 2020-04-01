@@ -50,7 +50,7 @@ public class Class43 {
             if(Class34.anInt848 == 1)
                 method398(-2);
             else
-                Class40_Sub5_Sub6.drawMenu(-1);
+                Class40_Sub5_Sub6.drawMenu();
         }
         if(arg0 >= -22)
             cameraYawOffset = 80;
@@ -161,7 +161,7 @@ public class Class43 {
             }
         }
         if(class1 == null)
-            Class40_Sub5_Sub6.drawMenu(-1);
+            Class40_Sub5_Sub6.drawMenu();
         else {
             int i = VertexNormal.menuWidth;
             int i_0_ = InteractiveObject.menuOffsetX;

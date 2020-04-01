@@ -1,31 +1,11 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
-import com.jagex.runescape.cache.media.AnimationSequence;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.Widget;
-import com.jagex.runescape.collection.Node;
-import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
-import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.language.English;
-import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
-import com.jagex.runescape.media.renderable.Item;
-import com.jagex.runescape.media.renderable.Renderable;
-import com.jagex.runescape.media.renderable.actor.Actor;
-import com.jagex.runescape.media.renderable.actor.Npc;
-import com.jagex.runescape.media.renderable.actor.Player;
-import com.jagex.runescape.net.ISAAC;
-import com.jagex.runescape.net.PacketBuffer;
-import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
-import com.jagex.runescape.scene.SceneCluster;
-import com.jagex.runescape.scene.tile.*;
-import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.awt.*;
 import java.io.*;
@@ -129,7 +109,7 @@ public class Class55 {
     public static void method964(int arg0) {
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            SubNode.aClass68_2091.method1044(553, graphics, 205);
+            SubNode.aClass68_2091.drawGraphics(553, 205, graphics);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }

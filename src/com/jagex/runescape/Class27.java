@@ -114,6 +114,7 @@ public class Class27 {
             Rasterizer.resetPixels();
             Class51.method940(0, Class67.aClass1_1585, false, null);
         }
+
         Player.method792(110);
         Class12.cameraX = i_1_;
         Class40_Sub5_Sub6.cameraY = i_5_;
@@ -991,6 +992,7 @@ public class Class27 {
             Cache.redrawChatbox = true;
         }
         method353((byte) -114);
+
         if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
             ISAAC.redrawTabArea = true;
         if(Class29.tabAreaOverlayWidgetId != -1) {
@@ -1054,6 +1056,8 @@ public class Class27 {
             Console.console.drawConsoleArea();
         }
         Class37.renderMinimap(true);
+
+
         if(Class51.anInt1205 != -1)
             IdentityKit.drawTabIcons = true;
         if(IdentityKit.drawTabIcons) {
@@ -1071,8 +1075,10 @@ public class Class27 {
             Cache.redrawChatbox = false;
             GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
         }
+
         Landscape.method934((Player.localPlayer.worldX), Player.worldLevel, Class5.anInt199, (Player.localPlayer.worldY));
         Class5.anInt199 = 0;
+
     }
 
     public static void method366(int arg1) {

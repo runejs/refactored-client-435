@@ -216,9 +216,9 @@ public class Item extends Renderable {
             Class39.aClass40_Sub5_Sub14_Sub4_918 = new ImageRGB(128, 265);
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = new ImageRGB(128, 265);
             for(int i = 0; i < 33920; i++)
-                Class39.aClass40_Sub5_Sub14_Sub4_918.pixels[i] = Class8.aClass68_298.anIntArray1621[i];
+                Class39.aClass40_Sub5_Sub14_Sub4_918.pixels[i] = Class8.aClass68_298.pixels[i];
             for(int i = 0; i < 33920; i++)
-                SceneTile.aClass40_Sub5_Sub14_Sub4_2043.pixels[i] = (GameObject.aClass68_3042.anIntArray1621[i]);
+                SceneTile.aClass40_Sub5_Sub14_Sub4_2043.pixels[i] = (GameObject.aClass68_3042.pixels[i]);
             Class51.anIntArray1198 = new int[256];
             for(int i = 0; i < 64; i++)
                 Class51.anIntArray1198[i] = i * 262144;

@@ -1,6 +1,7 @@
 package com.jagex.runescape.frame;
 
 import com.jagex.runescape.Class40_Sub5_Sub17_Sub6;
+import com.jagex.runescape.Class59;
 import com.jagex.runescape.RSString;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.EntityDefinition;
@@ -9,6 +10,7 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.media.Rasterizer;
+import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.WallDecoration;
@@ -57,7 +59,7 @@ public class Console {
             Rasterizer.drawHorizontalLine(1, 315, 512, 0xffffff);
             Class40_Sub5_Sub17_Sub6.fontBold.setEffects(0xffffff, -1);
             Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString("-->", 11, 330);
-            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.drawBasicString("RuneJS #435", 420, 308);
+            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.drawBasicString("RuneJS #435", 420, 312);
 
             if(Node.pulseCycle % 20 < 10) {
                 Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(consoleInput + "|", 38, 330);
@@ -140,6 +142,15 @@ public class Console {
             case "find":
             case "s":
                 searchObjects(cmdInput);
+                break;
+            case "exit":
+            case "close":
+            case "quit":
+                consoleOpen = false;
+                break;
+            case "dropclient":
+            case "clientdrop":
+                Class59.dropClient(2578);
                 break;
             case "help":
             case "commands":
@@ -251,5 +262,30 @@ public class Console {
     public void resetToCurrent() {
         previousCommandIndex = 0;
         consoleInput = "";
+    }
+
+    public void handleInput() {
+        if(ItemDefinition.anInt2854 == 98) {
+            loadPrev();
+        }
+        if(ItemDefinition.anInt2854 == 99) {
+            loadNext();
+        }
+        if(ItemDefinition.anInt2854 == 0) {
+            resetToCurrent();
+        }
+
+        if(ItemDefinition.anInt2854 == 85 && (consoleInput.length() > 0)) {
+            consoleInput = consoleInput.substring(0, Console.console.consoleInput.length() - 1);
+        }
+        if(Player.method793((byte) 120, Class59.anInt1388) && consoleInput.length() < 80) {
+            consoleInput += (char) Class59.anInt1388;
+        }
+        if(ItemDefinition.anInt2854 == 84 && (consoleInput.length() > 0)) {
+            printConsoleMessage(consoleInput, true);
+            parseConsoleCommand(consoleInput);
+            consoleInput = "";
+        }
+        ChatBox.redrawChatbox = true;
     }
 }

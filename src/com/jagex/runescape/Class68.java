@@ -33,10 +33,10 @@ public abstract class Class68 {
         str_Cancel = aClass1_1640;
     }
 
-    public int anInt1617;
-    public int anInt1619;
-    public int[] anIntArray1621;
-    public Image anImage1625;
+    public int height;
+    public int width;
+    public int[] pixels;
+    public Image image;
 
     public static void method1040(Component arg0, int arg1, Signlink arg2) {
         try {
@@ -106,11 +106,11 @@ public abstract class Class68 {
 
     public abstract void method1041(int i, int i_2_, Component component, int i_3_);
 
-    public abstract void method1044(int i_6_, Graphics graphics, int i_7_);
+    public abstract void drawGraphics(int x, int y, Graphics graphics);
 
     public void method1046(byte arg0) {
         do {
-            Rasterizer.createRasterizer(anIntArray1621, anInt1619, anInt1617);
+            Rasterizer.createRasterizer(pixels, width, height);
             if(arg0 == 90)
                 break;
             method1046((byte) 12);

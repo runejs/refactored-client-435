@@ -25,17 +25,17 @@ public class Rasterizer extends SubNode {
         }
     }
 
-    public static void setCoordinates(int arg0, int arg1, int height, int width) {
-        if(arg0 < 0)
-            arg0 = 0;
-        if(arg1 < 0)
-            arg1 = 0;
-        if(width > width)
-            width = width;
+    public static void setCoordinates(int x, int y, int height, int width) {
+        if(x < 0)
+            x = 0;
+        if(y < 0)
+            y = 0;
+        if(width > Rasterizer.width)
+            width = Rasterizer.width;
         if(height > Rasterizer.height)
             height = Rasterizer.height;
-        viewport_left = arg0;
-        viewport_top = arg1;
+        viewport_left = x;
+        viewport_top = y;
         viewport_right = width;
         viewport_bottom = height;
     }

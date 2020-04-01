@@ -69,7 +69,7 @@ public class Player extends Actor {
             if(arg0 < 106)
                 return;
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            VarbitDefinition.aClass68_2350.method1044(4, graphics, 4);
+            VarbitDefinition.aClass68_2350.drawGraphics(4, 4, graphics);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }

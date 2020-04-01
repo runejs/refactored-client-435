@@ -8,6 +8,7 @@ import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.*;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
+import com.jagex.runescape.frame.Console;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
@@ -33,6 +34,7 @@ import com.jagex.runescape.scene.tile.*;
 import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
 
+import java.awt.*;
 import java.net.InetAddress;
 import java.net.Socket;
 
@@ -507,7 +509,7 @@ public class Main extends RSApplet {
             }
         }
         int i = 256;
-        System.arraycopy(Class39.aClass40_Sub5_Sub14_Sub4_918.pixels, 0, Class8.aClass68_298.anIntArray1621, 0, 33920);
+        System.arraycopy(Class39.aClass40_Sub5_Sub14_Sub4_918.pixels, 0, Class8.aClass68_298.pixels, 0, 33920);
         int i_61_ = 0;
         int i_62_ = 1152;
         for(int i_63_ = 1; i - 1 > i_63_; i_63_++) {
@@ -522,8 +524,8 @@ public class Main extends RSApplet {
                     int i_68_ = -i_67_ + 256;
                     int i_69_ = i_67_;
                     i_67_ = Class42.anIntArray1013[i_67_];
-                    int i_70_ = Class8.aClass68_298.anIntArray1621[i_62_];
-                    Class8.aClass68_298.anIntArray1621[i_62_++] = ((HuffmanEncoding.method1021(-16711936, (HuffmanEncoding.method1021(i_67_, 16711935) * i_69_ + (i_68_ * HuffmanEncoding.method1021(i_70_, 16711935))))) + (HuffmanEncoding.method1021((HuffmanEncoding.method1021(65280, i_70_) * i_68_ + i_69_ * HuffmanEncoding.method1021(65280, i_67_)), 16711680))) >> 8;
+                    int i_70_ = Class8.aClass68_298.pixels[i_62_];
+                    Class8.aClass68_298.pixels[i_62_++] = ((HuffmanEncoding.method1021(-16711936, (HuffmanEncoding.method1021(i_67_, 16711935) * i_69_ + (i_68_ * HuffmanEncoding.method1021(i_70_, 16711935))))) + (HuffmanEncoding.method1021((HuffmanEncoding.method1021(65280, i_70_) * i_68_ + i_69_ * HuffmanEncoding.method1021(65280, i_67_)), 16711680))) >> 8;
                 } else
                     i_62_++;
             }
@@ -532,7 +534,7 @@ public class Main extends RSApplet {
         i_62_ = 1176;
         i_61_ = arg0;
         for(int i_71_ = 0; i_71_ < 33920; i_71_++)
-            GameObject.aClass68_3042.anIntArray1621[i_71_] = (SceneTile.aClass40_Sub5_Sub14_Sub4_2043.pixels[i_71_]);
+            GameObject.aClass68_3042.pixels[i_71_] = (SceneTile.aClass40_Sub5_Sub14_Sub4_2043.pixels[i_71_]);
         for(int i_72_ = 1; (i_72_ < -1 + i); i_72_++) {
             int i_73_ = (-i_72_ + i) * Class17.anIntArray466[i_72_] / i;
             int i_74_ = 103 + -i_73_;
@@ -541,10 +543,10 @@ public class Main extends RSApplet {
                 int i_76_ = Class4.anIntArray178[i_61_++];
                 if(i_76_ != 0) {
                     int i_77_ = i_76_;
-                    int i_78_ = (GameObject.aClass68_3042.anIntArray1621[i_62_]);
+                    int i_78_ = (GameObject.aClass68_3042.pixels[i_62_]);
                     int i_79_ = 256 + -i_76_;
                     i_76_ = Class42.anIntArray1013[i_76_];
-                    GameObject.aClass68_3042.anIntArray1621[i_62_++] = ((HuffmanEncoding.method1021((i_77_ * HuffmanEncoding.method1021(65280, i_76_) + i_79_ * HuffmanEncoding.method1021(65280, i_78_)), 16711680)) + (HuffmanEncoding.method1021((i_79_ * HuffmanEncoding.method1021(16711935, i_78_) + (HuffmanEncoding.method1021(16711935, i_76_) * i_77_)), -16711936))) >> 8;
+                    GameObject.aClass68_3042.pixels[i_62_++] = ((HuffmanEncoding.method1021((i_77_ * HuffmanEncoding.method1021(65280, i_76_) + i_79_ * HuffmanEncoding.method1021(65280, i_78_)), 16711680)) + (HuffmanEncoding.method1021((i_79_ * HuffmanEncoding.method1021(16711935, i_78_) + (HuffmanEncoding.method1021(16711935, i_76_) * i_77_)), -16711936))) >> 8;
                 } else
                     i_62_++;
             }
@@ -789,38 +791,34 @@ public class Main extends RSApplet {
         }
         if(Class51.anInt1197 == 0)
             GameObject.drawLoadingText(Class67.anInt1607, null, Native.currentLoadingText);
-        else if(Class51.anInt1197 != 5) {
-            if(Class51.anInt1197 != 10) {
-                if(Class51.anInt1197 != 20) {
-                    if(Class51.anInt1197 == 25) {
-                        if(Class68.anInt1634 == 1) {
-                            if(Class37.anInt874 > PacketBuffer.anInt2231)
-                                PacketBuffer.anInt2231 = Class37.anInt874;
-                            int i = ((-Class37.anInt874 + PacketBuffer.anInt2231) * 50 / PacketBuffer.anInt2231);
-                            Class51.method940(0, Class67.aClass1_1585, true, (RSString.linkRSStrings(new RSString[]{CollisionMap.aClass1_170, HashTable.method334(i), Class30.aClass1_698})));
-                        } else if(Class68.anInt1634 == 2) {
-                            if(IdentityKit.anInt2591 > GameObject.anInt3048)
-                                GameObject.anInt3048 = IdentityKit.anInt2591;
-                            int i = ((50 * (-IdentityKit.anInt2591 + GameObject.anInt3048) / GameObject.anInt3048) + 50);
-                            Class51.method940(0, Class67.aClass1_1585, true, (RSString.linkRSStrings(new RSString[]{CollisionMap.aClass1_170, HashTable.method334(i), Class30.aClass1_698})));
-                        } else
-                            Class51.method940(0, Class67.aClass1_1585, false, null);
-                    } else if(Class51.anInt1197 != 30) {
-                        if(Class51.anInt1197 != 35) {
-                            if(Class51.anInt1197 == 40)
-                                Class51.method940(0, (Npc.aClass1_3305), false, Actor.aClass1_3159);
-                        } else
-                            Class5.method164();
-                    } else
-                        Class27.drawGameScreen();
-                } else
-                    WallDecoration.method951(-19010, (Class40_Sub5_Sub17_Sub6.fontBold), (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236));
-            } else
-                WallDecoration.method951(-19010, (Class40_Sub5_Sub17_Sub6.fontBold), (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236));
-        } else
+        else if(Class51.anInt1197 == 5) {
             WallDecoration.method951(-19010, (Class40_Sub5_Sub17_Sub6.fontBold), (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236));
+        } else if(Class51.anInt1197 == 10) {
+            WallDecoration.method951(-19010, (Class40_Sub5_Sub17_Sub6.fontBold), (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236));
+        } else if(Class51.anInt1197 == 20) {
+            WallDecoration.method951(-19010, (Class40_Sub5_Sub17_Sub6.fontBold), (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236));
+        } else if(Class51.anInt1197 == 25) {
+            if(Class68.anInt1634 == 1) {
+                if(Class37.anInt874 > PacketBuffer.anInt2231)
+                    PacketBuffer.anInt2231 = Class37.anInt874;
+                int i = ((-Class37.anInt874 + PacketBuffer.anInt2231) * 50 / PacketBuffer.anInt2231);
+                Class51.method940(0, Class67.aClass1_1585, true, (RSString.linkRSStrings(new RSString[]{CollisionMap.aClass1_170, HashTable.method334(i), Class30.aClass1_698})));
+            } else if(Class68.anInt1634 == 2) {
+                if(IdentityKit.anInt2591 > GameObject.anInt3048)
+                    GameObject.anInt3048 = IdentityKit.anInt2591;
+                int i = ((50 * (-IdentityKit.anInt2591 + GameObject.anInt3048) / GameObject.anInt3048) + 50);
+                Class51.method940(0, Class67.aClass1_1585, true, (RSString.linkRSStrings(new RSString[]{CollisionMap.aClass1_170, HashTable.method334(i), Class30.aClass1_698})));
+            } else
+                Class51.method940(0, Class67.aClass1_1585, false, null);
+        } else if(Class51.anInt1197 == 30) {
+            Class27.drawGameScreen();
+
+
+        } else if(Class51.anInt1197 == 35) {
+            Class5.method164();
+        } else if(Class51.anInt1197 == 40)
+            Class51.method940(0, (Npc.aClass1_3305), false, Actor.aClass1_3159);
         Npc.anInt3294 = 0;
-        int i = -22 / ((arg0 - 6) / 50);
     }
 
     public void method40() {

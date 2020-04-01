@@ -202,28 +202,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                 break;
             }
             if(Console.console.consoleOpen) {
-                if(ItemDefinition.anInt2854 == 98) {
-                    Console.console.loadPrev();
-                }
-                if(ItemDefinition.anInt2854 == 99) {
-                    Console.console.loadNext();
-                }
-                if(ItemDefinition.anInt2854 == 0) {
-                    Console.console.resetToCurrent();
-                }
-
-                if(ItemDefinition.anInt2854 == 85 && (Console.console.consoleInput.length() > 0)) {
-                    Console.console.consoleInput = Console.console.consoleInput.substring(0, Console.console.consoleInput.length() - 1);
-                }
-                if(Player.method793((byte) 120, Class59.anInt1388) && Console.console.consoleInput.length() < 80) {
-                    Console.console.consoleInput += (char) Class59.anInt1388;
-                }
-                if(ItemDefinition.anInt2854 == 84 && (Console.console.consoleInput.length() > 0)) {
-                    Console.console.printConsoleMessage(Console.console.consoleInput, true);
-                    Console.console.parseConsoleCommand(Console.console.consoleInput);
-                    Console.console.consoleInput = "";
-                }
-                ChatBox.redrawChatbox = true;
+                Console.console.handleInput();
                 break;
             }
             if(HuffmanEncoding.openScreenWidgetId != -1 && (HuffmanEncoding.reportAbuseInterfaceID == HuffmanEncoding.openScreenWidgetId)) {
@@ -457,38 +436,36 @@ public class Class40_Sub5_Sub6 extends SubNode {
 
     }
 
-    public static void drawMenu(int arg0) {
-        if(arg0 == -1) {
-            int i = InteractiveObject.menuOffsetX;
-            int i_13_ = CollisionMap.menuHeight;
-            int i_14_ = Main.menuOffsetY;
-            int i_15_ = VertexNormal.menuWidth;
-            int i_16_ = 6116423;
-            Rasterizer.drawFilledRectangle(i, i_14_, i_15_, i_13_, i_16_);
-            Rasterizer.drawFilledRectangle(1 + i, 1 + i_14_, -2 + i_15_, 16, 0);
-            Rasterizer.drawUnfilledRectangle(i + 1, 18 + i_14_, -2 + i_15_, -19 + i_13_, 0);
-            Class40_Sub5_Sub17_Sub6.fontBold.drawString(Widget.str_Choose_Option, i + 3, 14 + i_14_, i_16_);
-            int i_17_ = Class13.mouseX;
-            int i_18_ = Landscape.mouseY;
-            if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
-                i_17_ -= 4;
-                i_18_ -= 4;
-            }
-            if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
-                i_18_ -= 205;
-                i_17_ -= 553;
-            }
-            if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
-                i_18_ -= 357;
-                i_17_ -= 17;
-            }
-            for(int i_19_ = 0; i_19_ < ActorDefinition.menuActionRow; i_19_++) {
-                int i_20_ = (15 * (-i_19_ + ActorDefinition.menuActionRow + -1) + i_14_ + 31);
-                int i_21_ = 16777215;
-                if((i_17_ > i) && i + i_15_ > i_17_ && (i_18_ > -13 + i_20_) && (i_20_ + 3 > i_18_))
-                    i_21_ = 16776960;
-                Class40_Sub5_Sub17_Sub6.fontBold.drawShadowedString(Landscape.menuActionTexts[i_19_], i + 3, i_20_, i_21_, true);
-            }
+    public static void drawMenu() {
+        int i = InteractiveObject.menuOffsetX;
+        int i_13_ = CollisionMap.menuHeight;
+        int i_14_ = Main.menuOffsetY;
+        int i_15_ = VertexNormal.menuWidth;
+        int i_16_ = 6116423;
+        Rasterizer.drawFilledRectangle(i, i_14_, i_15_, i_13_, i_16_);
+        Rasterizer.drawFilledRectangle(1 + i, 1 + i_14_, -2 + i_15_, 16, 0);
+        Rasterizer.drawUnfilledRectangle(i + 1, 18 + i_14_, -2 + i_15_, -19 + i_13_, 0);
+        Class40_Sub5_Sub17_Sub6.fontBold.drawString(Widget.str_Choose_Option, i + 3, 14 + i_14_, i_16_);
+        int i_17_ = Class13.mouseX;
+        int i_18_ = Landscape.mouseY;
+        if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
+            i_17_ -= 4;
+            i_18_ -= 4;
+        }
+        if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
+            i_18_ -= 205;
+            i_17_ -= 553;
+        }
+        if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
+            i_18_ -= 357;
+            i_17_ -= 17;
+        }
+        for(int i_19_ = 0; i_19_ < ActorDefinition.menuActionRow; i_19_++) {
+            int i_20_ = (15 * (-i_19_ + ActorDefinition.menuActionRow + -1) + i_14_ + 31);
+            int i_21_ = 16777215;
+            if((i_17_ > i) && i + i_15_ > i_17_ && (i_18_ > -13 + i_20_) && (i_20_ + 3 > i_18_))
+                i_21_ = 16776960;
+            Class40_Sub5_Sub17_Sub6.fontBold.drawShadowedString(Landscape.menuActionTexts[i_19_], i + 3, i_20_, i_21_, true);
         }
     }
 }

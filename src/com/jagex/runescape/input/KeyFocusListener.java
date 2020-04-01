@@ -72,7 +72,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             Class43.processRightClick();
             SceneTile.drawMenuTooltip(4);
         } else if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
-            Class40_Sub5_Sub6.drawMenu(-1);
+            Class40_Sub5_Sub6.drawMenu();
         }
         if(Class40_Sub6.anInt2118 == 1) {
             LinkedList.aClass40_Sub5_Sub14_Sub4_1057.drawImage(472, 296);
@@ -238,10 +238,9 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 obfuscatedKeyCode = -1;
             }
             int keyChar;
-            //                        for(int i = 0; i < HuffmanEncoding.anIntArray1564.length; i++) {
-            //                            System.out.println(HuffmanEncoding.anIntArray1564[i] + ": " + i);
-            //                            System.out.println((int)'\n');
-            //                        }
+//                                    for(int i = 0; i < HuffmanEncoding.anIntArray1564.length; i++) {
+//                                        System.out.println("In: " + i +", out: " + HuffmanEncoding.anIntArray1564[i]);
+//                                    }
 
             if(eventKeyCode == KeyEvent.VK_BACK_SPACE || eventKeyCode == KeyEvent.VK_TAB || eventKeyCode == 0xA /* Unused key */ || eventKeyCode == KeyEvent.VK_ESCAPE || eventKeyCode == KeyEvent.VK_DELETE) {
                 keyChar = -1;

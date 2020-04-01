@@ -80,10 +80,10 @@ public class Class5 {
             Class43.processRightClick();
             SceneTile.drawMenuTooltip(4);
         } else
-            Class40_Sub5_Sub6.drawMenu(-1);
+            Class40_Sub5_Sub6.drawMenu();
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            Class68_Sub1.aClass68_2213.method1044(0, graphics, 0);
+            Class68_Sub1.aClass68_2213.drawGraphics(0, 0, graphics);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }

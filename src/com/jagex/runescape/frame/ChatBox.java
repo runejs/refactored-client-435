@@ -176,7 +176,7 @@ public class ChatBox {
                 redrawChatbox = true;
         }
         if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
-            Class40_Sub5_Sub6.drawMenu(-1);
+            Class40_Sub5_Sub6.drawMenu();
         LinkedList.method908((byte) 122);
 
     }

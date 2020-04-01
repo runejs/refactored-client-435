@@ -100,7 +100,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
     public static void method574() {
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            RSString.aClass68_1665.method1044(550, graphics, 4);
+            RSString.aClass68_1665.drawGraphics(550, 4, graphics);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }
