@@ -44,7 +44,33 @@ public class IncomingPackets {
     public static int incomingPacketSize = 0;
     public static PacketBuffer incomingPacketBuffer = new PacketBuffer(5000);
     public static int incomingPacket = 0;
-    public static int[] INCOMING_PACKET_SIZES = (new int[]{0, 15, 6, 8, 0, 0, 1, 0, 0, 5, 0, 0, -2, 0, 0, 0, 0, 0, 1, 7, 0, 0, 0, -2, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 1, 4, 0, -1, 0, 0, 0, 0, 2, 0, 4, 0, 0, 0, 0, -2, 2, 0, 0, 0, 0, 0, 1, -1, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, -1, 0, 4, 0, 0, 0, 1, 0, 0, 0, -2, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 5, 2, 8, 2, 0, 8, 0, 0, 0, 0, 0, 0, 0, -2, 3, 2, 5, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 10, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 6, 0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 2, 0, 0, 4, 5, 0, 0, 0, 0, 0, 0, 6, 0, 0, 2, 6, 0, 0, 0, 0, 0, 0, 0, 6, 4, 3, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 2, 0, 4, -2, 0, 0, -2, 0, 0, 2, 0, 0, 0, 0, 3, -1, 0, 0, 0, 0, 0, 14, 0, 6, 0, 0, 6, 1, 0, 2, 0, 0, -2, 4, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 6, 2, 4});
+    public static int[] INCOMING_PACKET_SIZES = (new int[]{
+            0, 15, 6, 8, 0, 0, 1, 0, 0, 5,  // 0
+            0, 0, -2, 0, 0, 0, 0, 0, 1, 7,  // 10
+            0, 0, 0, -2, 6, 0, 0, 0, 0, 0,  // 20
+            0, 0, 0, 0, 6, 0, 0, 0, 0, 0,  // 30
+            5, 0, 0, 0, 0, 0, 0, 0, 1, 4,  // 40
+            0, -1, 0, 0, 0, 0, 2, 0, 4, 0,  // 50
+            0, 0, 0, -2, 2, 0, 0, 0, 0, 0,  // 60
+            1, -1, 0, 0, 3, 0, 0, 0, 0, 0,  // 70
+            0, 0, -1, -1, 4, 0, 0, 0, 1, 0,  // 80
+            0, 0, -2, 0, 0, 0, 0, 0, 0, 7,  // 90
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  // 100
+            -2, 0, 0, 0, 0, 5, 2, 8, 2, 0,  // 110
+            8, 0, 0, 0, 0, 0, 0, 0, -2, 3,  // 120
+            2, 5, 0, 0, 0, 0, 0, 0, 0, 0,  // 130
+            3, 0, 10, 2, 0, 0, 0, 0, 0, 0,  // 140
+            0, 0, 0, 0, 0, 0, 10, 0, 0, 0,  // 150
+            6, 0, 0, 0, 0, 0, -2, 0, 0, 0,  // 160
+            0, 2, 0, 0, 4, 5, 0, 0, 0, 0,  // 170
+            0, 0, 6, 0, 0, 2, 6, 0, 0, 0,  // 180
+            0, 0, 0, 0, 6, 4, 3, 0, 0, 0,  // 190
+            0, 0, 6, 0, 0, 0, 0, 0, 2, 0,  // 200
+            4, -2, 0, 0, -2, 0, 0, 2, 0, 0,  // 210
+            0, 0, 3, -1, 0, 0, 0, 0, 0, 14,  // 220
+            0, 6, 0, 0, 6, 1, 0, 2, 0, 0,  // 230
+            -2, 4, 0, 0, 0, 0, 0, 0, 0, 0,  // 240
+            6, 0, 0, 6, 2, 4});
 
     public static boolean parseIncomingPackets(boolean arg0) {
         if(Class40_Sub6.aClass64_2098 == null)
@@ -334,11 +360,15 @@ public class IncomingPackets {
                         RSString class1_29_ = (message.substring((1 + message.contains((Class43.char_colon))), -9 + message.length()));
                         Class44.addChatMessage(class1_27_, class1_29_, 8);
                     }
-                } else if(Console.console.consoleOpen) {
-                    Console.console.printConsoleMessage("<col=FFFF00>"+message.toString()+"</col>", false);
                 } else {
                     Class44.addChatMessage(HuffmanEncoding.blank_string, message, 0);
                 }
+                incomingPacket = -1;
+                return true;
+            }
+            if(incomingPacket == 83) { // console command
+                RSString message = incomingPacketBuffer.getRSString();
+                Console.console.printConsoleMessage("<col=FFFF00>" + message.toString() + "</col>", false);
                 incomingPacket = -1;
                 return true;
             }

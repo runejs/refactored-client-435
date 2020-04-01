@@ -21,7 +21,7 @@ public class Console {
     private int messageCount;
     public String consoleInput;
     public boolean consoleOpen;
-    private static final int maxResults = 10;
+    private static final int maxResults = 50;
     private int results;
     private String[] previousCommands;
     private int previousCommandIndex;
@@ -32,7 +32,7 @@ public class Console {
 
     public Console() {
         this.messageCount = 0;
-        this.consoleMessages = new String[500];
+        this.consoleMessages = new String[5000];
         this.previousCommands = new String[100];
         this.previousCommands[0] = "";
         this.consoleInput = "";
@@ -158,7 +158,7 @@ public class Console {
             case "commands":
                 printCommands();
             default:
-                SceneCluster.packetBuffer.putPacket(248);
+                SceneCluster.packetBuffer.putPacket(246);
                 SceneCluster.packetBuffer.putByte(cmd.length() + 1);
                 SceneCluster.packetBuffer.putString(cmd);
                 break;
@@ -264,6 +264,7 @@ public class Console {
         }
         previousCommands = newArray;
     }
+
 
     public void resetToCurrent() {
         previousCommandIndex = 0;
