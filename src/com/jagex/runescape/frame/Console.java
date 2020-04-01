@@ -26,6 +26,7 @@ public class Console {
     private String[] previousCommands;
     private int previousCommandIndex;
     private int previousCommandCount;
+    private int currentChatIndex;
     public int currentScroll = 0;
     private boolean alpha = true;
 
@@ -35,6 +36,7 @@ public class Console {
         this.previousCommands = new String[100];
         this.previousCommands[0] = "";
         this.consoleInput = "";
+        this.currentChatIndex = 0;
         this.consoleOpen = false;
         this.previousCommandCount = 1;
         this.previousCommandIndex = 1;
@@ -62,9 +64,9 @@ public class Console {
             Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.drawBasicString("RuneJS #435", 420, 312);
 
             if(Node.pulseCycle % 20 < 10) {
-                Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(consoleInput + "|", 38, 330);
+                Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(consoleInput.substring(0, currentChatIndex) + "|" + consoleInput.substring(currentChatIndex), 38, 330);
             } else {
-                Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(consoleInput, 38, 330);
+                Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(consoleInput.substring(0, currentChatIndex) + "<trans=0>|</trans>" + consoleInput.substring(currentChatIndex), 38, 330);
             }
         }
     }
@@ -238,12 +240,16 @@ public class Console {
         if(previousCommandIndex < previousCommandCount - 1) {
             consoleInput = previousCommands[++previousCommandIndex];
         }
+        currentChatIndex = consoleInput.length();
+
     }
 
     public void loadNext() {
         if(previousCommandIndex > 0) {
             consoleInput = previousCommands[--previousCommandIndex];
         }
+        currentChatIndex = consoleInput.length();
+
     }
 
     private void addToFrontOfHistory(String element) {
@@ -262,29 +268,56 @@ public class Console {
     public void resetToCurrent() {
         previousCommandIndex = 0;
         consoleInput = "";
+        currentChatIndex = 0;
     }
 
     public void handleInput() {
-        if(ItemDefinition.anInt2854 == 98) {
+        if(ItemDefinition.anInt2854 == 98) { // key up
             loadPrev();
         }
-        if(ItemDefinition.anInt2854 == 99) {
+        if(ItemDefinition.anInt2854 == 99) { // key down
             loadNext();
         }
-        if(ItemDefinition.anInt2854 == 0) {
+        if(ItemDefinition.anInt2854 == 96) { // key right
+            currentChatIndex--;
+            if(currentChatIndex < 0) {
+                currentChatIndex = 0;
+            }
+        }
+        if(ItemDefinition.anInt2854 == 97) { // key left
+            currentChatIndex++;
+            if(currentChatIndex > consoleInput.length()) {
+                currentChatIndex = consoleInput.length();
+            }
+        }
+        if(ItemDefinition.anInt2854 == 0) { // Key esc
             resetToCurrent();
         }
+        if(ItemDefinition.anInt2854 == 101) { // key delete
+            if(consoleInput.length() != currentChatIndex){
+                consoleInput = consoleInput.substring(0, currentChatIndex) + consoleInput.substring(currentChatIndex+1);
+            }
+        }
+        if(ItemDefinition.anInt2854 == 102) { // Key home
+            currentChatIndex = 0;
+        }
+        if(ItemDefinition.anInt2854 == 103) { // Key end
+            currentChatIndex = consoleInput.length();
+        }
 
-        if(ItemDefinition.anInt2854 == 85 && (consoleInput.length() > 0)) {
-            consoleInput = consoleInput.substring(0, Console.console.consoleInput.length() - 1);
+        if(ItemDefinition.anInt2854 == 85 && (consoleInput.length() > 0)) { // key backspace
+            consoleInput = consoleInput.substring(0, currentChatIndex - 1) + consoleInput.substring(currentChatIndex);
+            currentChatIndex--;
         }
-        if(Player.method793((byte) 120, Class59.anInt1388) && consoleInput.length() < 80) {
-            consoleInput += (char) Class59.anInt1388;
+        if(Player.method793((byte) 120, Class59.anInt1388) && consoleInput.length() < 80) { // any character
+            consoleInput = consoleInput.substring(0, currentChatIndex) + (char) Class59.anInt1388 + consoleInput.substring(currentChatIndex);
+            currentChatIndex++;
         }
-        if(ItemDefinition.anInt2854 == 84 && (consoleInput.length() > 0)) {
+        if(ItemDefinition.anInt2854 == 84 && (consoleInput.length() > 0)) { // key enter
             printConsoleMessage(consoleInput, true);
             parseConsoleCommand(consoleInput);
             consoleInput = "";
+            currentChatIndex = 0;
         }
         ChatBox.redrawChatbox = true;
     }
