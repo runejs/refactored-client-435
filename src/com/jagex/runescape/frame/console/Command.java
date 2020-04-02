@@ -52,7 +52,6 @@ public abstract class Command {
 
     @Override
     public boolean equals(Object obj) {
-        System.out.println("Using equals");
         if(obj instanceof Command) {
             return obj == this;
         }
@@ -71,4 +70,11 @@ public abstract class Command {
 
     public abstract void execute(Console console, String[] cmdInput);
 
+    public String getCommand(){
+        if(!hasMultiple) {
+            return this.command;
+        }
+
+        return this.commands[0];
+    }
 }

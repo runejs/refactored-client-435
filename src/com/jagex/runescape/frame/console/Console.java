@@ -2,10 +2,6 @@ package com.jagex.runescape.frame.console;
 
 import com.jagex.runescape.Class40_Sub5_Sub17_Sub6;
 import com.jagex.runescape.Class59;
-import com.jagex.runescape.RSString;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.EntityDefinition;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
@@ -33,6 +29,8 @@ public class Console {
     private boolean alpha = true;
     private List<Command> commands;
     private int versionWidth = -1;
+    private int tabCount = 0;
+    private CommandList autoCompleteList;
 
     public Console() {
         this.messageCount = 0;
@@ -77,16 +75,16 @@ public class Console {
             }
             Rasterizer.drawHorizontalLine(1, 315, 512, 0xffffff);
             Class40_Sub5_Sub17_Sub6.fontBold.setEffects(0xffffff, -1);
-            Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString("-->", 11, 330);
+            Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(">", 11, 330);
             if(this.versionWidth == -1) {
                 this.versionWidth = Class40_Sub5_Sub17_Sub6.fontSmall.getDisplayedWidth(CONSOLE_VERSION);
             }
             Class40_Sub5_Sub17_Sub6.fontSmall.drawBasicString(CONSOLE_VERSION, 487 - this.versionWidth, 312);
 
             if(Node.pulseCycle % 20 < 10) {
-                Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(consoleInput.substring(0, currentChatIndex) + "|" + consoleInput.substring(currentChatIndex), 38, 330);
+                Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(consoleInput.substring(0, currentChatIndex) + "|" + consoleInput.substring(currentChatIndex), 22, 330);
             } else {
-                Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(consoleInput.substring(0, currentChatIndex) + "<trans=0>|</trans>" + consoleInput.substring(currentChatIndex), 38, 330);
+                Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(consoleInput.substring(0, currentChatIndex) + "<trans=0>|</trans>" + consoleInput.substring(currentChatIndex), 22, 330);
             }
         }
     }
@@ -119,7 +117,7 @@ public class Console {
         boolean first = true;
         for(String line : strings) {
             if(first && userInput)
-                consoleMessages[++messageCount] = "--> " + line;
+                consoleMessages[++messageCount] = "> " + line;
             else {
                 consoleMessages[++messageCount] = line;
             }
@@ -134,7 +132,7 @@ public class Console {
         previousCommandCount++;
         previousCommandIndex = 0;
         String[] cmdInput = cmd.split(" ");
-        int index = this.commands.indexOf(cmdInput[0]);
+        int index = this.commands.indexOf(cmdInput[0].toLowerCase());
         if(index == -1) {
             SceneCluster.packetBuffer.putPacket(246);
             SceneCluster.packetBuffer.putByte(cmd.length() + 1);
@@ -181,6 +179,24 @@ public class Console {
     }
 
     public void handleInput() {
+        if(ItemDefinition.anInt2854 == 80) { // key tab
+            tabCount++;
+            if(tabCount > 1) {
+                if(tabCount == 2) {
+                    buildAutoCompletionList();
+                    tabCount++;
+                }
+                if(tabCount - 3 > autoCompleteList.size() - 1) {
+                    tabCount = 3;
+                }
+                if(autoCompleteList.size() > 0) {
+                    this.consoleInput = autoCompleteList.get(tabCount - 3).getCommand();
+                    currentChatIndex = consoleInput.length();
+                }
+            }
+        } else {
+            tabCount = 0;
+        }
         if(ItemDefinition.anInt2854 == 98) { // key up
             loadPrev();
         }
@@ -229,6 +245,15 @@ public class Console {
             currentChatIndex = 0;
         }
         ChatBox.redrawChatbox = true;
+    }
+
+    private void buildAutoCompletionList() {
+        CommandList autoCompletionList = new CommandList();
+        for(Command command : commands) {
+            if(command.startsWith(consoleInput))
+                autoCompletionList.add(command);
+        }
+        this.autoCompleteList = autoCompletionList;
     }
 
     public void toggleAlpha() {
