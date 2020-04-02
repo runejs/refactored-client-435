@@ -8,7 +8,6 @@ import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.*;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
-import com.jagex.runescape.frame.Console;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
@@ -34,7 +33,6 @@ import com.jagex.runescape.scene.tile.*;
 import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
 
-import java.awt.*;
 import java.net.InetAddress;
 import java.net.Socket;
 
@@ -174,8 +172,8 @@ public class Main extends RSApplet {
                                                     class40_sub5_sub14_sub4.method728(i_10_, i_11_, 128);
                                                 if((class40_sub5_sub14_sub4.maxWidth) == 33 || (widget.itemAmounts[i_7_]) != 1) {
                                                     int i_19_ = (widget.itemAmounts[i_7_]);
-                                                    Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.drawString((Widget.method648(i_19_, (byte) -100)), i_12_ + (1 + i_10_), (i_11_ + 10 + i_14_), 0);
-                                                    Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.drawString((Widget.method648(i_19_, (byte) -100)), i_10_ + i_12_, i_14_ + (i_11_ + 9), 16776960);
+                                                    Class40_Sub5_Sub17_Sub6.fontSmall.drawString((Widget.method648(i_19_, (byte) -100)), i_12_ + (1 + i_10_), (i_11_ + 10 + i_14_), 0);
+                                                    Class40_Sub5_Sub17_Sub6.fontSmall.drawString((Widget.method648(i_19_, (byte) -100)), i_10_ + i_12_, i_14_ + (i_11_ + 9), 16776960);
                                                 }
                                             }
                                         }
@@ -307,8 +305,8 @@ public class Main extends RSApplet {
                                     bool = false;
                                 if(widget.anInt2718 != -1) {
                                     if(widget.anInt2734 != 1 || i_22_ == 33) {
-                                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.drawString((HashTable.method334((widget.anInt2734))), i_0_ + 1, i_1_ + 10, 0);
-                                        Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.drawString((HashTable.method334((widget.anInt2734))), i_0_, 9 + i_1_, 16776960);
+                                        Class40_Sub5_Sub17_Sub6.fontSmall.drawString((HashTable.method334((widget.anInt2734))), i_0_ + 1, i_1_ + 10, 0);
+                                        Class40_Sub5_Sub17_Sub6.fontSmall.drawString((HashTable.method334((widget.anInt2734))), i_0_, 9 + i_1_, 16776960);
                                     }
                                     class40_sub5_sub14_sub4.maxWidth = i_22_;
                                     class40_sub5_sub14_sub4.maxHeight = i_23_;
@@ -792,11 +790,11 @@ public class Main extends RSApplet {
         if(Class51.anInt1197 == 0)
             GameObject.drawLoadingText(Class67.anInt1607, null, Native.currentLoadingText);
         else if(Class51.anInt1197 == 5) {
-            WallDecoration.method951(-19010, (Class40_Sub5_Sub17_Sub6.fontBold), (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236));
+            WallDecoration.method951(-19010, (Class40_Sub5_Sub17_Sub6.fontBold), (Class40_Sub5_Sub17_Sub6.fontSmall));
         } else if(Class51.anInt1197 == 10) {
-            WallDecoration.method951(-19010, (Class40_Sub5_Sub17_Sub6.fontBold), (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236));
+            WallDecoration.method951(-19010, (Class40_Sub5_Sub17_Sub6.fontBold), (Class40_Sub5_Sub17_Sub6.fontSmall));
         } else if(Class51.anInt1197 == 20) {
-            WallDecoration.method951(-19010, (Class40_Sub5_Sub17_Sub6.fontBold), (Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236));
+            WallDecoration.method951(-19010, (Class40_Sub5_Sub17_Sub6.fontBold), (Class40_Sub5_Sub17_Sub6.fontSmall));
         } else if(Class51.anInt1197 == 25) {
             if(Class68.anInt1634 == 1) {
                 if(Class37.anInt874 > PacketBuffer.anInt2231)

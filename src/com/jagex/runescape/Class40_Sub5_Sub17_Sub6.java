@@ -12,7 +12,7 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 public class Class40_Sub5_Sub17_Sub6 extends Renderable {
-    public static TypeFace aClass40_Sub5_Sub14_Sub1_3236;
+    public static TypeFace fontSmall;
     public static int[][] playerColours = {{6798, 107, 10283, 16, 4797, 7744, 5799, 4634, 33697, 22433, 2983, 54193}, {8741, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003, 25239}, {25238, 8742, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003}, {4626, 11146, 6439, 12, 4758, 10270}, {4550, 4537, 5681, 5673, 5790, 6806, 8076, 4574}};
     public static Class68 aClass68_3243;
     public static TypeFace fontBold;
@@ -116,7 +116,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
         aClass1_3254 = null;
         anIntArray3248 = null;
         anIntArray3255 = null;
-        aClass40_Sub5_Sub14_Sub1_3236 = null;
+        fontSmall = null;
     }
 
     public Model getRotatedModel(int arg0) {

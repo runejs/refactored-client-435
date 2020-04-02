@@ -8,7 +8,7 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.frame.ChatBox;
-import com.jagex.runescape.frame.Console;
+import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;

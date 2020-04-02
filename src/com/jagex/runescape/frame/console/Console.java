@@ -1,4 +1,4 @@
-package com.jagex.runescape.frame;
+package com.jagex.runescape.frame.console;
 
 import com.jagex.runescape.Class40_Sub5_Sub17_Sub6;
 import com.jagex.runescape.Class59;
@@ -9,26 +9,30 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.frame.ChatBox;
+import com.jagex.runescape.frame.console.Commands.*;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.actor.Player;
-import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.WallDecoration;
 
+import java.util.List;
+
 public class Console {
+    private static final String CONSOLE_VERSION = "RuneJS #435";
     public static Console console; // TODO: Temp until finding a better spot to store this
     private String[] consoleMessages;
     private int messageCount;
     public String consoleInput;
     public boolean consoleOpen;
-    private static final int maxResults = 50;
-    private int results;
     private String[] previousCommands;
     private int previousCommandIndex;
     private int previousCommandCount;
     private int currentChatIndex;
     public int currentScroll = 0;
     private boolean alpha = true;
+    private List<Command> commands;
+    private int versionWidth = -1;
 
     public Console() {
         this.messageCount = 0;
@@ -40,7 +44,20 @@ public class Console {
         this.consoleOpen = false;
         this.previousCommandCount = 1;
         this.previousCommandIndex = 1;
-        this.printConsoleMessage("Welcome to the RuneJS console, type help for help.", false);
+        this.commands = new CommandList();
+        this.log("Welcome to the RuneJS console, type help for help.");
+        this.initialiseCommands();
+    }
+
+    private void initialiseCommands() {
+        commands.add(new HelpCommand(this.commands));
+        commands.add(new AlphaCommand());
+        commands.add(new ClearCommand());
+        commands.add(new PlayerRightsCommand());
+        commands.add(new FpsCommand());
+        commands.add(new ShowFpsCommand());
+        commands.add(new HideFpsCommand());
+        commands.add(new SearchCommand());
     }
 
     public int getMaxScroll() {
@@ -61,7 +78,10 @@ public class Console {
             Rasterizer.drawHorizontalLine(1, 315, 512, 0xffffff);
             Class40_Sub5_Sub17_Sub6.fontBold.setEffects(0xffffff, -1);
             Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString("-->", 11, 330);
-            Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236.drawBasicString("RuneJS #435", 420, 312);
+            if(this.versionWidth == -1) {
+                this.versionWidth = Class40_Sub5_Sub17_Sub6.fontSmall.getDisplayedWidth(CONSOLE_VERSION);
+            }
+            Class40_Sub5_Sub17_Sub6.fontSmall.drawBasicString(CONSOLE_VERSION, 487 - this.versionWidth, 312);
 
             if(Node.pulseCycle % 20 < 10) {
                 Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(consoleInput.substring(0, currentChatIndex) + "|" + consoleInput.substring(currentChatIndex), 38, 330);
@@ -88,7 +108,11 @@ public class Console {
         }
     }
 
-    public void printConsoleMessage(String s, boolean userInput) {
+    public void log(String s) {
+        log(s, false);
+    }
+
+    public void log(String s, boolean userInput) {
         if(ChatBox.openChatboxWidgetId == -1)
             ChatBox.redrawChatbox = true;
         String[] strings = s.split("\n");
@@ -110,129 +134,13 @@ public class Console {
         previousCommandCount++;
         previousCommandIndex = 0;
         String[] cmdInput = cmd.split(" ");
-        switch(cmdInput[0].toLowerCase()) {
-            case "cls":
-            case "clear":
-                messageCount = 0;
-                printConsoleMessage("<col=FFFFFF>Cleared</col>", false);
-                break;
-            case "alpha":
-                this.alpha = !this.alpha;
-                break;
-            case "rights":
-            case "playerrights":
-                printConsoleMessage("<col=FFFFFF>Your player rights level: <col=00FF00>" + InteractiveObject.playerRights + "</col></col>", false);
-                break;
-            case "toggle_fps":
-            case "fps":
-                InteractiveObject.showFps = !InteractiveObject.showFps;
-                if(InteractiveObject.showFps) {
-                    printConsoleMessage("<col=00FF00>FPS is now shown</col>", false);
-                } else {
-                    printConsoleMessage("<col=FF0000>FPS is now hidden</col>", false);
-                }
-                break;
-            case "show_fps":
-                InteractiveObject.showFps = true;
-                printConsoleMessage("<col=00FF00>FPS is now shown</col>", false);
-                break;
-            case "hide_fps":
-                InteractiveObject.showFps = false;
-                printConsoleMessage("<col=FF0000>FPS is now hidden</col>", false);
-                break;
-            case "search":
-            case "find":
-            case "s":
-                searchObjects(cmdInput);
-                break;
-            case "exit":
-            case "close":
-            case "quit":
-                consoleOpen = false;
-                break;
-            case "dropclient":
-            case "clientdrop":
-                Class59.dropClient(2578);
-                break;
-            case "help":
-            case "commands":
-                printCommands();
-            default:
-                SceneCluster.packetBuffer.putPacket(246);
-                SceneCluster.packetBuffer.putByte(cmd.length() + 1);
-                SceneCluster.packetBuffer.putString(cmd);
-                break;
-        }
-    }
-
-    private void printCommands() {
-        printConsoleMessage("<col=FFFF00>Commands:</col>", false);
-        printConsoleMessage("<col=00FF00>help | commands</col> - <col=FFFF00>Returns this list</col>", false);
-        printConsoleMessage("<col=00FF00>alpha</col> - <col=FFFF00>Toggles console background transparency</col>", false);
-        printConsoleMessage("<col=00FF00>clear | cls</col> - <col=FFFF00>Clears console output</col>", false);
-        printConsoleMessage("<col=00FF00>rights | playerrights</col> - <col=FFFF00>Returns current player rights</col>", false);
-        printConsoleMessage("<col=00FF00>fps | toggle_fps</col> - <col=FFFF00>Toggles the FPS counter</col>", false);
-        printConsoleMessage("<col=00FF00>show_fps</col> - <col=FFFF00>Shows FPS counter</col>", false);
-        printConsoleMessage("<col=00FF00>hide_fps</col> - <col=FFFF00>Hides FPS counter</col>", false);
-        printConsoleMessage("<col=00FF00>search [item | npc | object] [name]</col> - <col=FFFF00>Returns list of results</col>", false);
-
-    }
-
-    private void searchObjects(String[] cmdInput) {
-        if(cmdInput.length <= 2) {
-            printConsoleMessage("<col=FFA500>Usage: search [item|npc|object] [name]</col>", false);
-            return;
-        }
-        printConsoleMessage("<col=FFFF00>Searching...</col>", false);
-
-        results = 0;
-        switch(cmdInput[1].toLowerCase()) {
-            case "item":
-            case "items":
-            case "i":
-                for(int itemId = 0; ItemDefinition.count > itemId; itemId++) {
-                    ItemDefinition definition = ItemDefinition.forId(itemId, 10);
-                    if(definition.noteTemplateId == -1) {
-                        filterAndAddDefinition(itemId, definition, cmdInput);
-                        if((results >= maxResults))
-                            break;
-                    }
-                }
-                break;
-            case "npc":
-            case "npcs":
-            case "n":
-                for(int npcId = 0; ActorDefinition.count > npcId; npcId++) {
-                    ActorDefinition definition = ActorDefinition.getDefinition(npcId);
-                    filterAndAddDefinition(npcId, definition, cmdInput);
-                    if((results >= maxResults))
-                        break;
-                }
-                break;
-            case "object":
-            case "objects":
-            case "o":
-                for(int objectId = 0; GameObjectDefinition.count > objectId; objectId++) {
-                    GameObjectDefinition definition = GameObjectDefinition.getDefinition(objectId);
-                    filterAndAddDefinition(objectId, definition, cmdInput);
-                    if((results >= maxResults))
-                        break;
-                }
-                break;
-        }
-
-    }
-
-    private void filterAndAddDefinition(int id, EntityDefinition def, String[] searchTerms) {
-        if(def.getName() != null) {
-            RSString objectName = def.getName().toLowerCase();
-            String itemNameString = objectName.toString();
-            for(int indx = 2; indx < searchTerms.length; indx++) {
-                if(!itemNameString.contains(searchTerms[indx].toLowerCase()))
-                    return;
-            }
-            printConsoleMessage("<col=FFFF00>" + def.getName() + " - " + id + "</col>", false);
-            results++;
+        int index = this.commands.indexOf(cmdInput[0]);
+        if(index == -1) {
+            SceneCluster.packetBuffer.putPacket(246);
+            SceneCluster.packetBuffer.putByte(cmd.length() + 1);
+            SceneCluster.packetBuffer.putString(cmd);
+        } else {
+            this.commands.get(index).execute(this, cmdInput);
         }
     }
 
@@ -295,8 +203,8 @@ public class Console {
             resetToCurrent();
         }
         if(ItemDefinition.anInt2854 == 101) { // key delete
-            if(consoleInput.length() != currentChatIndex){
-                consoleInput = consoleInput.substring(0, currentChatIndex) + consoleInput.substring(currentChatIndex+1);
+            if(consoleInput.length() != currentChatIndex) {
+                consoleInput = consoleInput.substring(0, currentChatIndex) + consoleInput.substring(currentChatIndex + 1);
             }
         }
         if(ItemDefinition.anInt2854 == 102) { // Key home
@@ -315,11 +223,19 @@ public class Console {
             currentChatIndex++;
         }
         if(ItemDefinition.anInt2854 == 84 && (consoleInput.length() > 0)) { // key enter
-            printConsoleMessage(consoleInput, true);
+            log(consoleInput, true);
             parseConsoleCommand(consoleInput);
             consoleInput = "";
             currentChatIndex = 0;
         }
         ChatBox.redrawChatbox = true;
+    }
+
+    public void toggleAlpha() {
+        this.alpha = !this.alpha;
+    }
+
+    public void setMessageCount(int count) {
+        this.messageCount = count;
     }
 }
