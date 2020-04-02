@@ -9,7 +9,7 @@ import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
-import com.jagex.runescape.frame.Console;
+import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.language.Native;

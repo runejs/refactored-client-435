@@ -10,7 +10,7 @@ import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
-import com.jagex.runescape.frame.Console;
+import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Item;
@@ -368,7 +368,7 @@ public class IncomingPackets {
             }
             if(incomingPacket == 83) { // console command
                 RSString message = incomingPacketBuffer.getRSString();
-                Console.console.printConsoleMessage("<col=FFFF00>" + message.toString() + "</col>", false);
+                Console.console.log("<col=FFFF00>" + message.toString() + "</col>");
                 incomingPacket = -1;
                 return true;
             }

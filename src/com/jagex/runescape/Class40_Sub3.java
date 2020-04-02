@@ -5,7 +5,7 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.*;
 import com.jagex.runescape.collection.Node;
-import com.jagex.runescape.frame.Console;
+import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
@@ -21,7 +21,6 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
-import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
@@ -131,10 +130,10 @@ public class Class40_Sub3 extends Node {
             Class67.anInt1607 = 35;
         } else if(Class40_Sub5_Sub6.anInt2451 == 50) {
             int i = 0;
-            if(Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236 != null)
+            if(Class40_Sub5_Sub17_Sub6.fontSmall != null)
                 i++;
             else
-                Class40_Sub5_Sub17_Sub6.aClass40_Sub5_Sub14_Sub1_3236 = TypeFace.loadTypeFace(ActorDefinition.aClass6_Sub1_2377, HuffmanEncoding.blank_string, Class40_Sub6.aClass1_2101);
+                Class40_Sub5_Sub17_Sub6.fontSmall = TypeFace.loadTypeFace(ActorDefinition.aClass6_Sub1_2377, HuffmanEncoding.blank_string, Class40_Sub6.aClass1_2101);
             if(WallDecoration.fontNormal != null)
                 i++;
             else

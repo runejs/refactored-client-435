@@ -7,7 +7,7 @@ import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.*;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
-import com.jagex.runescape.frame.Console;
+import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
