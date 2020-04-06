@@ -60,7 +60,7 @@ public class Class8 {
 
     }
 
-    public static void method210() {
+    public static void setHighMemory() {
         VertexNormal.lowMemory = false;
         Scene.lowMemory = false;
 

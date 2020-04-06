@@ -32,6 +32,7 @@ import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.*;
 import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
+import tech.henning.fourthreefive.Configuration;
 
 import java.net.InetAddress;
 import java.net.Socket;
@@ -577,20 +578,20 @@ public class Main extends RSApplet {
             } else
                 Class44.modewhat = 1;
             if(arg0[3].equals("lowmem"))
-                Class59.method983();
+                Class59.setLowMemory();
             else if(arg0[3].equals("highmem"))
-                Class8.method210();
+                Class8.setHighMemory();
             else
                 Class37.method432();
             if(!arg0[4].equals("free")) {
                 if(arg0[4].equals("members"))
-                    Class22.aBoolean541 = true;
+                    Class22.membersWorld = true;
                 else
                     Class37.method432();
             } else
-                Class22.aBoolean541 = false;
+                Class22.membersWorld = false;
             Main main = new Main();
-            main.openClientApplet("runescape", 13, 503, 32 + Class44.modewhat, InetAddress.getLocalHost(), 435, 765);
+            main.openClientApplet("runescape", 13, 503, 32 + Class44.modewhat, InetAddress.getByName(Configuration.SERVER_ADDRESS), 435, 765);
         } catch(Exception exception) {
             exception.printStackTrace();
         }
@@ -932,11 +933,11 @@ public class Main extends RSApplet {
             Class44.modewhere = Integer.parseInt(this.getParameter("modewhere"));
             String string = this.getParameter("lowmem");
             if(string != null && string.equals("1"))
-                Class59.method983();
+                Class59.setLowMemory();
             else
-                Class8.method210();
+                Class8.setHighMemory();
             String string_80_ = this.getParameter("members");
-            Class22.aBoolean541 = string_80_ != null && string_80_.equals("1");
+            Class22.membersWorld = string_80_ != null && string_80_.equals("1");
             String string_81_ = this.getParameter("lang");
             this.displayClientFrame((byte) 120, 435, 503, 765, Class44.modewhat + 32);
         }

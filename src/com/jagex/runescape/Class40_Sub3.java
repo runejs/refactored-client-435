@@ -170,7 +170,7 @@ public class Class40_Sub3 extends Node {
                 method977(3, IdentityKit.aClass6_Sub1_2609, UnderlayDefinition.aClass6_Sub1_2571);
                 method980(28987, UnderlayDefinition.aClass6_Sub1_2571, VertexNormal.lowMemory, IdentityKit.aClass6_Sub1_2609);
                 Class27.method357(UnderlayDefinition.aClass6_Sub1_2571, arg0 ^ ~0x2a85, IdentityKit.aClass6_Sub1_2609);
-                Class42.method885(IdentityKit.aClass6_Sub1_2609, Class22.aBoolean541, UnderlayDefinition.aClass6_Sub1_2571, -313);
+                Class42.method885(IdentityKit.aClass6_Sub1_2609, Class22.membersWorld, UnderlayDefinition.aClass6_Sub1_2571, -313);
                 Cache.method236(false, Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000, IdentityKit.aClass6_Sub1_2609, FloorDecoration.aClass6_Sub1_605);
                 Class55.method966(arg0 ^ 0x38, UnderlayDefinition.aClass6_Sub1_2571, IdentityKit.aClass6_Sub1_2609);
                 Landscape.method936(IdentityKit.aClass6_Sub1_2609);

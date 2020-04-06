@@ -52,6 +52,7 @@ public class Console {
         commands.add(new AlphaCommand());
         commands.add(new ClearCommand());
         commands.add(new PlayerRightsCommand());
+        commands.add(new IpCommand());
         commands.add(new FpsCommand());
         commands.add(new ShowFpsCommand());
         commands.add(new HideFpsCommand());
@@ -135,7 +136,6 @@ public class Console {
         int index = this.commands.indexOf(cmdInput[0].toLowerCase());
         if(index == -1) {
             SceneCluster.packetBuffer.putPacket(246);
-            SceneCluster.packetBuffer.putByte(cmd.length() + 1);
             SceneCluster.packetBuffer.putString(cmd);
         } else {
             this.commands.get(index).execute(this, cmdInput);

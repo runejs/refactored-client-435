@@ -22,7 +22,7 @@ import com.jagex.runescape.scene.util.CollisionMap;
 public abstract class Class22 {
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array535;
     public static int anInt537 = 0;
-    public static boolean aBoolean541 = false;
+    public static boolean membersWorld = false;
     public static boolean accountFlagged = false;
     public static int anInt545;
     public static int anInt547 = 0;
