@@ -3,6 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.cache.media.WidgetType;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -41,7 +42,7 @@ public class Class61 {
                 boolean bool = true;
                 for(int i = 0; ((Widget.interfaces[arg1]).length > i); i++) {
                     if(Widget.interfaces[arg1][i] != null) {
-                        if((Widget.interfaces[arg1][i].type) != 2)
+                        if((Widget.interfaces[arg1][i].type) != WidgetType.INVENTORY)
                             Widget.interfaces[arg1][i] = null;
                         else
                             bool = false;

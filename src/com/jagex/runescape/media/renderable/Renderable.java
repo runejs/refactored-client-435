@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.cache.media.WidgetType;
 import com.jagex.runescape.frame.ChatBox;
 
 public abstract class Renderable extends SubNode {
@@ -35,7 +36,7 @@ public abstract class Renderable extends SubNode {
         boolean bool = false;
         for(int i = 0; widgets.length > i; i++) {
             Widget widget = widgets[i];
-            if(widget != null && widget.type == 6) {
+            if(widget != null && widget.type == WidgetType.MODEL) {
                 if(widget.animation != -1 || widget.alternateAnimation != -1) {
                     boolean bool_0_ = ItemDefinition.method746(widget);
                     int i_1_;
