@@ -48,7 +48,7 @@ public class Class59 {
         }
     }
 
-    public static void method983() {
+    public static void setLowMemory() {
         Scene.lowMemory = true;
         VertexNormal.lowMemory = true;
     }
