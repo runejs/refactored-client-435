@@ -2,10 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.IdentityKit;
-import com.jagex.runescape.cache.media.AnimationSequence;
-import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.cache.media.*;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
@@ -77,7 +74,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             providesignlink(null);
         for(int i = 0; i < arg7.length; i++) {
             Widget widget = arg7[i];
-            if(widget != null && (widget.type == 0 || widget.aBoolean2688) && widget != null && arg5 == widget.parentId && (!widget.isHidden || PacketBuffer.hiddenButtonTest)) {
+            if(widget != null && (widget.type == WidgetType.LAYER || widget.aBoolean2688) && widget != null && arg5 == widget.parentId && (!widget.isHidden || PacketBuffer.hiddenButtonTest)) {
                 int i_1_ = arg4 + widget.currentX;
                 int i_2_ = arg0 + widget.currentY;
                 if(!widget.aBoolean2694)
@@ -90,7 +87,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
                 int i_6_ = arg4 < i_1_ ? i_1_ : arg4;
                 int i_7_ = arg1 > i_3_ ? i_3_ : arg1;
                 int i_8_ = i_5_ < arg8 ? i_5_ : arg8;
-                if(widget.type == 0) {
+                if(widget.type == WidgetType.LAYER) {
                     method20(i_4_, i_7_, widget.anInt2746, arg3, i_6_, i, 1, arg7, i_8_, widget.scrollPosition);
                     if(widget.aWidgetArray2713 != null)
                         method20(i_4_, i_7_, widget.anInt2746, arg3, i_6_, widget.id, 1, (widget.aWidgetArray2713), i_8_, widget.scrollPosition);

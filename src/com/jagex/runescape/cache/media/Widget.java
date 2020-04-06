@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
@@ -74,7 +75,7 @@ public class Widget extends SubNode {
     public Object[] anObjectArray2680;
     public Object[] anObjectArray2681;
     public boolean aBoolean2682;
-    public int type;
+    public WidgetType type;
     public int[] items;
     public int modelType;
     public boolean aBoolean2688;
@@ -489,7 +490,7 @@ public class Widget extends SubNode {
                         }
                         Widget widget_22_ = new Widget();
                         widget_22_.parentId = widget.id;
-                        widget_22_.type = i_19_;
+                        widget_22_.type = WidgetType.get(i_19_);
                         widget_22_.id = ((0xffff & widget.id) << 15) + (-2147483648 + i_20_);
                         widget.aWidgetArray2713[i_20_] = widget_22_;
                         if(bool) {
@@ -1228,7 +1229,7 @@ public class Widget extends SubNode {
 
     public void decodeIf1(Buffer buffer) {
         isIf3 = false;
-        type = buffer.getUnsignedByte();
+        type = WidgetType.get(buffer.getUnsignedByte());
         actionType = buffer.getUnsignedByte();
         contentType = buffer.getUnsignedShortBE();
         originalX = currentX = buffer.getShortBE(); // originalX
@@ -1268,15 +1269,15 @@ public class Widget extends SubNode {
                 }
             }
         }
-        if(type == 0) {
+        if(type == WidgetType.LAYER) {
             scrollHeight = buffer.getUnsignedShortBE();
             isHidden = buffer.getUnsignedByte() == 1;
         }
-        if(type == 1) {
+        if(type == WidgetType.UNKNOWN) {
             buffer.getUnsignedShortBE();
             buffer.getUnsignedByte();
         }
-        if(type == 2) {
+        if(type == WidgetType.INVENTORY) {
             items = new int[originalHeight * originalWidth];
             itemAmounts = new int[originalHeight * originalWidth];
             itemSwapable = buffer.getUnsignedByte()== 1;
@@ -1306,33 +1307,33 @@ public class Widget extends SubNode {
                 }
             }
         }
-        if(type == 3) {
+        if(type == WidgetType.RECTANGLE) {
             filled = buffer.getUnsignedByte() == 1;
         }
-        if(type == 4 || type == 1) {
+        if(type == WidgetType.TEXT || type == WidgetType.UNKNOWN) {
             xTextAlignment = buffer.getUnsignedByte();
             yTextAlignment = buffer.getUnsignedByte();
             lineHeight = buffer.getUnsignedByte();
             fontId = buffer.getUnsignedShortBE();
             textShadowed = buffer.getUnsignedByte() == 1;
         }
-        if(type == 4) {
+        if(type == WidgetType.TEXT) {
             disabledText = buffer.getRSString();
             alternateText = buffer.getRSString();
         }
-        if(type == 1 || type == 3 || type == 4) {
+        if(type == WidgetType.UNKNOWN || type == WidgetType.RECTANGLE || type == WidgetType.TEXT) {
             textColor = buffer.getIntBE();
         }
-        if(type == 3 || type == 4) {
+        if(type == WidgetType.RECTANGLE || type == WidgetType.TEXT) {
             alternateTextColor = buffer.getIntBE();
             hoveredTextColor = buffer.getIntBE();
             alternateHoveredTextColor = buffer.getIntBE();
         }
-        if(type == 5) {
+        if(type == WidgetType.GRAPHIC) {
             spriteId = buffer.getIntBE();
             alternateSpriteId = buffer.getIntBE();
         }
-        if(type == 6) {
+        if(type == WidgetType.MODEL) {
             modelType = 1;
             modelId = buffer.getUnsignedShortBE();
             if(modelId == 0xFFFF) {
@@ -1355,7 +1356,7 @@ public class Widget extends SubNode {
             rotationX = buffer.getUnsignedShortBE();
             rotationZ = buffer.getUnsignedShortBE();
         }
-        if(type == 7) {
+        if(type == WidgetType.TEXT_INVENTORY) {
             items = new int[originalWidth * originalHeight];
             itemAmounts = new int[originalWidth * originalHeight];
             xTextAlignment = buffer.getUnsignedByte();
@@ -1373,10 +1374,10 @@ public class Widget extends SubNode {
                 }
             }
         }
-        if(type == 8) {
+        if(type == WidgetType.IF1_TOOLTIP) {
             disabledText = buffer.getRSString();
         }
-        if(actionType == 2 || type == 2) {
+        if(actionType == 2 || type == WidgetType.INVENTORY) {
             targetVerb = buffer.getRSString();
             spellName = buffer.getRSString();
             clickMask = buffer.getUnsignedShortBE();
@@ -1453,12 +1454,12 @@ public class Widget extends SubNode {
     public void decodeIf3(Buffer buffer) {
         buffer.getUnsignedByte();
         isIf3 = true;
-        type = buffer.getUnsignedByte();
+        type = WidgetType.get(buffer.getUnsignedByte());
         contentType = buffer.getUnsignedShortBE();
         originalX = currentX = buffer.getShortBE();
         originalY = currentY = buffer.getShortBE();
         originalWidth = buffer.getUnsignedShortBE();
-        if(type == 9) {
+        if(type == WidgetType.LINE) {
             originalHeight = buffer.getShortBE();
         } else {
             originalHeight = buffer.getUnsignedShortBE();
@@ -1469,17 +1470,17 @@ public class Widget extends SubNode {
         }
         isHidden = buffer.getUnsignedByte() == 1;
         aBoolean2688 = buffer.getUnsignedByte() == 1;
-        if(type == 0) {
+        if(type == WidgetType.LAYER) {
             anInt2746 = buffer.getUnsignedShortBE();
             scrollPosition = buffer.getUnsignedShortBE();
         }
-        if(type == 5) {
+        if(type == WidgetType.GRAPHIC) {
             spriteId = buffer.getIntBE();
             anInt2751 = buffer.getUnsignedShortBE();
             aBoolean2641 = buffer.getUnsignedByte() == 1;
             opacity = buffer.getUnsignedByte();
         }
-        if(type == 6) {
+        if(type == WidgetType.MODEL) {
             modelType = 1;
             modelId = buffer.getUnsignedShortBE();
             if(modelId == 65535) {
@@ -1497,7 +1498,7 @@ public class Widget extends SubNode {
             }
             orthogonal = buffer.getUnsignedByte() == 1;
         }
-        if(type == 4) {
+        if(type == WidgetType.TEXT) {
             fontId = buffer.getUnsignedShortBE();
             disabledText = buffer.getRSString();
             lineHeight = buffer.getUnsignedByte();
@@ -1506,12 +1507,12 @@ public class Widget extends SubNode {
             textShadowed = buffer.getUnsignedByte() == 1;
             textColor = buffer.getIntBE();
         }
-        if(type == 3) {
+        if(type == WidgetType.RECTANGLE) {
             textColor = buffer.getIntBE();
             filled = buffer.getUnsignedByte() == 1;
             opacity = buffer.getUnsignedByte();
         }
-        if(type == 9) {
+        if(type == WidgetType.LINE) {
             buffer.getUnsignedByte();
             textColor = buffer.getIntBE();
         }

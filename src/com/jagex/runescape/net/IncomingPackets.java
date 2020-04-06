@@ -8,6 +8,7 @@ import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.cache.media.WidgetType;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.console.Console;
@@ -377,7 +378,7 @@ public class IncomingPackets {
                 int i_35_ = incomingPacketBuffer.getIntLE();
                 Widget widget = Widget.forId(i_35_);
                 incomingPacket = -1;
-                if(widget != null && widget.type == 0) {
+                if(widget != null && widget.type == WidgetType.LAYER) {
                     if(i_34_ < 0)
                         i_34_ = 0;
                     if((-widget.originalHeight + widget.scrollHeight) < i_34_)

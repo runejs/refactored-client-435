@@ -8,6 +8,7 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.cache.media.WidgetType;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
@@ -122,7 +123,7 @@ public class Class48 {
                 if(widget != null && arg6 == widget.parentId) {
                     int i_1_ = widget.currentY - (-arg9 + arg3);
                     int i_2_ = -arg10 + (widget.currentX + arg2);
-                    if(widget.type == 8 && (i_2_ <= arg8) && i_1_ <= arg4 && arg8 < i_2_ + widget.originalWidth && ((arg4 < widget.originalHeight + i_1_)))
+                    if(widget.type == WidgetType.IF1_TOOLTIP && (i_2_ <= arg8) && i_1_ <= arg4 && arg8 < i_2_ + widget.originalWidth && ((arg4 < widget.originalHeight + i_1_)))
                         Item.anInt3065 = i;
                     if((widget.hoveredSiblingId >= 0 || widget.hoveredTextColor != 0) && i_2_ <= arg8 && i_1_ <= arg4 && arg8 < i_2_ + widget.originalWidth && ((arg4 < widget.originalHeight + i_1_))) {
                         if(widget.hoveredSiblingId >= 0)
@@ -130,7 +131,7 @@ public class Class48 {
                         else
                             OverlayDefinition.anInt2328 = i;
                     }
-                    if(widget.type == 0) {
+                    if(widget.type == WidgetType.LAYER) {
                         if(!widget.isHidden || Class29.method371(8247, arg7, i) || PacketBuffer.hiddenButtonTest) {
                             method925(i_1_ + widget.originalHeight, arg1, i_2_, widget.scrollPosition, arg4, arg5, i, arg7, arg8, i_1_, widget.anInt2746, (i_2_ + widget.originalWidth));
                             if((widget.aWidgetArray2713) != null)
@@ -167,7 +168,7 @@ public class Class48 {
                         if(widget.actionType == 6 && CacheIndex_Sub1.anInt1819 == -1 && (i_2_ <= arg8) && i_1_ <= arg4 && arg8 < i_2_ + widget.originalWidth && ((arg4 < widget.originalHeight + i_1_))) {
                             OverlayDefinition.addActionRow(widget.tooltip, 0, 0, widget.id, 54, HuffmanEncoding.blank_string);
                         }
-                        if(widget.type == 2) {
+                        if(widget.type == WidgetType.INVENTORY) {
                             int i_4_ = 0;
                             for(int i_5_ = 0; ((i_5_ < widget.originalHeight)); i_5_++) {
                                 for(int i_6_ = 0; i_6_ < widget.originalWidth; i_6_++) {

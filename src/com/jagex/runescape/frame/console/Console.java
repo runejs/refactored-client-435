@@ -263,4 +263,8 @@ public class Console {
     public void setMessageCount(int count) {
         this.messageCount = count;
     }
+
+    public void log(int i) {
+        log(String.valueOf(i));
+    }
 }

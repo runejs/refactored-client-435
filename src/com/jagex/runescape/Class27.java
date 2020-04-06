@@ -938,7 +938,7 @@ public class Class27 {
                 if(i_29_ <= arg6 && i_28_ <= arg1 && (i_29_ + widget_27_.originalWidth > arg6) && ((arg1 < i_28_ + widget_27_.originalHeight)) && !widget_27_.isHidden) {
                     if(widget_27_.id < 0 && arg2 || widget_27_.id >= 0 && !arg2)
                         widget = widget_27_;
-                    if(widget_27_.type == 0) {
+                    if(widget_27_.type == WidgetType.LAYER) {
                         Widget widget_30_ = method361(arg0, arg1, arg2, (-widget_27_.scrollPosition + (widget_27_.currentY)), i, (widget_27_.currentX - (widget_27_.anInt2746)), arg6, 398);
                         if(widget_30_ != null)
                             widget = widget_30_;
