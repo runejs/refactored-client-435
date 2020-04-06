@@ -6,6 +6,9 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.*;
+import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.Widget.WidgetModelType;
+import com.jagex.runescape.cache.media.Widget.WidgetType;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.KeyFocusListener;
@@ -331,7 +334,7 @@ public class Main extends RSApplet {
                             i_36_ = widget.alternateAnimation;
 
                         Model model;
-                        if(widget.modelType != 5) {
+                        if(widget.modelType != WidgetModelType.PLAYER) {
                             if(i_36_ == -1) {
                                 model = (widget.method646((byte) 46, null, -1, bool_35_, (Player.localPlayer.aClass30_3282)));
                                 if(model == null && FramemapDefinition.aBoolean2177)

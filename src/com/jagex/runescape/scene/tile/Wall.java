@@ -2,7 +2,7 @@ package com.jagex.runescape.scene.tile;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.media.TypeFace;
-import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.net.ISAAC;

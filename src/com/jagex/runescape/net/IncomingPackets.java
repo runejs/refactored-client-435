@@ -7,8 +7,9 @@ import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.Widget;
-import com.jagex.runescape.cache.media.WidgetType;
+import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.Widget.WidgetModelType;
+import com.jagex.runescape.cache.media.Widget.WidgetType;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.console.Console;
@@ -292,7 +293,7 @@ public class IncomingPackets {
                 int widgetData = incomingPacketBuffer.getIntLE();
                 Widget widget = Widget.forId(widgetData);
                 widget.modelId = modelId;
-                widget.modelType = 1;
+                widget.modelType = WidgetModelType.MODEL;
                 incomingPacket = -1;
                 return true;
             }
@@ -891,7 +892,7 @@ public class IncomingPackets {
                 int npcId = incomingPacketBuffer.getUnsignedShortLE();
                 int widgetData = incomingPacketBuffer.getIntLE();
                 Widget widget = Widget.forId(widgetData);
-                widget.modelType = 2;
+                widget.modelType = WidgetModelType.NPC_CHATHEAD;
                 incomingPacket = -1;
                 widget.modelId = npcId;
                 return true;
@@ -946,7 +947,7 @@ public class IncomingPackets {
             if(incomingPacket == SET_WIDGET_PLAYER_HEAD) {
                 int widgetData = incomingPacketBuffer.getIntLE();
                 Widget widget = Widget.forId(widgetData);
-                widget.modelType = 3;
+                widget.modelType = WidgetModelType.LOCAL_PLAYER_CHATHEAD;
                 widget.modelId = Player.localPlayer.aClass30_3282.method374(-20874);
                 incomingPacket = -1;
                 return true;
@@ -980,13 +981,13 @@ public class IncomingPackets {
                 } else {
                     if(itemId == -1) {
                         incomingPacket = -1;
-                        widget.modelType = 0;
+                        widget.modelType = WidgetModelType.NULL;
                         return true;
                     }
                     ItemDefinition itemDefinition = ItemDefinition.forId(itemId, 10);
                     widget.rotationX = itemDefinition.xan2d;
                     widget.modelId = itemId;
-                    widget.modelType = 4;
+                    widget.modelType =  WidgetModelType.ITEM;
                     widget.modelZoom = 100 * itemDefinition.zoom2d / zoom;
                     widget.rotationZ = itemDefinition.yan2d;
                 }

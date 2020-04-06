@@ -1,11 +1,13 @@
-package com.jagex.runescape.cache.media;
+package com.jagex.runescape.cache.media.Widget;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
-import com.jagex.runescape.frame.console.Console;
+import com.jagex.runescape.cache.media.AnimationSequence;
+import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
@@ -50,7 +52,7 @@ public class Widget extends SubNode {
     public int parentId;
     public int originalX;
     public Object[] anObjectArray2650;
-    public int anInt2651 = 1;
+    public WidgetModelType alternateModelType = WidgetModelType.MODEL;
     public int alternateAnimation;
     public int anInt2654;
     public boolean itemUsable;
@@ -77,7 +79,7 @@ public class Widget extends SubNode {
     public boolean aBoolean2682;
     public WidgetType type;
     public int[] items;
-    public int modelType;
+    public WidgetModelType modelType;
     public boolean aBoolean2688;
     public int id;
     public int rotationX;
@@ -140,7 +142,7 @@ public class Widget extends SubNode {
         tooltip = Class39.str_ok;
         itemSpritePadsY = 0;
         anInt2660 = 0;
-        modelType = 1;
+        modelType = WidgetModelType.MODEL;
         alternateAnimation = -1;
         textColor = 0;
         aBoolean2682 = false;
@@ -564,7 +566,7 @@ public class Widget extends SubNode {
                     } else if(i_3_ == 1107) {
                         widget.aBoolean2641 = (Class67.anIntArray1588[--i] == 1);
                     } else if(i_3_ == 1108) {
-                        widget.modelType = 1;
+                        widget.modelType = WidgetModelType.MODEL;
                         widget.modelId = Class67.anIntArray1588[--i];
                     } else if(i_3_ == 1109) {
                         i -= 6;
@@ -1021,10 +1023,10 @@ public class Widget extends SubNode {
                         int i_87_ = Class67.anIntArray1588[i];
                         int i_88_ = Class67.anIntArray1588[i + 2];
                         if(i_87_ == -1) {
-                            widget.modelType = 0;
+                            widget.modelType = WidgetModelType.NULL;
                         } else {
                             ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_87_, 10);
-                            widget.modelType = 4;
+                            widget.modelType = WidgetModelType.ITEM;
                             widget.rotationX = class40_sub5_sub16.xan2d;
                             widget.rotationY = class40_sub5_sub16.zan2d;
                             widget.modelZoom = (100 * class40_sub5_sub16.zoom2d / i_88_);
@@ -1034,10 +1036,10 @@ public class Widget extends SubNode {
                             widget.modelId = i_87_;
                         }
                     } else if(i_3_ == 1201) {
-                        widget.modelType = 2;
+                        widget.modelType = WidgetModelType.NPC_CHATHEAD;
                         widget.modelId = Class67.anIntArray1588[--i];
                     } else if(i_3_ == 1202) {
-                        widget.modelType = 3;
+                        widget.modelType = WidgetModelType.LOCAL_PLAYER_CHATHEAD;
                         widget.modelId = Player.localPlayer.aClass30_3282.method374(-20874);
                     } else {
                         if(i_3_ != 1203) {
@@ -1174,12 +1176,12 @@ public class Widget extends SubNode {
             widget.rotationX = 150;
             widget.rotationZ = 0x7ff & (int) (256.0 * Math.sin((double) pulseCycle / 40.0));
             widget.modelId = 0;
-            widget.modelType = 5;
+            widget.modelType = WidgetModelType.PLAYER;
         } else if(type == 328) {
             widget.rotationX = 150;
             widget.rotationZ = 0x7ff & (int) (256.0 * Math.sin((double) pulseCycle / 40.0));
             widget.modelId = 1;
-            widget.modelType = 5;
+            widget.modelType = WidgetModelType.PLAYER;
         } else if(type == 600)
             widget.disabledText = (RSString.linkRSStrings(new RSString[]{HuffmanEncoding.reportedName, Native.prefixYellowSTARV}));
         else if(type == 620) {
@@ -1334,12 +1336,12 @@ public class Widget extends SubNode {
             alternateSpriteId = buffer.getIntBE();
         }
         if(type == WidgetType.MODEL) {
-            modelType = 1;
+            modelType = WidgetModelType.MODEL;
             modelId = buffer.getUnsignedShortBE();
             if(modelId == 0xFFFF) {
                 modelId = -1;
             }
-            anInt2651 = 1;
+            alternateModelType = WidgetModelType.MODEL;
             alternateModelId = buffer.getUnsignedShortBE();
             if(alternateModelId == 0xFFFF) {
                 alternateModelId = -1;
@@ -1481,7 +1483,7 @@ public class Widget extends SubNode {
             opacity = buffer.getUnsignedByte();
         }
         if(type == WidgetType.MODEL) {
-            modelType = 1;
+            modelType = WidgetModelType.MODEL;
             modelId = buffer.getUnsignedShortBE();
             if(modelId == 65535) {
                 modelId = -1;
@@ -1551,27 +1553,27 @@ public class Widget extends SubNode {
 
     public Model method646(byte arg0, AnimationSequence arg1, int arg2, boolean arg3, Class30 arg4) {
         FramemapDefinition.aBoolean2177 = false;
-        int i;
+        WidgetModelType modelType;
         int i_11_;
         if(arg3) {
             i_11_ = alternateModelId;
-            i = anInt2651;
+            modelType = alternateModelType;
         } else {
-            i = modelType;
+            modelType = this.modelType;
             i_11_ = modelId;
         }
-        if(i == 0) {
+        if(modelType == WidgetModelType.NULL) {
             return null;
         }
-        if(i == 1 && i_11_ == -1) {
+        if(modelType == WidgetModelType.MODEL && i_11_ == -1) {
             return null;
         }
         if(arg0 <= 25) {
             aBoolean2688 = true;
         }
-        Model class40_sub5_sub17_sub5 = ((Model) WallDecoration.aClass9_1264.get((long) ((i << 16) + i_11_), (byte) 59));
+        Model class40_sub5_sub17_sub5 = ((Model) WallDecoration.aClass9_1264.get((long) ((modelType.ordinal() << 16) + i_11_), (byte) 59));
         if(class40_sub5_sub17_sub5 == null) {
-            if(i == 1) {
+            if(modelType == WidgetModelType.MODEL) {
                 class40_sub5_sub17_sub5 = Model.getModel(Cache.aCacheIndex_329, i_11_, 0);
                 if(class40_sub5_sub17_sub5 == null) {
                     FramemapDefinition.aBoolean2177 = true;
@@ -1580,7 +1582,7 @@ public class Widget extends SubNode {
                 class40_sub5_sub17_sub5.createBones();
                 class40_sub5_sub17_sub5.applyLighting(64, 768, -50, -10, -50, true);
             }
-            if(i == 2) {
+            if(modelType == WidgetModelType.NPC_CHATHEAD) {
                 class40_sub5_sub17_sub5 = ActorDefinition.getDefinition(i_11_).getHeadModel();
                 if(class40_sub5_sub17_sub5 == null) {
                     FramemapDefinition.aBoolean2177 = true;
@@ -1589,7 +1591,7 @@ public class Widget extends SubNode {
                 class40_sub5_sub17_sub5.createBones();
                 class40_sub5_sub17_sub5.applyLighting(64, 768, -50, -10, -50, true);
             }
-            if(i == 3) {
+            if(modelType == WidgetModelType.LOCAL_PLAYER_CHATHEAD) {
                 if(arg4 == null) {
                     return null;
                 }
@@ -1601,7 +1603,7 @@ public class Widget extends SubNode {
                 class40_sub5_sub17_sub5.createBones();
                 class40_sub5_sub17_sub5.applyLighting(64, 768, -50, -10, -50, true);
             }
-            if(i == 4) {
+            if(modelType == WidgetModelType.ITEM) {
                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_11_, 10);
                 class40_sub5_sub17_sub5 = class40_sub5_sub16.asGroundStack(false, 10);
                 if(class40_sub5_sub17_sub5 == null) {
@@ -1611,7 +1613,7 @@ public class Widget extends SubNode {
                 class40_sub5_sub17_sub5.createBones();
                 class40_sub5_sub17_sub5.applyLighting(64 + (class40_sub5_sub16.ambient), 768 + (class40_sub5_sub16.contrast), -50, -10, -50, true);
             }
-            WallDecoration.aClass9_1264.put((long) ((i << 16) + i_11_), class40_sub5_sub17_sub5);
+            WallDecoration.aClass9_1264.put((long) ((modelType.ordinal() << 16) + i_11_), class40_sub5_sub17_sub5);
         }
         if(arg1 != null) {
             class40_sub5_sub17_sub5 = arg1.method598(arg2, class40_sub5_sub17_sub5, true);
