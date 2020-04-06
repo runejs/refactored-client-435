@@ -52,6 +52,7 @@ public class Console {
         commands.add(new AlphaCommand());
         commands.add(new ClearCommand());
         commands.add(new PlayerRightsCommand());
+        commands.add(new IpCommand());
         commands.add(new FpsCommand());
         commands.add(new ShowFpsCommand());
         commands.add(new HideFpsCommand());

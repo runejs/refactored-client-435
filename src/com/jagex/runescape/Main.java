@@ -32,6 +32,7 @@ import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.*;
 import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
+import tech.henning.fourthreefive.Configuration;
 
 import java.net.InetAddress;
 import java.net.Socket;
@@ -590,7 +591,7 @@ public class Main extends RSApplet {
             } else
                 Class22.membersWorld = false;
             Main main = new Main();
-            main.openClientApplet("runescape", 13, 503, 32 + Class44.modewhat, InetAddress.getLocalHost(), 435, 765);
+            main.openClientApplet("runescape", 13, 503, 32 + Class44.modewhat, InetAddress.getByName(Configuration.SERVER_ADDRESS), 435, 765);
         } catch(Exception exception) {
             exception.printStackTrace();
         }
