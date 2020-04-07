@@ -233,7 +233,6 @@ public class IncomingPackets {
 
                     for (int offset = 0; offset < 8; offset++) {
                         final boolean empty = (bitset & (1 << offset)) == 0;
-
                         final int id, amount;
 
                         if (empty) {
