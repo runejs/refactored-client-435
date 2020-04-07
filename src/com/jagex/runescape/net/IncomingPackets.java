@@ -240,7 +240,7 @@ public class IncomingPackets {
                         } else {
                             final int peek = incomingPacketBuffer.getUnsignedByte();
                             amount = peek == 255 ? incomingPacketBuffer.getIntBE() : peek;
-                            id = incomingPacketBuffer.getUnsignedShortLE();
+                            id = incomingPacketBuffer.getUnsignedShortBE();
                         }
 
                         final int idx = index + offset;
