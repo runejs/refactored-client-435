@@ -534,11 +534,11 @@ public class Class27 {
                         Widget widget = Widget.forId(i_10_);
                         if(widget != null && (widget.aWidgetArray2713 != null) && i != -1)
                             widget = (widget.aWidgetArray2713[i]);
-                        if(widget == null || widget.anInt2734 < 100000) {
+                        if(widget == null || widget.itemAmount < 100000) {
                             SceneCluster.packetBuffer.putPacket(151);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
                         } else
-                            Class44.addChatMessage(HuffmanEncoding.blank_string, (RSString.linkRSStrings((new RSString[]{HashTable.method334((widget.anInt2734)), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), 0);
+                            Class44.addChatMessage(HuffmanEncoding.blank_string, (RSString.linkRSStrings((new RSString[]{HashTable.method334((widget.itemAmount)), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), 0);
                     }
                     if(action == 42) {
                         Widget widget = Widget.forId(i_10_);
