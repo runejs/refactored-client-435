@@ -207,46 +207,6 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == UPDATE_ALL_WIDGET_ITEMS) {
-                /*for(int qq = 0; qq < Class58.varbitmasks.length; qq++) {
-                    int value = (Npc.method795((byte) -70, qq).anInt2633);
-
-                    if(value != 0) {
-                        System.out.println(qq + " = " + value);
-                    }
-                }*/
-                /*for(int qq = 0; qq < 469; qq++) {
-                    if(Class68.method1043(qq)) {
-                        Widget[] widgets = Widget.interfaces[qq];
-                        for(int y = 0; widgets.length > y; y++) {
-                            Widget widget = widgets[y];
-                            if(widget.items != null && widget.alternateRhs != null) {
-                                System.out.println(qq + " contains alternateOperators");
-                            }*/
-                            /*if(widget.configActions != null) {
-                                for(int jj = 0; jj < widget.configActions.length; jj++) {
-                                    if(widget.configActions[jj] != null) {
-                                        System.out.println(qq + " contains " + widget.configActions[jj]);
-                                    }
-                                }
-                            }*/
-                //if(widget.items != null && widget.items.length == 28) {
-                //    System.out.println(qq + " contains inventory");
-                //}
-                        /*}
-                    }
-                }*/
-                /*if(Class68.method1043(149)) {
-                    Widget[] widgets = Widget.interfaces[149];
-                    for(int y = 0; widgets.length > y; y++) {
-                        Widget widget = widgets[y];
-                        if(widget != null && widget.clientScripts != null) {
-                            String widgetText = widget.text.toString();
-                            if(widgetText.contains("Members")) {
-                                System.out.println(y);
-                            }
-                        }
-                    }
-                }*/
                 ISAAC.redrawTabArea = true;
                 final int packed = incomingPacketBuffer.getIntBE();
                 final Widget widget = Widget.forId(packed);
