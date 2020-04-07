@@ -103,7 +103,7 @@ public class Widget extends SubNode {
     public Widget[] aWidgetArray2713;
     public int actionType;
     public int yTextAlignment;
-    public int anInt2718;
+    public int itemId;
     public int hoveredTextColor;
     public int scrollHeight;
     public int hoveredSiblingId;
@@ -117,7 +117,7 @@ public class Widget extends SubNode {
     public int scrollPosition;
     public int lineHeight;
     public int xTextAlignment;
-    public int anInt2734;
+    public int itemAmount;
     public int anInt2736;
     public int offsetX2d;
     public int anInt2738;
@@ -167,7 +167,7 @@ public class Widget extends SubNode {
         hoveredSiblingId = -1;
         spellName = Native.string_blank;
         offsetY2d = 0;
-        anInt2734 = 0;
+        itemAmount = 0;
         disabledText = Native.string_blank;
         id = -1;
         lineHeight = 0;
@@ -193,7 +193,7 @@ public class Widget extends SubNode {
         scrollHeight = 0;
         scrollPosition = 0;
         anInt2736 = 0;
-        anInt2718 = -1;
+        itemId = -1;
         itemSpritePadsX = 0;
         actionType = 0;
         anInt2751 = 0;

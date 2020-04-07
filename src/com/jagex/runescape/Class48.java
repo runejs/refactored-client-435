@@ -255,8 +255,8 @@ public class Class48 {
                                 }
                             }
                         }
-                        if(widget.isIf3 && (widget.anInt2718 != -1) && (arg8 >= i_2_) && (arg4 >= i_1_) && ((arg8 < widget.originalWidth + i_2_)) && ((arg4 < i_1_ + widget.originalHeight))) {
-                            ItemDefinition itemDefinition = ItemDefinition.forId((widget.anInt2718), 10);
+                        if(widget.isIf3 && (widget.itemId != -1) && (arg8 >= i_2_) && (arg4 >= i_1_) && ((arg8 < widget.originalWidth + i_2_)) && ((arg4 < i_1_ + widget.originalHeight))) {
+                            ItemDefinition itemDefinition = ItemDefinition.forId((widget.itemId), 10);
                             if(widget.isInventory) {
                                 RSString[] class1s = itemDefinition.interfaceOptions;
                                 if(Class60.aBoolean1402)
@@ -281,8 +281,8 @@ public class Class48 {
                         }
                         if(widget.aBoolean2688 && widget.aClass1Array2661 != null && (i_2_ <= arg8) && (i_1_ <= arg4) && widget.originalWidth + i_2_ > arg8 && (arg4 < i_1_ + widget.originalHeight)) {
                             RSString class1 = HuffmanEncoding.blank_string;
-                            if(widget.anInt2718 != -1) {
-                                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((widget.anInt2718), arg5 ^ 0xa);
+                            if(widget.itemId != -1) {
+                                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((widget.itemId), arg5 ^ 0xa);
                                 class1 = (RSString.linkRSStrings((new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)})));
                             }
                             for(int i_15_ = ((widget.aClass1Array2661).length - 1); i_15_ >= 0; i_15_--) {

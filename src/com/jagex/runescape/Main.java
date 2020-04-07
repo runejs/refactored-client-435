@@ -226,13 +226,13 @@ public class Main extends RSApplet {
                                 if(Class29.method371(8247, arg0, i) && (widget.hoveredTextColor != 0))
                                     i_21_ = widget.hoveredTextColor;
                             }
-                            if(widget.isIf3 && (widget.anInt2718 != -1)) {
-                                ItemDefinition class40_sub5_sub16 = (ItemDefinition.forId(widget.anInt2718, 10));
+                            if(widget.isIf3 && (widget.itemId != -1)) {
+                                ItemDefinition class40_sub5_sub16 = (ItemDefinition.forId(widget.itemId, 10));
                                 class1 = class40_sub5_sub16.name;
                                 if(class1 == null)
                                     class1 = RSApplet.aClass1_34;
-                                if(class40_sub5_sub16.stackable == 1 || widget.anInt2734 != 1)
-                                    class1 = (RSString.linkRSStrings((new RSString[]{class1, Class29.aClass1_674, (LinkedList.method903((widget.anInt2734), (byte) -109))})));
+                                if(class40_sub5_sub16.stackable == 1 || widget.itemAmount != 1)
+                                    class1 = (RSString.linkRSStrings((new RSString[]{class1, Class29.aClass1_674, (LinkedList.method903((widget.itemAmount), (byte) -109))})));
                             }
                             if(widget.actionType == 6 && (CacheIndex_Sub1.anInt1819 == widget.id)) {
                                 i_21_ = widget.textColor;
@@ -252,10 +252,10 @@ public class Main extends RSApplet {
                             int i_22_ = 0;
                             int i_23_ = 0;
                             ImageRGB class40_sub5_sub14_sub4;
-                            if(widget.anInt2718 == -1)
+                            if(widget.itemId == -1)
                                 class40_sub5_sub14_sub4 = widget.method643(127, false);
                             else {
-                                class40_sub5_sub14_sub4 = (FramemapDefinition.method876(widget.anInt2734, widget.anInt2718, 0));
+                                class40_sub5_sub14_sub4 = (FramemapDefinition.method876(widget.itemAmount, widget.itemId, 0));
                                 i_22_ = (class40_sub5_sub14_sub4.maxWidth);
                                 i_23_ = (class40_sub5_sub14_sub4.maxHeight);
                                 class40_sub5_sub14_sub4.maxHeight = 32;
@@ -309,10 +309,10 @@ public class Main extends RSApplet {
                                 }
                             } else if(FramemapDefinition.aBoolean2177)
                                 bool = false;
-                            if(widget.anInt2718 != -1) {
-                                if(widget.anInt2734 != 1 || i_22_ == 33) {
-                                    Class40_Sub5_Sub17_Sub6.fontSmall.drawString((HashTable.method334((widget.anInt2734))), i_0_ + 1, i_1_ + 10, 0);
-                                    Class40_Sub5_Sub17_Sub6.fontSmall.drawString((HashTable.method334((widget.anInt2734))), i_0_, 9 + i_1_, 16776960);
+                            if(widget.itemId != -1) {
+                                if(widget.itemAmount != 1 || i_22_ == 33) {
+                                    Class40_Sub5_Sub17_Sub6.fontSmall.drawString((HashTable.method334((widget.itemAmount))), i_0_ + 1, i_1_ + 10, 0);
+                                    Class40_Sub5_Sub17_Sub6.fontSmall.drawString((HashTable.method334((widget.itemAmount))), i_0_, 9 + i_1_, 16776960);
                                 }
                                 class40_sub5_sub14_sub4.maxWidth = i_22_;
                                 class40_sub5_sub14_sub4.maxHeight = i_23_;
@@ -355,10 +355,10 @@ public class Main extends RSApplet {
                         int i_40_ = widget.rotationZ;
                         int i_41_ = widget.offsetX2d;
                         int i_42_ = widget.modelZoom;
-                        if(widget.anInt2718 != -1) {
-                            ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((widget.anInt2718), 10);
+                        if(widget.itemId != -1) {
+                            ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((widget.itemId), 10);
                             if(class40_sub5_sub16 != null) {
-                                class40_sub5_sub16 = (class40_sub5_sub16.method743(widget.anInt2734));
+                                class40_sub5_sub16 = (class40_sub5_sub16.method743(widget.itemAmount));
                                 model = class40_sub5_sub16.asGroundStack(true, 1);
                                 i_38_ = class40_sub5_sub16.zan2d;
                                 i_39_ = class40_sub5_sub16.yOffset2d;

@@ -207,82 +207,56 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == UPDATE_ALL_WIDGET_ITEMS) {
-                /*for(int qq = 0; qq < Class58.varbitmasks.length; qq++) {
-                    int value = (Npc.method795((byte) -70, qq).anInt2633);
-
-                    if(value != 0) {
-                        System.out.println(qq + " = " + value);
-                    }
-                }*/
-                /*for(int qq = 0; qq < 469; qq++) {
-                    if(Class68.method1043(qq)) {
-                        Widget[] widgets = Widget.interfaces[qq];
-                        for(int y = 0; widgets.length > y; y++) {
-                            Widget widget = widgets[y];
-                            if(widget.items != null && widget.alternateRhs != null) {
-                                System.out.println(qq + " contains alternateOperators");
-                            }*/
-                            /*if(widget.configActions != null) {
-                                for(int jj = 0; jj < widget.configActions.length; jj++) {
-                                    if(widget.configActions[jj] != null) {
-                                        System.out.println(qq + " contains " + widget.configActions[jj]);
-                                    }
-                                }
-                            }*/
-                //if(widget.items != null && widget.items.length == 28) {
-                //    System.out.println(qq + " contains inventory");
-                //}
-                        /*}
-                    }
-                }*/
-                /*if(Class68.method1043(149)) {
-                    Widget[] widgets = Widget.interfaces[149];
-                    for(int y = 0; widgets.length > y; y++) {
-                        Widget widget = widgets[y];
-                        if(widget != null && widget.clientScripts != null) {
-                            String widgetText = widget.text.toString();
-                            if(widgetText.contains("Members")) {
-                                System.out.println(y);
-                            }
-                        }
-                    }
-                }*/
                 ISAAC.redrawTabArea = true;
-                int widgetData = incomingPacketBuffer.getIntBE();
-                Widget widget = Widget.forId(widgetData);
-                if(widget.isIf3) {
-                    Widget[] widgets = (Widget.interfaces[widgetData >> 16]);
-                    for(int childIndex = 0; childIndex < widgets.length; childIndex++) {
-                        Widget child = widgets[childIndex];
-                        if(((0xffff & widget.id) == (0xffff & child.parentId)) && child.anInt2736 > 0) {
-                            child.anInt2734 = 0;
-                            child.anInt2718 = -1;
+                final int packed = incomingPacketBuffer.getIntBE();
+                final Widget widget = Widget.forId(packed);
+
+                if (widget.isIf3) {
+                    final Widget[] widgets = (Widget.interfaces[packed >> 16]);
+                    for (Widget child : widgets) {
+                        if (((0xffff & widget.id) == (0xffff & child.parentId)) && child.anInt2736 > 0) {
+                            child.itemAmount = 0;
+                            child.itemId = -1;
                         }
                     }
                 } else {
-                    for(int containerIndex = 0; widget.items.length > containerIndex; containerIndex++) {
-                        widget.items[containerIndex] = 0;
-                        widget.itemAmounts[containerIndex] = 0;
+                    for (int index = 0; index < widget.items.length; index++) {
+                        widget.items[index] = 0;
+                        widget.itemAmounts[index] = 0;
                     }
                 }
-                int containerSize = incomingPacketBuffer.getUnsignedShortBE();
-                for(int containerIndex = 0; (containerSize > containerIndex); containerIndex++) {
-                    int itemAmount = incomingPacketBuffer.getUnsignedByte();
-                    if(itemAmount == 255)
-                        itemAmount = incomingPacketBuffer.getIntBE();
-                    int itemId = incomingPacketBuffer.getUnsignedShortBE();
-                    if(widget.isIf3) {
-                        Widget[] widgets = (Widget.interfaces[widgetData >> 16]);
-                        for(int childIndex = 0; ((childIndex < widgets.length)); childIndex++) {
-                            Widget child = widgets[childIndex];
-                            if(((widget.id & 0xffff) == (child.parentId & 0xffff)) && (1 + containerIndex == child.anInt2736)) {
-                                child.anInt2734 = itemAmount;
-                                child.anInt2718 = -1 + itemId;
-                            }
+
+                final int size = incomingPacketBuffer.getUnsignedShortBE();
+
+                for (int index = 0; index < size; index += 8) {
+                    final int bitset = incomingPacketBuffer.getByte();
+
+                    for (int offset = 0; offset < 8; offset++) {
+                        final boolean empty = (bitset & (1 << offset)) == 0;
+                        final int id, amount;
+
+                        if (empty) {
+                            id = amount = 0;
+                        } else {
+                            final int peek = incomingPacketBuffer.getUnsignedByte();
+                            amount = peek == 255 ? incomingPacketBuffer.getIntBE() : peek;
+                            id = incomingPacketBuffer.getUnsignedShortBE();
                         }
-                    } else if(widget.items.length > containerIndex) {
-                        widget.items[containerIndex] = itemId;
-                        widget.itemAmounts[containerIndex] = itemAmount;
+
+                        final int idx = index + offset;
+
+                        if (widget.isIf3) {
+                            Widget widgets[] = Widget.interfaces[packed >> 16];
+                            for (Widget child : widgets) {
+                                if (((widget.id & 0xffff) == (child.parentId & 0xffff)) && (1 + idx == child.anInt2736)) {
+                                    child.itemAmount = amount;
+                                    child.itemId = -1 + id;
+                                }
+                            }
+                        } else if (idx < widget.items.length) {
+                            widget.items[idx] = id;
+                            widget.itemAmounts[idx] = amount;
+                        }
                     }
                 }
                 incomingPacket = -1;
@@ -396,8 +370,8 @@ public class IncomingPackets {
                     for(int i_37_ = 0; i_37_ < widgets.length; i_37_++) {
                         Widget widget_38_ = widgets[i_37_];
                         if(((0xffff & widget.id) == (widget_38_.parentId & 0xffff)) && widget_38_.anInt2736 > 0) {
-                            widget_38_.anInt2718 = -1;
-                            widget_38_.anInt2734 = 0;
+                            widget_38_.itemId = -1;
+                            widget_38_.itemAmount = 0;
                         }
                     }
                 } else {
@@ -976,8 +950,8 @@ public class IncomingPackets {
                     itemId = -1;
                 Widget widget = Widget.forId(widgetData);
                 if(widget.isIf3) {
-                    widget.anInt2734 = 1;
-                    widget.anInt2718 = itemId;
+                    widget.itemAmount = 1;
+                    widget.itemId = itemId;
                 } else {
                     if(itemId == -1) {
                         incomingPacket = -1;
@@ -1120,8 +1094,8 @@ public class IncomingPackets {
                         for(int i_111_ = 0; ((i_111_ < widgets.length)); i_111_++) {
                             Widget widget_112_ = widgets[i_111_];
                             if(((widget.id & 0xffff) == (widget_112_.parentId & 0xffff)) && 1 + itemSlot == (widget_112_.anInt2736)) {
-                                widget_112_.anInt2734 = i_110_;
-                                widget_112_.anInt2718 = i_109_ + -1;
+                                widget_112_.itemAmount = i_110_;
+                                widget_112_.itemId = i_109_ + -1;
                             }
                         }
                     } else if(itemSlot >= 0 && (widget.items.length > itemSlot)) {

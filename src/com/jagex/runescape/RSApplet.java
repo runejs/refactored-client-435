@@ -441,6 +441,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             Class35.aFrame1732.toFront();
             Insets insets = Class35.aFrame1732.getInsets();
             Class35.aFrame1732.setSize(insets.right + (width + insets.left), insets.bottom + insets.top + height);
+            Class35.aFrame1732.setLocationRelativeTo(null);
             Actor.aClass31_3152 = ISAAC.aClass31_521 = new Signlink(true, null, inetAddress, fileStoreId, cacheFolder, cacheIndexes);
             ISAAC.aClass31_521.method394(1, 0, this);
         } catch(Exception exception) {
