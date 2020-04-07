@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 public interface Interface3 {
-    int[] method12(int i, int i_0_);
+    int[] getTexturePixels(int i, int i_0_);
 
     boolean method13(byte i, int i_1_);
 

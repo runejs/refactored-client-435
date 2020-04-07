@@ -9,9 +9,11 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.util.Signlink;
@@ -19,51 +21,22 @@ import com.jagex.runescape.util.Signlink;
 import java.math.BigInteger;
 
 public abstract class Actor extends Renderable {
-    public static int anInt3076;
-    public static int anInt3084;
-    public static int anInt3085;
     public static RSString aClass1_3092 = RSString.CreateString("Loaded textures");
-    public static int anInt3103;
-    public static int anInt3106;
-    public static int anInt3108;
     public static int[] anIntArray3111;
     public static RSString aClass1_3114 = RSString.CreateString("Login limit exceeded)3");
-    public static BigInteger rsaModulus;
-    public static int anInt3121;
+    public static BigInteger rsaModulus = (new BigInteger("119568088839203297999728368933573315070738693395974011872885408638642676871679245723887367232256427712869170521351089799352546294030059890127723509653145359924771433131004387212857375068629466435244653901851504845054452735390701003613803443469723435116497545687393297329052988014281948392136928774011011998343"));
     public static RSString aClass1_3124 = aClass1_3092;
-    public static int anInt3128;
-    public static int anInt3133;
     public static RSString aClass1_3138 = aClass1_3114;
-    public static int anInt3142;
     public static volatile int eventMouseButtonPressed = 0;
     public static CacheIndex aCacheIndex_3144;
-    public static int anInt3146;
-    public static int anInt3147;
-    public static int[] anIntArray3149;
+    public static int[] anIntArray3149 = new int[1000];
     public static CacheIndex aCacheIndex_3150;
-    public static int anInt3151;
+    public static int anInt3151 = -16 + (int) (Math.random() * 33.0);
     public static Signlink aClass31_3152;
-    public static int anInt3153;
-    public static RSString aClass1_3154;
-    public static RSString aClass1_3155;
-    public static Player[] aClass40_Sub5_Sub17_Sub4_Sub1Array3156;
+    public static int actorUpdatingIndex = 0;
+    public static RSString aClass1_3155 = RSString.CreateString("Please wait )2 attempting to reestablish");
     public static CacheIndex_Sub1 aClass6_Sub1_3157;
-    public static RSString aClass1_3158;
-    public static RSString aClass1_3159;
-    public static RSString[] chatMessages;
-
-    static {
-        rsaModulus = (new BigInteger("119568088839203297999728368933573315070738693395974011872885408638642676871679245723887367232256427712869170521351089799352546294030059890127723509653145359924771433131004387212857375068629466435244653901851504845054452735390701003613803443469723435116497545687393297329052988014281948392136928774011011998343"));
-        anInt3151 = -16 + (int) (Math.random() * 33.0);
-        aClass40_Sub5_Sub17_Sub4_Sub1Array3156 = new Player[2048];
-        anInt3153 = 0;
-        aClass1_3154 = RSString.CreateString("Lade Schrifts-=tze )2 ");
-        aClass1_3155 = RSString.CreateString("Please wait )2 attempting to reestablish");
-        aClass1_3159 = aClass1_3155;
-        anIntArray3149 = new int[1000];
-        aClass1_3158 = RSString.CreateString("Registrierter Benutzer");
-        chatMessages = new RSString[100];
-    }
+    public static RSString aClass1_3159 = aClass1_3155;
 
     public boolean[] aBooleanArray3072;
     public int anInt3073;
@@ -79,7 +52,7 @@ public abstract class Actor extends Renderable {
     public int[] anIntArray3086;
     public int[] anIntArray3087;
     public int[] pathY;
-    public int anInt3089;
+    public int worldY;
     public RSString forcedChatMessage;
     public int anInt3091;
     public int anInt3093;
@@ -87,11 +60,11 @@ public abstract class Actor extends Renderable {
     public int anInt3095 = 0;
     public int anInt3096;
     public int anInt3097;
-    public int anInt3098;
+    public int worldX;
     public int anInt3099;
     public int facePositionY;
     public int anInt3101;
-    public int anInt3102;
+    public int chatcolor;
     public int anInt3104;
     public boolean aBoolean3105;
     public int anInt3107;
@@ -105,7 +78,7 @@ public abstract class Actor extends Renderable {
     public int anInt3118;
     public int anInt3120;
     public int playingAnimationDelay;
-    public int anInt3123;
+    public int chatEffects;
     public int anInt3125;
     public int idleAnimation;
     public int anInt3127;
@@ -136,7 +109,7 @@ public abstract class Actor extends Renderable {
         aBooleanArray3072 = new boolean[10];
         anInt3113 = 32;
         anInt3094 = 0;
-        anInt3102 = 0;
+        chatcolor = 0;
         anInt3104 = 0;
         anInt3091 = -1;
         anInt3117 = 200;
@@ -147,7 +120,7 @@ public abstract class Actor extends Renderable {
         anIntArray3087 = new int[4];
         anInt3116 = 0;
         anInt3109 = 0;
-        anInt3123 = 0;
+        chatEffects = 0;
         idleAnimation = -1;
         anInt3074 = 0;
         anInt3097 = 0;
@@ -169,10 +142,9 @@ public abstract class Actor extends Renderable {
 
     public static void method781(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
         if(arg0 == 1850) {
-            anInt3084++;
-            int i = Npc.aScene_3301.method122(arg1, arg2, arg5);
+            int i = Npc.currentScene.method122(arg1, arg2, arg5);
             if(i != 0) {
-                int i_0_ = Npc.aScene_3301.getArrangement(arg1, arg2, arg5, i);
+                int i_0_ = Npc.currentScene.getArrangement(arg1, arg2, arg5, i);
                 int i_1_ = 0x1f & i_0_;
                 int i_2_ = 0x3 & i_0_ >> 6;
                 int i_3_ = arg3;
@@ -251,9 +223,9 @@ public abstract class Actor extends Renderable {
                     }
                 }
             }
-            i = Npc.aScene_3301.getLocationHash(arg1, arg2, arg5);
+            i = Npc.currentScene.getLocationHash(arg1, arg2, arg5);
             if(i != 0) {
-                int i_8_ = Npc.aScene_3301.getArrangement(arg1, arg2, arg5, i);
+                int i_8_ = Npc.currentScene.getArrangement(arg1, arg2, arg5, i);
                 int i_9_ = 0x7fff & i >> 14;
                 int i_10_ = (i_8_ & 0xf4) >> 6;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_9_);
@@ -284,7 +256,7 @@ public abstract class Actor extends Renderable {
                     }
                 }
             }
-            i = Npc.aScene_3301.getFloorDecorationHash(arg1, arg2, arg5);
+            i = Npc.currentScene.getFloorDecorationHash(arg1, arg2, arg5);
             if(i != 0) {
                 int i_16_ = (i & 0x1fffd9fb) >> 14;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_16_);
@@ -300,119 +272,72 @@ public abstract class Actor extends Renderable {
         }
     }
 
-    public static void method783(int arg0) {
-
-        anInt3085++;
+    public static void method783() {
         Cache.aClass9_326.method235((byte) -126);
-        int i = 12 / ((-12 - arg0) / 50);
         WallDecoration.aClass9_1264.method235((byte) -96);
         Class67.aClass9_1582.method235((byte) 34);
-
     }
 
-    public static void method786(boolean arg0) {
-        Cache.outgoingbuffer.initBitAccess(127);
-        anInt3121++;
-        int i = Cache.outgoingbuffer.getBits(1, (byte) -65);
-        if(i != 0) {
-            int i_21_ = Cache.outgoingbuffer.getBits(2, (byte) -65);
-            if(i_21_ == 0)
-                Class24.anIntArray578[anInt3153++] = 2047;
-            else if(i_21_ == 1) {
-                int i_22_ = Cache.outgoingbuffer.getBits(3, (byte) -65);
-                Player.localPlayer.method782(i_22_, (byte) -96, false);
-                int i_23_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
-                if(i_23_ == 1)
-                    Class24.anIntArray578[anInt3153++] = 2047;
-            } else if(i_21_ == 2) {
-                int i_24_ = Cache.outgoingbuffer.getBits(3, (byte) -65);
-                Player.localPlayer.method782(i_24_, (byte) -96, true);
-                int i_25_ = Cache.outgoingbuffer.getBits(3, (byte) -65);
-                Player.localPlayer.method782(i_25_, (byte) -96, true);
-                int i_26_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
-                if(i_26_ == 1)
-                    Class24.anIntArray578[anInt3153++] = 2047;
-            } else if(i_21_ == 3) {
-                int i_27_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
-                Player.anInt3267 = Cache.outgoingbuffer.getBits(2, (byte) -65);
-                int i_28_ = Cache.outgoingbuffer.getBits(1, (byte) -65);
-                if(i_28_ == 1)
-                    Class24.anIntArray578[anInt3153++] = 2047;
-                int i_29_ = Cache.outgoingbuffer.getBits(7, (byte) -65);
-                int i_30_ = Cache.outgoingbuffer.getBits(7, (byte) -65);
-                Player.localPlayer.method787(i_30_, -7717, i_27_ == 1, i_29_);
-            } else if(!arg0)
-                method781(-5, -11, -11, 113, 49, 123);
-        }
-    }
-
-    public static void method788(int arg0) {
-
-        aClass1_3158 = null;
+    public static void method788() {
         aClass6_Sub1_3157 = null;
         aClass1_3092 = null;
-        aClass1_3154 = null;
         aClass1_3138 = null;
         aClass1_3114 = null;
-        chatMessages = null;
-        aClass40_Sub5_Sub17_Sub4_Sub1Array3156 = null;
+        ChatBox.chatMessages = null;
+        Player.trackedPlayers = null;
         aCacheIndex_3150 = null;
         aClass1_3155 = null;
         aCacheIndex_3144 = null;
         aClass31_3152 = null;
-        int i = -42 / ((arg0 - 20) / 50);
         anIntArray3111 = null;
         aClass1_3124 = null;
         anIntArray3149 = null;
         rsaModulus = null;
         aClass1_3159 = null;
-
     }
 
     public static void method789(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-
-        anInt3147++;
-        if(arg3 != Class51.anInt1202 || arg2 != Class17.anInt448 || (Class40_Sub6.onBuildTimePlane != arg5 && VertexNormal.lowMemory)) {
+        if(arg3 != Class51.regionX || arg2 != Class17.regionY || (Class40_Sub6.onBuildTimePlane != arg5 && VertexNormal.lowMemory)) {
             Class40_Sub6.onBuildTimePlane = arg5;
-            Class51.anInt1202 = arg3;
+            Class51.regionX = arg3;
             if(!VertexNormal.lowMemory)
                 Class40_Sub6.onBuildTimePlane = 0;
-            Class17.anInt448 = arg2;
-            OverlayDefinition.method559(25, 88);
+            Class17.regionY = arg2;
+            OverlayDefinition.method559(25);
             Class51.method940(0, Class67.aClass1_1585, false, null);
-            int i = Class26.anInt635;
-            int i_33_ = SpotAnimDefinition.anInt2307;
-            SpotAnimDefinition.anInt2307 = (arg3 - 6) * 8;
-            int i_34_ = SpotAnimDefinition.anInt2307 + -i_33_;
+            int i = Class26.baseY;
+            int i_33_ = SpotAnimDefinition.baseX;
+            SpotAnimDefinition.baseX = (arg3 - 6) * 8;
+            int i_34_ = SpotAnimDefinition.baseX + -i_33_;
             if(arg1 != -1000)
                 method781(14, 98, 96, -85, -118, 89);
-            i_33_ = SpotAnimDefinition.anInt2307;
-            Class26.anInt635 = (-6 + arg2) * 8;
-            int i_35_ = Class26.anInt635 + -i;
-            i = Class26.anInt635;
+            i_33_ = SpotAnimDefinition.baseX;
+            Class26.baseY = (-6 + arg2) * 8;
+            int i_35_ = Class26.baseY + -i;
+            i = Class26.baseY;
             for(int i_36_ = 0; i_36_ < 32768; i_36_++) {
-                Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_36_]);
+                Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[i_36_]);
                 if(class40_sub5_sub17_sub4_sub2 != null) {
                     for(int i_37_ = 0; i_37_ < 10; i_37_++) {
                         class40_sub5_sub17_sub4_sub2.pathY[i_37_] -= i_34_;
                         class40_sub5_sub17_sub4_sub2.pathX[i_37_] -= i_35_;
                     }
-                    class40_sub5_sub17_sub4_sub2.anInt3098 -= 128 * i_34_;
-                    class40_sub5_sub17_sub4_sub2.anInt3089 -= i_35_ * 128;
+                    class40_sub5_sub17_sub4_sub2.worldX -= 128 * i_34_;
+                    class40_sub5_sub17_sub4_sub2.worldY -= i_35_ * 128;
                 }
             }
             for(int i_38_ = 0; i_38_ < 2048; i_38_++) {
-                Player class40_sub5_sub17_sub4_sub1 = aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_38_];
+                Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_38_];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     for(int i_39_ = 0; i_39_ < 10; i_39_++) {
                         class40_sub5_sub17_sub4_sub1.pathY[i_39_] -= i_34_;
                         class40_sub5_sub17_sub4_sub1.pathX[i_39_] -= i_35_;
                     }
-                    class40_sub5_sub17_sub4_sub1.anInt3089 -= 128 * i_35_;
-                    class40_sub5_sub17_sub4_sub1.anInt3098 -= 128 * i_34_;
+                    class40_sub5_sub17_sub4_sub1.worldY -= 128 * i_35_;
+                    class40_sub5_sub17_sub4_sub1.worldX -= 128 * i_34_;
                 }
             }
-            Player.anInt3267 = arg5;
+            Player.worldLevel = arg5;
             int i_40_ = 0;
             Player.localPlayer.method787(arg4, -7717, false, arg0);
             int i_41_ = 104;
@@ -436,41 +361,38 @@ public abstract class Actor extends Renderable {
                     int i_49_ = i_35_ + i_47_;
                     for(int i_50_ = 0; i_50_ < 4; i_50_++) {
                         if(i_48_ < 0 || i_49_ < 0 || i_48_ >= 104 || i_49_ >= 104)
-                            Wall.aClass45ArrayArrayArray357[i_50_][i_46_][i_47_] = null;
+                            Wall.groundItems[i_50_][i_46_][i_47_] = null;
                         else
-                            Wall.aClass45ArrayArrayArray357[i_50_][i_46_][i_47_] = (Wall.aClass45ArrayArrayArray357[i_50_][i_48_][i_49_]);
+                            Wall.groundItems[i_50_][i_46_][i_47_] = (Wall.groundItems[i_50_][i_48_][i_49_]);
                     }
                 }
             }
-            for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = ((Class40_Sub3) Class45.aClass45_1064.method909(-4))) {
+            for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = ((Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4))) {
                 class40_sub3.anInt2038 -= i_35_;
                 class40_sub3.anInt2039 -= i_34_;
                 if(class40_sub3.anInt2039 < 0 || class40_sub3.anInt2038 < 0 || class40_sub3.anInt2039 >= 104 || class40_sub3.anInt2038 >= 104)
                     class40_sub3.method457(-1);
             }
             Buffer.anInt1985 = -1;
-            if(VarbitDefinition.anInt2366 != 0) {
-                VarbitDefinition.anInt2366 -= i_34_;
-                Class55.anInt1304 -= i_35_;
+            if(VarbitDefinition.destinationX != 0) {
+                VarbitDefinition.destinationX -= i_34_;
+                Class55.destinationY -= i_35_;
             }
             Class39.aBoolean906 = false;
             PacketBuffer.currentSound = 0;
-            Class57.aClass45_1332.method906(0);
-            Class43.aClass45_1022.method906(0);
+            Class57.aLinkedList_1332.method906(0);
+            Class43.aLinkedList_1022.method906(0);
         }
-
     }
 
     public void method782(int arg0, byte arg1, boolean arg2) {
-
-        anInt3103++;
         int i = pathY[0];
         int i_19_ = pathX[0];
         if(arg0 == 0) {
             i_19_++;
             i--;
         }
-        if(playingAnimation != -1 && (Class68_Sub1.method1050(playingAnimation, arg1 ^ ~0x5d).anInt2476 == 1))
+        if(playingAnimation != -1 && (Class68_Sub1.method1050(playingAnimation, arg1 ^ -94).anInt2476 == 1))
             playingAnimation = -1;
         if(anInt3109 < 9)
             anInt3109++;
@@ -482,7 +404,7 @@ public abstract class Actor extends Renderable {
         if(arg0 == 1)
             i_19_++;
         if(arg1 != -96)
-            method783(125);
+            method783();
         if(arg0 == 2) {
             i_19_++;
             i++;
@@ -504,7 +426,6 @@ public abstract class Actor extends Renderable {
         pathY[0] = i;
         pathX[0] = i_19_;
         aBooleanArray3072[0] = arg2;
-
     }
 
     public boolean isVisible(int arg0) {
@@ -512,7 +433,6 @@ public abstract class Actor extends Renderable {
     }
 
     public void method785(int arg0, int arg1, int arg2, int arg3) {
-        anInt3142++;
         for(int i = 0; i < 4; i++) {
             if((arg1 >= anIntArray3136[i])) {
                 anIntArray3087[i] = arg2;
@@ -526,10 +446,8 @@ public abstract class Actor extends Renderable {
     }
 
     public void method787(int arg0, int arg1, boolean arg2, int arg3) {
-
         if(playingAnimation != -1 && Class68_Sub1.method1050(playingAnimation, 2).anInt2476 == 1)
             playingAnimation = -1;
-        anInt3076++;
         if(!arg2) {
             int i = -pathY[0] + arg3;
             int i_31_ = -pathX[0] + arg0;
@@ -554,16 +472,12 @@ public abstract class Actor extends Renderable {
         anInt3094 = 0;
         pathY[0] = arg3;
         pathX[0] = arg0;
-        anInt3098 = anInt3096 * 64 + pathY[0] * 128;
-        anInt3089 = anInt3096 * 64 + pathX[0] * 128;
-
+        worldX = anInt3096 * 64 + pathY[0] * 128;
+        worldY = anInt3096 * 64 + pathX[0] * 128;
     }
 
     public void method790(int arg0) {
-
-        anInt3106++;
         anInt3094 = arg0;
         anInt3109 = 0;
-
     }
 }

@@ -1,100 +1,76 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.def.FrameDefinition;
+import com.jagex.runescape.cache.def.FramemapDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.actor.Actor;
 
 public class Class40_Sub5_Sub15 extends SubNode {
-    public static RSString aClass1_2773 = (RSString.CreateString("Um ein neues Spielkonto zu erstellen)1 m-Ussen Sie"));
-    public static RSString prefix_examine = RSString.CreateString("Examine");
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2775;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2776;
     public static int[] anIntArray2777 = {8, 11, 4, 6, 9, 7, 10};
-    public static int anInt2778;
+    public static int arbitraryDestination = 0;
     public static CacheIndex aCacheIndex_2779;
-    public static int inputType;
-    public static RSString aClass1_2781 = RSString.CreateString(" Sekunde(Xn(Y -Ubertragen)3");
-    public static int anInt2782;
-    public static int anInt2783;
-    public static boolean aBoolean2784;
-    public static int anInt2785;
+    public static int systemUpdateTime = 0;
+    public static boolean lastItemDragged = false;
     public static RSString aClass1_2786;
-    public static RSString aClass1_2787;
-    public static int[] anIntArray2788;
-    public static int anInt2789;
-    public static RSString aClass1_2790;
-    public static int anInt2791;
-    public static RSString aClass1_2793;
+    public static RSString aClass1_2787 = RSString.CreateString("sideicons");
+    public static int[] anIntArray2788 = new int[]{16, 32, 64, 128};
+    public static RSString aClass1_2790 = RSString.CreateString("Friends");
+    public static int anInt2791 = -8 + (int) (17.0 * Math.random());
 
     static {
-        inputType = 0;
-        anInt2782 = 0;
-        anInt2778 = 0;
-        anIntArray2788 = new int[]{16, 32, 64, 128};
-        aClass1_2787 = RSString.CreateString("sideicons");
-        aBoolean2784 = false;
-        aClass1_2790 = RSString.CreateString("Friends");
         aClass1_2786 = aClass1_2790;
-        aClass1_2793 = RSString.CreateString("Ihr Charakter)2Profil wird in:");
-        anInt2791 = -8 + (int) (17.0 * Math.random());
     }
 
-    public Class41[] aClass41Array2794;
+    public FrameDefinition[] aFrameDefinitionArray2794;
 
     public Class40_Sub5_Sub15(CacheIndex arg0, CacheIndex arg1, int arg2, boolean arg3) {
-
-        Class45 class45 = new Class45();
-        int i = arg0.method190(arg2, (byte) 16);
-        aClass41Array2794 = new Class41[i];
+        LinkedList linkedList = new LinkedList();
+        int i = arg0.method190(arg2);
+        aFrameDefinitionArray2794 = new FrameDefinition[i];
         int[] is = arg0.method192(arg2, true);
         for(int i_0_ = 0; is.length > i_0_; i_0_++) {
             byte[] is_1_ = arg0.getFile(is[i_0_], arg2);
-            Class40_Sub13 class40_sub13 = null;
+            FramemapDefinition framemapDefinition = null;
             int i_2_ = is_1_[1] & 0xff | is_1_[0] << 8 & 0xff00;
-            for(Class40_Sub13 class40_sub13_3_ = (Class40_Sub13) class45.method902((byte) -90); class40_sub13_3_ != null; class40_sub13_3_ = (Class40_Sub13) class45.method909(-4)) {
-                if(i_2_ == class40_sub13_3_.anInt2175) {
-                    class40_sub13 = class40_sub13_3_;
+            for(FramemapDefinition framemapDefinition_3_ = (FramemapDefinition) linkedList.method902((byte) -90); framemapDefinition_3_ != null; framemapDefinition_3_ = (FramemapDefinition) linkedList.method909(-4)) {
+                if(i_2_ == framemapDefinition_3_.id) {
+                    framemapDefinition = framemapDefinition_3_;
                     break;
                 }
             }
-            if(class40_sub13 == null) {
+            if(framemapDefinition == null) {
                 byte[] is_4_;
                 if(!arg3)
-                    is_4_ = arg1.method182(0, -16, i_2_);
+                    is_4_ = arg1.method182(0, i_2_);
                 else
-                    is_4_ = arg1.method182(i_2_, -122, 0);
-                class40_sub13 = new Class40_Sub13(i_2_, is_4_);
-                class45.pushBack(class40_sub13, 60);
+                    is_4_ = arg1.method182(i_2_, 0);
+                framemapDefinition = new FramemapDefinition(i_2_, is_4_);
+                linkedList.pushBack(framemapDefinition, 60);
             }
-            aClass41Array2794[is[i_0_]] = new Class41(is_1_, class40_sub13);
+            aFrameDefinitionArray2794[is[i_0_]] = new FrameDefinition(is_1_, framemapDefinition);
         }
-
     }
 
-    public static void method734(int arg0) {
-
+    public static void method734() {
         aClass40_Sub5_Sub14_Sub2_2775 = null;
         aClass1_2790 = null;
         aClass40_Sub5_Sub14_Sub2Array2776 = null;
         anIntArray2777 = null;
-        int i = -41 % ((32 - arg0) / 40);
         aClass1_2787 = null;
-        aClass1_2773 = null;
         aCacheIndex_2779 = null;
         anIntArray2788 = null;
-        aClass1_2793 = null;
         aClass1_2786 = null;
-        aClass1_2781 = null;
-        prefix_examine = null;
-
+        English.examine = null;
     }
 
     public static boolean method735(byte arg0, int arg1) {
-
-        anInt2783++;
         if(arg1 >= 97 && arg1 <= 122)
             return true;
         if(arg1 >= 65 && arg1 <= 90)
@@ -102,13 +78,11 @@ public class Class40_Sub5_Sub15 extends SubNode {
         if(arg1 >= 48 && arg1 <= 57)
             return true;
         if(arg0 != -37)
-            method734(31);
+            method734();
         return false;
-
     }
 
     public static void method736(boolean arg0, Actor arg1) {
-        anInt2789++;
         arg1.aBoolean3105 = false;
         if(arg1.anInt3077 != -1) {
             AnimationSequence animationSequence = Class68_Sub1.method1050(arg1.anInt3077, 2);
@@ -180,11 +154,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
         }
     }
 
-    public boolean method737(int arg0, int arg1) {
-
-        int i = 104 % ((58 - arg1) / 61);
-        anInt2785++;
-        return aClass41Array2794[arg0].aBoolean985;
-
+    public boolean method737(int arg0) {
+        return aFrameDefinitionArray2794[arg0].aBoolean985;
     }
 }

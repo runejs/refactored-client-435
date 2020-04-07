@@ -5,48 +5,38 @@ import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.Widget.WidgetType;
+import com.jagex.runescape.frame.ChatBox;
 
 public abstract class Renderable extends SubNode {
-    public static int anInt2855;
-    public static RSString[] chatPlayerNames;
     public static CacheIndex_Sub1 aClass6_Sub1_2857;
     public static long aLong2858 = 0L;
-    public static int anInt2859;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2860;
     public static RSString aClass1_2862 = RSString.CreateString("@cya@");
-    public static int anInt2863;
     public static RSString aClass1_2864;
     public static int[] anIntArray2865;
     public static int anInt2866;
-    public static int anInt2867;
-    public static int anInt2868;
     public static int anInt2869;
     public static RSString aClass1_2870;
-    public static RSString aClass1_2871;
 
     static {
-        chatPlayerNames = new RSString[100];
+        ChatBox.chatPlayerNames = new RSString[100];
         anInt2869 = 0;
         aClass1_2870 = RSString.CreateString(" from your friend list first");
         aClass1_2864 = aClass1_2870;
-        aClass1_2871 = RSString.CreateString("Bitte versuchen Sie)1");
     }
 
     public int modelHeight = 1000;
 
-    public static boolean handleSequences(int arg0, int arg1) {
-
-        anInt2859++;
+    public static boolean handleSequences(int arg1) {
         if(!Class68.method1043(arg1))
             return false;
         Widget[] widgets = Widget.interfaces[arg1];
-        if(arg0 != 29378)
-            anInt2866 = 125;
         boolean bool = false;
         for(int i = 0; widgets.length > i; i++) {
             Widget widget = widgets[i];
-            if(widget != null && widget.type == 6) {
+            if(widget != null && widget.type == WidgetType.MODEL) {
                 if(widget.animation != -1 || widget.alternateAnimation != -1) {
                     boolean bool_0_ = ItemDefinition.method746(widget);
                     int i_1_;
@@ -81,26 +71,19 @@ public abstract class Renderable extends SubNode {
             }
         }
         return bool;
-
     }
 
-    public static void method757(byte arg0) {
-
-        aClass1_2871 = null;
-        chatPlayerNames = null;
-        if(arg0 > -112)
-            method757((byte) 59);
+    public static void method757() {
+        ChatBox.chatPlayerNames = null;
         aClass40_Sub5_Sub14_Sub2_2860 = null;
         aClass6_Sub1_2857 = null;
         aClass1_2870 = null;
         anIntArray2865 = null;
         aClass1_2862 = null;
         aClass1_2864 = null;
-
     }
 
     public void renderAtPoint(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
-        anInt2868++;
         Model class40_sub5_sub17_sub5 = getRotatedModel(-38);
         if(class40_sub5_sub17_sub5 != null) {
             modelHeight = class40_sub5_sub17_sub5.modelHeight;
@@ -109,10 +92,6 @@ public abstract class Renderable extends SubNode {
     }
 
     public Model getRotatedModel(int arg0) {
-
-        int i = 87 / ((arg0 - 41) / 47);
-        anInt2855++;
         return null;
-
     }
 }

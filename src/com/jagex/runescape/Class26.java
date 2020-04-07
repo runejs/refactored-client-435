@@ -5,22 +5,17 @@ import com.jagex.runescape.cache.CacheIndex;
 import java.awt.*;
 
 public class Class26 {
-    public static int itemSearchScroll = 0;
     public static boolean aBoolean618 = false;
     public static RSString aClass1_619 = RSString.CreateString("skill)2");
     public static RSString aClass1_620 = RSString.CreateString("@whi@");
     public static int anInt622 = 0;
     public static Image anImage624;
     public static int anInt627;
-    public static RSString aClass1_629 = RSString.CreateString("Weiter");
-    public static RSString aClass1_630 = RSString.CreateString("Untersuchen");
-    public static RSString aClass1_631 = RSString.CreateString("gelb:");
     public static CacheIndex aCacheIndex_632;
-    public static RSString aClass1_633 = (RSString.CreateString("Moderator)2Option: Spieler f-Ur 48 Stunden stumm schalten: <OFF>"));
     public static RSString aClass1_634 = RSString.CreateString("World");
-    public static int anInt635;
+    public static int baseY;
 
-    public static Class method349(byte arg0, String arg1) throws ClassNotFoundException {
+    public static Class method349(String arg1) throws ClassNotFoundException {
         if(arg1.equals("B"))
             return Byte.TYPE;
         if(arg1.equals("I"))
@@ -35,24 +30,16 @@ public class Class26 {
             return Float.TYPE;
         if(arg1.equals("D"))
             return Double.TYPE;
-        if(arg0 != 91)
-            method350(-66);
         if(arg1.equals("C"))
             return Character.TYPE;
         return Class.forName(arg1);
     }
 
-    public static void method350(int arg0) {
-        aClass1_631 = null;
-        aClass1_630 = null;
-        aClass1_629 = null;
+    public static void method350() {
         anImage624 = null;
         aClass1_634 = null;
         aClass1_620 = null;
-        aClass1_633 = null;
         aCacheIndex_632 = null;
         aClass1_619 = null;
-        if(arg0 != 0)
-            method350(15);
     }
 }

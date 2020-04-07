@@ -1,77 +1,50 @@
-package com.jagex.runescape;
+package com.jagex.runescape.cache.def;
 
-import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.Rasterizer;
+import com.jagex.runescape.media.Rasterizer3D;
+import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.tile.Wall;
 
-public class Class40_Sub13 extends Node {
-    public static int anInt2169;
-    public static int anInt2170;
-    public static RSString aClass1_2172 = RSString.CreateString("Service unavailable)3");
-    public static int anInt2173;
-    public static RSString aClass1_2174;
-    public static RSString aClass1_2176;
-    public static boolean aBoolean2177;
+public class FramemapDefinition extends Node {
+    public static boolean aBoolean2177 = false;
     public static RSString aClass1_2179 = RSString.CreateString("cross");
-    public static int anInt2180;
-    public static RSString aClass1_2181;
-    public static int anInt2182;
-    public static int anInt2183;
-    public static int anInt2184;
-    public static RSString aClass1_2185;
-    public static RSString aClass1_2186;
-    public static RSString aClass1_2187;
-    public static RSString aClass1_2188;
-    public static RSString aClass1_2189;
+    public static int anInt2183 = 0;
+    public static RSString aClass1_2188 = RSString.CreateString("You need a members account to login to this world)3");
+    public static RSString aClass1_2189 = RSString.CreateString("Service unavailable)3");
 
-    static {
-        aBoolean2177 = false;
-        aClass1_2181 = RSString.CreateString("Musik)2Engine vorbereitet)3");
-        aClass1_2176 = (RSString.CreateString("Bitte warten Sie )2 es wird versucht)1 die Verbindung wiederherzustellen)3"));
-        anInt2183 = 0;
-        aClass1_2185 = RSString.CreateString("Titelbild geladen)3");
-        aClass1_2174 = RSString.CreateString("rot:");
-        aClass1_2187 = (RSString.CreateString("You need a members account to login to this world)3"));
-        aClass1_2188 = aClass1_2187;
-        aClass1_2186 = RSString.CreateString(" hat sich eingeloggt)3");
-        aClass1_2189 = aClass1_2172;
-    }
 
-    public int[][] anIntArrayArray2168;
-    public int anInt2171;
-    public int anInt2175;
-    public int[] anIntArray2178;
+    public int[][] frameMaps;
+    public int length;
+    public int id;
+    public int[] types;
 
-    public Class40_Sub13(int arg0, byte[] arg1) {
-
-        anInt2175 = arg0;
-        Buffer class40_sub1 = new Buffer(arg1);
-        anInt2171 = class40_sub1.getUnsignedByte();
-        anIntArrayArray2168 = new int[anInt2171][];
-        anIntArray2178 = new int[anInt2171];
-        for(int i = 0; i < anInt2171; i++)
-            anIntArray2178[i] = class40_sub1.getUnsignedByte();
-        for(int i = 0; anInt2171 > i; i++)
-            anIntArrayArray2168[i] = new int[class40_sub1.getUnsignedByte()];
-        for(int i = 0; i < anInt2171; i++) {
-            for(int i_38_ = 0; anIntArrayArray2168[i].length > i_38_; i_38_++)
-                anIntArrayArray2168[i][i_38_] = class40_sub1.getUnsignedByte();
+    public FramemapDefinition(int id, byte[] data) {
+        this.id = id;
+        Buffer buffer = new Buffer(data);
+        length = buffer.getUnsignedByte();
+        types = new int[length];
+        frameMaps = new int[length][];
+        for(int i = 0; i < length; i++)
+            types[i] = buffer.getUnsignedByte();
+        for(int i = 0; length > i; i++)
+            frameMaps[i] = new int[buffer.getUnsignedByte()];
+        for(int i = 0; i < length; i++) {
+            for(int i_38_ = 0; frameMaps[i].length > i_38_; i_38_++)
+                frameMaps[i][i_38_] = buffer.getUnsignedByte();
         }
 
     }
 
-    public static ImageRGB method876(int arg0, int arg1, int arg2, int arg3) {
-
-        anInt2182++;
+    public static ImageRGB method876(int arg1, int arg2, int arg3) {
         if(arg3 == 0) {
             ImageRGB class40_sub5_sub14_sub4 = ((ImageRGB) Buffer.aClass9_1933.get((long) arg2, (byte) 56));
             if(class40_sub5_sub14_sub4 != null && class40_sub5_sub14_sub4.maxHeight != arg1 && class40_sub5_sub14_sub4.maxHeight != -1) {
@@ -98,7 +71,7 @@ public class Class40_Sub13 extends Node {
             return null;
         ImageRGB class40_sub5_sub14_sub4 = null;
         if(class40_sub5_sub16.noteTemplateId != -1) {
-            class40_sub5_sub14_sub4 = method876(-56, 10, class40_sub5_sub16.notedId, -1);
+            class40_sub5_sub14_sub4 = method876(10, class40_sub5_sub16.notedId, -1);
             if(class40_sub5_sub14_sub4 == null)
                 return null;
         }
@@ -106,13 +79,12 @@ public class Class40_Sub13 extends Node {
         int i = Rasterizer.height;
         int i_1_ = Rasterizer.width;
         int i_2_ = Rasterizer.viewport_left;
-        int i_3_ = 16 / ((arg0 - 26) / 57);
         int i_4_ = Rasterizer.viewport_right;
         int i_5_ = Rasterizer.viewport_top;
         int i_6_ = Rasterizer.viewport_bottom;
         int[] is_7_ = Rasterizer3D.method713();
-        int i_8_ = Rasterizer3D.anInt2930;
-        int i_9_ = Rasterizer3D.anInt2945;
+        int i_8_ = Rasterizer3D.bottomY;
+        int i_9_ = Rasterizer3D.viewportRx;
         ImageRGB class40_sub5_sub14_sub4_10_ = new ImageRGB(32, 32);
         Rasterizer.createRasterizer(class40_sub5_sub14_sub4_10_.pixels, 32, 32);
         Class40_Sub5_Sub17_Sub6.anIntArray3253 = Rasterizer3D.method708(Class40_Sub5_Sub17_Sub6.anIntArray3253);
@@ -122,7 +94,7 @@ public class Class40_Sub13 extends Node {
             i_11_ *= 1.5;
         if(arg3 > 0)
             i_11_ *= 1.04;
-        Rasterizer3D.aBoolean2944 = false;
+        Rasterizer3D.notTextured = false;
         int i_12_ = ((Rasterizer3D.sinetable[class40_sub5_sub16.xan2d]) * i_11_ >> 16);
         int i_13_ = (i_11_ * (Rasterizer3D.cosinetable[class40_sub5_sub16.xan2d]) >> 16);
         class40_sub5_sub17_sub5.method799();
@@ -176,14 +148,14 @@ public class Class40_Sub13 extends Node {
             class40_sub5_sub14_sub4.maxHeight = i_17_;
         }
         if(arg3 == 0)
-            Buffer.aClass9_1933.put(-7208, (long) arg2, class40_sub5_sub14_sub4_10_);
+            Buffer.aClass9_1933.put((long) arg2, class40_sub5_sub14_sub4_10_);
         Rasterizer.createRasterizer(is, i_1_, i);
         Rasterizer.setCoordinates(i_2_, i_5_, i_6_, i_4_);
         Rasterizer3D.method708(is_7_);
-        Rasterizer3D.anInt2930 = i_8_;
-        Rasterizer3D.anInt2945 = i_9_;
+        Rasterizer3D.bottomY = i_8_;
+        Rasterizer3D.viewportRx = i_9_;
         Rasterizer3D.method702();
-        Rasterizer3D.aBoolean2944 = true;
+        Rasterizer3D.notTextured = true;
         if(class40_sub5_sub16.stackable == 1)
             class40_sub5_sub14_sub4_10_.maxWidth = 33;
         else
@@ -193,26 +165,13 @@ public class Class40_Sub13 extends Node {
 
     }
 
-    public static void method877(int arg0) {
-
+    public static void method877() {
         aClass1_2188 = null;
-        aClass1_2181 = null;
         aClass1_2179 = null;
-        aClass1_2186 = null;
-        aClass1_2185 = null;
-        aClass1_2176 = null;
-        if(arg0 == 0) {
-            aClass1_2172 = null;
-            aClass1_2174 = null;
-            aClass1_2189 = null;
-            aClass1_2187 = null;
-        }
-
+        aClass1_2189 = null;
     }
 
-    public static Widget method878(int arg0, Widget arg1) {
-
-        anInt2169++;
+    public static Widget method878(Widget arg1) {
         int i;
         if(arg1.id < 0)
             i = arg1.parentId >> 16;
@@ -220,20 +179,14 @@ public class Class40_Sub13 extends Node {
             i = arg1.id >> 16;
         if(!Class68.method1043(i))
             return null;
-        if(arg0 != -1598852880)
-            method876(44, -123, -88, 35);
         if(arg1.anInt2738 >= 0)
             return (Widget.interfaces[i][0xffff & arg1.anInt2738]);
         Widget widget = (Widget.interfaces[i][(0x7fff99d9 & arg1.anInt2738) >> 15]);
         return (widget.aWidgetArray2713[arg1.anInt2738 & 0x7fff]);
-
     }
 
-    public static void method879(int arg0, IndexedImage arg1) {
-        anInt2170++;
+    public static void method879(IndexedImage arg1) {
         int i = 0;
-        if(arg0 != -4487)
-            method876(112, -38, -90, -56);
         for(/**/; i < Landscape.anIntArray1168.length; i++)
             Landscape.anIntArray1168[i] = 0;
         int i_19_ = 256;
@@ -267,43 +220,39 @@ public class Class40_Sub13 extends Node {
         }
     }
 
-    public static void method880(byte arg0, int arg1, int arg2) {
-
-        anInt2173++;
-        Class45 class45 = (Wall.aClass45ArrayArrayArray357[Player.anInt3267][arg2][arg1]);
-        if(class45 == null)
-            Npc.aScene_3301.method125(Player.anInt3267, arg2, arg1);
+    public static void spawnGroundItem(int arg1, int arg2) {
+        LinkedList linkedList = (Wall.groundItems[Player.worldLevel][arg2][arg1]);
+        if(linkedList == null)
+            Npc.currentScene.method125(Player.worldLevel, arg2, arg1);
         else {
             int i = -99999999;
-            Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3 = null;
-            for(Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3_32_ = ((Class40_Sub5_Sub17_Sub3) class45.method902((byte) -90)); class40_sub5_sub17_sub3_32_ != null; class40_sub5_sub17_sub3_32_ = (Class40_Sub5_Sub17_Sub3) class45.method909(-4)) {
-                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((class40_sub5_sub17_sub3_32_.anInt3067), 10);
+            Item item = null;
+            for(Item item_32_ = ((Item) linkedList.method902((byte) -90)); item_32_ != null; item_32_ = (Item) linkedList.method909(-4)) {
+                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((item_32_.itemId), 10);
                 int i_33_ = class40_sub5_sub16.cost;
                 if(class40_sub5_sub16.stackable == 1)
-                    i_33_ *= class40_sub5_sub17_sub3_32_.anInt3058 + 1;
+                    i_33_ *= item_32_.itemCount + 1;
                 if((i_33_ > i)) {
                     i = i_33_;
-                    class40_sub5_sub17_sub3 = class40_sub5_sub17_sub3_32_;
+                    item = item_32_;
                 }
             }
-            if(class40_sub5_sub17_sub3 == null)
-                Npc.aScene_3301.method125(Player.anInt3267, arg2, arg1);
+            if(item == null)
+                Npc.currentScene.method125(Player.worldLevel, arg2, arg1);
             else {
-                if(arg0 != -80)
-                    aClass1_2187 = null;
-                Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3_34_ = null;
-                Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3_35_ = null;
-                class45.method905(0, class40_sub5_sub17_sub3);
-                for(Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3_36_ = ((Class40_Sub5_Sub17_Sub3) class45.method902((byte) -90)); class40_sub5_sub17_sub3_36_ != null; class40_sub5_sub17_sub3_36_ = ((Class40_Sub5_Sub17_Sub3) class45.method909(-4))) {
-                    if(class40_sub5_sub17_sub3.anInt3067 != class40_sub5_sub17_sub3_36_.anInt3067) {
-                        if(class40_sub5_sub17_sub3_35_ == null)
-                            class40_sub5_sub17_sub3_35_ = class40_sub5_sub17_sub3_36_;
-                        if((class40_sub5_sub17_sub3_35_.anInt3067 != class40_sub5_sub17_sub3_36_.anInt3067) && class40_sub5_sub17_sub3_34_ == null)
-                            class40_sub5_sub17_sub3_34_ = class40_sub5_sub17_sub3_36_;
+                Item item_34_ = null;
+                Item item_35_ = null;
+                linkedList.method905(0, item);
+                for(Item item_36_ = ((Item) linkedList.method902((byte) -90)); item_36_ != null; item_36_ = ((Item) linkedList.method909(-4))) {
+                    if(item.itemId != item_36_.itemId) {
+                        if(item_35_ == null)
+                            item_35_ = item_36_;
+                        if((item_35_.itemId != item_36_.itemId) && item_34_ == null)
+                            item_34_ = item_36_;
                     }
                 }
                 int i_37_ = 1610612736 + (arg1 << 7) + arg2;
-                Npc.aScene_3301.addGroundItemTile(arg2, arg1, Player.anInt3267, Class37.method430((byte) -126, (Player.anInt3267), 64 + 128 * arg2, 64 + 128 * arg1), i_37_, class40_sub5_sub17_sub3, class40_sub5_sub17_sub3_35_, class40_sub5_sub17_sub3_34_);
+                Npc.currentScene.addGroundItemTile(arg2, arg1, Player.worldLevel, Class37.getFloorDrawHeight((Player.worldLevel), 64 + 128 * arg2, 64 + 128 * arg1), i_37_, item, item_35_, item_34_);
             }
         }
 

@@ -1,9 +1,12 @@
-package com.jagex.runescape;
+package com.jagex.runescape.net;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.scene.SceneCluster;
 
 import java.math.BigInteger;
 
@@ -13,7 +16,6 @@ public class PacketBuffer extends Buffer {
     public static Effect[] effects = new Effect[50];
     public static RSString str_Please_Wait = RSString.CreateString("Please wait)3)3)3");
     public static long aLong2241 = 0L;
-    public static RSString aClass1_2245 = RSString.CreateString("Aus");
     public static BigInteger rsaKey = (new BigInteger("65537"));
     public static int currentSound = 0;
     public static Class40_Sub5_Sub13 aClass40_Sub5_Sub13_2250;
@@ -21,8 +23,6 @@ public class PacketBuffer extends Buffer {
     public static int lastClickX = 0;
     public static int anInt2257;
     public static int anInt2258;
-    public static RSString aClass1_2259 = RSString.CreateString("oder benutzen Sie eine andere Welt)3");
-    public static RSString aClass1_2260 = RSString.CreateString("da dieser Computer gegen unsere ");
 
     public ISAAC inCipher;
     public ISAAC outCipher;
@@ -38,75 +38,62 @@ public class PacketBuffer extends Buffer {
         class40_sub6.key = (long) arg0;
         class40_sub6.aClass56_2117 = arg2;
         class40_sub6.aClass6_Sub1_2104 = arg1;
-        synchronized(RSCanvas.aClass45_53) {
+        synchronized(RSCanvas.aLinkedList_53) {
             if(arg3 != -28)
-                method521(false, (byte) -113, -84, -120);
-            RSCanvas.aClass45_53.pushBack(class40_sub6, -72);
+                method521(false, -84, -120);
+            RSCanvas.aLinkedList_53.pushBack(class40_sub6, -72);
         }
         HashTable.method332(600);
     }
 
-    public static void method514(int arg0) {
+    public static void method514() {
         aClass40_Sub5_Sub13_2250 = null;
-        aClass1_2260 = null;
-        if(arg0 == 1) {
-            rsaKey = null;
-            effects = null;
-            aClass1_2245 = null;
-            str_Please_Wait = null;
-            aClass1_2259 = null;
-        }
+        rsaKey = null;
+        effects = null;
+        str_Please_Wait = null;
     }
 
-    public static void method516(int arg0) {
-        Class32.packetBuffer.putPacket(176);
+    public static void method516() {
+        SceneCluster.packetBuffer.putPacket(176);
         if(Class29.tabAreaOverlayWidgetId != -1) {
-            Class55.method958(Class29.tabAreaOverlayWidgetId, -14222);
+            Class55.method958(Class29.tabAreaOverlayWidgetId);
             CacheIndex_Sub1.anInt1819 = -1;
-            IdentityKit.aBoolean2597 = true;
+            IdentityKit.drawTabIcons = true;
             ISAAC.redrawTabArea = true;
             Class29.tabAreaOverlayWidgetId = -1;
         }
-        Class40_Sub13.anInt2184++;
-        if(Class43.openChatboxWidgetId != -1) {
-            Class55.method958(Class43.openChatboxWidgetId, -14222);
+        if(ChatBox.openChatboxWidgetId != -1) {
+            Class55.method958(ChatBox.openChatboxWidgetId);
             CacheIndex_Sub1.anInt1819 = -1;
-            Class52.redrawChatbox = true;
-            Class43.openChatboxWidgetId = -1;
+            ChatBox.redrawChatbox = true;
+            ChatBox.openChatboxWidgetId = -1;
         }
         if(ActorDefinition.openFullScreenWidgetId != -1) {
-            Class55.method958(ActorDefinition.openFullScreenWidgetId, -14222);
+            Class55.method958(ActorDefinition.openFullScreenWidgetId);
             ActorDefinition.openFullScreenWidgetId = -1;
-            OverlayDefinition.method559(30, -47);
+            OverlayDefinition.method559(30);
         }
         if(UnderlayDefinition.openSecondaryWidgetId != -1) {
-            Class55.method958(UnderlayDefinition.openSecondaryWidgetId, -14222);
+            Class55.method958(UnderlayDefinition.openSecondaryWidgetId);
             UnderlayDefinition.openSecondaryWidgetId = -1;
         }
-        if(arg0 >= 92) {
-            if(HuffmanEncoding.openScreenWidgetId != -1) {
-                Class55.method958(HuffmanEncoding.openScreenWidgetId, -14222);
-                HuffmanEncoding.openScreenWidgetId = -1;
-                CacheIndex_Sub1.anInt1819 = -1;
-            }
+        if(HuffmanEncoding.openScreenWidgetId != -1) {
+            Class55.method958(HuffmanEncoding.openScreenWidgetId);
+            HuffmanEncoding.openScreenWidgetId = -1;
+            CacheIndex_Sub1.anInt1819 = -1;
         }
     }
 
-    public static void method517(int arg0, int arg1, int arg2) {
-        if(arg2 == -9225) {
-            Class32.packetBuffer.putPacket(132);
-            ISAAC.anInt499++;
-            Class32.packetBuffer.putIntME2(arg1);
-            Class32.packetBuffer.putShortLE(arg0);
-        }
+    public static void method517(int arg0, int arg1) {
+        SceneCluster.packetBuffer.putPacket(132);
+        SceneCluster.packetBuffer.putIntME2(arg1);
+        SceneCluster.packetBuffer.putShortLE(arg0);
     }
 
-    public static RSString method521(boolean arg0, byte arg1, int arg2, int arg3) {
+    public static RSString method521(boolean arg0, int arg2, int arg3) {
         if(arg2 < 1 || arg2 > 36)
             arg2 = 10;
         int i = 1;
-        if(arg1 != 8)
-            return null;
         int i_2_ = arg3 / arg2;
         while(i_2_ != 0) {
             i_2_ /= arg2;
@@ -135,28 +122,20 @@ public class PacketBuffer extends Buffer {
         return class1;
     }
 
-    public int method510(int arg0, int arg1) {
-        if(arg0 <= 118)
-            return 75;
+    public int method510(int arg1) {
         return 8 * arg1 - bitoffset;
     }
 
-    public void finishBitAccess(byte arg0) {
-        if(arg0 != -110)
-            bitoffset = -12;
+    public void finishBitAccess() {
         currentPosition = (7 + bitoffset) / 8;
     }
 
-    public int getPacket(byte arg0) {
-        if(arg0 != 49)
-            aClass1_2260 = null;
-        return 0xff & (buffer[currentPosition++] - inCipher.rand());
+    public int getPacket() {
+        return 0xff & (buffer[currentPosition++] - inCipher.nextInt());
     }
 
-    public int getBits(int arg0, byte arg1) {
+    public int getBits(int arg0) {
         int i = bitoffset >> 3;
-        if(arg1 != -65)
-            str_Please_Wait = null;
         int i_0_ = 0;
         int i_1_ = 8 - (0x7 & bitoffset);
         bitoffset += arg0;
@@ -172,7 +151,7 @@ public class PacketBuffer extends Buffer {
     }
 
     public void putPacket(int packetId) {
-        buffer[currentPosition++] = (byte) ((packetId + outCipher.rand()) & 0xff);
+        buffer[currentPosition++] = (byte) ((packetId + outCipher.nextInt()) & 0xff);
     }
 
     public void initInCipher(int[] seed) {
@@ -183,9 +162,7 @@ public class PacketBuffer extends Buffer {
         outCipher = new ISAAC(seed);
     }
 
-    public void initBitAccess(int arg0) {
+    public void initBitAccess() {
         bitoffset = currentPosition * 8;
-        if(arg0 <= 21)
-            inCipher = null;
     }
 }

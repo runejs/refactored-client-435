@@ -5,42 +5,29 @@ import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
+import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class24 {
-    public static RSString aClass1_575 = RSString.CreateString("Freund hinzuf-Ugen");
-    public static int anInt576;
     public static int[] anIntArray577;
-    public static int[] anIntArray578 = new int[2048];
-    public static int anInt579;
     public static CacheIndex_Sub1[] aClass6_Sub1Array580 = new CacheIndex_Sub1[256];
-    public static int[] anIntArray581 = new int[4000];
-    public static int anInt582;
-    public static int[] INCOMINGPACKETSIZES = (new int[]{0, 15, 6, 8, 0, 0, 1, 0, 0, 5, 0, 0, -2, 0, 0, 0, 0, 0, 1, 7, 0, 0, 0, -2, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 1, 4, 0, -1, 0, 0, 0, 0, 2, 0, 4, 0, 0, 0, 0, -2, 2, 0, 0, 0, 0, 0, 1, -1, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, -1, 0, 4, 0, 0, 0, 1, 0, 0, 0, -2, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 5, 2, 8, 2, 0, 8, 0, 0, 0, 0, 0, 0, 0, -2, 3, 2, 5, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 10, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 6, 0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 2, 0, 0, 4, 5, 0, 0, 0, 0, 0, 0, 6, 0, 0, 2, 6, 0, 0, 0, 0, 0, 0, 0, 6, 4, 3, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 2, 0, 4, -2, 0, 0, -2, 0, 0, 2, 0, 0, 0, 0, 3, -1, 0, 0, 0, 0, 0, 14, 0, 6, 0, 0, 6, 1, 0, 2, 0, 0, -2, 4, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 6, 2, 4});
-    public static int anInt584;
-    public static int anInt585;
-    public static int anInt586;
+    public static int[] walkingQueueX = new int[4000];
 
-    public static IndexedImage[] method337(int arg0, CacheIndex arg1, int arg2, int arg3) {
-
-        anInt582++;
-        if(!Class52.method948(arg2, arg3, arg1, arg0 ^ ~0x1132))
+    public static IndexedImage[] method337(CacheIndex arg1, int arg2, int arg3) {
+        if(!ImageRGB.spriteExists(arg2, arg3, arg1))
             return null;
-        if(arg0 != 7729)
-            INCOMINGPACKETSIZES = null;
-        return Class22_Sub2.method315(arg0 ^ 0x1e31);
-
+        return Class22_Sub2.method315();
     }
 
     public static int method338(int arg0, boolean arg1, int arg2, int arg3) {
-
         arg0 &= 0x3;
         if(arg1)
             return 68;
-        anInt585++;
         if(arg0 == 0)
             return arg2;
         if(arg0 == 1)
@@ -48,20 +35,14 @@ public class Class24 {
         if(arg0 == 2)
             return -arg2 + 7;
         return 7 + -arg3;
-
     }
 
-    public static void method339(byte arg0) {
-
+    public static void method339() {
         anIntArray577 = null;
-        INCOMINGPACKETSIZES = null;
-        anIntArray578 = null;
+        IncomingPackets.INCOMING_PACKET_SIZES = null;
+        Player.actorUpdatingIndices = null;
         aClass6_Sub1Array580 = null;
-        if(arg0 != -41)
-            aClass6_Sub1Array580 = null;
-        anIntArray581 = null;
-        aClass1_575 = null;
-
+        walkingQueueX = null;
     }
 
     public static boolean method340() {
@@ -71,7 +52,6 @@ public class Class24 {
 
     public static void method341(int arg0, Scene arg1, int arg2, int arg3, int arg4, int arg5, byte[] arg6, int arg7, CollisionMap[] arg8, int arg9, int arg10) {
         do {
-            anInt579++;
             Buffer class40_sub1 = new Buffer(arg6);
             int i = -1;
             for(; ; ) {
@@ -94,7 +74,7 @@ public class Class24 {
                     if(i_3_ == arg5 && (arg0 <= i_4_) && (i_4_ < 8 + arg0) && (arg9 <= i_7_) && (arg9 + 8 > i_7_)) {
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                         int i_9_ = (Main.method42(arg2 ^ 0x1, i_8_, gameObjectDefinition.sizeX, i_4_ & 0x7, gameObjectDefinition.sizeY, arg4, 0x7 & i_7_) + arg10);
-                        int i_10_ = ((VarbitDefinition.method564(i_7_ & 0x7, gameObjectDefinition.sizeY, i_4_ & 0x7, gameObjectDefinition.sizeX, arg4, i_8_, (byte) -123)) + arg7);
+                        int i_10_ = ((VarbitDefinition.method564(i_7_ & 0x7, gameObjectDefinition.sizeY, i_4_ & 0x7, gameObjectDefinition.sizeX, arg4, i_8_)) + arg7);
                         if(i_9_ > 0 && i_10_ > 0 && i_9_ < 103 && i_10_ < 103) {
                             CollisionMap collisionMap = null;
                             int i_11_ = arg3;

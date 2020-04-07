@@ -5,36 +5,26 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.scene.GroundItemTile;
 
 public abstract class Class22_Sub2 extends Class22 {
-    public static RSString string_blank = RSString.CreateString("");
-    public static RSString password = string_blank;
-    public static RSString aClass1_1875 = RSString.CreateString("Please use a different world)3");
-    public static RSString aClass1_1876 = RSString.CreateString("Walk here");
-    public static RSString aClass1_1877 = RSString.CreateString("");
-    public static RSString aClass1_1878 = RSString.CreateString("@yel@*V");
-    public static RSString aClass1_1879 = string_blank;
-    public static RSString aClass1_1881 = string_blank;
-    public static RSString aClass1_1883 = RSString.CreateString("Fehler bei der Verbindung zum Server)3");
-    public static RSString aClass1_1885 = (RSString.CreateString("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789(Q(R+R(T(U^(V(Z(X(Y)2_=)0[*U]*W;:(W@(S*X)1<)3>)4?*6*V "));
+    public static RSString aClass1_1879 = Native.string_blank;
+    public static RSString aClass1_1881 = Native.string_blank;
     public static Widget aWidget_1887;
     public static int duplicateClickCount = 0;
-    public static RSString aClass1_1889 = RSString.CreateString("Benutzen");
-    public static RSString username = string_blank;
-    public static RSString aClass1_1891 = aClass1_1875;
-    public static RSString aClass1_1893 = aClass1_1885;
-    public static RSString aClass1_1896 = string_blank;
-    public static RSString currentLoadingText = string_blank;
+    public static RSString aClass1_1896 = Native.string_blank;
+    public static int[] anIntArray774 = new int[]{12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800};
 
 
-    public static IndexedImage[] method315(int arg0) {
+    public static IndexedImage[] method315() {
         IndexedImage[] class40_sub5_sub14_sub2s = new IndexedImage[UnderlayDefinition.anInt2581];
-        for(int i = arg0; UnderlayDefinition.anInt2581 > i; i++) {
+        for(int i = 0; UnderlayDefinition.anInt2581 > i; i++) {
             IndexedImage class40_sub5_sub14_sub2 = (class40_sub5_sub14_sub2s[i] = new IndexedImage());
             class40_sub5_sub14_sub2.maxWidth = ItemDefinition.anInt2846;
             class40_sub5_sub14_sub2.maxHeight = RSApplet.anInt31;
@@ -83,32 +73,27 @@ public abstract class Class22_Sub2 extends Class22 {
         return class40_sub5_sub14_sub4s;
     }
 
-    public static void method320(int arg0) {
-        aClass1_1877 = null;
-        aClass1_1885 = null;
-        currentLoadingText = null;
-        string_blank = null;
+    public static void method320() {
+        anIntArray774 = null;
+        Native.supportedCharacters = null;
+        Native.currentLoadingText = null;
+        Native.string_blank = null;
         aClass1_1881 = null;
         aWidget_1887 = null;
         aClass1_1879 = null;
-        aClass1_1878 = null;
-        username = null;
-        aClass1_1893 = null;
-        aClass1_1891 = null;
-        aClass1_1876 = null;
-        aClass1_1875 = null;
-        if(arg0 != 39)
-            duplicateClickCount = 56;
-        aClass1_1889 = null;
+        Native.prefixYellowSTARV = null;
+        Native.username = null;
+        Native.supportedCharacters = null;
+        English.pleaseUseADifferentWorld = null;
+        English.walkHere = null;
         aClass1_1896 = null;
-        password = null;
-        aClass1_1883 = null;
+        Native.password = null;
     }
 
     public static int method323(int arg0) {
-        int i = Class32.anIntArray774[arg0];
+        int i = anIntArray774[arg0];
         i = (i * Class44.anInt1040 >> 8) * i;
-        return (int) (Math.sqrt((double) i) + 0.5);
+        return (int) (Math.sqrt(i) + 0.5);
     }
 
     public abstract void method314(int i, int i_0_, int i_1_, long l);
@@ -134,9 +119,9 @@ public abstract class Class22_Sub2 extends Class22 {
     public void method318(int arg0, long arg1, int arg2) {
         Class44.anInt1040 = arg2;
         for(int i = 0; i < 16; i++)
-            Class32.anIntArray774[i] = 12800;
+            anIntArray774[i] = 12800;
         if(arg0 >= -80)
-            username = null;
+            Native.username = null;
         for(int i = 0; i < 16; i++) {
             int i_3_ = method323(i);
             method314(176 + i, 7, i_3_ >> 7, arg1);
@@ -186,7 +171,7 @@ public abstract class Class22_Sub2 extends Class22 {
             if(arg1 == 121) {
                 method314(arg0, arg1, arg2, arg3);
                 int i = arg0 & 0xf;
-                Class32.anIntArray774[i] = 12800;
+                anIntArray774[i] = 12800;
                 int i_9_ = method323(i);
                 method314(arg0, 7, i_9_ >> 7, arg3);
                 method314(arg0, 39, i_9_ & 0x7f, arg3);
@@ -195,9 +180,9 @@ public abstract class Class22_Sub2 extends Class22 {
             if(arg1 == 7 || arg1 == 39) {
                 int i = arg0 & 0xf;
                 if(arg1 == 7)
-                    Class32.anIntArray774[i] = (Class32.anIntArray774[i] & 0x7f) + (arg2 << 7);
+                    anIntArray774[i] = (anIntArray774[i] & 0x7f) + (arg2 << 7);
                 else
-                    Class32.anIntArray774[i] = (Class32.anIntArray774[i] & 0x3f80) + arg2;
+                    anIntArray774[i] = (anIntArray774[i] & 0x3f80) + arg2;
                 int i_10_ = method323(i);
                 method314(arg0, 7, i_10_ >> 7, arg3);
                 method314(arg0, 39, i_10_ & 0x7f, arg3);

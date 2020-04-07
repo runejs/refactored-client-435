@@ -3,22 +3,20 @@ package com.jagex.runescape.cache;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
+import com.jagex.runescape.net.IncomingPackets;
 
 public class Cache {
     public static RSString dropString = RSString.CreateString("Drop");
     public static RSString dropStringInstance = dropString;
-    public static PacketBuffer outgoingbuffer = new PacketBuffer(5000);
     public static volatile int mouseButtonPressed = 0;
     public static int anInt321 = 5063219;
     public static volatile int eventMouseY = -1;
     public static RSString aClass1_323 = (RSString.CreateString("Please check your message)2centre for details)3"));
     public static int anInt324 = 0;
-    public static RSString aClass1_325 = RSString.CreateString("Ung-Ultiger Benutzername");
     public static Cache aClass9_326 = new Cache(200);
     public static RSString aClass1_327 = RSString.CreateString("@or1@");
     public static CacheIndex aCacheIndex_329;
-    public static boolean aBoolean330 = false;
-    public static RSString aClass1_331 = (RSString.CreateString("RuneScape wird geladen )2 bitte warten)3)3)3"));
+    public static boolean redrawChatbox = false;
     public static RSString aClass1_332 = RSString.CreateString("Classic");
     public static RSString aClass1_333 = aClass1_332;
 
@@ -46,15 +44,12 @@ public class Cache {
             method236(true, null, null, null);
     }
 
-    public static void method234(int arg0) {
+    public static void method234() {
         dropStringInstance = null;
         aClass1_333 = null;
         dropString = null;
         aClass1_332 = null;
-        int i = -70 % ((32 - arg0) / 43);
-        aClass1_331 = null;
-        outgoingbuffer = null;
-        aClass1_325 = null;
+        IncomingPackets.incomingPacketBuffer = null;
         aClass9_326 = null;
         aCacheIndex_329 = null;
         aClass1_327 = null;
@@ -69,21 +64,20 @@ public class Cache {
         AnimationSequence.aCacheIndex_2484 = arg2;
     }
 
-    public void put(int arg0, long arg1, SubNode arg2) {
+    public void put(long arg1, SubNode arg2) {
         if(anInt316 == 0) {
-            SubNode class40_sub5 = aClass27_319.method351(536857847);
+            SubNode class40_sub5 = aClass27_319.method351();
             class40_sub5.method457(-1);
-            class40_sub5.method539(arg0 ^ ~0x1c27);
+            class40_sub5.method539();
             if(class40_sub5 == aClass40_Sub5_309) {
-                class40_sub5 = aClass27_319.method351(536857847);
+                class40_sub5 = aClass27_319.method351();
                 class40_sub5.method457(-1);
-                class40_sub5.method539(0);
+                class40_sub5.method539();
             }
         } else
             anInt316--;
         aClass23_318.put(arg2, (byte) -115, arg1);
-        if(arg0 == -7208)
-            aClass27_319.method352(102, arg2);
+        aClass27_319.method352(102, arg2);
     }
 
     public SubNode get(long arg0, byte arg1) {
@@ -102,17 +96,17 @@ public class Cache {
         if(class40_sub5 == null)
             return;
         class40_sub5.method457(-1);
-        class40_sub5.method539(0);
+        class40_sub5.method539();
         anInt316++;
     }
 
     public void method235(byte arg0) {
         for(; ; ) {
-            SubNode class40_sub5 = aClass27_319.method351(536857847);
+            SubNode class40_sub5 = aClass27_319.method351();
             if(class40_sub5 == null)
                 break;
             class40_sub5.method457(-1);
-            class40_sub5.method539(0);
+            class40_sub5.method539();
         }
         anInt316 = anInt317;
         int i = 115 / ((-2 - arg0) / 33);

@@ -1,5 +1,8 @@
 package com.jagex.runescape.cache.media;
 
+import com.jagex.runescape.Class24;
+import com.jagex.runescape.RSString;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.media.Rasterizer;
 
 public class IndexedImage extends Rasterizer {
@@ -22,6 +25,12 @@ public class IndexedImage extends Rasterizer {
         xDrawOffset = yDrawOffset = 0;
         imgPixels = new byte[arg0 * arg1];
         palette = new int[arg2];
+    }
+
+    public static IndexedImage[] getMultipleIndexedImages(CacheIndex arg0, RSString arg2, RSString arg3) {
+        int i = arg0.getHash(arg2);
+        int i_1_ = arg0.method179(i, arg3);
+        return Class24.method337(arg0, i_1_, i);
     }
 
     public IndexedImage method691() {

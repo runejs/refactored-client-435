@@ -9,6 +9,7 @@ import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.net.PacketBuffer;
 
 public class Class30 {
     public static int[] anIntArray680 = new int[50];
@@ -39,12 +40,10 @@ public class Class30 {
     public long appearanceHash;
     public long cachedModel;
 
-    public static void method376(int arg0) {
+    public static void method376() {
         anIntArray712 = null;
         anIntArray688 = null;
         aClass64_717 = null;
-        if(arg0 != 13429)
-            method381(-90, null);
         anIntArray695 = null;
         anIntArray685 = null;
         anIntArray715 = null;
@@ -62,7 +61,7 @@ public class Class30 {
 
     public static void method381(int arg0, Actor arg1) {
         if(arg0 != 22378)
-            method376(90);
+            method376();
         if(Node.pulseCycle == arg1.anInt3107 || arg1.playingAnimation == -1 || arg1.playingAnimationDelay != 0 || arg1.anInt3115 + 1 > (Class68_Sub1.method1050(arg1.playingAnimation, 2).animationLengths[arg1.anInt3104])) {
             int i = -arg1.anInt3112 + arg1.anInt3107;
             int i_16_ = -arg1.anInt3112 + Node.pulseCycle;
@@ -70,8 +69,8 @@ public class Class30 {
             int i_18_ = arg1.anInt3096 * 64 + 128 * arg1.anInt3081;
             int i_19_ = arg1.anInt3096 * 64 + 128 * arg1.anInt3099;
             int i_20_ = 128 * arg1.anInt3127 + arg1.anInt3096 * 64;
-            arg1.anInt3098 = ((i - i_16_) * i_17_ + i_16_ * i_19_) / i;
-            arg1.anInt3089 = (i_18_ * (i + -i_16_) + i_16_ * i_20_) / i;
+            arg1.worldX = ((i - i_16_) * i_17_ + i_16_ * i_19_) / i;
+            arg1.worldY = (i_18_ * (i + -i_16_) + i_16_ * i_20_) / i;
         }
         if(arg1.anInt3073 == 0)
             arg1.anInt3080 = 1024;
@@ -89,7 +88,7 @@ public class Class30 {
         if(arg0 != -20874)
             return 109;
         if(anInt696 != -1)
-            return (ActorDefinition.getDefinition((byte) -105, anInt696).id + 305419896);
+            return (ActorDefinition.getDefinition(anInt696).id + 305419896);
         return (appearance[1] + (appearance[11] << 5) + ((appearanceColors[4] << 20) + ((appearanceColors[0] << 25) + (appearance[0] << 15)) + (appearance[8] << 10)));
     }
 
@@ -108,7 +107,7 @@ public class Class30 {
 
     public Model getAnimatedModel(AnimationSequence arg0, AnimationSequence arg1, int arg2, int arg3, byte arg4) {
         if(anInt696 != -1)
-            return ActorDefinition.getDefinition((byte) -101, anInt696).getChildModel((byte) -50, arg0, arg1, arg2, arg3);
+            return ActorDefinition.getDefinition(anInt696).getChildModel(arg0, arg1, arg2, arg3);
         long hash = appearanceHash;
         int[] appearance = this.appearance;
         if(arg0 != null && (arg0.shieldModel >= 0 || arg0.weaponModel >= 0)) {
@@ -134,7 +133,7 @@ public class Class30 {
                 int appearanceModel = appearance[bodyPart];
                 if(appearanceModel >= 256 && appearanceModel < 512 && !IdentityKit.cache(-256 + appearanceModel).isBodyModelCached())
                     invalid = true;
-                if(appearanceModel >= 512 && !ItemDefinition.forId(appearanceModel + -512, 10).equipmentReady(gender, (byte) 127))
+                if(appearanceModel >= 512 && !ItemDefinition.forId(appearanceModel + -512, 10).equipmentReady(gender))
                     invalid = true;
             }
             if(invalid) {
@@ -149,7 +148,7 @@ public class Class30 {
                 for(int index = 0; index < 12; index++) {
                     int part = appearance[index];
                     if(part >= 256 && part < 512) {
-                        Model bodyModel = IdentityKit.cache(part - 256).getBodyModel(false);
+                        Model bodyModel = IdentityKit.cache(part - 256).getBodyModel();
                         if(bodyModel != null)
                             models[count++] = bodyModel;
                     }
@@ -170,7 +169,7 @@ public class Class30 {
                 }
                 model.createBones();
                 model.applyLighting(64, 850, -30, -50, -30, true);
-                CacheIndex.modelCache.put(-7208, hash, model);
+                CacheIndex.modelCache.put(hash, model);
                 cachedModel = hash;
             }
         }
@@ -222,11 +221,11 @@ public class Class30 {
 
     public Model method379(int arg0) {
         if(anInt696 != -1)
-            return ActorDefinition.getDefinition((byte) -117, anInt696).getHeadModel((byte) 111);
+            return ActorDefinition.getDefinition(anInt696).getHeadModel();
         boolean bool = false;
         for(int i = 0; i < 12; i++) {
             int i_11_ = appearance[i];
-            if(i_11_ >= 256 && i_11_ < 512 && !IdentityKit.cache(i_11_ - 256).method624(false))
+            if(i_11_ >= 256 && i_11_ < 512 && !IdentityKit.cache(i_11_ - 256).method624())
                 bool = true;
             if(i_11_ >= 512 && !ItemDefinition.forId(-512 + i_11_, 10).headPieceReady(gender))
                 bool = true;
@@ -240,7 +239,7 @@ public class Class30 {
         for(int i_12_ = 0; i_12_ < 12; i_12_++) {
             int i_13_ = appearance[i_12_];
             if(i_13_ >= 256 && i_13_ < 512) {
-                Model class40_sub5_sub17_sub5 = IdentityKit.cache(-256 + i_13_).method629((byte) -100);
+                Model class40_sub5_sub17_sub5 = IdentityKit.cache(-256 + i_13_).method629();
                 if(class40_sub5_sub17_sub5 != null)
                     class40_sub5_sub17_sub5s[i++] = class40_sub5_sub17_sub5;
             }
@@ -314,8 +313,7 @@ public class Class30 {
         }
     }
 
-    public void method384(int arg0, boolean arg1, int arg2) {
-        int i = -67 % ((-30 - arg0) / 56);
+    public void method384(boolean arg1, int arg2) {
         int i_21_ = appearanceColors[arg2];
         if(!arg1) {
             if(--i_21_ < 0)

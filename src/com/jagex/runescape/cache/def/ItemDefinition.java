@@ -2,23 +2,25 @@ package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.Cache;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
-import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.awt.*;
 
-public class ItemDefinition extends SubNode {
-    public static int anInt2797 = 0;
+public class ItemDefinition extends SubNode implements EntityDefinition {
     public static int anInt2798 = 0;
     public static int[] soundVolume = new int[50];
-    public static int anInt2815;
+    public static int selectedMask;
     public static int anInt2846;
     public static int anInt2850 = -1;
     public static int anInt2854;
@@ -97,20 +99,20 @@ public class ItemDefinition extends SubNode {
         maleModel0 = -1;
     }
 
-    public static void method742(int arg0) {
+    public static void method742() {
         try {
-            Graphics graphics = GameFrame.aCanvas1469.getGraphics();
-            Landscape.aClass68_1185.method1044(arg0 ^ arg0, 0, graphics, 4);
-            Class40_Sub5_Sub1.aClass68_2275.method1044(arg0 + -205, 0, graphics, 357);
-            Class39.aClass68_908.method1044(0, 722, graphics, 4);
-            GameObject.aClass68_3045.method1044(arg0 + -205, 743, graphics, 205);
-            Class40_Sub5_Sub17_Sub6.aClass68_3243.method1044(0, 0, graphics, 0);
-            Class40_Sub7.aClass68_2123.method1044(0, 516, graphics, 4);
-            Class61.aClass68_1441.method1044(0, 516, graphics, 205);
-            Class30.aClass68_714.method1044(0, 496, graphics, 357);
-            Class17.aClass68_462.method1044(0, 0, graphics, 338);
+            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
+            Landscape.aClass68_1185.drawGraphics(0, 4, graphics);
+            Class40_Sub5_Sub1.aClass68_2275.drawGraphics(0, 357, graphics);
+            Class39.aClass68_908.drawGraphics(722, 4, graphics);
+            GameObject.aClass68_3045.drawGraphics(743, 205, graphics);
+            Class40_Sub5_Sub17_Sub6.aClass68_3243.drawGraphics(0, 0, graphics);
+            Class40_Sub7.aClass68_2123.drawGraphics(516, 4, graphics);
+            Class61.aClass68_1441.drawGraphics(516, 205, graphics);
+            Class30.aClass68_714.drawGraphics(496, 357, graphics);
+            Class17.aClass68_462.drawGraphics(0, 338, graphics);
         } catch(Exception exception) {
-            GameFrame.aCanvas1469.repaint();
+            MouseHandler.aCanvas1469.repaint();
         }
     }
 
@@ -163,14 +165,14 @@ public class ItemDefinition extends SubNode {
     }
 
     public static void method749(boolean arg0) {
-        for(int i = 0; GameObjectDefinition.anInt2558 > i; i++) {
-            Npc npc = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i]]);
-            int i_15_ = (536870912 + (Class40_Sub3.anIntArray2016[i] << 14));
-            if(npc != null && npc.isVisible(1) && !arg0 != (npc.actorDefinition.hasRenderPriority) && npc.actorDefinition.method571(-1)) {
-                int i_16_ = (npc.anInt3098 >> 7);
-                int i_17_ = npc.anInt3089 >> 7;
+        for(int i = 0; Player.npcCount > i; i++) {
+            Npc npc = (Player.npcs[Player.npcIds[i]]);
+            int i_15_ = (536870912 + (Player.npcIds[i] << 14));
+            if(npc != null && npc.isVisible(1) && arg0 == (npc.actorDefinition.hasRenderPriority) && npc.actorDefinition.method571(-1)) {
+                int i_16_ = (npc.worldX >> 7);
+                int i_17_ = npc.worldY >> 7;
                 if(i_16_ >= 0 && i_16_ < 104 && i_17_ >= 0 && i_17_ < 104) {
-                    if(npc.anInt3096 == 1 && (npc.anInt3098 & 0x7f) == 64 && ((npc.anInt3089 & 0x7f) == 64)) {
+                    if(npc.anInt3096 == 1 && (npc.worldX & 0x7f) == 64 && ((npc.worldY & 0x7f) == 64)) {
                         if(Class61.anIntArrayArray1435[i_16_][i_17_] == Class40_Sub5_Sub11.anInt2628) {
                             continue;
                         }
@@ -179,14 +181,14 @@ public class ItemDefinition extends SubNode {
                     if(!npc.actorDefinition.isClickable) {
                         i_15_ += -2147483648;
                     }
-                    Npc.aScene_3301.method134(Player.anInt3267, npc.anInt3098, npc.anInt3089, (Class37.method430((byte) -126, Player.anInt3267, (npc.anInt3098 + ((-1 + npc.anInt3096) * 64)), (npc.anInt3096 * 64 + (-64 + (npc.anInt3089))))), -64 + (npc.anInt3096 * 64 + 60), npc, npc.anInt3118, i_15_, npc.aBoolean3105);
+                    Npc.currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY, (Class37.getFloorDrawHeight(Player.worldLevel, (npc.worldX + ((-1 + npc.anInt3096) * 64)), (npc.anInt3096 * 64 + (-64 + (npc.worldY))))), -64 + (npc.anInt3096 * 64 + 60), npc, npc.anInt3118, i_15_, npc.aBoolean3105);
                 }
             }
         }
     }
 
     public static ItemDefinition forId(int id, int arg1) {
-        ItemDefinition definition = ((ItemDefinition) ISAAC.aClass9_516.get((long) id, (byte) 100));
+        ItemDefinition definition = ((ItemDefinition) ISAAC.aClass9_516.get(id, (byte) 100));
         if(definition != null) {
             return definition;
         }
@@ -203,9 +205,9 @@ public class ItemDefinition extends SubNode {
             definition.interfaceOptions = null;
             definition.teamIndex = 0;
             definition.groundOptions = null;
-            definition.name = Class40_Sub5_Sub17_Sub3.aClass1_3069;
+            definition.name = Item.aClass1_3069;
         }
-        ISAAC.aClass9_516.put(arg1 + -7218, (long) id, definition);
+        ISAAC.aClass9_516.put(id, definition);
         return definition;
     }
 
@@ -229,7 +231,7 @@ public class ItemDefinition extends SubNode {
         return ready;
     }
 
-    public boolean equipmentReady(boolean arg0, byte arg1) {
+    public boolean equipmentReady(boolean arg0) {
         int i = maleModel0;
         int i_1_ = maleModel1;
         int i_2_ = maleModel2;
@@ -242,9 +244,6 @@ public class ItemDefinition extends SubNode {
             return true;
         }
         boolean bool = true;
-        if(arg1 <= 126) {
-            return false;
-        }
         if(!Class8.aCacheIndex_284.loaded(i, 0)) {
             bool = false;
         }
@@ -359,7 +358,7 @@ public class ItemDefinition extends SubNode {
             if(yOffset2d > 32767) {
                 yOffset2d -= 65536;
             }
-        } else if(opcode == 10){
+        } else if(opcode == 10) {
             buffer.getUnsignedShortBE(); // Dummy
         } else if(opcode == 11) {
             stackable = 1;
@@ -379,7 +378,7 @@ public class ItemDefinition extends SubNode {
             femaleModel1 = buffer.getUnsignedShortBE();
         } else if(opcode >= 30 && opcode < 35) {
             groundOptions[-30 + opcode] = buffer.getRSString();
-            if(groundOptions[opcode + -30].equalsIgnoreCase(Class59.string_Hidden, true)) {
+            if(groundOptions[opcode + -30].equalsIgnoreCase(English.hidden)) {
                 groundOptions[opcode + -30] = null;
             }
         } else if(opcode >= 35 && opcode < 40) {
@@ -433,7 +432,7 @@ public class ItemDefinition extends SubNode {
     }
 
     public void readValues(Buffer itemDefinitionBuffer) {
-        for(; ; ) {
+        while(true) {
             int opcode = itemDefinitionBuffer.getUnsignedByte();
             if(opcode == 0) {
                 break;
@@ -470,13 +469,11 @@ public class ItemDefinition extends SubNode {
                 return forId(id, 10).asGroundStack(arg0, 1);
             }
         }
-        if(arg0) {
-            Model model = ((Model) GameFrame.aClass9_1455.get((long) id, (byte) 87));
-            if(model != null) {
-                return model;
-            }
+        Model model = ((Model) MouseHandler.modelCache.get(id, (byte) 87));
+        if(model != null) {
+            return model;
         }
-        Model model = Model.getModel(Class8.aCacheIndex_284, inventoryModelId, 0);
+        model = Model.getModel(Class8.aCacheIndex_284, inventoryModelId, 0);
         if(model == null) {
             return null;
         }
@@ -491,9 +488,14 @@ public class ItemDefinition extends SubNode {
         if(arg0) {
             model.applyLighting(ambient + 64, 768 + contrast, -50, -10, -50, true);
             model.singleTile = true;
-            GameFrame.aClass9_1455.put(-7208, (long) id, model);
+            MouseHandler.modelCache.put(id, model);
         }
         return model;
 
+    }
+
+    @Override
+    public RSString getName() {
+        return name;
     }
 }

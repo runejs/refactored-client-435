@@ -1,11 +1,13 @@
-package com.jagex.runescape;
+package com.jagex.runescape.net;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -18,64 +20,42 @@ import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
 
 public class ISAAC {
-    public static int anInt499;
-    public static int anInt500;
-    public static int anInt501;
-    public static int anInt503;
-    public static int anInt504;
+    /**
+     * The golden ratio.
+     */
+    private static final int GOLDEN_RATIO = 0x9e3779b9;
+
     public static boolean redrawTabArea = false;
     public static RSString aClass1_506 = RSString.CreateString("titlebutton");
-    public static int anInt507;
     public static int anInt509 = 0;
     public static Cache aClass9_510 = new Cache(64);
     public static boolean aBoolean512;
-    public static int anInt514;
     public static RSString aClass1_515 = RSString.CreateString(": ");
-    public static Cache aClass9_516;
-    public static RSString aClass1_517;
-    public static RSString aClass1_518;
+    public static Cache aClass9_516 = new Cache(64);
     public static boolean aBoolean519 = true;
-    public static int anInt520;
     public static Signlink aClass31_521;
-    public static int anInt522;
-    public static RSString aClass1_523;
+    public static int anInt522 = -1;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_524;
     public static int anInt525;
-    public static RSString aClass1_526;
-    public static RSString aClass1_527;
-    public static int[] anIntArray528;
-    public static RSString aClass1_529;
+    public static RSString aClass1_526 = RSString.CreateString("Invalid username or password)3");
+    public static int[] mapCoordinates;
 
-    static {
-        aClass1_517 = RSString.CreateString("Gegenstand f-Ur Mitglieder");
-        anInt522 = -1;
-        aClass1_518 = RSString.CreateString("Invalid username or password)3");
-        aClass1_526 = aClass1_518;
-        aClass1_527 = RSString.CreateString("blinken3:");
-        aClass1_523 = RSString.CreateString("oberen Rand der Webseite ausw-=hlen)3");
-        aClass9_516 = new Cache(64);
-        aClass1_529 = RSString.CreateString("Begeben Sie sich in ein freies Gebiet)1 um");
-    }
+    public int count;
+    public int accumulator;
+    public int counter;
+    public int[] rsl;
+    public int[] mem;
+    public int result;
 
-    public int anInt497;
-    public int anInt498;
-    public int anInt502;
-    public int[] anIntArray508;
-    public int[] anIntArray511;
-    public int anInt513;
-
-    public ISAAC(int[] arg0) {
-
-        anIntArray511 = new int[256];
-        anIntArray508 = new int[256];
-        for(int i = 0; arg0.length > i; i++)
-            anIntArray508[i] = arg0[i];
-        method287(true);
-
+    public ISAAC(int[] seed) {
+        mem = new int[256];
+        rsl = new int[256];
+        for(int i = 0; seed.length > i; i++)
+            rsl[i] = seed[i];
+        init(true);
     }
 
     public static void method281(Scene arg0, int arg1, CollisionMap[] arg2) {
-
         for(int i = 0; i < 4; i++) {
             for(int i_0_ = 0; i_0_ < 104; i_0_++) {
                 for(int i_1_ = 0; i_1_ < 104; i_1_++) {
@@ -84,14 +64,13 @@ public class ISAAC {
                         if((0x2 & (OverlayDefinition.tile_flags[1][i_0_][i_1_])) == 2)
                             i_2_--;
                         if(i_2_ >= 0)
-                            arg2[i_2_].markBlocked((byte) -28, i_1_, i_0_);
+                            arg2[i_2_].markBlocked(i_1_, i_0_);
                     }
                 }
             }
         }
         Class40_Sub5_Sub15.anInt2791 += (int) (5.0 * Math.random()) + -2;
         Actor.anInt3151 += -2 + (int) (5.0 * Math.random());
-        anInt504++;
         if(Class40_Sub5_Sub15.anInt2791 < -8)
             Class40_Sub5_Sub15.anInt2791 = -8;
         if(Class40_Sub5_Sub15.anInt2791 > 8)
@@ -108,7 +87,7 @@ public class ISAAC {
                 for(int i_6_ = 1; i_6_ < 103; i_6_++) {
                     int i_7_ = (-(Class40_Sub6.tile_height[i][i_6_ - 1][i_5_]) + (Class40_Sub6.tile_height[i][1 + i_6_][i_5_]));
                     int i_8_ = ((Class40_Sub6.tile_height[i][i_6_][i_5_ + 1]) + -(Class40_Sub6.tile_height[i][i_6_][i_5_ + -1]));
-                    int i_9_ = (int) Math.sqrt((double) (i_8_ * i_8_ + i_7_ * i_7_ + 65536));
+                    int i_9_ = (int) Math.sqrt(i_8_ * i_8_ + i_7_ * i_7_ + 65536);
                     int i_10_ = 65536 / i_9_;
                     int i_11_ = ((is[i_6_][i_5_] >> 1) + ((is[i_6_][-1 + i_5_] >> 2) + (is[1 + i_6_][i_5_] >> 3) + (is[i_6_ - 1][i_5_] >> 2) + (is[i_6_][1 + i_5_] >> 3)));
                     int i_12_ = (i_7_ << 8) / i_9_;
@@ -175,10 +154,10 @@ public class ISAAC {
                             i_22_ -= (Class40_Sub5_Sub17_Sub6.anIntArray3250[i_29_]);
                         }
                         if(i_27_ >= 1 && i_27_ < 103 && (!VertexNormal.lowMemory || (0x2 & (OverlayDefinition.tile_flags[0][i_16_][i_27_])) != 0 || ((0x10 & (OverlayDefinition.tile_flags[i][i_16_][i_27_])) == 0 && (Class40_Sub6.onBuildTimePlane == Class59.getVisibilityPlaneFor(i, i_27_, 0, i_16_))))) {
-                            if(Class64.setZ > i)
-                                Class64.setZ = i;
+                            if(Class64.lowestPlane > i)
+                                Class64.lowestPlane = i;
                             int i_30_ = ((Class42.tile_underlayids[i][i_16_][i_27_]) & 0xff);
-                            int i_31_ = ((GameFrame.tile_overlayids[i][i_16_][i_27_]) & 0xff);
+                            int i_31_ = ((MouseHandler.tile_overlayids[i][i_16_][i_27_]) & 0xff);
                             if(i_30_ > 0 || i_31_ > 0) {
                                 int i_32_ = (Class40_Sub6.tile_height[i][i_16_][i_27_]);
                                 int i_33_ = (Class40_Sub6.tile_height[i][i_16_ + 1][i_27_]);
@@ -194,7 +173,7 @@ public class ISAAC {
                                     int i_42_ = 256 * i_22_ / i_26_;
                                     int i_43_ = i_23_ / i_25_;
                                     int i_44_ = i_24_ / i_25_;
-                                    i_39_ = Class13.method244(i_43_, i_44_, arg1 + -27260, i_42_);
+                                    i_39_ = Class13.method244(i_43_, i_44_, i_42_);
                                     i_44_ += (Actor.anInt3151);
                                     i_42_ = i_42_ + (Class40_Sub5_Sub15.anInt2791) & 0xff;
                                     if(i_44_ >= 0) {
@@ -202,7 +181,7 @@ public class ISAAC {
                                             i_44_ = 255;
                                     } else
                                         i_44_ = 0;
-                                    i_41_ = Class13.method244(i_43_, i_44_, 44, i_42_);
+                                    i_41_ = Class13.method244(i_43_, i_44_, i_42_);
                                 }
                                 if(i > 0) {
                                     boolean bool = true;
@@ -215,7 +194,7 @@ public class ISAAC {
                                 }
                                 int i_45_ = 0;
                                 if(i_41_ != -1)
-                                    i_45_ = (Rasterizer3D.anIntArray2932[(Class40_Sub5_Sub17_Sub6.method831(i_41_, 96, (byte) 73))]);
+                                    i_45_ = (Rasterizer3D.hsl2rgb[(Class40_Sub5_Sub17_Sub6.method831(i_41_, 96, (byte) 73))]);
                                 if(i_31_ != 0) {
                                     int i_46_ = 1 + (OverlayDefinition.tile_underlay_path[i][i_16_][i_27_]);
                                     byte i_47_ = (Class35.tile_overlay_rotation[i][i_16_][i_27_]);
@@ -231,18 +210,18 @@ public class ISAAC {
                                         i_48_ = -1;
                                         i_50_ = -2;
                                     } else {
-                                        i_49_ = (Class13.method244((class40_sub5_sub3.lightness), (class40_sub5_sub3.saturation), -120, (class40_sub5_sub3.hue)));
+                                        i_49_ = (Class13.method244((class40_sub5_sub3.lightness), (class40_sub5_sub3.saturation), (class40_sub5_sub3.hue)));
                                         int i_51_ = (Class40_Sub5_Sub15.anInt2791 + (class40_sub5_sub3.hue)) & 0xff;
                                         int i_52_ = ((Actor.anInt3151) + (class40_sub5_sub3.saturation));
                                         if(i_52_ < 0)
                                             i_52_ = 0;
                                         else if(i_52_ > 255)
                                             i_52_ = 255;
-                                        i_50_ = (Class13.method244((class40_sub5_sub3.lightness), i_52_, arg1 ^ ~0x6acb, i_51_));
+                                        i_50_ = (Class13.method244((class40_sub5_sub3.lightness), i_52_, i_51_));
                                     }
                                     int i_53_ = 0;
                                     if(i_50_ != -2)
-                                        i_53_ = (Rasterizer3D.anIntArray2932[Class34.method420(i_50_, 96, true)]);
+                                        i_53_ = (Rasterizer3D.hsl2rgb[Class34.method420(i_50_, 96, true)]);
                                     if(class40_sub5_sub3.anInt2336 != -1) {
                                         int i_54_ = 0xff & ((Class40_Sub5_Sub15.anInt2791) + (class40_sub5_sub3.anInt2334));
                                         int i_55_ = (class40_sub5_sub3.anInt2330 + (Actor.anInt3151));
@@ -251,12 +230,12 @@ public class ISAAC {
                                                 i_55_ = 255;
                                         } else
                                             i_55_ = 0;
-                                        i_50_ = (Class13.method244((class40_sub5_sub3.anInt2346), i_55_, arg1 + -27445, i_54_));
-                                        i_53_ = (Rasterizer3D.anIntArray2932[Class34.method420(i_50_, 96, true)]);
+                                        i_50_ = (Class13.method244((class40_sub5_sub3.anInt2346), i_55_, i_54_));
+                                        i_53_ = (Rasterizer3D.hsl2rgb[Class34.method420(i_50_, 96, true)]);
                                     }
-                                    arg0.method99(i, i_16_, i_27_, i_46_, i_47_, i_48_, i_32_, i_33_, i_34_, i_35_, (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_36_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_37_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_38_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_40_, (byte) 73)), Class34.method420(i_49_, i_36_, true), Class34.method420(i_49_, i_37_, true), Class34.method420(i_49_, i_38_, true), Class34.method420(i_49_, i_40_, true), i_45_, i_53_);
+                                    arg0.addTile(i, i_16_, i_27_, i_46_, i_47_, i_48_, i_32_, i_33_, i_34_, i_35_, (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_36_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_37_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_38_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_40_, (byte) 73)), Class34.method420(i_49_, i_36_, true), Class34.method420(i_49_, i_37_, true), Class34.method420(i_49_, i_38_, true), Class34.method420(i_49_, i_40_, true), i_45_, i_53_);
                                 } else
-                                    arg0.method99(i, i_16_, i_27_, 0, 0, -1, i_32_, i_33_, i_34_, i_35_, (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_36_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_37_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_38_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_40_, (byte) 73)), 0, 0, 0, 0, i_45_, 0);
+                                    arg0.addTile(i, i_16_, i_27_, 0, 0, -1, i_32_, i_33_, i_34_, i_35_, (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_36_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_37_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_38_, (byte) 73)), (Class40_Sub5_Sub17_Sub6.method831(i_39_, i_40_, (byte) 73)), 0, 0, 0, 0, i_45_, 0);
                             }
                         }
                     }
@@ -267,7 +246,7 @@ public class ISAAC {
                     arg0.method130(i, i_57_, i_56_, Class59.getVisibilityPlaneFor(i, i_56_, 0, i_57_));
             }
             Class42.tile_underlayids[i] = null;
-            GameFrame.tile_overlayids[i] = null;
+            MouseHandler.tile_overlayids[i] = null;
             OverlayDefinition.tile_underlay_path[i] = null;
             Class35.tile_overlay_rotation[i] = null;
             InteractiveObject.aByteArrayArrayArray492[i] = null;
@@ -411,221 +390,205 @@ public class ISAAC {
 
     }
 
-    public static void method282(boolean arg0) {
-
-        aClass1_529 = null;
+    public static void method282() {
         aClass1_515 = null;
-        aClass1_518 = null;
         aClass1_526 = null;
         aClass40_Sub5_Sub14_Sub2_524 = null;
         aClass1_506 = null;
         aClass9_510 = null;
-        aClass1_527 = null;
         aClass9_516 = null;
-        aClass1_523 = null;
-        if(arg0) {
-            aClass31_521 = null;
-            anIntArray528 = null;
-            aClass1_517 = null;
-        }
-
+        aClass31_521 = null;
+        mapCoordinates = null;
     }
 
     public static void method283(long arg0, int arg1) {
-
         try {
             int i = -93 / ((-50 - arg1) / 45);
             Thread.sleep(arg0);
         } catch(InterruptedException interruptedexception) {
             /* empty */
         }
-        anInt507++;
-
     }
 
     public static void method285(byte arg0) {
-
-        anInt514++;
         if(arg0 != 118)
             aBoolean519 = true;
-        for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) Class45.aClass45_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = (Class40_Sub3) Class45.aClass45_1064.method909(-4)) {
+        for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4)) {
             if(class40_sub3.anInt2031 == -1) {
                 class40_sub3.anInt2033 = 0;
                 Class39.method451(class40_sub3, 19813);
             } else
                 class40_sub3.method457(arg0 ^ ~0x76);
         }
-
     }
 
     public static int method288(byte arg0) {
-
         if(arg0 < 117)
             method288((byte) 125);
-        anInt500++;
         return 5;
-
     }
 
-    public void method284(byte arg0) {
-
-        anInt513 += ++anInt502;
-        anInt501++;
-        int i = -29 % ((arg0 + 18) / 58);
-        for(int i_98_ = 0; i_98_ < 256; i_98_++) {
-            int i_99_ = anIntArray511[i_98_];
-            if((i_98_ & 0x2) == 0) {
-                if((0x1 & i_98_) == 0)
-                    anInt498 ^= anInt498 << 13;
+    public void isaac() {
+        result += ++counter;
+        for(int i = 0; i < 256; i++) {
+            int x = mem[i];
+            if((i & 0x2) == 0) {
+                if((0x1 & i) == 0)
+                    accumulator ^= accumulator << 13;
                 else
-                    anInt498 ^= anInt498 >>> 6;
-            } else if((i_98_ & 0x1) != 0)
-                anInt498 ^= anInt498 >>> 16;
+                    accumulator ^= accumulator >>> 6;
+            } else if((i & 0x1) != 0)
+                accumulator ^= accumulator >>> 16;
             else
-                anInt498 ^= anInt498 << 2;
-            anInt498 += anIntArray511[0xff & 128 + i_98_];
-            int i_100_;
-            anIntArray511[i_98_] = i_100_ = anIntArray511[(HuffmanEncoding.method1021(i_99_, 1020) >> 2)] + (anInt498 + anInt513);
-            anIntArray508[i_98_] = anInt513 = (i_99_ + anIntArray511[HuffmanEncoding.method1021((i_100_ >> -488567000 >> -1522276318), 255)]);
+                accumulator ^= accumulator << 2;
+            accumulator += mem[0xff & 128 + i];
+            int y;
+            mem[i] = y = mem[(HuffmanEncoding.method1021(x, 1020) >> 2)] + (accumulator + result);
+            rsl[i] = result = (x + mem[HuffmanEncoding.method1021((y >> -488567000 >> -1522276318), 255)]);
         }
-
     }
 
-    public int rand() {
-        anInt520++;
-        if(anInt497-- == 0) {
-            method284((byte) -92);
-            anInt497 = 255;
+    /**
+     * Gets the next random value.
+     *
+     * @return The next random value.
+     */
+    public int nextInt() {
+        if(count-- == 0) {
+            isaac();
+            count = 255;
         }
-        return anIntArray508[anInt497];
+        return rsl[count];
     }
 
-    public void method287(boolean arg0) {
+    public void init(boolean arg0) {
+        int b;
+        int c;
+        int d;
+        int e;
+        int f;
+        int g;
+        int h;
 
-        anInt503++;
-        int i_101_;
-        int i_102_;
-        int i_103_;
-        int i_104_;
-        int i_105_;
-        int i_106_;
-        int i_107_;
-        int i = (i_101_ = i_102_ = i_103_ = i_104_ = i_105_ = i_106_ = i_107_ = -1640531527);
-        for(int i_108_ = 0; i_108_ < 4; i_108_++) {
-            i ^= i_101_ << 11;
-            i_103_ += i;
-            i_101_ += i_102_;
-            i_101_ ^= i_102_ >>> 2;
-            i_102_ += i_103_;
-            i_102_ ^= i_103_ << 8;
-            i_105_ += i_102_;
-            i_104_ += i_101_;
-            i_103_ += i_104_;
-            i_103_ ^= i_104_ >>> 16;
-            i_106_ += i_103_;
-            i_104_ += i_105_;
-            i_104_ ^= i_105_ << 10;
-            i_107_ += i_104_;
-            i_105_ += i_106_;
-            i_105_ ^= i_106_ >>> 4;
-            i_106_ += i_107_;
-            i_106_ ^= i_107_ << 8;
-            i_101_ += i_106_;
-            i += i_105_;
-            i_107_ += i;
-            i_107_ ^= i >>> 9;
-            i_102_ += i_107_;
-            i += i_101_;
+        int a = b = c = d = e = f = g = h = GOLDEN_RATIO;
+        for(int i = 0; i < 4; i++) {
+            a ^= b << 11;
+            d += a;
+            b += c;
+            b ^= c >>> 2;
+            c += d;
+            c ^= d << 8;
+            f += c;
+            e += b;
+            d += e;
+            d ^= e >>> 16;
+            g += d;
+            e += f;
+            e ^= f << 10;
+            h += e;
+            f += g;
+            f ^= g >>> 4;
+            g += h;
+            g ^= h << 8;
+            b += g;
+            a += f;
+            h += a;
+            h ^= a >>> 9;
+            c += h;
+            a += b;
         }
-        for(int i_109_ = 0; i_109_ < 256; i_109_ += 8) {
-            i_107_ += anIntArray508[7 + i_109_];
-            i_103_ += anIntArray508[3 + i_109_];
-            i += anIntArray508[i_109_];
-            i_101_ += anIntArray508[i_109_ + 1];
-            i_104_ += anIntArray508[4 + i_109_];
-            i_106_ += anIntArray508[i_109_ + 6];
-            i_105_ += anIntArray508[5 + i_109_];
-            i_102_ += anIntArray508[2 + i_109_];
-            i ^= i_101_ << 11;
-            i_103_ += i;
-            i_101_ += i_102_;
-            i_101_ ^= i_102_ >>> 2;
-            i_104_ += i_101_;
-            i_102_ += i_103_;
-            i_102_ ^= i_103_ << 8;
-            i_103_ += i_104_;
-            i_105_ += i_102_;
-            i_103_ ^= i_104_ >>> 16;
-            i_104_ += i_105_;
-            i_106_ += i_103_;
-            i_104_ ^= i_105_ << 10;
-            i_107_ += i_104_;
-            i_105_ += i_106_;
-            i_105_ ^= i_106_ >>> 4;
-            i_106_ += i_107_;
-            i += i_105_;
-            i_106_ ^= i_107_ << 8;
-            i_107_ += i;
-            i_101_ += i_106_;
-            i_107_ ^= i >>> 9;
-            i += i_101_;
-            i_102_ += i_107_;
-            anIntArray511[i_109_] = i;
-            anIntArray511[i_109_ + 1] = i_101_;
-            anIntArray511[i_109_ + 2] = i_102_;
-            anIntArray511[3 + i_109_] = i_103_;
-            anIntArray511[i_109_ + 4] = i_104_;
-            anIntArray511[i_109_ + 5] = i_105_;
-            anIntArray511[i_109_ + 6] = i_106_;
-            anIntArray511[7 + i_109_] = i_107_;
+        for(int i = 0; i < 256; i += 8) {
+            /*
+             * fill in mem[] with messy
+             * stuff
+             */
+            h += rsl[7 + i];
+            d += rsl[3 + i];
+            a += rsl[i];
+            b += rsl[i + 1];
+            e += rsl[4 + i];
+            g += rsl[i + 6];
+            f += rsl[5 + i];
+            c += rsl[2 + i];
+            a ^= b << 11;
+            d += a;
+            b += c;
+            b ^= c >>> 2;
+            e += b;
+            c += d;
+            c ^= d << 8;
+            d += e;
+            f += c;
+            d ^= e >>> 16;
+            e += f;
+            g += d;
+            e ^= f << 10;
+            h += e;
+            f += g;
+            f ^= g >>> 4;
+            g += h;
+            a += f;
+            g ^= h << 8;
+            h += a;
+            b += g;
+            h ^= a >>> 9;
+            a += b;
+            c += h;
+            mem[i] = a;
+            mem[i + 1] = b;
+            mem[i + 2] = c;
+            mem[3 + i] = d;
+            mem[i + 4] = e;
+            mem[i + 5] = f;
+            mem[i + 6] = g;
+            mem[7 + i] = h;
         }
-        int i_110_ = 0;
         if(!arg0)
             aClass9_516 = null;
-        for(/**/; i_110_ < 256; i_110_ += 8) {
-            i_107_ += anIntArray511[7 + i_110_];
-            i_106_ += anIntArray511[i_110_ + 6];
-            i_102_ += anIntArray511[2 + i_110_];
-            i_103_ += anIntArray511[3 + i_110_];
-            i_105_ += anIntArray511[i_110_ + 5];
-            i += anIntArray511[i_110_];
-            i_104_ += anIntArray511[4 + i_110_];
-            i_101_ += anIntArray511[i_110_ + 1];
-            i ^= i_101_ << 11;
-            i_103_ += i;
-            i_101_ += i_102_;
-            i_101_ ^= i_102_ >>> 2;
-            i_102_ += i_103_;
-            i_102_ ^= i_103_ << 8;
-            i_105_ += i_102_;
-            i_104_ += i_101_;
-            i_103_ += i_104_;
-            i_103_ ^= i_104_ >>> 16;
-            i_106_ += i_103_;
-            i_104_ += i_105_;
-            i_104_ ^= i_105_ << 10;
-            i_107_ += i_104_;
-            i_105_ += i_106_;
-            i_105_ ^= i_106_ >>> 4;
-            i += i_105_;
-            i_106_ += i_107_;
-            i_106_ ^= i_107_ << 8;
-            i_107_ += i;
-            i_107_ ^= i >>> 9;
-            i_101_ += i_106_;
-            i += i_101_;
-            i_102_ += i_107_;
-            anIntArray511[i_110_] = i;
-            anIntArray511[1 + i_110_] = i_101_;
-            anIntArray511[i_110_ + 2] = i_102_;
-            anIntArray511[3 + i_110_] = i_103_;
-            anIntArray511[i_110_ + 4] = i_104_;
-            anIntArray511[i_110_ + 5] = i_105_;
-            anIntArray511[i_110_ + 6] = i_106_;
-            anIntArray511[7 + i_110_] = i_107_;
+        /* second pass makes all of seed affect all of mem */
+        for(int i = 0; i < 256; i += 8) {
+            h += mem[7 + i];
+            g += mem[i + 6];
+            c += mem[2 + i];
+            d += mem[3 + i];
+            f += mem[i + 5];
+            a += mem[i];
+            e += mem[4 + i];
+            b += mem[i + 1];
+            a ^= b << 11;
+            d += a;
+            b += c;
+            b ^= c >>> 2;
+            c += d;
+            c ^= d << 8;
+            f += c;
+            e += b;
+            d += e;
+            d ^= e >>> 16;
+            g += d;
+            e += f;
+            e ^= f << 10;
+            h += e;
+            f += g;
+            f ^= g >>> 4;
+            a += f;
+            g += h;
+            g ^= h << 8;
+            h += a;
+            h ^= a >>> 9;
+            b += g;
+            a += b;
+            c += h;
+            mem[i] = a;
+            mem[1 + i] = b;
+            mem[i + 2] = c;
+            mem[3 + i] = d;
+            mem[i + 4] = e;
+            mem[i + 5] = f;
+            mem[i + 6] = g;
+            mem[7 + i] = h;
         }
-        method284((byte) -90);
-        anInt497 = 256;
-
+        isaac();
+        count = 256;
     }
 }

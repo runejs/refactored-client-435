@@ -2,6 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.input.KeyFocusListener;
 
 import java.io.EOFException;
 import java.io.IOException;
@@ -16,16 +17,12 @@ public class Class67 {
     public static int anInt1586 = -1;
     public static int[] anIntArray1588 = new int[1000];
     public static RSString aClass1_1590 = RSString.CreateString("Create a free account");
-    public static RSString aClass1_1591 = RSString.CreateString("Update)2Liste geladen)3");
     public static RSString aClass1_1598;
     public static boolean reportMutePlayer = false;
     public static RSString aClass1_1605 = RSString.CreateString("Loading )2 please wait)3");
     public static int anInt1607 = 10;
-    public static RSString aClass1_1609 = RSString.CreateString("gleiten:");
     public static RSString aClass1_1610 = RSString.CreateString("(U3");
     public static Cache aClass9_1611 = new Cache(50);
-    public static RSString aClass1_1612 = RSString.CreateString("Lade Texturen )2 ");
-    public static RSString aClass1_1613 = RSString.CreateString("60 Sekunden noch einmal)3)3)3");
     public static long[] aLongArray1614 = new long[32];
 
     static {
@@ -65,24 +62,18 @@ public class Class67 {
         return i;
     }
 
-    public static void method1037(boolean arg0) {
+    public static void method1037() {
         anIntArray1579 = null;
         aClass1_1598 = null;
         aLongArray1614 = null;
-        aClass1_1612 = null;
         aClass1_1580 = null;
-        aClass1_1613 = null;
-        if(arg0)
-            aClass1_1590 = null;
         aClass9_1582 = null;
-        aClass1_1591 = null;
         aClass1_1605 = null;
         aClass1_1610 = null;
         aClass9_1611 = null;
         anIntArray1588 = null;
         aClass1_1590 = null;
         aClass1_1585 = null;
-        aClass1_1609 = null;
         aCacheIndex_1577 = null;
     }
 

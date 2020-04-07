@@ -121,9 +121,9 @@ public class ObjectDecompressor {
      * @param type     what kind, floor, wall, etc. (list coming soon, I have one, just too lazy ;))
      */
     public static void spawnObject(int objectId, int x, int y, int z, int rotation, int type) {
-        final CollisionMap[] groundData = Landscape.aCollisionMapArray1167;
-        int localX = x - SpotAnimDefinition.anInt2307;
-        int localY = y - Class26.anInt635; // ??? is this correct?
+        final CollisionMap[] groundData = Landscape.currentCollisionMap;
+        int localX = x - SpotAnimDefinition.baseX;
+        int localY = y - Class26.baseY; // ??? is this correct?
         int plane = z;
         if(localX > -1 && localY > -1) {
             if((OverlayDefinition.tile_flags[1][localY][localX] & 2) == 2) {
@@ -136,7 +136,7 @@ public class ObjectDecompressor {
             class20 = groundData[plane];
         }
         if(localY > 0 && localX > 0 && localY < 103 && localX < 103) {
-            Class40_Sub5_Sub17_Sub1.addObject(objectId, localX, localY, z, rotation, type, Npc.aScene_3301, class20);
+            Class40_Sub5_Sub17_Sub1.addObject(objectId, localX, localY, z, rotation, type, Npc.currentScene, class20);
         }
     }
 

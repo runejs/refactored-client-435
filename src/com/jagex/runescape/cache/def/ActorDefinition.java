@@ -4,35 +4,35 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.input.KeyFocusListener;
+import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.util.Signlink;
 import com.jagex.runescape.util.SignlinkNode;
 
 import java.awt.*;
 
-public class ActorDefinition extends SubNode {
+public class ActorDefinition extends SubNode implements EntityDefinition {
     public static CacheIndex_Sub1 aClass6_Sub1_2377;
-    public static RSString str_Moderator_mute_option_ON = (RSString.CreateString("Moderator option: Mute player for 48 hours: <ON>"));
     public static int[] anIntArray2386;
-    public static RSString aClass1_2392 = RSString.CreateString("Loaded fonts");
-    public static int anInt2394 = 0;
-    public static RSString aClass1_2396 = RSString.CreateString("Checking for updates )2 ");
+    public static int menuActionRow = 0;
     public static RSString aClass1_2401 = RSString.CreateString("Please wait 1 minute and try again)3");
     public static int anInt2404 = 0;
     public static RSString aClass1_2410 = RSString.CreateString("Please wait 1 minute and try again)3");
     public static byte[] aByteArray2416 = new byte[520];
-    public static RSString aClass1_2417 = RSString.CreateString("Versteckt");
     public static RSString aClass1_2423 = RSString.CreateString("(X100(U(Y");
-    public static RSString aClass1_2432 = RSString.CreateString("Unexpected server response");
     public static int openFullScreenWidgetId = -1;
+    public static int count;
 
     public boolean isClickable = true;
-    public int tileSpacesOccupied = 1;
+    public int boundaryDimension = 1;
     public int[] headModelIndexes;
     public RSString[] options = new RSString[5];
     public int headIcon = -1;
@@ -60,12 +60,9 @@ public class ActorDefinition extends SubNode {
     public int[] modifiedModelColors;
     public boolean renderOnMinimap = true;
 
-    public static void method567(int arg0) {
-        if(arg0 != 1) {
-            aClass1_2432 = null;
-        }
+    public static void method567() {
         if(Class57.aClass64_1345 != null) {
-            Class57.aClass64_1345.method1009(90);
+            Class57.aClass64_1345.method1009();
         }
     }
 
@@ -78,58 +75,47 @@ public class ActorDefinition extends SubNode {
         Class57.anIntArray1347 = null;
     }
 
-    public static void method570(int arg0, int arg1, Player arg2, int arg3) {
-        if(arg3 == -1) {
-            if(arg2.playingAnimation == arg0 && arg0 != -1) {
-                int i = Class68_Sub1.method1050(arg0, 2).anInt2483;
-                if(i == 1) {
-                    arg2.anInt3104 = 0;
-                    arg2.anInt3095 = 0;
-                    arg2.playingAnimationDelay = arg1;
-                    arg2.anInt3115 = 0;
-                }
-                if(i == 2) {
-                    arg2.anInt3095 = 0;
-                }
-            } else if(arg0 == -1 || arg2.playingAnimation == -1 || (Class68_Sub1.method1050(arg0, 2).anInt2494 >= (Class68_Sub1.method1050(arg2.playingAnimation, 2).anInt2494))) {
-                arg2.anInt3094 = arg2.anInt3109;
-                arg2.anInt3104 = 0;
-                arg2.anInt3115 = 0;
-                arg2.anInt3095 = 0;
-                arg2.playingAnimationDelay = arg1;
-                arg2.playingAnimation = arg0;
+    public static void method570(int arg0, int arg1, Player player) {
+        if(player.playingAnimation == arg0 && arg0 != -1) {
+            int i = Class68_Sub1.method1050(arg0, 2).anInt2483;
+            if(i == 1) {
+                player.anInt3104 = 0;
+                player.anInt3095 = 0;
+                player.playingAnimationDelay = arg1;
+                player.anInt3115 = 0;
             }
+            if(i == 2) {
+                player.anInt3095 = 0;
+            }
+        } else if(arg0 == -1 || player.playingAnimation == -1 || (Class68_Sub1.method1050(arg0, 2).anInt2494 >= (Class68_Sub1.method1050(player.playingAnimation, 2).anInt2494))) {
+            player.anInt3094 = player.anInt3109;
+            player.anInt3104 = 0;
+            player.anInt3115 = 0;
+            player.anInt3095 = 0;
+            player.playingAnimationDelay = arg1;
+            player.playingAnimation = arg0;
         }
     }
 
-    public static void method574(int arg0) {
-        if(arg0 != 4) {
-            method576(true);
-        }
+    public static void method574() {
         try {
-            Graphics graphics = GameFrame.aCanvas1469.getGraphics();
-            RSString.aClass68_1665.method1044(0, 550, graphics, 4);
+            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
+            RSString.aClass68_1665.drawGraphics(550, 4, graphics);
         } catch(Exception exception) {
-            GameFrame.aCanvas1469.repaint();
+            MouseHandler.aCanvas1469.repaint();
         }
     }
 
-    public static int method576(boolean arg0) {
-        if(arg0) {
-            aClass1_2432 = null;
-        }
+    public static int method576() {
         return 19;
     }
 
-    public static ImageRGB method578(int arg0) {
+    public static ImageRGB method578() {
         ImageRGB class40_sub5_sub14_sub4 = new ImageRGB();
         class40_sub5_sub14_sub4.maxWidth = ItemDefinition.anInt2846;
         class40_sub5_sub14_sub4.maxHeight = RSApplet.anInt31;
         class40_sub5_sub14_sub4.offsetX = Class57.anIntArray1347[0];
         class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[0];
-        if(arg0 > -85) {
-            method578(79);
-        }
         class40_sub5_sub14_sub4.image_width = Class17.anIntArray456[0];
         class40_sub5_sub14_sub4.image_height = Npc.anIntArray3312[0];
         byte[] is = GroundItemTile.aByteArrayArray1370[0];
@@ -156,41 +142,39 @@ public class ActorDefinition extends SubNode {
         for(int i_6_ = 0; (i_6_ < class40_sub11.anInt2160); i_6_++) {
             try {
                 int i_7_ = arg2.getUnsignedByte();
-                if(i_7_ != 0 && i_7_ != 1 && i_7_ != 2) {
-                    if(i_7_ == 3 || i_7_ == 4) {
-                        String string = new String(arg2.getRSString().method80(0));
-                        String string_8_ = new String(arg2.getRSString().method80(0));
-                        int i_9_ = arg2.getUnsignedByte();
-                        String[] strings = new String[i_9_];
-                        for(int i_10_ = 0; i_9_ > i_10_; i_10_++) {
-                            strings[i_10_] = new String(arg2.getRSString().method80(0));
-                        }
-                        byte[][] is = new byte[i_9_][];
-                        if(i_7_ == 3) {
-                            for(int i_11_ = 0; ((i_11_ < i_9_)); i_11_++) {
-                                int i_12_ = arg2.getIntBE();
-                                is[i_11_] = new byte[i_12_];
-                                arg2.getBytes(i_12_, 0, is[i_11_]);
-                            }
-                        }
-                        class40_sub11.anIntArray2154[i_6_] = i_7_;
-                        Class[] var_classes = new Class[i_9_];
-                        for(int i_13_ = 0; (i_13_ < i_9_); i_13_++) {
-                            var_classes[i_13_] = Class26.method349((byte) 91, strings[i_13_]);
-                        }
-                        class40_sub11.aSignlinkNodeArray2156[i_6_] = arg0.method386(var_classes, string_8_, Class26.method349((byte) 91, string), (byte) -64);
-                        class40_sub11.aByteArrayArrayArray2159[i_6_] = is;
-                    }
-                } else {
+                if(i_7_ == 0 || i_7_ == 1 || i_7_ == 2) {
                     int i_14_ = 0;
-                    String string = new String(arg2.getRSString().method80(0));
-                    String string_15_ = new String(arg2.getRSString().method80(0));
+                    String string = new String(arg2.getRSString().method80());
+                    String string_15_ = new String(arg2.getRSString().method80());
                     if(i_7_ == 1) {
                         i_14_ = arg2.getIntBE();
                     }
                     class40_sub11.anIntArray2154[i_6_] = i_7_;
                     class40_sub11.anIntArray2165[i_6_] = i_14_;
-                    class40_sub11.aSignlinkNodeArray2157[i_6_] = arg0.method392(Class26.method349((byte) 91, string), string_15_, true);
+                    class40_sub11.aSignlinkNodeArray2157[i_6_] = arg0.method392(Class26.method349(string), string_15_, true);
+                } else if(i_7_ == 3 || i_7_ == 4) {
+                    String string = new String(arg2.getRSString().method80());
+                    String string_8_ = new String(arg2.getRSString().method80());
+                    int i_9_ = arg2.getUnsignedByte();
+                    String[] strings = new String[i_9_];
+                    for(int i_10_ = 0; i_9_ > i_10_; i_10_++) {
+                        strings[i_10_] = new String(arg2.getRSString().method80());
+                    }
+                    byte[][] is = new byte[i_9_][];
+                    if(i_7_ == 3) {
+                        for(int i_11_ = 0; ((i_11_ < i_9_)); i_11_++) {
+                            int i_12_ = arg2.getIntBE();
+                            is[i_11_] = new byte[i_12_];
+                            arg2.getBytes(i_12_, 0, is[i_11_]);
+                        }
+                    }
+                    class40_sub11.anIntArray2154[i_6_] = i_7_;
+                    Class[] var_classes = new Class[i_9_];
+                    for(int i_13_ = 0; (i_13_ < i_9_); i_13_++) {
+                        var_classes[i_13_] = Class26.method349(strings[i_13_]);
+                    }
+                    class40_sub11.aSignlinkNodeArray2156[i_6_] = arg0.method386(var_classes, string_8_, Class26.method349(string), (byte) -64);
+                    class40_sub11.aByteArrayArrayArray2159[i_6_] = is;
                 }
             } catch(ClassNotFoundException classnotfoundexception) {
                 class40_sub11.anIntArray2155[i_6_] = -1;
@@ -204,60 +188,48 @@ public class ActorDefinition extends SubNode {
                 class40_sub11.anIntArray2155[i_6_] = -5;
             }
         }
-        KeyFocusListener.aClass45_1278.pushBack(class40_sub11, 92);
+        KeyFocusListener.aLinkedList_1278.pushBack(class40_sub11, 92);
     }
 
-    public static void method581(int arg0) {
+    public static void method581() {
         anIntArray2386 = null;
         aClass6_Sub1_2377 = null;
-        aClass1_2432 = null;
-        aClass1_2396 = null;
+        English.unexpectedServerResponse = null;
+        English.checkingForUpdates = null;
         aClass1_2423 = null;
-        aClass1_2417 = null;
-        if(arg0 == -96) {
-            aClass1_2410 = null;
-            aByteArray2416 = null;
-            aClass1_2401 = null;
-            aClass1_2392 = null;
-            str_Moderator_mute_option_ON = null;
-        }
-
+        aClass1_2410 = null;
+        aByteArray2416 = null;
+        aClass1_2401 = null;
+        English.loadedFonts = null;
+        English.moderatorOptionMutePlayerFor48HoursON = null;
     }
 
-    public static ActorDefinition getDefinition(byte arg0, int id) {
-
-        Landscape.anInt1182++;
-        if(arg0 >= -95)
-            Landscape.aClass1_1160 = null;
-        ActorDefinition definition = ((ActorDefinition) ISAAC.aClass9_510.get((long) id, (byte) 119));
+    public static ActorDefinition getDefinition(int id) {
+        ActorDefinition definition = ((ActorDefinition) ISAAC.aClass9_510.get(id, (byte) 119));
         if(definition != null)
             return definition;
-        byte[] is = GroundItemTile.aCacheIndex_1375.getFile(id, 9);
+        byte[] data = GroundItemTile.aCacheIndex_1375.getFile(id, 9);
         definition = new ActorDefinition();
         definition.id = id;
-        if(is != null)
-            definition.readValues(new Buffer(is));
-        ISAAC.aClass9_510.put(-7208, (long) id, definition);
+        if(data != null)
+            definition.readValues(new Buffer(data));
+        ISAAC.aClass9_510.put(id, definition);
         return definition;
-
     }
 
-    public Model getChildModel(byte arg0, AnimationSequence arg1, AnimationSequence arg2, int arg3, int arg4) {
-        if(arg0 != -50) {
-            degreesToTurn = 31;
-        }
+    public Model getChildModel(AnimationSequence arg1, AnimationSequence arg2, int arg3, int arg4) {
         if(childrenIds != null) {
-            ActorDefinition class40_sub5_sub5 = getChildDefinition(arg0 ^ 0x31);
+            ActorDefinition class40_sub5_sub5 = getChildDefinition(-1);
             if(class40_sub5_sub5 == null) {
                 return null;
             }
-            return class40_sub5_sub5.getChildModel((byte) -50, arg1, arg2, arg3, arg4);
+            return class40_sub5_sub5.getChildModel(arg1, arg2, arg3, arg4);
         }
-        Model class40_sub5_sub17_sub5 = ((Model) Class67.aClass9_1611.get((long) id, (byte) 75));
+        Model class40_sub5_sub17_sub5 = ((Model) Class67.aClass9_1611.get(id, (byte) 75));
         if(class40_sub5_sub17_sub5 == null) {
             boolean bool = false;
-            for(int i = 0; i < models.length; i++) {
-                if(!Class67.aCacheIndex_1577.loaded(models[i], 0)) {
+            for(int model : models) {
+                if(!Class67.aCacheIndex_1577.loaded(model, 0)) {
                     bool = true;
                 }
             }
@@ -275,12 +247,14 @@ public class ActorDefinition extends SubNode {
             }
             if(modifiedModelColors != null) {
                 for(int i = 0; (i < modifiedModelColors.length); i++) {
+                    assert class40_sub5_sub17_sub5 != null;
                     class40_sub5_sub17_sub5.replaceColor(modifiedModelColors[i], originalModelColors[i]);
                 }
             }
+            assert class40_sub5_sub17_sub5 != null;
             class40_sub5_sub17_sub5.createBones();
             class40_sub5_sub17_sub5.applyLighting(ambient + 64, 850 + contrast, -30, -50, -30, true);
-            Class67.aClass9_1611.put(-7208, (long) id, class40_sub5_sub17_sub5);
+            Class67.aClass9_1611.put(id, class40_sub5_sub17_sub5);
         }
         Model class40_sub5_sub17_sub5_0_;
         if(arg1 != null && arg2 != null) {
@@ -322,7 +296,7 @@ public class ActorDefinition extends SubNode {
         } else if(opcode == 2) {
             name = buffer.getRSString();
         } else if(opcode == 12) {
-            tileSpacesOccupied = buffer.getUnsignedByte();
+            boundaryDimension = buffer.getUnsignedByte();
         } else if(opcode == 13) {
             stanceAnimation = buffer.getUnsignedShortBE();
         } else if(opcode == 14) {
@@ -338,7 +312,7 @@ public class ActorDefinition extends SubNode {
             rotate90LeftAnimation = buffer.getUnsignedShortBE();
         } else if(opcode >= 30 && opcode < 35) {
             options[opcode - 30] = buffer.getRSString();
-            if(options[opcode - 30].equalsIgnoreCase(Class59.string_Hidden, true)) {
+            if(options[opcode - 30].equalsIgnoreCase(English.hidden)) {
                 options[-30 + opcode] = null;
             }
         } else if(opcode == 40) {
@@ -405,25 +379,22 @@ public class ActorDefinition extends SubNode {
         }
     }
 
-    public Model getHeadModel(byte arg0) {
+    public Model getHeadModel() {
         if(childrenIds != null) {
             ActorDefinition definition = getChildDefinition(-1);
             if(definition == null) {
                 return null;
             }
-            return definition.getHeadModel((byte) 112);
+            return definition.getHeadModel();
         }
         if(headModelIndexes == null) {
             return null;
         }
         boolean cached = false;
-        for(int headModel = 0; headModel < headModelIndexes.length; headModel++) {
-            if(!Class67.aCacheIndex_1577.loaded(headModelIndexes[headModel], 0)) {
+        for(int headModelIndex : headModelIndexes) {
+            if(!Class67.aCacheIndex_1577.loaded(headModelIndex, 0)) {
                 cached = true;
             }
-        }
-        if(arg0 < 108) {
-            method570(-116, 79, null, -61);
         }
         if(cached) {
             return null;
@@ -440,6 +411,7 @@ public class ActorDefinition extends SubNode {
         }
         if(modifiedModelColors != null) {
             for(int i = 0; i < modifiedModelColors.length; i++) {
+                assert headModel != null;
                 headModel.replaceColor(modifiedModelColors[i], originalModelColors[i]);
             }
         }
@@ -456,6 +428,11 @@ public class ActorDefinition extends SubNode {
         if(childId < 0 || childId >= childrenIds.length || childrenIds[childId] == -1) {
             return null;
         }
-        return getDefinition((byte) -114, childrenIds[childId]);
+        return getDefinition(childrenIds[childId]);
+    }
+
+    @Override
+    public RSString getName() {
+        return name;
     }
 }

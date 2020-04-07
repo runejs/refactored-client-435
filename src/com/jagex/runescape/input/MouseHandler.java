@@ -1,17 +1,20 @@
-package com.jagex.runescape;
+package com.jagex.runescape.input;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.frame.ChatBox;
+import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.SceneTile;
@@ -22,19 +25,17 @@ import com.jagex.runescape.util.Signlink;
 import java.awt.*;
 import java.awt.event.*;
 
-public class GameFrame implements MouseListener, MouseMotionListener, FocusListener, MouseWheelListener {
-    public static int anInt1450;
-    public static Cache aClass9_1455;
+public class MouseHandler implements MouseListener, MouseMotionListener, FocusListener, MouseWheelListener {
+    public static int anInt1450 = -1;
+    public static Cache modelCache = new Cache(50);
     public static int anInt1457 = -1;
-    public static RSString aClass1_1463;
-    public static RSString aClass1_1464;
+    public static RSString aClass1_1463 = RSString.CreateString("wave2:");
+    public static RSString aClass1_1464 = RSString.CreateString(" is already on your friend list");
     public static RSString aClass1_1465;
-    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array1466;
+    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array1466 = new ImageRGB[1000];
     public static int anInt1468;
     public static Canvas aCanvas1469;
-    public static int clickType;
-    public static RSString aClass1_1471;
-    public static int chatboxScrollMax;
+    public static int clickType = 0;
     public static byte[][][] tile_overlayids;
     public static RSString aClass1_1474;
     public static int cameraZoom = 600;
@@ -43,127 +44,113 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
     public int mouseWheelY;
 
     static {
-        anInt1450 = -1;
-        aClass9_1455 = new Cache(50);
-        aClass1_1464 = RSString.CreateString(" is already on your friend list");
         aClass1_1465 = aClass1_1464;
-        aClass40_Sub5_Sub14_Sub4Array1466 = new ImageRGB[1000];
-        aClass1_1463 = RSString.CreateString("wave2:");
-        clickType = 0;
-        chatboxScrollMax = 78;
-        aClass1_1471 = RSString.CreateString("Lade Titelbild )2 ");
         aClass1_1474 = aClass1_1463;
     }
 
-    public static void method1001(boolean arg0) {
-
-        aClass1_1471 = null;
+    public static void method1001() {
         aClass40_Sub5_Sub14_Sub4Array1466 = null;
         aClass1_1465 = null;
-        if(!arg0)
-            method1003(null, null, 31);
         aClass1_1463 = null;
-        aClass9_1455 = null;
+        modelCache = null;
         aCanvas1469 = null;
         aClass1_1464 = null;
         aClass1_1474 = null;
         tile_overlayids = null;
-
     }
 
-    public static void method1002(int arg0) {
-        if(SceneTile.activeInterfaceType == 0) {
-            if(arg0 > -60)
-                clickType = -90;
-            int i = clickType;
-            if(Main.anInt1773 == 1 && Class57.anInt1338 >= 516 && RSString.anInt1668 >= 160 && Class57.anInt1338 <= 765 && RSString.anInt1668 <= 205)
-                i = 0;
-            if(Class4.menuOpen) {
-                if(i != 1) {
-                    int i_3_ = Class13.mouseX;
-                    int i_4_ = Landscape.mouseY;
-                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
-                        i_3_ -= 4;
-                        i_4_ -= 4;
-                    }
-                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
-                        i_4_ -= 205;
-                        i_3_ -= 553;
-                    }
-                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
-                        i_4_ -= 357;
-                        i_3_ -= 17;
-                    }
-                    if((-10 + InteractiveObject.anInt475 > i_3_) || 10 + VertexNormal.anInt1086 + InteractiveObject.anInt475 < i_3_ || (i_4_ < Main.anInt1758 + -10) || ((i_4_ > Main.anInt1758 + CollisionMap.anInt168 + 10))) {
-                        if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
-                            ISAAC.redrawTabArea = true;
-                        Class4.menuOpen = false;
-                        if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
-                            Class52.redrawChatbox = true;
-                    }
+    public static void processMenuClick() {
+        if(SceneTile.activeInterfaceType != 0) {
+            return;
+        }
+        int meta = clickType;
+        if(Main.widgetSelected == 1 && Class57.clickX >= 516 && RSString.clickY >= 160 && Class57.clickX <= 765 && RSString.clickY <= 205)
+            meta = 0;
+        if(Class4.menuOpen) {
+            if(meta != 1) {
+                int x = Class13.mouseX;
+                int y = Landscape.mouseY;
+                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
+                    x -= 4;
+                    y -= 4;
                 }
-                if(i == 1) {
-                    int i_5_ = InteractiveObject.anInt475;
-                    int i_6_ = Main.anInt1758;
-                    int i_7_ = VertexNormal.anInt1086;
-                    int i_8_ = Class57.anInt1338;
-                    int i_9_ = -1;
-                    int i_10_ = RSString.anInt1668;
-                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
-                        i_8_ -= 4;
-                        i_10_ -= 4;
-                    }
-                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
-                        i_8_ -= 553;
-                        i_10_ -= 205;
-                    }
-                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
-                        i_8_ -= 17;
-                        i_10_ -= 357;
-                    }
-                    for(int i_11_ = 0; ((i_11_ < ActorDefinition.anInt2394)); i_11_++) {
-                        int i_12_ = 31 + i_6_ + 15 * (ActorDefinition.anInt2394 + -1 - i_11_);
-                        if(i_8_ > i_5_ && i_8_ < i_7_ + i_5_ && i_10_ > -13 + i_12_ && i_10_ < 3 + i_12_)
-                            i_9_ = i_11_;
-                    }
-                    if(i_9_ != -1)
-                        Class27.method358(109, i_9_);
+                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
+                    y -= 205;
+                    x -= 553;
+                }
+                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
+                    y -= 357;
+                    x -= 17;
+                }
+                if((-10 + InteractiveObject.menuOffsetX > x) || 10 + VertexNormal.menuWidth + InteractiveObject.menuOffsetX < x || (y < Main.menuOffsetY + -10) || ((y > Main.menuOffsetY + CollisionMap.menuHeight + 10))) {
                     if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
                         ISAAC.redrawTabArea = true;
                     Class4.menuOpen = false;
                     if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
-                        Class52.redrawChatbox = true;
+                        ChatBox.redrawChatbox = true;
                 }
-            } else {
-                if(i == 1 && ActorDefinition.anInt2394 > 0) {
-                    int i_0_ = (Class38.anIntArray884[ActorDefinition.anInt2394 - 1]);
-                    if(i_0_ == 53 || i_0_ == 25 || i_0_ == 55 || i_0_ == 48 || i_0_ == 24 || i_0_ == 52 || i_0_ == 6 || i_0_ == 31 || i_0_ == 43 || i_0_ == 11 || i_0_ == 19 || i_0_ == 1006) {
-                        int i_1_ = (InteractiveObject.anIntArray483[ActorDefinition.anInt2394 - 1]);
-                        int i_2_ = (Class59.anIntArray1393[-1 + ActorDefinition.anInt2394]);
-                        Widget widget = Widget.forId(i_2_);
-                        if(widget.itemSwapable || widget.itemDeletesDraged) {
-                            Renderable.anInt2869 = Class57.anInt1338;
-                            Class40_Sub5_Sub15.aBoolean2784 = false;
-                            SceneTile.activeInterfaceType = 2;
-                            Class48.modifiedWidgetId = i_2_;
-                            ItemDefinition.anInt2798 = RSString.anInt1668;
-                            GroundItemTile.selectedInventorySlot = i_1_;
-                            if(i_2_ >> 16 == HuffmanEncoding.openScreenWidgetId)
-                                SceneTile.activeInterfaceType = 1;
-                            if(Class43.openChatboxWidgetId == i_2_ >> 16)
-                                SceneTile.activeInterfaceType = 3;
-                            Buffer.anInt1978 = 0;
-                            return;
-                        }
+            }
+            if(meta == 1) {
+                int menuX = InteractiveObject.menuOffsetX;
+                int menuY = Main.menuOffsetY;
+                int dx = VertexNormal.menuWidth;
+                int x = Class57.clickX;
+                int y = RSString.clickY;
+                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
+                    x -= 4;
+                    y -= 4;
+                }
+                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
+                    x -= 553;
+                    y -= 205;
+                }
+                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
+                    x -= 17;
+                    y -= 357;
+                }
+                int id = -1;
+                for(int row = 0; ((row < ActorDefinition.menuActionRow)); row++) {
+                    int k3 = 31 + menuY + 15 * (ActorDefinition.menuActionRow + -1 - row);
+                    if(x > menuX && x < dx + menuX && y > -13 + k3 && y < 3 + k3)
+                        id = row;
+                }
+                if(id != -1)
+                    Class27.processMenuActions(109, id);
+                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
+                    ISAAC.redrawTabArea = true;
+                Class4.menuOpen = false;
+                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
+                    ChatBox.redrawChatbox = true;
+            }
+        } else {
+            if(meta == 1 && ActorDefinition.menuActionRow > 0) {
+                int action = (Class38.menuActionTypes[ActorDefinition.menuActionRow - 1]);
+                if(action == 53 || action == 25 || action == 55 || action == 48 || action == 24 || action == 52 || action == 6 || action == 31 || action == 43 || action == 11 || action == 19 || action == 1006) {
+                    int item = (InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow - 1]);
+                    int id = (Class59.secondMenuOperand[-1 + ActorDefinition.menuActionRow]);
+                    Widget widget = Widget.forId(id);
+                    if(widget.itemSwapable || widget.itemDeletesDraged) {
+                        Renderable.anInt2869 = Class57.clickX;
+                        Class40_Sub5_Sub15.lastItemDragged = false;
+                        SceneTile.activeInterfaceType = 2;
+                        Class48.modifiedWidgetId = id;
+                        ItemDefinition.anInt2798 = RSString.clickY;
+                        GroundItemTile.selectedInventorySlot = item;
+                        if(id >> 16 == HuffmanEncoding.openScreenWidgetId)
+                            SceneTile.activeInterfaceType = 1;
+                        if(ChatBox.openChatboxWidgetId == id >> 16)
+                            SceneTile.activeInterfaceType = 3;
+                        Buffer.lastItemDragTime = 0;
+                        return;
                     }
                 }
-                if(i == 1 && (Class68.anInt1630 == 1 || Class33.method409((byte) 46, -1 + ActorDefinition.anInt2394)) && ActorDefinition.anInt2394 > 2)
-                    i = 2;
-                if(i == 1 && ActorDefinition.anInt2394 > 0)
-                    Class27.method358(59, ActorDefinition.anInt2394 + -1);
-                if(i == 2 && ActorDefinition.anInt2394 > 0)
-                    Class60.method990(11451);
             }
+            if(meta == 1 && (Class68.oneMouseButton == 1 || Class33.menuHasAddFriend((byte) 46, -1 + ActorDefinition.menuActionRow)) && ActorDefinition.menuActionRow > 2)
+                meta = 2;
+            if(meta == 1 && ActorDefinition.menuActionRow > 0)
+                Class27.processMenuActions(59, ActorDefinition.menuActionRow + -1);
+            if(meta == 2 && ActorDefinition.menuActionRow > 0)
+                Class60.determineMenuSize();
         }
     }
 
@@ -180,7 +167,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
 
     public synchronized void mouseEntered(MouseEvent arg0) {
         if(GameObject.frame != null) {
-            Class45.anInt1073 = 0;
+            LinkedList.anInt1073 = 0;
             Class12.eventMouseX = arg0.getX();
             Cache.eventMouseY = arg0.getY();
         }
@@ -188,7 +175,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
 
     public synchronized void mouseExited(MouseEvent arg0) {
         if(GameObject.frame != null) {
-            Class45.anInt1073 = 0;
+            LinkedList.anInt1073 = 0;
             Class12.eventMouseX = -1;
             Cache.eventMouseY = -1;
         }
@@ -203,7 +190,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
         int mouseX = mouseEvent.getX();
         int mouseY = mouseEvent.getY();
         if(GameObject.frame != null) {
-            Class45.anInt1073 = 0;
+            LinkedList.anInt1073 = 0;
         }
         if(mouseWheelDown) {
             mouseY = mouseWheelX - mouseEvent.getX();
@@ -218,7 +205,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
     }
 
     private void mouseWheelDragged(int i, int j) {
-        Class45.anInt1073 = 0;
+        LinkedList.anInt1073 = 0;
 
         if(!mouseWheelDown)
             return;
@@ -234,7 +221,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
 
             int mouseX = event.getX();
             int mouseY = event.getY();
-            Class45.anInt1073 = 0;
+            LinkedList.anInt1073 = 0;
             Class55.eventClickX = event.getX();
             Class40_Sub5_Sub11.eventClickY = event.getY();
             OverlayDefinition.lastClick = System.currentTimeMillis();
@@ -258,7 +245,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
 
     public void mouseWheelMoved(MouseWheelEvent event) {
         int rotation = event.getWheelRotation();
-        Class45.anInt1073 = 0;
+        LinkedList.anInt1073 = 0;
 
         if(!handleInterfaceScrolling(event)) {
             if((cameraZoom <= 150 && rotation <= 0) || (cameraZoom >= 1600 && rotation >= 0)) {
@@ -278,27 +265,27 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
         int rotation = event.getWheelRotation();
         int mouseX = Class12.eventMouseX;
         int mouseY = Cache.eventMouseY;
-        if(mouseX > 0 && mouseY > 346 && mouseX < 516 && mouseY < 505 && Class43.openChatboxWidgetId == -1) {
+        if(mouseX > 0 && mouseY > 346 && mouseX < 516 && mouseY < 505 && ChatBox.openChatboxWidgetId == -1) {
             if(rotation < 0) {
                 if(Class12.chatboxInterface.scrollPosition >= 1) {
 
-                    if(Class40_Sub5_Sub15.inputType == 3) {
-                        Class26.itemSearchScroll = Class26.itemSearchScroll - 30;
-                        Class52.redrawChatbox = true;
+                    if(ChatBox.inputType == 3) {
+                        ChatBox.itemSearchScroll = ChatBox.itemSearchScroll - 30;
+                        ChatBox.redrawChatbox = true;
                     } else {
-                        GameObjectDefinition.chatboxScroll = GameObjectDefinition.chatboxScroll + 30;
-                        Class52.redrawChatbox = true;
+                        ChatBox.chatboxScroll = ChatBox.chatboxScroll + 30;
+                        ChatBox.redrawChatbox = true;
                     }
                 }
-            } else if(Class40_Sub5_Sub15.inputType == 3) {
-                Class26.itemSearchScroll = Class26.itemSearchScroll + 30;
-                Class52.redrawChatbox = true;
-            } else if(GameObjectDefinition.chatboxScroll < 1) {
-                Class26.itemSearchScroll = 0;
-                Class52.redrawChatbox = true;
+            } else if(ChatBox.inputType == 3) {
+                ChatBox.itemSearchScroll = ChatBox.itemSearchScroll + 30;
+                ChatBox.redrawChatbox = true;
+            } else if(ChatBox.chatboxScroll < 1) {
+                ChatBox.itemSearchScroll = 0;
+                ChatBox.redrawChatbox = true;
             } else {
-                GameObjectDefinition.chatboxScroll = GameObjectDefinition.chatboxScroll - 30;
-                Class52.redrawChatbox = true;
+                ChatBox.chatboxScroll = ChatBox.chatboxScroll - 30;
+                ChatBox.redrawChatbox = true;
             }
             return true;
         } else {
@@ -351,6 +338,15 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
                     return true;
                 }
 
+            } else if(Console.console.consoleOpen) {
+                Console.console.currentScroll -= rotation * 18;
+                if(Console.console.currentScroll < 0) {
+                    Console.console.currentScroll = 0;
+                }
+                if(Console.console.currentScroll > Console.console.getMaxScroll() - 308) {
+                    Console.console.currentScroll = Console.console.getMaxScroll() - 308;
+                }
+                return true;
             }
         }
         return false;
@@ -361,7 +357,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
 
     public synchronized void mouseMoved(MouseEvent arg0) {
         if(GameObject.frame != null) {
-            Class45.anInt1073 = 0;
+            LinkedList.anInt1073 = 0;
             Class12.eventMouseX = arg0.getX();
             Cache.eventMouseY = arg0.getY();
         }
@@ -369,7 +365,7 @@ public class GameFrame implements MouseListener, MouseMotionListener, FocusListe
 
     public synchronized void mouseReleased(MouseEvent arg0) {
         if(GameObject.frame != null) {
-            Class45.anInt1073 = 0;
+            LinkedList.anInt1073 = 0;
             Cache.mouseButtonPressed = 0;
             mouseWheelDown = false;
         }

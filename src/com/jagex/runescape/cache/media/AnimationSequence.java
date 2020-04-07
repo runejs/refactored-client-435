@@ -13,12 +13,9 @@ import com.jagex.runescape.scene.util.CollisionMap;
 public class AnimationSequence extends SubNode {
     public static RSString requestcmd_tradereq = RSString.CreateString(":tradereq:");
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2474;
-    public static RSString aClass1_2475 = RSString.CreateString("Bitte versuchen Sie es erneut)3");
     public static int anInt2480 = 0;
-    public static RSString aClass1_2481 = (RSString.CreateString("Gegenstand konnte nicht gefunden werden)1 verk-Urzen Sie den Suchbegriff)3"));
-    public static ImageRGB aClass40_Sub5_Sub14_Sub4_2482;
+    public static ImageRGB minimapCompass;
     public static CacheIndex aCacheIndex_2484;
-    public static RSString aClass1_2487 = RSString.CreateString("sch-Utteln:");
     public static RSString aClass1_2488 = RSString.CreateString("titlebox");
     public static int[][] anIntArrayArray2490;
 
@@ -45,26 +42,21 @@ public class AnimationSequence extends SubNode {
         aBoolean2496 = false;
     }
 
-    public static void method589(int arg0) {
+    public static void method589() {
         aClass1_2488 = null;
         aCacheIndex_2484 = null;
-        aClass1_2475 = null;
-        aClass40_Sub5_Sub14_Sub4_2482 = null;
-        if(arg0 < 47)
-            method592(null, 56, null, 0, -91, 58, -86);
+        minimapCompass = null;
         requestcmd_tradereq = null;
         aClass40_Sub5_Sub14_Sub4Array2474 = null;
-        aClass1_2481 = null;
-        aClass1_2487 = null;
         anIntArrayArray2490 = null;
     }
 
-    public static void method592(CollisionMap[] arg0, int arg1, byte[] arg2, int arg3, int arg4, int arg5, int arg6) {
+    public static void loadTerrainBlock(CollisionMap[] arg0, int arg1, byte[] arg2, int arg3, int arg4, int arg5, int arg6) {
         for(int i = 0; i < 4; i++) {
             for(int i_1_ = 0; i_1_ < 64; i_1_++) {
                 for(int i_2_ = 0; i_2_ < 64; i_2_++) {
                     if(arg4 + i_1_ > 0 && i_1_ + arg4 < 103 && arg5 + i_2_ > 0 && i_2_ + arg5 < 103)
-                        arg0[i].anIntArrayArray150[i_1_ + arg4][(i_2_ + arg5)] = HuffmanEncoding.method1021((arg0[i].anIntArrayArray150[i_1_ + arg4][i_2_ + arg5]), -16777217);
+                        arg0[i].clippingData[i_1_ + arg4][(i_2_ + arg5)] = HuffmanEncoding.method1021((arg0[i].clippingData[i_1_ + arg4][i_2_ + arg5]), -16777217);
                 }
             }
         }
@@ -73,7 +65,7 @@ public class AnimationSequence extends SubNode {
             for(int i = 0; i < 4; i++) {
                 for(int i_3_ = 0; i_3_ < 64; i_3_++) {
                     for(int i_4_ = 0; i_4_ < 64; i_4_++)
-                        Class48.method922(i_3_ + arg4, 0, class40_sub1, -99, i_4_ + arg5, arg6, arg1, i);
+                        Class48.method922(i_3_ + arg4, 0, class40_sub1, i_4_ + arg5, arg6, arg1, i);
                 }
             }
         }
@@ -83,13 +75,13 @@ public class AnimationSequence extends SubNode {
         int i = 0x7fff & arg1 >> 14;
         if(arg2 > -9)
             method596(-4, -74, (byte) -44, -62);
-        int i_14_ = (Npc.aScene_3301.getArrangement(Player.anInt3267, arg0, arg3, arg1));
+        int i_14_ = (Npc.currentScene.getArrangement(Player.worldLevel, arg0, arg3, arg1));
         if(i_14_ == -1)
             return false;
         int i_15_ = 0x3 & i_14_ >> 6;
         int i_16_ = 0x1f & i_14_;
         if(i_16_ != 10 && i_16_ != 11 && i_16_ != 22)
-            Class38_Sub1.method448(0, 0, (Player.localPlayer.pathY[0]), arg0, (byte) 98, 1 + i_16_, true, i_15_, 0, (Player.localPlayer.pathX[0]), arg3, 2);
+            Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), arg0, 1 + i_16_, true, i_15_, 0, (Player.localPlayer.pathX[0]), arg3, 2);
         else {
             GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
             int i_17_ = gameObjectDefinition.blockingMask;
@@ -104,12 +96,12 @@ public class AnimationSequence extends SubNode {
                 i_18_ = gameObjectDefinition.sizeY;
                 i_19_ = gameObjectDefinition.sizeX;
             }
-            Class38_Sub1.method448(i_18_, i_17_, (Player.localPlayer.pathY[0]), arg0, (byte) 94, 0, true, 0, i_19_, (Player.localPlayer.pathX[0]), arg3, 2);
+            Class38_Sub1.doWalkTo(i_18_, i_17_, (Player.localPlayer.pathY[0]), arg0, 0, true, 0, i_19_, (Player.localPlayer.pathX[0]), arg3, 2);
         }
-        Class40_Sub11.anInt2163 = Class57.anInt1338;
-        Class45.anInt1075 = 2;
-        Class40_Sub5_Sub1.anInt2276 = RSString.anInt1668;
-        OverlayDefinition.anInt2319 = 0;
+        Class40_Sub11.crossX = Class57.clickX;
+        LinkedList.crossType = 2;
+        Class40_Sub5_Sub1.crossY = RSString.clickY;
+        OverlayDefinition.crossIndex = 0;
         return true;
     }
 
@@ -123,15 +115,15 @@ public class AnimationSequence extends SubNode {
         Class40_Sub5_Sub15 class40_sub5_sub15_0_ = Class55.method960((byte) -99, arg3 >> 16);
         arg3 &= 0xffff;
         if(class40_sub5_sub15_0_ == null) {
-            Model class40_sub5_sub17_sub5 = arg0.method817(!class40_sub5_sub15.method737(arg2, 124));
+            Model class40_sub5_sub17_sub5 = arg0.method817(!class40_sub5_sub15.method737(arg2));
             class40_sub5_sub17_sub5.method825(class40_sub5_sub15, arg2);
             return class40_sub5_sub17_sub5;
         }
         if(arg4 != 63)
             return null;
-        Model class40_sub5_sub17_sub5 = arg0.method817(!class40_sub5_sub15.method737(arg2, 122) & !class40_sub5_sub15_0_.method737(arg3, 123));
-        class40_sub5_sub17_sub5.method809(class40_sub5_sub15, arg2, class40_sub5_sub15_0_, arg3, anIntArray2473);
-        return class40_sub5_sub17_sub5;
+        Model model = arg0.method817(!class40_sub5_sub15.method737(arg2) & !class40_sub5_sub15_0_.method737(arg3));
+        model.method809(class40_sub5_sub15, arg2, class40_sub5_sub15_0_, arg3, anIntArray2473);
+        return model;
     }
 
     public void method591(byte arg0) {
@@ -159,7 +151,7 @@ public class AnimationSequence extends SubNode {
         if(class40_sub5_sub15 == null)
             return arg2.method817(true);
         arg3 &= 0x3;
-        Model class40_sub5_sub17_sub5 = arg2.method817(!class40_sub5_sub15.method737(arg0, 124));
+        Model class40_sub5_sub17_sub5 = arg2.method817(!class40_sub5_sub15.method737(arg0));
         if(arg3 == 1)
             class40_sub5_sub17_sub5.method824();
         else if(arg3 == 2)
@@ -247,7 +239,7 @@ public class AnimationSequence extends SubNode {
             return arg1.method806(true);
         if(arg0 != -87)
             return null;
-        Model class40_sub5_sub17_sub5 = arg1.method806(!class40_sub5_sub15.method737(arg2, 124));
+        Model class40_sub5_sub17_sub5 = arg1.method806(!class40_sub5_sub15.method737(arg2));
         class40_sub5_sub17_sub5.method825(class40_sub5_sub15, arg2);
         return class40_sub5_sub17_sub5;
     }
@@ -268,11 +260,11 @@ public class AnimationSequence extends SubNode {
             i_21_ &= 0xffff;
         }
         if(class40_sub5_sub15_20_ == null || i_21_ == 65535) {
-            Model class40_sub5_sub17_sub5 = arg1.method817(!class40_sub5_sub15.method737(i, 126));
+            Model class40_sub5_sub17_sub5 = arg1.method817(!class40_sub5_sub15.method737(i));
             class40_sub5_sub17_sub5.method825(class40_sub5_sub15, i);
             return class40_sub5_sub17_sub5;
         }
-        Model class40_sub5_sub17_sub5 = arg1.method817(!class40_sub5_sub15.method737(i, 121) & !class40_sub5_sub15_20_.method737(i_21_, 123));
+        Model class40_sub5_sub17_sub5 = arg1.method817(!class40_sub5_sub15.method737(i) & !class40_sub5_sub15_20_.method737(i_21_));
         class40_sub5_sub17_sub5.method825(class40_sub5_sub15, i);
         class40_sub5_sub17_sub5.method825(class40_sub5_sub15_20_, i_21_);
         return class40_sub5_sub17_sub5;
@@ -286,7 +278,7 @@ public class AnimationSequence extends SubNode {
         arg0 &= 0xffff;
         if(class40_sub5_sub15 == null)
             return arg1.method817(true);
-        Model class40_sub5_sub17_sub5 = arg1.method817(!class40_sub5_sub15.method737(arg0, 126));
+        Model class40_sub5_sub17_sub5 = arg1.method817(!class40_sub5_sub15.method737(arg0));
         class40_sub5_sub17_sub5.method825(class40_sub5_sub15, arg0);
         return class40_sub5_sub17_sub5;
     }

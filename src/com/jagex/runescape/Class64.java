@@ -2,19 +2,22 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.input.MouseHandler;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.util.Signlink;
@@ -25,17 +28,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.text.MessageFormat;
 
 public class Class64 implements Runnable {
-    public static RSString aClass1_1502 = RSString.CreateString("Wordpack geladen)3");
-    public static RSString aClass1_1505 = RSString.CreateString("Handel akzeptieren");
     public static int anInt1511 = -1;
     public static RSString aClass1_1517 = RSString.CreateString("redstone3");
     public static CacheIndex aCacheIndex_1521;
-    public static RSString aClass1_1523 = RSString.CreateString("");
-    public static RSString aClass1_1524 = RSString.CreateString("Menge eingeben:");
     public static RSString aClass1_1526 = RSString.CreateString("Your account has been disabled)3");
-    public static int setZ = 99;
+    public static int lowestPlane = 99;
 
     public InputStream anInputStream1503;
     public byte[] aByteArray1504;
@@ -57,28 +57,19 @@ public class Class64 implements Runnable {
         aSocket1508.setTcpNoDelay(true);
         anInputStream1503 = aSocket1508.getInputStream();
         anOutputStream1528 = aSocket1508.getOutputStream();
-
     }
 
-    public static void method1011(boolean arg0) {
-
-        aClass1_1505 = null;
+    public static void method1011() {
         aClass1_1526 = null;
-        if(!arg0)
-            aClass1_1502 = null;
-        aClass1_1523 = null;
-        aClass1_1502 = null;
         aCacheIndex_1521 = null;
-        aClass1_1524 = null;
         aClass1_1517 = null;
-
     }
 
     public static void method1012(int arg0, int arg1) {
         if(Class68.method1043(arg0)) {
             Widget[] widgets = Widget.interfaces[arg0];
             if(arg1 != 2)
-                method1013(true);
+                method1013();
             for(int i = 0; widgets.length > i; i++) {
                 Widget widget = widgets[i];
                 if(widget.anObjectArray2677 != null)
@@ -87,114 +78,106 @@ public class Class64 implements Runnable {
         }
     }
 
-    public static void method1013(boolean arg0) {
-        int i = -1;
-        if(arg0)
-            method1013(false);
-        if(Class8.anInt301 == 0 && Main.anInt1773 == 0) {
-            OverlayDefinition.method558(0, Class22_Sub2.aClass1_1876, Landscape.mouseY, -501, Class13.mouseX, 7, HuffmanEncoding.blank_string);
+    public static void method1013() {
+        int lasthash = -1;
+        if(Class8.itemSelected == 0 && Main.widgetSelected == 0) {
+            String examineText = MessageFormat.format("<col=8F8FFF>(X{0})1 {1}(Y</col>", Integer.toString(Scene.hoveredTileX + SpotAnimDefinition.baseX), Integer.toString(Scene.hoveredTileY + Class26.baseY));
+
+            OverlayDefinition.addActionRow(English.walkHere, 0, Class13.mouseX, Landscape.mouseY, 7, RSString.CreateString(examineText.toString()));
         }
-        int i_1_ = 0;
-        for(/**/; ((Model.anInt3220 > i_1_)); i_1_++) {
-            int i_2_ = Model.anIntArray3211[i_1_];
-            int i_3_ = 0x7f & i_2_;
-            int i_4_ = i_2_ >> 7 & 0x7f;
-            int i_5_ = i_2_ >> 29 & 0x3;
-            int i_6_ = (i_2_ & 0x1fffcccc) >> 14;
-            if(i != i_2_) {
-                i = i_2_;
-                if(i_5_ == 2 && (Npc.aScene_3301.getArrangement(Player.anInt3267, i_3_, i_4_, i_2_)) >= 0) {
-                    GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_6_);
+
+        for(int idx = 0; ((Model.resourceCount > idx)); idx++) {
+            int hash = Model.hoveredHash[idx];
+            int x = 0x7f & hash;
+            int y = hash >> 7 & 0x7f;
+            int type = hash >> 29 & 0x3;
+            int index = (hash & 0x1fffcccc) >> 14;
+            if(lasthash != hash) {
+                lasthash = hash;
+                if(type == 2 && (Npc.currentScene.getArrangement(Player.worldLevel, x, y, hash)) >= 0) {
+                    GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(index);
                     if(gameObjectDefinition.configChangeDest != null)
-                        gameObjectDefinition = gameObjectDefinition.method611(-20);
+                        gameObjectDefinition = gameObjectDefinition.getChildDefinition(-20);
                     if(gameObjectDefinition == null)
                         continue;
-                    if(Class8.anInt301 == 1) {
-                        OverlayDefinition.method558(i_2_, Main.aClass1_1763, i_4_, -501, i_3_, 5, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{(Npc.aClass1_3295), Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.name}))));
-                        Class44.anInt1045++;
-                    } else if(Main.anInt1773 != 1) {
-                        RSString[] class1s = gameObjectDefinition.actions;
+                    if(Class8.itemSelected == 1) {
+                        OverlayDefinition.addActionRow(Main.aClass1_1763, hash, x, y, 5, (RSString.linkRSStrings((new RSString[]{(Npc.aClass1_3295), Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.name}))));
+                    } else if(Main.widgetSelected != 1) {
+                        RSString[] options = gameObjectDefinition.actions;
                         if(Class60.aBoolean1402)
-                            class1s = Class56.method968(class1s, arg0);
-                        Class29.anInt675++;
-                        if(class1s != null) {
+                            options = Class56.method968(options, false);
+                        if(options != null) {
                             for(int i_7_ = 4; i_7_ >= 0; i_7_--) {
-                                if(class1s[i_7_] != null) {
-                                    int i_8_ = 0;
-                                    Class35.anInt1741++;
+                                if(options[i_7_] != null) {
+                                    int actionType = 0;
                                     if(i_7_ == 0)
-                                        i_8_ = 16;
+                                        actionType = 16;
                                     if(i_7_ == 1)
-                                        i_8_ = 29;
+                                        actionType = 29;
                                     if(i_7_ == 2)
-                                        i_8_ = 17;
+                                        actionType = 17;
                                     if(i_7_ == 3)
-                                        i_8_ = 27;
+                                        actionType = 27;
                                     if(i_7_ == 4)
-                                        i_8_ = 1002;
-                                    OverlayDefinition.method558(i_2_, class1s[i_7_], i_4_, -501, i_3_, i_8_, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{(Renderable.aClass1_2862), (gameObjectDefinition.name)}))));
+                                        actionType = 1002;
+                                    OverlayDefinition.addActionRow(options[i_7_], hash, x, y, actionType, (RSString.linkRSStrings((new RSString[]{(Renderable.aClass1_2862), (gameObjectDefinition.name)}))));
                                 }
                             }
                         }
-                        OverlayDefinition.method558(gameObjectDefinition.anInt2538 << 14, Class40_Sub5_Sub15.prefix_examine, i_4_, -501, i_3_, 1004, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Renderable.aClass1_2862, gameObjectDefinition.name}))));
-                    } else if((ItemDefinition.anInt2815 & 0x4) == 4) {
-                        Renderable.anInt2863++;
-                        OverlayDefinition.method558(i_2_, Class38_Sub1.aClass1_1918, i_4_, -501, i_3_, 32, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.name}))));
+                        OverlayDefinition.addActionRow(English.examine, gameObjectDefinition.id << 14, x, y, 1004, (RSString.linkRSStrings((new RSString[]{Renderable.aClass1_2862, gameObjectDefinition.name}))));
+                    } else if((ItemDefinition.selectedMask & 0x4) == 4) {
+                        OverlayDefinition.addActionRow(Class38_Sub1.aClass1_1918, hash, x, y, 32, (RSString.linkRSStrings((new RSString[]{FloorDecoration.aClass1_611, Class40_Sub5_Sub1.aClass1_2277, gameObjectDefinition.name}))));
                     }
                 }
-                if(i_5_ == 1) {
-                    Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_6_]);
-                    if((class40_sub5_sub17_sub4_sub2.actorDefinition.tileSpacesOccupied) == 1 && ((class40_sub5_sub17_sub4_sub2.anInt3098 & 0x7f) == 64) && ((0x7f & class40_sub5_sub17_sub4_sub2.anInt3089) == 64)) {
-                        for(int i_9_ = 0; ((GameObjectDefinition.anInt2558 > i_9_)); i_9_++) {
-                            Npc class40_sub5_sub17_sub4_sub2_10_ = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_9_]]);
-                            if(class40_sub5_sub17_sub4_sub2_10_ != null && (class40_sub5_sub17_sub4_sub2_10_ != class40_sub5_sub17_sub4_sub2) && (class40_sub5_sub17_sub4_sub2_10_.actorDefinition.tileSpacesOccupied) == 1 && ((class40_sub5_sub17_sub4_sub2_10_.anInt3098) == class40_sub5_sub17_sub4_sub2.anInt3098) && ((class40_sub5_sub17_sub4_sub2_10_.anInt3089) == (class40_sub5_sub17_sub4_sub2.anInt3089)))
-                                HuffmanEncoding.method1025(0, i_3_, i_4_, Class40_Sub3.anIntArray2016[i_9_], (class40_sub5_sub17_sub4_sub2_10_.actorDefinition));
+                if(type == 1) {
+                    Npc npc = (Player.npcs[index]);
+                    if((npc.actorDefinition.boundaryDimension) == 1 && ((npc.worldX & 0x7f) == 64) && ((0x7f & npc.worldY) == 64)) {
+                        for(int i_9_ = 0; ((Player.npcCount > i_9_)); i_9_++) {
+                            Npc npc1 = (Player.npcs[Player.npcIds[i_9_]]);
+                            if(npc1 != null && (npc1 != npc) && (npc1.actorDefinition.boundaryDimension) == 1 && ((npc1.worldX) == npc.worldX) && ((npc1.worldY) == (npc.worldY)))
+                                HuffmanEncoding.processNpcMenuOptions(npc1.actorDefinition, x, y, Player.npcIds[i_9_]);
                         }
-                        for(int i_11_ = 0; i_11_ < Class60.anInt1407; i_11_++) {
-                            Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_11_]]);
-                            if(class40_sub5_sub17_sub4_sub1 != null && (class40_sub5_sub17_sub4_sub2.anInt3098 == (class40_sub5_sub17_sub4_sub1.anInt3098)) && ((class40_sub5_sub17_sub4_sub1.anInt3089) == class40_sub5_sub17_sub4_sub2.anInt3089))
-                                Class40_Sub5_Sub1.method545(i_4_, false, i_3_, class40_sub5_sub17_sub4_sub1, Class57.anIntArray1334[i_11_]);
-                        }
-                    }
-                    HuffmanEncoding.method1025(0, i_3_, i_4_, i_6_, (class40_sub5_sub17_sub4_sub2.actorDefinition));
-                }
-                if(i_5_ == 0) {
-                    Player class40_sub5_sub17_sub4_sub1 = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[i_6_]);
-                    if((0x7f & class40_sub5_sub17_sub4_sub1.anInt3098) == 64 && (0x7f & class40_sub5_sub17_sub4_sub1.anInt3089) == 64) {
-                        for(int i_12_ = 0; ((i_12_ < GameObjectDefinition.anInt2558)); i_12_++) {
-                            Npc class40_sub5_sub17_sub4_sub2 = (CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[Class40_Sub3.anIntArray2016[i_12_]]);
-                            if(class40_sub5_sub17_sub4_sub2 != null && ((class40_sub5_sub17_sub4_sub2.actorDefinition.tileSpacesOccupied) == 1) && ((class40_sub5_sub17_sub4_sub2.anInt3098) == class40_sub5_sub17_sub4_sub1.anInt3098) && (class40_sub5_sub17_sub4_sub2.anInt3089 == (class40_sub5_sub17_sub4_sub1.anInt3089)))
-                                HuffmanEncoding.method1025(0, i_3_, i_4_, Class40_Sub3.anIntArray2016[i_12_], (class40_sub5_sub17_sub4_sub2.actorDefinition));
-                        }
-                        for(int i_13_ = 0; ((i_13_ < Class60.anInt1407)); i_13_++) {
-                            Player class40_sub5_sub17_sub4_sub1_14_ = (Actor.aClass40_Sub5_Sub17_Sub4_Sub1Array3156[Class57.anIntArray1334[i_13_]]);
-                            if(class40_sub5_sub17_sub4_sub1_14_ != null && (class40_sub5_sub17_sub4_sub1_14_ != class40_sub5_sub17_sub4_sub1) && ((class40_sub5_sub17_sub4_sub1.anInt3098) == (class40_sub5_sub17_sub4_sub1_14_.anInt3098)) && ((class40_sub5_sub17_sub4_sub1.anInt3089) == (class40_sub5_sub17_sub4_sub1_14_.anInt3089)))
-                                Class40_Sub5_Sub1.method545(i_4_, arg0, i_3_, class40_sub5_sub17_sub4_sub1_14_, Class57.anIntArray1334[i_13_]);
+                        for(int i_11_ = 0; i_11_ < Player.localPlayerCount; i_11_++) {
+                            Player player = (Player.trackedPlayers[Player.trackedPlayerIndices[i_11_]]);
+                            if(player != null && (npc.worldX == (player.worldX)) && ((player.worldY) == npc.worldY))
+                                Class40_Sub5_Sub1.processPlayerMenuOptions(player, x, y, Player.trackedPlayerIndices[i_11_]);
                         }
                     }
-                    Class40_Sub5_Sub1.method545(i_4_, false, i_3_, class40_sub5_sub17_sub4_sub1, i_6_);
+                    HuffmanEncoding.processNpcMenuOptions((npc.actorDefinition), x, y, index);
                 }
-                if(i_5_ == 3) {
-                    Class45 class45 = (Wall.aClass45ArrayArrayArray357[Player.anInt3267][i_3_][i_4_]);
-                    if(class45 != null) {
-                        for(Class40_Sub5_Sub17_Sub3 class40_sub5_sub17_sub3 = ((Class40_Sub5_Sub17_Sub3) class45.method901((byte) -95)); class40_sub5_sub17_sub3 != null; class40_sub5_sub17_sub3 = ((Class40_Sub5_Sub17_Sub3) class45.method912(4))) {
-                            ItemDefinition class40_sub5_sub16 = (ItemDefinition.forId(class40_sub5_sub17_sub3.anInt3067, 10));
-                            if(Class8.anInt301 == 1) {
-                                Class44.anInt1036++;
-                                OverlayDefinition.method558(class40_sub5_sub17_sub3.anInt3067, Main.aClass1_1763, i_4_, -501, i_3_, 47, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{(Npc.aClass1_3295), Class5.aClass1_206, (class40_sub5_sub16.name)}))));
-                            } else if(Main.anInt1773 != 1) {
-                                RSString[] class1s = class40_sub5_sub16.groundOptions;
-                                Class56.anInt1319++;
+                if(type == 0) {
+                    Player player1 = (Player.trackedPlayers[index]);
+                    if((0x7f & player1.worldX) == 64 && (0x7f & player1.worldY) == 64) {
+                        for(int i_12_ = 0; ((i_12_ < Player.npcCount)); i_12_++) {
+                            Npc npc = (Player.npcs[Player.npcIds[i_12_]]);
+                            if(npc != null && ((npc.actorDefinition.boundaryDimension) == 1) && ((npc.worldX) == player1.worldX) && (npc.worldY == (player1.worldY)))
+                                HuffmanEncoding.processNpcMenuOptions((npc.actorDefinition), x, y, Player.npcIds[i_12_]);
+                        }
+                        for(int i_13_ = 0; ((i_13_ < Player.localPlayerCount)); i_13_++) {
+                            Player player = (Player.trackedPlayers[Player.trackedPlayerIndices[i_13_]]);
+                            if(player != null && (player != player1) && ((player1.worldX) == (player.worldX)) && ((player1.worldY) == (player.worldY)))
+                                Class40_Sub5_Sub1.processPlayerMenuOptions(player, x, y, Player.trackedPlayerIndices[i_13_]);
+                        }
+                    }
+                    Class40_Sub5_Sub1.processPlayerMenuOptions(player1, x, y, index);
+                }
+                if(type == 3) {
+                    LinkedList itemList = (Wall.groundItems[Player.worldLevel][x][y]);
+                    if(itemList != null) {
+                        for(Item item = ((Item) itemList.last((byte) -95)); item != null; item = ((Item) itemList.previous(4))) {
+                            ItemDefinition itemDefinition = (ItemDefinition.forId(item.itemId, 10));
+                            if(Class8.itemSelected == 1) {
+                                OverlayDefinition.addActionRow(Main.aClass1_1763, item.itemId, x, y, 47, (RSString.linkRSStrings((new RSString[]{(Npc.aClass1_3295), Class5.aClass1_206, (itemDefinition.name)}))));
+                            } else if(Main.widgetSelected != 1) {
+                                RSString[] class1s = itemDefinition.groundOptions;
                                 if(Class60.aBoolean1402)
-                                    class1s = Class56.method968(class1s, arg0);
+                                    class1s = Class56.method968(class1s, false);
                                 for(int i_15_ = 4; i_15_ >= 0; i_15_--) {
                                     if(class1s == null || class1s[i_15_] == null) {
                                         if(i_15_ == 2) {
-                                            Wall.anInt339++;
-                                            OverlayDefinition.method558((class40_sub5_sub17_sub3.anInt3067), Class27.takeStringInstance, i_4_, -501, i_3_, 3, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)}))));
+                                            OverlayDefinition.addActionRow(Class27.takeStringInstance, (item.itemId), x, y, 3, (RSString.linkRSStrings((new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)}))));
                                         }
                                     } else {
-                                        OverlayDefinition.anInt2331++;
                                         int i_16_ = 0;
                                         if(i_15_ == 0)
                                             i_16_ = 2;
@@ -206,12 +189,12 @@ public class Class64 implements Runnable {
                                             i_16_ = 8;
                                         if(i_15_ == 4)
                                             i_16_ = 36;
-                                        OverlayDefinition.method558((class40_sub5_sub17_sub3.anInt3067), class1s[i_15_], i_4_, -501, i_3_, i_16_, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)}))));
+                                        OverlayDefinition.addActionRow(class1s[i_15_], (item.itemId), x, y, i_16_, (RSString.linkRSStrings((new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)}))));
                                     }
                                 }
-                                OverlayDefinition.method558(class40_sub5_sub17_sub3.anInt3067, Class40_Sub5_Sub15.prefix_examine, i_4_, -501, i_3_, 1003, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{VertexNormal.aClass1_1114, (class40_sub5_sub16.name)})));
-                            } else if((0x1 & ItemDefinition.anInt2815) == 1) {
-                                OverlayDefinition.method558(class40_sub5_sub17_sub3.anInt3067, Class38_Sub1.aClass1_1918, i_4_, -501, i_3_, 15, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{FloorDecoration.aClass1_611, Class5.aClass1_206, (class40_sub5_sub16.name)})));
+                                OverlayDefinition.addActionRow(English.examine, item.itemId, x, y, 1003, (RSString.linkRSStrings(new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)})));
+                            } else if((0x1 & ItemDefinition.selectedMask) == 1) {
+                                OverlayDefinition.addActionRow(Class38_Sub1.aClass1_1918, item.itemId, x, y, 15, (RSString.linkRSStrings(new RSString[]{FloorDecoration.aClass1_611, Class5.aClass1_206, (itemDefinition.name)})));
                             }
                         }
                     }
@@ -221,17 +204,14 @@ public class Class64 implements Runnable {
 
     }
 
-    public static void method1015(int arg0) {
-
+    public static void method1015() {
         synchronized(GameObject.frame) {
-            SpotAnimDefinition.anInt2302 = Cache.mouseButtonPressed;
+            SpotAnimDefinition.mouseButtonPressed = Cache.mouseButtonPressed;
             Class13.mouseX = Class12.eventMouseX;
-            if(arg0 != -656)
-                aClass1_1524 = null;
             Landscape.mouseY = Cache.eventMouseY;
-            GameFrame.clickType = Actor.eventMouseButtonPressed;
-            Class57.anInt1338 = Class55.eventClickX;
-            RSString.anInt1668 = Class40_Sub5_Sub11.eventClickY;
+            MouseHandler.clickType = Actor.eventMouseButtonPressed;
+            Class57.clickX = Class55.eventClickX;
+            RSString.clickY = Class40_Sub5_Sub11.eventClickY;
             GameObjectDefinition.aLong2561 = OverlayDefinition.lastClick;
             Actor.eventMouseButtonPressed = 0;
         }
@@ -249,8 +229,7 @@ public class Class64 implements Runnable {
         }
     }
 
-    public void method1009(int arg0) {
-        int i = 27 / ((-54 - arg0) / 32);
+    public void method1009() {
         if(!aBoolean1513) {
             synchronized(this) {
                 aBoolean1513 = true;
@@ -263,6 +242,7 @@ public class Class64 implements Runnable {
                     try {
                         ((Thread) aSignlinkNode_1512.value).join();
                     } catch(InterruptedException interruptedexception) {
+                        interruptedexception.printStackTrace();
                         /* empty */
                     }
                 }
@@ -293,11 +273,10 @@ public class Class64 implements Runnable {
                     run();
             }
         }
-
     }
 
     public void finalize() {
-        method1009(-4);
+        method1009();
     }
 
     public void run() {
@@ -307,12 +286,14 @@ public class Class64 implements Runnable {
                 int i_0_;
                 synchronized(this) {
                     if(anInt1509 == anInt1520) {
-                        if(aBoolean1513)
+                        if(aBoolean1513) {
                             break;
+                        }
                         try {
                             this.wait();
                         } catch(InterruptedException interruptedexception) {
                             /* empty */
+                            interruptedexception.printStackTrace();
                         }
                     }
                     if(anInt1509 >= anInt1520)
@@ -332,6 +313,7 @@ public class Class64 implements Runnable {
                         if(anInt1520 == anInt1509)
                             anOutputStream1528.flush();
                     } catch(IOException ioexception) {
+                        ioexception.printStackTrace();
                         aBoolean1510 = true;
                     }
                 }
@@ -345,6 +327,7 @@ public class Class64 implements Runnable {
                     aSocket1508.close();
             } catch(IOException ioexception) {
                 /* empty */
+                ioexception.printStackTrace();
             }
             aByteArray1504 = null;
         } catch(Exception exception) {
@@ -360,9 +343,7 @@ public class Class64 implements Runnable {
         return anInputStream1503.available();
     }
 
-    public int method1016(int arg0) throws IOException {
-        if(arg0 < 14)
-            aClass1_1524 = null;
+    public int method1016() throws IOException {
         if(aBoolean1513)
             return 0;
         return anInputStream1503.read();

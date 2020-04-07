@@ -1,13 +1,14 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -17,45 +18,30 @@ import java.util.Calendar;
 
 public class Class8 {
     public static RSString aClass1_278;
-    public static Calendar aCalendar279;
+    public static Calendar aCalendar279 = Calendar.getInstance();
     public static RSString aClass1_281 = RSString.CreateString("backright1");
     public static CacheIndex aCacheIndex_284;
     public static RSString aClass1_286 = RSString.CreateString("Unexpected loginserver response)3");
     public static long aLong288;
     public static int anInt289;
-    public static int anInt290;
-    public static RSString aClass1_291;
-    public static int anInt292;
-    public static RSString aClass1_293;
+    public static int anInt290 = 0;
+    public static RSString aClass1_291 = RSString.CreateString("You have only just left another world)3");
+    public static int anInt292 = 0;
     public static RSString aClass1_294;
     public static FontMetrics fontMetrics;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array296;
-    public static int[] anIntArray297;
+    public static int[] anIntArray297 = new int[5];
     public static Class68 aClass68_298;
-    public static RSString aClass1_299;
-    public static RSString aClass1_300;
-    public static int anInt301;
-    public static byte aByte302;
-    public static RSString aClass1_303;
-    public static RSString aClass1_304;
-    public static RSString aClass1_305;
+    public static RSString aClass1_299 = RSString.CreateString("runes");
+    public static int itemSelected = 0;
+    public static byte aByte302 = (byte) 0;
+    public static RSString aClass1_303 = RSString.CreateString("_");
+    public static RSString aClass1_304 = RSString.CreateString("backhmid2");
+    public static RSString aClass1_305 = RSString.CreateString("");
 
     static {
         aClass1_278 = aClass1_286;
-        aCalendar279 = Calendar.getInstance();
-        aClass1_299 = RSString.CreateString("runes");
-        anInt290 = 0;
-        aByte302 = (byte) 0;
-        aClass1_303 = RSString.CreateString("_");
-        anInt292 = 0;
-        aClass1_293 = RSString.CreateString("Duell akzeptieren");
-        aClass1_300 = RSString.CreateString("welle2:");
-        anIntArray297 = new int[5];
-        aClass1_291 = RSString.CreateString("You have only just left another world)3");
         aClass1_294 = aClass1_291;
-        anInt301 = 0;
-        aClass1_305 = RSString.CreateString("");
-        aClass1_304 = RSString.CreateString("backhmid2");
     }
 
     public Class8(int arg0) {
@@ -65,24 +51,24 @@ public class Class8 {
     }
 
     public static void method209() {
-        for(int i = 0; i < GameObjectDefinition.anInt2558; i++) {
-            int i_0_ = Class40_Sub3.anIntArray2016[i];
-            Npc class40_sub5_sub17_sub4_sub2 = CacheIndex_Sub1.aClass40_Sub5_Sub17_Sub4_Sub2Array1813[i_0_];
+        for(int i = 0; i < Player.npcCount; i++) {
+            int i_0_ = Player.npcIds[i];
+            Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_0_];
             if(class40_sub5_sub17_sub4_sub2 != null)
-                Class13.method241(class40_sub5_sub17_sub4_sub2, (class40_sub5_sub17_sub4_sub2.actorDefinition.tileSpacesOccupied), (byte) 107);
+                Class13.method241(class40_sub5_sub17_sub4_sub2, (class40_sub5_sub17_sub4_sub2.actorDefinition.boundaryDimension), (byte) 107);
         }
 
     }
 
-    public static void method210() {
+    public static void setHighMemory() {
         VertexNormal.lowMemory = false;
-        Scene.aBoolean88 = false;
+        Scene.lowMemory = false;
 
     }
 
     public static void method211() {
         ISAAC.aClass9_516.method235((byte) 78);
-        GameFrame.aClass9_1455.method235((byte) 36);
+        MouseHandler.modelCache.method235((byte) 36);
         Buffer.aClass9_1933.method235((byte) 72);
 
     }
@@ -101,11 +87,8 @@ public class Class8 {
         aClass68_298 = null;
         aClass1_304 = null;
         aClass40_Sub5_Sub14_Sub4Array296 = null;
-        aClass1_300 = null;
-        aClass1_293 = null;
         aClass1_294 = null;
         aClass1_281 = null;
-
     }
 
     public static synchronized void method215(int[] arg0, int arg1) {

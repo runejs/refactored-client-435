@@ -4,97 +4,89 @@ import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.scene.tile.GenericTile;
 
 import java.awt.*;
 
-public class Class45 {
+public class LinkedList {
     public static long aLong1051;
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_1057;
-    public static RSString aClass1_1059 = RSString.CreateString("Bitte entfernen Sie ");
     public static int anInt1061;
-    public static Class45 aClass45_1064 = new Class45();
+    public static LinkedList aLinkedList_1064 = new LinkedList();
     public static int[] anIntArray1071;
     public static volatile int anInt1073 = 0;
-    public static int anInt1075 = 0;
+    public static int crossType = 0;
     public static RSString aClass1_1076 = RSString.CreateString("cyan:");
     public static RSString aClass1_1077 = RSString.CreateString("(U2");
-    public static RSString aClass1_1078 = (RSString.CreateString("(WSpielkonto wiederherstellen(W Option auf der Hauptseite)3"));
-    public static RSString aClass1_1079 = RSString.CreateString("Name des Gegenstands eingeben:");
     public static Buffer aClass40_Sub1_1081 = new Buffer(8);
     public static Class30 aClass30_1082 = new Class30();
     public static int[] anIntArray1083 = new int[1000];
-    public static RSString aClass1_1084 = RSString.CreateString("Texturen geladen)3");
     public static RSString aClass1_1085 = RSString.CreateString("m");
     public Node aClass40_1056 = new Node();
     public Node aClass40_1068;
 
-    public Class45() {
+    public LinkedList() {
 
         aClass40_1056.aClass40_968 = aClass40_1056;
         aClass40_1056.aClass40_950 = aClass40_1056;
 
     }
 
-    public static void method900(int arg0) {
+    public static void method900() {
         anIntArray1083 = null;
-        aClass45_1064 = null;
+        aLinkedList_1064 = null;
         aClass30_1082 = null;
-        if(arg0 != 29690)
-            aClass40_Sub1_1081 = null;
         aClass1_1077 = null;
         aClass40_Sub5_Sub14_Sub4_1057 = null;
         aClass1_1085 = null;
         aClass40_Sub1_1081 = null;
         anIntArray1071 = null;
-        aClass1_1084 = null;
-        aClass1_1079 = null;
         aClass1_1076 = null;
-        aClass1_1059 = null;
-        aClass1_1078 = null;
     }
 
     public static RSString method903(int arg0, byte arg1) {
         if(arg1 >= -13)
             return null;
-        RSString class1 = HashTable.method334(arg0, -1);
+        RSString class1 = HashTable.method334(arg0);
         for(int i = -3 + class1.length(); i > 0; i -= 3)
-            class1 = (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{class1.substring(0, i), Class33.aClass1_795, class1.substring(i)}));
+            class1 = (RSString.linkRSStrings(new RSString[]{class1.substring(0, i), Class33.aClass1_795, class1.substring(i)}));
         if(class1.length() > 8)
-            class1 = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Landscape.aClass1_1162, class1.substring(0, -8 + class1.length()), UnderlayDefinition.aClass1_2577, Class52.aClass1_1213, class1, Class51.aClass1_1199})));
+            class1 = (RSString.linkRSStrings((new RSString[]{Landscape.aClass1_1162, class1.substring(0, -8 + class1.length()), UnderlayDefinition.aClass1_2577, GenericTile.aClass1_1213, class1, Class51.aClass1_1199})));
         else if(class1.length() > 4)
-            class1 = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Renderable.aClass1_2862, class1.substring(0, class1.length() + -4), IdentityKit.aClass1_2593, Class52.aClass1_1213, class1, Class51.aClass1_1199})));
-        return Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Class48.aClass1_1123, class1}));
+            class1 = (RSString.linkRSStrings((new RSString[]{Renderable.aClass1_2862, class1.substring(0, class1.length() + -4), IdentityKit.aClass1_2593, GenericTile.aClass1_1213, class1, Class51.aClass1_1199})));
+        return RSString.linkRSStrings((new RSString[]{Class48.aClass1_1123, class1}));
     }
 
     public static void method907(int arg0) {
         Class57.aClass9_1331.method235((byte) 94);
         if(arg0 >= -36)
-            aClass45_1064 = null;
+            aLinkedList_1064 = null;
     }
 
     public static void method908(byte arg0) {
         try {
-            Graphics graphics = GameFrame.aCanvas1469.getGraphics();
+            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
             if(arg0 <= 83)
                 method908((byte) 19);
-            RSCanvas.aClass68_64.method1044(0, 17, graphics, 357);
+            RSCanvas.aClass68_64.drawGraphics(17, 357, graphics);
         } catch(Exception exception) {
-            GameFrame.aCanvas1469.repaint();
+            MouseHandler.aCanvas1469.repaint();
         }
     }
 
     public static void method910(int arg0) {
         if(arg0 == -32322) {
-            if(VertexNormal.lowMemory && (Class40_Sub6.onBuildTimePlane != Player.anInt3267))
-                Actor.method789((Player.localPlayer.pathY[0]), -1000, Class17.anInt448, Class51.anInt1202, (Player.localPlayer.pathX[0]), Player.anInt3267);
-            else if(Buffer.anInt1985 != Player.anInt3267) {
-                Buffer.anInt1985 = Player.anInt3267;
-                Class22.method299((byte) 53, Player.anInt3267);
+            if(VertexNormal.lowMemory && (Class40_Sub6.onBuildTimePlane != Player.worldLevel))
+                Actor.method789((Player.localPlayer.pathY[0]), -1000, Class17.regionY, Class51.regionX, (Player.localPlayer.pathX[0]), Player.worldLevel);
+            else if(Buffer.anInt1985 != Player.worldLevel) {
+                Buffer.anInt1985 = Player.worldLevel;
+                Class22.method299((byte) 53, Player.worldLevel);
             }
         }
     }
@@ -108,7 +100,7 @@ public class Class45 {
         return class40;
     }
 
-    public Node method901(byte arg0) {
+    public Node last(byte arg0) {
         Node class40 = aClass40_1056.aClass40_968;
         if(class40 == aClass40_1056) {
             aClass40_1068 = null;
@@ -122,7 +114,7 @@ public class Class45 {
 
     public Node method902(byte arg0) {
         if(arg0 != -90)
-            method901((byte) 0);
+            last((byte) 0);
         Node class40 = aClass40_1056.aClass40_950;
         if(aClass40_1056 == class40) {
             aClass40_1068 = null;
@@ -187,7 +179,7 @@ public class Class45 {
         }
     }
 
-    public Node method912(int arg0) {
+    public Node previous(int arg0) {
         if(arg0 != 4)
             return null;
         Node class40 = aClass40_1068;

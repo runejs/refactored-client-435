@@ -1,29 +1,29 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex_Sub1;
+import com.jagex.runescape.cache.def.FramemapDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.net.ISAAC;
+import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.WallDecoration;
 
 public class Class40_Sub6 extends Node {
     public static RSString aClass1_2097;
     public static Class64 aClass64_2098;
     public static int[][][] tile_height;
-    public static int anInt2100;
     public static RSString aClass1_2101;
     public static RSString aClass1_2103;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2105;
     public static int[] anIntArray2106 = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
-    public static int anInt2107;
-    public static int anInt2108;
+    public static int secondaryCameraVertical;
     public static RSString aClass1_2109;
     public static int anInt2110;
     public static RSString aClass1_2111;
     public static int[] anIntArray2113;
     public static RSString aClass1_2114;
-    public static int anInt2115;
     public static Widget aWidget_2116;
     public static int anInt2118;
     public static int placementX;
@@ -32,7 +32,7 @@ public class Class40_Sub6 extends Node {
 
     static {
         aClass1_2101 = RSString.CreateString("p11_full");
-        anInt2107 = 0;
+        secondaryCameraVertical = 0;
         anIntArray2113 = new int[128];
         aClass1_2109 = RSString.CreateString("overlay_multiway");
         tile_height = new int[4][105][105];
@@ -51,7 +51,6 @@ public class Class40_Sub6 extends Node {
     public Class56 aClass56_2117;
 
     public static void method836(int arg0) {
-        anInt2108++;
         int i = 256;
         for(int i_0_ = 10; i_0_ < 117; i_0_++) {
             int i_1_ = (int) (Math.random() * 100.0);
@@ -74,7 +73,7 @@ public class Class40_Sub6 extends Node {
         if(RSRuntimeException.anInt1641 > Landscape.anIntArray1168.length) {
             RSRuntimeException.anInt1641 -= Landscape.anIntArray1168.length;
             int i_9_ = (int) (12.0 * Math.random());
-            Class40_Sub13.method879(-4487, (Class22.aClass40_Sub5_Sub14_Sub2Array535[i_9_]));
+            FramemapDefinition.method879((Class22.aClass40_Sub5_Sub14_Sub2Array535[i_9_]));
         }
         for(int i_10_ = 1; (i_10_ < -1 + i); i_10_++) {
             for(int i_11_ = 1; i_11_ < 127; i_11_++) {
@@ -101,8 +100,7 @@ public class Class40_Sub6 extends Node {
         }
     }
 
-    public static void method837(byte arg0) {
-
+    public static void method837() {
         aClass1_2111 = null;
         tile_height = null;
         aClass1_2114 = null;
@@ -115,15 +113,10 @@ public class Class40_Sub6 extends Node {
         aClass1_2101 = null;
         anIntArray2106 = null;
         aClass40_Sub5_Sub14_Sub2_2105 = null;
-        if(arg0 < 23)
-            method838(-95, -33L);
         anIntArray2113 = null;
-
     }
 
     public static void method838(int arg0, long arg1) {
-
-        anInt2100++;
         if(arg1 != 0) {
             for(int i = arg0; i < Class42.anInt1008; i++) {
                 if(WallDecoration.ignores[i] == arg1) {
@@ -131,12 +124,11 @@ public class Class40_Sub6 extends Node {
                     Class42.anInt1008--;
                     for(int i_16_ = i; Class42.anInt1008 > i_16_; i_16_++)
                         WallDecoration.ignores[i_16_] = WallDecoration.ignores[1 + i_16_];
-                    Class32.packetBuffer.putPacket(28);
-                    Class32.packetBuffer.putLongBE(arg1);
+                    SceneCluster.packetBuffer.putPacket(28);
+                    SceneCluster.packetBuffer.putLongBE(arg1);
                     break;
                 }
             }
         }
-
     }
 }

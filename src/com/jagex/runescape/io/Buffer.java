@@ -13,15 +13,14 @@ public class Buffer extends Node {
     public static Cache aClass9_1933 = new Cache(100);
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1959;
     public static int[] anIntArray1972;
-    public static int anInt1976 = 0;
-    public static int anInt1978 = 0;
+    public static int cameraOffsetX = 0;
+    public static int lastItemDragTime = 0;
 
     public static int anInt1982 = 0;
     public static RSString aClass1_1983 = (RSString.CreateString("Too many incorrect logins from your address)3"));
     public static int[] anIntArray1984 = new int[2000];
     public static int anInt1985 = -1;
     public static int anInt1987 = 0;
-    public static RSString aClass1_1990 = RSString.CreateString("Ausw-=hlen");
 
     public int currentPosition;
     public byte[] buffer;
@@ -49,32 +48,11 @@ public class Buffer extends Node {
     }
 
     public static void method499() {
-        aClass1_1990 = null;
         anIntArray1984 = null;
         aClass40_Sub5_Sub14_Sub2_1959 = null;
         aClass1_1983 = null;
         aClass9_1933 = null;
         anIntArray1972 = null;
-    }
-
-    public int getNegativeOffsetShortBE() {
-        currentPosition += 2;
-        int i = ((buffer[currentPosition - 2] & 0xff) << 8) + (buffer[currentPosition - 1] - 128 & 0xff);
-        if(i > 32767) {
-            i -= 65536;
-        }
-        return i;
-    }
-
-    public int getUnsignedNegativeOffsetShortBE() {
-        currentPosition += 2;
-        return ((buffer[currentPosition - 2] & 0xff) << 8) + (buffer[currentPosition - 1] - 128 & 0xff);
-    }
-
-    public void putNegativeOffsetBytes(int arg1, byte[] arg2, int arg3) {
-        for(int i = arg1; i < arg3 + arg1; i++) {
-            arg2[i] = (byte) (buffer[currentPosition++] - 128);
-        }
     }
 
     public int getShortBE() {
@@ -111,10 +89,6 @@ public class Buffer extends Node {
         putBytes(0, rsaBytes.length, rsaBytes);
     }
 
-    public byte getInvertedByte() {
-        return (byte) -buffer[currentPosition++];
-    }
-
     public int getUnsignedByte() {
         return 0xff & buffer[currentPosition++];
     }
@@ -148,10 +122,6 @@ public class Buffer extends Node {
         buffer[currentPosition++] = (byte) (value >> 16);
     }
 
-    public int getUnsignedInvertedByte() {
-        return 0xff & -buffer[currentPosition++];
-    }
-
     // ???
     public int method473(int value) {
         int i = Class67.method1034(true, value, currentPosition, buffer);
@@ -176,27 +146,14 @@ public class Buffer extends Node {
         }
     }
 
-    public int getUnsignedNegativeOffsetByte() {
-        return 0xff & buffer[currentPosition++] - 128;
-    }
-
     public void putMediumBE(int value) {
         buffer[currentPosition++] = (byte) (value >> 16);
         buffer[currentPosition++] = (byte) (value >> 8);
         buffer[currentPosition++] = (byte) value;
     }
 
-    public void putOffsetShortLE(int value) {
-        buffer[currentPosition++] = (byte) (128 + value);
-        buffer[currentPosition++] = (byte) (value >> 8);
-    }
-
     public void finishVarByte(int value) {
         buffer[-1 + (currentPosition + -value)] = (byte) value;
-    }
-
-    public int putUnsignedPreNegativeOffsetByte() {
-        return 0xff & 128 - buffer[currentPosition++];
     }
 
     public void putLongBE(long arg0) {
@@ -260,20 +217,6 @@ public class Buffer extends Node {
         currentPosition = i_3_;
     }
 
-    public int getNegativeOffsetShortLE() {
-        currentPosition += 2;
-        int i = ((0xff & -128 + buffer[currentPosition - 2]) + (0xff00 & buffer[currentPosition - 1] << 8));
-        if(i > 32767) {
-            i -= 65536;
-        }
-        return i;
-    }
-
-    public int getUnsignedNegativeOffsetShortLE() {
-        currentPosition += 2;
-        return ((0xff & buffer[currentPosition - 2] - 128) + (0xff00 & buffer[currentPosition - 1] << 8));
-    }
-
     public int getIntLE() {
         currentPosition += 4;
         return ((buffer[currentPosition - 3] << 8 & 0xff00) + (((0xff & buffer[currentPosition - 1]) << 24) + (0xff0000 & buffer[currentPosition - 2] << 16)) + (buffer[currentPosition - 4] & 0xff));
@@ -289,10 +232,6 @@ public class Buffer extends Node {
         return (((buffer[currentPosition - 3] & 0xff) << 16) + ((buffer[currentPosition - 2] & 0xff) << 8) + (0xff & buffer[currentPosition - 1]));
     }
 
-    public void putDualByte(int value1, int value2) {
-        buffer[currentPosition++] = (byte) (value1 + value2);
-    }
-
     public int getUnsignedShortLE() {
         currentPosition += 2;
         return ((0xff00 & buffer[currentPosition - 1] << 8) + (0xff & buffer[currentPosition - 2]));
@@ -303,28 +242,11 @@ public class Buffer extends Node {
         return ((0xff & buffer[currentPosition - 1]) + (buffer[currentPosition - 2] << 8 & 0xff00) + (buffer[currentPosition - 3] << 16 & 0xff0000) + (~0xffffff & buffer[currentPosition - 4] << 24));
     }
 
-    public byte getOffsetInvertedByte() {
-        return (byte) (-buffer[currentPosition++] + 128);
-    }
-
-    public void putCustomNegativeOffsetShortBE(int value, int offset) {
-        buffer[currentPosition++] = (byte) (value >> 8);
-        buffer[currentPosition++] = (byte) (value + -offset);
-    }
-
     public void putIntLE(int value) {
         buffer[currentPosition++] = (byte) value;
         buffer[currentPosition++] = (byte) (value >> 8);
         buffer[currentPosition++] = (byte) (value >> 16);
         buffer[currentPosition++] = (byte) (value >> 24);
-    }
-
-    public byte getNegativeOffsetByte() {
-        return (byte) (buffer[currentPosition++] - 128);
-    }
-
-    public void putInvertedByte(int value) {
-        buffer[currentPosition++] = (byte) -value;
     }
 
     public long getLongBE() {
@@ -347,6 +269,21 @@ public class Buffer extends Node {
     public void method505(RSString value) {
         currentPosition += value.method51(0, value.length(), buffer, currentPosition);
         buffer[currentPosition++] = (byte) 0;
+    }
+
+    public void putString(String str) {
+//        if(str == null) {
+//            str = "";
+//        }
+//
+//        byte[] bytes = new byte[str.length()];
+//        for (int i = 0; i < bytes.length; i++) {
+//            bytes[i] = (byte) str.charAt(i);
+//        }
+//        System.arraycopy(bytes, 0, buffer, currentPosition, bytes.length);
+//        currentPosition += str.length();
+//        buffer[currentPosition++] = 10;
+        method505(RSString.CreateString(str));
     }
 
     public void putIntBE(int value) {

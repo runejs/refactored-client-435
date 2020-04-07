@@ -8,17 +8,15 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.media.renderable.Renderable;
 
 public class InteractiveObject {
-    public static int anInt467;
     public static Cache aClass9_470 = new Cache(10);
-    public static int anInt475;
+    public static int menuOffsetX;
     public static RSString aClass1_478 = RSString.CreateString("(Z");
     public static Class68 aClass68_482;
-    public static int[] anIntArray483 = new int[500];
+    public static int[] firstMenuOperand = new int[500];
     public static Class27 aClass27_485 = new Class27();
     public static int anInt487 = 0;
     public static CacheIndex aCacheIndex_488;
     public static RSString aClass1_489 = RSString.CreateString("Public chat");
-    public static boolean messagePromptRaised = false;
     public static byte[][][] aByteArrayArrayArray492;
     public static int playerRights = 0;
     public static RSString aClass1_494;
@@ -49,8 +47,6 @@ public class InteractiveObject {
     }
 
     public static RSString method279(byte[] arg0, boolean arg1, int arg2, int arg3) {
-
-        anInt467++;
         RSString class1 = new RSString();
         class1.length = 0;
         class1.chars = new byte[arg3];
@@ -61,11 +57,9 @@ public class InteractiveObject {
                 class1.chars[class1.length++] = arg0[i];
         }
         return class1;
-
     }
 
-    public static void method280(boolean arg0) {
-
+    public static void method280() {
         aClass1_495 = null;
         aClass1_494 = null;
         aClass68_482 = null;
@@ -74,10 +68,7 @@ public class InteractiveObject {
         aByteArrayArrayArray492 = null;
         aClass9_470 = null;
         aClass1_478 = null;
-        if(!arg0)
-            method280(false);
-        anIntArray483 = null;
+        firstMenuOperand = null;
         aCacheIndex_488 = null;
-
     }
 }

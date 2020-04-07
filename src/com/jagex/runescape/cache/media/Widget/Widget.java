@@ -1,20 +1,27 @@
-package com.jagex.runescape.cache.media;
+package com.jagex.runescape.cache.media.Widget;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.UnderlayDefinition;
-import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.cache.media.AnimationSequence;
+import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.cache.media.TypeFace;
+import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
+import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.VertexNormal;
+import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
@@ -27,12 +34,10 @@ public class Widget extends SubNode {
     public static RSString aClass1_2637 = RSString.CreateString("glow2:");
     public static RSString aClass1_2671 = aClass1_2637;
     public static RSString aClass1_2674 = RSString.CreateString("Starting game engine)3)3)3");
-    public static RSString aClass1_2684 = RSString.CreateString("Choose Option");
+    public static RSString str_Choose_Option = RSString.CreateString("Choose Option");
     public static RSString cmd_errortest = RSString.CreateString("::errortest");
-    public static RSString aClass1_2716 = RSString.CreateString("Fehler beim Laden Ihres Charakter)2Profils");
     public static RSString goldCrown = RSString.CreateString("@cr2@");
     public static RSString aClass1_2740 = RSString.CreateString("Enter name of friend to add to list");
-    public static int packetsize = 0;
     public static Widget[][] interfaces;
 
     public boolean isIf3 = false;
@@ -47,7 +52,7 @@ public class Widget extends SubNode {
     public int parentId;
     public int originalX;
     public Object[] anObjectArray2650;
-    public int anInt2651 = 1;
+    public WidgetModelType alternateModelType = WidgetModelType.MODEL;
     public int alternateAnimation;
     public int anInt2654;
     public boolean itemUsable;
@@ -72,9 +77,9 @@ public class Widget extends SubNode {
     public Object[] anObjectArray2680;
     public Object[] anObjectArray2681;
     public boolean aBoolean2682;
-    public int type;
+    public WidgetType type;
     public int[] items;
-    public int modelType;
+    public WidgetModelType modelType;
     public boolean aBoolean2688;
     public int id;
     public int rotationX;
@@ -132,12 +137,12 @@ public class Widget extends SubNode {
         rotationZ = 0;
         textShadowed = false;
         aBoolean2641 = false;
-        targetVerb = Class22_Sub2.aClass1_1877;
+        targetVerb = Native.string_blank;
         anInt2654 = 0;
         tooltip = Class39.str_ok;
         itemSpritePadsY = 0;
         anInt2660 = 0;
-        modelType = 1;
+        modelType = WidgetModelType.MODEL;
         alternateAnimation = -1;
         textColor = 0;
         aBoolean2682 = false;
@@ -153,17 +158,17 @@ public class Widget extends SubNode {
         alternateModelId = -1;
         originalX = 0;
         isInventory = false;
-        alternateText = Class22_Sub2.aClass1_1877;
+        alternateText = Native.string_blank;
         itemSwapable = false;
         hoveredTextColor = 0;
         originalWidth = 0;
         animation = -1;
         xTextAlignment = 0;
         hoveredSiblingId = -1;
-        spellName = Class22_Sub2.aClass1_1877;
+        spellName = Native.string_blank;
         offsetY2d = 0;
         anInt2734 = 0;
-        disabledText = Class22_Sub2.aClass1_1877;
+        disabledText = Native.string_blank;
         id = -1;
         lineHeight = 0;
         itemUsable = false;
@@ -196,46 +201,42 @@ public class Widget extends SubNode {
 
     public static void method639(int arg0) {
         synchronized(Class59.keyFocusListener) {
-            Class59.anInt1389 = Class52.anInt1214;
+            Class59.anInt1389 = GenericTile.anInt1214;
             if(GameObjectDefinition.anInt2543 < 0) {
                 for(int i = 0; i < 112; i++) {
-                    Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[i] = false;
+                    Item.obfuscatedKeyStatus[i] = false;
                 }
-                GameObjectDefinition.anInt2543 = Class40_Sub13.anInt2183;
+                GameObjectDefinition.anInt2543 = FramemapDefinition.anInt2183;
             } else {
-                while(GameObjectDefinition.anInt2543 != Class40_Sub13.anInt2183) {
-                    int i = RSString.keyCodes[Class40_Sub13.anInt2183];
-                    Class40_Sub13.anInt2183 = 0x7f & Class40_Sub13.anInt2183 + 1;
+                while(GameObjectDefinition.anInt2543 != FramemapDefinition.anInt2183) {
+                    int i = RSString.keyCodes[FramemapDefinition.anInt2183];
+                    FramemapDefinition.anInt2183 = 0x7f & FramemapDefinition.anInt2183 + 1;
                     if(i < 0) {
-                        Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[i ^ 0xffffffff] = false;
+                        Item.obfuscatedKeyStatus[i ^ 0xffffffff] = false;
                     } else {
-                        Class40_Sub5_Sub17_Sub3.obfuscatedKeyStatus[i] = true;
+                        Item.obfuscatedKeyStatus[i] = true;
                     }
                 }
             }
-            Class52.anInt1214 = IdentityKit.anInt2598;
+            GenericTile.anInt1214 = IdentityKit.anInt2598;
         }
         if(arg0 <= 121) {
             aClass1_2674 = null;
         }
     }
 
-    public static void method640(byte arg0) {
+    public static void method640() {
         Class68.aClass9_1615.method235((byte) 49);
     }
 
-    public static void method641(int arg0) {
-        aClass1_2716 = null;
+    public static void method641() {
         aClass1_2671 = null;
-        if(arg0 > -88) {
-            method648(85, (byte) 24);
-        }
         cmd_errortest = null;
         goldCrown = null;
         aClass1_2637 = null;
         aClass1_2674 = null;
         aClass1_2740 = null;
-        aClass1_2684 = null;
+        str_Choose_Option = null;
     }
 
     public static void method642(Component arg0, int arg1) {
@@ -269,19 +270,17 @@ public class Widget extends SubNode {
             return null;
         }
         if(arg0 < 100000) {
-            return HashTable.method334(arg0, -1);
+            return HashTable.method334(arg0);
         }
         if(arg0 < 10000000) {
-            return (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{HashTable.method334(arg0 / 1000, -1), IdentityKit.aClass1_2587}));
+            return (RSString.linkRSStrings(new RSString[]{HashTable.method334(arg0 / 1000), IdentityKit.aClass1_2587}));
         }
-        return (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{HashTable.method334(arg0 / 1000000, arg1 ^ 0x63), Class22.aClass1_542}));
+        return (RSString.linkRSStrings(new RSString[]{HashTable.method334(arg0 / 1000000), Native.suffixM}));
     }
 
     public static void method891(Object[] arg0, int arg1, int arg2, Widget arg3, int arg4, boolean arg5) {
-
-        Class43.anInt1015++;
         int i = 0;
-        Class40_Sub5_Sub1 class40_sub5_sub1 = IdentityKit.method626(((Integer) arg0[0]).intValue(), 76, 27);
+        Class40_Sub5_Sub1 class40_sub5_sub1 = IdentityKit.method626(((Integer) arg0[0]).intValue(), 76);
         int[] is = class40_sub5_sub1.anIntArray2262;
         int[] is_0_ = class40_sub5_sub1.anIntArray2272;
         int i_1_ = 0;
@@ -424,7 +423,7 @@ public class Widget extends SubNode {
                     if(i_3_ == 37) {
                         int i_12_ = is[i_2_];
                         i_1_ -= i_12_;
-                        RSString class1 = (IdentityKit.method627(63, i_12_, i_1_, Class40_Sub11.aClass1Array2153));
+                        RSString class1 = (RSString.method627(i_12_, i_1_, Class40_Sub11.aClass1Array2153));
                         Class40_Sub11.aClass1Array2153[i_1_++] = class1;
                         continue;
                     }
@@ -438,7 +437,7 @@ public class Widget extends SubNode {
                     }
                     if(i_3_ == 40) {
                         int i_13_ = is[i_2_];
-                        Class40_Sub5_Sub1 class40_sub5_sub1_14_ = IdentityKit.method626(i_13_, 73, 65);
+                        Class40_Sub5_Sub1 class40_sub5_sub1_14_ = IdentityKit.method626(i_13_, 73);
                         int[] is_15_ = new int[class40_sub5_sub1_14_.anInt2271];
                         RSString[] class1s = new RSString[class40_sub5_sub1_14_.anInt2267];
                         for(int i_16_ = 0; ((class40_sub5_sub1_14_.anInt2263 > i_16_)); i_16_++) {
@@ -493,7 +492,7 @@ public class Widget extends SubNode {
                         }
                         Widget widget_22_ = new Widget();
                         widget_22_.parentId = widget.id;
-                        widget_22_.type = i_19_;
+                        widget_22_.type = WidgetType.get(i_19_);
                         widget_22_.id = ((0xffff & widget.id) << 15) + (-2147483648 + i_20_);
                         widget.aWidgetArray2713[i_20_] = widget_22_;
                         if(bool) {
@@ -567,7 +566,7 @@ public class Widget extends SubNode {
                     } else if(i_3_ == 1107) {
                         widget.aBoolean2641 = (Class67.anIntArray1588[--i] == 1);
                     } else if(i_3_ == 1108) {
-                        widget.modelType = 1;
+                        widget.modelType = WidgetModelType.MODEL;
                         widget.modelId = Class67.anIntArray1588[--i];
                     } else if(i_3_ == 1109) {
                         i -= 6;
@@ -715,7 +714,7 @@ public class Widget extends SubNode {
                                         if(i_3_ == 3000) {
                                             int i_42_ = (Class67.anIntArray1588[--i]);
                                             if(CacheIndex_Sub1.anInt1819 == -1) {
-                                                PacketBuffer.method517(0, i_42_, -9225);
+                                                PacketBuffer.method517(0, i_42_);
                                                 CacheIndex_Sub1.anInt1819 = i_42_;
                                             }
                                         } else if((i_3_ == 3001) || (i_3_ == 3003)) {
@@ -726,7 +725,7 @@ public class Widget extends SubNode {
                                         } else if(i_3_ == 3002) {
                                             Widget widget = (!bool ? (Class22_Sub2.aWidget_1887) : (Class40_Sub6.aWidget_2116));
                                             if(CacheIndex_Sub1.anInt1819 == -1) {
-                                                PacketBuffer.method517((widget.id) & 0x7fff, (widget.parentId), -9225);
+                                                PacketBuffer.method517((widget.id) & 0x7fff, (widget.parentId));
                                                 CacheIndex_Sub1.anInt1819 = (widget.id);
                                             }
                                         } else {
@@ -743,7 +742,7 @@ public class Widget extends SubNode {
                                                 i -= 3;
                                                 WallDecoration.method950((Class67.anIntArray1588[i]), (Class67.anIntArray1588[i + 1]), (Class67.anIntArray1588[2 + i]));
                                             } else if(i_3_ == 3201) {
-                                                Class51.method942(257, (Class67.anIntArray1588[--i]));
+                                                Class51.method942((Class67.anIntArray1588[--i]));
                                             } else {
                                                 if(i_3_ != 3202) {
                                                     break;
@@ -847,16 +846,16 @@ public class Widget extends SubNode {
                                             if(i_3_ == 4100) {
                                                 RSString class1 = (Class40_Sub11.aClass1Array2153[--i_1_]);
                                                 int i_75_ = (Class67.anIntArray1588[--i]);
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{class1, (HashTable.method334(i_75_, -1))})));
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = (RSString.linkRSStrings((new RSString[]{class1, (HashTable.method334(i_75_))})));
                                             } else if(i_3_ == 4101) {
                                                 i_1_ -= 2;
                                                 RSString class1 = (Class40_Sub11.aClass1Array2153[i_1_ + 1]);
                                                 RSString class1_76_ = (Class40_Sub11.aClass1Array2153[i_1_]);
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{class1_76_, class1})));
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = (RSString.linkRSStrings((new RSString[]{class1_76_, class1})));
                                             } else if(i_3_ == 4102) {
                                                 RSString class1 = (Class40_Sub11.aClass1Array2153[--i_1_]);
                                                 int i_77_ = (Class67.anIntArray1588[--i]);
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{class1, (HuffmanEncoding.method1024(true, (byte) -85, i_77_))})));
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = (RSString.linkRSStrings((new RSString[]{class1, (HuffmanEncoding.method1024(true, (byte) -85, i_77_))})));
                                             } else if(i_3_ == 4103) {
                                                 RSString class1 = (Class40_Sub11.aClass1Array2153[--i_1_]);
                                                 Class40_Sub11.aClass1Array2153[i_1_++] = class1.toLowerCase();
@@ -867,7 +866,7 @@ public class Widget extends SubNode {
                                                 int i_79_ = Class8.aCalendar279.get(5);
                                                 int i_80_ = Class8.aCalendar279.get(2);
                                                 int i_81_ = Class8.aCalendar279.get(1);
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{(HashTable.method334(i_79_, -1)), (Class27.aClass1_643), (Class40_Sub5_Sub17_Sub1.aClass1Array2964[i_80_]), (Class27.aClass1_643), (HashTable.method334(i_81_, -1))})));
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = (RSString.linkRSStrings((new RSString[]{(HashTable.method334(i_79_)), (Class27.aClass1_643), (Class40_Sub5_Sub17_Sub1.aClass1Array2964[i_80_]), (Class27.aClass1_643), (HashTable.method334(i_81_))})));
                                             } else if(i_3_ == 4105) {
                                                 i_1_ -= 2;
                                                 RSString class1 = (Class40_Sub11.aClass1Array2153[i_1_]);
@@ -879,13 +878,13 @@ public class Widget extends SubNode {
                                                 }
                                             } else if(i_3_ == 4106) {
                                                 int i_83_ = (Class67.anIntArray1588[--i]);
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = (HashTable.method334(i_83_, -1));
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = (HashTable.method334(i_83_));
                                             } else {
                                                 if(i_3_ != 4107) {
                                                     break;
                                                 }
                                                 i_1_ -= 2;
-                                                Class67.anIntArray1588[i++] = (Class40_Sub11.aClass1Array2153[i_1_].method84((Class40_Sub11.aClass1Array2153[i_1_ + 1]), (byte) 109));
+                                                Class67.anIntArray1588[i++] = (Class40_Sub11.aClass1Array2153[i_1_].method84((Class40_Sub11.aClass1Array2153[i_1_ + 1])));
                                             }
                                         }
                                     } else if(i_3_ == 3100) {
@@ -896,7 +895,7 @@ public class Widget extends SubNode {
                                             break;
                                         }
                                         i -= 2;
-                                        ActorDefinition.method570(Class67.anIntArray1588[i], (Class67.anIntArray1588[i + 1]), (Player.localPlayer), -1);
+                                        ActorDefinition.method570(Class67.anIntArray1588[i], (Class67.anIntArray1588[i + 1]), (Player.localPlayer));
                                     }
                                 }
                             } else {
@@ -1024,10 +1023,10 @@ public class Widget extends SubNode {
                         int i_87_ = Class67.anIntArray1588[i];
                         int i_88_ = Class67.anIntArray1588[i + 2];
                         if(i_87_ == -1) {
-                            widget.modelType = 0;
+                            widget.modelType = WidgetModelType.NULL;
                         } else {
                             ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_87_, 10);
-                            widget.modelType = 4;
+                            widget.modelType = WidgetModelType.ITEM;
                             widget.rotationX = class40_sub5_sub16.xan2d;
                             widget.rotationY = class40_sub5_sub16.zan2d;
                             widget.modelZoom = (100 * class40_sub5_sub16.zoom2d / i_88_);
@@ -1037,10 +1036,10 @@ public class Widget extends SubNode {
                             widget.modelId = i_87_;
                         }
                     } else if(i_3_ == 1201) {
-                        widget.modelType = 2;
+                        widget.modelType = WidgetModelType.NPC_CHATHEAD;
                         widget.modelId = Class67.anIntArray1588[--i];
                     } else if(i_3_ == 1202) {
-                        widget.modelType = 3;
+                        widget.modelType = WidgetModelType.LOCAL_PLAYER_CHATHEAD;
                         widget.modelId = Player.localPlayer.aClass30_3282.method374(-20874);
                     } else {
                         if(i_3_ != 1203) {
@@ -1073,7 +1072,7 @@ public class Widget extends SubNode {
         int type = widget.contentType;
         if(type >= 1 && type <= 100 || type >= 701 && type <= 800) {
             if(type == 1 && Class12.friendListStatus == 0) {
-                widget.disabledText = Class13.str_Loading_Friend_List;
+                widget.disabledText = English.loadingFriendList;
                 widget.actionType = 0;
             } else if(type == 1 && Class12.friendListStatus == 1) {
                 widget.disabledText = HuffmanEncoding.str_Connecting_to_friendserver;
@@ -1082,7 +1081,7 @@ public class Widget extends SubNode {
                 widget.actionType = 0;
                 widget.disabledText = PacketBuffer.str_Please_Wait;
             } else {
-                int fCount = Class40_Sub5_Sub17_Sub3.friendsCount;
+                int fCount = Item.friendsCount;
                 if(type > 700)
                     type -= 601;
                 else
@@ -1102,7 +1101,7 @@ public class Widget extends SubNode {
                 type -= 101;
             else
                 type -= 701;
-            int count = Class40_Sub5_Sub17_Sub3.friendsCount;
+            int count = Item.friendsCount;
             if(Class12.friendListStatus != 2)
                 count = 0;
             if(type >= count) {
@@ -1110,22 +1109,22 @@ public class Widget extends SubNode {
                 widget.actionType = 0;
             } else {
                 if(Class40_Sub7.friendWorlds[type] == 0) {
-                    widget.disabledText = (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{FloorDecoration.aClass1_610, Class27.aClass1_664}));
+                    widget.disabledText = (RSString.linkRSStrings(new RSString[]{FloorDecoration.aClass1_610, Class27.aClass1_664}));
                 } else if(Class40_Sub7.friendWorlds[type] < 5000) {
                     if(Class40_Sub7.friendWorlds[type] == Class13.worldid) {
-                        widget.disabledText = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Landscape.aClass1_1162, Class26.aClass1_634, HashTable.method334((Class40_Sub7.friendWorlds[type]), -1)})));
+                        widget.disabledText = (RSString.linkRSStrings((new RSString[]{Landscape.aClass1_1162, Class26.aClass1_634, HashTable.method334((Class40_Sub7.friendWorlds[type]))})));
                     } else {
-                        widget.disabledText = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{KeyFocusListener.aClass1_1283, Class26.aClass1_634, HashTable.method334((Class40_Sub7.friendWorlds[type]), -1)})));
+                        widget.disabledText = (RSString.linkRSStrings((new RSString[]{KeyFocusListener.aClass1_1283, Class26.aClass1_634, HashTable.method334((Class40_Sub7.friendWorlds[type]))})));
                     }
                 } else if(Class13.worldid == Class40_Sub7.friendWorlds[type]) {
-                    widget.disabledText = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Landscape.aClass1_1162, Cache.aClass1_333, HashTable.method334(-5000 + (Class40_Sub7.friendWorlds[type]), -1)})));
+                    widget.disabledText = (RSString.linkRSStrings((new RSString[]{Landscape.aClass1_1162, Cache.aClass1_333, HashTable.method334(-5000 + (Class40_Sub7.friendWorlds[type]))})));
                 } else {
-                    widget.disabledText = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{KeyFocusListener.aClass1_1283, Cache.aClass1_333, HashTable.method334(((Class40_Sub7.friendWorlds[type]) + -5000), -1)})));
+                    widget.disabledText = (RSString.linkRSStrings((new RSString[]{KeyFocusListener.aClass1_1283, Cache.aClass1_333, HashTable.method334(((Class40_Sub7.friendWorlds[type]) + -5000))})));
                 }
                 widget.actionType = 1;
             }
         } else if(type == 203) {
-            int count = Class40_Sub5_Sub17_Sub3.friendsCount;
+            int count = Item.friendsCount;
             if(Class12.friendListStatus != 2)
                 count = 0;
             widget.scrollHeight = 20 + 15 * count;
@@ -1147,7 +1146,7 @@ public class Widget extends SubNode {
                     widget.actionType = 0;
                     widget.disabledText = HuffmanEncoding.blank_string;
                 } else {
-                    widget.disabledText = Class60.method991(-111, WallDecoration.ignores[type]).method85(-4305);
+                    widget.disabledText = Class60.method991(-111, WallDecoration.ignores[type]).method85();
                     widget.actionType = 1;
                 }
             }
@@ -1160,7 +1159,7 @@ public class Widget extends SubNode {
                 Class64.anInt1511 = widget.spriteId;
                 Main.anInt1769 = widget.alternateSpriteId;
             }
-            if(!Class45.aClass30_1082.gender)
+            if(!LinkedList.aClass30_1082.gender)
                 widget.spriteId = Main.anInt1769;
             else
                 widget.spriteId = Class64.anInt1511;
@@ -1169,7 +1168,7 @@ public class Widget extends SubNode {
                 Main.anInt1769 = widget.alternateSpriteId;
                 Class64.anInt1511 = widget.spriteId;
             }
-            if(Class45.aClass30_1082.gender)
+            if(LinkedList.aClass30_1082.gender)
                 widget.spriteId = Main.anInt1769;
             else
                 widget.spriteId = Class64.anInt1511;
@@ -1177,26 +1176,45 @@ public class Widget extends SubNode {
             widget.rotationX = 150;
             widget.rotationZ = 0x7ff & (int) (256.0 * Math.sin((double) pulseCycle / 40.0));
             widget.modelId = 0;
-            widget.modelType = 5;
+            widget.modelType = WidgetModelType.PLAYER;
         } else if(type == 328) {
             widget.rotationX = 150;
             widget.rotationZ = 0x7ff & (int) (256.0 * Math.sin((double) pulseCycle / 40.0));
             widget.modelId = 1;
-            widget.modelType = 5;
+            widget.modelType = WidgetModelType.PLAYER;
         } else if(type == 600)
-            widget.disabledText = (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{HuffmanEncoding.aClass1_1550, Class22_Sub2.aClass1_1878}));
+            widget.disabledText = (RSString.linkRSStrings(new RSString[]{HuffmanEncoding.reportedName, Native.prefixYellowSTARV}));
         else if(type == 620) {
             if(InteractiveObject.playerRights >= 1) {
                 if(Class67.reportMutePlayer) {
                     widget.textColor = 0xff0000;
-                    widget.disabledText = ActorDefinition.str_Moderator_mute_option_ON;
+                    widget.disabledText = English.moderatorOptionMutePlayerFor48HoursON;
                 } else {
                     widget.textColor = 0xffffff;
-                    widget.disabledText = VertexNormal.str_Moderator_mute_option_OFF;
+                    widget.disabledText = English.moderatorOptionMutePlayerFor48HoursOFF;
                 }
             } else
                 widget.disabledText = HuffmanEncoding.blank_string;
         }
+    }
+
+    public static void drawScrollBar(int x, int y, int height, int scrollPosition, int scrollMaximum, int unknownArrayIndex) {
+        int length = (-32 + height) * height / scrollMaximum;
+        CacheIndex.aClass40_Sub5_Sub14_Sub2Array215[unknownArrayIndex].drawImage(x, y);
+        CacheIndex.aClass40_Sub5_Sub14_Sub2Array215[1].drawImage(x, y - (-height + 16));
+        Rasterizer.drawFilledRectangle(x, y + 16, 16, height + -32, Class55.anInt1299);
+        if(length < 8)
+            length = 8;
+        int scrollCurrent = (-32 + height - length) * scrollPosition / (-height + scrollMaximum);
+        Rasterizer.drawFilledRectangle(x, 16 + y + scrollCurrent, 16, length, Cache.anInt321);
+        Rasterizer.drawVerticalLine(x, 16 + y + scrollCurrent, length, HuffmanEncoding.anInt1559);
+        Rasterizer.drawVerticalLine(1 + x, scrollCurrent + y + 16, length, HuffmanEncoding.anInt1559);
+        Rasterizer.drawHorizontalLine(x, scrollCurrent + y + 16, 16, HuffmanEncoding.anInt1559);
+        Rasterizer.drawHorizontalLine(x, 17 + (y + scrollCurrent), 16, HuffmanEncoding.anInt1559);
+        Rasterizer.drawVerticalLine(x + 15, y + 16 + scrollCurrent, length, Class56.anInt1318);
+        Rasterizer.drawVerticalLine(x + 14, scrollCurrent + 17 + y, length - 1, Class56.anInt1318);
+        Rasterizer.drawHorizontalLine(x, length + (scrollCurrent + (15 + y)), 16, Class56.anInt1318);
+        Rasterizer.drawHorizontalLine(x + 1, 14 + (y + scrollCurrent + length), 15, Class56.anInt1318);
     }
 
     public void swapItems(int arg0, boolean arg1, int arg2) {
@@ -1213,7 +1231,7 @@ public class Widget extends SubNode {
 
     public void decodeIf1(Buffer buffer) {
         isIf3 = false;
-        type = buffer.getUnsignedByte();
+        type = WidgetType.get(buffer.getUnsignedByte());
         actionType = buffer.getUnsignedByte();
         contentType = buffer.getUnsignedShortBE();
         originalX = currentX = buffer.getShortBE(); // originalX
@@ -1253,15 +1271,15 @@ public class Widget extends SubNode {
                 }
             }
         }
-        if(type == 0) {
+        if(type == WidgetType.LAYER) {
             scrollHeight = buffer.getUnsignedShortBE();
             isHidden = buffer.getUnsignedByte() == 1;
         }
-        if(type == 1) {
+        if(type == WidgetType.UNKNOWN) {
             buffer.getUnsignedShortBE();
             buffer.getUnsignedByte();
         }
-        if(type == 2) {
+        if(type == WidgetType.INVENTORY) {
             items = new int[originalHeight * originalWidth];
             itemAmounts = new int[originalHeight * originalWidth];
             itemSwapable = buffer.getUnsignedByte()== 1;
@@ -1291,39 +1309,39 @@ public class Widget extends SubNode {
                 }
             }
         }
-        if(type == 3) {
+        if(type == WidgetType.RECTANGLE) {
             filled = buffer.getUnsignedByte() == 1;
         }
-        if(type == 4 || type == 1) {
+        if(type == WidgetType.TEXT || type == WidgetType.UNKNOWN) {
             xTextAlignment = buffer.getUnsignedByte();
             yTextAlignment = buffer.getUnsignedByte();
             lineHeight = buffer.getUnsignedByte();
             fontId = buffer.getUnsignedShortBE();
             textShadowed = buffer.getUnsignedByte() == 1;
         }
-        if(type == 4) {
+        if(type == WidgetType.TEXT) {
             disabledText = buffer.getRSString();
             alternateText = buffer.getRSString();
         }
-        if(type == 1 || type == 3 || type == 4) {
+        if(type == WidgetType.UNKNOWN || type == WidgetType.RECTANGLE || type == WidgetType.TEXT) {
             textColor = buffer.getIntBE();
         }
-        if(type == 3 || type == 4) {
+        if(type == WidgetType.RECTANGLE || type == WidgetType.TEXT) {
             alternateTextColor = buffer.getIntBE();
             hoveredTextColor = buffer.getIntBE();
             alternateHoveredTextColor = buffer.getIntBE();
         }
-        if(type == 5) {
+        if(type == WidgetType.GRAPHIC) {
             spriteId = buffer.getIntBE();
             alternateSpriteId = buffer.getIntBE();
         }
-        if(type == 6) {
-            modelType = 1;
+        if(type == WidgetType.MODEL) {
+            modelType = WidgetModelType.MODEL;
             modelId = buffer.getUnsignedShortBE();
             if(modelId == 0xFFFF) {
                 modelId = -1;
             }
-            anInt2651 = 1;
+            alternateModelType = WidgetModelType.MODEL;
             alternateModelId = buffer.getUnsignedShortBE();
             if(alternateModelId == 0xFFFF) {
                 alternateModelId = -1;
@@ -1340,7 +1358,7 @@ public class Widget extends SubNode {
             rotationX = buffer.getUnsignedShortBE();
             rotationZ = buffer.getUnsignedShortBE();
         }
-        if(type == 7) {
+        if(type == WidgetType.TEXT_INVENTORY) {
             items = new int[originalWidth * originalHeight];
             itemAmounts = new int[originalWidth * originalHeight];
             xTextAlignment = buffer.getUnsignedByte();
@@ -1358,10 +1376,10 @@ public class Widget extends SubNode {
                 }
             }
         }
-        if(type == 8) {
+        if(type == WidgetType.IF1_TOOLTIP) {
             disabledText = buffer.getRSString();
         }
-        if(actionType == 2 || type == 2) {
+        if(actionType == 2 || type == WidgetType.INVENTORY) {
             targetVerb = buffer.getRSString();
             spellName = buffer.getRSString();
             clickMask = buffer.getUnsignedShortBE();
@@ -1386,7 +1404,7 @@ public class Widget extends SubNode {
     }
 
     public ImageRGB method638(byte arg0, int arg1) {
-        Class40_Sub13.aBoolean2177 = false;
+        FramemapDefinition.aBoolean2177 = false;
         if(arg1 < 0 || imageY.length <= arg1) {
             return null;
         }
@@ -1401,15 +1419,15 @@ public class Widget extends SubNode {
         }
         class40_sub5_sub14_sub4 = Class48.method927(0, Class40_Sub5_Sub15.aCacheIndex_2779, true, i);
         if(class40_sub5_sub14_sub4 == null) {
-            Class40_Sub13.aBoolean2177 = true;
+            FramemapDefinition.aBoolean2177 = true;
         } else {
-            Cache.aClass9_326.put(-7208, (long) i, class40_sub5_sub14_sub4);
+            Cache.aClass9_326.put((long) i, class40_sub5_sub14_sub4);
         }
         return class40_sub5_sub14_sub4;
     }
 
     public ImageRGB method643(int arg0, boolean arg1) {
-        Class40_Sub13.aBoolean2177 = false;
+        FramemapDefinition.aBoolean2177 = false;
         int i;
         if(arg1) {
             i = alternateSpriteId;
@@ -1428,9 +1446,9 @@ public class Widget extends SubNode {
         }
         class40_sub5_sub14_sub4 = Class48.method927(0, Class40_Sub5_Sub15.aCacheIndex_2779, true, i);
         if(class40_sub5_sub14_sub4 == null) {
-            Class40_Sub13.aBoolean2177 = true;
+            FramemapDefinition.aBoolean2177 = true;
         } else {
-            Cache.aClass9_326.put(-7208, (long) i, class40_sub5_sub14_sub4);
+            Cache.aClass9_326.put((long) i, class40_sub5_sub14_sub4);
         }
         return class40_sub5_sub14_sub4;
     }
@@ -1438,12 +1456,12 @@ public class Widget extends SubNode {
     public void decodeIf3(Buffer buffer) {
         buffer.getUnsignedByte();
         isIf3 = true;
-        type = buffer.getUnsignedByte();
+        type = WidgetType.get(buffer.getUnsignedByte());
         contentType = buffer.getUnsignedShortBE();
         originalX = currentX = buffer.getShortBE();
         originalY = currentY = buffer.getShortBE();
         originalWidth = buffer.getUnsignedShortBE();
-        if(type == 9) {
+        if(type == WidgetType.LINE) {
             originalHeight = buffer.getShortBE();
         } else {
             originalHeight = buffer.getUnsignedShortBE();
@@ -1454,18 +1472,18 @@ public class Widget extends SubNode {
         }
         isHidden = buffer.getUnsignedByte() == 1;
         aBoolean2688 = buffer.getUnsignedByte() == 1;
-        if(type == 0) {
+        if(type == WidgetType.LAYER) {
             anInt2746 = buffer.getUnsignedShortBE();
             scrollPosition = buffer.getUnsignedShortBE();
         }
-        if(type == 5) {
+        if(type == WidgetType.GRAPHIC) {
             spriteId = buffer.getIntBE();
             anInt2751 = buffer.getUnsignedShortBE();
             aBoolean2641 = buffer.getUnsignedByte() == 1;
             opacity = buffer.getUnsignedByte();
         }
-        if(type == 6) {
-            modelType = 1;
+        if(type == WidgetType.MODEL) {
+            modelType = WidgetModelType.MODEL;
             modelId = buffer.getUnsignedShortBE();
             if(modelId == 65535) {
                 modelId = -1;
@@ -1482,7 +1500,7 @@ public class Widget extends SubNode {
             }
             orthogonal = buffer.getUnsignedByte() == 1;
         }
-        if(type == 4) {
+        if(type == WidgetType.TEXT) {
             fontId = buffer.getUnsignedShortBE();
             disabledText = buffer.getRSString();
             lineHeight = buffer.getUnsignedByte();
@@ -1491,12 +1509,12 @@ public class Widget extends SubNode {
             textShadowed = buffer.getUnsignedByte() == 1;
             textColor = buffer.getIntBE();
         }
-        if(type == 3) {
+        if(type == WidgetType.RECTANGLE) {
             textColor = buffer.getIntBE();
             filled = buffer.getUnsignedByte() == 1;
             opacity = buffer.getUnsignedByte();
         }
-        if(type == 9) {
+        if(type == WidgetType.LINE) {
             buffer.getUnsignedByte();
             textColor = buffer.getIntBE();
         }
@@ -1534,68 +1552,68 @@ public class Widget extends SubNode {
     }
 
     public Model method646(byte arg0, AnimationSequence arg1, int arg2, boolean arg3, Class30 arg4) {
-        Class40_Sub13.aBoolean2177 = false;
-        int i;
+        FramemapDefinition.aBoolean2177 = false;
+        WidgetModelType modelType;
         int i_11_;
         if(arg3) {
             i_11_ = alternateModelId;
-            i = anInt2651;
+            modelType = alternateModelType;
         } else {
-            i = modelType;
+            modelType = this.modelType;
             i_11_ = modelId;
         }
-        if(i == 0) {
+        if(modelType == WidgetModelType.NULL) {
             return null;
         }
-        if(i == 1 && i_11_ == -1) {
+        if(modelType == WidgetModelType.MODEL && i_11_ == -1) {
             return null;
         }
         if(arg0 <= 25) {
             aBoolean2688 = true;
         }
-        Model class40_sub5_sub17_sub5 = ((Model) WallDecoration.aClass9_1264.get((long) ((i << 16) + i_11_), (byte) 59));
+        Model class40_sub5_sub17_sub5 = ((Model) WallDecoration.aClass9_1264.get((long) ((modelType.ordinal() << 16) + i_11_), (byte) 59));
         if(class40_sub5_sub17_sub5 == null) {
-            if(i == 1) {
+            if(modelType == WidgetModelType.MODEL) {
                 class40_sub5_sub17_sub5 = Model.getModel(Cache.aCacheIndex_329, i_11_, 0);
                 if(class40_sub5_sub17_sub5 == null) {
-                    Class40_Sub13.aBoolean2177 = true;
+                    FramemapDefinition.aBoolean2177 = true;
                     return null;
                 }
                 class40_sub5_sub17_sub5.createBones();
                 class40_sub5_sub17_sub5.applyLighting(64, 768, -50, -10, -50, true);
             }
-            if(i == 2) {
-                class40_sub5_sub17_sub5 = ActorDefinition.getDefinition((byte) -101, i_11_).getHeadModel((byte) 122);
+            if(modelType == WidgetModelType.NPC_CHATHEAD) {
+                class40_sub5_sub17_sub5 = ActorDefinition.getDefinition(i_11_).getHeadModel();
                 if(class40_sub5_sub17_sub5 == null) {
-                    Class40_Sub13.aBoolean2177 = true;
+                    FramemapDefinition.aBoolean2177 = true;
                     return null;
                 }
                 class40_sub5_sub17_sub5.createBones();
                 class40_sub5_sub17_sub5.applyLighting(64, 768, -50, -10, -50, true);
             }
-            if(i == 3) {
+            if(modelType == WidgetModelType.LOCAL_PLAYER_CHATHEAD) {
                 if(arg4 == null) {
                     return null;
                 }
                 class40_sub5_sub17_sub5 = arg4.method379(30);
                 if(class40_sub5_sub17_sub5 == null) {
-                    Class40_Sub13.aBoolean2177 = true;
+                    FramemapDefinition.aBoolean2177 = true;
                     return null;
                 }
                 class40_sub5_sub17_sub5.createBones();
                 class40_sub5_sub17_sub5.applyLighting(64, 768, -50, -10, -50, true);
             }
-            if(i == 4) {
+            if(modelType == WidgetModelType.ITEM) {
                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_11_, 10);
                 class40_sub5_sub17_sub5 = class40_sub5_sub16.asGroundStack(false, 10);
                 if(class40_sub5_sub17_sub5 == null) {
-                    Class40_Sub13.aBoolean2177 = true;
+                    FramemapDefinition.aBoolean2177 = true;
                     return null;
                 }
                 class40_sub5_sub17_sub5.createBones();
                 class40_sub5_sub17_sub5.applyLighting(64 + (class40_sub5_sub16.ambient), 768 + (class40_sub5_sub16.contrast), -50, -10, -50, true);
             }
-            WallDecoration.aClass9_1264.put(-7208, (long) ((i << 16) + i_11_), class40_sub5_sub17_sub5);
+            WallDecoration.aClass9_1264.put((long) ((modelType.ordinal() << 16) + i_11_), class40_sub5_sub17_sub5);
         }
         if(arg1 != null) {
             class40_sub5_sub17_sub5 = arg1.method598(arg2, class40_sub5_sub17_sub5, true);
@@ -1604,7 +1622,7 @@ public class Widget extends SubNode {
     }
 
     public TypeFace method647(byte arg0) {
-        Class40_Sub13.aBoolean2177 = false;
+        FramemapDefinition.aBoolean2177 = false;
         if(fontId == 65535) {
             return null;
         }
@@ -1615,11 +1633,11 @@ public class Widget extends SubNode {
         if(class40_sub5_sub14_sub1 != null) {
             return class40_sub5_sub14_sub1;
         }
-        class40_sub5_sub14_sub1 = Class40_Sub5_Sub17_Sub1.method760(0, (byte) 36, (Class40_Sub5_Sub15.aCacheIndex_2779), fontId);
+        class40_sub5_sub14_sub1 = TypeFace.getFont((Class40_Sub5_Sub15.aCacheIndex_2779), 0, fontId);
         if(class40_sub5_sub14_sub1 == null) {
-            Class40_Sub13.aBoolean2177 = true;
+            FramemapDefinition.aBoolean2177 = true;
         } else {
-            Class67.aClass9_1582.put(-7208, (long) fontId, class40_sub5_sub14_sub1);
+            Class67.aClass9_1582.put((long) fontId, class40_sub5_sub14_sub1);
         }
         return class40_sub5_sub14_sub1;
     }

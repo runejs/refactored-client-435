@@ -7,6 +7,7 @@ import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.util.Signlink;
@@ -16,47 +17,15 @@ import java.io.DataInputStream;
 import java.net.URL;
 
 public abstract class CacheIndex {
-    public static int anInt211;
-    public static int anInt214;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array215;
-    public static int anInt218;
     public static long aLong219 = 0L;
-    public static int anInt222;
-    public static int anInt223;
-    public static int[] anIntArray225 = new int[1000];
-    public static int anInt226;
-    public static int anInt228;
     public static Cache modelCache = new Cache(260);
-    public static int anInt230;
-    public static int anInt231;
-    public static int anInt232;
-    public static int anInt234;
-    public static int anInt235;
-    public static int anInt237;
-    public static int anInt238;
-    public static int anInt240;
-    public static int anInt241;
-    public static int anInt242;
-    public static int anInt244;
-    public static int anInt245;
-    public static int anInt246;
-    public static int anInt247;
-    public static int anInt248;
-    public static int anInt250;
-    public static int anInt251;
-    public static int anInt253;
     public static int anInt255;
     public static RSString aClass1_256 = RSString.CreateString("backbase2");
     public static RSString aClass1_257 = RSString.CreateString("Please try again)3");
     public static RSString aClass1_258 = aClass1_257;
-    public static RSString aClass1_259;
     public static boolean aBoolean260 = false;
     public static int[][][] anIntArrayArrayArray262;
-    public static int anInt263;
-
-    static {
-        aClass1_259 = (RSString.CreateString("Sie befinden sich in einem Mitglieder)2Gebiet(Q"));
-    }
 
     public byte[][] aByteArrayArray212;
     public int anInt216;
@@ -81,7 +50,6 @@ public abstract class CacheIndex {
     }
 
     public static void method169(String arg0, byte arg1, Throwable arg2) {
-        anInt248++;
         do {
             try {
                 String string = "";
@@ -114,21 +82,17 @@ public abstract class CacheIndex {
         } while(false);
     }
 
-    public static void method180(int arg0) {
-        aClass1_259 = null;
+    public static void method180() {
         aClass40_Sub5_Sub14_Sub2Array215 = null;
         aClass1_256 = null;
-        if(arg0 != 0)
-            anIntArray225 = null;
         modelCache = null;
         aClass1_257 = null;
-        anIntArray225 = null;
+        Player.deregisterActorIndices = null;
         anIntArrayArrayArray262 = null;
         aClass1_258 = null;
     }
 
     public static void method184(byte[] arg0, int arg1) {
-        anInt247++;
         Buffer class40_sub1 = new Buffer(arg0);
         class40_sub1.currentPosition = -2 + arg0.length;
         UnderlayDefinition.anInt2581 = class40_sub1.getUnsignedShortBE();
@@ -176,17 +140,14 @@ public abstract class CacheIndex {
         }
     }
 
-    public static void method188(boolean arg0) {
+    public static void method188() {
         Class40_Sub5_Sub6.aClass9_2439.method235((byte) 95);
         Class42.aClass9_998.method235((byte) -90);
-        if(arg0)
-            anInt211++;
     }
 
     public static void method189(boolean arg0) {
-        anInt250++;
         if(arg0)
-            anIntArray225 = null;
+            Player.deregisterActorIndices = null;
         WallDecoration.aClass9_1247.method235((byte) 59);
     }
 
@@ -194,16 +155,14 @@ public abstract class CacheIndex {
         if(arg2 != 1)
             method186(-26, 53);
         arg1 = arg1.toLowerCase();
-        anInt231++;
         arg0 = arg0.toLowerCase();
-        int i = aClass42_254.method882(arg1.method76(), arg2 + -126);
-        int i_0_ = aClass42Array217[i].method882(arg0.method76(), -112);
+        int i = aClass42_254.method882(arg1.method76());
+        int i_0_ = aClass42Array217[i].method882(arg0.method76());
 
         return getFile(i_0_, i);
     }
 
     public void method171(int arg0, int arg1) {
-        anInt242++;
         int i = 0;
         if(arg0 == 1) {
             for(/**/; ((i < aByteArrayArrayArray249[arg1].length)); i++)
@@ -218,7 +177,6 @@ public abstract class CacheIndex {
     }
 
     public boolean loaded(int arg0, int arg2) {
-        anInt234++;
         if(arg0 < 0 || (arg0 >= aByteArrayArrayArray249.length) || aByteArrayArrayArray249[arg0] == null || arg2 < 0 || arg2 >= aByteArrayArrayArray249[arg0].length)
             return false;
         if(aByteArrayArrayArray249[arg0][arg2] != null)
@@ -230,19 +188,15 @@ public abstract class CacheIndex {
     }
 
     public void method174(int arg0, byte arg1) {
-        if(arg1 == 2)
-            anInt228++;
     }
 
     public int method175(int arg0) {
         if(arg0 > -7)
             aBoolean260 = true;
-        anInt232++;
         return aByteArrayArrayArray249.length;
     }
 
     public byte[] method176(int arg0, int arg1, int[] arg2) {
-        anInt246++;
         if(arg0 < 0 || (arg0 >= aByteArrayArrayArray249.length) || aByteArrayArrayArray249[arg0] == null || arg1 < 0 || arg1 >= aByteArrayArrayArray249[arg0].length)
             return null;
         if(aByteArrayArrayArray249[arg0][arg1] == null) {
@@ -263,14 +217,12 @@ public abstract class CacheIndex {
     public void method177(int arg0, int arg1) {
         if(arg0 < 1)
             method181(22, null);
-        anInt240++;
     }
 
     public void method178(byte[] arg1) {
         anInt216 = Class40_Sub2.method525(arg1, arg1.length, (byte) -68);
         Buffer class40_sub1 = new Buffer(Landscape.method931(arg1));
         int i = class40_sub1.getUnsignedByte();
-        anInt238++;
         if(i == 5) {
             int i_1_ = 0;
             int i_2_ = class40_sub1.getUnsignedByte();
@@ -328,15 +280,12 @@ public abstract class CacheIndex {
         }
     }
 
-    public int method179(int arg0, int arg1, RSString arg2) {
-        int i = 107 % ((-47 - arg0) / 56);
+    public int method179(int arg1, RSString arg2) {
         arg2 = arg2.toLowerCase();
-        anInt214++;
-        return aClass42Array217[arg1].method882(arg2.method76(), -70);
+        return aClass42Array217[arg1].method882(arg2.method76());
     }
 
     public boolean method181(int arg0, int[] arg2) {
-        anInt222++;
         if(aByteArrayArray212[arg0] == null)
             return false;
         int i = anIntArray261[arg0];
@@ -399,8 +348,7 @@ public abstract class CacheIndex {
         return true;
     }
 
-    public byte[] method182(int arg0, int arg1, int arg2) {
-        anInt226++;
+    public byte[] method182(int arg0, int arg2) {
         if(arg2 < 0 || (arg2 >= aByteArrayArrayArray249.length) || aByteArrayArrayArray249[arg2] == null || arg0 < 0 || aByteArrayArrayArray249[arg2].length <= arg0)
             return null;
         if(aByteArrayArrayArray249[arg2][arg0] == null) {
@@ -412,21 +360,16 @@ public abstract class CacheIndex {
                     return null;
             }
         }
-        int i = 44 % ((-59 - arg1) / 42);
         byte[] is = aByteArrayArrayArray249[arg2][arg0];
         return is;
     }
 
-    public int method183(int arg0, RSString arg1) {
-        if(arg0 != 0)
-            method183(58, null);
-        anInt237++;
+    public int getHash(RSString arg1) {
         arg1 = arg1.toLowerCase();
-        return aClass42_254.method882(arg1.method76(), arg0 + -80);
+        return aClass42_254.method882(arg1.method76());
     }
 
     public boolean method185(byte arg0) {
-        anInt230++;
         boolean bool = true;
         if(arg0 < 11)
             return true;
@@ -442,7 +385,6 @@ public abstract class CacheIndex {
     }
 
     public boolean method186(int arg0, int arg1) {
-        anInt253++;
         if(aByteArrayArray212[arg1] != null)
             return true;
         method177(74, arg1);
@@ -454,7 +396,6 @@ public abstract class CacheIndex {
     }
 
     public byte[] method187(int arg0) {
-        anInt263++;
         if(aByteArrayArrayArray249.length == 1)
             return getFile(arg0, 0);
         if(aByteArrayArrayArray249[arg0].length == 1)
@@ -462,15 +403,11 @@ public abstract class CacheIndex {
         throw new RuntimeException();
     }
 
-    public int method190(int arg0, byte arg1) {
-        anInt235++;
-        if(arg1 < 4)
-            return 17;
+    public int method190(int arg0) {
         return aByteArrayArrayArray249[arg0].length;
     }
 
     public void method191(int arg0) {
-        anInt218++;
         for(int i = 0; i < aByteArrayArrayArray249.length; i++) {
             if(aByteArrayArrayArray249[i] != null) {
                 for(int i_48_ = 0; ((i_48_ < aByteArrayArrayArray249[i].length)); i_48_++)
@@ -484,36 +421,32 @@ public abstract class CacheIndex {
     public int[] method192(int arg0, boolean arg1) {
         if(!arg1)
             return null;
-        anInt241++;
         return anIntArrayArray243[arg0];
     }
 
     public byte[] method193(byte arg0, int arg1) {
-        anInt244++;
         if(aByteArrayArrayArray249.length == 1)
-            return method182(arg1, -116, 0);
+            return method182(arg1, 0);
         if(aByteArrayArrayArray249[arg1].length == 1)
-            return method182(0, -124, arg1);
+            return method182(0, arg1);
         if(arg0 < 17)
             aClass1_257 = null;
         throw new RuntimeException();
     }
 
     public boolean method194(RSString arg0, RSString arg1, int arg2) {
-        anInt251++;
         if(arg2 != -1234)
             anIntArray261 = null;
         arg0 = arg0.toLowerCase();
         arg1 = arg1.toLowerCase();
-        int i = aClass42_254.method882(arg0.method76(), -66);
-        int i_49_ = aClass42Array217[i].method882(arg1.method76(), arg2 ^ 0x483);
+        int i = aClass42_254.method882(arg0.method76());
+        int i_49_ = aClass42Array217[i].method882(arg1.method76());
         return loaded(i, i_49_);
     }
 
     public void method195(int arg0, RSString arg1) {
         arg1 = arg1.toLowerCase();
-        int i = aClass42_254.method882(arg1.method76(), -69);
-        anInt223++;
+        int i = aClass42_254.method882(arg1.method76());
         if(arg0 == 0 && i >= 0)
             method174(i, (byte) 2);
     }

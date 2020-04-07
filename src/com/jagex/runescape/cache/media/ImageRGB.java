@@ -1,5 +1,6 @@
 package com.jagex.runescape.cache.media;
 
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.media.Rasterizer;
 
 import java.awt.*;
@@ -228,6 +229,14 @@ public class ImageRGB extends Rasterizer {
             rasterizerPixel += rasterizerPixelOffset;
             pixel += pixelOffset;
         }
+    }
+
+    public static boolean spriteExists(int arg0, int arg1, CacheIndex cacheIndex) {
+        byte[] is = cacheIndex.getFile(arg0, arg1);
+        if(is == null)
+            return false;
+        CacheIndex.method184(is, 0);
+        return true;
     }
 
     public void method716(int arg0, int arg1, int arg2, int arg3, int arg4) {
@@ -742,30 +751,30 @@ public class ImageRGB extends Rasterizer {
         Rasterizer.createRasterizer(pixels, image_width, image_height);
     }
 
-    public void method724(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int[] arg8, int[] arg9) {
+    public void shapeImageToPixels(int arg0, int y, int width, int height, int arg4, int arg5, int k1, int zoom, int[] arg8, int[] arg9) {
         try {
-            int i = -arg2 / 2;
-            int i_122_ = -arg3 / 2;
-            int i_123_ = (int) (Math.sin((double) arg6 / 326.11) * 65536.0);
-            int i_124_ = (int) (Math.cos((double) arg6 / 326.11) * 65536.0);
-            i_123_ = i_123_ * arg7 >> 8;
-            i_124_ = i_124_ * arg7 >> 8;
-            int i_125_ = (arg4 << 16) + (i_122_ * i_123_ + i * i_124_);
-            int i_126_ = (arg5 << 16) + (i_122_ * i_124_ - i * i_123_);
-            int i_127_ = arg0 + arg1 * Rasterizer.width;
-            for(arg1 = 0; arg1 < arg3; arg1++) {
-                int i_128_ = arg8[arg1];
-                int i_129_ = i_127_ + i_128_;
-                int i_130_ = i_125_ + i_124_ * i_128_;
-                int i_131_ = i_126_ - i_123_ * i_128_;
-                for(arg0 = -arg9[arg1]; arg0 < 0; arg0++) {
+            int centerX = -width / 2;
+            int centerY = -height / 2;
+            int sine = (int) (Math.sin((double) k1 / 326.11) * 65536.0);
+            int cosine = (int) (Math.cos((double) k1 / 326.11) * 65536.0);
+            sine = sine * zoom >> 8;
+            cosine = cosine * zoom >> 8;
+            int i_125_ = (arg4 << 16) + (centerY * sine + centerX * cosine);
+            int i_126_ = (arg5 << 16) + (centerY * cosine - centerX * sine);
+            int destinationOffset = arg0 + y * Rasterizer.width;
+            for(y = 0; y < height; y++) {
+                int i_128_ = arg8[y];
+                int i_129_ = destinationOffset + i_128_;
+                int i_130_ = i_125_ + cosine * i_128_;
+                int i_131_ = i_126_ - sine * i_128_;
+                for(arg0 = -arg9[y]; arg0 < 0; arg0++) {
                     Rasterizer.pixels[i_129_++] = (pixels[(i_130_ >> 16) + (i_131_ >> 16) * image_width]);
-                    i_130_ += i_124_;
-                    i_131_ -= i_123_;
+                    i_130_ += cosine;
+                    i_131_ -= sine;
                 }
-                i_125_ += i_123_;
-                i_126_ += i_124_;
-                i_127_ += Rasterizer.width;
+                i_125_ += sine;
+                i_126_ += cosine;
+                destinationOffset += Rasterizer.width;
             }
         } catch(Exception exception) {
             /* empty */

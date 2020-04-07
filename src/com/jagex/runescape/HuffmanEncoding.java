@@ -7,36 +7,36 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.Widget;
-import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.frame.ChatBox;
+import com.jagex.runescape.input.KeyFocusListener;
+import com.jagex.runescape.language.English;
+import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.Wall;
 
 public class HuffmanEncoding {
     public static RSString blank_string = RSString.CreateString("");
     public static Class68 aClass68_1541;
-    public static RSString lastItemSearchInput = blank_string;
-    public static RSString inputInputMessage = blank_string;
     public static RSString aClass1_1544 = RSString.CreateString("Side panel redrawn");
     public static int anInt1545 = 0;
     public static RSString aClass1_1546 = RSString.CreateString("Icons redrawn");
-    public static int anInt1548 = -1;
-    public static RSString aClass1_1549 = RSString.CreateString("leuchten1:");
-    public static RSString aClass1_1550 = blank_string;
+    public static int reportAbuseInterfaceID = -1;
+    public static RSString reportedName = blank_string;
     public static RSString str_Connecting_to_friendserver = RSString.CreateString("Connecting to friendserver");
     public static RSString aClass1_1555 = RSString.CreateString("Remove");
     public static RSString chatboxInput = blank_string;
-    public static RSString aClass1_1558 = RSString.CreateString("leuchten2:");
     public static int anInt1559 = 7759444;
     public static int openScreenWidgetId = -1;
     public static RSString aClass1_1563 = blank_string;
     public static int[] anIntArray1564 = (new int[]{-1, -1, -1, -1, -1, -1, -1, -1, 85, 80, 84, -1, 91, -1, -1, -1, 81, 82, 86, -1, -1, -1, -1, -1, -1, -1, -1, 0, -1, -1, -1, -1, 83, 104, 105, 103, 102, 96, 98, 97, 99, -1, -1, -1, -1, -1, -1, -1, 25, 16, 17, 18, 19, 20, 21, 22, 23, 24, -1, -1, -1, -1, -1, -1, -1, 48, 68, 66, 50, 34, 51, 52, 53, 39, 54, 55, 56, 70, 69, 40, 41, 32, 35, 49, 36, 38, 67, 33, 65, 37, 64, -1, -1, -1, -1, -1, 228, 231, 227, 233, 224, 219, 225, 230, 226, 232, 89, 87, -1, 88, 229, 90, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, -1, -1, -1, 101, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1});
-    public static RSString aClass1_1565 = blank_string;
-    public static int[] chatTypes = new int[100];
+    public static RSString chatMessage = blank_string;
     public static RSString aClass1_1572 = aClass1_1555;
 
     public int[] chatDecryptKeys;
@@ -110,58 +110,51 @@ public class HuffmanEncoding {
 
     }
 
-    public static void method1022(int arg0) {
-
-        aClass1_1565 = null;
+    public static void method1022() {
+        chatMessage = null;
         aClass68_1541 = null;
-        aClass1_1558 = null;
         aClass1_1555 = null;
         aClass1_1563 = null;
         aClass1_1544 = null;
-        lastItemSearchInput = null;
-        inputInputMessage = null;
-        chatTypes = null;
+        ChatBox.lastItemSearchInput = null;
+        ChatBox.inputMessage = null;
+        ChatBox.chatTypes = null;
         aClass1_1546 = null;
-        aClass1_1550 = null;
+        reportedName = null;
         str_Connecting_to_friendserver = null;
-        aClass1_1549 = null;
         aClass1_1572 = null;
         anIntArray1564 = null;
-        int i = -11 / ((-68 - arg0) / 55);
         blank_string = null;
         chatboxInput = null;
-
     }
 
     public static RSString method1024(boolean arg0, byte arg1, int arg2) {
         if(arg1 > -30)
             str_Connecting_to_friendserver = null;
-        return PacketBuffer.method521(arg0, (byte) 8, 10, arg2);
+        return PacketBuffer.method521(arg0, 10, arg2);
     }
 
-    public static void method1025(int arg0, int arg1, int arg2, int arg3, ActorDefinition arg4) {
-        if(ActorDefinition.anInt2394 < 400) {
-            if(arg4.childrenIds != null)
-                arg4 = arg4.getChildDefinition(-1);
-            if(arg4 != null && arg4.isClickable) {
-                RSString class1 = arg4.name;
-                if(arg4.combatLevel != arg0)
-                    class1 = (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{class1, (SceneTile.method536((Player.localPlayer.combatLevel), arg4.combatLevel, arg0 + -99)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(arg4.combatLevel, -1), Class51.aClass1_1199})));
-                if(Class8.anInt301 == 1) {
-                    Node.anInt927++;
-                    OverlayDefinition.method558(arg3, Main.aClass1_1763, arg2, -501, arg1, 49, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{Npc.aClass1_3295, SpotAnimDefinition.aClass1_2306, class1}))));
-                } else if(Main.anInt1773 == 1) {
-                    if((0x2 & ItemDefinition.anInt2815) == 2) {
-                        OverlayDefinition.method558(arg3, Class38_Sub1.aClass1_1918, arg2, arg0 + -501, arg1, 21, (Class40_Sub5_Sub17_Sub6.method832((new RSString[]{FloorDecoration.aClass1_611, SpotAnimDefinition.aClass1_2306, class1}))));
+    public static void processNpcMenuOptions(ActorDefinition actorDefinition, int x, int y, int index) {
+        if(ActorDefinition.menuActionRow < 400) {
+            if(actorDefinition.childrenIds != null)
+                actorDefinition = actorDefinition.getChildDefinition(-1);
+            if(actorDefinition != null && actorDefinition.isClickable) {
+                RSString class1 = actorDefinition.name;
+                if(actorDefinition.combatLevel != 0)
+                    class1 = (RSString.linkRSStrings((new RSString[]{class1, (SceneTile.getCombatLevelColour((Player.localPlayer.combatLevel), actorDefinition.combatLevel, -99)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(actorDefinition.combatLevel), Class51.aClass1_1199})));
+                if(Class8.itemSelected == 1) {
+                    OverlayDefinition.addActionRow(Main.aClass1_1763, index, x, y, 49, (RSString.linkRSStrings((new RSString[]{Npc.aClass1_3295, SpotAnimDefinition.aClass1_2306, class1}))));
+                } else if(Main.widgetSelected == 1) {
+                    if((0x2 & ItemDefinition.selectedMask) == 2) {
+                        OverlayDefinition.addActionRow(Class38_Sub1.aClass1_1918, index, x, y, 21, (RSString.linkRSStrings((new RSString[]{FloorDecoration.aClass1_611, SpotAnimDefinition.aClass1_2306, class1}))));
                     }
                 } else {
-                    RSString[] class1s = arg4.options;
-                    Class52.anInt1240++;
+                    RSString[] class1s = actorDefinition.options;
                     if(Class60.aBoolean1402)
                         class1s = Class56.method968(class1s, false);
                     if(class1s != null) {
                         for(int i = 4; i >= 0; i--) {
-                            if(class1s[i] != null && !class1s[i].equalsIgnoreCase((Class38_Sub1.aClass1_1917), true)) {
+                            if(class1s[i] != null && !class1s[i].equalsIgnoreCase((Class38_Sub1.aClass1_1917))) {
                                 int i_3_ = 0;
                                 if(i == 0)
                                     i_3_ = 12;
@@ -173,15 +166,15 @@ public class HuffmanEncoding {
                                     i_3_ = 34;
                                 if(i == 4)
                                     i_3_ = 20;
-                                OverlayDefinition.method558(arg3, class1s[i], arg2, arg0 + -501, arg1, i_3_, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{KeyFocusListener.aClass1_1283, class1})));
+                                OverlayDefinition.addActionRow(class1s[i], index, x, y, i_3_, (RSString.linkRSStrings(new RSString[]{KeyFocusListener.aClass1_1283, class1})));
                             }
                         }
                     }
                     if(class1s != null) {
                         for(int i = 4; i >= 0; i--) {
-                            if(class1s[i] != null && class1s[i].equalsIgnoreCase((Class38_Sub1.aClass1_1917), true)) {
+                            if(class1s[i] != null && class1s[i].equalsIgnoreCase((Class38_Sub1.aClass1_1917))) {
                                 int i_4_ = 0;
-                                if(((Player.localPlayer.combatLevel) < arg4.combatLevel))
+                                if(((Player.localPlayer.combatLevel) < actorDefinition.combatLevel))
                                     i_4_ = 2000;
                                 int i_5_ = 0;
                                 if(i == 0)
@@ -194,11 +187,11 @@ public class HuffmanEncoding {
                                     i_5_ = i_4_ + 34;
                                 if(i == 4)
                                     i_5_ = 20 + i_4_;
-                                OverlayDefinition.method558(arg3, class1s[i], arg2, arg0 ^ ~0x1f4, arg1, i_5_, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{KeyFocusListener.aClass1_1283, class1})));
+                                OverlayDefinition.addActionRow(class1s[i], index, x, y, i_5_, (RSString.linkRSStrings(new RSString[]{KeyFocusListener.aClass1_1283, class1})));
                             }
                         }
                     }
-                    OverlayDefinition.method558(arg3, Class40_Sub5_Sub15.prefix_examine, arg2, -501, arg1, 1001, (Class40_Sub5_Sub17_Sub6.method832(new RSString[]{KeyFocusListener.aClass1_1283, class1})));
+                    OverlayDefinition.addActionRow(English.examine, index, x, y, 1001, (RSString.linkRSStrings(new RSString[]{KeyFocusListener.aClass1_1283, class1})));
                 }
             }
         }
@@ -206,15 +199,15 @@ public class HuffmanEncoding {
 
     public static boolean method1027(int arg0, int arg1) {
         if(arg1 != -58)
-            method1022(68);
+            method1022();
         return arg0 >= 48 && arg0 <= 57;
     }
 
     public static ImageRGB method1028(CacheIndex arg0, RSString arg1, byte arg2, RSString arg3) {
-        int i = arg0.method183(0, arg1);
-        int i_13_ = arg0.method179(arg2 ^ ~0x6f, i, arg3);
+        int i = arg0.getHash(arg1);
+        int i_13_ = arg0.method179(i, arg3);
         if(arg2 != 21)
-            chatTypes = null;
+            ChatBox.chatTypes = null;
         return Class48.method927(i_13_, arg0, true, i);
     }
 
@@ -244,7 +237,7 @@ public class HuffmanEncoding {
                 if(i_18_ == 2)
                     i_16_ = Wall.anIntArray354[is[i_14_++]];
                 if(i_18_ == 3)
-                    i_16_ = (Class40_Sub5_Sub17_Sub3.anIntArray3051[is[i_14_++]]);
+                    i_16_ = (Item.anIntArray3051[is[i_14_++]]);
                 if(i_18_ == 17)
                     i_17_ = 3;
                 if(i_18_ == 4) {
@@ -252,7 +245,7 @@ public class HuffmanEncoding {
                     i_19_ += is[i_14_++];
                     Widget widget = Widget.forId(i_19_);
                     int i_20_ = is[i_14_++];
-                    if(i_20_ != -1 && (!ItemDefinition.forId(i_20_, 10).members || Class22.aBoolean541)) {
+                    if(i_20_ != -1 && (!ItemDefinition.forId(i_20_, 10).members || Class22.membersWorld)) {
                         for(int i_21_ = 0; ((i_21_ < widget.items.length)); i_21_++) {
                             if(1 + i_20_ == (widget.items[i_21_]))
                                 i_16_ += (widget.itemAmounts[i_21_]);
@@ -278,7 +271,7 @@ public class HuffmanEncoding {
                     i_23_ += is[i_14_++];
                     Widget widget = Widget.forId(i_23_);
                     int i_24_ = is[i_14_++];
-                    if(i_24_ != -1 && (!ItemDefinition.forId(i_24_, 10).members || Class22.aBoolean541)) {
+                    if(i_24_ != -1 && (!ItemDefinition.forId(i_24_, 10).members || Class22.membersWorld)) {
                         for(int i_25_ = 0; (widget.items.length > i_25_); i_25_++) {
                             if(i_24_ + 1 == (widget.items[i_25_])) {
                                 i_16_ = 999999999;
@@ -290,7 +283,7 @@ public class HuffmanEncoding {
                 if(i_18_ == 11)
                     i_16_ = Class40_Sub11.runEnergy;
                 if(i_18_ == 12)
-                    i_16_ = Class52.anInt1222;
+                    i_16_ = GenericTile.anInt1222;
                 if(i_18_ == 13) {
                     int i_26_ = GroundItemTile.varbitmasks[is[i_14_++]];
                     int i_27_ = is[i_14_++];
@@ -301,9 +294,9 @@ public class HuffmanEncoding {
                     i_16_ = Class40_Sub5_Sub6.method585(i_28_, 1369);
                 }
                 if(i_18_ == 18)
-                    i_16_ = ((Player.localPlayer.anInt3098) >> 7) + SpotAnimDefinition.anInt2307;
+                    i_16_ = ((Player.localPlayer.worldX) >> 7) + SpotAnimDefinition.baseX;
                 if(i_18_ == 19)
-                    i_16_ = ((Player.localPlayer.anInt3089) >> 7) + Class26.anInt635;
+                    i_16_ = ((Player.localPlayer.worldY) >> 7) + Class26.baseY;
                 if(i_18_ == 20)
                     i_16_ = is[i_14_++];
                 if(i_17_ == 0) {
@@ -327,9 +320,9 @@ public class HuffmanEncoding {
     public static void method1030(byte arg0) {
         if(arg0 < 123)
             method1030((byte) -24);
-        for(Class40_Sub2 class40_sub2 = ((Class40_Sub2) Class40_Sub5_Sub1.aClass45_2268.method902((byte) -90)); class40_sub2 != null; class40_sub2 = (Class40_Sub2) Class40_Sub5_Sub1.aClass45_2268.method909(-4)) {
+        for(Class40_Sub2 class40_sub2 = ((Class40_Sub2) Class40_Sub5_Sub1.aLinkedList_2268.method902((byte) -90)); class40_sub2 != null; class40_sub2 = (Class40_Sub2) Class40_Sub5_Sub1.aLinkedList_2268.method909(-4)) {
             if(class40_sub2.aGameObjectDefinition_2011 != null)
-                class40_sub2.method528(48);
+                class40_sub2.method528();
         }
     }
 
@@ -425,7 +418,7 @@ public class HuffmanEncoding {
             i_0_++;
         }
         if(arg5 != -1)
-            lastItemSearchInput = null;
+            ChatBox.lastItemSearchInput = null;
         return -arg4 + (i_0_ + 1);
     }
 
