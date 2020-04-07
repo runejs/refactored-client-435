@@ -1,4 +1,4 @@
-package com.jagex.runescape.cache.media;
+package com.jagex.runescape.cache.media.Widget;
 
 public enum WidgetType {
     LAYER,

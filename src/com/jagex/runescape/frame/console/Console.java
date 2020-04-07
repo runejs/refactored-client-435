@@ -3,7 +3,7 @@ package com.jagex.runescape.frame.console;
 import com.jagex.runescape.Class40_Sub5_Sub17_Sub6;
 import com.jagex.runescape.Class59;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.media.Widget;
+import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.console.Commands.*;
