@@ -25,7 +25,7 @@ import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.URL;
 
-public abstract class RSApplet extends Canvas implements Runnable, FocusListener, WindowListener {
+public abstract class GameShell extends Canvas implements Runnable, FocusListener, WindowListener {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1;
     public static int[] anIntArray2 = new int[5];
     public static long[] aLongArray4 = new long[32];

@@ -25,7 +25,7 @@ public class SubNode extends Node {
     public static IndexedImage method538(int arg0) {
         IndexedImage class40_sub5_sub14_sub2 = new IndexedImage();
         class40_sub5_sub14_sub2.maxWidth = ItemDefinition.anInt2846;
-        class40_sub5_sub14_sub2.maxHeight = RSApplet.anInt31;
+        class40_sub5_sub14_sub2.maxHeight = GameShell.anInt31;
         class40_sub5_sub14_sub2.xDrawOffset = Class57.anIntArray1347[0];
         class40_sub5_sub14_sub2.yDrawOffset = Actor.anIntArray3111[0];
         class40_sub5_sub14_sub2.imgWidth = Class17.anIntArray456[0];

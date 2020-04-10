@@ -131,7 +131,7 @@ public class RSString implements Interface1 {
         int i = 0;
         for(int i_3_ = 0; i_3_ < arg1; i_3_++) {
             if(arg3[arg2 + i_3_] == null) {
-                arg3[i_3_ + arg2] = RSApplet.aClass1_28;
+                arg3[i_3_ + arg2] = GameShell.aClass1_28;
             }
             i += arg3[i_3_ + arg2].length;
         }

@@ -35,7 +35,7 @@ public class Class44 implements Runnable {
             ChatBox.redrawChatbox = true;
         if(type == 0 && ChatBox.dialogueId != -1) {
             MouseHandler.clickType = 0;
-            RSApplet.clickToContinueString = message;
+            GameShell.clickToContinueString = message;
         }
         for(int i = 99; i > 0; i--) {
             ChatBox.chatTypes[i] = ChatBox.chatTypes[i + -1];

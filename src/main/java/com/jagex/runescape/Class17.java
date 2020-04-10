@@ -38,7 +38,7 @@ public class Class17 {
             Class57.aClass64_1345 = null;
         }
         Class57.aClass64_1345 = arg0;
-        RSApplet.method19(arg2, 24041);
+        GameShell.method19(arg2, 24041);
         LinkedList.aClass40_Sub1_1081.currentPosition = 0;
         Class40_Sub5_Sub13.aClass40_Sub1_2752 = null;
         Landscape.anInt1157 = 0;

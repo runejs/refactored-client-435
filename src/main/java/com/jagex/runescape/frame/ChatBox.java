@@ -68,8 +68,8 @@ public class ChatBox {
                 Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(Class35.aClass1_1747, 239, 40, 255);
             font.drawStringLeft((RSString.linkRSStrings(new RSString[]{inputMessage, InteractiveObject.aClass1_478})), 239, 90, 0);
             Rasterizer.drawHorizontalLine(0, 77, 479, 0);
-        } else if(RSApplet.clickToContinueString != null) {
-            Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(RSApplet.clickToContinueString, 239, 40, 0);
+        } else if(GameShell.clickToContinueString != null) {
+            Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(GameShell.clickToContinueString, 239, 40, 0);
             Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(Class34.aClass1_829, 239, 60, 128);
         } else if(openChatboxWidgetId != -1) {
             redrawChatbox = !Class40_Sub5_Sub6.drawInterface(0, (openChatboxWidgetId), 96, (byte) -5, 0, 2, 479);

@@ -72,7 +72,7 @@ public abstract class Class38 {
                 Class17.aClass68_463 = null;
                 Class42.anIntArray1013 = null;
                 Class33.method405(16969, 10);
-                RSApplet.method19(true, 24041);
+                GameShell.method19(true, 24041);
                 ISAAC.aBoolean512 = false;
             }
         }

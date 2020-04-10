@@ -278,7 +278,7 @@ public class IncomingPackets {
                 int i_26_ = incomingPacketBuffer.getUnsignedByte();
                 Class40_Sub5_Sub17_Sub1.aBooleanArray2975[i_23_] = true;
                 Class8.anIntArray297[i_23_] = i_24_;
-                RSApplet.anIntArray2[i_23_] = i_25_;
+                GameShell.anIntArray2[i_23_] = i_25_;
                 GroundItemTile.anIntArray1358[i_23_] = i_26_;
                 Class22_Sub1.anIntArray1846[i_23_] = 0;
                 incomingPacket = -1;
@@ -492,7 +492,7 @@ public class IncomingPackets {
                 int i_53_ = incomingPacketBuffer.getUnsignedByte();
                 int i_54_ = incomingPacketBuffer.getUnsignedByte();
                 if(i_54_ >= 1 && i_54_ <= 5) {
-                    if(class1.equalsIgnoreCase(RSApplet.aClass1_34))
+                    if(class1.equalsIgnoreCase(GameShell.aClass1_34))
                         class1 = null;
                     Main.playerActions[i_54_ + -1] = class1;
                     Class13.playerArray[i_54_ + -1] = i_53_ == 0;

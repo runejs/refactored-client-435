@@ -103,7 +103,7 @@ public abstract class CacheIndex {
         Class57.anIntArray1347 = new int[UnderlayDefinition.anInt2581];
         class40_sub1.currentPosition = arg0.length + -7 + -(UnderlayDefinition.anInt2581 * 8);
         ItemDefinition.anInt2846 = class40_sub1.getUnsignedShortBE();
-        RSApplet.anInt31 = class40_sub1.getUnsignedShortBE();
+        GameShell.anInt31 = class40_sub1.getUnsignedShortBE();
         int i = 1 + (class40_sub1.getUnsignedByte() & 0xff);
         for(int i_34_ = 0; ((i_34_ < UnderlayDefinition.anInt2581)); i_34_++)
             Class57.anIntArray1347[i_34_] = class40_sub1.getUnsignedShortBE();

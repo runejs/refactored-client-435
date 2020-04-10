@@ -148,7 +148,7 @@ public class Class60 {
     public static void method992(int arg0) {
         SceneCluster.aClass38_768.method443(-10115);
         for(int i = 0; i < 32; i++)
-            RSApplet.aLongArray4[i] = 0L;
+            GameShell.aLongArray4[i] = 0L;
         for(int i = 0; i < 32; i++)
             Class67.aLongArray1614[i] = 0L;
         Class40_Sub3.anInt2020 = 0;

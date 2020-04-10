@@ -40,7 +40,7 @@ import tech.henning.fourthreefive.Configuration;
 import java.net.InetAddress;
 import java.net.Socket;
 
-public class Main extends RSApplet {
+public class Main extends GameShell {
     public static int anInt1756 = 0;
     public static int menuOffsetY;
     public static RSString aClass1_1761 = RSString.CreateString("Welcome to Runescape");
@@ -230,7 +230,7 @@ public class Main extends RSApplet {
                                 ItemDefinition class40_sub5_sub16 = (ItemDefinition.forId(widget.itemId, 10));
                                 class1 = class40_sub5_sub16.name;
                                 if(class1 == null)
-                                    class1 = RSApplet.aClass1_34;
+                                    class1 = GameShell.aClass1_34;
                                 if(class40_sub5_sub16.stackable == 1 || widget.itemAmount != 1)
                                     class1 = (RSString.linkRSStrings((new RSString[]{class1, Class29.aClass1_674, (LinkedList.method903((widget.itemAmount), (byte) -109))})));
                             }
@@ -400,7 +400,7 @@ public class Main extends RSApplet {
                                         ItemDefinition class40_sub5_sub16 = (ItemDefinition.forId((-1 + (widget.items[i_45_])), 10));
                                         RSString class1 = (class40_sub5_sub16.name);
                                         if(class1 == null)
-                                            class1 = (RSApplet.aClass1_34);
+                                            class1 = (GameShell.aClass1_34);
                                         if((class40_sub5_sub16.stackable) == 1 || (widget.itemAmounts[i_45_]) != 1)
                                             class1 = (RSString.linkRSStrings((new RSString[]{class1, (Class29.aClass1_674), (LinkedList.method903((widget.itemAmounts[i_45_]), (byte) -105))})));
                                         int i_48_ = ((i_47_ * ((widget.itemSpritePadsX) + 115)) + i_0_);
@@ -706,7 +706,7 @@ public class Main extends RSApplet {
         ChatBox.messagePromptRaised = false;
         Class4.menuOpen = false;
         GroundItemTile.walkableWidgetId = -1;
-        RSApplet.clickToContinueString = null;
+        GameShell.clickToContinueString = null;
         CacheIndex_Sub1.anInt1819 = -1;
         Class51.anInt1205 = -1;
         Class40_Sub6.anInt2118 = 0;
@@ -938,7 +938,7 @@ public class Main extends RSApplet {
         // TODO: Should all these also be "reset"?
         method41();
         RSString.method83();
-        RSApplet.method18();
+        GameShell.method18();
         Class38.method439();
         Class68.method1042();
         Class39.method453();

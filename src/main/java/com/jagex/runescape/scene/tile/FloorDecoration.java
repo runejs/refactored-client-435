@@ -175,7 +175,7 @@ public class FloorDecoration {
             Class38_Sub1.aClass40_Sub5_Sub14_Sub2_1919 = null;
             Class56.aClass40_Sub5_Sub14_Sub2_1329 = null;
             Landscape.aClass68_1185 = null;
-            RSApplet.aClass40_Sub5_Sub14_Sub2_1 = null;
+            GameShell.aClass40_Sub5_Sub14_Sub2_1 = null;
             Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105 = null;
             Class34.anIntArray852 = null;
             HuffmanEncoding.aClass68_1541 = null;
@@ -277,7 +277,7 @@ public class FloorDecoration {
                     Class57.aClass64_1345.method1008((Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition), i_37_, -127, (Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer));
                     if(Class8.aByte302 != 0) {
                         for(int i_38_ = 0; (i_37_ > i_38_); i_38_++)
-                            Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[(Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition) + i_38_] = (byte) (RSApplet.method27((Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[(Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition) + i_38_]), Class8.aByte302));
+                            Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[(Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition) + i_38_] = (byte) (GameShell.method27((Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[(Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition) + i_38_]), Class8.aByte302));
                     }
                     Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition += i_37_;
                     Landscape.anInt1157 += i_37_;
@@ -337,7 +337,7 @@ public class FloorDecoration {
                     Class57.aClass64_1345.method1008(LinkedList.aClass40_Sub1_1081.currentPosition, i_42_, -128, LinkedList.aClass40_Sub1_1081.buffer);
                     if(Class8.aByte302 != 0) {
                         for(int i_43_ = 0; i_42_ > i_43_; i_43_++)
-                            LinkedList.aClass40_Sub1_1081.buffer[(LinkedList.aClass40_Sub1_1081.currentPosition + i_43_)] = (byte) (RSApplet.method27((LinkedList.aClass40_Sub1_1081.buffer[(LinkedList.aClass40_Sub1_1081.currentPosition) + i_43_]), Class8.aByte302));
+                            LinkedList.aClass40_Sub1_1081.buffer[(LinkedList.aClass40_Sub1_1081.currentPosition + i_43_)] = (byte) (GameShell.method27((LinkedList.aClass40_Sub1_1081.buffer[(LinkedList.aClass40_Sub1_1081.currentPosition) + i_43_]), Class8.aByte302));
                     }
                     LinkedList.aClass40_Sub1_1081.currentPosition += i_42_;
                     if((i_35_ > LinkedList.aClass40_Sub1_1081.currentPosition))

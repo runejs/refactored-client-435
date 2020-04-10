@@ -113,7 +113,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
     public static ImageRGB method578() {
         ImageRGB class40_sub5_sub14_sub4 = new ImageRGB();
         class40_sub5_sub14_sub4.maxWidth = ItemDefinition.anInt2846;
-        class40_sub5_sub14_sub4.maxHeight = RSApplet.anInt31;
+        class40_sub5_sub14_sub4.maxHeight = GameShell.anInt31;
         class40_sub5_sub14_sub4.offsetX = Class57.anIntArray1347[0];
         class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[0];
         class40_sub5_sub14_sub4.image_width = Class17.anIntArray456[0];

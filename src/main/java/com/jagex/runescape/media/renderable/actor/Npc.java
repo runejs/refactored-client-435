@@ -286,10 +286,10 @@ public class Npc extends Actor {
                             }
                             Scene.clickedTileX = -1;
                         }
-                        if(MouseHandler.clickType == 1 && RSApplet.clickToContinueString != null) {
+                        if(MouseHandler.clickType == 1 && GameShell.clickToContinueString != null) {
                             MouseHandler.clickType = 0;
                             ChatBox.redrawChatbox = true;
-                            RSApplet.clickToContinueString = null;
+                            GameShell.clickToContinueString = null;
                         }
                         MouseHandler.processMenuClick();
                         if(ActorDefinition.openFullScreenWidgetId == -1) {

@@ -60,8 +60,8 @@ public class Class27 {
             if(Class40_Sub6.secondaryCameraVertical / 256 > i)
                 i = Class40_Sub6.secondaryCameraVertical / 256;
             int i_0_ = 0x7ff & GroundItemTile.cameraHorizontal + Class57.anInt1342;
-            if(Class40_Sub5_Sub17_Sub1.aBooleanArray2975[4] && 128 + RSApplet.anIntArray2[4] > i)
-                i = 128 + RSApplet.anIntArray2[4];
+            if(Class40_Sub5_Sub17_Sub1.aBooleanArray2975[4] && 128 + GameShell.anIntArray2[4] > i)
+                i = 128 + GameShell.anIntArray2[4];
             Class49.setCameraPosition(i, Class40_Sub5_Sub6.currentCameraPositionH, -50 + (Class37.getFloorDrawHeight(Player.worldLevel, (Player.localPlayer.worldX), (Player.localPlayer.worldY))), i_0_, Class34.currentCameraPositionV, -1, 3 * i + 600);
         }
         int i;
@@ -76,7 +76,7 @@ public class Class27 {
         int i_5_ = Class40_Sub5_Sub6.cameraY;
         for(int i_6_ = 0; i_6_ < 5; i_6_++) {
             if(Class40_Sub5_Sub17_Sub1.aBooleanArray2975[i_6_]) {
-                int i_7_ = (int) (((double) (Class8.anIntArray297[i_6_] * 2 + 1) * Math.random()) - (double) Class8.anIntArray297[i_6_] + (Math.sin((double) (Class22_Sub1.anIntArray1846[i_6_]) * ((double) (GroundItemTile.anIntArray1358[i_6_]) / 100.0)) * (double) RSApplet.anIntArray2[i_6_]));
+                int i_7_ = (int) (((double) (Class8.anIntArray297[i_6_] * 2 + 1) * Math.random()) - (double) Class8.anIntArray297[i_6_] + (Math.sin((double) (Class22_Sub1.anIntArray1846[i_6_]) * ((double) (GroundItemTile.anIntArray1358[i_6_]) / 100.0)) * (double) GameShell.anIntArray2[i_6_]));
                 if(i_6_ == 1)
                     SceneCluster.cameraZ += i_7_;
                 if(i_6_ == 0) {
@@ -363,7 +363,7 @@ public class Class27 {
                 Npc.aClass1_3295 = (RSString.linkRSStrings((new RSString[]{VertexNormal.aClass1_1114, ItemDefinition.forId(i_12_, 10).name, Class26.aClass1_620})));
                 Main.widgetSelected = 0;
                 if(Npc.aClass1_3295 == null)
-                    Npc.aClass1_3295 = RSApplet.aClass1_34;
+                    Npc.aClass1_3295 = GameShell.aClass1_34;
                 ISAAC.redrawTabArea = true;
             } else {
                 if(action == 15) {
@@ -625,7 +625,7 @@ public class Class27 {
                             if(action == 51)
                                 Class17.method275(l);
                             if(action == 13)
-                                RSApplet.method28(l);
+                                GameShell.method28(l);
                             if(action == 35)
                                 Class40_Sub6.method838(0, l);
                         }
@@ -899,7 +899,7 @@ public class Class27 {
         if(Class68.method1043(arg4)) {
             if(arg0 != 125)
                 Widget.drawScrollBar(-118, 12, 65, -60, 59, -24);
-            RSApplet.method20(arg5, arg3, 0, arg2, arg6, -1, 1, (Widget.interfaces[arg4]), arg1, 0);
+            GameShell.method20(arg5, arg3, 0, arg2, arg6, -1, 1, (Widget.interfaces[arg4]), arg1, 0);
             if(Wall.aWidget_353 != null) {
                 Widget widget = Wall.aWidget_353;
                 Widget widget_24_ = FramemapDefinition.method878(widget);
@@ -1048,7 +1048,7 @@ public class Class27 {
             ChatBox.redrawChatbox = true;
         if(SceneTile.activeInterfaceType == 3)
             ChatBox.redrawChatbox = true;
-        if(RSApplet.clickToContinueString != null)
+        if(GameShell.clickToContinueString != null)
             ChatBox.redrawChatbox = true;
         if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
             ChatBox.redrawChatbox = true;

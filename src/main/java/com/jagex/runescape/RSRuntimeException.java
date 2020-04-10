@@ -71,7 +71,7 @@ public class RSRuntimeException extends RuntimeException {
     public static void method1057(int arg0) {
         SceneCluster.aClass38_768.method444(10);
         for(int i = 0; i < 32; i++)
-            RSApplet.aLongArray4[i] = 0L;
+            GameShell.aLongArray4[i] = 0L;
         for(int i = 0; i < 32; i++)
             Class67.aLongArray1614[i] = 0L;
         if(arg0 <= 67)

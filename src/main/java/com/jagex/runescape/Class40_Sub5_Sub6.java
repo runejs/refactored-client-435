@@ -228,7 +228,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                     }
                     if(Class37.anInt876 == 2 && Item.friendsCount > 0) {
                         long l = HuffmanEncoding.chatMessage.method58((byte) 121);
-                        RSApplet.method28(l);
+                        GameShell.method28(l);
                     }
                     if(Class37.anInt876 == 3 && HuffmanEncoding.chatMessage.length() > 0) {
                         SceneCluster.packetBuffer.putPacket(207);

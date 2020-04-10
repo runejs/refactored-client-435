@@ -27,7 +27,7 @@ public abstract class Class22_Sub2 extends Class22 {
         for(int i = 0; UnderlayDefinition.anInt2581 > i; i++) {
             IndexedImage class40_sub5_sub14_sub2 = (class40_sub5_sub14_sub2s[i] = new IndexedImage());
             class40_sub5_sub14_sub2.maxWidth = ItemDefinition.anInt2846;
-            class40_sub5_sub14_sub2.maxHeight = RSApplet.anInt31;
+            class40_sub5_sub14_sub2.maxHeight = GameShell.anInt31;
             class40_sub5_sub14_sub2.xDrawOffset = Class57.anIntArray1347[i];
             class40_sub5_sub14_sub2.yDrawOffset = Actor.anIntArray3111[i];
             class40_sub5_sub14_sub2.imgWidth = Class17.anIntArray456[i];
@@ -58,7 +58,7 @@ public abstract class Class22_Sub2 extends Class22 {
         for(int i = 0; (i < UnderlayDefinition.anInt2581); i++) {
             ImageRGB class40_sub5_sub14_sub4 = (class40_sub5_sub14_sub4s[i] = new ImageRGB());
             class40_sub5_sub14_sub4.maxWidth = ItemDefinition.anInt2846;
-            class40_sub5_sub14_sub4.maxHeight = RSApplet.anInt31;
+            class40_sub5_sub14_sub4.maxHeight = GameShell.anInt31;
             class40_sub5_sub14_sub4.offsetX = Class57.anIntArray1347[i];
             class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[i];
             class40_sub5_sub14_sub4.image_width = Class17.anIntArray456[i];

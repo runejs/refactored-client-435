@@ -15,7 +15,7 @@ public class Class4 {
     public static int anInt175 = 0;
     public static RSString cmd_hiddenbuttontest = RSString.CreateString("::hiddenbuttontest");
     public static int[] anIntArray178;
-    public static RSApplet anApplet_Sub1_179 = null;
+    public static GameShell anApplet_Sub1_179 = null;
     public static RSString aClass1_180 = RSString.CreateString("wishes to trade with you)3");
     public static int anInt182 = 0;
     public static RSString aClass1_183 = RSString.CreateString("mapdots");
@@ -37,9 +37,9 @@ public class Class4 {
         int i_4_ = CollisionMap.method157(arg1 ^ arg1, 1 + i_2_, i_0_);
         int i_5_ = CollisionMap.method157(0, i_2_, 1 + i_0_);
         int i_6_ = CollisionMap.method157(0, 1 + i_2_, 1 + i_0_);
-        int i_7_ = RSApplet.method32(i_3_, arg2, i_4_, true, i);
-        int i_8_ = RSApplet.method32(i_5_, arg2, i_6_, true, i);
-        return RSApplet.method32(i_7_, arg2, i_8_, true, i_1_);
+        int i_7_ = GameShell.method32(i_3_, arg2, i_4_, true, i);
+        int i_8_ = GameShell.method32(i_5_, arg2, i_6_, true, i);
+        return GameShell.method32(i_7_, arg2, i_8_, true, i_1_);
     }
 
     public static void processAudio() {

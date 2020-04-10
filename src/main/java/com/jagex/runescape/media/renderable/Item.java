@@ -262,7 +262,7 @@ public class Item extends Renderable {
                 Class33.method412(false, Class55.aClass6_Sub1_1286, 0, (byte) 66, Class30.aClass1_716, 10, Native.string_blank, RSCanvas.anInt60);
             else
                 Class33.method405(16969, 10);
-            RSApplet.method19(false, 24041);
+            GameShell.method19(false, 24041);
             Class40_Sub5_Sub11.clearScreen = true;
             ISAAC.aBoolean512 = true;
         }

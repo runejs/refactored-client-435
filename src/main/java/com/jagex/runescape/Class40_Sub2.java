@@ -81,9 +81,9 @@ public class Class40_Sub2 extends Node {
                 if(arg0 == 0)
                     Class56.aClass40_Sub5_Sub14_Sub2_1315.drawImage(22, 10);
                 if(arg0 == 1)
-                    RSApplet.aClass40_Sub5_Sub14_Sub2_1.drawImage(54, 8);
+                    GameShell.aClass40_Sub5_Sub14_Sub2_1.drawImage(54, 8);
                 if(arg0 == 2)
-                    RSApplet.aClass40_Sub5_Sub14_Sub2_1.drawImage(82, 8);
+                    GameShell.aClass40_Sub5_Sub14_Sub2_1.drawImage(82, 8);
                 if(arg0 == 3)
                     Class35.aClass40_Sub5_Sub14_Sub2_1744.drawImage(110, 8);
                 if(arg0 == 4)
