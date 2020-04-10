@@ -77,7 +77,7 @@ public class Rasterizer extends SubNode {
             int x1 = tmpX[i];
             int y1 = tmpY[i];
 
-//            Rasterizer3D.fillTriangle(cx, cy, x, y, x1, y1, rgb);
+            Rasterizer3D.drawFlatTriangle(cx, cy, x, y, x1, y1, rgb);
         }
     }
 
