@@ -1454,7 +1454,7 @@ public class Model extends Renderable {
             if(i_177_ == 0)
                 Rasterizer3D.drawShadedTriangle(i_174_, i_175_, i_176_, i_171_, i_172_, i_173_, anIntArray3222[0], anIntArray3222[1], anIntArray3222[2]);
             else if(i_177_ == 1)
-                Rasterizer3D.drawFlatTriangle(i_174_, i_175_, i_176_, i_171_, i_172_, i_173_, (anIntArray3202[triangleHSLA[arg0]]));
+                Rasterizer3D.drawFlatTriangle(i_171_, i_174_, i_172_, i_175_, i_173_, i_176_, (anIntArray3202[triangleHSLA[arg0]]));
             else if(i_177_ == 2) {
                 int i_178_ = triangleDrawType[arg0] >> 2;
                 int i_179_ = texturedTrianglePointsX[i_178_];
@@ -1482,8 +1482,8 @@ public class Model extends Renderable {
                 Rasterizer3D.drawShadedTriangle(i_174_, i_176_, anIntArray3205[3], i_171_, i_173_, anIntArray3227[3], anIntArray3222[0], anIntArray3222[2], anIntArray3222[3]);
             } else if(i_186_ == 1) {
                 int i_187_ = anIntArray3202[triangleHSLA[arg0]];
-                Rasterizer3D.drawFlatTriangle(i_174_, i_175_, i_176_, i_171_, i_172_, i_173_, i_187_);
-                Rasterizer3D.drawFlatTriangle(i_174_, i_176_, anIntArray3205[3], i_171_, i_173_, anIntArray3227[3], i_187_);
+                Rasterizer3D.drawFlatTriangle(i_171_, i_174_, i_172_, i_175_, i_173_, i_176_, i_187_);
+                Rasterizer3D.drawFlatTriangle(i_171_, i_174_, i_173_, i_176_, anIntArray3227[3], anIntArray3205[3], i_187_);
             } else if(i_186_ == 2) {
                 int i_188_ = triangleDrawType[arg0] >> 2;
                 int i_189_ = texturedTrianglePointsX[i_188_];
@@ -1806,7 +1806,7 @@ public class Model extends Renderable {
             if(i_239_ == 0)
                 Rasterizer3D.drawShadedTriangle(vertexScreenY[i], vertexScreenY[i_237_], vertexScreenY[i_238_], vertexScreenX[i], vertexScreenX[i_237_], vertexScreenX[i_238_], triangleHSLA[arg0], triangleHSLB[arg0], triangleHSLC[arg0]);
             else if(i_239_ == 1)
-                Rasterizer3D.drawFlatTriangle(vertexScreenY[i], vertexScreenY[i_237_], vertexScreenY[i_238_], vertexScreenX[i], vertexScreenX[i_237_], vertexScreenX[i_238_], (anIntArray3202[triangleHSLA[arg0]]));
+                Rasterizer3D.drawFlatTriangle(vertexScreenX[i], vertexScreenY[i], vertexScreenX[i_237_], vertexScreenY[i_237_], vertexScreenX[i_238_], vertexScreenY[i_238_], (anIntArray3202[triangleHSLA[arg0]]));
             else if(i_239_ == 2) {
                 int i_240_ = triangleDrawType[arg0] >> 2;
                 int i_241_ = texturedTrianglePointsX[i_240_];

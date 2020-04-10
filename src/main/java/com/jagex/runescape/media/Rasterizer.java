@@ -1,26 +1,42 @@
 package com.jagex.runescape.media;
 
 import com.jagex.runescape.SubNode;
+import com.jagex.runescape.media.renderable.Model;
 
 public class Rasterizer extends SubNode {
-    public static int[] pixels;
+    public static int[] destinationPixels;
     public static int viewportTop = 0;
     public static int destinationWidth;
     public static int destinationHeight;
     public static int viewportBottom = 0;
     public static int viewportLeft = 0;
     public static int viewportRight = 0;
+    public static int viewportRightX = 0;
+    public static int viewportCenterX = 0;
+    public static int viewportCenterY = 0;
 
-    public static void drawUnfilledRectangleAlpha(int x, int y, int width, int height, int colour, int alpha) {
-        drawHorizontalLineAlpha(x, y, width, colour, alpha);
-        drawHorizontalLineAlpha(x, y + height - 1, width, colour, alpha);
-        if(height >= 3) {
-            drawVerticalLineAlpha(x, y + 1, height - 2, colour, alpha);
-            drawVerticalLineAlpha(x + width - 1, y + 1, height - 2, colour, alpha);
-        }
+    // used for drawing circles
+    private static final int[] tmpX = new int[64];
+    private static final int[] tmpY = new int[64];
+
+    public static void prepare(int[] pixels, int width, int height) {
+        Rasterizer.destinationPixels = pixels;
+        Rasterizer.destinationWidth = width;
+        Rasterizer.destinationHeight = height;
+        setBounds(0, 0, height, width);
     }
 
-    public static void setCoordinates(int x0, int y0, int y1, int x1) {
+    public static void resetBounds() {
+        viewportLeft = 0;
+        viewportTop = 0;
+        viewportRight = destinationWidth;
+        viewportBottom = destinationHeight;
+        viewportRightX = viewportRight - 1;
+        viewportCenterX = viewportRight / 2;
+        viewportCenterY = viewportBottom / 2;
+    }
+
+    public static void setBounds(int x0, int y0, int y1, int x1) {
         if(x0 < 0)
             x0 = 0;
         if(y0 < 0)
@@ -33,6 +49,45 @@ public class Rasterizer extends SubNode {
         viewportTop = y0;
         viewportRight = x1;
         viewportBottom = y1;
+        viewportRightX = viewportRight - 1;
+        viewportCenterX = viewportRight / 2;
+        viewportCenterY = viewportBottom / 2;
+    }
+
+    public static void clear() {
+        int pixelCount = destinationWidth * destinationHeight;
+        for (int pixel = 0; pixel < pixelCount; pixel++)
+            destinationPixels[pixel] = 0;
+    }
+
+    public static void fillOval(int x, int y, int w, int h, int rgb, int segments) {
+        int cx = x + (w / 2);
+        int cy = y + (h / 2);
+
+        for (int i = 0; i < segments; i++) {
+            int angle = (i << 11) / segments;
+
+            tmpX[i] = x + ((w * Model.COSINE[angle]) >> 16);
+            tmpY[i] = y + ((h * Model.SINE[angle]) >> 16);
+        }
+
+        for (int i = 1; i < segments; i++) {
+            x = tmpX[i - 1];
+            y = tmpY[i - 1];
+            int x1 = tmpX[i];
+            int y1 = tmpY[i];
+
+//            Rasterizer3D.fillTriangle(cx, cy, x, y, x1, y1, rgb);
+        }
+    }
+
+    public static void drawUnfilledRectangleAlpha(int x, int y, int width, int height, int colour, int alpha) {
+        drawHorizontalLineAlpha(x, y, width, colour, alpha);
+        drawHorizontalLineAlpha(x, y + height - 1, width, colour, alpha);
+        if(height >= 3) {
+            drawVerticalLineAlpha(x, y + 1, height - 2, colour, alpha);
+            drawVerticalLineAlpha(x + width - 1, y + 1, height - 2, colour, alpha);
+        }
     }
 
     public static void drawFilledRectangle(int x, int y, int width, int height, int colour) {
@@ -52,7 +107,7 @@ public class Rasterizer extends SubNode {
         int pixel = x + y * Rasterizer.destinationWidth;
         for(int heightCounter = -height; heightCounter < 0; heightCounter++) {
             for(int widthCounter = -width; widthCounter < 0; widthCounter++)
-                pixels[pixel++] = colour;
+                destinationPixels[pixel++] = colour;
             pixel += pixelOffset;
         }
     }
@@ -89,11 +144,11 @@ public class Rasterizer extends SubNode {
         int b = (arg3 & 0xff) * alpha;
         int pixelOffset = x + y * destinationWidth;
         for(int lengthCounter = 0; lengthCounter < length; lengthCounter++) {
-            int red = (pixels[pixelOffset] >> 16 & 0xff) * a;
-            int green = (pixels[pixelOffset] >> 8 & 0xff) * a;
-            int blue = (pixels[pixelOffset] & 0xff) * a;
+            int red = (destinationPixels[pixelOffset] >> 16 & 0xff) * a;
+            int green = (destinationPixels[pixelOffset] >> 8 & 0xff) * a;
+            int blue = (destinationPixels[pixelOffset] & 0xff) * a;
             int rgba = ((r + red >> 8 << 16) + (g + green >> 8 << 8) + (b + blue >> 8));
-            pixels[pixelOffset++] = rgba;
+            destinationPixels[pixelOffset++] = rgba;
         }
     }
 
@@ -109,7 +164,7 @@ public class Rasterizer extends SubNode {
             length = viewportRight - x;
         int pixelOffset = x + y * destinationWidth;
         for(int pixel = 0; pixel < length; pixel++)
-            pixels[pixelOffset + pixel] = colour;
+            destinationPixels[pixelOffset + pixel] = colour;
     }
 
     public static void drawVerticalLineAlpha(int x, int y, int length, int colour, int alpha) {
@@ -128,27 +183,18 @@ public class Rasterizer extends SubNode {
         int b = (colour & 0xff) * alpha;
         int pixelOffset = x + y * destinationWidth;
         for(int lengthCounter = 0; lengthCounter < length; lengthCounter++) {
-            int red = (pixels[pixelOffset] >> 16 & 0xff) * a;
-            int green = (pixels[pixelOffset] >> 8 & 0xff) * a;
-            int blue = (pixels[pixelOffset] & 0xff) * a;
+            int red = (destinationPixels[pixelOffset] >> 16 & 0xff) * a;
+            int green = (destinationPixels[pixelOffset] >> 8 & 0xff) * a;
+            int blue = (destinationPixels[pixelOffset] & 0xff) * a;
             int rgba = ((r + red >> 8 << 16) + (g + green >> 8 << 8) + (b + blue >> 8));
-            pixels[pixelOffset] = rgba;
+            destinationPixels[pixelOffset] = rgba;
             pixelOffset += destinationWidth;
         }
     }
 
-    public static void resetCoordinates() {
-        viewportLeft = 0;
-        viewportTop = 0;
-        viewportRight = destinationWidth;
-        viewportBottom = destinationHeight;
-    }
 
-    public static void resetPixels() {
-        int pixelCount = destinationWidth * destinationHeight;
-        for (int pixel = 0; pixel < pixelCount; pixel++)
-            pixels[pixel] = 0;
-    }
+
+
 
     public static void drawFilledRectangleAlpha(int x, int y, int width, int height, int colour, int alpha) {
         if(x < viewportLeft) {
@@ -171,11 +217,11 @@ public class Rasterizer extends SubNode {
         int pixel = x + y * Rasterizer.destinationWidth;
         for(int heightCounter = 0; heightCounter < height; heightCounter++) {
             for(int widthCounter = -width; widthCounter < 0; widthCounter++) {
-                int red = (pixels[pixel] >> 16 & 0xff) * a;
-                int green = (pixels[pixel] >> 8 & 0xff) * a;
-                int blue = (pixels[pixel] & 0xff) * a;
+                int red = (destinationPixels[pixel] >> 16 & 0xff) * a;
+                int green = (destinationPixels[pixel] >> 8 & 0xff) * a;
+                int blue = (destinationPixels[pixel] & 0xff) * a;
                 int rgba = ((r + red >> 8 << 16) + (g + green >> 8 << 8) + (b + blue >> 8));
-                pixels[pixel++] = rgba;
+                destinationPixels[pixel++] = rgba;
             }
             pixel += widthOffset;
         }
@@ -223,7 +269,7 @@ public class Rasterizer extends SubNode {
                 for(/**/; x <= destX; x++) {
                     int i_34_ = y >> 16;
                     if(i_34_ >= viewportTop && i_34_ < viewportBottom)
-                        pixels[x + i_34_ * destinationWidth] = colour;
+                        destinationPixels[x + i_34_ * destinationWidth] = colour;
                     y += i;
                 }
             } else {
@@ -241,7 +287,7 @@ public class Rasterizer extends SubNode {
                 for(/**/; y <= destY; y++) {
                     int i_35_ = x >> 16;
                     if(i_35_ >= viewportLeft && i_35_ < viewportRight)
-                        pixels[i_35_ + y * destinationWidth] = colour;
+                        destinationPixels[i_35_ + y * destinationWidth] = colour;
                     x += i;
                 }
             }
@@ -249,7 +295,7 @@ public class Rasterizer extends SubNode {
     }
 
     public static void method667() {
-        pixels = null;
+        destinationPixels = null;
     }
 
     public static void drawVerticalLine(int x, int y, int length, int colour) {
@@ -263,14 +309,9 @@ public class Rasterizer extends SubNode {
         if(y + length > viewportBottom)
             length = viewportBottom - y;
         int pixelOffset = x + y * destinationWidth;
-        for(int i_36_ = 0; i_36_ < length; i_36_++)
-            pixels[pixelOffset + i_36_ * destinationWidth] = colour;
+        for(int pixel = 0; pixel < length; pixel++)
+            destinationPixels[pixelOffset + pixel * destinationWidth] = colour;
     }
 
-    public static void createRasterizer(int[] pixels, int width, int height) {
-        Rasterizer.pixels = pixels;
-        Rasterizer.destinationWidth = width;
-        Rasterizer.destinationHeight = height;
-        setCoordinates(0, 0, height, width);
-    }
+
 }

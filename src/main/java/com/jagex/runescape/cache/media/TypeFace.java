@@ -763,7 +763,7 @@ public class TypeFace extends Rasterizer {
             rasterizerPixelOffset += endOffsetX;
         }
         if(width > 0 && height > 0) {
-            drawCharacterPixels(characterPixels[character], Rasterizer.pixels, characterPixel, rasterizerPixel, characterPixelOffset, rasterizerPixelOffset, width, height, colour);
+            drawCharacterPixels(characterPixels[character], Rasterizer.destinationPixels, characterPixel, rasterizerPixel, characterPixelOffset, rasterizerPixelOffset, width, height, colour);
 
         }
     }
@@ -799,7 +799,7 @@ public class TypeFace extends Rasterizer {
             remainingWidth += endOffsetX;
         }
         if(width > 0 && height > 0) {
-            drawCharacterPixels(pixels, Rasterizer.pixels, characterPixel, rasterizerPixel, characterPixelOffset, remainingWidth, width, height, colour);
+            drawCharacterPixels(pixels, Rasterizer.destinationPixels, characterPixel, rasterizerPixel, characterPixelOffset, remainingWidth, width, height, colour);
         }
     }
 
@@ -1251,7 +1251,7 @@ public class TypeFace extends Rasterizer {
             rasterizerPixelOffset += widthoffset;
         }
         if(width > 0 && height > 0) {
-            drawCharacterPixelsAlpha(characterPixel, rasterizerPixelOffset, characterPixelOffset, rasterizerPixel, alpha, Rasterizer.pixels, colour, height, width, characterPixels);
+            drawCharacterPixelsAlpha(characterPixel, rasterizerPixelOffset, characterPixelOffset, rasterizerPixel, alpha, Rasterizer.destinationPixels, colour, height, width, characterPixels);
         }
     }
 

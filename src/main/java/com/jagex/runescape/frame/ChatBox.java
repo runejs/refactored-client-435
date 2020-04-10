@@ -52,13 +52,13 @@ public class ChatBox {
                 lastItemSearchInput = inputMessage;
             }
             TypeFace font = WallDecoration.fontNormal;
-            Rasterizer.setCoordinates(0, 0, 77, 463);
+            Rasterizer.setBounds(0, 0, 77, 463);
             for(int index = 0; (index < itemSearchResultCount); index++) {
                 int y = index * 14 + (18 - itemSearchScroll);
                 if(y > 0 && y < 110)
                     font.drawStringLeft(itemSearchResultNames[index], 239, y, 0);
             }
-            Rasterizer.resetCoordinates();
+            Rasterizer.resetBounds();
             if(itemSearchResultCount > 5)
                 Widget.drawScrollBar(463, 0, 77, itemSearchScroll, 7 + 14 * itemSearchResultCount, 0);
             if(inputMessage.length() != 0) {
@@ -76,7 +76,7 @@ public class ChatBox {
         } else if(dialogueId == -1) {
             int line = 0;
             TypeFace typeFace = WallDecoration.fontNormal;
-            Rasterizer.setCoordinates(0, 0, 77, 463);
+            Rasterizer.setBounds(0, 0, 77, 463);
             for(int i = 0; i < 100; i++) {
                 if((chatMessages[i]) != null) {
                     int type = chatTypes[i];
@@ -157,7 +157,7 @@ public class ChatBox {
                     }
                 }
             }
-            Rasterizer.resetCoordinates();
+            Rasterizer.resetBounds();
             chatboxScrollMax = line * 14 + 7;
             if(chatboxScrollMax < 78)
                 chatboxScrollMax = 78;

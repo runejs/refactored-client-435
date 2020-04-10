@@ -241,12 +241,12 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             RSCanvas.aClass68_64 = Class40_Sub5_Sub13.method649(96, 479, arg0, -4875);
             Class44.aClass40_Sub5_Sub14_Sub2_1047.drawImage(0, 0);
             RSString.aClass68_1665 = Class40_Sub5_Sub13.method649(156, 172, arg0, -4875);
-            Rasterizer.resetPixels();
+            Rasterizer.clear();
             Class34.mapBack.drawImage(0, 0);
             SubNode.aClass68_2091 = Class40_Sub5_Sub13.method649(261, 190, arg0, -4875);
             FloorDecoration.aClass40_Sub5_Sub14_Sub2_593.drawImage(0, 0);
             VarbitDefinition.aClass68_2350 = Class40_Sub5_Sub13.method649(334, 512, arg0, -4875);
-            Rasterizer.resetPixels();
+            Rasterizer.clear();
             HuffmanEncoding.aClass68_1541 = Class40_Sub5_Sub13.method649(50, 496, arg0, -4875);
             RSCanvas.aClass68_59 = Class40_Sub5_Sub13.method649(37, 269, arg0, -4875);
             InteractiveObject.aClass68_482 = Class40_Sub5_Sub13.method649(45, 249, arg0, -4875);

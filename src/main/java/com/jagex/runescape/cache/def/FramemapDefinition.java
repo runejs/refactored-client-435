@@ -75,7 +75,7 @@ public class FramemapDefinition extends Node {
             if(class40_sub5_sub14_sub4 == null)
                 return null;
         }
-        int[] is = Rasterizer.pixels;
+        int[] is = Rasterizer.destinationPixels;
         int i = Rasterizer.destinationHeight;
         int i_1_ = Rasterizer.destinationWidth;
         int i_2_ = Rasterizer.viewportLeft;
@@ -86,7 +86,7 @@ public class FramemapDefinition extends Node {
         int i_8_ = Rasterizer3D.bottomY;
         int i_9_ = Rasterizer3D.viewportRx;
         ImageRGB class40_sub5_sub14_sub4_10_ = new ImageRGB(32, 32);
-        Rasterizer.createRasterizer(class40_sub5_sub14_sub4_10_.pixels, 32, 32);
+        Rasterizer.prepare(class40_sub5_sub14_sub4_10_.pixels, 32, 32);
         Class40_Sub5_Sub17_Sub6.anIntArray3253 = Rasterizer3D.method708(Class40_Sub5_Sub17_Sub6.anIntArray3253);
         Rasterizer.drawFilledRectangle(0, 0, 32, 32, 0);
         int i_11_ = class40_sub5_sub16.zoom2d;
@@ -149,8 +149,8 @@ public class FramemapDefinition extends Node {
         }
         if(arg3 == 0)
             Buffer.aClass9_1933.put((long) arg2, class40_sub5_sub14_sub4_10_);
-        Rasterizer.createRasterizer(is, i_1_, i);
-        Rasterizer.setCoordinates(i_2_, i_5_, i_6_, i_4_);
+        Rasterizer.prepare(is, i_1_, i);
+        Rasterizer.setBounds(i_2_, i_5_, i_6_, i_4_);
         Rasterizer3D.method708(is_7_);
         Rasterizer3D.bottomY = i_8_;
         Rasterizer3D.viewportRx = i_9_;

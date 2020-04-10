@@ -226,15 +226,15 @@ public class Class33 {
                     if(Class30.anIntArray695[i] == 4) {
                         int i_12_ = Class40_Sub5_Sub17_Sub6.fontBold.getStringWidth(class1);
                         int i_13_ = ((i_12_ + 100) * (150 + -Class30.anIntArray684[i]) / 150);
-                        Rasterizer.setCoordinates((ISAAC.anInt522 + -50), 0, 334, 50 + ISAAC.anInt522);
+                        Rasterizer.setBounds((ISAAC.anInt522 + -50), 0, 334, 50 + ISAAC.anInt522);
                         Class40_Sub5_Sub17_Sub6.fontBold.drawString(class1, -i_13_ + ISAAC.anInt522 + 50, Class44.anInt1048 + 1, 0);
                         Class40_Sub5_Sub17_Sub6.fontBold.drawString(class1, 50 + ISAAC.anInt522 + -i_13_, Class44.anInt1048, i_8_);
-                        Rasterizer.resetCoordinates();
+                        Rasterizer.resetBounds();
                     }
                     if(Class30.anIntArray695[i] == 5) {
                         int i_14_ = 0;
                         int i_15_ = 150 + -Class30.anIntArray684[i];
-                        Rasterizer.setCoordinates(0, -1 + (-(Class40_Sub5_Sub17_Sub6.fontBold.characterDefaultHeight) + Class44.anInt1048), 5 + Class44.anInt1048, 512);
+                        Rasterizer.setBounds(0, -1 + (-(Class40_Sub5_Sub17_Sub6.fontBold.characterDefaultHeight) + Class44.anInt1048), 5 + Class44.anInt1048, 512);
                         if(i_15_ >= 25) {
                             if(i_15_ > 125)
                                 i_14_ = i_15_ + -125;
@@ -242,7 +242,7 @@ public class Class33 {
                             i_14_ = i_15_ + -25;
                         Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(class1, ISAAC.anInt522, i_14_ + (Class44.anInt1048 + 1), 0);
                         Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(class1, ISAAC.anInt522, i_14_ + Class44.anInt1048, i_8_);
-                        Rasterizer.resetCoordinates();
+                        Rasterizer.resetBounds();
                     }
                 } else {
                     Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0);

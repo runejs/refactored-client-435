@@ -110,7 +110,7 @@ public abstract class Class68 {
 
     public void method1046(byte arg0) {
         do {
-            Rasterizer.createRasterizer(pixels, width, height);
+            Rasterizer.prepare(pixels, width, height);
             if(arg0 == 90)
                 break;
             method1046((byte) 12);

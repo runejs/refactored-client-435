@@ -96,7 +96,7 @@ public class Class37 {
         RSCanvas.method45((byte) -106);
         if(Class27.minimapState == 2) {
             byte[] mmBackgroundPixels = Class34.mapBack.imgPixels;
-            int[] rasterPixels = Rasterizer.pixels;
+            int[] rasterPixels = Rasterizer.destinationPixels;
             int pixelCount = mmBackgroundPixels.length;
             for(int i = 0; i < pixelCount; i++) {
                 if(mmBackgroundPixels[i] == 0)

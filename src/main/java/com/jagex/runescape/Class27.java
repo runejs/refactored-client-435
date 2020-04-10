@@ -100,7 +100,7 @@ public class Class27 {
         Model.gameScreenClickable = true;
         Model.cursorX = Class13.mouseX - 4;
         Model.resourceCount = 0;
-        Rasterizer.resetPixels();
+        Rasterizer.clear();
         Npc.currentScene.render(Class12.cameraX, SceneCluster.cameraZ, Class40_Sub5_Sub6.cameraY, Class26.anInt627, Class68_Sub1.anInt2210, i);
         Npc.currentScene.clearInteractiveObjectCache();
         Class33.method404((byte) -28);
@@ -113,7 +113,7 @@ public class Class27 {
             ISAAC.aBoolean519 = false;
         if(ISAAC.aBoolean519) {
             Class65.method1018();
-            Rasterizer.resetPixels();
+            Rasterizer.clear();
             Class51.method940(0, Class67.aClass1_1585, false, null);
         }
 

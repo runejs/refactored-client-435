@@ -56,7 +56,7 @@ public class Main extends RSApplet {
     public static boolean aBoolean1790;
 
     public static boolean method36(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, Widget[] arg8, boolean arg9) {
-        Rasterizer.setCoordinates(arg2, arg1, arg5, arg6);
+        Rasterizer.setBounds(arg2, arg1, arg5, arg6);
         boolean bool = arg9;
         for(int i = 0; arg8.length > i; i++) {
             Widget widget = arg8[i];
@@ -101,7 +101,7 @@ public class Main extends RSApplet {
                         bool &= method36(arg0, i_1_, i_0_, widget.anInt2746, i, (widget.originalHeight + i_1_), (widget.originalWidth + i_0_), widget.scrollPosition, arg8, arg9);
                         if(widget.aWidgetArray2713 != null)
                             bool &= (method36(arg0, i_1_, i_0_, widget.anInt2746, widget.id, i_1_ + widget.originalHeight, widget.originalWidth + i_0_, widget.scrollPosition, (widget.aWidgetArray2713), true));
-                        Rasterizer.setCoordinates(arg2, arg1, arg5, arg6);
+                        Rasterizer.setBounds(arg2, arg1, arg5, arg6);
                         if((widget.originalHeight < widget.scrollHeight))
                             Widget.drawScrollBar(i_0_ + (widget.originalWidth), i_1_, widget.originalHeight, widget.scrollPosition, widget.scrollHeight, 0);
                     }
@@ -279,7 +279,7 @@ public class Main extends RSApplet {
                                     int i_30_ = (widget.originalHeight + i_1_);
                                     if(i_30_ > is[3])
                                         i_30_ = is[3];
-                                    Rasterizer.setCoordinates(i_27_, i_28_, i_30_, i_29_);
+                                    Rasterizer.setBounds(i_27_, i_28_, i_30_, i_29_);
                                     int i_31_ = (widget.originalWidth - (1 + -i_25_)) / i_25_;
                                     int i_32_ = (widget.originalHeight - (1 + -i_24_)) / i_24_;
                                     for(int i_33_ = 0; i_31_ > i_33_; i_33_++) {

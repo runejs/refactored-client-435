@@ -82,7 +82,7 @@ public class IndexedImage extends Rasterizer {
             deviation += xOffset;
         }
         if(imageWidth > 0 && imageHeight > 0)
-            ImageRGB.shapeImageToPixels(imgPixels, Rasterizer.pixels, pixelOffset, rasterizerOffset, imageWidth, imageHeight, deviation, originalDeviation, palette);
+            ImageRGB.shapeImageToPixels(imgPixels, Rasterizer.destinationPixels, pixelOffset, rasterizerOffset, imageWidth, imageHeight, deviation, originalDeviation, palette);
     }
 
     public void drawImageAlpha(int x, int y, int alpha) {
@@ -119,7 +119,7 @@ public class IndexedImage extends Rasterizer {
             rasterizerPixelOffset += xOffset;
         }
         if (newWidth > 0 && newHeight > 0) {
-            copyPixelsAlpha(pixels, Rasterizer.pixels, pixel, rasterizerPixel, pixelOffset, rasterizerPixelOffset, newWidth, newHeight, 0, alpha);
+            copyPixelsAlpha(destinationPixels, Rasterizer.destinationPixels, pixel, rasterizerPixel, pixelOffset, rasterizerPixelOffset, newWidth, newHeight, 0, alpha);
         }
     }
 

@@ -146,23 +146,23 @@ public class Item extends Renderable {
     public static void method779(Component arg0, boolean arg1, CacheIndex arg2, CacheIndex arg3) {
         if(!ISAAC.aBoolean512) {
             Class8.aClass68_298 = Class40_Sub5_Sub13.method649(265, 128, arg0, -4875);
-            Rasterizer.resetPixels();
+            Rasterizer.clear();
             GameObject.aClass68_3042 = Class40_Sub5_Sub13.method649(265, 128, arg0, -4875);
-            Rasterizer.resetPixels();
+            Rasterizer.clear();
             Class39.aClass68_907 = Class40_Sub5_Sub13.method649(171, 509, arg0, -4875);
-            Rasterizer.resetPixels();
+            Rasterizer.clear();
             Class51.aClass68_1206 = Class40_Sub5_Sub13.method649(132, 360, arg0, -4875);
-            Rasterizer.resetPixels();
+            Rasterizer.clear();
             Class38.aClass68_887 = Class40_Sub5_Sub13.method649(200, 360, arg0, -4875);
-            Rasterizer.resetPixels();
+            Rasterizer.clear();
             Class17.aClass68_463 = Class40_Sub5_Sub13.method649(238, 202, arg0, -4875);
-            Rasterizer.resetPixels();
+            Rasterizer.clear();
             KeyFocusListener.aClass68_1285 = Class40_Sub5_Sub13.method649(238, 203, arg0, -4875);
-            Rasterizer.resetPixels();
+            Rasterizer.clear();
             GameObjectDefinition.aClass68_2524 = Class40_Sub5_Sub13.method649(94, 74, arg0, -4875);
-            Rasterizer.resetPixels();
+            Rasterizer.clear();
             Class68.aClass68_1631 = Class40_Sub5_Sub13.method649(94, 75, arg0, -4875);
-            Rasterizer.resetPixels();
+            Rasterizer.clear();
             byte[] is = arg2.method170(Native.string_blank, SceneCluster.aClass1_772, 1);
             ImageRGB class40_sub5_sub14_sub4 = new ImageRGB(is, arg0);
             Class8.aClass68_298.method1046((byte) 90);

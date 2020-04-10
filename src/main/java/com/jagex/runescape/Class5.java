@@ -72,7 +72,7 @@ public class Class5 {
         anInt199 = 0;
         Class68_Sub1.aClass68_2213.method1046((byte) 90);
         Player.anIntArray3284 = Rasterizer3D.method708(Player.anIntArray3284);
-        Rasterizer.resetPixels();
+        Rasterizer.clear();
         Class40_Sub5_Sub6.drawInterface(0, ActorDefinition.openFullScreenWidgetId, 503, (byte) -5, 0, 0, 765);
         if(UnderlayDefinition.openSecondaryWidgetId != -1)
             Class40_Sub5_Sub6.drawInterface(0, UnderlayDefinition.openSecondaryWidgetId, 503, (byte) -5, 0, 0, 765);

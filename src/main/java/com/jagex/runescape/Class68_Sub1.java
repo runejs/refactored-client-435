@@ -101,7 +101,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
     }
 
     public void drawGraphics(int x, int y, Graphics graphics) {
-        Rasterizer.createRasterizer(pixels, width, height);
+        Rasterizer.prepare(pixels, width, height);
 
         drawPixels();
         graphics.drawImage(image, x, y, this);
