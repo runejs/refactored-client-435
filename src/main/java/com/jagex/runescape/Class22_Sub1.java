@@ -116,7 +116,7 @@ public class Class22_Sub1 extends Class22 {
     public void method303(byte arg0) {
         if(aBoolean1835) {
             try {
-                Class28.method369(aClass31_1872.anApplet740, "midibox.src=\"c:/silence.mid\";", arg0 ^ 0x6f0f);
+//                Class28.method369(aClass31_1872.anApplet740, "midibox.src=\"c:/silence.mid\";", arg0 ^ 0x6f0f);
             } catch(Throwable throwable) {
                 /* empty */
             }
@@ -134,7 +134,7 @@ public class Class22_Sub1 extends Class22 {
                     class47.method918(aByteArray1866, 0, aByteArray1866.length, false);
                     class47.method917(1);
                     try {
-                        Class28.method369(aClass31_1872.anApplet740, ("midibox.loop=" + (!aBoolean1852 ? "0" : "\"infinite\"") + "; midibox.src=\"" + class47.method915(false).getPath().replace('\\', '/') + "\"; midibox.volume=" + anInt1860 + ";"), -28497);
+//                        Class28.method369(aClass31_1872.anApplet740, ("midibox.loop=" + (!aBoolean1852 ? "0" : "\"infinite\"") + "; midibox.src=\"" + class47.method915(false).getPath().replace('\\', '/') + "\"; midibox.volume=" + anInt1860 + ";"), -28497);
                         aBoolean1835 = true;
                     } catch(Throwable throwable) {
                         /* empty */
@@ -168,7 +168,7 @@ public class Class22_Sub1 extends Class22 {
             do {
                 if(aBoolean1835) {
                     try {
-                        Class28.method369(aClass31_1872.anApplet740, "midibox.volume=" + i + ";", -28497);
+//                        Class28.method369(aClass31_1872.anApplet740, "midibox.volume=" + i + ";", -28497);
                     } catch(Throwable throwable) {
                         break;
                     }

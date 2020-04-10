@@ -19,15 +19,13 @@ import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.util.Signlink;
 import tech.henning.fourthreefive.Configuration;
 
-import java.applet.Applet;
-import java.applet.AppletContext;
 import java.awt.*;
 import java.awt.event.*;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.URL;
 
-public abstract class RSApplet extends Applet implements Runnable, FocusListener, WindowListener {
+public abstract class RSApplet extends Canvas implements Runnable, FocusListener, WindowListener {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1;
     public static int[] anIntArray2 = new int[5];
     public static long[] aLongArray4 = new long[32];
@@ -269,8 +267,6 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             CacheIndex.aLong219 = System.currentTimeMillis() + 4000L;
     }
 
-    public abstract void init();
-
     public boolean verifyHost(int arg0) {
         String string = getDocumentBase().getHost().toLowerCase();
         if(arg0 != 31)
@@ -296,7 +292,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
             aBoolean43 = true;
             System.out.println("error_game_" + gameError);
             try {
-                getAppletContext().showDocument(new URL(getCodeBase(), ("error_game_" + gameError + ".ws")));
+//                getAppletContext().showDocument(new URL(getCodeBase(), ("error_game_" + gameError + ".ws")));
             } catch(Exception exception) {
             }
             if(arg0 > 26)
@@ -350,7 +346,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return super.getDocumentBase();
+        return null;
     }
 
     public void displayClientFrame(byte arg0, int clientVersion, int width, int height, int fileStoreId) {
@@ -404,13 +400,13 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
         }
     }
 
-    public AppletContext getAppletContext() {
-        if(Class35.aFrame1732 != null)
-            return null;
-        if(ISAAC.aClass31_521 != null && ISAAC.aClass31_521.anApplet740 != this)
-            return ISAAC.aClass31_521.anApplet740.getAppletContext();
-        return super.getAppletContext();
-    }
+//    public AppletContext getAppletContext() {
+//        if(Class35.aFrame1732 != null)
+//            return null;
+//        if(ISAAC.aClass31_521 != null && ISAAC.aClass31_521.anApplet740 != this)
+//            return ISAAC.aClass31_521.anApplet740.getAppletContext();
+//        return super.getAppletContext();
+//    }
 
     public void method29(boolean arg0) {
         long l = System.currentTimeMillis();
@@ -452,11 +448,7 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
     }
 
     public URL getCodeBase() {
-        if(Class35.aFrame1732 != null)
-            return null;
-        if(ISAAC.aClass31_521 != null && ISAAC.aClass31_521.anApplet740 != this)
-            return ISAAC.aClass31_521.anApplet740.getCodeBase();
-        return super.getCodeBase();
+        return this.getDocumentBase();
     }
 
     public abstract void method31(boolean bool);
@@ -470,23 +462,21 @@ public abstract class RSApplet extends Applet implements Runnable, FocusListener
         destroy();
     }
 
-    public String getParameter(String parameter) {
-        if(Class35.aFrame1732 != null)
-            return null;
-        if(ISAAC.aClass31_521 != null && this != ISAAC.aClass31_521.anApplet740)
-            return ISAAC.aClass31_521.anApplet740.getParameter(parameter);
-        return super.getParameter(parameter);
-    }
+//    public String getParameter(String parameter) {
+//        if(Class35.aFrame1732 != null)
+//            return null;
+//        if(ISAAC.aClass31_521 != null && this != ISAAC.aClass31_521.anApplet740)
+//            return ISAAC.aClass31_521.anApplet740.getParameter(parameter);
+//        return super.getParameter(parameter);
+//    }
 
     public void windowDeactivated(WindowEvent windowEvent) {
     }
 
     public synchronized void setCanvas(byte arg0) {
-        Container container;
-        if(Class35.aFrame1732 != null)
-            container = Class35.aFrame1732;
-        else
-            container = ISAAC.aClass31_521.anApplet740;
+        Container container  = Class35.aFrame1732;
+//        else
+//            container = ISAAC.aClass31_521.anApplet740;
         if(MouseHandler.aCanvas1469 != null) {
             MouseHandler.aCanvas1469.removeFocusListener(this);
             container.remove(MouseHandler.aCanvas1469);

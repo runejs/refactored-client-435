@@ -933,22 +933,6 @@ public class Main extends RSApplet {
         } while(false);
     }
 
-    public void init() {
-        if(this.verifyHost(31)) {
-            Class13.worldid = Integer.parseInt(this.getParameter("worldid"));
-            Class44.modewhat = Integer.parseInt(this.getParameter("modewhat"));
-            Class44.modewhere = Integer.parseInt(this.getParameter("modewhere"));
-            String string = this.getParameter("lowmem");
-            if(string != null && string.equals("1"))
-                Class59.setLowMemory();
-            else
-                Class8.setHighMemory();
-            String string_80_ = this.getParameter("members");
-            Class22.membersWorld = string_80_ != null && string_80_.equals("1");
-            String string_81_ = this.getParameter("lang");
-            this.displayClientFrame((byte) 120, 435, 503, 765, Class44.modewhat + 32);
-        }
-    }
 
     public void reset() {
         // TODO: Should all these also be "reset"?

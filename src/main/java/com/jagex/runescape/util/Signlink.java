@@ -2,10 +2,10 @@ package com.jagex.runescape.util;
 
 import com.jagex.runescape.Class47;
 import com.jagex.runescape.Interface2;
+import com.jagex.runescape.RSApplet;
 import com.jagex.runescape.Runnable_Impl1;
 import tech.henning.fourthreefive.Configuration;
 
-import java.applet.Applet;
 import java.io.*;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
@@ -31,9 +31,9 @@ public class Signlink implements Runnable {
     public Thread aThread733;
     public String aString734 = null;
     public Class47 cacheData;
-    public Applet anApplet740;
+    public RSApplet anApplet740;
 
-    public Signlink(boolean arg0, Applet arg1, InetAddress inetAddress, int fileStoreId, String cacheFolder, int cacheIndexes) throws IOException {
+    public Signlink(boolean arg0, RSApplet arg1, InetAddress inetAddress, int fileStoreId, String cacheFolder, int cacheIndexes) throws IOException {
         aClass47_728 = null;
         cacheData = null;
         anApplet740 = null;

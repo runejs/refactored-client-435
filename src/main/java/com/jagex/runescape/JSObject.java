@@ -1,7 +1,5 @@
 package com.jagex.runescape;
 
-import java.applet.Applet;
-
 public final class JSObject {
 
     static {
@@ -25,7 +23,7 @@ public final class JSObject {
         long_internal = jsobj_addr;
     }
 
-    public static native JSObject getWindow(Applet applet);
+    public static native JSObject getWindow();
 
     private static native void initClass();
 
