@@ -1,13 +1,10 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.GameObject;
-import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -27,11 +24,11 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
     public static int count;
 
     public int stackable;
-    public RSString name;
-    public RSString[] interfaceOptions;
+    public String name;
+    public String[] interfaceOptions;
     public int primaryMaleHeadPiece = -1;
     public int[] originalColours;
-    public RSString[] groundOptions;
+    public String[] groundOptions;
     public int inventoryModelId;
     public int xOffset2d;
     public int noteTemplateId;
@@ -66,10 +63,10 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
     public int groundScaleY;
 
     public ItemDefinition() {
-        interfaceOptions = new RSString[]{null, null, null, null, Cache.dropStringInstance};
+        interfaceOptions = new String[]{null, null, null, null, "Drop"};
         stackable = 0;
         maleOffset = 0;
-        name = Class61.aClass1_1437;
+        name = "null";
         yOffset2d = 0;
         cost = 1;
         xOffset2d = 0;
@@ -77,7 +74,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
         ambient = 0;
         maleModel1 = -1;
         yan2d = 0;
-        groundOptions = new RSString[]{null, null, Class27.takeStringInstance, null, null};
+        groundOptions = new String[]{null, null, "Take", null, null};
         groundScaleX = 128;
         noteTemplateId = -1;
         secondaryFemaleHeadPiece = -1;
@@ -205,7 +202,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
             definition.interfaceOptions = null;
             definition.teamIndex = 0;
             definition.groundOptions = null;
-            definition.name = Item.aClass1_3069;
+            definition.name = "Members object";
         }
         ISAAC.aClass9_516.put(id, definition);
         return definition;
@@ -341,7 +338,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
         if(opcode == 1) {
             inventoryModelId = buffer.getUnsignedShortBE();
         } else if(opcode == 2) {
-            name = buffer.getRSString();
+            name = buffer.getString();
         } else if(opcode == 4) {
             zoom2d = buffer.getUnsignedShortBE();
         } else if(opcode == 5) {
@@ -377,12 +374,12 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
         } else if(opcode == 26) {
             femaleModel1 = buffer.getUnsignedShortBE();
         } else if(opcode >= 30 && opcode < 35) {
-            groundOptions[-30 + opcode] = buffer.getRSString();
-            if(groundOptions[opcode + -30].equalsIgnoreCase(English.hidden)) {
+            groundOptions[-30 + opcode] = buffer.getString();
+            if(groundOptions[opcode + -30].equalsIgnoreCase("Hidden")) {
                 groundOptions[opcode + -30] = null;
             }
         } else if(opcode >= 35 && opcode < 40) {
-            interfaceOptions[opcode + -35] = buffer.getRSString();
+            interfaceOptions[opcode + -35] = buffer.getString();
         } else if(opcode == 40) {
             int colorCount = buffer.getUnsignedByte();
             destColors = new int[colorCount];
@@ -495,7 +492,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
     }
 
     @Override
-    public RSString getName() {
+    public String getName() {
         return name;
     }
 }

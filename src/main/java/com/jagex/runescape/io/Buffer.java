@@ -72,6 +72,14 @@ public class Buffer extends Node {
         return InteractiveObject.method279(buffer, true, i, -1 + currentPosition + -i);
     }
 
+    public String getString() {
+        int start = currentPosition;
+        while(buffer[currentPosition++] != 0) {
+            /* empty */
+        }
+        return new String(buffer, start, currentPosition - start - 1);
+    }
+
     public void putByte(int value) {
         buffer[currentPosition++] = (byte) value;
     }

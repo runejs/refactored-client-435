@@ -16,17 +16,17 @@ import com.jagex.runescape.scene.util.CollisionMap;
 public class ChatBox {
     public static boolean redrawChatbox = false;
     public static boolean messagePromptRaised = false;
-    public static RSString lastItemSearchInput = HuffmanEncoding.blank_string;
-    public static RSString inputMessage = HuffmanEncoding.blank_string;
+    public static String lastItemSearchInput = "";
+    public static String inputMessage = "";
     public static int itemSearchResultCount = 0;
     public static int itemSearchScroll = 0;
-    public static RSString[] itemSearchResultNames = new RSString[100];
+    public static String[] itemSearchResultNames = new String[100];
     public static int inputType = 0;
     public static int openChatboxWidgetId = -1;
     public static int dialogueId = -1;
-    public static RSString[] chatMessages = new RSString[100];
+    public static String[] chatMessages = new String[100];
     public static int[] chatTypes = new int[100];
-    public static RSString[] chatPlayerNames;
+    public static String[] chatPlayerNames;
     public static int publicChatMode = 0;
     public static int privateChatMode = 0;
     public static int tradeMode = 0;
@@ -47,7 +47,7 @@ public class ChatBox {
             Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(Class40_Sub5_Sub6.aClass1_2446, 239, 40, 0);
             Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft((RSString.linkRSStrings(new RSString[]{inputMessage, InteractiveObject.aClass1_478})), 239, 60, 128);
         } else if(inputType == 3) {
-            if(inputMessage != lastItemSearchInput) {
+            if(!inputMessage.equals(lastItemSearchInput)) {
                 itemSearch(inputMessage);
                 lastItemSearchInput = inputMessage;
             }
@@ -181,12 +181,12 @@ public class ChatBox {
 
     }
 
-    public static void itemSearch(RSString input) {
+    public static void itemSearch(String input) {
         if(input == null || input.length() == 0)
             itemSearchResultCount = 0;
         else {
-            RSString searchTerm = input;
-            RSString[] splitString = new RSString[100];
+            String searchTerm = input;
+            String[] splitString = new String[100];
             int i = 0;
             while(true) {
                 int spaceIndex = searchTerm.indexOf(' ');
@@ -196,7 +196,7 @@ public class ChatBox {
                         splitString[i++] = searchTerm.toLowerCase();
                     break;
                 }
-                RSString first = searchTerm.substring(0, spaceIndex).trim();
+                String first = searchTerm.substring(0, spaceIndex).trim();
                 if(first.length() > 0)
                     splitString[i++] = first.toLowerCase();
                 searchTerm = searchTerm.substring(1 + spaceIndex);
@@ -206,9 +206,9 @@ public class ChatBox {
             for(int itemId = 0; ItemDefinition.count > itemId; itemId++) {
                 ItemDefinition definition = ItemDefinition.forId(itemId, 10);
                 if(definition.noteTemplateId == -1 && definition.name != null) {
-                    RSString itemName = definition.name.toLowerCase();
+                    String itemName = definition.name.toLowerCase();
                     for(int indx = 0; indx < i; indx++) {
-                        if(itemName.contains(splitString[indx]) == -1)
+                        if(!itemName.contains(splitString[indx]))
                             continue while_12_;
                     }
                     itemSearchResultNames[itemSearchResultCount] = itemName;

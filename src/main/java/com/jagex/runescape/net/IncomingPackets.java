@@ -309,7 +309,7 @@ public class IncomingPackets {
                         }
                     }
                     if(!bool && !Class4.inTutorialIsland)
-                        Class44.addChatMessage(class1_32_, Class4.aClass1_180, 4);
+                        Class44.addChatMessage(class1_32_, "wishes to trade with you)3", 4);
                 } else if(message.method87(Class40_Sub5_Sub6.requestcmd_duelreq)) {
                     RSString class1_30_ = (message.substring(0, message.contains(Class43.char_colon)));
                     long l = class1_30_.method58((byte) 120);

@@ -30,7 +30,7 @@ public class Class44 implements Runnable {
         aClass1_1038 = aClass1_1033;
     }
 
-    public static void addChatMessage(RSString name, RSString message, int type) {
+    public static void addChatMessage(String name, String message, int type) {
         if(ChatBox.openChatboxWidgetId == -1)
             ChatBox.redrawChatbox = true;
         if(type == 0 && ChatBox.dialogueId != -1) {
