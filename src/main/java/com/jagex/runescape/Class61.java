@@ -30,7 +30,7 @@ public class Class61 {
 
     public Class40_Sub5_Sub1 aClass40_Sub5_Sub1_1419;
     public int[] anIntArray1420;
-    public RSString[] aClass1Array1430;
+    public String[] aClass1Array1430;
     public int anInt1433 = -1;
 
     public static void method995(byte arg0, int arg1) {

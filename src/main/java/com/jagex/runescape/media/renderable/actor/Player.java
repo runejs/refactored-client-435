@@ -47,7 +47,7 @@ public class Player extends Actor {
     public int headIcon;
     public int anInt3274;
     public int anInt3276;
-    public RSString playerName;
+    public String playerName;
     public int anInt3281;
     public Class30 aClass30_3282;
     public int anInt3283;

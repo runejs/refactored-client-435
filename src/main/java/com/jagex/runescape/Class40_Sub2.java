@@ -50,7 +50,7 @@ public class Class40_Sub2 extends Node {
         GroundItemTile.varbitmasks[i_0_] = (UnderlayDefinition.bitWiseOR(HuffmanEncoding.method1021(GroundItemTile.varbitmasks[i_0_], i_3_ ^ 0xffffffff), HuffmanEncoding.method1021(i_3_, arg0 << i)));
     }
 
-    public static boolean hasFriend(RSString arg0) {
+    public static boolean hasFriend(String arg0) {
         if(arg0 == null)
             return false;
         for(int i = 0; i < Item.friendsCount; i++) {

@@ -10,7 +10,7 @@ import com.jagex.runescape.media.renderable.Renderable;
 public class InteractiveObject {
     public static Cache aClass9_470 = new Cache(10);
     public static int menuOffsetX;
-    public static RSString aClass1_478 = RSString.CreateString("(Z");
+    public static String aClass1_478 = "*";
     public static Class68 aClass68_482;
     public static int[] firstMenuOperand = new int[500];
     public static Class27 aClass27_485 = new Class27();

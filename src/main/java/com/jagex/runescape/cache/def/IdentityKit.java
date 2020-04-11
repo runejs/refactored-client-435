@@ -60,14 +60,14 @@ public class IdentityKit extends SubNode {
         class40_sub5_sub1.anInt2267 = class40_sub1.getUnsignedShortBE();
         class40_sub5_sub1.anInt2263 = class40_sub1.getUnsignedShortBE();
         class40_sub5_sub1.anInt2266 = class40_sub1.getUnsignedShortBE();
-        class40_sub5_sub1.aClass1Array2270 = new RSString[i];
+        class40_sub5_sub1.aClass1Array2270 = new String[i];
         class40_sub5_sub1.anIntArray2262 = new int[i];
         class40_sub1.currentPosition = 0;
         class40_sub5_sub1.anIntArray2272 = new int[i];
         while(class40_sub1.currentPosition < -12 + class40_sub1.buffer.length) {
             int i_1_ = class40_sub1.getUnsignedShortBE();
             if(i_1_ == 3) {
-                class40_sub5_sub1.aClass1Array2270[i_0_] = class40_sub1.getRSString();
+                class40_sub5_sub1.aClass1Array2270[i_0_] = class40_sub1.getString();
             } else if(i_1_ >= 100 || i_1_ == 21 || i_1_ == 38 || i_1_ == 39) {
                 class40_sub5_sub1.anIntArray2262[i_0_] = class40_sub1.getUnsignedByte();
             } else {

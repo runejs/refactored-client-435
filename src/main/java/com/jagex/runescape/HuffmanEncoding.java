@@ -31,7 +31,7 @@ public class HuffmanEncoding {
     public static RSString reportedName = blank_string;
     public static RSString str_Connecting_to_friendserver = RSString.CreateString("Connecting to friendserver");
     public static RSString aClass1_1555 = RSString.CreateString("Remove");
-    public static RSString chatboxInput = blank_string;
+    public static String chatboxInput = "";
     public static int anInt1559 = 7759444;
     public static int openScreenWidgetId = -1;
     public static RSString aClass1_1563 = blank_string;

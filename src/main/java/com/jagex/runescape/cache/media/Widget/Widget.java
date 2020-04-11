@@ -36,7 +36,7 @@ public class Widget extends SubNode {
     public static RSString aClass1_2674 = RSString.CreateString("Starting game engine)3)3)3");
     public static RSString str_Choose_Option = RSString.CreateString("Choose Option");
     public static RSString cmd_errortest = RSString.CreateString("::errortest");
-    public static RSString goldCrown = RSString.CreateString("@cr2@");
+    public static String goldCrown = "@cr2@";
     public static RSString aClass1_2740 = RSString.CreateString("Enter name of friend to add to list");
     public static Widget[][] interfaces;
 
@@ -288,7 +288,7 @@ public class Widget extends SubNode {
         int i_3_ = -1;
         try {
             anIntArray2086 = new int[class40_sub5_sub1.anInt2271];
-            Class51.aClass1Array1204 = new RSString[class40_sub5_sub1.anInt2267];
+            Class51.aClass1Array1204 = new String[class40_sub5_sub1.anInt2267];
             int i_4_ = 0;
             int i_5_ = 0;
             if(arg5) {
@@ -310,8 +310,8 @@ public class Widget extends SubNode {
                         i_7_ = arg1;
                     }
                     anIntArray2086[i_4_++] = i_7_;
-                } else if(arg0[i_6_] instanceof RSString) {
-                    Class51.aClass1Array1204[i_5_++] = (RSString) arg0[i_6_];
+                } else if(arg0[i_6_] instanceof String) {
+                    Class51.aClass1Array1204[i_5_++] = (String) arg0[i_6_];
                 }
             }
             for(; ; ) {
@@ -888,8 +888,8 @@ public class Widget extends SubNode {
                                             }
                                         }
                                     } else if(i_3_ == 3100) {
-                                        RSString class1 = (Class40_Sub11.aClass1Array2153[--i_1_]);
-                                        Class44.addChatMessage((Landscape.aClass1_1183), class1, 0);
+                                        String str = (Class40_Sub11.aClass1Array2153[--i_1_]);
+                                        Class44.addChatMessage("", str, 0);
                                     } else {
                                         if(i_3_ != 3101) {
                                             break;

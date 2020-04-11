@@ -30,7 +30,7 @@ public class ISAAC {
     public static int anInt509 = 0;
     public static Cache aClass9_510 = new Cache(64);
     public static boolean aBoolean512;
-    public static RSString aClass1_515 = RSString.CreateString(": ");
+    public static String aClass1_515 = ": ";
     public static Cache aClass9_516 = new Cache(64);
     public static boolean aBoolean519 = true;
     public static Signlink aClass31_521;

@@ -24,7 +24,7 @@ import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class40_Sub5_Sub1 extends SubNode {
     public static LinkedList aLinkedList_2268 = new LinkedList();
-    public static RSString aClass1_2274 = RSString.CreateString("To");
+    public static String aClass1_2274 = "To";
     public static Class68 aClass68_2275;
     public static int crossY = 0;
     public static RSString aClass1_2277 = RSString.CreateString(" )2> @cya@");
@@ -35,7 +35,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
     public int anInt2263;
     public int anInt2266;
     public int anInt2267;
-    public RSString[] aClass1Array2270;
+    public String[] aClass1Array2270;
     public int anInt2271;
     public int[] anIntArray2272;
 

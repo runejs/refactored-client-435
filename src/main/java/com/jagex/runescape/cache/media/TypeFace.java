@@ -361,7 +361,7 @@ public class TypeFace extends Rasterizer {
     }
 
     public int getTextDisplayedWidth(RSString string) {
-        return this.getDisplayedWidth(string.toString());
+        return this.getStringWidth(string.toString());
     }
 
 
@@ -374,7 +374,7 @@ public class TypeFace extends Rasterizer {
     }
 
     public int getStringWidth(RSString string) {
-        return this.getDisplayedWidth(string.toString());
+        return this.getStringWidth(string.toString());
     }
 
     public void drawStringLeft(RSString arg0, int arg1, int arg2, int arg3) {
@@ -412,11 +412,11 @@ public class TypeFace extends Rasterizer {
 
 
     public void drawStringRight(String string, int x, int y, int colour) {
-        drawString(string, x - getDisplayedWidth(string), y, colour);
+        drawString(string, x - getStringWidth(string), y, colour);
     }
 
     public void drawStringLeft(String string, int x, int y, int colour) {
-        drawString(string, x - getDisplayedWidth(string) / 2, y, colour);
+        drawString(string, x - getStringWidth(string) / 2, y, colour);
     }
 
     public void drawStringCenter(String string, int x, int y, int colour, boolean shadowed) {
@@ -424,10 +424,10 @@ public class TypeFace extends Rasterizer {
     }
 
     public int getStringEffectWidth(String string) {
-        return getDisplayedWidth(string);
+        return getStringWidth(string);
     }
 
-    public final int getDisplayedWidth(String string) {
+    public final int getStringWidth(String string) {
         if(string == null) {
             return 0;
         }
@@ -569,7 +569,7 @@ public class TypeFace extends Rasterizer {
     public void drawCenteredStringWaveY(String string, int x, int y, int wave, int colour) {
         if(string == null)
             return;
-        x -= getDisplayedWidth(string) / 2;
+        x -= getStringWidth(string) / 2;
         y -= characterDefaultHeight;
         for(int index = 0; index < string.length(); index++) {
             char character = string.charAt(index);
@@ -583,14 +583,14 @@ public class TypeFace extends Rasterizer {
     public void drawCenteredString(String text, int x, int y, int color, int shadow) {
         if(text != null) {
             setEffects(color, shadow);
-            drawBasicString(text, x - getDisplayedWidth(text) / 2, y);
+            drawBasicString(text, x - getStringWidth(text) / 2, y);
         }
     }
 
     public void drawCenteredStringWaveXY(String string, int x, int y, int wave, int colour) {
         if(string == null)
             return;
-        x -= getDisplayedWidth(string) / 2;
+        x -= getStringWidth(string) / 2;
         y -= characterDefaultHeight;
         for(int index = 0; index < string.length(); index++) {
             char character = string.charAt(index);
@@ -607,7 +607,7 @@ public class TypeFace extends Rasterizer {
         double speed = 7D - waveSpeed / 8D;
         if(speed < 0.0D)
             speed = 0.0D;
-        x -= getDisplayedWidth(string) / 2;
+        x -= getStringWidth(string) / 2;
         y -= characterDefaultHeight;
         for(int index = 0; index < string.length(); index++) {
             char character = string.charAt(index);
@@ -1045,7 +1045,7 @@ public class TypeFace extends Rasterizer {
     public void drawStringAlignedLeft(String string, int x, int y, int color, int shadow) {
         if(string != null) {
             setEffects(color, shadow);
-            drawBasicString(string, x - getDisplayedWidth(string), y);
+            drawBasicString(string, x - getStringWidth(string), y);
         }
     }
 
@@ -1061,7 +1061,7 @@ public class TypeFace extends Rasterizer {
                 var9[pos] = (int) (Math.sin((double) pos / 3.0D + (double) var6 / 5.0D) * 5.0D);
             }
 
-            drawBasicStringXYMods(string, x - getDisplayedWidth(string) / 2, y, var8, var9);
+            drawBasicStringXYMods(string, x - getStringWidth(string) / 2, y, var8, var9);
         }
     }
 
@@ -1075,7 +1075,7 @@ public class TypeFace extends Rasterizer {
                 vertWaveOffset[whichChar] = (int) (Math.sin((double) whichChar / 2.0D + (double) tick / 5.0D) * 5.0D);
             }
 
-            drawBasicStringXYMods(string, x - getDisplayedWidth(string) / 2, y, (int[]) null, vertWaveOffset);
+            drawBasicStringXYMods(string, x - getStringWidth(string) / 2, y, (int[]) null, vertWaveOffset);
         }
     }
 
@@ -1095,7 +1095,7 @@ public class TypeFace extends Rasterizer {
                 xmod[pos] = (int) (Math.sin((double) pos / 1.5D + (double) var6 / 1.0D) * amplitude);
             }
 
-            drawBasicStringXYMods(var1, var2 - getDisplayedWidth(var1) / 2, var3, (int[]) null, xmod);
+            drawBasicStringXYMods(var1, var2 - getStringWidth(var1) / 2, var3, (int[]) null, xmod);
         }
     }
 

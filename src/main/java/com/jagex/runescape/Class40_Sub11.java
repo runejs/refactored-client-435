@@ -14,13 +14,13 @@ import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.SignlinkNode;
 
 public class Class40_Sub11 extends Node {
-    public static RSString[] friendUsernames = new RSString[200];
-    public static RSString[] aClass1Array2153 = new RSString[1000];
+    public static String[] friendUsernames = new String[200];
+    public static String[] aClass1Array2153 = new String[1000];
     public static int runEnergy = 0;
-    public static RSString aClass1_2161 = RSString.CreateString("headicons_pk");
+    public static String aClass1_2161 = "headicons_pk";
     public static CacheIndex aCacheIndex_2162;
     public static int crossX = 0;
-    public static RSString cmd_fpsoff = RSString.CreateString("::fpsoff");
+    public static String cmd_fpsoff = "::fpsoff";
     public int[] anIntArray2154;
     public int[] anIntArray2155;
     public SignlinkNode[] aSignlinkNodeArray2156;

@@ -21,7 +21,7 @@ public class Class43 {
     public static LinkedList aLinkedList_1022 = new LinkedList();
     public static RSString aClass1_1024 = RSString.CreateString("backleft2");
     public static int bankInsertMode = 0;
-    public static RSString char_colon = RSString.CreateString(":");
+    public static String char_colon =":";
 
     public static void method890(long arg0, int arg1) {
         if(arg0 > 0L) {

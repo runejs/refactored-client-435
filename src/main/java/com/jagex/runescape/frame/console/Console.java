@@ -78,7 +78,7 @@ public class Console {
             Class40_Sub5_Sub17_Sub6.fontBold.setEffects(0xffffff, -1);
             Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(">", 11, 330);
             if(this.versionWidth == -1) {
-                this.versionWidth = Class40_Sub5_Sub17_Sub6.fontSmall.getDisplayedWidth(CONSOLE_VERSION);
+                this.versionWidth = Class40_Sub5_Sub17_Sub6.fontSmall.getStringWidth(CONSOLE_VERSION);
             }
             Class40_Sub5_Sub17_Sub6.fontSmall.drawBasicString(CONSOLE_VERSION, 487 - this.versionWidth, 312);
 

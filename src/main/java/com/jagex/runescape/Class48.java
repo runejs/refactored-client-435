@@ -21,7 +21,7 @@ import com.jagex.runescape.scene.tile.FloorDecoration;
 
 public class Class48 {
     public static RSString aClass1_1122 = RSString.CreateString("RuneScape is loading )2 please wait)3)3)3");
-    public static RSString aClass1_1123 = RSString.CreateString(" ");
+    public static String aClass1_1123 = " ";
     public static RSString aClass1_1124 = RSString.CreateString("Loading title screen )2 ");
     public static int cameraOffsetY = 0;
     public static int modifiedWidgetId = 0;

@@ -115,18 +115,18 @@ public class RSString implements Interface1 {
         return method627(arg1.length, 0, arg1);
     }
 
-    public static RSString method627(int arg1, int arg2, RSString[] arg3) {
+    public static RSString method627(int arg1, int arg2, RSString[] string) {
         int i = 0;
         for(int i_3_ = 0; i_3_ < arg1; i_3_++) {
-            if(arg3[arg2 + i_3_] == null) {
-                arg3[i_3_ + arg2] = GameShell.aClass1_28;
+            if(string[arg2 + i_3_] == null) {
+                string[i_3_ + arg2] = GameShell.aClass1_28;
             }
-            i += arg3[i_3_ + arg2].length;
+            i += string[i_3_ + arg2].length;
         }
         byte[] is = new byte[i];
         int i_4_ = 0;
         for(int i_5_ = 0; i_5_ < arg1; i_5_++) {
-            RSString class1 = arg3[arg2 + i_5_];
+            RSString class1 = string[arg2 + i_5_];
             Class18.method278(class1.chars, 0, is, i_4_, class1.length);
             i_4_ += class1.length;
         }
