@@ -46,18 +46,6 @@ public class RSString implements Interface1 {
         }
     }
 
-    public static void setTutorialIslandFlag() {
-        Class4.anInt182 = 0;
-        int xPos = (((Player.localPlayer.worldX) >> 7) + SpotAnimDefinition.baseX);
-        int yPos = (Class26.baseY + ((Player.localPlayer.worldY) >> 7));
-        if(xPos >= 3053 && xPos <= 3156 && yPos >= 3056 && yPos <= 3136)
-            Class4.anInt182 = 1;
-        if(xPos >= 3072 && xPos <= 3118 && yPos >= 9492 && yPos <= 9535)
-            Class4.anInt182 = 1;
-        if(Class4.anInt182 == 1 && xPos >= 3139 && xPos <= 3199 && yPos >= 3008 && yPos <= 3062)
-            Class4.anInt182 = 0;
-    }
-
     public static byte[] method74(int arg0, CacheIndex arg1, int arg2, int arg4) {
         long l = ((long) (arg0 + 37 * arg2 & 0xffff) + ((long) arg4 << 32) + (long) (arg2 << 16));
         if(aClass9_1684 != null) {

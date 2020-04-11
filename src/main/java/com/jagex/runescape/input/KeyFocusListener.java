@@ -10,6 +10,7 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.GenericTile;
@@ -67,7 +68,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             Renderable.handleSequences(HuffmanEncoding.openScreenWidgetId);
             Class40_Sub5_Sub6.drawInterface(0, HuffmanEncoding.openScreenWidgetId, 334, (byte) -5, 0, 0, 512);
         }
-        RSString.setTutorialIslandFlag();
+        Player.setTutorialIslandFlag();
         if(!Class4.menuOpen) {
             Class43.processRightClick();
             SceneTile.drawMenuTooltip(4);

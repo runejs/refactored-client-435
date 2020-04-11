@@ -308,7 +308,7 @@ public class IncomingPackets {
                             break;
                         }
                     }
-                    if(!bool && Class4.anInt182 == 0)
+                    if(!bool && !Class4.inTutorialIsland)
                         Class44.addChatMessage(class1_32_, Class4.aClass1_180, 4);
                 } else if(message.method87(Class40_Sub5_Sub6.requestcmd_duelreq)) {
                     RSString class1_30_ = (message.substring(0, message.contains(Class43.char_colon)));
@@ -320,7 +320,7 @@ public class IncomingPackets {
                             break;
                         }
                     }
-                    if(!bool && Class4.anInt182 == 0)
+                    if(!bool && !Class4.inTutorialIsland)
                         Class44.addChatMessage(class1_30_, Class61.aClass1_1428, 8);
                 } else if(message.method87(Node.requestcmd_chalreq)) {
                     RSString class1_27_ = (message.substring(0, message.contains(Class43.char_colon)));
@@ -332,7 +332,7 @@ public class IncomingPackets {
                             break;
                         }
                     }
-                    if(!bool && Class4.anInt182 == 0) {
+                    if(!bool && !Class4.inTutorialIsland) {
                         RSString class1_29_ = (message.substring((1 + message.contains((Class43.char_colon))), -9 + message.length()));
                         Class44.addChatMessage(class1_27_, class1_29_, 8);
                     }
@@ -989,7 +989,7 @@ public class IncomingPackets {
                         }
                     }
                 }
-                if(!bool && Class4.anInt182 == 0) {
+                if(!bool && !Class4.inTutorialIsland) {
                     Class40_Sub5_Sub13.aLongArray2757[(Class40_Sub3.anInt2021)] = l_91_;
                     Class40_Sub3.anInt2021 = (1 + Class40_Sub3.anInt2021) % 100;
                     RSString class1 = KeyFocusListener.method956(67, incomingPacketBuffer).method53();

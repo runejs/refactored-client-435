@@ -151,7 +151,7 @@ public class Player extends Actor {
                         }
                     }
                 }
-                if(!bool && Class4.anInt182 == 0) {
+                if(!bool && !Class4.inTutorialIsland) {
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
                     IncomingPackets.incomingPacketBuffer.putBytes(0, messageLength, Class59.aClass40_Sub1_1385.buffer);
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
@@ -327,6 +327,18 @@ public class Player extends Actor {
         }
         IncomingPackets.incomingPacketBuffer.finishBitAccess();
 
+    }
+
+    public static void setTutorialIslandFlag() {
+        Class4.inTutorialIsland = false;
+        int xPos = (((localPlayer.worldX) >> 7) + SpotAnimDefinition.baseX);
+        int yPos = (Class26.baseY + ((localPlayer.worldY) >> 7));
+        if(xPos >= 3053 && xPos <= 3156 && yPos >= 3056 && yPos <= 3136)
+            Class4.inTutorialIsland = true;
+        if(xPos >= 3072 && xPos <= 3118 && yPos >= 9492 && yPos <= 9535)
+            Class4.inTutorialIsland = true;
+        if(Class4.inTutorialIsland  && xPos >= 3139 && xPos <= 3199 && yPos >= 3008 && yPos <= 3062)
+            Class4.inTutorialIsland = false;
     }
 
     public Model getRotatedModel(int arg0) {

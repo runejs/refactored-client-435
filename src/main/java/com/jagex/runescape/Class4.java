@@ -17,7 +17,7 @@ public class Class4 {
     public static int[] anIntArray178;
     public static GameShell anApplet_Sub1_179 = null;
     public static RSString aClass1_180 = RSString.CreateString("wishes to trade with you)3");
-    public static int anInt182 = 0;
+    public static boolean inTutorialIsland = false;
     public static RSString aClass1_183 = RSString.CreateString("mapdots");
     public static int anInt188;
 
