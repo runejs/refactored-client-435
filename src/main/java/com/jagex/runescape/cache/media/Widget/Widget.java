@@ -28,6 +28,7 @@ import com.jagex.runescape.util.Signlink;
 
 import java.awt.*;
 import java.lang.reflect.Method;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Widget extends SubNode {
@@ -42,7 +43,7 @@ public class Widget extends SubNode {
 
     public boolean isIf3 = false;
     public int contentType;
-    public RSString alternateText;
+    public String alternateText;
     public boolean aBoolean2641;
     public int fontId;
     public int originalHeight;
@@ -61,12 +62,12 @@ public class Widget extends SubNode {
     public Object[] anObjectArray2658;
     public int animation;
     public int anInt2660;
-    public RSString[] aClass1Array2661;
+    public String[] aClass1Array2661;
     public int alternateHoveredTextColor;
-    public RSString targetVerb;
+    public String targetVerb;
     public boolean textShadowed;
     public int itemSpritePadsY;
-    public RSString disabledText;
+    public String disabledText;
     public Object[] anObjectArray2669;
     public int alternateSpriteId;
     public Object[] anObjectArray2672;
@@ -88,7 +89,7 @@ public class Widget extends SubNode {
     public boolean aBoolean2694;
     public Object[] anObjectArray2695;
     public int currentY;
-    public RSString[] configActions;
+    public String[] configActions;
     public int[] images;
     public boolean orthogonal;
     public int clickMask;
@@ -96,7 +97,7 @@ public class Widget extends SubNode {
     public int[] imageY;
     public Object[] anObjectArray2707;
     public int[] imageX;
-    public RSString spellName;
+    public String spellName;
     public int[] itemAmounts;
     public int alternateModelId;
     public Object[] anObjectArray2712;
@@ -137,7 +138,7 @@ public class Widget extends SubNode {
         rotationZ = 0;
         textShadowed = false;
         aBoolean2641 = false;
-        targetVerb = Native.string_blank;
+        targetVerb = "";
         anInt2654 = 0;
         tooltip = Class39.str_ok;
         itemSpritePadsY = 0;
@@ -158,17 +159,17 @@ public class Widget extends SubNode {
         alternateModelId = -1;
         originalX = 0;
         isInventory = false;
-        alternateText = Native.string_blank;
+        alternateText = "";
         itemSwapable = false;
         hoveredTextColor = 0;
         originalWidth = 0;
         animation = -1;
         xTextAlignment = 0;
         hoveredSiblingId = -1;
-        spellName = Native.string_blank;
+        spellName = "";
         offsetY2d = 0;
         itemAmount = 0;
-        disabledText = Native.string_blank;
+        disabledText = "";
         id = -1;
         lineHeight = 0;
         itemUsable = false;
@@ -423,8 +424,10 @@ public class Widget extends SubNode {
                     if(i_3_ == 37) {
                         int i_12_ = is[i_2_];
                         i_1_ -= i_12_;
-                        RSString class1 = (RSString.method627(i_12_, i_1_, Class40_Sub11.aClass1Array2153));
-                        Class40_Sub11.aClass1Array2153[i_1_++] = class1;
+                        System.out.println("THIS DOES SOMETHING, GO FIX!");
+                        // TODO: Figure out what this actually does
+//                        RSString class1 = (RSString.method627(i_12_, i_1_, Class40_Sub11.aClass1Array2153));
+//                        Class40_Sub11.aClass1Array2153[i_1_++] = class1;
                         continue;
                     }
                     if(i_3_ == 38) {
@@ -439,7 +442,7 @@ public class Widget extends SubNode {
                         int i_13_ = is[i_2_];
                         Class40_Sub5_Sub1 class40_sub5_sub1_14_ = IdentityKit.method626(i_13_, 73);
                         int[] is_15_ = new int[class40_sub5_sub1_14_.anInt2271];
-                        RSString[] class1s = new RSString[class40_sub5_sub1_14_.anInt2267];
+                        String[] class1s = new String[class40_sub5_sub1_14_.anInt2267];
                         for(int i_16_ = 0; ((class40_sub5_sub1_14_.anInt2263 > i_16_)); i_16_++) {
                             is_15_[i_16_] = (Class67.anIntArray1588[i - (class40_sub5_sub1_14_.anInt2263 + -i_16_)]);
                         }
@@ -844,29 +847,29 @@ public class Widget extends SubNode {
                                                 break;
                                             }
                                             if(i_3_ == 4100) {
-                                                RSString class1 = (Class40_Sub11.aClass1Array2153[--i_1_]);
+                                                String class1 = (Class40_Sub11.aClass1Array2153[--i_1_]);
                                                 int i_75_ = (Class67.anIntArray1588[--i]);
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = (RSString.linkRSStrings((new RSString[]{class1, (HashTable.method334(i_75_))})));
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = class1 + (HashTable.method334(i_75_));
                                             } else if(i_3_ == 4101) {
                                                 i_1_ -= 2;
-                                                RSString class1 = (Class40_Sub11.aClass1Array2153[i_1_ + 1]);
-                                                RSString class1_76_ = (Class40_Sub11.aClass1Array2153[i_1_]);
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = (RSString.linkRSStrings((new RSString[]{class1_76_, class1})));
+                                                String class1 = (Class40_Sub11.aClass1Array2153[i_1_ + 1]);
+                                                String class1_76_ = (Class40_Sub11.aClass1Array2153[i_1_]);
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = class1_76_ + class1;
                                             } else if(i_3_ == 4102) {
-                                                RSString class1 = (Class40_Sub11.aClass1Array2153[--i_1_]);
+                                                String class1 = (Class40_Sub11.aClass1Array2153[--i_1_]);
                                                 int i_77_ = (Class67.anIntArray1588[--i]);
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = (RSString.linkRSStrings((new RSString[]{class1, (HuffmanEncoding.method1024(true, (byte) -85, i_77_))})));
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = class1 + (HuffmanEncoding.method1024(true, (byte) -85, i_77_));
                                             } else if(i_3_ == 4103) {
-                                                RSString class1 = (Class40_Sub11.aClass1Array2153[--i_1_]);
+                                                String class1 = (Class40_Sub11.aClass1Array2153[--i_1_]);
                                                 Class40_Sub11.aClass1Array2153[i_1_++] = class1.toLowerCase();
                                             } else if(i_3_ == 4104) {
                                                 int i_78_ = (Class67.anIntArray1588[--i]);
                                                 long l = (86400000L * ((long) i_78_ + 11745L));
                                                 Class8.aCalendar279.setTime(new Date(l));
-                                                int i_79_ = Class8.aCalendar279.get(5);
-                                                int i_80_ = Class8.aCalendar279.get(2);
-                                                int i_81_ = Class8.aCalendar279.get(1);
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = (RSString.linkRSStrings((new RSString[]{(HashTable.method334(i_79_)), (Class27.aClass1_643), (Class40_Sub5_Sub17_Sub1.aClass1Array2964[i_80_]), (Class27.aClass1_643), (HashTable.method334(i_81_))})));
+                                                int i_79_ = Class8.aCalendar279.get(Calendar.DATE);
+                                                int i_80_ = Class8.aCalendar279.get(Calendar.MONTH);
+                                                int i_81_ = Class8.aCalendar279.get(Calendar.YEAR);
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = HashTable.method334(i_79_)) + (Class27.aClass1_643) + (Class40_Sub5_Sub17_Sub1.aClass1Array2964[i_80_])+ (Class27.aClass1_643)+ (HashTable.method334(i_81_));
                                             } else if(i_3_ == 4105) {
                                                 i_1_ -= 2;
                                                 RSString class1 = (Class40_Sub11.aClass1Array2153[i_1_]);
