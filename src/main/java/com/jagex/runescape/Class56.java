@@ -41,21 +41,19 @@ public class Class56 {
         aClass40_Sub5_Sub14_Sub2_1329 = null;
     }
 
-    public static RSString[] method968(RSString[] arg0, boolean arg1) {
-        if(arg1)
-            method972((byte) -104);
-        RSString[] class1s = new RSString[5];
+    public static String[] method968(String[] arg0) {
+        String[] class1s = new String[5];
         for(int i = 0; i < 5; i++) {
-            class1s[i] = (RSString.linkRSStrings(new RSString[]{HashTable.method334(i), ISAAC.aClass1_515}));
+            class1s[i] = HashTable.method334(i) + ISAAC.aClass1_515;
             if(arg0 != null && arg0[i] != null)
-                class1s[i] = RSString.linkRSStrings((new RSString[]{class1s[i], arg0[i]}));
+                class1s[i] = class1s[i] + arg0[i];
         }
         return class1s;
     }
 
     public static Class38 method972(byte arg0) {
         if(arg0 != 47)
-            method968(null, true);
+            method968(null);
         try {
             return (Class38) Class.forName("com.jagex.runescape.Class38_Sub2").newInstance();
         } catch(Throwable throwable) {

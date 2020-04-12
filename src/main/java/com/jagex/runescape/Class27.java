@@ -35,9 +35,8 @@ public class Class27 {
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array649;
     public static CacheIndex aCacheIndex_654;
     public static int minimapState = 0;
-    public static RSString takeString = RSString.CreateString("Take");
     public static String aClass1_664 = "Offline";
-    public static RSString takeStringInstance = takeString;
+    public static String takeStringInstance = "Take";
     public static int[] anIntArray666 = new int[]{1, 0, -1, 0};
     public static RSString aClass1_668 = RSString.CreateString("Loading game screen )2 ");
     public SubNode aClass40_Sub5_660 = new SubNode();
@@ -129,7 +128,6 @@ public class Class27 {
 
     public static void method356() {
         aClass40_Sub5_Sub14_Sub4Array649 = null;
-        takeString = null;
         aCacheIndex_654 = null;
         aClass1_638 = null;
         aClass1_668 = null;
@@ -219,7 +217,7 @@ public class Class27 {
                 }
             }
             if(action == 26 || action == 46) {
-                RSString class1 = Landscape.menuActionTexts[arg1];
+                String class1 = Landscape.menuActionTexts[arg1];
                 int i_13_ = class1.contains(Class26.aClass1_620);
                 if(i_13_ != -1) {
                     class1 = class1.substring(i_13_ + 5).trim();
@@ -739,7 +737,7 @@ public class Class27 {
                                     Class67.reportMutePlayer = false;
                                 }
                             } else {
-                                Class44.addChatMessage(HuffmanEncoding.blank_string, Class37.aClass1_873, 0);
+                                Class44.addChatMessage("", Class37.aClass1_873, 0);
                             }
                         }
                     }

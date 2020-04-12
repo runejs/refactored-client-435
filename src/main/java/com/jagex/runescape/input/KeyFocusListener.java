@@ -26,7 +26,7 @@ import java.awt.event.KeyListener;
 public class KeyFocusListener implements KeyListener, FocusListener {
     public static LinkedList aLinkedList_1278 = new LinkedList();
     public static int[] anIntArray1282 = new int[256];
-    public static RSString aClass1_1283 = RSString.CreateString("@yel@");
+    public static String aClass1_1283 = "@yel@";
     public static RSString aClass1_1284 = RSString.CreateString("compass");
     public static Class68 aClass68_1285;
 

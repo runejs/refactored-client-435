@@ -25,7 +25,7 @@ public abstract class Class68 {
     public static int anInt1634 = 0;
     public static RSString str_Cancel;
     public static int anInt1637 = 0;
-    public static RSString aClass1_1639 = RSString.CreateString("@or2@");
+    public static String aClass1_1639 = "@or2@";
     public static RSString aClass1_1640 = RSString.CreateString("Cancel");
 
     static {

@@ -19,13 +19,9 @@ public class InteractiveObject {
     public static RSString aClass1_489 = RSString.CreateString("Public chat");
     public static byte[][][] aByteArrayArrayArray492;
     public static int playerRights = 0;
-    public static RSString aClass1_494;
+    public static String aClass1_494 = "@gr3@";
     public static RSString aClass1_495 = aClass1_489;
     public static boolean showFps = false;
-
-    static {
-        aClass1_494 = RSString.CreateString("@gr3@");
-    }
 
     public int z;
     public int hash;

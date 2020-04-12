@@ -52,7 +52,7 @@ public abstract class Actor extends Renderable {
     public int[] anIntArray3087;
     public int[] pathY;
     public int worldY;
-    public RSString forcedChatMessage;
+    public String forcedChatMessage;
     public int anInt3091;
     public int anInt3093;
     public int anInt3094;

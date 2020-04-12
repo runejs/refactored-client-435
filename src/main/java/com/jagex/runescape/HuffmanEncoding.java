@@ -141,7 +141,7 @@ public class HuffmanEncoding {
             if(actorDefinition != null && actorDefinition.isClickable) {
                 RSString class1 = actorDefinition.name;
                 if(actorDefinition.combatLevel != 0)
-                    class1 = (RSString.linkRSStrings((new RSString[]{class1, (SceneTile.getCombatLevelColour((Player.localPlayer.combatLevel), actorDefinition.combatLevel, -99)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(actorDefinition.combatLevel), Class51.aClass1_1199})));
+                    class1 = (RSString.linkRSStrings((new RSString[]{class1, (SceneTile.getCombatLevelColour((Player.localPlayer.combatLevel), actorDefinition.combatLevel)), HashTable.aClass1_569, SpotAnimDefinition.str_prefix_level, HashTable.method334(actorDefinition.combatLevel), Class51.aClass1_1199})));
                 if(Class8.itemSelected == 1) {
                     OverlayDefinition.addActionRow(Main.aClass1_1763, index, x, y, 49, (RSString.linkRSStrings((new RSString[]{Npc.aClass1_3295, SpotAnimDefinition.aClass1_2306, class1}))));
                 } else if(Main.widgetSelected == 1) {
@@ -151,7 +151,7 @@ public class HuffmanEncoding {
                 } else {
                     RSString[] class1s = actorDefinition.options;
                     if(Class60.aBoolean1402)
-                        class1s = Class56.method968(class1s, false);
+                        class1s = Class56.method968(class1s);
                     if(class1s != null) {
                         for(int i = 4; i >= 0; i--) {
                             if(class1s[i] != null && !class1s[i].equalsIgnoreCase((Class38_Sub1.aClass1_1917))) {

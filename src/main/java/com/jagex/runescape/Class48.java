@@ -191,7 +191,7 @@ public class Class48 {
                                                 } else {
                                                     RSString[] class1s = (itemDefinition.interfaceOptions);
                                                     if(Class60.aBoolean1402)
-                                                        class1s = (Class56.method968(class1s, false));
+                                                        class1s = (Class56.method968(class1s));
                                                     if(widget.isInventory) {
                                                         for(int i_9_ = 4; (i_9_ >= 3); i_9_--) {
                                                             if((class1s != null) && ((class1s[i_9_]) != null)) {
@@ -225,7 +225,7 @@ public class Class48 {
                                                     }
                                                     class1s = (widget.configActions);
                                                     if(Class60.aBoolean1402)
-                                                        class1s = (Class56.method968(class1s, false));
+                                                        class1s = (Class56.method968(class1s));
                                                     if(class1s != null) {
                                                         for(int i_13_ = 4; i_13_ >= 0; i_13_--) {
                                                             if((class1s[i_13_]) != null) {
@@ -260,7 +260,7 @@ public class Class48 {
                             if(widget.isInventory) {
                                 RSString[] class1s = itemDefinition.interfaceOptions;
                                 if(Class60.aBoolean1402)
-                                    class1s = Class56.method968(class1s, false);
+                                    class1s = Class56.method968(class1s);
                                 if(class1s == null || class1s[4] == null)
                                     OverlayDefinition.addActionRow(Cache.dropStringInstance, itemDefinition.id, -1 + widget.anInt2736, widget.id, 11, (RSString.linkRSStrings((new RSString[]{VertexNormal.aClass1_1114, (itemDefinition.name)}))));
                                 else

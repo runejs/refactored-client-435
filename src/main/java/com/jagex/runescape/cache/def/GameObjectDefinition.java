@@ -31,7 +31,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
     public int setDecorDisplacement;
     public int animationId;
     public int modelSizeX;
-    public RSString[] actions;
+    public String[] actions;
     public int[] recolorToReplace;
     public int icon = -1;
     public int blockingMask;
@@ -61,7 +61,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
     public int hasActions;
     public boolean obstructsGround;
     public int varpID;
-    public RSString name;
+    public String name;
     public boolean rotated;
 
     public GameObjectDefinition() {
@@ -77,7 +77,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         supportsItems = -1;
         animationId = -1;
         setDecorDisplacement = 16;
-        actions = new RSString[5];
+        actions = new String[5];
         offsetHeight = 0;
         solid = true;
         sizeY = 1;
@@ -89,7 +89,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         sizeX = 1;
         obstructsGround = false;
         modelSizeHeight = 128;
-        name = Class44.aClass1_1043;
+        name = "null";
         castsShadow = true;
         contrast = 0;
         configId = -1;
@@ -400,7 +400,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
                 }
             }
         } else if(opcode == 2) {
-            name = buffer.getRSString();
+            name = buffer.getString();
         } else if(opcode == 5) {
             int length = buffer.getUnsignedByte();
             if(length > 0) {
@@ -442,7 +442,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         } else if(opcode == 39) {
             contrast = 5 * buffer.getByte();
         } else if(opcode >= 30 && opcode < 35) {
-            actions[opcode - 30] = buffer.getRSString();
+            actions[opcode - 30] = buffer.getString();
             if(actions[opcode + -30].equalsIgnoreCase(English.hidden)) {
                 actions[(opcode + -30)] = null;
             }
@@ -566,7 +566,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
     }
 
     @Override
-    public RSString getName() {
+    public String getName() {
         return name;
     }
 }

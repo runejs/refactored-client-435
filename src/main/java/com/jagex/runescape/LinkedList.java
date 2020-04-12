@@ -50,17 +50,17 @@ public class LinkedList {
         aClass1_1076 = null;
     }
 
-    public static RSString method903(int arg0, byte arg1) {
+    public static String method903(int arg0, byte arg1) {
         if(arg1 >= -13)
             return null;
-        RSString class1 = HashTable.method334(arg0);
+        String class1 = HashTable.method334(arg0).toString();
         for(int i = -3 + class1.length(); i > 0; i -= 3)
-            class1 = (RSString.linkRSStrings(new RSString[]{class1.substring(0, i), Class33.aClass1_795, class1.substring(i)}));
+            class1 = class1.substring(0, i) + Class33.aClass1_795 + class1.substring(i);
         if(class1.length() > 8)
-            class1 = (RSString.linkRSStrings((new RSString[]{Landscape.aClass1_1162, class1.substring(0, -8 + class1.length()), UnderlayDefinition.aClass1_2577, GenericTile.aClass1_1213, class1, Class51.aClass1_1199})));
+            class1 = Landscape.aClass1_1162 + class1.substring(0, -8 + class1.length()) + UnderlayDefinition.aClass1_2577 + GenericTile.aClass1_1213 + class1 + Class51.aClass1_1199;
         else if(class1.length() > 4)
-            class1 = (RSString.linkRSStrings((new RSString[]{Renderable.aClass1_2862, class1.substring(0, class1.length() + -4), IdentityKit.aClass1_2593, GenericTile.aClass1_1213, class1, Class51.aClass1_1199})));
-        return RSString.linkRSStrings((new RSString[]{Class48.aClass1_1123, class1}));
+            class1 = Renderable.aClass1_2862 + class1.substring(0, class1.length() + -4) + IdentityKit.aClass1_2593 + GenericTile.aClass1_1213 + class1 + Class51.aClass1_1199;
+        return Class48.aClass1_1123 + class1;
     }
 
     public static void method907(int arg0) {

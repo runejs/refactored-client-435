@@ -9,7 +9,7 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class29 {
-    public static RSString aClass1_670 = RSString.CreateString("@or3@");
+    public static String aClass1_670 = "@or3@";
     public static RSString aClass1_671 = RSString.CreateString("mapscene");
     public static int tabAreaOverlayWidgetId = -1;
     public static RSString aClass1_674 = RSString.CreateString(" x");

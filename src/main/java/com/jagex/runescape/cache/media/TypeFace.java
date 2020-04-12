@@ -192,7 +192,7 @@ public class TypeFace extends Rasterizer {
             int length = text.length();
             int index = -1;
             for(int idx = 0; idx < length; idx++) {
-                int character = text.getChar(idx);
+                int character = text.charAt(idx);
                 if(character == 60) { // 60 = <
                     index = idx;
                 } else if(character == 62 && index != -1) { // 62 == >
@@ -235,11 +235,11 @@ public class TypeFace extends Rasterizer {
                         character = 174;
                     }
                 }
-                if(character == 64 && idx + 4 < length && text.getChar(idx + 4) == 64) { // 64 = @
+                if(character == 64 && idx + 4 < length && text.charAt(idx + 4) == 64) { // 64 = @
                     stylingTag = text.substring(idx, idx + 5);
                     resultText.add(stylingTag);
                     idx += 4;
-                } else if(character == 92 && idx + 1 < length && text.getChar(idx + 1) == 110) { // 92 = \ 110 = n
+                } else if(character == 92 && idx + 1 < length && text.charAt(idx + 1) == 110) { // 92 = \ 110 = n
                     stylingTag = null;
                     aClass1Array2897[i_7_++] = resultText.substring(i_3_, resultText.length()).trim();
                     i_3_ = resultText.length();
@@ -323,7 +323,7 @@ public class TypeFace extends Rasterizer {
         arg0 = arg0.trim();
         int i = 0;
         for(int i_25_ = 0; i_25_ < arg0.length(); i_25_++) {
-            if(arg0.getChar(i_25_) == 32)
+            if(arg0.charAt(i_25_) == 32)
                 i++;
         }
         int i_26_ = 0;

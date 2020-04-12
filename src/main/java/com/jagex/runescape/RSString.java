@@ -198,7 +198,7 @@ public class RSString implements Interface1 {
         return true;
     }
 
-    public int getChar(int arg0) {
+    public int charAt(int arg0) {
         return 0xff & chars[arg0];
     }
 
@@ -206,13 +206,13 @@ public class RSString implements Interface1 {
         return method64(0, arg1);
     }
 
-    public long method58(byte arg0) {
+    public static long method58(String arg0) {
         long l = 0L;
-        for(int i = 0; i < length; i++) {
+        for(int i = 0; i < arg0.length(); i++) {
             if(i >= 12)
                 break;
             l *= 37L;
-            int i_1_ = chars[i];
+            int i_1_ = arg0.charAt(i);
             if(i_1_ >= 65 && i_1_ <= 90)
                 l += (long) (i_1_ + 1 + -65);
             else if(i_1_ >= 97 && i_1_ <= 122)
@@ -223,8 +223,6 @@ public class RSString implements Interface1 {
         for(/**/; (l % 37L == 0 && l != 0); l /= 37L) {
             /* empty */
         }
-        if(arg0 < 88)
-            trim();
         return l;
     }
 

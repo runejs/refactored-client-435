@@ -155,25 +155,23 @@ public class SceneTile extends Node {
         aClass40_Sub5_Sub14_Sub4_2043 = null;
     }
 
-    public static RSString getCombatLevelColour(int arg0, int arg1, int arg2) {
-        if(arg2 >= -16)
-            return null;
-        int i = -arg1 + arg0;
-        if(i < -9)
+    public static String getCombatLevelColour(int arg0, int arg1) {
+        int diff = -arg1 + arg0;
+        if(diff < -9)
             return FloorDecoration.aClass1_610;
-        if(i < -6)
+        if(diff < -6)
             return Class29.aClass1_670;
-        if(i < -3)
+        if(diff < -3)
             return Class68.aClass1_1639;
-        if(i < 0)
+        if(diff < 0)
             return Cache.aClass1_327;
-        if(i > 9)
+        if(diff > 9)
             return Landscape.aClass1_1162;
-        if(i > 6)
+        if(diff > 6)
             return InteractiveObject.aClass1_494;
-        if(i > 3)
+        if(diff > 3)
             return Node.aClass1_932;
-        if(i > 0)
+        if(diff > 0)
             return Class37.aClass1_877;
         return KeyFocusListener.aClass1_1283;
     }

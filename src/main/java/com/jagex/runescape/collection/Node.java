@@ -11,7 +11,7 @@ public class Node {
     public static RSString aClass1_929 = RSString.CreateString("");
     public static RSString aClass1_930 = RSString.CreateString("");
     public static RSString aClass1_931 = RSString.CreateString("");
-    public static RSString aClass1_932 = RSString.CreateString("@gr2@");
+    public static String aClass1_932 = "@gr2@";
     public static RSString aClass1_934 = RSString.CreateString("");
     public static RSString aClass1_937 = RSString.CreateString("");
     public static int anInt938 = 500;

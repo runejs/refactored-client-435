@@ -14,7 +14,7 @@ public class Cache {
     public static RSString aClass1_323 = (RSString.CreateString("Please check your message)2centre for details)3"));
     public static int anInt324 = 0;
     public static Cache aClass9_326 = new Cache(200);
-    public static RSString aClass1_327 = RSString.CreateString("@or1@");
+    public static String aClass1_327 = "@or1@";
     public static CacheIndex aCacheIndex_329;
     public static boolean redrawChatbox = false;
     public static RSString aClass1_332 = RSString.CreateString("Classic");

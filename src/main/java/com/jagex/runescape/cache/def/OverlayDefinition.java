@@ -60,12 +60,12 @@ public class OverlayDefinition extends SubNode {
         Class42.method886(0, 0, false, null, arg0);
     }
 
-    public static void addActionRow(RSString string, int menuAction, int firstMenuOperand, int secondMenuOperand, int actionType, RSString arg6) {
-        if(ActorDefinition.menuActionRow < 500) {
-            if(arg6.length() <= 0)
+    public static void addActionRow(String string, int menuAction, int firstMenuOperand, int secondMenuOperand, int actionType, String arg6) {
+        if (ActorDefinition.menuActionRow < 500) {
+            if (arg6.length() <= 0)
                 Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string;
             else
-                Landscape.menuActionTexts[ActorDefinition.menuActionRow] = RSString.linkRSStrings((new RSString[]{string, (VertexNormal.aClass1_1117), arg6}));
+                Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string + VertexNormal.aClass1_1117 + arg6;
             Class38.menuActionTypes[ActorDefinition.menuActionRow] = actionType;
             Class33.selectedMenuActions[ActorDefinition.menuActionRow] = menuAction;
             InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow] = firstMenuOperand;
@@ -75,41 +75,41 @@ public class OverlayDefinition extends SubNode {
     }
 
     public static void method559(int arg0) {
-        if(arg0 != Class51.anInt1197) {
-            if(Class51.anInt1197 == 0)
+        if (arg0 != Class51.anInt1197) {
+            if (Class51.anInt1197 == 0)
                 CollisionMap.method144(12433);
-            if(arg0 == 20 || arg0 == 40) {
+            if (arg0 == 20 || arg0 == 40) {
                 Main.anInt1756 = 0;
                 anInt2321 = 0;
                 Class40_Sub3.anInt2032 = 0;
             }
-            if(arg0 != 20 && arg0 != 40 && Class30.aClass64_717 != null) {
+            if (arg0 != 20 && arg0 != 40 && Class30.aClass64_717 != null) {
                 Class30.aClass64_717.method1009();
                 Class30.aClass64_717 = null;
             }
-            if(Class51.anInt1197 == 25 || Class51.anInt1197 == 40) {
+            if (Class51.anInt1197 == 25 || Class51.anInt1197 == 40) {
                 Class65.method1018();
                 Rasterizer.clear();
             }
-            if(Class51.anInt1197 == 25) {
+            if (Class51.anInt1197 == 25) {
                 Class37.anInt874 = 0;
                 PacketBuffer.anInt2231 = 1;
                 IdentityKit.anInt2591 = 0;
                 GameObject.anInt3048 = 1;
                 Class68.anInt1634 = 0;
             }
-            if(arg0 == 0 || arg0 == 35) {
+            if (arg0 == 0 || arg0 == 35) {
                 FloorDecoration.method344(-40);
                 Class38.method440((byte) -73);
-                if(Class68_Sub1.aClass68_2213 == null)
+                if (Class68_Sub1.aClass68_2213 == null)
                     Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649(503, 765, MouseHandler.aCanvas1469, -4875);
             }
-            if(arg0 == 5 || arg0 == 10 || arg0 == 20) {
+            if (arg0 == 5 || arg0 == 10 || arg0 == 20) {
                 Class68_Sub1.aClass68_2213 = null;
                 FloorDecoration.method344(-69);
                 Item.method779(MouseHandler.aCanvas1469, true, (RSCanvas.aClass6_Sub1_48), (ActorDefinition.aClass6_Sub1_2377));
             }
-            if(arg0 == 25 || arg0 == 30 || arg0 == 40) {
+            if (arg0 == 25 || arg0 == 30 || arg0 == 40) {
                 Class68_Sub1.aClass68_2213 = null;
                 Class38.method440((byte) -98);
                 Class40_Sub5_Sub17_Sub1.method763(MouseHandler.aCanvas1469, (byte) -128, (ActorDefinition.aClass6_Sub1_2377));
@@ -121,7 +121,7 @@ public class OverlayDefinition extends SubNode {
 
     public static void drawMinimapMark(ImageRGB sprite, int mapX, int mapY) {
         int len = mapX * mapX + (mapY * mapY);
-        if(len > 4225 && len < 90000) {
+        if (len > 4225 && len < 90000) {
             int theta = 0x7ff & GroundItemTile.cameraHorizontal + Class43.cameraYawOffset;
             int sine = Model.SINE[theta];
             int cosine = Model.COSINE[theta];
@@ -139,16 +139,16 @@ public class OverlayDefinition extends SubNode {
     }
 
     public void method553(Buffer arg2) {
-        while(true) {
+        while (true) {
             int i = arg2.getUnsignedByte();
-            if(i == 0)
+            if (i == 0)
                 break;
             method556(arg2, i);
         }
     }
 
     public void method555() {
-        if(anInt2336 != -1) {
+        if (anInt2336 != -1) {
             calculateHsl(anInt2336);
             anInt2330 = saturation;
             anInt2346 = lightness;
@@ -158,11 +158,11 @@ public class OverlayDefinition extends SubNode {
     }
 
     public void method556(Buffer arg1, int arg2) {
-        if(arg2 == 1)
+        if (arg2 == 1)
             anInt2345 = arg1.getMediumBE();
-        else if(arg2 != 2) {
-            if(arg2 != 5) {
-                if(arg2 == 7)
+        else if (arg2 != 2) {
+            if (arg2 != 5) {
+                if (arg2 == 7)
                     anInt2336 = arg1.getMediumBE();
             } else
                 aBoolean2338 = false;
@@ -175,27 +175,27 @@ public class OverlayDefinition extends SubNode {
         double g = (double) ((0xff2d & color) >> 8) / 256.0;
         double b = (double) (0xff & color) / 256.0;
         double var10 = r;
-        if(g < var10)
+        if (g < var10)
             var10 = g;
-        if(var10 > b)
+        if (var10 > b)
             var10 = b;
         double var11 = r;
-        if(g > var11)
+        if (g > var11)
             var11 = g;
         double var12 = 0.0;
         double var16 = 0.0;
-        if(b > var11)
+        if (b > var11)
             var11 = b;
         double var14 = (var11 + var10) / 2.0;
-        if(var10 != var11) {
-            if(var14 < 0.5)
+        if (var10 != var11) {
+            if (var14 < 0.5)
                 var16 = (var11 - var10) / (var11 + var10);
-            if(var14 >= 0.5)
+            if (var14 >= 0.5)
                 var16 = (-var10 + var11) / (-var10 + (2.0 - var11));
-            if(var11 != r) {
-                if(g == var11)
+            if (var11 != r) {
+                if (g == var11)
                     var12 = 2.0 + (b - r) / (var11 - var10);
-                else if(var11 == b)
+                else if (var11 == b)
                     var12 = (-g + r) / (-var10 + var11) + 4.0;
             } else
                 var12 = (g - b) / (var11 - var10);
@@ -204,13 +204,13 @@ public class OverlayDefinition extends SubNode {
         hue = (int) (var12 * 256.0);
         saturation = (int) (256.0 * var14);
         lightness = (int) (var16 * 256.0);
-        if(lightness < 0)
+        if (lightness < 0)
             lightness = 0;
-        else if(lightness > 255)
+        else if (lightness > 255)
             lightness = 255;
-        if(saturation < 0)
+        if (saturation < 0)
             saturation = 0;
-        else if(saturation > 255)
+        else if (saturation > 255)
             saturation = 255;
     }
 }

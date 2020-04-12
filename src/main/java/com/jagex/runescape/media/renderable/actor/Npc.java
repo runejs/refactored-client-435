@@ -28,7 +28,7 @@ import com.jagex.runescape.scene.tile.WallDecoration;
 
 public class Npc extends Actor {
     public static int anInt3294 = 0;
-    public static RSString aClass1_3295 = null;
+    public static String aClass1_3295 = null;
     public static boolean aBoolean3298;
     public static Scene currentScene;
     public static int[] anIntArray3304 = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
@@ -470,7 +470,7 @@ public class Npc extends Actor {
                 npc.anInt3101 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             }
             if((0x40 & mask) != 0) {
-                npc.forcedChatMessage = IncomingPackets.incomingPacketBuffer.getRSString();
+                npc.forcedChatMessage = IncomingPackets.incomingPacketBuffer.getString();
                 npc.anInt3078 = 100;
             }
             if((mask & 0x80) != 0) {

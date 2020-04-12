@@ -26,16 +26,13 @@ import com.jagex.runescape.scene.tile.Wall;
 public class Class37 {
     public static HashTable aClass23_869 = new HashTable(32);
     public static boolean aBoolean871 = false;
-    public static RSString aClass1_873;
+    public static String aClass1_873 = "Please close the interface you have open before using (Wreport abuse(W";
     public static int anInt874;
-    public static RSString aClass1_875;
     public static int anInt876 = 0;
-    public static RSString aClass1_877 = RSString.CreateString("@gr1@");
+    public static String aClass1_877 = "@gr1@";
     public static ImageRGB[] cursorCross;
 
     static {
-        aClass1_875 = (RSString.CreateString("Please close the interface you have open before using (Wreport abuse(W"));
-        aClass1_873 = aClass1_875;
         anInt874 = 0;
     }
 

@@ -26,7 +26,7 @@ public class ChatBox {
     public static int dialogueId = -1;
     public static String[] chatMessages = new String[100];
     public static int[] chatTypes = new int[100];
-    public static String[] chatPlayerNames;
+    public static String[] chatPlayerNames  = new String[100];
     public static int publicChatMode = 0;
     public static int privateChatMode = 0;
     public static int tradeMode = 0;

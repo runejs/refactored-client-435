@@ -49,7 +49,7 @@ public class Landscape {
     public static RSString aClass1_1180;
     public static RSString aClass1_1181;
     public static RSString aClass1_1183 = RSString.CreateString("");
-    public static RSString[] menuActionTexts = new RSString[500];
+    public static String[] menuActionTexts = new String[500];
     public static Class68 aClass68_1185;
     public static int[] anIntArray1186;
 

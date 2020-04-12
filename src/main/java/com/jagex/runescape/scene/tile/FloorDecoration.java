@@ -33,7 +33,7 @@ public class FloorDecoration {
     public static SignlinkNode aSignlinkNode_607;
     public static Class40_Sub9 aClass40_Sub9_608;
     public static String aClass1_610 = "@red@";
-    public static RSString aClass1_611 = null;
+    public static String aClass1_611 = null;
     public static int[] anIntArray612;
     public static int anInt614 = -1;
     public static RSString aClass1_615 = RSString.CreateString("huffman");

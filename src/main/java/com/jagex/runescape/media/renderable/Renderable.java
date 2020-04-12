@@ -13,7 +13,7 @@ public abstract class Renderable extends SubNode {
     public static CacheIndex_Sub1 aClass6_Sub1_2857;
     public static long aLong2858 = 0L;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2860;
-    public static RSString aClass1_2862 = RSString.CreateString("@cya@");
+    public static String aClass1_2862 ="@cya@";
     public static RSString aClass1_2864;
     public static int[] anIntArray2865;
     public static int anInt2866;
@@ -21,7 +21,6 @@ public abstract class Renderable extends SubNode {
     public static RSString aClass1_2870;
 
     static {
-        ChatBox.chatPlayerNames = new RSString[100];
         anInt2869 = 0;
         aClass1_2870 = RSString.CreateString(" from your friend list first");
         aClass1_2864 = aClass1_2870;

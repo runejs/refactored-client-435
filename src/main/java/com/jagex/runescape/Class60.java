@@ -203,7 +203,7 @@ public class Class60 {
                     while(Class34.method416((byte) -104)) {
                         boolean bool = false;
                         for(int i_19_ = 0; (Native.supportedCharacters.length() > i_19_); i_19_++) {
-                            if(Native.supportedCharacters.getChar(i_19_) == Class59.anInt1388) {
+                            if(Native.supportedCharacters.charAt(i_19_) == Class59.anInt1388) {
                                 bool = true;
                                 break;
                             }

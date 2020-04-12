@@ -45,12 +45,12 @@ public class Main extends GameShell {
     public static int menuOffsetY;
     public static RSString aClass1_1761 = RSString.CreateString("Welcome to Runescape");
     public static RSString aClass1_1762 = RSString.CreateString("logo");
-    public static RSString aClass1_1763 = RSString.CreateString("Use");
+    public static String aClass1_1763 = "Use";
     public static int anInt1764 = 0;
     public static int anInt1766 = 1;
     public static int anInt1769 = -1;
     public static int widgetSelected = 0;
-    public static RSString[] playerActions = new RSString[5];
+    public static String[] playerActions = new String[5];
     public static RSString aClass1_1781 = (RSString.CreateString("Account locked as we suspect it has been stolen)3"));
     public static RSString aClass1_1788 = RSString.CreateString("backtop1");
     public static boolean aBoolean1790;

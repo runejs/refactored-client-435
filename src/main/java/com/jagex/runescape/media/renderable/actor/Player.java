@@ -141,7 +141,7 @@ public class Player extends Actor {
             int messageLength = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             int i_5_ = IncomingPackets.incomingPacketBuffer.currentPosition;
             if(player.playerName != null && player.aClass30_3282 != null) {
-                long l = player.playerName.method58((byte) 101);
+                long l = RSString.method58(player.playerName);
                 boolean bool = false;
                 if(playerRights <= 1) {
                     for(int i_6_ = 0; i_6_ < Class42.anInt1008; i_6_++) {
@@ -155,15 +155,15 @@ public class Player extends Actor {
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
                     IncomingPackets.incomingPacketBuffer.putBytes(0, messageLength, Class59.aClass40_Sub1_1385.buffer);
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
-                    RSString class1 = KeyFocusListener.method956(124, Class59.aClass40_Sub1_1385).method53();
+                    String class1 = KeyFocusListener.method956(124, Class59.aClass40_Sub1_1385).method53().toString();
                     player.forcedChatMessage = class1.trim();
                     player.anInt3078 = 150;
                     player.chatEffects = chatEffectsAndColors & 0xff;
                     player.chatcolor = chatEffectsAndColors >> 8;
                     if(playerRights == 2 || playerRights == 3)
-                        Class44.addChatMessage((RSString.linkRSStrings((new RSString[]{Widget.goldCrown, player.playerName}))), class1, 1);
+                        Class44.addChatMessage(Widget.goldCrown + player.playerName, class1, 1);
                     else if(playerRights == 1)
-                        Class44.addChatMessage((RSString.linkRSStrings((new RSString[]{Class51.whiteCrown, player.playerName}))), class1, 1);
+                        Class44.addChatMessage(Class51.whiteCrown+ player.playerName, class1, 1);
                     else
                         Class44.addChatMessage(player.playerName, class1, 2);
                 }
@@ -191,8 +191,8 @@ public class Player extends Actor {
                 player.anInt3140 = -1;
         }
         if((0x80 & mask) != 0) { // forced chat
-            player.forcedChatMessage = IncomingPackets.incomingPacketBuffer.getRSString();
-            if(player.forcedChatMessage.getChar(0) == 126) {
+            player.forcedChatMessage = IncomingPackets.incomingPacketBuffer.getString();
+            if(player.forcedChatMessage.charAt(0) == 126) {
                 player.forcedChatMessage = player.forcedChatMessage.substring(1);
                 Class44.addChatMessage(player.playerName, player.forcedChatMessage, 2);
             } else if(player == localPlayer)
@@ -455,7 +455,7 @@ public class Player extends Actor {
         runAnimationId = buffer.getUnsignedShortBE();
         if(runAnimationId == 65535)
             runAnimationId = -1;
-        playerName = Class60.method991(-127, buffer.getLongBE()).method85();
+        playerName = Class60.method991(-127, buffer.getLongBE()).method85().toString();
         combatLevel = buffer.getUnsignedByte();
         skillLevel = buffer.getUnsignedShortBE();
         if(aClass30_3282 == null)
