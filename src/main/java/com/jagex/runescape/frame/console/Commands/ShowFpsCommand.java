@@ -6,7 +6,7 @@ import com.jagex.runescape.scene.InteractiveObject;
 
 public class ShowFpsCommand extends Command {
     public ShowFpsCommand() {
-        super("show_fps", "Shows FPS counter");
+        super(new String[]{"displayfps", "show_fps"}, "Shows FPS counter");
     }
 
     @Override

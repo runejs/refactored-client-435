@@ -32,7 +32,7 @@ import java.util.zip.GZIPInputStream;
 public class Landscape {
     public static int anInt1157 = 0;
     public static RSString aClass1_1158 = RSString.CreateString("Enter amount:");
-    public static RSString aClass1_1162 = RSString.CreateString("@gre@");
+    public static String aClass1_1162 = "@gre@";
     public static RSString aClass1_1163 = RSString.CreateString("glow1:");
     public static int mouseY = 0;
     public static CollisionMap[] currentCollisionMap = new CollisionMap[4];

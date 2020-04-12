@@ -14,7 +14,7 @@ public class PacketBuffer extends Buffer {
     public static int anInt2231 = 1;
     public static boolean hiddenButtonTest = false;
     public static Effect[] effects = new Effect[50];
-    public static RSString str_Please_Wait = RSString.CreateString("Please wait)3)3)3");
+    public static String str_Please_Wait = "Please wait)3)3)3";
     public static long aLong2241 = 0L;
     public static int currentSound = 0;
     public static Class40_Sub5_Sub13 aClass40_Sub5_Sub13_2250;

@@ -36,7 +36,7 @@ public class Class27 {
     public static CacheIndex aCacheIndex_654;
     public static int minimapState = 0;
     public static RSString takeString = RSString.CreateString("Take");
-    public static RSString aClass1_664 = RSString.CreateString("Offline");
+    public static String aClass1_664 = "Offline";
     public static RSString takeStringInstance = takeString;
     public static int[] anIntArray666 = new int[]{1, 0, -1, 0};
     public static RSString aClass1_668 = RSString.CreateString("Loading game screen )2 ");

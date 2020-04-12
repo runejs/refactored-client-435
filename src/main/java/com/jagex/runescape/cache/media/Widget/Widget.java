@@ -869,11 +869,11 @@ public class Widget extends SubNode {
                                                 int i_79_ = Class8.aCalendar279.get(Calendar.DATE);
                                                 int i_80_ = Class8.aCalendar279.get(Calendar.MONTH);
                                                 int i_81_ = Class8.aCalendar279.get(Calendar.YEAR);
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = HashTable.method334(i_79_)) + (Class27.aClass1_643) + (Class40_Sub5_Sub17_Sub1.aClass1Array2964[i_80_])+ (Class27.aClass1_643)+ (HashTable.method334(i_81_));
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = HashTable.method334(i_79_).toString() + "-" + (Class40_Sub5_Sub17_Sub1.aClass1Array2964[i_80_])+ "-" + (HashTable.method334(i_81_));
                                             } else if(i_3_ == 4105) {
                                                 i_1_ -= 2;
-                                                RSString class1 = (Class40_Sub11.aClass1Array2153[i_1_]);
-                                                RSString class1_82_ = (Class40_Sub11.aClass1Array2153[i_1_ + 1]);
+                                                String class1 = (Class40_Sub11.aClass1Array2153[i_1_]);
+                                                String class1_82_ = (Class40_Sub11.aClass1Array2153[i_1_ + 1]);
                                                 if((Player.localPlayer.aClass30_3282) == null || !(Player.localPlayer.aClass30_3282.gender)) {
                                                     Class40_Sub11.aClass1Array2153[i_1_++] = class1;
                                                 } else {
@@ -881,13 +881,13 @@ public class Widget extends SubNode {
                                                 }
                                             } else if(i_3_ == 4106) {
                                                 int i_83_ = (Class67.anIntArray1588[--i]);
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = (HashTable.method334(i_83_));
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = (HashTable.method334(i_83_).toString());
                                             } else {
                                                 if(i_3_ != 4107) {
                                                     break;
                                                 }
                                                 i_1_ -= 2;
-                                                Class67.anIntArray1588[i++] = (Class40_Sub11.aClass1Array2153[i_1_].method84((Class40_Sub11.aClass1Array2153[i_1_ + 1])));
+                                                Class67.anIntArray1588[i++] = (Class40_Sub11.aClass1Array2153[i_1_].compareTo((Class40_Sub11.aClass1Array2153[i_1_ + 1])));
                                             }
                                         }
                                     } else if(i_3_ == 3100) {
@@ -940,10 +940,10 @@ public class Widget extends SubNode {
                             widget = (!bool ? Class22_Sub2.aWidget_1887 : (Class40_Sub6.aWidget_2116));
                         }
                         if(i_3_ >= 1300 && i_3_ <= 1309 || i_3_ >= 1314 && i_3_ <= 1317) {
-                            RSString class1 = Class40_Sub11.aClass1Array2153[--i_1_];
+                            String class1 = Class40_Sub11.aClass1Array2153[--i_1_];
                             Object[] objects = new Object[class1.length() + 1];
                             for(int i_84_ = objects.length - 1; i_84_ >= 1; i_84_--) {
-                                if(class1.getChar(-1 + i_84_) == 115) {
+                                if(class1.charAt(-1 + i_84_) == 115) {
                                     objects[i_84_] = (Class40_Sub11.aClass1Array2153[--i_1_]);
                                 } else {
                                     objects[i_84_] = new Integer(Class67.anIntArray1588[--i]);
@@ -990,7 +990,7 @@ public class Widget extends SubNode {
                             int i_85_ = -1 + Class67.anIntArray1588[--i];
                             if(i_85_ >= 0 && i_85_ <= 9) {
                                 if((widget.aClass1Array2661 == null) || (((widget.aClass1Array2661).length <= i_85_))) {
-                                    RSString[] class1s = new RSString[1 + i_85_];
+                                    String[] class1s = new String[1 + i_85_];
                                     if(widget.aClass1Array2661 != null) {
                                         for(int i_86_ = 0; (((widget.aClass1Array2661).length > i_86_)); i_86_++) {
                                             class1s[i_86_] = (widget.aClass1Array2661[i_86_]);
@@ -1092,7 +1092,7 @@ public class Widget extends SubNode {
                 if(Class12.friendListStatus != 2)
                     fCount = 0;
                 if((fCount <= type)) {
-                    widget.disabledText = HuffmanEncoding.blank_string;
+                    widget.disabledText = "";
                     widget.actionType = 0;
                 } else {
                     widget.disabledText = Class40_Sub11.friendUsernames[type];
@@ -1108,14 +1108,14 @@ public class Widget extends SubNode {
             if(Class12.friendListStatus != 2)
                 count = 0;
             if(type >= count) {
-                widget.disabledText = HuffmanEncoding.blank_string;
+                widget.disabledText = "";
                 widget.actionType = 0;
             } else {
                 if(Class40_Sub7.friendWorlds[type] == 0) {
-                    widget.disabledText = (RSString.linkRSStrings(new RSString[]{FloorDecoration.aClass1_610, Class27.aClass1_664}));
+                    widget.disabledText = FloorDecoration.aClass1_610 + Class27.aClass1_664;
                 } else if(Class40_Sub7.friendWorlds[type] < 5000) {
                     if(Class40_Sub7.friendWorlds[type] == Class13.worldid) {
-                        widget.disabledText = (RSString.linkRSStrings((new RSString[]{Landscape.aClass1_1162, Class26.aClass1_634, HashTable.method334((Class40_Sub7.friendWorlds[type]))})));
+                        widget.disabledText = Landscape.aClass1_1162 + Class26.aClass1_634 + HashTable.method334(Class40_Sub7.friendWorlds[type]);
                     } else {
                         widget.disabledText = (RSString.linkRSStrings((new RSString[]{KeyFocusListener.aClass1_1283, Class26.aClass1_634, HashTable.method334((Class40_Sub7.friendWorlds[type]))})));
                     }

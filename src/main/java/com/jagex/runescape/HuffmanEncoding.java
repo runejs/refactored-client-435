@@ -29,7 +29,7 @@ public class HuffmanEncoding {
     public static RSString aClass1_1546 = RSString.CreateString("Icons redrawn");
     public static int reportAbuseInterfaceID = -1;
     public static RSString reportedName = blank_string;
-    public static RSString str_Connecting_to_friendserver = RSString.CreateString("Connecting to friendserver");
+    public static String str_Connecting_to_friendserver = "Connecting to friendserver";
     public static RSString aClass1_1555 = RSString.CreateString("Remove");
     public static String chatboxInput = "";
     public static int anInt1559 = 7759444;

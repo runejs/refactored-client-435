@@ -12,7 +12,7 @@ public class Class26 {
     public static Image anImage624;
     public static int anInt627;
     public static CacheIndex aCacheIndex_632;
-    public static RSString aClass1_634 = RSString.CreateString("World");
+    public static String aClass1_634 = "World";
     public static int baseY;
 
     public static Class method349(String arg1) throws ClassNotFoundException {
