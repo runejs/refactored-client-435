@@ -13,6 +13,7 @@ import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.VertexNormal;
@@ -28,18 +29,13 @@ import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.*;
+import com.jagex.runescape.util.TextUtils;
 
 public class Class27 {
-    public static RSString aClass1_638 = RSString.CreateString("invback");
-    public static RSString aClass1_643 = RSString.CreateString(")2");
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array649;
     public static CacheIndex aCacheIndex_654;
     public static int minimapState = 0;
-    public static RSString takeString = RSString.CreateString("Take");
-    public static RSString aClass1_664 = RSString.CreateString("Offline");
-    public static RSString takeStringInstance = takeString;
     public static int[] anIntArray666 = new int[]{1, 0, -1, 0};
-    public static RSString aClass1_668 = RSString.CreateString("Loading game screen )2 ");
     public SubNode aClass40_Sub5_660 = new SubNode();
 
     public Class27() {
@@ -62,7 +58,7 @@ public class Class27 {
             int i_0_ = 0x7ff & GroundItemTile.cameraHorizontal + Class57.anInt1342;
             if(Class40_Sub5_Sub17_Sub1.aBooleanArray2975[4] && 128 + GameShell.anIntArray2[4] > i)
                 i = 128 + GameShell.anIntArray2[4];
-            Class49.setCameraPosition(i, Class40_Sub5_Sub6.currentCameraPositionH, -50 + (Class37.getFloorDrawHeight(Player.worldLevel, (Player.localPlayer.worldX), (Player.localPlayer.worldY))), i_0_, Class34.currentCameraPositionV, -1, 3 * i + 600);
+            Class49.setCameraPosition(i, Class40_Sub5_Sub6.currentCameraPositionH, -50 + Class37.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY), i_0_, Class34.currentCameraPositionV, -1, 3 * i + 600);
         }
         int i;
         if(!Class39.aBoolean906)
@@ -76,7 +72,7 @@ public class Class27 {
         int i_5_ = Class40_Sub5_Sub6.cameraY;
         for(int i_6_ = 0; i_6_ < 5; i_6_++) {
             if(Class40_Sub5_Sub17_Sub1.aBooleanArray2975[i_6_]) {
-                int i_7_ = (int) (((double) (Class8.anIntArray297[i_6_] * 2 + 1) * Math.random()) - (double) Class8.anIntArray297[i_6_] + (Math.sin((double) (Class22_Sub1.anIntArray1846[i_6_]) * ((double) (GroundItemTile.anIntArray1358[i_6_]) / 100.0)) * (double) GameShell.anIntArray2[i_6_]));
+                int i_7_ = (int) ((double) (Class8.anIntArray297[i_6_] * 2 + 1) * Math.random() - (double) Class8.anIntArray297[i_6_] + Math.sin((double) Class22_Sub1.anIntArray1846[i_6_] * ((double) GroundItemTile.anIntArray1358[i_6_] / 100.0)) * (double) GameShell.anIntArray2[i_6_]);
                 if(i_6_ == 1)
                     SceneCluster.cameraZ += i_7_;
                 if(i_6_ == 0) {
@@ -114,7 +110,7 @@ public class Class27 {
         if(ISAAC.aBoolean519) {
             Class65.method1018();
             Rasterizer.clear();
-            Class51.method940(0, Class67.aClass1_1585, false, null);
+            Class51.method940(0, English.aClass1_1585, false, null);
         }
 
         Player.method792(110);
@@ -125,18 +121,6 @@ public class Class27 {
         SceneCluster.cameraZ = i_3_;
         if(arg0 >= -98)
             Widget.drawScrollBar(0, -27, 3, 10, 23, -36);
-    }
-
-    public static void method356() {
-        aClass40_Sub5_Sub14_Sub4Array649 = null;
-        takeString = null;
-        aCacheIndex_654 = null;
-        aClass1_638 = null;
-        aClass1_668 = null;
-        takeStringInstance = null;
-        anIntArray666 = null;
-        aClass1_664 = null;
-        aClass1_643 = null;
     }
 
     public static void method357(CacheIndex arg0, int arg1, CacheIndex arg2) {
@@ -178,9 +162,9 @@ public class Class27 {
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
             }
             if(action == 38) {
-                boolean bool = (Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 0, (Player.localPlayer.pathX[0]), i_10_, 2));
+                boolean bool = Class38_Sub1.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
                 if(!bool)
-                    bool = (Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 1, (Player.localPlayer.pathX[0]), i_10_, 2));
+                    bool = Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
                 OverlayDefinition.crossIndex = 0;
                 Class40_Sub5_Sub1.crossY = RSString.clickY;
                 Class40_Sub11.crossX = Class57.clickX;
@@ -206,9 +190,9 @@ public class Class27 {
                 SceneCluster.packetBuffer.putShortLE(Class26.baseY + i_10_);
             }
             if(action == 1) {
-                Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[i_12_]);
+                Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_12_];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
-                    Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, (Player.localPlayer.pathX[0]), class40_sub5_sub17_sub4_sub1.pathX[0], 2);
+                    Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
                     Class40_Sub11.crossX = Class57.clickX;
                     OverlayDefinition.crossIndex = 0;
                     LinkedList.crossType = 2;
@@ -219,17 +203,17 @@ public class Class27 {
                 }
             }
             if(action == 26 || action == 46) {
-                RSString class1 = Landscape.menuActionTexts[arg1];
-                int i_13_ = class1.contains(Class26.aClass1_620);
+                String name = Landscape.menuActionTexts[arg1];
+                int i_13_ = name.indexOf(Native.aClass1_620);
                 if(i_13_ != -1) {
-                    class1 = class1.substring(i_13_ + 5).trim();
-                    RSString class1_14_ = class1.method62().method85();
+                    name = name.substring(i_13_ + 5).trim();
+                    String username = TextUtils.formatName(TextUtils.longToName(TextUtils.nameToLong(name)));
                     boolean bool = false;
                     for(int i_15_ = 0; i_15_ < Player.localPlayerCount; i_15_++) {
-                        Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[Player.trackedPlayerIndices[i_15_]]);
-                        if(class40_sub5_sub17_sub4_sub1 != null && (class40_sub5_sub17_sub4_sub1.playerName != null) && class40_sub5_sub17_sub4_sub1.playerName.equalsIgnoreCase(class1_14_)) {
+                        Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[Player.trackedPlayerIndices[i_15_]];
+                        if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.playerName != null && class40_sub5_sub17_sub4_sub1.playerName.equalsIgnoreCase(username)) {
                             bool = true;
-                            Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), (class40_sub5_sub17_sub4_sub1.pathY[0]), 0, false, 0, 1, (Player.localPlayer.pathX[0]), (class40_sub5_sub17_sub4_sub1.pathX[0]), 2);
+                            Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
                             if(action == 26) {
                                 SceneCluster.packetBuffer.putPacket(96);
                                 SceneCluster.packetBuffer.putShortBE(Player.trackedPlayerIndices[i_15_]);
@@ -242,7 +226,7 @@ public class Class27 {
                         }
                     }
                     if(!bool)
-                        Class44.addChatMessage(HuffmanEncoding.blank_string, (RSString.linkRSStrings(new RSString[]{English.unableToFind, class1_14_})), 0);
+                        Class44.addChatMessage("", English.unableToFind +  username, 0);
                 }
             }
             if(action == 55) {
@@ -301,9 +285,9 @@ public class Class27 {
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
             }
             if(action == 10) {
-                Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[i_12_]);
+                Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_12_];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
-                    Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, (Player.localPlayer.pathX[0]), class40_sub5_sub17_sub4_sub1.pathX[0], 2);
+                    Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
                     Class40_Sub11.crossX = Class57.clickX;
                     LinkedList.crossType = 2;
                     Class40_Sub5_Sub1.crossY = RSString.clickY;
@@ -313,9 +297,9 @@ public class Class27 {
                 }
             }
             if(action == 14) {
-                Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[i_12_]);
+                Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_12_];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
-                    Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, (Player.localPlayer.pathX[0]), class40_sub5_sub17_sub4_sub1.pathX[0], 2);
+                    Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
                     OverlayDefinition.crossIndex = 0;
                     LinkedList.crossType = 2;
                     Class40_Sub5_Sub1.crossY = RSString.clickY;
@@ -329,7 +313,7 @@ public class Class27 {
                 LinkedList.crossType = 2;
                 Class40_Sub5_Sub1.crossY = RSString.clickY;
                 OverlayDefinition.crossIndex = 0;
-                Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[i_12_]);
+                Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
                 if(class40_sub5_sub17_sub4_sub2 != null) {
                     ActorDefinition class40_sub5_sub5 = class40_sub5_sub17_sub4_sub2.actorDefinition;
                     if(class40_sub5_sub5.childrenIds != null)
@@ -341,9 +325,9 @@ public class Class27 {
                 }
             }
             if(action == 22) {
-                Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[i_12_]);
+                Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_12_];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
-                    Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, (Player.localPlayer.pathX[0]), class40_sub5_sub17_sub4_sub1.pathX[0], 2);
+                    Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
                     Class40_Sub11.crossX = Class57.clickX;
                     LinkedList.crossType = 2;
                     Class40_Sub5_Sub1.crossY = RSString.clickY;
@@ -360,16 +344,16 @@ public class Class27 {
                 LinkedList.anInt1061 = i;
                 ISAAC.anInt525 = i_10_;
                 Class8.itemSelected = 1;
-                Npc.aClass1_3295 = (RSString.linkRSStrings((new RSString[]{VertexNormal.aClass1_1114, ItemDefinition.forId(i_12_, 10).name, Class26.aClass1_620})));
+                Npc.aClass1_3295 = VertexNormal.aClass1_1114 + ItemDefinition.forId(i_12_, 10).name + Native.aClass1_620;
                 Main.widgetSelected = 0;
                 if(Npc.aClass1_3295 == null)
-                    Npc.aClass1_3295 = GameShell.aClass1_34;
+                    Npc.aClass1_3295 = "null";
                 ISAAC.redrawTabArea = true;
             } else {
                 if(action == 15) {
-                    boolean bool = (Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 0, (Player.localPlayer.pathX[0]), i_10_, 2));
+                    boolean bool = Class38_Sub1.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
                     if(!bool)
-                        bool = (Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 1, (Player.localPlayer.pathX[0]), i_10_, 2));
+                        bool = Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
                     OverlayDefinition.crossIndex = 0;
                     LinkedList.crossType = 2;
                     Class40_Sub5_Sub1.crossY = RSString.clickY;
@@ -406,10 +390,10 @@ public class Class27 {
                     RSRuntimeException.anInt1651 = 0;
                 }
                 if(action == 18) {
-                    RSString class1 = Landscape.menuActionTexts[arg1];
-                    int i_18_ = class1.contains(Class26.aClass1_620);
+                    String class1 = Landscape.menuActionTexts[arg1];
+                    int i_18_ = class1.indexOf(Native.aClass1_620);
                     if(i_18_ != -1) {
-                        long l = class1.substring(5 + i_18_).trim().method58((byte) 107);
+                        long l = TextUtils.nameToLong(class1.substring(i_18_ + 5).trim());
                         int i_19_ = -1;
                         for(int i_20_ = 0; i_20_ < Item.friendsCount; i_20_++) {
                             if(Class59.aLongArray1397[i_20_] == l) {
@@ -421,10 +405,10 @@ public class Class27 {
                             Class37.anInt876 = 3;
                             ChatBox.redrawChatbox = true;
                             ChatBox.inputType = 0;
-                            HuffmanEncoding.chatMessage = HuffmanEncoding.blank_string;
+                            ChatBox.chatMessage = "";
                             ChatBox.messagePromptRaised = true;
                             PacketBuffer.aLong2241 = Class59.aLongArray1397[i_19_];
-                            HuffmanEncoding.aClass1_1563 = (RSString.linkRSStrings(new RSString[]{Class35.aClass1_1746, (Class40_Sub11.friendUsernames[i_19_])}));
+                            HuffmanEncoding.aClass1_1563 = English.aClass1_1746 + Class40_Sub11.friendUsernames[i_19_];
                         }
                     }
                 }
@@ -444,9 +428,9 @@ public class Class27 {
                     SceneCluster.packetBuffer.putShortLE(i + SpotAnimDefinition.baseX);
                 }
                 if(action == 30) {
-                    Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[i_12_]);
+                    Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
                     if(class40_sub5_sub17_sub4_sub2 != null) {
-                        Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, (Player.localPlayer.pathX[0]), class40_sub5_sub17_sub4_sub2.pathX[0], 2);
+                        Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
                         OverlayDefinition.crossIndex = 0;
                         Class40_Sub11.crossX = Class57.clickX;
                         Class40_Sub5_Sub1.crossY = RSString.clickY;
@@ -456,9 +440,9 @@ public class Class27 {
                     }
                 }
                 if(action == 49) {
-                    Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[i_12_]);
+                    Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
                     if(class40_sub5_sub17_sub4_sub2 != null) {
-                        Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, (Player.localPlayer.pathX[0]), class40_sub5_sub17_sub4_sub2.pathX[0], 2);
+                        Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
                         Class40_Sub11.crossX = Class57.clickX;
                         Class40_Sub5_Sub1.crossY = RSString.clickY;
                         OverlayDefinition.crossIndex = 0;
@@ -487,9 +471,9 @@ public class Class27 {
                     SceneCluster.packetBuffer.putShortLE(i + SpotAnimDefinition.baseX);
                 }
                 if(action == 34) {
-                    Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[i_12_]);
+                    Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
                     if(class40_sub5_sub17_sub4_sub2 != null) {
-                        Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, (Player.localPlayer.pathX[0]), class40_sub5_sub17_sub4_sub2.pathX[0], 2);
+                        Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
                         Class40_Sub11.crossX = Class57.clickX;
@@ -519,11 +503,11 @@ public class Class27 {
                     Widget widget = Widget.forId(i_10_);
                     ISAAC.redrawTabArea = true;
                     Main.widgetSelected = 1;
-                    Class38_Sub1.aClass1_1918 = widget.targetVerb;
+                    Native.aClass1_1918 = widget.targetVerb;
                     ItemDefinition.selectedMask = widget.clickMask;
                     Class8.itemSelected = 0;
                     Class60.anInt1417 = i_10_;
-                    FloorDecoration.aClass1_611 = (RSString.linkRSStrings(new RSString[]{Landscape.aClass1_1162, widget.spellName, Class26.aClass1_620}));
+                    FloorDecoration.aClass1_611 = Landscape.aClass1_1162 + widget.spellName + Native.aClass1_620;
                     if(ItemDefinition.selectedMask == 16) {
                         IdentityKit.drawTabIcons = true;
                         Class5.currentTabId = 3;
@@ -532,13 +516,13 @@ public class Class27 {
                 } else {
                     if(action == 1007) {
                         Widget widget = Widget.forId(i_10_);
-                        if(widget != null && (widget.aWidgetArray2713 != null) && i != -1)
-                            widget = (widget.aWidgetArray2713[i]);
+                        if(widget != null && widget.aWidgetArray2713 != null && i != -1)
+                            widget = widget.aWidgetArray2713[i];
                         if(widget == null || widget.itemAmount < 100000) {
                             SceneCluster.packetBuffer.putPacket(151);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
                         } else
-                            Class44.addChatMessage(HuffmanEncoding.blank_string, (RSString.linkRSStrings((new RSString[]{HashTable.method334((widget.itemAmount)), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), 0);
+                            Class44.addChatMessage("", widget.itemAmount + Native.aClass1_1536 + ItemDefinition.forId(i_12_, 10).name, 0);
                     }
                     if(action == 42) {
                         Widget widget = Widget.forId(i_10_);
@@ -565,9 +549,9 @@ public class Class27 {
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                     }
                     if(action == 12) {
-                        Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[i_12_]);
+                        Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
                         if(class40_sub5_sub17_sub4_sub2 != null) {
-                            Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), (class40_sub5_sub17_sub4_sub2.pathY[0]), 0, false, 0, 1, (Player.localPlayer.pathX[0]), (class40_sub5_sub17_sub4_sub2.pathX[0]), 2);
+                            Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
                             Class40_Sub11.crossX = Class57.clickX;
                             Class40_Sub5_Sub1.crossY = RSString.clickY;
                             OverlayDefinition.crossIndex = 0;
@@ -577,9 +561,9 @@ public class Class27 {
                         }
                     }
                     if(action == 2) {
-                        boolean bool = (Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 0, (Player.localPlayer.pathX[0]), i_10_, 2));
+                        boolean bool = Class38_Sub1.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
                         if(!bool)
-                            bool = (Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 1, (Player.localPlayer.pathX[0]), i_10_, 2));
+                            bool = Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
                         LinkedList.crossType = 2;
                         OverlayDefinition.crossIndex = 0;
                         Class40_Sub11.crossX = Class57.clickX;
@@ -590,9 +574,9 @@ public class Class27 {
                         SceneCluster.packetBuffer.putShortBE(i_12_);
                     }
                     if(action == 3) {
-                        boolean bool = (Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 0, (Player.localPlayer.pathX[0]), i_10_, 2));
+                        boolean bool = Class38_Sub1.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
                         if(!bool)
-                            bool = (Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 1, (Player.localPlayer.pathX[0]), i_10_, 2));
+                            bool = Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
                         OverlayDefinition.crossIndex = 0;
                         Class40_Sub11.crossX = Class57.clickX;
                         LinkedList.crossType = 2;
@@ -603,9 +587,9 @@ public class Class27 {
                         SceneCluster.packetBuffer.putShortLE(i + SpotAnimDefinition.baseX);
                     }
                     if(action == 21) {
-                        Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[i_12_]);
+                        Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
                         if(class40_sub5_sub17_sub4_sub2 != null) {
-                            Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), (class40_sub5_sub17_sub4_sub2.pathY[0]), 0, false, 0, 1, (Player.localPlayer.pathX[0]), (class40_sub5_sub17_sub4_sub2.pathX[0]), 2);
+                            Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
                             Class40_Sub11.crossX = Class57.clickX;
                             Class40_Sub5_Sub1.crossY = RSString.clickY;
                             OverlayDefinition.crossIndex = 0;
@@ -616,12 +600,12 @@ public class Class27 {
                         }
                     }
                     if(action == 45 || action == 51 || action == 13 || action == 35) {
-                        RSString class1 = Landscape.menuActionTexts[arg1];
-                        int i_21_ = class1.contains(Class26.aClass1_620);
-                        if(i_21_ != -1) {
-                            long l = class1.substring(i_21_ + 5).trim().method58((byte) 96);
+                        String s = Landscape.menuActionTexts[arg1];
+                        int l1 = s.indexOf(Native.aClass1_620);
+                        if(l1 != -1) {
+                            long l = TextUtils.nameToLong(s.substring(l1 + 5).trim());
                             if(action == 45)
-                                UnderlayDefinition.method617(l);
+                                UnderlayDefinition.addFriend(l);
                             if(action == 51)
                                 Class17.method275(l);
                             if(action == 13)
@@ -631,9 +615,9 @@ public class Class27 {
                         }
                     }
                     if(action == 44) {
-                        Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[i_12_]);
+                        Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_12_];
                         if(class40_sub5_sub17_sub4_sub1 != null) {
-                            Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), (class40_sub5_sub17_sub4_sub1.pathY[0]), 0, false, 0, 1, (Player.localPlayer.pathX[0]), (class40_sub5_sub17_sub4_sub1.pathX[0]), 2);
+                            Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
                             LinkedList.crossType = 2;
                             OverlayDefinition.crossIndex = 0;
                             Class40_Sub11.crossX = Class57.clickX;
@@ -656,7 +640,7 @@ public class Class27 {
                             SceneCluster.packetBuffer.putPacket(151);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
                         } else
-                            Class44.addChatMessage(HuffmanEncoding.blank_string, (RSString.linkRSStrings((new RSString[]{HashTable.method334((widget.itemAmounts[i])), Class65.aClass1_1536, (ItemDefinition.forId(i_12_, 10).name)}))), 0);
+                            Class44.addChatMessage("", widget.itemAmounts[i]+ Native.aClass1_1536 + ItemDefinition.forId(i_12_, 10).name, 0);
                         GenericTile.anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
                         Class30.anInt704 = i_10_;
@@ -716,9 +700,9 @@ public class Class27 {
                         RSRuntimeException.anInt1651 = 0;
                     }
                     if(action == 41) {
-                        Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[i_12_]);
+                        Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_12_];
                         if(class40_sub5_sub17_sub4_sub1 != null) {
-                            Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), (class40_sub5_sub17_sub4_sub1.pathY[0]), 0, false, 0, 1, (Player.localPlayer.pathX[0]), (class40_sub5_sub17_sub4_sub1.pathX[0]), 2);
+                            Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
                             LinkedList.crossType = 2;
                             Class40_Sub5_Sub1.crossY = RSString.clickY;
                             Class40_Sub11.crossX = Class57.clickX;
@@ -728,8 +712,8 @@ public class Class27 {
                         }
                     }
                     if(action == 28) {
-                        RSString class1 = Landscape.menuActionTexts[arg1];
-                        int i_22_ = class1.contains(Class26.aClass1_620);
+                        String class1 = Landscape.menuActionTexts[arg1];
+                        int i_22_ = class1.indexOf(Native.aClass1_620);
                         if(i_22_ != -1) {
                             if(HuffmanEncoding.openScreenWidgetId == -1) {
                                 PacketBuffer.method516();
@@ -739,14 +723,14 @@ public class Class27 {
                                     Class67.reportMutePlayer = false;
                                 }
                             } else {
-                                Class44.addChatMessage(HuffmanEncoding.blank_string, Class37.aClass1_873, 0);
+                                Class44.addChatMessage("", English.aClass1_873, 0);
                             }
                         }
                     }
                     if(action == 8) {
-                        boolean bool = (Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 0, (Player.localPlayer.pathX[0]), i_10_, 2));
+                        boolean bool = Class38_Sub1.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
                         if(!bool)
-                            bool = (Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 1, (Player.localPlayer.pathX[0]), i_10_, 2));
+                            bool = Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
                         Class40_Sub11.crossX = Class57.clickX;
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
@@ -777,9 +761,9 @@ public class Class27 {
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                     }
                     if(action == 36) {
-                        boolean bool = (Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 0, (Player.localPlayer.pathX[0]), i_10_, 2));
+                        boolean bool = Class38_Sub1.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
                         if(!bool)
-                            bool = (Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 1, (Player.localPlayer.pathX[0]), i_10_, 2));
+                            bool = Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
                         Class40_Sub5_Sub1.crossY = RSString.clickY;
                         LinkedList.crossType = 2;
                         OverlayDefinition.crossIndex = 0;
@@ -790,9 +774,9 @@ public class Class27 {
                         SceneCluster.packetBuffer.putShortBE(i_10_ + Class26.baseY);
                     }
                     if(action == 39) {
-                        Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[i_12_]);
+                        Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_12_];
                         if(class40_sub5_sub17_sub4_sub1 != null) {
-                            Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), (class40_sub5_sub17_sub4_sub1.pathY[0]), 0, false, 0, 1, (Player.localPlayer.pathX[0]), (class40_sub5_sub17_sub4_sub1.pathX[0]), 2);
+                            Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
                             OverlayDefinition.crossIndex = 0;
                             Class40_Sub11.crossX = Class57.clickX;
                             LinkedList.crossType = 2;
@@ -823,9 +807,9 @@ public class Class27 {
                         SceneCluster.packetBuffer.putShortLE(i + SpotAnimDefinition.baseX);
                     }
                     if(action == 20) {
-                        Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[i_12_]);
+                        Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
                         if(class40_sub5_sub17_sub4_sub2 != null) {
-                            Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), (class40_sub5_sub17_sub4_sub2.pathY[0]), 0, false, 0, 1, (Player.localPlayer.pathX[0]), (class40_sub5_sub17_sub4_sub2.pathX[0]), 2);
+                            Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
                             LinkedList.crossType = 2;
                             Class40_Sub11.crossX = Class57.clickX;
                             Class40_Sub5_Sub1.crossY = RSString.clickY;
@@ -835,9 +819,9 @@ public class Class27 {
                         }
                     }
                     if(action == 47) {
-                        boolean bool = (Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 0, (Player.localPlayer.pathX[0]), i_10_, 2));
+                        boolean bool = Class38_Sub1.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
                         if(!bool)
-                            bool = (Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), i, 0, false, 0, 1, (Player.localPlayer.pathX[0]), i_10_, 2));
+                            bool = Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
                         Class40_Sub11.crossX = Class57.clickX;
                         Class40_Sub5_Sub1.crossY = RSString.clickY;
                         OverlayDefinition.crossIndex = 0;
@@ -865,9 +849,9 @@ public class Class27 {
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                     }
                     if(action == 4) {
-                        Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[i_12_]);
+                        Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
                         if(class40_sub5_sub17_sub4_sub2 != null) {
-                            Class38_Sub1.doWalkTo(1, 0, (Player.localPlayer.pathY[0]), (class40_sub5_sub17_sub4_sub2.pathY[0]), 0, false, 0, 1, (Player.localPlayer.pathX[0]), (class40_sub5_sub17_sub4_sub2.pathX[0]), 2);
+                            Class38_Sub1.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
                             LinkedList.crossType = 2;
                             Class40_Sub11.crossX = Class57.clickX;
                             OverlayDefinition.crossIndex = 0;
@@ -889,7 +873,7 @@ public class Class27 {
         }
     }
 
-    public static IndexedImage method359(RSString arg0, RSString arg1, CacheIndex arg2) {
+    public static IndexedImage method359(String arg0, String arg1, CacheIndex arg2) {
         int i = arg2.getHash(arg0);
         int i_23_ = arg2.method179(i, arg1);
         return method363(arg2, (byte) -42, i_23_, i);
@@ -899,28 +883,28 @@ public class Class27 {
         if(Class68.method1043(arg4)) {
             if(arg0 != 125)
                 Widget.drawScrollBar(-118, 12, 65, -60, 59, -24);
-            GameShell.method20(arg5, arg3, 0, arg2, arg6, -1, 1, (Widget.interfaces[arg4]), arg1, 0);
+            GameShell.method20(arg5, arg3, 0, arg2, arg6, -1, 1, Widget.interfaces[arg4], arg1, 0);
             if(Wall.aWidget_353 != null) {
                 Widget widget = Wall.aWidget_353;
                 Widget widget_24_ = FramemapDefinition.method878(widget);
                 if(widget_24_ != null) {
                     int[] is = Class13.method247(widget_24_, (byte) 97);
                     int[] is_25_ = Class13.method247(widget, (byte) 110);
-                    int i = (is_25_[1] - is[1] + -Class40_Sub5_Sub11.anInt2621 + Landscape.mouseY);
-                    int i_26_ = (-is[0] + is_25_[0] + (Class13.mouseX + -Class40_Sub2.anInt1996));
+                    int i = is_25_[1] - is[1] + -Class40_Sub5_Sub11.anInt2621 + Landscape.mouseY;
+                    int i_26_ = -is[0] + is_25_[0] + Class13.mouseX + -Class40_Sub2.anInt1996;
                     if(i < 0)
                         i = 0;
                     if(widget_24_.originalHeight < i + widget.originalHeight)
-                        i = (-widget.originalHeight + widget_24_.originalHeight);
+                        i = -widget.originalHeight + widget_24_.originalHeight;
                     if(i_26_ < 0)
                         i_26_ = 0;
-                    if((widget_24_.originalWidth < widget.originalWidth + i_26_))
-                        i_26_ = (widget_24_.originalWidth - widget.originalWidth);
-                    if((Wall.aWidget_353.anObjectArray2669 != null) && (arg2 & 0x200) != 0)
+                    if(widget_24_.originalWidth < widget.originalWidth + i_26_)
+                        i_26_ = widget_24_.originalWidth - widget.originalWidth;
+                    if(Wall.aWidget_353.anObjectArray2669 != null && (arg2 & 0x200) != 0)
                         Widget.method891(widget.anObjectArray2669, 0, i, widget, i_26_, false);
                     if(SpotAnimDefinition.mouseButtonPressed == 0 && (arg2 & 0x400) != 0) {
                         if(Wall.aWidget_353.anObjectArray2695 != null)
-                            Widget.method891((widget.anObjectArray2695), 0, i, widget, i_26_, false);
+                            Widget.method891(widget.anObjectArray2695, 0, i, widget, i_26_, false);
                         Wall.aWidget_353 = null;
                     }
                 }
@@ -937,15 +921,15 @@ public class Class27 {
             if(widget_27_ != null && widget_27_.parentId == arg4) {
                 int i_28_ = arg3 + widget_27_.currentY;
                 int i_29_ = arg5 + widget_27_.currentX;
-                if(i_29_ <= arg6 && i_28_ <= arg1 && (i_29_ + widget_27_.originalWidth > arg6) && ((arg1 < i_28_ + widget_27_.originalHeight)) && !widget_27_.isHidden) {
+                if(i_29_ <= arg6 && i_28_ <= arg1 && i_29_ + widget_27_.originalWidth > arg6 && arg1 < i_28_ + widget_27_.originalHeight && !widget_27_.isHidden) {
                     if(widget_27_.id < 0 && arg2 || widget_27_.id >= 0 && !arg2)
                         widget = widget_27_;
                     if(widget_27_.type == WidgetType.LAYER) {
-                        Widget widget_30_ = method361(arg0, arg1, arg2, (-widget_27_.scrollPosition + (widget_27_.currentY)), i, (widget_27_.currentX - (widget_27_.anInt2746)), arg6, 398);
+                        Widget widget_30_ = method361(arg0, arg1, arg2, -widget_27_.scrollPosition + widget_27_.currentY, i, widget_27_.currentX - widget_27_.anInt2746, arg6, 398);
                         if(widget_30_ != null)
                             widget = widget_30_;
-                        if(arg2 && (widget_27_.aWidgetArray2713) != null) {
-                            Widget widget_31_ = (method361((widget_27_.aWidgetArray2713), arg1, arg2, (widget_27_.currentY + -widget_27_.scrollPosition), widget_27_.id, (widget_27_.currentX - widget_27_.anInt2746), arg6, 398));
+                        if(arg2 && widget_27_.aWidgetArray2713 != null) {
+                            Widget widget_31_ = method361(widget_27_.aWidgetArray2713, arg1, arg2, widget_27_.currentY + -widget_27_.scrollPosition, widget_27_.id, widget_27_.currentX - widget_27_.anInt2746, arg6, 398);
                             if(widget_31_ != null)
                                 widget = widget_31_;
                         }
@@ -954,12 +938,11 @@ public class Class27 {
             }
         }
         if(arg7 != 398)
-            takeStringInstance = null;
+            English.takeStringInstance = null;
         return widget;
     }
 
     public static IndexedImage method363(CacheIndex arg0, byte arg1, int arg2, int arg3) {
-        int i = 106 % ((arg1 - 66) / 53);
         if(!ImageRGB.spriteExists(arg2, arg3, arg0))
             return null;
         return SubNode.method538(0);
@@ -1011,10 +994,10 @@ public class Class27 {
             Class43.drawTabArea(-29);
         }
         if(ChatBox.openChatboxWidgetId == -1) {
-            Class12.chatboxInterface.scrollPosition = -77 + (-ChatBox.chatboxScroll + ChatBox.chatboxScrollMax);
+            Class12.chatboxInterface.scrollPosition = -77 + -ChatBox.chatboxScroll + ChatBox.chatboxScrollMax;
             if(Class13.mouseX > 448 && Class13.mouseX < 560 && Landscape.mouseY > 332)
                 Class5.scrollInterface(77, Landscape.mouseY + -357, -17 + Class13.mouseX, ChatBox.chatboxScrollMax, Class12.chatboxInterface, 463, -1, 0);
-            int currentScroll = (ChatBox.chatboxScrollMax - 77 - Class12.chatboxInterface.scrollPosition);
+            int currentScroll = ChatBox.chatboxScrollMax - 77 - Class12.chatboxInterface.scrollPosition;
             if(currentScroll < 0)
                 currentScroll = 0;
             if(currentScroll > ChatBox.chatboxScrollMax + -77)
@@ -1070,7 +1053,7 @@ public class Class27 {
             }
             IdentityKit.drawTabIcons = false;
             Class40_Sub3.aBoolean2026 = true;
-            Class40_Sub2.method527(Class5.currentTabId, 4, Class40_Sub5_Sub11.tabWidgetIds, (Class29.tabAreaOverlayWidgetId == -1), (Node.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1));
+            Class40_Sub2.method527(Class5.currentTabId, 4, Class40_Sub5_Sub11.tabWidgetIds, Class29.tabAreaOverlayWidgetId == -1, Node.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
         }
         if(Cache.redrawChatbox) {
             Class40_Sub3.aBoolean2026 = true;
@@ -1078,71 +1061,71 @@ public class Class27 {
             GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
         }
 
-        Landscape.method934((Player.localPlayer.worldX), Player.worldLevel, Class5.anInt199, (Player.localPlayer.worldY));
+        Landscape.method934(Player.localPlayer.worldX, Player.worldLevel, Class5.anInt199, Player.localPlayer.worldY);
         Class5.anInt199 = 0;
 
     }
 
     public static void method366(int arg1) {
         if(arg1 == -3)
-            Class33.method411(Node.aClass1_956, GenericTile.aClass1_1218, SceneTile.aClass1_2057, (byte) -121);
+            Class33.method411("", GenericTile.aClass1_1218, SceneTile.aClass1_2057);
         else if(arg1 == -2)
-            Class33.method411(Node.aClass1_934, Node.aClass1_969, Class40_Sub5_Sub6.aClass1_2462, (byte) 93);
+            Class33.method411("", "", English.aClass1_2462);
         else if(arg1 == -1)
-            Class33.method411(Node.aClass1_949, Class33.aClass1_799, SceneTile.aClass1_2053, (byte) 115);
+            Class33.method411("", English.aClass1_799, SceneTile.aClass1_2053);
         else if(arg1 == 3)
-            Class33.method411(Node.aClass1_941, Node.aClass1_974, ISAAC.aClass1_526, (byte) -65);
+            Class33.method411("", "", ISAAC.aClass1_526);
         else if(arg1 == 4)
-            Class33.method411(Node.aClass1_976, Class64.aClass1_1526, Cache.aClass1_323, (byte) -33);
+            Class33.method411("", English.aClass1_1526, Cache.aClass1_323);
         else if(arg1 != 5) {
             if(arg1 == 6)
-                Class33.method411(Node.aClass1_930, Class40_Sub5_Sub6.aClass1_2460, Class65.aClass1_1538, (byte) 112);
+                Class33.method411("", English.aClass1_2460, English.aClass1_1538);
             else if(arg1 == 7)
-                Class33.method411(Node.aClass1_953, Class57.aClass1_1339, English.pleaseUseADifferentWorld, (byte) 105);
+                Class33.method411("", English.aClass1_1339, English.pleaseUseADifferentWorld);
             else if(arg1 != 8) {
                 if(arg1 == 9)
-                    Class33.method411(Node.aClass1_942, Actor.aClass1_3138, Item.aClass1_3050, (byte) 104);
+                    Class33.method411("", Actor.aClass1_3138, Item.aClass1_3050);
                 else if(arg1 == 10)
-                    Class33.method411(Node.aClass1_952, Class42.aClass1_1002, IdentityKit.aClass1_2615, (byte) 87);
+                    Class33.method411("", English.aClass1_1002, IdentityKit.aClass1_2615);
                 else if(arg1 == 11)
-                    Class33.method411(Node.aClass1_943, Class42.aClass1_1001, Class40_Sub6.aClass1_2111, (byte) 110);
+                    Class33.method411("", English.aClass1_1001, English.aClass1_2111);
                 else if(arg1 == 12)
-                    Class33.method411(Node.aClass1_931, FramemapDefinition.aClass1_2188, VarbitDefinition.aClass1_2357, (byte) 115);
+                    Class33.method411("", FramemapDefinition.aClass1_2188, VarbitDefinition.aClass1_2357);
                 else if(arg1 == 13)
-                    Class33.method411(Node.aClass1_972, Item.aClass1_3066, SceneTile.aClass1_2042, (byte) -53);
+                    Class33.method411("", Item.aClass1_3066, SceneTile.aClass1_2042);
                 else if(arg1 != 14) {
                     if(arg1 != 16) {
                         if(arg1 != 17) {
                             if(arg1 != 18) {
                                 if(arg1 == 20)
-                                    Class33.method411(Node.aClass1_944, Class55.aClass1_1298, (SceneTile.aClass1_2047), (byte) 126);
+                                    Class33.method411("", English.aClass1_1298, SceneTile.aClass1_2047);
                                 else if(arg1 == 22)
-                                    Class33.method411(Node.aClass1_955, (OverlayDefinition.aClass1_2325), CacheIndex.aClass1_258, (byte) -123);
+                                    Class33.method411("", OverlayDefinition.aClass1_2325, CacheIndex.aClass1_258);
                                 else if(arg1 == 23)
-                                    Class33.method411(Node.aClass1_957, Class38.aClass1_882, (ActorDefinition.aClass1_2410), (byte) -128);
+                                    Class33.method411("", English.aClass1_882, ActorDefinition.aClass1_2410);
                                 else if(arg1 != 24) {
                                     if(arg1 == 25)
-                                        Class33.method411(Node.aClass1_973, Class8.aClass1_278, SceneTile.aClass1_2050, (byte) -84);
+                                        Class33.method411("", English.aClass1_278, SceneTile.aClass1_2050);
                                     else if(arg1 == 26)
-                                        Class33.method411(Node.aClass1_960, English.thisComputersAddressHasBeenBlocked, English.asItWasUsedToBreakOurRules, (byte) 103);
+                                        Class33.method411("", English.thisComputersAddressHasBeenBlocked, English.asItWasUsedToBreakOurRules);
                                     else if(arg1 != 27)
-                                        Class33.method411(Node.aClass1_946, (English.unexpectedServerResponse), SceneTile.aClass1_2054, (byte) 123);
+                                        Class33.method411("", English.unexpectedServerResponse, SceneTile.aClass1_2054);
                                     else
-                                        Class33.method411(Node.aClass1_945, Node.aClass1_925, FramemapDefinition.aClass1_2189, (byte) 103);
+                                        Class33.method411("", "", FramemapDefinition.aClass1_2189);
                                 } else
-                                    Class33.method411(Node.aClass1_954, Class60.aClass1_1416, Class5.aClass1_193, (byte) 117);
+                                    Class33.method411("", English.aClass1_1416, English.aClass1_193);
                             } else
-                                Class33.method411(Node.aClass1_963, Main.aClass1_1781, Class34.aClass1_817, (byte) 96);
+                                Class33.method411("", Main.aClass1_1781, English.aClass1_817);
                         } else
-                            Class33.method411(Node.aClass1_959, Landscape.aClass1_1178, Class61.aClass1_1421, (byte) -85);
+                            Class33.method411("", Landscape.aClass1_1178, English.aClass1_1421);
                     } else
-                        Class33.method411(Node.aClass1_924, Buffer.aClass1_1983, English.pleaseWait5MinutesBeforeTryingAgain, (byte) -29);
+                        Class33.method411("", Buffer.aClass1_1983, English.pleaseWait5MinutesBeforeTryingAgain);
                 } else
-                    Class33.method411(Node.aClass1_929, Wall.aClass1_344, ActorDefinition.aClass1_2401, (byte) -68);
+                    Class33.method411("", Wall.aClass1_344, ActorDefinition.aClass1_2401);
             } else
-                Class33.method411(Node.aClass1_937, Class42.aClass1_997, Class68_Sub1.aClass1_2209, (byte) -76);
+                Class33.method411("", English.aClass1_997, English.aClass1_2209);
         } else
-            Class33.method411(Node.aClass1_966, English.yourAccountIsAlreadyLoggedIn, Player.aClass1_3286, (byte) -101);
+            Class33.method411("", English.yourAccountIsAlreadyLoggedIn, Player.aClass1_3286);
         OverlayDefinition.method559(10);
     }
 
@@ -1178,7 +1161,7 @@ public class Class27 {
 
     public SubNode method362(int arg0) {
         if(arg0 >= -73)
-            aClass1_638 = null;
+            Native.aClass1_638 = null;
         SubNode class40_sub5 = aClass40_Sub5_660.aClass40_Sub5_2082;
         if(class40_sub5 == aClass40_Sub5_660)
             return null;

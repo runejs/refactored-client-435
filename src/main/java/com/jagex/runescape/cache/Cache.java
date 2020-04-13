@@ -3,22 +3,19 @@ package com.jagex.runescape.cache;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
-import com.jagex.runescape.net.IncomingPackets;
 
 public class Cache {
-    public static RSString dropString = RSString.CreateString("Drop");
-    public static RSString dropStringInstance = dropString;
+    public static String dropStringInstance = "Drop";
     public static volatile int mouseButtonPressed = 0;
     public static int anInt321 = 5063219;
     public static volatile int eventMouseY = -1;
-    public static RSString aClass1_323 = (RSString.CreateString("Please check your message)2centre for details)3"));
+    public static String aClass1_323 = "Please check your message-centre for details.";
     public static int anInt324 = 0;
     public static Cache aClass9_326 = new Cache(200);
-    public static RSString aClass1_327 = RSString.CreateString("@or1@");
+    public static String aClass1_327 = "@or1@";
     public static CacheIndex aCacheIndex_329;
     public static boolean redrawChatbox = false;
-    public static RSString aClass1_332 = RSString.CreateString("Classic");
-    public static RSString aClass1_333 = aClass1_332;
+    public static String aClass1_333 = "Classic";
 
     public SubNode aClass40_Sub5_309 = new SubNode();
     public int anInt316;
@@ -30,7 +27,7 @@ public class Cache {
         anInt317 = arg0;
         int i;
         i = 1;
-        while((i + i < arg0)) {
+        while(i + i < arg0) {
             i += i;
         }
         anInt316 = arg0;
@@ -39,22 +36,11 @@ public class Cache {
     }
 
     public static void method233(boolean arg0) {
-        Class33.aClass9_778.method235((byte) 108);
+        Class33.aClass9_778.method235();
         if(!arg0)
             method236(true, null, null, null);
     }
 
-    public static void method234() {
-        dropStringInstance = null;
-        aClass1_333 = null;
-        dropString = null;
-        aClass1_332 = null;
-        IncomingPackets.incomingPacketBuffer = null;
-        aClass9_326 = null;
-        aCacheIndex_329 = null;
-        aClass1_327 = null;
-        aClass1_323 = null;
-    }
 
     public static void method236(boolean arg0, CacheIndex arg1, CacheIndex arg2, CacheIndex arg3) {
         Class40_Sub11.aCacheIndex_2162 = arg1;
@@ -100,7 +86,7 @@ public class Cache {
         anInt316++;
     }
 
-    public void method235(byte arg0) {
+    public void method235() {
         for(; ; ) {
             SubNode class40_sub5 = aClass27_319.method351();
             if(class40_sub5 == null)
@@ -109,6 +95,5 @@ public class Cache {
             class40_sub5.method539();
         }
         anInt316 = anInt317;
-        int i = 115 / ((-2 - arg0) / 33);
     }
 }

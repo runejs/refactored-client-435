@@ -15,36 +15,14 @@ import java.awt.event.KeyEvent;
 public class Class51 {
     public static int mapZoomOffset = 0;
     public static HashTable aClass23_1194 = new HashTable(4096);
-    public static int anInt1195;
-    public static RSString aClass1_1196;
-    public static int anInt1197;
+    public static int anInt1195 = 0;
+    public static int anInt1197 = 0;
     public static int[] anIntArray1198;
-    public static RSString aClass1_1199 = RSString.CreateString("(Y");
-    public static RSString aClass1_1200;
-    public static RSString aClass1_1201;
     public static int regionX;
-    public static long aLong1203;
-    public static RSString[] aClass1Array1204;
-    public static int anInt1205;
+    public static long aLong1203 = 0L;
+    public static String[] aClass1Array1204;
+    public static int anInt1205 = -1;
     public static Class68 aClass68_1206;
-    public static RSString aClass1_1207;
-    public static RSString aClass1_1208;
-    public static RSString aClass1_1209;
-    public static RSString whiteCrown;
-
-    static {
-        anInt1197 = 0;
-        anInt1205 = -1;
-        aClass1_1201 = RSString.CreateString("Enter name of player to add to list");
-        aClass1_1200 = aClass1_1201;
-        aClass1_1207 = RSString.CreateString("Accept trade");
-        aClass1_1208 = aClass1_1207;
-        anInt1195 = 0;
-        aClass1_1209 = RSString.CreateString("glow3:");
-        whiteCrown = RSString.CreateString("@cr1@");
-        aLong1203 = 0L;
-        aClass1_1196 = aClass1_1209;
-    }
 
     public static int getKeyChar(KeyEvent arg1) {
         int keyChar = arg1.getKeyChar();
@@ -53,22 +31,9 @@ public class Class51 {
         return keyChar;
     }
 
-    public static void method939() {
-        aClass1_1207 = null;
-        aClass1_1200 = null;
-        aClass1_1196 = null;
-        whiteCrown = null;
-        aClass1_1201 = null;
-        aClass1_1208 = null;
-        anIntArray1198 = null;
-        aClass23_1194 = null;
-        aClass1Array1204 = null;
-        aClass68_1206 = null;
-        aClass1_1199 = null;
-        aClass1_1209 = null;
-    }
 
-    public static void method940(int arg0, RSString arg1, boolean arg2, RSString arg3) {
+
+    public static void method940(int arg0, String arg1, boolean arg2, String arg3) {
         if(Class40_Sub5_Sub11.clearScreen) {
             Class40_Sub5_Sub11.clearScreen = false;
             ItemDefinition.method742();
@@ -99,7 +64,7 @@ public class Class51 {
     }
 
     public static void method941() {
-        CacheIndex.modelCache.method235((byte) 50);
+        CacheIndex.modelCache.method235();
     }
 
     public static void method942(int arg1) {

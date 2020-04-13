@@ -34,7 +34,7 @@ public class SearchCommand extends Command {
                     ItemDefinition definition = ItemDefinition.forId(itemId, 10);
                     if(definition.noteTemplateId == -1) {
                         filterAndAddDefinition(itemId, definition, cmdInput, console);
-                        if((results >= maxResults))
+                        if(results >= maxResults)
                             break;
                     }
                 }
@@ -45,7 +45,7 @@ public class SearchCommand extends Command {
                 for(int npcId = 0; ActorDefinition.count > npcId; npcId++) {
                     ActorDefinition definition = ActorDefinition.getDefinition(npcId);
                     filterAndAddDefinition(npcId, definition, cmdInput, console);
-                    if((results >= maxResults))
+                    if(results >= maxResults)
                         break;
                 }
                 break;
@@ -55,7 +55,7 @@ public class SearchCommand extends Command {
                 for(int objectId = 0; GameObjectDefinition.count > objectId; objectId++) {
                     GameObjectDefinition definition = GameObjectDefinition.getDefinition(objectId);
                     filterAndAddDefinition(objectId, definition, cmdInput, console);
-                    if((results >= maxResults))
+                    if(results >= maxResults)
                         break;
                 }
                 break;
@@ -64,8 +64,7 @@ public class SearchCommand extends Command {
 
     private void filterAndAddDefinition(int id, EntityDefinition def, String[] searchTerms, Console console) {
         if(def.getName() != null) {
-            RSString objectName = def.getName().toLowerCase();
-            String itemNameString = objectName.toString();
+            String itemNameString = def.getName().toLowerCase();
             for(int indx = 2; indx < searchTerms.length; indx++) {
                 if(!itemNameString.contains(searchTerms[indx].toLowerCase()))
                     return;

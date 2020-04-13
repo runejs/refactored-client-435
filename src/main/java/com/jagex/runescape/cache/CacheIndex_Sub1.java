@@ -35,19 +35,13 @@ public class CacheIndex_Sub1 extends CacheIndex {
 
     }
 
-    public static void method203() {
-        Player.npcs = null;
-    }
-
-    public static RSString method204(int arg0, int arg1) {
-        if(arg1 != 255)
-            method203();
-        return (RSString.linkRSStrings((new RSString[]{HashTable.method334(0xff & arg0 >> 24), Node.aClass1_975, HashTable.method334((arg0 & 0xffca88) >> 16), Node.aClass1_975, HashTable.method334((0xfff8 & arg0) >> 8), Node.aClass1_975, HashTable.method334(0xff & arg0)})));
+    public static String method204(int arg0) {
+        return (0xff & arg0 >> 24) + Node.aClass1_975 + ((arg0 & 0xffca88) >> 16) + Node.aClass1_975 + ((0xfff8 & arg0) >> 8) + Node.aClass1_975 + (0xff & arg0);
     }
 
     public static void method399(int arg0, int arg2) {
         long l = (arg0 << 16) + arg2;
-        Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.method331(l, 6120));
+        Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.method331(l, 6120);
         if(class40_sub5_sub13 != null) {
             InteractiveObject.aClass27_485.method367(true, class40_sub5_sub13);
         }
@@ -78,7 +72,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
             return 100;
         if(aByteArrayArray212 != null)
             return 99;
-        int i = Class34.method415((byte) -103, 255, anInt1807);
+        int i = Class34.method415(255, anInt1807);
         if(arg0 != 100)
             return -74;
         if(i >= 100)
@@ -119,8 +113,8 @@ public class CacheIndex_Sub1 extends CacheIndex {
                 Class65.aCRC32_1531.reset();
                 Class65.aCRC32_1531.update(arg2, 0, arg2.length - 2);
                 int i = (int) Class65.aCRC32_1531.getValue();
-                int i_0_ = (((arg2[-2 + arg2.length] & 0xff) << 8) + (0xff & arg2[arg2.length + -1]));
-                if(i != anIntArray252[arg3] || (i_0_ != anIntArray224[arg3])) {
+                int i_0_ = ((arg2[-2 + arg2.length] & 0xff) << 8) + (0xff & arg2[arg2.length + -1]);
+                if(i != anIntArray252[arg3] || i_0_ != anIntArray224[arg3]) {
                     aBooleanArray1796[arg3] = false;
                     if(aBoolean1811 || arg1)
                         HashTable.method327(arg1, this, anInt1807, arg3, (byte) 2, anIntArray252[arg3], (byte) -78);
@@ -155,13 +149,13 @@ public class CacheIndex_Sub1 extends CacheIndex {
 
     public void method199() {
         aBooleanArray1796 = new boolean[aByteArrayArray212.length];
-        for(int i_1_ = 0; (i_1_ < aBooleanArray1796.length); i_1_++)
+        for(int i_1_ = 0; i_1_ < aBooleanArray1796.length; i_1_++)
             aBooleanArray1796[i_1_] = false;
         if(aClass56_1812 == null)
             aBoolean1800 = true;
         else {
             anInt1797 = -1;
-            for(int i_2_ = 0; (aBooleanArray1796.length > i_2_); i_2_++) {
+            for(int i_2_ = 0; aBooleanArray1796.length > i_2_; i_2_++) {
                 if(anIntArray261[i_2_] > 0) {
                     PacketBuffer.method513(i_2_, this, aClass56_1812, (byte) -28);
                     anInt1797 = i_2_;
@@ -187,20 +181,18 @@ public class CacheIndex_Sub1 extends CacheIndex {
             return 100;
         if(aBooleanArray1796[arg0])
             return 100;
-        return Class34.method415((byte) 88, anInt1807, arg0);
+        return Class34.method415(anInt1807, arg0);
     }
 
-    public int method202(boolean arg0) {
+    public int method202() {
         int i = 0;
         int i_3_ = 0;
-        for(int i_4_ = 0; (i_4_ < aByteArrayArray212.length); i_4_++) {
+        for(int i_4_ = 0; i_4_ < aByteArrayArray212.length; i_4_++) {
             if(anIntArray261[i_4_] > 0) {
                 i += 100;
                 i_3_ += method201(i_4_);
             }
         }
-        if(arg0)
-            method203();
         if(i == 0)
             return 100;
         return i_3_ * 100 / i;

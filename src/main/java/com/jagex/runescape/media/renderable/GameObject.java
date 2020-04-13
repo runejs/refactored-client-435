@@ -4,14 +4,12 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
-import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.util.CollisionMap;
 
@@ -19,13 +17,13 @@ import java.awt.*;
 
 public class GameObject extends Renderable {
     public static MouseHandler frame = new MouseHandler();
-    public static RSString aClass1_3038 = RSString.CreateString("Loaded gamescreen");
-    public static RSString aClass1_3039 = RSString.CreateString("Accept challenge");
+    public static String aClass1_3038 = "Loaded gamescreen";
+    public static String aClass1_3039 = "Accept challenge";
     public static int anInt3040 = 0;
     public static Class68 aClass68_3042;
-    public static RSString aClass1_3044 = RSString.CreateString("");
+    public static String aClass1_3044 = "";
     public static Class68 aClass68_3045;
-    public static RSString aClass1_3047 = RSString.CreateString("mapfunction");
+    public static String aClass1_3047 = "mapfunction";
     public static int anInt3048 = 1;
 
 
@@ -54,8 +52,8 @@ public class GameObject extends Renderable {
             animationFrame = 0;
             animationCycleDelay = -1 + Node.pulseCycle;
             if(arg8 && animationSequence.frameStep != -1) {
-                animationFrame = (int) ((double) (animationSequence.anIntArray2485).length * Math.random());
-                animationCycleDelay -= (int) (Math.random() * (double) (animationSequence.animationLengths[animationFrame]));
+                animationFrame = (int) ((double) animationSequence.anIntArray2485.length * Math.random());
+                animationCycleDelay -= (int) (Math.random() * (double) animationSequence.animationLengths[animationFrame]);
             }
         }
     }
@@ -66,15 +64,6 @@ public class GameObject extends Renderable {
         return SubNode.method538(0);
     }
 
-    public static void method770() {
-        aClass1_3047 = null;
-        aClass68_3042 = null;
-        aClass1_3044 = null;
-        aClass68_3045 = null;
-        frame = null;
-        aClass1_3038 = null;
-        aClass1_3039 = null;
-    }
 
     public static void loadObjectBlock(int block_x, Scene scene, CollisionMap[] collisionMaps, byte[] block_data, int block_z) {
         Buffer buffer = new Buffer(block_data);
@@ -111,7 +100,7 @@ public class GameObject extends Renderable {
         }
     }
 
-    public static void drawLoadingText(int percent, Color color, RSString rsString) {
+    public static void drawLoadingText(int percent, Color color, String rsString) {
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
             if(Class17.helveticaBold == null) {
@@ -134,10 +123,10 @@ public class GameObject extends Renderable {
                 graphics1.fillRect(2, 2, percent * 3, 30);
                 graphics1.setColor(Color.black);
                 graphics1.drawRect(1, 1, 301, 31);
-                graphics1.fillRect(2 + (3 * percent), 2, 300 - 3 * percent, 30);
+                graphics1.fillRect(2 + 3 * percent, 2, 300 - 3 * percent, 30);
                 graphics1.setFont(Class17.helveticaBold);
                 graphics1.setColor(Color.white);
-                rsString.method65(((304 - rsString.method73(Class8.fontMetrics)) / 2), 22, graphics1);
+                graphics1.drawString(rsString, (304 - (Class8.fontMetrics.stringWidth(rsString))) / 2, 22);
                 graphics.drawImage(Class26.anImage624, Class12.width / 2 - 152, IdentityKit.height / 2 - 18, null);
             } catch(Exception exception) {
                 int centerWidth = Class12.width / 2 - 152;
@@ -150,7 +139,7 @@ public class GameObject extends Renderable {
                 graphics.fillRect(percent * 3 + 2 + centerWidth, 2 + centerHeight, 300 + -(3 * percent), 30);
                 graphics.setFont(Class17.helveticaBold);
                 graphics.setColor(Color.white);
-                rsString.method65((-rsString.method73(Class8.fontMetrics) + 304) / 2 + centerWidth, 22 + centerHeight, graphics);
+                graphics.drawString(rsString, (304 - (Class8.fontMetrics.stringWidth(rsString))) / 2+ centerWidth, 22 + centerHeight);
             }
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
@@ -158,12 +147,12 @@ public class GameObject extends Renderable {
     }
 
     public static void method774(byte arg0) {
-        Buffer.aClass9_1933.method235((byte) -88);
+        Buffer.aClass9_1933.method235();
         if(arg0 != -96)
             aClass1_3047 = null;
     }
 
-    public Model getRotatedModel(int arg0) {
+    public Model getRotatedModel() {
         if(animationSequence != null) {
             int step = -animationCycleDelay + Node.pulseCycle;
             if(step > 100 && animationSequence.frameStep > 0)
@@ -171,9 +160,9 @@ public class GameObject extends Renderable {
             while(animationSequence.animationLengths[animationFrame] < step) {
                 step -= animationSequence.animationLengths[animationFrame];
                 animationFrame++;
-                if((animationSequence.anIntArray2485.length <= animationFrame)) {
+                if(animationSequence.anIntArray2485.length <= animationFrame) {
                     animationFrame -= animationSequence.frameStep;
-                    if(animationFrame < 0 || (animationSequence.anIntArray2485.length <= animationFrame)) {
+                    if(animationFrame < 0 || animationSequence.anIntArray2485.length <= animationFrame) {
                         animationSequence = null;
                         break;
                     }

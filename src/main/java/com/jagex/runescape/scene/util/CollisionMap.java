@@ -9,10 +9,10 @@ public class CollisionMap {
     public static int anInt163 = -1;
     public static int anInt165 = 0;
     public static Class8 aClass8_166;
-    public static RSString str_continue = RSString.CreateString("Continue");
+    public static String str_continue = "Continue";
     public static int menuHeight;
     public static byte[] aByteArray169 = new byte[]{95, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57};
-    public static RSString aClass1_170 = RSString.CreateString("(X");
+    public static String aClass1_170 = "(";
     public static int anInt172;
 
 
@@ -42,20 +42,13 @@ public class CollisionMap {
 
     }
 
-    public static void method152() {
-        aByteArray169 = null;
-        anObject162 = null;
-        str_continue = null;
-        aClass1_170 = null;
-        aClass8_166 = null;
-    }
 
     public static int method157(int arg0, int arg1, int arg2) {
-        int i = (Class42.method884(-1 + arg1, -1 + arg2, 37821) + Class42.method884(1 + arg1, arg2 - 1, 37821) + Class42.method884(-1 + arg1, 1 + arg2, 37821) + Class42.method884(1 + arg1, arg2 + 1, 37821));
+        int i = Class42.method884(-1 + arg1, -1 + arg2) + Class42.method884(1 + arg1, arg2 - 1) + Class42.method884(-1 + arg1, 1 + arg2) + Class42.method884(1 + arg1, arg2 + 1);
         if(arg0 != 0)
             return 56;
-        int i_126_ = (Class42.method884(arg1 - 1, arg2, 37821) + Class42.method884(arg1 + 1, arg2, 37821) - (-Class42.method884(arg1, arg2 - 1, 37821) + -Class42.method884(arg1, 1 + arg2, 37821)));
-        int i_127_ = Class42.method884(arg1, arg2, 37821);
+        int i_126_ = Class42.method884(arg1 - 1, arg2) + Class42.method884(arg1 + 1, arg2) - (-Class42.method884(arg1, arg2 - 1) + -Class42.method884(arg1, 1 + arg2));
+        int i_127_ = Class42.method884(arg1, arg2);
         return i / 16 - (-(i_126_ / 8) - i_127_ / 4);
     }
 
@@ -71,7 +64,7 @@ public class CollisionMap {
 
     public void reset() {
         for(int i = 0; width > i; i++) {
-            for(int i_0_ = 0; (height > i_0_); i_0_++) {
+            for(int i_0_ = 0; height > i_0_; i_0_++) {
                 if(i != 0 && i_0_ != 0 && i != width - 1 && i_0_ != -1 + height)
                     clippingData[i][i_0_] = 16777216;
                 else
@@ -214,9 +207,9 @@ public class CollisionMap {
             objectSizeX = objectSizeY;
             objectSizeY = temp;
         }
-        for(int x = objectX; (objectSizeX + objectX > x); x++) {
-            if(x >= 0 && (x < width)) {
-                for(int y = objectY; (objectSizeY + objectY > y); y++) {
+        for(int x = objectX; objectSizeX + objectX > x; x++) {
+            if(x >= 0 && x < width) {
+                for(int y = objectY; objectSizeY + objectY > y; y++) {
                     if(y >= 0 && height > y)
                         orClipTable(x, y, occupied);
                 }
@@ -358,7 +351,7 @@ public class CollisionMap {
         int goalY2 = -1 + goalY + goalDY;
         if(goalX <= currentX && goalX2 >= currentX && goalY <= currentY && goalY2 >= currentY)
             return true;
-        if(goalX + -1 == currentX && goalY <= currentY && (goalY2 >= currentY) && (clippingData[-insetX + currentX][-insetY + currentY] & 0x8) == 0 && (surroundings & 0x8) == 0)
+        if(goalX + -1 == currentX && goalY <= currentY && goalY2 >= currentY && (clippingData[-insetX + currentX][-insetY + currentY] & 0x8) == 0 && (surroundings & 0x8) == 0)
             return true;
         if(currentX == goalX2 + 1 && goalY <= currentY && currentY <= goalY2 && (clippingData[currentX - insetX][currentY + -insetY] & 0x80) == 0 && (0x2 & surroundings) == 0)
             return true;
@@ -380,7 +373,7 @@ public class CollisionMap {
         }
         for(int _x = x; _x < x + width; _x++) {
             if(_x >= 0 && _x < this.width) {
-                for(int _y = y; (_y < height + y); _y++) {
+                for(int _y = y; _y < height + y; _y++) {
                     if(_y >= 0 && _y < this.height)
                         unset(_x, _y, occupied);
                 }
@@ -406,21 +399,21 @@ public class CollisionMap {
             } else if(goalOrientation == 1) {
                 if(goalX == currentX && 1 + goalY == currentY)
                     return true;
-                if(currentX == -1 + goalX && currentY == goalY && ((clippingData[currentX][currentY] & 0x1280108) == 0))
+                if(currentX == -1 + goalX && currentY == goalY && (clippingData[currentX][currentY] & 0x1280108) == 0)
                     return true;
                 if(1 + goalX == currentX && currentY == goalY && (clippingData[currentX][currentY] & 0x1280180) == 0)
                     return true;
             } else if(goalOrientation == 2) {
                 if(currentX == goalX + 1 && goalY == currentY)
                     return true;
-                if(currentX == goalX && currentY == goalY + 1 && ((clippingData[currentX][currentY] & 0x1280120) == 0))
+                if(currentX == goalX && currentY == goalY + 1 && (clippingData[currentX][currentY] & 0x1280120) == 0)
                     return true;
-                if(goalX == currentX && currentY == goalY + -1 && ((clippingData[currentX][currentY] & 0x1280102) == 0))
+                if(goalX == currentX && currentY == goalY + -1 && (clippingData[currentX][currentY] & 0x1280102) == 0)
                     return true;
             } else if(goalOrientation == 3) {
                 if(goalX == currentX && goalY - 1 == currentY)
                     return true;
-                if(-1 + goalX == currentX && goalY == currentY && ((clippingData[currentX][currentY] & 0x1280108) == 0))
+                if(-1 + goalX == currentX && goalY == currentY && (clippingData[currentX][currentY] & 0x1280108) == 0)
                     return true;
                 if(currentX == 1 + goalX && currentY == goalY && (0x1280180 & clippingData[currentX][currentY]) == 0)
                     return true;
@@ -437,7 +430,7 @@ public class CollisionMap {
                 if(goalX == currentX && currentY == goalY - 1 && (0x1280102 & clippingData[currentX][currentY]) == 0)
                     return true;
             } else if(goalOrientation == 1) {
-                if(currentX == -1 + goalX && currentY == goalY && ((clippingData[currentX][currentY] & 0x1280108) == 0))
+                if(currentX == -1 + goalX && currentY == goalY && (clippingData[currentX][currentY] & 0x1280108) == 0)
                     return true;
                 if(currentX == goalX && currentY == goalY + 1)
                     return true;
@@ -457,7 +450,7 @@ public class CollisionMap {
             } else if(goalOrientation == 3) {
                 if(currentX == -1 + goalX && currentY == goalY)
                     return true;
-                if(currentX == goalX && (currentY == goalY + 1) && (0x1280120 & clippingData[currentX][currentY]) == 0)
+                if(currentX == goalX && currentY == goalY + 1 && (0x1280120 & clippingData[currentX][currentY]) == 0)
                     return true;
                 if(currentX == goalX + 1 && goalY == currentY && (0x1280180 & clippingData[currentX][currentY]) == 0)
                     return true;
@@ -466,13 +459,13 @@ public class CollisionMap {
             }
         }
         if(goalPosition == 9) {
-            if(goalX == currentX && currentY == 1 + goalY && ((0x20 & clippingData[currentX][currentY]) == 0))
+            if(goalX == currentX && currentY == 1 + goalY && (0x20 & clippingData[currentX][currentY]) == 0)
                 return true;
             if(currentX == goalX && currentY == -1 + goalY && (0x2 & clippingData[currentX][currentY]) == 0)
                 return true;
-            if(currentX == -1 + goalX && currentY == goalY && ((0x8 & clippingData[currentX][currentY]) == 0))
+            if(currentX == -1 + goalX && currentY == goalY && (0x8 & clippingData[currentX][currentY]) == 0)
                 return true;
-            return 1 + goalX == currentX && goalY == currentY && ((clippingData[currentX][currentY] & 0x80) == 0);
+            return 1 + goalX == currentX && goalY == currentY && (clippingData[currentX][currentY] & 0x80) == 0;
         }
         return false;
     }
@@ -497,7 +490,7 @@ public class CollisionMap {
                 if(goalX == currentX && -1 + goalY == currentY && (0x2 & clippingData[currentX][currentY]) == 0)
                     return true;
             } else if(goalOrientation == 1) {
-                if(currentX == goalX + -1 && goalY == currentY && ((clippingData[currentX][currentY] & 0x8) == 0))
+                if(currentX == goalX + -1 && goalY == currentY && (clippingData[currentX][currentY] & 0x8) == 0)
                     return true;
                 if(currentX == goalX && currentY == goalY + -1 && (clippingData[currentX][currentY] & 0x2) == 0)
                     return true;
@@ -520,7 +513,7 @@ public class CollisionMap {
                 return true;
             if(currentX == goalX - 1 && goalY == currentY && (clippingData[currentX][currentY] & 0x8) == 0)
                 return true;
-            return 1 + goalX == currentX && currentY == goalY && ((0x80 & clippingData[currentX][currentY]) == 0);
+            return 1 + goalX == currentX && currentY == goalY && (0x80 & clippingData[currentX][currentY]) == 0;
         }
         return false;
     }

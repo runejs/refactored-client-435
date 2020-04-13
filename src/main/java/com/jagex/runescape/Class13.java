@@ -23,7 +23,7 @@ public class Class13 {
     public static int mouseX = 0;
     public static int[] anIntArray421;
 
-    public static void method241(Actor arg0, int arg1, byte arg2) {
+    public static void method241(Actor arg0, byte arg2) {
         if(arg0.worldX < 128 || arg0.worldY < 128 || arg0.worldX >= 13184 || arg0.worldY >= 13184) {
             arg0.playingAnimation = -1;
             arg0.anInt3112 = 0;
@@ -38,17 +38,17 @@ public class Class13 {
             arg0.anInt3107 = 0;
             arg0.anInt3112 = 0;
             arg0.playingAnimation = -1;
-            arg0.worldX = arg0.pathY[0] * 128 + (arg0.anInt3096 * 64);
+            arg0.worldX = arg0.pathY[0] * 128 + arg0.anInt3096 * 64;
             arg0.worldY = 64 * arg0.anInt3096 + arg0.pathX[0] * 128;
             arg0.method790(0);
         }
         if(arg0.anInt3112 > Node.pulseCycle)
-            Class40_Sub5_Sub11.method631(arg0, false);
+            Class40_Sub5_Sub11.method631(arg0);
         else if(arg0.anInt3107 < Node.pulseCycle)
             Class44.method898(255, arg0);
         else
-            Class30.method381(22378, arg0);
-        Class40_Sub5_Sub17_Sub1.method762(-1, arg0);
+            Class30.method381(arg0);
+        Class40_Sub5_Sub17_Sub1.method762(arg0);
         Class40_Sub5_Sub15.method736(true, arg0);
         if(arg2 != 107)
             method249(false);
@@ -60,7 +60,7 @@ public class Class13 {
         for(; ; ) {
             Class40_Sub6 class40_sub6;
             synchronized(RSCanvas.aLinkedList_53) {
-                class40_sub6 = ((Class40_Sub6) IdentityKit.aLinkedList_2604.method913(25447));
+                class40_sub6 = (Class40_Sub6) IdentityKit.aLinkedList_2604.method913(25447);
             }
             if(class40_sub6 == null)
                 break;
@@ -85,7 +85,7 @@ public class Class13 {
             arg0 /= 2;
         if(arg1 > 243)
             arg0 /= 2;
-        return arg1 / 2 + ((arg0 / 32 << 7) + (arg3 / 4 << 10));
+        return arg1 / 2 + (arg0 / 32 << 7) + (arg3 / 4 << 10);
     }
 
     public static synchronized byte[] method246(int arg1) {
@@ -100,7 +100,7 @@ public class Class13 {
             return is;
         }
         if(arg1 == 30000 && VarbitDefinition.anInt2359 > 0) {
-            byte[] is = (RSCanvas.aByteArrayArray47[--VarbitDefinition.anInt2359]);
+            byte[] is = RSCanvas.aByteArrayArray47[--VarbitDefinition.anInt2359];
             RSCanvas.aByteArrayArray47[VarbitDefinition.anInt2359] = null;
             return is;
         }
@@ -121,7 +121,7 @@ public class Class13 {
         int i_12_ = arg0.currentY;
         int i_13_ = arg0.parentId;
         while(i_13_ != -1) {
-            Widget widget = (Widget.interfaces[i][i_13_ & 0xffff]);
+            Widget widget = Widget.interfaces[i][i_13_ & 0xffff];
             i_11_ += widget.currentX;
             if(!arg0.aBoolean2694)
                 i_11_ -= widget.anInt2746;
@@ -134,16 +134,6 @@ public class Class13 {
         is[0] = i_11_;
         is[1] = i_12_;
         return is;
-    }
-
-    public static void method248() {
-        anIntArray421 = null;
-        aClass40_Sub5_Sub14_Sub2_418 = null;
-        English.loadingFriendList = null;
-        English.enterNameOfFriendToDeleteFromList = null;
-        anIntArray403 = null;
-        playerArray = null;
-        aClass9_406 = null;
     }
 
     public static void method249(boolean arg0) {

@@ -9,16 +9,10 @@ import com.jagex.runescape.scene.SceneCluster;
 public class Class49 {
     public static Cache aClass9_1145 = new Cache(30);
     public static volatile int anInt1147 = 0;
-    public static RSString aClass1_1148;
     public static CacheIndex aCacheIndex_1150;
     public static int anInt1151 = 0;
     public static Class40_Sub9_Sub1 aClass40_Sub9_Sub1_1152;
     public static int anInt1154;
-    public static RSString aClass1_1156 = RSString.CreateString("Loading ignore list");
-
-    static {
-        aClass1_1148 = aClass1_1156;
-    }
 
     public static void setCameraPosition(int pitch, int x, int z, int yaw, int y, int ___pitch, int arg6) {
         int xOffset = 0;
@@ -47,11 +41,5 @@ public class Class49 {
         Class40_Sub5_Sub6.cameraY = y + -yOffset;
     }
 
-    public static void method930() {
-        aClass9_1145 = null;
-        aClass40_Sub9_Sub1_1152 = null;
-        aClass1_1148 = null;
-        aClass1_1156 = null;
-        aCacheIndex_1150 = null;
-    }
+
 }

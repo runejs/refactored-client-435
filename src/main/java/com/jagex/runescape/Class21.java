@@ -5,10 +5,6 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 public class Class21 {
     public static Class34 aClass34_530 = new Class34();
 
-    public static void method289() {
-        aClass34_530 = null;
-    }
-
     public static void method290(Class34 arg0) {
         arg0.anInt843 = 0;
         for(int i = 0; i < 256; i++) {
@@ -113,7 +109,6 @@ public class Class21 {
                     i_2_ = i_10_;
             }
         }
-        int i_11_ = arg0.anInt846;
         arg0.anInt846 += i_7_ - i_6_;
         arg0.aByte819 = i;
         arg0.anInt812 = i_0_;
@@ -127,24 +122,6 @@ public class Class21 {
     }
 
     public static void method292(Class34 arg0) {
-        boolean bool = false;
-        boolean bool_12_ = false;
-        boolean bool_13_ = false;
-        boolean bool_14_ = false;
-        boolean bool_15_ = false;
-        boolean bool_16_ = false;
-        boolean bool_17_ = false;
-        boolean bool_18_ = false;
-        boolean bool_19_ = false;
-        boolean bool_20_ = false;
-        boolean bool_21_ = false;
-        boolean bool_22_ = false;
-        boolean bool_23_ = false;
-        boolean bool_24_ = false;
-        boolean bool_25_ = false;
-        boolean bool_26_ = false;
-        boolean bool_27_ = false;
-        boolean bool_28_ = false;
         int i = 0;
         int[] is = null;
         int[] is_29_ = null;
@@ -302,7 +279,7 @@ public class Class21 {
                         i_67_ = is_30_[i_66_ - is_29_[i_64_]];
                     } while(i_67_ == 0 || i_67_ == 1);
                     i_68_++;
-                    i_33_ = (arg0.aByteArray814[arg0.aByteArray840[arg0.anIntArray818[0]] & 0xff]);
+                    i_33_ = arg0.aByteArray814[arg0.aByteArray840[arg0.anIntArray818[0]] & 0xff];
                     arg0.anIntArray845[i_33_ & 0xff] += i_68_;
                     for(/**/; i_68_ > 0; i_68_--) {
                         OverlayDefinition.anIntArray2324[i_62_] = i_33_ & 0xff;
@@ -333,7 +310,7 @@ public class Class21 {
                         arg0.anIntArray818[i_74_]++;
                         for(/**/; i_74_ > 0; i_74_--) {
                             arg0.anIntArray818[i_74_]--;
-                            arg0.aByteArray840[arg0.anIntArray818[i_74_]] = (arg0.aByteArray840[arg0.anIntArray818[i_74_ - 1] + 16 - 1]);
+                            arg0.aByteArray840[arg0.anIntArray818[i_74_]] = arg0.aByteArray840[arg0.anIntArray818[i_74_ - 1] + 16 - 1];
                         }
                         arg0.anIntArray818[0]--;
                         arg0.aByteArray840[arg0.anIntArray818[0]] = i_32_;
@@ -341,14 +318,14 @@ public class Class21 {
                             int i_77_ = 4095;
                             for(int i_78_ = 15; i_78_ >= 0; i_78_--) {
                                 for(int i_79_ = 15; i_79_ >= 0; i_79_--) {
-                                    arg0.aByteArray840[i_77_] = (arg0.aByteArray840[(arg0.anIntArray818[i_78_] + i_79_)]);
+                                    arg0.aByteArray840[i_77_] = arg0.aByteArray840[arg0.anIntArray818[i_78_] + i_79_];
                                     i_77_--;
                                 }
                                 arg0.anIntArray818[i_78_] = i_77_ + 1;
                             }
                         }
                     }
-                    arg0.anIntArray845[(arg0.aByteArray814[i_32_ & 0xff] & 0xff)]++;
+                    arg0.anIntArray845[arg0.aByteArray814[i_32_ & 0xff] & 0xff]++;
                     OverlayDefinition.anIntArray2324[i_62_] = arg0.aByteArray814[i_32_ & 0xff] & 0xff;
                     i_62_++;
                     if(i_57_ == 0) {
@@ -378,7 +355,7 @@ public class Class21 {
                 arg0.anIntArray816[i_82_] += arg0.anIntArray816[i_82_ - 1];
             for(int i_83_ = 0; i_83_ < i_62_; i_83_++) {
                 i_33_ = (byte) (OverlayDefinition.anIntArray2324[i_83_] & 0xff);
-                OverlayDefinition.anIntArray2324[(arg0.anIntArray816[i_33_ & 0xff])] |= i_83_ << 8;
+                OverlayDefinition.anIntArray2324[arg0.anIntArray816[i_33_ & 0xff]] |= i_83_ << 8;
                 arg0.anIntArray816[i_33_ & 0xff]++;
             }
             arg0.anInt820 = OverlayDefinition.anIntArray2324[arg0.anInt801] >> 8;
@@ -434,7 +411,7 @@ public class Class21 {
                 i = i_93_;
                 break;
             }
-            arg1.anInt834 = (arg1.anInt834 << 8 | arg1.aByteArray830[arg1.anInt832] & 0xff);
+            arg1.anInt834 = arg1.anInt834 << 8 | arg1.aByteArray830[arg1.anInt832] & 0xff;
             arg1.anInt847 += 8;
             arg1.anInt832++;
             arg1.anInt831++;
@@ -446,7 +423,7 @@ public class Class21 {
         return (byte) method295(1, arg0);
     }
 
-    public static int method297(byte[] arg0, int arg1, byte[] arg2, int arg3, int arg4) {
+    public static int method297(byte[] arg0, int arg1, byte[] arg2, int arg4) {
         synchronized(aClass34_530) {
             aClass34_530.aByteArray830 = arg2;
             aClass34_530.anInt832 = arg4;

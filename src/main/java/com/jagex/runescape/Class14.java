@@ -13,10 +13,6 @@ public class Class14 {
     public int anInt430;
     public int anInt431;
 
-    public static void method266() {
-        aByteArray429 = null;
-    }
-
     public int method250() {
         int i = anIntArray425.length;
         int i_0_ = -1;
@@ -113,7 +109,7 @@ public class Class14 {
         if(i == 240 || i == 247) {
             int i_7_ = aClass40_Sub1_423.method500();
             if(i == 247 && i_7_ > 0) {
-                int i_8_ = ((aClass40_Sub1_423.buffer[aClass40_Sub1_423.currentPosition]) & 0xff);
+                int i_8_ = aClass40_Sub1_423.buffer[aClass40_Sub1_423.currentPosition] & 0xff;
                 if(i_8_ >= 241 && i_8_ <= 243 || i_8_ == 246 || i_8_ == 248 || i_8_ >= 250 && i_8_ <= 252 || i_8_ == 254) {
                     aClass40_Sub1_423.currentPosition++;
                     anIntArray428[arg0] = i_8_;

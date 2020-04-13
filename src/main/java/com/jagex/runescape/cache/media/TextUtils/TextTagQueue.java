@@ -1,8 +1,6 @@
 package com.jagex.runescape.cache.media.TextUtils;
 
 
-import com.jagex.runescape.RSString;
-
 public class TextTagQueue {
     private TextTagNode head;
     private TextTagNode tail;
@@ -27,12 +25,13 @@ public class TextTagQueue {
        this.tail = node;
     }
 
-    public void applyAll(RSString resultText) {
+    public String applyAll(String targetText) {
         TextTagNode currentNode = head;
         while(currentNode != null){
-            currentNode.applyTo(resultText);
+            targetText = currentNode.applyTo(targetText);
             currentNode = head.getNext();
         }
+        return targetText;
     }
 
     public TextTagNode pop() {

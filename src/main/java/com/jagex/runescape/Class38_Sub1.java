@@ -22,14 +22,9 @@ import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
 
 public class Class38_Sub1 extends Class38 {
-    public static RSString aClass1_1905 = RSString.CreateString(" has logged out)3");
     public static int[] anIntArray1909 = new int[99];
     public static int[] anIntArray1916 = new int[50];
-    public static RSString aClass1_1917 = RSString.CreateString("Attack");
-    public static RSString aClass1_1918 = null;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1919;
-    public static RSString aClass1_1921 = RSString.CreateString("b12_full");
-    public static RSString aClass1_1922 = RSString.CreateString("Loaded sprites");
     public static int anInt1923 = 0;
 
     static {
@@ -61,24 +56,24 @@ public class Class38_Sub1 extends Class38 {
             for(int i_1_ = 0; i_1_ < 100; i_1_++) {
                 if(ChatBox.chatMessages[i_1_] != null) {
                     int i_2_ = ChatBox.chatTypes[i_1_];
-                    RSString class1 = ChatBox.chatPlayerNames[i_1_];
-                    if(class1 != null && class1.startsWith(Class51.whiteCrown))
+                    String class1 = ChatBox.chatPlayerNames[i_1_];
+                    if(class1 != null && class1.startsWith(Native.whiteCrown))
                         class1 = class1.substring(5);
                     if(class1 != null && class1.startsWith(Widget.goldCrown))
                         class1 = class1.substring(5);
-                    if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || ChatBox.privateChatMode == 0 || (ChatBox.privateChatMode == 1 && Class40_Sub2.hasFriend(class1)))) {
+                    if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Class40_Sub2.hasFriend(class1))) {
                         int i_3_ = 329 + -(13 * i);
                         i++;
-                        if(Class13.mouseX > 4 && ((i_3_ + -10 < Landscape.mouseY + -4)) && ((-4 + Landscape.mouseY <= i_3_ + 3))) {
-                            int i_4_ = 25 + (WallDecoration.fontNormal.getStringWidth(RSString.linkRSStrings((new RSString[]{Class40_Sub5_Sub6.aClass1_2458, Native.prefixColon, class1, (ChatBox.chatMessages[i_1_])}))));
+                        if(Class13.mouseX > 4 && i_3_ + -10 < Landscape.mouseY + -4 && -4 + Landscape.mouseY <= i_3_ + 3) {
+                            int i_4_ = 25 + WallDecoration.fontNormal.getStringWidth(English.aClass1_2458 + Native.prefixColon+ class1+ ChatBox.chatMessages[i_1_]);
                             if(i_4_ > 450)
                                 i_4_ = 450;
                             if(Class13.mouseX < 4 + i_4_) {
                                 if(InteractiveObject.playerRights >= 1) {
-                                    OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 2028, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));
+                                    OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 2028, Native.aClass1_620+ class1);
                                 }
-                                OverlayDefinition.addActionRow(Class38.aClass1_885, 0, 0, 0, 2051, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));
-                                OverlayDefinition.addActionRow(FloorDecoration.aClass1_591, 0, 0, 0, 2045, (RSString.linkRSStrings(new RSString[]{Class26.aClass1_620, class1})));
+                                OverlayDefinition.addActionRow(English.aClass1_885, 0, 0, 0, 2051, Native.aClass1_620+ class1);
+                                OverlayDefinition.addActionRow(FloorDecoration.aClass1_591, 0, 0, 0, 2045, Native.aClass1_620+ class1);
                             }
                         }
                         if(i >= 5)
@@ -195,7 +190,7 @@ public class Class38_Sub1 extends Class38 {
         Wall.walkingQueueY[nextIndex++] = startY;
         boolean foundDestination = false;
         int maxPathSize = Class24.walkingQueueX.length;
-        int[][] clippingPaths = (Landscape.currentCollisionMap[Player.worldLevel].clippingData);
+        int[][] clippingPaths = Landscape.currentCollisionMap[Player.worldLevel].clippingData;
         while(currentIndex != nextIndex) {
             currentY = Wall.walkingQueueY[currentIndex];
             currentX = Class24.walkingQueueX[currentIndex];
@@ -205,8 +200,8 @@ public class Class38_Sub1 extends Class38 {
                 break;
             }
             if(objectType != 0) {
-                if(objectType >= 5 && objectType != 10 || !(Landscape.currentCollisionMap[Player.worldLevel].reachedWall(currentX, currentY, endX, endY, objectType + -1, arg7))) {
-                    if(objectType < 10 && (Landscape.currentCollisionMap[Player.worldLevel].reachedWallDecoration(currentX, currentY, endX, endY, -1 + objectType, arg7))) {
+                if(objectType >= 5 && objectType != 10 || !Landscape.currentCollisionMap[Player.worldLevel].reachedWall(currentX, currentY, endX, endY, objectType + -1, arg7)) {
+                    if(objectType < 10 && Landscape.currentCollisionMap[Player.worldLevel].reachedWallDecoration(currentX, currentY, endX, endY, -1 + objectType, arg7)) {
                         foundDestination = true;
                         break;
                     }
@@ -215,7 +210,7 @@ public class Class38_Sub1 extends Class38 {
                     break;
                 }
             }
-            if(arg0 != 0 && arg8 != 0 && (Landscape.currentCollisionMap[Player.worldLevel].reachedFacingObject(currentX, currentY, endX, endY, arg0, arg8, arg1))) {
+            if(arg0 != 0 && arg8 != 0 && Landscape.currentCollisionMap[Player.worldLevel].reachedFacingObject(currentX, currentY, endX, endY, arg0, arg8, arg1)) {
                 foundDestination = true;
                 break;
             }
@@ -255,14 +250,14 @@ public class Class38_Sub1 extends Class38 {
                 Class57.wayPoints[currentX + -1][-1 + currentY] = 3;
                 Landscape.distanceValues[-1 + currentX][currentY + -1] = newDistanceValue;
             }
-            if(currentX < 103 && currentY > 0 && Class57.wayPoints[currentX + 1][-1 + currentY] == 0 && ((clippingPaths[1 + currentX][-1 + currentY] & 0x1280183) == 0) && (clippingPaths[currentX + 1][currentY] & 0x1280180) == 0 && (0x1280102 & clippingPaths[currentX][-1 + currentY]) == 0) {
+            if(currentX < 103 && currentY > 0 && Class57.wayPoints[currentX + 1][-1 + currentY] == 0 && (clippingPaths[1 + currentX][-1 + currentY] & 0x1280183) == 0 && (clippingPaths[currentX + 1][currentY] & 0x1280180) == 0 && (0x1280102 & clippingPaths[currentX][-1 + currentY]) == 0) {
                 Class24.walkingQueueX[nextIndex] = 1 + currentX;
                 Wall.walkingQueueY[nextIndex] = currentY - 1;
                 nextIndex = (nextIndex + 1) % maxPathSize;
                 Class57.wayPoints[1 + currentX][-1 + currentY] = 9;
                 Landscape.distanceValues[currentX + 1][-1 + currentY] = newDistanceValue;
             }
-            if(currentX > 0 && currentY < 103 && Class57.wayPoints[currentX + -1][currentY + 1] == 0 && ((0x1280138 & clippingPaths[-1 + currentX][1 + currentY]) == 0) && (0x1280108 & clippingPaths[currentX - 1][currentY]) == 0 && (clippingPaths[currentX][currentY + 1] & 0x1280120) == 0) {
+            if(currentX > 0 && currentY < 103 && Class57.wayPoints[currentX + -1][currentY + 1] == 0 && (0x1280138 & clippingPaths[-1 + currentX][1 + currentY]) == 0 && (0x1280108 & clippingPaths[currentX - 1][currentY]) == 0 && (clippingPaths[currentX][currentY + 1] & 0x1280120) == 0) {
                 Class24.walkingQueueX[nextIndex] = -1 + currentX;
                 Wall.walkingQueueY[nextIndex] = 1 + currentY;
                 Class57.wayPoints[currentX - 1][1 + currentY] = 6;
@@ -284,8 +279,8 @@ public class Class38_Sub1 extends Class38 {
                 int deviation = 10;
                 int maxStepsNonInclusive = 100;
                 for(int deviationX = endX + -deviation; endX + deviation >= deviationX; deviationX++) {
-                    for(int deviationY = -deviation + endY; (endY + deviation >= deviationY); deviationY++) {
-                        if(deviationX >= 0 && deviationY >= 0 && deviationX < 104 && deviationY < 104 && (Landscape.distanceValues[deviationX][deviationY] < 100)) {
+                    for(int deviationY = -deviation + endY; endY + deviation >= deviationY; deviationY++) {
+                        if(deviationX >= 0 && deviationY >= 0 && deviationX < 104 && deviationY < 104 && Landscape.distanceValues[deviationX][deviationY] < 100) {
                             int i_19_ = 0;
                             int i_20_ = 0;
                             if(deviationY < endY)
@@ -295,13 +290,13 @@ public class Class38_Sub1 extends Class38 {
                             if(deviationX < endX)
                                 i_20_ = -deviationX + endX;
                             else if(-1 + arg0 + endX < deviationX)
-                                i_20_ = deviationX + (-arg0 + -endX + 1);
+                                i_20_ = deviationX + -arg0 + -endX + 1;
                             int i_21_ = i_19_ * i_19_ + i_20_ * i_20_;
-                            if(i_14_ > i_21_ || (i_21_ == i_14_ && (((Landscape.distanceValues[deviationX][deviationY]) < maxStepsNonInclusive)))) {
+                            if(i_14_ > i_21_ || i_21_ == i_14_ && Landscape.distanceValues[deviationX][deviationY] < maxStepsNonInclusive) {
                                 currentY = deviationY;
                                 i_14_ = i_21_;
                                 currentX = deviationX;
-                                maxStepsNonInclusive = (Landscape.distanceValues[deviationX][deviationY]);
+                                maxStepsNonInclusive = Landscape.distanceValues[deviationX][deviationY];
                             }
                         }
                     }
@@ -345,7 +340,7 @@ public class Class38_Sub1 extends Class38 {
             int y = Wall.walkingQueueY[currentIndex];
             if(clickType == 0) {
                 SceneCluster.packetBuffer.putPacket(73);
-                SceneCluster.packetBuffer.putByte(3 + (maxPathSize + maxPathSize));
+                SceneCluster.packetBuffer.putByte(3 + maxPathSize + maxPathSize);
             }
             if(clickType == 1) {
                 SceneCluster.packetBuffer.putPacket(236);
@@ -353,7 +348,7 @@ public class Class38_Sub1 extends Class38 {
             }
             if(clickType == 2) {
                 SceneCluster.packetBuffer.putPacket(89);
-                SceneCluster.packetBuffer.putByte(3 + (maxPathSize + maxPathSize));
+                SceneCluster.packetBuffer.putByte(3 + maxPathSize + maxPathSize);
             }
             SceneCluster.packetBuffer.putShortLE(y + Class26.baseY);
             SceneCluster.packetBuffer.putByte(Item.obfuscatedKeyStatus[82] ? 1 : 0);
@@ -370,29 +365,17 @@ public class Class38_Sub1 extends Class38 {
         return clickType != 1;
     }
 
-    public static void method449() {
-        anIntArray1916 = null;
-        aClass1_1918 = null;
-        aClass1_1917 = null;
-        anIntArray1909 = null;
-        aClass40_Sub5_Sub14_Sub2_1919 = null;
-        aClass1_1905 = null;
-        aClass1_1922 = null;
-        aClass1_1921 = null;
-    }
-
     public static void method450(byte arg0) {
         if(Player.anInt3288 == 2) {
             if(arg0 >= -28)
                 method445(-128);
-            Class22_Sub1.method312(2 * ActorDefinition.anInt2404, (Class35.anInt1730 + (-Class26.baseY + Class4.anInt175 << 7)), ((Class68.anInt1637 + -SpotAnimDefinition.baseX) << 7) + Landscape.anInt1170, 4976905);
+            Class22_Sub1.method312(2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + Class4.anInt175 << 7), (Class68.anInt1637 + -SpotAnimDefinition.baseX << 7) + Landscape.anInt1170, 4976905);
             if(ISAAC.anInt522 > -1 && Node.pulseCycle % 20 < 10)
                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
         }
     }
 
     public void method444(int arg0) {
-        int i = 36 / ((arg0 + 76) / 48);
         for(int i_0_ = 0; i_0_ < 10; i_0_++)
             aLongArray1910[i_0_] = 0L;
     }
@@ -405,7 +388,7 @@ public class Class38_Sub1 extends Class38 {
         for(int i = 0; i < 10; i++)
             aLongArray1910[i] = aLong1914;
         if(arg0 != -10115)
-            aClass1_1921 = null;
+            Native.aClass1_1921 = null;
     }
 
     public int method442(int arg0, int arg1, int arg2) {

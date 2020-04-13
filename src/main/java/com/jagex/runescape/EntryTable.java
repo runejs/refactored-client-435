@@ -47,10 +47,6 @@ public class EntryTable extends Node {
         anIntArray2139 = null;
     }
 
-    public static void method871() {
-        anIntArray2141 = null;
-    }
-
     public void method868(int arg0) {
         if(anIntArray2139 != null) {
             if(anInt2136 == 1 || anInt2136 == 3) {
@@ -109,7 +105,7 @@ public class EntryTable extends Node {
 
     public boolean method869(double arg0, int arg1, CacheIndex arg2) {
         for(int i = 0; i < anIntArray2144.length; i++) {
-            if(arg2.method193((byte) 93, anIntArray2144[i]) == null)
+            if(arg2.method193(anIntArray2144[i]) == null)
                 return false;
         }
         int i = arg1 * arg1;
@@ -127,7 +123,7 @@ public class EntryTable extends Node {
                     int i_18_ = is_13_[i_17_];
                     if((i_18_ & 0xffff) == i_18_ >> 8) {
                         i_18_ &= 0xff;
-                        is_13_[i_17_] = (i_15_ * i_18_ >> 8 & 0xff00ff | i_16_ * i_18_ & 0xff00);
+                        is_13_[i_17_] = i_15_ * i_18_ >> 8 & 0xff00ff | i_16_ * i_18_ & 0xff00;
                     }
                 }
             }
@@ -146,13 +142,13 @@ public class EntryTable extends Node {
                     int i_22_ = 0;
                     for(int i_23_ = 0; i_23_ < arg1; i_23_++) {
                         for(int i_24_ = 0; i_24_ < arg1; i_24_++)
-                            anIntArray2139[i_22_++] = is_13_[(is[(i_24_ >> 1) + (i_23_ >> 1 << 6)] & 0xff)];
+                            anIntArray2139[i_22_++] = is_13_[is[(i_24_ >> 1) + (i_23_ >> 1 << 6)] & 0xff];
                     }
                 } else if(class40_sub5_sub14_sub2.imgWidth == 128 && arg1 == 64) {
                     int i_25_ = 0;
                     for(int i_26_ = 0; i_26_ < arg1; i_26_++) {
                         for(int i_27_ = 0; i_27_ < arg1; i_27_++)
-                            anIntArray2139[i_25_++] = is_13_[(is[(i_27_ << 1) + (i_26_ << 1 << 7)] & 0xff)];
+                            anIntArray2139[i_25_++] = is_13_[is[(i_27_ << 1) + (i_26_ << 1 << 7)] & 0xff];
                     }
                 } else
                     throw new RuntimeException();

@@ -78,10 +78,4 @@ public class FrameDefinition {
         }
     }
 
-    public static void method881() {
-        indexFrameIds = null;
-        scratchTranslatorX = null;
-        scratchTranslatorY = null;
-        scratchTranslatorZ = null;
-    }
 }

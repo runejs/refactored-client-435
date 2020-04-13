@@ -12,25 +12,15 @@ import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class44 implements Runnable {
     public static int[][] anIntArrayArray1030;
-    public static RSString aClass1_1032;
-    public static RSString aClass1_1033 = RSString.CreateString("Please remove ");
     public static int modewhat = 0;
-    public static RSString aClass1_1038;
     public static byte[][] aByteArrayArray1039 = new byte[250][];
     public static int anInt1040 = 256;
-    public static RSString aClass1_1041 = RSString.CreateString("(U");
     public static int modewhere = 0;
-    public static RSString aClass1_1043 = RSString.CreateString("null");
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1047;
     public static int anInt1048 = -1;
     public static int anInt1049 = 0;
 
-    static {
-        aClass1_1032 = aClass1_1033;
-        aClass1_1038 = aClass1_1033;
-    }
-
-    public static void addChatMessage(RSString name, RSString message, int type) {
+    public static void addChatMessage(String name, String message, int type) {
         if(ChatBox.openChatboxWidgetId == -1)
             ChatBox.redrawChatbox = true;
         if(type == 0 && ChatBox.dialogueId != -1) {
@@ -47,16 +37,6 @@ public class Class44 implements Runnable {
         ChatBox.chatMessages[0] = message;
     }
 
-    public static void method896() {
-        aClass40_Sub5_Sub14_Sub2_1047 = null;
-        aClass1_1033 = null;
-        aByteArrayArray1039 = null;
-        aClass1_1041 = null;
-        aClass1_1032 = null;
-        aClass1_1038 = null;
-        anIntArrayArray1030 = null;
-        aClass1_1043 = null;
-    }
 
     public static void method898(int arg0, Actor arg1) {
         arg1.anInt3077 = arg1.idleAnimation;
@@ -75,29 +55,29 @@ public class Class44 implements Runnable {
                 }
             }
             int i = arg1.worldX;
-            int i_0_ = (arg1.pathY[-1 + arg1.anInt3109] * 128 + (64 * arg1.anInt3096));
+            int i_0_ = arg1.pathY[-1 + arg1.anInt3109] * 128 + 64 * arg1.anInt3096;
             int i_1_ = arg1.worldY;
-            int i_2_ = (64 * arg1.anInt3096 + arg1.pathX[arg1.anInt3109 + -1] * 128);
+            int i_2_ = 64 * arg1.anInt3096 + arg1.pathX[arg1.anInt3109 + -1] * 128;
             if(-i + i_0_ > 256 || -i + i_0_ < -256 || -i_1_ + i_2_ > 256 || i_2_ + -i_1_ < -256) {
                 arg1.worldX = i_0_;
                 arg1.worldY = i_2_;
             } else {
-                if((i < i_0_)) {
-                    if((i_1_ < i_2_))
+                if(i < i_0_) {
+                    if(i_1_ < i_2_)
                         arg1.anInt3080 = 1280;
                     else if(i_2_ < i_1_)
                         arg1.anInt3080 = 1792;
                     else
                         arg1.anInt3080 = 1536;
-                } else if((i <= i_0_)) {
-                    if((i_2_ <= i_1_)) {
+                } else if(i <= i_0_) {
+                    if(i_2_ <= i_1_) {
                         if(i_2_ < i_1_)
                             arg1.anInt3080 = 0;
                     } else
                         arg1.anInt3080 = 1024;
-                } else if((i_1_ < i_2_))
+                } else if(i_1_ < i_2_)
                     arg1.anInt3080 = 768;
-                else if((i_2_ < i_1_))
+                else if(i_2_ < i_1_)
                     arg1.anInt3080 = 256;
                 else
                     arg1.anInt3080 = 512;
@@ -129,20 +109,20 @@ public class Class44 implements Runnable {
                 }
                 if(arg1.aBooleanArray3072[-1 + arg1.anInt3109])
                     i_4_ <<= 1;
-                if((i_1_ < i_2_)) {
+                if(i_1_ < i_2_) {
                     arg1.worldY += i_4_;
                     if(arg1.worldY > i_2_)
                         arg1.worldY = i_2_;
                 } else if(i_1_ > i_2_) {
                     arg1.worldY -= i_4_;
-                    if((arg1.worldY < i_2_))
+                    if(arg1.worldY < i_2_)
                         arg1.worldY = i_2_;
                 }
                 if(i_4_ >= 8 && arg1.anInt3077 == arg1.walkAnimationId && arg1.runAnimationId != -1)
                     arg1.anInt3077 = arg1.runAnimationId;
                 if(i < i_0_) {
                     arg1.worldX += i_4_;
-                    if((i_0_ < arg1.worldX))
+                    if(i_0_ < arg1.worldX)
                         arg1.worldX = i_0_;
                 } else if(i_0_ < i) {
                     arg1.worldX -= i_4_;
@@ -163,7 +143,7 @@ public class Class44 implements Runnable {
             for(; ; ) {
                 Class40_Sub6 class40_sub6;
                 synchronized(RSCanvas.aLinkedList_53) {
-                    class40_sub6 = ((Class40_Sub6) RSCanvas.aLinkedList_53.method902((byte) -90));
+                    class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.method902((byte) -90);
                 }
                 if(class40_sub6 == null) {
                     Class43.method890(100L, 113);
@@ -182,7 +162,7 @@ public class Class44 implements Runnable {
                             class40_sub6.method457(-1);
                         }
                     } else if(class40_sub6.anInt2112 == 1) {
-                        class40_sub6.aByteArray2102 = (class40_sub6.aClass56_2117.method969((int) class40_sub6.key));
+                        class40_sub6.aByteArray2102 = class40_sub6.aClass56_2117.method969((int) class40_sub6.key);
                         synchronized(RSCanvas.aLinkedList_53) {
                             IdentityKit.aLinkedList_2604.pushBack(class40_sub6, 115);
                         }

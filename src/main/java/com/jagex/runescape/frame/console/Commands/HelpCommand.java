@@ -1,5 +1,6 @@
 package com.jagex.runescape.frame.console.Commands;
 
+import com.jagex.runescape.RSString;
 import com.jagex.runescape.frame.console.Command;
 import com.jagex.runescape.frame.console.Console;
 
@@ -15,9 +16,10 @@ public class HelpCommand extends Command {
     @Override
     public void execute(Console console, String[] cmdInput) {
         console.log("<col=FFFF00>Commands:</col>");
-        commands.forEach((command -> {
+        commands.forEach(command -> {
             console.log(command.getPrintableHelp());
-        }));
+        });
+
 //        printConsoleMessage("<col=00FF00>search [item | npc | object] [name]</col> - <col=FFFF00>Returns list of results</col>", false);
     }
 }

@@ -12,9 +12,4 @@ public class Class12 {
     public static int width;
     public static SignlinkNode aSignlinkNode_394;
 
-    public static void method240() {
-        aSignlinkNode_394 = null;
-        chatboxInterface = null;
-        mouseCapturer = null;
-    }
 }

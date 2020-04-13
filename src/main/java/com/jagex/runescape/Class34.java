@@ -5,17 +5,14 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.tile.GenericTile;
 
 public class Class34 {
     public static HashTable aClass23_805;
     public static int anInt813 = 0;
-    public static RSString aClass1_817;
-    public static RSString aClass1_826 = RSString.CreateString("Click to continue");
-    public static RSString aClass1_829 = aClass1_826;
     public static HashTable aClass23_841 = new HashTable(4096);
-    public static RSString aClass1_844 = (RSString.CreateString("Press (Wrecover a locked account(W on front page)3"));
     public static int anInt848 = 0;
     public static int currentCameraPositionV;
     public static Cache aClass9_851 = new Cache(30);
@@ -23,10 +20,6 @@ public class Class34 {
     public static long aLong853;
     public static int anInt854 = -1;
     public static IndexedImage mapBack;
-
-    static {
-        aClass1_817 = aClass1_844;
-    }
 
     public int anInt801;
     public int anInt802;
@@ -78,11 +71,11 @@ public class Class34 {
         aByteArray839 = new byte[18002];
     }
 
-    public static int method415(byte arg0, int arg1, int arg2) {
+    public static int method415(int arg1, int arg2) {
         long l = (long) ((arg1 << 16) + arg2);
         if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null || PacketBuffer.aClass40_Sub5_Sub13_2250.key != l)
             return 0;
-        return 1 + (Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition * 99 / ((Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer).length + -(PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758)));
+        return 1 + Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition * 99 / (Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer.length + -PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758);
     }
 
     public static boolean method416(byte arg0) {
@@ -92,7 +85,7 @@ public class Class34 {
             ItemDefinition.anInt2854 = Class40_Sub6.anIntArray2113[Class59.anInt1389];
             Class59.anInt1388 = Class40_Sub5_Sub13.anIntArray2764[Class59.anInt1389];
             if(arg0 > -21)
-                aClass1_829 = null;
+                English.aClass1_829 = null;
             Class59.anInt1389 = Class59.anInt1389 + 1 & 0x7f;
             return true;
         }
@@ -101,7 +94,7 @@ public class Class34 {
     public static VarbitDefinition method417(int arg0, int arg1) {
         if(arg0 != 0)
             return null;
-        VarbitDefinition varbitDefinition = ((VarbitDefinition) Class57.aClass9_1331.get((long) arg1, (byte) 111));
+        VarbitDefinition varbitDefinition = (VarbitDefinition) Class57.aClass9_1331.get((long) arg1, (byte) 111);
         if(varbitDefinition != null)
             return varbitDefinition;
         byte[] is = RSCanvas.aCacheIndex_61.getFile(arg1, 14);
@@ -110,18 +103,6 @@ public class Class34 {
             varbitDefinition.method562(new Buffer(is));
         Class57.aClass9_1331.put((long) arg1, varbitDefinition);
         return varbitDefinition;
-    }
-
-    public static void method418() {
-        aClass1_826 = null;
-        aClass1_817 = null;
-        aClass1_844 = null;
-        aClass9_851 = null;
-        aClass23_841 = null;
-        aClass1_829 = null;
-        anIntArray852 = null;
-        aClass23_805 = null;
-        mapBack = null;
     }
 
     public static int method420(int arg0, int arg1, boolean arg2) {
@@ -136,7 +117,7 @@ public class Class34 {
             return arg1;
         }
         if(!arg2)
-            method415((byte) -125, -124, -88);
+            method415(-124, -88);
         arg1 = arg1 * (arg0 & 0x7f) / 128;
         if(arg1 < 2)
             arg1 = 2;

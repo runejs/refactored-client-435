@@ -147,7 +147,7 @@ public class ImageRGB extends Rasterizer {
                 arg2 = arg1[arg3++];
                 if(arg2 != 0) {
                     int i_169_ = arg0[arg4];
-                    arg0[arg4++] = (((arg2 & 0xff00ff) * arg9 + (i_169_ & 0xff00ff) * i & ~0xff00ff) + ((arg2 & 0xff00) * arg9 + (i_169_ & 0xff00) * i & 0xff0000)) >> 8;
+                    arg0[arg4++] = ((arg2 & 0xff00ff) * arg9 + (i_169_ & 0xff00ff) * i & ~0xff00ff) + ((arg2 & 0xff00) * arg9 + (i_169_ & 0xff00) * i & 0xff0000) >> 8;
                 } else
                     arg4++;
             }
@@ -182,7 +182,7 @@ public class ImageRGB extends Rasterizer {
                 arg2 = arg1[(arg3 >> 16) + i_187_];
                 if(arg2 != 0) {
                     int i_189_ = arg0[arg5];
-                    arg0[arg5++] = (((arg2 & 0xff00ff) * arg12 + (i_189_ & 0xff00ff) * i & ~0xff00ff) + ((arg2 & 0xff00) * arg12 + (i_189_ & 0xff00) * i & 0xff0000)) >> 8;
+                    arg0[arg5++] = ((arg2 & 0xff00ff) * arg12 + (i_189_ & 0xff00ff) * i & ~0xff00ff) + ((arg2 & 0xff00) * arg12 + (i_189_ & 0xff00) * i & 0xff0000) >> 8;
                 } else
                     arg5++;
                 arg3 += arg9;
@@ -370,8 +370,8 @@ public class ImageRGB extends Rasterizer {
             int i_39_ = -((image_width << 4) - arg0) * i + -arg1 * i_35_;
             int i_40_ = -arg0 * i_35_ + ((image_height << 4) - arg1) * i;
             int i_41_ = arg0 * i + ((image_height << 4) - arg1) * i_35_;
-            int i_42_ = (((image_width << 4) - arg0) * i_35_ + ((image_height << 4) - arg1) * i);
-            int i_43_ = (-((image_width << 4) - arg0) * i + ((image_height << 4) - arg1) * i_35_);
+            int i_42_ = ((image_width << 4) - arg0) * i_35_ + ((image_height << 4) - arg1) * i;
+            int i_43_ = -((image_width << 4) - arg0) * i + ((image_height << 4) - arg1) * i_35_;
             int i_44_;
             int i_45_;
             if(i_36_ < i_38_) {
@@ -448,7 +448,7 @@ public class ImageRGB extends Rasterizer {
                                 int i_60_ = i_45_;
                                 if(i_58_ >= 0 && i_59_ >= 0 && i_58_ - (image_width << 12) < 0 && i_59_ - (image_height << 12) < 0) {
                                     for(/**/; i_60_ < 0; i_60_++) {
-                                        int i_61_ = (pixels[((i_59_ >> 12) * image_width + (i_58_ >> 12))]);
+                                        int i_61_ = pixels[(i_59_ >> 12) * image_width + (i_58_ >> 12)];
                                         if(i_61_ != 0)
                                             Rasterizer.destinationPixels[i_57_++] = i_61_;
                                         else
@@ -476,7 +476,7 @@ public class ImageRGB extends Rasterizer {
                                     if((i_67_ = (i_65_ - i_50_) / i_50_) > i_66_)
                                         i_66_ = i_67_;
                                     for(/**/; i_66_ < 0; i_66_++) {
-                                        int i_68_ = (pixels[((i_65_ >> 12) * image_width + (i_64_ >> 12))]);
+                                        int i_68_ = pixels[(i_65_ >> 12) * image_width + (i_64_ >> 12)];
                                         if(i_68_ != 0)
                                             Rasterizer.destinationPixels[i_63_++] = i_68_;
                                         else
@@ -506,7 +506,7 @@ public class ImageRGB extends Rasterizer {
                                     if((i_75_ = (1 + i_72_ - (image_height << 12) - i_50_) / i_50_) > i_73_)
                                         i_73_ = i_75_;
                                     for(/**/; i_73_ < 0; i_73_++) {
-                                        int i_76_ = (pixels[((i_72_ >> 12) * image_width + (i_71_ >> 12))]);
+                                        int i_76_ = pixels[(i_72_ >> 12) * image_width + (i_71_ >> 12)];
                                         if(i_76_ != 0)
                                             Rasterizer.destinationPixels[i_70_++] = i_76_;
                                         else
@@ -538,7 +538,7 @@ public class ImageRGB extends Rasterizer {
                                     if((i_82_ = (i_79_ - i_51_) / i_51_) > i_81_)
                                         i_81_ = i_82_;
                                     for(/**/; i_81_ < 0; i_81_++) {
-                                        int i_83_ = (pixels[((i_80_ >> 12) * image_width + (i_79_ >> 12))]);
+                                        int i_83_ = pixels[(i_80_ >> 12) * image_width + (i_79_ >> 12)];
                                         if(i_83_ != 0)
                                             Rasterizer.destinationPixels[i_78_++] = i_83_;
                                         else
@@ -577,7 +577,7 @@ public class ImageRGB extends Rasterizer {
                                 if((i_89_ = (i_87_ - i_50_) / i_50_) > i_88_)
                                     i_88_ = i_89_;
                                 for(/**/; i_88_ < 0; i_88_++) {
-                                    int i_90_ = (pixels[((i_87_ >> 12) * image_width + (i_86_ >> 12))]);
+                                    int i_90_ = pixels[(i_87_ >> 12) * image_width + (i_86_ >> 12)];
                                     if(i_90_ != 0)
                                         Rasterizer.destinationPixels[i_85_++] = i_90_;
                                     else
@@ -617,7 +617,7 @@ public class ImageRGB extends Rasterizer {
                                 if((i_96_ = (1 + i_94_ - (image_height << 12) - i_50_) / i_50_) > i_95_)
                                     i_95_ = i_96_;
                                 for(/**/; i_95_ < 0; i_95_++) {
-                                    int i_97_ = (pixels[((i_94_ >> 12) * image_width + (i_93_ >> 12))]);
+                                    int i_97_ = pixels[(i_94_ >> 12) * image_width + (i_93_ >> 12)];
                                     if(i_97_ != 0)
                                         Rasterizer.destinationPixels[i_92_++] = i_97_;
                                     else
@@ -649,7 +649,7 @@ public class ImageRGB extends Rasterizer {
                                 if((i_104_ = (1 + i_100_ - (image_width << 12) - i_51_) / i_51_) > i_102_)
                                     i_102_ = i_104_;
                                 for(/**/; i_102_ < 0; i_102_++) {
-                                    int i_105_ = (pixels[((i_101_ >> 12) * image_width + (i_100_ >> 12))]);
+                                    int i_105_ = pixels[(i_101_ >> 12) * image_width + (i_100_ >> 12)];
                                     if(i_105_ != 0)
                                         Rasterizer.destinationPixels[i_99_++] = i_105_;
                                     else
@@ -688,7 +688,7 @@ public class ImageRGB extends Rasterizer {
                             if((i_112_ = (i_109_ - i_50_) / i_50_) > i_110_)
                                 i_110_ = i_112_;
                             for(/**/; i_110_ < 0; i_110_++) {
-                                int i_113_ = (pixels[(i_109_ >> 12) * image_width + (i_108_ >> 12)]);
+                                int i_113_ = pixels[(i_109_ >> 12) * image_width + (i_108_ >> 12)];
                                 if(i_113_ != 0)
                                     Rasterizer.destinationPixels[i_107_++] = i_113_;
                                 else
@@ -728,7 +728,7 @@ public class ImageRGB extends Rasterizer {
                             if((i_120_ = (1 + i_117_ - (image_height << 12) - i_50_) / i_50_) > i_118_)
                                 i_118_ = i_120_;
                             for(/**/; i_118_ < 0; i_118_++) {
-                                int i_121_ = (pixels[(i_117_ >> 12) * image_width + (i_116_ >> 12)]);
+                                int i_121_ = pixels[(i_117_ >> 12) * image_width + (i_116_ >> 12)];
                                 if(i_121_ != 0)
                                     Rasterizer.destinationPixels[i_115_++] = i_121_;
                                 else
@@ -759,8 +759,8 @@ public class ImageRGB extends Rasterizer {
             int cosine = (int) (Math.cos((double) k1 / 326.11) * 65536.0);
             sine = sine * zoom >> 8;
             cosine = cosine * zoom >> 8;
-            int i_125_ = (arg4 << 16) + (centerY * sine + centerX * cosine);
-            int i_126_ = (arg5 << 16) + (centerY * cosine - centerX * sine);
+            int i_125_ = (arg4 << 16) + centerY * sine + centerX * cosine;
+            int i_126_ = (arg5 << 16) + centerY * cosine - centerX * sine;
             int destinationOffset = arg0 + y * Rasterizer.destinationWidth;
             for(y = 0; y < height; y++) {
                 int i_128_ = arg8[y];
@@ -768,7 +768,7 @@ public class ImageRGB extends Rasterizer {
                 int i_130_ = i_125_ + cosine * i_128_;
                 int i_131_ = i_126_ - sine * i_128_;
                 for(arg0 = -arg9[y]; arg0 < 0; arg0++) {
-                    Rasterizer.destinationPixels[i_129_++] = (pixels[(i_130_ >> 16) + (i_131_ >> 16) * image_width]);
+                    Rasterizer.destinationPixels[i_129_++] = pixels[(i_130_ >> 16) + (i_131_ >> 16) * image_width];
                     i_130_ += cosine;
                     i_131_ -= sine;
                 }
@@ -823,7 +823,7 @@ public class ImageRGB extends Rasterizer {
             int[] newPixels = new int[maxWidth * maxHeight];
             for(int y = 0; y < image_height; y++) {
                 for(int x = 0; x < image_width; x++)
-                    newPixels[(y + offsetY) * maxWidth + (x + offsetX)] = pixels[y * image_width + x];
+                    newPixels[(y + offsetY) * maxWidth + x + offsetX] = pixels[y * image_width + x];
             }
             pixels = newPixels;
             image_width = maxWidth;
@@ -915,15 +915,15 @@ public class ImageRGB extends Rasterizer {
             int cosine = (int) (Math.cos(angle) * 65536.0);
             sine = sine * zoom >> 8;
             cosine = cosine * zoom >> 8;
-            int sourceOffsetX = (pivotX << 16) + (centerY * sine + centerX * cosine);
-            int sourceoffsetY = (pivotY << 16) + (centerY * cosine - centerX * sine);
+            int sourceOffsetX = (pivotX << 16) + centerY * sine + centerX * cosine;
+            int sourceoffsetY = (pivotY << 16) + centerY * cosine - centerX * sine;
             int destinationOffset = x + y * Rasterizer.destinationWidth;
             for(y = 0; y < height; y++) {
                 int i = destinationOffset;
                 int offsetX = sourceOffsetX;
                 int offsetY = sourceoffsetY;
                 for(x = -width; x < 0; x++) {
-                    int i_166_ = (pixels[(offsetX >> 16) + (offsetY >> 16) * image_width]);
+                    int i_166_ = pixels[(offsetX >> 16) + (offsetY >> 16) * image_width];
                     if(i_166_ != 0)
                         Rasterizer.destinationPixels[i++] = i_166_;
                     else

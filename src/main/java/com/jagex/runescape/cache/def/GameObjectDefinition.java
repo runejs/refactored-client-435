@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class GameObjectDefinition extends SubNode implements EntityDefinition {
     public static Class68 aClass68_2524;
-    public static RSString aClass1_2526 = RSString.CreateString("(Udns");
+    public static String aClass1_2526 = "%dns";
     public static int anInt2543 = 0;
     public static HashTable aClass23_2545 = new HashTable(4096);
     public static int lastClickY = 0;
@@ -31,7 +31,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
     public int setDecorDisplacement;
     public int animationId;
     public int modelSizeX;
-    public RSString[] actions;
+    public String[] actions;
     public int[] recolorToReplace;
     public int icon = -1;
     public int blockingMask;
@@ -61,7 +61,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
     public int hasActions;
     public boolean obstructsGround;
     public int varpID;
-    public RSString name;
+    public String name;
     public boolean rotated;
 
     public GameObjectDefinition() {
@@ -77,7 +77,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         supportsItems = -1;
         animationId = -1;
         setDecorDisplacement = 16;
-        actions = new RSString[5];
+        actions = new String[5];
         offsetHeight = 0;
         solid = true;
         sizeY = 1;
@@ -89,7 +89,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         sizeX = 1;
         obstructsGround = false;
         modelSizeHeight = 128;
-        name = Class44.aClass1_1043;
+        name = "null";
         castsShadow = true;
         contrast = 0;
         configId = -1;
@@ -103,8 +103,8 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
     public static void method602(CacheIndex_Sub1 arg0, int arg1, Class56 arg2) {
         byte[] is = null;
         synchronized(RSCanvas.aLinkedList_53) {
-            for(Class40_Sub6 class40_sub6 = ((Class40_Sub6) RSCanvas.aLinkedList_53.method902((byte) -90)); class40_sub6 != null; class40_sub6 = ((Class40_Sub6) RSCanvas.aLinkedList_53.method909(-4))) {
-                if(((long) arg1 == class40_sub6.key) && arg2 == class40_sub6.aClass56_2117 && class40_sub6.anInt2112 == 0) {
+            for(Class40_Sub6 class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.method902((byte) -90); class40_sub6 != null; class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.method909(-4)) {
+                if((long) arg1 == class40_sub6.key && arg2 == class40_sub6.aClass56_2117 && class40_sub6.anInt2112 == 0) {
                     is = class40_sub6.aByteArray2102;
                     break;
                 }
@@ -118,15 +118,10 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         }
     }
 
-    public static void method604() {
-        aClass23_2545 = null;
-        aClass1_2526 = null;
-        aClass68_2524 = null;
-    }
 
     public static void method609(int arg0, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
         Class40_Sub3 class40_sub3 = null;
-        for(Class40_Sub3 class40_sub3_24_ = ((Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90)); class40_sub3_24_ != null; class40_sub3_24_ = (Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4)) {
+        for(Class40_Sub3 class40_sub3_24_ = (Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90); class40_sub3_24_ != null; class40_sub3_24_ = (Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4)) {
             if(class40_sub3_24_.anInt2018 == arg5 && arg2 == class40_sub3_24_.anInt2039 && class40_sub3_24_.anInt2038 == arg6 && class40_sub3_24_.anInt2027 == arg7) {
                 class40_sub3 = class40_sub3_24_;
                 break;
@@ -149,7 +144,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
     }
 
     public static GameObjectDefinition getDefinition(int arg0) {
-        GameObjectDefinition gameObjectDefinition = ((GameObjectDefinition) GroundItemTile.aClass9_1364.get(arg0, (byte) 61));
+        GameObjectDefinition gameObjectDefinition = (GameObjectDefinition) GroundItemTile.aClass9_1364.get(arg0, (byte) 61);
         if(gameObjectDefinition != null) {
             return gameObjectDefinition;
         }
@@ -183,9 +178,9 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         if(objectTypes == null) {
             l = (id << 10) + arg2;
         } else {
-            l = arg2 + ((id << 10) + (arg4 << 3));
+            l = arg2 + (id << 10) + (arg4 << 3);
         }
-        Model model = ((Model) InteractiveObject.aClass9_470.get(l, (byte) 87));
+        Model model = (Model) InteractiveObject.aClass9_470.get(l, (byte) 87);
         if(model == null) {
             model = method606(!nonFlatShading, false, arg2, arg4);
             if(model == null) {
@@ -197,12 +192,12 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
             model = new Model(adjustToTerrain, nonFlatShading, model);
         }
         if(adjustToTerrain) {
-            int i = (arg0 + arg6 + (arg3 + arg1)) / 4;
+            int i = (arg0 + arg6 + arg3 + arg1) / 4;
             for(int i_0_ = 0; model.vertexCount > i_0_; i_0_++) {
                 int i_1_ = model.verticesX[i_0_];
                 int i_2_ = model.verticesZ[i_0_];
-                int i_3_ = arg3 + ((64 + i_1_) * (arg6 + -arg3) / 128);
-                int i_4_ = arg1 + ((64 + i_1_) * (-arg1 + arg0) / 128);
+                int i_3_ = arg3 + (64 + i_1_) * (arg6 + -arg3) / 128;
+                int i_4_ = arg1 + (64 + i_1_) * (-arg1 + arg0) / 128;
                 int i_5_ = i_3_ + (i_2_ + 64) * (-i_3_ + i_4_) / 128;
                 model.verticesY[i_0_] += i_5_ + -i;
             }
@@ -269,9 +264,9 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
                 if(bool) {
                     i_8_ += 65536;
                 }
-                class40_sub5_sub17_sub5 = ((Model) VertexNormal.aClass9_1102.get(i_8_, (byte) 122));
+                class40_sub5_sub17_sub5 = (Model) VertexNormal.aClass9_1102.get(i_8_, (byte) 122);
                 if(class40_sub5_sub17_sub5 == null) {
-                    class40_sub5_sub17_sub5 = (Model.getModel(RSString.aCacheIndex_1705, i_8_ & 0xffff, 0));
+                    class40_sub5_sub17_sub5 = Model.getModel(RSString.aCacheIndex_1705, i_8_ & 0xffff, 0);
                     if(class40_sub5_sub17_sub5 == null) {
                         return null;
                     }
@@ -285,11 +280,11 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
                 }
             }
             if(i > 1) {
-                class40_sub5_sub17_sub5 = (new Model((Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub5Array2762), i));
+                class40_sub5_sub17_sub5 = new Model(Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub5Array2762, i);
             }
         } else {
             int i = -1;
-            for(int i_9_ = 0; ((objectTypes.length > i_9_)); i_9_++) {
+            for(int i_9_ = 0; objectTypes.length > i_9_; i_9_++) {
                 if(arg4 == objectTypes[i_9_]) {
                     i = i_9_;
                     break;
@@ -303,9 +298,9 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
             if(bool) {
                 i_10_ += 65536;
             }
-            class40_sub5_sub17_sub5 = ((Model) VertexNormal.aClass9_1102.get(i_10_, (byte) 48));
+            class40_sub5_sub17_sub5 = (Model) VertexNormal.aClass9_1102.get(i_10_, (byte) 48);
             if(class40_sub5_sub17_sub5 == null) {
-                class40_sub5_sub17_sub5 = Model.getModel((RSString.aCacheIndex_1705), 0xffff & i_10_, 0);
+                class40_sub5_sub17_sub5 = Model.getModel(RSString.aCacheIndex_1705, 0xffff & i_10_, 0);
                 if(class40_sub5_sub17_sub5 == null) {
                     return null;
                 }
@@ -342,7 +337,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         if(hasBones) {
             class40_sub5_sub17_sub5_12_.createBones();
         }
-        class40_sub5_sub17_sub5_12_.applyLighting(ambient + 64, 768 + (contrast * 5), -50, -10, -50, arg0);
+        class40_sub5_sub17_sub5_12_.applyLighting(ambient + 64, 768 + contrast * 5, -50, -10, -50, arg0);
         return class40_sub5_sub17_sub5_12_;
     }
 
@@ -351,9 +346,9 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         if(objectTypes == null) {
             l = arg5 + (id << 10);
         } else {
-            l = arg5 + ((id << 10) + (arg4 << 3));
+            l = arg5 + (id << 10) + (arg4 << 3);
         }
-        Model model = ((Model) Class49.aClass9_1145.get(l, (byte) 70));
+        Model model = (Model) Class49.aClass9_1145.get(l, (byte) 70);
         if(model == null) {
             model = method606(true, true, arg5, arg4);
             if(model == null) {
@@ -371,7 +366,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         }
         if(adjustToTerrain) {
             int i = (vertexHeightRight + vertexHeight - (-vertexHeightTopRight + -vertexHeightTop)) / 4;
-            for(int i_13_ = 0; ((i_13_ < model.vertexCount)); i_13_++) {
+            for(int i_13_ = 0; i_13_ < model.vertexCount; i_13_++) {
                 int i_14_ = model.verticesZ[i_13_];
                 int i_15_ = model.verticesX[i_13_];
                 int i_16_ = vertexHeight + (64 + i_15_) * (vertexHeightRight - vertexHeight) / 128;
@@ -400,7 +395,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
                 }
             }
         } else if(opcode == 2) {
-            name = buffer.getRSString();
+            name = buffer.getString();
         } else if(opcode == 5) {
             int length = buffer.getUnsignedByte();
             if(length > 0) {
@@ -442,40 +437,40 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         } else if(opcode == 39) {
             contrast = 5 * buffer.getByte();
         } else if(opcode >= 30 && opcode < 35) {
-            actions[opcode - 30] = buffer.getRSString();
+            actions[opcode - 30] = buffer.getString();
             if(actions[opcode + -30].equalsIgnoreCase(English.hidden)) {
-                actions[(opcode + -30)] = null;
+                actions[opcode + -30] = null;
             }
         } else if(opcode == 40) {
             int length = buffer.getUnsignedByte();
             recolorToFind = new int[length];
             recolorToReplace = new int[length];
             for(int index = 0; index < length; index++) {
-                recolorToFind[index] = (buffer.getUnsignedShortBE());
-                recolorToReplace[index] = (buffer.getUnsignedShortBE());
+                recolorToFind[index] = buffer.getUnsignedShortBE();
+                recolorToReplace[index] = buffer.getUnsignedShortBE();
             }
         } else if(opcode == 60) {
-            icon = (buffer.getUnsignedShortBE());
+            icon = buffer.getUnsignedShortBE();
         } else if(opcode == 62) {
             rotated = true;
         } else if(opcode == 64) {
             castsShadow = false;
         } else if(opcode == 65) {
-            modelSizeX = (buffer.getUnsignedShortBE());
+            modelSizeX = buffer.getUnsignedShortBE();
         } else if(opcode == 66) {
-            modelSizeHeight = (buffer.getUnsignedShortBE());
+            modelSizeHeight = buffer.getUnsignedShortBE();
         } else if(opcode == 67) {
-            modelSizeY = (buffer.getUnsignedShortBE());
+            modelSizeY = buffer.getUnsignedShortBE();
         } else if(opcode == 68) {
-            mapSceneID = (buffer.getUnsignedShortBE());
+            mapSceneID = buffer.getUnsignedShortBE();
         } else if(opcode == 69) {
-            blockingMask = (buffer.getUnsignedByte());
+            blockingMask = buffer.getUnsignedByte();
         } else if(opcode == 70) {
-            offsetX = (buffer.getShortBE());
+            offsetX = buffer.getShortBE();
         } else if(opcode == 71) {
-            offsetHeight = (buffer.getShortBE());
+            offsetHeight = buffer.getShortBE();
         } else if(opcode == 72) {
-            offsetY = (buffer.getShortBE());
+            offsetY = buffer.getShortBE();
         } else if(opcode == 73) {
             obstructsGround = true;
         } else if(opcode == 74) {
@@ -518,7 +513,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         if(objectTypes != null) {
             for(int i = 0; objectTypes.length > i; i++) {
                 if(objectTypes[i] == arg0) {
-                    return RSString.aCacheIndex_1705.loaded((objectModels[i] & 0xffff), 0);
+                    return RSString.aCacheIndex_1705.loaded(objectModels[i] & 0xffff, 0);
                 }
             }
             return true;
@@ -531,7 +526,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         }
         boolean bool = true;
         for(int i = 0; objectModels.length > i; i++) {
-            bool &= RSString.aCacheIndex_1705.loaded((0xffff & objectModels[i]), 0);
+            bool &= RSString.aCacheIndex_1705.loaded(0xffff & objectModels[i], 0);
         }
         return bool;
     }
@@ -560,13 +555,13 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         }
         boolean bool = true;
         for(int i = 0; objectModels.length > i; i++) {
-            bool &= RSString.aCacheIndex_1705.loaded((0xffff & objectModels[i]), 0);
+            bool &= RSString.aCacheIndex_1705.loaded(0xffff & objectModels[i], 0);
         }
         return bool;
     }
 
     @Override
-    public RSString getName() {
+    public String getName() {
         return name;
     }
 }

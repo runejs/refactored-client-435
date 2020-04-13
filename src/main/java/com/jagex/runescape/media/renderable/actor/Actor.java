@@ -9,8 +9,8 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.net.PacketBuffer;
@@ -18,14 +18,10 @@ import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.util.Signlink;
 
-import java.math.BigInteger;
-
 public abstract class Actor extends Renderable {
-    public static RSString aClass1_3092 = RSString.CreateString("Loaded textures");
     public static int[] anIntArray3111;
-    public static RSString aClass1_3114 = RSString.CreateString("Login limit exceeded)3");
-    public static RSString aClass1_3124 = aClass1_3092;
-    public static RSString aClass1_3138 = aClass1_3114;
+    public static String aClass1_3124 = "Loaded textures";
+    public static String aClass1_3138 = "Login limit exceeded.";
     public static volatile int eventMouseButtonPressed = 0;
     public static CacheIndex aCacheIndex_3144;
     public static int[] anIntArray3149 = new int[1000];
@@ -33,9 +29,8 @@ public abstract class Actor extends Renderable {
     public static int anInt3151 = -16 + (int) (Math.random() * 33.0);
     public static Signlink aClass31_3152;
     public static int actorUpdatingIndex = 0;
-    public static RSString aClass1_3155 = RSString.CreateString("Please wait )2 attempting to reestablish");
     public static CacheIndex_Sub1 aClass6_Sub1_3157;
-    public static RSString aClass1_3159 = aClass1_3155;
+    public static String aClass1_3159 = "Please wait - attempting to reestablish";
 
     public boolean[] aBooleanArray3072;
     public int anInt3073;
@@ -52,7 +47,7 @@ public abstract class Actor extends Renderable {
     public int[] anIntArray3087;
     public int[] pathY;
     public int worldY;
-    public RSString forcedChatMessage;
+    public String forcedChatMessage;
     public int anInt3091;
     public int anInt3093;
     public int anInt3094;
@@ -149,9 +144,9 @@ public abstract class Actor extends Renderable {
                 int i_3_ = arg3;
                 if(i > 0)
                     i_3_ = arg4;
-                int i_4_ = 4 * (-arg5 + 103) * 512 + (24624 + (4 * arg2));
+                int i_4_ = 4 * (-arg5 + 103) * 512 + 24624 + 4 * arg2;
                 int i_5_ = i >> 14 & 0x7fff;
-                int[] is = (Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.pixels);
+                int[] is = Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.pixels;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_5_);
                 if(gameObjectDefinition.mapSceneID == -1) {
                     if(i_1_ == 0 || i_1_ == 2) {
@@ -167,12 +162,12 @@ public abstract class Actor extends Renderable {
                             is[i_4_ + 3] = i_3_;
                         } else if(i_2_ == 2) {
                             is[3 + i_4_] = i_3_;
-                            is[3 + (i_4_ + 512)] = i_3_;
+                            is[3 + i_4_ + 512] = i_3_;
                             is[1024 + i_4_ + 3] = i_3_;
                             is[i_4_ + 1539] = i_3_;
                         } else if(i_2_ == 3) {
                             is[i_4_ + 1536] = i_3_;
-                            is[1536 + (i_4_ + 1)] = i_3_;
+                            is[1536 + i_4_ + 1] = i_3_;
                             is[1536 + i_4_ + 2] = i_3_;
                             is[3 + i_4_ + 1536] = i_3_;
                         }
@@ -203,9 +198,9 @@ public abstract class Actor extends Renderable {
                             is[3 + i_4_] = i_3_;
                         } else if(i_2_ == 1) {
                             is[i_4_ + 3] = i_3_;
-                            is[512 + (3 + i_4_)] = i_3_;
+                            is[512 + 3 + i_4_] = i_3_;
                             is[i_4_ + 1027] = i_3_;
-                            is[1536 + (3 + i_4_)] = i_3_;
+                            is[1536 + 3 + i_4_] = i_3_;
                         } else if(i_2_ == 2) {
                             is[1536 + i_4_] = i_3_;
                             is[1537 + i_4_] = i_3_;
@@ -214,11 +209,11 @@ public abstract class Actor extends Renderable {
                         }
                     }
                 } else {
-                    IndexedImage class40_sub5_sub14_sub2 = (SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID]);
+                    IndexedImage class40_sub5_sub14_sub2 = SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID];
                     if(class40_sub5_sub14_sub2 != null) {
-                        int i_6_ = ((-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2);
-                        int i_7_ = ((gameObjectDefinition.sizeY * 4 + -class40_sub5_sub14_sub2.imgHeight) / 2);
-                        class40_sub5_sub14_sub2.drawImage(48 + (4 * arg2) + i_6_, i_7_ + (48 + ((104 + -arg5 - gameObjectDefinition.sizeY) * 4)));
+                        int i_6_ = (-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
+                        int i_7_ = (gameObjectDefinition.sizeY * 4 + -class40_sub5_sub14_sub2.imgHeight) / 2;
+                        class40_sub5_sub14_sub2.drawImage(48 + 4 * arg2 + i_6_, i_7_ + 48 + (104 + -arg5 - gameObjectDefinition.sizeY) * 4);
                     }
                 }
             }
@@ -230,27 +225,27 @@ public abstract class Actor extends Renderable {
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_9_);
                 int i_11_ = i_8_ & 0x1f;
                 if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage class40_sub5_sub14_sub2 = (SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID]);
+                    IndexedImage class40_sub5_sub14_sub2 = SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID];
                     if(class40_sub5_sub14_sub2 != null) {
-                        int i_12_ = ((-class40_sub5_sub14_sub2.imgHeight + gameObjectDefinition.sizeY * 4) / 2);
-                        int i_13_ = ((gameObjectDefinition.sizeX * 4 + -class40_sub5_sub14_sub2.imgWidth) / 2);
-                        class40_sub5_sub14_sub2.drawImage(i_13_ + arg2 * 4 + 48, 48 - (-(4 * (-arg5 + (104 + -gameObjectDefinition.sizeY))) + -i_12_));
+                        int i_12_ = (-class40_sub5_sub14_sub2.imgHeight + gameObjectDefinition.sizeY * 4) / 2;
+                        int i_13_ = (gameObjectDefinition.sizeX * 4 + -class40_sub5_sub14_sub2.imgWidth) / 2;
+                        class40_sub5_sub14_sub2.drawImage(i_13_ + arg2 * 4 + 48, 48 - (-(4 * (-arg5 + 104 + -gameObjectDefinition.sizeY)) + -i_12_));
                     }
                 } else if(i_11_ == 9) {
-                    int[] is = (Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.pixels);
+                    int[] is = Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.pixels;
                     int i_14_ = 15658734;
                     if(i > 0)
                         i_14_ = 15597568;
                     int i_15_ = (-(arg5 * 512) + 52736) * 4 + arg2 * 4 + 24624;
                     if(i_10_ == 0 || i_10_ == 2) {
                         is[1536 + i_15_] = i_14_;
-                        is[1024 + (i_15_ + 1)] = i_14_;
+                        is[1024 + i_15_ + 1] = i_14_;
                         is[514 + i_15_] = i_14_;
                         is[3 + i_15_] = i_14_;
                     } else {
                         is[i_15_] = i_14_;
                         is[513 + i_15_] = i_14_;
-                        is[2 + (i_15_ + 1024)] = i_14_;
+                        is[2 + i_15_ + 1024] = i_14_;
                         is[1536 + i_15_ + 3] = i_14_;
                     }
                 }
@@ -260,11 +255,11 @@ public abstract class Actor extends Renderable {
                 int i_16_ = (i & 0x1fffd9fb) >> 14;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_16_);
                 if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage class40_sub5_sub14_sub2 = (SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID]);
+                    IndexedImage class40_sub5_sub14_sub2 = SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID];
                     if(class40_sub5_sub14_sub2 != null) {
-                        int i_17_ = ((-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2);
-                        int i_18_ = ((-class40_sub5_sub14_sub2.imgHeight + 4 * gameObjectDefinition.sizeY) / 2);
-                        class40_sub5_sub14_sub2.drawImage(4 * arg2 + 48 + i_17_, i_18_ + ((104 - (arg5 + gameObjectDefinition.sizeY)) * 4) + 48);
+                        int i_17_ = (-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
+                        int i_18_ = (-class40_sub5_sub14_sub2.imgHeight + 4 * gameObjectDefinition.sizeY) / 2;
+                        class40_sub5_sub14_sub2.drawImage(4 * arg2 + 48 + i_17_, i_18_ + (104 - (arg5 + gameObjectDefinition.sizeY)) * 4 + 48);
                     }
                 }
             }
@@ -272,37 +267,22 @@ public abstract class Actor extends Renderable {
     }
 
     public static void method783() {
-        Cache.aClass9_326.method235((byte) -126);
-        WallDecoration.aClass9_1264.method235((byte) -96);
-        Class67.aClass9_1582.method235((byte) 34);
+        Cache.aClass9_326.method235();
+        WallDecoration.aClass9_1264.method235();
+        Class67.aClass9_1582.method235();
     }
 
-    public static void method788() {
-        aClass6_Sub1_3157 = null;
-        aClass1_3092 = null;
-        aClass1_3138 = null;
-        aClass1_3114 = null;
-        ChatBox.chatMessages = null;
-        Player.trackedPlayers = null;
-        aCacheIndex_3150 = null;
-        aClass1_3155 = null;
-        aCacheIndex_3144 = null;
-        aClass31_3152 = null;
-        anIntArray3111 = null;
-        aClass1_3124 = null;
-        anIntArray3149 = null;
-        aClass1_3159 = null;
-    }
+
 
     public static void method789(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        if(arg3 != Class51.regionX || arg2 != Class17.regionY || (Class40_Sub6.onBuildTimePlane != arg5 && VertexNormal.lowMemory)) {
+        if(arg3 != Class51.regionX || arg2 != Class17.regionY || Class40_Sub6.onBuildTimePlane != arg5 && VertexNormal.lowMemory) {
             Class40_Sub6.onBuildTimePlane = arg5;
             Class51.regionX = arg3;
             if(!VertexNormal.lowMemory)
                 Class40_Sub6.onBuildTimePlane = 0;
             Class17.regionY = arg2;
             OverlayDefinition.method559(25);
-            Class51.method940(0, Class67.aClass1_1585, false, null);
+            Class51.method940(0, English.aClass1_1585, false, null);
             int i = Class26.baseY;
             int i_33_ = SpotAnimDefinition.baseX;
             SpotAnimDefinition.baseX = (arg3 - 6) * 8;
@@ -314,7 +294,7 @@ public abstract class Actor extends Renderable {
             int i_35_ = Class26.baseY + -i;
             i = Class26.baseY;
             for(int i_36_ = 0; i_36_ < 32768; i_36_++) {
-                Npc class40_sub5_sub17_sub4_sub2 = (Player.npcs[i_36_]);
+                Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_36_];
                 if(class40_sub5_sub17_sub4_sub2 != null) {
                     for(int i_37_ = 0; i_37_ < 10; i_37_++) {
                         class40_sub5_sub17_sub4_sub2.pathY[i_37_] -= i_34_;
@@ -361,11 +341,11 @@ public abstract class Actor extends Renderable {
                         if(i_48_ < 0 || i_49_ < 0 || i_48_ >= 104 || i_49_ >= 104)
                             Wall.groundItems[i_50_][i_46_][i_47_] = null;
                         else
-                            Wall.groundItems[i_50_][i_46_][i_47_] = (Wall.groundItems[i_50_][i_48_][i_49_]);
+                            Wall.groundItems[i_50_][i_46_][i_47_] = Wall.groundItems[i_50_][i_48_][i_49_];
                     }
                 }
             }
-            for(Class40_Sub3 class40_sub3 = ((Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90)); class40_sub3 != null; class40_sub3 = ((Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4))) {
+            for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4)) {
                 class40_sub3.anInt2038 -= i_35_;
                 class40_sub3.anInt2039 -= i_34_;
                 if(class40_sub3.anInt2039 < 0 || class40_sub3.anInt2038 < 0 || class40_sub3.anInt2039 >= 104 || class40_sub3.anInt2038 >= 104)
@@ -390,7 +370,7 @@ public abstract class Actor extends Renderable {
             i_19_++;
             i--;
         }
-        if(playingAnimation != -1 && (Class68_Sub1.method1050(playingAnimation, arg1 ^ -94).anInt2476 == 1))
+        if(playingAnimation != -1 && Class68_Sub1.method1050(playingAnimation, arg1 ^ -94).anInt2476 == 1)
             playingAnimation = -1;
         if(anInt3109 < 9)
             anInt3109++;
@@ -432,7 +412,7 @@ public abstract class Actor extends Renderable {
 
     public void method785(int arg0, int arg1, int arg2, int arg3) {
         for(int i = 0; i < 4; i++) {
-            if((arg1 >= anIntArray3136[i])) {
+            if(arg1 >= anIntArray3136[i]) {
                 anIntArray3087[i] = arg2;
                 anIntArray3086[i] = arg0;
                 anIntArray3136[i] = 70 + arg1;

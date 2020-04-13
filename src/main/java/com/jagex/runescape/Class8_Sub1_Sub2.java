@@ -25,7 +25,7 @@ public class Class8_Sub1_Sub2 extends Class8_Sub1 {
 
     public void method226(int arg0) throws LineUnavailableException {
         try {
-            DataLine.Info info = (new DataLine.Info((aClass2219 == null ? (aClass2219 = method229("javax.sound.sampled.SourceDataLine")) : aClass2219), audioFormat, arg0 * 2));
+            DataLine.Info info = new DataLine.Info(aClass2219 == null ? (aClass2219 = method229("javax.sound.sampled.SourceDataLine")) : aClass2219, audioFormat, arg0 * 2);
             sound = (SourceDataLine) AudioSystem.getLine(info);
             sound.open();
             sound.start();

@@ -56,11 +56,11 @@ public class Class40_Sub9_Sub1 extends Class40_Sub9 {
     }
 
     public void method847(Node arg0, Class40_Sub8 arg1) {
-        for(/**/; (arg0 != aLinkedList_2874.aClass40_1056 && ((Class40_Sub8) arg0).anInt2133 <= arg1.anInt2133); arg0 = arg0.aClass40_950) {
+        for(/**/; arg0 != aLinkedList_2874.aClass40_1056 && ((Class40_Sub8) arg0).anInt2133 <= arg1.anInt2133; arg0 = arg0.aClass40_950) {
             /* empty */
         }
         aLinkedList_2874.method911(-31793, arg0, arg1);
-        anInt2876 = (((Class40_Sub8) aLinkedList_2874.aClass40_1056.aClass40_950).anInt2133);
+        anInt2876 = ((Class40_Sub8) aLinkedList_2874.aClass40_1056.aClass40_950).anInt2133;
     }
 
     public int method848(int[] arg0, int arg1, int arg2) {

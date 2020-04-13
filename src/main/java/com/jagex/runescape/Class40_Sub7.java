@@ -8,30 +8,10 @@ import com.jagex.runescape.media.VertexNormal;
 
 public class Class40_Sub7 extends Node {
     public static Class68 aClass68_2123;
-    public static RSString aClass1_2125;
-    public static RSString aClass1_2127 = RSString.CreateString("Loading interfaces )2 ");
-    public static RSString aClass1_2129 = RSString.CreateString("Mem:");
-    public static RSString aClass1_2130 = RSString.CreateString("Loaded update list");
-    public static int[] friendWorlds;
-    public static RSString aClass1_2132;
-
-    static {
-        aClass1_2125 = aClass1_2130;
-        friendWorlds = new int[200];
-        aClass1_2132 = aClass1_2127;
-    }
+    public static int[] friendWorlds = new int[200];
 
     public RSString aClass1_2124;
 
-    public static void method839() {
-        aClass68_2123 = null;
-        aClass1_2132 = null;
-        friendWorlds = null;
-        aClass1_2129 = null;
-        aClass1_2127 = null;
-        aClass1_2130 = null;
-        aClass1_2125 = null;
-    }
 
     public static boolean method840(byte arg0, byte[] arg1, int arg2, int arg3) {
         boolean bool = true;
@@ -64,7 +44,7 @@ public class Class40_Sub7 extends Node {
                     int i_9_ = i_5_ + arg3;
                     if(i_8_ > 0 && i_9_ > 0 && i_8_ < 103 && i_9_ < 103) {
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
-                        if(i_6_ != 22 || !VertexNormal.lowMemory || (gameObjectDefinition.hasActions != 0) || gameObjectDefinition.obstructsGround) {
+                        if(i_6_ != 22 || !VertexNormal.lowMemory || gameObjectDefinition.hasActions != 0 || gameObjectDefinition.obstructsGround) {
                             bool_2_ = true;
                             if(!gameObjectDefinition.method612()) {
                                 bool = false;

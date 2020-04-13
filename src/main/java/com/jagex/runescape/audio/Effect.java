@@ -37,8 +37,8 @@ public class Effect {
     public byte[] method426() {
         int i = 0;
         for(int i_2_ = 0; i_2_ < 10; i_2_++) {
-            if(instruments[i_2_] != null && (instruments[i_2_].duration + instruments[i_2_].begin) > i)
-                i = (instruments[i_2_].duration + instruments[i_2_].begin);
+            if(instruments[i_2_] != null && instruments[i_2_].duration + instruments[i_2_].begin > i)
+                i = instruments[i_2_].duration + instruments[i_2_].begin;
         }
         if(i == 0)
             return new byte[0];

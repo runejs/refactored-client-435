@@ -4,7 +4,6 @@ import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
-import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -13,6 +12,7 @@ import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.WallDecoration;
+import com.jagex.runescape.util.TextUtils;
 
 import java.awt.*;
 
@@ -44,7 +44,7 @@ public class Class17 {
         Landscape.anInt1157 = 0;
         PacketBuffer.aClass40_Sub5_Sub13_2250 = null;
         for(; ; ) {
-            Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class37.aClass23_869.method329(false));
+            Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class37.aClass23_869.method329(false);
             if(class40_sub5_sub13 == null)
                 break;
             Class51.aClass23_1194.put(class40_sub5_sub13, (byte) 126, class40_sub5_sub13.key);
@@ -52,11 +52,11 @@ public class Class17 {
             Class68.anInt1618++;
         }
         for(; ; ) {
-            Class40_Sub5_Sub13 class40_sub5_sub13 = ((Class40_Sub5_Sub13) Class34.aClass23_841.method329(false));
+            Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class34.aClass23_841.method329(false);
             if(class40_sub5_sub13 == null)
                 break;
             InteractiveObject.aClass27_485.method367(true, class40_sub5_sub13);
-            GameObjectDefinition.aClass23_2545.put(class40_sub5_sub13, (byte) -121, (class40_sub5_sub13.key));
+            GameObjectDefinition.aClass23_2545.put(class40_sub5_sub13, (byte) -121, class40_sub5_sub13.key);
             Class42.anInt1006--;
             HashTable.anInt554++;
         }
@@ -66,7 +66,7 @@ public class Class17 {
                 class40_sub1.putByte(4);
                 class40_sub1.putByte(Class8.aByte302);
                 class40_sub1.putShortBE(0);
-                Class57.aClass64_1345.method1010(4, (byte) -19, 0, (class40_sub1.buffer));
+                Class57.aClass64_1345.method1010(4, (byte) -19, 0, class40_sub1.buffer);
             } catch(java.io.IOException ioexception) {
                 ioexception.printStackTrace();
                 try {
@@ -94,22 +94,22 @@ public class Class17 {
     public static void method275(long arg1) {
         if(arg1 != 0L) {
             if(Class42.anInt1008 >= 100)
-                Class44.addChatMessage(HuffmanEncoding.blank_string, Landscape.aClass1_1180, 0);
+                Class44.addChatMessage("", Landscape.aClass1_1180.toString(), 0);
             else {
-                RSString class1 = Class60.method991(-107, arg1).method85();
+                String class1 = TextUtils.formatName(TextUtils.longToName(arg1));
                 for(int i = 0; i < Class42.anInt1008; i++) {
                     if(arg1 == WallDecoration.ignores[i]) {
-                        Class44.addChatMessage(HuffmanEncoding.blank_string, (RSString.linkRSStrings((new RSString[]{class1, Class68.aClass1_1628}))), 0);
+                        Class44.addChatMessage("", class1 + English.aClass1_1628, 0);
                         return;
                     }
                 }
                 for(int i = 0; Item.friendsCount > i; i++) {
                     if(Class59.aLongArray1397[i] == arg1) {
-                        Class44.addChatMessage(HuffmanEncoding.blank_string, (RSString.linkRSStrings((new RSString[]{Class44.aClass1_1032, class1, (Renderable.aClass1_2864)}))), 0);
+                        Class44.addChatMessage("", English.aClass1_1032+ class1 + Renderable.aClass1_2864, 0);
                         return;
                     }
                 }
-                if(!class1.equals((Player.localPlayer.playerName))) {
+                if(!class1.equals(Player.localPlayer.playerName)) {
                     WallDecoration.ignores[Class42.anInt1008++] = arg1;
                     ISAAC.redrawTabArea = true;
                     SceneCluster.packetBuffer.putPacket(251);
@@ -126,21 +126,10 @@ public class Class17 {
                 i_0_ = 2047;
             else
                 i_0_ = Player.trackedPlayerIndices[i];
-            Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[i_0_]);
+            Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_0_];
             if(class40_sub5_sub17_sub4_sub1 != null)
-                Class13.method241(class40_sub5_sub17_sub4_sub1, 1, (byte) 107);
+                Class13.method241(class40_sub5_sub17_sub4_sub1, (byte) 107);
         }
     }
 
-    public static void method277() {
-        aClass68_462 = null;
-        aClass9_449 = null;
-        Native.prefixColonZero = null;
-        English.loadingSprites = null;
-        English.asItWasUsedToBreakOurRules = null;
-        aClass68_463 = null;
-        anIntArray456 = null;
-        helveticaBold = null;
-        anIntArray466 = null;
-    }
 }

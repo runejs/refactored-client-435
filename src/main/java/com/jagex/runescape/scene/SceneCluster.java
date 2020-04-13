@@ -12,7 +12,7 @@ public class SceneCluster {
     public static int cameraZ;
     public static int anInt770 = 0;
     public static int anInt771 = 0;
-    public static RSString aClass1_772 = RSString.CreateString("title)3jpg");
+    public static String aClass1_772 = "title.jpg";
     public static CacheIndex_Sub1 aClass6_Sub1_773;
 
     public int worldDistanceFromCameraStartX;
@@ -34,11 +34,5 @@ public class SceneCluster {
     public int worldEndZ;
     public int worldDistanceFromCameraEndX;
 
-    public static void method401() {
-        aClass38_768 = null;
-        aClass1_772 = null;
-        anIntArray761 = null;
-        packetBuffer = null;
-        aClass6_Sub1_773 = null;
-    }
+
 }

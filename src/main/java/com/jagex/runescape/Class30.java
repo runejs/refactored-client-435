@@ -14,23 +14,18 @@ import com.jagex.runescape.net.PacketBuffer;
 public class Class30 {
     public static int[] anIntArray680 = new int[50];
     public static int anInt681;
-    public static RSString aClass1_682 = RSString.CreateString("Off");
     public static int[] anIntArray684 = new int[50];
     public static int[] anIntArray685 = new int[50];
-    public static RSString aClass1_686 = RSString.CreateString("*6n");
     public static boolean aBoolean687;
     public static int[] anIntArray688 = new int[50];
     public static Class67 aClass67_693;
     public static int[] anIntArray695 = new int[50];
-    public static RSString[] aClass1Array697 = new RSString[50];
-    public static RSString aClass1_698 = RSString.CreateString("(U(Y");
-    public static RSString aClass1_701 = RSString.CreateString("Trade)4compete");
+    public static String[] aClass1Array697 = new String[50];
     public static int anInt704 = 0;
     public static int anInt708 = -1;
     public static int[] anIntArray712 = new int[50];
     public static Class68 aClass68_714;
     public static int[] anIntArray715 = new int[50];
-    public static RSString aClass1_716 = RSString.CreateString("scape main");
     public static Class64 aClass64_717;
 
     public boolean gender;
@@ -40,32 +35,13 @@ public class Class30 {
     public long appearanceHash;
     public long cachedModel;
 
-    public static void method376() {
-        anIntArray712 = null;
-        anIntArray688 = null;
-        aClass64_717 = null;
-        anIntArray695 = null;
-        anIntArray685 = null;
-        anIntArray715 = null;
-        aClass1_686 = null;
-        aClass1Array697 = null;
-        aClass67_693 = null;
-        anIntArray684 = null;
-        anIntArray680 = null;
-        aClass68_714 = null;
-        aClass1_701 = null;
-        aClass1_682 = null;
-        aClass1_698 = null;
-        aClass1_716 = null;
-    }
 
-    public static void method381(int arg0, Actor arg1) {
-        if(arg0 != 22378)
-            method376();
-        if(Node.pulseCycle == arg1.anInt3107 || arg1.playingAnimation == -1 || arg1.playingAnimationDelay != 0 || arg1.anInt3115 + 1 > (Class68_Sub1.method1050(arg1.playingAnimation, 2).animationLengths[arg1.anInt3104])) {
+
+    public static void method381(Actor arg1) {
+        if(Node.pulseCycle == arg1.anInt3107 || arg1.playingAnimation == -1 || arg1.playingAnimationDelay != 0 || arg1.anInt3115 + 1 > Class68_Sub1.method1050(arg1.playingAnimation, 2).animationLengths[arg1.anInt3104]) {
             int i = -arg1.anInt3112 + arg1.anInt3107;
             int i_16_ = -arg1.anInt3112 + Node.pulseCycle;
-            int i_17_ = arg1.anInt3125 * 128 + (64 * arg1.anInt3096);
+            int i_17_ = arg1.anInt3125 * 128 + 64 * arg1.anInt3096;
             int i_18_ = arg1.anInt3096 * 64 + 128 * arg1.anInt3081;
             int i_19_ = arg1.anInt3096 * 64 + 128 * arg1.anInt3099;
             int i_20_ = 128 * arg1.anInt3127 + arg1.anInt3096 * 64;
@@ -88,8 +64,8 @@ public class Class30 {
         if(arg0 != -20874)
             return 109;
         if(anInt696 != -1)
-            return (ActorDefinition.getDefinition(anInt696).id + 305419896);
-        return (appearance[1] + (appearance[11] << 5) + ((appearanceColors[4] << 20) + ((appearanceColors[0] << 25) + (appearance[0] << 15)) + (appearance[8] << 10)));
+            return ActorDefinition.getDefinition(anInt696).id + 305419896;
+        return appearance[1] + (appearance[11] << 5) + (appearanceColors[4] << 20) + (appearanceColors[0] << 25) + (appearance[0] << 15) + (appearance[8] << 10);
     }
 
     public void method375(int arg0, Buffer arg1) {
@@ -126,7 +102,7 @@ public class Class30 {
         if(arg4 >= -84)
             return null;
 
-        Model model = ((Model) CacheIndex.modelCache.get(hash, (byte) 66));
+        Model model = (Model) CacheIndex.modelCache.get(hash, (byte) 66);
         if(model == null) {
             boolean invalid = false;
             for(int bodyPart = 0; bodyPart < 12; bodyPart++) {
@@ -138,7 +114,7 @@ public class Class30 {
             }
             if(invalid) {
                 if(cachedModel != -1L)
-                    model = ((Model) CacheIndex.modelCache.get(cachedModel, (byte) 123));
+                    model = (Model) CacheIndex.modelCache.get(cachedModel, (byte) 123);
                 if(model == null)
                     return null;
             }
@@ -162,9 +138,9 @@ public class Class30 {
                 model = new Model(models, count);
                 for(int part = 0; part < 5; part++) {
                     if(appearanceColors[part] != 0) {
-                        model.replaceColor((Class40_Sub5_Sub17_Sub6.playerColours[part][0]), (Class40_Sub5_Sub17_Sub6.playerColours[part][appearanceColors[part]]));
+                        model.replaceColor(Class40_Sub5_Sub17_Sub6.playerColours[part][0], Class40_Sub5_Sub17_Sub6.playerColours[part][appearanceColors[part]]);
                         if(part == 1)
-                            model.replaceColor(Class35.SKIN_COLOURS[0], (Class35.SKIN_COLOURS[appearanceColors[part]]));
+                            model.replaceColor(Class35.SKIN_COLOURS[0], Class35.SKIN_COLOURS[appearanceColors[part]]);
                     }
                 }
                 model.createBones();
@@ -252,7 +228,7 @@ public class Class30 {
         Model class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, i);
         for(int i_14_ = 0; i_14_ < 5; i_14_++) {
             if(appearanceColors[i_14_] != 0) {
-                class40_sub5_sub17_sub5.replaceColor(Class40_Sub5_Sub17_Sub6.playerColours[i_14_][0], (Class40_Sub5_Sub17_Sub6.playerColours[i_14_][appearanceColors[i_14_]]));
+                class40_sub5_sub17_sub5.replaceColor(Class40_Sub5_Sub17_Sub6.playerColours[i_14_][0], Class40_Sub5_Sub17_Sub6.playerColours[i_14_][appearanceColors[i_14_]]);
                 if(i_14_ == 1)
                     class40_sub5_sub17_sub5.replaceColor(Class35.SKIN_COLOURS[0], Class35.SKIN_COLOURS[appearanceColors[i_14_]]);
             }
@@ -267,7 +243,7 @@ public class Class30 {
             for(int i = 0; i < 7; i++) {
                 for(int i_15_ = 0; PacketBuffer.anInt2257 > i_15_; i_15_++) {
                     IdentityKit identityKit = IdentityKit.cache(i_15_);
-                    if(identityKit != null && !identityKit.nonSelectable && (identityKit.bodyPartId == i + (!isFemale ? 0 : 7))) {
+                    if(identityKit != null && !identityKit.nonSelectable && identityKit.bodyPartId == i + (!isFemale ? 0 : 7)) {
                         arg0[Class40_Sub5_Sub15.anIntArray2777[i]] = i_15_ + 256;
                         break;
                     }
@@ -297,7 +273,7 @@ public class Class30 {
                         } else if(--i < 0)
                             i = -1 + PacketBuffer.anInt2257;
                         identityKit = IdentityKit.cache(i);
-                    } while(identityKit == null || identityKit.nonSelectable || (identityKit.bodyPartId != arg0 + (!gender ? 0 : 7)));
+                    } while(identityKit == null || identityKit.nonSelectable || identityKit.bodyPartId != arg0 + (!gender ? 0 : 7));
                     appearance[Class40_Sub5_Sub15.anIntArray2777[arg0]] = i + 256;
                     method378(117);
                 }
@@ -317,8 +293,8 @@ public class Class30 {
         int i_21_ = appearanceColors[arg2];
         if(!arg1) {
             if(--i_21_ < 0)
-                i_21_ = -1 + (Class40_Sub5_Sub17_Sub6.playerColours[arg2]).length;
-        } else if((Class40_Sub5_Sub17_Sub6.playerColours[arg2]).length <= ++i_21_)
+                i_21_ = -1 + Class40_Sub5_Sub17_Sub6.playerColours[arg2].length;
+        } else if(Class40_Sub5_Sub17_Sub6.playerColours[arg2].length <= ++i_21_)
             i_21_ = 0;
         appearanceColors[arg2] = i_21_;
         method378(119);

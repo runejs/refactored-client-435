@@ -37,27 +37,26 @@ public class Class40_Sub2 extends Node {
     public int anInt2013;
     public int anInt2014;
 
-    public static void method522(int arg0, int arg1, byte arg2) {
+    public static void method522(int arg0, int arg1) {
         VarbitDefinition varbitDefinition = Class34.method417(0, arg1);
         int i = varbitDefinition.leastSignificantBit;
         int i_0_ = varbitDefinition.index;
         int i_1_ = varbitDefinition.mostSignificantBit;
-        int i_2_ = -115 % ((arg2 - 46) / 57);
         int i_3_ = Class68_Sub1.anIntArray2199[i_1_ + -i];
-        if(arg0 < 0 || (i_3_ < arg0))
+        if(arg0 < 0 || i_3_ < arg0)
             arg0 = 0;
         i_3_ <<= i;
-        GroundItemTile.varbitmasks[i_0_] = (UnderlayDefinition.bitWiseOR(HuffmanEncoding.method1021(GroundItemTile.varbitmasks[i_0_], i_3_ ^ 0xffffffff), HuffmanEncoding.method1021(i_3_, arg0 << i)));
+        GroundItemTile.varbitmasks[i_0_] = UnderlayDefinition.bitWiseOR(HuffmanEncoding.method1021(GroundItemTile.varbitmasks[i_0_], i_3_ ^ 0xffffffff), HuffmanEncoding.method1021(i_3_, arg0 << i));
     }
 
-    public static boolean hasFriend(RSString arg0) {
+    public static boolean hasFriend(String arg0) {
         if(arg0 == null)
             return false;
         for(int i = 0; i < Item.friendsCount; i++) {
             if(arg0.equalsIgnoreCase(Class40_Sub11.friendUsernames[i]))
                 return true;
         }
-        return arg0.equalsIgnoreCase((Player.localPlayer.playerName));
+        return arg0.equalsIgnoreCase(Player.localPlayer.playerName);
     }
 
 
@@ -67,7 +66,7 @@ public class Class40_Sub2 extends Node {
         return Class67.method1034(true, 0, arg1, arg0);
     }
 
-    public static ImageRGB[] method526(CacheIndex arg0, RSString arg2, RSString arg3) {
+    public static ImageRGB[] method526(CacheIndex arg0, String arg2, String arg3) {
         int i = arg0.getHash(arg2);
         int i_4_ = arg0.method179(i, arg3);
         return GenericTile.method944((byte) -3, i, arg0, i_4_);

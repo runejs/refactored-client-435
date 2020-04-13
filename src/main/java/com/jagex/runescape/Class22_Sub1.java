@@ -29,24 +29,7 @@ public class Class22_Sub1 extends Class22 {
     public Signlink aClass31_1872;
 
     public Class22_Sub1(Signlink arg0) {
-
         aClass31_1872 = arg0;
-
-    }
-
-    public static void method310() {
-        English.loadedInterfaces = null;
-        Native.headiconsPrayer = null;
-        anIntArray1846 = null;
-        anIntArray1847 = null;
-        English.thisComputersAddressHasBeenBlocked = null;
-        English.pleaseWait5MinutesBeforeTryingAgain = null;
-        English.password = null;
-        English.enterYourUsernameAndPassword = null;
-        English.reportAbuse = null;
-        English.enterYourUsernameAndPassword = null;
-        ChatBox.itemSearchResultNames = null;
-        aCacheIndex_1855 = null;
     }
 
     public static void method311(Component arg1) {
@@ -65,8 +48,8 @@ public class Class22_Sub1 extends Class22 {
             int i_1_ = Model.COSINE[Class26.anInt627];
             int i_2_ = Model.SINE[Class26.anInt627];
             arg2 -= Class12.cameraX;
-            int i_3_ = (Model.SINE[Class68_Sub1.anInt2210]);
-            int i_4_ = (Model.COSINE[Class68_Sub1.anInt2210]);
+            int i_3_ = Model.SINE[Class68_Sub1.anInt2210];
+            int i_4_ = Model.COSINE[Class68_Sub1.anInt2210];
             int i_5_ = arg1 * i_3_ + arg2 * i_4_ >> 16;
             arg1 = i_4_ * arg1 - arg2 * i_3_ >> 16;
             if(arg3 != 4976905)
@@ -85,15 +68,15 @@ public class Class22_Sub1 extends Class22 {
         }
     }
 
-    public static void method313(int arg0) {
+    public static void method313() {
         for(int i = -1; Player.localPlayerCount > i; i++) {
             int i_6_;
             if(i == -1)
                 i_6_ = 2047;
             else
                 i_6_ = Player.trackedPlayerIndices[i];
-            Player class40_sub5_sub17_sub4_sub1 = (Player.trackedPlayers[i_6_]);
-            if(class40_sub5_sub17_sub4_sub1 != null && (class40_sub5_sub17_sub4_sub1.anInt3078 > 0)) {
+            Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_6_];
+            if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.anInt3078 > 0) {
                 class40_sub5_sub17_sub4_sub1.anInt3078--;
                 if(class40_sub5_sub17_sub4_sub1.anInt3078 == 0)
                     class40_sub5_sub17_sub4_sub1.forcedChatMessage = null;

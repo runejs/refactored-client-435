@@ -18,15 +18,8 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public static CacheIndex aCacheIndex_2779;
     public static int systemUpdateTime = 0;
     public static boolean lastItemDragged = false;
-    public static RSString aClass1_2786;
-    public static RSString aClass1_2787 = RSString.CreateString("sideicons");
     public static int[] anIntArray2788 = new int[]{16, 32, 64, 128};
-    public static RSString aClass1_2790 = RSString.CreateString("Friends");
     public static int anInt2791 = -8 + (int) (17.0 * Math.random());
-
-    static {
-        aClass1_2786 = aClass1_2790;
-    }
 
     public FrameDefinition[] aFrameDefinitionArray2794;
 
@@ -58,27 +51,15 @@ public class Class40_Sub5_Sub15 extends SubNode {
         }
     }
 
-    public static void method734() {
-        aClass40_Sub5_Sub14_Sub2_2775 = null;
-        aClass1_2790 = null;
-        aClass40_Sub5_Sub14_Sub2Array2776 = null;
-        anIntArray2777 = null;
-        aClass1_2787 = null;
-        aCacheIndex_2779 = null;
-        anIntArray2788 = null;
-        aClass1_2786 = null;
-        English.examine = null;
-    }
 
-    public static boolean method735(byte arg0, int arg1) {
+
+    public static boolean method735(int arg1) {
         if(arg1 >= 97 && arg1 <= 122)
             return true;
         if(arg1 >= 65 && arg1 <= 90)
             return true;
         if(arg1 >= 48 && arg1 <= 57)
             return true;
-        if(arg0 != -37)
-            method734();
         return false;
     }
 
@@ -90,7 +71,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
                 arg1.anInt3077 = -1;
             else {
                 arg1.anInt3120++;
-                if(((arg1.anInt3116 < animationSequence.anIntArray2485.length)) && (animationSequence.animationLengths[arg1.anInt3116] < arg1.anInt3120)) {
+                if(arg1.anInt3116 < animationSequence.anIntArray2485.length && animationSequence.animationLengths[arg1.anInt3116] < arg1.anInt3120) {
                     arg1.anInt3116++;
                     arg1.anInt3120 = 1;
                 }
@@ -112,11 +93,11 @@ public class Class40_Sub5_Sub15 extends SubNode {
                     arg1.anInt3091 = -1;
                 else {
                     arg1.anInt3129++;
-                    if(((animationSequence.anIntArray2485.length > arg1.anInt3140)) && ((arg1.anInt3129 > animationSequence.animationLengths[arg1.anInt3140]))) {
+                    if(animationSequence.anIntArray2485.length > arg1.anInt3140 && arg1.anInt3129 > animationSequence.animationLengths[arg1.anInt3140]) {
                         arg1.anInt3129 = 1;
                         arg1.anInt3140++;
                     }
-                    if(((animationSequence.anIntArray2485.length <= arg1.anInt3140)) && (arg1.anInt3140 < 0 || ((animationSequence.anIntArray2485.length <= arg1.anInt3140))))
+                    if(animationSequence.anIntArray2485.length <= arg1.anInt3140 && (arg1.anInt3140 < 0 || animationSequence.anIntArray2485.length <= arg1.anInt3140))
                         arg1.anInt3091 = -1;
                 }
             }
@@ -133,16 +114,16 @@ public class Class40_Sub5_Sub15 extends SubNode {
                 AnimationSequence animationSequence = Class68_Sub1.method1050(arg1.playingAnimation, 2);
                 if(animationSequence != null && animationSequence.anIntArray2485 != null) {
                     arg1.anInt3115++;
-                    if((animationSequence.anIntArray2485.length > arg1.anInt3104) && (animationSequence.animationLengths[arg1.anInt3104] < arg1.anInt3115)) {
+                    if(animationSequence.anIntArray2485.length > arg1.anInt3104 && animationSequence.animationLengths[arg1.anInt3104] < arg1.anInt3115) {
                         arg1.anInt3104++;
                         arg1.anInt3115 = 1;
                     }
-                    if((animationSequence.anIntArray2485.length <= arg1.anInt3104)) {
+                    if(animationSequence.anIntArray2485.length <= arg1.anInt3104) {
                         arg1.anInt3104 -= animationSequence.frameStep;
                         arg1.anInt3095++;
-                        if((animationSequence.anInt2495 <= arg1.anInt3095))
+                        if(animationSequence.anInt2495 <= arg1.anInt3095)
                             arg1.playingAnimation = -1;
-                        if(arg1.anInt3104 < 0 || (arg1.anInt3104 >= animationSequence.anIntArray2485.length))
+                        if(arg1.anInt3104 < 0 || arg1.anInt3104 >= animationSequence.anIntArray2485.length)
                             arg1.playingAnimation = -1;
                     }
                     arg1.aBoolean3105 = animationSequence.aBoolean2496;

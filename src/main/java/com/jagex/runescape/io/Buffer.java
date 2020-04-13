@@ -17,7 +17,7 @@ public class Buffer extends Node {
     public static int lastItemDragTime = 0;
 
     public static int anInt1982 = 0;
-    public static RSString aClass1_1983 = (RSString.CreateString("Too many incorrect logins from your address)3"));
+    public static String aClass1_1983 = "Too many incorrect logins from your address.";
     public static int[] anIntArray1984 = new int[2000];
     public static int anInt1985 = -1;
     public static int anInt1987 = 0;
@@ -47,14 +47,6 @@ public class Buffer extends Node {
 
     }
 
-    public static void method499() {
-        anIntArray1984 = null;
-        aClass40_Sub5_Sub14_Sub2_1959 = null;
-        aClass1_1983 = null;
-        aClass9_1933 = null;
-        anIntArray1972 = null;
-    }
-
     public int getShortBE() {
         currentPosition += 2;
         int i = ((buffer[currentPosition - 2] & 0xff) << 8) + (buffer[currentPosition - 1] & 0xff);
@@ -70,6 +62,14 @@ public class Buffer extends Node {
             /* empty */
         }
         return InteractiveObject.method279(buffer, true, i, -1 + currentPosition + -i);
+    }
+
+    public String getString() {
+        int start = currentPosition;
+        while(buffer[currentPosition++] != 0) {
+            /* empty */
+        }
+        return new String(buffer, start, currentPosition - start - 1);
     }
 
     public void putByte(int value) {
@@ -95,17 +95,17 @@ public class Buffer extends Node {
 
     public int getUnsignedShortBE() {
         currentPosition += 2;
-        return (((0xff & buffer[currentPosition - 2]) << 8) + (buffer[currentPosition - 1] & 0xff));
+        return ((0xff & buffer[currentPosition - 2]) << 8) + (buffer[currentPosition - 1] & 0xff);
     }
 
     public int getIntME1() {
         currentPosition += 4;
-        return ((0xff00 & buffer[currentPosition - 1] << 8) + ((buffer[currentPosition - 4] << 16 & 0xff0000) + ((buffer[currentPosition - 3] & 0xff) << 24)) + (buffer[currentPosition - 2] & 0xff));
+        return (0xff00 & buffer[currentPosition - 1] << 8) + (buffer[currentPosition - 4] << 16 & 0xff0000) + ((buffer[currentPosition - 3] & 0xff) << 24) + (buffer[currentPosition - 2] & 0xff);
     }
 
     public int getIntME2() {
         currentPosition += 4;
-        return ((buffer[currentPosition - 4] << 8 & 0xff00) + ((~0xffffff & buffer[currentPosition - 2] << 24) + (buffer[currentPosition - 1] << 16 & 0xff0000) + (buffer[currentPosition - 3] & 0xff)));
+        return (buffer[currentPosition - 4] << 8 & 0xff00) + (~0xffffff & buffer[currentPosition - 2] << 24) + (buffer[currentPosition - 1] << 16 & 0xff0000) + (buffer[currentPosition - 3] & 0xff);
     }
 
     public void putIntME1(int value) {
@@ -153,7 +153,7 @@ public class Buffer extends Node {
     }
 
     public void finishVarByte(int value) {
-        buffer[-1 + (currentPosition + -value)] = (byte) value;
+        buffer[-1 + currentPosition + -value] = (byte) value;
     }
 
     public void putLongBE(long arg0) {
@@ -206,9 +206,9 @@ public class Buffer extends Node {
             int i_8_ = -957401312;
             int i_9_ = -1640531527;
             while(i_7_-- > 0) {
-                i_6_ -= ((i_5_ >>> 5 ^ i_5_ << 4) + i_5_ ^ i_8_ + arg0[~0x71dffffc & i_8_ >>> 11]);
+                i_6_ -= (i_5_ >>> 5 ^ i_5_ << 4) + i_5_ ^ i_8_ + arg0[~0x71dffffc & i_8_ >>> 11];
                 i_8_ -= i_9_;
-                i_5_ -= ((i_6_ >>> 5 ^ i_6_ << 4) + i_6_ ^ arg0[0x3 & i_8_] + i_8_);
+                i_5_ -= (i_6_ >>> 5 ^ i_6_ << 4) + i_6_ ^ arg0[0x3 & i_8_] + i_8_;
             }
             currentPosition -= 8;
             putIntBE(i_5_);
@@ -219,7 +219,7 @@ public class Buffer extends Node {
 
     public int getIntLE() {
         currentPosition += 4;
-        return ((buffer[currentPosition - 3] << 8 & 0xff00) + (((0xff & buffer[currentPosition - 1]) << 24) + (0xff0000 & buffer[currentPosition - 2] << 16)) + (buffer[currentPosition - 4] & 0xff));
+        return (buffer[currentPosition - 3] << 8 & 0xff00) + ((0xff & buffer[currentPosition - 1]) << 24) + (0xff0000 & buffer[currentPosition - 2] << 16) + (buffer[currentPosition - 4] & 0xff);
     }
 
     public void putShortLE(int value) {
@@ -229,17 +229,17 @@ public class Buffer extends Node {
 
     public int getMediumBE() {
         currentPosition += 3;
-        return (((buffer[currentPosition - 3] & 0xff) << 16) + ((buffer[currentPosition - 2] & 0xff) << 8) + (0xff & buffer[currentPosition - 1]));
+        return ((buffer[currentPosition - 3] & 0xff) << 16) + ((buffer[currentPosition - 2] & 0xff) << 8) + (0xff & buffer[currentPosition - 1]);
     }
 
     public int getUnsignedShortLE() {
         currentPosition += 2;
-        return ((0xff00 & buffer[currentPosition - 1] << 8) + (0xff & buffer[currentPosition - 2]));
+        return (0xff00 & buffer[currentPosition - 1] << 8) + (0xff & buffer[currentPosition - 2]);
     }
 
     public int getIntBE() {
         currentPosition += 4;
-        return ((0xff & buffer[currentPosition - 1]) + (buffer[currentPosition - 2] << 8 & 0xff00) + (buffer[currentPosition - 3] << 16 & 0xff0000) + (~0xffffff & buffer[currentPosition - 4] << 24));
+        return (0xff & buffer[currentPosition - 1]) + (buffer[currentPosition - 2] << 8 & 0xff00) + (buffer[currentPosition - 3] << 16 & 0xff0000) + (~0xffffff & buffer[currentPosition - 4] << 24);
     }
 
     public void putIntLE(int value) {

@@ -30,10 +30,6 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
         anIntArray1833 = new int[512];
     }
 
-    public static void method220() {
-        anIntArray1829 = null;
-    }
-
     public void method219(long arg0) throws Exception {
         method226(anInt1831);
         for(; ; ) {
