@@ -7,8 +7,6 @@ import com.jagex.runescape.io.Buffer;
 import java.awt.*;
 
 public class Class35 implements Interface3 {
-    public static RSString aClass1_1720 = RSString.CreateString("Enter object name");
-    public static RSString aClass1_1725 = RSString.CreateString("null");
     public static int anInt1728 = 0;
     public static int anInt1730 = 0;
     public static Frame aFrame1732;
@@ -19,7 +17,7 @@ public class Class35 implements Interface3 {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1744;
     public static byte[][][] tile_overlay_rotation;
     public static String aClass1_1746 = "Enter message to send to ";
-    public static RSString aClass1_1747 = aClass1_1720;
+    public static String aClass1_1747 ="Enter object name";
 
     public LinkedList aLinkedList_1727 = new LinkedList();
     public EntryTable[] aClass40_Sub10Array1740;
@@ -77,9 +75,7 @@ public class Class35 implements Interface3 {
     }
 
     public static void method423() {
-        aClass1_1720 = null;
         tile_overlay_rotation = null;
-        aClass1_1725 = null;
         aClass1_1746 = null;
         aFrame1732 = null;
         SKIN_COLOURS = null;

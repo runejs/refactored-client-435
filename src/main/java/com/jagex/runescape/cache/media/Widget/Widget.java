@@ -35,7 +35,7 @@ import java.util.Date;
 public class Widget extends SubNode {
     public static String aClass1_2671 ="glow2:";
     public static String aClass1_2674 = "Starting game engine...";
-    public static RSString str_Choose_Option = RSString.CreateString("Choose Option");
+    public static String str_Choose_Option = "Choose Option";
     public static String cmd_errortest = "::errortest";
     public static String goldCrown = "@cr2@";
     public static String aClass1_2740 = "Enter name of friend to add to list";
@@ -842,7 +842,7 @@ public class Widget extends SubNode {
                                             if(i_3_ == 4100) {
                                                 String class1 = Class40_Sub11.aClass1Array2153[--i_1_];
                                                 int i_75_ = Class67.anIntArray1588[--i];
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = class1 + HashTable.intToStr(i_75_);
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = class1 + i_75_;
                                             } else if(i_3_ == 4101) {
                                                 i_1_ -= 2;
                                                 String class1 = Class40_Sub11.aClass1Array2153[i_1_ + 1];
@@ -862,7 +862,7 @@ public class Widget extends SubNode {
                                                 int i_79_ = Class8.aCalendar279.get(Calendar.DATE);
                                                 int i_80_ = Class8.aCalendar279.get(Calendar.MONTH);
                                                 int i_81_ = Class8.aCalendar279.get(Calendar.YEAR);
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = HashTable.intToStr(i_79_).toString() + "-" + Class40_Sub5_Sub17_Sub1.aClass1Array2964[i_80_] + "-" + HashTable.intToStr(i_81_);
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = i_79_ + "-" + Class40_Sub5_Sub17_Sub1.aClass1Array2964[i_80_] + "-" + i_81_;
                                             } else if(i_3_ == 4105) {
                                                 i_1_ -= 2;
                                                 String class1 = Class40_Sub11.aClass1Array2153[i_1_];
@@ -874,7 +874,7 @@ public class Widget extends SubNode {
                                                 }
                                             } else if(i_3_ == 4106) {
                                                 int i_83_ = Class67.anIntArray1588[--i];
-                                                Class40_Sub11.aClass1Array2153[i_1_++] = HashTable.intToStr(i_83_).toString();
+                                                Class40_Sub11.aClass1Array2153[i_1_++] = Integer.toString(i_83_).toString();
                                             } else {
                                                 if(i_3_ != 4107) {
                                                     break;
@@ -1108,14 +1108,14 @@ public class Widget extends SubNode {
                     widget.disabledText = FloorDecoration.aClass1_610 + Class27.aClass1_664;
                 } else if(Class40_Sub7.friendWorlds[type] < 5000) {
                     if(Class40_Sub7.friendWorlds[type] == Class13.worldid) {
-                        widget.disabledText = Landscape.aClass1_1162 + Class26.aClass1_634 + HashTable.intToStr(Class40_Sub7.friendWorlds[type]);
+                        widget.disabledText = Landscape.aClass1_1162 + Class26.aClass1_634 + Class40_Sub7.friendWorlds[type];
                     } else {
-                        widget.disabledText = KeyFocusListener.aClass1_1283 + Class26.aClass1_634 + HashTable.intToStr(Class40_Sub7.friendWorlds[type]);
+                        widget.disabledText = KeyFocusListener.aClass1_1283 + Class26.aClass1_634 + Class40_Sub7.friendWorlds[type];
                     }
                 } else if(Class13.worldid == Class40_Sub7.friendWorlds[type]) {
-                    widget.disabledText = Landscape.aClass1_1162 + Cache.aClass1_333 + HashTable.intToStr(-5000 + Class40_Sub7.friendWorlds[type]);
+                    widget.disabledText = Landscape.aClass1_1162 + Cache.aClass1_333 + (-5000 + Class40_Sub7.friendWorlds[type]);
                 } else {
-                    widget.disabledText = KeyFocusListener.aClass1_1283 + Cache.aClass1_333 + HashTable.intToStr(Class40_Sub7.friendWorlds[type] + -5000);
+                    widget.disabledText = KeyFocusListener.aClass1_1283 + Cache.aClass1_333 + (Class40_Sub7.friendWorlds[type] + -5000);
                 }
                 widget.actionType = 1;
             }

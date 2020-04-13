@@ -98,12 +98,12 @@ public class SceneTile extends Node {
                 int i = arg2.indexOf(GameObjectDefinition.aClass1_2526);
                 if (i == -1)
                     break;
-                RSString class1 = HuffmanEncoding.blank_string;
+                String class1 = "";
                 if (Class12.aSignlinkNode_394 != null) {
                     class1 = CacheIndex_Sub1.method204(Class12.aSignlinkNode_394.integerData, 255);
                     if (Class12.aSignlinkNode_394.value != null) {
                         byte[] is = ((String) Class12.aSignlinkNode_394.value).getBytes(StandardCharsets.ISO_8859_1);
-                        class1 = InteractiveObject.method279(is, true, 0, is.length);
+                        class1 = InteractiveObject.method279(is, true, 0, is.length).toString();
                     }
                 }
                 arg2 = arg2.substring(0, i) + class1 + arg2.substring(i + 4);
@@ -175,7 +175,7 @@ public class SceneTile extends Node {
             else
                 class1 = Class38_Sub1.aClass1_1918 + VertexNormal.aClass1_1117 + FloorDecoration.aClass1_611 + Class38.aClass1_894;
             if (ActorDefinition.menuActionRow > 2)
-                class1 = class1 + WallDecoration.aClass1_1243 + HashTable.intToStr(ActorDefinition.menuActionRow + -2) + Class39.aClass1_904;
+                class1 = class1 + WallDecoration.aClass1_1243 + (ActorDefinition.menuActionRow + -2) + Class39.aClass1_904;
             if (arg0 == 4)
                 Class40_Sub5_Sub17_Sub6.fontBold.drawShadowedSeededAlphaString(class1, 4, 15, 16777215, true, Node.pulseCycle / 1000);
         }

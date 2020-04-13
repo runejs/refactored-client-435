@@ -12,23 +12,17 @@ import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class44 implements Runnable {
     public static int[][] anIntArrayArray1030;
-    public static RSString aClass1_1032;
-    public static RSString aClass1_1033 = RSString.CreateString("Please remove ");
+    public static String aClass1_1032 = "Please remove ";
     public static int modewhat = 0;
-    public static RSString aClass1_1038;
+    public static String aClass1_1038 = "Please remove ";
     public static byte[][] aByteArrayArray1039 = new byte[250][];
     public static int anInt1040 = 256;
     public static String aClass1_1041 = "%";
     public static int modewhere = 0;
-    public static RSString aClass1_1043 = RSString.CreateString("null");
+    public static String aClass1_1043 = "null";
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1047;
     public static int anInt1048 = -1;
     public static int anInt1049 = 0;
-
-    static {
-        aClass1_1032 = aClass1_1033;
-        aClass1_1038 = aClass1_1033;
-    }
 
     public static void addChatMessage(String name, String message, int type) {
         if(ChatBox.openChatboxWidgetId == -1)
@@ -49,7 +43,6 @@ public class Class44 implements Runnable {
 
     public static void method896() {
         aClass40_Sub5_Sub14_Sub2_1047 = null;
-        aClass1_1033 = null;
         aByteArrayArray1039 = null;
         aClass1_1041 = null;
         aClass1_1032 = null;

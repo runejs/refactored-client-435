@@ -11,7 +11,7 @@ import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.WallDecoration;
 
 public class Class40_Sub6 extends Node {
-    public static RSString aClass1_2097 = RSString.CreateString("No matching objects found, please shorten search");
+    public static String aClass1_2097 = "No matching objects found, please shorten search";
     public static Class64 aClass64_2098;
     public static int[][][] tile_height = new int[4][105][105];
     public static String aClass1_2101 = "p11_full";

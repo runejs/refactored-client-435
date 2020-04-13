@@ -53,7 +53,7 @@ public class LinkedList {
     public static String method903(int arg0, byte arg1) {
         if(arg1 >= -13)
             return null;
-        String class1 = HashTable.intToStr(arg0).toString();
+        String class1 = Integer.toString(arg0);
         for(int i = -3 + class1.length(); i > 0; i -= 3)
             class1 = class1.substring(0, i) + Class33.aClass1_795 + class1.substring(i);
         if(class1.length() > 8)

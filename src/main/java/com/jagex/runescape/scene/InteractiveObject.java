@@ -16,11 +16,10 @@ public class InteractiveObject {
     public static Class27 aClass27_485 = new Class27();
     public static int anInt487 = 0;
     public static CacheIndex aCacheIndex_488;
-    public static RSString aClass1_489 = RSString.CreateString("Public chat");
     public static byte[][][] aByteArrayArrayArray492;
     public static int playerRights = 0;
     public static String aClass1_494 = "@gr3@";
-    public static RSString aClass1_495 = aClass1_489;
+    public static String aClass1_495 = "Public chat";
     public static boolean showFps = false;
 
     public int z;
@@ -59,7 +58,6 @@ public class InteractiveObject {
         aClass1_495 = null;
         aClass1_494 = null;
         aClass68_482 = null;
-        aClass1_489 = null;
         aClass27_485 = null;
         aByteArrayArrayArray492 = null;
         aClass9_470 = null;

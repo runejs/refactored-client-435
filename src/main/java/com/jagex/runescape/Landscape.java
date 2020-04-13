@@ -38,12 +38,12 @@ public class Landscape {
     public static int anInt1170 = 0;
     public static int anInt1171 = 0;
     public static String aClass1_1173 = "Loaded wordpack";
-    public static RSString aClass1_1174 = RSString.CreateString("Enter amount:");
+    public static String aClass1_1174 = "Enter amount:";
     public static int[][] distanceValues = new int[104][104];
     public static String aClass1_1178 = "You are standing in a members-only area.";
-    public static RSString aClass1_1180 = RSString.CreateString("Your ignore list is full. Max of 100 hit");
+    public static String aClass1_1180 = "Your ignore list is full. Max of 100 hit";
     public static String aClass1_1181 = "glow1:";
-    public static RSString aClass1_1183 = RSString.CreateString("");
+    public static String aClass1_1183 = "";
     public static String[] menuActionTexts = new String[500];
     public static Class68 aClass68_1185;
     public static int[] anIntArray1186;

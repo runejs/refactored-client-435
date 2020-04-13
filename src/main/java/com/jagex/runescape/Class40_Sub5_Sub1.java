@@ -27,7 +27,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
     public static String aClass1_2274 = "To";
     public static Class68 aClass68_2275;
     public static int crossY = 0;
-    public static RSString aClass1_2277 = RSString.CreateString(" -> @cya@");
+    public static String aClass1_2277 = " -> @cya@";
     public static int anInt2278 = 0;
     public static int anInt2280 = 0;
 
@@ -266,9 +266,9 @@ public class Class40_Sub5_Sub1 extends SubNode {
         if (Player.localPlayer != player && ActorDefinition.menuActionRow < 400) {
             String rsString;
             if (player.skillLevel == 0)
-                rsString = player.playerName + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, player.combatLevel) + HashTable.aClass1_569 + SpotAnimDefinition.str_prefix_level + HashTable.intToStr(player.combatLevel) + Class51.aClass1_1199;
+                rsString = player.playerName + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, player.combatLevel) + HashTable.aClass1_569 + SpotAnimDefinition.str_prefix_level + player.combatLevel + Class51.aClass1_1199;
             else
-                rsString = player.playerName + HashTable.aClass1_569 + Class26.aClass1_619 + HashTable.intToStr(player.skillLevel) + Class51.aClass1_1199;
+                rsString = player.playerName + HashTable.aClass1_569 + Class26.aClass1_619 + player.skillLevel + Class51.aClass1_1199;
             if (Class8.itemSelected == 1) {
                 OverlayDefinition.addActionRow(Main.aClass1_1763, index, x, y, 22, Npc.aClass1_3295 + Item.aClass1_3068 + rsString);
             } else if (Main.widgetSelected == 1) {

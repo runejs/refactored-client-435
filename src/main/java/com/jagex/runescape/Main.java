@@ -43,7 +43,7 @@ import java.net.Socket;
 public class Main extends GameShell {
     public static int anInt1756 = 0;
     public static int menuOffsetY;
-    public static RSString aClass1_1761 = RSString.CreateString("Welcome to Runescape");
+    public static String aClass1_1761 = "Welcome to Runescape";
     public static String aClass1_1762 = "logo";
     public static String aClass1_1763 = "Use";
     public static int anInt1764 = 0;
@@ -313,8 +313,8 @@ public class Main extends GameShell {
                                 bool = false;
                             if(widget.itemId != -1) {
                                 if(widget.itemAmount != 1 || i_22_ == 33) {
-                                    Class40_Sub5_Sub17_Sub6.fontSmall.drawString(HashTable.intToStr(widget.itemAmount), i_0_ + 1, i_1_ + 10, 0);
-                                    Class40_Sub5_Sub17_Sub6.fontSmall.drawString(HashTable.intToStr(widget.itemAmount), i_0_, 9 + i_1_, 16776960);
+                                    Class40_Sub5_Sub17_Sub6.fontSmall.drawString(Integer.toString(widget.itemAmount), i_0_ + 1, i_1_ + 10, 0);
+                                    Class40_Sub5_Sub17_Sub6.fontSmall.drawString(Integer.toString(widget.itemAmount), i_0_, 9 + i_1_, 16776960);
                                 }
                                 class40_sub5_sub14_sub4.maxWidth = i_22_;
                                 class40_sub5_sub14_sub4.maxHeight = i_23_;
@@ -810,12 +810,12 @@ public class Main extends GameShell {
                 if(Class37.anInt874 > PacketBuffer.anInt2231)
                     PacketBuffer.anInt2231 = Class37.anInt874;
                 int i = (-Class37.anInt874 + PacketBuffer.anInt2231) * 50 / PacketBuffer.anInt2231;
-                Class51.method940(0, Class67.aClass1_1585, true, RSString.linkRSStrings(new RSString[]{CollisionMap.aClass1_170, HashTable.intToStr(i), Class30.aClass1_698}));
+                Class51.method940(0, Class67.aClass1_1585, true, CollisionMap.aClass1_170+ i +Class30.aClass1_698);
             } else if(Class68.anInt1634 == 2) {
                 if(IdentityKit.anInt2591 > GameObject.anInt3048)
                     GameObject.anInt3048 = IdentityKit.anInt2591;
                 int i = 50 * (-IdentityKit.anInt2591 + GameObject.anInt3048) / GameObject.anInt3048 + 50;
-                Class51.method940(0, Class67.aClass1_1585, true, RSString.linkRSStrings(new RSString[]{CollisionMap.aClass1_170, HashTable.intToStr(i), Class30.aClass1_698}));
+                Class51.method940(0, Class67.aClass1_1585, true, CollisionMap.aClass1_170+ i +Class30.aClass1_698);
             } else
                 Class51.method940(0, Class67.aClass1_1585, false, null);
         } else if(Class51.anInt1197 == 30) {

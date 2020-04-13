@@ -67,7 +67,7 @@ public class Class40_Sub2 extends Node {
         return Class67.method1034(true, 0, arg1, arg0);
     }
 
-    public static ImageRGB[] method526(CacheIndex arg0, String arg2, RSString arg3) {
+    public static ImageRGB[] method526(CacheIndex arg0, String arg2, String arg3) {
         int i = arg0.getHash(arg2);
         int i_4_ = arg0.method179(i, arg3);
         return GenericTile.method944((byte) -3, i, arg0, i_4_);

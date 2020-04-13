@@ -32,7 +32,7 @@ import com.jagex.runescape.util.TextUtils;
 
 public class Class27 {
     public static String aClass1_638 = "invback";
-    public static RSString aClass1_643 = RSString.CreateString("-");
+    public static String aClass1_643 = "-";
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array649;
     public static CacheIndex aCacheIndex_654;
     public static int minimapState = 0;
@@ -655,7 +655,7 @@ public class Class27 {
                             SceneCluster.packetBuffer.putPacket(151);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
                         } else
-                            Class44.addChatMessage("", HashTable.intToStr(widget.itemAmounts[i])+ Class65.aClass1_1536 + ItemDefinition.forId(i_12_, 10).name, 0);
+                            Class44.addChatMessage("", widget.itemAmounts[i]+ Class65.aClass1_1536 + ItemDefinition.forId(i_12_, 10).name, 0);
                         GenericTile.anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
                         Class30.anInt704 = i_10_;
@@ -888,7 +888,7 @@ public class Class27 {
         }
     }
 
-    public static IndexedImage method359(String arg0, RSString arg1, CacheIndex arg2) {
+    public static IndexedImage method359(String arg0, String arg1, CacheIndex arg2) {
         int i = arg2.getHash(arg0);
         int i_23_ = arg2.method179(i, arg1);
         return method363(arg2, (byte) -42, i_23_, i);

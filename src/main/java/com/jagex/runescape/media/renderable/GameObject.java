@@ -23,7 +23,7 @@ public class GameObject extends Renderable {
     public static String aClass1_3039 = "Accept challenge";
     public static int anInt3040 = 0;
     public static Class68 aClass68_3042;
-    public static RSString aClass1_3044 = RSString.CreateString("");
+    public static String aClass1_3044 = "";
     public static Class68 aClass68_3045;
     public static String aClass1_3047 = "mapfunction";
     public static int anInt3048 = 1;

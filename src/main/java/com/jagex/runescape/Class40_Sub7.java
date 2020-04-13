@@ -9,7 +9,7 @@ import com.jagex.runescape.media.VertexNormal;
 public class Class40_Sub7 extends Node {
     public static Class68 aClass68_2123;
     public static String aClass1_2125 = "Loaded update list";
-    public static RSString aClass1_2129 = RSString.CreateString("Mem:");
+    public static String aClass1_2129 = "Mem:";
     public static int[] friendWorlds = new int[200];
     public static String aClass1_2132 = "Loading interfaces - ";
 

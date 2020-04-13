@@ -20,7 +20,7 @@ public class UnderlayDefinition extends SubNode {
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2567;
     public static CacheIndex_Sub1 aClass6_Sub1_2571;
     public static int anInt2576;
-    public static RSString aClass1_2577 = RSString.CreateString(" million");
+    public static String aClass1_2577 = " million";
     public static int anInt2581;
     public static CacheIndex aCacheIndex_2582;
 

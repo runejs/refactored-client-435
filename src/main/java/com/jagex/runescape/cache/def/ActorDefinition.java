@@ -27,7 +27,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
     public static int anInt2404 = 0;
     public static String aClass1_2410 = "Please wait 1 minute and try again.";
     public static byte[] aByteArray2416 = new byte[520];
-    public static RSString aClass1_2423 = RSString.CreateString("(X100(U(Y");
+    public static String aClass1_2423 = "(100%)";
     public static int openFullScreenWidgetId = -1;
     public static int count;
 

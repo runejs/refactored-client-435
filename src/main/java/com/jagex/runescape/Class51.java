@@ -19,7 +19,7 @@ public class Class51 {
     public static String aClass1_1196 = "glow3:";
     public static int anInt1197 = 0;
     public static int[] anIntArray1198;
-    public static RSString aClass1_1199 = RSString.CreateString("(Y");
+    public static String aClass1_1199 = ")";
     public static String aClass1_1200 = "Enter name of player to add to list";
     public static int regionX;
     public static long aLong1203 = 0L;
@@ -48,7 +48,7 @@ public class Class51 {
         aClass1_1199 = null;
     }
 
-    public static void method940(int arg0, String arg1, boolean arg2, RSString arg3) {
+    public static void method940(int arg0, String arg1, boolean arg2, String arg3) {
         if(Class40_Sub5_Sub11.clearScreen) {
             Class40_Sub5_Sub11.clearScreen = false;
             ItemDefinition.method742();

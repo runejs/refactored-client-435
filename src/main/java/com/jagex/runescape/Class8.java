@@ -35,7 +35,7 @@ public class Class8 {
     public static byte aByte302 = (byte) 0;
     public static String aClass1_303 = "_";
     public static String aClass1_304 = "backhmid2";
-    public static RSString aClass1_305 = RSString.CreateString("");
+    public static String aClass1_305 = "";
 
     public Class8(int arg0) {
         CollisionMap.anInt141 = arg0;

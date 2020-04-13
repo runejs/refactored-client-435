@@ -104,17 +104,17 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             WallDecoration.fontNormal.drawStringRight("Mem: " + memoryUsed + "k", x, y, colour);
             y += 15;
             if(Class38.aBoolean893) {
-                WallDecoration.fontNormal.method687(HuffmanEncoding.aClass1_1544, x, y, 16711680);
+                WallDecoration.fontNormal.drawStringRight(HuffmanEncoding.aClass1_1544, x, y, 16711680);
                 y += 15;
                 Class38.aBoolean893 = false;
             }
             if(CacheIndex.aBoolean260) {
-                WallDecoration.fontNormal.method687(GroundItemTile.aClass1_1378, x, y, 16711680);
+                WallDecoration.fontNormal.drawStringRight(GroundItemTile.aClass1_1378, x, y, 16711680);
                 y += 15;
                 CacheIndex.aBoolean260 = false;
             }
             if(Class40_Sub3.aBoolean2026) {
-                WallDecoration.fontNormal.method687(HuffmanEncoding.aClass1_1546, x, y, 16711680);
+                WallDecoration.fontNormal.drawStringRight(HuffmanEncoding.aClass1_1546, x, y, 16711680);
                 Class40_Sub3.aBoolean2026 = false;
                 y += 15;
             }
@@ -194,7 +194,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
 
     }
 
-    public static RSString method956(int arg0, Buffer arg1) {
+    public static String method956(int arg0, Buffer arg1) {
         if(arg0 < 62) {
             aLinkedList_1278 = null;
         }

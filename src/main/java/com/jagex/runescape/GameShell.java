@@ -31,9 +31,9 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     public static int[] anIntArray2 = new int[5];
     public static long[] aLongArray4 = new long[32];
     public static String clickToContinueString = null;
-    public static RSString aClass1_28 = RSString.CreateString("null");
+    public static String aClass1_28 = "null";
     public static int anInt31;
-    public static RSString aClass1_34 = RSString.CreateString("null");
+    public static String aClass1_34 = "null";
     public boolean aBoolean43 = false;
 
     public static void method18() {

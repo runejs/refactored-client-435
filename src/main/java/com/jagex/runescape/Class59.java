@@ -25,7 +25,7 @@ public class Class59 {
     public static String aClass1_1395 = "backbase1";
     public static long[] aLongArray1397;
     public static int[] anIntArray1398;
-    public static RSString aClass1_1399 = RSString.CreateString("Your friendlist is full. Max of 100 for free users, and 200 for members");
+    public static String aClass1_1399 = "Your friendlist is full. Max of 100 for free users, and 200 for members";
 
     static {
         secondMenuOperand = new int[500];

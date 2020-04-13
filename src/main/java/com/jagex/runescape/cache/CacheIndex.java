@@ -149,13 +149,13 @@ public abstract class CacheIndex {
         WallDecoration.aClass9_1247.method235((byte) 59);
     }
 
-    public byte[] method170(RSString arg0, String arg1, int arg2) {
+    public byte[] method170(String arg0, String arg1, int arg2) {
         if(arg2 != 1)
             method186(-26, 53);
         arg1 = arg1.toLowerCase();
         arg0 = arg0.toLowerCase();
         int i = aClass42_254.method882(RSString.stringHash(arg1));
-        int i_0_ = aClass42Array217[i].method882(arg0.stringHash());
+        int i_0_ = aClass42Array217[i].method882(RSString.stringHash(arg0));
 
         return getFile(i_0_, i);
     }
@@ -278,9 +278,9 @@ public abstract class CacheIndex {
         }
     }
 
-    public int method179(int arg1, RSString arg2) {
+    public int method179(int arg1, String arg2) {
         arg2 = arg2.toLowerCase();
-        return aClass42Array217[arg1].method882(arg2.stringHash());
+        return aClass42Array217[arg1].method882(RSString.stringHash(arg2));
     }
 
     public boolean method181(int arg0, int[] arg2) {
@@ -430,13 +430,13 @@ public abstract class CacheIndex {
         throw new RuntimeException();
     }
 
-    public boolean method194(String arg0, RSString arg1, int arg2) {
+    public boolean method194(String arg0, String arg1, int arg2) {
         if(arg2 != -1234)
             anIntArray261 = null;
         arg0 = arg0.toLowerCase();
         arg1 = arg1.toLowerCase();
         int i = aClass42_254.method882(RSString.stringHash(arg0));
-        int i_49_ = aClass42Array217[i].method882(arg1.stringHash());
+        int i_49_ = aClass42Array217[i].method882(RSString.stringHash(arg1));
         return loaded(i, i_49_);
     }
 

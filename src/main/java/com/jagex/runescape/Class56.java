@@ -44,7 +44,7 @@ public class Class56 {
     public static String[] method968(String[] arg0) {
         String[] class1s = new String[5];
         for(int i = 0; i < 5; i++) {
-            class1s[i] = HashTable.intToStr(i) + ISAAC.aClass1_515;
+            class1s[i] = i + ISAAC.aClass1_515;
             if(arg0 != null && arg0[i] != null)
                 class1s[i] = class1s[i] + arg0[i];
         }

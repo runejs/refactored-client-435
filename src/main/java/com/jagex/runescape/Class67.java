@@ -16,7 +16,7 @@ public class Class67 {
     public static String aClass1_1585 = "Loading - please wait.";
     public static int anInt1586 = -1;
     public static int[] anIntArray1588 = new int[1000];
-    public static RSString aClass1_1598 = RSString.CreateString("Create a free account");
+    public static String aClass1_1598 = "Create a free account";
     public static boolean reportMutePlayer = false;
     public static int anInt1607 = 10;
     public static String aClass1_1610 = "%3";

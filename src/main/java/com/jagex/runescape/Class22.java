@@ -103,17 +103,16 @@ public abstract class Class22 {
         Class5.anIntArray198 = Rasterizer3D.method708(Class5.anIntArray198);
     }
 
-    public static RSString method307(Buffer arg0, int arg1, int arg2) {
+    public static String method307(Buffer arg0, int arg1, int arg2) {
         try {
             if(arg1 != -1)
                 aBooleanArray548 = null;
-            RSString class1 = new RSString();
-            class1.length = arg0.getSmart();
-            if(class1.length > arg2)
-                class1.length = arg2;
-            class1.chars = new byte[class1.length];
-            arg0.currentPosition += IdentityKit.aHuffmanEncoding_2590.method1023(arg0.buffer, class1.length, 0, class1.chars, arg0.currentPosition, -1);
-            return class1;
+            int length = arg0.getSmart();
+            if(length > arg2)
+                length = arg2;
+            byte[] chars = new byte[length];
+            arg0.currentPosition += IdentityKit.aHuffmanEncoding_2590.method1023(arg0.buffer, length, 0, chars, arg0.currentPosition, -1);
+            return new String(chars);
         } catch(Exception exception) {
             return Class33.aClass1_777;
         }

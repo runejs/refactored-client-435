@@ -21,12 +21,12 @@ public class Class61 {
     public static String aClass1_1428 = "wishes to duel with you.";
     public static String aClass1_1432 = "System update in: ";
     public static int[][] anIntArrayArray1435 = new int[104][104];
-    public static RSString aClass1_1437 = RSString.CreateString("null");
+    public static String aClass1_1437 = "null";
     public static String aClass1_1440 = "backleft1";
     public static Class68 aClass68_1441;
     public static boolean aBoolean1444 = false;
     public static int[] anIntArray1445;
-    public static RSString aClass1_1446 = RSString.CreateString("Fps:");
+    public static String aClass1_1446 = "Fps:";
 
     public Class40_Sub5_Sub1 aClass40_Sub5_Sub1_1419;
     public int[] anIntArray1420;

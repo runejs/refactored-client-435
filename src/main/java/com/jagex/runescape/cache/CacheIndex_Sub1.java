@@ -39,10 +39,10 @@ public class CacheIndex_Sub1 extends CacheIndex {
         Player.npcs = null;
     }
 
-    public static RSString method204(int arg0, int arg1) {
+    public static String method204(int arg0, int arg1) {
         if(arg1 != 255)
             method203();
-        return RSString.linkRSStrings(new RSString[]{HashTable.intToStr(0xff & arg0 >> 24), Node.aClass1_975, HashTable.intToStr((arg0 & 0xffca88) >> 16), Node.aClass1_975, HashTable.intToStr((0xfff8 & arg0) >> 8), Node.aClass1_975, HashTable.intToStr(0xff & arg0)});
+        return Integer.toString(0xff & arg0 >> 24) + Node.aClass1_975 + ((arg0 & 0xffca88) >> 16) + Node.aClass1_975 + ((0xfff8 & arg0) >> 8) + Node.aClass1_975 + (0xff & arg0);
     }
 
     public static void method399(int arg0, int arg2) {

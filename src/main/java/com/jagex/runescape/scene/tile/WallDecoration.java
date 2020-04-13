@@ -24,23 +24,16 @@ import com.jagex.runescape.scene.InteractiveObject;
 import java.awt.*;
 
 public class WallDecoration {
-    public static RSString aClass1_1243 = RSString.CreateString("@whi@ )4 ");
+    public static String aClass1_1243 = "@whi@ / ";
     public static Cache aClass9_1247 = new Cache(64);
-    public static RSString aClass1_1251;
-    public static RSString aClass1_1255 = RSString.CreateString("and choose the 'create account'");
+    public static String aClass1_1251 = "and choose the 'create account'";
     public static int anInt1257 = 0;
-    public static RSString aClass1_1259;
-    public static RSString aClass1_1260 = RSString.CreateString("go back to the main RuneScape webpage");
+    public static String aClass1_1259 = "go back to the main RuneScape webpage";
     public static Cache aClass9_1264 = new Cache(50);
     public static String aClass1_1266 = "backright2";
     public static long[] ignores = new long[100];
     public static TypeFace fontNormal;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1270;
-
-    static {
-        aClass1_1259 = aClass1_1260;
-        aClass1_1251 = aClass1_1255;
-    }
 
     public int configBits;
     public int z;
@@ -354,7 +347,7 @@ public class WallDecoration {
             }
             if (Class51.anInt1197 == 10) {
                 Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775.drawImage(0, 0);
-                if (Class26.anInt622 == 0) {
+                if (Class26.loginScreenState == 0) {
                     int i = 80;
                     int i_94_ = 100;
                     arg1.drawShadowedStringCenter(Main.aClass1_1761, 180, i, 16776960, true);
@@ -365,7 +358,7 @@ public class WallDecoration {
                     i_94_ = 260;
                     Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(i_94_ - 73, i_95_ + -20);
                     arg1.drawText(Class42.aClass1_1011, -73 + i_94_, -20 + i_95_, 144, 40, 16777215, true, 1, 1, 0);
-                } else if (Class26.anInt622 == 2) {
+                } else if (Class26.loginScreenState == 2) {
                     int i = 40;
                     int i_90_ = 100;
                     arg1.drawShadowedStringCenter(Class22_Sub2.aClass1_1879, 180, i, 16776960, true);
@@ -376,16 +369,16 @@ public class WallDecoration {
                     arg1.drawShadowedStringCenter(Class22_Sub2.aClass1_1881, 180, i, 16776960, true);
                     i += 15;
                     i += 10;
-                    arg1.drawShadowedString(Class61.aClass1_1422 + Native.username + (Node.pulseCycle % 40 < 20 & Node.currentLoginInputLine == 0 ? Class40_Sub5_Sub6.aClass1_2447 : Native.string_blank), 90, i, true, 16777215);
+                    arg1.drawShadowedString(Class61.aClass1_1422 + Native.username + (Node.pulseCycle % 40 < 20 & Node.loginScreenFocus == 0 ? Class40_Sub5_Sub6.aClass1_2447 : Native.string_blank), 90, i, true, 16777215);
                     i += 15;
-                    arg1.drawShadowedString(English.password + Native.password.method61() + (Node.pulseCycle % 40 < 20 & Node.currentLoginInputLine == 1 ? Class40_Sub5_Sub6.aClass1_2447 : Native.string_blank), 92, i, true, 16777215);
+                    arg1.drawShadowedString(English.password + Native.password.method61() + (Node.pulseCycle % 40 < 20 & Node.loginScreenFocus == 1 ? Class40_Sub5_Sub6.aClass1_2447 : Native.string_blank), 92, i, true, 16777215);
                     Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
                     i += 15;
                     arg1.drawShadowedStringCenter(VarbitDefinition.aClass1_2351, i_90_, i_91_ + 5, 16777215, true);
                     i_90_ = 260;
                     Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
                     arg1.drawShadowedStringCenter(Class68.str_Cancel, i_90_, 5 + i_91_, 16777215, true);
-                } else if (Class26.anInt622 == 3) {
+                } else if (Class26.loginScreenState == 3) {
                     arg1.drawShadowedStringCenter(Class67.aClass1_1598, 180, 40, 16776960, true);
                     int i = 180;
                     int i_92_ = 150;
@@ -434,10 +427,8 @@ public class WallDecoration {
         aClass1_1243 = null;
         aClass1_1251 = null;
         aClass1_1266 = null;
-        aClass1_1255 = null;
         aClass9_1264 = null;
         aClass1_1259 = null;
         ignores = null;
-        aClass1_1260 = null;
     }
 }

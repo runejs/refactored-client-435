@@ -35,10 +35,9 @@ public class Class40_Sub5_Sub6 extends SubNode {
     public static int currentCameraPositionH;
     public static String aClass1_2438 = "scroll:";
     public static Cache aClass9_2439 = new Cache(64);
-    public static RSString aClass1_2440 = RSString.CreateString("Enter name:");
     public static int cameraY;
-    public static RSString aClass1_2446 = aClass1_2440;
-    public static RSString aClass1_2447 = RSString.CreateString("@yel@*V");
+    public static String aClass1_2446 = "Enter name:";
+    public static String aClass1_2447 = "@yel@|";
     public static int anInt2451 = 0;
     public static int anInt2452 = 0;
     public static String aClass1_2458 = "From";
@@ -60,7 +59,6 @@ public class Class40_Sub5_Sub6 extends SubNode {
         aClass1_2462 = null;
         aClass9_2439 = null;
         aClass1_2460 = null;
-        aClass1_2440 = null;
     }
 
     public static boolean drawInterface(int arg0, int arg1, int arg2, byte arg3, int arg4, int arg5, int arg6) {

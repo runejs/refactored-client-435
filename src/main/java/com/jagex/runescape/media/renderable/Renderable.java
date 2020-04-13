@@ -14,16 +14,13 @@ public abstract class Renderable extends SubNode {
     public static long aLong2858 = 0L;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2860;
     public static String aClass1_2862 ="@cya@";
-    public static RSString aClass1_2864;
+    public static String aClass1_2864 =" from your friend list first";
     public static int[] anIntArray2865;
     public static int anInt2866;
     public static int anInt2869;
-    public static RSString aClass1_2870;
 
     static {
         anInt2869 = 0;
-        aClass1_2870 = RSString.CreateString(" from your friend list first");
-        aClass1_2864 = aClass1_2870;
     }
 
     public int modelHeight = 1000;
@@ -76,7 +73,6 @@ public abstract class Renderable extends SubNode {
         ChatBox.chatPlayerNames = null;
         aClass40_Sub5_Sub14_Sub2_2860 = null;
         aClass6_Sub1_2857 = null;
-        aClass1_2870 = null;
         anIntArray2865 = null;
         aClass1_2862 = null;
         aClass1_2864 = null;

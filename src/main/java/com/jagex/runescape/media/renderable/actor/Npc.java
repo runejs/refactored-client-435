@@ -33,7 +33,7 @@ public class Npc extends Actor {
     public static Scene currentScene;
     public static int[] anIntArray3304 = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
     public static String aClass1_3305 = "Connection lost";
-    public static RSString aClass1_3311 = RSString.CreateString("On");
+    public static String aClass1_3311 = "On";
     public static int[] anIntArray3312;
     public ActorDefinition actorDefinition;
 

@@ -12,8 +12,7 @@ public class Class34 {
     public static HashTable aClass23_805;
     public static int anInt813 = 0;
     public static String aClass1_817 = "Press 'recover a locked account' on front page.";
-    public static RSString aClass1_826 = RSString.CreateString("Click to continue");
-    public static RSString aClass1_829 = aClass1_826;
+    public static String aClass1_829 = "Click to continue";
     public static HashTable aClass23_841 = new HashTable(4096);
     public static int anInt848 = 0;
     public static int currentCameraPositionV;
@@ -108,7 +107,6 @@ public class Class34 {
     }
 
     public static void method418() {
-        aClass1_826 = null;
         aClass1_817 = null;
         aClass9_851 = null;
         aClass23_841 = null;

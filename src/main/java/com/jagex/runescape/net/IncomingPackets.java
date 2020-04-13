@@ -116,8 +116,9 @@ public class IncomingPackets {
             RSString.anInt1690 = incomingPacket;
             if(incomingPacket == 71) {
                 long l = incomingPacketBuffer.getLongBE();
-                RSString class1 = KeyFocusListener.method956(82, incomingPacketBuffer).method53();
-                Class44.addChatMessage(Class60.method991(-42, l).method85().toString(), class1.toString(), 6);
+                String class1 = RSString.method53(KeyFocusListener.method956(82, incomingPacketBuffer));
+
+                Class44.addChatMessage(Class60.method991(-42, l).method85().toString(), class1, 6);
                 incomingPacket = -1;
                 return true;
             }
@@ -993,7 +994,7 @@ public class IncomingPackets {
                 if(!bool && !Class4.inTutorialIsland) {
                     Class40_Sub5_Sub13.aLongArray2757[Class40_Sub3.anInt2021] = chatId;
                     Class40_Sub3.anInt2021 = (1 + Class40_Sub3.anInt2021) % 100;
-                    RSString class1 = KeyFocusListener.method956(67, incomingPacketBuffer).method53();
+                    String class1 = RSString.method53(KeyFocusListener.method956(67, incomingPacketBuffer));
                     if(fromPlayerRights == 2 || fromPlayerRights == 3)
                         Class44.addChatMessage(Widget.goldCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), class1.toString(), 7);
                     else if(fromPlayerRights == 1)

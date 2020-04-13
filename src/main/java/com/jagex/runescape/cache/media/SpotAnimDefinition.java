@@ -25,14 +25,14 @@ import java.net.Socket;
 
 public class SpotAnimDefinition extends SubNode {
     public static ImageRGB minimapEdge;
-    public static RSString str_prefix_level = RSString.CreateString("level-");
+    public static String str_prefix_level = "level-";
     public static String cmd_noclip = "::noclip";
     public static String aClass1_2294 = "Loading textures - ";
     public static String aClass1_2297 = "Loaded input handler";
     public static Class67 aClass67_2298;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2301;
     public static int mouseButtonPressed = 0;
-    public static RSString aClass1_2306 = RSString.CreateString(" -> @yel@");
+    public static String aClass1_2306 = " -> @yel@";
     public static int baseX;
 
     public int animationId;

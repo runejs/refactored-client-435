@@ -16,8 +16,7 @@ public class Cache {
     public static String aClass1_327 = "@or1@";
     public static CacheIndex aCacheIndex_329;
     public static boolean redrawChatbox = false;
-    public static RSString aClass1_332 = RSString.CreateString("Classic");
-    public static RSString aClass1_333 = aClass1_332;
+    public static String aClass1_333 = "Classic";
 
     public SubNode aClass40_Sub5_309 = new SubNode();
     public int anInt316;
@@ -46,7 +45,6 @@ public class Cache {
     public static void method234() {
         dropStringInstance = null;
         aClass1_333 = null;
-        aClass1_332 = null;
         IncomingPackets.incomingPacketBuffer = null;
         aClass9_326 = null;
         aCacheIndex_329 = null;

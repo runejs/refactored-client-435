@@ -108,32 +108,6 @@ public class RSString implements Interface1 {
         return string;
     }
 
-    public static RSString linkRSStrings(RSString[] arg1) {
-        if(arg1.length < 2)
-            throw new IllegalArgumentException();
-        return method627(arg1.length, 0, arg1);
-    }
-
-    public static RSString method627(int arg1, int arg2, RSString[] string) {
-        int i = 0;
-        for(int i_3_ = 0; i_3_ < arg1; i_3_++) {
-            if(string[arg2 + i_3_] == null) {
-                string[i_3_ + arg2] = GameShell.aClass1_28;
-            }
-            i += string[i_3_ + arg2].length;
-        }
-        byte[] is = new byte[i];
-        int i_4_ = 0;
-        for(int i_5_ = 0; i_5_ < arg1; i_5_++) {
-            RSString class1 = string[arg2 + i_5_];
-            Class18.method278(class1.chars, 0, is, i_4_, class1.length);
-            i_4_ += class1.length;
-        }
-        RSString class1 = new RSString();
-        class1.length = i;
-        class1.chars = is;
-        return class1;
-    }
 
     public RSString substring(int arg1) {
         return substring(arg1, length);
@@ -169,6 +143,29 @@ public class RSString implements Interface1 {
                 bool = true;
         }
         return class1;
+    }
+
+
+    public static String method53(String str) {
+        int length = str.length();
+        byte[] chars = new byte[length];
+        boolean bool = true;
+        for(int i = 0; i < str.length(); i++) {
+            byte i_0_ = (byte) str.charAt(i);
+            if(i_0_ >= 97 && i_0_ <= 122 || i_0_ >= -32 && i_0_ <= -2 && i_0_ != -9) {
+                if(bool)
+                    i_0_ -= 32;
+                bool = false;
+            } else if(i_0_ >= 65 && i_0_ <= 90 || i_0_ >= -64 && i_0_ <= -34 && i_0_ != -41) {
+                if(!bool)
+                    i_0_ += 32;
+                bool = false;
+            }
+            chars[i] = i_0_;
+            if(i_0_ == 46 || i_0_ == 33 || i_0_ == 63)
+                bool = true;
+        }
+        return new String(chars);
     }
 
     public boolean equals(RSString str) {

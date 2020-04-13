@@ -9,9 +9,9 @@ public class Node {
     public static String aClass1_932 = "@gr2@";
     public static int anInt938 = 500;
     public static String aClass1_940 = "white:";
-    public static int currentLoginInputLine = 0;
+    public static int loginScreenFocus = 0;
     public static String requestcmd_chalreq = ":chalreq:";
-    public static RSString aClass1_975 = RSString.CreateString(".");
+    public static String aClass1_975 = ".";
 
     public long key;
     public Node aClass40_950;

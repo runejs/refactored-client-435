@@ -18,7 +18,7 @@ public class HashTable {
     public static int anInt554 = 0;
     public static int anInt564;
     public static boolean aBoolean565 = false;
-    public static RSString aClass1_569 = RSString.CreateString(" (X");
+    public static String aClass1_569 = " (";
     public static boolean aBoolean571;
     public static int anInt573 = -1;
     public long aLong550;

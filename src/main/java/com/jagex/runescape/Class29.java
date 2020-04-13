@@ -12,7 +12,7 @@ public class Class29 {
     public static String aClass1_670 = "@or3@";
     public static String aClass1_671 ="mapscene";
     public static int tabAreaOverlayWidgetId = -1;
-    public static RSString aClass1_674 = RSString.CreateString(" x");
+    public static String aClass1_674 = " x";
     public static Class64 aClass64_676;
     public static int anInt678 = 0;
 

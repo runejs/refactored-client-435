@@ -20,7 +20,7 @@ public abstract class Class38 {
     public static String aClass1_890 = "%1";
     public static int anInt892;
     public static boolean aBoolean893 = false;
-    public static RSString aClass1_894 = RSString.CreateString(" ->");
+    public static String aClass1_894 = " ->";
 
     public static void method439() {
         aClass1_882 = null;

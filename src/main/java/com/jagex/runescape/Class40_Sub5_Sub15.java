@@ -18,15 +18,10 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public static CacheIndex aCacheIndex_2779;
     public static int systemUpdateTime = 0;
     public static boolean lastItemDragged = false;
-    public static RSString aClass1_2786;
+    public static String aClass1_2786 = "Friends";
     public static String aClass1_2787 = "sideicons";
     public static int[] anIntArray2788 = new int[]{16, 32, 64, 128};
-    public static RSString aClass1_2790 = RSString.CreateString("Friends");
     public static int anInt2791 = -8 + (int) (17.0 * Math.random());
-
-    static {
-        aClass1_2786 = aClass1_2790;
-    }
 
     public FrameDefinition[] aFrameDefinitionArray2794;
 
@@ -60,7 +55,6 @@ public class Class40_Sub5_Sub15 extends SubNode {
 
     public static void method734() {
         aClass40_Sub5_Sub14_Sub2_2775 = null;
-        aClass1_2790 = null;
         aClass40_Sub5_Sub14_Sub2Array2776 = null;
         anIntArray2777 = null;
         aClass1_2787 = null;

@@ -7,11 +7,11 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 public class Class40_Sub5_Sub11 extends SubNode {
     public static String aClass1_2620 = "yellow:";
     public static int anInt2621 = 0;
-    public static RSString aClass1_2622 = RSString.CreateString("Hide");
+    public static String aClass1_2622 = "Hide";
     public static volatile int eventClickY = 0;
     public static int[] tabWidgetIds = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
     public static int anInt2628 = 0;
-    public static RSString aClass1_2629 = RSString.CreateString("button near the top of that page.");
+    public static String aClass1_2629 = "button near the top of that page.";
     public static volatile boolean clearScreen = true;
 
     public int anInt2633 = 0;

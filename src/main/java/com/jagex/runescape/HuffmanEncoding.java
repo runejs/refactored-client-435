@@ -22,11 +22,11 @@ import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.Wall;
 
 public class HuffmanEncoding {
-    public static RSString blank_string = RSString.CreateString("");
+    public static String blank_string = "";
     public static Class68 aClass68_1541;
-    public static RSString aClass1_1544 = RSString.CreateString("Side panel redrawn");
+    public static String aClass1_1544 = "Side panel redrawn";
     public static int anInt1545 = 0;
-    public static RSString aClass1_1546 = RSString.CreateString("Icons redrawn");
+    public static String aClass1_1546 = "Icons redrawn";
     public static int reportAbuseInterfaceID = -1;
     public static String reportedName = "";
     public static String str_Connecting_to_friendserver = "Connecting to friendserver";
@@ -139,7 +139,7 @@ public class HuffmanEncoding {
             if (actorDefinition != null && actorDefinition.isClickable) {
                 String class1 = actorDefinition.name;
                 if (actorDefinition.combatLevel != 0)
-                    class1 = class1 + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + HashTable.aClass1_569 + SpotAnimDefinition.str_prefix_level + HashTable.intToStr(actorDefinition.combatLevel) + Class51.aClass1_1199;
+                    class1 = class1 + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + HashTable.aClass1_569 + SpotAnimDefinition.str_prefix_level + actorDefinition.combatLevel + Class51.aClass1_1199;
                 if (Class8.itemSelected == 1) {
                     OverlayDefinition.addActionRow(Main.aClass1_1763, index, x, y, 49, Npc.aClass1_3295 + SpotAnimDefinition.aClass1_2306 + class1);
                 } else if (Main.widgetSelected == 1) {
@@ -201,7 +201,7 @@ public class HuffmanEncoding {
         return arg0 >= 48 && arg0 <= 57;
     }
 
-    public static ImageRGB method1028(CacheIndex arg0, String arg1, byte arg2, RSString arg3) {
+    public static ImageRGB method1028(CacheIndex arg0, String arg1, byte arg2, String arg3) {
         int i = arg0.getHash(arg1);
         int i_13_ = arg0.method179(i, arg3);
         if (arg2 != 21)

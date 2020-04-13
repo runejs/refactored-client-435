@@ -16,13 +16,13 @@ import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 
 public class Class33 {
-    public static RSString aClass1_777 = RSString.CreateString("Cabbage");
+    public static String aClass1_777 = "Cabbage";
     public static Cache aClass9_778 = new Cache(64);
     public static String aClass1_783 = "Loading config - ";
     public static int anInt784 = 0;
     public static String cmd_prefix = "::";
     public static int[] selectedMenuActions = new int[500];
-    public static RSString aClass1_795 = RSString.CreateString(",");
+    public static String aClass1_795 = ",";
     public static String aClass1_799 = "No response from server.";
 
 
@@ -140,8 +140,8 @@ public class Class33 {
                                     Class44.anInt1048 -= 10;
                                 }
                                 AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474[actor.anIntArray3086[i_2_]].drawImage(ISAAC.anInt522 + -12, -12 + Class44.anInt1048);
-                                Class40_Sub5_Sub17_Sub6.fontSmall.drawStringLeft(HashTable.intToStr(actor.anIntArray3087[i_2_]), ISAAC.anInt522, 4 + Class44.anInt1048, 0);
-                                Class40_Sub5_Sub17_Sub6.fontSmall.drawStringLeft(HashTable.intToStr(actor.anIntArray3087[i_2_]), ISAAC.anInt522 - 1, Class44.anInt1048 + 3, 16777215);
+                                Class40_Sub5_Sub17_Sub6.fontSmall.drawStringLeft(Integer.toString(actor.anIntArray3087[i_2_]), ISAAC.anInt522, 4 + Class44.anInt1048, 0);
+                                Class40_Sub5_Sub17_Sub6.fontSmall.drawStringLeft(Integer.toString(actor.anIntArray3087[i_2_]), ISAAC.anInt522 - 1, Class44.anInt1048 + 3, 16777215);
                             }
                         }
                     }
@@ -363,7 +363,7 @@ public class Class33 {
         Class22_Sub2.aClass1_1879 = arg1;
     }
 
-    public static synchronized void method412(boolean arg0, CacheIndex arg1, int arg2, byte arg3, String arg4, int arg5, RSString arg6, int arg7) {
+    public static synchronized void method412(boolean arg0, CacheIndex arg1, int arg2, byte arg3, String arg4, int arg5, String arg6, int arg7) {
         if(Class24.method340()) {
             if(arg3 != 66)
                 method412(false, null, 120, (byte) -44, null, 71, null, -13);

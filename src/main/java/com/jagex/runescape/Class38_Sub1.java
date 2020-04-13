@@ -22,7 +22,7 @@ import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
 
 public class Class38_Sub1 extends Class38 {
-    public static RSString aClass1_1905 = RSString.CreateString(" has logged out.");
+    public static String aClass1_1905 = " has logged out.";
     public static int[] anIntArray1909 = new int[99];
     public static int[] anIntArray1916 = new int[50];
     public static String aClass1_1917 = "Attack";

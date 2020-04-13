@@ -19,7 +19,6 @@ public class HelpCommand extends Command {
         commands.forEach(command -> {
             console.log(command.getPrintableHelp());
         });
-        console.log(RSString.CreateString("\"(Q\" \"(R\" \"+R\" \"(T\"").toString());
 
 //        printConsoleMessage("<col=00FF00>search [item | npc | object] [name]</col> - <col=FFFF00>Returns list of results</col>", false);
     }

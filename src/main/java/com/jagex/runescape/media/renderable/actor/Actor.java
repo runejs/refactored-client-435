@@ -31,9 +31,8 @@ public abstract class Actor extends Renderable {
     public static int anInt3151 = -16 + (int) (Math.random() * 33.0);
     public static Signlink aClass31_3152;
     public static int actorUpdatingIndex = 0;
-    public static RSString aClass1_3155 = RSString.CreateString("Please wait - attempting to reestablish");
     public static CacheIndex_Sub1 aClass6_Sub1_3157;
-    public static RSString aClass1_3159 = aClass1_3155;
+    public static String aClass1_3159 = "Please wait - attempting to reestablish";
 
     public boolean[] aBooleanArray3072;
     public int anInt3073;
@@ -281,7 +280,6 @@ public abstract class Actor extends Renderable {
         ChatBox.chatMessages = null;
         Player.trackedPlayers = null;
         aCacheIndex_3150 = null;
-        aClass1_3155 = null;
         aCacheIndex_3144 = null;
         aClass31_3152 = null;
         anIntArray3111 = null;

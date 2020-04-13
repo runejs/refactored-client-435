@@ -25,7 +25,7 @@ public class GroundItemTile {
     public static CacheIndex aCacheIndex_1375;
     public static int walkableWidgetId = -1;
     public static byte[][] aByteArrayArray1377 = new byte[1000][];
-    public static RSString aClass1_1378 = RSString.CreateString("Chat panel redrawn");
+    public static String aClass1_1378 = "Chat panel redrawn";
     public static int[] varbitmasks = new int[2000];
 
     public Renderable firstGroundItem;

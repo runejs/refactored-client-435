@@ -6,14 +6,13 @@ import com.jagex.runescape.util.Signlink;
 
 public class Class39 implements Runnable {
     public static int anInt901;
-    public static RSString aClass1_904 = RSString.CreateString(" more options");
+    public static String aClass1_904 = " more options";
     public static boolean aBoolean906 = false;
     public static Class68 aClass68_907;
     public static Class68 aClass68_908;
     public static int anInt909 = 0;
-    public static RSString aClass1_910;
     public static int anInt912 = 20;
-    public static RSString aClass1_917 = RSString.CreateString(" from your ignore list first");
+    public static String aClass1_917 = " from your ignore list first";
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_918;
     public static String str_ok = "Ok";
     public Object objectLock;
@@ -82,7 +81,6 @@ public class Class39 implements Runnable {
         aClass1_904 = null;
         str_ok = null;
         aClass68_908 = null;
-        aClass1_910 = null;
     }
 
     public void run() {

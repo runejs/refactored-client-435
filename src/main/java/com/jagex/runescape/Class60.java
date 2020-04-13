@@ -31,15 +31,15 @@ public class Class60 {
 
     public static int method988(CacheIndex arg0, CacheIndex arg1) {
         int i = 0;
-        if(arg0.method194(SceneCluster.aClass1_772, Native.string_blank, -1234))
+        if(arg0.method194(SceneCluster.aClass1_772, "", -1234))
             i++;
-        if(arg1.method194(Main.aClass1_1762, Native.string_blank, -1234))
+        if(arg1.method194(Main.aClass1_1762, "", -1234))
             i++;
-        if(arg1.method194(AnimationSequence.aClass1_2488, Native.string_blank, -1234))
+        if(arg1.method194(AnimationSequence.aClass1_2488, "", -1234))
             i++;
-        if(arg1.method194(ISAAC.aClass1_506, Native.string_blank, -1234))
+        if(arg1.method194(ISAAC.aClass1_506, "", -1234))
             i++;
-        if(arg1.method194(Class8.aClass1_299, Native.string_blank, -1234))
+        if(arg1.method194(Class8.aClass1_299, "", -1234))
             i++;
         return i;
     }
@@ -156,45 +156,45 @@ public class Class60 {
         Class40_Sub6.method836(1);
         if(Class51.anInt1197 == 10) {
             int i = Class57.clickX + -202;
-            int i_11_ = MouseHandler.clickType;
-            int i_12_ = -171 + RSString.clickY;
+            int clickType = MouseHandler.clickType;
+            int clickY = -171 + RSString.clickY;
             int i_13_ = -58 % ((-38 - arg0) / 59);
-            if(Class26.anInt622 == 0) {
+            if(Class26.loginScreenState == 0) {
                 int i_14_ = 100;
                 int i_15_ = 120;
-                if(i_11_ == 1 && i >= i_14_ - 75 && i_14_ + 75 >= i && i_12_ >= -20 + i_15_ && i_15_ + 20 >= i_12_) {
-                    Node.currentLoginInputLine = 0;
-                    Class26.anInt622 = 3;
+                if(clickType == 1 && i >= i_14_ - 75 && i_14_ + 75 >= i && clickY >= -20 + i_15_ && i_15_ + 20 >= clickY) {
+                    Node.loginScreenFocus = 0;
+                    Class26.loginScreenState = 3;
                 }
                 i_14_ = 260;
-                if(i_11_ == 1 && i >= -75 + i_14_ && i <= 75 + i_14_ && i_12_ >= -20 + i_15_ && 20 + i_15_ >= i_12_) {
-                    Class26.anInt622 = 2;
-                    Node.currentLoginInputLine = 0;
+                if(clickType == 1 && i >= -75 + i_14_ && i <= 75 + i_14_ && clickY >= -20 + i_15_ && 20 + i_15_ >= clickY) {
+                    Class26.loginScreenState = 2;
+                    Node.loginScreenFocus = 0;
                     Class22_Sub2.aClass1_1879 = "";
                     Class22_Sub2.aClass1_1896 = English.enterYourUsernameAndPassword;
                     Class22_Sub2.aClass1_1881 = "";
                 }
-            } else if(Class26.anInt622 == 2) {
-                int i_16_ = 60;
-                int i_17_ = 100;
-                i_16_ += 30;
-                if(i_11_ == 1 && -15 + i_16_ <= i_12_ && i_12_ < i_16_)
-                    Node.currentLoginInputLine = 0;
+            } else if(Class26.loginScreenState == 2) {
+                int y = 60;
+                int clickX = 100;
+                y += 30;
+                if(clickType == 1 && -15 + y <= clickY && clickY < y)
+                    Node.loginScreenFocus = 0;
                 int i_18_ = 150;
-                i_16_ += 15;
-                if(i_11_ == 1 && -15 + i_16_ <= i_12_ && i_16_ > i_12_)
-                    Node.currentLoginInputLine = 1;
-                i_16_ += 15;
-                if(i_11_ == 1 && i_17_ + -75 <= i && i <= i_17_ + 75 && i_12_ >= i_18_ + -20 && i_12_ <= i_18_ + 20) {
+                y += 15;
+                if(clickType == 1 && -15 + y <= clickY && y > clickY)
+                    Node.loginScreenFocus = 1;
+                y += 15;
+                if(clickType == 1 && clickX + -75 <= i && i <= clickX + 75 && clickY >= i_18_ + -20 && clickY <= i_18_ + 20) {
                     Native.username = Native.username.method62().method85();
                     Class33.method411("", "", Class40_Sub5_Sub17_Sub1.aClass1_3009);
                     OverlayDefinition.method559(20);
                 } else {
-                    i_17_ = 260;
-                    if(i_11_ == 1 && i >= -75 + i_17_ && i_17_ + 75 >= i && i_12_ >= -20 + i_18_ && i_12_ <= i_18_ + 20) {
+                    clickX = 260;
+                    if(clickType == 1 && i >= -75 + clickX && clickX + 75 >= i && clickY >= -20 + i_18_ && clickY <= i_18_ + 20) {
                         Native.username = Configuration.getUsername();
                         Native.password = Configuration.getPassword();
-                        Class26.anInt622 = 0;
+                        Class26.loginScreenState = 0;
                     }
                     while(Class34.method416((byte) -104)) {
                         boolean bool = false;
@@ -204,18 +204,18 @@ public class Class60 {
                                 break;
                             }
                         }
-                        if(Node.currentLoginInputLine == 0) {
+                        if(Node.loginScreenFocus == 0) {
                             if(ItemDefinition.anInt2854 == 85 && Native.username.length() > 0)
                                 Native.username = Native.username.substring(0, -1 + Native.username.length());
                             if(ItemDefinition.anInt2854 == 84 || ItemDefinition.anInt2854 == 80)
-                                Node.currentLoginInputLine = 1;
+                                Node.loginScreenFocus = 1;
                             if(bool && Native.username.length() < 12)
                                 Native.username = Native.username.addChar(Class59.anInt1388);
-                        } else if(Node.currentLoginInputLine == 1) {
+                        } else if(Node.loginScreenFocus == 1) {
                             if(ItemDefinition.anInt2854 == 85 && Native.password.length() > 0)
                                 Native.password = Native.password.substring(0, Native.password.length() + -1);
                             if(ItemDefinition.anInt2854 == 80)
-                                Node.currentLoginInputLine = 0;
+                                Node.loginScreenFocus = 0;
                             if(ItemDefinition.anInt2854 == 84) {
                                 Native.username = Native.username.method62().method85();
                                 Class33.method411("", "", Class40_Sub5_Sub17_Sub1.aClass1_3009);
@@ -226,11 +226,11 @@ public class Class60 {
                         }
                     }
                 }
-            } else if(Class26.anInt622 == 3) {
+            } else if(Class26.loginScreenState == 3) {
                 int i_20_ = 150;
                 int i_21_ = 180;
-                if(i_11_ == 1 && i >= -75 + i_21_ && 75 + i_21_ >= i && -20 + i_20_ <= i_12_ && 20 + i_20_ >= i_12_)
-                    Class26.anInt622 = 0;
+                if(clickType == 1 && i >= -75 + i_21_ && 75 + i_21_ >= i && -20 + i_20_ <= clickY && 20 + i_20_ >= clickY)
+                    Class26.loginScreenState = 0;
             }
         }
     }

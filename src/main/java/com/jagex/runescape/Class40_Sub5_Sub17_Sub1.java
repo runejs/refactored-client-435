@@ -29,31 +29,20 @@ import com.jagex.runescape.scene.util.CollisionMap;
 import java.awt.*;
 
 public class Class40_Sub5_Sub17_Sub1 extends Renderable {
-    public static RSString aClass1_2963 = RSString.CreateString("Feb");
-    public static RSString[] aClass1Array2964;
-    public static RSString aClass1_2965 = RSString.CreateString("Oct");
-    public static RSString aClass1_2966 = RSString.CreateString("Sep");
-    public static RSString aClass1_2967 = RSString.CreateString("Dec");
-    public static RSString aClass1_2969 = RSString.CreateString("Aug");
+
+    public static String[] aClass1Array2964 = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+
     public static boolean[] aBooleanArray2975 = new boolean[5];
     public static int menuScreenArea;
-    public static RSString aClass1_2985 = RSString.CreateString("Jun");
     public static int[] directions = new int[]{768, 1024, 1280, 512, 1536, 256, 0, 1792};
-    public static RSString aClass1_2988 = RSString.CreateString("Nov");
-    public static RSString aClass1_2990 = RSString.CreateString("Mar");
-    public static RSString aClass1_2991 = RSString.CreateString("Jul");
-    public static RSString aClass1_2998 = RSString.CreateString("May");
+
     public static int atInventoryInterfaceType = 0;
     public static CacheIndex_Sub1 aClass6_Sub1_3000;
     public static int anInt3004;
     public static String aClass1_3009 = "Connecting to server...";
-    public static RSString aClass1_3012 = RSString.CreateString("Jan");
-    public static RSString aClass1_3014 = RSString.CreateString("Loading wordpack - ");
-    public static RSString aClass1_3015 = RSString.CreateString("Apr");
 
-    static {
-        aClass1Array2964 = new RSString[]{aClass1_3012, aClass1_2963, aClass1_2990, aClass1_3015, aClass1_2998, aClass1_2985, aClass1_2991, aClass1_2969, aClass1_2966, aClass1_2965, aClass1_2988, aClass1_2967};
-    }
+    public static String aClass1_3014 = "Loading wordpack - ";
+
 
     public int anInt2957;
     public int anInt2958;
@@ -123,23 +112,9 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
 
     public static void method761() {
         aClass1Array2964 = null;
-        aClass1_2966 = null;
-        aClass1_2963 = null;
         aClass6_Sub1_3000 = null;
         aBooleanArray2975 = null;
-        aClass1_2990 = null;
-        aClass1_2991 = null;
-        aClass1_3012 = null;
-        aClass1_2985 = null;
-        aClass1_2969 = null;
-        aClass1_2965 = null;
-        aClass1_3014 = null;
         directions = null;
-        aClass1_3015 = null;
-        aClass1_2967 = null;
-        aClass1_2998 = null;
-        aClass1_2988 = null;
-        aClass1_3009 = null;
     }
 
     public static void method762(Actor actor) {

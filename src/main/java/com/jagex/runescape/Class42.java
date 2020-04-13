@@ -11,7 +11,7 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.PacketBuffer;
 
 public class Class42 {
-    public static RSString aClass1_988 = RSString.CreateString(" has logged in.");
+    public static String aClass1_988 = " has logged in.";
     public static byte[][][] tile_underlayids;
     public static String aClass1_997 = "Unable to connect.";
     public static Cache aClass9_998 = new Cache(100);
@@ -21,7 +21,7 @@ public class Class42 {
     public static int anInt1006 = 0;
     public static int anInt1008 = 0;
     public static int anInt1010 = 2;
-    public static RSString aClass1_1011 = RSString.CreateString("Existing user");
+    public static String aClass1_1011 = "Existing user";
     public static int[] anIntArray1013;
 
     public int[] anIntArray996;

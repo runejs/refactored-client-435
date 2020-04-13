@@ -1,11 +1,15 @@
 package com.jagex.runescape.util;
 
+import com.jagex.runescape.io.Buffer;
+
 public class TextUtils {
 
+	private static char[] message = new char[100];
 
 	public static final char VALID_CHARACTERS[] = { '_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
 			'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6',
 			'7', '8', '9' };
+
 	
 	public static long nameToLong(String name) {
 		long longName = 0L;
@@ -81,7 +85,6 @@ public class TextUtils {
 			censoredPassword.append("*");
 		return censoredPassword.toString();
 	}
-
 
 
 }

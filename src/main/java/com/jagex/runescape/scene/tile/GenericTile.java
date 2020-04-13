@@ -18,15 +18,14 @@ import com.jagex.runescape.scene.util.CollisionMap;
 import java.awt.*;
 
 public class GenericTile {
-    public static RSString aClass1_1213 = RSString.CreateString(" @whi@(X");
+    public static String aClass1_1213 = " @whi@(X";
     public static int anInt1214 = 0;
     public static volatile boolean aBoolean1215 = true;
-    public static RSString aClass1_1216 = RSString.CreateString("New User");
     public static byte[][] objectData;
     public static String aClass1_1218 = "Connection timed out.";
     public static int fps = 0;
     public static int anInt1222 = 0;
-    public static RSString aClass1_1223 = aClass1_1216;
+    public static String aClass1_1223 = "New User";
     public static String aClass1_1230 = "headicons_hint";
     public static int anInt1233 = 0;
 
@@ -150,7 +149,6 @@ public class GenericTile {
         aClass1_1223 = null;
         objectData = null;
         aClass1_1218 = null;
-        aClass1_1216 = null;
         aClass1_1230 = null;
     }
 
