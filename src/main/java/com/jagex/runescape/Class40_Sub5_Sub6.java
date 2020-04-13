@@ -291,7 +291,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                     ChatBox.redrawChatbox = true;
                 }
                 if (ItemDefinition.anInt2854 == 84 && ChatBox.chatboxInput.length() > 0) {
-                    if (true) {
+                    if (InteractiveObject.playerRights > 1) {
                         if (ChatBox.chatboxInput.equals(GroundItemTile.cmd_clientdrop))
                             Class59.dropClient(2578);
                         if (ChatBox.chatboxInput.equals(Class40_Sub3.cmd_fpson)) {

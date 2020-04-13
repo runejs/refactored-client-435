@@ -76,12 +76,12 @@ public class Class64 implements Runnable {
     public static void method1013() {
         int lasthash = -1;
         if (Class8.itemSelected == 0 && Main.widgetSelected == 0) {
-            String examineText = "";
+            String tileCoords = "";
             if (Configuration.DEBUG_CONTEXT) {
-                examineText = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Scene.hoveredTileX + SpotAnimDefinition.baseX), Integer.toString(Scene.hoveredTileY + Class26.baseY));
+                tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Scene.hoveredTileX + SpotAnimDefinition.baseX), Integer.toString(Scene.hoveredTileY + Class26.baseY));
             }
 
-            OverlayDefinition.addActionRow(English.walkHere, 0, Class13.mouseX, Landscape.mouseY, 7, examineText);
+            OverlayDefinition.addActionRow(English.walkHere, 0, Class13.mouseX, Landscape.mouseY, 7, tileCoords);
         }
 
         for (int idx = 0; Model.resourceCount > idx; idx++) {
@@ -122,7 +122,27 @@ public class Class64 implements Runnable {
                                 }
                             }
                         }
-                        OverlayDefinition.addActionRow(English.examine, gameObjectDefinition.id << 14, x, y, 1004, Renderable.aClass1_2862 + gameObjectDefinition.name);
+                        StringBuilder examineText = new StringBuilder();
+                        examineText.append(MessageFormat.format("<col=00ffff>{0}</col>", gameObjectDefinition.name));
+                        if (Configuration.DEBUG_CONTEXT) {
+                            examineText.append(" <col=00ff00>(</col>");
+                            examineText.append(
+                                    MessageFormat.format("<col=ffffff>{0}</col>",
+                                            Integer.toString(gameObjectDefinition.id)
+                                    )
+                            );
+                            examineText.append("<col=00ff00>) (</col>");
+                            examineText.append(
+                                    MessageFormat.format("<col=ffffff>{0}, {1}</col>",
+                                            Integer.toString(x + SpotAnimDefinition.baseX),
+                                            Integer.toString(y + Class26.baseY)
+                                    )
+                            );
+                            examineText.append("<col=00ff00>)</col>");
+
+
+                        }
+                        OverlayDefinition.addActionRow(English.examine, gameObjectDefinition.id << 14, x, y, 1004, examineText.toString());
                     } else if ((ItemDefinition.selectedMask & 0x4) == 4) {
                         OverlayDefinition.addActionRow(Native.aClass1_1918, hash, x, y, 32, FloorDecoration.aClass1_611 + Native.aClass1_2277 + gameObjectDefinition.name);
                     }

@@ -58,6 +58,7 @@ public class Console {
         commands.add(new HelpCommand(this.commands));
         commands.add(new AlphaCommand());
         commands.add(new ClearCommand());
+        commands.add(new DebugCommand());
         commands.add(new EchoCommand());
         commands.add(new PlayerRightsCommand());
         commands.add(new IpCommand());
@@ -187,6 +188,7 @@ public class Console {
     }
 
     public void handleInput() {
+        console.log(ItemDefinition.anInt2854);
         if (Item.obfuscatedKeyStatus[82]) { //CTRL DOWN
             if(ItemDefinition.anInt2854 == 67) { // key v
                 String result = "";
