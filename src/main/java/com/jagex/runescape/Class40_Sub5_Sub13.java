@@ -81,13 +81,4 @@ public class Class40_Sub5_Sub13 extends SubNode {
         }
     }
 
-    public static void method653() {
-        anIntArray2764 = null;
-        aClass40_Sub1_2752 = null;
-        Player.localPlayer = null;
-        aClass40_Sub5_Sub17_Sub5Array2762 = null;
-        aClass40_Sub5_Sub14_Sub4_2765 = null;
-        aLongArray2757 = null;
-        moderatorIcon = null;
-    }
 }

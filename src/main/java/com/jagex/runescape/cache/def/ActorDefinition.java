@@ -191,18 +191,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
         KeyFocusListener.aLinkedList_1278.pushBack(class40_sub11, 92);
     }
 
-    public static void method581() {
-        anIntArray2386 = null;
-        aClass6_Sub1_2377 = null;
-        English.unexpectedServerResponse = null;
-        English.checkingForUpdates = null;
-        aClass1_2423 = null;
-        aClass1_2410 = null;
-        aByteArray2416 = null;
-        aClass1_2401 = null;
-        English.loadedFonts = null;
-        English.moderatorOptionMutePlayerFor48HoursON = null;
-    }
+
 
     public static ActorDefinition getDefinition(int id) {
         ActorDefinition definition = (ActorDefinition) ISAAC.aClass9_510.get(id, (byte) 119);

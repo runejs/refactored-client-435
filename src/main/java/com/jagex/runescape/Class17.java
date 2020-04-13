@@ -4,7 +4,6 @@ import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
-import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -100,13 +99,13 @@ public class Class17 {
                 String class1 = TextUtils.formatName(TextUtils.longToName(arg1));
                 for(int i = 0; i < Class42.anInt1008; i++) {
                     if(arg1 == WallDecoration.ignores[i]) {
-                        Class44.addChatMessage("", class1 + Class68.aClass1_1628, 0);
+                        Class44.addChatMessage("", class1 + English.aClass1_1628, 0);
                         return;
                     }
                 }
                 for(int i = 0; Item.friendsCount > i; i++) {
                     if(Class59.aLongArray1397[i] == arg1) {
-                        Class44.addChatMessage("", Class44.aClass1_1032+ class1 + Renderable.aClass1_2864, 0);
+                        Class44.addChatMessage("", English.aClass1_1032+ class1 + Renderable.aClass1_2864, 0);
                         return;
                     }
                 }
@@ -129,19 +128,8 @@ public class Class17 {
                 i_0_ = Player.trackedPlayerIndices[i];
             Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_0_];
             if(class40_sub5_sub17_sub4_sub1 != null)
-                Class13.method241(class40_sub5_sub17_sub4_sub1, 1, (byte) 107);
+                Class13.method241(class40_sub5_sub17_sub4_sub1, (byte) 107);
         }
     }
 
-    public static void method277() {
-        aClass68_462 = null;
-        aClass9_449 = null;
-        Native.prefixColonZero = null;
-        English.loadingSprites = null;
-        English.asItWasUsedToBreakOurRules = null;
-        aClass68_463 = null;
-        anIntArray456 = null;
-        helveticaBold = null;
-        anIntArray466 = null;
-    }
 }

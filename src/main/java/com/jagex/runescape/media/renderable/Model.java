@@ -667,37 +667,6 @@ public class Model extends Renderable {
         anInt3193 = model.anInt3193;
     }
 
-    public static void method800() {
-        aClass40_Sub5_Sub17_Sub5_3170 = null;
-        anIntArray3192 = null;
-        aClass40_Sub5_Sub17_Sub5_3195 = null;
-        anIntArray3214 = null;
-        aBooleanArray3201 = null;
-        aBooleanArray3224 = null;
-        vertexScreenX = null;
-        vertexScreenY = null;
-        anIntArray3212 = null;
-        anIntArray3225 = null;
-        anIntArray3203 = null;
-        anIntArray3223 = null;
-        anIntArray3200 = null;
-        anIntArrayArray3210 = null;
-        anIntArray3226 = null;
-        anIntArrayArray3208 = null;
-        anIntArray3219 = null;
-        anIntArray3216 = null;
-        anIntArray3221 = null;
-        anIntArray3227 = null;
-        anIntArray3205 = null;
-        anIntArray3222 = null;
-        hoveredHash = null;
-        SINE = null;
-        COSINE = null;
-        anIntArray3202 = null;
-        anIntArray3228 = null;
-        anIntArray3199 = null;
-    }
-
     public static int method816(int arg0, int arg1, int arg2) {
         if((arg2 & 0x2) == 2) {
             if(arg1 < 0)

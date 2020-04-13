@@ -294,9 +294,6 @@ public class Rasterizer extends SubNode {
         }
     }
 
-    public static void method667() {
-        destinationPixels = null;
-    }
 
     public static void drawVerticalLine(int x, int y, int length, int colour) {
         if(x < viewportLeft || x >= viewportRight) {

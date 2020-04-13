@@ -12,6 +12,7 @@ import com.jagex.runescape.cache.media.Widget.WidgetType;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -20,9 +21,6 @@ import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 
 public class Class48 {
-    public static String aClass1_1122 = "RuneScape is loading - please wait...";
-    public static String aClass1_1123 = " ";
-    public static String aClass1_1124 = "Loading title screen - ";
     public static int cameraOffsetY = 0;
     public static int modifiedWidgetId = 0;
     public static Buffer aClass40_Sub1_1132;
@@ -109,13 +107,6 @@ public class Class48 {
         }
     }
 
-    public static void method924() {
-        aClass40_Sub1_1132 = null;
-        aClass1_1123 = null;
-        aClass1_1122 = null;
-        aClass1_1124 = null;
-    }
-
     public static void method925(int arg0, Widget[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11) {
         if(arg2 <= arg8 && arg4 >= arg9 && arg11 > arg8 && arg0 > arg4) {
             for(int i = arg5; arg1.length > i; i++) {
@@ -186,7 +177,7 @@ public class Class48 {
                                             if(Class8.itemSelected != 1 || !widget.isInventory) {
                                                 if(Main.widgetSelected == 1 && widget.isInventory) {
                                                     if((ItemDefinition.selectedMask & 0x10) == 16) {
-                                                        OverlayDefinition.addActionRow(Class38_Sub1.aClass1_1918, itemDefinition.id, i_4_, widget.id, 37, FloorDecoration.aClass1_611 + Class5.aClass1_206 + itemDefinition.name);
+                                                        OverlayDefinition.addActionRow(Native.aClass1_1918, itemDefinition.id, i_4_, widget.id, 37, FloorDecoration.aClass1_611 + Native.aClass1_206 + itemDefinition.name);
                                                     }
                                                 } else {
                                                     String[] class1s = itemDefinition.interfaceOptions;
@@ -247,7 +238,7 @@ public class Class48 {
                                                     OverlayDefinition.addActionRow(English.examine, itemDefinition.id, i_4_, widget.id, 1006, VertexNormal.aClass1_1114 + itemDefinition.name);
                                                 }
                                             } else if(ISAAC.anInt525 != widget.id || i_4_ != LinkedList.anInt1061) {
-                                                OverlayDefinition.addActionRow(Main.aClass1_1763, itemDefinition.id, i_4_, widget.id, 56, Npc.aClass1_3295+ Class5.aClass1_206+ itemDefinition.name);
+                                                OverlayDefinition.addActionRow(Main.aClass1_1763, itemDefinition.id, i_4_, widget.id, 56, Npc.aClass1_3295+ Native.aClass1_206+ itemDefinition.name);
                                             }
                                         }
                                     }

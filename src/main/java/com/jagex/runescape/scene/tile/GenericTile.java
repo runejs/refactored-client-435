@@ -54,25 +54,25 @@ public class GenericTile {
         if(arg4 == 0)
             arg2.drawShadowedStringCenter(Npc.aClass1_3311, 55, 41, 65280, true);
         if(arg4 == 1)
-            arg2.drawShadowedStringCenter(Class40_Sub5_Sub15.aClass1_2786, 55, 41, 16776960, true);
+            arg2.drawShadowedStringCenter(English.aClass1_2786, 55, 41, 16776960, true);
         if(arg4 == 2)
-            arg2.drawShadowedStringCenter(Class30.aClass1_682, 55, 41, 16711680, true);
+            arg2.drawShadowedStringCenter(English.aClass1_682, 55, 41, 16711680, true);
         if(arg4 == 3)
-            arg2.drawShadowedStringCenter(Class40_Sub5_Sub11.aClass1_2622, 55, 41, 65535, true);
+            arg2.drawShadowedStringCenter(English.aClass1_2622, 55, 41, 65535, true);
         arg2.drawShadowedStringCenter(English.privateChat, 184, 28, 16777215, true);
         if(arg3 == 0)
             arg2.drawShadowedStringCenter(Npc.aClass1_3311, 184, 41, 65280, true);
         if(arg3 == 1)
-            arg2.drawShadowedStringCenter(Class40_Sub5_Sub15.aClass1_2786, 184, 41, 16776960, true);
+            arg2.drawShadowedStringCenter(English.aClass1_2786, 184, 41, 16776960, true);
         if(arg3 == 2)
-            arg2.drawShadowedStringCenter(Class30.aClass1_682, 184, 41, 16711680, true);
-        arg2.drawShadowedStringCenter(Class30.aClass1_701, 324, 28, 16777215, true);
+            arg2.drawShadowedStringCenter(English.aClass1_682, 184, 41, 16711680, true);
+        arg2.drawShadowedStringCenter(English.aClass1_701, 324, 28, 16777215, true);
         if(arg0 == 0)
             arg2.drawShadowedStringCenter(Npc.aClass1_3311, 324, 41, 65280, true);
         if(arg0 == 1)
-            arg2.drawShadowedStringCenter(Class40_Sub5_Sub15.aClass1_2786, 324, 41, 16776960, true);
+            arg2.drawShadowedStringCenter(English.aClass1_2786, 324, 41, 16776960, true);
         if(arg0 == 2)
-            arg2.drawShadowedStringCenter(Class30.aClass1_682, 324, 41, 16711680, true);
+            arg2.drawShadowedStringCenter(English.aClass1_682, 324, 41, 16711680, true);
         arg2.drawText(RSString.CreateString(English.reportAbuse), 417, 17, 85, 25, 16777215, true, 1, 1, 0);
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
@@ -144,13 +144,7 @@ public class GenericTile {
         }
     }
 
-    public static void method946() {
-        aClass1_1213 = null;
-        aClass1_1223 = null;
-        objectData = null;
-        aClass1_1218 = null;
-        aClass1_1230 = null;
-    }
+
 
     public static void method947(int arg0) {
         synchronized(CollisionMap.anObject162) {

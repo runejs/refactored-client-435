@@ -3,7 +3,6 @@ package com.jagex.runescape.cache;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
-import com.jagex.runescape.net.IncomingPackets;
 
 public class Cache {
     public static String dropStringInstance = "Drop";
@@ -37,20 +36,11 @@ public class Cache {
     }
 
     public static void method233(boolean arg0) {
-        Class33.aClass9_778.method235((byte) 108);
+        Class33.aClass9_778.method235();
         if(!arg0)
             method236(true, null, null, null);
     }
 
-    public static void method234() {
-        dropStringInstance = null;
-        aClass1_333 = null;
-        IncomingPackets.incomingPacketBuffer = null;
-        aClass9_326 = null;
-        aCacheIndex_329 = null;
-        aClass1_327 = null;
-        aClass1_323 = null;
-    }
 
     public static void method236(boolean arg0, CacheIndex arg1, CacheIndex arg2, CacheIndex arg3) {
         Class40_Sub11.aCacheIndex_2162 = arg1;
@@ -96,7 +86,7 @@ public class Cache {
         anInt316++;
     }
 
-    public void method235(byte arg0) {
+    public void method235() {
         for(; ; ) {
             SubNode class40_sub5 = aClass27_319.method351();
             if(class40_sub5 == null)
@@ -105,6 +95,5 @@ public class Cache {
             class40_sub5.method539();
         }
         anInt316 = anInt317;
-        int i = 115 / ((-2 - arg0) / 33);
     }
 }

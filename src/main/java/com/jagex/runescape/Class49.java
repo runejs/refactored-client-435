@@ -9,7 +9,6 @@ import com.jagex.runescape.scene.SceneCluster;
 public class Class49 {
     public static Cache aClass9_1145 = new Cache(30);
     public static volatile int anInt1147 = 0;
-    public static String aClass1_1148 = "Loading ignore list";
     public static CacheIndex aCacheIndex_1150;
     public static int anInt1151 = 0;
     public static Class40_Sub9_Sub1 aClass40_Sub9_Sub1_1152;
@@ -42,10 +41,5 @@ public class Class49 {
         Class40_Sub5_Sub6.cameraY = y + -yOffset;
     }
 
-    public static void method930() {
-        aClass9_1145 = null;
-        aClass40_Sub9_Sub1_1152 = null;
-        aClass1_1148 = null;
-        aCacheIndex_1150 = null;
-    }
+
 }

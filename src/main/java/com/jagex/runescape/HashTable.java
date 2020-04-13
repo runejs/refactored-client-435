@@ -14,11 +14,9 @@ import com.jagex.runescape.scene.util.CollisionMap;
 
 public class HashTable {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_549;
-    public static String aClass1_553 = "l";
     public static int anInt554 = 0;
     public static int anInt564;
     public static boolean aBoolean565 = false;
-    public static String aClass1_569 = " (";
     public static boolean aBoolean571;
     public static int anInt573 = -1;
     public long aLong550;
@@ -76,11 +74,6 @@ public class HashTable {
         }
     }
 
-    public static void method328() {
-        aClass40_Sub5_Sub14_Sub2_549 = null;
-        aClass1_553 = null;
-        aClass1_569 = null;
-    }
 
     public static void method332(int arg0) {
         synchronized(CollisionMap.anObject162) {

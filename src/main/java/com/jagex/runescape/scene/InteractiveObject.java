@@ -54,15 +54,5 @@ public class InteractiveObject {
         return class1;
     }
 
-    public static void method280() {
-        aClass1_495 = null;
-        aClass1_494 = null;
-        aClass68_482 = null;
-        aClass27_485 = null;
-        aByteArrayArrayArray492 = null;
-        aClass9_470 = null;
-        aClass1_478 = null;
-        firstMenuOperand = null;
-        aCacheIndex_488 = null;
-    }
+
 }

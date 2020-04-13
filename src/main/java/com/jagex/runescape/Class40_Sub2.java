@@ -37,12 +37,11 @@ public class Class40_Sub2 extends Node {
     public int anInt2013;
     public int anInt2014;
 
-    public static void method522(int arg0, int arg1, byte arg2) {
+    public static void method522(int arg0, int arg1) {
         VarbitDefinition varbitDefinition = Class34.method417(0, arg1);
         int i = varbitDefinition.leastSignificantBit;
         int i_0_ = varbitDefinition.index;
         int i_1_ = varbitDefinition.mostSignificantBit;
-        int i_2_ = -115 % ((arg2 - 46) / 57);
         int i_3_ = Class68_Sub1.anIntArray2199[i_1_ + -i];
         if(arg0 < 0 || i_3_ < arg0)
             arg0 = 0;

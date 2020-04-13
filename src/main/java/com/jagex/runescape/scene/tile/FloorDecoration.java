@@ -8,6 +8,7 @@ import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -99,8 +100,8 @@ public class FloorDecoration {
                                 ISAAC.mapCoordinates[i_8_] = i_17_;
                                 int i_19_ = i_17_ & 0xff;
                                 int i_20_ = (0xffbe & i_17_) >> 8;
-                                LinkedList.anIntArray1071[i_8_] = Renderable.aClass6_Sub1_2857.getHash(LinkedList.aClass1_1085+i_20_+Class8.aClass1_303+i_19_);
-                                Class13.anIntArray421[i_8_] = Renderable.aClass6_Sub1_2857.getHash(HashTable.aClass1_553+i_20_+Class8.aClass1_303+i_19_);
+                                LinkedList.anIntArray1071[i_8_] = Renderable.aClass6_Sub1_2857.getHash(LinkedList.aClass1_1085+i_20_+ Native.aClass1_303+i_19_);
+                                Class13.anIntArray421[i_8_] = Renderable.aClass6_Sub1_2857.getHash(Native.aClass1_553+i_20_+ Native.aClass1_303+i_19_);
                                 i_8_++;
                             }
                         }
@@ -136,8 +137,8 @@ public class FloorDecoration {
                     int i_30_ = i_29_ + (i_28_ << 8);
                     if(!bool || i_29_ != 49 && i_29_ != 149 && i_29_ != 147 && i_28_ != 50 && (i_28_ != 49 || i_29_ != 47)) {
                         ISAAC.mapCoordinates[i_25_] = i_30_;
-                        LinkedList.anIntArray1071[i_25_] = Renderable.aClass6_Sub1_2857.getHash(LinkedList.aClass1_1085 + i_28_ + Class8.aClass1_303 + i_29_);
-                        Class13.anIntArray421[i_25_] = Renderable.aClass6_Sub1_2857.getHash(HashTable.aClass1_553 + i_28_ + Class8.aClass1_303 + i_29_);
+                        LinkedList.anIntArray1071[i_25_] = Renderable.aClass6_Sub1_2857.getHash(LinkedList.aClass1_1085 + i_28_ + Native.aClass1_303 + i_29_);
+                        Class13.anIntArray421[i_25_] = Renderable.aClass6_Sub1_2857.getHash(Native.aClass1_553 + i_28_ + Native.aClass1_303 + i_29_);
                         i_25_++;
                     }
                 }
@@ -383,18 +384,5 @@ public class FloorDecoration {
         }
     }
 
-    public static void method348() {
-        aClass40_Sub5_Sub14_Sub2_593 = null;
-        aCRC32_590 = null;
-        aClass1_610 = null;
-        aClass1_611 = null;
-        anIntArray612 = null;
-        aClass1_591 = null;
-        aClass40_Sub5_Sub14_Sub4Array603 = null;
-        aClass6_Sub1_605 = null;
-        STRING_CONNECTING_UPDATE_SERVER = null;
-        aClass1_615 = null;
-        aSignlinkNode_607 = null;
-        aClass40_Sub9_608 = null;
-    }
+
 }

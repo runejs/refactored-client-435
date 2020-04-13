@@ -5,10 +5,6 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 public class Class21 {
     public static Class34 aClass34_530 = new Class34();
 
-    public static void method289() {
-        aClass34_530 = null;
-    }
-
     public static void method290(Class34 arg0) {
         arg0.anInt843 = 0;
         for(int i = 0; i < 256; i++) {
@@ -113,7 +109,6 @@ public class Class21 {
                     i_2_ = i_10_;
             }
         }
-        int i_11_ = arg0.anInt846;
         arg0.anInt846 += i_7_ - i_6_;
         arg0.aByte819 = i;
         arg0.anInt812 = i_0_;
@@ -127,24 +122,6 @@ public class Class21 {
     }
 
     public static void method292(Class34 arg0) {
-        boolean bool = false;
-        boolean bool_12_ = false;
-        boolean bool_13_ = false;
-        boolean bool_14_ = false;
-        boolean bool_15_ = false;
-        boolean bool_16_ = false;
-        boolean bool_17_ = false;
-        boolean bool_18_ = false;
-        boolean bool_19_ = false;
-        boolean bool_20_ = false;
-        boolean bool_21_ = false;
-        boolean bool_22_ = false;
-        boolean bool_23_ = false;
-        boolean bool_24_ = false;
-        boolean bool_25_ = false;
-        boolean bool_26_ = false;
-        boolean bool_27_ = false;
-        boolean bool_28_ = false;
         int i = 0;
         int[] is = null;
         int[] is_29_ = null;
@@ -446,7 +423,7 @@ public class Class21 {
         return (byte) method295(1, arg0);
     }
 
-    public static int method297(byte[] arg0, int arg1, byte[] arg2, int arg3, int arg4) {
+    public static int method297(byte[] arg0, int arg1, byte[] arg2, int arg4) {
         synchronized(aClass34_530) {
             aClass34_530.aByteArray830 = arg2;
             aClass34_530.anInt832 = arg4;

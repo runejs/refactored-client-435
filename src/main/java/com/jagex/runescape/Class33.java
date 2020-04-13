@@ -7,6 +7,7 @@ import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -16,14 +17,9 @@ import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 
 public class Class33 {
-    public static String aClass1_777 = "Cabbage";
     public static Cache aClass9_778 = new Cache(64);
-    public static String aClass1_783 = "Loading config - ";
     public static int anInt784 = 0;
-    public static String cmd_prefix = "::";
     public static int[] selectedMenuActions = new int[500];
-    public static String aClass1_795 = ",";
-    public static String aClass1_799 = "No response from server.";
 
 
     public static synchronized void method402(boolean arg0) {
@@ -318,19 +314,10 @@ public class Class33 {
 
     public static synchronized void method407(boolean arg0) {
         if(arg0)
-            aClass1_795 = null;
+            Native.aClass1_795 = null;
         Class65.method1019(104);
     }
 
-    public static void method408() {
-        aClass1_799 = null;
-        cmd_prefix = null;
-        selectedMenuActions = null;
-        aClass1_795 = null;
-        aClass1_777 = null;
-        aClass9_778 = null;
-        aClass1_783 = null;
-    }
 
     public static boolean menuHasAddFriend(byte arg0, int arg1) {
         if(arg0 <= 23)
@@ -358,9 +345,9 @@ public class Class33 {
     }
 
     public static void method411(String arg0, String arg1, String arg2) {
-        Class22_Sub2.aClass1_1881 = arg0;
-        Class22_Sub2.aClass1_1896 = arg2;
-        Class22_Sub2.aClass1_1879 = arg1;
+        Native.aClass1_1881 = arg0;
+        Native.aClass1_1896 = arg2;
+        Native.aClass1_1879 = arg1;
     }
 
     public static synchronized void method412(boolean arg0, CacheIndex arg1, int arg2, byte arg3, String arg4, int arg5, String arg6, int arg7) {

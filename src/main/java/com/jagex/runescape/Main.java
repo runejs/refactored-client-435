@@ -1,6 +1,5 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.audio.Filter;
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
@@ -11,13 +10,12 @@ import com.jagex.runescape.cache.media.Widget.WidgetModelType;
 import com.jagex.runescape.cache.media.Widget.WidgetType;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
-import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.Rasterizer3D;
-import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
@@ -30,7 +28,6 @@ import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
-import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.*;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -232,7 +229,7 @@ public class Main extends GameShell {
                                 if(class1 == null)
                                     class1 = "null";
                                 if(class40_sub5_sub16.stackable == 1 || widget.itemAmount != 1)
-                                    class1 = class1 + Class29.aClass1_674+ LinkedList.method903(widget.itemAmount, (byte) -109);
+                                    class1 = class1 + Native.aClass1_674+ LinkedList.method903(widget.itemAmount, (byte) -109);
                             }
                             if(widget.actionType == 6 && CacheIndex_Sub1.anInt1819 == widget.id) {
                                 i_21_ = widget.textColor;
@@ -348,7 +345,7 @@ public class Main extends GameShell {
                                     bool = false;
                             }
                         } else if(widget.modelId != 0)
-                            model = Player.localPlayer.getRotatedModel(92);
+                            model = Player.localPlayer.getRotatedModel();
                         else
                             model = LinkedList.aClass30_1082.getAnimatedModel(null, null, -1, -1, (byte) -88);
                         int i_37_ = widget.rotationX;
@@ -404,7 +401,7 @@ public class Main extends GameShell {
                                         if(class1 == null)
                                             class1 = "null";
                                         if(class40_sub5_sub16.stackable == 1 || widget.itemAmounts[i_45_] != 1)
-                                            class1 = class1 + Class29.aClass1_674 + LinkedList.method903(widget.itemAmounts[i_45_], (byte) -105);
+                                            class1 = class1 + Native.aClass1_674 + LinkedList.method903(widget.itemAmounts[i_45_], (byte) -105);
                                         int i_48_ = i_47_ * (widget.itemSpritePadsX + 115) + i_0_;
                                         int i_49_ = i_46_ * (widget.itemSpritePadsY + 12) + i_1_;
                                         if(widget.xTextAlignment == 0)
@@ -425,7 +422,7 @@ public class Main extends GameShell {
                             String class1 = widget.disabledText;
                             class1 = SceneTile.method532((byte) 20, widget, class1);
                             while(class1.length() > 0) {
-                                int i_52_ = class1.indexOf(Class30.aClass1_686.toString());
+                                int i_52_ = class1.indexOf(Native.aClass1_686.toString());
                                 String class1_53_;
                                 if(i_52_ == -1) {
                                     class1_53_ = class1;
@@ -455,7 +452,7 @@ public class Main extends GameShell {
                             int i_57_ = 2 + i_55_ + class40_sub5_sub14_sub1.characterDefaultHeight;
                             class1 = SceneTile.method532((byte) 20, widget, class1);
                             while(class1.length() > 0) {
-                                int i_58_ = class1.indexOf(Class30.aClass1_686.toString());
+                                int i_58_ = class1.indexOf(Native.aClass1_686.toString());
                                 String class1_59_;
                                 if(i_58_ == -1) {
                                     class1_59_ = class1;
@@ -606,14 +603,7 @@ public class Main extends GameShell {
         }
     }
 
-    public static void method41() {
-        aClass1_1762 = null;
-        aClass1_1781 = null;
-        playerActions = null;
-        aClass1_1763 = null;
-        aClass1_1788 = null;
-        aClass1_1761 = null;
-    }
+
 
     public static int method42(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
         arg5 &= 0x3;
@@ -761,10 +751,10 @@ public class Main extends GameShell {
         Class64.method1015();
         if(Class51.anInt1197 == 0) {
             Class40_Sub3.method530(100);
-            Class60.method992(75);
+            Class60.method992();
         } else if(Class51.anInt1197 == 5) {
             Class40_Sub3.method530(100);
-            Class60.method992(75);
+            Class60.method992();
         } else if(Class51.anInt1197 != 10) {
             if(Class51.anInt1197 == 20) {
                 Class60.method993(-103);
@@ -810,14 +800,14 @@ public class Main extends GameShell {
                 if(Class37.anInt874 > PacketBuffer.anInt2231)
                     PacketBuffer.anInt2231 = Class37.anInt874;
                 int i = (-Class37.anInt874 + PacketBuffer.anInt2231) * 50 / PacketBuffer.anInt2231;
-                Class51.method940(0, Class67.aClass1_1585, true, CollisionMap.aClass1_170+ i +Class30.aClass1_698);
+                Class51.method940(0, English.aClass1_1585, true, CollisionMap.aClass1_170+ i + Native.aClass1_698);
             } else if(Class68.anInt1634 == 2) {
                 if(IdentityKit.anInt2591 > GameObject.anInt3048)
                     GameObject.anInt3048 = IdentityKit.anInt2591;
                 int i = 50 * (-IdentityKit.anInt2591 + GameObject.anInt3048) / GameObject.anInt3048 + 50;
-                Class51.method940(0, Class67.aClass1_1585, true, CollisionMap.aClass1_170+ i +Class30.aClass1_698);
+                Class51.method940(0, English.aClass1_1585, true, CollisionMap.aClass1_170+ i + Native.aClass1_698);
             } else
-                Class51.method940(0, Class67.aClass1_1585, false, null);
+                Class51.method940(0, English.aClass1_1585, false, null);
         } else if(Class51.anInt1197 == 30) {
             Class27.drawGameScreen();
 
@@ -936,116 +926,6 @@ public class Main extends GameShell {
     }
 
 
-    public void reset() {
-        // TODO: Should all these also be "reset"?
-        method41();
-        RSString.method83();
-        GameShell.method18();
-        Class38.method439();
-        Class68.method1042();
-        Class39.method453();
-        Buffer.method499();
-        Class64.method1011();
-        CacheIndex_Sub1.method203();
-        Class67.method1037();
-        Class56.method967();
-        Npc.method797();
-        PacketBuffer.method514();
-        Scene.method114();
-        CollisionMap.method152();
-        Player.method794();
-        LinkedList.method900();
-        Widget.method641();
-        Class48.method924();
-        Class30.method376();
-        Actor.method788();
-        Class40_Sub3.method529();
-        ActorDefinition.method581();
-        HashTable.method328();
-        Node.method458();
-        ISAAC.method282();
-        Class49.method930();
-        Cache.method234();
-        AnimationSequence.method589();
-        Model.method800();
-        Class37.method433();
-        RSRuntimeException.method1053();
-        Class26.method350();
-        SceneTile.method534();
-        InteractiveObject.method280();
-        SceneCluster.method401();
-        Renderable.method757();
-        Wall.method237();
-        WallDecoration.method952();
-        FloorDecoration.method348();
-        GenericTile.method946();
-        ComplexTile.method239();
-        KeyFocusListener.method953();
-        MouseHandler.method1001();
-        Class51.method939();
-        SubNode.method541();
-        CacheIndex.method180();
-        Class44.method896();
-        Class33.method408();
-        Class8.method214();
-        Class55.method961();
-        Class60.method994();
-        Class65.method1017();
-        Class27.method356();
-        Class40_Sub5_Sub13.method653();
-        Landscape.method935();
-        Rasterizer3D.method704();
-        Rasterizer.method667();
-        Class42.method887();
-        Class24.method339();
-        Class17.method277();
-        OverlayDefinition.method554();
-        UnderlayDefinition.method621();
-        IdentityKit.method625();
-        GameObjectDefinition.method604();
-        ItemDefinition.method745();
-        Class40_Sub5_Sub15.method734();
-        SpotAnimDefinition.method548();
-        VarbitDefinition.method565();
-        Class40_Sub5_Sub11.method632();
-        Class35.method423();
-        EntryTable.method871();
-        HuffmanEncoding.method1022();
-        Class59.method985();
-        Class5.method163();
-        Class40_Sub5_Sub1.method542();
-        Class4.method159();
-        VertexNormal.method914();
-        Class40_Sub5_Sub17_Sub1.method761();
-        Class40_Sub5_Sub17_Sub6.method835();
-        Class12.method240();
-        Class43.method893();
-        Class61.method998();
-        GameObject.method770();
-        Item.method780();
-        Class40_Sub7.method839();
-        Class13.method248();
-        RSCanvas.method47();
-        Class38_Sub1.method449();
-        Class68_Sub1.method1047();
-        GroundItemTile.method981();
-        Filter.method268();
-        Class57.method974();
-        FrameDefinition.method881();
-        FramemapDefinition.method877();
-        Class21.method289();
-        Class34.method418();
-        Class40_Sub6.method837();
-        Class22.method298();
-        Class40_Sub5_Sub6.method582();
-        Class8_Sub1.method220();
-        Class8_Sub1_Sub1.method228();
-        Class29.method370();
-        Class40_Sub11.method874();
-        Class22_Sub2.method320();
-        Class14.method266();
-        Class22_Sub1.method310();
-    }
 
     public void method31(boolean arg0) {
         CollisionMap.anInt172 = Class44.modewhere == 0 ? 443 : 50000 + Class13.worldid;

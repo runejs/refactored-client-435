@@ -45,11 +45,6 @@ public class PacketBuffer extends Buffer {
         HashTable.method332(600);
     }
 
-    public static void method514() {
-        aClass40_Sub5_Sub13_2250 = null;
-        effects = null;
-        str_Please_Wait = null;
-    }
 
     public static void method516() {
         SceneCluster.packetBuffer.putPacket(176);

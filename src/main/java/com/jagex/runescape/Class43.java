@@ -16,10 +16,8 @@ import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class43 {
     public static Cache aClass9_1014 = new Cache(64);
-    public static String aClass1_1019 = "flash1:";
     public static int cameraYawOffset = 0;
     public static LinkedList aLinkedList_1022 = new LinkedList();
-    public static String aClass1_1024 = "backleft2";
     public static int bankInsertMode = 0;
     public static String char_colon =":";
 
@@ -57,13 +55,6 @@ public class Class43 {
         Class55.method964(40);
     }
 
-    public static void method893() {
-        aClass9_1014 = null;
-        aLinkedList_1022 = null;
-        aClass1_1024 = null;
-        aClass1_1019 = null;
-        char_colon = null;
-    }
 
     public static void processRightClick() {
         if(SceneTile.activeInterfaceType == 0) {

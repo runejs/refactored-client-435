@@ -24,8 +24,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
         arg0.method394(10, 0, this);
     }
 
-    public static void method325(byte arg0) {
-        int i = 16 % ((arg0 + 32) / 60);
+    public static void method325() {
         if(anInt2229 > 0) {
             aRunnable_Impl1_2223.method2(anIntArray2227, anInt2229);
             anInt2229 = 0;
@@ -35,7 +34,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
     public static void method326(int arg0, byte arg1, int arg2, int arg3, int arg4) {
 
         if(arg1 > -44)
-            method325((byte) 22);
+            method325();
         if(anIntArray2227.length <= anInt2229) {
             aRunnable_Impl1_2223.method2(anIntArray2227, anInt2229);
             anInt2229 = 0;
@@ -60,7 +59,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
                     break;
                 while(i_0_ == aClass14_2225.anIntArray427[i]) {
                     aClass14_2225.method265(i);
-                    method324(l_1_, (byte) 103, i);
+                    method324(l_1_, i);
                     if(aClass14_2225.method258()) {
                         aClass14_2225.method260(i);
                         if(aClass14_2225.method263()) {
@@ -69,7 +68,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
                             else {
                                 this.method321((byte) 110, (long) (int) (l_1_ / (long) (aClass14_2225.anInt431 * 1000)));
                                 aClass14_2225.method255();
-                                method325((byte) -118);
+                                method325();
                                 return;
                             }
                         }
@@ -79,13 +78,12 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
                     aClass14_2225.method260(i);
                 }
             }
-            method325((byte) 95);
+            method325();
         }
 
     }
 
-    public void method324(long arg0, byte arg1, int arg2) {
-        int i = 31 % ((arg1 - 32) / 38);
+    public void method324(long arg0, int arg2) {
         int i_2_ = aClass14_2225.method252(arg2);
         if(i_2_ == 1)
             aClass14_2225.method264();
@@ -154,7 +152,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
                     bool = false;
                     break;
                 }
-                method324(0L, (byte) 74, i_7_);
+                method324(0L, i_7_);
             }
             aClass14_2225.method260(i_7_);
         }
@@ -164,7 +162,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
             this.method321((byte) 127, (long) anInt2226);
             aClass14_2225.method255();
         }
-        method325((byte) 50);
+        method325();
 
     }
 

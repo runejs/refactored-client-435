@@ -2,11 +2,10 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.PacketBuffer;
@@ -22,10 +21,8 @@ public class Class59 {
     public static int anInt1389 = 0;
     public static KeyFocusListener keyFocusListener;
     public static int[] secondMenuOperand;
-    public static String aClass1_1395 = "backbase1";
     public static long[] aLongArray1397;
     public static int[] anIntArray1398;
-    public static String aClass1_1399 = "Your friendlist is full. Max of 100 for free users, and 200 for members";
 
     static {
         secondMenuOperand = new int[500];
@@ -41,7 +38,7 @@ public class Class59 {
             Class30.aClass64_717 = Class40_Sub6.aClass64_2098;
             Class40_Sub6.aClass64_2098 = null;
             if(arg0 != 2578)
-                aClass1_1395 = null;
+                Native.aClass1_1395 = null;
         }
     }
 
@@ -83,18 +80,6 @@ public class Class59 {
         }
     }
 
-    public static void method985() {
-        aClass40_Sub1_1385 = null;
-        Widget.interfaces = null;
-        anIntArray1398 = null;
-        aClass40_Sub5_Sub14_Sub2_1387 = null;
-        aClass1_1399 = null;
-        aLongArray1397 = null;
-        aClass1_1395 = null;
-        keyFocusListener = null;
-        English.hidden = null;
-        secondMenuOperand = null;
-    }
 
     public static int getVisibilityPlaneFor(int arg0, int arg1, int arg2, int arg3) {
         if(arg2 != 0)

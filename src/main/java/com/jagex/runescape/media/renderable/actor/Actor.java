@@ -9,16 +9,14 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.util.Signlink;
-
-import java.math.BigInteger;
 
 public abstract class Actor extends Renderable {
     public static int[] anIntArray3111;
@@ -269,24 +267,12 @@ public abstract class Actor extends Renderable {
     }
 
     public static void method783() {
-        Cache.aClass9_326.method235((byte) -126);
-        WallDecoration.aClass9_1264.method235((byte) -96);
-        Class67.aClass9_1582.method235((byte) 34);
+        Cache.aClass9_326.method235();
+        WallDecoration.aClass9_1264.method235();
+        Class67.aClass9_1582.method235();
     }
 
-    public static void method788() {
-        aClass6_Sub1_3157 = null;
-        aClass1_3138 = null;
-        ChatBox.chatMessages = null;
-        Player.trackedPlayers = null;
-        aCacheIndex_3150 = null;
-        aCacheIndex_3144 = null;
-        aClass31_3152 = null;
-        anIntArray3111 = null;
-        aClass1_3124 = null;
-        anIntArray3149 = null;
-        aClass1_3159 = null;
-    }
+
 
     public static void method789(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
         if(arg3 != Class51.regionX || arg2 != Class17.regionY || Class40_Sub6.onBuildTimePlane != arg5 && VertexNormal.lowMemory) {
@@ -296,7 +282,7 @@ public abstract class Actor extends Renderable {
                 Class40_Sub6.onBuildTimePlane = 0;
             Class17.regionY = arg2;
             OverlayDefinition.method559(25);
-            Class51.method940(0, Class67.aClass1_1585, false, null);
+            Class51.method940(0, English.aClass1_1585, false, null);
             int i = Class26.baseY;
             int i_33_ = SpotAnimDefinition.baseX;
             SpotAnimDefinition.baseX = (arg3 - 6) * 8;

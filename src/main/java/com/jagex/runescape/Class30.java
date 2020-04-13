@@ -14,23 +14,18 @@ import com.jagex.runescape.net.PacketBuffer;
 public class Class30 {
     public static int[] anIntArray680 = new int[50];
     public static int anInt681;
-    public static String aClass1_682 = "Off";
     public static int[] anIntArray684 = new int[50];
     public static int[] anIntArray685 = new int[50];
-    public static String aClass1_686 = "\n";
     public static boolean aBoolean687;
     public static int[] anIntArray688 = new int[50];
     public static Class67 aClass67_693;
     public static int[] anIntArray695 = new int[50];
     public static String[] aClass1Array697 = new String[50];
-    public static String aClass1_698 = "%";
-    public static String aClass1_701 = "Trade/compete";
     public static int anInt704 = 0;
     public static int anInt708 = -1;
     public static int[] anIntArray712 = new int[50];
     public static Class68 aClass68_714;
     public static int[] anIntArray715 = new int[50];
-    public static String aClass1_716 = "scape main";
     public static Class64 aClass64_717;
 
     public boolean gender;
@@ -40,28 +35,9 @@ public class Class30 {
     public long appearanceHash;
     public long cachedModel;
 
-    public static void method376() {
-        anIntArray712 = null;
-        anIntArray688 = null;
-        aClass64_717 = null;
-        anIntArray695 = null;
-        anIntArray685 = null;
-        anIntArray715 = null;
-        aClass1_686 = null;
-        aClass1Array697 = null;
-        aClass67_693 = null;
-        anIntArray684 = null;
-        anIntArray680 = null;
-        aClass68_714 = null;
-        aClass1_701 = null;
-        aClass1_682 = null;
-        aClass1_698 = null;
-        aClass1_716 = null;
-    }
 
-    public static void method381(int arg0, Actor arg1) {
-        if(arg0 != 22378)
-            method376();
+
+    public static void method381(Actor arg1) {
         if(Node.pulseCycle == arg1.anInt3107 || arg1.playingAnimation == -1 || arg1.playingAnimationDelay != 0 || arg1.anInt3115 + 1 > Class68_Sub1.method1050(arg1.playingAnimation, 2).animationLengths[arg1.anInt3104]) {
             int i = -arg1.anInt3112 + arg1.anInt3107;
             int i_16_ = -arg1.anInt3112 + Node.pulseCycle;

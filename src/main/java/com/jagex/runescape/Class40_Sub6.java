@@ -11,18 +11,13 @@ import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.WallDecoration;
 
 public class Class40_Sub6 extends Node {
-    public static String aClass1_2097 = "No matching objects found, please shorten search";
     public static Class64 aClass64_2098;
     public static int[][][] tile_height = new int[4][105][105];
-    public static String aClass1_2101 = "p11_full";
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2105;
     public static int[] anIntArray2106 = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
     public static int secondaryCameraVertical = 0;
-    public static String aClass1_2109 = "overlay_multiway";
     public static int anInt2110;
-    public static String aClass1_2111 = "Press 'change your password' on front page.";
     public static int[] anIntArray2113 = new int[128];
-    public static String aClass1_2114 = "hitmarks";
     public static Widget aWidget_2116;
     public static int anInt2118 = 0;
     public static int placementX;
@@ -81,20 +76,6 @@ public class Class40_Sub6 extends Node {
             if(i_15_ == 1)
                 IdentityKit.anInt2613 = 1024;
         }
-    }
-
-    public static void method837() {
-        aClass1_2111 = null;
-        tile_height = null;
-        aClass1_2114 = null;
-        aWidget_2116 = null;
-        aClass1_2109 = null;
-        aClass64_2098 = null;
-        aClass1_2097 = null;
-        aClass1_2101 = null;
-        anIntArray2106 = null;
-        aClass40_Sub5_Sub14_Sub2_2105 = null;
-        anIntArray2113 = null;
     }
 
     public static void method838(int arg0, long arg1) {

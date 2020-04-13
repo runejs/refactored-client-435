@@ -22,7 +22,6 @@ public class Class60 {
     public static boolean aBoolean1402 = false;
     public static int anInt1413;
     public static int cameraVelocityVertical = 0;
-    public static String aClass1_1416 = "Error loading your profile.";
     public static int anInt1417;
 
     static {
@@ -39,7 +38,7 @@ public class Class60 {
             i++;
         if(arg1.method194(ISAAC.aClass1_506, "", -1234))
             i++;
-        if(arg1.method194(Class8.aClass1_299, "", -1234))
+        if(arg1.method194(English.aClass1_299, "", -1234))
             i++;
         return i;
     }
@@ -141,15 +140,13 @@ public class Class60 {
         return class1;
     }
 
-    public static void method992(int arg0) {
+    public static void method992() {
         SceneCluster.aClass38_768.method443(-10115);
         for(int i = 0; i < 32; i++)
             GameShell.aLongArray4[i] = 0L;
         for(int i = 0; i < 32; i++)
             Class67.aLongArray1614[i] = 0L;
         Class40_Sub3.anInt2020 = 0;
-        if(arg0 != 75)
-            method994();
     }
 
     public static void method993(int arg0) {
@@ -170,9 +167,9 @@ public class Class60 {
                 if(clickType == 1 && i >= -75 + i_14_ && i <= 75 + i_14_ && clickY >= -20 + i_15_ && 20 + i_15_ >= clickY) {
                     Class26.loginScreenState = 2;
                     Node.loginScreenFocus = 0;
-                    Class22_Sub2.aClass1_1879 = "";
-                    Class22_Sub2.aClass1_1896 = English.enterYourUsernameAndPassword;
-                    Class22_Sub2.aClass1_1881 = "";
+                    Native.aClass1_1879 = "";
+                    Native.aClass1_1896 = English.enterYourUsernameAndPassword;
+                    Native.aClass1_1881 = "";
                 }
             } else if(Class26.loginScreenState == 2) {
                 int y = 60;
@@ -187,7 +184,7 @@ public class Class60 {
                 y += 15;
                 if(clickType == 1 && clickX + -75 <= i && i <= clickX + 75 && clickY >= i_18_ + -20 && clickY <= i_18_ + 20) {
                     Native.username = Native.username.method62().method85();
-                    Class33.method411("", "", Class40_Sub5_Sub17_Sub1.aClass1_3009);
+                    Class33.method411("", "", English.aClass1_3009);
                     OverlayDefinition.method559(20);
                 } else {
                     clickX = 260;
@@ -218,7 +215,7 @@ public class Class60 {
                                 Node.loginScreenFocus = 0;
                             if(ItemDefinition.anInt2854 == 84) {
                                 Native.username = Native.username.method62().method85();
-                                Class33.method411("", "", Class40_Sub5_Sub17_Sub1.aClass1_3009);
+                                Class33.method411("", "", English.aClass1_3009);
                                 OverlayDefinition.method559(20);
                             }
                             if(bool && Native.password.length() < 20)
@@ -235,7 +232,4 @@ public class Class60 {
         }
     }
 
-    public static void method994() {
-        aClass1_1416 = null;
-    }
 }

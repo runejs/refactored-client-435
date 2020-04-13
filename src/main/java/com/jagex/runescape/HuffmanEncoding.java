@@ -11,6 +11,7 @@ import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -22,21 +23,14 @@ import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.Wall;
 
 public class HuffmanEncoding {
-    public static String blank_string = "";
     public static Class68 aClass68_1541;
-    public static String aClass1_1544 = "Side panel redrawn";
     public static int anInt1545 = 0;
-    public static String aClass1_1546 = "Icons redrawn";
     public static int reportAbuseInterfaceID = -1;
     public static String reportedName = "";
-    public static String str_Connecting_to_friendserver = "Connecting to friendserver";
-    public static String chatboxInput = "";
     public static int anInt1559 = 7759444;
     public static int openScreenWidgetId = -1;
     public static String aClass1_1563 = "";
     public static int[] anIntArray1564 = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, 85, 80, 84, -1, 91, -1, -1, -1, 81, 82, 86, -1, -1, -1, -1, -1, -1, -1, -1, 0, -1, -1, -1, -1, 83, 104, 105, 103, 102, 96, 98, 97, 99, -1, -1, -1, -1, -1, -1, -1, 25, 16, 17, 18, 19, 20, 21, 22, 23, 24, -1, -1, -1, -1, -1, -1, -1, 48, 68, 66, 50, 34, 51, 52, 53, 39, 54, 55, 56, 70, 69, 40, 41, 32, 35, 49, 36, 38, 67, 33, 65, 37, 64, -1, -1, -1, -1, -1, 228, 231, 227, 233, 224, 219, 225, 230, 226, 232, 89, 87, -1, 88, 229, 90, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, -1, -1, -1, 101, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-    public static String chatMessage = "";
-    public static String aClass1_1572 = "Remove";
 
     public int[] chatDecryptKeys;
     public int[] chatMask;
@@ -109,26 +103,10 @@ public class HuffmanEncoding {
 
     }
 
-    public static void method1022() {
-        chatMessage = null;
-        aClass68_1541 = null;
-        aClass1_1563 = null;
-        aClass1_1544 = null;
-        ChatBox.lastItemSearchInput = null;
-        ChatBox.inputMessage = null;
-        ChatBox.chatTypes = null;
-        aClass1_1546 = null;
-        reportedName = null;
-        str_Connecting_to_friendserver = null;
-        aClass1_1572 = null;
-        anIntArray1564 = null;
-        blank_string = null;
-        chatboxInput = null;
-    }
 
     public static RSString method1024(boolean arg0, byte arg1, int arg2) {
         if (arg1 > -30)
-            str_Connecting_to_friendserver = null;
+            English.str_Connecting_to_friendserver = null;
         return PacketBuffer.method521(arg0, 10, arg2);
     }
 
@@ -139,12 +117,12 @@ public class HuffmanEncoding {
             if (actorDefinition != null && actorDefinition.isClickable) {
                 String class1 = actorDefinition.name;
                 if (actorDefinition.combatLevel != 0)
-                    class1 = class1 + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + HashTable.aClass1_569 + SpotAnimDefinition.str_prefix_level + actorDefinition.combatLevel + Class51.aClass1_1199;
+                    class1 = class1 + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + Native.aClass1_569 + SpotAnimDefinition.str_prefix_level + actorDefinition.combatLevel + Native.aClass1_1199;
                 if (Class8.itemSelected == 1) {
                     OverlayDefinition.addActionRow(Main.aClass1_1763, index, x, y, 49, Npc.aClass1_3295 + SpotAnimDefinition.aClass1_2306 + class1);
                 } else if (Main.widgetSelected == 1) {
                     if ((0x2 & ItemDefinition.selectedMask) == 2) {
-                        OverlayDefinition.addActionRow(Class38_Sub1.aClass1_1918, index, x, y, 21, FloorDecoration.aClass1_611 + SpotAnimDefinition.aClass1_2306 + class1);
+                        OverlayDefinition.addActionRow(Native.aClass1_1918, index, x, y, 21, FloorDecoration.aClass1_611 + SpotAnimDefinition.aClass1_2306 + class1);
                     }
                 } else {
                     String[] class1s = actorDefinition.options;
@@ -152,7 +130,7 @@ public class HuffmanEncoding {
                         class1s = Class56.method968(class1s);
                     if (class1s != null) {
                         for (int i = 4; i >= 0; i--) {
-                            if (class1s[i] != null && !class1s[i].equalsIgnoreCase(Class38_Sub1.aClass1_1917)) {
+                            if (class1s[i] != null && !class1s[i].equalsIgnoreCase(English.aClass1_1917)) {
                                 int i_3_ = 0;
                                 if (i == 0)
                                     i_3_ = 12;
@@ -170,7 +148,7 @@ public class HuffmanEncoding {
                     }
                     if (class1s != null) {
                         for (int i = 4; i >= 0; i--) {
-                            if (class1s[i] != null && class1s[i].equalsIgnoreCase(Class38_Sub1.aClass1_1917)) {
+                            if (class1s[i] != null && class1s[i].equalsIgnoreCase(English.aClass1_1917)) {
                                 int i_4_ = 0;
                                 if (Player.localPlayer.combatLevel < actorDefinition.combatLevel)
                                     i_4_ = 2000;
@@ -195,9 +173,7 @@ public class HuffmanEncoding {
         }
     }
 
-    public static boolean method1027(int arg0, int arg1) {
-        if (arg1 != -58)
-            method1022();
+    public static boolean method1027(int arg0) {
         return arg0 >= 48 && arg0 <= 57;
     }
 
@@ -459,7 +435,7 @@ public class HuffmanEncoding {
             }
         }
         if (arg0 != -18678)
-            method1027(-98, -28);
+            method1027(-98);
         return (7 + i_6_ >> 3) - arg2;
     }
 }

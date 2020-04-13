@@ -7,18 +7,14 @@ import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.scene.GroundItemTile;
 
 public abstract class Class22_Sub2 extends Class22 {
-    public static String aClass1_1879 = "";
-    public static String aClass1_1881 = "";
     public static Widget aWidget_1887;
     public static int duplicateClickCount = 0;
-    public static String aClass1_1896 = "";
     public static int[] anIntArray774 = new int[]{12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800};
 
 
@@ -41,8 +37,8 @@ public abstract class Class22_Sub2 extends Class22 {
 
     public static void method316(int arg0) {
         do {
-            Class43.aClass9_1014.method235((byte) -104);
-            Class34.aClass9_851.method235((byte) -113);
+            Class43.aClass9_1014.method235();
+            Class34.aClass9_851.method235();
             if(arg0 == -11965)
                 break;
             method323(-25);
@@ -71,23 +67,6 @@ public abstract class Class22_Sub2 extends Class22 {
         }
         ActorDefinition.method569();
         return class40_sub5_sub14_sub4s;
-    }
-
-    public static void method320() {
-        anIntArray774 = null;
-        Native.supportedCharacters = null;
-        Native.currentLoadingText = null;
-        Native.string_blank = null;
-        aClass1_1881 = null;
-        aWidget_1887 = null;
-        aClass1_1879 = null;
-        Native.prefixYellowSTARV = null;
-        Native.username = null;
-        Native.supportedCharacters = null;
-        English.pleaseUseADifferentWorld = null;
-        English.walkHere = null;
-        aClass1_1896 = null;
-        Native.password = null;
     }
 
     public static int method323(int arg0) {
@@ -141,7 +120,7 @@ public abstract class Class22_Sub2 extends Class22 {
         for(int i = 0; i < 16; i++)
             method314(i + 176, 123, 0, arg1);
         if(arg0 <= 101)
-            aClass1_1879 = null;
+            Native.aClass1_1879 = null;
         for(int i = 0; i < 16; i++)
             method314(i + 176, 120, 0, arg1);
         for(int i = 0; i < 16; i++)

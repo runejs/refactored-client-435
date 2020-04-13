@@ -13,11 +13,6 @@ public class Filter {
     public int[][][] pair_mag = new int[2][2][4];
 
 
-    public static void method268() {
-        _coef = null;
-        coef = null;
-    }
-
     public static float normalize(float F) {
         float _f = 32.703197F * (float) Math.pow(2.0, F);
         return _f * 3.1415927F / 11025.0F;

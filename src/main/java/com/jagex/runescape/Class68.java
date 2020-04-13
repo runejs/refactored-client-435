@@ -16,7 +16,6 @@ public abstract class Class68 {
     public static Cache aClass9_1615 = new Cache(64);
     public static int anInt1618 = 0;
     public static int anInt1623 = 0;
-    public static String aClass1_1628 = " is already on your ignore list";
     public static boolean[] aBooleanArray1629;
     public static int oneMouseButton = 0;
     public static Class68 aClass68_1631;
@@ -24,7 +23,6 @@ public abstract class Class68 {
     public static int anInt1634 = 0;
     public static String str_Cancel = "Cancel";
     public static int anInt1637 = 0;
-    public static String aClass1_1639 = "@or2@";
 
     public int height;
     public int width;
@@ -54,16 +52,6 @@ public abstract class Class68 {
 
     }
 
-    public static void method1042() {
-        English.loadedTitleScreen = null;
-        aClass1_1639 = null;
-        aBooleanArray1629 = null;
-        aClass68_1631 = null;
-        aSignlinkNode_1632 = null;
-        aClass9_1615 = null;
-        str_Cancel = null;
-        aClass1_1628 = null;
-    }
 
     public static boolean method1043(int arg0) {
         if (aBooleanArray1629[arg0])

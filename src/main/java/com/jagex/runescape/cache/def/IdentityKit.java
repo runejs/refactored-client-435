@@ -32,16 +32,6 @@ public class IdentityKit extends SubNode {
         recolorToReplace = new int[6];
     }
 
-    public static void method625() {
-        aClass1_2615 = null;
-        aClass1_2588 = null;
-        aClass6_Sub1_2609 = null;
-        aHuffmanEncoding_2590 = null;
-        aLinkedList_2604 = null;
-        sound = null;
-        aClass1_2593 = null;
-    }
-
     public static Class40_Sub5_Sub1 method626(int arg0, int arg1) {
         long l = arg0 + (arg1 << 16);
         Class40_Sub5_Sub1 class40_sub5_sub1 = (Class40_Sub5_Sub1) Class17.aClass9_449.get(l, (byte) 72);

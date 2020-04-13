@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -38,33 +39,23 @@ public class LinkedList {
 
     }
 
-    public static void method900() {
-        anIntArray1083 = null;
-        aLinkedList_1064 = null;
-        aClass30_1082 = null;
-        aClass1_1077 = null;
-        aClass40_Sub5_Sub14_Sub4_1057 = null;
-        aClass1_1085 = null;
-        aClass40_Sub1_1081 = null;
-        anIntArray1071 = null;
-        aClass1_1076 = null;
-    }
+
 
     public static String method903(int arg0, byte arg1) {
         if(arg1 >= -13)
             return null;
         String class1 = Integer.toString(arg0);
         for(int i = -3 + class1.length(); i > 0; i -= 3)
-            class1 = class1.substring(0, i) + Class33.aClass1_795 + class1.substring(i);
+            class1 = class1.substring(0, i) + Native.aClass1_795 + class1.substring(i);
         if(class1.length() > 8)
-            class1 = Landscape.aClass1_1162 + class1.substring(0, -8 + class1.length()) + UnderlayDefinition.aClass1_2577 + GenericTile.aClass1_1213 + class1 + Class51.aClass1_1199;
+            class1 = Landscape.aClass1_1162 + class1.substring(0, -8 + class1.length()) + UnderlayDefinition.aClass1_2577 + GenericTile.aClass1_1213 + class1 + Native.aClass1_1199;
         else if(class1.length() > 4)
-            class1 = Renderable.aClass1_2862 + class1.substring(0, class1.length() + -4) + IdentityKit.aClass1_2593 + GenericTile.aClass1_1213 + class1 + Class51.aClass1_1199;
-        return Class48.aClass1_1123 + class1;
+            class1 = Renderable.aClass1_2862 + class1.substring(0, class1.length() + -4) + IdentityKit.aClass1_2593 + GenericTile.aClass1_1213 + class1 + Native.aClass1_1199;
+        return Native.aClass1_1123 + class1;
     }
 
     public static void method907(int arg0) {
-        Class57.aClass9_1331.method235((byte) 94);
+        Class57.aClass9_1331.method235();
         if(arg0 >= -36)
             aLinkedList_1064 = null;
     }

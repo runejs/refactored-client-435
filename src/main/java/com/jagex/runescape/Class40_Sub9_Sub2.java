@@ -386,7 +386,7 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
     }
 
     public boolean method863() {
-        return this.method454(false);
+        return this.method454();
     }
 
     public synchronized void method843(int arg0) {

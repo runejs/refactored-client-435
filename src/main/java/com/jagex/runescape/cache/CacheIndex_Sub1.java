@@ -35,14 +35,8 @@ public class CacheIndex_Sub1 extends CacheIndex {
 
     }
 
-    public static void method203() {
-        Player.npcs = null;
-    }
-
-    public static String method204(int arg0, int arg1) {
-        if(arg1 != 255)
-            method203();
-        return Integer.toString(0xff & arg0 >> 24) + Node.aClass1_975 + ((arg0 & 0xffca88) >> 16) + Node.aClass1_975 + ((0xfff8 & arg0) >> 8) + Node.aClass1_975 + (0xff & arg0);
+    public static String method204(int arg0) {
+        return (0xff & arg0 >> 24) + Node.aClass1_975 + ((arg0 & 0xffca88) >> 16) + Node.aClass1_975 + ((0xfff8 & arg0) >> 8) + Node.aClass1_975 + (0xff & arg0);
     }
 
     public static void method399(int arg0, int arg2) {
@@ -78,7 +72,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
             return 100;
         if(aByteArrayArray212 != null)
             return 99;
-        int i = Class34.method415((byte) -103, 255, anInt1807);
+        int i = Class34.method415(255, anInt1807);
         if(arg0 != 100)
             return -74;
         if(i >= 100)
@@ -187,10 +181,10 @@ public class CacheIndex_Sub1 extends CacheIndex {
             return 100;
         if(aBooleanArray1796[arg0])
             return 100;
-        return Class34.method415((byte) 88, anInt1807, arg0);
+        return Class34.method415(anInt1807, arg0);
     }
 
-    public int method202(boolean arg0) {
+    public int method202() {
         int i = 0;
         int i_3_ = 0;
         for(int i_4_ = 0; i_4_ < aByteArrayArray212.length; i_4_++) {
@@ -199,8 +193,6 @@ public class CacheIndex_Sub1 extends CacheIndex {
                 i_3_ += method201(i_4_);
             }
         }
-        if(arg0)
-            method203();
         if(i == 0)
             return 100;
         return i_3_ * 100 / i;

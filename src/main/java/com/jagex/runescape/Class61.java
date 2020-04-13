@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.cache.media.Widget.WidgetType;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -14,19 +15,11 @@ import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.util.Signlink;
 
 public class Class61 {
-    public static String aClass1_1421 = "To play on this world move to a free area first";
-    public static String aClass1_1422 = "Username: ";
     public static PacketBuffer packetBuffer = new PacketBuffer(5000);
-    public static String aClass1_1427 = "mapedge";
-    public static String aClass1_1428 = "wishes to duel with you.";
-    public static String aClass1_1432 = "System update in: ";
     public static int[][] anIntArrayArray1435 = new int[104][104];
-    public static String aClass1_1437 = "null";
-    public static String aClass1_1440 = "backleft1";
     public static Class68 aClass68_1441;
     public static boolean aBoolean1444 = false;
     public static int[] anIntArray1445;
-    public static String aClass1_1446 = "Fps:";
 
     public Class40_Sub5_Sub1 aClass40_Sub5_Sub1_1419;
     public int[] anIntArray1420;
@@ -37,7 +30,7 @@ public class Class61 {
         if(arg1 != -1 && Class68.aBooleanArray1629[arg1]) {
             VarbitDefinition.aCacheIndex_2349.method171(1, arg1);
             if(arg0 < 31)
-                aClass1_1428 = null;
+                English.aClass1_1428 = null;
             if(Widget.interfaces[arg1] != null) {
                 boolean bool = true;
                 for(int i = 0; Widget.interfaces[arg1].length > i; i++) {
@@ -57,7 +50,7 @@ public class Class61 {
 
     public static void method996(int arg0) {
         if(arg0 != 19655)
-            aClass1_1432 = null;
+            English.aClass1_1432 = null;
         SubNode.aClass68_2091.method1046((byte) 90);
         FloorDecoration.aClass40_Sub5_Sub14_Sub2_593.drawImage(0, 0);
         ActorDefinition.anIntArray2386 = Rasterizer3D.method708(ActorDefinition.anIntArray2386);
@@ -101,20 +94,6 @@ public class Class61 {
 
     }
 
-    public static void method998() {
-        anIntArrayArray1435 = null;
-        aClass1_1446 = null;
-        anIntArray1445 = null;
-        aClass68_1441 = null;
-        packetBuffer = null;
-        aClass1_1422 = null;
-        aClass1_1437 = null;
-        aClass1_1421 = null;
-        aClass1_1432 = null;
-        aClass1_1428 = null;
-        aClass1_1440 = null;
-        aClass1_1427 = null;
-    }
 
     public static void initiateVertexHeights(int arg0, byte arg1, int arg2, int arg3, int arg4) {
         int i = -112 / ((50 - arg1) / 53);

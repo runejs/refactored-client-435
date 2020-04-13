@@ -9,19 +9,9 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class29 {
-    public static String aClass1_670 = "@or3@";
-    public static String aClass1_671 ="mapscene";
     public static int tabAreaOverlayWidgetId = -1;
-    public static String aClass1_674 = " x";
     public static Class64 aClass64_676;
     public static int anInt678 = 0;
-
-    public static void method370() {
-        aClass1_674 = null;
-        aClass1_670 = null;
-        aClass1_671 = null;
-        aClass64_676 = null;
-    }
 
     public static boolean method371(int arg0, int arg1, int arg2) {
         if(arg1 == 0 && ItemDefinition.anInt2850 == arg2)

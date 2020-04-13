@@ -10,29 +10,12 @@ import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.tile.SceneTile;
 
 public abstract class Class38 {
-    public static String aClass1_881 = "mod_icons";
-    public static String aClass1_882 = "No reply from loginserver.";
-    public static String aClass1_883 = " seconds.";
     public static int[] menuActionTypes = new int[500];
-    public static String aClass1_885 = "Add ignore";
     public static Class68 aClass68_887;
     public static int[] anIntArray889 = new int[128];
-    public static String aClass1_890 = "%1";
     public static int anInt892;
     public static boolean aBoolean893 = false;
-    public static String aClass1_894 = " ->";
 
-    public static void method439() {
-        aClass1_882 = null;
-        aClass1_890 = null;
-        aClass1_881 = null;
-        aClass1_885 = null;
-        menuActionTypes = null;
-        anIntArray889 = null;
-        aClass1_883 = null;
-        aClass1_894 = null;
-        aClass68_887 = null;
-    }
 
     public static void method440(byte arg0) {
         if(ISAAC.aBoolean512) {

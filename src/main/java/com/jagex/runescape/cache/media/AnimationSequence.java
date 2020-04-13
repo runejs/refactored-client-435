@@ -42,15 +42,6 @@ public class AnimationSequence extends SubNode {
         aBoolean2496 = false;
     }
 
-    public static void method589() {
-        aClass1_2488 = null;
-        aCacheIndex_2484 = null;
-        minimapCompass = null;
-        requestcmd_tradereq = null;
-        aClass40_Sub5_Sub14_Sub4Array2474 = null;
-        anIntArrayArray2490 = null;
-    }
-
     public static void loadTerrainBlock(CollisionMap[] arg0, int arg1, byte[] arg2, int arg3, int arg4, int arg5, int arg6) {
         for(int i = 0; i < 4; i++) {
             for(int i_1_ = 0; i_1_ < 64; i_1_++) {
@@ -107,12 +98,12 @@ public class AnimationSequence extends SubNode {
 
     public Model method590(Model arg0, AnimationSequence arg1, int arg2, int arg3, byte arg4) {
         arg2 = anIntArray2485[arg2];
-        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, arg2 >> 16);
+        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960(arg2 >> 16);
         arg2 &= 0xffff;
         if(class40_sub5_sub15 == null)
             return arg1.method599(arg3, arg0, false);
         arg3 = arg1.anIntArray2485[arg3];
-        Class40_Sub5_Sub15 class40_sub5_sub15_0_ = Class55.method960((byte) -99, arg3 >> 16);
+        Class40_Sub5_Sub15 class40_sub5_sub15_0_ = Class55.method960(arg3 >> 16);
         arg3 &= 0xffff;
         if(class40_sub5_sub15_0_ == null) {
             Model class40_sub5_sub17_sub5 = arg0.method817(!class40_sub5_sub15.method737(arg2));
@@ -126,14 +117,13 @@ public class AnimationSequence extends SubNode {
         return model;
     }
 
-    public void method591(byte arg0) {
+    public void method591() {
         if(anInt2476 == -1) {
             if(anIntArray2473 == null)
                 anInt2476 = 0;
             else
                 anInt2476 = 2;
         }
-        int i = -117 / ((-76 - arg0) / 39);
         if(anInt2470 == -1) {
             if(anIntArray2473 == null)
                 anInt2470 = 0;
@@ -144,7 +134,7 @@ public class AnimationSequence extends SubNode {
 
     public Model method593(int arg0, boolean arg1, Model arg2, int arg3) {
         arg0 = anIntArray2485[arg0];
-        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, arg0 >> 16);
+        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960(arg0 >> 16);
         if(arg1)
             anIntArray2479 = null;
         arg0 &= 0xffff;
@@ -175,14 +165,13 @@ public class AnimationSequence extends SubNode {
             int i = arg1.getUnsignedByte();
             if(i == 0)
                 break;
-            method595(-102, i, arg1);
+            method595(i, arg1);
         }
         if(arg0 != -1)
             anInt2470 = -80;
     }
 
-    public void method595(int arg0, int arg1, Buffer arg2) {
-        int i = 3 / ((arg0 + 12) / 51);
+    public void method595(int arg1, Buffer arg2) {
         if(arg1 == 1) {
             int i_5_ = arg2.getUnsignedByte();
             animationLengths = new int[i_5_];
@@ -233,7 +222,7 @@ public class AnimationSequence extends SubNode {
 
     public Model method597(byte arg0, Model arg1, int arg2) {
         arg2 = anIntArray2485[arg2];
-        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, arg2 >> 16);
+        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960(arg2 >> 16);
         arg2 &= 0xffff;
         if(class40_sub5_sub15 == null)
             return arg1.method806(true);
@@ -246,7 +235,7 @@ public class AnimationSequence extends SubNode {
 
     public Model method598(int arg0, Model arg1, boolean arg2) {
         int i = anIntArray2485[arg0];
-        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, i >> 16);
+        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960(i >> 16);
         i &= 0xffff;
         if(class40_sub5_sub15 == null)
             return arg1.method817(true);
@@ -256,7 +245,7 @@ public class AnimationSequence extends SubNode {
         int i_21_ = 0;
         if(anIntArray2479 != null && arg0 < anIntArray2479.length) {
             i_21_ = anIntArray2479[arg0];
-            class40_sub5_sub15_20_ = Class55.method960((byte) -99, i_21_ >> 16);
+            class40_sub5_sub15_20_ = Class55.method960(i_21_ >> 16);
             i_21_ &= 0xffff;
         }
         if(class40_sub5_sub15_20_ == null || i_21_ == 65535) {
@@ -272,9 +261,9 @@ public class AnimationSequence extends SubNode {
 
     public Model method599(int arg0, Model arg1, boolean arg2) {
         if(arg2)
-            method591((byte) -78);
+            method591();
         arg0 = anIntArray2485[arg0];
-        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960((byte) -99, arg0 >> 16);
+        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960(arg0 >> 16);
         arg0 &= 0xffff;
         if(class40_sub5_sub15 == null)
             return arg1.method817(true);

@@ -47,14 +47,6 @@ public class Buffer extends Node {
 
     }
 
-    public static void method499() {
-        anIntArray1984 = null;
-        aClass40_Sub5_Sub14_Sub2_1959 = null;
-        aClass1_1983 = null;
-        aClass9_1933 = null;
-        anIntArray1972 = null;
-    }
-
     public int getShortBE() {
         currentPosition += 2;
         int i = ((buffer[currentPosition - 2] & 0xff) << 8) + (buffer[currentPosition - 1] & 0xff);

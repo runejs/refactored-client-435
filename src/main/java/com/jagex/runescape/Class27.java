@@ -13,6 +13,7 @@ import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.VertexNormal;
@@ -31,15 +32,10 @@ import com.jagex.runescape.scene.tile.*;
 import com.jagex.runescape.util.TextUtils;
 
 public class Class27 {
-    public static String aClass1_638 = "invback";
-    public static String aClass1_643 = "-";
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array649;
     public static CacheIndex aCacheIndex_654;
     public static int minimapState = 0;
-    public static String aClass1_664 = "Offline";
-    public static String takeStringInstance = "Take";
     public static int[] anIntArray666 = new int[]{1, 0, -1, 0};
-    public static String aClass1_668 ="Loading game screen - ";
     public SubNode aClass40_Sub5_660 = new SubNode();
 
     public Class27() {
@@ -114,7 +110,7 @@ public class Class27 {
         if(ISAAC.aBoolean519) {
             Class65.method1018();
             Rasterizer.clear();
-            Class51.method940(0, Class67.aClass1_1585, false, null);
+            Class51.method940(0, English.aClass1_1585, false, null);
         }
 
         Player.method792(110);
@@ -125,17 +121,6 @@ public class Class27 {
         SceneCluster.cameraZ = i_3_;
         if(arg0 >= -98)
             Widget.drawScrollBar(0, -27, 3, 10, 23, -36);
-    }
-
-    public static void method356() {
-        aClass40_Sub5_Sub14_Sub4Array649 = null;
-        aCacheIndex_654 = null;
-        aClass1_638 = null;
-        aClass1_668 = null;
-        takeStringInstance = null;
-        anIntArray666 = null;
-        aClass1_664 = null;
-        aClass1_643 = null;
     }
 
     public static void method357(CacheIndex arg0, int arg1, CacheIndex arg2) {
@@ -219,7 +204,7 @@ public class Class27 {
             }
             if(action == 26 || action == 46) {
                 String name = Landscape.menuActionTexts[arg1];
-                int i_13_ = name.indexOf(Class26.aClass1_620);
+                int i_13_ = name.indexOf(Native.aClass1_620);
                 if(i_13_ != -1) {
                     name = name.substring(i_13_ + 5).trim();
                     String username = TextUtils.formatName(TextUtils.longToName(TextUtils.nameToLong(name)));
@@ -359,7 +344,7 @@ public class Class27 {
                 LinkedList.anInt1061 = i;
                 ISAAC.anInt525 = i_10_;
                 Class8.itemSelected = 1;
-                Npc.aClass1_3295 = VertexNormal.aClass1_1114 + ItemDefinition.forId(i_12_, 10).name + Class26.aClass1_620;
+                Npc.aClass1_3295 = VertexNormal.aClass1_1114 + ItemDefinition.forId(i_12_, 10).name + Native.aClass1_620;
                 Main.widgetSelected = 0;
                 if(Npc.aClass1_3295 == null)
                     Npc.aClass1_3295 = "null";
@@ -406,7 +391,7 @@ public class Class27 {
                 }
                 if(action == 18) {
                     String class1 = Landscape.menuActionTexts[arg1];
-                    int i_18_ = class1.indexOf(Class26.aClass1_620);
+                    int i_18_ = class1.indexOf(Native.aClass1_620);
                     if(i_18_ != -1) {
                         long l = TextUtils.nameToLong(class1.substring(i_18_ + 5).trim());
                         int i_19_ = -1;
@@ -420,10 +405,10 @@ public class Class27 {
                             Class37.anInt876 = 3;
                             ChatBox.redrawChatbox = true;
                             ChatBox.inputType = 0;
-                            HuffmanEncoding.chatMessage = "";
+                            ChatBox.chatMessage = "";
                             ChatBox.messagePromptRaised = true;
                             PacketBuffer.aLong2241 = Class59.aLongArray1397[i_19_];
-                            HuffmanEncoding.aClass1_1563 = Class35.aClass1_1746 + Class40_Sub11.friendUsernames[i_19_];
+                            HuffmanEncoding.aClass1_1563 = English.aClass1_1746 + Class40_Sub11.friendUsernames[i_19_];
                         }
                     }
                 }
@@ -518,11 +503,11 @@ public class Class27 {
                     Widget widget = Widget.forId(i_10_);
                     ISAAC.redrawTabArea = true;
                     Main.widgetSelected = 1;
-                    Class38_Sub1.aClass1_1918 = widget.targetVerb;
+                    Native.aClass1_1918 = widget.targetVerb;
                     ItemDefinition.selectedMask = widget.clickMask;
                     Class8.itemSelected = 0;
                     Class60.anInt1417 = i_10_;
-                    FloorDecoration.aClass1_611 = Landscape.aClass1_1162 + widget.spellName + Class26.aClass1_620;
+                    FloorDecoration.aClass1_611 = Landscape.aClass1_1162 + widget.spellName + Native.aClass1_620;
                     if(ItemDefinition.selectedMask == 16) {
                         IdentityKit.drawTabIcons = true;
                         Class5.currentTabId = 3;
@@ -537,7 +522,7 @@ public class Class27 {
                             SceneCluster.packetBuffer.putPacket(151);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
                         } else
-                            Class44.addChatMessage("", widget.itemAmount + Class65.aClass1_1536 + ItemDefinition.forId(i_12_, 10).name, 0);
+                            Class44.addChatMessage("", widget.itemAmount + Native.aClass1_1536 + ItemDefinition.forId(i_12_, 10).name, 0);
                     }
                     if(action == 42) {
                         Widget widget = Widget.forId(i_10_);
@@ -616,7 +601,7 @@ public class Class27 {
                     }
                     if(action == 45 || action == 51 || action == 13 || action == 35) {
                         String s = Landscape.menuActionTexts[arg1];
-                        int l1 = s.indexOf(Class26.aClass1_620);
+                        int l1 = s.indexOf(Native.aClass1_620);
                         if(l1 != -1) {
                             long l = TextUtils.nameToLong(s.substring(l1 + 5).trim());
                             if(action == 45)
@@ -655,7 +640,7 @@ public class Class27 {
                             SceneCluster.packetBuffer.putPacket(151);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
                         } else
-                            Class44.addChatMessage("", widget.itemAmounts[i]+ Class65.aClass1_1536 + ItemDefinition.forId(i_12_, 10).name, 0);
+                            Class44.addChatMessage("", widget.itemAmounts[i]+ Native.aClass1_1536 + ItemDefinition.forId(i_12_, 10).name, 0);
                         GenericTile.anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
                         Class30.anInt704 = i_10_;
@@ -728,7 +713,7 @@ public class Class27 {
                     }
                     if(action == 28) {
                         String class1 = Landscape.menuActionTexts[arg1];
-                        int i_22_ = class1.indexOf(Class26.aClass1_620);
+                        int i_22_ = class1.indexOf(Native.aClass1_620);
                         if(i_22_ != -1) {
                             if(HuffmanEncoding.openScreenWidgetId == -1) {
                                 PacketBuffer.method516();
@@ -738,7 +723,7 @@ public class Class27 {
                                     Class67.reportMutePlayer = false;
                                 }
                             } else {
-                                Class44.addChatMessage("", Class37.aClass1_873, 0);
+                                Class44.addChatMessage("", English.aClass1_873, 0);
                             }
                         }
                     }
@@ -953,12 +938,11 @@ public class Class27 {
             }
         }
         if(arg7 != 398)
-            takeStringInstance = null;
+            English.takeStringInstance = null;
         return widget;
     }
 
     public static IndexedImage method363(CacheIndex arg0, byte arg1, int arg2, int arg3) {
-        int i = 106 % ((arg1 - 66) / 53);
         if(!ImageRGB.spriteExists(arg2, arg3, arg0))
             return null;
         return SubNode.method538(0);
@@ -1086,25 +1070,25 @@ public class Class27 {
         if(arg1 == -3)
             Class33.method411("", GenericTile.aClass1_1218, SceneTile.aClass1_2057);
         else if(arg1 == -2)
-            Class33.method411("", "", Class40_Sub5_Sub6.aClass1_2462);
+            Class33.method411("", "", English.aClass1_2462);
         else if(arg1 == -1)
-            Class33.method411("", Class33.aClass1_799, SceneTile.aClass1_2053);
+            Class33.method411("", English.aClass1_799, SceneTile.aClass1_2053);
         else if(arg1 == 3)
             Class33.method411("", "", ISAAC.aClass1_526);
         else if(arg1 == 4)
-            Class33.method411("", Class64.aClass1_1526, Cache.aClass1_323);
+            Class33.method411("", English.aClass1_1526, Cache.aClass1_323);
         else if(arg1 != 5) {
             if(arg1 == 6)
-                Class33.method411("", Class40_Sub5_Sub6.aClass1_2460, Class65.aClass1_1538);
+                Class33.method411("", English.aClass1_2460, English.aClass1_1538);
             else if(arg1 == 7)
-                Class33.method411("", Class57.aClass1_1339, English.pleaseUseADifferentWorld);
+                Class33.method411("", English.aClass1_1339, English.pleaseUseADifferentWorld);
             else if(arg1 != 8) {
                 if(arg1 == 9)
                     Class33.method411("", Actor.aClass1_3138, Item.aClass1_3050);
                 else if(arg1 == 10)
-                    Class33.method411("", Class42.aClass1_1002, IdentityKit.aClass1_2615);
+                    Class33.method411("", English.aClass1_1002, IdentityKit.aClass1_2615);
                 else if(arg1 == 11)
-                    Class33.method411("", Class42.aClass1_1001, Class40_Sub6.aClass1_2111);
+                    Class33.method411("", English.aClass1_1001, English.aClass1_2111);
                 else if(arg1 == 12)
                     Class33.method411("", FramemapDefinition.aClass1_2188, VarbitDefinition.aClass1_2357);
                 else if(arg1 == 13)
@@ -1114,14 +1098,14 @@ public class Class27 {
                         if(arg1 != 17) {
                             if(arg1 != 18) {
                                 if(arg1 == 20)
-                                    Class33.method411("", Class55.aClass1_1298, SceneTile.aClass1_2047);
+                                    Class33.method411("", English.aClass1_1298, SceneTile.aClass1_2047);
                                 else if(arg1 == 22)
                                     Class33.method411("", OverlayDefinition.aClass1_2325, CacheIndex.aClass1_258);
                                 else if(arg1 == 23)
-                                    Class33.method411("", Class38.aClass1_882, ActorDefinition.aClass1_2410);
+                                    Class33.method411("", English.aClass1_882, ActorDefinition.aClass1_2410);
                                 else if(arg1 != 24) {
                                     if(arg1 == 25)
-                                        Class33.method411("", Class8.aClass1_278, SceneTile.aClass1_2050);
+                                        Class33.method411("", English.aClass1_278, SceneTile.aClass1_2050);
                                     else if(arg1 == 26)
                                         Class33.method411("", English.thisComputersAddressHasBeenBlocked, English.asItWasUsedToBreakOurRules);
                                     else if(arg1 != 27)
@@ -1129,17 +1113,17 @@ public class Class27 {
                                     else
                                         Class33.method411("", "", FramemapDefinition.aClass1_2189);
                                 } else
-                                    Class33.method411("", Class60.aClass1_1416, Class5.aClass1_193);
+                                    Class33.method411("", English.aClass1_1416, English.aClass1_193);
                             } else
-                                Class33.method411("", Main.aClass1_1781, Class34.aClass1_817);
+                                Class33.method411("", Main.aClass1_1781, English.aClass1_817);
                         } else
-                            Class33.method411("", Landscape.aClass1_1178, Class61.aClass1_1421);
+                            Class33.method411("", Landscape.aClass1_1178, English.aClass1_1421);
                     } else
                         Class33.method411("", Buffer.aClass1_1983, English.pleaseWait5MinutesBeforeTryingAgain);
                 } else
                     Class33.method411("", Wall.aClass1_344, ActorDefinition.aClass1_2401);
             } else
-                Class33.method411("", Class42.aClass1_997, Class68_Sub1.aClass1_2209);
+                Class33.method411("", English.aClass1_997, English.aClass1_2209);
         } else
             Class33.method411("", English.yourAccountIsAlreadyLoggedIn, Player.aClass1_3286);
         OverlayDefinition.method559(10);
@@ -1177,7 +1161,7 @@ public class Class27 {
 
     public SubNode method362(int arg0) {
         if(arg0 >= -73)
-            aClass1_638 = null;
+            Native.aClass1_638 = null;
         SubNode class40_sub5 = aClass40_Sub5_660.aClass40_Sub5_2082;
         if(class40_sub5 == aClass40_Sub5_660)
             return null;

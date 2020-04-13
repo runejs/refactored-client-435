@@ -17,25 +17,18 @@ import java.awt.*;
 import java.util.Calendar;
 
 public class Class8 {
-    public static String aClass1_278 = "Unexpected loginserver response.";
     public static Calendar aCalendar279 = Calendar.getInstance();
-    public static String aClass1_281 = "backright1";
     public static CacheIndex aCacheIndex_284;
     public static long aLong288;
     public static int anInt289;
     public static int anInt290 = 0;
     public static int anInt292 = 0;
-    public static String aClass1_294 = "You have only just left another world.";
     public static FontMetrics fontMetrics;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array296;
     public static int[] anIntArray297 = new int[5];
     public static Class68 aClass68_298;
-    public static String aClass1_299 = "runes";
     public static int itemSelected = 0;
     public static byte aByte302 = (byte) 0;
-    public static String aClass1_303 = "_";
-    public static String aClass1_304 = "backhmid2";
-    public static String aClass1_305 = "";
 
     public Class8(int arg0) {
         CollisionMap.anInt141 = arg0;
@@ -48,7 +41,7 @@ public class Class8 {
             int i_0_ = Player.npcIds[i];
             Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_0_];
             if(class40_sub5_sub17_sub4_sub2 != null)
-                Class13.method241(class40_sub5_sub17_sub4_sub2, class40_sub5_sub17_sub4_sub2.actorDefinition.boundaryDimension, (byte) 107);
+                Class13.method241(class40_sub5_sub17_sub4_sub2, (byte) 107);
         }
 
     }
@@ -60,27 +53,12 @@ public class Class8 {
     }
 
     public static void method211() {
-        ISAAC.aClass9_516.method235((byte) 78);
-        MouseHandler.modelCache.method235((byte) 36);
-        Buffer.aClass9_1933.method235((byte) 72);
+        ISAAC.aClass9_516.method235();
+        MouseHandler.modelCache.method235();
+        Buffer.aClass9_1933.method235();
 
     }
 
-    public static void method214() {
-        aClass1_278 = null;
-        anIntArray297 = null;
-        fontMetrics = null;
-        aClass1_305 = null;
-        aCacheIndex_284 = null;
-        aClass1_303 = null;
-        aCalendar279 = null;
-        aClass1_299 = null;
-        aClass68_298 = null;
-        aClass1_304 = null;
-        aClass40_Sub5_Sub14_Sub4Array296 = null;
-        aClass1_294 = null;
-        aClass1_281 = null;
-    }
 
     public static synchronized void method215(int[] arg0, int arg1) {
         int i = 0;

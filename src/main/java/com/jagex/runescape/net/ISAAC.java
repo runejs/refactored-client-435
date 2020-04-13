@@ -390,17 +390,6 @@ public class ISAAC {
 
     }
 
-    public static void method282() {
-        aClass1_515 = null;
-        aClass1_526 = null;
-        aClass40_Sub5_Sub14_Sub2_524 = null;
-        aClass1_506 = null;
-        aClass9_510 = null;
-        aClass9_516 = null;
-        aClass31_521 = null;
-        mapCoordinates = null;
-    }
-
     public static void method283(long arg0, int arg1) {
         try {
             int i = -93 / ((-50 - arg1) / 45);

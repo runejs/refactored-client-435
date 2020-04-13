@@ -47,10 +47,6 @@ public class EntryTable extends Node {
         anIntArray2139 = null;
     }
 
-    public static void method871() {
-        anIntArray2141 = null;
-    }
-
     public void method868(int arg0) {
         if(anIntArray2139 != null) {
             if(anInt2136 == 1 || anInt2136 == 3) {

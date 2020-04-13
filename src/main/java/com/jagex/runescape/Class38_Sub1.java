@@ -22,14 +22,9 @@ import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
 
 public class Class38_Sub1 extends Class38 {
-    public static String aClass1_1905 = " has logged out.";
     public static int[] anIntArray1909 = new int[99];
     public static int[] anIntArray1916 = new int[50];
-    public static String aClass1_1917 = "Attack";
-    public static String aClass1_1918 = null;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1919;
-    public static String aClass1_1921 = "b12_full";
-    public static String aClass1_1922 = "Loaded sprites";
     public static int anInt1923 = 0;
 
     static {
@@ -62,7 +57,7 @@ public class Class38_Sub1 extends Class38 {
                 if(ChatBox.chatMessages[i_1_] != null) {
                     int i_2_ = ChatBox.chatTypes[i_1_];
                     String class1 = ChatBox.chatPlayerNames[i_1_];
-                    if(class1 != null && class1.startsWith(Class51.whiteCrown))
+                    if(class1 != null && class1.startsWith(Native.whiteCrown))
                         class1 = class1.substring(5);
                     if(class1 != null && class1.startsWith(Widget.goldCrown))
                         class1 = class1.substring(5);
@@ -70,15 +65,15 @@ public class Class38_Sub1 extends Class38 {
                         int i_3_ = 329 + -(13 * i);
                         i++;
                         if(Class13.mouseX > 4 && i_3_ + -10 < Landscape.mouseY + -4 && -4 + Landscape.mouseY <= i_3_ + 3) {
-                            int i_4_ = 25 + WallDecoration.fontNormal.getStringWidth(Class40_Sub5_Sub6.aClass1_2458 + Native.prefixColon+ class1+ ChatBox.chatMessages[i_1_]);
+                            int i_4_ = 25 + WallDecoration.fontNormal.getStringWidth(English.aClass1_2458 + Native.prefixColon+ class1+ ChatBox.chatMessages[i_1_]);
                             if(i_4_ > 450)
                                 i_4_ = 450;
                             if(Class13.mouseX < 4 + i_4_) {
                                 if(InteractiveObject.playerRights >= 1) {
-                                    OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 2028, Class26.aClass1_620+ class1);
+                                    OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 2028, Native.aClass1_620+ class1);
                                 }
-                                OverlayDefinition.addActionRow(Class38.aClass1_885, 0, 0, 0, 2051, Class26.aClass1_620+ class1);
-                                OverlayDefinition.addActionRow(FloorDecoration.aClass1_591, 0, 0, 0, 2045, Class26.aClass1_620+ class1);
+                                OverlayDefinition.addActionRow(English.aClass1_885, 0, 0, 0, 2051, Native.aClass1_620+ class1);
+                                OverlayDefinition.addActionRow(FloorDecoration.aClass1_591, 0, 0, 0, 2045, Native.aClass1_620+ class1);
                             }
                         }
                         if(i >= 5)
@@ -370,17 +365,6 @@ public class Class38_Sub1 extends Class38 {
         return clickType != 1;
     }
 
-    public static void method449() {
-        anIntArray1916 = null;
-        aClass1_1918 = null;
-        aClass1_1917 = null;
-        anIntArray1909 = null;
-        aClass40_Sub5_Sub14_Sub2_1919 = null;
-        aClass1_1905 = null;
-        aClass1_1922 = null;
-        aClass1_1921 = null;
-    }
-
     public static void method450(byte arg0) {
         if(Player.anInt3288 == 2) {
             if(arg0 >= -28)
@@ -392,7 +376,6 @@ public class Class38_Sub1 extends Class38 {
     }
 
     public void method444(int arg0) {
-        int i = 36 / ((arg0 + 76) / 48);
         for(int i_0_ = 0; i_0_ < 10; i_0_++)
             aLongArray1910[i_0_] = 0L;
     }
@@ -405,7 +388,7 @@ public class Class38_Sub1 extends Class38 {
         for(int i = 0; i < 10; i++)
             aLongArray1910[i] = aLong1914;
         if(arg0 != -10115)
-            aClass1_1921 = null;
+            Native.aClass1_1921 = null;
     }
 
     public int method442(int arg0, int arg1, int arg2) {

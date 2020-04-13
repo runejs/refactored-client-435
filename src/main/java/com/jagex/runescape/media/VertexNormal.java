@@ -23,16 +23,4 @@ public class VertexNormal {
     public int z;
     public int magnitude;
 
-    public static void method914() {
-        aClass1_1114 = null;
-        aClass1_1117 = null;
-        aClass1_1090 = null;
-        English.moderatorOptionMutePlayerFor48HoursOFF = null;
-        aClass1_1099 = null;
-        aClass1_1105 = null;
-        aClass9_1102 = null;
-        aClass1_1113 = null;
-        aClass1_1097 = null;
-        aClass6_Sub1_1104 = null;
-    }
 }

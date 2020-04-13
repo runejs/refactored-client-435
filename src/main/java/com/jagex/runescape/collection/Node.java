@@ -47,12 +47,7 @@ public class Node {
         }
     }
 
-    public static void method458() {
-        aClass1_940 = null;
-        aClass1_975 = null;
-        requestcmd_chalreq = null;
-        aClass1_932 = null;
-    }
+
 
     public static boolean method459(int arg0, int arg1, byte arg2) {
         if(arg0 == 11)
@@ -65,11 +60,9 @@ public class Node {
         return gameObjectDefinition.method610(arg0, 7533);
     }
 
-    public boolean method454(boolean arg0) {
+    public boolean method454() {
         if(aClass40_968 == null)
             return false;
-        if(arg0)
-            method458();
         return true;
     }
 

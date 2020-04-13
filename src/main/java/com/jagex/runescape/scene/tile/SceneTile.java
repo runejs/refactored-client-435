@@ -9,6 +9,8 @@ import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.KeyFocusListener;
+import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -63,9 +65,9 @@ public class SceneTile extends Node {
     public static String method532(byte arg0, Widget arg1, String arg2) {
         if (arg0 != 20)
             aClass1_2047 = null;
-        if (arg2.contains(Class44.aClass1_1041)) {
+        if (arg2.contains(Native.aClass1_1041)) {
             for (; ; ) {
-                int i = arg2.indexOf(Class38.aClass1_890);
+                int i = arg2.indexOf(Native.aClass1_890);
                 if (i == -1)
                     break;
                 arg2 = arg2.substring(0, i) + Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(0, false, arg1)) + arg2.substring(2 + i);
@@ -77,13 +79,13 @@ public class SceneTile extends Node {
                 arg2 = arg2.substring(0, i) + Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(1, false, arg1)) + arg2.substring(i + 2);
             }
             for (; ; ) {
-                int i = arg2.indexOf(Class67.aClass1_1610);
+                int i = arg2.indexOf(Native.aClass1_1610);
                 if (i == -1)
                     break;
                 arg2 = arg2.substring(0, i) + Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(2, false, arg1)) + arg2.substring(2 + i);
             }
             for (; ; ) {
-                int i = arg2.indexOf(Class55.aClass1_1300);
+                int i = arg2.indexOf(Native.aClass1_1300);
                 if (i == -1)
                     break;
                 arg2 = arg2.substring(0, i) + Class40_Sub11.method872(arg0 ^ 0x3b9ac9eb, HuffmanEncoding.method1029(3, false, arg1)) + arg2.substring(i + 2);
@@ -100,7 +102,7 @@ public class SceneTile extends Node {
                     break;
                 String class1 = "";
                 if (Class12.aSignlinkNode_394 != null) {
-                    class1 = CacheIndex_Sub1.method204(Class12.aSignlinkNode_394.integerData, 255);
+                    class1 = CacheIndex_Sub1.method204(Class12.aSignlinkNode_394.integerData);
                     if (Class12.aSignlinkNode_394.value != null) {
                         byte[] is = ((String) Class12.aSignlinkNode_394.value).getBytes(StandardCharsets.ISO_8859_1);
                         class1 = InteractiveObject.method279(is, true, 0, is.length).toString();
@@ -133,25 +135,14 @@ public class SceneTile extends Node {
             sprite.drawImage(4 + -(sprite.maxWidth / 2) + i_3_ + 94, -4 + -i_4_ + 83 + -(sprite.maxHeight / 2));
     }
 
-    public static void method534() {
-        aClass1_2042 = null;
-        aClass1_2050 = null;
-        aClass1_2047 = null;
-        aClass1_2057 = null;
-        aClass1_2053 = null;
-        anIntArray2048 = null;
-        aClass1_2054 = null;
-        aClass40_Sub5_Sub14_Sub4_2043 = null;
-    }
-
     public static String getCombatLevelColour(int arg0, int arg1) {
         int diff = -arg1 + arg0;
         if (diff < -9)
             return FloorDecoration.aClass1_610;
         if (diff < -6)
-            return Class29.aClass1_670;
+            return Native.aClass1_670;
         if (diff < -3)
-            return Class68.aClass1_1639;
+            return Native.aClass1_1639;
         if (diff < 0)
             return Cache.aClass1_327;
         if (diff > 9)
@@ -161,7 +152,7 @@ public class SceneTile extends Node {
         if (diff > 3)
             return Node.aClass1_932;
         if (diff > 0)
-            return Class37.aClass1_877;
+            return Native.aClass1_877;
         return KeyFocusListener.aClass1_1283;
     }
 
@@ -169,13 +160,13 @@ public class SceneTile extends Node {
         if (ActorDefinition.menuActionRow >= 2 || Class8.itemSelected != 0 || Main.widgetSelected != 0) {
             String class1;
             if (Class8.itemSelected == 1 && ActorDefinition.menuActionRow < 2)
-                class1 = Main.aClass1_1763 + VertexNormal.aClass1_1117 + Npc.aClass1_3295 + Class38.aClass1_894;
+                class1 = Main.aClass1_1763 + VertexNormal.aClass1_1117 + Npc.aClass1_3295 + Native.aClass1_894;
             else if (Main.widgetSelected != 1 || ActorDefinition.menuActionRow >= 2)
                 class1 = Landscape.menuActionTexts[-1 + ActorDefinition.menuActionRow];
             else
-                class1 = Class38_Sub1.aClass1_1918 + VertexNormal.aClass1_1117 + FloorDecoration.aClass1_611 + Class38.aClass1_894;
+                class1 = Native.aClass1_1918 + VertexNormal.aClass1_1117 + FloorDecoration.aClass1_611 + Native.aClass1_894;
             if (ActorDefinition.menuActionRow > 2)
-                class1 = class1 + WallDecoration.aClass1_1243 + (ActorDefinition.menuActionRow + -2) + Class39.aClass1_904;
+                class1 = class1 + WallDecoration.aClass1_1243 + (ActorDefinition.menuActionRow + -2) + English.aClass1_904;
             if (arg0 == 4)
                 Class40_Sub5_Sub17_Sub6.fontBold.drawShadowedSeededAlphaString(class1, 4, 15, 16777215, true, Node.pulseCycle / 1000);
         }

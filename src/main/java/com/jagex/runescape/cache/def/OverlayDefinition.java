@@ -48,14 +48,6 @@ public class OverlayDefinition extends SubNode {
         anInt2345 = 0;
     }
 
-    public static void method554() {
-        tile_underlay_path = null;
-        tile_flags = null;
-        constructMapTiles = null;
-        aClass1_2325 = null;
-        anIntArray2324 = null;
-    }
-
     public static void method557(int arg0) {
         Class42.method886(0, 0, false, null, arg0);
     }
@@ -112,7 +104,7 @@ public class OverlayDefinition extends SubNode {
             if (arg0 == 25 || arg0 == 30 || arg0 == 40) {
                 Class68_Sub1.aClass68_2213 = null;
                 Class38.method440((byte) -98);
-                Class40_Sub5_Sub17_Sub1.method763(MouseHandler.aCanvas1469, (byte) -128, ActorDefinition.aClass6_Sub1_2377);
+                Class40_Sub5_Sub17_Sub1.method763(MouseHandler.aCanvas1469, ActorDefinition.aClass6_Sub1_2377);
             }
             Class51.anInt1197 = arg0;
             Class40_Sub5_Sub11.clearScreen = true;

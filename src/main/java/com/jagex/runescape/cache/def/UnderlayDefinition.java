@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -42,7 +43,7 @@ public class UnderlayDefinition extends SubNode {
     public static void addFriend(long name) {
         if(name != 0L) {
             if(Item.friendsCount >= 100 && Class44.anInt1049 != 1 || Item.friendsCount >= 200) {
-                Class44.addChatMessage("", Class59.aClass1_1399.toString(), 0);
+                Class44.addChatMessage("", English.aClass1_1399.toString(), 0);
             } else {
                 String username = TextUtils.formatName(TextUtils.longToName(name));
                 for(int i = 0; Item.friendsCount > i; i++) {
@@ -53,7 +54,7 @@ public class UnderlayDefinition extends SubNode {
                 }
                 for(int i = 0; Class42.anInt1008 > i; i++) {
                     if(WallDecoration.ignores[i] == name) {
-                        Class44.addChatMessage("", Class44.aClass1_1038 + username + Class39.aClass1_917, 0);
+                        Class44.addChatMessage("", English.aClass1_1038 + username + English.aClass1_917, 0);
                         return;
                     }
                 }
@@ -74,13 +75,7 @@ public class UnderlayDefinition extends SubNode {
         return arg0 | arg1;
     }
 
-    public static void method621() {
-        aClass1_2566 = null;
-        aClass40_Sub5_Sub14_Sub4Array2567 = null;
-        aCacheIndex_2582 = null;
-        aClass1_2577 = null;
-        aClass6_Sub1_2571 = null;
-    }
+
 
     public void calculateHsl() {
         double r = (double) (color >> 16 & 0xff) / 256.0;

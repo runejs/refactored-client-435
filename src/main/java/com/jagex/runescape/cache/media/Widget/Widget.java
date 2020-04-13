@@ -227,17 +227,10 @@ public class Widget extends SubNode {
     }
 
     public static void method640() {
-        Class68.aClass9_1615.method235((byte) 49);
+        Class68.aClass9_1615.method235();
     }
 
-    public static void method641() {
-        aClass1_2671 = null;
-        cmd_errortest = null;
-        goldCrown = null;
-        aClass1_2674 = null;
-        aClass1_2740 = null;
-        str_Choose_Option = null;
-    }
+
 
     public static void method642(Component arg0, int arg1) {
         if(arg1 != -10) {
@@ -256,10 +249,10 @@ public class Widget extends SubNode {
     }
 
     public static void method645() {
-        GroundItemTile.aClass9_1364.method235((byte) 118);
-        VertexNormal.aClass9_1102.method235((byte) -42);
-        InteractiveObject.aClass9_470.method235((byte) 103);
-        Class49.aClass9_1145.method235((byte) 97);
+        GroundItemTile.aClass9_1364.method235();
+        VertexNormal.aClass9_1102.method235();
+        InteractiveObject.aClass9_470.method235();
+        Class49.aClass9_1145.method235();
     }
 
     public static String getShortenedAmountText(int coins) {
@@ -381,7 +374,7 @@ public class Widget extends SubNode {
                     }
                     if(i_3_ == 27) {
                         int i_11_ = is[i_2_];
-                        Class40_Sub2.method522(Class67.anIntArray1588[--i], i_11_, (byte) 118);
+                        Class40_Sub2.method522(Class67.anIntArray1588[--i], i_11_);
                         continue;
                     }
                     if(i_3_ == 31) {
@@ -1071,7 +1064,7 @@ public class Widget extends SubNode {
                 widget.disabledText = English.loadingFriendList;
                 widget.actionType = 0;
             } else if(type == 1 && Class12.friendListStatus == 1) {
-                widget.disabledText = HuffmanEncoding.str_Connecting_to_friendserver;
+                widget.disabledText = English.str_Connecting_to_friendserver;
                 widget.actionType = 0;
             } else if(type == 2 && Class12.friendListStatus != 2) {
                 widget.actionType = 0;
@@ -1105,12 +1098,12 @@ public class Widget extends SubNode {
                 widget.actionType = 0;
             } else {
                 if(Class40_Sub7.friendWorlds[type] == 0) {
-                    widget.disabledText = FloorDecoration.aClass1_610 + Class27.aClass1_664;
+                    widget.disabledText = FloorDecoration.aClass1_610 + English.aClass1_664;
                 } else if(Class40_Sub7.friendWorlds[type] < 5000) {
                     if(Class40_Sub7.friendWorlds[type] == Class13.worldid) {
-                        widget.disabledText = Landscape.aClass1_1162 + Class26.aClass1_634 + Class40_Sub7.friendWorlds[type];
+                        widget.disabledText = Landscape.aClass1_1162 + English.aClass1_634 + Class40_Sub7.friendWorlds[type];
                     } else {
-                        widget.disabledText = KeyFocusListener.aClass1_1283 + Class26.aClass1_634 + Class40_Sub7.friendWorlds[type];
+                        widget.disabledText = KeyFocusListener.aClass1_1283 + English.aClass1_634 + Class40_Sub7.friendWorlds[type];
                     }
                 } else if(Class13.worldid == Class40_Sub7.friendWorlds[type]) {
                     widget.disabledText = Landscape.aClass1_1162 + Cache.aClass1_333 + (-5000 + Class40_Sub7.friendWorlds[type]);
@@ -1129,7 +1122,7 @@ public class Widget extends SubNode {
         } else if(type >= 401 && type <= 500) {
             type -= 401;
             if(type == 0 && Class12.friendListStatus == 0) {
-                widget.disabledText = Class49.aClass1_1148;
+                widget.disabledText = English.aClass1_1148;
                 widget.actionType = 0;
             } else if(type == 1 && Class12.friendListStatus == 0) {
                 widget.disabledText = PacketBuffer.str_Please_Wait;
@@ -1179,7 +1172,7 @@ public class Widget extends SubNode {
             widget.modelId = 1;
             widget.modelType = WidgetModelType.PLAYER;
         } else if(type == 600)
-            widget.disabledText = HuffmanEncoding.reportedName + Native.prefixYellowSTARV;
+            widget.disabledText = HuffmanEncoding.reportedName + Native.prefixYellowBar;
         else if(type == 620) {
             if(InteractiveObject.playerRights >= 1) {
                 if(Class67.reportMutePlayer) {

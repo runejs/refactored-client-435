@@ -26,10 +26,8 @@ import com.jagex.runescape.scene.tile.Wall;
 public class Class37 {
     public static HashTable aClass23_869 = new HashTable(32);
     public static boolean aBoolean871 = false;
-    public static String aClass1_873 = "Please close the interface you have open before using 'report abuse'";
     public static int anInt874;
     public static int anInt876 = 0;
-    public static String aClass1_877 = "@gr1@";
     public static ImageRGB[] cursorCross;
 
     static {
@@ -56,12 +54,6 @@ public class Class37 {
         System.exit(1);
     }
 
-    public static void method433() {
-        aClass23_869 = null;
-        cursorCross = null;
-        aClass1_873 = null;
-        aClass1_877 = null;
-    }
 
     public static void method434(int arg0) {
         Class4.menuOpen = false;
@@ -89,7 +81,7 @@ public class Class37 {
     }
 
     public static void renderMinimap(boolean arg0) {
-        RSCanvas.method45((byte) -106);
+        RSCanvas.method45();
         if(Class27.minimapState == 2) {
             byte[] mmBackgroundPixels = Class34.mapBack.imgPixels;
             int[] rasterPixels = Rasterizer.destinationPixels;

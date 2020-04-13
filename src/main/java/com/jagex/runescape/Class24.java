@@ -37,13 +37,6 @@ public class Class24 {
         return 7 + -arg3;
     }
 
-    public static void method339() {
-        anIntArray577 = null;
-        IncomingPackets.INCOMING_PACKET_SIZES = null;
-        Player.actorUpdatingIndices = null;
-        aClass6_Sub1Array580 = null;
-        walkingQueueX = null;
-    }
 
     public static boolean method340() {
         return Class5.aClass22_189 != null;

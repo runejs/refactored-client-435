@@ -10,7 +10,6 @@ import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
-import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -27,13 +26,6 @@ public abstract class Class22 {
     public static int anInt545;
     public static int anInt547 = 0;
     public static boolean[] aBooleanArray548 = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, false, false};
-
-    public static void method298() {
-        English.yourAccountIsAlreadyLoggedIn = null;
-        aClass40_Sub5_Sub14_Sub2Array535 = null;
-        Player.trackedPlayerAppearanceCache = null;
-        aBooleanArray548 = null;
-    }
 
     public static void method299(byte arg0, int arg1) {
         int[] is = Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.pixels;
@@ -97,7 +89,7 @@ public abstract class Class22 {
         }
     }
 
-    public static void method305(byte arg0) {
+    public static void method305() {
         RSCanvas.aClass68_64.method1046((byte) 90);
         Class44.aClass40_Sub5_Sub14_Sub2_1047.drawImage(0, 0);
         Class5.anIntArray198 = Rasterizer3D.method708(Class5.anIntArray198);
@@ -114,7 +106,7 @@ public abstract class Class22 {
             arg0.currentPosition += IdentityKit.aHuffmanEncoding_2590.method1023(arg0.buffer, length, 0, chars, arg0.currentPosition, -1);
             return new String(chars);
         } catch(Exception exception) {
-            return Class33.aClass1_777;
+            return English.aClass1_777;
         }
     }
 

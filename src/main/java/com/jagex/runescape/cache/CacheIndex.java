@@ -31,7 +31,6 @@ public abstract class CacheIndex {
     public Class42[] aClass42Array217;
     public boolean aBoolean220;
     public int anInt221;
-    public int anInt1807;
     public int[] anIntArray224;
     public int[] anIntArray227;
     public boolean aBoolean233;
@@ -81,14 +80,6 @@ public abstract class CacheIndex {
         } while(false);
     }
 
-    public static void method180() {
-        aClass40_Sub5_Sub14_Sub2Array215 = null;
-        aClass1_256 = null;
-        modelCache = null;
-        Player.deregisterActorIndices = null;
-        anIntArrayArrayArray262 = null;
-        aClass1_258 = null;
-    }
 
     public static void method184(byte[] arg0, int arg1) {
         Buffer class40_sub1 = new Buffer(arg0);
@@ -139,14 +130,14 @@ public abstract class CacheIndex {
     }
 
     public static void method188() {
-        Class40_Sub5_Sub6.aClass9_2439.method235((byte) 95);
-        Class42.aClass9_998.method235((byte) -90);
+        Class40_Sub5_Sub6.aClass9_2439.method235();
+        Class42.aClass9_998.method235();
     }
 
     public static void method189(boolean arg0) {
         if(arg0)
             Player.deregisterActorIndices = null;
-        WallDecoration.aClass9_1247.method235((byte) 59);
+        WallDecoration.aClass9_1247.method235();
     }
 
     public byte[] method170(String arg0, String arg1, int arg2) {

@@ -219,13 +219,4 @@ public class ComplexTile {
         l9 /= 14;
     }
 
-    public static void method239() {
-        screenX = null;
-        screenY = null;
-        viewspaceX = null;
-        viewspaceY = null;
-        viewspaceZ = null;
-        shapedTilePointData = null;
-        shapedTileElementData = null;
-    }
 }

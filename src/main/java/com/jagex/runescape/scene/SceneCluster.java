@@ -34,11 +34,5 @@ public class SceneCluster {
     public int worldEndZ;
     public int worldDistanceFromCameraEndX;
 
-    public static void method401() {
-        aClass38_768 = null;
-        aClass1_772 = null;
-        anIntArray761 = null;
-        packetBuffer = null;
-        aClass6_Sub1_773 = null;
-    }
+
 }

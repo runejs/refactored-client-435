@@ -8,6 +8,7 @@ import com.jagex.runescape.cache.media.Widget.WidgetType;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -31,24 +32,14 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     public static int[] anIntArray2 = new int[5];
     public static long[] aLongArray4 = new long[32];
     public static String clickToContinueString = null;
-    public static String aClass1_28 = "null";
     public static int anInt31;
-    public static String aClass1_34 = "null";
     public boolean aBoolean43 = false;
 
-    public static void method18() {
-        clickToContinueString = null;
-        aClass1_34 = null;
-        aClass1_28 = null;
-        aLongArray4 = null;
-        aClass40_Sub5_Sub14_Sub2_1 = null;
-        anIntArray2 = null;
-    }
 
     public static void method19(boolean arg0, int arg1) {
 
         if (arg1 != 24041)
-            aClass1_28 = null;
+            Native.aClass1_28 = null;
         if (Class57.aClass64_1345 != null) {
             try {
                 Buffer class40_sub1 = new Buffer(4);
@@ -226,7 +217,6 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
 
     }
 
-    public abstract void reset();
 
     public synchronized void method17() {
         if (!PacketBuffer.aBoolean2255) {
@@ -255,7 +245,6 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                     /* empty */
                 }
             }
-            reset();
         }
     }
 

@@ -4,14 +4,12 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
-import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.util.CollisionMap;
 
@@ -66,15 +64,6 @@ public class GameObject extends Renderable {
         return SubNode.method538(0);
     }
 
-    public static void method770() {
-        aClass1_3047 = null;
-        aClass68_3042 = null;
-        aClass1_3044 = null;
-        aClass68_3045 = null;
-        frame = null;
-        aClass1_3038 = null;
-        aClass1_3039 = null;
-    }
 
     public static void loadObjectBlock(int block_x, Scene scene, CollisionMap[] collisionMaps, byte[] block_data, int block_z) {
         Buffer buffer = new Buffer(block_data);
@@ -158,12 +147,12 @@ public class GameObject extends Renderable {
     }
 
     public static void method774(byte arg0) {
-        Buffer.aClass9_1933.method235((byte) -88);
+        Buffer.aClass9_1933.method235();
         if(arg0 != -96)
             aClass1_3047 = null;
     }
 
-    public Model getRotatedModel(int arg0) {
+    public Model getRotatedModel() {
         if(animationSequence != null) {
             int step = -animationCycleDelay + Node.pulseCycle;
             if(step > 100 && animationSequence.frameStep > 0)

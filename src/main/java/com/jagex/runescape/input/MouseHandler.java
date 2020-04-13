@@ -41,14 +41,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public int mouseWheelX;
     public int mouseWheelY;
 
-    public static void method1001() {
-        aClass40_Sub5_Sub14_Sub4Array1466 = null;
-        aClass1_1465 = null;
-        modelCache = null;
-        aCanvas1469 = null;
-        aClass1_1474 = null;
-        tile_overlayids = null;
-    }
+
 
     public static void processMenuClick() {
         if(SceneTile.activeInterfaceType != 0) {

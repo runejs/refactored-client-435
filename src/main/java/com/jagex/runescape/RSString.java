@@ -60,17 +60,7 @@ public class RSString implements Interface1 {
         return is;
     }
 
-    public static void method83() {
-        aClass9_1684 = null;
-        terrainData = null;
-        Native.scrollbar = null;
-        aCacheIndex_1705 = null;
-        Native.prefixPurple = null;
-        aClass68_1665 = null;
-        Native.chatback = null;
-        English.privateChat = null;
-        keyCodes = null;
-    }
+
 
     /*synthetic*/
     public static Class method90(String arg0) {

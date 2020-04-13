@@ -14,10 +14,6 @@ public class Class8_Sub1_Sub1 extends Class8_Sub1 {
         this.method222(arg0, 16384);
     }
 
-    public static void method228() {
-        anInterface2_2215 = null;
-    }
-
     public void method226(int arg0) throws Exception {
         anInterface2_2215.method7(arg0, (byte) 76);
     }

@@ -22,10 +22,6 @@ public class RSRuntimeException extends RuntimeException {
         aThrowable1652 = arg0;
     }
 
-    public static void method1053() {
-        str_select = null;
-    }
-
     public static void method1054(byte arg0) {
         if(CollisionMap.aClass8_166 != null) {
             long l = System.currentTimeMillis();

@@ -6,6 +6,8 @@ import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.scene.GroundItemTile;
 
@@ -16,7 +18,6 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
     public static int[] anIntArray2199 = new int[32];
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2204;
     public static int[] anIntArray2207 = {0, -1, 0, 1};
-    public static String aClass1_2209 = "Login server offline.";
     public static int anInt2210;
     public static int anInt2211 = 2;
     public static Class68 aClass68_2213;
@@ -32,13 +33,6 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
     public ColorModel colorModel;
     public ImageConsumer imageConsumer;
 
-    public static void method1047() {
-        aClass68_2213 = null;
-        aClass40_Sub5_Sub14_Sub4Array2204 = null;
-        aClass1_2209 = null;
-        anIntArray2199 = null;
-        anIntArray2207 = null;
-    }
 
     public static AnimationSequence method1050(int arg0, int arg1) {
         AnimationSequence animationSequence = (AnimationSequence) Class40_Sub5_Sub6.aClass9_2439.get((long) arg0, (byte) 47);
@@ -50,7 +44,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
         animationSequence = new AnimationSequence();
         if(is != null)
             animationSequence.method594(-1, new Buffer(is));
-        animationSequence.method591((byte) 37);
+        animationSequence.method591();
         Class40_Sub5_Sub6.aClass9_2439.put((long) arg0, animationSequence);
         return animationSequence;
     }
@@ -68,12 +62,12 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
                 i--;
             else
                 i -= 101;
-            OverlayDefinition.addActionRow(HuffmanEncoding.aClass1_1572, 0, 0, 0, 13, Class26.aClass1_620+Class40_Sub11.friendUsernames[i]);
-            OverlayDefinition.addActionRow(GroundItemTile.aClass1_1354, 0, 0, 0, 18, Class26.aClass1_620+ Class40_Sub11.friendUsernames[i]);
+            OverlayDefinition.addActionRow(English.aClass1_1572, 0, 0, 0, 13, Native.aClass1_620+Class40_Sub11.friendUsernames[i]);
+            OverlayDefinition.addActionRow(GroundItemTile.aClass1_1354, 0, 0, 0, 18, Native.aClass1_620+ Class40_Sub11.friendUsernames[i]);
             return true;
         }
         if(i >= 401 && i <= 500) {
-            OverlayDefinition.addActionRow(HuffmanEncoding.aClass1_1572, 0, 0, 0, 35, Class26.aClass1_620+ arg1.disabledText);
+            OverlayDefinition.addActionRow(English.aClass1_1572, 0, 0, 0, 35, Native.aClass1_620+ arg1.disabledText);
             return true;
         }
         return false;
@@ -81,7 +75,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
 
     public static int method1052(int arg0, RSString arg1, Buffer arg2) {
         if(arg0 < 24)
-            aClass1_2209 = null;
+            English.aClass1_2209 = null;
         int i = arg2.currentPosition;
         arg2.putSmart(arg1.length);
         arg2.currentPosition += IdentityKit.aHuffmanEncoding_2590.encrypt(-18678, 0, arg2.currentPosition, arg1.length, arg1.chars, arg2.buffer);

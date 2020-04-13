@@ -9,7 +9,6 @@ public class Class38_Sub2 extends Class38 {
 
     public void method444(int arg0) {
         method443(-10115);
-        int i = 20 % ((arg0 + 76) / 48);
     }
 
     public void method443(int arg0) {

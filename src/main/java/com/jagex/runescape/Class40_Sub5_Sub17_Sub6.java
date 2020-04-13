@@ -19,7 +19,6 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     public static int[] anIntArray3248;
     public static int[] anIntArray3250;
     public static int[] anIntArray3253;
-    public static String aClass1_3254 = "redstone2";
     public static int[] anIntArray3255;
 
     public int anInt3230;
@@ -107,21 +106,9 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
 
     }
 
-    public static void method835() {
-        aClass68_3243 = null;
-        anIntArray3250 = null;
-        playerColours = null;
-        fontBold = null;
-        anIntArray3253 = null;
-        aClass1_3254 = null;
-        anIntArray3248 = null;
-        anIntArray3255 = null;
-        fontSmall = null;
-    }
 
-    public Model getRotatedModel(int arg0) {
+    public Model getRotatedModel() {
         SpotAnimDefinition spotAnimDefinition = SpotAnimDefinition.forId(anInt3249, 13);
-        int i = -110 / ((arg0 - 41) / 47);
         Model class40_sub5_sub17_sub5;
         if(aBoolean3237)
             class40_sub5_sub17_sub5 = spotAnimDefinition.method549(-1, 2);

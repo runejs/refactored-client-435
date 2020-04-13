@@ -29,24 +29,7 @@ public class Class22_Sub1 extends Class22 {
     public Signlink aClass31_1872;
 
     public Class22_Sub1(Signlink arg0) {
-
         aClass31_1872 = arg0;
-
-    }
-
-    public static void method310() {
-        English.loadedInterfaces = null;
-        Native.headiconsPrayer = null;
-        anIntArray1846 = null;
-        anIntArray1847 = null;
-        English.thisComputersAddressHasBeenBlocked = null;
-        English.pleaseWait5MinutesBeforeTryingAgain = null;
-        English.password = null;
-        English.enterYourUsernameAndPassword = null;
-        English.reportAbuse = null;
-        English.enterYourUsernameAndPassword = null;
-        ChatBox.itemSearchResultNames = null;
-        aCacheIndex_1855 = null;
     }
 
     public static void method311(Component arg1) {
@@ -85,7 +68,7 @@ public class Class22_Sub1 extends Class22 {
         }
     }
 
-    public static void method313(int arg0) {
+    public static void method313() {
         for(int i = -1; Player.localPlayerCount > i; i++) {
             int i_6_;
             if(i == -1)

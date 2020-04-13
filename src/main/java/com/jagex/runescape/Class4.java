@@ -13,20 +13,10 @@ public class Class4 {
     public static boolean menuOpen = false;
     public static volatile long aLong174 = 0L;
     public static int anInt175 = 0;
-    public static String cmd_hiddenbuttontest = "::hiddenbuttontest";
     public static int[] anIntArray178;
     public static GameShell anApplet_Sub1_179 = null;
-    public static String aClass1_180 = "wishes to trade with you.";
     public static boolean inTutorialIsland = false;
-    public static String aClass1_183 = "mapdots";
     public static int anInt188;
-
-    public static void method159() {
-        cmd_hiddenbuttontest = null;
-        aClass1_180 = null;
-        aClass1_183 = null;
-        anIntArray178 = null;
-    }
 
     public static int method160(int arg0, int arg1, int arg2, int arg3) {
         int i = arg0 & -1 + arg2;

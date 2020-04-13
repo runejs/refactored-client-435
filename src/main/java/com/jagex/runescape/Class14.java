@@ -13,10 +13,6 @@ public class Class14 {
     public int anInt430;
     public int anInt431;
 
-    public static void method266() {
-        aByteArray429 = null;
-    }
-
     public int method250() {
         int i = anIntArray425.length;
         int i_0_ = -1;

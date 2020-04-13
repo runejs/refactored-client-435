@@ -16,20 +16,12 @@ import java.util.zip.CRC32;
 public class Class65 {
     public static CRC32 aCRC32_1531 = new CRC32();
     public static CacheIndex_Sub1 aClass6_Sub1_1533;
-    public static String aClass1_1536 =" x ";
     public static int cameraVertical;
-    public static String aClass1_1538 = "Please reload this page.";
 
     static {
         cameraVertical = 128;
     }
 
-    public static void method1017() {
-        aClass6_Sub1_1533 = null;
-        aCRC32_1531 = null;
-        aClass1_1538 = null;
-        aClass1_1536 = null;
-    }
 
     public static void method1018() {
         VarbitDefinition.aClass68_2350.method1046((byte) 90);

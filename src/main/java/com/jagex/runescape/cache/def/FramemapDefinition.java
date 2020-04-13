@@ -165,12 +165,6 @@ public class FramemapDefinition extends Node {
 
     }
 
-    public static void method877() {
-        aClass1_2188 = null;
-        aClass1_2179 = null;
-        aClass1_2189 = null;
-    }
-
     public static Widget method878(Widget arg1) {
         int i;
         if(arg1.id < 0)

@@ -11,15 +11,11 @@ public class Class67 {
     public static volatile boolean aBoolean1575 = false;
     public static CacheIndex aCacheIndex_1577;
     public static int[] anIntArray1579;
-    public static String aClass1_1580 = "p12_full";
     public static Cache aClass9_1582 = new Cache(20);
-    public static String aClass1_1585 = "Loading - please wait.";
     public static int anInt1586 = -1;
     public static int[] anIntArray1588 = new int[1000];
-    public static String aClass1_1598 = "Create a free account";
     public static boolean reportMutePlayer = false;
     public static int anInt1607 = 10;
-    public static String aClass1_1610 = "%3";
     public static Cache aClass9_1611 = new Cache(50);
     public static long[] aLongArray1614 = new long[32];
 
@@ -55,18 +51,7 @@ public class Class67 {
         return i;
     }
 
-    public static void method1037() {
-        anIntArray1579 = null;
-        aClass1_1598 = null;
-        aLongArray1614 = null;
-        aClass1_1580 = null;
-        aClass9_1582 = null;
-        aClass1_1610 = null;
-        aClass9_1611 = null;
-        anIntArray1588 = null;
-        aClass1_1585 = null;
-        aCacheIndex_1577 = null;
-    }
+
 
     public void method1031(int arg0, long arg1) {
         if(arg0 == 0 && arg1 >= 0)

@@ -37,16 +37,4 @@ public class GroundItemTile {
     public int anInt1371;
     public int x;
 
-    public static void method981() {
-        aClass1_1354 = null;
-        varbitmasks = null;
-        aByteArrayArray1377 = null;
-        aClass1_1374 = null;
-        aClass9_1364 = null;
-        anIntArray1358 = null;
-        aByteArrayArray1370 = null;
-        aClass1_1378 = null;
-        cmd_clientdrop = null;
-        aCacheIndex_1375 = null;
-    }
 }

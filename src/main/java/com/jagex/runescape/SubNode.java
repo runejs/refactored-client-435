@@ -40,13 +40,6 @@ public class SubNode extends Node {
         KeyFocusListener.aLinkedList_1278 = new LinkedList();
     }
 
-    public static void method541() {
-        aClass1_2090 = null;
-        aClass1_2084 = null;
-        aClass1_2093 = null;
-        aClass68_2091 = null;
-        anIntArray2086 = null;
-    }
 
     public void method539() {
         if(aClass40_Sub5_2087 != null) {

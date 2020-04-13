@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
@@ -54,16 +55,6 @@ public class SpotAnimDefinition extends SubNode {
         recolorToReplace = new int[6];
     }
 
-    public static void method548() {
-        aClass67_2298 = null;
-        aClass1_2297 = null;
-        aClass40_Sub5_Sub14_Sub2Array2301 = null;
-        minimapEdge = null;
-        aClass1_2306 = null;
-        aClass1_2294 = null;
-        cmd_noclip = null;
-        str_prefix_level = null;
-    }
 
     public static void method552(boolean arg0) {
         try {
@@ -206,7 +197,7 @@ public class SpotAnimDefinition extends SubNode {
             }
             if (Class40_Sub3.anInt2032 == 8) {
                 Main.anInt1756 = 0;
-                Class33.method411((Class33.anInt784 / 60) + Class38.aClass1_883, Class8.aClass1_294, RSCanvas.aClass1_67);
+                Class33.method411((Class33.anInt784 / 60) + English.aClass1_883, English.aClass1_294, RSCanvas.aClass1_67);
                 if (--Class33.anInt784 <= 0) {
                     Class40_Sub3.anInt2032 = 0;
                 }

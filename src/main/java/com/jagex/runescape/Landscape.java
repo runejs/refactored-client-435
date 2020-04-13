@@ -11,6 +11,8 @@ import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -73,7 +75,7 @@ public class Landscape {
                     /* empty */
                 }
             } else
-                Class21.method297(is, i_1_, arg0, i_0_, 9);
+                Class21.method297(is, i_1_, arg0, 9);
             return is;
         }
         byte[] is = new byte[i_0_];
@@ -118,7 +120,7 @@ public class Landscape {
             }
             if(bool) {
                 if(Class68.anInt1634 != 0)
-                    Class51.method940(0, Class67.aClass1_1585, true, ActorDefinition.aClass1_2423);
+                    Class51.method940(0, English.aClass1_1585, true, ActorDefinition.aClass1_2423);
                 RSCanvas.method46(0);
                 Npc.currentScene.initToNull();
                 System.gc();
@@ -246,7 +248,7 @@ public class Landscape {
                         FramemapDefinition.spawnGroundItem(y, x);
                 }
                 ISAAC.method285((byte) 118);
-                VertexNormal.aClass9_1102.method235((byte) -43);
+                VertexNormal.aClass9_1102.method235();
                 if(Class35.aFrame1732 != null) {
                     SceneCluster.packetBuffer.putPacket(121);
                     SceneCluster.packetBuffer.putIntBE(1057001181);
@@ -259,8 +261,8 @@ public class Landscape {
                     for(int i_46_ = -1 + i_42_; i_46_ <= 1 + i_45_; i_46_++) {
                         for(int i_47_ = -1 + i_43_; i_47_ <= i_44_ + 1; i_47_++) {
                             if(i_42_ > i_46_ || i_46_ > i_45_ || i_47_ < i_43_ || i_47_ > i_44_) {
-                                Renderable.aClass6_Sub1_2857.method195(0, LinkedList.aClass1_1085+i_46_+Class8.aClass1_303+i_47_);
-                                Renderable.aClass6_Sub1_2857.method195(0, HashTable.aClass1_553+i_46_+Class8.aClass1_303+i_47_);
+                                Renderable.aClass6_Sub1_2857.method195(0, LinkedList.aClass1_1085+i_46_+ Native.aClass1_303+i_47_);
+                                Renderable.aClass6_Sub1_2857.method195(0, Native.aClass1_553+i_46_+ Native.aClass1_303+i_47_);
                             }
                         }
                     }
@@ -342,21 +344,6 @@ public class Landscape {
         }
     }
 
-    public static void method935() {
-        distanceValues = null;
-        aClass1_1162 = null;
-        currentCollisionMap = null;
-        aClass1_1181 = null;
-        anIntArray1168 = null;
-        aClass1_1178 = null;
-        aClass1_1183 = null;
-        aClass1_1180 = null;
-        aClass68_1185 = null;
-        aClass1_1173 = null;
-        anIntArray1186 = null;
-        menuActionTexts = null;
-        aClass1_1174 = null;
-    }
 
     public static void method936(CacheIndex arg1) {
         RSCanvas.aCacheIndex_61 = arg1;

@@ -121,9 +121,6 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
         }
     }
 
-    public static void method745() {
-        soundVolume = null;
-    }
 
     public static boolean method746(Widget arg1) {
         if(arg1.alternateOperators == null) {

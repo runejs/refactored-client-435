@@ -23,16 +23,11 @@ import java.awt.*;
 
 public class Class5 {
     public static Class22 aClass22_189;
-    public static String aClass1_193 = "Please contact customer support.";
     public static int anInt194;
     public static int anInt195 = 1;
-    public static String aClass1_196 = "backvmid3";
     public static int[] anIntArray198;
     public static int anInt199 = 0;
     public static int anInt200 = 127;
-    public static String aClass1_203 = "mapmarker";
-    public static String aClass1_204 = "red:";
-    public static String aClass1_206 = " -> @lre@";
     public static int currentTabId = 3;
 
     public static void loadTerrainSubblock(int arg0, int arg2, int arg3, int arg4, int x, int arg6, int arg7, byte[] arg8, CollisionMap[] arg9) {
@@ -53,17 +48,6 @@ public class Class5 {
                 }
             }
         }
-    }
-
-    public static void method163() {
-        aClass1_196 = null;
-        aClass1_204 = null;
-        aClass1_206 = null;
-        ChatBox.itemSearchResultIds = null;
-        aClass22_189 = null;
-        aClass1_203 = null;
-        aClass1_193 = null;
-        anIntArray198 = null;
     }
 
     public static void method164() {
@@ -181,7 +165,7 @@ public class Class5 {
                 HuffmanEncoding.aClass1_1563 = Widget.aClass1_2740;
                 ChatBox.messagePromptRaised = true;
                 ChatBox.inputType = 0;
-                HuffmanEncoding.chatMessage = "";
+                ChatBox.chatMessage = "";
                 ChatBox.redrawChatbox = true;
             }
             if(i == 202) {
@@ -190,7 +174,7 @@ public class Class5 {
                 ChatBox.redrawChatbox = true;
                 ChatBox.inputType = 0;
                 ChatBox.messagePromptRaised = true;
-                HuffmanEncoding.chatMessage = "";
+                ChatBox.chatMessage = "";
             }
         }
         if(i == 205) {
@@ -201,8 +185,8 @@ public class Class5 {
             ChatBox.inputType = 0;
             Class37.anInt876 = 4;
             ChatBox.redrawChatbox = true;
-            HuffmanEncoding.aClass1_1563 = Class51.aClass1_1200;
-            HuffmanEncoding.chatMessage = "";
+            HuffmanEncoding.aClass1_1563 = English.aClass1_1200;
+            ChatBox.chatMessage = "";
             ChatBox.messagePromptRaised = true;
         }
         if(i == 502) {
@@ -210,7 +194,7 @@ public class Class5 {
             ChatBox.inputType = 0;
             Class37.anInt876 = 5;
             ChatBox.messagePromptRaised = true;
-            HuffmanEncoding.chatMessage = "";
+            ChatBox.chatMessage = "";
             HuffmanEncoding.aClass1_1563 = English.enterNameOfPlayerToDeleteFromList;
         }
         if(i >= 300 && i <= 313) {
@@ -223,8 +207,6 @@ public class Class5 {
             int i_16_ = i & 0x1;
             LinkedList.aClass30_1082.method384(i_16_ == 1, i_15_);
         }
-        if(arg0 != 88)
-            method163();
         if(i == 324)
             LinkedList.aClass30_1082.method383(false, (byte) -110);
         if(i == 325)
@@ -251,7 +233,7 @@ public class Class5 {
     public static void method167(int arg0) {
         if(arg0 != 1023)
             method164();
-        Class13.aClass9_406.method235((byte) -56);
+        Class13.aClass9_406.method235();
     }
 
     public static void scrollInterface(int arg0, int arg1, int arg2, int arg3, Widget arg5, int arg6, int arg7, int arg8) {

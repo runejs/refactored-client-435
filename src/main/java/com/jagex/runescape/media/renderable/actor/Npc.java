@@ -49,7 +49,7 @@ public class Npc extends Actor {
         byte[] is = Class64.aCacheIndex_1521.getFile(arg1, 16);
         class40_sub5_sub11 = new Class40_Sub5_Sub11();
         if(is != null)
-            class40_sub5_sub11.method634(new Buffer(is), 0);
+            class40_sub5_sub11.method634(new Buffer(is));
         Class13.aClass9_406.put((long) arg1, class40_sub5_sub11);
         return class40_sub5_sub11;
     }
@@ -198,7 +198,7 @@ public class Npc extends Actor {
                     else {
                         Class17.method276(-1);
                         Class8.method209();
-                        Class22_Sub1.method313(54);
+                        Class22_Sub1.method313();
                         if(LinkedList.crossType != 0) {
                             OverlayDefinition.crossIndex += 20;
                             if(OverlayDefinition.crossIndex >= 400)
@@ -409,14 +409,6 @@ public class Npc extends Actor {
         }
     }
 
-    public static void method797() {
-        anIntArray3304 = null;
-        aClass1_3305 = null;
-        aClass1_3295 = null;
-        aClass1_3311 = null;
-        anIntArray3312 = null;
-        currentScene = null;
-    }
 
     public static OverlayDefinition loadFloor(int arg0, int arg1) {
         OverlayDefinition overlayDefinition = (OverlayDefinition) Class33.aClass9_778.get((long) arg0, (byte) 63);
@@ -614,10 +606,9 @@ public class Npc extends Actor {
 
     }
 
-    public Model getRotatedModel(int arg0) {
+    public Model getRotatedModel() {
         if(actorDefinition == null)
             return null;
-        int i = 25 % ((41 - arg0) / 47);
         AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2);
         AnimationSequence animationSequence_0_ = anInt3077 != -1 && (anInt3077 != idleAnimation || animationSequence == null) ? Class68_Sub1.method1050(anInt3077, 2) : null;
         Model model = actorDefinition.getChildModel(animationSequence, animationSequence_0_, anInt3116, anInt3104);

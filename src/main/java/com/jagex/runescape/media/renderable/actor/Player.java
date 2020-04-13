@@ -11,6 +11,7 @@ import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.scene.tile.WallDecoration;
@@ -85,12 +86,7 @@ public class Player extends Actor {
         return arg1 < 129 || arg1 > 159;
     }
 
-    public static void method794() {
-        aByteArray3270 = null;
-        anIntArray3284 = null;
-        aClass1_3286 = null;
-        aClass1_3256 = null;
-    }
+
 
     public static void parsePlayerUpdateMasks(Player player, int mask, int playerIndex) {
         if((0x100 & mask) != 0) {
@@ -164,7 +160,7 @@ public class Player extends Actor {
                     if(playerRights == 2 || playerRights == 3)
                         Class44.addChatMessage(Widget.goldCrown + player.playerName, class1, 1);
                     else if(playerRights == 1)
-                        Class44.addChatMessage(Class51.whiteCrown+ player.playerName, class1, 1);
+                        Class44.addChatMessage(Native.whiteCrown+ player.playerName, class1, 1);
                     else
                         Class44.addChatMessage(player.playerName, class1, 2);
                 }
@@ -342,7 +338,7 @@ public class Player extends Actor {
             Class4.inTutorialIsland = false;
     }
 
-    public Model getRotatedModel(int arg0) {
+    public Model getRotatedModel() {
         if(aClass30_3282 == null)
             return null;
         AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2);

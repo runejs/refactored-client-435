@@ -11,17 +11,11 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.PacketBuffer;
 
 public class Class42 {
-    public static String aClass1_988 = " has logged in.";
     public static byte[][][] tile_underlayids;
-    public static String aClass1_997 = "Unable to connect.";
     public static Cache aClass9_998 = new Cache(100);
-    public static String aClass1_1000 = "Loaded config";
-    public static String aClass1_1001 = "We suspect someone knows your password.";
-    public static String aClass1_1002 = "Unable to connect.";
     public static int anInt1006 = 0;
     public static int anInt1008 = 0;
     public static int anInt1010 = 2;
-    public static String aClass1_1011 = "Existing user";
     public static int[] anIntArray1013;
 
     public int[] anIntArray996;
@@ -45,7 +39,7 @@ public class Class42 {
 
     }
 
-    public static void method883(byte arg0, int arg1) {
+    public static void method883(int arg1) {
         if(Class68.method1043(arg1)) {
             Widget[] widgets = Widget.interfaces[arg1];
             for(int i = 0; widgets.length > i; i++) {
@@ -55,13 +49,10 @@ public class Class42 {
                     widget.anInt2654 = 0;
                 }
             }
-            int i = 40 % ((arg0 + 57) / 54);
         }
     }
 
-    public static int method884(int arg0, int arg1, int arg2) {
-        if(arg2 != 37821)
-            method887();
+    public static int method884(int arg0, int arg1) {
         int i = 57 * arg1 + arg0;
         i ^= i << 13;
         int i_2_ = 1376312589 + (i * i * 15731 + 789221) * i & 0x7fffffff;
@@ -101,17 +92,6 @@ public class Class42 {
         }
     }
 
-    public static void method887() {
-        aClass1_988 = null;
-        aClass1_1001 = null;
-        aClass9_998 = null;
-        anIntArray1013 = null;
-        tile_underlayids = null;
-        aClass1_997 = null;
-        aClass1_1011 = null;
-        aClass1_1002 = null;
-        aClass1_1000 = null;
-    }
 
     public static int method888(int arg0, byte arg1, int arg2) {
         int i = -128 + Class4.method160(arg0 + 45365, 15177, 4, 91923 + arg2) - (-(Class4.method160(arg0 + 10294, 15177, 2, 37821 + arg2) - 128 >> 1) + -(-128 + Class4.method160(arg0, 15177, 1, arg2) >> 2));

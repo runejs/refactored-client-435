@@ -10,6 +10,7 @@ import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.Rasterizer;
@@ -205,7 +206,7 @@ public class Item extends Renderable {
             class40_sub5_sub14_sub4.drawImage(-128 + 382 + -(class40_sub5_sub14_sub4.image_width / 2), 18);
             Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775 = Class27.method359(AnimationSequence.aClass1_2488, "", arg3);
             Class59.aClass40_Sub5_Sub14_Sub2_1387 = Class27.method359(ISAAC.aClass1_506, "", arg3);
-            Class22.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(arg3, Class8.aClass1_299, "");
+            Class22.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(arg3, English.aClass1_299, "");
             Class39.aClass40_Sub5_Sub14_Sub4_918 = new ImageRGB(128, 265);
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = new ImageRGB(128, 265);
             for(int i = 0; i < 33920; i++)
@@ -251,7 +252,7 @@ public class Item extends Renderable {
             Class4.anIntArray178 = new int[32768];
             Class26.loginScreenState = 0;
             if(RSCanvas.anInt60 != 0 && !VertexNormal.lowMemory)
-                Class33.method412(false, Class55.aClass6_Sub1_1286, 0, (byte) 66, Class30.aClass1_716, 10, "", RSCanvas.anInt60);
+                Class33.method412(false, Class55.aClass6_Sub1_1286, 0, (byte) 66, Native.aClass1_716, 10, "", RSCanvas.anInt60);
             else
                 Class33.method405(16969, 10);
             GameShell.method19(false, 24041);
@@ -260,16 +261,8 @@ public class Item extends Renderable {
         }
     }
 
-    public static void method780() {
-        obfuscatedKeyStatus = null;
-        aClass1_3050 = null;
-        aClass1_3069 = null;
-        aClass1_3066 = null;
-        aClass1_3068 = null;
-        anIntArray3051 = null;
-    }
 
-    public Model getRotatedModel(int arg0) {
+    public Model getRotatedModel() {
         return ItemDefinition.forId(itemId, 10).asGroundStack(true, itemCount);
     }
 }

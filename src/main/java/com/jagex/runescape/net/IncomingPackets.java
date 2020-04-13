@@ -15,6 +15,8 @@ import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -132,9 +134,9 @@ public class IncomingPackets {
                             Class40_Sub7.friendWorlds[i_2_] = i_1_;
                             ISAAC.redrawTabArea = true;
                             if(i_1_ > 0)
-                                Class44.addChatMessage("", string + Class42.aClass1_988, 5);
+                                Class44.addChatMessage("", string + English.aClass1_988, 5);
                             if(i_1_ == 0)
-                                Class44.addChatMessage("", string + Class38_Sub1.aClass1_1905, 5);
+                                Class44.addChatMessage("", string + English.aClass1_1905, 5);
                         }
                         string = null;
                         break;
@@ -312,7 +314,7 @@ public class IncomingPackets {
                     }
                     if(!bool && !Class4.inTutorialIsland)
                         Class44.addChatMessage(class1_32_, "wishes to trade with you.", 4);
-                } else if(message.endsWith(Class40_Sub5_Sub6.requestcmd_duelreq)) {
+                } else if(message.endsWith(Native.requestcmd_duelreq)) {
                     String class1_30_ = message.substring(0, message.indexOf(Class43.char_colon));
                     long l = RSString.method58(class1_30_);
                     boolean bool = false;
@@ -323,7 +325,7 @@ public class IncomingPackets {
                         }
                     }
                     if(!bool && !Class4.inTutorialIsland)
-                        Class44.addChatMessage(class1_30_, Class61.aClass1_1428, 8);
+                        Class44.addChatMessage(class1_30_, English.aClass1_1428, 8);
                 } else if(message.endsWith(Node.requestcmd_chalreq)) {
                     String class1_27_ = message.substring(0, message.indexOf(Class43.char_colon));
                     long l = RSString.method58(class1_27_);
@@ -419,7 +421,7 @@ public class IncomingPackets {
             if(incomingPacket == 56) {
                 int i_45_ = incomingPacketBuffer.getShortBE();
                 if(i_45_ >= 0)
-                    Class42.method883((byte) -121, i_45_);
+                    Class42.method883(i_45_);
                 if(i_45_ != GroundItemTile.walkableWidgetId) {
                     Class55.method958(GroundItemTile.walkableWidgetId);
                     GroundItemTile.walkableWidgetId = i_45_;
@@ -504,7 +506,7 @@ public class IncomingPackets {
             }
             if(incomingPacket == SHOW_SCREEN_WIDGET) {
                 int i_55_ = incomingPacketBuffer.getUnsignedShortBE();
-                Class42.method883((byte) -127, i_55_);
+                Class42.method883(i_55_);
                 if(Class29.tabAreaOverlayWidgetId != -1) {
                     Class55.method958(Class29.tabAreaOverlayWidgetId);
                     IdentityKit.drawTabIcons = true;
@@ -573,9 +575,9 @@ public class IncomingPackets {
             if(incomingPacket == SHOW_FULLSCREEN_WIDGET) { // fullscreen widget?
                 int secondaryWidgetId = incomingPacketBuffer.getUnsignedShortBE();
                 int fullscreenWidgetId = incomingPacketBuffer.getUnsignedShortBE();
-                Class42.method883((byte) -120, fullscreenWidgetId);
+                Class42.method883(fullscreenWidgetId);
                 if(secondaryWidgetId != -1)
-                    Class42.method883((byte) -124, secondaryWidgetId);
+                    Class42.method883(secondaryWidgetId);
                 if(HuffmanEncoding.openScreenWidgetId != -1) {
                     Class55.method958(HuffmanEncoding.openScreenWidgetId);
                     HuffmanEncoding.openScreenWidgetId = -1;
@@ -637,7 +639,7 @@ public class IncomingPackets {
             }
             if(incomingPacket == SHOW_CHATBOX_WIDGET) {
                 int widgetId = incomingPacketBuffer.getUnsignedShortBE();
-                Class42.method883((byte) -119, widgetId);
+                Class42.method883(widgetId);
                 if(Class29.tabAreaOverlayWidgetId != -1) {
                     Class55.method958(Class29.tabAreaOverlayWidgetId);
                     IdentityKit.drawTabIcons = true;
@@ -707,7 +709,7 @@ public class IncomingPackets {
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
                 while(incomingPacketBuffer.currentPosition < incomingPacketSize) {
                     incomingPacket = incomingPacketBuffer.getUnsignedByte();
-                    WallDecoration.method949((byte) -125);
+                    WallDecoration.method949();
                 }
                 incomingPacket = -1;
                 return true;
@@ -760,7 +762,7 @@ public class IncomingPackets {
             }
             if(incomingPacket == 237) { // show tab overlay widget
                 int i_68_ = incomingPacketBuffer.getUnsignedShortBE();
-                Class42.method883((byte) 107, i_68_);
+                Class42.method883(i_68_);
                 if(ChatBox.openChatboxWidgetId != -1) {
                     Class55.method958(ChatBox.openChatboxWidgetId);
                     ChatBox.openChatboxWidgetId = -1;
@@ -846,7 +848,7 @@ public class IncomingPackets {
             }
             // object/ground item update packets?
             if(incomingPacket == 9 || incomingPacket == 99 || incomingPacket == 229 || incomingPacket == 19 || incomingPacket == 202 || incomingPacket == 1 || incomingPacket == 74 || incomingPacket == 175 || incomingPacket == 49 || incomingPacket == 143 || incomingPacket == 241) {
-                WallDecoration.method949((byte) -112);
+                WallDecoration.method949();
                 incomingPacket = -1;
                 return true;
             }
@@ -998,7 +1000,7 @@ public class IncomingPackets {
                     if(fromPlayerRights == 2 || fromPlayerRights == 3)
                         Class44.addChatMessage(Widget.goldCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), class1.toString(), 7);
                     else if(fromPlayerRights == 1)
-                        Class44.addChatMessage(Class51.whiteCrown +TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), class1.toString(), 7);
+                        Class44.addChatMessage(Native.whiteCrown +TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), class1.toString(), 7);
                     else
                         Class44.addChatMessage(TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), class1.toString(), 3);
                 }

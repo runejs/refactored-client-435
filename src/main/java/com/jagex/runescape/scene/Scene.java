@@ -185,26 +185,6 @@ public class Scene {
         return i_148_ >= anInt118 && i_148_ <= anInt136 && i_149_ >= anInt124 && i_149_ <= anInt128;
     }
 
-    public static void method114() {
-        interactiveObjects = null;
-        faceOffsetX2 = null;
-        faceOffsetY2 = null;
-        faceOffsetX3 = null;
-        faceOffsetY3 = null;
-        cullingClusterPointer = null;
-        cullingClusters = null;
-        processedCullingClusters = null;
-        tileList = null;
-        anIntArray120 = null;
-        anIntArray117 = null;
-        anIntArray130 = null;
-        anIntArray119 = null;
-        anIntArray125 = null;
-        anIntArray132 = null;
-        anIntArray131 = null;
-        aBooleanArrayArrayArrayArray134 = null;
-        aBooleanArrayArray133 = null;
-    }
 
     public static void method116(int z, int searchMask, int lowestX, int highestX, int lowestY, int highestY, int highestZ, int lowestZ) {
         SceneCluster sceneCluster = new SceneCluster();

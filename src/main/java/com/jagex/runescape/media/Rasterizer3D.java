@@ -996,15 +996,6 @@ public class Rasterizer3D extends Rasterizer {
         anInterface3_2939 = arg0;
     }
 
-    public static void method704() {
-        lineOffsets = null;
-        hsl2rgb = null;
-        anInterface3_2939 = null;
-        shadowDecay = null;
-        anIntArray2929 = null;
-        sinetable = null;
-        cosinetable = null;
-    }
 
     //562 drawshadedline
     //has vertex blending :O
