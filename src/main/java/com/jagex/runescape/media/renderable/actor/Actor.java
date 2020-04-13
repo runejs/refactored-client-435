@@ -23,7 +23,7 @@ import java.math.BigInteger;
 public abstract class Actor extends Renderable {
     public static int[] anIntArray3111;
     public static String aClass1_3124 = "Loaded textures";
-    public static RSString aClass1_3138 = RSString.CreateString("Login limit exceeded.");
+    public static String aClass1_3138 = "Login limit exceeded.";
     public static volatile int eventMouseButtonPressed = 0;
     public static CacheIndex aCacheIndex_3144;
     public static int[] anIntArray3149 = new int[1000];

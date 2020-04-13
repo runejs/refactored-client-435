@@ -23,8 +23,7 @@ public class Class33 {
     public static String cmd_prefix = "::";
     public static int[] selectedMenuActions = new int[500];
     public static RSString aClass1_795 = RSString.CreateString(",");
-    public static RSString aClass1_798 = RSString.CreateString("No response from server.");
-    public static RSString aClass1_799 = aClass1_798;
+    public static String aClass1_799 = "No response from server.";
 
 
     public static synchronized void method402(boolean arg0) {
@@ -331,7 +330,6 @@ public class Class33 {
         aClass1_777 = null;
         aClass9_778 = null;
         aClass1_783 = null;
-        aClass1_798 = null;
     }
 
     public static boolean menuHasAddFriend(byte arg0, int arg1) {
@@ -359,7 +357,7 @@ public class Class33 {
 
     }
 
-    public static void method411(RSString arg0, RSString arg1, String arg2) {
+    public static void method411(RSString arg0, String arg1, String arg2) {
         Class22_Sub2.aClass1_1881 = arg0;
         Class22_Sub2.aClass1_1896 = arg2;
         Class22_Sub2.aClass1_1879 = arg1;

@@ -11,7 +11,7 @@ import com.jagex.runescape.scene.tile.SceneTile;
 
 public abstract class Class38 {
     public static String aClass1_881 = "mod_icons";
-    public static RSString aClass1_882 = RSString.CreateString("No reply from loginserver.");
+    public static String aClass1_882 = "No reply from loginserver.";
     public static RSString aClass1_883 = RSString.CreateString(" seconds.");
     public static int[] menuActionTypes = new int[500];
     public static String aClass1_885 = "Add ignore";

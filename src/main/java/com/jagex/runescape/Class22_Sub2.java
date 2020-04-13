@@ -14,7 +14,7 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.scene.GroundItemTile;
 
 public abstract class Class22_Sub2 extends Class22 {
-    public static RSString aClass1_1879 = Native.string_blank;
+    public static String aClass1_1879 = "";
     public static RSString aClass1_1881 = Native.string_blank;
     public static Widget aWidget_1887;
     public static int duplicateClickCount = 0;

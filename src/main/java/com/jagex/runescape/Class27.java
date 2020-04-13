@@ -1086,11 +1086,11 @@ public class Class27 {
         if(arg1 == -3)
             Class33.method411(Node.aClass1_956, GenericTile.aClass1_1218, SceneTile.aClass1_2057);
         else if(arg1 == -2)
-            Class33.method411(Node.aClass1_934, Node.aClass1_969, Class40_Sub5_Sub6.aClass1_2462);
+            Class33.method411(Node.aClass1_934, "", Class40_Sub5_Sub6.aClass1_2462);
         else if(arg1 == -1)
             Class33.method411(Node.aClass1_949, Class33.aClass1_799, SceneTile.aClass1_2053);
         else if(arg1 == 3)
-            Class33.method411(Node.aClass1_941, Node.aClass1_974, ISAAC.aClass1_526);
+            Class33.method411(Node.aClass1_941, "", ISAAC.aClass1_526);
         else if(arg1 == 4)
             Class33.method411(Node.aClass1_976, Class64.aClass1_1526, Cache.aClass1_323);
         else if(arg1 != 5) {
@@ -1127,7 +1127,7 @@ public class Class27 {
                                     else if(arg1 != 27)
                                         Class33.method411(Node.aClass1_946, English.unexpectedServerResponse, SceneTile.aClass1_2054);
                                     else
-                                        Class33.method411(Node.aClass1_945, Node.aClass1_925, FramemapDefinition.aClass1_2189);
+                                        Class33.method411(Node.aClass1_945, "", FramemapDefinition.aClass1_2189);
                                 } else
                                     Class33.method411(Node.aClass1_954, Class60.aClass1_1416, Class5.aClass1_193);
                             } else

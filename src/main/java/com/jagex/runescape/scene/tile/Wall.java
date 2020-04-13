@@ -10,8 +10,7 @@ import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Wall {
     public static String aClass1_338 = "backhmid1";
-    public static RSString aClass1_344;
-    public static RSString aClass1_346;
+    public static String aClass1_344 = "The server is being updated.";
     public static int cameraVelocityHorizontal = 0;
     public static int anInt350;
     public static int[] walkingQueueY = new int[4000];
@@ -19,11 +18,6 @@ public class Wall {
     public static int[] anIntArray354 = new int[25];
     public static int anInt356 = 0;
     public static LinkedList[][][] groundItems = new LinkedList[4][104][104];
-
-    static {
-        aClass1_346 = RSString.CreateString("The server is being updated.");
-        aClass1_344 = aClass1_346;
-    }
 
     public int x;
     public int hash;
@@ -44,7 +38,6 @@ public class Wall {
         aClass1_338 = null;
         anIntArray354 = null;
         groundItems = null;
-        aClass1_346 = null;
         walkingQueueY = null;
         aWidget_353 = null;
     }

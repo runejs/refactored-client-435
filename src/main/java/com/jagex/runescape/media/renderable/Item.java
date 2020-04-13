@@ -30,7 +30,7 @@ public class Item extends Renderable {
     public static boolean[] obfuscatedKeyStatus = new boolean[112];
     public static int friendsCount = 0;
     public static int anInt3065 = -1;
-    public static RSString aClass1_3066 = RSString.CreateString("Could not complete login.");
+    public static String aClass1_3066 = "Could not complete login.";
     public static RSString aClass1_3068 = RSString.CreateString(" -> @whi@");
     public static RSString aClass1_3069 = RSString.CreateString("Members object");
 

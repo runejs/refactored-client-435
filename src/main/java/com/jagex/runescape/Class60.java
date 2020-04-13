@@ -20,17 +20,13 @@ import tech.henning.fourthreefive.Configuration;
 
 public class Class60 {
     public static boolean aBoolean1402 = false;
-    public static RSString aClass1_1411;
     public static int anInt1413;
-    public static int cameraVelocityVertical;
-    public static RSString aClass1_1416;
+    public static int cameraVelocityVertical = 0;
+    public static String aClass1_1416 = "Error loading your profile.";
     public static int anInt1417;
 
     static {
-        aClass1_1411 = RSString.CreateString("Error loading your profile.");
         Player.localPlayerCount = 0;
-        aClass1_1416 = aClass1_1411;
-        cameraVelocityVertical = 0;
     }
 
     public static int method988(CacheIndex arg0, CacheIndex arg1) {
@@ -174,7 +170,7 @@ public class Class60 {
                 if(i_11_ == 1 && i >= -75 + i_14_ && i <= 75 + i_14_ && i_12_ >= -20 + i_15_ && 20 + i_15_ >= i_12_) {
                     Class26.anInt622 = 2;
                     Node.anInt947 = 0;
-                    Class22_Sub2.aClass1_1879 = Node.aClass1_967;
+                    Class22_Sub2.aClass1_1879 = "";
                     Class22_Sub2.aClass1_1896 = English.enterYourUsernameAndPassword;
                     Class22_Sub2.aClass1_1881 = Node.aClass1_951;
                 }
@@ -191,7 +187,7 @@ public class Class60 {
                 i_16_ += 15;
                 if(i_11_ == 1 && i_17_ + -75 <= i && i <= i_17_ + 75 && i_12_ >= i_18_ + -20 && i_12_ <= i_18_ + 20) {
                     Native.username = Native.username.method62().method85();
-                    Class33.method411(Node.aClass1_964, Node.aClass1_958, Class40_Sub5_Sub17_Sub1.aClass1_3009);
+                    Class33.method411(Node.aClass1_964, "", Class40_Sub5_Sub17_Sub1.aClass1_3009);
                     OverlayDefinition.method559(20);
                 } else {
                     i_17_ = 260;
@@ -235,7 +231,6 @@ public class Class60 {
     }
 
     public static void method994() {
-        aClass1_1411 = null;
         aClass1_1416 = null;
     }
 }

@@ -15,7 +15,7 @@ import com.jagex.runescape.util.Signlink;
 
 public class Class61 {
     public static String aClass1_1421 = "To play on this world move to a free area first";
-    public static RSString aClass1_1422 = RSString.CreateString("Username: ");
+    public static String aClass1_1422 = "Username: ";
     public static PacketBuffer packetBuffer = new PacketBuffer(5000);
     public static String aClass1_1427 = "mapedge";
     public static String aClass1_1428 = "wishes to duel with you.";

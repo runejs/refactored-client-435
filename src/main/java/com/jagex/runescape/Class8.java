@@ -17,17 +17,15 @@ import java.awt.*;
 import java.util.Calendar;
 
 public class Class8 {
-    public static RSString aClass1_278;
+    public static String aClass1_278 = "Unexpected loginserver response.";
     public static Calendar aCalendar279 = Calendar.getInstance();
     public static String aClass1_281 = "backright1";
     public static CacheIndex aCacheIndex_284;
-    public static RSString aClass1_286 = RSString.CreateString("Unexpected loginserver response.");
     public static long aLong288;
     public static int anInt289;
     public static int anInt290 = 0;
-    public static RSString aClass1_291 = RSString.CreateString("You have only just left another world.");
     public static int anInt292 = 0;
-    public static RSString aClass1_294;
+    public static String aClass1_294 = "You have only just left another world.";
     public static FontMetrics fontMetrics;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array296;
     public static int[] anIntArray297 = new int[5];
@@ -38,11 +36,6 @@ public class Class8 {
     public static String aClass1_303 = "_";
     public static String aClass1_304 = "backhmid2";
     public static RSString aClass1_305 = RSString.CreateString("");
-
-    static {
-        aClass1_278 = aClass1_286;
-        aClass1_294 = aClass1_291;
-    }
 
     public Class8(int arg0) {
         CollisionMap.anInt141 = arg0;
@@ -74,13 +67,11 @@ public class Class8 {
     }
 
     public static void method214() {
-        aClass1_286 = null;
         aClass1_278 = null;
         anIntArray297 = null;
         fontMetrics = null;
         aClass1_305 = null;
         aCacheIndex_284 = null;
-        aClass1_291 = null;
         aClass1_303 = null;
         aCalendar279 = null;
         aClass1_299 = null;

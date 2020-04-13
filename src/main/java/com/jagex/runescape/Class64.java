@@ -35,7 +35,7 @@ public class Class64 implements Runnable {
     public static int anInt1511 = -1;
     public static String aClass1_1517 = "redstone3";
     public static CacheIndex aCacheIndex_1521;
-    public static RSString aClass1_1526 = RSString.CreateString("Your account has been disabled.");
+    public static String aClass1_1526 ="Your account has been disabled.";
     public static int lowestPlane = 99;
 
     public InputStream anInputStream1503;

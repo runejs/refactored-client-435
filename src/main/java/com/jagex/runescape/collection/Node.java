@@ -6,7 +6,6 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 
 public class Node {
     public static RSString aClass1_924 = RSString.CreateString("");
-    public static RSString aClass1_925 = RSString.CreateString("");
     public static int pulseCycle = 0;
     public static RSString aClass1_929 = RSString.CreateString("");
     public static RSString aClass1_930 = RSString.CreateString("");
@@ -32,17 +31,13 @@ public class Node {
     public static RSString aClass1_955 = RSString.CreateString("");
     public static RSString aClass1_956 = RSString.CreateString("");
     public static RSString aClass1_957 = RSString.CreateString("");
-    public static RSString aClass1_958 = RSString.CreateString("");
     public static RSString aClass1_959 = RSString.CreateString("");
     public static RSString aClass1_960 = RSString.CreateString("");
     public static RSString aClass1_963 = RSString.CreateString("");
     public static RSString aClass1_964 = RSString.CreateString("");
     public static RSString aClass1_966 = RSString.CreateString("");
-    public static RSString aClass1_967 = RSString.CreateString("");
-    public static RSString aClass1_969 = RSString.CreateString("");
     public static RSString aClass1_972 = RSString.CreateString("");
     public static RSString aClass1_973 = RSString.CreateString("");
-    public static RSString aClass1_974 = RSString.CreateString("");
     public static RSString aClass1_975 = RSString.CreateString(".");
     public static RSString aClass1_976 = RSString.CreateString("");
 
@@ -89,7 +84,6 @@ public class Node {
         aClass1_973 = null;
         aClass1_924 = null;
         aClass1_934 = null;
-        aClass1_967 = null;
         aClass1_954 = null;
         aClass1_972 = null;
         aClass1_976 = null;
@@ -99,7 +93,6 @@ public class Node {
         aClass1_975 = null;
         aClass1_949 = null;
         aClass1_951 = null;
-        aClass1_974 = null;
         aClass1_963 = null;
         aClass1_942 = null;
         aClass1_946 = null;
@@ -113,13 +106,10 @@ public class Node {
         requestcmd_chalreq = null;
         aClass1_966 = null;
         aClass1_960 = null;
-        aClass1_969 = null;
         aClass1_932 = null;
         aClass1_953 = null;
         aClass1_957 = null;
         aClass1_937 = null;
-        aClass1_925 = null;
-        aClass1_958 = null;
     }
 
     public static boolean method459(int arg0, int arg1, byte arg2) {

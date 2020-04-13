@@ -40,7 +40,7 @@ public class Landscape {
     public static String aClass1_1173 = "Loaded wordpack";
     public static RSString aClass1_1174 = RSString.CreateString("Enter amount:");
     public static int[][] distanceValues = new int[104][104];
-    public static RSString aClass1_1178 = RSString.CreateString("You are standing in a members-only area.");
+    public static String aClass1_1178 = "You are standing in a members-only area.";
     public static RSString aClass1_1180 = RSString.CreateString("Your ignore list is full. Max of 100 hit");
     public static String aClass1_1181 = "glow1:";
     public static RSString aClass1_1183 = RSString.CreateString("");

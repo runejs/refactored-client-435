@@ -51,7 +51,7 @@ public class Main extends GameShell {
     public static int anInt1769 = -1;
     public static int widgetSelected = 0;
     public static String[] playerActions = new String[5];
-    public static RSString aClass1_1781 = RSString.CreateString("Account locked as we suspect it has been stolen.");
+    public static String aClass1_1781 = "Account locked as we suspect it has been stolen.";
     public static String aClass1_1788 = "backtop1";
     public static boolean aBoolean1790;
 

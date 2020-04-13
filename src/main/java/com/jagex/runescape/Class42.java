@@ -13,11 +13,11 @@ import com.jagex.runescape.net.PacketBuffer;
 public class Class42 {
     public static RSString aClass1_988 = RSString.CreateString(" has logged in.");
     public static byte[][][] tile_underlayids;
-    public static RSString aClass1_997 = RSString.CreateString("Unable to connect.");
+    public static String aClass1_997 = "Unable to connect.";
     public static Cache aClass9_998 = new Cache(100);
     public static String aClass1_1000 = "Loaded config";
-    public static RSString aClass1_1001 = RSString.CreateString("We suspect someone knows your password.");
-    public static RSString aClass1_1002 = RSString.CreateString("Unable to connect.");
+    public static String aClass1_1001 = "We suspect someone knows your password.";
+    public static String aClass1_1002 = "Unable to connect.";
     public static int anInt1006 = 0;
     public static int anInt1008 = 0;
     public static int anInt1010 = 2;
