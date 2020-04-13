@@ -22,8 +22,8 @@ public class Class33 {
     public static int anInt784 = 0;
     public static String cmd_prefix = "::";
     public static int[] selectedMenuActions = new int[500];
-    public static RSString aClass1_795 = RSString.CreateString(")1");
-    public static RSString aClass1_798 = RSString.CreateString("No response from server)3");
+    public static RSString aClass1_795 = RSString.CreateString(",");
+    public static RSString aClass1_798 = RSString.CreateString("No response from server.");
     public static RSString aClass1_799 = aClass1_798;
 
 
@@ -359,14 +359,13 @@ public class Class33 {
 
     }
 
-    public static void method411(RSString arg0, RSString arg1, RSString arg2, byte arg3) {
-        int i = -74 / ((29 - arg3) / 57);
+    public static void method411(RSString arg0, RSString arg1, String arg2) {
         Class22_Sub2.aClass1_1881 = arg0;
         Class22_Sub2.aClass1_1896 = arg2;
         Class22_Sub2.aClass1_1879 = arg1;
     }
 
-    public static synchronized void method412(boolean arg0, CacheIndex arg1, int arg2, byte arg3, RSString arg4, int arg5, RSString arg6, int arg7) {
+    public static synchronized void method412(boolean arg0, CacheIndex arg1, int arg2, byte arg3, String arg4, int arg5, RSString arg6, int arg7) {
         if(Class24.method340()) {
             if(arg3 != 66)
                 method412(false, null, 120, (byte) -44, null, 71, null, -13);

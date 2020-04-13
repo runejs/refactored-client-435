@@ -27,9 +27,9 @@ public class GenericTile {
     public static int fps = 0;
     public static int anInt1222 = 0;
     public static RSString aClass1_1223 = aClass1_1216;
-    public static RSString aClass1_1230 = RSString.CreateString("headicons_hint");
+    public static String aClass1_1230 = "headicons_hint";
     public static int anInt1233 = 0;
-    public static RSString aClass1_1234 = RSString.CreateString("Connection timed out)3");
+    public static RSString aClass1_1234 = RSString.CreateString("Connection timed out.");
 
     static {
         aClass1_1218 = aClass1_1234;

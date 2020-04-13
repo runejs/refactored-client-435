@@ -27,7 +27,7 @@ public class Class60 {
     public static int anInt1417;
 
     static {
-        aClass1_1411 = RSString.CreateString("Error loading your profile)3");
+        aClass1_1411 = RSString.CreateString("Error loading your profile.");
         Player.localPlayerCount = 0;
         aClass1_1416 = aClass1_1411;
         cameraVelocityVertical = 0;
@@ -191,7 +191,7 @@ public class Class60 {
                 i_16_ += 15;
                 if(i_11_ == 1 && i_17_ + -75 <= i && i <= i_17_ + 75 && i_12_ >= i_18_ + -20 && i_12_ <= i_18_ + 20) {
                     Native.username = Native.username.method62().method85();
-                    Class33.method411(Node.aClass1_964, Node.aClass1_958, Class40_Sub5_Sub17_Sub1.aClass1_3009, (byte) 106);
+                    Class33.method411(Node.aClass1_964, Node.aClass1_958, Class40_Sub5_Sub17_Sub1.aClass1_3009);
                     OverlayDefinition.method559(20);
                 } else {
                     i_17_ = 260;

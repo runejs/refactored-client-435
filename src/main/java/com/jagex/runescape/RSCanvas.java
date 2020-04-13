@@ -30,7 +30,7 @@ public class RSCanvas extends Canvas {
     public static Class68 aClass68_64;
     public static int anInt65 = 127;
     public static int[] anIntArray66;
-    public static RSString aClass1_67 = RSString.CreateString("Your profile will be transferred in:");
+    public static String aClass1_67 = "Your profile will be transferred in:";
     public static RSString aClass1_68 = RSString.CreateString("k");
 
     public Component aComponent49;

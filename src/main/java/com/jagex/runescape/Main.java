@@ -44,15 +44,15 @@ public class Main extends GameShell {
     public static int anInt1756 = 0;
     public static int menuOffsetY;
     public static RSString aClass1_1761 = RSString.CreateString("Welcome to Runescape");
-    public static RSString aClass1_1762 = RSString.CreateString("logo");
+    public static String aClass1_1762 = "logo";
     public static String aClass1_1763 = "Use";
     public static int anInt1764 = 0;
     public static int anInt1766 = 1;
     public static int anInt1769 = -1;
     public static int widgetSelected = 0;
     public static String[] playerActions = new String[5];
-    public static RSString aClass1_1781 = RSString.CreateString("Account locked as we suspect it has been stolen)3");
-    public static RSString aClass1_1788 = RSString.CreateString("backtop1");
+    public static RSString aClass1_1781 = RSString.CreateString("Account locked as we suspect it has been stolen.");
+    public static String aClass1_1788 = "backtop1";
     public static boolean aBoolean1790;
 
     public static boolean method36(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, Widget[] arg8, boolean arg9) {
@@ -178,8 +178,8 @@ public class Main extends GameShell {
                                                 class40_sub5_sub14_sub4.method728(i_10_, i_11_, 128);
                                             if(class40_sub5_sub14_sub4.maxWidth == 33 || widget.itemAmounts[i_7_] != 1) {
                                                 int i_19_ = widget.itemAmounts[i_7_];
-                                                Class40_Sub5_Sub17_Sub6.fontSmall.drawString(Widget.method648(i_19_, (byte) -100), i_12_ + 1 + i_10_, i_11_ + 10 + i_14_, 0);
-                                                Class40_Sub5_Sub17_Sub6.fontSmall.drawString(Widget.method648(i_19_, (byte) -100), i_10_ + i_12_, i_14_ + i_11_ + 9, 16776960);
+                                                Class40_Sub5_Sub17_Sub6.fontSmall.drawString(Widget.getShortenedAmountText(i_19_), i_12_ + 1 + i_10_, i_11_ + 10 + i_14_, 0);
+                                                Class40_Sub5_Sub17_Sub6.fontSmall.drawString(Widget.getShortenedAmountText(i_19_), i_10_ + i_12_, i_14_ + i_11_ + 9, 16776960);
                                             }
                                         }
                                     }

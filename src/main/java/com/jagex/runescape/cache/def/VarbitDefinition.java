@@ -12,7 +12,7 @@ public class VarbitDefinition extends SubNode {
     public static Class68 aClass68_2350;
     public static RSString aClass1_2351 = RSString.CreateString("Login");
     public static Class56 aClass56_2356;
-    public static RSString aClass1_2357 = RSString.CreateString("Please subscribe)1 or use a different world)3");
+    public static String aClass1_2357 = "Please subscribe, or use a different world.";
     public static int anInt2359 = 0;
     public static int[] anIntArray2361 = new int[]{0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535, 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607, 16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, 2147483647, -1};
     public static CacheIndex aCacheIndex_2364;

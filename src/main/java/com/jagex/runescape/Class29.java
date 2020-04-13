@@ -10,7 +10,7 @@ import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class29 {
     public static String aClass1_670 = "@or3@";
-    public static RSString aClass1_671 = RSString.CreateString("mapscene");
+    public static String aClass1_671 ="mapscene";
     public static int tabAreaOverlayWidgetId = -1;
     public static RSString aClass1_674 = RSString.CreateString(" x");
     public static Class64 aClass64_676;

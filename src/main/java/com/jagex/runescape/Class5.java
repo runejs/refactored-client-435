@@ -23,16 +23,16 @@ import java.awt.*;
 
 public class Class5 {
     public static Class22 aClass22_189;
-    public static RSString aClass1_193 = RSString.CreateString("Please contact customer support)3");
+    public static String aClass1_193 = "Please contact customer support.";
     public static int anInt194;
     public static int anInt195 = 1;
-    public static RSString aClass1_196 = RSString.CreateString("backvmid3");
+    public static String aClass1_196 = "backvmid3";
     public static int[] anIntArray198;
     public static int anInt199 = 0;
     public static int anInt200 = 127;
-    public static RSString aClass1_203 = RSString.CreateString("mapmarker");
+    public static String aClass1_203 = "mapmarker";
     public static String aClass1_204 = "red:";
-    public static RSString aClass1_206 = RSString.CreateString(" )2> @lre@");
+    public static RSString aClass1_206 = RSString.CreateString(" -> @lre@");
     public static int currentTabId = 3;
 
     public static void loadTerrainSubblock(int arg0, int arg2, int arg3, int arg4, int x, int arg6, int arg7, byte[] arg8, CollisionMap[] arg9) {

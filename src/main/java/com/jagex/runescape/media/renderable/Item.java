@@ -25,22 +25,14 @@ import tech.henning.fourthreefive.Configuration;
 import java.awt.*;
 
 public class Item extends Renderable {
-    public static RSString aClass1_3049 = RSString.CreateString("Could not complete login)3");
-    public static RSString aClass1_3050;
+    public static String aClass1_3050 = "Too many connections from your address.";
     public static int[] anIntArray3051 = new int[25];
-    public static RSString aClass1_3054 = RSString.CreateString("Members object");
     public static boolean[] obfuscatedKeyStatus = new boolean[112];
-    public static RSString aClass1_3059 = RSString.CreateString("Too many connections from your address)3");
     public static int friendsCount = 0;
     public static int anInt3065 = -1;
-    public static RSString aClass1_3066 = aClass1_3049;
-    public static RSString aClass1_3068 = RSString.CreateString(" )2> @whi@");
-    public static RSString aClass1_3069;
-
-    static {
-        aClass1_3050 = aClass1_3059;
-        aClass1_3069 = aClass1_3054;
-    }
+    public static RSString aClass1_3066 = RSString.CreateString("Could not complete login.");
+    public static RSString aClass1_3068 = RSString.CreateString(" -> @whi@");
+    public static RSString aClass1_3069 = RSString.CreateString("Members object");
 
     public int itemCount;
     public int itemId;
@@ -270,14 +262,11 @@ public class Item extends Renderable {
 
     public static void method780() {
         obfuscatedKeyStatus = null;
-        aClass1_3054 = null;
         aClass1_3050 = null;
-        aClass1_3059 = null;
         aClass1_3069 = null;
         aClass1_3066 = null;
         aClass1_3068 = null;
         anIntArray3051 = null;
-        aClass1_3049 = null;
     }
 
     public Model getRotatedModel(int arg0) {

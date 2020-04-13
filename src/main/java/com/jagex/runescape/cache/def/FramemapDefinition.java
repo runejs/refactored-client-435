@@ -16,10 +16,10 @@ import com.jagex.runescape.scene.tile.Wall;
 
 public class FramemapDefinition extends Node {
     public static boolean aBoolean2177 = false;
-    public static RSString aClass1_2179 = RSString.CreateString("cross");
+    public static String aClass1_2179 = "cross";
     public static int anInt2183 = 0;
-    public static RSString aClass1_2188 = RSString.CreateString("You need a members account to login to this world)3");
-    public static RSString aClass1_2189 = RSString.CreateString("Service unavailable)3");
+    public static RSString aClass1_2188 = RSString.CreateString("You need a members account to login to this world.");
+    public static String aClass1_2189 = "Service unavailable.";
 
 
     public int[][] frameMaps;

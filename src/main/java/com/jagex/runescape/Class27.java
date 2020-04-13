@@ -31,8 +31,8 @@ import com.jagex.runescape.scene.tile.*;
 import com.jagex.runescape.util.TextUtils;
 
 public class Class27 {
-    public static RSString aClass1_638 = RSString.CreateString("invback");
-    public static RSString aClass1_643 = RSString.CreateString(")2");
+    public static String aClass1_638 = "invback";
+    public static RSString aClass1_643 = RSString.CreateString("-");
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array649;
     public static CacheIndex aCacheIndex_654;
     public static int minimapState = 0;
@@ -888,7 +888,7 @@ public class Class27 {
         }
     }
 
-    public static IndexedImage method359(RSString arg0, RSString arg1, CacheIndex arg2) {
+    public static IndexedImage method359(String arg0, RSString arg1, CacheIndex arg2) {
         int i = arg2.getHash(arg0);
         int i_23_ = arg2.method179(i, arg1);
         return method363(arg2, (byte) -42, i_23_, i);
@@ -1084,64 +1084,64 @@ public class Class27 {
 
     public static void method366(int arg1) {
         if(arg1 == -3)
-            Class33.method411(Node.aClass1_956, GenericTile.aClass1_1218, SceneTile.aClass1_2057, (byte) -121);
+            Class33.method411(Node.aClass1_956, GenericTile.aClass1_1218, SceneTile.aClass1_2057);
         else if(arg1 == -2)
-            Class33.method411(Node.aClass1_934, Node.aClass1_969, Class40_Sub5_Sub6.aClass1_2462, (byte) 93);
+            Class33.method411(Node.aClass1_934, Node.aClass1_969, Class40_Sub5_Sub6.aClass1_2462);
         else if(arg1 == -1)
-            Class33.method411(Node.aClass1_949, Class33.aClass1_799, SceneTile.aClass1_2053, (byte) 115);
+            Class33.method411(Node.aClass1_949, Class33.aClass1_799, SceneTile.aClass1_2053);
         else if(arg1 == 3)
-            Class33.method411(Node.aClass1_941, Node.aClass1_974, ISAAC.aClass1_526, (byte) -65);
+            Class33.method411(Node.aClass1_941, Node.aClass1_974, ISAAC.aClass1_526);
         else if(arg1 == 4)
-            Class33.method411(Node.aClass1_976, Class64.aClass1_1526, Cache.aClass1_323, (byte) -33);
+            Class33.method411(Node.aClass1_976, Class64.aClass1_1526, Cache.aClass1_323);
         else if(arg1 != 5) {
             if(arg1 == 6)
-                Class33.method411(Node.aClass1_930, Class40_Sub5_Sub6.aClass1_2460, Class65.aClass1_1538, (byte) 112);
+                Class33.method411(Node.aClass1_930, Class40_Sub5_Sub6.aClass1_2460, Class65.aClass1_1538);
             else if(arg1 == 7)
-                Class33.method411(Node.aClass1_953, Class57.aClass1_1339, English.pleaseUseADifferentWorld, (byte) 105);
+                Class33.method411(Node.aClass1_953, Class57.aClass1_1339, English.pleaseUseADifferentWorld);
             else if(arg1 != 8) {
                 if(arg1 == 9)
-                    Class33.method411(Node.aClass1_942, Actor.aClass1_3138, Item.aClass1_3050, (byte) 104);
+                    Class33.method411(Node.aClass1_942, Actor.aClass1_3138, Item.aClass1_3050);
                 else if(arg1 == 10)
-                    Class33.method411(Node.aClass1_952, Class42.aClass1_1002, IdentityKit.aClass1_2615, (byte) 87);
+                    Class33.method411(Node.aClass1_952, Class42.aClass1_1002, IdentityKit.aClass1_2615);
                 else if(arg1 == 11)
-                    Class33.method411(Node.aClass1_943, Class42.aClass1_1001, Class40_Sub6.aClass1_2111, (byte) 110);
+                    Class33.method411(Node.aClass1_943, Class42.aClass1_1001, Class40_Sub6.aClass1_2111);
                 else if(arg1 == 12)
-                    Class33.method411(Node.aClass1_931, FramemapDefinition.aClass1_2188, VarbitDefinition.aClass1_2357, (byte) 115);
+                    Class33.method411(Node.aClass1_931, FramemapDefinition.aClass1_2188, VarbitDefinition.aClass1_2357);
                 else if(arg1 == 13)
-                    Class33.method411(Node.aClass1_972, Item.aClass1_3066, SceneTile.aClass1_2042, (byte) -53);
+                    Class33.method411(Node.aClass1_972, Item.aClass1_3066, SceneTile.aClass1_2042);
                 else if(arg1 != 14) {
                     if(arg1 != 16) {
                         if(arg1 != 17) {
                             if(arg1 != 18) {
                                 if(arg1 == 20)
-                                    Class33.method411(Node.aClass1_944, Class55.aClass1_1298, SceneTile.aClass1_2047, (byte) 126);
+                                    Class33.method411(Node.aClass1_944, Class55.aClass1_1298, SceneTile.aClass1_2047);
                                 else if(arg1 == 22)
-                                    Class33.method411(Node.aClass1_955, OverlayDefinition.aClass1_2325, CacheIndex.aClass1_258, (byte) -123);
+                                    Class33.method411(Node.aClass1_955, OverlayDefinition.aClass1_2325, CacheIndex.aClass1_258);
                                 else if(arg1 == 23)
-                                    Class33.method411(Node.aClass1_957, Class38.aClass1_882, ActorDefinition.aClass1_2410, (byte) -128);
+                                    Class33.method411(Node.aClass1_957, Class38.aClass1_882, ActorDefinition.aClass1_2410);
                                 else if(arg1 != 24) {
                                     if(arg1 == 25)
-                                        Class33.method411(Node.aClass1_973, Class8.aClass1_278, SceneTile.aClass1_2050, (byte) -84);
+                                        Class33.method411(Node.aClass1_973, Class8.aClass1_278, SceneTile.aClass1_2050);
                                     else if(arg1 == 26)
-                                        Class33.method411(Node.aClass1_960, English.thisComputersAddressHasBeenBlocked, English.asItWasUsedToBreakOurRules, (byte) 103);
+                                        Class33.method411(Node.aClass1_960, English.thisComputersAddressHasBeenBlocked, English.asItWasUsedToBreakOurRules);
                                     else if(arg1 != 27)
-                                        Class33.method411(Node.aClass1_946, English.unexpectedServerResponse, SceneTile.aClass1_2054, (byte) 123);
+                                        Class33.method411(Node.aClass1_946, English.unexpectedServerResponse, SceneTile.aClass1_2054);
                                     else
-                                        Class33.method411(Node.aClass1_945, Node.aClass1_925, FramemapDefinition.aClass1_2189, (byte) 103);
+                                        Class33.method411(Node.aClass1_945, Node.aClass1_925, FramemapDefinition.aClass1_2189);
                                 } else
-                                    Class33.method411(Node.aClass1_954, Class60.aClass1_1416, Class5.aClass1_193, (byte) 117);
+                                    Class33.method411(Node.aClass1_954, Class60.aClass1_1416, Class5.aClass1_193);
                             } else
-                                Class33.method411(Node.aClass1_963, Main.aClass1_1781, Class34.aClass1_817, (byte) 96);
+                                Class33.method411(Node.aClass1_963, Main.aClass1_1781, Class34.aClass1_817);
                         } else
-                            Class33.method411(Node.aClass1_959, Landscape.aClass1_1178, Class61.aClass1_1421, (byte) -85);
+                            Class33.method411(Node.aClass1_959, Landscape.aClass1_1178, Class61.aClass1_1421);
                     } else
-                        Class33.method411(Node.aClass1_924, Buffer.aClass1_1983, English.pleaseWait5MinutesBeforeTryingAgain, (byte) -29);
+                        Class33.method411(Node.aClass1_924, Buffer.aClass1_1983, English.pleaseWait5MinutesBeforeTryingAgain);
                 } else
-                    Class33.method411(Node.aClass1_929, Wall.aClass1_344, ActorDefinition.aClass1_2401, (byte) -68);
+                    Class33.method411(Node.aClass1_929, Wall.aClass1_344, ActorDefinition.aClass1_2401);
             } else
-                Class33.method411(Node.aClass1_937, Class42.aClass1_997, Class68_Sub1.aClass1_2209, (byte) -76);
+                Class33.method411(Node.aClass1_937, Class42.aClass1_997, Class68_Sub1.aClass1_2209);
         } else
-            Class33.method411(Node.aClass1_966, English.yourAccountIsAlreadyLoggedIn, Player.aClass1_3286, (byte) -101);
+            Class33.method411(Node.aClass1_966, English.yourAccountIsAlreadyLoggedIn, Player.aClass1_3286);
         OverlayDefinition.method559(10);
     }
 

@@ -14,7 +14,7 @@ import com.jagex.runescape.scene.util.CollisionMap;
 
 public class HashTable {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_549;
-    public static RSString aClass1_553 = RSString.CreateString("l");
+    public static String aClass1_553 = "l";
     public static int anInt554 = 0;
     public static int anInt564;
     public static boolean aBoolean565 = false;

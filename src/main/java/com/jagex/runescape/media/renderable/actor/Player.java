@@ -23,7 +23,7 @@ public class Player extends Actor {
     public static int worldLevel;
     public static byte[] aByteArray3270;
     public static int[] anIntArray3284;
-    public static RSString aClass1_3286 = RSString.CreateString("Try again in 60 secs...");
+    public static String aClass1_3286 = "Try again in 60 secs...";
     public static int anInt3288 = 0;
     public static Player localPlayer;
     public static int[] actorUpdatingIndices = new int[2048];

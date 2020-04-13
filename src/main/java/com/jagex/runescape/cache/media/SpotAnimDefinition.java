@@ -25,14 +25,14 @@ import java.net.Socket;
 
 public class SpotAnimDefinition extends SubNode {
     public static ImageRGB minimapEdge;
-    public static RSString str_prefix_level = RSString.CreateString("level)2");
+    public static RSString str_prefix_level = RSString.CreateString("level-");
     public static String cmd_noclip = "::noclip";
     public static String aClass1_2294 = "Loading textures - ";
     public static String aClass1_2297 = "Loaded input handler";
     public static Class67 aClass67_2298;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2301;
     public static int mouseButtonPressed = 0;
-    public static RSString aClass1_2306 = RSString.CreateString(" )2> @yel@");
+    public static RSString aClass1_2306 = RSString.CreateString(" -> @yel@");
     public static int baseX;
 
     public int animationId;
@@ -206,7 +206,7 @@ public class SpotAnimDefinition extends SubNode {
             }
             if (Class40_Sub3.anInt2032 == 8) {
                 Main.anInt1756 = 0;
-                Class33.method411(RSString.linkRSStrings(new RSString[]{HashTable.intToStr(Class33.anInt784 / 60), Class38.aClass1_883}), Class8.aClass1_294, RSCanvas.aClass1_67, (byte) -82);
+                Class33.method411(RSString.linkRSStrings(new RSString[]{HashTable.intToStr(Class33.anInt784 / 60), Class38.aClass1_883}), Class8.aClass1_294, RSCanvas.aClass1_67);
                 if (--Class33.anInt784 <= 0) {
                     Class40_Sub3.anInt2032 = 0;
                 }

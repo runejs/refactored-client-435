@@ -16,9 +16,9 @@ public class Class4 {
     public static String cmd_hiddenbuttontest = "::hiddenbuttontest";
     public static int[] anIntArray178;
     public static GameShell anApplet_Sub1_179 = null;
-    public static RSString aClass1_180 = RSString.CreateString("wishes to trade with you)3");
+    public static RSString aClass1_180 = RSString.CreateString("wishes to trade with you.");
     public static boolean inTutorialIsland = false;
-    public static RSString aClass1_183 = RSString.CreateString("mapdots");
+    public static String aClass1_183 = "mapdots";
     public static int anInt188;
 
     public static void method159() {

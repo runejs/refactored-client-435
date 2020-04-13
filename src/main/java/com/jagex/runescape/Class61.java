@@ -14,15 +14,15 @@ import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.util.Signlink;
 
 public class Class61 {
-    public static RSString aClass1_1421 = RSString.CreateString("To play on this world move to a free area first");
+    public static String aClass1_1421 = "To play on this world move to a free area first";
     public static RSString aClass1_1422 = RSString.CreateString("Username: ");
     public static PacketBuffer packetBuffer = new PacketBuffer(5000);
-    public static RSString aClass1_1427 = RSString.CreateString("mapedge");
+    public static String aClass1_1427 = "mapedge";
     public static String aClass1_1428 = "wishes to duel with you.";
     public static String aClass1_1432 = "System update in: ";
     public static int[][] anIntArrayArray1435 = new int[104][104];
     public static RSString aClass1_1437 = RSString.CreateString("null");
-    public static RSString aClass1_1440 = RSString.CreateString("backleft1");
+    public static String aClass1_1440 = "backleft1";
     public static Class68 aClass68_1441;
     public static boolean aBoolean1444 = false;
     public static int[] anIntArray1445;

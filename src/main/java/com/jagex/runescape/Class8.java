@@ -19,24 +19,24 @@ import java.util.Calendar;
 public class Class8 {
     public static RSString aClass1_278;
     public static Calendar aCalendar279 = Calendar.getInstance();
-    public static RSString aClass1_281 = RSString.CreateString("backright1");
+    public static String aClass1_281 = "backright1";
     public static CacheIndex aCacheIndex_284;
-    public static RSString aClass1_286 = RSString.CreateString("Unexpected loginserver response)3");
+    public static RSString aClass1_286 = RSString.CreateString("Unexpected loginserver response.");
     public static long aLong288;
     public static int anInt289;
     public static int anInt290 = 0;
-    public static RSString aClass1_291 = RSString.CreateString("You have only just left another world)3");
+    public static RSString aClass1_291 = RSString.CreateString("You have only just left another world.");
     public static int anInt292 = 0;
     public static RSString aClass1_294;
     public static FontMetrics fontMetrics;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array296;
     public static int[] anIntArray297 = new int[5];
     public static Class68 aClass68_298;
-    public static RSString aClass1_299 = RSString.CreateString("runes");
+    public static String aClass1_299 = "runes";
     public static int itemSelected = 0;
     public static byte aByte302 = (byte) 0;
-    public static RSString aClass1_303 = RSString.CreateString("_");
-    public static RSString aClass1_304 = RSString.CreateString("backhmid2");
+    public static String aClass1_303 = "_";
+    public static String aClass1_304 = "backhmid2";
     public static RSString aClass1_305 = RSString.CreateString("");
 
     static {

@@ -23,7 +23,7 @@ public class OverlayDefinition extends SubNode {
     public static int anInt2321 = 0;
     public static byte[][][] tile_flags = new byte[4][104][104];
     public static int[] anIntArray2324;
-    public static RSString aClass1_2325 = RSString.CreateString("Malformed login packet)3");
+    public static RSString aClass1_2325 = RSString.CreateString("Malformed login packet.");
     public static int anInt2328 = -1;
     public static int[][][] constructMapTiles = new int[4][13][13];
     public static byte[][][] tile_underlay_path;

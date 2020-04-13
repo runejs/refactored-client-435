@@ -43,7 +43,7 @@ public class Node {
     public static RSString aClass1_972 = RSString.CreateString("");
     public static RSString aClass1_973 = RSString.CreateString("");
     public static RSString aClass1_974 = RSString.CreateString("");
-    public static RSString aClass1_975 = RSString.CreateString(")3");
+    public static RSString aClass1_975 = RSString.CreateString(".");
     public static RSString aClass1_976 = RSString.CreateString("");
 
     public long key;

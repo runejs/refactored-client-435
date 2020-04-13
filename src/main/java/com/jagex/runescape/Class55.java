@@ -17,7 +17,7 @@ public class Class55 {
     public static String aClass1_1291 = "slide:";
     public static volatile int eventClickX = 0;
     public static int anInt1296 = -1;
-    public static RSString aClass1_1298 = RSString.CreateString("Invalid loginserver requested)3");
+    public static RSString aClass1_1298 = RSString.CreateString("Invalid loginserver requested.");
     public static int anInt1299 = 2301979;
     public static String aClass1_1300 = "%4";
     public static int destinationY = 0;

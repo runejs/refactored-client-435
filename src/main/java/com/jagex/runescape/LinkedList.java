@@ -27,7 +27,7 @@ public class LinkedList {
     public static Buffer aClass40_Sub1_1081 = new Buffer(8);
     public static Class30 aClass30_1082 = new Class30();
     public static int[] anIntArray1083 = new int[1000];
-    public static RSString aClass1_1085 = RSString.CreateString("m");
+    public static String aClass1_1085 = "m";
     public Node aClass40_1056 = new Node();
     public Node aClass40_1068;
 

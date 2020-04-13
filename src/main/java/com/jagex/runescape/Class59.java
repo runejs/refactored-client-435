@@ -22,10 +22,10 @@ public class Class59 {
     public static int anInt1389 = 0;
     public static KeyFocusListener keyFocusListener;
     public static int[] secondMenuOperand;
-    public static RSString aClass1_1395 = RSString.CreateString("backbase1");
+    public static String aClass1_1395 = "backbase1";
     public static long[] aLongArray1397;
     public static int[] anIntArray1398;
-    public static RSString aClass1_1399 = RSString.CreateString("Your friendlist is full)3 Max of 100 for free users)1 and 200 for members");
+    public static RSString aClass1_1399 = RSString.CreateString("Your friendlist is full. Max of 100 for free users, and 200 for members");
 
     static {
         secondMenuOperand = new int[500];

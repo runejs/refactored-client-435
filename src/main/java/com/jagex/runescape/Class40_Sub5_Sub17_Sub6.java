@@ -19,7 +19,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     public static int[] anIntArray3248;
     public static int[] anIntArray3250;
     public static int[] anIntArray3253;
-    public static RSString aClass1_3254 = RSString.CreateString("redstone2");
+    public static String aClass1_3254 = "redstone2";
     public static int[] anIntArray3255;
 
     public int anInt3230;

@@ -201,7 +201,7 @@ public class HuffmanEncoding {
         return arg0 >= 48 && arg0 <= 57;
     }
 
-    public static ImageRGB method1028(CacheIndex arg0, RSString arg1, byte arg2, RSString arg3) {
+    public static ImageRGB method1028(CacheIndex arg0, String arg1, byte arg2, RSString arg3) {
         int i = arg0.getHash(arg1);
         int i_13_ = arg0.method179(i, arg3);
         if (arg2 != 21)

@@ -16,7 +16,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
     public static int[] anIntArray2199 = new int[32];
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2204;
     public static int[] anIntArray2207 = {0, -1, 0, 1};
-    public static RSString aClass1_2209 = RSString.CreateString("Login server offline)3");
+    public static String aClass1_2209 = "Login server offline.";
     public static int anInt2210;
     public static int anInt2211 = 2;
     public static Class68 aClass68_2213;

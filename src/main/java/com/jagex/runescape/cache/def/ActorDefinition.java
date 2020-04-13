@@ -23,9 +23,9 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
     public static CacheIndex_Sub1 aClass6_Sub1_2377;
     public static int[] anIntArray2386;
     public static int menuActionRow = 0;
-    public static RSString aClass1_2401 = RSString.CreateString("Please wait 1 minute and try again)3");
+    public static String aClass1_2401 = "Please wait 1 minute and try again.";
     public static int anInt2404 = 0;
-    public static RSString aClass1_2410 = RSString.CreateString("Please wait 1 minute and try again)3");
+    public static String aClass1_2410 = "Please wait 1 minute and try again.";
     public static byte[] aByteArray2416 = new byte[520];
     public static RSString aClass1_2423 = RSString.CreateString("(X100(U(Y");
     public static int openFullScreenWidgetId = -1;

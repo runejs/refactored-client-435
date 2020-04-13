@@ -7,11 +7,10 @@ import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;
 
 public class IdentityKit extends SubNode {
-    public static RSString aClass1_2587 = RSString.CreateString("K");
-    public static RSString aClass1_2588 = RSString.CreateString("backvmid2");
+    public static String aClass1_2588 = "backvmid2";
     public static HuffmanEncoding aHuffmanEncoding_2590;
     public static int anInt2591 = 0;
-    public static RSString aClass1_2593 = RSString.CreateString("K");
+    public static String aClass1_2593 = "K";
     public static boolean drawTabIcons = false;
     public static int anInt2598 = 0;
     public static int[] sound = new int[50];
@@ -19,7 +18,7 @@ public class IdentityKit extends SubNode {
     public static int height;
     public static CacheIndex_Sub1 aClass6_Sub1_2609;
     public static int anInt2613 = 0;
-    public static RSString aClass1_2615 = RSString.CreateString("Bad session id)3");
+    public static String aClass1_2615 = "Bad session id.";
     public static boolean membersServer;
 
     public int[] recolorToFind = new int[6];
@@ -38,7 +37,6 @@ public class IdentityKit extends SubNode {
         aClass1_2588 = null;
         aClass6_Sub1_2609 = null;
         aHuffmanEncoding_2590 = null;
-        aClass1_2587 = null;
         aLinkedList_2604 = null;
         sound = null;
         aClass1_2593 = null;
@@ -50,7 +48,7 @@ public class IdentityKit extends SubNode {
         if(class40_sub5_sub1 != null) {
             return class40_sub5_sub1;
         }
-        byte[] is = Class56.aClass6_Sub1_1323.method170(GameObject.aClass1_3044, RSString.linkRSStrings(new RSString[]{HashTable.intToStr(arg1), SubNode.aClass1_2084, HashTable.intToStr(arg0)}), 1);
+        byte[] is = Class56.aClass6_Sub1_1323.method170(GameObject.aClass1_3044, arg1 +SubNode.aClass1_2084 + arg0, 1);
         Buffer class40_sub1 = new Buffer(is);
         class40_sub5_sub1 = new Class40_Sub5_Sub1();
         class40_sub1.currentPosition = class40_sub1.buffer.length + -12;

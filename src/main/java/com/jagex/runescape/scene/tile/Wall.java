@@ -9,7 +9,7 @@ import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Wall {
-    public static RSString aClass1_338 = RSString.CreateString("backhmid1");
+    public static String aClass1_338 = "backhmid1";
     public static RSString aClass1_344;
     public static RSString aClass1_346;
     public static int cameraVelocityHorizontal = 0;
@@ -21,7 +21,7 @@ public class Wall {
     public static LinkedList[][][] groundItems = new LinkedList[4][104][104];
 
     static {
-        aClass1_346 = RSString.CreateString("The server is being updated)3");
+        aClass1_346 = RSString.CreateString("The server is being updated.");
         aClass1_344 = aClass1_346;
     }
 

@@ -19,7 +19,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public static int systemUpdateTime = 0;
     public static boolean lastItemDragged = false;
     public static RSString aClass1_2786;
-    public static RSString aClass1_2787 = RSString.CreateString("sideicons");
+    public static String aClass1_2787 = "sideicons";
     public static int[] anIntArray2788 = new int[]{16, 32, 64, 128};
     public static RSString aClass1_2790 = RSString.CreateString("Friends");
     public static int anInt2791 = -8 + (int) (17.0 * Math.random());

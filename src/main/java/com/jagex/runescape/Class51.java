@@ -48,7 +48,7 @@ public class Class51 {
         aClass1_1199 = null;
     }
 
-    public static void method940(int arg0, RSString arg1, boolean arg2, RSString arg3) {
+    public static void method940(int arg0, String arg1, boolean arg2, RSString arg3) {
         if(Class40_Sub5_Sub11.clearScreen) {
             Class40_Sub5_Sub11.clearScreen = false;
             ItemDefinition.method742();

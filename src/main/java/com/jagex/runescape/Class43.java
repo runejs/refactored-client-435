@@ -19,7 +19,7 @@ public class Class43 {
     public static String aClass1_1019 = "flash1:";
     public static int cameraYawOffset = 0;
     public static LinkedList aLinkedList_1022 = new LinkedList();
-    public static RSString aClass1_1024 = RSString.CreateString("backleft2");
+    public static String aClass1_1024 = "backleft2";
     public static int bankInsertMode = 0;
     public static String char_colon =":";
 

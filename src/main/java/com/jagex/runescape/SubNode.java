@@ -13,11 +13,11 @@ import com.jagex.runescape.scene.GroundItemTile;
 public class SubNode extends Node {
     public static int anInt2081;
     public static boolean aBoolean2083 = false;
-    public static RSString aClass1_2084 = RSString.CreateString(")1");
+    public static String aClass1_2084 = ",";
     public static int[] anIntArray2086;
     public static String aClass1_2090 = "%5";
     public static Class68 aClass68_2091;
-    public static RSString aClass1_2093 = RSString.CreateString("redstone1");
+    public static String aClass1_2093 = "redstone1";
 
     public SubNode aClass40_Sub5_2082;
     public SubNode aClass40_Sub5_2087;

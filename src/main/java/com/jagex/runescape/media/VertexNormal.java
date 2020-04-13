@@ -14,7 +14,7 @@ public class VertexNormal {
     public static CacheIndex_Sub1 aClass6_Sub1_1104;
     public static String aClass1_1105 = "Prepared sound engine";
     public static boolean lowMemory = false;
-    public static RSString aClass1_1113 = RSString.CreateString("mapback");
+    public static String aClass1_1113 = "mapback";
     public static String aClass1_1114 = "@lre@";
     public static String aClass1_1117 = " ";
 

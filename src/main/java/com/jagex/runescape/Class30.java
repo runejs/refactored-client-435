@@ -30,7 +30,7 @@ public class Class30 {
     public static int[] anIntArray712 = new int[50];
     public static Class68 aClass68_714;
     public static int[] anIntArray715 = new int[50];
-    public static RSString aClass1_716 = RSString.CreateString("scape main");
+    public static String aClass1_716 = "scape main";
     public static Class64 aClass64_717;
 
     public boolean gender;

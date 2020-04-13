@@ -43,7 +43,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
     public static int anInt2452 = 0;
     public static String aClass1_2458 = "From";
     public static RSString aClass1_2460 = RSString.CreateString("RuneScape has been updated(Q");
-    public static RSString aClass1_2462 = RSString.CreateString("Error connecting to server)3");
+    public static String aClass1_2462 = "Error connecting to server.";
     public byte[] aByteArray2441;
 
     public Class40_Sub5_Sub6(byte[] arg0) {

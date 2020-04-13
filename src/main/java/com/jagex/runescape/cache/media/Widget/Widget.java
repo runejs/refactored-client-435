@@ -262,17 +262,14 @@ public class Widget extends SubNode {
         Class49.aClass9_1145.method235((byte) 97);
     }
 
-    public static RSString method648(int arg0, byte arg1) {
-        if(arg1 != -100) {
-            return null;
+    public static String getShortenedAmountText(int coins) {
+        if(coins < 100000) {
+            return String.valueOf(coins);
         }
-        if(arg0 < 100000) {
-            return HashTable.intToStr(arg0);
+        if(coins < 10000000) {
+            return coins / 1000 + "K";
         }
-        if(arg0 < 10000000) {
-            return RSString.linkRSStrings(new RSString[]{HashTable.intToStr(arg0 / 1000), IdentityKit.aClass1_2587});
-        }
-        return RSString.linkRSStrings(new RSString[]{HashTable.intToStr(arg0 / 1000000), Native.suffixM});
+        return coins / 0xf4240 + "M";
     }
 
     public static void method891(Object[] arg0, int arg1, int arg2, Widget arg3, int arg4, boolean arg5) {

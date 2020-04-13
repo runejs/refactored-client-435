@@ -21,9 +21,8 @@ public abstract class CacheIndex {
     public static long aLong219 = 0L;
     public static Cache modelCache = new Cache(260);
     public static int anInt255;
-    public static RSString aClass1_256 = RSString.CreateString("backbase2");
-    public static RSString aClass1_257 = RSString.CreateString("Please try again)3");
-    public static RSString aClass1_258 = aClass1_257;
+    public static String aClass1_256 = "backbase2";
+    public static String aClass1_258= "Please try again.";
     public static boolean aBoolean260 = false;
     public static int[][][] anIntArrayArrayArray262;
 
@@ -86,7 +85,6 @@ public abstract class CacheIndex {
         aClass40_Sub5_Sub14_Sub2Array215 = null;
         aClass1_256 = null;
         modelCache = null;
-        aClass1_257 = null;
         Player.deregisterActorIndices = null;
         anIntArrayArrayArray262 = null;
         aClass1_258 = null;
@@ -151,13 +149,13 @@ public abstract class CacheIndex {
         WallDecoration.aClass9_1247.method235((byte) 59);
     }
 
-    public byte[] method170(RSString arg0, RSString arg1, int arg2) {
+    public byte[] method170(RSString arg0, String arg1, int arg2) {
         if(arg2 != 1)
             method186(-26, 53);
         arg1 = arg1.toLowerCase();
         arg0 = arg0.toLowerCase();
-        int i = aClass42_254.method882(arg1.method76());
-        int i_0_ = aClass42Array217[i].method882(arg0.method76());
+        int i = aClass42_254.method882(RSString.stringHash(arg1));
+        int i_0_ = aClass42Array217[i].method882(arg0.stringHash());
 
         return getFile(i_0_, i);
     }
@@ -282,7 +280,7 @@ public abstract class CacheIndex {
 
     public int method179(int arg1, RSString arg2) {
         arg2 = arg2.toLowerCase();
-        return aClass42Array217[arg1].method882(arg2.method76());
+        return aClass42Array217[arg1].method882(arg2.stringHash());
     }
 
     public boolean method181(int arg0, int[] arg2) {
@@ -364,9 +362,9 @@ public abstract class CacheIndex {
         return is;
     }
 
-    public int getHash(RSString arg1) {
+    public int getHash(String arg1) {
         arg1 = arg1.toLowerCase();
-        return aClass42_254.method882(arg1.method76());
+        return aClass42_254.method882(RSString.stringHash(arg1));
     }
 
     public boolean method185(byte arg0) {
@@ -424,29 +422,27 @@ public abstract class CacheIndex {
         return anIntArrayArray243[arg0];
     }
 
-    public byte[] method193(byte arg0, int arg1) {
+    public byte[] method193(int arg1) {
         if(aByteArrayArrayArray249.length == 1)
             return method182(arg1, 0);
         if(aByteArrayArrayArray249[arg1].length == 1)
             return method182(0, arg1);
-        if(arg0 < 17)
-            aClass1_257 = null;
         throw new RuntimeException();
     }
 
-    public boolean method194(RSString arg0, RSString arg1, int arg2) {
+    public boolean method194(String arg0, RSString arg1, int arg2) {
         if(arg2 != -1234)
             anIntArray261 = null;
         arg0 = arg0.toLowerCase();
         arg1 = arg1.toLowerCase();
-        int i = aClass42_254.method882(arg0.method76());
-        int i_49_ = aClass42Array217[i].method882(arg1.method76());
+        int i = aClass42_254.method882(RSString.stringHash(arg0));
+        int i_49_ = aClass42Array217[i].method882(arg1.stringHash());
         return loaded(i, i_49_);
     }
 
-    public void method195(int arg0, RSString arg1) {
+    public void method195(int arg0, String arg1) {
         arg1 = arg1.toLowerCase();
-        int i = aClass42_254.method882(arg1.method76());
+        int i = aClass42_254.method882(RSString.stringHash(arg1));
         if(arg0 == 0 && i >= 0)
             method174(i, (byte) 2);
     }

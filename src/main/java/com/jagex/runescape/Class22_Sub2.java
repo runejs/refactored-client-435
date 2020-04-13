@@ -18,7 +18,7 @@ public abstract class Class22_Sub2 extends Class22 {
     public static RSString aClass1_1881 = Native.string_blank;
     public static Widget aWidget_1887;
     public static int duplicateClickCount = 0;
-    public static RSString aClass1_1896 = Native.string_blank;
+    public static String aClass1_1896 = "";
     public static int[] anIntArray774 = new int[]{12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800};
 
 

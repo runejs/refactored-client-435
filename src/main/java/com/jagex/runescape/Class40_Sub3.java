@@ -207,7 +207,7 @@ public class Class40_Sub3 extends Node {
             else
                 AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 = Class40_Sub2.method526(ActorDefinition.aClass6_Sub1_2377, Class40_Sub6.aClass1_2114, HuffmanEncoding.blank_string);
             if (FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 == null)
-                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = Class40_Sub2.method526(ActorDefinition.aClass6_Sub1_2377, RSString.CreateString(Class40_Sub11.aClass1_2161), HuffmanEncoding.blank_string);
+                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = Class40_Sub2.method526(ActorDefinition.aClass6_Sub1_2377, Class40_Sub11.aClass1_2161, HuffmanEncoding.blank_string);
             else
                 i++;
             if (Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 != null)

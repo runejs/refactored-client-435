@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class Class26 {
     public static boolean aBoolean618 = false;
-    public static RSString aClass1_619 = RSString.CreateString("skill)2");
+    public static RSString aClass1_619 = RSString.CreateString("skill-");
     public static String aClass1_620 = "@whi@";
     public static int anInt622 = 0;
     public static Image anImage624;

@@ -27,12 +27,12 @@ public class WallDecoration {
     public static RSString aClass1_1243 = RSString.CreateString("@whi@ )4 ");
     public static Cache aClass9_1247 = new Cache(64);
     public static RSString aClass1_1251;
-    public static RSString aClass1_1255 = RSString.CreateString("and choose the (Wcreate account(W");
+    public static RSString aClass1_1255 = RSString.CreateString("and choose the 'create account'");
     public static int anInt1257 = 0;
     public static RSString aClass1_1259;
     public static RSString aClass1_1260 = RSString.CreateString("go back to the main RuneScape webpage");
     public static Cache aClass9_1264 = new Cache(50);
-    public static RSString aClass1_1266 = RSString.CreateString("backright2");
+    public static String aClass1_1266 ="backright2";
     public static long[] ignores = new long[100];
     public static TypeFace fontNormal;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1270;

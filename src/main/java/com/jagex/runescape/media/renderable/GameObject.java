@@ -25,7 +25,7 @@ public class GameObject extends Renderable {
     public static Class68 aClass68_3042;
     public static RSString aClass1_3044 = RSString.CreateString("");
     public static Class68 aClass68_3045;
-    public static RSString aClass1_3047 = RSString.CreateString("mapfunction");
+    public static String aClass1_3047 = "mapfunction";
     public static int anInt3048 = 1;
 
 

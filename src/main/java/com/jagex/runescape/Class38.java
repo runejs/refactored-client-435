@@ -10,9 +10,9 @@ import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.tile.SceneTile;
 
 public abstract class Class38 {
-    public static RSString aClass1_881 = RSString.CreateString("mod_icons");
-    public static RSString aClass1_882 = RSString.CreateString("No reply from loginserver)3");
-    public static RSString aClass1_883 = RSString.CreateString(" seconds)3");
+    public static String aClass1_881 = "mod_icons";
+    public static RSString aClass1_882 = RSString.CreateString("No reply from loginserver.");
+    public static RSString aClass1_883 = RSString.CreateString(" seconds.");
     public static int[] menuActionTypes = new int[500];
     public static String aClass1_885 = "Add ignore";
     public static Class68 aClass68_887;
@@ -20,7 +20,7 @@ public abstract class Class38 {
     public static String aClass1_890 = "%1";
     public static int anInt892;
     public static boolean aBoolean893 = false;
-    public static RSString aClass1_894 = RSString.CreateString(" )2>");
+    public static RSString aClass1_894 = RSString.CreateString(" ->");
 
     public static void method439() {
         aClass1_882 = null;

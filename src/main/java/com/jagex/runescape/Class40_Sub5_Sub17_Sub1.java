@@ -46,14 +46,12 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     public static int atInventoryInterfaceType = 0;
     public static CacheIndex_Sub1 aClass6_Sub1_3000;
     public static int anInt3004;
-    public static RSString aClass1_3009;
-    public static RSString aClass1_3010 = RSString.CreateString("Connecting to server...");
+    public static String aClass1_3009 = "Connecting to server...";
     public static RSString aClass1_3012 = RSString.CreateString("Jan");
     public static RSString aClass1_3014 = RSString.CreateString("Loading wordpack - ");
     public static RSString aClass1_3015 = RSString.CreateString("Apr");
 
     static {
-        aClass1_3009 = aClass1_3010;
         aClass1Array2964 = new RSString[]{aClass1_3012, aClass1_2963, aClass1_2990, aClass1_3015, aClass1_2998, aClass1_2985, aClass1_2991, aClass1_2969, aClass1_2966, aClass1_2965, aClass1_2988, aClass1_2967};
     }
 
@@ -141,7 +139,6 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         aClass1_2967 = null;
         aClass1_2998 = null;
         aClass1_2988 = null;
-        aClass1_3010 = null;
         aClass1_3009 = null;
     }
 

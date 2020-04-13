@@ -16,10 +16,9 @@ import java.util.zip.CRC32;
 public class Class65 {
     public static CRC32 aCRC32_1531 = new CRC32();
     public static CacheIndex_Sub1 aClass6_Sub1_1533;
-    public static RSString aClass1_1535 = RSString.CreateString("Please reload this page)3");
     public static String aClass1_1536 =" x ";
     public static int cameraVertical;
-    public static RSString aClass1_1538 = aClass1_1535;
+    public static String aClass1_1538 = "Please reload this page.";
 
     static {
         cameraVertical = 128;
@@ -30,7 +29,6 @@ public class Class65 {
         aCRC32_1531 = null;
         aClass1_1538 = null;
         aClass1_1536 = null;
-        aClass1_1535 = null;
     }
 
     public static void method1018() {

@@ -11,7 +11,7 @@ public class Class57 {
     public static LinkedList aLinkedList_1332 = new LinkedList();
     public static int[][] wayPoints = new int[104][104];
     public static int clickX = 0;
-    public static RSString aClass1_1339 = RSString.CreateString("This world is full)3");
+    public static RSString aClass1_1339 = RSString.CreateString("This world is full.");
     public static int anInt1342 = 0;
     public static String aClass1_1343 = "flash3:";
     public static Class64 aClass64_1345;

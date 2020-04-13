@@ -26,7 +26,7 @@ public class ISAAC {
     private static final int GOLDEN_RATIO = 0x9e3779b9;
 
     public static boolean redrawTabArea = false;
-    public static RSString aClass1_506 = RSString.CreateString("titlebutton");
+    public static String aClass1_506 = "titlebutton";
     public static int anInt509 = 0;
     public static Cache aClass9_510 = new Cache(64);
     public static boolean aBoolean512;
@@ -37,7 +37,7 @@ public class ISAAC {
     public static int anInt522 = -1;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_524;
     public static int anInt525;
-    public static RSString aClass1_526 = RSString.CreateString("Invalid username or password)3");
+    public static String aClass1_526 = "Invalid username or password.";
     public static int[] mapCoordinates;
 
     public int count;

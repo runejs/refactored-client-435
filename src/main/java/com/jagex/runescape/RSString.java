@@ -2,7 +2,6 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -179,12 +178,12 @@ public class RSString implements Interface1 {
             return false;
         if(!aBoolean1675 || !str.aBoolean1675) {
             if(anInt1696 == 0) {
-                anInt1696 = method76();
+                anInt1696 = stringHash();
                 if(anInt1696 == 0)
                     anInt1696 = 1;
             }
             if(str.anInt1696 == 0) {
-                str.anInt1696 = str.method76();
+                str.anInt1696 = str.stringHash();
                 if(str.anInt1696 == 0)
                     str.anInt1696 = 1;
             }
@@ -316,7 +315,7 @@ public class RSString implements Interface1 {
     }
 
     public int hashCode() {
-        return method76();
+        return stringHash();
     }
 
     public boolean method67(int arg1) {
@@ -455,10 +454,17 @@ public class RSString implements Interface1 {
         return this.toString().startsWith(string);
     }
 
-    public int method76() {
+    public int stringHash() {
         int i = 0;
         for(int i_12_ = 0; length > i_12_; i_12_++)
             i = (0xff & chars[i_12_]) + -i + (i << 5);
+        return i;
+    }
+
+    public static int stringHash(String str) {
+        int i = 0;
+        for(int i_12_ = 0; str.length() > i_12_; i_12_++)
+            i = (0xff & str.charAt(i_12_)) + -i + (i << 5);
         return i;
     }
 

@@ -17,7 +17,7 @@ public class Buffer extends Node {
     public static int lastItemDragTime = 0;
 
     public static int anInt1982 = 0;
-    public static RSString aClass1_1983 = RSString.CreateString("Too many incorrect logins from your address)3");
+    public static RSString aClass1_1983 = RSString.CreateString("Too many incorrect logins from your address.");
     public static int[] anIntArray1984 = new int[2000];
     public static int anInt1985 = -1;
     public static int anInt1987 = 0;

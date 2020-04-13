@@ -40,8 +40,8 @@ public class Landscape {
     public static String aClass1_1173 = "Loaded wordpack";
     public static RSString aClass1_1174 = RSString.CreateString("Enter amount:");
     public static int[][] distanceValues = new int[104][104];
-    public static RSString aClass1_1178 = RSString.CreateString("You are standing in a members)2only area)3");
-    public static RSString aClass1_1180 = RSString.CreateString("Your ignore list is full)3 Max of 100 hit");
+    public static RSString aClass1_1178 = RSString.CreateString("You are standing in a members-only area.");
+    public static RSString aClass1_1180 = RSString.CreateString("Your ignore list is full. Max of 100 hit");
     public static String aClass1_1181 = "glow1:";
     public static RSString aClass1_1183 = RSString.CreateString("");
     public static String[] menuActionTexts = new String[500];
@@ -259,8 +259,8 @@ public class Landscape {
                     for(int i_46_ = -1 + i_42_; i_46_ <= 1 + i_45_; i_46_++) {
                         for(int i_47_ = -1 + i_43_; i_47_ <= i_44_ + 1; i_47_++) {
                             if(i_42_ > i_46_ || i_46_ > i_45_ || i_47_ < i_43_ || i_47_ > i_44_) {
-                                Renderable.aClass6_Sub1_2857.method195(0, RSString.linkRSStrings(new RSString[]{LinkedList.aClass1_1085, HashTable.intToStr(i_46_), Class8.aClass1_303, HashTable.intToStr(i_47_)}));
-                                Renderable.aClass6_Sub1_2857.method195(0, RSString.linkRSStrings(new RSString[]{HashTable.aClass1_553, HashTable.intToStr(i_46_), Class8.aClass1_303, HashTable.intToStr(i_47_)}));
+                                Renderable.aClass6_Sub1_2857.method195(0, LinkedList.aClass1_1085+i_46_+Class8.aClass1_303+i_47_);
+                                Renderable.aClass6_Sub1_2857.method195(0, HashTable.aClass1_553+i_46_+Class8.aClass1_303+i_47_);
                             }
                         }
                     }

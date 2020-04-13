@@ -33,9 +33,9 @@ import java.text.MessageFormat;
 
 public class Class64 implements Runnable {
     public static int anInt1511 = -1;
-    public static RSString aClass1_1517 = RSString.CreateString("redstone3");
+    public static String aClass1_1517 = "redstone3";
     public static CacheIndex aCacheIndex_1521;
-    public static RSString aClass1_1526 = RSString.CreateString("Your account has been disabled)3");
+    public static RSString aClass1_1526 = RSString.CreateString("Your account has been disabled.");
     public static int lowestPlane = 99;
 
     public InputStream anInputStream1503;

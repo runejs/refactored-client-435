@@ -26,7 +26,7 @@ import com.jagex.runescape.scene.tile.Wall;
 public class Class37 {
     public static HashTable aClass23_869 = new HashTable(32);
     public static boolean aBoolean871 = false;
-    public static String aClass1_873 = "Please close the interface you have open before using (Wreport abuse(W";
+    public static String aClass1_873 = "Please close the interface you have open before using 'report abuse'";
     public static int anInt874;
     public static int anInt876 = 0;
     public static String aClass1_877 = "@gr1@";

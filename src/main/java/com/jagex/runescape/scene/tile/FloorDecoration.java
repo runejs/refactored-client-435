@@ -35,7 +35,7 @@ public class FloorDecoration {
     public static String aClass1_611 = null;
     public static int[] anIntArray612;
     public static int anInt614 = -1;
-    public static RSString aClass1_615 = RSString.CreateString("huffman");
+    public static String aClass1_615 = "huffman";
 
     public int config;
     public int hash;
@@ -99,8 +99,8 @@ public class FloorDecoration {
                                 ISAAC.mapCoordinates[i_8_] = i_17_;
                                 int i_19_ = i_17_ & 0xff;
                                 int i_20_ = (0xffbe & i_17_) >> 8;
-                                LinkedList.anIntArray1071[i_8_] = Renderable.aClass6_Sub1_2857.getHash(RSString.linkRSStrings(new RSString[]{LinkedList.aClass1_1085, HashTable.intToStr(i_20_), Class8.aClass1_303, HashTable.intToStr(i_19_)}));
-                                Class13.anIntArray421[i_8_] = Renderable.aClass6_Sub1_2857.getHash(RSString.linkRSStrings(new RSString[]{HashTable.aClass1_553, HashTable.intToStr(i_20_), Class8.aClass1_303, HashTable.intToStr(i_19_)}));
+                                LinkedList.anIntArray1071[i_8_] = Renderable.aClass6_Sub1_2857.getHash(LinkedList.aClass1_1085+i_20_+Class8.aClass1_303+i_19_);
+                                Class13.anIntArray421[i_8_] = Renderable.aClass6_Sub1_2857.getHash(HashTable.aClass1_553+i_20_+Class8.aClass1_303+i_19_);
                                 i_8_++;
                             }
                         }
@@ -136,8 +136,8 @@ public class FloorDecoration {
                     int i_30_ = i_29_ + (i_28_ << 8);
                     if(!bool || i_29_ != 49 && i_29_ != 149 && i_29_ != 147 && i_28_ != 50 && (i_28_ != 49 || i_29_ != 47)) {
                         ISAAC.mapCoordinates[i_25_] = i_30_;
-                        LinkedList.anIntArray1071[i_25_] = Renderable.aClass6_Sub1_2857.getHash(RSString.linkRSStrings(new RSString[]{LinkedList.aClass1_1085, HashTable.intToStr(i_28_), Class8.aClass1_303, HashTable.intToStr(i_29_)}));
-                        Class13.anIntArray421[i_25_] = Renderable.aClass6_Sub1_2857.getHash(RSString.linkRSStrings(new RSString[]{HashTable.aClass1_553, HashTable.intToStr(i_28_), Class8.aClass1_303, HashTable.intToStr(i_29_)}));
+                        LinkedList.anIntArray1071[i_25_] = Renderable.aClass6_Sub1_2857.getHash(LinkedList.aClass1_1085 + i_28_ + Class8.aClass1_303 + i_29_);
+                        Class13.anIntArray421[i_25_] = Renderable.aClass6_Sub1_2857.getHash(HashTable.aClass1_553 + i_28_ + Class8.aClass1_303 + i_29_);
                         i_25_++;
                     }
                 }

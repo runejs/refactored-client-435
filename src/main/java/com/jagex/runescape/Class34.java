@@ -11,11 +11,10 @@ import com.jagex.runescape.scene.tile.GenericTile;
 public class Class34 {
     public static HashTable aClass23_805;
     public static int anInt813 = 0;
-    public static RSString aClass1_817;
+    public static String aClass1_817 = "Press 'recover a locked account' on front page.";
     public static RSString aClass1_826 = RSString.CreateString("Click to continue");
     public static RSString aClass1_829 = aClass1_826;
     public static HashTable aClass23_841 = new HashTable(4096);
-    public static RSString aClass1_844 = RSString.CreateString("Press (Wrecover a locked account(W on front page)3");
     public static int anInt848 = 0;
     public static int currentCameraPositionV;
     public static Cache aClass9_851 = new Cache(30);
@@ -23,10 +22,6 @@ public class Class34 {
     public static long aLong853;
     public static int anInt854 = -1;
     public static IndexedImage mapBack;
-
-    static {
-        aClass1_817 = aClass1_844;
-    }
 
     public int anInt801;
     public int anInt802;
@@ -115,7 +110,6 @@ public class Class34 {
     public static void method418() {
         aClass1_826 = null;
         aClass1_817 = null;
-        aClass1_844 = null;
         aClass9_851 = null;
         aClass23_841 = null;
         aClass1_829 = null;

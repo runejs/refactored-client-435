@@ -18,25 +18,15 @@ import com.jagex.runescape.scene.InteractiveObject;
 import java.nio.charset.StandardCharsets;
 
 public class SceneTile extends Node {
-    public static RSString aClass1_2042;
+    public static String aClass1_2042 = "Please try using a different world.";
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_2043;
-    public static RSString aClass1_2047;
+    public static String aClass1_2047 = "Please try using a different world.";
     public static int[] anIntArray2048;
     public static int activeInterfaceType = 0;
-    public static RSString aClass1_2050;
-    public static RSString aClass1_2053;
-    public static RSString aClass1_2054;
-    public static RSString aClass1_2055 = RSString.CreateString("Please try using a different world)3");
-    public static RSString aClass1_2057;
-
-    static {
-        aClass1_2050 = aClass1_2055;
-        aClass1_2047 = aClass1_2055;
-        aClass1_2053 = aClass1_2055;
-        aClass1_2057 = aClass1_2055;
-        aClass1_2042 = aClass1_2055;
-        aClass1_2054 = aClass1_2055;
-    }
+    public static String aClass1_2050 = "Please try using a different world.";
+    public static String aClass1_2053 = "Please try using a different world.";
+    public static String aClass1_2054 = "Please try using a different world.";
+    public static String aClass1_2057 ="Please try using a different world.";
 
     public SceneTile aSceneTile_2058;
     public int wallCullOppositeDirection;
@@ -145,7 +135,6 @@ public class SceneTile extends Node {
 
     public static void method534() {
         aClass1_2042 = null;
-        aClass1_2055 = null;
         aClass1_2050 = null;
         aClass1_2047 = null;
         aClass1_2057 = null;

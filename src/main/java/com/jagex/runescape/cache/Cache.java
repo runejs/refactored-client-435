@@ -10,7 +10,7 @@ public class Cache {
     public static volatile int mouseButtonPressed = 0;
     public static int anInt321 = 5063219;
     public static volatile int eventMouseY = -1;
-    public static RSString aClass1_323 = RSString.CreateString("Please check your message)2centre for details)3");
+    public static String aClass1_323 = "Please check your message-centre for details.";
     public static int anInt324 = 0;
     public static Cache aClass9_326 = new Cache(200);
     public static String aClass1_327 = "@or1@";

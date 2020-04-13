@@ -27,7 +27,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
     public static String aClass1_2274 = "To";
     public static Class68 aClass68_2275;
     public static int crossY = 0;
-    public static RSString aClass1_2277 = RSString.CreateString(" )2> @cya@");
+    public static RSString aClass1_2277 = RSString.CreateString(" -> @cya@");
     public static int anInt2278 = 0;
     public static int anInt2280 = 0;
 

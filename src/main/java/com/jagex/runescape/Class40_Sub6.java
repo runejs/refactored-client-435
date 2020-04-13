@@ -11,39 +11,22 @@ import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.WallDecoration;
 
 public class Class40_Sub6 extends Node {
-    public static RSString aClass1_2097;
+    public static RSString aClass1_2097 = RSString.CreateString("No matching objects found, please shorten search");
     public static Class64 aClass64_2098;
-    public static int[][][] tile_height;
-    public static RSString aClass1_2101;
-    public static RSString aClass1_2103;
+    public static int[][][] tile_height = new int[4][105][105];
+    public static String aClass1_2101 = "p11_full";
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2105;
     public static int[] anIntArray2106 = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
-    public static int secondaryCameraVertical;
-    public static RSString aClass1_2109;
+    public static int secondaryCameraVertical = 0;
+    public static String aClass1_2109 = "overlay_multiway";
     public static int anInt2110;
-    public static RSString aClass1_2111;
-    public static int[] anIntArray2113;
-    public static RSString aClass1_2114;
+    public static String aClass1_2111 = "Press 'change your password' on front page.";
+    public static int[] anIntArray2113 = new int[128];
+    public static String aClass1_2114 = "hitmarks";
     public static Widget aWidget_2116;
-    public static int anInt2118;
+    public static int anInt2118 = 0;
     public static int placementX;
-    public static int onBuildTimePlane;
-    public static RSString aClass1_2121;
-
-    static {
-        aClass1_2101 = RSString.CreateString("p11_full");
-        secondaryCameraVertical = 0;
-        anIntArray2113 = new int[128];
-        aClass1_2109 = RSString.CreateString("overlay_multiway");
-        tile_height = new int[4][105][105];
-        aClass1_2114 = RSString.CreateString("hitmarks");
-        aClass1_2103 = RSString.CreateString("No matching objects found)1 please shorten search");
-        aClass1_2097 = aClass1_2103;
-        anInt2118 = 0;
-        onBuildTimePlane = 0;
-        aClass1_2121 = RSString.CreateString("Press (Wchange your password(W on front page)3");
-        aClass1_2111 = aClass1_2121;
-    }
+    public static int onBuildTimePlane = 0;
 
     public byte[] aByteArray2102;
     public CacheIndex_Sub1 aClass6_Sub1_2104;
@@ -104,9 +87,7 @@ public class Class40_Sub6 extends Node {
         aClass1_2111 = null;
         tile_height = null;
         aClass1_2114 = null;
-        aClass1_2121 = null;
         aWidget_2116 = null;
-        aClass1_2103 = null;
         aClass1_2109 = null;
         aClass64_2098 = null;
         aClass1_2097 = null;
