@@ -11,29 +11,19 @@ import com.jagex.runescape.scene.tile.SceneTile;
 
 public abstract class Class38 {
     public static RSString aClass1_881 = RSString.CreateString("mod_icons");
-    public static RSString aClass1_882;
-    public static RSString aClass1_883;
+    public static RSString aClass1_882 = RSString.CreateString("No reply from loginserver)3");
+    public static RSString aClass1_883 = RSString.CreateString(" seconds)3");
     public static int[] menuActionTypes = new int[500];
-    public static RSString aClass1_885;
-    public static RSString aClass1_886 = RSString.CreateString(" seconds)3");
+    public static String aClass1_885 = "Add ignore";
     public static Class68 aClass68_887;
-    public static RSString aClass1_888 = RSString.CreateString("No reply from loginserver)3");
     public static int[] anIntArray889 = new int[128];
-    public static RSString aClass1_890 = RSString.CreateString("(U1");
+    public static String aClass1_890 = "%1";
     public static int anInt892;
     public static boolean aBoolean893 = false;
     public static RSString aClass1_894 = RSString.CreateString(" )2>");
-    public static RSString aClass1_895 = RSString.CreateString("Add ignore");
-
-    static {
-        aClass1_883 = aClass1_886;
-        aClass1_882 = aClass1_888;
-        aClass1_885 = aClass1_895;
-    }
 
     public static void method439() {
         aClass1_882 = null;
-        aClass1_895 = null;
         aClass1_890 = null;
         aClass1_881 = null;
         aClass1_885 = null;
@@ -42,8 +32,6 @@ public abstract class Class38 {
         aClass1_883 = null;
         aClass1_894 = null;
         aClass68_887 = null;
-        aClass1_886 = null;
-        aClass1_888 = null;
     }
 
     public static void method440(byte arg0) {

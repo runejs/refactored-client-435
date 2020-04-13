@@ -67,7 +67,7 @@ public abstract class CacheIndex {
                     method189(true);
                 string = string.replace('&', '_');
                 string = string.replace('#', '_');
-                SignlinkNode signlinkNode = (Actor.aClass31_3152.method388(false, new URL(Actor.aClass31_3152.anApplet740.getCodeBase(), ("clienterror.ws?c=" + Class39.anInt901 + "&u=" + Class34.aLong853 + "&v1=" + Signlink.aString735 + "&v2=" + Signlink.aString739 + "&e=" + string))));
+                SignlinkNode signlinkNode = Actor.aClass31_3152.method388(false, new URL(Actor.aClass31_3152.anApplet740.getCodeBase(), "clienterror.ws?c=" + Class39.anInt901 + "&u=" + Class34.aLong853 + "&v1=" + Signlink.aString735 + "&v2=" + Signlink.aString739 + "&e=" + string));
                 while(signlinkNode.anInt434 == 0)
                     Class43.method890(1L, -74);
                 if(signlinkNode.anInt434 != 1)
@@ -105,7 +105,7 @@ public abstract class CacheIndex {
         ItemDefinition.anInt2846 = class40_sub1.getUnsignedShortBE();
         GameShell.anInt31 = class40_sub1.getUnsignedShortBE();
         int i = 1 + (class40_sub1.getUnsignedByte() & 0xff);
-        for(int i_34_ = 0; ((i_34_ < UnderlayDefinition.anInt2581)); i_34_++)
+        for(int i_34_ = 0; i_34_ < UnderlayDefinition.anInt2581; i_34_++)
             Class57.anIntArray1347[i_34_] = class40_sub1.getUnsignedShortBE();
         for(int i_35_ = arg1; i_35_ < UnderlayDefinition.anInt2581; i_35_++)
             Actor.anIntArray3111[i_35_] = class40_sub1.getUnsignedShortBE();
@@ -113,9 +113,9 @@ public abstract class CacheIndex {
             Class17.anIntArray456[i_36_] = class40_sub1.getUnsignedShortBE();
         for(int i_37_ = 0; UnderlayDefinition.anInt2581 > i_37_; i_37_++)
             Npc.anIntArray3312[i_37_] = class40_sub1.getUnsignedShortBE();
-        class40_sub1.currentPosition = arg0.length - (7 + (UnderlayDefinition.anInt2581 * 8 + (-3 + i * 3)));
+        class40_sub1.currentPosition = arg0.length - (7 + UnderlayDefinition.anInt2581 * 8 + -3 + i * 3);
         Buffer.anIntArray1972 = new int[i];
-        for(int i_38_ = 1; (i > i_38_); i_38_++) {
+        for(int i_38_ = 1; i > i_38_; i_38_++) {
             Buffer.anIntArray1972[i_38_] = class40_sub1.getMediumBE();
             if(Buffer.anIntArray1972[i_38_] == 0)
                 Buffer.anIntArray1972[i_38_] = 1;
@@ -129,10 +129,10 @@ public abstract class CacheIndex {
             GroundItemTile.aByteArrayArray1370[i_39_] = is;
             int i_43_ = class40_sub1.getUnsignedByte();
             if(i_43_ == 0) {
-                for(int i_46_ = 0; (i_42_ > i_46_); i_46_++)
+                for(int i_46_ = 0; i_42_ > i_46_; i_46_++)
                     is[i_46_] = class40_sub1.getByte();
             } else if(i_43_ == 1) {
-                for(int i_44_ = 0; (i_41_ > i_44_); i_44_++) {
+                for(int i_44_ = 0; i_41_ > i_44_; i_44_++) {
                     for(int i_45_ = 0; i_40_ > i_45_; i_45_++)
                         is[i_41_ * i_45_ + i_44_] = class40_sub1.getByte();
                 }
@@ -165,7 +165,7 @@ public abstract class CacheIndex {
     public void method171(int arg0, int arg1) {
         int i = 0;
         if(arg0 == 1) {
-            for(/**/; ((i < aByteArrayArrayArray249[arg1].length)); i++)
+            for(/**/; i < aByteArrayArrayArray249[arg1].length; i++)
                 aByteArrayArrayArray249[arg1][i] = null;
         }
     }
@@ -177,7 +177,7 @@ public abstract class CacheIndex {
     }
 
     public boolean loaded(int arg0, int arg2) {
-        if(arg0 < 0 || (arg0 >= aByteArrayArrayArray249.length) || aByteArrayArrayArray249[arg0] == null || arg2 < 0 || arg2 >= aByteArrayArrayArray249[arg0].length)
+        if(arg0 < 0 || arg0 >= aByteArrayArrayArray249.length || aByteArrayArrayArray249[arg0] == null || arg2 < 0 || arg2 >= aByteArrayArrayArray249[arg0].length)
             return false;
         if(aByteArrayArrayArray249[arg0][arg2] != null)
             return true;
@@ -197,7 +197,7 @@ public abstract class CacheIndex {
     }
 
     public byte[] method176(int arg0, int arg1, int[] arg2) {
-        if(arg0 < 0 || (arg0 >= aByteArrayArrayArray249.length) || aByteArrayArrayArray249[arg0] == null || arg1 < 0 || arg1 >= aByteArrayArrayArray249[arg0].length)
+        if(arg0 < 0 || arg0 >= aByteArrayArrayArray249.length || aByteArrayArrayArray249[arg0] == null || arg1 < 0 || arg1 >= aByteArrayArrayArray249[arg0].length)
             return null;
         if(aByteArrayArrayArray249[arg0][arg1] == null) {
             boolean bool = method181(arg0, arg2);
@@ -231,7 +231,7 @@ public abstract class CacheIndex {
             int i_3_ = -1;
             for(int i_4_ = 0; anInt221 > i_4_; i_4_++) {
                 anIntArray227[i_4_] = i_1_ += class40_sub1.getUnsignedShortBE();
-                if((anIntArray227[i_4_] > i_3_))
+                if(anIntArray227[i_4_] > i_3_)
                     i_3_ = anIntArray227[i_4_];
             }
             anIntArrayArray243 = new int[i_3_ + 1][];
@@ -242,7 +242,7 @@ public abstract class CacheIndex {
             aByteArrayArray212 = new byte[i_3_ + 1][];
             if(i_2_ != 0) {
                 anIntArray239 = new int[i_3_ + 1];
-                for(int i_5_ = 0; (anInt221 > i_5_); i_5_++)
+                for(int i_5_ = 0; anInt221 > i_5_; i_5_++)
                     anIntArray239[anIntArray227[i_5_]] = class40_sub1.getIntBE();
                 aClass42_254 = new Class42(anIntArray239);
             }
@@ -250,16 +250,16 @@ public abstract class CacheIndex {
                 anIntArray252[anIntArray227[i_6_]] = class40_sub1.getIntBE();
             for(int i_7_ = 0; i_7_ < anInt221; i_7_++)
                 anIntArray224[anIntArray227[i_7_]] = class40_sub1.getIntBE();
-            for(int i_8_ = 0; (anInt221 > i_8_); i_8_++)
+            for(int i_8_ = 0; anInt221 > i_8_; i_8_++)
                 anIntArray261[anIntArray227[i_8_]] = class40_sub1.getUnsignedShortBE();
-            for(int i_9_ = 0; (i_9_ < anInt221); i_9_++) {
+            for(int i_9_ = 0; i_9_ < anInt221; i_9_++) {
                 i_1_ = 0;
                 int i_10_ = anIntArray227[i_9_];
                 int i_11_ = -1;
                 int i_12_ = anIntArray261[i_10_];
                 anIntArrayArray243[i_10_] = new int[i_12_];
                 for(int i_13_ = 0; i_12_ > i_13_; i_13_++) {
-                    int i_14_ = (anIntArrayArray243[i_10_][i_13_] = i_1_ += (class40_sub1.getUnsignedShortBE()));
+                    int i_14_ = anIntArrayArray243[i_10_][i_13_] = i_1_ += class40_sub1.getUnsignedShortBE();
                     if(i_14_ > i_11_)
                         i_11_ = i_14_;
                 }
@@ -268,12 +268,12 @@ public abstract class CacheIndex {
             if(i_2_ != 0) {
                 aClass42Array217 = new Class42[i_3_ + 1];
                 anIntArrayArray236 = new int[1 + i_3_][];
-                for(int i_15_ = 0; (anInt221 > i_15_); i_15_++) {
+                for(int i_15_ = 0; anInt221 > i_15_; i_15_++) {
                     int i_16_ = anIntArray227[i_15_];
                     int i_17_ = anIntArray261[i_16_];
                     anIntArrayArray236[i_16_] = new int[aByteArrayArrayArray249[i_16_].length];
                     for(int i_18_ = 0; i_17_ > i_18_; i_18_++)
-                        anIntArrayArray236[i_16_][(anIntArrayArray243[i_16_][i_18_])] = class40_sub1.getIntBE();
+                        anIntArrayArray236[i_16_][anIntArrayArray243[i_16_][i_18_]] = class40_sub1.getIntBE();
                     aClass42Array217[i_16_] = new Class42(anIntArrayArray236[i_16_]);
                 }
             }
@@ -301,7 +301,7 @@ public abstract class CacheIndex {
         if(bool)
             return true;
         byte[] is_21_;
-        if(arg2 == null || (arg2[0] == 0 && arg2[1] == 0 && arg2[2] == 0 && arg2[3] == 0))
+        if(arg2 == null || arg2[0] == 0 && arg2[1] == 0 && arg2[2] == 0 && arg2[3] == 0)
             is_21_ = aByteArrayArray212[arg0];
         else {
             is_21_ = new byte[aByteArrayArray212[arg0].length];
@@ -317,24 +317,24 @@ public abstract class CacheIndex {
             int i_23_ = is_22_.length;
             int i_24_ = is_22_[--i_23_] & 0xff;
             Buffer class40_sub1 = new Buffer(is_22_);
-            i_23_ -= 4 * (i_24_ * i);
+            i_23_ -= 4 * i_24_ * i;
             class40_sub1.currentPosition = i_23_;
             int[] is_25_ = new int[i];
-            for(int i_26_ = 0; (i_24_ > i_26_); i_26_++) {
+            for(int i_26_ = 0; i_24_ > i_26_; i_26_++) {
                 int i_27_ = 0;
-                for(int i_28_ = 0; (i_28_ < i); i_28_++) {
+                for(int i_28_ = 0; i_28_ < i; i_28_++) {
                     i_27_ += class40_sub1.getIntBE();
                     is_25_[i_28_] += i_27_;
                 }
             }
-            for(int i_29_ = 0; (i_29_ < i); i_29_++) {
+            for(int i_29_ = 0; i_29_ < i; i_29_++) {
                 if(is[is_19_[i_29_]] == null)
                     is[is_19_[i_29_]] = new byte[is_25_[i_29_]];
                 is_25_[i_29_] = 0;
             }
             class40_sub1.currentPosition = i_23_;
             int i_30_ = 0;
-            for(int i_31_ = 0; (i_24_ > i_31_); i_31_++) {
+            for(int i_31_ = 0; i_24_ > i_31_; i_31_++) {
                 int i_32_ = 0;
                 for(int i_33_ = 0; i_33_ < i; i_33_++) {
                     i_32_ += class40_sub1.getIntBE();
@@ -349,7 +349,7 @@ public abstract class CacheIndex {
     }
 
     public byte[] method182(int arg0, int arg2) {
-        if(arg2 < 0 || (arg2 >= aByteArrayArrayArray249.length) || aByteArrayArrayArray249[arg2] == null || arg0 < 0 || aByteArrayArrayArray249[arg2].length <= arg0)
+        if(arg2 < 0 || arg2 >= aByteArrayArrayArray249.length || aByteArrayArrayArray249[arg2] == null || arg0 < 0 || aByteArrayArrayArray249[arg2].length <= arg0)
             return null;
         if(aByteArrayArrayArray249[arg2][arg0] == null) {
             boolean bool = method181(arg2, null);
@@ -410,7 +410,7 @@ public abstract class CacheIndex {
     public void method191(int arg0) {
         for(int i = 0; i < aByteArrayArrayArray249.length; i++) {
             if(aByteArrayArrayArray249[i] != null) {
-                for(int i_48_ = 0; ((i_48_ < aByteArrayArrayArray249[i].length)); i_48_++)
+                for(int i_48_ = 0; i_48_ < aByteArrayArrayArray249[i].length; i_48_++)
                     aByteArrayArrayArray249[i][i_48_] = null;
             }
         }

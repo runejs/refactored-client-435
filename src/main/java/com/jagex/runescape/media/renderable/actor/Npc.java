@@ -38,7 +38,7 @@ public class Npc extends Actor {
     public ActorDefinition actorDefinition;
 
     public static Class40_Sub5_Sub11 method795(byte arg0, int arg1) {
-        Class40_Sub5_Sub11 class40_sub5_sub11 = ((Class40_Sub5_Sub11) Class13.aClass9_406.get((long) arg1, (byte) 98));
+        Class40_Sub5_Sub11 class40_sub5_sub11 = (Class40_Sub5_Sub11) Class13.aClass9_406.get((long) arg1, (byte) 98);
         if(arg0 >= -66)
             aClass1_3295 = null;
         if(class40_sub5_sub11 != null)
@@ -86,7 +86,7 @@ public class Npc extends Actor {
                             SceneCluster.packetBuffer.putByte(0);
                             int originalOffset = SceneCluster.packetBuffer.currentPosition;
                             for(int c = 0; c < Class12.mouseCapturer.coord; c++) {
-                                if((-originalOffset + SceneCluster.packetBuffer.currentPosition) >= 240)
+                                if(-originalOffset + SceneCluster.packetBuffer.currentPosition >= 240)
                                     break;
                                 coordinateCount++;
                                 int pixelOffset = Class12.mouseCapturer.coordsY[c];
@@ -117,13 +117,13 @@ public class Npc extends Actor {
                                     if(Class22_Sub2.duplicateClickCount < 8 && differenceX >= -32 && differenceX <= 31 && differenceY >= -32 && differenceY <= 31) {
                                         differenceX += 32;
                                         differenceY += 32;
-                                        SceneCluster.packetBuffer.putShortBE((differenceY + (differenceX << 6) + (Class22_Sub2.duplicateClickCount << 12)));
+                                        SceneCluster.packetBuffer.putShortBE(differenceY + (differenceX << 6) + (Class22_Sub2.duplicateClickCount << 12));
                                         Class22_Sub2.duplicateClickCount = 0;
                                     } else if(Class22_Sub2.duplicateClickCount < 8) {
-                                        SceneCluster.packetBuffer.putMediumBE((y + 8388608 + (Class22_Sub2.duplicateClickCount << 19)));
+                                        SceneCluster.packetBuffer.putMediumBE(y + 8388608 + (Class22_Sub2.duplicateClickCount << 19));
                                         Class22_Sub2.duplicateClickCount = 0;
                                     } else {
-                                        SceneCluster.packetBuffer.putIntBE(((Class22_Sub2.duplicateClickCount << 19) + -1073741824 + y));
+                                        SceneCluster.packetBuffer.putIntBE((Class22_Sub2.duplicateClickCount << 19) + -1073741824 + y);
                                         Class22_Sub2.duplicateClickCount = 0;
                                     }
                                 }
@@ -131,9 +131,9 @@ public class Npc extends Actor {
                             SceneCluster.packetBuffer.finishVarByte(SceneCluster.packetBuffer.currentPosition + -originalOffset);
                             if(coordinateCount < Class12.mouseCapturer.coord) {
                                 Class12.mouseCapturer.coord -= coordinateCount;
-                                for(int i_9_ = 0; ((Class12.mouseCapturer.coord > i_9_)); i_9_++) {
-                                    Class12.mouseCapturer.coordsX[i_9_] = (Class12.mouseCapturer.coordsX[coordinateCount + i_9_]);
-                                    Class12.mouseCapturer.coordsY[i_9_] = (Class12.mouseCapturer.coordsY[i_9_ + coordinateCount]);
+                                for(int i_9_ = 0; Class12.mouseCapturer.coord > i_9_; i_9_++) {
+                                    Class12.mouseCapturer.coordsX[i_9_] = Class12.mouseCapturer.coordsX[coordinateCount + i_9_];
+                                    Class12.mouseCapturer.coordsY[i_9_] = Class12.mouseCapturer.coordsY[i_9_ + coordinateCount];
                                 }
                             } else
                                 Class12.mouseCapturer.coord = 0;
@@ -143,7 +143,7 @@ public class Npc extends Actor {
                     }
                 }
                 if(MouseHandler.clickType != 0) {
-                    long l = ((GameObjectDefinition.aLong2561 - Class51.aLong1203) / 50L);
+                    long l = (GameObjectDefinition.aLong2561 - Class51.aLong1203) / 50L;
                     int i = Class57.clickX;
                     int i_10_ = RSString.clickY;
                     Class51.aLong1203 = GameObjectDefinition.aLong2561;
@@ -165,7 +165,7 @@ public class Npc extends Actor {
                     int i_12_ = (int) l;
                     SceneCluster.packetBuffer.putPacket(234);
                     int i_13_ = i_10_ * 765 + i;
-                    SceneCluster.packetBuffer.putIntLE(((i_11_ << 19) + ((i_12_ << 20) + i_13_)));
+                    SceneCluster.packetBuffer.putIntLE((i_11_ << 19) + (i_12_ << 20) + i_13_);
                 }
                 if(InteractiveObject.anInt487 > 0)
                     InteractiveObject.anInt487--;
@@ -217,7 +217,7 @@ public class Npc extends Actor {
                         Class5.anInt199++;
                         if(SceneTile.activeInterfaceType != 0) {
                             Buffer.lastItemDragTime++;
-                            if(((Class13.mouseX > Renderable.anInt2869 + 5)) || ((Renderable.anInt2869 + -5 > Class13.mouseX)) || ((ItemDefinition.anInt2798 + 5 < Landscape.mouseY)) || (ItemDefinition.anInt2798 - 5 > Landscape.mouseY))
+                            if(Class13.mouseX > Renderable.anInt2869 + 5 || Renderable.anInt2869 + -5 > Class13.mouseX || ItemDefinition.anInt2798 + 5 < Landscape.mouseY || ItemDefinition.anInt2798 - 5 > Landscape.mouseY)
                                 Class40_Sub5_Sub15.lastItemDragged = true;
                             if(SpotAnimDefinition.mouseButtonPressed == 0) {
                                 if(SceneTile.activeInterfaceType == 3)
@@ -228,18 +228,18 @@ public class Npc extends Actor {
                                 if(Class40_Sub5_Sub15.lastItemDragged && Buffer.lastItemDragTime >= 5) {
                                     RSRuntimeException.lastActiveInvInterface = -1;
                                     Class43.processRightClick();
-                                    if((RSRuntimeException.lastActiveInvInterface == Class48.modifiedWidgetId) && (Class55.mouseInvInterfaceIndex != GroundItemTile.selectedInventorySlot)) {
-                                        Widget childInterface = Widget.forId((Class48.modifiedWidgetId));
+                                    if(RSRuntimeException.lastActiveInvInterface == Class48.modifiedWidgetId && Class55.mouseInvInterfaceIndex != GroundItemTile.selectedInventorySlot) {
+                                        Widget childInterface = Widget.forId(Class48.modifiedWidgetId);
                                         int moveItemInsertionMode = 0;
-                                        if((Class43.bankInsertMode == 1) && (childInterface.contentType == 206))
+                                        if(Class43.bankInsertMode == 1 && childInterface.contentType == 206)
                                             moveItemInsertionMode = 1;
-                                        if((childInterface.items[Class55.mouseInvInterfaceIndex]) <= 0)
+                                        if(childInterface.items[Class55.mouseInvInterfaceIndex] <= 0)
                                             moveItemInsertionMode = 0;
                                         if(childInterface.itemDeletesDraged) {
                                             int i_16_ = Class55.mouseInvInterfaceIndex;
                                             int i_17_ = GroundItemTile.selectedInventorySlot;
-                                            childInterface.items[i_16_] = (childInterface.items[i_17_]);
-                                            childInterface.itemAmounts[i_16_] = (childInterface.itemAmounts[i_17_]);
+                                            childInterface.items[i_16_] = childInterface.items[i_17_];
+                                            childInterface.itemAmounts[i_16_] = childInterface.itemAmounts[i_17_];
                                             childInterface.items[i_17_] = -1;
                                             childInterface.itemAmounts[i_17_] = 0;
                                         } else if(moveItemInsertionMode == 1) {
@@ -247,7 +247,7 @@ public class Npc extends Actor {
                                             int slotEnd = Class55.mouseInvInterfaceIndex;
                                             while(slotEnd != slotStart) {
                                                 if(slotStart <= slotEnd) {
-                                                    if((slotStart < slotEnd)) {
+                                                    if(slotStart < slotEnd) {
                                                         childInterface.swapItems(1 + slotStart, false, slotStart);
                                                         slotStart++;
                                                     }
@@ -265,10 +265,10 @@ public class Npc extends Actor {
                                         SceneCluster.packetBuffer.putIntME2(Class48.modifiedWidgetId);
                                     }
                                 } else {
-                                    if((Class68.oneMouseButton == 1 || (Class33.menuHasAddFriend((byte) 63, (ActorDefinition.menuActionRow - 1)))) && ActorDefinition.menuActionRow > 2)
+                                    if((Class68.oneMouseButton == 1 || Class33.menuHasAddFriend((byte) 63, ActorDefinition.menuActionRow - 1)) && ActorDefinition.menuActionRow > 2)
                                         Class60.determineMenuSize();
                                     else if(ActorDefinition.menuActionRow > 0)
-                                        Class27.processMenuActions(123, (-1 + (ActorDefinition.menuActionRow)));
+                                        Class27.processMenuActions(123, -1 + ActorDefinition.menuActionRow);
                                 }
                                 RSRuntimeException.anInt1651 = 10;
                                 MouseHandler.clickType = 0;
@@ -277,7 +277,7 @@ public class Npc extends Actor {
                         if(Scene.clickedTileX != -1) {
                             int i = Scene.clickedTileX;
                             int i_18_ = Scene.clickedTileY;
-                            boolean bool = (Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), i, 0, true, 0, 0, (Player.localPlayer.pathX[0]), i_18_, 0));
+                            boolean bool = Class38_Sub1.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, true, 0, 0, Player.localPlayer.pathX[0], i_18_, 0);
                             if(bool) {
                                 Class40_Sub5_Sub1.crossY = RSString.clickY;
                                 OverlayDefinition.crossIndex = 0;
@@ -303,8 +303,8 @@ public class Npc extends Actor {
                         if(HuffmanEncoding.openScreenWidgetId != -1)
                             Class27.method360((byte) 125, 516, i, 338, HuffmanEncoding.openScreenWidgetId, 4, 4);
                         if(Class29.tabAreaOverlayWidgetId == -1) {
-                            if((Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]) != -1)
-                                Class27.method360((byte) 125, 743, i, 466, (Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]), 205, 553);
+                            if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] != -1)
+                                Class27.method360((byte) 125, 743, i, 466, Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId], 205, 553);
                         } else
                             Class27.method360((byte) 125, 743, i, 466, Class29.tabAreaOverlayWidgetId, 205, 553);
                         if(ChatBox.openChatboxWidgetId != -1)
@@ -315,8 +315,8 @@ public class Npc extends Actor {
                             Class27.method360((byte) 125, 516, i ^ 0xffffffff, 338, HuffmanEncoding.openScreenWidgetId, 4, 4);
                         if(Class29.tabAreaOverlayWidgetId != -1)
                             Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, Class29.tabAreaOverlayWidgetId, 205, 553);
-                        else if((Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]) != -1)
-                            Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, (Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId]), 205, 553);
+                        else if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] != -1)
+                            Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId], 205, 553);
                         if(ChatBox.openChatboxWidgetId != -1)
                             Class27.method360((byte) 125, 496, i ^ 0xffffffff, 453, ChatBox.openChatboxWidgetId, 357, 17);
                         else if(ChatBox.dialogueId != -1)
@@ -392,9 +392,9 @@ public class Npc extends Actor {
                         }
                         do {
                             try {
-                                if(Class40_Sub6.aClass64_2098 == null || (SceneCluster.packetBuffer.currentPosition) <= 0)
+                                if(Class40_Sub6.aClass64_2098 == null || SceneCluster.packetBuffer.currentPosition <= 0)
                                     break;
-                                Class40_Sub6.aClass64_2098.method1010(SceneCluster.packetBuffer.currentPosition, (byte) -19, 0, (SceneCluster.packetBuffer.buffer));
+                                Class40_Sub6.aClass64_2098.method1010(SceneCluster.packetBuffer.currentPosition, (byte) -19, 0, SceneCluster.packetBuffer.buffer);
                                 Class22.anInt537 = 0;
                                 SceneCluster.packetBuffer.currentPosition = 0;
                             } catch(java.io.IOException ioexception) {
@@ -419,7 +419,7 @@ public class Npc extends Actor {
     }
 
     public static OverlayDefinition loadFloor(int arg0, int arg1) {
-        OverlayDefinition overlayDefinition = ((OverlayDefinition) Class33.aClass9_778.get((long) arg0, (byte) 63));
+        OverlayDefinition overlayDefinition = (OverlayDefinition) Class33.aClass9_778.get((long) arg0, (byte) 63);
         if(overlayDefinition != null)
             return overlayDefinition;
         byte[] is = Actor.aCacheIndex_3144.getFile(arg0, arg1);
@@ -475,15 +475,15 @@ public class Npc extends Actor {
             }
             if((mask & 0x80) != 0) {
                 npc.actorDefinition = ActorDefinition.getDefinition(IncomingPackets.incomingPacketBuffer.getUnsignedShortBE());
-                npc.anInt3083 = (npc.actorDefinition.rotateRightAnimation);
-                npc.anInt3113 = (npc.actorDefinition.degreesToTurn);
-                npc.turnRightAnimationId = (npc.actorDefinition.rotate90RightAnimation);
-                npc.idleAnimation = (npc.actorDefinition.stanceAnimation);
-                npc.walkAnimationId = (npc.actorDefinition.walkAnimation);
-                npc.standTurnAnimationId = (npc.actorDefinition.rotateLeftAnimation);
-                npc.anInt3096 = (npc.actorDefinition.boundaryDimension);
-                npc.turnLeftAnimationId = (npc.actorDefinition.rotate90LeftAnimation);
-                npc.turnAroundAnimationId = (npc.actorDefinition.rotate180Animation);
+                npc.anInt3083 = npc.actorDefinition.rotateRightAnimation;
+                npc.anInt3113 = npc.actorDefinition.degreesToTurn;
+                npc.turnRightAnimationId = npc.actorDefinition.rotate90RightAnimation;
+                npc.idleAnimation = npc.actorDefinition.stanceAnimation;
+                npc.walkAnimationId = npc.actorDefinition.walkAnimation;
+                npc.standTurnAnimationId = npc.actorDefinition.rotateLeftAnimation;
+                npc.anInt3096 = npc.actorDefinition.boundaryDimension;
+                npc.turnLeftAnimationId = npc.actorDefinition.rotate90LeftAnimation;
+                npc.turnAroundAnimationId = npc.actorDefinition.rotate180Animation;
             }
             if((mask & 0x8) != 0) {
                 npc.facePositionX = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
@@ -504,7 +504,7 @@ public class Npc extends Actor {
                     }
                     if(i_10_ == 2)
                         npc.anInt3095 = 0;
-                } else if(animationId == -1 || npc.playingAnimation == -1 || (Class68_Sub1.method1050(animationId, 2).anInt2494 >= (Class68_Sub1.method1050(npc.playingAnimation, 2).anInt2494))) {
+                } else if(animationId == -1 || npc.playingAnimation == -1 || Class68_Sub1.method1050(animationId, 2).anInt2494 >= Class68_Sub1.method1050(npc.playingAnimation, 2).anInt2494) {
                     npc.playingAnimation = animationId;
                     npc.anInt3115 = 0;
                     npc.playingAnimationDelay = animationDelay;
@@ -528,7 +528,7 @@ public class Npc extends Actor {
         Player.npcCount = 0;
         for(int i = 0; i < trackedNpcCount; i++) {
             int trackedNpcIndex = Player.npcIds[i];
-            Npc npc = (Player.npcs[trackedNpcIndex]);
+            Npc npc = Player.npcs[trackedNpcIndex];
             int updateRequired = IncomingPackets.incomingPacketBuffer.getBits(1);
             if(updateRequired == 0) {
                 Player.npcIds[Player.npcCount++] = trackedNpcIndex;
@@ -576,7 +576,7 @@ public class Npc extends Actor {
             Npc npc = Player.npcs[i];
             Player.npcIds[Player.npcCount++] = i;
             npc.anInt3134 = pulseCycle;
-            int initialFaceDirection = (Class40_Sub5_Sub17_Sub1.directions[IncomingPackets.incomingPacketBuffer.getBits(3)]);
+            int initialFaceDirection = Class40_Sub5_Sub17_Sub1.directions[IncomingPackets.incomingPacketBuffer.getBits(3)];
             if(bool)
                 npc.anInt3080 = initialFaceDirection;
             int offsetX = IncomingPackets.incomingPacketBuffer.getBits(5);
@@ -591,18 +591,18 @@ public class Npc extends Actor {
             int discardWalkingQueue = IncomingPackets.incomingPacketBuffer.getBits(1);
 
             npc.actorDefinition = ActorDefinition.getDefinition(IncomingPackets.incomingPacketBuffer.getBits(13));
-            npc.turnLeftAnimationId = (npc.actorDefinition.rotate90LeftAnimation);
-            npc.idleAnimation = (npc.actorDefinition.stanceAnimation);
-            npc.anInt3083 = (npc.actorDefinition.rotateRightAnimation);
-            npc.walkAnimationId = (npc.actorDefinition.walkAnimation);
-            npc.anInt3096 = (npc.actorDefinition.boundaryDimension);
-            npc.turnAroundAnimationId = (npc.actorDefinition.rotate180Animation);
-            npc.standTurnAnimationId = (npc.actorDefinition.rotateLeftAnimation);
-            npc.anInt3113 = (npc.actorDefinition.degreesToTurn);
+            npc.turnLeftAnimationId = npc.actorDefinition.rotate90LeftAnimation;
+            npc.idleAnimation = npc.actorDefinition.stanceAnimation;
+            npc.anInt3083 = npc.actorDefinition.rotateRightAnimation;
+            npc.walkAnimationId = npc.actorDefinition.walkAnimation;
+            npc.anInt3096 = npc.actorDefinition.boundaryDimension;
+            npc.turnAroundAnimationId = npc.actorDefinition.rotate180Animation;
+            npc.standTurnAnimationId = npc.actorDefinition.rotateLeftAnimation;
+            npc.anInt3113 = npc.actorDefinition.degreesToTurn;
             if(npc.anInt3113 == 0)
                 npc.anInt3118 = 0;
-            npc.turnRightAnimationId = (npc.actorDefinition.rotate90RightAnimation);
-            npc.method787((Player.localPlayer.pathX[0]) + offsetY, -7717, discardWalkingQueue == 1, (Player.localPlayer.pathY[0]) + offsetX);
+            npc.turnRightAnimationId = npc.actorDefinition.rotate90RightAnimation;
+            npc.method787(Player.localPlayer.pathX[0] + offsetY, -7717, discardWalkingQueue == 1, Player.localPlayer.pathY[0] + offsetX);
         }
         IncomingPackets.incomingPacketBuffer.finishBitAccess();
     }
@@ -618,8 +618,8 @@ public class Npc extends Actor {
         if(actorDefinition == null)
             return null;
         int i = 25 % ((41 - arg0) / 47);
-        AnimationSequence animationSequence = (playingAnimation == -1 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2));
-        AnimationSequence animationSequence_0_ = (anInt3077 != -1 && (anInt3077 != idleAnimation || animationSequence == null) ? Class68_Sub1.method1050(anInt3077, 2) : null);
+        AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2);
+        AnimationSequence animationSequence_0_ = anInt3077 != -1 && (anInt3077 != idleAnimation || animationSequence == null) ? Class68_Sub1.method1050(anInt3077, 2) : null;
         Model model = actorDefinition.getChildModel(animationSequence, animationSequence_0_, anInt3116, anInt3104);
         if(model == null)
             return null;

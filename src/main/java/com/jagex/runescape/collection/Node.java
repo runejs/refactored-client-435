@@ -15,8 +15,7 @@ public class Node {
     public static RSString aClass1_934 = RSString.CreateString("");
     public static RSString aClass1_937 = RSString.CreateString("");
     public static int anInt938 = 500;
-    public static RSString aClass1_939 = RSString.CreateString("white:");
-    public static RSString aClass1_940 = aClass1_939;
+    public static String aClass1_940 = "white:";
     public static RSString aClass1_941 = RSString.CreateString("");
     public static RSString aClass1_942 = RSString.CreateString("");
     public static RSString aClass1_943 = RSString.CreateString("");
@@ -24,7 +23,7 @@ public class Node {
     public static RSString aClass1_945 = RSString.CreateString("");
     public static RSString aClass1_946 = RSString.CreateString("");
     public static int anInt947 = 0;
-    public static RSString requestcmd_chalreq = RSString.CreateString(":chalreq:");
+    public static String requestcmd_chalreq = ":chalreq:";
     public static RSString aClass1_949 = RSString.CreateString("");
     public static RSString aClass1_951 = RSString.CreateString("");
     public static RSString aClass1_952 = RSString.CreateString("");
@@ -60,18 +59,18 @@ public class Node {
         }
         if(arg3 > 0) {
             for(int i = 1; i < 8; i++)
-                Class40_Sub6.tile_height[arg1][arg3][arg0 + i] = (Class40_Sub6.tile_height[arg1][-1 + arg3][i + arg0]);
+                Class40_Sub6.tile_height[arg1][arg3][arg0 + i] = Class40_Sub6.tile_height[arg1][-1 + arg3][i + arg0];
         }
         if(arg0 > 0) {
             for(int i = 1; i < 8; i++)
-                Class40_Sub6.tile_height[arg1][i + arg3][arg0] = (Class40_Sub6.tile_height[arg1][i + arg3][-1 + arg0]);
+                Class40_Sub6.tile_height[arg1][i + arg3][arg0] = Class40_Sub6.tile_height[arg1][i + arg3][-1 + arg0];
         }
-        if(arg3 > 0 && (Class40_Sub6.tile_height[arg1][-1 + arg3][arg0] != 0))
+        if(arg3 > 0 && Class40_Sub6.tile_height[arg1][-1 + arg3][arg0] != 0)
             Class40_Sub6.tile_height[arg1][arg3][arg0] = Class40_Sub6.tile_height[arg1][arg3 - 1][arg0];
-        else if(arg0 > 0 && (Class40_Sub6.tile_height[arg1][arg3][arg0 - 1]) != 0)
+        else if(arg0 > 0 && Class40_Sub6.tile_height[arg1][arg3][arg0 - 1] != 0)
             Class40_Sub6.tile_height[arg1][arg3][arg0] = Class40_Sub6.tile_height[arg1][arg3][-1 + arg0];
-        else if(arg3 > 0 && arg0 > 0 && (Class40_Sub6.tile_height[arg1][arg3 + -1][-1 + arg0]) != 0)
-            Class40_Sub6.tile_height[arg1][arg3][arg0] = (Class40_Sub6.tile_height[arg1][-1 + arg3][arg0 - 1]);
+        else if(arg3 > 0 && arg0 > 0 && Class40_Sub6.tile_height[arg1][arg3 + -1][-1 + arg0] != 0)
+            Class40_Sub6.tile_height[arg1][arg3][arg0] = Class40_Sub6.tile_height[arg1][-1 + arg3][arg0 - 1];
     }
 
     public static void method456(int arg0) {
@@ -85,7 +84,6 @@ public class Node {
 
     public static void method458() {
         aClass1_952 = null;
-        aClass1_939 = null;
         aClass1_964 = null;
         aClass1_940 = null;
         aClass1_973 = null;

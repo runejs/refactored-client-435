@@ -64,16 +64,16 @@ public class Rasterizer3D extends Rasterizer {
             } else {
                 int i = alpha;
                 int i_0_ = 256 - alpha;
-                arg2 = (((arg2 & 0xff00ff) * i_0_ >> 8 & 0xff00ff) + ((arg2 & 0xff00) * i_0_ >> 8 & 0xff00));
+                arg2 = ((arg2 & 0xff00ff) * i_0_ >> 8 & 0xff00ff) + ((arg2 & 0xff00) * i_0_ >> 8 & 0xff00);
                 while(--arg3 >= 0) {
-                    arg0[arg1++] = (arg2 + ((arg0[arg1] & 0xff00ff) * i >> 8 & 0xff00ff) + ((arg0[arg1] & 0xff00) * i >> 8 & 0xff00));
-                    arg0[arg1++] = (arg2 + ((arg0[arg1] & 0xff00ff) * i >> 8 & 0xff00ff) + ((arg0[arg1] & 0xff00) * i >> 8 & 0xff00));
-                    arg0[arg1++] = (arg2 + ((arg0[arg1] & 0xff00ff) * i >> 8 & 0xff00ff) + ((arg0[arg1] & 0xff00) * i >> 8 & 0xff00));
-                    arg0[arg1++] = (arg2 + ((arg0[arg1] & 0xff00ff) * i >> 8 & 0xff00ff) + ((arg0[arg1] & 0xff00) * i >> 8 & 0xff00));
+                    arg0[arg1++] = arg2 + ((arg0[arg1] & 0xff00ff) * i >> 8 & 0xff00ff) + ((arg0[arg1] & 0xff00) * i >> 8 & 0xff00);
+                    arg0[arg1++] = arg2 + ((arg0[arg1] & 0xff00ff) * i >> 8 & 0xff00ff) + ((arg0[arg1] & 0xff00) * i >> 8 & 0xff00);
+                    arg0[arg1++] = arg2 + ((arg0[arg1] & 0xff00ff) * i >> 8 & 0xff00ff) + ((arg0[arg1] & 0xff00) * i >> 8 & 0xff00);
+                    arg0[arg1++] = arg2 + ((arg0[arg1] & 0xff00ff) * i >> 8 & 0xff00ff) + ((arg0[arg1] & 0xff00) * i >> 8 & 0xff00);
                 }
                 arg3 = arg5 - arg4 & 0x3;
                 while(--arg3 >= 0) {
-                    arg0[arg1++] = (arg2 + ((arg0[arg1] & 0xff00ff) * i >> 8 & 0xff00ff) + ((arg0[arg1] & 0xff00) * i >> 8 & 0xff00));
+                    arg0[arg1++] = arg2 + ((arg0[arg1] & 0xff00ff) * i >> 8 & 0xff00ff) + ((arg0[arg1] & 0xff00) * i >> 8 & 0xff00);
                 }
             }
         }
@@ -1057,24 +1057,24 @@ public class Rasterizer3D extends Rasterizer {
                         do {
                             color = hsl2rgb[colorIndex >> 8];
                             colorIndex += off;
-                            color = (((color & 0xff00ff) * dest_alpha >> 8 & 0xff00ff) + ((color & 0xff00) * dest_alpha >> 8 & 0xff00));
+                            color = ((color & 0xff00ff) * dest_alpha >> 8 & 0xff00ff) + ((color & 0xff00) * dest_alpha >> 8 & 0xff00);
                             int i_169_ = dest[++dest_off];
-                            dest[dest_off] = (color + ((i_169_ & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((i_169_ & 0xff00) * src_alpha >> 8 & 0xff00));
+                            dest[dest_off] = color + ((i_169_ & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((i_169_ & 0xff00) * src_alpha >> 8 & 0xff00);
                             i_169_ = dest[++dest_off];
-                            dest[dest_off] = (color + ((i_169_ & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((i_169_ & 0xff00) * src_alpha >> 8 & 0xff00));
+                            dest[dest_off] = color + ((i_169_ & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((i_169_ & 0xff00) * src_alpha >> 8 & 0xff00);
                             i_169_ = dest[++dest_off];
-                            dest[dest_off] = (color + ((i_169_ & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((i_169_ & 0xff00) * src_alpha >> 8 & 0xff00));
+                            dest[dest_off] = color + ((i_169_ & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((i_169_ & 0xff00) * src_alpha >> 8 & 0xff00);
                             i_169_ = dest[++dest_off];
-                            dest[dest_off] = (color + ((i_169_ & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((i_169_ & 0xff00) * src_alpha >> 8 & 0xff00));
+                            dest[dest_off] = color + ((i_169_ & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((i_169_ & 0xff00) * src_alpha >> 8 & 0xff00);
                         } while (--loops > 0);
                     }
                     loops = endX - startX & 0x3;
                     if (loops > 0) {
                         color = hsl2rgb[colorIndex >> 8];
-                        color = (((color & 0xff00ff) * dest_alpha >> 8 & 0xff00ff) + ((color & 0xff00) * dest_alpha >> 8 & 0xff00));
+                        color = ((color & 0xff00ff) * dest_alpha >> 8 & 0xff00ff) + ((color & 0xff00) * dest_alpha >> 8 & 0xff00);
                         do {
                             int i_170_ = dest[++dest_off];
-                            dest[dest_off] = (color + ((i_170_ & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((i_170_ & 0xff00) * src_alpha >> 8 & 0xff00));
+                            dest[dest_off] = color + ((i_170_ & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((i_170_ & 0xff00) * src_alpha >> 8 & 0xff00);
                         } while (--loops > 0);
                     }
                 }
@@ -1091,9 +1091,9 @@ public class Rasterizer3D extends Rasterizer {
                     do {
                         color = hsl2rgb[colorIndex >> 8];
                         colorIndex += off;
-                        color = (((color & 0xff00ff) * i_171_ >> 8 & 0xff00ff) + ((color & 0xff00) * i_171_ >> 8 & 0xff00));
+                        color = ((color & 0xff00ff) * i_171_ >> 8 & 0xff00ff) + ((color & 0xff00) * i_171_ >> 8 & 0xff00);
                         int i_ = dest[++dest_off];
-                        dest[dest_off] = (color + ((i_ & 0xff00ff) * i >> 8 & 0xff00ff) + ((i_ & 0xff00) * i >> 8 & 0xff00));
+                        dest[dest_off] = color + ((i_ & 0xff00ff) * i >> 8 & 0xff00ff) + ((i_ & 0xff00) * i >> 8 & 0xff00);
                     } while (--loops > 0);
                 }
             }
@@ -1162,18 +1162,18 @@ public class Rasterizer3D extends Rasterizer {
                 while(--loops >= 0) {
                     color = hsl2rgb[color_index >> 8];
                     color_index += off;
-                    color = (((color & 0xff00ff) * dest_alpha >> 8 & 0xff00ff) + ((color & 0xff00) * dest_alpha >> 8 & 0xff00));
-                    dest[dest_off++] = (color + ((dest[dest_off] & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * src_alpha >> 8 & 0xff00));
-                    dest[dest_off++] = (color + ((dest[dest_off] & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * src_alpha >> 8 & 0xff00));
-                    dest[dest_off++] = (color + ((dest[dest_off] & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * src_alpha >> 8 & 0xff00));
-                    dest[dest_off++] = (color + ((dest[dest_off] & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * src_alpha >> 8 & 0xff00));
+                    color = ((color & 0xff00ff) * dest_alpha >> 8 & 0xff00ff) + ((color & 0xff00) * dest_alpha >> 8 & 0xff00);
+                    dest[dest_off++] = color + ((dest[dest_off] & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * src_alpha >> 8 & 0xff00);
+                    dest[dest_off++] = color + ((dest[dest_off] & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * src_alpha >> 8 & 0xff00);
+                    dest[dest_off++] = color + ((dest[dest_off] & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * src_alpha >> 8 & 0xff00);
+                    dest[dest_off++] = color + ((dest[dest_off] & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * src_alpha >> 8 & 0xff00);
                 }
                 loops = end_x - start_x & 0x3;
                 if(loops > 0) {
                     color = hsl2rgb[color_index >> 8];
-                    color = (((color & 0xff00ff) * dest_alpha >> 8 & 0xff00ff) + ((color & 0xff00) * dest_alpha >> 8 & 0xff00));
+                    color = ((color & 0xff00ff) * dest_alpha >> 8 & 0xff00ff) + ((color & 0xff00) * dest_alpha >> 8 & 0xff00);
                     do {
-                        dest[dest_off++] = (color + ((dest[dest_off] & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * src_alpha >> 8 & 0xff00));
+                        dest[dest_off++] = color + ((dest[dest_off] & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * src_alpha >> 8 & 0xff00);
                     }
                     while(--loops > 0);
                 }
@@ -1206,8 +1206,8 @@ public class Rasterizer3D extends Rasterizer {
                     do {
                         color = hsl2rgb[color_index >> 8];
                         color_index += i;
-                        color = (((color & 0xff00ff) * i_44_ >> 8 & 0xff00ff) + ((color & 0xff00) * i_44_ >> 8 & 0xff00));
-                        dest[dest_off++] = (color + ((dest[dest_off] & 0xff00ff) * i_43_ >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * i_43_ >> 8 & 0xff00));
+                        color = ((color & 0xff00ff) * i_44_ >> 8 & 0xff00ff) + ((color & 0xff00) * i_44_ >> 8 & 0xff00);
+                        dest[dest_off++] = color + ((dest[dest_off] & 0xff00ff) * i_43_ >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * i_43_ >> 8 & 0xff00);
                     } while(--loops > 0);
                 }
             }
@@ -2012,7 +2012,7 @@ public class Rasterizer3D extends Rasterizer {
                     } else if(2.0 * d_67_ < 1.0) {
                         d_62_ = d_65_;
                     } else if(3.0 * d_67_ < 2.0) {
-                        d_62_ = d_66_ + ((d_65_ - d_66_) * (0.6666666666666666 - d_67_) * 6.0);
+                        d_62_ = d_66_ + (d_65_ - d_66_) * (0.6666666666666666 - d_67_) * 6.0;
                     } else {
                         d_62_ = d_66_;
                     }
@@ -2021,7 +2021,7 @@ public class Rasterizer3D extends Rasterizer {
                     } else if(2.0 * d_68_ < 1.0) {
                         d_63_ = d_65_;
                     } else if(3.0 * d_68_ < 2.0) {
-                        d_63_ = d_66_ + ((d_65_ - d_66_) * (0.6666666666666666 - d_68_) * 6.0);
+                        d_63_ = d_66_ + (d_65_ - d_66_) * (0.6666666666666666 - d_68_) * 6.0;
                     } else {
                         d_63_ = d_66_;
                     }
@@ -2030,7 +2030,7 @@ public class Rasterizer3D extends Rasterizer {
                     } else if(2.0 * d_69_ < 1.0) {
                         d_64_ = d_65_;
                     } else if(3.0 * d_69_ < 2.0) {
-                        d_64_ = d_66_ + ((d_65_ - d_66_) * (0.6666666666666666 - d_69_) * 6.0);
+                        d_64_ = d_66_ + (d_65_ - d_66_) * (0.6666666666666666 - d_69_) * 6.0;
                     } else {
                         d_64_ = d_66_;
                     }

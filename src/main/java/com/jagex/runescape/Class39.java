@@ -15,7 +15,7 @@ public class Class39 implements Runnable {
     public static int anInt912 = 20;
     public static RSString aClass1_917 = RSString.CreateString(" from your ignore list first");
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_918;
-    public static RSString str_ok = RSString.CreateString("Ok");
+    public static String str_ok = "Ok";
     public Object objectLock;
     public boolean aBoolean913 = true;
     public int[] coordsY;
@@ -34,17 +34,17 @@ public class Class39 implements Runnable {
         int i_0_ = -1;
         int i_1_ = 0;
         if(arg0.anInt2027 == 0)
-            i = (Npc.currentScene.method122(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
+            i = Npc.currentScene.method122(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
         int i_2_ = 0;
         if(arg0.anInt2027 == 1)
-            i = (Npc.currentScene.method91(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
+            i = Npc.currentScene.method91(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
         if(arg0.anInt2027 == 2)
-            i = (Npc.currentScene.getLocationHash(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
+            i = Npc.currentScene.getLocationHash(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
         if(arg0.anInt2027 == 3)
-            i = (Npc.currentScene.getFloorDecorationHash(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038));
+            i = Npc.currentScene.getFloorDecorationHash(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
         if(arg1 == 19813) {
             if(i != 0) {
-                int i_3_ = (Npc.currentScene.getArrangement(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038, i));
+                int i_3_ = Npc.currentScene.getArrangement(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038, i);
                 i_0_ = (0x1fffe692 & i) >> 14;
                 i_2_ = (i_3_ & 0xde) >> 6;
                 i_1_ = i_3_ & 0x1f;

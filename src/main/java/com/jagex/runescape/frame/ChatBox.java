@@ -53,8 +53,8 @@ public class ChatBox {
             }
             TypeFace font = WallDecoration.fontNormal;
             Rasterizer.setBounds(0, 0, 77, 463);
-            for(int index = 0; (index < itemSearchResultCount); index++) {
-                int y = index * 14 + (18 - itemSearchScroll);
+            for(int index = 0; index < itemSearchResultCount; index++) {
+                int y = index * 14 + 18 - itemSearchScroll;
                 if(y > 0 && y < 110)
                     font.drawStringLeft(itemSearchResultNames[index], 239, y, 0);
             }
@@ -72,31 +72,31 @@ public class ChatBox {
             Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(GameShell.clickToContinueString, 239, 40, 0);
             Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(Class34.aClass1_829, 239, 60, 128);
         } else if(openChatboxWidgetId != -1) {
-            redrawChatbox = !Class40_Sub5_Sub6.drawInterface(0, (openChatboxWidgetId), 96, (byte) -5, 0, 2, 479);
+            redrawChatbox = !Class40_Sub5_Sub6.drawInterface(0, openChatboxWidgetId, 96, (byte) -5, 0, 2, 479);
         } else if(dialogueId == -1) {
             int line = 0;
             TypeFace typeFace = WallDecoration.fontNormal;
             Rasterizer.setBounds(0, 0, 77, 463);
             for(int i = 0; i < 100; i++) {
-                if((chatMessages[i]) != null) {
+                if(chatMessages[i] != null) {
                     int type = chatTypes[i];
                     String name = chatPlayerNames[i];
-                    int y = (chatboxScroll + 70 + -(line * 14));
+                    int y = chatboxScroll + 70 + -(line * 14);
                     int privelege = 0;
-                    if(name != null && (name.startsWith(Class51.whiteCrown))) {
-                        name = (name.substring(5));
+                    if(name != null && name.startsWith(Class51.whiteCrown)) {
+                        name = name.substring(5);
                         privelege = 1;
                     }
-                    if(name != null && (name.startsWith((Widget.goldCrown)))) {
-                        name = (name.substring(5));
+                    if(name != null && name.startsWith(Widget.goldCrown)) {
+                        name = name.substring(5);
                         privelege = 2;
                     }
                     if(type == 0) {
                         line++;
-                        if(y > 0 && (y < 110))
-                            typeFace.drawString((chatMessages[i]), 4, y, 0);
+                        if(y > 0 && y < 110)
+                            typeFace.drawString(chatMessages[i], 4, y, 0);
                     }
-                    if((type == 1 || type == 2) && (type == 1 || publicChatMode == 0 || publicChatMode == 1 && (Class40_Sub2.hasFriend(name)))) {
+                    if((type == 1 || type == 2) && (type == 1 || publicChatMode == 0 || publicChatMode == 1 && Class40_Sub2.hasFriend(name))) {
                         if(y > 0 && y < 110) {
                             int x = 4;
                             if(privelege == 1) {
@@ -108,17 +108,17 @@ public class ChatBox {
                                 x += 14;
                             }
                             typeFace.drawString(name+ Class43.char_colon, x, y, 0);
-                            x += (8 + (typeFace.getStringWidth(name)));
-                            typeFace.drawString((chatMessages[i]), x, y, 255);
+                            x += 8 + typeFace.getStringWidth(name);
+                            typeFace.drawString(chatMessages[i], x, y, 255);
                         }
                         line++;
                     }
-                    if((type == 3 || type == 7) && CollisionMap.anInt165 == 0 && (type == 7 || privateChatMode == 0 || (privateChatMode == 1 && (Class40_Sub2.hasFriend(name))))) {
+                    if((type == 3 || type == 7) && CollisionMap.anInt165 == 0 && (type == 7 || privateChatMode == 0 || privateChatMode == 1 && Class40_Sub2.hasFriend(name))) {
                         line++;
                         if(y > 0 && y < 110) {
                             int i_13_ = 4;
-                            typeFace.drawString((Class40_Sub5_Sub6.aClass1_2458), i_13_, y, 0);
-                            i_13_ += (typeFace.getStringWidth(Class40_Sub5_Sub6.aClass1_2458));
+                            typeFace.drawString(Class40_Sub5_Sub6.aClass1_2458, i_13_, y, 0);
+                            i_13_ += typeFace.getStringWidth(Class40_Sub5_Sub6.aClass1_2458);
                             i_13_ += typeFace.method689(32);
                             if(privelege == 1) {
                                 Class40_Sub5_Sub13.moderatorIcon[0].drawImage(i_13_, y + -12);
@@ -129,30 +129,30 @@ public class ChatBox {
                                 i_13_ += 14;
                             }
                             typeFace.drawString(name + Class43.char_colon, i_13_, y, 0);
-                            i_13_ += (8 + (typeFace.getStringWidth(name)));
-                            typeFace.drawString((chatMessages[i]), i_13_, y, 8388608);
+                            i_13_ += 8 + typeFace.getStringWidth(name);
+                            typeFace.drawString(chatMessages[i], i_13_, y, 8388608);
                         }
                     }
-                    if(type == 4 && ((tradeMode) == 0 || ((tradeMode) == 1 && (Class40_Sub2.hasFriend(name))))) {
+                    if(type == 4 && (tradeMode == 0 || tradeMode == 1 && Class40_Sub2.hasFriend(name))) {
                         line++;
                         if(y > 0 && y < 110)
                             typeFace.drawString(name + " " + chatMessages[i], 4, y, 8388736);
                     }
                     if(type == 5 && CollisionMap.anInt165 == 0 && privateChatMode < 2) {
                         if(y > 0 && y < 110)
-                            typeFace.drawString((chatMessages[i]), 4, y, 8388608);
+                            typeFace.drawString(chatMessages[i], 4, y, 8388608);
                         line++;
                     }
                     if(type == 6 && CollisionMap.anInt165 == 0 && privateChatMode < 2) {
-                        if(y > 0 && (y < 110)) {
+                        if(y > 0 && y < 110) {
                             typeFace.drawString(Class40_Sub5_Sub1.aClass1_2274 + Class48.aClass1_1123 + name + Class43.char_colon, 4, y, 0);
-                            typeFace.drawString((chatMessages[i]), (typeFace.getStringWidth(Class40_Sub5_Sub1.aClass1_2274 + Class48.aClass1_1123 + name)) + 12, y, 8388608);
+                            typeFace.drawString(chatMessages[i], typeFace.getStringWidth(Class40_Sub5_Sub1.aClass1_2274 + Class48.aClass1_1123 + name) + 12, y, 8388608);
                         }
                         line++;
                     }
-                    if(type == 8 && ((tradeMode) == 0 || ((tradeMode) == 1 && (Class40_Sub2.hasFriend(name))))) {
+                    if(type == 8 && (tradeMode == 0 || tradeMode == 1 && Class40_Sub2.hasFriend(name))) {
                         line++;
-                        if(y > 0 && (y < 110))
+                        if(y > 0 && y < 110)
                             typeFace.drawString(name + Class48.aClass1_1123 + chatMessages[i], 4, y, 8270336);
                     }
                 }
@@ -163,15 +163,15 @@ public class ChatBox {
                 chatboxScrollMax = 78;
             Widget.drawScrollBar(463, 0, 77, chatboxScrollMax - chatboxScroll - 77, chatboxScrollMax, 0);
             String name;
-            if(((Player.localPlayer) != null) && (Player.localPlayer.playerName) != null)
-                name = (Player.localPlayer.playerName);
+            if(Player.localPlayer != null && Player.localPlayer.playerName != null)
+                name = Player.localPlayer.playerName;
             else
                 name = Native.username.toString();
             typeFace.drawString(name + Class43.char_colon, 4, 90, 0);
-            typeFace.drawString(HuffmanEncoding.chatboxInput + InteractiveObject.aClass1_478, (typeFace.getStringWidth(name + ISAAC.aClass1_515) + 6), 90, 255);
+            typeFace.drawString(HuffmanEncoding.chatboxInput + InteractiveObject.aClass1_478, typeFace.getStringWidth(name + ISAAC.aClass1_515) + 6, 90, 255);
             Rasterizer.drawHorizontalLine(0, 77, 479, 0);
         } else {
-            boolean bool = (Class40_Sub5_Sub6.drawInterface(0, dialogueId, 96, (byte) -5, 0, 3, 479));
+            boolean bool = Class40_Sub5_Sub6.drawInterface(0, dialogueId, 96, (byte) -5, 0, 3, 479);
             if(!bool)
                 redrawChatbox = true;
         }
@@ -214,7 +214,7 @@ public class ChatBox {
                     itemSearchResultNames[itemSearchResultCount] = itemName;
                     itemSearchResultIds[itemSearchResultCount] = itemId;
                     itemSearchResultCount++;
-                    if((itemSearchResultCount >= itemSearchResultNames.length))
+                    if(itemSearchResultCount >= itemSearchResultNames.length)
                         break;
                 }
             }

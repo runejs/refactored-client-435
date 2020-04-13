@@ -15,7 +15,7 @@ public class Class34 {
     public static RSString aClass1_826 = RSString.CreateString("Click to continue");
     public static RSString aClass1_829 = aClass1_826;
     public static HashTable aClass23_841 = new HashTable(4096);
-    public static RSString aClass1_844 = (RSString.CreateString("Press (Wrecover a locked account(W on front page)3"));
+    public static RSString aClass1_844 = RSString.CreateString("Press (Wrecover a locked account(W on front page)3");
     public static int anInt848 = 0;
     public static int currentCameraPositionV;
     public static Cache aClass9_851 = new Cache(30);
@@ -82,7 +82,7 @@ public class Class34 {
         long l = (long) ((arg1 << 16) + arg2);
         if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null || PacketBuffer.aClass40_Sub5_Sub13_2250.key != l)
             return 0;
-        return 1 + (Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition * 99 / ((Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer).length + -(PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758)));
+        return 1 + Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition * 99 / (Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer.length + -PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758);
     }
 
     public static boolean method416(byte arg0) {
@@ -101,7 +101,7 @@ public class Class34 {
     public static VarbitDefinition method417(int arg0, int arg1) {
         if(arg0 != 0)
             return null;
-        VarbitDefinition varbitDefinition = ((VarbitDefinition) Class57.aClass9_1331.get((long) arg1, (byte) 111));
+        VarbitDefinition varbitDefinition = (VarbitDefinition) Class57.aClass9_1331.get((long) arg1, (byte) 111);
         if(varbitDefinition != null)
             return varbitDefinition;
         byte[] is = RSCanvas.aCacheIndex_61.getFile(arg1, 14);

@@ -18,9 +18,9 @@ import com.jagex.runescape.scene.tile.FloorDecoration;
 public class Class33 {
     public static RSString aClass1_777 = RSString.CreateString("Cabbage");
     public static Cache aClass9_778 = new Cache(64);
-    public static RSString aClass1_783 = RSString.CreateString("Loading config )2 ");
+    public static String aClass1_783 = "Loading config - ";
     public static int anInt784 = 0;
-    public static RSString cmd_prefix = RSString.CreateString("::");
+    public static String cmd_prefix = "::";
     public static int[] selectedMenuActions = new int[500];
     public static RSString aClass1_795 = RSString.CreateString(")1");
     public static RSString aClass1_798 = RSString.CreateString("No response from server)3");
@@ -55,58 +55,58 @@ public class Class33 {
             for(int i = -1; Player.localPlayerCount + Player.npcCount > i; i++) {
                 Actor actor;
                 if(i == -1)
-                    actor = (Player.localPlayer);
+                    actor = Player.localPlayer;
                 else if(i < Player.localPlayerCount)
-                    actor = (Player.trackedPlayers[Player.trackedPlayerIndices[i]]);
+                    actor = Player.trackedPlayers[Player.trackedPlayerIndices[i]];
                 else
-                    actor = (Player.npcs[(Player.npcIds[i + -Player.localPlayerCount])]);
+                    actor = Player.npcs[Player.npcIds[i + -Player.localPlayerCount]];
                 if(actor != null && actor.isVisible(1)) {
                     if(actor instanceof Npc) {
-                        ActorDefinition class40_sub5_sub5 = (((Npc) actor).actorDefinition);
+                        ActorDefinition class40_sub5_sub5 = ((Npc) actor).actorDefinition;
                         if(class40_sub5_sub5.childrenIds != null)
                             class40_sub5_sub5 = class40_sub5_sub5.getChildDefinition(arg0 + 27);
                         if(class40_sub5_sub5 == null)
                             continue;
                     }
                     if(Player.localPlayerCount <= i) {
-                        ActorDefinition class40_sub5_sub5 = (((Npc) actor).actorDefinition);
-                        if((class40_sub5_sub5.headIcon >= 0) && (class40_sub5_sub5.headIcon < (Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204).length)) {
-                            FloorDecoration.method342((actor.anInt3117) + 15, actor);
+                        ActorDefinition class40_sub5_sub5 = ((Npc) actor).actorDefinition;
+                        if(class40_sub5_sub5.headIcon >= 0 && class40_sub5_sub5.headIcon < Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204.length) {
+                            FloorDecoration.method342(actor.anInt3117 + 15, actor);
                             if(ISAAC.anInt522 > -1)
                                 Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204[class40_sub5_sub5.headIcon].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -30);
                         }
-                        if(Player.anInt3288 == 1 && (HuffmanEncoding.anInt1545 == (Player.npcIds[-Player.localPlayerCount + i])) && Node.pulseCycle % 20 < 10) {
-                            FloorDecoration.method342(15 + (actor.anInt3117), actor);
+                        if(Player.anInt3288 == 1 && HuffmanEncoding.anInt1545 == Player.npcIds[-Player.localPlayerCount + i] && Node.pulseCycle % 20 < 10) {
+                            FloorDecoration.method342(15 + actor.anInt3117, actor);
                             if(ISAAC.anInt522 > -1)
                                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, Class44.anInt1048 + -28);
                         }
                     } else {
-                        Player class40_sub5_sub17_sub4_sub1 = ((Player) actor);
+                        Player class40_sub5_sub17_sub4_sub1 = (Player) actor;
                         int i_0_ = 30;
-                        if(class40_sub5_sub17_sub4_sub1.isSkulled != -1 || (class40_sub5_sub17_sub4_sub1.headIcon != -1)) {
-                            FloorDecoration.method342(15 + (actor.anInt3117), actor);
+                        if(class40_sub5_sub17_sub4_sub1.isSkulled != -1 || class40_sub5_sub17_sub4_sub1.headIcon != -1) {
+                            FloorDecoration.method342(15 + actor.anInt3117, actor);
                             if(ISAAC.anInt522 > -1) {
                                 if(class40_sub5_sub17_sub4_sub1.isSkulled != -1) {
-                                    FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603[(class40_sub5_sub17_sub4_sub1.isSkulled)].drawImage(ISAAC.anInt522 - 12, Class44.anInt1048 - i_0_);
+                                    FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603[class40_sub5_sub17_sub4_sub1.isSkulled].drawImage(ISAAC.anInt522 - 12, Class44.anInt1048 - i_0_);
                                     i_0_ += 25;
                                 }
                                 if(class40_sub5_sub17_sub4_sub1.headIcon != -1) {
-                                    Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204[(class40_sub5_sub17_sub4_sub1.headIcon)].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
+                                    Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204[class40_sub5_sub17_sub4_sub1.headIcon].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
                                     i_0_ += 25;
                                 }
                             }
                         }
-                        if(i >= 0 && Player.anInt3288 == 10 && (Class68.anInt1623 == Player.trackedPlayerIndices[i])) {
-                            FloorDecoration.method342((actor.anInt3117) + 15, actor);
+                        if(i >= 0 && Player.anInt3288 == 10 && Class68.anInt1623 == Player.trackedPlayerIndices[i]) {
+                            FloorDecoration.method342(actor.anInt3117 + 15, actor);
                             if(ISAAC.anInt522 > -1)
                                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[1].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
                         }
                     }
-                    if(actor.forcedChatMessage != null && (i >= Player.localPlayerCount || ChatBox.publicChatMode == 0 || ChatBox.publicChatMode == 3 || (ChatBox.publicChatMode == 1 && (Class40_Sub2.hasFriend((((Player) actor).playerName)))))) {
-                        FloorDecoration.method342((actor.anInt3117), actor);
+                    if(actor.forcedChatMessage != null && (i >= Player.localPlayerCount || ChatBox.publicChatMode == 0 || ChatBox.publicChatMode == 3 || ChatBox.publicChatMode == 1 && Class40_Sub2.hasFriend(((Player) actor).playerName))) {
+                        FloorDecoration.method342(actor.anInt3117, actor);
                         if(ISAAC.anInt522 > -1 && 50 > SceneCluster.anInt770) {
-                            Class30.anIntArray680[SceneCluster.anInt770] = ((Class40_Sub5_Sub17_Sub6.fontBold.getStringWidth(actor.forcedChatMessage)) / 2);
-                            Class30.anIntArray688[SceneCluster.anInt770] = (Class40_Sub5_Sub17_Sub6.fontBold.characterDefaultHeight);
+                            Class30.anIntArray680[SceneCluster.anInt770] = Class40_Sub5_Sub17_Sub6.fontBold.getStringWidth(actor.forcedChatMessage) / 2;
+                            Class30.anIntArray688[SceneCluster.anInt770] = Class40_Sub5_Sub17_Sub6.fontBold.characterDefaultHeight;
                             Class30.anIntArray715[SceneCluster.anInt770] = ISAAC.anInt522;
                             Class30.anIntArray685[SceneCluster.anInt770] = Class44.anInt1048;
                             Class30.anIntArray712[SceneCluster.anInt770] = actor.chatcolor;
@@ -116,19 +116,19 @@ public class Class33 {
                             SceneCluster.anInt770++;
                         }
                     }
-                    if((Node.pulseCycle < actor.anInt3139)) {
-                        FloorDecoration.method342((actor.anInt3117) + 15, actor);
+                    if(Node.pulseCycle < actor.anInt3139) {
+                        FloorDecoration.method342(actor.anInt3117 + 15, actor);
                         if(ISAAC.anInt522 > -1) {
-                            int i_1_ = (30 * actor.anInt3130 / actor.anInt3101);
+                            int i_1_ = 30 * actor.anInt3130 / actor.anInt3101;
                             if(i_1_ > 30)
                                 i_1_ = 30;
-                            Rasterizer.drawFilledRectangle(-15 + (ISAAC.anInt522), (Class44.anInt1048 + -3), i_1_, 5, 65280);
+                            Rasterizer.drawFilledRectangle(-15 + ISAAC.anInt522, Class44.anInt1048 + -3, i_1_, 5, 65280);
                             Rasterizer.drawFilledRectangle(-15 + ISAAC.anInt522 + i_1_, Class44.anInt1048 + -3, 30 + -i_1_, 5, 16711680);
                         }
                     }
                     for(int i_2_ = 0; i_2_ < 4; i_2_++) {
-                        if(Node.pulseCycle < (actor.anIntArray3136[i_2_])) {
-                            FloorDecoration.method342((actor.anInt3117) / 2, actor);
+                        if(Node.pulseCycle < actor.anIntArray3136[i_2_]) {
+                            FloorDecoration.method342(actor.anInt3117 / 2, actor);
                             if(ISAAC.anInt522 > -1) {
                                 if(i_2_ == 1)
                                     Class44.anInt1048 -= 20;
@@ -140,9 +140,9 @@ public class Class33 {
                                     ISAAC.anInt522 += 15;
                                     Class44.anInt1048 -= 10;
                                 }
-                                AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474[(actor.anIntArray3086[i_2_])].drawImage(ISAAC.anInt522 + -12, -12 + Class44.anInt1048);
-                                Class40_Sub5_Sub17_Sub6.fontSmall.drawStringLeft((HashTable.method334((actor.anIntArray3087[i_2_]))), ISAAC.anInt522, 4 + Class44.anInt1048, 0);
-                                Class40_Sub5_Sub17_Sub6.fontSmall.drawStringLeft((HashTable.method334((actor.anIntArray3087[i_2_]))), ISAAC.anInt522 - 1, Class44.anInt1048 + 3, 16777215);
+                                AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474[actor.anIntArray3086[i_2_]].drawImage(ISAAC.anInt522 + -12, -12 + Class44.anInt1048);
+                                Class40_Sub5_Sub17_Sub6.fontSmall.drawStringLeft(HashTable.intToStr(actor.anIntArray3087[i_2_]), ISAAC.anInt522, 4 + Class44.anInt1048, 0);
+                                Class40_Sub5_Sub17_Sub6.fontSmall.drawStringLeft(HashTable.intToStr(actor.anIntArray3087[i_2_]), ISAAC.anInt522 - 1, Class44.anInt1048 + 3, 16777215);
                             }
                         }
                     }
@@ -156,33 +156,33 @@ public class Class33 {
                 boolean bool = true;
                 while(bool) {
                     bool = false;
-                    for(int i_7_ = 0; (i > i_7_); i_7_++) {
-                        if(((-Class30.anIntArray688[i_7_] + Class30.anIntArray685[i_7_]) < i_4_ + 2) && ((-i_6_ + i_4_ < 2 + Class30.anIntArray685[i_7_])) && ((Class30.anIntArray715[i_7_] + Class30.anIntArray680[i_7_]) > -i_5_ + i_3_) && (i_5_ + i_3_ > (-Class30.anIntArray680[i_7_] + Class30.anIntArray715[i_7_])) && ((-Class30.anIntArray688[i_7_] + Class30.anIntArray685[i_7_]) < i_4_)) {
+                    for(int i_7_ = 0; i > i_7_; i_7_++) {
+                        if(-Class30.anIntArray688[i_7_] + Class30.anIntArray685[i_7_] < i_4_ + 2 && -i_6_ + i_4_ < 2 + Class30.anIntArray685[i_7_] && Class30.anIntArray715[i_7_] + Class30.anIntArray680[i_7_] > -i_5_ + i_3_ && i_5_ + i_3_ > -Class30.anIntArray680[i_7_] + Class30.anIntArray715[i_7_] && -Class30.anIntArray688[i_7_] + Class30.anIntArray685[i_7_] < i_4_) {
                             bool = true;
-                            i_4_ = (-Class30.anIntArray688[i_7_] + Class30.anIntArray685[i_7_]);
+                            i_4_ = -Class30.anIntArray688[i_7_] + Class30.anIntArray685[i_7_];
                         }
                     }
                 }
                 ISAAC.anInt522 = Class30.anIntArray715[i];
                 Class44.anInt1048 = Class30.anIntArray685[i] = i_4_;
-                RSString class1 = Class30.aClass1Array697[i];
+                String class1 = Class30.aClass1Array697[i];
                 if(Class40_Sub5_Sub1.anInt2280 == 0) {
                     int i_8_ = 16776960;
                     if(Class30.anIntArray712[i] < 6)
-                        i_8_ = (Class40_Sub6.anIntArray2106[Class30.anIntArray712[i]]);
+                        i_8_ = Class40_Sub6.anIntArray2106[Class30.anIntArray712[i]];
                     if(Class30.anIntArray712[i] == 6)
                         i_8_ = Class40_Sub5_Sub11.anInt2628 % 20 >= 10 ? 16776960 : 16711680;
                     if(Class30.anIntArray712[i] == 7)
                         i_8_ = Class40_Sub5_Sub11.anInt2628 % 20 < 10 ? 255 : 65535;
                     if(Class30.anIntArray712[i] == 8)
-                        i_8_ = (Class40_Sub5_Sub11.anInt2628 % 20 >= 10 ? 8454016 : 45056);
+                        i_8_ = Class40_Sub5_Sub11.anInt2628 % 20 >= 10 ? 8454016 : 45056;
                     if(Class30.anIntArray712[i] == 9) {
                         int i_9_ = 150 - Class30.anIntArray684[i];
                         if(i_9_ >= 50) {
                             if(i_9_ < 100)
                                 i_8_ = -((-50 + i_9_) * 327680) + 16776960;
                             else if(i_9_ < 150)
-                                i_8_ = 65280 + (5 * (i_9_ + -100));
+                                i_8_ = 65280 + 5 * (i_9_ + -100);
                         } else
                             i_8_ = 16711680 + 1280 * i_9_;
                     }
@@ -203,7 +203,7 @@ public class Class33 {
                             if(i_11_ < 100)
                                 i_8_ = 327685 * (i_11_ - 50) + 65280;
                             else if(i_11_ < 150)
-                                i_8_ = (-((-100 + i_11_) * 327680) + 16777215);
+                                i_8_ = -((-100 + i_11_) * 327680) + 16777215;
                         } else
                             i_8_ = -(327685 * i_11_) + 16777215;
                     }
@@ -225,8 +225,8 @@ public class Class33 {
                     }
                     if(Class30.anIntArray695[i] == 4) {
                         int i_12_ = Class40_Sub5_Sub17_Sub6.fontBold.getStringWidth(class1);
-                        int i_13_ = ((i_12_ + 100) * (150 + -Class30.anIntArray684[i]) / 150);
-                        Rasterizer.setBounds((ISAAC.anInt522 + -50), 0, 334, 50 + ISAAC.anInt522);
+                        int i_13_ = (i_12_ + 100) * (150 + -Class30.anIntArray684[i]) / 150;
+                        Rasterizer.setBounds(ISAAC.anInt522 + -50, 0, 334, 50 + ISAAC.anInt522);
                         Class40_Sub5_Sub17_Sub6.fontBold.drawString(class1, -i_13_ + ISAAC.anInt522 + 50, Class44.anInt1048 + 1, 0);
                         Class40_Sub5_Sub17_Sub6.fontBold.drawString(class1, 50 + ISAAC.anInt522 + -i_13_, Class44.anInt1048, i_8_);
                         Rasterizer.resetBounds();
@@ -234,13 +234,13 @@ public class Class33 {
                     if(Class30.anIntArray695[i] == 5) {
                         int i_14_ = 0;
                         int i_15_ = 150 + -Class30.anIntArray684[i];
-                        Rasterizer.setBounds(0, -1 + (-(Class40_Sub5_Sub17_Sub6.fontBold.characterDefaultHeight) + Class44.anInt1048), 5 + Class44.anInt1048, 512);
+                        Rasterizer.setBounds(0, -1 + -Class40_Sub5_Sub17_Sub6.fontBold.characterDefaultHeight + Class44.anInt1048, 5 + Class44.anInt1048, 512);
                         if(i_15_ >= 25) {
                             if(i_15_ > 125)
                                 i_14_ = i_15_ + -125;
                         } else
                             i_14_ = i_15_ + -25;
-                        Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(class1, ISAAC.anInt522, i_14_ + (Class44.anInt1048 + 1), 0);
+                        Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(class1, ISAAC.anInt522, i_14_ + Class44.anInt1048 + 1, 0);
                         Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(class1, ISAAC.anInt522, i_14_ + Class44.anInt1048, i_8_);
                         Rasterizer.resetBounds();
                     }
@@ -385,7 +385,7 @@ public class Class33 {
                         if(CacheIndex_Sub1.anInt1806 < 0)
                             RSString.method56(Main.aBoolean1790, is, OverlayDefinition.anInt2342);
                         else
-                            VarbitDefinition.method566((OverlayDefinition.anInt2342), Main.aBoolean1790, CacheIndex_Sub1.anInt1806, is);
+                            VarbitDefinition.method566(OverlayDefinition.anInt2342, Main.aBoolean1790, CacheIndex_Sub1.anInt1806, is);
                     } else
                         Class42.method886(0, OverlayDefinition.anInt2342, Main.aBoolean1790, is, CacheIndex.anInt255);
                     Class26.aBoolean618 = false;

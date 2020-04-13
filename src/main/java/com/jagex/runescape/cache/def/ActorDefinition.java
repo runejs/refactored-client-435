@@ -34,7 +34,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
     public boolean isClickable = true;
     public int boundaryDimension = 1;
     public int[] headModelIndexes;
-    public RSString[] options = new RSString[5];
+    public String[] options = new String[5];
     public int headIcon = -1;
     public int stanceAnimation = -1;
     public int varpIndex = -1;
@@ -44,7 +44,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
     public int combatLevel = -1;
     public int[] originalModelColors;
     public boolean hasRenderPriority = false;
-    public RSString name = RSString.CreateString("null");
+    public String name = "null";
     public int[] models;
     public int rotate180Animation = -1;
     public int resizeX = 128;
@@ -87,7 +87,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
             if(i == 2) {
                 player.anInt3095 = 0;
             }
-        } else if(arg0 == -1 || player.playingAnimation == -1 || (Class68_Sub1.method1050(arg0, 2).anInt2494 >= (Class68_Sub1.method1050(player.playingAnimation, 2).anInt2494))) {
+        } else if(arg0 == -1 || player.playingAnimation == -1 || Class68_Sub1.method1050(arg0, 2).anInt2494 >= Class68_Sub1.method1050(player.playingAnimation, 2).anInt2494) {
             player.anInt3094 = player.anInt3109;
             player.anInt3104 = 0;
             player.anInt3115 = 0;
@@ -119,10 +119,10 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
         class40_sub5_sub14_sub4.image_width = Class17.anIntArray456[0];
         class40_sub5_sub14_sub4.image_height = Npc.anIntArray3312[0];
         byte[] is = GroundItemTile.aByteArrayArray1370[0];
-        int i = (class40_sub5_sub14_sub4.image_width * class40_sub5_sub14_sub4.image_height);
+        int i = class40_sub5_sub14_sub4.image_width * class40_sub5_sub14_sub4.image_height;
         class40_sub5_sub14_sub4.pixels = new int[i];
         for(int i_5_ = 0; i_5_ < i; i_5_++) {
-            class40_sub5_sub14_sub4.pixels[i_5_] = (Buffer.anIntArray1972[HuffmanEncoding.method1021(255, is[i_5_])]);
+            class40_sub5_sub14_sub4.pixels[i_5_] = Buffer.anIntArray1972[HuffmanEncoding.method1021(255, is[i_5_])];
         }
         method569();
         return class40_sub5_sub14_sub4;
@@ -139,7 +139,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
         class40_sub11.aByteArrayArrayArray2159 = new byte[class40_sub11.anInt2160][][];
         class40_sub11.aSignlinkNodeArray2156 = new SignlinkNode[class40_sub11.anInt2160];
         class40_sub11.anIntArray2155 = new int[class40_sub11.anInt2160];
-        for(int i_6_ = 0; (i_6_ < class40_sub11.anInt2160); i_6_++) {
+        for(int i_6_ = 0; i_6_ < class40_sub11.anInt2160; i_6_++) {
             try {
                 int i_7_ = arg2.getUnsignedByte();
                 if(i_7_ == 0 || i_7_ == 1 || i_7_ == 2) {
@@ -162,7 +162,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
                     }
                     byte[][] is = new byte[i_9_][];
                     if(i_7_ == 3) {
-                        for(int i_11_ = 0; ((i_11_ < i_9_)); i_11_++) {
+                        for(int i_11_ = 0; i_11_ < i_9_; i_11_++) {
                             int i_12_ = arg2.getIntBE();
                             is[i_11_] = new byte[i_12_];
                             arg2.getBytes(i_12_, 0, is[i_11_]);
@@ -170,7 +170,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
                     }
                     class40_sub11.anIntArray2154[i_6_] = i_7_;
                     Class[] var_classes = new Class[i_9_];
-                    for(int i_13_ = 0; (i_13_ < i_9_); i_13_++) {
+                    for(int i_13_ = 0; i_13_ < i_9_; i_13_++) {
                         var_classes[i_13_] = Class26.method349(strings[i_13_]);
                     }
                     class40_sub11.aSignlinkNodeArray2156[i_6_] = arg0.method386(var_classes, string_8_, Class26.method349(string), (byte) -64);
@@ -205,7 +205,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
     }
 
     public static ActorDefinition getDefinition(int id) {
-        ActorDefinition definition = ((ActorDefinition) ISAAC.aClass9_510.get(id, (byte) 119));
+        ActorDefinition definition = (ActorDefinition) ISAAC.aClass9_510.get(id, (byte) 119);
         if(definition != null)
             return definition;
         byte[] data = GroundItemTile.aCacheIndex_1375.getFile(id, 9);
@@ -225,7 +225,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
             }
             return class40_sub5_sub5.getChildModel(arg1, arg2, arg3, arg4);
         }
-        Model class40_sub5_sub17_sub5 = ((Model) Class67.aClass9_1611.get(id, (byte) 75));
+        Model class40_sub5_sub17_sub5 = (Model) Class67.aClass9_1611.get(id, (byte) 75);
         if(class40_sub5_sub17_sub5 == null) {
             boolean bool = false;
             for(int model : models) {
@@ -238,15 +238,15 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
             }
             Model[] class40_sub5_sub17_sub5s = new Model[models.length];
             for(int i = 0; models.length > i; i++) {
-                class40_sub5_sub17_sub5s[i] = Model.getModel((Class67.aCacheIndex_1577), models[i], 0);
+                class40_sub5_sub17_sub5s[i] = Model.getModel(Class67.aCacheIndex_1577, models[i], 0);
             }
             if(class40_sub5_sub17_sub5s.length == 1) {
                 class40_sub5_sub17_sub5 = class40_sub5_sub17_sub5s[0];
             } else {
-                class40_sub5_sub17_sub5 = (new Model(class40_sub5_sub17_sub5s, class40_sub5_sub17_sub5s.length));
+                class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, class40_sub5_sub17_sub5s.length);
             }
             if(modifiedModelColors != null) {
-                for(int i = 0; (i < modifiedModelColors.length); i++) {
+                for(int i = 0; i < modifiedModelColors.length; i++) {
                     assert class40_sub5_sub17_sub5 != null;
                     class40_sub5_sub17_sub5.replaceColor(modifiedModelColors[i], originalModelColors[i]);
                 }
@@ -294,7 +294,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
                 models[idx] = buffer.getUnsignedShortBE();
             }
         } else if(opcode == 2) {
-            name = buffer.getRSString();
+            name = buffer.getString();
         } else if(opcode == 12) {
             boundaryDimension = buffer.getUnsignedByte();
         } else if(opcode == 13) {
@@ -311,7 +311,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
             rotate90RightAnimation = buffer.getUnsignedShortBE();
             rotate90LeftAnimation = buffer.getUnsignedShortBE();
         } else if(opcode >= 30 && opcode < 35) {
-            options[opcode - 30] = buffer.getRSString();
+            options[opcode - 30] = buffer.getString();
             if(options[opcode - 30].equalsIgnoreCase(English.hidden)) {
                 options[-30 + opcode] = null;
             }
@@ -342,24 +342,24 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
         } else if(opcode == 100) {
             ambient = buffer.getByte();
         } else if(opcode == 101) {
-            contrast = (buffer.getByte()) * 5;
+            contrast = buffer.getByte() * 5;
         } else if(opcode == 102) {
-            headIcon = (buffer.getUnsignedShortBE());
+            headIcon = buffer.getUnsignedShortBE();
         } else if(opcode == 103) {
-            degreesToTurn = (buffer.getUnsignedShortBE());
+            degreesToTurn = buffer.getUnsignedShortBE();
         } else if(opcode == 106) {
-            varBitId = (buffer.getUnsignedShortBE());
+            varBitId = buffer.getUnsignedShortBE();
             if(varBitId == 65535) {
                 varBitId = -1;
             }
-            varpIndex = (buffer.getUnsignedShortBE());
+            varpIndex = buffer.getUnsignedShortBE();
             if(varpIndex == 65535) {
                 varpIndex = -1;
             }
-            int childrenCount = (buffer.getUnsignedByte());
+            int childrenCount = buffer.getUnsignedByte();
             childrenIds = new int[childrenCount + 1];
             for(int idx = 0; childrenCount >= idx; idx++) {
-                childrenIds[idx] = (buffer.getUnsignedShortBE());
+                childrenIds[idx] = buffer.getUnsignedShortBE();
                 if(childrenIds[idx] == 0xFFFF) {
                     childrenIds[idx] = -1;
                 }
@@ -407,7 +407,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
         if(models.length == 1) {
             headModel = models[0];
         } else {
-            headModel = (new Model(models, models.length));
+            headModel = new Model(models, models.length);
         }
         if(modifiedModelColors != null) {
             for(int i = 0; i < modifiedModelColors.length; i++) {
@@ -432,7 +432,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
     }
 
     @Override
-    public RSString getName() {
+    public String getName() {
         return name;
     }
 }

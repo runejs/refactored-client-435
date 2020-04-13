@@ -15,7 +15,7 @@ public class SubNode extends Node {
     public static boolean aBoolean2083 = false;
     public static RSString aClass1_2084 = RSString.CreateString(")1");
     public static int[] anIntArray2086;
-    public static RSString aClass1_2090 = RSString.CreateString("(U5");
+    public static String aClass1_2090 = "%5";
     public static Class68 aClass68_2091;
     public static RSString aClass1_2093 = RSString.CreateString("redstone1");
 

@@ -55,7 +55,7 @@ public class Class8 {
             int i_0_ = Player.npcIds[i];
             Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_0_];
             if(class40_sub5_sub17_sub4_sub2 != null)
-                Class13.method241(class40_sub5_sub17_sub4_sub2, (class40_sub5_sub17_sub4_sub2.actorDefinition.boundaryDimension), (byte) 107);
+                Class13.method241(class40_sub5_sub17_sub4_sub2, class40_sub5_sub17_sub4_sub2.actorDefinition.boundaryDimension, (byte) 107);
         }
 
     }

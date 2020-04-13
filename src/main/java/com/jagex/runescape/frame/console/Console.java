@@ -99,7 +99,7 @@ public class Console {
                 }
                 int y = j;
                 if(messageCount > 17) {
-                    y = 290 - ((messageCount - i) * 18) + (18 + currentScroll);
+                    y = 290 - (messageCount - i) * 18 + 18 + currentScroll;
                 }
                 if(y > 2 && y < 315)
                     WallDecoration.fontNormal.drawBasicString(consoleMessages[i], 9, y);
@@ -230,7 +230,7 @@ public class Console {
             currentChatIndex = consoleInput.length();
         }
 
-        if(ItemDefinition.anInt2854 == 85 && (consoleInput.length() > 0)) { // key backspace
+        if(ItemDefinition.anInt2854 == 85 && consoleInput.length() > 0) { // key backspace
             consoleInput = consoleInput.substring(0, currentChatIndex - 1) + consoleInput.substring(currentChatIndex);
             currentChatIndex--;
         }
@@ -238,7 +238,7 @@ public class Console {
             consoleInput = consoleInput.substring(0, currentChatIndex) + (char) Class59.anInt1388 + consoleInput.substring(currentChatIndex);
             currentChatIndex++;
         }
-        if(ItemDefinition.anInt2854 == 84 && (consoleInput.length() > 0)) { // key enter
+        if(ItemDefinition.anInt2854 == 84 && consoleInput.length() > 0) { // key enter
             log(consoleInput, true);
             parseConsoleCommand(consoleInput);
             consoleInput = "";

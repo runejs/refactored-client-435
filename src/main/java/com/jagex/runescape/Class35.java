@@ -15,16 +15,11 @@ public class Class35 implements Interface3 {
     public static int songTimeout = 0;
     public static boolean aBoolean1734 = false;
     public static boolean aBoolean1735 = true;
-    public static RSString aClass1_1736 = RSString.CreateString("Enter message to send to ");
     public static int[] SKIN_COLOURS = new int[]{9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145, 58654, 5027, 1457, 16565, 34991, 25486};
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1744;
     public static byte[][][] tile_overlay_rotation;
-    public static RSString aClass1_1746;
+    public static String aClass1_1746 = "Enter message to send to ";
     public static RSString aClass1_1747 = aClass1_1720;
-
-    static {
-        aClass1_1746 = aClass1_1736;
-    }
 
     public LinkedList aLinkedList_1727 = new LinkedList();
     public EntryTable[] aClass40_Sub10Array1740;
@@ -88,13 +83,12 @@ public class Class35 implements Interface3 {
         aClass1_1746 = null;
         aFrame1732 = null;
         SKIN_COLOURS = null;
-        aClass1_1736 = null;
-        aClass40_Sub5_Sub14_Sub2_1744 = null;
+         aClass40_Sub5_Sub14_Sub2_1744 = null;
         aClass1_1747 = null;
     }
 
     public void method422(int arg0) {
-        for(int i = arg0; ((aClass40_Sub10Array1740.length > i)); i++) {
+        for(int i = arg0; aClass40_Sub10Array1740.length > i; i++) {
             if(aClass40_Sub10Array1740[i] != null)
                 aClass40_Sub10Array1740[i].method870();
         }
@@ -114,7 +108,7 @@ public class Class35 implements Interface3 {
             boolean bool = class40_sub10.method869(aDouble1750, anInt1748, aCacheIndex_1749);
             if(bool) {
                 if(anInt1753 == 0) {
-                    EntryTable class40_sub10_3_ = ((EntryTable) aLinkedList_1727.method899((byte) 87));
+                    EntryTable class40_sub10_3_ = (EntryTable) aLinkedList_1727.method899((byte) 87);
                     class40_sub10_3_.method870();
                 } else
                     anInt1753--;
@@ -148,7 +142,7 @@ public class Class35 implements Interface3 {
     public void method425(byte arg0, int arg1) {
         int i = 0;
         if(arg0 == 6) {
-            for(/**/; (i < aClass40_Sub10Array1740.length); i++) {
+            for(/**/; i < aClass40_Sub10Array1740.length; i++) {
                 EntryTable class40_sub10 = aClass40_Sub10Array1740[i];
                 if(class40_sub10 != null && class40_sub10.anInt2136 != 0 && class40_sub10.aBoolean2146) {
                     class40_sub10.method868(arg1);

@@ -1,18 +1,16 @@
 package com.jagex.runescape.cache.media.TextUtils;
 
-import com.jagex.runescape.RSString;
-
 public class TextTagNode {
     private TextTagNode previous = null;
     private TextTagNode next = null;
-    private RSString tag;
+    private String tag;
 
-    public TextTagNode(RSString tag) {
+    public TextTagNode(String tag) {
         this.tag = tag;
     }
 
-    public void applyTo(RSString string) {
-        string.add(tag);
+    public String applyTo(String string) {
+        return tag + string;
     }
 
     public void setNext(TextTagNode node) {

@@ -44,10 +44,10 @@ public class Class40_Sub2 extends Node {
         int i_1_ = varbitDefinition.mostSignificantBit;
         int i_2_ = -115 % ((arg2 - 46) / 57);
         int i_3_ = Class68_Sub1.anIntArray2199[i_1_ + -i];
-        if(arg0 < 0 || (i_3_ < arg0))
+        if(arg0 < 0 || i_3_ < arg0)
             arg0 = 0;
         i_3_ <<= i;
-        GroundItemTile.varbitmasks[i_0_] = (UnderlayDefinition.bitWiseOR(HuffmanEncoding.method1021(GroundItemTile.varbitmasks[i_0_], i_3_ ^ 0xffffffff), HuffmanEncoding.method1021(i_3_, arg0 << i)));
+        GroundItemTile.varbitmasks[i_0_] = UnderlayDefinition.bitWiseOR(HuffmanEncoding.method1021(GroundItemTile.varbitmasks[i_0_], i_3_ ^ 0xffffffff), HuffmanEncoding.method1021(i_3_, arg0 << i));
     }
 
     public static boolean hasFriend(String arg0) {
@@ -57,7 +57,7 @@ public class Class40_Sub2 extends Node {
             if(arg0.equalsIgnoreCase(Class40_Sub11.friendUsernames[i]))
                 return true;
         }
-        return arg0.equalsIgnoreCase((Player.localPlayer.playerName));
+        return arg0.equalsIgnoreCase(Player.localPlayer.playerName);
     }
 
 

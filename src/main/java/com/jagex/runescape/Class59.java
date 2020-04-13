@@ -20,18 +20,15 @@ public class Class59 {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1387;
     public static int anInt1388;
     public static int anInt1389 = 0;
-    public static RSString aClass1_1391;
     public static KeyFocusListener keyFocusListener;
     public static int[] secondMenuOperand;
     public static RSString aClass1_1395 = RSString.CreateString("backbase1");
     public static long[] aLongArray1397;
     public static int[] anIntArray1398;
-    public static RSString aClass1_1399;
+    public static RSString aClass1_1399 = RSString.CreateString("Your friendlist is full)3 Max of 100 for free users)1 and 200 for members");
 
     static {
         secondMenuOperand = new int[500];
-        aClass1_1391 = (RSString.CreateString("Your friendlist is full)3 Max of 100 for free users)1 and 200 for members"));
-        aClass1_1399 = aClass1_1391;
         aLongArray1397 = new long[200];
         keyFocusListener = new KeyFocusListener();
     }
@@ -75,7 +72,7 @@ public class Class59 {
                         else {
                             Class5.aClass22_189.method301(PacketBuffer.anInt2258, arg0);
                             MouseHandler.anInt1450 = PacketBuffer.anInt2258;
-                            Class5.aClass22_189.method300((Player.aByteArray3270), Class30.aBoolean687, -15910, PacketBuffer.anInt2258);
+                            Class5.aClass22_189.method300(Player.aByteArray3270, Class30.aBoolean687, -15910, PacketBuffer.anInt2258);
                             Player.aByteArray3270 = null;
                         }
                         Class39.anInt909 = 0;
@@ -95,7 +92,6 @@ public class Class59 {
         aLongArray1397 = null;
         aClass1_1395 = null;
         keyFocusListener = null;
-        aClass1_1391 = null;
         English.hidden = null;
         secondMenuOperand = null;
     }

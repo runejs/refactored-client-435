@@ -21,7 +21,7 @@ public class Class67 {
     public static boolean reportMutePlayer = false;
     public static RSString aClass1_1605 = RSString.CreateString("Loading )2 please wait)3");
     public static int anInt1607 = 10;
-    public static RSString aClass1_1610 = RSString.CreateString("(U3");
+    public static String aClass1_1610 = "%3";
     public static Cache aClass9_1611 = new Cache(50);
     public static long[] aLongArray1614 = new long[32];
 
@@ -56,8 +56,8 @@ public class Class67 {
         int i = -1;
         if(!arg0)
             return 39;
-        for(int i_1_ = arg1; (i_1_ < arg2); i_1_++)
-            i = (KeyFocusListener.anIntArray1282[0xff & (i ^ arg3[i_1_])] ^ i >>> 8);
+        for(int i_1_ = arg1; i_1_ < arg2; i_1_++)
+            i = KeyFocusListener.anIntArray1282[0xff & (i ^ arg3[i_1_])] ^ i >>> 8;
         i ^= 0xffffffff;
         return i;
     }
@@ -94,9 +94,9 @@ public class Class67 {
                 method1034(false, 109, -94, null);
             if(aLong1602 < (long) arg2 + aLong1578)
                 aLong1602 = (long) arg2 + aLong1578;
-            if(aLong1593 != -1 && (aLong1578 < aLong1593 || (aLong1593 + (long) anInt1595 < aLong1578)))
+            if(aLong1593 != -1 && (aLong1578 < aLong1593 || aLong1593 + (long) anInt1595 < aLong1578))
                 method1039(-1);
-            if(aLong1593 != -1L && (aLong1593 + (long) aByteArray1592.length < (long) arg2 + aLong1578)) {
+            if(aLong1593 != -1L && aLong1593 + (long) aByteArray1592.length < (long) arg2 + aLong1578) {
                 int i = (int) (aLong1593 - (aLong1578 - (long) aByteArray1592.length));
                 arg2 -= i;
                 Class18.method278(arg3, arg0, aByteArray1592, (int) (-aLong1593 + aLong1578), i);
@@ -118,15 +118,15 @@ public class Class67 {
                 long l_0_ = -1L;
                 if(aLong1578 >= aLong1596 && aLong1578 < (long) anInt1589 + aLong1596)
                     l_0_ = aLong1578;
-                else if((aLong1578 <= aLong1596) && aLong1596 < aLong1578 + (long) arg2)
+                else if(aLong1578 <= aLong1596 && aLong1596 < aLong1578 + (long) arg2)
                     l_0_ = aLong1596;
-                if(aLong1596 < aLong1578 + (long) arg2 && (aLong1596 + (long) anInt1589 >= (long) arg2 + aLong1578))
+                if(aLong1596 < aLong1578 + (long) arg2 && aLong1596 + (long) anInt1589 >= (long) arg2 + aLong1578)
                     l = (long) arg2 + aLong1578;
-                else if(aLong1596 + (long) anInt1589 > aLong1578 && ((long) arg2 + aLong1578 >= (long) anInt1589 + aLong1596))
+                else if(aLong1596 + (long) anInt1589 > aLong1578 && (long) arg2 + aLong1578 >= (long) anInt1589 + aLong1596)
                     l = (long) anInt1589 + aLong1596;
                 if(l_0_ > -1 && l_0_ < l) {
                     int i = (int) (l - l_0_);
-                    Class18.method278(arg3, (int) ((long) arg0 + (l_0_ - aLong1578)), aByteArray1583, (int) (l_0_ + -aLong1596), i);
+                    Class18.method278(arg3, (int) ((long) arg0 + l_0_ - aLong1578), aByteArray1583, (int) (l_0_ + -aLong1596), i);
                 }
                 aLong1578 += (long) arg2;
             } else if(arg2 > 0) {
@@ -145,8 +145,8 @@ public class Class67 {
 
     public void method1035(int arg0, byte arg1, int arg2, byte[] arg3) throws IOException {
         try {
-            if((arg0 + arg2 > arg3.length))
-                throw new ArrayIndexOutOfBoundsException(arg2 + (arg0 - arg3.length));
+            if(arg0 + arg2 > arg3.length)
+                throw new ArrayIndexOutOfBoundsException(arg2 + arg0 - arg3.length);
             if(aLong1593 != -1 && aLong1593 <= aLong1578 && (long) arg2 + aLong1578 <= (long) anInt1595 + aLong1593) {
                 Class18.method278(aByteArray1592, (int) (aLong1578 - aLong1593), arg3, arg0, arg2);
                 aLong1578 += (long) arg2;
@@ -156,8 +156,8 @@ public class Class67 {
             long l = aLong1578;
             int i_2_ = arg0;
             if(aLong1578 >= aLong1596 && (long) anInt1589 + aLong1596 > aLong1578) {
-                int i_3_ = (int) ((long) anInt1589 + (-aLong1578 + aLong1596));
-                if((i_3_ > arg2))
+                int i_3_ = (int) ((long) anInt1589 + -aLong1578 + aLong1596);
+                if(i_3_ > arg2)
                     i_3_ = arg2;
                 Class18.method278(aByteArray1583, (int) (-aLong1596 + aLong1578), arg3, arg0, i_3_);
                 arg0 += i_3_;
@@ -191,7 +191,7 @@ public class Class67 {
             if(aLong1593 != -1L) {
                 if(aLong1593 > aLong1578 && arg2 > 0) {
                     int i_6_ = (int) (-aLong1578 + aLong1593) + arg0;
-                    if((i_6_ > arg0 + arg2))
+                    if(i_6_ > arg0 + arg2)
                         i_6_ = arg0 + arg2;
                     while(arg0 < i_6_) {
                         arg2--;
@@ -200,17 +200,17 @@ public class Class67 {
                     }
                 }
                 long l_7_ = -1L;
-                if((l < aLong1593 + (long) anInt1595) && (aLong1593 + (long) anInt1595 <= (long) i + l))
+                if(l < aLong1593 + (long) anInt1595 && aLong1593 + (long) anInt1595 <= (long) i + l)
                     l_7_ = (long) anInt1595 + aLong1593;
-                else if(l + (long) i > aLong1593 && (l + (long) i <= (long) anInt1595 + aLong1593))
+                else if(l + (long) i > aLong1593 && l + (long) i <= (long) anInt1595 + aLong1593)
                     l_7_ = (long) i + l;
                 long l_8_ = -1L;
-                if(aLong1593 < l || (aLong1593 >= (long) i + l)) {
+                if(aLong1593 < l || aLong1593 >= (long) i + l) {
                     if(aLong1593 <= l && l < aLong1593 + (long) anInt1595)
                         l_8_ = l;
                 } else
                     l_8_ = aLong1593;
-                if(l_8_ > -1L && (l_7_ > l_8_)) {
+                if(l_8_ > -1L && l_7_ > l_8_) {
                     int i_9_ = (int) (-l_8_ + l_7_);
                     Class18.method278(aByteArray1592, (int) (l_8_ - aLong1593), arg3, (int) (-l + l_8_) + i_2_, i_9_);
                     if(aLong1578 < l_7_) {
@@ -245,8 +245,8 @@ public class Class67 {
             }
             aLong1596 = aLong1578;
             int i;
-            for(/**/; (anInt1589 < aByteArray1583.length); anInt1589 += i) {
-                i = aClass47_1603.method920(anInt1589, (aByteArray1583.length - anInt1589), aByteArray1583, -110);
+            for(/**/; anInt1589 < aByteArray1583.length; anInt1589 += i) {
+                i = aClass47_1603.method920(anInt1589, aByteArray1583.length - anInt1589, aByteArray1583, -110);
                 if(i == -1)
                     break;
                 aLong1600 += (long) i;
@@ -266,18 +266,18 @@ public class Class67 {
                 if(aLong1600 > aLong1604)
                     aLong1604 = aLong1600;
                 long l = -1L;
-                if(aLong1596 > aLong1593 || (aLong1596 + (long) anInt1589 <= aLong1593)) {
+                if(aLong1596 > aLong1593 || aLong1596 + (long) anInt1589 <= aLong1593) {
                     if(aLong1593 <= aLong1596 && aLong1593 + (long) anInt1595 > aLong1596)
                         l = aLong1596;
                 } else
                     l = aLong1593;
                 long l_10_ = -1L;
-                if((long) anInt1595 + aLong1593 <= aLong1596 || ((long) anInt1589 + aLong1596 < aLong1593 + (long) anInt1595)) {
-                    if((aLong1593 < (long) anInt1589 + aLong1596) && (aLong1596 + (long) anInt1589 <= (long) anInt1595 + aLong1593))
+                if((long) anInt1595 + aLong1593 <= aLong1596 || (long) anInt1589 + aLong1596 < aLong1593 + (long) anInt1595) {
+                    if(aLong1593 < (long) anInt1589 + aLong1596 && aLong1596 + (long) anInt1589 <= (long) anInt1595 + aLong1593)
                         l_10_ = (long) anInt1589 + aLong1596;
                 } else
                     l_10_ = aLong1593 + (long) anInt1595;
-                if(l > -1L && (l < l_10_)) {
+                if(l > -1L && l < l_10_) {
                     int i = (int) (-l + l_10_);
                     Class18.method278(aByteArray1592, (int) (-aLong1593 + l), aByteArray1583, (int) (l - aLong1596), i);
                 }

@@ -25,7 +25,7 @@ public abstract class Class22_Sub2 extends Class22 {
     public static IndexedImage[] method315() {
         IndexedImage[] class40_sub5_sub14_sub2s = new IndexedImage[UnderlayDefinition.anInt2581];
         for(int i = 0; UnderlayDefinition.anInt2581 > i; i++) {
-            IndexedImage class40_sub5_sub14_sub2 = (class40_sub5_sub14_sub2s[i] = new IndexedImage());
+            IndexedImage class40_sub5_sub14_sub2 = class40_sub5_sub14_sub2s[i] = new IndexedImage();
             class40_sub5_sub14_sub2.maxWidth = ItemDefinition.anInt2846;
             class40_sub5_sub14_sub2.maxHeight = GameShell.anInt31;
             class40_sub5_sub14_sub2.xDrawOffset = Class57.anIntArray1347[i];
@@ -55,8 +55,8 @@ public abstract class Class22_Sub2 extends Class22 {
         ImageRGB[] class40_sub5_sub14_sub4s = new ImageRGB[UnderlayDefinition.anInt2581];
         if(arg0 != -62)
             return null;
-        for(int i = 0; (i < UnderlayDefinition.anInt2581); i++) {
-            ImageRGB class40_sub5_sub14_sub4 = (class40_sub5_sub14_sub4s[i] = new ImageRGB());
+        for(int i = 0; i < UnderlayDefinition.anInt2581; i++) {
+            ImageRGB class40_sub5_sub14_sub4 = class40_sub5_sub14_sub4s[i] = new ImageRGB();
             class40_sub5_sub14_sub4.maxWidth = ItemDefinition.anInt2846;
             class40_sub5_sub14_sub4.maxHeight = GameShell.anInt31;
             class40_sub5_sub14_sub4.offsetX = Class57.anIntArray1347[i];
@@ -64,10 +64,10 @@ public abstract class Class22_Sub2 extends Class22 {
             class40_sub5_sub14_sub4.image_width = Class17.anIntArray456[i];
             class40_sub5_sub14_sub4.image_height = Npc.anIntArray3312[i];
             byte[] is = GroundItemTile.aByteArrayArray1370[i];
-            int i_4_ = (class40_sub5_sub14_sub4.image_height * class40_sub5_sub14_sub4.image_width);
+            int i_4_ = class40_sub5_sub14_sub4.image_height * class40_sub5_sub14_sub4.image_width;
             class40_sub5_sub14_sub4.pixels = new int[i_4_];
-            for(int i_5_ = 0; (i_5_ < i_4_); i_5_++)
-                class40_sub5_sub14_sub4.pixels[i_5_] = (Buffer.anIntArray1972[HuffmanEncoding.method1021(255, is[i_5_])]);
+            for(int i_5_ = 0; i_5_ < i_4_; i_5_++)
+                class40_sub5_sub14_sub4.pixels[i_5_] = Buffer.anIntArray1972[HuffmanEncoding.method1021(255, is[i_5_])];
         }
         ActorDefinition.method569();
         return class40_sub5_sub14_sub4s;

@@ -13,7 +13,7 @@ public class Class4 {
     public static boolean menuOpen = false;
     public static volatile long aLong174 = 0L;
     public static int anInt175 = 0;
-    public static RSString cmd_hiddenbuttontest = RSString.CreateString("::hiddenbuttontest");
+    public static String cmd_hiddenbuttontest = "::hiddenbuttontest";
     public static int[] anIntArray178;
     public static GameShell anApplet_Sub1_179 = null;
     public static RSString aClass1_180 = RSString.CreateString("wishes to trade with you)3");
@@ -47,7 +47,7 @@ public class Class4 {
             Class40_Sub3.soundDelay[index]--;
             if(Class40_Sub3.soundDelay[index] < -10) {
                 PacketBuffer.currentSound--;
-                for(int j = index; ((PacketBuffer.currentSound > j)); j++) {
+                for(int j = index; PacketBuffer.currentSound > j; j++) {
                     IdentityKit.sound[j] = IdentityKit.sound[j + 1];
                     PacketBuffer.effects[j] = PacketBuffer.effects[1 + j];
                     ItemDefinition.soundVolume[j] = ItemDefinition.soundVolume[1 + j];
@@ -58,7 +58,7 @@ public class Class4 {
             } else {
                 Effect effect = PacketBuffer.effects[index];
                 if(effect == null) {
-                    effect = Effect.method429((Actor.aClass6_Sub1_3157), (IdentityKit.sound[index]), 0);
+                    effect = Effect.method429(Actor.aClass6_Sub1_3157, IdentityKit.sound[index], 0);
                     if(effect == null)
                         continue;
                     Class40_Sub3.soundDelay[index] += effect.delay();
@@ -68,15 +68,15 @@ public class Class4 {
                     int i_10_;
                     if(Class38_Sub1.anIntArray1916[index] != 0) {
                         int i_11_ = 128 * (Class38_Sub1.anIntArray1916[index] & 0xff);
-                        int i_12_ = (0xff & Class38_Sub1.anIntArray1916[index] >> 16);
-                        int i_13_ = ((Class38_Sub1.anIntArray1916[index] & 0xffb8) >> 8);
-                        int i_14_ = (i_13_ * 128 + 64 + -(Player.localPlayer.worldY));
-                        int i_15_ = (i_12_ * 128 + (64 - (Player.localPlayer.worldX)));
+                        int i_12_ = 0xff & Class38_Sub1.anIntArray1916[index] >> 16;
+                        int i_13_ = (Class38_Sub1.anIntArray1916[index] & 0xffb8) >> 8;
+                        int i_14_ = i_13_ * 128 + 64 + -Player.localPlayer.worldY;
+                        int i_15_ = i_12_ * 128 + 64 - Player.localPlayer.worldX;
                         if(i_15_ < 0)
                             i_15_ = -i_15_;
                         if(i_14_ < 0)
                             i_14_ = -i_14_;
-                        int i_16_ = -128 + (i_15_ + i_14_);
+                        int i_16_ = -128 + i_15_ + i_14_;
                         if(i_16_ > i_11_) {
                             Class40_Sub3.soundDelay[index] = -100;
                             continue;

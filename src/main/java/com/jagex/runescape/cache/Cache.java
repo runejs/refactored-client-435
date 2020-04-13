@@ -6,12 +6,11 @@ import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.net.IncomingPackets;
 
 public class Cache {
-    public static RSString dropString = RSString.CreateString("Drop");
-    public static RSString dropStringInstance = dropString;
+    public static String dropStringInstance = "Drop";
     public static volatile int mouseButtonPressed = 0;
     public static int anInt321 = 5063219;
     public static volatile int eventMouseY = -1;
-    public static RSString aClass1_323 = (RSString.CreateString("Please check your message)2centre for details)3"));
+    public static RSString aClass1_323 = RSString.CreateString("Please check your message)2centre for details)3");
     public static int anInt324 = 0;
     public static Cache aClass9_326 = new Cache(200);
     public static String aClass1_327 = "@or1@";
@@ -30,7 +29,7 @@ public class Cache {
         anInt317 = arg0;
         int i;
         i = 1;
-        while((i + i < arg0)) {
+        while(i + i < arg0) {
             i += i;
         }
         anInt316 = arg0;
@@ -47,7 +46,6 @@ public class Cache {
     public static void method234() {
         dropStringInstance = null;
         aClass1_333 = null;
-        dropString = null;
         aClass1_332 = null;
         IncomingPackets.incomingPacketBuffer = null;
         aClass9_326 = null;

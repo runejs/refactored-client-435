@@ -29,7 +29,7 @@ public class Class38_Sub2 extends Class38 {
             Class43.method890(l_0_ / 1000000L, -86);
             long l_1_ = System.nanoTime();
             int i_2_;
-            for(i_2_ = 0; (i_2_ < 10 && (i_2_ < 1 || aLong1925 < l_1_)); i_2_++)
+            for(i_2_ = 0; i_2_ < 10 && (i_2_ < 1 || aLong1925 < l_1_); i_2_++)
                 aLong1925 += (long) arg0 * 1000000L;
             if(l_1_ > aLong1925)
                 aLong1925 = l_1_;

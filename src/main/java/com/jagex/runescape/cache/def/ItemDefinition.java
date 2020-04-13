@@ -133,11 +133,11 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
             int i_10_ = HuffmanEncoding.method1029(i, false, arg1);
             int i_11_ = arg1.alternateRhs[i];
             if(arg1.alternateOperators[i] == 2) {
-                if((i_11_ <= i_10_)) {
+                if(i_11_ <= i_10_) {
                     return false;
                 }
             } else if(arg1.alternateOperators[i] == 3) {
-                if((i_11_ >= i_10_)) {
+                if(i_11_ >= i_10_) {
                     return false;
                 }
             } else if(arg1.alternateOperators[i] == 4) {
@@ -152,7 +152,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
     }
 
     public static void method748(int arg1) {
-        for(Renderable.anInt2866 += arg1; (Renderable.anInt2866 >= CollisionMap.anInt141); Renderable.anInt2866 -= CollisionMap.anInt141) {
+        for(Renderable.anInt2866 += arg1; Renderable.anInt2866 >= CollisionMap.anInt141; Renderable.anInt2866 -= CollisionMap.anInt141) {
             SubNode.anInt2081 -= SubNode.anInt2081 >> 2;
         }
         SubNode.anInt2081 -= 1000 * arg1;
@@ -163,13 +163,13 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
 
     public static void method749(boolean arg0) {
         for(int i = 0; Player.npcCount > i; i++) {
-            Npc npc = (Player.npcs[Player.npcIds[i]]);
-            int i_15_ = (536870912 + (Player.npcIds[i] << 14));
-            if(npc != null && npc.isVisible(1) && arg0 == (npc.actorDefinition.hasRenderPriority) && npc.actorDefinition.method571(-1)) {
-                int i_16_ = (npc.worldX >> 7);
+            Npc npc = Player.npcs[Player.npcIds[i]];
+            int i_15_ = 536870912 + (Player.npcIds[i] << 14);
+            if(npc != null && npc.isVisible(1) && arg0 == npc.actorDefinition.hasRenderPriority && npc.actorDefinition.method571(-1)) {
+                int i_16_ = npc.worldX >> 7;
                 int i_17_ = npc.worldY >> 7;
                 if(i_16_ >= 0 && i_16_ < 104 && i_17_ >= 0 && i_17_ < 104) {
-                    if(npc.anInt3096 == 1 && (npc.worldX & 0x7f) == 64 && ((npc.worldY & 0x7f) == 64)) {
+                    if(npc.anInt3096 == 1 && (npc.worldX & 0x7f) == 64 && (npc.worldY & 0x7f) == 64) {
                         if(Class61.anIntArrayArray1435[i_16_][i_17_] == Class40_Sub5_Sub11.anInt2628) {
                             continue;
                         }
@@ -178,14 +178,14 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
                     if(!npc.actorDefinition.isClickable) {
                         i_15_ += -2147483648;
                     }
-                    Npc.currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY, (Class37.getFloorDrawHeight(Player.worldLevel, (npc.worldX + ((-1 + npc.anInt3096) * 64)), (npc.anInt3096 * 64 + (-64 + (npc.worldY))))), -64 + (npc.anInt3096 * 64 + 60), npc, npc.anInt3118, i_15_, npc.aBoolean3105);
+                    Npc.currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY, Class37.getFloorDrawHeight(Player.worldLevel, npc.worldX + (-1 + npc.anInt3096) * 64, npc.anInt3096 * 64 + -64 + npc.worldY), -64 + npc.anInt3096 * 64 + 60, npc, npc.anInt3118, i_15_, npc.aBoolean3105);
                 }
             }
         }
     }
 
     public static ItemDefinition forId(int id, int arg1) {
-        ItemDefinition definition = ((ItemDefinition) ISAAC.aClass9_516.get(id, (byte) 100));
+        ItemDefinition definition = (ItemDefinition) ISAAC.aClass9_516.get(id, (byte) 100);
         if(definition != null) {
             return definition;
         }
@@ -284,7 +284,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
             primary.translate(0, femaleOffset, 0);
         }
         if(originalColours != null) {
-            for(int i_8_ = 0; ((originalColours.length > i_8_)); i_8_++) {
+            for(int i_8_ = 0; originalColours.length > i_8_; i_8_++) {
                 primary.replaceColor(originalColours[i_8_], destColors[i_8_]);
             }
         }
@@ -297,7 +297,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
         if(stackIds != null && arg1 > 1) {
             int i = -1;
             for(int i_9_ = 0; i_9_ < 10; i_9_++) {
-                if((arg1 >= stackableAmounts[i_9_]) && stackableAmounts[i_9_] != 0) {
+                if(arg1 >= stackableAmounts[i_9_] && stackableAmounts[i_9_] != 0) {
                     i = stackIds[i_9_];
                 }
             }
@@ -326,7 +326,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
             primary = new Model(models, 2);
         }
         if(originalColours != null) {
-            for(int j = 0; ((originalColours.length > j)); j++) {
+            for(int j = 0; originalColours.length > j; j++) {
                 primary.replaceColor(originalColours[j], destColors[j]);
             }
         }
@@ -401,28 +401,28 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
         } else if(opcode == 93) {
             secondaryFemaleHeadPiece = buffer.getUnsignedShortBE();
         } else if(opcode == 95) {
-            zan2d = (buffer.getUnsignedShortBE());
+            zan2d = buffer.getUnsignedShortBE();
         } else if(opcode == 97) {
-            notedId = (buffer.getUnsignedShortBE());
+            notedId = buffer.getUnsignedShortBE();
         } else if(opcode == 98) {
-            noteTemplateId = (buffer.getUnsignedShortBE());
+            noteTemplateId = buffer.getUnsignedShortBE();
         } else if(opcode >= 100 && opcode < 110) {
             if(stackIds == null) {
                 stackableAmounts = new int[10];
                 stackIds = new int[10];
             }
-            stackIds[-100 + opcode] = (buffer.getUnsignedShortBE());
-            stackableAmounts[-100 + opcode] = (buffer.getUnsignedShortBE());
+            stackIds[-100 + opcode] = buffer.getUnsignedShortBE();
+            stackableAmounts[-100 + opcode] = buffer.getUnsignedShortBE();
         } else if(opcode == 110) {
-            groundScaleX = (buffer.getUnsignedShortBE());
+            groundScaleX = buffer.getUnsignedShortBE();
         } else if(opcode == 111) {
-            groundScaleY = (buffer.getUnsignedShortBE());
+            groundScaleY = buffer.getUnsignedShortBE();
         } else if(opcode == 112) {
-            groundScaleZ = (buffer.getUnsignedShortBE());
+            groundScaleZ = buffer.getUnsignedShortBE();
         } else if(opcode == 113) {
-            ambient = (buffer.getByte());
+            ambient = buffer.getByte();
         } else if(opcode == 114) {
-            contrast = ((buffer.getByte()) * 5);
+            contrast = buffer.getByte() * 5;
         } else if(opcode == 115) {
             teamIndex = buffer.getUnsignedByte();
         }
@@ -466,7 +466,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
                 return forId(id, 10).asGroundStack(arg0, 1);
             }
         }
-        Model model = ((Model) MouseHandler.modelCache.get(id, (byte) 87));
+        Model model = (Model) MouseHandler.modelCache.get(id, (byte) 87);
         if(model != null) {
             return model;
         }

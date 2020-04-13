@@ -11,46 +11,32 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.PacketBuffer;
 
 public class Class42 {
-    public static RSString aClass1_988;
-    public static RSString aClass1_989 = RSString.CreateString("We suspect someone knows your password)3");
-    public static RSString aClass1_990 = RSString.CreateString("Unable to connect)3");
+    public static RSString aClass1_988 = RSString.CreateString(" has logged in)3");
     public static byte[][][] tile_underlayids;
-    public static RSString aClass1_995 = RSString.CreateString(" has logged in)3");
-    public static RSString aClass1_997;
+    public static RSString aClass1_997 = RSString.CreateString("Unable to connect)3");
     public static Cache aClass9_998 = new Cache(100);
-    public static RSString aClass1_1000;
-    public static RSString aClass1_1001;
-    public static RSString aClass1_1002;
-    public static RSString aClass1_1005 = RSString.CreateString("Loaded config");
+    public static String aClass1_1000 = "Loaded config";
+    public static RSString aClass1_1001 = RSString.CreateString("We suspect someone knows your password)3");
+    public static RSString aClass1_1002 = RSString.CreateString("Unable to connect)3");
     public static int anInt1006 = 0;
     public static int anInt1008 = 0;
     public static int anInt1010 = 2;
-    public static RSString aClass1_1011;
-    public static RSString aClass1_1012 = RSString.CreateString("Existing user");
+    public static RSString aClass1_1011 = RSString.CreateString("Existing user");
     public static int[] anIntArray1013;
-
-    static {
-        aClass1_1001 = aClass1_989;
-        aClass1_1000 = aClass1_1005;
-        aClass1_988 = aClass1_995;
-        aClass1_1002 = aClass1_990;
-        aClass1_997 = aClass1_990;
-        aClass1_1011 = aClass1_1012;
-    }
 
     public int[] anIntArray996;
 
     public Class42(int[] arg0) {
         int i;
-        for(i = 1; (((arg0.length >> 1) + arg0.length >= i)); i <<= 1) {
+        for(i = 1; (arg0.length >> 1) + arg0.length >= i; i <<= 1) {
             /* empty */
         }
         anIntArray996 = new int[i + i];
-        for(int i_8_ = 0; (i + i > i_8_); i_8_++)
+        for(int i_8_ = 0; i + i > i_8_; i_8_++)
             anIntArray996[i_8_] = -1;
-        for(int i_9_ = 0; (arg0.length > i_9_); i_9_++) {
+        for(int i_9_ = 0; arg0.length > i_9_; i_9_++) {
             int i_10_;
-            for(i_10_ = arg0[i_9_] & i - 1; anIntArray996[i_10_ + (i_10_ + 1)] != -1; i_10_ = i_10_ + 1 & -1 + i) {
+            for(i_10_ = arg0[i_9_] & i - 1; anIntArray996[i_10_ + i_10_ + 1] != -1; i_10_ = i_10_ + 1 & -1 + i) {
                 /* empty */
             }
             anIntArray996[i_10_ + i_10_] = arg0[i_9_];
@@ -82,10 +68,8 @@ public class Class42 {
         return i_2_ >> 19 & 0xff;
     }
 
-    public static void method885(CacheIndex arg0, boolean arg1, CacheIndex arg2, int arg3) {
+    public static void method885(CacheIndex arg0, boolean arg1, CacheIndex arg2) {
         IdentityKit.membersServer = arg1;
-        if(arg3 != -313)
-            aClass1_1012 = null;
         Class8.aCacheIndex_284 = arg2;
         Class26.aCacheIndex_632 = arg0;
         ItemDefinition.count = Class26.aCacheIndex_632.method190(10);
@@ -120,14 +104,9 @@ public class Class42 {
     public static void method887() {
         aClass1_988 = null;
         aClass1_1001 = null;
-        aClass1_989 = null;
-        aClass1_1012 = null;
         aClass9_998 = null;
         anIntArray1013 = null;
         tile_underlayids = null;
-        aClass1_995 = null;
-        aClass1_990 = null;
-        aClass1_1005 = null;
         aClass1_997 = null;
         aClass1_1011 = null;
         aClass1_1002 = null;
@@ -135,7 +114,7 @@ public class Class42 {
     }
 
     public static int method888(int arg0, byte arg1, int arg2) {
-        int i = (-128 + Class4.method160(arg0 + 45365, 15177, 4, 91923 + arg2) - (-(Class4.method160(arg0 + 10294, 15177, 2, 37821 + arg2) - 128 >> 1) + -(-128 + Class4.method160(arg0, 15177, 1, arg2) >> 2)));
+        int i = -128 + Class4.method160(arg0 + 45365, 15177, 4, 91923 + arg2) - (-(Class4.method160(arg0 + 10294, 15177, 2, 37821 + arg2) - 128 >> 1) + -(-128 + Class4.method160(arg0, 15177, 1, arg2) >> 2));
         i = 35 + (int) (0.3 * (double) i);
         if(arg1 != -45)
             return -24;

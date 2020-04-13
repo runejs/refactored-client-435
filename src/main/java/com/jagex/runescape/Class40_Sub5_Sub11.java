@@ -5,7 +5,7 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 
 public class Class40_Sub5_Sub11 extends SubNode {
-    public static RSString aClass1_2620 = RSString.CreateString("yellow:");
+    public static String aClass1_2620 = "yellow:";
     public static int anInt2621 = 0;
     public static RSString aClass1_2622 = RSString.CreateString("Hide");
     public static volatile int eventClickY = 0;
@@ -17,7 +17,7 @@ public class Class40_Sub5_Sub11 extends SubNode {
     public int anInt2633 = 0;
 
     public static void method631(Actor arg0, boolean arg1) {
-        int i = arg0.anInt3125 * 128 + (64 * arg0.anInt3096);
+        int i = arg0.anInt3125 * 128 + 64 * arg0.anInt3096;
         int i_0_ = arg0.anInt3112 + -Node.pulseCycle;
         if(arg0.anInt3073 == 0)
             arg0.anInt3080 = 1024;

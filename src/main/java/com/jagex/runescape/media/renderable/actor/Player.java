@@ -18,12 +18,12 @@ import com.jagex.runescape.scene.tile.WallDecoration;
 import java.awt.*;
 
 public class Player extends Actor {
-    public static RSString aClass1_3256 = RSString.CreateString("green:");
+    public static String aClass1_3256 = "green:";
     public static int anInt3264 = 0;
     public static int worldLevel;
     public static byte[] aByteArray3270;
     public static int[] anIntArray3284;
-    public static RSString aClass1_3286 = RSString.CreateString("Try again in 60 secs)3)3)3");
+    public static RSString aClass1_3286 = RSString.CreateString("Try again in 60 secs...");
     public static int anInt3288 = 0;
     public static Player localPlayer;
     public static int[] actorUpdatingIndices = new int[2048];
@@ -130,8 +130,8 @@ public class Player extends Actor {
             player.anInt3081 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             player.anInt3099 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             player.anInt3127 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            player.anInt3112 = (IncomingPackets.incomingPacketBuffer.getUnsignedShortBE() + pulseCycle);
-            player.anInt3107 = (IncomingPackets.incomingPacketBuffer.getUnsignedShortLE() + pulseCycle);
+            player.anInt3112 = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE() + pulseCycle;
+            player.anInt3107 = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE() + pulseCycle;
             player.anInt3073 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             player.method790(0);
         }
@@ -206,10 +206,10 @@ public class Player extends Actor {
     public static void parseTrackedPlayerUpdateMasks() {
         for(int i = 0; i < actorUpdatingIndex; i++) {
             int trackedPlayerIndex = actorUpdatingIndices[i];
-            Player player = (trackedPlayers[trackedPlayerIndex]);
+            Player player = trackedPlayers[trackedPlayerIndex];
             int mask = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             if((mask & 0x2) != 0)
-                mask += (IncomingPackets.incomingPacketBuffer.getUnsignedByte() << 8);
+                mask += IncomingPackets.incomingPacketBuffer.getUnsignedByte() << 8;
             parsePlayerUpdateMasks(player, mask, trackedPlayerIndex);
         }
     }
@@ -257,9 +257,9 @@ public class Player extends Actor {
         if(localPlayerCount < trackedPlayerCount)
             throw new RuntimeException("gppov1");
         localPlayerCount = 0;
-        for(int i = 0; (trackedPlayerCount > i); i++) {
+        for(int i = 0; trackedPlayerCount > i; i++) {
             int trackedPlayerIndex = trackedPlayerIndices[i];
-            Player player = (trackedPlayers[trackedPlayerIndex]);
+            Player player = trackedPlayers[trackedPlayerIndex];
             int updateRequired = IncomingPackets.incomingPacketBuffer.getBits(1);
             if(updateRequired == 0) {
                 trackedPlayerIndices[localPlayerCount++] = trackedPlayerIndex;
@@ -300,14 +300,14 @@ public class Player extends Actor {
             if(newPlayerIndex == 2047)
                 break;
             boolean bool = false;
-            if((trackedPlayers[newPlayerIndex]) == null) {
+            if(trackedPlayers[newPlayerIndex] == null) {
                 trackedPlayers[newPlayerIndex] = new Player();
                 if(trackedPlayerAppearanceCache[newPlayerIndex] != null)
                     trackedPlayers[newPlayerIndex].parsePlayerAppearanceData(trackedPlayerAppearanceCache[newPlayerIndex]);
                 bool = true;
             }
             trackedPlayerIndices[localPlayerCount++] = newPlayerIndex;
-            Player player = (trackedPlayers[newPlayerIndex]);
+            Player player = trackedPlayers[newPlayerIndex];
             player.anInt3134 = pulseCycle;
             int offsetX = IncomingPackets.incomingPacketBuffer.getBits(5);
             int offsetY = IncomingPackets.incomingPacketBuffer.getBits(5);
@@ -316,14 +316,14 @@ public class Player extends Actor {
             if(offsetY > 15)
                 offsetY -= 32;
             int initialFaceDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-            int faceDirection = (Class40_Sub5_Sub17_Sub1.directions[initialFaceDirection]);
+            int faceDirection = Class40_Sub5_Sub17_Sub1.directions[initialFaceDirection];
             if(bool)
                 player.anInt3080 = faceDirection;
             int updateRequired = IncomingPackets.incomingPacketBuffer.getBits(1);
             int discardWalkingQueue = IncomingPackets.incomingPacketBuffer.getBits(1);
             if(discardWalkingQueue == 1)
                 actorUpdatingIndices[actorUpdatingIndex++] = newPlayerIndex;
-            player.method787(offsetY + (localPlayer.pathX[0]), -7717, updateRequired == 1, (localPlayer.pathY[0]) + offsetX);
+            player.method787(offsetY + localPlayer.pathX[0], -7717, updateRequired == 1, localPlayer.pathY[0] + offsetX);
         }
         IncomingPackets.incomingPacketBuffer.finishBitAccess();
 
@@ -331,8 +331,8 @@ public class Player extends Actor {
 
     public static void setTutorialIslandFlag() {
         Class4.inTutorialIsland = false;
-        int xPos = (((localPlayer.worldX) >> 7) + SpotAnimDefinition.baseX);
-        int yPos = (Class26.baseY + ((localPlayer.worldY) >> 7));
+        int xPos = (localPlayer.worldX >> 7) + SpotAnimDefinition.baseX;
+        int yPos = Class26.baseY + (localPlayer.worldY >> 7);
         if(xPos >= 3053 && xPos <= 3156 && yPos >= 3056 && yPos <= 3136)
             Class4.inTutorialIsland = true;
         if(xPos >= 3072 && xPos <= 3118 && yPos >= 9492 && yPos <= 9535)
@@ -344,8 +344,8 @@ public class Player extends Actor {
     public Model getRotatedModel(int arg0) {
         if(aClass30_3282 == null)
             return null;
-        AnimationSequence animationSequence = (playingAnimation == -1 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2));
-        AnimationSequence animationSequence_0_ = ((anInt3077 != -1 && !aBoolean3287 && (idleAnimation != anInt3077 || animationSequence == null)) ? Class68_Sub1.method1050(anInt3077, 2) : null);
+        AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2);
+        AnimationSequence animationSequence_0_ = anInt3077 != -1 && !aBoolean3287 && (idleAnimation != anInt3077 || animationSequence == null) ? Class68_Sub1.method1050(anInt3077, 2) : null;
         Model class40_sub5_sub17_sub5 = aClass30_3282.getAnimatedModel(animationSequence, animationSequence_0_, anInt3116, anInt3104, (byte) -128);
         if(class40_sub5_sub17_sub5 == null)
             return null;
@@ -429,7 +429,7 @@ public class Player extends Actor {
         int[] appearanceColors = new int[5];
         for(int l = 0; l < 5; l++) {
             int j1 = buffer.getUnsignedByte();
-            if(j1 < 0 || ((Class40_Sub5_Sub17_Sub6.playerColours[l]).length <= j1))
+            if(j1 < 0 || Class40_Sub5_Sub17_Sub6.playerColours[l].length <= j1)
                 j1 = 0;
             appearanceColors[l] = j1;
         }

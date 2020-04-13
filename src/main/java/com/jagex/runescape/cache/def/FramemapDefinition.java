@@ -46,7 +46,7 @@ public class FramemapDefinition extends Node {
 
     public static ImageRGB method876(int arg1, int arg2, int arg3) {
         if(arg3 == 0) {
-            ImageRGB class40_sub5_sub14_sub4 = ((ImageRGB) Buffer.aClass9_1933.get((long) arg2, (byte) 56));
+            ImageRGB class40_sub5_sub14_sub4 = (ImageRGB) Buffer.aClass9_1933.get((long) arg2, (byte) 56);
             if(class40_sub5_sub14_sub4 != null && class40_sub5_sub14_sub4.maxHeight != arg1 && class40_sub5_sub14_sub4.maxHeight != -1) {
                 class40_sub5_sub14_sub4.method457(-1);
                 class40_sub5_sub14_sub4 = null;
@@ -95,20 +95,20 @@ public class FramemapDefinition extends Node {
         if(arg3 > 0)
             i_11_ *= 1.04;
         Rasterizer3D.notTextured = false;
-        int i_12_ = ((Rasterizer3D.sinetable[class40_sub5_sub16.xan2d]) * i_11_ >> 16);
-        int i_13_ = (i_11_ * (Rasterizer3D.cosinetable[class40_sub5_sub16.xan2d]) >> 16);
+        int i_12_ = Rasterizer3D.sinetable[class40_sub5_sub16.xan2d] * i_11_ >> 16;
+        int i_13_ = i_11_ * Rasterizer3D.cosinetable[class40_sub5_sub16.xan2d] >> 16;
         class40_sub5_sub17_sub5.method799();
-        class40_sub5_sub17_sub5.method812(0, class40_sub5_sub16.yan2d, class40_sub5_sub16.zan2d, class40_sub5_sub16.xan2d, class40_sub5_sub16.xOffset2d, (class40_sub5_sub16.yOffset2d + class40_sub5_sub17_sub5.modelHeight / 2 + i_12_), i_13_ + class40_sub5_sub16.yOffset2d);
+        class40_sub5_sub17_sub5.method812(0, class40_sub5_sub16.yan2d, class40_sub5_sub16.zan2d, class40_sub5_sub16.xan2d, class40_sub5_sub16.xOffset2d, class40_sub5_sub16.yOffset2d + class40_sub5_sub17_sub5.modelHeight / 2 + i_12_, i_13_ + class40_sub5_sub16.yOffset2d);
         for(int i_14_ = 31; i_14_ >= 0; i_14_--) {
             for(i_13_ = 31; i_13_ >= 0; i_13_--) {
-                if((class40_sub5_sub14_sub4_10_.pixels[i_14_ + 32 * i_13_]) == 0) {
-                    if(i_14_ > 0 && (class40_sub5_sub14_sub4_10_.pixels[i_13_ * 32 + (-1 + i_14_)]) > 1)
+                if(class40_sub5_sub14_sub4_10_.pixels[i_14_ + 32 * i_13_] == 0) {
+                    if(i_14_ > 0 && class40_sub5_sub14_sub4_10_.pixels[i_13_ * 32 + -1 + i_14_] > 1)
                         class40_sub5_sub14_sub4_10_.pixels[i_13_ * 32 + i_14_] = 1;
-                    else if(i_13_ > 0 && (class40_sub5_sub14_sub4_10_.pixels[i_14_ + ((i_13_ + -1) * 32)]) > 1)
+                    else if(i_13_ > 0 && class40_sub5_sub14_sub4_10_.pixels[i_14_ + (i_13_ + -1) * 32] > 1)
                         class40_sub5_sub14_sub4_10_.pixels[i_13_ * 32 + i_14_] = 1;
-                    else if(i_14_ < 31 && (class40_sub5_sub14_sub4_10_.pixels[i_13_ * 32 + i_14_ + 1]) > 1)
+                    else if(i_14_ < 31 && class40_sub5_sub14_sub4_10_.pixels[i_13_ * 32 + i_14_ + 1] > 1)
                         class40_sub5_sub14_sub4_10_.pixels[i_14_ + i_13_ * 32] = 1;
-                    else if(i_13_ < 31 && (class40_sub5_sub14_sub4_10_.pixels[(i_13_ + 1) * 32 + i_14_]) > 1)
+                    else if(i_13_ < 31 && class40_sub5_sub14_sub4_10_.pixels[(i_13_ + 1) * 32 + i_14_] > 1)
                         class40_sub5_sub14_sub4_10_.pixels[i_14_ + 32 * i_13_] = 1;
                 }
             }
@@ -116,24 +116,24 @@ public class FramemapDefinition extends Node {
         if(arg3 > 0) {
             for(int i_15_ = 31; i_15_ >= 0; i_15_--) {
                 for(i_13_ = 31; i_13_ >= 0; i_13_--) {
-                    if((class40_sub5_sub14_sub4_10_.pixels[i_15_ + (i_13_ * 32)]) == 0) {
-                        if(i_15_ > 0 && (class40_sub5_sub14_sub4_10_.pixels[32 * i_13_ + (-1 + i_15_)]) == 1)
+                    if(class40_sub5_sub14_sub4_10_.pixels[i_15_ + i_13_ * 32] == 0) {
+                        if(i_15_ > 0 && class40_sub5_sub14_sub4_10_.pixels[32 * i_13_ + -1 + i_15_] == 1)
                             class40_sub5_sub14_sub4_10_.pixels[i_15_ + i_13_ * 32] = arg3;
-                        else if(i_13_ <= 0 || (class40_sub5_sub14_sub4_10_.pixels[i_15_ + ((i_13_ + -1) * 32)]) != 1) {
-                            if(i_15_ >= 31 || (class40_sub5_sub14_sub4_10_.pixels[1 + i_15_ + (i_13_ * 32)]) != 1) {
-                                if(i_13_ < 31 && (class40_sub5_sub14_sub4_10_.pixels[i_15_ + (32 + 32 * i_13_)]) == 1)
+                        else if(i_13_ <= 0 || class40_sub5_sub14_sub4_10_.pixels[i_15_ + (i_13_ + -1) * 32] != 1) {
+                            if(i_15_ >= 31 || class40_sub5_sub14_sub4_10_.pixels[1 + i_15_ + i_13_ * 32] != 1) {
+                                if(i_13_ < 31 && class40_sub5_sub14_sub4_10_.pixels[i_15_ + 32 + 32 * i_13_] == 1)
                                     class40_sub5_sub14_sub4_10_.pixels[i_13_ * 32 + i_15_] = arg3;
                             } else
-                                class40_sub5_sub14_sub4_10_.pixels[i_15_ + (i_13_ * 32)] = arg3;
+                                class40_sub5_sub14_sub4_10_.pixels[i_15_ + i_13_ * 32] = arg3;
                         } else
-                            class40_sub5_sub14_sub4_10_.pixels[i_15_ + (i_13_ * 32)] = arg3;
+                            class40_sub5_sub14_sub4_10_.pixels[i_15_ + i_13_ * 32] = arg3;
                     }
                 }
             }
         } else if(arg3 == 0) {
             for(int i_16_ = 31; i_16_ >= 0; i_16_--) {
                 for(i_13_ = 31; i_13_ >= 0; i_13_--) {
-                    if((class40_sub5_sub14_sub4_10_.pixels[i_13_ * 32 + i_16_]) == 0 && i_16_ > 0 && i_13_ > 0 && (class40_sub5_sub14_sub4_10_.pixels[i_16_ - (1 + -((-1 + i_13_) * 32))]) > 0)
+                    if(class40_sub5_sub14_sub4_10_.pixels[i_13_ * 32 + i_16_] == 0 && i_16_ > 0 && i_13_ > 0 && class40_sub5_sub14_sub4_10_.pixels[i_16_ - (1 + -((-1 + i_13_) * 32))] > 0)
                         class40_sub5_sub14_sub4_10_.pixels[i_16_ + 32 * i_13_] = 3153952;
                 }
             }
@@ -180,9 +180,9 @@ public class FramemapDefinition extends Node {
         if(!Class68.method1043(i))
             return null;
         if(arg1.anInt2738 >= 0)
-            return (Widget.interfaces[i][0xffff & arg1.anInt2738]);
-        Widget widget = (Widget.interfaces[i][(0x7fff99d9 & arg1.anInt2738) >> 15]);
-        return (widget.aWidgetArray2713[arg1.anInt2738 & 0x7fff]);
+            return Widget.interfaces[i][0xffff & arg1.anInt2738];
+        Widget widget = Widget.interfaces[i][(0x7fff99d9 & arg1.anInt2738) >> 15];
+        return widget.aWidgetArray2713[arg1.anInt2738 & 0x7fff];
     }
 
     public static void method879(IndexedImage arg1) {
@@ -195,10 +195,10 @@ public class FramemapDefinition extends Node {
             Landscape.anIntArray1168[i_21_] = (int) (256.0 * Math.random());
         }
         for(int i_22_ = 0; i_22_ < 20; i_22_++) {
-            for(int i_23_ = 1; (-1 + i_19_ > i_23_); i_23_++) {
+            for(int i_23_ = 1; -1 + i_19_ > i_23_; i_23_++) {
                 for(int i_24_ = 1; i_24_ < 127; i_24_++) {
                     int i_25_ = (i_23_ << 7) + i_24_;
-                    Class61.anIntArray1445[i_25_] = (Landscape.anIntArray1168[i_25_ - 128] + Landscape.anIntArray1168[i_25_ + -1] + (Landscape.anIntArray1168[i_25_ + 1] + Landscape.anIntArray1168[128 + i_25_])) / 4;
+                    Class61.anIntArray1445[i_25_] = (Landscape.anIntArray1168[i_25_ - 128] + Landscape.anIntArray1168[i_25_ + -1] + Landscape.anIntArray1168[i_25_ + 1] + Landscape.anIntArray1168[128 + i_25_]) / 4;
                 }
             }
             int[] is = Landscape.anIntArray1168;
@@ -208,10 +208,10 @@ public class FramemapDefinition extends Node {
         if(arg1 != null) {
             int i_26_ = 0;
             for(int i_27_ = 0; arg1.imgHeight > i_27_; i_27_++) {
-                for(int i_28_ = 0; (i_28_ < arg1.imgWidth); i_28_++) {
+                for(int i_28_ = 0; i_28_ < arg1.imgWidth; i_28_++) {
                     if(arg1.imgPixels[i_26_++] != 0) {
                         int i_29_ = arg1.yDrawOffset + i_27_ + 16;
-                        int i_30_ = arg1.xDrawOffset + (i_28_ + 16);
+                        int i_30_ = arg1.xDrawOffset + i_28_ + 16;
                         int i_31_ = i_30_ + (i_29_ << 7);
                         Landscape.anIntArray1168[i_31_] = 0;
                     }
@@ -221,18 +221,18 @@ public class FramemapDefinition extends Node {
     }
 
     public static void spawnGroundItem(int arg1, int arg2) {
-        LinkedList linkedList = (Wall.groundItems[Player.worldLevel][arg2][arg1]);
+        LinkedList linkedList = Wall.groundItems[Player.worldLevel][arg2][arg1];
         if(linkedList == null)
             Npc.currentScene.method125(Player.worldLevel, arg2, arg1);
         else {
             int i = -99999999;
             Item item = null;
-            for(Item item_32_ = ((Item) linkedList.method902((byte) -90)); item_32_ != null; item_32_ = (Item) linkedList.method909(-4)) {
-                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId((item_32_.itemId), 10);
+            for(Item item_32_ = (Item) linkedList.method902((byte) -90); item_32_ != null; item_32_ = (Item) linkedList.method909(-4)) {
+                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(item_32_.itemId, 10);
                 int i_33_ = class40_sub5_sub16.cost;
                 if(class40_sub5_sub16.stackable == 1)
                     i_33_ *= item_32_.itemCount + 1;
-                if((i_33_ > i)) {
+                if(i_33_ > i) {
                     i = i_33_;
                     item = item_32_;
                 }
@@ -243,16 +243,16 @@ public class FramemapDefinition extends Node {
                 Item item_34_ = null;
                 Item item_35_ = null;
                 linkedList.method905(0, item);
-                for(Item item_36_ = ((Item) linkedList.method902((byte) -90)); item_36_ != null; item_36_ = ((Item) linkedList.method909(-4))) {
+                for(Item item_36_ = (Item) linkedList.method902((byte) -90); item_36_ != null; item_36_ = (Item) linkedList.method909(-4)) {
                     if(item.itemId != item_36_.itemId) {
                         if(item_35_ == null)
                             item_35_ = item_36_;
-                        if((item_35_.itemId != item_36_.itemId) && item_34_ == null)
+                        if(item_35_.itemId != item_36_.itemId && item_34_ == null)
                             item_34_ = item_36_;
                     }
                 }
                 int i_37_ = 1610612736 + (arg1 << 7) + arg2;
-                Npc.currentScene.addGroundItemTile(arg2, arg1, Player.worldLevel, Class37.getFloorDrawHeight((Player.worldLevel), 64 + 128 * arg2, 64 + 128 * arg1), i_37_, item, item_35_, item_34_);
+                Npc.currentScene.addGroundItemTile(arg2, arg1, Player.worldLevel, Class37.getFloorDrawHeight(Player.worldLevel, 64 + 128 * arg2, 64 + 128 * arg1), i_37_, item, item_35_, item_34_);
             }
         }
 

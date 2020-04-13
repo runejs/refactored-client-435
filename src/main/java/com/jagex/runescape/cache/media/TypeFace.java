@@ -20,7 +20,7 @@ import java.util.Random;
 import static com.jagex.runescape.Class40_Sub5_Sub13.moderatorIcon;
 
 public class TypeFace extends Rasterizer {
-    private RSString[] aClass1Array2897 = new RSString[100];
+    private String[] aClass1Array2897 = new String[100];
     private RSString col_cyan = RSString.CreateString("cya");
     private RSString col_light_orange = RSString.CreateString("or1");
     private RSString col_blue = RSString.CreateString("blu");
@@ -115,7 +115,7 @@ public class TypeFace extends Rasterizer {
     }
 
     public static TypeFace constructFont() {
-        TypeFace class40_sub5_sub14_sub1 = new TypeFace((Actor.anIntArray3111), Class17.anIntArray456, (Npc.anIntArray3312), Buffer.anIntArray1972, GroundItemTile.aByteArrayArray1370);
+        TypeFace class40_sub5_sub14_sub1 = new TypeFace(Actor.anIntArray3111, Class17.anIntArray456, Npc.anIntArray3312, Buffer.anIntArray1972, GroundItemTile.aByteArrayArray1370);
         ActorDefinition.method569();
         return class40_sub5_sub14_sub1;
     }
@@ -173,15 +173,16 @@ public class TypeFace extends Rasterizer {
     }
 
 
-    public void drawText(RSString text, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, int arg7, int arg8, int arg9) {
+    public void drawText(String text, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, int arg7, int arg8, int arg9) {
         // this function seems like a general draw all, mostly used for interfaces
         if(text != null) {
+            System.out.println(text);
             int i = 0;
             int i_3_ = 0;
-            RSString resultText = RSString.createString(100);
+            String resultText = "";
             int i_4_ = -1;
             int i_5_ = 0;
-            RSString stylingTag = null;
+            String stylingTag = null;
             TextTagQueue stylingQueue = new TextTagQueue();
             if(arg9 == 0)
                 arg9 = anInt2920;
@@ -196,7 +197,7 @@ public class TypeFace extends Rasterizer {
                 if(character == 60) { // 60 = <
                     index = idx;
                 } else if(character == 62 && index != -1) { // 62 == >
-                    String effect = text.toString().substring(index + 1, idx);
+                    String effect = text.substring(index + 1, idx);
                     int oldindex = index;
                     index = -1;
                     if(effect.equals(lessThan)) {
@@ -226,7 +227,7 @@ public class TypeFace extends Rasterizer {
                             }
                             if(effect.startsWith(endColor, 0)) {
                                 stylingTag = text.substring(oldindex, idx + 1);
-                                resultText.add(stylingTag);
+                                resultText = stylingTag + resultText;
                                 stylingQueue.pop();
                                 stylingTag = null;
                             }
@@ -237,7 +238,8 @@ public class TypeFace extends Rasterizer {
                 }
                 if(character == 64 && idx + 4 < length && text.charAt(idx + 4) == 64) { // 64 = @
                     stylingTag = text.substring(idx, idx + 5);
-                    resultText.add(stylingTag);
+                    resultText = stylingTag + resultText;
+
                     idx += 4;
                 } else if(character == 92 && idx + 1 < length && text.charAt(idx + 1) == 110) { // 92 = \ 110 = n
                     stylingTag = null;
@@ -247,7 +249,7 @@ public class TypeFace extends Rasterizer {
                     i_4_ = -1;
                     idx++;
                 } else if(index == -1) {
-                    resultText.method78(character);
+                    resultText = resultText + (char) character;
                     i += method689(character);
                     if(character == 32 || character == 45) { // 32 = Space 45 == -
                         i_4_ = resultText.length();
@@ -259,15 +261,17 @@ public class TypeFace extends Rasterizer {
                         i_4_ = -1;
                         i -= i_5_;
                         if(!stylingQueue.isEmpty() && i_3_ > 4) {
-                            stylingQueue.applyAll(resultText);
+                            resultText = stylingQueue.applyAll(resultText);
                         } else if(stylingTag != null && i_3_ > 4) {
                             i_3_ -= 5;
-                            resultText.prepend(stylingTag, i_3_);
+                            resultText = stylingTag + resultText;
+//                            resultText.prepend(stylingTag, i_3_);
                         }
                     }
                 }
             }
             int strlenght = this.getStringTextWidth(resultText.toString());
+
             if(strlenght > i_3_)
                 aClass1Array2897[i_7_++] = resultText.substring(i_3_, resultText.length()).trim();
             if(arg8 == 3 && i_7_ == 1)
@@ -280,7 +284,7 @@ public class TypeFace extends Rasterizer {
             else if(arg8 == 2)
                 i_11_ = arg2 + arg4 - anInt2919 - (i_7_ - 1) * arg9;
             else {
-                int i_12_ = ((arg4 - anInt2920 - anInt2919 - (i_7_ - 1) * arg9) / (i_7_ + 1));
+                int i_12_ = (arg4 - anInt2920 - anInt2919 - (i_7_ - 1) * arg9) / (i_7_ + 1);
                 if(i_12_ < 0)
                     i_12_ = 0;
                 i_11_ = arg2 + anInt2920 + i_12_;
@@ -288,18 +292,24 @@ public class TypeFace extends Rasterizer {
             }
             for(int i_13_ = 0; i_13_ < i_7_; i_13_++) {
                 if(arg7 == 0)
-                    drawShadowedString(aClass1Array2897[i_13_], arg1, i_11_, arg5, arg6);
-                else if(arg7 == 1)
-                    method688(aClass1Array2897[i_13_], arg1 + arg3 / 2, i_11_, arg5, arg6);
-                else if(arg7 == 2)
-                    method677(aClass1Array2897[i_13_], arg1 + arg3, i_11_, arg5, arg6);
+                    drawShadowedString(aClass1Array2897[i_13_], arg1, i_11_, arg6, arg5);
+                else if(arg7 == 1) {
+                    drawShadowedStringCenter(aClass1Array2897[i_13_], arg1 + arg3 / 2, i_11_, arg5, arg6);
+                } else if(arg7 == 2)
+                    drawShadowedStringRight(aClass1Array2897[i_13_], arg1 + arg3, i_11_, arg5, arg6);
                 else if(i_13_ == i_7_ - 1)
-                    drawShadowedString(aClass1Array2897[i_13_], arg1, i_11_, arg5, arg6);
-                else
-                    method680(aClass1Array2897[i_13_], arg1, i_11_, arg5, arg6, arg3);
+                    drawShadowedString(aClass1Array2897[i_13_], arg1, i_11_, arg6, arg5);
+                else {
+                    System.out.println("Using Wierd print");
+//                    method680(aClass1Array2897[i_13_], arg1, i_11_, arg5, arg6, arg3);
+                }
                 i_11_ += arg9;
             }
         }
+    }
+
+    public void drawText(RSString text, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, int arg7, int arg8, int arg9) {
+        drawText(text.toString(), arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
     }
 
     public void drawCenteredStringWaveY(RSString arg0, int x, int y, int wave, int colour) {
@@ -310,8 +320,12 @@ public class TypeFace extends Rasterizer {
         this.drawCenteredStringWaveXY(string.toString(), x, y, wave, colour);
     }
 
-    public void method677(RSString arg0, int arg1, int arg2, int arg3, boolean arg4) {
-        drawShadowedString(arg0, arg1 - getTextDisplayedWidth(arg0), arg2, arg3, arg4);
+    public void drawShadowedStringRight(RSString arg0, int arg1, int arg2, int arg3, boolean arg4) {
+        drawShadowedString(arg0, arg1 - getTextDisplayedWidth(arg0), arg2, arg4, arg3);
+    }
+
+    public void drawShadowedStringRight(String arg0, int arg1, int arg2, int arg3, boolean arg4) {
+        drawShadowedString(arg0, arg1 - getTextDisplayedWidth(arg0), arg2, arg4, arg3);
     }
 
     public void drawCenteredStringWaveXYMove(RSString string, int x, int y, int colour, int waveAmount, int waveSpeed) {
@@ -364,8 +378,12 @@ public class TypeFace extends Rasterizer {
         return this.getStringWidth(string.toString());
     }
 
+    public int getTextDisplayedWidth(String string) {
+        return this.getStringWidth(string);
+    }
 
-    public void drawShadowedString(RSString string, int x, int y, int colour, boolean shadowed) {
+
+    public void drawShadowedString(RSString string, int x, int y, boolean shadowed, int colour) {
         drawShadowedString(string.toString(), x, y, shadowed, colour);
     }
 
@@ -385,8 +403,12 @@ public class TypeFace extends Rasterizer {
         drawString(arg0, arg1 - getStringWidth(arg0), arg2, arg3);
     }
 
-    public void method688(RSString arg0, int arg1, int arg2, int arg3, boolean arg4) {
-        drawShadowedString(arg0, arg1 - getTextDisplayedWidth(arg0) / 2, arg2, arg3, arg4);
+    public void drawShadowedStringCenter(RSString arg0, int arg1, int arg2, int arg3, boolean arg4) {
+        drawShadowedString(arg0, arg1 - getTextDisplayedWidth(arg0) / 2, arg2, arg4, arg3);
+    }
+
+    public void drawShadowedStringCenter(String arg0, int arg1, int arg2, int arg3, boolean arg4) {
+        drawShadowedString(arg0, arg1 - getStringWidth(arg0) / 2, arg2, arg4, arg3);
     }
 
     public int method689(int arg0) {
@@ -782,7 +804,7 @@ public class TypeFace extends Rasterizer {
             rasterizerPixel += offsetY * Rasterizer.destinationWidth;
         }
         if(y + height >= Rasterizer.viewportBottom)
-            height -= ((y + height) - Rasterizer.viewportBottom) + 1;
+            height -= y + height - Rasterizer.viewportBottom + 1;
         if(x < Rasterizer.viewportLeft) {
             int offsetX = Rasterizer.viewportLeft - x;
             width -= offsetX;
@@ -793,7 +815,7 @@ public class TypeFace extends Rasterizer {
             remainingWidth += offsetX;
         }
         if(x + width >= Rasterizer.viewportRight) {
-            int endOffsetX = ((x + width) - Rasterizer.viewportRight) + 1;
+            int endOffsetX = x + width - Rasterizer.viewportRight + 1;
             width -= endOffsetX;
             characterPixelOffset += endOffsetX;
             remainingWidth += endOffsetX;
@@ -1234,7 +1256,7 @@ public class TypeFace extends Rasterizer {
             rasterizerPixel += yOffset * Rasterizer.destinationWidth;
         }
         if(y + height >= Rasterizer.viewportBottom)
-            height -= ((y + height) - Rasterizer.viewportBottom) + 1;
+            height -= y + height - Rasterizer.viewportBottom + 1;
         if(x < Rasterizer.viewportLeft) {
             int xOffset = Rasterizer.viewportLeft - x;
             width -= xOffset;
@@ -1245,7 +1267,7 @@ public class TypeFace extends Rasterizer {
             rasterizerPixelOffset += xOffset;
         }
         if(x + width >= Rasterizer.viewportRight) {
-            int widthoffset = ((x + width) - Rasterizer.viewportRight) + 1;
+            int widthoffset = x + width - Rasterizer.viewportRight + 1;
             width -= widthoffset;
             characterPixelOffset += widthoffset;
             rasterizerPixelOffset += widthoffset;

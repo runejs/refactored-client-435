@@ -84,13 +84,13 @@ public class Class64 implements Runnable {
         if (Class8.itemSelected == 0 && Main.widgetSelected == 0) {
             String examineText = "";
             if (Configuration.DEBUG_CONTEXT) {
-                examineText = MessageFormat.format("<col=8F8FFF>(X{0})1 {1}(Y</col>", Integer.toString(Scene.hoveredTileX + SpotAnimDefinition.baseX), Integer.toString(Scene.hoveredTileY + Class26.baseY));
+                examineText = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Scene.hoveredTileX + SpotAnimDefinition.baseX), Integer.toString(Scene.hoveredTileY + Class26.baseY));
             }
 
             OverlayDefinition.addActionRow(English.walkHere, 0, Class13.mouseX, Landscape.mouseY, 7, examineText);
         }
 
-        for (int idx = 0; ((Model.resourceCount > idx)); idx++) {
+        for (int idx = 0; Model.resourceCount > idx; idx++) {
             int hash = Model.hoveredHash[idx];
             int x = 0x7f & hash;
             int y = hash >> 7 & 0x7f;
@@ -98,14 +98,14 @@ public class Class64 implements Runnable {
             int index = (hash & 0x1fffcccc) >> 14;
             if (lasthash != hash) {
                 lasthash = hash;
-                if (type == 2 && (Npc.currentScene.getArrangement(Player.worldLevel, x, y, hash)) >= 0) {
+                if (type == 2 && Npc.currentScene.getArrangement(Player.worldLevel, x, y, hash) >= 0) {
                     GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(index);
                     if (gameObjectDefinition.configChangeDest != null)
                         gameObjectDefinition = gameObjectDefinition.getChildDefinition(-20);
                     if (gameObjectDefinition == null)
                         continue;
                     if (Class8.itemSelected == 1) {
-                        OverlayDefinition.addActionRow(Main.aClass1_1763, hash, x, y, 5, (Npc.aClass1_3295 +Class40_Sub5_Sub1.aClass1_2277 + gameObjectDefinition.name));
+                        OverlayDefinition.addActionRow(Main.aClass1_1763, hash, x, y, 5, Npc.aClass1_3295 +Class40_Sub5_Sub1.aClass1_2277 + gameObjectDefinition.name);
                     } else if (Main.widgetSelected != 1) {
                         String[] options = gameObjectDefinition.actions;
                         if (Class60.aBoolean1402)
@@ -134,42 +134,42 @@ public class Class64 implements Runnable {
                     }
                 }
                 if (type == 1) {
-                    Npc npc = (Player.npcs[index]);
-                    if ((npc.actorDefinition.boundaryDimension) == 1 && ((npc.worldX & 0x7f) == 64) && ((0x7f & npc.worldY) == 64)) {
-                        for (int i_9_ = 0; ((Player.npcCount > i_9_)); i_9_++) {
-                            Npc npc1 = (Player.npcs[Player.npcIds[i_9_]]);
-                            if (npc1 != null && (npc1 != npc) && (npc1.actorDefinition.boundaryDimension) == 1 && ((npc1.worldX) == npc.worldX) && ((npc1.worldY) == (npc.worldY)))
+                    Npc npc = Player.npcs[index];
+                    if (npc.actorDefinition.boundaryDimension == 1 && (npc.worldX & 0x7f) == 64 && (0x7f & npc.worldY) == 64) {
+                        for (int i_9_ = 0; Player.npcCount > i_9_; i_9_++) {
+                            Npc npc1 = Player.npcs[Player.npcIds[i_9_]];
+                            if (npc1 != null && npc1 != npc && npc1.actorDefinition.boundaryDimension == 1 && npc1.worldX == npc.worldX && npc1.worldY == npc.worldY)
                                 HuffmanEncoding.processNpcMenuOptions(npc1.actorDefinition, x, y, Player.npcIds[i_9_]);
                         }
                         for (int i_11_ = 0; i_11_ < Player.localPlayerCount; i_11_++) {
-                            Player player = (Player.trackedPlayers[Player.trackedPlayerIndices[i_11_]]);
-                            if (player != null && (npc.worldX == (player.worldX)) && ((player.worldY) == npc.worldY))
+                            Player player = Player.trackedPlayers[Player.trackedPlayerIndices[i_11_]];
+                            if (player != null && npc.worldX == player.worldX && player.worldY == npc.worldY)
                                 Class40_Sub5_Sub1.processPlayerMenuOptions(player, x, y, Player.trackedPlayerIndices[i_11_]);
                         }
                     }
-                    HuffmanEncoding.processNpcMenuOptions((npc.actorDefinition), x, y, index);
+                    HuffmanEncoding.processNpcMenuOptions(npc.actorDefinition, x, y, index);
                 }
                 if (type == 0) {
-                    Player player1 = (Player.trackedPlayers[index]);
+                    Player player1 = Player.trackedPlayers[index];
                     if ((0x7f & player1.worldX) == 64 && (0x7f & player1.worldY) == 64) {
-                        for (int i_12_ = 0; ((i_12_ < Player.npcCount)); i_12_++) {
-                            Npc npc = (Player.npcs[Player.npcIds[i_12_]]);
-                            if (npc != null && ((npc.actorDefinition.boundaryDimension) == 1) && ((npc.worldX) == player1.worldX) && (npc.worldY == (player1.worldY)))
-                                HuffmanEncoding.processNpcMenuOptions((npc.actorDefinition), x, y, Player.npcIds[i_12_]);
+                        for (int i_12_ = 0; i_12_ < Player.npcCount; i_12_++) {
+                            Npc npc = Player.npcs[Player.npcIds[i_12_]];
+                            if (npc != null && npc.actorDefinition.boundaryDimension == 1 && npc.worldX == player1.worldX && npc.worldY == player1.worldY)
+                                HuffmanEncoding.processNpcMenuOptions(npc.actorDefinition, x, y, Player.npcIds[i_12_]);
                         }
-                        for (int i_13_ = 0; ((i_13_ < Player.localPlayerCount)); i_13_++) {
-                            Player player = (Player.trackedPlayers[Player.trackedPlayerIndices[i_13_]]);
-                            if (player != null && (player != player1) && ((player1.worldX) == (player.worldX)) && ((player1.worldY) == (player.worldY)))
+                        for (int i_13_ = 0; i_13_ < Player.localPlayerCount; i_13_++) {
+                            Player player = Player.trackedPlayers[Player.trackedPlayerIndices[i_13_]];
+                            if (player != null && player != player1 && player1.worldX == player.worldX && player1.worldY == player.worldY)
                                 Class40_Sub5_Sub1.processPlayerMenuOptions(player, x, y, Player.trackedPlayerIndices[i_13_]);
                         }
                     }
                     Class40_Sub5_Sub1.processPlayerMenuOptions(player1, x, y, index);
                 }
                 if (type == 3) {
-                    LinkedList itemList = (Wall.groundItems[Player.worldLevel][x][y]);
+                    LinkedList itemList = Wall.groundItems[Player.worldLevel][x][y];
                     if (itemList != null) {
-                        for (Item item = ((Item) itemList.last((byte) -95)); item != null; item = ((Item) itemList.previous(4))) {
-                            ItemDefinition itemDefinition = (ItemDefinition.forId(item.itemId, 10));
+                        for (Item item = (Item) itemList.last((byte) -95); item != null; item = (Item) itemList.previous(4)) {
+                            ItemDefinition itemDefinition = ItemDefinition.forId(item.itemId, 10);
                             if (Class8.itemSelected == 1) {
                                 OverlayDefinition.addActionRow(Main.aClass1_1763, item.itemId, x, y, 47, Npc.aClass1_3295 + Class5.aClass1_206 + itemDefinition.name);
                             } else if (Main.widgetSelected != 1) {
@@ -179,7 +179,7 @@ public class Class64 implements Runnable {
                                 for (int i_15_ = 4; i_15_ >= 0; i_15_--) {
                                     if (class1s == null || class1s[i_15_] == null) {
                                         if (i_15_ == 2) {
-                                            OverlayDefinition.addActionRow(Class27.takeStringInstance, (item.itemId), x, y, 3, VertexNormal.aClass1_1114 + itemDefinition.name);
+                                            OverlayDefinition.addActionRow(Class27.takeStringInstance, item.itemId, x, y, 3, VertexNormal.aClass1_1114 + itemDefinition.name);
                                         }
                                     } else {
                                         int i_16_ = 0;
@@ -193,7 +193,7 @@ public class Class64 implements Runnable {
                                             i_16_ = 8;
                                         if (i_15_ == 4)
                                             i_16_ = 36;
-                                        OverlayDefinition.addActionRow(class1s[i_15_], (item.itemId), x, y, i_16_, VertexNormal.aClass1_1114 +  itemDefinition.name);
+                                        OverlayDefinition.addActionRow(class1s[i_15_], item.itemId, x, y, i_16_, VertexNormal.aClass1_1114 +  itemDefinition.name);
                                     }
                                 }
                                 OverlayDefinition.addActionRow(English.examine, item.itemId, x, y, 1003, VertexNormal.aClass1_1114 + itemDefinition.name);

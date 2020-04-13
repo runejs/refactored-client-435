@@ -119,7 +119,7 @@ class MidiPlayer implements Receiver {
 
     private int getChannelVolume(int channel) {
         int data = volumes[channel];
-        data = ((data * volume) >> 8) * data;
+        data = (data * volume >> 8) * data;
         return (int) (Math.sqrt(data) + 0.5);
     }
 

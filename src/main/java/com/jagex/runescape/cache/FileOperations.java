@@ -25,21 +25,21 @@ public class FileOperations {
             TotalRead++;
             return abyte0;
         } catch(Exception exception) {
-            System.out.println((new StringBuilder()).append("Read Error: ").append(s).toString());
+            System.out.println(new StringBuilder().append("Read Error: ").append(s).toString());
         }
         return null;
     }
 
     public static final void WriteFile(String s, byte[] abyte0) {
         try {
-            (new File((new File(s)).getParent())).mkdirs();
+            new File(new File(s).getParent()).mkdirs();
             FileOutputStream fileoutputstream = new FileOutputStream(s);
             fileoutputstream.write(abyte0, 0, abyte0.length);
             fileoutputstream.close();
             TotalWrite++;
             CompleteWrite++;
         } catch(Throwable throwable) {
-            System.out.println((new StringBuilder()).append("Write Error: ").append(s).toString());
+            System.out.println(new StringBuilder().append("Write Error: ").append(s).toString());
         }
     }
 

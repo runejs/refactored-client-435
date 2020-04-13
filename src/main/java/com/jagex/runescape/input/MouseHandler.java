@@ -29,32 +29,23 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public static int anInt1450 = -1;
     public static Cache modelCache = new Cache(50);
     public static int anInt1457 = -1;
-    public static RSString aClass1_1463 = RSString.CreateString("wave2:");
-    public static RSString aClass1_1464 = RSString.CreateString(" is already on your friend list");
-    public static RSString aClass1_1465;
+    public static RSString aClass1_1465 = RSString.CreateString(" is already on your friend list");
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array1466 = new ImageRGB[1000];
     public static int anInt1468;
     public static Canvas aCanvas1469;
     public static int clickType = 0;
     public static byte[][][] tile_overlayids;
-    public static RSString aClass1_1474;
+    public static String aClass1_1474 = "wave2:";
     public static int cameraZoom = 600;
     public boolean mouseWheelDown;
     public int mouseWheelX;
     public int mouseWheelY;
 
-    static {
-        aClass1_1465 = aClass1_1464;
-        aClass1_1474 = aClass1_1463;
-    }
-
     public static void method1001() {
         aClass40_Sub5_Sub14_Sub4Array1466 = null;
         aClass1_1465 = null;
-        aClass1_1463 = null;
         modelCache = null;
         aCanvas1469 = null;
-        aClass1_1464 = null;
         aClass1_1474 = null;
         tile_overlayids = null;
     }
@@ -82,7 +73,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     y -= 357;
                     x -= 17;
                 }
-                if((-10 + InteractiveObject.menuOffsetX > x) || 10 + VertexNormal.menuWidth + InteractiveObject.menuOffsetX < x || (y < Main.menuOffsetY + -10) || ((y > Main.menuOffsetY + CollisionMap.menuHeight + 10))) {
+                if(-10 + InteractiveObject.menuOffsetX > x || 10 + VertexNormal.menuWidth + InteractiveObject.menuOffsetX < x || y < Main.menuOffsetY + -10 || y > Main.menuOffsetY + CollisionMap.menuHeight + 10) {
                     if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
                         ISAAC.redrawTabArea = true;
                     Class4.menuOpen = false;
@@ -109,7 +100,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     y -= 357;
                 }
                 int id = -1;
-                for(int row = 0; ((row < ActorDefinition.menuActionRow)); row++) {
+                for(int row = 0; row < ActorDefinition.menuActionRow; row++) {
                     int k3 = 31 + menuY + 15 * (ActorDefinition.menuActionRow + -1 - row);
                     if(x > menuX && x < dx + menuX && y > -13 + k3 && y < 3 + k3)
                         id = row;
@@ -124,10 +115,10 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             }
         } else {
             if(meta == 1 && ActorDefinition.menuActionRow > 0) {
-                int action = (Class38.menuActionTypes[ActorDefinition.menuActionRow - 1]);
+                int action = Class38.menuActionTypes[ActorDefinition.menuActionRow - 1];
                 if(action == 53 || action == 25 || action == 55 || action == 48 || action == 24 || action == 52 || action == 6 || action == 31 || action == 43 || action == 11 || action == 19 || action == 1006) {
-                    int item = (InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow - 1]);
-                    int id = (Class59.secondMenuOperand[-1 + ActorDefinition.menuActionRow]);
+                    int item = InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow - 1];
+                    int id = Class59.secondMenuOperand[-1 + ActorDefinition.menuActionRow];
                     Widget widget = Widget.forId(id);
                     if(widget.itemSwapable || widget.itemDeletesDraged) {
                         Renderable.anInt2869 = Class57.clickX;
@@ -210,7 +201,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         if(!mouseWheelDown)
             return;
         Wall.cameraVelocityHorizontal += i * 3;
-        Class60.cameraVelocityVertical += (j << 1);
+        Class60.cameraVelocityVertical += j << 1;
     }
 
     public void focusGained(FocusEvent arg0) {
@@ -248,7 +239,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         LinkedList.anInt1073 = 0;
 
         if(!handleInterfaceScrolling(event)) {
-            if((cameraZoom <= 150 && rotation <= 0) || (cameraZoom >= 1600 && rotation >= 0)) {
+            if(cameraZoom <= 150 && rotation <= 0 || cameraZoom >= 1600 && rotation >= 0) {
                 return;
             }
             int diff = rotation * 8;

@@ -15,9 +15,9 @@ import com.jagex.runescape.scene.util.CollisionMap;
 public class GroundItemTile {
     public static boolean loadGeneratedMap = false;
     public static int selectedInventorySlot = 0;
-    public static RSString aClass1_1354 = RSString.CreateString("Message");
+    public static String aClass1_1354 = "Message";
     public static int[] anIntArray1358 = new int[5];
-    public static RSString cmd_clientdrop = RSString.CreateString("::clientdrop");
+    public static String cmd_clientdrop = "::clientdrop";
     public static Cache aClass9_1364 = new Cache(64);
     public static byte[][] aByteArrayArray1370;
     public static int cameraHorizontal = 0;

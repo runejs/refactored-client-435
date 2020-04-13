@@ -17,6 +17,7 @@ import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
+import com.jagex.runescape.util.TextUtils;
 
 import java.awt.*;
 
@@ -30,7 +31,7 @@ public class Class5 {
     public static int anInt199 = 0;
     public static int anInt200 = 127;
     public static RSString aClass1_203 = RSString.CreateString("mapmarker");
-    public static RSString aClass1_204 = RSString.CreateString("red:");
+    public static String aClass1_204 = "red:";
     public static RSString aClass1_206 = RSString.CreateString(" )2> @lre@");
     public static int currentTabId = 3;
 
@@ -38,7 +39,7 @@ public class Class5 {
         for(int i = 0; i < 8; i++) {
             for(int y = 0; y < 8; y++) {
                 if(x + i > 0 && i + x < 103 && arg0 + y > 0 && y + arg0 < 103)
-                    arg9[arg4].clippingData[x + i][y + arg0] = HuffmanEncoding.method1021((arg9[arg4].clippingData[x + i][y + arg0]), -16777217);
+                    arg9[arg4].clippingData[x + i][y + arg0] = HuffmanEncoding.method1021(arg9[arg4].clippingData[x + i][y + arg0], -16777217);
             }
         }
         Buffer class40_sub1 = new Buffer(arg8);
@@ -92,37 +93,37 @@ public class Class5 {
     public static void method165(int arg0) {
         int i = 64 + SceneCluster.anInt767 * 128;
         int i_3_ = 64 + 128 * Class22.anInt545;
-        int i_4_ = (Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) + -anInt194);
-        if((i_3_ > Class12.cameraX)) {
-            Class12.cameraX += (Class59.anInt1386 * (i_3_ + -Class12.cameraX) / 1000 + Class4.anInt188);
+        int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) + -anInt194;
+        if(i_3_ > Class12.cameraX) {
+            Class12.cameraX += Class59.anInt1386 * (i_3_ + -Class12.cameraX) / 1000 + Class4.anInt188;
             if(Class12.cameraX > i_3_) {
                 Class12.cameraX = i_3_;
             }
         }
-        if((i_4_ > SceneCluster.cameraZ)) {
-            SceneCluster.cameraZ += (Class59.anInt1386 * (i_4_ - SceneCluster.cameraZ) / 1000 + Class4.anInt188);
-            if((i_4_ < SceneCluster.cameraZ))
+        if(i_4_ > SceneCluster.cameraZ) {
+            SceneCluster.cameraZ += Class59.anInt1386 * (i_4_ - SceneCluster.cameraZ) / 1000 + Class4.anInt188;
+            if(i_4_ < SceneCluster.cameraZ)
                 SceneCluster.cameraZ = i_4_;
         }
-        if((Class12.cameraX > i_3_)) {
-            Class12.cameraX -= Class4.anInt188 + (Class59.anInt1386 * (Class12.cameraX + -i_3_) / 1000);
+        if(Class12.cameraX > i_3_) {
+            Class12.cameraX -= Class4.anInt188 + Class59.anInt1386 * (Class12.cameraX + -i_3_) / 1000;
             if(i_3_ > Class12.cameraX) {
                 Class12.cameraX = i_3_;
             }
         }
-        if((Class40_Sub5_Sub6.cameraY < i)) {
-            Class40_Sub5_Sub6.cameraY += Class4.anInt188 + (Class59.anInt1386 * (-Class40_Sub5_Sub6.cameraY + i) / 1000);
-            if((Class40_Sub5_Sub6.cameraY > i))
+        if(Class40_Sub5_Sub6.cameraY < i) {
+            Class40_Sub5_Sub6.cameraY += Class4.anInt188 + Class59.anInt1386 * (-Class40_Sub5_Sub6.cameraY + i) / 1000;
+            if(Class40_Sub5_Sub6.cameraY > i)
                 Class40_Sub5_Sub6.cameraY = i;
         }
         if(SceneCluster.cameraZ > i_4_) {
-            SceneCluster.cameraZ -= ((SceneCluster.cameraZ + -i_4_) * Class59.anInt1386 / 1000 + Class4.anInt188);
-            if((i_4_ > SceneCluster.cameraZ))
+            SceneCluster.cameraZ -= (SceneCluster.cameraZ + -i_4_) * Class59.anInt1386 / 1000 + Class4.anInt188;
+            if(i_4_ > SceneCluster.cameraZ)
                 SceneCluster.cameraZ = i_4_;
         }
         i_3_ = 64 + HashTable.anInt564 * 128;
         if(Class40_Sub5_Sub6.cameraY > i) {
-            Class40_Sub5_Sub6.cameraY -= Class4.anInt188 + (Class59.anInt1386 * (Class40_Sub5_Sub6.cameraY - i) / 1000);
+            Class40_Sub5_Sub6.cameraY -= Class4.anInt188 + Class59.anInt1386 * (Class40_Sub5_Sub6.cameraY - i) / 1000;
             if(Class40_Sub5_Sub6.cameraY < i)
                 Class40_Sub5_Sub6.cameraY = i;
         }
@@ -131,7 +132,7 @@ public class Class5 {
         int i_5_ = -SceneCluster.cameraZ + i_4_;
         int i_6_ = i - Class40_Sub5_Sub6.cameraY;
         int i_7_ = i_3_ - Class12.cameraX;
-        int i_8_ = (int) Math.sqrt((double) (i_7_ * i_7_ + (i_6_ * i_6_)));
+        int i_8_ = (int) Math.sqrt((double) (i_7_ * i_7_ + i_6_ * i_6_));
         int i_9_ = 0x7ff & (int) (Math.atan2((double) i_5_, (double) i_8_) * 325.949);
         if(i_9_ < 128)
             i_9_ = 128;
@@ -149,16 +150,16 @@ public class Class5 {
         }
         if(arg0 > 0) {
             if(i_11_ < 0) {
-                Class68_Sub1.anInt2210 -= Class60.anInt1413 + (Class22_Sub1.anInt1856 * -i_11_ / 1000);
+                Class68_Sub1.anInt2210 -= Class60.anInt1413 + Class22_Sub1.anInt1856 * -i_11_ / 1000;
                 Class68_Sub1.anInt2210 &= 0x7ff;
             }
             if(i_9_ > Class26.anInt627) {
-                Class26.anInt627 += Class60.anInt1413 + (Class22_Sub1.anInt1856 * (i_9_ - Class26.anInt627) / 1000);
+                Class26.anInt627 += Class60.anInt1413 + Class22_Sub1.anInt1856 * (i_9_ - Class26.anInt627) / 1000;
                 if(Class26.anInt627 > i_9_)
                     Class26.anInt627 = i_9_;
             }
             if(Class26.anInt627 > i_9_) {
-                Class26.anInt627 -= (Class22_Sub1.anInt1856 * (Class26.anInt627 + -i_9_) / 1000) + Class60.anInt1413;
+                Class26.anInt627 -= Class22_Sub1.anInt1856 * (Class26.anInt627 + -i_9_) / 1000 + Class60.anInt1413;
                 if(Class26.anInt627 < i_9_)
                     Class26.anInt627 = i_9_;
             }
@@ -180,7 +181,7 @@ public class Class5 {
                 HuffmanEncoding.aClass1_1563 = Widget.aClass1_2740;
                 ChatBox.messagePromptRaised = true;
                 ChatBox.inputType = 0;
-                HuffmanEncoding.chatMessage = HuffmanEncoding.blank_string;
+                HuffmanEncoding.chatMessage = "";
                 ChatBox.redrawChatbox = true;
             }
             if(i == 202) {
@@ -189,7 +190,7 @@ public class Class5 {
                 ChatBox.redrawChatbox = true;
                 ChatBox.inputType = 0;
                 ChatBox.messagePromptRaised = true;
-                HuffmanEncoding.chatMessage = HuffmanEncoding.blank_string;
+                HuffmanEncoding.chatMessage = "";
             }
         }
         if(i == 205) {
@@ -201,7 +202,7 @@ public class Class5 {
             Class37.anInt876 = 4;
             ChatBox.redrawChatbox = true;
             HuffmanEncoding.aClass1_1563 = Class51.aClass1_1200;
-            HuffmanEncoding.chatMessage = HuffmanEncoding.blank_string;
+            HuffmanEncoding.chatMessage = "";
             ChatBox.messagePromptRaised = true;
         }
         if(i == 502) {
@@ -209,7 +210,7 @@ public class Class5 {
             ChatBox.inputType = 0;
             Class37.anInt876 = 5;
             ChatBox.messagePromptRaised = true;
-            HuffmanEncoding.chatMessage = HuffmanEncoding.blank_string;
+            HuffmanEncoding.chatMessage = "";
             HuffmanEncoding.aClass1_1563 = English.enterNameOfPlayerToDeleteFromList;
         }
         if(i >= 300 && i <= 313) {
@@ -239,7 +240,7 @@ public class Class5 {
             PacketBuffer.method516();
             if(HuffmanEncoding.reportedName.length() > 0) {
                 SceneCluster.packetBuffer.putPacket(202);
-                SceneCluster.packetBuffer.putLongBE(HuffmanEncoding.reportedName.method58((byte) 102));
+                SceneCluster.packetBuffer.putLongBE(TextUtils.nameToLong(HuffmanEncoding.reportedName));
                 SceneCluster.packetBuffer.putByte(-601 + i);
                 SceneCluster.packetBuffer.putByte(Class67.reportMutePlayer ? 1 : 0);
             }
@@ -265,8 +266,8 @@ public class Class5 {
                 ISAAC.redrawTabArea = true;
             if(arg7 == 2 || arg7 == 3)
                 ChatBox.redrawChatbox = true;
-        } else if(arg6 > arg2 || (arg6 + 16 <= arg2) || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
-            if(-Landscape.anInt1171 + arg6 <= arg2 && 16 + (arg6 + Landscape.anInt1171) > arg2 && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && Npc.anInt3294 > 0) {
+        } else if(arg6 > arg2 || arg6 + 16 <= arg2 || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
+            if(-Landscape.anInt1171 + arg6 <= arg2 && 16 + arg6 + Landscape.anInt1171 > arg2 && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && Npc.anInt3294 > 0) {
                 Class61.aBoolean1444 = true;
                 int i = (-32 + arg0) * arg0 / arg3;
                 if(arg7 == 2 || arg7 == 3)
@@ -275,8 +276,8 @@ public class Class5 {
                     ISAAC.redrawTabArea = true;
                 if(i < 8)
                     i = 8;
-                int i_17_ = -i + (arg0 + -32);
-                int i_18_ = -(i / 2) + (-arg8 + arg1) + -16;
+                int i_17_ = -i + arg0 + -32;
+                int i_18_ = -(i / 2) + -arg8 + arg1 + -16;
                 arg5.scrollPosition = (arg3 + -arg0) * i_18_ / i_17_;
             }
         } else {

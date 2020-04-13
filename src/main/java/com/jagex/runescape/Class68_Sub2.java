@@ -18,7 +18,7 @@ public class Class68_Sub2 extends Class68 {
             height = arg3;
             DataBufferInt databufferint = new DataBufferInt(pixels, pixels.length);
             DirectColorModel directcolormodel = new DirectColorModel(32, 16711680, 65280, 255);
-            WritableRaster writableraster = (Raster.createWritableRaster(directcolormodel.createCompatibleSampleModel(width, height), databufferint, null));
+            WritableRaster writableraster = Raster.createWritableRaster(directcolormodel.createCompatibleSampleModel(width, height), databufferint, null);
             image = new BufferedImage(directcolormodel, writableraster, false, new Hashtable());
             aComponent2214 = arg2;
             method1046((byte) 90);

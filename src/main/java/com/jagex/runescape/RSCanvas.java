@@ -18,36 +18,20 @@ import java.awt.*;
 public class RSCanvas extends Canvas {
     public static byte[][] aByteArrayArray47 = new byte[50][];
     public static CacheIndex_Sub1 aClass6_Sub1_48;
-    public static RSString aClass1_51;
-    public static LinkedList aLinkedList_53;
-    public static int anInt54;
-    public static RSString aClass1_55 = RSString.CreateString("shake:");
+    public static String aClass1_51 = "shake:";
+    public static LinkedList aLinkedList_53 = new LinkedList();
+    public static int anInt54 = 0;
     public static int anInt57;
     public static Class68 aClass68_59;
-    public static int anInt60;
+    public static int anInt60 = 255;
     public static CacheIndex aCacheIndex_61;
     public static int[] anIntArray62;
-    public static RSString aClass1_63;
+    public static String aClass1_63 = "Prepared visibility map";
     public static Class68 aClass68_64;
-    public static int anInt65;
+    public static int anInt65 = 127;
     public static int[] anIntArray66;
-    public static RSString aClass1_67;
-    public static RSString aClass1_68;
-    public static RSString aClass1_69;
-    public static RSString aClass1_70;
-
-    static {
-        aClass1_51 = aClass1_55;
-        anInt54 = 0;
-        aLinkedList_53 = new LinkedList();
-        anInt60 = 255;
-        anInt65 = 127;
-        aClass1_69 = RSString.CreateString("Your profile will be transferred in:");
-        aClass1_67 = aClass1_69;
-        aClass1_70 = RSString.CreateString("Prepared visibility map");
-        aClass1_68 = RSString.CreateString("k");
-        aClass1_63 = aClass1_70;
-    }
+    public static RSString aClass1_67 = RSString.CreateString("Your profile will be transferred in:");
+    public static RSString aClass1_68 = RSString.CreateString("k");
 
     public Component aComponent49;
 
@@ -65,7 +49,7 @@ public class RSCanvas extends Canvas {
         Cache.method233(true);
         CacheIndex.method189(false);
         Widget.method640();
-        Widget.method645((byte) -37);
+        Widget.method645();
         Class40_Sub5_Sub6.method586(64);
         Class8.method211();
         CacheIndex.method188();
@@ -92,15 +76,12 @@ public class RSCanvas extends Canvas {
 
     public static void method47() {
         aClass1_68 = null;
-        aClass1_70 = null;
         aByteArrayArray47 = null;
         aClass6_Sub1_48 = null;
         aClass1_63 = null;
-        aClass1_55 = null;
         anIntArray62 = null;
         aLinkedList_53 = null;
         aClass1_51 = null;
-        aClass1_69 = null;
         aCacheIndex_61 = null;
         aClass68_64 = null;
         anIntArray66 = null;

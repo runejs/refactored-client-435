@@ -52,9 +52,9 @@ public class Signlink implements Runnable {
         }
         try {
             if(arg1 == null)
-                aMethod729 = (Class.forName("java.awt.Component").getDeclaredMethod("setFocusTraversalKeysEnabled", Boolean.TYPE));
+                aMethod729 = Class.forName("java.awt.Component").getDeclaredMethod("setFocusTraversalKeysEnabled", Boolean.TYPE);
             else
-                aMethod729 = (arg1.getClass().getMethod("setFocusTraversalKeysEnabled", Boolean.TYPE));
+                aMethod729 = arg1.getClass().getMethod("setFocusTraversalKeysEnabled", Boolean.TYPE);
         } catch(Exception exception) {
             /* empty */
         }
@@ -62,7 +62,7 @@ public class Signlink implements Runnable {
             if(arg1 != null)
                 aMethod724 = arg1.getClass().getMethod("setFocusCycleRoot", Boolean.TYPE);
             else
-                aMethod724 = (Class.forName("java.awt.Container").getDeclaredMethod("setFocusCycleRoot", Boolean.TYPE));
+                aMethod724 = Class.forName("java.awt.Container").getDeclaredMethod("setFocusCycleRoot", Boolean.TYPE);
         } catch(Exception exception) {
             /* empty */
         }
@@ -171,7 +171,7 @@ public class Signlink implements Runnable {
         try {
             File file = new File(aString734 + "uid.dat");
             if(!file.exists() || file.length() < 4) {
-                DataOutputStream dataoutputstream = (new DataOutputStream(new FileOutputStream(aString734 + "uid.dat")));
+                DataOutputStream dataoutputstream = new DataOutputStream(new FileOutputStream(aString734 + "uid.dat"));
                 dataoutputstream.writeInt((int) (9.9999999E7 * Math.random()));
                 dataoutputstream.close();
             }
@@ -234,7 +234,7 @@ public class Signlink implements Runnable {
                     currentNode.value = new DataInputStream(((URL) currentNode.objectData).openStream());
                 else if(type == 9) {
                     Object[] objects = (Object[]) currentNode.objectData;
-                    currentNode.value = (((Class) objects[0]).getDeclaredMethod((String) objects[1], (Class[]) objects[2]));
+                    currentNode.value = ((Class) objects[0]).getDeclaredMethod((String) objects[1], (Class[]) objects[2]);
                 } else if(type == 10) {
                     Object[] objects = (Object[]) currentNode.objectData;
                     currentNode.value = ((Class) objects[0]).getDeclaredField((String) objects[1]);

@@ -50,9 +50,9 @@ public class Class40_Sub5_Sub1 extends SubNode {
         int i = Class40_Sub6.tile_height[arg2][arg9][arg8];
         int i_0_ = Class40_Sub6.tile_height[arg2][1 + arg9][arg8];
         int i_1_ = Class40_Sub6.tile_height[arg2][arg9][1 + arg8];
-        int i_2_ = (Class40_Sub6.tile_height[arg2][arg9 + 1][arg8 + 1]);
+        int i_2_ = Class40_Sub6.tile_height[arg2][arg9 + 1][arg8 + 1];
         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(arg1);
-        int i_3_ = i_2_ + i_0_ + (i + i_1_) >> 2;
+        int i_3_ = i_2_ + i_0_ + i + i_1_ >> 2;
         int i_4_ = (arg7 << 6) + arg4;
         int i_5_ = arg9 - (-(arg8 << 7) - (arg1 << 14) - 1073741824);
         if (gameObjectDefinition.hasActions == 0)
@@ -62,7 +62,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
         if (arg4 == 22) {
             Renderable renderable;
             if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
-                renderable = new GameObject(arg1, 22, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
+                renderable = new GameObject(arg1, 22, arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
             else
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, 22, i_0_);
             arg5.addGroundDecoration(arg9, arg8, arg3, i_3_, i_5_, renderable, i_4_);
@@ -71,7 +71,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
         } else if (arg4 == 10 || arg4 == 11) {
             Renderable renderable;
             if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
-                renderable = new GameObject(arg1, 10, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
+                renderable = new GameObject(arg1, 10, arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
             else
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, 10, i_0_);
             if (renderable != null) {
@@ -94,7 +94,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
         } else if (arg4 >= 12) {
             Renderable renderable;
             if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
-                renderable = new GameObject(arg1, arg4, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
+                renderable = new GameObject(arg1, arg4, arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
             else
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, arg4, i_0_);
             arg5.addEntityB(arg9, arg8, arg3, i_3_, 0, 1, 1, i_5_, renderable, i_4_);
@@ -103,7 +103,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
         } else if (arg4 == 0) {
             Renderable renderable;
             if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
-                renderable = new GameObject(arg1, 0, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
+                renderable = new GameObject(arg1, 0, arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
             else
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, 0, i_0_);
             arg5.addWall(arg9, arg8, arg3, i_3_, SceneCluster.anIntArray761[arg7], 0, i_5_, renderable, null, i_4_);
@@ -114,7 +114,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
             if (gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, 1, i_0_);
             else
-                renderable = new GameObject(arg1, 1, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
+                renderable = new GameObject(arg1, 1, arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
             arg5.addWall(arg9, arg8, arg3, i_3_, Class40_Sub5_Sub15.anIntArray2788[arg7], 0, i_5_, renderable, null, i_4_);
             if (gameObjectDefinition.solid)
                 arg0.unmarkWall(arg9, arg8, arg4, arg7, gameObjectDefinition.walkable);
@@ -123,8 +123,8 @@ public class Class40_Sub5_Sub1 extends SubNode {
             Renderable renderable;
             Renderable renderable_10_;
             if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null) {
-                renderable = new GameObject(arg1, 2, 4 + arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
-                renderable_10_ = new GameObject(arg1, 2, i_9_, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
+                renderable = new GameObject(arg1, 2, 4 + arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
+                renderable_10_ = new GameObject(arg1, 2, i_9_, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
             } else {
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7 + 4, i, 2, i_0_);
                 renderable_10_ = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, i_9_, i, 2, i_0_);
@@ -135,7 +135,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
         } else if (arg4 == 3) {
             Renderable renderable;
             if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
-                renderable = new GameObject(arg1, 3, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
+                renderable = new GameObject(arg1, 3, arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
             else
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, 3, i_0_);
             arg5.addWall(arg9, arg8, arg3, i_3_, Class40_Sub5_Sub15.anIntArray2788[arg7], 0, i_5_, renderable, null, i_4_);
@@ -144,7 +144,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
         } else if (arg4 == 9) {
             Renderable renderable;
             if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
-                renderable = new GameObject(arg1, arg4, arg7, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
+                renderable = new GameObject(arg1, arg4, arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
             else
                 renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, arg7, i, arg4, i_0_);
             arg5.addEntityB(arg9, arg8, arg3, i_3_, 0, 1, 1, i_5_, renderable, i_4_);
@@ -176,7 +176,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
             if (arg4 == 4) {
                 Renderable renderable;
                 if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
-                    renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
+                    renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
                 else
                     renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
                 arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, 512 * arg7, i_5_, renderable, i_4_, SceneCluster.anIntArray761[arg7]);
@@ -184,18 +184,18 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 int i_14_ = 16;
                 int i_15_ = arg5.method122(arg3, arg9, arg8);
                 if (i_15_ > 0)
-                    i_14_ = (GameObjectDefinition.getDefinition(i_15_ >> 14 & 0x7fff).setDecorDisplacement);
+                    i_14_ = GameObjectDefinition.getDefinition(i_15_ >> 14 & 0x7fff).setDecorDisplacement;
                 Renderable renderable;
                 if (gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
                     renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
                 else
-                    renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, (gameObjectDefinition.animationId), true);
+                    renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
                 arg5.addWallDecoration(arg9, arg8, arg3, i_3_, Class27.anIntArray666[arg7] * i_14_, Class68_Sub1.anIntArray2207[arg7] * i_14_, 512 * arg7, i_5_, renderable, i_4_, SceneCluster.anIntArray761[arg7]);
             } else if (arg6 == -22078) {
                 if (arg4 == 6) {
                     Renderable renderable;
                     if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
-                        renderable = (new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true));
+                        renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
                     else
                         renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
                     arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, arg7, i_5_, renderable, i_4_, 256);
@@ -204,12 +204,12 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     if (gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
                         renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
                     else
-                        renderable = (new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true));
+                        renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
                     arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, arg7, i_5_, renderable, i_4_, 512);
                 } else if (arg4 == 8) {
                     Renderable renderable;
                     if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
-                        renderable = (new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true));
+                        renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
                     else
                         renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
                     arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, arg7, i_5_, renderable, i_4_, 768);
@@ -254,7 +254,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     if (Class34.anInt854 != -1) {
                         Class67.reportMutePlayer = false;
                         HuffmanEncoding.reportAbuseInterfaceID = HuffmanEncoding.openScreenWidgetId = Class34.anInt854;
-                        HuffmanEncoding.reportedName = HuffmanEncoding.blank_string;
+                        HuffmanEncoding.reportedName = "";
                     }
                 } else
                     Class44.addChatMessage("", Class37.aClass1_873, 0);
@@ -266,9 +266,9 @@ public class Class40_Sub5_Sub1 extends SubNode {
         if (Player.localPlayer != player && ActorDefinition.menuActionRow < 400) {
             String rsString;
             if (player.skillLevel == 0)
-                rsString = player.playerName + (SceneTile.getCombatLevelColour((Player.localPlayer.combatLevel), player.combatLevel)) + HashTable.aClass1_569 + SpotAnimDefinition.str_prefix_level + HashTable.method334(player.combatLevel) + Class51.aClass1_1199;
+                rsString = player.playerName + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, player.combatLevel) + HashTable.aClass1_569 + SpotAnimDefinition.str_prefix_level + HashTable.intToStr(player.combatLevel) + Class51.aClass1_1199;
             else
-                rsString = player.playerName + HashTable.aClass1_569 + Class26.aClass1_619 + HashTable.method334(player.skillLevel) + Class51.aClass1_1199;
+                rsString = player.playerName + HashTable.aClass1_569 + Class26.aClass1_619 + HashTable.intToStr(player.skillLevel) + Class51.aClass1_1199;
             if (Class8.itemSelected == 1) {
                 OverlayDefinition.addActionRow(Main.aClass1_1763, index, x, y, 22, Npc.aClass1_3295 + Item.aClass1_3068 + rsString);
             } else if (Main.widgetSelected == 1) {
@@ -281,10 +281,10 @@ public class Class40_Sub5_Sub1 extends SubNode {
                         int i_16_ = 0;
                         int i_17_ = 0;
                         if (Main.playerActions[i].equalsIgnoreCase(Class38_Sub1.aClass1_1917)) {
-                            if ((Player.localPlayer.combatLevel) < player.combatLevel)
+                            if (Player.localPlayer.combatLevel < player.combatLevel)
                                 i_17_ = 2000;
-                            if ((Player.localPlayer.teamId) != 0 && player.teamId != 0) {
-                                if ((Player.localPlayer.teamId) != player.teamId)
+                            if (Player.localPlayer.teamId != 0 && player.teamId != 0) {
+                                if (Player.localPlayer.teamId != player.teamId)
                                     i_17_ = 0;
                                 else
                                     i_17_ = 2000;
@@ -319,7 +319,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
         if (arg0 != 256)
             anInt2280 = 44;
         int i = Class37.getFloorDrawHeight(Player.worldLevel, Class12.cameraX, Class40_Sub5_Sub6.cameraY);
-        if (i + -SceneCluster.cameraZ < 800 && ((OverlayDefinition.tile_flags[Player.worldLevel][Class12.cameraX >> 7][Class40_Sub5_Sub6.cameraY >> 7]) & 0x4) != 0)
+        if (i + -SceneCluster.cameraZ < 800 && (OverlayDefinition.tile_flags[Player.worldLevel][Class12.cameraX >> 7][Class40_Sub5_Sub6.cameraY >> 7] & 0x4) != 0)
             return Player.worldLevel;
         return 3;
     }

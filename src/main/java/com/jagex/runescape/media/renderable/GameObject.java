@@ -19,8 +19,8 @@ import java.awt.*;
 
 public class GameObject extends Renderable {
     public static MouseHandler frame = new MouseHandler();
-    public static RSString aClass1_3038 = RSString.CreateString("Loaded gamescreen");
-    public static RSString aClass1_3039 = RSString.CreateString("Accept challenge");
+    public static String aClass1_3038 = "Loaded gamescreen";
+    public static String aClass1_3039 = "Accept challenge";
     public static int anInt3040 = 0;
     public static Class68 aClass68_3042;
     public static RSString aClass1_3044 = RSString.CreateString("");
@@ -54,8 +54,8 @@ public class GameObject extends Renderable {
             animationFrame = 0;
             animationCycleDelay = -1 + Node.pulseCycle;
             if(arg8 && animationSequence.frameStep != -1) {
-                animationFrame = (int) ((double) (animationSequence.anIntArray2485).length * Math.random());
-                animationCycleDelay -= (int) (Math.random() * (double) (animationSequence.animationLengths[animationFrame]));
+                animationFrame = (int) ((double) animationSequence.anIntArray2485.length * Math.random());
+                animationCycleDelay -= (int) (Math.random() * (double) animationSequence.animationLengths[animationFrame]);
             }
         }
     }
@@ -111,7 +111,7 @@ public class GameObject extends Renderable {
         }
     }
 
-    public static void drawLoadingText(int percent, Color color, RSString rsString) {
+    public static void drawLoadingText(int percent, Color color, String rsString) {
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
             if(Class17.helveticaBold == null) {
@@ -134,10 +134,10 @@ public class GameObject extends Renderable {
                 graphics1.fillRect(2, 2, percent * 3, 30);
                 graphics1.setColor(Color.black);
                 graphics1.drawRect(1, 1, 301, 31);
-                graphics1.fillRect(2 + (3 * percent), 2, 300 - 3 * percent, 30);
+                graphics1.fillRect(2 + 3 * percent, 2, 300 - 3 * percent, 30);
                 graphics1.setFont(Class17.helveticaBold);
                 graphics1.setColor(Color.white);
-                rsString.method65(((304 - rsString.method73(Class8.fontMetrics)) / 2), 22, graphics1);
+                graphics.drawString(rsString, (304 - (Class8.fontMetrics.stringWidth(rsString))) / 2, 22);
                 graphics.drawImage(Class26.anImage624, Class12.width / 2 - 152, IdentityKit.height / 2 - 18, null);
             } catch(Exception exception) {
                 int centerWidth = Class12.width / 2 - 152;
@@ -150,7 +150,7 @@ public class GameObject extends Renderable {
                 graphics.fillRect(percent * 3 + 2 + centerWidth, 2 + centerHeight, 300 + -(3 * percent), 30);
                 graphics.setFont(Class17.helveticaBold);
                 graphics.setColor(Color.white);
-                rsString.method65((-rsString.method73(Class8.fontMetrics) + 304) / 2 + centerWidth, 22 + centerHeight, graphics);
+                graphics.drawString(rsString, (304 - (Class8.fontMetrics.stringWidth(rsString))) / 2+ centerWidth, 22 + centerHeight);
             }
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
@@ -171,9 +171,9 @@ public class GameObject extends Renderable {
             while(animationSequence.animationLengths[animationFrame] < step) {
                 step -= animationSequence.animationLengths[animationFrame];
                 animationFrame++;
-                if((animationSequence.anIntArray2485.length <= animationFrame)) {
+                if(animationSequence.anIntArray2485.length <= animationFrame) {
                     animationFrame -= animationSequence.frameStep;
-                    if(animationFrame < 0 || (animationSequence.anIntArray2485.length <= animationFrame)) {
+                    if(animationFrame < 0 || animationSequence.anIntArray2485.length <= animationFrame) {
                         animationSequence = null;
                         break;
                     }

@@ -37,28 +37,28 @@ public abstract class Class22 {
     }
 
     public static void method299(byte arg0, int arg1) {
-        int[] is = (Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.pixels);
+        int[] is = Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.pixels;
         int i = is.length;
         for(int i_0_ = 0; i > i_0_; i_0_++)
             is[i_0_] = 0;
         for(int i_1_ = 1; i_1_ < 103; i_1_++) {
-            int i_2_ = 24628 + ((-(512 * i_1_) + 52736) * 4);
+            int i_2_ = 24628 + (-(512 * i_1_) + 52736) * 4;
             for(int i_3_ = 1; i_3_ < 103; i_3_++) {
-                if((0x18 & (OverlayDefinition.tile_flags[arg1][i_3_][i_1_])) == 0)
+                if((0x18 & OverlayDefinition.tile_flags[arg1][i_3_][i_1_]) == 0)
                     Npc.currentScene.method96(is, i_2_, 512, arg1, i_3_, i_1_);
-                if(arg1 < 3 && ((OverlayDefinition.tile_flags[1 + arg1][i_3_][i_1_]) & 0x8) != 0)
+                if(arg1 < 3 && (OverlayDefinition.tile_flags[1 + arg1][i_3_][i_1_] & 0x8) != 0)
                     Npc.currentScene.method96(is, i_2_, 512, 1 + arg1, i_3_, i_1_);
                 i_2_ += 4;
             }
         }
         Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.method723();
-        int i_4_ = ((-10 + (int) (Math.random() * 20.0) + 238 << 8) + (228 + (int) (Math.random() * 20.0) << 16) + (238 + (int) (20.0 * Math.random())) + -10);
-        int i_5_ = -10 + ((int) (20.0 * Math.random()) + 238) << 16;
+        int i_4_ = (-10 + (int) (Math.random() * 20.0) + 238 << 8) + (228 + (int) (Math.random() * 20.0) << 16) + 238 + (int) (20.0 * Math.random()) + -10;
+        int i_5_ = -10 + (int) (20.0 * Math.random()) + 238 << 16;
         for(int i_6_ = 1; i_6_ < 103; i_6_++) {
             for(int i_7_ = 1; i_7_ < 103; i_7_++) {
-                if(((OverlayDefinition.tile_flags[arg1][i_7_][i_6_]) & 0x18) == 0)
+                if((OverlayDefinition.tile_flags[arg1][i_7_][i_6_] & 0x18) == 0)
                     Actor.method781(1850, arg1, i_7_, i_4_, i_5_, i_6_);
-                if(arg1 < 3 && (0x8 & (OverlayDefinition.tile_flags[1 + arg1][i_7_][i_6_])) != 0)
+                if(arg1 < 3 && (0x8 & OverlayDefinition.tile_flags[1 + arg1][i_7_][i_6_]) != 0)
                     Actor.method781(1850, 1 + arg1, i_7_, i_4_, i_5_, i_6_);
             }
         }
@@ -67,15 +67,15 @@ public abstract class Class22 {
             Player.trackedPlayerAppearanceCache = null;
         for(int i_8_ = 0; i_8_ < 104; i_8_++) {
             for(int i_9_ = 0; i_9_ < 104; i_9_++) {
-                int i_10_ = (Npc.currentScene.getFloorDecorationHash(Player.worldLevel, i_8_, i_9_));
+                int i_10_ = Npc.currentScene.getFloorDecorationHash(Player.worldLevel, i_8_, i_9_);
                 if(i_10_ != 0) {
                     i_10_ = 0x7fff & i_10_ >> 14;
-                    int i_11_ = (GameObjectDefinition.getDefinition(i_10_).icon);
+                    int i_11_ = GameObjectDefinition.getDefinition(i_10_).icon;
                     if(i_11_ >= 0) {
                         int i_12_ = i_9_;
                         int i_13_ = i_8_;
                         if(i_11_ != 22 && i_11_ != 29 && i_11_ != 34 && i_11_ != 36 && i_11_ != 46 && i_11_ != 47 && i_11_ != 48) {
-                            int[][] is_14_ = (Landscape.currentCollisionMap[Player.worldLevel].clippingData);
+                            int[][] is_14_ = Landscape.currentCollisionMap[Player.worldLevel].clippingData;
                             for(int i_15_ = 0; i_15_ < 10; i_15_++) {
                                 int i_16_ = (int) (Math.random() * 4.0);
                                 if(i_16_ == 0 && i_13_ > 0 && i_13_ > -3 + i_8_ && (is_14_[-1 + i_13_][i_12_] & 0x1280108) == 0)
@@ -88,9 +88,9 @@ public abstract class Class22 {
                                     i_12_++;
                             }
                         }
-                        MouseHandler.aClass40_Sub5_Sub14_Sub4Array1466[GameObject.anInt3040] = (Class8.aClass40_Sub5_Sub14_Sub4Array296[i_11_]);
+                        MouseHandler.aClass40_Sub5_Sub14_Sub4Array1466[GameObject.anInt3040] = Class8.aClass40_Sub5_Sub14_Sub4Array296[i_11_];
                         Actor.anIntArray3149[GameObject.anInt3040] = i_13_;
-                        LinkedList.anIntArray1083[(GameObject.anInt3040)] = i_12_;
+                        LinkedList.anIntArray1083[GameObject.anInt3040] = i_12_;
                         GameObject.anInt3040++;
                     }
                 }
@@ -113,7 +113,7 @@ public abstract class Class22 {
             if(class1.length > arg2)
                 class1.length = arg2;
             class1.chars = new byte[class1.length];
-            arg0.currentPosition += (IdentityKit.aHuffmanEncoding_2590.method1023(arg0.buffer, class1.length, 0, class1.chars, arg0.currentPosition, -1));
+            arg0.currentPosition += IdentityKit.aHuffmanEncoding_2590.method1023(arg0.buffer, class1.length, 0, class1.chars, arg0.currentPosition, -1);
             return class1;
         } catch(Exception exception) {
             return Class33.aClass1_777;
@@ -128,7 +128,7 @@ public abstract class Class22 {
         do {
             AnimationSequence.anInt2480 = Node.pulseCycle;
             HuffmanEncoding.method1030((byte) 127);
-            int i = (Npc.method795((byte) -70, arg1).anInt2633);
+            int i = Npc.method795((byte) -70, arg1).anInt2633;
             if(i != 0) {
                 int i_21_ = GroundItemTile.varbitmasks[arg1];
                 if(i == 1) {

@@ -107,12 +107,12 @@ public class OverlayDefinition extends SubNode {
             if (arg0 == 5 || arg0 == 10 || arg0 == 20) {
                 Class68_Sub1.aClass68_2213 = null;
                 FloorDecoration.method344(-69);
-                Item.method779(MouseHandler.aCanvas1469, true, (RSCanvas.aClass6_Sub1_48), (ActorDefinition.aClass6_Sub1_2377));
+                Item.method779(MouseHandler.aCanvas1469, true, RSCanvas.aClass6_Sub1_48, ActorDefinition.aClass6_Sub1_2377);
             }
             if (arg0 == 25 || arg0 == 30 || arg0 == 40) {
                 Class68_Sub1.aClass68_2213 = null;
                 Class38.method440((byte) -98);
-                Class40_Sub5_Sub17_Sub1.method763(MouseHandler.aCanvas1469, (byte) -128, (ActorDefinition.aClass6_Sub1_2377));
+                Class40_Sub5_Sub17_Sub1.method763(MouseHandler.aCanvas1469, (byte) -128, ActorDefinition.aClass6_Sub1_2377);
             }
             Class51.anInt1197 = arg0;
             Class40_Sub5_Sub11.clearScreen = true;
@@ -120,19 +120,19 @@ public class OverlayDefinition extends SubNode {
     }
 
     public static void drawMinimapMark(ImageRGB sprite, int mapX, int mapY) {
-        int len = mapX * mapX + (mapY * mapY);
+        int len = mapX * mapX + mapY * mapY;
         if (len > 4225 && len < 90000) {
             int theta = 0x7ff & GroundItemTile.cameraHorizontal + Class43.cameraYawOffset;
             int sine = Model.SINE[theta];
             int cosine = Model.COSINE[theta];
-            sine = (sine * 256) / (Class51.mapZoomOffset + 256);
-            cosine = (cosine * 256) / (Class51.mapZoomOffset + 256);
+            sine = sine * 256 / (Class51.mapZoomOffset + 256);
+            cosine = cosine * 256 / (Class51.mapZoomOffset + 256);
             int y = cosine * mapY - sine * mapX >> 16;
             int x = mapX * cosine + mapY * sine >> 16;
             double angle = Math.atan2(x, y);
             int drawX = (int) (Math.sin(angle) * 63.0);
             int drawY = (int) (57.0 * Math.cos(angle));
-            SpotAnimDefinition.minimapEdge.drawRotated(-10 + (94 + (drawX + 4)), 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
+            SpotAnimDefinition.minimapEdge.drawRotated(-10 + 94 + drawX + 4, 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
         } else {
             SceneTile.drawOnMinimap(mapY, mapX, sprite);
         }
@@ -171,7 +171,7 @@ public class OverlayDefinition extends SubNode {
     }
 
     public void calculateHsl(int color) {
-        double r = (double) (0xff & (color >> 16)) / 256.0;
+        double r = (double) (0xff & color >> 16) / 256.0;
         double g = (double) ((0xff2d & color) >> 8) / 256.0;
         double b = (double) (0xff & color) / 256.0;
         double var10 = r;

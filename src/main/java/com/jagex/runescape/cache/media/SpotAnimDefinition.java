@@ -26,9 +26,9 @@ import java.net.Socket;
 public class SpotAnimDefinition extends SubNode {
     public static ImageRGB minimapEdge;
     public static RSString str_prefix_level = RSString.CreateString("level)2");
-    public static RSString cmd_noclip = RSString.CreateString("::noclip");
-    public static RSString aClass1_2294 = RSString.CreateString("Loading textures )2 ");
-    public static RSString aClass1_2297 = RSString.CreateString("Loaded input handler");
+    public static String cmd_noclip = "::noclip";
+    public static String aClass1_2294 = "Loading textures - ";
+    public static String aClass1_2297 = "Loaded input handler";
     public static Class67 aClass67_2298;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2301;
     public static int mouseButtonPressed = 0;
@@ -85,7 +85,7 @@ public class SpotAnimDefinition extends SubNode {
                     throw new IOException();
                 }
                 if (FloorDecoration.aSignlinkNode_607.anInt434 == 1) {
-                    Class40_Sub6.aClass64_2098 = new Class64(((Socket) FloorDecoration.aSignlinkNode_607.value), ISAAC.aClass31_521);
+                    Class40_Sub6.aClass64_2098 = new Class64((Socket) FloorDecoration.aSignlinkNode_607.value, ISAAC.aClass31_521);
                     Class40_Sub3.anInt2032 = 2;
                     FloorDecoration.aSignlinkNode_607 = null;
                 }
@@ -94,12 +94,12 @@ public class SpotAnimDefinition extends SubNode {
                 aClass1_2297 = null;
             }
             if (Class40_Sub3.anInt2032 == 2) {
-                long l = (Class34.aLong853 = Native.username.method58((byte) 93));
+                long l = Class34.aLong853 = RSString.method58(Native.username.toString());
                 SceneCluster.packetBuffer.currentPosition = 0;
                 SceneCluster.packetBuffer.putByte(14);
                 int i = (int) (0x1fL & l >> 16);
                 SceneCluster.packetBuffer.putByte(i);
-                Class40_Sub6.aClass64_2098.method1010(2, (byte) -19, 0, (SceneCluster.packetBuffer.buffer));
+                Class40_Sub6.aClass64_2098.method1010(2, (byte) -19, 0, SceneCluster.packetBuffer.buffer);
                 Class40_Sub3.anInt2032 = 3;
                 IncomingPackets.incomingPacketBuffer.currentPosition = 0;
             }
@@ -115,7 +115,7 @@ public class SpotAnimDefinition extends SubNode {
             if (Class40_Sub3.anInt2032 == 4) {
                 if (IncomingPackets.incomingPacketBuffer.currentPosition < 8) {
                     int i = Class40_Sub6.aClass64_2098.method1014(-127);
-                    if ((i > -IncomingPackets.incomingPacketBuffer.currentPosition + 8)) {
+                    if (i > -IncomingPackets.incomingPacketBuffer.currentPosition + 8) {
                         i = -IncomingPackets.incomingPacketBuffer.currentPosition + 8;
                     }
                     if (i > 0) {
@@ -142,7 +142,7 @@ public class SpotAnimDefinition extends SubNode {
                 SceneCluster.packetBuffer.putIntBE(seeds[2]);
                 SceneCluster.packetBuffer.putIntBE(seeds[3]);
                 SceneCluster.packetBuffer.putIntBE(ISAAC.aClass31_521.uid);
-                SceneCluster.packetBuffer.putLongBE(Native.username.method58((byte) 97));
+                SceneCluster.packetBuffer.putLongBE(RSString.method58(Native.username.toString()));
                 SceneCluster.packetBuffer.method505(Native.password);
                 if (Configuration.RSA_ENABLED) {
                     SceneCluster.packetBuffer.applyRSA(Configuration.RSA_MODULUS, Configuration.RSA_PUBLIC_KEY);
@@ -158,13 +158,13 @@ public class SpotAnimDefinition extends SubNode {
                 Class61.packetBuffer.putByte(VertexNormal.lowMemory ? 1 : 0);
                 Class61.packetBuffer.putIntBE(FloorDecoration.aClass6_Sub1_605.anInt216);
                 Class61.packetBuffer.putIntBE(Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000.anInt216);
-                Class61.packetBuffer.putIntBE((IdentityKit.aClass6_Sub1_2609.anInt216));
+                Class61.packetBuffer.putIntBE(IdentityKit.aClass6_Sub1_2609.anInt216);
                 Class61.packetBuffer.putIntBE(Class65.aClass6_Sub1_1533.anInt216);
                 Class61.packetBuffer.putIntBE(Actor.aClass6_Sub1_3157.anInt216);
-                Class61.packetBuffer.putIntBE((Renderable.aClass6_Sub1_2857.anInt216));
+                Class61.packetBuffer.putIntBE(Renderable.aClass6_Sub1_2857.anInt216);
                 Class61.packetBuffer.putIntBE(Class55.aClass6_Sub1_1286.anInt216);
-                Class61.packetBuffer.putIntBE((UnderlayDefinition.aClass6_Sub1_2571.anInt216));
-                Class61.packetBuffer.putIntBE((ActorDefinition.aClass6_Sub1_2377.anInt216));
+                Class61.packetBuffer.putIntBE(UnderlayDefinition.aClass6_Sub1_2571.anInt216);
+                Class61.packetBuffer.putIntBE(ActorDefinition.aClass6_Sub1_2377.anInt216);
                 Class61.packetBuffer.putIntBE(SceneCluster.aClass6_Sub1_773.anInt216);
                 Class61.packetBuffer.putIntBE(RSCanvas.aClass6_Sub1_48.anInt216);
                 Class61.packetBuffer.putIntBE(VertexNormal.aClass6_Sub1_1104.anInt216);
@@ -200,13 +200,13 @@ public class SpotAnimDefinition extends SubNode {
                     Class40_Sub3.anInt2032 = 7;
                 }
             }
-            if (Class40_Sub3.anInt2032 == 7 && (Class40_Sub6.aClass64_2098.method1014(-128) > 0)) {
+            if (Class40_Sub3.anInt2032 == 7 && Class40_Sub6.aClass64_2098.method1014(-128) > 0) {
                 Class33.anInt784 = 180 + Class40_Sub6.aClass64_2098.method1016() * 60;
                 Class40_Sub3.anInt2032 = 8;
             }
             if (Class40_Sub3.anInt2032 == 8) {
                 Main.anInt1756 = 0;
-                Class33.method411((RSString.linkRSStrings((new RSString[]{HashTable.method334(Class33.anInt784 / 60), Class38.aClass1_883}))), Class8.aClass1_294, RSCanvas.aClass1_67, (byte) -82);
+                Class33.method411(RSString.linkRSStrings(new RSString[]{HashTable.intToStr(Class33.anInt784 / 60), Class38.aClass1_883}), Class8.aClass1_294, RSCanvas.aClass1_67, (byte) -82);
                 if (--Class33.anInt784 <= 0) {
                     Class40_Sub3.anInt2032 = 0;
                 }
@@ -227,7 +227,7 @@ public class SpotAnimDefinition extends SubNode {
                     Class40_Sub3.anInt2032 = 10;
                 }
                 if (Class40_Sub3.anInt2032 == 10) {
-                    if ((Class40_Sub6.aClass64_2098.method1014(-124) >= IncomingPackets.incomingPacketSize)) {
+                    if (Class40_Sub6.aClass64_2098.method1014(-124) >= IncomingPackets.incomingPacketSize) {
                         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                         Class40_Sub6.aClass64_2098.method1008(0, IncomingPackets.incomingPacketSize, -128, IncomingPackets.incomingPacketBuffer.buffer);
                         Main.method44();
@@ -270,7 +270,7 @@ public class SpotAnimDefinition extends SubNode {
     public static SpotAnimDefinition forId(int arg0, int arg1) {
         if (arg1 != 13)
             Class37.method436(-34);
-        SpotAnimDefinition spotAnimDefinition = ((SpotAnimDefinition) Class43.aClass9_1014.get((long) arg0, (byte) 59));
+        SpotAnimDefinition spotAnimDefinition = (SpotAnimDefinition) Class43.aClass9_1014.get((long) arg0, (byte) 59);
         if (spotAnimDefinition != null)
             return spotAnimDefinition;
         byte[] is = InteractiveObject.aCacheIndex_488.getFile(arg0, 13);
@@ -308,9 +308,9 @@ public class SpotAnimDefinition extends SubNode {
     }
 
     public Model method549(int arg0, int arg1) {
-        Model class40_sub5_sub17_sub5 = ((Model) Class34.aClass9_851.get((long) id, (byte) 50));
+        Model class40_sub5_sub17_sub5 = (Model) Class34.aClass9_851.get((long) id, (byte) 50);
         if (class40_sub5_sub17_sub5 == null) {
-            class40_sub5_sub17_sub5 = Model.getModel((UnderlayDefinition.aCacheIndex_2582), modelId, 0);
+            class40_sub5_sub17_sub5 = Model.getModel(UnderlayDefinition.aCacheIndex_2582, modelId, 0);
             if (class40_sub5_sub17_sub5 == null) {
                 return null;
             }
@@ -327,7 +327,7 @@ public class SpotAnimDefinition extends SubNode {
         if (animationId == -1 || arg0 == -1) {
             class40_sub5_sub17_sub5_0_ = class40_sub5_sub17_sub5.method806(true);
         } else {
-            class40_sub5_sub17_sub5_0_ = (Class68_Sub1.method1050(animationId, 2).method597((byte) -87, class40_sub5_sub17_sub5, arg0));
+            class40_sub5_sub17_sub5_0_ = Class68_Sub1.method1050(animationId, 2).method597((byte) -87, class40_sub5_sub17_sub5, arg0);
         }
         if (arg1 != 2) {
             return null;

@@ -61,14 +61,14 @@ public class Rasterizer extends SubNode {
     }
 
     public static void fillOval(int x, int y, int w, int h, int rgb, int segments) {
-        int cx = x + (w / 2);
-        int cy = y + (h / 2);
+        int cx = x + w / 2;
+        int cy = y + h / 2;
 
         for (int i = 0; i < segments; i++) {
             int angle = (i << 11) / segments;
 
-            tmpX[i] = x + ((w * Model.COSINE[angle]) >> 16);
-            tmpY[i] = y + ((h * Model.SINE[angle]) >> 16);
+            tmpX[i] = x + (w * Model.COSINE[angle] >> 16);
+            tmpY[i] = y + (h * Model.SINE[angle] >> 16);
         }
 
         for (int i = 1; i < segments; i++) {
@@ -147,7 +147,7 @@ public class Rasterizer extends SubNode {
             int red = (destinationPixels[pixelOffset] >> 16 & 0xff) * a;
             int green = (destinationPixels[pixelOffset] >> 8 & 0xff) * a;
             int blue = (destinationPixels[pixelOffset] & 0xff) * a;
-            int rgba = ((r + red >> 8 << 16) + (g + green >> 8 << 8) + (b + blue >> 8));
+            int rgba = (r + red >> 8 << 16) + (g + green >> 8 << 8) + (b + blue >> 8);
             destinationPixels[pixelOffset++] = rgba;
         }
     }
@@ -186,7 +186,7 @@ public class Rasterizer extends SubNode {
             int red = (destinationPixels[pixelOffset] >> 16 & 0xff) * a;
             int green = (destinationPixels[pixelOffset] >> 8 & 0xff) * a;
             int blue = (destinationPixels[pixelOffset] & 0xff) * a;
-            int rgba = ((r + red >> 8 << 16) + (g + green >> 8 << 8) + (b + blue >> 8));
+            int rgba = (r + red >> 8 << 16) + (g + green >> 8 << 8) + (b + blue >> 8);
             destinationPixels[pixelOffset] = rgba;
             pixelOffset += destinationWidth;
         }
@@ -220,7 +220,7 @@ public class Rasterizer extends SubNode {
                 int red = (destinationPixels[pixel] >> 16 & 0xff) * a;
                 int green = (destinationPixels[pixel] >> 8 & 0xff) * a;
                 int blue = (destinationPixels[pixel] & 0xff) * a;
-                int rgba = ((r + red >> 8 << 16) + (g + green >> 8 << 8) + (b + blue >> 8));
+                int rgba = (r + red >> 8 << 16) + (g + green >> 8 << 8) + (b + blue >> 8);
                 destinationPixels[pixel++] = rgba;
             }
             pixel += widthOffset;

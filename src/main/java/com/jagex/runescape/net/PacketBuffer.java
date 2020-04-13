@@ -14,7 +14,7 @@ public class PacketBuffer extends Buffer {
     public static int anInt2231 = 1;
     public static boolean hiddenButtonTest = false;
     public static Effect[] effects = new Effect[50];
-    public static String str_Please_Wait = "Please wait)3)3)3";
+    public static String str_Please_Wait = "Please wait...";
     public static long aLong2241 = 0L;
     public static int currentSound = 0;
     public static Class40_Sub5_Sub13 aClass40_Sub5_Sub13_2250;
@@ -112,7 +112,7 @@ public class PacketBuffer extends Buffer {
                 i_5_ = -i_5_;
             if(i_5_ > 9)
                 i_5_ += 39;
-            is[-1 + (i_3_ - i_4_)] = (byte) (48 + i_5_);
+            is[-1 + i_3_ - i_4_] = (byte) (48 + i_5_);
         }
         RSString class1 = new RSString();
         class1.chars = is;
@@ -129,7 +129,7 @@ public class PacketBuffer extends Buffer {
     }
 
     public int getPacket() {
-        return 0xff & (buffer[currentPosition++] - inCipher.nextInt());
+        return 0xff & buffer[currentPosition++] - inCipher.nextInt();
     }
 
     public int getBits(int arg0) {
@@ -142,14 +142,14 @@ public class PacketBuffer extends Buffer {
             arg0 -= i_1_;
         }
         if(arg0 != i_1_)
-            i_0_ += (VarbitDefinition.anIntArray2361[arg0] & buffer[i] >> -arg0 + i_1_);
+            i_0_ += VarbitDefinition.anIntArray2361[arg0] & buffer[i] >> -arg0 + i_1_;
         else
-            i_0_ += (buffer[i] & VarbitDefinition.anIntArray2361[i_1_]);
+            i_0_ += buffer[i] & VarbitDefinition.anIntArray2361[i_1_];
         return i_0_;
     }
 
     public void putPacket(int packetId) {
-        buffer[currentPosition++] = (byte) ((packetId + outCipher.nextInt()) & 0xff);
+        buffer[currentPosition++] = (byte) (packetId + outCipher.nextInt() & 0xff);
     }
 
     public void initInCipher(int[] seed) {

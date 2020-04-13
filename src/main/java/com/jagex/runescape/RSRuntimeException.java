@@ -10,7 +10,7 @@ import java.awt.*;
 public class RSRuntimeException extends RuntimeException {
     public static int anInt1641 = 0;
     public static int lastActiveInvInterface = 0;
-    public static RSString str_select = RSString.CreateString("Select");
+    public static String str_select = "Select";
     public static int anInt1651 = 0;
     /*synthetic*/ public static Class aClass1654;
 
@@ -37,7 +37,7 @@ public class RSRuntimeException extends RuntimeException {
                     if(arg0 <= 81)
                         method1054((byte) -96);
                     SubNode.anInt2081 += CollisionMap.anInt141 * i;
-                    int i_0_ = ((-(2000 * CollisionMap.anInt141) + SubNode.anInt2081) / 1000);
+                    int i_0_ = (-(2000 * CollisionMap.anInt141) + SubNode.anInt2081) / 1000;
                     if(i_0_ > 0) {
                         if(FloorDecoration.aClass40_Sub9_608 != null)
                             FloorDecoration.aClass40_Sub9_608.method843(i_0_);

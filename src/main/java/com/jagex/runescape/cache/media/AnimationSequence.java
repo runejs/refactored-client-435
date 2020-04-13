@@ -11,7 +11,7 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class AnimationSequence extends SubNode {
-    public static RSString requestcmd_tradereq = RSString.CreateString(":tradereq:");
+    public static String requestcmd_tradereq = ":tradereq:";
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2474;
     public static int anInt2480 = 0;
     public static ImageRGB minimapCompass;
@@ -56,7 +56,7 @@ public class AnimationSequence extends SubNode {
             for(int i_1_ = 0; i_1_ < 64; i_1_++) {
                 for(int i_2_ = 0; i_2_ < 64; i_2_++) {
                     if(arg4 + i_1_ > 0 && i_1_ + arg4 < 103 && arg5 + i_2_ > 0 && i_2_ + arg5 < 103)
-                        arg0[i].clippingData[i_1_ + arg4][(i_2_ + arg5)] = HuffmanEncoding.method1021((arg0[i].clippingData[i_1_ + arg4][i_2_ + arg5]), -16777217);
+                        arg0[i].clippingData[i_1_ + arg4][i_2_ + arg5] = HuffmanEncoding.method1021(arg0[i].clippingData[i_1_ + arg4][i_2_ + arg5], -16777217);
                 }
             }
         }
@@ -75,13 +75,13 @@ public class AnimationSequence extends SubNode {
         int i = 0x7fff & arg1 >> 14;
         if(arg2 > -9)
             method596(-4, -74, (byte) -44, -62);
-        int i_14_ = (Npc.currentScene.getArrangement(Player.worldLevel, arg0, arg3, arg1));
+        int i_14_ = Npc.currentScene.getArrangement(Player.worldLevel, arg0, arg3, arg1);
         if(i_14_ == -1)
             return false;
         int i_15_ = 0x3 & i_14_ >> 6;
         int i_16_ = 0x1f & i_14_;
         if(i_16_ != 10 && i_16_ != 11 && i_16_ != 22)
-            Class38_Sub1.doWalkTo(0, 0, (Player.localPlayer.pathY[0]), arg0, 1 + i_16_, true, i_15_, 0, (Player.localPlayer.pathX[0]), arg3, 2);
+            Class38_Sub1.doWalkTo(0, 0, Player.localPlayer.pathY[0], arg0, 1 + i_16_, true, i_15_, 0, Player.localPlayer.pathX[0], arg3, 2);
         else {
             GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
             int i_17_ = gameObjectDefinition.blockingMask;
@@ -96,7 +96,7 @@ public class AnimationSequence extends SubNode {
                 i_18_ = gameObjectDefinition.sizeY;
                 i_19_ = gameObjectDefinition.sizeX;
             }
-            Class38_Sub1.doWalkTo(i_18_, i_17_, (Player.localPlayer.pathY[0]), arg0, 0, true, 0, i_19_, (Player.localPlayer.pathX[0]), arg3, 2);
+            Class38_Sub1.doWalkTo(i_18_, i_17_, Player.localPlayer.pathY[0], arg0, 0, true, 0, i_19_, Player.localPlayer.pathX[0], arg3, 2);
         }
         Class40_Sub11.crossX = Class57.clickX;
         LinkedList.crossType = 2;
@@ -186,13 +186,13 @@ public class AnimationSequence extends SubNode {
         if(arg1 == 1) {
             int i_5_ = arg2.getUnsignedByte();
             animationLengths = new int[i_5_];
-            for(int i_6_ = 0; (i_5_ > i_6_); i_6_++)
+            for(int i_6_ = 0; i_5_ > i_6_; i_6_++)
                 animationLengths[i_6_] = arg2.getUnsignedShortBE();
             anIntArray2485 = new int[i_5_];
-            for(int i_7_ = 0; (i_5_ > i_7_); i_7_++)
+            for(int i_7_ = 0; i_5_ > i_7_; i_7_++)
                 anIntArray2485[i_7_] = arg2.getUnsignedShortBE();
-            for(int i_8_ = 0; (i_8_ < i_5_); i_8_++)
-                anIntArray2485[i_8_] = ((arg2.getUnsignedShortBE() << 16) + anIntArray2485[i_8_]);
+            for(int i_8_ = 0; i_8_ < i_5_; i_8_++)
+                anIntArray2485[i_8_] = (arg2.getUnsignedShortBE() << 16) + anIntArray2485[i_8_];
         } else if(arg1 == 2)
             frameStep = arg2.getUnsignedShortBE();
         else if(arg1 == 3) {
@@ -216,10 +216,10 @@ public class AnimationSequence extends SubNode {
                         else if(arg1 == 12) {
                             int i_9_ = arg2.getUnsignedByte();
                             anIntArray2479 = new int[i_9_];
-                            for(int i_10_ = 0; ((i_10_ < i_9_)); i_10_++)
+                            for(int i_10_ = 0; i_10_ < i_9_; i_10_++)
                                 anIntArray2479[i_10_] = arg2.getUnsignedShortBE();
-                            for(int i_11_ = 0; ((i_9_ > i_11_)); i_11_++)
-                                anIntArray2479[i_11_] = ((arg2.getUnsignedShortBE() << 16) + anIntArray2479[i_11_]);
+                            for(int i_11_ = 0; i_9_ > i_11_; i_11_++)
+                                anIntArray2479[i_11_] = (arg2.getUnsignedShortBE() << 16) + anIntArray2479[i_11_];
                         }
                     } else
                         anInt2476 = arg2.getUnsignedByte();

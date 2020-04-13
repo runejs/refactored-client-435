@@ -32,9 +32,9 @@ public class VarbitDefinition extends SubNode {
         if(arg4 == 0)
             return arg0;
         if(arg4 == 1)
-            return 1 + (-arg3 + 7 - arg2);
+            return 1 + -arg3 + 7 - arg2;
         if(arg4 == 2)
-            return -arg1 + 1 + (-arg0 + 7);
+            return -arg1 + 1 + -arg0 + 7;
         return arg2;
     }
 
@@ -60,7 +60,7 @@ public class VarbitDefinition extends SubNode {
                 else {
                     int i = Class29.method372(113, MouseHandler.anInt1450);
                     i -= Class39.anInt909;
-                    Buffer.anInt1982 = (-1 + (arg2 + 3600 + i)) / arg2;
+                    Buffer.anInt1982 = (-1 + arg2 + 3600 + i) / arg2;
                 }
                 Player.aByteArray3270 = arg3;
                 PacketBuffer.anInt2258 = arg0;

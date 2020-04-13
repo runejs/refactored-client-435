@@ -302,7 +302,7 @@ public class Class21 {
                         i_67_ = is_30_[i_66_ - is_29_[i_64_]];
                     } while(i_67_ == 0 || i_67_ == 1);
                     i_68_++;
-                    i_33_ = (arg0.aByteArray814[arg0.aByteArray840[arg0.anIntArray818[0]] & 0xff]);
+                    i_33_ = arg0.aByteArray814[arg0.aByteArray840[arg0.anIntArray818[0]] & 0xff];
                     arg0.anIntArray845[i_33_ & 0xff] += i_68_;
                     for(/**/; i_68_ > 0; i_68_--) {
                         OverlayDefinition.anIntArray2324[i_62_] = i_33_ & 0xff;
@@ -333,7 +333,7 @@ public class Class21 {
                         arg0.anIntArray818[i_74_]++;
                         for(/**/; i_74_ > 0; i_74_--) {
                             arg0.anIntArray818[i_74_]--;
-                            arg0.aByteArray840[arg0.anIntArray818[i_74_]] = (arg0.aByteArray840[arg0.anIntArray818[i_74_ - 1] + 16 - 1]);
+                            arg0.aByteArray840[arg0.anIntArray818[i_74_]] = arg0.aByteArray840[arg0.anIntArray818[i_74_ - 1] + 16 - 1];
                         }
                         arg0.anIntArray818[0]--;
                         arg0.aByteArray840[arg0.anIntArray818[0]] = i_32_;
@@ -341,14 +341,14 @@ public class Class21 {
                             int i_77_ = 4095;
                             for(int i_78_ = 15; i_78_ >= 0; i_78_--) {
                                 for(int i_79_ = 15; i_79_ >= 0; i_79_--) {
-                                    arg0.aByteArray840[i_77_] = (arg0.aByteArray840[(arg0.anIntArray818[i_78_] + i_79_)]);
+                                    arg0.aByteArray840[i_77_] = arg0.aByteArray840[arg0.anIntArray818[i_78_] + i_79_];
                                     i_77_--;
                                 }
                                 arg0.anIntArray818[i_78_] = i_77_ + 1;
                             }
                         }
                     }
-                    arg0.anIntArray845[(arg0.aByteArray814[i_32_ & 0xff] & 0xff)]++;
+                    arg0.anIntArray845[arg0.aByteArray814[i_32_ & 0xff] & 0xff]++;
                     OverlayDefinition.anIntArray2324[i_62_] = arg0.aByteArray814[i_32_ & 0xff] & 0xff;
                     i_62_++;
                     if(i_57_ == 0) {
@@ -378,7 +378,7 @@ public class Class21 {
                 arg0.anIntArray816[i_82_] += arg0.anIntArray816[i_82_ - 1];
             for(int i_83_ = 0; i_83_ < i_62_; i_83_++) {
                 i_33_ = (byte) (OverlayDefinition.anIntArray2324[i_83_] & 0xff);
-                OverlayDefinition.anIntArray2324[(arg0.anIntArray816[i_33_ & 0xff])] |= i_83_ << 8;
+                OverlayDefinition.anIntArray2324[arg0.anIntArray816[i_33_ & 0xff]] |= i_83_ << 8;
                 arg0.anIntArray816[i_33_ & 0xff]++;
             }
             arg0.anInt820 = OverlayDefinition.anIntArray2324[arg0.anInt801] >> 8;
@@ -434,7 +434,7 @@ public class Class21 {
                 i = i_93_;
                 break;
             }
-            arg1.anInt834 = (arg1.anInt834 << 8 | arg1.aByteArray830[arg1.anInt832] & 0xff);
+            arg1.anInt834 = arg1.anInt834 << 8 | arg1.aByteArray830[arg1.anInt832] & 0xff;
             arg1.anInt847 += 8;
             arg1.anInt832++;
             arg1.anInt831++;

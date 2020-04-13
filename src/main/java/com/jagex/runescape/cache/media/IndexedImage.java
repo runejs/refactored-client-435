@@ -102,7 +102,7 @@ public class IndexedImage extends Rasterizer {
             rasterizerPixel += yOffset * Rasterizer.destinationWidth;
         }
         if (y + newHeight > Rasterizer.viewportBottom)
-            newHeight -= (y + newHeight) - Rasterizer.viewportBottom;
+            newHeight -= y + newHeight - Rasterizer.viewportBottom;
         if (x < Rasterizer.viewportLeft) {
             int xOffset = Rasterizer.viewportLeft - x;
             newWidth -= xOffset;
@@ -113,7 +113,7 @@ public class IndexedImage extends Rasterizer {
             rasterizerPixelOffset += xOffset;
         }
         if (x + newWidth > Rasterizer.viewportRight) {
-            int xOffset = (x + newWidth) - Rasterizer.viewportRight;
+            int xOffset = x + newWidth - Rasterizer.viewportRight;
             newWidth -= xOffset;
             pixelOffset += xOffset;
             rasterizerPixelOffset += xOffset;

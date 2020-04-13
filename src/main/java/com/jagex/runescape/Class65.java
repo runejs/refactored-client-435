@@ -17,7 +17,7 @@ public class Class65 {
     public static CRC32 aCRC32_1531 = new CRC32();
     public static CacheIndex_Sub1 aClass6_Sub1_1533;
     public static RSString aClass1_1535 = RSString.CreateString("Please reload this page)3");
-    public static RSString aClass1_1536 = RSString.CreateString(" x ");
+    public static String aClass1_1536 =" x ";
     public static int cameraVertical;
     public static RSString aClass1_1538 = aClass1_1535;
 

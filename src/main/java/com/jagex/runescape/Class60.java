@@ -59,7 +59,7 @@ public class Class60 {
         int width = Class40_Sub5_Sub17_Sub6.fontBold.getStringWidth(Widget.str_Choose_Option);
         for(int i = 0; i < ActorDefinition.menuActionRow; i++) {
             int rowWidth = Class40_Sub5_Sub17_Sub6.fontBold.getTextDisplayedWidth(Landscape.menuActionTexts[i]);
-            if((width < rowWidth))
+            if(width < rowWidth)
                 width = rowWidth;
         }
         width += 8;
@@ -86,7 +86,7 @@ public class Class60 {
             CollisionMap.menuHeight = 22 + 15 * ActorDefinition.menuActionRow;
             Class40_Sub5_Sub17_Sub1.menuScreenArea = 1;
             int y = -205 + RSString.clickY;
-            int x = -(width / 2) + (-553 + Class57.clickX);
+            int x = -(width / 2) + -553 + Class57.clickX;
             if(x < 0)
                 x = 0;
             else if(width + x > 190)
@@ -171,7 +171,7 @@ public class Class60 {
                     Class26.anInt622 = 3;
                 }
                 i_14_ = 260;
-                if(i_11_ == 1 && (i >= -75 + i_14_) && i <= 75 + i_14_ && (i_12_ >= -20 + i_15_) && (20 + i_15_ >= i_12_)) {
+                if(i_11_ == 1 && i >= -75 + i_14_ && i <= 75 + i_14_ && i_12_ >= -20 + i_15_ && 20 + i_15_ >= i_12_) {
                     Class26.anInt622 = 2;
                     Node.anInt947 = 0;
                     Class22_Sub2.aClass1_1879 = Node.aClass1_967;
@@ -182,53 +182,53 @@ public class Class60 {
                 int i_16_ = 60;
                 int i_17_ = 100;
                 i_16_ += 30;
-                if(i_11_ == 1 && (-15 + i_16_ <= i_12_) && (i_12_ < i_16_))
+                if(i_11_ == 1 && -15 + i_16_ <= i_12_ && i_12_ < i_16_)
                     Node.anInt947 = 0;
                 int i_18_ = 150;
                 i_16_ += 15;
-                if(i_11_ == 1 && (-15 + i_16_ <= i_12_) && i_16_ > i_12_)
+                if(i_11_ == 1 && -15 + i_16_ <= i_12_ && i_16_ > i_12_)
                     Node.anInt947 = 1;
                 i_16_ += 15;
-                if(i_11_ == 1 && i_17_ + -75 <= i && i <= i_17_ + 75 && (i_12_ >= i_18_ + -20) && (i_12_ <= i_18_ + 20)) {
+                if(i_11_ == 1 && i_17_ + -75 <= i && i <= i_17_ + 75 && i_12_ >= i_18_ + -20 && i_12_ <= i_18_ + 20) {
                     Native.username = Native.username.method62().method85();
                     Class33.method411(Node.aClass1_964, Node.aClass1_958, Class40_Sub5_Sub17_Sub1.aClass1_3009, (byte) 106);
                     OverlayDefinition.method559(20);
                 } else {
                     i_17_ = 260;
-                    if(i_11_ == 1 && i >= -75 + i_17_ && (i_17_ + 75 >= i) && (i_12_ >= -20 + i_18_) && (i_12_ <= i_18_ + 20)) {
+                    if(i_11_ == 1 && i >= -75 + i_17_ && i_17_ + 75 >= i && i_12_ >= -20 + i_18_ && i_12_ <= i_18_ + 20) {
                         Native.username = Configuration.getUsername();
                         Native.password = Configuration.getPassword();
                         Class26.anInt622 = 0;
                     }
                     while(Class34.method416((byte) -104)) {
                         boolean bool = false;
-                        for(int i_19_ = 0; (Native.supportedCharacters.length() > i_19_); i_19_++) {
+                        for(int i_19_ = 0; Native.supportedCharacters.length() > i_19_; i_19_++) {
                             if(Native.supportedCharacters.charAt(i_19_) == Class59.anInt1388) {
                                 bool = true;
                                 break;
                             }
                         }
                         if(Node.anInt947 == 0) {
-                            if((ItemDefinition.anInt2854 == 85) && (Native.username.length() > 0))
-                                Native.username = (Native.username.substring(0, -1 + Native.username.length()));
-                            if(ItemDefinition.anInt2854 == 84 || (ItemDefinition.anInt2854 == 80))
+                            if(ItemDefinition.anInt2854 == 85 && Native.username.length() > 0)
+                                Native.username = Native.username.substring(0, -1 + Native.username.length());
+                            if(ItemDefinition.anInt2854 == 84 || ItemDefinition.anInt2854 == 80)
                                 Node.anInt947 = 1;
                             if(bool && Native.username.length() < 12)
-                                Native.username = Native.username.method70(Class59.anInt1388);
+                                Native.username = Native.username.addChar(Class59.anInt1388);
                         } else if(Node.anInt947 == 1) {
                             if(ItemDefinition.anInt2854 == 85 && Native.password.length() > 0)
-                                Native.password = (Native.password.substring(0, Native.password.length() + -1));
+                                Native.password = Native.password.substring(0, Native.password.length() + -1);
                             if(ItemDefinition.anInt2854 == 84 || ItemDefinition.anInt2854 == 80)
                                 Node.anInt947 = 0;
                             if(bool && Native.password.length() < 20)
-                                Native.password = Native.password.method70(Class59.anInt1388);
+                                Native.password = Native.password.addChar(Class59.anInt1388);
                         }
                     }
                 }
             } else if(Class26.anInt622 == 3) {
                 int i_20_ = 150;
                 int i_21_ = 180;
-                if(i_11_ == 1 && (i >= -75 + i_21_) && 75 + i_21_ >= i && -20 + i_20_ <= i_12_ && (20 + i_20_ >= i_12_))
+                if(i_11_ == 1 && i >= -75 + i_21_ && 75 + i_21_ >= i && -20 + i_20_ <= i_12_ && 20 + i_20_ >= i_12_)
                     Class26.anInt622 = 0;
             }
         }

@@ -7,17 +7,16 @@ import com.jagex.runescape.language.English;
 
 public class VertexNormal {
     public static int menuWidth;
-    public static RSString aClass1_1090 = RSString.CreateString("Close");
-    public static RSString aClass1_1093 = RSString.CreateString("Prepared sound engine");
-    public static RSString aClass1_1097 = RSString.CreateString("wave:");
-    public static RSString aClass1_1099 = RSString.CreateString("Loading fonts )2 ");
+    public static String aClass1_1090 = "Close";
+    public static String aClass1_1097 = "wave:";
+    public static String aClass1_1099 = "Loading fonts - ";
     public static Cache aClass9_1102 = new Cache(500);
     public static CacheIndex_Sub1 aClass6_Sub1_1104;
-    public static RSString aClass1_1105 = aClass1_1093;
+    public static String aClass1_1105 = "Prepared sound engine";
     public static boolean lowMemory = false;
     public static RSString aClass1_1113 = RSString.CreateString("mapback");
-    public static RSString aClass1_1114 = RSString.CreateString("@lre@");
-    public static RSString aClass1_1117 = RSString.CreateString(" ");
+    public static String aClass1_1114 = "@lre@";
+    public static String aClass1_1117 = " ";
 
     public int y;
     public int x;
@@ -28,7 +27,6 @@ public class VertexNormal {
         aClass1_1114 = null;
         aClass1_1117 = null;
         aClass1_1090 = null;
-        aClass1_1093 = null;
         English.moderatorOptionMutePlayerFor48HoursOFF = null;
         aClass1_1099 = null;
         aClass1_1105 = null;

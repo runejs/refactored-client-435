@@ -55,16 +55,16 @@ public class Filter {
     }
 
     public float adapt_mag(int dir, int k, float t) {
-        float f = (pair_mag[dir][0][k] + t * (pair_mag[dir][1][k] - pair_mag[dir][0][k]));
+        float f = pair_mag[dir][0][k] + t * (pair_mag[dir][1][k] - pair_mag[dir][0][k]);
         f *= 0.0015258789F;
-        return 1.0F - (float) Math.pow(10.0, (-f / 20.0F));
+        return 1.0F - (float) Math.pow(10.0, -f / 20.0F);
     }
 
     public int compute(int dir, float arg1) {
         if(dir == 0) {
-            float _a0 = (unity[0] + (unity[1] - unity[0]) * arg1);
+            float _a0 = unity[0] + (unity[1] - unity[0]) * arg1;
             _a0 *= 0.0030517578F;
-            _inv_unity = (float) Math.pow(0.1, (_a0 / 20.0F));
+            _inv_unity = (float) Math.pow(0.1, _a0 / 20.0F);
             inv_unity = (int) (_inv_unity * 65536.0F);
         }
         if(num_pairs[dir] == 0)
@@ -74,12 +74,12 @@ public class Filter {
         _coef[dir][1] = f * f;
         for(int i = 1; i < num_pairs[dir]; i++) {
             f = adapt_mag(dir, i, arg1);
-            float f_0_ = (-2.0F * f * (float) Math.cos(adapt_phase(dir, i, arg1)));
+            float f_0_ = -2.0F * f * (float) Math.cos(adapt_phase(dir, i, arg1));
             float f_1_ = f * f;
             _coef[dir][i * 2 + 1] = _coef[dir][i * 2 - 1] * f_1_;
-            _coef[dir][i * 2] = (_coef[dir][i * 2 - 1] * f_0_ + _coef[dir][i * 2 - 2] * f_1_);
+            _coef[dir][i * 2] = _coef[dir][i * 2 - 1] * f_0_ + _coef[dir][i * 2 - 2] * f_1_;
             for(int i_2_ = i * 2 - 1; i_2_ >= 2; i_2_--)
-                _coef[dir][i_2_] += (_coef[dir][i_2_ - 1] * f_0_ + _coef[dir][i_2_ - 2] * f_1_);
+                _coef[dir][i_2_] += _coef[dir][i_2_ - 1] * f_0_ + _coef[dir][i_2_ - 2] * f_1_;
             _coef[dir][1] += _coef[dir][0] * f_0_ + f_1_;
             _coef[dir][0] += f_0_;
         }
@@ -93,7 +93,7 @@ public class Filter {
     }
 
     public float adapt_phase(int dir, int i, float t) {
-        float f = (pair_phase[dir][0][i] + t * (pair_phase[dir][1][i] - pair_phase[dir][0][i]));
+        float f = pair_phase[dir][0][i] + t * (pair_phase[dir][1][i] - pair_phase[dir][0][i]);
         f *= 1.2207031E-4F;
         return normalize(f);
     }

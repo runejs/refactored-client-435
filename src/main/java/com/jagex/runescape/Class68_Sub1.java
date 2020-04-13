@@ -41,7 +41,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
     }
 
     public static AnimationSequence method1050(int arg0, int arg1) {
-        AnimationSequence animationSequence = ((AnimationSequence) Class40_Sub5_Sub6.aClass9_2439.get((long) arg0, (byte) 47));
+        AnimationSequence animationSequence = (AnimationSequence) Class40_Sub5_Sub6.aClass9_2439.get((long) arg0, (byte) 47);
         if(arg1 != 2)
             anInt2211 = -106;
         if(animationSequence != null)
@@ -68,12 +68,12 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
                 i--;
             else
                 i -= 101;
-            OverlayDefinition.addActionRow(HuffmanEncoding.aClass1_1572, 0, 0, 0, 13, RSString.linkRSStrings((new RSString[]{Class26.aClass1_620, (Class40_Sub11.friendUsernames[i])})));
-            OverlayDefinition.addActionRow(GroundItemTile.aClass1_1354, 0, 0, 0, 18, RSString.linkRSStrings((new RSString[]{Class26.aClass1_620, (Class40_Sub11.friendUsernames[i])})));
+            OverlayDefinition.addActionRow(HuffmanEncoding.aClass1_1572, 0, 0, 0, 13, Class26.aClass1_620+Class40_Sub11.friendUsernames[i]);
+            OverlayDefinition.addActionRow(GroundItemTile.aClass1_1354, 0, 0, 0, 18, Class26.aClass1_620+ Class40_Sub11.friendUsernames[i]);
             return true;
         }
         if(i >= 401 && i <= 500) {
-            OverlayDefinition.addActionRow(HuffmanEncoding.aClass1_1572, 0, 0, 0, 35, (RSString.linkRSStrings((new RSString[]{Class26.aClass1_620, arg1.disabledText}))));
+            OverlayDefinition.addActionRow(HuffmanEncoding.aClass1_1572, 0, 0, 0, 35, Class26.aClass1_620+ arg1.disabledText);
             return true;
         }
         return false;
@@ -84,7 +84,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             aClass1_2209 = null;
         int i = arg2.currentPosition;
         arg2.putSmart(arg1.length);
-        arg2.currentPosition += (IdentityKit.aHuffmanEncoding_2590.encrypt(-18678, 0, arg2.currentPosition, arg1.length, arg1.chars, arg2.buffer));
+        arg2.currentPosition += IdentityKit.aHuffmanEncoding_2590.encrypt(-18678, 0, arg2.currentPosition, arg1.length, arg1.chars, arg2.buffer);
         return -i + arg2.currentPosition;
 
     }

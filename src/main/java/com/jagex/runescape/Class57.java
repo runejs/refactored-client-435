@@ -13,11 +13,11 @@ public class Class57 {
     public static int clickX = 0;
     public static RSString aClass1_1339 = RSString.CreateString("This world is full)3");
     public static int anInt1342 = 0;
-    public static RSString aClass1_1343 = RSString.CreateString("flash3:");
+    public static String aClass1_1343 = "flash3:";
     public static Class64 aClass64_1345;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1346;
     public static int[] anIntArray1347;
-    public static RSString aClass1_1348 = RSString.CreateString("0(U");
+    public static String aClass1_1348 = "0%";
 
     public static void method974() {
         aLinkedList_1332 = null;

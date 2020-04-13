@@ -200,7 +200,7 @@ public class Instrument {
                     int l6 = i_8_ + delays[l5];
                     if(l6 < n_s) {
                         output[l6] += evaluateWave(phases[l5], vol_change * vol_step[l5] >> 15, pitch_env.form);
-                        phases[l5] += ((pitch_change * pitch_step[l5] >> 16) + pitch_base_step[l5]);
+                        phases[l5] += (pitch_change * pitch_step[l5] >> 16) + pitch_base_step[l5];
                     }
                 }
             }
@@ -216,9 +216,9 @@ public class Instrument {
                 int off_step = gating_attack_env.step(n_s);
                 int threshold;
                 if(muted) {
-                    threshold = gating_release_env.start + (((gating_release_env.end - gating_release_env.start) * on_step) >> 8);
+                    threshold = gating_release_env.start + ((gating_release_env.end - gating_release_env.start) * on_step >> 8);
                 } else {
-                    threshold = gating_release_env.start + (((gating_release_env.end - gating_release_env.start) * off_step) >> 8);
+                    threshold = gating_release_env.start + ((gating_release_env.end - gating_release_env.start) * off_step >> 8);
                 }
                 counter += 256;
                 if(counter >= threshold) {
@@ -250,12 +250,12 @@ public class Instrument {
                     delay = n_s - M;
                 }
                 for(/**/; n < delay; n++) {
-                    int i_30_ = (int) (((long) output[n + M] * (long) Filter.inv_unity) >> 16);
+                    int i_30_ = (int) ((long) output[n + M] * (long) Filter.inv_unity >> 16);
                     for(int i_31_ = 0; i_31_ < M; i_31_++) {
-                        i_30_ += (int) (((long) (output[n + M - 1 - i_31_]) * (long) (Filter.coef[0][i_31_])) >> 16);
+                        i_30_ += (int) ((long) output[n + M - 1 - i_31_] * (long) Filter.coef[0][i_31_] >> 16);
                     }
                     for(int i_32_ = 0; i_32_ < n; i_32_++) {
-                        i_30_ -= (int) (((long) output[n - 1 - i_32_] * (long) (Filter.coef[1][i_32_])) >> 16);
+                        i_30_ -= (int) ((long) output[n - 1 - i_32_] * (long) Filter.coef[1][i_32_] >> 16);
                     }
                     output[n] = i_30_;
                     t = filter_env.step(n_s + 1);
@@ -266,12 +266,12 @@ public class Instrument {
                         delay = n_s - M;
                     }
                     for(/**/; n < delay; n++) {
-                        int i_33_ = (int) (((long) output[n + M] * (long) Filter.inv_unity) >> 16);
+                        int i_33_ = (int) ((long) output[n + M] * (long) Filter.inv_unity >> 16);
                         for(int i_34_ = 0; i_34_ < M; i_34_++) {
-                            i_33_ += (int) (((long) (output[n + M - 1 - i_34_]) * (long) (Filter.coef[0][i_34_])) >> 16);
+                            i_33_ += (int) ((long) output[n + M - 1 - i_34_] * (long) Filter.coef[0][i_34_] >> 16);
                         }
                         for(int i_35_ = 0; i_35_ < N; i_35_++) {
-                            i_33_ -= (int) (((long) (output[n - 1 - i_35_]) * (long) (Filter.coef[1][i_35_])) >> 16);
+                            i_33_ -= (int) ((long) output[n - 1 - i_35_] * (long) Filter.coef[1][i_35_] >> 16);
                         }
                         output[n] = i_33_;
                         t = filter_env.step(n_s + 1);
@@ -286,10 +286,10 @@ public class Instrument {
                 for(/**/; n < n_s; n++) {
                     int y = 0;
                     for(int i_37_ = n + M - n_s; i_37_ < M; i_37_++) {
-                        y += (int) (((long) (output[n + M - 1 - i_37_]) * (long) (Filter.coef[0][i_37_])) >> 16);
+                        y += (int) ((long) output[n + M - 1 - i_37_] * (long) Filter.coef[0][i_37_] >> 16);
                     }
                     for(int i_38_ = 0; i_38_ < N; i_38_++) {
-                        y -= (int) (((long) output[n - 1 - i_38_] * (long) (Filter.coef[1][i_38_])) >> 16);
+                        y -= (int) ((long) output[n - 1 - i_38_] * (long) Filter.coef[1][i_38_] >> 16);
                     }
                     output[n] = y;
                     t = filter_env.step(n_s + 1);

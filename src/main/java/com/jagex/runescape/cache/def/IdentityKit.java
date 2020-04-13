@@ -46,11 +46,11 @@ public class IdentityKit extends SubNode {
 
     public static Class40_Sub5_Sub1 method626(int arg0, int arg1) {
         long l = arg0 + (arg1 << 16);
-        Class40_Sub5_Sub1 class40_sub5_sub1 = ((Class40_Sub5_Sub1) Class17.aClass9_449.get(l, (byte) 72));
+        Class40_Sub5_Sub1 class40_sub5_sub1 = (Class40_Sub5_Sub1) Class17.aClass9_449.get(l, (byte) 72);
         if(class40_sub5_sub1 != null) {
             return class40_sub5_sub1;
         }
-        byte[] is = (Class56.aClass6_Sub1_1323.method170(GameObject.aClass1_3044, (RSString.linkRSStrings(new RSString[]{HashTable.method334(arg1), SubNode.aClass1_2084, HashTable.method334(arg0)})), 1));
+        byte[] is = Class56.aClass6_Sub1_1323.method170(GameObject.aClass1_3044, RSString.linkRSStrings(new RSString[]{HashTable.intToStr(arg1), SubNode.aClass1_2084, HashTable.intToStr(arg0)}), 1);
         Buffer class40_sub1 = new Buffer(is);
         class40_sub5_sub1 = new Class40_Sub5_Sub1();
         class40_sub1.currentPosition = class40_sub1.buffer.length + -12;
@@ -81,7 +81,7 @@ public class IdentityKit extends SubNode {
 
     // ???
     public static IdentityKit cache(int arg1) {
-        IdentityKit identityKit = ((IdentityKit) Class68.aClass9_1615.get(arg1, (byte) 107));
+        IdentityKit identityKit = (IdentityKit) Class68.aClass9_1615.get(arg1, (byte) 107);
         if(identityKit != null) {
             return identityKit;
         }
@@ -153,7 +153,7 @@ public class IdentityKit extends SubNode {
         int i = 0;
         for(int i_7_ = 0; i_7_ < 5; i_7_++) {
             if(models[i_7_] != -1) {
-                class40_sub5_sub17_sub5s[i++] = Model.getModel((Class27.aCacheIndex_654), (models[i_7_]), 0);
+                class40_sub5_sub17_sub5s[i++] = Model.getModel(Class27.aCacheIndex_654, models[i_7_], 0);
             }
         }
         Model class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, i);
@@ -178,7 +178,7 @@ public class IdentityKit extends SubNode {
         if(models.length == 1) {
             model = models[0];
         } else {
-            model = (new Model(models, models.length));
+            model = new Model(models, models.length);
         }
         for(int i = 0; i < 6; i++) {
             if(recolorToFind[i] == 0) {

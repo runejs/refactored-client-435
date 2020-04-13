@@ -14,12 +14,12 @@ public class Class55 {
     public static CacheIndex_Sub1 aClass6_Sub1_1286;
     public static int mouseInvInterfaceIndex = 0;
     public static Class48 aClass48_1289;
-    public static RSString aClass1_1291 = RSString.CreateString("slide:");
+    public static String aClass1_1291 = "slide:";
     public static volatile int eventClickX = 0;
     public static int anInt1296 = -1;
     public static RSString aClass1_1298 = RSString.CreateString("Invalid loginserver requested)3");
     public static int anInt1299 = 2301979;
-    public static RSString aClass1_1300 = RSString.CreateString("(U4");
+    public static String aClass1_1300 = "%4";
     public static int destinationY = 0;
 
     public static void method958(int arg0) {
@@ -53,7 +53,7 @@ public class Class55 {
                 String string_4_ = string_2_.substring(1 + i, i_3_);
                 int i_5_ = string_4_.indexOf(".java:");
                 if(i_5_ >= 0) {
-                    string_4_ = (string_4_.substring(0, i_5_) + string_4_.substring(5 + i_5_));
+                    string_4_ = string_4_.substring(0, i_5_) + string_4_.substring(5 + i_5_);
                     string += string_4_ + ' ';
                     continue;
                 }
@@ -69,7 +69,7 @@ public class Class55 {
     }
 
     public static Class40_Sub5_Sub15 method960(byte arg0, int arg1) {
-        Class40_Sub5_Sub15 class40_sub5_sub15 = ((Class40_Sub5_Sub15) Class42.aClass9_998.get((long) arg1, (byte) 101));
+        Class40_Sub5_Sub15 class40_sub5_sub15 = (Class40_Sub5_Sub15) Class42.aClass9_998.get((long) arg1, (byte) 101);
         if(class40_sub5_sub15 != null)
             return class40_sub5_sub15;
         class40_sub5_sub15 = Class35.method421(VarbitDefinition.aCacheIndex_2364, (byte) 79, arg1, Class40_Sub11.aCacheIndex_2162, false);

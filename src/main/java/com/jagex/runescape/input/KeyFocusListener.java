@@ -124,9 +124,9 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             int minutes = seconds / 60;
             seconds %= 60;
             if(seconds < 10) {
-                WallDecoration.fontNormal.drawString((RSString.linkRSStrings(new RSString[]{Class61.aClass1_1432, HashTable.method334(minutes), Native.prefixColonZero, HashTable.method334(seconds)})), 4, 329, 16776960);
+                WallDecoration.fontNormal.drawString(Class61.aClass1_1432 + minutes + Native.prefixColonZero + seconds, 4, 329, 16776960);
             } else {
-                WallDecoration.fontNormal.drawString((RSString.linkRSStrings(new RSString[]{Class61.aClass1_1432, HashTable.method334(minutes), Class43.char_colon, HashTable.method334(seconds)})), 4, 329, 16776960);
+                WallDecoration.fontNormal.drawString(Class61.aClass1_1432 + minutes + Class43.char_colon + seconds, 4, 329, 16776960);
             }
         }
     }
@@ -261,8 +261,8 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             if(obfuscatedKeyCode >= 0 || keyChar >= 0) {
                 int i_5_ = 0x7f & 1 + IdentityKit.anInt2598;
                 if(Class59.anInt1389 != i_5_) {
-                    Class40_Sub6.anIntArray2113[(IdentityKit.anInt2598)] = obfuscatedKeyCode;
-                    Class40_Sub5_Sub13.anIntArray2764[(IdentityKit.anInt2598)] = keyChar;
+                    Class40_Sub6.anIntArray2113[IdentityKit.anInt2598] = obfuscatedKeyCode;
+                    Class40_Sub5_Sub13.anIntArray2764[IdentityKit.anInt2598] = keyChar;
                     IdentityKit.anInt2598 = i_5_;
                 }
             }

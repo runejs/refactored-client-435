@@ -65,7 +65,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     }
 
     public static void method833(int arg0, boolean arg1) {
-        if(((Player.localPlayer.worldX) >> 7 == VarbitDefinition.destinationX) && ((Player.localPlayer.worldY) >> 7 == Class55.destinationY))
+        if(Player.localPlayer.worldX >> 7 == VarbitDefinition.destinationX && Player.localPlayer.worldY >> 7 == Class55.destinationY)
             VarbitDefinition.destinationX = 0;
         int i = Player.localPlayerCount;
         if(arg1)
@@ -76,21 +76,21 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
             Player player;
             if(arg1) {
                 i_1_ = 33538048;
-                player = (Player.localPlayer);
+                player = Player.localPlayer;
             } else {
                 i_1_ = Player.trackedPlayerIndices[i_0_] << 14;
-                player = (Player.trackedPlayers[Player.trackedPlayerIndices[i_0_]]);
+                player = Player.trackedPlayers[Player.trackedPlayerIndices[i_0_]];
             }
             if(player != null && player.isVisible(1)) {
                 player.aBoolean3287 = false;
                 int i_2_ = player.worldX >> 7;
                 int i_3_ = player.worldY >> 7;
-                if(((VertexNormal.lowMemory && Player.localPlayerCount > 50) || Player.localPlayerCount > 200) && !arg1 && (player.anInt3077 == player.idleAnimation))
+                if((VertexNormal.lowMemory && Player.localPlayerCount > 50 || Player.localPlayerCount > 200) && !arg1 && player.anInt3077 == player.idleAnimation)
                     player.aBoolean3287 = true;
                 if(i_2_ >= 0 && i_2_ < 104 && i_3_ >= 0 && i_3_ < 104) {
-                    if((player.aClass40_Sub5_Sub17_Sub5_3265) != null && ((player.anInt3283 <= Node.pulseCycle)) && (Node.pulseCycle < player.anInt3274)) {
+                    if(player.aClass40_Sub5_Sub17_Sub5_3265 != null && player.anInt3283 <= Node.pulseCycle && Node.pulseCycle < player.anInt3274) {
                         player.aBoolean3287 = false;
-                        player.anInt3276 = (Class37.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY));
+                        player.anInt3276 = Class37.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY);
                         Npc.currentScene.method112(Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player, player.anInt3118, i_1_, player.anInt3258, player.anInt3281, player.anInt3262, player.anInt3289);
                     } else {
                         if((0x7f & player.worldX) == 64 && (player.worldY & 0x7f) == 64) {
@@ -98,7 +98,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                                 continue;
                             Class61.anIntArrayArray1435[i_2_][i_3_] = Class40_Sub5_Sub11.anInt2628;
                         }
-                        player.anInt3276 = (Class37.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY));
+                        player.anInt3276 = Class37.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY);
                         Npc.currentScene.method134(Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player, player.anInt3118, i_1_, player.aBoolean3105);
                     }
                 }
@@ -137,7 +137,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
             method834(106, 6);
         if(!aBoolean3237) {
             anInt3233 += arg1;
-            while((anInt3233 > aAnimationSequence_3242.animationLengths[anInt3240])) {
+            while(anInt3233 > aAnimationSequence_3242.animationLengths[anInt3240]) {
                 anInt3233 -= aAnimationSequence_3242.animationLengths[anInt3240];
                 anInt3240++;
                 if(aAnimationSequence_3242.anIntArray2485.length <= anInt3240) {

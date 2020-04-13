@@ -22,8 +22,8 @@ public class LinkedList {
     public static int[] anIntArray1071;
     public static volatile int anInt1073 = 0;
     public static int crossType = 0;
-    public static RSString aClass1_1076 = RSString.CreateString("cyan:");
-    public static RSString aClass1_1077 = RSString.CreateString("(U2");
+    public static String aClass1_1076 = "cyan:";
+    public static String aClass1_1077 = "%2";
     public static Buffer aClass40_Sub1_1081 = new Buffer(8);
     public static Class30 aClass30_1082 = new Class30();
     public static int[] anIntArray1083 = new int[1000];
@@ -53,7 +53,7 @@ public class LinkedList {
     public static String method903(int arg0, byte arg1) {
         if(arg1 >= -13)
             return null;
-        String class1 = HashTable.method334(arg0).toString();
+        String class1 = HashTable.intToStr(arg0).toString();
         for(int i = -3 + class1.length(); i > 0; i -= 3)
             class1 = class1.substring(0, i) + Class33.aClass1_795 + class1.substring(i);
         if(class1.length() > 8)
@@ -82,8 +82,8 @@ public class LinkedList {
 
     public static void method910(int arg0) {
         if(arg0 == -32322) {
-            if(VertexNormal.lowMemory && (Class40_Sub6.onBuildTimePlane != Player.worldLevel))
-                Actor.method789((Player.localPlayer.pathY[0]), -1000, Class17.regionY, Class51.regionX, (Player.localPlayer.pathX[0]), Player.worldLevel);
+            if(VertexNormal.lowMemory && Class40_Sub6.onBuildTimePlane != Player.worldLevel)
+                Actor.method789(Player.localPlayer.pathY[0], -1000, Class17.regionY, Class51.regionX, Player.localPlayer.pathX[0], Player.worldLevel);
             else if(Buffer.anInt1985 != Player.worldLevel) {
                 Buffer.anInt1985 = Player.worldLevel;
                 Class22.method299((byte) 53, Player.worldLevel);
