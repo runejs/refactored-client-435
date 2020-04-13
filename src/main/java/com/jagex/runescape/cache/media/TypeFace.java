@@ -264,7 +264,8 @@ public class TypeFace extends Rasterizer {
                             resultText = stylingQueue.applyAll(resultText);
                         } else if(stylingTag != null && i_3_ > 4) {
                             i_3_ -= 5;
-                            resultText = stylingTag + resultText;
+//                            resultText = stylingTag + resultText;
+                            RSString.prepend(resultText, stylingTag, i_3_);
 //                            resultText.prepend(stylingTag, i_3_);
                         }
                     }

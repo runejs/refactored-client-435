@@ -387,6 +387,24 @@ public class RSString implements Interface1 {
         return this;
     }
 
+    public static String prepend(String source, String arg0, int arg2) {
+        byte[] sourceba= source.getBytes();
+        byte[] arg0ba= arg0.getBytes();
+        if(arg2 > source.length())
+            throw new IllegalArgumentException();
+        if(arg0.length() + arg2 > sourceba.length) {
+            int i;
+            for(i = 1; i < arg0.length() + arg2; i += i) {
+                /* empty */
+            }
+            byte[] is = new byte[i];
+            Class18.method278(sourceba, 0, is, 0, arg0.length());
+            sourceba = is;
+        }
+        Class18.method278(arg0ba, 0, sourceba, arg2, arg0.length());
+        return new String(sourceba);
+    }
+
     public RSString addChar(int arg0) {
         if(arg0 > 255)
             throw new IllegalArgumentException("invalid char");
