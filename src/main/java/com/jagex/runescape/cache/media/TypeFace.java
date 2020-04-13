@@ -243,7 +243,7 @@ public class TypeFace extends Rasterizer {
                     idx += 4;
                 } else if(character == 92 && idx + 1 < length && text.charAt(idx + 1) == 110) { // 92 = \ 110 = n
                     stylingTag = null;
-                    aClass1Array2897[i_7_++] = resultText.substring(i_3_, resultText.length()).trim();
+                    aClass1Array2897[i_7_++] = resultText.substring(i_3_).trim();
                     i_3_ = resultText.length();
                     i = 0;
                     i_4_ = -1;

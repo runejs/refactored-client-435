@@ -48,7 +48,7 @@ public class Class13 {
             Class44.method898(255, arg0);
         else
             Class30.method381(22378, arg0);
-        Class40_Sub5_Sub17_Sub1.method762(-1, arg0);
+        Class40_Sub5_Sub17_Sub1.method762(arg0);
         Class40_Sub5_Sub15.method736(true, arg0);
         if(arg2 != 107)
             method249(false);

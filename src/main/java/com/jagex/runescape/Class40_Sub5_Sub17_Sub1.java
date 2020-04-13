@@ -145,8 +145,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         aClass1_3009 = null;
     }
 
-    public static void method762(int arg0, Actor actor) {
-        if(arg0 != (actor.anInt3113 ^ 0xffffffff)) {
+    public static void method762(Actor actor) {
+        if(actor.anInt3113 != 0) {
             if(actor.facingActorIndex != -1 && actor.facingActorIndex < 32768) {
                 Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[actor.facingActorIndex];
                 if(class40_sub5_sub17_sub4_sub2 != null) {
