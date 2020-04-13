@@ -163,31 +163,31 @@ public class Class60 {
                 int i_14_ = 100;
                 int i_15_ = 120;
                 if(i_11_ == 1 && i >= i_14_ - 75 && i_14_ + 75 >= i && i_12_ >= -20 + i_15_ && i_15_ + 20 >= i_12_) {
-                    Node.anInt947 = 0;
+                    Node.currentLoginInputLine = 0;
                     Class26.anInt622 = 3;
                 }
                 i_14_ = 260;
                 if(i_11_ == 1 && i >= -75 + i_14_ && i <= 75 + i_14_ && i_12_ >= -20 + i_15_ && 20 + i_15_ >= i_12_) {
                     Class26.anInt622 = 2;
-                    Node.anInt947 = 0;
+                    Node.currentLoginInputLine = 0;
                     Class22_Sub2.aClass1_1879 = "";
                     Class22_Sub2.aClass1_1896 = English.enterYourUsernameAndPassword;
-                    Class22_Sub2.aClass1_1881 = Node.aClass1_951;
+                    Class22_Sub2.aClass1_1881 = "";
                 }
             } else if(Class26.anInt622 == 2) {
                 int i_16_ = 60;
                 int i_17_ = 100;
                 i_16_ += 30;
                 if(i_11_ == 1 && -15 + i_16_ <= i_12_ && i_12_ < i_16_)
-                    Node.anInt947 = 0;
+                    Node.currentLoginInputLine = 0;
                 int i_18_ = 150;
                 i_16_ += 15;
                 if(i_11_ == 1 && -15 + i_16_ <= i_12_ && i_16_ > i_12_)
-                    Node.anInt947 = 1;
+                    Node.currentLoginInputLine = 1;
                 i_16_ += 15;
                 if(i_11_ == 1 && i_17_ + -75 <= i && i <= i_17_ + 75 && i_12_ >= i_18_ + -20 && i_12_ <= i_18_ + 20) {
                     Native.username = Native.username.method62().method85();
-                    Class33.method411(Node.aClass1_964, "", Class40_Sub5_Sub17_Sub1.aClass1_3009);
+                    Class33.method411("", "", Class40_Sub5_Sub17_Sub1.aClass1_3009);
                     OverlayDefinition.method559(20);
                 } else {
                     i_17_ = 260;
@@ -204,18 +204,23 @@ public class Class60 {
                                 break;
                             }
                         }
-                        if(Node.anInt947 == 0) {
+                        if(Node.currentLoginInputLine == 0) {
                             if(ItemDefinition.anInt2854 == 85 && Native.username.length() > 0)
                                 Native.username = Native.username.substring(0, -1 + Native.username.length());
                             if(ItemDefinition.anInt2854 == 84 || ItemDefinition.anInt2854 == 80)
-                                Node.anInt947 = 1;
+                                Node.currentLoginInputLine = 1;
                             if(bool && Native.username.length() < 12)
                                 Native.username = Native.username.addChar(Class59.anInt1388);
-                        } else if(Node.anInt947 == 1) {
+                        } else if(Node.currentLoginInputLine == 1) {
                             if(ItemDefinition.anInt2854 == 85 && Native.password.length() > 0)
                                 Native.password = Native.password.substring(0, Native.password.length() + -1);
-                            if(ItemDefinition.anInt2854 == 84 || ItemDefinition.anInt2854 == 80)
-                                Node.anInt947 = 0;
+                            if(ItemDefinition.anInt2854 == 80)
+                                Node.currentLoginInputLine = 0;
+                            if(ItemDefinition.anInt2854 == 84) {
+                                Native.username = Native.username.method62().method85();
+                                Class33.method411("", "", Class40_Sub5_Sub17_Sub1.aClass1_3009);
+                                OverlayDefinition.method559(20);
+                            }
                             if(bool && Native.password.length() < 20)
                                 Native.password = Native.password.addChar(Class59.anInt1388);
                         }

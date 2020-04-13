@@ -195,7 +195,7 @@ public class Landscape {
                                     }
                                 }
                                 if(!bool_19_)
-                                    Node.method455(8 * y, z, 1, x * 8);
+                                    Node.method455(8 * y, z, x * 8);
                             }
                         }
                     }

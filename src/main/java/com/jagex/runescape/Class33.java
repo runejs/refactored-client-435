@@ -357,7 +357,7 @@ public class Class33 {
 
     }
 
-    public static void method411(RSString arg0, String arg1, String arg2) {
+    public static void method411(String arg0, String arg1, String arg2) {
         Class22_Sub2.aClass1_1881 = arg0;
         Class22_Sub2.aClass1_1896 = arg2;
         Class22_Sub2.aClass1_1879 = arg1;

@@ -32,7 +32,6 @@ public abstract class Class22 {
         English.yourAccountIsAlreadyLoggedIn = null;
         aClass40_Sub5_Sub14_Sub2Array535 = null;
         Player.trackedPlayerAppearanceCache = null;
-        Native.suffixM = null;
         aBooleanArray548 = null;
     }
 

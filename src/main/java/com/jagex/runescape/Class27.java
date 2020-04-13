@@ -1084,64 +1084,64 @@ public class Class27 {
 
     public static void method366(int arg1) {
         if(arg1 == -3)
-            Class33.method411(Node.aClass1_956, GenericTile.aClass1_1218, SceneTile.aClass1_2057);
+            Class33.method411("", GenericTile.aClass1_1218, SceneTile.aClass1_2057);
         else if(arg1 == -2)
-            Class33.method411(Node.aClass1_934, "", Class40_Sub5_Sub6.aClass1_2462);
+            Class33.method411("", "", Class40_Sub5_Sub6.aClass1_2462);
         else if(arg1 == -1)
-            Class33.method411(Node.aClass1_949, Class33.aClass1_799, SceneTile.aClass1_2053);
+            Class33.method411("", Class33.aClass1_799, SceneTile.aClass1_2053);
         else if(arg1 == 3)
-            Class33.method411(Node.aClass1_941, "", ISAAC.aClass1_526);
+            Class33.method411("", "", ISAAC.aClass1_526);
         else if(arg1 == 4)
-            Class33.method411(Node.aClass1_976, Class64.aClass1_1526, Cache.aClass1_323);
+            Class33.method411("", Class64.aClass1_1526, Cache.aClass1_323);
         else if(arg1 != 5) {
             if(arg1 == 6)
-                Class33.method411(Node.aClass1_930, Class40_Sub5_Sub6.aClass1_2460, Class65.aClass1_1538);
+                Class33.method411("", Class40_Sub5_Sub6.aClass1_2460, Class65.aClass1_1538);
             else if(arg1 == 7)
-                Class33.method411(Node.aClass1_953, Class57.aClass1_1339, English.pleaseUseADifferentWorld);
+                Class33.method411("", Class57.aClass1_1339, English.pleaseUseADifferentWorld);
             else if(arg1 != 8) {
                 if(arg1 == 9)
-                    Class33.method411(Node.aClass1_942, Actor.aClass1_3138, Item.aClass1_3050);
+                    Class33.method411("", Actor.aClass1_3138, Item.aClass1_3050);
                 else if(arg1 == 10)
-                    Class33.method411(Node.aClass1_952, Class42.aClass1_1002, IdentityKit.aClass1_2615);
+                    Class33.method411("", Class42.aClass1_1002, IdentityKit.aClass1_2615);
                 else if(arg1 == 11)
-                    Class33.method411(Node.aClass1_943, Class42.aClass1_1001, Class40_Sub6.aClass1_2111);
+                    Class33.method411("", Class42.aClass1_1001, Class40_Sub6.aClass1_2111);
                 else if(arg1 == 12)
-                    Class33.method411(Node.aClass1_931, FramemapDefinition.aClass1_2188, VarbitDefinition.aClass1_2357);
+                    Class33.method411("", FramemapDefinition.aClass1_2188, VarbitDefinition.aClass1_2357);
                 else if(arg1 == 13)
-                    Class33.method411(Node.aClass1_972, Item.aClass1_3066, SceneTile.aClass1_2042);
+                    Class33.method411("", Item.aClass1_3066, SceneTile.aClass1_2042);
                 else if(arg1 != 14) {
                     if(arg1 != 16) {
                         if(arg1 != 17) {
                             if(arg1 != 18) {
                                 if(arg1 == 20)
-                                    Class33.method411(Node.aClass1_944, Class55.aClass1_1298, SceneTile.aClass1_2047);
+                                    Class33.method411("", Class55.aClass1_1298, SceneTile.aClass1_2047);
                                 else if(arg1 == 22)
-                                    Class33.method411(Node.aClass1_955, OverlayDefinition.aClass1_2325, CacheIndex.aClass1_258);
+                                    Class33.method411("", OverlayDefinition.aClass1_2325, CacheIndex.aClass1_258);
                                 else if(arg1 == 23)
-                                    Class33.method411(Node.aClass1_957, Class38.aClass1_882, ActorDefinition.aClass1_2410);
+                                    Class33.method411("", Class38.aClass1_882, ActorDefinition.aClass1_2410);
                                 else if(arg1 != 24) {
                                     if(arg1 == 25)
-                                        Class33.method411(Node.aClass1_973, Class8.aClass1_278, SceneTile.aClass1_2050);
+                                        Class33.method411("", Class8.aClass1_278, SceneTile.aClass1_2050);
                                     else if(arg1 == 26)
-                                        Class33.method411(Node.aClass1_960, English.thisComputersAddressHasBeenBlocked, English.asItWasUsedToBreakOurRules);
+                                        Class33.method411("", English.thisComputersAddressHasBeenBlocked, English.asItWasUsedToBreakOurRules);
                                     else if(arg1 != 27)
-                                        Class33.method411(Node.aClass1_946, English.unexpectedServerResponse, SceneTile.aClass1_2054);
+                                        Class33.method411("", English.unexpectedServerResponse, SceneTile.aClass1_2054);
                                     else
-                                        Class33.method411(Node.aClass1_945, "", FramemapDefinition.aClass1_2189);
+                                        Class33.method411("", "", FramemapDefinition.aClass1_2189);
                                 } else
-                                    Class33.method411(Node.aClass1_954, Class60.aClass1_1416, Class5.aClass1_193);
+                                    Class33.method411("", Class60.aClass1_1416, Class5.aClass1_193);
                             } else
-                                Class33.method411(Node.aClass1_963, Main.aClass1_1781, Class34.aClass1_817);
+                                Class33.method411("", Main.aClass1_1781, Class34.aClass1_817);
                         } else
-                            Class33.method411(Node.aClass1_959, Landscape.aClass1_1178, Class61.aClass1_1421);
+                            Class33.method411("", Landscape.aClass1_1178, Class61.aClass1_1421);
                     } else
-                        Class33.method411(Node.aClass1_924, Buffer.aClass1_1983, English.pleaseWait5MinutesBeforeTryingAgain);
+                        Class33.method411("", Buffer.aClass1_1983, English.pleaseWait5MinutesBeforeTryingAgain);
                 } else
-                    Class33.method411(Node.aClass1_929, Wall.aClass1_344, ActorDefinition.aClass1_2401);
+                    Class33.method411("", Wall.aClass1_344, ActorDefinition.aClass1_2401);
             } else
-                Class33.method411(Node.aClass1_937, Class42.aClass1_997, Class68_Sub1.aClass1_2209);
+                Class33.method411("", Class42.aClass1_997, Class68_Sub1.aClass1_2209);
         } else
-            Class33.method411(Node.aClass1_966, English.yourAccountIsAlreadyLoggedIn, Player.aClass1_3286);
+            Class33.method411("", English.yourAccountIsAlreadyLoggedIn, Player.aClass1_3286);
         OverlayDefinition.method559(10);
     }
 

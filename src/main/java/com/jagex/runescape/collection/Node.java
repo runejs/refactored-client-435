@@ -5,49 +5,19 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 
 public class Node {
-    public static RSString aClass1_924 = RSString.CreateString("");
     public static int pulseCycle = 0;
-    public static RSString aClass1_929 = RSString.CreateString("");
-    public static RSString aClass1_930 = RSString.CreateString("");
-    public static RSString aClass1_931 = RSString.CreateString("");
     public static String aClass1_932 = "@gr2@";
-    public static RSString aClass1_934 = RSString.CreateString("");
-    public static RSString aClass1_937 = RSString.CreateString("");
     public static int anInt938 = 500;
     public static String aClass1_940 = "white:";
-    public static RSString aClass1_941 = RSString.CreateString("");
-    public static RSString aClass1_942 = RSString.CreateString("");
-    public static RSString aClass1_943 = RSString.CreateString("");
-    public static RSString aClass1_944 = RSString.CreateString("");
-    public static RSString aClass1_945 = RSString.CreateString("");
-    public static RSString aClass1_946 = RSString.CreateString("");
-    public static int anInt947 = 0;
+    public static int currentLoginInputLine = 0;
     public static String requestcmd_chalreq = ":chalreq:";
-    public static RSString aClass1_949 = RSString.CreateString("");
-    public static RSString aClass1_951 = RSString.CreateString("");
-    public static RSString aClass1_952 = RSString.CreateString("");
-    public static RSString aClass1_953 = RSString.CreateString("");
-    public static RSString aClass1_954 = RSString.CreateString("");
-    public static RSString aClass1_955 = RSString.CreateString("");
-    public static RSString aClass1_956 = RSString.CreateString("");
-    public static RSString aClass1_957 = RSString.CreateString("");
-    public static RSString aClass1_959 = RSString.CreateString("");
-    public static RSString aClass1_960 = RSString.CreateString("");
-    public static RSString aClass1_963 = RSString.CreateString("");
-    public static RSString aClass1_964 = RSString.CreateString("");
-    public static RSString aClass1_966 = RSString.CreateString("");
-    public static RSString aClass1_972 = RSString.CreateString("");
-    public static RSString aClass1_973 = RSString.CreateString("");
     public static RSString aClass1_975 = RSString.CreateString(".");
-    public static RSString aClass1_976 = RSString.CreateString("");
 
     public long key;
     public Node aClass40_950;
     public Node aClass40_968;
 
-    public static void method455(int arg0, int arg1, int arg2, int arg3) {
-        if(arg2 != 1)
-            aClass1_972 = null;
+    public static void method455(int arg0, int arg1, int arg3) {
         for(int i = 0; i < 8; i++) {
             for(int i_0_ = 0; i_0_ < 8; i_0_++)
                 Class40_Sub6.tile_height[arg1][arg3 + i][arg0 + i_0_] = 0;
@@ -78,38 +48,10 @@ public class Node {
     }
 
     public static void method458() {
-        aClass1_952 = null;
-        aClass1_964 = null;
         aClass1_940 = null;
-        aClass1_973 = null;
-        aClass1_924 = null;
-        aClass1_934 = null;
-        aClass1_954 = null;
-        aClass1_972 = null;
-        aClass1_976 = null;
-        aClass1_944 = null;
-        aClass1_959 = null;
-        aClass1_943 = null;
         aClass1_975 = null;
-        aClass1_949 = null;
-        aClass1_951 = null;
-        aClass1_963 = null;
-        aClass1_942 = null;
-        aClass1_946 = null;
-        aClass1_929 = null;
-        aClass1_955 = null;
-        aClass1_931 = null;
-        aClass1_941 = null;
-        aClass1_945 = null;
-        aClass1_930 = null;
-        aClass1_956 = null;
         requestcmd_chalreq = null;
-        aClass1_966 = null;
-        aClass1_960 = null;
         aClass1_932 = null;
-        aClass1_953 = null;
-        aClass1_957 = null;
-        aClass1_937 = null;
     }
 
     public static boolean method459(int arg0, int arg1, byte arg2) {
