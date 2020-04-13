@@ -242,7 +242,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             if(cameraZoom <= 150 && rotation <= 0 || cameraZoom >= 1600 && rotation >= 0) {
                 return;
             }
-            int diff = rotation * 8;
+            int diff = rotation * 12;
             cameraZoom = cameraZoom + diff;
         }
     }
