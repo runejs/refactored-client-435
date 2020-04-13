@@ -176,7 +176,6 @@ public class TypeFace extends Rasterizer {
     public void drawText(String text, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, int arg7, int arg8, int arg9) {
         // this function seems like a general draw all, mostly used for interfaces
         if(text != null) {
-            System.out.println(text);
             int i = 0;
             int i_3_ = 0;
             String resultText = "";
@@ -222,12 +221,15 @@ public class TypeFace extends Rasterizer {
                             }
                             if(effect.startsWith(startColor, 0)) {
                                 TextTagNode stylingNode = new TextTagNode(text.substring(oldindex, idx + 1));
-                                stylingNode.applyTo(resultText);
+                                resultText = stylingNode.applyTo(resultText);
                                 stylingQueue.push(stylingNode);
                             }
                             if(effect.startsWith(endColor, 0)) {
                                 stylingTag = text.substring(oldindex, idx + 1);
-                                resultText = stylingTag + resultText;
+//                                resultText.add(stylingTag);
+//                                resultText = stylingTag + resultText;
+                                resultText = resultText + stylingTag;
+
                                 stylingQueue.pop();
                                 stylingTag = null;
                             }
@@ -238,8 +240,8 @@ public class TypeFace extends Rasterizer {
                 }
                 if(character == 64 && idx + 4 < length && text.charAt(idx + 4) == 64) { // 64 = @
                     stylingTag = text.substring(idx, idx + 5);
-                    resultText = stylingTag + resultText;
-
+//                    resultText.add(stylingTag);
+                    resultText = resultText + stylingTag;
                     idx += 4;
                 } else if(character == 92 && idx + 1 < length && text.charAt(idx + 1) == 110) { // 92 = \ 110 = n
                     stylingTag = null;
@@ -308,6 +310,135 @@ public class TypeFace extends Rasterizer {
             }
         }
     }
+
+//    public void drawText(RSString text, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, int arg7, int arg8, int arg9) {
+//        // this function seems like a general draw all, mostly used for interfaces
+//        if(text != null) {
+//            int i = 0;
+//            int i_3_ = 0;
+//            RSString resultText = RSString.createString(100);
+//            int i_4_ = -1;
+//            int i_5_ = 0;
+//            RSString stylingTag = null;
+//            TextTagQueue stylingQueue = new TextTagQueue();
+//            if(arg9 == 0)
+//                arg9 = anInt2920;
+//            boolean bool = true;
+//            if(arg4 < anInt2920 + anInt2919 + arg9 && arg4 < arg9 + arg9)
+//                bool = false;
+//            int i_7_ = 0;
+//            int length = text.length();
+//            int index = -1;
+//            for(int idx = 0; idx < length; idx++) {
+//                int character = text.getChar(idx);
+//                if(character == 60) { // 60 = <
+//                    index = idx;
+//                } else if(character == 62 && index != -1) { // 62 == >
+//                    String effect = text.toString().substring(index + 1, idx);
+//                    int oldindex = index;
+//                    index = -1;
+//                    if(effect.equals(lessThan)) {
+//                        character = 60;
+//                    } else if(effect.equals(greaterThan)) {
+//                        character = 62;
+//                    } else if(effect.equals(nonBreakingSpace)) {
+//                        character = 160;
+//                    } else if(effect.equals(softHyphen)) {
+//                        character = 173;
+//                    } else if(effect.equals(multiplicationSymbol)) {
+//                        character = 215;
+//                    } else if(effect.equals(euroSymbol)) {
+//                        character = 128;
+//                    } else if(effect.equals(copyright)) {
+//                        character = 169;
+//                    } else {
+//                        if(!effect.equals(registeredTrademark)) {
+//                            if(effect.startsWith(image, 0)) {
+//                                int icon = Integer.parseInt(effect.substring(4));
+//                                destinationWidth += moderatorIcon[icon].maxWidth;
+//                            }
+//                            if(effect.startsWith(startColor, 0)) {
+//                                TextTagNode stylingNode = new TextTagNode(text.substring(oldindex, idx + 1));
+//                                stylingNode.applyTo(resultText);
+//                                stylingQueue.push(stylingNode);
+//                            }
+//                            if(effect.startsWith(endColor, 0)) {
+//                                stylingTag = text.substring(oldindex, idx + 1);
+//                                resultText.add(stylingTag);
+//                                stylingQueue.pop();
+//                                stylingTag = null;
+//                            }
+//                            continue;
+//                        }
+//                        character = 174;
+//                    }
+//                }
+//                if(character == 64 && idx + 4 < length && text.getChar(idx + 4) == 64) { // 64 = @
+//                    stylingTag = text.substring(idx, idx + 5);
+//                    resultText.add(stylingTag);
+//                    idx += 4;
+//                } else if(character == 92 && idx + 1 < length && text.getChar(idx + 1) == 110) { // 92 = \ 110 = n
+//                    stylingTag = null;
+//                    aClass1Array2897[i_7_++] = resultText.substring(i_3_, resultText.length()).trim();
+//                    i_3_ = resultText.length();
+//                    i = 0;
+//                    i_4_ = -1;
+//                    idx++;
+//                } else if(index == -1) {
+//                    resultText.method78(character);
+//                    i += method689(character);
+//                    if(character == 32 || character == 45) { // 32 = Space 45 == -
+//                        i_4_ = resultText.length();
+//                        i_5_ = i;
+//                    }
+//                    if(bool && i > arg3 && i_4_ >= 0) {
+//                        aClass1Array2897[i_7_++] = resultText.substring(i_3_, i_4_).trim();
+//                        i_3_ = i_4_;
+//                        i_4_ = -1;
+//                        i -= i_5_;
+//                        if(!stylingQueue.isEmpty() && i_3_ > 4) {
+//                            stylingQueue.applyAll(resultText);
+//                        } else if(stylingTag != null && i_3_ > 4) {
+//                            i_3_ -= 5;
+//                            resultText.prepend(stylingTag, i_3_);
+//                        }
+//                    }
+//                }
+//            }
+//            int strlenght = this.getStringTextWidth(resultText.toString());
+//            if(strlenght > i_3_)
+//                aClass1Array2897[i_7_++] = resultText.substring(i_3_, resultText.length()).trim();
+//            if(arg8 == 3 && i_7_ == 1)
+//                arg8 = 1;
+//            int i_11_;
+//            if(arg8 == 0)
+//                i_11_ = arg2 + anInt2920;
+//            else if(arg8 == 1)
+//                i_11_ = arg2 + anInt2920 + (arg4 - anInt2920 - anInt2919 - (i_7_ - 1) * arg9) / 2;
+//            else if(arg8 == 2)
+//                i_11_ = arg2 + arg4 - anInt2919 - (i_7_ - 1) * arg9;
+//            else {
+//                int i_12_ = ((arg4 - anInt2920 - anInt2919 - (i_7_ - 1) * arg9) / (i_7_ + 1));
+//                if(i_12_ < 0)
+//                    i_12_ = 0;
+//                i_11_ = arg2 + anInt2920 + i_12_;
+//                arg9 += i_12_;
+//            }
+//            for(int i_13_ = 0; i_13_ < i_7_; i_13_++) {
+//                if(arg7 == 0)
+//                    drawShadowedString(aClass1Array2897[i_13_], arg1, i_11_, arg5, arg6);
+//                else if(arg7 == 1)
+//                    method688(aClass1Array2897[i_13_], arg1 + arg3 / 2, i_11_, arg5, arg6);
+//                else if(arg7 == 2)
+//                    method677(aClass1Array2897[i_13_], arg1 + arg3, i_11_, arg5, arg6);
+//                else if(i_13_ == i_7_ - 1)
+//                    drawShadowedString(aClass1Array2897[i_13_], arg1, i_11_, arg5, arg6);
+//                else
+//                    method680(aClass1Array2897[i_13_], arg1, i_11_, arg5, arg6, arg3);
+//                i_11_ += arg9;
+//            }
+//        }
+//    }
 
     public void drawText(RSString text, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, int arg7, int arg8, int arg9) {
         drawText(text.toString(), arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);

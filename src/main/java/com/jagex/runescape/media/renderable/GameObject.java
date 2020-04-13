@@ -137,7 +137,7 @@ public class GameObject extends Renderable {
                 graphics1.fillRect(2 + 3 * percent, 2, 300 - 3 * percent, 30);
                 graphics1.setFont(Class17.helveticaBold);
                 graphics1.setColor(Color.white);
-                graphics.drawString(rsString, (304 - (Class8.fontMetrics.stringWidth(rsString))) / 2, 22);
+                graphics1.drawString(rsString, (304 - (Class8.fontMetrics.stringWidth(rsString))) / 2, 22);
                 graphics.drawImage(Class26.anImage624, Class12.width / 2 - 152, IdentityKit.height / 2 - 18, null);
             } catch(Exception exception) {
                 int centerWidth = Class12.width / 2 - 152;
