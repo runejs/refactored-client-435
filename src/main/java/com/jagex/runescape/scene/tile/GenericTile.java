@@ -12,21 +12,16 @@ import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
-import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.awt.*;
 
 public class GenericTile {
-    public static String aClass1_1213 = " @whi@(X";
     public static int anInt1214 = 0;
     public static volatile boolean aBoolean1215 = true;
     public static byte[][] objectData;
-    public static String aClass1_1218 = "Connection timed out.";
     public static int fps = 0;
     public static int anInt1222 = 0;
-    public static String aClass1_1223 = "New User";
-    public static String aClass1_1230 = "headicons_hint";
     public static int anInt1233 = 0;
 
     public int texture;
@@ -50,30 +45,30 @@ public class GenericTile {
     public static void method943(int arg0, TypeFace arg2, int arg3, int arg4) {
         HuffmanEncoding.aClass68_1541.method1046((byte) 90);
         Class57.aClass40_Sub5_Sub14_Sub2_1346.drawImage(0, 0);
-        arg2.drawShadowedStringCenter(InteractiveObject.aClass1_495, 55, 28, 16777215, true);
+        arg2.drawShadowedStringCenter(English.publicChat, 55, 28, 16777215, true);
         if(arg4 == 0)
-            arg2.drawShadowedStringCenter(Npc.aClass1_3311, 55, 41, 65280, true);
+            arg2.drawShadowedStringCenter(English.on, 55, 41, 65280, true);
         if(arg4 == 1)
-            arg2.drawShadowedStringCenter(English.aClass1_2786, 55, 41, 16776960, true);
+            arg2.drawShadowedStringCenter(English.friends, 55, 41, 16776960, true);
         if(arg4 == 2)
-            arg2.drawShadowedStringCenter(English.aClass1_682, 55, 41, 16711680, true);
+            arg2.drawShadowedStringCenter(English.off, 55, 41, 16711680, true);
         if(arg4 == 3)
-            arg2.drawShadowedStringCenter(English.aClass1_2622, 55, 41, 65535, true);
+            arg2.drawShadowedStringCenter(English.hide, 55, 41, 65535, true);
         arg2.drawShadowedStringCenter(English.privateChat, 184, 28, 16777215, true);
         if(arg3 == 0)
-            arg2.drawShadowedStringCenter(Npc.aClass1_3311, 184, 41, 65280, true);
+            arg2.drawShadowedStringCenter(English.on, 184, 41, 65280, true);
         if(arg3 == 1)
-            arg2.drawShadowedStringCenter(English.aClass1_2786, 184, 41, 16776960, true);
+            arg2.drawShadowedStringCenter(English.friends, 184, 41, 16776960, true);
         if(arg3 == 2)
-            arg2.drawShadowedStringCenter(English.aClass1_682, 184, 41, 16711680, true);
-        arg2.drawShadowedStringCenter(English.aClass1_701, 324, 28, 16777215, true);
+            arg2.drawShadowedStringCenter(English.off, 184, 41, 16711680, true);
+        arg2.drawShadowedStringCenter(English.trade, 324, 28, 16777215, true);
         if(arg0 == 0)
-            arg2.drawShadowedStringCenter(Npc.aClass1_3311, 324, 41, 65280, true);
+            arg2.drawShadowedStringCenter(English.on, 324, 41, 65280, true);
         if(arg0 == 1)
-            arg2.drawShadowedStringCenter(English.aClass1_2786, 324, 41, 16776960, true);
+            arg2.drawShadowedStringCenter(English.friends, 324, 41, 16776960, true);
         if(arg0 == 2)
-            arg2.drawShadowedStringCenter(English.aClass1_682, 324, 41, 16711680, true);
-        arg2.drawText(RSString.CreateString(English.reportAbuse), 417, 17, 85, 25, 16777215, true, 1, 1, 0);
+            arg2.drawShadowedStringCenter(English.off, 324, 41, 16711680, true);
+        arg2.drawText(English.reportAbuse, 417, 17, 85, 25, 16777215, true, 1, 1, 0);
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
             HuffmanEncoding.aClass68_1541.drawGraphics(0, 453, graphics);

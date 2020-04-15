@@ -4,15 +4,12 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.media.AnimationSequence;
-import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Player;
-import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -30,20 +27,20 @@ public class Class60 {
 
     public static int method988(CacheIndex arg0, CacheIndex arg1) {
         int i = 0;
-        if(arg0.method194(SceneCluster.aClass1_772, "", -1234))
+        if(arg0.method194(Native.titleImage, ""))
             i++;
-        if(arg1.method194(Main.aClass1_1762, "", -1234))
+        if(arg1.method194(Native.logo, ""))
             i++;
-        if(arg1.method194(AnimationSequence.aClass1_2488, "", -1234))
+        if(arg1.method194(Native.titleBox, ""))
             i++;
-        if(arg1.method194(ISAAC.aClass1_506, "", -1234))
+        if(arg1.method194(Native.titleButton, ""))
             i++;
-        if(arg1.method194(English.aClass1_299, "", -1234))
+        if(arg1.method194(Native.runes, ""))
             i++;
         return i;
     }
 
-    public static void method989(boolean arg0) {
+    public static void method989() {
         if(CollisionMap.aClass8_166 != null) {
             CollisionMap.aClass8_166.method213();
             CollisionMap.aClass8_166 = null;
@@ -51,7 +48,7 @@ public class Class60 {
     }
 
     public static void determineMenuSize() {
-        int width = Class40_Sub5_Sub17_Sub6.fontBold.getStringWidth(Widget.str_Choose_Option);
+        int width = Class40_Sub5_Sub17_Sub6.fontBold.getStringWidth(English.chooseOption);
         for(int i = 0; i < ActorDefinition.menuActionRow; i++) {
             int rowWidth = Class40_Sub5_Sub17_Sub6.fontBold.getTextDisplayedWidth(Landscape.menuActionTexts[i]);
             if(width < rowWidth)
@@ -167,9 +164,9 @@ public class Class60 {
                 if(clickType == 1 && i >= -75 + i_14_ && i <= 75 + i_14_ && clickY >= -20 + i_15_ && 20 + i_15_ >= clickY) {
                     Class26.loginScreenState = 2;
                     Node.loginScreenFocus = 0;
-                    Native.aClass1_1879 = "";
-                    Native.aClass1_1896 = English.enterYourUsernameAndPassword;
-                    Native.aClass1_1881 = "";
+                    Native.loginScreenMessageLineOne = "";
+                    Native.loginScreenMessageLineTwo = English.enterYourUsernameAndPassword;
+                    Native.loginScreenMessageLineThree = "";
                 }
             } else if(Class26.loginScreenState == 2) {
                 int y = 60;
@@ -184,7 +181,7 @@ public class Class60 {
                 y += 15;
                 if(clickType == 1 && clickX + -75 <= i && i <= clickX + 75 && clickY >= i_18_ + -20 && clickY <= i_18_ + 20) {
                     Native.username = Native.username.method62().method85();
-                    Class33.method411("", "", English.aClass1_3009);
+                    Class33.setLoginScreenMessage("", English.connectingToServer, "");
                     OverlayDefinition.method559(20);
                 } else {
                     clickX = 260;
@@ -215,7 +212,7 @@ public class Class60 {
                                 Node.loginScreenFocus = 0;
                             if(ItemDefinition.anInt2854 == 84) {
                                 Native.username = Native.username.method62().method85();
-                                Class33.method411("", "", English.aClass1_3009);
+                                Class33.setLoginScreenMessage("", English.connectingToServer, "");
                                 OverlayDefinition.method559(20);
                             }
                             if(bool && Native.password.length() < 20)

@@ -5,7 +5,6 @@ import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
-import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.cache.media.Widget.WidgetModelType;
@@ -118,7 +117,7 @@ public class IncomingPackets {
             RSString.anInt1690 = incomingPacket;
             if(incomingPacket == 71) {
                 long l = incomingPacketBuffer.getLongBE();
-                String class1 = RSString.method53(KeyFocusListener.method956(82, incomingPacketBuffer));
+                String class1 = RSString.formatChatString(KeyFocusListener.method956(82, incomingPacketBuffer));
 
                 Class44.addChatMessage(Class60.method991(-42, l).method85().toString(), class1, 6);
                 incomingPacket = -1;
@@ -134,9 +133,9 @@ public class IncomingPackets {
                             Class40_Sub7.friendWorlds[i_2_] = i_1_;
                             ISAAC.redrawTabArea = true;
                             if(i_1_ > 0)
-                                Class44.addChatMessage("", string + English.aClass1_988, 5);
+                                Class44.addChatMessage("", string + English.suffixHasLoggedIn, 5);
                             if(i_1_ == 0)
-                                Class44.addChatMessage("", string + English.aClass1_1905, 5);
+                                Class44.addChatMessage("", string + English.suffixHasLoggedOut, 5);
                         }
                         string = null;
                         break;
@@ -302,8 +301,8 @@ public class IncomingPackets {
             }
             if(incomingPacket == 82) {
                 String message = incomingPacketBuffer.getString();
-                if(message.endsWith(AnimationSequence.requestcmd_tradereq)) {
-                    String class1_32_ = message.substring(0, message.indexOf(Class43.char_colon));
+                if(message.endsWith(Native.requestcmd_tradereq)) {
+                    String class1_32_ = message.substring(0, message.indexOf(Native.char_colon));
                     long l = RSString.method58(class1_32_);
                     boolean bool = false;
                     for(int i_33_ = 0; i_33_ < Class42.anInt1008; i_33_++) {
@@ -315,7 +314,7 @@ public class IncomingPackets {
                     if(!bool && !Class4.inTutorialIsland)
                         Class44.addChatMessage(class1_32_, "wishes to trade with you.", 4);
                 } else if(message.endsWith(Native.requestcmd_duelreq)) {
-                    String class1_30_ = message.substring(0, message.indexOf(Class43.char_colon));
+                    String class1_30_ = message.substring(0, message.indexOf(Native.char_colon));
                     long l = RSString.method58(class1_30_);
                     boolean bool = false;
                     for(int i_31_ = 0; Class42.anInt1008 > i_31_; i_31_++) {
@@ -325,9 +324,9 @@ public class IncomingPackets {
                         }
                     }
                     if(!bool && !Class4.inTutorialIsland)
-                        Class44.addChatMessage(class1_30_, English.aClass1_1428, 8);
-                } else if(message.endsWith(Node.requestcmd_chalreq)) {
-                    String class1_27_ = message.substring(0, message.indexOf(Class43.char_colon));
+                        Class44.addChatMessage(class1_30_, English.suffixWishesToDuelWithYou, 8);
+                } else if(message.endsWith(Native.requestcmd_chalreq)) {
+                    String class1_27_ = message.substring(0, message.indexOf(Native.char_colon));
                     long l = RSString.method58(class1_27_);
                     boolean bool = false;
                     for(int i_28_ = 0; i_28_ < Class42.anInt1008; i_28_++) {
@@ -337,7 +336,7 @@ public class IncomingPackets {
                         }
                     }
                     if(!bool && !Class4.inTutorialIsland) {
-                        String class1_29_ = message.substring(1 + message.indexOf(Class43.char_colon), -9 + message.length());
+                        String class1_29_ = message.substring(1 + message.indexOf(Native.char_colon), -9 + message.length());
                         Class44.addChatMessage(class1_27_, class1_29_, 8);
                     }
                 } else {
@@ -996,9 +995,9 @@ public class IncomingPackets {
                 if(!bool && !Class4.inTutorialIsland) {
                     Class40_Sub5_Sub13.aLongArray2757[Class40_Sub3.anInt2021] = chatId;
                     Class40_Sub3.anInt2021 = (1 + Class40_Sub3.anInt2021) % 100;
-                    String class1 = RSString.method53(KeyFocusListener.method956(67, incomingPacketBuffer));
+                    String class1 = RSString.formatChatString(KeyFocusListener.method956(67, incomingPacketBuffer));
                     if(fromPlayerRights == 2 || fromPlayerRights == 3)
-                        Class44.addChatMessage(Widget.goldCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), class1.toString(), 7);
+                        Class44.addChatMessage(Native.goldCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), class1.toString(), 7);
                     else if(fromPlayerRights == 1)
                         Class44.addChatMessage(Native.whiteCrown +TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), class1.toString(), 7);
                     else
@@ -1157,7 +1156,7 @@ public class IncomingPackets {
             CacheIndex.method169("T1 - " + incomingPacket + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + incomingPacketSize, (byte) -121, null);
             Class48.method928(-7225);
         } catch(java.io.IOException ioexception) {
-            Class59.dropClient(2578);
+            Class59.dropClient();
         } catch(Exception exception) {
             String string = "T2 - " + incomingPacket + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + incomingPacketSize + "," + (SpotAnimDefinition.baseX + Player.localPlayer.pathY[0]) + "," + (Player.localPlayer.pathX[0] + Class26.baseY) + " - ";
             for(int i = 0; incomingPacketSize > i && i < 50; i++)

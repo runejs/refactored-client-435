@@ -5,8 +5,8 @@ import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
-import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
@@ -23,7 +23,6 @@ public class OverlayDefinition extends SubNode {
     public static int anInt2321 = 0;
     public static byte[][][] tile_flags = new byte[4][104][104];
     public static int[] anIntArray2324;
-    public static String aClass1_2325 = "Malformed login packet.";
     public static int anInt2328 = -1;
     public static int[][][] constructMapTiles = new int[4][13][13];
     public static byte[][][] tile_underlay_path;
@@ -57,7 +56,7 @@ public class OverlayDefinition extends SubNode {
             if (arg6.length() <= 0)
                 Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string;
             else
-                Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string + VertexNormal.aClass1_1117 + arg6;
+                Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string + Native.aClass1_1117 + arg6;
             Class38.menuActionTypes[ActorDefinition.menuActionRow] = actionType;
             Class33.selectedMenuActions[ActorDefinition.menuActionRow] = menuAction;
             InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow] = firstMenuOperand;

@@ -17,12 +17,10 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
-import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
-import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
 
@@ -179,10 +177,10 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         if(!SubNode.aBoolean2083) {
             FloorDecoration.aClass40_Sub5_Sub14_Sub2_593 = Class27.method359(Native.aClass1_638, Native.aClass1_305, arg2);
             Class44.aClass40_Sub5_Sub14_Sub2_1047 = Class27.method359(Native.chatback, Native.aClass1_305, arg2);
-            Class34.mapBack = Class27.method359(VertexNormal.aClass1_1113, Native.aClass1_305, arg2);
+            Class34.mapBack = Class27.method359(Native.aClass1_1113, Native.aClass1_305, arg2);
             Class57.aClass40_Sub5_Sub14_Sub2_1346 = Class27.method359(Native.aClass1_1395, Native.aClass1_305, arg2);
-            Class56.aClass40_Sub5_Sub14_Sub2_1329 = Class27.method359(CacheIndex.aClass1_256, Native.aClass1_305, arg2);
-            Buffer.aClass40_Sub5_Sub14_Sub2_1959 = Class27.method359(Wall.aClass1_338, Native.aClass1_305, arg2);
+            Class56.aClass40_Sub5_Sub14_Sub2_1329 = Class27.method359(Native.aClass1_256, Native.aClass1_305, arg2);
+            Buffer.aClass40_Sub5_Sub14_Sub2_1959 = Class27.method359(Native.aClass1_338, Native.aClass1_305, arg2);
             RSCanvas.aClass68_64 = Class40_Sub5_Sub13.method649(96, 479, arg0, -4875);
             Class44.aClass40_Sub5_Sub14_Sub2_1047.drawImage(0, 0);
             RSString.aClass68_1665 = Class40_Sub5_Sub13.method649(156, 172, arg0, -4875);
@@ -204,16 +202,16 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, Native.aClass1_281, (byte) 21, Native.aClass1_305);
             Class39.aClass68_908 = Class40_Sub5_Sub13.method649(class40_sub5_sub14_sub4.image_height, class40_sub5_sub14_sub4.image_width, arg0, -4875);
             class40_sub5_sub14_sub4.method727(0, 0);
-            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, WallDecoration.aClass1_1266, (byte) 21, Native.aClass1_305);
+            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, Native.aClass1_1266, (byte) 21, Native.aClass1_305);
             GameObject.aClass68_3045 = Class40_Sub5_Sub13.method649(class40_sub5_sub14_sub4.image_height, class40_sub5_sub14_sub4.image_width, arg0, -4875);
             class40_sub5_sub14_sub4.method727(0, 0);
-            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, Main.aClass1_1788, (byte) 21, Native.aClass1_305);
+            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, Native.aClass1_1788, (byte) 21, Native.aClass1_305);
             Class40_Sub5_Sub17_Sub6.aClass68_3243 = Class40_Sub5_Sub13.method649(class40_sub5_sub14_sub4.image_height, class40_sub5_sub14_sub4.image_width, arg0, -4875);
             class40_sub5_sub14_sub4.method727(0, 0);
-            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, GroundItemTile.aClass1_1374, (byte) 21, Native.aClass1_305);
+            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, Native.aClass1_1374, (byte) 21, Native.aClass1_305);
             Class40_Sub7.aClass68_2123 = Class40_Sub5_Sub13.method649(class40_sub5_sub14_sub4.image_height, class40_sub5_sub14_sub4.image_width, arg0, -4875);
             class40_sub5_sub14_sub4.method727(0, 0);
-            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, IdentityKit.aClass1_2588, (byte) 21, Native.aClass1_305);
+            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, Native.aClass1_2588, (byte) 21, Native.aClass1_305);
             Class61.aClass68_1441 = Class40_Sub5_Sub13.method649(class40_sub5_sub14_sub4.image_height, class40_sub5_sub14_sub4.image_width, arg0, -4875);
             class40_sub5_sub14_sub4.method727(0, 0);
             class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, Native.aClass1_196, (byte) 21, Native.aClass1_305);
@@ -222,7 +220,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, Native.aClass1_304, (byte) 21, Native.aClass1_305);
             Class17.aClass68_462 = Class40_Sub5_Sub13.method649(class40_sub5_sub14_sub4.image_height, class40_sub5_sub14_sub4.image_width, arg0, -4875);
             class40_sub5_sub14_sub4.method727(0, 0);
-            Class56.aClass40_Sub5_Sub14_Sub2_1315 = Class27.method359(SubNode.aClass1_2093, Native.aClass1_305, arg2);
+            Class56.aClass40_Sub5_Sub14_Sub2_1315 = Class27.method359(Native.aClass1_2093, Native.aClass1_305, arg2);
             GameShell.aClass40_Sub5_Sub14_Sub2_1 = Class27.method359(Native.aClass1_3254, Native.aClass1_305, arg2);
             Class35.aClass40_Sub5_Sub14_Sub2_1744 = Class27.method359(Native.aClass1_1517, Native.aClass1_305, arg2);
             Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105 = Class56.aClass40_Sub5_Sub14_Sub2_1315.method691();

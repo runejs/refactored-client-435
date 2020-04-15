@@ -5,7 +5,6 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.Item;
-import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
@@ -94,18 +93,18 @@ public class Class17 {
     public static void method275(long arg1) {
         if(arg1 != 0L) {
             if(Class42.anInt1008 >= 100)
-                Class44.addChatMessage("", Landscape.aClass1_1180.toString(), 0);
+                Class44.addChatMessage("", English.yourIgnoreListIsFull.toString(), 0);
             else {
                 String class1 = TextUtils.formatName(TextUtils.longToName(arg1));
                 for(int i = 0; i < Class42.anInt1008; i++) {
                     if(arg1 == WallDecoration.ignores[i]) {
-                        Class44.addChatMessage("", class1 + English.aClass1_1628, 0);
+                        Class44.addChatMessage("", class1 + English.suffixIsAlreadyOnYourIgnoreList, 0);
                         return;
                     }
                 }
                 for(int i = 0; Item.friendsCount > i; i++) {
                     if(Class59.aLongArray1397[i] == arg1) {
-                        Class44.addChatMessage("", English.aClass1_1032+ class1 + Renderable.aClass1_2864, 0);
+                        Class44.addChatMessage("", English.pleaseRemove + class1 + English.fromYourFriendListFirst, 0);
                         return;
                     }
                 }

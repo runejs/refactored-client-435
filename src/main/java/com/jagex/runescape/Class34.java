@@ -85,7 +85,7 @@ public class Class34 {
             ItemDefinition.anInt2854 = Class40_Sub6.anIntArray2113[Class59.anInt1389];
             Class59.anInt1388 = Class40_Sub5_Sub13.anIntArray2764[Class59.anInt1389];
             if(arg0 > -21)
-                English.aClass1_829 = null;
+                English.clickToContinue = null;
             Class59.anInt1389 = Class59.anInt1389 + 1 & 0x7f;
             return true;
         }

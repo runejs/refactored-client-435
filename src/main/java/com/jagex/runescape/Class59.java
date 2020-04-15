@@ -30,15 +30,13 @@ public class Class59 {
         keyFocusListener = new KeyFocusListener();
     }
 
-    public static void dropClient(int arg0) {
+    public static void dropClient() {
         if(SceneCluster.anInt771 > 0)
             Class48.method928(-7225);
         else {
             OverlayDefinition.method559(40);
             Class30.aClass64_717 = Class40_Sub6.aClass64_2098;
             Class40_Sub6.aClass64_2098 = null;
-            if(arg0 != 2578)
-                Native.aClass1_1395 = null;
         }
     }
 

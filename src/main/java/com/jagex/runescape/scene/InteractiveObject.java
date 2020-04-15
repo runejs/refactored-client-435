@@ -5,12 +5,12 @@ import com.jagex.runescape.Class68;
 import com.jagex.runescape.RSString;
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.Renderable;
 
 public class InteractiveObject {
     public static Cache aClass9_470 = new Cache(10);
     public static int menuOffsetX;
-    public static String aClass1_478 = "*";
     public static Class68 aClass68_482;
     public static int[] firstMenuOperand = new int[500];
     public static Class27 aClass27_485 = new Class27();
@@ -18,8 +18,6 @@ public class InteractiveObject {
     public static CacheIndex aCacheIndex_488;
     public static byte[][][] aByteArrayArrayArray492;
     public static int playerRights = 0;
-    public static String aClass1_494 = "@gr3@";
-    public static String aClass1_495 = "Public chat";
     public static boolean showFps = false;
 
     public int z;
@@ -46,7 +44,7 @@ public class InteractiveObject {
         class1.length = 0;
         class1.chars = new byte[arg3];
         if(!arg1)
-            aClass1_495 = null;
+            English.publicChat = null;
         for(int i = arg2; arg3 + arg2 > i; i++) {
             if(arg0[i] != 0)
                 class1.chars[class1.length++] = arg0[i];

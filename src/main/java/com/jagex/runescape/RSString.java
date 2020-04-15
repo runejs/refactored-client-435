@@ -10,7 +10,7 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import java.awt.*;
 import java.nio.charset.StandardCharsets;
 
-public class RSString implements Interface1 {
+public class RSString {
     public static Class68 aClass68_1665;
     public static int clickY = 0;
     public static Cache aClass9_1684;
@@ -108,52 +108,24 @@ public class RSString implements Interface1 {
         return -arg0 + arg1;
     }
 
-    public int method52() {
-        return method88(false, 10);
-    }
 
-    public RSString method53() {
-        RSString class1 = new RSString();
-        class1.length = length;
-        class1.chars = new byte[length];
-        boolean bool = true;
-        for(int i = 0; i < length; i++) {
-            byte i_0_ = chars[i];
-            if(i_0_ >= 97 && i_0_ <= 122 || i_0_ >= -32 && i_0_ <= -2 && i_0_ != -9) {
-                if(bool)
-                    i_0_ -= 32;
-                bool = false;
-            } else if(i_0_ >= 65 && i_0_ <= 90 || i_0_ >= -64 && i_0_ <= -34 && i_0_ != -41) {
-                if(!bool)
-                    i_0_ += 32;
-                bool = false;
+    public static String formatChatString(String str) {
+        char[] chars = str.toCharArray();
+        boolean shouldUppercaseNext = true;
+        for(int i = 0; i < chars.length; i++) {
+            char currentChar = chars[i];
+            if(currentChar >= 'a' && currentChar <= 'z') {
+                if(shouldUppercaseNext)
+                    currentChar = Character.toUpperCase(currentChar);
+                shouldUppercaseNext = false;
+            } else if(currentChar >= 'A' && currentChar <= 'Z') {
+                if(!shouldUppercaseNext)
+                    currentChar = Character.toLowerCase(currentChar);
+                shouldUppercaseNext = false;
             }
-            class1.chars[i] = i_0_;
-            if(i_0_ == 46 || i_0_ == 33 || i_0_ == 63)
-                bool = true;
-        }
-        return class1;
-    }
-
-
-    public static String method53(String str) {
-        int length = str.length();
-        byte[] chars = new byte[length];
-        boolean bool = true;
-        for(int i = 0; i < str.length(); i++) {
-            byte i_0_ = (byte) str.charAt(i);
-            if(i_0_ >= 97 && i_0_ <= 122 || i_0_ >= -32 && i_0_ <= -2 && i_0_ != -9) {
-                if(bool)
-                    i_0_ -= 32;
-                bool = false;
-            } else if(i_0_ >= 65 && i_0_ <= 90 || i_0_ >= -64 && i_0_ <= -34 && i_0_ != -41) {
-                if(!bool)
-                    i_0_ += 32;
-                bool = false;
-            }
-            chars[i] = i_0_;
-            if(i_0_ == 46 || i_0_ == 33 || i_0_ == 63)
-                bool = true;
+            chars[i] = currentChar;
+            if(currentChar == '.' || currentChar == '!' || currentChar == '?')
+                shouldUppercaseNext = true;
         }
         return new String(chars);
     }
@@ -554,32 +526,12 @@ public class RSString implements Interface1 {
         return -1;
     }
 
-    public boolean method82() {
-        return method67(10);
-    }
 
     public String toString() {
         return new String(this.chars);
     }
 
-    public int method84(RSString arg0) {
-        int i;
-        if(arg0.length >= length)
-            i = length;
-        else
-            i = arg0.length;
-        for(int i_24_ = 0; i > i_24_; i_24_++) {
-            if(arg0.chars[i_24_] > chars[i_24_])
-                return -1;
-            if(chars[i_24_] > arg0.chars[i_24_])
-                return 1;
-        }
-        if(arg0.length > length)
-            return -1;
-        if(length > arg0.length)
-            return 1;
-        return 0;
-    }
+
 
     public RSString method85() {
         boolean bool = true;
@@ -609,16 +561,7 @@ public class RSString implements Interface1 {
         return l;
     }
 
-    public boolean endsWith(RSString arg1) {
-        if(length < arg1.length)
-            return false;
-        int i = length + -arg1.length;
-        for(int i_26_ = 0; arg1.length > i_26_; i_26_++) {
-            if(chars[i_26_ + i] != arg1.chars[i_26_])
-                return false;
-        }
-        return true;
-    }
+
 
     public int method88(boolean arg0, int arg1) {
         if(arg1 < 1 || arg1 > 36)

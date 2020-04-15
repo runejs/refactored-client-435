@@ -2,7 +2,7 @@ package com.jagex.runescape.cache;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.PacketBuffer;
@@ -36,7 +36,7 @@ public class CacheIndex_Sub1 extends CacheIndex {
     }
 
     public static String method204(int arg0) {
-        return (0xff & arg0 >> 24) + Node.aClass1_975 + ((arg0 & 0xffca88) >> 16) + Node.aClass1_975 + ((0xfff8 & arg0) >> 8) + Node.aClass1_975 + (0xff & arg0);
+        return (0xff & arg0 >> 24) + Native.aClass1_975 + ((arg0 & 0xffca88) >> 16) + Native.aClass1_975 + ((0xfff8 & arg0) >> 8) + Native.aClass1_975 + (0xff & arg0);
     }
 
     public static void method399(int arg0, int arg2) {

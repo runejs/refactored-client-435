@@ -6,7 +6,6 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
@@ -19,12 +18,10 @@ import com.jagex.runescape.scene.tile.WallDecoration;
 import java.awt.*;
 
 public class Player extends Actor {
-    public static String aClass1_3256 = "green:";
     public static int anInt3264 = 0;
     public static int worldLevel;
     public static byte[] aByteArray3270;
     public static int[] anIntArray3284;
-    public static String aClass1_3286 = "Try again in 60 secs...";
     public static int anInt3288 = 0;
     public static Player localPlayer;
     public static int[] actorUpdatingIndices = new int[2048];
@@ -151,14 +148,14 @@ public class Player extends Actor {
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
                     IncomingPackets.incomingPacketBuffer.getBytes(0, messageLength, Class59.aClass40_Sub1_1385.buffer);
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
-                    String class1 = RSString.method53(KeyFocusListener.method956(124, IncomingPackets.incomingPacketBuffer));
-
+                    String incomming = KeyFocusListener.method956(124, IncomingPackets.incomingPacketBuffer);
+                    String class1 = RSString.formatChatString(incomming);
                     player.forcedChatMessage = class1.trim();
                     player.anInt3078 = 150;
                     player.chatEffects = chatEffectsAndColors & 0xff;
                     player.chatcolor = chatEffectsAndColors >> 8;
                     if(playerRights == 2 || playerRights == 3)
-                        Class44.addChatMessage(Widget.goldCrown + player.playerName, class1, 1);
+                        Class44.addChatMessage(Native.goldCrown + player.playerName, class1, 1);
                     else if(playerRights == 1)
                         Class44.addChatMessage(Native.whiteCrown+ player.playerName, class1, 1);
                     else

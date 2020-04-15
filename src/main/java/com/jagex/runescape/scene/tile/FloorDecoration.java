@@ -24,19 +24,14 @@ import java.io.IOException;
 import java.util.zip.CRC32;
 
 public class FloorDecoration {
-    public static String STRING_CONNECTING_UPDATE_SERVER = "Connecting to update server";
     public static CRC32 aCRC32_590 = new CRC32();
-    public static String aClass1_591 = "Add friend";
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_593;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
     public static CacheIndex_Sub1 aClass6_Sub1_605;
     public static SignlinkNode aSignlinkNode_607;
     public static Class40_Sub9 aClass40_Sub9_608;
-    public static String aClass1_610 = "@red@";
-    public static String aClass1_611 = null;
     public static int[] anIntArray612;
     public static int anInt614 = -1;
-    public static String aClass1_615 = "huffman";
 
     public int config;
     public int hash;
@@ -100,7 +95,7 @@ public class FloorDecoration {
                                 ISAAC.mapCoordinates[i_8_] = i_17_;
                                 int i_19_ = i_17_ & 0xff;
                                 int i_20_ = (0xffbe & i_17_) >> 8;
-                                LinkedList.anIntArray1071[i_8_] = Renderable.aClass6_Sub1_2857.getHash(LinkedList.aClass1_1085+i_20_+ Native.aClass1_303+i_19_);
+                                LinkedList.anIntArray1071[i_8_] = Renderable.aClass6_Sub1_2857.getHash(Native.aClass1_1085+i_20_+ Native.aClass1_303+i_19_);
                                 Class13.anIntArray421[i_8_] = Renderable.aClass6_Sub1_2857.getHash(Native.aClass1_553+i_20_+ Native.aClass1_303+i_19_);
                                 i_8_++;
                             }
@@ -137,7 +132,7 @@ public class FloorDecoration {
                     int i_30_ = i_29_ + (i_28_ << 8);
                     if(!bool || i_29_ != 49 && i_29_ != 149 && i_29_ != 147 && i_28_ != 50 && (i_28_ != 49 || i_29_ != 47)) {
                         ISAAC.mapCoordinates[i_25_] = i_30_;
-                        LinkedList.anIntArray1071[i_25_] = Renderable.aClass6_Sub1_2857.getHash(LinkedList.aClass1_1085 + i_28_ + Native.aClass1_303 + i_29_);
+                        LinkedList.anIntArray1071[i_25_] = Renderable.aClass6_Sub1_2857.getHash(Native.aClass1_1085 + i_28_ + Native.aClass1_303 + i_29_);
                         Class13.anIntArray421[i_25_] = Renderable.aClass6_Sub1_2857.getHash(Native.aClass1_553 + i_28_ + Native.aClass1_303 + i_29_);
                         i_25_++;
                     }

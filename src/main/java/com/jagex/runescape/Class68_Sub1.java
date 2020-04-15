@@ -9,7 +9,6 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
-import com.jagex.runescape.scene.GroundItemTile;
 
 import java.awt.*;
 import java.awt.image.*;
@@ -62,23 +61,22 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
                 i--;
             else
                 i -= 101;
-            OverlayDefinition.addActionRow(English.aClass1_1572, 0, 0, 0, 13, Native.aClass1_620+Class40_Sub11.friendUsernames[i]);
-            OverlayDefinition.addActionRow(GroundItemTile.aClass1_1354, 0, 0, 0, 18, Native.aClass1_620+ Class40_Sub11.friendUsernames[i]);
+            OverlayDefinition.addActionRow(English.remove, 0, 0, 0, 13, Native.aClass1_620+Class40_Sub11.friendUsernames[i]);
+            OverlayDefinition.addActionRow(English.message, 0, 0, 0, 18, Native.aClass1_620+ Class40_Sub11.friendUsernames[i]);
             return true;
         }
         if(i >= 401 && i <= 500) {
-            OverlayDefinition.addActionRow(English.aClass1_1572, 0, 0, 0, 35, Native.aClass1_620+ arg1.disabledText);
+            OverlayDefinition.addActionRow(English.remove, 0, 0, 0, 35, Native.aClass1_620+ arg1.disabledText);
             return true;
         }
         return false;
     }
 
-    public static int method1052(int arg0, RSString arg1, Buffer arg2) {
-        if(arg0 < 24)
-            English.aClass1_2209 = null;
+    public static int method1052(String arg1, Buffer arg2) {
         int i = arg2.currentPosition;
-        arg2.putSmart(arg1.length);
-        arg2.currentPosition += IdentityKit.aHuffmanEncoding_2590.encrypt(-18678, 0, arg2.currentPosition, arg1.length, arg1.chars, arg2.buffer);
+        arg2.putSmart(arg1.length());
+        char[] test = arg1.toCharArray();
+        arg2.currentPosition += IdentityKit.aHuffmanEncoding_2590.encrypt(-18678, 0, arg2.currentPosition, arg1.length(), arg1.getBytes(), arg2.buffer);
         return -i + arg2.currentPosition;
 
     }

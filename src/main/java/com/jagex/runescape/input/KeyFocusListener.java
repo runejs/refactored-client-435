@@ -27,8 +27,6 @@ import java.awt.event.KeyListener;
 public class KeyFocusListener implements KeyListener, FocusListener {
     public static LinkedList aLinkedList_1278 = new LinkedList();
     public static int[] anIntArray1282 = new int[256];
-    public static String aClass1_1283 = "@yel@";
-    public static String aClass1_1284 = "compass";
     public static Class68 aClass68_1285;
 
     static {
@@ -95,17 +93,17 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             WallDecoration.fontNormal.drawStringRight("Mem: " + memoryUsed + "k", x, y, colour);
             y += 15;
             if (Class38.aBoolean893) {
-                WallDecoration.fontNormal.drawStringRight(English.aClass1_1544, x, y, 16711680);
+                WallDecoration.fontNormal.drawStringRight(English.sidePanelRedrawn, x, y, 16711680);
                 y += 15;
                 Class38.aBoolean893 = false;
             }
             if (CacheIndex.aBoolean260) {
-                WallDecoration.fontNormal.drawStringRight(GroundItemTile.aClass1_1378, x, y, 16711680);
+                WallDecoration.fontNormal.drawStringRight(English.chatPanelRedrawn, x, y, 16711680);
                 y += 15;
                 CacheIndex.aBoolean260 = false;
             }
             if (Class40_Sub3.aBoolean2026) {
-                WallDecoration.fontNormal.drawStringRight(English.aClass1_1546, x, y, 16711680);
+                WallDecoration.fontNormal.drawStringRight(English.iconsRedrawn, x, y, 16711680);
                 Class40_Sub3.aBoolean2026 = false;
                 y += 15;
             }
@@ -115,70 +113,70 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             int minutes = seconds / 60;
             seconds %= 60;
             if (seconds < 10) {
-                WallDecoration.fontNormal.drawString(English.aClass1_1432 + minutes + Native.prefixColonZero + seconds, 4, 329, 16776960);
+                WallDecoration.fontNormal.drawString(English.systemUpdateIn + minutes + Native.prefixColonZero + seconds, 4, 329, 16776960);
             } else {
-                WallDecoration.fontNormal.drawString(English.aClass1_1432 + minutes + Class43.char_colon + seconds, 4, 329, 16776960);
+                WallDecoration.fontNormal.drawString(English.systemUpdateIn + minutes + Native.char_colon + seconds, 4, 329, 16776960);
             }
         }
     }
 
-    public static int method955(CacheIndex arg0, byte arg1) {
+    public static int method955(CacheIndex arg0) {
         int i = 0;
-        if (arg0.method194(Native.aClass1_638, Native.aClass1_305, -1234)) {
+        if (arg0.method194(Native.aClass1_638, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.chatback, Native.aClass1_305, arg1 + -1175)) {
+        if (arg0.method194(Native.chatback, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(VertexNormal.aClass1_1113, Native.aClass1_305, -1234)) {
+        if (arg0.method194(Native.aClass1_1113, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_1395, Native.aClass1_305, -1234)) {
+        if (arg0.method194(Native.aClass1_1395, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(CacheIndex.aClass1_256, Native.aClass1_305, arg1 ^ 0x4eb)) {
+        if (arg0.method194(Native.aClass1_256, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Wall.aClass1_338, Native.aClass1_305, -1234)) {
+        if (arg0.method194(Native.aClass1_338, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_1440, Native.aClass1_305, -1234)) {
+        if (arg0.method194(Native.aClass1_1440, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_1024, Native.aClass1_305, -1234)) {
+        if (arg0.method194(Native.aClass1_1024, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_281, Native.aClass1_305, -1234)) {
+        if (arg0.method194(Native.aClass1_281, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(WallDecoration.aClass1_1266, Native.aClass1_305, -1234)) {
+        if (arg0.method194(Native.aClass1_1266, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Main.aClass1_1788, Native.aClass1_305, -1234)) {
+        if (arg0.method194(Native.aClass1_1788, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(GroundItemTile.aClass1_1374, Native.aClass1_305, arg1 ^ 0x4eb)) {
+        if (arg0.method194(Native.aClass1_1374, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(IdentityKit.aClass1_2588, Native.aClass1_305, -1234)) {
+        if (arg0.method194(Native.aClass1_2588, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_196, Native.aClass1_305, -1234)) {
+        if (arg0.method194(Native.aClass1_196, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_304, Native.aClass1_305, -1234)) {
+        if (arg0.method194(Native.aClass1_304, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(SubNode.aClass1_2093, Native.aClass1_305, -1234)) {
+        if (arg0.method194(Native.aClass1_2093, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_3254, Native.aClass1_305, arg1 + -1175)) {
+        if (arg0.method194(Native.aClass1_3254, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_1517, Native.aClass1_305, -1234)) {
+        if (arg0.method194(Native.aClass1_1517, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_2787, Native.aClass1_305, -1234)) {
+        if (arg0.method194(Native.aClass1_2787, Native.aClass1_305)) {
             i++;
         }
         return i;
@@ -198,7 +196,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             class56 = new Class56(arg0, SpotAnimDefinition.aClass67_2298, Class40_Sub5_Sub6.aClass67Array2436[arg0], 1000000);
         }
         if (arg3 < 116) {
-            method955(null, (byte) -86);
+            method955(null);
         }
         return new CacheIndex_Sub1(class56, VarbitDefinition.aClass56_2356, arg0, arg2, arg4, arg1);
     }

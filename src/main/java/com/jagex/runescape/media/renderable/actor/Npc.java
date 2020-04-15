@@ -12,6 +12,7 @@ import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -28,19 +29,16 @@ import com.jagex.runescape.scene.tile.WallDecoration;
 
 public class Npc extends Actor {
     public static int anInt3294 = 0;
-    public static String aClass1_3295 = null;
     public static boolean aBoolean3298;
     public static Scene currentScene;
     public static int[] anIntArray3304 = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
-    public static String aClass1_3305 = "Connection lost";
-    public static String aClass1_3311 = "On";
     public static int[] anIntArray3312;
     public ActorDefinition actorDefinition;
 
     public static Class40_Sub5_Sub11 method795(byte arg0, int arg1) {
         Class40_Sub5_Sub11 class40_sub5_sub11 = (Class40_Sub5_Sub11) Class13.aClass9_406.get((long) arg1, (byte) 98);
         if(arg0 >= -66)
-            aClass1_3295 = null;
+            Native.aClass1_3295 = null;
         if(class40_sub5_sub11 != null)
             return class40_sub5_sub11;
         if(Class64.aCacheIndex_1521 == null) {
@@ -61,7 +59,7 @@ public class Npc extends Actor {
             SceneCluster.anInt771--;
         if(Class37.aBoolean871) {
             Class37.aBoolean871 = false;
-            Class59.dropClient(2578);
+            Class59.dropClient();
         } else {
             for(int i = 0; i < 100; i++) {
                 if(!IncomingPackets.parseIncomingPackets(false))
@@ -194,7 +192,7 @@ public class Npc extends Actor {
                     Class4.processAudio();
                     Class35.anInt1728++;
                     if(Class35.anInt1728 > 750)
-                        Class59.dropClient(2578);
+                        Class59.dropClient();
                     else {
                         Class17.method276(-1);
                         Class8.method209();
@@ -286,10 +284,10 @@ public class Npc extends Actor {
                             }
                             Scene.clickedTileX = -1;
                         }
-                        if(MouseHandler.clickType == 1 && GameShell.clickToContinueString != null) {
+                        if(MouseHandler.clickType == 1 && Native.clickToContinueString != null) {
                             MouseHandler.clickType = 0;
                             ChatBox.redrawChatbox = true;
-                            GameShell.clickToContinueString = null;
+                            Native.clickToContinueString = null;
                         }
                         MouseHandler.processMenuClick();
                         if(ActorDefinition.openFullScreenWidgetId == -1) {
@@ -398,7 +396,7 @@ public class Npc extends Actor {
                                 Class22.anInt537 = 0;
                                 SceneCluster.packetBuffer.currentPosition = 0;
                             } catch(java.io.IOException ioexception) {
-                                Class59.dropClient(2578);
+                                Class59.dropClient();
                                 break;
                             }
                             break;

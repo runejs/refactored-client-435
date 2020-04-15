@@ -15,17 +15,13 @@ import com.jagex.runescape.scene.util.CollisionMap;
 public class GroundItemTile {
     public static boolean loadGeneratedMap = false;
     public static int selectedInventorySlot = 0;
-    public static String aClass1_1354 = "Message";
     public static int[] anIntArray1358 = new int[5];
-    public static String cmd_clientdrop = "::clientdrop";
     public static Cache aClass9_1364 = new Cache(64);
     public static byte[][] aByteArrayArray1370;
     public static int cameraHorizontal = 0;
-    public static String aClass1_1374 = "backvmid1";
     public static CacheIndex aCacheIndex_1375;
     public static int walkableWidgetId = -1;
     public static byte[][] aByteArrayArray1377 = new byte[1000][];
-    public static String aClass1_1378 = "Chat panel redrawn";
     public static int[] varbitmasks = new int[2000];
 
     public Renderable firstGroundItem;

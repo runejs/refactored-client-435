@@ -106,7 +106,7 @@ public abstract class Class22 {
             arg0.currentPosition += IdentityKit.aHuffmanEncoding_2590.method1023(arg0.buffer, length, 0, chars, arg0.currentPosition, -1);
             return new String(chars);
         } catch(Exception exception) {
-            return English.aClass1_777;
+            return English.cabbage;
         }
     }
 

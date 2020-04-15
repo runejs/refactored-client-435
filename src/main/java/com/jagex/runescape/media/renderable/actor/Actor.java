@@ -20,8 +20,6 @@ import com.jagex.runescape.util.Signlink;
 
 public abstract class Actor extends Renderable {
     public static int[] anIntArray3111;
-    public static String aClass1_3124 = "Loaded textures";
-    public static String aClass1_3138 = "Login limit exceeded.";
     public static volatile int eventMouseButtonPressed = 0;
     public static CacheIndex aCacheIndex_3144;
     public static int[] anIntArray3149 = new int[1000];
@@ -30,7 +28,6 @@ public abstract class Actor extends Renderable {
     public static Signlink aClass31_3152;
     public static int actorUpdatingIndex = 0;
     public static CacheIndex_Sub1 aClass6_Sub1_3157;
-    public static String aClass1_3159 = "Please wait - attempting to reestablish";
 
     public boolean[] aBooleanArray3072;
     public int anInt3073;
@@ -282,7 +279,7 @@ public abstract class Actor extends Renderable {
                 Class40_Sub6.onBuildTimePlane = 0;
             Class17.regionY = arg2;
             OverlayDefinition.method559(25);
-            Class51.method940(0, English.aClass1_1585, false, null);
+            Class51.method940(0, English.loadingPleaseWait, false, null);
             int i = Class26.baseY;
             int i_33_ = SpotAnimDefinition.baseX;
             SpotAnimDefinition.baseX = (arg3 - 6) * 8;

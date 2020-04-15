@@ -4,6 +4,7 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -63,7 +64,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
     public int groundScaleY;
 
     public ItemDefinition() {
-        interfaceOptions = new String[]{null, null, null, null, "Drop"};
+        interfaceOptions = new String[]{null, null, null, null, English.drop};
         stackable = 0;
         maleOffset = 0;
         name = "null";
@@ -74,7 +75,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
         ambient = 0;
         maleModel1 = -1;
         yan2d = 0;
-        groundOptions = new String[]{null, null, "Take", null, null};
+        groundOptions = new String[]{null, null, English.take, null, null};
         groundScaleX = 128;
         noteTemplateId = -1;
         secondaryFemaleHeadPiece = -1;
@@ -199,7 +200,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
             definition.interfaceOptions = null;
             definition.teamIndex = 0;
             definition.groundOptions = null;
-            definition.name = "Members object";
+            definition.name = English.membersObject;
         }
         ISAAC.aClass9_516.put(id, definition);
         return definition;

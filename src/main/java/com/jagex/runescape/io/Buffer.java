@@ -17,7 +17,6 @@ public class Buffer extends Node {
     public static int lastItemDragTime = 0;
 
     public static int anInt1982 = 0;
-    public static String aClass1_1983 = "Too many incorrect logins from your address.";
     public static int[] anIntArray1984 = new int[2000];
     public static int anInt1985 = -1;
     public static int anInt1987 = 0;
@@ -270,21 +269,20 @@ public class Buffer extends Node {
         currentPosition += value.method51(0, value.length(), buffer, currentPosition);
         buffer[currentPosition++] = (byte) 0;
     }
-
     public void putString(String str) {
-//        if(str == null) {
-//            str = "";
-//        }
-//
-//        byte[] bytes = new byte[str.length()];
-//        for (int i = 0; i < bytes.length; i++) {
-//            bytes[i] = (byte) str.charAt(i);
-//        }
-//        System.arraycopy(bytes, 0, buffer, currentPosition, bytes.length);
-//        currentPosition += str.length();
-//        buffer[currentPosition++] = 10;
-        method505(RSString.CreateString(str));
+        if(str == null) {
+            str = "";
+        }
+
+        byte[] bytes = new byte[str.length()];
+        for (int i = 0; i < bytes.length; i++) {
+            bytes[i] = (byte) str.charAt(i);
+        }
+        System.arraycopy(bytes, 0, buffer, currentPosition, bytes.length);
+        currentPosition += str.length();
+        buffer[currentPosition++] = (byte) 0;
     }
+
 
     public void putIntBE(int value) {
         buffer[currentPosition++] = (byte) (value >> 24);

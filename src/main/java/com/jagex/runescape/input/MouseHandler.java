@@ -29,13 +29,11 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public static int anInt1450 = -1;
     public static Cache modelCache = new Cache(50);
     public static int anInt1457 = -1;
-    public static String aClass1_1465 = " is already on your friend list";
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array1466 = new ImageRGB[1000];
     public static int anInt1468;
     public static Canvas aCanvas1469;
     public static int clickType = 0;
     public static byte[][][] tile_overlayids;
-    public static String aClass1_1474 = "wave2:";
     public static int cameraZoom = 600;
     public boolean mouseWheelDown;
     public int mouseWheelX;

@@ -7,6 +7,7 @@ import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.scene.util.CollisionMap;
 
@@ -25,7 +26,7 @@ public class Class44 implements Runnable {
             ChatBox.redrawChatbox = true;
         if(type == 0 && ChatBox.dialogueId != -1) {
             MouseHandler.clickType = 0;
-            GameShell.clickToContinueString = message;
+            Native.clickToContinueString = message;
         }
         for(int i = 99; i > 0; i--) {
             ChatBox.chatTypes[i] = ChatBox.chatTypes[i + -1];

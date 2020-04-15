@@ -30,7 +30,7 @@ public class Class61 {
         if(arg1 != -1 && Class68.aBooleanArray1629[arg1]) {
             VarbitDefinition.aCacheIndex_2349.method171(1, arg1);
             if(arg0 < 31)
-                English.aClass1_1428 = null;
+                English.suffixWishesToDuelWithYou = null;
             if(Widget.interfaces[arg1] != null) {
                 boolean bool = true;
                 for(int i = 0; Widget.interfaces[arg1].length > i; i++) {
@@ -50,7 +50,7 @@ public class Class61 {
 
     public static void method996(int arg0) {
         if(arg0 != 19655)
-            English.aClass1_1432 = null;
+            English.systemUpdateIn = null;
         SubNode.aClass68_2091.method1046((byte) 90);
         FloorDecoration.aClass40_Sub5_Sub14_Sub2_593.drawImage(0, 0);
         ActorDefinition.anIntArray2386 = Rasterizer3D.method708(ActorDefinition.anIntArray2386);

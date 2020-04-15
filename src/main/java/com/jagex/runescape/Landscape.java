@@ -33,19 +33,12 @@ import java.util.zip.GZIPInputStream;
 
 public class Landscape {
     public static int anInt1157 = 0;
-    public static String aClass1_1162 = "@gre@";
     public static int mouseY = 0;
     public static CollisionMap[] currentCollisionMap = new CollisionMap[4];
     public static int[] anIntArray1168;
     public static int anInt1170 = 0;
     public static int anInt1171 = 0;
-    public static String aClass1_1173 = "Loaded wordpack";
-    public static String aClass1_1174 = "Enter amount:";
     public static int[][] distanceValues = new int[104][104];
-    public static String aClass1_1178 = "You are standing in a members-only area.";
-    public static String aClass1_1180 = "Your ignore list is full. Max of 100 hit";
-    public static String aClass1_1181 = "glow1:";
-    public static String aClass1_1183 = "";
     public static String[] menuActionTexts = new String[500];
     public static Class68 aClass68_1185;
     public static int[] anIntArray1186;
@@ -120,7 +113,7 @@ public class Landscape {
             }
             if(bool) {
                 if(Class68.anInt1634 != 0)
-                    Class51.method940(0, English.aClass1_1585, true, ActorDefinition.aClass1_2423);
+                    Class51.method940(0, English.loadingPleaseWait, true, Native.aClass1_2423);
                 RSCanvas.method46(0);
                 Npc.currentScene.initToNull();
                 System.gc();
@@ -261,7 +254,7 @@ public class Landscape {
                     for(int i_46_ = -1 + i_42_; i_46_ <= 1 + i_45_; i_46_++) {
                         for(int i_47_ = -1 + i_43_; i_47_ <= i_44_ + 1; i_47_++) {
                             if(i_42_ > i_46_ || i_46_ > i_45_ || i_47_ < i_43_ || i_47_ > i_44_) {
-                                Renderable.aClass6_Sub1_2857.method195(0, LinkedList.aClass1_1085+i_46_+ Native.aClass1_303+i_47_);
+                                Renderable.aClass6_Sub1_2857.method195(0, Native.aClass1_1085+i_46_+ Native.aClass1_303+i_47_);
                                 Renderable.aClass6_Sub1_2857.method195(0, Native.aClass1_553+i_46_+ Native.aClass1_303+i_47_);
                             }
                         }

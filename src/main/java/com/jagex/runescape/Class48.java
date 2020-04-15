@@ -1,6 +1,5 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.ItemDefinition;
@@ -13,12 +12,10 @@ import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
-import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
-import com.jagex.runescape.scene.tile.FloorDecoration;
 
 public class Class48 {
     public static int cameraOffsetY = 0;
@@ -140,7 +137,7 @@ public class Class48 {
                             }
                         }
                         if(widget.actionType == 2 && Main.widgetSelected == 0 && arg8 >= i_2_ && arg4 >= i_1_ && arg8 < widget.originalWidth + i_2_ && arg4 < i_1_ + widget.originalHeight) {
-                            OverlayDefinition.addActionRow(widget.targetVerb, 0, 0, widget.id, 33, Landscape.aClass1_1162+widget.spellName);
+                            OverlayDefinition.addActionRow(widget.targetVerb, 0, 0, widget.id, 33, Native.aClass1_1162+widget.spellName);
                         }
                         if(widget.actionType == 3 && arg8 >= i_2_ && arg4 >= i_1_ && i_2_ + widget.originalWidth > arg8 && arg4 < i_1_ + widget.originalHeight) {
                             int i_3_;
@@ -148,7 +145,7 @@ public class Class48 {
                                 i_3_ = 9;
                             else
                                 i_3_ = 40;
-                            OverlayDefinition.addActionRow(VertexNormal.aClass1_1090, 0, 0, widget.id, i_3_, "");
+                            OverlayDefinition.addActionRow(English.close, 0, 0, widget.id, i_3_, "");
                         }
                         if(widget.actionType == 4 && arg8 >= i_2_ && i_1_ <= arg4 && arg8 < widget.originalWidth + i_2_ && widget.originalHeight + i_1_ > arg4) {
                             OverlayDefinition.addActionRow(widget.tooltip, 0, 0, widget.id, 23, "");
@@ -177,7 +174,7 @@ public class Class48 {
                                             if(Class8.itemSelected != 1 || !widget.isInventory) {
                                                 if(Main.widgetSelected == 1 && widget.isInventory) {
                                                     if((ItemDefinition.selectedMask & 0x10) == 16) {
-                                                        OverlayDefinition.addActionRow(Native.aClass1_1918, itemDefinition.id, i_4_, widget.id, 37, FloorDecoration.aClass1_611 + Native.aClass1_206 + itemDefinition.name);
+                                                        OverlayDefinition.addActionRow(Native.aClass1_1918, itemDefinition.id, i_4_, widget.id, 37, Native.aClass1_611 + Native.aClass1_206 + itemDefinition.name);
                                                     }
                                                 } else {
                                                     String[] class1s = itemDefinition.interfaceOptions;
@@ -191,14 +188,14 @@ public class Class48 {
                                                                     i_10_ = 11;
                                                                 else
                                                                     i_10_ = 43;
-                                                                OverlayDefinition.addActionRow(class1s[i_9_], itemDefinition.id, i_4_, widget.id, i_10_, VertexNormal.aClass1_1114 + itemDefinition.name);
+                                                                OverlayDefinition.addActionRow(class1s[i_9_], itemDefinition.id, i_4_, widget.id, i_10_, Native.aClass1_1114 + itemDefinition.name);
                                                             } else if(i_9_ == 4) {
-                                                                OverlayDefinition.addActionRow(Cache.dropStringInstance, itemDefinition.id, i_4_, widget.id, 11, VertexNormal.aClass1_1114 + itemDefinition.name);
+                                                                OverlayDefinition.addActionRow(English.drop, itemDefinition.id, i_4_, widget.id, 11, Native.aClass1_1114 + itemDefinition.name);
                                                             }
                                                         }
                                                     }
                                                     if(widget.itemUsable) {
-                                                        OverlayDefinition.addActionRow(Main.aClass1_1763, itemDefinition.id, i_4_, widget.id, 19, VertexNormal.aClass1_1114 + itemDefinition.name);
+                                                        OverlayDefinition.addActionRow(English.use, itemDefinition.id, i_4_, widget.id, 19, Native.aClass1_1114 + itemDefinition.name);
                                                     }
                                                     if(widget.isInventory && class1s != null) {
                                                         for(int i_11_ = 2; i_11_ >= 0; i_11_--) {
@@ -210,7 +207,7 @@ public class Class48 {
                                                                     i_12_ = 6;
                                                                 if(i_11_ == 2)
                                                                     i_12_ = 31;
-                                                                OverlayDefinition.addActionRow(class1s[i_11_], itemDefinition.id, i_4_, widget.id, i_12_, VertexNormal.aClass1_1114 + itemDefinition.name);
+                                                                OverlayDefinition.addActionRow(class1s[i_11_], itemDefinition.id, i_4_, widget.id, i_12_, Native.aClass1_1114 + itemDefinition.name);
                                                             }
                                                         }
                                                     }
@@ -231,14 +228,14 @@ public class Class48 {
                                                                     i_14_ = 48;
                                                                 if(i_13_ == 4)
                                                                     i_14_ = 24;
-                                                                OverlayDefinition.addActionRow(class1s[i_13_], itemDefinition.id, i_4_, widget.id, i_14_, VertexNormal.aClass1_1114 + itemDefinition.name);
+                                                                OverlayDefinition.addActionRow(class1s[i_13_], itemDefinition.id, i_4_, widget.id, i_14_, Native.aClass1_1114 + itemDefinition.name);
                                                             }
                                                         }
                                                     }
-                                                    OverlayDefinition.addActionRow(English.examine, itemDefinition.id, i_4_, widget.id, 1006, VertexNormal.aClass1_1114 + itemDefinition.name);
+                                                    OverlayDefinition.addActionRow(English.examine, itemDefinition.id, i_4_, widget.id, 1006, Native.aClass1_1114 + itemDefinition.name);
                                                 }
                                             } else if(ISAAC.anInt525 != widget.id || i_4_ != LinkedList.anInt1061) {
-                                                OverlayDefinition.addActionRow(Main.aClass1_1763, itemDefinition.id, i_4_, widget.id, 56, Npc.aClass1_3295+ Native.aClass1_206+ itemDefinition.name);
+                                                OverlayDefinition.addActionRow(English.use, itemDefinition.id, i_4_, widget.id, 56, Native.aClass1_3295+ Native.aClass1_206+ itemDefinition.name);
                                             }
                                         }
                                     }
@@ -253,28 +250,28 @@ public class Class48 {
                                 if(Class60.aBoolean1402)
                                     class1s = Class56.method968(class1s);
                                 if(class1s == null || class1s[4] == null)
-                                    OverlayDefinition.addActionRow(Cache.dropStringInstance, itemDefinition.id, -1 + widget.anInt2736, widget.id, 11, VertexNormal.aClass1_1114+itemDefinition.name);
+                                    OverlayDefinition.addActionRow(English.drop, itemDefinition.id, -1 + widget.anInt2736, widget.id, 11, Native.aClass1_1114+itemDefinition.name);
                                 else
-                                    OverlayDefinition.addActionRow(class1s[4], itemDefinition.id, widget.anInt2736 + -1, widget.id, 11, VertexNormal.aClass1_1114+ itemDefinition.name);
+                                    OverlayDefinition.addActionRow(class1s[4], itemDefinition.id, widget.anInt2736 + -1, widget.id, 11, Native.aClass1_1114+ itemDefinition.name);
                                 if(class1s != null && class1s[3] != null)
-                                    OverlayDefinition.addActionRow(class1s[3], itemDefinition.id, -1 + widget.anInt2736, widget.id, 43, VertexNormal.aClass1_1114+ itemDefinition.name);
+                                    OverlayDefinition.addActionRow(class1s[3], itemDefinition.id, -1 + widget.anInt2736, widget.id, 43, Native.aClass1_1114+ itemDefinition.name);
                                 if(class1s != null && class1s[2] != null)
-                                    OverlayDefinition.addActionRow(class1s[2], itemDefinition.id, widget.anInt2736 - 1, widget.id, 31, VertexNormal.aClass1_1114+ itemDefinition.name);
+                                    OverlayDefinition.addActionRow(class1s[2], itemDefinition.id, widget.anInt2736 - 1, widget.id, 31, Native.aClass1_1114+ itemDefinition.name);
                                 if(class1s != null && class1s[1] != null)
-                                    OverlayDefinition.addActionRow(class1s[1], itemDefinition.id, -1 + widget.anInt2736, widget.id, 6, VertexNormal.aClass1_1114+ itemDefinition.name);
+                                    OverlayDefinition.addActionRow(class1s[1], itemDefinition.id, -1 + widget.anInt2736, widget.id, 6, Native.aClass1_1114+ itemDefinition.name);
                                 if(class1s != null && class1s[0] != null)
-                                    OverlayDefinition.addActionRow(class1s[0], itemDefinition.id, -1 + widget.anInt2736, widget.id, 52, VertexNormal.aClass1_1114+ itemDefinition.name);
+                                    OverlayDefinition.addActionRow(class1s[0], itemDefinition.id, -1 + widget.anInt2736, widget.id, 52, Native.aClass1_1114+ itemDefinition.name);
                             }
                             if(widget.id >= 0)
-                                OverlayDefinition.addActionRow(English.examine, itemDefinition.id, -1, widget.id, 1007, VertexNormal.aClass1_1114+ itemDefinition.name);
+                                OverlayDefinition.addActionRow(English.examine, itemDefinition.id, -1, widget.id, 1007, Native.aClass1_1114+ itemDefinition.name);
                             else
-                                OverlayDefinition.addActionRow(English.examine, itemDefinition.id, widget.id & 0x7fff, widget.parentId, 1007, VertexNormal.aClass1_1114+ itemDefinition.name);
+                                OverlayDefinition.addActionRow(English.examine, itemDefinition.id, widget.id & 0x7fff, widget.parentId, 1007, Native.aClass1_1114+ itemDefinition.name);
                         }
                         if(widget.aBoolean2688 && widget.aClass1Array2661 != null && i_2_ <= arg8 && i_1_ <= arg4 && widget.originalWidth + i_2_ > arg8 && arg4 < i_1_ + widget.originalHeight) {
                             String class1 = "";
                             if(widget.itemId != -1) {
                                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(widget.itemId, arg5 ^ 0xa);
-                                class1 = VertexNormal.aClass1_1114 + class40_sub5_sub16.name;
+                                class1 = Native.aClass1_1114 + class40_sub5_sub16.name;
                             }
                             for(int i_15_ = widget.aClass1Array2661.length - 1; i_15_ >= 0; i_15_--) {
                                 if(widget.aClass1Array2661[i_15_] != null) {

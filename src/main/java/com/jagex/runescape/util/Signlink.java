@@ -14,7 +14,7 @@ import java.net.URL;
 
 public class Signlink implements Runnable {
     public static Method aMethod724;
-    public static String homeDirectory;
+    private static String homeDirectory;
     public static Method aMethod729;
     public static String aString735;
     public static int anInt737 = 3;

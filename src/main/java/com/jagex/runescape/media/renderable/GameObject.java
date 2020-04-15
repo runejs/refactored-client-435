@@ -10,6 +10,7 @@ import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.util.CollisionMap;
 
@@ -17,13 +18,9 @@ import java.awt.*;
 
 public class GameObject extends Renderable {
     public static MouseHandler frame = new MouseHandler();
-    public static String aClass1_3038 = "Loaded gamescreen";
-    public static String aClass1_3039 = "Accept challenge";
     public static int anInt3040 = 0;
     public static Class68 aClass68_3042;
-    public static String aClass1_3044 = "";
     public static Class68 aClass68_3045;
-    public static String aClass1_3047 = "mapfunction";
     public static int anInt3048 = 1;
 
 
@@ -149,7 +146,7 @@ public class GameObject extends Renderable {
     public static void method774(byte arg0) {
         Buffer.aClass9_1933.method235();
         if(arg0 != -96)
-            aClass1_3047 = null;
+            Native.aClass1_3047 = null;
     }
 
     public Model getRotatedModel() {

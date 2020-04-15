@@ -3,19 +3,16 @@ package com.jagex.runescape.cache;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
+import com.jagex.runescape.language.English;
 
 public class Cache {
-    public static String dropStringInstance = "Drop";
     public static volatile int mouseButtonPressed = 0;
     public static int anInt321 = 5063219;
     public static volatile int eventMouseY = -1;
-    public static String aClass1_323 = "Please check your message-centre for details.";
     public static int anInt324 = 0;
     public static Cache aClass9_326 = new Cache(200);
-    public static String aClass1_327 = "@or1@";
     public static CacheIndex aCacheIndex_329;
     public static boolean redrawChatbox = false;
-    public static String aClass1_333 = "Classic";
 
     public SubNode aClass40_Sub5_309 = new SubNode();
     public int anInt316;
@@ -69,7 +66,7 @@ public class Cache {
     public SubNode get(long arg0, byte arg1) {
         SubNode class40_sub5 = (SubNode) aClass23_318.method331(arg0, 6120);
         if(arg1 < 39)
-            aClass1_333 = null;
+            English.classic = null;
         if(class40_sub5 != null)
             aClass27_319.method352(114, class40_sub5);
         return class40_sub5;

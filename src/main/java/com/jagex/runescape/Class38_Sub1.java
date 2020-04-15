@@ -4,7 +4,6 @@ import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
@@ -15,7 +14,6 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
-import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -59,21 +57,21 @@ public class Class38_Sub1 extends Class38 {
                     String class1 = ChatBox.chatPlayerNames[i_1_];
                     if(class1 != null && class1.startsWith(Native.whiteCrown))
                         class1 = class1.substring(5);
-                    if(class1 != null && class1.startsWith(Widget.goldCrown))
+                    if(class1 != null && class1.startsWith(Native.goldCrown))
                         class1 = class1.substring(5);
                     if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Class40_Sub2.hasFriend(class1))) {
                         int i_3_ = 329 + -(13 * i);
                         i++;
                         if(Class13.mouseX > 4 && i_3_ + -10 < Landscape.mouseY + -4 && -4 + Landscape.mouseY <= i_3_ + 3) {
-                            int i_4_ = 25 + WallDecoration.fontNormal.getStringWidth(English.aClass1_2458 + Native.prefixColon+ class1+ ChatBox.chatMessages[i_1_]);
+                            int i_4_ = 25 + WallDecoration.fontNormal.getStringWidth(English.from + Native.prefixColon+ class1+ ChatBox.chatMessages[i_1_]);
                             if(i_4_ > 450)
                                 i_4_ = 450;
                             if(Class13.mouseX < 4 + i_4_) {
                                 if(InteractiveObject.playerRights >= 1) {
                                     OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 2028, Native.aClass1_620+ class1);
                                 }
-                                OverlayDefinition.addActionRow(English.aClass1_885, 0, 0, 0, 2051, Native.aClass1_620+ class1);
-                                OverlayDefinition.addActionRow(FloorDecoration.aClass1_591, 0, 0, 0, 2045, Native.aClass1_620+ class1);
+                                OverlayDefinition.addActionRow(English.addIgnore, 0, 0, 0, 2051, Native.aClass1_620+ class1);
+                                OverlayDefinition.addActionRow(English.addFriend, 0, 0, 0, 2045, Native.aClass1_620+ class1);
                             }
                         }
                         if(i >= 5)

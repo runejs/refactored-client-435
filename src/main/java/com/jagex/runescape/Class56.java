@@ -7,7 +7,7 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.input.MouseHandler;
-import com.jagex.runescape.net.ISAAC;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.SceneTile;
@@ -38,7 +38,7 @@ public class Class56 {
     public static String[] method968(String[] arg0) {
         String[] class1s = new String[5];
         for(int i = 0; i < 5; i++) {
-            class1s[i] = i + ISAAC.aClass1_515;
+            class1s[i] = i + Native.aClass1_515;
             if(arg0 != null && arg0[i] != null)
                 class1s[i] = class1s[i] + arg0[i];
         }

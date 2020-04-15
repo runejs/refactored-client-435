@@ -12,7 +12,6 @@ public class Class39 implements Runnable {
     public static int anInt909 = 0;
     public static int anInt912 = 20;
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_918;
-    public static String str_ok = "Ok";
     public Object objectLock;
     public boolean aBoolean913 = true;
     public int[] coordsY;

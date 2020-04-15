@@ -15,7 +15,6 @@ import java.io.IOException;
 
 public class GameObjectDefinition extends SubNode implements EntityDefinition {
     public static Class68 aClass68_2524;
-    public static String aClass1_2526 = "%dns";
     public static int anInt2543 = 0;
     public static HashTable aClass23_2545 = new HashTable(4096);
     public static int lastClickY = 0;
