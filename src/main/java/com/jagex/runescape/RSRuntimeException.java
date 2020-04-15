@@ -10,7 +10,6 @@ import java.awt.*;
 public class RSRuntimeException extends RuntimeException {
     public static int anInt1641 = 0;
     public static int lastActiveInvInterface = 0;
-    public static String str_select = "Select";
     public static int anInt1651 = 0;
     /*synthetic*/ public static Class aClass1654;
 

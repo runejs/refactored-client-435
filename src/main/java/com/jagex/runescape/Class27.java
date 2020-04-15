@@ -534,7 +534,7 @@ public class Class27 {
                     ItemDefinition.selectedMask = widget.clickMask;
                     Class8.itemSelected = 0;
                     Class60.anInt1417 = i_10_;
-                    FloorDecoration.aClass1_611 = Native.aClass1_1162 + widget.spellName + Native.aClass1_620;
+                    Native.aClass1_611 = Native.aClass1_1162 + widget.spellName + Native.aClass1_620;
                     if(ItemDefinition.selectedMask == 16) {
                         IdentityKit.drawTabIcons = true;
                         Class5.currentTabId = 3;
@@ -1116,7 +1116,7 @@ public class Class27 {
         if(SceneTile.activeInterfaceType == 3) {
             ChatBox.redrawChatbox = true;
         }
-        if(GameShell.clickToContinueString != null) {
+        if(Native.clickToContinueString != null) {
             ChatBox.redrawChatbox = true;
         }
         if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {

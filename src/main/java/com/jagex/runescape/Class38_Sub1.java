@@ -14,7 +14,6 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
-import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -72,7 +71,7 @@ public class Class38_Sub1 extends Class38 {
                                     OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 2028, Native.aClass1_620+ class1);
                                 }
                                 OverlayDefinition.addActionRow(English.addIgnore, 0, 0, 0, 2051, Native.aClass1_620+ class1);
-                                OverlayDefinition.addActionRow(FloorDecoration.aClass1_591, 0, 0, 0, 2045, Native.aClass1_620+ class1);
+                                OverlayDefinition.addActionRow(English.addFriend, 0, 0, 0, 2045, Native.aClass1_620+ class1);
                             }
                         }
                         if(i >= 5)

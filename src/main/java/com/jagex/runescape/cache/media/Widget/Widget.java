@@ -22,7 +22,6 @@ import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.WallDecoration;
-import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
 import com.jagex.runescape.util.TextUtils;
 import tech.henning.fourthreefive.Configuration;
@@ -134,7 +133,7 @@ public class Widget extends SubNode {
         aBoolean2641 = false;
         targetVerb = "";
         anInt2654 = 0;
-        tooltip = Class39.str_ok;
+        tooltip = English.ok;
         itemSpritePadsY = 0;
         anInt2660 = 0;
         modelType = WidgetModelType.MODEL;
@@ -1091,7 +1090,7 @@ public class Widget extends SubNode {
                 widget.actionType = 0;
             } else {
                 if (Class40_Sub7.friendWorlds[type] == 0) {
-                    widget.disabledText = FloorDecoration.aClass1_610 + English.offline;
+                    widget.disabledText = Native.aClass1_610 + English.offline;
                 } else if (Class40_Sub7.friendWorlds[type] < 5000) {
                     if (Class40_Sub7.friendWorlds[type] == Class13.worldid) {
                         widget.disabledText = Native.aClass1_1162 + English.world + Class40_Sub7.friendWorlds[type];
@@ -1370,16 +1369,16 @@ public class Widget extends SubNode {
             tooltip = buffer.getString();
             if (tooltip.length() == 0) {
                 if (actionType == 1) {
-                    tooltip = Class39.str_ok;
+                    tooltip = English.ok;
                 }
                 if (actionType == 4) {
-                    tooltip = RSRuntimeException.str_select;
+                    tooltip = English.select;
                 }
                 if (actionType == 5) {
-                    tooltip = RSRuntimeException.str_select;
+                    tooltip = English.select;
                 }
                 if (actionType == 6) {
-                    tooltip = CollisionMap.str_continue;
+                    tooltip = English.sContinue;
                 }
             }
         }

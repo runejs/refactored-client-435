@@ -109,27 +109,23 @@ public class RSString {
     }
 
 
-
-
-
-    public static String method53(String str) {
-        int length = str.length();
-        byte[] chars = new byte[length];
-        boolean bool = true;
-        for(int i = 0; i < str.length(); i++) {
-            byte i_0_ = (byte) str.charAt(i);
-            if(i_0_ >= 97 && i_0_ <= 122 || i_0_ >= -32 && i_0_ <= -2 && i_0_ != -9) {
-                if(bool)
-                    i_0_ -= 32;
-                bool = false;
-            } else if(i_0_ >= 65 && i_0_ <= 90 || i_0_ >= -64 && i_0_ <= -34 && i_0_ != -41) {
-                if(!bool)
-                    i_0_ += 32;
-                bool = false;
+    public static String formatChatString(String str) {
+        char[] chars = str.toCharArray();
+        boolean shouldUppercaseNext = true;
+        for(int i = 0; i < chars.length; i++) {
+            char currentChar = chars[i];
+            if(currentChar >= 'a' && currentChar <= 'z') {
+                if(shouldUppercaseNext)
+                    currentChar = Character.toUpperCase(currentChar);
+                shouldUppercaseNext = false;
+            } else if(currentChar >= 'A' && currentChar <= 'Z') {
+                if(!shouldUppercaseNext)
+                    currentChar = Character.toLowerCase(currentChar);
+                shouldUppercaseNext = false;
             }
-            chars[i] = i_0_;
-            if(i_0_ == 46 || i_0_ == 33 || i_0_ == 63)
-                bool = true;
+            chars[i] = currentChar;
+            if(currentChar == '.' || currentChar == '!' || currentChar == '?')
+                shouldUppercaseNext = true;
         }
         return new String(chars);
     }

@@ -112,4 +112,16 @@ public class Native {
     public static String aClass1_3047 = "mapfunction";
     public static String aClass1_2862 ="@cya@";
     public static String aClass1_3295 = null;
+    public static String aClass1_1374 = "backvmid1";
+    public static String aClass1_478 = "*";
+    public static String aClass1_494 = "@gr3@";
+    public static String aClass1_610 = "@red@";
+    public static String aClass1_611 = null;
+    public static String aClass1_615 = "huffman";
+    public static String aClass1_1243 = "@whi@ / ";
+    public static String aClass1_1266 = "backright2";
+    public static String aClass1_170 = "(";
+    public static String char_colon =":";
+    public static String clickToContinueString = null;
+    public static String requestcmd_tradereq = ":tradereq:";
 }

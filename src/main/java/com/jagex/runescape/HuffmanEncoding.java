@@ -15,7 +15,6 @@ import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.GroundItemTile;
-import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.Wall;
@@ -121,7 +120,7 @@ public class HuffmanEncoding {
                     OverlayDefinition.addActionRow(English.use, index, x, y, 49, Native.aClass1_3295 + Native.aClass1_2306 + class1);
                 } else if (Main.widgetSelected == 1) {
                     if ((0x2 & ItemDefinition.selectedMask) == 2) {
-                        OverlayDefinition.addActionRow(Native.aClass1_1918, index, x, y, 21, FloorDecoration.aClass1_611 + Native.aClass1_2306 + class1);
+                        OverlayDefinition.addActionRow(Native.aClass1_1918, index, x, y, 21, Native.aClass1_611 + Native.aClass1_2306 + class1);
                     }
                 } else {
                     String[] class1s = actorDefinition.options;
@@ -410,8 +409,7 @@ public class HuffmanEncoding {
             }
             i_0_++;
         }
-        if (arg5 != -1)
-            ChatBox.lastItemSearchInput = null;
+
         return -arg4 + i_0_ + 1;
     }
 

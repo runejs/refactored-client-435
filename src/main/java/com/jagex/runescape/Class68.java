@@ -21,7 +21,6 @@ public abstract class Class68 {
     public static Class68 aClass68_1631;
     public static SignlinkNode aSignlinkNode_1632;
     public static int anInt1634 = 0;
-    public static String str_Cancel = "Cancel";
     public static int anInt1637 = 0;
 
     public int height;

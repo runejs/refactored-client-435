@@ -148,7 +148,8 @@ public class Player extends Actor {
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
                     IncomingPackets.incomingPacketBuffer.getBytes(0, messageLength, Class59.aClass40_Sub1_1385.buffer);
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
-                    String class1 = RSString.method53(KeyFocusListener.method956(124, IncomingPackets.incomingPacketBuffer));
+                    String incomming = KeyFocusListener.method956(124, IncomingPackets.incomingPacketBuffer);
+                    String class1 = RSString.formatChatString(incomming);
                     player.forcedChatMessage = class1.trim();
                     player.anInt3078 = 150;
                     player.chatEffects = chatEffectsAndColors & 0xff;

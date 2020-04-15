@@ -26,7 +26,6 @@ import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class40_Sub3 extends Node {
-    public static String cmd_fpson = "::fpson";
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2019;
     public static int anInt2020;
     public static int anInt2021 = 0;
@@ -85,7 +84,7 @@ public class Class40_Sub3 extends Node {
             VertexNormal.aClass6_Sub1_1104 = KeyFocusListener.method957(11, true, false, (byte) 120, true);
             Class56.aClass6_Sub1_1323 = KeyFocusListener.method957(12, true, false, (byte) 118, true);
             Class40_Sub5_Sub6.anInt2451 = 40;
-            Native.currentLoadingText = FloorDecoration.STRING_CONNECTING_UPDATE_SERVER;
+            Native.currentLoadingText = English.connectingToUpdateServer;
             Class67.anInt1607 = 20;
         } else if (Class40_Sub5_Sub6.anInt2451 == 40) {
             int i = 0;
@@ -277,8 +276,8 @@ public class Class40_Sub3 extends Node {
             Class40_Sub5_Sub6.anInt2451 = 120;
             Class67.anInt1607 = 94;
         } else if (Class40_Sub5_Sub6.anInt2451 == 120) {
-            if (RSCanvas.aClass6_Sub1_48.method194(FloorDecoration.aClass1_615, "")) {
-                HuffmanEncoding huffmanEncoding = new HuffmanEncoding(RSCanvas.aClass6_Sub1_48.method170("", FloorDecoration.aClass1_615, arg0 + -99));
+            if (RSCanvas.aClass6_Sub1_48.method194(Native.aClass1_615, "")) {
+                HuffmanEncoding huffmanEncoding = new HuffmanEncoding(RSCanvas.aClass6_Sub1_48.method170("", Native.aClass1_615, arg0 + -99));
                 Item.method778(huffmanEncoding);
                 Class40_Sub5_Sub6.anInt2451 = 130;
                 Native.currentLoadingText = English.loadedWordpack;
@@ -317,7 +316,7 @@ public class Class40_Sub3 extends Node {
             underlayDefinition.readValues(new Buffer(is));
         underlayDefinition.calculateHsl();
         if (arg0 >= -39)
-            cmd_fpson = null;
+            English.commandFpson = null;
         WallDecoration.aClass9_1247.put((long) arg1, underlayDefinition);
         return underlayDefinition;
     }

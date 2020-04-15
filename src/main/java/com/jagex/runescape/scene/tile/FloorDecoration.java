@@ -24,19 +24,14 @@ import java.io.IOException;
 import java.util.zip.CRC32;
 
 public class FloorDecoration {
-    public static String STRING_CONNECTING_UPDATE_SERVER = "Connecting to update server";
     public static CRC32 aCRC32_590 = new CRC32();
-    public static String aClass1_591 = "Add friend";
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_593;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
     public static CacheIndex_Sub1 aClass6_Sub1_605;
     public static SignlinkNode aSignlinkNode_607;
     public static Class40_Sub9 aClass40_Sub9_608;
-    public static String aClass1_610 = "@red@";
-    public static String aClass1_611 = null;
     public static int[] anIntArray612;
     public static int anInt614 = -1;
-    public static String aClass1_615 = "huffman";
 
     public int config;
     public int hash;

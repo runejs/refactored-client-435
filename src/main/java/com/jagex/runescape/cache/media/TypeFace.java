@@ -942,6 +942,7 @@ public class TypeFace extends Rasterizer {
         int textLength = string.length();
         this.textcolour = new TextColourQueue(defaultTextColor);
 
+
         for (int character = 0; character < textLength; ++character) {
             int c = string.charAt(character);
             if (c > 255) {

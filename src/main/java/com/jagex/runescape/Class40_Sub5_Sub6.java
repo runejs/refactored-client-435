@@ -299,7 +299,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                     if (InteractiveObject.playerRights > 1) {
                         if (ChatBox.chatboxInput.equals(English.commandClientDrop))
                             Class59.dropClient();
-                        if (ChatBox.chatboxInput.equals(Class40_Sub3.cmd_fpson)) {
+                        if (ChatBox.chatboxInput.equals(English.commandFpson)) {
                             InteractiveObject.showFps = true;
                             ChatBox.inputType = 3;
                         }

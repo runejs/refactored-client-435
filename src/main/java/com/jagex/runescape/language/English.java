@@ -165,4 +165,14 @@ public class English {
     public static String message = "Message";
     public static String commandClientDrop = "::clientdrop";
     public static String chatPanelRedrawn = "Chat panel redrawn";
+    public static String publicChat = "Public chat";
+    public static String connectingToUpdateServer = "Connecting to update server";
+    public static String addFriend = "Add friend";
+    public static String andChooseTheCreateAccount = "and choose the 'create account'";
+    public static String goBackToTheMainRunescapeWebPage = "go back to the main RuneScape webpage";
+    public static String sContinue = "Continue";
+    public static String ok = "Ok";
+    public static String commandFpson = "::fpson";
+    public static String cancel = "Cancel";
+    public static String select = "Select";
 }

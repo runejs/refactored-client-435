@@ -115,7 +115,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             if (seconds < 10) {
                 WallDecoration.fontNormal.drawString(English.systemUpdateIn + minutes + Native.prefixColonZero + seconds, 4, 329, 16776960);
             } else {
-                WallDecoration.fontNormal.drawString(English.systemUpdateIn + minutes + Class43.char_colon + seconds, 4, 329, 16776960);
+                WallDecoration.fontNormal.drawString(English.systemUpdateIn + minutes + Native.char_colon + seconds, 4, 329, 16776960);
             }
         }
     }
@@ -149,13 +149,13 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if (arg0.method194(Native.aClass1_281, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(WallDecoration.aClass1_1266, Native.aClass1_305)) {
+        if (arg0.method194(Native.aClass1_1266, Native.aClass1_305)) {
             i++;
         }
         if (arg0.method194(Native.aClass1_1788, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(GroundItemTile.aClass1_1374, Native.aClass1_305)) {
+        if (arg0.method194(Native.aClass1_1374, Native.aClass1_305)) {
             i++;
         }
         if (arg0.method194(Native.aClass1_2588, Native.aClass1_305)) {

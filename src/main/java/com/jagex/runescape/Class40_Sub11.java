@@ -8,7 +8,6 @@ import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.InteractiveObject;
-import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.SignlinkNode;
 
@@ -30,7 +29,7 @@ public class Class40_Sub11 extends Node {
     public static String method872(int arg0, int arg1) {
         if(arg0 > arg1)
             return Integer.toString(arg1);
-        return InteractiveObject.aClass1_478;
+        return Native.aClass1_478;
     }
 
     public static void method873(int arg1, int arg2) {
@@ -56,7 +55,7 @@ public class Class40_Sub11 extends Node {
                             OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 28, Native.aClass1_620+ class1);
                         }
                         OverlayDefinition.addActionRow(English.addIgnore, 0, 0, 0, 51, Native.aClass1_620+ class1);
-                        OverlayDefinition.addActionRow(FloorDecoration.aClass1_591, 0, 0, 0, 45, Native.aClass1_620+ class1);
+                        OverlayDefinition.addActionRow(English.addFriend, 0, 0, 0, 45, Native.aClass1_620+ class1);
                     }
                     i++;
                 }
@@ -67,7 +66,7 @@ public class Class40_Sub11 extends Node {
                             OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 28, Native.aClass1_620+ class1);
                         }
                         OverlayDefinition.addActionRow(English.addIgnore, 0, 0, 0, 51, Native.aClass1_620+ class1);
-                        OverlayDefinition.addActionRow(FloorDecoration.aClass1_591, 0, 0, 0, 45, Native.aClass1_620+ class1);
+                        OverlayDefinition.addActionRow(English.addFriend, 0, 0, 0, 45, Native.aClass1_620+ class1);
                     }
                 }
                 if(i_1_ == 4 && (ChatBox.tradeMode == 0 || ChatBox.tradeMode == 1 && Class40_Sub2.hasFriend(class1))) {

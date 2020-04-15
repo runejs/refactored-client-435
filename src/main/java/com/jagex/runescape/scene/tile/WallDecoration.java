@@ -24,13 +24,9 @@ import com.jagex.runescape.scene.InteractiveObject;
 import java.awt.*;
 
 public class WallDecoration {
-    public static String aClass1_1243 = "@whi@ / ";
     public static Cache aClass9_1247 = new Cache(64);
-    public static String aClass1_1251 = "and choose the 'create account'";
     public static int anInt1257 = 0;
-    public static String aClass1_1259 = "go back to the main RuneScape webpage";
     public static Cache aClass9_1264 = new Cache(50);
-    public static String aClass1_1266 = "backright2";
     public static long[] ignores = new long[100];
     public static TypeFace fontNormal;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1270;
@@ -375,7 +371,7 @@ public class WallDecoration {
                     arg1.drawShadowedStringCenter(English.login, i_90_, i_91_ + 5, 16777215, true);
                     i_90_ = 260;
                     Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
-                    arg1.drawShadowedStringCenter(Class68.str_Cancel, i_90_, 5 + i_91_, 16777215, true);
+                    arg1.drawShadowedStringCenter(English.cancel, i_90_, 5 + i_91_, 16777215, true);
                 } else if (Class26.loginScreenState == 3) {
                     arg1.drawShadowedStringCenter(English.createAFreeAccount, 180, 40, 16776960, true);
                     int i = 180;
@@ -383,13 +379,13 @@ public class WallDecoration {
                     int i_93_ = 65;
                     arg1.drawShadowedStringCenter(English.toCreateANewAccountYouNeedTo, 180, i_93_, 16777215, true);
                     i_93_ += 15;
-                    arg1.drawShadowedStringCenter(aClass1_1259, 180, i_93_, 16777215, true);
+                    arg1.drawShadowedStringCenter(English.goBackToTheMainRunescapeWebPage, 180, i_93_, 16777215, true);
                     i_93_ += 15;
-                    arg1.drawShadowedStringCenter(aClass1_1251, 180, i_93_, 16777215, true);
+                    arg1.drawShadowedStringCenter(English.andChooseTheCreateAccount, 180, i_93_, 16777215, true);
                     i_93_ += 15;
                     arg1.drawShadowedStringCenter(English.suffixButtonNearTheTopOfThatPage, 180, i_93_, 16777215, true);
                     Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i, i_92_ - 20);
-                    arg1.drawShadowedStringCenter(Class68.str_Cancel, i, 5 + i_92_, 16777215, true);
+                    arg1.drawShadowedStringCenter(English.cancel, i, 5 + i_92_, 16777215, true);
                     i_93_ += 15;
                 }
             }

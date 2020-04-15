@@ -11,7 +11,6 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class AnimationSequence extends SubNode {
-    public static String requestcmd_tradereq = ":tradereq:";
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2474;
     public static int anInt2480 = 0;
     public static ImageRGB minimapCompass;

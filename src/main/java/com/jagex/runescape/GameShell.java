@@ -31,7 +31,6 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1;
     public static int[] anIntArray2 = new int[5];
     public static long[] aLongArray4 = new long[32];
-    public static String clickToContinueString = null;
     public static int anInt31;
     public boolean aBoolean43 = false;
 

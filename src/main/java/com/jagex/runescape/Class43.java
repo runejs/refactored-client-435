@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.frame.ChatBox;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.VertexNormal;
@@ -20,7 +21,6 @@ public class Class43 {
     public static int cameraYawOffset = 0;
     public static LinkedList aLinkedList_1022 = new LinkedList();
     public static int bankInsertMode = 0;
-    public static String char_colon =":";
 
     public static void method890(long arg0, int arg1) {
         if(arg0 > 0L) {
@@ -59,7 +59,7 @@ public class Class43 {
 
     public static void processRightClick() {
         if(SceneTile.activeInterfaceType == 0) {
-            Landscape.menuActionTexts[0] = Class68.str_Cancel;
+            Landscape.menuActionTexts[0] = English.cancel;
             Class38.menuActionTypes[0] = 1005;
             ActorDefinition.menuActionRow = 1;
             if(ActorDefinition.openFullScreenWidgetId == -1) {

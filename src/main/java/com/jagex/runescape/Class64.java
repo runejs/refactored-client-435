@@ -17,7 +17,6 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.Scene;
-import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.util.Signlink;
 import com.jagex.runescape.util.SignlinkNode;
@@ -142,7 +141,7 @@ public class Class64 implements Runnable {
                         }
                         OverlayDefinition.addActionRow(English.examine, gameObjectDefinition.id << 14, x, y, 1004, examineText.toString());
                     } else if ((ItemDefinition.selectedMask & 0x4) == 4) {
-                        OverlayDefinition.addActionRow(Native.aClass1_1918, hash, x, y, 32, FloorDecoration.aClass1_611 + Native.aClass1_2277 + gameObjectDefinition.name);
+                        OverlayDefinition.addActionRow(Native.aClass1_1918, hash, x, y, 32, Native.aClass1_611 + Native.aClass1_2277 + gameObjectDefinition.name);
                     }
                 }
                 if (type == 1) {
@@ -210,7 +209,7 @@ public class Class64 implements Runnable {
                                 }
                                 OverlayDefinition.addActionRow(English.examine, item.itemId, x, y, 1003, Native.aClass1_1114 + itemDefinition.name);
                             } else if ((0x1 & ItemDefinition.selectedMask) == 1) {
-                                OverlayDefinition.addActionRow(Native.aClass1_1918, item.itemId, x, y, 15, FloorDecoration.aClass1_611 + Native.aClass1_206 + itemDefinition.name);
+                                OverlayDefinition.addActionRow(Native.aClass1_1918, item.itemId, x, y, 15, Native.aClass1_611 + Native.aClass1_206 + itemDefinition.name);
                             }
                         }
                     }

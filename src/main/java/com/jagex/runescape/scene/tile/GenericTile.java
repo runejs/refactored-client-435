@@ -12,7 +12,6 @@ import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
-import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.awt.*;
@@ -46,7 +45,7 @@ public class GenericTile {
     public static void method943(int arg0, TypeFace arg2, int arg3, int arg4) {
         HuffmanEncoding.aClass68_1541.method1046((byte) 90);
         Class57.aClass40_Sub5_Sub14_Sub2_1346.drawImage(0, 0);
-        arg2.drawShadowedStringCenter(InteractiveObject.aClass1_495, 55, 28, 16777215, true);
+        arg2.drawShadowedStringCenter(English.publicChat, 55, 28, 16777215, true);
         if(arg4 == 0)
             arg2.drawShadowedStringCenter(English.on, 55, 41, 65280, true);
         if(arg4 == 1)

@@ -692,7 +692,7 @@ public class Main extends GameShell {
         ChatBox.messagePromptRaised = false;
         Class4.menuOpen = false;
         GroundItemTile.walkableWidgetId = -1;
-        GameShell.clickToContinueString = null;
+        Native.clickToContinueString = null;
         CacheIndex_Sub1.anInt1819 = -1;
         Class51.anInt1205 = -1;
         Class40_Sub6.anInt2118 = 0;
@@ -794,12 +794,12 @@ public class Main extends GameShell {
                 if(Class37.anInt874 > PacketBuffer.anInt2231)
                     PacketBuffer.anInt2231 = Class37.anInt874;
                 int i = (-Class37.anInt874 + PacketBuffer.anInt2231) * 50 / PacketBuffer.anInt2231;
-                Class51.method940(0, English.loadingPleaseWait, true, CollisionMap.aClass1_170+ i + Native.aClass1_698);
+                Class51.method940(0, English.loadingPleaseWait, true, Native.aClass1_170+ i + Native.aClass1_698);
             } else if(Class68.anInt1634 == 2) {
                 if(IdentityKit.anInt2591 > GameObject.anInt3048)
                     GameObject.anInt3048 = IdentityKit.anInt2591;
                 int i = 50 * (-IdentityKit.anInt2591 + GameObject.anInt3048) / GameObject.anInt3048 + 50;
-                Class51.method940(0, English.loadingPleaseWait, true, CollisionMap.aClass1_170+ i + Native.aClass1_698);
+                Class51.method940(0, English.loadingPleaseWait, true, Native.aClass1_170+ i + Native.aClass1_698);
             } else
                 Class51.method940(0, English.loadingPleaseWait, false, null);
         } else if(Class51.anInt1197 == 30) {

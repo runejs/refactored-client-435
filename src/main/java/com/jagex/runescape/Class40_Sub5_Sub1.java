@@ -15,7 +15,6 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.SceneCluster;
-import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 
@@ -262,7 +261,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 OverlayDefinition.addActionRow(English.use, index, x, y, 22, Native.aClass1_3295 + Native.aClass1_3068 + rsString);
             } else if (Main.widgetSelected == 1) {
                 if ((ItemDefinition.selectedMask & 0x8) == 8) {
-                    OverlayDefinition.addActionRow(Native.aClass1_1918, index, x, y, 1, FloorDecoration.aClass1_611 + Native.aClass1_3068 + rsString);
+                    OverlayDefinition.addActionRow(Native.aClass1_1918, index, x, y, 1, Native.aClass1_611 + Native.aClass1_3068 + rsString);
                 }
             } else {
                 for (int i = 4; i >= 0; i--) {

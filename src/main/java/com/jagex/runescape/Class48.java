@@ -16,7 +16,6 @@ import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
-import com.jagex.runescape.scene.tile.FloorDecoration;
 
 public class Class48 {
     public static int cameraOffsetY = 0;
@@ -175,7 +174,7 @@ public class Class48 {
                                             if(Class8.itemSelected != 1 || !widget.isInventory) {
                                                 if(Main.widgetSelected == 1 && widget.isInventory) {
                                                     if((ItemDefinition.selectedMask & 0x10) == 16) {
-                                                        OverlayDefinition.addActionRow(Native.aClass1_1918, itemDefinition.id, i_4_, widget.id, 37, FloorDecoration.aClass1_611 + Native.aClass1_206 + itemDefinition.name);
+                                                        OverlayDefinition.addActionRow(Native.aClass1_1918, itemDefinition.id, i_4_, widget.id, 37, Native.aClass1_611 + Native.aClass1_206 + itemDefinition.name);
                                                     }
                                                 } else {
                                                     String[] class1s = itemDefinition.interfaceOptions;
