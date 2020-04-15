@@ -2,12 +2,10 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
-import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.FloorDecoration;
@@ -50,7 +48,7 @@ public class Class40_Sub11 extends Node {
                 String class1 = ChatBox.chatPlayerNames[i_0_];
                 if(class1 != null && class1.startsWith(Native.whiteCrown))
                     class1 = class1.substring(5);
-                if(class1 != null && class1.startsWith(Widget.goldCrown))
+                if(class1 != null && class1.startsWith(Native.goldCrown))
                     class1 = class1.substring(5);
                 if((i_1_ == 1 || i_1_ == 2) && (i_1_ == 1 || ChatBox.publicChatMode == 0 || ChatBox.publicChatMode == 1 && Class40_Sub2.hasFriend(class1))) {
                     if(arg1 > i_2_ - 14 && arg1 <= i_2_ && !class1.equals(Player.localPlayer.playerName)) {
@@ -82,7 +80,7 @@ public class Class40_Sub11 extends Node {
                     i++;
                 if(i_1_ == 8 && (ChatBox.tradeMode == 0 || ChatBox.tradeMode == 1 && Class40_Sub2.hasFriend(class1))) {
                     if(i_2_ + -14 < arg1 && arg1 <= i_2_) {
-                        OverlayDefinition.addActionRow(GameObject.aClass1_3039, 0, 0, 0, 46, Native.aClass1_620 + class1);
+                        OverlayDefinition.addActionRow(English.acceptChallenge, 0, 0, 0, 46, Native.aClass1_620 + class1);
                     }
                     i++;
                 }

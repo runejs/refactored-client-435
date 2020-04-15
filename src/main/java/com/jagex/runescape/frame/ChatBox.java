@@ -44,7 +44,7 @@ public class ChatBox {
         CacheIndex.aBoolean260 = arg0;
         Class22.method305();
         if(messagePromptRaised) {
-            Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(HuffmanEncoding.aClass1_1563, 239, 40, 0);
+            Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(Native.aClass1_1563, 239, 40, 0);
             Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(chatMessage + "*", 239, 60, 128);
         } else if(inputType == 1) {
             Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(English.enterAmount, 239, 40, 0);
@@ -93,7 +93,7 @@ public class ChatBox {
                         name = name.substring(5);
                         privelege = 1;
                     }
-                    if(name != null && name.startsWith(Widget.goldCrown)) {
+                    if(name != null && name.startsWith(Native.goldCrown)) {
                         name = name.substring(5);
                         privelege = 2;
                     }

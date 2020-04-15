@@ -49,7 +49,7 @@ public class Wall {
                         class1 = class1.substring(5);
                         i_1_ = 1;
                     }
-                    if(class1 != null && class1.startsWith(Widget.goldCrown)) {
+                    if(class1 != null && class1.startsWith(Native.goldCrown)) {
                         class1 = class1.substring(5);
                         i_1_ = 2;
                     }

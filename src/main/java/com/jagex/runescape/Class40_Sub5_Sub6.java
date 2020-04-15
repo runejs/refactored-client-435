@@ -5,13 +5,10 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget.Widget;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.input.KeyFocusListener;
-import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
@@ -190,10 +187,10 @@ public class Class40_Sub5_Sub6 extends SubNode {
                 break;
             }
             if (HuffmanEncoding.openScreenWidgetId != -1 && HuffmanEncoding.reportAbuseInterfaceID == HuffmanEncoding.openScreenWidgetId) {
-                if (ItemDefinition.anInt2854 == 85 && HuffmanEncoding.reportedName.length() > 0)
-                    HuffmanEncoding.reportedName = HuffmanEncoding.reportedName.substring(0, -1 + HuffmanEncoding.reportedName.length());
-                if ((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && HuffmanEncoding.reportedName.length() < 12)
-                    HuffmanEncoding.reportedName = HuffmanEncoding.reportedName + (char) Class59.anInt1388;
+                if (ItemDefinition.anInt2854 == 85 && Native.reportedName.length() > 0)
+                    Native.reportedName = Native.reportedName.substring(0, -1 + Native.reportedName.length());
+                if ((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && Native.reportedName.length() < 12)
+                    Native.reportedName = Native.reportedName + (char) Class59.anInt1388;
             } else if (ChatBox.messagePromptRaised) {
                 if (ItemDefinition.anInt2854 == 85 && ChatBox.chatMessage.length() > 0) {
                     ChatBox.chatMessage = ChatBox.chatMessage.substring(0, -1 + ChatBox.chatMessage.length());
@@ -300,7 +297,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                 }
                 if (ItemDefinition.anInt2854 == 84 && ChatBox.chatboxInput.length() > 0) {
                     if (InteractiveObject.playerRights > 1) {
-                        if (ChatBox.chatboxInput.equals(GroundItemTile.cmd_clientdrop))
+                        if (ChatBox.chatboxInput.equals(English.commandClientDrop))
                             Class59.dropClient();
                         if (ChatBox.chatboxInput.equals(Class40_Sub3.cmd_fpson)) {
                             InteractiveObject.showFps = true;
@@ -325,7 +322,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
 
                         if (ChatBox.chatboxInput.equals(Native.cmd_fpsoff))
                             InteractiveObject.showFps = false;
-                        if (ChatBox.chatboxInput.equals(SpotAnimDefinition.cmd_noclip)) {
+                        if (ChatBox.chatboxInput.equals(English.commandNoclip)) {
                             for (int i = 0; i < 4; i++) {
                                 for (int i_9_ = 1; i_9_ < 103; i_9_++) {
                                     for (int i_10_ = 1; i_10_ < 103; i_10_++)
@@ -333,7 +330,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                                 }
                             }
                         }
-                        if (ChatBox.chatboxInput.equals(Widget.cmd_errortest) && Class44.modewhere == 2)
+                        if (ChatBox.chatboxInput.equals(English.commandErrorTest) && Class44.modewhere == 2)
                             throw new RuntimeException();
                         if (ChatBox.chatboxInput.equals(Native.cmd_hiddenbuttontest))
                             PacketBuffer.hiddenButtonTest = true;
@@ -355,43 +352,43 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         } else if (class1.startsWith(English.effectGreen)) {
                             i_11_ = 2;
                             ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectGreen.length());
-                        } else if (class1.startsWith(LinkedList.aClass1_1076)) {
+                        } else if (class1.startsWith(English.effectCyan)) {
                             i_11_ = 3;
-                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(LinkedList.aClass1_1076.length());
+                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectCyan.length());
                         } else if (class1.startsWith(English.effectPurple)) {
                             i_11_ = 4;
                             ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectPurple.length());
-                        } else if (class1.startsWith(Node.aClass1_940)) {
-                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(Node.aClass1_940.length());
+                        } else if (class1.startsWith(English.effectWhite)) {
+                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectWhite.length());
                             i_11_ = 5;
                         } else if (class1.startsWith(Native.aClass1_1019)) {
                             i_11_ = 6;
                             ChatBox.chatboxInput = ChatBox.chatboxInput.substring(Native.aClass1_1019.length());
-                        } else if (class1.startsWith(UnderlayDefinition.aClass1_2566)) {
+                        } else if (class1.startsWith(English.effectFlash2)) {
                             i_11_ = 7;
-                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(UnderlayDefinition.aClass1_2566.length());
+                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectFlash2.length());
                         } else if (class1.startsWith(English.effectFlash3)) {
                             i_11_ = 8;
                             ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectFlash3.length());
                         } else if (class1.startsWith(English.effectGlow1)) {
                             i_11_ = 9;
                             ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectGlow1.length());
-                        } else if (class1.startsWith(Widget.aClass1_2671)) {
-                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(Widget.aClass1_2671.length());
+                        } else if (class1.startsWith(English.effectGlow2)) {
+                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectGlow2.length());
                             i_11_ = 10;
                         } else if (class1.startsWith(English.effectGlow3)) {
                             ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectGlow3.length());
                             i_11_ = 11;
                         }
                         class1 = ChatBox.chatboxInput.toLowerCase();
-                        if (class1.startsWith(VertexNormal.aClass1_1097)) {
+                        if (class1.startsWith(English.effectWave)) {
                             i = 1;
-                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(VertexNormal.aClass1_1097.length());
-                        } else if (class1.startsWith(MouseHandler.aClass1_1474)) {
+                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectWave.length());
+                        } else if (class1.startsWith(English.effectWave2)) {
                             i = 2;
-                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(MouseHandler.aClass1_1474.length());
-                        } else if (class1.startsWith(RSCanvas.aClass1_51)) {
-                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(RSCanvas.aClass1_51.length());
+                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectWave2.length());
+                        } else if (class1.startsWith(English.effectShake)) {
+                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectShake.length());
                             i = 3;
                         } else if (class1.startsWith(Native.aClass1_2438)) {
                             i = 4;
@@ -434,7 +431,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
         Rasterizer.drawFilledRectangle(i, i_14_, i_15_, i_13_, i_16_);
         Rasterizer.drawFilledRectangle(1 + i, 1 + i_14_, -2 + i_15_, 16, 0);
         Rasterizer.drawUnfilledRectangle(i + 1, 18 + i_14_, -2 + i_15_, -19 + i_13_, 0);
-        Class40_Sub5_Sub17_Sub6.fontBold.drawString(Widget.str_Choose_Option, i + 3, 14 + i_14_, i_16_);
+        Class40_Sub5_Sub17_Sub6.fontBold.drawString(English.chooseOption, i + 3, 14 + i_14_, i_16_);
         int i_17_ = Class13.mouseX;
         int i_18_ = Landscape.mouseY;
         if (Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {

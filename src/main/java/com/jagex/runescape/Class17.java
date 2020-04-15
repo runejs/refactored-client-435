@@ -5,7 +5,6 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.Item;
-import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
@@ -105,7 +104,7 @@ public class Class17 {
                 }
                 for(int i = 0; Item.friendsCount > i; i++) {
                     if(Class59.aLongArray1397[i] == arg1) {
-                        Class44.addChatMessage("", English.pleaseRemove + class1 + Renderable.aClass1_2864, 0);
+                        Class44.addChatMessage("", English.pleaseRemove + class1 + English.fromYourFriendListFirst, 0);
                         return;
                     }
                 }

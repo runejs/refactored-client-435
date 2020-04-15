@@ -9,7 +9,6 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
-import com.jagex.runescape.scene.GroundItemTile;
 
 import java.awt.*;
 import java.awt.image.*;
@@ -63,7 +62,7 @@ public class Class68_Sub1 extends Class68 implements ImageProducer, ImageObserve
             else
                 i -= 101;
             OverlayDefinition.addActionRow(English.remove, 0, 0, 0, 13, Native.aClass1_620+Class40_Sub11.friendUsernames[i]);
-            OverlayDefinition.addActionRow(GroundItemTile.aClass1_1354, 0, 0, 0, 18, Native.aClass1_620+ Class40_Sub11.friendUsernames[i]);
+            OverlayDefinition.addActionRow(English.message, 0, 0, 0, 18, Native.aClass1_620+ Class40_Sub11.friendUsernames[i]);
             return true;
         }
         if(i >= 401 && i <= 500) {

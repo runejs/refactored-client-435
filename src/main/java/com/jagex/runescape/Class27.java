@@ -15,7 +15,6 @@ import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.Rasterizer3D;
-import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -365,10 +364,10 @@ public class Class27 {
                 LinkedList.anInt1061 = i;
                 ISAAC.anInt525 = i_10_;
                 Class8.itemSelected = 1;
-                Npc.aClass1_3295 = VertexNormal.aClass1_1114 + ItemDefinition.forId(i_12_, 10).name + Native.aClass1_620;
+                Native.aClass1_3295 = Native.aClass1_1114 + ItemDefinition.forId(i_12_, 10).name + Native.aClass1_620;
                 Main.widgetSelected = 0;
-                if(Npc.aClass1_3295 == null) {
-                    Npc.aClass1_3295 = "null";
+                if(Native.aClass1_3295 == null) {
+                    Native.aClass1_3295 = "null";
                 }
                 ISAAC.redrawTabArea = true;
             } else {
@@ -434,7 +433,7 @@ public class Class27 {
                             ChatBox.chatMessage = "";
                             ChatBox.messagePromptRaised = true;
                             PacketBuffer.aLong2241 = Class59.aLongArray1397[i_19_];
-                            HuffmanEncoding.aClass1_1563 = English.prefixEnterMessageToSendTo + Class40_Sub11.friendUsernames[i_19_];
+                            Native.aClass1_1563 = English.prefixEnterMessageToSendTo + Class40_Sub11.friendUsernames[i_19_];
                         }
                     }
                 }
@@ -767,7 +766,7 @@ public class Class27 {
                             if(HuffmanEncoding.openScreenWidgetId == -1) {
                                 PacketBuffer.method516();
                                 if(Class34.anInt854 != -1) {
-                                    HuffmanEncoding.reportedName = class1.substring(i_22_ + 5).trim();
+                                    Native.reportedName = class1.substring(i_22_ + 5).trim();
                                     HuffmanEncoding.reportAbuseInterfaceID = HuffmanEncoding.openScreenWidgetId = Class34.anInt854;
                                     Class67.reportMutePlayer = false;
                                 }

@@ -7,6 +7,7 @@ import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -162,7 +163,7 @@ public class Class5 {
         if(Class12.friendListStatus == 2) {
             if(i == 201) {
                 Class37.anInt876 = 1;
-                HuffmanEncoding.aClass1_1563 = Widget.aClass1_2740;
+                Native.aClass1_1563 = English.enterNameOfFriendToAddToList;
                 ChatBox.messagePromptRaised = true;
                 ChatBox.inputType = 0;
                 ChatBox.chatMessage = "";
@@ -170,7 +171,7 @@ public class Class5 {
             }
             if(i == 202) {
                 Class37.anInt876 = 2;
-                HuffmanEncoding.aClass1_1563 = English.enterNameOfFriendToDeleteFromList;
+                Native.aClass1_1563 = English.enterNameOfFriendToDeleteFromList;
                 ChatBox.redrawChatbox = true;
                 ChatBox.inputType = 0;
                 ChatBox.messagePromptRaised = true;
@@ -185,7 +186,7 @@ public class Class5 {
             ChatBox.inputType = 0;
             Class37.anInt876 = 4;
             ChatBox.redrawChatbox = true;
-            HuffmanEncoding.aClass1_1563 = English.enterNameOfPlayerToAddToList;
+            Native.aClass1_1563 = English.enterNameOfPlayerToAddToList;
             ChatBox.chatMessage = "";
             ChatBox.messagePromptRaised = true;
         }
@@ -195,7 +196,7 @@ public class Class5 {
             Class37.anInt876 = 5;
             ChatBox.messagePromptRaised = true;
             ChatBox.chatMessage = "";
-            HuffmanEncoding.aClass1_1563 = English.enterNameOfPlayerToDeleteFromList;
+            Native.aClass1_1563 = English.enterNameOfPlayerToDeleteFromList;
         }
         if(i >= 300 && i <= 313) {
             int i_13_ = (-300 + i) / 2;
@@ -220,9 +221,9 @@ public class Class5 {
             Class67.reportMutePlayer = !Class67.reportMutePlayer;
         if(i >= 601 && i <= 613) {
             PacketBuffer.method516();
-            if(HuffmanEncoding.reportedName.length() > 0) {
+            if(Native.reportedName.length() > 0) {
                 SceneCluster.packetBuffer.putPacket(202);
-                SceneCluster.packetBuffer.putLongBE(TextUtils.nameToLong(HuffmanEncoding.reportedName));
+                SceneCluster.packetBuffer.putLongBE(TextUtils.nameToLong(Native.reportedName));
                 SceneCluster.packetBuffer.putByte(-601 + i);
                 SceneCluster.packetBuffer.putByte(Class67.reportMutePlayer ? 1 : 0);
             }

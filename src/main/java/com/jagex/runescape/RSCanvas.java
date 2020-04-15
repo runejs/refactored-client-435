@@ -18,7 +18,6 @@ import java.awt.*;
 public class RSCanvas extends Canvas {
     public static byte[][] aByteArrayArray47 = new byte[50][];
     public static CacheIndex_Sub1 aClass6_Sub1_48;
-    public static String aClass1_51 = "shake:";
     public static LinkedList aLinkedList_53 = new LinkedList();
     public static int anInt54 = 0;
     public static int anInt57;
@@ -26,12 +25,9 @@ public class RSCanvas extends Canvas {
     public static int anInt60 = 255;
     public static CacheIndex aCacheIndex_61;
     public static int[] anIntArray62;
-    public static String aClass1_63 = "Prepared visibility map";
     public static Class68 aClass68_64;
     public static int anInt65 = 127;
     public static int[] anIntArray66;
-    public static String aClass1_67 = "Your profile will be transferred in:";
-    public static String aClass1_68 = "k";
 
     public Component aComponent49;
 

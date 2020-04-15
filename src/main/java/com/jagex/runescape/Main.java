@@ -809,7 +809,7 @@ public class Main extends GameShell {
         } else if(Class51.anInt1197 == 35) {
             Class5.method164();
         } else if(Class51.anInt1197 == 40)
-            Class51.method940(0, Npc.aClass1_3305, false, English.pleaseWaitAttemptingToReestablish);
+            Class51.method940(0, English.connectionLost, false, English.pleaseWaitAttemptingToReestablish);
         Npc.anInt3294 = 0;
     }
 

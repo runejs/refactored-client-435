@@ -326,7 +326,7 @@ public class IncomingPackets {
                     }
                     if(!bool && !Class4.inTutorialIsland)
                         Class44.addChatMessage(class1_30_, English.suffixWishesToDuelWithYou, 8);
-                } else if(message.endsWith(Node.requestcmd_chalreq)) {
+                } else if(message.endsWith(Native.requestcmd_chalreq)) {
                     String class1_27_ = message.substring(0, message.indexOf(Class43.char_colon));
                     long l = RSString.method58(class1_27_);
                     boolean bool = false;
@@ -998,7 +998,7 @@ public class IncomingPackets {
                     Class40_Sub3.anInt2021 = (1 + Class40_Sub3.anInt2021) % 100;
                     String class1 = RSString.method53(KeyFocusListener.method956(67, incomingPacketBuffer));
                     if(fromPlayerRights == 2 || fromPlayerRights == 3)
-                        Class44.addChatMessage(Widget.goldCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), class1.toString(), 7);
+                        Class44.addChatMessage(Native.goldCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), class1.toString(), 7);
                     else if(fromPlayerRights == 1)
                         Class44.addChatMessage(Native.whiteCrown +TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), class1.toString(), 7);
                     else

@@ -48,7 +48,7 @@ public class GenericTile {
         Class57.aClass40_Sub5_Sub14_Sub2_1346.drawImage(0, 0);
         arg2.drawShadowedStringCenter(InteractiveObject.aClass1_495, 55, 28, 16777215, true);
         if(arg4 == 0)
-            arg2.drawShadowedStringCenter(Npc.aClass1_3311, 55, 41, 65280, true);
+            arg2.drawShadowedStringCenter(English.on, 55, 41, 65280, true);
         if(arg4 == 1)
             arg2.drawShadowedStringCenter(English.friends, 55, 41, 16776960, true);
         if(arg4 == 2)
@@ -57,14 +57,14 @@ public class GenericTile {
             arg2.drawShadowedStringCenter(English.hide, 55, 41, 65535, true);
         arg2.drawShadowedStringCenter(English.privateChat, 184, 28, 16777215, true);
         if(arg3 == 0)
-            arg2.drawShadowedStringCenter(Npc.aClass1_3311, 184, 41, 65280, true);
+            arg2.drawShadowedStringCenter(English.on, 184, 41, 65280, true);
         if(arg3 == 1)
             arg2.drawShadowedStringCenter(English.friends, 184, 41, 16776960, true);
         if(arg3 == 2)
             arg2.drawShadowedStringCenter(English.off, 184, 41, 16711680, true);
         arg2.drawShadowedStringCenter(English.trade, 324, 28, 16777215, true);
         if(arg0 == 0)
-            arg2.drawShadowedStringCenter(Npc.aClass1_3311, 324, 41, 65280, true);
+            arg2.drawShadowedStringCenter(English.on, 324, 41, 65280, true);
         if(arg0 == 1)
             arg2.drawShadowedStringCenter(English.friends, 324, 41, 16776960, true);
         if(arg0 == 2)

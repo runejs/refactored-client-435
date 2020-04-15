@@ -27,8 +27,6 @@ import java.awt.event.KeyListener;
 public class KeyFocusListener implements KeyListener, FocusListener {
     public static LinkedList aLinkedList_1278 = new LinkedList();
     public static int[] anIntArray1282 = new int[256];
-    public static String aClass1_1283 = "@yel@";
-    public static String aClass1_1284 = "compass";
     public static Class68 aClass68_1285;
 
     static {
@@ -100,7 +98,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 Class38.aBoolean893 = false;
             }
             if (CacheIndex.aBoolean260) {
-                WallDecoration.fontNormal.drawStringRight(GroundItemTile.aClass1_1378, x, y, 16711680);
+                WallDecoration.fontNormal.drawStringRight(English.chatPanelRedrawn, x, y, 16711680);
                 y += 15;
                 CacheIndex.aBoolean260 = false;
             }
@@ -130,7 +128,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if (arg0.method194(Native.chatback, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(VertexNormal.aClass1_1113, Native.aClass1_305)) {
+        if (arg0.method194(Native.aClass1_1113, Native.aClass1_305)) {
             i++;
         }
         if (arg0.method194(Native.aClass1_1395, Native.aClass1_305)) {
@@ -169,7 +167,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if (arg0.method194(Native.aClass1_304, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(SubNode.aClass1_2093, Native.aClass1_305)) {
+        if (arg0.method194(Native.aClass1_2093, Native.aClass1_305)) {
             i++;
         }
         if (arg0.method194(Native.aClass1_3254, Native.aClass1_305)) {

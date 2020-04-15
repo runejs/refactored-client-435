@@ -5,15 +5,12 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
-import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
-import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.Scene;
@@ -246,7 +243,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     if (Class34.anInt854 != -1) {
                         Class67.reportMutePlayer = false;
                         HuffmanEncoding.reportAbuseInterfaceID = HuffmanEncoding.openScreenWidgetId = Class34.anInt854;
-                        HuffmanEncoding.reportedName = "";
+                        Native.reportedName = "";
                     }
                 } else
                     Class44.addChatMessage("", English.pleaseCloseInterfaceBeforeReportAbuse, 0);
@@ -258,11 +255,11 @@ public class Class40_Sub5_Sub1 extends SubNode {
         if (Player.localPlayer != player && ActorDefinition.menuActionRow < 400) {
             String rsString;
             if (player.skillLevel == 0)
-                rsString = player.playerName + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, player.combatLevel) + Native.aClass1_569 + SpotAnimDefinition.str_prefix_level + player.combatLevel + Native.aClass1_1199;
+                rsString = player.playerName + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, player.combatLevel) + Native.aClass1_569 + English.prefixLevel + player.combatLevel + Native.aClass1_1199;
             else
                 rsString = player.playerName + Native.aClass1_569 + English.prefixSkill + player.skillLevel + Native.aClass1_1199;
             if (Class8.itemSelected == 1) {
-                OverlayDefinition.addActionRow(English.use, index, x, y, 22, Npc.aClass1_3295 + Native.aClass1_3068 + rsString);
+                OverlayDefinition.addActionRow(English.use, index, x, y, 22, Native.aClass1_3295 + Native.aClass1_3068 + rsString);
             } else if (Main.widgetSelected == 1) {
                 if ((ItemDefinition.selectedMask & 0x8) == 8) {
                     OverlayDefinition.addActionRow(Native.aClass1_1918, index, x, y, 1, FloorDecoration.aClass1_611 + Native.aClass1_3068 + rsString);
@@ -299,7 +296,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
             }
             for (int i = 0; i < ActorDefinition.menuActionRow; i++) {
                 if (Class38.menuActionTypes[i] == 7) {
-                    Landscape.menuActionTexts[i] = English.walkHere + VertexNormal.aClass1_1117 + Native.aClass1_620 + rsString;
+                    Landscape.menuActionTexts[i] = English.walkHere + Native.aClass1_1117 + Native.aClass1_620 + rsString;
                     break;
                 }
             }

@@ -178,7 +178,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         if(!SubNode.aBoolean2083) {
             FloorDecoration.aClass40_Sub5_Sub14_Sub2_593 = Class27.method359(Native.aClass1_638, Native.aClass1_305, arg2);
             Class44.aClass40_Sub5_Sub14_Sub2_1047 = Class27.method359(Native.chatback, Native.aClass1_305, arg2);
-            Class34.mapBack = Class27.method359(VertexNormal.aClass1_1113, Native.aClass1_305, arg2);
+            Class34.mapBack = Class27.method359(Native.aClass1_1113, Native.aClass1_305, arg2);
             Class57.aClass40_Sub5_Sub14_Sub2_1346 = Class27.method359(Native.aClass1_1395, Native.aClass1_305, arg2);
             Class56.aClass40_Sub5_Sub14_Sub2_1329 = Class27.method359(Native.aClass1_256, Native.aClass1_305, arg2);
             Buffer.aClass40_Sub5_Sub14_Sub2_1959 = Class27.method359(Native.aClass1_338, Native.aClass1_305, arg2);
@@ -221,7 +221,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, Native.aClass1_304, (byte) 21, Native.aClass1_305);
             Class17.aClass68_462 = Class40_Sub5_Sub13.method649(class40_sub5_sub14_sub4.image_height, class40_sub5_sub14_sub4.image_width, arg0, -4875);
             class40_sub5_sub14_sub4.method727(0, 0);
-            Class56.aClass40_Sub5_Sub14_Sub2_1315 = Class27.method359(SubNode.aClass1_2093, Native.aClass1_305, arg2);
+            Class56.aClass40_Sub5_Sub14_Sub2_1315 = Class27.method359(Native.aClass1_2093, Native.aClass1_305, arg2);
             GameShell.aClass40_Sub5_Sub14_Sub2_1 = Class27.method359(Native.aClass1_3254, Native.aClass1_305, arg2);
             Class35.aClass40_Sub5_Sub14_Sub2_1744 = Class27.method359(Native.aClass1_1517, Native.aClass1_305, arg2);
             Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105 = Class56.aClass40_Sub5_Sub14_Sub2_1315.method691();

@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.frame.ChatBox;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
@@ -146,8 +147,8 @@ public class Class43 {
     public static void method398(int arg0) {
         String class1 = null;
         for(int i = 0; ActorDefinition.menuActionRow > i; i++) {
-            if(Landscape.menuActionTexts[i].contains(VertexNormal.aClass1_1114)) {
-                class1 = Landscape.menuActionTexts[i].substring(Landscape.menuActionTexts[i].indexOf(VertexNormal.aClass1_1114));
+            if(Landscape.menuActionTexts[i].contains(Native.aClass1_1114)) {
+                class1 = Landscape.menuActionTexts[i].substring(Landscape.menuActionTexts[i].indexOf(Native.aClass1_1114));
                 break;
             }
         }
@@ -187,8 +188,8 @@ public class Class43 {
                 int i_9_ = 16777215;
                 if(class1_8_.endsWith(class1)) {
                     class1_8_ = class1_8_.substring(0, class1_8_.length() - class1.length());
-                    if(class1_8_.endsWith(VertexNormal.aClass1_1117))
-                        class1_8_ = class1_8_.substring(0, class1_8_.length() + -VertexNormal.aClass1_1117.length());
+                    if(class1_8_.endsWith(Native.aClass1_1117))
+                        class1_8_ = class1_8_.substring(0, class1_8_.length() + -Native.aClass1_1117.length());
                 }
                 if(i_0_ < i_4_ && i_4_ < i_0_ + i && -13 + i_7_ < i_5_ && 3 + i_7_ > i_5_)
                     i_9_ = 16776960;

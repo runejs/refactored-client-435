@@ -26,14 +26,9 @@ import java.net.Socket;
 
 public class SpotAnimDefinition extends SubNode {
     public static ImageRGB minimapEdge;
-    public static String str_prefix_level = "level-";
-    public static String cmd_noclip = "::noclip";
-    public static String aClass1_2294 = "Loading textures - ";
-    public static String aClass1_2297 = "Loaded input handler";
     public static Class67 aClass67_2298;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2301;
     public static int mouseButtonPressed = 0;
-    public static String aClass1_2306 = " -> @yel@";
     public static int baseX;
 
     public int animationId;
@@ -82,7 +77,7 @@ public class SpotAnimDefinition extends SubNode {
                 }
             }
             if (!arg0) {
-                aClass1_2297 = null;
+                English.loadedInputHandler = null;
             }
             if (Class40_Sub3.anInt2032 == 2) {
                 long l = Class34.aLong853 = RSString.method58(Native.username.toString());
@@ -197,7 +192,7 @@ public class SpotAnimDefinition extends SubNode {
             }
             if (Class40_Sub3.anInt2032 == 8) {
                 Main.anInt1756 = 0;
-                Class33.setLoginScreenMessage(English.youHaveJustLeftAnotherWorld, RSCanvas.aClass1_67, (Class33.anInt784 / 60) + English.suffixSeconds);
+                Class33.setLoginScreenMessage(English.youHaveJustLeftAnotherWorld, English.yourProfileWillBeTransferredIn, (Class33.anInt784 / 60) + English.suffixSeconds);
                 if (--Class33.anInt784 <= 0) {
                     Class40_Sub3.anInt2032 = 0;
                 }

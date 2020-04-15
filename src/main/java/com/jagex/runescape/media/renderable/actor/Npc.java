@@ -12,6 +12,7 @@ import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -28,19 +29,16 @@ import com.jagex.runescape.scene.tile.WallDecoration;
 
 public class Npc extends Actor {
     public static int anInt3294 = 0;
-    public static String aClass1_3295 = null;
     public static boolean aBoolean3298;
     public static Scene currentScene;
     public static int[] anIntArray3304 = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
-    public static String aClass1_3305 = "Connection lost";
-    public static String aClass1_3311 = "On";
     public static int[] anIntArray3312;
     public ActorDefinition actorDefinition;
 
     public static Class40_Sub5_Sub11 method795(byte arg0, int arg1) {
         Class40_Sub5_Sub11 class40_sub5_sub11 = (Class40_Sub5_Sub11) Class13.aClass9_406.get((long) arg1, (byte) 98);
         if(arg0 >= -66)
-            aClass1_3295 = null;
+            Native.aClass1_3295 = null;
         if(class40_sub5_sub11 != null)
             return class40_sub5_sub11;
         if(Class64.aCacheIndex_1521 == null) {

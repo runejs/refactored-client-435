@@ -254,7 +254,7 @@ public class Landscape {
                     for(int i_46_ = -1 + i_42_; i_46_ <= 1 + i_45_; i_46_++) {
                         for(int i_47_ = -1 + i_43_; i_47_ <= i_44_ + 1; i_47_++) {
                             if(i_42_ > i_46_ || i_46_ > i_45_ || i_47_ < i_43_ || i_47_ > i_44_) {
-                                Renderable.aClass6_Sub1_2857.method195(0, LinkedList.aClass1_1085+i_46_+ Native.aClass1_303+i_47_);
+                                Renderable.aClass6_Sub1_2857.method195(0, Native.aClass1_1085+i_46_+ Native.aClass1_303+i_47_);
                                 Renderable.aClass6_Sub1_2857.method195(0, Native.aClass1_553+i_46_+ Native.aClass1_303+i_47_);
                             }
                         }

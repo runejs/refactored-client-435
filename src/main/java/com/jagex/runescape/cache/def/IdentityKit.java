@@ -3,7 +3,7 @@ package com.jagex.runescape.cache.def;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Model;
 
 public class IdentityKit extends SubNode {
@@ -35,7 +35,7 @@ public class IdentityKit extends SubNode {
         if(class40_sub5_sub1 != null) {
             return class40_sub5_sub1;
         }
-        byte[] is = Class56.aClass6_Sub1_1323.method170(GameObject.aClass1_3044, arg1 +SubNode.aClass1_2084 + arg0, 1);
+        byte[] is = Class56.aClass6_Sub1_1323.method170(Native.aClass1_3044, arg1 + Native.aClass1_2084 + arg0, 1);
         Buffer class40_sub1 = new Buffer(is);
         class40_sub5_sub1 = new Class40_Sub5_Sub1();
         class40_sub1.currentPosition = class40_sub1.buffer.length + -12;

@@ -4,7 +4,6 @@ import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.*;
-import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.input.KeyFocusListener;
@@ -14,7 +13,6 @@ import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.VertexNormal;
-import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -59,7 +57,7 @@ public class Class40_Sub3 extends Node {
             Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765 = new ImageRGB(512, 512);
             Class67.anInt1607 = 5;
             Class40_Sub5_Sub6.anInt2451 = 20;
-            Native.currentLoadingText = Widget.aClass1_2674;
+            Native.currentLoadingText = English.startingGameEngine;
         } else if (Class40_Sub5_Sub6.anInt2451 == 20) {
             int[] is = new int[9];
             for (int i = 0; i < 9; i++) {
@@ -70,7 +68,7 @@ public class Class40_Sub3 extends Node {
             }
             Scene.method95(is, 500, 800, 512, 334);
             Class67.anInt1607 = 10;
-            Native.currentLoadingText = RSCanvas.aClass1_63;
+            Native.currentLoadingText = English.preparedVisibilityMap;
             Class40_Sub5_Sub6.anInt2451 = 30;
         } else if (Class40_Sub5_Sub6.anInt2451 == 30) {
             FloorDecoration.aClass6_Sub1_605 = KeyFocusListener.method957(0, true, false, (byte) 127, true);
@@ -118,7 +116,7 @@ public class Class40_Sub3 extends Node {
             Class49.aClass40_Sub9_Sub1_1152 = MouseHandler.method1003(ISAAC.aClass31_521, MouseHandler.aCanvas1469, arg0 ^ 0x74be);
             Class55.aClass48_1289 = new Class48(22050, CollisionMap.anInt141);
             Class40_Sub5_Sub6.anInt2451 = 50;
-            Native.currentLoadingText = VertexNormal.aClass1_1105;
+            Native.currentLoadingText = English.preparedSoundEngine;
             Class67.anInt1607 = 35;
         } else if (Class40_Sub5_Sub6.anInt2451 == 50) {
             int i = 0;
@@ -135,7 +133,7 @@ public class Class40_Sub3 extends Node {
             else
                 Class40_Sub5_Sub17_Sub6.fontBold = TypeFace.loadTypeFace(ActorDefinition.aClass6_Sub1_2377, "", Native.aClass1_1921);
             if (i < 3) {
-                Native.currentLoadingText = VertexNormal.aClass1_1099 + (i * 100 / 3) + Native.aClass1_1041;
+                Native.currentLoadingText = English.loadingFonts + (i * 100 / 3) + Native.aClass1_1041;
                 Class67.anInt1607 = 40;
             } else {
                 Class40_Sub5_Sub6.anInt2451 = 60;
@@ -180,7 +178,7 @@ public class Class40_Sub3 extends Node {
             if (AnimationSequence.minimapCompass != null)
                 i++;
             else
-                AnimationSequence.minimapCompass = HuffmanEncoding.method1028(ActorDefinition.aClass6_Sub1_2377, KeyFocusListener.aClass1_1284, (byte) 21, "");
+                AnimationSequence.minimapCompass = HuffmanEncoding.method1028(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_1284, (byte) 21, "");
             if (SpotAnimDefinition.minimapEdge == null)
                 SpotAnimDefinition.minimapEdge = HuffmanEncoding.method1028(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_1427, (byte) 21, "");
             else
@@ -190,7 +188,7 @@ public class Class40_Sub3 extends Node {
             else
                 SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301 = IndexedImage.getMultipleIndexedImages(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_671, "");
             if (Class8.aClass40_Sub5_Sub14_Sub4Array296 == null)
-                Class8.aClass40_Sub5_Sub14_Sub4Array296 = Class40_Sub2.method526(ActorDefinition.aClass6_Sub1_2377, GameObject.aClass1_3047, "");
+                Class8.aClass40_Sub5_Sub14_Sub4Array296 = Class40_Sub2.method526(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_3047, "");
             else
                 i++;
             if (AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 != null)
@@ -256,7 +254,7 @@ public class Class40_Sub3 extends Node {
                 Native.currentLoadingText = English.loadingGameScreen + (i * 100 / i_9_) + Native.aClass1_1041;
                 Class67.anInt1607 = 80;
             } else {
-                Native.currentLoadingText = GameObject.aClass1_3038;
+                Native.currentLoadingText = English.loadedGamescreen;
                 Class40_Sub5_Sub6.anInt2451 = 90;
                 Class67.anInt1607 = 80;
             }
@@ -269,13 +267,13 @@ public class Class40_Sub3 extends Node {
                 Class67.anInt1607 = 90;
                 Native.currentLoadingText = English.loadedTextures;
             } else {
-                Native.currentLoadingText = SpotAnimDefinition.aClass1_2294 + SceneCluster.aClass6_Sub1_773.method202() + Native.aClass1_1041;
+                Native.currentLoadingText = English.loadingTextures + SceneCluster.aClass6_Sub1_773.method202() + Native.aClass1_1041;
                 Class67.anInt1607 = 90;
             }
         } else if (Class40_Sub5_Sub6.anInt2451 == 110) {
             Class12.mouseCapturer = new Class39();
             ISAAC.aClass31_521.method394(10, 0, Class12.mouseCapturer);
-            Native.currentLoadingText = SpotAnimDefinition.aClass1_2297;
+            Native.currentLoadingText = English.loadedInputHandler;
             Class40_Sub5_Sub6.anInt2451 = 120;
             Class67.anInt1607 = 94;
         } else if (Class40_Sub5_Sub6.anInt2451 == 120) {

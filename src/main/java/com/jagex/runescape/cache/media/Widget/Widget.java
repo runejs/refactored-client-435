@@ -8,7 +8,6 @@ import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.TypeFace;
-import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -34,12 +33,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Widget extends SubNode {
-    public static String aClass1_2671 = "glow2:";
-    public static String aClass1_2674 = "Starting game engine...";
-    public static String str_Choose_Option = "Choose Option";
-    public static String cmd_errortest = "::errortest";
-    public static String goldCrown = "@cr2@";
-    public static String aClass1_2740 = "Enter name of friend to add to list";
     public static Widget[][] interfaces;
 
     public boolean isIf3 = false;
@@ -223,7 +216,7 @@ public class Widget extends SubNode {
             GenericTile.anInt1214 = IdentityKit.anInt2598;
         }
         if (arg0 <= 121) {
-            aClass1_2674 = null;
+            English.startingGameEngine = null;
         }
     }
 
@@ -1103,12 +1096,12 @@ public class Widget extends SubNode {
                     if (Class40_Sub7.friendWorlds[type] == Class13.worldid) {
                         widget.disabledText = Native.aClass1_1162 + English.world + Class40_Sub7.friendWorlds[type];
                     } else {
-                        widget.disabledText = KeyFocusListener.aClass1_1283 + English.world + Class40_Sub7.friendWorlds[type];
+                        widget.disabledText = Native.aClass1_1283 + English.world + Class40_Sub7.friendWorlds[type];
                     }
                 } else if (Class13.worldid == Class40_Sub7.friendWorlds[type]) {
                     widget.disabledText = Native.aClass1_1162 + English.classic + (-5000 + Class40_Sub7.friendWorlds[type]);
                 } else {
-                    widget.disabledText = KeyFocusListener.aClass1_1283 + English.classic + (Class40_Sub7.friendWorlds[type] + -5000);
+                    widget.disabledText = Native.aClass1_1283 + English.classic + (Class40_Sub7.friendWorlds[type] + -5000);
                 }
                 widget.actionType = 1;
             }
@@ -1172,7 +1165,7 @@ public class Widget extends SubNode {
             widget.modelId = 1;
             widget.modelType = WidgetModelType.PLAYER;
         } else if (type == 600)
-            widget.disabledText = HuffmanEncoding.reportedName + Native.prefixYellowBar;
+            widget.disabledText = Native.reportedName + Native.prefixYellowBar;
         else if (type == 620) {
             if (InteractiveObject.playerRights >= 1) {
                 if (Class67.reportMutePlayer) {

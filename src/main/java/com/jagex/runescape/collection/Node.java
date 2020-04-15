@@ -6,12 +6,8 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 
 public class Node {
     public static int pulseCycle = 0;
-    public static String aClass1_932 = "@gr2@";
     public static int anInt938 = 500;
-    public static String aClass1_940 = "white:";
     public static int loginScreenFocus = 0;
-    public static String requestcmd_chalreq = ":chalreq:";
-    public static String aClass1_975 = ".";
 
     public long key;
     public Node aClass40_950;

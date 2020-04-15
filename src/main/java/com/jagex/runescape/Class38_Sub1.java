@@ -4,7 +4,6 @@ import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
@@ -59,7 +58,7 @@ public class Class38_Sub1 extends Class38 {
                     String class1 = ChatBox.chatPlayerNames[i_1_];
                     if(class1 != null && class1.startsWith(Native.whiteCrown))
                         class1 = class1.substring(5);
-                    if(class1 != null && class1.startsWith(Widget.goldCrown))
+                    if(class1 != null && class1.startsWith(Native.goldCrown))
                         class1 = class1.substring(5);
                     if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Class40_Sub2.hasFriend(class1))) {
                         int i_3_ = 329 + -(13 * i);

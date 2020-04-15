@@ -4,7 +4,6 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.Item;
@@ -17,11 +16,9 @@ import com.jagex.runescape.util.TextUtils;
 
 public class UnderlayDefinition extends SubNode {
     public static int openSecondaryWidgetId = -1;
-    public static String aClass1_2566 ="flash2:";
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2567;
     public static CacheIndex_Sub1 aClass6_Sub1_2571;
     public static int anInt2576;
-    public static String aClass1_2577 = " million";
     public static int anInt2581;
     public static CacheIndex aCacheIndex_2582;
 
@@ -48,7 +45,7 @@ public class UnderlayDefinition extends SubNode {
                 String username = TextUtils.formatName(TextUtils.longToName(name));
                 for(int i = 0; Item.friendsCount > i; i++) {
                     if(Class59.aLongArray1397[i] == name) {
-                        Class44.addChatMessage("", username + MouseHandler.aClass1_1465, 0);
+                        Class44.addChatMessage("", username + English.isAlreadyOnYourFriendList, 0);
                         return;
                     }
                 }
