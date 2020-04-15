@@ -12,7 +12,6 @@ import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
-import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -250,7 +249,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                         HuffmanEncoding.reportedName = "";
                     }
                 } else
-                    Class44.addChatMessage("", English.aClass1_873, 0);
+                    Class44.addChatMessage("", English.pleaseCloseInterfaceBeforeReportAbuse, 0);
             }
         }
     }
@@ -261,19 +260,19 @@ public class Class40_Sub5_Sub1 extends SubNode {
             if (player.skillLevel == 0)
                 rsString = player.playerName + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, player.combatLevel) + Native.aClass1_569 + SpotAnimDefinition.str_prefix_level + player.combatLevel + Native.aClass1_1199;
             else
-                rsString = player.playerName + Native.aClass1_569 + English.aClass1_619 + player.skillLevel + Native.aClass1_1199;
+                rsString = player.playerName + Native.aClass1_569 + English.prefixSkill + player.skillLevel + Native.aClass1_1199;
             if (Class8.itemSelected == 1) {
-                OverlayDefinition.addActionRow(Main.aClass1_1763, index, x, y, 22, Npc.aClass1_3295 + Item.aClass1_3068 + rsString);
+                OverlayDefinition.addActionRow(English.use, index, x, y, 22, Npc.aClass1_3295 + Native.aClass1_3068 + rsString);
             } else if (Main.widgetSelected == 1) {
                 if ((ItemDefinition.selectedMask & 0x8) == 8) {
-                    OverlayDefinition.addActionRow(Native.aClass1_1918, index, x, y, 1, FloorDecoration.aClass1_611 + Item.aClass1_3068 + rsString);
+                    OverlayDefinition.addActionRow(Native.aClass1_1918, index, x, y, 1, FloorDecoration.aClass1_611 + Native.aClass1_3068 + rsString);
                 }
             } else {
                 for (int i = 4; i >= 0; i--) {
                     if (Main.playerActions[i] != null) {
                         int i_16_ = 0;
                         int i_17_ = 0;
-                        if (Main.playerActions[i].equalsIgnoreCase(English.aClass1_1917)) {
+                        if (Main.playerActions[i].equalsIgnoreCase(English.attack)) {
                             if (Player.localPlayer.combatLevel < player.combatLevel)
                                 i_17_ = 2000;
                             if (Player.localPlayer.teamId != 0 && player.teamId != 0) {

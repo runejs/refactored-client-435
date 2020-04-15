@@ -16,5 +16,5 @@ login:
   password: Testing
 game:
   roofsEnabled: true
-  freeTeleports: true
+  freeTeleports: false
   debugContextMenu: true

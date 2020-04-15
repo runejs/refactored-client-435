@@ -120,7 +120,7 @@ public abstract class Class22_Sub2 extends Class22 {
         for(int i = 0; i < 16; i++)
             method314(i + 176, 123, 0, arg1);
         if(arg0 <= 101)
-            Native.aClass1_1879 = null;
+            Native.loginScreenMessageLineOne = null;
         for(int i = 0; i < 16; i++)
             method314(i + 176, 120, 0, arg1);
         for(int i = 0; i < 16; i++)

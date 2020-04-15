@@ -1,6 +1,5 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.ItemDefinition;
@@ -140,7 +139,7 @@ public class Class48 {
                             }
                         }
                         if(widget.actionType == 2 && Main.widgetSelected == 0 && arg8 >= i_2_ && arg4 >= i_1_ && arg8 < widget.originalWidth + i_2_ && arg4 < i_1_ + widget.originalHeight) {
-                            OverlayDefinition.addActionRow(widget.targetVerb, 0, 0, widget.id, 33, Landscape.aClass1_1162+widget.spellName);
+                            OverlayDefinition.addActionRow(widget.targetVerb, 0, 0, widget.id, 33, Native.aClass1_1162+widget.spellName);
                         }
                         if(widget.actionType == 3 && arg8 >= i_2_ && arg4 >= i_1_ && i_2_ + widget.originalWidth > arg8 && arg4 < i_1_ + widget.originalHeight) {
                             int i_3_;
@@ -193,12 +192,12 @@ public class Class48 {
                                                                     i_10_ = 43;
                                                                 OverlayDefinition.addActionRow(class1s[i_9_], itemDefinition.id, i_4_, widget.id, i_10_, VertexNormal.aClass1_1114 + itemDefinition.name);
                                                             } else if(i_9_ == 4) {
-                                                                OverlayDefinition.addActionRow(Cache.dropStringInstance, itemDefinition.id, i_4_, widget.id, 11, VertexNormal.aClass1_1114 + itemDefinition.name);
+                                                                OverlayDefinition.addActionRow(English.drop, itemDefinition.id, i_4_, widget.id, 11, VertexNormal.aClass1_1114 + itemDefinition.name);
                                                             }
                                                         }
                                                     }
                                                     if(widget.itemUsable) {
-                                                        OverlayDefinition.addActionRow(Main.aClass1_1763, itemDefinition.id, i_4_, widget.id, 19, VertexNormal.aClass1_1114 + itemDefinition.name);
+                                                        OverlayDefinition.addActionRow(English.use, itemDefinition.id, i_4_, widget.id, 19, VertexNormal.aClass1_1114 + itemDefinition.name);
                                                     }
                                                     if(widget.isInventory && class1s != null) {
                                                         for(int i_11_ = 2; i_11_ >= 0; i_11_--) {
@@ -238,7 +237,7 @@ public class Class48 {
                                                     OverlayDefinition.addActionRow(English.examine, itemDefinition.id, i_4_, widget.id, 1006, VertexNormal.aClass1_1114 + itemDefinition.name);
                                                 }
                                             } else if(ISAAC.anInt525 != widget.id || i_4_ != LinkedList.anInt1061) {
-                                                OverlayDefinition.addActionRow(Main.aClass1_1763, itemDefinition.id, i_4_, widget.id, 56, Npc.aClass1_3295+ Native.aClass1_206+ itemDefinition.name);
+                                                OverlayDefinition.addActionRow(English.use, itemDefinition.id, i_4_, widget.id, 56, Npc.aClass1_3295+ Native.aClass1_206+ itemDefinition.name);
                                             }
                                         }
                                     }
@@ -253,7 +252,7 @@ public class Class48 {
                                 if(Class60.aBoolean1402)
                                     class1s = Class56.method968(class1s);
                                 if(class1s == null || class1s[4] == null)
-                                    OverlayDefinition.addActionRow(Cache.dropStringInstance, itemDefinition.id, -1 + widget.anInt2736, widget.id, 11, VertexNormal.aClass1_1114+itemDefinition.name);
+                                    OverlayDefinition.addActionRow(English.drop, itemDefinition.id, -1 + widget.anInt2736, widget.id, 11, VertexNormal.aClass1_1114+itemDefinition.name);
                                 else
                                     OverlayDefinition.addActionRow(class1s[4], itemDefinition.id, widget.anInt2736 + -1, widget.id, 11, VertexNormal.aClass1_1114+ itemDefinition.name);
                                 if(class1s != null && class1s[3] != null)

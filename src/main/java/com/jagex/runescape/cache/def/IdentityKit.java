@@ -7,10 +7,8 @@ import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;
 
 public class IdentityKit extends SubNode {
-    public static String aClass1_2588 = "backvmid2";
     public static HuffmanEncoding aHuffmanEncoding_2590;
     public static int anInt2591 = 0;
-    public static String aClass1_2593 = "K";
     public static boolean drawTabIcons = false;
     public static int anInt2598 = 0;
     public static int[] sound = new int[50];
@@ -18,7 +16,6 @@ public class IdentityKit extends SubNode {
     public static int height;
     public static CacheIndex_Sub1 aClass6_Sub1_2609;
     public static int anInt2613 = 0;
-    public static String aClass1_2615 = "Bad session id.";
     public static boolean membersServer;
 
     public int[] recolorToFind = new int[6];

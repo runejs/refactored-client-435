@@ -7,12 +7,9 @@ import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Renderable;
-import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Wall {
-    public static String aClass1_338 = "backhmid1";
-    public static String aClass1_344 = "The server is being updated.";
     public static int cameraVelocityHorizontal = 0;
     public static int anInt350;
     public static int[] walkingQueueY = new int[4000];
@@ -60,9 +57,9 @@ public class Wall {
                         int i_3_ = 329 - 13 * i;
                         int i_4_ = 4;
                         i++;
-                        class40_sub5_sub14_sub1.drawString(English.aClass1_2458, i_4_, i_3_, 0);
-                        class40_sub5_sub14_sub1.drawString(English.aClass1_2458, i_4_, -1 + i_3_, 65535);
-                        i_4_ += class40_sub5_sub14_sub1.getStringWidth(English.aClass1_2458);
+                        class40_sub5_sub14_sub1.drawString(English.from, i_4_, i_3_, 0);
+                        class40_sub5_sub14_sub1.drawString(English.from, i_4_, -1 + i_3_, 65535);
+                        i_4_ += class40_sub5_sub14_sub1.getStringWidth(English.from);
                         i_4_ += class40_sub5_sub14_sub1.method689(32);
                         if(i_1_ == 1) {
                             Class40_Sub5_Sub13.moderatorIcon[0].drawImage(i_4_, i_3_ - 12);
@@ -72,8 +69,8 @@ public class Wall {
                             Class40_Sub5_Sub13.moderatorIcon[1].drawImage(i_4_, -12 + i_3_);
                             i_4_ += 14;
                         }
-                        class40_sub5_sub14_sub1.drawString(class1 + ISAAC.aClass1_515 + ChatBox.chatMessages[i_0_], i_4_, i_3_, 0);
-                        class40_sub5_sub14_sub1.drawString(class1 + ISAAC.aClass1_515 + ChatBox.chatMessages[i_0_], i_4_, -1 + i_3_, 65535);
+                        class40_sub5_sub14_sub1.drawString(class1 + Native.aClass1_515 + ChatBox.chatMessages[i_0_], i_4_, i_3_, 0);
+                        class40_sub5_sub14_sub1.drawString(class1 + Native.aClass1_515 + ChatBox.chatMessages[i_0_], i_4_, -1 + i_3_, 65535);
                         if(i >= 5)
                             return;
                     }
@@ -88,8 +85,8 @@ public class Wall {
                     if(i_2_ == 6 && ChatBox.privateChatMode < 2) {
                         int i_6_ = -(13 * i) + 329;
                         i++;
-                        class40_sub5_sub14_sub1.drawString(English.aClass1_2274 + Native.aClass1_1123 + class1 + ISAAC.aClass1_515 + ChatBox.chatMessages[i_0_], 4, i_6_, 0);
-                        class40_sub5_sub14_sub1.drawString(English.aClass1_2274 + Native.aClass1_1123 + class1 + ISAAC.aClass1_515 + ChatBox.chatMessages[i_0_], 4, i_6_ + -1, 65535);
+                        class40_sub5_sub14_sub1.drawString(English.to + Native.aClass1_1123 + class1 + Native.aClass1_515 + ChatBox.chatMessages[i_0_], 4, i_6_, 0);
+                        class40_sub5_sub14_sub1.drawString(English.to + Native.aClass1_1123 + class1 + Native.aClass1_515 + ChatBox.chatMessages[i_0_], 4, i_6_ + -1, 65535);
                         if(i >= 5)
                             return;
                     }

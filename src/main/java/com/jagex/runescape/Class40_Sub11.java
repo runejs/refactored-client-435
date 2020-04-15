@@ -57,7 +57,7 @@ public class Class40_Sub11 extends Node {
                         if(InteractiveObject.playerRights >= 1) {
                             OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 28, Native.aClass1_620+ class1);
                         }
-                        OverlayDefinition.addActionRow(English.aClass1_885, 0, 0, 0, 51, Native.aClass1_620+ class1);
+                        OverlayDefinition.addActionRow(English.addIgnore, 0, 0, 0, 51, Native.aClass1_620+ class1);
                         OverlayDefinition.addActionRow(FloorDecoration.aClass1_591, 0, 0, 0, 45, Native.aClass1_620+ class1);
                     }
                     i++;
@@ -68,13 +68,13 @@ public class Class40_Sub11 extends Node {
                         if(InteractiveObject.playerRights >= 1) {
                             OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 28, Native.aClass1_620+ class1);
                         }
-                        OverlayDefinition.addActionRow(English.aClass1_885, 0, 0, 0, 51, Native.aClass1_620+ class1);
+                        OverlayDefinition.addActionRow(English.addIgnore, 0, 0, 0, 51, Native.aClass1_620+ class1);
                         OverlayDefinition.addActionRow(FloorDecoration.aClass1_591, 0, 0, 0, 45, Native.aClass1_620+ class1);
                     }
                 }
                 if(i_1_ == 4 && (ChatBox.tradeMode == 0 || ChatBox.tradeMode == 1 && Class40_Sub2.hasFriend(class1))) {
                     if(arg1 > -14 + i_2_ && arg1 <= i_2_) {
-                        OverlayDefinition.addActionRow(English.aClass1_1208, 0, 0, 0, 26, Native.aClass1_620+ class1);
+                        OverlayDefinition.addActionRow(English.acceptTrade, 0, 0, 0, 26, Native.aClass1_620+ class1);
                     }
                     i++;
                 }

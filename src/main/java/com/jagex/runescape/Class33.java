@@ -344,10 +344,10 @@ public class Class33 {
 
     }
 
-    public static void method411(String arg0, String arg1, String arg2) {
-        Native.aClass1_1881 = arg0;
-        Native.aClass1_1896 = arg2;
-        Native.aClass1_1879 = arg1;
+    public static void setLoginScreenMessage(String line1, String line2, String line3) {
+        Native.loginScreenMessageLineOne = line1;
+        Native.loginScreenMessageLineTwo = line2;
+        Native.loginScreenMessageLineThree = line3;
     }
 
     public static synchronized void method412(boolean arg0, CacheIndex arg1, int arg2, byte arg3, String arg4, int arg5, String arg6, int arg7) {

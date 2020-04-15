@@ -19,12 +19,10 @@ import com.jagex.runescape.scene.tile.WallDecoration;
 import java.awt.*;
 
 public class Player extends Actor {
-    public static String aClass1_3256 = "green:";
     public static int anInt3264 = 0;
     public static int worldLevel;
     public static byte[] aByteArray3270;
     public static int[] anIntArray3284;
-    public static String aClass1_3286 = "Try again in 60 secs...";
     public static int anInt3288 = 0;
     public static Player localPlayer;
     public static int[] actorUpdatingIndices = new int[2048];
@@ -152,7 +150,6 @@ public class Player extends Actor {
                     IncomingPackets.incomingPacketBuffer.getBytes(0, messageLength, Class59.aClass40_Sub1_1385.buffer);
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
                     String class1 = RSString.method53(KeyFocusListener.method956(124, IncomingPackets.incomingPacketBuffer));
-
                     player.forcedChatMessage = class1.trim();
                     player.anInt3078 = 150;
                     player.chatEffects = chatEffectsAndColors & 0xff;

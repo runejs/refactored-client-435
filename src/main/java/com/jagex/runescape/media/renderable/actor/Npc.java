@@ -61,7 +61,7 @@ public class Npc extends Actor {
             SceneCluster.anInt771--;
         if(Class37.aBoolean871) {
             Class37.aBoolean871 = false;
-            Class59.dropClient(2578);
+            Class59.dropClient();
         } else {
             for(int i = 0; i < 100; i++) {
                 if(!IncomingPackets.parseIncomingPackets(false))
@@ -194,7 +194,7 @@ public class Npc extends Actor {
                     Class4.processAudio();
                     Class35.anInt1728++;
                     if(Class35.anInt1728 > 750)
-                        Class59.dropClient(2578);
+                        Class59.dropClient();
                     else {
                         Class17.method276(-1);
                         Class8.method209();
@@ -398,7 +398,7 @@ public class Npc extends Actor {
                                 Class22.anInt537 = 0;
                                 SceneCluster.packetBuffer.currentPosition = 0;
                             } catch(java.io.IOException ioexception) {
-                                Class59.dropClient(2578);
+                                Class59.dropClient();
                                 break;
                             }
                             break;

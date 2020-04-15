@@ -21,6 +21,9 @@ import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.Wall;
+import tech.henning.fourthreefive.Configuration;
+
+import java.text.MessageFormat;
 
 public class HuffmanEncoding {
     public static Class68 aClass68_1541;
@@ -106,7 +109,7 @@ public class HuffmanEncoding {
 
     public static RSString method1024(boolean arg0, byte arg1, int arg2) {
         if (arg1 > -30)
-            English.str_Connecting_to_friendserver = null;
+            English.connectingToFriendserver = null;
         return PacketBuffer.method521(arg0, 10, arg2);
     }
 
@@ -119,7 +122,7 @@ public class HuffmanEncoding {
                 if (actorDefinition.combatLevel != 0)
                     class1 = class1 + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + Native.aClass1_569 + SpotAnimDefinition.str_prefix_level + actorDefinition.combatLevel + Native.aClass1_1199;
                 if (Class8.itemSelected == 1) {
-                    OverlayDefinition.addActionRow(Main.aClass1_1763, index, x, y, 49, Npc.aClass1_3295 + SpotAnimDefinition.aClass1_2306 + class1);
+                    OverlayDefinition.addActionRow(English.use, index, x, y, 49, Npc.aClass1_3295 + SpotAnimDefinition.aClass1_2306 + class1);
                 } else if (Main.widgetSelected == 1) {
                     if ((0x2 & ItemDefinition.selectedMask) == 2) {
                         OverlayDefinition.addActionRow(Native.aClass1_1918, index, x, y, 21, FloorDecoration.aClass1_611 + SpotAnimDefinition.aClass1_2306 + class1);
@@ -130,7 +133,7 @@ public class HuffmanEncoding {
                         class1s = Class56.method968(class1s);
                     if (class1s != null) {
                         for (int i = 4; i >= 0; i--) {
-                            if (class1s[i] != null && !class1s[i].equalsIgnoreCase(English.aClass1_1917)) {
+                            if (class1s[i] != null && !class1s[i].equalsIgnoreCase(English.attack)) {
                                 int i_3_ = 0;
                                 if (i == 0)
                                     i_3_ = 12;
@@ -148,7 +151,7 @@ public class HuffmanEncoding {
                     }
                     if (class1s != null) {
                         for (int i = 4; i >= 0; i--) {
-                            if (class1s[i] != null && class1s[i].equalsIgnoreCase(English.aClass1_1917)) {
+                            if (class1s[i] != null && class1s[i].equalsIgnoreCase(English.attack)) {
                                 int i_4_ = 0;
                                 if (Player.localPlayer.combatLevel < actorDefinition.combatLevel)
                                     i_4_ = 2000;
@@ -167,7 +170,27 @@ public class HuffmanEncoding {
                             }
                         }
                     }
-                    OverlayDefinition.addActionRow(English.examine, index, x, y, 1001, KeyFocusListener.aClass1_1283 + class1);
+                    StringBuilder examineText = new StringBuilder();
+                    examineText.append(MessageFormat.format("<col=ffff00>{0}</col>", actorDefinition.name));
+                    if (Configuration.DEBUG_CONTEXT) {
+                        examineText.append(" <col=00ff00>(</col>");
+                        examineText.append(
+                                MessageFormat.format("<col=ffffff>{0}</col>",
+                                        Integer.toString(actorDefinition.id)
+                                )
+                        );
+                        examineText.append("<col=00ff00>) (</col>");
+                        examineText.append(
+                                MessageFormat.format("<col=ffffff>{0}, {1}</col>",
+                                        Integer.toString(x + SpotAnimDefinition.baseX),
+                                        Integer.toString(y + Class26.baseY)
+                                )
+                        );
+                        examineText.append("<col=00ff00>)</col>");
+
+
+                    }
+                    OverlayDefinition.addActionRow(English.examine, index, x, y, 1001, examineText.toString());
                 }
             }
         }
@@ -399,7 +422,7 @@ public class HuffmanEncoding {
     public int encrypt(int arg0, int arg1, int arg2, int arg3, byte[] dest, byte[] arg5) {
         arg3 += arg1;
         int i = 0;
-        int i_6_ = arg2 << 3;
+        int i_6_ = arg2 << 3;;
         for (/**/; arg1 < arg3; arg1++) {
             int textByte = 0xff & dest[arg1];
             int mask = chatMask[textByte];

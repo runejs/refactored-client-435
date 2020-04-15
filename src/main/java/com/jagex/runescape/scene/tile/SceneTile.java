@@ -1,7 +1,6 @@
 package com.jagex.runescape.scene.tile;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
@@ -20,15 +19,9 @@ import com.jagex.runescape.scene.InteractiveObject;
 import java.nio.charset.StandardCharsets;
 
 public class SceneTile extends Node {
-    public static String aClass1_2042 = "Please try using a different world.";
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_2043;
-    public static String aClass1_2047 = "Please try using a different world.";
     public static int[] anIntArray2048;
     public static int activeInterfaceType = 0;
-    public static String aClass1_2050 = "Please try using a different world.";
-    public static String aClass1_2053 = "Please try using a different world.";
-    public static String aClass1_2054 = "Please try using a different world.";
-    public static String aClass1_2057 ="Please try using a different world.";
 
     public SceneTile aSceneTile_2058;
     public int wallCullOppositeDirection;
@@ -63,8 +56,6 @@ public class SceneTile extends Node {
     }
 
     public static String method532(byte arg0, Widget arg1, String arg2) {
-        if (arg0 != 20)
-            aClass1_2047 = null;
         if (arg2.contains(Native.aClass1_1041)) {
             for (; ; ) {
                 int i = arg2.indexOf(Native.aClass1_890);
@@ -144,9 +135,9 @@ public class SceneTile extends Node {
         if (diff < -3)
             return Native.aClass1_1639;
         if (diff < 0)
-            return Cache.aClass1_327;
+            return Native.aClass1_327;
         if (diff > 9)
-            return Landscape.aClass1_1162;
+            return Native.aClass1_1162;
         if (diff > 6)
             return InteractiveObject.aClass1_494;
         if (diff > 3)
@@ -160,13 +151,13 @@ public class SceneTile extends Node {
         if (ActorDefinition.menuActionRow >= 2 || Class8.itemSelected != 0 || Main.widgetSelected != 0) {
             String class1;
             if (Class8.itemSelected == 1 && ActorDefinition.menuActionRow < 2)
-                class1 = Main.aClass1_1763 + VertexNormal.aClass1_1117 + Npc.aClass1_3295 + Native.aClass1_894;
+                class1 = English.use + VertexNormal.aClass1_1117 + Npc.aClass1_3295 + Native.aClass1_894;
             else if (Main.widgetSelected != 1 || ActorDefinition.menuActionRow >= 2)
                 class1 = Landscape.menuActionTexts[-1 + ActorDefinition.menuActionRow];
             else
                 class1 = Native.aClass1_1918 + VertexNormal.aClass1_1117 + FloorDecoration.aClass1_611 + Native.aClass1_894;
             if (ActorDefinition.menuActionRow > 2)
-                class1 = class1 + WallDecoration.aClass1_1243 + (ActorDefinition.menuActionRow + -2) + English.aClass1_904;
+                class1 = class1 + WallDecoration.aClass1_1243 + (ActorDefinition.menuActionRow + -2) + English.suffixMoreOptions;
             if (arg0 == 4)
                 Class40_Sub5_Sub17_Sub6.fontBold.drawShadowedSeededAlphaString(class1, 4, 15, 16777215, true, Node.pulseCycle / 1000);
         }

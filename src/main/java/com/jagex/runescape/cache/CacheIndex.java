@@ -21,8 +21,6 @@ public abstract class CacheIndex {
     public static long aLong219 = 0L;
     public static Cache modelCache = new Cache(260);
     public static int anInt255;
-    public static String aClass1_256 = "backbase2";
-    public static String aClass1_258= "Please try again.";
     public static boolean aBoolean260 = false;
     public static int[][][] anIntArrayArrayArray262;
 
@@ -421,9 +419,7 @@ public abstract class CacheIndex {
         throw new RuntimeException();
     }
 
-    public boolean method194(String arg0, String arg1, int arg2) {
-        if(arg2 != -1234)
-            anIntArray261 = null;
+    public boolean method194(String arg0, String arg1) {
         arg0 = arg0.toLowerCase();
         arg1 = arg1.toLowerCase();
         int i = aClass42_254.method882(RSString.stringHash(arg0));

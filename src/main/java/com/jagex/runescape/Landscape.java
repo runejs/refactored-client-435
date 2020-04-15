@@ -33,19 +33,12 @@ import java.util.zip.GZIPInputStream;
 
 public class Landscape {
     public static int anInt1157 = 0;
-    public static String aClass1_1162 = "@gre@";
     public static int mouseY = 0;
     public static CollisionMap[] currentCollisionMap = new CollisionMap[4];
     public static int[] anIntArray1168;
     public static int anInt1170 = 0;
     public static int anInt1171 = 0;
-    public static String aClass1_1173 = "Loaded wordpack";
-    public static String aClass1_1174 = "Enter amount:";
     public static int[][] distanceValues = new int[104][104];
-    public static String aClass1_1178 = "You are standing in a members-only area.";
-    public static String aClass1_1180 = "Your ignore list is full. Max of 100 hit";
-    public static String aClass1_1181 = "glow1:";
-    public static String aClass1_1183 = "";
     public static String[] menuActionTexts = new String[500];
     public static Class68 aClass68_1185;
     public static int[] anIntArray1186;
@@ -120,7 +113,7 @@ public class Landscape {
             }
             if(bool) {
                 if(Class68.anInt1634 != 0)
-                    Class51.method940(0, English.aClass1_1585, true, ActorDefinition.aClass1_2423);
+                    Class51.method940(0, English.loadingPleaseWait, true, Native.aClass1_2423);
                 RSCanvas.method46(0);
                 Npc.currentScene.initToNull();
                 System.gc();

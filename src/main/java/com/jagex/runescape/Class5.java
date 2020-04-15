@@ -185,7 +185,7 @@ public class Class5 {
             ChatBox.inputType = 0;
             Class37.anInt876 = 4;
             ChatBox.redrawChatbox = true;
-            HuffmanEncoding.aClass1_1563 = English.aClass1_1200;
+            HuffmanEncoding.aClass1_1563 = English.enterNameOfPlayerToAddToList;
             ChatBox.chatMessage = "";
             ChatBox.messagePromptRaised = true;
         }

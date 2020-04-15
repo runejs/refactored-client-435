@@ -97,7 +97,7 @@ public class SpotAnimDefinition extends SubNode {
             if (Class40_Sub3.anInt2032 == 3) {
                 int i = Class40_Sub6.aClass64_2098.method1016();
                 if (i != 0) {
-                    Class27.method366(i);
+                    Class27.displayMessageForResponseCode(i);
                     return;
                 }
                 IncomingPackets.incomingPacketBuffer.currentPosition = 0;
@@ -183,7 +183,7 @@ public class SpotAnimDefinition extends SubNode {
                             OverlayDefinition.anInt2321++;
                             Class40_Sub3.anInt2032 = 0;
                         } else {
-                            Class27.method366(i);
+                            Class27.displayMessageForResponseCode(i);
                             return;
                         }
                     }
@@ -197,7 +197,7 @@ public class SpotAnimDefinition extends SubNode {
             }
             if (Class40_Sub3.anInt2032 == 8) {
                 Main.anInt1756 = 0;
-                Class33.method411((Class33.anInt784 / 60) + English.aClass1_883, English.aClass1_294, RSCanvas.aClass1_67);
+                Class33.setLoginScreenMessage(English.youHaveJustLeftAnotherWorld, RSCanvas.aClass1_67, (Class33.anInt784 / 60) + English.suffixSeconds);
                 if (--Class33.anInt784 <= 0) {
                     Class40_Sub3.anInt2032 = 0;
                 }
@@ -238,7 +238,7 @@ public class SpotAnimDefinition extends SubNode {
                             }
                             Class40_Sub3.anInt2032 = 0;
                         } else {
-                            Class27.method366(-3);
+                            Class27.displayMessageForResponseCode(-3);
                         }
                     }
                 }
@@ -253,7 +253,7 @@ public class SpotAnimDefinition extends SubNode {
                 OverlayDefinition.anInt2321++;
                 Class40_Sub3.anInt2032 = 0;
             } else {
-                Class27.method366(-2);
+                Class27.displayMessageForResponseCode(-2);
             }
         }
     }

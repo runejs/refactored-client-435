@@ -1,7 +1,6 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.UnderlayDefinition;
-import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.MouseHandler;
@@ -11,7 +10,6 @@ import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
-import com.jagex.runescape.scene.tile.GenericTile;
 
 import java.awt.*;
 
@@ -48,9 +46,9 @@ public class LinkedList {
         for(int i = -3 + class1.length(); i > 0; i -= 3)
             class1 = class1.substring(0, i) + Native.aClass1_795 + class1.substring(i);
         if(class1.length() > 8)
-            class1 = Landscape.aClass1_1162 + class1.substring(0, -8 + class1.length()) + UnderlayDefinition.aClass1_2577 + GenericTile.aClass1_1213 + class1 + Native.aClass1_1199;
+            class1 = Native.aClass1_1162 + class1.substring(0, -8 + class1.length()) + UnderlayDefinition.aClass1_2577 + Native.aClass1_1213 + class1 + Native.aClass1_1199;
         else if(class1.length() > 4)
-            class1 = Renderable.aClass1_2862 + class1.substring(0, class1.length() + -4) + IdentityKit.aClass1_2593 + GenericTile.aClass1_1213 + class1 + Native.aClass1_1199;
+            class1 = Renderable.aClass1_2862 + class1.substring(0, class1.length() + -4) + Native.aClass1_2593 + Native.aClass1_1213 + class1 + Native.aClass1_1199;
         return Native.aClass1_1123 + class1;
     }
 

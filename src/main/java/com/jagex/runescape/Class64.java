@@ -99,7 +99,7 @@ public class Class64 implements Runnable {
                     if (gameObjectDefinition == null)
                         continue;
                     if (Class8.itemSelected == 1) {
-                        OverlayDefinition.addActionRow(Main.aClass1_1763, hash, x, y, 5, Npc.aClass1_3295 + Native.aClass1_2277 + gameObjectDefinition.name);
+                        OverlayDefinition.addActionRow(English.use, hash, x, y, 5, Npc.aClass1_3295 + Native.aClass1_2277 + gameObjectDefinition.name);
                     } else if (Main.widgetSelected != 1) {
                         String[] options = gameObjectDefinition.actions;
                         if (Class60.aBoolean1402)
@@ -185,7 +185,7 @@ public class Class64 implements Runnable {
                         for (Item item = (Item) itemList.last((byte) -95); item != null; item = (Item) itemList.previous(4)) {
                             ItemDefinition itemDefinition = ItemDefinition.forId(item.itemId, 10);
                             if (Class8.itemSelected == 1) {
-                                OverlayDefinition.addActionRow(Main.aClass1_1763, item.itemId, x, y, 47, Npc.aClass1_3295 + Native.aClass1_206 + itemDefinition.name);
+                                OverlayDefinition.addActionRow(English.use, item.itemId, x, y, 47, Npc.aClass1_3295 + Native.aClass1_206 + itemDefinition.name);
                             } else if (Main.widgetSelected != 1) {
                                 String[] class1s = itemDefinition.groundOptions;
                                 if (Class60.aBoolean1402)
@@ -193,7 +193,7 @@ public class Class64 implements Runnable {
                                 for (int i_15_ = 4; i_15_ >= 0; i_15_--) {
                                     if (class1s == null || class1s[i_15_] == null) {
                                         if (i_15_ == 2) {
-                                            OverlayDefinition.addActionRow(English.takeStringInstance, item.itemId, x, y, 3, VertexNormal.aClass1_1114 + itemDefinition.name);
+                                            OverlayDefinition.addActionRow(English.take, item.itemId, x, y, 3, VertexNormal.aClass1_1114 + itemDefinition.name);
                                         }
                                     } else {
                                         int i_16_ = 0;

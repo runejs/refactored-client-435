@@ -320,7 +320,7 @@ public class WallDecoration {
             Class38.aClass68_887.method1046((byte) 90);
             if (Class51.anInt1197 == 0 || Class51.anInt1197 == 5) {
                 int i = 20;
-                arg1.drawStringLeft(English.aClass1_1122, 180, 74 + -i, 16777215);
+                arg1.drawStringLeft(English.runeScapeIsLoadingPleaseWait, 180, 74 + -i, 16777215);
                 int i_89_ = -i + 82;
                 Rasterizer.drawUnfilledRectangle(28, i_89_, 304, 34, 9179409);
                 Rasterizer.drawUnfilledRectangle(29, 1 + i_89_, 302, 32, 0);
@@ -331,14 +331,14 @@ public class WallDecoration {
             if (Class51.anInt1197 == 20) {
                 int i = 40;
                 Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775.drawImage(0, 0);
-                arg1.drawShadowedStringCenter(Native.aClass1_1879, 180, i, 16776960, true);
+                arg1.drawShadowedStringCenter(Native.loginScreenMessageLineOne, 180, i, 16776960, true);
                 i += 15;
-                arg1.drawShadowedStringCenter(Native.aClass1_1896, 180, i, 16776960, true);
+                arg1.drawShadowedStringCenter(Native.loginScreenMessageLineTwo, 180, i, 16776960, true);
                 i += 15;
-                arg1.drawShadowedStringCenter(Native.aClass1_1881, 180, i, 16776960, true);
+                arg1.drawShadowedStringCenter(Native.loginScreenMessageLineThree, 180, i, 16776960, true);
                 i += 15;
                 i += 10;
-                arg1.drawShadowedString(English.aClass1_1422 + Native.username, 90, i, true, 16777215);
+                arg1.drawShadowedString(English.username + Native.username, 90, i, true, 16777215);
                 i += 15;
                 arg1.drawShadowedString(English.password + Native.password.method61(), 92, i, true, 16777215);
                 i += 15;
@@ -348,36 +348,36 @@ public class WallDecoration {
                 if (Class26.loginScreenState == 0) {
                     int i = 80;
                     int i_94_ = 100;
-                    arg1.drawShadowedStringCenter(Main.aClass1_1761, 180, i, 16776960, true);
+                    arg1.drawShadowedStringCenter(English.welcomeToRunescape, 180, i, 16776960, true);
                     i += 30;
                     int i_95_ = 120;
                     Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(i_94_ - 73, i_95_ - 20);
-                    arg1.drawText(GenericTile.aClass1_1223, i_94_ + -73, -20 + i_95_, 144, 40, 16777215, true, 1, 1, 0);
+                    arg1.drawText(English.newUser, i_94_ + -73, -20 + i_95_, 144, 40, 16777215, true, 1, 1, 0);
                     i_94_ = 260;
                     Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(i_94_ - 73, i_95_ + -20);
-                    arg1.drawText(English.aClass1_1011, -73 + i_94_, -20 + i_95_, 144, 40, 16777215, true, 1, 1, 0);
+                    arg1.drawText(English.existingUser, -73 + i_94_, -20 + i_95_, 144, 40, 16777215, true, 1, 1, 0);
                 } else if (Class26.loginScreenState == 2) {
                     int i = 40;
                     int i_90_ = 100;
-                    arg1.drawShadowedStringCenter(Native.aClass1_1879, 180, i, 16776960, true);
+                    arg1.drawShadowedStringCenter(Native.loginScreenMessageLineOne, 180, i, 16776960, true);
                     i += 15;
                     int i_91_ = 150;
-                    arg1.drawShadowedStringCenter(Native.aClass1_1896, 180, i, 16776960, true);
+                    arg1.drawShadowedStringCenter(Native.loginScreenMessageLineTwo, 180, i, 16776960, true);
                     i += 15;
-                    arg1.drawShadowedStringCenter(Native.aClass1_1881, 180, i, 16776960, true);
+                    arg1.drawShadowedStringCenter(Native.loginScreenMessageLineThree, 180, i, 16776960, true);
                     i += 15;
                     i += 10;
-                    arg1.drawShadowedString(English.aClass1_1422 + Native.username + (Node.pulseCycle % 40 < 20 & Node.loginScreenFocus == 0 ? Native.aClass1_2447 : ""), 90, i, true, 16777215);
+                    arg1.drawShadowedString(English.username + Native.username + (Node.pulseCycle % 40 < 20 & Node.loginScreenFocus == 0 ? Native.aClass1_2447 : ""), 90, i, true, 16777215);
                     i += 15;
                     arg1.drawShadowedString(English.password + Native.password.method61() + (Node.pulseCycle % 40 < 20 & Node.loginScreenFocus == 1 ? Native.aClass1_2447 : ""), 92, i, true, 16777215);
                     Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
                     i += 15;
-                    arg1.drawShadowedStringCenter(VarbitDefinition.aClass1_2351, i_90_, i_91_ + 5, 16777215, true);
+                    arg1.drawShadowedStringCenter(English.login, i_90_, i_91_ + 5, 16777215, true);
                     i_90_ = 260;
                     Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
                     arg1.drawShadowedStringCenter(Class68.str_Cancel, i_90_, 5 + i_91_, 16777215, true);
                 } else if (Class26.loginScreenState == 3) {
-                    arg1.drawShadowedStringCenter(English.aClass1_1598, 180, 40, 16776960, true);
+                    arg1.drawShadowedStringCenter(English.createAFreeAccount, 180, 40, 16776960, true);
                     int i = 180;
                     int i_92_ = 150;
                     int i_93_ = 65;
@@ -387,7 +387,7 @@ public class WallDecoration {
                     i_93_ += 15;
                     arg1.drawShadowedStringCenter(aClass1_1251, 180, i_93_, 16777215, true);
                     i_93_ += 15;
-                    arg1.drawShadowedStringCenter(English.aClass1_2629, 180, i_93_, 16777215, true);
+                    arg1.drawShadowedStringCenter(English.suffixButtonNearTheTopOfThatPage, 180, i_93_, 16777215, true);
                     Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i, i_92_ - 20);
                     arg1.drawShadowedStringCenter(Class68.str_Cancel, i, 5 + i_92_, 16777215, true);
                     i_93_ += 15;

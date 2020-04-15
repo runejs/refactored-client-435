@@ -65,14 +65,14 @@ public class Class38_Sub1 extends Class38 {
                         int i_3_ = 329 + -(13 * i);
                         i++;
                         if(Class13.mouseX > 4 && i_3_ + -10 < Landscape.mouseY + -4 && -4 + Landscape.mouseY <= i_3_ + 3) {
-                            int i_4_ = 25 + WallDecoration.fontNormal.getStringWidth(English.aClass1_2458 + Native.prefixColon+ class1+ ChatBox.chatMessages[i_1_]);
+                            int i_4_ = 25 + WallDecoration.fontNormal.getStringWidth(English.from + Native.prefixColon+ class1+ ChatBox.chatMessages[i_1_]);
                             if(i_4_ > 450)
                                 i_4_ = 450;
                             if(Class13.mouseX < 4 + i_4_) {
                                 if(InteractiveObject.playerRights >= 1) {
                                     OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 2028, Native.aClass1_620+ class1);
                                 }
-                                OverlayDefinition.addActionRow(English.aClass1_885, 0, 0, 0, 2051, Native.aClass1_620+ class1);
+                                OverlayDefinition.addActionRow(English.addIgnore, 0, 0, 0, 2051, Native.aClass1_620+ class1);
                                 OverlayDefinition.addActionRow(FloorDecoration.aClass1_591, 0, 0, 0, 2045, Native.aClass1_620+ class1);
                             }
                         }

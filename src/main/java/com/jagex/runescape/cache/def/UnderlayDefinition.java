@@ -43,7 +43,7 @@ public class UnderlayDefinition extends SubNode {
     public static void addFriend(long name) {
         if(name != 0L) {
             if(Item.friendsCount >= 100 && Class44.anInt1049 != 1 || Item.friendsCount >= 200) {
-                Class44.addChatMessage("", English.aClass1_1399.toString(), 0);
+                Class44.addChatMessage("", English.friendsListIsFull, 0);
             } else {
                 String username = TextUtils.formatName(TextUtils.longToName(name));
                 for(int i = 0; Item.friendsCount > i; i++) {
@@ -54,7 +54,7 @@ public class UnderlayDefinition extends SubNode {
                 }
                 for(int i = 0; Class42.anInt1008 > i; i++) {
                     if(WallDecoration.ignores[i] == name) {
-                        Class44.addChatMessage("", English.aClass1_1038 + username + English.aClass1_917, 0);
+                        Class44.addChatMessage("", English.pleaseRemove + username + English.suffixFromYourIgnoreListFirst, 0);
                         return;
                     }
                 }

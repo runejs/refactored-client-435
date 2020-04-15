@@ -134,9 +134,9 @@ public class IncomingPackets {
                             Class40_Sub7.friendWorlds[i_2_] = i_1_;
                             ISAAC.redrawTabArea = true;
                             if(i_1_ > 0)
-                                Class44.addChatMessage("", string + English.aClass1_988, 5);
+                                Class44.addChatMessage("", string + English.suffixHasLoggedIn, 5);
                             if(i_1_ == 0)
-                                Class44.addChatMessage("", string + English.aClass1_1905, 5);
+                                Class44.addChatMessage("", string + English.suffixHasLoggedOut, 5);
                         }
                         string = null;
                         break;
@@ -325,7 +325,7 @@ public class IncomingPackets {
                         }
                     }
                     if(!bool && !Class4.inTutorialIsland)
-                        Class44.addChatMessage(class1_30_, English.aClass1_1428, 8);
+                        Class44.addChatMessage(class1_30_, English.suffixWishesToDuelWithYou, 8);
                 } else if(message.endsWith(Node.requestcmd_chalreq)) {
                     String class1_27_ = message.substring(0, message.indexOf(Class43.char_colon));
                     long l = RSString.method58(class1_27_);
@@ -1157,7 +1157,7 @@ public class IncomingPackets {
             CacheIndex.method169("T1 - " + incomingPacket + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + incomingPacketSize, (byte) -121, null);
             Class48.method928(-7225);
         } catch(java.io.IOException ioexception) {
-            Class59.dropClient(2578);
+            Class59.dropClient();
         } catch(Exception exception) {
             String string = "T2 - " + incomingPacket + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + incomingPacketSize + "," + (SpotAnimDefinition.baseX + Player.localPlayer.pathY[0]) + "," + (Player.localPlayer.pathX[0] + Class26.baseY) + " - ";
             for(int i = 0; incomingPacketSize > i && i < 50; i++)

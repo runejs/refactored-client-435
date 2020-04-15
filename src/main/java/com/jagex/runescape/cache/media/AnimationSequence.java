@@ -16,7 +16,6 @@ public class AnimationSequence extends SubNode {
     public static int anInt2480 = 0;
     public static ImageRGB minimapCompass;
     public static CacheIndex aCacheIndex_2484;
-    public static String aClass1_2488 = "titlebox";
     public static int[][] anIntArrayArray2490;
 
     public int[] animationLengths;
