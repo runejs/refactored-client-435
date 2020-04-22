@@ -66,7 +66,7 @@ public class IdentityKit extends SubNode {
 
     // ???
     public static IdentityKit cache(int arg1) {
-        IdentityKit identityKit = (IdentityKit) Class68.aClass9_1615.get(arg1, (byte) 107);
+        IdentityKit identityKit = (IdentityKit) ProducingGraphicsBuffer.aClass9_1615.get(arg1, (byte) 107);
         if(identityKit != null) {
             return identityKit;
         }
@@ -75,7 +75,7 @@ public class IdentityKit extends SubNode {
         if(is != null) {
             identityKit.readValues(new Buffer(is));
         }
-        Class68.aClass9_1615.put(arg1, identityKit);
+        ProducingGraphicsBuffer.aClass9_1615.put(arg1, identityKit);
         return identityKit;
     }
 

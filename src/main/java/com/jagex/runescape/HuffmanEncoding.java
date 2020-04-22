@@ -23,7 +23,7 @@ import tech.henning.fourthreefive.Configuration;
 import java.text.MessageFormat;
 
 public class HuffmanEncoding {
-    public static Class68 aClass68_1541;
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1541;
     public static int anInt1545 = 0;
     public static int reportAbuseInterfaceID = -1;
     public static int anInt1559 = 7759444;

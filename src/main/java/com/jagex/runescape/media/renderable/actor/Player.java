@@ -62,12 +62,12 @@ public class Player extends Actor {
         aBoolean3287 = false;
     }
 
-    public static void method792(int arg0) {
+    public static void drawGameScreenGraphics(int arg0) {
         try {
             if(arg0 < 106)
                 return;
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            VarbitDefinition.aClass68_2350.drawGraphics(4, 4, graphics);
+            VarbitDefinition.gameScreenImageProducer.drawGraphics(4, 4, graphics);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }
@@ -338,8 +338,8 @@ public class Player extends Actor {
     public Model getRotatedModel() {
         if(aClass30_3282 == null)
             return null;
-        AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2);
-        AnimationSequence animationSequence_0_ = anInt3077 != -1 && !aBoolean3287 && (idleAnimation != anInt3077 || animationSequence == null) ? Class68_Sub1.method1050(anInt3077, 2) : null;
+        AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : ProducingGraphicsBuffer_Sub1.method1050(playingAnimation, 2);
+        AnimationSequence animationSequence_0_ = anInt3077 != -1 && !aBoolean3287 && (idleAnimation != anInt3077 || animationSequence == null) ? ProducingGraphicsBuffer_Sub1.method1050(anInt3077, 2) : null;
         Model class40_sub5_sub17_sub5 = aClass30_3282.getAnimatedModel(animationSequence, animationSequence_0_, anInt3116, anInt3104, (byte) -128);
         if(class40_sub5_sub17_sub5 == null)
             return null;
@@ -390,7 +390,7 @@ public class Player extends Actor {
 
     public boolean isVisible(int arg0) {
         if(arg0 != 1)
-            method792(-71);
+            drawGameScreenGraphics(-71);
         return aClass30_3282 != null;
     }
 

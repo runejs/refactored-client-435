@@ -21,11 +21,11 @@ public class RSCanvas extends Canvas {
     public static LinkedList aLinkedList_53 = new LinkedList();
     public static int anInt54 = 0;
     public static int anInt57;
-    public static Class68 aClass68_59;
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_59;
     public static int anInt60 = 255;
     public static CacheIndex aCacheIndex_61;
     public static int[] anIntArray62;
-    public static Class68 aClass68_64;
+    public static ProducingGraphicsBuffer chatboxProducingGraphicsBuffer;
     public static int anInt65 = 127;
     public static int[] anIntArray66;
 
@@ -36,7 +36,7 @@ public class RSCanvas extends Canvas {
     }
 
     public static void method45() {
-        RSString.aClass68_1665.method1046((byte) 90);
+        RSString.aProducingGraphicsBuffer_1665.method1046();
     }
 
     public static void method46(int arg0) {

@@ -24,7 +24,7 @@ public class Class30 {
     public static int anInt704 = 0;
     public static int anInt708 = -1;
     public static int[] anIntArray712 = new int[50];
-    public static Class68 aClass68_714;
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_714;
     public static int[] anIntArray715 = new int[50];
     public static Class64 aClass64_717;
 
@@ -38,7 +38,7 @@ public class Class30 {
 
 
     public static void method381(Actor arg1) {
-        if(Node.pulseCycle == arg1.anInt3107 || arg1.playingAnimation == -1 || arg1.playingAnimationDelay != 0 || arg1.anInt3115 + 1 > Class68_Sub1.method1050(arg1.playingAnimation, 2).animationLengths[arg1.anInt3104]) {
+        if(Node.pulseCycle == arg1.anInt3107 || arg1.playingAnimation == -1 || arg1.playingAnimationDelay != 0 || arg1.anInt3115 + 1 > ProducingGraphicsBuffer_Sub1.method1050(arg1.playingAnimation, 2).animationLengths[arg1.anInt3104]) {
             int i = -arg1.anInt3112 + arg1.anInt3107;
             int i_16_ = -arg1.anInt3112 + Node.pulseCycle;
             int i_17_ = arg1.anInt3125 * 128 + 64 * arg1.anInt3096;

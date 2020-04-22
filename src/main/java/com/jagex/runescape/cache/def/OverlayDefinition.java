@@ -80,28 +80,28 @@ public class OverlayDefinition extends SubNode {
             }
             if (Class51.anInt1197 == 25 || Class51.anInt1197 == 40) {
                 Class65.method1018();
-                Rasterizer.clear();
+                Rasterizer.resetPixels();
             }
             if (Class51.anInt1197 == 25) {
                 Class37.anInt874 = 0;
                 PacketBuffer.anInt2231 = 1;
                 IdentityKit.anInt2591 = 0;
                 GameObject.anInt3048 = 1;
-                Class68.anInt1634 = 0;
+                ProducingGraphicsBuffer.anInt1634 = 0;
             }
             if (arg0 == 0 || arg0 == 35) {
                 FloorDecoration.method344(-40);
                 Class38.method440((byte) -73);
-                if (Class68_Sub1.aClass68_2213 == null)
-                    Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649(503, 765, MouseHandler.aCanvas1469, -4875);
+                if (ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 == null)
+                    ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = Class40_Sub5_Sub13.createGraphicsBuffer(765, 503, MouseHandler.aCanvas1469);
             }
             if (arg0 == 5 || arg0 == 10 || arg0 == 20) {
-                Class68_Sub1.aClass68_2213 = null;
+                ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
                 FloorDecoration.method344(-69);
                 Item.method779(MouseHandler.aCanvas1469, true, RSCanvas.aClass6_Sub1_48, ActorDefinition.aClass6_Sub1_2377);
             }
             if (arg0 == 25 || arg0 == 30 || arg0 == 40) {
-                Class68_Sub1.aClass68_2213 = null;
+                ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
                 Class38.method440((byte) -98);
                 Class40_Sub5_Sub17_Sub1.method763(MouseHandler.aCanvas1469, ActorDefinition.aClass6_Sub1_2377);
             }

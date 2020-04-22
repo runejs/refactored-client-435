@@ -63,6 +63,7 @@ public class Console {
         commands.add(new PlayerRightsCommand());
         commands.add(new IpCommand());
         commands.add(new FpsCommand());
+        commands.add(new RoofsCommand());
         commands.add(new ShowFpsCommand());
         commands.add(new HideFpsCommand());
         commands.add(new SearchCommand());
@@ -188,7 +189,7 @@ public class Console {
     }
 
     public void handleInput() {
-        console.log(ItemDefinition.anInt2854);
+//        console.log(ItemDefinition.anInt2854);
         if (Item.obfuscatedKeyStatus[82]) { //CTRL DOWN
             if(ItemDefinition.anInt2854 == 67) { // key v
                 String result = "";

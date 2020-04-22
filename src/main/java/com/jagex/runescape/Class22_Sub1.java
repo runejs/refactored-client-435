@@ -1,7 +1,6 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Model;
@@ -48,8 +47,8 @@ public class Class22_Sub1 extends Class22 {
             int i_1_ = Model.COSINE[Class26.anInt627];
             int i_2_ = Model.SINE[Class26.anInt627];
             arg2 -= Class12.cameraX;
-            int i_3_ = Model.SINE[Class68_Sub1.anInt2210];
-            int i_4_ = Model.COSINE[Class68_Sub1.anInt2210];
+            int i_3_ = Model.SINE[ProducingGraphicsBuffer_Sub1.anInt2210];
+            int i_4_ = Model.COSINE[ProducingGraphicsBuffer_Sub1.anInt2210];
             int i_5_ = arg1 * i_3_ + arg2 * i_4_ >> 16;
             arg1 = i_4_ * arg1 - arg2 * i_3_ >> 16;
             if(arg3 != 4976905)

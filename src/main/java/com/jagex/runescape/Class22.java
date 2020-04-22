@@ -90,9 +90,9 @@ public abstract class Class22 {
     }
 
     public static void method305() {
-        RSCanvas.aClass68_64.method1046((byte) 90);
-        Class44.aClass40_Sub5_Sub14_Sub2_1047.drawImage(0, 0);
-        Class5.anIntArray198 = Rasterizer3D.method708(Class5.anIntArray198);
+        RSCanvas.chatboxProducingGraphicsBuffer.method1046();
+        Class44.chatboxBackgroundImage.drawImage(0, 0);
+        Class5.chatboxLineOffsets = Rasterizer3D.setLineOffsets(Class5.chatboxLineOffsets);
     }
 
     public static String method307(Buffer arg0, int arg1, int arg2) {
@@ -203,7 +203,7 @@ public abstract class Class22 {
                     method309(74, -85);
                 if(i != 5)
                     break;
-                Class68.oneMouseButton = i_21_;
+                ProducingGraphicsBuffer.oneMouseButton = i_21_;
             }
 
             break;

@@ -34,7 +34,7 @@ public class Class49 {
             yOffset = -(xOffset * sine) + yOffset * cosine >> 16;
             xOffset = temp;
         }
-        Class68_Sub1.anInt2210 = yaw;
+        ProducingGraphicsBuffer_Sub1.anInt2210 = yaw;
         SceneCluster.cameraZ = -zOffset + z;
         Class12.cameraX = -xOffset + x;
         Class26.anInt627 = pitch;

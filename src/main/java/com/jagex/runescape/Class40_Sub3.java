@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.*;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
@@ -58,14 +59,15 @@ public class Class40_Sub3 extends Node {
             Class40_Sub5_Sub6.anInt2451 = 20;
             Native.currentLoadingText = English.startingGameEngine;
         } else if (Class40_Sub5_Sub6.anInt2451 == 20) {
-            int[] is = new int[9];
-            for (int i = 0; i < 9; i++) {
-                int i_0_ = 15 + 32 * i + 128;
-                int i_1_ = 3 * i_0_ + 600;
-                int i_2_ = Rasterizer3D.sinetable[i_0_];
-                is[i] = i_2_ * i_1_ >> 16;
-            }
-            Scene.method95(is, 500, 800, 512, 334);
+//            int[] is = new int[9];
+//            for (int i = 0; i < 9; i++) {
+//                int i_0_ = 15 + 32 * i + 128;
+//                int i_1_ = 3 * i_0_ + 600;
+//                int i_2_ = Rasterizer3D.sinetable[i_0_];
+//                is[i] = i_2_ * i_1_ >> 16;
+//            }
+//            Scene.method95(500, 800, 512, 334, is);
+            ScreenController.setBounds();
             Class67.anInt1607 = 10;
             Native.currentLoadingText = English.preparedVisibilityMap;
             Class40_Sub5_Sub6.anInt2451 = 30;
@@ -198,10 +200,10 @@ public class Class40_Sub3 extends Node {
                 FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = Class40_Sub2.method526(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_2161, "");
             else
                 i++;
-            if (Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 != null)
+            if (ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 != null)
                 i++;
             else
-                Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = Class40_Sub2.method526(ActorDefinition.aClass6_Sub1_2377, Native.headiconsPrayer, "");
+                ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = Class40_Sub2.method526(ActorDefinition.aClass6_Sub1_2377, Native.headiconsPrayer, "");
             if (UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567 == null)
                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567 = Class40_Sub2.method526(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_1230, "");
             else

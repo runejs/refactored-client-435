@@ -346,7 +346,7 @@ public abstract class Actor extends Renderable {
                 class40_sub3.anInt2038 -= i_35_;
                 class40_sub3.anInt2039 -= i_34_;
                 if(class40_sub3.anInt2039 < 0 || class40_sub3.anInt2038 < 0 || class40_sub3.anInt2039 >= 104 || class40_sub3.anInt2038 >= 104)
-                    class40_sub3.method457(-1);
+                    class40_sub3.remove(-1);
             }
             Buffer.anInt1985 = -1;
             if(VarbitDefinition.destinationX != 0) {
@@ -367,7 +367,7 @@ public abstract class Actor extends Renderable {
             i_19_++;
             i--;
         }
-        if(playingAnimation != -1 && Class68_Sub1.method1050(playingAnimation, arg1 ^ -94).anInt2476 == 1)
+        if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.method1050(playingAnimation, arg1 ^ -94).anInt2476 == 1)
             playingAnimation = -1;
         if(anInt3109 < 9)
             anInt3109++;
@@ -421,7 +421,7 @@ public abstract class Actor extends Renderable {
     }
 
     public void method787(int arg0, int arg1, boolean arg2, int arg3) {
-        if(playingAnimation != -1 && Class68_Sub1.method1050(playingAnimation, 2).anInt2476 == 1)
+        if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.method1050(playingAnimation, 2).anInt2476 == 1)
             playingAnimation = -1;
         if(!arg2) {
             int i = -pathY[0] + arg3;

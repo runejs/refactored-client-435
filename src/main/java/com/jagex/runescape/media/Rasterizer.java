@@ -54,7 +54,7 @@ public class Rasterizer extends SubNode {
         viewportCenterY = viewportBottom / 2;
     }
 
-    public static void clear() {
+    public static void resetPixels() {
         int pixelCount = destinationWidth * destinationHeight;
         for (int pixel = 0; pixel < pixelCount; pixel++)
             destinationPixels[pixel] = 0;

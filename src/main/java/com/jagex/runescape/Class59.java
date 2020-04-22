@@ -5,7 +5,6 @@ import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.PacketBuffer;
@@ -31,12 +30,12 @@ public class Class59 {
     }
 
     public static void dropClient() {
-        if(SceneCluster.anInt771 > 0)
-            Class48.method928(-7225);
+        if(SceneCluster.idleLogout > 0)
+            Class48.logout(-7225);
         else {
             OverlayDefinition.method559(40);
-            Class30.aClass64_717 = Class40_Sub6.aClass64_2098;
-            Class40_Sub6.aClass64_2098 = null;
+            Class30.aClass64_717 = Class40_Sub6.gameConnection;
+            Class40_Sub6.gameConnection = null;
         }
     }
 

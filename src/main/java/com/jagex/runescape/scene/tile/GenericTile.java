@@ -43,8 +43,8 @@ public class GenericTile {
     }
 
     public static void method943(int arg0, TypeFace arg2, int arg3, int arg4) {
-        HuffmanEncoding.aClass68_1541.method1046((byte) 90);
-        Class57.aClass40_Sub5_Sub14_Sub2_1346.drawImage(0, 0);
+        HuffmanEncoding.aProducingGraphicsBuffer_1541.method1046();
+        Class57.bottomChatBack.drawImage(0, 0);
         arg2.drawShadowedStringCenter(English.publicChat, 55, 28, 16777215, true);
         if(arg4 == 0)
             arg2.drawShadowedStringCenter(English.on, 55, 41, 65280, true);
@@ -71,7 +71,7 @@ public class GenericTile {
         arg2.drawText(English.reportAbuse, 417, 17, 85, 25, 16777215, true, 1, 1, 0);
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            HuffmanEncoding.aClass68_1541.drawGraphics(0, 453, graphics);
+            HuffmanEncoding.aProducingGraphicsBuffer_1541.drawGraphics(0, 453, graphics);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }

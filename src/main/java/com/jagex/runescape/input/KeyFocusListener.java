@@ -27,7 +27,7 @@ import java.awt.event.KeyListener;
 public class KeyFocusListener implements KeyListener, FocusListener {
     public static LinkedList aLinkedList_1278 = new LinkedList();
     public static int[] anIntArray1282 = new int[256];
-    public static Class68 aClass68_1285;
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1285;
 
     static {
         for (int i = 0; i < 256; i++) {
@@ -140,7 +140,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if (arg0.method194(Native.aClass1_338, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_1440, Native.aClass1_305)) {
+        if (arg0.method194(Native.imgBackleft1, Native.aClass1_305)) {
             i++;
         }
         if (arg0.method194(Native.aClass1_1024, Native.aClass1_305)) {

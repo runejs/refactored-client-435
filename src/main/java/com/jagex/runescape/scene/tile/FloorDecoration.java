@@ -25,7 +25,7 @@ import java.util.zip.CRC32;
 
 public class FloorDecoration {
     public static CRC32 aCRC32_590 = new CRC32();
-    public static IndexedImage aClass40_Sub5_Sub14_Sub2_593;
+    public static IndexedImage inventoryBackgroundImage;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
     public static CacheIndex_Sub1 aClass6_Sub1_605;
     public static SignlinkNode aSignlinkNode_607;
@@ -106,9 +106,9 @@ public class FloorDecoration {
             Actor.method789(i_0_, arg1 + -6688, i_3_, i_1_, i, i_2_);
         } else {
             int i = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
-            int i_21_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
+            int chunkX = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
             int i_22_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
-            int i_23_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
+            int chunkY = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
             int i_24_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             int i_25_ = (IncomingPackets.incomingPacketSize - IncomingPackets.incomingPacketBuffer.currentPosition) / 16;
             Class44.anIntArrayArray1030 = new int[i_25_][4];
@@ -120,15 +120,15 @@ public class FloorDecoration {
             RSString.terrainData = new byte[i_25_][];
             boolean bool = false;
             GenericTile.objectData = new byte[i_25_][];
-            if((i_21_ / 8 == 48 || i_21_ / 8 == 49) && i_23_ / 8 == 48)
+            if((chunkX / 8 == 48 || chunkX / 8 == 49) && chunkY / 8 == 48)
                 bool = true;
             LinkedList.anIntArray1071 = new int[i_25_];
-            if(i_21_ / 8 == 48 && i_23_ / 8 == 148)
+            if(chunkX / 8 == 48 && chunkY / 8 == 148)
                 bool = true;
             Class13.anIntArray421 = new int[i_25_];
             i_25_ = 0;
-            for(int i_28_ = (-6 + i_21_) / 8; i_28_ <= (6 + i_21_) / 8; i_28_++) {
-                for(int i_29_ = (-6 + i_23_) / 8; (6 + i_23_) / 8 >= i_29_; i_29_++) {
+            for(int i_28_ = (-6 + chunkX) / 8; i_28_ <= (6 + chunkX) / 8; i_28_++) {
+                for(int i_29_ = (-6 + chunkY) / 8; (6 + chunkY) / 8 >= i_29_; i_29_++) {
                     int i_30_ = i_29_ + (i_28_ << 8);
                     if(!bool || i_29_ != 49 && i_29_ != 149 && i_29_ != 147 && i_28_ != 50 && (i_28_ != 49 || i_29_ != 47)) {
                         ISAAC.mapCoordinates[i_25_] = i_30_;
@@ -138,7 +138,7 @@ public class FloorDecoration {
                     }
                 }
             }
-            Actor.method789(i_22_, -1000, i_23_, i_21_, i, i_24_);
+            Actor.method789(i_22_, -1000, chunkY, chunkX, i, i_24_);
         }
         if(arg1 != 5688)
             aClass40_Sub5_Sub14_Sub4Array603 = null;
@@ -146,48 +146,48 @@ public class FloorDecoration {
 
     public static void method344(int arg0) {
         if(SubNode.aBoolean2083) {
-            Class5.anIntArray198 = null;
+            Class5.chatboxLineOffsets = null;
             SubNode.aBoolean2083 = false;
             RSCanvas.anIntArray66 = null;
-            Class34.mapBack = null;
+            Class34.minimapBackgroundImage = null;
             Landscape.anIntArray1186 = null;
-            Class17.aClass68_462 = null;
-            RSCanvas.aClass68_59 = null;
-            GameObject.aClass68_3045 = null;
-            Class57.aClass40_Sub5_Sub14_Sub2_1346 = null;
-            aClass40_Sub5_Sub14_Sub2_593 = null;
+            Class17.aProducingGraphicsBuffer_462 = null;
+            RSCanvas.aProducingGraphicsBuffer_59 = null;
+            GameObject.aProducingGraphicsBuffer_3045 = null;
+            Class57.bottomChatBack = null;
+            inventoryBackgroundImage = null;
             WallDecoration.aClass40_Sub5_Sub14_Sub2_1270 = null;
-            Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776 = null;
+            Class40_Sub5_Sub15.tabIcons = null;
             Class13.aClass40_Sub5_Sub14_Sub2_418 = null;
-            RSString.aClass68_1665 = null;
+            RSString.aProducingGraphicsBuffer_1665 = null;
             RSCanvas.anIntArray62 = null;
-            ActorDefinition.anIntArray2386 = null;
-            Class39.aClass68_908 = null;
+            ActorDefinition.sidebarOffsets = null;
+            Class39.aProducingGraphicsBuffer_908 = null;
             Class38_Sub1.aClass40_Sub5_Sub14_Sub2_1919 = null;
-            Class56.aClass40_Sub5_Sub14_Sub2_1329 = null;
-            Landscape.aClass68_1185 = null;
+            Class56.tabBottomBack = null;
+            Landscape.aProducingGraphicsBuffer_1185 = null;
             GameShell.aClass40_Sub5_Sub14_Sub2_1 = null;
             Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105 = null;
             Class34.anIntArray852 = null;
-            HuffmanEncoding.aClass68_1541 = null;
-            Buffer.aClass40_Sub5_Sub14_Sub2_1959 = null;
-            SubNode.aClass68_2091 = null;
+            HuffmanEncoding.aProducingGraphicsBuffer_1541 = null;
+            Buffer.tabTopBack = null;
+            SubNode.tabImageProducer = null;
             Class56.aClass40_Sub5_Sub14_Sub2_1315 = null;
-            VarbitDefinition.aClass68_2350 = null;
+            VarbitDefinition.gameScreenImageProducer = null;
             ISAAC.aClass40_Sub5_Sub14_Sub2_524 = null;
-            RSCanvas.aClass68_64 = null;
-            Class40_Sub7.aClass68_2123 = null;
-            InteractiveObject.aClass68_482 = null;
+            RSCanvas.chatboxProducingGraphicsBuffer = null;
+            Class40_Sub7.aProducingGraphicsBuffer_2123 = null;
+            InteractiveObject.aProducingGraphicsBuffer_482 = null;
             if(arg0 < -28) {
-                Class40_Sub5_Sub1.aClass68_2275 = null;
-                Class61.aClass68_1441 = null;
+                Class40_Sub5_Sub1.aProducingGraphicsBuffer_2275 = null;
+                Class61.aProducingGraphicsBuffer_1441 = null;
                 Class35.aClass40_Sub5_Sub14_Sub2_1744 = null;
                 HashTable.aClass40_Sub5_Sub14_Sub2_549 = null;
                 Renderable.aClass40_Sub5_Sub14_Sub2_2860 = null;
                 Class24.anIntArray577 = null;
-                Class30.aClass68_714 = null;
-                Class40_Sub5_Sub17_Sub6.aClass68_3243 = null;
-                Class44.aClass40_Sub5_Sub14_Sub2_1047 = null;
+                Class30.aProducingGraphicsBuffer_714 = null;
+                Class40_Sub5_Sub17_Sub6.aProducingGraphicsBuffer_3243 = null;
+                Class44.chatboxBackgroundImage = null;
             }
         }
     }
@@ -218,7 +218,7 @@ public class FloorDecoration {
         if(arg0 != 48)
             return false;
         Class22.anInt547 += i;
-        if(Class42.anInt1006 == 0 && Class17.anInt464 == 0 && HashTable.anInt554 == 0 && Class68.anInt1618 == 0)
+        if(Class42.anInt1006 == 0 && Class17.anInt464 == 0 && HashTable.anInt554 == 0 && ProducingGraphicsBuffer.anInt1618 == 0)
             return true;
         if(Class57.aClass64_1345 == null)
             return false;
@@ -226,7 +226,7 @@ public class FloorDecoration {
             if(Class22.anInt547 > 30000)
                 throw new IOException();
             for(/**/; Class17.anInt464 < 20; Class17.anInt464++) {
-                if(Class68.anInt1618 <= 0)
+                if(ProducingGraphicsBuffer.anInt1618 <= 0)
                     break;
                 Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class51.aClass23_1194.method329(false);
                 Buffer class40_sub1 = new Buffer(4);
@@ -234,7 +234,7 @@ public class FloorDecoration {
                 class40_sub1.putMediumBE((int) class40_sub5_sub13.key);
                 Class57.aClass64_1345.method1010(4, (byte) -19, 0, class40_sub1.buffer);
                 Class37.aClass23_869.put(class40_sub5_sub13, (byte) -115, class40_sub5_sub13.key);
-                Class68.anInt1618--;
+                ProducingGraphicsBuffer.anInt1618--;
             }
             for(/**/; Class42.anInt1006 < 20 && HashTable.anInt554 > 0; HashTable.anInt554--) {
                 Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) InteractiveObject.aClass27_485.method362(-113);
@@ -308,7 +308,7 @@ public class FloorDecoration {
                             Class34.anInt813 = 0;
                             PacketBuffer.aClass40_Sub5_Sub13_2250.aClass6_Sub1_2754.method196((PacketBuffer.aClass40_Sub5_Sub13_2250.key & 0xff0000L) == 16711680L, (int) (PacketBuffer.aClass40_Sub5_Sub13_2250.key & 0xffffL), Npc.aBoolean3298, Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer);
                         }
-                        PacketBuffer.aClass40_Sub5_Sub13_2250.method457(-1);
+                        PacketBuffer.aClass40_Sub5_Sub13_2250.remove(-1);
                         PacketBuffer.aClass40_Sub5_Sub13_2250 = null;
                         Class40_Sub5_Sub13.aClass40_Sub1_2752 = null;
                         Landscape.anInt1157 = 0;

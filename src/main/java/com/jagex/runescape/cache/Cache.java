@@ -50,11 +50,11 @@ public class Cache {
     public void put(long arg1, SubNode arg2) {
         if(anInt316 == 0) {
             SubNode class40_sub5 = aClass27_319.method351();
-            class40_sub5.method457(-1);
+            class40_sub5.remove(-1);
             class40_sub5.method539();
             if(class40_sub5 == aClass40_Sub5_309) {
                 class40_sub5 = aClass27_319.method351();
-                class40_sub5.method457(-1);
+                class40_sub5.remove(-1);
                 class40_sub5.method539();
             }
         } else
@@ -78,7 +78,7 @@ public class Cache {
         SubNode class40_sub5 = (SubNode) aClass23_318.method331(arg0, 6120);
         if(class40_sub5 == null)
             return;
-        class40_sub5.method457(-1);
+        class40_sub5.remove(-1);
         class40_sub5.method539();
         anInt316++;
     }
@@ -88,7 +88,7 @@ public class Cache {
             SubNode class40_sub5 = aClass27_319.method351();
             if(class40_sub5 == null)
                 break;
-            class40_sub5.method457(-1);
+            class40_sub5.remove(-1);
             class40_sub5.method539();
         }
         anInt316 = anInt317;

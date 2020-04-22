@@ -17,10 +17,11 @@ import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
+import tech.henning.fourthreefive.Configuration;
 
 public class Class40_Sub5_Sub1 extends SubNode {
     public static LinkedList aLinkedList_2268 = new LinkedList();
-    public static Class68 aClass68_2275;
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_2275;
     public static int crossY = 0;
     public static int anInt2278 = 0;
     public static int anInt2280 = 0;
@@ -178,7 +179,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                     renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
                 else
                     renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
-                arg5.addWallDecoration(arg9, arg8, arg3, i_3_, Class27.anIntArray666[arg7] * i_14_, Class68_Sub1.anIntArray2207[arg7] * i_14_, 512 * arg7, i_5_, renderable, i_4_, SceneCluster.anIntArray761[arg7]);
+                arg5.addWallDecoration(arg9, arg8, arg3, i_3_, Class27.anIntArray666[arg7] * i_14_, ProducingGraphicsBuffer_Sub1.anIntArray2207[arg7] * i_14_, 512 * arg7, i_5_, renderable, i_4_, SceneCluster.anIntArray761[arg7]);
             } else if (arg6 == -22078) {
                 if (arg4 == 6) {
                     Renderable renderable;
@@ -304,6 +305,9 @@ public class Class40_Sub5_Sub1 extends SubNode {
     }
 
     public static int method546(int arg0) {
+        if(!Configuration.ROOFS_ENABLED) {
+            return Player.worldLevel;
+        }
         if (arg0 != 256)
             anInt2280 = 44;
         int i = Class37.getFloorDrawHeight(Player.worldLevel, Class12.cameraX, Class40_Sub5_Sub6.cameraY);

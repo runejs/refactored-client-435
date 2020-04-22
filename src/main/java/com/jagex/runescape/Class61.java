@@ -17,7 +17,7 @@ import com.jagex.runescape.util.Signlink;
 public class Class61 {
     public static PacketBuffer packetBuffer = new PacketBuffer(5000);
     public static int[][] anIntArrayArray1435 = new int[104][104];
-    public static Class68 aClass68_1441;
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1441;
     public static boolean aBoolean1444 = false;
     public static int[] anIntArray1445;
 
@@ -27,7 +27,7 @@ public class Class61 {
     public int anInt1433 = -1;
 
     public static void method995(byte arg0, int arg1) {
-        if(arg1 != -1 && Class68.aBooleanArray1629[arg1]) {
+        if(arg1 != -1 && ProducingGraphicsBuffer.aBooleanArray1629[arg1]) {
             VarbitDefinition.aCacheIndex_2349.method171(1, arg1);
             if(arg0 < 31)
                 English.suffixWishesToDuelWithYou = null;
@@ -43,7 +43,7 @@ public class Class61 {
                 }
                 if(bool)
                     Widget.interfaces[arg1] = null;
-                Class68.aBooleanArray1629[arg1] = false;
+                ProducingGraphicsBuffer.aBooleanArray1629[arg1] = false;
             }
         }
     }
@@ -51,9 +51,9 @@ public class Class61 {
     public static void method996(int arg0) {
         if(arg0 != 19655)
             English.systemUpdateIn = null;
-        SubNode.aClass68_2091.method1046((byte) 90);
-        FloorDecoration.aClass40_Sub5_Sub14_Sub2_593.drawImage(0, 0);
-        ActorDefinition.anIntArray2386 = Rasterizer3D.method708(ActorDefinition.anIntArray2386);
+        SubNode.tabImageProducer.method1046();
+        FloorDecoration.inventoryBackgroundImage.drawImage(0, 0);
+        ActorDefinition.sidebarOffsets = Rasterizer3D.setLineOffsets(ActorDefinition.sidebarOffsets);
     }
 
     public static void method997(int arg0) {
@@ -121,12 +121,12 @@ public class Class61 {
                     if(Node.pulseCycle >= class40_sub5_sub17_sub6.anInt3230) {
                         class40_sub5_sub17_sub6.method834(8076, Class5.anInt199);
                         if(class40_sub5_sub17_sub6.aBoolean3237)
-                            class40_sub5_sub17_sub6.method457(-1);
+                            class40_sub5_sub17_sub6.remove(-1);
                         else
                             Npc.currentScene.method134(class40_sub5_sub17_sub6.anInt3239, class40_sub5_sub17_sub6.anInt3244, class40_sub5_sub17_sub6.anInt3235, class40_sub5_sub17_sub6.anInt3231, 60, class40_sub5_sub17_sub6, 0, -1, false);
                     }
                 } else
-                    class40_sub5_sub17_sub6.method457(-1);
+                    class40_sub5_sub17_sub6.remove(-1);
             }
         }
     }

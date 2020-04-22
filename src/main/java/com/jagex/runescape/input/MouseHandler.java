@@ -127,7 +127,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     }
                 }
             }
-            if(meta == 1 && (Class68.oneMouseButton == 1 || Class33.menuHasAddFriend((byte) 46, -1 + ActorDefinition.menuActionRow)) && ActorDefinition.menuActionRow > 2)
+            if(meta == 1 && (ProducingGraphicsBuffer.oneMouseButton == 1 || Class33.menuHasAddFriend((byte) 46, -1 + ActorDefinition.menuActionRow)) && ActorDefinition.menuActionRow > 2)
                 meta = 2;
             if(meta == 1 && ActorDefinition.menuActionRow > 0)
                 Class27.processMenuActions(59, ActorDefinition.menuActionRow + -1);
@@ -140,7 +140,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
 
         if(arg2 != 29914)
             tile_overlayids = null;
-        Class68.method1040(arg1, 0, arg0);
+        ProducingGraphicsBuffer.method1040(arg1, 0, arg0);
         Class40_Sub9_Sub1 class40_sub9_sub1 = new Class40_Sub9_Sub1();
         Class8.method218(class40_sub9_sub1);
         return class40_sub9_sub1;

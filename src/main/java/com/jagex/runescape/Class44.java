@@ -17,7 +17,7 @@ public class Class44 implements Runnable {
     public static byte[][] aByteArrayArray1039 = new byte[250][];
     public static int anInt1040 = 256;
     public static int modewhere = 0;
-    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1047;
+    public static IndexedImage chatboxBackgroundImage;
     public static int anInt1048 = -1;
     public static int anInt1049 = 0;
 
@@ -45,7 +45,7 @@ public class Class44 implements Runnable {
             arg1.anInt3074 = 0;
         else {
             if(arg1.playingAnimation != -1 && arg1.playingAnimationDelay == 0) {
-                AnimationSequence animationSequence = Class68_Sub1.method1050(arg1.playingAnimation, 2);
+                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(arg1.playingAnimation, 2);
                 if(arg1.anInt3094 > 0 && animationSequence.anInt2470 == 0) {
                     arg1.anInt3074++;
                     return;
@@ -160,7 +160,7 @@ public class Class44 implements Runnable {
                     if(class40_sub6.anInt2112 == 0) {
                         class40_sub6.aClass56_2117.method971(class40_sub6.aByteArray2102, 1862596560, class40_sub6.aByteArray2102.length, (int) class40_sub6.key);
                         synchronized(RSCanvas.aLinkedList_53) {
-                            class40_sub6.method457(-1);
+                            class40_sub6.remove(-1);
                         }
                     } else if(class40_sub6.anInt2112 == 1) {
                         class40_sub6.aByteArray2102 = class40_sub6.aClass56_2117.method969((int) class40_sub6.key);

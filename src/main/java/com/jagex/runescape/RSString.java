@@ -3,15 +3,13 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.input.MouseHandler;
-import com.jagex.runescape.language.English;
-import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.actor.Player;
 
 import java.awt.*;
 import java.nio.charset.StandardCharsets;
 
 public class RSString {
-    public static Class68 aClass68_1665;
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1665;
     public static int clickY = 0;
     public static Cache aClass9_1684;
     public static int anInt1690 = 0;

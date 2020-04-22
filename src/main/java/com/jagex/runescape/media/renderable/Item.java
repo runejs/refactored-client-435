@@ -142,81 +142,81 @@ public class Item extends Renderable {
 
     public static void method779(Component arg0, boolean arg1, CacheIndex arg2, CacheIndex arg3) {
         if (!ISAAC.aBoolean512) {
-            Class8.aClass68_298 = Class40_Sub5_Sub13.method649(265, 128, arg0, -4875);
-            Rasterizer.clear();
-            GameObject.aClass68_3042 = Class40_Sub5_Sub13.method649(265, 128, arg0, -4875);
-            Rasterizer.clear();
-            Class39.aClass68_907 = Class40_Sub5_Sub13.method649(171, 509, arg0, -4875);
-            Rasterizer.clear();
-            Class51.aClass68_1206 = Class40_Sub5_Sub13.method649(132, 360, arg0, -4875);
-            Rasterizer.clear();
-            Class38.aClass68_887 = Class40_Sub5_Sub13.method649(200, 360, arg0, -4875);
-            Rasterizer.clear();
-            Class17.aClass68_463 = Class40_Sub5_Sub13.method649(238, 202, arg0, -4875);
-            Rasterizer.clear();
-            KeyFocusListener.aClass68_1285 = Class40_Sub5_Sub13.method649(238, 203, arg0, -4875);
-            Rasterizer.clear();
-            GameObjectDefinition.aClass68_2524 = Class40_Sub5_Sub13.method649(94, 74, arg0, -4875);
-            Rasterizer.clear();
-            Class68.aClass68_1631 = Class40_Sub5_Sub13.method649(94, 75, arg0, -4875);
-            Rasterizer.clear();
+            Class8.flameLeftBackground = Class40_Sub5_Sub13.createGraphicsBuffer(128, 265, arg0);
+            Rasterizer.resetPixels();
+            GameObject.flameRightBackground = Class40_Sub5_Sub13.createGraphicsBuffer(128, 265, arg0);
+            Rasterizer.resetPixels();
+            Class39.aProducingGraphicsBuffer_907 = Class40_Sub5_Sub13.createGraphicsBuffer(509, 171, arg0);
+            Rasterizer.resetPixels();
+            Class51.aProducingGraphicsBuffer_1206 = Class40_Sub5_Sub13.createGraphicsBuffer(360, 132, arg0);
+            Rasterizer.resetPixels();
+            Class38.aProducingGraphicsBuffer_887 = Class40_Sub5_Sub13.createGraphicsBuffer(360, 200, arg0);
+            Rasterizer.resetPixels();
+            Class17.aProducingGraphicsBuffer_463 = Class40_Sub5_Sub13.createGraphicsBuffer(202, 238, arg0);
+            Rasterizer.resetPixels();
+            KeyFocusListener.aProducingGraphicsBuffer_1285 = Class40_Sub5_Sub13.createGraphicsBuffer(203, 238, arg0);
+            Rasterizer.resetPixels();
+            GameObjectDefinition.aProducingGraphicsBuffer_2524 = Class40_Sub5_Sub13.createGraphicsBuffer(74, 94, arg0);
+            Rasterizer.resetPixels();
+            ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631 = Class40_Sub5_Sub13.createGraphicsBuffer(75, 94, arg0);
+            Rasterizer.resetPixels();
             byte[] is = arg2.method170("", Native.titleImage, 1);
             ImageRGB class40_sub5_sub14_sub4 = new ImageRGB(is, arg0);
-            Class8.aClass68_298.method1046((byte) 90);
-            class40_sub5_sub14_sub4.method727(0, 0);
-            GameObject.aClass68_3042.method1046((byte) 90);
-            class40_sub5_sub14_sub4.method727(-637, 0);
-            Class39.aClass68_907.method1046((byte) 90);
-            class40_sub5_sub14_sub4.method727(-128, 0);
-            Class51.aClass68_1206.method1046((byte) 90);
-            class40_sub5_sub14_sub4.method727(-202, -371);
-            Class38.aClass68_887.method1046((byte) 90);
-            class40_sub5_sub14_sub4.method727(-202, -171);
-            Class17.aClass68_463.method1046((byte) 90);
-            class40_sub5_sub14_sub4.method727(0, -265);
-            KeyFocusListener.aClass68_1285.method1046((byte) 90);
-            class40_sub5_sub14_sub4.method727(-562, -265);
-            GameObjectDefinition.aClass68_2524.method1046((byte) 90);
-            class40_sub5_sub14_sub4.method727(-128, -171);
-            Class68.aClass68_1631.method1046((byte) 90);
-            class40_sub5_sub14_sub4.method727(-562, -171);
-            int[] is_18_ = new int[class40_sub5_sub14_sub4.image_width];
-            for (int i = 0; i < class40_sub5_sub14_sub4.image_height; i++) {
-                for (int i_19_ = 0; i_19_ < class40_sub5_sub14_sub4.image_width; i_19_++)
-                    is_18_[i_19_] = class40_sub5_sub14_sub4.pixels[i * class40_sub5_sub14_sub4.image_width + class40_sub5_sub14_sub4.image_width + -i_19_ - 1];
-                for (int i_20_ = 0; i_20_ < class40_sub5_sub14_sub4.image_width; i_20_++)
-                    class40_sub5_sub14_sub4.pixels[i_20_ + class40_sub5_sub14_sub4.image_width * i] = is_18_[i_20_];
+            Class8.flameLeftBackground.method1046();
+            class40_sub5_sub14_sub4.drawInverse(0, 0);
+            GameObject.flameRightBackground.method1046();
+            class40_sub5_sub14_sub4.drawInverse(-637, 0);
+            Class39.aProducingGraphicsBuffer_907.method1046();
+            class40_sub5_sub14_sub4.drawInverse(-128, 0);
+            Class51.aProducingGraphicsBuffer_1206.method1046();
+            class40_sub5_sub14_sub4.drawInverse(-202, -371);
+            Class38.aProducingGraphicsBuffer_887.method1046();
+            class40_sub5_sub14_sub4.drawInverse(-202, -171);
+            Class17.aProducingGraphicsBuffer_463.method1046();
+            class40_sub5_sub14_sub4.drawInverse(0, -265);
+            KeyFocusListener.aProducingGraphicsBuffer_1285.method1046();
+            class40_sub5_sub14_sub4.drawInverse(-562, -265);
+            GameObjectDefinition.aProducingGraphicsBuffer_2524.method1046();
+            class40_sub5_sub14_sub4.drawInverse(-128, -171);
+            ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631.method1046();
+            class40_sub5_sub14_sub4.drawInverse(-562, -171);
+            int[] is_18_ = new int[class40_sub5_sub14_sub4.imageWidth];
+            for (int i = 0; i < class40_sub5_sub14_sub4.imageHeight; i++) {
+                for (int i_19_ = 0; i_19_ < class40_sub5_sub14_sub4.imageWidth; i_19_++)
+                    is_18_[i_19_] = class40_sub5_sub14_sub4.pixels[i * class40_sub5_sub14_sub4.imageWidth + class40_sub5_sub14_sub4.imageWidth + -i_19_ - 1];
+                for (int i_20_ = 0; i_20_ < class40_sub5_sub14_sub4.imageWidth; i_20_++)
+                    class40_sub5_sub14_sub4.pixels[i_20_ + class40_sub5_sub14_sub4.imageWidth * i] = is_18_[i_20_];
             }
-            Class8.aClass68_298.method1046((byte) 90);
-            class40_sub5_sub14_sub4.method727(382, 0);
-            GameObject.aClass68_3042.method1046((byte) 90);
-            class40_sub5_sub14_sub4.method727(-255, 0);
-            Class39.aClass68_907.method1046((byte) 90);
-            class40_sub5_sub14_sub4.method727(254, 0);
-            Class51.aClass68_1206.method1046((byte) 90);
-            class40_sub5_sub14_sub4.method727(180, -371);
-            Class38.aClass68_887.method1046((byte) 90);
-            class40_sub5_sub14_sub4.method727(180, -171);
-            Class17.aClass68_463.method1046((byte) 90);
-            class40_sub5_sub14_sub4.method727(382, -265);
-            KeyFocusListener.aClass68_1285.method1046((byte) 90);
-            class40_sub5_sub14_sub4.method727(-180, -265);
-            GameObjectDefinition.aClass68_2524.method1046((byte) 90);
-            class40_sub5_sub14_sub4.method727(254, -171);
-            Class68.aClass68_1631.method1046((byte) 90);
-            class40_sub5_sub14_sub4.method727(-180, -171);
+            Class8.flameLeftBackground.method1046();
+            class40_sub5_sub14_sub4.drawInverse(382, 0);
+            GameObject.flameRightBackground.method1046();
+            class40_sub5_sub14_sub4.drawInverse(-255, 0);
+            Class39.aProducingGraphicsBuffer_907.method1046();
+            class40_sub5_sub14_sub4.drawInverse(254, 0);
+            Class51.aProducingGraphicsBuffer_1206.method1046();
+            class40_sub5_sub14_sub4.drawInverse(180, -371);
+            Class38.aProducingGraphicsBuffer_887.method1046();
+            class40_sub5_sub14_sub4.drawInverse(180, -171);
+            Class17.aProducingGraphicsBuffer_463.method1046();
+            class40_sub5_sub14_sub4.drawInverse(382, -265);
+            KeyFocusListener.aProducingGraphicsBuffer_1285.method1046();
+            class40_sub5_sub14_sub4.drawInverse(-180, -265);
+            GameObjectDefinition.aProducingGraphicsBuffer_2524.method1046();
+            class40_sub5_sub14_sub4.drawInverse(254, -171);
+            ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631.method1046();
+            class40_sub5_sub14_sub4.drawInverse(-180, -171);
             class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg3, Native.logo, (byte) 21, "");
-            Class39.aClass68_907.method1046((byte) 90);
-            class40_sub5_sub14_sub4.drawImage(-128 + 382 + -(class40_sub5_sub14_sub4.image_width / 2), 18);
+            Class39.aProducingGraphicsBuffer_907.method1046();
+            class40_sub5_sub14_sub4.drawImage(-128 + 382 + -(class40_sub5_sub14_sub4.imageWidth / 2), 18);
             Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775 = Class27.method359(Native.titleBox, "", arg3);
             Class59.aClass40_Sub5_Sub14_Sub2_1387 = Class27.method359(Native.titleButton, "", arg3);
             Class22.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(arg3, Native.runes, "");
             Class39.aClass40_Sub5_Sub14_Sub4_918 = new ImageRGB(128, 265);
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = new ImageRGB(128, 265);
             for (int i = 0; i < 33920; i++)
-                Class39.aClass40_Sub5_Sub14_Sub4_918.pixels[i] = Class8.aClass68_298.pixels[i];
+                Class39.aClass40_Sub5_Sub14_Sub4_918.pixels[i] = Class8.flameLeftBackground.pixels[i];
             for (int i = 0; i < 33920; i++)
-                SceneTile.aClass40_Sub5_Sub14_Sub4_2043.pixels[i] = GameObject.aClass68_3042.pixels[i];
+                SceneTile.aClass40_Sub5_Sub14_Sub4_2043.pixels[i] = GameObject.flameRightBackground.pixels[i];
             Class51.anIntArray1198 = new int[256];
             for (int i = 0; i < 64; i++)
                 Class51.anIntArray1198[i] = i * 262144;

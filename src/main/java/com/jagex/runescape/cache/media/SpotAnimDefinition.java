@@ -54,9 +54,9 @@ public class SpotAnimDefinition extends SubNode {
     public static void method552(boolean arg0) {
         try {
             if (Class40_Sub3.anInt2032 == 0) {
-                if (Class40_Sub6.aClass64_2098 != null) {
-                    Class40_Sub6.aClass64_2098.method1009();
-                    Class40_Sub6.aClass64_2098 = null;
+                if (Class40_Sub6.gameConnection != null) {
+                    Class40_Sub6.gameConnection.method1009();
+                    Class40_Sub6.gameConnection = null;
                 }
                 Class37.aBoolean871 = false;
                 Class40_Sub3.anInt2032 = 1;
@@ -71,7 +71,7 @@ public class SpotAnimDefinition extends SubNode {
                     throw new IOException();
                 }
                 if (FloorDecoration.aSignlinkNode_607.anInt434 == 1) {
-                    Class40_Sub6.aClass64_2098 = new Class64((Socket) FloorDecoration.aSignlinkNode_607.value, ISAAC.aClass31_521);
+                    Class40_Sub6.gameConnection = new Class64((Socket) FloorDecoration.aSignlinkNode_607.value, ISAAC.aClass31_521);
                     Class40_Sub3.anInt2032 = 2;
                     FloorDecoration.aSignlinkNode_607 = null;
                 }
@@ -85,12 +85,12 @@ public class SpotAnimDefinition extends SubNode {
                 SceneCluster.packetBuffer.putByte(14);
                 int i = (int) (0x1fL & l >> 16);
                 SceneCluster.packetBuffer.putByte(i);
-                Class40_Sub6.aClass64_2098.method1010(2, (byte) -19, 0, SceneCluster.packetBuffer.buffer);
+                Class40_Sub6.gameConnection.method1010(2, (byte) -19, 0, SceneCluster.packetBuffer.buffer);
                 Class40_Sub3.anInt2032 = 3;
                 IncomingPackets.incomingPacketBuffer.currentPosition = 0;
             }
             if (Class40_Sub3.anInt2032 == 3) {
-                int i = Class40_Sub6.aClass64_2098.method1016();
+                int i = Class40_Sub6.gameConnection.read();
                 if (i != 0) {
                     Class27.displayMessageForResponseCode(i);
                     return;
@@ -100,12 +100,12 @@ public class SpotAnimDefinition extends SubNode {
             }
             if (Class40_Sub3.anInt2032 == 4) {
                 if (IncomingPackets.incomingPacketBuffer.currentPosition < 8) {
-                    int i = Class40_Sub6.aClass64_2098.method1014(-127);
+                    int i = Class40_Sub6.gameConnection.method1014(-127);
                     if (i > -IncomingPackets.incomingPacketBuffer.currentPosition + 8) {
                         i = -IncomingPackets.incomingPacketBuffer.currentPosition + 8;
                     }
                     if (i > 0) {
-                        Class40_Sub6.aClass64_2098.method1008(IncomingPackets.incomingPacketBuffer.currentPosition, i, -128, IncomingPackets.incomingPacketBuffer.buffer);
+                        Class40_Sub6.gameConnection.method1008(IncomingPackets.incomingPacketBuffer.currentPosition, i, -128, IncomingPackets.incomingPacketBuffer.buffer);
                         IncomingPackets.incomingPacketBuffer.currentPosition += i;
                     }
                 }
@@ -156,7 +156,7 @@ public class SpotAnimDefinition extends SubNode {
                 Class61.packetBuffer.putIntBE(VertexNormal.aClass6_Sub1_1104.anInt216);
                 Class61.packetBuffer.putIntBE(Class56.aClass6_Sub1_1323.anInt216);
                 Class61.packetBuffer.putBytes(0, SceneCluster.packetBuffer.currentPosition, SceneCluster.packetBuffer.buffer);
-                Class40_Sub6.aClass64_2098.method1010(Class61.packetBuffer.currentPosition, (byte) -19, 0, Class61.packetBuffer.buffer);
+                Class40_Sub6.gameConnection.method1010(Class61.packetBuffer.currentPosition, (byte) -19, 0, Class61.packetBuffer.buffer);
                 SceneCluster.packetBuffer.initOutCipher(seeds);
                 for (int i = 0; i < 4; i++) {
                     seeds[i] += 50;
@@ -164,8 +164,8 @@ public class SpotAnimDefinition extends SubNode {
                 IncomingPackets.incomingPacketBuffer.initInCipher(seeds);
                 Class40_Sub3.anInt2032 = 6;
             }
-            if (Class40_Sub3.anInt2032 == 6 && Class40_Sub6.aClass64_2098.method1014(-126) > 0) {
-                int i = Class40_Sub6.aClass64_2098.method1016();
+            if (Class40_Sub3.anInt2032 == 6 && Class40_Sub6.gameConnection.method1014(-126) > 0) {
+                int i = Class40_Sub6.gameConnection.read();
                 if (i != 21 || Class51.anInt1197 != 20) {
                     if (i == 2) {
                         Class40_Sub3.anInt2032 = 9;
@@ -186,8 +186,8 @@ public class SpotAnimDefinition extends SubNode {
                     Class40_Sub3.anInt2032 = 7;
                 }
             }
-            if (Class40_Sub3.anInt2032 == 7 && Class40_Sub6.aClass64_2098.method1014(-128) > 0) {
-                Class33.anInt784 = 180 + Class40_Sub6.aClass64_2098.method1016() * 60;
+            if (Class40_Sub3.anInt2032 == 7 && Class40_Sub6.gameConnection.method1014(-128) > 0) {
+                Class33.anInt784 = 180 + Class40_Sub6.gameConnection.read() * 60;
                 Class40_Sub3.anInt2032 = 8;
             }
             if (Class40_Sub3.anInt2032 == 8) {
@@ -197,25 +197,25 @@ public class SpotAnimDefinition extends SubNode {
                     Class40_Sub3.anInt2032 = 0;
                 }
             } else {
-                if (Class40_Sub3.anInt2032 == 9 && Class40_Sub6.aClass64_2098.method1014(-121) >= 8) {
-                    InteractiveObject.playerRights = Class40_Sub6.aClass64_2098.method1016();
-                    Class22.accountFlagged = Class40_Sub6.aClass64_2098.method1016() == 1;
-                    Class30.anInt708 = Class40_Sub6.aClass64_2098.method1016();
+                if (Class40_Sub3.anInt2032 == 9 && Class40_Sub6.gameConnection.method1014(-121) >= 8) {
+                    InteractiveObject.playerRights = Class40_Sub6.gameConnection.read();
+                    Class22.accountFlagged = Class40_Sub6.gameConnection.read() == 1;
+                    Class30.anInt708 = Class40_Sub6.gameConnection.read();
                     Class30.anInt708 <<= 8;
-                    Class30.anInt708 += Class40_Sub6.aClass64_2098.method1016();
-                    Class44.anInt1049 = Class40_Sub6.aClass64_2098.method1016();
-                    Class40_Sub6.aClass64_2098.method1008(0, 1, -127, IncomingPackets.incomingPacketBuffer.buffer);
+                    Class30.anInt708 += Class40_Sub6.gameConnection.read();
+                    Class44.anInt1049 = Class40_Sub6.gameConnection.read();
+                    Class40_Sub6.gameConnection.method1008(0, 1, -127, IncomingPackets.incomingPacketBuffer.buffer);
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                     IncomingPackets.incomingPacket = IncomingPackets.incomingPacketBuffer.getPacket();
-                    Class40_Sub6.aClass64_2098.method1008(0, 2, -127, IncomingPackets.incomingPacketBuffer.buffer);
+                    Class40_Sub6.gameConnection.method1008(0, 2, -127, IncomingPackets.incomingPacketBuffer.buffer);
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                     IncomingPackets.incomingPacketSize = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
                     Class40_Sub3.anInt2032 = 10;
                 }
                 if (Class40_Sub3.anInt2032 == 10) {
-                    if (Class40_Sub6.aClass64_2098.method1014(-124) >= IncomingPackets.incomingPacketSize) {
+                    if (Class40_Sub6.gameConnection.method1014(-124) >= IncomingPackets.incomingPacketSize) {
                         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                        Class40_Sub6.aClass64_2098.method1008(0, IncomingPackets.incomingPacketSize, -128, IncomingPackets.incomingPacketBuffer.buffer);
+                        Class40_Sub6.gameConnection.method1008(0, IncomingPackets.incomingPacketSize, -128, IncomingPackets.incomingPacketBuffer.buffer);
                         Main.method44();
                         Class51.regionX = -1;
                         FloorDecoration.method343(false, 5688);
@@ -313,7 +313,7 @@ public class SpotAnimDefinition extends SubNode {
         if (animationId == -1 || arg0 == -1) {
             class40_sub5_sub17_sub5_0_ = class40_sub5_sub17_sub5.method806(true);
         } else {
-            class40_sub5_sub17_sub5_0_ = Class68_Sub1.method1050(animationId, 2).method597((byte) -87, class40_sub5_sub17_sub5, arg0);
+            class40_sub5_sub17_sub5_0_ = ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).method597((byte) -87, class40_sub5_sub17_sub5, arg0);
         }
         if (arg1 != 2) {
             return null;

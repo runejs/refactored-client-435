@@ -6,6 +6,7 @@ import com.jagex.runescape.cache.media.*;
 import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.cache.media.Widget.WidgetType;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.Native;
@@ -201,7 +202,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             }
         }
         setCanvas((byte) 121);
-        Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649(IdentityKit.height, Class12.width, MouseHandler.aCanvas1469, -4875);
+        ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = Class40_Sub5_Sub13.createGraphicsBuffer(Class12.width, IdentityKit.height, MouseHandler.aCanvas1469);
         method31(true);
         SceneCluster.aClass38_768 = Class56.method972((byte) 47);
         SceneCluster.aClass38_768.method443(-10115);
@@ -419,7 +420,9 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             IdentityKit.height = height;
             Class35.aFrame1732 = new Frame();
             Class35.aFrame1732.setTitle("Jagex");
-            Class35.aFrame1732.setResizable(false);
+//            Class35.aFrame1732.setResizable(false);
+            Class35.aFrame1732.setPreferredSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
+            Class35.aFrame1732.setResizable(true);
             Class35.aFrame1732.addWindowListener(this);
             Class35.aFrame1732.setVisible(true);
             Class35.aFrame1732.toFront();

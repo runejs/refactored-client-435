@@ -131,7 +131,7 @@ public class Class48 {
                         if(widget.actionType == 1 && i_2_ <= arg8 && i_1_ <= arg4 && widget.originalWidth + i_2_ > arg8 && widget.originalHeight + i_1_ > arg4) {
                             boolean bool = false;
                             if(widget.contentType != 0)
-                                bool = Class68_Sub1.method1051(300, widget);
+                                bool = ProducingGraphicsBuffer_Sub1.method1051(300, widget);
                             if(!bool) {
                                 OverlayDefinition.addActionRow(widget.tooltip, 0, 0, widget.id, 42, "");
                             }
@@ -297,10 +297,10 @@ public class Class48 {
         return ActorDefinition.method578();
     }
 
-    public static void method928(int arg0) {
-        if(Class40_Sub6.aClass64_2098 != null) {
-            Class40_Sub6.aClass64_2098.method1009();
-            Class40_Sub6.aClass64_2098 = null;
+    public static void logout(int arg0) {
+        if(Class40_Sub6.gameConnection != null) {
+            Class40_Sub6.gameConnection.method1009();
+            Class40_Sub6.gameConnection = null;
         }
         RSCanvas.method46(0);
         Npc.currentScene.initToNull();

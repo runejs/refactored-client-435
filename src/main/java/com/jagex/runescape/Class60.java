@@ -146,13 +146,12 @@ public class Class60 {
         Class40_Sub3.anInt2020 = 0;
     }
 
-    public static void method993(int arg0) {
+    public static void updateLogin() {
         Class40_Sub6.method836(1);
         if(Class51.anInt1197 == 10) {
             int i = Class57.clickX + -202;
             int clickType = MouseHandler.clickType;
             int clickY = -171 + RSString.clickY;
-            int i_13_ = -58 % ((-38 - arg0) / 59);
             if(Class26.loginScreenState == 0) {
                 int i_14_ = 100;
                 int i_15_ = 120;

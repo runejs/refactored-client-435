@@ -83,7 +83,7 @@ public class Class37 {
     public static void renderMinimap(boolean arg0) {
         RSCanvas.method45();
         if(Class27.minimapState == 2) {
-            byte[] mmBackgroundPixels = Class34.mapBack.imgPixels;
+            byte[] mmBackgroundPixels = Class34.minimapBackgroundImage.imgPixels;
             int[] rasterPixels = Rasterizer.destinationPixels;
             int pixelCount = mmBackgroundPixels.length;
             for(int i = 0; i < pixelCount; i++) {
@@ -160,11 +160,11 @@ public class Class37 {
                 }
                 if(Player.anInt3288 == 2) {
                     i_8_ = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-Class26.baseY + Class4.anInt175);
-                    i = 4 * (Class68.anInt1637 - SpotAnimDefinition.baseX) - (-2 + Player.localPlayer.worldX / 32);
+                    i = 4 * (ProducingGraphicsBuffer.anInt1637 - SpotAnimDefinition.baseX) - (-2 + Player.localPlayer.worldX / 32);
                     OverlayDefinition.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], i, i_8_);
                 }
-                if(Player.anInt3288 == 10 && Class68.anInt1623 >= 0 && Player.trackedPlayers.length > Class68.anInt1623) {
-                    Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[Class68.anInt1623];
+                if(Player.anInt3288 == 10 && ProducingGraphicsBuffer.anInt1623 >= 0 && Player.trackedPlayers.length > ProducingGraphicsBuffer.anInt1623) {
+                    Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[ProducingGraphicsBuffer.anInt1623];
                     if(class40_sub5_sub17_sub4_sub1 != null) {
                         i_8_ = -(Player.localPlayer.worldY / 32) + class40_sub5_sub17_sub4_sub1.worldY / 32;
                         i = class40_sub5_sub17_sub4_sub1.worldX / 32 - Player.localPlayer.worldX / 32;

@@ -21,8 +21,8 @@ public class Class17 {
     public static int[] anIntArray456;
     public static int deregisterActorCount = 0;
     public static Font helveticaBold;
-    public static Class68 aClass68_462;
-    public static Class68 aClass68_463;
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_462;
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_463;
     public static int anInt464 = 0;
     public static int[] anIntArray466 = new int[256];
 
@@ -48,7 +48,7 @@ public class Class17 {
                 break;
             Class51.aClass23_1194.put(class40_sub5_sub13, (byte) 126, class40_sub5_sub13.key);
             anInt464--;
-            Class68.anInt1618++;
+            ProducingGraphicsBuffer.anInt1618++;
         }
         for(; ; ) {
             Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class34.aClass23_841.method329(false);
@@ -86,7 +86,7 @@ public class Class17 {
 
     public static int method274(boolean arg0) {
         if(!arg0)
-            aClass68_463 = null;
+            aProducingGraphicsBuffer_463 = null;
         return Class49.anInt1147++;
     }
 

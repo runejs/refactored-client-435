@@ -128,7 +128,7 @@ public class Class40_Sub9_Sub1 extends Class40_Sub9 {
     }
 
     public void method850(Class40_Sub8 arg0) {
-        arg0.method457(-1);
+        arg0.remove(-1);
         arg0.method841();
         Node class40 = aLinkedList_2874.aClass40_1056.aClass40_950;
         if(class40 == aLinkedList_2874.aClass40_1056)
@@ -188,6 +188,6 @@ public class Class40_Sub9_Sub1 extends Class40_Sub9 {
     }
 
     public synchronized void method853(Class40_Sub9 arg0) {
-        arg0.method457(-1);
+        arg0.remove(-1);
     }
 }

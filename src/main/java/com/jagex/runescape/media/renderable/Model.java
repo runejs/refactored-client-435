@@ -104,7 +104,7 @@ public class Model extends Renderable {
     public int vertexCount;
     public int triangleCount = 0;
     public int anInt3169;
-    public int anInt3171;
+    public int diagonal2DAboveOrigin;
     public VertexNormal[] vertexNormalOffset;
     public int[] vertexSkins;
     public VertexNormal[] verticesNormal;
@@ -717,7 +717,7 @@ public class Model extends Renderable {
             anInt3169 = 1;
             modelHeight = 0;
             maxY = 0;
-            anInt3171 = 0;
+            diagonal2DAboveOrigin = 0;
             for(int i = 0; i < vertexCount; i++) {
                 int i_0_ = verticesX[i];
                 int i_1_ = verticesY[i];
@@ -727,12 +727,12 @@ public class Model extends Renderable {
                 if(i_1_ > maxY)
                     maxY = i_1_;
                 int i_3_ = i_0_ * i_0_ + i_2_ * i_2_;
-                if(i_3_ > anInt3171)
-                    anInt3171 = i_3_;
+                if(i_3_ > diagonal2DAboveOrigin)
+                    diagonal2DAboveOrigin = i_3_;
             }
-            anInt3171 = (int) (Math.sqrt((double) anInt3171) + 0.99);
-            anInt3189 = (int) (Math.sqrt((double) (anInt3171 * anInt3171 + modelHeight * modelHeight)) + 0.99);
-            diagonal3D = anInt3189 + (int) (Math.sqrt((double) (anInt3171 * anInt3171 + maxY * maxY)) + 0.99);
+            diagonal2DAboveOrigin = (int) (Math.sqrt((double) diagonal2DAboveOrigin) + 0.99);
+            anInt3189 = (int) (Math.sqrt((double) (diagonal2DAboveOrigin * diagonal2DAboveOrigin + modelHeight * modelHeight)) + 0.99);
+            diagonal3D = anInt3189 + (int) (Math.sqrt((double) (diagonal2DAboveOrigin * diagonal2DAboveOrigin + maxY * maxY)) + 0.99);
         }
     }
 
@@ -741,104 +741,109 @@ public class Model extends Renderable {
             method799();
         int i = arg7 * arg4 - arg5 * arg3 >> 16;
         int i_4_ = arg6 * arg1 + i * arg2 >> 16;
-        int i_5_ = anInt3171 * arg2 >> 16;
+        int i_5_ = diagonal2DAboveOrigin * arg2 >> 16;
         int i_6_ = i_4_ + i_5_;
-        if(i_6_ > 50 && i_4_ < 3500) {
-            int i_7_ = arg7 * arg3 + arg5 * arg4 >> 16;
-            int i_8_ = i_7_ - anInt3171 << 9;
-            if(i_8_ / i_6_ < Rasterizer3D.anInt2934) {
-                int i_9_ = i_7_ + anInt3171 << 9;
-                if(i_9_ / i_6_ > Rasterizer3D.anInt2942) {
-                    int i_10_ = arg6 * arg2 - i * arg1 >> 16;
-                    int i_11_ = anInt3171 * arg1 >> 16;
-                    int i_12_ = i_10_ + i_11_ << 9;
-                    if(i_12_ / i_6_ > Rasterizer3D.anInt2935) {
-                        int i_13_ = i_11_ + (modelHeight * arg2 >> 16);
-                        int i_14_ = i_10_ - i_13_ << 9;
-                        if(i_14_ / i_6_ < Rasterizer3D.anInt2941) {
-                            int i_15_ = i_5_ + (modelHeight * arg1 >> 16);
-                            boolean bool = false;
-                            boolean bool_16_ = false;
-                            if(i_4_ - i_15_ <= 50)
-                                bool_16_ = true;
-                            boolean bool_17_ = bool_16_ || texturedTriangleCount > 0;
-                            boolean bool_18_ = false;
-                            if(arg8 > 0 && gameScreenClickable) {
-                                int i_19_ = i_4_ - i_5_;
-                                if(i_19_ <= 50)
-                                    i_19_ = 50;
-                                if(i_7_ > 0) {
-                                    i_8_ /= i_6_;
-                                    i_9_ /= i_19_;
-                                } else {
-                                    i_9_ /= i_6_;
-                                    i_8_ /= i_19_;
-                                }
-                                if(i_10_ > 0) {
-                                    i_14_ /= i_6_;
-                                    i_12_ /= i_19_;
-                                } else {
-                                    i_12_ /= i_6_;
-                                    i_14_ /= i_19_;
-                                }
-                                int i_20_ = cursorX - Rasterizer3D.center_x;
-                                int i_21_ = cursorY - Rasterizer3D.center_y;
-                                if(i_20_ > i_8_ && i_20_ < i_9_ && i_21_ > i_14_ && i_21_ < i_12_) {
-                                    if(singleTile)
-                                        hoveredHash[resourceCount++] = arg8;
-                                    else
-                                        bool_18_ = true;
-                                }
-                            }
-                            int i_22_ = Rasterizer3D.center_x;
-                            int i_23_ = Rasterizer3D.center_y;
-                            int i_24_ = 0;
-                            int i_25_ = 0;
-                            if(arg0 != 0) {
-                                i_24_ = SINE[arg0];
-                                i_25_ = COSINE[arg0];
-                            }
-                            for(int i_26_ = 0; i_26_ < vertexCount; i_26_++) {
-                                int i_27_ = verticesX[i_26_];
-                                int i_28_ = verticesY[i_26_];
-                                int i_29_ = verticesZ[i_26_];
-                                if(arg0 != 0) {
-                                    int i_30_ = i_29_ * i_24_ + i_27_ * i_25_ >> 16;
-                                    i_29_ = i_29_ * i_25_ - i_27_ * i_24_ >> 16;
-                                    i_27_ = i_30_;
-                                }
-                                i_27_ += arg5;
-                                i_28_ += arg6;
-                                i_29_ += arg7;
-                                int i_31_ = i_29_ * arg3 + i_27_ * arg4 >> 16;
-                                i_29_ = i_29_ * arg4 - i_27_ * arg3 >> 16;
-                                i_27_ = i_31_;
-                                i_31_ = i_28_ * arg2 - i_29_ * arg1 >> 16;
-                                i_29_ = i_28_ * arg1 + i_29_ * arg2 >> 16;
-                                i_28_ = i_31_;
-                                anIntArray3212[i_26_] = i_29_ - i_4_;
-                                if(i_29_ >= 50) {
-                                    vertexScreenX[i_26_] = i_22_ + (i_27_ << 9) / i_29_;
-                                    vertexScreenY[i_26_] = i_23_ + (i_28_ << 9) / i_29_;
-                                } else {
-                                    vertexScreenX[i_26_] = -5000;
-                                    bool = true;
-                                }
-                                if(bool_17_) {
-                                    anIntArray3225[i_26_] = i_27_;
-                                    anIntArray3203[i_26_] = i_28_;
-                                    anIntArray3223[i_26_] = i_29_;
-                                }
-                            }
-                            try {
-                                method815(bool, bool_18_, arg8);
-                            } catch(Exception exception) {
-                                /* empty */
-                            }
-                        }
-                    }
-                }
+        if(i_6_ <= 50/* || i_4_ >= 3500*/) {
+            return;
+        }
+        int i_7_ = arg7 * arg3 + arg5 * arg4 >> 16;
+        int i_8_ = i_7_ - diagonal2DAboveOrigin << 9;
+        if(i_8_ / i_6_ >= Rasterizer3D.anInt2934) {
+            return;
+        }
+        int i_9_ = i_7_ + diagonal2DAboveOrigin << 9;
+        if(i_9_ / i_6_ <= Rasterizer3D.anInt2942) {
+            return;
+        }
+        int i_10_ = arg6 * arg2 - i * arg1 >> 16;
+        int i_11_ = diagonal2DAboveOrigin * arg1 >> 16;
+        int i_12_ = i_10_ + i_11_ << 9;
+        if(i_12_ / i_6_ <= Rasterizer3D.anInt2935) {
+            return;
+        }
+        int i_13_ = i_11_ + (modelHeight * arg2 >> 16);
+        int i_14_ = i_10_ - i_13_ << 9;
+        if(i_14_ / i_6_ >= Rasterizer3D.anInt2941) {
+            return;
+        }
+        int i_15_ = i_5_ + (modelHeight * arg1 >> 16);
+        boolean bool = false;
+        boolean bool_16_ = false;
+        if(i_4_ - i_15_ <= 50)
+            bool_16_ = true;
+        boolean bool_17_ = bool_16_ || texturedTriangleCount > 0;
+        boolean bool_18_ = false;
+        if(arg8 > 0 && gameScreenClickable) {
+            int i_19_ = i_4_ - i_5_;
+            if(i_19_ <= 50)
+                i_19_ = 50;
+            if(i_7_ > 0) {
+                i_8_ /= i_6_;
+                i_9_ /= i_19_;
+            } else {
+                i_9_ /= i_6_;
+                i_8_ /= i_19_;
             }
+            if(i_10_ > 0) {
+                i_14_ /= i_6_;
+                i_12_ /= i_19_;
+            } else {
+                i_12_ /= i_6_;
+                i_14_ /= i_19_;
+            }
+            int i_20_ = cursorX - Rasterizer3D.center_x;
+            int i_21_ = cursorY - Rasterizer3D.center_y;
+            if(i_20_ > i_8_ && i_20_ < i_9_ && i_21_ > i_14_ && i_21_ < i_12_) {
+                if(singleTile)
+                    hoveredHash[resourceCount++] = arg8;
+                else
+                    bool_18_ = true;
+            }
+        }
+        int i_22_ = Rasterizer3D.center_x;
+        int i_23_ = Rasterizer3D.center_y;
+        int i_24_ = 0;
+        int i_25_ = 0;
+        if(arg0 != 0) {
+            i_24_ = SINE[arg0];
+            i_25_ = COSINE[arg0];
+        }
+        for(int i_26_ = 0; i_26_ < vertexCount; i_26_++) {
+            int i_27_ = verticesX[i_26_];
+            int i_28_ = verticesY[i_26_];
+            int i_29_ = verticesZ[i_26_];
+            if(arg0 != 0) {
+                int i_30_ = i_29_ * i_24_ + i_27_ * i_25_ >> 16;
+                i_29_ = i_29_ * i_25_ - i_27_ * i_24_ >> 16;
+                i_27_ = i_30_;
+            }
+            i_27_ += arg5;
+            i_28_ += arg6;
+            i_29_ += arg7;
+            int i_31_ = i_29_ * arg3 + i_27_ * arg4 >> 16;
+            i_29_ = i_29_ * arg4 - i_27_ * arg3 >> 16;
+            i_27_ = i_31_;
+            i_31_ = i_28_ * arg2 - i_29_ * arg1 >> 16;
+            i_29_ = i_28_ * arg1 + i_29_ * arg2 >> 16;
+            i_28_ = i_31_;
+            anIntArray3212[i_26_] = i_29_ - i_4_;
+            if(i_29_ >= 50) {
+                vertexScreenX[i_26_] = i_22_ + (i_27_ << 9) / i_29_;
+                vertexScreenY[i_26_] = i_23_ + (i_28_ << 9) / i_29_;
+            } else {
+                vertexScreenX[i_26_] = -5000;
+                bool = true;
+            }
+            if(bool_17_) {
+                anIntArray3225[i_26_] = i_27_;
+                anIntArray3203[i_26_] = i_28_;
+                anIntArray3223[i_26_] = i_29_;
+            }
+        }
+        try {
+            method815(bool, bool_18_, arg8);
+        } catch(Exception exception) {
+            /* empty */
         }
     }
 
@@ -991,7 +996,7 @@ public class Model extends Renderable {
 
     public int method805() {
         method799();
-        return anInt3171;
+        return diagonal2DAboveOrigin;
     }
 
     public Model method806(boolean arg0) {
@@ -1731,7 +1736,7 @@ public class Model extends Renderable {
             anInt3169 = 3;
             modelHeight = 0;
             maxY = 0;
-            anInt3171 = 999999;
+            diagonal2DAboveOrigin = 999999;
             diagonal3D = -999999;
             anInt3189 = -99999;
             anInt3177 = 99999;
@@ -1739,8 +1744,8 @@ public class Model extends Renderable {
                 int i_234_ = verticesX[i];
                 int i_235_ = verticesY[i];
                 int i_236_ = verticesZ[i];
-                if(i_234_ < anInt3171)
-                    anInt3171 = i_234_;
+                if(i_234_ < diagonal2DAboveOrigin)
+                    diagonal2DAboveOrigin = i_234_;
                 if(i_234_ > diagonal3D)
                     diagonal3D = i_234_;
                 if(i_236_ < anInt3177)
@@ -1827,18 +1832,18 @@ public class Model extends Renderable {
     public void method827() {
         if(anInt3169 != 2) {
             anInt3169 = 2;
-            anInt3171 = 0;
+            diagonal2DAboveOrigin = 0;
             for(int i = 0; i < vertexCount; i++) {
                 int i_251_ = verticesX[i];
                 int i_252_ = verticesY[i];
                 int i_253_ = verticesZ[i];
                 int i_254_ = i_251_ * i_251_ + i_253_ * i_253_ + i_252_ * i_252_;
-                if(i_254_ > anInt3171)
-                    anInt3171 = i_254_;
+                if(i_254_ > diagonal2DAboveOrigin)
+                    diagonal2DAboveOrigin = i_254_;
             }
-            anInt3171 = (int) (Math.sqrt((double) anInt3171) + 0.99);
-            anInt3189 = anInt3171;
-            diagonal3D = anInt3171 + anInt3171;
+            diagonal2DAboveOrigin = (int) (Math.sqrt((double) diagonal2DAboveOrigin) + 0.99);
+            anInt3189 = diagonal2DAboveOrigin;
+            diagonal3D = diagonal2DAboveOrigin + diagonal2DAboveOrigin;
         }
     }
 

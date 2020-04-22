@@ -22,7 +22,7 @@ public class Class51 {
     public static long aLong1203 = 0L;
     public static String[] aClass1Array1204;
     public static int anInt1205 = -1;
-    public static Class68 aClass68_1206;
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1206;
 
     public static int getKeyChar(KeyEvent arg1) {
         int keyChar = arg1.getKeyChar();
@@ -36,9 +36,9 @@ public class Class51 {
     public static void method940(int arg0, String arg1, boolean arg2, String arg3) {
         if(Class40_Sub5_Sub11.clearScreen) {
             Class40_Sub5_Sub11.clearScreen = false;
-            ItemDefinition.method742();
-            LinkedList.method908((byte) 114);
-            Class55.method964(40);
+            ItemDefinition.drawWelcomeScreenGraphics();
+            LinkedList.drawChatBoxGraphics();
+            Class55.drawTabGraphics();
             ActorDefinition.method574();
             GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             Class40_Sub2.method527(Class5.currentTabId, arg0 + 4, Class40_Sub5_Sub11.tabWidgetIds, Class29.tabAreaOverlayWidgetId == -1, -1);
@@ -60,7 +60,7 @@ public class Class51 {
             WallDecoration.fontNormal.drawStringLeft(arg3, 257, i, 0);
             WallDecoration.fontNormal.drawStringLeft(arg3, 256, i - 1, 16777215);
         }
-        Player.method792(arg0 + 107);
+        Player.drawGameScreenGraphics(arg0 + 107);
     }
 
     public static void method941() {

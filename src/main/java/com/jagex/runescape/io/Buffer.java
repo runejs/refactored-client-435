@@ -10,8 +10,8 @@ import com.jagex.runescape.scene.InteractiveObject;
 import java.math.BigInteger;
 
 public class Buffer extends Node {
-    public static Cache aClass9_1933 = new Cache(100);
-    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1959;
+    public static Cache rgbImageCache = new Cache(100);
+    public static IndexedImage tabTopBack;
     public static int[] anIntArray1972;
     public static int cameraOffsetX = 0;
     public static int lastItemDragTime = 0;

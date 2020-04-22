@@ -58,7 +58,7 @@ public class Class64 implements Runnable {
 
 
     public static void method1012(int arg0, int arg1) {
-        if (Class68.method1043(arg0)) {
+        if (ProducingGraphicsBuffer.method1043(arg0)) {
             Widget[] widgets = Widget.interfaces[arg0];
             if (arg1 != 2)
                 method1013();
@@ -358,7 +358,7 @@ public class Class64 implements Runnable {
         return anInputStream1503.available();
     }
 
-    public int method1016() throws IOException {
+    public int read() throws IOException {
         if (aBoolean1513)
             return 0;
         return anInputStream1503.read();

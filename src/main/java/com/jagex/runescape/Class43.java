@@ -53,7 +53,7 @@ public class Class43 {
         }
         if(arg0 >= -22)
             cameraYawOffset = 80;
-        Class55.method964(40);
+        Class55.drawTabGraphics();
     }
 
 

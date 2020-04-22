@@ -62,7 +62,7 @@ public class Node {
         return true;
     }
 
-    public void method457(int arg0) {
+    public void remove(int arg0) {
         if(aClass40_968 != null) {
             aClass40_968.aClass40_950 = aClass40_950;
             if(arg0 == -1) {

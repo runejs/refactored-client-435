@@ -69,7 +69,7 @@ public class Class13 {
     }
 
     public static void method243(byte arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
-        if(Class68.method1043(arg4)) {
+        if(ProducingGraphicsBuffer.method1043(arg4)) {
             Class48.method925(arg3, Widget.interfaces[arg4], arg5, 0, arg7, 0, -1, arg8, arg6, arg1, 0, arg2);
             if(arg0 != 89)
                 English.loadingFriendList = null;
@@ -115,7 +115,7 @@ public class Class13 {
             i = arg0.parentId >> 16;
         else
             i = arg0.id >> 16;
-        if(!Class68.method1043(i))
+        if(!ProducingGraphicsBuffer.method1043(i))
             return null;
         int i_11_ = arg0.currentX;
         int i_12_ = arg0.currentY;

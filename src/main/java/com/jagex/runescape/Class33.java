@@ -65,10 +65,10 @@ public class Class33 {
                     }
                     if(Player.localPlayerCount <= i) {
                         ActorDefinition class40_sub5_sub5 = ((Npc) actor).actorDefinition;
-                        if(class40_sub5_sub5.headIcon >= 0 && class40_sub5_sub5.headIcon < Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204.length) {
+                        if(class40_sub5_sub5.headIcon >= 0 && class40_sub5_sub5.headIcon < ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204.length) {
                             FloorDecoration.method342(actor.anInt3117 + 15, actor);
                             if(ISAAC.anInt522 > -1)
-                                Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204[class40_sub5_sub5.headIcon].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -30);
+                                ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204[class40_sub5_sub5.headIcon].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -30);
                         }
                         if(Player.anInt3288 == 1 && HuffmanEncoding.anInt1545 == Player.npcIds[-Player.localPlayerCount + i] && Node.pulseCycle % 20 < 10) {
                             FloorDecoration.method342(15 + actor.anInt3117, actor);
@@ -86,12 +86,12 @@ public class Class33 {
                                     i_0_ += 25;
                                 }
                                 if(class40_sub5_sub17_sub4_sub1.headIcon != -1) {
-                                    Class68_Sub1.aClass40_Sub5_Sub14_Sub4Array2204[class40_sub5_sub17_sub4_sub1.headIcon].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
+                                    ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204[class40_sub5_sub17_sub4_sub1.headIcon].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
                                     i_0_ += 25;
                                 }
                             }
                         }
-                        if(i >= 0 && Player.anInt3288 == 10 && Class68.anInt1623 == Player.trackedPlayerIndices[i]) {
+                        if(i >= 0 && Player.anInt3288 == 10 && ProducingGraphicsBuffer.anInt1623 == Player.trackedPlayerIndices[i]) {
                             FloorDecoration.method342(actor.anInt3117 + 15, actor);
                             if(ISAAC.anInt522 > -1)
                                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[1].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);

@@ -26,7 +26,7 @@ public class Class8 {
     public static FontMetrics fontMetrics;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array296;
     public static int[] anIntArray297 = new int[5];
-    public static Class68 aClass68_298;
+    public static ProducingGraphicsBuffer flameLeftBackground;
     public static int itemSelected = 0;
     public static byte aByte302 = (byte) 0;
 
@@ -55,7 +55,7 @@ public class Class8 {
     public static void method211() {
         ISAAC.aClass9_516.method235();
         MouseHandler.modelCache.method235();
-        Buffer.aClass9_1933.method235();
+        Buffer.rgbImageCache.method235();
 
     }
 

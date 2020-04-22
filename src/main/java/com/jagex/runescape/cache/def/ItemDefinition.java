@@ -1,10 +1,13 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
+import com.jagex.runescape.media.Rasterizer;
+import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -97,18 +100,18 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
         maleModel0 = -1;
     }
 
-    public static void method742() {
+    public static void drawWelcomeScreenGraphics() {
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            Landscape.aClass68_1185.drawGraphics(0, 4, graphics);
-            Class40_Sub5_Sub1.aClass68_2275.drawGraphics(0, 357, graphics);
-            Class39.aClass68_908.drawGraphics(722, 4, graphics);
-            GameObject.aClass68_3045.drawGraphics(743, 205, graphics);
-            Class40_Sub5_Sub17_Sub6.aClass68_3243.drawGraphics(0, 0, graphics);
-            Class40_Sub7.aClass68_2123.drawGraphics(516, 4, graphics);
-            Class61.aClass68_1441.drawGraphics(516, 205, graphics);
-            Class30.aClass68_714.drawGraphics(496, 357, graphics);
-            Class17.aClass68_462.drawGraphics(0, 338, graphics);
+            Landscape.aProducingGraphicsBuffer_1185.drawGraphics(0, 4, graphics);
+            Class40_Sub5_Sub1.aProducingGraphicsBuffer_2275.drawGraphics(0, 357, graphics);
+            Class39.aProducingGraphicsBuffer_908.drawGraphics(722, 4, graphics);
+            GameObject.aProducingGraphicsBuffer_3045.drawGraphics(743, 205, graphics);
+            Class40_Sub5_Sub17_Sub6.aProducingGraphicsBuffer_3243.drawGraphics(0, 0, graphics);
+            Class40_Sub7.aProducingGraphicsBuffer_2123.drawGraphics(516, 4, graphics);
+            Class61.aProducingGraphicsBuffer_1441.drawGraphics(516, 205, graphics);
+            Class30.aProducingGraphicsBuffer_714.drawGraphics(496, 357, graphics);
+            Class17.aProducingGraphicsBuffer_462.drawGraphics(0, 338, graphics);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }
@@ -204,6 +207,127 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
         }
         ISAAC.aClass9_516.put(id, definition);
         return definition;
+    }
+
+    public static ImageRGB sprite(int stackSize, int id, int backColour) {
+        if(backColour == 0) {
+            ImageRGB sprite = (ImageRGB) Buffer.rgbImageCache.get((long) id, (byte) 56);
+            if(sprite != null && sprite.maxHeight != stackSize && sprite.maxHeight != -1) {
+                sprite.remove(-1);
+                sprite = null;
+            }
+            if(sprite != null)
+                return sprite;
+        }
+        ItemDefinition definition = forId(id, 10);
+        if(definition.stackIds == null)
+            stackSize = -1;
+        if(stackSize > 1) {
+            int stackId = -1;
+            for(int i = 0; i < 10; i++) {
+                if(stackSize >= definition.stackableAmounts[i] && definition.stackableAmounts[i] != 0)
+                    stackId = definition.stackIds[i];
+            }
+            if(stackId != -1)
+                definition = forId(stackId, 10);
+        }
+        Model model = definition.asGroundStack(true, 1);
+        if(model == null)
+            return null;
+        ImageRGB notedSprite = null;
+        if(definition.noteTemplateId != -1) {
+            notedSprite = sprite(10, definition.notedId, -1);
+            if(notedSprite == null)
+                return null;
+        }
+        int[] pixels = Rasterizer.destinationPixels;
+        int i = Rasterizer.destinationHeight;
+        int i_1_ = Rasterizer.destinationWidth;
+        int i_2_ = Rasterizer.viewportLeft;
+        int i_4_ = Rasterizer.viewportRight;
+        int i_5_ = Rasterizer.viewportTop;
+        int i_6_ = Rasterizer.viewportBottom;
+        int[] lineOffsets = Rasterizer3D.getLineOffsets();
+        int i_8_ = Rasterizer3D.bottomY;
+        int i_9_ = Rasterizer3D.viewportRx;
+        ImageRGB rendered = new ImageRGB(32, 32);
+        Rasterizer.prepare(rendered.pixels, 32, 32);
+        Class40_Sub5_Sub17_Sub6.anIntArray3253 = Rasterizer3D.setLineOffsets(Class40_Sub5_Sub17_Sub6.anIntArray3253);
+        Rasterizer.drawFilledRectangle(0, 0, 32, 32, 0);
+        int i_11_ = definition.zoom2d;
+        if(backColour == -1)
+            i_11_ *= 1.5;
+        if(backColour > 0)
+            i_11_ *= 1.04;
+        Rasterizer3D.notTextured = false;
+        int i_12_ = Rasterizer3D.sinetable[definition.xan2d] * i_11_ >> 16;
+        int i_13_ = i_11_ * Rasterizer3D.cosinetable[definition.xan2d] >> 16;
+        model.method799();
+        model.method812(0, definition.yan2d, definition.zan2d, definition.xan2d, definition.xOffset2d, definition.yOffset2d + model.modelHeight / 2 + i_12_, i_13_ + definition.yOffset2d);
+        for(int i_14_ = 31; i_14_ >= 0; i_14_--) {
+            for(i_13_ = 31; i_13_ >= 0; i_13_--) {
+                if(rendered.pixels[i_14_ + 32 * i_13_] == 0) {
+                    if(i_14_ > 0 && rendered.pixels[i_13_ * 32 + -1 + i_14_] > 1)
+                        rendered.pixels[i_13_ * 32 + i_14_] = 1;
+                    else if(i_13_ > 0 && rendered.pixels[i_14_ + (i_13_ + -1) * 32] > 1)
+                        rendered.pixels[i_13_ * 32 + i_14_] = 1;
+                    else if(i_14_ < 31 && rendered.pixels[i_13_ * 32 + i_14_ + 1] > 1)
+                        rendered.pixels[i_14_ + i_13_ * 32] = 1;
+                    else if(i_13_ < 31 && rendered.pixels[(i_13_ + 1) * 32 + i_14_] > 1)
+                        rendered.pixels[i_14_ + 32 * i_13_] = 1;
+                }
+            }
+        }
+        if(backColour > 0) {
+            for(int i_15_ = 31; i_15_ >= 0; i_15_--) {
+                for(i_13_ = 31; i_13_ >= 0; i_13_--) {
+                    if(rendered.pixels[i_15_ + i_13_ * 32] == 0) {
+                        if(i_15_ > 0 && rendered.pixels[32 * i_13_ + -1 + i_15_] == 1)
+                            rendered.pixels[i_15_ + i_13_ * 32] = backColour;
+                        else if(i_13_ <= 0 || rendered.pixels[i_15_ + (i_13_ + -1) * 32] != 1) {
+                            if(i_15_ >= 31 || rendered.pixels[1 + i_15_ + i_13_ * 32] != 1) {
+                                if(i_13_ < 31 && rendered.pixels[i_15_ + 32 + 32 * i_13_] == 1)
+                                    rendered.pixels[i_13_ * 32 + i_15_] = backColour;
+                            } else
+                                rendered.pixels[i_15_ + i_13_ * 32] = backColour;
+                        } else
+                            rendered.pixels[i_15_ + i_13_ * 32] = backColour;
+                    }
+                }
+            }
+        } else if(backColour == 0) {
+            for(int i_16_ = 31; i_16_ >= 0; i_16_--) {
+                for(i_13_ = 31; i_13_ >= 0; i_13_--) {
+                    if(rendered.pixels[i_13_ * 32 + i_16_] == 0 && i_16_ > 0 && i_13_ > 0 && rendered.pixels[i_16_ - (1 + -((-1 + i_13_) * 32))] > 0)
+                        rendered.pixels[i_16_ + 32 * i_13_] = 3153952;
+                }
+            }
+        }
+        if(definition.noteTemplateId != -1) {
+            int i_17_ = notedSprite.maxHeight;
+            int i_18_ = notedSprite.maxWidth;
+            notedSprite.maxHeight = 32;
+            notedSprite.maxWidth = 32;
+            notedSprite.drawImage(0, 0);
+            notedSprite.maxWidth = i_18_;
+            notedSprite.maxHeight = i_17_;
+        }
+        if(backColour == 0)
+            Buffer.rgbImageCache.put((long) id, rendered);
+        Rasterizer.prepare(pixels, i_1_, i);
+        Rasterizer.setBounds(i_2_, i_5_, i_6_, i_4_);
+        Rasterizer3D.setLineOffsets(lineOffsets);
+        Rasterizer3D.bottomY = i_8_;
+        Rasterizer3D.viewportRx = i_9_;
+        Rasterizer3D.method702();
+        Rasterizer3D.notTextured = true;
+        if(definition.stackable == 1)
+            rendered.maxWidth = 33;
+        else
+            rendered.maxWidth = 32;
+        rendered.maxHeight = stackSize;
+        return rendered;
+
     }
 
     public boolean headPieceReady(boolean female) {

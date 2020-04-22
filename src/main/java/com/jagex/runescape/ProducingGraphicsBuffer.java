@@ -4,7 +4,6 @@ import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
@@ -12,13 +11,13 @@ import com.jagex.runescape.util.SignlinkNode;
 
 import java.awt.*;
 
-public abstract class Class68 {
+public abstract class ProducingGraphicsBuffer {
     public static Cache aClass9_1615 = new Cache(64);
     public static int anInt1618 = 0;
     public static int anInt1623 = 0;
     public static boolean[] aBooleanArray1629;
     public static int oneMouseButton = 0;
-    public static Class68 aClass68_1631;
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1631;
     public static SignlinkNode aSignlinkNode_1632;
     public static int anInt1634 = 0;
     public static int anInt1637 = 0;
@@ -86,14 +85,7 @@ public abstract class Class68 {
 
     public abstract void drawGraphics(int x, int y, Graphics graphics);
 
-    public void method1046(byte arg0) {
-        do {
-            Rasterizer.prepare(pixels, width, height);
-            if (arg0 == 90)
-                break;
-            method1046((byte) 12);
-
-            break;
-        } while (false);
+    public void method1046() {
+        Rasterizer.prepare(pixels, width, height);
     }
 }

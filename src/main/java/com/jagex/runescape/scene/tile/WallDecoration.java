@@ -230,7 +230,7 @@ public class WallDecoration {
                         if (linkedList != null) {
                             for (Item item = (Item) linkedList.method902((byte) -90); item != null; item = (Item) linkedList.method909(-4)) {
                                 if ((0x7fff & i_67_) == item.itemId) {
-                                    item.method457(-1);
+                                    item.remove(-1);
                                     break;
                                 }
                             }
@@ -313,7 +313,7 @@ public class WallDecoration {
 
     public static void method951(int arg0, TypeFace arg1, TypeFace arg2) {
         do {
-            Class38.aClass68_887.method1046((byte) 90);
+            Class38.aProducingGraphicsBuffer_887.method1046();
             if (Class51.anInt1197 == 0 || Class51.anInt1197 == 5) {
                 int i = 20;
                 arg1.drawStringLeft(English.runeScapeIsLoadingPleaseWait, 180, 74 + -i, 16777215);
@@ -392,20 +392,20 @@ public class WallDecoration {
             Main.renderFlames(0);
             try {
                 Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-                Class38.aClass68_887.drawGraphics(202, 171, graphics);
+                Class38.aProducingGraphicsBuffer_887.drawGraphics(202, 171, graphics);
                 if (arg0 != -19010)
                     method949();
-                Class8.aClass68_298.drawGraphics(0, 0, graphics);
-                GameObject.aClass68_3042.drawGraphics(637, 0, graphics);
+                Class8.flameLeftBackground.drawGraphics(0, 0, graphics);
+                GameObject.flameRightBackground.drawGraphics(637, 0, graphics);
                 if (!Class40_Sub5_Sub11.clearScreen)
                     break;
                 Class40_Sub5_Sub11.clearScreen = false;
-                Class39.aClass68_907.drawGraphics(128, 0, graphics);
-                Class51.aClass68_1206.drawGraphics(202, 371, graphics);
-                Class17.aClass68_463.drawGraphics(0, 265, graphics);
-                KeyFocusListener.aClass68_1285.drawGraphics(562, 265, graphics);
-                GameObjectDefinition.aClass68_2524.drawGraphics(128, 171, graphics);
-                Class68.aClass68_1631.drawGraphics(562, 171, graphics);
+                Class39.aProducingGraphicsBuffer_907.drawGraphics(128, 0, graphics);
+                Class51.aProducingGraphicsBuffer_1206.drawGraphics(202, 371, graphics);
+                Class17.aProducingGraphicsBuffer_463.drawGraphics(0, 265, graphics);
+                KeyFocusListener.aProducingGraphicsBuffer_1285.drawGraphics(562, 265, graphics);
+                GameObjectDefinition.aProducingGraphicsBuffer_2524.drawGraphics(128, 171, graphics);
+                ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631.drawGraphics(562, 171, graphics);
             } catch (Exception exception) {
                 MouseHandler.aCanvas1469.repaint();
             }

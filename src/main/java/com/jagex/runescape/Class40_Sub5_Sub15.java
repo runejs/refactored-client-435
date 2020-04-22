@@ -7,12 +7,11 @@ import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.collection.Node;
-import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.actor.Actor;
 
 public class Class40_Sub5_Sub15 extends SubNode {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2775;
-    public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2776;
+    public static IndexedImage[] tabIcons;
     public static int[] anIntArray2777 = {8, 11, 4, 6, 9, 7, 10};
     public static int arbitraryDestination = 0;
     public static CacheIndex aCacheIndex_2779;
@@ -66,7 +65,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public static void method736(boolean arg0, Actor arg1) {
         arg1.aBoolean3105 = false;
         if(arg1.anInt3077 != -1) {
-            AnimationSequence animationSequence = Class68_Sub1.method1050(arg1.anInt3077, 2);
+            AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(arg1.anInt3077, 2);
             if(animationSequence == null || animationSequence.anIntArray2485 == null)
                 arg1.anInt3077 = -1;
             else {
@@ -88,7 +87,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
             if(i == -1)
                 arg1.anInt3091 = -1;
             else {
-                AnimationSequence animationSequence = Class68_Sub1.method1050(i, 2);
+                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(i, 2);
                 if(animationSequence == null || animationSequence.anIntArray2485 == null)
                     arg1.anInt3091 = -1;
                 else {
@@ -104,14 +103,14 @@ public class Class40_Sub5_Sub15 extends SubNode {
         }
         if(arg0) {
             if(arg1.playingAnimation != -1 && arg1.playingAnimationDelay <= 1) {
-                AnimationSequence animationSequence = Class68_Sub1.method1050(arg1.playingAnimation, 2);
+                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(arg1.playingAnimation, 2);
                 if(animationSequence.anInt2470 == 1 && arg1.anInt3094 > 0 && arg1.anInt3112 <= Node.pulseCycle && Node.pulseCycle > arg1.anInt3107) {
                     arg1.playingAnimationDelay = 1;
                     return;
                 }
             }
             if(arg1.playingAnimation != -1 && arg1.playingAnimationDelay == 0) {
-                AnimationSequence animationSequence = Class68_Sub1.method1050(arg1.playingAnimation, 2);
+                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(arg1.playingAnimation, 2);
                 if(animationSequence != null && animationSequence.anIntArray2485 != null) {
                     arg1.anInt3115++;
                     if(animationSequence.anIntArray2485.length > arg1.anInt3104 && animationSequence.animationLengths[arg1.anInt3104] < arg1.anInt3115) {

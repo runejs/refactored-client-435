@@ -77,14 +77,14 @@ public class IncomingPackets {
             6, 0, 0, 6, 2, 4};
 
     public static boolean parseIncomingPackets(boolean arg0) {
-        if(Class40_Sub6.aClass64_2098 == null)
+        if(Class40_Sub6.gameConnection == null)
             return false;
         try {
-            int i = Class40_Sub6.aClass64_2098.method1014(-122);
+            int i = Class40_Sub6.gameConnection.method1014(-122);
             if(i == 0)
                 return false;
             if(incomingPacket == -1) {
-                Class40_Sub6.aClass64_2098.method1008(0, 1, -127, incomingPacketBuffer.buffer);
+                Class40_Sub6.gameConnection.method1008(0, 1, -127, incomingPacketBuffer.buffer);
                 incomingPacketBuffer.currentPosition = 0;
                 i--;
                 incomingPacket = incomingPacketBuffer.getPacket();
@@ -93,7 +93,7 @@ public class IncomingPackets {
             //System.out.println("packet received: " + Class57.incomingPacket);
             if(incomingPacketSize == -1) {
                 if(i > 0) {
-                    Class40_Sub6.aClass64_2098.method1008(0, 1, -127, incomingPacketBuffer.buffer);
+                    Class40_Sub6.gameConnection.method1008(0, 1, -127, incomingPacketBuffer.buffer);
                     incomingPacketSize = incomingPacketBuffer.buffer[0] & 0xff;
                     i--;
                 } else
@@ -103,14 +103,14 @@ public class IncomingPackets {
                 if(i <= 1)
                     return false;
                 i -= 2;
-                Class40_Sub6.aClass64_2098.method1008(0, 2, -127, incomingPacketBuffer.buffer);
+                Class40_Sub6.gameConnection.method1008(0, 2, -127, incomingPacketBuffer.buffer);
                 incomingPacketBuffer.currentPosition = 0;
                 incomingPacketSize = incomingPacketBuffer.getUnsignedShortBE();
             }
             if(incomingPacketSize > i)
                 return false;
             incomingPacketBuffer.currentPosition = 0;
-            Class40_Sub6.aClass64_2098.method1008(0, incomingPacketSize, -128, incomingPacketBuffer.buffer);
+            Class40_Sub6.gameConnection.method1008(0, incomingPacketSize, -128, incomingPacketBuffer.buffer);
             Class49.anInt1151 = Cache.anInt324;
             Class35.anInt1728 = 0;
             Cache.anInt324 = RSString.anInt1690;
@@ -401,7 +401,7 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == LOGOUT) {
-                Class48.method928(-7225);
+                Class48.logout(-7225);
                 incomingPacket = -1;
                 return false;
             }
@@ -810,7 +810,7 @@ public class IncomingPackets {
                     int i_74_ = -SceneCluster.cameraZ + i_71_;
                     int i_75_ = (int) Math.sqrt((double) (i_73_ * i_73_ + i_72_ * i_72_));
                     Class26.anInt627 = (int) (325.949 * Math.atan2((double) i_74_, (double) i_75_)) & 0x7ff;
-                    Class68_Sub1.anInt2210 = (int) (Math.atan2((double) i_72_, (double) i_73_) * -325.949) & 0x7ff;
+                    ProducingGraphicsBuffer_Sub1.anInt2210 = (int) (Math.atan2((double) i_72_, (double) i_73_) * -325.949) & 0x7ff;
                     if(Class26.anInt627 < 128)
                         Class26.anInt627 = 128;
                     if(Class26.anInt627 > 383)
@@ -912,12 +912,12 @@ public class IncomingPackets {
                         Class35.anInt1730 = 128;
                     }
                     Player.anInt3288 = 2;
-                    Class68.anInt1637 = incomingPacketBuffer.getUnsignedShortBE();
+                    ProducingGraphicsBuffer.anInt1637 = incomingPacketBuffer.getUnsignedShortBE();
                     Class4.anInt175 = incomingPacketBuffer.getUnsignedShortBE();
                     ActorDefinition.anInt2404 = incomingPacketBuffer.getUnsignedByte();
                 }
                 if(Player.anInt3288 == 10)
-                    Class68.anInt1623 = incomingPacketBuffer.getUnsignedShortBE();
+                    ProducingGraphicsBuffer.anInt1623 = incomingPacketBuffer.getUnsignedShortBE();
                 incomingPacket = -1;
                 return true;
             }
@@ -1106,7 +1106,7 @@ public class IncomingPackets {
                         widget.itemAmounts[itemSlot] = i_110_;
                     }
                 }
-                if(Class68.method1043(307)) {
+                if(ProducingGraphicsBuffer.method1043(307)) {
                     Widget[] widgets = Widget.interfaces[307];
                     for(int y = 0; widgets.length > y; y++) {
                         Widget widget2 = widgets[y];
@@ -1154,7 +1154,7 @@ public class IncomingPackets {
                 return true;
             }
             CacheIndex.method169("T1 - " + incomingPacket + "," + Cache.anInt324 + "," + Class49.anInt1151 + " - " + incomingPacketSize, (byte) -121, null);
-            Class48.method928(-7225);
+            Class48.logout(-7225);
         } catch(java.io.IOException ioexception) {
             Class59.dropClient();
         } catch(Exception exception) {
@@ -1162,7 +1162,7 @@ public class IncomingPackets {
             for(int i = 0; incomingPacketSize > i && i < 50; i++)
                 string += incomingPacketBuffer.buffer[i] + ",";
             CacheIndex.method169(string, (byte) -120, exception);
-            Class48.method928(-7225);
+            Class48.logout(-7225);
         }
         return true;
 

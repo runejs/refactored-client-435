@@ -19,8 +19,8 @@ import java.awt.*;
 public class GameObject extends Renderable {
     public static MouseHandler frame = new MouseHandler();
     public static int anInt3040 = 0;
-    public static Class68 aClass68_3042;
-    public static Class68 aClass68_3045;
+    public static ProducingGraphicsBuffer flameRightBackground;
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_3045;
     public static int anInt3048 = 1;
 
 
@@ -45,7 +45,7 @@ public class GameObject extends Renderable {
         vertexHeightTopRight = arg5;
         anInt3021 = arg1;
         if(arg7 != -1) {
-            animationSequence = Class68_Sub1.method1050(arg7, 2);
+            animationSequence = ProducingGraphicsBuffer_Sub1.method1050(arg7, 2);
             animationFrame = 0;
             animationCycleDelay = -1 + Node.pulseCycle;
             if(arg8 && animationSequence.frameStep != -1) {
@@ -97,7 +97,7 @@ public class GameObject extends Renderable {
         }
     }
 
-    public static void drawLoadingText(int percent, Color color, String rsString) {
+    public static void drawLoadingText(int percent, Color color, String desc) {
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
             if(Class17.helveticaBold == null) {
@@ -123,7 +123,7 @@ public class GameObject extends Renderable {
                 graphics1.fillRect(2 + 3 * percent, 2, 300 - 3 * percent, 30);
                 graphics1.setFont(Class17.helveticaBold);
                 graphics1.setColor(Color.white);
-                graphics1.drawString(rsString, (304 - (Class8.fontMetrics.stringWidth(rsString))) / 2, 22);
+                graphics1.drawString(desc, (304 - (Class8.fontMetrics.stringWidth(desc))) / 2, 22);
                 graphics.drawImage(Class26.anImage624, Class12.width / 2 - 152, IdentityKit.height / 2 - 18, null);
             } catch(Exception exception) {
                 int centerWidth = Class12.width / 2 - 152;
@@ -136,7 +136,7 @@ public class GameObject extends Renderable {
                 graphics.fillRect(percent * 3 + 2 + centerWidth, 2 + centerHeight, 300 + -(3 * percent), 30);
                 graphics.setFont(Class17.helveticaBold);
                 graphics.setColor(Color.white);
-                graphics.drawString(rsString, (304 - (Class8.fontMetrics.stringWidth(rsString))) / 2+ centerWidth, 22 + centerHeight);
+                graphics.drawString(desc, (304 - (Class8.fontMetrics.stringWidth(desc))) / 2+ centerWidth, 22 + centerHeight);
             }
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
@@ -144,7 +144,7 @@ public class GameObject extends Renderable {
     }
 
     public static void method774(byte arg0) {
-        Buffer.aClass9_1933.method235();
+        Buffer.rgbImageCache.method235();
         if(arg0 != -96)
             Native.aClass1_3047 = null;
     }

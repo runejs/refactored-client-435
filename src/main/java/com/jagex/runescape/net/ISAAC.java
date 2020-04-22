@@ -404,7 +404,7 @@ public class ISAAC {
                 class40_sub3.anInt2033 = 0;
                 Class39.method451(class40_sub3, 19813);
             } else
-                class40_sub3.method457(arg0 ^ ~0x76);
+                class40_sub3.remove(arg0 ^ ~0x76);
         }
     }
 
