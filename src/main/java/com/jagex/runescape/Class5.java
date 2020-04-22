@@ -66,7 +66,7 @@ public class Class5 {
             Class43.processRightClick();
             SceneTile.drawMenuTooltip(4);
         } else
-            Class40_Sub5_Sub6.drawMenu();
+            Class40_Sub5_Sub6.drawMenu(4,4); // might be 0,0
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
             ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213.drawGraphics(0, 0, graphics);

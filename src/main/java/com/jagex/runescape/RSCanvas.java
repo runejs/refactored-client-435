@@ -35,8 +35,13 @@ public class RSCanvas extends Canvas {
         aComponent49 = arg0;
     }
 
+    @Override
+    public void repaint() {
+//        super.repaint();
+    }
+
     public static void method45() {
-        RSString.aProducingGraphicsBuffer_1665.method1046();
+        RSString.mapbackProducingGraphicsBuffer.method1046();
     }
 
     public static void method46(int arg0) {

@@ -63,8 +63,8 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if (!Class4.menuOpen) {
             Class43.processRightClick();
             SceneTile.drawMenuTooltip(4);
-        } else if (Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
-            Class40_Sub5_Sub6.drawMenu();
+        } else  {
+            Class40_Sub5_Sub6.drawMenu(4,4);
         }
         if (Class40_Sub6.anInt2118 == 1) {
             LinkedList.aClass40_Sub5_Sub14_Sub4_1057.drawImage(472, 296);

@@ -159,7 +159,7 @@ public class FloorDecoration {
             WallDecoration.aClass40_Sub5_Sub14_Sub2_1270 = null;
             Class40_Sub5_Sub15.tabIcons = null;
             Class13.aClass40_Sub5_Sub14_Sub2_418 = null;
-            RSString.aProducingGraphicsBuffer_1665 = null;
+            RSString.mapbackProducingGraphicsBuffer = null;
             RSCanvas.anIntArray62 = null;
             ActorDefinition.sidebarOffsets = null;
             Class39.aProducingGraphicsBuffer_908 = null;
@@ -184,7 +184,7 @@ public class FloorDecoration {
                 Class35.aClass40_Sub5_Sub14_Sub2_1744 = null;
                 HashTable.aClass40_Sub5_Sub14_Sub2_549 = null;
                 Renderable.aClass40_Sub5_Sub14_Sub2_2860 = null;
-                Class24.anIntArray577 = null;
+                Class24.fullScreenTextureArray = null;
                 Class30.aProducingGraphicsBuffer_714 = null;
                 Class40_Sub5_Sub17_Sub6.aProducingGraphicsBuffer_3243 = null;
                 Class44.chatboxBackgroundImage = null;

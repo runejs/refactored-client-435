@@ -1,8 +1,8 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.Cache;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
@@ -80,8 +80,9 @@ public class Class37 {
         OverlayDefinition.method559(30);
     }
 
-    public static void renderMinimap(boolean arg0) {
+    public static void renderMinimap() {
         RSCanvas.method45();
+
         if(Class27.minimapState == 2) {
             byte[] mmBackgroundPixels = Class34.minimapBackgroundImage.imgPixels;
             int[] rasterPixels = Rasterizer.destinationPixels;
@@ -91,97 +92,102 @@ public class Class37 {
                     rasterPixels[i] = 0;
             }
             AnimationSequence.minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
-            ActorDefinition.method574();
-        } else {
-            int i = 48 + Player.localPlayer.worldX / 32;
-            int i_8_ = 464 + -(Player.localPlayer.worldY / 32);
-            int i_9_ = GroundItemTile.cameraHorizontal + Class43.cameraYawOffset & 0x7ff;
-            Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.shapeImageToPixels(25, 5, 146, 151, i, i_8_, i_9_, Class51.mapZoomOffset + 256, Landscape.anIntArray1186, Class34.anIntArray852);
-            for(int i_10_ = 0; GameObject.anInt3040 > i_10_; i_10_++) {
-                i = 2 + 4 * Actor.anIntArray3149[i_10_] + -(Player.localPlayer.worldX / 32);
-                i_8_ = 2 + 4 * LinkedList.anIntArray1083[i_10_] - Player.localPlayer.worldY / 32;
-                SceneTile.drawOnMinimap(i_8_, i, MouseHandler.aClass40_Sub5_Sub14_Sub4Array1466[i_10_]);
-            }
-            for(int i_11_ = 0; i_11_ < 104; i_11_++) {
-                for(int i_12_ = 0; i_12_ < 104; i_12_++) {
-                    LinkedList linkedList = Wall.groundItems[Player.worldLevel][i_11_][i_12_];
-                    if(linkedList != null) {
-                        i_8_ = -(Player.localPlayer.worldY / 32) + 2 + i_12_ * 4;
-                        i = -(Player.localPlayer.worldX / 32) + 2 + i_11_ * 4;
-                        SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[0]);
-                    }
+            ActorDefinition.drawMapBack();
+            return;
+        }
+
+        int i = 48 + Player.localPlayer.worldX / 32;
+        int i_8_ = 464 + -(Player.localPlayer.worldY / 32);
+        int i_9_ = GroundItemTile.cameraHorizontal + Class43.cameraYawOffset & 0x7ff;
+        Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.shapeImageToPixels(25, 5, 146, 151, i, i_8_, i_9_, Class51.mapZoomOffset + 256, Landscape.anIntArray1186, Class34.anIntArray852);
+        for(int i_10_ = 0; GameObject.anInt3040 > i_10_; i_10_++) {
+            i = 2 + 4 * Actor.anIntArray3149[i_10_] + -(Player.localPlayer.worldX / 32);
+            i_8_ = 2 + 4 * LinkedList.anIntArray1083[i_10_] - Player.localPlayer.worldY / 32;
+            SceneTile.drawOnMinimap(i_8_, i, MouseHandler.aClass40_Sub5_Sub14_Sub4Array1466[i_10_]);
+        }
+        for(int i_11_ = 0; i_11_ < 104; i_11_++) {
+            for(int i_12_ = 0; i_12_ < 104; i_12_++) {
+                LinkedList linkedList = Wall.groundItems[Player.worldLevel][i_11_][i_12_];
+                if(linkedList != null) {
+                    i_8_ = -(Player.localPlayer.worldY / 32) + 2 + i_12_ * 4;
+                    i = -(Player.localPlayer.worldX / 32) + 2 + i_11_ * 4;
+                    SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[0]);
                 }
             }
-            for(int i_13_ = 0; Player.npcCount > i_13_; i_13_++) {
-                Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[Player.npcIds[i_13_]];
-                if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.isVisible(1)) {
-                    ActorDefinition class40_sub5_sub5 = class40_sub5_sub17_sub4_sub2.actorDefinition;
-                    if(class40_sub5_sub5.childrenIds != null)
-                        class40_sub5_sub5 = class40_sub5_sub5.getChildDefinition(-1);
-                    if(class40_sub5_sub5 != null && class40_sub5_sub5.renderOnMinimap && class40_sub5_sub5.isClickable) {
-                        i = -(Player.localPlayer.worldX / 32) + class40_sub5_sub17_sub4_sub2.worldX / 32;
-                        i_8_ = class40_sub5_sub17_sub4_sub2.worldY / 32 + -(Player.localPlayer.worldY / 32);
-                        SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[1]);
-                    }
+        }
+        for(int i_13_ = 0; Player.npcCount > i_13_; i_13_++) {
+            Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[Player.npcIds[i_13_]];
+            if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.isVisible(1)) {
+                ActorDefinition class40_sub5_sub5 = class40_sub5_sub17_sub4_sub2.actorDefinition;
+                if(class40_sub5_sub5.childrenIds != null)
+                    class40_sub5_sub5 = class40_sub5_sub5.getChildDefinition(-1);
+                if(class40_sub5_sub5 != null && class40_sub5_sub5.renderOnMinimap && class40_sub5_sub5.isClickable) {
+                    i = -(Player.localPlayer.worldX / 32) + class40_sub5_sub17_sub4_sub2.worldX / 32;
+                    i_8_ = class40_sub5_sub17_sub4_sub2.worldY / 32 + -(Player.localPlayer.worldY / 32);
+                    SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[1]);
                 }
             }
-            for(int i_14_ = 0; Player.localPlayerCount > i_14_; i_14_++) {
-                Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[Player.trackedPlayerIndices[i_14_]];
-                if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.isVisible(1)) {
-                    i = class40_sub5_sub17_sub4_sub1.worldX / 32 + -(Player.localPlayer.worldX / 32);
-                    i_8_ = -(Player.localPlayer.worldY / 32) + class40_sub5_sub17_sub4_sub1.worldY / 32;
-                    boolean bool = false;
-                    long l = RSString.method58(class40_sub5_sub17_sub4_sub1.playerName);
-                    for(int i_15_ = 0; Item.friendsCount > i_15_; i_15_++) {
-                        if(l == Class59.aLongArray1397[i_15_] && Class40_Sub7.friendWorlds[i_15_] != 0) {
-                            bool = true;
-                            break;
-                        }
+        }
+        for(int i_14_ = 0; Player.localPlayerCount > i_14_; i_14_++) {
+            Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[Player.trackedPlayerIndices[i_14_]];
+            if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.isVisible(1)) {
+                i = class40_sub5_sub17_sub4_sub1.worldX / 32 + -(Player.localPlayer.worldX / 32);
+                i_8_ = -(Player.localPlayer.worldY / 32) + class40_sub5_sub17_sub4_sub1.worldY / 32;
+                boolean bool = false;
+                long l = RSString.method58(class40_sub5_sub17_sub4_sub1.playerName);
+                for(int i_15_ = 0; Item.friendsCount > i_15_; i_15_++) {
+                    if(l == Class59.aLongArray1397[i_15_] && Class40_Sub7.friendWorlds[i_15_] != 0) {
+                        bool = true;
+                        break;
                     }
-                    boolean bool_16_ = false;
-                    if(Player.localPlayer.teamId != 0 && class40_sub5_sub17_sub4_sub1.teamId != 0 && class40_sub5_sub17_sub4_sub1.teamId == Player.localPlayer.teamId)
-                        bool_16_ = true;
-                    if(bool)
-                        SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[3]);
-                    else if(bool_16_)
-                        SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[4]);
-                    else
-                        SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[2]);
                 }
+                boolean bool_16_ = false;
+                if(Player.localPlayer.teamId != 0 && class40_sub5_sub17_sub4_sub1.teamId != 0 && class40_sub5_sub17_sub4_sub1.teamId == Player.localPlayer.teamId)
+                    bool_16_ = true;
+                if(bool)
+                    SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[3]);
+                else if(bool_16_)
+                    SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[4]);
+                else
+                    SceneTile.drawOnMinimap(i_8_, i, Class27.aClass40_Sub5_Sub14_Sub4Array649[2]);
             }
-            if(Player.anInt3288 != 0 && Node.pulseCycle % 20 < 10) {
-                if(Player.anInt3288 == 1 && HuffmanEncoding.anInt1545 >= 0 && Player.npcs.length > HuffmanEncoding.anInt1545) {
-                    Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[HuffmanEncoding.anInt1545];
-                    if(class40_sub5_sub17_sub4_sub2 != null) {
-                        i = -(Player.localPlayer.worldX / 32) + class40_sub5_sub17_sub4_sub2.worldX / 32;
-                        i_8_ = class40_sub5_sub17_sub4_sub2.worldY / 32 - Player.localPlayer.worldY / 32;
-                        OverlayDefinition.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], i, i_8_);
-                    }
-                }
-                if(Player.anInt3288 == 2) {
-                    i_8_ = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-Class26.baseY + Class4.anInt175);
-                    i = 4 * (ProducingGraphicsBuffer.anInt1637 - SpotAnimDefinition.baseX) - (-2 + Player.localPlayer.worldX / 32);
+        }
+        if(Player.anInt3288 != 0 && Node.pulseCycle % 20 < 10) {
+            if(Player.anInt3288 == 1 && HuffmanEncoding.anInt1545 >= 0 && Player.npcs.length > HuffmanEncoding.anInt1545) {
+                Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[HuffmanEncoding.anInt1545];
+                if(class40_sub5_sub17_sub4_sub2 != null) {
+                    i = -(Player.localPlayer.worldX / 32) + class40_sub5_sub17_sub4_sub2.worldX / 32;
+                    i_8_ = class40_sub5_sub17_sub4_sub2.worldY / 32 - Player.localPlayer.worldY / 32;
                     OverlayDefinition.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], i, i_8_);
                 }
-                if(Player.anInt3288 == 10 && ProducingGraphicsBuffer.anInt1623 >= 0 && Player.trackedPlayers.length > ProducingGraphicsBuffer.anInt1623) {
-                    Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[ProducingGraphicsBuffer.anInt1623];
-                    if(class40_sub5_sub17_sub4_sub1 != null) {
-                        i_8_ = -(Player.localPlayer.worldY / 32) + class40_sub5_sub17_sub4_sub1.worldY / 32;
-                        i = class40_sub5_sub17_sub4_sub1.worldX / 32 - Player.localPlayer.worldX / 32;
-                        OverlayDefinition.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], i, i_8_);
-                    }
+            }
+            if(Player.anInt3288 == 2) {
+                i_8_ = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-Class26.baseY + Class4.anInt175);
+                i = 4 * (ProducingGraphicsBuffer.anInt1637 - SpotAnimDefinition.baseX) - (-2 + Player.localPlayer.worldX / 32);
+                OverlayDefinition.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], i, i_8_);
+            }
+            if(Player.anInt3288 == 10 && ProducingGraphicsBuffer.anInt1623 >= 0 && Player.trackedPlayers.length > ProducingGraphicsBuffer.anInt1623) {
+                Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[ProducingGraphicsBuffer.anInt1623];
+                if(class40_sub5_sub17_sub4_sub1 != null) {
+                    i_8_ = -(Player.localPlayer.worldY / 32) + class40_sub5_sub17_sub4_sub1.worldY / 32;
+                    i = class40_sub5_sub17_sub4_sub1.worldX / 32 - Player.localPlayer.worldX / 32;
+                    OverlayDefinition.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], i, i_8_);
                 }
             }
-            if(VarbitDefinition.destinationX != 0) {
-                i = 2 + VarbitDefinition.destinationX * 4 + -(Player.localPlayer.worldX / 32);
-                i_8_ = 2 + 4 * Class55.destinationY + -(Player.localPlayer.worldY / 32);
-                SceneTile.drawOnMinimap(i_8_, i, Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[0]);
-            }
-            Rasterizer.drawFilledRectangle(97, 78, 3, 3, 16777215);
-            AnimationSequence.minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
-            if(arg0)
-                ActorDefinition.method574();
         }
+        if(VarbitDefinition.destinationX != 0) {
+            i = 2 + VarbitDefinition.destinationX * 4 + -(Player.localPlayer.worldX / 32);
+            i_8_ = 2 + 4 * Class55.destinationY + -(Player.localPlayer.worldY / 32);
+            SceneTile.drawOnMinimap(i_8_, i, Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[0]);
+        }
+        Rasterizer.drawFilledRectangle(97, 78, 3, 3, 16777215);
+        AnimationSequence.minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
+        Class34.minimapBackgroundImage.drawImage(0, 0);
+
+        if(Class4.menuOpen/* && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1*/) {
+            Class40_Sub5_Sub6.drawMenu(550, 4);
+        }
+        ActorDefinition.drawMapBack();
 
     }
 

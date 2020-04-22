@@ -1060,7 +1060,7 @@ public class Class27 {
             Class40_Sub5_Sub17_Sub1.method763(MouseHandler.aCanvas1469, ActorDefinition.aClass6_Sub1_2377);
         }
 
-        if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
+        if(Class4.menuOpen/* && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1*/) {
             ISAAC.redrawTabArea = true;
         }
         if(Class29.tabAreaOverlayWidgetId != -1) {
@@ -1126,17 +1126,17 @@ public class Class27 {
         if(Native.clickToContinueString != null) {
             ChatBox.redrawChatbox = true;
         }
-        if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
+        if(Class4.menuOpen/* && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2*/) {
             ChatBox.redrawChatbox = true;
         }
         if(ChatBox.redrawChatbox) {
             ChatBox.redrawChatbox = false;
-            ChatBox.renderChatbox(true);
+            ChatBox.renderChatbox();
             Console.console.drawConsoleArea();
         }
         method353((byte) -114);
 
-        Class37.renderMinimap(true);
+        Class37.renderMinimap();
 
 
         if(Class51.anInt1205 != -1) {

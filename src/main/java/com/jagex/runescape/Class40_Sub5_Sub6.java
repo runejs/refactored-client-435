@@ -1,10 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.Cache;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.UnderlayDefinition;
-import com.jagex.runescape.cache.def.VarbitDefinition;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.console.Console;
@@ -422,30 +419,32 @@ public class Class40_Sub5_Sub6 extends SubNode {
 
     }
 
-    public static void drawMenu() {
+    public static void drawMenu(int xOffSet, int yOffSet) {
         int height = CollisionMap.menuHeight;
         int width = VertexNormal.menuWidth;
-        int offsetX = InteractiveObject.menuOffsetX;
-        int offsetY = Main.menuOffsetY;
+        int offsetX = InteractiveObject.menuOffsetX- (xOffSet - 4);
+        int offsetY =  (-yOffSet + 4) +Main.menuOffsetY;
         int colour = 0x5d5447;
+        ChatBox.redrawChatbox = true;
+        ISAAC.redrawTabArea = true;
         Rasterizer.drawFilledRectangleAlpha(offsetX, offsetY, width, height, colour, 120);
         Rasterizer.drawFilledRectangle(1 + offsetX, 1 + offsetY, -2 + width, 16, 0);
         Rasterizer.drawUnfilledRectangle(offsetX + 1, 18 + offsetY, -2 + width, -19 + height, 0);
         Class40_Sub5_Sub17_Sub6.fontBold.drawString(English.chooseOption, offsetX + 3, 14 + offsetY, colour);
-        int x = Class13.mouseX;
-        int y = Landscape.mouseY;
-        if (Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
-            x -= 4;
-            y -= 4;
-        }
-        if (Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
-            y -= 205;
-            x -= 553;
-        }
-        if (Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
-            y -= 357;
-            x -= 17;
-        }
+        int x = Class13.mouseX  - (xOffSet);
+        int y = (-yOffSet) + Landscape.mouseY;
+//        if (Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
+//            x -= 4;
+//            y -= 4;
+//        }
+//        if (Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
+//            y -= 205;
+//            x -= 553;
+//        }
+//        if (Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
+//            y -= 357;
+//            x -= 17;
+//        }
         for (int action = 0; action < ActorDefinition.menuActionRow; action++) {
             int actionY = 15 * (-action + ActorDefinition.menuActionRow + -1) + offsetY + 31;
             int actionColour = 16777215;

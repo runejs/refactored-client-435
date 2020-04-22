@@ -7,6 +7,7 @@ import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.cache.media.Widget.WidgetType;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.Native;
@@ -414,10 +415,12 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
 
     public void openClientApplet(String cacheFolder, int cacheIndexes, int height, int fileStoreId, InetAddress inetAddress, int clientVersion, int width) {
         try {
+            height = ScreenController.frameMode == ScreenMode.FIXED ? 503 :  ScreenController.frameHeight;
+            width = ScreenController.frameMode == ScreenMode.FIXED ? 765 : ScreenController.frameWidth;
             Class39.anInt901 = clientVersion;
             Class12.width = width;
-            Class4.anApplet_Sub1_179 = this;
             IdentityKit.height = height;
+            Class4.anApplet_Sub1_179 = this;
             Class35.aFrame1732 = new Frame();
             Class35.aFrame1732.setTitle("Jagex");
 //            Class35.aFrame1732.setResizable(false);

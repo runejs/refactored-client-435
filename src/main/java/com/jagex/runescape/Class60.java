@@ -56,62 +56,62 @@ public class Class60 {
         }
         width += 8;
         int height = ActorDefinition.menuActionRow * 15 + 21;
-        if(Class57.clickX > 4 && RSString.clickY > 4 && Class57.clickX < 516 && RSString.clickY < 338) {
-            Class40_Sub5_Sub17_Sub1.menuScreenArea = 0;
-            CollisionMap.menuHeight = ActorDefinition.menuActionRow * 15 + 22;
-            Class4.menuOpen = true;
+        if(Class57.clickX > 0 && RSString.clickY > 0 && Class57.clickX < Class35.aFrame1732.getWidth() && RSString.clickY < Class35.aFrame1732.getHeight()) {
+//            Class40_Sub5_Sub17_Sub1.menuScreenArea = 0;
             int x = -(width / 2) + -4 + Class57.clickX;
-            VertexNormal.menuWidth = width;
-            if(width + x > 512)
-                x = 512 - width;
+            if(width + x > Class35.aFrame1732.getWidth() - 4)
+                x =  Class35.aFrame1732.getWidth() - 4;
             if(x < 0)
                 x = 0;
-            InteractiveObject.menuOffsetX = x;
             int y = RSString.clickY + -4;
-            if(y + height > 334)
-                y = 334 - height;
+            if(y + height >  Class35.aFrame1732.getHeight() - 4)
+                y =  Class35.aFrame1732.getHeight() - 4;
             if(y < 0)
                 y = 0;
-            Main.menuOffsetY = y;
-        }
-        if(Class57.clickX > 553 && RSString.clickY > 205 && Class57.clickX < 743 && RSString.clickY < 466) {
-            CollisionMap.menuHeight = 22 + 15 * ActorDefinition.menuActionRow;
-            Class40_Sub5_Sub17_Sub1.menuScreenArea = 1;
-            int y = -205 + RSString.clickY;
-            int x = -(width / 2) + -553 + Class57.clickX;
-            if(x < 0)
-                x = 0;
-            else if(width + x > 190)
-                x = 190 - width;
             Class4.menuOpen = true;
             InteractiveObject.menuOffsetX = x;
-            if(y >= 0) {
-                if(height + y > 261)
-                    y = -height + 261;
-            } else
-                y = 0;
-            VertexNormal.menuWidth = width;
             Main.menuOffsetY = y;
-        }
-        if(Class57.clickX > 17 && RSString.clickY > 357 && Class57.clickX < 496 && RSString.clickY < 453) {
             VertexNormal.menuWidth = width;
-            Class40_Sub5_Sub17_Sub1.menuScreenArea = 2;
             CollisionMap.menuHeight = ActorDefinition.menuActionRow * 15 + 22;
-            int y = RSString.clickY + -357;
-            if(y >= 0) {
-                if(height + y > 96)
-                    y = -height + 96;
-            } else
-                y = 0;
-            int x = -(width / 2) + -17 + Class57.clickX;
-            Class4.menuOpen = true;
-            Main.menuOffsetY = y;
-            if(x < 0)
-                x = 0;
-            else if(x + width > 479)
-                x = -width + 479;
-            InteractiveObject.menuOffsetX = x;
         }
+//        if(Class57.clickX > 553 && RSString.clickY > 205 && Class57.clickX < 743 && RSString.clickY < 466) {
+//            CollisionMap.menuHeight = 22 + 15 * ActorDefinition.menuActionRow;
+//            Class40_Sub5_Sub17_Sub1.menuScreenArea = 1;
+//            int y = -205 + RSString.clickY;
+//            int x = -(width / 2) + -553 + Class57.clickX;
+//            if(x < 0)
+//                x = 0;
+//            else if(width + x > 190)
+//                x = 190 - width;
+//            Class4.menuOpen = true;
+//            InteractiveObject.menuOffsetX = x;
+//            if(y >= 0) {
+//                if(height + y > 261)
+//                    y = -height + 261;
+//            } else
+//                y = 0;
+//            VertexNormal.menuWidth = width;
+//            Main.menuOffsetY = y;
+//        }
+//        if(Class57.clickX > 17 && RSString.clickY > 357 && Class57.clickX < 496 && RSString.clickY < 453) {
+//            VertexNormal.menuWidth = width;
+//            Class40_Sub5_Sub17_Sub1.menuScreenArea = 2;
+//            CollisionMap.menuHeight = ActorDefinition.menuActionRow * 15 + 22;
+//            int y = RSString.clickY + -357;
+//            if(y >= 0) {
+//                if(height + y > 96)
+//                    y = -height + 96;
+//            } else
+//                y = 0;
+//            int x = -(width / 2) + -17 + Class57.clickX;
+//            Class4.menuOpen = true;
+//            Main.menuOffsetY = y;
+//            if(x < 0)
+//                x = 0;
+//            else if(x + width > 479)
+//                x = -width + 479;
+//            InteractiveObject.menuOffsetX = x;
+//        }
     }
 
     public static RSString method991(int arg0, long arg1) {

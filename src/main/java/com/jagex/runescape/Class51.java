@@ -39,7 +39,7 @@ public class Class51 {
             ItemDefinition.drawWelcomeScreenGraphics();
             LinkedList.drawChatBoxGraphics();
             Class55.drawTabGraphics();
-            ActorDefinition.method574();
+            ActorDefinition.drawMapBack();
             GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             Class40_Sub2.method527(Class5.currentTabId, arg0 + 4, Class40_Sub5_Sub11.tabWidgetIds, Class29.tabAreaOverlayWidgetId == -1, -1);
             Class38.aBoolean893 = true;

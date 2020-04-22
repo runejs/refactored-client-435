@@ -9,7 +9,7 @@ import java.awt.*;
 import java.nio.charset.StandardCharsets;
 
 public class RSString {
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1665;
+    public static ProducingGraphicsBuffer mapbackProducingGraphicsBuffer;
     public static int clickY = 0;
     public static Cache aClass9_1684;
     public static int anInt1690 = 0;

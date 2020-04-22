@@ -192,7 +192,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             Buffer.tabTopBack = Class27.method359(Native.aClass1_338, Native.aClass1_305, arg2);
             RSCanvas.chatboxProducingGraphicsBuffer = Class40_Sub5_Sub13.createGraphicsBuffer(479, 96, arg0);
             Class44.chatboxBackgroundImage.drawImage(0, 0);
-            RSString.aProducingGraphicsBuffer_1665 = Class40_Sub5_Sub13.createGraphicsBuffer(172, 156, arg0);
+            RSString.mapbackProducingGraphicsBuffer = Class40_Sub5_Sub13.createGraphicsBuffer(172, 156, arg0);
             Rasterizer.resetPixels();
             Class34.minimapBackgroundImage.drawImage(0, 0);
             SubNode.tabImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(190, 261, arg0);

@@ -1,11 +1,11 @@
 package com.jagex.runescape.frame;
 
-import com.jagex.runescape.Class35;
-import com.jagex.runescape.Class38;
-import com.jagex.runescape.Class40_Sub5_Sub13;
-import com.jagex.runescape.Class51;
+import com.jagex.runescape.*;
+import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.media.Rasterizer3D;
+import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.Scene;
 
 import java.awt.*;
@@ -31,6 +31,8 @@ public class ScreenController {
                 frameHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
             }
         }
+        Class12.width = frameWidth;
+        IdentityKit.height = frameHeight;
     }
 
     public static void refreshFrameSize() {
@@ -44,6 +46,8 @@ public class ScreenController {
                 setBounds();
             }
         }
+        Class12.width = frameWidth;
+        IdentityKit.height = frameHeight;
     }
 
     public static void setBounds() {
@@ -55,6 +59,16 @@ public class ScreenController {
 //        anIntArray1181 = Texture.anIntArray1472;
 //        Texture.method365(frameMode == ScreenMode.FIXED ? 512 : frameWidth, frameMode == ScreenMode.FIXED ? 334 : frameHeight);
 //        anIntArray1182 = Texture.anIntArray1472;
+
+        Rasterizer3D.prepare(null,frameMode == ScreenMode.FIXED ? 765 : frameWidth, frameMode == ScreenMode.FIXED ? 503 : frameHeight);
+        Class24.fullScreenTextureArray = Rasterizer3D.setLineOffsets(null);
+        Rasterizer3D.prepare(null,frameMode == ScreenMode.FIXED ? 190 : frameWidth, frameMode == ScreenMode.FIXED ? 261 : frameHeight);
+        Player.anIntArray3284 = Rasterizer3D.setLineOffsets(null);
+        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 479 : frameWidth, frameMode == ScreenMode.FIXED ? 96 : frameHeight);
+        Class5.chatboxLineOffsets = Rasterizer3D.setLineOffsets(null);
+        Rasterizer3D.prepare(null,frameMode == ScreenMode.FIXED ? 190 : frameWidth, frameMode == ScreenMode.FIXED ? 261 : frameHeight);
+        ActorDefinition.sidebarOffsets = Rasterizer3D.setLineOffsets(null);
+
         int[] is = new int[9];
         for (int i = 0; i < 9; i++) {
             int i_0_ = 15 + 32 * i + 128;

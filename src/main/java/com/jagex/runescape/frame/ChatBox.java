@@ -39,8 +39,8 @@ public class ChatBox {
             'c', 'y', 'f', 'g', 'p', 'b', 'v', 'k', 'x', 'j', 'q', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8',
             '9', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '\243',
             '$', '%', '"', '[', ']', '_', '{', '}', '/', '|'};
-    public static void renderChatbox(boolean arg0) {
-        CacheIndex.aBoolean260 = arg0;
+    public static void renderChatbox() {
+        CacheIndex.aBoolean260 = true;
         Class22.method305();
         if(messagePromptRaised) {
             Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(Native.aClass1_1563, 239, 40, 0);
@@ -180,8 +180,8 @@ public class ChatBox {
             if(!bool)
                 redrawChatbox = true;
         }
-        if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
-            Class40_Sub5_Sub6.drawMenu();
+        if(Class4.menuOpen/* && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2*/)
+            Class40_Sub5_Sub6.drawMenu(17, 357);
         LinkedList.drawChatBoxGraphics();
 
     }
