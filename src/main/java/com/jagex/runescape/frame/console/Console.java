@@ -67,6 +67,7 @@ public class Console {
         commands.add(new ShowFpsCommand());
         commands.add(new HideFpsCommand());
         commands.add(new SearchCommand());
+        commands.add(new ResizableCommand());
     }
 
     public int getMaxScroll() {

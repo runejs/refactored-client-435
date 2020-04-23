@@ -12,6 +12,7 @@ import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.cache.media.Widget.WidgetType;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
+import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
@@ -118,6 +119,7 @@ public class Class27 {
         KeyFocusListener.draw3dScreen();
         Console.console.drawConsole();
         Console.console.drawConsoleArea();
+        ChatBox.renderChatbox();
         if(ISAAC.aBoolean519 && method368((byte) -41, false, true) == 0) {
             ISAAC.aBoolean519 = false;
         }
@@ -1060,6 +1062,7 @@ public class Class27 {
             Class40_Sub5_Sub17_Sub1.method763(MouseHandler.aCanvas1469, ActorDefinition.aClass6_Sub1_2377);
         }
 
+
         if(Class4.menuOpen/* && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1*/) {
             ISAAC.redrawTabArea = true;
         }
@@ -1131,8 +1134,8 @@ public class Class27 {
         }
         if(ChatBox.redrawChatbox) {
             ChatBox.redrawChatbox = false;
-            ChatBox.renderChatbox();
-            Console.console.drawConsoleArea();
+//            ChatBox.renderChatbox();
+//            Console.console.drawConsoleArea();
         }
         method353((byte) -114);
 

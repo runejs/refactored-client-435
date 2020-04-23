@@ -21,7 +21,7 @@ public class Player extends Actor {
     public static int anInt3264 = 0;
     public static int worldLevel;
     public static byte[] aByteArray3270;
-    public static int[] anIntArray3284;
+    public static int[] viewportOffsets;
     public static int anInt3288 = 0;
     public static Player localPlayer;
     public static int[] actorUpdatingIndices = new int[2048];

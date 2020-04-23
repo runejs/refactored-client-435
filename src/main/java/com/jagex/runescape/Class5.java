@@ -57,7 +57,7 @@ public class Class5 {
             Renderable.handleSequences(UnderlayDefinition.openSecondaryWidgetId);
         anInt199 = 0;
         ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213.method1046();
-        Player.anIntArray3284 = Rasterizer3D.setLineOffsets(Player.anIntArray3284);
+        Player.viewportOffsets = Rasterizer3D.setLineOffsets(Player.viewportOffsets);
         Rasterizer.resetPixels();
         Class40_Sub5_Sub6.drawInterface(0, ActorDefinition.openFullScreenWidgetId, 503, (byte) -5, 0, 0, 765);
         if(UnderlayDefinition.openSecondaryWidgetId != -1)

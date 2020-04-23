@@ -7,6 +7,8 @@ import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
@@ -90,7 +92,10 @@ public abstract class Class22 {
     }
 
     public static void method305() {
-        RSCanvas.chatboxProducingGraphicsBuffer.method1046();
+//        if(ScreenController.frameMode == ScreenMode.FIXED){
+
+            RSCanvas.chatboxProducingGraphicsBuffer.method1046();
+//        }
         Class44.chatboxBackgroundImage.drawImage(0, 0);
         Class5.chatboxLineOffsets = Rasterizer3D.setLineOffsets(Class5.chatboxLineOffsets);
     }
