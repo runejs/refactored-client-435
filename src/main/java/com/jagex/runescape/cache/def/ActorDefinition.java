@@ -4,6 +4,8 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
@@ -96,8 +98,10 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
 
     public static void drawMapBack() {
         try {
+            if(ScreenController.frameMode == ScreenMode.FIXED) {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            RSString.mapbackProducingGraphicsBuffer.drawGraphics(550, 4, graphics);
+                RSString.mapbackProducingGraphicsBuffer.drawGraphics(550, 4, graphics);
+            }
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }

@@ -5,6 +5,8 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.frame.ChatBox;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
@@ -48,12 +50,15 @@ public class Class43 {
         if(Class4.menuOpen/* && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1*/) {
             if(Class34.anInt848 == 1)
                 method398(-2);
-            else
+            else if(ScreenController.frameMode == ScreenMode.FIXED)
                 Class40_Sub5_Sub6.drawMenu(553,205);
         }
         if(arg0 >= -22)
             cameraYawOffset = 80;
-        Class55.drawTabGraphics();
+
+        if(ScreenController.frameMode == ScreenMode.FIXED) {
+            Class55.drawTabGraphics();
+        }
     }
 
 

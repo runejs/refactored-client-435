@@ -180,9 +180,11 @@ public class ChatBox {
             if(!bool)
                 redrawChatbox = true;
         }
-        if(Class4.menuOpen/* && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2*/)
+        if(Class4.menuOpen && ScreenController.frameMode == ScreenMode.FIXED/* && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2*/)
             Class40_Sub5_Sub6.drawMenu(17, 357);
-        LinkedList.drawChatBoxGraphics();
+        if(ScreenController.frameMode == ScreenMode.FIXED) {
+            LinkedList.drawChatBoxGraphics();
+        }
 
     }
 

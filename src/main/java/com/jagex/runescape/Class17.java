@@ -21,7 +21,7 @@ public class Class17 {
     public static int[] anIntArray456;
     public static int deregisterActorCount = 0;
     public static Font helveticaBold;
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_462;
+    public static ProducingGraphicsBuffer chatboxTop;
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_463;
     public static int anInt464 = 0;
     public static int[] anIntArray466 = new int[256];

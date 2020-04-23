@@ -6,6 +6,8 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.TypeFace;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
@@ -71,7 +73,9 @@ public class GenericTile {
         arg2.drawText(English.reportAbuse, 417, 17, 85, 25, 16777215, true, 1, 1, 0);
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            HuffmanEncoding.aProducingGraphicsBuffer_1541.drawGraphics(0, 453, graphics);
+            if(ScreenController.frameMode == ScreenMode.FIXED) {
+                HuffmanEncoding.aProducingGraphicsBuffer_1541.drawGraphics(0, 453, graphics);
+            }
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }

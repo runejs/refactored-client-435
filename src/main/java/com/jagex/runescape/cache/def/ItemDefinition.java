@@ -3,6 +3,8 @@ package com.jagex.runescape.cache.def;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
@@ -102,16 +104,19 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
 
     public static void drawWelcomeScreenGraphics() {
         try {
-            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            Landscape.aProducingGraphicsBuffer_1185.drawGraphics(0, 4, graphics);
-            Class40_Sub5_Sub1.aProducingGraphicsBuffer_2275.drawGraphics(0, 357, graphics);
-            Class39.aProducingGraphicsBuffer_908.drawGraphics(722, 4, graphics);
-            GameObject.aProducingGraphicsBuffer_3045.drawGraphics(743, 205, graphics);
-            Class40_Sub5_Sub17_Sub6.aProducingGraphicsBuffer_3243.drawGraphics(0, 0, graphics);
-            Class40_Sub7.aProducingGraphicsBuffer_2123.drawGraphics(516, 4, graphics);
-            Class61.aProducingGraphicsBuffer_1441.drawGraphics(516, 205, graphics);
-            Class30.aProducingGraphicsBuffer_714.drawGraphics(496, 357, graphics);
-            Class17.aProducingGraphicsBuffer_462.drawGraphics(0, 338, graphics);
+            if(ScreenController.frameMode == ScreenMode.FIXED) {
+                Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
+
+                Landscape.framePieceRight.drawGraphics(0, 4, graphics);
+                Class40_Sub5_Sub1.chatboxRight.drawGraphics(0, 357, graphics);
+                Class39.mapbackLeft.drawGraphics(722, 4, graphics);
+                GameObject.tabPieceLeft.drawGraphics(743, 205, graphics);
+                Class40_Sub5_Sub17_Sub6.framePieceTop.drawGraphics(0, 0, graphics);
+                Class40_Sub7.mapBackRight.drawGraphics(516, 4, graphics);
+                Class61.tabPieceUpperRight.drawGraphics(516, 205, graphics);
+                Class30.tabPieveLowerRight.drawGraphics(496, 357, graphics);
+                Class17.chatboxTop.drawGraphics(0, 338, graphics);
+            }
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }

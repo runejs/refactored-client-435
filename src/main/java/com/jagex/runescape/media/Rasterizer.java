@@ -120,6 +120,53 @@ public class Rasterizer extends SubNode {
     }
 
 
+    public static void copyPixels(int[] pixels, int width, int height, int paintX, int paintY) {
+        int sourcePixel = 0;
+        if(paintX < viewportLeft) {
+            width -= viewportLeft - paintX;
+            paintX = viewportLeft;
+        }
+        if(paintY < viewportTop) {
+            height -= viewportTop - paintY;
+            paintY = viewportTop;
+        }
+        if(paintX + width > viewportRight)
+            width = viewportRight - paintX;
+        if(paintY + height > viewportBottom)
+            height = viewportBottom - paintY;
+        int pixelOffset = Rasterizer.destinationWidth - width;
+        int pixel = paintX + paintY * Rasterizer.destinationWidth;
+        for(int heightCounter = -height; heightCounter < 0; heightCounter++) {
+            for(int widthCounter = -width; widthCounter < 0; widthCounter++)
+                destinationPixels[pixel++] = pixels[sourcePixel++];
+            pixel += pixelOffset;
+        }
+    }
+
+    public static void copyPixelsCutOff(int[] pixels, int srcWidth, int srcHeight, int paintX, int paintY, int drawWidth, int drawHeight, int offsetX, int offsetY) {
+        int sourcePixel = offsetX + offsetY * srcWidth;
+        if(paintX < viewportLeft) {
+            drawWidth -= viewportLeft - paintX;
+            paintX = viewportLeft;
+        }
+        if(paintY < viewportTop) {
+            drawHeight -= viewportTop - paintY;
+            paintY = viewportTop;
+        }
+        if(paintX + drawWidth > viewportRight)
+            drawWidth = viewportRight - paintX;
+        if(paintY + drawHeight > viewportBottom)
+            drawHeight = viewportBottom - paintY;
+        int pixelOffset = Rasterizer.destinationWidth - (drawWidth);
+        int pixel = paintX + paintY * Rasterizer.destinationWidth;
+        for(int heightCounter = -(drawHeight); heightCounter < 0; heightCounter++) {
+            for(int widthCounter = -(drawWidth); widthCounter < 0; widthCounter++)
+                destinationPixels[pixel++] = pixels[sourcePixel++];
+            pixel += pixelOffset;
+            sourcePixel += srcWidth-drawWidth;
+        }
+    }
+
     public static void method661(int[] arg0) {
         arg0[0] = viewportLeft;
         arg0[1] = viewportTop;

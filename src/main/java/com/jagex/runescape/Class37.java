@@ -9,6 +9,8 @@ import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -184,7 +186,7 @@ public class Class37 {
         AnimationSequence.minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
         Class34.minimapBackgroundImage.drawImage(0, 0);
 
-        if(Class4.menuOpen/* && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1*/) {
+        if(Class4.menuOpen && ScreenController.frameMode == ScreenMode.FIXED/* && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1*/) {
             Class40_Sub5_Sub6.drawMenu(550, 4);
         }
         ActorDefinition.drawMapBack();

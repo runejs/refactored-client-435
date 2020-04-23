@@ -5,6 +5,8 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
@@ -64,7 +66,9 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             Class43.processRightClick();
             SceneTile.drawMenuTooltip(4);
         } else  {
-            Class40_Sub5_Sub6.drawMenu(4,4);
+            if(ScreenController.frameMode == ScreenMode.FIXED){
+                Class40_Sub5_Sub6.drawMenu(4,4);
+            }
         }
         if (Class40_Sub6.anInt2118 == 1) {
             LinkedList.aClass40_Sub5_Sub14_Sub4_1057.drawImage(472, 296);

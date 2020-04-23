@@ -21,7 +21,7 @@ import tech.henning.fourthreefive.Configuration;
 
 public class Class40_Sub5_Sub1 extends SubNode {
     public static LinkedList aLinkedList_2268 = new LinkedList();
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_2275;
+    public static ProducingGraphicsBuffer chatboxRight;
     public static int crossY = 0;
     public static int anInt2278 = 0;
     public static int anInt2280 = 0;

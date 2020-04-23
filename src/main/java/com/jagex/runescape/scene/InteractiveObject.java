@@ -11,7 +11,7 @@ import com.jagex.runescape.media.renderable.Renderable;
 public class InteractiveObject {
     public static Cache aClass9_470 = new Cache(10);
     public static int menuOffsetX;
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_482;
+    public static ProducingGraphicsBuffer tabTop;
     public static int[] firstMenuOperand = new int[500];
     public static Class27 aClass27_485 = new Class27();
     public static int anInt487 = 0;

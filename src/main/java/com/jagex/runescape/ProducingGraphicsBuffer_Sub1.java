@@ -99,6 +99,11 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
         graphics.drawImage(image, x, y, this);
     }
 
+    @Override
+    public void paintComponent(int x, int y, Graphics graphics) {
+
+    }
+
     public synchronized void removeConsumer(ImageConsumer arg0) {
         if(arg0 == imageConsumer)
             imageConsumer = null;

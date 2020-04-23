@@ -7,6 +7,8 @@ import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
@@ -67,7 +69,7 @@ public class Player extends Actor {
             if(arg0 < 106)
                 return;
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            VarbitDefinition.gameScreenImageProducer.drawGraphics(4, 4, graphics);
+            VarbitDefinition.gameScreenImageProducer.drawGraphics(ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, graphics);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }

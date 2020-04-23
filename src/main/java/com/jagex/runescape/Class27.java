@@ -13,6 +13,7 @@ import com.jagex.runescape.cache.media.Widget.WidgetType;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
@@ -117,9 +118,13 @@ public class Class27 {
         Class38_Sub1.method450((byte) -67);
         ((Class35) Rasterizer3D.anInterface3_2939).method425((byte) 6, Class5.anInt199);
         KeyFocusListener.draw3dScreen();
+
+        if(ScreenController.frameMode != ScreenMode.FIXED) {
+            ScreenController.RenderResizableUI();
+        }
         Console.console.drawConsole();
         Console.console.drawConsoleArea();
-        ChatBox.renderChatbox();
+
         if(ISAAC.aBoolean519 && method368((byte) -41, false, true) == 0) {
             ISAAC.aBoolean519 = false;
         }
@@ -1061,24 +1066,6 @@ public class Class27 {
         } else if(drawCount != 0) {
             Class40_Sub5_Sub17_Sub1.method763(MouseHandler.aCanvas1469, ActorDefinition.aClass6_Sub1_2377);
         }
-
-
-        if(Class4.menuOpen/* && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1*/) {
-            ISAAC.redrawTabArea = true;
-        }
-        if(Class29.tabAreaOverlayWidgetId != -1) {
-            boolean bool = Renderable.handleSequences(Class29.tabAreaOverlayWidgetId);
-            if(bool) {
-                ISAAC.redrawTabArea = true;
-            }
-        }
-        if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == -3) {
-            ISAAC.redrawTabArea = true;
-        }
-        if(SceneTile.activeInterfaceType == 2) {
-            ISAAC.redrawTabArea = true;
-        }
-        Class43.drawTabArea(-29);
         if(ChatBox.openChatboxWidgetId == -1) {
             Class12.chatboxInterface.scrollPosition = -77 + -ChatBox.chatboxScroll + ChatBox.chatboxScrollMax;
             if(Class13.mouseX > 448 && Class13.mouseX < 560 && Landscape.mouseY > 332) {
@@ -1114,55 +1101,114 @@ public class Class27 {
                 ChatBox.redrawChatbox = true;
             }
         }
-        if(ChatBox.openChatboxWidgetId != -1) {
-            boolean bool = Renderable.handleSequences(ChatBox.openChatboxWidgetId);
-            if(bool) {
+        if(ScreenController.frameMode == ScreenMode.FIXED) {
+
+            if(Class4.menuOpen/* && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1*/) {
+                ISAAC.redrawTabArea = true;
+            }
+            if(Class29.tabAreaOverlayWidgetId != -1) {
+                boolean bool = Renderable.handleSequences(Class29.tabAreaOverlayWidgetId);
+                if(bool) {
+                    ISAAC.redrawTabArea = true;
+                }
+            }
+            if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == -3) {
+                ISAAC.redrawTabArea = true;
+            }
+            if(SceneTile.activeInterfaceType == 2) {
+                ISAAC.redrawTabArea = true;
+            }
+            Class43.drawTabArea(-29);
+
+            if(ChatBox.openChatboxWidgetId != -1) {
+                boolean bool = Renderable.handleSequences(ChatBox.openChatboxWidgetId);
+                if(bool) {
+                    ChatBox.redrawChatbox = true;
+                }
+            }
+            if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 3) {
                 ChatBox.redrawChatbox = true;
             }
-        }
-        if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 3) {
-            ChatBox.redrawChatbox = true;
-        }
-        if(SceneTile.activeInterfaceType == 3) {
-            ChatBox.redrawChatbox = true;
-        }
-        if(Native.clickToContinueString != null) {
-            ChatBox.redrawChatbox = true;
-        }
-        if(Class4.menuOpen/* && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2*/) {
-            ChatBox.redrawChatbox = true;
-        }
-        if(ChatBox.redrawChatbox) {
-            ChatBox.redrawChatbox = false;
-//            ChatBox.renderChatbox();
-//            Console.console.drawConsoleArea();
-        }
-        method353((byte) -114);
-
-        Class37.renderMinimap();
-
-
-        if(Class51.anInt1205 != -1) {
-            IdentityKit.drawTabIcons = true;
-        }
-        if(IdentityKit.drawTabIcons) {
-            if(Class51.anInt1205 != -1 && Class51.anInt1205 == Class5.currentTabId) {
-                Class51.anInt1205 = -1;
-                SceneCluster.packetBuffer.putPacket(44);
-                SceneCluster.packetBuffer.putByte(Class5.currentTabId);
+            if(SceneTile.activeInterfaceType == 3) {
+                ChatBox.redrawChatbox = true;
             }
-            IdentityKit.drawTabIcons = false;
-            Class40_Sub3.aBoolean2026 = true;
-            Class40_Sub2.method527(Class5.currentTabId, 4, Class40_Sub5_Sub11.tabWidgetIds, Class29.tabAreaOverlayWidgetId == -1, Node.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
-        }
-        if(Cache.redrawChatbox) {
-            Class40_Sub3.aBoolean2026 = true;
-            Cache.redrawChatbox = false;
-            GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
-        }
+            if(Native.clickToContinueString != null) {
+                ChatBox.redrawChatbox = true;
+            }
+            if(Class4.menuOpen/* && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2*/) {
+                ChatBox.redrawChatbox = true;
+            }
+            if(ChatBox.redrawChatbox) {
+                ChatBox.redrawChatbox = false;
+                ChatBox.renderChatbox();
+                //            Console.console.drawConsoleArea();
+            }
+            method353((byte) -114);
 
-        Landscape.method934(Player.localPlayer.worldX, Player.worldLevel, Class5.anInt199, Player.localPlayer.worldY);
-        Class5.anInt199 = 0;
+            Class37.renderMinimap();
+
+
+            if(Class51.anInt1205 != -1) {
+                IdentityKit.drawTabIcons = true;
+            }
+            if(IdentityKit.drawTabIcons) {
+                if(Class51.anInt1205 != -1 && Class51.anInt1205 == Class5.currentTabId) {
+                    Class51.anInt1205 = -1;
+                    SceneCluster.packetBuffer.putPacket(44);
+                    SceneCluster.packetBuffer.putByte(Class5.currentTabId);
+                }
+                IdentityKit.drawTabIcons = false;
+                Class40_Sub3.aBoolean2026 = true;
+                Class40_Sub2.method527(Class5.currentTabId, 4, Class40_Sub5_Sub11.tabWidgetIds, Class29.tabAreaOverlayWidgetId == -1, Node.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
+            }
+            if(Cache.redrawChatbox) {
+                Class40_Sub3.aBoolean2026 = true;
+                Cache.redrawChatbox = false;
+                GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
+            }
+
+            Landscape.method934(Player.localPlayer.worldX, Player.worldLevel, Class5.anInt199, Player.localPlayer.worldY);
+            Class5.anInt199 = 0;
+        } else {
+
+
+            if(Class29.tabAreaOverlayWidgetId != -1) {
+                Renderable.handleSequences(Class29.tabAreaOverlayWidgetId);
+            }
+
+            if(ChatBox.openChatboxWidgetId != -1) {
+                boolean bool = Renderable.handleSequences(ChatBox.openChatboxWidgetId);
+            }
+            method353((byte) -114);
+            ChatBox.renderChatbox();
+
+            Class43.drawTabArea(-29);
+
+            Class37.renderMinimap();
+
+
+            if(Class51.anInt1205 != -1) {
+                IdentityKit.drawTabIcons = true;
+            }
+            if(IdentityKit.drawTabIcons) {
+                if(Class51.anInt1205 != -1 && Class51.anInt1205 == Class5.currentTabId) {
+                    Class51.anInt1205 = -1;
+                    SceneCluster.packetBuffer.putPacket(44);
+                    SceneCluster.packetBuffer.putByte(Class5.currentTabId);
+                }
+                IdentityKit.drawTabIcons = false;
+                Class40_Sub3.aBoolean2026 = true;
+                Class40_Sub2.method527(Class5.currentTabId, 4, Class40_Sub5_Sub11.tabWidgetIds, Class29.tabAreaOverlayWidgetId == -1, Node.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
+            }
+            if(Cache.redrawChatbox) {
+                Class40_Sub3.aBoolean2026 = true;
+                Cache.redrawChatbox = false;
+                GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
+            }
+
+            Landscape.method934(Player.localPlayer.worldX, Player.worldLevel, Class5.anInt199, Player.localPlayer.worldY);
+            Class5.anInt199 = 0;
+        }
 
     }
 

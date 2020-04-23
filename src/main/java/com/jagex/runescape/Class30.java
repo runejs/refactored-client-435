@@ -24,7 +24,7 @@ public class Class30 {
     public static int anInt704 = 0;
     public static int anInt708 = -1;
     public static int[] anIntArray712 = new int[50];
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_714;
+    public static ProducingGraphicsBuffer tabPieveLowerRight;
     public static int[] anIntArray715 = new int[50];
     public static Class64 aClass64_717;
 

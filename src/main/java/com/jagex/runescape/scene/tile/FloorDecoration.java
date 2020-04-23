@@ -151,9 +151,9 @@ public class FloorDecoration {
             RSCanvas.anIntArray66 = null;
             Class34.minimapBackgroundImage = null;
             Landscape.anIntArray1186 = null;
-            Class17.aProducingGraphicsBuffer_462 = null;
-            RSCanvas.aProducingGraphicsBuffer_59 = null;
-            GameObject.aProducingGraphicsBuffer_3045 = null;
+            Class17.chatboxTop = null;
+            RSCanvas.tabBottom = null;
+            GameObject.tabPieceLeft = null;
             Class57.bottomChatBack = null;
             inventoryBackgroundImage = null;
             WallDecoration.aClass40_Sub5_Sub14_Sub2_1270 = null;
@@ -162,10 +162,10 @@ public class FloorDecoration {
             RSString.mapbackProducingGraphicsBuffer = null;
             RSCanvas.anIntArray62 = null;
             ActorDefinition.sidebarOffsets = null;
-            Class39.aProducingGraphicsBuffer_908 = null;
+            Class39.mapbackLeft = null;
             Class38_Sub1.aClass40_Sub5_Sub14_Sub2_1919 = null;
             Class56.tabBottomBack = null;
-            Landscape.aProducingGraphicsBuffer_1185 = null;
+            Landscape.framePieceRight = null;
             GameShell.aClass40_Sub5_Sub14_Sub2_1 = null;
             Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105 = null;
             Class34.anIntArray852 = null;
@@ -176,17 +176,17 @@ public class FloorDecoration {
             VarbitDefinition.gameScreenImageProducer = null;
             ISAAC.aClass40_Sub5_Sub14_Sub2_524 = null;
             RSCanvas.chatboxProducingGraphicsBuffer = null;
-            Class40_Sub7.aProducingGraphicsBuffer_2123 = null;
-            InteractiveObject.aProducingGraphicsBuffer_482 = null;
+            Class40_Sub7.mapBackRight = null;
+            InteractiveObject.tabTop = null;
             if(arg0 < -28) {
-                Class40_Sub5_Sub1.aProducingGraphicsBuffer_2275 = null;
-                Class61.aProducingGraphicsBuffer_1441 = null;
+                Class40_Sub5_Sub1.chatboxRight = null;
+                Class61.tabPieceUpperRight = null;
                 Class35.aClass40_Sub5_Sub14_Sub2_1744 = null;
                 HashTable.aClass40_Sub5_Sub14_Sub2_549 = null;
                 Renderable.aClass40_Sub5_Sub14_Sub2_2860 = null;
                 Class24.fullScreenTextureArray = null;
-                Class30.aProducingGraphicsBuffer_714 = null;
-                Class40_Sub5_Sub17_Sub6.aProducingGraphicsBuffer_3243 = null;
+                Class30.tabPieveLowerRight = null;
+                Class40_Sub5_Sub17_Sub6.framePieceTop = null;
                 Class44.chatboxBackgroundImage = null;
             }
         }

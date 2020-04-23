@@ -17,7 +17,7 @@ import com.jagex.runescape.util.Signlink;
 public class Class61 {
     public static PacketBuffer packetBuffer = new PacketBuffer(5000);
     public static int[][] anIntArrayArray1435 = new int[104][104];
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1441;
+    public static ProducingGraphicsBuffer tabPieceUpperRight;
     public static boolean aBoolean1444 = false;
     public static int[] anIntArray1445;
 

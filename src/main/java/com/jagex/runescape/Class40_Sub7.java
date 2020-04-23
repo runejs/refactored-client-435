@@ -7,7 +7,7 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.VertexNormal;
 
 public class Class40_Sub7 extends Node {
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_2123;
+    public static ProducingGraphicsBuffer mapBackRight;
     public static int[] friendWorlds = new int[200];
 
     public RSString aClass1_2124;

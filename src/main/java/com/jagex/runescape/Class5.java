@@ -4,6 +4,8 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.frame.ChatBox;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
@@ -66,7 +68,9 @@ public class Class5 {
             Class43.processRightClick();
             SceneTile.drawMenuTooltip(4);
         } else
-            Class40_Sub5_Sub6.drawMenu(4,4); // might be 0,0
+            if(ScreenController.frameMode == ScreenMode.FIXED){
+                Class40_Sub5_Sub6.drawMenu(4,4); // might be 0,0
+            }
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
             ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213.drawGraphics(0, 0, graphics);
