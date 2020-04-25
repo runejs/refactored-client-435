@@ -208,49 +208,6 @@ public class Class40_Sub5_Sub1 extends SubNode {
 
     }
 
-    public static void method544() {
-        if (MouseHandler.clickType == 1) {
-            if (Class57.clickX >= 6 && Class57.clickX <= 106 && RSString.clickY >= 467 && RSString.clickY <= 499) {
-                Cache.redrawChatbox = true;
-                ChatBox.publicChatMode = (1 + ChatBox.publicChatMode) % 4;
-                ChatBox.redrawChatbox = true;
-                SceneCluster.packetBuffer.putPacket(32);
-                SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
-                SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
-                SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
-            }
-            if (Class57.clickX >= 135 && Class57.clickX <= 235 && RSString.clickY >= 467 && RSString.clickY <= 499) {
-                ChatBox.redrawChatbox = true;
-                ChatBox.privateChatMode = (ChatBox.privateChatMode + 1) % 3;
-                Cache.redrawChatbox = true;
-                SceneCluster.packetBuffer.putPacket(32);
-                SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
-                SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
-                SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
-            }
-            if (Class57.clickX >= 273 && Class57.clickX <= 373 && RSString.clickY >= 467 && RSString.clickY <= 499) {
-                ChatBox.tradeMode = (ChatBox.tradeMode + 1) % 3;
-                Cache.redrawChatbox = true;
-                ChatBox.redrawChatbox = true;
-                SceneCluster.packetBuffer.putPacket(32);
-                SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
-                SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
-                SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
-            }
-            if (Class57.clickX >= 412 && Class57.clickX <= 512 && RSString.clickY >= 467 && RSString.clickY <= 499) {
-                if (HuffmanEncoding.openScreenWidgetId == -1) {
-                    PacketBuffer.method516();
-                    if (Class34.anInt854 != -1) {
-                        Class67.reportMutePlayer = false;
-                        HuffmanEncoding.reportAbuseInterfaceID = HuffmanEncoding.openScreenWidgetId = Class34.anInt854;
-                        Native.reportedName = "";
-                    }
-                } else
-                    Class44.addChatMessage("", English.pleaseCloseInterfaceBeforeReportAbuse, 0);
-            }
-        }
-    }
-
     public static void processPlayerMenuOptions(Player player, int x, int y, int index) {
         if (Player.localPlayer != player && ActorDefinition.menuActionRow < 400) {
             String rsString;

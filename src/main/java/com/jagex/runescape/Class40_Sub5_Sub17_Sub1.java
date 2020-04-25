@@ -269,19 +269,19 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 RSCanvas.anIntArray66[y] = -i_16_ + i_15_;
             }
             for(int y = 5; y < 156; y++) {
-                int i_19_ = 0;
-                int i_20_ = 999;
+                int maxWidth = 0;
+                int minWidth = 999;
                 for(int x = 25; x < 172; x++) {
                     if(Class34.minimapBackgroundImage.imgPixels[x + Class34.minimapBackgroundImage.imgWidth * y] != 0 || x <= 34 && y <= 34) {
-                        if(i_20_ != 999) {
-                            i_19_ = x;
+                        if(minWidth != 999) {
+                            maxWidth = x;
                             break;
                         }
-                    } else if(i_20_ == 999)
-                        i_20_ = x;
+                    } else if(minWidth == 999)
+                        minWidth = x;
                 }
-                Landscape.anIntArray1186[-5 + y] = i_20_ - 25;
-                Class34.anIntArray852[-5 + y] = i_19_ + -i_20_;
+                Landscape.anIntArray1186[-5 + y] = minWidth - 25;
+                Class34.anIntArray852[-5 + y] = maxWidth + -minWidth;
             }
             SubNode.aBoolean2083 = true;
         }

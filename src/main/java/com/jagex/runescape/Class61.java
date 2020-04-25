@@ -51,7 +51,7 @@ public class Class61 {
     public static void method996(int arg0) {
         if(arg0 != 19655)
             English.systemUpdateIn = null;
-        SubNode.tabImageProducer.method1046();
+        SubNode.tabImageProducer.prepareRasterizer();
         FloorDecoration.inventoryBackgroundImage.drawImage(0, 0);
         ActorDefinition.sidebarOffsets = Rasterizer3D.setLineOffsets(ActorDefinition.sidebarOffsets);
     }

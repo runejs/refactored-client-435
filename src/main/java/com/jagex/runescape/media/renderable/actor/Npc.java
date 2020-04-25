@@ -10,6 +10,7 @@ import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
+import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.Native;
@@ -291,9 +292,9 @@ public class Npc extends Actor {
                         }
                         MouseHandler.processMenuClick();
                         if(ActorDefinition.openFullScreenWidgetId == -1) {
-                            Item.handleMinimapMouse();
-                            Class38_Sub1.method447();
-                            Class40_Sub5_Sub1.method544();
+                            ScreenController.handleMinimapMouse();
+                            ScreenController.handleTabClick();
+                            ScreenController.handleChatButtonsClick();
                         }
                         if(SpotAnimDefinition.mouseButtonPressed == 1 || MouseHandler.clickType == 1)
                             anInt3294++;

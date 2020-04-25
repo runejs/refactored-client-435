@@ -66,7 +66,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             Class43.processRightClick();
             SceneTile.drawMenuTooltip(4);
         } else  {
-            if(ScreenController.frameMode == ScreenMode.FIXED){
+            if(ScreenController.frameMode == ScreenMode.FIXED && Class40_Sub5_Sub17_Sub1.menuScreenArea == 0){
                 Class40_Sub5_Sub6.drawMenu(4,4);
             }
         }
@@ -76,7 +76,11 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if (InteractiveObject.showFps) {
             int y = 20;
             int x = 507;
-            int colour = 0xffff00;
+            if(ScreenController.frameMode != ScreenMode.FIXED) {
+                x = ScreenController.frameWidth - 220;
+            }
+
+                int colour = 0xffff00;
             if (GenericTile.fps < 30 && VertexNormal.lowMemory) {
                 colour = 0xff0000;
             }

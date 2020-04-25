@@ -1,6 +1,8 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Model;
@@ -61,8 +63,14 @@ public class Class22_Sub1 extends Class22 {
                 Class44.anInt1048 = -1;
                 ISAAC.anInt522 = -1;
             } else {
-                ISAAC.anInt522 = 256 + (arg2 << 9) / arg1;
-                Class44.anInt1048 = (i << 9) / arg1 + 167;
+                if(ScreenController.frameMode == ScreenMode.FIXED){
+                    ISAAC.anInt522 = 256 + (arg2 << 9) / arg1;
+                    Class44.anInt1048 = (i << 9) / arg1 + 167;
+                } else {
+                    ISAAC.anInt522 = ScreenController.frameWidth/2 + (arg2 << 9) / arg1;
+                    Class44.anInt1048 = (i << 9) / arg1 +  ScreenController.frameHeight/2;
+                }
+
             }
         }
     }

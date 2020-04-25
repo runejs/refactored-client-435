@@ -45,7 +45,7 @@ public class GenericTile {
     }
 
     public static void method943(int arg0, TypeFace arg2, int arg3, int arg4) {
-        HuffmanEncoding.aProducingGraphicsBuffer_1541.method1046();
+        HuffmanEncoding.aProducingGraphicsBuffer_1541.prepareRasterizer();
         Class57.bottomChatBack.drawImage(0, 0);
         arg2.drawShadowedStringCenter(English.publicChat, 55, 28, 16777215, true);
         if(arg4 == 0)

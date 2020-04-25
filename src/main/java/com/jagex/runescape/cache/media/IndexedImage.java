@@ -19,11 +19,11 @@ public class IndexedImage extends Rasterizer {
         /* empty */
     }
 
-    public IndexedImage(int arg0, int arg1, int arg2) {
-        maxWidth = imgWidth = arg0;
-        maxHeight = imgHeight = arg1;
+    public IndexedImage(int width, int height, int arg2) {
+        maxWidth = imgWidth = width;
+        maxHeight = imgHeight = height;
         xDrawOffset = yDrawOffset = 0;
-        imgPixels = new byte[arg0 * arg1];
+        imgPixels = new byte[width * height];
         palette = new int[arg2];
     }
 

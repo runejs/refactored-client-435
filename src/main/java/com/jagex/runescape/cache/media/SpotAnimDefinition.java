@@ -80,7 +80,7 @@ public class SpotAnimDefinition extends SubNode {
                 English.loadedInputHandler = null;
             }
             if (Class40_Sub3.anInt2032 == 2) {
-                long l = Class34.aLong853 = RSString.method58(Native.username.toString());
+                long l = Class34.aLong853 = RSString.nameToLong(Native.username.toString());
                 SceneCluster.packetBuffer.currentPosition = 0;
                 SceneCluster.packetBuffer.putByte(14);
                 int i = (int) (0x1fL & l >> 16);
@@ -128,7 +128,7 @@ public class SpotAnimDefinition extends SubNode {
                 SceneCluster.packetBuffer.putIntBE(seeds[2]);
                 SceneCluster.packetBuffer.putIntBE(seeds[3]);
                 SceneCluster.packetBuffer.putIntBE(ISAAC.aClass31_521.uid);
-                SceneCluster.packetBuffer.putLongBE(RSString.method58(Native.username.toString()));
+                SceneCluster.packetBuffer.putLongBE(RSString.nameToLong(Native.username.toString()));
                 SceneCluster.packetBuffer.method505(Native.password);
                 if (Configuration.RSA_ENABLED) {
                     SceneCluster.packetBuffer.applyRSA(Configuration.RSA_MODULUS, Configuration.RSA_PUBLIC_KEY);

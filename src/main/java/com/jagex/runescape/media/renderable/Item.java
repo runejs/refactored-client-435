@@ -92,50 +92,6 @@ public class Item extends Renderable {
             Class40_Sub6.secondaryCameraVertical += (-Class40_Sub6.secondaryCameraVertical + i_9_) / 80;
     }
 
-    public static void handleMinimapMouse() {
-        if (Class27.minimapState != 0) {
-            return;
-        }
-        if (MouseHandler.clickType == 1) {
-            int x = -575 + Class57.clickX;
-            int y = -5 + RSString.clickY - 4;
-            if (x >= 0 && y >= 0 && x < 146 && y < 151) {
-                x -= 73;
-                y -= 75;
-                int angle = 0x7ff & Class43.cameraYawOffset + GroundItemTile.cameraHorizontal;
-                int sin = Rasterizer3D.sinetable[angle];
-                int cos = Rasterizer3D.cosinetable[angle];
-                cos = (Class51.mapZoomOffset + 256) * cos >> 8;
-                sin = (Class51.mapZoomOffset + 256) * sin >> 8;
-                int i_14_ = y * sin + x * cos >> 11;
-                int i_15_ = cos * y - x * sin >> 11;
-                int destX = Player.localPlayer.worldX + i_14_ >> 7;
-                int destY = -i_15_ + Player.localPlayer.worldY >> 7;
-
-                if (Item.obfuscatedKeyStatus[81] &&  InteractiveObject.playerRights > 1) {
-                    SceneCluster.packetBuffer.putPacket(246);
-                    SceneCluster.packetBuffer.putString(MessageFormat.format("move {0} {1}", Integer.toString(destX + SpotAnimDefinition.baseX), Integer.toString(destY + Class26.baseY)));
-                } else {
-                    boolean bool = Class38_Sub1.doWalkTo(0, 0, Player.localPlayer.pathY[0], destX, 0, true, 0, 0, Player.localPlayer.pathX[0], destY, 1);
-                    if (bool) {
-                        SceneCluster.packetBuffer.putByte(x);
-                        SceneCluster.packetBuffer.putByte(y);
-                        SceneCluster.packetBuffer.putShortBE(GroundItemTile.cameraHorizontal);
-                        SceneCluster.packetBuffer.putByte(57);
-                        SceneCluster.packetBuffer.putByte(Class43.cameraYawOffset);
-                        SceneCluster.packetBuffer.putByte(Class51.mapZoomOffset);
-                        SceneCluster.packetBuffer.putByte(89);
-                        SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldX);
-                        SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldY);
-                        SceneCluster.packetBuffer.putByte(Class40_Sub5_Sub15.arbitraryDestination);
-                        SceneCluster.packetBuffer.putByte(63);
-                    }
-                }
-
-            }
-        }
-    }
-
     public static void method778(HuffmanEncoding arg1) {
         IdentityKit.aHuffmanEncoding_2590 = arg1;
     }
@@ -162,23 +118,23 @@ public class Item extends Renderable {
             Rasterizer.resetPixels();
             byte[] is = arg2.method170("", Native.titleImage, 1);
             ImageRGB class40_sub5_sub14_sub4 = new ImageRGB(is, arg0);
-            Class8.flameLeftBackground.method1046();
+            Class8.flameLeftBackground.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(0, 0);
-            GameObject.flameRightBackground.method1046();
+            GameObject.flameRightBackground.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(-637, 0);
-            Class39.aProducingGraphicsBuffer_907.method1046();
+            Class39.aProducingGraphicsBuffer_907.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(-128, 0);
-            Class51.aProducingGraphicsBuffer_1206.method1046();
+            Class51.aProducingGraphicsBuffer_1206.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(-202, -371);
-            Class38.aProducingGraphicsBuffer_887.method1046();
+            Class38.aProducingGraphicsBuffer_887.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(-202, -171);
-            Class17.aProducingGraphicsBuffer_463.method1046();
+            Class17.aProducingGraphicsBuffer_463.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(0, -265);
-            KeyFocusListener.aProducingGraphicsBuffer_1285.method1046();
+            KeyFocusListener.aProducingGraphicsBuffer_1285.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(-562, -265);
-            GameObjectDefinition.aProducingGraphicsBuffer_2524.method1046();
+            GameObjectDefinition.aProducingGraphicsBuffer_2524.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(-128, -171);
-            ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631.method1046();
+            ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(-562, -171);
             int[] is_18_ = new int[class40_sub5_sub14_sub4.imageWidth];
             for (int i = 0; i < class40_sub5_sub14_sub4.imageHeight; i++) {
@@ -187,26 +143,26 @@ public class Item extends Renderable {
                 for (int i_20_ = 0; i_20_ < class40_sub5_sub14_sub4.imageWidth; i_20_++)
                     class40_sub5_sub14_sub4.pixels[i_20_ + class40_sub5_sub14_sub4.imageWidth * i] = is_18_[i_20_];
             }
-            Class8.flameLeftBackground.method1046();
+            Class8.flameLeftBackground.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(382, 0);
-            GameObject.flameRightBackground.method1046();
+            GameObject.flameRightBackground.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(-255, 0);
-            Class39.aProducingGraphicsBuffer_907.method1046();
+            Class39.aProducingGraphicsBuffer_907.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(254, 0);
-            Class51.aProducingGraphicsBuffer_1206.method1046();
+            Class51.aProducingGraphicsBuffer_1206.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(180, -371);
-            Class38.aProducingGraphicsBuffer_887.method1046();
+            Class38.aProducingGraphicsBuffer_887.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(180, -171);
-            Class17.aProducingGraphicsBuffer_463.method1046();
+            Class17.aProducingGraphicsBuffer_463.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(382, -265);
-            KeyFocusListener.aProducingGraphicsBuffer_1285.method1046();
+            KeyFocusListener.aProducingGraphicsBuffer_1285.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(-180, -265);
-            GameObjectDefinition.aProducingGraphicsBuffer_2524.method1046();
+            GameObjectDefinition.aProducingGraphicsBuffer_2524.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(254, -171);
-            ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631.method1046();
+            ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(-180, -171);
             class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg3, Native.logo, (byte) 21, "");
-            Class39.aProducingGraphicsBuffer_907.method1046();
+            Class39.aProducingGraphicsBuffer_907.prepareRasterizer();
             class40_sub5_sub14_sub4.drawImage(-128 + 382 + -(class40_sub5_sub14_sub4.imageWidth / 2), 18);
             Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775 = Class27.method359(Native.titleBox, "", arg3);
             Class59.aClass40_Sub5_Sub14_Sub2_1387 = Class27.method359(Native.titleButton, "", arg3);

@@ -136,7 +136,7 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
         arg2.prepareImage(image, this);
         drawPixels();
         arg2.prepareImage(image, this);
-        this.method1046();
+        this.prepareRasterizer();
     }
 
     public void startProduction(ImageConsumer arg0) {

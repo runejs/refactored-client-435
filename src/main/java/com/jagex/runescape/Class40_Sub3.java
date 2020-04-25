@@ -54,7 +54,7 @@ public class Class40_Sub3 extends Node {
             Npc.currentScene = new Scene(Class40_Sub6.tile_height);
             for (int i = 0; i < 4; i++)
                 Landscape.currentCollisionMap[i] = new CollisionMap(104, 104);
-            Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765 = new ImageRGB(512, 512);
+            Class40_Sub5_Sub13.minimapImage = new ImageRGB(512, 512);
             Class67.anInt1607 = 5;
             Class40_Sub5_Sub6.anInt2451 = 20;
             Native.currentLoadingText = English.startingGameEngine;
@@ -220,8 +220,8 @@ public class Class40_Sub3 extends Node {
                 i++;
             else
                 Class37.cursorCross = Class40_Sub2.method526(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_2179, "");
-            if (Class27.aClass40_Sub5_Sub14_Sub4Array649 == null)
-                Class27.aClass40_Sub5_Sub14_Sub4Array649 = Class40_Sub2.method526(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_183, "");
+            if (Class27.mapDots == null)
+                Class27.mapDots = Class40_Sub2.method526(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_183, "");
             else
                 i++;
             if (CacheIndex.aClass40_Sub5_Sub14_Sub2Array215 == null)

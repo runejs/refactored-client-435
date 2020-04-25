@@ -128,7 +128,7 @@ public class IncomingPackets {
                 int i_1_ = incomingPacketBuffer.getUnsignedShortBE();
                 String string = Class60.method991(-64, l).method85(). toString();
                 for(int i_2_ = 0; i_2_ < Item.friendsCount; i_2_++) {
-                    if(l == Class59.aLongArray1397[i_2_]) {
+                    if(l == Class59.friends[i_2_]) {
                         if(i_1_ != Class40_Sub7.friendWorlds[i_2_]) {
                             Class40_Sub7.friendWorlds[i_2_] = i_1_;
                             ISAAC.redrawTabArea = true;
@@ -143,7 +143,7 @@ public class IncomingPackets {
                 }
                 boolean bool = false;
                 if(string != null && Item.friendsCount < 200) {
-                    Class59.aLongArray1397[Item.friendsCount] = l;
+                    Class59.friends[Item.friendsCount] = l;
                     Class40_Sub11.friendUsernames[Item.friendsCount] = string;
                     Class40_Sub7.friendWorlds[Item.friendsCount] = i_1_;
                     Item.friendsCount++;
@@ -160,9 +160,9 @@ public class IncomingPackets {
                             String class1_5_ = Class40_Sub11.friendUsernames[i_3_];
                             Class40_Sub11.friendUsernames[i_3_] = Class40_Sub11.friendUsernames[1 + i_3_];
                             Class40_Sub11.friendUsernames[1 + i_3_] = class1_5_;
-                            long l_6_ = Class59.aLongArray1397[i_3_];
-                            Class59.aLongArray1397[i_3_] = Class59.aLongArray1397[i_3_ + 1];
-                            Class59.aLongArray1397[1 + i_3_] = l_6_;
+                            long l_6_ = Class59.friends[i_3_];
+                            Class59.friends[i_3_] = Class59.friends[i_3_ + 1];
+                            Class59.friends[1 + i_3_] = l_6_;
                             ISAAC.redrawTabArea = true;
                         }
                     }
@@ -303,7 +303,7 @@ public class IncomingPackets {
                 String message = incomingPacketBuffer.getString();
                 if(message.endsWith(Native.requestcmd_tradereq)) {
                     String class1_32_ = message.substring(0, message.indexOf(Native.char_colon));
-                    long l = RSString.method58(class1_32_);
+                    long l = RSString.nameToLong(class1_32_);
                     boolean bool = false;
                     for(int i_33_ = 0; i_33_ < Class42.anInt1008; i_33_++) {
                         if(l == WallDecoration.ignores[i_33_]) {
@@ -315,7 +315,7 @@ public class IncomingPackets {
                         Class44.addChatMessage(class1_32_, "wishes to trade with you.", 4);
                 } else if(message.endsWith(Native.requestcmd_duelreq)) {
                     String class1_30_ = message.substring(0, message.indexOf(Native.char_colon));
-                    long l = RSString.method58(class1_30_);
+                    long l = RSString.nameToLong(class1_30_);
                     boolean bool = false;
                     for(int i_31_ = 0; Class42.anInt1008 > i_31_; i_31_++) {
                         if(l == WallDecoration.ignores[i_31_]) {
@@ -327,7 +327,7 @@ public class IncomingPackets {
                         Class44.addChatMessage(class1_30_, English.suffixWishesToDuelWithYou, 8);
                 } else if(message.endsWith(Native.requestcmd_chalreq)) {
                     String class1_27_ = message.substring(0, message.indexOf(Native.char_colon));
-                    long l = RSString.method58(class1_27_);
+                    long l = RSString.nameToLong(class1_27_);
                     boolean bool = false;
                     for(int i_28_ = 0; i_28_ < Class42.anInt1008; i_28_++) {
                         if(l == WallDecoration.ignores[i_28_]) {
@@ -887,36 +887,36 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == 186) {
-                Player.anInt3288 = incomingPacketBuffer.getUnsignedByte();
-                if(Player.anInt3288 == 1)
+                Player.headIconDrawType = incomingPacketBuffer.getUnsignedByte();
+                if(Player.headIconDrawType == 1)
                     HuffmanEncoding.anInt1545 = incomingPacketBuffer.getUnsignedShortBE();
-                if(Player.anInt3288 >= 2 && Player.anInt3288 <= 6) {
-                    if(Player.anInt3288 == 2) {
+                if(Player.headIconDrawType >= 2 && Player.headIconDrawType <= 6) {
+                    if(Player.headIconDrawType == 2) {
                         Class35.anInt1730 = 64;
                         Landscape.anInt1170 = 64;
                     }
-                    if(Player.anInt3288 == 3) {
+                    if(Player.headIconDrawType == 3) {
                         Class35.anInt1730 = 64;
                         Landscape.anInt1170 = 0;
                     }
-                    if(Player.anInt3288 == 4) {
+                    if(Player.headIconDrawType == 4) {
                         Class35.anInt1730 = 64;
                         Landscape.anInt1170 = 128;
                     }
-                    if(Player.anInt3288 == 5) {
+                    if(Player.headIconDrawType == 5) {
                         Landscape.anInt1170 = 64;
                         Class35.anInt1730 = 0;
                     }
-                    if(Player.anInt3288 == 6) {
+                    if(Player.headIconDrawType == 6) {
                         Landscape.anInt1170 = 64;
                         Class35.anInt1730 = 128;
                     }
-                    Player.anInt3288 = 2;
+                    Player.headIconDrawType = 2;
                     ProducingGraphicsBuffer.anInt1637 = incomingPacketBuffer.getUnsignedShortBE();
                     Class4.anInt175 = incomingPacketBuffer.getUnsignedShortBE();
                     ActorDefinition.anInt2404 = incomingPacketBuffer.getUnsignedByte();
                 }
-                if(Player.anInt3288 == 10)
+                if(Player.headIconDrawType == 10)
                     ProducingGraphicsBuffer.anInt1623 = incomingPacketBuffer.getUnsignedShortBE();
                 incomingPacket = -1;
                 return true;

@@ -162,7 +162,7 @@ public class RSString {
         return method64(0, arg1);
     }
 
-    public static long method58(String arg0) {
+    public static long nameToLong(String arg0) {
         long l = 0L;
         for(int i = 0; i < arg0.length(); i++) {
             if(i >= 12)

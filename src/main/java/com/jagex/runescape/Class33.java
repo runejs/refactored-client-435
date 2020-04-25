@@ -70,7 +70,7 @@ public class Class33 {
                             if(ISAAC.anInt522 > -1)
                                 ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204[class40_sub5_sub5.headIcon].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -30);
                         }
-                        if(Player.anInt3288 == 1 && HuffmanEncoding.anInt1545 == Player.npcIds[-Player.localPlayerCount + i] && Node.pulseCycle % 20 < 10) {
+                        if(Player.headIconDrawType == 1 && HuffmanEncoding.anInt1545 == Player.npcIds[-Player.localPlayerCount + i] && Node.pulseCycle % 20 < 10) {
                             FloorDecoration.method342(15 + actor.anInt3117, actor);
                             if(ISAAC.anInt522 > -1)
                                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, Class44.anInt1048 + -28);
@@ -91,7 +91,7 @@ public class Class33 {
                                 }
                             }
                         }
-                        if(i >= 0 && Player.anInt3288 == 10 && ProducingGraphicsBuffer.anInt1623 == Player.trackedPlayerIndices[i]) {
+                        if(i >= 0 && Player.headIconDrawType == 10 && ProducingGraphicsBuffer.anInt1623 == Player.trackedPlayerIndices[i]) {
                             FloorDecoration.method342(actor.anInt3117 + 15, actor);
                             if(ISAAC.anInt522 > -1)
                                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[1].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);

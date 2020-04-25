@@ -86,7 +86,7 @@ public abstract class ProducingGraphicsBuffer {
     public abstract void drawGraphics(int x, int y, Graphics graphics);
     public abstract void paintComponent(int x, int y, Graphics graphics);
 
-    public void method1046() {
+    public void prepareRasterizer() {
         Rasterizer.prepare(pixels, width, height);
     }
 }

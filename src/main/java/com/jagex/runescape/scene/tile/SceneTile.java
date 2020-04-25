@@ -101,21 +101,21 @@ public class SceneTile extends Node {
         return arg2;
     }
 
-    public static void drawOnMinimap(int arg0, int arg1, ImageRGB sprite) {
+    public static void drawOnMinimap(int x, int y, ImageRGB sprite) {
         if (sprite == null) {
             return;
         }
-        int k = 0x7ff & Class43.cameraYawOffset + GroundItemTile.cameraHorizontal;
-        int l = arg0 * arg0 + arg1 * arg1;
+        int angle = 0x7ff & Class43.cameraYawOffset + GroundItemTile.cameraHorizontal;
+        int l = x * x + y * y;
         if (l > 6400) {
             return;
         }
-        int sine = Model.SINE[k];
-        int cosine = Model.COSINE[k];
+        int sine = Model.SINE[angle];
+        int cosine = Model.COSINE[angle];
         sine = sine * 256 / (Class51.mapZoomOffset + 256);
         cosine = cosine * 256 / (Class51.mapZoomOffset + 256);
-        int i_3_ = cosine * arg1 + arg0 * sine >> 16;
-        int i_4_ = -(arg1 * sine) + cosine * arg0 >> 16;
+        int i_3_ = cosine * y + x * sine >> 16;
+        int i_4_ = -(y * sine) + cosine * x >> 16;
         if (l > 2500)
             sprite.drawTo(Class34.minimapBackgroundImage, 98 + i_3_ + -(sprite.maxWidth / 2), -(sprite.maxHeight / 2) + -i_4_ + 79);
         else

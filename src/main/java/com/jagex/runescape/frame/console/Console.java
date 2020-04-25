@@ -74,34 +74,36 @@ public class Console {
         return messageCount * 18 + 17;
     }
 
-    public void drawConsole() {
+    public void drawConsole(int width, int height) {
+        // height = 334
+        // width = 512
         if (consoleOpen) {
             int scrollpos = getMaxScroll() - currentScroll - 310;
             if (messageCount > 17) {
-                Widget.drawScrollBar(494, 0, 313, scrollpos, getMaxScroll(), 0);
+                Widget.drawScrollBar(width - 18, 0, height-21, scrollpos, getMaxScroll(), 0);
             }
             if (alpha) {
-                Rasterizer.drawFilledRectangleAlpha(0, 0, 512, 334, 0x513092, 97);
+                Rasterizer.drawFilledRectangleAlpha(0, 0, width, height, 0x513092, 97);
             } else {
-                Rasterizer.drawFilledRectangle(0, 0, 512, 334, 0x513092);
+                Rasterizer.drawFilledRectangle(0, 0, width, height, 0x513092);
             }
-            Rasterizer.drawHorizontalLine(1, 315, 512, 0xffffff);
+            Rasterizer.drawHorizontalLine(1, height-19, width, 0xffffff);
             Class40_Sub5_Sub17_Sub6.fontBold.setEffects(0xffffff, -1);
-            Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(">", 11, 330);
+            Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(">", 11, height-4);
             if (this.versionWidth == -1) {
                 this.versionWidth = Class40_Sub5_Sub17_Sub6.fontSmall.getStringWidth(CONSOLE_VERSION);
             }
-            Class40_Sub5_Sub17_Sub6.fontSmall.drawBasicString(CONSOLE_VERSION, 487 - this.versionWidth, 312);
+            Class40_Sub5_Sub17_Sub6.fontSmall.drawBasicString(CONSOLE_VERSION, (width-25) - this.versionWidth, height-22);
 
             if (Node.pulseCycle % 20 < 10) {
-                Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(consoleInput.substring(0, currentChatIndex) + "|" + consoleInput.substring(currentChatIndex), 22, 330);
+                Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(consoleInput.substring(0, currentChatIndex) + "|" + consoleInput.substring(currentChatIndex), 22, height-4);
             } else {
-                Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(consoleInput.substring(0, currentChatIndex) + "<trans=0>|</trans>" + consoleInput.substring(currentChatIndex), 22, 330);
+                Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(consoleInput.substring(0, currentChatIndex) + "<trans=0>|</trans>" + consoleInput.substring(currentChatIndex), 22, height-4);
             }
         }
     }
 
-    public void drawConsoleArea() {
+    public void drawConsoleArea(int width, int height) {
         if (consoleOpen) {
             WallDecoration.fontNormal.setEffectsAlpha(0xffffff, -1, 178);
             for (int i = messageCount, j = 308; i > 0; i--, j -= 18) {

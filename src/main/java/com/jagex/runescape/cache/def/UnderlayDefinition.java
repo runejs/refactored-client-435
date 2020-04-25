@@ -44,7 +44,7 @@ public class UnderlayDefinition extends SubNode {
             } else {
                 String username = TextUtils.formatName(TextUtils.longToName(name));
                 for(int i = 0; Item.friendsCount > i; i++) {
-                    if(Class59.aLongArray1397[i] == name) {
+                    if(Class59.friends[i] == name) {
                         Class44.addChatMessage("", username + English.isAlreadyOnYourFriendList, 0);
                         return;
                     }
@@ -57,7 +57,7 @@ public class UnderlayDefinition extends SubNode {
                 }
                 if(!username.equals(Player.localPlayer.playerName)) {
                     Class40_Sub11.friendUsernames[Item.friendsCount] = username;
-                    Class59.aLongArray1397[Item.friendsCount] = name;
+                    Class59.friends[Item.friendsCount] = name;
                     Class40_Sub7.friendWorlds[Item.friendsCount] = 0;
                     Item.friendsCount++;
                     ISAAC.redrawTabArea = true;

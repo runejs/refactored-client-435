@@ -8,6 +8,8 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.frame.ChatBox;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.VertexNormal;
@@ -29,7 +31,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public static int anInt1450 = -1;
     public static Cache modelCache = new Cache(50);
     public static int anInt1457 = -1;
-    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array1466 = new ImageRGB[1000];
+    public static ImageRGB[] minimapHint = new ImageRGB[1000];
     public static int anInt1468;
     public static Canvas aCanvas1469;
     public static int clickType = 0;
@@ -73,6 +75,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 }
             }
             if(meta == 1) {
+
                 int menuX = InteractiveObject.menuOffsetX;
                 int menuY = Main.menuOffsetY;
                 int dx = VertexNormal.menuWidth;
@@ -247,7 +250,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         int rotation = event.getWheelRotation();
         int mouseX = Class12.eventMouseX;
         int mouseY = Cache.eventMouseY;
-        if(mouseX > 0 && mouseY > 346 && mouseX < 516 && mouseY < 505 && ChatBox.openChatboxWidgetId == -1) {
+        if(ScreenController.isCoordinatesInExtendedChatArea(mouseX, mouseY) && ChatBox.openChatboxWidgetId == -1) {
             if(rotation < 0) {
                 if(Class12.chatboxInterface.scrollPosition >= 1) {
 
@@ -281,8 +284,13 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             /* Tab interface scrolling */
             int tabInterfaceID = Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId];
             if(tabInterfaceID != -1) {
-                offsetX = 765 - 218;
-                offsetY = 503 - 298;
+                if(ScreenController.frameMode == ScreenMode.FIXED) {
+                    offsetX = 765 - 218;
+                    offsetY = 503 - 298;
+                } else {
+                    offsetX= ScreenController.frameWidth - 218;
+                    offsetY = ScreenController.frameHeight - 298;
+                }
                 for(int index = 0; index < Widget.interfaces[tabInterfaceID].length; index++) {
                     if(Widget.interfaces[tabInterfaceID][index].scrollHeight > 0) {
                         childID = index;

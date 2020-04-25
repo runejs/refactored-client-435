@@ -40,8 +40,8 @@ public class RSCanvas extends Canvas {
 //        super.repaint();
     }
 
-    public static void method45() {
-        RSString.mapbackProducingGraphicsBuffer.method1046();
+    public static void createMinimapRaster() {
+        RSString.mapbackProducingGraphicsBuffer.prepareRasterizer();
     }
 
     public static void method46(int arg0) {

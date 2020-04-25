@@ -167,6 +167,184 @@ public class Rasterizer extends SubNode {
         }
     }
 
+
+    private static void drawPixel(int x, int y, int color) {
+        if (x >= viewportLeft && y >= viewportTop && x < viewportRight && y < viewportBottom) {
+            destinationPixels[x + y * destinationWidth] = color;
+        }
+    }
+
+
+    public static void drawCircle(int x, int y, int radius, int color) {
+        if (radius == 0) {
+            drawPixel(x, y, color);
+        } else {
+            if (radius < 0) {
+                radius = -radius;
+            }
+            int var4 = y - radius;
+            if (var4 < viewportTop) {
+                var4 = viewportTop;
+            }
+            int var5 = y + radius + 1;
+            if (var5 > viewportBottom) {
+                var5 = viewportBottom;
+            }
+            int var6 = var4;
+            int var7 = radius * radius;
+            int var8 = 0;
+            int var9 = y - var4;
+            int var10 = var9 * var9;
+            int var11 = var10 - var9;
+            if (y > var5) {
+                y = var5;
+            }
+            int var12;
+            int var13;
+            int var14;
+            int var15;
+            while (var6 < y) {
+                while (var11 <= var7 || var10 <= var7) {
+                    var10 += var8 + var8;
+                    var11 += var8++ + var8;
+                }
+                var12 = x - var8 + 1;
+                if (var12 < viewportLeft) {
+                    var12 = viewportLeft;
+                }
+                var13 = x + var8;
+                if (var13 > viewportRight) {
+                    var13 = viewportRight;
+                }
+                var14 = var12 + var6 * destinationWidth;
+                for (var15 = var12; var15 < var13; ++var15) {
+                    destinationPixels[var14++] = color;
+                }
+                ++var6;
+                var10 -= var9-- + var9;
+                var11 -= var9 + var9;
+            }
+            var8 = radius;
+            var9 = var6 - y;
+            var11 = var9 * var9 + var7;
+            var10 = var11 - radius;
+            for (var11 -= var9; var6 < var5; var10 += var9++ + var9) {
+                while (var11 > var7 && var10 > var7) {
+                    var11 -= var8-- + var8;
+                    var10 -= var8 + var8;
+                }
+                var12 = x - var8;
+                if (var12 < viewportLeft) {
+                    var12 = viewportLeft;
+                }
+                var13 = x + var8;
+                if (var13 > viewportRight - 1) {
+                    var13 = viewportRight - 1;
+                }
+                var14 = var12 + var6 * destinationWidth;
+                for (var15 = var12; var15 <= var13; ++var15) {
+                    destinationPixels[var14++] = color;
+                }
+                ++var6;
+                var11 += var9 + var9;
+            }
+        }
+    }
+
+    public static void drawCircleAlpha(int x, int y, int radius, int color, int alpha) {
+        if (alpha != 0) {
+            if (alpha == 256) {
+                drawCircle(x, y, radius, color);
+            } else {
+                if (radius < 0) {
+                    radius = -radius;
+                }
+                int a = 256 - alpha;
+                int r = (color >> 16 & 255) * alpha;
+                int g = (color >> 8 & 255) * alpha;
+                int b = (color & 255) * alpha;
+                int topY = y - radius;
+                if (topY < Rasterizer.viewportTop) {
+                    topY = Rasterizer.viewportTop;
+                }
+                int bottomY = y + radius + 1;
+                if (bottomY > Rasterizer.viewportBottom) {
+                    bottomY = Rasterizer.viewportBottom;
+                }
+                int var14 = topY;
+                int var15 = radius * radius;
+                int var16 = 0;
+                int var17 = y - topY;
+                int var18 = var17 * var17;
+                int var19 = var18 - var17;
+                if (y > bottomY) {
+                    y = bottomY;
+                }
+                int var9;
+                int var10;
+                int var11;
+                int var21;
+                int var20;
+                int var23;
+                int var22;
+                int var24;
+                while (var14 < y) {
+                    while (var19 <= var15 || var18 <= var15) {
+                        var18 += var16 + var16;
+                        var19 += var16++ + var16;
+                    }
+                    var20 = x - var16 + 1;
+                    if (var20 < viewportLeft) {
+                        var20 = viewportLeft;
+                    }
+                    var21 = x + var16;
+                    if (var21 > viewportRight) {
+                        var21 = viewportRight;
+                    }
+                    var22 = var20 + var14 * Rasterizer.destinationWidth;
+                    for (var23 = var20; var23 < var21; ++var23) {
+                        var9 = (destinationPixels[var22] >> 16 & 255) * a;
+                        var10 = (destinationPixels[var22] >> 8 & 255) * a;
+                        var11 = (destinationPixels[var22] & 255) * a;
+                        var24 = (r + var9 >> 8 << 16) + (g + var10 >> 8 << 8) + (b + var11 >> 8);
+                        destinationPixels[var22++] = var24;
+                    }
+                    ++var14;
+                    var18 -= var17-- + var17;
+                    var19 -= var17 + var17;
+                }
+                var16 = radius;
+                var17 = -var17;
+                var19 = var17 * var17 + var15;
+                var18 = var19 - radius;
+                for (var19 -= var17; var14 < bottomY; var18 += var17++ + var17) {
+                    while (var19 > var15 && var18 > var15) {
+                        var19 -= var16-- + var16;
+                        var18 -= var16 + var16;
+                    }
+                    var20 = x - var16;
+                    if (var20 < viewportLeft) {
+                        var20 = viewportLeft;
+                    }
+                    var21 = x + var16;
+                    if (var21 > viewportRight - 1) {
+                        var21 = viewportRight - 1;
+                    }
+                    var22 = var20 + var14 * Rasterizer.destinationWidth;
+                    for (var23 = var20; var23 <= var21; ++var23) {
+                        var9 = (destinationPixels[var22] >> 16 & 255) * a;
+                        var10 = (destinationPixels[var22] >> 8 & 255) * a;
+                        var11 = (destinationPixels[var22] & 255) * a;
+                        var24 = (r + var9 >> 8 << 16) + (g + var10 >> 8 << 8) + (b + var11 >> 8);
+                        destinationPixels[var22++] = var24;
+                    }
+                    ++var14;
+                    var19 += var17 + var17;
+                }
+            }
+        }
+    }
+
     public static void method661(int[] arg0) {
         arg0[0] = viewportLeft;
         arg0[1] = viewportTop;

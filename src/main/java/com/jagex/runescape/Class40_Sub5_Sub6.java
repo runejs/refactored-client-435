@@ -201,11 +201,11 @@ public class Class40_Sub5_Sub6 extends SubNode {
                     ChatBox.messagePromptRaised = false;
                     ChatBox.redrawChatbox = true;
                     if (Class37.anInt876 == 1) {
-                        long l = RSString.method58(ChatBox.chatMessage);
+                        long l = RSString.nameToLong(ChatBox.chatMessage);
                         UnderlayDefinition.addFriend(l);
                     }
                     if (Class37.anInt876 == 2 && Item.friendsCount > 0) {
-                        long l = RSString.method58(ChatBox.chatMessage);
+                        long l = RSString.nameToLong(ChatBox.chatMessage);
                         GameShell.method28(l);
                     }
                     if (Class37.anInt876 == 3 && ChatBox.chatMessage.length() > 0) {
@@ -226,11 +226,11 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         }
                     }
                     if (Class37.anInt876 == 4 && Class42.anInt1008 < 100) {
-                        long l = RSString.method58(ChatBox.chatMessage);
+                        long l = RSString.nameToLong(ChatBox.chatMessage);
                         Class17.method275(l);
                     }
                     if (Class37.anInt876 == 5 && Class42.anInt1008 > 0) {
-                        long l = RSString.method58(ChatBox.chatMessage);
+                        long l = RSString.nameToLong(ChatBox.chatMessage);
                         Class40_Sub6.method838(0, l);
                     }
                 }
@@ -269,7 +269,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                 if (ItemDefinition.anInt2854 == 84) {
                     if (ChatBox.inputMessage.length() > 0) {
                         SceneCluster.packetBuffer.putPacket(86);
-                        SceneCluster.packetBuffer.putLongBE(RSString.method58(ChatBox.inputMessage));
+                        SceneCluster.packetBuffer.putLongBE(RSString.nameToLong(ChatBox.inputMessage));
                     }
                     ChatBox.inputType = 0;
                     ChatBox.redrawChatbox = true;
@@ -422,8 +422,8 @@ public class Class40_Sub5_Sub6 extends SubNode {
     public static void drawMenu(int xOffSet, int yOffSet) {
         int height = CollisionMap.menuHeight;
         int width = VertexNormal.menuWidth;
-        int offsetX = InteractiveObject.menuOffsetX- (xOffSet - 4);
-        int offsetY =  (-yOffSet + 4) +Main.menuOffsetY;
+        int offsetX = InteractiveObject.menuOffsetX- (xOffSet);
+        int offsetY =  (-yOffSet) +Main.menuOffsetY;
         int colour = 0x5d5447;
         ChatBox.redrawChatbox = true;
         ISAAC.redrawTabArea = true;
@@ -433,18 +433,18 @@ public class Class40_Sub5_Sub6 extends SubNode {
         Class40_Sub5_Sub17_Sub6.fontBold.drawString(English.chooseOption, offsetX + 3, 14 + offsetY, colour);
         int x = Class13.mouseX  - (xOffSet);
         int y = (-yOffSet) + Landscape.mouseY;
-//        if (Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
-//            x -= 4;
-//            y -= 4;
-//        }
-//        if (Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
-//            y -= 205;
-//            x -= 553;
-//        }
-//        if (Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
-//            y -= 357;
-//            x -= 17;
-//        }
+        if (Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
+            x -= 4;
+            y -= 4;
+        }
+        if (Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
+            y -= 205;
+            x -= 553;
+        }
+        if (Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
+            y -= 357;
+            x -= 17;
+        }
         for (int action = 0; action < ActorDefinition.menuActionRow; action++) {
             int actionY = 15 * (-action + ActorDefinition.menuActionRow + -1) + offsetY + 31;
             int actionColour = 16777215;

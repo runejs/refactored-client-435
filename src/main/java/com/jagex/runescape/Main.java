@@ -635,7 +635,7 @@ public class Main extends GameShell {
         IncomingPackets.incomingPacket = -1;
         Class40_Sub5_Sub15.systemUpdateTime = 0;
         Class35.anInt1728 = 0;
-        Player.anInt3288 = 0;
+        Player.headIconDrawType = 0;
         SceneCluster.packetBuffer.currentPosition = 0;
         SceneCluster.idleLogout = 0;
         Class49.anInt1151 = -1;

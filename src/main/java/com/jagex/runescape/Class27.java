@@ -38,7 +38,7 @@ import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.util.TextUtils;
 
 public class Class27 {
-    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array649;
+    public static ImageRGB[] mapDots;
     public static CacheIndex aCacheIndex_654;
     public static int minimapState = 0;
     public static int[] anIntArray666 = new int[]{1, 0, -1, 0};
@@ -119,11 +119,16 @@ public class Class27 {
         ((Class35) Rasterizer3D.anInterface3_2939).method425((byte) 6, Class5.anInt199);
         KeyFocusListener.draw3dScreen();
 
-        if(ScreenController.frameMode != ScreenMode.FIXED) {
+        if(ScreenController.frameMode == ScreenMode.FIXED) {
+
+            Console.console.drawConsole(512, 334);
+            Console.console.drawConsoleArea(512, 334);
+        } else {
             ScreenController.RenderResizableUI();
+            Console.console.drawConsole(ScreenController.frameWidth-235, 334);
+            Console.console.drawConsoleArea(ScreenController.frameWidth-235, 334);
         }
-        Console.console.drawConsole();
-        Console.console.drawConsoleArea();
+
 
         if(ISAAC.aBoolean519 && method368((byte) -41, false, true) == 0) {
             ISAAC.aBoolean519 = false;
@@ -436,7 +441,7 @@ public class Class27 {
                         long l = TextUtils.nameToLong(class1.substring(i_18_ + 5).trim());
                         int i_19_ = -1;
                         for(int i_20_ = 0; i_20_ < Item.friendsCount; i_20_++) {
-                            if(Class59.aLongArray1397[i_20_] == l) {
+                            if(Class59.friends[i_20_] == l) {
                                 i_19_ = i_20_;
                                 break;
                             }
@@ -447,7 +452,7 @@ public class Class27 {
                             ChatBox.inputType = 0;
                             ChatBox.chatMessage = "";
                             ChatBox.messagePromptRaised = true;
-                            PacketBuffer.aLong2241 = Class59.aLongArray1397[i_19_];
+                            PacketBuffer.aLong2241 = Class59.friends[i_19_];
                             Native.aClass1_1563 = English.prefixEnterMessageToSendTo + Class40_Sub11.friendUsernames[i_19_];
                         }
                     }
@@ -680,7 +685,7 @@ public class Class27 {
                         }
                     }
                     if(arg0 < 51) {
-                        aClass40_Sub5_Sub14_Sub4Array649 = null;
+                        mapDots = null;
                     }
                     if(action == 7) {
                         if(Class4.menuOpen) {
@@ -1103,7 +1108,7 @@ public class Class27 {
         }
         if(ScreenController.frameMode == ScreenMode.FIXED) {
 
-            if(Class4.menuOpen/* && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1*/) {
+            if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
                 ISAAC.redrawTabArea = true;
             }
             if(Class29.tabAreaOverlayWidgetId != -1) {
@@ -1135,7 +1140,7 @@ public class Class27 {
             if(Native.clickToContinueString != null) {
                 ChatBox.redrawChatbox = true;
             }
-            if(Class4.menuOpen/* && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2*/) {
+            if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
                 ChatBox.redrawChatbox = true;
             }
             if(ChatBox.redrawChatbox) {
@@ -1169,6 +1174,7 @@ public class Class27 {
 
             Landscape.method934(Player.localPlayer.worldX, Player.worldLevel, Class5.anInt199, Player.localPlayer.worldY);
             Class5.anInt199 = 0;
+
         } else {
 
 
@@ -1275,7 +1281,7 @@ public class Class27 {
             i += Class17.anInt464 + ProducingGraphicsBuffer.anInt1618;
         }
         if(arg0 != -41) {
-            aClass40_Sub5_Sub14_Sub4Array649 = null;
+            mapDots = null;
         }
         if(arg1) {
             i += Class42.anInt1006 + HashTable.anInt554;

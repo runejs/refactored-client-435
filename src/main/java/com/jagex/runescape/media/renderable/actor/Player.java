@@ -24,7 +24,7 @@ public class Player extends Actor {
     public static int worldLevel;
     public static byte[] aByteArray3270;
     public static int[] viewportOffsets;
-    public static int anInt3288 = 0;
+    public static int headIconDrawType = 0;
     public static Player localPlayer;
     public static int[] actorUpdatingIndices = new int[2048];
     public static Buffer[] trackedPlayerAppearanceCache = new Buffer[2048];
@@ -136,7 +136,7 @@ public class Player extends Actor {
             int messageLength = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             int i_5_ = IncomingPackets.incomingPacketBuffer.currentPosition;
             if(player.playerName != null && player.aClass30_3282 != null) {
-                long l = RSString.method58(player.playerName);
+                long l = RSString.nameToLong(player.playerName);
                 boolean bool = false;
                 if(playerRights <= 1) {
                     for(int i_6_ = 0; i_6_ < Class42.anInt1008; i_6_++) {

@@ -103,7 +103,7 @@ public class Class17 {
                     }
                 }
                 for(int i = 0; Item.friendsCount > i; i++) {
-                    if(Class59.aLongArray1397[i] == arg1) {
+                    if(Class59.friends[i] == arg1) {
                         Class44.addChatMessage("", English.pleaseRemove + class1 + English.fromYourFriendListFirst, 0);
                         return;
                     }

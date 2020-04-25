@@ -99,7 +99,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
     public static void drawMapBack() {
         try {
             if(ScreenController.frameMode == ScreenMode.FIXED) {
-            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
+                Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
                 RSString.mapbackProducingGraphicsBuffer.drawGraphics(550, 4, graphics);
             }
         } catch(Exception exception) {

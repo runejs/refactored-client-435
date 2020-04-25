@@ -75,7 +75,7 @@ public class Class40_Sub2 extends Node {
     }
 
     public static void method527(int currentTabId, int arg1, int[] tabWidgetIds, boolean arg3, int arg4) {
-        InteractiveObject.tabTop.method1046();
+        InteractiveObject.tabTop.prepareRasterizer();
         Buffer.tabTopBack.drawImage(0, 0);
         if(arg3) {
             if(tabWidgetIds[currentTabId] != -1) {
@@ -109,7 +109,7 @@ public class Class40_Sub2 extends Node {
             if(tabWidgetIds[6] != -1 && arg4 != 6)
                 Class40_Sub5_Sub15.tabIcons[6].drawImage(208, 13);
         }
-        RSCanvas.tabBottom.method1046();
+        RSCanvas.tabBottom.prepareRasterizer();
         Class56.tabBottomBack.drawImage(0, 0);
         if(arg1 != 4)
             hasFriend(null);

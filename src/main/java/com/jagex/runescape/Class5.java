@@ -58,7 +58,7 @@ public class Class5 {
         if(UnderlayDefinition.openSecondaryWidgetId != -1)
             Renderable.handleSequences(UnderlayDefinition.openSecondaryWidgetId);
         anInt199 = 0;
-        ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213.method1046();
+        ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213.prepareRasterizer();
         Player.viewportOffsets = Rasterizer3D.setLineOffsets(Player.viewportOffsets);
         Rasterizer.resetPixels();
         Class40_Sub5_Sub6.drawInterface(0, ActorDefinition.openFullScreenWidgetId, 503, (byte) -5, 0, 0, 765);
@@ -68,7 +68,7 @@ public class Class5 {
             Class43.processRightClick();
             SceneTile.drawMenuTooltip(4);
         } else
-            if(ScreenController.frameMode == ScreenMode.FIXED){
+            if(ScreenController.frameMode == ScreenMode.FIXED && Class40_Sub5_Sub17_Sub1.menuScreenArea == 0){
                 Class40_Sub5_Sub6.drawMenu(4,4); // might be 0,0
             }
         try {

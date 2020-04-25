@@ -751,7 +751,7 @@ public class ImageRGB extends Rasterizer {
         Rasterizer.prepare(pixels, imageWidth, imageHeight);
     }
 
-    public void shapeImageToPixels(int arg0, int y, int width, int height, int arg4, int arg5, int k1, int zoom, int[] arg8, int[] arg9) {
+    public void shapeImageToPixels(int x, int y, int width, int height, int arg4, int arg5, int k1, int zoom, int[] arg8, int[] arg9) {
         try {
             int centerX = -width / 2;
             int centerY = -height / 2;
@@ -761,14 +761,20 @@ public class ImageRGB extends Rasterizer {
             cosine = cosine * zoom >> 8;
             int i_125_ = (arg4 << 16) + centerY * sine + centerX * cosine;
             int i_126_ = (arg5 << 16) + centerY * cosine - centerX * sine;
-            int destinationOffset = arg0 + y * Rasterizer.destinationWidth;
+            int destinationOffset = x + y * Rasterizer.destinationWidth;
+
             for(y = 0; y < height; y++) {
                 int i_128_ = arg8[y];
                 int i_129_ = destinationOffset + i_128_;
                 int i_130_ = i_125_ + cosine * i_128_;
                 int i_131_ = i_126_ - sine * i_128_;
-                for(arg0 = -arg9[y]; arg0 < 0; arg0++) {
-                    Rasterizer.destinationPixels[i_129_++] = pixels[(i_130_ >> 16) + (i_131_ >> 16) * imageWidth];
+                for(x = -arg9[y]; x < 0; x++) {
+                    int pixelToGet = (i_130_ >> 16) + (i_131_ >> 16) * imageWidth;
+                    int colour = 0;
+                    if(!(pixels.length < pixelToGet || pixelToGet < 0)){
+                        colour = pixels[pixelToGet];
+                    }
+                    Rasterizer.destinationPixels[i_129_++] = colour;
                     i_130_ += cosine;
                     i_131_ -= sine;
                 }
@@ -778,6 +784,7 @@ public class ImageRGB extends Rasterizer {
             }
         } catch(Exception exception) {
             /* empty */
+            exception.printStackTrace();
         }
     }
 

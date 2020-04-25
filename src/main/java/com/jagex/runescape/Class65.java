@@ -24,7 +24,7 @@ public class Class65 {
 
 
     public static void method1018() {
-        VarbitDefinition.gameScreenImageProducer.method1046();
+        VarbitDefinition.gameScreenImageProducer.prepareRasterizer();
         Class24.fullScreenTextureArray = Rasterizer3D.setLineOffsets(Class24.fullScreenTextureArray);
     }
 

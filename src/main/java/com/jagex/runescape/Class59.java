@@ -20,12 +20,12 @@ public class Class59 {
     public static int anInt1389 = 0;
     public static KeyFocusListener keyFocusListener;
     public static int[] secondMenuOperand;
-    public static long[] aLongArray1397;
+    public static long[] friends;
     public static int[] anIntArray1398;
 
     static {
         secondMenuOperand = new int[500];
-        aLongArray1397 = new long[200];
+        friends = new long[200];
         keyFocusListener = new KeyFocusListener();
     }
 

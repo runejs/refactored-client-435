@@ -313,7 +313,7 @@ public class WallDecoration {
 
     public static void method951(int arg0, TypeFace arg1, TypeFace arg2) {
         do {
-            Class38.aProducingGraphicsBuffer_887.method1046();
+            Class38.aProducingGraphicsBuffer_887.prepareRasterizer();
             if (Class51.anInt1197 == 0 || Class51.anInt1197 == 5) {
                 int i = 20;
                 arg1.drawStringLeft(English.runeScapeIsLoadingPleaseWait, 180, 74 + -i, 16777215);

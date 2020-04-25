@@ -24,7 +24,7 @@ public class ProducingGraphicsBuffer_Sub2 extends ProducingGraphicsBuffer {
             WritableRaster writableraster = Raster.createWritableRaster(directcolormodel.createCompatibleSampleModel(width, height), databufferint, null);
             image = new BufferedImage(directcolormodel, writableraster, false, new Hashtable());
             aComponent2214 = arg2;
-            method1046();
+            prepareRasterizer();
         }
     }
 }
