@@ -5,26 +5,20 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.input.KeyFocusListener;
-import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.Native;
-import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.GroundItemTile;
-import com.jagex.runescape.scene.InteractiveObject;
-import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.Wall;
 import tech.henning.fourthreefive.Configuration;
 
 import java.awt.*;
-import java.text.MessageFormat;
 
 public class Item extends Renderable {
     public static int[] anIntArray3051 = new int[25];
@@ -106,7 +100,7 @@ public class Item extends Renderable {
             Rasterizer.resetPixels();
             Class51.aProducingGraphicsBuffer_1206 = Class40_Sub5_Sub13.createGraphicsBuffer(360, 132, arg0);
             Rasterizer.resetPixels();
-            Class38.aProducingGraphicsBuffer_887 = Class40_Sub5_Sub13.createGraphicsBuffer(360, 200, arg0);
+            Class38.loginBoxGraphics = Class40_Sub5_Sub13.createGraphicsBuffer(360, 200, arg0);
             Rasterizer.resetPixels();
             Class17.aProducingGraphicsBuffer_463 = Class40_Sub5_Sub13.createGraphicsBuffer(202, 238, arg0);
             Rasterizer.resetPixels();
@@ -126,7 +120,7 @@ public class Item extends Renderable {
             class40_sub5_sub14_sub4.drawInverse(-128, 0);
             Class51.aProducingGraphicsBuffer_1206.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(-202, -371);
-            Class38.aProducingGraphicsBuffer_887.prepareRasterizer();
+            Class38.loginBoxGraphics.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(-202, -171);
             Class17.aProducingGraphicsBuffer_463.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(0, -265);
@@ -151,7 +145,7 @@ public class Item extends Renderable {
             class40_sub5_sub14_sub4.drawInverse(254, 0);
             Class51.aProducingGraphicsBuffer_1206.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(180, -371);
-            Class38.aProducingGraphicsBuffer_887.prepareRasterizer();
+            Class38.loginBoxGraphics.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(180, -171);
             Class17.aProducingGraphicsBuffer_463.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(382, -265);

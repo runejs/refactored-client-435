@@ -4,12 +4,8 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
-import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
-import com.jagex.runescape.cache.media.AnimationSequence;
-import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -17,9 +13,6 @@ import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Item;
-import com.jagex.runescape.media.renderable.Model;
-import com.jagex.runescape.media.renderable.actor.Actor;
-import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
@@ -27,7 +20,6 @@ import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.SceneCluster;
-import com.jagex.runescape.scene.tile.Wall;
 
 import java.awt.*;
 import java.text.MessageFormat;
@@ -38,10 +30,9 @@ public class ScreenController {
     public static ScreenMode frameMode = ScreenMode.FIXED;
     public static int frameWidth = 765;
     public static int frameHeight = 503;
-    private static int[] minimapOffsets1;
-    private static int[] minimapOffsets2;
-    private static ProducingGraphicsBuffer miniMapimage;
-    private static int[] minimapLineOffsets;
+    public static Minimap minimap = new Minimap();
+    private static Thread drawingThread;
+    private static FrameRenderer renderer;
 
 
     public static void frameMode(ScreenMode screenMode) {
@@ -68,9 +59,6 @@ public class ScreenController {
             Insets insets = Class35.aFrame1732.getInsets();
             Class35.aFrame1732.setSize(insets.right + ScreenController.frameWidth + insets.left, insets.bottom + insets.top + ScreenController.frameHeight);
         }
-        //        Class12.width = frameWidth;
-        //        IdentityKit.height = frameHeight;
-
 
     }
 
@@ -87,7 +75,6 @@ public class ScreenController {
                 setBounds();
             }
         }
-
     }
 
     public static void setBounds() {
@@ -110,230 +97,31 @@ public class ScreenController {
 
 
         Scene.method95(500, 800, frameMode == ScreenMode.FIXED ? 512 : frameWidth, frameMode == ScreenMode.FIXED ? 334 : frameHeight, is);
+        MouseHandler.aCanvas1469.setSize(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.frameWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.frameHeight);
+
         if(Class51.anInt1197 <= 35 && Class51.anInt1197 >= 30) {
             VarbitDefinition.gameScreenImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.frameWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.frameHeight, Class35.aFrame1732);
         } else {
-            Class38.aProducingGraphicsBuffer_887 = Class40_Sub5_Sub13.createGraphicsBuffer(frameWidth, frameHeight, Class35.aFrame1732);
+            Class38.loginBoxGraphics = Class40_Sub5_Sub13.createGraphicsBuffer(frameWidth, frameHeight, Class35.aFrame1732);
         }
     }
 
     public static void RenderResizableUI() {
-        RenderMiniMapArea(frameWidth - 210, 0);
+        if(drawingThread == null) {
+            System.out.println("Should start");
+            renderer = new FrameRenderer(minimap);
+            drawingThread = new Thread(renderer);
+            drawingThread.start();
+        }
+        minimap.drawResizableMiniMapArea(frameWidth - 210, 0);
         RenderTabArea(frameWidth - 234, frameHeight - 359);
         RenderChatArea(0, frameHeight - 184);
-        //        Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.drawImage(10,10);
 
-        //        RenderStaticUI();
-        //        RenderInteractableUI();
-        if(Class4.menuOpen/* && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1*/) {
+        if(Class4.menuOpen) {
             Class40_Sub5_Sub6.drawMenu(0, 0);
         }
 
     }
-
-    public static void RenderInteractableUI() {
-        drawFramePieceCutout(RSCanvas.tabBottom, 516, 466, RSCanvas.tabBottom.width - 20, RSCanvas.tabBottom.height, 20, 0);
-        drawFramePiece(InteractiveObject.tabTop, 516, 160);
-        drawFramePiece(RSCanvas.chatboxProducingGraphicsBuffer, 17, 357);
-        drawFramePiece(SubNode.tabImageProducer, 553, 205);
-        drawFramePiece(RSString.mapbackProducingGraphicsBuffer, 550, 4);
-
-    }
-
-    public static void RenderStaticUI() {
-        drawFramePiece(Landscape.framePieceRight, 0, 4);
-        drawFramePiece(Class40_Sub5_Sub17_Sub6.framePieceTop, 0, 0);
-        drawFramePiece(Class40_Sub5_Sub1.chatboxRight, 0, 357);
-        drawFramePiece(Class39.mapbackLeft, 722, 4);
-        drawFramePiece(GameObject.tabPieceLeft, 743, 205);
-        drawFramePiece(Class40_Sub7.mapBackRight, 516, 4);
-        drawFramePiece(Class61.tabPieceUpperRight, 516, 205);
-        drawFramePiece(Class30.tabPieveLowerRight, 496, 357);
-        drawFramePiece(Class17.chatboxTop, 0, 338);
-
-    }
-
-    public static void RenderMiniMapArea(int x, int y) {
-        if(miniMapimage == null) {
-            miniMapimage = Class40_Sub5_Sub13.createGraphicsBuffer(210, 210, MouseHandler.aCanvas1469);
-            minimapOffsets1 = new int[200];
-            minimapOffsets2 = new int[200];
-            for(int i = 0; i < minimapOffsets2.length; i++) {
-                minimapOffsets1[i] = 200;
-                minimapOffsets2[i] = 0;
-            }
-
-
-        }
-
-        // height 168
-        // width 229
-        //        drawFramePiece(Class39.mapbackLeft, x+ 206-20, y+4);
-        //        drawFramePieceCutout(Class40_Sub7.mapBackRight, x, y+4, Class40_Sub7.mapBackRight.width- 20, Class40_Sub7.mapBackRight.height, 20,0);
-        //        drawFramePieceCutout(Class40_Sub5_Sub17_Sub6.framePieceTop, x, y,229, 4, 536,0 );
-        //        drawFramePieceCutout(InteractiveObject.tabTop, x, y+160,229, 8, 20,0 );
-        //        drawFramePiece(RSString.mapbackProducingGraphicsBuffer, x+34-20, y+4);
-        miniMapimage.prepareRasterizer();
-        minimapLineOffsets = Rasterizer3D.setLineOffsets(minimapLineOffsets);
-        if(Class27.minimapState == 2) {
-            byte[] mmBackgroundPixels = Class34.minimapBackgroundImage.imgPixels;
-            int[] rasterPixels = Rasterizer.destinationPixels;
-            int pixelCount = mmBackgroundPixels.length;
-            for(int i = 0; i < pixelCount; i++) {
-                if(mmBackgroundPixels[i] == 0)
-                    rasterPixels[i] = 0;
-            }
-            Rasterizer.drawFilledRectangle(0, 0, 210, 210, 0x242017);
-            Rasterizer.drawFilledRectangle(5, 5, 200, 200, 0x000000);
-
-            //        Rasterizer.drawFilledRectangle(x-43,y, 43, 43, 0x242017);
-            Rasterizer.drawFilledRectangle(0, 0, 20, 42, 0x242017);
-            Rasterizer.drawFilledRectangle(0, 0, 42, 20, 0x242017);
-
-            Rasterizer.drawCircle(21, 21, 20, 0x242017);
-            AnimationSequence.minimapCompass.shapeImageToPixels(5, 5, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
-
-
-            Class65.method1018();
-
-            drawFramePiece(miniMapimage, x, y);
-            return;
-        }
-
-        int i = 48 + Player.localPlayer.worldX / 32;
-        int i_8_ = 464 + -(Player.localPlayer.worldY / 32);
-        int i_9_ = GroundItemTile.cameraHorizontal + Class43.cameraYawOffset & 0x7ff;
-        Class40_Sub5_Sub13.minimapImage.shapeImageToPixels(5, 5, 200, 200, i, i_8_, i_9_, Class51.mapZoomOffset + 256, minimapOffsets2, minimapOffsets1);
-        drawMinimapDots();
-        Rasterizer.drawFilledRectangle(105, 105, 3, 3, 16777215);
-        Rasterizer.drawFilledRectangle(0, 0, 210, 5, 0x242017);
-        Rasterizer.drawFilledRectangle(0, 205, 210, 5, 0x242017);
-        Rasterizer.drawFilledRectangle(0, 0, 5, 210, 0x242017);
-        Rasterizer.drawFilledRectangle(205, 0, 5, 210, 0x242017);
-
-        //        Rasterizer.drawFilledRectangle(x-43,y, 43, 43, 0x242017);
-        Rasterizer.drawFilledRectangle(0, 0, 20, 42, 0x242017);
-        Rasterizer.drawFilledRectangle(0, 0, 42, 20, 0x242017);
-
-        Rasterizer.drawCircle(21, 21, 20, 0x242017);
-        AnimationSequence.minimapCompass.shapeImageToPixels(5, 5, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
-
-
-        Class65.method1018();
-
-        drawFramePiece(miniMapimage, x, y);
-
-    }
-
-    private static void drawMinimapDots() {
-        for(int i = 0; GameObject.minimapHintCount > i; i++) {
-            int hintX = 2 + 4 * Actor.minimapHintX[i] + -(Player.localPlayer.worldX / 32);
-            int hintY = 2 + 4 * LinkedList.minimapHintY[i] - Player.localPlayer.worldY / 32;
-            drawOnMinimap(hintY, hintX, MouseHandler.minimapHint[i]);
-        }
-        for(int x = 0; x < 104; x++) {
-            for(int y = 0; y < 104; y++) {
-                LinkedList linkedList = Wall.groundItems[Player.worldLevel][x][y];
-                if(linkedList != null) {
-                    int itemX = -(Player.localPlayer.worldY / 32) + 2 + y * 4;
-                    int itemY = -(Player.localPlayer.worldX / 32) + 2 + x * 4;
-                    drawOnMinimap(itemY, itemX, Class27.mapDots[0]);
-                }
-            }
-        }
-        for(int i = 0; Player.npcCount > i; i++) {
-            Npc npc = Player.npcs[Player.npcIds[i]];
-            if(npc != null && npc.isVisible(1)) {
-                ActorDefinition definition = npc.actorDefinition;
-                if(definition.childrenIds != null)
-                    definition = definition.getChildDefinition(-1);
-                if(definition != null && definition.renderOnMinimap && definition.isClickable) {
-                    int npcX = -(Player.localPlayer.worldX / 32) + npc.worldX / 32;
-                    int npcY = npc.worldY / 32 + -(Player.localPlayer.worldY / 32);
-                    drawOnMinimap(npcY, npcX, Class27.mapDots[1]);
-                }
-            }
-        }
-        for(int i = 0; Player.localPlayerCount > i; i++) {
-            Player player = Player.trackedPlayers[Player.trackedPlayerIndices[i]];
-            if(player != null && player.isVisible(1)) {
-                int playerX = player.worldX / 32 + -(Player.localPlayer.worldX / 32);
-                int playerY = -(Player.localPlayer.worldY / 32) + player.worldY / 32;
-                boolean isFriend = false;
-                long name = RSString.nameToLong(player.playerName);
-                for(int friend = 0; Item.friendsCount > friend; friend++) {
-                    if(name == Class59.friends[friend] && Class40_Sub7.friendWorlds[friend] != 0) {
-                        isFriend = true;
-                        break;
-                    }
-                }
-                boolean isTeammate = false;
-                if(Player.localPlayer.teamId != 0 && player.teamId != 0 && player.teamId == Player.localPlayer.teamId)
-                    isTeammate = true;
-                if(isFriend)
-                    drawOnMinimap(playerY, playerX, Class27.mapDots[3]);
-                else if(isTeammate)
-                    drawOnMinimap(playerY, playerX, Class27.mapDots[4]);
-                else
-                    drawOnMinimap(playerY, playerX, Class27.mapDots[2]);
-            }
-        }
-        if(Player.headIconDrawType != 0 && Node.pulseCycle % 20 < 10) {
-            if(Player.headIconDrawType == 1 && HuffmanEncoding.anInt1545 >= 0 && Player.npcs.length > HuffmanEncoding.anInt1545) {
-                Npc npc = Player.npcs[HuffmanEncoding.anInt1545];
-                if(npc != null) {
-                    int npcX = -(Player.localPlayer.worldX / 32) + npc.worldX / 32;
-                    int npcY = npc.worldY / 32 - Player.localPlayer.worldY / 32;
-                    OverlayDefinition.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], npcX, npcY);
-                }
-            }
-            if(Player.headIconDrawType == 2) {
-                int hintX = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-Class26.baseY + Class4.anInt175);
-                int hintY = 4 * (ProducingGraphicsBuffer.anInt1637 - SpotAnimDefinition.baseX) - (-2 + Player.localPlayer.worldX / 32);
-                OverlayDefinition.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], hintY, hintX);
-            }
-            if(Player.headIconDrawType == 10 && ProducingGraphicsBuffer.anInt1623 >= 0 && Player.trackedPlayers.length > ProducingGraphicsBuffer.anInt1623) {
-                Player player = Player.trackedPlayers[ProducingGraphicsBuffer.anInt1623];
-                if(player != null) {
-                    int playerX = -(Player.localPlayer.worldY / 32) + player.worldY / 32;
-                    int playerY = player.worldX / 32 - Player.localPlayer.worldX / 32;
-                    OverlayDefinition.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], playerY, playerX);
-                }
-            }
-        }
-        if(VarbitDefinition.destinationX != 0) {
-            int flagX = 2 + VarbitDefinition.destinationX * 4 + -(Player.localPlayer.worldX / 32);
-            int flagY = 2 + 4 * Class55.destinationY + -(Player.localPlayer.worldY / 32);
-            drawOnMinimap(flagY, flagX, Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[0]);
-        }
-    }
-
-    public static void drawOnMinimap(int x, int y, ImageRGB sprite) {
-        if(sprite == null) {
-            return;
-        }
-        int angle = 0x7ff & Class43.cameraYawOffset + GroundItemTile.cameraHorizontal;
-        int l = x * x + y * y;
-        if(l > 17000) {
-            return;
-        }
-        int sine = Model.SINE[angle];
-        int cosine = Model.COSINE[angle];
-        sine = sine * 256 / (Class51.mapZoomOffset + 256);
-        cosine = cosine * 256 / (Class51.mapZoomOffset + 256);
-        int i_3_ = cosine * y + x * sine >> 16;
-        int i_4_ = -(y * sine) + cosine * x >> 16;
-        if(l > 2500)
-            sprite.drawImage(106 + i_3_ + -(sprite.maxWidth / 2), -(sprite.maxHeight / 2) + -i_4_ + 106);
-        else
-            sprite.drawImage(106 + i_3_ + -(sprite.maxWidth / 2), -(sprite.maxHeight / 2) + -i_4_ + 106);
-
-        //        if (l > 2500)
-        //            sprite.drawTo(Class34.minimapBackgroundImage, 98 + i_3_ + -(sprite.maxWidth / 2), -(sprite.maxHeight / 2) + -i_4_ + 79);
-        //        else
-        //            sprite.drawImage(4 + -(sprite.maxWidth / 2) + i_3_ + 94, -4 + -i_4_ + 83 + -(sprite.maxHeight / 2));
-    }
-
     public static void RenderTabArea(int x, int y) {
         // height 337
         // width 234
