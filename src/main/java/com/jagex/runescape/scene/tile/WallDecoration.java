@@ -313,7 +313,8 @@ public class WallDecoration {
 
     public static void method951(int arg0, TypeFace arg1, TypeFace arg2) {
         do {
-            Class38.aProducingGraphicsBuffer_887.prepareRasterizer();
+            Class38.loginBoxGraphics.prepareRasterizer();
+//            Rasterizer.drawFilledRectangle(0,0, ScreenController.frameWidth, ScreenController.frameHeight, 0);
             if (Class51.anInt1197 == 0 || Class51.anInt1197 == 5) {
                 int i = 20;
                 arg1.drawStringLeft(English.runeScapeIsLoadingPleaseWait, 180, 74 + -i, 16777215);
@@ -392,7 +393,8 @@ public class WallDecoration {
             Main.renderFlames(0);
             try {
                 Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-                Class38.aProducingGraphicsBuffer_887.drawGraphics(202, 171, graphics);
+
+                Class38.loginBoxGraphics.drawGraphics(202, 171, graphics);
                 if (arg0 != -19010)
                     method949();
                 Class8.flameLeftBackground.drawGraphics(0, 0, graphics);

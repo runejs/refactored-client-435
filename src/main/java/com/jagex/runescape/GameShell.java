@@ -294,7 +294,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             CacheIndex.aLong219 = 0L;
     }
 
-    public abstract void method23();
+    public abstract void processGameLoop();
 
     public void focusLost(FocusEvent arg0) {
         GenericTile.aBoolean1215 = false;
@@ -377,6 +377,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                 Class40_Sub5_Sub11.clearScreen = true;
                 MouseHandler.aCanvas1469.setSize(Class12.width, IdentityKit.height);
                 MouseHandler.aCanvas1469.setVisible(true);
+                MouseHandler.aCanvas1469.setBackground(Color.BLACK);
                 if (Class35.aFrame1732 == null)
                     MouseHandler.aCanvas1469.setLocation(0, 0);
                 else {
@@ -407,16 +408,16 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         synchronized (this) {
             HashTable.aBoolean571 = GenericTile.aBoolean1215;
         }
-        method23();
+        processGameLoop();
         if (arg0)
             return;
         windowIconified(null);
     }
 
-    public void openClientApplet(String cacheFolder, int cacheIndexes, int height, int fileStoreId, InetAddress inetAddress, int clientVersion, int width) {
+    public void openClientApplet(String cacheFolder, int cacheIndexes, int fileStoreId, InetAddress inetAddress, int clientVersion) {
         try {
-            height = ScreenController.frameMode == ScreenMode.FIXED ? 503 :  ScreenController.frameHeight;
-            width = ScreenController.frameMode == ScreenMode.FIXED ? 765 : ScreenController.frameWidth;
+            int height = ScreenController.frameMode == ScreenMode.FIXED ? 503 : ScreenController.frameHeight;
+            int width = ScreenController.frameMode == ScreenMode.FIXED ? 765 : ScreenController.frameWidth;
             Class39.anInt901 = clientVersion;
             Class12.width = width;
             IdentityKit.height = height;

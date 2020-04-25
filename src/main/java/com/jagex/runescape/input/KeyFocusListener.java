@@ -61,6 +61,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             Renderable.handleSequences(HuffmanEncoding.openScreenWidgetId);
             Class40_Sub5_Sub6.drawInterface(0, HuffmanEncoding.openScreenWidgetId, 334, (byte) -5, 0, 0, 512);
         }
+        Class65.method1018();
         Player.setTutorialIslandFlag();
         if (!Class4.menuOpen) {
             Class43.processRightClick();

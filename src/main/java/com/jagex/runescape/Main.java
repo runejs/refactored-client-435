@@ -592,7 +592,7 @@ public class Main extends GameShell {
             } else
                 Class22.membersWorld = false;
             Main main = new Main();
-            main.openClientApplet("runescape", 13, 503, 32 + Class44.modewhat, InetAddress.getByName(Configuration.SERVER_ADDRESS), 435, 765);
+            main.openClientApplet("runescape", 13, 32 + Class44.modewhat, InetAddress.getByName(Configuration.SERVER_ADDRESS), 435);
 
         } catch(Exception exception) {
             exception.printStackTrace();
@@ -737,7 +737,7 @@ public class Main extends GameShell {
         }
     }
 
-    public void method23() {
+    public void processGameLoop() {
         Node.pulseCycle++;
         method39();
         Class13.method242((byte) -91);
@@ -809,7 +809,6 @@ public class Main extends GameShell {
                 Class51.method940(0, English.loadingPleaseWait, false, null);
         } else if(Class51.anInt1197 == 30) {
             Class27.drawGameScreen();
-
 
         } else if(Class51.anInt1197 == 35) {
             Class5.method164();

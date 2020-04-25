@@ -11,7 +11,7 @@ import com.jagex.runescape.scene.tile.SceneTile;
 
 public abstract class Class38 {
     public static int[] menuActionTypes = new int[500];
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_887;
+    public static ProducingGraphicsBuffer loginBoxGraphics;
     public static int[] anIntArray889 = new int[128];
     public static int anInt892;
     public static boolean aBoolean893 = false;
@@ -35,7 +35,7 @@ public abstract class Class38 {
             Class39.aClass40_Sub5_Sub14_Sub4_918 = null;
             Class22.aClass40_Sub5_Sub14_Sub2Array535 = null;
             Class40_Sub5_Sub17_Sub6.anIntArray3248 = null;
-            aProducingGraphicsBuffer_887 = null;
+            loginBoxGraphics = null;
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = null;
             Class4.anIntArray178 = null;
             KeyFocusListener.aProducingGraphicsBuffer_1285 = null;

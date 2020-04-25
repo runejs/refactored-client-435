@@ -250,9 +250,9 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             Class13.aClass40_Sub5_Sub14_Sub2_418.flipVertical();
             Class40_Sub5_Sub15.tabIcons = IndexedImage.getMultipleIndexedImages(arg2, Native.aClass1_2787, Native.aClass1_305);
             Landscape.anIntArray1186 = new int[151];
+            Class34.anIntArray852 = new int[151];
             RSCanvas.anIntArray66 = new int[33];
             RSCanvas.anIntArray62 = new int[33];
-            Class34.anIntArray852 = new int[151];
             for(int y = 0; y < 33; y++) {
                 int i_15_ = 0;
                 int i_16_ = 999;
