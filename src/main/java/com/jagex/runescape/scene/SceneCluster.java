@@ -11,7 +11,7 @@ public class SceneCluster {
     public static Class38 aClass38_768;
     public static int cameraZ;
     public static int anInt770 = 0;
-    public static int anInt771 = 0;
+    public static int idleLogout = 0;
     public static CacheIndex_Sub1 aClass6_Sub1_773;
 
     public int worldDistanceFromCameraStartX;

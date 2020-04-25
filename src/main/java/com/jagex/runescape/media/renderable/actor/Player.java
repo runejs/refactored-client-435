@@ -7,6 +7,8 @@ import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
@@ -21,8 +23,8 @@ public class Player extends Actor {
     public static int anInt3264 = 0;
     public static int worldLevel;
     public static byte[] aByteArray3270;
-    public static int[] anIntArray3284;
-    public static int anInt3288 = 0;
+    public static int[] viewportOffsets;
+    public static int headIconDrawType = 0;
     public static Player localPlayer;
     public static int[] actorUpdatingIndices = new int[2048];
     public static Buffer[] trackedPlayerAppearanceCache = new Buffer[2048];
@@ -62,12 +64,12 @@ public class Player extends Actor {
         aBoolean3287 = false;
     }
 
-    public static void method792(int arg0) {
+    public static void drawGameScreenGraphics(int arg0) {
         try {
             if(arg0 < 106)
                 return;
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            VarbitDefinition.aClass68_2350.drawGraphics(4, 4, graphics);
+            VarbitDefinition.gameScreenImageProducer.drawGraphics(ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, graphics);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }
@@ -134,7 +136,7 @@ public class Player extends Actor {
             int messageLength = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             int i_5_ = IncomingPackets.incomingPacketBuffer.currentPosition;
             if(player.playerName != null && player.aClass30_3282 != null) {
-                long l = RSString.method58(player.playerName);
+                long l = RSString.nameToLong(player.playerName);
                 boolean bool = false;
                 if(playerRights <= 1) {
                     for(int i_6_ = 0; i_6_ < Class42.anInt1008; i_6_++) {
@@ -338,8 +340,8 @@ public class Player extends Actor {
     public Model getRotatedModel() {
         if(aClass30_3282 == null)
             return null;
-        AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2);
-        AnimationSequence animationSequence_0_ = anInt3077 != -1 && !aBoolean3287 && (idleAnimation != anInt3077 || animationSequence == null) ? Class68_Sub1.method1050(anInt3077, 2) : null;
+        AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : ProducingGraphicsBuffer_Sub1.method1050(playingAnimation, 2);
+        AnimationSequence animationSequence_0_ = anInt3077 != -1 && !aBoolean3287 && (idleAnimation != anInt3077 || animationSequence == null) ? ProducingGraphicsBuffer_Sub1.method1050(anInt3077, 2) : null;
         Model class40_sub5_sub17_sub5 = aClass30_3282.getAnimatedModel(animationSequence, animationSequence_0_, anInt3116, anInt3104, (byte) -128);
         if(class40_sub5_sub17_sub5 == null)
             return null;
@@ -390,7 +392,7 @@ public class Player extends Actor {
 
     public boolean isVisible(int arg0) {
         if(arg0 != 1)
-            method792(-71);
+            drawGameScreenGraphics(-71);
         return aClass30_3282 != null;
     }
 

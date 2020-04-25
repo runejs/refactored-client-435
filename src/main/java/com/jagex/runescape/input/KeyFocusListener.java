@@ -5,6 +5,8 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
@@ -27,7 +29,7 @@ import java.awt.event.KeyListener;
 public class KeyFocusListener implements KeyListener, FocusListener {
     public static LinkedList aLinkedList_1278 = new LinkedList();
     public static int[] anIntArray1282 = new int[256];
-    public static Class68 aClass68_1285;
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1285;
 
     static {
         for (int i = 0; i < 256; i++) {
@@ -63,8 +65,10 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if (!Class4.menuOpen) {
             Class43.processRightClick();
             SceneTile.drawMenuTooltip(4);
-        } else if (Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
-            Class40_Sub5_Sub6.drawMenu();
+        } else  {
+            if(ScreenController.frameMode == ScreenMode.FIXED && Class40_Sub5_Sub17_Sub1.menuScreenArea == 0){
+                Class40_Sub5_Sub6.drawMenu(4,4);
+            }
         }
         if (Class40_Sub6.anInt2118 == 1) {
             LinkedList.aClass40_Sub5_Sub14_Sub4_1057.drawImage(472, 296);
@@ -72,7 +76,11 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if (InteractiveObject.showFps) {
             int y = 20;
             int x = 507;
-            int colour = 0xffff00;
+            if(ScreenController.frameMode != ScreenMode.FIXED) {
+                x = ScreenController.frameWidth - 220;
+            }
+
+                int colour = 0xffff00;
             if (GenericTile.fps < 30 && VertexNormal.lowMemory) {
                 colour = 0xff0000;
             }
@@ -140,7 +148,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if (arg0.method194(Native.aClass1_338, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_1440, Native.aClass1_305)) {
+        if (arg0.method194(Native.imgBackleft1, Native.aClass1_305)) {
             i++;
         }
         if (arg0.method194(Native.aClass1_1024, Native.aClass1_305)) {

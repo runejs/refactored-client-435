@@ -10,6 +10,7 @@ import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
+import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.Native;
@@ -52,11 +53,11 @@ public class Npc extends Actor {
         return class40_sub5_sub11;
     }
 
-    public static void processMenuClick() {
+    public static void updateGame() {
         if(Class40_Sub5_Sub15.systemUpdateTime > 1)
             Class40_Sub5_Sub15.systemUpdateTime--;
-        if(SceneCluster.anInt771 > 0)
-            SceneCluster.anInt771--;
+        if(SceneCluster.idleLogout > 0)
+            SceneCluster.idleLogout--;
         if(Class37.aBoolean871) {
             Class37.aBoolean871 = false;
             Class59.dropClient();
@@ -263,7 +264,7 @@ public class Npc extends Actor {
                                         SceneCluster.packetBuffer.putIntME2(Class48.modifiedWidgetId);
                                     }
                                 } else {
-                                    if((Class68.oneMouseButton == 1 || Class33.menuHasAddFriend((byte) 63, ActorDefinition.menuActionRow - 1)) && ActorDefinition.menuActionRow > 2)
+                                    if((ProducingGraphicsBuffer.oneMouseButton == 1 || Class33.menuHasAddFriend((byte) 63, ActorDefinition.menuActionRow - 1)) && ActorDefinition.menuActionRow > 2)
                                         Class60.determineMenuSize();
                                     else if(ActorDefinition.menuActionRow > 0)
                                         Class27.processMenuActions(123, -1 + ActorDefinition.menuActionRow);
@@ -291,9 +292,9 @@ public class Npc extends Actor {
                         }
                         MouseHandler.processMenuClick();
                         if(ActorDefinition.openFullScreenWidgetId == -1) {
-                            Item.handleMinimapMouse();
-                            Class38_Sub1.method447();
-                            Class40_Sub5_Sub1.method544();
+                            ScreenController.handleMinimapMouse();
+                            ScreenController.handleTabClick();
+                            ScreenController.handleChatButtonsClick();
                         }
                         if(SpotAnimDefinition.mouseButtonPressed == 1 || MouseHandler.clickType == 1)
                             anInt3294++;
@@ -340,7 +341,7 @@ public class Npc extends Actor {
                         int i_20_ = method400(-1);
                         int i_21_ = Class17.method274(true);
                         if(i_20_ > 4500 && i_21_ > 4500) {
-                            SceneCluster.anInt771 = 250;
+                            SceneCluster.idleLogout = 250;
                             Class40_Sub5_Sub13.method650(4000);
                             SceneCluster.packetBuffer.putPacket(216);
                         }
@@ -349,7 +350,7 @@ public class Npc extends Actor {
                         if(Class38_Sub1.anInt1923 > 500) {
                             int i_22_ = (int) (8.0 * Math.random());
                             if((0x2 & i_22_) == 2)
-                                Class48.cameraOffsetY += Class68_Sub1.anInt2211;
+                                Class48.cameraOffsetY += ProducingGraphicsBuffer_Sub1.anInt2211;
                             if((i_22_ & 0x1) == 1)
                                 Buffer.cameraOffsetX += Class42.anInt1010;
                             Class38_Sub1.anInt1923 = 0;
@@ -357,7 +358,7 @@ public class Npc extends Actor {
                                 Class57.anInt1342 += Class5.anInt195;
                         }
                         if(Class48.cameraOffsetY < -55)
-                            Class68_Sub1.anInt2211 = 2;
+                            ProducingGraphicsBuffer_Sub1.anInt2211 = 2;
                         if(Player.anInt3264 > 500) {
                             int i_23_ = (int) (Math.random() * 8.0);
                             if((0x1 & i_23_) == 1)
@@ -367,7 +368,7 @@ public class Npc extends Actor {
                             Player.anInt3264 = 0;
                         }
                         if(Class48.cameraOffsetY > 55)
-                            Class68_Sub1.anInt2211 = -2;
+                            ProducingGraphicsBuffer_Sub1.anInt2211 = -2;
                         if(Buffer.cameraOffsetX < -50)
                             Class42.anInt1010 = 2;
                         if(Class43.cameraYawOffset < -60)
@@ -390,9 +391,9 @@ public class Npc extends Actor {
                         }
                         do {
                             try {
-                                if(Class40_Sub6.aClass64_2098 == null || SceneCluster.packetBuffer.currentPosition <= 0)
+                                if(Class40_Sub6.gameConnection == null || SceneCluster.packetBuffer.currentPosition <= 0)
                                     break;
-                                Class40_Sub6.aClass64_2098.method1010(SceneCluster.packetBuffer.currentPosition, (byte) -19, 0, SceneCluster.packetBuffer.buffer);
+                                Class40_Sub6.gameConnection.method1010(SceneCluster.packetBuffer.currentPosition, (byte) -19, 0, SceneCluster.packetBuffer.buffer);
                                 Class22.anInt537 = 0;
                                 SceneCluster.packetBuffer.currentPosition = 0;
                             } catch(java.io.IOException ioexception) {
@@ -485,7 +486,7 @@ public class Npc extends Actor {
                     animationId = -1;
                 int animationDelay = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
                 if(animationId == npc.playingAnimation && animationId != -1) {
-                    int i_10_ = Class68_Sub1.method1050(animationId, 2).anInt2483;
+                    int i_10_ = ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).anInt2483;
                     if(i_10_ == 1) {
                         npc.anInt3115 = 0;
                         npc.anInt3095 = 0;
@@ -494,7 +495,7 @@ public class Npc extends Actor {
                     }
                     if(i_10_ == 2)
                         npc.anInt3095 = 0;
-                } else if(animationId == -1 || npc.playingAnimation == -1 || Class68_Sub1.method1050(animationId, 2).anInt2494 >= Class68_Sub1.method1050(npc.playingAnimation, 2).anInt2494) {
+                } else if(animationId == -1 || npc.playingAnimation == -1 || ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).anInt2494 >= ProducingGraphicsBuffer_Sub1.method1050(npc.playingAnimation, 2).anInt2494) {
                     npc.playingAnimation = animationId;
                     npc.anInt3115 = 0;
                     npc.playingAnimationDelay = animationDelay;
@@ -607,8 +608,8 @@ public class Npc extends Actor {
     public Model getRotatedModel() {
         if(actorDefinition == null)
             return null;
-        AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : Class68_Sub1.method1050(playingAnimation, 2);
-        AnimationSequence animationSequence_0_ = anInt3077 != -1 && (anInt3077 != idleAnimation || animationSequence == null) ? Class68_Sub1.method1050(anInt3077, 2) : null;
+        AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : ProducingGraphicsBuffer_Sub1.method1050(playingAnimation, 2);
+        AnimationSequence animationSequence_0_ = anInt3077 != -1 && (anInt3077 != idleAnimation || animationSequence == null) ? ProducingGraphicsBuffer_Sub1.method1050(anInt3077, 2) : null;
         Model model = actorDefinition.getChildModel(animationSequence, animationSequence_0_, anInt3116, anInt3104);
         if(model == null)
             return null;

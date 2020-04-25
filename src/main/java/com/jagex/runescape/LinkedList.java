@@ -22,7 +22,7 @@ public class LinkedList {
     public static int crossType = 0;
     public static Buffer aClass40_Sub1_1081 = new Buffer(8);
     public static Class30 aClass30_1082 = new Class30();
-    public static int[] anIntArray1083 = new int[1000];
+    public static int[] minimapHintY = new int[1000];
     public Node aClass40_1056 = new Node();
     public Node aClass40_1068;
 
@@ -54,12 +54,11 @@ public class LinkedList {
             aLinkedList_1064 = null;
     }
 
-    public static void method908(byte arg0) {
+    public static void drawChatBoxGraphics() {
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            if(arg0 <= 83)
-                method908((byte) 19);
-            RSCanvas.aClass68_64.drawGraphics(17, 357, graphics);
+            RSCanvas.chatboxProducingGraphicsBuffer.drawGraphics(17, 357, graphics);
+
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }
@@ -81,7 +80,7 @@ public class LinkedList {
         Node class40 = aClass40_1056.aClass40_968;
         if(class40 == aClass40_1056)
             return null;
-        class40.method457(-1);
+        class40.remove(-1);
         return class40;
     }
 
@@ -111,7 +110,7 @@ public class LinkedList {
 
     public void pushBack(Node arg0, int arg1) {
         if(arg0.aClass40_968 != null)
-            arg0.method457(-1);
+            arg0.remove(-1);
         arg0.aClass40_968 = aClass40_1056.aClass40_968;
         int i = 106 % ((-7 - arg1) / 59);
         arg0.aClass40_950 = aClass40_1056;
@@ -121,7 +120,7 @@ public class LinkedList {
 
     public void method905(int arg0, Node arg1) {
         if(arg1.aClass40_968 != null)
-            arg1.method457(-1);
+            arg1.remove(-1);
         if(arg0 != 0)
             method911(-96, null, null);
         arg1.aClass40_950 = aClass40_1056.aClass40_950;
@@ -137,7 +136,7 @@ public class LinkedList {
             Node class40 = aClass40_1056.aClass40_950;
             if(class40 == aClass40_1056)
                 break;
-            class40.method457(arg0 ^ 0xffffffff);
+            class40.remove(arg0 ^ 0xffffffff);
         }
     }
 
@@ -155,7 +154,7 @@ public class LinkedList {
 
     public void method911(int arg0, Node arg1, Node arg2) {
         if(arg2.aClass40_968 != null)
-            arg2.method457(-1);
+            arg2.remove(-1);
         if(arg0 == -31793) {
             arg2.aClass40_950 = arg1;
             arg2.aClass40_968 = arg1.aClass40_968;
@@ -182,7 +181,7 @@ public class LinkedList {
         Node class40 = aClass40_1056.aClass40_950;
         if(aClass40_1056 == class40)
             return null;
-        class40.method457(arg0 + -25448);
+        class40.remove(arg0 + -25448);
         return class40;
     }
 }

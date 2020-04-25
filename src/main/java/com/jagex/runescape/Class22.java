@@ -28,7 +28,7 @@ public abstract class Class22 {
     public static boolean[] aBooleanArray548 = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, false, false};
 
     public static void method299(byte arg0, int arg1) {
-        int[] is = Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.pixels;
+        int[] is = Class40_Sub5_Sub13.minimapImage.pixels;
         int i = is.length;
         for(int i_0_ = 0; i > i_0_; i_0_++)
             is[i_0_] = 0;
@@ -42,7 +42,7 @@ public abstract class Class22 {
                 i_2_ += 4;
             }
         }
-        Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.method723();
+        Class40_Sub5_Sub13.minimapImage.method723();
         int i_4_ = (-10 + (int) (Math.random() * 20.0) + 238 << 8) + (228 + (int) (Math.random() * 20.0) << 16) + 238 + (int) (20.0 * Math.random()) + -10;
         int i_5_ = -10 + (int) (20.0 * Math.random()) + 238 << 16;
         for(int i_6_ = 1; i_6_ < 103; i_6_++) {
@@ -53,7 +53,7 @@ public abstract class Class22 {
                     Actor.method781(1850, 1 + arg1, i_7_, i_4_, i_5_, i_6_);
             }
         }
-        GameObject.anInt3040 = 0;
+        GameObject.minimapHintCount = 0;
         if(arg0 < 24)
             Player.trackedPlayerAppearanceCache = null;
         for(int i_8_ = 0; i_8_ < 104; i_8_++) {
@@ -79,10 +79,10 @@ public abstract class Class22 {
                                     i_12_++;
                             }
                         }
-                        MouseHandler.aClass40_Sub5_Sub14_Sub4Array1466[GameObject.anInt3040] = Class8.aClass40_Sub5_Sub14_Sub4Array296[i_11_];
-                        Actor.anIntArray3149[GameObject.anInt3040] = i_13_;
-                        LinkedList.anIntArray1083[GameObject.anInt3040] = i_12_;
-                        GameObject.anInt3040++;
+                        MouseHandler.minimapHint[GameObject.minimapHintCount] = Class8.aClass40_Sub5_Sub14_Sub4Array296[i_11_];
+                        Actor.minimapHintX[GameObject.minimapHintCount] = i_13_;
+                        LinkedList.minimapHintY[GameObject.minimapHintCount] = i_12_;
+                        GameObject.minimapHintCount++;
                     }
                 }
             }
@@ -90,9 +90,12 @@ public abstract class Class22 {
     }
 
     public static void method305() {
-        RSCanvas.aClass68_64.method1046((byte) 90);
-        Class44.aClass40_Sub5_Sub14_Sub2_1047.drawImage(0, 0);
-        Class5.anIntArray198 = Rasterizer3D.method708(Class5.anIntArray198);
+//        if(ScreenController.frameMode == ScreenMode.FIXED){
+
+            RSCanvas.chatboxProducingGraphicsBuffer.prepareRasterizer();
+//        }
+        Class44.chatboxBackgroundImage.drawImage(0, 0);
+        Class5.chatboxLineOffsets = Rasterizer3D.setLineOffsets(Class5.chatboxLineOffsets);
     }
 
     public static String method307(Buffer arg0, int arg1, int arg2) {
@@ -203,7 +206,7 @@ public abstract class Class22 {
                     method309(74, -85);
                 if(i != 5)
                     break;
-                Class68.oneMouseButton = i_21_;
+                ProducingGraphicsBuffer.oneMouseButton = i_21_;
             }
 
             break;

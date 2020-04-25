@@ -5,6 +5,8 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.frame.ChatBox;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
@@ -48,12 +50,15 @@ public class Class43 {
         if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
             if(Class34.anInt848 == 1)
                 method398(-2);
-            else
-                Class40_Sub5_Sub6.drawMenu();
+            else if(ScreenController.frameMode == ScreenMode.FIXED)
+                Class40_Sub5_Sub6.drawMenu(0,0);
         }
         if(arg0 >= -22)
             cameraYawOffset = 80;
-        Class55.method964(40);
+
+        if(ScreenController.frameMode == ScreenMode.FIXED) {
+            Class55.drawTabGraphics();
+        }
     }
 
 
@@ -67,21 +72,22 @@ public class Class43 {
                 Item.anInt3065 = -1;
                 OverlayDefinition.anInt2328 = -1;
                 boolean bool = false;
-                if(Class13.mouseX > 4 && Landscape.mouseY > 4 && Class13.mouseX < 516 && Landscape.mouseY < 338) {
-                    if(HuffmanEncoding.openScreenWidgetId == -1)
+                // Right game screen
+                if(ScreenController.isCoordinatesIn3dScreen(Class13.mouseX ,Landscape.mouseY )) {
+                    if(HuffmanEncoding.openScreenWidgetId == -1) {
                         Class64.method1013();
-                    else
+                    } else {
                         Class13.method243((byte) 89, 4, 516, 338, HuffmanEncoding.openScreenWidgetId, 4, Class13.mouseX, Landscape.mouseY, 0);
+                    }
                 }
+
                 HashTable.anInt573 = Item.anInt3065;
                 ItemDefinition.anInt2850 = OverlayDefinition.anInt2328;
                 Item.anInt3065 = -1;
                 OverlayDefinition.anInt2328 = -1;
-                if(Class13.mouseX > 553 && Landscape.mouseY > 205 && Class13.mouseX < 743 && Landscape.mouseY < 466) {
-                    if(Class29.tabAreaOverlayWidgetId != -1)
-                        Class13.method243((byte) 89, 205, 743, 466, Class29.tabAreaOverlayWidgetId, 553, Class13.mouseX, Landscape.mouseY, 1);
-                    else if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] != -1)
-                        Class13.method243((byte) 89, 205, 743, 466, Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId], 553, Class13.mouseX, Landscape.mouseY, 1);
+                // Right click tab
+                if(ScreenController.isCoordinatesInTabArea(Class13.mouseX ,Landscape.mouseY)) {
+                    ScreenController.handleTabClick(Class13.mouseX ,Landscape.mouseY);
                 }
                 if(OverlayDefinition.anInt2328 != CollisionMap.anInt163) {
                     ISAAC.redrawTabArea = true;
@@ -93,15 +99,9 @@ public class Class43 {
                     ISAAC.redrawTabArea = true;
                 }
                 Item.anInt3065 = -1;
-                if(Class13.mouseX > 17 && Landscape.mouseY > 357 && Class13.mouseX < 496 && Landscape.mouseY < 453) {
-                    if(ChatBox.openChatboxWidgetId == -1) {
-                        if(ChatBox.dialogueId == -1) {
-                            if(Landscape.mouseY < 434 && Class13.mouseX < 426)
-                                Class40_Sub11.method873(Landscape.mouseY + -357, 45);
-                        } else
-                            Class13.method243((byte) 89, 357, 496, 453, ChatBox.dialogueId, 17, Class13.mouseX, Landscape.mouseY, 3);
-                    } else
-                        Class13.method243((byte) 89, 357, 496, 453, ChatBox.openChatboxWidgetId, 17, Class13.mouseX, Landscape.mouseY, 2);
+                // right click chatbox
+                if(ScreenController.isCoordinatesInChatArea(Class13.mouseX ,Landscape.mouseY)) {
+                    ScreenController.handleChatClick(Class13.mouseX ,Landscape.mouseY);
                 }
                 if((ChatBox.openChatboxWidgetId != -1 || ChatBox.dialogueId != -1) && Class55.anInt1296 != OverlayDefinition.anInt2328) {
                     ChatBox.redrawChatbox = true;
@@ -153,7 +153,7 @@ public class Class43 {
             }
         }
         if(class1 == null)
-            Class40_Sub5_Sub6.drawMenu();
+            Class40_Sub5_Sub6.drawMenu(0,0);
         else {
             int i = VertexNormal.menuWidth;
             int i_0_ = InteractiveObject.menuOffsetX;

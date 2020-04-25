@@ -23,7 +23,7 @@ public abstract class Renderable extends SubNode {
     public int modelHeight = 1000;
 
     public static boolean handleSequences(int arg1) {
-        if(!Class68.method1043(arg1))
+        if(!ProducingGraphicsBuffer.method1043(arg1))
             return false;
         Widget[] widgets = Widget.interfaces[arg1];
         boolean bool = false;
@@ -38,7 +38,7 @@ public abstract class Renderable extends SubNode {
                     else
                         i_1_ = widget.animation;
                     if(i_1_ != -1) {
-                        AnimationSequence animationSequence = Class68_Sub1.method1050(i_1_, 2);
+                        AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(i_1_, 2);
                         widget.anInt2660 += Class5.anInt199;
                         while(animationSequence.animationLengths[widget.anInt2654] < widget.anInt2660) {
                             bool = true;

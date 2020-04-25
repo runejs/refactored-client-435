@@ -4,6 +4,8 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.frame.ChatBox;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
@@ -26,7 +28,7 @@ public class Class5 {
     public static Class22 aClass22_189;
     public static int anInt194;
     public static int anInt195 = 1;
-    public static int[] anIntArray198;
+    public static int[] chatboxLineOffsets;
     public static int anInt199 = 0;
     public static int anInt200 = 127;
     public static int currentTabId = 3;
@@ -56,9 +58,9 @@ public class Class5 {
         if(UnderlayDefinition.openSecondaryWidgetId != -1)
             Renderable.handleSequences(UnderlayDefinition.openSecondaryWidgetId);
         anInt199 = 0;
-        Class68_Sub1.aClass68_2213.method1046((byte) 90);
-        Player.anIntArray3284 = Rasterizer3D.method708(Player.anIntArray3284);
-        Rasterizer.clear();
+        ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213.prepareRasterizer();
+        Player.viewportOffsets = Rasterizer3D.setLineOffsets(Player.viewportOffsets);
+        Rasterizer.resetPixels();
         Class40_Sub5_Sub6.drawInterface(0, ActorDefinition.openFullScreenWidgetId, 503, (byte) -5, 0, 0, 765);
         if(UnderlayDefinition.openSecondaryWidgetId != -1)
             Class40_Sub5_Sub6.drawInterface(0, UnderlayDefinition.openSecondaryWidgetId, 503, (byte) -5, 0, 0, 765);
@@ -66,10 +68,12 @@ public class Class5 {
             Class43.processRightClick();
             SceneTile.drawMenuTooltip(4);
         } else
-            Class40_Sub5_Sub6.drawMenu();
+            if(ScreenController.frameMode == ScreenMode.FIXED && Class40_Sub5_Sub17_Sub1.menuScreenArea == 0){
+                Class40_Sub5_Sub6.drawMenu(4,4); // might be 0,0
+            }
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            Class68_Sub1.aClass68_2213.drawGraphics(0, 0, graphics);
+            ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213.drawGraphics(0, 0, graphics);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }
@@ -124,19 +128,19 @@ public class Class5 {
         int i_10_ = 0x7ff & (int) (-325.949 * Math.atan2((double) i_7_, (double) i_6_));
         if(i_9_ > 383)
             i_9_ = 383;
-        int i_11_ = -Class68_Sub1.anInt2210 + i_10_;
+        int i_11_ = -ProducingGraphicsBuffer_Sub1.anInt2210 + i_10_;
         if(i_11_ > 1024)
             i_11_ -= 2048;
         if(i_11_ < -1024)
             i_11_ += 2048;
         if(i_11_ > 0) {
-            Class68_Sub1.anInt2210 += Class22_Sub1.anInt1856 * i_11_ / 1000 + Class60.anInt1413;
-            Class68_Sub1.anInt2210 &= 0x7ff;
+            ProducingGraphicsBuffer_Sub1.anInt2210 += Class22_Sub1.anInt1856 * i_11_ / 1000 + Class60.anInt1413;
+            ProducingGraphicsBuffer_Sub1.anInt2210 &= 0x7ff;
         }
         if(arg0 > 0) {
             if(i_11_ < 0) {
-                Class68_Sub1.anInt2210 -= Class60.anInt1413 + Class22_Sub1.anInt1856 * -i_11_ / 1000;
-                Class68_Sub1.anInt2210 &= 0x7ff;
+                ProducingGraphicsBuffer_Sub1.anInt2210 -= Class60.anInt1413 + Class22_Sub1.anInt1856 * -i_11_ / 1000;
+                ProducingGraphicsBuffer_Sub1.anInt2210 &= 0x7ff;
             }
             if(i_9_ > Class26.anInt627) {
                 Class26.anInt627 += Class60.anInt1413 + Class22_Sub1.anInt1856 * (i_9_ - Class26.anInt627) / 1000;
@@ -148,13 +152,13 @@ public class Class5 {
                 if(Class26.anInt627 < i_9_)
                     Class26.anInt627 = i_9_;
             }
-            int i_12_ = i_10_ + -Class68_Sub1.anInt2210;
+            int i_12_ = i_10_ + -ProducingGraphicsBuffer_Sub1.anInt2210;
             if(i_12_ > 1024)
                 i_12_ -= 2048;
             if(i_12_ < -1024)
                 i_12_ += 2048;
             if(i_12_ < 0 && i_11_ > 0 || i_12_ > 0 && i_11_ < 0)
-                Class68_Sub1.anInt2210 = i_10_;
+                ProducingGraphicsBuffer_Sub1.anInt2210 = i_10_;
         }
     }
 
@@ -179,7 +183,7 @@ public class Class5 {
             }
         }
         if(i == 205) {
-            SceneCluster.anInt771 = 250;
+            SceneCluster.idleLogout = 250;
             return true;
         }
         if(i == 501) {

@@ -4,10 +4,13 @@ import java.awt.*;
 import java.awt.image.*;
 import java.util.Hashtable;
 
-public class Class68_Sub2 extends Class68 {
+public class ProducingGraphicsBuffer_Sub2 extends ProducingGraphicsBuffer {
     public Component aComponent2214;
 
     public void drawGraphics(int arg1, int arg3, Graphics arg2) {
+        arg2.drawImage(image, arg1, arg3, aComponent2214);
+    }
+    public void paintComponent(int arg1, int arg3, Graphics arg2) {
         arg2.drawImage(image, arg1, arg3, aComponent2214);
     }
 
@@ -21,7 +24,7 @@ public class Class68_Sub2 extends Class68 {
             WritableRaster writableraster = Raster.createWritableRaster(directcolormodel.createCompatibleSampleModel(width, height), databufferint, null);
             image = new BufferedImage(directcolormodel, writableraster, false, new Hashtable());
             aComponent2214 = arg2;
-            method1046((byte) 90);
+            prepareRasterizer();
         }
     }
 }

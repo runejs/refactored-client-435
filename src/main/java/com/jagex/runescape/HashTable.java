@@ -58,7 +58,7 @@ public class HashTable {
                     class40_sub5_sub13.aClass6_Sub1_2754 = arg1;
                     if(arg0) {
                         Class51.aClass23_1194.put(class40_sub5_sub13, (byte) 54, l);
-                        Class68.anInt1618++;
+                        ProducingGraphicsBuffer.anInt1618++;
                     } else {
                         InteractiveObject.aClass27_485.method352(126, class40_sub5_sub13);
                         GameObjectDefinition.aClass23_2545.put(class40_sub5_sub13, (byte) 109, l);
@@ -68,7 +68,7 @@ public class HashTable {
                     class40_sub5_sub13.method539();
                     Class51.aClass23_1194.put(class40_sub5_sub13, (byte) 116, l);
                     anInt554--;
-                    Class68.anInt1618++;
+                    ProducingGraphicsBuffer.anInt1618++;
                 }
             }
         }
@@ -112,7 +112,7 @@ public class HashTable {
                         Npc.currentScene.method134(Player.worldLevel, (int) class40_sub5_sub17_sub1.aDouble2980, (int) class40_sub5_sub17_sub1.aDouble2993, (int) class40_sub5_sub17_sub1.aDouble2992, 60, class40_sub5_sub17_sub1, class40_sub5_sub17_sub1.anInt3013, -1, false);
                     }
                 } else
-                    class40_sub5_sub17_sub1.method457(-1);
+                    class40_sub5_sub17_sub1.remove(-1);
             }
         }
     }
@@ -126,7 +126,7 @@ public class HashTable {
 
     public void put(Node arg0, byte arg1, long arg2) {
         if(arg0.aClass40_968 != null)
-            arg0.method457(-1);
+            arg0.remove(-1);
         Node class40 = nodes[(int) ((long) (-1 + size) & arg2)];
         arg0.aClass40_950 = class40;
         arg0.key = arg2;

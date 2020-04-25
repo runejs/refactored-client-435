@@ -14,7 +14,7 @@ import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class24 {
-    public static int[] anIntArray577;
+    public static int[] fullScreenTextureArray;
     public static CacheIndex_Sub1[] aClass6_Sub1Array580 = new CacheIndex_Sub1[256];
     public static int[] walkingQueueX = new int[4000];
 

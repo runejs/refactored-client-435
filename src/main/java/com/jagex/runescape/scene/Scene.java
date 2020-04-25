@@ -20,30 +20,30 @@ public class Scene {
     public static int clickedTileY = -1;
     public static int hoveredTileY = -1;
     public static int hoveredTileX = -1;
-    public static int anInt82;
-    public static int anInt84;
+    public static int curveSineY;
+    public static int mapBoundsX;
     public static int anInt85 = 0;
     public static int cycle;
-    public static int anInt87;
+    public static int currentPositionY;
     public static boolean lowMemory = true;
     public static int cameraPosZ;
     public static int anInt90 = 4;
     public static int clickX = 0;
     public static int[] faceOffsetX3 = new int[]{-45, 45, 45, -45};
-    public static int anInt95;
+    public static int currentPositionX;
     public static int anInt96 = 0;
     public static int cameraPosY;
-    public static int anInt99;
+    public static int curveCosineX;
     public static int cameraPositionTileY;
     public static int[] cullingClusterPointer = new int[anInt90];
     public static int[] faceOffsetY3 = new int[]{45, 45, -45, -45};
-    public static int anInt104;
+    public static int curveSineX;
     public static InteractiveObject[] interactiveObjects = new InteractiveObject[100];
     public static SceneCluster[] processedCullingClusters = new SceneCluster[500];
     public static LinkedList tileList = new LinkedList();
     public static int anInt109 = 0;
-    public static int anInt110;
-    public static int anInt111;
+    public static int curveCosineY;
+    public static int mapBoundsY;
     public static int[] faceOffsetY2 = new int[]{-53, -53, 53, 53};
     public static SceneCluster[][] cullingClusters = new SceneCluster[anInt90][500];
     public static boolean clicked = false;
@@ -58,8 +58,9 @@ public class Scene {
     public static int[] anIntArray130 = new int[]{76, 8, 137, 4, 0, 1, 38, 2, 19};
     public static int[] anIntArray131 = new int[]{1, 1, 0, 0, 0, 8, 0, 0, 8};
     public static int[] anIntArray132 = new int[]{0, 4, 4, 8, 0, 0, 8, 0, 0};
-    public static boolean[][] aBooleanArrayArray133;
-    public static boolean[][][][] aBooleanArrayArrayArrayArray134 = new boolean[8][32][51][51];
+    private static final int TILE_DRAW_DISTANCE = 75;
+    public static boolean[][] TILE_VISIBILITY_MAP;
+    public static boolean[][][][] TILE_VISIBILITY_MAPS = new boolean[8][32][(TILE_DRAW_DISTANCE * 2) + 1][(TILE_DRAW_DISTANCE * 2) + 1];
     public static int anInt135;
     public static int anInt136;
 
@@ -97,20 +98,20 @@ public class Scene {
         initToNull();
     }
 
-    public static void method95(int[] arg0, int arg1, int arg2, int arg3, int arg4) {
+    public static void method95(int arg1, int arg2, int arg3, int arg4, int[] arg0) {
         anInt118 = 0;
         anInt124 = 0;
         anInt136 = arg3;
         anInt128 = arg4;
         anInt122 = arg3 / 2;
         anInt135 = arg4 / 2;
-        boolean[][][][] bools = new boolean[9][32][53][53];
+        boolean[][][][] bools = new boolean[9][32][(TILE_DRAW_DISTANCE * 2) + 3][(TILE_DRAW_DISTANCE * 2) + 3];
         for(int i = 128; i <= 384; i += 32) {
             for(int i_2_ = 0; i_2_ < 2048; i_2_ += 64) {
-                anInt82 = Model.SINE[i];
-                anInt110 = Model.COSINE[i];
-                anInt104 = Model.SINE[i_2_];
-                anInt99 = Model.COSINE[i_2_];
+                curveSineY = Model.SINE[i];
+                curveCosineY = Model.COSINE[i];
+                curveSineX = Model.SINE[i_2_];
+                curveCosineX = Model.COSINE[i_2_];
                 int i_3_ = (i - 128) / 32;
                 int i_4_ = i_2_ / 64;
                 for(int i_5_ = -26; i_5_ <= 26; i_5_++) {
@@ -124,38 +125,38 @@ public class Scene {
                                 break;
                             }
                         }
-                        bools[i_3_][i_4_][i_5_ + 25 + 1][i_6_ + 25 + 1] = bool;
+                        bools[i_3_][i_4_][i_5_ + TILE_DRAW_DISTANCE  + 1][i_6_ + TILE_DRAW_DISTANCE  + 1] = bool;
                     }
                 }
             }
         }
         for(int i = 0; i < 8; i++) {
             for(int i_10_ = 0; i_10_ < 32; i_10_++) {
-                for(int i_11_ = -25; i_11_ < 25; i_11_++) {
-                    for(int i_12_ = -25; i_12_ < 25; i_12_++) {
+                for(int i_11_ = -TILE_DRAW_DISTANCE ; i_11_ < TILE_DRAW_DISTANCE ; i_11_++) {
+                    for(int i_12_ = -TILE_DRAW_DISTANCE ; i_12_ < TILE_DRAW_DISTANCE ; i_12_++) {
                         boolean bool = false;
                         while_0_:
                         for(int i_13_ = -1; i_13_ <= 1; i_13_++) {
                             for(int i_14_ = -1; i_14_ <= 1; i_14_++) {
-                                if(bools[i][i_10_][i_11_ + i_13_ + 25 + 1][i_12_ + i_14_ + 25 + 1]) {
+                                if(bools[i][i_10_][i_11_ + i_13_ + TILE_DRAW_DISTANCE  + 1][i_12_ + i_14_ + TILE_DRAW_DISTANCE  + 1]) {
                                     bool = true;
                                     break while_0_;
                                 }
-                                if(bools[i][(i_10_ + 1) % 31][i_11_ + i_13_ + 25 + 1][i_12_ + i_14_ + 25 + 1]) {
+                                if(bools[i][(i_10_ + 1) % 31][i_11_ + i_13_ + TILE_DRAW_DISTANCE  + 1][i_12_ + i_14_ + TILE_DRAW_DISTANCE  + 1]) {
                                     bool = true;
                                     break while_0_;
                                 }
-                                if(bools[i + 1][i_10_][i_11_ + i_13_ + 25 + 1][i_12_ + i_14_ + 25 + 1]) {
+                                if(bools[i + 1][i_10_][i_11_ + i_13_ + TILE_DRAW_DISTANCE  + 1][i_12_ + i_14_ + TILE_DRAW_DISTANCE  + 1]) {
                                     bool = true;
                                     break while_0_;
                                 }
-                                if(bools[i + 1][(i_10_ + 1) % 31][i_11_ + i_13_ + 25 + 1][i_12_ + i_14_ + 25 + 1]) {
+                                if(bools[i + 1][(i_10_ + 1) % 31][i_11_ + i_13_ + TILE_DRAW_DISTANCE  + 1][i_12_ + i_14_ + TILE_DRAW_DISTANCE  + 1]) {
                                     bool = true;
                                     break while_0_;
                                 }
                             }
                         }
-                        aBooleanArrayArrayArrayArray134[i][i_10_][i_11_ + 25][i_12_ + 25] = bool;
+                        TILE_VISIBILITY_MAPS[i][i_10_][i_11_ + TILE_DRAW_DISTANCE ][i_12_ + TILE_DRAW_DISTANCE ] = bool;
                     }
                 }
             }
@@ -173,11 +174,11 @@ public class Scene {
     }
 
     public static boolean method113(int arg0, int arg1, int arg2) {
-        int i = arg2 * anInt104 + arg0 * anInt99 >> 16;
-        int i_145_ = arg2 * anInt99 - arg0 * anInt104 >> 16;
-        int i_146_ = arg1 * anInt82 + i_145_ * anInt110 >> 16;
-        int i_147_ = arg1 * anInt110 - i_145_ * anInt82 >> 16;
-        if(i_146_ < 50 || i_146_ > 3500) {
+        int i = arg2 * curveSineX + arg0 * curveCosineX >> 16;
+        int i_145_ = arg2 * curveCosineX - arg0 * curveSineX >> 16;
+        int i_146_ = arg1 * curveSineY + i_145_ * curveCosineY >> 16;
+        int i_147_ = arg1 * curveCosineY - i_145_ * curveSineY >> 16;
+        if(i_146_ < 50/* || i_146_ > 3500*/) {
             return false;
         }
         int i_148_ = anInt122 + (i << 9) / i_146_;
@@ -315,54 +316,54 @@ public class Scene {
         }
     }
 
-    public void render(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        if(arg0 < 0) {
-            arg0 = 0;
-        } else if(arg0 >= mapSizeX * 128) {
-            arg0 = mapSizeX * 128 - 1;
+    public void render(int cameraPosX, int arg1, int cameraPosY, int curveY, int curveX, int arg5) {
+        if(cameraPosX < 0) {
+            cameraPosX = 0;
+        } else if(cameraPosX >= mapSizeX * 128) {
+            cameraPosX = mapSizeX * 128 - 1;
         }
-        if(arg2 < 0) {
-            arg2 = 0;
-        } else if(arg2 >= mapSizeY * 128) {
-            arg2 = mapSizeY * 128 - 1;
+        if(cameraPosY < 0) {
+            cameraPosY = 0;
+        } else if(cameraPosY >= mapSizeY * 128) {
+            cameraPosY = mapSizeY * 128 - 1;
         }
         cycle++;
-        anInt82 = Model.SINE[arg3];
-        anInt110 = Model.COSINE[arg3];
-        anInt104 = Model.SINE[arg4];
-        anInt99 = Model.COSINE[arg4];
-        aBooleanArrayArray133 = aBooleanArrayArrayArrayArray134[(arg3 - 128) / 32][arg4 / 64];
-        cameraPosX = arg0;
+        curveSineY = Model.SINE[curveY];
+        curveCosineY = Model.COSINE[curveY];
+        curveSineX = Model.SINE[curveX];
+        curveCosineX = Model.COSINE[curveX];
+        TILE_VISIBILITY_MAP = TILE_VISIBILITY_MAPS[(curveY - 128) / 32][curveX / 64];
+        Scene.cameraPosX = cameraPosX;
         cameraPosZ = arg1;
-        cameraPosY = arg2;
-        cameraPositionTileX = arg0 / 128;
-        cameraPositionTileY = arg2 / 128;
+        Scene.cameraPosY = cameraPosY;
+        cameraPositionTileX = cameraPosX / 128;
+        cameraPositionTileY = cameraPosY / 128;
         anInt85 = arg5;
-        anInt95 = cameraPositionTileX - 25;
-        if(anInt95 < 0) {
-            anInt95 = 0;
+        currentPositionX = cameraPositionTileX - TILE_DRAW_DISTANCE ;
+        if(currentPositionX < 0) {
+            currentPositionX = 0;
         }
-        anInt87 = cameraPositionTileY - 25;
-        if(anInt87 < 0) {
-            anInt87 = 0;
+        currentPositionY = cameraPositionTileY - TILE_DRAW_DISTANCE ;
+        if(currentPositionY < 0) {
+            currentPositionY = 0;
         }
-        anInt84 = cameraPositionTileX + 25;
-        if(anInt84 > mapSizeX) {
-            anInt84 = mapSizeX;
+        mapBoundsX = cameraPositionTileX + TILE_DRAW_DISTANCE ;
+        if(mapBoundsX > mapSizeX) {
+            mapBoundsX = mapSizeX;
         }
-        anInt111 = cameraPositionTileY + 25;
-        if(anInt111 > mapSizeY) {
-            anInt111 = mapSizeY;
+        mapBoundsY = cameraPositionTileY + TILE_DRAW_DISTANCE ;
+        if(mapBoundsY > mapSizeY) {
+            mapBoundsY = mapSizeY;
         }
-        method123();
+        processCulling();
         anInt109 = 0;
-        for(int i = currentPositionZ; i < mapSizeZ; i++) {
-            SceneTile[][] sceneTiles = tileArray[i];
-            for(int i_23_ = anInt95; i_23_ < anInt84; i_23_++) {
-                for(int i_24_ = anInt87; i_24_ < anInt111; i_24_++) {
-                    SceneTile sceneTile = sceneTiles[i_23_][i_24_];
+        for(int z = currentPositionZ; z < mapSizeZ; z++) {
+            SceneTile[][] sceneTiles = tileArray[z];
+            for(int x = currentPositionX; x < mapBoundsX; x++) {
+                for(int y = currentPositionY; y < mapBoundsY; y++) {
+                    SceneTile sceneTile = sceneTiles[x][y];
                     if(sceneTile != null) {
-                        if(sceneTile.anInt2063 > arg5 || !aBooleanArrayArray133[i_23_ - cameraPositionTileX + 25][i_24_ - cameraPositionTileY + 25] && heightMap[i][i_23_][i_24_] - arg1 < 2000) {
+                        if(sceneTile.anInt2063 > arg5 || !TILE_VISIBILITY_MAP[x - cameraPositionTileX + TILE_DRAW_DISTANCE ][y - cameraPositionTileY + TILE_DRAW_DISTANCE ] && heightMap[z][x][y] - arg1 < 70000) {
                             sceneTile.draw = false;
                             sceneTile.visible = false;
                             sceneTile.wallCullDirection = 0;
@@ -378,35 +379,35 @@ public class Scene {
         }
         for(int i = currentPositionZ; i < mapSizeZ; i++) {
             SceneTile[][] sceneTiles = tileArray[i];
-            for(int i_25_ = -25; i_25_ <= 0; i_25_++) {
+            for(int i_25_ = -TILE_DRAW_DISTANCE ; i_25_ <= 0; i_25_++) {
                 int i_26_ = cameraPositionTileX + i_25_;
                 int i_27_ = cameraPositionTileX - i_25_;
-                if(i_26_ >= anInt95 || i_27_ < anInt84) {
-                    for(int i_28_ = -25; i_28_ <= 0; i_28_++) {
+                if(i_26_ >= currentPositionX || i_27_ < mapBoundsX) {
+                    for(int i_28_ = -TILE_DRAW_DISTANCE ; i_28_ <= 0; i_28_++) {
                         int i_29_ = cameraPositionTileY + i_28_;
                         int i_30_ = cameraPositionTileY - i_28_;
-                        if(i_26_ >= anInt95) {
-                            if(i_29_ >= anInt87) {
+                        if(i_26_ >= currentPositionX) {
+                            if(i_29_ >= currentPositionY) {
                                 SceneTile sceneTile = sceneTiles[i_26_][i_29_];
                                 if(sceneTile != null && sceneTile.draw) {
                                     method106(sceneTile, true);
                                 }
                             }
-                            if(i_30_ < anInt111) {
+                            if(i_30_ < mapBoundsY) {
                                 SceneTile sceneTile = sceneTiles[i_26_][i_30_];
                                 if(sceneTile != null && sceneTile.draw) {
                                     method106(sceneTile, true);
                                 }
                             }
                         }
-                        if(i_27_ < anInt84) {
-                            if(i_29_ >= anInt87) {
+                        if(i_27_ < mapBoundsX) {
+                            if(i_29_ >= currentPositionY) {
                                 SceneTile sceneTile = sceneTiles[i_27_][i_29_];
                                 if(sceneTile != null && sceneTile.draw) {
                                     method106(sceneTile, true);
                                 }
                             }
-                            if(i_30_ < anInt111) {
+                            if(i_30_ < mapBoundsY) {
                                 SceneTile sceneTile = sceneTiles[i_27_][i_30_];
                                 if(sceneTile != null && sceneTile.draw) {
                                     method106(sceneTile, true);
@@ -423,35 +424,35 @@ public class Scene {
         }
         for(int i = currentPositionZ; i < mapSizeZ; i++) {
             SceneTile[][] sceneTiles = tileArray[i];
-            for(int i_31_ = -25; i_31_ <= 0; i_31_++) {
+            for(int i_31_ = -TILE_DRAW_DISTANCE ; i_31_ <= 0; i_31_++) {
                 int i_32_ = cameraPositionTileX + i_31_;
                 int i_33_ = cameraPositionTileX - i_31_;
-                if(i_32_ >= anInt95 || i_33_ < anInt84) {
-                    for(int i_34_ = -25; i_34_ <= 0; i_34_++) {
+                if(i_32_ >= currentPositionX || i_33_ < mapBoundsX) {
+                    for(int i_34_ = -TILE_DRAW_DISTANCE ; i_34_ <= 0; i_34_++) {
                         int i_35_ = cameraPositionTileY + i_34_;
                         int i_36_ = cameraPositionTileY - i_34_;
-                        if(i_32_ >= anInt95) {
-                            if(i_35_ >= anInt87) {
+                        if(i_32_ >= currentPositionX) {
+                            if(i_35_ >= currentPositionY) {
                                 SceneTile sceneTile = sceneTiles[i_32_][i_35_];
                                 if(sceneTile != null && sceneTile.draw) {
                                     method106(sceneTile, false);
                                 }
                             }
-                            if(i_36_ < anInt111) {
+                            if(i_36_ < mapBoundsY) {
                                 SceneTile sceneTile = sceneTiles[i_32_][i_36_];
                                 if(sceneTile != null && sceneTile.draw) {
                                     method106(sceneTile, false);
                                 }
                             }
                         }
-                        if(i_33_ < anInt84) {
-                            if(i_35_ >= anInt87) {
+                        if(i_33_ < mapBoundsX) {
+                            if(i_35_ >= currentPositionY) {
                                 SceneTile sceneTile = sceneTiles[i_33_][i_35_];
                                 if(sceneTile != null && sceneTile.draw) {
                                     method106(sceneTile, false);
                                 }
                             }
-                            if(i_36_ < anInt111) {
+                            if(i_36_ < mapBoundsY) {
                                 SceneTile sceneTile = sceneTiles[i_33_][i_36_];
                                 if(sceneTile != null && sceneTile.draw) {
                                     method106(sceneTile, false);
@@ -780,25 +781,25 @@ public class Scene {
                                 continue;
                             }
                         }
-                        if(i <= cameraPositionTileX && i > anInt95) {
+                        if(i <= cameraPositionTileX && i > currentPositionX) {
                             SceneTile sceneTile_80_ = sceneTiles[i - 1][i_76_];
                             if(sceneTile_80_ != null && sceneTile_80_.visible && (sceneTile_80_.draw || (groundTile.interactiveObjectsSizeOR & 0x1) == 0)) {
                                 continue;
                             }
                         }
-                        if(i >= cameraPositionTileX && i < anInt84 - 1) {
+                        if(i >= cameraPositionTileX && i < mapBoundsX - 1) {
                             SceneTile sceneTile_81_ = sceneTiles[i + 1][i_76_];
                             if(sceneTile_81_ != null && sceneTile_81_.visible && (sceneTile_81_.draw || (groundTile.interactiveObjectsSizeOR & 0x4) == 0)) {
                                 continue;
                             }
                         }
-                        if(i_76_ <= cameraPositionTileY && i_76_ > anInt87) {
+                        if(i_76_ <= cameraPositionTileY && i_76_ > currentPositionY) {
                             SceneTile sceneTile_82_ = sceneTiles[i][i_76_ - 1];
                             if(sceneTile_82_ != null && sceneTile_82_.visible && (sceneTile_82_.draw || (groundTile.interactiveObjectsSizeOR & 0x8) == 0)) {
                                 continue;
                             }
                         }
-                        if(i_76_ >= cameraPositionTileY && i_76_ < anInt111 - 1) {
+                        if(i_76_ >= cameraPositionTileY && i_76_ < mapBoundsY - 1) {
                             SceneTile sceneTile_83_ = sceneTiles[i][i_76_ + 1];
                             if(sceneTile_83_ != null && sceneTile_83_.visible && (sceneTile_83_.draw || (groundTile.interactiveObjectsSizeOR & 0x2) == 0)) {
                                 continue;
@@ -812,19 +813,19 @@ public class Scene {
                         SceneTile sceneTile_84_ = groundTile.aSceneTile_2058;
                         if(sceneTile_84_.plainTile != null) {
                             if(!isTileOccluded(i, i_76_, 0)) {
-                                renderPlainTile(sceneTile_84_.plainTile, 0, anInt82, anInt110, anInt104, anInt99, i, i_76_);
+                                renderPlainTile(sceneTile_84_.plainTile, 0, curveSineY, curveCosineY, curveSineX, curveCosineX, i, i_76_);
                             }
                         } else if(sceneTile_84_.shapedTile != null && !isTileOccluded(i, i_76_, 0)) {
-                            renderShapedTile(sceneTile_84_.shapedTile, i, i_76_, anInt104, anInt99, anInt82, anInt110);
+                            renderShapedTile(sceneTile_84_.shapedTile, i, i_76_, curveSineX, curveCosineX, curveSineY, curveCosineY);
                         }
                         Wall wall = sceneTile_84_.wall;
                         if(wall != null) {
-                            wall.primary.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
+                            wall.primary.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
                         }
                         for(int i_85_ = 0; i_85_ < sceneTile_84_.entityCount; i_85_++) {
                             InteractiveObject interactiveObject = sceneTile_84_.interactiveObjects[i_85_];
                             if(interactiveObject != null) {
-                                interactiveObject.renderable.renderAtPoint(interactiveObject.rotation, anInt82, anInt110, anInt104, anInt99, interactiveObject.worldX - cameraPosX, interactiveObject.worldZ - cameraPosZ, interactiveObject.worldY - cameraPosY, interactiveObject.hash);
+                                interactiveObject.renderable.renderAtPoint(interactiveObject.rotation, curveSineY, curveCosineY, curveSineX, curveCosineX, interactiveObject.worldX - cameraPosX, interactiveObject.worldZ - cameraPosZ, interactiveObject.worldY - cameraPosY, interactiveObject.hash);
                             }
                         }
                     }
@@ -832,11 +833,11 @@ public class Scene {
                     if(groundTile.plainTile != null) {
                         if(!isTileOccluded(i, i_76_, i_78_)) {
                             bool = true;
-                            renderPlainTile(groundTile.plainTile, i_78_, anInt82, anInt110, anInt104, anInt99, i, i_76_);
+                            renderPlainTile(groundTile.plainTile, i_78_, curveSineY, curveCosineY, curveSineX, curveCosineX, i, i_76_);
                         }
                     } else if(groundTile.shapedTile != null && !isTileOccluded(i, i_76_, i_78_)) {
                         bool = true;
-                        renderShapedTile(groundTile.shapedTile, i, i_76_, anInt104, anInt99, anInt82, anInt110);
+                        renderShapedTile(groundTile.shapedTile, i, i_76_, curveSineX, curveCosineX, curveSineY, curveCosineY);
                     }
                     int i_86_ = 0;
                     int i_87_ = 0;
@@ -879,15 +880,15 @@ public class Scene {
                             groundTile.wallCullDirection = 0;
                         }
                         if((wall.orientation & i_87_) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientation)) {
-                            wall.primary.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
+                            wall.primary.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
                         }
                         if((wall.orientation2 & i_87_) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientation2)) {
-                            wall.secondary.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
+                            wall.secondary.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
                         }
                     }
                     if(wallDecoration != null && !isOccluded(i_78_, i, i_76_, wallDecoration.renderable.modelHeight)) {
                         if((wallDecoration.configBits & i_87_) != 0) {
-                            wallDecoration.renderable.renderAtPoint(wallDecoration.face, anInt82, anInt110, anInt104, anInt99, wallDecoration.x - cameraPosX, wallDecoration.z - cameraPosZ, wallDecoration.y - cameraPosY, wallDecoration.hash);
+                            wallDecoration.renderable.renderAtPoint(wallDecoration.face, curveSineY, curveCosineY, curveSineX, curveCosineX, wallDecoration.x - cameraPosX, wallDecoration.z - cameraPosZ, wallDecoration.y - cameraPosY, wallDecoration.hash);
                         } else if((wallDecoration.configBits & 0x300) != 0) {
                             int i_88_ = wallDecoration.x - cameraPosX;
                             int i_89_ = wallDecoration.z - cameraPosZ;
@@ -908,30 +909,30 @@ public class Scene {
                             if((wallDecoration.configBits & 0x100) != 0 && i_93_ < i_92_) {
                                 int i_94_ = i_88_ + faceOffsetX2[i_91_];
                                 int i_95_ = i_90_ + faceOffsetY2[i_91_];
-                                wallDecoration.renderable.renderAtPoint(i_91_ * 512 + 256, anInt82, anInt110, anInt104, anInt99, i_94_, i_89_, i_95_, wallDecoration.hash);
+                                wallDecoration.renderable.renderAtPoint(i_91_ * 512 + 256, curveSineY, curveCosineY, curveSineX, curveCosineX, i_94_, i_89_, i_95_, wallDecoration.hash);
                             }
                             if((wallDecoration.configBits & 0x200) != 0 && i_93_ > i_92_) {
                                 int i_96_ = i_88_ + faceOffsetX3[i_91_];
                                 int i_97_ = i_90_ + faceOffsetY3[i_91_];
-                                wallDecoration.renderable.renderAtPoint(i_91_ * 512 + 1280 & 0x7ff, anInt82, anInt110, anInt104, anInt99, i_96_, i_89_, i_97_, wallDecoration.hash);
+                                wallDecoration.renderable.renderAtPoint(i_91_ * 512 + 1280 & 0x7ff, curveSineY, curveCosineY, curveSineX, curveCosineX, i_96_, i_89_, i_97_, wallDecoration.hash);
                             }
                         }
                     }
                     if(bool) {
                         FloorDecoration floorDecoration = groundTile.floorDecoration;
                         if(floorDecoration != null) {
-                            floorDecoration.renderable.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, floorDecoration.x - cameraPosX, floorDecoration.z - cameraPosZ, floorDecoration.y - cameraPosY, floorDecoration.hash);
+                            floorDecoration.renderable.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, floorDecoration.x - cameraPosX, floorDecoration.z - cameraPosZ, floorDecoration.y - cameraPosY, floorDecoration.hash);
                         }
                         GroundItemTile groundItemTile = groundTile.groundItemTile;
                         if(groundItemTile != null && groundItemTile.anInt1371 == 0) {
                             if(groundItemTile.secondGroundItem != null) {
-                                groundItemTile.secondGroundItem.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ, groundItemTile.y - cameraPosY, groundItemTile.hash);
+                                groundItemTile.secondGroundItem.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ, groundItemTile.y - cameraPosY, groundItemTile.hash);
                             }
                             if(groundItemTile.thirdGroundItem != null) {
-                                groundItemTile.thirdGroundItem.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ, groundItemTile.y - cameraPosY, groundItemTile.hash);
+                                groundItemTile.thirdGroundItem.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ, groundItemTile.y - cameraPosY, groundItemTile.hash);
                             }
                             if(groundItemTile.firstGroundItem != null) {
-                                groundItemTile.firstGroundItem.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ, groundItemTile.y - cameraPosY, groundItemTile.hash);
+                                groundItemTile.firstGroundItem.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ, groundItemTile.y - cameraPosY, groundItemTile.hash);
                             }
                         }
                     }
@@ -974,7 +975,7 @@ public class Scene {
                     if(bool) {
                         Wall wall = groundTile.wall;
                         if(!isWallOccluded(i_78_, i, i_76_, wall.orientation)) {
-                            wall.primary.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
+                            wall.primary.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
                         }
                         groundTile.wallCullDirection = 0;
                     }
@@ -1057,7 +1058,7 @@ public class Scene {
                             InteractiveObject interactiveObject = interactiveObjects[i_116_];
                             interactiveObject.cycle = cycle;
                             if(!isAreaOccluded(i_78_, interactiveObject.tileLeft, interactiveObject.tileRight, interactiveObject.tileTop, interactiveObject.tileBottom, interactiveObject.renderable.modelHeight)) {
-                                interactiveObject.renderable.renderAtPoint(interactiveObject.rotation, anInt82, anInt110, anInt104, anInt99, interactiveObject.worldX - cameraPosX, interactiveObject.worldZ - cameraPosZ, interactiveObject.worldY - cameraPosY, interactiveObject.hash);
+                                interactiveObject.renderable.renderAtPoint(interactiveObject.rotation, curveSineY, curveCosineY, curveSineX, curveCosineX, interactiveObject.worldX - cameraPosX, interactiveObject.worldZ - cameraPosZ, interactiveObject.worldY - cameraPosY, interactiveObject.hash);
                             }
                             for(int i_122_ = interactiveObject.tileLeft; i_122_ <= interactiveObject.tileRight; i_122_++) {
                                 for(int i_123_ = interactiveObject.tileTop; i_123_ <= interactiveObject.tileBottom; i_123_++) {
@@ -1079,25 +1080,25 @@ public class Scene {
                 }
                 if(groundTile.visible) {
                     if(groundTile.wallCullDirection == 0) {
-                        if(i <= cameraPositionTileX && i > anInt95) {
+                        if(i <= cameraPositionTileX && i > currentPositionX) {
                             SceneTile sceneTile_125_ = sceneTiles[i - 1][i_76_];
                             if(sceneTile_125_ != null && sceneTile_125_.visible) {
                                 continue;
                             }
                         }
-                        if(i >= cameraPositionTileX && i < anInt84 - 1) {
+                        if(i >= cameraPositionTileX && i < mapBoundsX - 1) {
                             SceneTile sceneTile_126_ = sceneTiles[i + 1][i_76_];
                             if(sceneTile_126_ != null && sceneTile_126_.visible) {
                                 continue;
                             }
                         }
-                        if(i_76_ <= cameraPositionTileY && i_76_ > anInt87) {
+                        if(i_76_ <= cameraPositionTileY && i_76_ > currentPositionY) {
                             SceneTile sceneTile_127_ = sceneTiles[i][i_76_ - 1];
                             if(sceneTile_127_ != null && sceneTile_127_.visible) {
                                 continue;
                             }
                         }
-                        if(i_76_ >= cameraPositionTileY && i_76_ < anInt111 - 1) {
+                        if(i_76_ >= cameraPositionTileY && i_76_ < mapBoundsY - 1) {
                             SceneTile sceneTile_128_ = sceneTiles[i][i_76_ + 1];
                             if(sceneTile_128_ != null && sceneTile_128_.visible) {
                                 continue;
@@ -1108,20 +1109,20 @@ public class Scene {
                         GroundItemTile groundItemTile = groundTile.groundItemTile;
                         if(groundItemTile != null && groundItemTile.anInt1371 != 0) {
                             if(groundItemTile.secondGroundItem != null) {
-                                groundItemTile.secondGroundItem.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ - groundItemTile.anInt1371, groundItemTile.y - cameraPosY, groundItemTile.hash);
+                                groundItemTile.secondGroundItem.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ - groundItemTile.anInt1371, groundItemTile.y - cameraPosY, groundItemTile.hash);
                             }
                             if(groundItemTile.thirdGroundItem != null) {
-                                groundItemTile.thirdGroundItem.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ - groundItemTile.anInt1371, groundItemTile.y - cameraPosY, groundItemTile.hash);
+                                groundItemTile.thirdGroundItem.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ - groundItemTile.anInt1371, groundItemTile.y - cameraPosY, groundItemTile.hash);
                             }
                             if(groundItemTile.firstGroundItem != null) {
-                                groundItemTile.firstGroundItem.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ - groundItemTile.anInt1371, groundItemTile.y - cameraPosY, groundItemTile.hash);
+                                groundItemTile.firstGroundItem.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ - groundItemTile.anInt1371, groundItemTile.y - cameraPosY, groundItemTile.hash);
                             }
                         }
                         if(groundTile.anInt2064 != 0) {
                             WallDecoration wallDecoration = groundTile.wallDecoration;
                             if(wallDecoration != null && !isOccluded(i_78_, i, i_76_, wallDecoration.renderable.modelHeight)) {
                                 if((wallDecoration.configBits & groundTile.anInt2064) != 0) {
-                                    wallDecoration.renderable.renderAtPoint(wallDecoration.face, anInt82, anInt110, anInt104, anInt99, wallDecoration.x - cameraPosX, wallDecoration.z - cameraPosZ, wallDecoration.y - cameraPosY, wallDecoration.hash);
+                                    wallDecoration.renderable.renderAtPoint(wallDecoration.face, curveSineY, curveCosineY, curveSineX, curveCosineX, wallDecoration.x - cameraPosX, wallDecoration.z - cameraPosZ, wallDecoration.y - cameraPosY, wallDecoration.hash);
                                 } else if((wallDecoration.configBits & 0x300) != 0) {
                                     int i_129_ = wallDecoration.x - cameraPosX;
                                     int i_130_ = wallDecoration.z - cameraPosZ;
@@ -1142,22 +1143,22 @@ public class Scene {
                                     if((wallDecoration.configBits & 0x100) != 0 && i_134_ >= i_133_) {
                                         int i_135_ = i_129_ + faceOffsetX2[i_132_];
                                         int i_136_ = i_131_ + faceOffsetY2[i_132_];
-                                        wallDecoration.renderable.renderAtPoint(i_132_ * 512 + 256, anInt82, anInt110, anInt104, anInt99, i_135_, i_130_, i_136_, wallDecoration.hash);
+                                        wallDecoration.renderable.renderAtPoint(i_132_ * 512 + 256, curveSineY, curveCosineY, curveSineX, curveCosineX, i_135_, i_130_, i_136_, wallDecoration.hash);
                                     }
                                     if((wallDecoration.configBits & 0x200) != 0 && i_134_ <= i_133_) {
                                         int i_137_ = i_129_ + faceOffsetX3[i_132_];
                                         int i_138_ = i_131_ + faceOffsetY3[i_132_];
-                                        wallDecoration.renderable.renderAtPoint(i_132_ * 512 + 1280 & 0x7ff, anInt82, anInt110, anInt104, anInt99, i_137_, i_130_, i_138_, wallDecoration.hash);
+                                        wallDecoration.renderable.renderAtPoint(i_132_ * 512 + 1280 & 0x7ff, curveSineY, curveCosineY, curveSineX, curveCosineX, i_137_, i_130_, i_138_, wallDecoration.hash);
                                     }
                                 }
                             }
                             Wall wall = groundTile.wall;
                             if(wall != null) {
                                 if((wall.orientation2 & groundTile.anInt2064) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientation2)) {
-                                    wall.secondary.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
+                                    wall.secondary.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
                                 }
                                 if((wall.orientation & groundTile.anInt2064) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientation)) {
-                                    wall.primary.renderAtPoint(0, anInt82, anInt110, anInt104, anInt99, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
+                                    wall.primary.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
                                 }
                             }
                         }
@@ -1413,7 +1414,7 @@ public class Scene {
                 int y = modelA.verticesY[vertex] - j;
                 if(y <= modelB.maxY) {
                     int x = modelA.verticesX[vertex] - i;
-                    if(x >= modelB.anInt3171 && x <= modelB.diagonal3D) {
+                    if(x >= modelB.diagonal2DAboveOrigin && x <= modelB.diagonal3D) {
                         int z = modelA.verticesZ[vertex] - k;
                         if(z >= modelB.anInt3177 && z <= modelB.anInt3189) {
                             for(int v = 0; v < vertexCount; v++) {
@@ -1460,26 +1461,26 @@ public class Scene {
         return sceneTile.wall.hash;
     }
 
-    public void method123() {
+    public void processCulling() {
         int i = cullingClusterPointer[anInt85];
         SceneCluster[] sceneClusters = cullingClusters[anInt85];
         anInt96 = 0;
         for(int i_172_ = 0; i_172_ < i; i_172_++) {
             SceneCluster sceneCluster = sceneClusters[i_172_];
             if(sceneCluster.searchMask == 1) {
-                int i_173_ = sceneCluster.tileStartX - cameraPositionTileX + 25;
+                int i_173_ = sceneCluster.tileStartX - cameraPositionTileX + TILE_DRAW_DISTANCE ;
                 if(i_173_ >= 0 && i_173_ <= 50) {
-                    int i_174_ = sceneCluster.tileStartY - cameraPositionTileY + 25;
+                    int i_174_ = sceneCluster.tileStartY - cameraPositionTileY + TILE_DRAW_DISTANCE ;
                     if(i_174_ < 0) {
                         i_174_ = 0;
                     }
-                    int i_175_ = sceneCluster.tileEndY - cameraPositionTileY + 25;
+                    int i_175_ = sceneCluster.tileEndY - cameraPositionTileY + TILE_DRAW_DISTANCE ;
                     if(i_175_ > 50) {
                         i_175_ = 50;
                     }
                     boolean bool = false;
                     while(i_174_ <= i_175_) {
-                        if(aBooleanArrayArray133[i_173_][i_174_++]) {
+                        if(TILE_VISIBILITY_MAP[i_173_][i_174_++]) {
                             bool = true;
                             break;
                         }
@@ -1503,19 +1504,19 @@ public class Scene {
                     }
                 }
             } else if(sceneCluster.searchMask == 2) {
-                int i_177_ = sceneCluster.tileStartY - cameraPositionTileY + 25;
+                int i_177_ = sceneCluster.tileStartY - cameraPositionTileY + TILE_DRAW_DISTANCE ;
                 if(i_177_ >= 0 && i_177_ <= 50) {
-                    int i_178_ = sceneCluster.tileStartX - cameraPositionTileX + 25;
+                    int i_178_ = sceneCluster.tileStartX - cameraPositionTileX + TILE_DRAW_DISTANCE ;
                     if(i_178_ < 0) {
                         i_178_ = 0;
                     }
-                    int i_179_ = sceneCluster.tileEndX - cameraPositionTileX + 25;
+                    int i_179_ = sceneCluster.tileEndX - cameraPositionTileX + TILE_DRAW_DISTANCE ;
                     if(i_179_ > 50) {
                         i_179_ = 50;
                     }
                     boolean bool = false;
                     while(i_178_ <= i_179_) {
-                        if(aBooleanArrayArray133[i_178_++][i_177_]) {
+                        if(TILE_VISIBILITY_MAP[i_178_++][i_177_]) {
                             bool = true;
                             break;
                         }
@@ -1541,20 +1542,20 @@ public class Scene {
             } else if(sceneCluster.searchMask == 4) {
                 int i_181_ = sceneCluster.worldEndZ - cameraPosZ;
                 if(i_181_ > 128) {
-                    int i_182_ = sceneCluster.tileStartY - cameraPositionTileY + 25;
+                    int i_182_ = sceneCluster.tileStartY - cameraPositionTileY + TILE_DRAW_DISTANCE ;
                     if(i_182_ < 0) {
                         i_182_ = 0;
                     }
-                    int i_183_ = sceneCluster.tileEndY - cameraPositionTileY + 25;
+                    int i_183_ = sceneCluster.tileEndY - cameraPositionTileY + TILE_DRAW_DISTANCE ;
                     if(i_183_ > 50) {
                         i_183_ = 50;
                     }
                     if(i_182_ <= i_183_) {
-                        int i_184_ = sceneCluster.tileStartX - cameraPositionTileX + 25;
+                        int i_184_ = sceneCluster.tileStartX - cameraPositionTileX + TILE_DRAW_DISTANCE ;
                         if(i_184_ < 0) {
                             i_184_ = 0;
                         }
-                        int i_185_ = sceneCluster.tileEndX - cameraPositionTileX + 25;
+                        int i_185_ = sceneCluster.tileEndX - cameraPositionTileX + TILE_DRAW_DISTANCE ;
                         if(i_185_ > 50) {
                             i_185_ = 50;
                         }
@@ -1562,7 +1563,7 @@ public class Scene {
                         while_3_:
                         for(int i_186_ = i_184_; i_186_ <= i_185_; i_186_++) {
                             for(int i_187_ = i_182_; i_187_ <= i_183_; i_187_++) {
-                                if(aBooleanArrayArray133[i_186_][i_187_]) {
+                                if(TILE_VISIBILITY_MAP[i_186_][i_187_]) {
                                     bool = true;
                                     break while_3_;
                                 }

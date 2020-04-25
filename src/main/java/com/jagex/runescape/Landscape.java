@@ -40,7 +40,7 @@ public class Landscape {
     public static int anInt1171 = 0;
     public static int[][] distanceValues = new int[104][104];
     public static String[] menuActionTexts = new String[500];
-    public static Class68 aClass68_1185;
+    public static ProducingGraphicsBuffer framePieceRight;
     public static int[] anIntArray1186;
 
     public static byte[] method931(byte[] arg0) {
@@ -112,7 +112,7 @@ public class Landscape {
                 }
             }
             if(bool) {
-                if(Class68.anInt1634 != 0)
+                if(ProducingGraphicsBuffer.anInt1634 != 0)
                     Class51.method940(0, English.loadingPleaseWait, true, Native.aClass1_2423);
                 RSCanvas.method46(0);
                 Npc.currentScene.initToNull();
@@ -268,9 +268,9 @@ public class Landscape {
                 SceneCluster.packetBuffer.putPacket(178);
                 RSRuntimeException.method1057(126);
             } else
-                Class68.anInt1634 = 2;
+                ProducingGraphicsBuffer.anInt1634 = 2;
         } else
-            Class68.anInt1634 = 1;
+            ProducingGraphicsBuffer.anInt1634 = 1;
 
     }
 

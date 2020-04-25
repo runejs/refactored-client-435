@@ -19,22 +19,19 @@ public class Class40_Sub5_Sub13 extends SubNode {
     public static long[] aLongArray2757 = new long[100];
     public static Model[] aClass40_Sub5_Sub17_Sub5Array2762 = new Model[4];
     public static int[] anIntArray2764 = new int[128];
-    public static ImageRGB aClass40_Sub5_Sub14_Sub4_2765;
+    public static ImageRGB minimapImage;
     public CacheIndex_Sub1 aClass6_Sub1_2754;
     public byte aByte2758;
     public int anInt2763;
 
-    public static Class68 method649(int arg0, int arg1, Component arg2, int arg3) {
-        if(arg3 != -4875)
-            aClass40_Sub5_Sub14_Sub4_2765 = null;
+    public static ProducingGraphicsBuffer createGraphicsBuffer(int width, int height, Component component) {
         try {
-            Class var_class = Class.forName("com.jagex.runescape.Class68_Sub2");
-            Class68 class68 = (Class68) var_class.newInstance();
-            class68.method1041(13, arg1, arg2, arg0);
-            return class68;
+            ProducingGraphicsBuffer producingGraphicsBuffer = new ProducingGraphicsBuffer_Sub2();
+            producingGraphicsBuffer.method1041(13, width, component, height);
+            return producingGraphicsBuffer;
         } catch(Throwable throwable) {
-            Class68_Sub1 class68_sub1 = new Class68_Sub1();
-            class68_sub1.method1041(44, arg1, arg2, arg0);
+            ProducingGraphicsBuffer_Sub1 class68_sub1 = new ProducingGraphicsBuffer_Sub1();
+            class68_sub1.method1041(44, width, component, height);
             return class68_sub1;
         }
     }
@@ -64,7 +61,7 @@ public class Class40_Sub5_Sub13 extends SubNode {
             if(class40_sub3.anInt2031 == 0) {
                 if(class40_sub3.anInt2028 < 0 || Node.method459(class40_sub3.anInt2036, class40_sub3.anInt2028, (byte) 103)) {
                     GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2028, class40_sub3.anInt2039, class40_sub3.anInt2036, class40_sub3.anInt2025, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
-                    class40_sub3.method457(-1);
+                    class40_sub3.remove(-1);
                 }
             } else {
                 if(class40_sub3.anInt2033 > 0)
@@ -73,9 +70,9 @@ public class Class40_Sub5_Sub13 extends SubNode {
                     GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2017, class40_sub3.anInt2039, class40_sub3.anInt2030, class40_sub3.anInt2035, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
                     class40_sub3.anInt2033 = -1;
                     if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2028 == -1)
-                        class40_sub3.method457(-1);
+                        class40_sub3.remove(-1);
                     else if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2025 == class40_sub3.anInt2035 && class40_sub3.anInt2030 == class40_sub3.anInt2036)
-                        class40_sub3.method457(-1);
+                        class40_sub3.remove(-1);
                 }
             }
         }

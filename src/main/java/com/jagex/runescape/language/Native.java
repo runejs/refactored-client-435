@@ -46,7 +46,7 @@ public class Native {
     public static String aClass1_1921 = "b12_full";
     public static String aClass1_1395 = "backbase1";
     public static String aClass1_304 = "backhmid2";
-    public static String aClass1_1440 = "backleft1";
+    public static String imgBackleft1 = "backleft1";
     public static String aClass1_1024 = "backleft2";
     public static String aClass1_281 = "backright1";
     public static String aClass1_196 = "backvmid3";

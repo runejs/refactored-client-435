@@ -96,81 +96,6 @@ public class Class38_Sub1 extends Class38 {
         return true;
     }
 
-    public static void method447() {
-        if(MouseHandler.clickType == 1) {
-            if(Class57.clickX >= 539 && Class57.clickX <= 573 && RSString.clickY >= 169 && RSString.clickY < 205 && Class40_Sub5_Sub11.tabWidgetIds[0] != -1) {
-                IdentityKit.drawTabIcons = true;
-                ISAAC.redrawTabArea = true;
-                Class5.currentTabId = 0;
-            }
-            if(Class57.clickX >= 569 && Class57.clickX <= 599 && RSString.clickY >= 168 && RSString.clickY < 205 && Class40_Sub5_Sub11.tabWidgetIds[1] != -1) {
-                Class5.currentTabId = 1;
-                ISAAC.redrawTabArea = true;
-                IdentityKit.drawTabIcons = true;
-            }
-            if(Class57.clickX >= 597 && Class57.clickX <= 627 && RSString.clickY >= 168 && RSString.clickY < 205 && Class40_Sub5_Sub11.tabWidgetIds[2] != -1) {
-                IdentityKit.drawTabIcons = true;
-                Class5.currentTabId = 2;
-                ISAAC.redrawTabArea = true;
-            }
-            if(Class57.clickX >= 625 && Class57.clickX <= 669 && RSString.clickY >= 168 && RSString.clickY < 203 && Class40_Sub5_Sub11.tabWidgetIds[3] != -1) {
-                IdentityKit.drawTabIcons = true;
-                ISAAC.redrawTabArea = true;
-                Class5.currentTabId = 3;
-            }
-            if(Class57.clickX >= 666 && Class57.clickX <= 696 && RSString.clickY >= 168 && RSString.clickY < 205 && Class40_Sub5_Sub11.tabWidgetIds[4] != -1) {
-                Class5.currentTabId = 4;
-                ISAAC.redrawTabArea = true;
-                IdentityKit.drawTabIcons = true;
-            }
-            if(Class57.clickX >= 694 && Class57.clickX <= 724 && RSString.clickY >= 168 && RSString.clickY < 205 && Class40_Sub5_Sub11.tabWidgetIds[5] != -1) {
-                IdentityKit.drawTabIcons = true;
-                ISAAC.redrawTabArea = true;
-                Class5.currentTabId = 5;
-            }
-            if(Class57.clickX >= 722 && Class57.clickX <= 756 && RSString.clickY >= 169 && RSString.clickY < 205 && Class40_Sub5_Sub11.tabWidgetIds[6] != -1) {
-                ISAAC.redrawTabArea = true;
-                Class5.currentTabId = 6;
-                IdentityKit.drawTabIcons = true;
-            }
-            if(Class57.clickX >= 540 && Class57.clickX <= 574 && RSString.clickY >= 466 && RSString.clickY < 502 && Class40_Sub5_Sub11.tabWidgetIds[7] != -1) {
-                Class5.currentTabId = 7;
-                IdentityKit.drawTabIcons = true;
-                ISAAC.redrawTabArea = true;
-            }
-            if(Class57.clickX >= 572 && Class57.clickX <= 602 && RSString.clickY >= 466 && RSString.clickY < 503 && Class40_Sub5_Sub11.tabWidgetIds[8] != -1) {
-                ISAAC.redrawTabArea = true;
-                IdentityKit.drawTabIcons = true;
-                Class5.currentTabId = 8;
-            }
-            if(Class57.clickX >= 599 && Class57.clickX <= 629 && RSString.clickY >= 466 && RSString.clickY < 503 && Class40_Sub5_Sub11.tabWidgetIds[9] != -1) {
-                IdentityKit.drawTabIcons = true;
-                Class5.currentTabId = 9;
-                ISAAC.redrawTabArea = true;
-            }
-            if(Class57.clickX >= 627 && Class57.clickX <= 671 && RSString.clickY >= 467 && RSString.clickY < 502 && Class40_Sub5_Sub11.tabWidgetIds[10] != -1) {
-                Class5.currentTabId = 10;
-                IdentityKit.drawTabIcons = true;
-                ISAAC.redrawTabArea = true;
-            }
-            if(Class57.clickX >= 669 && Class57.clickX <= 699 && RSString.clickY >= 466 && RSString.clickY < 503 && Class40_Sub5_Sub11.tabWidgetIds[11] != -1) {
-                Class5.currentTabId = 11;
-                ISAAC.redrawTabArea = true;
-                IdentityKit.drawTabIcons = true;
-            }
-            if(Class57.clickX >= 696 && Class57.clickX <= 726 && RSString.clickY >= 466 && RSString.clickY < 503 && Class40_Sub5_Sub11.tabWidgetIds[12] != -1) {
-                ISAAC.redrawTabArea = true;
-                IdentityKit.drawTabIcons = true;
-                Class5.currentTabId = 12;
-            }
-            if(Class57.clickX >= 724 && Class57.clickX <= 758 && RSString.clickY >= 466 && RSString.clickY < 502 && Class40_Sub5_Sub11.tabWidgetIds[13] != -1) {
-                Class5.currentTabId = 13;
-                ISAAC.redrawTabArea = true;
-                IdentityKit.drawTabIcons = true;
-            }
-        }
-    }
-
     public static boolean doWalkTo(int arg0, int arg1, int startX, int endX, int objectType, boolean flag, int arg7, int arg8, int startY, int endY, int clickType) {
         for(int x = 0; x < 104; x++) {
             for(int y = 0; y < 104; y++) {
@@ -364,10 +289,10 @@ public class Class38_Sub1 extends Class38 {
     }
 
     public static void method450(byte arg0) {
-        if(Player.anInt3288 == 2) {
+        if(Player.headIconDrawType == 2) {
             if(arg0 >= -28)
                 method445(-128);
-            Class22_Sub1.method312(2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + Class4.anInt175 << 7), (Class68.anInt1637 + -SpotAnimDefinition.baseX << 7) + Landscape.anInt1170, 4976905);
+            Class22_Sub1.method312(2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + Class4.anInt175 << 7), (ProducingGraphicsBuffer.anInt1637 + -SpotAnimDefinition.baseX << 7) + Landscape.anInt1170, 4976905);
             if(ISAAC.anInt522 > -1 && Node.pulseCycle % 20 < 10)
                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
         }

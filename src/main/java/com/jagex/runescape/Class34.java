@@ -19,7 +19,7 @@ public class Class34 {
     public static int[] anIntArray852;
     public static long aLong853;
     public static int anInt854 = -1;
-    public static IndexedImage mapBack;
+    public static IndexedImage minimapBackgroundImage;
 
     public int anInt801;
     public int anInt802;

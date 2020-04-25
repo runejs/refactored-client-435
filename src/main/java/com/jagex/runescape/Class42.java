@@ -40,7 +40,7 @@ public class Class42 {
     }
 
     public static void method883(int arg1) {
-        if(Class68.method1043(arg1)) {
+        if(ProducingGraphicsBuffer.method1043(arg1)) {
             Widget[] widgets = Widget.interfaces[arg1];
             for(int i = 0; widgets.length > i; i++) {
                 Widget widget = widgets[i];

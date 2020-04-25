@@ -17,7 +17,7 @@ public class Class56 {
     public static int anInt1318 = 3353893;
     public static Class61[] aClass61Array1320 = new Class61[50];
     public static CacheIndex_Sub1 aClass6_Sub1_1323;
-    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1329;
+    public static IndexedImage tabBottomBack;
 
     public Class67 aClass67_1309;
     public Class67 aClass67_1313 = null;

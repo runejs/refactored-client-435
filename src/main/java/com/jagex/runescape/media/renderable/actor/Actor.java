@@ -22,7 +22,7 @@ public abstract class Actor extends Renderable {
     public static int[] anIntArray3111;
     public static volatile int eventMouseButtonPressed = 0;
     public static CacheIndex aCacheIndex_3144;
-    public static int[] anIntArray3149 = new int[1000];
+    public static int[] minimapHintX = new int[1000];
     public static CacheIndex aCacheIndex_3150;
     public static int anInt3151 = -16 + (int) (Math.random() * 33.0);
     public static Signlink aClass31_3152;
@@ -143,7 +143,7 @@ public abstract class Actor extends Renderable {
                     i_3_ = arg4;
                 int i_4_ = 4 * (-arg5 + 103) * 512 + 24624 + 4 * arg2;
                 int i_5_ = i >> 14 & 0x7fff;
-                int[] is = Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.pixels;
+                int[] is = Class40_Sub5_Sub13.minimapImage.pixels;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_5_);
                 if(gameObjectDefinition.mapSceneID == -1) {
                     if(i_1_ == 0 || i_1_ == 2) {
@@ -229,7 +229,7 @@ public abstract class Actor extends Renderable {
                         class40_sub5_sub14_sub2.drawImage(i_13_ + arg2 * 4 + 48, 48 - (-(4 * (-arg5 + 104 + -gameObjectDefinition.sizeY)) + -i_12_));
                     }
                 } else if(i_11_ == 9) {
-                    int[] is = Class40_Sub5_Sub13.aClass40_Sub5_Sub14_Sub4_2765.pixels;
+                    int[] is = Class40_Sub5_Sub13.minimapImage.pixels;
                     int i_14_ = 15658734;
                     if(i > 0)
                         i_14_ = 15597568;
@@ -346,7 +346,7 @@ public abstract class Actor extends Renderable {
                 class40_sub3.anInt2038 -= i_35_;
                 class40_sub3.anInt2039 -= i_34_;
                 if(class40_sub3.anInt2039 < 0 || class40_sub3.anInt2038 < 0 || class40_sub3.anInt2039 >= 104 || class40_sub3.anInt2038 >= 104)
-                    class40_sub3.method457(-1);
+                    class40_sub3.remove(-1);
             }
             Buffer.anInt1985 = -1;
             if(VarbitDefinition.destinationX != 0) {
@@ -367,7 +367,7 @@ public abstract class Actor extends Renderable {
             i_19_++;
             i--;
         }
-        if(playingAnimation != -1 && Class68_Sub1.method1050(playingAnimation, arg1 ^ -94).anInt2476 == 1)
+        if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.method1050(playingAnimation, arg1 ^ -94).anInt2476 == 1)
             playingAnimation = -1;
         if(anInt3109 < 9)
             anInt3109++;
@@ -421,7 +421,7 @@ public abstract class Actor extends Renderable {
     }
 
     public void method787(int arg0, int arg1, boolean arg2, int arg3) {
-        if(playingAnimation != -1 && Class68_Sub1.method1050(playingAnimation, 2).anInt2476 == 1)
+        if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.method1050(playingAnimation, 2).anInt2476 == 1)
             playingAnimation = -1;
         if(!arg2) {
             int i = -pathY[0] + arg3;

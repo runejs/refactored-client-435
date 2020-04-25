@@ -19,7 +19,7 @@ public class ChatBox {
     public static String inputMessage = "";
     public static int itemSearchResultCount = 0;
     public static int itemSearchScroll = 0;
-    public static String[] itemSearchResultNames = new String[100];
+    private static String[] itemSearchResultNames = new String[100];
     public static int inputType = 0;
     public static int openChatboxWidgetId = -1;
     public static int dialogueId = -1;
@@ -31,16 +31,16 @@ public class ChatBox {
     public static int tradeMode = 0;
     public static int chatboxScrollMax = 78;
     public static int chatboxScroll = 0;
-    public static int[] itemSearchResultIds = new int[100];
+    private static int[] itemSearchResultIds = new int[100];
     public static String chatboxInput = "";
     public static String chatMessage = "";
 
-    private static char VALID_CHARACTERS[] = {' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w',
+    private static char[] VALID_CHARACTERS = {' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w',
             'c', 'y', 'f', 'g', 'p', 'b', 'v', 'k', 'x', 'j', 'q', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8',
             '9', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '\243',
             '$', '%', '"', '[', ']', '_', '{', '}', '/', '|'};
-    public static void renderChatbox(boolean arg0) {
-        CacheIndex.aBoolean260 = arg0;
+    public static void renderChatbox() {
+        CacheIndex.aBoolean260 = true;
         Class22.method305();
         if(messagePromptRaised) {
             Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(Native.aClass1_1563, 239, 40, 0);
@@ -180,9 +180,11 @@ public class ChatBox {
             if(!bool)
                 redrawChatbox = true;
         }
-        if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
-            Class40_Sub5_Sub6.drawMenu();
-        LinkedList.method908((byte) 122);
+        if(Class4.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
+            Class40_Sub5_Sub6.drawMenu(0, 0);
+        if(ScreenController.frameMode == ScreenMode.FIXED) {
+            LinkedList.drawChatBoxGraphics();
+        }
 
     }
 

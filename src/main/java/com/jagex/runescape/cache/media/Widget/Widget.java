@@ -220,7 +220,7 @@ public class Widget extends SubNode {
     }
 
     public static void method640() {
-        Class68.aClass9_1615.method235();
+        ProducingGraphicsBuffer.aClass9_1615.method235();
     }
 
 
@@ -1041,7 +1041,7 @@ public class Widget extends SubNode {
         int i = arg0 >> 16;
         int i_8_ = 0xffff & arg0;
         if (interfaces[i] == null || interfaces[i][i_8_] == null) {
-            boolean bool = Class68.method1043(i);
+            boolean bool = ProducingGraphicsBuffer.method1043(i);
             if (!bool)
                 return null;
         }

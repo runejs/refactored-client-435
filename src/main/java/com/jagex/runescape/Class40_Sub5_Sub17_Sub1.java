@@ -3,9 +3,17 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
-import com.jagex.runescape.cache.def.*;
-import com.jagex.runescape.cache.media.*;
+import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
+import com.jagex.runescape.cache.media.AnimationSequence;
+import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
@@ -23,6 +31,7 @@ import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
+import tech.henning.fourthreefive.Configuration;
 
 import java.awt.*;
 
@@ -82,7 +91,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         anInt2997 = arg7;
         int i = SpotAnimDefinition.forId(anInt2962, 13).animationId;
         if(i != -1)
-            aAnimationSequence_3006 = Class68_Sub1.method1050(i, 2);
+            aAnimationSequence_3006 = ProducingGraphicsBuffer_Sub1.method1050(i, 2);
         else
             aAnimationSequence_3006 = null;
 
@@ -95,7 +104,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             Class40_Sub5_Sub15.aCacheIndex_2779 = arg1;
             Widget.interfaces = new Widget
                     [VarbitDefinition.aCacheIndex_2349.method175(-82)][];
-            Class68.aBooleanArray1629 = new boolean
+            ProducingGraphicsBuffer.aBooleanArray1629 = new boolean
                     [VarbitDefinition.aCacheIndex_2349.method175(-116)];
             if(arg3 == 90)
                 break;
@@ -175,51 +184,51 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
 
     public static void method763(Component arg0, CacheIndex arg2) {
         if(!SubNode.aBoolean2083) {
-            FloorDecoration.aClass40_Sub5_Sub14_Sub2_593 = Class27.method359(Native.aClass1_638, Native.aClass1_305, arg2);
-            Class44.aClass40_Sub5_Sub14_Sub2_1047 = Class27.method359(Native.chatback, Native.aClass1_305, arg2);
-            Class34.mapBack = Class27.method359(Native.aClass1_1113, Native.aClass1_305, arg2);
-            Class57.aClass40_Sub5_Sub14_Sub2_1346 = Class27.method359(Native.aClass1_1395, Native.aClass1_305, arg2);
-            Class56.aClass40_Sub5_Sub14_Sub2_1329 = Class27.method359(Native.aClass1_256, Native.aClass1_305, arg2);
-            Buffer.aClass40_Sub5_Sub14_Sub2_1959 = Class27.method359(Native.aClass1_338, Native.aClass1_305, arg2);
-            RSCanvas.aClass68_64 = Class40_Sub5_Sub13.method649(96, 479, arg0, -4875);
-            Class44.aClass40_Sub5_Sub14_Sub2_1047.drawImage(0, 0);
-            RSString.aClass68_1665 = Class40_Sub5_Sub13.method649(156, 172, arg0, -4875);
-            Rasterizer.clear();
-            Class34.mapBack.drawImage(0, 0);
-            SubNode.aClass68_2091 = Class40_Sub5_Sub13.method649(261, 190, arg0, -4875);
-            FloorDecoration.aClass40_Sub5_Sub14_Sub2_593.drawImage(0, 0);
-            VarbitDefinition.aClass68_2350 = Class40_Sub5_Sub13.method649(334, 512, arg0, -4875);
-            Rasterizer.clear();
-            HuffmanEncoding.aClass68_1541 = Class40_Sub5_Sub13.method649(50, 496, arg0, -4875);
-            RSCanvas.aClass68_59 = Class40_Sub5_Sub13.method649(37, 269, arg0, -4875);
-            InteractiveObject.aClass68_482 = Class40_Sub5_Sub13.method649(45, 249, arg0, -4875);
-            ImageRGB class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, Native.aClass1_1440, (byte) 21, Native.aClass1_305);
-            Landscape.aClass68_1185 = Class40_Sub5_Sub13.method649(class40_sub5_sub14_sub4.image_height, class40_sub5_sub14_sub4.image_width, arg0, -4875);
-            class40_sub5_sub14_sub4.method727(0, 0);
-            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, Native.aClass1_1024, (byte) 21, Native.aClass1_305);
-            Class40_Sub5_Sub1.aClass68_2275 = Class40_Sub5_Sub13.method649(class40_sub5_sub14_sub4.image_height, class40_sub5_sub14_sub4.image_width, arg0, -4875);
-            class40_sub5_sub14_sub4.method727(0, 0);
-            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, Native.aClass1_281, (byte) 21, Native.aClass1_305);
-            Class39.aClass68_908 = Class40_Sub5_Sub13.method649(class40_sub5_sub14_sub4.image_height, class40_sub5_sub14_sub4.image_width, arg0, -4875);
-            class40_sub5_sub14_sub4.method727(0, 0);
-            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, Native.aClass1_1266, (byte) 21, Native.aClass1_305);
-            GameObject.aClass68_3045 = Class40_Sub5_Sub13.method649(class40_sub5_sub14_sub4.image_height, class40_sub5_sub14_sub4.image_width, arg0, -4875);
-            class40_sub5_sub14_sub4.method727(0, 0);
-            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, Native.aClass1_1788, (byte) 21, Native.aClass1_305);
-            Class40_Sub5_Sub17_Sub6.aClass68_3243 = Class40_Sub5_Sub13.method649(class40_sub5_sub14_sub4.image_height, class40_sub5_sub14_sub4.image_width, arg0, -4875);
-            class40_sub5_sub14_sub4.method727(0, 0);
-            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, Native.aClass1_1374, (byte) 21, Native.aClass1_305);
-            Class40_Sub7.aClass68_2123 = Class40_Sub5_Sub13.method649(class40_sub5_sub14_sub4.image_height, class40_sub5_sub14_sub4.image_width, arg0, -4875);
-            class40_sub5_sub14_sub4.method727(0, 0);
-            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, Native.aClass1_2588, (byte) 21, Native.aClass1_305);
-            Class61.aClass68_1441 = Class40_Sub5_Sub13.method649(class40_sub5_sub14_sub4.image_height, class40_sub5_sub14_sub4.image_width, arg0, -4875);
-            class40_sub5_sub14_sub4.method727(0, 0);
-            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, Native.aClass1_196, (byte) 21, Native.aClass1_305);
-            Class30.aClass68_714 = Class40_Sub5_Sub13.method649(class40_sub5_sub14_sub4.image_height, class40_sub5_sub14_sub4.image_width, arg0, -4875);
-            class40_sub5_sub14_sub4.method727(0, 0);
-            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg2, Native.aClass1_304, (byte) 21, Native.aClass1_305);
-            Class17.aClass68_462 = Class40_Sub5_Sub13.method649(class40_sub5_sub14_sub4.image_height, class40_sub5_sub14_sub4.image_width, arg0, -4875);
-            class40_sub5_sub14_sub4.method727(0, 0);
+            FloorDecoration.inventoryBackgroundImage = Class27.method359(Native.aClass1_638, Native.aClass1_305, arg2);
+            Class44.chatboxBackgroundImage = Class27.method359(Native.chatback, Native.aClass1_305, arg2);
+            Class34.minimapBackgroundImage = Class27.method359(Native.aClass1_1113, Native.aClass1_305, arg2);
+            Class57.bottomChatBack = Class27.method359(Native.aClass1_1395, Native.aClass1_305, arg2);
+            Class56.tabBottomBack = Class27.method359(Native.aClass1_256, Native.aClass1_305, arg2);
+            Buffer.tabTopBack = Class27.method359(Native.aClass1_338, Native.aClass1_305, arg2);
+            RSCanvas.chatboxProducingGraphicsBuffer = Class40_Sub5_Sub13.createGraphicsBuffer(479, 96, arg0);
+            Class44.chatboxBackgroundImage.drawImage(0, 0);
+            RSString.mapbackProducingGraphicsBuffer = Class40_Sub5_Sub13.createGraphicsBuffer(172, 156, arg0);
+            Rasterizer.resetPixels();
+            Class34.minimapBackgroundImage.drawImage(0, 0);
+            SubNode.tabImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(190, 261, arg0);
+            FloorDecoration.inventoryBackgroundImage.drawImage(0, 0);
+            VarbitDefinition.gameScreenImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.frameWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.frameHeight, arg0);
+            Rasterizer.resetPixels();
+            HuffmanEncoding.aProducingGraphicsBuffer_1541 = Class40_Sub5_Sub13.createGraphicsBuffer(496, 50, arg0);
+            RSCanvas.tabBottom = Class40_Sub5_Sub13.createGraphicsBuffer(269, 37, arg0);
+            InteractiveObject.tabTop = Class40_Sub5_Sub13.createGraphicsBuffer(249, 45, arg0);
+            ImageRGB image = HuffmanEncoding.method1028(arg2, Native.imgBackleft1, (byte) 21, Native.aClass1_305);
+            Landscape.framePieceRight = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            image.drawInverse(0, 0);
+            image = HuffmanEncoding.method1028(arg2, Native.aClass1_1024, (byte) 21, Native.aClass1_305);
+            Class40_Sub5_Sub1.chatboxRight = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            image.drawInverse(0, 0);
+            image = HuffmanEncoding.method1028(arg2, Native.aClass1_281, (byte) 21, Native.aClass1_305);
+            Class39.mapbackLeft = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            image.drawInverse(0, 0);
+            image = HuffmanEncoding.method1028(arg2, Native.aClass1_1266, (byte) 21, Native.aClass1_305);
+            GameObject.tabPieceLeft = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            image.drawInverse(0, 0);
+            image = HuffmanEncoding.method1028(arg2, Native.aClass1_1788, (byte) 21, Native.aClass1_305);
+            Class40_Sub5_Sub17_Sub6.framePieceTop = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            image.drawInverse(0, 0);
+            image = HuffmanEncoding.method1028(arg2, Native.aClass1_1374, (byte) 21, Native.aClass1_305);
+            Class40_Sub7.mapBackRight = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            image.drawInverse(0, 0);
+            image = HuffmanEncoding.method1028(arg2, Native.aClass1_2588, (byte) 21, Native.aClass1_305);
+            Class61.tabPieceUpperRight = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            image.drawInverse(0, 0);
+            image = HuffmanEncoding.method1028(arg2, Native.aClass1_196, (byte) 21, Native.aClass1_305);
+            Class30.tabPieveLowerRight = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            image.drawInverse(0, 0);
+            image = HuffmanEncoding.method1028(arg2, Native.aClass1_304, (byte) 21, Native.aClass1_305);
+            Class17.chatboxTop = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            image.drawInverse(0, 0);
             Class56.aClass40_Sub5_Sub14_Sub2_1315 = Class27.method359(Native.aClass1_2093, Native.aClass1_305, arg2);
             GameShell.aClass40_Sub5_Sub14_Sub2_1 = Class27.method359(Native.aClass1_3254, Native.aClass1_305, arg2);
             Class35.aClass40_Sub5_Sub14_Sub2_1744 = Class27.method359(Native.aClass1_1517, Native.aClass1_305, arg2);
@@ -239,46 +248,49 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             Class13.aClass40_Sub5_Sub14_Sub2_418 = GameShell.aClass40_Sub5_Sub14_Sub2_1.method691();
             Class13.aClass40_Sub5_Sub14_Sub2_418.flipHorizontal();
             Class13.aClass40_Sub5_Sub14_Sub2_418.flipVertical();
-            Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2Array2776 = IndexedImage.getMultipleIndexedImages(arg2, Native.aClass1_2787, Native.aClass1_305);
+            Class40_Sub5_Sub15.tabIcons = IndexedImage.getMultipleIndexedImages(arg2, Native.aClass1_2787, Native.aClass1_305);
             Landscape.anIntArray1186 = new int[151];
             RSCanvas.anIntArray66 = new int[33];
             RSCanvas.anIntArray62 = new int[33];
             Class34.anIntArray852 = new int[151];
-            for(int i_14_ = 0; i_14_ < 33; i_14_++) {
+            for(int y = 0; y < 33; y++) {
                 int i_15_ = 0;
                 int i_16_ = 999;
-                for(int i_17_ = 0; i_17_ < 34; i_17_++) {
-                    if(Class34.mapBack.imgPixels[Class34.mapBack.imgWidth * i_14_ + i_17_] == 0) {
+                for(int x = 0; x < 34; x++) {
+                    if(Class34.minimapBackgroundImage.imgPixels[Class34.minimapBackgroundImage.imgWidth * y + x] == 0) {
                         if(i_16_ == 999)
-                            i_16_ = i_17_;
+                            i_16_ = x;
                     } else if(i_16_ != 999) {
-                        i_15_ = i_17_;
+                        i_15_ = x;
                         break;
                     }
                 }
-                RSCanvas.anIntArray62[i_14_] = i_16_;
-                RSCanvas.anIntArray66[i_14_] = -i_16_ + i_15_;
+                RSCanvas.anIntArray62[y] = i_16_;
+                RSCanvas.anIntArray66[y] = -i_16_ + i_15_;
             }
-            for(int i_18_ = 5; i_18_ < 156; i_18_++) {
-                int i_19_ = 0;
-                int i_20_ = 999;
-                for(int i_21_ = 25; i_21_ < 172; i_21_++) {
-                    if(Class34.mapBack.imgPixels[i_21_ + Class34.mapBack.imgWidth * i_18_] != 0 || i_21_ <= 34 && i_18_ <= 34) {
-                        if(i_20_ != 999) {
-                            i_19_ = i_21_;
+            for(int y = 5; y < 156; y++) {
+                int maxWidth = 0;
+                int minWidth = 999;
+                for(int x = 25; x < 172; x++) {
+                    if(Class34.minimapBackgroundImage.imgPixels[x + Class34.minimapBackgroundImage.imgWidth * y] != 0 || x <= 34 && y <= 34) {
+                        if(minWidth != 999) {
+                            maxWidth = x;
                             break;
                         }
-                    } else if(i_20_ == 999)
-                        i_20_ = i_21_;
+                    } else if(minWidth == 999)
+                        minWidth = x;
                 }
-                Landscape.anIntArray1186[-5 + i_18_] = i_20_ - 25;
-                Class34.anIntArray852[-5 + i_18_] = i_19_ + -i_20_;
+                Landscape.anIntArray1186[-5 + y] = minWidth - 25;
+                Class34.anIntArray852[-5 + y] = maxWidth + -minWidth;
             }
             SubNode.aBoolean2083 = true;
         }
     }
 
     public static int method764(byte arg0) {
+        if(!Configuration.ROOFS_ENABLED) {
+            return Player.worldLevel;
+        }
         int i = 3;
         if(Class26.anInt627 < 310) {
             int i_22_ = Class40_Sub5_Sub6.cameraY >> 7;
@@ -608,7 +620,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         renderable = gameObjectDefinition.getGameObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
                     else
                         renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
-                    scene.addWallDecoration(localX, localY, plane, vertexMix, i_52_ * Class27.anIntArray666[face], Class68_Sub1.anIntArray2207[face] * i_52_, face * 512, hash, renderable, objectConfig, SceneCluster.anIntArray761[face]);
+                    scene.addWallDecoration(localX, localY, plane, vertexMix, i_52_ * Class27.anIntArray666[face], ProducingGraphicsBuffer_Sub1.anIntArray2207[face] * i_52_, face * 512, hash, renderable, objectConfig, SceneCluster.anIntArray761[face]);
                 } else if(type == 6) {
                     Renderable renderable;
                     if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)

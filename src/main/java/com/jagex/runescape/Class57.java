@@ -13,7 +13,7 @@ public class Class57 {
     public static int clickX = 0;
     public static int anInt1342 = 0;
     public static Class64 aClass64_1345;
-    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1346;
+    public static IndexedImage bottomChatBack;
     public static int[] anIntArray1347;
 
     public static void method975(int songTimeout, int songId) {

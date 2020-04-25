@@ -57,10 +57,10 @@ public abstract class Class22_Sub2 extends Class22 {
             class40_sub5_sub14_sub4.maxHeight = GameShell.anInt31;
             class40_sub5_sub14_sub4.offsetX = Class57.anIntArray1347[i];
             class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[i];
-            class40_sub5_sub14_sub4.image_width = Class17.anIntArray456[i];
-            class40_sub5_sub14_sub4.image_height = Npc.anIntArray3312[i];
+            class40_sub5_sub14_sub4.imageWidth = Class17.anIntArray456[i];
+            class40_sub5_sub14_sub4.imageHeight = Npc.anIntArray3312[i];
             byte[] is = GroundItemTile.aByteArrayArray1370[i];
-            int i_4_ = class40_sub5_sub14_sub4.image_height * class40_sub5_sub14_sub4.image_width;
+            int i_4_ = class40_sub5_sub14_sub4.imageHeight * class40_sub5_sub14_sub4.imageWidth;
             class40_sub5_sub14_sub4.pixels = new int[i_4_];
             for(int i_5_ = 0; i_5_ < i_4_; i_5_++)
                 class40_sub5_sub14_sub4.pixels[i_5_] = Buffer.anIntArray1972[HuffmanEncoding.method1021(255, is[i_5_])];

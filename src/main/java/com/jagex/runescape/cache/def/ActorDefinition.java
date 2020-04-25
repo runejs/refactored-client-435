@@ -4,6 +4,8 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
@@ -21,7 +23,7 @@ import java.awt.*;
 
 public class ActorDefinition extends SubNode implements EntityDefinition {
     public static CacheIndex_Sub1 aClass6_Sub1_2377;
-    public static int[] anIntArray2386;
+    public static int[] sidebarOffsets;
     public static int menuActionRow = 0;
     public static int anInt2404 = 0;
     public static byte[] aByteArray2416 = new byte[520];
@@ -74,7 +76,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
 
     public static void method570(int arg0, int arg1, Player player) {
         if(player.playingAnimation == arg0 && arg0 != -1) {
-            int i = Class68_Sub1.method1050(arg0, 2).anInt2483;
+            int i = ProducingGraphicsBuffer_Sub1.method1050(arg0, 2).anInt2483;
             if(i == 1) {
                 player.anInt3104 = 0;
                 player.anInt3095 = 0;
@@ -84,7 +86,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
             if(i == 2) {
                 player.anInt3095 = 0;
             }
-        } else if(arg0 == -1 || player.playingAnimation == -1 || Class68_Sub1.method1050(arg0, 2).anInt2494 >= Class68_Sub1.method1050(player.playingAnimation, 2).anInt2494) {
+        } else if(arg0 == -1 || player.playingAnimation == -1 || ProducingGraphicsBuffer_Sub1.method1050(arg0, 2).anInt2494 >= ProducingGraphicsBuffer_Sub1.method1050(player.playingAnimation, 2).anInt2494) {
             player.anInt3094 = player.anInt3109;
             player.anInt3104 = 0;
             player.anInt3115 = 0;
@@ -94,10 +96,12 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
         }
     }
 
-    public static void method574() {
+    public static void drawMapBack() {
         try {
-            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            RSString.aClass68_1665.drawGraphics(550, 4, graphics);
+            if(ScreenController.frameMode == ScreenMode.FIXED) {
+                Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
+                RSString.mapbackProducingGraphicsBuffer.drawGraphics(550, 4, graphics);
+            }
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }
@@ -113,10 +117,10 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
         class40_sub5_sub14_sub4.maxHeight = GameShell.anInt31;
         class40_sub5_sub14_sub4.offsetX = Class57.anIntArray1347[0];
         class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[0];
-        class40_sub5_sub14_sub4.image_width = Class17.anIntArray456[0];
-        class40_sub5_sub14_sub4.image_height = Npc.anIntArray3312[0];
+        class40_sub5_sub14_sub4.imageWidth = Class17.anIntArray456[0];
+        class40_sub5_sub14_sub4.imageHeight = Npc.anIntArray3312[0];
         byte[] is = GroundItemTile.aByteArrayArray1370[0];
-        int i = class40_sub5_sub14_sub4.image_width * class40_sub5_sub14_sub4.image_height;
+        int i = class40_sub5_sub14_sub4.imageWidth * class40_sub5_sub14_sub4.imageHeight;
         class40_sub5_sub14_sub4.pixels = new int[i];
         for(int i_5_ = 0; i_5_ < i; i_5_++) {
             class40_sub5_sub14_sub4.pixels[i_5_] = Buffer.anIntArray1972[HuffmanEncoding.method1021(255, is[i_5_])];

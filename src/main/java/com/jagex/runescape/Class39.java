@@ -7,8 +7,8 @@ import com.jagex.runescape.util.Signlink;
 public class Class39 implements Runnable {
     public static int anInt901;
     public static boolean aBoolean906 = false;
-    public static Class68 aClass68_907;
-    public static Class68 aClass68_908;
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_907;
+    public static ProducingGraphicsBuffer mapbackLeft;
     public static int anInt909 = 0;
     public static int anInt912 = 20;
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_918;

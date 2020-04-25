@@ -6,6 +6,8 @@ import com.jagex.runescape.cache.media.*;
 import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.cache.media.Widget.WidgetType;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.Native;
@@ -151,13 +153,13 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         if (arg0 != 0) {
             int i = 0;
             for (/**/; Item.friendsCount > i; i++) {
-                if (Class59.aLongArray1397[i] == arg0) {
+                if (Class59.friends[i] == arg0) {
                     Item.friendsCount--;
                     ISAAC.redrawTabArea = true;
                     for (int i_13_ = i; i_13_ < Item.friendsCount; i_13_++) {
                         Class40_Sub11.friendUsernames[i_13_] = Class40_Sub11.friendUsernames[1 + i_13_];
                         Class40_Sub7.friendWorlds[i_13_] = Class40_Sub7.friendWorlds[i_13_ + 1];
-                        Class59.aLongArray1397[i_13_] = Class59.aLongArray1397[1 + i_13_];
+                        Class59.friends[i_13_] = Class59.friends[1 + i_13_];
                     }
                     SceneCluster.packetBuffer.putPacket(255);
                     SceneCluster.packetBuffer.putLongBE(arg0);
@@ -201,7 +203,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             }
         }
         setCanvas((byte) 121);
-        Class68_Sub1.aClass68_2213 = Class40_Sub5_Sub13.method649(IdentityKit.height, Class12.width, MouseHandler.aCanvas1469, -4875);
+        ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = Class40_Sub5_Sub13.createGraphicsBuffer(Class12.width, IdentityKit.height, MouseHandler.aCanvas1469);
         method31(true);
         SceneCluster.aClass38_768 = Class56.method972((byte) 47);
         SceneCluster.aClass38_768.method443(-10115);
@@ -413,13 +415,19 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
 
     public void openClientApplet(String cacheFolder, int cacheIndexes, int height, int fileStoreId, InetAddress inetAddress, int clientVersion, int width) {
         try {
+            height = ScreenController.frameMode == ScreenMode.FIXED ? 503 :  ScreenController.frameHeight;
+            width = ScreenController.frameMode == ScreenMode.FIXED ? 765 : ScreenController.frameWidth;
             Class39.anInt901 = clientVersion;
             Class12.width = width;
-            Class4.anApplet_Sub1_179 = this;
             IdentityKit.height = height;
+            Class4.anApplet_Sub1_179 = this;
             Class35.aFrame1732 = new Frame();
             Class35.aFrame1732.setTitle("Jagex");
-            Class35.aFrame1732.setResizable(false);
+//            Class35.aFrame1732.setResizable(false);
+            ScreenController.frameMode(ScreenMode.RESIZABLE);
+
+            Class35.aFrame1732.setPreferredSize(new Dimension(width, height));
+            Class35.aFrame1732.setResizable(ScreenController.frameMode == ScreenMode.RESIZABLE);
             Class35.aFrame1732.addWindowListener(this);
             Class35.aFrame1732.setVisible(true);
             Class35.aFrame1732.toFront();

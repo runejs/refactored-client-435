@@ -92,15 +92,13 @@ public class Class55 {
         return arg2;
     }
 
-    public static void method964(int arg0) {
+    public static void drawTabGraphics() {
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            SubNode.aClass68_2091.drawGraphics(553, 205, graphics);
+            SubNode.tabImageProducer.drawGraphics(553, 205, graphics);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }
-        if(arg0 != 40)
-            anInt1296 = 7;
     }
 
     public static void method965(int arg0, Component arg1) {
