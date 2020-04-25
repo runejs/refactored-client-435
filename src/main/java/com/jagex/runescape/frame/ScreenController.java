@@ -108,7 +108,6 @@ public class ScreenController {
 
     public static void RenderResizableUI() {
         if(drawingThread == null) {
-            System.out.println("Should start");
             renderer = new FrameRenderer(minimap);
             drawingThread = new Thread(renderer);
             drawingThread.start();
@@ -237,9 +236,9 @@ public class ScreenController {
                     if(y < frameHeight - (112) && x < 426)
                         Class40_Sub11.method873(y  -(frameHeight - 162), 45);
                 } else
-                    Class13.method243((byte) 89, frameHeight - 200, frameWidth - 496, frameHeight - 54, ChatBox.dialogueId, 17, x, y, 3);
+                    Class13.method243((byte) 89, (frameHeight - 162), frameWidth - 496, frameHeight - 54, ChatBox.dialogueId, 17, x, y, 3);
             } else
-                Class13.method243((byte) 89, frameHeight - 200, frameWidth - 496, frameHeight - 54, ChatBox.openChatboxWidgetId, 17, x, y, 2);
+                Class13.method243((byte) 89, (frameHeight - 162), frameWidth - 496, frameHeight - 54, ChatBox.openChatboxWidgetId, 17, x, y, 2);
         }
 
     }

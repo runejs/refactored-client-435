@@ -120,7 +120,6 @@ public class Class27 {
         KeyFocusListener.draw3dScreen();
 
         if(ScreenController.frameMode == ScreenMode.FIXED) {
-
             Console.console.drawConsole(512, 334);
             Console.console.drawConsoleArea(512, 334);
         } else {
