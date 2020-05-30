@@ -27,7 +27,7 @@ import java.text.MessageFormat;
 public class ScreenController {
 
 
-    public static ScreenMode frameMode = ScreenMode.FIXED;
+    public static ScreenMode frameMode = null;
     public static int frameWidth = 765;
     public static int frameHeight = 503;
     public static Minimap minimap = new Minimap();
