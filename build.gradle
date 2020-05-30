@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'tech.henning'
+version = '0.1'
+
+sourceCompatibility = 8
+targetCompatibility = 8
+
+repositories {
+    mavenCentral()
+}
+
+application {
+    mainClassName 'com.jagex.runescape.Main'
+}
+
+jar {
+    dependsOn configurations.runtimeClasspath
+
+    manifest {
+        attributes("MAIN-CLASS": application.mainClassName)
+    }
+
+    from {
+        sourceSets.main.output
+        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+    }
+}
+
+dependencies {
+    implementation group: 'org.yaml', name: 'snakeyaml', version:'1.26'
+}
