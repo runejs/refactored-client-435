@@ -246,7 +246,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             } else {
                 keyChar = Class51.getKeyChar(keyEvent);
             }
-            if (eventKeyCode == 192) {
+            if (eventKeyCode == 192 || eventKeyCode == 129) {
                 Console.console.consoleOpen = !Console.console.consoleOpen;
             }
             if (GameObjectDefinition.anInt2543 >= 0 && obfuscatedKeyCode >= 0) {
