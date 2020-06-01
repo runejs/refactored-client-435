@@ -102,7 +102,14 @@ public class ScreenController {
         if(Class51.anInt1197 <= 35 && Class51.anInt1197 >= 30) {
             VarbitDefinition.gameScreenImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.frameWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.frameHeight, Class35.aFrame1732);
         } else {
-            Class38.loginBoxGraphics = Class40_Sub5_Sub13.createGraphicsBuffer(frameWidth, frameHeight, Class35.aFrame1732);
+            MouseHandler.aCanvas1469.setSize(Class12.width, IdentityKit.height);
+            MouseHandler.aCanvas1469.setVisible(true);
+            if (Class35.aFrame1732 == null)
+                MouseHandler.aCanvas1469.setLocation(0, 0);
+            else {
+                Insets insets = Class35.aFrame1732.getInsets();
+                MouseHandler.aCanvas1469.setLocation(insets.left, insets.top);
+            }//            Class38.loginBoxGraphics = Class40_Sub5_Sub13.createGraphicsBuffer(frameWidth, frameHeight, Class35.aFrame1732);
         }
     }
 
@@ -113,8 +120,10 @@ public class ScreenController {
             drawingThread.start();
         }
         minimap.drawResizableMiniMapArea(frameWidth - 210, 0);
-        RenderTabArea(frameWidth - 234, frameHeight - 359);
-        RenderChatArea(0, frameHeight - 184);
+        Insets insets = Class35.aFrame1732.getInsets();
+
+        RenderTabArea(frameWidth - 234, frameHeight - (359 + insets.top/4));
+        RenderChatArea(0, frameHeight - (184 + insets.top/4));
 
         if(Class4.menuOpen) {
             Class40_Sub5_Sub6.drawMenu(0, 0);
@@ -169,27 +178,35 @@ public class ScreenController {
     }
 
     public static boolean isCoordinatesInTabArea(int x, int y) {
+        Insets insets = Class35.aFrame1732.getInsets();
+
         if(frameMode == ScreenMode.FIXED) {
             return x > 553 && y > 205 && x < 743 && y < 466;
         } else {
-            return x > frameWidth - 234 + 22 && y > frameHeight - 359 + 39 && x < frameWidth - GameObject.tabPieceLeft.width && y < frameHeight - RSCanvas.tabBottom.height;
+            return x > frameWidth - 234 + 22 && y > frameHeight - (359 + insets.top/4) + 39 && x < frameWidth - GameObject.tabPieceLeft.width && y < frameHeight - RSCanvas.tabBottom.height;
         }
     }
 
 
     public static boolean isCoordinatesInExtendedTabArea(int x, int y) {
-        return x > frameWidth - 234 && y > frameHeight - 359;
+        Insets insets = Class35.aFrame1732.getInsets();
+
+        return x > frameWidth - 234 && y > frameHeight - (359 + insets.top/4);
     }
 
     public static boolean isCoordinatesInExtendedChatArea(int x, int y) {
-        return x > 0 && y > frameHeight - 184 && x < 516;
+        Insets insets = Class35.aFrame1732.getInsets();
+
+        return x > 0 && y > frameHeight - (184 + insets.top/4) && x < 516;
     }
 
     public static boolean isCoordinatesInChatArea(int x, int y) {
+        Insets insets = Class35.aFrame1732.getInsets();
+
         if(frameMode == ScreenMode.FIXED) {
             return x > 17 && y > 357 && x < 496 && y < 453;
         } else {
-            return x > 17 && y > frameHeight - 200 && x < frameWidth - 496 && y < frameHeight - 54;
+            return x > 17 && y > frameHeight - (200+ insets.top/4) && x < frameWidth - 496 && y < frameHeight - 54;
         }
 
     }

@@ -1116,6 +1116,8 @@ public class Class27 {
                     ISAAC.redrawTabArea = true;
                 }
             }
+            method353((byte) -114);
+
             if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == -3) {
                 ISAAC.redrawTabArea = true;
             }
@@ -1147,7 +1149,6 @@ public class Class27 {
                 ChatBox.renderChatbox();
                 //            Console.console.drawConsoleArea();
             }
-            method353((byte) -114);
 
             Class37.renderMinimap();
 

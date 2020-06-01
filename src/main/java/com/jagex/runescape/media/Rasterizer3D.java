@@ -1092,7 +1092,7 @@ public class Rasterizer3D extends Rasterizer {
     }
 
     public static void drawShadedLine(int[] dest, int dest_off, int start_x, int end_x, int color_index, int grad) {
-        if(!useLatestShadeLine) {//divert all calls to the new method as its better
+        if(useLatestShadeLine) {//divert all calls to the new method as its better
             drawShadedLine562(dest, dest_off, start_x, end_x, color_index, grad);
             return;
         }

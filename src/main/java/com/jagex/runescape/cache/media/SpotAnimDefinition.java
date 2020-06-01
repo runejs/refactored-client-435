@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
+import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -164,6 +165,9 @@ public class SpotAnimDefinition extends SubNode {
                 IncomingPackets.incomingPacketBuffer.initInCipher(seeds);
                 Class40_Sub3.anInt2032 = 6;
             }
+
+
+
             if (Class40_Sub3.anInt2032 == 6 && Class40_Sub6.gameConnection.method1014(-126) > 0) {
                 int i = Class40_Sub6.gameConnection.read();
                 if (i != 21 || Class51.anInt1197 != 20) {
@@ -197,7 +201,10 @@ public class SpotAnimDefinition extends SubNode {
                     Class40_Sub3.anInt2032 = 0;
                 }
             } else {
+                ScreenController.refreshFrameSize();
+                ScreenController.setBounds();
                 if (Class40_Sub3.anInt2032 == 9 && Class40_Sub6.gameConnection.method1014(-121) >= 8) {
+
                     InteractiveObject.playerRights = Class40_Sub6.gameConnection.read();
                     Class22.accountFlagged = Class40_Sub6.gameConnection.read() == 1;
                     Class30.anInt708 = Class40_Sub6.gameConnection.read();
