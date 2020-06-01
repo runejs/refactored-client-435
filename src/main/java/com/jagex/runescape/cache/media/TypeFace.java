@@ -118,7 +118,7 @@ public class TypeFace extends Rasterizer {
     }
 
 
-    public void drawText(String text, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, int arg7, int arg8, int arg9) {
+    public void drawText(String text, int x, int arg2, int arg3, int arg4, int colour, boolean shadow, int xAlignment, int yAlignment, int arg9) {
         // this function seems like a general draw all, mostly used for interfaces
         if (text != null) {
             int i = 0;
@@ -239,40 +239,40 @@ public class TypeFace extends Rasterizer {
                     }
                 }
             }
-            int strlenght = this.getStringTextWidth(resultText.toString());
+            int strlenght = this.getStringTextWidth(resultText);
 
             if (strlenght > i_3_)
                 aClass1Array2897[i_7_++] = resultText.substring(i_3_, resultText.length()).trim();
-            if (arg8 == 3 && i_7_ == 1)
-                arg8 = 1;
-            int i_11_;
-            if (arg8 == 0)
-                i_11_ = arg2 + anInt2920;
-            else if (arg8 == 1)
-                i_11_ = arg2 + anInt2920 + (arg4 - anInt2920 - anInt2919 - (i_7_ - 1) * arg9) / 2;
-            else if (arg8 == 2)
-                i_11_ = arg2 + arg4 - anInt2919 - (i_7_ - 1) * arg9;
+            if (yAlignment == 3 && i_7_ == 1)
+                yAlignment = 1;
+            int y;
+            if (yAlignment == 0)
+                y = arg2 + anInt2920;
+            else if (yAlignment == 1)
+                y = arg2 + anInt2920 + (arg4 - anInt2920 - anInt2919 - (i_7_ - 1) * arg9) / 2;
+            else if (yAlignment == 2)
+                y = arg2 + arg4 - anInt2919 - (i_7_ - 1) * arg9;
             else {
                 int i_12_ = (arg4 - anInt2920 - anInt2919 - (i_7_ - 1) * arg9) / (i_7_ + 1);
                 if (i_12_ < 0)
                     i_12_ = 0;
-                i_11_ = arg2 + anInt2920 + i_12_;
+                y = arg2 + anInt2920 + i_12_;
                 arg9 += i_12_;
             }
             for (int i_13_ = 0; i_13_ < i_7_; i_13_++) {
-                if (arg7 == 0)
-                    drawShadowedString(aClass1Array2897[i_13_], arg1, i_11_, arg6, arg5);
-                else if (arg7 == 1) {
-                    drawShadowedStringCenter(aClass1Array2897[i_13_], arg1 + arg3 / 2, i_11_, arg5, arg6);
-                } else if (arg7 == 2)
-                    drawShadowedStringRight(aClass1Array2897[i_13_], arg1 + arg3, i_11_, arg5, arg6);
-                else if (i_13_ == i_7_ - 1)
-                    drawShadowedString(aClass1Array2897[i_13_], arg1, i_11_, arg6, arg5);
-                else {
+                if (xAlignment == 0) {
+                    drawShadowedString(aClass1Array2897[i_13_] + x, x, y, shadow, colour);
+                } else if (xAlignment == 1) {
+                    drawShadowedStringCenter(aClass1Array2897[i_13_], x + arg3 / 2, y, colour, shadow);
+                } else if (xAlignment == 2) {
+                    drawShadowedStringRight(aClass1Array2897[i_13_], x + arg3, y, colour, shadow);
+                } else if (i_13_ == i_7_ - 1) {
+                    drawShadowedString(aClass1Array2897[i_13_], x, y, shadow, colour);
+                } else {
                     System.out.println("Using Weird print");
 //                    method680(aClass1Array2897[i_13_], arg1, i_11_, arg5, arg6, arg3);
                 }
-                i_11_ += arg9;
+                y += arg9;
             }
         }
     }
