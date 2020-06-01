@@ -261,7 +261,7 @@ public class TypeFace extends Rasterizer {
             }
             for (int i_13_ = 0; i_13_ < i_7_; i_13_++) {
                 if (xAlignment == 0) {
-                    drawShadowedString(aClass1Array2897[i_13_] + x, x, y, shadow, colour);
+                    drawShadowedString(aClass1Array2897[i_13_], x, y, shadow, colour);
                 } else if (xAlignment == 1) {
                     drawShadowedStringCenter(aClass1Array2897[i_13_], x + arg3 / 2, y, colour, shadow);
                 } else if (xAlignment == 2) {
