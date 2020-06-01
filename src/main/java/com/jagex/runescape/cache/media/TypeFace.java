@@ -43,8 +43,11 @@ public class TypeFace extends Rasterizer {
     private static String image = "img=";
     private static String copyright = "copy";
     private static String lineBreak = "br";
+    private static String italicsStart = "i";
+    private static String italicsEnd = "/i";
     private static String registeredTrademark = "reg";
     private static int strikethroughColor = -1;
+    private static boolean italics = false;
     private static int underlineColor = -1;
     private static int defaultTextColor = 0;
     private static int opacity = 256;
@@ -124,7 +127,9 @@ public class TypeFace extends Rasterizer {
             int i_4_ = -1;
             int i_5_ = 0;
             String stylingTag = null;
+            String fontStyleTag = null;
             TextTagQueue stylingQueue = new TextTagQueue();
+            TextTagQueue fontStyle = new TextTagQueue();
             if (arg9 == 0)
                 arg9 = anInt2920;
             boolean bool = true;
@@ -163,7 +168,9 @@ public class TypeFace extends Rasterizer {
                             }
                             if (effect.startsWith(startColor, 0)) {
                                 TextTagNode stylingNode = new TextTagNode(text.substring(oldindex, idx + 1));
-                                resultText = stylingNode.applyTo(resultText);
+//                                resultText = stylingNode.applyTo(resultText);
+                                resultText = resultText + stylingNode.tag;
+
                                 stylingQueue.push(stylingNode);
                             }
                             if (effect.startsWith(endColor, 0)) {
@@ -175,9 +182,24 @@ public class TypeFace extends Rasterizer {
                                 stylingQueue.pop();
                                 stylingTag = null;
                             }
+                            if (effect.startsWith(italicsStart, 0)) {
+                                TextTagNode stylingNode = new TextTagNode(text.substring(oldindex, idx + 1));
+                                resultText = resultText + stylingNode.tag;
+                                fontStyle.push(stylingNode);
+                            }
+                            if (effect.startsWith(italicsEnd, 0)) {
+                                fontStyleTag = text.substring(oldindex, idx + 1);
+//                                resultText.add(stylingTag);
+//                                resultText = stylingTag + resultText;
+                                resultText = resultText + fontStyleTag;
+
+                                fontStyle.pop();
+                                fontStyleTag = null;
+                            }
                             continue;
                         }
                         character = 174;
+
                     }
                 }
                 if (character == 64 && idx + 4 < length && text.charAt(idx + 4) == 64) { // 64 = @
@@ -187,6 +209,7 @@ public class TypeFace extends Rasterizer {
                     idx += 4;
                 } else if (character == 92 && idx + 1 < length && text.charAt(idx + 1) == 110) { // 92 = \ 110 = n
                     stylingTag = null;
+                    fontStyleTag = null;
                     aClass1Array2897[i_7_++] = resultText.substring(i_3_).trim();
                     i_3_ = resultText.length();
                     i = 0;
@@ -204,8 +227,9 @@ public class TypeFace extends Rasterizer {
                         i_3_ = i_4_;
                         i_4_ = -1;
                         i -= i_5_;
-                        if (!stylingQueue.isEmpty() && i_3_ > 4) {
+                        if (!stylingQueue.isEmpty() && i_3_ > 4 && !fontStyle.isEmpty()) {
                             resultText = stylingQueue.applyAll(resultText);
+                            resultText = fontStyle.applyAll(resultText);
                         } else if (stylingTag != null && i_3_ > 4) {
                             i_3_ -= 5;
 //                            resultText = stylingTag + resultText;
@@ -591,6 +615,41 @@ public class TypeFace extends Rasterizer {
         }
     }
 
+    public void drawCharacterItalics(int character, int x, int y, int width, int height, int colour) {
+        int rasterizerPixel = x + y * Rasterizer.destinationWidth;
+        int rasterizerPixelOffset = Rasterizer.destinationWidth - width;
+        int characterPixelOffset = 0;
+        int characterPixel = 0;
+        if (y < Rasterizer.viewportTop) {
+            int offsetY = Rasterizer.viewportTop - y;
+            height -= offsetY;
+            y = Rasterizer.viewportTop;
+            characterPixel += offsetY * width;
+            rasterizerPixel += offsetY * Rasterizer.destinationWidth;
+        }
+        if (y + height > Rasterizer.viewportBottom) {
+            height -= y + height - Rasterizer.viewportBottom;
+        }
+        if (x < Rasterizer.viewportLeft) {
+            int offsetX = Rasterizer.viewportLeft - x;
+            width -= offsetX;
+            x = Rasterizer.viewportLeft;
+            characterPixel += offsetX;
+            rasterizerPixel += offsetX;
+            characterPixelOffset += offsetX;
+            rasterizerPixelOffset += offsetX;
+        }
+        if (x + width > Rasterizer.viewportRight) {
+            int endOffsetX = x + width - Rasterizer.viewportRight;
+            width -= endOffsetX;
+            characterPixelOffset += endOffsetX;
+            rasterizerPixelOffset += endOffsetX;
+        }
+        if (width > 0 && height > 0) {
+            drawCharacterPixelsItalic(characterPixels[character], Rasterizer.destinationPixels, characterPixel, rasterizerPixel, characterPixelOffset, rasterizerPixelOffset, width, height, colour);
+        }
+    }
+
 
     public void drawCharacterLegacy(byte[] pixels, int x, int y, int width, int height, int colour) {
         int rasterizerPixel = x + y * Rasterizer.destinationWidth;
@@ -624,6 +683,53 @@ public class TypeFace extends Rasterizer {
         if (width > 0 && height > 0) {
             drawCharacterPixels(pixels, Rasterizer.destinationPixels, characterPixel, rasterizerPixel, characterPixelOffset, remainingWidth, width, height, colour);
         }
+    }
+
+
+    public void drawCharacterPixelsItalic(byte[] characterPixels, int[] rasterizerPixels, int characterPixel, int rasterizerPixel, int characterPixelOffset, int rasterizerPixelOffset, int width, int height, int colour) {
+        int shouldItalic = 0;
+
+        int negativeQuaterWidth = -(width >> 2);
+        width = -(width & 3);
+        for (int heightCounter = -height; heightCounter < 0; heightCounter++) {
+            for (int widthCounter = negativeQuaterWidth; widthCounter < 0; widthCounter++) {
+                if (characterPixels[characterPixel++] != 0)
+                    rasterizerPixels[rasterizerPixel++] = colour;
+                else
+                    rasterizerPixel++;
+                if (characterPixels[characterPixel++] != 0)
+                    rasterizerPixels[rasterizerPixel++] = colour;
+                else
+                    rasterizerPixel++;
+                if (characterPixels[characterPixel++] != 0)
+                    rasterizerPixels[rasterizerPixel++] = colour;
+                else
+                    rasterizerPixel++;
+                if (characterPixels[characterPixel++] != 0)
+                    rasterizerPixels[rasterizerPixel++] = colour;
+                else
+                    rasterizerPixel++;
+
+            }
+
+            for (int widthCounter = width; widthCounter < 0; widthCounter++)
+                if (characterPixels[characterPixel++] != 0)
+                    rasterizerPixels[rasterizerPixel++] = colour;
+                else
+                    rasterizerPixel++;
+            shouldItalic++;
+
+            if (shouldItalic > 2) {
+
+                rasterizerPixel += rasterizerPixelOffset - 1;
+                shouldItalic = 0;
+            } else {
+                rasterizerPixel += rasterizerPixelOffset;
+
+            }
+            characterPixel += characterPixelOffset;
+        }
+
     }
 
     public void drawCharacterPixels(byte[] characterPixels, int[] rasterizerPixels, int characterPixel, int rasterizerPixel, int characterPixelOffset, int rasterizerPixelOffset, int width, int height, int colour) {
@@ -689,6 +795,10 @@ public class TypeFace extends Rasterizer {
             } else if (string.startsWith(startStrikethrough)) {
                 String color = string.substring(4);
                 strikethroughColor = color.length() < 6 ? Color.decode(color).getRGB() : Integer.parseInt(color, 16);
+            } else if (string.startsWith(italicsStart)) {
+                italics = true;
+            } else if (string.startsWith(italicsEnd)) {
+                italics = false;
             } else if (string.equals(startDefaultStrikeThrough)) {
                 strikethroughColor = 8388608;
             } else if (string.equals(endStrikeThrough)) {
@@ -1010,19 +1120,32 @@ public class TypeFace extends Rasterizer {
                     int height = characterHeights[c];
                     if (c != 32) {
                         if (opacity == 256) {
-
                             if (shadowColor != -1) {
-                                drawCharacter(c, x + 1, y + characterYOffsets[c] + 1, width, height, shadowColor);
+                                if (italics) {
+                                    drawCharacterItalics(c, x + 1, y + characterYOffsets[c] + 1, width, height, shadowColor);
+                                } else {
+                                    drawCharacter(c, x + 1, y + characterYOffsets[c] + 1, width, height, shadowColor);
+                                }
                             }
-
-                            drawCharacter(c, x, y + characterYOffsets[c], width, height, this.textcolour.getColour());
+                            if (italics) {
+                                drawCharacterItalics(c, x, y + characterYOffsets[c], width, height, this.textcolour.getColour());
+                            } else {
+                                drawCharacter(c, x, y + characterYOffsets[c], width, height, this.textcolour.getColour());
+                            }
                         } else {
 
                             if (shadowColor != -1) {
-                                drawCharacterAlpha(c, x + 1, y + characterYOffsets[c] + 1, width, height, shadowColor, opacity);
-
+                                if (italics) {
+                                    drawCharacterAlphaItalics(c, x + 1, y + characterYOffsets[c] + 1, width, height, shadowColor, opacity);
+                                } else {
+                                    drawCharacterAlpha(c, x + 1, y + characterYOffsets[c] + 1, width, height, shadowColor, opacity);
+                                }
                             }
-                            drawCharacterAlpha(c, x, y + characterYOffsets[c], width, height, this.textcolour.getColour(), opacity);
+                            if (italics) {
+                                drawCharacterAlphaItalics(c, x, y + characterYOffsets[c], width, height, this.textcolour.getColour(), opacity);
+                            } else {
+                                drawCharacterAlpha(c, x, y + characterYOffsets[c], width, height, this.textcolour.getColour(), opacity);
+                            }
                         }
                     }
 
@@ -1040,6 +1163,7 @@ public class TypeFace extends Rasterizer {
         }
 
     }
+
 
     public void drawBasicStringLegacy(String string, int x, int y) {
         y -= characterDefaultHeight;
@@ -1103,6 +1227,10 @@ public class TypeFace extends Rasterizer {
         this.drawAlphaCharacter(characterPixels[character], x, y, width, height, colour, alpha);
     }
 
+    public void drawCharacterAlphaItalics(int character, int x, int y, int width, int height, int colour, int alpha) {
+        this.drawAlphaCharacterItalics(characterPixels[character], x, y, width, height, colour, alpha);
+    }
+
     public void drawAlphaCharacter(byte[] characterPixels, int x, int y, int width, int height, int colour, int alpha) {
         int rasterizerPixel = x + y * Rasterizer.destinationWidth;
         int rasterizerPixelOffset = Rasterizer.destinationWidth - width;
@@ -1137,6 +1265,40 @@ public class TypeFace extends Rasterizer {
         }
     }
 
+    public void drawAlphaCharacterItalics(byte[] characterPixels, int x, int y, int width, int height, int colour, int alpha) {
+        int rasterizerPixel = x + y * Rasterizer.destinationWidth;
+        int rasterizerPixelOffset = Rasterizer.destinationWidth - width;
+        int characterPixelOffset = 0;
+        int characterPixel = 0;
+        if (y < Rasterizer.viewportTop) {
+            int yOffset = Rasterizer.viewportTop - y;
+            height -= yOffset;
+            y = Rasterizer.viewportTop;
+            characterPixel += yOffset * width;
+            rasterizerPixel += yOffset * Rasterizer.destinationWidth;
+        }
+        if (y + height >= Rasterizer.viewportBottom)
+            height -= y + height - Rasterizer.viewportBottom + 1;
+        if (x < Rasterizer.viewportLeft) {
+            int xOffset = Rasterizer.viewportLeft - x;
+            width -= xOffset;
+            x = Rasterizer.viewportLeft;
+            characterPixel += xOffset;
+            rasterizerPixel += xOffset;
+            characterPixelOffset += xOffset;
+            rasterizerPixelOffset += xOffset;
+        }
+        if (x + width >= Rasterizer.viewportRight) {
+            int widthoffset = x + width - Rasterizer.viewportRight + 1;
+            width -= widthoffset;
+            characterPixelOffset += widthoffset;
+            rasterizerPixelOffset += widthoffset;
+        }
+        if (width > 0 && height > 0) {
+            drawCharacterPixelsAlphaItalics(characterPixel, rasterizerPixelOffset, characterPixelOffset, rasterizerPixel, alpha, Rasterizer.destinationPixels, colour, height, width, characterPixels);
+        }
+    }
+
 
     public void drawCharacterPixelsAlpha(int characterPixel, int rasterizerPixelOffset, int characterPixelOffset, int rasterizerPixel, int alpha, int[] rasterizerPixels, int colour, int height, int width, byte[] characterPixels) {
         colour = ((colour & 0xff00ff) * alpha & 0xff00ff00) + ((colour & 0xff00) * alpha & 0xff0000) >> 8;
@@ -1151,6 +1313,34 @@ public class TypeFace extends Rasterizer {
                 }
 
             rasterizerPixel += rasterizerPixelOffset;
+            characterPixel += characterPixelOffset;
+        }
+
+    }
+
+    public void drawCharacterPixelsAlphaItalics(int characterPixel, int rasterizerPixelOffset, int characterPixelOffset, int rasterizerPixel, int alpha, int[] rasterizerPixels, int colour, int height, int width, byte[] characterPixels) {
+        int shouldItalic = 0;
+        colour = ((colour & 0xff00ff) * alpha & 0xff00ff00) + ((colour & 0xff00) * alpha & 0xff0000) >> 8;
+        alpha = 256 - alpha;
+        for (int heightCounter = -height; heightCounter < 0; heightCounter++) {
+            for (int widthCounter = -width; widthCounter < 0; widthCounter++)
+                if (characterPixels[characterPixel++] == 0) {
+                    rasterizerPixel++;
+                } else {
+                    int rasterizerPixelColor = rasterizerPixels[rasterizerPixel];
+                    rasterizerPixels[rasterizerPixel++] = (((rasterizerPixelColor & 0xff00ff) * alpha & 0xff00ff00) + ((rasterizerPixelColor & 0xff00) * alpha & 0xff0000) >> 8) + colour;
+                }
+
+            shouldItalic++;
+
+            if (shouldItalic > 2) {
+
+                rasterizerPixel += rasterizerPixelOffset - 1;
+                shouldItalic = 0;
+            } else {
+                rasterizerPixel += rasterizerPixelOffset;
+
+            }
             characterPixel += characterPixelOffset;
         }
 

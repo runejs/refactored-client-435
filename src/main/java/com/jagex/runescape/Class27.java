@@ -294,6 +294,7 @@ public class Class27 {
                 }
             }
             if(action == 57) {
+                System.out.println("action 57");
                 SceneCluster.packetBuffer.putPacket(64);
                 SceneCluster.packetBuffer.putIntBE(i_10_);
                 Widget widget = Widget.forId(i_10_);

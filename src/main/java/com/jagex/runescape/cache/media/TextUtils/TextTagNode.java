@@ -3,7 +3,7 @@ package com.jagex.runescape.cache.media.TextUtils;
 public class TextTagNode {
     private TextTagNode previous = null;
     private TextTagNode next = null;
-    private String tag;
+    public String tag;
 
     public TextTagNode(String tag) {
         this.tag = tag;

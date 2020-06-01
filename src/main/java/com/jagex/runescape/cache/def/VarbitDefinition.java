@@ -69,11 +69,11 @@ public class VarbitDefinition extends SubNode {
             int i = arg1.getUnsignedByte();
             if(i == 0)
                 break;
-            method563(arg1, i);
+            readValues(arg1, i);
         }
     }
 
-    public void method563(Buffer buffer, int arg2) {
+    public void readValues(Buffer buffer, int arg2) {
         if(arg2 == 1) {
             index = buffer.getUnsignedShortBE();
             leastSignificantBit = buffer.getUnsignedByte();
