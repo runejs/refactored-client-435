@@ -8,6 +8,8 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.cache.media.Widget.WidgetType;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
@@ -315,6 +317,7 @@ public class Class48 {
         MouseHandler.anInt1457 = -1;
         Class37.method436(arg0 + 7352);
         OverlayDefinition.method559(10);
+        ScreenController.frameMode(ScreenMode.FIXED);
     }
 
     public int method921(int arg0, int arg1) {
