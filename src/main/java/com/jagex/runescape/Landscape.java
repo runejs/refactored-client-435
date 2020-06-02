@@ -134,6 +134,10 @@ public class Landscape {
                         int offsetY = -Class26.baseY + (0xff & ISAAC.mapCoordinates[pointer]) * 64;
                         int offsetX = -SpotAnimDefinition.baseX + 64 * (ISAAC.mapCoordinates[pointer] >> 8);
                         byte[] is = RSString.terrainData[pointer];
+                        if(FileOperations.FileExists("./data/maps/" + LinkedList.anIntArray1071[pointer] + ".dat")) {
+                            System.out.println("reading file: " + "./data/maps/" + LinkedList.anIntArray1071[pointer] + ".dat");
+                            is = FileOperations.ReadFile("./data/maps/" + LinkedList.anIntArray1071[pointer] + ".dat");
+                        }
                         if(is != null)
                             AnimationSequence.loadTerrainBlock(currentCollisionMap, (Class51.regionX - 6) * 8, is, -6, offsetX, offsetY, 8 * (-6 + Class17.regionY));
                     }
