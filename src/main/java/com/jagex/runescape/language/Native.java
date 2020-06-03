@@ -40,7 +40,7 @@ public class Native {
     public static String aClass1_620 = "@whi@";
     public static String prefixYellowBar = "@yel@|";
     public static String aClass1_2447 = "@yel@|";
-    public static String aClass1_686 = "\n";
+    public static String lineBreak = "\\n";
     public static String aClass1_303 = "_";
     public static RSString supportedCharacters = RSString.CreateString("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789(Q(R+R(T(U^(V(Z(X(Y-_=)0[*U]*W;:(W@(S*X,<.>)4?*6*V ");
     public static String aClass1_1921 = "b12_full";

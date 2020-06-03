@@ -417,7 +417,7 @@ public class Main extends GameShell {
                             String class1 = widget.disabledText;
                             class1 = SceneTile.method532((byte) 20, widget, class1);
                             while(class1.length() > 0) {
-                                int i_52_ = class1.indexOf(Native.aClass1_686.toString());
+                                int i_52_ = class1.indexOf(Native.lineBreak);
                                 String class1_53_;
                                 if(i_52_ == -1) {
                                     class1_53_ = class1;
@@ -447,7 +447,7 @@ public class Main extends GameShell {
                             int i_57_ = 2 + i_55_ + class40_sub5_sub14_sub1.characterDefaultHeight;
                             class1 = SceneTile.method532((byte) 20, widget, class1);
                             while(class1.length() > 0) {
-                                int i_58_ = class1.indexOf(Native.aClass1_686.toString());
+                                int i_58_ = class1.indexOf(Native.lineBreak);
                                 String class1_59_;
                                 if(i_58_ == -1) {
                                     class1_59_ = class1;
