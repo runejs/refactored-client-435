@@ -719,7 +719,7 @@ public class TypeFace extends Rasterizer {
                     rasterizerPixel++;
             shouldItalic++;
 
-            if (shouldItalic > 2) {
+            if (shouldItalic > 3) {
 
                 rasterizerPixel += rasterizerPixelOffset - 1;
                 shouldItalic = 0;
@@ -1322,19 +1322,19 @@ public class TypeFace extends Rasterizer {
         int shouldItalic = 0;
         colour = ((colour & 0xff00ff) * alpha & 0xff00ff00) + ((colour & 0xff00) * alpha & 0xff0000) >> 8;
         alpha = 256 - alpha;
-        for (int heightCounter = -height; heightCounter < 0; heightCounter++) {
-            for (int widthCounter = -width; widthCounter < 0; widthCounter++)
-                if (characterPixels[characterPixel++] == 0) {
+        for(int heightCounter = -height; heightCounter < 0; heightCounter++) {
+            for(int widthCounter = -width; widthCounter < 0; widthCounter++) {
+                if(characterPixels[characterPixel++] == 0) {
                     rasterizerPixel++;
                 } else {
                     int rasterizerPixelColor = rasterizerPixels[rasterizerPixel];
                     rasterizerPixels[rasterizerPixel++] = (((rasterizerPixelColor & 0xff00ff) * alpha & 0xff00ff00) + ((rasterizerPixelColor & 0xff00) * alpha & 0xff0000) >> 8) + colour;
                 }
+            }
 
             shouldItalic++;
 
-            if (shouldItalic > 2) {
-
+            if(shouldItalic > 3) {
                 rasterizerPixel += rasterizerPixelOffset - 1;
                 shouldItalic = 0;
             } else {
