@@ -78,13 +78,13 @@ public class ScreenController {
     }
 
     public static void setBounds() {
-        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 765 : frameWidth, frameMode == ScreenMode.FIXED ? 503 : frameHeight);
+        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 512 : frameWidth, frameMode == ScreenMode.FIXED ? 334 : frameHeight);
         Class24.fullScreenTextureArray = Rasterizer3D.setLineOffsets(null);
         Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 479 : frameWidth, frameMode == ScreenMode.FIXED ? 96 : frameHeight);
         Class5.chatboxLineOffsets = Rasterizer3D.setLineOffsets(null);
         Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 190 : frameWidth, frameMode == ScreenMode.FIXED ? 261 : frameHeight);
         ActorDefinition.sidebarOffsets = Rasterizer3D.setLineOffsets(null);
-        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 512 : frameWidth, frameMode == ScreenMode.FIXED ? 334 : frameHeight);
+        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 765 : frameWidth, frameMode == ScreenMode.FIXED ? 503 : frameHeight);
         Player.viewportOffsets = Rasterizer3D.setLineOffsets(null);
 
         int[] is = new int[9];
