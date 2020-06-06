@@ -1610,7 +1610,11 @@ public class Widget extends SubNode {
                     return null;
                 }
                 class40_sub5_sub17_sub5.createBones();
-                class40_sub5_sub17_sub5.applyLighting(64 + class40_sub5_sub16.ambient, 768 + class40_sub5_sub16.contrast, -50, -10, -50, true);
+                // TODO: Theres a bug with smelting bars and stacked items in inventory, please figure this out
+                try {
+                    class40_sub5_sub17_sub5.applyLighting(64 + class40_sub5_sub16.ambient, 768 + class40_sub5_sub16.contrast, -50, -10, -50, true);
+                } catch (Exception e) {
+                }
             }
             WallDecoration.aClass9_1264.put((long) ((modelType.ordinal() << 16) + i_11_), class40_sub5_sub17_sub5);
         }
