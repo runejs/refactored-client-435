@@ -122,7 +122,7 @@ public class English {
     public static String malformedLoginPacket = "Malformed login packet.";
     public static String pleaseTryAgain = "Please try again.";
     public static String pleaseWait1MinuteAndTryAgain = "Please wait 1 minute and try again.";
-    public static String welcomeToRunescape = "Welcome to Runescape";
+    public static String welcomeToRunescape = "Welcome to RuneScape";
     public static String use = "Use";
     public static String accountLockedAsWeSuspectItHasBeenStolen = "Account locked as we suspect it has been stolen.";
     public static String loadedWordpack = "Loaded wordpack";
