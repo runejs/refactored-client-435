@@ -201,8 +201,6 @@ public class SpotAnimDefinition extends SubNode {
                     Class40_Sub3.anInt2032 = 0;
                 }
             } else {
-                ScreenController.refreshFrameSize();
-                ScreenController.setBounds();
                 if (Class40_Sub3.anInt2032 == 9 && Class40_Sub6.gameConnection.method1014(-121) >= 8) {
 
                     InteractiveObject.playerRights = Class40_Sub6.gameConnection.read();

@@ -18,6 +18,9 @@ import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
+import tech.henning.fourthreefive.Configuration;
+
+import java.text.MessageFormat;
 
 public class Class48 {
     public static int cameraOffsetY = 0;
@@ -234,7 +237,18 @@ public class Class48 {
                                                             }
                                                         }
                                                     }
-                                                    OverlayDefinition.addActionRow(English.examine, itemDefinition.id, i_4_, widget.id, 1006, Native.aClass1_1114 + itemDefinition.name);
+                                                    StringBuilder examineText = new StringBuilder();
+                                                    examineText.append(MessageFormat.format("<col=ff9040>{0}</col>", itemDefinition.name));
+                                                    if (Configuration.DEBUG_CONTEXT) {
+                                                        examineText.append(" <col=00ff00>(</col>");
+                                                        examineText.append(
+                                                                MessageFormat.format("<col=ffffff>{0}</col>",
+                                                                        Integer.toString(itemDefinition.id)
+                                                                )
+                                                        );
+                                                        examineText.append("<col=00ff00>)</col>");
+                                                    }
+                                                    OverlayDefinition.addActionRow(English.examine, itemDefinition.id, i_4_, widget.id, 1006, examineText.toString());
                                                 }
                                             } else if(ISAAC.anInt525 != widget.id || i_4_ != LinkedList.anInt1061) {
                                                 OverlayDefinition.addActionRow(English.use, itemDefinition.id, i_4_, widget.id, 56, Native.aClass1_3295+ Native.aClass1_206+ itemDefinition.name);

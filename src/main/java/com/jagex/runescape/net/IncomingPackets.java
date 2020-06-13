@@ -1163,6 +1163,7 @@ public class IncomingPackets {
                 string += incomingPacketBuffer.buffer[i] + ",";
             CacheIndex.method169(string, (byte) -120, exception);
             Class48.logout(-7225);
+            exception.printStackTrace();
         }
         return true;
 
