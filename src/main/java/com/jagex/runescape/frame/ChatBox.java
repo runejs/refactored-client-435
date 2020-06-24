@@ -229,16 +229,16 @@ public class ChatBox {
     }
 
     public static void filterInput() {
-        StringBuilder result = new StringBuilder();
-        chatboxInput = chatboxInput.toLowerCase();
-        for (int i = 0; i < chatboxInput.length(); i++) {
-            for (char validCharacter : VALID_CHARACTERS) {
-                if (chatboxInput.charAt(i) != validCharacter)
-                    continue;
-
-                result.append(chatboxInput.charAt(i));
-            }
-        }
-        chatboxInput = result.toString();
+//        StringBuilder result = new StringBuilder();
+//        chatboxInput = chatboxInput.toLowerCase();
+//        for (int i = 0; i < chatboxInput.length(); i++) {
+//            for (char validCharacter : VALID_CHARACTERS) {
+//                if (chatboxInput.charAt(i) != validCharacter)
+//                    continue;
+//
+//                result.append(chatboxInput.charAt(i));
+//            }
+//        }
+//        chatboxInput = result.toString();
     }
 }

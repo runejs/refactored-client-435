@@ -187,7 +187,20 @@ public class TypeFace extends Rasterizer {
                                 resultText = resultText + stylingNode.tag;
                                 fontStyle.push(stylingNode);
                             }
+                            if (effect.startsWith(startStrikethrough, 0)) {
+                                TextTagNode stylingNode = new TextTagNode(text.substring(oldindex, idx + 1));
+                                resultText = resultText + stylingNode.tag;
+                                fontStyle.push(stylingNode);
+                            }
                             if (effect.startsWith(italicsEnd, 0)) {
+                                fontStyleTag = text.substring(oldindex, idx + 1);
+//                                resultText.add(stylingTag);
+//                                resultText = stylingTag + resultText;
+                                resultText = resultText + fontStyleTag;
+
+                                fontStyle.pop();
+                                fontStyleTag = null;
+                            }      if (effect.startsWith(endStrikeThrough, 0)) {
                                 fontStyleTag = text.substring(oldindex, idx + 1);
 //                                resultText.add(stylingTag);
 //                                resultText = stylingTag + resultText;

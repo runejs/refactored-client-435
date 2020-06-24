@@ -413,12 +413,12 @@ public class HuffmanEncoding {
         return -arg4 + i_0_ + 1;
     }
 
-    public int encrypt(int arg0, int arg1, int arg2, int arg3, byte[] dest, byte[] arg5) {
-        arg3 += arg1;
+    public int encrypt(int arg1, int bufferPos, int sourceLength, byte[] source, byte[] dest) {
+        sourceLength += arg1;
         int i = 0;
-        int i_6_ = arg2 << 3;;
-        for (/**/; arg1 < arg3; arg1++) {
-            int textByte = 0xff & dest[arg1];
+        int i_6_ = bufferPos << 3;;
+        for (/**/; arg1 < sourceLength; arg1++) {
+            int textByte = 0xff & source[arg1];
             int mask = chatMask[textByte];
             int size = chatBitSizes[textByte];
             if (size == 0)
@@ -429,30 +429,28 @@ public class HuffmanEncoding {
             i &= -bitOffset >> 31;
             int i_12_ = bitOffset2 + (size + bitOffset - 1 >> 3);
             bitOffset += 24;
-            arg5[bitOffset2] = (byte) (i = UnderlayDefinition.bitWiseOR(i, mask >>> bitOffset));
+            dest[bitOffset2] = (byte) (i = UnderlayDefinition.bitWiseOR(i, mask >>> bitOffset));
             if (bitOffset2 < i_12_) {
                 bitOffset2++;
                 bitOffset -= 8;
-                arg5[bitOffset2] = (byte) (i = mask >>> bitOffset);
+                dest[bitOffset2] = (byte) (i = mask >>> bitOffset);
                 if (i_12_ > bitOffset2) {
                     bitOffset -= 8;
                     bitOffset2++;
-                    arg5[bitOffset2] = (byte) (i = mask >>> bitOffset);
+                    dest[bitOffset2] = (byte) (i = mask >>> bitOffset);
                     if (bitOffset2 < i_12_) {
                         bitOffset2++;
                         bitOffset -= 8;
-                        arg5[bitOffset2] = (byte) (i = mask >>> bitOffset);
+                        dest[bitOffset2] = (byte) (i = mask >>> bitOffset);
                         if (bitOffset2 < i_12_) {
                             bitOffset -= 8;
                             bitOffset2++;
-                            arg5[bitOffset2] = (byte) (i = mask << -bitOffset);
+                            dest[bitOffset2] = (byte) (i = mask << -bitOffset);
                         }
                     }
                 }
             }
         }
-        if (arg0 != -18678)
-            method1027(-98);
-        return (7 + i_6_ >> 3) - arg2;
+        return (7 + i_6_ >> 3) - bufferPos;
     }
 }

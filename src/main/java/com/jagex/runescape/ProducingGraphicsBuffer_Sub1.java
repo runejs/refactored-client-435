@@ -12,6 +12,7 @@ import com.jagex.runescape.media.Rasterizer;
 
 import java.awt.*;
 import java.awt.image.*;
+import java.nio.charset.StandardCharsets;
 
 public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implements ImageProducer, ImageObserver {
     public static int[] anIntArray2199 = new int[32];
@@ -74,9 +75,9 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
 
     public static int method1052(String arg1, Buffer arg2) {
         int i = arg2.currentPosition;
-        arg2.putSmart(arg1.length());
-        char[] test = arg1.toCharArray();
-        arg2.currentPosition += IdentityKit.aHuffmanEncoding_2590.encrypt(-18678, 0, arg2.currentPosition, arg1.length(), arg1.getBytes(), arg2.buffer);
+        byte[] strBytes = arg1.getBytes(StandardCharsets.UTF_8);
+        arg2.putSmart(strBytes.length);
+        arg2.currentPosition += IdentityKit.aHuffmanEncoding_2590.encrypt(0, arg2.currentPosition, strBytes.length, strBytes, arg2.buffer);
         return -i + arg2.currentPosition;
 
     }
