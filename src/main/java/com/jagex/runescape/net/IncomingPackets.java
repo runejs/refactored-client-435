@@ -1049,8 +1049,8 @@ public class IncomingPackets {
             }
             if(incomingPacket == MOVE_WIDGET_CHILD) { // move widget position
                 int i_102_ = incomingPacketBuffer.getIntBE();
-                int i_103_ = incomingPacketBuffer.getUnsignedShortLE();
-                int i_104_ = incomingPacketBuffer.getUnsignedShortLE();
+                int i_103_ = incomingPacketBuffer.getShortLE();
+                int i_104_ = incomingPacketBuffer.getShortLE();
                 Widget widget = Widget.forId(i_102_);
                 widget.currentX = widget.originalX + i_104_;
                 incomingPacket = -1;

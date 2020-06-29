@@ -46,6 +46,15 @@ public class Buffer extends Node {
 
     }
 
+    public int getShortLE() {
+        currentPosition += 2;
+        int i = ((buffer[currentPosition - 1] & 0xff) << 8) + (buffer[currentPosition - 2] & 0xff);
+        if(i > 0x7fff) {
+            i -= 0x10000;
+        }
+        return i;
+    }
+
     public int getShortBE() {
         currentPosition += 2;
         int i = ((buffer[currentPosition - 2] & 0xff) << 8) + (buffer[currentPosition - 1] & 0xff);
