@@ -57,31 +57,31 @@ public class SceneTile extends Node {
                 int i = arg2.indexOf(Native.aClass1_890);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(0, false, arg1)) + arg2.substring(2 + i);
+                arg2 = arg2.substring(0, i) + Class40_Sub11.method872(999999999, HuffmanEncoding.parseClientScripts(0, false, arg1)) + arg2.substring(2 + i);
             }
             for (; ; ) {
                 int i = arg2.indexOf(Native.aClass1_1077);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(1, false, arg1)) + arg2.substring(i + 2);
+                arg2 = arg2.substring(0, i) + Class40_Sub11.method872(999999999, HuffmanEncoding.parseClientScripts(1, false, arg1)) + arg2.substring(i + 2);
             }
             for (; ; ) {
                 int i = arg2.indexOf(Native.aClass1_1610);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(2, false, arg1)) + arg2.substring(2 + i);
+                arg2 = arg2.substring(0, i) + Class40_Sub11.method872(999999999, HuffmanEncoding.parseClientScripts(2, false, arg1)) + arg2.substring(2 + i);
             }
             for (; ; ) {
                 int i = arg2.indexOf(Native.aClass1_1300);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + Class40_Sub11.method872(arg0 ^ 0x3b9ac9eb, HuffmanEncoding.method1029(3, false, arg1)) + arg2.substring(i + 2);
+                arg2 = arg2.substring(0, i) + Class40_Sub11.method872(arg0 ^ 0x3b9ac9eb, HuffmanEncoding.parseClientScripts(3, false, arg1)) + arg2.substring(i + 2);
             }
             for (; ; ) {
                 int i = arg2.indexOf(Native.aClass1_2090);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + Class40_Sub11.method872(999999999, HuffmanEncoding.method1029(4, false, arg1)) + arg2.substring(i + 2);
+                arg2 = arg2.substring(0, i) + Class40_Sub11.method872(999999999, HuffmanEncoding.parseClientScripts(4, false, arg1)) + arg2.substring(i + 2);
             }
             for (; ; ) {
                 int i = arg2.indexOf(Native.aClass1_2526);

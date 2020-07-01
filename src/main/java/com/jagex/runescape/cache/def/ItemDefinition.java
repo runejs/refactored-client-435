@@ -136,7 +136,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
             return false;
         }
         for(int i = 0; arg1.alternateOperators.length > i; i++) {
-            int i_10_ = HuffmanEncoding.method1029(i, false, arg1);
+            int i_10_ = HuffmanEncoding.parseClientScripts(i, false, arg1);
             int i_11_ = arg1.alternateRhs[i];
             if(arg1.alternateOperators[i] == 2) {
                 if(i_11_ <= i_10_) {

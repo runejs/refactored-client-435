@@ -14,7 +14,11 @@ public abstract class Command {
     public Command(String[] commands, String description) {
         this.commands = commands;
         this.hasMultiple = true;
-        this.description = description;
+        if(description.length() == 0) {
+            this.description = "No description";
+        } else {
+            this.description = description;
+        }
     }
 
     public boolean startsWith(String str) {

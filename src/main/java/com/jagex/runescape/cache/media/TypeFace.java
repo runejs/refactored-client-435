@@ -140,7 +140,10 @@ public class TypeFace extends Rasterizer {
             int index = -1;
             for (int idx = 0; idx < length; idx++) {
                 int character = text.charAt(idx);
-                if (character == 60) { // 60 = <
+                if (character == '\\' && !this.isIgnored(idx, text)) {
+                    continue;
+                }
+                if (character == 60 && !this.isIgnored(idx, text)) { // 60 = <
                     index = idx;
                 } else if (character == 62 && index != -1) { // 62 == >
                     String effect = text.substring(index + 1, idx);
@@ -200,7 +203,8 @@ public class TypeFace extends Rasterizer {
 
                                 fontStyle.pop();
                                 fontStyleTag = null;
-                            }      if (effect.startsWith(endStrikeThrough, 0)) {
+                            }
+                            if (effect.startsWith(endStrikeThrough, 0)) {
                                 fontStyleTag = text.substring(oldindex, idx + 1);
 //                                resultText.add(stylingTag);
 //                                resultText = stylingTag + resultText;
@@ -356,8 +360,10 @@ public class TypeFace extends Rasterizer {
 
         for (int idx = 0; idx < length; ++idx) {
             int character = string.charAt(idx);
-            if (character == 60) { // 60 = <
-
+            if (character == '\\' && !this.isIgnored(idx, string)) {
+                continue;
+            }
+            if (character == 60 && !this.isIgnored(idx, string)) { // 60 = <
                 index = idx;
             } else {
                 if (character == 62 && index != -1) { // 62 == >
@@ -418,8 +424,10 @@ public class TypeFace extends Rasterizer {
 
         for (int idx = 0; idx < length; ++idx) {
             int character = string.charAt(idx);
-            if (character == 60) {
-
+            if (character == '\\'  && !this.isIgnored(idx, string)) {
+                continue;
+            }
+            if (character == 60 && !this.isIgnored(idx, string)) {
                 index = idx;
             } else {
                 if (character == 62 && index != -1) {
@@ -850,7 +858,11 @@ public class TypeFace extends Rasterizer {
 
         for (int pos = 0; pos < length; ++pos) {
             int character = string.charAt(pos);
-            if (character == 60) {
+            if (character == '\\'  && !this.isIgnored(pos, string)) {
+                continue;
+            }
+            if (character == 60 && !this.isIgnored(pos, string)) {
+
                 effect = pos;
             } else {
                 int xOff;
@@ -1071,9 +1083,11 @@ public class TypeFace extends Rasterizer {
             if (c > 255) {
                 c = 32;
             }
-            if (c == 60) {
+            if (c == '\\'  && !this.isIgnored(character, string)) {
+                continue;
+            }
+            if (c == 60 && !this.isIgnored(character, string)) {
                 effectIndex = character;
-
             } else {
                 if (c == 62 && effectIndex != -1) {
 
@@ -1174,6 +1188,16 @@ public class TypeFace extends Rasterizer {
                 }
             }
         }
+
+    }
+
+    private boolean isIgnored(int index, String text) {
+        if (index > 0) {
+            if (text.charAt(index - 1) == '\\') {
+                return true;
+            }
+        }
+        return false;
 
     }
 
@@ -1335,9 +1359,9 @@ public class TypeFace extends Rasterizer {
         int shouldItalic = 0;
         colour = ((colour & 0xff00ff) * alpha & 0xff00ff00) + ((colour & 0xff00) * alpha & 0xff0000) >> 8;
         alpha = 256 - alpha;
-        for(int heightCounter = -height; heightCounter < 0; heightCounter++) {
-            for(int widthCounter = -width; widthCounter < 0; widthCounter++) {
-                if(characterPixels[characterPixel++] == 0) {
+        for (int heightCounter = -height; heightCounter < 0; heightCounter++) {
+            for (int widthCounter = -width; widthCounter < 0; widthCounter++) {
+                if (characterPixels[characterPixel++] == 0) {
                     rasterizerPixel++;
                 } else {
                     int rasterizerPixelColor = rasterizerPixels[rasterizerPixel];
@@ -1347,7 +1371,7 @@ public class TypeFace extends Rasterizer {
 
             shouldItalic++;
 
-            if(shouldItalic > 3) {
+            if (shouldItalic > 3) {
                 rasterizerPixel += rasterizerPixelOffset - 1;
                 shouldItalic = 0;
             } else {

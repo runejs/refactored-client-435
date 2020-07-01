@@ -6,7 +6,7 @@ You'll need an update server running to run the client. RuneJS provides an updat
 
 This client pairs well with [RuneJS](https://github.com/rune-js), a RuneScape game server written entirely in TypeScript for revision #435 of RuneScape. 
 
-To run the client, use the following arguments: `1 live live highmem members`
+To run the client, you can supply these optional parameters: `1 live live highmem members`
 
 ### Via Gradle
 

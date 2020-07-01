@@ -250,8 +250,8 @@ public class Scene {
             wall.z = drawHeight;
             wall.primary = primary;
             wall.secondary = secondary;
-            wall.orientation = orientation;
-            wall.orientation2 = orientation2;
+            wall.orientationA = orientation;
+            wall.orientationB = orientation2;
             for (int _z = z; _z >= 0; _z--) {
                 if (tileArray[_z][x][y] == null) {
                     tileArray[_z][x][y] = new SceneTile(_z, x, y);
@@ -862,16 +862,16 @@ public class Scene {
                         groundTile.anInt2064 = anIntArray130[i_86_];
                     }
                     if (wall != null) {
-                        if ((wall.orientation & anIntArray117[i_86_]) != 0) {
-                            if (wall.orientation == 16) {
+                        if ((wall.orientationA & anIntArray117[i_86_]) != 0) {
+                            if (wall.orientationA == 16) {
                                 groundTile.wallCullDirection = 3;
                                 groundTile.wallUncullDirection = anIntArray119[i_86_];
                                 groundTile.wallCullOppositeDirection = 3 - groundTile.wallUncullDirection;
-                            } else if (wall.orientation == 32) {
+                            } else if (wall.orientationA == 32) {
                                 groundTile.wallCullDirection = 6;
                                 groundTile.wallUncullDirection = anIntArray125[i_86_];
                                 groundTile.wallCullOppositeDirection = 6 - groundTile.wallUncullDirection;
-                            } else if (wall.orientation == 64) {
+                            } else if (wall.orientationA == 64) {
                                 groundTile.wallCullDirection = 12;
                                 groundTile.wallUncullDirection = anIntArray132[i_86_];
                                 groundTile.wallCullOppositeDirection = 12 - groundTile.wallUncullDirection;
@@ -883,10 +883,10 @@ public class Scene {
                         } else {
                             groundTile.wallCullDirection = 0;
                         }
-                        if ((wall.orientation & i_87_) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientation)) {
+                        if ((wall.orientationA & i_87_) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientationA)) {
                             wall.primary.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
                         }
-                        if ((wall.orientation2 & i_87_) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientation2)) {
+                        if ((wall.orientationB & i_87_) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientationB)) {
                             wall.secondary.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
                         }
                     }
@@ -978,7 +978,7 @@ public class Scene {
                     }
                     if (bool) {
                         Wall wall = groundTile.wall;
-                        if (!isWallOccluded(i_78_, i, i_76_, wall.orientation)) {
+                        if (!isWallOccluded(i_78_, i, i_76_, wall.orientationA)) {
                             wall.primary.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
                         }
                         groundTile.wallCullDirection = 0;
@@ -1158,10 +1158,10 @@ public class Scene {
                             }
                             Wall wall = groundTile.wall;
                             if (wall != null) {
-                                if ((wall.orientation2 & groundTile.anInt2064) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientation2)) {
+                                if ((wall.orientationB & groundTile.anInt2064) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientationB)) {
                                     wall.secondary.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
                                 }
-                                if ((wall.orientation & groundTile.anInt2064) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientation)) {
+                                if ((wall.orientationA & groundTile.anInt2064) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientationA)) {
                                     wall.primary.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
                                 }
                             }

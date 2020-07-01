@@ -18,15 +18,15 @@ public class Wall {
     public static int anInt356 = 0;
     public static LinkedList[][][] groundItems = new LinkedList[4][104][104];
 
-    public int x;
     public int hash;
-    public int orientation;
+    public int x;
+    public int y;
+    public int z;
+    public int orientationA;
+    public int orientationB;
     public Renderable secondary;
     public Renderable primary;
-    public int z;
-    public int orientation2;
     public int config = 0;
-    public int y;
 
     public Wall() {
         hash = 0;

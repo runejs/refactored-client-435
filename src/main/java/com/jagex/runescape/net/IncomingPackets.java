@@ -57,7 +57,7 @@ public class IncomingPackets {
             0, -1, 0, 0, 0, 0, 2, 0, 4, 0,  // 50
             0, 0, 0, -2, 2, 0, 0, 0, 0, 0,  // 60
             1, -1, 0, 0, 3, 0, 0, 0, 0, 0,  // 70
-            0, 0, -1, -1, 4, 0, 0, 0, 1, 0,  // 80
+            0, 0, -1, -1, 4, -1, 0, 0, 1, 0,  // 80
             0, 0, -2, 0, 0, 0, 0, 0, 0, 7,  // 90
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  // 100
             -2, 0, 0, 0, 0, 5, 2, 8, 2, 0,  // 110
@@ -348,6 +348,13 @@ public class IncomingPackets {
             if(incomingPacket == 83) { // console command
                 RSString message = incomingPacketBuffer.getRSString();
                 Console.console.log("<col=FFFF00>" + message.toString() + "</col>");
+                incomingPacket = -1;
+                return true;
+            }
+            if(incomingPacket == 85) { // console auto-completion
+                String command = incomingPacketBuffer.getString();
+                String help = incomingPacketBuffer.getString();
+                Console.console.addCommand(command,help);
                 incomingPacket = -1;
                 return true;
             }

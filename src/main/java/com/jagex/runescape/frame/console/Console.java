@@ -301,4 +301,11 @@ public class Console {
     public void log(int i) {
         log(String.valueOf(i));
     }
+
+    public void addCommand(String command, String help) {
+        int index = this.commands.indexOf(command.toLowerCase());
+        if (index == -1) {
+            commands.add(new ServerCommand(command, help));
+        }
+    }
 }
