@@ -20,6 +20,7 @@ data/models/
 
 # Package Files #
 *.war
+*.jar
 *.nar
 *.ear
 *.zip
