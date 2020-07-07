@@ -1192,12 +1192,27 @@ public class TypeFace extends Rasterizer {
     }
 
     private boolean isIgnored(int index, String text) {
-        if (index > 0) {
-            if (text.charAt(index - 1) == '\\') {
-                return true;
+        boolean isTag = false;
+        boolean isNextTag = false;
+        if(index < text.length()) {
+            if(text.charAt(index) == '<') {
+                isTag = true;
             }
         }
-        return false;
+        if(index < text.length()-1) {
+            if(text.charAt(index+1) == '<') {
+                isNextTag = true;
+            }
+        }
+        if (index > 0) {
+            if (text.charAt(index - 1) == '\\') {
+                return isTag;
+            }
+        }
+        if(isNextTag) {
+            return false;
+        }
+        return !isTag;
 
     }
 
