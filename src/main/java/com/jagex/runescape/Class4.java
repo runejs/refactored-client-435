@@ -42,7 +42,7 @@ public class Class4 {
                     PacketBuffer.effects[j] = PacketBuffer.effects[1 + j];
                     ItemDefinition.soundVolume[j] = ItemDefinition.soundVolume[1 + j];
                     Class40_Sub3.soundDelay[j] = Class40_Sub3.soundDelay[1 + j];
-                    Class38_Sub1.anIntArray1916[j] = Class38_Sub1.anIntArray1916[1 + j];
+                    MovedStatics.anIntArray1916[j] = MovedStatics.anIntArray1916[1 + j];
                 }
                 index--;
             } else {
@@ -56,10 +56,10 @@ public class Class4 {
                 }
                 if(Class40_Sub3.soundDelay[index] < 0) {
                     int i_10_;
-                    if(Class38_Sub1.anIntArray1916[index] != 0) {
-                        int i_11_ = 128 * (Class38_Sub1.anIntArray1916[index] & 0xff);
-                        int i_12_ = 0xff & Class38_Sub1.anIntArray1916[index] >> 16;
-                        int i_13_ = (Class38_Sub1.anIntArray1916[index] & 0xffb8) >> 8;
+                    if(MovedStatics.anIntArray1916[index] != 0) {
+                        int i_11_ = 128 * (MovedStatics.anIntArray1916[index] & 0xff);
+                        int i_12_ = 0xff & MovedStatics.anIntArray1916[index] >> 16;
+                        int i_13_ = (MovedStatics.anIntArray1916[index] & 0xffb8) >> 8;
                         int i_14_ = i_13_ * 128 + 64 + -Player.localPlayer.worldY;
                         int i_15_ = i_12_ * 128 + 64 - Player.localPlayer.worldX;
                         if(i_15_ < 0)

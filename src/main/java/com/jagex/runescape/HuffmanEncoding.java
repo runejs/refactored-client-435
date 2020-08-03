@@ -282,7 +282,7 @@ public class HuffmanEncoding {
                     i_16_ = GroundItemTile.varbitmasks[temp];
                 }
                 if (i_18_ == 6) {
-                    i_16_ = Class38_Sub1.anIntArray1909[-1 + Wall.anIntArray354[is[i_14_++]]];
+                    i_16_ = MovedStatics.anIntArray1909[-1 + Wall.anIntArray354[is[i_14_++]]];
                 }
                 if (i_18_ == 7) {
                     int temp = is[i_14_++];

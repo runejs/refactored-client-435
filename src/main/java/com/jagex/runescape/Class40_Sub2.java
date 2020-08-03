@@ -122,7 +122,7 @@ public class Class40_Sub2 extends Node {
                 if(currentTabId == 9)
                     HashTable.aClass40_Sub5_Sub14_Sub2_549.drawImage(102, 0);
                 if(currentTabId == 10)
-                    Class38_Sub1.aClass40_Sub5_Sub14_Sub2_1919.drawImage(130, 1);
+                    MovedStatics.aClass40_Sub5_Sub14_Sub2_1919.drawImage(130, 1);
                 if(currentTabId == 11)
                     Class13.aClass40_Sub5_Sub14_Sub2_418.drawImage(173, 0);
                 if(currentTabId == 12)

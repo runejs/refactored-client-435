@@ -100,7 +100,7 @@ public class Item extends Renderable {
             Rasterizer.resetPixels();
             Class51.aProducingGraphicsBuffer_1206 = Class40_Sub5_Sub13.createGraphicsBuffer(360, 132, arg0);
             Rasterizer.resetPixels();
-            Class38.loginBoxGraphics = Class40_Sub5_Sub13.createGraphicsBuffer(360, 200, arg0);
+            MovedStatics.loginBoxGraphics = Class40_Sub5_Sub13.createGraphicsBuffer(360, 200, arg0);
             Rasterizer.resetPixels();
             Class17.aProducingGraphicsBuffer_463 = Class40_Sub5_Sub13.createGraphicsBuffer(202, 238, arg0);
             Rasterizer.resetPixels();
@@ -120,7 +120,7 @@ public class Item extends Renderable {
             class40_sub5_sub14_sub4.drawInverse(-128, 0);
             Class51.aProducingGraphicsBuffer_1206.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(-202, -371);
-            Class38.loginBoxGraphics.prepareRasterizer();
+            MovedStatics.loginBoxGraphics.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(-202, -171);
             Class17.aProducingGraphicsBuffer_463.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(0, -265);
@@ -145,7 +145,7 @@ public class Item extends Renderable {
             class40_sub5_sub14_sub4.drawInverse(254, 0);
             Class51.aProducingGraphicsBuffer_1206.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(180, -371);
-            Class38.loginBoxGraphics.prepareRasterizer();
+            MovedStatics.loginBoxGraphics.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(180, -171);
             Class17.aProducingGraphicsBuffer_463.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(382, -265);

@@ -117,7 +117,7 @@ public class Class5 {
                 Class40_Sub5_Sub6.cameraY = i;
         }
         i = UnderlayDefinition.anInt2576 * 128 + 64;
-        i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) - Class38.anInt892;
+        i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) - MovedStatics.anInt892;
         int i_5_ = -SceneCluster.cameraZ + i_4_;
         int i_6_ = i - Class40_Sub5_Sub6.cameraY;
         int i_7_ = i_3_ - Class12.cameraX;

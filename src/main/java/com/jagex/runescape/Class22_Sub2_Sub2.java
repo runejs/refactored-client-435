@@ -108,7 +108,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
                     }
                     method302(0);
                 }
-                Class43.method890(100L, -75);
+                Class43.sleep(100L);
             }
         } catch(Exception exception) {
             CacheIndex.method169(null, (byte) -127, exception);
@@ -126,7 +126,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
                 if(!aBoolean2224)
                     break;
             }
-            Class43.method890(20L, 45);
+            Class43.sleep(20L);
         }
         if(arg0 >= 100)
             aRunnable_Impl1_2223.method4(26534);

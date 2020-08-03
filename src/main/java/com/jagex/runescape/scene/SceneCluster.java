@@ -3,12 +3,13 @@ package com.jagex.runescape.scene;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.net.PacketBuffer;
+import com.jagex.runescape.util.Timer;
 
 public class SceneCluster {
     public static PacketBuffer packetBuffer = new PacketBuffer(5000);
     public static int[] anIntArray761 = {1, 2, 4, 8};
     public static int anInt767;
-    public static Class38 aClass38_768;
+    public static Timer aTimer_768;
     public static int cameraZ;
     public static int anInt770 = 0;
     public static int idleLogout = 0;

@@ -276,7 +276,7 @@ public class Npc extends Actor {
                         if(Scene.clickedTileX != -1) {
                             int i = Scene.clickedTileX;
                             int i_18_ = Scene.clickedTileY;
-                            boolean bool = Class38_Sub1.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, true, 0, 0, Player.localPlayer.pathX[0], i_18_, 0);
+                            boolean bool = MovedStatics.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, true, 0, 0, Player.localPlayer.pathX[0], i_18_, 0);
                             if(bool) {
                                 Class40_Sub5_Sub1.crossY = RSString.clickY;
                                 OverlayDefinition.crossIndex = 0;
@@ -346,14 +346,14 @@ public class Npc extends Actor {
                             SceneCluster.packetBuffer.putPacket(216);
                         }
                         Player.anInt3264++;
-                        Class38_Sub1.anInt1923++;
-                        if(Class38_Sub1.anInt1923 > 500) {
+                        MovedStatics.anInt1923++;
+                        if(MovedStatics.anInt1923 > 500) {
                             int i_22_ = (int) (8.0 * Math.random());
                             if((0x2 & i_22_) == 2)
                                 Class48.cameraOffsetY += ProducingGraphicsBuffer_Sub1.anInt2211;
                             if((i_22_ & 0x1) == 1)
                                 Buffer.cameraOffsetX += Class42.anInt1010;
-                            Class38_Sub1.anInt1923 = 0;
+                            MovedStatics.anInt1923 = 0;
                             if((0x4 & i_22_) == 4)
                                 Class57.anInt1342 += Class5.anInt195;
                         }

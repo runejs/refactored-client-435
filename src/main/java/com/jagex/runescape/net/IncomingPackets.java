@@ -805,13 +805,13 @@ public class IncomingPackets {
                 Class39.aBoolean906 = true;
                 HashTable.anInt564 = incomingPacketBuffer.getUnsignedByte();
                 UnderlayDefinition.anInt2576 = incomingPacketBuffer.getUnsignedByte();
-                Class38.anInt892 = incomingPacketBuffer.getUnsignedShortBE();
+                MovedStatics.anInt892 = incomingPacketBuffer.getUnsignedShortBE();
                 Class60.anInt1413 = incomingPacketBuffer.getUnsignedByte();
                 Class22_Sub1.anInt1856 = incomingPacketBuffer.getUnsignedByte();
                 if(Class22_Sub1.anInt1856 >= 100) {
                     int i_69_ = 128 * HashTable.anInt564 + 64;
                     int i_70_ = 128 * UnderlayDefinition.anInt2576 + 64;
-                    int i_71_ = Class37.getFloorDrawHeight(Player.worldLevel, i_69_, i_70_) - Class38.anInt892;
+                    int i_71_ = Class37.getFloorDrawHeight(Player.worldLevel, i_69_, i_70_) - MovedStatics.anInt892;
                     int i_72_ = i_69_ + -Class12.cameraX;
                     int i_73_ = i_70_ + -Class40_Sub5_Sub6.cameraY;
                     int i_74_ = -SceneCluster.cameraZ + i_71_;
@@ -1048,7 +1048,7 @@ public class IncomingPackets {
                 Class13.anIntArray403[i_99_] = i_98_;
                 Wall.anIntArray354[i_99_] = 1;
                 for(int i_101_ = 0; i_101_ < 98; i_101_++) {
-                    if(Class38_Sub1.anIntArray1909[i_101_] <= i_100_)
+                    if(MovedStatics.anIntArray1909[i_101_] <= i_100_)
                         Wall.anIntArray354[i_99_] = i_101_ + 2;
                 }
                 incomingPacket = -1;

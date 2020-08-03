@@ -57,7 +57,7 @@ public class OverlayDefinition extends SubNode {
                 Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string;
             else
                 Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string + Native.aClass1_1117 + arg6;
-            Class38.menuActionTypes[ActorDefinition.menuActionRow] = actionType;
+            MovedStatics.menuActionTypes[ActorDefinition.menuActionRow] = actionType;
             Class33.selectedMenuActions[ActorDefinition.menuActionRow] = menuAction;
             InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow] = firstMenuOperand;
             Class59.secondMenuOperand[ActorDefinition.menuActionRow] = secondMenuOperand;
@@ -91,7 +91,7 @@ public class OverlayDefinition extends SubNode {
             }
             if (arg0 == 0 || arg0 == 35) {
                 FloorDecoration.method344(-40);
-                Class38.method440((byte) -73);
+                MovedStatics.method440((byte) -73);
                 if (ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 == null)
                     ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = Class40_Sub5_Sub13.createGraphicsBuffer(765, 503, MouseHandler.aCanvas1469);
             }
@@ -102,7 +102,7 @@ public class OverlayDefinition extends SubNode {
             }
             if (arg0 == 25 || arg0 == 30 || arg0 == 40) {
                 ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
-                Class38.method440((byte) -98);
+                MovedStatics.method440((byte) -98);
                 Class40_Sub5_Sub17_Sub1.method763(MouseHandler.aCanvas1469, ActorDefinition.aClass6_Sub1_2377);
             }
             Class51.anInt1197 = arg0;

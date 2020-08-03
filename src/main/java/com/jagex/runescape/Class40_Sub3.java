@@ -113,7 +113,7 @@ public class Class40_Sub3 extends Node {
                 Class67.anInt1607 = 30;
             }
         } else if (Class40_Sub5_Sub6.anInt2451 == 45) {
-            Class38_Sub1.method446(ISAAC.aClass31_521, 0, !VertexNormal.lowMemory, (byte) 30);
+            MovedStatics.method446(ISAAC.aClass31_521, 0, !VertexNormal.lowMemory, (byte) 30);
             Class49.aClass40_Sub9_Sub1_1152 = MouseHandler.method1003(ISAAC.aClass31_521, MouseHandler.aCanvas1469, arg0 ^ 0x74be);
             Class55.aClass48_1289 = new Class48(22050, CollisionMap.anInt141);
             Class40_Sub5_Sub6.anInt2451 = 50;
@@ -156,7 +156,7 @@ public class Class40_Sub3 extends Node {
             }
         } else if (Class40_Sub5_Sub6.anInt2451 == 70) {
             if (IdentityKit.aClass6_Sub1_2609.method185((byte) 98)) {
-                Class38.method441(IdentityKit.aClass6_Sub1_2609);
+                MovedStatics.method441(IdentityKit.aClass6_Sub1_2609);
                 UnderlayDefinition.method616(IdentityKit.aClass6_Sub1_2609);
                 method977(3, IdentityKit.aClass6_Sub1_2609, UnderlayDefinition.aClass6_Sub1_2571);
                 method980(28987, UnderlayDefinition.aClass6_Sub1_2571, VertexNormal.lowMemory, IdentityKit.aClass6_Sub1_2609);

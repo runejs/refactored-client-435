@@ -163,7 +163,7 @@ public class FloorDecoration {
             RSCanvas.anIntArray62 = null;
             ActorDefinition.sidebarOffsets = null;
             Class39.mapbackLeft = null;
-            Class38_Sub1.aClass40_Sub5_Sub14_Sub2_1919 = null;
+            MovedStatics.aClass40_Sub5_Sub14_Sub2_1919 = null;
             Class56.tabBottomBack = null;
             Landscape.framePieceRight = null;
             GameShell.aClass40_Sub5_Sub14_Sub2_1 = null;
