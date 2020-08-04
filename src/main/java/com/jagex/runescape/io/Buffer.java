@@ -264,7 +264,7 @@ public class Buffer extends Node {
     }
 
     // ???
-    public int method500() {
+    public int getIntVar() {
         int i = buffer[currentPosition++];
         int i_11_ = 0;
         for(/**/; i < 0; i = buffer[currentPosition++]) {

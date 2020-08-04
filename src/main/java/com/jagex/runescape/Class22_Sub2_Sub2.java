@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.audio.MidiFileReader;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.util.Signlink;
@@ -7,7 +8,7 @@ import com.jagex.runescape.util.Signlink;
 public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
     public static Runnable_Impl1 aRunnable_Impl1_2223;
     public static boolean aBoolean2224;
-    public static Class14 aClass14_2225 = new Class14();
+    public static MidiFileReader aMidiFileReader_2225 = new MidiFileReader();
     public static int anInt2226;
     public static int[] anIntArray2227 = new int[256];
     public static boolean aBoolean2228;
@@ -47,35 +48,35 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
 
     public synchronized void method302(int arg0) {
 
-        if(aClass14_2225.method257()) {
+        if(aMidiFileReader_2225.isReady()) {
             if(arg0 != 0)
                 aBoolean2224 = false;
-            long l = (long) (200 + anInt2226 + -aRunnable_Impl1_2223.method5(14942)) * (long) (aClass14_2225.anInt431 * 1000);
+            long l = (long) (200 + anInt2226 + -aRunnable_Impl1_2223.method5(14942)) * (long) (aMidiFileReader_2225.division * 1000);
             for(; ; ) {
-                int i = aClass14_2225.method250();
-                int i_0_ = aClass14_2225.anIntArray427[i];
-                long l_1_ = aClass14_2225.method251(i_0_);
+                int i = aMidiFileReader_2225.getPrioritizedTrack();
+                int i_0_ = aMidiFileReader_2225.trackLengths[i];
+                long l_1_ = aMidiFileReader_2225.method251(i_0_);
                 if(l < l_1_)
                     break;
-                while(i_0_ == aClass14_2225.anIntArray427[i]) {
-                    aClass14_2225.method265(i);
+                while(i_0_ == aMidiFileReader_2225.trackLengths[i]) {
+                    aMidiFileReader_2225.gotoTrack(i);
                     method324(l_1_, i);
-                    if(aClass14_2225.method258()) {
-                        aClass14_2225.method260(i);
-                        if(aClass14_2225.method263()) {
+                    if(aMidiFileReader_2225.method258()) {
+                        aMidiFileReader_2225.markTrackPosition(i);
+                        if(aMidiFileReader_2225.isDone()) {
                             if(aBoolean2228)
-                                aClass14_2225.method259(l_1_);
+                                aMidiFileReader_2225.reset(l_1_);
                             else {
-                                this.method321((byte) 110, (long) (int) (l_1_ / (long) (aClass14_2225.anInt431 * 1000)));
-                                aClass14_2225.method255();
+                                this.method321((byte) 110, (long) (int) (l_1_ / (long) (aMidiFileReader_2225.division * 1000)));
+                                aMidiFileReader_2225.clear();
                                 method325();
                                 return;
                             }
                         }
                         break;
                     }
-                    aClass14_2225.method254(i);
-                    aClass14_2225.method260(i);
+                    aMidiFileReader_2225.readTrackLength(i);
+                    aMidiFileReader_2225.markTrackPosition(i);
                 }
             }
             method325();
@@ -84,11 +85,11 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
     }
 
     public void method324(long arg0, int arg2) {
-        int i_2_ = aClass14_2225.method252(arg2);
+        int i_2_ = aMidiFileReader_2225.readMessage(arg2);
         if(i_2_ == 1)
-            aClass14_2225.method264();
+            aMidiFileReader_2225.setTrackDone();
         else if((i_2_ & 0x80) != 0) {
-            int i_3_ = (int) (arg0 / (long) (1000 * aClass14_2225.anInt431));
+            int i_3_ = (int) (arg0 / (long) (1000 * aMidiFileReader_2225.division));
             int i_4_ = i_2_ & 0xff;
             int i_5_ = (0xffa8 & i_2_) >> 8;
             int i_6_ = (i_2_ & 0xffb86b) >> 16;
@@ -136,31 +137,31 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
     public synchronized void method300(byte[] arg0, boolean arg1, int arg2, int arg3) {
 
         if(arg2 != -15910)
-            aClass14_2225 = null;
+            aMidiFileReader_2225 = null;
         boolean bool = true;
-        aClass14_2225.method256(arg0);
+        aMidiFileReader_2225.parse(arg0);
         anInt2226 = 0;
         aBoolean2228 = arg1;
         aRunnable_Impl1_2223.method6(-26);
         this.method317(arg3, 0, (long) anInt2226, 0);
-        int i = aClass14_2225.method253();
+        int i = aMidiFileReader_2225.trackCount();
         for(int i_7_ = 0; i_7_ < i; i_7_++) {
-            aClass14_2225.method265(i_7_);
-            while(!aClass14_2225.method258()) {
-                aClass14_2225.method254(i_7_);
-                if(aClass14_2225.anIntArray427[i_7_] != 0) {
+            aMidiFileReader_2225.gotoTrack(i_7_);
+            while(!aMidiFileReader_2225.method258()) {
+                aMidiFileReader_2225.readTrackLength(i_7_);
+                if(aMidiFileReader_2225.trackLengths[i_7_] != 0) {
                     bool = false;
                     break;
                 }
                 method324(0L, i_7_);
             }
-            aClass14_2225.method260(i_7_);
+            aMidiFileReader_2225.markTrackPosition(i_7_);
         }
         if(bool) {
             if(aBoolean2228)
                 throw new RuntimeException();
             this.method321((byte) 127, (long) anInt2226);
-            aClass14_2225.method255();
+            aMidiFileReader_2225.clear();
         }
         method325();
 
@@ -194,7 +195,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
         anInt2229 = 0;
         if(arg0 != -96)
             aBoolean2228 = false;
-        aClass14_2225.method255();
+        aMidiFileReader_2225.clear();
 
     }
 }
