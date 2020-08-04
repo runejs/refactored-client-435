@@ -324,7 +324,7 @@ public class Class33 {
             method402(true);
         if(arg1 < 0)
             return false;
-        int i = Class38.menuActionTypes[arg1];
+        int i = MovedStatics.menuActionTypes[arg1];
         if(i >= 2000)
             i -= 2000;
         return i == 45;

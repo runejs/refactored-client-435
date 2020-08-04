@@ -202,7 +202,7 @@ public class Class60 {
     }
 
     public static void method992() {
-        SceneCluster.aClass38_768.method443(-10115);
+        SceneCluster.aTimer_768.start();
         for(int i = 0; i < 32; i++)
             GameShell.aLongArray4[i] = 0L;
         for(int i = 0; i < 32; i++)

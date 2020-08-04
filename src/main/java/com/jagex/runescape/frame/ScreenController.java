@@ -302,7 +302,7 @@ public class ScreenController {
                 SceneCluster.packetBuffer.putPacket(246);
                 SceneCluster.packetBuffer.putString(MessageFormat.format(" move {0} {1}", Integer.toString(destX + SpotAnimDefinition.baseX), Integer.toString(destY + Class26.baseY)));
             } else {
-                boolean bool = Class38_Sub1.doWalkTo(0, 0, Player.localPlayer.pathY[0], destX, 0, true, 0, 0, Player.localPlayer.pathX[0], destY, 1);
+                boolean bool = MovedStatics.doWalkTo(0, 0, Player.localPlayer.pathY[0], destX, 0, true, 0, 0, Player.localPlayer.pathX[0], destY, 1);
                 if(bool) {
                     SceneCluster.packetBuffer.putByte(x);
                     SceneCluster.packetBuffer.putByte(y);

@@ -20,6 +20,8 @@ import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.util.Signlink;
+import com.jagex.runescape.util.Timer;
+
 import tech.henning.fourthreefive.Configuration;
 
 import java.awt.*;
@@ -205,10 +207,10 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         setCanvas((byte) 121);
         ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = Class40_Sub5_Sub13.createGraphicsBuffer(Class12.width, IdentityKit.height, MouseHandler.aCanvas1469);
         method31(true);
-        SceneCluster.aClass38_768 = Class56.method972((byte) 47);
-        SceneCluster.aClass38_768.method443(-10115);
+        SceneCluster.aTimer_768 = Timer.create();
+        SceneCluster.aTimer_768.start();
         while (CacheIndex.aLong219 == 0L || System.currentTimeMillis() < CacheIndex.aLong219) {
-            Class40_Sub3.anInt2020 = SceneCluster.aClass38_768.method442(Class39.anInt912, Class40_Sub3.anInt2024, 9799);
+            Class40_Sub3.anInt2020 = SceneCluster.aTimer_768.sleep(Class39.anInt912, Class40_Sub3.anInt2024);
             for (int i = 0; i < Class40_Sub3.anInt2020; i++)
                 method29(true);
             method26((byte) 88);
@@ -316,7 +318,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     public void destroy() {
         if (Class4.anApplet_Sub1_179 == this && !PacketBuffer.aBoolean2255) {
             CacheIndex.aLong219 = System.currentTimeMillis();
-            Class43.method890(5000L, -123);
+            Class43.sleep(5000L);
             Actor.aClass31_3152 = null;
             method17();
         }

@@ -81,7 +81,7 @@ public class Class39 implements Runnable {
                     coord++;
                 }
             }
-            Class43.method890(50L, 44);
+            Class43.sleep(50L);
         }
     }
 }

@@ -110,8 +110,8 @@ public abstract class Class22_Sub2 extends Class22 {
 
     public void method321(byte arg0, long arg1) {
         for(int i = 0; i < 128; i++) {
-            int i_6_ = Class38.anIntArray889[i];
-            Class38.anIntArray889[i] = 0;
+            int i_6_ = MovedStatics.anIntArray889[i];
+            MovedStatics.anIntArray889[i] = 0;
             for(int i_7_ = 0; i_7_ < 16; i_7_++) {
                 if((i_6_ & 1 << i_7_) != 0)
                     method314(144 + i_7_, i, 0, arg1);
@@ -136,14 +136,14 @@ public abstract class Class22_Sub2 extends Class22 {
     public boolean method322(int arg0, int arg1, int arg2, long arg3) {
         if((arg0 & 0xe0) == 128) {
             int i = 1 << (arg0 & 0xf);
-            int i_8_ = Class38.anIntArray889[arg1];
+            int i_8_ = MovedStatics.anIntArray889[arg1];
             if(arg0 >= 144 && arg2 != 0) {
                 if((i_8_ & i) != 0)
                     method314(arg0, arg1, 0, arg3);
                 else
-                    Class38.anIntArray889[arg1] = i_8_ | i;
+                    MovedStatics.anIntArray889[arg1] = i_8_ | i;
             } else
-                Class38.anIntArray889[arg1] = i_8_ & (i ^ 0xffffffff);
+                MovedStatics.anIntArray889[arg1] = i_8_ & (i ^ 0xffffffff);
             return false;
         }
         if((arg0 & 0xf0) == 176) {

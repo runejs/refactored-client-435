@@ -147,7 +147,7 @@ public class Class44 implements Runnable {
                     class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.method902((byte) -90);
                 }
                 if(class40_sub6 == null) {
-                    Class43.method890(100L, 113);
+                    Class43.sleep(100L);
                     synchronized(CollisionMap.anObject162) {
                         if(Buffer.anInt1987 <= 1) {
                             Buffer.anInt1987 = 0;

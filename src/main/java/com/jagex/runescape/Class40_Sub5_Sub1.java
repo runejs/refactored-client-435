@@ -252,7 +252,7 @@ public class Class40_Sub5_Sub1 extends SubNode {
                 }
             }
             for (int i = 0; i < ActorDefinition.menuActionRow; i++) {
-                if (Class38.menuActionTypes[i] == 7) {
+                if (MovedStatics.menuActionTypes[i] == 7) {
                     Landscape.menuActionTexts[i] = English.walkHere + Native.aClass1_1117 + Native.aClass1_620 + rsString;
                     break;
                 }

@@ -240,8 +240,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             Renderable.aClass40_Sub5_Sub14_Sub2_2860.flipVertical();
             HashTable.aClass40_Sub5_Sub14_Sub2_549 = GameShell.aClass40_Sub5_Sub14_Sub2_1.method691();
             HashTable.aClass40_Sub5_Sub14_Sub2_549.flipVertical();
-            Class38_Sub1.aClass40_Sub5_Sub14_Sub2_1919 = Class35.aClass40_Sub5_Sub14_Sub2_1744.method691();
-            Class38_Sub1.aClass40_Sub5_Sub14_Sub2_1919.flipVertical();
+            MovedStatics.aClass40_Sub5_Sub14_Sub2_1919 = Class35.aClass40_Sub5_Sub14_Sub2_1744.method691();
+            MovedStatics.aClass40_Sub5_Sub14_Sub2_1919.flipVertical();
             ISAAC.aClass40_Sub5_Sub14_Sub2_524 = Class56.aClass40_Sub5_Sub14_Sub2_1315.method691();
             ISAAC.aClass40_Sub5_Sub14_Sub2_524.flipHorizontal();
             ISAAC.aClass40_Sub5_Sub14_Sub2_524.flipVertical();

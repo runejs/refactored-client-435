@@ -65,7 +65,7 @@ public abstract class CacheIndex {
                 string = string.replace('#', '_');
                 SignlinkNode signlinkNode = Actor.aClass31_3152.method388(false, new URL(Actor.aClass31_3152.anApplet740.getCodeBase(), "clienterror.ws?c=" + Class39.anInt901 + "&u=" + Class34.aLong853 + "&v1=" + Signlink.aString735 + "&v2=" + Signlink.aString739 + "&e=" + string));
                 while(signlinkNode.anInt434 == 0)
-                    Class43.method890(1L, -74);
+                    Class43.sleep(1L);
                 if(signlinkNode.anInt434 != 1)
                     break;
                 DataInputStream datainputstream = (DataInputStream) signlinkNode.value;

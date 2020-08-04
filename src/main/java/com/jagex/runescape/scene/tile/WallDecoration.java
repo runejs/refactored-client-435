@@ -113,7 +113,7 @@ public class WallDecoration {
                         ItemDefinition.soundVolume[PacketBuffer.currentSound] = volume;
                         Class40_Sub3.soundDelay[PacketBuffer.currentSound] = delay;
                         PacketBuffer.effects[PacketBuffer.currentSound] = null;
-                        Class38_Sub1.anIntArray1916[PacketBuffer.currentSound] = radius + (localX << 8) + (localY << 16);
+                        MovedStatics.anIntArray1916[PacketBuffer.currentSound] = radius + (localX << 8) + (localY << 16);
                         PacketBuffer.currentSound++;
                     }
                 }
@@ -306,14 +306,14 @@ public class WallDecoration {
             ItemDefinition.soundVolume[PacketBuffer.currentSound] = volume;
             Class40_Sub3.soundDelay[PacketBuffer.currentSound] = delay;
             PacketBuffer.effects[PacketBuffer.currentSound] = null;
-            Class38_Sub1.anIntArray1916[PacketBuffer.currentSound] = 0;
+            MovedStatics.anIntArray1916[PacketBuffer.currentSound] = 0;
             PacketBuffer.currentSound++;
         }
     }
 
     public static void method951(int arg0, TypeFace arg1, TypeFace arg2) {
         do {
-            Class38.loginBoxGraphics.prepareRasterizer();
+            MovedStatics.loginBoxGraphics.prepareRasterizer();
 //            Rasterizer.drawFilledRectangle(0,0, ScreenController.frameWidth, ScreenController.frameHeight, 0);
             if (Class51.anInt1197 == 0 || Class51.anInt1197 == 5) {
                 int i = 20;
@@ -394,7 +394,7 @@ public class WallDecoration {
             try {
                 Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
 
-                Class38.loginBoxGraphics.drawGraphics(202, 171, graphics);
+                MovedStatics.loginBoxGraphics.drawGraphics(202, 171, graphics);
                 if (arg0 != -19010)
                     method949();
                 Class8.flameLeftBackground.drawGraphics(0, 0, graphics);

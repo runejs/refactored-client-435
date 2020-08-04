@@ -24,9 +24,8 @@ public class Class43 {
     public static LinkedList aLinkedList_1022 = new LinkedList();
     public static int bankInsertMode = 0;
 
-    public static void method890(long arg0, int arg1) {
+    public static void sleep(long arg0) {
         if(arg0 > 0L) {
-            int i = 81 / ((arg1 + 20) / 42);
             if(arg0 % 10L == 0L) {
                 ISAAC.method283(-1L + arg0, -110);
                 ISAAC.method283(1L, -110);
@@ -36,7 +35,7 @@ public class Class43 {
     }
 
     public static void drawTabArea(int arg0) {
-        Class38.aBoolean893 = true;
+        MovedStatics.aBoolean893 = true;
         Class61.method996(19655);
         if(Class29.tabAreaOverlayWidgetId != -1) {
             boolean bool = Class40_Sub5_Sub6.drawInterface(0, Class29.tabAreaOverlayWidgetId, 261, (byte) -5, 0, 1, 190);
@@ -65,10 +64,10 @@ public class Class43 {
     public static void processRightClick() {
         if(SceneTile.activeInterfaceType == 0) {
             Landscape.menuActionTexts[0] = English.cancel;
-            Class38.menuActionTypes[0] = 1005;
+            MovedStatics.menuActionTypes[0] = 1005;
             ActorDefinition.menuActionRow = 1;
             if(ActorDefinition.openFullScreenWidgetId == -1) {
-                Class38_Sub1.method445(9767);
+                MovedStatics.method445(9767);
                 Item.anInt3065 = -1;
                 OverlayDefinition.anInt2328 = -1;
                 boolean bool = false;
@@ -114,14 +113,14 @@ public class Class43 {
                 while(!bool) {
                     bool = true;
                     for(int i = 0; -1 + ActorDefinition.menuActionRow > i; i++) {
-                        if(Class38.menuActionTypes[i] < 1000 && Class38.menuActionTypes[1 + i] > 1000) {
+                        if(MovedStatics.menuActionTypes[i] < 1000 && MovedStatics.menuActionTypes[1 + i] > 1000) {
                             bool = false;
                             String class1 = Landscape.menuActionTexts[i];
                             Landscape.menuActionTexts[i] = Landscape.menuActionTexts[i + 1];
                             Landscape.menuActionTexts[i + 1] = class1;
-                            int i_90_ = Class38.menuActionTypes[i];
-                            Class38.menuActionTypes[i] = Class38.menuActionTypes[i + 1];
-                            Class38.menuActionTypes[i + 1] = i_90_;
+                            int i_90_ = MovedStatics.menuActionTypes[i];
+                            MovedStatics.menuActionTypes[i] = MovedStatics.menuActionTypes[i + 1];
+                            MovedStatics.menuActionTypes[i + 1] = i_90_;
                             i_90_ = InteractiveObject.firstMenuOperand[i];
                             InteractiveObject.firstMenuOperand[i] = InteractiveObject.firstMenuOperand[1 + i];
                             InteractiveObject.firstMenuOperand[1 + i] = i_90_;

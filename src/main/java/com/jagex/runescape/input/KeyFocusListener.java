@@ -101,10 +101,10 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             }
             WallDecoration.fontNormal.drawStringRight("Mem: " + memoryUsed + "k", x, y, colour);
             y += 15;
-            if (Class38.aBoolean893) {
+            if (MovedStatics.aBoolean893) {
                 WallDecoration.fontNormal.drawStringRight(English.sidePanelRedrawn, x, y, 16711680);
                 y += 15;
-                Class38.aBoolean893 = false;
+                MovedStatics.aBoolean893 = false;
             }
             if (CacheIndex.aBoolean260) {
                 WallDecoration.fontNormal.drawStringRight(English.chatPanelRedrawn, x, y, 16711680);

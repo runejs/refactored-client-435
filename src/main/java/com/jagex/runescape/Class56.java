@@ -45,16 +45,6 @@ public class Class56 {
         return class1s;
     }
 
-    public static Class38 method972(byte arg0) {
-        if(arg0 != 47)
-            method968(null);
-        try {
-            return (Class38) Class.forName("com.jagex.runescape.Class38_Sub2").newInstance();
-        } catch(Throwable throwable) {
-            return new Class38_Sub1();
-        }
-    }
-
     public static void method973() {
         Class67.anIntArray1579 = null;
         SceneTile.anIntArray2048 = null;

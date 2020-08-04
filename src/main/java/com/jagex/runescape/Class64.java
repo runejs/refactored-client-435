@@ -252,7 +252,7 @@ public class Class64 implements Runnable {
             }
             if (aSignlinkNode_1512 != null) {
                 while (aSignlinkNode_1512.anInt434 == 0)
-                    Class43.method890(1L, 115);
+                    Class43.sleep(1L);
                 if (aSignlinkNode_1512.anInt434 == 1) {
                     try {
                         ((Thread) aSignlinkNode_1512.value).join();
